@@ -51,6 +51,54 @@ label renormalized deformation coordinates, and its columns label the chosen
 bare operator basis.
 \end{definition}
 
+\section{Operators as Cotangent Data}
+
+The preceding definition has a geometric interpretation.  The infinitesimal
+coupling displacement
+\[
+  \delta g=\delta g_I\,\frac{\partial}{\partial g_I}
+\]
+is a tangent vector to the renormalized family of theories.  The corresponding
+local operator insertion is the dual object specified by the pairing
+\[
+  \langle \delta g,O\rangle
+  =
+  \int \dd^D x\,\delta g_I\, [O_I]_\mu(x).
+\]
+The deformation \(\delta S\) is this pairing.  Therefore a change of
+renormalized coordinates
+\[
+  \widetilde g_A=f_A(g)
+\]
+must transform the operator representatives by the inverse Jacobian:
+\[
+  [\widetilde O_A]_\mu
+  =
+  \frac{\partial g_I}{\partial \widetilde g_A}\,
+  [O_I]_\mu .
+\]
+This is the cotangent transformation law.  It is the local-operator version of
+the statement that beta functions are components of a vector field.
+
+Let \(t=\log\mu\).  The tangent vector \(\delta g_K\) evolves by the
+linearized RG equation
+\[
+  \frac{\dd}{\dd t}\delta g_K
+  =
+  \frac{\partial\beta_K}{\partial g_I}\,\delta g_I .
+\]
+Scale independence of the bare deformation means that the pairing
+\(\langle\delta g,O\rangle\) is independent of \(t\).  Hence the dual operator
+basis evolves with the negative transpose action:
+\[
+  \frac{\dd}{\dd t}[O_I]_\mu
+  =
+  -
+  \frac{\partial\beta_K}{\partial g_I}\,[O_K]_\mu .
+\]
+The index placement in the anomalous-dimension matrix below is chosen to
+encode precisely this cotangent action.
+
 The scale dependence of \(N_{IJ}\) follows from the scale independence of the
 bare deformation.  Let
 \[
