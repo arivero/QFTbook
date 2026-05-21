@@ -294,6 +294,41 @@ The physical sheet is selected by the sign of the Feynman prescription and by
 positive Feynman parameters. This condition is what distinguishes a first-sheet
 threshold from a pole reached only after continuation through a cut.
 
+\section{Spacetime Interpretation of Positive Landau Solutions}
+
+The sign condition on the parameters has a spacetime meaning.  Consider a
+Landau solution in a real physical region and keep only the active internal
+lines, namely those with \(\alpha_i>0\).  Let the graph vertices be labelled
+by \(v\).  If an active line \(i\) is oriented from \(v_-(i)\) to \(v_+(i)\),
+the stationary equations around every loop are equivalent to the existence of
+vertex positions \(x_v\) such that
+\[
+  x_{v_+(i)}-x_{v_-(i)}=\lambda_i q_i,
+  \qquad
+  \lambda_i\ge0 ,
+\]
+after choosing orientations of the on-shell momenta \(q_i\).  The factor
+\(\lambda_i\) is proportional to the Feynman parameter \(\alpha_i\); its
+normalization depends only on the convention used for the quadratic form in
+the parametrized denominator.  Since \(q_i^2=-m_i^2\), this equation is the
+worldline equation for a classical massive particle propagating between two
+vertices.
+
+Thus a real leading Landau solution with compatible future-directed momenta is
+a classical spacetime process: all active internal particles go on shell,
+travel for nonnegative proper time, and meet at the vertices with energy and
+momentum conserved.  This is the Coleman--Norton interpretation.  It is a
+criterion for first-sheet physical singularities that must be combined with
+the pinch analysis: a formal algebraic solution contributes to the physical
+singularity only on the relevant sheet, with the integration contour trapped,
+and with a numerator that leaves a nonzero local singular term.
+
+Subleading Landau solutions have some \(\alpha_i=0\).  Geometrically, the
+corresponding internal lines are contracted, and the classical propagation
+picture applies to the reduced graph.  Ordinary thresholds are reduced
+classical processes in which a set of particles can be produced on shell with
+the total external energy-momentum supplied to the subgraph.
+
 \section{Two-Particle Threshold}
 
 For the equal-mass two-propagator loop, take internal momenta
@@ -402,20 +437,13 @@ vectors to close consistently around the loop.
 \end{tikzpicture}
 \end{center}
 
-In the symmetric case represented by the vector sketch, the closure condition
-fails when
-\[
-  M_1,M_2<\sqrt2\,m .
-\]
-The contour can then be deformed and the amplitude is regular at the
-corresponding point. When
-\[
-  M_1,M_2>\sqrt2\,m ,
-\]
-the on-shell vectors can be arranged with positive Feynman parameters. The
-Landau equations then determine a special value of \(M_3\), or equivalently a
-special value of \(P_3^2=-M_3^2\), at which the triangle graph has a
-first-sheet singularity.
+The vector sketch represents the Coleman--Norton condition.  The actual
+singular locus is obtained by solving the three on-shell equations together
+with the positive-parameter stationary equation.  A solution whose active
+lines admit future-directed propagation with nonnegative parameters gives a
+first-sheet anomalous threshold at the determined value of
+\(P_3^2=-M_3^2\).  A solution requiring reversed time ordering is reached on
+the corresponding continued sheet.
 
 This singularity is an anomalous threshold: a first-sheet singularity of the
 amplitude produced by on-shell internal propagation and contour pinching. Its
