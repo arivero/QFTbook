@@ -1,51 +1,231 @@
 \chapter{Chiral Axial Anomalies}
 \label{ch:volume-ii-20}
 
-\section{Classical Symmetry}
+\section{Classical Chiral Currents}
 
-For massless Dirac fermions, the classical action may have vector and axial
-symmetries:
+Let \(\psi\) be a Dirac fermion in four dimensions, coupled to a background or
+dynamical gauge field through
 \[
-  \psi\mapsto \ee^{\ii\alpha}\psi,\qquad
-  \psi\mapsto \ee^{\ii\beta\gamma_5}\psi.
+  D_\mu\psi=\partial_\mu\psi-\ii A_\mu\psi .
 \]
-The corresponding classical axial current satisfies
+For a mass \(m\), the Dirac Lagrangian is
 \[
-  \partial_\mu j_5^\mu=0
+  \mathcal L
+  =
+  -\bar\psi\gamma^\mu D_\mu\psi
+  -m\bar\psi\psi .
 \]
-before coupling and regularization subtleties are considered.
-
-\section{The Quantum Anomaly}
-
-In a gauge background, no regulator preserves all formal symmetries
-simultaneously. For a Dirac fermion coupled to electromagnetism,
+When \(m=0\), the classical equations of motion imply conservation of the
+vector and axial currents
 \[
+  j^\mu=\bar\psi\gamma^\mu\psi,
+  \qquad
+  j_5^\mu=\bar\psi\gamma^\mu\gamma_5\psi,
+  \qquad
+  \partial_\mu j^\mu=0,
+  \qquad
+  \partial_\mu j_5^\mu=0 .
+\]
+For \(m\neq0\), the axial divergence becomes
+\[
+  \partial_\mu j_5^\mu=2m\,\bar\psi\gamma_5\psi
+\]
+with the \(\gamma_5\) convention fixed in the preceding QCD chapter.
+
+The corresponding infinitesimal transformations are
+\[
+  \delta_V\psi=\ii\alpha\psi,\qquad
+  \delta_A\psi=\ii\beta\gamma_5\psi,
+\]
+where \(\alpha\) and \(\beta\) are constant real parameters.  Classically, for
+massless fermions, both transformations are symmetries of the local
+Lagrangian.  Quantum mechanically, the vector transformation is preserved
+when it is gauged consistently, while the axial current acquires a local
+divergence determined by the gauge background.
+
+\section{The Abelian Axial Anomaly}
+
+For a Dirac fermion of electric charge \(q\) coupled to an electromagnetic
+field with coupling \(e\), the renormalized axial current may be chosen so
+that
+\begin{equation}
   \partial_\mu j_5^\mu
   =
-  \frac{e^2}{16\pi^2}
-  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
-\]
-up to convention-dependent signs and normalization of the current. The vector
-current is kept conserved because gauge invariance is required for
-consistency; the axial symmetry is anomalous.
+  2m\,\bar\psi\gamma_5\psi
+  +
+  \frac{e^2 q^2}{16\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  F_{\mu\nu}F_{\rho\sigma}.
+  \label{eq:abelian-axial-anomaly}
+\end{equation}
+The coefficient is fixed by the short-distance singularity of the triangle
+diagram with one axial-current insertion and two vector-current insertions.
+The vector Ward identity is imposed because the vector current is the current
+coupled to the gauge field.  The remaining local term appears in the axial
+Ward identity.
 
-\section{Path-Integral Measure}
+Equation \eqref{eq:abelian-axial-anomaly} is a statement about a
+renormalized composite operator identity.  Each symbol in it has a prescribed
+meaning: \(F_{\mu\nu}\) is the electromagnetic field strength,
+\(\epsilon^{0123}=+1\) in the chosen orientation, \(m\bar\psi\gamma_5\psi\)
+is the pseudoscalar mass operator, and \(j_5^\mu\) is the renormalized current
+whose vector-current Ward identities have been preserved.
 
-In Fujikawa's viewpoint, the anomaly is the Jacobian of the fermion measure
-under a chiral rotation. Expanding the fermion fields in eigenmodes of the
-Dirac operator, the regulated trace of \(\gamma_5\) gives
+\section{Measure Derivation}
+
+The same coefficient is obtained from the path-integral measure.  Work in
+Euclidean signature with Dirac operator
 \[
-  \operatorname{Tr}\gamma_5\ee^{-\slashed D^2/M^2}
-  \longrightarrow
-  \frac{1}{32\pi^2}
-  \int\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}.
+  \mathcal D=\gamma^\mu(\partial_\mu-\ii A_\mu).
 \]
-The anomaly is therefore not a failure of algebraic manipulation; it is a
-property of the regulated infinite-dimensional measure.
+Expand the fermion fields in an orthonormal basis of eigenfunctions of
+\(\mathcal D\).  Under a local chiral rotation
+\[
+  \psi(x)\mapsto \ee^{\ii\beta(x)\gamma_5}\psi(x),
+  \qquad
+  \bar\psi(x)\mapsto \bar\psi(x)\ee^{\ii\beta(x)\gamma_5},
+\]
+the formal measure changes by a Jacobian.  The regulated logarithm of the
+Jacobian is
+\begin{equation}
+  \log J
+  =
+  2\ii\lim_{M\to\infty}
+  \operatorname{Tr}
+  \left[
+  \beta(x)\gamma_5
+  \exp\left(-\mathcal D^2/M^2\right)
+  \right],
+  \label{eq:fujikawa-regulated-trace}
+\end{equation}
+where \(\operatorname{Tr}\) is the trace over spacetime, spin, and internal
+indices.  The heat-kernel expansion gives the local limit
+\begin{equation}
+  \lim_{M\to\infty}
+  \operatorname{tr}_{\mathrm{spin}}
+  \left[
+  \gamma_5
+  \exp\left(-\mathcal D^2/M^2\right)
+  \right](x,x)
+  =
+  \frac{1}{32\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}_{R}(F_{\mu\nu}F_{\rho\sigma}),
+  \label{eq:heat-kernel-anomaly-density}
+\end{equation}
+with \(\operatorname{tr}_{R}\) the trace in the fermion representation.  The
+anomaly is therefore the regulated trace of \(\gamma_5\) over an
+infinite-dimensional fermion space.  Finite-dimensional cyclic trace
+manipulations do not remove \eqref{eq:heat-kernel-anomaly-density}, because
+the regulator is part of the definition of the composite current.
 
-\section{Consequences}
+For compact Euclidean four-manifolds and suitable boundary conditions, the
+integrated version is the index theorem
+\begin{equation}
+  \operatorname{index}\mathcal D
+  =
+  n_+-n_-
+  =
+  \frac1{32\pi^2}
+  \int
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}_{R}(F_{\mu\nu}F_{\rho\sigma})\,\dd^4x ,
+  \label{eq:dirac-index-anomaly}
+\end{equation}
+where \(n_\pm\) are the numbers of zero modes of chirality \(\pm1\).
 
-Anomalies constrain possible quantum theories. Gauge anomalies make a theory
-inconsistent unless they cancel. Global anomalies are allowed, but they must be
-matched along RG flows. This matching principle will become a powerful guide
-to strongly coupled dynamics and symmetry breaking.
+\section{Nonabelian Flavor and Gauge Anomalies}
+
+For several Weyl fermions, anomalies are encoded by traces over their
+representations.  Let \(T^A\) be a generator of a global symmetry current and
+let \(t^a,t^b\) be generators of gauge or background gauge fields.  The
+coefficient of the mixed anomaly is
+\begin{equation}
+  \mathcal A^{Aab}
+  =
+  \operatorname{tr}_{\mathrm{left}}
+  \bigl(T^A\{t^a,t^b\}\bigr)
+  -
+  \operatorname{tr}_{\mathrm{right}}
+  \bigl(T^A\{t^a,t^b\}\bigr).
+  \label{eq:flavor-anomaly-coefficient}
+\end{equation}
+With background field strengths \(F^a_{\mu\nu}\), the corresponding current
+identity has the form
+\begin{equation}
+  \partial_\mu J_A^\mu
+  =
+  \frac1{32\pi^2}
+  \mathcal A^{Aab}
+  \epsilon^{\mu\nu\rho\sigma}
+  F^a_{\mu\nu}F^b_{\rho\sigma}
+  +
+  \text{explicit breaking terms}.
+  \label{eq:nonabelian-flavor-anomaly}
+\end{equation}
+
+If the anomalous current is the current of a gauge symmetry, the theory is
+inconsistent unless the anomaly cancels.  For left-handed Weyl fermions in
+representations \(R_i\) of a gauge group, the local cubic gauge-anomaly
+condition is
+\begin{equation}
+  \sum_i
+  \operatorname{tr}_{R_i}
+  \bigl(t^a\{t^b,t^c\}\bigr)
+  =
+  0
+  \qquad
+  \text{for all }a,b,c.
+  \label{eq:gauge-anomaly-cancellation}
+\end{equation}
+This condition is the ghost-number-one obstruction described by BRST
+cohomology in Chapter~\ref{ch:volume-ii-18}.  When it holds, the
+Slavnov--Taylor identities can be maintained by local counterterms.  When it
+fails, no choice of local counterterms gives a unitary gauge theory with the
+declared gauge symmetry.
+
+\section{The Strong CP Parameter}
+
+In QCD with \(N_f\) quark flavors, the Euclidean gauge action may include the
+topological term
+\[
+  \ii\theta\,
+  \frac1{32\pi^2}
+  \int
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma})\,\dd^4x .
+\]
+The complex quark mass matrix \(M\) was introduced in
+\eqref{eq:qcd-chiral-mass-lagrangian}.  A flavor-singlet axial rotation
+changes the phase of \(\det M\) and, by the anomaly, shifts \(\theta\).  With
+the convention used in this chapter, the invariant CP-odd parameter is
+\begin{equation}
+  \bar\theta
+  =
+  \theta+\arg\det M .
+  \label{eq:qcd-physical-theta}
+\end{equation}
+If the sign convention for \(\gamma_5\) or for the topological density is
+reversed, both transformation laws change together and the invariant
+combination is correspondingly rewritten.  The invariant statement is that
+only the anomaly-invariant combination of the topological angle and the quark
+mass phase is physically meaningful.
+
+\section{Anomalous Pion Couplings}
+
+The axial anomaly has observable low-energy consequences.  In two-flavor QCD,
+the neutral pion couples to the electromagnetic topological density through
+the anomalous divergence of the axial isospin current:
+\[
+  \partial_\mu J_{5,3}^\mu
+  =
+  \frac{e^2}{16\pi^2}
+  \operatorname{tr}\bigl(T_3 Q^2\bigr)
+  \epsilon^{\mu\nu\rho\sigma}
+  F_{\mu\nu}F_{\rho\sigma}
+  +
+  \text{mass terms}.
+\]
+Here \(Q\) is the quark charge matrix and \(T_3\) is the third generator of
+flavor \(SU(2)\).  The same anomaly is reproduced in the pion effective theory
+by the Wess--Zumino--Witten term introduced in the next chapter.

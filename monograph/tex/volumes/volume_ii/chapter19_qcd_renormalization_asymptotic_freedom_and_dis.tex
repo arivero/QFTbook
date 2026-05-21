@@ -1,55 +1,252 @@
 \chapter{QCD Renormalization, Asymptotic Freedom, and Deep Inelastic Scattering}
 \label{ch:volume-ii-19}
 
-\section{The Running Coupling}
+\section{QCD as a Renormalized Gauge Theory}
 
-For Yang--Mills theory with gauge group \(SU(N_c)\) and \(N_f\) Dirac fermions
-in the fundamental representation, the one-loop beta function has the form
+Quantum chromodynamics in four dimensions is Yang--Mills theory with gauge
+group \(SU(N_c)\) coupled to \(N_f\) Dirac fermions in the fundamental
+representation.  Write the quark fields as
+\[
+  q^i_{I\alpha}(x),
+  \qquad
+  i=1,\ldots,N_c,\quad I=1,\ldots,N_f,
+\]
+where \(i\) is color, \(I\) is flavor, and \(\alpha\) is a spinor index.  We
+use the fundamental normalization
+\[
+  \operatorname{tr}_{\square}(t^a t^b)=T_F\delta^{ab},
+  \qquad
+  T_F=\frac12 .
+\]
+The group-theoretic constants used in renormalization are defined by
+\begin{equation}
+  f^{acd}f^{bcd}=C_A\delta^{ab},
+  \qquad
+  \operatorname{tr}_{R}(t_R^a t_R^b)=T_R\delta^{ab},
+  \qquad
+  t_R^a t_R^a=C_R\mathbf 1_R .
+  \label{eq:qcd-casimir-definitions}
+\end{equation}
+For \(SU(N_c)\),
+\[
+  C_A=N_c,\qquad
+  T_F=\frac12,\qquad
+  C_F=\frac{N_c^2-1}{2N_c}.
+\]
+
+The renormalized coupling \(g(\mu)\) depends on a scale \(\mu\) and on the
+renormalization scheme.  The beta function is
+\[
+  \beta(g):=\mu\frac{\dd g}{\dd\mu}.
+\]
+In a mass-independent scheme its first coefficient is scheme independent:
+\begin{equation}
+  \beta(g)
+  =
+  -\frac{g^3}{16\pi^2}
+  \left(
+  \frac{11}{3}C_A-\frac{4}{3}T_F N_f
+  \right)
+  +O(g^5).
+  \label{eq:qcd-one-loop-beta-general}
+\end{equation}
+Equivalently,
+\begin{equation}
+  \beta(g)
+  =
+  -\frac{g^3}{16\pi^2}
+  \left(
+  \frac{11}{3}N_c-\frac{2}{3}N_f
+  \right)
+  +O(g^5)
+  \label{eq:qcd-one-loop-beta-fundamental}
+\end{equation}
+for fundamental quarks.  The \(C_A\) term is the gauge-field and ghost
+contribution; the \(T_F N_f\) term is the quark contribution.  The relative
+sign follows from the tensor structure required by BRST identities and from
+the spin-statistics of the loop fields.
+
+\section{Dimensional Transmutation}
+
+Assume
+\[
+  b_0:=\frac{11}{3}N_c-\frac{2}{3}N_f>0 .
+\]
+At one loop,
 \[
   \mu\frac{\dd g}{\dd\mu}
   =
-  -\frac{g^3}{16\pi^2}
-  \left(\frac{11}{3}N_c-\frac{2}{3}N_f\right)
-  +O(g^5).
+  -\frac{b_0}{16\pi^2}g^3 .
 \]
-For sufficiently small \(N_f\), the coefficient is positive and the coupling
-decreases at high energy. This is asymptotic freedom.
-
-The RG-invariant scale is
-\[
-  \Lambda_{\rm QCD}
+Integrating between \(\mu_0\) and \(\mu\) gives
+\begin{equation}
+  \frac1{g^2(\mu)}
   =
-  \mu\exp\left(-\frac{8\pi^2}{b_0g^2(\mu)}\right)
-  \times(\text{higher-order factors}).
-\]
-Perturbation theory is reliable at momenta much larger than this scale and
-breaks down in the infrared.
+  \frac1{g^2(\mu_0)}
+  +
+  \frac{b_0}{8\pi^2}\log\frac{\mu}{\mu_0}.
+  \label{eq:qcd-one-loop-running}
+\end{equation}
+Thus \(g(\mu)\) decreases at large \(\mu\).  This property is asymptotic
+freedom.
 
-\section{Confinement}
+The integration constant may be traded for a scale.  At one-loop accuracy,
+\begin{equation}
+  \Lambda
+  =
+  \mu\,
+  \exp\left\{
+  -\frac{8\pi^2}{b_0 g^2(\mu)}
+  \right\}.
+  \label{eq:qcd-lambda-one-loop}
+\end{equation}
+Higher-loop definitions multiply the right side by powers and series in
+\(g(\mu)\), and the numerical value depends on the renormalization scheme.
+The structural point is scheme independent: a dimensionless renormalized
+coupling has been replaced by a dimensionful RG-invariant scale, together
+with the quark masses.  This is dimensional transmutation.
 
-The strong-coupling infrared is believed to confine color. Colored fields are
-not asymptotic particle states; hadrons are. This is not a minor complication
-for scattering theory. It means that LSZ applied to quark and gluon fields
-does not define a physical S-matrix. Physical observables must be color
-singlet.
+Perturbative predictions at external momentum scale \(Q\) are organized by
+the small parameter \(g(Q)\) when \(Q\gg\Lambda\).  At scales comparable to
+\(\Lambda\), the perturbative expansion is no longer a controlled expansion in
+small coupling.  Statements about the spectrum, confinement, and the mass gap
+then require nonperturbative input.
 
-\section{Deep Inelastic Scattering}
+\section{Color and Physical External States}
 
-Deep inelastic scattering probes hadrons at short distances. Current-current
-correlators at large momentum transfer admit an operator product expansion:
+The gauge-fixed quark and gluon fields are useful local variables in
+perturbation theory.  Physical states are BRST cohomology classes, and local
+physical operators are represented by gauge-invariant or BRST-closed
+operators.  This has an immediate consequence for scattering: LSZ reduction
+applied to the elementary quark or gluon fields does not by itself define a
+physical hadron \(S\)-matrix.  Physical external states in QCD are created by
+color-singlet operators, such as
 \[
+  \bar q_I q_J,\qquad
+  \bar q_I\gamma^\mu q_J,\qquad
+  \epsilon_{i_1\cdots i_{N_c}}
+  q^{i_1}_{I_1}\cdots q^{i_{N_c}}_{I_{N_c}},
+  \qquad
+  \operatorname{tr}(F_{\mu\nu}F^{\mu\nu}).
+\]
+The first three are mesonic current, vector-current, and baryonic examples;
+the last is a gluonic example.
+
+Confinement is the nonperturbative property that isolated finite-energy
+asymptotic particles carry no color.  The monograph uses it in this precise
+spectral sense when discussing QCD phenomenology: the asymptotic states are
+hadrons, while the short-distance operator expansion is expressed in terms of
+quark and gluon fields because those are the local variables of the
+renormalized gauge theory.
+
+\section{Current Correlators and the Hadronic Tensor}
+
+Deep inelastic scattering probes a hadron by a local current.  Let
+\(\ket{P}\) be a one-hadron momentum eigenstate with \(P^2=M^2\).  For an
+electromagnetic current
+\[
+  J^\mu(x)=\sum_I e_I\,\bar q_I(x)\gamma^\mu q_I(x),
+\]
+define the hadronic tensor
+\begin{equation}
+  W^{\mu\nu}(P,q)
+  =
+  \frac1{4\pi}
+  \int \dd^4 x\,
+  \ee^{\ii q\cdot x}
+  \bra{P}
+  [J^\mu(x),J^\nu(0)]
+  \ket{P}.
+  \label{eq:hadronic-tensor-definition}
+\end{equation}
+The momentum transfer is spacelike:
+\[
+  Q^2:=-q^2>0,
+  \qquad
+  x_B:=\frac{Q^2}{2P\cdot q}.
+\]
+The Bjorken limit is
+\[
+  Q^2\to\infty,
+  \qquad
+  x_B\ \text{fixed}.
+\]
+The short-distance region \(x\to0\) in
+\eqref{eq:hadronic-tensor-definition} is then controlled by the operator
+product expansion of two currents:
+\begin{equation}
   J^\mu(x)J^\nu(0)
   \sim
-  \sum_a C_a^{\mu\nu}(x,\mu)\mathcal O_a(0,\mu).
+  \sum_a C_a^{\mu\nu}(x,\mu)\,\mathcal O_a(0,\mu).
+  \label{eq:dis-current-ope}
+\end{equation}
+The Wilson coefficients \(C_a^{\mu\nu}\) are determined by short-distance
+renormalization and can be computed in perturbation theory at large \(Q\).  The
+matrix elements
+\(\bra{P}\mathcal O_a(0,\mu)\ket{P}\) are long-distance hadronic data.
+
+\section{Twist, Parton Distributions, and Factorization}
+
+For a local operator of spin \(s\) and scaling dimension \(\Delta\), its twist
+is
+\[
+  \tau:=\Delta-s .
 \]
-The Wilson coefficients are perturbative at short distances, while hadronic
-matrix elements of the operators encode long-distance structure. This is the
-logic behind parton distributions.
+In the Bjorken limit, the leading terms in the OPE are the smallest-twist
+operators compatible with the quantum numbers of the currents.  A convenient
+way to collect the tower of leading-twist matrix elements is by light-ray
+operators.  Let \(n^\mu\) be a lightlike vector, \(n^2=0\), and let
+\[
+  W(\lambda n,0)
+  =
+  \mathcal P
+  \exp\left\{\ii\int_0^\lambda
+  n^\mu A_\mu(sn)\,\dd s\right\}
+\]
+be the Wilson line in the appropriate color representation.  A quark
+parton distribution is defined schematically by
+\begin{equation}
+  f_{q/H}(x,\mu)
+  =
+  \int\frac{\dd\lambda}{2\pi}\,
+  \ee^{-\ii x\lambda P\cdot n}
+  \bra{P}
+  \bar q(\lambda n) W(\lambda n,0)\gamma\cdot n\,q(0)
+  \ket{P}_{\mu}.
+  \label{eq:pdf-light-ray-definition}
+\end{equation}
+The Wilson line makes the nonlocal operator gauge covariant, and the
+subscript \(\mu\) indicates the renormalization scale of the light-ray
+operator.
 
-\section{Factorization}
+Factorization expresses a structure function \(F_i\) in the form
+\begin{equation}
+  F_i(x_B,Q)
+  =
+  \sum_{a}
+  \int_{x_B}^{1}\frac{\dd z}{z}\,
+  C_{i,a}\!\left(\frac{x_B}{z},\frac{Q}{\mu},g(\mu)\right)
+  f_{a/H}(z,\mu)
+  +
+  O\!\left(\frac{\Lambda^p}{Q^p}\right),
+  \label{eq:dis-factorization}
+\end{equation}
+where \(a\) runs over quark, antiquark, and gluon parton species, and the
+power \(p>0\) depends on the first omitted higher-twist operators.  The
+coefficients \(C_{i,a}\) are short-distance kernels; the distributions
+\(f_{a/H}\) are universal hadronic matrix elements for the chosen
+factorization scheme.
 
-Factorization separates scales without pretending that quarks are free
-asymptotic particles. A high-energy observable is expressed as perturbative
-short-distance kernels convolved with universal nonperturbative distributions.
-The RG evolution of these distributions is controlled by anomalous dimensions
-of light-ray or twist operators.
+The independence of \(F_i\) from the auxiliary scale \(\mu\) gives the
+evolution equation
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu} f_{a/H}(x,\mu)
+  =
+  \sum_b\int_x^1\frac{\dd z}{z}\,
+  P_{ab}\!\left(\frac{x}{z},g(\mu)\right)f_{b/H}(z,\mu),
+  \label{eq:dglap-evolution}
+\end{equation}
+where \(P_{ab}\) are splitting kernels, equivalently anomalous dimensions of
+the light-ray operators.  This is the precise sense in which short-distance
+quark and gluon variables control high-energy hadronic observables while
+physical asymptotic states remain color singlets.

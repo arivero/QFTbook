@@ -23,4 +23,6 @@ tools/build_monograph.sh
 ```
 
 The manuscript is in an early rewrite stage. The current build includes the
-opening foundations sequence through the first scattering arc.
+foundations and scattering sequence, the renormalization and Wilsonian sequence,
+and the first nonabelian gauge-dynamics sequence through BRST, QCD running,
+axial anomalies, global anomalies, and pion effective actions.
