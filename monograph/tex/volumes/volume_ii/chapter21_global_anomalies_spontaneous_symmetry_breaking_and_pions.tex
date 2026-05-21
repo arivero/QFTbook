@@ -1,185 +1,407 @@
 \chapter{Global Anomalies, Spontaneous Symmetry Breaking, and Pions}
 \label{ch:volume-ii-21}
 
-\section{Global Symmetries Coupled to Background Fields}
+\section{Background Fields and Anomaly Data}
 
-A continuous global symmetry \(G_{\mathrm f}\) acts on local operators and on
-the Hilbert space, but its gauge field is not integrated over in the original
-theory.  To test the symmetry, introduce a nondynamical background connection
-\(B\) for \(G_{\mathrm f}\) and define the generating functional
+Let a quantum field theory have an exact internal global symmetry
+\(G_{\mathrm f}\).  The symmetry acts on local fields and local operators, and
+on Hilbert spaces obtained after choosing a phase.  To test the symmetry as a
+property of local correlation functions, introduce a nondynamical
+\(G_{\mathrm f}\)-connection \(B\) on spacetime \(M\).  The background-field
+generating functional is
 \[
   Z[B]
   =
   \int [D\Phi]\,
   \exp\{\ii S[\Phi;B]\},
 \]
-where \(\Phi\) denotes all dynamical fields.  A global anomaly is present when
-the background-field functional cannot be made invariant under background
-gauge transformations by adding local counterterms depending only on \(B\).
+where \(\Phi\) denotes the dynamical fields and \(B\) is held fixed as an
+external datum.
+Let \(\mathcal B\) be the space of allowed background fields and
+\(\mathcal G_{\mathrm f}\) the group of background gauge transformations.  If
+\(g\in\mathcal G_{\mathrm f}\), write \(B^g\) for the transformed connection.
 
-This is compatible with the original theory because \(B\) is not a dynamical
-gauge field.  The anomaly is instead an invariant datum of the global symmetry
-action.  In modern language it may be represented by an invertible field
-theory in one dimension higher whose boundary variation cancels the variation
-of \(Z[B]\).  The present chapter uses only the consequence needed for QCD:
-the anomaly of an exact global symmetry is preserved under RG flow.
+The background anomaly is the local-counterterm equivalence class of phases
+\(\mathcal A_g[B]\) in the transformation law
+\begin{equation}
+  Z[B^g]
+  =
+  \exp\{\ii\mathcal A_g[B]\}\,Z[B],
+  \label{eq:finite-background-anomaly}
+\end{equation}
+where \(g\in\mathcal G_{\mathrm f}\).  The zero class is the class for which
+there exists a local counterterm \(C[B]\) making the transformed functional
+invariant under all background gauge transformations.  Multiplying \(Z[B]\) by
+\(\exp\{\ii C[B]\}\) changes the representative by
+\[
+  \mathcal A_g[B]
+  \longmapsto
+  \mathcal A_g[B]+C[B^g]-C[B].
+\]
+Thus the anomaly is represented by the equivalence class of
+\(\mathcal A_g[B]\) under local-counterterm shifts.
+
+The phases in \eqref{eq:finite-background-anomaly} obey a cocycle identity.
+Applying \(h\) and then \(g\) gives the same transformed background as applying
+\(gh\), hence
+\begin{equation}
+  \mathcal A_{gh}[B]
+  =
+  \mathcal A_g[B^h]+\mathcal A_h[B]
+  \quad
+  \operatorname{mod} 2\pi .
+  \label{eq:background-anomaly-cocycle}
+\end{equation}
+The infinitesimal part of this cocycle is the local Wess--Zumino consistency
+condition developed in the preceding chapter.  A finite anomaly may also have a
+purely finite part: its differential on the identity component of
+\(\mathcal G_{\mathrm f}\) vanishes, but the cocycle
+\eqref{eq:background-anomaly-cocycle} is nontrivial on another component or on
+a noncontractible loop in background-field space.
+
+Geometrically, the background-field construction assigns a complex line to each
+gauge-equivalence class of \(B\), and \(Z[B]\) is a section of this anomaly
+line.  Local counterterms change a trivialization of the line.  When the anomaly is
+represented by an invertible field theory on a five-dimensional manifold \(Y\)
+with \(\partial Y=M\), equality of boundary variations identifies the phase in
+\eqref{eq:finite-background-anomaly}.  The later volume on global structure
+develops this formulation as a theory of invertible field theories and anomaly
+inflow; here it supplies the object-level language needed for matching.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[align=center] (uv) at (-4.4,1.35)
+      {microscopic theory\\with background \(B\)};
+    \node[align=center] (ir) at (4.4,1.35)
+      {infrared description\\with the same \(B\)};
+    \node[align=center] (uvg) at (-4.4,-1.35)
+      {transformed background\\\(B^g\)};
+    \node[align=center] (irg) at (4.4,-1.35)
+      {same anomaly phase\\in the infrared};
+    \draw[-{Latex[length=2mm]}, thick] (uv)--node[above]
+      {RG flow} (ir);
+    \draw[-{Latex[length=2mm]}, thick] (uvg)--node[below]
+      {RG flow} (irg);
+    \draw[-{Latex[length=2mm]}, blue!70!black, thick] (uv)--node[left]
+      {\(g\)} (uvg);
+    \draw[-{Latex[length=2mm]}, blue!70!black, thick] (ir)--node[right]
+      {\(g\)} (irg);
+    \node[align=center, blue!70!black] at (0,-0.05)
+      {\(\exp\{\ii\mathcal A_g[B]\}\) is unchanged\\modulo local counterterms};
+  \end{tikzpicture}}
+  \caption{Anomaly matching is equality of background-response classes.  The
+  ultraviolet and infrared functionals may use different fields, but their
+  transformation cocycles agree after local counterterm conventions are
+  identified.}
+  \label{fig:anomaly-matching-backgrounds}
+\end{figure}
 
 \section{Anomaly Matching}
 
-Let a microscopic theory with global symmetry \(G_{\mathrm f}\) flow to an
-infrared theory.  Couple both descriptions to the same background \(B\).  If
+Let a microscopic theory with exact global symmetry \(G_{\mathrm f}\) flow to
+an infrared description.  Couple both descriptions to the same background
+\(B\).  If the ultraviolet generating functional transforms as in
+\eqref{eq:finite-background-anomaly}, then the infrared functional must obey
 \[
-  Z_{\mathrm{UV}}[B]\longmapsto
-  \ee^{\ii\mathcal A[B,g]}Z_{\mathrm{UV}}[B]
+  Z_{\mathrm{IR}}[B^g]
+  =
+  \exp\{\ii\mathcal A_g[B]\}\,Z_{\mathrm{IR}}[B]
 \]
-under a background gauge transformation \(g\), then the infrared description
-must transform with the same phase after possible local counterterms are
-matched:
+after possible local counterterms have been matched.  The equality of the
+equivalence class of \(\mathcal A_g[B]\) modulo counterterms is 't Hooft
+anomaly matching.
+
+The matching object is the cocycle class
+\([\mathcal A]\) defined by \eqref{eq:background-anomaly-cocycle}.  Different
+infrared descriptions may carry the same class: massless fermions can produce
+it through their determinant or Pfaffian line, Goldstone fields can produce it
+through a Wess--Zumino--Witten functional, and a topological sector can produce
+it through an invertible response.  The assumptions are that the symmetry
+remains exact along the flow, the background-field coupling is kept fixed, and
+any modes removed between two scales contribute only local background
+counterterms to the long-distance functional.  Under these assumptions the
+cocycle class is unchanged by RG flow.
+
+\section{Example: A Finite SU(2) Anomaly}
+
+Let \(M\) be a compact spin four-manifold and let \(G_{\mathrm f}=SU(2)\).
+Consider one left-handed Weyl fermion valued in the fundamental representation
+of \(SU(2)\).  For an \(SU(2)\) background connection \(B\), the Euclidean Weyl
+operator is
 \[
-  Z_{\mathrm{IR}}[B]\longmapsto
-  \ee^{\ii\mathcal A[B,g]}Z_{\mathrm{IR}}[B].
+  D_B^+:
+  \Gamma(S_+\otimes E_B)
+  \longrightarrow
+  \Gamma(S_-\otimes E_B),
 \]
-This is 't Hooft anomaly matching.  It is a statement about exact symmetries
-and their background response.  The matching may be realized by massless
-fermions, by Goldstone fields with a Wess--Zumino--Witten functional, by a
-topological field theory, or by a combination of these ingredients.
+where \(S_\pm\) are the positive and negative chirality spin bundles and
+\(E_B\) is the associated rank-two complex vector bundle.  The fundamental
+representation of \(SU(2)\) is pseudoreal, so the fermion functional integral
+defines a Pfaffian line over the space of backgrounds.
+
+Let \(g:M\to SU(2)\) be a background gauge transformation, and choose a smooth
+path of background connections \(B_t\), \(t\in[0,1]\), from \(B_0=B\) to
+\(B_1=B^g\).  Identifying the two ends of \(M\times[0,1]\) by \(g\) gives the
+mapping torus
+\[
+  X_g
+  =
+  (M\times[0,1])/\bigl((x,1)\sim(x,0)\hbox{ by }g\bigr)
+\]
+with an induced \(SU(2)\) bundle \(E_g\).  Let
+\(\mathcal D_{X_g,E_g}\) be the five-dimensional real Dirac operator coupled
+to this bundle, and define its mod-two index by
+\[
+  \zeta(X_g,E_g)
+  =
+  \dim\ker\mathcal D_{X_g,E_g}
+  \quad \operatorname{mod}2 .
+\]
+The Pfaffian transforms by
+\begin{equation}
+  \frac{\operatorname{Pf}(D_{B^g}^+)}
+       {\operatorname{Pf}(D_B^+)}
+  =
+  (-1)^{\zeta(X_g,E_g)} .
+  \label{eq:su2-global-anomaly-pfaffian}
+\end{equation}
+For \(M=S^4\) and \(g\) representing the nontrivial class in
+\(\pi_4(SU(2))\simeq\mathbb Z_2\), the mod-two index is \(1\) for one
+fundamental Weyl doublet.  Thus an odd number of such doublets has a finite
+\(SU(2)\) anomaly.  The local cubic anomaly vanishes because \(SU(2)\) has no
+independent symmetric cubic invariant; equation
+\eqref{eq:su2-global-anomaly-pfaffian} detects an obstruction invisible to the
+infinitesimal descent calculation.
+
+If this \(SU(2)\) symmetry is gauged, the sign in
+\eqref{eq:su2-global-anomaly-pfaffian} prevents the fermion measure from
+descending to a function on gauge-equivalence classes of backgrounds.  If the
+same \(SU(2)\) is kept as a global symmetry, the sign is an anomaly class that
+must be reproduced by the infrared theory.
 
 \section{Spontaneous Symmetry Breaking}
 
-Consider a quantum theory in infinite spatial volume with an exact continuous
-global symmetry group \(G\).  Let \(\mathcal H\) be the Hilbert space obtained
-from one chosen phase, and let \(Q_A\) be the conserved charges associated
-with generators \(T_A\in\operatorname{Lie}(G)\) whenever the charges are
-well-defined on local states.  A vacuum \(\ket{\Omega}\) preserves the
-subgroup
+Consider a Lorentz-invariant quantum theory in infinite spatial volume with an
+exact continuous internal symmetry group \(G\).  Choose one pure phase and let
+\(\ket{\Omega}\) be its vacuum vector.  The unbroken subgroup is
 \[
-  H=\{h\in G:U(h)\ket{\Omega}=\ket{\Omega}\}.
+  H
+  =
+  \{h\in G:U(h)\ket{\Omega}=\ket{\Omega}\}.
 \]
-The symmetry is spontaneously broken from \(G\) to \(H\) when \(H\) is a
-proper subgroup of \(G\).  The broken generators span a complement
+The symmetry is spontaneously broken from \(G\) to \(H\) when \(H\) is a proper
+subgroup.  Let \(\mathfrak g=\operatorname{Lie}(G)\) and
+\(\mathfrak h=\operatorname{Lie}(H)\).  Choose an \(H\)-stable complement
+\(\mathfrak m\) so that
 \[
   \mathfrak g=\mathfrak h\oplus\mathfrak m,
+  \qquad
+  [\mathfrak h,\mathfrak m]\subset\mathfrak m .
 \]
-where \(\mathfrak h=\operatorname{Lie}(H)\).
+Elements \(T_i\in\mathfrak h\) generate unbroken transformations and elements
+\(X_a\in\mathfrak m\) generate broken directions.
 
-Goldstone fields are local coordinates on the coset manifold \(G/H\).  Choose
-broken generators \(X_a\in\mathfrak m\) and write
+Goldstone fields are local coordinates on the coset \(G/H\).  A coset
+representative may be written
 \begin{equation}
-  U_\pi(x)
+  \xi(\pi(x))
   =
   \exp\left\{\frac{\ii}{f}\pi^a(x)X_a\right\}.
   \label{eq:goldstone-coset-coordinate}
 \end{equation}
-The fields \(\pi^a\) are not arbitrary scalar coordinates unrelated to the
-symmetry; they parametrize displacements along the vacuum manifold.  The
-leading local action contains derivatives because constant motion along
-\(G/H\) changes the chosen vacuum but not the local energy density:
+For \(g\in G\), the defining nonlinear action is
+\begin{equation}
+  g\,\xi(\pi)
+  =
+  \xi(\pi')\,h(g,\pi),
+  \qquad
+  h(g,\pi)\in H .
+  \label{eq:ccwz-nonlinear-action}
+\end{equation}
+The compensator \(h(g,\pi)\) is determined by the chosen coset section and by
+the requirement that \(g\xi(\pi)\) be written again in the form
+\(\xi(\pi')H\).
+
+The Maurer--Cartan form decomposes as
+\begin{equation}
+  \xi^{-1}\dd\xi
+  =
+  \ii e^a X_a+\ii\omega^i T_i .
+  \label{eq:ccwz-maurer-cartan}
+\end{equation}
+The one-forms \(e^a=e^a_{\mu}\dd x^\mu\) are the covariant vielbein on the
+Goldstone target \(G/H\), while \(\omega^i\) is an \(H\)-connection.  If
+\(G/H\) carries an invariant metric \(G_{ab}\) on the broken tangent space, the
+leading Goldstone action is
 \begin{equation}
   S_{\mathrm{Goldstone}}
   =
   \frac{f^2}{2}
-  \int g_{ab}(\pi)\,
-  \partial_\mu\pi^a\partial^\mu\pi^b\,\dd^4x
-  +\cdots ,
+  \int G_{ab}\,
+  e^a_\mu e^{b\mu}\,\dd^4x
+  +\cdots .
   \label{eq:goldstone-leading-action}
 \end{equation}
-where \(g_{ab}\) is a \(G\)-invariant metric on the coset and the ellipsis
-denotes higher-derivative terms and explicit symmetry-breaking terms.
+The ellipsis denotes higher-derivative terms and explicit symmetry-breaking
+terms.  No potential appears for exact Goldstone coordinates because constant
+maps into \(G/H\) label symmetry-related vacua.
 
 \section{Goldstone Theorem as a Spectral Statement}
 
-The existence of Goldstone fields is a consequence of locality, current
-conservation, and a nonzero order parameter.  Let \(j_A^\mu(x)\) be a
-conserved current and let \(\mathcal O(0)\) be a local operator such that the
-symmetry generated by \(Q_A\) acts nontrivially on the vacuum expectation
-value:
-\[
-  \langle\Omega,[Q_A,\mathcal O(0)]\Omega\rangle\ne0.
-\]
-Using a smeared charge
-\[
-  Q_A(R)=\int \dd^3x\,f_R(\vec x)j_A^0(0,\vec x)
-\]
-and taking \(R\to\infty\), this commutator is computed by the Fourier
-transform of the current-operator correlator
-\[
-  \langle\Omega,j_A^\mu(x)\mathcal O(0)\Omega\rangle .
-\]
-Current conservation implies that the spectral measure appearing in this
-correlator cannot be supported entirely at positive invariant mass.  In a
-Lorentz-invariant theory with the usual spectrum condition, it must contain
-massless support at \(p^2=0\).  Equivalently, the current creates a zero-mass
-excitation from the vacuum:
-\[
-  \bra{\Omega}j_A^\mu(0)\ket{\pi_B(p)}
+The spectral input behind \eqref{eq:goldstone-leading-action} is as follows.
+Assume a conserved current \(j_A^\mu\), a local operator \(\mathcal O\), and a
+nonzero order parameter
+\begin{equation}
+  \langle\Omega,[Q_A,\mathcal O(0)]\Omega\rangle
   =
-  \ii f_{AB}p^\mu,
-  \qquad p^2=0.
+  \langle\Omega,\delta_A\mathcal O(0)\Omega\rangle
+  \ne0 ,
+  \label{eq:goldstone-order-parameter}
+\end{equation}
+where \(Q_A\) is obtained as the infinite-volume limit of smeared charges.
+The Ward identity for the time-ordered distribution is
+\begin{equation}
+  \partial_\mu
+  \langle\Omega,T\{j_A^\mu(x)\mathcal O(0)\}\Omega\rangle
+  =
+  -\ii\delta^{(4)}(x)
+  \langle\Omega,\delta_A\mathcal O(0)\Omega\rangle .
+  \label{eq:goldstone-ward-distribution}
+\end{equation}
+Fourier transforming gives a distribution \(\widehat G_A^\mu(p)\) satisfying
+\[
+  p_\mu\widehat G_A^\mu(p)
+  =
+  \langle\Omega,\delta_A\mathcal O(0)\Omega\rangle .
 \]
+Lorentz covariance implies that the singular part of
+\(\widehat G_A^\mu(p)\) is of the form \(p^\mu F_A(p^2)\).  Since the
+right-hand side is nonzero at \(p=0\), \(F_A(p^2)\) must contain a
+\(1/p^2\) singularity.  In the Kallen--Lehmann language this singularity is a
+massless contribution to the current-operator spectral measure.
 
-This is the spectral content of the Goldstone theorem.  The low-energy fields
-\(\pi^a(x)\) used in the effective action are coordinates for these massless
-excitations near the vacuum manifold.  The derivative coupling in
-\eqref{eq:goldstone-leading-action} reflects the fact that constant shifts
-along \(G/H\) move between vacua, while gradients of the Goldstone coordinates
-carry energy and momentum.
+Equivalently, for each broken direction there are zero-mass one-particle
+states \(\ket{\pi_a(p)}\) created by the current:
+\begin{equation}
+  \bra{\Omega}j_A^\mu(0)\ket{\pi_a(p)}
+  =
+  \ii F_{Aa}p^\mu,
+  \qquad p^2=0 .
+  \label{eq:goldstone-current-matrix-element}
+\end{equation}
+If the translation generators have spectrum contained in the closed forward
+light cone and the vacuum is the unique translation-invariant vector in the
+chosen phase, the matrix \(F_{Aa}\) has rank equal to the number of broken
+generators.  These massless states are the quanta described by the Goldstone
+coordinates \(\pi^a(x)\).
 
 \section{Chiral Symmetry of Massless QCD}
 
-For \(N_f\) massless quark flavors, the classical flavor symmetry of the QCD
-Lagrangian is
+Let \(q_L^I=P_Lq^I\) and \(q_R^I=P_Rq^I\), \(I=1,\ldots,N_f\), be massless
+quark fields in the fundamental representation of the color gauge group.  The
+connected continuous flavor symmetry acting faithfully on local gauge-invariant
+operators has Lie algebra
 \[
-  U(N_f)_L\times U(N_f)_R .
+  \mathfrak{su}(N_f)_L\oplus
+  \mathfrak{su}(N_f)_R\oplus
+  \mathfrak u(1)_B .
 \]
-The axial \(U(1)_A\) factor is broken by the anomaly.  The nonanomalous
-continuous symmetry is
+For local current algebra computations this Lie algebra is represented by
 \[
-  SU(N_f)_L\times SU(N_f)_R\times U(1)_B ,
+  SU(N_f)_L\times SU(N_f)_R\times U(1)_B .
 \]
-where \(U(1)_B\) is baryon number.  The chiral symmetry-breaking pattern for
-QCD-like theories with a bilinear condensate
-\(\langle\bar q_R q_L\rangle\) proportional to the identity in flavor space is
+The precise global form includes finite quotients by common center actions;
+those quotients matter for global background fields and are developed later.
+The anomaly derived in the preceding chapter removes the axial \(U(1)_A\)
+rotation from the exact continuous quantum symmetry group.
+
+The left and right transformations act by
+\[
+  q_L\longmapsto Lq_L,
+  \qquad
+  q_R\longmapsto Rq_R,
+  \qquad
+  (L,R)\in SU(N_f)_L\times SU(N_f)_R .
+\]
+Assume that the QCD phase under consideration has a bilinear condensate
+\[
+  \Sigma_{IJ}
+  =
+  \langle \bar q_{R,J}q_{L,I}\rangle
+  =
+  \Sigma_0\,\delta_{IJ},
+\]
+the stabilizer is the diagonal subgroup.  The breaking pattern is therefore
 \begin{equation}
   SU(N_f)_L\times SU(N_f)_R
   \longrightarrow
   SU(N_f)_V .
   \label{eq:qcd-chiral-breaking-pattern}
 \end{equation}
-The Goldstone field may be assembled into an \(SU(N_f)\)-valued matrix
+The breaking pattern is an input about the QCD vacuum.  Given this input, the
+number of Goldstone bosons is \(N_f^2-1\).
+
+Choose Hermitian flavor generators \(T^a\) with
+\(\operatorname{Tr}(T^aT^b)=\frac12\delta^{ab}\).  The pion field is the
+\(SU(N_f)\)-valued matrix
 \begin{equation}
-  U(x)=\exp\left\{\frac{2\ii}{f_\pi}\pi^a(x)T^a\right\},
+  U(x)
+  =
+  \exp\left\{\frac{2\ii}{f_\pi}\pi^a(x)T^a\right\},
   \qquad
   U(x)\in SU(N_f),
   \label{eq:pion-matrix-field}
 \end{equation}
 transforming as
 \begin{equation}
-  U(x)\longmapsto L\,U(x)\,R^{-1},
-  \qquad
-  (L,R)\in SU(N_f)_L\times SU(N_f)_R .
+  U(x)
+  \longmapsto
+  L\,U(x)\,R^{-1}.
   \label{eq:pion-chiral-transformation}
 \end{equation}
-The leading two-derivative chiral Lagrangian is
+The axial-current normalization is
+\[
+  \bra{\Omega}A^{a\mu}(0)\ket{\pi^b(p)}
+  =
+  \ii f_\pi p^\mu\delta^{ab}.
+\]
+With this convention, the leading two-derivative chiral Lagrangian is
 \begin{equation}
   \mathcal L_2
   =
   \frac{f_\pi^2}{4}
   \operatorname{Tr}
-  \bigl(\partial_\mu U^\dagger\partial^\mu U\bigr).
+  \bigl(D_\mu U^\dagger D^\mu U\bigr),
   \label{eq:leading-chiral-lagrangian}
 \end{equation}
-Here \(\operatorname{Tr}\) is the flavor trace, and the normalization of
-\(f_\pi\) is fixed by the axial-current matrix element convention used for
-the pion fields.
+where the covariant derivative in external left and right flavor backgrounds
+\(\ell_\mu,r_\mu\) is
+\begin{equation}
+  D_\mu U
+  =
+  \partial_\mu U-\ii\ell_\mu U+\ii U r_\mu .
+  \label{eq:pion-external-covariant-derivative}
+\end{equation}
+Setting \(\ell_\mu=r_\mu=0\) gives the ordinary pion kinetic term and its
+derivative self-interactions.
 
 \section{Mass Spurions and Pseudo-Goldstone Bosons}
 
 Quark masses explicitly break the chiral symmetry.  Introduce a complex mass
-matrix \(M\) and assign it the spurion transformation
+matrix \(M\) through
 \[
-  M\longmapsto LMR^{-1}.
+  \mathcal L_{\mathrm{mass}}^{\mathrm{QCD}}
+  =
+  -\bar q_L M q_R-\bar q_RM^\dagger q_L .
 \]
-Then the leading mass-dependent invariant in the pion effective Lagrangian is
+Treating \(M\) as a background spurion with
+\[
+  M\longmapsto LMR^{-1}
+\]
+makes the microscopic mass term formally invariant under
+\((L,R)\).  The leading mass-dependent invariant in the pion Lagrangian is
 \begin{equation}
   \mathcal L_{\mathrm{mass}}
   =
@@ -190,51 +412,103 @@ Then the leading mass-dependent invariant in the pion effective Lagrangian is
   \chi=2B_0M .
   \label{eq:chiral-mass-spurion}
 \end{equation}
-The constant \(B_0\) is a low-energy parameter.  When \(M\) is set to its
-physical value, \eqref{eq:chiral-mass-spurion} gives pion masses and
-interactions ordered by the same derivative and mass expansion.  For degenerate
-light quark mass \(m_q\), the leading pion mass relation has the form
+The low-energy constant \(B_0\) is fixed by the chiral-limit condensate
+convention
 \[
-  m_\pi^2=2B_0m_q
+  \langle\bar q q\rangle_0
+  =
+  -N_f f_\pi^2B_0
 \]
-in the normalization of \eqref{eq:chiral-mass-spurion}.
+at leading order.  For two light flavors,
+\[
+  m_{\pi^\pm}^2
+  =
+  B_0(m_u+m_d)
+\]
+up to higher-order chiral and electromagnetic corrections.  For degenerate
+light quarks \(m_u=m_d=m_q\), this becomes \(m_\pi^2=2B_0m_q\).
+
+The chiral expansion counts \(D_\mu U=O(p)\), external vector and axial
+backgrounds as \(O(p)\), and \(M\) as \(O(p^2)\).  The functional obtained from
+\(\mathcal L_2+\mathcal L_{\mathrm{mass}}\) is therefore the leading
+generating functional for current Green functions at momenta small compared
+with the chiral-symmetry-breaking scale.
 
 \section{The Wess--Zumino--Witten Functional}
 
-The pion action must also reproduce the global anomalies of the microscopic
-quarks.  For \(N_f\ge3\), extend \(U:M_4\to SU(N_f)\) to a map
-\(\widetilde U:B_5\to SU(N_f)\), where \(\partial B_5=M_4\).  The
-ungauged Wess--Zumino functional is
+The pion effective action must reproduce the global anomalies of the
+microscopic quarks.  For \(N_f\ge3\), let \(M_4\) be spacetime and choose a
+five-manifold \(B_5\) with \(\partial B_5=M_4\).  Extend
+\(U:M_4\to SU(N_f)\) to \(\widetilde U:B_5\to SU(N_f)\).  The ungauged
+Wess--Zumino functional is
 \begin{equation}
   \Gamma_{\mathrm{WZ}}[U]
   =
-  \frac{1}{240\pi^2}
+  -\frac{\ii}{240\pi^2}
   \int_{B_5}
   \operatorname{Tr}
   \bigl(\widetilde U^{-1}\dd \widetilde U\bigr)^5 .
   \label{eq:wess-zumino-functional}
 \end{equation}
-The coefficient multiplying this functional in QCD is quantized and equals
-\(N_c\) with the standard fundamental flavor normalization.  The quantization
-ensures that the exponentiated action is independent of the chosen extension
-\(\widetilde U\).
+The five-form is real after the factor \(-\ii\), because
+\(\widetilde U^{-1}\dd\widetilde U\) is anti-Hermitian.  If two extensions are
+glued along \(M_4\), the difference of \(\Gamma_{\mathrm{WZ}}\) is the
+integral over a closed five-manifold.  With the normalization in
+\eqref{eq:wess-zumino-functional}, this difference is \(2\pi\) times an
+integer for maps representing \(\pi_5(SU(N_f))\simeq\mathbb Z\).  Hence
+\[
+  \exp\{\ii n\Gamma_{\mathrm{WZ}}[U]\}
+\]
+is independent of the extension precisely when \(n\in\mathbb Z\).  For QCD
+with quarks in the color fundamental representation, anomaly matching fixes
+\[
+  n=N_c .
+\]
 
-When the flavor symmetry is coupled to background gauge fields, the Wess--
-Zumino functional is completed to the Wess--Zumino--Witten functional.  Its
-background variation reproduces the chiral anomaly coefficient of the quark
-theory.  In particular, after electromagnetism is embedded through the quark
-charge matrix \(Q\), the functional contains the anomalous neutral-pion
-coupling to two photons.  This is the effective-field-theory realization of
-the anomaly matching statement: the low-energy pion fields carry the same
-background response as the microscopic quarks.
+When the flavor symmetry is coupled to background gauge fields, the
+Wess--Zumino functional is completed by local four-dimensional terms involving
+\(U,\ell_\mu,r_\mu\).  The completed Wess--Zumino--Witten functional
+\(\Gamma_{\mathrm{WZW}}[U;\ell,r]\) satisfies
+\[
+  \delta_{\alpha_L,\alpha_R}
+  \Gamma_{\mathrm{WZW}}[U;\ell,r]
+  =
+  -\mathcal A_{\mathrm{quark}}[\alpha_L,\alpha_R;\ell,r],
+\]
+where \(\mathcal A_{\mathrm{quark}}\) is the consistent flavor anomaly of the
+microscopic quarks.  Thus the pion functional supplies exactly the anomaly
+phase required by \eqref{eq:finite-background-anomaly}.
+
+Embedding electromagnetism by
+\[
+  \ell_\mu=r_\mu=eQA_\mu,
+  \qquad
+  Q=\operatorname{diag}(q_1,\ldots,q_{N_f}),
+\]
+the gauged WZW functional contains the neutral-pion coupling
+\begin{equation}
+  \mathcal L_{\pi^0\gamma\gamma}
+  =
+  \frac{N_c e^2}{16\pi^2 f_\pi}
+  \,2\operatorname{Tr}(T^3Q^2)\,
+  \pi^0 F_{\mu\nu}\widetilde F^{\mu\nu},
+  \label{eq:pi-zero-two-photon-anomaly}
+\end{equation}
+up to the sign convention for \(T^3\) and \(\epsilon^{\mu\nu\rho\sigma}\).
+For \(N_c=3\), \(Q=\operatorname{diag}(2/3,-1/3)\), and
+\(T^3=\frac12\operatorname{diag}(1,-1)\), the coefficient multiplying
+\(\pi^0F_{\mu\nu}\widetilde F^{\mu\nu}\) is \(e^2/(16\pi^2f_\pi)\).
+The coefficient is the low-energy coefficient required by matching the
+microscopic electromagnetic flavor anomaly.
 
 \section{Conceptual Output of the Gauge-Dynamics Sequence}
 
-The chapters from Yang--Mills theory through pions have constructed a single
-logical chain.  Gauge fields are local connections; gauge fixing supplies
-local coordinates and ghosts; BRST cohomology defines physical states and
-operators in the gauge-fixed formalism; QCD renormalization gives
-asymptotically free short-distance variables; anomalies determine exact
-current identities and consistency conditions; global anomalies are preserved
-along RG flow; and spontaneous symmetry breaking turns the anomaly constraints
-into concrete terms in the Goldstone effective action.
+The dependencies established in this sequence are as follows.  Gauge fields are
+local connections.  Gauge fixing supplies local coordinates and ghosts.  BRST
+cohomology defines physical states, local operators, counterterms, and anomaly
+candidates in the gauge-fixed formalism.  QCD renormalization gives
+asymptotically free short-distance variables.  Local anomalies are constrained
+by Wess--Zumino consistency and descent.  Finite background anomalies are
+encoded by cocycles on background-field space.  Exact anomaly classes are
+preserved along RG flow.  Spontaneous symmetry breaking realizes these
+constraints through Goldstone fields and the Wess--Zumino--Witten functional.

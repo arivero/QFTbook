@@ -9,6 +9,10 @@ Stop drafting and return to source or dossier work if:
   assumptions;
 - a symbol is used load-bearingly before being defined;
 - a theorem-like claim lacks hypotheses or reference;
+- a principle is stated without specifying the object whose equality,
+  invariance, convergence, or obstruction is being asserted;
+- an example is used only as illustration and does not test a definition,
+  hypothesis, or theorem boundary;
 - a path integral lacks mathematical status;
 - a Wick rotation lacks analytic or reconstruction input;
 - scattering language uses the S-matrix before asymptotic states have been
@@ -64,6 +68,15 @@ Create or update the chapter dossier:
 - open questions;
 - planned remarks or footnotes.
 
+The claim ledger must separate:
+
+- assumptions;
+- definitions and conventions;
+- constructions;
+- derivations performed in the chapter;
+- theorem-level inputs quoted with hypotheses and references;
+- examples, with the definition or theorem they test.
+
 ## Stage 3: Draft
 
 Write reader-facing prose only from the dossier. The draft should introduce
@@ -82,6 +95,9 @@ Check:
 - misplaced scattering, path-integral, or gauge language;
 - figures not tied to definitions or equations;
 - prose organized around "what it is not."
+- terms such as "lore", "slogan", "miracle", "surprise", "roughly speaking",
+  or "modern language" in reader-facing prose unless they occur in a quoted
+  bibliographic title.
 
 Every paragraph should be classifiable as one of:
 

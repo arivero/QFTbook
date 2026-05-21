@@ -9,7 +9,7 @@ if ! command -v rg >/dev/null 2>&1; then
   exit 1
 fi
 
-FAIL_PATTERN='(253a|253b|253c|lecture[- ]notes?|QFT lecture|source spine|rewrite how|Draft scaffold|Logical Position|Construction Task|source-note|\\(chapter|section|subsection|subsubsection)\{[^}]*[Nn]ot [Ee]nough|\\(chapter|section|subsection|subsubsection)\{[^}]*[Ww]hat .* [Ii]s [Nn]ot|QFT *= *QM *\+ *locality|QM *\+ *locality|relativity forces field theory|path integral is an integral over all fields|gauge symmetry is a physical symmetry|renormalization is subtracting infinities|simplified definition|physicists.? definitions?|not a universal definition|not part of Definition|not primitive as a pointwise operator)'
+FAIL_PATTERN='(253a|253b|253c|lecture[- ]notes?|QFT lecture|source spine|rewrite how|Draft scaffold|Logical Position|Construction Task|source-note|\\(chapter|section|subsection|subsubsection)\{[^}]*[Nn]ot [Ee]nough|\\(chapter|section|subsection|subsubsection)\{[^}]*[Ww]hat .* [Ii]s [Nn]ot|QFT *= *QM *\+ *locality|QM *\+ *locality|relativity forces field theory|path integral is an integral over all fields|gauge symmetry is a physical symmetry|renormalization is subtracting infinities|simplified definition|physicists.? definitions?|not a universal definition|not part of Definition|not primitive as a pointwise operator|\\b(slogan|slogans|lore|folklore)\\b|hand[- ]wavy|roughly speaking|\\bmiracle\\b|surpris(e|es|ed|ing|ingly)|modern language|not a claim about|not a consequence of)'
 
 set +e
 RG_OUTPUT="$(rg -n "$FAIL_PATTERN" "$TEX_DIR" -g '*.tex' 2>&1)"

@@ -92,6 +92,13 @@ Every substantive statement must have one of the following statuses:
 The manuscript must not allow lore, formal calculation, or pedagogical habit to
 carry a conclusion that requires a theorem or stated assumption.
 
+Named physical principles must be unpacked into object-level claims before
+they are used.  For example, anomaly matching is a statement about equality of
+background-field anomaly classes modulo local counterterms, not a free-standing
+explanatory phrase; universality is a statement about a specified limiting
+object and equivalence relation; reconstruction is a theorem only after its
+positivity, locality, covariance, and regularity hypotheses have been stated.
+
 ## Claim Certification
 
 Before a claim appears in polished prose, it must satisfy at least one

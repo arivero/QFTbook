@@ -67,12 +67,29 @@ Every load-bearing claim must be one of:
 
 Uncertified claims cannot appear in polished TeX.
 
+For invariance, anomaly, duality, matching, universality, or reconstruction
+claims, the text must identify the object being compared and the equivalence
+relation.  Examples: equality of generating functionals, equality of cocycle
+classes modulo local counterterms, convergence of correlation functions in a
+stated limit, equivalence of local nets, or isomorphism of representation
+data.  A named principle without this object-level statement is not certified.
+
+Every example used in the main text must do at least one of the following:
+
+- verify a definition in a nontrivial case;
+- show that a hypothesis is necessary;
+- compute an invariant introduced in the chapter;
+- mark the boundary of a theorem.
+
+Examples that only decorate the prose fail the harness.
+
 ## Positive Formulation Rule
 
 The main text explains objects by their data, definitions, assumptions, and
 consequences. It should not be organized around:
 
 - slogans;
+- lore or folklore;
 - generic textbook correction;
 - wrong pictures used as foils;
 - "what it is not" framing;
