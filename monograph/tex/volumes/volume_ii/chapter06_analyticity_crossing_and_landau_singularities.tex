@@ -4,7 +4,8 @@
 \section{Physical Region and First Sheet}
 
 Consider \(2\to2\) scattering of identical stable scalar particles of mass
-\(m\). Let the connected invariant amplitude be denoted by
+\(m\).  The metric is mostly plus, so a physical mass-\(m\) momentum \(k\)
+obeys \(k^2=-m^2\).  Let the connected invariant amplitude be denoted by
 \[
   \mathcal M(s,t),
 \]
@@ -14,6 +15,11 @@ where
   t=-(k_1-k_3)^2,\qquad
   u=4m^2-s-t .
 \]
+Here \(k_1,k_2\) are incoming and \(k_3,k_4\) are outgoing physical
+momenta.  Equivalently, all four external momenta may be taken incoming after
+replacing outgoing momenta by their negatives; the above definitions are the
+physical scattering convention.
+
 In the center-of-mass frame,
 \[
   s=E^2=4(k^2+m^2),
@@ -28,7 +34,20 @@ Thus the physical \(s\)-channel region is
   u\le0,\qquad
   s\ge4m^2-t .
 \]
-The last inequality is the statement \(-t\le s-4m^2\).
+The last inequality is the statement \(-t\le s-4m^2\).  For fixed
+\(s\ge4m^2\), the allowed physical interval is
+\[
+  -(s-4m^2)\le t\le0 .
+\]
+For fixed real \(t<0\), the physical upper edge begins at
+\[
+  s=4m^2-t,
+\]
+because this is the value for which \(u=0\).  The analytic function whose
+boundary value is the physical amplitude also has the lower \(s\)-channel
+threshold at \(s=4m^2\); for \(4m^2<s<4m^2-t\) the point is on the same
+right-hand cut but outside the physical \(s\)-channel scattering interval for
+that fixed \(t\).
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.92]
@@ -76,34 +95,57 @@ value
 \[
   \lim_{\epsilon\to0^+}\mathcal M(s+\ii\epsilon,t)
 \]
-on the first sheet. The first sheet is the branch reached by the Feynman
-prescription before crossing a threshold cut. In this \(s\)-plane it has the
-right-hand \(s\)-channel cut beginning at \(4m^2\), a crossed-channel cut
-beginning at \(s=-t\) and extending leftward, and possible first-sheet
-bound-state poles.
+on the first sheet.  The first sheet is the branch reached from the Euclidean
+or Feynman domain by the \(+\ii0\) prescription without analytically
+continuing through a unitarity cut.  In the fixed-\(t\) \(s\)-plane it has the
+right-hand \(s\)-channel cut
+\[
+  C_s=[4m^2,\infty),
+\]
+and, because \(u=4m^2-s-t\), the crossed \(u\)-channel cut
+\[
+  C_u=(-\infty,-t] .
+\]
+A stable state of mass \(M_B<2m\) coupled to the two external scalars gives a
+first-sheet pole at \(s=M_B^2\) in the corresponding channel.  In the crossed
+channel this same statement appears as a pole at
+\[
+  s=4m^2-t-M_B^2 .
+\]
+For the purposes used here, the first-sheet data consist of this cut plane
+together with the possible pole data and with any additional first-sheet
+singularities allowed by the full spectral problem.
 
 \section{Real Analyticity and Crossing}
 
-For the analytic discussion in this chapter assume a mass gap, locality,
-Poincare invariance, unitarity, and the polynomial boundedness needed to
-write fixed-\(t\) dispersion relations. Under these hypotheses, the amplitude
-defined first in a physical region is the boundary value of a function of
-complex kinematic invariants. The same symbol \(\mathcal M(s,t)\) will denote
-this analytic continuation on its domain.
+For the analytic discussion in this chapter assume a mass gap, Poincare
+invariance, locality, unitarity, and the existence of stable one-particle
+external states to which LSZ applies.  These assumptions specify the
+structural input used here, while the maximal analytic domain remains an
+additional problem.  Amplitudes first defined as physical boundary values are
+continued as functions of complex kinematic invariants, and the same symbol
+\(\mathcal M(s,t)\) denotes this analytic continuation on whichever domain is
+under discussion.  Polynomial boundedness is a further high-energy hypothesis
+and is introduced only in the dispersion-relation chapter.
 
 Hermiticity of the theory and the Feynman boundary prescription imply real
-analyticity:
+analyticity on conjugate domains:
 \[
   \mathcal M(s^*,t^*)=\mathcal M(s,t)^*
 \]
-where both sides are evaluated on corresponding branches. In perturbation
-theory this property is visible graph by graph when the couplings are real.
+where both sides are evaluated on corresponding branches.  On a real segment
+not lying on a cut, this says that the first-sheet value is real up to pole
+singularities.  On a cut, it relates the lower-edge and upper-edge boundary
+values.  In perturbation theory the same property is visible graph by graph
+when the couplings are real.
 
 Crossing states that the \(s\)-, \(t\)-, and \(u\)-channel physical amplitudes
 are boundary values of the same analytically continued four-point function in
-different real regions. On the real \((s,t)\)-plane these regions are
-separated by thresholds and cuts, but in the complexified domain they are
-connected by analytic continuation.
+different real regions, with the external representation conjugated when an
+outgoing particle is moved to the incoming side or conversely.  On the real
+\((s,t)\)-plane these regions are separated by thresholds and cuts.  In the
+complexified kinematic domain they are connected by analytic continuation,
+with the path and sheet specified by the singularities encountered.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.86]
@@ -145,7 +187,12 @@ Wightman functions.  For four scalar fields, the vacuum distribution
 \]
 has Fourier support fixed by the spectrum condition in relative variables.
 It is therefore the boundary value of a holomorphic function in a tube
-domain.  Local commutativity says that, at real configurations where adjacent
+domain.  More explicitly, after removing the center-of-mass coordinate, the
+Fourier transform has support in products of closed forward lightcones for
+appropriate partial sums of momenta.  This support condition is the input
+which makes the imaginary spacetime variables point into forward tubes.
+
+Local commutativity says that, at real configurations where adjacent
 insertions are spacelike separated,
 \[
   W_4(\ldots,x_i,x_{i+1},\ldots)
@@ -156,9 +203,11 @@ for identical scalar fields.  The edge-of-the-wedge theorem then identifies
 the analytic continuations attached to the two orderings in the domain
 generated from such spacelike configurations.
 
-After LSZ reduction, different assignments of external legs as incoming or
-outgoing particles correspond to different real boundary components of this
-same analytically continued four-point function.  The \(s\)-channel process
+LSZ reduction is applied to the time-ordered or Wightman boundary values after
+isolating the one-particle poles of the external legs.  Different assignments
+of external legs as incoming or outgoing particles correspond to different
+real boundary components of the same analytically continued four-point
+function.  The \(s\)-channel process
 \[
   1+2\to3+4
 \]
@@ -171,11 +220,13 @@ variables continued between their physical regions.  For a self-conjugate
 scalar \(\bar{2}=2\) and \(\bar{3}=3\); for charged fields the bars indicate the
 conjugate particle associated with the adjoint field.
 
-The singularities separating physical regions remain part of the analytic
-data.  Threshold cuts, bound-state poles, and anomalous thresholds specify how
-the analytic continuation must be routed.  Crossing is the assertion of common
-analytic origin; the singularity analysis below describes the obstructions and
-boundary prescriptions encountered along particular continuations.
+The statement is local on the analytic domain.  It does not erase the
+singularities separating physical regions.  Threshold cuts, bound-state poles,
+and anomalous thresholds specify how the analytic continuation must be routed
+and which boundary value is obtained at the end.  Crossing is the assertion of
+common analytic origin; the singularity analysis below describes the
+obstructions and boundary prescriptions encountered along particular
+continuations.
 
 \section{Edge-of-the-Wedge Form}
 
@@ -185,8 +236,9 @@ The analytic gluing used above has a precise local form.  Let \(F_+\) and
   \mathcal D_+,\qquad \mathcal D_-
 \]
 of the complexified kinematic variables.  Suppose both domains have boundary
-values on a common real open set \(U\), and suppose these boundary values
-agree there as distributions:
+values on a common real open set \(U\), in the sense of distributional limits
+against test functions supported in \(U\).  Suppose these boundary values
+agree:
 \[
   F_+|_U=F_-|_U .
 \]
@@ -207,13 +259,13 @@ hold.
 \section{Pinches}
 
 The singularities of perturbative amplitudes arise when an integration contour
-is forced against singularities of the integrand. Consider a scalar graph with
+is forced against singularities of the integrand.  Consider a scalar graph with
 internal momenta
 \[
   q_i=q_i(\ell_1,\ldots,\ell_L;p_1,\ldots,p_n),
 \]
 where the \(q_i\) are affine functions of the loop momenta \(\ell_a\) and
-external momenta \(p_j\). A typical denominator is
+external momenta \(p_j\).  A typical denominator is
 \[
   q_i^2+m_i^2-\ii0 .
 \]
@@ -225,11 +277,17 @@ After Feynman parametrization, a product of \(N\) denominators has the form
   \frac{\text{numerator}}
        {\left[\sum_{i=1}^N\alpha_i(q_i^2+m_i^2)-\ii0\right]^N}.
 \]
+Numerator factors and ultraviolet subtractions can change the degree or even
+remove a candidate singularity, but they do not change the necessary pinch
+conditions for the scalar denominator.
 
 As external momenta move in the complex domain, the loop contours can be
-deformed as long as no singularity traps them. A singularity occurs when the
-denominator vanishes and the contour is stationary at the same point; then
-nearby contour deformations cannot remove the obstruction.
+deformed as long as no singularity traps them.  A necessary condition for a
+singularity is that the denominator vanish at a point where its first
+variation in every loop-momentum direction also vanishes.  If the first
+variation were nonzero, the contour could be displaced locally away from the
+zero.  At a stationary zero, nearby singular hypersurfaces can pinch the
+original real contour, and local deformations cannot remove the obstruction.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95]
@@ -246,7 +304,11 @@ nearby contour deformations cannot remove the obstruction.
 \end{tikzpicture}
 \end{center}
 
-This stationary-pinch condition is the source of the Landau equations.
+This stationary-pinch condition is the source of the Landau equations.  The
+equations are necessary conditions for a singularity of a graph.  To decide
+whether a singularity is actually present one must also check the sheet, the
+orientation of the pinch, and whether the numerator cancels the local
+singular term.
 
 \section{Landau Equations}
 
@@ -275,6 +337,9 @@ Equivalently,
   0,
   \qquad a=1,\ldots,L .
 \]
+The omitted factor of \(2\) is irrelevant because the right hand side is
+zero.
+
 For a one-loop graph with all internal momenta oriented around the loop, this
 reduces to
 \[
@@ -286,13 +351,15 @@ The first equation says that every line with \(\alpha_i>0\) is on shell:
   q_i^2=-m_i^2 .
 \]
 The second equation says that the corresponding on-shell momenta form a
-stationary configuration around each loop. Solutions with some
-\(\alpha_i=0\) describe singularities of subgraphs. Solutions with all
-relevant \(\alpha_i>0\) are the leading Landau singularities of that graph.
+stationary configuration around each loop.  Solutions with some
+\(\alpha_i=0\) describe singularities of reduced graphs in which the inactive
+lines have been contracted.  Solutions with all relevant \(\alpha_i>0\) are
+the leading Landau singularities of that graph.
 
 The physical sheet is selected by the sign of the Feynman prescription and by
-positive Feynman parameters. This condition is what distinguishes a first-sheet
-threshold from a pole reached only after continuation through a cut.
+positive Feynman parameters.  This condition is what distinguishes a
+first-sheet threshold from the same algebraic locus reached only after
+continuation through a cut.
 
 \section{Spacetime Interpretation of Positive Landau Solutions}
 
@@ -307,7 +374,9 @@ vertex positions \(x_v\) such that
   \qquad
   \lambda_i\ge0 ,
 \]
-after choosing orientations of the on-shell momenta \(q_i\).  The factor
+after choosing orientations of the on-shell momenta \(q_i\).  For a
+first-sheet physical singularity these oriented momenta must be compatible
+with future-directed propagation through the spacetime diagram.  The factor
 \(\lambda_i\) is proportional to the Feynman parameter \(\alpha_i\); its
 normalization depends only on the convention used for the quadratic form in
 the parametrized denominator.  Since \(q_i^2=-m_i^2\), this equation is the
@@ -355,6 +424,7 @@ Substitution into the two on-shell equations gives
   P^2=-4m^2 .
 \]
 Thus the ordinary two-particle threshold is a Landau singularity.
+In terms of the invariant \(s=-P^2\), this is \(s=4m^2\).
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.92]
@@ -380,12 +450,26 @@ Thus the ordinary two-particle threshold is a Landau singularity.
 \end{tikzpicture}
 \end{center}
 
-For unequal masses, the same Landau equations give the threshold
+For unequal masses, the same equations give
 \[
-  P^2=-(m_1+m_2)^2
+  \ell=-\alpha P,\qquad
+  \alpha^2P^2=-m_1^2,\qquad
+  (1-\alpha)^2P^2=-m_2^2 .
 \]
-when the two on-shell internal particles can propagate with zero relative
-spatial momentum in the center-of-mass frame.
+The positive-parameter solution with \(0<\alpha<1\) is
+\[
+  \alpha=\frac{m_1}{m_1+m_2},
+  \qquad
+  P^2=-(m_1+m_2)^2 .
+\]
+This is the ordinary threshold: the two on-shell internal particles propagate
+with zero relative spatial momentum in the center-of-mass frame.  The
+algebraic equations also contain the pseudo-threshold
+\[
+  P^2=-(m_1-m_2)^2,
+\]
+but its parameter signs do not describe the same first-sheet physical
+production process.
 
 \section{Triangle Singularities}
 
@@ -400,6 +484,17 @@ threshold. Let the three external momenta be
 with \(P_1+P_2+P_3=0\). The three internal lines are required to be on shell,
 and the positive-parameter stationary condition requires their momentum
 vectors to close consistently around the loop.
+For one choice of loop orientation this means
+\[
+  q_i^2=-m_i^2,\qquad
+  \alpha_1q_1+\alpha_2q_2+\alpha_3q_3=0,
+  \qquad
+  \alpha_i>0 .
+\]
+Together with momentum conservation at the vertices, these equations define
+the candidate singular locus in the external invariants.  Equivalently, the
+Gram determinant of the on-shell internal momenta degenerates in a way
+compatible with positive Feynman parameters.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.86]
@@ -442,14 +537,17 @@ singular locus is obtained by solving the three on-shell equations together
 with the positive-parameter stationary equation.  A solution whose active
 lines admit future-directed propagation with nonnegative parameters gives a
 first-sheet anomalous threshold at the determined value of
-\(P_3^2=-M_3^2\).  A solution requiring reversed time ordering is reached on
-the corresponding continued sheet.
+\(P_3^2=-M_3^2\).  A solution requiring reversed time ordering or a negative
+proper-time segment lies on a continued sheet, even if it solves the same
+algebraic Landau equations.
 
-This singularity is an anomalous threshold: a first-sheet singularity of the
-amplitude produced by on-shell internal propagation and contour pinching. Its
-local data are the masses, momentum routing, and positive Feynman parameters of
-the Landau solution. Coleman--Thun singularities in two-dimensional factorized
-scattering are a standard nonperturbative setting where this mechanism appears.
+Such a singularity is an anomalous threshold: a first-sheet singularity of
+the amplitude produced by on-shell internal propagation and contour pinching,
+not by the endpoint opening of an ordinary multiparticle channel.  Its local
+data are the masses, momentum routing, and positive Feynman parameters of the
+Landau solution.  Coleman--Thun singularities in two-dimensional factorized
+scattering are a standard nonperturbative setting where this mechanism
+appears.
 
 \section{Use of Landau Analysis}
 
@@ -465,3 +563,10 @@ presently theorems. The classification used here is precise: stable particles
 appear as first-sheet poles below thresholds, resonances as continued-sheet
 poles, ordinary thresholds as multi-particle continua, and anomalous thresholds
 as allowed on-shell propagation patterns encoded by the Landau equations.
+This classification will be used in the following chapter only at the level
+needed for angular analyticity: the nearest first-sheet crossed-channel
+singularity fixes the distance from the physical angular interval to the edge
+of the Lehmann ellipse.  Landau analysis supplies a concrete mechanism for
+such singularities.  The nonperturbative construction of the \(S\)-operator
+and the spectral assumptions stated earlier remain the structural input for
+the exact scattering problem.
