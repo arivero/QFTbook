@@ -18,8 +18,8 @@ spacelike when
 A test function is a smooth compactly supported complex-valued function on
 \(\mathbb M^D\), an element of \(C_c^\infty(\mathbb M^D)\), unless another
 test-function space is explicitly declared. A pointlike quantum field
-\(\widehat\Phi_A(x)\) is an operator-valued distribution: the operator attached
-to it is the smeared field
+\(\widehat\Phi_A(x)\) is an operator-valued distribution: its primary
+operator expression is the smeared field
 \[
   \widehat\Phi_A(f)
   =
@@ -27,9 +27,21 @@ to it is the smeared field
   \qquad
   f\in C_c^\infty(\mathbb M^D).
 \]
+The integral sign is distributional notation for evaluating the field on the
+test function \(f\).  When \(\widehat\Phi_A(f)\) is unbounded, its common dense
+domain is part of the field framework being used.  The symbol
+\(\mathcal B(\Hilb)\) denotes the algebra of bounded linear operators on a
+Hilbert space \(\Hilb\), and \(\mathcal U(\Hilb)\) denotes its unitary group.
 The label \(A\) denotes a component in a finite-dimensional representation
 space for Lorentz and internal indices, or a composite-operator label, as
 specified in the chapter where the field is introduced.
+
+The connected proper orthochronous Lorentz group is denoted
+\(SO^+(1,D-1)\), and the connected Poincare group is
+\(\mathbb R^D\rtimes SO^+(1,D-1)\).  Two subsets
+\(\mathcal O_1,\mathcal O_2\subset\mathbb M^D\) are spacelike separated when
+\((x-y)^2>0\) for every \(x\in\mathcal O_1\) and
+\(y\in\mathcal O_2\).
 
 \section{Opening Framework}
 
@@ -65,7 +77,7 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
     \mathcal O\longmapsto\Obs(\mathcal O)\subset\mathcal B(\Hilb)
   \]
   from bounded open regions \(\mathcal O\subset\mathbb M^D\) to unital
-  \(*\)-subalgebras of the bounded operators on \(\Hilb\), satisfying
+  concrete \(*\)-subalgebras of the bounded operators on \(\Hilb\), satisfying
   covariance, isotony, and locality:
   \[
     U(a,\Lambda)\Obs(\mathcal O)U(a,\Lambda)^{-1}
@@ -84,10 +96,22 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
     \text{for }A\in\Obs(\mathcal O_1),\ B\in\Obs(\mathcal O_2)
   \]
   whenever \(\mathcal O_1\) and \(\mathcal O_2\) are spacelike separated, with
-  the graded commutator used for odd operators after a fermion parity grading
-  has been specified.
+  the graded commutator
+  \[
+    [A,B]_{\rm gr}=AB-(-1)^{|A||B|}BA
+  \]
+  used for homogeneous odd operators after a fermion parity grading and the
+  parities \(|A|,|B|\in\mathbb Z/2\mathbb Z\) have been specified.
 \end{enumerate}
 \end{definition}
+
+In this opening convention \(\Obs(\mathcal O)\) is a concrete algebra of
+bounded observables on the chosen Hilbert space and is not assumed to be norm
+closed or weakly closed unless this is stated.  If a \(C^*\)-algebra or von
+Neumann algebra is needed, the relevant closure or bicommutant is included in
+the datum or constructed explicitly.  This minimal convention is sufficient
+for the first dependency layer: localization, covariance, the spectrum
+condition, vacuum matrix elements, and comparison with field coordinates.
 
 This framework describes a vacuum representation on flat spacetime. Thermal
 states, boundary conditions, curved spacetimes, and non-vacuum superselection
@@ -108,9 +132,14 @@ carries hypotheses.
   \[
     (\Hilb,\vac,U,\mathcal D,\{\Phi_a\}_{a\in A})
   \]
-  where \(\mathcal D\subset\Hilb\) is a dense invariant domain and
-  \(\Phi_a\) are operator-valued distributions with common domain
-  \(\mathcal D\).  Its primary correlation data are the vacuum distributions
+  where \(A\) is an index set for fields, \(\mathcal D\subset\Hilb\) is a
+  dense domain invariant under the fields and the spacetime symmetry action
+  on its natural domain, and each \(\Phi_a\) is an operator-valued
+  distribution on a declared test-function space, usually
+  \(\mathcal S(\mathbb M^D)\) or \(C_c^\infty(\mathbb M^D)\), with common
+  domain \(\mathcal D\).  Its primary correlation data are the vacuum
+  distributions defined, after smearing in all variables, by the formal
+  kernels
   \[
     W_{a_1\cdots a_n}(x_1,\ldots,x_n)
     =
@@ -124,16 +153,19 @@ carries hypotheses.
 \end{definition}
 
 \begin{definition}[Local-net presentation]
-  A local-net presentation consists of a class of spacetime regions
-  \(\mathcal K(\mathbb M^D)\), a quasilocal algebra \(\Obs_{\rm qloc}\), and
-  an assignment
+  A local-net presentation consists of a specified class
+  \(\mathcal K(\mathbb M^D)\) of open spacetime regions, a quasilocal
+  \(*\)-algebra or \(C^*\)-algebra \(\Obs_{\rm qloc}\), and an assignment
   \[
     \mathcal O\longmapsto\Obs(\mathcal O)\subset\Obs_{\rm qloc}
   \]
-  satisfying isotony, locality, covariance, and any additional structural
-  conditions imposed in the problem under study, such as additivity or the
-  time-slice property.  A state \(\omega\) on \(\Obs_{\rm qloc}\) gives a
-  Hilbert-space representation by the GNS construction.
+  for \(\mathcal O\in\mathcal K(\mathbb M^D)\).  The assignment satisfies
+  isotony, locality, covariance under the declared spacetime symmetry group,
+  and any additional structural conditions imposed in the problem under
+  study, such as additivity, Haag duality, or the time-slice property.  A
+  state is a normalized positive linear functional
+  \(\omega:\Obs_{\rm qloc}\to\mathbb C\); it gives a Hilbert-space
+  representation by the GNS construction.
 \end{definition}
 
 \begin{definition}[Euclidean correlation presentation]
@@ -142,10 +174,13 @@ carries hypotheses.
     S_{a_1\cdots a_n}(x_1,\ldots,x_n),
     \qquad x_i\in\mathbb R^D,
   \]
-  with Euclidean covariance, permutation symmetry, regularity and growth
-  assumptions, and reflection positivity with respect to a chosen Euclidean
-  time.  Under the Osterwalder--Schrader hypotheses these data reconstruct a
-  Lorentzian Hilbert-space theory.
+  with Euclidean covariance, permutation symmetry or graded permutation
+  symmetry, regularity and growth assumptions, and reflection positivity with
+  respect to a chosen Euclidean time.  Reflection positivity means that the
+  sesquilinear form obtained by reflecting positive-time test insertions by
+  Euclidean time reflection is positive semidefinite.  Under the
+  Osterwalder--Schrader hypotheses these data reconstruct a Lorentzian
+  Hilbert-space theory.
 \end{definition}
 
 The comparison from fields to a local net is obtained, when the needed
@@ -169,25 +204,25 @@ Wightman boundary values.
       arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
       note/.style={align=center,font=\scriptsize}
     }
-    \node[box] (w) at (-4.3,1.35)
+    \node[box] (w) at (-4.4,1.55)
       {Wightman fields\\\(\Phi_a(f),\,W_n\)};
-    \node[box] (a) at (4.3,1.35)
+    \node[box] (a) at (4.4,1.55)
       {local nets\\\(\mathcal O\mapsto\Obs(\mathcal O)\)};
-    \node[box] (e) at (0,-1.85)
+    \node[box] (e) at (0,-2.15)
       {Euclidean data\\\(S_n\)};
-    \node[box,fill=green!7] (h) at (0,0.25)
+    \node[box,fill=green!7] (h) at (0,0.05)
       {Hilbert-space vacuum sector\\\((\Hilb,\vac,U)\)};
     \draw[arrow] (w)--(a)
       node[midway,above] {affiliation};
-    \draw[arrow] (a)--(h)
-      node[midway,above,sloped] {GNS};
+    \draw[arrow] (a.south west) to[out=-155,in=35]
+      node[pos=0.56,above,sloped] {GNS} (h.east);
     \draw[arrow] (e)--(h)
       node[midway,right] {OS};
-    \draw[arrow] (h)--(w)
-      node[midway,left] {domains};
-    \draw[arrow] (w)--(e)
-      node[midway,left] {analytic continuation};
-    \node[note] at (0,-3.0)
+    \draw[arrow] (h.west) to[out=160,in=-30]
+      node[pos=0.48,below,sloped] {domains} (w.south east);
+    \draw[arrow] (w.south) to[out=-95,in=170]
+      node[pos=0.48,left] {analytic continuation} (e.west);
+    \node[note] at (0,-3.35)
       {Each arrow includes hypotheses; the comparison data are part of the theory being used.};
   \end{tikzpicture}
   }
@@ -196,10 +231,10 @@ Wightman boundary values.
   \label{fig:opening-framework-comparison}
 \end{figure}
 
-This organization keeps the foundational objects explicit.  A later
+These definitions make the foundational objects explicit.  A later
 calculation may use fields, path integrals, local algebras, or Euclidean
-correlators, but the framework in which the calculation lives and the
-comparison maps needed to interpret it must be stated.
+correlators; the framework in which the calculation lives and the comparison
+maps needed to interpret it must be stated.
 
 \section{Analytic Status of the Basic Objects}
 
@@ -209,11 +244,13 @@ denote different objects in different constructions.
 
 \begin{definition}[Regulated theory]
   A regulated theory is a finite-dimensional or cutoff-defined construction
-  with a specified state space, algebra of variables, covariance or symmetry
-  action, and expectation functional.  Examples include a finite lattice,
-  a finite spatial volume with momentum cutoff, or a finite-dimensional
-  time-sliced integral.  All integrals and operator products in a regulated
-  theory are ordinary objects in the regulator-dependent category.
+  with a specified state space or configuration space, algebra of variables,
+  covariance or symmetry action, and expectation functional
+  \(\langle\cdot\rangle_\Lambda\), where \(\Lambda\) denotes the regulator
+  data.  Examples include a finite lattice, a finite spatial volume with
+  momentum cutoff, or a finite-dimensional time-sliced integral.  All
+  integrals and operator products in a regulated theory are ordinary objects
+  in the regulator-dependent category.
 \end{definition}
 
 \begin{definition}[Continuum correlation theory]
@@ -237,21 +274,19 @@ Perturbation theory has its own status.  A perturbative statement is an
 asymptotic expansion in a specified parameter, with coefficients computed from
 regulated distributions and then renormalized.  The existence of the
 perturbative coefficients and the existence of a nonperturbative continuum
-object are distinct assertions.  The physics use of perturbation theory is
-precise when the observable being expanded, the expansion parameter, the
-renormalization prescription, and the error class or asymptotic meaning have
-been stated.
+object are distinct assertions.  A perturbative assertion is specified when
+the observable being expanded, the expansion parameter, the renormalization
+prescription, and the error class or asymptotic meaning have been stated.
 
-This stratification lets the text use strong mathematical tools without
-discarding nontrivial physics.  Spectral measures, scattering states,
-renormalization-group flows, anomalies, conformal data, and gauge-invariant
-observables are different constructions related by theorems, approximations,
-or comparison problems.
+These levels of status will be tracked separately in later chapters.  Spectral
+measures, scattering states, renormalization-group flows, anomalies,
+conformal data, and gauge-invariant observables are different constructions
+related by theorems, controlled approximations, or comparison problems.
 
-\section{Fields As Coordinates On Local Data}
+\section{Fields As Local Distributional Data}
 
-A local field is a distributional coordinate for local data. For a test
-function \(f\in C_c^\infty(\mathbb M^D)\) with
+A field presentation assigns localized distributional operators to test
+functions. For a test function \(f\in C_c^\infty(\mathbb M^D)\) with
 \(\operatorname{supp}f\subset\mathcal O\),
 \[
   \widehat\Phi_A(f)
@@ -264,8 +299,9 @@ dense invariant field domain associated with that algebra. The precise
 operator-domain statement will be made in the field framework of the next
 chapter.
 
-The field notation has two roles. First, it gives a concrete language for
-constructing examples. Second, it gives correlation functions:
+The field presentation is used in two constructions. First, it gives concrete
+generators or affiliated operators for examples. Second, it gives correlation
+functions:
 \[
   W_{A_1\cdots A_n}(x_1,\ldots,x_n)
   =
@@ -285,39 +321,49 @@ Several familiar objects are constructed from the framework after adding
 further hypotheses.
 
 \begin{itemize}
-  \item A particle is associated with isolated spectral support of the
-  translation generators, usually an isolated mass shell.
-  \item An S-matrix requires incoming and outgoing asymptotic multi-particle
-  states and wave operators comparing them with the interacting Hilbert space.
-  This is an additional long-time dynamical construction.
-  \item LSZ reduction is a theorem relating S-matrix elements to poles of
-  time-ordered correlation functions, after the relevant asymptotic states and
-  pole residues have been identified.
-  \item A path integral is a method of constructing or computing correlation
-  functions after a regulator, contour, measure, or perturbative prescription
-  has been specified. The symbol \(\int D\phi\,\ee^{\ii S[\phi]}\) receives
-  its meaning from that additional specification.
+  \item A stable one-particle sector is a spectral subspace of the translation
+  generators associated with an isolated positive-energy mass hyperboloid
+  \(p^2=-m^2\), \(p^0>0\), possibly with finite internal or spin
+  multiplicity.
+  \item An S-matrix is constructed from incoming and outgoing asymptotic
+  multi-particle states and wave operators comparing asymptotic Hilbert spaces
+  with the interacting Hilbert space.  This is an additional long-time
+  dynamical construction.
+  \item LSZ reduction is a theorem relating S-matrix elements to residues or
+  pole parts of time-ordered correlation functions, after the relevant
+  asymptotic states and field-particle overlaps have been identified.
+  \item A path-integral presentation is a construction or computational
+  scheme for correlation functions after a regulator, contour, measure, or
+  perturbative prescription has been specified. The symbol
+  \(\int D\phi\,\ee^{\ii S[\phi]}\) receives its meaning from that additional
+  specification.
 \end{itemize}
 
 This dependency order is part of the construction. Perturbative Feynman graphs
-may be introduced as a calculus for Green functions before scattering is
+may be introduced as an expansion for Green functions before scattering is
 discussed. Diagrams for S-matrix elements acquire that interpretation after
 asymptotic states and LSZ reduction have been established.
 
 \section{The First Spectral Question}
 
 Translation invariance permits simultaneous spectral analysis of the
-generators \(P_\mu\). The spectrum condition is
+generators \(P_\mu\).  Let \(E_P(\Delta)\) denote the joint spectral projection
+of \(P=(P_0,\ldots,P_{D-1})\) associated with a Borel set
+\(\Delta\subset\mathbb R^D\).  The joint spectrum
+\(\operatorname{Spec}(P)\) is the support of this projection-valued measure.
+The spectrum condition is
 \[
   \operatorname{Spec}(P)\subset
   \overline V_+
   =
   \{p\in\mathbb R^D:p^0\ge0,\ p^2\le0\}.
 \]
-For a scalar field, positivity of the Hilbert-space inner product and
-translation invariance imply that the two-point function admits a positive
-spectral measure. In the common case where the measure can be written in terms
-of a density \(\rho\), the time-ordered two-point function has the form
+For a scalar Wightman field in the vacuum Hilbert-space framework, positivity
+of the Hilbert-space inner product, translation invariance, and the spectrum
+condition imply that the two-point function admits a positive spectral
+measure on invariant mass. In the common case where the measure can be
+written in terms of a density \(\rho\), the time-ordered two-point function
+has the form
 \[
   \bra{\vac}T\{\widehat\phi(x)\widehat\phi(0)\}\ket{\vac}
   =
@@ -325,11 +371,15 @@ of a density \(\rho\), the time-ordered two-point function has the form
   \qquad
   \rho(\mu^2)\ge0.
 \]
+Here \(\Delta_F(x;\mu^2)\) denotes the free scalar Feynman distribution of
+mass parameter \(\mu\).  If the spectral measure is not absolutely
+continuous, the integral is written with respect to the positive measure
+\(\dd\rho(\mu^2)\) rather than a density.
 This formula will be derived later from the stated Hilbert-space assumptions.
-It marks the first bridge from local operator data to particle language:
-isolated atoms of the spectral measure correspond to stable one-particle
-states, while continuous spectral support corresponds to multi-particle and
-other continuum contributions.
+It is the first result in the text that relates local two-point data to
+particle content: isolated atoms of the spectral measure correspond to stable
+one-particle states, while continuous spectral support corresponds to
+multi-particle and other continuum contributions.
 
 \section{Logical Order Of The Opening Construction}
 

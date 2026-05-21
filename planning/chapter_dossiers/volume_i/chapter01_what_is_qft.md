@@ -2,8 +2,9 @@
 
 ## Status
 
-Current status: rewritten once, now requires re-audit under the stricter
-definition and symbol rules.
+Current status: re-audited under the stricter definition and symbol rules in
+the 2026-05-22 development pass.  The chapter remains in the compiled
+manuscript as the opening framework chapter.
 
 ## Logical Role
 
@@ -80,13 +81,19 @@ Definitions must specify domains and support conditions.
 
 ## Required Revisions
 
-- Remove any main-text sentence organized around "not a universal definition."
-- Ensure every symbol in the opening definition is typed.
-- State whether \(\Obs(\mathcal O)\) is treated as a concrete algebra of
-  operators on \(\Hilb\), a von Neumann algebra, or a deliberately minimal
-  working algebra.
-- Move comments on exclusions into a domain statement or remark.
+- Completed: removed main-text framing organized around exclusion.
+- Completed: typed the symbols used in the opening definition, including the
+  Poincare group, \(\mathcal B(\Hilb)\), \(\mathcal U(\Hilb)\), spacelike
+  separation of regions, and the joint spectral measure.
+- Completed: stated that \(\Obs(\mathcal O)\) is a concrete unital
+  \(*\)-subalgebra of \(\mathcal B(\Hilb)\), with \(C^*\)- or von Neumann
+  closure imposed only when declared.
+- Completed: moved non-vacuum and non-flat settings into a positive domain
+  statement about changed data.
 
 ## Figure Ledger
 
-No required figure in the current chapter.
+- `fig:opening-framework-comparison`: TikZ comparison map among Wightman
+  fields, local nets, Euclidean data, and the Hilbert-space vacuum sector.
+  The figure must be checked after every layout-affecting edit to ensure arrow
+  labels remain legible.

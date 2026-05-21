@@ -42,5 +42,7 @@ finished monograph.
 - `10_ai_agent_operating_contract.md`: rules for AI collaborators.
 - `11_project_decisions.md`: explicit decisions from Xi.
 - `12_strict_writing_harness.md`: immediate hard gate for drafting.
+- `13_development_dependency_map.md`: dependency order, promotion gates, and
+  uniformization queue for compiled and future volumes.
 
 Historical build audits and chapter dossiers are preserved in subdirectories.
