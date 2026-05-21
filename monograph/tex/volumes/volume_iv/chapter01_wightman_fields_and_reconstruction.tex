@@ -144,6 +144,38 @@ function valued in the appropriate finite direct sum of field labels, and
 \(f_m^\dagger\) reverses order and complex conjugates the test functions
 with the field adjunction included.
 
+\section{Clustering and the Vacuum Sector}
+
+The vacuum vector should represent one pure infinite-volume phase.  In the
+Wightman setting this is expressed by a cluster property.  For two polynomial
+local operators \(A\) and \(B\), formed from fields smeared in bounded
+regions, define
+\[
+  B(a)=U(a)BU(a)^{-1}.
+\]
+The weak cluster property in the vacuum sector is
+\begin{equation}
+  \lim_{\lambda\to+\infty}
+  \langle\vac,A\,B(\lambda a)\vac\rangle
+  =
+  \langle\vac,A\vac\rangle
+  \langle\vac,B\vac\rangle
+  \label{eq:wightman-weak-cluster}
+\end{equation}
+for every spacelike vector \(a\).  In terms of Wightman functions, this says
+that widely spacelike-separated groups of insertions factorize.
+
+The spectral reason is simple.  Insert the spectral resolution of
+translations between \(A\) and \(B(a)\).  The vacuum atom at \(p=0\) gives the
+product on the right side of \eqref{eq:wightman-weak-cluster}.  If the vacuum
+is the only translation-invariant vector, then no other atom at \(p=0\)
+contributes.  The remaining continuous spectral part has oscillatory phase
+\(\exp(\ii\lambda a\cdot p)\); after smearing, its contribution vanishes in
+the weak large-separation limit.  With a mass gap and suitable regularity, the
+same argument gives stronger decay estimates.  Selecting a pure vacuum sector
+is the condition that the zero-momentum projection is the one-dimensional
+projection onto \(\mathbb C\vac\).
+
 \section{Reconstruction From Correlation Functions}
 
 The Wightman reconstruction theorem says that the correlation hierarchy is

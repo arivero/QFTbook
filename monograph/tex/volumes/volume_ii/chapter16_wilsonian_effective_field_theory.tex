@@ -427,6 +427,44 @@ when the fixed point is conformal and the coupling multiplies
 and the conformal scaling-operator problem are the same local question seen
 from two sides: flow in theory space and dilation on local operators.
 
+\section{Redundant Directions and Field Coordinates}
+
+Theory space is coordinatized by actions, but different coordinates can
+describe the same correlation functions.  A local change of field variable
+\[
+  \phi(x)\longmapsto \phi(x)+\epsilon F[\phi](x)
+\]
+changes the action, to first order in \(\epsilon\), by
+\[
+  S[\phi]\longmapsto
+  S[\phi]
+  +
+  \epsilon\int\dd^Dx\,
+  \frac{\delta S}{\delta\phi(x)}F[\phi](x)
+  -
+  \epsilon\,\operatorname{Tr}\frac{\delta F}{\delta\phi}
+  +O(\epsilon^2).
+\]
+The trace term is the local Jacobian contribution in a regulated functional
+integral.  Operators of the form
+\[
+  \int\dd^Dx\,
+  \frac{\delta S}{\delta\phi(x)}F[\phi](x)
+  \quad
+  \text{together with the associated Jacobian}
+\]
+generate redundant directions.  They change the coordinate representative of
+the Wilsonian action and the representatives of local composite operators, but
+they leave separated-point correlation functions invariant after the
+corresponding field redefinition is applied.
+
+The quotient by redundant directions is important in the linearized RG
+problem.  An eigenvector of the flow that is tangent to a field redefinition
+is a change of local coordinates on theory space.  Relevant, marginal, and
+irrelevant directions that classify continuum limits are therefore physical
+directions modulo these redundant tangent vectors, with symmetries and
+operator normalizations fixed as part of the coordinate choice.
+
 \section{Renormalized Trajectories and Universality}
 
 Let \(u_r\) denote the relevant coordinates and \(u_i\) the irrelevant

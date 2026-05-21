@@ -191,6 +191,47 @@ separated as \(|t|\to\infty\).
 \end{tikzpicture}
 \end{center}
 
+\section{Velocity Support Separation}
+
+The phrase ``disjoint velocity supports'' has a precise geometric content.
+Let \(K_i=\operatorname{supp}h_i\) and set
+\[
+  V_i=\left\{\vec p/\omega_{\vec p}:\vec p\in K_i\right\}.
+\]
+If \(V_i\cap V_j=\varnothing\), compactness gives a number
+\[
+  \delta_{ij}:=\operatorname{dist}(V_i,V_j)>0 .
+\]
+Choose \(0<\epsilon<\delta_{ij}/4\) and define the equal-time tubes
+\[
+  \Gamma_i(t,\epsilon)
+  =
+  \{\vec x\in\mathbb R^d:\operatorname{dist}(\vec x/t,V_i)<\epsilon\}
+  \qquad (t\ne0).
+\]
+For \(\vec x\in \Gamma_i(t,\epsilon)\) and
+\(\vec y\in\Gamma_j(t,\epsilon)\),
+\[
+  |\vec x-\vec y|
+  \ge |t|(\delta_{ij}-2\epsilon)
+  \ge \frac12|t|\delta_{ij}.
+\]
+The spacetime points \((t,\vec x)\) and \((t,\vec y)\) are therefore
+spacelike separated with a separation growing linearly in \(|t|\).
+
+The part of \(h_{i,t}\) outside \(\Gamma_i(t,\epsilon)\) is rapidly
+decreasing.  Indeed, away from the stationary set
+\(\vec x/t=\vec p/\omega_{\vec p}\), the phase
+\[
+  \omega_{\vec p}t-\vec p\cdot\vec x
+\]
+has no stationary point on \(K_i\), and repeated integration by parts in
+\(\vec p\) gives a bound \(O(|t|^{-N})\) for every \(N\).  Thus the
+Haag--Ruelle operators can be replaced, up to rapidly decreasing errors, by
+almost-local operators supported in mutually spacelike tubes.  Locality then
+turns geometric separation into the commutator estimate used in the
+existence proof.
+
 \section{Multi-Particle Limits}
 
 Let \(B_1,\ldots,B_n\) be almost-local operators obtained as above, and let

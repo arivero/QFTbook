@@ -204,6 +204,42 @@ insertions into irreducible conformal multiplets:
 The multiplicity \(m_{ij}^{\mathcal O}\) equals the number of independent
 three-point structures connecting \(i\), \(j\), and \(\mathcal O\).
 
+\section{Conformal Blocks as Multiplet Contributions}
+
+For a scalar four-point function, the OPE separates the contribution of each
+primary conformal multiplet.  In the \(12\to34\) channel one writes
+\[
+  \mathcal G(u,v)
+  =
+  \sum_{\mathcal O}
+  \lambda_{12\mathcal O}\lambda_{34\mathcal O}\,
+  G_{\Delta,\ell}^{(12|34)}(u,v),
+\]
+where \(\mathcal O\) has scaling dimension \(\Delta\) and spin \(\ell\).  The
+function \(G_{\Delta,\ell}^{(12|34)}\) is the conformal block: it is the sum
+of the primary \(\mathcal O\) and all of its descendants, with descendant
+coefficients fixed by the conformal algebra.
+
+The block is characterized representation-theoretically by the quadratic
+Casimir.  Let \(\mathcal C_{12}\) be the differential operator representing
+the quadratic conformal Casimir acting on points \(x_1,x_2\).  Then
+\[
+  \mathcal C_{12}\,
+  G_{\Delta,\ell}^{(12|34)}(u,v)
+  =
+  C_{\Delta,\ell}\,
+  G_{\Delta,\ell}^{(12|34)}(u,v),
+\]
+with eigenvalue
+\[
+  C_{\Delta,\ell}
+  =
+  \Delta(\Delta-D)+\ell(\ell+D-2).
+\]
+The boundary condition is fixed by the leading OPE term as \(x_1\to x_2\).
+Thus the spectrum and OPE coefficients are the dynamical data, while the
+blocks are kinematic functions determined by conformal representation theory.
+
 \section{Reflection Positivity and OPE Coefficients}
 
 Reflection positivity constrains the numerical OPE data.  Choose Hermitian
