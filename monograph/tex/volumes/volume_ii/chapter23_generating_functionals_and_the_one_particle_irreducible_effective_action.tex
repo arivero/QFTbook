@@ -626,6 +626,76 @@ subspace where the source-field map is nonsingular:
 \]
 for real test functions \(f\) in that subspace.
 
+\section{Legendre--Fenchel Form at Finite Regulator}
+
+The local inverse \(J_{\varphi}\) used above is a convenient notation, but it
+is not part of the exact definition.  At finite regulator, the source space is
+a finite-dimensional vector space or a specified space of test functions,
+depending on the regulator.  Its dual is the space in which the regulated
+mean field \(\varphi\) lives, and the pairing is
+\[
+  \langle J,\varphi\rangle
+  =
+  \int \dd^Dx\,J(x)\varphi(x)
+\]
+with the corresponding finite sum on a lattice.
+
+Let
+\[
+  K[J]=\log Z_E[J],
+  \qquad
+  W_E[J]=-K[J].
+\]
+The positivity assumption in the preceding section makes \(K\) a convex
+functional.  The exact Euclidean effective action is the convex conjugate
+with the sign convention fixed by the source term \(-\langle J,\phi\rangle\):
+\[
+  \Gamma_E[\varphi]
+  =
+  \sup_J
+  \left\{
+    -K[J]-\langle J,\varphi\rangle
+  \right\}
+  =
+  \sup_J
+  \left\{
+    W_E[J]-\langle J,\varphi\rangle
+  \right\}.
+\]
+This formula is meaningful even when the map \(J\mapsto\varphi_J\) is not
+globally invertible or when the supremum is attained by more than one source.
+If \(K\) is differentiable and the supremum is attained at \(J_\varphi\), the
+stationarity condition is
+\[
+  0
+  =
+  -\frac{\delta K[J_\varphi]}{\delta J(x)}
+  -
+  \varphi(x),
+  \qquad
+  \varphi(x)
+  =
+  \frac{\delta W_E[J_\varphi]}{\delta J(x)} .
+\]
+Thus the earlier Legendre transform is the differentiable local form of the
+Legendre--Fenchel definition.
+
+The subgradient statement is the coordinate-free replacement for the inverse
+source map.  A source \(J\) maximizes the displayed variational expression at
+\(\varphi\) precisely when
+\[
+  -\varphi
+  \in
+  \partial K[J],
+\]
+where \(\partial K[J]\) is the convex subdifferential of \(K\) at \(J\).  If
+\(K\) is twice differentiable and its Hessian has a kernel at a source \(J\),
+the source-field map has no local inverse there.  The convex-conjugate formula
+remains the definition.  It records the supporting hyperplanes of \(K\): an
+admissible mean field \(\varphi\) is one for which \(-\varphi\) is a
+subgradient of \(K\) at some source, or a limit of such subgradients when the
+supremum is not attained.
+
 A finite-dimensional model displays the same logic without functional
 analysis.  Let \(\phi\in\R\) and
 \[
