@@ -1,0 +1,193 @@
+\chapter{The Planar Dilatation Operator and Spin Chains}
+\label{ch:volume-iii-planar-dilatation-operator-spin-chains}
+
+\section{The SU(2) Scalar Sector}
+
+In \(\mathcal N=4\) super-Yang--Mills, choose two complex adjoint scalars
+\[
+  Z=\frac1{\sqrt2}(\phi^1+\ii\phi^2),
+  \qquad
+  X=\frac1{\sqrt2}(\phi^3+\ii\phi^4).
+\]
+The \(SU(2)\) scalar sector is spanned, at the classical level, by
+single-trace words
+\begin{equation}
+  \operatorname{Tr}(A_1A_2\cdots A_L),
+  \qquad
+  A_\ell\in\{Z,X\}.
+  \label{eq:su2-sector-single-trace-word}
+\end{equation}
+The integer \(L\) is the length of the word.  The operator
+\[
+  \operatorname{Tr}Z^L
+\]
+is a half-BPS primary with \(\Delta=L\).  Replacing some of the \(Z\)'s by
+\(X\)'s creates excitations above this protected reference operator.
+
+At large \(N\), the one-loop dilatation operator preserves the \(SU(2)\)
+sector.  It acts on neighboring sites of the chain.  Let
+\[
+  P_{\ell,\ell+1}
+\]
+be the operator that exchanges the fields at sites \(\ell\) and \(\ell+1\),
+with \(\ell+1\) understood modulo \(L\).  The planar one-loop anomalous
+dimension operator is
+\begin{equation}
+  \gamma^{(1)}
+  =
+  \frac{\lambda}{8\pi^2}
+  \sum_{\ell=1}^{L}
+  \left(1-P_{\ell,\ell+1}\right).
+  \label{eq:su2-one-loop-dilatation}
+\end{equation}
+Thus the full scaling dimension in this sector is
+\[
+  \Delta
+  =
+  L+\gamma^{(1)}+O(\lambda^2).
+\]
+Equation \eqref{eq:su2-one-loop-dilatation} is the Hamiltonian of the
+ferromagnetic Heisenberg \(XXX_{1/2}\) spin chain.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.90\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{arrow/.style={-{Latex[length=2mm]},line width=0.85pt}}
+    \foreach \x/\lab in {0/{Z},0.9/{Z},1.8/{X},2.7/{Z},3.6/{X},4.5/{Z},5.4/{Z}} {
+      \draw[thick,fill=blue!5] (\x-0.28,-0.28) rectangle (\x+0.28,0.28);
+      \node at (\x,0) {\(\lab\)};
+    }
+    \draw[orange!85!black,line width=0.95pt] (1.50,-0.48) rectangle (3.00,0.48);
+    \node[orange!85!black] at (2.25,0.82) {\(1-P_{\ell,\ell+1}\)};
+    \draw[arrow] (6.05,0)--(7.25,0);
+    \node[align=center] at (8.20,0.35)
+      {nearest-neighbor\\spin-chain Hamiltonian};
+    \node[align=center,blue!65!black] at (2.70,-1.10)
+      {\(Z\) is spin up, \(X\) is spin down};
+  \end{tikzpicture}
+  }
+  \caption{In the planar \(SU(2)\) sector, the one-loop anomalous dimension
+  operator is a nearest-neighbor spin-chain Hamiltonian.}
+  \label{fig:su2-sector-nearest-neighbor-chain}
+\end{figure}
+
+\section{Magnon Eigenstates}
+
+On a long chain, an \(X\) inserted among \(Z\)'s behaves as a magnon.  Let
+\(\ket{\ell}\) denote the state with the impurity \(X\) at site \(\ell\):
+\[
+  \ket{\ell}
+  =
+  \operatorname{Tr}(Z^{\ell-1}XZ^{L-\ell}).
+\]
+A momentum eigenstate is
+\begin{equation}
+  \ket p
+  =
+  \sum_{\ell=1}^{L}
+  \ee^{\ii p\ell}\ket{\ell},
+  \qquad
+  p=\frac{2\pi n}{L},
+  \quad n\in\mathbb Z.
+  \label{eq:single-magnon-momentum-state}
+\end{equation}
+Acting with \eqref{eq:su2-one-loop-dilatation} gives
+\begin{equation}
+  \gamma^{(1)}(p)
+  =
+  \frac{\lambda}{2\pi^2}
+  \sin^2\frac p2.
+  \label{eq:one-loop-magnon-dispersion}
+\end{equation}
+Cyclicity of the trace imposes the level-matching condition that the total
+spin-chain momentum of a physical single-trace state is zero modulo
+\(2\pi\).  A nonzero-momentum single magnon is therefore best regarded as the
+elementary excitation used to build multi-magnon states; physical closed-chain
+states have total momentum zero.
+
+\section{Protected Vacuum and Missing Diagrams}
+
+The operator \(\operatorname{Tr}Z^L\) is annihilated by every term
+\[
+  1-P_{\ell,\ell+1}
+\]
+because adjacent \(Z\)'s are identical.  Hence
+\[
+  \gamma^{(1)}\operatorname{Tr}Z^L=0.
+\]
+This implements the half-BPS protection of \(\operatorname{Tr}Z^L\) at one
+loop.  In a Feynman-diagram computation, self-energy and exchange diagrams
+separately contribute to the anomalous dimension matrix; the sum is fixed so
+that the protected vacuum has zero anomalous dimension.  The spin-chain form
+\eqref{eq:su2-one-loop-dilatation} packages that cancellation into the local
+operator \(1-P\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{arrow/.style={-{Latex[length=2mm]},line width=0.85pt}}
+    \draw[thick] (0,0) ellipse (1.45 and 0.55);
+    \foreach \ang/\lab in {20/{Z},70/{Z},120/{X},175/{Z},230/{Z},290/{X},335/{Z}} {
+      \node at ({1.45*cos(\ang)},{0.55*sin(\ang)}) {\(\lab\)};
+    }
+    \draw[magenta,line width=0.95pt] ({1.45*cos(120)},{0.55*sin(120)}) circle (0.18);
+    \draw[magenta,line width=0.95pt] ({1.45*cos(290)},{0.55*sin(290)}) circle (0.18);
+    \node[magenta] at (0,1.25) {magnons};
+
+    \draw[arrow] (2.0,0)--(3.1,0);
+    \node[align=center] at (2.55,0.50) {diagonalize\\\(\gamma\)};
+
+    \begin{scope}[shift={(5.15,0)}]
+      \draw[->,thick] (-1.25,-0.65)--(1.35,-0.65) node[right] {\(p\)};
+      \draw[->,thick] (-1.15,-0.78)--(-1.15,1.05) node[above] {\(\gamma\)};
+      \draw[blue!65!black,line width=1pt,domain=-1.0:1.0,samples=80]
+        plot (\x,{0.75*sin(90*\x)*sin(90*\x)-0.55});
+      \node[blue!65!black] at (0.15,0.75)
+        {\(\frac{\lambda}{2\pi^2}\sin^2\frac p2\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Magnons are impurities propagating on the protected trace
+  \(\operatorname{Tr}Z^L\).  Their one-loop energy is the eigenvalue of the
+  planar dilatation operator.}
+  \label{fig:magnon-dispersion-chain}
+\end{figure}
+
+\section{All-Loop Dispersion and Factorization}
+
+The one-loop magnon dispersion is the first term in an expression constrained
+by the centrally extended \(SU(2|2)\) symmetry of the planar theory.  In the
+normalization used above, the all-loop single-magnon dispersion relation is
+\begin{equation}
+  \Delta-J
+  =
+  \sqrt{
+    1+\frac{\lambda}{\pi^2}\sin^2\frac p2
+  },
+  \label{eq:all-loop-magnon-dispersion}
+\end{equation}
+where \(J\) is the \(U(1)\subset SU(4)_R\) charge carried by the \(Z\)'s.
+Expanding \eqref{eq:all-loop-magnon-dispersion} at small \(\lambda\) gives
+\[
+  \Delta-J
+  =
+  1+\frac{\lambda}{2\pi^2}\sin^2\frac p2
+  +O(\lambda^2),
+\]
+which agrees with \eqref{eq:one-loop-magnon-dispersion} after subtracting the
+bare impurity dimension.
+
+Planar integrability asserts that multi-magnon scattering factorizes into
+two-body scattering.  The two-body S-matrix acts on the tensor product of
+magnon internal spaces and is constrained by symmetry, unitarity, crossing,
+and analyticity.  The resulting Bethe equations determine the planar
+single-trace spectrum in sectors where wrapping effects are absent or have
+been incorporated by finite-size corrections.
+
+The conceptual role of the spin chain is therefore precise: it is the
+diagonalization problem for the dilatation operator acting on local
+single-trace operators in the planar conformal theory.  Its Hilbert space,
+Hamiltonian, and scattering data are the large-\(N\) representation of the
+operator-mixing problem of the conformal field theory.

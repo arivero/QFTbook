@@ -1,0 +1,203 @@
+\chapter{\texorpdfstring{\(\mathcal N=4\)}{N=4} Super-Yang--Mills as a Conformal Theory}
+\label{ch:volume-iii-n4-super-yang-mills-conformal-theory}
+
+\section{Field Content and Symmetries}
+
+Let \(G\) be a compact simple Lie group with Lie algebra \(\mathfrak g\).
+Let \(\operatorname{Tr}\) be an invariant positive quadratic form on
+\(\mathfrak g\), normalized for \(G=SU(N)\) by
+\[
+  \operatorname{Tr}(t^at^b)=\frac12\delta^{ab}
+\]
+in the fundamental representation.  Four-dimensional
+\(\mathcal N=4\) super-Yang--Mills has the following adjoint-valued fields:
+\[
+  A_\mu,\qquad
+  \lambda^I_\alpha,\qquad
+  \bar\lambda_{\dot\alpha I},\qquad
+  \phi^m.
+\]
+Here \(A_\mu\) is a gauge connection, \(\lambda^I_\alpha\) and
+\(\bar\lambda_{\dot\alpha I}\) are Weyl fermions, \(I=1,\ldots,4\), and
+\(\phi^m\), \(m=1,\ldots,6\), are real scalar fields.  All fields transform in
+the adjoint representation of \(G\).  The index \(m\) transforms in the vector
+representation \(\mathbf6\) of \(SO(6)_R\simeq SU(4)_R\), while \(I\) is an
+\(SU(4)_R\) fundamental index.
+
+The curvature and covariant derivative are
+\[
+  F_{\mu\nu}
+  =
+  \partial_\mu A_\nu-\partial_\nu A_\mu-\ii[A_\mu,A_\nu],
+  \qquad
+  D_\mu X=\partial_\mu X-\ii[A_\mu,X]
+\]
+for any adjoint-valued field \(X\).  With Lorentzian signature, the action has
+the form
+\begin{equation}
+\begin{aligned}
+  S_{\mathcal N=4}
+  =
+  \frac1{g_{\rm YM}^2}\int\dd^4x\,\operatorname{Tr}\bigg[
+  &-\frac12F_{\mu\nu}F^{\mu\nu}
+  -D_\mu\phi^mD^\mu\phi^m
+  +\ii\bar\lambda_I\bar\sigma^\mu D_\mu\lambda^I\\
+  &+\frac12[\phi^m,\phi^n][\phi^m,\phi^n]
+  +\rho^m_{IJ}\lambda^I[\phi^m,\lambda^J]
+  +\bar\rho^{m\,IJ}\bar\lambda_I[\phi^m,\bar\lambda_J]
+  \bigg].
+\end{aligned}
+  \label{eq:n4-sym-action}
+\end{equation}
+The tensors \(\rho^m_{IJ}=-\rho^m_{JI}\) are Clebsch--Gordan coefficients for
+the map
+\[
+  \mathbf4\wedge\mathbf4\longrightarrow\mathbf6
+\]
+of \(SU(4)_R\), and \(\bar\rho^{m\,IJ}\) are their conjugates.  Supersymmetry
+fixes the relative coefficients in \eqref{eq:n4-sym-action}.  Thus the gauge
+coupling, Yukawa coupling, and scalar quartic coupling are a single coupling.
+
+\section{One-Loop Beta Function}
+
+For a general four-dimensional gauge theory with \(n_f\) Weyl fermions and
+\(n_s\) real scalars in the adjoint representation, the one-loop beta function
+for \(G=SU(N)\) is
+\begin{equation}
+  \mu\frac{\dd g_{\rm YM}}{\dd\mu}
+  =
+  -\frac{g_{\rm YM}^3}{(4\pi)^2}
+  \frac N3
+  \left(11-2n_f-\frac12 n_s\right)
+  +O(g_{\rm YM}^5).
+  \label{eq:adjoint-gauge-theory-one-loop-beta}
+\end{equation}
+The \(\mathcal N=4\) multiplet has
+\[
+  n_f=4,
+  \qquad
+  n_s=6.
+\]
+Substitution into \eqref{eq:adjoint-gauge-theory-one-loop-beta} gives
+\[
+  11-2\cdot4-\frac12\cdot6=0.
+\]
+The perturbative trace anomaly associated with the running gauge coupling
+therefore has zero one-loop coefficient.
+
+Maximal supersymmetry strengthens this cancellation.  The exactly marginal
+parameter is the complex coupling
+\begin{equation}
+  \tau_{\rm YM}
+  =
+  \frac{\theta}{2\pi}
+  +
+  \frac{4\pi\ii}{g_{\rm YM}^2},
+  \label{eq:n4-complex-coupling}
+\end{equation}
+where \(\theta\) is the coefficient of
+\[
+  \frac1{8\pi^2}\int \operatorname{Tr}(F\wedge F).
+\]
+The supersymmetric non-renormalization theorem for the \(\mathcal N=4\)
+stress-tensor multiplet implies
+\[
+  \beta_{\tau_{\rm YM}}=0.
+\]
+Thus each value of \(\tau_{\rm YM}\) defines a conformal theory.  The
+superconformal algebra throughout this conformal manifold is
+\[
+  \mathfrak{psu}(2,2|4).
+\]
+
+\section{Protected Scalar Operators}
+
+The six scalars \(\phi^m\) transform as the \(\mathbf6=[0,1,0]\) of
+\(SU(4)_R\).  The traceless symmetric bilinear
+\begin{equation}
+  \mathcal O^{mn}
+  =
+  \operatorname{Tr}(\phi^m\phi^n)
+  -
+  \frac16\delta^{mn}
+  \operatorname{Tr}(\phi^k\phi^k)
+  \label{eq:n4-stress-tensor-multiplet-primary}
+\end{equation}
+transforms in the representation
+\[
+  \mathbf{20}'=[0,2,0].
+\]
+It is a scalar superconformal primary.  Since it belongs to the half-BPS
+family \([0,p,0]\) with \(p=2\), its dimension is fixed by
+\eqref{eq:half-bps-bound}:
+\[
+  \Delta(\mathcal O^{mn})=2.
+\]
+This operator is the primary of the stress-tensor multiplet.  The conserved
+stress tensor, the \(SU(4)_R\) currents, and the supercurrents are descendants
+inside the same shortened multiplet.
+
+The singlet
+\[
+  \mathcal K=\operatorname{Tr}(\phi^k\phi^k)
+\]
+has the same classical dimension but belongs to a long multiplet.  Its
+dimension is governed by dynamical anomalous dimensions.  It is the Konishi
+primary, and its scaling dimension is a nontrivial function of
+\(\tau_{\rm YM}\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      box/.style={rounded corners=4pt,draw,line width=0.8pt,fill=blue!4,
+        minimum width=3.1cm,minimum height=1.0cm}
+    }
+    \node[box] (fields) at (-4.2,0)
+      {\(\phi^m\in\mathbf6=[0,1,0]\)};
+    \node[box] (bilinear) at (0,0.8)
+      {\(\mathcal O^{mn}\in[0,2,0]\)};
+    \node[box] (konishi) at (0,-0.8)
+      {\(\mathcal K\in[0,0,0]\)};
+    \node[box] (protected) at (4.3,0.8)
+      {half-BPS: \(\Delta=2\)};
+    \node[box] (long) at (4.3,-0.8)
+      {long: \(\Delta\) varies};
+    \draw[arrow] (fields)--(bilinear);
+    \node[anchor=east] at (-1.72,1.36) {traceless symmetric};
+    \draw[arrow] (fields)--(konishi)
+      node[midway,below] {singlet};
+    \draw[arrow,green!45!black] (bilinear)--(protected);
+    \draw[arrow,orange!85!black] (konishi)--(long);
+    \node[align=center,violet!80!black] at (0,1.85)
+      {same classical dimension, different superconformal representation};
+  \end{tikzpicture}
+  }
+  \caption{The protected stress-tensor multiplet primary and the Konishi
+  primary are distinguished by their \(SU(4)_R\) representation and by
+  shortening.}
+  \label{fig:n4-protected-versus-konishi}
+\end{figure}
+
+\section{Local Operators as Conformal Data}
+
+At a conformal point, local gauge-invariant operators are organized by
+irreducible representations of \(\mathfrak{psu}(2,2|4)\).  A convenient
+generating class is provided by traces of adjoint fields and covariant
+derivatives:
+\[
+  \operatorname{Tr}
+  \left(
+    X_1X_2\cdots X_L
+  \right),
+  \qquad
+  X_\ell\in
+  \{F_{\mu\nu},\,D_{\mu_1}\cdots D_{\mu_k}\phi^m,\,
+    D_{\mu_1}\cdots D_{\mu_k}\lambda^I_\alpha,\ldots\}.
+\]
+The integer \(L\) is the trace length before operator mixing is diagonalized.
+At finite \(N\), trace identities and multi-trace mixing are part of the
+operator algebra.  At large \(N\), the single-trace sector has a simpler
+leading structure, developed in the next chapters.
