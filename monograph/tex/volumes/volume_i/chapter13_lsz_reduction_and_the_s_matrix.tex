@@ -89,6 +89,53 @@ Lorentzian Green-function chapter:
 as a mass-shell residue. Applying one such operation to every external field
 is the analytic core of LSZ reduction.
 
+\section{The Pole as a Spectral Projection}
+
+The preceding discussion can be stated without treating the pole as a formal
+singularity. Let \(P_1\) denote the spectral projection of the translation
+representation onto the isolated positive-energy mass shell
+\[
+  \Sigma_m^+
+  =
+  \{p\in\mathbb R^{1,d}:p^0>0,\ p^2=-m^2\}.
+\]
+For a test function \(f\in C_c^\infty(\mathbb R^{1,d})\), define its two
+mass-shell restrictions by
+\[
+  f_+(\vec p)=\int \dd^{D}x\, f(x)e^{-ip\cdot x},
+  \qquad
+  f_-(\vec p)=\int \dd^{D}x\, f(x)e^{ip\cdot x},
+  \qquad p^0=\omega_{\vec p}.
+\]
+With the translation convention \(U(a)=\exp(\ii a_\mu P^\mu)\), the matrix
+element above gives
+\[
+  P_1\widehat\phi(f)\Omega
+  =
+  Z^{1/2}\int \dd\mu_m(\vec p)\,
+  f_-(\vec p)|\vec p\rangle.
+\]
+Equivalently, for another test function \(g\),
+\[
+  \langle\Omega|\widehat\phi(f)P_1\widehat\phi(g)\Omega\rangle
+  =
+  Z\int \dd\mu_m(\vec p)\,
+  f_+(\vec p)g_-(\vec p).
+\]
+This identity is the Hilbert-space origin of the pole in the two-point
+function. The remaining spectral projection \(1-P_1\) has spectral support
+away from \(\Sigma_m^+\) in a neighborhood of the isolated shell, so its
+Fourier transform has no one-particle pole there. Thus the residue of the
+two-point function is the mass-shell kernel induced by \(P_1\) and by the
+chosen field-state matrix element.
+
+For an \(N\)-point time-ordered function, LSZ extraction applies this
+one-particle projection in each external variable. After the external
+projections have been taken, connected truncation removes vacuum-disconnected
+factors, and the result is compared with the Haag--Ruelle wave operators.
+This is the precise sense in which the reduction formula converts
+time-ordered correlation functions into scattering matrix elements.
+
 \section{Connected Truncation and External Amputation}
 
 The pole extracted by LSZ is an external one-particle pole.  It is useful to
