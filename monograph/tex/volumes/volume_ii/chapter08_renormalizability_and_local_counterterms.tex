@@ -448,7 +448,7 @@ large Euclidean momentum behavior
 \]
 for finite constants \(\alpha,\beta\) determined by the subtraction scheme.
 When this renormalized subgraph is inserted into a larger self-energy graph,
-the remaining large-\(q\) integral has the schematic form
+the ultraviolet region of the remaining integral is represented by
 \[
   \int
   \frac{\dd^6q}{(2\pi)^6}\,
@@ -470,10 +470,23 @@ The external momentum dependence is isolated by expanding
   R_3(q,k),
 \end{aligned}
 \]
-where \(R_3(q,k)\) falls fast enough at large \(q\) to make the corresponding
-integral ultraviolet convergent.  The displayed terms are local in the
-external momentum through order \(k^2\).  They contribute only to the
-\(\phi^2\) and \((\partial\phi)^2\) counterterms.
+where Taylor's formula gives \(R_3(q,k)=O(|k|^3|q|^{-5})\) for \(|q|\gg |k|,m_R\).
+Because
+\[
+  \frac{\Sigma_R(q)}{(q^2+m_R^2)^2}
+  =
+  O\!\left(\frac{\log q^2}{q^2}\right),
+  \qquad |q|\to\infty,
+\]
+the remainder contributes an integrand
+\[
+  \dd^6q\;O\!\left(\frac{\log q^2}{|q|^7}\right),
+\]
+which is ultraviolet convergent.  The displayed Taylor terms are local in the
+external momentum through order \(k^2\).  After angular integration, odd powers
+of \(q\) vanish and
+\((k\cdot q)^2\) becomes proportional to \(k^2q^2\).  Thus the divergent part
+contributes only to the \(\phi^2\) and \((\partial\phi)^2\) counterterms.
 
 Dimensional regularization expresses the same fact algebraically.  Integrals
 of the form

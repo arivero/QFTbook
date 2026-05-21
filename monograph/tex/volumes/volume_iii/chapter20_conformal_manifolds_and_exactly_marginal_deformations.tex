@@ -103,7 +103,8 @@ field redefinitions are redundant and are quotiented when identifying
 \section{Beta Functions and Obstructions}
 
 Let \(\lambda^a\) be local coordinates on the space of marginal couplings near
-\(p\).  The deformed action is formally
+\(p\).  Before renormalized composite insertions and counterterms are chosen,
+the deformation is represented by
 \begin{equation}
   S_\lambda
   =
@@ -204,14 +205,38 @@ prescription has been chosen.
 
 The derivatives of scaling dimensions are also CFT data.  For a scalar
 primary \(\mathcal X\) with normalized two-point function, the first variation
-of its scaling dimension has the schematic form
+of its scaling dimension is
 \begin{equation}
   \partial_a\Delta_{\mathcal X}
   =
   -{\rm Vol}(S^{D-1})\,C_{a\mathcal X\mathcal X}
   \label{eq:dimension-variation-marginal-direction}
 \end{equation}
-when \(\mathcal X\) is isolated.  In a degenerate subspace,
+in the convention where
+\[
+  \mathcal O_a(x)\mathcal X(0)
+  \sim
+  -\frac{C_{a\mathcal X\mathcal X}}{|x|^D}\mathcal X(0)+\cdots .
+\]
+Indeed, varying the two-point function gives
+\[
+  \partial_a\langle\mathcal X(y)\mathcal X(0)\rangle
+  =
+  -\int\dd^Dz\,
+  \langle\mathcal O_a(z)\mathcal X(y)\mathcal X(0)\rangle .
+\]
+The logarithmic divergence from the region \(z\to0\) is then
+\[
+  C_{a\mathcal X\mathcal X}
+  {\rm Vol}(S^{D-1})\log\epsilon^{-1}
+  \langle\mathcal X(y)\mathcal X(0)\rangle ,
+\]
+and the same divergence near \(z\to y\) gives the variation of the power
+\(|y|^{-2\Delta_{\mathcal X}}\).  Matching the coefficient of
+\(\log |y|\) gives \eqref{eq:dimension-variation-marginal-direction} when
+\(\mathcal X\) is isolated.  Reversing the sign convention in
+\eqref{eq:local-marginal-family-action} reverses the displayed sign.  In a
+degenerate subspace,
 \eqref{eq:dimension-variation-marginal-direction} becomes a matrix whose
 eigenvalues give the first-order splitting.  This is conformal perturbation
 theory expressed intrinsically in the operator algebra.

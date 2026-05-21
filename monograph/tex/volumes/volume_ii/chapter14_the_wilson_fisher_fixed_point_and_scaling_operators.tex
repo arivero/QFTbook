@@ -152,7 +152,7 @@ domain.
 \end{figure}
 
 The bare coupling and the renormalized coupling have different infrared
-behavior.  The naive dimensionless bare combination \(\mu^{-\epsilon}g_0\)
+behavior.  The dimensionless bare coordinate \(\mu^{-\epsilon}g_0\)
 diverges as \(\mu\to0\).  The renormalized coupling \(\lambda(\mu)\), after the
 fluctuation correction in the 1PI coordinate definition is included, approaches
 the finite value \(\lambda_*\) along the massless critical trajectory.
@@ -163,7 +163,7 @@ the finite value \(\lambda_*\) along the massless critical trajectory.
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \draw[-{Latex[length=2mm]}, thick] (-3.2,0)--(3.5,0) node[below] {\(\mu\downarrow0\)};
     \node[align=center] at (-1.8,1.78)
-      {naive coordinate\\\(\mu^{-\epsilon}g_0\to\infty\)};
+      {bare coordinate\\\(\mu^{-\epsilon}g_0\to\infty\)};
     \draw[red!75!black, very thick, -{Latex[length=2mm]}]
       (-2.55,0.32)..controls (-1.8,0.72) and (-1.05,1.02)..(-0.2,1.28);
     \node[align=center] at (1.55,1.45)
@@ -175,8 +175,8 @@ the finite value \(\lambda_*\) along the massless critical trajectory.
   \end{tikzpicture}
   }
   \caption{The finite infrared coupling is a property of the renormalized 1PI
-  coordinate, not of the naive dimensionless bare coupling.}
-  \label{fig:volume-ii-naive-versus-renormalized-coupling}
+  coordinate, not of the dimensionless bare coordinate.}
+  \label{fig:volume-ii-bare-versus-renormalized-coupling}
 \end{figure}
 
 \section{The First Scaling Operators}
@@ -450,8 +450,9 @@ coincident-point limit is taken.
 
 \section{Descendants and Irrelevant Directions}
 
-The cubic operator is not independent at the interacting fixed point.  The
-equation of motion has the schematic operator consequence
+The cubic operator is not independent at the interacting fixed point.  In the
+renormalized operator algebra, the equation of motion gives the descendant
+relation
 \[
   O_3(x)=\phi^3(x)\propto\Box\phi(x),
 \]

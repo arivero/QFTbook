@@ -113,8 +113,44 @@ fixed by conformal symmetry:
 \end{equation}
 The coefficient of the derivative is determined by requiring the OPE to
 reproduce the conformally fixed three-point function
-\(\langle\phi_1\phi_2\mathcal O\rangle\).  Higher descendants are fixed in the
-same way by the conformal algebra.
+\(\langle\phi_1\phi_2\mathcal O\rangle\).  To see the coefficient, place the
+third operator at \(z\) with \(|x|\ll |z|\) and normalize
+\(\langle\mathcal O(y)\mathcal O(z)\rangle=|y-z|^{-2\Delta}\).  The
+three-point function gives
+\[
+  \langle\phi_1(x)\phi_2(0)\mathcal O(z)\rangle
+  =
+  \lambda_{12\mathcal O}
+  |x|^{\Delta-\Delta_1-\Delta_2}|z|^{-2\Delta}
+  \left[
+    1+
+    (\Delta+\Delta_1-\Delta_2)
+    \frac{x\cdot z}{z^2}
+    +O(x^2)
+  \right].
+\]
+The OPE ansatz
+\[
+  \lambda_{12\mathcal O}
+  |x|^{\Delta-\Delta_1-\Delta_2}
+  \bigl(1+a\,x^\mu\partial_\mu+\cdots\bigr)\mathcal O(0)
+\]
+gives instead
+\[
+  \lambda_{12\mathcal O}
+  |x|^{\Delta-\Delta_1-\Delta_2}|z|^{-2\Delta}
+  \left[
+    1+2a\Delta\frac{x\cdot z}{z^2}+O(x^2)
+  \right],
+\]
+because
+\(\partial_{y^\mu}|y-z|^{-2\Delta}|_{y=0}
+=2\Delta z_\mu |z|^{-2\Delta-2}\).  Matching the two expansions gives
+\[
+  a=\frac{\Delta+\Delta_1-\Delta_2}{2\Delta}.
+\]
+Higher descendants are fixed in the same way by matching higher orders, or
+equivalently by the conformal algebra.
 
 \section{OPE Data}
 

@@ -43,9 +43,32 @@ The \(Q\)-cohomology of states is
   \frac{\ker Q}{\operatorname{im} Q}.
   \label{eq:q-cohomology-hilbert-space}
 \end{equation}
-Under standard domain assumptions for the Hodge decomposition associated with
-\(Q\) and \(Q^\dagger\), every cohomology class has a unique harmonic
-representative annihilated by both \(Q\) and \(Q^\dagger\).  Thus
+Assume the closed operators \(Q\) and \(Q^\dagger\) have a common invariant
+dense domain on which the Hodge decomposition holds:
+\[
+  \Hilb
+  =
+  \ker\mathcal B
+  \oplus
+  \overline{\operatorname{im}Q}
+  \oplus
+  \overline{\operatorname{im}Q^\dagger}.
+\]
+This condition follows, for example, when zero is an isolated spectral value
+of \(\mathcal B\) on the sector being considered.  If \(\ket\psi\in\ker Q\),
+write
+\[
+  \ket\psi=\ket h+Q\ket\alpha+Q^\dagger\ket\beta .
+\]
+Applying \(Q\) and using \(Q^2=0\) shows
+\[
+  0=Q\ket\psi=QQ^\dagger\ket\beta .
+\]
+Taking the inner product with \(\ket\beta\) gives
+\(\|Q^\dagger\ket\beta\|^2=0\), so \(\ket\psi\) is cohomologous to the
+harmonic vector \(\ket h\).  Orthogonality to
+\(\overline{\operatorname{im}Q}\) gives uniqueness of this representative.
+Thus
 \[
   H_Q(\Hilb)\simeq \ker\mathcal B .
 \]
@@ -102,7 +125,8 @@ unitarity inequality is saturated.  Saturation creates null descendants and
 therefore a reduced representation.
 
 Along a conformal manifold, short multiplets can combine into long multiplets
-when quantum numbers allow a recombination rule of the schematic form
+when quantum numbers allow a recombination rule of the representation-theoretic
+form
 \[
   L_{\Delta\to\Delta_*}
   \longrightarrow

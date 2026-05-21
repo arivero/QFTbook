@@ -146,14 +146,28 @@ The Lorentzian phase transforms as
 
 Let \(\ket\psi\in\Hilb\) satisfy \(\braket{0}{\psi}\ne0\), and assume for this
 paragraph that the ground state is separated from the rest of the spectrum by
-a gap. Then
+a gap.  Write
+\[
+  \ket\psi=c_0\ket0+\ket{\psi_\perp},
+  \qquad c_0=\braket{0}{\psi},
+  \qquad \braket{0}{\psi_\perp}=0,
+\]
+and let the spectrum of \(\widehat H-E_0\) on \(\ket0^\perp\) lie in
+\([\Delta,\infty)\) with \(\Delta>0\).  Spectral calculus gives
+\[
+  \ee^{-T(\widehat H-E_0)/\hbar}\ket\psi
+  =
+  c_0\ket0+O(\ee^{-T\Delta/\hbar})
+\]
+in Hilbert norm.  Therefore
 \[
   \frac{\exp[-T(\widehat H-E_0)/\hbar]\ket\psi}
        {\left\|\exp[-T(\widehat H-E_0)/\hbar]\ket\psi\right\|}
   \longrightarrow
-  \ket 0
+  \frac{c_0}{|c_0|}\ket0
 \]
-up to phase as \(T\to\infty\). For \(0<\tau_1<\cdots<\tau_r<T\), the
+as \(T\to\infty\).  The phase \(c_0/|c_0|\) cancels between bra and ket in
+vacuum expectation values.  For \(0<\tau_1<\cdots<\tau_r<T\), the
 Euclidean correlation function is the long-time limit of matrix elements of
 \(\exp(-\tau\widehat H/\hbar)\) with insertions at the specified Euclidean
 times. In the Lagrangian path-integral notation this is expressed as
