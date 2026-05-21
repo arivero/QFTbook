@@ -3,7 +3,7 @@
 
 \section{Field-Theoretic Data}
 
-Let \(M=\mathbb R^{1,D-1}\) be \(D\)-dimensional Minkowski space with
+Let \(M=\mathbb M^D\) be \(D\)-dimensional Minkowski space with
 translation coordinates \(x^\mu\) and metric
 \(\eta=\operatorname{diag}(-1,1,\ldots,1)\).  The proper orthochronous
 Poincare group is denoted by
@@ -13,15 +13,16 @@ Poincare group is denoted by
 The Wightman framework describes a QFT by Hilbert-space data together with
 local operator-valued distributions.  The basic data are:
 \[
-  (\Hilb,\vac,U,\mathcal D,\{\Phi_a\}_{a\in A}).
+  (\Hilb,\vac,U,\mathcal D,\{\Phi_\alpha\}_{\alpha\in I}).
 \]
 Here \(\Hilb\) is a Hilbert space, \(\vac\in\Hilb\) is a unit vector, \(U\) is a
 strongly continuous unitary representation of \(\mathcal P_+^\uparrow\),
-\(\mathcal D\subset\Hilb\) is a dense invariant domain, and each \(\Phi_a\) is
+\(\mathcal D\subset\Hilb\) is a dense invariant domain, \(I\) is the field-label
+index set, and each \(\Phi_\alpha\) is
 an operator-valued tempered distribution on \(M\) with common domain
 \(\mathcal D\).  For a Schwartz test function \(f\in\mathcal S(M)\),
 \[
-  \Phi_a(f)=\int_M \dd^D x\, f(x)\Phi_a(x)
+  \Phi_\alpha(f)=\int_M \dd^D x\, f(x)\Phi_\alpha(x)
 \]
 denotes the smeared operator.  This integral notation means distributional
 pairing, and all products of fields below are products of smeared operators on
@@ -31,37 +32,49 @@ The vacuum is invariant:
 \[
   U(g)\vac=\vac,\qquad g\in\mathcal P_+^\uparrow .
 \]
-Translations are written \(U(a,1)=\ee^{\ii a_\mu P^\mu}\).  The spectrum
+Translations are written
+\[
+  U(b,1)=\exp(-\ii b^\mu P_\mu),
+  \qquad b\in\mathbb R^D,
+\]
+in the convention of Chapter \ref{ch:starting-data-local-qft}.  Let \(E_P\) be
+the joint spectral measure of \(P=(P_0,\ldots,P_{D-1})\).  The spectrum
 condition is
 \[
   \operatorname{Spec}(P)\subset \overline V_+
   =
   \{p\in\mathbb R^D\mid p^0\ge0,\ p^2\le0\}.
 \]
-If \(\Phi_a\) transforms in a finite-dimensional Lorentz representation
-\(S(\Lambda)\), covariance is the identity
+If the field multiplet transforms in a finite-dimensional Lorentz
+representation \(R\), covariance is the identity
 \[
-  U(a,\Lambda)\Phi_a(f)U(a,\Lambda)^{-1}
+  U(b,\Lambda)\Phi_\alpha(f)U(b,\Lambda)^{-1}
   =
-  S(\Lambda)_a{}^b\,
-  \Phi_b(f_{a,\Lambda}),
+  R(\Lambda)_\alpha{}^\beta\,
+  \Phi_\beta(f_{b,\Lambda}),
 \]
 where
 \[
-  f_{a,\Lambda}(x)=f\bigl(\Lambda^{-1}(x-a)\bigr).
+  f_{b,\Lambda}(x)=f\bigl(\Lambda^{-1}(x-b)\bigr).
 \]
-The precise spin indices are carried by the label \(a\).
+The precise spin and internal indices are carried by the label \(\alpha\).
 
 Locality is imposed after smearing.  If the supports of \(f\) and \(g\) are
 spacelike separated, then
 \[
-  [\Phi_a(f),\Phi_b(g)]_\pm=0
+  [\Phi_\alpha(f),\Phi_\beta(g)]_{\rm gr}=0
 \]
-on \(\mathcal D\), with the anticommutator used when both fields are fermionic.
+on \(\mathcal D\), where
+\[
+  [A,B]_{\rm gr}=AB-(-1)^{|A||B|}BA
+\]
+for homogeneous field parities \(|A|,|B|\in\mathbb Z/2\mathbb Z\).  For purely
+bosonic fields this is the ordinary commutator; when both fields are odd it is
+the anticommutator.
 The vacuum is cyclic for the polynomial field algebra:
 \[
   \operatorname{span}\{
-    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\vac
+    \Phi_{\alpha_1}(f_1)\cdots\Phi_{\alpha_n}(f_n)\vac
     \mid n\ge0
   \}
   \quad\text{is dense in }\Hilb .
@@ -79,7 +92,7 @@ The vacuum is cyclic for the polynomial field algebra:
     }
     \node[box] (hilb) at (-4.2,1.3) {Hilbert space\\\(\Hilb,\vac,U\)};
     \node[box] (domain) at (0,1.3) {common domain\\\(\mathcal D\)};
-    \node[box] (fields) at (4.2,1.3) {smeared fields\\\(\Phi_a(f)\)};
+    \node[box] (fields) at (4.2,1.3) {smeared fields\\\(\Phi_\alpha(f)\)};
     \node[box] (spectrum) at (-3.2,-1.0)
       {spectrum\\\(\operatorname{Spec}(P)\subset\overline V_+\)};
     \node[box] (locality) at (3.2,-1.0)
@@ -104,10 +117,10 @@ The vacuum is cyclic for the polynomial field algebra:
 
 The vacuum \(n\)-point distributions are
 \begin{equation}
-  W_{a_1\cdots a_n}(x_1,\ldots,x_n)
+  W_{\alpha_1\cdots \alpha_n}(x_1,\ldots,x_n)
   =
   \bra{\vac}
-  \Phi_{a_1}(x_1)\cdots\Phi_{a_n}(x_n)
+  \Phi_{\alpha_1}(x_1)\cdots\Phi_{\alpha_n}(x_n)
   \ket{\vac}.
   \label{eq:wightman-functions}
 \end{equation}
@@ -165,7 +178,7 @@ The weak cluster property in the vacuum sector is
 for every spacelike vector \(a\).  In terms of Wightman functions, this says
 that widely spacelike-separated groups of insertions factorize.
 
-The spectral reason is simple.  Insert the spectral resolution of
+The spectral argument is as follows.  Insert the spectral resolution of
 translations between \(A\) and \(B(a)\).  The vacuum atom at \(p=0\) gives the
 product on the right side of \eqref{eq:wightman-weak-cluster}.  If the vacuum
 is the only translation-invariant vector, then no other atom at \(p=0\)
@@ -188,7 +201,7 @@ indices, with \(W_0=1\).  Suppose the hierarchy satisfies Poincare covariance,
 the spectral support condition, Hermiticity, locality, and positivity.  Then
 there exists Wightman field data
 \[
-  (\Hilb,\vac,U,\mathcal D,\{\Phi_a\})
+  (\Hilb,\vac,U,\mathcal D,\{\Phi_\alpha\}_{\alpha\in I})
 \]
 whose vacuum correlation functions are exactly \(\{W_n\}\).  The resulting
 data are unique up to a unitary equivalence preserving the vacuum, the
@@ -197,7 +210,7 @@ Poincare representation, and all smeared fields.
 
 The construction begins with formal vectors
 \[
-  [a_1,f_1;\ldots ;a_n,f_n]
+  [\alpha_1,f_1;\ldots ;\alpha_n,f_n]
 \]
 and defines an inner product by the Wightman distributions.  Positivity makes
 this a positive semidefinite form.  Dividing by zero-norm vectors and
@@ -224,16 +237,16 @@ Let
 \]
 The dense domain \(\mathcal D\) is the image of \(\mathcal V/\mathcal N_W\)
 inside its Hilbert-space completion.  For a test function \(h\) with field
-label \(a\), the reconstructed smeared field is
+label \(\alpha\), the reconstructed smeared field is
 \[
-  \Phi_a(h)[F]=[h_a\otimes F],
+  \Phi_\alpha(h)[F]=[h_\alpha\otimes F],
 \]
-where \(h_a\otimes F\) means left insertion of the one-field test function
-before the sequence \(F\).  Positivity and the Wightman identities ensure
-that this action is well defined on the null quotient and that the vacuum
-vector is the class of \((1,0,0,\ldots)\).  The Poincare representation acts
-by transforming all test functions; covariance of \(\{W_n\}\) makes this
-action unitary.
+where \(h_\alpha\otimes F\) means left insertion of the one-field test
+function before the sequence \(F\).  Positivity and the Wightman identities
+ensure that this action is well defined on the null quotient and that the
+vacuum vector is the class of \((1,0,0,\ldots)\).  The Poincare
+representation acts by transforming all test functions; covariance of
+\(\{W_n\}\) makes this action unitary.
 
 \begin{figure}[H]
   \centering
