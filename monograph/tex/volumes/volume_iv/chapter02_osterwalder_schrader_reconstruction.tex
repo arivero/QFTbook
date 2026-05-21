@@ -210,6 +210,57 @@ chosen time reflection.  It is stable under lattice approximations only when
 the regulator action, observable insertions, and continuum limit preserve the
 positive-time quadratic form.
 
+\section{Reflection Positivity for Generating Functionals}
+
+When the Euclidean moments are encoded by \(Z_E[J]\), reflection positivity
+has an equivalent source form.  Let \(J_r\) be finitely many sources supported
+in positive Euclidean time and let \(c_r\in\mathbb C\).  Define the reflected
+source by
+\[
+  (\Theta J_r)(x)=\overline{J_r(\theta x)}
+\]
+with the field adjunction included when the source carries labels.  The
+generating functional is reflection positive when
+\begin{equation}
+  \sum_{r,s}\overline c_r c_s\,
+  Z_E[\Theta J_r+J_s]\ge0 .
+  \label{eq:os-generating-functional-positivity}
+\end{equation}
+Expanding \(Z_E\) in powers of the sources recovers
+\eqref{eq:os-reflection-positivity} for all Schwinger functions.  Conversely,
+if the moment expansion is valid in a neighborhood of the origin, the
+Schwinger-function inequalities imply
+\eqref{eq:os-generating-functional-positivity}.
+
+For a Gaussian scalar measure with covariance \(C(x-y)\), the criterion
+reduces to positivity of the kernel reflected across \(\tau=0\):
+\[
+  \int_{\tau_x>0}\dd^Dx
+  \int_{\tau_y>0}\dd^Dy\,
+  \overline{f(x)}\,C(\theta x-y)\,f(y)\ge0
+\]
+for all positive-time test functions \(f\).  The free massive covariance
+\[
+  C(x-y)=
+  \int\frac{\dd^Dk_E}{(2\pi)^D}
+  \frac{\ee^{\ii k_E\cdot(x-y)}}{k_E^2+m^2}
+\]
+satisfies this condition because its Fourier representation in spatial
+momentum is
+\[
+  C(\tau,\mathbf x)
+  =
+  \int\frac{\dd^{D-1}\mathbf p}{(2\pi)^{D-1}}
+  \frac{\ee^{\ii\mathbf p\cdot\mathbf x}
+        \ee^{-\omega_{\mathbf p}|\tau|}}
+       {2\omega_{\mathbf p}},
+  \qquad
+  \omega_{\mathbf p}=\sqrt{\mathbf p^2+m^2},
+\]
+so the reflected quadratic form is an integral of absolute squares with
+positive weight.  This computation is the Euclidean shadow of the positive
+one-particle Hilbert space of the free scalar field.
+
 \begin{figure}[H]
   \centering
   \resizebox{0.86\textwidth}{!}{%

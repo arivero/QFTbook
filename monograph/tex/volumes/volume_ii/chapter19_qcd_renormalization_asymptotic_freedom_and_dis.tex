@@ -252,3 +252,69 @@ where \(P_{ab}\) are splitting kernels, equivalently anomalous dimensions of
 the light-ray operators.  This is the precise sense in which short-distance
 quark and gluon variables control high-energy hadronic observables while
 physical asymptotic states remain color singlets.
+
+\section{Local Twist-Two Operators and Integer Moments}
+
+The light-ray definition packages an infinite family of local operators.  For
+quarks, the symmetric traceless spin-\(N\) operators have the form
+\[
+  \mathcal O_{q}^{\mu_1\cdots\mu_N}
+  =
+  \bar q\,
+  \gamma^{(\mu_1}
+  \ii D^{\mu_2}\cdots \ii D^{\mu_N)}
+  q
+  -
+  \text{traces},
+  \qquad N\ge1,
+\]
+with gauge-covariant derivatives in the appropriate representation.  The
+parentheses denote symmetrization over Lorentz indices.  The gluon operators
+are
+\[
+  \mathcal O_{g}^{\mu_1\cdots\mu_N}
+  =
+  F^{(\mu_1}{}_{\rho}\,
+  \ii D^{\mu_2}\cdots\ii D^{\mu_{N-1}}
+  F^{\mu_N)\rho}
+  -
+  \text{traces},
+  \qquad N\ge2 .
+\]
+Both have twist two after subtracting traces.  Their hadron matrix elements
+are fixed by Lorentz covariance up to scalar reduced matrix elements:
+\[
+  \bra{P}\mathcal O_{a}^{\mu_1\cdots\mu_N}(\mu)\ket{P}
+  =
+  2\,a_{a,N}(\mu)
+  \bigl(P^{\mu_1}\cdots P^{\mu_N}-\text{traces}\bigr),
+  \qquad a=q,g .
+\]
+
+Expanding the light-ray operator near zero separation gives these local
+operators contracted with the lightlike vector \(n^\mu\).  Consequently the
+integer moments of the parton distributions are the same reduced matrix
+elements, with the precise flavor and charge-conjugation combination fixed by
+the current channel:
+\[
+  a_{a,N}(\mu)
+  =
+  \int_0^1 \dd x\,x^{N-1} f_{a/H}(x,\mu)
+\]
+for the corresponding parton combination.  The local OPE and the nonlocal
+light-ray factorization are therefore two presentations of the same
+short-distance data.
+
+Renormalization mixes operators with the same spin, twist, and quantum
+numbers.  Taking integer moments of \eqref{eq:dglap-evolution} gives
+\[
+  \mu\frac{\dd}{\dd\mu}a_{a,N}(\mu)
+  =
+  \sum_b P_{ab,N}(g(\mu))\,a_{b,N}(\mu),
+  \qquad
+  P_{ab,N}(g)=\int_0^1\dd x\,x^{N-1}P_{ab}(x,g).
+\]
+The coefficient functions in the current OPE obey the dual evolution so that
+the physical structure functions are independent of the auxiliary
+factorization scale.  This is the local-operator form of perturbative
+scaling violation in deep inelastic scattering.

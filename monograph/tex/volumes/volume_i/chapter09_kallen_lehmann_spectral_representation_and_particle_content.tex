@@ -188,6 +188,55 @@ The spectral measure \(d\rho\) is thus common to the Wightman, time-ordered,
 and Euclidean two-point functions. The different Green functions are different
 boundary values or analytic continuations of the same positive spectral data.
 
+\section{Stieltjes Positivity of the Euclidean Propagator}
+
+The Euclidean momentum-space two-point function contains the same information
+in a form that is often the most robust for constructive and lattice
+arguments.  Set
+\[
+  Q^2=k_E^2\ge0 .
+\]
+After Fourier transform,
+\begin{equation}
+  \widetilde G_E(Q^2)
+  =
+  \int_{[0,\infty)}
+  \frac{\dd\rho(s)}{Q^2+s}.
+  \label{eq:euclidean-stieltjes-propagator}
+\end{equation}
+Thus \(\widetilde G_E\) is a Stieltjes transform of a positive measure.
+Consequently, wherever the derivatives exist,
+\[
+  (-1)^r
+  \frac{\dd^r}{\dd (Q^2)^r}\widetilde G_E(Q^2)
+  =
+  r!\int_{[0,\infty)}
+  \frac{\dd\rho(s)}{(Q^2+s)^{r+1}}
+  \ge0,
+  \qquad r=0,1,2,\ldots .
+\]
+These inequalities are not perturbative statements.  They are Hilbert-space
+positivity written in Euclidean momentum variables.
+
+The measure can be recovered from the discontinuity of the analytic function
+\[
+  z\longmapsto
+  \int_{[0,\infty)}\frac{\dd\rho(s)}{z+s}
+\]
+across its cut on the negative real \(z\)-axis.  If the absolutely continuous
+part has density \(\rho_{\rm ac}(s)\), then
+\[
+  \rho_{\rm ac}(s)
+  =
+  -\frac{1}{2\pi\ii}
+  \operatorname{Disc}_{z=-s}\widetilde G_E(z),
+  \qquad s>0,
+\]
+with atoms appearing as simple poles at \(z=-s_0\) of positive residue.  This
+is the Euclidean form of the statement that stable particles are isolated
+positive atoms of the spectral measure and multiparticle states are continuous
+spectral support.
+
 \section{Canonical Normalization and Spectral Weight}
 
 The measure \(d\rho\) depends on the normalization of the local field.  When

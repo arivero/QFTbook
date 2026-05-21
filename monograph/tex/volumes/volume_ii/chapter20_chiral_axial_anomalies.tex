@@ -242,6 +242,40 @@ the six-form polynomial for the gauged symmetry.  If the polynomial is nonzero
 for a global symmetry background, it is an anomaly to be matched rather than
 an inconsistency.
 
+\section{Local Counterterms and Preserved Currents}
+
+An anomaly representative depends on the choice of local counterterms, while
+its cohomology class does not.  Let \(B\) denote background gauge fields for a
+set of currents, and let \(W[B]\) be the renormalized generating functional.
+Adding a local functional \(I_{\rm ct}[B]\) changes
+\[
+  W[B]\longmapsto W[B]+I_{\rm ct}[B].
+\]
+If a background gauge transformation with parameter \(\zeta\) has anomaly
+\[
+  \delta_\zeta W[B]=\mathcal A(\zeta,B),
+\]
+then after the counterterm shift
+\[
+  \mathcal A(\zeta,B)
+  \longmapsto
+  \mathcal A(\zeta,B)+\delta_\zeta I_{\rm ct}[B].
+\]
+The second term is BRST-exact in the local functional complex.  It can move
+the displayed divergence among currents that are coupled to backgrounds, but
+it cannot remove a nonzero anomaly class.
+
+This distinction is essential when one of the currents is gauged dynamically.
+The gauge current must satisfy the Slavnov--Taylor identity; otherwise the
+gauge-fixed state space cannot be quotiented to a positive physical Hilbert
+space.  For a vector and an axial current coupled to background fields, a
+Bardeen counterterm can shift the local expression of the anomaly between
+vector and axial Ward identities.  The convention used in
+\eqref{eq:abelian-axial-anomaly} is the one in which the vector gauge Ward
+identity is preserved and the axial current carries the anomaly.  For a
+purely global symmetry, by contrast, the anomaly is allowed and becomes an
+RG-invariant background response to be matched by the infrared theory.
+
 \section{The Strong CP Parameter}
 
 In QCD with \(N_f\) quark flavors, the Euclidean gauge action may include the

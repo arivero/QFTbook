@@ -146,6 +146,42 @@ The Haag--Ruelle construction supplies the last target independently of
 perturbation theory; the Green functions supply a way to compute its matrix
 elements when the one-particle pole hypotheses hold.
 
+\section{Contact Terms and Interpolating Fields}
+
+The LSZ operation depends only on the simultaneous external one-particle pole.
+This fact gives two useful stability properties.
+
+First, different definitions of time-ordered products may differ by contact
+terms supported on partial diagonals, for example on \(x_i=x_j\).  In momentum
+space such terms are polynomial, or more generally local, in the momenta
+associated with the coincident insertions.  They have no one-particle pole in
+each external variable.  After multiplication by
+\[
+  \prod_a (k_a^2+m^2)
+\]
+and taking the on-shell boundary value with separated wave packets, these
+local terms do not contribute to the connected scattering kernel.  They still
+matter for Ward identities, composite operators, and renormalized local
+products; they are simply not external one-particle residues.
+
+Second, the local field used in the reduction is an interpolating field.  Let
+\(\widehat\phi'\) be another scalar local field with
+\[
+  \langle\Omega|\widehat\phi'(0)|\vec p\rangle
+  =
+  a\,Z^{1/2},
+  \qquad a\ne0,
+\]
+on the same isolated one-particle subspace.  Its two-point function has
+one-particle residue \(Z'=|a|^2Z\).  The LSZ factors \(Z'^{-1/2}\) remove the
+changed residue, and the resulting \(S\)-matrix element is the same.  Terms in
+\(\widehat\phi'\) whose vacuum-to-one-particle matrix elements vanish, such
+as equation-of-motion terms of the form \((\Box-m^2)\widehat\chi\) in these
+sign conventions, do not create the external particle pole and therefore drop
+out of the reduction formula.  The scattering operator belongs to the
+asymptotic Hilbert space; the interpolating local fields are coordinates used
+to access its matrix elements.
+
 \section{Wave-Packet Form of LSZ}
 
 Let

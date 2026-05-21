@@ -204,6 +204,45 @@ insertions into irreducible conformal multiplets:
 The multiplicity \(m_{ij}^{\mathcal O}\) equals the number of independent
 three-point structures connecting \(i\), \(j\), and \(\mathcal O\).
 
+\section{Reflection Positivity and OPE Coefficients}
+
+Reflection positivity constrains the numerical OPE data.  Choose Hermitian
+scalar primaries with two-point normalization
+\[
+  \langle \mathcal O_A(x)\mathcal O_B(0)\rangle
+  =
+  \frac{\delta_{AB}}{|x|^{2\Delta_A}} .
+\]
+With this normalization, phases of nondegenerate Hermitian primaries can be
+chosen so that three-point coefficients of Hermitian scalar operators are
+real.  If \(\phi\) is a Hermitian scalar primary, the contribution of a
+primary family \(\mathcal O\) to the \(\phi\phi\phi\phi\) four-point function
+has coefficient
+\[
+  \lambda_{\phi\phi\mathcal O}^2
+  \ge0
+\]
+in the channel where the first pair of operators is radially inside the
+second pair.  This nonnegative number is the squared norm of the projection of
+the state \(\phi(x)\phi(0)\Omega\) onto the conformal multiplet of
+\(\mathcal O\).
+
+When several operators with the same quantum numbers mix, the statement is
+matrix-valued.  Let \(P_\Delta\) be the spectral projection onto a finite
+degenerate subspace of fixed spin and scaling dimension.  For any coefficients
+\(\alpha_i\),
+\[
+  \left\|
+    P_\Delta
+    \sum_i\alpha_i\,\mathcal O_i(x_i)\Omega
+  \right\|^2
+  \ge0 .
+\]
+The corresponding OPE coefficients form a positive semidefinite matrix in
+that degenerate subspace.  Positivity of OPE data is therefore a direct
+Hilbert-space consequence of radial quantization, not a separate dynamical
+assumption.
+
 \section{Associativity}
 
 Consider a correlation function with three nearby operators.  There are two
