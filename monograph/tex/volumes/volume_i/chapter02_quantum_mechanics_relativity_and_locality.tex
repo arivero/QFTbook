@@ -83,15 +83,120 @@ In a vacuum sector there is a unit vector \(\vac\in\Hilb\) satisfying
   U(a,\Lambda)\vac=\vac .
 \]
 
+\section{Translation Spectrum and Mass Sectors}
+
+The translation generators are commuting self-adjoint operators.  Their joint
+spectral theorem gives a projection-valued measure
+\[
+  E:\{\text{Borel subsets of }\R^D\}\longrightarrow
+  \{\text{orthogonal projections on }\Hilb\}
+\]
+such that
+\[
+  P^\mu=\int_{\R^D}p^\mu\,\dd E(p),
+  \qquad
+  U(a,\mathbf 1)
+  =
+  \int_{\R^D}\ee^{-\ii a^\mu p_\mu}\,\dd E(p).
+\]
+For a vector \(\psi\in\Hilb\), its energy-momentum spectral measure is
+\[
+  \mu_\psi(\Delta)=\|E(\Delta)\psi\|^2 ,
+  \qquad
+  \Delta\subset\R^D\text{ Borel}.
+\]
+The spectral support of \(\psi\) is the closed support of this measure.  The
+spectrum condition in the preceding section is the statement that
+\[
+  E(\R^D\setminus\overline V_+)=0 .
+\]
+
+The invariant mass operator is defined by functional calculus:
+\[
+  M^2=-P_\mu P^\mu
+  =
+  \int_{\R^D}(-p_\mu p^\mu)\,\dd E(p).
+\]
+For a Borel set \(I\subset[0,\infty)\), the projection onto the corresponding
+mass range is
+\[
+  E_M(I)
+  =
+  E\bigl(\{p\in\overline V_+:-p_\mu p^\mu\in I\}\bigr).
+\]
+The vacuum subspace is the zero-momentum subspace
+\[
+  E(\{0\})\Hilb .
+\]
+In a pure vacuum sector this subspace is one-dimensional and is spanned by
+\(\vac\).
+
+\begin{definition}[Mass sector and isolated particle shell]
+  A mass sector of mass \(m\ge0\) is the spectral subspace of \(M^2\) at the
+  value \(m^2\).  For \(m>0\), the corresponding positive-energy mass shell is
+  \[
+    \Sigma_m^+
+    =
+    \{p\in\R^D:p^0=\sqrt{\vec p^{\,2}+m^2},\ p_\mu p^\mu=-m^2\}.
+  \]
+  It is isolated when there is an open neighborhood \(N\subset\R^D\) of
+  \(\Sigma_m^+\) such that
+  \[
+    \operatorname{Spec}(P)\cap N=\Sigma_m^+ .
+  \]
+\end{definition}
+
+An isolated massive particle in a local quantum theory is the closed spectral
+subspace
+\[
+  \Hilb_1=E(\Sigma_m^+)\Hilb
+\]
+inside the physical Hilbert space.  Its Wigner representation is the
+restriction of the Poincare representation to this subspace.  Later, the
+Kallen--Lehmann representation detects the same object as an atom in a
+two-point spectral measure, and Haag--Ruelle theory uses the isolation
+hypothesis to construct asymptotic multi-particle states.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.76\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[-{Latex[length=2mm]},line width=0.75pt] (-3.4,0)--(3.65,0)
+      node[right] {\(\vec p\)};
+    \draw[-{Latex[length=2mm]},line width=0.75pt] (0,-0.25)--(0,3.65)
+      node[above] {\(p^0\)};
+    \draw[gray!55,dashed,line width=0.8pt] (-3.0,3.0)--(0,0)--(3.0,3.0);
+    \node[gray!65!black] at (2.72,2.45) {\(\overline V_+\)};
+    \draw[blue!70!black,line width=1.2pt]
+      plot[smooth,domain=-2.45:2.45,samples=100]
+      (\x,{sqrt(\x*\x+0.8)});
+    \node[blue!70!black] at (-2.55,2.98) {\(\Sigma_m^+\)};
+    \draw[red!75!black,line width=2.0pt]
+      plot[smooth,domain=-2.95:2.95,samples=100]
+      (\x,{sqrt(\x*\x+2.45)});
+    \node[red!75!black,fill=white,inner sep=1pt] at (2.55,3.48)
+      {continuum threshold};
+    \fill[black] (0,0) circle (1.7pt);
+    \node[below right] at (0,0) {\(\vac\)};
+    \draw[decorate,decoration={brace,amplitude=5pt},green!45!black]
+      (2.03,2.14)--(2.03,2.66);
+    \node[green!45!black,align=center,fill=white,inner sep=1pt] at (2.94,2.04)
+      {isolating\\neighborhood};
+  \end{tikzpicture}
+  }
+  \caption{The translation spectrum lies in the closed future cone.  A stable
+  massive particle corresponds to an isolated positive-energy mass shell,
+  separated from the continuum in a neighborhood of the shell.}
+  \label{fig:translation-spectrum-mass-shell}
+\end{figure}
+
 \section{One-Particle Representations}
 
-Fix a mass \(m>0\). The positive mass shell is
-\[
-  \Sigma_m^+
-  =
-  \{p\in\mathbb R^D:\eta_{\mu\nu}p^\mu p^\nu=-m^2,\ p^0>0\}.
-\]
-For a massive spinless particle, the one-particle Hilbert space is realized as
+The spectral subspace \(E(\Sigma_m^+)\Hilb\) carries a unitary
+representation of the Poincare group.  The corresponding abstract
+one-particle representation is described by Wigner's little-group
+construction.  For a massive spinless particle, the one-particle Hilbert
+space is realized as
 \[
   \Hilb_1
   =
@@ -223,10 +328,12 @@ functions.
 
 \section{Constructed Structures}
 
-The chapter has constructed four distinct structures. Hilbert-space quantum
-mechanics supplies states and operators. Poincare representation theory
-supplies one-particle state spaces. Fock space supplies free multi-particle
-state spaces. A local quantum theory supplies local observable assignments
-satisfying covariance and microcausality. The free scalar field realizes all
-four structures explicitly and will serve as the first model for the general
-field framework.
+The chapter has constructed five distinct structures. Hilbert-space quantum
+mechanics supplies states and operators. Translation spectral theory supplies
+energy-momentum support, invariant mass, and particle subspaces inside the
+physical Hilbert space. Poincare representation theory supplies the
+transformation law of one-particle state spaces. Fock space supplies free
+multi-particle state spaces. A local quantum theory supplies local observable
+assignments satisfying covariance and microcausality. The free scalar field
+realizes these structures explicitly and will serve as the first model for
+the general field framework.
