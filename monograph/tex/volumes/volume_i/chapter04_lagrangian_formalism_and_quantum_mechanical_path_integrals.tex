@@ -122,6 +122,66 @@ denotes this regulated construction together with the specified limiting
 procedure. In the present chapter, the finite-\(N\) expression is the defined
 object.
 
+\section{Trotter Limits and Kernel Convergence}
+
+The passage from the finite product to a continuum path integral is a
+convergence statement about operators before it is a statement about kernels.
+Let
+\[
+  \widehat H=\widehat A+\widehat B
+\]
+be a self-adjoint Hamiltonian obtained from two self-adjoint pieces on a
+specified common form domain.  Suppose the hypotheses of the Trotter product
+formula hold for this sum.  Then, for real time,
+\[
+  \exp\left(-\frac{\ii T}{\hbar}\widehat H\right)
+  =
+  \operatorname*{s-lim}_{N\to\infty}
+  \left[
+    \exp\left(-\frac{\ii\epsilon}{\hbar}\widehat A\right)
+    \exp\left(-\frac{\ii\epsilon}{\hbar}\widehat B\right)
+  \right]^N,
+  \qquad
+  \epsilon=\frac{T}{N},
+\]
+where the limit is in the strong operator topology on \(\Hilb_{\mathcal Q}\).
+The Euclidean version is the semigroup limit
+\[
+  \exp\left(-\frac{\tau}{\hbar}\widehat H\right)
+  =
+  \operatorname*{s-lim}_{N\to\infty}
+  \left[
+    \exp\left(-\frac{\delta}{\hbar}\widehat A\right)
+    \exp\left(-\frac{\delta}{\hbar}\widehat B\right)
+  \right]^N,
+  \qquad
+  \delta=\frac{\tau}{N},
+\]
+when the corresponding semibounded form construction applies.
+
+For the standard Hamiltonian
+\[
+  \widehat H=\frac{1}{2m}\widehat p^2+V(\widehat q),
+\]
+the product formula says that the operator obtained by alternating free
+propagation and multiplication by the potential converges to the exact
+evolution operator.  Inserting position resolutions between the factors gives
+a finite-dimensional integral at each \(N\).  Thus the time-sliced path
+integral is a representation of a product formula.
+
+The distributional kernel
+\[
+  \bra{q_f}\exp\left(-\frac{\ii T}{\hbar}\widehat H\right)\ket{q_i}
+\]
+requires an additional topology.  The useful topologies include convergence
+after smearing \(q_i\) and \(q_f\) with test functions, convergence after
+analytic continuation to Euclidean time, and pointwise kernel convergence
+under stronger regularity assumptions on \(V\).  Therefore the continuum
+path-integral notation in this monograph always carries one of the following
+meanings: a finite regulator, a strong operator limit, a smeared
+distributional limit, a Euclidean measure or semigroup construction, or a
+perturbative asymptotic expansion.
+
 \section{Operator Ordering and Local Counterterms}
 
 The function \(h(q,p)\) depends on the ordering convention used to represent
