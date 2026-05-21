@@ -70,8 +70,9 @@ the pole
 \]
 where \(\widetilde G_{2,\mathrm{less}}\) has no pole at the isolated
 one-particle mass shell. The number \(Z\) depends on the chosen local field.
-The particle state and the \(S\)-operator do not; changing the interpolating
-field changes the residue factor appearing in the reduction formula.
+The particle state and the \(S\)-operator are invariant data; changing the
+interpolating field changes the residue factor appearing in the reduction
+formula.
 
 The operation
 \[
@@ -87,6 +88,63 @@ Lorentzian Green-function chapter:
 \]
 as a mass-shell residue. Applying one such operation to every external field
 is the analytic core of LSZ reduction.
+
+\section{Connected Truncation and External Amputation}
+
+The pole extracted by LSZ is an external one-particle pole.  It is useful to
+separate this operation from two other operations that are often compressed
+in notation.  First, the connected time-ordered functions are obtained from
+the generating functional by taking cumulants.  If
+\[
+  Z[J]=
+  \left\langle\Omega\left|
+  \operatorname T\exp\left(\ii\int J(x)\widehat\phi(x)\,\dd^Dx\right)
+  \right|\Omega\right\rangle,
+\]
+then
+\[
+  G_N^{\rm conn}(x_1,\ldots,x_N)
+  =
+  \left.
+  \ii^{-N}
+  \frac{\delta^N \log Z[J]}
+       {\delta J(x_1)\cdots\delta J(x_N)}
+  \right|_{J=0}.
+\]
+With the sign convention for \(J\) inherited from the exponential above, this
+is the cumulant part of the time-ordered distribution: it contains precisely
+the vacuum-connected components.  External one-particle propagators remain
+until the residue operation is applied.
+
+Second, amputation in LSZ is residue extraction at the isolated mass shell:
+\[
+  \operatorname*{Res}_{k^2=-m^2}
+  \widetilde G_2(k)
+  =
+  -\ii Z .
+\]
+Multiplication by \(Z^{-1/2}\ii(k^2+m^2)\) is meaningful after smearing in a
+neighborhood of the mass shell and taking the boundary value.  It removes
+only the external pole associated with the chosen stable particle.  Internal
+propagators, threshold singularities, bound-state poles in other channels,
+and contact terms remain part of the amputated connected kernel.
+
+Thus the reduction map has three logically distinct inputs:
+\[
+  \begin{gathered}
+  \text{time-ordered distributions}
+  \longrightarrow
+  \text{connected distributions}
+  \\
+  \longrightarrow
+  \text{external one-particle residues}
+  \longrightarrow
+  \text{scattering matrix elements}.
+  \end{gathered}
+\]
+The Haag--Ruelle construction supplies the last target independently of
+perturbation theory; the Green functions supply a way to compute its matrix
+elements when the one-particle pole hypotheses hold.
 
 \section{Wave-Packet Form of LSZ}
 
@@ -287,10 +345,10 @@ Here \(P_{\mathrm{out}}=\sum_i q_i\) and
 \end{tikzpicture}
 \end{center}
 
-The diagram displays the operation, not an additional definition. The left
-object is the connected time-ordered Green function with its external
-one-particle poles. The right object is the on-shell invariant amplitude
-obtained after the pole residues have been extracted.
+The diagram displays the operation. The left object is the connected
+time-ordered Green function with its external one-particle poles. The right
+object is the on-shell invariant amplitude obtained after the pole residues
+have been extracted.
 
 \section{Perturbative Evaluation After Reduction}
 

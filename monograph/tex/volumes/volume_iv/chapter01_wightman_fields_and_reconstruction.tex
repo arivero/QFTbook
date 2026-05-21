@@ -173,6 +173,36 @@ completing gives \(\Hilb\).  Fields act by left multiplication on the dense
 subspace of finite sequences, and the Poincare action is induced by covariance
 of the hierarchy.
 
+More explicitly, let \(\mathcal V\) be the vector space of finite sequences
+\[
+  F=(f_0,f_1,f_2,\ldots),
+\]
+where \(f_n\) is a Schwartz test function on \(M^n\) valued in the \(n\)-fold
+field-label space and only finitely many components are nonzero.  Define
+\begin{equation}
+  \langle F,G\rangle_W
+  =
+  \sum_{m,n}
+  W_{m+n}(f_m^\dagger\otimes g_n).
+  \label{eq:wightman-reconstruction-inner-product}
+\end{equation}
+Let
+\[
+  \mathcal N_W=\{F\in\mathcal V\mid \langle F,F\rangle_W=0\}.
+\]
+The dense domain \(\mathcal D\) is the image of \(\mathcal V/\mathcal N_W\)
+inside its Hilbert-space completion.  For a test function \(h\) with field
+label \(a\), the reconstructed smeared field is
+\[
+  \Phi_a(h)[F]=[h_a\otimes F],
+\]
+where \(h_a\otimes F\) means left insertion of the one-field test function
+before the sequence \(F\).  Positivity and the Wightman identities ensure
+that this action is well defined on the null quotient and that the vacuum
+vector is the class of \((1,0,0,\ldots)\).  The Poincare representation acts
+by transforming all test functions; covariance of \(\{W_n\}\) makes this
+action unitary.
+
 \begin{figure}[H]
   \centering
   \resizebox{0.92\textwidth}{!}{%

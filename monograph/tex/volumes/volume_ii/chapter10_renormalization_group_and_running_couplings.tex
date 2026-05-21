@@ -481,6 +481,60 @@ comparison between two widely separated scales can contain powers of
 small steps and then integrates the result, thereby summing the logarithmic
 terms determined by the computed beta function.
 
+\section{Callan--Symanzik Equation}
+
+The beta function is a vector field on the renormalized coordinate space.  Its
+action on correlation functions is the Callan--Symanzik equation.  Let
+\(\phi_R=Z_\phi(\mu)^{-1/2}\phi_0\) be a renormalized scalar field, and let
+\[
+  G_R^{(n)}(x_1,\ldots,x_n;\lambda(\mu),\mu)
+  =
+  \langle
+    \phi_R(x_1)\cdots\phi_R(x_n)
+  \rangle
+\]
+be a renormalized connected correlation function in a one-coupling family.
+The bare correlation function is independent of the auxiliary scale \(\mu\).
+Define
+\[
+  \gamma_\phi(\lambda)
+  =
+  \frac12\frac{\dd\log Z_\phi}{\dd\log\mu}.
+\]
+Then
+\begin{equation}
+  \left(
+    \mu\frac{\partial}{\partial\mu}
+    +
+    \beta(\lambda)\frac{\partial}{\partial\lambda}
+    +
+    n\gamma_\phi(\lambda)
+  \right)
+  G_R^{(n)}
+  =
+  0.
+  \label{eq:callan-symanzik-connected}
+\end{equation}
+The derivative \(\mu\partial_\mu\) is taken at fixed coordinates \(x_i\) and
+fixed value of the renormalized coordinate \(\lambda\); the second term moves
+the theory point along the RG vector field.
+
+For several couplings the equation is
+\[
+  \left(
+    \mu\frac{\partial}{\partial\mu}
+    +
+    \sum_I\beta_I(\lambda)\frac{\partial}{\partial\lambda_I}
+    +
+    n\gamma_\phi(\lambda)
+  \right)G_R^{(n)}=0.
+\]
+For a collection of operators \(\mathcal O_A\), the last term is replaced by
+the anomalous-dimension matrix acting on the operator labels.  Thus scaling
+laws at a fixed point are obtained by diagonalizing the linear action of the
+RG on local operators, while running away from a fixed point is governed by
+the full vector field \(\beta_I\partial_{\lambda_I}\).
+
 \section{Logarithmic Consistency}
 
 The existence of finite beta functions imposes relations among logarithms in
