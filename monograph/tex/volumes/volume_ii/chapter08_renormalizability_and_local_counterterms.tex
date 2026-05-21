@@ -147,6 +147,79 @@ the counterterms are part of the renormalization prescription: changing them
 changes the coordinate system \(\lambda_{\rm phys}\) on the same perturbative
 family.
 
+\section{Locality as Extension of Distributions}
+
+The locality of counterterms can be formulated without reference to a
+particular regulator.  In position space, a Feynman graph with vertices
+\[
+  x_1,\ldots,x_r
+\]
+defines a distribution on the configuration space where no ultraviolet
+collision has occurred.  Ultraviolet renormalization is the problem of
+extending this distribution across the collision diagonals, such as
+\[
+  x_{i_1}=\cdots=x_{i_k}.
+\]
+The possible ambiguities in the extension are local distributions supported on
+those diagonals.
+
+\begin{definition}[Scaling degree]
+Let \(T\in\mathcal D'(\mathbb R^n\setminus\{0\})\).  For \(\lambda>0\), define
+the scaled distribution \(T_\lambda\) by
+\[
+  \langle T_\lambda,f\rangle
+  =
+  \lambda^{-n}
+  \left\langle T, f(\lambda^{-1}\,\cdot)\right\rangle ,
+  \qquad f\in C_c^\infty(\mathbb R^n\setminus\{0\}).
+\]
+The scaling degree of \(T\) at the origin is
+\[
+  \operatorname{sd}_0(T)
+  =
+  \inf\left\{\delta\in\mathbb R:
+  \lambda^\delta T_\lambda\to0
+  \ \hbox{in}\ \mathcal D'(\mathbb R^n\setminus\{0\})
+  \ \hbox{as}\ \lambda\to0^+\right\}.
+\]
+\end{definition}
+
+The extension theorem is the distribution-theoretic core of perturbative
+locality.
+
+\begin{theorem}[Extension at a diagonal]
+Let \(T\in\mathcal D'(\mathbb R^n\setminus\{0\})\) have finite scaling degree
+\(s=\operatorname{sd}_0(T)\).  There exists an extension
+\(\overline T\in\mathcal D'(\mathbb R^n)\) whose restriction to
+\(\mathbb R^n\setminus\{0\}\) is \(T\) and whose scaling degree is still
+\(s\).  If \(s<n\), this extension is unique.  If \(s\ge n\), any two
+extensions of scaling degree \(s\) differ by
+\[
+  \sum_{|\alpha|\le \lfloor s\rfloor-n}
+  c_\alpha\,\partial^\alpha\delta^{(n)}(x),
+\]
+with constants \(c_\alpha\).
+\end{theorem}
+
+For a graph subconfiguration collapsing to a diagonal, translation invariance
+removes the center-of-mass coordinate, so \(n=D(k-1)\) for \(k\) colliding
+vertices.  The integer
+\[
+  \omega=\lfloor \operatorname{sd}_0(T)\rfloor-n
+\]
+is the degree of local ambiguity.  A derivative
+\(\partial^\alpha\delta^{(n)}(x)\) supported on the diagonal is, after
+Fourier transform, a polynomial of degree \(|\alpha|\) in the momenta entering
+the collapsed subgraph.  Thus the extension theorem gives exactly the local
+Taylor polynomial counterterms used in momentum-space renormalization.
+
+Multiple collision diagonals meet along smaller diagonals.  Choosing
+extensions compatibly over this stratified configuration space is the
+position-space form of the subdivergence problem.  The forest formulas in the
+next chapter organize the same compatibility in momentum space: each divergent
+subgraph corresponds to one collision diagonal, and each counterterm is the
+allowed derivative-of-delta ambiguity on that diagonal.
+
 \section{First Counterterm Census in Four Dimensions}
 
 The local nature of the required terms is visible in elementary scalar
