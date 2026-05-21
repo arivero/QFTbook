@@ -9,7 +9,8 @@ No source is trusted blindly. Each source has a role.
 1. Xi Yin's handwritten QFT PDFs in `references/`.
 2. The faithful transcription in `transcription/`.
 3. Xi Yin's related string notes and appendices in
-   `/Users/xiyin/ResearchIdeas/stringbook/`.
+   `/Users/xiyin/ResearchIdeas/stringbook/`, used as inspiration,
+   convention checks, and source leads rather than as an exposition to adapt.
 4. Related formalization projects in `/Users/xiyin/StringGeometry/` and
    `/Users/xiyin/StringAlgebra/` where relevant.
 5. The statmech project in `/Users/xiyin/statmech/` for workflow precedent and
@@ -45,7 +46,7 @@ draft claim to be weakened, qualified, or moved to an open problem.
 | Ben Lou notes | `references/253a_notes.tex`, `references/253b transcribed lecture notes.tex`, `references/253c_notes.tex` | Non-authoritative comparison layer. |
 | Sound reference shelf | `references/sound_references/` | Downloaded external sources for rigorous frameworks and theorem boundaries. |
 | Statmech project | `/Users/xiyin/statmech/` | Workflow precedent and overlap with RG/statistical field theory. |
-| String book | `/Users/xiyin/ResearchIdeas/stringbook/` | Advanced appendices and related QFT/string-theoretic material. |
+| String book | `/Users/xiyin/ResearchIdeas/stringbook/` | Inspiration, convention checks, and source leads for related QFT material; especially useful for later CFT and supersymmetric volumes, but never a substitute for an independent QFT monograph development. |
 | StringGeometry | `/Users/xiyin/StringGeometry/` | Later-volume mathematical structures. |
 | StringAlgebra | `/Users/xiyin/StringAlgebra/` | Algebraic and categorical structures for advanced volumes. |
 
@@ -93,3 +94,19 @@ For imported material, record:
 - whether the proof is reproduced, sketched, or cited;
 - whether notation has been adapted;
 - whether figures or diagrams were checked.
+
+## Stringbook Boundary
+
+For CFT and supersymmetric field theory, the stringbook appendices can identify
+useful conventions, calculations, and reference trails.  They do not determine
+the QFT monograph's organization, definitions, theorem status, or level of
+detail.  A CFT or supersymmetry chapter may use the stringbook only after the
+chapter dossier states:
+
+- which appendix or calculation was consulted;
+- whether the material is a convention check, an example, a source lead, or a
+  calculation to rederive;
+- which QFT-side definitions and hypotheses are being introduced independently;
+- which external mathematical or physics references support theorem-level
+  claims;
+- what is deliberately not being imported from the string-theory context.

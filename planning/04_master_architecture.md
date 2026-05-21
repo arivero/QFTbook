@@ -185,6 +185,15 @@ Further development targets:
 - reserve two-dimensional, supersymmetric, integrable, and topological
   special structures for their own volumes.
 
+Source protocol:
+
+- Xi's QFT lecture notes set the logical CFT spine.
+- Stringbook appendices may be consulted for two-dimensional CFT conventions,
+  examples, and source leads, but the CFT volume must be written as a new
+  comprehensive QFT treatment.
+- Every theorem-level CFT claim needs either a derivation in the monograph or an
+  external reference with hypotheses recorded in the chapter dossier.
+
 ## Volume VI: Integrable Quantum Field Theory
 
 Purpose: exact QFTs with infinitely many conserved quantities, factorized
@@ -214,6 +223,17 @@ Potential chapters:
 5. Moduli Spaces
 6. Superconformal Field Theories
 7. Protected Sectors
+
+Source protocol:
+
+- The volume must begin from supersymmetry algebras, spin representation
+  theory, state spaces, fields, multiplets, and local dynamics as QFT objects.
+- Stringbook appendices and verification codes may be used for convention
+  checks and examples, but the development must be independent rather than an
+  adaptation of string-theory support material.
+- Supergravity, compactification, branes, holography, and localization may
+  enter only after the necessary supersymmetric QFT foundations have been
+  built.
 
 ## Volume VIII: Topological And Cohomological Quantum Field Theory
 

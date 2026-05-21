@@ -69,6 +69,17 @@ Date: 2026-05-21
   thermal and nonequilibrium QFT, constructive/lattice/numerical QFT, and QFT
   in curved spacetime.
 
+Date: 2026-05-22
+
+- Xi's stringbook appendices may be used as inspiration, convention checks, and
+  source leads for CFT and supersymmetric field theory.
+- The CFT and supersymmetric QFT volumes must be developed as new,
+  comprehensive QFT monograph treatments, not adapted appendices or a string
+  theory support text.
+- Any stringbook use in CFT or supersymmetry must be recorded in the relevant
+  dossier as a cross-check or seed, with independent definitions, hypotheses,
+  derivations, and external references supplied for the QFT monograph.
+
 ## Current Implementation Decisions
 
 - Keep `transcription/` as the faithful source layer.
