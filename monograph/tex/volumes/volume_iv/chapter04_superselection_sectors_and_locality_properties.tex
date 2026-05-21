@@ -99,6 +99,42 @@ back to common reference regions.  In spacetime dimension at least three, this
 exchange is symmetric under the usual DHR hypotheses.  In two dimensions and
 for lower-codimension extended sectors, braided structures appear naturally.
 
+\section{Statistics Operators and Conjugates}
+
+The exchange isomorphism contains the statistics of the sector.  For a
+localized endomorphism \(\rho\), choose a transported copy
+\(\rho'\) localized spacelike to \(\rho\).  Locality gives an intertwiner
+\[
+  \varepsilon_{\rho,\rho}:\rho\circ\rho\to\rho\circ\rho
+\]
+after transporting \(\rho'\) back to the reference region.  In spacetime
+dimension at least three, the DHR exchange operators satisfy symmetric tensor
+category identities, so irreducible sectors have Bose, Fermi, or more general
+parastatistics encoded by finite-dimensional permutation-group
+representations.
+
+A sector \(\rho\) has a conjugate \(\bar\rho\) when there are intertwiners
+\[
+  R:\operatorname{id}\to \bar\rho\circ\rho,
+  \qquad
+  \bar R:\operatorname{id}\to \rho\circ\bar\rho
+\]
+satisfying the conjugate equations
+\[
+  \bar R^*\rho(R)=1_\rho,
+  \qquad
+  R^*\bar\rho(\bar R)=1_{\bar\rho}.
+\]
+The minimal value of \(\|R\|\,\|\bar R\|\) defines the statistical dimension
+\[
+  d(\rho).
+\]
+For sectors reconstructed from a compact gauge group, \(d(\rho)\) is the
+ordinary dimension of the corresponding irreducible group representation.
+Thus charge conjugation, fusion multiplicities, and statistics are encoded in
+the tensor category of localized endomorphisms before any charged field
+coordinates are chosen.
+
 \begin{figure}[H]
   \centering
   \resizebox{0.86\textwidth}{!}{%

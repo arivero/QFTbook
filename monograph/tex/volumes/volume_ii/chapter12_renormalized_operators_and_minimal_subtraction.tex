@@ -193,6 +193,51 @@ At a fixed point, constant \(\gamma_\phi\) gives
   Z(\mu)\propto \mu^{2\gamma_\phi}.
 \]
 
+\section{Callan--Symanzik Equations With Operator Insertions}
+
+The operator mixing equation is the insertion version of the Callan--Symanzik
+equation.  Let \(G_I^{(n)}\) denote a renormalized connected correlation
+function with one insertion of \([O_I]_\mu\) and \(n\) elementary renormalized
+fields:
+\[
+  G_I^{(n)}
+  =
+  \left\langle
+    [O_I]_\mu(x)\,
+    \phi_R(x_1)\cdots\phi_R(x_n)
+  \right\rangle_{\rm conn}.
+\]
+Away from coincident points, the scale independence of the corresponding bare
+correlation function gives
+\begin{equation}
+  \left(
+    \mu\frac{\partial}{\partial\mu}
+    +
+    \beta_A(g)\frac{\partial}{\partial g_A}
+    +
+    n\gamma_\phi(g)
+  \right)G_I^{(n)}
+  +
+  \gamma_{IK}(g)G_K^{(n)}
+  =
+  0 .
+  \label{eq:cs-with-operator-mixing}
+\end{equation}
+Summation over repeated coupling and operator labels is understood.  Contact
+terms must be added when \(x\) collides with one of the other insertion
+points; those terms are local and are governed by the same renormalized
+operator basis.
+
+At a fixed point, diagonalizing \(\gamma_{IK}(g_\ast)\) gives scaling
+operators.  If \([O_A]\) is an eigenoperator with anomalous dimension
+\(\gamma_A\), then its full scaling dimension is
+\[
+  \Delta_A=d_A+\gamma_A,
+\]
+where \(d_A\) is the engineering dimension in the fixed-point convention.
+Equation \eqref{eq:cs-with-operator-mixing} is then the differential form of
+homogeneous scaling of correlation functions with an \(O_A\) insertion.
+
 \section{Dimensional Regularization and MS Coordinates}
 
 Now formulate the same 1PI RG in dimensional regularization.  Let
