@@ -1,0 +1,275 @@
+\chapter{Integrated Correlators and Bootstrap on Conformal Manifolds}
+\label{ch:volume-iii-integrated-correlators-bootstrap-conformal-manifolds}
+
+\section{Integrated Correlators as Linear Functionals}
+
+Let \(p\in\mathcal M_{\rm conf}\) be a point on a conformal manifold and let
+\(\mathcal O_a\) be an exactly marginal operator.  Differentiating a
+renormalized generating functional with respect to \(\lambda^a\) inserts
+\(\int\mathcal O_a\).  For a set of local sources \(J_i(x)\), write
+\[
+  W[J,\lambda]=\log Z[J,\lambda].
+\]
+Then
+\begin{equation}
+  \partial_a
+  \left.
+  \frac{\delta^n W}{\delta J_1(x_1)\cdots\delta J_n(x_n)}
+  \right|_{J=0}
+  =
+  -\int\dd^Dx\,
+  \left\langle
+    \mathcal O_a(x)\mathcal X_1(x_1)\cdots\mathcal X_n(x_n)
+  \right\rangle_{\rm conn}
+  +\text{contact terms}.
+  \label{eq:coupling-derivative-integrated-insertion}
+\end{equation}
+The contact terms express the renormalization prescription for collisions of
+\(\mathcal O_a(x)\) with the other insertions and with itself under repeated
+derivatives.
+
+On compact supersymmetric backgrounds, localization often computes quantities
+of the form
+\[
+  \mathcal I[\mathcal G]
+  =
+  \int \dd\mu(x_i)\,K(x_i)\,\mathcal G(x_i),
+\]
+where \(\mathcal G\) is a flat-space CFT correlator in a protected multiplet,
+\(K(x_i)\) is a known kernel fixed by the background and the supersymmetric
+deformation, and \(\dd\mu\) is the conformally invariant integration measure
+with the appropriate subtractions.  Thus localization can produce exact
+linear functionals of CFT correlators.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
+        minimum width=3.1cm,minimum height=0.9cm,align=center}
+    }
+    \node[box] (loc) at (-4.2,0.8) {localized\\observable};
+    \node[box] (der) at (0,0.8) {coupling or mass\\derivatives};
+    \node[box] (int) at (4.2,0.8) {integrated\\correlator};
+    \node[box] (kernel) at (0,-0.8) {known kernel\\\(K(x_i)\)};
+    \node[box] (data) at (4.2,-0.8) {constraint on\\CFT data};
+    \draw[arrow] (loc)--(der);
+    \draw[arrow] (der)--(int);
+    \draw[arrow] (kernel)--(int);
+    \draw[arrow] (int)--(data);
+    \node[green!45!black,align=center] at (-4.0,-0.85)
+      {exact protected computation\\becomes a bootstrap input};
+  \end{tikzpicture}
+  }
+  \caption{Derivatives of exact observables yield integrated correlators,
+  which are linear constraints on the ordinary CFT data.}
+  \label{fig:integrated-correlator-functional}
+\end{figure}
+
+\section{Differentiating Crossing}
+
+For identical scalar primaries \(\phi\), the crossing equation can be written
+as
+\begin{equation}
+  \sum_{\mathcal X}
+  \lambda_{\phi\phi\mathcal X}(p)^2
+  F_{\Delta_{\mathcal X}(p),\ell_{\mathcal X}}(u,v)=0,
+  \label{eq:crossing-family-pointwise}
+\end{equation}
+where \(F_{\Delta,\ell}\) is the crossing vector built from conformal blocks
+and the identity term is included in the sum with its fixed coefficient.
+Along a conformal manifold, the CFT data depend on \(p\).  Differentiating
+\eqref{eq:crossing-family-pointwise} in a tangent direction \(a\) gives the
+linearized crossing equation
+\begin{equation}
+  \sum_{\mathcal X}
+  \left[
+    2\lambda_{\phi\phi\mathcal X}
+      \nabla_a\lambda_{\phi\phi\mathcal X}\,
+      F_{\Delta_{\mathcal X},\ell_{\mathcal X}}
+    +
+    \lambda_{\phi\phi\mathcal X}^2
+      (\nabla_a\Delta_{\mathcal X})
+      \partial_\Delta F_{\Delta_{\mathcal X},\ell_{\mathcal X}}
+  \right]
+  =
+  0.
+  \label{eq:linearized-crossing-conformal-manifold}
+\end{equation}
+Here \(\nabla_a\) denotes the connection on the relevant operator bundles.  In
+degenerate sectors, the scalar quantities in
+\eqref{eq:linearized-crossing-conformal-manifold} become matrices, and the
+equation is written after choosing a local orthonormal frame.
+
+Higher derivatives of crossing produce higher-order constraints involving
+\(\nabla_a\nabla_b\Delta_{\mathcal X}\), derivatives of OPE coefficients, and
+contact terms from repeated integrated insertions.  The resulting hierarchy is
+the conformal-perturbation expansion of crossing symmetry.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      curve/.style={blue!65!black,line width=1.0pt},
+      box/.style={draw,rounded corners=4pt,fill=blue!4,line width=0.8pt,
+        minimum width=3.2cm,minimum height=0.82cm,align=center}
+    }
+    \draw[curve] (-4.2,-0.45)
+      .. controls (-2.7,0.75) and (-1.2,0.75) .. (0.2,-0.15)
+      .. controls (1.6,-1.0) and (3.0,-0.55) .. (4.2,0.38);
+    \node[blue!65!black] at (2.55,1.0) {\(\mathcal M_{\rm conf}\)};
+    \foreach \x/\y/\lab in {-2.4/0.42/{p},-0.55/0.03/{p+\delta p},1.55/-0.48/{p+2\delta p}} {
+      \fill[violet!80!black] (\x,\y) circle (2pt);
+      \node[violet!80!black,above] at (\x,\y) {\(\lab\)};
+    }
+    \node[box] at (-2.55,-1.25) {crossing\\at \(p\)};
+    \node[box] at (0.0,-1.85) {linearized\\crossing};
+    \node[box] at (2.85,-1.25) {higher\\derivatives};
+    \draw[arrow] (-1.62,-1.35)--(-1.05,-1.62);
+    \draw[arrow] (1.15,-1.62)--(1.90,-1.35);
+  \end{tikzpicture}
+  }
+  \caption{Crossing holds at every point of a conformal manifold.  Its
+  derivatives constrain the variation of dimensions and OPE coefficients.}
+  \label{fig:crossing-differentiated-on-manifold}
+\end{figure}
+
+\section{Protected Anchors}
+
+Let \(\mathcal P(p)\) denote a set of protected data at \(p\): protected
+dimensions, protected OPE coefficients, an index, a chiral-algebra vacuum
+character, a sphere partition function, or a Wilson-loop expectation value.
+Each element of \(\mathcal P(p)\) is a function of the full CFT data:
+\[
+  \mathcal P_A(p)
+  =
+  \mathcal F_A\!\left[
+    \Delta_i(p),C_{ijk}(p),\ldots
+  \right].
+\]
+When \(\mathcal P_A(p)\) is known exactly, it becomes a constraint on the
+ordinary crossing problem.
+
+For example, suppose an exact integrated correlator is known:
+\[
+  \mathcal I[\mathcal G]=\mathcal C_{\rm exact}(\lambda,\bar\lambda).
+\]
+Expanding \(\mathcal G\) in conformal blocks gives
+\begin{equation}
+  \sum_{\mathcal X}
+  \lambda_{\phi\phi\mathcal X}^2
+  \mathcal I\!\left[
+    G_{\Delta_{\mathcal X},\ell_{\mathcal X}}
+  \right]
+  =
+  \mathcal C_{\rm exact}(\lambda,\bar\lambda).
+  \label{eq:integrated-correlator-block-constraint}
+\end{equation}
+The numbers
+\[
+  \mathcal I\!\left[
+    G_{\Delta,\ell}
+  \right]
+\]
+are computable kinematic functions.  Equation
+\eqref{eq:integrated-correlator-block-constraint} is therefore a linear
+constraint on positive OPE data whenever the relevant OPE coefficients enter
+as squares.
+
+\section{Duality and Automorphic Constraints}
+
+Let a duality group \(\Gamma\) act on the coordinate cover
+\(\widetilde{\mathcal M}_{\rm conf}\).  A protected observable
+\(\mathcal P(p)\) may transform with a weight or with a finite-dimensional
+matrix:
+\[
+  \mathcal P(\gamma p)
+  =
+  \rho(\gamma,p)\,\mathcal P(p).
+\]
+Here \(\rho(\gamma,p)\) is determined by the normalization of the observable
+and by the duality action on background fields and operator bundles.
+
+The same covariance applies to unprotected data after operator labels are
+transported:
+\[
+  \Delta_i(\gamma p)=\Delta_{\gamma\cdot i}(p),
+  \qquad
+  C_{ijk}(\gamma p)
+  =
+  M_i{}^{i'}M_j{}^{j'}M_k{}^{k'}C_{i'j'k'}(p).
+\]
+Combining crossing with duality produces a global bootstrap problem on
+\(\mathcal M_{\rm conf}\).  Local perturbative data near a weak-coupling cusp,
+strong-coupling expansions from a dual frame, protected exact functions, and
+positivity constraints must fit into a single set of globally well-defined
+CFT data.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      box/.style={draw,rounded corners=4pt,fill=blue!4,line width=0.8pt,
+        minimum width=3.0cm,minimum height=0.85cm,align=center}
+    }
+    \node[box] (cross) at (-4.2,1.35) {crossing and\\positivity};
+    \node[box] (dual) at (-4.2,0.45) {duality\\covariance};
+    \node[box] (prot) at (-4.2,-0.45) {protected exact\\observables};
+    \node[box] (pert) at (-4.2,-1.35) {local perturbative\\expansions};
+    \node[box] (global) at (3.1,0) {global CFT data\\over
+      \(\mathcal M_{\rm conf}\)};
+    \draw[arrow] (cross.east)--(global.west);
+    \draw[arrow] (dual.east)--(global.west);
+    \draw[arrow] (prot.east)--(global.west);
+    \draw[arrow] (pert.east)--(global.west);
+    \node[green!45!black,align=center] at (-0.45,-2.12)
+      {the bootstrap problem becomes a global compatibility problem};
+  \end{tikzpicture}
+  }
+  \caption{On a conformal manifold, exact protected quantities, duality,
+  perturbation theory, and crossing constrain one global set of CFT data.}
+  \label{fig:global-bootstrap-conformal-manifold}
+\end{figure}
+
+\section{Large N Integrated Constraints}
+
+For a holographic large \(N\) CFT, write a connected four-point function as
+\[
+  \mathcal G
+  =
+  \mathcal G_{\rm disc}
+  +
+  C_T^{-1}\mathcal G^{(1)}
+  +
+  C_T^{-2}\mathcal G^{(2)}
+  +\cdots .
+\]
+At order \(C_T^{-1}\), \(\mathcal G^{(1)}\) is computed by tree-level Witten
+diagrams.  In Mellin space, a local ansatz is a sum of exchange terms and
+crossing-symmetric polynomials:
+\[
+  M^{(1)}(s,t)
+  =
+  M_{\rm exch}(s,t)
+  +
+  \sum_{m,n} a_{mn}\,s^m t^n
+\]
+with the sum restricted by the derivative order.  An exact integrated
+correlator gives
+\[
+  \mathcal I[M^{(1)}]=\mathcal C^{(1)}_{\rm exact},
+\]
+which fixes a linear combination of the coefficients \(a_{mn}\).  A family of
+integrated constraints can determine higher-derivative bulk couplings that
+would otherwise be invisible to symmetry alone.
+
+The same logic applies at higher orders, with loop Witten diagrams and
+multi-trace anomalous dimensions replacing the tree-level data.  Integrated
+correlators are therefore a precise interface between localization, conformal
+bootstrap, and holographic effective field theory.
