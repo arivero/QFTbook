@@ -201,6 +201,42 @@ The displayed vertex rule is the labelled-leg rule. If instead one expands
 directly from the action, each vertex gives \(-g/4!\) and the \(4!\) is
 recovered by counting Wick contractions.
 
+\section{Symmetry Factors from Wick Pairings}
+
+The coefficient \( |\operatorname{Aut}\Gamma|^{-1} \) in the graph rule is
+the residual count left by the regulated Wick expansion. Consider a connected
+graph \(\Gamma\) with \(V\) quartic
+vertices and labelled external endpoints. Let
+\(\operatorname{Aut}\Gamma\) denote the automorphism group preserving the
+external labels and the incidence relation between vertices and half-edges.
+The \(V\)-th term of the interaction expansion carries the prefactor
+\[
+  \frac{(-g)^V}{V!(4!)^V}.
+\]
+If the abstract graph \(\Gamma\) is fixed, the number of choices of ordered
+interaction vertices, ordered half-edges at each vertex, and Wick pairings
+which realize this same labelled graph is
+\[
+  \frac{V!(4!)^V}{|\operatorname{Aut}\Gamma|}.
+\]
+Multiplying the two factors gives precisely
+\[
+  \frac{(-g)^V}{|\operatorname{Aut}\Gamma|}.
+\]
+Thus the graph automorphism factor is the quotient between the arbitrary
+labellings introduced by the expansion and the relabellings leaving the graph
+unchanged.
+
+For example, the order-\(g\) tadpole correction to the two-point function has
+one quartic vertex. The two external labels are fixed, while the two remaining
+half-edges form the loop and may be interchanged. Hence
+\(|\operatorname{Aut}\Gamma|=2\), and the coefficient is \(-g/2\). The
+single quartic contribution to the connected four-point function with four
+labelled external insertions has trivial automorphism group, and its
+coefficient is \(-g\). Vacuum components have already been removed by
+normalization; the logarithm of the generating functional then selects the
+component in which all external labels are connected.
+
 \section{Two-Point Function and Self-Energy}
 
 The connected Euclidean two-point function has Fourier transform

@@ -238,6 +238,44 @@ positive definite after null states are quotiented.  This positivity is the
 source of unitarity bounds, developed after primary transformation laws and
 two-point functions have been fixed.
 
+\section{Adjoints of the Conformal Generators}
+
+In radial quantization, Hermitian conjugation is reflection through the unit
+sphere followed by the internal adjunction of the operator.  This fixes the
+adjoints of the conformal generators.  Dilatations are translations in
+cylinder time, so
+\[
+  \widehat D^\dagger=\widehat D
+\]
+in the cylinder Hilbert-space convention.  Rotations are unitary symmetries
+of the spatial sphere:
+\[
+  \widehat J_{\mu\nu}^\dagger=\widehat J_{\mu\nu}.
+\]
+Translations and special conformal transformations are exchanged by inversion,
+hence
+\begin{equation}
+  \widehat P_\mu^\dagger=\widehat K_\mu,
+  \qquad
+  \widehat K_\mu^\dagger=\widehat P_\mu .
+  \label{eq:radial-adjoint-p-k}
+\end{equation}
+
+Equation \eqref{eq:radial-adjoint-p-k} is the algebraic input behind
+unitarity bounds.  If \(\ket{\mathcal O}\) is a primary state, then the norm
+of a first descendant is
+\[
+  \|\widehat P_\mu\ket{\mathcal O}\|^2
+  =
+  \bra{\mathcal O}\widehat K_\mu\widehat P_\mu\ket{\mathcal O},
+\]
+with summation over \(\mu\) when a rotational scalar norm is taken.  Commuting
+\(\widehat K_\mu\) through \(\widehat P_\nu\) and using
+\(\widehat K_\mu\ket{\mathcal O}=0\) expresses the result in terms of
+\(\Delta\) and the spin representation of the primary.  Positivity of all
+descendant norms is therefore a representation-theoretic constraint on
+allowed primary data.
+
 \section{The Free Scalar Check}
 
 For the conformally coupled free scalar on

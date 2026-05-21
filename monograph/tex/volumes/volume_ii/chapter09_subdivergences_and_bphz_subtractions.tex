@@ -469,6 +469,45 @@ counterterms belong to a finite local operator space, the recursive operation
 therefore remains inside that same finite space.  This proves perturbative
 renormalizability in the finite-list sense used in the previous chapter.
 
+\section{Oversubtractions and Zimmermann Normal Products}
+
+Composite operators are renormalized by the same forest mechanism, with one
+distinguished local insertion.  Let \(O(x)\) be a local monomial in the fields
+and derivatives, and let
+\[
+  \Gamma_O
+\]
+be a graph with one vertex marked as the insertion of \(O\).  Divergent
+subgraphs may contain the marked vertex or may be ordinary subgraphs away from
+it.  The Taylor degree assigned to a subgraph containing the insertion is
+chosen at least as large as the engineering degree of \(O\), and may be chosen
+larger.  The resulting renormalized insertion is denoted
+\[
+  N_\delta[O](x),
+\]
+where \(\delta\) is the subtraction degree at the marked vertex.
+
+Increasing \(\delta\) is an oversubtraction.  If \(\delta'\ge\delta\), the two
+normal products are related by a finite local identity
+\[
+  N_{\delta'}[O](x)
+  =
+  N_\delta[O](x)
+  +
+  \sum_A c_A\,N_{\delta'}[O_A](x).
+\]
+The sum runs over local operators \(O_A\) with the same quantum numbers and
+engineering dimension at most \(\delta'\).  The coefficients \(c_A\) are
+finite functions of the subtraction prescription and of the renormalized
+couplings.  This is a Zimmermann identity.
+
+The identity has a direct forest interpretation.  The difference between two
+subtraction degrees is a finite Taylor polynomial at the insertion vertex.
+After all subdivergences have been prepared, that polynomial is a local
+vertex.  Therefore the change of normal-product prescription is a finite
+mixing among local operators.  This is the BPHZ form of the operator mixing
+matrix used later in the renormalized-operator chapter.
+
 \section{Finite Parts and Subtraction Coordinates}
 
 The Taylor operator includes a choice of subtraction point and a choice of
