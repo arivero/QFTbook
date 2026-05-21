@@ -427,6 +427,48 @@ when the fixed point is conformal and the coupling multiplies
 and the conformal scaling-operator problem are the same local question seen
 from two sides: flow in theory space and dilation on local operators.
 
+\section{Renormalized Trajectories and Universality}
+
+Let \(u_r\) denote the relevant coordinates and \(u_i\) the irrelevant
+coordinates near a fixed point.  A renormalized trajectory is a submanifold of
+theory space on which the irrelevant coordinates are functions of the relevant
+ones:
+\[
+  u_i=F_i(u_r).
+\]
+The functions \(F_i\) are determined by the requirement that the trajectory can
+be extended toward the ultraviolet while remaining in the basin where the
+fixed-point expansion is valid.  Perturbatively, they are found by solving the
+irrelevant beta-function equations order by order in the relevant and marginal
+coordinates.
+
+Universality is the statement that many different microscopic actions flow to
+the same renormalized trajectory at a fixed physical scale.  Suppose two bare
+actions at cutoff \(\Lambda_0\) have the same relevant coordinates after
+tuning, but differ by an irrelevant coordinate \(u_i(\Lambda_0)\).  Linearized
+flow gives
+\[
+  u_i(\Lambda_R)
+  =
+  \left(\frac{\Lambda_R}{\Lambda_0}\right)^{y_i}
+  u_i(\Lambda_0)
+  +\text{nonlinear terms},
+  \qquad
+  y_i<0,
+\]
+for a fixed reference scale \(\Lambda_R\ll\Lambda_0\).  Thus the difference in
+low-energy correlation functions is suppressed by powers of
+\(\Lambda_R/\Lambda_0\), after the relevant coordinates and field
+normalizations have been matched.  The exponent is not a matter of
+microscopic aesthetics; it is the RG eigenvalue of the first omitted operator.
+
+This gives a precise meaning to effective field theory.  A finite list of
+relevant and marginal coordinates must be measured or tuned.  Irrelevant
+operators are still present, and their coefficients encode real short-distance
+physics, but their effect on low-energy observables is organized by powers of
+the ratio of scales and by the symmetries that determine which operators may
+appear.
+
 \section{A Quartic-Sextic Toy Flow}
 
 Consider the massless scalar theory in \(D=4\) and keep only two local

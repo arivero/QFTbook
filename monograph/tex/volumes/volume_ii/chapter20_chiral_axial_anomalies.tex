@@ -184,6 +184,64 @@ Slavnov--Taylor identities can be maintained by local counterterms.  When it
 fails, no choice of local counterterms gives a unitary gauge theory with the
 declared gauge symmetry.
 
+\section{Consistency Condition and Descent}
+
+The anomaly of a gauge symmetry is constrained before any coefficient is
+computed.  Let \(W[A]\) be the renormalized effective action for a background
+gauge field \(A\).  Under an infinitesimal gauge transformation with parameter
+\(\zeta=\zeta^a t^a\), write
+\[
+  \delta_\zeta W[A]=\mathcal A(\zeta,A).
+\]
+Gauge transformations form a Lie algebra, so two variations must satisfy
+\begin{equation}
+  \delta_{\zeta_1}\mathcal A(\zeta_2,A)
+  -
+  \delta_{\zeta_2}\mathcal A(\zeta_1,A)
+  =
+  \mathcal A([\zeta_1,\zeta_2],A).
+  \label{eq:wess-zumino-consistency}
+\end{equation}
+This is the Wess--Zumino consistency condition.  In BRST language, replace
+\(\zeta\) by the ghost \(c\).  The anomaly is a local ghost-number-one
+functional \(\mathcal A(c,A)\) obeying
+\begin{equation}
+  s\mathcal A=0,
+  \label{eq:brst-anomaly-cocycle}
+\end{equation}
+and adding a local counterterm \(X[A]\) shifts it by
+\[
+  \mathcal A\longmapsto \mathcal A+sX .
+\]
+Thus the possible local gauge anomalies are cohomology classes of the BRST
+differential at ghost number one.
+
+For four-dimensional chiral fermions, this cohomology class is represented by
+the descent of a six-form anomaly polynomial.  With the trace convention used
+for the fermion representations, its group-theoretic part is
+\[
+  \mathcal P_6(F)
+  \propto
+  \sum_i\operatorname{tr}_{R_i}(F^3),
+  \qquad
+  F=\dd A+A^2 .
+\]
+Choose a Chern--Simons five-form \(Q_5(A)\) with
+\[
+  \dd Q_5(A)=\mathcal P_6(F).
+\]
+Its gauge variation is exact:
+\[
+  \delta_\zeta Q_5(A)=\dd Q_4^{(1)}(\zeta,A).
+\]
+The four-form \(Q_4^{(1)}\) gives a representative of
+\(\mathcal A(\zeta,A)\), with the overall normalization fixed by the
+short-distance calculation or by the index theorem.  The cancellation
+condition \eqref{eq:gauge-anomaly-cancellation} is precisely the vanishing of
+the six-form polynomial for the gauged symmetry.  If the polynomial is nonzero
+for a global symmetry background, it is an anomaly to be matched rather than
+an inconsistency.
+
 \section{The Strong CP Parameter}
 
 In QCD with \(N_f\) quark flavors, the Euclidean gauge action may include the

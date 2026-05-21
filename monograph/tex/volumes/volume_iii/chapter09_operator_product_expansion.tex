@@ -220,3 +220,34 @@ four-point functions this associativity becomes crossing symmetry.  In the
 core monograph, crossing is used only at this structural level: a complete
 solution theory for crossing equations requires additional analytic and
 numerical machinery and belongs to a later dedicated treatment.
+
+For identical scalar primaries \(\phi\) of dimension \(\Delta_\phi\), write
+the four-point function in the standard form
+\[
+  \langle
+    \phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)
+  \rangle
+  =
+  \frac{G(u,v)}
+       {|x_{12}|^{2\Delta_\phi}|x_{34}|^{2\Delta_\phi}},
+\]
+where \(x_{ij}=x_i-x_j\) and the conformal cross-ratios are
+\[
+  u=\frac{x_{12}^2x_{34}^2}{x_{13}^2x_{24}^2},
+  \qquad
+  v=\frac{x_{14}^2x_{23}^2}{x_{13}^2x_{24}^2}.
+\]
+Exchanging \(x_2\) and \(x_4\) gives the crossing relation
+\begin{equation}
+  v^{\Delta_\phi}G(u,v)
+  =
+  u^{\Delta_\phi}G(v,u).
+  \label{eq:identical-scalar-crossing}
+\end{equation}
+The \(12\to34\) OPE expansion expresses \(G(u,v)\) as a sum over conformal
+families appearing in \(\phi\times\phi\).  The \(14\to23\) expansion expresses
+the same correlation function after \((u,v)\mapsto(v,u)\).  Equation
+\eqref{eq:identical-scalar-crossing} is therefore not an additional
+postulate; it is the equality of two convergent local expansions of one
+Euclidean correlation function, continued to the same analytic function where
+the continuations overlap.
