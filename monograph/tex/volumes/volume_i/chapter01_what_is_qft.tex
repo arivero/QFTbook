@@ -97,6 +97,53 @@ Existing Wightman, Euclidean, algebraic, constructive, perturbative, and
 factorization frameworks will be compared later as precise frameworks with
 their own domains.
 
+\section{Analytic Status of the Basic Objects}
+
+The opening framework deliberately separates several levels of mathematical
+status.  This separation is part of the subject, because the same formula may
+denote different objects in different constructions.
+
+\begin{definition}[Regulated theory]
+  A regulated theory is a finite-dimensional or cutoff-defined construction
+  with a specified state space, algebra of variables, covariance or symmetry
+  action, and expectation functional.  Examples include a finite lattice,
+  a finite spatial volume with momentum cutoff, or a finite-dimensional
+  time-sliced integral.  All integrals and operator products in a regulated
+  theory are ordinary objects in the regulator-dependent category.
+\end{definition}
+
+\begin{definition}[Continuum correlation theory]
+  A continuum correlation theory is a hierarchy of distributions, Schwinger
+  functions, Wightman functions, or time-ordered distributions obtained as a
+  limit of regulated theories or specified directly by axioms.  The topology
+  of convergence is part of the datum: distributional convergence of
+  correlators, convergence of moments, weak convergence of measures, or
+  another declared topology.
+\end{definition}
+
+\begin{definition}[Hilbert-space or algebraic completion]
+  A Hilbert-space or algebraic completion is a reconstruction of operators,
+  states, local algebras, and symmetries from correlation data or from an
+  abstract local net.  Positivity is the bridge: Hilbert spaces arise from
+  positive inner products, while local observable algebras arise from
+  positive states and their GNS representations.
+\end{definition}
+
+Perturbation theory has its own status.  A perturbative statement is an
+asymptotic expansion in a specified parameter, with coefficients computed from
+regulated distributions and then renormalized.  The existence of the
+perturbative coefficients and the existence of a nonperturbative continuum
+object are distinct assertions.  The physics use of perturbation theory is
+precise when the observable being expanded, the expansion parameter, the
+renormalization prescription, and the error class or asymptotic meaning have
+been stated.
+
+This stratification lets the text use strong mathematical tools without
+discarding nontrivial physics.  Spectral measures, scattering states,
+renormalization-group flows, anomalies, conformal data, and gauge-invariant
+observables are different constructions related by theorems, approximations,
+or comparison problems.
+
 \section{Fields As Coordinates On Local Data}
 
 A local field is a distributional coordinate for local data. For a test

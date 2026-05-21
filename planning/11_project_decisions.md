@@ -39,6 +39,21 @@ Date: 2026-05-20
   only in remarks, footnotes, or appendices when needed.
 - The author line is "GPT 5.5 under the supervision of Xi Yin".
 
+Date: 2026-05-21
+
+- The compiled monograph should keep only material essential to the core QFT
+  development at this stage.
+- Premature treatments of AdS/CFT, holography, defects, localization,
+  large-\(N\) bootstrap, projective-lightcone bootstrap machinery, and rushed
+  supersymmetric/superconformal material should be moved out of the compiled
+  manuscript and preserved only as deprecated draft material.
+- Supersymmetric field theory and gauge theory should be developed later from
+  their own foundations rather than introduced through popular advanced
+  topics.
+- The current compiled CFT material should stop at fixed points, conformal
+  symmetry, stress tensor and Ward identities, primaries, unitarity bounds,
+  correlator kinematics, and the OPE as local operator algebra.
+
 ## Current Implementation Decisions
 
 - Keep `transcription/` as the faithful source layer.

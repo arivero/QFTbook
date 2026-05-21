@@ -33,6 +33,30 @@ insertion is at radial distance \(R\), the expansion is organized by powers of
 energy.  Thus the OPE is a structural expansion controlled by the local
 operator spectrum and the conformal representation theory of descendants.
 
+\begin{theorem}[Radial OPE convergence]
+  Consider a reflection-positive CFT whose Hilbert space on \(S^{D-1}\) has a
+  nonnegative self-adjoint dilatation operator with discrete spectrum of finite
+  multiplicity below every finite energy.  Let
+  \(\mathcal O_i(x)\mathcal O_j(0)\Omega\) be inserted inside a sphere of
+  radius \(r\), and let all remaining insertions lie outside radius \(R>r\).
+  Then the expansion of this state in eigenspaces of the dilatation operator
+  converges in Hilbert norm for \(r<R\), and the resulting OPE converges inside
+  the corresponding correlation functions.  Truncating to states of scaling
+  dimension at most \(\Delta_*\) gives a remainder controlled by powers of
+  \(r/R\) determined by the omitted dimensions.
+\end{theorem}
+
+The proof is the spectral theorem applied to radial quantization.  Radial time
+is \(\tau=\log |x|\), and the dilatation operator is the Hamiltonian
+generating translations in \(\tau\).  A separating sphere at radius \(R\)
+inserts the damping factor \(\exp[-(\log(R/r))D_{\rm cyl}]\), where
+\(D_{\rm cyl}\) is the cylinder Hamiltonian.  Since the spectrum is discrete
+with finite multiplicities below any fixed dimension, the spectral projection
+onto \(\Delta\le\Delta_*\) gives a finite partial OPE and the complement is
+suppressed by the corresponding power of \(r/R\) relative to the norm of the
+external state.  This is the mathematical reason the OPE is an operator
+algebraic expansion in unitary CFTs satisfying the stated radial hypotheses.
+
 \begin{figure}[H]
   \centering
   \resizebox{0.94\textwidth}{!}{%
@@ -192,5 +216,7 @@ ways to apply the OPE:
 Both compute the same local state on a sphere enclosing all three insertions.
 Associativity of the OPE is the equality of these two expansions in their
 common domain of convergence and by analytic continuation beyond it.  For
-four-point functions this associativity becomes crossing symmetry, developed
-in the next chapter.
+four-point functions this associativity becomes crossing symmetry.  In the
+core monograph, crossing is used only at this structural level: a complete
+solution theory for crossing equations requires additional analytic and
+numerical machinery and belongs to a later dedicated treatment.

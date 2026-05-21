@@ -104,12 +104,15 @@ Provisional chapters:
 24. Spontaneous Symmetry Breaking And Goldstone Modes
 25. Pions And Low-Energy Effective Actions
 
-## Volume III: Conformal Field Theory
+## Volume III: Core Conformal Field Theory
 
-Purpose: follow the conformal sequence: fixed points, conformal symmetry,
-state-operator correspondence, Ward identities, representations, correlators,
-OPE, conformal blocks, bootstrap, two-dimensional CFT, modular structure,
-supersymmetry, and large-\(N\) structures.
+Purpose: develop only the conformal material needed for the core QFT and RG
+spine: fixed points, conformal symmetry, state-operator correspondence, Ward
+identities, representations, correlators, and the OPE as local operator
+algebra.  Bootstrap technology, two-dimensional Virasoro theory,
+supersymmetric CFT, large-\(N\) structures, holography, defects, and
+localization are deferred until they can be developed from their own
+foundations.
 
 Provisional chapters:
 
@@ -128,16 +131,11 @@ Provisional chapters:
 13. Two-Point And Three-Point Functions
 14. Four-Point Functions And Conformal Frames
 15. Operator Product Expansion
-16. Conformal Blocks
-17. Crossing Symmetry And Bootstrap Equations
-18. Projective Lightcone Formalism
-19. Numerical Bootstrap And Rigorous Bounds
-20. Survey Of Known Conformal Field Theories
-21. Two-Dimensional CFT And The Virasoro Algebra
-22. Ward Identities In Two Dimensions
-23. Modular Invariance, Sewing, And Anomalies
-24. Supersymmetric Conformal Field Theories
-25. Large-\(N\), Spin Chains, And Integrability Interfaces
+16. Deferred: Conformal Blocks, Crossing, And Bootstrap Equations
+17. Deferred: Projective Lightcone Formalism
+18. Deferred: Numerical Bootstrap And Rigorous Bounds
+19. Deferred: Two-Dimensional CFT And The Virasoro Algebra
+20. Deferred: Supersymmetric CFT, Large-\(N\), Holography, And Defects
 
 ## Volume IV: Mathematical Frameworks And Nonperturbative Construction
 

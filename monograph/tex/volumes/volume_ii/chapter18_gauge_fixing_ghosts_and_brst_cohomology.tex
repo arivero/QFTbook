@@ -231,6 +231,44 @@ conceptual definition of scattering, while gauge fixing is a local
 computational realization whose output must be independent of the chosen
 coordinate on gauge orbits.
 
+\section{Positivity of the BRST Quotient}
+
+The quotient in \eqref{eq:brst-physical-state-cohomology} is a Hilbert-space
+construction only after positivity has been checked.  Assume the indefinite
+inner product on \(\mathcal K\) is nondegenerate and that \(Q\) is symmetric
+with respect to it:
+\[
+  \langle Q\chi,\psi\rangle=\langle\chi,Q\psi\rangle .
+\]
+If \(\psi\in\ker Q\) and \(\eta=Q\chi\), then
+\[
+  \langle\eta,\psi\rangle
+  =
+  \langle Q\chi,\psi\rangle
+  =
+  \langle\chi,Q\psi\rangle
+  =
+  0.
+\]
+Thus exact states are orthogonal to all closed states, including themselves.
+The inner product therefore descends to the quotient
+\(\ker Q/\operatorname{im}Q\).  The remaining requirement is that the induced
+form on ghost number zero cohomology be positive and that zero-norm closed
+states represent the zero cohomology class.  When this holds, completing the
+quotient gives the physical Hilbert space.
+
+Perturbatively, the unphysical polarizations, ghosts, antighosts, and
+Nakanishi--Lautrup modes organize into \(Q\)-doublets.  A doublet has the form
+\[
+  Q u=v,\qquad Qv=0 .
+\]
+Any state obtained by acting with such paired excitations is either exact or
+paired with an exact state and does not contribute to cohomology.  The
+cohomology is then represented by transverse physical polarizations and
+gauge-invariant matter states.  This is the cohomological version of the
+statement that the physical content of the gauge-fixed construction is carried
+by \(Q\)-cohomology classes.
+
 \section{Slavnov--Taylor Identities and Counterterms}
 
 BRST symmetry gives functional identities for the generating functional and

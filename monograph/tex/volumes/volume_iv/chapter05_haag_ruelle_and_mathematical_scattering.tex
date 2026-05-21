@@ -1,0 +1,147 @@
+\chapter{Haag--Ruelle Theory and Mathematical Scattering}
+\label{ch:volume-iv-haag-ruelle-mathematical-scattering}
+
+\section{Scattering as a Theorem About Local Nets}
+
+The earlier construction of the \(S\)-matrix used Haag--Ruelle limits before
+LSZ and before perturbative scattering rules.  In the mathematical frameworks
+of this volume the same construction can be stated directly for a local net.
+Let \(O\mapsto\mathcal R(O)\) be a Poincare-covariant vacuum net on
+\(\Hilb\), with vacuum vector \(\Omega\), positive-energy translation
+generators \(P^\mu\), and bounded local algebras.  A single massive particle
+species of mass \(m>0\) is represented by an isolated spectral subspace
+\[
+  \Hilb_1=E(\Sigma_m^+)\Hilb,
+  \qquad
+  \Sigma_m^+=\{p:p^0=\sqrt{\vec p^{\,2}+m^2},\ p^2=-m^2\},
+\]
+where \(E\) is the joint spectral measure of \(P^\mu\).  Isolation means that
+there is an open neighborhood \(N\) of \(\Sigma_m^+\) in momentum space such
+that
+\[
+  \operatorname{Spec}(P)\cap N=\Sigma_m^+ .
+\]
+
+An operator \(B\) is almost local when there are local operators \(B_R\)
+localized in double cones of radius \(R\) such that
+\[
+  \|B-B_R\|\le C_N R^{-N}
+  \qquad\text{for every }N .
+\]
+Almost-local operators are obtained by smearing local observables in spacetime
+with Schwartz functions whose Fourier transforms select the isolated shell.
+They are the bounded-operator substitute for interpolating fields.
+
+\section{Creation Operators and Velocity Supports}
+
+Let \(B\) be almost local and energy decreasing away from the vacuum, and let
+\[
+  P_1B\Omega\ne0 .
+\]
+For a compactly supported smooth function \(h(\vec p)\) on the mass shell,
+define
+\[
+  h_t(\vec x)=
+  \int\frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}\,
+  h(\vec p)\,
+  \ee^{\ii\omega_{\vec p}t-\ii\vec p\cdot\vec x}
+\]
+and
+\[
+  B_t(h)=\int\dd^{D-1}\vec x\,h_t(\vec x)B(t,\vec x).
+\]
+The velocity support is the compact set
+\[
+  V(h)=\{\vec p/\omega_{\vec p}:\vec p\in\operatorname{supp}h\}.
+\]
+If \(V(h_i)\cap V(h_j)=\emptyset\), stationary phase and almost locality give
+rapid commutator decay:
+\[
+  \|[B_{i,t}(h_i),B_{j,t}(h_j)]\|
+  \le C_N(1+|t|)^{-N}.
+\]
+This inequality is the analytic expression of local propagation for separated
+massive wave packets.
+
+\begin{theorem}[Haag--Ruelle scattering for a vacuum net]
+  Assume locality, Poincare covariance, the spectrum condition, a unique
+  vacuum, an isolated massive one-particle shell, and enough almost-local
+  operators to create a dense subspace of the one-particle sector.  For wave
+  packets with pairwise disjoint velocity supports, the limits
+  \[
+    \lim_{t\to\pm\infty}
+    B_{1,t}(h_1)\cdots B_{n,t}(h_n)\Omega
+  \]
+  exist in Hilbert norm.  The limits depend only on the one-particle vectors
+  \(P_1B_{j,t}(h_j)\Omega\), define isometric incoming and outgoing wave
+  operators from the symmetric Fock space over \(\Hilb_1\), and intertwine the
+  physical Poincare representation with the free Fock representation.
+\end{theorem}
+
+The theorem is a structural bridge: local observables and spectral data
+produce asymptotic particles.  It does not assume a Lagrangian, a perturbative
+expansion, or a Fock-space representation of the interacting local fields.
+
+\section{The Scattering Operator and Completeness}
+
+Let
+\[
+  \Omega_{\rm in},\Omega_{\rm out}:\mathcal F_s(\Hilb_1)\to\Hilb
+\]
+be the wave operators supplied by the theorem.  Their ranges are closed
+subspaces \(\Hilb_{\rm in}\) and \(\Hilb_{\rm out}\).  If these ranges agree
+in the sector under study, the scattering operator is
+\[
+  S=\Omega_{\rm out}^*\Omega_{\rm in}
+  \quad\text{on}\quad \mathcal F_s(\Hilb_1).
+\]
+It is unitary on that sector.  Asymptotic completeness is the stronger
+statement that the physical sector equals the scattering range:
+\[
+  \Hilb_{\rm sector}=\Hilb_{\rm in}=\Hilb_{\rm out}.
+\]
+This is a dynamical theorem or conjecture depending on the model.  It is not
+contained in locality and positivity alone.
+
+Completeness is where genuinely nontrivial physics enters the rigorous
+framework.  Bound states require additional isolated shells.  Confinement can
+remove colored one-particle shells from the observable spectrum while leaving
+color-singlet hadron shells.  Long-range gauge forces can replace charged mass
+shells by infraparticle continua.  Massless particles require modified
+asymptotic observables because velocity separation and infrared behavior are
+different from the massive isolated-shell case.  These phenomena are different
+spectral and asymptotic problems with their own state spaces and limiting
+procedures.
+
+\section{Relation to LSZ and Perturbation Theory}
+
+The Haag--Ruelle construction defines the target of LSZ.  If a local field or
+observable has a nonzero matrix element between the vacuum and an isolated
+one-particle shell, then the two-point function has a pole or spectral atom
+with residue determined by that matrix element.  LSZ is the statement that
+amputating the corresponding external singularities in time-ordered
+correlation functions computes matrix elements of the already-defined
+operator \(S\).
+
+Perturbation theory enters after this point.  Renormalized Feynman graphs may
+compute time-ordered Green functions, and LSZ may turn those Green functions
+into scattering amplitudes when the hypotheses about stable external
+particles and pole residues hold.  The mathematical order is therefore
+\[
+\begin{gathered}
+  \text{local net and spectrum}
+  \longrightarrow
+  \text{Haag--Ruelle wave operators}
+  \longrightarrow
+  S,
+  \\
+  S
+  \longrightarrow
+  \text{LSZ extraction}
+  \longrightarrow
+  \text{perturbative amplitudes}.
+\end{gathered}
+\]
+This order is independent of whether the theory was discovered by a
+Lagrangian, a lattice construction, an exact correlation hierarchy, or another
+nonperturbative definition.

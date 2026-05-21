@@ -30,6 +30,52 @@ localized in \(\mathcal O\). In the local-algebra framework of Chapter
 affiliated with \(\Obs(\mathcal O)\) or belongs to the unbounded field algebra
 whose bounded functions generate observables localized in \(\mathcal O\).
 
+\begin{definition}[Common invariant field domain]
+  A common invariant field domain for a family of fields is a dense subspace
+  \(\mathcal D\subset\Hilb\) such that every smeared field
+  \(\widehat\Phi_A(f)\) maps \(\mathcal D\) into itself, every finite product
+  of smeared fields is defined on \(\mathcal D\), the vacuum vector belongs to
+  \(\mathcal D\), and the Poincare representation maps \(\mathcal D\) into
+  itself.  If adjoints are used, the adjoint field is required to preserve the
+  same domain.
+\end{definition}
+
+The domain condition is what makes a product such as
+\(\widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\Omega\) an actual
+vector before any distributional limit is taken.  Matrix elements
+\[
+  (f_1,\ldots,f_n)
+  \longmapsto
+  \left\langle\psi,
+  \widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\chi
+  \right\rangle
+\]
+are required to be continuous multilinear functionals of the test functions
+for \(\psi,\chi\) in a stated dense domain.  This continuity is the analytic
+content behind point-field notation.
+
+\begin{proposition}[Distributional matrix elements]
+  Suppose the smeared products above are defined on a common invariant field
+  domain and the displayed matrix elements are continuous multilinear
+  functionals on \(C_c^\infty(\mathbb M^D)^n\).  Then for each pair
+  \(\psi,\chi\in\mathcal D\) and field labels \(A_1,\ldots,A_n\) there is a
+  distribution \(W_{\psi,\chi}^{A_1\cdots A_n}\in\mathcal D'((\mathbb M^D)^n)\)
+  such that
+  \[
+    W_{\psi,\chi}^{A_1\cdots A_n}(f_1\otimes\cdots\otimes f_n)
+    =
+    \left\langle\psi,
+    \widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\chi
+    \right\rangle .
+  \]
+\end{proposition}
+
+This proposition is a restatement of the definition of distributions, but it
+fixes the direction of logic: point-dependent expressions are compact
+notation for continuous smeared matrix elements.  Later analytic continuation,
+spectral representation, and LSZ extraction all act on these distributions or
+on their Fourier transforms.
+
 \section{Poincare Covariance Of Fields}
 
 Let

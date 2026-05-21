@@ -108,8 +108,9 @@ kernel.
 \end{figure}
 
 The interaction functional \(L_\Lambda\) is an arbitrary translation-invariant
-functional compatible with the imposed symmetries.  In momentum space, it has
-the formal expansion
+functional compatible with the imposed symmetries.  In a finite spatial
+volume with a finite momentum cutoff, \(L_\Lambda\) is an ordinary smooth or
+polynomial function of finitely many Fourier modes.  Its vertex expansion is
 \begin{align}
   L_\Lambda[\phi]
   &=
@@ -155,6 +156,30 @@ new cutoff profile is indistinguishable from one.  Thus the scale label on
 functions.
 
 \section{Lowering the Cutoff}
+
+The exact Wilsonian step is most transparent with a finite regulator.  Let
+\(E_\Lambda\) be the finite-dimensional real vector space of Fourier modes
+retained by the ultraviolet regulator, and let \(\dd\mu_{C_\Lambda}\) be the
+centered Gaussian measure with covariance \(C_\Lambda\) on this space.  If
+\[
+  C_\Lambda=C_{\Lambda'}+\widehat C_{\Lambda,\Lambda'}
+\]
+with both summands positive covariances on the regulated vector space, then
+the Gaussian convolution identity says
+\begin{equation}
+  \int_{E_\Lambda}F(\phi)\,\dd\mu_{C_\Lambda}(\phi)
+  =
+  \int_{E_{\Lambda'}}\int_{\widehat E_{\Lambda,\Lambda'}}
+  F(\phi'+\widehat\phi)\,
+  \dd\mu_{\widehat C_{\Lambda,\Lambda'}}(\widehat\phi)\,
+  \dd\mu_{C_{\Lambda'}}(\phi')
+  \label{eq:finite-regulator-gaussian-convolution}
+\end{equation}
+for every integrable regulated function \(F\).  Equation
+\eqref{eq:finite-regulator-gaussian-convolution} is a theorem about Gaussian
+measures on finite-dimensional vector spaces.  The continuum notation below is
+the shorthand obtained by applying this identity at each regulator and then
+studying the regulator-removal limit.
 
 The algebraic step behind Wilsonian RG is the covariance identity
 \begin{equation}
@@ -249,8 +274,11 @@ up to a \(\phi'\)-independent normalization.  Combining
 \eqref{eq:shell-kinetic-term} and
 \eqref{eq:define-lambda-prime-interaction} with the Gaussian measure for
 \(\phi'\) gives \eqref{eq:low-momentum-generating-function-preserved}.  The
-definition is exact at the level of formal functional integrals; perturbation
-theory turns it into a precise expansion in shell contractions.
+definition is exact for each finite regulator by
+\eqref{eq:finite-regulator-gaussian-convolution}.  Perturbation theory expands
+the logarithm of the shell expectation in connected shell contractions, and
+the continuum claim is the existence of the corresponding limit after the
+renormalization conditions have been imposed.
 
 \section{The Wilson-Polchinski Equation}
 
@@ -350,6 +378,54 @@ an infinite coupled system of differential equations for the coefficients of
 all local operators.  The use of a smooth cutoff is important: it keeps the
 infinitesimal shell operation compatible with a derivative expansion at
 external momenta small compared with \(\Lambda\).
+
+\section{Linearized Flow and Scaling Coordinates}
+
+A fixed point of the Wilsonian flow is a scale-invariant interaction
+\(L_*\) after all quantities have been written in dimensionless coordinates.
+Let \(t=\log\Lambda\).  Near a fixed point write
+\[
+  L_\Lambda=L_*+\sum_I g_I(\Lambda)\,\mathcal O_I ,
+\]
+where \(\mathcal O_I\) are local coordinates on theory space.  The linearized
+flow has the form
+\[
+  \frac{\dd g_I}{\dd t}
+  =
+  \sum_J M_I{}^J g_J+O(g^2).
+\]
+Choosing eigenvectors of \(M\) gives scaling coordinates \(u_\alpha\):
+\begin{equation}
+  \frac{\dd u_\alpha}{\dd t}
+  =
+  y_\alpha u_\alpha+O(u^2).
+  \label{eq:wilsonian-linearized-eigenflow}
+\end{equation}
+The number \(y_\alpha\) is the RG eigenvalue of the corresponding scaling
+operator.  In the convention \(t=\log\Lambda\), decreasing the cutoff moves
+toward the infrared.  A coordinate with \(y_\alpha>0\) grows toward the
+ultraviolet and must be fixed by a renormalization condition to define a
+continuum limit; it is relevant.  A coordinate with \(y_\alpha<0\) is
+irrelevant: its value at a fixed physical scale is attracted to a function of
+the relevant and marginal coordinates along a renormalized trajectory.
+
+The critical surface associated with a fixed point is the set of points whose
+infrared flow approaches that fixed point.  Its codimension equals the number
+of relevant directions, after quotienting redundant field redefinitions and
+symmetry directions.  This is the Wilsonian meaning of tuning.  A statistical
+system at a continuous transition is obtained by tuning the relevant
+coordinates to the critical surface; a continuum QFT near the fixed point is
+obtained by holding the relevant physical coordinates fixed while the
+ultraviolet cutoff is removed.
+
+The scaling dimension of the local operator conjugate to \(u_\alpha\) is
+\[
+  \Delta_\alpha=D-y_\alpha
+\]
+when the fixed point is conformal and the coupling multiplies
+\(\int\dd^Dx\,\mathcal O_\alpha(x)\).  Thus the Wilsonian eigenvalue problem
+and the conformal scaling-operator problem are the same local question seen
+from two sides: flow in theory space and dilation on local operators.
 
 \section{A Quartic-Sextic Toy Flow}
 

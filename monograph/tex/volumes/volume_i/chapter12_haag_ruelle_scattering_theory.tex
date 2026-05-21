@@ -247,6 +247,51 @@ velocity clusters are separated by spacelike distances growing linearly in
 \(|t|\). The cluster property and locality reduce the large-time scalar
 product to the product of the corresponding one-particle scalar products.
 
+\section{The Estimate Behind the Limit}
+
+The preceding theorem is a norm-convergence statement.  Its proof is governed
+by an estimate of the following form.  Let \(B_{i,t}(h_i)\) and
+\(B_{j,t}(h_j)\) be Haag--Ruelle operators with disjoint velocity supports.
+For every \(N\ge1\), almost locality and stationary phase give constants
+\(C_N\) such that
+\begin{equation}
+  \left\|
+  [B_{i,t}(h_i),B_{j,t}(h_j)]
+  \right\|
+  \le
+  C_N(1+|t|)^{-N}
+  \label{eq:haag-ruelle-commutator-decay}
+\end{equation}
+for sufficiently large \(|t|\).  The estimate says more than that the
+operators eventually commute: it gives an integrable error.
+
+The time derivative of a single approximant has no one-particle component:
+\[
+  P_1\frac{\dd}{\dd t}B_{j,t}(h_j)\Omega=0 .
+\]
+The remaining spectral support lies away from the isolated mass shell.  By
+choosing the energy-momentum support of the smearing function \(\chi\) inside
+the mass-gap neighborhood, that remainder is controlled by integration by
+parts in the energy variable.  In the multi-particle product,
+\(\frac{\dd}{\dd t}\Psi_t\) is a sum of terms in which either a one-particle
+remainder appears or two factors must be commuted past each other.  The
+one-particle remainders are integrable by the spectral gap, and the commutator
+terms are integrable by \eqref{eq:haag-ruelle-commutator-decay}.  Therefore
+\[
+  \int_T^\infty
+  \left\|\frac{\dd}{\dd t}\Psi_t\right\|\,\dd t
+  \longrightarrow0
+  \qquad (T\to\infty),
+\]
+which is Cook's Cauchy criterion for the outgoing limit.  The incoming limit
+is the same argument with \(t\to-\infty\).
+
+This estimate is the point at which locality, spectrum, and particle
+stability meet.  Without locality the commutator decay is unavailable; without
+the spectral gap the one-particle remainder need not be integrable; without
+positive energy the large-time stationary-phase localization has no stable
+direction of propagation.
+
 \section{Fock Structure}
 
 Let
