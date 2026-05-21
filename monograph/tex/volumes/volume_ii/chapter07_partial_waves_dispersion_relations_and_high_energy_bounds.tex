@@ -1,7 +1,7 @@
 \chapter{Partial Waves, Dispersion Relations, and High-Energy Bounds}
 \label{ch:volume-ii-07}
 
-\section{Angular Analyticity}
+\section{Hypotheses and Angular Analyticity}
 
 Work in \(D=4\) and consider scattering of the lightest stable identical
 scalar particle of mass \(m\).  The connected invariant amplitude is denoted
@@ -11,6 +11,20 @@ by
   \qquad
   s+t+u=4m^2 .
 \]
+The normalization of \(\mathcal A\) is the identical-particle normalization
+fixed in Chapter~\ref{ch:cross-sections-unitarity}.  Thus the forward
+optical theorem below will contain no additional convention-dependent factor.
+
+The hypotheses used in this chapter are the following.  The theory has a mass
+gap above the vacuum, the external scalar is stable and is the lightest
+one-particle species in the sector under consideration, the \(S\)-operator on
+the relevant asymptotic space is unitary, and the amplitude is the boundary
+value of an analytic first-sheet function with the crossing properties
+described in Chapter~\ref{ch:volume-ii-analyticity-crossing-landau}.  Whenever
+a displayed dispersion formula omits bound-state pole terms, those poles are
+assumed absent in the displayed kinematic range; if they are present, their
+residues are added explicitly.
+
 For a fixed physical value \(s>4m^2\), introduce
 \[
   x=\cos\theta
@@ -32,9 +46,12 @@ at
 \[
   x_B=1+\frac{2M_B^2}{s-4m^2}
 \]
-or at the corresponding point on the left.  Let \(t_0>0\) be the smallest
-positive value of \(t\) at which such a crossed-channel singularity occurs.
-For large \(s\), the nearest right singularity is
+or at the corresponding point on the left.  Let \(t_0>0\) be the infimum of
+positive real \(t\)-values at which the crossed-channel first sheet has a
+singularity, including stable poles and multiparticle thresholds.  If the
+infimum is realized by a pole, the following estimates are applied at
+\(0<t<t_0\) and the limit \(t\to t_0^-\) is taken only at the end.  For
+large \(s\), the nearest right singularity is approached at
 \[
   x_0(s)=1+\frac{2t_0}{s-4m^2}.
 \]
@@ -80,11 +97,14 @@ For large \(s\), the nearest right singularity is
 \end{tikzpicture}
 \end{center}
 
-The statement used below is the following angular analyticity hypothesis:
-for each such \(s\), \(\mathcal A(s,x)\) is analytic in a domain containing
-the physical interval and bounded on every compact subset of that domain.
-The largest ellipse with foci at \(\pm1\) lying in this analytic domain is
-called the Lehmann ellipse at energy \(s\).
+The angular analyticity hypothesis used below is this precise statement: for
+each such \(s\), the boundary value \(\mathcal A(s+\ii0,x)\), continued in
+the angular variable \(x\), is analytic in a domain containing the physical
+interval \([-1,1]\).  For every ellipse with foci at \(\pm1\) whose closure
+lies in this domain, the amplitude is bounded on the ellipse.  The largest
+ellipse of this type, when it exists, is called the Lehmann ellipse at energy
+\(s\).  The estimates use only smaller ellipses whose closures stay a positive
+distance from the singular set.
 
 \section{Expansion Inside the Lehmann Ellipse}
 
@@ -96,6 +116,14 @@ domain and enclosing \([-1,1]\).  For \(x\) inside \(\gamma_s\),
   \oint_{\gamma_s}\frac{\dd z}{2\pi\ii}\,
   \frac{\mathcal A(s,z)}{z-x}.
 \]
+Choose the branch of
+\[
+  \zeta(z)=z+\sqrt{z^2-1}
+\]
+for which \(\zeta(z)\sim2z\) at infinity.  The level sets
+\(|\zeta(z)|=R>1\) are ellipses with foci at \(z=\pm1\), and the physical
+interval is the degenerate ellipse \(R=1\).
+
 The kernel has the Legendre expansion
 \[
   \frac{1}{z-x}
@@ -122,19 +150,19 @@ Indeed, at large \(\ell\),
   Q_\ell(z)\sim
   \left(z+\sqrt{z^2-1}\right)^{-\ell},
 \]
-and the level sets of
-\[
-  \left|z+\sqrt{z^2-1}\right|
-\]
-are ellipses with foci at \(\pm1\).  Thus angular analyticity implies
-convergence of the partial-wave expansion throughout every smaller ellipse
-inside the Lehmann ellipse.
+Thus angular analyticity implies convergence of the partial-wave expansion
+throughout every smaller ellipse inside the Lehmann ellipse.  More
+quantitatively, if \(\mathcal A(s,z)\) is bounded by \(B_s(R)\) on
+\(|\zeta(z)|=R\), then the corresponding Legendre coefficients are bounded
+by a constant times \(B_s(R)R^{-\ell}\).  This is the analytic input later
+combined with unitarity: high angular momentum is exponentially suppressed
+inside an ellipse, while the physical partial-wave weights are bounded by
+unitarity.
 
 \section{Partial-Wave Normalization}
 
-For identical scalar particles only even partial waves occur.  Let
-\(\mathcal M_{\rm ord}(s,x)\) denote the ordered two-particle amplitude whose
-partial-wave expansion is
+Let \(\mathcal M_{\rm ord}(s,x)\) denote the ordered two-particle amplitude
+with distinguishable external labels and expansion
 \[
   \mathcal M_{\rm ord}(s,x)
   =
@@ -142,8 +170,9 @@ partial-wave expansion is
   \sum_{\ell=0}^{\infty}
   (2\ell+1)a_\ell(s)P_\ell(x).
 \]
-The amplitude used in this chapter is the Bose-symmetrized amplitude on the
-space of identical two-particle states:
+The physical amplitude on the two-particle space of identical scalar bosons
+is Bose symmetric.  With the convention fixed in
+Chapter~\ref{ch:cross-sections-unitarity}, it is
 \[
   \mathcal A(s,x)
   =
@@ -153,6 +182,10 @@ space of identical two-particle states:
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)a_\ell(s)P_\ell(x).
 \]
+Thus only even \(\ell\) occur, and the factor \(32\pi\) is tied to the
+final-state factor \(1/2\) in the identical-particle cross section.  No
+additional symmetry factor will be inserted later.
+
 Using
 \[
   S_\ell(s)=1+2\ii\,\rho(s)a_\ell(s),
@@ -167,13 +200,16 @@ this becomes the convention
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)\bigl(S_\ell(s)-1\bigr)P_\ell(x).
 \]
-Here \(S_\ell(s)\) is the partial-wave eigenvalue of the \(S\)-operator in the
-two-particle sector.  In an elastic interval \(|S_\ell|=1\).  With inelastic
-channels present, unitarity gives
+Here \(S_\ell(s)\) is the partial-wave matrix element of the full
+\(S\)-operator in the elastic identical-particle channel.  If no inelastic
+channel is open in this angular momentum, it is an eigenvalue of modulus one.
+With inelastic channels present, it is the elastic matrix element of a
+unitary matrix on the channel space, hence
 \[
   |S_\ell(s)|\le1 .
 \]
-For real \(x\) inside the Lehmann ellipse, real analyticity gives
+For real \(x\) inside the Lehmann ellipse, the partial-wave series for the
+physical upper-edge boundary value gives
 \[
   \operatorname{Im}\mathcal A(s,x)
   =
@@ -185,10 +221,12 @@ where
 \[
   w_\ell(s)=1-\operatorname{Re}S_\ell(s).
 \]
-The inequality \(|S_\ell|\le1\) implies the positive bound
+The inequality \(|S_\ell|\le1\) implies the pointwise bound
 \[
   0\le w_\ell(s)\le2 .
 \]
+The lower bound is simply \(\operatorname{Re}S_\ell\le |S_\ell|\le1\); the
+upper bound follows from \(\operatorname{Re}S_\ell\ge-|S_\ell|\ge-1\).
 
 The elastic and inelastic cross sections are
 \[
@@ -206,6 +244,20 @@ and
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)\bigl(1-|S_\ell(s)|^2\bigr).
 \]
+The first formula is the identical-boson formula
+\[
+  \frac{2\pi}{|\vec p_*|^2}
+  \sum_{\ell\ {\rm even}}(2\ell+1)|S_\ell-1|^2
+\]
+written using \(|\vec p_*|^2=(s-4m^2)/4\).  The second formula is the loss of
+elastic probability in each partial wave.  Adding the two expressions gives
+\[
+  |S_\ell-1|^2+1-|S_\ell|^2
+  =
+  2(1-\operatorname{Re}S_\ell)
+  =
+  2w_\ell .
+\]
 Adding them gives
 \[
   \sigma_{\rm tot}
@@ -221,7 +273,8 @@ Equivalently,
   \frac{1}{\sqrt{s(s-4m^2)}}\,
   \operatorname{Im}\mathcal A(s,1).
 \]
-This is the optical theorem in the present normalization.
+This is the optical theorem in the present normalization, since
+\(\rho(s)=\sqrt{s-4m^2}/\sqrt s\).
 
 \section{The Froissart--Martin Mechanism}
 
@@ -234,17 +287,30 @@ Define the positive total weight
   =
   \frac{s-4m^2}{16\pi}\,\sigma_{\rm tot}(s).
 \]
-For real \(x>1\), \(P_\ell(x)>0\) and increases with \(\ell\).  Among all
-weights satisfying \(0\le w_\ell\le2\) and fixed total \(\bar L^2\), the
-smallest value of
+For real \(x>1\), the Legendre polynomial \(P_\ell(x)\) is positive and
+strictly increases with \(\ell\).  Consider all even-\(\ell\) weights obeying
+\[
+  0\le w_\ell\le2,
+  \qquad
+  \sum_{\ell\ {\rm even}}(2\ell+1)w_\ell=\bar L^2 .
+\]
+Among these weights, the smallest possible value of
 \[
   \sum_{\ell\ {\rm even}}(2\ell+1)P_\ell(x)w_\ell
 \]
-is obtained, up to endpoint rounding, by filling the lowest allowed angular
-momenta to height \(2\).  Denote the corresponding box profile by \(b_\ell\).
-At high energy the endpoint \(L\) of the box obeys
+is obtained by filling the lowest allowed angular momenta to height \(2\),
+with at most one partially filled endpoint.  This is the elementary
+rearrangement inequality: if weight is moved from a larger \(\ell\) to a
+smaller \(\ell\), the constraint is unchanged while the sum decreases.  Denote
+this minimizing profile by \(b_\ell\).  If \(L\) is the largest filled angular
+momentum, then
 \[
-  L^2\simeq \bar L^2 .
+  \sum_{\substack{0\le\ell\le L\\ \ell\ {\rm even}}}
+  2(2\ell+1)
+  =
+  L^2+O(L),
+  \qquad
+  L^2=\bar L^2+O(\bar L).
 \]
 
 \begin{center}
@@ -295,7 +361,9 @@ is a constant \(C_\delta>0\) such that
   \left(1+(1-\delta)\sqrt{x^2-1}\right)^\ell
   \equiv C_\delta y^\ell .
 \]
-Using the box profile up to \(L\),
+The actual weighted sum is bounded below by the same sum evaluated on the
+minimizing box profile.  Therefore, for \(x>1\) inside the angular analytic
+domain,
 \[
   \operatorname{Im}\mathcal A(s,x)
   \ge
@@ -305,14 +373,23 @@ Using the box profile up to \(L\),
   \ge
   C'\,\rho(s)^{-1}L\,\frac{y^L}{y-1},
 \]
-with constants independent of \(s\) at sufficiently large energy.
+with constants independent of \(s\) at sufficiently large energy, for fixed
+\(\delta\) and fixed \(t\) away from the singularity.
 
-Now choose \(x=x_0(s)=1+2t_0/(s-4m^2)\), the edge of the Lehmann ellipse set by
-the nearest positive-\(t\) singularity.  At large \(s\),
+Now choose a number \(t_*\) with
 \[
-  y-1=(1-\delta)\sqrt{x_0^2-1}+O(s^{-1})
+  0<t_*<t_0
+\]
+and evaluate the amplitude at
+\[
+  x_*(s)=1+\frac{2t_*}{s-4m^2}.
+\]
+This point lies strictly inside the Lehmann ellipse for sufficiently large
+\(s\).  At large \(s\),
+\[
+  y-1=(1-\delta)\sqrt{x_*^2-1}+O(s^{-1})
   =
-  2(1-\delta)\sqrt{\frac{t_0}{s}}+O(s^{-1}),
+  2(1-\delta)\sqrt{\frac{t_*}{s}}+O(s^{-1}),
 \]
 and
 \[
@@ -324,27 +401,30 @@ Therefore the exponential factor obeys
   \simeq
   \exp\!\left[
     (1-\delta)
-    \sqrt{\frac{t_0\,\sigma_{\rm tot}}{4\pi}}
+    \sqrt{\frac{t_*\,\sigma_{\rm tot}}{4\pi}}
   \right].
 \]
-If, at the ellipse edge,
+Suppose the amplitude is polynomially bounded at this nonphysical point:
 \[
-  |\mathcal A(s,x_0(s))|\le C_Ns^N
+  |\mathcal A(s,x_*(s))|\le C_Ns^N
   \qquad(s\to\infty),
 \]
-then the exponential lower bound is compatible with this polynomial upper
-bound only if
+for some fixed integer \(N\).  The lower bound contains the prefactor
+\(\rho^{-1}L/(y-1)\), which is of order \(s\sqrt{\sigma_{\rm tot}}\) up to
+fixed constants.  Hence compatibility with the polynomial upper bound implies
 \[
   \sigma_{\rm tot}(s)
   \le
   \frac{(N-1)^2}{(1-\delta)^2}\,
-  \frac{4\pi}{t_0}
+  \frac{4\pi}{t_*}
   \left(\log\frac{s}{M_0^2}\right)^2
 \]
 for sufficiently large \(s\).  The scale \(M_0\) changes only subleading
-terms in the logarithm.  This is the Froissart--Martin mechanism: angular
-analyticity limits the number of strongly contributing partial waves, and
-unitarity bounds the weight carried by each partial wave.
+terms in the logarithm.  Taking \(t_*\to t_0^-\) after the estimate gives
+the coefficient governed by the nearest crossed-channel singularity.  This is
+the Froissart--Martin mechanism: angular analyticity converts polynomial
+boundedness into a bound on the number of strongly contributing partial waves,
+and unitarity bounds the weight carried by each such partial wave.
 
 \section{Polynomial Boundedness}
 
@@ -462,19 +542,35 @@ The formula is an \(N\)-subtracted fixed-\(t\) dispersion relation.
 \section{Two Subtractions}
 
 The previous derivation used a complex-plane polynomial bound.  A useful
-refinement is that control of the absorptive part on the real axis determines
-how many subtractions are needed.  Suppose
+refinement is that a real-axis bound on the absorptive part controls the
+number of subtractions.  The form needed here is the following conditional
+statement.  Fix \(t<0\), assume a fixed-\(t\) dispersion representation with
+some finite number of subtractions exists, and suppose
 \[
   |\operatorname{Im}\mathcal A(s,t)|\le C s^{N-\epsilon}
   \qquad(s\to+\infty)
 \]
-for some \(\epsilon>0\).  If a dispersion formula with \(N'\ge N+1\)
-subtractions were genuinely required, its polynomial part would generically
-give
+for some \(\epsilon>0\), uniformly for \(t\) in a small real interval.  If a
+larger subtraction number \(N'\ge N+1\) were genuinely required, the
+subtraction polynomial would contain a nonzero term
 \[
-  \mathcal A(s,t)\sim C'(t)s^{N'-1}.
+  C_{N'-1}(t)s^{N'-1}.
 \]
-Unitarity at \(t=0\) gives
+If the coefficient \(C_{N'-1}(t)\) is not identically zero, analyticity in
+\(t\) gives an interval of real \(t<0\) on which its magnitude is bounded
+below.  On the physical interval for elastic scattering,
+\[
+  -(s-4m^2)\le t\le0,
+\]
+the identical-particle elastic cross section contains the positive integral
+\[
+  \sigma_{\rm el}(s)
+  =
+  \frac{1}{32\pi s(s-4m^2)}
+  \int_{-(s-4m^2)}^0\dd t\,
+  |\mathcal A(s,t)|^2 .
+\]
+Together with the optical theorem this gives
 \[
   \operatorname{Im}\mathcal A(s,0)
   =
@@ -482,32 +578,32 @@ Unitarity at \(t=0\) gives
   \ge
   \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s).
 \]
-The elastic cross section contains the positive integral of
-\(|\mathcal A(s,t)|^2\) over the physical angular interval.  A leading growth
-like \(s^{N'-1}\) would therefore force at least
+The nonzero polynomial term would then force, along a high-energy sequence,
 \[
   \operatorname{Im}\mathcal A(s,0)
-  \ge c\,s^{2N'-2}
+  \ge c\,s^{2N'-3}
 \]
-for some positive constant \(c\) along a suitable high-energy sequence,
-contradicting the assumed real-axis bound.  Thus the absorptive part controls
-the subtraction number.
+for some \(c>0\).  Since \(N'\ge N+1\), this contradicts the assumed
+real-axis bound.  Therefore the real-axis absorptive bound fixes the
+subtraction number, apart from polynomial terms whose leading coefficients
+vanish identically and hence were not genuine subtractions.
 
-The Froissart estimate gives, at forward scattering,
+The preceding Froissart mechanism, applied with any finite initial polynomial
+bound, gives at forward scattering
 \[
   \operatorname{Im}\mathcal A(s,0)
   \le
   C\,s(\log s)^2 .
 \]
 For fixed real \(t<0\) and sufficiently large \(s\), the corresponding angular
-variable satisfies \(-1<x<1\).  Since \(P_\ell(x)\le P_\ell(1)=1\) in this
-range,
+variable satisfies \(-1<x<1\).  In this range \(|P_\ell(x)|\le1\), while
+\(P_\ell(1)=1\).  Using the positive weights \(w_\ell\),
 \[
-  \operatorname{Im}\mathcal A(s,t)
+  |\operatorname{Im}\mathcal A(s,t)|
   \le
   \operatorname{Im}\mathcal A(s,0)
 \]
-for the positive partial-wave sum above.  Consequently
+for the absorptive partial-wave sum.  Consequently
 \[
   \lim_{s\to\infty}
   \left|\frac{\mathcal A(s,t)}{s^2}\right|=0,
@@ -515,9 +611,9 @@ for the positive partial-wave sum above.  Consequently
 \]
 so two subtractions are sufficient in the massive scalar setting.
 
-There is a further extension from real \(t<0\) to complex \(t\) in the disk
-set by the nearest \(t\)-plane singularity.  The mechanism is positivity of
-the Taylor coefficients of the absorptive part at \(t=0\):
+The extension from real \(t<0\) to complex \(t\) inside the disk set by the
+nearest \(t\)-plane singularity uses positivity of the Taylor coefficients of
+the absorptive part at \(t=0\):
 \[
   \left.
   \frac{\partial^n}{\partial t^n}
@@ -525,9 +621,11 @@ the Taylor coefficients of the absorptive part at \(t=0\):
   \right|_{t=0}
   \ge0 .
 \]
-This positivity allows the Taylor expansion in \(t\) to commute with the
-dispersive integral inside its convergence disk.  With two subtractions the
-Froissart--Martin bound takes the standard four-dimensional form
+This positivity follows from the same partial-wave expansion: derivatives of
+\(P_\ell(1+2t/(s-4m^2))\) at \(t=0\) are nonnegative.  It allows the Taylor
+expansion in \(t\) to commute with the dispersive integral inside its
+convergence disk.  With two subtractions, \(N=2\) in the previous
+Froissart--Martin estimate, and the four-dimensional massive scalar bound is
 \[
   \sigma_{\rm tot}(s)
   \le
