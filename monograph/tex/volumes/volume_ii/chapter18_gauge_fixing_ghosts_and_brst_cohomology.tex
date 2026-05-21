@@ -195,6 +195,81 @@ Since \(S_{\mathrm{YM}}+S_{\mathrm{matter}}\) is gauge invariant and \(s^2=0\),
 one obtains \(sS_{\mathrm{gf}}=0\).  The gauge-fixed formalism has replaced
 manifest gauge invariance by a nilpotent fermionic symmetry.
 
+\section{Local BRST Cohomology}
+
+The BRST differential acts on local expressions before any functional integral
+is evaluated.  Let \(\mathcal F_{\mathrm{loc}}\) denote the graded-commutative
+algebra of local functions: polynomials or formal power series in the fields
+\[
+  A_\mu,\quad c,\quad \bar c,\quad B,\quad \psi,\quad \bar\psi
+\]
+and finitely many of their spacetime derivatives, with coefficients smooth in
+the spacetime point when explicit \(x\)-dependence is allowed.  The differential
+\(s\) is extended to derivatives by
+\[
+  s(\partial_{\nu_1}\cdots\partial_{\nu_r}\Phi)
+  =
+  \partial_{\nu_1}\cdots\partial_{\nu_r}(s\Phi)
+\]
+for every generator \(\Phi\).  The local BRST cohomology at ghost number \(g\)
+is
+\[
+  H^g(s;\mathcal F_{\mathrm{loc}})
+  =
+  \frac{\{a\in\mathcal F_{\mathrm{loc}}:\operatorname{gh}(a)=g,\ sa=0\}}
+       {\{a=sb:\operatorname{gh}(b)=g-1\}} .
+\]
+At ghost number zero, this cohomology is the local algebraic form of
+gauge-invariant composite operators, with BRST-exact representatives removed.
+
+Integrated local functionals require a second quotient because Lagrangian
+densities differing by total derivatives define the same action on manifolds
+without boundary, or the same bulk functional after boundary data have been
+specified.  Let \(\Omega^p_{\mathrm{loc}}\) be the space of local \(p\)-forms and
+let
+\[
+  d=dx^\mu\partial_\mu
+\]
+be the spacetime exterior derivative.  With the convention that \(s\) and \(d\)
+are odd derivations on local forms, they anticommute:
+\[
+  sd+ds=0 .
+\]
+For a \(D\)-dimensional spacetime, an integrated local functional is represented
+by a local \(D\)-form \(a\).  The cohomology relevant for local functionals is
+the relative cohomology \(H^{g,D}(s\mid d)\).  Its cocycles and coboundaries are
+\[
+  sa+dm=0,
+  \qquad
+  a\sim a+sb+dn ,
+\]
+where
+\[
+  a\in\Omega^D_{\mathrm{loc}},\quad
+  m,n\in\Omega^{D-1}_{\mathrm{loc}},\quad
+  b\in\Omega^D_{\mathrm{loc}},
+\]
+with ghost numbers chosen so that all displayed terms have ghost number \(g+1\)
+in the first equation and ghost number \(g\) in the equivalence relation.  Thus
+\(H^{0,D}(s\mid d)\) classifies BRST-invariant local counterterm densities
+modulo field redefinitions and total derivatives, while \(H^{1,D}(s\mid d)\)
+is the algebraic home of possible local gauge anomalies.  The anomaly chapters
+will compute the relevant representatives in four-dimensional chiral gauge
+theories; the present chapter fixes the cohomological language.
+
+The pair \((\bar c,B)\) belongs to the nonminimal gauge-fixing sector.  Since
+\[
+  s\bar c^a=B^a,\qquad sB^a=0,
+\]
+and the BRST transformations of the minimal variables \(A,c,\psi,\bar\psi\) do
+not depend on \(\bar c\) or \(B\), this pair is contractible in local BRST
+cohomology.  The doublet lemma below gives the explicit homotopy.  Consequently,
+the nonminimal variables are essential for writing local propagators and
+Slavnov--Taylor identities, but the cohomology classes of gauge-invariant local
+operators, counterterms, and anomalies may be represented in the minimal sector
+under the standard regularity assumptions used in perturbative Yang--Mills
+theory.
+
 \section{Cohomology of States and Observables}
 
 In canonical quantization of the gauge-fixed theory, the state space before

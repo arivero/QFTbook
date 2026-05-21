@@ -31,7 +31,25 @@ For the chapter under development:
 - read the relevant handwritten notes or transcription;
 - compare Ben Lou notes only as a cautionary aid;
 - identify external references for theorem-level claims;
+- download any necessary public external reference into `references/` or
+  `references/sound_references/`;
+- create a readable text sidecar before using the reference for drafting;
 - record exact source anchors.
+
+## Stage 1A: External Reference Intake
+
+When a new external source is needed:
+
+- prefer stable public sources such as arXiv, journal-author copies, lecture-note
+  PDFs from the author, or official institutional repositories;
+- save the PDF with a descriptive filename in `references/sound_references/`;
+- generate a `.txt` sidecar with `pdftotext -layout` or a better extraction
+  method available for that source;
+- update `references/sound_references/README.md` with its bibliographic role;
+- inspect the sidecar for extraction failures before relying on it;
+- record in the chapter dossier which sections or theorem statements are used;
+- do not import the reference's order of presentation into the monograph unless
+  the monograph's own logical spine independently requires it.
 
 ## Stage 2: Dossier
 

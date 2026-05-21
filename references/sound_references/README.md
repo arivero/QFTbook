@@ -13,6 +13,7 @@ hypothesis list.
 | `fredenhagen_rejzner_paqft_1208.1428.pdf` | Klaus Fredenhagen and Katarzyna Rejzner, "Perturbative algebraic quantum field theory", arXiv:1208.1428 | Perturbative AQFT, causal factorization, time-ordered products, renormalization, wavefront sets. |
 | `harlow_wu_covariant_phase_space_1906.08616.pdf` | Daniel Harlow and Jie-qiang Wu, "Covariant phase space with boundaries", arXiv:1906.08616 | Covariant phase space, Noether currents and charges, Hamiltonian generators, and boundary-term bookkeeping. |
 | `buchholz_dybalski_scattering_2023.pdf` | Detlev Buchholz and Wojciech Dybalski, "Scattering in relativistic quantum field theory: basic concepts, tools, and results" | Haag--Ruelle scattering, LSZ, particle counters, infraparticles, asymptotic completeness. |
+| `barnich_brandt_henneaux_local_brst_cohomology_hep-th_0002245.pdf` | Glenn Barnich, Friedemann Brandt, and Marc Henneaux, "Local BRST cohomology in gauge theories", arXiv:hep-th/0002245 | Local BRST cohomology, \(H(s)\), \(H(s\mid d)\), nonminimal contractible pairs, counterterms, and anomaly consistency conditions. |
 | `schmidt_euclidean_reconstruction_math-ph_9811002.pdf` | Andreas U. Schmidt, "Euclidean Reconstruction in Quantum Field Theory: Between Tempered Distributions and Fourier Hyperfunctions", arXiv:math-ph/9811002 | Euclidean reconstruction and relation between Wightman and Schwinger functions. |
 | `rosten_exact_rg_1003.1366.pdf` | Oliver J. Rosten, "Fundamentals of the Exact Renormalization Group", arXiv:1003.1366 | Exact RG, Wilsonian flow equations, locality, universality, renormalizability. |
 | `simmons_duffin_conformal_bootstrap_1602.07982.pdf` | David Simmons-Duffin, "TASI Lectures on the Conformal Bootstrap", arXiv:1602.07982 | CFT basics, radial quantization, reflection positivity, OPE, conformal blocks, numerical bootstrap. |
@@ -28,3 +29,11 @@ chapter dossier:
 - whether the result is reproduced, sketched, or only cited;
 - how the notation is translated into the monograph's notation;
 - what the reference does not settle for the intended physical claim.
+
+## Text Sidecars
+
+Every downloaded PDF used for writing should have a readable `.txt` sidecar
+created with `pdftotext -layout` or a better source-specific extraction method.
+When the extraction is imperfect, the chapter dossier should record which pages or
+sections were checked against the rendered PDF rather than trusting the sidecar
+alone.
