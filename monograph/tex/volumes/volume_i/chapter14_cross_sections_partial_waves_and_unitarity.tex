@@ -41,15 +41,64 @@ define
 \]
 The invariant amplitude convention from the LSZ chapter is
 \[
-  {}_{\mathrm{out}}\langle q_1,\ldots,q_m|T|p_1,\ldots,p_n\rangle_{\mathrm{out}}
+  \langle q_1,\ldots,q_m|T|p_1,\ldots,p_n\rangle
   =
   (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
   \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n).
 \]
+Here the bra and ket are basis vectors in the asymptotic Fock space on which
+\(T\) acts. Equivalently, the same distribution is obtained from the connected
+part of the Haag--Ruelle kernel
+\({}_{\mathrm{out}}\langle q_1,\ldots,q_m|p_1,\ldots,p_n
+\rangle_{\mathrm{in}}\) after subtracting the identity contribution.
 The full connected contribution to \(S\) is therefore
 \[
   \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})\mathcal M .
 \]
+
+\section{Wave-Packet Origin of Cross Sections}
+
+The sharp-momentum formulas below are densities obtained from wave-packet
+probabilities.  Let \(\psi_1,\psi_2\in\Hilb_1\) be normalized incoming
+one-particle packets whose momentum supports are narrow and whose group
+velocities are distinct.  In the center-of-mass frame, translate the second
+packet by a vector \(b\) in the transverse impact-parameter plane and denote
+the resulting incoming two-particle state by
+\[
+  \Psi_b=\psi_1\odot \tau_b\psi_2 .
+\]
+Here \(\odot\) is the symmetric tensor product and \(\tau_b\) is the spatial
+translation operator on the one-particle Hilbert space.
+For an outgoing channel \(\mathcal D\) that does not contain the identity
+no-scattering component, define the wave-packet cross section by
+\[
+  \sigma_{\psi_1,\psi_2}(\mathcal D)
+  =
+  \int_{\mathbb R^{D-2}}\dd^{D-2}b\,
+  \left\|
+    \Pi_{\mathcal D}^{\mathrm{out}}S\Psi_b
+  \right\|^2 .
+\]
+The dimension is length to the power \(D-2\), as required for a transverse
+area in \(D\) spacetime dimensions.
+
+When the packets are narrowed around momenta \(p_1,p_2\), this expression has
+a distributional limit.  The oscillatory integral over \(b\) enforces
+transverse momentum conservation, the large-time separation of the packets
+enforces energy conservation, and the remaining density is precisely the
+plane-wave kernel with its single overall factor
+\[
+  (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}}).
+\]
+The incoming current through the transverse impact-parameter plane is the
+relative speed \(v_{\mathrm{rel}}\), while the one-particle normalization
+contributes the factors \(2E_1\) and \(2E_2\).  Thus the invariant
+denominator in the sharp-momentum formula is
+\[
+  \mathcal F(p_1,p_2)=4E_1E_2v_{\mathrm{rel}}.
+\]
+The phase-space formula in the next section is the narrow-packet limit of
+this Hilbert-space definition.
 
 \section{Invariant Phase Space and Flux}
 
