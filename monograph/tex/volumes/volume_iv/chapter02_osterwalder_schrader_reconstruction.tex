@@ -9,11 +9,14 @@ Let \(E=\mathbb R^D\) be Euclidean space with coordinates
 \]
 Euclidean correlation functions are distributions
 \[
-  S_{a_1\cdots a_n}(x_1,\ldots,x_n)
+  S_{\alpha_1\cdots \alpha_n}(x_1,\ldots,x_n),
+  \qquad \alpha_j\in I,
 \]
-on \(E^n\), with field labels \(a_j\).  In a construction by a Euclidean
-measure, they are moments of random distributions.  In an axiomatic Euclidean
-formulation, the hierarchy \(\{S_n\}\) is primary data.
+on \(E^n\), where \(I\) is the field-label set.  Equivalently,
+\(S_n\) is a multilinear distribution on compactly supported or Schwartz test
+functions with \(n\) field labels.  In a construction by a Euclidean measure,
+these distributions are moments of random distributions.  In an axiomatic
+Euclidean formulation, the hierarchy \(\{S_n\}_{n\ge0}\) is primary data.
 
 Let \(\theta\) be time reflection:
 \[
@@ -25,12 +28,26 @@ For a test function \(f_n\) supported in the ordered positive-time region
 \]
 define the reflected adjoint test function \(\Theta f_n\) by reversing the
 order, reflecting all arguments, complex conjugating, and applying the field
-adjunction.  Reflection positivity is the requirement
+adjunction.  Let \(\mathcal E_+\) be the vector space of finite sequences
+\[
+  F=(f_0,f_1,f_2,\ldots),
+\]
+where only finitely many \(f_n\) are nonzero and every \(f_n\) is a labelled
+test function supported in positive Euclidean time with a chosen ordering of
+its time variables.  Reflection positivity is the requirement that the
+sesquilinear form
 \begin{equation}
-  \sum_{m,n} S_{m+n}\bigl(\Theta f_m,f_n\bigr)\ge0
+  \langle F,G\rangle_{\rm OS}
+  =
+  \sum_{m,n} S_{m+n}\bigl(\Theta f_m,g_n\bigr)
+  \label{eq:os-positive-time-form}
+\end{equation}
+satisfy
+\begin{equation}
+  \langle F,F\rangle_{\rm OS}\ge0
   \label{eq:os-reflection-positivity}
 \end{equation}
-for every finite collection of such positive-time test functions.
+for every \(F\in\mathcal E_+\).
 
 The other Osterwalder--Schrader data are Euclidean covariance, permutation
 symmetry, regularity and growth assumptions sufficient for analytic
@@ -71,18 +88,9 @@ target theory is required to have a unique vacuum.
 
 \section{Hilbert Space From Positive Time}
 
-Let \(\mathcal E_+\) be the vector space of finite sequences
-\[
-  F=(f_0,f_1,f_2,\ldots)
-\]
-where only finitely many \(f_n\) are nonzero and each \(f_n\) is supported in
-positive Euclidean time.  Define a sesquilinear form by
-\[
-  \langle F,G\rangle_{\rm OS}
-  =
-  \sum_{m,n} S_{m+n}(\Theta f_m,g_n).
-\]
-Reflection positivity says that this form is nonnegative.  Let
+Use the positive-time vector space \(\mathcal E_+\) and the form
+\eqref{eq:os-positive-time-form}.  Reflection positivity says that this form
+is nonnegative.  Let
 \[
   \mathcal N=\{F\in\mathcal E_+\mid \langle F,F\rangle_{\rm OS}=0\}.
 \]
@@ -94,10 +102,10 @@ The reconstructed Hilbert space is
 \]
 The vector represented by \(F=(1,0,0,\ldots)\) is the vacuum.
 
-Euclidean time translations by \(t\ge0\) preserve positive-time support and
+Euclidean time translations by \(s\ge0\) preserve positive-time support and
 therefore define a contraction semigroup on \(\Hilb_{\rm OS}\):
 \[
-  T(t)=\ee^{-tH},\qquad H\ge0.
+  T_E(s)=\ee^{-sH},\qquad H\ge0.
 \]
 The self-adjoint generator \(H\) is the Lorentzian Hamiltonian.  Spatial
 translations and rotations act unitarily, and the analytic continuation of
@@ -105,24 +113,27 @@ Euclidean rotations supplies the Lorentz boosts under the OS hypotheses.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.94\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \tikzset{
       box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
         minimum width=3.25cm,minimum height=0.90cm,align=center},
       arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
     }
-    \node[box] (sch) at (-5.1,0.8) {Schwinger hierarchy\\\(\{S_n\}\)};
-    \node[box] (pos) at (-1.7,0.8) {positive-time\\test sequences};
-    \node[box] (hilb) at (1.7,0.8) {OS quotient\\\(\Hilb_{\rm OS}\)};
-    \node[box] (lor) at (5.1,0.8) {Lorentzian data\\\(\Hilb,\vac,U,\Phi\)};
-    \node[box,fill=green!7] (semigroup) at (0,-1.15)
-      {Euclidean time semigroup\\\(\ee^{-tH}\)};
-    \draw[arrow] (sch)--(pos) node[midway,above] {reflection positivity};
+    \node[box] (sch) at (-5.25,0.45) {Schwinger hierarchy\\\(\{S_n\}\)};
+    \node[box] (pos) at (-1.75,0.45) {positive-time\\test sequences};
+    \node[box] (hilb) at (1.75,0.45) {OS quotient\\\(\Hilb_{\rm OS}\)};
+    \node[box] (lor) at (5.25,0.45)
+      {Wightman data\\\(\Hilb_{\rm OS},\vac_{\rm OS},U,\Phi_\alpha\)};
+    \node[box,fill=green!7] (semigroup) at (0,-1.45)
+      {Euclidean time semigroup\\\(\ee^{-sH}\)};
+    \draw[arrow] (sch)--(pos);
     \draw[arrow] (pos)--(hilb);
-    \draw[arrow] (hilb)--(lor) node[midway,above] {analytic continuation};
+    \draw[arrow] (hilb)--(lor);
     \draw[arrow] (pos)--(semigroup);
     \draw[arrow] (semigroup)--(hilb);
+    \node[blue!60!black] at (-3.50,1.32) {reflection positivity};
+    \node[blue!60!black] at (3.50,1.32) {analytic continuation};
   \end{tikzpicture}
   }
   \caption{OS reconstruction turns Euclidean correlation data into a
@@ -134,20 +145,21 @@ Euclidean rotations supplies the Lorentz boosts under the OS hypotheses.
 
 Let \(\mathcal D_{\rm OS}\subset\Hilb_{\rm OS}\) be the image of
 \(\mathcal E_+\) in the quotient.  This dense subspace is the natural common
-domain for the reconstructed fields.  If \(h\) is a Euclidean test function
-whose support is at positive time and remains ordered to the left of the
-supports appearing in \(F\in\mathcal E_+\), define
+domain for the reconstructed fields.  If \(h_\alpha\) is a Euclidean test
+function with field label \(\alpha\), whose support is at positive time and
+remains ordered to the left of the supports appearing in
+\(F\in\mathcal E_+\), define
 \[
-  \Phi_E(h)[F]
+  \Phi_{E,\alpha}(h)[F]
   =
-  [h\otimes F],
+  [h_\alpha\otimes F],
 \]
-where \(h\otimes F\) denotes the sequence obtained by inserting one additional
-Euclidean field smeared with \(h\).  Permutation symmetry of the Schwinger
-functions and reflection positivity make this definition compatible with the
-null quotient whenever the supports obey the stated ordering.  Taking limits
-of ordered supports gives the Euclidean fields as closable operators on
-\(\mathcal D_{\rm OS}\).
+where \(h_\alpha\otimes F\) denotes the sequence obtained by inserting one
+additional Euclidean field smeared with \(h\).  Permutation symmetry of the
+Schwinger functions and reflection positivity make this definition compatible
+with the null quotient whenever the supports obey the stated ordering.  Taking
+limits of ordered supports gives the Euclidean fields as closable operators
+on \(\mathcal D_{\rm OS}\).
 
 Lorentzian fields are obtained by continuing these matrix elements, not by
 declaring a separate Hilbert space.  For ordered imaginary parts
@@ -161,9 +173,9 @@ continued to
   \qquad j=1,\ldots,n.
   \label{eq:os-wightman-boundary-values}
 \end{equation}
-The reconstructed operator \(\Phi(t,\mathbf f)\) is the operator-valued
-distribution whose vacuum matrix elements are these boundary values and whose
-time dependence is implemented by the unitary group
+The reconstructed operator \(\Phi_\alpha(t,\mathbf f)\) is the
+operator-valued distribution whose vacuum matrix elements are these boundary
+values and whose time dependence is implemented by the unitary group
 \[
   \ee^{-\ii tH}.
 \]
@@ -177,10 +189,14 @@ correlation hierarchy.
 Let \(\{S_n\}_{n\ge0}\) be Euclidean distributions satisfying Euclidean
 covariance, permutation symmetry, reflection positivity, Hermiticity,
 normalization, and the regularity and growth assumptions required for
-tempered reconstruction.  Then there exists a Wightman theory whose
-Schwinger functions are \(\{S_n\}\) at noncoincident Euclidean points.  The
-reconstructed Wightman functions are obtained as boundary values of analytic
-continuations of the \(S_n\).
+tempered reconstruction.  Then there exists Wightman field data
+\[
+  (\Hilb_{\rm OS},\vac_{\rm OS},U,\mathcal D_{\rm OS},
+  \{\Phi_\alpha\}_{\alpha\in I})
+\]
+whose Schwinger functions are \(\{S_n\}\) at noncoincident Euclidean points.
+The reconstructed Wightman functions are obtained as boundary values of
+analytic continuations of the \(S_n\).
 \end{theorem}
 
 The theorem has two distinct pieces.  Reflection positivity constructs the
@@ -194,7 +210,7 @@ larger and the growth hypotheses are changed.
 \section{Euclidean Measures and Generating Functionals}
 
 Suppose a Euclidean theory is given by a probability measure \(\mu\) on a
-space of distributions \(\varphi\), with generating functional
+space of scalar distributions \(\varphi\), with generating functional
 \[
   Z_E[J]=\int \exp\left(\int_E J(x)\varphi(x)\,\dd^Dx\right)\,\dd\mu(\varphi)
 \]
@@ -276,7 +292,8 @@ one-particle Hilbert space of the free scalar field.
     \node[box,fill=green!7] (wightman) at (0,-1.15)
       {Lorentzian Wightman\\boundary values};
     \draw[arrow] (measure)--(moments);
-    \draw[arrow] (moments)--(os) node[midway,above] {verify axioms};
+    \draw[arrow] (moments)--(os)
+      node[midway,above=5pt,fill=white,inner sep=1.2pt] {verify axioms};
     \draw[arrow] (os)--(wightman);
     \draw[arrow] (moments)--(wightman)
       node[midway,left] {analytic continuation};
@@ -296,7 +313,7 @@ correlation data.  It supplies the Hilbert space, Hamiltonian, vacuum, and
 Lorentzian Wightman functions from Euclidean data satisfying precise
 positivity and growth conditions.
 
-The framework therefore explains exactly which Euclidean information is needed
-to recover a Lorentzian theory.  The answer is the full compatible hierarchy
-of Schwinger distributions together with the OS structural properties, not
-only a formal Euclidean action.
+The framework identifies the Euclidean information that reconstructs a
+Lorentzian theory: a full compatible hierarchy of Schwinger distributions
+together with covariance, reflection positivity, growth, regularity, and
+normalization conditions.
