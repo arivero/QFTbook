@@ -34,9 +34,12 @@
 | --- | --- |
 | \(q\) | reference lightlike momentum \((\kappa,0,0,\kappa)\) |
 | \(L(k)\) | standard Lorentz transformation sending \(q\) to \(k\) |
+| \(Q(k)\) | massless little-group change of helicity frame |
+| \(\chi_h\) | helicity character of the little group |
 | \(J_3\) | rotation generator around the direction of \(q\) |
 | \(N_1,N_2\) | null-translation little-group generators |
 | \(h\) | helicity eigenvalue |
+| \(F_L(k)\) | distributional helicity-frame map \(V_h\to\Hilb_{1,h}\) |
 | \(\epsilon_\mu^h(k)\) | vector polarization representative |
 | \(c_h\) | scalar coefficient of a little-group gauge shift |
 | \(A_\mu\) | vector-potential representative |
@@ -51,8 +54,13 @@
   translation subgroup acts trivially.
 - The helicity label \(h\) is the eigenvalue of angular momentum along the
   momentum direction and lies in \(\frac12\mathbb Z\).
+- The standard transformation \(L(k)\) is a helicity-frame choice; changing it
+  conjugates the Wigner cocycle and multiplies one-particle wavefunction
+  components by the inverse helicity character.
 - For helicity \(\pm1\), the vector polarization representative shifts by a
   multiple of \(k_\mu\) under the null-translation part of the little group.
+- Changing the helicity frame changes vector polarization representatives by
+  the dual helicity phase together with a \(k_\mu\)-shift.
 - The antisymmetric field-strength matrix element is invariant under this
   shift and is the local photon observable used in the next chapter.
 - Polarization sums require a representative choice, but representative

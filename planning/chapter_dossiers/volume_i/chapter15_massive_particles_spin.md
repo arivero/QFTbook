@@ -37,8 +37,10 @@
 | \(p_R\) | reference rest momentum \((m,\vec0)\) |
 | \(L(p)\) | standard Lorentz transformation sending \(p_R\) to \(p\) |
 | \(W(\Lambda,p)\) | Wigner rotation \(L(\Lambda p)^{-1}\Lambda L(p)\) |
+| \(Q(p)\) | momentum-dependent little-group change of spin frame |
 | \(j\) | spin label of an irreducible \(SU(2)\) representation |
 | \(D^{(j)}\) | spin-\(j\) little-group representation |
+| \(F_L(p)\) | distributional spin-frame map \(V_j\to\Hilb_1\) |
 | \(R\) | finite-dimensional Lorentz representation carried by a field index |
 | \(u_A{}^\sigma(p)\) | vacuum-to-particle intertwiner |
 | \(\gamma^\mu\) | gamma matrices with mostly-plus Clifford relation |
@@ -52,8 +54,16 @@
 - Massive spin is the irreducible representation label of the \(SU(2)\)
   little group.
 - Wigner rotations govern Lorentz transformations of one-particle spin states.
+- Wigner rotations obey a cocycle identity, and a different choice of
+  standard boosts is a momentum-dependent change of spin frame over the mass
+  shell.
+- Spin-frame components of wavefunctions and dual external states transform
+  oppositely, leaving amplitudes frame independent.
 - Covariant field indices and one-particle spin labels are connected by
   intertwiners.
+- Vacuum-to-particle wavefunctions obey an equivariance condition relating
+  Lorentz covariance of the field to the Wigner transformation of particle
+  spin.
 - A field has nonzero overlap with a spin-\(j\) particle when its Lorentz
   representation contains spin \(j\) upon restriction to the little group.
 - Spin-\(\frac12\) intertwiners obey momentum-space Dirac equations as a
