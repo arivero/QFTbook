@@ -1,0 +1,364 @@
+\chapter{Analyticity, Crossing, and Landau Singularities}
+\label{ch:volume-ii-analyticity-crossing-landau}
+
+\section{Physical Region and First Sheet}
+
+Consider \(2\to2\) scattering of identical stable scalar particles of mass
+\(m\). Let the connected invariant amplitude be denoted by
+\[
+  \mathcal M(s,t),
+\]
+where
+\[
+  s=-(k_1+k_2)^2,\qquad
+  t=-(k_1-k_3)^2,\qquad
+  u=4m^2-s-t .
+\]
+In the center-of-mass frame,
+\[
+  s=E^2=4(k^2+m^2),
+  \qquad
+  t=-2k^2(1-\cos\theta),
+  \qquad
+  u=-2k^2(1+\cos\theta).
+\]
+Thus the physical \(s\)-channel region is
+\[
+  t\le0,\qquad
+  u\le0,\qquad
+  s\ge4m^2-t .
+\]
+The last inequality is the statement \(-t\le s-4m^2\).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \begin{scope}
+    \node[draw,circle,fill=gray!15,minimum size=0.78cm,inner sep=0pt] (a) at (0,0) {};
+    \draw[->,line width=0.9pt] (-1.75,0.75)--(a.150);
+    \draw[->,line width=0.9pt] (-1.75,-0.75)--(a.210);
+    \draw[->,line width=0.9pt] (a.30)--(1.75,0.75);
+    \draw[->,line width=0.9pt] (a.330)--(1.75,-0.75);
+    \node at (0,0) {\(\mathcal M\)};
+    \draw[dashed] (0,0)--(1.45,0);
+    \draw[blue!70!black,->,line width=0.9pt]
+      (0.85,0) arc[start angle=0,end angle=24,radius=0.85];
+    \node[blue!70!black] at (1.05,0.3) {\(\theta\)};
+    \node[align=center] at (0,-1.55)
+      {\(s=4(k^2+m^2)\)\\
+       \(t=-2k^2(1-\cos\theta)\)};
+  \end{scope}
+  \begin{scope}[xshift=6.5cm]
+    \draw[->,line width=0.75pt] (-0.3,0)--(5.2,0) node[right] {\(s\)};
+    \draw[->,line width=0.75pt] (0,-1.45)--(0,1.85)
+      node[above] {\(\operatorname{Im}s\)};
+    \draw[red!75!black,decorate,
+      decoration={snake,amplitude=0.55mm,segment length=2.7mm},
+      line width=1.05pt] (2.05,0)--(4.95,0);
+    \node[red!75!black,below] at (2.05,-0.15) {\(4m^2\)};
+    \draw[orange!85!black,decorate,
+      decoration={snake,amplitude=0.55mm,segment length=2.7mm},
+      line width=1.05pt] (0.95,0)--(-0.1,0);
+    \node[orange!85!black,below] at (0.95,-0.15) {\(-t\)};
+    \fill[blue!75!black] (1.45,0.28) circle (2.1pt);
+    \fill[blue!75!black] (1.68,0.28) circle (2.1pt);
+    \node[blue!75!black,align=center,font=\small] at (1.55,0.85)
+      {possible\\bound poles};
+    \draw[purple!80!black,->,line width=1.0pt]
+      (2.25,0.62) .. controls (3.05,1.18) and (3.82,0.92) .. (4.18,0.15);
+    \node[purple!80!black,align=center,font=\small] at (3.52,1.18)
+      {physical\\upper edge};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+For fixed real \(t<0\), the physical amplitude is the upper-edge boundary
+value
+\[
+  \lim_{\epsilon\to0^+}\mathcal M(s+\ii\epsilon,t)
+\]
+on the first sheet. The first sheet is the branch reached by the Feynman
+prescription before crossing a threshold cut. In this \(s\)-plane it has the
+right-hand \(s\)-channel cut beginning at \(4m^2\), a crossed-channel cut
+beginning at \(s=-t\) and extending leftward, and possible first-sheet
+bound-state poles.
+
+\section{Real Analyticity and Crossing}
+
+Under the standard massive-local-QFT analyticity hypotheses, the amplitude
+defined first in a physical region is the boundary value of a function of
+complex kinematic invariants. The same symbol \(\mathcal M(s,t)\) will denote
+this analytic continuation on its domain.
+
+Hermiticity of the theory and the Feynman boundary prescription imply real
+analyticity:
+\[
+  \mathcal M(s^*,t^*)=\mathcal M(s,t)^*
+\]
+where both sides are evaluated on corresponding branches. In perturbation
+theory this property is visible graph by graph when the couplings are real.
+
+Crossing states that the \(s\)-, \(t\)-, and \(u\)-channel physical amplitudes
+are boundary values of the same analytically continued four-point function in
+different real regions. On the real \((s,t)\)-plane these regions are
+separated by thresholds and cuts, but in the complexified domain they are
+connected by analytic continuation.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.86]
+  \draw[->,line width=0.75pt] (-3.65,0)--(3.8,0) node[right] {\(s\)};
+  \draw[->,line width=0.75pt] (0,-2.7)--(0,3.05) node[above] {\(t\)};
+  \node[below] at (1.35,0) {\(4m^2\)};
+  \node[left] at (0,1.35) {\(4m^2\)};
+  \node[below] at (-1.35,0) {\(-4m^2\)};
+  \draw[blue!70!black,line width=1.35pt] (1.35,0)--(3.25,1.05);
+  \node[blue!70!black,align=center,fill=white,inner sep=1pt]
+    at (2.35,-0.55) {\(s\)-channel};
+  \draw[orange!85!black,line width=1.35pt] (-1.35,0)--(-3.25,1.05);
+  \node[orange!85!black,align=center,fill=white,inner sep=1pt]
+    at (-2.35,-0.55) {\(u\)-channel};
+  \draw[green!55!black,line width=1.35pt] (0,1.35)--(-1.05,2.72);
+  \node[green!55!black,anchor=west] at (0.48,2.45) {\(t\)-channel};
+  \draw[purple!80!black,->,line width=1.05pt]
+    (2.3,0.68) .. controls (0.72,1.65) and (-0.9,1.65) .. (-2.3,0.68);
+  \node[purple!80!black,align=center,fill=white,inner sep=1pt]
+    at (0.02,1.1) {analytic\\continuation};
+\end{tikzpicture}
+\end{center}
+
+On the physical \(s\)-channel cut, unitarity gives boundary conditions for
+partial waves. Those consequences will be developed after the singularity
+structure of the first sheet is organized.
+
+\section{Pinches}
+
+The singularities of perturbative amplitudes arise when an integration contour
+is forced against singularities of the integrand. Consider a scalar graph with
+internal momenta
+\[
+  q_i=q_i(\ell_1,\ldots,\ell_L;p_1,\ldots,p_n),
+\]
+where the \(q_i\) are affine functions of the loop momenta \(\ell_a\) and
+external momenta \(p_j\). A typical denominator is
+\[
+  q_i^2+m_i^2-\ii0 .
+\]
+After Feynman parametrization, a product of \(N\) denominators has the form
+\[
+  \int_{\alpha_i\ge0}
+  \prod_{i=1}^N\dd\alpha_i\,
+  \delta\!\left(\sum_{i=1}^N\alpha_i-1\right)
+  \frac{\text{numerator}}
+       {\left[\sum_{i=1}^N\alpha_i(q_i^2+m_i^2)-\ii0\right]^N}.
+\]
+
+As external momenta move in the complex domain, the loop contours can be
+deformed as long as no singularity traps them. A singularity occurs when the
+denominator vanishes and the contour is stationary at the same point; then
+nearby contour deformations cannot remove the obstruction.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[blue!70!black,line width=1.25pt,->]
+    (-3.3,-0.75) .. controls (-2.2,0.55) and (-0.6,0.95) .. (2.9,0.55);
+  \fill[red!75!black] (-0.4,0.68) circle (2.5pt);
+  \node[red!75!black,above] at (-0.4,0.78) {pole};
+  \fill[orange!90!black] (-0.42,0.43) circle (2.5pt);
+  \node[orange!90!black,left] at (-0.55,0.38) {contour};
+  \draw[orange!90!black,->,line width=1.0pt] (-0.42,1.12)--(-0.42,0.55);
+  \draw[orange!90!black,->,line width=1.0pt] (-0.42,-0.12)--(-0.42,0.30);
+  \node[align=center] at (2.45,-0.9)
+    {pinch: both local\\deformations are blocked};
+\end{tikzpicture}
+\end{center}
+
+This stationary-pinch condition is the source of the Landau equations.
+
+\section{Landau Equations}
+
+Let
+\[
+  \mathcal D(\ell,\alpha;p)
+  =
+  \sum_{i=1}^N\alpha_i(q_i^2+m_i^2).
+\]
+A Landau singularity can occur only if there are Feynman parameters
+\(\alpha_i\ge0\), not all zero, such that
+\[
+  \alpha_i(q_i^2+m_i^2)=0
+  \qquad\text{for every internal line }i,
+\]
+and, for every loop momentum \(\ell_a^\mu\),
+\[
+  \frac{\partial\mathcal D}{\partial \ell_a^\mu}=0.
+\]
+Equivalently,
+\[
+  \sum_{i=1}^N
+  \alpha_i q_{i\nu}
+  \frac{\partial q_i^\nu}{\partial \ell_a^\mu}
+  =
+  0,
+  \qquad a=1,\ldots,L .
+\]
+For a one-loop graph with all internal momenta oriented around the loop, this
+reduces to
+\[
+  \sum_i\alpha_i q_i^\mu=0 .
+\]
+
+The first equation says that every line with \(\alpha_i>0\) is on shell:
+\[
+  q_i^2=-m_i^2 .
+\]
+The second equation says that the corresponding on-shell momenta form a
+stationary configuration around each loop. Solutions with some
+\(\alpha_i=0\) describe singularities of subgraphs. Solutions with all
+relevant \(\alpha_i>0\) are the leading Landau singularities of that graph.
+
+The physical sheet is selected by the sign of the Feynman prescription and by
+positive Feynman parameters. This condition is what distinguishes a first-sheet
+threshold from a pole reached only after continuation through a cut.
+
+\section{Two-Particle Threshold}
+
+For the equal-mass two-propagator loop, take internal momenta
+\[
+  q_1=\ell,\qquad q_2=\ell+P .
+\]
+The Landau equations with \(0<\alpha<1\) are
+\[
+  \ell^2+m^2=0,\qquad
+  (\ell+P)^2+m^2=0,
+\]
+and
+\[
+  (1-\alpha)\ell+\alpha(\ell+P)=0 .
+\]
+The stationary equation gives
+\[
+  \ell=-\alpha P .
+\]
+Substitution into the two on-shell equations gives
+\[
+  \alpha=\frac12,\qquad
+  \ell=-\frac{P}{2},\qquad
+  P^2=-4m^2 .
+\]
+Thus the ordinary two-particle threshold is a Landau singularity.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \begin{scope}
+    \draw[line width=0.85pt] (-1.55,0.52)--(-0.48,0.52);
+    \draw[line width=0.85pt] (-1.55,-0.52)--(-0.48,-0.52);
+    \draw[line width=0.85pt] (0.48,0.52)--(1.55,0.52);
+    \draw[line width=0.85pt] (0.48,-0.52)--(1.55,-0.52);
+    \draw[line width=0.85pt] (0,0) ellipse (0.58 and 0.5);
+    \node[blue!70!black] at (0,0.9) {\(q_2=\ell+P\)};
+    \node[blue!70!black] at (0,-0.9) {\(q_1=\ell\)};
+    \node at (0,-1.45) {bubble graph};
+  \end{scope}
+  \begin{scope}[xshift=5.3cm]
+    \draw[->,line width=1.0pt] (0,0)--(-1.25,0) node[left] {\(q_1\)};
+    \draw[->,line width=1.0pt] (0,0)--(1.25,0) node[right] {\(q_2\)};
+    \draw[blue!70!black,->,line width=0.95pt] (1.25,-0.28)--(-1.25,-0.28)
+      node[midway,below] {\(P\)};
+    \node[align=center] at (0,0.85)
+      {stationary point\\\(\alpha=\frac12\)};
+    \node[blue!70!black] at (0,-1.05) {\(P^2=-4m^2\)};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+For unequal masses, the same Landau equations give the threshold
+\[
+  P^2=-(m_1+m_2)^2
+\]
+when the two on-shell internal particles can propagate with zero relative
+spatial momentum in the center-of-mass frame.
+
+\section{Triangle Singularities}
+
+The triangle graph is the first elementary example of a first-sheet singularity
+produced by a genuine on-shell contour pinch rather than by a pole or endpoint
+threshold. Let the three external momenta be
+\[
+  P_1^2=-M_1^2,\qquad
+  P_2^2=-M_2^2,\qquad
+  P_3^2=-M_3^2 ,
+\]
+with \(P_1+P_2+P_3=0\). The three internal lines are required to be on shell,
+and the positive-parameter stationary condition requires their momentum
+vectors to close consistently around the loop.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.86]
+  \begin{scope}
+    \coordinate (a) at (-1.25,0.25);
+    \coordinate (b) at (1.0,0.78);
+    \coordinate (c) at (0.55,-1.05);
+    \draw[line width=0.9pt] (a)--(b)--(c)--cycle;
+    \foreach \p in {a,b,c}
+      \fill[white,draw,line width=0.75pt] (\p) circle (0.15);
+    \draw[blue!70!black,->,line width=1pt] (-2.35,0.25)--(a);
+    \node[blue!70!black,above] at (-1.95,0.28) {\(P_1\)};
+    \draw[blue!70!black,->,line width=1pt] (1.75,1.45)--(b);
+    \node[blue!70!black,right] at (1.55,1.18) {\(P_3\)};
+    \draw[blue!70!black,->,line width=1pt] (0.68,-2.15)--(c);
+    \node[blue!70!black,right] at (0.62,-1.72) {\(P_2\)};
+    \node at (0,-2.42) {triangle graph};
+  \end{scope}
+  \begin{scope}[xshift=5.35cm,yshift=-0.15cm]
+    \draw[->,line width=1.0pt] (0,0)--(1.45,0);
+    \node[right] at (1.53,0.08) {\(q_1\)};
+    \draw[->,line width=1.0pt] (0,0)--(0.82,1.18);
+    \node[above] at (0.78,1.35) {\(q_2\)};
+    \draw[->,line width=1.0pt] (0,0)--(0.82,-1.18);
+    \node[fill=white,inner sep=1pt] at (0.62,-0.74) {\(q_3\)};
+    \draw[blue!70!black,->,line width=0.95pt] (0.82,1.18)--(1.82,0.38);
+    \node[blue!70!black,right] at (1.9,0.55) {\(M_2\)};
+    \draw[blue!70!black,->,line width=0.95pt] (0.82,-1.18)--(1.82,-0.38);
+    \node[blue!70!black,right] at (1.9,-0.55) {\(M_1\)};
+    \draw[blue!70!black,<->,line width=0.95pt] (0.22,-1.18)--(0.22,1.18);
+    \node[blue!70!black,left] at (0.1,0) {\(M_3\)};
+    \node[align=center] at (1.28,-2.12)
+      {positive-parameter\\vector closure};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+In the symmetric case represented by the vector sketch, the closure condition
+fails when
+\[
+  M_1,M_2<\sqrt2\,m .
+\]
+The contour can then be deformed and the amplitude is regular at the
+corresponding point. When
+\[
+  M_1,M_2>\sqrt2\,m ,
+\]
+the on-shell vectors can be arranged with positive Feynman parameters. The
+Landau equations then determine a special value of \(M_3\), or equivalently a
+special value of \(P_3^2=-M_3^2\), at which the triangle graph has a
+first-sheet singularity.
+
+This singularity is an anomalous threshold: a first-sheet singularity of the
+amplitude produced by on-shell internal propagation and contour pinching. Its
+local data are the masses, momentum routing, and positive Feynman parameters of
+the Landau solution. Coleman--Thun singularities in two-dimensional factorized
+scattering are a standard nonperturbative setting where this mechanism appears.
+
+\section{Use of Landau Analysis}
+
+Landau equations are derived graph by graph. Their role here is diagnostic:
+they identify the local analytic mechanisms by which thresholds and more
+subtle first-sheet singularities arise in perturbation theory. In an exact
+massive theory, the singularities of amplitudes are expected to be governed by
+the same spectral and locality principles, with internal on-shell lines
+replaced by actual stable particles or by spectral continua of the theory.
+
+Within existing axiomatic frameworks, only parts of this analytic picture are
+presently theorems. The classification used here is precise: stable particles
+appear as first-sheet poles below thresholds, resonances as continued-sheet
+poles, ordinary thresholds as multi-particle continua, and anomalous thresholds
+as allowed on-shell propagation patterns encoded by the Landau equations.

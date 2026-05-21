@@ -1,0 +1,463 @@
+\chapter{Relativistic Scalar Fields and Canonical Quantization}
+\label{ch:relativistic-scalar-fields-canonical-quantization}
+
+\section{Fields and Variational Equations}
+
+Let \(\mathbb M^D\) be \(D\)-dimensional Minkowski spacetime with metric
+\[
+  \eta_{\mu\nu}=\operatorname{diag}(-1,+1,\ldots,+1).
+\]
+Write
+\[
+  x^\mu=(x^0,\vec x),\qquad x^0=t,\qquad \vec x\in\mathbb R^{D-1}.
+\]
+A real classical scalar field is a real-valued function
+\[
+  \phi:\mathbb M^D\to\mathbb R.
+\]
+The field-theoretic analogue of finitely many coordinates \(q^i(t)\) is the
+family of coordinates \(\phi(t,\vec x)\), labelled continuously by
+\(\vec x\). A Lagrangian field theory is specified by an action functional
+\[
+  S[\phi]
+  =
+  \int_{\mathbb M^D}\dd^D x\,
+  \mathcal L\bigl(\phi(x),\partial_\mu\phi(x)\bigr),
+\]
+where \(\mathcal L\) is a Lorentz scalar Lagrangian density in the examples
+below.
+
+For a compactly supported variation \(\delta\phi\),
+\[
+\begin{aligned}
+  \delta S
+  &=
+  \int\dd^Dx\,
+  \left[
+    \frac{\partial\mathcal L}{\partial\phi}\,\delta\phi
+    +
+    \frac{\partial\mathcal L}
+         {\partial(\partial_\mu\phi)}
+    \,\partial_\mu\delta\phi
+  \right]  \\
+  &=
+  \int\dd^Dx\,\delta\phi
+  \left[
+    \frac{\partial\mathcal L}{\partial\phi}
+    -
+    \partial_\mu
+    \frac{\partial\mathcal L}
+         {\partial(\partial_\mu\phi)}
+  \right].
+\end{aligned}
+\]
+The Euler--Lagrange equation is therefore
+\[
+  \frac{\partial\mathcal L}{\partial\phi}
+  -
+  \partial_\mu
+  \frac{\partial\mathcal L}{\partial(\partial_\mu\phi)}
+  =
+  0.
+\]
+
+\section{The Free Massive Scalar}
+
+The free massive real scalar field of mass \(m\ge0\) has Lagrangian density
+\[
+  \mathcal L
+  =
+  \frac12(\partial_t\phi)^2
+  -\frac12\sum_{i=1}^{D-1}(\partial_i\phi)^2
+  -\frac12m^2\phi^2.
+\]
+Equivalently,
+\[
+  \mathcal L
+  =
+  -\frac12\partial_\mu\phi\,\partial^\mu\phi
+  -\frac12m^2\phi^2,
+  \qquad
+  \partial^\mu=\eta^{\mu\nu}\partial_\nu.
+\]
+The Euler--Lagrange equation is the Klein--Gordon equation
+\[
+  (\partial^\mu\partial_\mu-m^2)\phi=0.
+\]
+
+Use the Fourier convention
+\[
+  \phi(x)
+  =
+  \int\frac{\dd^Dk}{(2\pi)^D}\,
+  \widetilde\phi(k)\,\ee^{\ii k\cdot x},
+  \qquad
+  k\cdot x=\eta_{\mu\nu}k^\mu x^\nu
+  =
+  -k^0x^0+\vec k\cdot\vec x.
+\]
+The equation of motion implies
+\[
+  (k^2+m^2)\widetilde\phi(k)=0,
+  \qquad
+  k^2=\eta_{\mu\nu}k^\mu k^\nu.
+\]
+Thus \(\widetilde\phi(k)\) is supported on the mass shell
+\[
+  k^2+m^2=0,
+  \qquad
+  k^0=\pm\omega_{\vec k},
+  \qquad
+  \omega_{\vec k}=\sqrt{\vec k^{\,2}+m^2}.
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[->] (-3.15,0) -- (3.35,0) node[right] {$|\vec k|$};
+  \draw[->] (0,-2.55) -- (0,2.75) node[above] {$k^0$};
+  \draw[blue!70!black,line width=1pt,domain=-2.65:2.65,samples=100]
+    plot (\x,{sqrt(0.65+\x*\x)});
+  \draw[blue!70!black,line width=1pt,domain=-2.65:2.65,samples=100]
+    plot (\x,{-sqrt(0.65+\x*\x)});
+  \node[blue!70!black,right] at (2.05,2.25) {$k^0=+\omega_{\vec k}$};
+  \node[blue!70!black,right] at (2.05,-2.25) {$k^0=-\omega_{\vec k}$};
+  \node at (-1.25,0.35) {$k^2+m^2=0$};
+\end{tikzpicture}
+\end{center}
+
+A real solution can be written as
+\[
+  \phi(t,\vec x)
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}
+  \left[
+    A(\vec k)\,\ee^{\ii\vec k\cdot\vec x-\ii\omega_{\vec k}t}
+    +
+    A(\vec k)^*\,\ee^{-\ii\vec k\cdot\vec x+\ii\omega_{\vec k}t}
+  \right],
+\]
+with a complex coefficient function \(A(\vec k)\) subject to whatever
+regularity conditions are imposed on the classical solution. The Cauchy data
+\[
+  \phi(0,\vec x),\qquad \partial_t\phi(0,\vec x)
+\]
+determine \(A(\vec k)\) and \(A(\vec k)^*\), hence determine the free
+solution for all \(t\).
+
+\section{Canonical Hamiltonian Formalism}
+
+Let
+\[
+  L(t)=\int\dd^{D-1}\vec x\,\mathcal L.
+\]
+The canonical momentum density conjugate to \(\phi(t,\vec x)\) is
+\[
+  \Pi(t,\vec x)
+  =
+  \frac{\partial\mathcal L}
+       {\partial(\partial_t\phi(t,\vec x))}.
+\]
+For the free scalar,
+\[
+  \Pi(t,\vec x)=\partial_t\phi(t,\vec x).
+\]
+The Hamiltonian density is
+\[
+  \mathcal H
+  =
+  \Pi\,\partial_t\phi-\mathcal L,
+\]
+and therefore
+\[
+  \mathcal H
+  =
+  \frac12\Pi^2
+  +
+  \frac12\sum_{i=1}^{D-1}(\partial_i\phi)^2
+  +
+  \frac12m^2\phi^2
+\]
+for the free scalar field. The Hamiltonian is
+\[
+  H=\int\dd^{D-1}\vec x\,\mathcal H.
+\]
+
+For functionals \(F[\phi,\Pi]\) and \(G[\phi,\Pi]\), use the equal-time
+Poisson bracket
+\[
+  \{F,G\}
+  =
+  \int\dd^{D-1}\vec x
+  \left[
+    \frac{\delta F}{\delta\phi(\vec x)}
+    \frac{\delta G}{\delta\Pi(\vec x)}
+    -
+    \frac{\delta F}{\delta\Pi(\vec x)}
+    \frac{\delta G}{\delta\phi(\vec x)}
+  \right].
+\]
+Then
+\[
+  \{\phi(\vec x),\Pi(\vec y)\}
+  =
+  \delta^{D-1}(\vec x-\vec y),
+\]
+with the \(\phi\)-\(\phi\) and \(\Pi\)-\(\Pi\) brackets equal to zero. Hamilton's
+equation is
+\[
+  \partial_tF=\{F,H\}.
+\]
+Applied to \(\phi\) and \(\Pi\), it reproduces the Klein--Gordon equation.
+
+\section{Equal-Time Quantization}
+
+Canonical quantization promotes the classical fields to operator-valued
+distributions
+\[
+  \widehat\phi(t,\vec x),\qquad \widehat\Pi(t,\vec x)
+\]
+on a common dense domain. Their equal-time commutation relations are
+\[
+  [\widehat\phi(t,\vec x),\widehat\Pi(t,\vec y)]
+  =
+  \ii\hbar\,\delta^{D-1}(\vec x-\vec y),
+\]
+and
+\[
+  [\widehat\phi(t,\vec x),\widehat\phi(t,\vec y)]
+  =
+  0
+  =
+  [\widehat\Pi(t,\vec x),\widehat\Pi(t,\vec y)].
+\]
+All pointwise products are distributional notation. Smeared fields, for
+test functions \(f,g\in C_c^\infty(\mathbb R^{D-1})\), are
+\[
+  \widehat\phi_t(f)=\int\dd^{D-1}\vec x\,f(\vec x)\widehat\phi(t,\vec x),
+  \qquad
+  \widehat\Pi_t(g)=\int\dd^{D-1}\vec x\,g(\vec x)\widehat\Pi(t,\vec x).
+\]
+The smeared commutator is
+\[
+  [\widehat\phi_t(f),\widehat\Pi_t(g)]
+  =
+  \ii\hbar
+  \int\dd^{D-1}\vec x\,f(\vec x)g(\vec x).
+\]
+
+For the rest of this chapter set \(\hbar=1\). Factors of \(\hbar\) can be
+restored by rescaling the oscillator variables in the standard way.
+
+\section{Oscillator Variables and the Hamiltonian}
+
+Let \(\nu_{\vec k}>0\) be a positive even function of \(\vec k\). Define
+operator-valued distributions \(b_{\vec k}\) and \(b^\dagger_{\vec k}\) by the
+equal-time expansion
+\[
+  \widehat\phi(0,\vec x)
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  \frac{1}{\sqrt{2\nu_{\vec k}}}
+  \left(
+    b_{\vec k}\ee^{\ii\vec k\cdot\vec x}
+    +
+    b^\dagger_{\vec k}\ee^{-\ii\vec k\cdot\vec x}
+  \right),
+\]
+\[
+  \widehat\Pi(0,\vec x)
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  (-\ii)\sqrt{\frac{\nu_{\vec k}}{2}}
+  \left(
+    b_{\vec k}\ee^{\ii\vec k\cdot\vec x}
+    -
+    b^\dagger_{\vec k}\ee^{-\ii\vec k\cdot\vec x}
+  \right).
+\]
+The equal-time commutation relations are equivalent to
+\[
+  [b_{\vec k},b_{\vec q}]=0
+  =
+  [b^\dagger_{\vec k},b^\dagger_{\vec q}],
+  \qquad
+  [b_{\vec k},b^\dagger_{\vec q}]
+  =
+  (2\pi)^{D-1}\delta^{D-1}(\vec k-\vec q).
+\]
+This algebra holds for every positive choice of \(\nu_{\vec k}\). The
+Hamiltonian selects the oscillator normalization.
+
+Let
+\[
+  \omega_{\vec k}=\sqrt{\vec k^{\,2}+m^2}.
+\]
+Substituting the mode expansion into the free Hamiltonian gives
+\[
+\begin{aligned}
+  \widehat H_0
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}
+  \Bigg[
+  &\frac{\nu_{\vec k}^2+\omega_{\vec k}^2}{2\nu_{\vec k}}
+  \left(
+    b^\dagger_{\vec k}b_{\vec k}
+    +\frac12(2\pi)^{D-1}\delta^{D-1}(0)
+  \right)\\
+  &+
+  \frac{\omega_{\vec k}^2-\nu_{\vec k}^2}{4\nu_{\vec k}}
+  \left(
+    b_{\vec k}b_{-\vec k}
+    +
+    b^\dagger_{\vec k}b^\dagger_{-\vec k}
+  \right)
+  \Bigg].
+\end{aligned}
+\]
+The off-diagonal terms vanish precisely for
+\[
+  \nu_{\vec k}=\omega_{\vec k}.
+\]
+With this choice,
+\[
+  \widehat H_0
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  \omega_{\vec k}
+  \left(
+    b^\dagger_{\vec k}b_{\vec k}
+    +\frac12(2\pi)^{D-1}\delta^{D-1}(0)
+  \right).
+\]
+At finite spatial volume and finite momentum cutoff, the second term is a
+finite scalar multiple of the identity. Subtracting this scalar gives the
+renormalized free Hamiltonian
+\[
+  \widehat H_0^{\mathrm{ren}}
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  \omega_{\vec k} b^\dagger_{\vec k}b_{\vec k}.
+\]
+The free vacuum \(\vac\) is defined by
+\[
+  b_{\vec k}\vac=0
+  \qquad\text{for all }\vec k,
+\]
+and satisfies \(\widehat H_0^{\mathrm{ren}}\vac=0\).
+
+Time evolution generated by \(\widehat H_0^{\mathrm{ren}}\) gives
+\[
+  \widehat\phi(x)
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  \frac{1}{\sqrt{2\omega_{\vec k}}}
+  \left(
+    b_{\vec k}\ee^{\ii\vec k\cdot\vec x-\ii\omega_{\vec k}t}
+    +
+    b^\dagger_{\vec k}\ee^{-\ii\vec k\cdot\vec x+\ii\omega_{\vec k}t}
+  \right).
+\]
+
+The invariant mass-shell normalization used earlier is obtained by defining
+\[
+  a(\vec k)=\sqrt{2\omega_{\vec k}}\,b_{\vec k},
+  \qquad
+  a^\dagger(\vec k)=\sqrt{2\omega_{\vec k}}\,b^\dagger_{\vec k}.
+\]
+Then
+\[
+  [a(\vec k),a^\dagger(\vec q)]
+  =
+  (2\pi)^{D-1}2\omega_{\vec k}\,
+  \delta^{D-1}(\vec k-\vec q),
+\]
+and
+\[
+  \widehat\phi(x)
+  =
+  \int
+  \frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}2\omega_{\vec k}}\,
+  \left(
+    a(\vec k)\ee^{\ii k\cdot x}
+    +
+    a^\dagger(\vec k)\ee^{-\ii k\cdot x}
+  \right),
+  \qquad
+  k^0=\omega_{\vec k}.
+\]
+This is the convention used for the free scalar field in the earlier
+Fock-space construction.
+
+\section{Covariance and Microcausality}
+
+Let \(\mathcal D_0\) be the finite-particle domain generated by applying
+finitely many smeared creation operators to \(\vac\). On \(\mathcal D_0\),
+\(\widehat\phi(x)\) is an operator-valued distribution. For
+\(f\in C_c^\infty(\mathbb M^D)\),
+\[
+  \widehat\phi(f)=\int\dd^D x\,f(x)\widehat\phi(x)
+\]
+is the corresponding smeared operator on \(\mathcal D_0\).
+
+The free Fock representation carries the unitary Poincare representation
+induced from the one-particle mass shell. With the above normalization, the
+field transforms as a scalar:
+\[
+  U(a,\Lambda)\widehat\phi(x)U(a,\Lambda)^{-1}
+  =
+  \widehat\phi(\Lambda x+a).
+\]
+
+The commutator is
+\[
+  [\widehat\phi(x),\widehat\phi(y)]
+  =
+  \ii\,\Delta(x-y),
+\]
+where the Pauli--Jordan distribution is
+\[
+  \Delta(x)
+  =
+  \frac{1}{\ii}
+  \int
+  \frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}2\omega_{\vec k}}
+  \left(
+    \ee^{\ii k\cdot x}
+    -
+    \ee^{-\ii k\cdot x}
+  \right),
+  \qquad k^0=\omega_{\vec k}.
+\]
+This distribution is Lorentz invariant. If \(x\) is spacelike, a Lorentz
+transformation sends it to \((0,\vec r)\). At equal time,
+\[
+  \Delta(0,\vec r)
+  =
+  \frac{1}{\ii}
+  \int
+  \frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}2\omega_{\vec k}}
+  \left(
+    \ee^{\ii\vec k\cdot\vec r}
+    -
+    \ee^{-\ii\vec k\cdot\vec r}
+  \right)
+  =
+  0,
+\]
+because the two terms are exchanged by \(\vec k\mapsto-\vec k\). Therefore
+\[
+  [\widehat\phi(x),\widehat\phi(y)]=0
+  \qquad
+  \text{when }(x-y)^2>0.
+\]
+Equivalently,
+\[
+  [\widehat\phi(f),\widehat\phi(g)]=0
+\]
+when \(\operatorname{supp}f\) and \(\operatorname{supp}g\) are spacelike
+separated. This verifies microcausality for the canonically quantized free
+scalar field.
+
+The next step in the construction is to identify the local currents and
+charges attached to spacetime symmetries. That is the role of Noether's
+theorem in the following chapter.

@@ -1,0 +1,336 @@
+\chapter{Cross Sections, Phase Space, and Unitarity}
+\label{ch:cross-sections-unitarity}
+
+\section{Transition Probabilities}
+
+The scattering operator \(S\) is unitary on the asymptotic Hilbert space in a
+sector where incoming and outgoing scattering states span the same subspace.
+Write
+\[
+  S=\mathbf 1+\ii T .
+\]
+For a normalized incoming wave packet \(\Psi_{\mathrm{in}}\) and an outgoing
+set of states \(\mathcal D\), let \(\Pi_{\mathcal D}^{\mathrm{out}}\) be the
+orthogonal projection onto the corresponding outgoing subspace. The transition
+probability into \(\mathcal D\) is
+\[
+  P_{\Psi\to\mathcal D}
+  =
+  \left\|
+    \Pi_{\mathcal D}^{\mathrm{out}}S\Psi_{\mathrm{in}}
+  \right\|^2 .
+\]
+This is the Hilbert-space definition. Formulas with sharp momenta are
+distributional kernels of this expression.
+
+For positive-energy momenta
+\[
+  p_i=(E_i,\vec p_i),
+  \qquad
+  q_a=(E_a,\vec q_a),
+\]
+with
+\[
+  p_i^2=-m_i^2,\qquad q_a^2=-M_a^2,
+\]
+define
+\[
+  P_{\mathrm{in}}=\sum_i p_i,
+  \qquad
+  P_{\mathrm{out}}=\sum_a q_a .
+\]
+The invariant amplitude convention from the LSZ chapter is
+\[
+  {}_{\mathrm{out}}\langle q_1,\ldots,q_m|T|p_1,\ldots,p_n\rangle_{\mathrm{out}}
+  =
+  (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n).
+\]
+The full connected contribution to \(S\) is therefore
+\[
+  \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})\mathcal M .
+\]
+
+\section{Invariant Phase Space and Flux}
+
+For one on-shell final particle of mass \(M\), the Lorentz-invariant
+positive-energy measure is
+\[
+  \dd\mu_M(\vec q)
+  =
+  \frac{\dd^{D-1}\vec q}{(2\pi)^{D-1}2E_{\vec q}},
+  \qquad
+  E_{\vec q}=\sqrt{\vec q^{\,2}+M^2}.
+\]
+For \(m\) final particles with total incoming momentum \(P\), define the
+\(m\)-body phase-space measure
+\[
+  \dd\Phi_m(P;q_1,\ldots,q_m)
+  =
+  (2\pi)^D\delta^D\!\left(P-\sum_{a=1}^m q_a\right)
+  \prod_{a=1}^m
+  \frac{\dd^{D-1}\vec q_a}{(2\pi)^{D-1}2E_a}.
+\]
+If some final particles are identical, the phase-space integral is divided by
+the factorial of the number of identical particles of each species.
+
+For a two-particle initial state, the invariant flux factor is
+\[
+  \mathcal F(p_1,p_2)
+  =
+  4\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}.
+\]
+Equivalently,
+\[
+  \mathcal F=4E_1E_2\,v_{\mathrm{rel}},
+\]
+where the invariant relative speed is
+\[
+  v_{\mathrm{rel}}
+  =
+  \frac{\sqrt{(p_1\cdot p_2)^2-m_1^2m_2^2}}{E_1E_2}.
+\]
+In the center-of-mass frame,
+\[
+  p_1=(E_1,\vec p_*),
+  \qquad
+  p_2=(E_2,-\vec p_*),
+\]
+and
+\[
+  \mathcal F=4(E_1+E_2)|\vec p_*| .
+\]
+
+The differential cross section for
+\[
+  p_1+p_2\longrightarrow q_1+\cdots+q_m
+\]
+is
+\[
+  \dd\sigma
+  =
+  \frac{1}{\mathcal F(p_1,p_2)}
+  \left|\mathcal M(q_1,\ldots,q_m|p_1,p_2)\right|^2
+  \dd\Phi_m(P_{\mathrm{in}};q_1,\ldots,q_m).
+\]
+All factors in this formula have now been fixed: the state normalization,
+the amplitude convention, the final-state measure, and the incoming flux.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9,>=Stealth]
+  \draw[blue!75!black,very thick,->] (-4.0,-0.8)--(-1.3,-0.2);
+  \draw[green!50!black,very thick,->] (-4.0,0.8)--(-1.3,0.2);
+  \draw[purple!80!black,thick,fill=purple!7]
+    (-1.15,0) ellipse (0.35 and 1.05);
+  \draw[red!75!black,very thick,->] (-0.75,0.25)--(1.15,1.05);
+  \draw[red!75!black,very thick,->] (-0.75,-0.1)--(1.25,-0.15);
+  \draw[red!75!black,very thick,->] (-0.75,-0.35)--(1.05,-1.0);
+  \node[blue!75!black] at (-3.15,-1.1) {$p_1,\ \vec v_1$};
+  \node[green!50!black] at (-3.15,1.1) {$p_2,\ \vec v_2$};
+  \node[purple!80!black,align=center] at (-1.15,-1.55)
+    {effective\\area \(\sigma\)};
+  \node[red!75!black] at (1.65,1.05) {$q_1$};
+  \node[red!75!black] at (1.65,-0.15) {$q_2$};
+  \node[red!75!black] at (1.55,-1.0) {$q_m$};
+  \node[align=center] at (3.1,0)
+    {\(\mathcal F=4E_1E_2v_{\mathrm{rel}}\)};
+\end{tikzpicture}
+\end{center}
+
+\section{Two-Body Final States in Four Dimensions}
+
+Set \(D=4\). For a two-body final state, define
+\[
+  s=-(p_1+p_2)^2=P_{\mathrm{in}}^0{}^2-\vec P_{\mathrm{in}}^{\,2}.
+\]
+In the center-of-mass frame, \(P_{\mathrm{in}}=(\sqrt s,\vec0)\). Let
+\[
+  |\vec p_*|
+\]
+be the magnitude of either incoming three-momentum in that frame and
+\[
+  |\vec q_*|
+\]
+the magnitude of either final three-momentum. Performing the two-body
+phase-space integral except for the solid angle gives
+\[
+  \dd\Phi_2
+  =
+  \frac{1}{16\pi^2}
+  \frac{|\vec q_*|}{\sqrt s}\,\dd\Omega .
+\]
+The flux is
+\[
+  \mathcal F=4\sqrt s\,|\vec p_*|.
+\]
+Therefore
+\[
+  \frac{\dd\sigma}{\dd\Omega}
+  =
+  \frac{1}{64\pi^2s}
+  \frac{|\vec q_*|}{|\vec p_*|}
+  |\mathcal M(s,\Omega)|^2 .
+\]
+For identical final particles, multiply the right hand side by \(1/2\).
+
+For elastic scattering of identical scalar particles of mass \(m\),
+\[
+  |\vec q_*|=|\vec p_*|,
+  \qquad
+  \sqrt s=E_{\mathrm{cm}},
+\]
+and a constant tree-level \(\phi^4\) amplitude
+\[
+  \mathcal M=-g+O(g^2)
+\]
+gives
+\[
+  \sigma_{2\to2}
+  =
+  \frac{g^2}{32\pi s}+O(g^3)
+\]
+for identical final particles.
+
+\section{Unitarity and the Optical Theorem}
+
+The equation \(S^\dagger S=\mathbf 1\), with \(S=\mathbf 1+\ii T\), is
+\[
+  -\ii(T-T^\dagger)=T^\dagger T .
+\]
+Insert complete outgoing asymptotic states between \(T^\dagger\) and \(T\).
+For sharp momentum kernels this gives
+\[
+  -\ii\left(T_{fi}-T_{if}^*\right)
+  =
+  \sum_X
+  \int\dd\Phi_X\,
+  T_{Xf}^*T_{Xi},
+\]
+where \(X\) runs over all allowed multiparticle channels and includes all
+discrete quantum numbers. In amplitude notation,
+\[
+\begin{aligned}
+&-\ii\left[
+  \mathcal M(f|i)-\mathcal M(i|f)^*
+  \right]
+\\
+&\quad =
+  \sum_X
+  \int\dd\Phi_X\,
+  \mathcal M(X|f)^*\mathcal M(X|i),
+\end{aligned}
+\]
+with the common momentum-conservation delta function removed.
+
+For \(f=i\), the optical theorem is
+\[
+  2\,\operatorname{Im}\mathcal M(i|i)
+  =
+  \sum_X
+  \int\dd\Phi_X\,|\mathcal M(X|i)|^2 .
+\]
+For two incoming particles this is equivalently
+\[
+  \sigma_{\mathrm{tot}}
+  =
+  \frac{2\,\operatorname{Im}\mathcal M(i|i)}
+  {\mathcal F(p_1,p_2)} .
+\]
+The forward amplitude on the left is evaluated with the same incoming and
+outgoing momenta.
+
+\section{Partial Waves in Four Dimensions}
+
+For scalar \(2\to2\) scattering in the center-of-mass frame, rotational
+invariance makes the amplitude a function of \(s\) and
+\[
+  \cos\theta=\widehat p_*\cdot\widehat q_* .
+\]
+Use the partial-wave expansion
+\[
+  \mathcal M(s,\cos\theta)
+  =
+  16\pi
+  \sum_{\ell=0}^{\infty}
+  (2\ell+1)a_\ell(s)P_\ell(\cos\theta),
+\]
+where \(P_\ell\) is the Legendre polynomial and \(a_\ell(s)\) is the
+partial-wave amplitude. The inverse formula is
+\[
+  a_\ell(s)
+  =
+  \frac{1}{32\pi}
+  \int_{-1}^1\dd(\cos\theta)\,
+  P_\ell(\cos\theta)\,\mathcal M(s,\cos\theta).
+\]
+
+For equal incoming masses in the elastic region, define
+\[
+  \rho(s)=\frac{2|\vec p_*|}{\sqrt s}.
+\]
+The partial-wave \(S\)-matrix eigenvalue is
+\[
+  S_\ell(s)=1+2\ii\,\rho(s)\,a_\ell(s).
+\]
+Elastic unitarity is
+\[
+  |S_\ell(s)|=1.
+\]
+Equivalently, there is a real phase shift \(\delta_\ell(s)\) such that
+\[
+  S_\ell(s)=\ee^{2\ii\delta_\ell(s)},
+\]
+and
+\[
+  a_\ell(s)
+  =
+  \frac{\ee^{2\ii\delta_\ell(s)}-1}{2\ii\rho(s)}
+  =
+  \frac{\ee^{\ii\delta_\ell(s)}\sin\delta_\ell(s)}{\rho(s)} .
+\]
+The same condition can be written
+\[
+  \operatorname{Im}a_\ell(s)=\rho(s)|a_\ell(s)|^2 .
+\]
+In the presence of inelastic channels,
+\[
+  |S_\ell(s)|\le 1,
+\]
+with equality precisely in an elastic partial wave.
+
+For distinguishable scalar particles the elastic total cross section is
+\[
+  \sigma_{\mathrm{el}}
+  =
+  \frac{\pi}{|\vec p_*|^2}
+  \sum_{\ell=0}^\infty
+  (2\ell+1)|S_\ell(s)-1|^2
+  =
+  \frac{4\pi}{|\vec p_*|^2}
+  \sum_{\ell=0}^\infty
+  (2\ell+1)\sin^2\delta_\ell(s).
+\]
+For identical bosons only even \(\ell\) occur, and the final-state symmetry
+factor changes the total cross section to
+\[
+  \sigma_{\mathrm{el}}^{\mathrm{id}}
+  =
+  \frac{2\pi}{|\vec p_*|^2}
+  \sum_{\substack{\ell=0\\ \ell\ \mathrm{even}}}^{\infty}
+  (2\ell+1)|S_\ell(s)-1|^2 .
+\]
+
+\section{Thresholds, Poles, and Resonances}
+
+The same variables organize the analytic structure of scattering. A threshold
+is the value of \(s\) at which a new on-shell intermediate channel becomes
+kinematically available. Across such a threshold, unitarity gives the
+discontinuity of amplitudes in terms of phase-space integrals over lower
+amplitudes.
+
+A stable bound state in a two-particle channel appears as a pole of the
+partial-wave amplitude on the physical sheet below threshold. A resonance is
+represented by a pole reached after analytic continuation through a unitarity
+cut. The precise sheet and residue statements require the analytic
+continuation machinery developed later, but the organizing data are already
+present here: the \(S\)-operator, phase space, unitarity, and partial waves.

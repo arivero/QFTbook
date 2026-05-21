@@ -1,0 +1,520 @@
+\chapter{Perturbative Green Functions and Feynman Graphs}
+\label{ch:perturbative-green-functions}
+
+\section{Regulated Euclidean Scalar Theory}
+
+Let \(D\ge1\). In this chapter \(x\in\mathbb R^D\) denotes a Euclidean
+spacetime point and \(k\in\mathbb R^D\) denotes the corresponding Euclidean
+momentum. The field variable is a real scalar function \(\phi\). The
+interaction is
+\[
+  S_{\mathrm{int},E}[\phi]
+  =
+  \frac{g}{4!}\int\dd^D x\,\phi(x)^4 ,
+\]
+where \(g\in\mathbb R\) is the quartic coupling. The free covariance is the
+Euclidean propagator
+\[
+  \Delta_E(x-y;m^2)
+  =
+  \int \frac{\dd^D k}{(2\pi)^D}\,
+  \frac{\ee^{\ii k\cdot(x-y)}}{k^2+m^2},
+\]
+with \(m>0\).
+
+The functional notation is used with a regulator. One concrete choice is a
+finite Euclidean box with periodic boundary conditions and only finitely many
+Fourier modes retained. Equivalently, in infinite-volume notation, choose a
+smooth cutoff function \(\chi_\Lambda(k)\) which is \(1\) for
+\(|k|\ll\Lambda\) and rapidly decays for \(|k|\gg\Lambda\), and replace the
+free covariance by
+\[
+  C_\Lambda(x-y)
+  =
+  \int \frac{\dd^D k}{(2\pi)^D}\,
+  \frac{\chi_\Lambda(k)\,\ee^{\ii k\cdot(x-y)}}
+  {k^2+m^2}.
+\]
+At finite regulator the Gaussian expectation \(\vev{\cdots}_{0,\Lambda}\) is
+an ordinary finite-dimensional Gaussian expectation, or the limit of such
+expectations. Formulas written without \(\Lambda\) are formal perturbative
+formulas or shorthand for regulator-dependent formulas before the limit is
+studied.
+
+The normalized Euclidean \(n\)-point function is
+\[
+\begin{aligned}
+  G_{E,n,\Lambda}(x_1,\ldots,x_n)
+  &=
+  \frac{\vev{
+    \phi(x_1)\cdots\phi(x_n)
+    \exp[-S_{\mathrm{int},E}[\phi]]
+  }_{0,\Lambda}
+  }{
+  \vev{\exp[-S_{\mathrm{int},E}[\phi]]}_{0,\Lambda}} .
+\end{aligned}
+\]
+It is a distribution in the insertion points after the regulator is removed,
+when that limit exists or has been renormalized. Perturbation theory is the
+formal expansion of this expression in powers of \(g\).
+
+\section{Wick Expansion and Connected Functions}
+
+For the centered Gaussian expectation,
+\[
+  \vev{\phi(x_1)\cdots\phi(x_{2r})}_{0,\Lambda}
+  =
+  \sum_{\text{pairings }P}
+  \prod_{\{a,b\}\in P} C_\Lambda(x_a-x_b),
+\]
+and odd moments vanish. Expanding the interaction gives
+\[
+\begin{aligned}
+  &\vev{
+    \phi(x_1)\cdots\phi(x_n)
+    \exp[-S_{\mathrm{int},E}[\phi]]
+  }_{0,\Lambda}
+  \\
+  &\quad =
+  \sum_{V=0}^\infty
+  \frac{(-g)^V}{V!(4!)^V}
+  \int \prod_{a=1}^V \dd^D z_a\,
+  \vev{
+    \phi(x_1)\cdots\phi(x_n)
+    \prod_{a=1}^V \phi(z_a)^4
+  }_{0,\Lambda}.
+\end{aligned}
+\]
+Each Gaussian moment on the right is a sum over pairings. A pairing is drawn
+as an edge; an integration point \(z_a\) is drawn as a four-valent vertex; an
+insertion \(x_i\) is an external labelled endpoint. This is the origin of the
+Feynman graphs in this chapter.
+
+The denominator in \(G_{E,n,\Lambda}\) cancels components that have no
+external endpoint. Therefore a normalized \(n\)-point function is a sum over
+graphs whose every connected component contains at least one external label.
+The connected \(n\)-point function is the part in which all external labels
+belong to one connected component.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9,>=Stealth]
+  \fill[blue!10,draw=blue!65!black,very thick] (-1.6,0) ellipse (1.1 and 0.65);
+  \fill[blue!10,draw=blue!65!black,very thick] (2.1,0) ellipse (0.95 and 0.55);
+  \foreach \p/\lab in {(-2.8,0.5)/x_1,(-2.8,-0.5)/x_2,(3.35,0.45)/x_3,(3.35,-0.45)/x_4} {
+    \fill[red!75!black] \p circle (2pt);
+    \node[black,above=2pt] at \p {$\lab$};
+  }
+  \draw[purple!75!black,very thick] (-2.8,0.5)--(-2.1,0.28);
+  \draw[purple!75!black,very thick] (-2.8,-0.5)--(-2.1,-0.28);
+  \draw[purple!75!black,very thick] (3.35,0.45)--(2.7,0.24);
+  \draw[purple!75!black,very thick] (3.35,-0.45)--(2.7,-0.24);
+  \node[blue!65!black,align=center,font=\small] at (-1.6,-1.18)
+    {external\\component};
+  \node[blue!65!black,align=center,font=\small] at (2.1,-1.18)
+    {external\\component};
+  \draw[orange!80!black,thick,dashed] (0.0,1.25) circle (0.38);
+  \node[orange!80!black,align=center,font=\small] at (0.0,2.12)
+    {vacuum component\\cancels};
+\end{tikzpicture}
+\end{center}
+
+Introduce a source \(J\) and define
+\[
+  Z_\Lambda[J]
+  =
+  \vev{
+    \exp\left[
+      -S_{\mathrm{int},E}[\phi]
+      +\int\dd^D x\,J(x)\phi(x)
+    \right]
+  }_{0,\Lambda}.
+\]
+The connected generating functional is
+\[
+  W_\Lambda[J]=\log Z_\Lambda[J].
+\]
+For \(n\ge1\),
+\[
+  G^{\mathrm{conn}}_{E,n,\Lambda}(x_1,\ldots,x_n)
+  =
+  \left.
+  \frac{\delta^n W_\Lambda[J]}{
+   \delta J(x_1)\cdots\delta J(x_n)}
+  \right|_{J=0}.
+\]
+This identity is the cumulant identity for the regulated probability measure.
+
+\section{Momentum-Space Graph Weights}
+
+In translation-invariant infinite-volume notation, write
+\[
+  G_{E,n}^{\mathrm{conn}}(x_1,\ldots,x_n)
+  =
+  \int \prod_{i=1}^n \frac{\dd^D k_i}{(2\pi)^D}\,
+  \ee^{\ii\sum_i k_i\cdot x_i}\,
+  \widetilde G_{E,n}^{\mathrm{conn}}(k_1,\ldots,k_n).
+\]
+A connected graph \(\Gamma\) with labelled external legs contributes a
+distribution of the form
+\[
+  \mathcal A_E(\Gamma;k_1,\ldots,k_n)
+  =
+  (2\pi)^D\delta^D\!\left(\sum_{i=1}^n k_i\right)
+  I_E(\Gamma;k_1,\ldots,k_n).
+\]
+The reduced integrand \(I_E\) is computed as follows. Assign momentum to every
+edge, impose momentum conservation at every vertex, integrate over one
+independent momentum for each loop, and multiply by
+\[
+  \frac{(-g)^{V(\Gamma)}}{|\operatorname{Aut}\Gamma|}
+  \prod_{e\in E(\Gamma)}
+  \frac{1}{p_e^2+m^2}.
+\]
+Here \(V(\Gamma)\) is the number of quartic vertices, \(E(\Gamma)\) is the set
+of internal and external propagator edges, \(p_e\) is the momentum carried by
+edge \(e\), and \(\operatorname{Aut}\Gamma\) is the group of graph
+automorphisms preserving all external labels. This convention includes the
+factor \(1/4!\) in the action and the Wick-contraction multiplicities in the
+single symmetry factor.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9,>=Stealth]
+  \draw[very thick,->] (-1.25,0)--(1.25,0) node[midway,above] {$k$};
+  \node at (2.0,0) {$=$};
+  \node at (3.25,0) {$\displaystyle \frac{1}{k^2+m^2}$};
+
+  \begin{scope}[xshift=7.0cm]
+    \fill[blue!80!black] (0,0) circle (2.5pt);
+    \foreach \ang/\lab in {135/k_1,45/k_2,-45/k_3,-135/k_4} {
+      \draw[very thick,->] ({1.0*cos(\ang)},{1.0*sin(\ang)}) -- (0,0);
+      \node at ({1.34*cos(\ang)},{1.34*sin(\ang)}) {$\lab$};
+    }
+    \node at (1.85,0) {$=$};
+    \node[align=left,anchor=west] at (2.25,0)
+      {$\displaystyle -g\,(2\pi)^D
+        \delta^D(k_1+k_2+k_3+k_4)$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+The displayed vertex rule is the labelled-leg rule. If instead one expands
+directly from the action, each vertex gives \(-g/4!\) and the \(4!\) is
+recovered by counting Wick contractions.
+
+\section{Two-Point Function and Self-Energy}
+
+The connected Euclidean two-point function has Fourier transform
+\[
+  G_E(x,y)
+  =
+  \int \frac{\dd^D k}{(2\pi)^D}\,
+  \ee^{\ii k\cdot(x-y)}\,\widetilde G_E(k).
+\]
+Its perturbative expansion begins as
+\[
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.72]
+  \fill[red] (-1,0) circle (2pt) node[above] {$x$};
+  \fill[red] (1,0) circle (2pt) node[above] {$y$};
+  \draw[purple!80!black,very thick] (-1,0)--(-0.45,0);
+  \fill[blue!12,draw=blue!70!black,very thick] (0,0) circle (0.45);
+  \draw[purple!80!black,very thick] (0.45,0)--(1,0);
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.72]
+  \fill (-0.95,0) circle (2pt);
+  \fill (0.95,0) circle (2pt);
+  \draw[very thick] (-0.95,0)--(0.95,0);
+\end{tikzpicture}
+\quad+\quad
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.72]
+  \fill (-1.1,0) circle (2pt);
+  \fill (1.1,0) circle (2pt);
+  \draw[very thick] (-1.1,0)--(1.1,0);
+  \draw[very thick] (0,0) .. controls (-0.38,0.8) and (0.38,0.8) .. (0,0);
+\end{tikzpicture}
+\quad+\quad
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.72]
+  \fill (-1.15,0) circle (2pt);
+  \fill (1.15,0) circle (2pt);
+  \draw[very thick] (-1.15,0)--(1.15,0);
+  \fill (-0.35,0) circle (1.8pt);
+  \fill (0.35,0) circle (1.8pt);
+  \draw[very thick] (-0.35,0) .. controls (-0.7,0.75) and (0.7,0.75) .. (0.35,0);
+  \draw[very thick] (-0.35,0) .. controls (-0.7,-0.75) and (0.7,-0.75) .. (0.35,0);
+\end{tikzpicture}
+\quad+\cdots .
+\]
+
+Define the Euclidean self-energy \(\Sigma_E(k)\) by the Dyson form
+\[
+  \widetilde G_E(k)
+  =
+  \frac{1}{k^2+m^2-\Sigma_E(k)} .
+\]
+Equivalently,
+\[
+  \widetilde G_E
+  =
+  G_{0,E}
+  +
+  G_{0,E}\Sigma_E G_{0,E}
+  +
+  G_{0,E}\Sigma_E G_{0,E}\Sigma_E G_{0,E}
+  +\cdots,
+  \qquad
+  G_{0,E}(k)=\frac{1}{k^2+m^2}.
+\]
+With this sign convention \(\Sigma_E\) is the sum of amputated connected
+one-particle-irreducible two-point insertions.
+
+\[
+\Sigma_E(k)
+=
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.75]
+  \draw[green!55!black,very thick] (-1.05,0)--(1.05,0);
+  \fill (0,0) circle (2.2pt);
+  \draw[very thick] (0,0) .. controls (-0.32,0.85) and (0.32,0.85) .. (0,0);
+\end{tikzpicture}
+\quad+\quad
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.75]
+  \draw[green!55!black,very thick] (-1.15,0)--(1.15,0);
+  \fill (-0.45,0) circle (2.2pt);
+  \fill (0.45,0) circle (2.2pt);
+  \draw[very thick] (-0.45,0) .. controls (-0.8,0.75) and (0.8,0.75) .. (0.45,0);
+  \draw[very thick] (-0.45,0) .. controls (-0.8,-0.75) and (0.8,-0.75) .. (0.45,0);
+\end{tikzpicture}
+\quad+\quad
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.75]
+  \draw[green!55!black,very thick] (-1.2,0)--(1.2,0);
+  \fill (-0.5,0) circle (2.2pt);
+  \fill (0.5,0) circle (2.2pt);
+  \draw[very thick] (-0.5,0) .. controls (-0.7,0.75) and (-0.1,0.75) .. (-0.4,0);
+  \draw[very thick] (-0.5,0) .. controls (-0.2,0.75) and (0.2,0.75) .. (0.5,0);
+  \draw[very thick] (0.5,0) .. controls (0.7,0.75) and (0.1,0.75) .. (0.4,0);
+\end{tikzpicture}
+\quad+\cdots .
+\]
+
+The order-\(g\) tadpole is
+\[
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.75,>=Stealth]
+  \draw[green!55!black,very thick,->] (-1.1,0)--(0,0) node[midway,below] {$k$};
+  \draw[green!55!black,very thick,->] (1.1,0)--(0,0) node[midway,below] {$k$};
+  \fill (0,0) circle (2.2pt);
+  \draw[very thick,->] (0,0) .. controls (-0.35,0.9) and (0.35,0.9) .. (0,0)
+    node[midway,above] {$q$};
+\end{tikzpicture}
+\quad=\quad
+-\frac{g}{2}
+\int \frac{\dd^D q}{(2\pi)^D}\,\frac{1}{q^2+m^2}.
+\]
+The factor \(1/2\) is the symmetry factor of the tadpole graph. With a sharp
+momentum cutoff used only to display the degree of divergence,
+\[
+  C_1(\Lambda,m)
+  =
+  \frac{1}{2}
+  \int_{|q|\le\Lambda}
+  \frac{\dd^D q}{(2\pi)^D}\,\frac{1}{q^2+m^2}
+\]
+equals
+\[
+  \frac{1}{2}
+  \frac{\operatorname{vol}(S^{D-1})}{(2\pi)^D}
+  \int_0^\Lambda \dd r\,\frac{r^{D-1}}{r^2+m^2},
+  \qquad
+  \operatorname{vol}(S^{D-1})
+  =
+  \frac{2\pi^{D/2}}{\Gamma(D/2)}.
+\]
+Thus
+\[
+  C_1(\Lambda,m)
+  \sim
+  \begin{cases}
+    \dfrac{1}{4\pi}\log\Lambda, & D=2,\\[2mm]
+    \dfrac{1}{2}
+    \dfrac{\operatorname{vol}(S^{D-1})}{(2\pi)^D}
+    \dfrac{\Lambda^{D-2}}{D-2}, & D\ge3,
+  \end{cases}
+\]
+up to finite terms and convention-dependent cutoff terms. Hence
+\[
+  \Sigma_E^{(1)}(k)=-g\,C_1(\Lambda,m).
+\]
+
+The order-\(g^2\) sunset insertion is
+\[
+\begin{aligned}
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.72,>=Stealth]
+  \draw[green!55!black,very thick,->] (-1.35,0)--(-0.55,0) node[midway,below] {$k$};
+  \draw[green!55!black,very thick,->] (1.35,0)--(0.55,0) node[midway,below] {$k$};
+  \fill (-0.55,0) circle (2.2pt);
+  \fill (0.55,0) circle (2.2pt);
+  \draw[very thick,->] (-0.55,0) .. controls (-0.8,0.8) and (0.8,0.8) .. (0.55,0)
+    node[midway,above] {$q_1$};
+  \draw[very thick,->] (-0.55,0)--(0.55,0) node[midway,above] {$q_2$};
+  \draw[very thick,->] (-0.55,0) .. controls (-0.8,-0.8) and (0.8,-0.8) .. (0.55,0)
+    node[midway,below] {$k-q_1-q_2$};
+\end{tikzpicture}
+&=
+\frac{g^2}{6}
+\int \frac{\dd^D q_1\,\dd^D q_2}{(2\pi)^{2D}}
+\\[-1mm]
+&\quad\times
+\frac{1}{
+  (q_1^2+m^2)(q_2^2+m^2)
+  \bigl((k-q_1-q_2)^2+m^2\bigr)} .
+\end{aligned}
+\]
+
+\section{Pole Mass and Counterterm Bookkeeping}
+
+The spectral representation of the Euclidean two-point function has the form
+\[
+  \widetilde G_E(k)
+  =
+  \frac{Z}{k^2+m_*^2}
+  +
+  \int_{[0,\infty)}
+  \frac{\dd\rho_{\mathrm c}(s)}{k^2+s},
+\]
+with an isolated atom at \(s=m_*^2\) when the chosen field has nonzero overlap
+with a stable one-particle state. The parameter \(m_*\) is the pole mass read
+from the two-point function.
+
+Using
+\[
+  \widetilde G_E(k)
+  =
+  \frac{1}{k^2+m^2-\Sigma_E(k)}
+\]
+and the tadpole value above, the pole position satisfies, to first order,
+\[
+  m_*^2=m^2+gC_1(\Lambda,m)+O(g^2)
+\]
+in this cutoff scheme. The parameter \(m\) is therefore a parameter of the
+regulated quadratic action. Its relation to the spectral pole mass depends on
+the regulator and on the prescription used to define the finite theory.
+
+A perturbative mass prescription introduces a renormalized parameter \(m_R\)
+and a counterterm \(\delta m^2\):
+\[
+  m^2=m_R^2+\delta m^2,
+  \qquad
+  \delta m^2=\sum_{r\ge1}g^r(\delta m^2)^{(r)}.
+\]
+The Euclidean Lagrangian density is written as
+\[
+  \mathcal L_E
+  =
+  \frac{1}{2}(\partial\phi)^2
+  +\frac{1}{2}m_R^2\phi^2
+  +\frac{g}{4!}\phi^4
+  +\frac{1}{2}\delta m^2\phi^2.
+\]
+The counterterm is treated as part of the interaction. At order \(g\), the
+two-valent counterterm vertex contributes
+\[
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.85]
+  \draw[purple!80!black,very thick] (-1,0)--(1,0);
+  \fill[blue!80!black] (0,0) circle (2.4pt);
+\end{tikzpicture}
+\qquad\longleftrightarrow\qquad
+-(\delta m^2)^{(1)}g .
+\]
+The condition \(m_*=m_R+O(g^2)\), written at the level of squared masses,
+requires
+\[
+  (\delta m^2)^{(1)}
+  =
+  -C_1(\Lambda,m_R)+\text{finite prescription term}.
+\]
+Different finite terms correspond to different renormalization prescriptions.
+The physical statement is made after Green functions are expressed in terms of
+the chosen finite parameters, such as the pole mass \(m_*\).
+
+\section{Connected Four-Point Function}
+
+For four insertions, the normalized Green function decomposes into pairwise
+products of two-point functions and a connected part:
+\[
+\begin{aligned}
+  &G_{E,4}(x_1,x_2,x_3,x_4)
+  \\
+  &\quad =
+  G_E(x_1,x_2)G_E(x_3,x_4)
+  +G_E(x_1,x_3)G_E(x_2,x_4)
+  +G_E(x_1,x_4)G_E(x_2,x_3)
+  \\
+  &\qquad
+  +G_{E,4}^{\mathrm{conn}}(x_1,x_2,x_3,x_4).
+\end{aligned}
+\]
+
+\begin{center}
+\begin{tikzpicture}[scale=0.82]
+  \node at (-0.35,1.2) {$=$};
+  \draw[purple!80!black,very thick] (0,1.75) .. controls (0.45,2.25) and (1.05,2.25) .. (1.5,1.75);
+  \draw[purple!80!black,very thick] (0,0.35) .. controls (0.45,-0.15) and (1.05,-0.15) .. (1.5,0.35);
+  \foreach \p/\lab in {(0,1.75)/x_1,(1.5,1.75)/x_2,(1.5,0.35)/x_3,(0,0.35)/x_4} {
+    \fill[red!75!black] \p circle (2pt);
+    \node[above] at \p {$\lab$};
+  }
+
+  \node at (2.2,1.05) {$+$};
+  \draw[purple!80!black,very thick] (2.8,1.75) .. controls (2.35,1.05) and (2.35,0.35) .. (2.8,-0.15);
+  \draw[purple!80!black,very thick] (4.1,1.75) .. controls (4.55,1.05) and (4.55,0.35) .. (4.1,-0.15);
+  \foreach \p/\lab in {(2.8,1.75)/x_1,(4.1,1.75)/x_2,(4.1,-0.15)/x_3,(2.8,-0.15)/x_4} {
+    \fill[red!75!black] \p circle (2pt);
+    \node[above] at \p {$\lab$};
+  }
+
+  \node at (4.8,1.05) {$+$};
+  \draw[purple!80!black,very thick] (5.45,1.75) .. controls (6.0,1.1) and (6.8,0.8) .. (7.25,-0.15);
+  \draw[purple!80!black,very thick] (7.25,1.75) .. controls (6.8,1.1) and (6.0,0.8) .. (5.45,-0.15);
+  \foreach \p/\lab in {(5.45,1.75)/x_1,(7.25,1.75)/x_2,(7.25,-0.15)/x_3,(5.45,-0.15)/x_4} {
+    \fill[red!75!black] \p circle (2pt);
+    \node[above] at \p {$\lab$};
+  }
+
+  \node at (8.0,1.05) {$+$};
+  \fill[blue!12,draw=blue!70!black,very thick] (9.35,0.9) circle (0.52);
+  \foreach \ang/\lab in {135/x_1,45/x_2,-35/x_3,-135/x_4} {
+    \draw[purple!80!black,very thick]
+      (9.35,0.9) -- ({9.35+1.05*cos(\ang)},{0.9+1.05*sin(\ang)});
+    \fill[red!75!black] ({9.35+1.05*cos(\ang)},{0.9+1.05*sin(\ang)}) circle (2pt);
+    \node at ({9.35+1.38*cos(\ang)},{0.9+1.38*sin(\ang)}) {$\lab$};
+  }
+  \node[blue!70!black] at (9.35,-0.55) {connected part};
+\end{tikzpicture}
+\end{center}
+
+The Fourier transform of the connected part is defined by
+\[
+\begin{aligned}
+  G_{E,4}^{\mathrm{conn}}(x_1,\ldots,x_4)
+  &=
+  \int
+  \prod_{i=1}^4 \frac{\dd^D k_i}{(2\pi)^D}\,
+  \ee^{\ii\sum_i k_i\cdot x_i}\,
+  \widetilde G_{E,4}^{\mathrm{conn}}(k_1,\ldots,k_4).
+\end{aligned}
+\]
+To leading order,
+\[
+\begin{aligned}
+  \widetilde G_{E,4}^{\mathrm{conn}}(k_1,\ldots,k_4)
+  &=
+  (2\pi)^D\delta^D(k_1+k_2+k_3+k_4)
+  \\
+  &\quad\times
+  \left[
+    -g\prod_{i=1}^4 \frac{1}{k_i^2+m^2}
+    +O(g^2)
+  \right].
+\end{aligned}
+\]
+This is a connected Green function with external propagators included. Later,
+after scattering states and LSZ have been constructed, the operation of
+removing the external propagators will acquire its scattering interpretation.

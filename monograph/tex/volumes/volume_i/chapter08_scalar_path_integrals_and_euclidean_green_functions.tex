@@ -1,0 +1,432 @@
+\chapter{Scalar Path Integrals and Green Functions}
+\label{ch:scalar-path-integrals-green-functions}
+
+\section{Field-Configuration Kernels}
+
+Set \(\hbar=1\) in this chapter. Let \(\widehat\phi(t,\vec x)\) be the
+canonical real scalar field at time \(t=x^0\). A field-configuration
+generalized vector at time \(t\) is denoted
+\[
+  \ket{\varphi;t},
+\]
+where \(\varphi:\mathbb R^{D-1}\to\mathbb R\) is a spatial field
+configuration, and
+\[
+  \widehat\phi(t,\vec x)\ket{\varphi;t}
+  =
+  \varphi(\vec x)\ket{\varphi;t}
+\]
+in the generalized eigenvector sense. A state vector \(\ket{\Psi}\) is
+represented formally on this basis by the wave functional
+\[
+  \Psi_t[\varphi]=\langle\varphi;t|\Psi\rangle.
+\]
+
+To give these expressions a literal finite-dimensional meaning, impose a
+spatial regulator, for example a finite spatial lattice or a finite set of
+Fourier modes. Write \(\mathcal D_\Lambda\phi\) for the corresponding
+finite-dimensional integration measure and \(S_\Lambda\) for the regulated
+action. The regulated transition kernel is
+\[
+  \langle\varphi_f;t_f|\varphi_i;t_i\rangle_\Lambda
+  =
+  \int_{\phi(t_i,\vec x)=\varphi_i(\vec x)}
+       ^{\phi(t_f,\vec x)=\varphi_f(\vec x)}
+  \mathcal D_\Lambda\phi\,
+  \exp\left[
+    \ii
+    \int_{t_i}^{t_f}\dd x^0
+    \int\dd^{D-1}\vec x\,
+    \mathcal L_\Lambda(\phi,\partial_\mu\phi)
+  \right].
+\]
+It represents the matrix element of time evolution:
+\[
+  \langle\varphi_f;t_f|\varphi_i;t_i\rangle_\Lambda
+  =
+  \langle\varphi_f;t_i|
+  \exp[-\ii H_\Lambda(t_f-t_i)]
+  |\varphi_i;t_i\rangle
+\]
+for a time-independent regulated Hamiltonian \(H_\Lambda\). Continuum
+notation suppresses \(\Lambda\), but the regulator is part of the construction
+whenever convergence or operator domains are being asserted.
+
+Vacuum correlation functions avoid direct use of field-configuration
+eigenvectors. For points \(x_a=(x_a^0,\vec x_a)\), the basic Lorentzian
+operator distributions are
+\[
+  \langle\Omega|
+  \widehat\phi(x_1)\cdots\widehat\phi(x_n)
+  |\Omega\rangle.
+\]
+These are distributions in the spacetime variables, and their analytic
+continuations require spectral and growth assumptions.
+
+\section{Complex Time Contours}
+
+Let \(z^0\) be a complex time coordinate. If a contour \(C\) in the
+\(z^0\)-plane is used for the time variable, the corresponding action is
+\[
+  S_C[\phi]
+  =
+  \int_C\dd z^0
+  \int\dd^{D-1}\vec x\,
+  \mathcal L(\phi,\partial_\mu\phi).
+\]
+Insertions are ordered along the contour. For vacuum correlation functions the
+useful contour has insertion times whose imaginary parts are ordered:
+\[
+  \operatorname{Im}z_1^0
+  <
+  \operatorname{Im}z_2^0
+  <
+  \cdots
+  <
+  \operatorname{Im}z_n^0.
+\]
+The real parts are free variables. The ordering in imaginary time provides the
+analytic separation that will become time ordering after a uniform rotation to
+real time.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \draw[->,line width=0.7pt] (-3.5,0) -- (4.1,0)
+    node[right] {$\operatorname{Re}z^0$};
+  \draw[->,line width=0.7pt] (0,-2.45) -- (0,2.85)
+    node[above] {$-\operatorname{Im}z^0$};
+  \draw[green!50!black,very thick]
+    (-3.0,-2.0) .. controls (-2.2,-1.15) and (-1.15,-0.62) ..
+    (-0.35,-0.28) .. controls (0.75,0.18) and (1.65,0.42) ..
+    (2.65,0.70) .. controls (3.0,0.80) and (3.25,0.92) .. (3.45,1.05);
+  \node[green!45!black] at (-2.75,-1.55) {$C$};
+  \foreach \x/\y in {-2.35/-1.28,-0.82/-0.36,1.25/0.34,2.75/0.77} {
+    \fill[red!70!black] (\x,\y) circle (2.3pt);
+  }
+  \foreach \y/\lab in {2.10/z_1^0,1.25/z_2^0,0.42/z_3^0,-1.30/z_4^0} {
+    \fill[purple!70!black] (0,\y) circle (2.4pt);
+    \node[purple!70!black,right=0.1cm] at (0,\y) {$\lab$};
+  }
+  \node[align=left,anchor=west] at (1.15,-1.70)
+    {$S_C=\displaystyle\int_C\dd z^0
+      \int\dd^{D-1}\vec x\,\mathcal L$};
+\end{tikzpicture}
+\end{center}
+
+The figure records only the ordering data. The analytic statement is the
+existence of a holomorphic continuation of the relevant correlation function
+in the domain where the imaginary parts are ordered.
+
+\section{Euclidean Functional Expression}
+
+Put the complex time on the Euclidean axis by writing
+\[
+  z^0=-\ii\tau,
+  \qquad
+  x_E=(\tau,\vec x)\in\mathbb R^D.
+\]
+For a Lorentzian Lagrangian density
+\[
+  \mathcal L(\phi,\partial_0\phi,\partial_i\phi),
+\]
+define the Euclidean Lagrangian density by
+\[
+  \mathcal L_E(\phi,\partial_\tau\phi,\partial_i\phi)
+  =
+  -\mathcal L(\phi,\ii\partial_\tau\phi,\partial_i\phi),
+\]
+when this analytic substitution is meaningful for the regulated theory. The
+Euclidean action is
+\[
+  S_E[\phi]
+  =
+  \int\dd^Dx_E\,\mathcal L_E(\phi,\partial_E\phi).
+\]
+
+For the real scalar field with
+\[
+  \mathcal L
+  =
+  -\frac12\eta^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi
+  -
+  V(\phi),
+\]
+this gives
+\[
+  \mathcal L_E
+  =
+  \frac12(\partial_\tau\phi)^2
+  +
+  \frac12\sum_{i=1}^{D-1}(\partial_i\phi)^2
+  +
+  V(\phi).
+\]
+With a regulator in place, the normalized Euclidean \(n\)-point function is
+\[
+  \langle\phi(x_{E,1})\cdots\phi(x_{E,n})\rangle_{E,\Lambda}
+  =
+  \frac{1}{Z_{E,\Lambda}}
+  \int\mathcal D_\Lambda\phi\,
+  \ee^{-S_{E,\Lambda}[\phi]}\,
+  \phi(x_{E,1})\cdots\phi(x_{E,n}),
+\]
+where
+\[
+  Z_{E,\Lambda}
+  =
+  \int\mathcal D_\Lambda\phi\,
+  \ee^{-S_{E,\Lambda}[\phi]}.
+\]
+The continuum Euclidean Green function is the limit of these distributions
+when the limit exists in the chosen topology and with the chosen
+renormalization conditions.
+
+\section{Uniform Wick Rotation}
+
+Fix real numbers
+\[
+  t_1>t_2>\cdots>t_n.
+\]
+For \(0<\alpha\le\pi/2\), set
+\[
+  z_a^0(\alpha)=\ee^{-\ii\alpha}t_a.
+\]
+At \(\alpha=\pi/2\), the insertion lies on the Euclidean axis:
+\[
+  z_a^0=-\ii t_a.
+\]
+As \(\alpha\to0^+\), the insertion approaches the Lorentzian time \(t_a\).
+Since
+\[
+  \operatorname{Im}z_a^0(\alpha)=-t_a\sin\alpha,
+\]
+the ordering
+\[
+  \operatorname{Im}z_1^0(\alpha)
+  <
+  \cdots
+  <
+  \operatorname{Im}z_n^0(\alpha)
+\]
+is maintained throughout the rotation.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.9]
+  \draw[->,line width=0.7pt] (-1.0,0) -- (5.05,0)
+    node[right] {$\operatorname{Re}z^0$};
+  \draw[->,line width=0.7pt] (0,-2.35) -- (0,2.65)
+    node[above] {$-\operatorname{Im}z^0$};
+  \foreach \y/\lab in {2.0/z_1^0,1.15/z_2^0,0.34/z_3^0,-1.20/z_4^0} {
+    \fill[purple!70!black] (0,\y) circle (2.5pt);
+    \node[purple!70!black,left=0.12cm] at (0,\y) {$\lab$};
+  }
+  \foreach \starty/\endx/\endy in {2.0/3.3/0,1.15/2.15/0,0.34/0.85/0,-1.20/-0.45/0} {
+    \draw[orange!85!black,very thick,->]
+      (0.13,\starty) .. controls (0.65,\starty) and (\endx,\endy+0.55) ..
+      (\endx,\endy+0.05);
+  }
+  \foreach \x in {3.3,2.15,0.85,-0.45} {
+    \fill[red!70!black] (\x,0) circle (2.3pt);
+  }
+  \node[align=left,blue!70!black] at (3.25,1.48)
+    {$z_a^0(\alpha)=\ee^{-\ii\alpha}t_a$\\
+     \(\alpha:\pi/2\to0^+\)};
+\end{tikzpicture}
+\end{center}
+
+Under the stated analyticity assumptions, the Euclidean correlation function
+continued along this common rotation becomes the Lorentzian time-ordered
+correlator with \(t_1>\cdots>t_n\):
+\[
+  \langle\phi(x_{E,1})\cdots\phi(x_{E,n})\rangle_E
+  \longrightarrow
+  \langle\Omega|
+  \operatorname{T}\{\widehat\phi(x_1)\cdots\widehat\phi(x_n)\}
+  |\Omega\rangle.
+\]
+Here \(\operatorname{T}\) denotes time ordering of the operator-valued
+distributions.
+
+\section{The Free Euclidean Propagator}
+
+For the free scalar field of mass \(m\ge0\),
+\[
+  V(\phi)=\frac12m^2\phi^2,
+\]
+and the Euclidean action is
+\[
+  S_{E,0}[\phi]
+  =
+  \frac12
+  \int\dd^Dx_E\,
+  \phi(x_E)(-\partial_E^2+m^2)\phi(x_E),
+\]
+after integration by parts with the chosen boundary conditions. The operator
+\[
+  A_E=-\partial_E^2+m^2
+\]
+has Green function \(\Delta_E\) defined by
+\[
+  A_E\Delta_E(x_E-y_E)=\delta^D(x_E-y_E).
+\]
+In momentum space,
+\[
+  \Delta_E(x_E-y_E)
+  =
+  \int\frac{\dd^Dk_E}{(2\pi)^D}
+  \frac{\ee^{\ii k_E\cdot(x_E-y_E)}}{k_E^2+m^2},
+\]
+where
+\[
+  k_E^2=(k_\tau)^2+\vec k^2,
+  \qquad
+  k_E\cdot x_E=k_\tau\tau+\vec k\cdot\vec x.
+\]
+The Gaussian formula from finite-dimensional integration gives
+\[
+  \langle\phi(x_E)\phi(y_E)\rangle_E=\Delta_E(x_E-y_E)
+\]
+for the free theory, and higher free Euclidean correlators are sums over
+pairings with this covariance.
+
+\section{The Feynman Prescription}
+
+Let
+\[
+  \omega_{\vec k}=\sqrt{\vec k^2+m^2}.
+\]
+For a Euclidean separation \((\tau,\vec r)\), with \(\tau>0\), the free
+propagator is
+\[
+  \Delta_E(\tau,\vec r)
+  =
+  \int\frac{\dd k_\tau\,\dd^{D-1}\vec k}{(2\pi)^D}
+  \frac{\ee^{\ii k_\tau\tau+\ii\vec k\cdot\vec r}}
+       {k_\tau^2+\omega_{\vec k}^2}.
+\]
+Continue to complex time by setting \(z^0=\ee^{-\ii\alpha}t\), with
+\(0<\alpha\le\pi/2\), and rotate the momentum variable by
+\[
+  k_\tau=\ii\ee^{\ii\alpha}k^0.
+\]
+Then
+\[
+  \Delta_E
+  =
+  -\ii\ee^{\ii\alpha}
+  \int\frac{\dd k^0\,\dd^{D-1}\vec k}{(2\pi)^D}
+  \frac{
+    \ee^{\ii\vec k\cdot\vec r-\ii k^0t}
+  }{
+    -\ee^{2\ii\alpha}(k^0)^2+\vec k^2+m^2
+  },
+\]
+with the contour orientation chosen to match the original Euclidean
+\(k_\tau\)-contour. The denominator vanishes at
+\[
+  k^0=\pm \ee^{-\ii\alpha}\omega_{\vec k}.
+\]
+As \(\alpha\to0^+\), these poles approach the real axis as
+\[
+  -\omega_{\vec k}+\ii0,
+  \qquad
+  +\omega_{\vec k}-\ii0.
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[->,line width=0.7pt] (-3.35,0) -- (3.55,0)
+    node[right] {$\operatorname{Re}k^0$};
+  \draw[->,line width=0.7pt] (0,-2.25) -- (0,2.35)
+    node[above] {$\operatorname{Im}k^0$};
+  \node[blue!70!black,scale=1.3] at (0,1.52) {$\times$};
+  \node[blue!70!black,right=0.08cm] at (0,1.52) {$-\ee^{-\ii\pi/2}\omega_{\vec k}$};
+  \node[blue!70!black,scale=1.3] at (0,-1.52) {$\times$};
+  \node[blue!70!black,right=0.08cm] at (0,-1.52) {$+\ee^{-\ii\pi/2}\omega_{\vec k}$};
+  \node[violet!70!black,scale=1.25] at (-1.18,1.18) {$\times$};
+  \node[violet!70!black,scale=1.25] at (1.18,-1.18) {$\times$};
+  \draw[dashed,gray!70,->] (0,1.52) arc[start angle=90,end angle=150,radius=1.52];
+  \draw[dashed,gray!70,->] (0,-1.52) arc[start angle=270,end angle=330,radius=1.52];
+  \node[red!75!black,scale=1.3] at (-2.1,0.17) {$\times$};
+  \node[red!75!black,above=0.02cm] at (-2.1,0.17)
+    {$-\omega_{\vec k}+\ii0$};
+  \node[red!75!black,scale=1.3] at (2.1,-0.17) {$\times$};
+  \node[red!75!black,below=0.02cm] at (2.1,-0.17)
+    {$+\omega_{\vec k}-\ii0$};
+  \node[gray!70!black] at (-2.35,1.10) {$\alpha\to0^+$};
+\end{tikzpicture}
+\end{center}
+
+The limiting Lorentzian distribution is therefore
+\[
+  \Delta_F(x;m^2)
+  =
+  -\ii
+  \int\frac{\dd^Dk}{(2\pi)^D}
+  \frac{\ee^{\ii k\cdot x}}{k^2+m^2-\ii\epsilon},
+  \qquad
+  \epsilon>0,
+\]
+where
+\[
+  k\cdot x=-k^0x^0+\vec k\cdot\vec x,
+  \qquad
+  k^2=-(k^0)^2+\vec k^2.
+\]
+The limit \(\epsilon\to0^+\) is taken after the distribution has been paired
+with test functions or after the contour integral has been evaluated.
+
+\section{Three Green Functions}
+
+Let \(\widehat\phi\) be a scalar operator-valued distribution with vacuum
+\(\Omega\). The Wightman \(n\)-point distribution is
+\[
+  W_n(x_1,\ldots,x_n)
+  =
+  \langle\Omega|
+  \widehat\phi(x_1)\cdots\widehat\phi(x_n)
+  |\Omega\rangle.
+\]
+The order displayed in the formula is part of the definition.
+
+For distinct time coordinates, the time-ordered Green function is
+\[
+  G_{T,n}(x_1,\ldots,x_n)
+  =
+  \langle\Omega|
+  \operatorname{T}\{
+    \widehat\phi(x_1)\cdots\widehat\phi(x_n)
+  \}
+  |\Omega\rangle.
+\]
+If
+\[
+  x_{i_1}^0>x_{i_2}^0>\cdots>x_{i_n}^0,
+\]
+then
+\[
+  G_{T,n}(x_1,\ldots,x_n)
+  =
+  W_n(x_{i_1},\ldots,x_{i_n}).
+\]
+Coincident-time prescriptions are contact-term data and must be fixed in the
+chosen operator or path-integral framework.
+
+The Euclidean Green function, also called the Schwinger function, is a
+distribution in Euclidean points \(x_{E,a}=(\tau_a,\vec x_a)\). When the
+analytic continuation from Wightman functions exists and
+\[
+  \tau_{i_1}>\tau_{i_2}>\cdots>\tau_{i_n},
+\]
+it is given by
+\[
+  G_{E,n}(x_{E,1},\ldots,x_{E,n})
+  =
+  W_n(x_{i_1},\ldots,x_{i_n})
+  \big|_{x_a^0=-\ii\tau_a}.
+\]
+
+These three distributions encode different boundary values of the same
+analytic structure when the required analyticity and spectral assumptions are
+available. The next chapter uses this structure in the two-point function to
+derive the K\"all\'en--Lehmann spectral representation.

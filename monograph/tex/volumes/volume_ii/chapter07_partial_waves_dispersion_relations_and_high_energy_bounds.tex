@@ -1,0 +1,537 @@
+\chapter{Partial Waves, Dispersion Relations, and High-Energy Bounds}
+\label{ch:volume-ii-07}
+
+\section{Angular Analyticity}
+
+Work in \(D=4\) and consider scattering of the lightest stable identical
+scalar particle of mass \(m\).  The connected invariant amplitude is denoted
+by
+\[
+  \mathcal A(s,t),
+  \qquad
+  s+t+u=4m^2 .
+\]
+For a fixed physical value \(s>4m^2\), introduce
+\[
+  x=\cos\theta
+  =
+  1+\frac{2t}{s-4m^2}.
+\]
+The physical \(s\)-channel scattering angles give the interval
+\[
+  -1\le x\le1 .
+\]
+At the \(t\)-channel two-particle threshold \(t=4m^2\),
+\[
+  x=x_t(s)\equiv\frac{s+4m^2}{s-4m^2}>1,
+\]
+and the \(t\)-channel cut maps to \(x\in[x_t,\infty)\).  The \(u\)-channel
+threshold gives the symmetric cut \(x\in(-\infty,-x_t]\).  If a crossed
+channel contains a stable bound state of mass \(M_B<2m\), its pole appears
+at
+\[
+  x_B=1+\frac{2M_B^2}{s-4m^2}
+\]
+or at the corresponding point on the left.  Let \(t_0>0\) be the smallest
+positive value of \(t\) at which such a crossed-channel singularity occurs.
+For large \(s\), the nearest right singularity is
+\[
+  x_0(s)=1+\frac{2t_0}{s-4m^2}.
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
+  \draw[->,line width=0.75pt] (-4.8,0)--(5.05,0)
+    node[below] {\(\operatorname{Re}x\)};
+  \draw[->,line width=0.75pt] (0,-2.15)--(0,2.35)
+    node[left] {\(\operatorname{Im}x\)};
+  \draw[blue!70!black,line width=1.4pt] (-1,0)--(1,0);
+  \fill[blue!70!black] (-1,0) circle (1.8pt);
+  \fill[blue!70!black] (1,0) circle (1.8pt);
+  \node[blue!70!black,below] at (-1,-0.18) {\(-1\)};
+  \node[blue!70!black,below] at (1,-0.18) {\(1\)};
+  \node[blue!70!black,fill=white,inner sep=1pt] at (0,0.33)
+    {physical interval};
+
+  \draw[red!70!black,decorate,
+    decoration={snake,amplitude=0.55mm,segment length=3.2mm},line width=1.0pt]
+    (2.25,0)--(4.6,0);
+  \draw[red!70!black,decorate,
+    decoration={snake,amplitude=0.55mm,segment length=3.2mm},line width=1.0pt]
+    (-4.6,0)--(-2.25,0);
+  \node[red!70!black,below] at (2.25,-0.24) {\(x_t\)};
+  \node[red!70!black,below] at (-2.25,-0.24) {\(-x_t\)};
+  \node[red!70!black,align=center] at (3.65,-0.68) {\(t\)-channel\\cut};
+  \node[red!70!black,align=center] at (-3.65,0.68) {\(u\)-channel\\cut};
+
+  \fill[orange!85!black] (1.62,0) circle (2.2pt);
+  \draw[orange!85!black,->,line width=0.85pt] (2.35,1.28)--(1.69,0.12);
+  \node[orange!85!black,align=left,anchor=west] at (2.42,1.28)
+    {possible crossed\\bound-state pole};
+
+  \draw[purple!75!black,dashed,line width=1.1pt] (0,0) ellipse (1.9 and 1.25);
+  \draw[green!50!black,dashed,line width=0.95pt] (0,0) ellipse (1.35 and 0.72);
+  \node[purple!75!black,align=center] at (-2.25,1.55)
+    {largest allowed\\ellipse \(\gamma_s\)};
+  \node[green!50!black,align=center] at (-1.55,-0.92)
+    {smaller ellipse};
+  \node[align=center] at (0,-1.75)
+    {ellipses have foci at \(x=\pm1\)};
+\end{tikzpicture}
+\end{center}
+
+The statement used below is the following angular analyticity hypothesis:
+for each such \(s\), \(\mathcal A(s,x)\) is analytic in a domain containing
+the physical interval and bounded on every compact subset of that domain.
+The largest ellipse with foci at \(\pm1\) lying in this analytic domain is
+called the Lehmann ellipse at energy \(s\).
+
+\section{Expansion Inside the Lehmann Ellipse}
+
+Let \(\gamma_s\) be a counterclockwise contour inside the angular analytic
+domain and enclosing \([-1,1]\).  For \(x\) inside \(\gamma_s\),
+\[
+  \mathcal A(s,x)
+  =
+  \oint_{\gamma_s}\frac{\dd z}{2\pi\ii}\,
+  \frac{\mathcal A(s,z)}{z-x}.
+\]
+The kernel has the Legendre expansion
+\[
+  \frac{1}{z-x}
+  =
+  \sum_{\ell=0}^{\infty}(2\ell+1)P_\ell(x)Q_\ell(z),
+\]
+where
+\[
+  Q_\ell(z)
+  =
+  \frac12\int_{-1}^{1}\dd y\,\frac{P_\ell(y)}{z-y}.
+\]
+This expansion converges when
+\[
+  \left|z+\sqrt{z^2-1}\right|
+  >
+  \left|x+\sqrt{x^2-1}\right|.
+\]
+Indeed, at large \(\ell\),
+\[
+  P_\ell(x)\sim
+  \left(x+\sqrt{x^2-1}\right)^\ell,
+  \qquad
+  Q_\ell(z)\sim
+  \left(z+\sqrt{z^2-1}\right)^{-\ell},
+\]
+and the level sets of
+\[
+  \left|z+\sqrt{z^2-1}\right|
+\]
+are ellipses with foci at \(\pm1\).  Thus angular analyticity implies
+convergence of the partial-wave expansion throughout every smaller ellipse
+inside the Lehmann ellipse.
+
+\section{Partial-Wave Normalization}
+
+For identical scalar particles only even partial waves occur.  It is convenient
+in this chapter to use the convention
+\[
+  \mathcal A(s,x)
+  =
+  -16\pi\ii\,\rho(s)^{-1}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)\bigl(S_\ell(s)-1\bigr)P_\ell(x),
+  \qquad
+  \rho(s)=\sqrt{1-\frac{4m^2}{s}} .
+\]
+Here \(S_\ell(s)\) is the partial-wave eigenvalue of the \(S\)-operator in the
+two-particle sector.  In an elastic interval \(|S_\ell|=1\).  With inelastic
+channels present, unitarity gives
+\[
+  |S_\ell(s)|\le1 .
+\]
+For real \(x\) inside the Lehmann ellipse, real analyticity gives
+\[
+  \operatorname{Im}\mathcal A(s,x)
+  =
+  16\pi\,\rho(s)^{-1}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)P_\ell(x)\,w_\ell(s),
+\]
+where
+\[
+  w_\ell(s)=1-\operatorname{Re}S_\ell(s).
+\]
+The inequality \(|S_\ell|\le1\) implies the positive bound
+\[
+  0\le w_\ell(s)\le2 .
+\]
+
+The elastic and inelastic cross sections are
+\[
+  \sigma_{\rm el}
+  =
+  \frac{8\pi}{s-4m^2}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)|S_\ell(s)-1|^2
+\]
+and
+\[
+  \sigma_{\rm inel}
+  =
+  \frac{8\pi}{s-4m^2}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)\bigl(1-|S_\ell(s)|^2\bigr).
+\]
+Adding them gives
+\[
+  \sigma_{\rm tot}
+  =
+  \frac{16\pi}{s-4m^2}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)w_\ell(s).
+\]
+Equivalently,
+\[
+  \sigma_{\rm tot}
+  =
+  \frac{1}{\sqrt{s(s-4m^2)}}\,
+  \operatorname{Im}\mathcal A(s,1).
+\]
+This is the optical theorem in the present normalization.
+
+\section{The Froissart--Martin Mechanism}
+
+Define the positive total weight
+\[
+  \bar L^2(s)
+  =
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)w_\ell(s)
+  =
+  \frac{s-4m^2}{16\pi}\,\sigma_{\rm tot}(s).
+\]
+For real \(x>1\), \(P_\ell(x)>0\) and increases with \(\ell\).  Among all
+weights satisfying \(0\le w_\ell\le2\) and fixed total \(\bar L^2\), the
+smallest value of
+\[
+  \sum_{\ell\ {\rm even}}(2\ell+1)P_\ell(x)w_\ell
+\]
+is obtained, up to endpoint rounding, by filling the lowest allowed angular
+momenta to height \(2\).  Denote the corresponding box profile by \(b_\ell\).
+At high energy the endpoint \(L\) of the box obeys
+\[
+  L^2\simeq \bar L^2 .
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
+  \begin{scope}
+    \draw[->,line width=0.75pt] (-2.9,0)--(3.15,0)
+      node[below] {\(\operatorname{Re}x\)};
+    \draw[->,line width=0.75pt] (0,-1.35)--(0,1.58)
+      node[left] {\(\operatorname{Im}x\)};
+    \draw[purple!75!black,dashed,line width=1.0pt] (0,0) ellipse (2.05 and 1.05);
+    \draw[blue!70!black,line width=1.2pt] (-1,0)--(1,0);
+    \fill[blue!70!black] (-1,0) circle (1.7pt);
+    \fill[blue!70!black] (1,0) circle (1.7pt);
+    \fill[green!50!black] (1.43,0) circle (2.1pt);
+    \node[green!50!black,align=center] at (1.43,0.55)
+      {\(x>1\)\\inside \(\gamma_s\)};
+    \node[purple!75!black] at (-0.2,1.28) {\(\gamma_s\)};
+  \end{scope}
+  \begin{scope}[xshift=6.7cm]
+    \draw[->,line width=0.75pt] (-0.25,0)--(4.35,0) node[below] {\(\ell\)};
+    \draw[->,line width=0.75pt] (0,-0.12)--(0,2.1);
+    \node[anchor=east] at (-0.1,1.85) {\(w_\ell\)};
+    \draw[purple!75!black,line width=1.0pt]
+      (0,1.55)--(0.45,1.55)--(0.45,1.1)--(0.95,1.1)--(0.95,1.38)
+      --(1.45,1.38)--(1.45,0.88)--(2.0,0.88)--(2.0,1.18)--(2.6,1.18)
+      --(2.6,0.45)--(3.2,0.45)--(3.2,0.22)--(3.85,0.22);
+    \draw[blue!70!black,line width=1.1pt] (0,1.45)--(2.75,1.45)--(2.75,0);
+    \draw[red!70!black,dashed,line width=0.85pt] (2.75,0)--(2.75,1.72);
+    \node[blue!70!black,fill=white,inner sep=1pt] at (1.33,0.68)
+      {box \(b_\ell\)};
+    \node[red!70!black,below] at (2.75,-0.06) {\(L\)};
+    \node[purple!75!black,align=center] at (3.0,1.9)
+      {allowed\\weights};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+For \(x>1\), the integral representation
+\[
+  P_\ell(x)=\frac{1}{\pi}\int_0^\pi
+  \left(x+\cos\alpha\,\sqrt{x^2-1}\right)^\ell\dd\alpha
+\]
+implies the following lower bound: for every fixed small \(\delta>0\) there
+is a constant \(C_\delta>0\) such that
+\[
+  P_\ell(x)\ge
+  C_\delta
+  \left(1+(1-\delta)\sqrt{x^2-1}\right)^\ell
+  \equiv C_\delta y^\ell .
+\]
+Using the box profile up to \(L\),
+\[
+  \operatorname{Im}\mathcal A(s,x)
+  \ge
+  C\,\rho(s)^{-1}
+  \sum_{\substack{0\le\ell\le L\\ \ell\ {\rm even}}}
+  (2\ell+1)y^\ell
+  \ge
+  C'\,\rho(s)^{-1}L\,\frac{y^L}{y-1},
+\]
+with constants independent of \(s\) at sufficiently large energy.
+
+Now choose \(x=x_0(s)=1+2t_0/(s-4m^2)\), the edge of the Lehmann ellipse set by
+the nearest positive-\(t\) singularity.  At large \(s\),
+\[
+  y-1=(1-\delta)\sqrt{x_0^2-1}+O(s^{-1})
+  =
+  2(1-\delta)\sqrt{\frac{t_0}{s}}+O(s^{-1}),
+\]
+and
+\[
+  L\simeq\sqrt{\frac{s\,\sigma_{\rm tot}}{16\pi}} .
+\]
+Therefore the exponential factor obeys
+\[
+  y^L
+  \simeq
+  \exp\!\left[
+    (1-\delta)
+    \sqrt{\frac{t_0\,\sigma_{\rm tot}}{4\pi}}
+  \right].
+\]
+If, at the ellipse edge,
+\[
+  |\mathcal A(s,x_0(s))|\le C_Ns^N
+  \qquad(s\to\infty),
+\]
+then the exponential lower bound is compatible with this polynomial upper
+bound only if
+\[
+  \sigma_{\rm tot}(s)
+  \le
+  \frac{(N-1)^2}{(1-\delta)^2}\,
+  \frac{4\pi}{t_0}
+  \left(\log\frac{s}{M_0^2}\right)^2
+\]
+for sufficiently large \(s\).  The scale \(M_0\) changes only subleading
+terms in the logarithm.  This is the Froissart--Martin mechanism: angular
+analyticity limits the number of strongly contributing partial waves, and
+unitarity bounds the weight carried by each partial wave.
+
+\section{Polynomial Boundedness}
+
+The polynomial boundedness assumption has a causal interpretation.  A
+one-dimensional model already exhibits the relevant analytic structure.  Let
+\[
+  f_{\rm out}(t)=\int\dd t'\,K(t-t')f_{\rm in}(t'),
+  \qquad
+  \widetilde K(\omega)=\int\dd t\,\ee^{\ii\omega t}K(t).
+\]
+If the kernel has retarded support,
+\[
+  K(t)=0\qquad(t<0),
+\]
+then \(\widetilde K(\omega)\) is analytic for \(\operatorname{Im}\omega>0\).
+Moreover a growth like \(\exp(c\,\operatorname{Im}\omega)\) in the upper half
+plane would correspond to support at negative time.  Relativistic scattering
+does not reduce to this one-dimensional model, but the model explains the
+form of the hypothesis: locality and causal propagation are reflected in
+analyticity and in the absence of exponential growth in complex energy
+directions.
+
+For the invariant amplitude, fix real \(t<0\) and continue \(s\) to the
+complex plane.  The displayed dispersion formula records the cut terms in a
+kinematic situation where bound-state pole terms and anomalous first-sheet
+terms are absent; when such terms are present, their residues are added
+explicitly.  Assume that for some integer \(N\),
+\[
+  \lim_{|s|\to\infty}
+  \left|\frac{\mathcal A(s,t)}{s^N}\right|=0
+\]
+in the domain used to deform the contour.  Choose subtraction points
+\[
+  s_1,\ldots,s_N
+\]
+away from the cuts and from the evaluation point \(s\).  Then
+\[
+  \frac{\mathcal A(s',t)}{\prod_{j=1}^N(s'-s_j)}
+\]
+has sufficient decay for the large circle to be removed in Cauchy's theorem.
+Equivalently,
+\[
+  \mathcal A(s,t)
+  =
+  \oint_{\gamma}
+  \frac{\dd s'}{2\pi\ii}\,
+  \frac{\mathcal A(s',t)}{s'-s}
+  \prod_{j=1}^N\frac{s-s_j}{s'-s_j},
+\]
+where \(\gamma\) encloses \(s\) and the subtraction points before deformation.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
+  \draw[->,line width=0.75pt] (-4.35,0)--(4.55,0)
+    node[below] {\(\operatorname{Re}s'\)};
+  \draw[->,line width=0.75pt] (0,-2.15)--(0,2.35)
+    node[left] {\(\operatorname{Im}s'\)};
+  \draw[red!70!black,decorate,
+    decoration={snake,amplitude=0.55mm,segment length=3.1mm},line width=1.0pt]
+    (1.35,0)--(4.1,0);
+  \draw[red!70!black,decorate,
+    decoration={snake,amplitude=0.55mm,segment length=3.1mm},line width=1.0pt]
+    (-4.1,0)--(-0.85,0);
+  \node[red!70!black,below] at (1.35,-0.08) {\(4m^2\)};
+  \node[red!70!black,below] at (-0.85,-0.08) {\(-t\)};
+  \node[red!70!black,align=center] at (3.05,-0.55) {\(s\)-channel\\cut};
+  \node[red!70!black,align=center] at (-2.7,0.55) {crossed\\cut};
+
+  \draw[purple!75!black,line width=0.95pt,->]
+    (0,0) ++(1.55,0) arc (0:335:1.55);
+  \node[purple!75!black] at (1.45,1.5) {\(\gamma\)};
+  \fill[black] (0.42,0.55) circle (1.8pt);
+  \node[anchor=west] at (0.52,0.55) {\(s\)};
+  \foreach \x/\lab in {-0.25/s_1,0.92/s_2,1.88/s_N} {
+    \draw[green!50!black,line width=0.85pt] (\x,0) circle (0.16);
+    \node[green!50!black,above] at (\x,0.22) {\(\lab\)};
+  }
+  \draw[blue!70!black,->,line width=0.9pt] (1.4,0.32)--(3.75,0.32);
+  \draw[blue!70!black,->,line width=0.9pt] (-0.85,-0.32)--(-3.75,-0.32);
+  \node[blue!70!black,align=center,fill=white,inner sep=1.5pt] at (0,-1.88)
+    {deformed contour:\\cuts plus subtraction residues};
+\end{tikzpicture}
+\end{center}
+
+Let
+\[
+  \operatorname{disc}\mathcal A(s,t)
+  =
+  \mathcal A(s+\ii0,t)-\mathcal A(s-\ii0,t).
+\]
+After deforming \(\gamma\) onto the right and left cuts, one obtains
+\[
+  \mathcal A(s,t)
+  =
+  P_{N-1}(s;t)
+  +
+  \frac{1}{2\pi\ii}
+  \int_{C_s\cup C_u}
+  \dd s'\,
+  \operatorname{disc}\mathcal A(s',t)\,
+  \frac{1}{s'-s}
+  \prod_{j=1}^N\frac{s-s_j}{s'-s_j}.
+\]
+Here \(C_s=[4m^2,\infty)\) is the right cut, \(C_u=(-\infty,-t]\) is the
+crossed cut in the \(s'\)-plane, and \(P_{N-1}(s;t)\) is the polynomial of
+degree at most \(N-1\) produced by the small circles around the subtraction
+points.  On a real cut where real analyticity holds,
+\[
+  \operatorname{disc}\mathcal A(s,t)
+  =
+  2\ii\,\operatorname{Im}\mathcal A(s+\ii0,t).
+\]
+The formula is an \(N\)-subtracted fixed-\(t\) dispersion relation.
+
+\section{Two Subtractions}
+
+The previous derivation used a complex-plane polynomial bound.  A useful
+refinement is that control of the absorptive part on the real axis determines
+how many subtractions are needed.  Suppose
+\[
+  |\operatorname{Im}\mathcal A(s,t)|\le C s^{N-\epsilon}
+  \qquad(s\to+\infty)
+\]
+for some \(\epsilon>0\).  If a dispersion formula with \(N'\ge N+1\)
+subtractions were genuinely required, its polynomial part would generically
+give
+\[
+  \mathcal A(s,t)\sim C'(t)s^{N'-1}.
+\]
+Unitarity at \(t=0\) gives
+\[
+  \operatorname{Im}\mathcal A(s,0)
+  =
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm tot}(s)
+  \ge
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s).
+\]
+The elastic cross section contains the positive integral of
+\(|\mathcal A(s,t)|^2\) over the physical angular interval.  A leading growth
+like \(s^{N'-1}\) would therefore force at least
+\[
+  \operatorname{Im}\mathcal A(s,0)
+  \ge c\,s^{2N'-2}
+\]
+for some positive constant \(c\) along a suitable high-energy sequence,
+contradicting the assumed real-axis bound.  Thus the absorptive part controls
+the subtraction number.
+
+The Froissart estimate gives, at forward scattering,
+\[
+  \operatorname{Im}\mathcal A(s,0)
+  \le
+  C\,s(\log s)^2 .
+\]
+For fixed real \(t<0\) and sufficiently large \(s\), the corresponding angular
+variable satisfies \(-1<x<1\).  Since \(P_\ell(x)\le P_\ell(1)=1\) in this
+range,
+\[
+  \operatorname{Im}\mathcal A(s,t)
+  \le
+  \operatorname{Im}\mathcal A(s,0)
+\]
+for the positive partial-wave sum above.  Consequently
+\[
+  \lim_{s\to\infty}
+  \left|\frac{\mathcal A(s,t)}{s^2}\right|=0,
+  \qquad t<0,
+\]
+so two subtractions are sufficient in the massive scalar setting.
+
+There is a further extension from real \(t<0\) to complex \(t\) in the disk
+set by the nearest \(t\)-plane singularity.  The mechanism is positivity of
+the Taylor coefficients of the absorptive part at \(t=0\):
+\[
+  \left.
+  \frac{\partial^n}{\partial t^n}
+  \operatorname{Im}\mathcal A(s,t)
+  \right|_{t=0}
+  \ge0 .
+\]
+This positivity allows the Taylor expansion in \(t\) to commute with the
+dispersive integral inside its convergence disk.  With two subtractions the
+Froissart--Martin bound takes the standard four-dimensional form
+\[
+  \sigma_{\rm tot}(s)
+  \le
+  \frac{1}{(1-\delta)^2}\,
+  \frac{4\pi}{t_0}
+  \left(\log\frac{s}{M_0^2}\right)^2
+\]
+for sufficiently large \(s\).  In \(D\) spacetime dimensions the corresponding
+geometric power is
+\[
+  \sigma_{\rm tot}(s)\le C\,(\log s)^{D-2}.
+\]
+
+\section{Scope of the Bound}
+
+The bound is a theorem about amplitudes satisfying the stated massive
+analyticity, unitarity, crossing, and boundedness hypotheses.  The mass gap
+is part of the statement.  When massless particles are present, the total
+cross section may diverge because arbitrarily small scattering angles or
+collinear emissions are experimentally unresolved.  The corresponding
+observable is then an inclusive or angularly cut cross section, not the total
+cross section used above.
+
+Gravity also lies outside the same massive-QFT hypothesis.  In \(D\) spacetime
+dimensions, a black hole of energy \(E\) has Schwarzschild radius
+\[
+  r_H\sim (G_NE)^{1/(D-3)},
+\]
+so the effective interaction size grows as a power of energy.  This is a
+different high-energy problem, not a modification of the massive
+Froissart--Martin argument.

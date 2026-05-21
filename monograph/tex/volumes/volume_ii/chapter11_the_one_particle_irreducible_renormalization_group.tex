@@ -1,0 +1,48 @@
+\chapter{The One-Particle-Irreducible Renormalization Group}
+\label{ch:volume-ii-11}
+
+\section{The 1PI Effective Action}
+
+The one-particle-irreducible effective action \(\Gamma[\varphi]\) is the
+Legendre transform of the connected generating functional. Its functional
+derivatives generate 1PI vertices:
+\[
+  \Gamma^{(n)}(x_1,\ldots,x_n)
+  =
+  \frac{\delta^n\Gamma}{\delta\varphi(x_1)\cdots\delta\varphi(x_n)}.
+\]
+In perturbation theory, \(\Gamma\) is the sum of 1PI diagrams evaluated in a
+background field. It packages the inverse exact propagator, proper vertices,
+and local counterterms in one object.
+
+\section{Renormalization Conditions}
+
+A momentum-subtraction scheme fixes couplings by specifying values of 1PI
+vertices at a scale \(\mu\). For example, in a scalar theory,
+\[
+  \Gamma^{(2)}(p)\big|_{p^2=\mu^2},\qquad
+  \Gamma^{(4)}(p_i)\big|_{\mathcal S_\mu}
+\]
+may define the renormalized mass, field normalization, and quartic coupling.
+Changing \(\mu\) while holding bare quantities fixed produces the 1PI RG
+equations.
+
+\section{Improving Perturbation Theory}
+
+The 1PI RG is especially useful when logarithms become large. A fixed-order
+amplitude may contain terms such as
+\[
+  g^2\log\frac{p}{\mu}.
+\]
+Choosing \(\mu\sim p\), or equivalently running the coupling to the physical
+scale, resums families of logarithms. The RG does not create new physics from
+nothing; it reorganizes perturbation theory around the correct scale.
+
+\section{Limits Of The 1PI View}
+
+The 1PI effective action is not the Wilsonian effective action. It includes
+effects of all momentum scales and is generally nonlocal as a functional. Its
+Euclidean version is convex when defined exactly, a fact that can obscure
+spontaneous symmetry breaking if interpreted naively. The Wilsonian action,
+introduced later, is scale-local and better suited to questions about
+integrating out modes.

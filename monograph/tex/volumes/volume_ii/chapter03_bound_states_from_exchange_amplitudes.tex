@@ -1,0 +1,325 @@
+\chapter{Bound States from Exchange Amplitudes}
+\label{ch:volume-ii-bound-states-exchange}
+
+\section{Exchange Model}
+
+Consider two real scalar fields in four spacetime dimensions with Lorentzian
+Lagrangian density
+\[
+  \mathcal L
+  =
+  -\frac12\partial_\mu\phi_1\partial^\mu\phi_1
+  -\frac12m_1^2\phi_1^2
+  -\frac12\partial_\mu\phi_2\partial^\mu\phi_2
+  -\frac12m_2^2\phi_2^2
+  -\frac12g\phi_1^2\phi_2 .
+\]
+The masses \(m_1,m_2\) are positive, and \(g\) is a real coupling. Use the
+same mostly-plus convention as before. The scalar propagators and cubic
+vertex are
+\[
+  \phi_i:\quad
+  \frac{-\ii}{k^2+m_i^2-\ii0},
+  \qquad
+  \phi_1\phi_1\phi_2:\quad -\ii g .
+\]
+
+The connected \(\phi_1\phi_1\to\phi_1\phi_1\) tree amplitude receives
+\(s\)-, \(t\)-, and \(u\)-channel exchange contributions:
+\[
+\begin{tikzpicture}[baseline=-0.5ex,scale=0.86,
+  one/.style={line width=0.9pt},
+  two/.style={dash pattern=on 3pt off 2pt,line width=0.9pt}]
+  \begin{scope}[xshift=-4.2cm]
+    \draw[one,->] (-1.1,0.82)--(-0.15,0.16);
+    \draw[one,->] (-1.1,-0.82)--(-0.15,-0.16);
+    \draw[two] (-0.15,0)--(0.78,0);
+    \draw[one,->] (0.78,0.16)--(1.75,0.82);
+    \draw[one,->] (0.78,-0.16)--(1.75,-0.82);
+    \node at (0.28,0.36) {\(\phi_2\)};
+    \node at (0,-1.18) {\(s\)};
+  \end{scope}
+  \node at (-1.82,0) {\(+\)};
+  \begin{scope}
+    \draw[one,->] (-1.1,0.82)--(-0.18,0.28);
+    \draw[one,->] (-0.18,0.28)--(1.1,0.82);
+    \draw[one,->] (-1.1,-0.82)--(-0.18,-0.28);
+    \draw[one,->] (-0.18,-0.28)--(1.1,-0.82);
+    \draw[two] (-0.18,0.28)--(-0.18,-0.28);
+    \node[right] at (-0.08,0) {\(\phi_2\)};
+    \node at (0,-1.18) {\(t\)};
+  \end{scope}
+  \node at (1.82,0) {\(+\)};
+  \begin{scope}[xshift=4.2cm]
+    \draw[one,->] (-1.1,0.82)--(-0.12,0.12);
+    \draw[one,->] (-1.1,-0.82)--(-0.12,-0.12);
+    \draw[two] (-0.12,-0.12)--(0.72,0.58);
+    \draw[one,->] (-0.12,0.12)--(1.25,-0.82);
+    \draw[one,->] (0.72,0.58)--(1.25,0.82);
+    \node at (0.6,0.16) {\(\phi_2\)};
+    \node at (0,-1.18) {\(u\)};
+  \end{scope}
+\end{tikzpicture}
+\]
+With all external momenta on the \(\phi_1\) mass shell, define
+\[
+  s=-(k_1+k_2)^2,\qquad
+  t=-(k_1-k_3)^2,\qquad
+  u=-(k_1-k_4)^2 .
+\]
+The tree-level invariant amplitude is
+\[
+  \mathcal M_{\mathrm{tree}}(s,t,u)
+  =
+  g^2
+  \left(
+    \frac{1}{m_2^2-s-\ii0}
+    +
+    \frac{1}{m_2^2-t-\ii0}
+    +
+    \frac{1}{m_2^2-u-\ii0}
+  \right).
+\]
+
+In the center-of-mass frame for equal incoming masses \(m_1\),
+\[
+  s=E^2,
+  \qquad
+  t=-\frac{E^2-4m_1^2}{2}(1-z),
+  \qquad
+  u=-\frac{E^2-4m_1^2}{2}(1+z),
+\]
+where \(E\) is the total energy and \(z=\cos\theta\). The two-\(\phi_1\)
+threshold is
+\[
+  s=4m_1^2 .
+\]
+
+\section{Pole Below a Two-Particle Threshold}
+
+Assume
+\[
+  0<m_2<2m_1 .
+\]
+Then the \(s\)-channel pole \(s=m_2^2\) lies below the two-\(\phi_1\)
+threshold. It is outside the physical two-\(\phi_1\) scattering region
+\(s\ge4m_1^2\), but it is reached by analytic continuation in the invariant
+energy variable.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[->,line width=0.75pt] (-0.4,0)--(7.4,0) node[right] {$s$};
+  \draw[->,line width=0.75pt] (0,-1.35)--(0,2.05)
+    node[above] {$\operatorname{Im}s$};
+  \fill[blue!80!black] (2.1,0) circle (2.6pt);
+  \node[blue!80!black,below] at (2.1,-0.16) {$m_2^2$};
+  \draw[red!75!black,line width=2.0pt] (4.6,0)--(7.05,0);
+  \node[red!75!black,below] at (4.6,-0.18) {$4m_1^2$};
+  \node[blue!80!black,align=center] at (1.65,1.18)
+    {stable\\pole};
+  \draw[blue!80!black,->,line width=0.75pt] (1.78,0.82)--(2.04,0.12);
+  \node[red!75!black,align=center] at (5.95,0.78)
+    {two-particle\\cut};
+  \draw[decorate,decoration={brace,amplitude=5pt},gray!70]
+    (2.22,0.48)--(4.45,0.48);
+  \node[gray!70!black] at (3.35,0.85) {gap};
+\end{tikzpicture}
+\end{center}
+
+The scattering conclusion is precise: the two-\(\phi_1\) channel couples to a
+stable one-particle state of invariant mass \(m_2\). In the present model that
+state is represented explicitly by the field \(\phi_2\). In a theory where no
+elementary field for that state is introduced, the same below-threshold pole
+is the scattering signature of a stable bound state. The pole criterion and
+the microscopic origin of the state are separate statements.
+
+Near a stable pole, the connected amplitude factorizes. If \(B\) denotes the
+one-particle state and \(P=k_1+k_2\), then
+\[
+  \mathcal M(s,z)
+  \sim
+  \frac{\Gamma_{\mathrm{out}}(z)\Gamma_{\mathrm{in}}(z)}
+       {M_B^2-s-\ii0}
+  +\text{terms regular at }s=M_B^2 ,
+\]
+where \(M_B\) is the bound-state mass. The functions
+\(\Gamma_{\mathrm{in}}\) and \(\Gamma_{\mathrm{out}}\) are channel couplings;
+they are determined by matrix elements between the one-particle state \(B\)
+and two-particle states created by local or composite operators.
+
+\section{A One-Dimensional Scattering Calculation}
+
+The pole criterion can be seen directly in a short-range Schrödinger problem.
+Let
+\[
+  H=-\frac{1}{2\mu}\frac{\dd^2}{\dd x^2}+V(x)
+\]
+on the line, where \(V(x)\) is real and decreases sufficiently fast as
+\(|x|\to\infty\). Let
+\[
+  E_{\mathrm{nr}}=\frac{k^2}{2\mu}.
+\]
+For \(x\to+\infty\), choose the outgoing solution normalized by
+\[
+  \psi_k^{\mathrm{out}}(x)
+  \sim
+  S(k)^{-1}\ee^{-\ii kx}+\ee^{\ii kx}.
+\]
+Here \(S(k)\) is the one-channel scattering function in this normalization.
+
+Analytically continue to \(k=\ii\alpha\), \(\alpha>0\). Then
+\[
+  E_{\mathrm{nr}}=-\frac{\alpha^2}{2\mu},
+\]
+and the asymptotic form becomes
+\[
+  \psi_{\ii\alpha}^{\mathrm{out}}(x)
+  \sim
+  S(\ii\alpha)^{-1}\ee^{\alpha x}
+  +
+  \ee^{-\alpha x}.
+\]
+A normalizable bound-state wave function decays as \(x\to+\infty\), so the
+coefficient of \(\ee^{\alpha x}\) must vanish. Thus a pole of \(S(k)\) at
+\[
+  k=\ii\alpha,\qquad \alpha>0,
+\]
+is the analytic signal of a bound state with energy
+\(-\alpha^2/(2\mu)\).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.94]
+  \begin{scope}
+    \draw[->,line width=0.7pt] (-2.2,0)--(2.8,0);
+    \node[right] at (2.8,0) {\(\operatorname{Re}k\)};
+    \draw[->,line width=0.7pt] (0,-1.35)--(0,2.65)
+      node[above] {\(\operatorname{Im}k\)};
+    \draw[blue!70!black,line width=1.1pt,->] (0,0)--(2.05,0);
+    \node[blue!70!black,below] at (1.52,-0.12) {physical \(k>0\)};
+    \fill[red!75!black] (0,0.82) circle (2.4pt);
+    \fill[red!75!black] (0,1.55) circle (2.4pt);
+    \node[red!75!black,anchor=west] at (0.35,1.78)
+      {bound-state poles};
+    \draw[red!75!black,->,line width=0.7pt] (0.58,1.52)--(0.08,1.53);
+    \node[below left] at (0,0) {$0$};
+  \end{scope}
+  \begin{scope}[xshift=6.1cm]
+    \draw[->,line width=0.7pt] (-2.2,0)--(2.8,0);
+    \node[right] at (2.8,0) {\(E_{\mathrm{nr}}\)};
+    \draw[->,line width=0.7pt] (0,-1.35)--(0,2.65)
+      node[above] {\(\operatorname{Im}E_{\mathrm{nr}}\)};
+    \draw[blue!70!black,line width=1.1pt,->] (0,0)--(2.08,0);
+    \node[blue!70!black,below] at (1.55,-0.12) {scattering};
+    \fill[red!75!black] (-0.55,0) circle (2.4pt);
+    \fill[red!75!black] (-1.18,0) circle (2.4pt);
+    \node[red!75!black,align=center] at (-1.08,0.78)
+      {negative\\energies};
+    \node[below] at (0,0) {$0$};
+  \end{scope}
+  \node at (3.05,2.2) {$E_{\mathrm{nr}}=k^2/(2\mu)$};
+\end{tikzpicture}
+\end{center}
+
+The relativistic statement uses the invariant energy \(s\) and the
+partial-wave decomposition of the connected amplitude, but the same analytic
+logic is visible: normalizable states below a continuum threshold appear as
+poles on the physical sheet below the cut.
+
+\section{Partial Waves}
+
+For two identical scalar particles of mass \(m\) in four dimensions, write
+\[
+  z=\cos\theta,
+  \qquad
+  s=E^2 .
+\]
+In the elastic region, define partial-wave amplitudes by
+\[
+  \mathcal M(s,z)
+  =
+  16\pi\sum_{\ell=0}^{\infty}
+  (2\ell+1)\mathcal M_\ell(s)P_\ell(z),
+\]
+equivalently
+\[
+  \mathcal M_\ell(s)
+  =
+  \frac{1}{32\pi}\int_{-1}^{1}\dd z\,
+  P_\ell(z)\mathcal M(s,z).
+\]
+The elastic partial-wave \(S\)-matrix eigenvalue is written
+\[
+  S_\ell(s)=1+2\ii\,\rho(s)\mathcal M_\ell(s),
+  \qquad
+  \rho(s)=\sqrt{1-\frac{4m^2}{s}},
+\]
+with the branch chosen by \(\rho(s)>0\) for \(s>4m^2\). Elastic unitarity is
+\[
+  |S_\ell(s)|=1
+\]
+on the physical elastic interval.
+
+A stable spin-\(\ell\) state of mass \(M_B<2m\) coupled to the two-particle
+channel gives
+\[
+  \mathcal M_\ell(s)
+  =
+  \frac{r_\ell}{M_B^2-s}
+  +\text{regular terms},
+\]
+where the residue \(r_\ell\) is determined by the squared coupling of the
+state to the two-particle channel with angular momentum \(\ell\).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[->,line width=0.75pt] (-0.3,0)--(7.2,0) node[right] {$s$};
+  \draw[->,line width=0.75pt] (0,-1.2)--(0,2.05)
+    node[above] {\(\operatorname{Im}s\)};
+  \draw[red!75!black,line width=2.0pt] (4.75,0)--(6.85,0);
+  \node[red!75!black,below] at (4.75,-0.16) {$4m^2$};
+  \fill[blue!75!black] (2.55,0) circle (2.5pt);
+  \node[blue!75!black,below] at (2.55,-0.16) {$M_B^2$};
+  \node[blue!75!black,align=center] at (2.45,1.05)
+    {pole in\\\(\mathcal M_\ell\)};
+  \node[red!75!black,align=center] at (5.85,0.82)
+    {elastic\\cut};
+  \draw[blue!75!black,->,line width=0.8pt] (2.45,0.72)--(2.55,0.12);
+\end{tikzpicture}
+\end{center}
+
+For the exchange model, the \(s\)-channel term is independent of \(z\). Its
+below-threshold pole therefore appears in the \(\ell=0\) partial wave. Higher
+spin bound states arise when the pole residue has the angular dependence of
+\(P_\ell(z)\), or more generally the corresponding spin-\(\ell\) tensor
+structure.
+
+\section{Operator Interpretation}
+
+Let \(O_B(x)\) be a local or suitably smeared composite operator with nonzero
+overlap with a stable state \(B\),
+\[
+  \langle\Omega|O_B(0)|B(P)\rangle\ne0,
+  \qquad
+  P^2=-M_B^2 .
+\]
+Then the spectral representation of a two-point function of \(O_B\) contains
+an atom at \(M_B^2\). The same state appears in four-point functions through a
+factorizing pole. For external operators \(O_1,O_2,O_3,O_4\), and
+\(P\) the momentum flowing through the channel,
+\[
+  \widetilde G_4(P;\cdots)
+  \sim
+  \frac{
+    \langle\Omega|O_3O_4|B(P)\rangle
+    \langle B(P)|O_1O_2|\Omega\rangle}
+       {P^2+M_B^2-\ii0}
+  +\text{regular terms}.
+\]
+After LSZ reduction on the external stable particles, this factorization
+becomes the bound-state pole of the scattering amplitude.
+
+The particle content of a theory is therefore read from spectral and
+asymptotic data. A field appearing in a Lagrangian can interpolate a stable
+state, and a composite operator can interpolate a stable state. The analytic
+pole and its residue state the channel coupling; additional structural data
+state how the corresponding state is represented inside the theory.

@@ -1,0 +1,673 @@
+\chapter{Renormalizability and Local Counterterms}
+\label{ch:volume-ii-renormalizability-local-counterterms}
+
+\section{Regulated Euclidean Actions}
+
+Let \(\phi\) be a real scalar field on \(D\)-dimensional Euclidean space.
+Fix a regulator, denoted collectively by \(\Lambda\).  The regulated
+functional integral has the form
+\[
+  Z_{\Lambda}
+  =
+  \int [D\phi]_{\Lambda}\,
+  \exp\!\left[
+    -\int \dd^Dx\,\mathcal L_{E,\Lambda}
+  \right],
+\]
+with bare Euclidean Lagrangian
+\[
+  \mathcal L_{E,\Lambda}
+  =
+  \frac12 \partial_{\mu}\phi\,\partial_{\mu}\phi
+  +
+  \frac12 m^2\phi^2
+  +
+  \sum_I g_I\,\mathcal O_I(\phi).
+\]
+Each \(\mathcal O_I\) is a local polynomial, or more generally a local
+function, of \(\phi(x)\) and finitely many derivatives
+\(\partial_{\mu}\phi(x),\partial_{\mu}\partial_{\nu}\phi(x),\ldots\).
+The coefficient \(g_I\) is a bare coupling.  The collection of bare couplings
+includes both the parameters chosen as inputs and the counterterm
+coefficients needed by the regulator.
+
+Two regulator languages will be used repeatedly.  A momentum cutoff restricts
+Fourier modes to
+\[
+  |\vec k|<\Lambda .
+\]
+Dimensional regularization computes the same formal integrals in
+\[
+  D=d-\varepsilon
+\]
+and removes the regulator by taking \(\varepsilon\to0\).  In both languages
+the bare couplings are allowed to depend on the regulator.
+
+The perturbative renormalization problem is the following finite-parameter
+problem.  Choose a finite list of physical coordinates
+\[
+  \lambda_{\rm phys}=(\lambda_1,\ldots,\lambda_N)
+\]
+on the family of theories under consideration.  These coordinates may be
+defined by masses, residues, specified 1PI vertices at a subtraction point, or
+other finite observables.  One seeks bare couplings of the form
+\[
+  g_I=g_I(\lambda_{\rm phys},\Lambda)
+  \qquad
+  \hbox{or}
+  \qquad
+  g_I=g_I(\lambda_{\rm phys},\varepsilon)
+\]
+such that all renormalized quantities being used to define the theory have
+finite limits as the regulator is removed.
+
+\section{Renormalized Fields and Effective Couplings}
+
+A convenient sufficient criterion is the finiteness of Euclidean Green
+functions of a renormalized field.  Define
+\[
+  \phi_R(x)=Z_R^{-1/2}\phi(x),
+\]
+where \(Z_R\) is a regulator-dependent normalization factor.  The criterion is
+that, after expressing the bare couplings in terms of
+\(\lambda_{\rm phys}\),
+\[
+  \lim_{\Lambda\to\infty}
+  \vev{\phi_R(x_1)\cdots\phi_R(x_n)}_{E,\Lambda}
+\]
+exists as a distribution for every \(n\) in the class under consideration.
+Equivalently, the 1PI effective action expressed as a functional of
+\(\phi_R\),
+\[
+  \widetilde\Gamma_{\Lambda}[\phi_R]
+  =
+  \Gamma_{\Lambda}[Z_R^{1/2}\phi_R],
+\]
+has finite local effective couplings.  More explicitly, expand
+\[
+  \widetilde\Gamma_{\Lambda}[\phi_R]
+  =
+  S_{\rm kin}[\phi_R]
+  +
+  \int \dd^Dx\,
+  \sum_I g^{\rm eff}_{I,\Lambda}\,
+  \mathcal O_I(\phi_R),
+\]
+where \(S_{\rm kin}\) is the chosen finite quadratic reference action.  The
+1PI finiteness criterion is
+\[
+  \lim_{\Lambda\to\infty}
+  g^{\rm eff}_{I,\Lambda}(\lambda_{\rm phys})
+  \quad\hbox{finite}
+\]
+for every local operator coefficient included in the renormalized description.
+
+The same structure appears directly in the bare action.  Suppose the bare
+quadratic term is
+\[
+  S_{\rm quad}[\phi]
+  =
+  \frac12\int \dd^Dx\,
+  \phi(-\partial^2+m_0^2)\phi .
+\]
+After \(\phi=Z_R^{1/2}\phi_R\), choose a finite mass parameter \(m_R\) and
+write
+\[
+\begin{aligned}
+  S_{\rm quad}[Z_R^{1/2}\phi_R]
+  &=
+  \frac12\int \dd^Dx\,
+  \phi_R(-\partial^2+m_R^2)\phi_R     \\
+  &\quad
+  +
+  \frac{Z_R-1}{2}
+  \int \dd^Dx\,
+  \phi_R(-\partial^2+m_R^2)\phi_R
+  +
+  \frac12\delta m^2
+  \int \dd^Dx\,\phi_R^2 .
+\end{aligned}
+\]
+The first line is the finite quadratic reference action.  The second line is
+local and is treated perturbatively as the wavefunction and mass counterterm
+part of the interaction.
+
+Thus perturbation theory is organized by writing
+\[
+  \widetilde S_{\Lambda}[\phi_R]
+  =
+  S_{\rm ref}[\phi_R]
+  +
+  S_{\rm int}[\phi_R;\lambda_{\rm phys}]
+  +
+  S_{\rm ct}[\phi_R;\lambda_{\rm phys},\Lambda],
+\]
+where \(S_{\rm ct}\) is local and regulator dependent.  The finite parts of
+the counterterms are part of the renormalization prescription: changing them
+changes the coordinate system \(\lambda_{\rm phys}\) on the same perturbative
+family.
+
+\section{First Counterterm Census in Four Dimensions}
+
+The local nature of the required terms is visible in elementary scalar
+examples.  In the following diagrams, a shaded disk labelled \(1{\rm PI}\)
+denotes the full one-particle-irreducible vertex being tested.
+
+First take a formal \(D=4\) scalar theory with a cubic vertex
+\(\int g_3\phi^3\).  The one-loop two-point graph contains the integral
+\[
+  g_3^2
+  \int^{\Lambda}
+  \frac{\dd^4q}{(2\pi)^4}\,
+  \frac{1}{(q^2+m^2)^2}
+  \sim
+  g_3^2\log\Lambda .
+\]
+It contributes to the local operator \(\phi^2\), and is canceled by a mass
+counterterm.  The corresponding one-loop triangle and box integrals are
+ultraviolet finite in four dimensions.
+
+For \(D=4\) scalar theory with a quartic vertex \(\int g_4\phi^4\), the
+two-point 1PI function receives a quadratically divergent tadpole and, at the
+next order, a logarithmic momentum-dependent contribution.  The four-point
+1PI function has a logarithmic divergence.  These divergences are canceled by
+\[
+  \delta m^2\phi^2,
+  \qquad
+  \delta Z\,\partial_{\mu}\phi\,\partial_{\mu}\phi,
+  \qquad
+  \delta g_4\phi^4 .
+\]
+Power counting assigns the higher \(n\)-point 1PI functions with \(n\ge6\)
+negative superficial degree of divergence, so this interaction closes on a
+finite local counterterm list.
+
+For \(D=4\) scalar theory with a sextic vertex \(\int g_6\phi^6\), the first
+tests already generate higher local terms.  A one-loop eight-point function
+has logarithmic behavior, requiring a local \(\phi^8\) counterterm.  Once
+\(\phi^8\) is present, further diagrams generate \(\phi^{10}\), and the
+process continues.  A finite number of physical coordinates then does not
+determine all local coefficients in the cutoff-removal limit.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.97\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{
+      line/.style={line width=0.95pt},
+      blob/.style={circle,draw=black,fill=gray!18,line width=0.9pt,minimum size=0.8cm}
+    }
+    \begin{scope}
+      \node[font=\normalsize] at (0,2.55) {\(D=4,\ \phi^3\)};
+      \node[blob] (A) at (-1.4,1.15) {\(1{\rm PI}\)};
+      \draw[line] (-2.55,1.15)--(A.west);
+      \draw[line] (A.east)--(-0.25,1.15);
+      \node at (0.1,1.15) {\(=\)};
+      \draw[line] (0.55,1.15)--(2.15,1.15);
+      \draw[line] (0.75,1.15)..controls (1.15,1.85) and (1.75,1.85)..(1.95,1.15);
+      \node[blue!70!black,align=center] at (1.35,0.3)
+        {\(\sim g_3^2\log\Lambda\)\\\(\phi^2\) counterterm};
+      \coordinate (u) at (-1.55,-1.1);
+      \coordinate (v) at (-0.9,-0.1);
+      \coordinate (w) at (-0.25,-1.1);
+      \draw[line] (u)--(v)--(w)--(u);
+      \draw[line] (v)--(-0.9,0.58);
+      \draw[line] (u)--(-2.15,-1.7);
+      \draw[line] (w)--(0.35,-1.7);
+      \node[green!50!black] at (1.15,-1.1) {triangle finite};
+    \end{scope}
+
+    \begin{scope}[shift={(5.6,0)}]
+      \node[font=\normalsize] at (0,2.55) {\(D=4,\ \phi^4\)};
+      \draw[line] (-2.2,1.15)--(-1.0,1.15);
+      \draw[line] (1.0,1.15)--(2.2,1.15);
+      \draw[line] (-1.0,1.15)..controls (-0.5,1.8) and (0.5,1.8)..(1.0,1.15);
+      \draw[line] (-1.0,1.15)..controls (-0.5,0.5) and (0.5,0.5)..(1.0,1.15);
+      \node[blue!70!black,align=center] at (0,0.08)
+        {\(\phi^2\) and\\\((\partial\phi)^2\)};
+      \draw[line] (-1.45,-1.0)--(1.45,-1.0);
+      \draw[line] (-1.45,-1.55)--(1.45,-1.55);
+      \draw[line] (-1.45,-1.0)..controls (-1.85,-1.28) and (-1.85,-1.27)..(-1.45,-1.55);
+      \draw[line] (1.45,-1.0)..controls (1.85,-1.28) and (1.85,-1.27)..(1.45,-1.55);
+      \node[green!50!black] at (0,-2.15) {\(\phi^4\) logarithm};
+    \end{scope}
+
+    \begin{scope}[shift={(11.1,0)}]
+      \node[font=\normalsize] at (0,2.55) {\(D=4,\ \phi^6\)};
+      \node[blob,minimum size=1.0cm] (B) at (0,0.55) {\(1{\rm PI}\)};
+      \foreach \a in {20,70,140,200,250,320} {
+        \draw[line] ({0.5*cos(\a)},{0.55+0.5*sin(\a)})
+          --++({0.82*cos(\a)},{0.82*sin(\a)});
+      }
+      \draw[line] (-0.32,0.18)..controls (0,-0.45)..(0.32,0.18);
+      \node[red!70!black,align=center] at (0,-1.35)
+        {higher local terms\\\(\phi^8,\phi^{10},\ldots\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{A first counterterm census in four dimensions.  Cubic and quartic
+  scalar interactions require local terms from a finite operator list, while a
+  sextic interaction generates higher local operators under loop corrections.}
+  \label{fig:volume-ii-counterterm-census}
+\end{figure}
+
+\section{Engineering Dimensions and the Finite List}
+
+The preceding examples are organized by mass dimension.  The Euclidean action
+is dimensionless.  Since the kinetic term is
+\[
+  \frac12\int \dd^Dx\,\partial_{\mu}\phi\,\partial_{\mu}\phi ,
+\]
+the field has engineering dimension
+\[
+  [\phi]=\frac{D-2}{2}.
+\]
+Let \(\mathcal O_I\) contain \(n_I\) fields and \(\ell_I\) derivatives.  Its
+engineering dimension is
+\[
+  d_I=\ell_I+n_I\frac{D-2}{2},
+\]
+and the coupling multiplying it has dimension
+\[
+  [g_I]=D-d_I .
+\]
+
+The coefficient \(g_I^{\rm eff}\) of \(\mathcal O_I\) in the 1PI effective
+action is extracted by differentiating an \(n_I\)-point 1PI vertex with
+respect to the appropriate external momenta and then setting those momenta to
+zero, provided the zero-momentum limit is infrared regular.  A diagram built
+from inserted vertices \(J\) has the superficial ultraviolet form
+\[
+  \left(\prod_{J\in G}g_J\right)
+  \Lambda^{
+    (D-d_I)-\sum_{J\in G}(D-d_J)
+  }
+  \bigl(\log\Lambda\bigr)^{r},
+  \qquad
+  0\le r\le L,
+\]
+where \(L\) is the loop number.  Therefore a counterterm for
+\(\mathcal O_I\) can be required only when
+\[
+  D-d_I-\sum_{J\in G}(D-d_J)\ge0 .
+\]
+
+If every coupling appearing in the action has \(d_J\le D\), then
+\(D-d_J\ge0\).  The inequality above implies \(d_I\le D\).  For scalar
+polynomial interactions with finitely many derivatives at fixed \(D\), there
+are only finitely many local operators with \(d_I\le D\).  This is the
+power-counting finite-list criterion for perturbative renormalizability.
+
+If an interaction with \(d_J>D\) is included and its coefficient is allowed to
+participate in the cutoff-removal problem on the same footing, repeated
+insertions can satisfy the inequality for operators of arbitrarily large
+dimension.  Such a Lagrangian is still a valid low-energy effective
+description at finite cutoff, but it does not define a finite-parameter
+cutoff-removal problem by this criterion.
+
+\section{A Renormalizable Model in Six Dimensions}
+
+The scalar cubic interaction is marginal in \(D=6\).  Use the Euclidean
+Lagrangian
+\[
+\begin{aligned}
+  \mathcal L_E
+  &=
+  \frac12\partial_{\mu}\phi\,\partial_{\mu}\phi
+  +
+  \frac12 m_R^2\phi^2
+  +
+  \delta Z
+  \left(
+    \frac12\partial_{\mu}\phi\,\partial_{\mu}\phi
+    +
+    \frac12 m_R^2\phi^2
+  \right)          \\
+  &\quad
+  +
+  \frac12\delta m^2\phi^2
+  +
+  \frac1{3!}(g_R+\delta g)\phi^3 .
+\end{aligned}
+\]
+The finite parameters are \(m_R\), \(g_R\), and the normalization convention
+for \(\phi\).  The local counterterms are
+\[
+  \delta Z,\qquad \delta m^2,\qquad \delta g .
+\]
+
+At order \(g_R^2\), the one-loop self-energy is
+\[
+  \Sigma_{2}(k)
+  =
+  \frac12 g_R^2
+  \int
+  \frac{\dd^D\ell}{(2\pi)^D}\,
+  \frac{1}
+       {(\ell^2+m_R^2)((k-\ell)^2+m_R^2)} .
+\]
+Combining denominators gives
+\[
+  \Sigma_{2}(k)
+  =
+  \frac12 g_R^2
+  \int_0^1\dd x
+  \int
+  \frac{\dd^D\ell}{(2\pi)^D}\,
+  \frac{1}
+       {\left(\ell^2+x(1-x)k^2+m_R^2\right)^2}.
+\]
+In dimensional regularization,
+\[
+  \int\frac{\dd^D\ell}{(2\pi)^D}\,
+  \frac1{(\ell^2+\Delta)^n}
+  =
+  \frac1{(4\pi)^{D/2}}
+  \frac{\Gamma(n-D/2)}{\Gamma(n)}
+  \Delta^{D/2-n}.
+\]
+For \(D=6-\varepsilon\), the pole part of \(\Sigma_2(k)\) is a local
+polynomial
+\[
+  \Sigma_2(k)\big|_{\rm pole}
+  =
+  A_1(\varepsilon)\,k^2
+  +
+  B_1(\varepsilon)\,m_R^2,
+\]
+where \(A_1\) and \(B_1\) have simple \(1/\varepsilon\) poles in minimal
+subtraction.  The counterterms \(\delta Z\) and \(\delta m^2\) are chosen so
+that the renormalized self-energy is finite.
+
+At order \(g_R^3\), the one-loop three-point triangle has a logarithmic
+ultraviolet divergence.  Its pole is independent of external momenta at the
+local order relevant for the marginal vertex, so it is canceled by
+\(\delta g\).  The one-loop four-point box in \(D=6\) is ultraviolet finite by
+power counting.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{
+      line/.style={line width=0.95pt},
+      blob/.style={circle,draw=black,fill=gray!18,line width=0.9pt,minimum size=0.82cm}
+    }
+    \node[font=\normalsize] at (0,2.0) {\(D=6,\ \phi^3\)};
+
+    \node[blob] (A) at (-5.1,0.75) {\(1{\rm PI}\)};
+    \draw[line] (-6.3,0.75)--(A.west);
+    \draw[line] (A.east)--(-3.9,0.75);
+    \node at (-3.55,0.75) {\(=\)};
+    \draw[line] (-3.05,0.75)--(-1.7,0.75);
+    \draw[line] (-2.85,0.75)..controls (-2.45,1.38) and (-2.1,1.38)..(-1.9,0.75);
+    \node[blue!70!black,align=center] at (-2.35,-0.05)
+      {\(A_1 k^2+B_1m_R^2\)\\\(\delta Z,\delta m^2\)};
+    \node at (-0.75,0.75) {\(+\)};
+    \draw[line] (-0.25,0.75)--(1.05,0.75);
+    \draw[red!75!black,line width=1pt] (0.3,0.65)--(0.5,0.85);
+    \draw[red!75!black,line width=1pt] (0.3,0.85)--(0.5,0.65);
+
+    \node[blob] (B) at (-4.9,-1.4) {\(1{\rm PI}\)};
+    \foreach \a in {90,210,330} {
+      \draw[line] ({-4.9+0.41*cos(\a)},{-1.4+0.41*sin(\a)})
+        --++({0.85*cos(\a)},{0.85*sin(\a)});
+    }
+    \node at (-3.55,-1.4) {\(=\)};
+    \coordinate (u) at (-2.45,-0.75);
+    \coordinate (v) at (-3.0,-1.75);
+    \coordinate (w) at (-1.9,-1.75);
+    \draw[line] (u)--(v)--(w)--(u);
+    \draw[line] (u)--(-2.45,-0.05);
+    \draw[line] (v)--(-3.65,-2.25);
+    \draw[line] (w)--(-1.25,-2.25);
+    \node[green!50!black] at (-0.1,-1.35) {\(\delta g\)};
+    \node at (0.65,-1.35) {\(+\)};
+    \draw[line] (1.15,-1.4)--(2.15,-1.4);
+    \draw[line] (1.65,-1.4)--(1.65,-0.55);
+    \draw[red!75!black,line width=1pt] (1.55,-1.5)--(1.75,-1.3);
+    \draw[red!75!black,line width=1pt] (1.55,-1.3)--(1.75,-1.5);
+  \end{tikzpicture}
+  }
+  \caption{In six-dimensional \(\phi^3\) theory, the one-loop two-point
+  divergence is local in \(k^2\) and \(m_R^2\), and the one-loop three-point
+  divergence is local in the cubic vertex.}
+  \label{fig:volume-ii-six-dimensional-phi-three-one-loop}
+\end{figure}
+
+\section{Locality at Higher Order}
+
+The one-loop renormalized self-energy in the six-dimensional cubic theory has
+large Euclidean momentum behavior
+\[
+  \Sigma_R(q)
+  \sim
+  (\alpha q^2+\beta)\log\frac{q^2}{\mu^2},
+  \qquad
+  q^2\gg m_R^2,
+\]
+for finite constants \(\alpha,\beta\) determined by the subtraction scheme.
+When this renormalized subgraph is inserted into a larger self-energy graph,
+the remaining large-\(q\) integral has the schematic form
+\[
+  \int
+  \frac{\dd^6q}{(2\pi)^6}\,
+  \frac{\Sigma_R(q)}
+       {(q^2+m_R^2)^2((k-q)^2+m_R^2)} .
+\]
+The external momentum dependence is isolated by expanding
+\[
+\begin{aligned}
+  \frac1{(k-q)^2+m_R^2}
+  &=
+  \frac1{q^2+m_R^2}
+  -
+  \frac{k^2-2k\cdot q}{(q^2+m_R^2)^2}       \\
+  &\quad
+  +
+  \frac{4(k\cdot q)^2}{(q^2+m_R^2)^3}
+  +
+  R_3(q,k),
+\end{aligned}
+\]
+where \(R_3(q,k)\) falls fast enough at large \(q\) to make the corresponding
+integral ultraviolet convergent.  The displayed terms are local in the
+external momentum through order \(k^2\).  They contribute only to the
+\(\phi^2\) and \((\partial\phi)^2\) counterterms.
+
+Dimensional regularization expresses the same fact algebraically.  Integrals
+of the form
+\[
+  \int\frac{\dd^Dq}{(2\pi)^D}
+  \frac{\log(q^2+\Delta)}
+       {(q^2+\Delta)^n}
+  =
+  -\frac{\partial}{\partial n}
+  \left[
+    \frac1{(4\pi)^{D/2}}
+    \frac{\Gamma(n-D/2)}{\Gamma(n)}
+    \Delta^{D/2-n}
+  \right]
+\]
+produce double and single poles in \(\varepsilon\).  For the self-energy
+insertion, the pole part has the local form
+\[
+  \Sigma_{\rm insertion}(k)\big|_{\rm pole}
+  =
+  A_{\varepsilon}k^2+B_{\varepsilon},
+  \qquad
+  A_{\varepsilon}
+  =
+  \frac{a_2}{\varepsilon^2}+\frac{a_1}{\varepsilon},
+  \qquad
+  B_{\varepsilon}
+  =
+  \frac{b_2}{\varepsilon^2}+\frac{b_1}{\varepsilon}.
+\]
+The coefficients \(a_i,b_i\) are finite constants depending on the finite
+renormalization prescription.  The pole part is polynomial in the external
+momentum, so it is represented by local counterterms already present in the
+six-dimensional cubic Lagrangian.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{
+      line/.style={line width=0.95pt},
+      blob/.style={ellipse,draw=black,fill=gray!18,line width=0.9pt,minimum width=1.1cm,minimum height=0.65cm},
+      arr/.style={-{Latex[length=2mm]},line width=0.9pt}
+    }
+    \begin{scope}
+      \node[font=\normalsize,align=center] at (-0.3,2.3)
+        {renormalized\\subgraph insertion};
+      \draw[line] (-2.9,0.6)--(-1.4,0.6);
+      \node[blob] (S) at (-0.8,0.6) {\(\Sigma_R(q)\)};
+      \draw[line] (S.east)--(0.5,0.6);
+      \draw[line] (0.5,0.6)--(1.5,1.05);
+      \draw[line] (0.5,0.6)--(1.5,0.15);
+      \node[blue!70!black,align=center] at (-0.55,-0.8)
+        {\((\alpha q^2+\beta)\log(q^2/\mu^2)\)};
+      \draw[arr] (2.0,0.6)--(3.3,0.6);
+    \end{scope}
+
+    \begin{scope}[shift={(5.2,0)}]
+      \node[font=\normalsize,align=center] at (0,2.3)
+        {Taylor terms\\in \(k\)};
+      \draw[line] (-1.65,1.05)--(1.65,1.05);
+      \draw[line] (-1.65,0.15)--(1.65,0.15);
+      \foreach \x/\lab in {-1.05/{k^0},0/{k^1},1.05/{k^2}} {
+        \draw[red!70!black,line width=0.95pt] (\x,-0.05)--(\x,1.25);
+        \node[red!70!black] at (\x,-0.35) {\(\lab\)};
+      }
+      \node[align=center] at (0,-1.1)
+        {local pieces determine\\\(\delta m^2\) and \(\delta Z\)};
+      \draw[arr] (2.0,0.6)--(3.35,0.6);
+    \end{scope}
+
+    \begin{scope}[shift={(10.6,0)}]
+      \node[font=\normalsize] at (0,2.3) {finite remainder};
+      \draw[line] (-1.4,0.8)..controls (-0.75,1.35) and (0.75,1.35)..(1.4,0.8);
+      \draw[line] (-1.4,0.8)..controls (-0.75,0.25) and (0.75,0.25)..(1.4,0.8);
+      \draw[line] (-2.4,0.8)--(-1.4,0.8);
+      \draw[line] (1.4,0.8)--(2.4,0.8);
+      \node[green!45!black,align=center] at (0,-0.55)
+        {large-\(q\) falloff\\after subtraction};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{A renormalized subgraph can leave logarithmic large-momentum
+  behavior.  Expanding the remaining propagator in the external momentum
+  separates the local \(k^0\) and \(k^2\) terms from a convergent remainder.}
+  \label{fig:volume-ii-self-energy-insertion-locality}
+\end{figure}
+
+\section{Schwinger Parameters and Subdivergent Regions}
+
+The same mechanism appears geometrically in Schwinger parameters.  Consider
+the two-loop self-energy graph in \(D=6\) cubic theory with two loop momenta
+\(\ell_1,\ell_2\):
+\[
+  \frac{g_R^4}{2}
+  \int
+  \frac{\dd^6\ell_1}{(2\pi)^6}
+  \frac{\dd^6\ell_2}{(2\pi)^6}
+  P(\ell_1)P(k-\ell_1)P(\ell_2)P(k-\ell_2)P(\ell_1-\ell_2),
+\]
+where
+\[
+  P(\ell)=\frac1{\ell^2+m_R^2}.
+\]
+Using
+\[
+  P(\ell)=\int_0^{\infty}\dd\alpha\,
+  \ee^{-\alpha(\ell^2+m_R^2)},
+\]
+the Gaussian loop integrations produce an integrand of the form
+\[
+  \frac1{(4\pi)^6}
+  \int_0^{\infty}
+  \prod_{i=1}^{5}\dd\alpha_i\,
+  \frac{
+    \ee^{-m_R^2\sum_i\alpha_i-k^2 Q(\alpha)}
+  }
+  {(\det A)^3},
+\]
+with
+\[
+  A=
+  \begin{pmatrix}
+    \alpha_1+\alpha_2+\alpha_5 & -\alpha_5\\
+    -\alpha_5 & \alpha_3+\alpha_4+\alpha_5
+  \end{pmatrix}.
+\]
+The function \(Q(\alpha)\) is nonnegative.  Ultraviolet regions are boundary
+regions in which Schwinger parameters of a subgraph go to zero.
+
+There are two one-loop subdivergent regions:
+\[
+  \alpha_1,\alpha_2,\alpha_5\to0,
+  \qquad
+  \alpha_3,\alpha_4,\alpha_5\to0 .
+\]
+They correspond to shrinking the left or right one-loop self-energy subgraph.
+The counterterm insertions for the one-loop self-energy subtract the limiting
+functions associated with these boundary regions.  After these subtractions,
+the remaining overall ultraviolet region is the simultaneous scaling
+\[
+  \alpha_1,\ldots,\alpha_5\to0 .
+\]
+Power counting then says that its dependence on the external momentum is at
+most quadratic.  Subtracting the \(k^0\) and \(k^2\) Taylor terms leaves a
+finite parameter integral.  The overall counterterm is therefore again a
+linear combination of \(\phi^2\) and \((\partial\phi)^2\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{line/.style={line width=0.95pt}}
+    \begin{scope}
+      \node[font=\normalsize] at (0,2.15) {two-loop self-energy};
+      \draw[line] (-3.0,0.5)--(-2.1,0.5);
+      \draw[line] (-2.1,0.5)..controls (-1.35,1.35) and (-0.45,1.35)..(0.0,0.5);
+      \draw[line] (-2.1,0.5)..controls (-1.35,-0.35) and (-0.45,-0.35)..(0.0,0.5);
+      \draw[line] (0.0,0.5)..controls (0.45,1.35) and (1.35,1.35)..(2.1,0.5);
+      \draw[line] (0.0,0.5)..controls (0.45,-0.35) and (1.35,-0.35)..(2.1,0.5);
+      \draw[line] (2.1,0.5)--(3.0,0.5);
+      \draw[orange!85!black,dashed,line width=1pt] (-2.3,-0.52) rectangle (0.18,1.52);
+      \draw[green!55!black,dashed,line width=1pt] (-0.18,-0.52) rectangle (2.3,1.52);
+      \node[orange!85!black] at (-1.18,-0.9)
+        {\(\alpha_1,\alpha_2,\alpha_5\to0\)};
+      \node[green!55!black] at (1.18,-0.9)
+        {\(\alpha_3,\alpha_4,\alpha_5\to0\)};
+    \end{scope}
+
+    \begin{scope}[shift={(7.7,0)}]
+      \node[font=\normalsize] at (0,2.15) {nested subtraction};
+      \draw[line] (-2.1,0.7)..controls (-1.2,1.45) and (1.2,1.45)..(2.1,0.7);
+      \draw[line] (-2.1,0.7)..controls (-1.2,-0.05) and (1.2,-0.05)..(2.1,0.7);
+      \draw[line] (-3.0,0.7)--(-2.1,0.7);
+      \draw[line] (2.1,0.7)--(3.0,0.7);
+      \foreach \x in {-1.3,1.3} {
+        \draw[red!70!black,line width=1pt] (\x,-0.25)--(\x,1.45);
+      }
+      \node[red!70!black,align=center] at (0,-0.75)
+        {subgraphs first};
+      \node[purple!80!black,align=center] at (0,-1.45)
+        {overall \(k^0,k^2\) terms last};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{In Schwinger parameters, ultraviolet divergences are boundary
+  regions.  Subdivergent one-loop regions are subtracted before the remaining
+  overall boundary region is expanded in local external-momentum terms.}
+  \label{fig:volume-ii-schwinger-subdivergences}
+\end{figure}
+
+The preceding analysis is the local core of perturbative renormalizability for
+power-counting finite-list theories.  At all orders, the same nested structure
+is organized by the Bogoliubov--Parasiuk--Hepp--Zimmermann theorem: subtract
+local Taylor polynomials for divergent subgraphs in a compatible nested order,
+and the remaining integrals are finite.  The next chapter develops this
+subtraction structure as a systematic forest formula.

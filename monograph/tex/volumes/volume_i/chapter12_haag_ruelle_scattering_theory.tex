@@ -1,0 +1,439 @@
+\chapter{Haag--Ruelle Scattering Theory}
+\label{ch:haag-ruelle}
+
+\section{Scattering States as Hilbert-Space Limits}
+
+The previous chapters constructed local fields, their spectral content, and
+Lorentzian time-ordered Green functions. We now add a new kind of object:
+asymptotic particle states. These are vectors in the physical Hilbert space
+obtained as large-time limits of localized wave packets. Once these limits are
+constructed, the scattering operator is a comparison between two Hilbert-space
+identifications: one made in the far past and one made in the far future.
+
+The construction in this chapter is for a massive stable bosonic particle. It
+uses a Hilbert space \(\Hilb\), a vacuum vector \(\Omega\), local operators, the
+Poincare representation, the spectrum condition, and an isolated
+one-particle mass shell. These hypotheses are stated explicitly because the
+large-time limit is a theorem under hypotheses, not an algebraic manipulation
+of Green functions.
+
+Let spacetime have dimension \(D\), and write \(d=D-1\). The mostly-plus
+metric is
+\[
+  \eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+),
+  \qquad
+  p^2=\eta_{\mu\nu}p^\mu p^\nu .
+\]
+Let \(U(a,\Lambda)\) be a strongly continuous unitary representation of the
+proper orthochronous Poincare group on \(\Hilb\). Its translation subgroup is
+written
+\[
+  U(a,\mathbf 1)=\ee^{\ii a_\mu P^\mu},
+\]
+where the commuting self-adjoint generators \(P^\mu\) are the
+energy-momentum operators. The spectrum condition is
+\[
+  \operatorname{Spec}(P)\subset \overline V_+
+  =
+  \{p\in\mathbb R^D:p^0\ge 0,\ p^2\le 0\}.
+\]
+The invariant mass operator is
+\[
+  M^2=-P_\mu P^\mu .
+\]
+
+\begin{definition}[Massive one-particle sector]
+Fix \(m>0\). A massive one-particle sector of mass \(m\) is a closed subspace
+\(\Hilb_1\subset\Hilb\) such that:
+\begin{enumerate}
+  \item \(\Hilb_1\) reduces the Poincare representation;
+  \item \(M^2=m^2\) on \(\Hilb_1\);
+  \item the spectrum of \(P^\mu\) on \(\Hilb_1\) lies on
+  \[
+    \Sigma_m^+
+    =
+    \{(\omega_{\vec p},\vec p):\vec p\in\mathbb R^d\},
+    \qquad
+    \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2};
+  \]
+  \item there is an open interval around \(m^2\) in the spectrum of \(M^2\)
+  whose only spectral point is \(m^2\).
+\end{enumerate}
+Let \(P_1\) denote the orthogonal projection from \(\Hilb\) onto \(\Hilb_1\).
+\end{definition}
+
+The last condition is the mass-gap form of stability used in this chapter. It
+says that the one-particle shell is separated from the continuum. In a scalar
+theory with a lightest stable particle, the picture is:
+\[
+\begin{tikzpicture}[baseline=-0.55ex,scale=0.94,>=Stealth]
+  \draw[->,line width=0.65pt] (-0.2,0)--(7.2,0)
+    node[right] {$M^2=-P^2$};
+  \draw[line width=0.75pt] (0,0.12)--(0,-0.12);
+  \node[below] at (0,-0.12) {vacuum};
+  \draw[blue!75!black,line width=1.1pt] (2.15,0.32)--(2.15,-0.32);
+  \node[blue!75!black,below] at (2.15,-0.32) {$m^2$};
+  \draw[red!75!black,line width=2.2pt] (4.65,0)--(7.0,0);
+  \node[red!75!black,below] at (4.65,-0.18) {$M_{\mathrm{thr}}^2$};
+  \draw[decorate,decoration={brace,amplitude=5pt},gray!75]
+    (2.35,0.55)--(4.45,0.55);
+  \node[gray!75!black] at (3.5,0.95) {spectral gap};
+\end{tikzpicture}
+\]
+Here \(M_{\mathrm{thr}}\) is the lowest invariant mass in the continuum channel
+under discussion.
+
+\section{Local Operators and One-Particle Wave Packets}
+
+To state the large-time construction without domain distractions, use bounded
+local operators. A bounded operator \(A\) is localized in a bounded spacetime
+region \(O\) when it belongs to the local algebra \(\Obs(O)\). Locality means
+that if \(O_1\) and \(O_2\) are spacelike separated, then
+\[
+  [A_1,A_2]=0,
+  \qquad
+  A_i\in\Obs(O_i).
+\]
+For unbounded point fields, this is the corresponding statement after
+smearing and restricting to the common invariant domain on which the products
+are defined.
+
+The particle must be creatable from the vacuum by local operations. In the
+present scalar setting this means that there is a local operator \(A\) such
+that
+\[
+  P_1A\Omega\ne0 .
+\]
+Choose a Schwartz test function \(\chi\in\mathcal S(\mathbb R^D)\) whose
+Fourier transform is supported in a small neighborhood of the positive mass
+shell \(\Sigma_m^+\) and avoids the rest of the energy-momentum spectrum.
+Define
+\[
+  B=A(\chi)
+  =
+  \int_{\mathbb R^D}\dd^D x\,\chi(x)\,A(x),
+  \qquad
+  A(x)=U(x)AU(x)^{-1}.
+\]
+The operator \(B\) is almost local: it is approximated in norm by local
+operators in larger and larger bounded regions, with errors decreasing faster
+than any inverse power of the size of the region. This property is sufficient
+for the locality estimates used below.
+
+Let \(h\in C_c^\infty(\mathbb R^d)\) be a smooth compactly supported momentum
+wave packet. Define the positive-energy Klein--Gordon solution
+\[
+  h_t(\vec x)
+  =
+  \int\frac{\dd^d\vec p}{(2\pi)^d}\,
+  h(\vec p)\,
+  \ee^{\ii\omega_{\vec p}t-\ii\vec p\cdot\vec x}.
+\]
+The associated Haag--Ruelle operator is
+\[
+  B_t(h)
+  =
+  \int_{\mathbb R^d}\dd^d\vec x\,
+  h_t(\vec x)\,B(t,\vec x),
+  \qquad
+  B(t,\vec x)=U(t,\vec x)BU(t,\vec x)^{-1}.
+\]
+The one-particle vector created by this family is
+\[
+  \psi_h:=P_1B_t(h)\Omega .
+\]
+It is independent of \(t\). The role of the phase in \(h_t\) is precisely to
+cancel the free time evolution on the mass shell.
+
+The velocity support of \(h\) is
+\[
+  V(h)
+  =
+  \left\{
+    \frac{\vec p}{\omega_{\vec p}}:
+    \vec p\in\operatorname{supp}h
+  \right\}
+  \subset\mathbb R^d .
+\]
+Stationary phase gives the spacetime localization of \(h_t\): for large
+\(|t|\), the wave packet is concentrated near rays
+\[
+  \vec x=t\,\frac{\vec p}{\omega_{\vec p}},
+  \qquad
+  \vec p\in\operatorname{supp}h .
+\]
+Thus two wave packets with disjoint velocity supports become spacelike
+separated as \(|t|\to\infty\).
+
+\begin{center}
+\begin{tikzpicture}[scale=0.94,>=Stealth]
+  \draw[->,line width=0.7pt] (-3.35,-2.0)--(-3.35,2.45)
+    node[above] {$x^0$};
+  \draw[->,line width=0.7pt] (-3.35,-2.0)--(3.5,-2.0)
+    node[right] {$\vec x$};
+  \draw[gray!55,dashed] (-3.0,-1.55)--(2.75,1.85);
+  \draw[gray!55,dashed] (-1.15,-1.55)--(3.15,1.45);
+  \fill[blue!10,draw=blue!75!black,line width=1.0pt]
+    (-1.85,-1.1) ellipse (0.58 and 0.34);
+  \fill[green!12,draw=green!50!black,line width=1.0pt]
+    (-0.6,-1.1) ellipse (0.58 and 0.34);
+  \fill[blue!10,draw=blue!75!black,line width=1.0pt]
+    (-0.35,0.65) ellipse (0.55 and 0.34);
+  \fill[green!12,draw=green!50!black,line width=1.0pt]
+    (1.75,0.35) ellipse (0.55 and 0.34);
+  \draw[->,blue!75!black,very thick] (-1.65,-0.78)--(-0.62,0.35);
+  \draw[->,green!50!black,very thick] (-0.35,-0.78)--(1.38,0.13);
+  \node[blue!75!black] at (-1.15,1.03) {$V(h_1)$};
+  \node[green!50!black] at (2.25,0.78) {$V(h_2)$};
+  \draw[<->,purple!80!black,very thick] (0.22,0.62)--(1.18,0.48);
+  \node[purple!80!black,align=center] at (0.73,1.18)
+    {spacelike\\separation};
+\end{tikzpicture}
+\end{center}
+
+\section{Multi-Particle Limits}
+
+Let \(B_1,\ldots,B_n\) be almost-local operators obtained as above, and let
+\(h_1,\ldots,h_n\in C_c^\infty(\mathbb R^d)\) have pairwise disjoint velocity
+supports. Define the time-dependent vector
+\[
+  \Psi_t(h_1,\ldots,h_n)
+  =
+  B_{1,t}(h_1)\cdots B_{n,t}(h_n)\Omega .
+\]
+
+\begin{theorem}[Haag--Ruelle limits]
+Under the assumptions stated above, the limits
+\[
+  \Psi^{\mathrm{out}}(h_1,\ldots,h_n)
+  =
+  \lim_{t\to+\infty}\Psi_t(h_1,\ldots,h_n),
+\]
+\[
+  \Psi^{\mathrm{in}}(h_1,\ldots,h_n)
+  =
+  \lim_{t\to-\infty}\Psi_t(h_1,\ldots,h_n)
+\]
+exist in the norm topology of \(\Hilb\). The limits depend only on the
+one-particle vectors
+\[
+  \psi_j=P_1B_{j,t}(h_j)\Omega\in\Hilb_1,
+  \qquad j=1,\ldots,n,
+\]
+and not on the auxiliary operators \(B_j\) used to interpolate them.
+\end{theorem}
+
+The proof has two analytic inputs. First, disjoint velocity supports imply
+that the effective localization regions of \(B_{j,t}(h_j)\) separate
+spacelike at large \(|t|\). Locality then gives rapid decay of commutators
+\[
+  [B_{i,t}(h_i),B_{j,t}(h_j)]
+\]
+for \(i\ne j\). Second, spectral isolation of the mass shell controls the part
+of \(B_{j,t}(h_j)\Omega\) orthogonal to \(\Hilb_1\). In Cook's method one
+estimates \(\frac{\dd}{\dd t}\Psi_t\); the commutator terms and the
+orthogonal spectral-error terms are integrable in \(t\), hence
+\(\Psi_t\) is a Cauchy family at \(+\infty\) and at \(-\infty\).
+
+For \(n=2\), the essential estimate is visible from the norm difference
+\[
+  \|\Psi_{t'}-\Psi_t\|^2
+  =
+  \langle\Psi_{t'}-\Psi_t,\Psi_{t'}-\Psi_t\rangle .
+\]
+The scalar products entering this expression are vacuum correlation functions
+of four almost-local operators. At large positive or negative times, the two
+velocity clusters are separated by spacelike distances growing linearly in
+\(|t|\). The cluster property and locality reduce the large-time scalar
+product to the product of the corresponding one-particle scalar products.
+
+\section{Fock Structure}
+
+Let
+\[
+  \mathcal F_s(\Hilb_1)
+  =
+  \bigoplus_{n=0}^\infty \Hilb_1^{\odot n}
+\]
+be the bosonic Fock space over \(\Hilb_1\), where
+\(\Hilb_1^{\odot n}\) denotes the symmetric \(n\)-fold tensor product and
+\(\Hilb_1^{\odot0}=\mathbb C\Omega_F\). The vector \(\Omega_F\) is the Fock
+vacuum.
+
+For wave packets with disjoint velocity supports, define
+\[
+  \Omega_{\mathrm{out}}
+  (\psi_1\odot\cdots\odot\psi_n)
+  =
+  \Psi^{\mathrm{out}}(h_1,\ldots,h_n),
+\]
+\[
+  \Omega_{\mathrm{in}}
+  (\psi_1\odot\cdots\odot\psi_n)
+  =
+  \Psi^{\mathrm{in}}(h_1,\ldots,h_n),
+\]
+where \(\psi_j=P_1B_{j,t}(h_j)\Omega\). The theorem above makes these
+definitions independent of the choice of interpolating operators. By
+linearity and continuity they extend from such vectors to all of
+\(\mathcal F_s(\Hilb_1)\).
+
+The Fock inner product is reproduced by the Hilbert-space inner product of
+asymptotic states:
+\[
+\begin{aligned}
+&\left\langle
+  \Psi^{\mathrm{out}}(\psi_1,\ldots,\psi_n),
+  \Psi^{\mathrm{out}}(\varphi_1,\ldots,\varphi_m)
+  \right\rangle_{\Hilb}
+\\
+&\qquad =
+  \delta_{nm}
+  \sum_{\sigma\in S_n}
+  \prod_{j=1}^n
+  \langle\psi_j,\varphi_{\sigma(j)}\rangle_{\Hilb_1},
+\end{aligned}
+\]
+and the same formula holds for incoming states. Therefore
+\[
+  \Omega_{\mathrm{out}},
+  \Omega_{\mathrm{in}}
+  :
+  \mathcal F_s(\Hilb_1)\longrightarrow \Hilb
+\]
+are isometries. Their ranges are the outgoing and incoming scattering
+subspaces,
+\[
+  \Hilb_{\mathrm{out}}=\operatorname{Ran}\Omega_{\mathrm{out}},
+  \qquad
+  \Hilb_{\mathrm{in}}=\operatorname{Ran}\Omega_{\mathrm{in}} .
+\]
+
+The Poincare group acts on \(\mathcal F_s(\Hilb_1)\) by the free Fock
+representation \(U_F\) induced from its action on \(\Hilb_1\). The
+Haag--Ruelle wave operators intertwine the physical and free actions:
+\[
+  U(a,\Lambda)\Omega_{\mathrm{out/in}}
+  =
+  \Omega_{\mathrm{out/in}}U_F(a,\Lambda).
+\]
+This equation states that an asymptotic \(n\)-particle state transforms as
+the corresponding symmetrized tensor product of one-particle Wigner states.
+
+\begin{center}
+\begin{tikzcd}[column sep=large,row sep=large]
+  \mathcal F_s(\Hilb_1)
+    \arrow[r,"\Omega_{\mathrm{in}}"]
+    \arrow[d,"S"']
+  &
+  \Hilb_{\mathrm{in}}\subset\Hilb
+  \\
+  \mathcal F_s(\Hilb_1)
+    \arrow[r,"\Omega_{\mathrm{out}}"']
+  &
+  \Hilb_{\mathrm{out}}\subset\Hilb
+    \arrow[u,dashed,leftrightarrow]
+\end{tikzcd}
+\end{center}
+
+\section{The Scattering Operator}
+
+If
+\[
+  \Hilb_{\mathrm{in}}=\Hilb_{\mathrm{out}},
+\]
+then incoming scattering states evolve into outgoing scattering states in the
+sector under consideration. The scattering operator on the asymptotic Fock
+space is
+\[
+  S
+  =
+  \Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}
+  :
+  \mathcal F_s(\Hilb_1)\longrightarrow \mathcal F_s(\Hilb_1).
+\]
+When the incoming and outgoing ranges coincide, \(S\) is unitary. The matrix
+element between an incoming \(n\)-particle wave packet
+\(\psi_1\odot\cdots\odot\psi_n\) and an outgoing \(m\)-particle wave packet
+\(\varphi_1\odot\cdots\odot\varphi_m\) is
+\[
+\begin{aligned}
+&\left\langle
+  \varphi_1\odot\cdots\odot\varphi_m,\,
+  S(\psi_1\odot\cdots\odot\psi_n)
+  \right\rangle_{\mathcal F_s(\Hilb_1)}
+\\
+&\qquad =
+  \left\langle
+  \Omega_{\mathrm{out}}
+  (\varphi_1\odot\cdots\odot\varphi_m),\,
+  \Omega_{\mathrm{in}}
+  (\psi_1\odot\cdots\odot\psi_n)
+  \right\rangle_{\Hilb}.
+\end{aligned}
+\]
+This equation is the nonperturbative definition of the scattering matrix
+elements in the massive sector. The right hand side is an inner product in the
+physical Hilbert space; the left hand side records the same number in the
+free asymptotic particle basis.
+
+Asymptotic completeness is the stronger statement
+\[
+  \Hilb=\Hilb_{\mathrm{in}}=\Hilb_{\mathrm{out}}
+\]
+for the sector of finite-energy states under consideration. The definition of
+\(S\) on the scattering sector requires equality of the incoming and outgoing
+ranges. Full asymptotic completeness asserts that every physical state in the
+sector is captured by such asymptotic particle data.
+
+\section{Relation to Local Correlation Functions}
+
+The construction above produces the \(S\)-operator from Hilbert-space limits.
+It also identifies what a later reduction formula must compute. If
+\(\psi_j=P_1B_{j,t}(h_j)\Omega\) and
+\(\varphi_i=P_1C_{i,t}(g_i)\Omega\), then an \(m\)-out, \(n\)-in matrix
+element is
+\[
+\begin{aligned}
+&\left\langle
+  \Omega_{\mathrm{out}}
+  (\varphi_1\odot\cdots\odot\varphi_m),\,
+  \Omega_{\mathrm{in}}
+  (\psi_1\odot\cdots\odot\psi_n)
+  \right\rangle_{\Hilb}
+\\
+&\quad =
+  \lim_{T\to+\infty}
+  \left\langle
+  \Omega\left|
+  C_{m,T}(g_m)^*\cdots C_{1,T}(g_1)^*
+  B_{1,-T}(h_1)\cdots B_{n,-T}(h_n)
+  \right|\Omega
+  \right\rangle .
+\end{aligned}
+\]
+For large \(T\), the outgoing packets are localized near future timelike
+directions and the incoming packets near past timelike directions. Locality
+permits these vacuum matrix elements to be reorganized into time-ordered
+correlation functions up to terms that vanish in the scattering limit. The
+next chapter turns this statement into LSZ reduction: one extracts the above
+matrix elements from the one-particle poles of time-ordered Green functions.
+
+\section{Scope of the Massive Construction}
+
+The massive Haag--Ruelle construction gives a precise scattering theory for
+stable particles whose one-particle mass shell is isolated and whose charge is
+localizable by the operators used in the theory. It also provides the
+reference point for more delicate asymptotic problems. Massless particles,
+long-range gauge forces, infraparticle sectors, and theories with confinement
+require additional asymptotic observables or modified state spaces. Those
+phenomena are part of the same program of constructing large-time particle
+data, but their hypotheses and limiting procedures differ from the massive
+case treated here.
+
+The logical output of this chapter is therefore fixed. A scattering operator
+has been defined before any LSZ formula and before any perturbative
+interpretation of Feynman graphs as scattering amplitudes. Perturbative
+scattering calculations, when available, compute matrix elements of this
+operator after the reduction theorem has connected the Hilbert-space limits to
+Green functions.

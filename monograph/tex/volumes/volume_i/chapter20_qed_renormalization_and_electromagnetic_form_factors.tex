@@ -1,0 +1,520 @@
+\chapter{QED Renormalization and Electromagnetic Form Factors}
+\label{ch:qed-renormalization-form-factors}
+
+\section{Bare Variables and Ward Organization}
+
+Use the electron convention of Chapter 19. The bare representative fields and
+parameters are
+\[
+  A_\mu^B,\qquad \psi^B,\qquad \bar\psi^B,\qquad m^B,\qquad e^B,
+\]
+and the bare Lagrangian is
+\[
+  \mathcal L_B
+  =
+  -\frac14F^B_{\mu\nu}F_B^{\mu\nu}
+  -
+  \bar\psi^B
+  \left[
+    \gamma^\mu(\partial_\mu+\ii e^B A_\mu^B)+m^B
+  \right]\psi^B .
+\]
+Introduce renormalized representative fields by
+\[
+  A_\mu^B=Z_A^{1/2}A_\mu,\qquad
+  \psi^B=Z_\psi^{1/2}\psi,\qquad
+  \bar\psi^B=Z_\psi^{1/2}\bar\psi .
+\]
+The constants \(Z_A\) and \(Z_\psi\) are fixed by pole-residue
+normalizations: \(Z_A\) normalizes the one-photon component of
+\(\widehat F_{\mu\nu}|\Omega\rangle\), and \(Z_\psi\) normalizes the
+one-electron and one-positron spinor poles. Write
+\[
+  m^B=m+\delta m .
+\]
+
+The renormalized charge parameter \(e\) is fixed by the electromagnetic
+current matrix element at zero momentum transfer. Gauge covariance of the
+renormalized representative derivative requires
+\[
+  e=e^B Z_A^{1/2},
+\]
+so that
+\[
+  \partial_\mu+\ii e^B A_\mu^B
+  =
+  \partial_\mu+\ii e A_\mu .
+\]
+Equivalently, if a separate vertex constant \(Z_1\) is introduced by
+\[
+  e^B Z_A^{1/2}Z_\psi=eZ_1,
+\]
+then Abelian gauge covariance gives the Ward organization
+\[
+  Z_1=Z_\psi .
+\]
+Thus
+\[
+  \mathcal L_B
+  =
+  -\frac14Z_A F_{\mu\nu}F^{\mu\nu}
+  -
+  Z_\psi\bar\psi
+  \left[
+    \gamma^\mu(\partial_\mu+\ii e A_\mu)+m+\delta m
+  \right]\psi .
+\]
+Split this into a renormalized quadratic and interaction part plus
+counterterms:
+\[
+\begin{aligned}
+  \mathcal L_B
+  &=
+  \underbrace{
+    -\frac14F_{\mu\nu}F^{\mu\nu}
+    -\bar\psi(\gamma^\mu\partial_\mu+m)\psi
+    -\ii eA_\mu\bar\psi\gamma^\mu\psi
+  }_{\mathcal L_{\mathrm{ren}}}
+\\
+  &\quad
+  -\frac14(Z_A-1)F_{\mu\nu}F^{\mu\nu}
+  -(Z_\psi-1)\bar\psi(\gamma^\mu\partial_\mu+m)\psi
+  -Z_\psi\delta m\,\bar\psi\psi
+\\
+  &\quad
+  -\ii e(Z_\psi-1)A_\mu\bar\psi\gamma^\mu\psi .
+\end{aligned}
+\]
+The last line is the vertex counterterm tied to the spinor wavefunction
+counterterm by the Abelian Ward identity. The mass counterterm is independent
+because \(m\bar\psi\psi\) is gauge-invariant.
+
+\section{Photon Self-Energy and Transversality}
+
+Let
+\[
+  \langle\Omega|
+  \operatorname T\{\widehat A_\mu(x)\widehat A_\nu(0)\}
+  |\Omega\rangle
+  =
+  \int\frac{\dd^4k}{(2\pi)^4}\,
+  \ee^{\ii k\cdot x}\,\widetilde G_{\mu\nu}(k).
+\]
+The full photon representative two-point function is obtained by inserting
+one-particle-irreducible photon self-energies into the free propagator:
+\[
+\begin{gathered}
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.88]
+  \tikzset{
+    photon/.style={decorate,decoration={snake,amplitude=1.15pt,segment length=5pt},line width=0.55pt}
+  }
+  \draw[photon] (-0.2,0)--(1.0,0);
+  \node at (1.45,0) {\(=\)};
+  \draw[photon] (1.9,0)--(3.1,0);
+  \node at (3.55,0) {\(+\)};
+  \draw[photon] (4.05,0)--(4.75,0);
+  \node[circle,draw,minimum size=0.48cm,inner sep=0pt] at (5.05,0) {\scriptsize 1PI};
+  \draw[photon] (5.35,0)--(6.05,0);
+  \node at (6.5,0) {\(+\)};
+  \draw[photon] (7.0,0)--(7.55,0);
+  \node[circle,draw,minimum size=0.45cm,inner sep=0pt] at (7.82,0) {\scriptsize 1PI};
+  \draw[photon] (8.1,0)--(8.65,0);
+  \node[circle,draw,minimum size=0.45cm,inner sep=0pt] at (8.92,0) {\scriptsize 1PI};
+  \draw[photon] (9.2,0)--(9.75,0);
+  \node at (10.25,0) {\(\cdots\)};
+\end{tikzpicture}
+\end{gathered}
+\]
+Let \(\ii\Pi^{\mu\nu}(k)\) denote the sum of amputated one-particle
+irreducible photon two-point insertions. Current conservation implies
+transversality. More explicitly, the Maxwell equation with the renormalized
+current has the form
+\[
+  \partial_\nu \widehat F^{\mu\nu}=\widehat j^\mu,
+  \qquad
+  \partial_\mu\widehat j^\mu=0
+\]
+up to local contact terms inside time-ordered products. In momentum space the
+nonlocal part of the current two-point function is transverse, and hence
+\[
+  k_\mu\Pi^{\mu\nu}(k)=0 .
+\]
+Lorentz covariance then gives the tensor decomposition
+\[
+  \Pi^{\mu\nu}(k)
+  =
+  (\eta^{\mu\nu}k^2-k^\mu k^\nu)\pi(k^2)
+\]
+for a scalar function \(\pi\).
+
+In covariant gauge, with gauge parameter \(\xi_{\mathrm g}\), the resummed
+propagator is
+\[
+  \widetilde G_{\mu\nu}(k)
+  =
+  \frac{-\ii}{k^2-\ii\epsilon}
+  \left[
+    \frac{\eta_{\mu\nu}}{1-\pi(k^2)}
+    -
+    \frac{k_\mu k_\nu}{k^2-\ii\epsilon}
+    \left(
+      1-\xi_{\mathrm g}
+      +\frac{\pi(k^2)}{1-\pi(k^2)}
+    \right)
+  \right].
+\]
+The longitudinal part depends on the representative gauge choice. The
+transverse pole is normalized by imposing
+\[
+  \pi(0)=0
+\]
+for the massive-electron theory, where the loop function is regular at the
+photon point \(k^2=0\).
+
+\section{One-Loop Vacuum Polarization}
+
+The photon counterterm contributes
+\[
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.82]
+  \tikzset{photon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=5pt},line width=0.55pt}}
+  \draw[photon] (-1.25,0)--(1.25,0);
+  \draw[thick] (0,-0.18)--(0,0.18);
+  \node[below] at (-1.25,-0.08) {\scriptsize \(\mu\)};
+  \node[below] at (1.25,-0.08) {\scriptsize \(\nu\)};
+\end{tikzpicture}
+\quad
+=
+-\ii(Z_A-1)(k^2\eta_{\mu\nu}-k_\mu k_\nu),
+\]
+which contributes \(1-Z_A\) to \(\pi(k^2)\). The one-loop electron diagram is
+\[
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.9]
+  \tikzset{
+    photon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=5pt},line width=0.55pt},
+    fermion/.style={postaction={decorate,decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},line width=0.55pt}
+  }
+  \draw[photon] (-1.7,0)--(-0.62,0);
+  \draw[fermion] (0,0) circle (0.62);
+  \draw[photon] (0.62,0)--(1.7,0);
+  \node[below] at (-1.7,-0.08) {\scriptsize \(\mu\)};
+  \node[below] at (1.7,-0.08) {\scriptsize \(\nu\)};
+  \node[above] at (0,0.70) {\scriptsize \(p\)};
+  \node[below] at (0,-0.72) {\scriptsize \(p-k\)};
+\end{tikzpicture}
+\]
+and equals
+\[
+\begin{aligned}
+  \ii\Pi^{(1)}_{\mu\nu}(k)
+  &=
+  -
+  \int\frac{\dd^4p}{(2\pi)^4}
+  \operatorname{Tr}\left[
+    e\gamma_\mu\,
+    \frac{-\ii(-\ii\not p+m)}{p^2+m^2-\ii\epsilon}\,
+    e\gamma_\nu\,
+    \frac{-\ii(-\ii(\not p-\not k)+m)}
+         {(p-k)^2+m^2-\ii\epsilon}
+  \right].
+\end{aligned}
+\]
+The minus sign is the closed fermion loop. Continue the integral to
+\(D=4-\epsilon\) dimensions, keeping
+\[
+  \{\gamma_\mu,\gamma_\nu\}=2\eta_{\mu\nu},\qquad
+  \eta^{\mu\nu}\eta_{\mu\nu}=D,\qquad
+  \operatorname{Tr}\mathbf 1=4 .
+\]
+After Wick rotation and the Feynman-parameter identity, shift
+\[
+  p\mapsto p+xk .
+\]
+The denominator becomes
+\[
+  \bigl(p^2+x(1-x)k^2+m^2\bigr)^2 .
+\]
+The trace identity
+\[
+  \operatorname{Tr}(
+    \gamma_\mu\gamma_\alpha\gamma_\nu\gamma_\beta)
+  =
+  4(
+    \eta_{\mu\alpha}\eta_{\nu\beta}
+    -\eta_{\mu\nu}\eta_{\alpha\beta}
+    +\eta_{\mu\beta}\eta_{\nu\alpha})
+\]
+reduces the numerator. Rotational symmetry in the continued loop momentum
+allows
+\[
+  p_\mu p_\nu\mapsto \frac1D\eta_{\mu\nu}p^2
+\]
+inside the integral, and all terms linear in \(p\) vanish. The result is
+transverse:
+\[
+  \Pi^{(1)}_{\mu\nu}(k)
+  =
+  -(\eta_{\mu\nu}k^2-k_\mu k_\nu)
+  \frac{8e^2}{(4\pi)^{D/2}}
+  \Gamma(2-D/2)
+  \int_0^1\dd x\,x(1-x)
+  \bigl(m^2+x(1-x)k^2\bigr)^{D/2-2}.
+\]
+With the counterterm included,
+\[
+  \pi(k^2)
+  =
+  1-Z_A
+  -
+  \frac{8e^2}{(4\pi)^{D/2}}\Gamma(2-D/2)
+  \int_0^1\dd x\,x(1-x)
+  \bigl(m^2+x(1-x)k^2\bigr)^{D/2-2}.
+\]
+The pole normalization \(\pi(0)=0\) fixes
+\[
+  Z_A
+  =
+  1-
+  \frac{8e^2}{(4\pi)^{D/2}}\Gamma(2-D/2)\frac16\,m^{D-4}.
+\]
+Subtracting the value at \(k^2=0\) and taking \(D\to4\) gives the finite
+one-loop vacuum-polarization function
+\[
+  \pi(k^2)
+  =
+  \frac{e^2}{2\pi^2}
+  \int_0^1\dd x\,x(1-x)
+  \log
+  \frac{m^2+x(1-x)k^2}{m^2}.
+\]
+
+\section{The Electron Current Matrix Element}
+
+Let \(|\vec p,\sigma\rangle\) be a one-electron state of charge \(q=-e\).
+Translation covariance gives
+\[
+  \langle\vec p',\sigma'|\widehat j^\mu(x)|\vec p,\sigma\rangle
+  =
+  \ee^{\ii(p-p')\cdot x}
+  \langle\vec p',\sigma'|\widehat j^\mu(0)|\vec p,\sigma\rangle .
+\]
+Write the matrix element as
+\[
+  \langle\vec p',\sigma'|\widehat j^\mu(0)|\vec p,\sigma\rangle
+  =
+  \frac{\ii q}{(2\pi)^3}
+  \bar u^{\sigma'}(\vec p')M^\mu(p',p)u^\sigma(\vec p).
+\]
+Modulo the on-shell Dirac equations
+\[
+  (\not p-\ii m)u^\sigma(\vec p)=0,\qquad
+  \bar u^{\sigma'}(\vec p')(\not p'-\ii m)=0,
+\]
+a parity-even Lorentz vector can be expressed using
+\[
+  \gamma^\mu,\qquad (p+p')^\mu,\qquad (p-p')^\mu .
+\]
+Current conservation removes the component proportional to
+\((p-p')^\mu\). Therefore
+\[
+  M^\mu(p',p)
+  =
+  \gamma^\mu F(k^2)
+  -\frac{\ii}{2m}(p+p')^\mu G(k^2),
+  \qquad
+  k=p-p' .
+\]
+The scalar functions \(F\) and \(G\) are the electromagnetic form factors in
+the present gamma-matrix convention.
+
+Charge normalization fixes one combination at zero momentum transfer. Taking
+\(p'\to p\), using
+\[
+  \bar u^{\sigma'}(\vec p)u^\sigma(\vec p)
+  =
+  \frac{m}{p^0}\delta_{\sigma\sigma'},
+\]
+and using the Dirac equations to rewrite
+\[
+  p^\mu\bar u^{\sigma'}(\vec p)u^\sigma(\vec p)
+  =
+  \ii m\,\bar u^{\sigma'}(\vec p)\gamma^\mu u^\sigma(\vec p),
+\]
+one obtains
+\[
+  \langle\vec p,\sigma'|\widehat j^\mu(0)|\vec p,\sigma\rangle
+  =
+  \frac{q}{(2\pi)^3}
+  \frac{p^\mu}{p^0}
+  \delta_{\sigma\sigma'}\bigl(F(0)+G(0)\bigr).
+\]
+The charge operator
+\[
+  \widehat Q=\int\dd^3\vec x\,\widehat j^0(x)
+\]
+acts by
+\[
+  \widehat Q|\vec p,\sigma\rangle=q|\vec p,\sigma\rangle .
+\]
+Thus
+\[
+  F(0)+G(0)=1.
+\]
+
+\section{Magnetic Moment from the Form Factor}
+
+Couple the current to a weak classical background:
+\[
+  \Delta H
+  =
+  -\int\dd^3\vec x\,A_\mu^{\mathrm{cl}}(x)\widehat j^\mu(x).
+\]
+For a slowly varying magnetic field choose
+\[
+  A_0^{\mathrm{cl}}=0,\qquad
+  \nabla\times\vec A^{\mathrm{cl}}=\vec B .
+\]
+The spin-dependent part of
+\(\langle\vec p',\sigma'|\Delta H|\vec p,\sigma\rangle\) is obtained from
+the identity
+\[
+\begin{aligned}
+  &\bar u^{\sigma'}(\vec p')
+  [\gamma^\mu,\gamma^\nu](p'-p)_\nu
+  u^\sigma(\vec p)  \\
+  &\quad =
+  -4\ii m\,\bar u^{\sigma'}(\vec p')\gamma^\mu u^\sigma(\vec p)
+  +2(p^\mu+p'^\mu)
+  \bar u^{\sigma'}(\vec p')u^\sigma(\vec p),
+\end{aligned}
+\]
+with
+\[
+  S^{\mu\nu}=-\frac{\ii}{4}[\gamma^\mu,\gamma^\nu].
+\]
+In the nonrelativistic limit \(|\vec p|,|\vec p'|\ll m\), the spin
+coupling becomes
+\[
+  \Delta H_{\mathrm{spin}}
+  =
+  -\frac{qF(0)}{2m}\,\vec B\cdot\vec\sigma .
+\]
+Writing this as
+\[
+  \Delta H_{\mathrm{spin}}
+  =
+  -g_{\mathrm{mag}}\frac{q}{2m}\,
+  \vec B\cdot\frac{\vec\sigma}{2},
+\]
+the magnetic factor is
+\[
+  g_{\mathrm{mag}}=2F(0).
+\]
+Together with \(F(0)+G(0)=1\), this gives
+\[
+  g_{\mathrm{mag}}=2\bigl(1-G(0)\bigr).
+\]
+
+\section{One-Loop Vertex Correction}
+
+The current is represented by
+\[
+  \widehat j^\mu
+  =
+  -\ii e\,Z_\psi\,\bar\psi\gamma^\mu\psi
+  =
+  -\ii e^B Z_A^{1/2}Z_\psi\,\bar\psi\gamma^\mu\psi .
+\]
+The current insertion between external electron states is computed by reducing
+the external spinor legs by LSZ:
+\[
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.88]
+  \tikzset{
+    fermion/.style={postaction={decorate,decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},line width=0.55pt},
+    photon/.style={decorate,decoration={snake,amplitude=1.15pt,segment length=5pt},line width=0.55pt}
+  }
+  \coordinate (v) at (0,0);
+  \draw[fermion] (v)--(1.0,0.65);
+  \draw[fermion] (1.0,-0.65)--(v);
+  \draw[photon] (-0.95,0)--(v);
+  \draw[fill=white,line width=0.55pt] (v) circle (0.1);
+  \draw[line width=0.55pt] (-0.07,-0.07)--(0.07,0.07);
+  \draw[line width=0.55pt] (-0.07,0.07)--(0.07,-0.07);
+  \node[left] at (-0.95,0) {\scriptsize \(j^\mu\)};
+  \node[right] at (1.05,0.65) {\scriptsize \(\bar u(p')\)};
+  \node[right] at (1.05,-0.65) {\scriptsize \(u(p)\)};
+\end{tikzpicture}
+\]
+At order \(e^2\), the contribution to \(G(k^2)\) comes from the vertex
+correction
+\[
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.95]
+  \tikzset{
+    fermion/.style={postaction={decorate,decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},line width=0.55pt},
+    photon/.style={decorate,decoration={snake,amplitude=1.15pt,segment length=5pt},line width=0.55pt}
+  }
+  \coordinate (v) at (0,0);
+  \coordinate (a) at (0.9,0.72);
+  \coordinate (b) at (0.9,-0.72);
+  \draw[fermion] (v)--(a);
+  \draw[fermion] (b)--(v);
+  \draw[photon] (a)--(b);
+  \draw[fermion] (a)--(1.9,1.08);
+  \draw[fermion] (1.9,-1.08)--(b);
+  \draw[photon] (-0.85,0)--(v);
+  \draw[fill=white,line width=0.55pt] (v) circle (0.1);
+  \draw[line width=0.55pt] (-0.07,-0.07)--(0.07,0.07);
+  \draw[line width=0.55pt] (-0.07,0.07)--(0.07,-0.07);
+  \node[left] at (-0.85,0) {\scriptsize \(k=p-p'\)};
+  \node[above] at (1.45,0.98) {\scriptsize \(p'-q\)};
+  \node[below] at (1.45,-0.98) {\scriptsize \(p-q\)};
+  \node[right] at (1.05,0) {\scriptsize \(q\)};
+\end{tikzpicture}
+\]
+in Feynman gauge. Its integrand is
+\[
+\begin{aligned}
+  &-\ii e\,\frac{Z_\psi}{(2\pi)^3}
+  \int\frac{\dd^4q}{(2\pi)^4}
+  \frac{-\ii}{q^2-\ii\epsilon}\,
+  \bar u(p')\,e\gamma^\rho
+  \frac{-\ii[-\ii(\not p'-\not q)+m]}
+       {(p'-q)^2+m^2-\ii\epsilon}
+\\
+  &\hspace{9em}\times
+  \gamma^\mu
+  \frac{-\ii[-\ii(\not p-\not q)+m]}
+       {(p-q)^2+m^2-\ii\epsilon}
+  e\gamma_\rho\,u(p).
+\end{aligned}
+\]
+The terms proportional to \(\gamma^\mu\) contribute to \(F(k^2)\); together
+with \(Z_\psi\) they enforce the charge normalization. The coefficient of
+\((p+p')^\mu\bar u(p')u(p)\) gives \(G(k^2)\). After Wick rotation,
+dimensional regularization, Feynman parametrization, and use of the external
+Dirac equations, this finite coefficient is
+\[
+  G(k^2)
+  =
+  -\frac{e^2m^2}{4\pi^2}
+  \int_0^1\dd x\int_0^x\dd y\,
+  \frac{x(1-x)}
+       {m^2x^2+k^2y(x-y)} .
+\]
+At zero momentum transfer,
+\[
+  G(0)
+  =
+  -\frac{e^2}{8\pi^2}.
+\]
+With
+\[
+  \alpha=\frac{e^2}{4\pi},
+\]
+the one-loop magnetic factor is
+\[
+  g_{\mathrm{mag}}
+  =
+  2\bigl(1-G(0)\bigr)
+  =
+  2+\frac{\alpha}{\pi}+O(\alpha^2).
+\]

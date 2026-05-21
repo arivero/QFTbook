@@ -1,0 +1,495 @@
+\chapter{Resonances and Dressed Propagators}
+\label{ch:volume-ii-resonances-dressed-propagators}
+
+\section{Above-Threshold Exchange}
+
+Continue the two-scalar model of the preceding chapter,
+\[
+  \mathcal L
+  =
+  -\frac12\partial_\mu\phi_1\partial^\mu\phi_1
+  -\frac12m_1^2\phi_1^2
+  -\frac12\partial_\mu\phi_2\partial^\mu\phi_2
+  -\frac12m_2^2\phi_2^2
+  -\frac12g\phi_1^2\phi_2 ,
+\]
+with \(m_1,m_2>0\) and \(g\in\R\). Let
+\[
+  K=k_1+k_2,\qquad s=-K^2,
+\]
+where \(k_1,k_2\) are the incoming \(\phi_1\) momenta. The \(s\)-channel
+tree contribution to the connected invariant amplitude is
+\[
+  \mathcal M_s^{\mathrm{tree}}(s)
+  =
+  \frac{g^2}{m_2^2-s-\ii0}.
+\]
+
+Assume now
+\[
+  m_2>2m_1 .
+\]
+The value \(s=m_2^2\) lies in the two-\(\phi_1\) scattering region
+\(s\ge4m_1^2\). The relevant scattering problem is therefore a problem with
+stable external \(\phi_1\) states and an open two-particle continuum in the
+same channel as the exchanged \(\phi_2\) line. The pole suggested by the
+tree graph is reorganized by the exact two-point function of \(\phi_2\).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.94,
+  one/.style={line width=0.85pt},
+  two/.style={dash pattern=on 3pt off 2pt,line width=0.95pt},
+  cut/.style={red!75!black,line width=1.6pt}]
+  \begin{scope}
+    \draw[one,->] (-1.65,0.9)--(-0.45,0.18);
+    \draw[one,->] (-1.65,-0.9)--(-0.45,-0.18);
+    \draw[two] (-0.45,0)--(1.15,0);
+    \draw[one,->] (1.15,0.18)--(2.35,0.9);
+    \draw[one,->] (1.15,-0.18)--(2.35,-0.9);
+    \node at (0.35,0.35) {\(\phi_2\)};
+    \node at (0,-1.35) {\(K^2=-s\)};
+  \end{scope}
+  \begin{scope}[xshift=5.1cm]
+    \draw[->,line width=0.75pt] (-0.35,0)--(4.4,0) node[right] {\(s\)};
+    \draw[->,line width=0.75pt] (0,-1.15)--(0,1.75)
+      node[above] {\(\operatorname{Im}s\)};
+    \draw[cut] (1.55,0)--(4.1,0);
+    \node[red!75!black,below] at (1.55,-0.12) {\(4m_1^2\)};
+    \fill[orange!90!black] (2.85,0) circle (2.4pt);
+    \node[orange!90!black,below] at (2.85,-0.18) {\(m_2^2\)};
+    \node[red!75!black,align=center] at (3.72,1.05)
+      {open\\continuum};
+    \draw[red!75!black,->,line width=0.8pt] (3.72,0.68)--(3.62,0.11);
+    \draw[orange!90!black,->,line width=0.8pt] (2.85,0.65)--(2.85,0.12);
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+The partial-wave normalization used below is
+\[
+  \mathcal M(s,z)
+  =
+  16\pi\sum_{\ell=0}^\infty(2\ell+1)\mathcal M_\ell(s)P_\ell(z),
+  \qquad z=\cos\theta,
+\]
+and, in an elastic one-channel interval,
+\[
+  S_\ell(s)=1+2\ii\,\rho_1(s)\mathcal M_\ell(s),
+  \qquad
+  \rho_1(s)=\sqrt{1-\frac{4m_1^2}{s}} .
+\]
+The branch of \(\rho_1\) is chosen by \(\rho_1(s)>0\) for \(s>4m_1^2\)
+on the physical upper boundary. Elastic unitarity gives
+\[
+  |S_\ell(s)|=1 .
+\]
+Thus the exact physical-axis partial wave is finite. A resonance is the
+corresponding analytic structure: a nearby pole of the continuation of
+\(S_\ell(s)\), or equivalently of \(\mathcal M_\ell(s)\), through the
+threshold cut.
+
+\section{Outgoing Poles in a One-Dimensional Model}
+
+The analytic geometry is already visible in a one-dimensional scattering
+problem. Let
+\[
+  H=-\frac{1}{2\mu}\frac{\dd^2}{\dd x^2}+V(x),
+\]
+where \(V\) is real and short range. For \(x\to+\infty\), use the outgoing
+solution
+\[
+  \psi_k^{\mathrm{out}}(x,t)
+  \sim
+  S(k)^{-1}\ee^{-\ii kx-\ii Et}
+  +
+  \ee^{\ii kx-\ii Et},
+  \qquad
+  E=\frac{k^2}{2\mu}.
+\]
+If \(S(k)\) has a pole at \(k=k_\ast\), then the incoming coefficient
+vanishes at that analytically continued value and the asymptotic solution is
+purely outgoing. Write
+\[
+  E_\ast=\frac{k_\ast^2}{2\mu}=\omega-\ii\gamma,
+  \qquad
+  \gamma>0.
+\]
+Then
+\[
+  \psi_{k_\ast}^{\mathrm{out}}(x,t)
+  \sim
+  \ee^{\ii k_\ast x-\ii\omega t-\gamma t}.
+\]
+The negative imaginary part of \(E_\ast\) is the exponential decay rate of
+the time dependence. The same wave grows in space along the outgoing
+direction, so it is not a normalizable Hilbert-space eigenvector; it is the
+singular vector associated with the pole of the analytically continued
+scattering function.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.9]
+  \begin{scope}
+    \draw[->,line width=0.7pt] (-0.15,0)--(5.65,0) node[right] {\(x\)};
+    \draw[->,line width=0.7pt] (0,-1.65)--(0,2.15) node[above] {\(V(x)\)};
+    \draw[blue!70!black,line width=1.15pt]
+      (0.25,1.75) .. controls (0.55,-0.95) and (1.08,-1.5) .. (1.48,-0.18)
+      .. controls (1.85,0.92) and (2.18,0.78) .. (2.55,0.12)
+      .. controls (3.1,-0.65) and (3.85,0.2) .. (5.2,0.05);
+    \draw[orange!90!black,line width=1.05pt]
+      (1.05,0.36) .. controls (1.3,0.75) and (1.58,0.75) .. (1.82,0.28)
+      .. controls (2.02,-0.12) and (2.32,0.04) .. (2.66,0.36)
+      .. controls (3.08,0.7) and (3.72,0.28) .. (4.92,-0.18);
+    \foreach \x in {1.35,1.82,2.42,3.42,4.25}
+      \draw[brown!70!black,->,line width=0.8pt] (\x,0.18)--++(0,-0.48);
+    \draw[red!80!black,->,line width=1.05pt] (4.05,0.92)--(5.05,0.92);
+    \node[red!80!black,align=left,anchor=west,font=\small] at (5.16,0.92)
+      {outgoing\\flux};
+    \node[orange!90!black,align=center,font=\small] at (1.08,1.05)
+      {temporarily\\localized};
+  \end{scope}
+  \begin{scope}[xshift=8.0cm]
+    \draw[->,line width=0.7pt] (-1.65,0)--(1.95,0)
+      node[right] {\(\operatorname{Re}k\)};
+    \draw[->,line width=0.7pt] (0,-1.55)--(0,1.9)
+      node[above] {\(\operatorname{Im}k\)};
+    \draw[blue!70!black,line width=1.1pt,->] (0,0)--(1.45,0);
+    \fill[red!75!black] (0,0.85) circle (2.3pt);
+    \node[red!75!black,anchor=west,font=\small] at (0.18,0.86)
+      {bound};
+    \fill[orange!90!black] (0.92,-0.62) circle (2.4pt);
+    \node[orange!90!black,anchor=west,font=\small] at (1.08,-0.62)
+      {\(k_\ast\)};
+    \draw[orange!90!black,->,line width=0.8pt] (0.55,-0.18)--(0.86,-0.55);
+    \node at (0,-1.95) {\(E=k^2/(2\mu)\)};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+Because \(E=k^2/(2\mu)\), the energy plane is a two-sheeted cover of the
+\(k\)-plane. Bound-state poles lie on the positive imaginary \(k\)-axis and
+map to negative real energies on the physical sheet. Resonance poles with
+\(\operatorname{Re}k_\ast>0\) and \(\operatorname{Im}k_\ast<0\) map to
+complex energies below the positive real axis on the sheet reached by
+continuing through the scattering cut.
+
+\section{The Dressed Propagator}
+
+Return to the relativistic exchange model. Define the exact time-ordered
+two-point function of \(\phi_2\) in momentum space by
+\[
+  D_2(k)
+  =
+  \int \dd^4x\,\ee^{-\ii k\cdot x}
+  \langle\Omega|T\phi_2(x)\phi_2(0)|\Omega\rangle .
+\]
+Let \(\Sigma(k)\) be the sum of amputated one-particle-irreducible two-point
+insertions for the \(\phi_2\) line, with the convention
+\[
+  D_2(k)=\frac{-\ii}{k^2+m_{2,\mathrm{bare}}^2-\ii0-\Sigma(k)} .
+\]
+This is the geometric series obtained by inserting 1PI two-point kernels into
+the bare propagator.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.84,
+  two/.style={dash pattern=on 3pt off 2pt,line width=0.85pt},
+  one/.style={line width=0.85pt},
+  blob/.style={draw,circle,minimum size=0.58cm,inner sep=0pt}]
+  \node at (-5.25,0) {\(D_2=\)};
+  \draw[two] (-4.45,0)--(-3.35,0);
+  \node at (-2.9,0) {\(+\)};
+  \draw[two] (-2.35,0)--(-1.62,0);
+  \node[blob] at (-1.25,0) {\scriptsize 1PI};
+  \draw[two] (-0.88,0)--(-0.15,0);
+  \node at (0.35,0) {\(+\)};
+  \draw[two] (0.9,0)--(1.45,0);
+  \node[blob] at (1.82,0) {\scriptsize 1PI};
+  \draw[two] (2.18,0)--(2.72,0);
+  \node[blob] at (3.1,0) {\scriptsize 1PI};
+  \draw[two] (3.47,0)--(4.02,0);
+  \node at (4.55,0) {\(+\cdots\)};
+  \begin{scope}[yshift=-2.1cm]
+    \node at (-3.75,0) {\(\ii\Sigma_1(k)=\)};
+    \draw[two] (-2.45,0)--(-1.75,0);
+    \draw[two] (-0.55,0)--(0.15,0);
+    \draw[one] (-1.15,0) circle (0.6);
+    \node[blue!70!black] at (-1.12,0.88) {\(\ell\)};
+    \node[blue!70!black] at (-1.08,-0.88) {\(k-\ell\)};
+    \node at (0.82,0) {\(+O(g^4)\)};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+At one loop,
+\[
+\begin{aligned}
+  \ii\Sigma_1(k)
+  &=
+  \frac{(-\ii g)^2}{2}
+  \int\frac{\dd^D\ell}{(2\pi)^D}\,
+  \frac{-\ii}{\ell^2+m_1^2-\ii0}\,
+  \frac{-\ii}{(k-\ell)^2+m_1^2-\ii0}.
+\end{aligned}
+\]
+The factor \(1/2\) is the symmetry factor for the two identical \(\phi_1\)
+lines in the loop. Combining denominators gives
+\[
+  \ii\Sigma_1(k)
+  =
+  \frac{g^2}{2}
+  \int_0^1\dd x
+  \int\frac{\dd^D\ell}{(2\pi)^D}\,
+  \frac{1}{
+    \left[\ell^2(1-x)+(k-\ell)^2x+m_1^2-\ii0\right]^2}.
+\]
+Shift \(\ell^\mu\mapsto\ell^\mu+xk^\mu\), then rotate the shifted energy
+contour according to the Feynman prescription. The Euclidean expression is
+\[
+  \ii\Sigma_1(k)
+  =
+  \ii\frac{g^2}{2}
+  \int_0^1\dd x
+  \int\frac{\dd^D\ell_E}{(2\pi)^D}\,
+  \frac{1}{
+    \left[\ell_E^2+k^2x(1-x)+m_1^2-\ii0\right]^2}.
+\]
+
+In four dimensions, with a Euclidean cutoff \(|\ell_E|<\Lambda\),
+\[
+  \Sigma_1(k)
+  =
+  \frac{g^2}{32\pi^2}
+  \int_0^1\dd x
+  \left[
+    \log
+    \frac{\Lambda^2}{k^2x(1-x)+m_1^2-\ii0}
+    -1+O(\Lambda^{-2})
+  \right].
+\]
+The divergent part is independent of \(k\). Introduce
+\[
+  m_{2,\mathrm{bare}}^2=(m_2^R)^2+\delta m_2^2,
+  \qquad
+  \Sigma_1(k)=\Sigma_1^R(k)+\delta m_2^2 ,
+\]
+where the counterterm cancels the cutoff-dependent constant. One convenient
+subtraction is
+\[
+  \Sigma_1^R(k)
+  =
+  -\frac{g^2}{32\pi^2}
+  \int_0^1\dd x\,
+  \log
+  \frac{k^2x(1-x)+m_1^2-\ii0}{m_1^2}.
+\]
+
+\section{The Threshold Cut and the Width}
+
+For the \(s\)-channel exchange, \(k=K=k_1+k_2\) and \(K^2=-s\). The dressed
+contribution is
+\[
+  \mathcal M_s(s)
+  =
+  \frac{g^2}{F(s)},
+  \qquad
+  F(s)=
+  -s+(m_2^R)^2-\ii0-\Sigma_1^R(K).
+\]
+Equivalently,
+\[
+  F(s)
+  =
+  -s+(m_2^R)^2-\ii0
+  +
+  \frac{g^2}{32\pi^2}
+  \int_0^1\dd x\,
+  \log\left[
+    1-\frac{s\,x(1-x)}{m_1^2}-\ii0
+  \right].
+\]
+Since
+\[
+  0\le x(1-x)\le\frac14,
+\]
+the logarithm develops a discontinuity precisely for
+\[
+  s\ge4m_1^2 .
+\]
+For real \(s>4m_1^2\), define
+\[
+  \rho_1(s)=\sqrt{1-\frac{4m_1^2}{s}},
+  \qquad
+  x_\pm=\frac12\left(1\pm\rho_1(s)\right).
+\]
+The argument of the logarithm is negative for \(x\in[x_-,x_+]\). On the
+physical upper boundary the prescription gives
+\[
+  \log(-|a|-\ii0)=\log|a|-\ii\pi ,
+\]
+and therefore
+\[
+  \operatorname{Im}\Sigma_1^R(K)\big|_{s+\ii0}
+  =
+  \frac{g^2}{32\pi}\rho_1(s).
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \begin{scope}
+    \draw[->,line width=0.7pt] (-2.55,0)--(3.0,0)
+      node[right] {\(\operatorname{Re}k^0\)};
+    \draw[->,line width=0.7pt] (0,-2.0)--(0,2.25)
+      node[above] {\(\operatorname{Im}k^0\)};
+    \draw[green!55!black,line width=1.0pt] (0,-1.72)--(0,1.85);
+    \draw[red!75!black,decorate,
+      decoration={snake,amplitude=0.55mm,segment length=2.7mm},
+      line width=0.95pt] (1.05,0)--(2.75,0);
+    \draw[red!75!black,decorate,
+      decoration={snake,amplitude=0.55mm,segment length=2.7mm},
+      line width=0.95pt] (-2.35,0)--(-1.05,0);
+    \draw[orange!90!black,->,line width=1.05pt]
+      (0.22,1.35) .. controls (1.18,1.2) and (1.88,0.72) .. (2.12,0.12);
+    \node[orange!90!black,align=center,font=\small] at (1.65,1.48)
+      {continue\\from above};
+  \end{scope}
+  \begin{scope}[xshift=6.6cm]
+    \draw[->,line width=0.7pt] (-0.4,0)--(5.05,0) node[right] {\(s\)};
+    \draw[->,line width=0.7pt] (0,-1.75)--(0,2.0)
+      node[above] {\(\operatorname{Im}s\)};
+    \fill (1.28,0) circle (2pt) node[below] {\(0\)};
+    \fill (2.62,0) circle (2pt) node[below] {\(4m_1^2\)};
+    \draw[red!75!black,decorate,
+      decoration={snake,amplitude=0.55mm,segment length=2.7mm},
+      line width=1.05pt] (2.62,0)--(4.78,0);
+    \node[purple,align=center,font=\small] at (3.72,1.1)
+      {\(\operatorname{Im}\log=-\pi\)\\upper edge};
+    \node[cyan!70!black,align=center,font=\small] at (3.72,-1.08)
+      {\(\operatorname{Im}\log=+\pi\)\\lower edge};
+    \draw[purple,->,line width=0.9pt] (3.2,0.78)--(3.2,0.12);
+    \draw[cyan!70!black,->,line width=0.9pt] (3.2,-0.78)--(3.2,-0.12);
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+Choose a real resonance mass parameter \(M_R\) by the condition that the real
+part of the denominator vanishes at \(s=M_R^2\),
+\[
+  \operatorname{Re}F(M_R^2+\ii0)=0 .
+\]
+At weak coupling, and to leading order in the variation of the real part of
+\(\Sigma_1^R\), the amplitude near this point is
+\[
+  \mathcal M_s(s)
+  \simeq
+  \frac{g^2}{M_R^2-s-\ii M_R\Gamma_R},
+\]
+where
+\[
+  M_R\Gamma_R
+  =
+  \frac{g^2}{32\pi}
+  \sqrt{1-\frac{4m_1^2}{M_R^2}}
+  +O(g^4).
+\]
+The positive number \(\Gamma_R\) is the narrow-width decay rate in this
+normalization of the cubic interaction.
+
+\section{Elastic Phase Motion}
+
+In the same approximation, only the \(\ell=0\) partial wave carries the
+resonant scalar exchange. Using
+\[
+  \mathcal M_s(s)
+  \approx
+  -16\pi\ii\sqrt{\frac{s}{s-4m_1^2}}\,
+  \bigl(S_0(s)-1\bigr),
+\]
+one obtains, near the resonance,
+\[
+  S_0(s)
+  \approx
+  \frac{
+    M_R^2-s+\ii M_R\Gamma_R(s)
+  }{
+    M_R^2-s-\ii M_R\Gamma_R(s)
+  },
+  \qquad
+  M_R\Gamma_R(s)
+  =
+  \frac{g^2}{32\pi}\rho_1(s).
+\]
+For real \(s\) in the elastic interval, the numerator is the complex
+conjugate of the denominator, so \(|S_0(s)|=1\). The resonance is expressed
+as rapid phase motion. If
+\[
+  S_0(s)=\ee^{2\ii\delta_0(s)},
+\]
+then the phase shift \(\delta_0\) changes rapidly through the point where
+\(\operatorname{Re}F(s)\) vanishes.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \begin{scope}
+    \draw[->,line width=0.75pt] (-2.0,0)--(2.15,0)
+      node[right] {\(\operatorname{Re}S_0\)};
+    \draw[->,line width=0.75pt] (0,-2.0)--(0,2.15)
+      node[above] {\(\operatorname{Im}S_0\)};
+    \draw[green!55!black,dashed,line width=0.9pt] (0,0) circle (1.42);
+    \draw[blue!70!black,line width=1.25pt]
+      (1.38,-0.08) arc[start angle=-3,end angle=345,radius=1.42];
+    \draw[blue!70!black,->,line width=1.0pt]
+      (0.2,-1.4) arc[start angle=-82,end angle=-20,radius=1.42];
+    \node[green!55!black,anchor=west,font=\small] at (1.78,1.0)
+      {\(|S_0|=1\)};
+  \end{scope}
+  \begin{scope}[xshift=6.4cm]
+    \draw[->,line width=0.75pt] (-0.25,0)--(5.2,0) node[right] {\(s\)};
+    \draw[->,line width=0.75pt] (0,-1.45)--(0,1.9)
+      node[above] {\(\operatorname{Im}s\)};
+    \draw[red!75!black,decorate,
+      decoration={snake,amplitude=0.55mm,segment length=2.7mm},
+      line width=1.05pt] (2.15,0)--(4.9,0);
+    \node[red!75!black,below] at (2.15,-0.12) {\(4m_1^2\)};
+    \fill[orange!90!black] (3.35,-0.72) circle (2.4pt);
+    \node[orange!90!black,anchor=west,font=\small] at (3.52,-0.72)
+      {second-sheet pole};
+    \draw[orange!90!black,dashed,line width=0.75pt] (3.35,-0.72)--(3.35,0);
+    \node[orange!90!black,above,font=\small] at (3.35,0.2) {\(M_R^2\)};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\section{The Second Sheet}
+
+The physical amplitude is the boundary value reached from the upper half of
+the first sheet. Across the threshold cut the square-root branch changes
+sign. Equivalently, the logarithm in \(F(s)\) has the discontinuity
+\[
+  \log(-|a|-\ii0)-\log(-|a|+\ii0)=-2\pi\ii .
+\]
+The first sheet contains the physical branch cut beginning at \(4m_1^2\).
+The resonance pole is reached by continuing through this cut to the adjacent
+sheet.
+
+Near a narrow resonance, this continuation places the pole at
+\[
+  s_\ast
+  =
+  M_R^2-\ii M_R\Gamma_R+O(g^4),
+\]
+with \(\Gamma_R>0\). More invariantly, \(s_\ast\) is a zero of the
+second-sheet continuation of \(F(s)\):
+\[
+  F_{\mathrm{II}}(s_\ast)=0 .
+\]
+The number \(s_\ast\) is an analytic datum of the stable-particle scattering
+amplitude. Its real part sets the resonance location, and its imaginary part
+sets the lifetime scale in the narrow-width regime.
+
+The same distinction is visible in the spectral representation. A stable
+one-particle state gives an atom in the spectral measure and supplies a
+Haag--Ruelle asymptotic sector. An open channel gives continuous spectral
+measure beginning at threshold. A narrow resonance is a pronounced analytic
+feature of that continuum: it can appear as a peak in the spectral density and
+as a pole after analytic continuation, while the external scattering states
+remain the stable states used in the construction of the \(S\)-matrix.

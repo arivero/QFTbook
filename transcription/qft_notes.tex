@@ -1,0 +1,62 @@
+\documentclass[10pt,oneside]{book}
+
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\usetikzlibrary{arrows.meta,backgrounds,calc,decorations.markings,decorations.pathmorphing,decorations.pathreplacing,fit,intersections,patterns,positioning,shapes.geometric}
+\tikzset{
+  every picture/.append style={line cap=round,line join=round},
+  qft surface/.style={green!45!black,thick},
+  qft contour/.style={violet,thick},
+  qft operator/.style={circle,fill=black,inner sep=1.45pt},
+  qft insertion/.style={circle,fill=violet,inner sep=1.45pt},
+  qft flow/.style={blue!70!black,thick,-{Stealth[length=2.4mm]}},
+  qft arrow/.style={thick,-{Stealth[length=2.4mm]}},
+  qft feynman/.style={thick},
+  qft dashed/.style={thick,dashed},
+  qft note/.style={font=\scriptsize,align=center}
+}
+
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlist[itemize]{leftmargin=1.6em,itemsep=0.2em,topsep=0.2em}
+
+\newcommand{\todoverify}[1]{\textcolor{red!70!black}{[verify: #1]}}
+\providecommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\QFT}{\mathrm{QFT}}
+\newcommand{\QM}{\mathrm{QM}}
+\newcommand{\UV}{\mathrm{UV}}
+\newcommand{\IR}{\mathrm{IR}}
+\providecommand{\vev}[1]{\langle #1\rangle}
+
+\begin{document}
+
+\frontmatter
+\begin{titlepage}
+\centering
+{\Huge Quantum Field Theory\par}
+\vspace{1em}
+{\Large Lecture Notes\par}
+\vfill
+{\large TeX reconstruction from the handwritten notes\par}
+\end{titlepage}
+
+\tableofcontents
+
+\mainmatter
+
+\input{tex/253a/foundations.tex}
+\input{tex/253b/scattering_rg_qcd.tex}
+\input{tex/253c/conformal_field_theory.tex}
+
+\end{document}

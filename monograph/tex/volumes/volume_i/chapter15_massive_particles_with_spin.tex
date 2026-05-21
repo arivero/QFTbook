@@ -1,0 +1,273 @@
+\chapter{Massive Particles and Spin}
+\label{ch:massive-particles-spin}
+
+\section{Massive One-Particle Representations}
+
+This chapter works in \(D=4\). Let \(\Hilb_1\) be an irreducible massive
+one-particle subspace of mass \(m>0\). The positive-energy mass shell is
+\[
+  \Sigma_m^+
+  =
+  \{p=(p^0,\vec p):p^0=\omega_{\vec p},\ p^2=-m^2\},
+  \qquad
+  \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2}.
+\]
+Generalized momentum states are normalized by
+\[
+  \langle \vec q,\tau|\vec p,\sigma\rangle
+  =
+  (2\pi)^3\,2\omega_{\vec p}\,
+  \delta^3(\vec q-\vec p)\,\delta_{\tau\sigma}.
+\]
+The labels \(\sigma,\tau\) span a finite-dimensional internal vector space
+which is fixed by Lorentz symmetry.
+
+Choose the reference momentum
+\[
+  p_R=(m,\vec0).
+\]
+For every \(p\in\Sigma_m^+\), choose a standard Lorentz transformation
+\[
+  L(p)\in SO^+(1,3),
+  \qquad
+  L(p)p_R=p.
+\]
+The stabilizer of \(p_R\) is the rotation group \(SO(3)\). Its double cover
+\[
+  \operatorname{Spin}(3)\simeq SU(2)
+\]
+acts on quantum states because Hilbert-space symmetries act on rays and may
+therefore be projective before lifting to the simply connected cover.
+
+For a Lorentz transformation \(\Lambda\), define the Wigner rotation
+\[
+  W(\Lambda,p)
+  =
+  L(\Lambda p)^{-1}\Lambda L(p).
+\]
+It obeys
+\[
+  W(\Lambda,p)p_R=p_R,
+\]
+and is therefore an element of the massive little group. If the particle has
+spin \(j\), with
+\[
+  j=0,\frac12,1,\frac32,\ldots,
+\]
+let \(D^{(j)}\) be the corresponding irreducible unitary representation of
+\(SU(2)\) on a vector space \(V_j\) of dimension \(2j+1\). The one-particle
+states transform as
+\[
+  U(\Lambda)|\vec p,\sigma\rangle
+  =
+  \sum_{\tau=-j}^{j}
+  D^{(j)}_{\tau\sigma}\!\left(W(\Lambda,p)\right)
+  |\Lambda\vec p,\tau\rangle ,
+\]
+where \(\sigma,\tau=-j,-j+1,\ldots,j\). The covariant normalization above
+absorbs the Jacobian of the mass-shell measure, so no additional
+\(\sqrt{(\Lambda p)^0/p^0}\) factor appears.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95,>=Stealth]
+  \draw[blue!70!black,thick] (-3.0,0) ellipse (1.55 and 1.05);
+  \node[blue!70!black] at (-3.0,1.35) {$SO(3)$};
+  \fill (-3.75,0) circle (2pt) node[left] {\(1\)};
+  \fill (-2.25,0) circle (2pt) node[right] {\(2\pi\)};
+  \draw[purple!80!black,very thick,->]
+    (-3.65,-0.16).. controls (-3.25,-0.82) and (-2.75,-0.82) .. (-2.35,-0.16);
+  \node[purple!80!black] at (-3.0,-1.05) {closed loop};
+
+  \draw[->,gray!70,very thick] (-0.85,0)--(0.85,0)
+    node[midway,above] {lift};
+
+  \draw[green!50!black,thick] (3.0,0) ellipse (1.75 and 1.12);
+  \node[green!50!black] at (3.0,1.38) {$SU(2)$};
+  \fill (2.1,0) circle (2pt) node[left] {\(1\)};
+  \fill (3.9,0) circle (2pt) node[right] {\(-1\)};
+  \draw[red!75!black,very thick,->]
+    (2.25,-0.15).. controls (2.75,-0.85) and (3.25,-0.85) .. (3.75,-0.15);
+  \node[red!75!black] at (3.0,-1.08) {\(2\pi\)};
+  \draw[orange!80!black,very thick,->]
+    (3.75,0.15).. controls (3.25,0.85) and (2.75,0.85) .. (2.25,0.15);
+  \node[orange!80!black] at (3.0,0.98) {\(4\pi\)};
+\end{tikzpicture}
+\end{center}
+
+A \(2\pi\) rotation acts on \(V_j\) by
+\[
+  (-1)^{2j}.
+\]
+Integer and half-integer spins are therefore distinct representations of the
+same massive little-group construction.
+
+\section{Covariant Fields as Intertwiners}
+
+Let \(\widehat\Phi_A(x)\) be a local field whose index \(A\) transforms in a
+finite-dimensional representation \(R\) of the double cover
+\(\operatorname{Spin}^+(1,3)\simeq SL(2,\mathbb C)\):
+\[
+  U(\Lambda)\widehat\Phi_A(x)U(\Lambda)^{-1}
+  =
+  R_A{}^B(\Lambda)\widehat\Phi_B(\Lambda x).
+\]
+The vacuum-to-particle matrix element is
+\[
+  \langle\Omega|\widehat\Phi_A(0)|\vec p,\sigma\rangle
+  =
+  u_A{}^\sigma(p).
+\]
+Translation covariance gives the spacetime dependence
+\[
+  \langle\Omega|\widehat\Phi_A(x)|\vec p,\sigma\rangle
+  =
+  \ee^{\ii p\cdot x}u_A{}^\sigma(p).
+\]
+
+At the reference momentum \(p_R\), the matrix
+\[
+  u_A{}^\sigma(p_R):V_j\longrightarrow R|_{SU(2)}
+\]
+is an intertwiner of \(SU(2)\) representations:
+\[
+  R(W)_A{}^B u_B{}^\sigma(p_R)
+  =
+  \sum_{\tau=-j}^j
+  u_A{}^\tau(p_R)D^{(j)}_{\tau\sigma}(W),
+  \qquad W\in SU(2).
+\]
+Thus a covariant field can have nonzero overlap with a spin-\(j\) particle
+exactly through the spin-\(j\) part contained in the restriction of \(R\) to
+the massive little group. The boosted wavefunctions are
+\[
+  u_A{}^\sigma(p)
+  =
+  R_A{}^B(L(p)^{-1})\,u_B{}^\sigma(p_R),
+\]
+with the convention for \(L(p)\) fixed above. Different choices of standard
+boost change \(u_A{}^\sigma(p)\) by a momentum-dependent little-group
+rotation and leave physical matrix elements unchanged.
+
+\section{Spin One Half}
+
+For spin \(j=\frac12\), the smallest Lorentz-covariant field space is a Dirac
+spinor. Let the gamma matrices obey
+\[
+  \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},
+  \qquad
+  \eta=\operatorname{diag}(-,+,+,+).
+\]
+Define
+\[
+  S^{\mu\nu}
+  =
+  -\frac{\ii}{4}[\gamma^\mu,\gamma^\nu],
+  \qquad
+  R(\Lambda)
+  =
+  \exp\!\left(-\frac{\ii}{2}\omega_{\mu\nu}S^{\mu\nu}\right)
+\]
+for
+\[
+  \Lambda=\exp(\omega),
+  \qquad
+  \omega_{\mu\nu}=-\omega_{\nu\mu}.
+\]
+The generators satisfy
+\[
+  [S^{\mu\nu},\gamma^\rho]
+  =
+  -\ii\gamma^\mu\eta^{\nu\rho}
+  +\ii\gamma^\nu\eta^{\mu\rho},
+\]
+and therefore
+\[
+  R(\Lambda)\gamma^\mu R(\Lambda)^{-1}
+  =
+  \Lambda^\mu{}_\nu\gamma^\nu .
+\]
+
+Write
+\[
+  \not p=p_\mu\gamma^\mu .
+\]
+For \(p_R=(m,\vec0)\),
+\[
+  \not p_R=-m\gamma^0,
+  \qquad
+  \not p_R^{\,2}=-m^2 .
+\]
+Choose two rest spinors \(u_R^\sigma\) and two rest spinors \(v_R^\sigma\),
+\(\sigma=1,2\), by
+\[
+  \not p_R u_R^\sigma=\ii m\,u_R^\sigma,
+  \qquad
+  \not p_R v_R^\sigma=-\ii m\,v_R^\sigma .
+\]
+Their boosts are
+\[
+  u^\sigma(p)=R(L(p)^{-1})u_R^\sigma,
+  \qquad
+  v^\sigma(p)=R(L(p)^{-1})v_R^\sigma .
+\]
+Using covariance of \(\gamma^\mu\), these spinors obey
+\[
+  (\not p-\ii m)u^\sigma(p)=0,
+  \qquad
+  (\not p+\ii m)v^\sigma(p)=0.
+\]
+These are the momentum-space Dirac equations associated with the two
+eigenspaces of \(\not p\) on the mass shell.
+
+Let
+\[
+  \beta=\ii\gamma^0,
+  \qquad
+  \bar u=u^\dagger\beta,
+  \qquad
+  \bar v=v^\dagger\beta .
+\]
+The projectors onto the two eigenspaces of \(\not p\) are
+\[
+  \Pi_+(p)=\frac{m-\ii\not p}{2m},
+  \qquad
+  \Pi_-(p)=\frac{m+\ii\not p}{2m}.
+\]
+With an orthonormal basis of rest spinors, the spin sums are proportional to
+these projectors:
+\[
+  \sum_{\sigma=1}^2 u^\sigma(p)\bar u^\sigma(p)
+  \propto
+  m-\ii\not p,
+  \qquad
+  \sum_{\sigma=1}^2 v^\sigma(p)\bar v^\sigma(p)
+  \propto
+  m+\ii\not p,
+\]
+where the proportionality constant is fixed by the normalization chosen for
+one-particle spinor wavefunctions. These projector identities are the algebraic
+source of the external spinor factors in spinorial LSZ reduction.
+
+\section{Particle Spin and Field Indices}
+
+The spin \(j\) labels an irreducible unitary representation of the massive
+little group on the one-particle Hilbert space. A field index \(A\) labels a
+finite-dimensional Lorentz representation used by a local operator. The two
+are related by the intertwiner
+\[
+  u_A{}^\sigma(p)
+  =
+  \langle\Omega|\widehat\Phi_A(0)|\vec p,\sigma\rangle .
+\]
+This distinction is part of the basic architecture of relativistic quantum
+theory. The same spin-\(j\) particle may be created by different local
+operators, and a single covariant field representation may contain several
+little-group spins when restricted to \(SU(2)\). LSZ for spinning particles
+uses the pole of the relevant two-point function together with the
+intertwiner \(u_A{}^\sigma(p)\) to convert field indices into external
+particle spin labels.
+
+The next chapter constructs spinor field operators and their functional
+integral calculus. The representation-theoretic data established here will
+then become the spinor completeness relations, propagator numerators, and
+external-line factors used in perturbative calculations.

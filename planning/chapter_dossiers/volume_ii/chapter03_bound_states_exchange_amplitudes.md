@@ -1,0 +1,80 @@
+# Volume II, Chapter 3 Dossier: Bound States from Exchange Amplitudes
+
+## Source Placement
+
+- Follows the construction of scattering kernels, connected amplitudes, LSZ,
+  and cluster decomposition.
+- Begins the source sequence on bound states and resonances by treating stable
+  poles below the two-particle threshold.
+- Stops before the unstable-particle/resonance self-energy analysis, which
+  belongs to the next chapter.
+- Source material used:
+  - `transcription/tex/253b/scattering_rg_qcd.tex`, roughly lines 430--704;
+  - Volume II chapters 1--2 for spectral data, connected kernels, and LSZ.
+
+## Framework
+
+- Four-dimensional massive scalar theory with two real scalar fields
+  \(\phi_1,\phi_2\), masses \(m_1,m_2>0\), and cubic interaction
+  \(-g\phi_1^2\phi_2/2\).
+- Tree-level perturbation theory is used only for the connected
+  \(\phi_1\phi_1\to\phi_1\phi_1\) amplitude after LSZ.
+- Bound-state identification is stated as an analytic scattering criterion:
+  a pole below a two-particle threshold represents a stable one-particle state
+  coupled to that channel. Whether the state is elementary or composite is
+  extra microscopic information.
+- A short-range one-dimensional Schrödinger problem is used as a controlled
+  mathematical model for the pole criterion.
+
+## Symbols
+
+| Symbol | Meaning |
+| --- | --- |
+| \(\phi_1,\phi_2\) | scalar fields in the exchange model |
+| \(m_1,m_2\) | corresponding mass parameters |
+| \(g\) | cubic coupling in \(-g\phi_1^2\phi_2/2\) |
+| \(s,t,u\) | Mandelstam invariants |
+| \(E\) | center-of-mass energy |
+| \(z=\cos\theta\) | scattering-angle variable |
+| \(\mathcal M(s,z)\) | connected invariant amplitude |
+| \(\mathcal M_\ell(s)\) | partial-wave amplitude |
+| \(S_\ell(s)\) | elastic partial-wave scattering eigenvalue |
+| \(M_B\) | bound-state mass below threshold |
+| \(k\) | nonrelativistic relative momentum |
+| \(E_{\mathrm{nr}}\) | nonrelativistic energy |
+
+## Claims Established
+
+- The tree-level exchange model has \(s\)-, \(t\)-, and \(u\)-channel poles
+  with positions fixed by \(m_2\).
+- For \(m_2<2m_1\), the \(s\)-channel pole lies below the
+  \(\phi_1\phi_1\) threshold and has the scattering signature of a stable
+  state coupled to the two-\(\phi_1\) channel.
+- In short-range nonrelativistic scattering, bound states correspond to poles
+  of the analytically continued scattering function at \(k=\ii\alpha\),
+  \(\alpha>0\).
+- In relativistic partial waves, a stable spin-\(\ell\) state below threshold
+  gives a pole in \(\mathcal M_\ell(s)\) or \(S_\ell(s)\) at
+  \(s=M_B^2<4m^2\).
+- The residue of a bound-state pole factorizes into couplings of the
+  bound-state one-particle vector to the external two-particle channel.
+
+## Figure Requirements
+
+- Tree exchange diagrams for \(s\), \(t\), and \(u\) channels with all species
+  indicated.
+- Complex \(s\)-plane picture of a below-threshold pole and the two-particle
+  cut.
+- Nonrelativistic \(k\)-plane picture showing bound-state poles on the upper
+  imaginary axis.
+- Partial-wave pole diagram relating a two-particle channel to a stable
+  one-particle state.
+
+## Exclusions
+
+- No resonance pole on the second sheet.
+- No self-energy resummation or decay width.
+- No Bethe--Salpeter equation.
+- No claim that every below-threshold pole is generated dynamically by a
+  composite operator; the microscopic origin is separated from the scattering
+  criterion.

@@ -1,0 +1,590 @@
+\chapter{Infrared Divergences and Inclusive QED}
+\label{ch:volume-ii-infrared-inclusive-qed}
+
+\section{Soft Radiation Data}
+
+The high-energy bounds of the preceding chapter used a massive scattering
+setting.  Four-dimensional QED has a massless stable photon, and a charged
+particle may emit photons of arbitrarily small energy.  This chapter constructs
+the scattering quantities adapted to that long-distance structure.
+
+Throughout the chapter, spacetime is \(D=4\) Minkowski space with metric
+\[
+  \eta_{\mu\nu}=\operatorname{diag}(-1,+1,+1,+1).
+\]
+Consider a hard transition
+\[
+  \alpha\longrightarrow\beta
+\]
+between massive charged particles.  The hard external charged lines are
+labelled by \(n\).  Their momenta are \(p_n\), their charges are \(g_n\), and
+\[
+  p_n^2=-m_n^2,\qquad p_n^0>0 .
+\]
+The sign
+\[
+  \eta_n=
+  \begin{cases}
+    +1,& n\in\beta\quad\hbox{outgoing},\\
+    -1,& n\in\alpha\quad\hbox{incoming}
+  \end{cases}
+\]
+records whether the line is outgoing or incoming.  Charge conservation for
+the hard process is
+\[
+  \sum_n \eta_n g_n=0 .
+\]
+
+A soft photon has momentum
+\[
+  k^\mu=(\omega,\vec k),\qquad \omega=|\vec k|,
+\]
+and physical helicity \(h=\pm\).  The detector threshold is denoted by
+\(E_T\): photons below this energy are included in the same observed hard
+event.  An auxiliary infrared cutoff \(\mu\) will regulate intermediate
+formulas, and \(M\) denotes a soft upper scale below which the eikonal
+approximation is valid:
+\[
+  0<\mu<E_T<M .
+\]
+
+\begin{definition}[Resolution-inclusive transition probability]
+Let \(S_{\beta;\{k_r,h_r\}|\alpha}\) be the scattering matrix element
+with hard charged configuration \(\beta\) and additional photons
+\((k_r,h_r)\).  The resolution-inclusive probability at threshold \(E_T\) is
+the sum
+\[
+  P_{\beta|\alpha}(E_T)
+  =
+  \sum_{N=0}^{\infty}\frac1{N!}
+  \sum_{h_1,\ldots,h_N}
+  \int_{\mathcal R_{E_T}}
+  \prod_{r=1}^{N}
+  \frac{\dd^3\vec k_r}{(2\pi)^3\,2\omega_r}\,
+  \left|
+    S_{\beta;\{k_r,h_r\}|\alpha}
+  \right|^2 ,
+\]
+where \(\mathcal R_{E_T}\) is the detector-degenerate soft region.  At leading
+soft logarithmic order one may take \(\mu<\omega_r<E_T\) independently for
+each unresolved photon.  Refining the detector model changes finite functions
+of \(E_T/M\), but not the cancellation of the regulator \(\mu\).
+\end{definition}
+
+\section{External-Line Soft Factors}
+
+In scalar QED, attach an outgoing photon of momentum \(k\) and polarization
+vector \(e_h^\mu(k)\) to an outgoing external scalar line of momentum \(p\).
+The factor multiplying the hard amplitude is
+\[
+  (-\ii)\,
+  \frac{1}{(p+k)^2+m^2-\ii\epsilon}\,
+  \ii g(2p+k)^\mu e^*_{h,\mu}(k).
+\]
+Since \(p^2+m^2=0\) and \(k^2=0\), the leading term as \(k\to0\) is
+\[
+  g\,\frac{p\cdot e_h^*(k)}{p\cdot k-\ii\epsilon}.
+\]
+The denominator is linear in the photon energy.  The soft photon therefore
+couples to the charge and momentum of the external line, while the internal
+structure of the hard subdiagram is unresolved at leading order.
+
+For the hard transition \(\alpha\to\beta\), the one-soft-photon amplitude is
+\[
+  \mathcal M_{\beta;k,h|\alpha}
+  =
+  \mathcal M_{\beta|\alpha}
+  \left[
+    \sum_n
+    \frac{g_n\,p_n\cdot e_h^*(k)}
+         {\eta_n p_n\cdot k-\ii\epsilon}
+  \right]
+  +O(k^0).
+\]
+The same leading factor is obtained in spinor QED.  The numerator of the
+nearly on-shell fermion propagator acts on the external spinor and reduces to
+the corresponding momentum factor; spin first enters in subleading soft
+terms.
+
+For \(N\) real soft photons the leading factors multiply:
+\[
+  \mathcal M_{\beta;\{k_r,h_r\}|\alpha}
+  =
+  \mathcal M_{\beta|\alpha}
+  \prod_{r=1}^{N}
+  \left[
+    \sum_n
+    \frac{g_n\,p_n\cdot e_{h_r}^*(k_r)}
+         {\eta_n p_n\cdot k_r-\ii\epsilon}
+  \right]
+  +O(k_r^0).
+\]
+For two photons emitted from the same line, the two possible orderings of the
+emissions turn the nested eikonal denominators into the product displayed
+above.  The same combinatorics gives the product for any finite number of
+soft photons.
+
+\begin{figure}[!ht]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{
+      photon/.style={
+        purple!80!black,
+        decorate,
+        decoration={snake,amplitude=0.75mm,segment length=3.2mm},
+        line width=0.95pt,
+        -{Latex[length=1.6mm]}
+      },
+      matter/.style={line width=1.0pt,-{Latex[length=1.8mm]}},
+      blob/.style={circle,draw=black,fill=gray!18,line width=0.9pt,minimum size=0.86cm}
+    }
+    \begin{scope}
+      \node[font=\normalsize] at (0,2.3) {one soft photon};
+      \node[blob] (B) at (-1.75,0) {};
+      \draw[matter] (-3.7,0)--(B.west);
+      \draw[matter] (B.east)--(0.35,0);
+      \draw[matter] (0.35,0)--(2.4,0);
+      \draw[photon] (0.35,0)--(1.18,1.12);
+      \node[blue!70!black,below] at (-0.38,-0.12) {\(p+k\)};
+      \node[blue!70!black,below] at (1.5,-0.12) {\(p\)};
+      \node[purple!80!black,above right] at (1.13,1.05) {\(k,h\)};
+      \node[align=center] at (-1.75,-0.92) {hard\\process};
+      \node[align=center,blue!65!black] at (0.8,-1.3)
+        {\(g\,p\cdot e_h^*/(p\cdot k-\ii\epsilon)\)};
+    \end{scope}
+
+    \begin{scope}[shift={(6.2,0)}]
+      \node[font=\normalsize] at (0,2.3) {two soft photons on one line};
+      \node[blob,minimum size=0.75cm] (C) at (-2.0,0) {};
+      \draw[matter] (-3.55,0)--(C.west);
+      \draw[matter] (C.east)--(2.5,0);
+      \draw[photon] (-0.6,0)--(-0.2,1.05);
+      \draw[photon] (0.6,0)--(1.0,1.05);
+      \node[purple!80!black] at (-0.12,1.25) {\(k_1,h_1\)};
+      \node[purple!80!black] at (1.16,1.25) {\(k_2,h_2\)};
+      \node[font=\large] at (2.92,0.06) {\(+\)};
+      \begin{scope}[shift={(3.55,0)}]
+        \node[blob,minimum size=0.62cm] (D) at (-0.6,0) {};
+        \draw[matter] (-1.85,0)--(D.west);
+        \draw[matter] (D.east)--(2.0,0);
+        \draw[photon] (0.05,0)--(0.42,1.0);
+        \draw[photon] (1.08,0)--(1.45,1.0);
+      \end{scope}
+      \node[align=center,blue!65!black] at (1.5,-1.2)
+        {sum over orderings\\equals product of one-photon factors};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Soft factorization on external charged lines.  A photon with
+  wavelength much larger than the hard interaction region resolves only the
+  external charge and momentum.}
+  \label{fig:volume-ii-soft-factorization}
+\end{figure}
+
+\section{Real Soft Emission}
+
+Divide the real-emission contribution by the hard rate with no unresolved
+photons.  Using the leading soft factor gives
+\[
+\begin{aligned}
+  R_{\rm real}(E_T,\mu)
+  &=
+  \sum_{N=0}^{\infty}\frac1{N!}
+  \prod_{r=1}^{N}
+  \int_{\mu<\omega_r<E_T}
+  \frac{\dd^3\vec k_r}{(2\pi)^3\,2\omega_r}
+  \sum_{h_r=\pm}
+  \left|
+    \sum_n
+    \frac{g_n\,p_n\cdot e_{h_r}^*(k_r)}
+         {\eta_n p_n\cdot k_r}
+  \right|^2 .
+\end{aligned}
+\]
+For a single soft photon, define the nonnegative angular kernel
+\[
+  \mathcal S(k)
+  =
+  \sum_{h=\pm}
+  \left|
+    \sum_n
+    \frac{g_n\,p_n\cdot e_h^*(k)}
+         {\eta_n p_n\cdot k}
+  \right|^2 .
+\]
+A covariant physical-polarization sum may be written as
+\[
+  \sum_{h=\pm}e_{h,\mu}(k)e^*_{h,\nu}(k)
+  =
+  \eta_{\mu\nu}+k_\mu c_\nu+k_\nu c_\mu,
+  \qquad
+  k\cdot c=-1,\qquad c^2=0 .
+\]
+The terms involving \(c_\mu\) vanish after using
+\(\sum_n\eta_n g_n=0\).  Thus
+\[
+  \mathcal S(k)
+  =
+  \sum_{n,m}
+  \frac{\eta_n\eta_m g_ng_m\,p_n\cdot p_m}
+       {(p_n\cdot k)(p_m\cdot k)} .
+\]
+
+Writing \(k^\mu=\omega(1,\hat k)\), the energy integral separates from the
+angular integral:
+\[
+  \int_{\mu}^{E_T}
+  \frac{\dd^3\vec k}{(2\pi)^3\,2\omega}\,\mathcal S(k)
+  =
+  \frac{1}{2(2\pi)^3}
+  \int_{\mu}^{E_T}\frac{\dd\omega}{\omega}
+  \int\dd^2\hat k
+  \sum_{n,m}
+  \frac{\eta_n\eta_m g_ng_m\,p_n\cdot p_m}
+       {(p_n^0-\vec p_n\cdot\hat k)
+        (p_m^0-\vec p_m\cdot\hat k)} .
+\]
+For massive external particles, define the relative-velocity parameter
+\[
+  \beta_{nm}
+  =
+  \sqrt{1-\frac{m_n^2m_m^2}{(p_n\cdot p_m)^2}} .
+\]
+The diagonal term \(n=m\) is understood as the \(\beta_{nm}\to0\) limit.  The
+standard angular integral is
+\[
+  \int\dd^2\hat k\,
+  \frac{1}
+       {(p_n^0-\vec p_n\cdot\hat k)
+        (p_m^0-\vec p_m\cdot\hat k)}
+  =
+  -\frac{2\pi}{p_n\cdot p_m}\,
+  \frac{1}{\beta_{nm}}
+  \log\frac{1+\beta_{nm}}{1-\beta_{nm}} .
+\]
+It is useful to introduce
+\[
+  A_{\beta\alpha}
+  =
+  -\frac{1}{8\pi^2}
+  \sum_{n,m}
+  \frac{\eta_n\eta_m g_ng_m}{\beta_{nm}}
+  \log\frac{1+\beta_{nm}}{1-\beta_{nm}} .
+\]
+The representation by \(\mathcal S(k)\) shows \(A_{\beta\alpha}\ge0\) for the
+massive charged scattering considered here.  The real unresolved photons
+therefore give
+\[
+  R_{\rm real}(E_T,\mu)
+  =
+  \sum_{N=0}^{\infty}
+  \frac1{N!}
+  \left[
+    A_{\beta\alpha}\log\frac{E_T}{\mu}
+  \right]^N
+  =
+  \left(\frac{E_T}{\mu}\right)^{A_{\beta\alpha}}
+\]
+at leading soft logarithmic order.
+
+\section{Virtual Soft Photons and External Factors}
+
+A virtual soft photon exchanged between two distinct external charged lines
+also factorizes.  For external lines \(n\) and \(m\), set
+\[
+  J_{nm}
+  =
+  -\ii\,p_n\cdot p_m
+  \int_{\mu<|\vec k|<M}
+  \frac{\dd^4k}{(2\pi)^4}\,
+  \frac{1}
+       {(k^2-\ii\epsilon)
+        (\eta_n p_n\cdot k-\ii\epsilon)
+        (-\eta_m p_m\cdot k-\ii\epsilon)} .
+\]
+The virtual soft photons exchanged among distinct external lines exponentiate:
+\[
+  \exp\!\left[
+    \frac12\sum_{n\ne m}g_ng_mJ_{nm}
+  \right].
+\]
+This expression omits the soft photons whose two endpoints lie on the same
+external charged line.  Those terms are tied to the infrared part of the LSZ
+normalization factors.  In scalar QED the one-loop self-energy has the soft
+part
+\[
+  \ii\Sigma(p)
+  =
+  \int\frac{\dd^4k}{(2\pi)^4}
+  \frac{-\ii}{(p+k)^2+m^2-\ii\epsilon}
+  \frac{-\ii}{k^2-\ii\epsilon}
+  (\ii g)^2(2p+k)^2+\cdots ,
+\]
+and the external factor
+\[
+  Z^{-1}
+  =
+  1-\left.
+  \frac{\partial\Sigma}{\partial p^2}\right|_{p^2=-m^2}
+\]
+contains the same soft logarithm as the same-line eikonal loop.  Combining
+the distinct-line soft loops with the infrared parts of the \(Z_n^{1/2}\)
+factors gives
+\[
+  \exp\!\left[
+    \frac12\sum_{n\ne m}g_ng_mJ_{nm}
+  \right]\prod_n (Z_n^{\rm IR})^{1/2}
+  =
+  (\hbox{phase})\,
+  \exp\!\left[
+    \frac12\sum_{n,m}g_ng_m\,\operatorname{Re}J_{nm}
+  \right].
+\]
+
+The real part of the soft loop is
+\[
+  \operatorname{Re}J_{nm}
+  =
+  \eta_n\eta_m\,
+  \frac{1}{8\pi^2\beta_{nm}}
+  \log\frac{1+\beta_{nm}}{1-\beta_{nm}}
+  \log\frac{M}{\mu}.
+\]
+Therefore the virtual factor in the amplitude has modulus
+\[
+  \left(\frac{\mu}{M}\right)^{A_{\beta\alpha}/2},
+\]
+and its contribution to a rate is
+\[
+  R_{\rm virt}(M,\mu)
+  =
+  \left(\frac{\mu}{M}\right)^{A_{\beta\alpha}} .
+\]
+
+\begin{figure}[!ht]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{
+      photon/.style={purple!80!black,decorate,
+        decoration={snake,amplitude=0.72mm,segment length=3.1mm},
+        line width=0.95pt},
+      matter/.style={line width=1.0pt,-{Latex[length=1.8mm]}},
+      blob/.style={circle,draw=black,fill=gray!18,line width=0.9pt,minimum size=0.78cm}
+    }
+    \begin{scope}
+      \node[font=\normalsize] at (0,2.45) {real unresolved photons};
+      \node[blob] (A) at (-1.6,0.2) {};
+      \draw[line width=1.0pt] (-3.1,0.95)--(A);
+      \draw[line width=1.0pt] (-3.1,-0.45)--(A);
+      \draw[matter] (A)--(1.35,1.1);
+      \draw[matter] (A)--(1.35,-0.68);
+      \foreach \x/\y/\lab in {-0.55/0.18/{k_1},0.1/0.02/{k_2},0.63/0.45/{k_N}} {
+        \draw[photon,-{Latex[length=1.45mm]}] (\x,\y)--(\x+0.42,\y+0.65);
+        \node[purple!80!black] at (\x+0.57,\y+0.75) {\(\lab\)};
+      }
+      \node[align=center,blue!65!black] at (-0.25,-1.35)
+        {\(\displaystyle R_{\rm real}
+        =\left(E_T/\mu\right)^{A_{\beta\alpha}}\)};
+    \end{scope}
+
+    \begin{scope}[shift={(5.2,0)}]
+      \node[font=\normalsize] at (0,2.45) {virtual soft cloud};
+      \draw[line width=1.0pt] (-2.35,1.0)--(2.35,1.22);
+      \draw[line width=1.0pt] (-2.35,-0.72)--(2.35,-0.94);
+      \foreach \x in {-1.25,-0.28,0.66} {
+        \draw[photon] (\x,1.03)--(\x+0.34,-0.82);
+      }
+      \draw[photon] (1.38,1.16) .. controls (2.05,0.45) and (1.93,-0.12) .. (1.55,-0.92);
+      \node[align=center] at (0,-1.52)
+        {soft loops plus \(Z_n^{1/2}\)};
+      \node[align=center,blue!65!black] at (0,-2.28)
+        {\(\displaystyle R_{\rm virt}
+        =\left(\mu/M\right)^{A_{\beta\alpha}}\)};
+    \end{scope}
+
+    \begin{scope}[shift={(10.4,0)}]
+      \node[font=\normalsize] at (0,2.45) {inclusive rate};
+      \draw[rounded corners=2pt,fill=green!8,draw=green!45!black,line width=0.9pt]
+        (-2.15,-0.85) rectangle (2.15,1.15);
+      \node[align=center] at (0,0.73)
+        {same observed hard event\\for photons below \(E_T\)};
+      \draw[photon] (-1.05,-0.55)--(-0.48,-0.05);
+      \draw[photon] (0.18,-0.58)--(0.82,-0.12);
+      \node[align=center,blue!65!black] at (0,-1.5)
+        {\(\displaystyle
+        \left(\mu/M\right)^{A_{\beta\alpha}}
+        \left(E_T/\mu\right)^{A_{\beta\alpha}}
+        =
+        \left(E_T/M\right)^{A_{\beta\alpha}}\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Real unresolved photons and virtual soft photons carry opposite
+  powers of the auxiliary infrared cutoff.  The product is finite for a fixed
+  detector threshold.}
+  \label{fig:volume-ii-bloch-nordsieck-cancellation}
+\end{figure}
+
+\section{Inclusive Probabilities}
+
+Multiplying the real and virtual factors gives the leading soft result
+\[
+  P_{\beta|\alpha}(E_T)
+  =
+  P_{\beta|\alpha}^{\rm hard}(M)\,
+  \left(\frac{E_T}{M}\right)^{A_{\beta\alpha}}
+  \times
+  F_{\beta\alpha}(E_T/M),
+\]
+where \(F_{\beta\alpha}\) is finite as \(\mu\to0\) and equals \(1\) in the
+leading logarithmic approximation.  The scale \(M\) separates hard and soft
+physics; dependence on it cancels once the hard finite correction is computed
+to the same order.
+
+For a fixed finite number \(N\) of photons, the rate contains
+\[
+  \left(\frac{\mu}{M}\right)^{A_{\beta\alpha}}
+  \frac1{N!}
+  \left[
+    A_{\beta\alpha}\log\frac{E_T}{\mu}
+  \right]^N ,
+\]
+which tends to zero as \(\mu\to0\) when \(A_{\beta\alpha}>0\).  The
+resolution-inclusive sum remains finite because arbitrarily many unresolved
+soft photons are included.
+
+\begin{remark}
+The fixed-photon-number matrix elements are exclusive kernels for an idealized
+measurement that specifies the exact number of photons down to zero energy.
+The inclusive probability above is the transition probability associated with
+a finite energy resolution.  Both statements follow from the same soft
+factorization formulas.
+\end{remark}
+
+The discussion so far treated massive charged particles, where the angular
+integral is finite.  If massless charged particles occur, photon emission
+collinear to a charged external line produces additional singularities.  The
+Kinoshita--Lee--Nauenberg construction enlarges the inclusive sum: one sums
+over final states and averages over initial states inside the same detector
+degeneracy class.  In symbols, if \([\alpha]\) and \([\beta]\) are the
+incoming and outgoing equivalence classes defined by the detector resolution,
+one considers
+\[
+  P([\alpha]\to[\beta])
+  =
+  \sum_{\alpha'\in[\alpha]}\omega_{\alpha'}
+  \sum_{\beta'\in[\beta]}
+  \left|S_{\beta'\alpha'}\right|^2,
+\]
+with nonnegative weights \(\omega_{\alpha'}\) normalized on the incoming
+degenerate class.  Soft degeneracy and collinear degeneracy are therefore
+handled by the same operational rule: the transition probability is attached
+to what the detector distinguishes.
+
+\section{Dressed Charged States}
+
+The same eikonal data can also be incorporated into the asymptotic states.
+For a charged particle of momentum \(p\), a soft coherent dressing has the
+schematic form
+\[
+  \mathcal W_p
+  =
+  \exp\!\left[
+    \sum_h
+    \int_{\omega<\Lambda}
+    \frac{\dd^3\vec k}{(2\pi)^3\,2\omega}
+    \left(
+      f_p^h(k)a_h^\dagger(k)
+      -
+      \overline{f_p^h(k)}a_h(k)
+    \right)
+  \right],
+\]
+with leading coefficient
+\[
+  f_p^h(k)\sim g\,\frac{p\cdot e_h^*(k)}{p\cdot k}.
+\]
+The operator \(\mathcal W_p\) attaches the long-range electromagnetic field
+carried by the charged particle.  Dressed-state and inclusive descriptions use
+the same soft factor.  The inclusive construction sums over unresolved
+radiation in probabilities, while the dressed construction builds part of the
+soft cloud into the state space.
+
+\section{A Gauge-Invariant Infrared Regulator}
+
+The cutoff \(\mu\) in the formulas above can be realized by deforming the
+theory so that the photon has a small mass, and then removing the deformation.
+A convenient gauge-invariant deformation is an Abelian-Higgs regulator.
+Introduce a complex scalar \(\varphi\), charged under the gauge field
+\(A_\mu\), with
+\[
+  D_\mu\varphi=(\partial_\mu+\ii g_H A_\mu)\varphi
+\]
+and Lagrangian terms
+\[
+  \mathcal L_{\rm reg}
+  =
+  -\frac14F_{\mu\nu}F^{\mu\nu}
+  -|D_\mu\varphi|^2
+  -V(|\varphi|).
+\]
+Choose the potential so that its vacuum satisfies
+\[
+  |\vev{\varphi}|=v\ne0 .
+\]
+Expanding around this vacuum gives
+\[
+  -|D_\mu\varphi|^2
+  \supset
+  -g_H^2v^2 A_\mu A^\mu ,
+\]
+so the gauge boson acquires a mass proportional to \(g_Hv\).  Taking \(v\) to
+zero after forming inclusive quantities gives a consistent version of the
+infrared-regulated calculation.
+
+\begin{figure}[!ht]
+  \centering
+  \resizebox{0.9\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \begin{scope}
+      \node[font=\normalsize] at (0,2.45) {regulator scalar};
+      \draw[->,line width=0.85pt] (-3.0,0)--(3.1,0)
+        node[below] {\(\operatorname{Re}\varphi\)};
+      \draw[->,line width=0.85pt] (0,-0.28)--(0,2.1)
+        node[left] {\(V\)};
+      \draw[blue!70!black,very thick,domain=-2.35:2.35,samples=120]
+        plot (\x,{0.23*(\x*\x-1.55)^2+0.08});
+      \fill[green!50!black] (1.245,0.08) circle (2.4pt);
+      \node[green!45!black,below] at (1.245,-0.12) {\(v\)};
+      \node[align=center,blue!70!black] at (0,-0.75)
+        {choose a vacuum\\\(|\vev{\varphi}|=v\)};
+    \end{scope}
+
+    \begin{scope}[shift={(6.3,0)}]
+      \node[font=\normalsize] at (0,2.45) {massive photon regulator};
+      \draw[line width=1.0pt] (-2.3,0.72)--(-0.6,0.72);
+      \draw[purple!80!black,decorate,
+        decoration={snake,amplitude=0.78mm,segment length=3.2mm},
+        line width=0.95pt]
+        (-0.6,0.72)--(1.25,0.72);
+      \draw[line width=1.0pt] (1.25,0.72)--(2.4,0.72);
+      \node[purple!80!black,below] at (0.34,0.47) {\(m_\gamma\propto g_Hv\)};
+      \draw[->,line width=1.0pt] (0,0.3)--(0,-0.62);
+      \node[align=center] at (0,-1.15)
+        {\(-g_H^2v^2A_\mu A^\mu\)\\from \(|D_\mu\varphi|^2\)};
+      \node[align=center,orange!80!black] at (0,1.78)
+        {compute at \(v\ne0\),\\then take \(v\to0\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{A small photon mass may be introduced through a Higgs deformation
+  while keeping gauge invariance manifest.}
+  \label{fig:volume-ii-abelian-higgs-ir-regulator}
+\end{figure}
+
+The infrared analysis will be used later whenever massless gauge fields occur.
+The next step in the logical development is the generating functional
+formalism, which packages connected Green functions and one-particle
+irreducible vertices in a form suitable for renormalization.

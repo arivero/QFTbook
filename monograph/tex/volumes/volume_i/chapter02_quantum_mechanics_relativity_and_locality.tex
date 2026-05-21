@@ -1,0 +1,232 @@
+\chapter{Relativistic Quantum Mechanics and Local Operator Structure}
+\label{ch:relativistic-qm-local-operator-structure}
+
+\section{Hilbert-Space Quantum Data}
+
+Let \(\Hilb\) be a complex Hilbert space. A pure state is a ray in \(\Hilb\).
+A mixed state is a positive trace-class operator \(\rho\) on \(\Hilb\)
+satisfying
+\[
+  \rho\ge0,
+  \qquad
+  \operatorname{Tr}_{\Hilb}\rho=1.
+\]
+For a bounded operator \(A\in\mathcal B(\Hilb)\), the expectation value in
+the state \(\rho\) is
+\[
+  \langle A\rangle_\rho=\operatorname{Tr}_{\Hilb}(\rho A).
+\]
+For an unbounded operator, the operator domain and the domain of every product
+appearing in a matrix element are part of the data.
+
+A Hamiltonian time evolution is specified by a self-adjoint operator \(H\) and
+the unitary one-parameter group
+\[
+  U(t)=\ee^{-\ii tH},
+  \qquad
+  A(t)=U(t)^{-1}AU(t).
+\]
+In a stable sector \(H\) is bounded below. Spacetime localization is additional
+structure: a local relativistic theory assigns operators or algebras to
+spacetime regions.
+
+\section{Poincare Symmetry}
+
+Let
+\[
+  G_D=\mathbb R^D\rtimes SO^+(1,D-1)
+\]
+be the connected Poincare group of \(\mathbb M^D\). A relativistic quantum
+theory in the opening framework carries a strongly continuous unitary
+representation
+\[
+  U:G_D\to\mathcal U(\Hilb),
+  \qquad
+  (a,\Lambda)\mapsto U(a,\Lambda),
+\]
+or the corresponding representation of the double cover when spinorial
+representations are present. Infinitesimally,
+\[
+  U(a,\Lambda)
+  =
+  1-\ii a^\mu P_\mu+\frac{\ii}{2}\omega_{\mu\nu}J^{\mu\nu}
+  +O(a^2,\omega^2,a\omega),
+\]
+where \(P_\mu\) are the self-adjoint translation generators and
+\(J^{\mu\nu}=-J^{\nu\mu}\) are the Lorentz generators on a common invariant
+domain. The commutation relations are
+\[
+  [P^\mu,P^\nu]=0,
+\]
+\[
+  [P^\mu,J^{\rho\sigma}]
+  =
+  -\ii(\eta^{\mu\rho}P^\sigma-\eta^{\mu\sigma}P^\rho),
+\]
+and
+\[
+  [J^{\mu\nu},J^{\rho\sigma}]
+  =
+  -\ii\left(
+    \eta^{\nu\rho}J^{\mu\sigma}
+    -\eta^{\mu\rho}J^{\nu\sigma}
+    -\eta^{\nu\sigma}J^{\mu\rho}
+    +\eta^{\mu\sigma}J^{\nu\rho}
+  \right).
+\]
+The spectrum condition is
+\[
+  \operatorname{Spec}(P)\subset\overline V_+.
+\]
+In a vacuum sector there is a unit vector \(\vac\in\Hilb\) satisfying
+\[
+  U(a,\Lambda)\vac=\vac .
+\]
+
+\section{One-Particle Representations}
+
+Fix a mass \(m>0\). The positive mass shell is
+\[
+  \Sigma_m^+
+  =
+  \{p\in\mathbb R^D:\eta_{\mu\nu}p^\mu p^\nu=-m^2,\ p^0>0\}.
+\]
+For a massive spinless particle, the one-particle Hilbert space is realized as
+\[
+  \Hilb_1
+  =
+  L^2\left(
+    \Sigma_m^+,
+    \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}}
+  \right),
+  \qquad
+  E_{\vec p}=\sqrt{\vec p^{\,2}+m^2}.
+\]
+The measure displayed here is the Lorentz-invariant measure on \(\Sigma_m^+\)
+in the chosen normalization. General massive particles carry a
+finite-dimensional unitary representation of the double cover of the massive
+little group \(SO(D-1)\). Massless finite-helicity particles in four spacetime
+dimensions are classified by helicity representations of the massless little
+group.
+
+This construction supplies one-particle state spaces and their Poincare
+transformation law. A local quantum theory also supplies a localization
+assignment for observables.
+
+\section{Free Fock Space From One-Particle Data}
+
+From a one-particle Hilbert space \(\Hilb_1\), define the bosonic Fock space
+\[
+  \mathcal F_s(\Hilb_1)
+  =
+  \bigoplus_{n=0}^{\infty}\operatorname{Sym}^n\Hilb_1
+\]
+and the fermionic Fock space
+\[
+  \mathcal F_a(\Hilb_1)
+  =
+  \bigoplus_{n=0}^{\infty}\wedge^n\Hilb_1.
+\]
+For a free scalar species, the momentum-space annihilation and creation
+operators \(a(\vec p)\) and \(a^\dagger(\vec p)\) are operator-valued
+distributions characterized by
+\[
+  [a(\vec p),a^\dagger(\vec q)]
+  =
+  (2\pi)^{D-1}2E_{\vec p}\,\delta^{D-1}(\vec p-\vec q),
+\]
+with all other commutators vanishing. The free Hamiltonian is
+\[
+  H_0
+  =
+  \int
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}}\,
+  E_{\vec p}\,a^\dagger(\vec p)a(\vec p),
+\]
+after the vacuum energy has been normalized.
+
+The Fock construction gives a free multi-particle representation. A local QFT
+also specifies which operators are localized in each bounded spacetime region.
+
+\section{Locality Data}
+
+For bounded open regions \(\mathcal O\subset\mathbb M^D\), the opening
+framework assigns algebras \(\Obs(\mathcal O)\subset\mathcal B(\Hilb)\). If
+\(\mathcal O_1\) and \(\mathcal O_2\) are spacelike separated, locality is
+\[
+  [A,B]=0,
+  \qquad
+  A\in\Obs(\mathcal O_1),\quad B\in\Obs(\mathcal O_2),
+\]
+with the graded commutator after a fermion parity grading has been specified.
+
+This condition states compatibility of spacelike separated local observables:
+their order gives the same matrix elements in every vector for which the
+matrix elements are defined.
+
+\section{Free Scalar Field As A Derived Example}
+
+Let \(\mathcal D_0\subset\mathcal F_s(\Hilb_1)\) be the dense subspace of
+finite-particle vectors generated from the vacuum by finitely many smeared
+creation operators. On \(\mathcal D_0\), define the free scalar field as the
+operator-valued distribution
+\[
+  \widehat\phi(x)
+  =
+  \int
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}}
+  \left(
+    a(\vec p)\ee^{\ii p\cdot x}
+    +
+    a^\dagger(\vec p)\ee^{-\ii p\cdot x}
+  \right),
+\]
+where \(p^0=E_{\vec p}\) and
+\[
+  p\cdot x=\eta_{\mu\nu}p^\mu x^\nu.
+\]
+For \(f\in C_c^\infty(\mathbb M^D)\), the smeared field is
+\[
+  \widehat\phi(f)=\int\dd^Dx\,f(x)\widehat\phi(x).
+\]
+
+The commutator is
+\[
+  [\widehat\phi(x),\widehat\phi(y)]
+  =
+  \ii\Delta(x-y),
+\]
+where the Pauli--Jordan distribution is
+\[
+  \Delta(x)
+  =
+  \frac{1}{\ii}
+  \int
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}}
+  \left(
+    \ee^{\ii p\cdot x}-\ee^{-\ii p\cdot x}
+  \right).
+\]
+The distribution \(\Delta(x)\) is Lorentz invariant and vanishes for spacelike
+\(x\). For a spacelike vector \(x\), Lorentz invariance puts \(x\) in the form
+\((0,\vec r)\). The two terms in the integral are then exchanged by
+\(\vec p\mapsto-\vec p\), so the integral vanishes. Hence
+\[
+  [\widehat\phi(f),\widehat\phi(g)]=0
+\]
+when the supports of \(f\) and \(g\) are spacelike separated.
+
+This calculation establishes locality for the free scalar field from the
+stated data: the free scalar Fock representation, the Lorentz-invariant
+mass-shell measure, the distributional field definition, and smearing by test
+functions.
+
+\section{Constructed Structures}
+
+The chapter has constructed four distinct structures. Hilbert-space quantum
+mechanics supplies states and operators. Poincare representation theory
+supplies one-particle state spaces. Fock space supplies free multi-particle
+state spaces. A local quantum theory supplies local observable assignments
+satisfying covariance and microcausality. The free scalar field realizes all
+four structures explicitly and will serve as the first model for the general
+field framework.

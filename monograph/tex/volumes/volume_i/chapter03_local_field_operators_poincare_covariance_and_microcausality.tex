@@ -1,0 +1,212 @@
+\chapter{Local Fields, Covariance, and Microcausality}
+\label{ch:local-fields-covariance-microcausality}
+
+\section{Field Multiplets As Operator-Valued Distributions}
+
+Let \(\mathcal D\subset\Hilb\) be a dense linear subspace. In this chapter
+\(\operatorname{End}(\mathcal D)\) denotes the algebra of linear maps
+\(\mathcal D\to\mathcal D\). A field multiplet is a collection
+\(\widehat\Phi_A\), with \(A\) in a finite index set, such that each component
+defines a continuous linear map
+\[
+  \widehat\Phi_A:C_c^\infty(\mathbb M^D)\to\operatorname{End}(\mathcal D),
+  \qquad
+  f\mapsto\widehat\Phi_A(f).
+\]
+Continuity is meant in the standard test-function topology on
+\(C_c^\infty(\mathbb M^D)\). The notation
+\[
+  \widehat\Phi_A(f)
+  =
+  \int_{\mathbb M^D}\dd^Dx\,f(x)\widehat\Phi_A(x)
+\]
+is the distributional notation for this linear map.
+
+The support of the smeared field \(\widehat\Phi_A(f)\) is controlled by
+\(\operatorname{supp}f\). If \(\operatorname{supp}f\subset\mathcal O\), where
+\(\mathcal O\subset\mathbb M^D\) is a bounded open region, the field is
+localized in \(\mathcal O\). In the local-algebra framework of Chapter
+\ref{ch:starting-data-local-qft}, this means that \(\widehat\Phi_A(f)\) is
+affiliated with \(\Obs(\mathcal O)\) or belongs to the unbounded field algebra
+whose bounded functions generate observables localized in \(\mathcal O\).
+
+\section{Poincare Covariance Of Fields}
+
+Let
+\[
+  g=(a,\Lambda)\in\mathbb R^D\rtimes SO^+(1,D-1)
+\]
+act on spacetime by \(gx=\Lambda x+a\). Let \(S\) be a finite-dimensional
+representation of \(SO^+(1,D-1)\), or of its double cover for spinor fields,
+acting on the field components:
+\[
+  S(\Lambda)_A{}^B.
+\]
+For \(f\in C_c^\infty(\mathbb M^D)\), define the transformed test function
+\[
+  f_g(y)=f(g^{-1}y)=f(\Lambda^{-1}(y-a)).
+\]
+
+\begin{definition}[Covariant field multiplet]
+A field multiplet \(\widehat\Phi_A\) is Poincare covariant with component
+representation \(S\) when
+\[
+  U(g)\widehat\Phi_A(f)U(g)^{-1}
+  =
+  S(\Lambda)_A{}^B\,\widehat\Phi_B(f_g)
+\]
+for every \(g=(a,\Lambda)\), every test function \(f\), and every component
+index \(A\), with summation over repeated component indices.
+\end{definition}
+
+In point-field notation this covariance law is written
+\[
+  U(a,\Lambda)\widehat\Phi_A(x)U(a,\Lambda)^{-1}
+  =
+  S(\Lambda)_A{}^B\,\widehat\Phi_B(\Lambda x+a).
+\]
+The smeared equation is the definition; the point-field equation is its compact
+distributional form.
+
+For a scalar field \(S(\Lambda)=1\). The infinitesimal translation law is
+\[
+  [P_\mu,\widehat\Phi(f)]
+  =
+  -\ii\,\widehat\Phi(\partial_\mu f),
+\]
+equivalently
+\[
+  [P_\mu,\widehat\Phi(x)]
+  =
+  \ii\,\partial_\mu\widehat\Phi(x)
+\]
+in distributional notation. Lorentz generators act by an orbital term on the
+spacetime argument and a spin term on the component index.
+
+\section{Spacelike Separation Of Supports}
+
+Two subsets \(K_1,K_2\subset\mathbb M^D\) are spacelike separated when
+\[
+  (x-y)^2>0
+  \qquad
+  \text{for every }x\in K_1,\ y\in K_2 .
+\]
+Thus two test functions \(f,g\in C_c^\infty(\mathbb M^D)\) have spacelike
+separated supports when \(K_1=\operatorname{supp}f\) and
+\(K_2=\operatorname{supp}g\) satisfy this condition.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95,>=Stealth]
+  \draw[->,line width=0.7pt] (0,-2.5) -- (0,2.65) node[above] {$x^0$};
+  \draw[->,line width=0.7pt] (-3.2,0) -- (3.45,0) node[right] {$x^1$};
+  \draw[green!45!black,line width=1.0pt] (0,0) -- (-1.8,2.25);
+  \draw[green!45!black,line width=1.0pt] (0,0) -- (1.8,2.25);
+  \draw[green!45!black,line width=1.0pt] (0,0) -- (-1.8,-2.25);
+  \draw[green!45!black,line width=1.0pt] (0,0) -- (1.8,-2.25);
+  \node[green!45!black] at (2.55,2.05) {light cone};
+  \fill[blue!18] (-2.1,0.45) ellipse (0.52 and 0.34);
+  \draw[blue!70!black,line width=0.9pt] (-2.1,0.45) ellipse (0.52 and 0.34);
+  \node[blue!70!black,anchor=east] at (-2.72,0.45) {$\operatorname{supp}f$};
+  \fill[red!18] (2.1,0.45) ellipse (0.52 and 0.34);
+  \draw[red!70!black,line width=0.9pt] (2.1,0.45) ellipse (0.52 and 0.34);
+  \node[red!70!black,anchor=west] at (2.72,0.45) {$\operatorname{supp}g$};
+  \draw[<->,gray!70,line width=0.8pt] (-1.55,0.45) -- (1.55,0.45);
+  \node[gray!70!black,fill=white,inner sep=1.2pt] at (0,1.18)
+    {spacelike separation};
+\end{tikzpicture}
+\end{center}
+
+The figure is schematic in one space dimension. The condition is the
+set-theoretic one written above: every pair of points, one from each support,
+has spacelike separation.
+
+\section{Microcausality}
+
+Suppose the field multiplets carry a fermion parity \(|\widehat\Phi_A|\in
+\{0,1\}\). For homogeneous operators \(X,Y\), define the graded commutator by
+\[
+  [X,Y]_{\mathrm{gr}}
+  =
+  XY-(-1)^{|X||Y|}YX.
+\]
+For bosonic fields both parities are zero, so this is the ordinary
+commutator.
+
+\begin{definition}[Microcausality for smeared fields]
+The field multiplets satisfy microcausality on \(\mathcal D\) when
+\[
+  [\widehat\Phi_A(f),\widehat\Psi_B(g)]_{\mathrm{gr}}\psi=0
+\]
+for every \(\psi\in\mathcal D\), whenever
+\(\operatorname{supp}f\) and \(\operatorname{supp}g\) are spacelike separated.
+\end{definition}
+
+In point-field notation the bosonic case is written
+\[
+  [\widehat\Phi_A(x),\widehat\Psi_B(y)]=0
+  \qquad
+  (x-y)^2>0.
+\]
+The smeared statement is the definition. It is the local compatibility
+condition for spacelike separated field insertions.
+
+\section{Field Coordinates And Local Algebras}
+
+For a bounded open region \(\mathcal O\), let
+\[
+  \mathcal P(\mathcal O)
+\]
+denote the polynomial \(*\)-algebra on \(\mathcal D\) generated by finite sums
+and products of smeared fields \(\widehat\Phi_A(f)\) with
+\(\operatorname{supp}f\subset\mathcal O\), together with their adjoints when
+the adjoints preserve the chosen domain. This algebra records local unbounded
+field coordinates.
+
+The observable algebra \(\Obs(\mathcal O)\subset\mathcal B(\Hilb)\) is the
+bounded local algebra used in the opening framework. The relation between
+\(\mathcal P(\mathcal O)\) and \(\Obs(\mathcal O)\) depends on the analytic
+framework. For free scalar fields, Weyl operators are bounded functions of
+smeared fields and generate a local algebra. In Wightman language one works
+directly with operator-valued distributions on a common domain. In algebraic
+language one may take the bounded local net as primary and use fields as
+coordinates, charged fields, or affiliated unbounded operators when available.
+
+The monograph will use whichever of these frameworks is required by the
+construction at hand, with the framework declared before theorem-level claims
+are made.
+
+\section{Wightman Functions}
+
+Let \(\widehat\Phi_{A_1},\ldots,\widehat\Phi_{A_n}\) be fields whose products
+on the vacuum vector are defined on the common domain. The \(n\)-point
+Wightman distribution is the multilinear functional
+\[
+  W_{A_1\cdots A_n}(f_1,\ldots,f_n)
+  =
+  \bra{\vac}
+  \widehat\Phi_{A_1}(f_1)\cdots
+  \widehat\Phi_{A_n}(f_n)
+  \ket{\vac}.
+\]
+Point notation writes this distribution as
+\[
+  W_{A_1\cdots A_n}(x_1,\ldots,x_n)
+  =
+  \bra{\vac}
+  \widehat\Phi_{A_1}(x_1)\cdots
+  \widehat\Phi_{A_n}(x_n)
+  \ket{\vac}.
+\]
+Poincare covariance of the fields gives covariance of the Wightman
+distributions. Microcausality gives graded exchange relations when adjacent
+insertions have spacelike separated supports. The spectrum condition will give
+the analytic and spectral properties used in the K\"all\'en--Lehmann
+representation.
+
+\section{Position In The Construction}
+
+The data introduced in this chapter are local field data: test functions,
+smeared operators, covariance, and microcausality. They prepare the next stage,
+where Lagrangian and path-integral methods are introduced first as
+constructions of Green functions. Spectral representation will then connect
+two-point functions to particle content before scattering theory is defined.

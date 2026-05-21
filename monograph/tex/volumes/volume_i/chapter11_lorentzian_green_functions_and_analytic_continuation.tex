@@ -1,0 +1,247 @@
+\chapter{Lorentzian Green Functions and Analytic Continuation}
+\label{ch:lorentzian-green-functions}
+
+\section{Time-Ordered Boundary Values}
+
+Let \(x^\mu=(x^0,\vec x)\in\mathbb R^{1,D-1}\) and use the mostly-plus
+metric
+\[
+  \eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+),
+  \qquad
+  k^2=\eta_{\mu\nu}k^\mu k^\nu.
+\]
+Let \(\widehat\phi\) be a scalar local field and let \(\Omega\) be the vacuum
+vector. The Lorentzian time-ordered \(n\)-point distribution is
+\[
+  G_n(x_1,\ldots,x_n)
+  =
+  \langle\Omega|
+  \operatorname T\{
+    \widehat\phi(x_1)\cdots\widehat\phi(x_n)
+  \}
+  |\Omega\rangle .
+\]
+Away from coincident time coordinates this is defined by ordering the fields
+by their \(x^0\)-coordinates. If
+\[
+  x_{\pi(1)}^0>x_{\pi(2)}^0>\cdots>x_{\pi(n)}^0,
+\]
+then
+\[
+  G_n(x_1,\ldots,x_n)
+  =
+  \langle\Omega|
+  \widehat\phi(x_{\pi(1)})\cdots
+  \widehat\phi(x_{\pi(n)})
+  |\Omega\rangle .
+\]
+Coincident-time terms are local distributional data of the chosen
+time-ordered product. In perturbation theory they are fixed together with the
+renormalization prescription for local products.
+
+For the free scalar field of mass \(m>0\), the two-point time-ordered Green
+function has Fourier representation
+\[
+  \Delta_F(x;m^2)
+  =
+  -\ii
+  \int \frac{\dd^D k}{(2\pi)^D}\,
+  \frac{\ee^{\ii k\cdot x}}{k^2+m^2-\ii\epsilon},
+  \qquad
+  \epsilon>0.
+\]
+At fixed \(\vec k\), with
+\[
+  \omega_{\vec k}=\sqrt{\vec k^{\,2}+m^2},
+\]
+the poles in the complex \(k^0\)-plane are
+\[
+  k^0=-\omega_{\vec k}+\ii0,
+  \qquad
+  k^0=+\omega_{\vec k}-\ii0 .
+\]
+This is the Feynman boundary value of the meromorphic function of \(k^0\).
+
+\section{Lorentzian Feynman Rules for Green Functions}
+
+Consider the same scalar \(\phi^4\) interaction as in the Euclidean chapter,
+with Lorentzian interaction density
+\[
+  \mathcal L_{\mathrm{int}}
+  =
+  -\frac{g}{4!}\phi^4 .
+\]
+The perturbative rules below compute time-ordered Green functions. They use
+Lorentzian momenta on every line.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9,>=Stealth]
+  \draw[purple!80!black,very thick,->] (-1.25,0)--(1.25,0)
+    node[midway,above] {$k$};
+  \node at (2.0,0) {$=$};
+  \node at (3.35,0)
+    {$\displaystyle \frac{-\ii}{k^2+m^2-\ii\epsilon}$};
+
+  \begin{scope}[xshift=7.2cm]
+    \fill[blue!80!black] (0,0) circle (2.5pt);
+    \foreach \ang/\lab in {135/k_1,45/k_2,-45/k_3,-135/k_4} {
+      \draw[purple!80!black,very thick,->]
+        ({1.0*cos(\ang)},{1.0*sin(\ang)}) -- (0,0);
+      \node at ({1.34*cos(\ang)},{1.34*sin(\ang)}) {$\lab$};
+    }
+    \node at (1.85,0) {$=$};
+    \node[align=left,anchor=west] at (2.25,0)
+      {$\displaystyle -\ii g\,(2\pi)^D
+        \delta^D(k_1+k_2+k_3+k_4)$};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+This is the labelled-leg convention matching the Euclidean convention of the
+previous chapter. Direct expansion of the interaction density instead assigns
+\(-\ii g/4!\) to an unlabelled four-field insertion and recovers the labelled
+rule by counting contractions.
+
+\section{Loop Rotation and the Tadpole}
+
+The one-loop tadpole contribution to the Lorentzian two-point self-energy
+insertion is
+\[
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.75,>=Stealth]
+  \draw[purple!80!black,very thick,->] (-1.1,0)--(0,0)
+    node[midway,below] {$k$};
+  \draw[purple!80!black,very thick,->] (1.1,0)--(0,0)
+    node[midway,below] {$k$};
+  \fill (0,0) circle (2.2pt);
+  \draw[purple!80!black,very thick,->]
+    (0,0) .. controls (-0.35,0.9) and (0.35,0.9) .. (0,0)
+    node[midway,above] {$\ell$};
+\end{tikzpicture}
+\quad=\quad
+-\frac{\ii g}{2}
+\int \frac{\dd^D\ell}{(2\pi)^D}\,
+\frac{-\ii}{\ell^2+m^2-\ii\epsilon}.
+\]
+The factor \(1/2\) is the same tadpole symmetry factor as in Euclidean
+signature. The loop energy \(\ell^0\) is integrated along the real axis with
+the Feynman pole displacement. The Euclidean integral is obtained by rotating
+the contour to \(\ell^0=\ii \ell_E^D\), with the contour passing between the
+two displaced poles.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95,>=Stealth]
+  \draw[->,line width=0.65pt] (-3.1,0)--(3.1,0)
+    node[right] {$\operatorname{Re}\ell^0$};
+  \draw[->,line width=0.65pt] (0,-2.05)--(0,2.05)
+    node[above] {$\operatorname{Im}\ell^0$};
+  \draw[blue!70!black,very thick,->] (-2.75,0)--(2.75,0);
+  \draw[green!50!black,very thick,->] (0,-1.75)--(0,1.75);
+  \node[green!50!black,anchor=west,font=\small] at (0.18,1.82)
+    {$\ell^0=\ii\ell_E^D$};
+  \node[red!80!black] at (-1.35,0.35) {$\times$};
+  \node[red!80!black] at (1.35,-0.35) {$\times$};
+  \node[red!80!black,anchor=east] at (-1.52,0.92)
+    {$-\omega_{\vec\ell}+\ii0$};
+  \node[red!80!black,anchor=west] at (1.52,-1.02)
+    {$+\omega_{\vec\ell}-\ii0$};
+  \draw[orange!85!black,very thick,->]
+    (0.38,1.45) .. controls (1.25,1.12) and (1.95,0.65) .. (2.45,0.08);
+  \draw[orange!85!black,very thick,->]
+    (-0.38,-1.45) .. controls (-1.25,-1.12) and (-1.95,-0.65) .. (-2.45,-0.08);
+  \node[orange!85!black,font=\small,anchor=west] at (2.25,1.35)
+    {contour rotation};
+\end{tikzpicture}
+\end{center}
+
+With this orientation,
+\[
+\begin{aligned}
+  -\frac{\ii g}{2}
+  \int \frac{\dd^D\ell}{(2\pi)^D}
+  \frac{-\ii}{\ell^2+m^2-\ii\epsilon}
+  &=
+  \ii\left[
+    -\frac{g}{2}
+    \int \frac{\dd^D\ell_E}{(2\pi)^D}
+    \frac{1}{\ell_E^2+m^2}
+  \right].
+\end{aligned}
+\]
+Thus the Lorentzian two-point insertion is \(\ii\Sigma(k)\), where
+\(\Sigma(k)\) is the first-sheet analytic continuation of the Euclidean
+self-energy \(\Sigma_E(k_E)\) with the sign convention of Chapter~10.
+
+\section{Full Two-Point Function and First Sheet}
+
+The perturbative time-ordered two-point function is written as
+\[
+  G(x,y)
+  =
+  \int\frac{\dd^D k}{(2\pi)^D}\,
+  \ee^{\ii k\cdot(x-y)}
+  \widetilde G(k),
+\]
+where
+\[
+  \widetilde G(k)
+  =
+  \frac{-\ii}{k^2+m^2-\ii\epsilon-\Sigma(k)} .
+\]
+The function \(\Sigma(k)\) is initially computed for Euclidean external
+momenta, where loop integrals have Euclidean denominators. Its Lorentzian
+value is the boundary value obtained by analytic continuation of \(k^0\) from
+the Euclidean axis to the prescribed side of the real axis.
+
+The spectral representation fixes the location of the first singular
+thresholds. Suppose the continuum part in the two-point spectral measure has
+lowest invariant mass \(M\). At fixed spatial momentum \(\vec k\), define
+\[
+  E_M(\vec k)=\sqrt{\vec k^{\,2}+M^2}.
+\]
+The continuum denominators have singular support when
+\[
+  (k^0)^2=\vec k^{\,2}+s,
+  \qquad s\ge M^2.
+\]
+Consequently the first sheet has branch cuts beginning at
+\[
+  k^0=+E_M(\vec k),
+  \qquad
+  k^0=-E_M(\vec k).
+\]
+The Feynman boundary value on the positive-energy cut is reached from the
+upper half-plane; the negative-energy cut is reached with the conjugate
+placement.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95,>=Stealth]
+  \draw[->,line width=0.65pt] (-3.15,0)--(3.15,0)
+    node[right] {$\operatorname{Re}k^0$};
+  \draw[->,line width=0.65pt] (0,-2.05)--(0,2.05)
+    node[above] {$\operatorname{Im}k^0$};
+  \draw[red!80!black,very thick,decorate,
+    decoration={zigzag,segment length=4pt,amplitude=1.2pt}]
+    (-3.0,0)--(-1.05,0);
+  \draw[red!80!black,very thick,decorate,
+    decoration={zigzag,segment length=4pt,amplitude=1.2pt}]
+    (1.05,0)--(3.0,0);
+  \node[below] at (-1.05,-0.05) {$-E_M(\vec k)$};
+  \node[below] at (1.05,-0.05) {$+E_M(\vec k)$};
+  \draw[orange!85!black,very thick,->]
+    (1.65,1.05) .. controls (2.2,0.82) and (2.2,0.28) .. (1.65,0.12);
+  \draw[orange!85!black,very thick,->]
+    (-1.65,-1.05) .. controls (-2.2,-0.82) and (-2.2,-0.28) .. (-1.65,-0.12);
+  \node[orange!85!black,align=center] at (2.25,1.34)
+    {positive-energy\\boundary value};
+  \node[orange!85!black,align=center] at (-2.25,-1.34)
+    {negative-energy\\boundary value};
+\end{tikzpicture}
+\end{center}
+
+The output of the continuation is a family of Lorentzian time-ordered Green
+functions with specified singularity prescriptions. The spectral poles and
+cuts identify one-particle and continuum invariant masses seen by the field.
+The next construction concerns asymptotic states: it asks for Hilbert-space
+limits in which separated wave packets behave as freely propagating stable
+particles in the far past or far future. That construction is logically
+additional to the analytic continuation of Green functions.

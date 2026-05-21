@@ -1,0 +1,391 @@
+\chapter{Maxwell Theory, Constraints, and Gauge Fixing}
+\label{ch:maxwell-theory-constraints-gauge-fixing}
+
+\section{Field Strength and Action}
+
+Let \(A_\mu(x)\) be a real vector-potential representative on four-dimensional
+Minkowski spacetime. Gauge-equivalent representatives are related by
+\[
+  A_\mu(x)\mapsto A_\mu(x)+\partial_\mu\xi(x),
+\]
+where \(\xi\) is a real scalar function. The local gauge-invariant field
+strength is
+\[
+  F_{\mu\nu}
+  =
+  \partial_\mu A_\nu-\partial_\nu A_\mu .
+\]
+The free Maxwell action is
+\[
+  S[A]
+  =
+  -\frac14\int\dd^4x\,F_{\mu\nu}F^{\mu\nu}.
+\]
+Its Euler--Lagrange equation is
+\[
+  \partial_\mu F^{\mu\nu}=0.
+\]
+
+With \(x^0=t\) and spatial indices \(i,j=1,2,3\), the Lagrangian density is
+\[
+  \mathcal L
+  =
+  \frac12\sum_{i=1}^3(\partial_0A_i-\partial_iA_0)^2
+  -
+  \frac14\sum_{i,j=1}^3(\partial_iA_j-\partial_jA_i)^2 .
+\]
+This expression is the starting point for the Hamiltonian constraint analysis.
+
+\section{Constraints and Gauge Generators}
+
+At a fixed time, regard \(A_\mu(t,\vec x)\) as canonical coordinates. The
+momenta conjugate to them are
+\[
+  \Pi^\mu(\vec x)
+  =
+  \frac{\partial\mathcal L}
+       {\partial(\partial_0A_\mu(t,\vec x))}.
+\]
+Thus
+\[
+  \Pi^0(\vec x)=0,
+  \qquad
+  \Pi^i(\vec x)=\partial_0A_i-\partial_iA_0=F_{0i}.
+\]
+The equation
+\[
+  \chi_1(\vec x)=\Pi^0(\vec x)=0
+\]
+is the primary constraint. Variation with respect to \(A_0\) gives Gauss'
+law,
+\[
+  \chi_2(\vec x)=\partial_i\Pi^i(\vec x)=0,
+\]
+which is the secondary constraint obtained by preserving \(\chi_1\) under
+time evolution.
+
+The equal-time Poisson bracket is
+\[
+  \{A_\mu(\vec x),\Pi^\nu(\vec y)\}_{\mathrm P}
+  =
+  \delta_\mu{}^\nu\delta^3(\vec x-\vec y),
+\]
+with all \(A\)-\(A\) and \(\Pi\)-\(\Pi\) brackets equal to zero. The
+constraints obey
+\[
+  \{\chi_a(\vec x),\chi_b(\vec y)\}_{\mathrm P}=0,
+  \qquad
+  a,b=1,2.
+\]
+They are first-class constraints.
+
+For test functions \(\epsilon,\widetilde\epsilon\), define
+\[
+  G[\epsilon,\widetilde\epsilon]
+  =
+  \int\dd^3\vec y\,
+  \left[
+    \epsilon(\vec y)\Pi^0(\vec y)
+    +
+    \widetilde\epsilon(\vec y)\partial_i\Pi^i(\vec y)
+  \right].
+\]
+The induced infinitesimal change of representatives is
+\[
+  \delta A_\mu(\vec x)
+  =
+  \{A_\mu(\vec x),G[\epsilon,\widetilde\epsilon]\}_{\mathrm P},
+\]
+hence
+\[
+  \delta A_0(\vec x)=\epsilon(\vec x),
+  \qquad
+  \delta A_i(\vec x)=-\partial_i\widetilde\epsilon(\vec x).
+\]
+If a spacetime function \(\zeta\) satisfies
+\[
+  \zeta(t,\vec x)=-\widetilde\epsilon(\vec x),
+  \qquad
+  \partial_0\zeta(t,\vec x)=\epsilon(\vec x),
+\]
+then
+\[
+  \delta A_\mu(t,\vec x)=\partial_\mu\zeta(t,\vec x).
+\]
+The first-class constraints therefore generate the infinitesimal gauge
+redundancy of the vector-potential representative.
+
+\section{Axial Gauge Phase Space}
+
+A gauge condition chooses one representative from each gauge orbit in a
+domain where the choice is regular. Axial gauge takes
+\[
+  A_3=0.
+\]
+In this gauge the variables \(A_3,\Pi^3\) are removed. The Lagrangian becomes
+\[
+\begin{aligned}
+  \mathcal L_{\mathrm{ax}}
+  &=
+  \frac12\sum_{i=1}^2(\partial_0A_i-\partial_iA_0)^2
+  +\frac12(\partial_3A_0)^2  \\
+  &\quad
+  -\frac12(\partial_1A_2-\partial_2A_1)^2
+  -\frac12\sum_{i=1}^2(\partial_3A_i)^2 .
+\end{aligned}
+\]
+The equation obtained by varying \(A_0\) is
+\[
+  \sum_{i=1}^2\partial_i(\partial_iA_0-\partial_0A_i)
+  +\partial_3^2A_0=0,
+\]
+or
+\[
+  \sum_{i=1}^2\partial_i\Pi^i+\partial_3^2A_0=0.
+\]
+Together with \(\Pi^0=0\), this is a second-class pair for modes on which
+\(\partial_3^2\) is invertible:
+\[
+  \left\{
+    \Pi^0(\vec x),
+    \sum_{i=1}^2\partial_i\Pi^i(\vec y)+\partial_3^2A_0(\vec y)
+  \right\}_{\mathrm P}
+  =
+  \partial_3^2\delta^3(\vec x-\vec y).
+\]
+For nonzero \(k_3\) Fourier modes, solve
+\[
+  \partial_3^2A_0
+  =
+  -\sum_{i=1}^2\partial_i\Pi^i
+\]
+and eliminate \(A_0,\Pi^0\). The remaining canonical variables are
+\[
+  A_i(\vec x),\Pi^i(\vec x),
+  \qquad
+  i=1,2.
+\]
+They are the two canonical degrees of freedom corresponding to the two photon
+helicities.
+
+\section{Gauge Slices in Functional Integrals}
+
+The formal expression
+\[
+  Z=\int DA_\mu\,\ee^{\ii S[A]}
+\]
+integrates over all representatives of each gauge-equivalence class. A gauge
+condition inserts a slice through the representative space.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \draw[thick] (0,0) rectangle (6.4,3.4);
+  \node[anchor=east] at (6.12,3.12) {representative space};
+  \foreach \x in {1.1,2.9,4.7} {
+    \draw[blue!70!black,thick]
+      plot[smooth] coordinates {
+        (\x,0.25) (\x-0.20,1.05) (\x+0.18,2.05) (\x+0.55,3.05)
+      };
+  }
+  \draw[red!75!black,thick]
+    plot[smooth] coordinates {
+      (0.45,0.80) (1.7,1.02) (3.15,1.17) (4.8,1.19) (5.9,1.08)
+    };
+  \node[red!75!black] at (5.0,1.55) {gauge slice};
+  \foreach \p in {(1.05,0.88),(2.95,1.15),(4.67,1.18)} {
+    \fill[green!55!black] \p circle (2.2pt);
+  }
+  \node[blue!70!black,align=center] at (1.00,2.35) {gauge\\orbit};
+\end{tikzpicture}
+\end{center}
+
+Let \(\mathcal G(A)\) be a linear gauge condition. In an abelian theory the
+Faddeev--Popov determinant for a linear gauge is independent of \(A_\mu\), so
+it contributes only to normalization. For axial gauge,
+\[
+  \mathcal G(A)=A_3,
+\]
+the gauge-fixed expression is
+\[
+  Z_{\mathrm{ax}}
+  =
+  \int DA_\mu\,\delta(A_3)\,\ee^{\ii S[A]}.
+\]
+
+After integrating the Maxwell action by parts,
+\[
+  S[A]
+  =
+  \frac12\int\dd^4x\,
+  A_\mu
+  \left(\eta^{\mu\nu}\Box-\partial^\mu\partial^\nu\right)
+  A_\nu,
+\]
+where
+\[
+  \Box=\partial^\rho\partial_\rho .
+\]
+The quadratic operator
+\[
+  D^{\mu\nu}=\eta^{\mu\nu}\Box-\partial^\mu\partial^\nu
+\]
+has zero directions \(A_\mu=\partial_\mu\xi\). Gauge fixing removes those
+directions from the Gaussian integral.
+
+\section{Covariant Gauges}
+
+For perturbative calculations it is useful to preserve manifest Lorentz
+covariance. Let
+\[
+  \mathcal G(A)=\partial_\mu A^\mu .
+\]
+Instead of imposing \(\mathcal G(A)=0\) sharply, average over
+\[
+  \partial_\mu A^\mu=\varphi
+\]
+with a Gaussian weight. In Euclidean signature this insertion is
+\[
+  \int D\varphi\,
+  \exp\left[-\frac{1}{2\xi_{\mathrm g}}
+    \int\dd^4x_E\,\varphi^2\right]
+  \delta(\partial_\mu A^\mu-\varphi),
+  \qquad
+  \xi_{\mathrm g}>0.
+\]
+Performing the \(\varphi\) integral gives the Euclidean gauge-fixing term
+\[
+  \Delta S_E
+  =
+  \frac{1}{2\xi_{\mathrm g}}
+  \int\dd^4x_E\,(\partial_\mu A^\mu)^2 .
+\]
+The corresponding Lorentzian gauge-fixed action is
+\[
+  S_{\xi_{\mathrm g}}[A]
+  =
+  \int\dd^4x\,
+  \left[
+    -\frac14F_{\mu\nu}F^{\mu\nu}
+    -
+    \frac{1}{2\xi_{\mathrm g}}(\partial_\mu A^\mu)^2
+  \right].
+\]
+Equivalently,
+\[
+  S_{\xi_{\mathrm g}}[A]
+  =
+  \frac12\int\dd^4x\,
+  A_\mu
+  \left[
+    \eta^{\mu\nu}\Box
+    -
+    \left(1-\frac1{\xi_{\mathrm g}}\right)
+    \partial^\mu\partial^\nu
+  \right]
+  A_\nu .
+\]
+
+In momentum space,
+\[
+  \widetilde D_{\xi_{\mathrm g}}^{\mu\nu}(k)
+  =
+  -\eta^{\mu\nu}k^2
+  +
+  \left(1-\frac1{\xi_{\mathrm g}}\right)k^\mu k^\nu .
+\]
+Its inverse is
+\[
+  \bigl(\widetilde D_{\xi_{\mathrm g}}^{-1}(k)\bigr)_{\mu\nu}
+  =
+  -\frac{\eta_{\mu\nu}}{k^2}
+  +
+  (1-\xi_{\mathrm g})\frac{k_\mu k_\nu}{(k^2)^2}.
+\]
+The Lorentzian Feynman boundary value gives
+\[
+  \langle\Omega|
+  \operatorname T\{\widehat A_\mu(x)\widehat A_\nu(y)\}
+  |\Omega\rangle_{\xi_{\mathrm g}}
+  =
+  \int\frac{\dd^4k}{(2\pi)^4}
+  \ee^{\ii k\cdot(x-y)}
+  \frac{-\ii}{k^2-\ii\epsilon}
+  \left[
+    \eta_{\mu\nu}
+    -
+    (1-\xi_{\mathrm g})
+    \frac{k_\mu k_\nu}{k^2-\ii\epsilon}
+  \right].
+\]
+The value \(\xi_{\mathrm g}=1\) is Feynman gauge:
+\[
+  \langle\Omega|
+  \operatorname T\{\widehat A_\mu(x)\widehat A_\nu(y)\}
+  |\Omega\rangle_{\xi_{\mathrm g}=1}
+  =
+  \int\frac{\dd^4k}{(2\pi)^4}
+  \ee^{\ii k\cdot(x-y)}
+  \frac{-\ii\eta_{\mu\nu}}{k^2-\ii\epsilon}.
+\]
+
+\section{Field-Strength Correlators}
+
+The field strength is obtained by differentiating the potential. Therefore
+the time-ordered two-point function of \(F_{\mu\nu}\) is
+\[
+\begin{aligned}
+  &\langle\Omega|
+  \operatorname T\{
+    \widehat F_{\mu\nu}(x)\widehat F_{\rho\sigma}(y)
+  \}
+  |\Omega\rangle  \\
+  &=
+  \int\frac{\dd^4k}{(2\pi)^4}
+  \ee^{\ii k\cdot(x-y)}
+  \frac{-\ii}{k^2-\ii\epsilon}
+  \bigl(
+    k_\mu k_\rho\eta_{\nu\sigma}
+    -k_\nu k_\rho\eta_{\mu\sigma}
+    -k_\mu k_\sigma\eta_{\nu\rho}
+    +k_\nu k_\sigma\eta_{\mu\rho}
+  \bigr).
+\end{aligned}
+\]
+All terms proportional to the gauge parameter cancel because antisymmetrizing
+\(k_\mu A_\nu-k_\nu A_\mu\) kills every \(k_\mu k_\nu\) contribution.
+
+The Wightman two-point function obtained from the positive-frequency boundary
+value has the one-photon spectral form
+\[
+\begin{aligned}
+  &\langle\Omega|
+  \widehat F_{\mu\nu}(x)\widehat F_{\rho\sigma}(y)
+  |\Omega\rangle  \\
+  &=
+  \sum_{h=\pm1}
+  \int
+  \frac{\dd^3\vec k}{(2\pi)^3\,2|\vec k|}
+  \langle\Omega|\widehat F_{\mu\nu}(x)|k,h\rangle
+  \langle k,h|\widehat F_{\rho\sigma}(y)|\Omega\rangle .
+\end{aligned}
+\]
+With the Chapter 17 polarization representatives,
+\[
+  \langle k,h|\widehat F_{\mu\nu}(x)|\Omega\rangle
+  =
+  Z_A^{1/2}\ee^{-\ii k\cdot x}
+  \left(
+    -\ii k_\mu\epsilon_\nu^{h*}(k)
+    +\ii k_\nu\epsilon_\mu^{h*}(k)
+  \right).
+\]
+Comparison with the explicit free two-point function fixes the free Maxwell
+normalization
+\[
+  Z_A=1.
+\]
+
+The next chapter couples this gauge field to a charged spinor field. The
+interaction will be formulated on representative fields, while local
+gauge-invariant observables and external photon states are read through the
+field strength and helicity data constructed here.

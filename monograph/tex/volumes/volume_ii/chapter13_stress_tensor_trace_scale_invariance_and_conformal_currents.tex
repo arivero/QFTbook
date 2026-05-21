@@ -1,0 +1,482 @@
+\chapter{Stress Tensor Trace and Conformal Currents}
+\label{ch:volume-ii-stress-tensor-trace-conformal-currents}
+
+\section{The Stress Tensor from Local Translations}
+
+Work in flat \(D\)-dimensional Euclidean spacetime, with coordinates \(x^\mu\)
+and metric \(\delta_{\mu\nu}\).  A constant translation by a vector
+\(\delta a^\mu\) acts on a scalar field by
+\[
+  \phi'(x')=\phi(x),
+  \qquad
+  x'^\mu=x^\mu+\delta a^\mu .
+\]
+The corresponding active variation at the same coordinate \(x\) is
+\[
+  \delta\phi(x)=\phi'(x)-\phi(x)
+  =
+  -\delta a^\mu\,\partial_\mu\phi(x).
+\]
+The stress tensor is obtained by promoting \(\delta a^\mu\) to a smooth
+compactly supported function \(\delta a^\mu(x)\).  For a multiplet of fields
+one is free to add to the local variation a term proportional to
+\(\partial_\mu\delta a_\nu\):
+\[
+  \delta\phi(x)
+  =
+  -\delta a^\mu(x)\,\partial_\mu\phi(x)
+  +
+  \partial_\mu\delta a_\nu(x)\,\mathcal D^{\mu\nu}\phi(x).
+\]
+Here \(\mathcal D^{\mu\nu}\) is a fixed linear differential operator on the
+fields.  Different choices of \(\mathcal D^{\mu\nu}\) change the stress tensor
+by equation-of-motion terms and improvement terms.  Once the convention is
+chosen, define \(T^{\mu\nu}\) by
+\[
+  S[\phi+\delta\phi]
+  =
+  S[\phi]
+  -
+  \int\dd^D x\,
+  \partial_\mu\delta a_\nu(x)\,T^{\mu\nu}(x),
+\]
+for compactly supported \(\delta a^\mu(x)\), up to terms proportional to the
+equations of motion.  If \(\delta a^\mu\) is constant, the derivative vanishes,
+which is the Noether statement of translation invariance.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (-3.4,1.8) {constant translation};
+    \draw[-{Latex[length=2mm]}, thick] (-5.1,0.65)--(-3.8,0.65);
+    \node[above] at (-4.45,0.65) {\(\delta a^\mu\)};
+    \node[align=center] at (-4.45,-0.1)
+      {\(\partial_\mu\delta a_\nu=0\)\\\(\delta S=0\)};
+
+    \node[font=\small] at (1.7,1.8) {localized translation};
+    \draw[thick, rounded corners] (0.0,0.05) rectangle (3.55,1.15);
+    \draw[-{Latex[length=2mm]}, thick] (0.35,0.55)
+      .. controls (1.0,1.05) and (1.9,1.05) .. (2.75,0.65);
+    \node[above] at (1.7,1.07) {\(\delta a^\mu(x)\)};
+    \node[align=center] at (1.75,-0.45)
+      {\(\displaystyle
+      \delta S=-\int\dd^D x\,
+      \partial_\mu\delta a_\nu\,T^{\mu\nu}\)};
+
+    \draw[-{Latex[length=2mm]}, thick] (-1.1,0.55)--(-0.1,0.55);
+    \node[align=center, blue!70!black] at (-0.55,1.18)
+      {localize};
+  \end{tikzpicture}
+  }
+  \caption{The stress tensor is the coefficient of the derivative of a local
+  translation parameter.  Constant translations are recovered by setting
+  \(\partial_\mu\delta a_\nu=0\).}
+  \label{fig:volume-ii-local-translation-stress-tensor}
+\end{figure}
+
+\section{Dilatations and Engineering Dimensions}
+
+A constant infinitesimal scale transformation is the special local
+translation
+\[
+  \delta a^\mu(x)=\sigma x^\mu,
+\]
+where \(\sigma\) is a constant.  The stress-tensor definition gives
+\[
+  \delta S
+  =
+  -\sigma\int\dd^D x\,T^\mu{}_\mu(x).
+\]
+Thus the trace is the local operator that measures the response to an
+infinitesimal dilatation in the chosen stress-tensor convention.
+
+For a free massless scalar,
+\[
+  S_{\rm kin}[\phi]
+  =
+  \frac12\int\dd^D x\,\partial_\mu\phi\,\partial^\mu\phi,
+\]
+scale invariance of the kinetic term fixes the engineering field dimension to
+\[
+  \Delta_\phi^{\rm eng}=\frac{D-2}{2}.
+\]
+Equivalently, with \(x'^\mu=(1+\sigma)x^\mu\),
+\[
+  \phi'(x')
+  =
+  (1+\sigma)^{-(D-2)/2}\phi(x),
+\]
+or, at fixed \(x\),
+\[
+  \delta\phi(x)
+  =
+  -\sigma x^\mu\partial_\mu\phi(x)
+  -
+  \sigma\frac{D-2}{2}\,\phi(x).
+\]
+
+Let now \(D=d-\epsilon\), and let \(O_I\) be a local monomial or polynomial in
+fields and derivatives with engineering dimension
+\[
+  d_I(\epsilon)=d-\epsilon+\delta_I(\epsilon)=D+\delta_I(\epsilon).
+\]
+Under the same scale transformation,
+\[
+  O_I'(x')
+  =
+  (1+\sigma)^{-d_I(\epsilon)}O_I(x).
+\]
+For an action of the form
+\[
+  S[\phi]
+  =
+  S_{\rm kin}[\phi]
+  +
+  \int\dd^D x\,\sum_I g_I^\epsilon\,O_I(x),
+\]
+the interaction part transforms as
+\[
+  \int\dd^D x'\sum_I g_I^\epsilon O_I'(x')
+  =
+  \int\dd^D x\sum_I
+  g_I^\epsilon(1+\sigma)^{-\delta_I(\epsilon)}O_I(x).
+\]
+To first order in \(\sigma\),
+\[
+  \delta S
+  =
+  -\sigma\int\dd^D x\,
+  \sum_I\delta_I(\epsilon)g_I^\epsilon O_I(x).
+\]
+Comparing this with the stress-tensor definition gives the bare trace identity
+\[
+  T^\mu{}_\mu
+  =
+  \sum_I\delta_I(\epsilon)\,g_I^\epsilon\,O_I,
+\]
+modulo total derivatives and equation-of-motion operators.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (-3.2,1.75) {dilatation};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (-3.2,0.55)
+      {\(\delta a^\mu=\sigma x^\mu\)\\
+       \(\delta S=-\sigma\int T^\mu{}_\mu\)};
+
+    \node[font=\small] at (1.9,1.75) {operator dimensions};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (1.9,0.55)
+      {\(O_I'(x')=(1+\sigma)^{-D-\delta_I}O_I(x)\)\\
+       \(\delta S=-\sigma\int\sum_I\delta_I g_I^\epsilon O_I\)};
+
+    \draw[-{Latex[length=2mm]}, thick] (-1.2,0.55)--(-0.15,0.55);
+    \node[blue!70!black, align=center] at (-0.65,-0.28)
+      {compare\\local densities};
+    \node[font=\small] at (-0.65,-1.0)
+      {\(\displaystyle T^\mu{}_\mu=\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\)};
+  \end{tikzpicture}
+  }
+  \caption{The bare trace is the engineering-dimension defect of the regulated
+  interaction terms.}
+  \label{fig:volume-ii-scale-trace-engineering}
+\end{figure}
+
+\section{The Renormalized Trace Identity}
+
+Minimal subtraction expresses each bare coupling as
+\[
+  g_I^\epsilon
+  =
+  \mu^{-\delta_I(\epsilon)}
+  \left[
+    \lambda_I(\mu)
+    +
+    \sum_{n\ge1}
+    \epsilon^{-n}K_I^{(n)}(\lambda(\mu))
+  \right],
+\]
+where
+\[
+  \delta_I(\epsilon)
+  =
+  \delta_I^{(0)}+\epsilon\delta_I^{(1)}.
+\]
+Bare couplings are independent of \(\mu\).  If
+\[
+  \beta_I^\epsilon(\lambda)
+  =
+  \frac{\dd\lambda_I}{\dd\log\mu}
+  =
+  \beta_I(\lambda)+\epsilon\delta_I^{(1)}\lambda_I
+\]
+is the \(D=d-\epsilon\) beta function in MS coordinates, then
+\[
+  0
+  =
+  \frac{\dd g_I^\epsilon}{\dd\log\mu}
+  =
+  -\delta_I(\epsilon)g_I^\epsilon
+  +
+  \sum_J
+  \beta_J^\epsilon
+  \frac{\partial g_I^\epsilon}{\partial\lambda_J}.
+\]
+Hence
+\[
+  \delta_I(\epsilon)g_I^\epsilon
+  =
+  \sum_J
+  \bigl(\beta_J+\epsilon\delta_J^{(1)}\lambda_J\bigr)
+  \frac{\partial g_I^\epsilon}{\partial\lambda_J}.
+\]
+Substituting this relation into the bare trace identity gives
+\[
+  T^\mu{}_\mu
+  =
+  \sum_J
+  \bigl(\beta_J+\epsilon\delta_J^{(1)}\lambda_J\bigr)
+  \frac{\partial}{\partial\lambda_J}
+  \left(\sum_I g_I^\epsilon O_I\right).
+\]
+The derivative in parentheses is the renormalized operator associated with
+the MS coordinate \(\lambda_J\):
+\[
+  [O_J]_\mu
+  =
+  \frac{\partial}{\partial\lambda_J}
+  \left(\sum_I g_I^\epsilon O_I\right).
+\]
+Taking the finite \(\epsilon\to0\) limit gives the renormalized trace identity
+\[
+  T^\mu{}_\mu
+  =
+  \sum_J\beta_J(\lambda)\,[O_J]_\mu .
+\]
+This identity is an operator identity in flat space for separated insertions;
+contact terms, total derivatives, and equation-of-motion operators are fixed
+by the corresponding Ward identities and by the chosen stress-tensor
+improvement convention.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (-4.2,0.7)
+      {\(\displaystyle T^\mu{}_\mu
+      =\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\)\\
+       bare engineering trace};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (0,0.7)
+      {\(\displaystyle
+      \delta_I g_I^\epsilon
+      =
+      \sum_J\beta_J^\epsilon
+      \partial_{\lambda_J}g_I^\epsilon\)\\
+       \(\dd g_I^\epsilon/\dd\log\mu=0\)};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (4.3,0.7)
+      {\(\displaystyle
+      T^\mu{}_\mu=\sum_J\beta_J[O_J]_\mu\)\\
+       finite renormalized trace};
+    \draw[-{Latex[length=2mm]}, thick] (-2.35,0.7)--(-1.55,0.7);
+    \draw[-{Latex[length=2mm]}, thick] (1.7,0.7)--(2.55,0.7);
+    \node[blue!70!black] at (0,-0.8)
+      {\([O_J]_\mu=\partial_{\lambda_J}(\sum_Ig_I^\epsilon O_I)\)};
+  \end{tikzpicture}
+  }
+  \caption{The MS trace identity is obtained by converting the engineering
+  dimension factor of a bare coupling into the beta-function vector field
+  acting on the same bare interaction.}
+  \label{fig:volume-ii-renormalized-trace-identity}
+\end{figure}
+
+\section{Fixed Points and Conformal Currents}
+
+An RG fixed point in the MS coordinate system is a point \(\lambda_\ast\) at
+which
+\[
+  \beta_J(\lambda_\ast)=0
+  \qquad\text{for all }J .
+\]
+At such a point the beta-function contribution to the trace vanishes:
+\[
+  T^\mu{}_\mu=0,
+\]
+again modulo total derivatives, contact terms, and equation-of-motion
+operators.  Suppose that the stress tensor has been chosen symmetric,
+conserved, and traceless as a flat-space renormalized operator:
+\[
+  T^{\mu\nu}=T^{\nu\mu},
+  \qquad
+  \partial_\mu T^{\mu\nu}=0,
+  \qquad
+  T^\mu{}_\mu=0.
+\]
+Let \(\xi^\mu(x)\) be a conformal Killing vector field in \(d\) dimensions,
+meaning
+\[
+  \partial_\mu\xi_\nu+\partial_\nu\xi_\mu
+  -
+  \frac{2}{d}\delta_{\mu\nu}\,\partial_\rho\xi^\rho
+  =
+  0.
+\]
+Define the current
+\[
+  j^\mu_\xi(x)=T^{\mu\nu}(x)\xi_\nu(x).
+\]
+Its divergence is
+\[
+  \partial_\mu j^\mu_\xi
+  =
+  T^{\mu\nu}\partial_\mu\xi_\nu
+  =
+  \frac12 T^{\mu\nu}
+  \bigl(\partial_\mu\xi_\nu+\partial_\nu\xi_\mu\bigr)
+  =
+  \frac{1}{d}T^\mu{}_\mu\,\partial_\rho\xi^\rho
+  =
+  0.
+\]
+Thus each conformal Killing vector gives a conserved Noether current.
+
+The elementary conformal Killing vector fields are
+\[
+  \xi^\mu(x)
+  =
+  \begin{cases}
+    a^\mu, & \text{translations},\\
+    \omega^\mu{}_\nu x^\nu,\quad \omega_{\mu\nu}=-\omega_{\nu\mu},
+      & \text{rotations},\\
+    c\,x^\mu, & \text{dilatations},\\
+    b_\rho(2x^\rho x^\mu-x^2\delta^{\rho\mu}),
+      & \text{special conformal transformations}.
+  \end{cases}
+\]
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (-3.8,2.0) {stress tensor data};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (-3.8,0.75)
+      {\(\partial_\mu T^{\mu\nu}=0\)\\
+       \(T^{\mu\nu}=T^{\nu\mu}\)\\
+       \(T^\mu{}_\mu=0\)};
+    \node[font=\small] at (0.0,2.0) {CKV equation};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (0.0,0.75)
+      {\(\partial_\mu\xi_\nu+\partial_\nu\xi_\mu\)\\
+       \(\displaystyle =\frac{2}{d}\delta_{\mu\nu}\partial_\rho\xi^\rho\)};
+    \node[font=\small] at (3.9,2.0) {conserved current};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (3.9,0.75)
+      {\(j^\mu_\xi=T^{\mu\nu}\xi_\nu\)\\
+       \(\partial_\mu j^\mu_\xi=0\)};
+    \draw[-{Latex[length=2mm]}, thick] (-2.15,0.75)--(-1.25,0.75);
+    \draw[-{Latex[length=2mm]}, thick] (1.35,0.75)--(2.35,0.75);
+    \node[blue!70!black] at (0,-0.9)
+      {\(\xi=a,\ \omega x,\ cx,\ b_\rho(2x^\rho x^\mu-x^2\delta^{\rho\mu})\)};
+  \end{tikzpicture}
+  }
+  \caption{A conserved symmetric traceless stress tensor turns every conformal
+  Killing vector field into a conserved current.}
+  \label{fig:volume-ii-conformal-killing-currents}
+\end{figure}
+
+\section{Virial Currents and Improvement}
+
+The fixed-point trace identity determines only the beta-function contribution
+to \(T^\mu{}_\mu\).  The stress tensor may still have a total-derivative trace
+\[
+  T^\mu{}_\mu=\partial_\mu V^\mu
+\]
+for a local vector operator \(V^\mu\), called a virial current.  In this case
+the dilatation current
+\[
+  D^\mu=x_\nu T^{\mu\nu}-V^\mu
+\]
+is conserved:
+\[
+  \partial_\mu D^\mu
+  =
+  T^\mu{}_\mu-\partial_\mu V^\mu
+  =
+  0.
+\]
+This establishes scale invariance generated by \(D^\mu\), but it does not by
+itself give conserved special conformal currents of the form
+\(T^{\mu\nu}\xi_\nu\).
+
+If the virial current can be removed by an improvement of the stress tensor,
+then the same fixed point admits a traceless stress tensor and the conformal
+currents above.  For example, if
+\[
+  V_\mu=(d-1)\partial_\mu L
+\]
+for a local scalar operator \(L\), then the improvement
+\[
+  T'_{\mu\nu}
+  =
+  T_{\mu\nu}
+  +
+  \bigl(\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2\bigr)L
+\]
+changes the trace by
+\[
+  T'^\mu{}_\mu
+  =
+  T^\mu{}_\mu
+  -
+  (d-1)\partial^2L,
+\]
+and removes this virial trace.
+
+\begin{remark}[Scale and conformal fixed points]
+The implication from scale invariance to conformal invariance depends on the
+existence and removability of \(V^\mu\), together with assumptions such as
+unitarity, locality, discreteness of scaling dimensions, and the dimension of
+spacetime.  The monograph will use the precise stress-tensor criterion above:
+conformal symmetry is present when the flat-space theory has a conserved
+symmetric stress tensor whose trace can be set to zero by allowed
+improvements.
+\end{remark}
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.9\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (-3.2,0.75)
+      {\(T^\mu{}_\mu=\partial_\mu V^\mu\)\\
+       \(D^\mu=x_\nu T^{\mu\nu}-V^\mu\)};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (0.75,0.75)
+      {\(V_\mu=(d-1)\partial_\mu L\)\\
+       improvement exists};
+    \node[draw=black, rounded corners, align=center, inner sep=6pt]
+      at (4.55,0.75)
+      {\(T'^\mu{}_\mu=0\)\\
+       \(j^\mu_\xi=T'^{\mu\nu}\xi_\nu\)};
+    \draw[-{Latex[length=2mm]}, thick] (-1.55,0.75)--(-0.65,0.75);
+    \draw[-{Latex[length=2mm]}, thick] (2.25,0.75)--(3.2,0.75);
+    \node[blue!70!black, align=center] at (0.75,-0.65)
+      {without such data, scale currents\\do not determine special conformal currents};
+  \end{tikzpicture}
+  }
+  \caption{A virial current gives a conserved dilatation current.  Conformal
+  currents follow when the virial trace is removable by an allowed improvement
+  of the stress tensor.}
+  \label{fig:volume-ii-virial-improvement}
+\end{figure}
+
+The next construction searches for nonzero solutions of
+\(\beta_J(\lambda)=0\).  The scalar quartic theory in \(4-\epsilon\) dimensions
+provides the first perturbative example, after the mass deformation is tuned so
+that the infrared theory has no mass gap.

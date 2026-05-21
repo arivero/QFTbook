@@ -1,0 +1,209 @@
+\chapter{Starting Data for Local Quantum Field Theory}
+\label{ch:starting-data-local-qft}
+
+\section{Spacetime And Operator Conventions}
+
+Throughout the opening volume, \(D\) denotes the spacetime dimension. The
+symbol \(\mathbb M^D\) denotes \(D\)-dimensional Minkowski affine space. After
+a choice of inertial coordinates, \(\mathbb M^D\) is identified with
+\(\mathbb R^D\). The metric tensor has components
+\[
+  \eta_{\mu\nu}=\operatorname{diag}(-1,1,\ldots,1),
+\]
+and units are chosen so that \(\hbar=c=1\). A vector \(x\in\mathbb M^D\) is
+spacelike when
+\[
+  x^2:=\eta_{\mu\nu}x^\mu x^\nu>0.
+\]
+A test function is a smooth compactly supported complex-valued function on
+\(\mathbb M^D\), an element of \(C_c^\infty(\mathbb M^D)\), unless another
+test-function space is explicitly declared. A pointlike quantum field
+\(\widehat\Phi_A(x)\) is an operator-valued distribution: the operator attached
+to it is the smeared field
+\[
+  \widehat\Phi_A(f)
+  =
+  \int_{\mathbb M^D}\dd^Dx\,f(x)\widehat\Phi_A(x),
+  \qquad
+  f\in C_c^\infty(\mathbb M^D).
+\]
+The label \(A\) denotes a component in a finite-dimensional representation
+space for Lorentz and internal indices, or a composite-operator label, as
+specified in the chapter where the field is introduced.
+
+\section{Opening Framework}
+
+The first construction takes place in a flat-spacetime vacuum sector. The
+following definition gives the data used in the opening volume.
+
+\begin{definition}[Vacuum Minkowski local quantum theory]
+\label{def:vacuum-minkowski-local-qft}
+In the opening framework, a vacuum Minkowski local quantum theory consists of:
+\begin{enumerate}
+  \item a complex Hilbert space \(\Hilb\);
+  \item a strongly continuous unitary representation
+  \[
+    U:\mathbb R^D\rtimes SO^+(1,D-1)\to\mathcal U(\Hilb),
+    \qquad
+    (a,\Lambda)\mapsto U(a,\Lambda),
+  \]
+  where \(a\in\mathbb R^D\) is a translation vector,
+  \(\Lambda\in SO^+(1,D-1)\), and \(\mathcal U(\Hilb)\) is the unitary group
+  of \(\Hilb\); when spinor fields are present, \(SO^+(1,D-1)\) is replaced
+  by the appropriate double cover;
+  \item self-adjoint translation generators \(P_\mu\), defined by
+  \(U(a,1)=\exp(-\ii a^\mu P_\mu)\), whose joint spectral measure has support
+  contained in the closed future cone
+  \[
+    \overline V_+
+    =
+    \{p\in\mathbb R^D:p^0\ge0,\ \eta_{\mu\nu}p^\mu p^\nu\le0\};
+  \]
+  \item a nonzero Poincare-invariant unit vector \(\vac\in\Hilb\);
+  \item an assignment
+  \[
+    \mathcal O\longmapsto\Obs(\mathcal O)\subset\mathcal B(\Hilb)
+  \]
+  from bounded open regions \(\mathcal O\subset\mathbb M^D\) to unital
+  \(*\)-subalgebras of the bounded operators on \(\Hilb\), satisfying
+  covariance, isotony, and locality:
+  \[
+    U(a,\Lambda)\Obs(\mathcal O)U(a,\Lambda)^{-1}
+    =
+    \Obs(\Lambda\mathcal O+a),
+  \]
+  \[
+    \mathcal O_1\subset\mathcal O_2
+    \quad\Longrightarrow\quad
+    \Obs(\mathcal O_1)\subset\Obs(\mathcal O_2),
+  \]
+  and
+  \[
+    [A,B]=0
+    \quad
+    \text{for }A\in\Obs(\mathcal O_1),\ B\in\Obs(\mathcal O_2)
+  \]
+  whenever \(\mathcal O_1\) and \(\mathcal O_2\) are spacelike separated, with
+  the graded commutator used for odd operators after a fermion parity grading
+  has been specified.
+\end{enumerate}
+\end{definition}
+
+This framework describes a vacuum representation on flat spacetime. Thermal
+states, boundary conditions, curved spacetimes, and non-vacuum superselection
+sectors are introduced by changing the stated data: the state space, spacetime
+category, covariance group, region assignment, or representation sector.
+Existing Wightman, Euclidean, algebraic, constructive, perturbative, and
+factorization frameworks will be compared later as precise frameworks with
+their own domains.
+
+\section{Fields As Coordinates On Local Data}
+
+A local field is a distributional coordinate for local data. For a test
+function \(f\in C_c^\infty(\mathbb M^D)\) with
+\(\operatorname{supp}f\subset\mathcal O\),
+\[
+  \widehat\Phi_A(f)
+  =
+  \int_{\mathbb M^D}\dd^Dx\,f(x)\widehat\Phi_A(x)
+\]
+is localized in \(\mathcal O\), in the sense that the smeared operator is
+affiliated with the local algebra \(\Obs(\mathcal O)\) or belongs to a common
+dense invariant field domain associated with that algebra. The precise
+operator-domain statement will be made in the field framework of the next
+chapter.
+
+The field notation has two roles. First, it gives a concrete language for
+constructing examples. Second, it gives correlation functions:
+\[
+  W_{A_1\cdots A_n}(x_1,\ldots,x_n)
+  =
+  \bra{\vac}
+  \widehat\Phi_{A_1}(x_1)\cdots
+  \widehat\Phi_{A_n}(x_n)
+  \ket{\vac},
+\]
+again as distributions. Under suitable positivity, covariance, spectral, and
+domain assumptions, such correlation functions can reconstruct the Hilbert
+space and fields. Reconstruction theorems will be used later as comparison
+results with stated hypotheses.
+
+\section{Additional Constructions And Hypotheses}
+
+Several familiar objects are constructed from the framework after adding
+further hypotheses.
+
+\begin{itemize}
+  \item A particle is associated with isolated spectral support of the
+  translation generators, usually an isolated mass shell.
+  \item An S-matrix requires incoming and outgoing asymptotic multi-particle
+  states and wave operators comparing them with the interacting Hilbert space.
+  This is an additional long-time dynamical construction.
+  \item LSZ reduction is a theorem relating S-matrix elements to poles of
+  time-ordered correlation functions, after the relevant asymptotic states and
+  pole residues have been identified.
+  \item A path integral is a method of constructing or computing correlation
+  functions after a regulator, contour, measure, or perturbative prescription
+  has been specified. The symbol \(\int D\phi\,\ee^{\ii S[\phi]}\) receives
+  its meaning from that additional specification.
+\end{itemize}
+
+This dependency order is part of the construction. Perturbative Feynman graphs
+may be introduced as a calculus for Green functions before scattering is
+discussed. Diagrams for S-matrix elements acquire that interpretation after
+asymptotic states and LSZ reduction have been established.
+
+\section{The First Spectral Question}
+
+Translation invariance permits simultaneous spectral analysis of the
+generators \(P_\mu\). The spectrum condition is
+\[
+  \operatorname{Spec}(P)\subset
+  \overline V_+
+  =
+  \{p\in\mathbb R^D:p^0\ge0,\ p^2\le0\}.
+\]
+For a scalar field, positivity of the Hilbert-space inner product and
+translation invariance imply that the two-point function admits a positive
+spectral measure. In the common case where the measure can be written in terms
+of a density \(\rho\), the time-ordered two-point function has the form
+\[
+  \bra{\vac}T\{\widehat\phi(x)\widehat\phi(0)\}\ket{\vac}
+  =
+  \int_0^\infty \dd\mu^2\,\rho(\mu^2)\Delta_F(x;\mu^2),
+  \qquad
+  \rho(\mu^2)\ge0.
+\]
+This formula will be derived later from the stated Hilbert-space assumptions.
+It marks the first bridge from local operator data to particle language:
+isolated atoms of the spectral measure correspond to stable one-particle
+states, while continuous spectral support corresponds to multi-particle and
+other continuum contributions.
+
+\section{Logical Order Of The Opening Construction}
+
+The opening construction will proceed as follows:
+\[
+\begin{gathered}
+  \text{Hilbert space, symmetry, spectrum, vacuum, locality}
+  \\
+  \longrightarrow
+  \text{local fields and Wightman functions}
+  \longrightarrow
+  \text{path-integral constructions of Green functions}
+  \\
+  \longrightarrow
+  \text{K\"all\'en--Lehmann spectral representation}
+  \longrightarrow
+  \text{perturbative Green functions}
+  \\
+  \longrightarrow
+  \text{Haag--Ruelle asymptotic states}
+  \longrightarrow
+  \text{LSZ}
+  \longrightarrow
+  \text{perturbative scattering amplitudes}.
+\end{gathered}
+\]
+Each arrow indicates an added construction or theorem. The construction will
+use each arrow only after its assumptions have been stated.

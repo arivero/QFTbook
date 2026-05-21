@@ -1,0 +1,601 @@
+\chapter{The Statistical Ising Model and Universality}
+\label{ch:volume-ii-ising-universality}
+
+\section{The Finite Lattice Ensemble}
+
+Fix a spatial dimension \(D\geq 1\).  A finite Ising system is specified by a
+finite subset \(\Lambda\subset \mathbb Z^D\), a set \(E(\Lambda)\) of
+nearest-neighbor unordered pairs, and spin variables
+\[
+  s_x\in\{-1,+1\},
+  \qquad x\in\Lambda .
+\]
+For ferromagnetic coupling \(J>0\), external magnetic field \(h\), and inverse
+temperature \(\beta=T^{-1}\) in units with Boltzmann's constant equal to one,
+the energy of a spin configuration \(s=\{s_x\}_{x\in\Lambda}\) is
+\[
+  H_\Lambda(s)
+  =
+  -J\sum_{\langle x y\rangle\in E(\Lambda)}s_xs_y
+  -h\sum_{x\in\Lambda}s_x .
+\]
+The finite-volume partition function and thermal expectation of an observable
+\(F:\{-1,+1\}^{\Lambda}\to\mathbb C\) are
+\[
+  Z_\Lambda(\beta,h)
+  =
+  \sum_{s_x=\pm1}
+  \exp\!\left[-\beta H_\Lambda(s)\right],
+  \qquad
+  \vev{F}_{\Lambda,\beta,h}
+  =
+  Z_\Lambda(\beta,h)^{-1}
+  \sum_{s_x=\pm1}F(s)\,\ee^{-\beta H_\Lambda(s)} .
+\]
+At \(h=0\) the model has the global \(\mathbb Z_2\) symmetry
+\(s_x\mapsto -s_x\) for all \(x\).
+
+The same finite probability space can be written in diagonal operator notation.
+Let
+\[
+  V_x=\operatorname{span}\{\ket{+}_x,\ket{-}_x\},
+  \qquad
+  \Hilb_\Lambda=\bigotimes_{x\in\Lambda}V_x ,
+\]
+and define commuting spin operators by
+\(\hat S_x\ket{s}_\Lambda=s_x\ket{s}_\Lambda\), where
+\(\ket{s}_\Lambda=\bigotimes_x\ket{s_x}_x\).  Then
+\[
+  \hat H_\Lambda
+  =
+  -J\sum_{\langle x y\rangle}\hat S_x\hat S_y
+  -h\sum_x\hat S_x,
+  \qquad
+  Z_\Lambda(\beta,h)
+  =
+  \operatorname{Tr}_{\Hilb_\Lambda}\ee^{-\beta\hat H_\Lambda}.
+\]
+The space \(\Hilb_\Lambda\) in this display is a finite-dimensional
+representation of a classical statistical ensemble.  A continuum Hilbert space,
+when constructed from the scaling limit of Euclidean correlators, is a further
+object obtained after the limit.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (1.5,3.2) {classical configurations};
+      \foreach \x in {0,1,2,3} {
+        \foreach \y in {0,1,2} {
+          \fill[black] (\x,\y) circle (1.5pt);
+        }
+      }
+      \foreach \x in {0,1,2} {
+        \foreach \y in {0,1,2} {
+          \draw[gray!60] (\x,\y)--(\x+1,\y);
+        }
+      }
+      \foreach \x in {0,1,2,3} {
+        \foreach \y in {0,1} {
+          \draw[gray!60] (\x,\y)--(\x,\y+1);
+        }
+      }
+      \foreach \x/\y/\spin in {0/0/+,1/0/-,2/0/-,3/0/+,0/1/-,1/1/+,2/1/-,3/1/-,0/2/+,1/2/+,2/2/-,3/2/+} {
+        \node[blue!70!black] at (\x,\y+0.28) {\(\spin\)};
+      }
+      \node[align=center] at (1.5,-0.65)
+        {\(s_x=\pm1\), \(x\in\Lambda\subset\mathbb Z^D\)};
+    \end{scope}
+
+    \begin{scope}[shift={(5.0,0)}]
+      \node[font=\small] at (0,3.2) {Boltzmann weight};
+      \node[draw=black, rounded corners, align=center, inner sep=7pt] at (0,1.55)
+        {\(\displaystyle
+        \mathbb P_{\beta,h}(s)
+        =
+        Z_\Lambda^{-1}\ee^{-\beta H_\Lambda(s)}
+        \)\\[2pt]
+        \(\displaystyle
+        H_\Lambda=-J\sum_{\langle x y\rangle}s_xs_y-h\sum_xs_x
+        \)};
+    \end{scope}
+
+    \begin{scope}[shift={(9.5,0)}]
+      \node[font=\small] at (0,3.2) {diagonal trace notation};
+      \node[draw=black, rounded corners, align=center, inner sep=7pt] at (0,1.55)
+        {\(\displaystyle
+        \Hilb_\Lambda=\bigotimes_{x\in\Lambda}V_x
+        \)\\[2pt]
+        \(\displaystyle
+        Z_\Lambda=\operatorname{Tr}_{\Hilb_\Lambda}
+        \ee^{-\beta\hat H_\Lambda}
+        \)};
+      \node[align=center, blue!70!black] at (0,-0.65)
+        {all \(\hat S_x\) commute};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]}, thick] (3.55,2.62)--(4.35,2.62);
+    \draw[-{Latex[length=2mm]}, thick] (6.9,2.62)--(7.65,2.62);
+  \end{tikzpicture}
+  }
+  \caption{The statistical Ising model is a probability measure on lattice spin
+  configurations.  Diagonal operators provide an exact finite-volume trace
+  notation for the same measure.}
+  \label{fig:volume-ii-ising-ensemble}
+\end{figure}
+
+For a finite set of energy eigenstates \(n\) with energies \(E_n\), the
+canonical weights
+\[
+  p_n=\frac{1}{Z}\ee^{-\beta E_n},
+  \qquad
+  Z=\sum_n\ee^{-\beta E_n},
+\]
+are obtained by extremizing the Shannon entropy
+\[
+  S[p]=-\sum_n p_n\log p_n
+\]
+subject to \(\sum_np_n=1\) and \(\sum_np_nE_n=U\).  Indeed, the stationary
+point of
+\[
+  S[p]+\alpha\Bigl(\sum_np_n-1\Bigr)
+  +\beta\Bigl(U-\sum_np_nE_n\Bigr)
+\]
+has \(\log p_n=\alpha-1-\beta E_n\), hence the displayed Boltzmann form.
+
+The entropy also has a simple monotonicity statement for symmetric probability
+evolution.  If a finite distribution \(p_n(t)\) obeys
+\[
+  \dot p_n=\sum_m v_{nm}(p_m-p_n),
+  \qquad
+  v_{nm}=v_{mn}\geq0 ,
+\]
+then \(\sum_n\dot p_n=0\) and
+\[
+  \frac{\dd S}{\dd t}
+  =
+  \frac12\sum_{m,n}v_{mn}(p_m-p_n)(\log p_m-\log p_n)\geq0 .
+\]
+This is the finite-state entropy-increase mechanism underlying thermal
+equilibration in the idealized symmetric-rate case.
+
+\section{Spin Correlators and Phases}
+
+The basic observables are spin correlation functions.  At \(h=0\), for
+translation-invariant infinite-volume limits, write
+\[
+  C_\beta(x_1,\ldots,x_n)
+  =
+  \vev{s_{x_1}\cdots s_{x_n}}_\beta .
+\]
+The two-point function at large separation is often summarized by
+\[
+  f_\beta(r)
+  \simeq
+  \vev{s_0s_x}_\beta,
+  \qquad r=|x|.
+\]
+For \(D=2,3\) and ferromagnetic nearest-neighbor coupling, there is a critical
+temperature \(T_c\).  In the ordered region \(T<T_c\), pure infinite-volume
+states selected by boundary conditions or by taking \(h\to0^\pm\) after the
+thermodynamic limit have nonzero magnetization
+\[
+  m_\pm(T)
+  =
+  \lim_{h\to0^\pm}\lim_{\Lambda\nearrow\mathbb Z^D}
+  \vev{s_0}_{\Lambda,\beta,h},
+  \qquad m_+(T)=-m_-(T)\neq0 .
+\]
+The full two-point function tends to \(m_\pm(T)^2\) at large distance in such a
+phase.  The connected correlator
+\[
+  G_\beta(x)
+  =
+  \vev{s_0s_x}_\beta-\vev{s_0}_\beta\vev{s_x}_\beta
+\]
+decays at large \(|x|\) away from criticality.  In the disordered region
+\(T>T_c\),
+\[
+  G_\beta(x)\sim A(T)\,\ee^{-|x|/\xi(T)}
+\]
+up to powers of \(|x|\), where \(\xi(T)\) is the correlation length.  One
+precise definition, when the limit exists along a coordinate direction, is
+\[
+  \xi(T)^{-1}
+  =
+  -\lim_{r\to\infty}\frac1r\log |G_\beta(r e_1)|.
+\]
+At \(T=T_c\), the correlation length diverges and the spin two-point function
+has power-law asymptotics
+\[
+  \vev{s_0s_x}_{\beta_c}
+  \sim
+  \frac{A_\sigma}{|x|^{2\Delta_\sigma}} .
+\]
+The exponent \(\Delta_\sigma\) is the scaling dimension of the continuum spin
+field.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[-{Latex[length=2mm]}, thick] (0,0)--(7.2,0) node[below] {\(r\)};
+    \draw[-{Latex[length=2mm]}, thick] (0,0)--(0,3.1) node[left] {\(f_\beta(r)\)};
+    \draw[green!50!black, very thick]
+      (0,2.45)..controls (1.4,2.15) and (2.7,1.95)..(4.1,1.92)
+      ..controls (5.0,1.90) and (6.0,1.95)..(6.7,1.96);
+    \draw[blue!75!black, very thick]
+      (0,2.45)..controls (1.2,1.7) and (2.4,1.10)..(3.8,0.72)
+      ..controls (5.0,0.43) and (6.0,0.28)..(6.7,0.20);
+    \draw[purple!75!black, very thick]
+      (0,2.45)..controls (0.5,1.45) and (0.95,0.55)..(1.75,0.22)
+      ..controls (2.5,0.06) and (3.4,0.03)..(4.8,0.02);
+    \node[green!50!black] at (5.2,2.25) {\(T<T_c\)};
+    \node[blue!75!black] at (5.1,0.75) {\(T=T_c\)};
+    \node[purple!75!black] at (2.3,0.62) {\(T>T_c\)};
+    \node[green!50!black, align=center] at (2.2,2.35)
+      {ordered\\plateau};
+    \node[blue!75!black, align=center] at (5.7,1.28)
+      {\(f_\beta(r)\sim r^{-2\Delta_\sigma}\)};
+    \node[purple!75!black, align=center] at (4.6,0.34)
+      {\(\exp[-r/\xi(T)]\)};
+  \end{tikzpicture}
+  }
+  \caption{Long-distance spin correlations distinguish the ordered,
+  critical, and disordered regimes.  In the ordered phase the full two-point
+  function approaches the square of the magnetization; the connected correlator
+  still decays away from the critical point.}
+  \label{fig:volume-ii-ising-correlator-regimes}
+\end{figure}
+
+The values relevant for the first Ising universality classes are
+\[
+\begin{array}{c|cc}
+  D & \Delta_\sigma & \nu \\ \hline
+  2 & \frac18 & 1\\[2pt]
+  3 & 0.518\ldots & 0.62998\ldots
+\end{array}
+\]
+where \(\nu\) is defined by the divergence
+\[
+  \xi(T)\sim \xi_0\,|T-T_c|^{-\nu}
+  \qquad (T\to T_c).
+\]
+
+\section{The Scaling Limit}
+
+The continuum Ising field theory is defined from large-distance lattice
+correlators near criticality.  Let \(L\) be a large dimensionless length in
+lattice units, and let \([Lx]\in\Lambda\) denote a nearest lattice point to
+\(Lx\), where \(x\in\mathbb R^D\) is fixed.  Choose a sequence of temperatures
+\(T(L)\to T_c\) such that
+\[
+  \frac{L}{\xi(T(L))}\longrightarrow m\geq0 .
+\]
+The number \(m\) is the mass gap of the continuum scaling limit in the units in
+which the physical position is \(x\).  A spin-field renormalization factor
+\(Z_\sigma(L,T)>0\) is chosen so that the limit
+\[
+  \lim_{\substack{T\to T_c,\ L\to\infty\\ L/\xi(T)\to m}}
+  Z_\sigma(L,T)^{-n/2}
+  \vev{s_{[Lx_1]}\cdots s_{[Lx_n]}}_{\beta(T)}
+  =
+  \vev{\sigma(x_1)\cdots\sigma(x_n)}_{\operatorname{Ising},m}
+\]
+exists for separated points.  At \(m=0\), equivalently at
+\(\xi(T)/L\to\infty\), the limiting theory is the Ising conformal field
+theory.  At criticality \(Z_\sigma(L,T_c)\) may be chosen proportional to
+ \(L^{-2\Delta_\sigma}\), so the rescaled spin insertions have finite
+correlators.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (1.7,3.05) {lattice insertions};
+      \draw[step=0.55, gray!45] (0,0) grid (3.3,2.2);
+      \foreach \x/\y in {0.55/1.65,1.65/1.1,2.75/0.55} {
+        \fill[blue!70!black] (\x,\y) circle (2.4pt);
+      }
+      \node[align=center] at (1.65,-0.45)
+        {\([Lx_i]\) nearest lattice points};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]}, thick] (3.9,1.1)--(5.1,1.1)
+      node[midway, above, align=center] {\(L\to\infty\)\\\(T\to T_c\)};
+
+    \begin{scope}[shift={(5.8,0)}]
+      \node[font=\small] at (1.65,3.05) {continuum fields};
+      \draw[-{Latex[length=2mm]}, gray!70] (0,0)--(3.35,0) node[below] {\(x^1\)};
+      \draw[-{Latex[length=2mm]}, gray!70] (0,0)--(0,2.35) node[left] {\(x^2\)};
+      \foreach \x/\y in {0.55/1.65,1.65/1.1,2.75/0.55} {
+        \fill[purple!75!black] (\x,\y) circle (2.4pt);
+        \node[purple!75!black, above right=-1pt] at (\x,\y) {\(\sigma(x_i)\)};
+      }
+      \node[align=center, blue!70!black] at (1.65,-0.45)
+        {\(L/\xi(T)\to m\)};
+    \end{scope}
+
+    \node[draw=black, rounded corners, align=center, inner sep=7pt]
+      at (5.0,-1.45)
+      {\(\displaystyle
+        Z_\sigma^{-n/2}\,
+        \vev{s_{[Lx_1]}\cdots s_{[Lx_n]}}
+        \longrightarrow
+        \vev{\sigma(x_1)\cdots\sigma(x_n)}_{\operatorname{Ising},m}
+      \)};
+  \end{tikzpicture}
+  }
+  \caption{The Ising field theory is the continuum scaling limit of
+  long-distance spin correlators.  The parameter \(m\) is the mass gap in the
+  limiting continuum units, and \(m=0\) gives the critical conformal theory.}
+  \label{fig:volume-ii-ising-scaling-limit}
+\end{figure}
+
+The operator dictionary at the critical fixed point begins with
+\[
+  \sigma(x)\longleftrightarrow \phi(x),
+  \qquad
+  \varepsilon(x)\longleftrightarrow \phi^2(x).
+\]
+Here \(\sigma\) is the spin field, and \(\varepsilon\) is the energy operator,
+the scalar operator coupled to the temperature deformation.  The normalization
+of either field is conventional; their scaling dimensions are invariant data.
+The relation between the energy dimension and the exponent \(\nu\) is
+\[
+  \Delta_\varepsilon
+  =
+  D-\frac1\nu .
+\]
+
+\section{A Lattice Scalar Path Integral}
+
+The Ising variables may be enlarged from two values to a real local variable
+without changing the long-distance fixed point, provided the relevant
+\(\mathbb Z_2\)-even coupling is tuned.  Let \(P:\mathbb R\to\mathbb R\) be an
+even single-site potential with sufficient growth at infinity.  The generalized
+Ising partition function is
+\[
+  \widetilde Z_\Lambda
+  =
+  \int\prod_{x\in\Lambda}\dd s_x\,
+  \exp\!\left[-P(s_x)\right]\,
+  \exp\!\left[\beta\sum_{\langle x y\rangle}s_xs_y\right].
+\]
+Equivalently,
+\[
+  \widetilde Z_\Lambda
+  =
+  \int\prod_{x\in\Lambda}\dd s_x\,\ee^{-S_\Lambda(s)}
+\]
+with
+\[
+  S_\Lambda(s)
+  =
+  \frac{\beta}{2}\sum_{\langle x y\rangle}(s_x-s_y)^2
+  +
+  \sum_{x\in\Lambda}\bigl(P(s_x)-\beta D\,s_x^2\bigr),
+\]
+where each positive lattice direction is counted once.  The identity follows
+from
+\[
+  \sum_{\langle x y\rangle}(s_x-s_y)^2
+  =
+  2D\sum_xs_x^2-2\sum_{\langle x y\rangle}s_xs_y
+\]
+on a periodic hypercubic lattice.
+
+For an infinite hypercubic lattice with unit spacing, introduce the Brillouin
+zone
+\[
+  B=[-\pi,\pi]^D
+\]
+and write
+\[
+  s_x
+  =
+  \int_B\frac{\dd^Dk}{(2\pi)^D}\,
+  \widetilde\phi(k)\,\ee^{\ii k\cdot x},
+  \qquad
+  \widetilde\phi(k+2\pi n)=\widetilde\phi(k),
+  \quad n\in\mathbb Z^D .
+\]
+The cutoff \(|k^\mu|\leq\pi\) is a finite ultraviolet cutoff.  The nearest
+neighbor kinetic term becomes
+\[
+  \sum_{\langle x y\rangle}(s_x-s_y)^2
+  =
+  \int_B\frac{\dd^Dk}{(2\pi)^D}\,
+  \widetilde\phi(-k)\widetilde\phi(k)
+  \sum_{\mu=1}^D\left|\ee^{\ii k_\mu}-1\right|^2 .
+\]
+For small momentum,
+\[
+  \sum_{\mu=1}^D\left|\ee^{\ii k_\mu}-1\right|^2
+  =
+  k^2-\frac1{12}\sum_{\mu=1}^D k_\mu^4+O(k^6).
+\]
+Thus the long-distance action has the form
+\[
+  S[\phi]
+  =
+  \int \dd^Dx
+  \left[
+    \frac{\beta}{2}\sum_{\mu=1}^D(\partial_\mu\phi)^2
+    +
+    V_\beta(\phi)
+    -
+    \frac{\beta}{24}\sum_{\mu=1}^D(\partial_\mu^2\phi)^2
+    +\cdots
+  \right],
+\]
+with \(V_\beta(\phi)=P(\phi)-\beta D\phi^2\) plus local terms generated by the
+field normalization convention.  The higher-derivative terms reflect the
+lattice cutoff and the breaking of continuous rotations to the hypercubic
+lattice symmetry.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (0,2.85) {single-site measure};
+      \draw[-{Latex[length=2mm]}, thick] (-1.4,0)--(1.45,0) node[below] {\(s\)};
+      \draw[-{Latex[length=2mm]}, thick] (0,-0.25)--(0,2.15) node[left] {\(P(s)\)};
+      \draw[blue!70!black, very thick]
+        plot[smooth] coordinates {(-1.3,1.9) (-0.75,0.35) (0,1.15) (0.75,0.35) (1.3,1.9)};
+      \node[blue!70!black] at (0,-0.55) {\(\mathbb Z_2\)-even};
+    \end{scope}
+
+    \begin{scope}[shift={(4.2,0)}]
+      \node[font=\small] at (0,2.85) {cutoff momentum space};
+      \draw[thick] (-1.3,-1.3) rectangle (1.3,1.3);
+      \draw[-{Latex[length=2mm]}, gray!70] (-1.65,0)--(1.8,0) node[below] {\(k^1\)};
+      \draw[-{Latex[length=2mm]}, gray!70] (0,-1.65)--(0,1.8) node[left] {\(k^2\)};
+      \node at (-1.3,-1.55) {\(-\pi\)};
+      \node at (1.3,-1.55) {\(\pi\)};
+      \node[align=center, blue!70!black] at (0,-2.0)
+        {Brillouin zone \(B\)};
+    \end{scope}
+
+    \begin{scope}[shift={(8.8,0)}]
+      \node[font=\small] at (0,2.85) {derivative expansion};
+      \node[draw=black, rounded corners, align=center, inner sep=7pt] at (0,0.85)
+        {\(\displaystyle
+        \frac{\beta}{2}(\partial\phi)^2+V_\beta(\phi)
+        \)\\[2pt]
+        \(\displaystyle
+        -\,\frac{\beta}{24}\sum_\mu(\partial_\mu^2\phi)^2+\cdots
+        \)};
+      \node[align=center, purple!75!black] at (0,-1.05)
+        {irrelevant lattice\\anisotropy};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]}, thick] (1.85,0.75)--(3.05,0.75);
+    \draw[-{Latex[length=2mm]}, thick] (5.9,0.75)--(7.25,0.75);
+  \end{tikzpicture}
+  }
+  \caption{The generalized Ising model may be rewritten as a scalar lattice
+  path integral.  The single-site measure supplies the potential, the nearest
+  neighbor interaction supplies the kinetic term, and the Brillouin zone gives
+  a finite ultraviolet cutoff.}
+  \label{fig:volume-ii-ising-lattice-scalar}
+\end{figure}
+
+\section{Universality as Fixed-Point Attraction}
+
+The lattice scalar action just constructed and the continuum quartic scalar
+action differ in their short-distance coordinates.  The lattice action has a
+finite cutoff, lattice-anisotropic derivative terms, and many allowed local
+couplings such as \(\phi^6\) and higher powers or derivatives.  These
+differences define distinct points in the same large theory space.  In
+\(D=2,3\), after the relevant \(\mathbb Z_2\)-even coupling is tuned to
+criticality, their long-distance trajectories approach the same Ising fixed
+point.
+
+Near the fixed point, write a general local deformation as
+\[
+  \Delta S
+  =
+  \int\dd^Dx\,
+  \left(
+    h\,\sigma(x)
+    +
+    \delta m^2\,\varepsilon(x)
+    +
+    \sum_I\delta g_I\,O_I(x)
+  \right),
+  \qquad
+  \Delta_I=\dim O_I .
+\]
+The coupling \(\delta g_I\) has mass dimension \(D-\Delta_I\).  At a physical
+mass scale \(\mu\), the dimensionless strength of this perturbation is
+\[
+  \delta g_I\,\mu^{\Delta_I-D}.
+\]
+If \(\Delta_I>D\), this strength tends to zero as \(\mu\to0\).  These are the
+irrelevant perturbations.  They account for microscopic differences such as
+the choice of square or hexagonal lattice, the details of \(P(s)\), and
+higher-derivative cutoff terms.
+
+The two relevant scalar directions of the Ising fixed point are the spin field
+\(\sigma\) and the energy field \(\varepsilon\):
+\[
+  \Delta_\sigma<D,
+  \qquad
+  \Delta_\varepsilon=D-\frac1\nu<D .
+\]
+The magnetic field \(h\) couples to \(\sigma\).  The temperature deviation
+couples to \(\varepsilon\):
+\[
+  \Delta S_T
+  =
+  \int\dd^Dx\,\delta m^2\,\varepsilon(x),
+  \qquad
+  \delta m^2\propto T-T_c .
+\]
+Since \(\delta m^2\) has dimension \(D-\Delta_\varepsilon\), it generates the
+correlation length
+\[
+  \xi(T)
+  \propto
+  |\delta m^2|^{-1/(D-\Delta_\varepsilon)}
+  \propto
+  |T-T_c|^{-\nu}.
+\]
+This relation is the RG origin of the exponent \(\nu\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,3.6) {theory space near the Ising fixed point};
+    \fill[purple!80!black] (0,0) circle (3pt);
+
+    \node[draw=black, rounded corners, align=center, fill=blue!7, inner sep=5pt]
+      (phi) at (-4.2,2.2)
+      {continuum scalar\\quartic actions};
+    \node[draw=black, rounded corners, align=center, fill=green!7, inner sep=5pt]
+      (lat) at (4.2,2.2)
+      {Ising lattice\\actions};
+    \node[draw=black, rounded corners, align=center, fill=gray!8, inner sep=5pt]
+      (irr) at (0,2.75)
+      {irrelevant local\\differences};
+
+    \draw[-{Latex[length=2mm]}, very thick, blue!75!black]
+      (phi.south east)..controls (-2.5,1.2) and (-1.3,0.55)..(-0.15,0.1);
+    \draw[-{Latex[length=2mm]}, very thick, green!50!black]
+      (lat.south west)..controls (2.5,1.2) and (1.3,0.55)..(0.15,0.1);
+    \foreach \x in {-1.5,-0.7,0.7,1.5} {
+      \draw[-{Latex[length=2mm]}, gray!70, thick]
+        (\x,2.25)..controls (0.6*\x,1.55) and (0.25*\x,0.8)..(0.05*\x,0.18);
+    }
+
+    \draw[-{Latex[length=2mm]}, red!75!black, very thick]
+      (0,0)--(0,-2.0);
+    \node[red!75!black, align=center] at (1.85,-1.15)
+      {temperature or mass\\deformation};
+    \node[blue!70!black, align=center] at (-2.55,-1.35)
+      {critical tuning\\sets this coordinate to zero};
+    \draw[-{Latex[length=2mm]}, blue!70!black] (-1.8,-1.1)--(-0.2,-0.25);
+    \node[purple!80!black, align=center, fill=white, inner sep=2pt,
+      anchor=east]
+      at (-0.25,0.72)
+      {Ising CFT\\fixed point};
+  \end{tikzpicture}
+  }
+  \caption{Universality is fixed-point attraction in theory space.  Lattice
+  spin models and scalar field theories can have different ultraviolet
+  coordinates while their critical trajectories approach the same Ising fixed
+  point.  Relevant deformations move the theory away from criticality and
+  produce massive scaling limits.}
+  \label{fig:volume-ii-ising-universality-rg}
+\end{figure}
+
+Thus the statistical Ising model supplies a precise bridge from microscopic
+lattice ensembles to continuum Euclidean QFT.  The bridge is made by
+correlators: after tuning the relevant directions and rescaling fields, the
+large-distance spin correlators become correlators of local fields at, or near,
+the Ising fixed point.

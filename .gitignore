@@ -1,0 +1,64 @@
+# macOS and editor state
+.DS_Store
+.AppleDouble
+.LSOverride
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python and local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Node or web tooling, if introduced later
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# LaTeX build products
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.xdv
+*.xmpi
+
+# Project-specific generated output
+monograph/tex/build/
+monograph/tex/*.pdf
+transcription/build/
+transcription/ocr_json/
+transcription/source_pdfs/
+transcription/drafts/
+transcription/qft_notes.pdf
+
+# Local source/reference shelf not intended for GitHub
+references/**/*.pdf
+references/**/*.txt
+references/*.tex
+
+# Temporary local notes
+*.tmp
+*.bak
+*.orig

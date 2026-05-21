@@ -1,0 +1,579 @@
+\chapter{Spinor Fields, Fermionic Statistics, and Grassmann Path Integrals}
+\label{ch:spinor-fields-fermionic-path-integrals}
+
+\section{The Free Dirac Field}
+
+Work in \(D=4\) with
+\[
+  \eta_{\mu\nu}=\operatorname{diag}(-,+,+,+),
+  \qquad
+  \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}.
+\]
+Set
+\[
+  \not\partial=\gamma^\mu\partial_\mu,
+  \qquad
+  \not p=p_\mu\gamma^\mu,
+  \qquad
+  \beta=\ii\gamma^0 .
+\]
+For a spinor \(s\), its Dirac adjoint is
+\[
+  \bar s=s^\dagger\beta .
+\]
+
+Let \(u^\sigma(p)\) and \(v^\sigma(p)\), \(\sigma=1,2\), be the spinor
+intertwiners on the positive-energy mass shell \(\Sigma_m^+\) constructed in
+the previous chapter:
+\[
+  (\not p-\ii m)u^\sigma(p)=0,
+  \qquad
+  (\not p+\ii m)v^\sigma(p)=0.
+\]
+Let
+\[
+  \dd\mu_m(p)
+  =
+  \frac{\dd^3\vec p}{(2\pi)^3\,2\omega_{\vec p}},
+  \qquad
+  \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
+  \qquad
+  p^0=\omega_{\vec p}.
+\]
+Introduce two independent families of fermionic creation and annihilation
+operators
+\[
+  b_\sigma(\vec p),\ b_\sigma^\dagger(\vec p),
+  \qquad
+  d_\sigma(\vec p),\ d_\sigma^\dagger(\vec p),
+\]
+with canonical anticommutation relations
+\[
+  \{b_\sigma(\vec p),b_\tau^\dagger(\vec q)\}
+  =
+  (2\pi)^3\,2\omega_{\vec p}\,
+  \delta_{\sigma\tau}\delta^3(\vec p-\vec q),
+\]
+\[
+  \{d_\sigma(\vec p),d_\tau^\dagger(\vec q)\}
+  =
+  (2\pi)^3\,2\omega_{\vec p}\,
+  \delta_{\sigma\tau}\delta^3(\vec p-\vec q),
+\]
+all other anticommutators being zero. The vacuum vector \(\Omega\) is
+annihilated by all \(b_\sigma(\vec p)\) and \(d_\sigma(\vec p)\).
+
+The charged Dirac field is the operator-valued distribution
+\[
+  \widehat\psi_\alpha(x)
+  =
+  \sum_{\sigma=1}^2
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,
+  \left[
+    v_\alpha^\sigma(p)b_\sigma^\dagger(\vec p)\ee^{-\ii p\cdot x}
+    +
+    u_\alpha^\sigma(p)d_\sigma(\vec p)\ee^{\ii p\cdot x}
+  \right].
+\]
+Its adjoint field is
+\[
+  \widehat{\bar\psi}^{\alpha}(x)
+  =
+  \bigl(\widehat\psi^\dagger(x)\beta\bigr)^\alpha .
+\]
+Because of the two momentum-space Dirac equations above,
+\[
+  (\not\partial+m)\widehat\psi(x)=0,
+  \qquad
+  \widehat{\bar\psi}(x)(-\overleftarrow{\not\partial}+m)=0,
+\]
+where the arrow indicates that the derivative acts on the field to its left.
+
+The convention in this chapter assigns charge \(+1\) to the one-particle
+states created by \(b^\dagger\) and charge \(-1\) to the states created by
+\(d^\dagger\). If
+\[
+  U_\theta=\ee^{\ii\theta \widehat Q},
+  \qquad
+  U_\theta\Omega=\Omega ,
+\]
+then
+\[
+  U_\theta\widehat\psi_\alpha(x)U_\theta^{-1}
+  =
+  \ee^{\ii\theta}\widehat\psi_\alpha(x),
+  \qquad
+  U_\theta\widehat{\bar\psi}^{\alpha}(x)U_\theta^{-1}
+  =
+  \ee^{-\ii\theta}\widehat{\bar\psi}^{\alpha}(x).
+\]
+
+\section{Locality and the CAR}
+
+Define the positive-frequency scalar distribution
+\[
+  \Delta_+(x;m^2)
+  =
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,\ee^{\ii p\cdot x}.
+\]
+With the spinor normalizations fixed by the one-particle inner product, the
+field anticommutator is
+\[
+  \{\widehat\psi_\alpha(x),\widehat{\bar\psi}^{\beta}(y)\}
+  =
+  (-\not\partial_x+m)_\alpha{}^\beta
+  \left[
+    \Delta_+(x-y;m^2)-\Delta_+(y-x;m^2)
+  \right].
+\]
+The bracketed distribution is the Pauli--Jordan distribution up to the
+normalization convention already used for the scalar field. It vanishes at
+spacelike separation. Hence
+\[
+  \{\widehat\psi_\alpha(x),\widehat{\bar\psi}^{\beta}(y)\}=0
+  \qquad\text{when }(x-y)^2>0.
+\]
+The equal-time anticommutator is obtained by differentiating the
+Pauli--Jordan distribution:
+\[
+  \{\widehat\psi_\alpha(t,\vec x),
+    \widehat{\bar\psi}^{\beta}(t,\vec y)\}
+  =
+  \ii(\gamma^0)_\alpha{}^\beta\delta^3(\vec x-\vec y),
+\]
+and
+\[
+  \{\widehat\psi_\alpha(t,\vec x),\widehat\psi_\beta(t,\vec y)\}=0,
+  \qquad
+  \{\widehat{\bar\psi}^{\alpha}(t,\vec x),
+    \widehat{\bar\psi}^{\beta}(t,\vec y)\}=0.
+\]
+
+The local algebra is therefore a graded local algebra. If \(|A|\in\{0,1\}\)
+is the fermion parity of a homogeneous operator \(A\), the graded commutator is
+\[
+  [A,B]_{\mathrm g}
+  =
+  AB-(-1)^{|A||B|}BA .
+\]
+Locality is the vanishing of this graded commutator for spacelike separated
+smeared fields. The Dirac field has parity \(1\), while bosonic local fields
+have parity \(0\).
+
+\begin{remark}
+The preceding computation is the free spin-\(\frac12\) instance of the
+spin-statistics connection. In a Wightman setting with positivity of energy,
+locality, covariance, and the usual domain assumptions, the spin-statistics
+theorem identifies integer-spin fields with even local commutation and
+half-integer-spin fields with odd local anticommutation. This chapter uses the
+theorem only as orientation; the displayed anticommutator is the direct
+verification needed for the free Dirac field used below.
+\end{remark}
+
+\section{Dirac, Weyl, and Majorana Fields}
+
+The Dirac field transforms in the spinor representation:
+\[
+  U(\Lambda)\widehat\psi_\alpha(x)U(\Lambda)^{-1}
+  =
+  R_\alpha{}^\beta(\Lambda)\widehat\psi_\beta(\Lambda x),
+\]
+where
+\[
+  R(\Lambda)
+  =
+  \exp\!\left(-\frac{\ii}{2}\omega_{\mu\nu}S^{\mu\nu}\right),
+  \qquad
+  S^{\mu\nu}=-\frac{\ii}{4}[\gamma^\mu,\gamma^\nu],
+\]
+for \(\Lambda=\exp\omega\). The field \(\widehat\psi\) has four complex
+components before additional Lorentz-covariant conditions are imposed.
+
+Define
+\[
+  \gamma_5=-\ii\gamma^0\gamma^1\gamma^2\gamma^3 .
+\]
+It obeys
+\[
+  \gamma_5^2=1,
+  \qquad
+  \{\gamma_5,\gamma^\mu\}=0,
+  \qquad
+  [\gamma_5,S^{\mu\nu}]=0.
+\]
+Therefore
+\[
+  P_\pm=\frac{1\pm\gamma_5}{2}
+\]
+are Lorentz-covariant projectors. A Weyl spinor field is a Dirac spinor field
+subject to
+\[
+  \widehat\chi_\pm=P_\pm\widehat\chi_\pm .
+\]
+The two chiralities are inequivalent complex representations of
+\(\operatorname{Spin}^+(1,3)\). The Dirac mass term couples them because
+\(\gamma^\mu\) maps one chirality to the other.
+
+A Majorana condition is a Lorentz-covariant reality condition. Suppose a
+matrix \(B\) is chosen so that
+\[
+  (\gamma^\mu)^*=B\gamma^\mu B^{-1},
+  \qquad
+  B^{-1}(B^{-1})^*=1.
+\]
+Here \( * \) denotes the antilinear operation on spinor components, combined
+with componentwise adjunction when it is applied to operator-valued spinor
+fields. Then
+\[
+  \widehat\psi^c=B^{-1}\widehat\psi^*
+\]
+transforms in the same Lorentz representation as \(\widehat\psi\). A Majorana
+field satisfies
+\[
+  \widehat\xi=\widehat\xi^c .
+\]
+If \(\widehat\chi_+=P_+\widehat\chi_+\) is a Weyl field, then
+\[
+  \widehat\xi
+  =
+  \widehat\chi_+
+  +
+  B^*\widehat\chi_+^*
+\]
+is Majorana, and
+\[
+  P_+\widehat\xi=\widehat\chi_+ .
+\]
+Thus in four dimensions a Majorana spinor is equivalent, as Lorentz
+representation data, to one Weyl spinor together with its conjugate.
+
+\section{Berezin Calculus}
+
+Let \(\Lambda_N\) be the complex Grassmann algebra generated by
+\[
+  \eta_1,\ldots,\eta_N
+\]
+with relations
+\[
+  \eta_a\eta_b=-\eta_b\eta_a,
+  \qquad
+  \eta_a^2=0.
+\]
+A homogeneous monomial has parity equal to its degree modulo \(2\). If \(X\)
+and \(Y\) are homogeneous, then
+\[
+  XY=(-1)^{|X||Y|}YX
+\]
+when every generator appearing in \(X\) is distinct from every generator
+appearing in \(Y\).
+
+The left derivative \(\partial^L/\partial\eta_a\) is defined by
+\[
+  \frac{\partial^L}{\partial\eta_a}\eta_b=\delta_{ab},
+  \qquad
+  \frac{\partial^L}{\partial\eta_a}(XY)
+  =
+  \frac{\partial^L X}{\partial\eta_a}Y
+  +
+  (-1)^{|X|}X\frac{\partial^L Y}{\partial\eta_a}
+\]
+for homogeneous \(X\). Berezin integration is the same algebraic operation:
+\[
+  \int\dd\eta_a\,1=0,
+  \qquad
+  \int\dd\eta_a\,\eta_a=1.
+\]
+For \(N\) generators the ordered integral is fixed by
+\[
+  \int\dd\eta_N\cdots\dd\eta_1\,
+  \eta_1\eta_2\cdots\eta_N
+  =
+  1.
+\]
+
+For independent pairs \(\eta_a,\bar\eta_a\), \(a=1,\ldots,N\), and an
+invertible \(N\times N\) complex matrix \(A\), use the ordered measure
+\[
+  [\dd\bar\eta\,\dd\eta]
+  =
+  \prod_{a=1}^N\dd\bar\eta_a\,\dd\eta_a .
+\]
+With this convention,
+\[
+  \int[\dd\bar\eta\,\dd\eta]\,
+  \exp\left(-\bar\eta_a A^a{}_b\eta_b\right)
+  =
+  \det A .
+\]
+Adding Grassmann sources \(J,\bar J\),
+\[
+\begin{aligned}
+  &\int[\dd\bar\eta\,\dd\eta]\,
+  \exp\left(
+    -\bar\eta_a A^a{}_b\eta_b
+    +\bar J\eta+\bar\eta J
+  \right)  \\
+  &\hspace{2.2cm}
+  =
+  \det A\,
+  \exp\left(\bar J A^{-1}J\right).
+\end{aligned}
+\]
+The normalized two-point contraction is
+\[
+  \langle\eta_a\bar\eta_b\rangle_A
+  =
+  (A^{-1})_a{}^b .
+\]
+Higher Gaussian moments are obtained by repeated contractions, with the sign
+determined by the number of odd variables moved past one another to bring a
+contracted pair together.
+
+\section{The Fermionic Coherent-State Path Integral}
+
+The elementary complex fermionic system has two operators
+\[
+  \widehat\eta,\qquad \widehat\chi,
+\]
+obeying
+\[
+  \{\widehat\eta,\widehat\chi\}=1,
+  \qquad
+  \widehat\eta^2=\widehat\chi^2=0.
+\]
+On the two-dimensional Hilbert space with basis \(\ket{0},\ket{1}\), choose
+\[
+  \widehat\eta\ket{0}=0,\qquad
+  \widehat\eta\ket{1}=\ket{0},
+  \qquad
+  \widehat\chi\ket{0}=\ket{1},\qquad
+  \widehat\chi\ket{1}=0.
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \node[gray!70] (nullL) at (-1.25,0) {\(0\)};
+  \node[draw,circle,minimum size=0.95cm] (zero) at (0,0) {\(\ket{0}\)};
+  \node[draw,circle,minimum size=0.95cm] (one) at (4,0) {\(\ket{1}\)};
+  \node[gray!70] (nullR) at (5.25,0) {\(0\)};
+  \draw[->,thick,blue!70!black]
+    (zero) to[bend left=28] node[above] {\(\widehat\chi\)} (one);
+  \draw[->,thick,green!50!black]
+    (one) to[bend left=28] node[below] {\(\widehat\eta\)} (zero);
+  \draw[->,gray!65] (zero) -- (nullL)
+    node[midway,above] {\(\widehat\eta\)};
+  \draw[->,gray!65] (one) -- (nullR)
+    node[midway,above] {\(\widehat\chi\)};
+\end{tikzpicture}
+\end{center}
+
+For a Grassmann parameter \(\eta\), define the right coherent ket
+\[
+  \ket{\eta}=\ket{0}+\ket{1}\eta ,
+\]
+so that
+\[
+  \widehat\eta\ket{\eta}=\ket{\eta}\eta .
+\]
+Define the dual coherent bra by
+\[
+  \langle\!\langle\chi|
+  =
+  -\bra{1}+\chi\bra{0}.
+\]
+It satisfies
+\[
+  \langle\!\langle\chi|\eta\rangle=\chi-\eta .
+\]
+The resolution of the identity is
+\[
+  \int\ket{\eta}\,\dd\eta\,\langle\!\langle\eta|
+  =
+  \mathbf 1 .
+\]
+
+Let
+\[
+  U(T)=\ee^{-\ii \widehat H T}.
+\]
+Insert the coherent-state resolution of identity at times
+\[
+  0=t_0<t_1<\cdots<t_N=T,
+  \qquad
+  t_{n+1}-t_n=\varepsilon=T/N.
+\]
+With \(\eta_0=\eta_i\) and \(\eta_N=\eta_f\), the time-sliced kernel is
+\[
+\begin{aligned}
+  \langle\!\langle\eta_f|U(T)|\eta_i\rangle
+  =
+  \lim_{N\to\infty}
+  \int
+  \prod_{n=0}^{N-1}\dd\chi_n
+  \prod_{n=1}^{N-1}\dd\eta_n\,
+  \exp
+  \sum_{n=0}^{N-1}
+  \left[
+    -\chi_n(\eta_{n+1}-\eta_n)
+    -\ii\varepsilon H(\chi_n,\eta_n)
+  \right].
+\end{aligned}
+\]
+The continuum notation for the same construction is
+\[
+  \int D\chi\,D\eta\,
+  \exp\left\{
+    \int_0^T\dd t\,
+    \left[-\chi\dot\eta-\ii H(\chi,\eta)\right]
+  \right\}.
+\]
+Equivalently, with the first-order action
+\[
+  S[\chi,\eta]
+  =
+  \int_0^T\dd t\,\left[\ii\chi\dot\eta-H(\chi,\eta)\right],
+\]
+the kernel is written formally as a Grassmann path integral with weight
+\(\ee^{\ii S}\). The time-sliced expression is the regulated meaning of this
+continuum notation.
+
+\section{Dirac Functional Integrals and Propagators}
+
+For a classical Grassmann spinor field \(\psi_\alpha(x)\), define
+\[
+  \bar\psi^\alpha(x)
+  =
+  \bigl(\psi^\dagger(x)\beta\bigr)^\alpha .
+\]
+The free Dirac Lagrangian density in the conventions of this volume is
+\[
+  \mathcal L_{\mathrm D}
+  =
+  -\bar\psi(\not\partial+m)\psi .
+\]
+Its Euler--Lagrange equation is
+\[
+  (\not\partial+m)\psi=0.
+\]
+The formal Lorentzian generating functional is normalized so that
+\[
+\begin{aligned}
+  Z[\bar J,J]
+  &=
+  \int D\bar\psi\,D\psi\,
+  \exp\left[
+    \ii\int\dd^4x\,\mathcal L_{\mathrm D}
+    +
+    \ii\int\dd^4x\,
+    \bigl(\bar J\psi+\bar\psi J\bigr)
+  \right]  \\
+  &=
+  Z[0,0]\,
+  \exp\left[
+    -\ii\int\dd^4x\,\dd^4y\,
+    \bar J^\alpha(x)
+    S_{F,\alpha}{}^\beta(x-y)
+    J_\beta(y)
+  \right],
+\end{aligned}
+\]
+where \(J\) and \(\bar J\) are Grassmann sources. The Feynman two-point
+function is
+\[
+  S_{F,\alpha}{}^\beta(x-y)
+  =
+  \langle\Omega|
+  \operatorname T\{
+    \widehat\psi_\alpha(x)\widehat{\bar\psi}^{\beta}(y)
+  \}
+  |\Omega\rangle .
+\]
+It is the Feynman inverse of \(\not\partial+m\):
+\[
+  S_F(x;m)
+  =
+  (-\not\partial_x+m)\Delta_F(x;m^2).
+\]
+Using the scalar convention
+\[
+  \Delta_F(x;m^2)
+  =
+  -\ii
+  \int\frac{\dd^4k}{(2\pi)^4}
+  \frac{\ee^{\ii k\cdot x}}{k^2+m^2-\ii\epsilon},
+\]
+one obtains
+\[
+  S_F(k)
+  =
+  \frac{-\ii(-\ii\not k+m)}
+       {k^2+m^2-\ii\epsilon}.
+\]
+The numerator is the spinor projector algebra of the previous chapter, while
+the denominator is the scalar mass-shell pole with the Feynman boundary value.
+
+\section{Spinor Spectral Poles and LSZ}
+
+Let an interacting theory have a global \(U(1)\) charge \(\widehat Q\), a
+vacuum satisfying \(\widehat Q\Omega=0\), and an isolated massive
+spin-\(\frac12\) one-particle sector of mass \(m\) and charge \(+1\). Let
+\(\widehat\psi_\alpha\) be a local spinor field of charge \(+1\) with nonzero
+overlap with this sector. After choosing the phase of one-particle states,
+write
+\[
+  \langle\vec p,\sigma,+|\widehat\psi_\alpha(x)|\Omega\rangle
+  =
+  Z_\psi^{1/2}\,
+  \ee^{-\ii p\cdot x}v_\alpha^\sigma(p),
+  \qquad
+  Z_\psi\ge0 .
+\]
+The conjugate field has the corresponding overlap with the charge \(-1\)
+sector,
+\[
+  \langle\vec p,\sigma,-|
+  \widehat{\bar\psi}^{\alpha}(x)|\Omega\rangle
+  =
+  Z_\psi^{1/2}\,
+  \ee^{-\ii p\cdot x}\bar u^{\sigma,\alpha}(p),
+\]
+with the same pole residue after the phase convention is fixed.
+
+The time-ordered two-point function then has the one-particle pole
+\[
+  \langle\Omega|
+  \operatorname T\{
+    \widehat\psi_\alpha(x)\widehat{\bar\psi}^{\beta}(y)
+  \}
+  |\Omega\rangle
+  =
+  Z_\psi
+  (-\not\partial_x+m)_\alpha{}^\beta
+  \Delta_F(x-y;m^2)
+  +
+  G_{\alpha}{}^{\beta,\mathrm{cont}}(x-y),
+\]
+where \(G^{\mathrm{cont}}\) is the contribution from states outside the
+isolated one-particle mass shell. In momentum space the pole term is
+\[
+  Z_\psi
+  \frac{-\ii(-\ii\not k+m)_\alpha{}^\beta}
+       {k^2+m^2-\ii\epsilon}.
+\]
+
+Spinorial LSZ reduction applies the same Haag--Ruelle and pole-extraction
+logic as the scalar case. The difference is that the residue has spinor
+indices. Amputation of an external spinor leg therefore consists of:
+\[
+  \text{multiply by }(k^2+m^2),\qquad
+  \text{take }k^0\to\omega_{\vec k},\qquad
+  \text{contract with }u^\sigma(p)\text{ or }v^\sigma(p),
+\]
+with the choice of \(u\) or \(v\) determined by the external charge and by
+whether the particle is incoming or outgoing. Thus external spinor factors in
+perturbative scattering are the one-particle pole intertwiners of local
+spinor fields.
+
+The next chapter turns to massless particles. The logical input will again be
+the one-particle representation theory, now with the massless little group and
+helicity replacing the massive \(SU(2)\) spin label.

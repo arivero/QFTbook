@@ -1,0 +1,583 @@
+\chapter{Wilsonian Effective Actions and Exact Cutoff Flow}
+\label{ch:vol2-wilsonian-effective-actions}
+
+\section{Smooth Cutoffs and Effective Actions}
+
+We work in Euclidean signature on \(\R^D\), first for one real scalar field.
+Fourier transforms are normalized by
+\[
+  \phi(x)=\int\frac{\dd^Dk}{(2\pi)^D}\,
+  \ee^{\ii k\cdot x}\widehat\phi(k),
+  \qquad
+  \widehat\phi(k)=\int\dd^Dx\,\ee^{-\ii k\cdot x}\phi(x).
+\]
+For compactness, write
+\[
+  \int_k F(k):=\int\frac{\dd^Dk}{(2\pi)^D}\,F(k),
+  \qquad
+  \frac{\delta\widehat\phi(p)}{\delta\widehat\phi(k)}
+  =(2\pi)^D\delta^{(D)}(p-k).
+\]
+
+Let \(\chi:[0,\infty)\to[0,\infty)\) be a smooth cutoff profile such that
+\(\chi(t)=1+O(t)\) for \(t\ll 1\) and \(\chi(t)\) decreases rapidly for
+\(t\gg 1\).  At cutoff scale \(\Lambda>0\), define
+\[
+  \chi_\Lambda(k):=\chi(k^2/\Lambda^2),
+  \qquad
+  C_\Lambda(k):=\frac{\chi_\Lambda(k)}{k^2+m^2}.
+\]
+Here \(m^2\geq0\) is the mass parameter in the quadratic kernel.  The
+Wilsonian action at scale \(\Lambda\) is written
+\begin{equation}
+  S_\Lambda[\phi]
+  =
+  S_{\mathrm{kin},\Lambda}[\phi]+L_\Lambda[\phi],
+  \label{eq:wilsonian-action-split}
+\end{equation}
+where
+\begin{equation}
+  S_{\mathrm{kin},\Lambda}[\phi]
+  =
+  \frac12\int_k
+  \widehat\phi(-k)\,
+  \frac{k^2+m^2}{\chi_\Lambda(k)}\,
+  \widehat\phi(k).
+  \label{eq:smooth-cutoff-kinetic-term}
+\end{equation}
+Perturbation theory around this Gaussian measure uses \(C_\Lambda(k)\) as
+propagator.  The cutoff is therefore part of the definition of the covariance,
+so every propagator in the Gaussian expansion carries the same regulated
+kernel.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (2.2,2.82) {smooth cutoff profile};
+      \draw[-{Latex[length=2mm]}] (-0.15,0)--(4.4,0)
+        node[below] {\(t=k^2/\Lambda^2\)};
+      \draw[-{Latex[length=2mm]}] (0,-0.15)--(0,2.25)
+        node[left] {\(\chi(t)\)};
+      \draw[dashed,gray] (1.65,0)--(1.65,1.55);
+      \draw[dashed,gray] (0,1.55)--(1.65,1.55);
+      \node[below] at (1.65,-0.03) {\(1\)};
+      \node[left] at (-0.03,1.55) {\(1\)};
+      \draw[blue!65!black,very thick]
+        (0,1.55)--(1.28,1.55)
+        .. controls (1.55,1.54) and (1.62,1.15) .. (1.72,0.62)
+        .. controls (1.84,0.10) and (2.45,0.04) .. (4.0,0.04);
+      \node[align=center,blue!65!black] at (1.35,2.02)
+        {low momenta\\unchanged};
+      \node[align=center,blue!65!black] at (3.2,0.72)
+        {rapid\\suppression};
+    \end{scope}
+
+    \begin{scope}[shift={(5.35,0)}]
+      \node[font=\small] at (2.2,2.82) {lowering the cutoff};
+      \draw[-{Latex[length=2mm]}] (-0.15,0)--(4.45,0)
+        node[below] {\(|k|\)};
+      \draw[-{Latex[length=2mm]}] (0,-0.15)--(0,2.25);
+      \fill[orange!35,opacity=0.50]
+        (1.95,0.04) rectangle (2.85,1.48);
+      \draw[green!50!black,very thick]
+        (0,1.55)--(1.65,1.55)
+        .. controls (1.88,1.53) and (1.96,1.12) .. (2.06,0.62)
+        .. controls (2.18,0.10) and (2.78,0.04) .. (4.05,0.04);
+      \draw[orange!85!black,very thick]
+        (0,1.55)--(2.55,1.55)
+        .. controls (2.78,1.53) and (2.86,1.12) .. (2.96,0.62)
+        .. controls (3.08,0.10) and (3.62,0.04) .. (4.05,0.04);
+      \draw[dashed] (1.95,0)--(1.95,1.22);
+      \draw[dashed] (2.85,0)--(2.85,1.22);
+      \node[below] at (1.95,-0.03) {\(\Lambda'\)};
+      \node[below] at (2.85,-0.03) {\(\Lambda\)};
+      \node[green!50!black] at (1.0,1.25) {\(\chi_{\Lambda'}\)};
+      \node[orange!85!black] at (3.45,1.12) {\(\chi_\Lambda\)};
+      \node[align=center,fill=white,inner sep=2pt] at (2.45,1.86)
+        {shell covariance\\\(C_\Lambda-C_{\Lambda'}\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{A smooth cutoff profile equals one for small momentum and suppresses
+  modes above \(\Lambda\).  When the cutoff is lowered to \(\Lambda'\), the
+  difference of covariances is concentrated in the momentum shell between the
+  two scales.}
+  \label{fig:wilsonian-smooth-cutoff}
+\end{figure}
+
+The interaction functional \(L_\Lambda\) is an arbitrary translation-invariant
+functional compatible with the imposed symmetries.  In momentum space, it has
+the formal expansion
+\begin{align}
+  L_\Lambda[\phi]
+  &=
+  \sum_{n\geq0}\frac1{n!}
+  \int\prod_{i=1}^{n-1}\frac{\dd^Dk_i}{(2\pi)^D}\,
+  L_\Lambda^{(n)}(k_1,\ldots,k_{n-1})
+  \notag\\
+  &\hspace{3.35cm}\times
+  \widehat\phi(k_1)\cdots\widehat\phi(k_{n-1})
+  \widehat\phi(-k_1-\cdots-k_{n-1}).
+  \label{eq:general-wilsonian-interaction}
+\end{align}
+The coefficient functions \(L_\Lambda^{(n)}\) are symmetric in their \(n\)
+external momenta after the momentum-conserving argument is restored.  Locality
+of the Wilsonian action means that, for momenta small compared with
+\(\Lambda\), these coefficient functions admit an expansion in polynomials of
+the external momenta, with the nonpolynomial dependence controlled at the
+cutoff scale.  The derivative expansion supplies an infinite set of local
+coordinates organized by powers of momentum over \(\Lambda\).
+
+The source-dependent generating functional at cutoff \(\Lambda\) is
+\begin{equation}
+  Z_\Lambda[J]
+  =
+  \int[D\phi]\,
+  \exp\left[
+    -S_{\mathrm{kin},\Lambda}[\phi]
+    -L_\Lambda[\phi]
+    -\int\dd^Dx\,J(x)\phi(x)
+  \right].
+  \label{eq:wilsonian-z-lambda}
+\end{equation}
+The Wilsonian condition for lowering \(\Lambda\) to \(\Lambda'<\Lambda\) is
+the equality
+\begin{equation}
+  Z_{\Lambda'}[J]=Z_\Lambda[J]
+  \label{eq:low-momentum-generating-function-preserved}
+\end{equation}
+for all sources whose Fourier transform \(\widehat J(k)\) is supported in the
+low-momentum region \(|k|<\Lambda'\), or more generally in a region where the
+new cutoff profile is indistinguishable from one.  Thus the scale label on
+\(S_\Lambda\) is a label on a description of the same low-momentum correlation
+functions.
+
+\section{Lowering the Cutoff}
+
+The algebraic step behind Wilsonian RG is the covariance identity
+\begin{equation}
+  C_\Lambda(k)
+  =
+  C_{\Lambda'}(k)+\widehat C_{\Lambda,\Lambda'}(k),
+  \qquad
+  \widehat C_{\Lambda,\Lambda'}(k)
+  :=
+  \frac{\chi_\Lambda(k)-\chi_{\Lambda'}(k)}{k^2+m^2}.
+  \label{eq:wilsonian-covariance-split}
+\end{equation}
+The first covariance belongs to a low field \(\phi'\).  The second covariance
+belongs to an independent shell field \(\widehat\phi\), with kinetic term
+\begin{equation}
+  \widehat S_{\mathrm{kin}}[\widehat\phi]
+  =
+  \frac12\int_k
+  \widehat\phi(-k)\,
+  \frac{k^2+m^2}{\chi_\Lambda(k)-\chi_{\Lambda'}(k)}\,
+  \widehat\phi(k).
+  \label{eq:shell-kinetic-term}
+\end{equation}
+In this paragraph, \(\widehat\phi\) denotes the shell field; Fourier modes are
+indicated by their momentum arguments.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.55) {propagator identity};
+    \draw[very thick] (-2.4,1.25)--(-1.2,1.25);
+    \node at (-1.82,1.55) {\(C_\Lambda\)};
+    \node at (-0.9,1.25) {\(=\)};
+    \draw[very thick,green!50!black] (-0.55,1.25)--(0.65,1.25);
+    \node[green!50!black] at (0.05,1.55) {\(C_{\Lambda'}\)};
+    \node at (0.98,1.25) {\(+\)};
+    \draw[very thick,orange!85!black,dashed] (1.35,1.25)--(2.55,1.25);
+    \node[orange!85!black] at (1.95,1.55) {\(\widehat C_{\Lambda,\Lambda'}\)};
+    \node[align=center,green!50!black] at (0.05,0.42) {low field\\\(\phi'\)};
+    \node[align=center,orange!85!black] at (1.95,0.42) {shell field\\\(\widehat\phi\)};
+
+    \begin{scope}[shift={(5.10,0)}]
+      \node[font=\small] at (1.30,2.55) {shell integration};
+      \draw[rounded corners=4pt,thick] (0,0.58) rectangle (2.60,1.68);
+      \node at (1.30,1.13) {\(L_\Lambda[\phi'+\widehat\phi]\)};
+      \draw[green!50!black,thick] (0,1.40)--(-0.72,1.82);
+      \draw[green!50!black,thick] (0,0.82)--(-0.72,0.42);
+      \draw[green!50!black,thick] (2.60,1.40)--(3.32,1.82);
+      \draw[green!50!black,thick] (2.60,0.82)--(3.32,0.42);
+      \draw[orange!85!black,thick,dashed]
+        (2.05,1.60) .. controls (3.05,1.98) and (3.05,0.32) .. (2.05,0.68);
+      \node[green!50!black] at (1.30,2.03) {external low modes};
+      \node[orange!85!black,align=center] at (3.62,1.34)
+        {contract\\shell modes};
+      \draw[-{Latex[length=2mm]},thick] (4.12,1.05)--(4.85,1.05);
+    \end{scope}
+
+    \begin{scope}[shift={(10.85,0)}]
+      \node[font=\small] at (0,2.55) {new interaction};
+      \draw[rounded corners=4pt,thick,green!50!black] (-1.30,0.58) rectangle (1.30,1.68);
+      \node[green!50!black] at (0,1.13) {\(L_{\Lambda'}[\phi']\)};
+      \draw[green!50!black,thick] (-1.30,1.40)--(-2.02,1.82);
+      \draw[green!50!black,thick] (-1.30,0.82)--(-2.02,0.42);
+      \draw[green!50!black,thick] (1.30,1.40)--(2.02,1.82);
+      \draw[green!50!black,thick] (1.30,0.82)--(2.02,0.42);
+      \node[align=center,green!50!black] at (0,0.02)
+        {all remaining legs\\carry low momenta};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The old Gaussian covariance can be realized as the covariance of
+  two independent fields.  Integrating the shell field contracts the dashed
+  propagators and produces a new interaction for the low field.}
+  \label{fig:propagator-split-shell-integration}
+\end{figure}
+
+With the source support specified above, the source term couples only to
+\(\phi'\).  The shell field may then be integrated out by the defining
+identity
+\begin{equation}
+  \exp\{-L_{\Lambda'}[\phi']\}
+  =
+  \int[D\widehat\phi]\,
+  \exp\left[
+    -\widehat S_{\mathrm{kin}}[\widehat\phi]
+    -L_\Lambda[\phi'+\widehat\phi]
+  \right],
+  \label{eq:define-lambda-prime-interaction}
+\end{equation}
+up to a \(\phi'\)-independent normalization.  Combining
+\eqref{eq:shell-kinetic-term} and
+\eqref{eq:define-lambda-prime-interaction} with the Gaussian measure for
+\(\phi'\) gives \eqref{eq:low-momentum-generating-function-preserved}.  The
+definition is exact at the level of formal functional integrals; perturbation
+theory turns it into a precise expansion in shell contractions.
+
+\section{The Wilson-Polchinski Equation}
+
+Let \(\Lambda'\) approach \(\Lambda\).  The shell covariance becomes
+infinitesimal, and the definition of \(L_{\Lambda'}\) becomes a differential
+equation.  With \(C_\Lambda(k)=\chi_\Lambda(k)/(k^2+m^2)\) and with the
+functional-derivative convention already stated, the interaction functional
+satisfies
+\begin{equation}
+  \Lambda\partial_\Lambda L_\Lambda[\phi]
+  =
+  \frac12\int_k
+  \Lambda\partial_\Lambda C_\Lambda(k)
+  \left[
+    \frac{\delta L_\Lambda}{\delta\widehat\phi(k)}
+    \frac{\delta L_\Lambda}{\delta\widehat\phi(-k)}
+    -
+    \frac{\delta^2 L_\Lambda}
+      {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+  \right].
+  \label{eq:wilson-polchinski-flow}
+\end{equation}
+In \eqref{eq:wilson-polchinski-flow}, \(\widehat\phi(k)\) denotes the Fourier
+mode of the remaining field.  The notation matches the functional derivative
+convention; after the infinitesimal shell has been integrated, there is again
+only one field argument of \(L_\Lambda\).
+
+Since
+\[
+  \Lambda\partial_\Lambda C_\Lambda(k)
+  =
+  \frac{\Lambda\partial_\Lambda\chi(k^2/\Lambda^2)}{k^2+m^2},
+\]
+the integration kernel is supported where the cutoff profile changes, namely
+near \(|k|\simeq\Lambda\) for a rapidly decreasing smooth cutoff.  The two
+terms in \eqref{eq:wilson-polchinski-flow} have a direct graphical meaning:
+the product of first derivatives joins two vertices by one shell propagator,
+whereas the second derivative contracts two legs of a single vertex.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.55)
+      {\(\Lambda\partial_\Lambda L_\Lambda\)};
+    \node at (1.55,1.15) {\(=\)};
+
+    \begin{scope}[shift={(3.25,0)}]
+      \node[font=\small] at (1.35,2.55) {join two vertices};
+      \draw[rounded corners=3pt,thick] (0.0,0.72) rectangle (0.58,1.28);
+      \draw[rounded corners=3pt,thick] (2.10,0.72) rectangle (2.68,1.28);
+      \draw[orange!85!black,very thick,dashed] (0.58,1.0)--(2.10,1.0);
+      \foreach \a in {130,200,250} {
+        \draw[green!50!black,thick] (0.0,1.0)--+(\a:0.78);
+      }
+      \foreach \a in {-70,20,70} {
+        \draw[green!50!black,thick] (2.68,1.0)--+(\a:0.78);
+      }
+      \node[align=center] at (1.35,0.16)
+        {\(\displaystyle
+        \frac{\delta L_\Lambda}{\delta\phi(k)}
+        \frac{\delta L_\Lambda}{\delta\phi(-k)}\)};
+    \end{scope}
+
+    \node at (7.05,1.15) {\(-\)};
+
+    \begin{scope}[shift={(8.25,0)}]
+      \node[font=\small] at (1.25,2.55) {contract one vertex};
+      \draw[rounded corners=3pt,thick] (0.75,0.72) rectangle (1.35,1.28);
+      \draw[orange!85!black,very thick,dashed]
+        (0.75,1.08) .. controls (-0.05,1.85) and (2.10,1.85) .. (1.35,1.08);
+      \draw[green!50!black,thick] (0.75,1.18)--(0.18,1.55);
+      \draw[green!50!black,thick] (0.75,0.86)--(0.18,0.52);
+      \draw[green!50!black,thick] (1.35,1.18)--(1.92,1.55);
+      \draw[green!50!black,thick] (1.35,0.86)--(1.92,0.52);
+      \node[align=center,fill=white,inner sep=1pt] at (1.25,0.12)
+        {\(\displaystyle
+        \frac{\delta^2 L_\Lambda}
+        {\delta\phi(k)\delta\phi(-k)}\)};
+    \end{scope}
+
+    \node[orange!85!black,align=center,fill=white,inner sep=1pt] at (5.8,2.05)
+      {dashed shell line weighted by\\\(\Lambda\partial_\Lambda C_\Lambda(k)\)};
+    \node[green!50!black] at (5.8,-0.55) {solid external legs carry momenta below the cutoff};
+  \end{tikzpicture}
+  }
+  \caption{The exact cutoff flow has two local operations.  The first term
+  connects two interaction vertices with an infinitesimal shell propagator.
+  The second term contracts two legs belonging to the same interaction
+  vertex.}
+  \label{fig:wilson-polchinski-diagrams}
+\end{figure}
+
+Equation \eqref{eq:wilson-polchinski-flow} is a closed equation on the
+functional \(L_\Lambda\).  In a local coordinate system on theory space it is
+an infinite coupled system of differential equations for the coefficients of
+all local operators.  The use of a smooth cutoff is important: it keeps the
+infinitesimal shell operation compatible with a derivative expansion at
+external momenta small compared with \(\Lambda\).
+
+\section{A Quartic-Sextic Toy Flow}
+
+Consider the massless scalar theory in \(D=4\) and keep only two local
+coordinates in the interaction,
+\begin{equation}
+  L_\Lambda[\phi]
+  =
+  \int\dd^4x\,
+  \bigl(g_4(\Lambda)\phi(x)^4+g_6(\Lambda)\phi(x)^6\bigr).
+  \label{eq:quartic-sextic-truncation}
+\end{equation}
+This is a two-dimensional projection of the full Wilsonian flow.  Numerical
+normalizations of \(g_4\) and \(g_6\) are absorbed into the constants below.
+The corresponding dimensionless coordinates are
+\begin{equation}
+  \lambda_4(\Lambda):=g_4(\Lambda),
+  \qquad
+  \lambda_6(\Lambda):=\Lambda^2g_6(\Lambda).
+  \label{eq:lambda-four-six-definitions}
+\end{equation}
+The canonical term in the second equation is \(2\lambda_6\), because
+\(\phi^6\) has coefficient of mass dimension \(-2\) in four dimensions.  A
+typical small-coupling part of the projected Wilsonian flow has the form
+\begin{equation}
+  \Lambda\frac{\dd\lambda_4}{\dd\Lambda}
+  =
+  -a\lambda_6+\cdots,
+  \qquad
+  \Lambda\frac{\dd\lambda_6}{\dd\Lambda}
+  =
+  2\lambda_6+b\lambda_4^2+\cdots ,
+  \label{eq:quartic-sextic-beta-functions}
+\end{equation}
+where \(a\) and \(b\) depend on the cutoff profile and on the normalization of
+the two operators.  The ellipses denote terms of higher order in the local
+coordinates and contributions from omitted operators.
+
+Assume \(\lambda_6=O(\lambda_4^2)\) along the trajectory and work to the first
+nontrivial order.  Then
+\begin{equation}
+  \Lambda\frac{\dd}{\dd\Lambda}
+  \left(\lambda_6+\frac b2\lambda_4^2\right)
+  =
+  2\left(\lambda_6+\frac b2\lambda_4^2\right)
+  +O(\lambda_4^3).
+  \label{eq:slaving-combination}
+\end{equation}
+Along the flow toward the infrared, \(\Lambda\downarrow0\), the combination in
+parentheses is proportional to \(\Lambda^2\) to this order.  Therefore
+\begin{equation}
+  \lambda_6(\Lambda)
+  =
+  -\frac b2\lambda_4(\Lambda)^2+O(\lambda_4^3)
+  \label{eq:lambda-six-slaved}
+\end{equation}
+on the attracting curve.  Substitution into the \(\lambda_4\) equation gives
+\begin{equation}
+  \Lambda\frac{\dd\lambda_4}{\dd\Lambda}
+  =
+  \frac{ab}{2}\lambda_4^2+O(\lambda_4^3).
+  \label{eq:lambda-four-induced-beta}
+\end{equation}
+The ordinary beta function for the quartic coordinate is recovered after the
+irrelevant coordinate has been eliminated along the Wilsonian trajectory.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.84\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[-{Latex[length=2mm]},thick] (-0.15,0)--(6.5,0)
+      node[below] {\(\lambda_4\)};
+    \draw[-{Latex[length=2mm]},thick] (0,-2.15)--(0,2.35)
+      node[left] {\(\lambda_6\)};
+    \node[below left] at (0,0) {\((0,0)\)};
+
+    \draw[blue!65!black,very thick,domain=0.05:5.8,samples=100]
+      plot (\x,{-0.055*\x*\x});
+    \node[blue!65!black,align=center,fill=white,inner sep=2pt] at (4.72,-1.73)
+      {\(\lambda_6=-\frac b2\lambda_4^2+O(\lambda_4^3)\)\\attracting curve};
+
+    \foreach \y/\bend in {1.85/22,1.25/17,0.70/12,-0.55/-10,-1.35/-18} {
+      \draw[green!45!black,thick,-{Latex[length=2mm]}]
+        (5.9,\y) .. controls (4.3,{\y-0.9}) and (2.7,{-0.055*2.7*2.7+0.35*\y})
+        .. (1.45,{-0.055*1.45*1.45});
+    }
+    \foreach \x in {1.0,1.8,2.6,3.4,4.2,5.0} {
+      \draw[blue!65!black,thick,-{Latex[length=1.8mm]}]
+        (\x,{-0.055*\x*\x})
+        .. controls ({\x-0.30},{-0.055*\x*\x+0.04}) and ({\x-0.60},{-0.055*(\x-0.6)*(\x-0.6)})
+        .. ({\x-0.82},{-0.055*(\x-0.82)*(\x-0.82)});
+    }
+    \node[green!45!black,align=center] at (4.95,1.85)
+      {decreasing \(\Lambda\)\\flows toward the curve};
+    \node[blue!65!black] at (1.0,0.45) {IR};
+  \end{tikzpicture}
+  }
+  \caption{In the two-coordinate projection, the irrelevant coordinate
+  \(\lambda_6\) rapidly approaches a curve determined by \(\lambda_4\).  The
+  arrows indicate the direction of decreasing cutoff.}
+  \label{fig:quartic-sextic-ir-flow}
+\end{figure}
+
+This example is deliberately modest.  It shows one structural feature of the
+full equation: irrelevant local coordinates are generally generated even if
+they are absent in the bare action, and near a controlled trajectory they are
+determined, order by order, by the coordinates that remain to be fixed at a
+reference scale.
+
+\section{Renormalizability as a Continuum Limit}
+
+The Wilsonian flow is naturally a downward flow in cutoff.  If an action
+\(S_{\Lambda_0}\) is given at a finite ultraviolet cutoff \(\Lambda_0\), then
+\eqref{eq:define-lambda-prime-interaction} or
+\eqref{eq:wilson-polchinski-flow} constructs \(S_\Lambda\) for
+\(\Lambda<\Lambda_0\).  The finite-cutoff construction therefore supplies a
+trajectory below \(\Lambda_0\); a description extending to arbitrarily large
+\(\Lambda\) is a continuum-limit datum.
+
+Take a regulated path integral at cutoff \(\Lambda_0\), with interaction
+\begin{equation}
+  L_{\Lambda_0}[\phi]
+  =
+  \sum_I g_I^{\mathrm{bare}}(\Lambda_0)\,O_I[\phi],
+  \label{eq:bare-action-at-lambda-zero}
+\end{equation}
+where \(O_I\) are local operators compatible with the symmetries.  After
+flowing down to a fixed reference scale \(\Lambda_R\), low-momentum Green
+functions can be expressed in terms of the Wilsonian coordinates
+\(g_I(\Lambda_R)\).  A continuum limit is a limit
+\(\Lambda_0\to\infty\) in which the bare coordinates are chosen as functions
+of \(\Lambda_0\) so that selected physical coordinates at \(\Lambda_R\) are
+held fixed and the remaining Wilsonian coordinates at \(\Lambda_R\) approach
+limits.
+
+In the quartic-sextic projection, impose the ultraviolet boundary condition
+\[
+  \lambda_4(\Lambda_0)=\lambda_4^{\mathrm{bare}}(\Lambda_0),
+  \qquad
+  \lambda_6(\Lambda_0)=0,
+\]
+and choose \(\lambda_4^{\mathrm{bare}}(\Lambda_0)\) so that
+\[
+  \lambda_4(\Lambda_R)=\lambda_4^R
+\]
+is fixed at the reference scale.  The Wilsonian renormalizability question in
+this projection is whether
+\begin{equation}
+  \lim_{\Lambda_0\to\infty}
+  \lambda_6(\Lambda_R)
+  \bigm|_{\lambda_4(\Lambda_R)=\lambda_4^R}
+  \label{eq:lambda-six-continuum-limit-question}
+\end{equation}
+exists.  Under perturbative control, with small couplings along the trajectory
+and sufficiently mild dependence of the beta functions on the irrelevant
+coordinate, the limit exists order by order and lands on the attracting curve
+selected by \(\lambda_4^R\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.88\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[-{Latex[length=2mm]},thick] (-0.2,0)--(8.0,0)
+      node[below] {\(\lambda_4\)};
+    \draw[-{Latex[length=2mm]},thick] (0,-1.65)--(0,3.05)
+      node[left] {\(\lambda_6\)};
+
+    \draw[dashed,green!45!black] (1.35,-1.45)--(1.35,2.65);
+    \node[green!45!black,below] at (1.35,-1.45) {\(\lambda_4^R\)};
+
+    \draw[blue!65!black,very thick,domain=0.35:7.35,samples=120]
+      plot (\x,{0.32+0.07*(\x-1.35)+0.045*(\x-1.35)*(\x-1.35)});
+    \node[blue!65!black,align=center,fill=white,inner sep=2pt] at (5.6,2.38)
+      {renormalized\\trajectory surface};
+
+    \foreach \x/\y in {7.2/0,6.4/0,5.6/0,4.8/0,4.0/0} {
+      \fill[purple!80!black] (\x,\y) circle (1.8pt);
+      \draw[purple!80!black,thick,-{Latex[length=2mm]}]
+        (\x,\y)
+        .. controls ({0.72*\x+0.62},{1.40}) and (2.45,0.55)
+        .. (1.35,0.32);
+    }
+    \node[purple!80!black,align=center] at (5.85,-0.62)
+      {bare actions\\\(\lambda_6(\Lambda_0)=0\)};
+
+    \fill[green!45!black] (1.35,0.32) circle (2.5pt);
+    \node[green!45!black,align=left,fill=white,inner sep=1pt] at (2.05,-0.32)
+      {\((\lambda_4^R,\lambda_6(\Lambda_R))\)};
+
+    \draw[red!70!black,thick,dashed] (0.22,0.32)--(1.35,0.32);
+    \draw[-{Latex[length=2mm]},red!70!black,thick] (0.28,0.32)--(0.28,0.32);
+    \node[red!70!black,align=center,fill=white,inner sep=2pt] at (0.72,0.85)
+      {limiting value\\as \(\Lambda_0\to\infty\)};
+
+    \node[gray!70!black] at (6.95,0.38) {\(\Lambda_0\)};
+    \node[gray!70!black] at (7.35,0.82) {\(\Lambda_0'\)};
+    \draw[-{Latex[length=1.7mm]},gray!70!black] (6.85,0.45)--(7.25,0.72);
+    \node[gray!70!black] at (7.55,1.08) {increasing cutoff};
+  \end{tikzpicture}
+  }
+  \caption{For each ultraviolet cutoff \(\Lambda_0\), the bare quartic
+  coupling is tuned so that \(\lambda_4(\Lambda_R)=\lambda_4^R\).  The
+  continuum-limit statement asks whether the induced value of
+  \(\lambda_6(\Lambda_R)\) approaches a limit as \(\Lambda_0\) is removed.}
+  \label{fig:continuum-limit-wilsonian}
+\end{figure}
+
+The same analysis allows a finite nonzero value of the dimensionless
+irrelevant coordinate at the ultraviolet cutoff.  In the example,
+\[
+  g_6^{\mathrm{bare}}(\Lambda_0)
+  =
+  \Lambda_0^{-2}\lambda_6(\Lambda_0).
+\]
+Thus a finite \(\lambda_6(\Lambda_0)\) corresponds to a dimensionful bare
+coefficient suppressed by the cutoff.  This is the form naturally produced by
+lattice regularizations with lattice spacing \(a=\Lambda_0^{-1}\): many local
+operators are present at the cutoff scale, but after tuning the relevant and
+marginal coordinates, irrelevant coordinates approach their continuum
+trajectory values at fixed physical scale.
+
+The perturbative Wilsonian statement has explicit hypotheses.  Along the
+trajectory under consideration, the couplings must remain small enough for the
+local-coordinate expansion and the omitted-operator estimates to be valid; the
+derivatives such as \(\partial\beta_6/\partial\lambda_6\) and
+\(\partial\beta_4/\partial\lambda_4\) must remain controlled; and the beta
+function for the retained marginal coordinate must vary slowly enough along
+the trajectory that the irrelevant directions are genuinely suppressed.  In
+this regime, the Wilsonian flow gives the structural reason that the
+power-counting classification of local operators organizes perturbative
+renormalization.

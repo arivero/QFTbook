@@ -1,0 +1,58 @@
+\chapter{Gauge Fixing, Ghosts, and BRST Cohomology}
+\label{ch:volume-ii-18}
+
+\section{Faddeev--Popov Determinants}
+
+Nonabelian gauge fixing introduces a field-dependent Jacobian. For a gauge
+condition \(F(A)=0\),
+\[
+  1=\int Dg\,\delta(F(A^g))\det\left(\frac{\delta F(A^g)}{\delta g}\right).
+\]
+The determinant is represented by anticommuting ghost fields \(c,\bar c\).
+For covariant gauge,
+\[
+  \mathcal L_{\rm gh}
+  =
+  \bar c^a(-\partial^\mu D_\mu^{ab})c^b .
+\]
+Ghosts are not physical particles. They are local fields that represent the
+gauge-fixing Jacobian and enforce unitarity of the physical sector.
+
+\section{BRST Symmetry}
+
+Gauge-fixed Yang--Mills theory has a fermionic symmetry \(s\):
+\[
+  sA_\mu=D_\mu c,\qquad
+  sc=-\frac12[c,c],\qquad
+  s\bar c=B,\qquad
+  sB=0.
+\]
+It is nilpotent:
+\[
+  s^2=0.
+\]
+The gauge-fixed action may be written as the gauge-invariant action plus a
+BRST-exact term:
+\[
+  S_{\rm gf+gh}=S_{\rm YM}+s\Psi.
+\]
+
+\section{Physical States}
+
+BRST quantization identifies physical states with cohomology:
+\[
+  \Hilb_{\rm phys}
+  =
+  \frac{\ker Q_{\rm BRST}}{\operatorname{im}Q_{\rm BRST}}.
+\]
+States differing by a BRST-exact vector are physically equivalent. This is the
+gauge-theory analogue of quotienting by gauge redundancy, but now implemented
+inside a local gauge-fixed quantum formalism.
+
+\section{Ward Identities}
+
+BRST symmetry implies Slavnov--Taylor identities. They replace naive gauge
+invariance in the gauge-fixed theory and constrain counterterms. In
+renormalization, the demand is not that every intermediate expression be gauge
+invariant, but that the renormalized theory preserve BRST cohomology and its
+identities.

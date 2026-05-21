@@ -1,0 +1,291 @@
+\chapter{K\"all\'en--Lehmann Spectral Representation}
+\label{ch:kallen-lehmann}
+
+\section{Spectral Data of a Scalar Field}
+
+Let \(\Hilb\) carry a strongly continuous unitary representation of spacetime
+translations with commuting self-adjoint generators \(P^\mu\). Let
+\[
+  E(\Delta)
+\]
+be the joint projection-valued spectral measure of \(P^\mu\), where
+\(\Delta\subset\mathbb R^D\) is Borel. Assume the spectrum condition
+\[
+  \operatorname{Spec}(P)\subset\overline V_+
+  =
+  \{p\in\mathbb R^D:p^0\ge0,\ p^2\le0\},
+\]
+with \(p^2=\eta_{\mu\nu}p^\mu p^\nu\). Let \(\Omega\) be a translation
+invariant vacuum vector.
+
+Let \(\widehat\phi\) be a scalar operator-valued distribution. If
+\[
+  \langle\Omega|\widehat\phi(x)|\Omega\rangle
+\]
+is nonzero, replace \(\widehat\phi\) by
+\(\widehat\phi-\langle\Omega|\widehat\phi|\Omega\rangle\). This removes the
+vacuum atom from the two-point function and keeps the connected spectral data.
+Point-field notation below is distributional notation; after smearing, the
+matrix elements are ordinary Hilbert-space pairings.
+
+The Wightman two-point distribution is
+\[
+  W_2(x-y)
+  =
+  \langle\Omega|
+  \widehat\phi(x)\widehat\phi(y)
+  |\Omega\rangle.
+\]
+Translation covariance gives
+\[
+  W_2(x-y)
+  =
+  \int_{\overline V_+}\ee^{\ii p\cdot(x-y)}\,\dd\nu_\phi(p),
+\]
+where the positive measure \(\nu_\phi\) is
+\[
+  \dd\nu_\phi(p)
+  =
+  \langle\Omega|
+  \widehat\phi(0)E(\dd p)\widehat\phi(0)
+  |\Omega\rangle.
+\]
+Positivity is immediate from the spectral theorem: for a Borel set
+\(\Delta\),
+\[
+  \nu_\phi(\Delta)
+  =
+  \|E(\Delta)\widehat\phi(0)\Omega\|^2
+  \ge0.
+\]
+
+\section{Invariant-Mass Decomposition}
+
+For a scalar field and invariant vacuum, \(\nu_\phi\) is invariant under the
+proper orthochronous Lorentz group. The Lorentz-invariant parameter on the
+forward cone is the invariant mass squared
+\[
+  \mu^2=-p^2\ge0.
+\]
+Therefore the measure \(\nu_\phi\) can be decomposed into positive
+mass-shell measures:
+\[
+  \dd\nu_\phi(p)
+  =
+  \int_{[0,\infty)}
+  \dd\rho(\mu^2)\,
+  \frac{\dd^Dp}{(2\pi)^{D-1}}\,
+  \theta(p^0)\delta(p^2+\mu^2).
+\]
+Here \(d\rho\) is a positive Borel measure on \([0,\infty)\). When it is
+absolutely continuous one writes \(\dd\rho(\mu^2)=\rho(\mu^2)\dd\mu^2\);
+when it has atoms, the atomic weights are part of the same measure.
+
+Define the positive-frequency scalar two-point function of mass \(\mu\) by
+\[
+  \Delta_+(x;\mu^2)
+  =
+  \int\frac{\dd^Dp}{(2\pi)^{D-1}}\,
+  \theta(p^0)\delta(p^2+\mu^2)\,
+  \ee^{\ii p\cdot x}.
+\]
+Equivalently,
+\[
+  \Delta_+(x;\mu^2)
+  =
+  \int
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}\,
+  \frac{
+    \ee^{\ii\vec p\cdot\vec x-\ii\sqrt{\vec p^{\,2}+\mu^2}\,x^0}
+  }{2\sqrt{\vec p^{\,2}+\mu^2}} .
+\]
+The Wightman two-point function is then
+\[
+  W_2(x)
+  =
+  \int_{[0,\infty)}
+  \dd\rho(\mu^2)\,
+  \Delta_+(x;\mu^2).
+\]
+This is the K\"all\'en--Lehmann representation for the Wightman two-point
+function.
+
+\section{Time-Ordered and Euclidean Forms}
+
+The time-ordered two-point function is
+\[
+  G_T(x)
+  =
+  \langle\Omega|
+  \operatorname{T}\{
+    \widehat\phi(x)\widehat\phi(0)
+  \}
+  |\Omega\rangle.
+\]
+Using the definition of time ordering,
+\[
+  G_T(x)
+  =
+  \theta(x^0)W_2(x)+\theta(-x^0)W_2(-x).
+\]
+Therefore
+\[
+  G_T(x)
+  =
+  \int_{[0,\infty)}
+  \dd\rho(\mu^2)\,
+  \Delta_F(x;\mu^2),
+\]
+where
+\[
+  \Delta_F(x;\mu^2)
+  =
+  -\ii
+  \int\frac{\dd^Dk}{(2\pi)^D}
+  \frac{\ee^{\ii k\cdot x}}{k^2+\mu^2-\ii\epsilon}.
+\]
+Equivalently,
+\[
+  G_T(x)
+  =
+  -\ii
+  \int\frac{\dd^Dk}{(2\pi)^D}\,
+  \ee^{\ii k\cdot x}
+  \int_{[0,\infty)}
+  \frac{\dd\rho(\mu^2)}{k^2+\mu^2-\ii\epsilon}.
+\]
+
+The Euclidean two-point function has the same spectral measure:
+\[
+  G_E(x_E)
+  =
+  \int_{[0,\infty)}
+  \dd\rho(\mu^2)\,
+  \Delta_E(x_E;\mu^2),
+\]
+with
+\[
+  \Delta_E(x_E;\mu^2)
+  =
+  \int\frac{\dd^Dk_E}{(2\pi)^D}
+  \frac{\ee^{\ii k_E\cdot x_E}}{k_E^2+\mu^2}.
+\]
+The spectral measure \(d\rho\) is thus common to the Wightman, time-ordered,
+and Euclidean two-point functions. The different Green functions are different
+boundary values or analytic continuations of the same positive spectral data.
+
+\section{One-Particle Atoms}
+
+Assume the spectrum contains an isolated scalar one-particle mass \(m>0\), and
+assume the local field \(\widehat\phi\) has nonzero projection onto that
+one-particle subspace. With the invariant normalization from the one-particle
+construction,
+\[
+  \langle\vec p\,{}'|\vec p\rangle
+  =
+  (2\pi)^{D-1}2\omega_{\vec p}\,
+  \delta^{D-1}(\vec p\,{}'-\vec p),
+  \qquad
+  \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
+\]
+define \(Z\ge0\) by
+\[
+  \langle\vec p|\widehat\phi(0)|\Omega\rangle=Z^{1/2}
+\]
+for scalar one-particle states. Lorentz covariance makes the right-hand side
+independent of \(\vec p\) in this normalization. The one-particle contribution
+to the spectral measure is the atom
+\[
+  Z\,\delta_{m^2},
+\]
+where \(\delta_{m^2}\) is the unit point mass at \(\mu^2=m^2\). Thus
+\[
+  \dd\rho(\mu^2)
+  =
+  Z\,\delta_{m^2}(\dd\mu^2)
+  +
+  \dd\rho_{\mathrm c}(\mu^2),
+\]
+where \(d\rho_{\mathrm c}\) is the remaining positive measure.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \node (v) at (0,0) {$\widehat\phi(f)\Omega$};
+  \node[draw,rounded corners=2pt,inner sep=4pt,blue!70!black] (vac) at (3.0,1.25)
+    {$E(\{0\})\widehat\phi(f)\Omega$};
+  \node[draw,rounded corners=2pt,inner sep=4pt,green!45!black] (one) at (3.25,0)
+    {$E(\mu^2=m^2)\widehat\phi(f)\Omega$};
+  \node[draw,rounded corners=2pt,inner sep=4pt,orange!80!black] (cont) at (3.35,-1.25)
+    {$E_{\mathrm c}\widehat\phi(f)\Omega$};
+  \draw[->,thick] (v) -- (vac);
+  \draw[->,thick] (v) -- (one);
+  \draw[->,thick] (v) -- (cont);
+  \node[blue!70!black] at (6.3,1.25) {vacuum atom};
+  \node[green!45!black] at (6.6,0) {one-particle atom};
+  \node[orange!80!black] at (6.6,-1.25) {continuum spectral part};
+\end{tikzpicture}
+\end{center}
+
+After subtracting the vacuum expectation value of \(\widehat\phi\), the vacuum
+projection in the first line is absent. The one-particle atom remains precisely
+when the field has nonzero overlap with the isolated mass shell.
+
+Under the same assumptions,
+\[
+  G_T(x)
+  =
+  Z\,\Delta_F(x;m^2)
+  +
+  \int_{[0,\infty)}
+  \dd\rho_{\mathrm c}(\mu^2)\,
+  \Delta_F(x;\mu^2).
+\]
+If the theory has a single stable particle of mass \(m\), no lighter
+particles, and the continuum part is generated by states containing at least
+two such particles, then
+\[
+  \operatorname{supp}d\rho_{\mathrm c}\subset[4m^2,\infty).
+\]
+When \(d\rho_{\mathrm c}\) has a density \(\sigma(\mu^2)\) in that region,
+\[
+  G_T(x)
+  =
+  Z\,\Delta_F(x;m^2)
+  +
+  \int_{4m^2}^{\infty}
+  \dd\mu^2\,\sigma(\mu^2)\Delta_F(x;\mu^2).
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[->,line width=0.7pt] (0,0) -- (6.4,0) node[right] {$s=\mu^2$};
+  \draw[->,line width=0.7pt] (0,0) -- (0,3.05) node[above] {$\dd\rho(s)$};
+  \draw (1.65,0.08) -- (1.65,-0.08) node[below] {$m^2$};
+  \draw (3.35,0.08) -- (3.35,-0.08) node[below] {$4m^2$};
+  \draw[red!75!black,very thick,->] (1.65,0) -- (1.65,2.45)
+    node[above] {$Z\,\delta_{m^2}$};
+  \draw[blue!65!black,thick]
+    (3.35,0) .. controls (3.7,0.65) and (4.15,1.20) .. (4.75,1.12)
+    .. controls (5.35,1.04) and (5.75,0.48) .. (6.05,0.30);
+  \node[blue!65!black,align=center] at (4.85,2.25)
+    {continuum support\\under the stated threshold assumption};
+\end{tikzpicture}
+\end{center}
+
+The number \(Z\) is attached to the chosen local field. Rescaling the field
+rescales \(Z\). Once the field normalization is fixed, \(Z\) is a definite
+matrix element and the one-particle pole residue of its two-point function.
+
+\section{Role in the Construction}
+
+The K\"all\'en--Lehmann representation is nonperturbative. It states that
+Hilbert-space positivity and the spectrum condition force the scalar
+two-point function to be a positive superposition of free massive two-point
+functions. Isolated atoms of the measure identify stable one-particle mass
+shells seen by the local field. Continuous spectral support records the
+remaining invariant-mass spectrum.
+
+The next step in the construction is the perturbative computation of Green
+functions. The construction of scattering states and the S-matrix comes later,
+after the spectral one-particle data have been separated from the local
+two-point functions.

@@ -1,0 +1,17 @@
+*.md text eol=lf
+*.tex text eol=lf
+*.sty text eol=lf
+*.bib text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.swift text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tif binary
+*.tiff binary

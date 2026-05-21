@@ -1,0 +1,87 @@
+# Volume II, Chapter 6 Dossier: Analyticity, Crossing, and Landau Singularities
+
+## Scope
+
+- Begins the general analytic-structure portion after bound states and
+  resonances.
+- Defines the physical \(s\)-channel region for identical massive scalar
+  \(2\to2\) scattering and the first-sheet boundary value.
+- States real analyticity and crossing as analytic properties of the
+  continued amplitude under the standard massive-local-QFT hypotheses.
+- Derives the Landau equations from Feynman-parameter pinches.
+- Works out the two-particle threshold and triangle/anomalous-threshold
+  examples.
+
+## Source Spine
+
+- `transcription/tex/253b/scattering_rg_qcd.tex`, subsection "Analyticity,
+  Crossing, and Landau Singularities", through the Coleman--Thun/anomalous
+  threshold discussion.
+- `references/253b transcribed lecture notes.tex`, corresponding
+  analyticity/Landau section, used cautiously to compare figures and source
+  ordering.
+- Volume I chapters on LSZ, partial waves, and unitarity.
+- Volume II Chapters 3--5 for bound-state poles, resonance poles, and
+  four-point pole factorization.
+
+## Definitions and Symbols
+
+| Symbol | Meaning |
+| --- | --- |
+| \(s,t,u\) | Mandelstam invariants for identical scalar \(2\to2\) scattering |
+| \(\mathcal M(s,t)\) | connected invariant amplitude, analytically continued where defined |
+| first sheet | branch reached from the physical Feynman prescription without crossing a cut |
+| \(\alpha_i\) | Feynman parameters for internal lines |
+| \(q_i(\ell,p)\) | internal momentum on line \(i\), affine in loop momenta and external momenta |
+| Landau equations | on-shell and stationary conditions for a contour pinch |
+| anomalous threshold | first-sheet singularity from a Landau pinch not equal to an ordinary intermediate-state threshold or bound-state pole |
+
+## Assumptions
+
+- The external particles are the lightest identical stable scalars of mass
+  \(m\) unless stated otherwise.
+- Mostly-plus metric: an on-shell mass-\(m_i\) internal line satisfies
+  \(q_i^2+m_i^2=0\).
+- Perturbative diagrams are considered with Feynman denominators
+  \(q_i^2+m_i^2-\ii0\).
+- Analyticity and crossing are used as structural hypotheses supported by
+  locality, spectral support, LSZ, and perturbation theory; existing rigorous
+  theorem sets cover only parts of the desired physical domain.
+
+## Claims to Derive
+
+- The physical \(s\)-channel region has
+  \[
+    s=4(k^2+m^2),\qquad
+    t=-2k^2(1-\cos\theta),\qquad
+    s\ge4m^2-t,\quad t\le0.
+  \]
+- For fixed \(t<0\), the first sheet has a right-hand \(s\)-channel cut
+  starting at \(4m^2\), a left-hand crossed-channel cut starting at \(-t\),
+  and possible bound-state poles.
+- Feynman-parameter pinches obey
+  \[
+    \alpha_i(q_i^2+m_i^2)=0,\qquad
+    \sum_i \alpha_i q_i\cdot{\partial q_i\over\partial \ell_a^\mu}=0
+  \]
+  for every loop momentum \(\ell_a\).
+- The two-propagator Landau equations give the ordinary two-particle
+  threshold \(P^2=-4m^2\) in the equal-mass example.
+- Triangle diagrams can produce first-sheet anomalous thresholds, including
+  the Coleman--Thun type mechanism.
+
+## Figures
+
+- Physical \(2\to2\) region and first-sheet \(s\)-plane.
+- Crossing regions in the real \((s,t)\)-plane.
+- Contour pinch leading to Landau equations.
+- Bubble threshold Landau solution.
+- Triangle Landau vector test and anomalous threshold.
+
+## Boundaries
+
+- No Lehmann ellipse, partial-wave convergence, Froissart--Martin mechanism,
+  dispersion relations, or polynomial boundedness; those belong to the next
+  chapter.
+- No attempt to make an axiomatic foundation out of perturbative Landau
+  analysis.

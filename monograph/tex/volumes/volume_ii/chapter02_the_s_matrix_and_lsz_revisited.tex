@@ -1,0 +1,302 @@
+\chapter{Scattering Kernels, LSZ, and Cluster Decomposition}
+\label{ch:volume-ii-scattering-kernels}
+
+\section{Scattering Operator and Kernel Notation}
+
+Fix a stable scalar particle of mass \(m>0\). Let \(\Hilb_1\subset\Hilb\) be
+its one-particle Hilbert space, and let
+\[
+  \mathcal F_s(\Hilb_1)
+  =
+  \bigoplus_{n=0}^\infty \Hilb_1^{\odot n}
+\]
+be the symmetric Fock space over \(\Hilb_1\). The Haag--Ruelle wave operators
+are isometries
+\[
+  \Omega_{\mathrm{in/out}}:
+  \mathcal F_s(\Hilb_1)\longrightarrow \Hilb .
+\]
+On a scattering sector for which the incoming and outgoing ranges coincide,
+the scattering operator is
+\[
+  S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}
+  :
+  \mathcal F_s(\Hilb_1)\longrightarrow\mathcal F_s(\Hilb_1).
+\]
+This is the object whose kernels will be studied throughout this part.
+
+Generalized momentum states on the positive mass shell
+\[
+  \Sigma_m^+
+  =
+  \{(\omega_{\vec p},\vec p):\vec p\in\mathbb R^d\},
+  \qquad
+  \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
+\]
+are normalized by
+\[
+  \langle\vec q\,|\vec p\rangle
+  =
+  (2\pi)^d2\omega_{\vec p}\,\delta^d(\vec q-\vec p).
+\]
+The invariant mass-shell measure is
+\[
+  \dd\mu_m(\vec p)
+  =
+  \frac{\dd^d\vec p}{(2\pi)^d2\omega_{\vec p}} .
+\]
+
+For outgoing momenta \(q_i=(\omega_{\vec q_i},\vec q_i)\) and incoming
+momenta \(p_j=(\omega_{\vec p_j},\vec p_j)\), write
+\[
+  S(q_1,\ldots,q_m|p_1,\ldots,p_n)
+  =
+  {}_{\mathrm{out}}\langle
+  \vec q_1,\ldots,\vec q_m
+  |\vec p_1,\ldots,\vec p_n
+  \rangle_{\mathrm{in}} .
+\]
+This notation denotes a distributional kernel. Its value on wave packets
+\(f_i,g_j\in C_c^\infty(\mathbb R^d)\) is
+\[
+\begin{aligned}
+&S[f_1,\ldots,f_m;g_1,\ldots,g_n]
+\\
+&=
+  \int
+  \prod_{i=1}^m\dd\mu_m(\vec q_i)\,f_i(\vec q_i)^*
+  \prod_{j=1}^n\dd\mu_m(\vec p_j)\,g_j(\vec p_j)
+  S(q_1,\ldots,q_m|p_1,\ldots,p_n).
+\end{aligned}
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.98]
+  \draw[->,line width=0.75pt] (-4.2,-2.0)--(-4.2,2.25)
+    node[above] {$x^0$};
+  \draw[orange!85!black,dashed,line width=0.9pt] (-2.35,-1.18)--(2.25,-1.18);
+  \draw[green!50!black,dashed,line width=0.9pt] (-2.35,1.18)--(2.25,1.18);
+  \node[orange!85!black,anchor=west] at (2.4,-1.18)
+    {incoming Fock basis};
+  \node[green!50!black,anchor=west] at (2.4,1.18)
+    {outgoing Fock basis};
+  \draw[blue!75!black,line width=1.2pt,fill=blue!5] (0,0) ellipse (1.15 and 0.74);
+  \node[blue!75!black] at (0,0) {\(S\)};
+  \foreach \x in {-0.78,0,0.78} {
+    \draw[orange!85!black,line width=1.05pt,->]
+      (\x,-1.82)--({0.48*\x},-0.62);
+  }
+  \foreach \x in {-0.78,0,0.78} {
+    \draw[green!50!black,line width=1.05pt,->]
+      ({0.48*\x},0.62)--(\x,1.82);
+  }
+\end{tikzpicture}
+\end{center}
+
+\section{Connected Kernels and Invariant Amplitudes}
+
+Let
+\[
+  P_{\mathrm{out}}=\sum_{i=1}^m q_i,
+  \qquad
+  P_{\mathrm{in}}=\sum_{j=1}^n p_j .
+\]
+Translation invariance implies that every connected scattering kernel is
+supported on \(P_{\mathrm{out}}=P_{\mathrm{in}}\). The invariant amplitude
+\(\mathcal M\) is defined by removing this overall conservation law:
+\[
+\begin{aligned}
+&S^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n)
+\\
+&\qquad =
+  \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n).
+\end{aligned}
+\]
+Here \(S^{\mathrm c}\) is the connected part of the kernel. The convention
+\(S=\mathbf 1+\ii T\) gives
+\[
+  {}_{\mathrm{out}}\langle q|T|p\rangle_{\mathrm c}
+  =
+  (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  \mathcal M(q|p).
+\]
+
+The word connected has a recursive distributional meaning. If the full
+process splits into independent subprocesses, the full kernel is the product
+of the kernels of those subprocesses, with separate momentum conservation in
+each component. The connected kernel is the part that remains after subtracting
+all such products.
+
+\section{LSZ as Pole Extraction}
+
+Let \(\widehat\phi\) be a scalar local field with nonzero one-particle matrix
+element
+\[
+  \langle\Omega|\widehat\phi(0)|\vec p\rangle=Z_\phi^{1/2},
+  \qquad Z_\phi>0 .
+\]
+Let \(G_N^{\mathrm c}\) be the connected time-ordered \(N\)-point
+distribution,
+\[
+  G_N^{\mathrm c}(x_1,\ldots,x_N)
+  =
+  \langle\Omega|
+  \operatorname T\{\widehat\phi(x_1)\cdots\widehat\phi(x_N)\}
+  |\Omega\rangle_{\mathrm c}.
+\]
+Its Fourier transform is defined by
+\[
+  G_N^{\mathrm c}(x_1,\ldots,x_N)
+  =
+  \int
+  \prod_{a=1}^N\frac{\dd^D k_a}{(2\pi)^D}\,
+  \ee^{\ii\sum_a k_a\cdot x_a}\,
+  \widetilde G_N^{\mathrm c}(k_1,\ldots,k_N).
+\]
+For \(m\) outgoing and \(n\) incoming particles, set \(N=m+n\) and
+\[
+  k_i=q_i\quad (1\le i\le m),
+  \qquad
+  k_{m+j}=-p_j\quad (1\le j\le n).
+\]
+Incoming momenta enter the Green function with a minus sign because all
+momenta \(k_a\) are taken to flow into the time-ordered distribution.
+
+The LSZ formula for the connected kernel is
+\[
+\boxed{
+\begin{aligned}
+&S^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n)
+\\
+&\quad =
+  \left[
+  \prod_{a=1}^{m+n}
+  Z_\phi^{-1/2}\,\ii(k_a^2+m^2)
+  \right]
+  \widetilde G_N^{\mathrm c}(k_1,\ldots,k_N)
+  \bigg|_{\Sigma_m^+}.
+\end{aligned}
+}
+\]
+The vertical bar denotes the distributional boundary value obtained after
+smearing with wave packets and then restricting every physical external
+momentum to \(\Sigma_m^+\).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.91]
+  \begin{scope}
+    \draw[purple!80!black,very thick,->] (-2.0,1.0)--(-0.72,0.42);
+    \draw[purple!80!black,very thick,->] (-2.0,-1.0)--(-0.72,-0.42);
+    \draw[purple!80!black,very thick,->] (0.72,0.42)--(2.0,1.0);
+    \draw[purple!80!black,very thick,->] (0.72,-0.42)--(2.0,-1.0);
+    \node[circle,draw=black,thick,minimum size=1.28cm,
+      fill=blue!6] at (0,0) {\(\widetilde G_N^{\mathrm c}\)};
+    \node[left] at (-2.04,1.0) {$-p_1$};
+    \node[left] at (-2.04,-1.0) {$-p_2$};
+    \node[right] at (2.04,1.0) {$q_1$};
+    \node[right] at (2.04,-1.0) {$q_2$};
+  \end{scope}
+  \node[align=center] at (3.45,0)
+    {\(\prod_a Z_\phi^{-1/2}\ii(k_a^2+m^2)\)\\[-0.1em]
+     \(\longrightarrow\ \Sigma_m^+\)};
+  \begin{scope}[xshift=6.25cm]
+    \draw[purple!80!black,very thick,->] (-1.35,0.78)--(-0.52,0.28);
+    \draw[purple!80!black,very thick,->] (-1.35,-0.78)--(-0.52,-0.28);
+    \draw[purple!80!black,very thick,->] (0.52,0.28)--(1.35,0.78);
+    \draw[purple!80!black,very thick,->] (0.52,-0.28)--(1.35,-0.78);
+    \node[circle,draw=black,thick,minimum size=1.1cm,
+      fill=green!7] at (0,0) {\(\mathcal M\)};
+  \end{scope}
+\end{tikzpicture}
+\end{center}
+
+The formula applies to the stable massive sector used in the Haag--Ruelle
+construction. It converts pole data of time-ordered Green functions into
+matrix elements of the already defined scattering operator.
+
+\section{Cluster Decomposition}
+
+Let \(\alpha=\{p_1,\ldots,p_n\}\) be the incoming labels and
+\(\beta=\{q_1,\ldots,q_m\}\) the outgoing labels. A process partition
+\(\Pi\) is a finite set of nonempty blocks \(B\), where each block contains a
+subset \(\alpha_B\subset\alpha\) and a subset \(\beta_B\subset\beta\), and
+the blocks partition all incoming and outgoing labels. Define
+\[
+  S_B^{\mathrm c}
+  =
+  S^{\mathrm c}(\beta_B|\alpha_B).
+\]
+Then cluster decomposition is the identity
+\[
+  S(\beta|\alpha)
+  =
+  \sum_{\Pi}
+  \prod_{B\in\Pi}S_B^{\mathrm c}.
+\]
+This equation is also a recursive definition of the connected kernels. The
+one-particle identity kernel is included as the connected kernel for a block
+with one incoming and one outgoing label:
+\[
+  S^{\mathrm c}(q|p)
+  =
+  (2\pi)^d2\omega_{\vec p}\delta^d(\vec q-\vec p)
+  +
+  \ii(2\pi)^D\delta^D(q-p)\mathcal M(q|p).
+\]
+In a translationally invariant vacuum without external backgrounds, the
+nontrivial one-particle amplitude vanishes for a stable isolated species, and
+the identity term remains.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95,
+  blob/.style={ellipse,draw=black,thick,minimum width=1.45cm,
+    minimum height=0.95cm,fill=orange!8}]
+  \node[blob] (A) at (0,0.72) {\(S^{\mathrm c}_1\)};
+  \node[blob] (B) at (0,-0.72) {\(S^{\mathrm c}_2\)};
+  \draw[thick,->] (-2.2,1.2)--(A.west);
+  \draw[thick,->] (-2.2,0.45)--(A.west);
+  \draw[thick,->] (A.east)--(2.2,1.0);
+  \draw[thick,->] (-2.2,-0.45)--(B.west);
+  \draw[thick,->] (B.east)--(2.2,-0.35);
+  \draw[thick,->] (B.east)--(2.2,-1.2);
+  \node[left] at (-2.25,1.2) {$p_1$};
+  \node[left] at (-2.25,0.45) {$p_2$};
+  \node[left] at (-2.25,-0.45) {$p_3$};
+  \node[right] at (2.25,1.0) {$q_1$};
+  \node[right] at (2.25,-0.35) {$q_2$};
+  \node[right] at (2.25,-1.2) {$q_3$};
+  \node at (3.15,0) {$\Longrightarrow$};
+  \node[ellipse,draw=black,thick,minimum width=1.65cm,
+    minimum height=1.3cm,fill=blue!6] (C) at (4.55,0) {\(S\)};
+  \foreach \y in {1.05,0.35,-0.35} {
+    \draw[thick,->] (3.65,\y)--(C.west);
+  }
+  \foreach \y in {1.05,0,-1.05} {
+    \draw[thick,->] (C.east)--(5.85,\y);
+  }
+\end{tikzpicture}
+\end{center}
+
+The same decomposition appears in connected Green functions. Since LSZ acts
+on external pole residues, it maps the connected part of a time-ordered Green
+function to the connected part of the scattering kernel with the same
+external labels.
+
+\section{Preparation for Analytic Structure}
+
+The object carried forward is the connected invariant amplitude
+\[
+  \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n)
+\]
+as a distributional boundary value on the physical mass shells. Bound states
+will appear as poles of this object in an appropriate channel. Resonances will
+appear as poles reached by analytic continuation through a continuum cut.
+Renormalization will be formulated as the construction of finite Green
+functions and finite amplitudes while preserving the local form of the
+counterterms.
+
+For sectors with massless long-range forces, confinement, or infraparticle
+spectra, the asymptotic data require modified observables or modified state
+spaces. The later chapters return to those domains after the massive
+scattering and renormalization structures have been developed.

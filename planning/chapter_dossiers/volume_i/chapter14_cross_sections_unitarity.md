@@ -1,0 +1,69 @@
+# Volume I, Chapter 14 Dossier: Cross Sections, Phase Space, and Unitarity
+
+## Source Placement
+
+- Follows LSZ reduction.
+- Uses the invariant amplitude \(\mathcal M\) only after the S-operator and
+  LSZ have been constructed.
+- Source material used:
+  - `transcription/tex/253a/foundations.tex`, roughly lines 5608--6075;
+  - `references/253a_notes.tex`, corresponding cross-section and partial-wave
+    blocks, used only as a comparison.
+
+## Framework
+
+- Relativistically normalized asymptotic momentum states.
+- Mostly-plus metric, with \(p^2=-m^2\) for a physical particle.
+- Amplitude convention:
+  \[
+    \langle f|T|i\rangle=(2\pi)^D\delta^D(P_f-P_i)\mathcal M(f|i).
+  \]
+- Cross sections are derived from wave-packet transition probabilities and
+  expressed through sharp-momentum kernels.
+
+## Symbols
+
+| Symbol | Meaning |
+| --- | --- |
+| \(T\) | transition operator defined by \(S=\mathbf 1+iT\) |
+| \(\mathcal M\) | invariant amplitude |
+| \(\dd\Phi_m\) | invariant \(m\)-body final-state phase space |
+| \(\mathcal F\) | invariant two-particle flux factor |
+| \(v_{\mathrm{rel}}\) | invariant relative speed |
+| \(s\) | positive center-of-mass energy squared, \(-(p_1+p_2)^2\) |
+| \(\vec p_*\) | incoming COM three-momentum |
+| \(\vec q_*\) | outgoing COM three-momentum |
+| \(a_\ell(s)\) | partial-wave amplitude |
+| \(S_\ell(s)\) | partial-wave S-matrix eigenvalue |
+| \(\rho(s)\) | two-body elastic phase-space factor \(2|\vec p_*|/\sqrt s\) |
+| \(\delta_\ell(s)\) | elastic phase shift |
+
+## Claims Established
+
+- Cross sections are transition probabilities divided by invariant flux.
+- The \(m\)-body phase-space measure and flux factor are fixed in the chosen
+  normalization.
+- For \(2\to2\) scattering in \(D=4\),
+  \[
+    \frac{\dd\sigma}{\dd\Omega}
+    =
+    \frac{1}{64\pi^2s}
+    \frac{|\vec q_*|}{|\vec p_*|}|\mathcal M|^2
+  \]
+  before identical-particle symmetry factors.
+- Unitarity gives the amplitude-level cutting relation and the optical
+  theorem.
+- Partial waves diagonalize scalar \(2\to2\) scattering in the COM frame.
+- Elastic unitarity gives \(S_\ell=e^{2i\delta_\ell}\) and
+  \(\operatorname{Im}a_\ell=\rho|a_\ell|^2\).
+
+## Figure Requirements
+
+- Invariant flux/cross-section schematic.
+
+## Exclusions
+
+- No spin/helicity partial waves; spin begins in the later particle
+  classification chapters.
+- No detailed analytic continuation of resonance poles; only the organizing
+  statement is recorded.

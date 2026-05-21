@@ -1,0 +1,266 @@
+\chapter{Hamiltonian Evolution and Time-Sliced Path Integrals}
+\label{ch:hamiltonian-evolution-time-sliced-path-integrals}
+
+\section{Canonical Quantum-Mechanical Data}
+
+Let \(d\) be the number of degrees of freedom and let
+\(\mathcal Q=\mathbb R^d\) be the configuration space. The Hilbert space is
+\[
+  \Hilb_{\mathcal Q}=L^2(\mathcal Q,\dd^dq).
+\]
+The coordinate operators \(\widehat q^a\), \(a=1,\ldots,d\), act by
+multiplication. The momentum operators are
+\[
+  \widehat p_a=-\ii\hbar\,\frac{\partial}{\partial q^a}
+\]
+on a suitable dense domain, and satisfy
+\[
+  [\widehat q^a,\widehat p_b]=\ii\hbar\,\delta^a_b.
+\]
+Let \(\widehat H\) be a self-adjoint Hamiltonian on \(\Hilb_{\mathcal Q}\).
+The time-evolution operator over time \(T\in\mathbb R\) is
+\[
+  U(T)=\exp\left(-\frac{\ii}{\hbar}T\widehat H\right).
+\]
+
+The position and momentum generalized eigenstates are denoted by
+\(\ket{q}\) and \(\ket{p}\). They are distributions, normalized by
+\[
+  \braket{q}{p}=\ee^{\frac{\ii}{\hbar}p_aq^a},
+\]
+and used through the resolutions
+\[
+  \int_{\mathbb R^d}\dd^dq\,\ket{q}\bra{q}=1,
+  \qquad
+  \int_{\mathbb R^d}\frac{\dd^dp}{(2\pi\hbar)^d}\,\ket{p}\bra{p}=1.
+\]
+The transition amplitude is the distributional kernel
+\[
+  K(q_f,T;q_i,0)
+  =
+  \bra{q_f}U(T)\ket{q_i}.
+\]
+
+\section{Finite Time Slicing}
+
+Choose an integer \(N\ge1\), set \(\epsilon=T/N\), and define
+\[
+  t_n=n\epsilon,\qquad n=0,\ldots,N,
+\]
+with \(q_0=q_i\) and \(q_N=q_f\). Inserting \(N-1\) position resolutions and
+\(N\) momentum resolutions gives
+\[
+\begin{aligned}
+  K(q_f,T;q_i,0)
+  &=
+  \int\prod_{n=1}^{N-1}\dd^dq_n
+  \prod_{n=0}^{N-1}
+  \frac{\dd^dp_n}{(2\pi\hbar)^d}
+  \\
+  &\quad\times
+  \prod_{n=0}^{N-1}
+  \bra{q_{n+1}}p_n\rangle
+  \bra{p_n}\exp\left(-\frac{\ii}{\hbar}\epsilon\widehat H\right)\ket{q_n}.
+\end{aligned}
+\]
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth]
+  \draw[line width=0.6pt] (0,0) -- (9.2,0);
+  \foreach \x/\lab in {
+    0/{q_0=q_i},
+    1.25/{q_1},
+    2.5/{q_2},
+    3.75/{q_3},
+    6.75/{q_{N-1}},
+    8.75/{q_N=q_f}
+  }{
+    \draw (\x,0.11) -- (\x,-0.11);
+    \node[above] at (\x,0.11) {$\lab$};
+  }
+  \node[below] at (0,-0.12) {$t_0=0$};
+  \node[below] at (8.75,-0.12) {$t_N=T$};
+  \node at (5.2,0.19) {$\cdots$};
+  \draw[decorate,decoration={brace,amplitude=4pt,mirror}]
+    (0,-0.5) -- node[below=3pt] {$\epsilon=T/N$} (1.25,-0.5);
+\end{tikzpicture}
+\end{center}
+
+Suppose a symbol \(h(q,p)\) for \(\widehat H\) has been fixed by an operator
+ordering convention, for example by
+\[
+  \bra{p}\widehat H\ket{q}=h(q,p)\braket{p}{q}
+\]
+on the chosen domain. The associated finite-\(N\) phase-space approximant is
+\[
+  K_N(q_f,T;q_i,0)
+  =
+  \int
+  \prod_{n=1}^{N-1}\dd^dq_n
+  \prod_{n=0}^{N-1}\frac{\dd^dp_n}{(2\pi\hbar)^d}
+  \exp\left(\frac{\ii}{\hbar}S_N[p,q]\right),
+\]
+where the discrete phase-space action is
+\[
+  S_N[p,q]
+  =
+  \sum_{n=0}^{N-1}
+  \left[
+    p_{n,a}(q_{n+1}^a-q_n^a)
+    -\epsilon\,h(q_n,p_n)
+  \right].
+\]
+The continuum notation
+\[
+  \int Dq\,Dp\,
+  \exp\left[
+    \frac{\ii}{\hbar}\int_0^T
+    \bigl(p_a\dot q^a-h(q,p)\bigr)\dd t
+  \right]
+\]
+denotes this regulated construction together with the specified limiting
+procedure. In the present chapter, the finite-\(N\) expression is the defined
+object.
+
+\section{Operator Ordering and Local Counterterms}
+
+The function \(h(q,p)\) depends on the ordering convention used to represent
+\(\widehat H\). For example, using left endpoints \(q_n\) in the short-time
+matrix element and using right endpoints \(q_{n+1}\) define different symbols
+for the same operator. Their difference is of order \(\hbar\) in the
+continuum action and appears as a local counterterm in the time-sliced
+description.
+
+Thus the data of the regulated path integral are
+\[
+  (\text{partition},\ \text{measure},\ \text{operator symbol},\
+  \text{boundary conditions}).
+\]
+A formula involving \(Dq\,Dp\) is meaningful as notation for a regulated
+construction once these data have been declared.
+
+\section{Lagrangian Form for Quadratic Momentum Dependence}
+
+Assume the Hamiltonian symbol has the form
+\[
+  h(q,p)
+  =
+  \frac12\,G^{ab}(q)p_ap_b+V(q),
+\]
+where \(G^{ab}(q)\) is a positive-definite symmetric matrix and
+\[
+  G^{ab}(q)G_{bc}(q)=\delta^a_c.
+\]
+At fixed time slice, the momentum integral is Gaussian:
+\[
+  \int\frac{\dd^dp}{(2\pi\hbar)^d}
+  \exp\left[
+    \frac{\ii}{\hbar}
+    \left(
+      p_a\Delta q^a
+      -\frac{\epsilon}{2}G^{ab}(q)p_ap_b
+    \right)
+  \right]
+  =
+  \frac{\sqrt{\det G_{ab}(q)}}{(2\pi\ii\hbar\epsilon)^{d/2}}
+  \exp\left[
+    \frac{\ii\epsilon}{\hbar}
+    \frac12G_{ab}(q)v^av^b
+  \right],
+\]
+where
+\[
+  \Delta q^a=q_{n+1}^a-q_n^a,
+  \qquad
+  v^a=\frac{\Delta q^a}{\epsilon}.
+\]
+The Lagrangian function obtained by Legendre transform is
+\[
+  L(q,\dot q)
+  =
+  \frac12G_{ab}(q)\dot q^a\dot q^b-V(q).
+\]
+The finite-\(N\) configuration-space expression is therefore
+\[
+\begin{aligned}
+  K_N(q_f,T;q_i,0)
+  &=
+  \int\prod_{n=1}^{N-1}\dd^dq_n
+  \prod_{n=0}^{N-1}
+  \frac{\sqrt{\det G_{ab}(q_n)}}{(2\pi\ii\hbar\epsilon)^{d/2}}
+  \\
+  &\quad\times
+  \exp\left[
+    \frac{\ii}{\hbar}
+    \sum_{n=0}^{N-1}
+    \epsilon\,
+    L\left(q_n,\frac{q_{n+1}-q_n}{\epsilon}\right)
+  \right].
+\end{aligned}
+\]
+For \(G_{ab}=m\delta_{ab}\), this reduces to the usual expression with
+\[
+  L(q,\dot q)=\frac{m}{2}\delta_{ab}\dot q^a\dot q^b-V(q).
+\]
+
+\section{Time-Ordered Insertions and Sources}
+
+Let \(F(q(t_1),\ldots,q(t_r))\) be a product of coordinate insertions with
+\[
+  0<t_1<\cdots<t_r<T.
+\]
+At finite \(N\), choose the time slices nearest to the insertion times and
+insert the corresponding coordinate functions into the finite-dimensional
+integral. The resulting regulated expression represents
+\[
+  \bra{q_f}T\{\widehat q^{a_1}(t_1)\cdots
+  \widehat q^{a_r}(t_r)\}U(T)\ket{q_i},
+\]
+where
+\[
+  \widehat q^a(t)
+  =
+  U(t)^{-1}\widehat q^aU(t)
+\]
+is the Heisenberg operator. The time ordering is inherited from the ordered
+product of short-time evolution operators.
+
+For a smooth compactly supported source \(J_a(t)\), define the finite-\(N\)
+source factor by
+\[
+  \exp\left[
+    \frac{\ii}{\hbar}
+    \sum_{n=0}^{N-1}\epsilon\,J_a(t_n)q_n^a
+  \right].
+\]
+The source-dependent kernel \(K_N[J]\) generates regulated time-ordered
+coordinate insertions by differentiation with respect to \(J\). This is the
+finite-dimensional ancestor of QFT generating functionals for Green
+functions.
+
+\section{Vacuum Projection}
+
+Assume \(\widehat H\) has a normalized ground state \(\ket{0}\), with energy
+\(E_0\), and that a vector \(\ket\psi\in\Hilb_{\mathcal Q}\) satisfies
+\(\braket{0}{\psi}\ne0\). If the spectrum above \(E_0\) is separated by a
+gap, then
+\[
+  \lim_{\tau\to\infty}
+  \frac{\ee^{-\tau(\widehat H-E_0)/\hbar}\ket\psi}
+       {\left\|\ee^{-\tau(\widehat H-E_0)/\hbar}\ket\psi\right\|}
+  =
+  \ket{0}
+\]
+up to the phase of \(\braket{0}{\psi}\). Vacuum correlation functions can
+therefore be obtained from long Euclidean-time evolution:
+\[
+  \bra{0}T\{\widehat q^{a_1}(t_1)\cdots
+  \widehat q^{a_r}(t_r)\}\ket{0}
+\]
+is the normalized long-time limit of the corresponding transition amplitude
+with insertions, after the Euclidean projection has been applied.
+
+The next chapter will analyze the analytic continuation and Gaussian
+integrals that make this construction computationally useful. The present
+chapter has introduced the regulated path-integral data and its relation to
+Hamiltonian time evolution.
