@@ -23,26 +23,47 @@ yarn-debug.log*
 yarn-error.log*
 
 # LaTeX build products
+*.acn
+*.acr
+*.alg
 *.aux
 *.bbl
 *.bcf
 *.blg
+*.brf
 *.dvi
 *.fdb_latexmk
 *.fls
+*.glg
+*.glo
+*.gls
+*.glsdefs
 *.ilg
 *.ind
+*.ist
+*.loa
 *.lof
 *.log
+*.loe
+*.lol
 *.lot
+*.maf
+*.mtc
+*.mtc[0-9]*
 *.nav
 *.out
+*.ptc
+*.pyg
 *.run.xml
 *.snm
+*.synctex
 *.synctex.gz
+*.synctex.gz(busy)
 *.toc
+*.vrb
 *.xdv
 *.xmpi
+_minted*/
 
 # Project-specific generated output
 monograph/tex/build/
@@ -51,12 +72,12 @@ transcription/build/
 transcription/ocr_json/
 transcription/source_pdfs/
 transcription/drafts/
-transcription/qft_notes.pdf
+transcription/*.pdf
 
 # Local source/reference shelf not intended for GitHub
 references/**/*.pdf
 references/**/*.txt
-references/*.tex
+references/**/*.tex
 
 # Temporary local notes
 *.tmp
