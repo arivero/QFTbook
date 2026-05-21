@@ -32,9 +32,98 @@ Almost-local operators are obtained by smearing local observables in spacetime
 with Schwartz functions whose Fourier transforms select the isolated shell.
 They are the bounded-operator substitute for interpolating fields.
 
+\section{Energy-Momentum Transfer and Regular Creators}
+
+The scattering construction uses local observables only after their
+energy-momentum transfer has been restricted.  For a bounded operator \(A\)
+set
+\[
+  A(x)=U(x)AU(x)^{-1},
+  \qquad x\in\R^D .
+\]
+For \(f\in\mathcal S(\R^D)\), define
+\[
+  A(f)=\int\dd^Dx\,f(x)A(x),
+  \qquad
+  \widehat f(q)=\int\dd^Dx\,f(x)\ee^{\ii q\cdot x}.
+\]
+With this Fourier convention, \(A(f)\) changes the joint spectral support of
+the translation generators only by momenta in \(\operatorname{supp}\widehat f\):
+\[
+  E(\Delta_1)A(f)E(\Delta_2)=0
+  \quad\text{if}\quad
+  \Delta_1\cap\bigl(\Delta_2+\operatorname{supp}\widehat f\bigr)=\varnothing .
+\]
+Here \(\Delta_1,\Delta_2\subset\R^D\) are Borel sets and \(E\) is the joint
+spectral measure of \(P^\mu\).  This is the spectral-transfer statement
+behind the phrase ``selecting the one-particle shell.''
+
+Choose a compact set \(K\subset\Sigma_m^+\) and a Schwartz function \(\chi\)
+whose Fourier transform is supported in the isolating neighborhood \(N\) and
+is equal to \(1\) on a smaller neighborhood of \(K\).  If \(A\) is local and
+\[
+  B=A(\chi),
+\]
+then \(B\) is almost local.  Since \(\Omega\) has momentum \(0\), the vector
+\(B\Omega\) has spectral support contained in
+\(\operatorname{supp}\widehat\chi\cap\operatorname{Spec}(P)\).  By the
+isolation hypothesis this intersection lies on \(\Sigma_m^+\), and therefore
+\[
+  B\Omega=P_1B\Omega .
+\]
+The adjoint \(B^*\) has transfer contained in
+\(-\operatorname{supp}\widehat\chi\).  If this reflected support is disjoint
+from the forward spectrum except at the origin, and the support of
+\(\widehat\chi\) avoids \(0\), then
+\[
+  B^*\Omega=0 .
+\]
+An almost-local operator satisfying these spectral properties and
+\(B\Omega\ne0\) will be called a regular Haag--Ruelle creator for the chosen
+mass shell.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.78\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[-{Latex[length=2mm]},line width=0.75pt] (-3.2,0)--(3.45,0)
+      node[right] {\(\vec p\)};
+    \draw[-{Latex[length=2mm]},line width=0.75pt] (0,-2.35)--(0,3.2)
+      node[above] {\(p^0\)};
+    \draw[gray!50,dashed,line width=0.8pt] (-2.9,2.9)--(0,0)--(2.9,2.9);
+    \node[gray!60!black] at (2.65,2.45) {\(\overline V_+\)};
+    \draw[blue!70!black,line width=1.1pt]
+      plot[smooth,domain=-2.25:2.25,samples=90]
+      (\x,{sqrt(\x*\x+0.95)});
+    \node[blue!70!black] at (-2.25,2.65) {\(\Sigma_m^+\)};
+    \draw[red!75!black,line width=2.1pt]
+      plot[smooth,domain=-2.85:-2.45,samples=20]
+      (\x,{sqrt(\x*\x+0.95)});
+    \draw[red!75!black,line width=2.1pt]
+      plot[smooth,domain=2.45:2.85,samples=20]
+      (\x,{sqrt(\x*\x+0.95)});
+    \fill[green!14,draw=green!45!black,line width=0.9pt]
+      (1.12,1.55) ellipse (0.72 and 0.43);
+    \node[green!45!black,align=center] at (1.12,0.72)
+      {\(\operatorname{supp}\widehat\chi\subset N\)};
+    \fill[orange!15,draw=orange!85!black,line width=0.9pt]
+      (-1.12,-1.55) ellipse (0.72 and 0.43);
+    \node[orange!85!black,align=center] at (-1.42,-0.72)
+      {transfer of \(B^*\)};
+    \fill[black] (0,0) circle (1.7pt);
+    \node[below right] at (0,0) {\(\Omega\)};
+  \end{tikzpicture}
+  }
+  \caption{Smearing a local observable with \(\chi\) restricts its
+  energy-momentum transfer.  The support of \(\widehat\chi\) is chosen inside
+  the isolating neighborhood of the positive mass shell, while the reflected
+  support controls the adjoint operator.}
+  \label{fig:haag-ruelle-spectral-transfer}
+\end{figure}
+
 \section{Creation Operators and Velocity Supports}
 
-Let \(B\) be almost local and energy decreasing away from the vacuum, and let
+Let \(B\) be a regular Haag--Ruelle creator, and let
 \[
   P_1B\Omega\ne0 .
 \]
