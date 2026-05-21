@@ -1,0 +1,251 @@
+\chapter{Duality and the Global Structure of Conformal Data}
+\label{ch:volume-iii-duality-global-structure-conformal-data}
+
+\section{Isomorphism of Theories}
+
+Let \(\mathfrak D_1\) and \(\mathfrak D_2\) be complete conformal data in the
+same spacetime dimension.  A duality between them is an isomorphism of
+operator algebras and Hilbert spaces that preserves all correlation functions,
+Ward identities, and positivity structures after the operators and background
+fields have been relabeled.
+
+More explicitly, let \(\Hilb_1(S^{D-1})\) and \(\Hilb_2(S^{D-1})\) be the
+radial-quantization Hilbert spaces.  A duality contains a unitary map
+\[
+  U:\Hilb_1(S^{D-1})\longrightarrow \Hilb_2(S^{D-1})
+\]
+intertwining the conformal generators:
+\[
+  U\,Q_A^{(1)}\,U^{-1}=Q_A^{(2)}
+\]
+for every generator \(Q_A\) of the conformal algebra.  If
+\(\mathcal O_i^{(1)}\) is a primary in the first description, then
+\[
+  U\,\mathcal O_i^{(1)}(x)\,U^{-1}
+  =
+  M_i{}^j\,\mathcal O_j^{(2)}(x)
+\]
+inside the space of primaries with the same transformed quantum numbers.  The
+matrix \(M_i{}^j\) may mix degenerate primaries.
+
+The equality of local CFT data is then
+\begin{equation}
+  \Delta_i^{(1)}=\Delta_{M(i)}^{(2)},
+  \qquad
+  C_{ijk}^{(1)}
+  =
+  M_i{}^{i'}M_j{}^{j'}M_k{}^{k'}C_{i'j'k'}^{(2)}
+  \label{eq:duality-cft-data-isomorphism}
+\end{equation}
+with the evident extension to spinning structures, global-symmetry
+representations, and higher-point functions.  Defect operators, line
+operators, and background fields are part of the same complete data when they
+are included in the theory.
+
+\begin{definition}[Duality]
+  A duality is an isomorphism between complete quantum field theoretic data.
+  For a conformal theory, this includes the Hilbert space, conformal symmetry
+  action, local operator algebra, allowed extended operators, symmetry
+  backgrounds, and all correlation functions, modulo relabeling of equivalent
+  bases.
+\end{definition}
+
+This definition makes duality a structural statement.  It can be discovered
+through two different Lagrangian descriptions, through a geometric
+construction, through a lattice regularization, or through a bootstrap
+solution.  Once established, it identifies the resulting conformal data.
+
+\section{Quotients of Conformal Manifolds}
+
+Let \(\widetilde{\mathcal M}_{\rm conf}\) be a coordinate cover of a
+conformal manifold, and let \(\Gamma\) be a group acting on it by
+transformations
+\[
+  \gamma:\widetilde{\mathcal M}_{\rm conf}
+  \longrightarrow
+  \widetilde{\mathcal M}_{\rm conf},
+  \qquad
+  \gamma\in\Gamma,
+\]
+such that \(\mathfrak D(p)\) and \(\mathfrak D(\gamma p)\) are dual
+conformal data.  Then the physical conformal manifold is the quotient
+\[
+  \mathcal M_{\rm conf}
+  =
+  \widetilde{\mathcal M}_{\rm conf}/\Gamma,
+\]
+possibly with orbifold points at fixed loci where additional automorphisms of
+the theory appear.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      curve/.style={blue!65!black,line width=1.0pt},
+      identify/.style={orange!85!black,line width=0.9pt,dashed}
+    }
+    \begin{scope}[shift={(-3.9,0)}]
+      \draw[->,thick] (-1.2,-1.05)--(1.35,-1.05) node[right] {\(\operatorname{Re}\tau\)};
+      \draw[->,thick] (-1.2,-1.05)--(-1.2,1.25) node[above] {\(\operatorname{Im}\tau\)};
+      \draw[curve] (-0.85,-0.70) .. controls (-0.2,0.40) and (0.42,0.42) .. (0.98,-0.70);
+      \draw[identify] (-0.85,-0.70)--(-0.85,1.10);
+      \draw[identify] (0.98,-0.70)--(0.98,1.10);
+      \node[blue!65!black] at (0.08,1.38) {coordinate cover};
+      \node[orange!85!black] at (0.08,-1.55) {\(\tau\sim\gamma\tau\)};
+    \end{scope}
+    \draw[arrow] (-1.55,0)--(-0.45,0);
+    \node[align=center] at (-1.00,0.52) {identify\\dual data};
+    \begin{scope}[shift={(2.7,0)}]
+      \draw[curve,fill=blue!5] (-1.35,-0.75)
+        .. controls (-0.65,0.85) and (0.65,0.85) .. (1.35,-0.75)
+        -- cycle;
+      \node[violet!80!black] at (-0.62,0.04) {\(\mathfrak D(p)\)};
+      \node[violet!80!black] at (0.63,0.04) {\(\mathfrak D(\gamma p)\)};
+      \draw[identify] (-0.55,-0.12)--(0.55,-0.12);
+      \node[blue!65!black] at (0,-1.25) {quotient conformal manifold};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{A duality group identifies coordinate values whose complete
+  conformal data are isomorphic.  The quotient is the global conformal
+  manifold.}
+  \label{fig:duality-quotient-conformal-manifold}
+\end{figure}
+
+For four-dimensional \(\mathcal N=4\) super-Yang--Mills with gauge algebra
+\(\mathfrak{su}(N)\), the local coordinate is
+\[
+  \tau_{\rm YM}
+  =
+  \frac{\theta}{2\pi}
+  +
+  \frac{4\pi\ii}{g_{\rm YM}^2},
+  \qquad
+  \Im\tau_{\rm YM}>0.
+\]
+The transformations
+\begin{equation}
+  \tau_{\rm YM}
+  \longmapsto
+  \frac{a\tau_{\rm YM}+b}{c\tau_{\rm YM}+d},
+  \qquad
+  a,b,c,d\in\mathbb Z,
+  \qquad
+  ad-bc=1,
+  \label{eq:sl2z-tau-action}
+\end{equation}
+act by electric-magnetic duality in the standard simply laced cases.  The
+precise duality group also depends on the global form of the gauge group and
+on the spectrum of line operators.  Thus a statement about
+\(\tau_{\rm YM}\) alone is local; the global statement includes line
+operators and background fields.
+
+\section{Local Operators and Extended Operators}
+
+Local correlation functions determine much of a CFT, but in a gauge theory
+the full quantum field theoretic data also includes extended probes.  A Wilson
+line in representation \(R\) of the gauge group is
+\[
+  W_R(C)
+  =
+  \operatorname{Tr}_R
+  P\exp\left(\ii\int_C A\right),
+\]
+where \(C\) is an oriented curve and \(P\) denotes path ordering.  A
+'t Hooft line is specified by a magnetic singularity, equivalently by a
+cocharacter of the gauge group modulo Weyl transformations.  A Wilson-'t
+Hooft line has both electric and magnetic charges.
+
+Under the transformation \eqref{eq:sl2z-tau-action}, electric and magnetic
+charges transform as a rank-two lattice.  If a line operator has charge column
+vector
+\[
+  \begin{pmatrix} q_{\rm e}\\ q_{\rm m}\end{pmatrix},
+\]
+then the duality transformation acts by an integral linear map compatible with
+the Dirac pairing.  The full duality identification therefore preserves the
+lattice of allowed line operators, their operator products, and their
+correlation functions with local insertions.
+
+The same principle applies to global symmetries.  If \(A_{\rm bg}\) is a
+background gauge field for a global symmetry, the generating functional
+\[
+  Z[g_{\mu\nu},A_{\rm bg},\lambda]
+\]
+is part of the data.  A duality may act nontrivially on \(A_{\rm bg}\), on
+counterterms for background fields, and on the discrete theta angles that
+specify the theory.  Anomalies are preserved by the duality map.
+
+\section{Singular Loci and Extra Massless Data}
+
+A conformal manifold can have special loci at which the automorphism group of
+the theory is enhanced or at which a chosen Lagrangian coordinate becomes
+singular.  At such a point, the quotient
+\(\widetilde{\mathcal M}_{\rm conf}/\Gamma\) may have an orbifold
+singularity.  The local CFT remains described by conformal data; the
+singularity is a statement about the coordinates used to parametrize the
+family and about extra identifications of operator bundles.
+
+Operator dimensions may cross along subloci.  When this happens, the correct
+object is the vector bundle of degenerate operator spaces, together with the
+connection and OPE tensors.  A labeling by individual operators can be chosen
+locally after diagonalizing the dilatation operator, but the global
+monodromy around a singular locus may return the basis after a nontrivial
+linear transformation.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.90\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      bundle/.style={green!45!black,line width=0.9pt},
+      path/.style={orange!85!black,line width=1.0pt,-{Latex[length=2mm]}},
+      box/.style={draw,rounded corners=4pt,fill=blue!4,inner sep=4pt,align=center}
+    }
+    \draw[blue!65!black,line width=1.0pt] (-3.3,0)
+      .. controls (-2.0,0.95) and (-0.6,-0.95) .. (0.7,0)
+      .. controls (1.75,0.72) and (2.65,0.55) .. (3.3,-0.18);
+    \fill[violet!80!black] (-0.02,-0.10) circle (2.4pt);
+    \node[violet!80!black] at (-0.02,-0.50) {special locus};
+    \draw[path] (-1.25,0.45) arc (150:-170:0.92 and 0.52);
+    \foreach \x/\y in {-2.55/0.48,-1.65/0.22,1.55/0.35,2.45/0.08} {
+      \draw[bundle] (\x,\y)--++(0,0.72);
+      \draw[bundle] (\x,\y)--++(0,-0.72);
+    }
+    \node[box] at (4.25,0.65) {operator\\bundle};
+    \draw[arrow] (3.35,0.20)--(3.80,0.50);
+    \node[orange!85!black,align=center] at (-1.55,1.35)
+      {transport around the locus\\can mix degenerate primaries};
+  \end{tikzpicture}
+  }
+  \caption{Operator labels live in bundles over the conformal manifold.
+  Around special loci, parallel transport can act by a nontrivial monodromy on
+  degenerate operator spaces.}
+  \label{fig:operator-bundle-monodromy}
+\end{figure}
+
+\section{Duality as a Constraint}
+
+Because duality identifies complete conformal data, it turns a local
+calculation in one region of \(\mathcal M_{\rm conf}\) into a constraint on
+the entire quotient.  For a scalar primary whose transformed label is
+\(\gamma\cdot i\),
+\[
+  \Delta_i(p)
+  =
+  \Delta_{\gamma\cdot i}(\gamma p),
+\]
+and similarly for OPE coefficients.  If an operator is invariant under a
+duality element up to a phase, its correlation functions transform as modular
+or automorphic functions with weights fixed by that phase and by the
+normalization of the operator.
+
+The constraint is strongest when combined with analyticity, positivity, and
+OPE convergence.  Perturbation theory near one cusp, semiclassical expansion
+near another region, and protected supersymmetric data can then determine
+nontrivial functions over the conformal manifold.  The result is a global
+description of a family of conformal theories rather than a collection of
+separate coordinate expansions.
