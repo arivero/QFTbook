@@ -1,0 +1,160 @@
+\chapter{The Operator Product Expansion}
+\label{ch:volume-iii-operator-product-expansion}
+
+\section{Local Expansion in Radial Quantization}
+
+Let \(\mathcal O_i(x)\) and \(\mathcal O_j(0)\) be local operators inserted
+inside a sphere of radius \(R\), and let all other insertions lie outside that
+sphere.  Radial quantization turns the product
+\[
+  \mathcal O_i(x)\mathcal O_j(0)\ket{\Omega},
+  \qquad |x|<R,
+\]
+into a state on \(S_R^{D-1}\).  Since the Hilbert space on the sphere is
+spanned by local-operator states, this state can be expanded in a basis of
+primary multiplets:
+\begin{equation}
+  \mathcal O_i(x)\mathcal O_j(0)
+  =
+  \sum_{\mathcal O}
+  C_{ij\mathcal O}(x,\partial)\,\mathcal O(0).
+  \label{eq:ope-general-local}
+\end{equation}
+The sum runs over primary operators \(\mathcal O\) and the differential
+operator \(C_{ij\mathcal O}(x,\partial)\) generates the descendants of
+\(\mathcal O\).  Equation \eqref{eq:ope-general-local} is understood inside
+correlation functions with all other insertions farther from the origin than
+\(|x|\), or equivalently as a Hilbert-space expansion on the separating
+sphere.
+
+The convergence parameter is radial separation.  If the nearest outside
+insertion is at radial distance \(R\), the expansion is organized by powers of
+\(|x|/R\), with larger scaling dimensions contributing at higher radial
+energy.  Thus the OPE is a structural expansion controlled by the local
+operator spectrum and the conformal representation theory of descendants.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.7pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt},
+      surface/.style={green!45!black,line width=0.8pt}
+    }
+    \begin{scope}
+      \node[font=\small] at (0,2.0) {two nearby insertions};
+      \draw[thick] (0,0) circle (1.45);
+      \draw[surface] (0,0) circle (0.92);
+      \node[insertion] at (-0.28,0.10) {};
+      \node[insertion] at (0.35,0.35) {};
+      \node[violet!80!black] at (-0.58,-0.20) {\(\mathcal O_j(0)\)};
+      \node[violet!80!black] at (0.82,0.55) {\(\mathcal O_i(x)\)};
+      \node[green!45!black] at (1.12,-0.70) {\(S_R^{D-1}\)};
+      \node[blue!65!black] at (0,-1.92) {outside insertions are outside \(S_R^{D-1}\)};
+    \end{scope}
+
+    \draw[arrow] (2.00,0.0)--(3.25,0.0);
+    \node[align=center] at (2.62,0.52) {expand\\on sphere};
+
+    \begin{scope}[shift={(5.55,0)}]
+      \node[font=\small] at (0,2.0) {primary families};
+      \draw[thick] (0,0) circle (1.45);
+      \draw[surface] (0,0) circle (0.92);
+      \foreach \y/\lab in {0.66/{\mathcal O},0.22/{\partial\mathcal O},-0.22/{\partial^2\mathcal O},-0.66/{\cdots}} {
+        \node[insertion] at (0,\y) {};
+        \node[violet!80!black,right] at (0.18,\y) {\(\lab\)};
+      }
+      \node[orange!85!black] at (0,-1.85)
+        {\(\displaystyle \sum_{\mathcal O} C_{ij\mathcal O}(x,\partial)\mathcal O(0)\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The OPE is the expansion of the state created by nearby insertions
+  in the basis of primary conformal multiplets on a separating sphere.}
+  \label{fig:ope-radial-expansion}
+\end{figure}
+
+\section{Scalar-Scalar OPE}
+
+Let \(\phi_1\) and \(\phi_2\) be scalar primaries of dimensions
+\(\Delta_1\) and \(\Delta_2\).  Let
+\(\mathcal O_{\mu_1\cdots\mu_\ell}\) be a symmetric traceless primary of spin
+\(\ell\) and dimension \(\Delta\).  Its leading contribution to the
+\(\phi_1\times\phi_2\) OPE has the form
+\begin{equation}
+  \phi_1(x)\phi_2(0)
+  \supset
+  \lambda_{12\mathcal O}
+  \frac{x^{\mu_1}\cdots x^{\mu_\ell}}
+       {|x|^{\Delta_1+\Delta_2-\Delta+\ell}}
+  \mathcal O_{\mu_1\cdots\mu_\ell}(0)
+  +\text{descendants}.
+  \label{eq:scalar-scalar-leading-ope}
+\end{equation}
+The tensor \(x^{\mu_1}\cdots x^{\mu_\ell}\) selects the symmetric traceless
+part of the spin-\(\ell\) representation.  Antisymmetric components do not
+appear in the product of powers of a single vector, and trace parts are
+absorbed into descendants or lower-spin structures.
+
+For an exchanged scalar primary \(\mathcal O\), the first descendant term is
+fixed by conformal symmetry:
+\begin{equation}
+  \phi_1(x)\phi_2(0)
+  \supset
+  \lambda_{12\mathcal O}
+  |x|^{\Delta-\Delta_1-\Delta_2}
+  \left(
+    1+
+    \frac{\Delta+\Delta_1-\Delta_2}{2\Delta}
+    x^\mu\partial_\mu+\cdots
+  \right)\mathcal O(0).
+  \label{eq:scalar-ope-first-descendant}
+\end{equation}
+The coefficient of the derivative is determined by requiring the OPE to
+reproduce the conformally fixed three-point function
+\(\langle\phi_1\phi_2\mathcal O\rangle\).  Higher descendants are fixed in the
+same way by the conformal algebra.
+
+\section{OPE Data}
+
+Choose a basis of primaries with diagonal two-point functions.  The local CFT
+data are then
+\begin{equation}
+  \left\{
+    \Delta_{\mathcal O},\;
+    \rho_{\mathcal O},\;
+    \lambda_{ij\mathcal O}^{(a)}
+  \right\}.
+  \label{eq:cft-local-ope-data}
+\end{equation}
+Here \(\rho_{\mathcal O}\) is the spin representation, and the label \(a\)
+enumerates independent three-point tensor structures when more than one
+structure exists.  Once this data is specified, all descendant coefficients in
+the OPE are representation-theoretic consequences of the conformal algebra.
+
+In representation language, if \(V_i\) is the conformal multiplet generated by
+\(\mathcal O_i\), the OPE decomposes the product generated by two local
+insertions into irreducible conformal multiplets:
+\[
+  V_i\otimes V_j
+  \longrightarrow
+  \bigoplus_{\mathcal O} m_{ij}^{\mathcal O}V_{\mathcal O}.
+\]
+The multiplicity \(m_{ij}^{\mathcal O}\) equals the number of independent
+three-point structures connecting \(i\), \(j\), and \(\mathcal O\).
+
+\section{Associativity}
+
+Consider a correlation function with three nearby operators.  There are two
+ways to apply the OPE:
+\[
+  (\mathcal O_1\mathcal O_2)\mathcal O_3,
+  \qquad
+  \mathcal O_1(\mathcal O_2\mathcal O_3).
+\]
+Both compute the same local state on a sphere enclosing all three insertions.
+Associativity of the OPE is the equality of these two expansions in their
+common domain of convergence and by analytic continuation beyond it.  For
+four-point functions this associativity becomes crossing symmetry, developed
+in the next chapter.

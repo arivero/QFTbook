@@ -1,0 +1,253 @@
+\chapter{Projective Lightcone and Casimir Equations}
+\label{ch:volume-iii-projective-lightcone-casimir}
+
+\section{The Projective Null Cone}
+
+Let \(\R^{D+1,1}\) have coordinates
+\[
+  X^A=(X^+,X^-,X^\mu),
+  \qquad
+  \mu=1,\ldots,D,
+\]
+and bilinear form
+\begin{equation}
+  X\cdot Y
+  =
+  -\frac12(X^+Y^-+X^-Y^+)
+  +
+  \delta_{\mu\nu}X^\mu Y^\nu.
+  \label{eq:embedding-bilinear-form}
+\end{equation}
+The null cone is
+\[
+  X^2=0.
+\]
+Physical Euclidean points are rays on this cone:
+\[
+  X\sim \lambda X,
+  \qquad
+  \lambda>0.
+\]
+A convenient section is
+\begin{equation}
+  X(x)^A=(1,x^2,x^\mu).
+  \label{eq:embedding-section}
+\end{equation}
+Then
+\[
+  X(x)^2=0,
+  \qquad
+  X(x)\cdot X(y)=-\frac12(x-y)^2.
+  \label{eq:embedding-distance}
+\]
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.88\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt},
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.8pt}
+    }
+    \begin{scope}
+      \node[font=\small] at (0,2.25) {null cone};
+      \draw[thick] (-1.45,0) ellipse (1.25 and 0.34);
+      \draw[thick] (-2.70,0)--(-1.45,1.85)--(-0.20,0);
+      \draw[thick] (-2.70,0)--(-1.45,-1.85)--(-0.20,0);
+      \draw[dashed] (-1.45,0) ellipse (0.55 and 0.15);
+      \draw[arrow,blue!65!black] (-1.45,0)--(-0.54,1.35);
+      \draw[arrow,blue!65!black] (-1.45,0)--(-0.82,0.94);
+      \node[blue!65!black] at (-0.20,1.45) {\(X\)};
+      \node[blue!65!black] at (-0.62,0.62) {\(\lambda X\)};
+      \node at (-1.45,-2.25) {\(X^2=0,\ X\sim\lambda X\)};
+    \end{scope}
+
+    \draw[arrow] (1.20,0)--(2.45,0);
+    \node[align=center] at (1.82,0.48) {choose\\section};
+
+    \begin{scope}[shift={(5.20,0)}]
+      \node[font=\small] at (0,2.25) {Euclidean section};
+      \draw[thick] (-1.80,-1.10)--(1.80,-0.80)--(2.20,1.05)--(-1.50,0.88)--cycle;
+      \node[insertion] at (-0.62,-0.25) {};
+      \node[insertion] at (0.95,0.42) {};
+      \node[violet!80!black] at (-0.85,-0.58) {\(x\)};
+      \node[violet!80!black] at (1.20,0.72) {\(y\)};
+      \draw[blue!65!black,line width=0.8pt] (-0.62,-0.25)--(0.95,0.42);
+      \node[blue!65!black] at (0.02,0.32) {\((x-y)^2\)};
+      \node[orange!85!black] at (0.10,1.35)
+        {\(-2X(x)\cdot X(y)\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Embedding space realizes a Euclidean point as a ray on the null
+  cone.  Inner products of rays reproduce squared distances on a section.}
+  \label{fig:projective-lightcone}
+\end{figure}
+
+\section{Homogeneous Representatives of Primaries}
+
+A scalar primary of dimension \(\Delta\) is represented in embedding space by
+a homogeneous function \(\Phi(X)\) on the null cone:
+\begin{equation}
+  \Phi(\lambda X)=\lambda^{-\Delta}\Phi(X).
+  \label{eq:embedding-scalar-homogeneity}
+\end{equation}
+The physical operator on the section is
+\[
+  \mathcal O(x)=\Phi(X(x)).
+\]
+Conformal transformations are linear \(SO(D+1,1)\) transformations of
+\(\R^{D+1,1}\) followed by a return to the chosen section.  The compensating
+projective rescaling is exactly the conformal factor in the primary
+transformation law.
+
+The scalar two-point function follows from homogeneity and
+\eqref{eq:embedding-distance}:
+\begin{equation}
+  \left\langle\Phi_i(X_1)\Phi_j(X_2)\right\rangle
+  =
+  \frac{C_{ij}\,\delta_{\Delta_i,\Delta_j}}
+       {(-2X_1\cdot X_2)^{\Delta_i}}.
+  \label{eq:embedding-two-point}
+\end{equation}
+Similarly, the scalar three-point function is
+\begin{equation}
+  \left\langle\Phi_1(X_1)\Phi_2(X_2)\Phi_3(X_3)\right\rangle
+  =
+  \frac{C_{123}}
+  {X_{12}^{(\Delta_1+\Delta_2-\Delta_3)/2}
+   X_{23}^{(\Delta_2+\Delta_3-\Delta_1)/2}
+   X_{13}^{(\Delta_1+\Delta_3-\Delta_2)/2}},
+  \label{eq:embedding-three-point}
+\end{equation}
+where
+\[
+  X_{ij}=-2X_i\cdot X_j.
+\]
+Restricting to the section \(X_i=X(x_i)\) reproduces the flat-space
+correlators.
+
+\section{Linear Generators and the Casimir}
+
+The conformal generators act linearly in embedding space:
+\begin{equation}
+  L_{AB}
+  =
+  X_A\frac{\partial}{\partial X^B}
+  -
+  X_B\frac{\partial}{\partial X^A}.
+  \label{eq:embedding-generators}
+\end{equation}
+The quadratic Casimir is
+\[
+  \mathcal C=-\frac12 L_{AB}L^{AB}.
+\]
+On a primary of dimension \(\Delta\) and spin \(\ell\), its eigenvalue is
+\begin{equation}
+  C_{\Delta,\ell}
+  =
+  \Delta(\Delta-D)+\ell(\ell+D-2).
+  \label{eq:conformal-casimir-eigenvalue}
+\end{equation}
+
+In a four-point function, the conformal block for exchange of
+\((\Delta,\ell)\) in the \(12\) channel is an eigenfunction of the pairwise
+Casimir:
+\begin{equation}
+  \left[
+    -\frac12(L_1+L_2)_{AB}(L_1+L_2)^{AB}
+    -
+    C_{\Delta,\ell}
+  \right]
+  G_{\Delta,\ell}(u,v)
+  =
+  0.
+  \label{eq:block-casimir-equation-embedding}
+\end{equation}
+This equation, together with the leading OPE behavior
+\eqref{eq:block-leading-radial}, determines the conformal block.
+
+\section{Casimir Equation in Cross-Ratio Coordinates}
+
+For scalar external operators, write the cross ratios as
+\[
+  u=z\bar z,
+  \qquad
+  v=(1-z)(1-\bar z).
+\]
+The Casimir equation takes the form
+\begin{equation}
+  \left[
+    \mathcal D_z+\mathcal D_{\bar z}
+    +(D-2)\frac{z\bar z}{z-\bar z}
+    \bigl((1-z)\partial_z-(1-\bar z)\partial_{\bar z}\bigr)
+  \right]F_{\Delta,\ell}
+  =
+  \frac12C_{\Delta,\ell}F_{\Delta,\ell}.
+  \label{eq:casimir-z-zbar-equation}
+\end{equation}
+With
+\[
+  a=-\frac12(\Delta_1-\Delta_2),
+  \qquad
+  b=\frac12(\Delta_3-\Delta_4),
+\]
+one convenient convention is
+\begin{equation}
+  \mathcal D_z
+  =
+  z^2(1-z)\partial_z^2
+  -
+  (a+b+1)z^2\partial_z
+  -
+  ab\,z,
+  \label{eq:one-variable-casimir-operator}
+\end{equation}
+and \(\mathcal D_{\bar z}\) is obtained by replacing
+\(z\) with \(\bar z\).  Different normalizations of the four-point
+kinematic prefactor conjugate this differential operator by known powers of
+\(z,\bar z,1-z,1-\bar z\); the eigenvalue
+\eqref{eq:conformal-casimir-eigenvalue} is invariant.
+
+In \(D=2\), the term proportional to \(D-2\) vanishes, and the global block
+factorizes into holomorphic and antiholomorphic hypergeometric functions.  In
+\(D=4\), the scalar blocks can also be written in closed hypergeometric form.
+In odd dimensions, recursive radial methods are usually the most efficient
+way to evaluate the blocks to high precision.
+
+\section{Radial Recursion}
+
+Let
+\[
+  \rho=r\ee^{\ii\alpha}
+  =
+  \frac{z}{(1+\sqrt{1-z})^2},
+  \qquad
+  \eta=\cos\alpha.
+\]
+A radial representation of the block has the form
+\begin{equation}
+  G_{\Delta,\ell}(u,v)
+  =
+  (4r)^\Delta h_{\Delta,\ell}(r,\eta).
+  \label{eq:block-radial-h}
+\end{equation}
+The function \(h_{\Delta,\ell}\) is meromorphic in \(\Delta\).  Its poles
+occur when a descendant becomes primary, and the residues are fixed by the
+corresponding shortening condition.  This gives a recursion of the schematic
+form
+\begin{equation}
+  h_{\Delta,\ell}
+  =
+  h_{\infty,\ell}
+  +
+  \sum_A
+  \frac{R_A}{\Delta-\Delta_A^\ast}
+  (4r)^{n_A}h_{\Delta_A^\ast+n_A,\ell_A}.
+  \label{eq:block-radial-recursion}
+\end{equation}
+The label \(A\) runs over families of null descendants.  The data
+\((\Delta_A^\ast,n_A,\ell_A,R_A)\) are determined by conformal
+representation theory.  This recursion makes high-precision bootstrap
+calculations possible because \(|\rho|\) is small at the crossing-symmetric
+point.
