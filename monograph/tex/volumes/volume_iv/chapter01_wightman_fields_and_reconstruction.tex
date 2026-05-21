@@ -1,0 +1,266 @@
+\chapter{Wightman Fields and Reconstruction}
+\label{ch:volume-iv-wightman-fields-reconstruction}
+
+\section{Field-Theoretic Data}
+
+Let \(M=\mathbb R^{1,D-1}\) be \(D\)-dimensional Minkowski space with
+translation coordinates \(x^\mu\).  The proper orthochronous Poincare group is
+denoted by
+\[
+  \mathcal P_+^\uparrow=\mathbb R^D\rtimes SO^+(1,D-1).
+\]
+The Wightman framework describes a QFT by Hilbert-space data together with
+local operator-valued distributions.  The basic data are:
+\[
+  (\Hilb,\vac,U,\mathcal D,\{\Phi_a\}_{a\in A}).
+\]
+Here \(\Hilb\) is a Hilbert space, \(\vac\in\Hilb\) is a unit vector, \(U\) is a
+strongly continuous unitary representation of \(\mathcal P_+^\uparrow\),
+\(\mathcal D\subset\Hilb\) is a dense invariant domain, and each \(\Phi_a\) is
+an operator-valued tempered distribution on \(M\) with common domain
+\(\mathcal D\).  For a Schwartz test function \(f\in\mathcal S(M)\),
+\[
+  \Phi_a(f)=\int_M \dd^D x\, f(x)\Phi_a(x)
+\]
+denotes the smeared operator.  This integral notation means distributional
+pairing, and all products of fields below are products of smeared operators on
+the common domain.
+
+The vacuum is invariant:
+\[
+  U(g)\vac=\vac,\qquad g\in\mathcal P_+^\uparrow .
+\]
+Translations are written \(U(a,1)=\ee^{\ii a_\mu P^\mu}\).  The spectrum
+condition is
+\[
+  \operatorname{Spec}(P)\subset \overline V_+
+  =
+  \{p\in\mathbb R^D\mid p^0\ge0,\ p^2\ge0\}.
+\]
+If \(\Phi_a\) transforms in a finite-dimensional Lorentz representation
+\(S(\Lambda)\), covariance is the identity
+\[
+  U(a,\Lambda)\Phi_a(f)U(a,\Lambda)^{-1}
+  =
+  S(\Lambda)_a{}^b\,
+  \Phi_b(f_{a,\Lambda}),
+\]
+where
+\[
+  f_{a,\Lambda}(x)=f\bigl(\Lambda^{-1}(x-a)\bigr).
+\]
+The precise spin indices are carried by the label \(a\).
+
+Locality is imposed after smearing.  If the supports of \(f\) and \(g\) are
+spacelike separated, then
+\[
+  [\Phi_a(f),\Phi_b(g)]_\pm=0
+\]
+on \(\mathcal D\), with the anticommutator used when both fields are fermionic.
+The vacuum is cyclic for the polynomial field algebra:
+\[
+  \operatorname{span}\{
+    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\vac
+    \mid n\ge0
+  \}
+  \quad\text{is dense in }\Hilb .
+\]
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.90\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
+        minimum width=3.0cm,minimum height=0.90cm,align=center},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      note/.style={align=center}
+    }
+    \node[box] (hilb) at (-4.2,1.3) {Hilbert space\\\(\Hilb,\vac,U\)};
+    \node[box] (domain) at (0,1.3) {common domain\\\(\mathcal D\)};
+    \node[box] (fields) at (4.2,1.3) {smeared fields\\\(\Phi_a(f)\)};
+    \node[box] (spectrum) at (-3.2,-1.0)
+      {spectrum\\\(\operatorname{Spec}(P)\subset\overline V_+\)};
+    \node[box] (locality) at (3.2,-1.0)
+      {locality\\spacelike commutators};
+    \draw[arrow] (hilb)--(domain);
+    \draw[arrow] (domain)--(fields);
+    \draw[arrow] (hilb)--(spectrum);
+    \draw[arrow] (fields)--(locality);
+    \draw[arrow] (locality)--(spectrum);
+    \node[align=center] at (0,-1.72) {analytic structure};
+    \node[note,green!45!black] at (0,-2.35)
+      {The field data are distributional, domain-sensitive, and local after smearing.};
+  \end{tikzpicture}
+  }
+  \caption{The Wightman framework packages local fields, a Hilbert space,
+  covariance, spectral positivity, and locality into one distributional
+  structure.}
+  \label{fig:wightman-data}
+\end{figure}
+
+\section{Wightman Functions}
+
+The vacuum \(n\)-point distributions are
+\begin{equation}
+  W_{a_1\cdots a_n}(x_1,\ldots,x_n)
+  =
+  \bra{\vac}
+  \Phi_{a_1}(x_1)\cdots\Phi_{a_n}(x_n)
+  \ket{\vac}.
+  \label{eq:wightman-functions}
+\end{equation}
+They are tempered distributions on \(M^n\).  Translation invariance allows one
+to pass to difference variables
+\[
+  \xi_j=x_{j+1}-x_j,\qquad j=1,\ldots,n-1.
+\]
+The spectral condition implies that the Fourier transform in the difference
+variables has support in \(\overline V_+^{\,n-1}\).  This is the same positive
+spectral input that led in Chapter \ref{ch:kallen-lehmann} to the
+Kallen--Lehmann representation of two-point functions.
+
+The Wightman hierarchy satisfies four structural conditions that are directly
+read from the Hilbert-space data:
+\[
+\begin{array}{ll}
+  \text{covariance:} &
+  W\text{ transforms under } \mathcal P_+^\uparrow \text{ with the field
+  representations},\\[0.25em]
+  \text{spectrum:} &
+  \operatorname{supp}\widehat W_n\subset \overline V_+^{\,n-1}
+  \text{ in difference variables},\\[0.25em]
+  \text{locality:} &
+  W_n\text{ has the graded permutation property at spacelike separated
+  adjacent points},\\[0.25em]
+  \text{positivity:} &
+  \sum_{m,n}\overline c_m c_n\,
+  W_{m+n}(f_m^\dagger\otimes f_n)\ge0 .
+\end{array}
+\]
+In the positivity line, \(f_n\) denotes a compactly supported or Schwartz test
+function valued in the appropriate finite direct sum of field labels, and
+\(f_m^\dagger\) reverses order and complex conjugates the test functions
+with the field adjunction included.
+
+\section{Reconstruction From Correlation Functions}
+
+The Wightman reconstruction theorem says that the correlation hierarchy is
+itself a complete encoding of the field theory in this framework, provided the
+hierarchy satisfies the Wightman conditions with the required regularity.
+
+\begin{theorem}[Wightman reconstruction]
+Let \(\{W_n\}_{n\ge0}\) be a hierarchy of tempered distributions with field
+indices, with \(W_0=1\).  Suppose the hierarchy satisfies Poincare covariance,
+the spectral support condition, Hermiticity, locality, and positivity.  Then
+there exists Wightman field data
+\[
+  (\Hilb,\vac,U,\mathcal D,\{\Phi_a\})
+\]
+whose vacuum correlation functions are exactly \(\{W_n\}\).  The resulting
+data are unique up to a unitary equivalence preserving the vacuum, the
+Poincare representation, and all smeared fields.
+\end{theorem}
+
+The construction begins with formal vectors
+\[
+  [a_1,f_1;\ldots ;a_n,f_n]
+\]
+and defines an inner product by the Wightman distributions.  Positivity makes
+this a positive semidefinite form.  Dividing by zero-norm vectors and
+completing gives \(\Hilb\).  Fields act by left multiplication on the dense
+subspace of finite sequences, and the Poincare action is induced by covariance
+of the hierarchy.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
+        minimum width=3.2cm,minimum height=0.90cm,align=center},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \node[box] (hier) at (-5.0,0) {distribution hierarchy\\\(\{W_n\}\)};
+    \node[box] (pre) at (-1.65,0) {finite sequences\\of test functions};
+    \node[box] (quot) at (1.65,0) {quotient by\\null vectors};
+    \node[box] (hilb) at (5.0,0) {completion\\\(\Hilb\)};
+    \node[box,fill=green!7] (ops) at (0,-1.85) {fields by\\left multiplication};
+    \draw[arrow] (hier)--(pre) node[midway,above] {positivity};
+    \draw[arrow] (pre)--(quot);
+    \draw[arrow] (quot)--(hilb);
+    \draw[arrow] (pre)--(ops);
+    \draw[arrow] (ops)--(hilb);
+  \end{tikzpicture}
+  }
+  \caption{Wightman reconstruction builds the Hilbert space and fields from the
+  positive correlation hierarchy.}
+  \label{fig:wightman-reconstruction}
+\end{figure}
+
+\section{Analytic Continuation From Spectral Positivity}
+
+For scalar fields, write the Wightman function in difference variables as
+\[
+  W_n(\xi_1,\ldots,\xi_{n-1}).
+\]
+The support condition for the Fourier transform implies that \(W_n\) is the
+boundary value of a holomorphic function on the forward tube
+\[
+  T_{n-1}
+  =
+  \{z_j=\xi_j+\ii\eta_j\in\mathbb C^D
+  \mid \eta_j\in V_+,\ j=1,\ldots,n-1\}.
+\]
+Lorentz covariance enlarges the domain to the extended tube obtained by the
+complex Lorentz group.  Locality then identifies the analytic continuations
+associated with permutations at Jost configurations, where all relevant real
+linear combinations are spacelike.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.78\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      cone/.style={draw,fill=blue!5,line width=0.85pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      box/.style={draw,rounded corners=4pt,fill=green!7,line width=0.8pt,
+        minimum width=2.75cm,minimum height=0.80cm,align=center}
+    }
+    \draw[->] (-4.4,0)--(4.4,0) node[right] {\(\operatorname{Re}z\)};
+    \draw[->] (0,-0.35)--(0,3.0) node[above] {\(\operatorname{Im}z\)};
+    \draw[cone] (0,0)--(-1.3,2.45)--(1.3,2.45)--cycle;
+    \node[blue!55!black] at (0,1.45) {\(V_+\)};
+    \node[box] (tube) at (-3.0,2.25) {forward tube\\\(M+\ii V_+\)};
+    \node[box] (ext) at (3.0,2.25) {extended tube\\complex Lorentz orbit};
+    \node[box] (jost) at (0,-0.95) {Jost points\\real spacelike configurations};
+    \draw[arrow] (tube)--(ext) node[midway,above] {covariance};
+    \draw[arrow] (jost)--(tube) node[midway,left] {boundary values};
+    \draw[arrow] (jost)--(ext) node[midway,right] {locality};
+  \end{tikzpicture}
+  }
+  \caption{Spectral support gives tube analyticity; covariance and locality
+  enlarge and glue the analytic domains.}
+  \label{fig:wightman-tube-analyticity}
+\end{figure}
+
+The Euclidean Schwinger functions are restrictions of these analytic functions
+to noncoincident imaginary-time configurations.  The converse passage from
+Euclidean data to Lorentzian Wightman data requires reflection positivity and
+growth hypotheses.  That converse is the subject of the next chapter.
+
+\section{Gauge Theories and Observable Fields}
+
+The Wightman framework is most direct for gauge-invariant local fields acting
+on a positive Hilbert space.  Gauge potentials before quotienting by gauge
+redundancy usually require additional structure: an indefinite inner product,
+BRST cohomology, a local algebra of gauge-invariant observables, or a
+combination of these.  The logically invariant statement is that physical
+matrix elements and local gauge-invariant observables must be represented on a
+positive physical Hilbert space.  The framework comparison records which
+version of this statement has been established in a given construction.
+
+Thus the Wightman framework supplies precise theorems for local fields,
+spectral positivity, analytic continuation, and reconstruction.  Its output is
+Hilbert-space QFT data with operator-valued distributions and a distinguished
+vacuum representation.

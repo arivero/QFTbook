@@ -1,0 +1,210 @@
+\chapter{Osterwalder--Schrader Reconstruction}
+\label{ch:volume-iv-osterwalder-schrader-reconstruction}
+
+\section{Euclidean Correlation Data}
+
+Let \(E=\mathbb R^D\) be Euclidean space with coordinates
+\[
+  x=(\tau,\mathbf x),\qquad \mathbf x\in\mathbb R^{D-1}.
+\]
+Euclidean correlation functions are distributions
+\[
+  S_{a_1\cdots a_n}(x_1,\ldots,x_n)
+\]
+on \(E^n\), with field labels \(a_j\).  In a construction by a Euclidean
+measure, they are moments of random distributions.  In an axiomatic Euclidean
+formulation, the hierarchy \(\{S_n\}\) is primary data.
+
+Let \(\theta\) be time reflection:
+\[
+  \theta(\tau,\mathbf x)=(-\tau,\mathbf x).
+\]
+For a test function \(f_n\) supported in the ordered positive-time region
+\[
+  0<\tau_1<\cdots<\tau_n ,
+\]
+define the reflected adjoint test function \(\Theta f_n\) by reversing the
+order, reflecting all arguments, complex conjugating, and applying the field
+adjunction.  Reflection positivity is the requirement
+\begin{equation}
+  \sum_{m,n} S_{m+n}\bigl(\Theta f_m,f_n\bigr)\ge0
+  \label{eq:os-reflection-positivity}
+\end{equation}
+for every finite collection of such positive-time test functions.
+
+The other Osterwalder--Schrader data are Euclidean covariance, permutation
+symmetry, regularity and growth assumptions sufficient for analytic
+continuation, and a normalization \(S_0=1\).  Clustering is added when the
+target theory is required to have a unique vacuum.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.82\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      axis/.style={-{Latex[length=2mm]},line width=0.75pt},
+      dot/.style={circle,draw,fill=blue!12,line width=0.8pt,minimum size=0.34cm},
+      rdot/.style={circle,draw,fill=orange!14,line width=0.8pt,minimum size=0.34cm},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \draw[axis] (-4.2,0)--(4.2,0) node[right] {\(\tau\)};
+    \draw[axis] (0,-2.0)--(0,2.0) node[above] {space};
+    \draw[line width=0.8pt,dashed] (0,-1.75)--(0,1.75);
+    \node[dot] (a) at (1.15,0.95) {};
+    \node[dot] (b) at (2.55,-0.55) {};
+    \node[rdot] (ta) at (-1.15,0.95) {};
+    \node[rdot] (tb) at (-2.55,-0.55) {};
+    \draw[arrow,orange!80!black] (a)--(ta)
+      node[midway,above] {\(\theta\)};
+    \draw[arrow,orange!80!black] (b)--(tb)
+      node[midway,below] {\(\theta\)};
+    \node[blue!55!black] at (2.15,1.55) {positive-time tests};
+    \node[orange!80!black] at (-2.25,1.55) {reflected tests};
+    \node at (0,-2.25)
+      {\(\sum S(\Theta f,f)\ge0\) becomes the Lorentzian inner product.};
+  \end{tikzpicture}
+  }
+  \caption{Reflection positivity turns Euclidean reflection through
+  \(\tau=0\) into Hilbert-space positivity after reconstruction.}
+  \label{fig:os-reflection-positivity}
+\end{figure}
+
+\section{Hilbert Space From Positive Time}
+
+Let \(\mathcal E_+\) be the vector space of finite sequences
+\[
+  F=(f_0,f_1,f_2,\ldots)
+\]
+where only finitely many \(f_n\) are nonzero and each \(f_n\) is supported in
+positive Euclidean time.  Define a sesquilinear form by
+\[
+  \langle F,G\rangle_{\rm OS}
+  =
+  \sum_{m,n} S_{m+n}(\Theta f_m,g_n).
+\]
+Reflection positivity says that this form is nonnegative.  Let
+\[
+  \mathcal N=\{F\in\mathcal E_+\mid \langle F,F\rangle_{\rm OS}=0\}.
+\]
+The reconstructed Hilbert space is
+\[
+  \Hilb_{\rm OS}
+  =
+  \overline{\mathcal E_+/\mathcal N}.
+\]
+The vector represented by \(F=(1,0,0,\ldots)\) is the vacuum.
+
+Euclidean time translations by \(t\ge0\) preserve positive-time support and
+therefore define a contraction semigroup on \(\Hilb_{\rm OS}\):
+\[
+  T(t)=\ee^{-tH},\qquad H\ge0.
+\]
+The self-adjoint generator \(H\) is the Lorentzian Hamiltonian.  Spatial
+translations and rotations act unitarily, and the analytic continuation of
+Euclidean rotations supplies the Lorentz boosts under the OS hypotheses.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
+        minimum width=3.25cm,minimum height=0.90cm,align=center},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \node[box] (sch) at (-5.1,0.8) {Schwinger hierarchy\\\(\{S_n\}\)};
+    \node[box] (pos) at (-1.7,0.8) {positive-time\\test sequences};
+    \node[box] (hilb) at (1.7,0.8) {OS quotient\\\(\Hilb_{\rm OS}\)};
+    \node[box] (lor) at (5.1,0.8) {Lorentzian data\\\(\Hilb,\vac,U,\Phi\)};
+    \node[box,fill=green!7] (semigroup) at (0,-1.15)
+      {Euclidean time semigroup\\\(\ee^{-tH}\)};
+    \draw[arrow] (sch)--(pos) node[midway,above] {reflection positivity};
+    \draw[arrow] (pos)--(hilb);
+    \draw[arrow] (hilb)--(lor) node[midway,above] {analytic continuation};
+    \draw[arrow] (pos)--(semigroup);
+    \draw[arrow] (semigroup)--(hilb);
+  \end{tikzpicture}
+  }
+  \caption{OS reconstruction turns Euclidean correlation data into a
+  Lorentzian Hilbert-space theory through a positive-time quotient.}
+  \label{fig:os-reconstruction-flow}
+\end{figure}
+
+\section{Reconstruction Theorem}
+
+\begin{theorem}[Osterwalder--Schrader reconstruction]
+Let \(\{S_n\}_{n\ge0}\) be Euclidean distributions satisfying Euclidean
+covariance, permutation symmetry, reflection positivity, Hermiticity,
+normalization, and the regularity and growth assumptions required for
+tempered reconstruction.  Then there exists a Wightman theory whose
+Schwinger functions are \(\{S_n\}\) at noncoincident Euclidean points.  The
+reconstructed Wightman functions are obtained as boundary values of analytic
+continuations of the \(S_n\).
+\end{theorem}
+
+The theorem has two distinct pieces.  Reflection positivity constructs the
+Hilbert space and positive Hamiltonian.  Growth and analyticity assumptions
+control the distributional boundary values and produce Wightman functions in
+the intended test-function class.  In the tempered case, this target class is
+\(\mathcal S'(M^n)\).  In larger analytic frameworks, such as hyperfunction
+versions of reconstruction, the target distribution class is correspondingly
+larger and the growth hypotheses are changed.
+
+\section{Euclidean Measures and Generating Functionals}
+
+Suppose a Euclidean theory is given by a probability measure \(\mu\) on a
+space of distributions \(\varphi\), with generating functional
+\[
+  Z_E[J]=\int \exp\left(\int_E J(x)\varphi(x)\,\dd^Dx\right)\,\dd\mu(\varphi)
+\]
+for real test functions \(J\) in a neighborhood of the origin.  The Schwinger
+functions are moments:
+\[
+  S_n(x_1,\ldots,x_n)
+  =
+  \int \varphi(x_1)\cdots\varphi(x_n)\,\dd\mu(\varphi).
+\]
+Reflection positivity is then a property of the measure together with the
+chosen time reflection.  It is stable under lattice approximations only when
+the regulator action, observable insertions, and continuum limit preserve the
+positive-time quadratic form.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.86\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
+        minimum width=3.1cm,minimum height=0.85cm,align=center},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \node[box] (measure) at (-4.1,0.9) {Euclidean measure\\\(\mu\)};
+    \node[box] (moments) at (0,0.9) {moments\\\(S_n\)};
+    \node[box] (os) at (4.1,0.9) {OS-positive\\Schwinger data};
+    \node[box,fill=green!7] (wightman) at (0,-1.15)
+      {Lorentzian Wightman\\boundary values};
+    \draw[arrow] (measure)--(moments);
+    \draw[arrow] (moments)--(os) node[midway,above] {verify axioms};
+    \draw[arrow] (os)--(wightman);
+    \draw[arrow] (moments)--(wightman)
+      node[midway,left] {analytic continuation};
+  \end{tikzpicture}
+  }
+  \caption{A Euclidean measure yields a Lorentzian QFT only after the OS
+  positivity, covariance, and growth requirements are verified.}
+  \label{fig:euclidean-measure-os-data}
+\end{figure}
+
+\section{Relation To Wick Rotation}
+
+For time-ordered Green functions in perturbation theory, Wick rotation was
+used earlier as a contour and boundary-value operation.  OS reconstruction is
+the nonperturbative counterpart at the level of complete Euclidean
+correlation data.  It supplies the Hilbert space, Hamiltonian, vacuum, and
+Lorentzian Wightman functions from Euclidean data satisfying precise
+positivity and growth conditions.
+
+The framework therefore explains exactly which Euclidean information is needed
+to recover a Lorentzian theory.  The answer is the full compatible hierarchy
+of Schwinger distributions together with the OS structural properties, not
+only a formal Euclidean action.

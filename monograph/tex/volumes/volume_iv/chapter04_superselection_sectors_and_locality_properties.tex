@@ -1,0 +1,263 @@
+\chapter{Superselection Sectors and Locality Properties}
+\label{ch:volume-iv-superselection-sectors-locality-properties}
+
+\section{Representations as Sectors}
+
+Let \(\Obs\) be the quasilocal algebra of a local net and let
+\[
+  \pi_0:\Obs\to B(\Hilb_0)
+\]
+be a vacuum representation.  A representation
+\[
+  \pi:\Obs\to B(\Hilb_\pi)
+\]
+is a sector when it describes states that cannot be coherently superposed with
+states from another representation by observables in \(\Obs\).  Equivalence of
+sectors is unitary equivalence of representations:
+\[
+  \pi_1\simeq\pi_2
+  \quad\Longleftrightarrow\quad
+  \exists\,V:\Hilb_{\pi_1}\to\Hilb_{\pi_2}
+  \text{ unitary with }V\pi_1(A)=\pi_2(A)V .
+\]
+
+In massive relativistic theories, the sectors relevant for ordinary charges
+are often captured by the Doplicher--Haag--Roberts localization criterion.  A
+representation \(\pi\) is localized in a bounded region \(O\) relative to the
+vacuum if
+\[
+  \pi|_{\Obs(O^\perp)}\simeq \pi_0|_{\Obs(O^\perp)} ,
+  \label{eq:dhr-localization}
+\]
+where \(O^\perp\) denotes the spacelike complement.  It is transportable if an
+equivalent representation can be localized in any other suitable bounded
+region.  A transportable localized sector is a charge that can be moved without
+changing its intrinsic superselection class.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.84\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      region/.style={draw,ellipse,line width=0.9pt,fill=blue!5,
+        minimum width=2.0cm,minimum height=1.12cm},
+      outside/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
+        minimum width=3.0cm,minimum height=0.85cm,align=center},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \draw[rounded corners=8pt,line width=0.9pt] (-4.7,-1.75) rectangle (4.7,1.75);
+    \node[region] (o) at (-1.85,0.2) {\(O\)};
+    \node at (-1.85,-0.75) {charge localized};
+    \node[outside] (comp) at (2.25,0.65) {outside \(O\)\\\(\pi\simeq\pi_0\)};
+    \node[outside,fill=green!7] (sector) at (2.25,-0.85)
+      {sector data\\inside localization cone};
+    \draw[arrow] (o)--(comp);
+    \draw[arrow] (o)--(sector);
+    \node at (0,2.08) {DHR localization criterion};
+  \end{tikzpicture}
+  }
+  \caption{A DHR sector is indistinguishable from the vacuum on observables
+  localized in the spacelike complement of a bounded region.}
+  \label{fig:dhr-localized-sector}
+\end{figure}
+
+\section{Endomorphisms, Fusion, and Intertwiners}
+
+Under Haag duality and standard technical hypotheses, a localized sector can
+be represented by an endomorphism
+\[
+  \rho:\Obs\to\Obs
+\]
+localized in \(O\), meaning that
+\[
+  \rho(A)=A,\qquad A\in\Obs(O^\perp).
+\]
+Composition of localized endomorphisms defines fusion:
+\[
+  \rho_1\otimes\rho_2=\rho_1\circ\rho_2 .
+\]
+An intertwiner from \(\rho\) to \(\sigma\) is an observable \(T\in\Obs\) such
+that
+\[
+  T\rho(A)=\sigma(A)T,\qquad A\in\Obs .
+\]
+The intertwiners are morphisms between charge sectors.  With direct sums,
+subobjects, conjugates, and a tensor product, transportable localized
+endomorphisms form a tensor category.  Locality gives the exchange
+isomorphism
+\[
+  \varepsilon_{\rho,\sigma}:\rho\circ\sigma\to\sigma\circ\rho
+\]
+when the localization regions are spacelike separated and then transported
+back to common reference regions.  In spacetime dimension at least three, this
+exchange is symmetric under the usual DHR hypotheses.  In two dimensions and
+for lower-codimension extended sectors, braided structures appear naturally.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.86\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      circlebox/.style={draw,circle,line width=0.9pt,fill=blue!5,
+        minimum size=1.2cm,align=center},
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
+        minimum width=2.65cm,minimum height=0.82cm,align=center},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \node[circlebox] (rho) at (-3.4,1.25) {\(\rho\)};
+    \node[circlebox] (sigma) at (-3.4,-0.25) {\(\sigma\)};
+    \node[box] (fusion) at (-0.55,0.50) {fusion\\\(\rho\circ\sigma\)};
+    \node[box] (int) at (-0.55,-1.25) {intertwiners\\\(T\rho(A)=\sigma(A)T\)};
+    \node[box,fill=green!7] (cat) at (3.3,0.10) {tensor category\\of sectors};
+    \draw[arrow] (rho)--(fusion);
+    \draw[arrow] (sigma)--(fusion);
+    \draw[arrow] (fusion)--(cat);
+    \draw[arrow] (int)--(cat);
+  \end{tikzpicture}
+  }
+  \caption{Localized sectors compose by endomorphism composition; intertwiners
+  make the sectors into a tensor category.}
+  \label{fig:dhr-fusion-category}
+\end{figure}
+
+\section{Observable Algebra, Field Algebra, and Gauge Group}
+
+The observable algebra \(\Obs\) contains neutral operators.  Charged fields,
+when they are introduced as operators, can be organized in an enlarged algebra
+\[
+  \mathcal F
+\]
+with a compact internal gauge group \(G\) acting by automorphisms.  The
+observable algebra is the fixed-point algebra
+\[
+  \Obs=\mathcal F^G .
+\]
+Under the finite-statistics assumptions of the Doplicher--Roberts theorem,
+the symmetric tensor category of DHR sectors determines such a compact group
+\(G\) and a corresponding field algebra.  In this theorem, the word gauge
+means a reconstruction of charged field coordinates from the neutral
+observable category; physical observables remain the \(G\)-invariant elements.
+
+This result explains how internal charge labels can emerge from locality and
+sector structure.  It also identifies the assumptions under which a compact
+group description is available.
+
+\section{Split Property and Local Tensor Factorization}
+
+Let \(O_1\Subset O_2\) mean that the closure of \(O_1\) is contained in
+\(O_2\) with a positive spacetime collar.  The split property is the existence
+of a type I factor \(\mathcal N\) satisfying
+\[
+  \mathcal R(O_1)\subset \mathcal N\subset \mathcal R(O_2).
+  \label{eq:split-inclusion}
+\]
+A type I factor is isomorphic to \(B(\mathcal K)\) for some Hilbert space
+\(\mathcal K\).  The split inclusion gives a controlled tensor-product
+separation between observables well inside \(O_1\) and observables outside
+\(O_2\).  It is a precise algebraic substitute for a finite-dimensional
+subsystem factorization at nonzero separation.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.86\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      alg/.style={draw,rounded corners=4pt,line width=0.8pt,fill=blue!4,
+        minimum width=2.9cm,minimum height=0.85cm,align=center},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \draw[rounded corners=8pt,line width=0.9pt,fill=orange!5]
+      (-4.8,-1.15) rectangle (4.8,1.15);
+    \draw[rounded corners=8pt,line width=0.9pt,fill=white]
+      (-2.1,-0.65) rectangle (2.1,0.65);
+    \node at (3.75,0.72) {\(O_2\)};
+    \node at (1.5,0.28) {\(O_1\)};
+    \node[alg] (r1) at (-3.45,-1.9) {\(\mathcal R(O_1)\)};
+    \node[alg,fill=green!7] (n) at (0,-1.9) {type I factor\\\(\mathcal N\)};
+    \node[alg] (r2) at (3.45,-1.9) {\(\mathcal R(O_2)\)};
+    \draw[arrow] (r1)--(n);
+    \draw[arrow] (n)--(r2);
+    \node at (0,-2.75) {\(\mathcal R(O_1)\subset\mathcal N\subset\mathcal R(O_2)\)};
+  \end{tikzpicture}
+  }
+  \caption{The split property inserts a type I factor between nested local
+  algebras separated by a collar.}
+  \label{fig:split-property}
+\end{figure}
+
+The split property is tied to phase-space and nuclearity conditions.  Such
+conditions control the number of local degrees of freedom below a given energy
+scale and make local thermodynamic behavior mathematically tractable.
+
+\section{Modular Data and Locality}
+
+Let \(\mathcal R\) be a von Neumann algebra on a Hilbert space with a vector
+\(\Omega\) that is cyclic and separating for \(\mathcal R\).  Tomita--Takesaki
+theory defines an antilinear operator \(S\) by
+\[
+  S A\Omega=A^*\Omega,\qquad A\in\mathcal R,
+\]
+and its polar decomposition
+\[
+  S=J\Delta^{1/2}.
+\]
+Here \(J\) is antiunitary and \(\Delta\) is positive self-adjoint.  The modular
+automorphism group is
+\[
+  \sigma_t(A)=\Delta^{\ii t}A\Delta^{-\ii t}.
+\]
+
+For many vacuum representations, the Bisognano--Wichmann property identifies
+the modular flow of a wedge algebra with the Lorentz boosts preserving that
+wedge.  It identifies \(J\) with a geometric reflection combined with charge
+conjugation.  This result connects locality, positivity of energy, thermal KMS
+structure for accelerated observers, and CPT-type symmetries.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.80\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      wedge/.style={draw,line width=0.9pt,fill=blue!5},
+      arrow/.style={-{Latex[length=2mm]},line width=0.85pt},
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,fill=orange!7,
+        minimum width=2.8cm,minimum height=0.82cm,align=center}
+    }
+    \draw[->] (-3.2,0)--(3.2,0) node[right] {space};
+    \draw[->] (0,-2.5)--(0,2.5) node[above] {time};
+    \draw[wedge] (0,0)--(2.15,2.15)--(2.15,-2.15)--cycle;
+    \node[blue!55!black] at (1.45,0) {wedge \(W\)};
+    \draw[arrow,green!45!black] (0.8,-0.75) arc[start angle=-42,end angle=42,radius=1.1];
+    \node[green!45!black] at (2.45,1.3) {boost flow};
+    \node[box] at (-2.1,-1.55) {modular group\\\(\Delta_W^{\ii t}\)};
+    \draw[arrow] (-1.05,-1.25)--(0.9,-0.55);
+  \end{tikzpicture}
+  }
+  \caption{For wedge algebras satisfying the Bisognano--Wichmann property,
+  modular flow is geometric Lorentz boost flow.}
+  \label{fig:modular-wedge-flow}
+\end{figure}
+
+\section{Algebraic Scattering Interface}
+
+The Haag--Ruelle construction can be formulated in the algebraic setting using
+almost-local operators whose energy-momentum transfer is concentrated near an
+isolated mass shell.  Acting on the vacuum, such operators create
+single-particle states.  Time-dependent translated operators with separated
+velocity supports have limits that define incoming and outgoing scattering
+states:
+\[
+  \ket{\psi_1,\ldots,\psi_n}_{\rm in/out}
+  =
+  \lim_{t\to\mp\infty}
+  A_1(t)\cdots A_n(t)\Omega .
+\]
+This gives the same conceptual order established earlier: first the
+nonperturbative asymptotic states, then the scattering operator, and only
+afterward any perturbative representation of matrix elements.
+
+The algebraic language records the dependence of scattering on local
+observables, spectral isolation, and phase-space properties.  Infraparticle
+theories, gauge theories with long-range fields, and theories without a mass
+gap require modified asymptotic constructions whose hypotheses must be stated
+separately.
