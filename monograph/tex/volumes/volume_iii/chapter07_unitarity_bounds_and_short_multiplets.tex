@@ -1,0 +1,154 @@
+\chapter{Unitarity Bounds and Short Multiplets}
+\label{ch:volume-iii-unitarity-bounds-short-multiplets}
+
+\section{Positivity in Radial Quantization}
+
+Assume the conformal theory is unitary after analytic continuation to
+Lorentzian signature and satisfies reflection positivity in Euclidean radial
+quantization.  Then the Hilbert space on \(S^{D-1}\) has a positive
+semidefinite inner product, and null states are quotiented to obtain the
+physical Hilbert space.  The adjoint relation
+\[
+  \widehat P_\mu^\dagger=\widehat K_\mu
+\]
+implies that every Gram matrix of descendant states must be positive
+semidefinite.
+
+Let \(\ket{\mathcal O_a}\) be a primary of dimension \(\Delta\) and spin
+representation \(\rho\).  At level one the descendant Gram matrix is
+\begin{equation}
+  G_{\mu a,\nu b}^{(1)}
+  =
+  \bra{\mathcal O_a}\widehat K_\mu\widehat P_\nu\ket{\mathcal O_b}.
+  \label{eq:level-one-gram-general}
+\end{equation}
+Using \(\widehat K_\mu\ket{\mathcal O_b}=0\) and the conformal algebra gives
+\[
+  G_{\mu a,\nu b}^{(1)}
+  =
+  -2\ii
+  \bra{\mathcal O_a}
+  (\delta_{\mu\nu}\widehat D-\widehat J_{\nu\mu})
+  \ket{\mathcal O_b}.
+\]
+This equation is a representation-theoretic constraint.  Positivity of
+\(G^{(1)}\) gives lower bounds on \(\Delta\) once the \(SO(D)\) representation
+\(\rho\) is specified.
+
+\section{Scalar Primaries}
+
+For a scalar primary \(\phi\), the spin matrices vanish.  The level-one Gram
+matrix reduces to
+\[
+  \bra{\phi}\widehat K_\mu\widehat P_\nu\ket{\phi}
+  =
+  2\Delta_\phi\delta_{\mu\nu}\braket{\phi}{\phi}.
+\]
+Thus
+\[
+  \Delta_\phi\ge0.
+\]
+
+The sharper scalar bound comes from level two.  Define
+\[
+  M^{(2)}_{\alpha\beta,\mu\nu}
+  =
+  \bra{\phi}
+  \widehat K_\alpha\widehat K_\beta
+  \widehat P_\mu\widehat P_\nu
+  \ket{\phi}.
+\]
+Repeated use of the conformal commutation relations gives, for a scalar
+primary,
+\begin{equation}
+  M^{(2)}_{\alpha\beta,\mu\nu}
+  =
+  4\left[
+    (\delta_{\alpha\mu}\delta_{\beta\nu}
+    +\delta_{\alpha\nu}\delta_{\beta\mu})
+    \Delta_\phi(\Delta_\phi+1)
+    -
+    \delta_{\alpha\beta}\delta_{\mu\nu}\Delta_\phi
+  \right]\braket{\phi}{\phi}.
+  \label{eq:scalar-level-two-gram}
+\end{equation}
+Contracting with \(\delta^{\alpha\beta}\delta^{\mu\nu}\) computes the norm of
+\(\widehat P^2\ket{\phi}\):
+\begin{equation}
+  \left\|\widehat P^2\ket{\phi}\right\|^2
+  =
+  4D\,\Delta_\phi\bigl(2\Delta_\phi+2-D\bigr)
+  \braket{\phi}{\phi}.
+  \label{eq:scalar-laplacian-descendant-norm}
+\end{equation}
+For a positive-norm scalar primary, positivity gives the alternatives
+\begin{equation}
+  \Delta_\phi=0
+  \quad\text{with}\quad
+  \widehat P_\mu\ket{\phi}=0,
+  \qquad
+  \text{or}
+  \qquad
+  \Delta_\phi\ge\frac{D-2}{2}.
+  \label{eq:scalar-unitarity-bound}
+\end{equation}
+The first branch is the identity representation.  The second branch is the
+scalar unitarity bound.
+
+When
+\[
+  \Delta_\phi=\frac{D-2}{2},
+\]
+the state \(\widehat P^2\ket{\phi}\) is null.  In the quotient Hilbert space
+this gives the operator equation
+\begin{equation}
+  \partial^2\phi(x)=0.
+  \label{eq:scalar-shortening-laplace}
+\end{equation}
+The corresponding conformal multiplet is the free massless scalar multiplet.
+
+\section{Symmetric Traceless Tensor Primaries}
+
+Let
+\[
+  \mathcal O_{\mu_1\cdots\mu_\ell}(x)
+\]
+be a primary transforming as a rank-\(\ell\) symmetric traceless tensor of
+\(SO(D)\), with \(\ell\ge1\).  Thus the indices are symmetric and
+\[
+  \delta^{\mu_1\mu_2}
+  \mathcal O_{\mu_1\mu_2\cdots\mu_\ell}=0.
+\]
+Decomposing the level-one descendants into irreducible \(SO(D)\)
+representations gives the bound
+\begin{equation}
+  \Delta_{\mathcal O}\ge \ell+D-2.
+  \label{eq:spin-ell-unitarity-bound}
+\end{equation}
+At equality, the divergence descendant is null:
+\begin{equation}
+  \partial^{\mu_1}
+  \mathcal O_{\mu_1\mu_2\cdots\mu_\ell}(x)=0.
+  \label{eq:spin-ell-conservation-shortening}
+\end{equation}
+For \(\ell=1\) this is current conservation and
+\(\Delta_J=D-1\).  For \(\ell=2\) it is stress-tensor conservation and
+\(\Delta_T=D\).
+
+\section{Short Multiplets as Operator Equations}
+
+A short conformal multiplet is a primary multiplet for which a descendant has
+zero norm and is set to zero in the physical Hilbert space.  In local-operator
+language, the null descendant is an operator equation.  The equations
+\[
+  \partial^2\phi=0,\qquad
+  \partial^\mu J_\mu=0,\qquad
+  \partial^\mu T_{\mu\nu}=0
+\]
+are therefore representation-theoretic statements in a unitary conformal
+theory.  They also carry dynamical information: a conserved current generates
+a global symmetry, the stress tensor generates spacetime symmetries, and a
+scalar saturating the scalar bound generates the free scalar multiplet.
+
+The unitarity bounds thus convert positivity of the Hilbert-space inner
+product into exact restrictions on the allowed local operator spectrum.

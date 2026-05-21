@@ -1,0 +1,274 @@
+\chapter{Correlation Functions and Conformal Frames}
+\label{ch:volume-iii-correlation-functions-conformal-frames}
+
+\section{One- and Two-Point Functions}
+
+Let \(\mathcal O_i\) be scalar primary operators of dimensions
+\(\Delta_i\).  Translation invariance makes a one-point function constant:
+\[
+  \left\langle \mathcal O_i(x)\right\rangle=c_i.
+\]
+Scale covariance gives
+\[
+  c_i=\lambda^{-\Delta_i}c_i
+  \qquad
+  \text{for all }\lambda>0.
+\]
+Hence \(c_i=0\) unless \(\Delta_i=0\).  In a unitary theory, the scalar
+primary with \(\Delta=0\) is the identity representation.
+
+For two scalar primaries, translation and rotation invariance imply
+\[
+  \left\langle \mathcal O_i(x)\mathcal O_j(y)\right\rangle
+  =
+  F_{ij}(|x-y|).
+\]
+Scale covariance gives
+\[
+  F_{ij}(r)=\frac{C_{ij}}{r^{\Delta_i+\Delta_j}}.
+\]
+Inversion covariance then requires \(C_{ij}=0\) unless
+\(\Delta_i=\Delta_j\).  Therefore
+\begin{equation}
+  \left\langle \mathcal O_i(x)\mathcal O_j(y)\right\rangle
+  =
+  \frac{C_{ij}\,\delta_{\Delta_i,\Delta_j}}
+       {|x-y|^{2\Delta_i}}.
+  \label{eq:scalar-primary-two-point}
+\end{equation}
+Within a finite-dimensional space of primaries with the same dimension and the
+same spin, one may choose a basis that diagonalizes the Hermitian matrix
+\(C_{ij}\).
+
+\section{Spin Structures}
+
+The inversion tensor
+\begin{equation}
+  I_{\mu\nu}(x)
+  =
+  \delta_{\mu\nu}-2\frac{x_\mu x_\nu}{x^2}
+  \label{eq:inversion-tensor}
+\end{equation}
+is the orthogonal part of the inversion Jacobian.  It is the elementary
+building block for two-point functions with vector or tensor indices.  For
+the stress tensor,
+\begin{equation}
+  \left\langle T_{\mu\nu}(x)T_{\rho\sigma}(0)\right\rangle
+  =
+  \frac{C_T}{|x|^{2D}}
+  I_{\mu\nu,\rho\sigma}(x),
+  \label{eq:stress-tensor-two-point}
+\end{equation}
+where
+\[
+  I_{\mu\nu,\rho\sigma}(x)
+  =
+  \frac12\bigl(
+    I_{\mu\rho}(x)I_{\nu\sigma}(x)
+    +
+    I_{\mu\sigma}(x)I_{\nu\rho}(x)
+  \bigr)
+  -
+  \frac1D\delta_{\mu\nu}\delta_{\rho\sigma}.
+\]
+The coefficient \(C_T\) is part of the intrinsic CFT data because the
+normalization of \(T_{\mu\nu}\) is fixed by the translation Ward identity.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.90\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.8pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt},
+      cylinder/.style={line width=0.85pt}
+    }
+    \begin{scope}
+      \node[font=\small] at (0,2.05) {flat space};
+      \draw[thick] (-2.1,-1.3) rectangle (2.1,1.35);
+      \node[insertion] at (-0.75,-0.2) {};
+      \node[violet!80!black,below left] at (-0.75,-0.2) {\(\mathcal O_j(0)\)};
+      \node[insertion] at (0.95,0.45) {};
+      \node[violet!80!black,above right] at (0.95,0.45) {\(\mathcal O_i(x)\)};
+      \draw[blue!65!black,line width=0.8pt] (-0.75,-0.2)--(0.95,0.45);
+      \node[blue!65!black] at (0.05,0.48) {\(|x|\)};
+    \end{scope}
+
+    \draw[arrow] (2.65,0.05)--(4.00,0.05);
+    \node[align=center] at (3.33,0.58) {radial\\quantization};
+
+    \begin{scope}[shift={(6.35,0)}]
+      \node[font=\small] at (0,2.05) {cylinder};
+      \draw[cylinder] (-1.15,1.25) ellipse (1.05 and 0.25);
+      \draw[cylinder] (-2.20,1.25)--(-2.20,-1.25);
+      \draw[cylinder] (-0.10,1.25)--(-0.10,-1.25);
+      \draw[cylinder] (-1.15,-1.25) ellipse (1.05 and 0.25);
+      \node[violet!80!black] at (-1.15,-0.70) {\(\ket{\mathcal O_j}\)};
+      \node[violet!80!black] at (-1.15,0.78) {\(\bra{\mathcal O_i}\)};
+      \draw[green!45!black,line width=0.8pt] (-2.20,0.15) arc[start angle=180,end angle=360,x radius=1.05,y radius=0.25];
+      \draw[green!45!black,dashed,line width=0.8pt] (-2.20,0.15) arc[start angle=180,end angle=0,x radius=1.05,y radius=0.25];
+      \draw[arrow,orange!85!black] (0.38,-1.10)--(0.38,1.10);
+      \node[orange!85!black,right] at (0.38,0.05) {\(\tau\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The two-point coefficient is the radial-quantization inner product
+  between the state created at the origin and the conjugate insertion at
+  infinity.}
+  \label{fig:two-point-cylinder-inner-product}
+\end{figure}
+
+\section{Three-Point Functions}
+
+For scalar primaries, conformal covariance fixes the three-point function up
+to one coefficient:
+\begin{equation}
+  \left\langle
+    \mathcal O_1(x_1)\mathcal O_2(x_2)\mathcal O_3(x_3)
+  \right\rangle
+  =
+  \frac{C_{123}}
+  {|x_{12}|^{\Delta_1+\Delta_2-\Delta_3}
+   |x_{23}|^{\Delta_2+\Delta_3-\Delta_1}
+   |x_{13}|^{\Delta_1+\Delta_3-\Delta_2}},
+  \label{eq:scalar-primary-three-point}
+\end{equation}
+where
+\[
+  x_{ij}=x_i-x_j.
+\]
+The constants \(C_{123}\), after fixing the two-point normalization of
+primaries, are the scalar three-point OPE coefficients.  With spin, the same
+logic gives a finite-dimensional space of allowed tensor structures; each
+structure has its own coefficient.
+
+As an important mixed example, the Ward identity fixes the coefficient of the
+stress-tensor three-point function with two identical scalar primaries.  For
+\(\Delta_1=\Delta_2=\Delta\),
+\begin{equation}
+  \left\langle
+    \mathcal O(x_1)\mathcal O(x_2)T_{\mu\nu}(x_3)
+  \right\rangle
+  =
+  \frac{C_{\mathcal O\mathcal O T}}
+  {|x_{13}|^D|x_{23}|^D|x_{12}|^{2\Delta-D}}
+  \left(
+    \frac{X_\mu X_\nu}{X^2}
+    -
+    \frac1D\delta_{\mu\nu}
+  \right),
+  \label{eq:scalar-scalar-stress-tensor-three-point}
+\end{equation}
+with
+\[
+  X^\mu=\frac{x_{13}^\mu}{x_{13}^2}
+       -\frac{x_{23}^\mu}{x_{23}^2}.
+\]
+The constant \(C_{\mathcal O\mathcal O T}\) is determined by
+\(\Delta\) and by the two-point normalization of \(\mathcal O\), because
+\(T_{\mu\nu}\) generates translations and dilatations.
+
+\section{Four-Point Functions and Cross Ratios}
+
+For four scalar insertions, conformal transformations can remove all position
+dependence except two cross ratios:
+\begin{equation}
+  u=
+  \frac{x_{12}^2x_{34}^2}{x_{13}^2x_{24}^2},
+  \qquad
+  v=
+  \frac{x_{14}^2x_{23}^2}{x_{13}^2x_{24}^2}.
+  \label{eq:cross-ratios-u-v}
+\end{equation}
+Equivalently, the four points can be moved into a two-plane and placed at
+\[
+  z_1=0,\qquad z_2=z,\qquad z_3=1,\qquad z_4=\infty,
+\]
+with
+\[
+  u=z\bar z,\qquad v=(1-z)(1-\bar z).
+\]
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.8pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt}
+    }
+    \begin{scope}
+      \node[font=\small] at (0,2.0) {four points in \(\R^D\)};
+      \draw[thick] (-2.25,-1.35) rectangle (2.25,1.35);
+      \foreach \x/\y/\lab in {
+        -1.55/-0.70/{x_1},
+        -0.55/0.85/{x_2},
+         0.85/0.55/{x_3},
+         1.45/-0.55/{x_4}
+      }{
+        \node[insertion] at (\x,\y) {};
+        \node[violet!80!black,above right] at (\x,\y) {\(\lab\)};
+      }
+      \draw[blue!65!black,line width=0.7pt] (-1.55,-0.70)--(-0.55,0.85);
+      \draw[blue!65!black,line width=0.7pt] (0.85,0.55)--(1.45,-0.55);
+      \draw[orange!85!black,line width=0.7pt] (-1.55,-0.70)--(0.85,0.55);
+      \draw[orange!85!black,line width=0.7pt] (-0.55,0.85)--(1.45,-0.55);
+    \end{scope}
+
+    \draw[arrow] (2.80,0)--(4.15,0);
+    \node[align=center] at (3.47,0.52) {choose a\\conformal frame};
+
+    \begin{scope}[shift={(6.80,0)}]
+      \node[font=\small] at (0,2.0) {two-plane frame};
+      \draw[thick] (-2.15,-1.15)--(2.15,-1.15);
+      \draw[thick] (-1.65,-1.35)--(-1.65,1.35);
+      \node[insertion] at (-1.65,-1.15) {};
+      \node[violet!80!black,below] at (-1.65,-1.15) {\(0\)};
+      \node[insertion] at (-0.55,0.45) {};
+      \node[violet!80!black,above] at (-0.55,0.45) {\(z\)};
+      \node[insertion] at (0.75,-1.15) {};
+      \node[violet!80!black,below] at (0.75,-1.15) {\(1\)};
+      \draw[arrow,violet!80!black] (1.25,-1.15)--(1.95,-1.15);
+      \node[violet!80!black,below] at (1.95,-1.15) {\(\infty\)};
+      \draw[blue!65!black,line width=0.7pt] (-1.65,-1.15)--(-0.55,0.45);
+      \draw[orange!85!black,line width=0.7pt] (-1.65,-1.15)--(0.75,-1.15);
+      \node[blue!65!black] at (-0.95,-0.25) {\(u=z\bar z\)};
+      \node[orange!85!black] at (0.45,-0.55) {\(v=(1-z)(1-\bar z)\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{A scalar four-point function has two conformal invariants.  A
+  conformal frame places the points at \(0,z,1,\infty\) in a two-plane.}
+  \label{fig:four-point-conformal-frame}
+\end{figure}
+
+The general scalar four-point function can be written as
+\begin{align}
+  &\left\langle
+    \mathcal O_1(x_1)\mathcal O_2(x_2)
+    \mathcal O_3(x_3)\mathcal O_4(x_4)
+  \right\rangle
+  \notag\\
+  &\quad =
+  \frac{\mathcal G(u,v)}
+  {|x_{12}|^{\Delta_1+\Delta_2}
+   |x_{34}|^{\Delta_3+\Delta_4}}
+  \left(\frac{|x_{24}|}{|x_{14}|}\right)^{\Delta_1-\Delta_2}
+  \left(\frac{|x_{14}|}{|x_{13}|}\right)^{\Delta_3-\Delta_4}.
+  \label{eq:scalar-four-point-general}
+\end{align}
+For identical scalar primaries of dimension \(\Delta\), this simplifies to
+\begin{equation}
+  \left\langle
+    \mathcal O(x_1)\mathcal O(x_2)
+    \mathcal O(x_3)\mathcal O(x_4)
+  \right\rangle
+  =
+  \frac{\mathcal G(u,v)}
+       {|x_{12}|^{2\Delta}|x_{34}|^{2\Delta}}.
+  \label{eq:identical-scalar-four-point}
+\end{equation}
+The function \(\mathcal G(u,v)\) is dynamical CFT data.  The next stage is to
+determine how the operator product expansion decomposes this function into
+conformal blocks and how crossing symmetry constrains the allowed spectrum and
+OPE coefficients.

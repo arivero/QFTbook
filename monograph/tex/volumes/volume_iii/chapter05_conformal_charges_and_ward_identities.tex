@@ -1,0 +1,199 @@
+\chapter{Conformal Charges and Ward Identities}
+\label{ch:volume-iii-conformal-charges-ward-identities}
+
+\section{Charges as Surface Operators}
+
+Let \(\epsilon^\mu(x)\partial_\mu\) be a conformal Killing vector on flat
+Euclidean space, and let
+\[
+  J^\mu_\epsilon(x)=T^\mu{}_\nu(x)\epsilon^\nu(x)
+\]
+be the corresponding conserved current at separated points.  If
+\(\Sigma\subset\R^D\) is an oriented smooth codimension-one surface with unit
+normal \(n_\mu\), define the charge supported on \(\Sigma\) by
+\begin{equation}
+  Q_\epsilon(\Sigma)
+  =
+  \int_\Sigma \dd\sigma\,n_\mu T^\mu{}_\nu(x)\epsilon^\nu(x).
+  \label{eq:cft-charge-surface}
+\end{equation}
+Here \(\dd\sigma\) is the induced volume element.  The conservation equation
+\(\partial_\mu J^\mu_\epsilon=0\) implies that \(Q_\epsilon(\Sigma)\) is
+unchanged under smooth deformations of \(\Sigma\) through regions containing
+no operator insertion and no boundary.
+
+This deformation property is the local content of a conserved charge.  A
+charge may be evaluated on a large sphere surrounding several insertions, or
+on a union of small spheres surrounding them separately.  The equality of
+these two evaluations is the Ward identity.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.8pt},
+      surface/.style={green!45!black,line width=0.85pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt}
+    }
+    \draw[thick] (-5.4,-2.05) rectangle (5.4,2.15);
+    \node[anchor=west] at (-5.25,2.45) {\(\R^D\)};
+
+    \draw[surface]
+      (-4.35,-1.25) .. controls (-4.85,0.10) and (-3.85,1.85) .. (-1.95,1.75)
+      .. controls (-0.85,2.15) and (0.85,2.05) .. (2.05,1.50)
+      .. controls (4.05,1.10) and (4.65,-0.65) .. (3.55,-1.40)
+      .. controls (2.45,-2.10) and (0.35,-1.65) .. (-1.20,-1.75)
+      .. controls (-2.80,-1.85) and (-4.00,-1.80) .. (-4.35,-1.25);
+    \node[green!45!black] at (3.95,1.65) {\(\Sigma\)};
+
+    \foreach \x/\y/\lab/\slabel in {
+      -2.65/0.55/{x_1}/{S_1},
+       0.05/0.85/{x_2}/{S_2},
+       2.45/-0.55/{x_n}/{S_n}
+    }{
+      \node[insertion] at (\x,\y) {};
+      \node[violet!80!black,above right] at (\x,\y) {\(\mathcal O(\lab)\)};
+      \draw[blue!65!black,line width=0.75pt] (\x,\y) circle (0.55);
+      \node[blue!65!black] at (\x+0.52,\y+0.62) {\(\slabel\)};
+    }
+    \node at (1.35,0.15) {\(\cdots\)};
+
+    \draw[arrow] (5.85,0.55)--(7.15,0.55);
+    \node[align=center] at (6.50,1.05) {deform\\surface};
+
+    \begin{scope}[shift={(9.55,0)}]
+      \draw[thick] (-2.05,-2.05) rectangle (2.05,2.15);
+      \foreach \x/\y/\lab/\slabel in {
+        -1.05/0.55/{x_1}/{S_1},
+         0.20/0.85/{x_2}/{S_2},
+         1.00/-0.55/{x_n}/{S_n}
+      }{
+        \node[insertion] at (\x,\y) {};
+        \node[violet!80!black,above right] at (\x,\y) {\(\mathcal O(\lab)\)};
+        \draw[surface] (\x,\y) circle (0.43);
+        \node[green!45!black] at (\x+0.40,\y+0.50) {\(\slabel\)};
+      }
+      \node at (0.68,0.10) {\(\cdots\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{A conserved conformal charge can be moved from a large enclosing
+  surface to small enclosing surfaces around the insertions.  The Ward identity
+  is this equality inside correlation functions.}
+  \label{fig:ward-surface-deformation}
+\end{figure}
+
+\section{Operator Variations from Small Spheres}
+
+Let \(S_x\) be a small sphere enclosing a single insertion at \(x\), with
+orientation inherited from the boundary of a small ball removed from the
+correlation-function domain.  The infinitesimal action of the symmetry on the
+operator \(\mathcal O(x)\) is defined by
+\begin{equation}
+  \delta_\epsilon\mathcal O(x)
+  =
+  \ii\,Q_\epsilon(S_x)\mathcal O(x)
+  \label{eq:variation-by-small-charge}
+\end{equation}
+in Euclidean radial-ordering conventions.  In Lorentzian operator language,
+this convention corresponds to
+\[
+  \delta_\epsilon\widehat{\mathcal O}
+  =
+  \ii[\widehat Q_\epsilon,\widehat{\mathcal O}].
+\]
+Changing the orientation convention changes both sides of
+\eqref{eq:variation-by-small-charge} by the same sign; the Ward identity
+below is then unchanged.
+
+Suppose the vacuum is invariant under the charge, and suppose the large
+surface can be moved to infinity with vanishing contribution.  Then for
+separated insertions,
+\begin{equation}
+  \sum_{i=1}^n
+  \left\langle
+    \mathcal O_1(x_1)\cdots
+    \delta_\epsilon\mathcal O_i(x_i)\cdots
+    \mathcal O_n(x_n)
+  \right\rangle
+  =
+  0.
+  \label{eq:global-conformal-ward-identity}
+\end{equation}
+This is the global Ward identity associated with the conformal Killing vector
+\(\epsilon^\mu\).  It is a statement about distributions on the configuration
+space of distinct points, completed by contact terms on diagonals when
+operator products collide.
+
+\section{Local Ward Identities}
+
+The surface identity can be written locally by leaving the stress tensor at
+the point \(x\).  For scalar insertions the diffeomorphism Ward identity has
+the distributional form
+\begin{equation}
+  \partial_\mu
+  \left\langle
+    T^{\mu\nu}(x)\prod_{i=1}^n\mathcal O_i(x_i)
+  \right\rangle
+  =
+  -\sum_{i=1}^n
+  \delta^{(D)}(x-x_i)
+  \frac{\partial}{\partial x_i^\nu}
+  \left\langle
+    \prod_{i=1}^n\mathcal O_i(x_i)
+  \right\rangle
+  \label{eq:local-translation-ward}
+\end{equation}
+away from additional contact terms associated with composite-operator
+renormalization.  If \(\mathcal O_i\) carries spin, the right side also
+contains a local rotation acting on its spin indices.
+
+The trace Ward identity records the response to Weyl rescaling.  For scalar
+primary insertions of dimensions \(\Delta_i\), its flat-space form at a
+conformal fixed point is
+\begin{equation}
+  \left\langle
+    T^\mu{}_\mu(x)\prod_{i=1}^n\mathcal O_i(x_i)
+  \right\rangle
+  =
+  -\sum_{i=1}^n
+  \Delta_i\,\delta^{(D)}(x-x_i)
+  \left\langle
+    \prod_{i=1}^n\mathcal O_i(x_i)
+  \right\rangle
+  +
+  \mathcal A(x;\{x_i\}).
+  \label{eq:local-trace-ward}
+\end{equation}
+The term \(\mathcal A\) is the possible Weyl-anomaly contribution in a curved
+background, specialized after variation to flat space.  On flat space with
+separated insertions it vanishes except for contact terms.
+
+Equations \eqref{eq:local-translation-ward} and
+\eqref{eq:local-trace-ward}, integrated against a conformal Killing vector
+\(\epsilon^\nu\), reproduce \eqref{eq:global-conformal-ward-identity}.  The
+conformal algebra therefore acts on local operators through stress-tensor
+surface integrals, and the same action constrains all correlation functions.
+
+\section{Conformal Charges on the Cylinder}
+
+Under the Weyl map
+\[
+  \R^D\setminus\{0\}\longrightarrow \R_\tau\times S^{D-1},
+  \qquad
+  x^\mu=\ee^\tau n^\mu,
+  \qquad
+  n^\mu n_\mu=1,
+\]
+closed spheres surrounding the origin become constant-\(\tau\) slices.  The
+dilatation charge becomes the cylinder Hamiltonian, rotations become the
+rotations of \(S^{D-1}\), and the translation and special conformal charges
+become mutually adjoint raising and lowering operators:
+\begin{equation}
+  \widehat P_\mu^\dagger=\widehat K_\mu .
+  \label{eq:p-k-adjoint-cylinder}
+\end{equation}
+This adjointness is a consequence of reflection positivity under
+\(\tau\mapsto-\tau\), which is inversion in flat space.  It is the positivity
+input used below to derive unitarity bounds.
