@@ -132,16 +132,40 @@ inside the Lehmann ellipse.
 
 \section{Partial-Wave Normalization}
 
-For identical scalar particles only even partial waves occur.  It is convenient
-in this chapter to use the convention
+For identical scalar particles only even partial waves occur.  Let
+\(\mathcal M_{\rm ord}(s,x)\) denote the ordered two-particle amplitude whose
+partial-wave expansion is
+\[
+  \mathcal M_{\rm ord}(s,x)
+  =
+  16\pi
+  \sum_{\ell=0}^{\infty}
+  (2\ell+1)a_\ell(s)P_\ell(x).
+\]
+The amplitude used in this chapter is the Bose-symmetrized amplitude on the
+space of identical two-particle states:
+\[
+  \mathcal A(s,x)
+  =
+  \mathcal M_{\rm ord}(s,x)+\mathcal M_{\rm ord}(s,-x)
+  =
+  32\pi
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)a_\ell(s)P_\ell(x).
+\]
+Using
+\[
+  S_\ell(s)=1+2\ii\,\rho(s)a_\ell(s),
+  \qquad
+  \rho(s)=\sqrt{1-\frac{4m^2}{s}},
+\]
+this becomes the convention
 \[
   \mathcal A(s,x)
   =
   -16\pi\ii\,\rho(s)^{-1}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
-  (2\ell+1)\bigl(S_\ell(s)-1\bigr)P_\ell(x),
-  \qquad
-  \rho(s)=\sqrt{1-\frac{4m^2}{s}} .
+  (2\ell+1)\bigl(S_\ell(s)-1\bigr)P_\ell(x).
 \]
 Here \(S_\ell(s)\) is the partial-wave eigenvalue of the \(S\)-operator in the
 two-particle sector.  In an elastic interval \(|S_\ell|=1\).  With inelastic
