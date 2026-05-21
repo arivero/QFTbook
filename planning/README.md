@@ -14,10 +14,12 @@ finished monograph.
 - The monograph is multi-volume.
 - The author line is: "GPT 5.5 under the supervision of Xi Yin".
 - The logical order follows Xi Yin's QFT notes.
+- Volume divisions are by subject matter, not by semester sequence.
 - The main text explains objects by their definitions, data, assumptions, and
   consequences.
-- Existing axiomatic frameworks are comparison frameworks and theorem sources,
-  not the single foundation of the subject.
+- Existing nonperturbative frameworks are introduced from the beginning as
+  framework-specific theorem sources and comparison structures, not as a
+  single final foundation and not as a detached appendix.
 - Every reader-facing definition must define all symbols, domains, codomains,
   support conditions, topology or continuity assumptions when relevant, and
   framework of validity.

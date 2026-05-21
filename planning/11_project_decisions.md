@@ -53,6 +53,21 @@ Date: 2026-05-21
 - The current compiled CFT material should stop at fixed points, conformal
   symmetry, stress tensor and Ward identities, primaries, unitarity bounds,
   correlator kinematics, and the OPE as local operator algebra.
+- Volume divisions should be by subject matter, not by semester sequence.
+- The first four subject volumes are:
+  1. Foundations of Local Quantum Field Theory;
+  2. Particles, Scattering, and Analyticity;
+  3. Renormalization, Effective Field Theory, and Critical Phenomena;
+  4. Gauge Theory, Infrared Structure, and Anomalies.
+- Nonperturbative frameworks must be introduced from the beginning of the
+  monograph.  Wightman, Osterwalder--Schrader, AQFT, and related frameworks
+  are not a final appendix volume; they are part of the foundational
+  understanding of QFT, with technical material developed as needed.
+- Detailed studies of QFTs with special properties should be organized in
+  dedicated later volumes: CFT, integrable QFT, supersymmetric QFT,
+  topological and cohomological QFT, global structure and extended operators,
+  thermal and nonequilibrium QFT, constructive/lattice/numerical QFT, and QFT
+  in curved spacetime.
 
 ## Current Implementation Decisions
 
@@ -70,4 +85,4 @@ Date: 2026-05-21
 - Final TeX class and volume compilation strategy.
 - How much theorem-proof detail belongs in main chapters versus appendices.
 - How much machine-readable source metadata to maintain.
-- Final number of volumes after the source and frontier inventories mature.
+- Exact chapter allocation inside future special-topic volumes.

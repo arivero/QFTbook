@@ -22,6 +22,22 @@ material are kept separate from the compiled monograph.
   private source files are intentionally excluded from git by `.gitignore`.
 - `tools/`: build, audit, OCR, and skeleton-generation utilities.
 
+## Active Volume Architecture
+
+The compiled manuscript uses continuous chapter numbering across subject
+volumes.
+
+1. Foundations of Local Quantum Field Theory
+2. Particles, Scattering, and Analyticity
+3. Renormalization, Effective Field Theory, and Critical Phenomena
+4. Gauge Theory, Infrared Structure, and Anomalies
+5. Conformal Field Theory
+
+Future special-topic volumes are planned for integrable QFT, supersymmetric
+QFT, topological and cohomological QFT, global structure and extended
+operators, thermal and nonequilibrium QFT, constructive/lattice/numerical QFT,
+and QFT in curved spacetime.
+
 ## Build
 
 The monograph build expects a TeX installation with `xelatex`, `latexmk`, TikZ,
