@@ -1,0 +1,272 @@
+\chapter{Radial Quantization and the State-Operator Correspondence}
+\label{ch:volume-iii-radial-quantization}
+
+\section{The Weyl Map to the Cylinder}
+
+Let \(x^\mu\) be Euclidean coordinates on \(\R^D\), and write
+\[
+  r=|x|,\qquad
+  x^\mu=r n^\mu,\qquad
+  n^\mu n_\mu=1.
+\]
+The flat metric is
+\[
+  \dd s^2
+  =
+  \dd r^2+r^2\dd\Omega_{D-1}^2,
+\]
+where \(\dd\Omega_{D-1}^2\) is the unit metric on \(S^{D-1}\).  Define
+\[
+  \tau=\log r .
+\]
+Then
+\begin{equation}
+  \frac{\dd s^2}{r^2}
+  =
+  \dd\tau^2+\dd\Omega_{D-1}^2.
+  \label{eq:radial-cylinder-metric}
+\end{equation}
+Thus the punctured space \(\R^D\setminus\{0\}\) is Weyl equivalent to the
+Euclidean cylinder
+\[
+  \R_\tau\times S^{D-1}.
+\]
+The origin corresponds to \(\tau=-\infty\), and infinity corresponds to
+\(\tau=+\infty\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (0,2.35) {flat space};
+      \draw[thick] (-2.2,-1.3) rectangle (2.2,1.5);
+      \draw[blue!60!black,thick] (0,0) circle (0.55);
+      \draw[blue!60!black,thick] (0,0) circle (1.05);
+      \draw[blue!60!black,thick] (0,0) circle (1.55);
+      \draw[orange!85!black,thick,-{Latex[length=2mm]}] (0,0)--(1.2,0.9);
+      \node[orange!85!black] at (0.78,0.70) {\(r\)};
+      \fill[purple!75!black] (0,0) circle (2pt);
+      \node[purple!75!black,below left] at (0,0) {\(0\)};
+    \end{scope}
+
+    \draw[-{Latex[length=2.5mm]},thick] (2.75,0.12)--(4.05,0.12);
+    \node[align=center] at (3.40,0.63) {\(\tau=\log r\)\\Weyl rescale};
+
+    \begin{scope}[shift={(6.3,0)}]
+      \node[font=\small] at (0,2.35) {cylinder};
+      \draw[thick] (-1.35,-1.45)--(-1.35,1.55);
+      \draw[thick] (1.35,-1.45)--(1.35,1.55);
+      \draw[thick] (-1.35,1.55) arc[start angle=180,end angle=360,x radius=1.35,y radius=0.28];
+      \draw[thick,dashed] (-1.35,1.55) arc[start angle=180,end angle=0,x radius=1.35,y radius=0.28];
+      \draw[thick] (-1.35,-1.45) arc[start angle=180,end angle=360,x radius=1.35,y radius=0.28];
+      \draw[thick,dashed] (-1.35,-1.45) arc[start angle=180,end angle=0,x radius=1.35,y radius=0.28];
+      \foreach \y in {-0.8,0.0,0.8} {
+        \draw[blue!60!black,thick] (-1.35,\y) arc[start angle=180,end angle=360,x radius=1.35,y radius=0.28];
+        \draw[blue!60!black,thick,dashed] (-1.35,\y) arc[start angle=180,end angle=0,x radius=1.35,y radius=0.28];
+      }
+      \draw[-{Latex[length=2mm]},orange!85!black,thick] (-1.75,-1.35)--(-1.75,1.45);
+      \node[orange!85!black,left] at (-1.75,0.15) {\(\tau\)};
+      \node at (0,-1.95) {\(S^{D-1}\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Radial quantization identifies dilatations on \(\R^D\) with
+  translations in cylinder time \(\tau=\log r\).}
+  \label{fig:radial-cylinder-map}
+\end{figure}
+
+\section{States from Local Operators}
+
+Let \(\mathcal O(0)\) be a local operator inserted at the origin.  In the
+Euclidean path integral on a ball of radius \(R\), the insertion defines a
+state on the boundary sphere \(S_R^{D-1}\):
+\[
+  \ket{\mathcal O;R}
+  =
+  \int_{\Phi|_{S_R}=\varphi}
+  [D\Phi]_{B_R}\,
+  \ee^{-S[\Phi]}\,
+  \mathcal O(0).
+\]
+The right side is a wavefunctional of the boundary field configuration
+\(\varphi\).  After the Weyl map to the cylinder, changing \(R\) translates
+the state in \(\tau\).  The state associated with \(\mathcal O\) is denoted
+\[
+  \ket{\mathcal O}.
+\]
+Conversely, a state on \(S^{D-1}\) evolved to \(\tau=-\infty\) determines a
+local insertion at the origin when the limit exists within the local operator
+space.  This gives the state-operator map
+\begin{equation}
+  \mathcal V_{\mathrm{loc}}
+  \longleftrightarrow
+  \mathcal H_{S^{D-1}},
+  \qquad
+  \mathcal O\longmapsto\ket{\mathcal O}.
+  \label{eq:state-operator-map}
+\end{equation}
+
+The vacuum state corresponds to the identity operator:
+\[
+  \mathbf 1\longleftrightarrow\ket{\Omega}.
+\]
+Products of local operators inserted at the origin are defined by the
+short-distance operator product expansion and correspond to the corresponding
+states after radial ordering.
+
+\section{Dilatation as the Cylinder Hamiltonian}
+
+The dilatation vector field on \(\R^D\) is
+\[
+  x^\mu\partial_\mu=r\partial_r=\partial_\tau.
+\]
+Therefore the dilatation charge maps to the Hamiltonian generating
+translations in cylinder time.  With Lorentzian cylinder time
+\[
+  t=-\ii\tau,
+\]
+write the cylinder Hamiltonian as \(\widehat H_{\mathrm{cyl}}\).  The
+corresponding operator relation is
+\begin{equation}
+  \widehat D
+  \longleftrightarrow
+  \ii \widehat H_{\mathrm{cyl}}
+  \label{eq:dilatation-cylinder-hamiltonian}
+\end{equation}
+in Euclidean conventions, or equivalently the eigenvalue of
+\(\widehat H_{\mathrm{cyl}}\) is the scaling dimension.
+
+If \(\mathcal O\) has scaling dimension \(\Delta\), then
+\[
+  \widehat H_{\mathrm{cyl}}\ket{\mathcal O}
+  =
+  \Delta\ket{\mathcal O}.
+\]
+Thus the spectrum of scaling dimensions in flat space is the energy spectrum
+of the theory on the spatial sphere.  Unitarity implies \(\Delta\ge0\) for
+states above the vacuum in a unitary CFT.
+
+\section{Primary and Descendant States}
+
+A local operator at the origin is called a conformal primary if the associated
+state is annihilated by all special conformal generators:
+\begin{equation}
+  \widehat K_\mu\ket{\mathcal O}=0 .
+  \label{eq:primary-state-condition}
+\end{equation}
+If \(\mathcal O_\alpha\) transforms in a finite-dimensional spin
+representation with matrices \((S_{\mu\nu})_\alpha{}^\beta\), then a primary
+state obeys
+\[
+  \widehat D\ket{\mathcal O_\alpha}
+  =
+  \ii\Delta\ket{\mathcal O_\alpha},
+  \qquad
+  \widehat J_{\mu\nu}\ket{\mathcal O_\alpha}
+  =
+  -(S_{\mu\nu})_\alpha{}^\beta\ket{\mathcal O_\beta},
+  \qquad
+  \widehat K_\mu\ket{\mathcal O_\alpha}=0 .
+\]
+Translations generate descendants:
+\[
+  \widehat P_{\mu_1}\cdots\widehat P_{\mu_n}\ket{\mathcal O}
+  \longleftrightarrow
+  \ii^n
+  \partial_{\mu_1}\cdots\partial_{\mu_n}\mathcal O(0).
+\]
+The commutator
+\[
+  [\widehat D,\widehat P_\mu]=\ii\widehat P_\mu
+\]
+shows that each derivative raises the scaling dimension by one.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.82\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.65) {conformal multiplet};
+    \node[draw=black,rounded corners,inner sep=7pt] (p) at (0,1.75)
+      {primary \(\ket{\mathcal O}\)};
+    \node[draw=black,rounded corners,inner sep=7pt] (d1) at (-2.4,0.55)
+      {\(\widehat P_\mu\ket{\mathcal O}\)};
+    \node[draw=black,rounded corners,inner sep=7pt] (d2) at (2.4,0.55)
+      {\(\widehat P_\nu\ket{\mathcal O}\)};
+    \node[draw=black,rounded corners,inner sep=7pt] (d3) at (0,-0.75)
+      {\(\widehat P_\mu\widehat P_\nu\ket{\mathcal O}\)};
+    \draw[-{Latex[length=2mm]},thick] (p)--(d1);
+    \draw[-{Latex[length=2mm]},thick] (p)--(d2);
+    \draw[-{Latex[length=2mm]},thick] (d1)--(d3);
+    \draw[-{Latex[length=2mm]},thick] (d2)--(d3);
+    \node[blue!65!black] at (-3.8,1.15) {\(+1\) in \(\Delta\)};
+    \node[orange!85!black] at (3.85,1.15) {\(\widehat K_\mu\) lowers};
+    \node[orange!85!black,align=center] at (0,-1.65)
+      {the primary is the lowest-energy state\\in the multiplet};
+  \end{tikzpicture}
+  }
+  \caption{A conformal multiplet is generated from a primary by translations.
+  On the cylinder, descendants have energies shifted upward by integers.}
+  \label{fig:primary-descendant-multiplet}
+\end{figure}
+
+\section{Reflection Positivity and Conjugation}
+
+Radial quantization gives a natural conjugation.  In Euclidean flat space,
+reflection through the unit sphere is inversion:
+\[
+  x^\mu\mapsto \frac{x^\mu}{x^2}.
+\]
+On the cylinder this is time reflection \(\tau\mapsto-\tau\).  For a scalar
+operator of dimension \(\Delta\), the conjugate insertion at infinity is
+\[
+  \mathcal O^\dagger(\infty)
+  =
+  \lim_{r\to\infty}r^{2\Delta}\mathcal O(r n)
+\]
+when the limit is independent of \(n\).  The two-point function becomes the
+inner product
+\[
+  \braket{\mathcal O}{\mathcal O}
+  =
+  \left\langle
+  \mathcal O^\dagger(\infty)\mathcal O(0)
+  \right\rangle .
+\]
+For unitary theories this inner product is positive semidefinite and becomes
+positive definite after null states are quotiented.  This positivity is the
+source of unitarity bounds, developed after primary transformation laws and
+two-point functions have been fixed.
+
+\section{The Free Scalar Check}
+
+For the conformally coupled free scalar on
+\(\R\times S^{D-1}\), the scalar curvature of the unit cylinder is
+\[
+  R=(D-1)(D-2).
+\]
+With \(\xi_\ast=(D-2)/(4(D-1))\), the conformal mass term is
+\[
+  m_{\mathrm{cyl}}^2=\xi_\ast R=\frac{(D-2)^2}{4}.
+\]
+For a one-particle mode on \(S^{D-1}\) with angular momentum \(\ell\),
+\[
+  -\nabla^2_{S^{D-1}}Y_{\ell}=\ell(\ell+D-2)Y_{\ell}.
+\]
+The cylinder energy is
+\[
+  E_\ell
+  =
+  \sqrt{\ell(\ell+D-2)+\frac{(D-2)^2}{4}}
+  =
+  \ell+\frac{D-2}{2}.
+\]
+The \(\ell=0\) mode corresponds to the primary field \(\phi\), whose scaling
+dimension is
+\[
+  \Delta_\phi=\frac{D-2}{2}.
+\]
+Modes with \(\ell>0\) correspond to derivative descendants of \(\phi\).  This
+explicit spectrum realizes the state-operator correspondence in a theory where
+all local operators can be built from normal-ordered products of \(\phi\) and
+its derivatives, modulo the equation of motion.

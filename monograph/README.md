@@ -25,4 +25,7 @@ tools/build_monograph.sh
 The manuscript is in an early rewrite stage. The current build includes the
 foundations and scattering sequence, the renormalization and Wilsonian sequence,
 and the first nonabelian gauge-dynamics sequence through BRST, QCD running,
-axial anomalies, global anomalies, and pion effective actions.
+axial anomalies, global anomalies, and pion effective actions. It now also
+includes the opening conformal-field-theory sequence through fixed-point data,
+conformal Killing vectors, stress-tensor/Weyl structure, and radial
+quantization.

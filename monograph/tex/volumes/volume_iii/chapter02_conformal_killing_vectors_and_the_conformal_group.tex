@@ -1,0 +1,304 @@
+\chapter{Conformal Killing Vectors and the Conformal Group}
+\label{ch:volume-iii-conformal-killing-vectors}
+
+\section{The Conformal Killing Equation}
+
+Work first in flat Euclidean space \((\R^D,\delta_{\mu\nu})\) with
+\(D\ge3\).  A smooth vector field \(\epsilon^\mu(x)\) generates an
+infinitesimal coordinate transformation
+\[
+  x^\mu\longmapsto x^\mu+\epsilon^\mu(x).
+\]
+It is conformal when the change of the metric is proportional to the metric:
+\[
+  \mathcal L_\epsilon\delta_{\mu\nu}
+  =
+  \partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu
+  =
+  2\sigma_\epsilon(x)\delta_{\mu\nu}
+\]
+for some scalar function \(\sigma_\epsilon\).  Taking the trace gives
+\[
+  \sigma_\epsilon(x)
+  =
+  \frac1D\partial_\rho\epsilon^\rho(x).
+\]
+Thus the conformal Killing equation is
+\begin{equation}
+  \partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu
+  -
+  \frac2D\delta_{\mu\nu}\partial_\rho\epsilon^\rho
+  =
+  0.
+  \label{eq:conformal-killing-equation}
+\end{equation}
+
+If \(T_{\mu\nu}\) is symmetric, conserved, and traceless, then
+\[
+  J^\mu_\epsilon(x)=T^{\mu}{}_{\nu}(x)\epsilon^\nu(x)
+\]
+is conserved:
+\[
+  \partial_\mu J^\mu_\epsilon
+  =
+  (\partial_\mu T^{\mu}{}_{\nu})\epsilon^\nu
+  +
+  T^{\mu\nu}\partial_\mu\epsilon_\nu
+  =
+  \frac12T^{\mu\nu}
+  (\partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu)
+  =
+  \sigma_\epsilon T^\mu{}_\mu
+  =
+  0.
+\]
+The corresponding charge on a closed codimension-one surface \(\Sigma\) is
+\[
+  Q_\epsilon(\Sigma)
+  =
+  \int_\Sigma \dd\sigma\,n_\mu J^\mu_\epsilon,
+\]
+where \(n_\mu\) is the unit normal.  Conservation makes the charge invariant
+under deformations of \(\Sigma\) that do not cross operator insertions.
+
+\section{Solutions in Dimension at Least Three}
+
+For \(D\ge3\), differentiating
+\eqref{eq:conformal-killing-equation} and combining permutations of the
+indices gives
+\[
+  \partial_\mu\partial_\nu\epsilon_\rho
+  =
+  \delta_{\rho\nu}\partial_\mu\sigma_\epsilon
+  +
+  \delta_{\rho\mu}\partial_\nu\sigma_\epsilon
+  -
+  \delta_{\mu\nu}\partial_\rho\sigma_\epsilon .
+\]
+Taking another derivative and antisymmetrizing shows
+\[
+  \partial_\mu\partial_\nu\partial_\rho\sigma_\epsilon=0.
+\]
+Hence \(\sigma_\epsilon\) is at most linear in \(x\), and
+\(\epsilon^\mu\) is at most quadratic.  The general solution is
+\begin{equation}
+  \epsilon^\mu(x)
+  =
+  a^\mu
+  +
+  \omega^\mu{}_\nu x^\nu
+  +
+  \lambda x^\mu
+  +
+  2(b\cdot x)x^\mu-b^\mu x^2,
+  \label{eq:ckv-general-solution}
+\end{equation}
+where \(a^\mu\), \(b^\mu\), and \(\lambda\) are constants and
+\(\omega_{\mu\nu}=-\omega_{\nu\mu}\).  These terms generate translations,
+rotations, dilatations, and special conformal transformations, respectively.
+
+The associated differential operators are
+\begin{equation}
+  P_\mu=\partial_\mu,\qquad
+  M_{\mu\nu}=x_\mu\partial_\nu-x_\nu\partial_\mu,
+  \qquad
+  D=x^\mu\partial_\mu,
+  \label{eq:conformal-differential-generators-1}
+\end{equation}
+and
+\begin{equation}
+  K_\mu=x^2\partial_\mu-2x_\mu x^\rho\partial_\rho .
+  \label{eq:conformal-differential-generators-2}
+\end{equation}
+The signs in \eqref{eq:conformal-differential-generators-2} are chosen so
+that the finite special conformal transformation below has parameter \(b^\mu\)
+with denominator \(1-2b\cdot x+b^2x^2\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.25) {conformal Killing vector};
+    \draw[rounded corners=4pt,thick] (-2.0,0.45) rectangle (2.0,1.55);
+    \node at (0,1.00) {\(\epsilon^\mu(x)\)};
+
+    \draw[-{Latex[length=2mm]},thick] (2.25,1.0)--(3.45,1.0);
+
+    \begin{scope}[shift={(5.35,0)}]
+      \node[font=\small] at (0,2.25) {finite-dimensional data};
+      \draw[rounded corners=4pt,thick] (-2.55,0.35) rectangle (2.55,1.65);
+      \node at (0,1.27) {\(a^\mu,\ \omega_{\mu\nu},\ \lambda,\ b^\mu\)};
+      \node[align=center] at (0,0.72)
+        {translation, rotation,\\dilatation, special conformal};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]},thick] (7.95,1.0)--(9.15,1.0);
+
+    \begin{scope}[shift={(11.0,0)}]
+      \node[font=\small] at (0,2.25) {charges};
+      \draw[rounded corners=4pt,thick] (-1.75,0.45) rectangle (1.75,1.55);
+      \node at (0,1.00) {\(Q_\epsilon=\int_\Sigma n_\mu T^\mu{}_\nu\epsilon^\nu\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{In \(D\ge3\), a conformal Killing vector is determined by finitely
+  many constants.  The stress tensor converts such a vector field into a
+  conserved charge.}
+  \label{fig:ckv-data-to-charge}
+\end{figure}
+
+\section{Finite Transformations}
+
+A finite conformal transformation is a diffeomorphism
+\[
+  f:\R^D\supset U\longrightarrow f(U)\subset\R^D
+\]
+whose Jacobian satisfies
+\begin{equation}
+  \frac{\partial f^\rho}{\partial x^\mu}
+  \frac{\partial f^\sigma}{\partial x^\nu}
+  \delta_{\rho\sigma}
+  =
+  \Omega_f(x)^2\delta_{\mu\nu},
+  \qquad
+  \Omega_f(x)>0.
+  \label{eq:finite-conformal-map}
+\end{equation}
+Translations, rotations, and dilatations are immediate examples.  A further
+basic example is inversion,
+\begin{equation}
+  I(x)^\mu=\frac{x^\mu}{x^2},
+  \qquad
+  x^2=\delta_{\mu\nu}x^\mu x^\nu .
+  \label{eq:inversion-map}
+\end{equation}
+Its Jacobian is
+\[
+  \frac{\partial I^\mu}{\partial x^\nu}
+  =
+  \frac1{x^2}
+  \left(
+  \delta^\mu{}_\nu-2\frac{x^\mu x_\nu}{x^2}
+  \right),
+\]
+and the matrix in parentheses is orthogonal.  Therefore
+\[
+  \Omega_I(x)=\frac1{x^2}.
+\]
+
+The composition
+\[
+  I\circ T_{-b}\circ I
+\]
+with translation \(T_{-b}(x)=x-b\) gives a special conformal
+transformation
+\begin{equation}
+  x^\mu
+  \longmapsto
+  x'^\mu
+  =
+  \frac{x^\mu-b^\mu x^2}{1-2b\cdot x+b^2x^2}.
+  \label{eq:finite-special-conformal}
+\end{equation}
+Expanding to first order in \(b\) gives
+\[
+  \delta x^\mu
+  =
+  2(b\cdot x)x^\mu-b^\mu x^2,
+\]
+which is the last term in \eqref{eq:ckv-general-solution}.
+
+\section{The Conformal Algebra}
+
+Let the quantum charges associated with the vector fields
+\eqref{eq:conformal-differential-generators-1} and
+\eqref{eq:conformal-differential-generators-2} be denoted by
+\[
+  \widehat P_\mu,\qquad
+  \widehat J_{\mu\nu},\qquad
+  \widehat D,\qquad
+  \widehat K_\mu .
+\]
+Their commutators are the charge realization of the Lie bracket of conformal
+Killing vector fields.  In Lorentzian signature, with metric
+\(\eta_{\mu\nu}\), the algebra is
+\begin{align}
+  [\widehat D,\widehat P_\mu]&=\ii\widehat P_\mu,
+  &
+  [\widehat D,\widehat K_\mu]&=-\ii\widehat K_\mu,
+  &
+  [\widehat D,\widehat J_{\mu\nu}]&=0,
+  \label{eq:conf-alg-dilatation}\\
+  [\widehat P_\mu,\widehat K_\nu]
+  &=
+  2\ii(\eta_{\mu\nu}\widehat D-\widehat J_{\mu\nu}),
+  \label{eq:conf-alg-pk}
+\end{align}
+together with the Poincare commutators
+\begin{align}
+  [\widehat J_{\mu\nu},\widehat P_\rho]
+  &=
+  \ii(\eta_{\rho\mu}\widehat P_\nu-\eta_{\rho\nu}\widehat P_\mu),
+  \\
+  [\widehat J_{\mu\nu},\widehat J_{\rho\sigma}]
+  &=
+  \ii(
+  \eta_{\mu\rho}\widehat J_{\nu\sigma}
+  -\eta_{\nu\rho}\widehat J_{\mu\sigma}
+  -\eta_{\mu\sigma}\widehat J_{\nu\rho}
+  +\eta_{\nu\sigma}\widehat J_{\mu\rho}).
+\end{align}
+All unlisted commutators among the \(\widehat P_\mu\)'s and among the
+\(\widehat K_\mu\)'s vanish.
+
+The algebra is isomorphic to \(\mathfrak{so}(D,2)\).  Introduce indices
+\[
+  M,N=-1,0,1,\ldots,D
+\]
+and a metric
+\[
+  \eta_{MN}^{(D,2)}=\operatorname{diag}(-1,-1,+1,\ldots,+1).
+\]
+The generators \(\widehat{\mathcal J}_{MN}=-\widehat{\mathcal J}_{NM}\) are
+related to the conformal generators by
+\[
+  \widehat{\mathcal J}_{\mu\nu}=\widehat J_{\mu\nu},\qquad
+  \widehat{\mathcal J}_{D,-1}=\widehat D,\qquad
+  \widehat{\mathcal J}_{D,\mu}=\frac12(\widehat P_\mu-\widehat K_\mu),
+  \qquad
+  \widehat{\mathcal J}_{-1,\mu}=\frac12(\widehat P_\mu+\widehat K_\mu).
+\]
+Then
+\[
+  [\widehat{\mathcal J}_{MN},\widehat{\mathcal J}_{PQ}]
+  =
+  \ii(
+  \eta_{MP}^{(D,2)}\widehat{\mathcal J}_{NQ}
+  -\eta_{NP}^{(D,2)}\widehat{\mathcal J}_{MQ}
+  -\eta_{MQ}^{(D,2)}\widehat{\mathcal J}_{NP}
+  +\eta_{NQ}^{(D,2)}\widehat{\mathcal J}_{MP}).
+\]
+
+\section{Two Euclidean Dimensions}
+
+For \(D=2\), the local conformal Killing equation has infinitely many
+solutions.  In complex coordinates
+\[
+  z=x^1+\ii x^2,\qquad
+  \bar z=x^1-\ii x^2,
+\]
+the local conformal transformations are
+\[
+  z\mapsto f(z),\qquad
+  \bar z\mapsto \bar f(\bar z)
+\]
+in Euclidean signature, with \(f\) holomorphic in its domain.  The global
+conformal transformations of the Riemann sphere are the Möbius maps
+\[
+  z\mapsto \frac{az+b}{cz+d},
+  \qquad
+  ad-bc\neq0.
+\]
+The infinite-dimensional enhancement is the entry point to the Virasoro
+algebra, treated later after the higher-dimensional conformal representation
+theory has been established.
