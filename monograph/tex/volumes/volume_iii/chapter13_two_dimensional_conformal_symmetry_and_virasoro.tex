@@ -1,0 +1,255 @@
+\chapter{Two-Dimensional Conformal Symmetry and the Virasoro Algebra}
+\label{ch:volume-iii-two-dimensional-virasoro}
+
+\section{Complex Coordinates}
+
+Let a two-dimensional Euclidean CFT be placed on the complex plane with
+\[
+  z=x^1+\ii x^2,
+  \qquad
+  \bar z=x^1-\ii x^2.
+\]
+The flat metric is
+\[
+  \dd s^2=\dd z\,\dd\bar z .
+\]
+The local conformal transformations are
+\[
+  z\mapsto f(z),
+  \qquad
+  \bar z\mapsto \bar f(\bar z),
+\]
+where \(f\) is holomorphic in the coordinate patch.  Infinitesimally,
+\[
+  \delta z=\epsilon(z),
+  \qquad
+  \delta\bar z=\bar\epsilon(\bar z).
+\]
+
+The stress tensor decomposes into holomorphic and antiholomorphic parts:
+\[
+  T(z)=T_{zz}(z),
+  \qquad
+  \widetilde T(\bar z)=T_{\bar z\bar z}(\bar z).
+\]
+Conservation and tracelessness imply
+\[
+  \bar\partial T(z)=0,
+  \qquad
+  \partial \widetilde T(\bar z)=0
+\]
+away from insertions.  Thus \(T\) and \(\widetilde T\) are chiral local
+fields.
+
+\section{Virasoro Modes}
+
+For a closed contour \(C\) around the origin, define
+\begin{equation}
+  L_n
+  =
+  \oint_C\frac{\dd z}{2\pi\ii}\,z^{n+1}T(z),
+  \qquad
+  \widetilde L_n
+  =
+  \oint_C\frac{\dd\bar z}{2\pi\ii}\,
+  \bar z^{n+1}\widetilde T(\bar z).
+  \label{eq:virasoro-mode-definition}
+\end{equation}
+The contour form makes the generator local: moving the contour through a
+correlation function records the residues of the stress-tensor OPEs with the
+insertions it crosses.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.86\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.8pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt},
+      contour/.style={green!45!black,line width=0.85pt}
+    }
+    \begin{scope}
+      \draw[->] (-2.0,0)--(2.0,0) node[right] {\(\Re z\)};
+      \draw[->] (0,-1.65)--(0,1.75) node[above] {\(\Im z\)};
+      \draw[contour] (0,0) circle (0.95);
+      \node[insertion] at (0,0) {};
+      \node[violet!80!black,above right] at (0,0) {\(\mathcal O(0)\)};
+      \node[green!45!black] at (-0.92,1.05) {\(C\)};
+      \node at (0,-2.05)
+      {\(\displaystyle L_n=\oint_C\frac{\dd z}{2\pi\ii}z^{n+1}T(z)\)};
+    \end{scope}
+
+    \draw[arrow] (2.65,0)--(3.90,0);
+    \node[align=center] at (3.28,0.50) {move\\contour};
+
+    \begin{scope}[shift={(6.15,0)}]
+      \draw[contour] (0,0) circle (1.15);
+      \draw[contour,orange!85!black] (0,0) circle (0.65);
+      \node[insertion] at (0,0) {};
+      \node[violet!80!black,above right] at (0,0) {\(\phi(0)\)};
+      \node[green!45!black] at (-1.05,1.10) {\(C_1\)};
+      \node[orange!85!black] at (0.85,0.72) {\(C_2\)};
+      \node[blue!65!black] at (0,-1.55)
+      {commutators are residues};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Virasoro generators are contour integrals of the chiral stress
+  tensor.  Deforming contours through insertions computes their commutators.}
+  \label{fig:virasoro-contours}
+\end{figure}
+
+\section{Primary Fields}
+
+A local field \(\phi(z,\bar z)\) has weights \((h,\bar h)\) if its scaling
+dimension and spin are
+\[
+  \Delta=h+\bar h,
+  \qquad
+  s=h-\bar h.
+\]
+It is a Virasoro primary when its stress-tensor OPEs are
+\begin{align}
+  T(z)\phi(w,\bar w)
+  &\sim
+  \frac{h\,\phi(w,\bar w)}{(z-w)^2}
+  +
+  \frac{\partial_w\phi(w,\bar w)}{z-w},
+  \label{eq:T-primary-ope}\\
+  \widetilde T(\bar z)\phi(w,\bar w)
+  &\sim
+  \frac{\bar h\,\phi(w,\bar w)}{(\bar z-\bar w)^2}
+  +
+  \frac{\partial_{\bar w}\phi(w,\bar w)}{\bar z-\bar w}.
+  \label{eq:Tbar-primary-ope}
+\end{align}
+Equivalently, under \(z\mapsto f(z)\),
+\[
+  \phi'(f(z),\bar f(\bar z))
+  =
+  \left(\frac{\dd f}{\dd z}\right)^{-h}
+  \left(\frac{\dd\bar f}{\dd\bar z}\right)^{-\bar h}
+  \phi(z,\bar z).
+\]
+The mode commutator follows by integrating \eqref{eq:T-primary-ope}:
+\begin{equation}
+  [L_n,\phi(z,\bar z)]
+  =
+  \left(z^{n+1}\partial_z+h(n+1)z^n\right)\phi(z,\bar z).
+  \label{eq:Ln-primary-commutator}
+\end{equation}
+At the origin, the state \(\ket{\phi}\) associated with a primary obeys
+\[
+  L_0\ket{\phi}=h\ket{\phi},
+  \qquad
+  L_n\ket{\phi}=0\quad(n>0),
+\]
+and similarly for \(\widetilde L_n\).
+
+\section{The Stress-Tensor OPE}
+
+The chiral stress tensor has the self-OPE
+\begin{equation}
+  T(z)T(w)
+  \sim
+  \frac{c/2}{(z-w)^4}
+  +
+  \frac{2T(w)}{(z-w)^2}
+  +
+  \frac{\partial T(w)}{z-w}.
+  \label{eq:TT-ope}
+\end{equation}
+The number \(c\) is the central charge.  Inserting
+\eqref{eq:TT-ope} into the double contour integral defining
+\([L_n,L_m]\) gives
+\begin{equation}
+  [L_n,L_m]
+  =
+  (n-m)L_{n+m}
+  +
+  \frac{c}{12}(n^3-n)\delta_{n,-m}.
+  \label{eq:virasoro-algebra}
+\end{equation}
+The antiholomorphic modes satisfy the same algebra with central charge
+\(\widetilde c\), and
+\[
+  [L_n,\widetilde L_m]=0.
+\]
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.7pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt},
+      contour/.style={green!45!black,line width=0.85pt}
+    }
+    \node[font=\small] at (-3.25,1.95) {nested contours};
+    \draw[contour] (-3.25,0) circle (1.15);
+    \draw[contour,orange!85!black] (-3.25,0) circle (0.62);
+    \node[insertion] at (-3.25,0) {};
+    \node[violet!80!black,above right] at (-3.25,0) {\(T(w)\)};
+    \node[green!45!black] at (-4.25,1.07) {\(L_n\)};
+    \node[orange!85!black] at (-2.52,0.68) {\(L_m\)};
+
+    \draw[arrow] (-1.45,0)--(-0.25,0);
+    \node[align=center] at (-0.85,0.48) {use\\\(T T\) OPE};
+
+    \node at (2.45,0.45)
+    {\(\displaystyle [L_n,L_m]=(n-m)L_{n+m}
+    +\frac{c}{12}(n^3-n)\delta_{n,-m}\)};
+    \draw[blue!65!black,line width=0.8pt] (0.1,-0.15)--(4.8,-0.15);
+    \node[orange!85!black] at (2.45,-0.62)
+    {central term is the fourth-order pole residue};
+  \end{tikzpicture}
+  }
+  \caption{The Virasoro algebra follows by moving stress-tensor contours and
+  evaluating the singular part of the \(T T\) OPE.}
+  \label{fig:virasoro-tt-contour}
+\end{figure}
+
+\section{Plane and Cylinder}
+
+Let \(w=\tau+\ii\sigma\) be a cylinder coordinate with
+\(\sigma\sim\sigma+2\pi\), and use
+\[
+  z=\ee^w.
+\]
+The stress tensor transforms as
+\begin{equation}
+  T_{\rm cyl}(w)
+  =
+  \left(\frac{\dd z}{\dd w}\right)^2T(z)
+  +
+  \frac c{12}\{z,w\}
+  =
+  z^2T(z)-\frac c{24},
+  \label{eq:stress-plane-cylinder}
+\end{equation}
+because
+\[
+  \{z,w\}
+  =
+  \frac{z'''(w)}{z'(w)}
+  -
+  \frac32\left(\frac{z''(w)}{z'(w)}\right)^2
+  =
+  -\frac12.
+\]
+Thus the cylinder Hamiltonian and momentum are
+\begin{equation}
+  H_{\rm cyl}
+  =
+  L_0-\frac c{24}
+  +
+  \widetilde L_0-\frac{\widetilde c}{24},
+  \qquad
+  P_{\rm cyl}
+  =
+  L_0-\frac c{24}
+  -
+  \left(\widetilde L_0-\frac{\widetilde c}{24}\right).
+  \label{eq:cylinder-H-P-virasoro}
+\end{equation}
+The shift by \(c/24\) is the Casimir energy on the circle.

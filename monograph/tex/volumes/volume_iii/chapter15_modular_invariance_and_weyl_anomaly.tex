@@ -1,0 +1,263 @@
+\chapter{Modular Invariance and the Weyl Anomaly}
+\label{ch:volume-iii-modular-invariance-weyl-anomaly}
+
+\section{Torus Partition Function}
+
+Put a two-dimensional CFT on a Euclidean torus with complex modulus
+\[
+  \tau\in\mathbb H,
+  \qquad
+  q=\ee^{2\pi\ii\tau}.
+\]
+The Hilbert space on the spatial circle has Hamiltonian
+\[
+  H_{\rm cyl}
+  =
+  L_0-\frac c{24}
+  +
+  \widetilde L_0-\frac{\widetilde c}{24},
+\]
+and momentum
+\[
+  P_{\rm cyl}
+  =
+  L_0-\frac c{24}
+  -
+  \left(\widetilde L_0-\frac{\widetilde c}{24}\right).
+\]
+The torus partition function is
+\begin{equation}
+  Z(\tau,\bar\tau)
+  =
+  \operatorname{Tr}_{\Hilb_{S^1}}
+  q^{\,L_0-c/24}
+  \bar q^{\,\widetilde L_0-\widetilde c/24}.
+  \label{eq:torus-partition-function}
+\end{equation}
+This expression is the thermal trace in one channel and the Euclidean path
+integral on the torus in geometric language.
+
+\section{Modular Transformations}
+
+The torus can be presented as
+\[
+  \C/(\mathbb Z+\tau\mathbb Z).
+\]
+Changing the basis of cycles by a matrix
+\[
+  \begin{pmatrix}
+  a & b\\
+  c & d
+  \end{pmatrix}
+  \in SL(2,\mathbb Z)
+\]
+changes the modulus by
+\begin{equation}
+  \tau\mapsto\frac{a\tau+b}{c\tau+d}.
+  \label{eq:modular-action-tau}
+\end{equation}
+The generators may be taken as
+\[
+  T:\tau\mapsto\tau+1,
+  \qquad
+  S:\tau\mapsto-\frac1\tau .
+\]
+Locality and invariance of the path integral under diffeomorphisms of the
+torus require
+\begin{equation}
+  Z(\tau,\bar\tau)
+  =
+  Z\left(\frac{a\tau+b}{c\tau+d},
+          \frac{a\bar\tau+b}{c\bar\tau+d}\right).
+  \label{eq:modular-invariance-partition-function}
+\end{equation}
+The \(S\) transformation exchanges the thermal and spatial cycles; it equates
+the low-temperature and high-temperature expansions of the same partition
+function.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{arrow/.style={-{Latex[length=2mm]},line width=0.8pt}}
+    \begin{scope}
+      \node[font=\small] at (0,2.0) {thermal cylinder};
+      \draw[thick] (-0.95,1.20) ellipse (0.75 and 0.18);
+      \draw[thick] (-1.70,1.20)--(-1.70,-1.20);
+      \draw[thick] (-0.20,1.20)--(-0.20,-1.20);
+      \draw[thick] (-0.95,-1.20) ellipse (0.75 and 0.18);
+      \draw[arrow,blue!65!black] (-2.05,-1.10)--(-2.05,1.10);
+      \node[blue!65!black,left] at (-2.05,0) {thermal cycle};
+      \draw[arrow,orange!85!black] (-1.70,-1.55)--(-0.20,-1.55);
+      \node[orange!85!black,below] at (-0.95,-1.55) {spatial circle};
+    \end{scope}
+
+    \draw[arrow] (1.10,0)--(2.30,0);
+    \node[align=center] at (1.70,0.50) {identify\\ends};
+
+    \begin{scope}[shift={(4.15,0)}]
+      \node[font=\small] at (0,2.0) {torus lattice};
+      \draw[thick] (-1.25,-0.90)--(1.15,-0.90)--(1.65,0.90)--(-0.75,0.90)--cycle;
+      \draw[blue!65!black,line width=0.95pt] (-1.25,-0.90)--(1.15,-0.90);
+      \draw[orange!85!black,line width=0.95pt] (-1.25,-0.90)--(-0.75,0.90);
+      \node[blue!65!black] at (-0.05,-1.23) {\(1\)};
+      \node[orange!85!black] at (-1.35,0.05) {\(\tau\)};
+    \end{scope}
+
+    \draw[arrow] (6.45,0)--(7.55,0);
+    \node[align=center] at (7.00,0.50) {change\\cycle basis};
+
+    \begin{scope}[shift={(9.35,0)}]
+      \draw[thick] (-1.15,-0.85)--(1.15,-0.85)--(0.70,0.85)--(-1.60,0.85)--cycle;
+      \draw[violet,line width=0.95pt] (-1.15,-0.85)--(0.70,0.85);
+      \draw[green!45!black,line width=0.95pt] (-1.60,0.85)--(1.15,-0.85);
+      \node[violet] at (0.05,1.15) {\(S\)};
+      \node[green!45!black] at (0,-1.20) {\(T\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The same torus admits different choices of spatial and thermal
+  cycles.  Modular invariance is invariance under this change of cycle basis.}
+  \label{fig:torus-modular-cycles}
+\end{figure}
+
+\section{Characters and Spectrum}
+
+If the Hilbert space decomposes into irreducible chiral representations
+\(\mathcal V_i\otimes\widetilde{\mathcal V}_j\) with multiplicities
+\(N_{ij}\), then
+\[
+  Z(\tau,\bar\tau)
+  =
+  \sum_{i,j}N_{ij}\chi_i(\tau)\overline{\chi_j(\tau)}.
+\]
+Here
+\[
+  \chi_i(\tau)
+  =
+  \operatorname{Tr}_{\mathcal V_i}
+  q^{L_0-c/24}
+\]
+is the chiral character.  In rational CFTs, the characters span a
+finite-dimensional representation of \(SL(2,\mathbb Z)\):
+\[
+  \chi_i(-1/\tau)=\sum_j S_{ij}\chi_j(\tau),
+  \qquad
+  \chi_i(\tau+1)=\sum_j T_{ij}\chi_j(\tau).
+\]
+The matrix \(N_{ij}\) must commute with these \(S\) and \(T\) matrices.  Thus
+modular invariance is a finite algebraic constraint in rational CFT and a
+spectral constraint in general.
+
+\section{Weyl Anomaly}
+
+Let
+\[
+  W[g]=-\log Z[g]
+\]
+be the Euclidean effective action on a curved two-dimensional background
+\((\Sigma,g)\).  Under an infinitesimal Weyl transformation
+\[
+  \delta_\omega g_{\mu\nu}=2\omega g_{\mu\nu},
+\]
+the anomaly is
+\begin{equation}
+  \delta_\omega W[g]
+  =
+  -\frac{c}{24\pi}
+  \int_\Sigma\dd^2x\sqrt g\,\omega R.
+  \label{eq:weyl-anomaly-variation}
+\end{equation}
+With the convention
+\[
+  \delta W
+  =
+  \frac12
+  \int\dd^2x\sqrt g\,
+  \langle T^{\mu\nu}\rangle\,\delta g_{\mu\nu},
+\]
+this is equivalent to
+\begin{equation}
+  \langle T^\mu{}_\mu\rangle_g
+  =
+  -\frac{c}{24\pi}R.
+  \label{eq:trace-anomaly-2d}
+\end{equation}
+
+For a finite Weyl transformation
+\[
+  g'_{\mu\nu}=\ee^{2\omega}g_{\mu\nu},
+\]
+the partition function transforms by the Wess--Zumino action
+\begin{equation}
+  Z[g']
+  =
+  \exp\!\left(-S_{\rm WZ}[\omega;g]\right)Z[g],
+  \label{eq:finite-weyl-transform-partition}
+\end{equation}
+where
+\begin{equation}
+  S_{\rm WZ}[\omega;g]
+  =
+  \frac{c}{24\pi}
+  \int_\Sigma\dd^2x\sqrt g\,
+  \left(
+    g^{\mu\nu}\partial_\mu\omega\partial_\nu\omega
+    +
+    R\omega
+  \right).
+  \label{eq:wess-zumino-weyl-action}
+\end{equation}
+The cocycle property of this functional is the finite form of the anomaly.
+
+\section{From Local Data to Surfaces}
+
+Every two-dimensional metric is locally conformally flat.  Local correlators
+on a curved Riemann surface are therefore obtained from plane correlators,
+coordinate transition functions, and the Weyl-anomaly factor.  The remaining
+global data are the moduli of the surface and the choice of sewing channel.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.90\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.7pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt}
+    }
+    \draw[thick]
+      (-4.65,0.25) .. controls (-4.20,1.05) and (-3.20,1.05) .. (-2.70,0.32)
+      .. controls (-2.20,-0.45) and (-1.30,-0.35) .. (-0.85,0.25)
+      .. controls (-0.45,-0.82) and (-1.65,-1.10) .. (-2.55,-0.75)
+      .. controls (-3.50,-0.42) and (-4.25,-0.85) .. (-4.65,0.25);
+    \node[insertion] at (-4.05,0.22) {};
+    \node[insertion] at (-1.50,-0.18) {};
+    \node[violet!80!black] at (-4.25,0.60) {\(p_i\)};
+    \node[violet!80!black] at (-1.25,0.18) {\(p_j\)};
+    \node at (-2.75,-1.55) {curved surface};
+
+    \draw[arrow] (-0.10,0)--(1.05,0);
+    \node[align=center] at (0.48,0.52) {local\\Weyl chart};
+
+    \draw[thick] (1.75,-1.00) rectangle (5.20,1.00);
+    \foreach \x/\y/\lab in {2.35/0.40/{z_i},4.45/-0.30/{z_j}} {
+      \node[insertion] at (\x,\y) {};
+      \node[violet!80!black,above right] at (\x,\y) {\(\lab\)};
+    }
+    \draw[green!45!black,line width=0.85pt] (2.35,0.40) circle (0.35);
+    \draw[green!45!black,line width=0.85pt] (4.45,-0.30) circle (0.35);
+    \node[blue!65!black] at (3.45,-1.35)
+    {plane OPE data plus anomaly};
+  \end{tikzpicture}
+  }
+  \caption{On a Riemann surface, local flat coordinates reduce local
+  correlators to plane data, while Weyl transformations contribute the anomaly
+  functional.}
+  \label{fig:weyl-local-chart}
+\end{figure}
+
+Cutting a Riemann surface into three-holed spheres expresses its correlator in
+terms of three-point data and sums over intermediate states.  Different
+decompositions of the same surface are related by crossing moves and modular
+moves.  Thus four-point crossing and torus modular invariance are local
+manifestations of the same global consistency requirement.
