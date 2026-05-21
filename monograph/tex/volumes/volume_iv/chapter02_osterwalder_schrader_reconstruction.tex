@@ -130,6 +130,47 @@ Euclidean rotations supplies the Lorentz boosts under the OS hypotheses.
   \label{fig:os-reconstruction-flow}
 \end{figure}
 
+\section{Fields on the Reconstructed Domain}
+
+Let \(\mathcal D_{\rm OS}\subset\Hilb_{\rm OS}\) be the image of
+\(\mathcal E_+\) in the quotient.  This dense subspace is the natural common
+domain for the reconstructed fields.  If \(h\) is a Euclidean test function
+whose support is at positive time and remains ordered to the left of the
+supports appearing in \(F\in\mathcal E_+\), define
+\[
+  \Phi_E(h)[F]
+  =
+  [h\otimes F],
+\]
+where \(h\otimes F\) denotes the sequence obtained by inserting one additional
+Euclidean field smeared with \(h\).  Permutation symmetry of the Schwinger
+functions and reflection positivity make this definition compatible with the
+null quotient whenever the supports obey the stated ordering.  Taking limits
+of ordered supports gives the Euclidean fields as closable operators on
+\(\mathcal D_{\rm OS}\).
+
+Lorentzian fields are obtained by continuing these matrix elements, not by
+declaring a separate Hilbert space.  For ordered imaginary parts
+\[
+  \epsilon_1>\epsilon_2>\cdots>\epsilon_n>0,
+\]
+the Wightman distributions are boundary values of the Schwinger functions
+continued to
+\begin{equation}
+  \tau_j=\epsilon_j+\ii t_j,
+  \qquad j=1,\ldots,n.
+  \label{eq:os-wightman-boundary-values}
+\end{equation}
+The reconstructed operator \(\Phi(t,\mathbf f)\) is the operator-valued
+distribution whose vacuum matrix elements are these boundary values and whose
+time dependence is implemented by the unitary group
+\[
+  \ee^{-\ii tH}.
+\]
+Thus the OS construction produces the vacuum vector, the Hilbert space, the
+positive Hamiltonian, and the field domains from the same Euclidean
+correlation hierarchy.
+
 \section{Reconstruction Theorem}
 
 \begin{theorem}[Osterwalder--Schrader reconstruction]

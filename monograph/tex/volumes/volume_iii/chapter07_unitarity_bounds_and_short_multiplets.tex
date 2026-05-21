@@ -14,6 +14,19 @@ physical Hilbert space.  The adjoint relation
 implies that every Gram matrix of descendant states must be positive
 semidefinite.
 
+In this chapter the generators are the radial-quantization generators, with
+the conventional factors of \(\ii\) absorbed relative to Lorentzian Hermitian
+charges.  The commutator used below is
+\begin{equation}
+  [\widehat K_\mu,\widehat P_\nu]
+  =
+  2\delta_{\mu\nu}\widehat D-2\widehat J_{\nu\mu},
+  \label{eq:radial-pk-commutator}
+\end{equation}
+where \(\widehat J_{\mu\nu}\) acts on the spin indices of the operator
+multiplet.  This convention makes the descendant Gram matrices real
+Euclidean inner products.
+
 Let \(\ket{\mathcal O_a}\) be a primary of dimension \(\Delta\) and spin
 representation \(\rho\).  At level one the descendant Gram matrix is
 \begin{equation}
@@ -26,7 +39,7 @@ Using \(\widehat K_\mu\ket{\mathcal O_b}=0\) and the conformal algebra gives
 \[
   G_{\mu a,\nu b}^{(1)}
   =
-  -2\ii
+  2
   \bra{\mathcal O_a}
   (\delta_{\mu\nu}\widehat D-\widehat J_{\nu\mu})
   \ket{\mathcal O_b}.
@@ -106,6 +119,44 @@ this gives the operator equation
   \label{eq:scalar-shortening-laplace}
 \end{equation}
 The corresponding conformal multiplet is the free massless scalar multiplet.
+
+\section{Level-One Decomposition for Spin}
+
+Let \(\mathcal H_\ell\) denote the \(SO(D)\) representation of rank-\(\ell\)
+symmetric traceless tensors.  For a primary in \(\mathcal H_\ell\), the
+level-one descendants transform in
+\[
+  \mathcal H_1\otimes\mathcal H_\ell .
+\]
+The \(SO(D)\)-orthogonal decomposition is
+\[
+  \mathcal H_1\otimes\mathcal H_\ell
+  =
+  \mathcal H_{\ell+1}
+  \oplus
+  \mathcal H_{\ell,1}
+  \oplus
+  \mathcal H_{\ell-1},
+\]
+with absent summands omitted when the corresponding representation is not
+defined.  The last summand is the divergence channel.  Projecting the
+level-one Gram matrix \eqref{eq:level-one-gram-general} onto these summands
+diagonalizes it.  With positive \(SO(D)\)-invariant projector normalizations,
+the three eigenvalues are positive constants times
+\[
+  \Delta+\ell,\qquad
+  \Delta-1,\qquad
+  \Delta-\ell-D+2.
+\]
+The constants depend only on \(D\), \(\ell\), and the normalization of the
+projectors; their signs are positive.  For \(\ell\ge1\) and \(D\ge3\), the
+strongest condition is therefore the positivity of the divergence channel:
+\[
+  \Delta-\ell-D+2\ge0.
+\]
+When this eigenvalue vanishes, the projected descendant in
+\(\mathcal H_{\ell-1}\) is null.  In position space that descendant is the
+divergence of the tensor primary.
 
 \section{Symmetric Traceless Tensor Primaries}
 

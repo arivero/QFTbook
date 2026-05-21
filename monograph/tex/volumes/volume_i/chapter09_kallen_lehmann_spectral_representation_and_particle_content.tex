@@ -188,6 +188,46 @@ The spectral measure \(d\rho\) is thus common to the Wightman, time-ordered,
 and Euclidean two-point functions. The different Green functions are different
 boundary values or analytic continuations of the same positive spectral data.
 
+\section{Canonical Normalization and Spectral Weight}
+
+The measure \(d\rho\) depends on the normalization of the local field.  When
+\(\widehat\phi\) is a canonically normalized scalar field, the equal-time
+commutation relation supplies an additional normalization condition.  Assume
+that, on a common invariant domain,
+\[
+  [\widehat\phi(t,\vec x),\partial_t\widehat\phi(t,\vec y)]
+  =
+  \ii\,\delta^{D-1}(\vec x-\vec y)\mathbf 1 .
+\]
+The commutator two-point distribution is
+\[
+  \langle\Omega|[\widehat\phi(x),\widehat\phi(0)]|\Omega\rangle
+  =
+  \int_{[0,\infty)}\dd\rho(\mu^2)\,
+  \bigl(\Delta_+(x;\mu^2)-\Delta_+(-x;\mu^2)\bigr).
+\]
+For each fixed \(\mu^2\), the equal-time derivative of the expression in
+parentheses gives the canonical delta distribution.  Therefore the canonical
+commutator fixes the total spectral weight:
+\begin{equation}
+  \int_{[0,\infty)}\dd\rho(\mu^2)=1.
+  \label{eq:kallen-lehmann-canonical-sum-rule}
+\end{equation}
+This is a statement about the chosen field normalization, not about a
+normalization-independent observable.
+
+If the same field has a one-particle atom \(Z\delta_{m^2}\), positivity of
+\(d\rho\) and \eqref{eq:kallen-lehmann-canonical-sum-rule} imply
+\[
+  0\le Z\le1.
+\]
+The remainder \(1-Z\) is the total spectral weight carried by all continuum
+states and by any other atoms.  For a noncanonical interpolating field, a
+composite operator, or a renormalized field in a different convention, the
+same K\"all\'en--Lehmann representation holds, but the right-hand side of
+\eqref{eq:kallen-lehmann-canonical-sum-rule} is replaced by the corresponding
+equal-time commutator normalization.
+
 \section{One-Particle Atoms}
 
 Assume the spectrum contains an isolated scalar one-particle mass \(m>0\), and

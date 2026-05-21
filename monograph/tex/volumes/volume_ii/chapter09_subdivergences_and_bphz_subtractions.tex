@@ -299,6 +299,40 @@ where \(t_\gamma\) acts before \(t_\Gamma\).  The last term restores the part
 subtracted twice at the boundary where the subgraph and the whole graph shrink
 in a nested way.
 
+\section{Order of Subtractions and Scale Hierarchies}
+
+The prescription that \(t_\gamma\) acts before \(t_\Gamma\) for
+\(\gamma\subset\Gamma\) is forced by the geometry of ultraviolet limits.  A
+nested forest represents a hierarchy of large internal momenta.  For example,
+if loop momenta internal to \(\gamma\) are of size \(\rho\sigma\) and the
+remaining loop momenta of \(\Gamma/\gamma\) are of size \(\rho\), with
+\(\sigma\to\infty\) before \(\rho\to\infty\), then the innermost singular
+region is the subgraph \(\gamma\).  Its Taylor polynomial must first be
+converted into a local vertex of the contracted graph.  Only after that
+replacement is made does the overall Taylor operator see the correct local
+integrand for the larger graph.
+
+This ordering can be expressed algebraically.  If
+\[
+  C_\gamma I_\gamma=-t_\gamma\overline R_\gamma I_\gamma,
+\]
+then the term \(t_\Gamma t_\gamma I_\Gamma\) in a forest is interpreted as
+\[
+  t_\Gamma\bigl((t_\gamma I_\gamma)\,I_{\Gamma/\gamma}\bigr),
+\]
+where \(t_\gamma I_\gamma\) is a polynomial in the external momenta entering
+\(\gamma\).  The polynomial is part of the local vertex data of
+\(\Gamma/\gamma\), so the overall subtraction is again a Taylor polynomial in
+the external momenta of \(\Gamma\).  This is the mechanism by which nested
+subtractions preserve locality.
+
+Overlapping divergent subgraphs do not define a single common hierarchy in
+which both are innermost subgraphs.  They are therefore not placed in the same
+forest.  Their overlap is covered by the sum over compatible forests together
+with the overall subtraction.  The apparent combinatorics is the bookkeeping
+required for a single local expression to subtract all ultraviolet boundary
+regions without assigning a nonlocal counterterm to an overlap.
+
 \section{The Two-Loop Self-Energy Forest}
 
 Return to the two-loop self-energy graph in the six-dimensional cubic theory.

@@ -62,6 +62,60 @@ the poles in the complex \(k^0\)-plane are
 \]
 This is the Feynman boundary value of the meromorphic function of \(k^0\).
 
+\section{Tube Analyticity From the Spectrum Condition}
+
+The \(i\epsilon\) prescription is the two-point perturbative expression of a
+more general analytic fact.  Let
+\[
+  W_n(x_1,\ldots,x_n)
+  =
+  \bra{\Omega}
+  \widehat\phi(x_1)\cdots\widehat\phi(x_n)
+  \ket{\Omega}
+\]
+be a Wightman distribution.  By translation invariance write it in the
+relative variables
+\[
+  \xi_j=x_j-x_{j+1},
+  \qquad j=1,\ldots,n-1.
+\]
+The spectrum condition implies that the joint Fourier transform in the
+relative variables is supported where each conjugate momentum lies in the
+closed forward cone.  Hence the distribution is the boundary value of a
+function holomorphic in the forward tube
+\begin{equation}
+  \xi_j\longmapsto \xi_j-\ii\eta_j,
+  \qquad
+  \eta_j\in V_+,\qquad j=1,\ldots,n-1,
+  \label{eq:wightman-forward-tube}
+\end{equation}
+where \(V_+\) is the open future light cone.  Indeed, for
+\(p\in\overline V_+\) and \(\eta\in V_+\), the mostly-plus inner product
+satisfies
+\[
+  p\cdot\eta\le0,
+\]
+so the factor
+\[
+  \exp\{\ii p\cdot(\xi-\ii\eta)\}
+  =
+  \exp\{\ii p\cdot\xi+p\cdot\eta\}
+\]
+is damped rather than enlarged.
+
+Different operator orderings give holomorphic functions in corresponding
+permuted tubes.  Local commutativity identifies their boundary values when
+neighboring points are spacelike separated.  The edge-of-the-wedge theorem
+then glues the corresponding holomorphic functions across such common real
+regions.  Time-ordered Green functions are boundary values obtained by
+approaching real Lorentzian points from imaginary time orderings compatible
+with the chosen operator order.  For two points, this general construction is
+exactly the pole displacement
+\[
+  \frac1{k^2+m^2-\ii\epsilon}
+\]
+appearing in the Feynman propagator.
+
 \section{Lorentzian Feynman Rules for Green Functions}
 
 Consider the same scalar \(\phi^4\) interaction as in the Euclidean chapter,
