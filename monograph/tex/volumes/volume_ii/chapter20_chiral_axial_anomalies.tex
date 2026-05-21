@@ -217,30 +217,135 @@ Thus the possible local gauge anomalies are cohomology classes of the BRST
 differential at ghost number one.
 
 For four-dimensional chiral fermions, this cohomology class is represented by
-the descent of a six-form anomaly polynomial.  With the trace convention used
-for the fermion representations, its group-theoretic part is
+the descent of a six-form anomaly polynomial.  To state the normalization
+without hiding convention-dependent factors, introduce the anti-Hermitian
+connection
 \[
-  \mathcal P_6(F)
-  \propto
-  \sum_i\operatorname{tr}_{R_i}(F^3),
+  \mathsf A=-\ii A,
   \qquad
-  F=\dd A+A^2 .
+  \mathsf F=\dd\mathsf A+\mathsf A^2=-\ii F ,
 \]
-Choose a Chern--Simons five-form \(Q_5(A)\) with
+where \(A\) and \(F\) are the Hermitian gauge potential and curvature used in
+the Yang--Mills chapters.  Products of differential forms below include both
+matrix multiplication and wedge product.  For a left-handed Weyl fermion in a
+representation \(R\), define the six-form
 \[
-  \dd Q_5(A)=\mathcal P_6(F).
+  I_6^R
+  =
+  \kappa\,\operatorname{tr}_R(\mathsf F^3),
+  \qquad
+  \kappa=\frac{\ii}{24\pi^2}
 \]
-Its gauge variation is exact:
+in the Euclidean effective-action convention.  Removing the overall Euclidean
+phase gives the corresponding Lorentzian Ward-identity normalization.  A
+right-handed Weyl fermion contributes with the opposite sign.  For a set of
+left- and right-handed Weyl fermions,
 \[
-  \delta_\zeta Q_5(A)=\dd Q_4^{(1)}(\zeta,A).
+  I_6
+  =
+  \kappa
+  \left[
+    \sum_{i\in L}\operatorname{tr}_{R_i}(\mathsf F^3)
+    -
+    \sum_{j\in R}\operatorname{tr}_{R_j}(\mathsf F^3)
+  \right].
 \]
-The four-form \(Q_4^{(1)}\) gives a representative of
-\(\mathcal A(\zeta,A)\), with the overall normalization fixed by the
-short-distance calculation or by the index theorem.  The cancellation
-condition \eqref{eq:gauge-anomaly-cancellation} is precisely the vanishing of
-the six-form polynomial for the gauged symmetry.  If the polynomial is nonzero
-for a global symmetry background, it is an anomaly to be matched rather than
-an inconsistency.
+
+The Chern--Simons five-form \(I_5^{(0)}\) is any local form satisfying
+\[
+  I_6=\dd I_5^{(0)}.
+\]
+For one left-handed representation \(R\), a standard representative is
+\[
+  I_{5,R}^{(0)}
+  =
+  \kappa\,\operatorname{tr}_R
+  \left(
+    \mathsf A(\dd\mathsf A)^2
+    +
+    \frac32\mathsf A^3\dd\mathsf A
+    +
+    \frac35\mathsf A^5
+  \right),
+  \qquad
+  \dd I_{5,R}^{(0)}=I_6^R .
+\]
+For a gauge variation
+\[
+  \delta_\lambda \mathsf A=\dd\lambda+[\mathsf A,\lambda],
+\]
+one has the first descent equation
+\[
+  \delta_\lambda I_5^{(0)}
+  =
+  \dd I_4^{(1)}(\lambda,\mathsf A).
+\]
+In the same left-handed convention,
+\[
+  I_{4,R}^{(1)}(\lambda,\mathsf A)
+  =
+  \kappa\,\operatorname{tr}_R
+  \left[
+    \lambda\,\dd
+    \left(
+      \mathsf A\,\dd\mathsf A+\frac12\mathsf A^3
+    \right)
+  \right],
+\]
+up to adding \(\dd\)-exact terms and BRST-exact local counterterm variations.
+The consistent anomaly is
+\[
+  \delta_\lambda W[\mathsf A]
+  =
+  \int_M I_4^{(1)}(\lambda,\mathsf A).
+\]
+The cancellation condition \eqref{eq:gauge-anomaly-cancellation} is precisely
+the vanishing of the six-form polynomial \(I_6\) for the gauged symmetry, or
+equivalently the vanishing of the symmetric cubic tensor
+\[
+  d^{abc}
+  =
+  \sum_{i\in L}\operatorname{tr}_{R_i}
+  \bigl(t^{(a}t^b t^{c)}\bigr)
+  -
+  \sum_{j\in R}\operatorname{tr}_{R_j}
+  \bigl(t^{(a}t^b t^{c)}\bigr).
+\]
+If this polynomial is nonzero only for a background field coupled to a global
+symmetry, it is an anomaly to be matched rather than an inconsistency.
+
+\section{Consistent and Covariant Currents}
+
+The current obtained by differentiating the effective action,
+\[
+  J_{\mathrm{cons}}^{a\mu}(x)
+  =
+  \frac{\delta W[A]}{\delta A^a_\mu(x)},
+\]
+is the consistent current.  Its anomaly is the variation of a functional and
+therefore obeys the Wess--Zumino consistency condition.  This integrability is
+the reason that the consistent anomaly is the object classified by
+\(H^{1,4}(s\mid d)\).
+
+The consistent current need not transform covariantly under background gauge
+transformations.  There is a local polynomial current
+\[
+  J_{\mathrm{BZ}}^{a\mu}(A)
+\]
+called the Bardeen--Zumino current, whose addition gives a covariant current
+\[
+  J_{\mathrm{cov}}^{a\mu}
+  =
+  J_{\mathrm{cons}}^{a\mu}+J_{\mathrm{BZ}}^{a\mu}.
+\]
+The divergence of \(J_{\mathrm{cov}}\) is gauge covariant and is often the most
+compact local expression of the anomaly.  However,
+\(J_{\mathrm{cov}}\) is generally not the functional derivative of a local
+effective action.  Thus it is not the current that appears directly in the
+integrability condition \eqref{eq:wess-zumino-consistency}.  Gauge-anomaly
+cancellation is a statement about the consistent cohomology class; after that
+class vanishes, covariant currents may be used as convenient representatives of
+gauge-covariant Ward identities.
 
 \section{Local Counterterms and Preserved Currents}
 
