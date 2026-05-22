@@ -29,11 +29,14 @@ The chapter must define:
 
 - Euclidean Feynman graph \(\Gamma\), internal lines \(E(\Gamma)\), loop number
   \(L(\Gamma)\), external momenta \(p\), and integrand \(I_\Gamma(\ell,p)\);
-- subgraph \(\gamma\subseteq\Gamma\), its external momenta \(p_\gamma\), and the
-  contracted graph \(\Gamma/\gamma\);
+- the convention that the chapter works with 1PI kernels, while connected
+  Green functions are reconstructed by the Legendre tree expansion;
+- momentum subgraph \(\gamma\subseteq\Gamma\), its external half-lines,
+  external momenta \(p_\gamma\), and the contracted graph \(\Gamma/\gamma\);
 - superficial degree of divergence \(\omega(\gamma)\);
 - divergent 1PI subgraph;
-- Taylor subtraction operator \(t_\gamma\) at a specified subtraction point;
+- Taylor subtraction operator \(t_\gamma\) at a specified subtraction point,
+  including what is held fixed during the operation;
 - spinneys and forests;
 - recursive preparation map \(\overline R_\Gamma\), counterterm map
   \(C_\gamma\), and full \(R_\Gamma\);
@@ -44,14 +47,18 @@ The chapter must define:
 
 ## Claim Ledger
 
-1. A UV subgraph is specified by a subset of internal lines whose loop momenta
-   are scaled together while momenta in the complement are held fixed.
+1. A UV subgraph is specified by a subset of internal lines; its external
+   half-lines are all incident half-lines not contained in the subgraph.
+   Internal loop momenta of the subgraph are scaled together while momenta in
+   the contracted graph are held fixed.
 2. The superficial degree \(\omega(\gamma)\) determines the Taylor degree needed
    to remove the leading UV boundary term associated with \(\gamma\).
 3. \(t_\gamma I_\Gamma\) is polynomial in \(p_\gamma\) and therefore corresponds
    to a local vertex in the contracted graph.
-4. A spinney is a set of mutually disjoint divergent proper subgraphs; a forest
-   is a set of divergent subgraphs that are pairwise disjoint or nested.
+4. A spinney is a set of mutually disjoint connected divergent proper
+   subgraphs; a forest is a set of connected divergent subgraphs that are
+   pairwise disjoint or nested.  Disconnected divergent subtractions are
+   products over connected components.
 5. The recursive BPHZ construction subtracts proper subgraphs first and the
    overall graph last.
 6. In the two-loop diamond graph, the left and right one-loop subgraphs overlap;
@@ -67,6 +74,9 @@ The chapter must define:
 10. In a finite-list power-counting-renormalizable theory, the recursive
     counterterms remain in the finite local operator space established in the
     previous chapter.
+11. The proof sketch must explicitly use the fact that external-momentum
+    derivatives lower the superficial UV degree, so the Taylor remainder has
+    negative UV degree in each forest sector.
 
 ## Figure Requirements
 
@@ -82,3 +92,6 @@ The chapter must define:
 - Keep the chapter as the bridge from local counterterms to the 1PI RG: finite
   renormalization and movement of subtraction points should point forward but
   not replace the RG chapter.
+- 2026-05-22 pass: tightened the 1PI graph convention, external-half-line
+  definition of subgraphs, Taylor-operator holding data, connected spinney and
+  forest conventions, and the BPHZ proof sketch.

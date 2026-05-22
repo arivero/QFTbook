@@ -3,9 +3,15 @@
 
 \section{Graphs and Ultraviolet Subgraphs}
 
-Work in a massive Euclidean scalar theory in \(D\) dimensions.  A connected
-Feynman graph \(\Gamma\) has a finite set \(E(\Gamma)\) of internal lines, a
-finite set \(V(\Gamma)\) of vertices, and external momenta
+Work in a massive Euclidean scalar theory in \(D\) dimensions, with local
+polynomial interactions and a fixed choice of momentum routing.  The massive
+assumption isolates ultraviolet questions from infrared ones; the subtraction
+points will also be chosen away from exceptional momentum configurations.  The
+graphs in this chapter represent 1PI kernels; connected Green functions are
+reconstructed from 1PI kernels by the Legendre tree expansion discussed
+earlier.  A connected one-particle-irreducible Feynman graph \(\Gamma\) has a
+finite set \(E(\Gamma)\) of internal lines, a finite set \(V(\Gamma)\) of
+vertices, and external momenta
 \[
   p=(p_1,\ldots,p_N),
   \qquad
@@ -26,24 +32,36 @@ With polynomial numerator \(N_\Gamma(\ell,p)\) and propagator masses
         \big(q_e(\ell,p)^2+m_e^2\big)} .
 \]
 Here \(q_e(\ell,p)\) is the momentum carried by the line \(e\), determined by
-the chosen momentum routing.
+the chosen momentum routing.  Coupling constants, symmetry factors, and
+overall powers of \(2\pi\) are suppressed in this chapter because they do not
+affect the ultraviolet degree or locality of the subtraction.
 
-A subgraph \(\gamma\subseteq\Gamma\) is specified by a subset
-\(E(\gamma)\subseteq E(\Gamma)\) together with all vertices incident to those
-lines.  The loop number of \(\gamma\) is
+\begin{definition}[Momentum subgraph]\leavevmode\par
+A momentum subgraph \(\gamma\subseteq\Gamma\) is specified by a nonempty subset
+\(E(\gamma)\subseteq E(\Gamma)\), together with all vertices incident to those
+internal lines.  Its connected components are formed with the incidence
+relation inherited from \(\Gamma\).  The loop number of \(\gamma\) is
 \[
   L(\gamma)=|E(\gamma)|-|V(\gamma)|+c(\gamma),
 \]
 where \(c(\gamma)\) is the number of connected components of \(\gamma\).
-The external momenta \(p_\gamma\) of \(\gamma\) consist of the original external
-momenta entering \(\gamma\) together with the momenta carried by internal lines
-of \(\Gamma\) that meet \(\gamma\) and then leave it.  The contracted graph
-\(\Gamma/\gamma\) is obtained by replacing every connected component of
-\(\gamma\) by a single vertex.
+The external half-lines of \(\gamma\) are all half-lines incident to
+\(V(\gamma)\) that are not internal lines of \(\gamma\).  They include original
+external half-lines of \(\Gamma\) and the half-lines obtained by cutting
+internal lines of \(\Gamma\setminus\gamma\) at vertices of \(\gamma\).  The
+momenta on these half-lines are denoted \(p_\gamma\), with momentum
+conservation imposed separately on each connected component.  The contracted
+graph \(\Gamma/\gamma\) is obtained by replacing every connected component of
+\(\gamma\) by a single vertex carrying the total external momentum of that
+component.
+\end{definition}
 
-The ultraviolet scaling associated with \(\gamma\) scales the loop momenta
-internal to \(\gamma\) by a common parameter \(\rho\) and keeps \(p_\gamma\)
-fixed.  If the leading homogeneous scaling of \(I_\gamma\) is
+The ultraviolet scaling associated with \(\gamma\) scales independent loop
+momenta internal to \(\gamma\) by a common parameter \(\rho\) and keeps
+\(p_\gamma\) fixed.  The momenta \(p_\gamma\) may include loop momenta of the
+contracted graph; during the test of \(\gamma\) they are treated as external
+parameters.  If the leading homogeneous scaling of \(I_\gamma\) together with
+the internal loop measure is
 \[
   \dd^{DL(\gamma)}\ell_\gamma\,
   I_\gamma(\rho\ell_\gamma,p_\gamma)
@@ -60,10 +78,14 @@ graph with numerator degree \(r(\gamma)\),
   =
   D L(\gamma)+r(\gamma)-2|E(\gamma)|.
 \]
-A proper connected one-particle-irreducible subgraph with
-\(\omega(\gamma)\ge0\) is called a divergent subgraph.  The word proper means
-\(\gamma\ne\Gamma\).  A disconnected subgraph is divergent when each of its
-connected components is divergent.
+Equivalently, \(\omega(\gamma)\) is the mass dimension of the local polynomial
+that can be produced when \(\gamma\) is shrunk to a point.  A connected
+subgraph is one-particle-irreducible if it remains connected after any one of
+its internal lines is removed.  A proper connected one-particle-irreducible
+subgraph with \(\omega(\gamma)\ge0\) is called a divergent subgraph; proper
+means \(\gamma\ne\Gamma\).  A disconnected subgraph is divergent when each of
+its connected components is divergent.  In that case its local counterterm is
+the product of the counterterms of its connected components.
 
 \section{Taylor Operators and Local Vertices}
 
@@ -71,9 +93,9 @@ Fix for each divergent subgraph \(\gamma\) a subtraction point
 \(p_\gamma^\ast\) in the space of independent external momenta of \(\gamma\).
 The point is chosen away from infrared singularities; for massive Euclidean
 graphs, zero momentum is allowed when the relevant Green function is infrared
-regular.  Let \(a=(a_1,\ldots,a_M)\) be independent coordinates for
-\(p_\gamma-p_\gamma^\ast\).  The Taylor operator of degree \(\omega(\gamma)\)
-is
+regular.  Let \(a=(a_1,\ldots,a_M)\) be affine coordinates for the independent
+components of \(p_\gamma-p_\gamma^\ast\), after imposing momentum
+conservation.  The Taylor operator of degree \(\omega(\gamma)\) is
 \[
   (t_\gamma f)(p_\gamma)
   =
@@ -85,14 +107,20 @@ is
 \]
 It acts on the dependence of the integrand on the external momenta of
 \(\gamma\), while all loop momenta internal to \(\gamma\) remain integration
-variables.
+variables and all momenta belonging to the contracted graph are held fixed.
+For a disconnected divergent subgraph, \(t_\gamma\) is the product of the
+Taylor operators for its connected components.
 
 The image \(t_\gamma I_\Gamma\) is polynomial in \(p_\gamma\) of degree at most
-\(\omega(\gamma)\).  In position space, a polynomial in the momentum entering a
-contracted vertex is a finite linear combination of derivatives acting at that
-vertex.  Therefore \(t_\gamma I_\Gamma\) represents a local insertion in
-\(\Gamma/\gamma\).  This is the graph-level form of the locality statement
-established in the preceding chapter.
+\(\omega(\gamma)\), with coefficients depending on the loop variables internal
+to \(\gamma\) and on the remaining variables of the contracted graph.  After
+the internal variables of \(\gamma\) have been integrated or recursively
+prepared, this polynomial becomes a vertex factor in \(\Gamma/\gamma\).  In
+position space, a polynomial in the momentum entering a contracted vertex is a
+finite linear combination of derivatives acting at that vertex.  Therefore
+\(t_\gamma I_\Gamma\) represents a local insertion in \(\Gamma/\gamma\).  This
+is the graph-level form of the locality statement established in the preceding
+chapter.
 
 \begin{figure}[H]
   \centering
@@ -152,11 +180,12 @@ established in the preceding chapter.
 
 \section{Spinneys, Forests, and the Recursive R-Operation}
 
-A spinney \(S\) of \(\Gamma\) is a finite set of mutually disjoint divergent
-proper subgraphs of \(\Gamma\).  Mutually disjoint means that no internal line
-or vertex is shared.  The empty set is allowed.  A forest \(F\) of \(\Gamma\)
-is a finite set of divergent subgraphs such that any two elements of \(F\) are
-either disjoint or nested:
+\begin{definition}[Spinneys and forests]
+A spinney \(S\) of \(\Gamma\) is a finite set of mutually disjoint connected
+divergent proper subgraphs of \(\Gamma\).  Mutually disjoint means that no
+internal line or vertex is shared.  The empty set is allowed.  A forest \(F\)
+of \(\Gamma\) is a finite set of connected divergent subgraphs such that any
+two elements of \(F\) are either disjoint or nested:
 \[
   \gamma_1\cap\gamma_2=\emptyset,
   \qquad
@@ -167,7 +196,9 @@ either disjoint or nested:
   \gamma_2\subset\gamma_1 .
 \]
 The full graph \(\Gamma\) is included among the possible forest elements when
-\(\omega(\Gamma)\ge0\).  The empty forest is allowed.
+\(\Gamma\) is one-particle-irreducible and \(\omega(\Gamma)\ge0\).  The empty
+forest is allowed.
+\end{definition}
 
 \begin{figure}[H]
   \centering
@@ -232,18 +263,22 @@ First define the prepared integrand
   \sum_{\substack{S\ {\rm spinney\ of}\ \Gamma\\S\ne\emptyset}}
   \left(\prod_{\gamma\in S} C_\gamma\right) I_\Gamma .
 \]
-The product of \(C_\gamma\)'s means: replace each disjoint subgraph
-\(\gamma\) by its counterterm vertex in the graph \(\Gamma/S\).  Since the
-elements of a spinney are disjoint, these replacements can be made
-simultaneously.  The counterterm attached to a connected divergent graph is
-defined recursively by
+The product of \(C_\gamma\)'s means: for each disjoint component
+\(\gamma\in S\), replace the prepared subgraph by its local counterterm vertex
+and insert the resulting product of local vertices into the contracted graph
+\(\Gamma/S\).  Since the elements of a spinney are disjoint, these
+replacements can be made simultaneously.  The counterterm attached to a
+connected divergent graph is defined recursively by
 \[
   C_\gamma I_\gamma
   =
   -\,t_\gamma\,\overline R_\gamma I_\gamma .
 \]
 Thus the counterterm of \(\gamma\) is the negative Taylor polynomial of the
-subgraph after its own proper subdivergences have already been prepared.
+subgraph after its own proper subdivergences have already been prepared.  The
+recursion starts at divergent graphs with no proper divergent subgraphs, for
+which \(\overline R_\gamma I_\gamma=I_\gamma\).  For disconnected divergent
+subgraphs, \(C_\gamma\) is the product over connected components.
 
 The full \(R\)-operation is
 \[
@@ -262,11 +297,13 @@ is applied afterward when the whole graph is superficially divergent.
 
 \section{The Forest Formula}
 
-Let \(\mathfrak F(\Gamma)\) be the set of forests whose elements are divergent
-subgraphs of \(\Gamma\), including \(\Gamma\) itself when \(\omega(\Gamma)\ge0\).
-For \(F\in\mathfrak F(\Gamma)\), define \(t_F\) by applying \(t_\gamma\) from
-smaller subgraphs to larger subgraphs.  If two elements are disjoint, their
-operators commute.  The forest formula is
+Let \(\mathfrak F(\Gamma)\) be the set of forests whose elements are connected
+divergent subgraphs of \(\Gamma\), including \(\Gamma\) itself when
+\(\Gamma\) is one-particle-irreducible and \(\omega(\Gamma)\ge0\).  For
+\(F\in\mathfrak F(\Gamma)\), define \(t_F\) by applying \(t_\gamma\) from
+smaller subgraphs to larger subgraphs, with each smaller subtraction regarded
+as a local vertex before the larger Taylor operator is applied.  If two
+elements are disjoint, their operators commute.  The forest formula is
 \[
   R_\Gamma I_\Gamma
   =
@@ -296,21 +333,20 @@ The corresponding operator is
   (1-t_\Gamma)(1-t_\gamma),
 \]
 where \(t_\gamma\) acts before \(t_\Gamma\).  The last term restores the part
-subtracted twice at the boundary where the subgraph and the whole graph shrink
-in a nested way.
+counted twice at the boundary where the subgraph and the whole graph shrink in
+a nested way.
 
 \section{Order of Subtractions and Scale Hierarchies}
 
 The prescription that \(t_\gamma\) acts before \(t_\Gamma\) for
-\(\gamma\subset\Gamma\) is forced by the geometry of ultraviolet limits.  A
+\(\gamma\subset\Gamma\) is determined by the geometry of ultraviolet limits.  A
 nested forest represents a hierarchy of large internal momenta.  For example,
 if loop momenta internal to \(\gamma\) are of size \(\rho\sigma\) and the
 remaining loop momenta of \(\Gamma/\gamma\) are of size \(\rho\), with
 \(\sigma\to\infty\) before \(\rho\to\infty\), then the innermost singular
-region is the subgraph \(\gamma\).  Its Taylor polynomial must first be
-converted into a local vertex of the contracted graph.  Only after that
-replacement is made does the overall Taylor operator see the correct local
-integrand for the larger graph.
+region is the subgraph \(\gamma\).  Its Taylor polynomial is first converted
+into a local vertex of the contracted graph.  After that replacement, the
+overall Taylor operator acts on the local integrand of the larger graph.
 
 This ordering can be expressed algebraically.  If
 \[
@@ -326,12 +362,12 @@ where \(t_\gamma I_\gamma\) is a polynomial in the external momenta entering
 the external momenta of \(\Gamma\).  This is the mechanism by which nested
 subtractions preserve locality.
 
-Overlapping divergent subgraphs do not define a single common hierarchy in
-which both are innermost subgraphs.  They are therefore not placed in the same
-forest.  Their overlap is covered by the sum over compatible forests together
-with the overall subtraction.  The apparent combinatorics is the bookkeeping
-required for a single local expression to subtract all ultraviolet boundary
-regions without assigning a nonlocal counterterm to an overlap.
+Overlapping divergent subgraphs are not disjoint and neither contains the
+other, so they are not placed in the same forest.  Their common ultraviolet
+region is represented by the sum over compatible forests together with the
+overall subtraction.  The forest sum is the inclusion-exclusion expression that
+subtracts all ultraviolet boundary regions while assigning counterterms only
+to local contracted subgraphs.
 
 \section{The Two-Loop Self-Energy Forest}
 
@@ -426,10 +462,12 @@ is therefore a linear combination of the local operators \(\phi^2\) and
 \section{Finiteness and Locality}
 
 \begin{theorem}[BPHZ finiteness for massive Euclidean scalar graphs]
-Let \(\Gamma\) be a connected Euclidean Feynman graph in a massive scalar
-theory.  Assume that all external momenta and subtraction points are chosen
-away from infrared singularities, and that \(t_\gamma\) subtracts every
-divergent 1PI subgraph \(\gamma\) through degree \(\omega(\gamma)\).  Then
+Let \(\Gamma\) be a connected one-particle-irreducible Euclidean Feynman graph
+in a massive scalar theory.  Assume that all external momenta and subtraction
+points are chosen away from infrared singularities, that the numerator of
+every graph is polynomial in loop and external momenta, and that \(t_\gamma\)
+subtracts every divergent one-particle-irreducible subgraph \(\gamma\) through
+degree \(\omega(\gamma)\).  Then
 \[
   \int \prod_{i=1}^{L(\Gamma)}\dd^D\ell_i\,
   R_\Gamma I_\Gamma(\ell,p)
@@ -441,8 +479,9 @@ subgraph is a polynomial in \(p_\gamma\) of degree at most \(\omega(\gamma)\).
 The proof is a scaling argument organized by the forest decomposition of
 ultraviolet regions.  In each sector of large loop momenta, the set of
 subgraphs whose internal momenta become large in a common scale hierarchy is a
-forest.  For the innermost element \(\gamma\) in that forest, Taylor's theorem
-gives
+forest.  For the innermost element \(\gamma\) in that forest, write the
+external variables of \(\gamma\) as \(p_\gamma=p_\gamma^\ast+a\).  Taylor's
+theorem gives
 \[
   f(p_\gamma)
   -
@@ -454,14 +493,18 @@ gives
   \frac{(1-s)^{\omega(\gamma)}}{\omega(\gamma)!}
   \left(\partial_a^\alpha f\right)(p_\gamma^\ast+s a)\,\dd s .
 \]
-The extra power of \(a\) improves the ultraviolet scaling by one order beyond
-the superficial degree assigned to \(\gamma\).  Applying the same argument
-from the innermost subgraphs outward improves every boundary region in the
-sector.  The inclusion-exclusion signs in the forest formula assemble these
-sector subtractions into a single expression independent of the sector
-decomposition.  Since all masses are positive and the subtraction points avoid
-infrared singularities, the remaining possible divergences are exactly these
-ultraviolet boundary regions, and the renormalized integral is finite.
+Each derivative with respect to an external momentum of \(\gamma\) lowers the
+large internal-momentum degree by at least one.  Hence the differentiated
+integrand in the remainder has superficial degree at most
+\(\omega(\gamma)-(\omega(\gamma)+1)=-1\) for that subgraph.  In sector
+coordinates this gives a negative ultraviolet degree for the boundary in which
+\(\gamma\) shrinks.  Applying the same argument from the innermost subgraphs
+outward improves every boundary region in the sector.  The
+inclusion-exclusion signs in the forest formula assemble these sector
+subtractions into a single expression independent of the sector decomposition.
+Since all masses are positive and the subtraction points avoid infrared
+singularities, the remaining possible noncompact regions are these ultraviolet
+boundary regions, and the renormalized integral is finite.
 
 The locality statement follows before integration: every \(C_\gamma\) is a
 Taylor polynomial in \(p_\gamma\).  In a theory whose power-counting
@@ -487,6 +530,8 @@ larger.  The resulting renormalized insertion is denoted
 \]
 where \(\delta\) is the subtraction degree at the marked vertex.
 
+It fixes a BPHZ subtraction scheme for insertions of \(O\).
+
 Increasing \(\delta\) is an oversubtraction.  If \(\delta'\ge\delta\), the two
 normal products are related by a finite local identity
 \[
@@ -510,15 +555,16 @@ matrix used later in the renormalized-operator chapter.
 
 \section{Finite Parts and Subtraction Coordinates}
 
-The Taylor operator includes a choice of subtraction point and a choice of
-finite polynomial part.  Changing these choices replaces \(C_\gamma\) by
+The Taylor operator includes a choice of subtraction point.  In addition, one
+may add finite local polynomial terms compatible with the same subtraction
+degree.  Changing these choices replaces \(C_\gamma\) by
 \[
   C_\gamma+\Delta C_\gamma,
 \]
 where \(\Delta C_\gamma\) is again a local polynomial in \(p_\gamma\) of degree
 at most \(\omega(\gamma)\).  Hence a change of subtraction prescription is a
 local redefinition of the parameters multiplying local operators.  The
-renormalized amplitudes expressed in one set of physical coordinates can be
+renormalized amplitudes expressed in one set of renormalized coordinates can be
 re-expressed in another by a finite local change of coordinates.
 
 The next chapter uses this freedom actively.  A family of subtraction
