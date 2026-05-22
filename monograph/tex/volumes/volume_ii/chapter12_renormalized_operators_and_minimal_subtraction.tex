@@ -472,6 +472,235 @@ source-coordinate map and field normalization have been specified.
   \label{fig:source-extended-wilsonian-operator-bridge}
 \end{figure}
 
+\section{A Worked Insertion: The Mass Operator in \texorpdfstring{\(\phi^4\)}{phi4}}
+
+The abstract source bridge becomes concrete in the scalar quartic theory.
+Work at finite regulator in four Euclidean dimensions, and introduce a source
+\(\eta\) for the local operator
+\[
+  O_m(x)=\frac12\phi(x)^2 .
+\]
+The source-dependent part of the bare action is
+\[
+  \int\dd^4x\,\eta_0(x)O_m(x).
+\]
+Let \(Q\) denote the momentum carried by the source insertion, and let
+\[
+  C_{\Lambda_0}=C_\Lambda+C_>
+\]
+be the same covariance split used for the Wilsonian action.  For covariances
+\(A,B\), define the one-insertion bubble
+\[
+  \mathcal I_{A,B}(Q)
+  =
+  \int\frac{\dd^4q}{(2\pi)^4}\,
+  A(q)\,B(q+Q).
+\]
+Then
+\begin{equation}
+  \mathcal I_{C_{\Lambda_0},C_{\Lambda_0}}(Q)
+  =
+  \mathcal I_{<,<}(Q)
+  +
+  \mathcal I_{>,>}(Q)
+  +
+  \mathcal I_\times(Q),
+  \label{eq:operator-insertion-bubble-covariance-split}
+\end{equation}
+where
+\[
+  \mathcal I_{<,<}=\mathcal I_{C_\Lambda,C_\Lambda},
+  \qquad
+  \mathcal I_{>,>}=\mathcal I_{C_>,C_>},
+\]
+and
+\[
+  \mathcal I_\times
+  =
+  \mathcal I_{C_\Lambda,C_>}
+  +
+  \mathcal I_{C_>,C_\Lambda}.
+\]
+
+The Wilsonian insertion functional is the source derivative of
+\(L_\Lambda[\phi;\eta_\Lambda]\).  At zeroth order in the quartic coupling,
+the Gaussian pushforward gives
+\[
+  \mathcal O^{\rm W}_{m,\Lambda}(x;\phi)
+  =
+  \frac12\phi(x)^2
+  +
+  \frac12 C_>(x,x)
+  +
+  \cdots ,
+\]
+where the second term is an identity-operator contribution.  It affects the
+vacuum response to \(\eta\), but not the two-field amputated insertion
+kernel.  At first order in the quartic coupling \(g\), the coefficient of
+\(\frac12\phi^2\) in the Wilsonian insertion receives the high-high bubble:
+\begin{equation}
+  \mathcal O^{\rm W}_{m,\Lambda}(Q;\phi)
+  =
+  \left[
+    1-\frac{g}{2}\mathcal I_{>,>}(Q)
+    +Z^{\rm loc}_{m,\Lambda}(Q)
+  \right]
+  \frac12(\phi\phi)(Q)
+  +
+  \hbox{identity and higher local terms}
+  +
+  O(g^2).
+  \label{eq:wilsonian-mass-insertion-one-loop}
+\end{equation}
+Here \((\phi\phi)(Q)\) denotes the Fourier transform of \(\phi(x)^2\), and
+\(Z^{\rm loc}_{m,\Lambda}(Q)\) is the local source-coordinate counterterm and
+finite convention.  The factor \(1/2\) is the one-loop symmetry factor in the
+normalization \(g\phi^4/4!\) and \(O_m=\phi^2/2\).
+
+Now compare with the BPHZ normal-product definition.  Let
+\(\mathcal Q_\mu\) be the nonexceptional source-momentum subtraction
+configuration used to define the two-field 1PI insertion kernel, and let
+\[
+  K_m^{(2)}(Q)
+  =
+  \frac{\delta^2}{\delta\varphi\,\delta\varphi}
+  \mathcal O_m^\Gamma(Q;\varphi)
+  \bigg|_{\varphi=0}
+\]
+in the field normalization of the chosen 1PI coordinate chart.  The
+renormalization condition
+\[
+  K_m^{(2)}(\mathcal Q_\mu)=1
+\]
+fixes the finite normalization of the renormalized operator.  At one loop,
+the BPHZ-subtracted insertion kernel is
+\begin{equation}
+  K_{m,{\rm BPHZ}}^{(2)}(Q)
+  =
+  1
+  -
+  \frac{g}{2}
+  \left[
+    \mathcal I_{C_{\Lambda_0},C_{\Lambda_0}}(Q)
+    -
+    \mathcal I_{C_{\Lambda_0},C_{\Lambda_0}}(\mathcal Q_\mu)
+  \right]
+  +
+  O(g^2),
+  \label{eq:bphz-mass-insertion-normal-product}
+\end{equation}
+with the ultraviolet limit taken after the subtraction.  The subtraction is a
+local normal-product convention for the operator \(O_m\).
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
+      box/.style={draw,rounded corners=3pt,align=center,
+        minimum width=2.58cm,minimum height=0.76cm}
+    }
+    \node[box] (bare) at (0,1.8)
+      {bare insertion\\bubble};
+    \node[box] (hh) at (4.0,3.0)
+      {high--high\\part};
+    \node[box] (ll) at (4.0,1.8)
+      {low--low\\part};
+    \node[box] (mix) at (4.0,0.6)
+      {mixed\\part};
+    \node[box] (wil) at (8.15,3.0)
+      {Wilsonian\\insertion};
+    \node[box] (low) at (8.15,1.8)
+      {low-field\\1PI insertion};
+    \node[box] (loc) at (8.15,0.6)
+      {local source\\map};
+    \node[box] (coord) at (12.05,1.8)
+      {renormalized\\normal product};
+
+    \draw[arr] (bare)--(hh);
+    \draw[arr] (bare)--(ll);
+    \draw[arr] (bare)--(mix);
+    \draw[arr] (hh)--(wil);
+    \draw[arr] (ll)--(low);
+    \draw[arr] (mix)--(loc);
+    \draw[arr] (wil)--(coord);
+    \draw[arr] (low)--(coord);
+    \draw[arr] (loc)--(coord);
+
+    \node[blue!70!black,align=center] at (2.0,3.45)
+      {\(C_>C_>\)};
+    \node[green!45!black,align=center] at (2.0,2.18)
+      {\(C_\Lambda C_\Lambda\)};
+    \node[orange!85!black,align=center] at (1.75,0.55)
+      {\(C_\Lambda C_>\)\\\(+C_>C_\Lambda\)};
+  \end{tikzpicture}
+  }
+  \caption{The one-loop mass-operator insertion is split by the covariance
+  decomposition.  The high--high part contributes to the Wilsonian insertion
+  functional, the low--low part is produced by the remaining low-field 1PI
+  insertion, and the mixed part is local in the low-momentum expansion and is
+  represented in the source-coordinate map.}
+  \label{fig:mass-insertion-source-wilsonian-matching}
+\end{figure}
+
+The 1PI insertion computed from the Wilsonian description has the form
+\begin{equation}
+  K_{m,\Lambda}^{(2)}(Q)
+  =
+  Z_{m,\Lambda}(Q)
+  -
+  \frac{g}{2}\mathcal I_{<,<}(Q)
+  -
+  \frac{g}{2}\mathcal I_\times^{\rm loc}(Q)
+  +
+  O(g^2),
+  \label{eq:wilsonian-low-mass-insertion-kernel}
+\end{equation}
+where \(Z_{m,\Lambda}(Q)\) is the local coefficient multiplying
+\(\frac12\phi^2\) in the Wilsonian insertion, and
+\(\mathcal I_\times^{\rm loc}\) denotes the Taylor expansion of the mixed
+assignment in the chosen low-momentum source chart.  Projecting at
+\(\mathcal Q_\mu\) fixes the source-coordinate normalization:
+\begin{equation}
+  1
+  =
+  Z_{m,\Lambda}(\mathcal Q_\mu)
+  -
+  \frac{g}{2}\mathcal I_{<,<}(\mathcal Q_\mu)
+  -
+  \frac{g}{2}\mathcal I_\times^{\rm loc}(\mathcal Q_\mu)
+  +
+  O(g^2).
+  \label{eq:mass-operator-source-coordinate-normalization}
+\end{equation}
+Subtracting this condition from
+\eqref{eq:wilsonian-low-mass-insertion-kernel} gives the finite insertion
+kernel in the 1PI chart:
+\[
+  K_{m,\Lambda}^{(2)}(Q)
+  =
+  1
+  -
+  \frac{g}{2}
+  \left[
+    \mathcal I_{<,<}(Q)-\mathcal I_{<,<}(\mathcal Q_\mu)
+  \right]
+  +
+  \mathcal T_{\rm high+mix}^{\rm loc}(Q;\mathcal Q_\mu)
+  +
+  O(g^2).
+\]
+Here \(\mathcal T_{\rm high+mix}^{\rm loc}(Q;\mathcal Q_\mu)\) is the finite
+local Taylor polynomial produced by the high-high and mixed assignments after
+the same subtraction condition has been imposed.  Adding this Taylor data
+reconstructs the low-momentum expansion of
+\eqref{eq:bphz-mass-insertion-normal-product}.  Thus the normal product, the
+Wilsonian insertion functional, and the 1PI insertion kernel are distinct
+representatives of the same source derivative after the finite-regulator
+pushforward, low-field integration, Legendre transform, and source-coordinate
+projection have been specified.
+
 This construction also clarifies the transformation law of anomalous
 dimensions.  Let \(t=\log\mu\), and suppose a scale-dependent finite
 source-coordinate change relates two renormalized operator bases by

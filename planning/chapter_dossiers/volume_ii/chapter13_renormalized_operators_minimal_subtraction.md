@@ -54,6 +54,11 @@ The chapter must define:
 - the 1PI insertion representative
   \(\mathcal O^\Gamma_{\Lambda,A}
     =-\delta\Gamma_\Lambda/\delta\eta_\Lambda^A\);
+- a worked finite-regulator insertion example for
+  \(O_m=\frac12\phi^2\) in scalar \(\phi^4\), including the covariance split
+  of the insertion bubble, the Wilsonian insertion representative, the
+  BPHZ normal-product subtraction, and the 1PI source-coordinate
+  normalization condition;
 - the anomalous-dimension transformation law under scale-dependent
   source-coordinate changes,
   \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\);
@@ -104,23 +109,28 @@ The chapter must define:
 7. A Wilsonian composite insertion is the source derivative of the Wilsonian
    action; the corresponding 1PI insertion is obtained by low-field
    integration followed by Legendre transform.
-8. Under scale-dependent finite changes of renormalized source coordinates,
+8. In the mass-operator example, the full one-loop insertion bubble splits
+   into high-high, low-low, and mixed covariance assignments.  The high-high
+   part corrects the Wilsonian insertion, the low-low part is produced by the
+   remaining low-field 1PI insertion, and the mixed part is represented by
+   local source-coordinate data in the low-momentum expansion.
+9. Under scale-dependent finite changes of renormalized source coordinates,
    anomalous dimensions transform by the connection law
    \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\).
-9. The operator-insertion Callan--Symanzik equation follows by
+10. The operator-insertion Callan--Symanzik equation follows by
    differentiating the renormalized insertion chart at fixed bare data.
-10. Contact terms in inserted correlators are local distributions supported on
+11. Contact terms in inserted correlators are local distributions supported on
    collision diagonals and depend on the contact-term convention.
-11. Minimal subtraction defines dimensionless couplings by retaining only pole
+12. Minimal subtraction defines dimensionless couplings by retaining only pole
    terms in the relation between bare and renormalized couplings.
-12. In four-dimensional scalar quartic theory, the one-loop MS relation is
+13. In four-dimensional scalar quartic theory, the one-loop MS relation is
    \(g^\epsilon=\mu^\epsilon[\lambda+3\lambda^2/(16\pi^2\epsilon)+O(\lambda^3)]\).
-13. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
+14. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
    of \(\beta_I^\epsilon\).
-14. Perturbative order counting implies
+15. Perturbative order counting implies
    \(\beta_I^{(m)}=0\) for \(m\ge2\) and
    \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).
-15. The nonnegative epsilon structure of the MS beta function leaves the
+16. The nonnegative epsilon structure of the MS beta function leaves the
     \(\epsilon^0\) beta function as the beta function of the target
     \(d\)-dimensional theory; the remaining pole coefficients are determined
     recursively, with the homogeneous-sector form reproducing the source
@@ -136,6 +146,10 @@ The chapter must define:
 - Source-extended Wilsonian/operator bridge showing the path from bare
   sources to Wilsonian insertions, connected insertions, 1PI insertion
   kernels, and projected mixing data.
+- Mass-operator insertion matching diagram showing the split of the one-loop
+  insertion bubble into high-high, low-low, and mixed contributions and their
+  images in the Wilsonian insertion, low-field 1PI insertion, and local
+  source-coordinate map.
 - Minimal-subtraction pole structure diagram.
 - One-loop \(\phi^4\) MS subtraction diagram with the pole coefficient.
 - Laurent/recursive structure figure showing how positive powers of
@@ -173,3 +187,9 @@ The chapter must define:
   \(3/(16\pi^2\epsilon)\), the positive-power constraints on
   \(\beta_I^\epsilon\), and both the general and homogeneous recursive pole
   equations.
+- 2026-05-22 insertion-matching pass: added a worked finite-regulator
+  source-bridge example for \(O_m=\phi^2/2\).  The manuscript now defines the
+  insertion bubble \(\mathcal I_{A,B}(Q)\), splits it by covariance
+  assignment, writes the Wilsonian mass insertion, writes the BPHZ normal
+  product subtraction at \(\mathcal Q_\mu\), and derives the 1PI
+  source-coordinate normalization condition.

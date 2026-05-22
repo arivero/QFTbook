@@ -130,8 +130,9 @@ Current compiled material:
 Further development targets:
 
 - deepen the new BPHZ--Wilsonian--1PI bridge with worked examples;
-- extend the source-dependent Wilsonian/operator insertion bridge beyond the
-  scalar finite-regulator construction where needed;
+- extend the source-dependent Wilsonian/operator insertion bridge from the
+  scalar mass-insertion example to multi-operator insertions and contact-term
+  conventions where needed;
 - propagate the explicit one-loop BPHZ--Wilsonian--1PI matching calculation
   into later operator and observable examples where it clarifies coordinate
   changes;
