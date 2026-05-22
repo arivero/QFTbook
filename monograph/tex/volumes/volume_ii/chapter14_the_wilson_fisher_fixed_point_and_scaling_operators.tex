@@ -248,6 +248,39 @@ dimension starts only at order \(\lambda_*^2=O(\epsilon^2)\).  Thus
   =
   1-\frac{\epsilon}{2}+O(\epsilon^2).
 \]
+The conventional critical exponent \(\eta\) is defined by the long-distance
+two-point decay
+\[
+  \left\langle\phi(x)\phi(0)\right\rangle
+  \sim
+  |x|^{-D+2-\eta}.
+\]
+Since a scalar primary of dimension \(\Delta_\phi\) has two-point exponent
+\(2\Delta_\phi\), this convention gives
+\[
+  \eta=2\Delta_\phi-(D-2)=2\gamma_{\phi *}.
+\]
+The first nonzero field anomalous dimension comes from the momentum-dependent
+part of the two-loop sunset self-energy.  In the same subtraction convention,
+the divergent part of its derivative is
+\[
+  \left.
+  \frac{\partial\Sigma^{(2)}(k)}{\partial k^2}
+  \right|_{\rm div}
+  =
+  -\frac{\lambda^2}{12(16\pi^2)^2}\,\frac1\epsilon ,
+\]
+and therefore
+\[
+  \gamma_\phi(\lambda)
+  =
+  \frac{\lambda^2}{12(16\pi^2)^2}+O(\lambda^3).
+\]
+Substituting \(\lambda_*=(16\pi^2/3)\epsilon+O(\epsilon^2)\) gives
+\[
+  \eta=\frac{\epsilon^2}{54}+O(\epsilon^3)
+\]
+in the normalization of the quartic coupling used in this chapter.
 
 The operator \(O_2=\phi^2\) is more delicate.  The constant source deformation
 \[
@@ -649,10 +682,12 @@ The cubic operator is not independent at the interacting fixed point.  In the
 renormalized operator algebra, the equation of motion gives the descendant
 relation
 \[
-  O_3(x)=\phi^3(x)\propto\Box\phi(x),
+  O_3(x)=\phi^3(x)=\kappa_*(\mu)\,\Box\phi(x),
 \]
-so \(O_3\) is an equation-of-motion descendant of \(O_1=\phi\).  Its dimension
-is
+where \(\kappa_*(\mu)\) is a nonzero normalization depending on the convention
+for the renormalized quartic interaction and on the normalization of
+\([O_3]_\mu\).  The statement invariant under such choices is that \(O_3\) is
+an equation-of-motion descendant of \(O_1=\phi\).  Its dimension is
 \[
   \Delta_{\phi^3}
   =

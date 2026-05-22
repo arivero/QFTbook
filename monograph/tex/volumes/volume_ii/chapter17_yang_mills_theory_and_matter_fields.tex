@@ -160,6 +160,11 @@ Define the covariant differential operator
   \nabla_\mu:=\partial_\mu-\ii A_\mu .
   \label{eq:ym-adjoint-covariant-operator}
 \end{equation}
+The gauge coupling has been absorbed into the connection in this chapter:
+relative to the QED convention \(\partial_\mu-\ii g A_\mu\), the present
+connection is \(A_\mu^{\rm here}=gA_\mu^{\rm QED}\).  With this choice the
+curvature and the action carry the coupling in the Yang--Mills kinetic term
+rather than in the covariant derivative.
 The finite transformation law \eqref{eq:ym-finite-gauge-transformation} is
 equivalent to
 \begin{equation}
@@ -298,6 +303,15 @@ scalar of power-counting dimension four:
   \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma}).
   \label{eq:ym-theta-density}
 \end{equation}
+With \(\operatorname{tr}(t^at^b)=\frac12\delta^{ab}\), this equals
+\[
+  \frac{\theta}{64\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}.
+\]
+Authors who write the component density with coefficient
+\(\theta/(32\pi^2)\) are using a trace convention without the factor
+\(\frac12\), or are absorbing that factor into the definition of the component
+curvature.
 This density is odd under parity and time reversal.  In local coordinates it
 is a total derivative, so it does not change the local Euler-Lagrange equations
 under boundary conditions that keep the boundary variation fixed.  Perturbation

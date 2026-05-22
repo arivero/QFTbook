@@ -4,64 +4,97 @@
 \section{Field-Configuration Kernels}
 
 Set \(\hbar=1\) in this chapter. Let \(\widehat\phi(t,\vec x)\) be the
-canonical real scalar field at time \(t=x^0\). A field-configuration
-generalized vector at time \(t\) is denoted
+canonical real scalar field at time \(t=x^0\).  The notation involving a
+spatial field configuration is defined through finite regulators.  Let
+\(\Lambda\) be a spatial regulator and let \(E_\Lambda\) be the resulting
+finite-dimensional real vector space of spatial field variables.  Its elements
+are denoted by \(\varphi_\Lambda\), and a linear functional
+\(\ell\in E_\Lambda^\vee\) evaluates the regulated field by
+\(\ell(\varphi_\Lambda)\).  The regulated configuration Hilbert space is
 \[
-  \ket{\varphi;t},
+  \Hilb_\Lambda=L^2(E_\Lambda,\dd_\Lambda\varphi),
 \]
-where \(\varphi:\mathbb R^{D-1}\to\mathbb R\) is a spatial field
-configuration, and
+where \(\dd_\Lambda\varphi\) is the Lebesgue measure determined by the chosen
+coordinates, lattice cell factors, or Fourier-mode normalization.  The
+regulated equal-time field operator associated with \(\ell\) acts by
+multiplication:
 \[
-  \widehat\phi(t,\vec x)\ket{\varphi;t}
+  (\widehat\phi_\Lambda(\ell)\Psi)(\varphi_\Lambda)
   =
-  \varphi(\vec x)\ket{\varphi;t}
+  \ell(\varphi_\Lambda)\Psi(\varphi_\Lambda).
 \]
-in the generalized eigenvector sense. With a spatial regulator understood,
-or distributionally after removing the regulator, a state vector
-\(\ket{\Psi}\) is represented on this basis by the wave functional
-\[
-  \Psi_t[\varphi]=\langle\varphi;t|\Psi\rangle.
-\]
-The generalized vector \(\ket{\varphi_i;t_i}\) is represented in this basis by
-a functional delta distribution:
-\[
-  \langle\varphi;t_i|\varphi_i;t_i\rangle
-  =
-  \delta[\varphi-\varphi_i],
-\]
-with the right hand side understood after imposing a finite spatial regulator.
-Equivalently, the operator \(\widehat\phi(t,\vec x)\) acts as multiplication by
-\(\varphi(\vec x)\) on the regulated wave functional.
 
-To give these expressions a literal finite-dimensional meaning, impose a
-spatial regulator, for example a finite spatial lattice or a finite set of
-Fourier modes. Write \(\mathcal D_\Lambda\phi\) for the corresponding
-finite-dimensional integration measure and \(S_\Lambda\) for the regulated
-action. The regulated transition kernel is
+A field-configuration generalized vector at time \(t\) and regulator
+\(\Lambda\) is the distributional vector \(\ket{\varphi_\Lambda;t}_\Lambda\)
+defined by evaluation:
 \[
-  \langle\varphi_f;t_f|\varphi_i;t_i\rangle_\Lambda
+  {}_\Lambda\langle\varphi_\Lambda;t|\Psi\rangle
   =
-  \int_{\phi(t_i,\vec x)=\varphi_i(\vec x)}
-       ^{\phi(t_f,\vec x)=\varphi_f(\vec x)}
-  \mathcal D_\Lambda\phi\,
-  \exp\left[
-    \ii
-    \int_{t_i}^{t_f}\dd x^0
-    \int\dd^{D-1}\vec x\,
-    \mathcal L_\Lambda(\phi,\partial_\mu\phi)
-  \right].
+  \Psi_t(\varphi_\Lambda),
+  \qquad
+  \Psi\in\mathcal S(E_\Lambda)\subset\Hilb_\Lambda .
 \]
-It represents the matrix element of time evolution:
+Here \(\mathcal S(E_\Lambda)\) is the Schwartz test space after choosing a
+linear coordinate system on \(E_\Lambda\).  The resolution of identity is the
+weak identity
 \[
-  \langle\varphi_f;t_f|\varphi_i;t_i\rangle_\Lambda
+  \int_{E_\Lambda}\dd_\Lambda\varphi\,
+  \ket{\varphi;t}_\Lambda{}_\Lambda\langle\varphi;t|
   =
-  \langle\varphi_f;t_i|
+  1
+\]
+on \(\mathcal S(E_\Lambda)\).  Accordingly,
+\[
+  {}_\Lambda\langle\varphi;t_i|\varphi_i;t_i\rangle_\Lambda
+  =
+  \delta_\Lambda(\varphi-\varphi_i),
+\]
+where \(\delta_\Lambda\) is the Dirac delta distribution relative to
+\(\dd_\Lambda\varphi\).  The continuum symbols
+\(\ket{\varphi;t}\), \(\Psi_t[\varphi]\), and \(\delta[\varphi-\varphi_i]\)
+mean a compatible family of these regulated objects together with a stated
+limiting topology.
+
+At fixed \(\Lambda\), the field theory is an ordinary quantum-mechanical system
+with finitely many coordinates.  Choose a time partition
+\[
+  t_i=t_0<t_1<\cdots<t_N=t_f.
+\]
+With boundary fields \(\varphi_0=\varphi_i\) and
+\(\varphi_N=\varphi_f\), the finite time-sliced kernel has the form
+\[
+  K_{\Lambda,N}(\varphi_f,t_f;\varphi_i,t_i)
+  =
+  \int_{E_\Lambda^{N-1}}
+  \prod_{n=1}^{N-1}\dd_\Lambda\varphi_n\,
+  \mathcal N_{\Lambda,N}\,
+  \exp\bigl[\ii S_{\Lambda,N}(\varphi_0,\ldots,\varphi_N)\bigr].
+\]
+The normalization factor \(\mathcal N_{\Lambda,N}\), the discrete action
+\(S_{\Lambda,N}\), and possible local measure factors are part of the chosen
+operator-symbol and time-slicing convention, exactly as in the
+finite-dimensional construction of
+Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.  If the
+Trotter limit exists for the regulated Hamiltonian \(H_\Lambda\), then
+\[
+  \lim_{N\to\infty}
+  K_{\Lambda,N}(\varphi_f,t_f;\varphi_i,t_i)
+  =
+  {}_\Lambda\langle\varphi_f;t_i|
   \exp[-\ii H_\Lambda(t_f-t_i)]
-  |\varphi_i;t_i\rangle
+  |\varphi_i;t_i\rangle_\Lambda
 \]
-for a time-independent regulated Hamiltonian \(H_\Lambda\). Continuum
-notation suppresses \(\Lambda\), but the regulator is part of the construction
-whenever convergence or operator domains are being asserted.
+as a distributional kernel after smearing the boundary configurations.  The
+continuum expression
+\[
+  \langle\varphi_f;t_f|\varphi_i;t_i\rangle
+  =
+  \int_{\phi(t_i)=\varphi_i}^{\phi(t_f)=\varphi_f}
+  [D\phi]\,
+  \exp\left(\ii S[\phi]\right)
+\]
+is a compact notation for this two-stage construction: first a finite regulator
+and time slicing, then a stated continuum or perturbative limiting procedure.
 
 The compact path-integral notation
 \[
@@ -280,9 +313,77 @@ correlator with \(t_1>\cdots>t_n\):
 Here \(\operatorname{T}\) denotes time ordering of the operator-valued
 distributions.
 
-\section{The Free Euclidean Propagator}
+\section{The Free Euclidean Gaussian Measure}
 
-For the free scalar field of mass \(m\ge0\),
+At finite Euclidean regulator, the free scalar path integral is an ordinary
+Gaussian integral.  Let \(F_\Lambda\) be the finite-dimensional real vector
+space of regulated Euclidean fields, let \(\dd_\Lambda\phi\) be the regulator
+Lebesgue measure, and let
+\[
+  A_\Lambda:F_\Lambda\longrightarrow F_\Lambda^\vee
+\]
+be a symmetric positive-definite operator.  The pairing between
+\(F_\Lambda^\vee\) and \(F_\Lambda\) is denoted by
+\(\langle J,\phi\rangle_\Lambda\).  The regulated free action is
+\[
+  S_{E,0,\Lambda}[\phi]
+  =
+  \frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda .
+\]
+The corresponding normalized Gaussian expectation is
+\[
+  \langle F(\phi)\rangle_{0,\Lambda}
+  =
+  \frac{1}{Z_{0,\Lambda}}
+  \int_{F_\Lambda}\dd_\Lambda\phi\,
+  \ee^{-\frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda}
+  F(\phi),
+\]
+with
+\[
+  Z_{0,\Lambda}
+  =
+  \int_{F_\Lambda}\dd_\Lambda\phi\,
+  \ee^{-\frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda}.
+\]
+The covariance is the inverse map
+\[
+  C_\Lambda=A_\Lambda^{-1}:F_\Lambda^\vee\to F_\Lambda .
+\]
+For sources \(J\in F_\Lambda^\vee\), completing the square gives
+\[
+  -\frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda
+  +\langle J,\phi\rangle_\Lambda
+  =
+  -\frac12
+  \langle A_\Lambda(\phi-C_\Lambda J),\phi-C_\Lambda J\rangle_\Lambda
+  +
+  \frac12\langle J,C_\Lambda J\rangle_\Lambda .
+\]
+Therefore
+\[
+  \frac{Z_{0,\Lambda}[J]}{Z_{0,\Lambda}[0]}
+  =
+  \exp\left(\frac12\langle J,C_\Lambda J\rangle_\Lambda\right),
+  \qquad
+  Z_{0,\Lambda}[J]
+  =
+  \int_{F_\Lambda}\dd_\Lambda\phi\,
+  \ee^{-S_{E,0,\Lambda}[\phi]+\langle J,\phi\rangle_\Lambda}.
+\]
+Differentiating at \(J=0\) gives, for \(f,g\in F_\Lambda^\vee\),
+\[
+  \bigl\langle
+  \langle f,\phi\rangle_\Lambda
+  \langle g,\phi\rangle_\Lambda
+  \bigr\rangle_{0,\Lambda}
+  =
+  \langle f,C_\Lambda g\rangle_\Lambda ,
+\]
+and all higher moments are sums over pairings with this covariance.  This is
+Wick's theorem as a finite-dimensional Gaussian identity.
+
+For the continuum free scalar field of mass \(m\ge0\),
 \[
   V(\phi)=\frac12m^2\phi^2,
 \]
@@ -298,11 +399,24 @@ after integration by parts with the chosen boundary conditions. The operator
 \[
   A_E=-\partial_E^2+m^2
 \]
-has Green function \(\Delta_E\) defined by
+is the continuum counterpart of \(A_\Lambda\).  If \(m>0\), or if boundary
+conditions or an infrared regulator remove the constant zero mode when
+\(m=0\), the inverse covariance is represented by the Green function
+\(\Delta_E\) defined by
 \[
   A_E\Delta_E(x_E-y_E)=\delta^D(x_E-y_E).
 \]
-In momentum space,
+For test functions \(f,g\), the continuum covariance is the distributional
+limit
+\[
+  \lim_{\Lambda}
+  \langle f_\Lambda,C_\Lambda g_\Lambda\rangle_\Lambda
+  =
+  \int\dd^Dx_E\,\dd^Dy_E\,
+  f(x_E)\Delta_E(x_E-y_E)g(y_E),
+\]
+where \(f_\Lambda,g_\Lambda\) are the regulated images of \(f,g\).  On
+\(\mathbb R^D\), translation invariance gives the momentum-space kernel
 \[
   \Delta_E(x_E-y_E)
   =
@@ -315,12 +429,13 @@ where
   \qquad
   k_E\cdot x_E=k_\tau\tau+\vec k\cdot\vec x.
 \]
-The Gaussian formula from finite-dimensional integration gives
+In point notation, after the distribution has been paired with test functions,
+the free two-point function is written
 \[
   \langle\phi(x_E)\phi(y_E)\rangle_E=\Delta_E(x_E-y_E)
 \]
-for the free theory, and higher free Euclidean correlators are sums over
-pairings with this covariance.
+for the free theory.  This equation is precisely the continuum form of the
+finite-dimensional covariance identity above.
 
 \section{The Feynman Prescription}
 

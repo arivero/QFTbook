@@ -131,8 +131,11 @@ Grassmann odd.  With the momentum convention displayed in the figure below,
   \frac{-\ii}{k^2-\ii\epsilon}.
   \label{eq:qcd-ordinary-ghost-propagator}
 \end{equation}
-Every closed ghost loop carries the additional factor \(-1\) coming from the
-cyclic permutation of Grassmann-odd fields in the Wick contraction.
+Every closed ghost loop carries the additional factor \(-1\).  In the
+Grassmann functional integral, a closed ghost cycle contracts a product
+\(\bar c_1c_1\cdots\bar c_Nc_N\) by a cyclic permutation of odd variables before
+the fields can be paired in propagator order; the parity of this cycle gives
+the same minus sign as a closed fermion loop.
 
 The ghost-gluon vertex is read from the term
 \[
@@ -1310,6 +1313,25 @@ where \(P_{ab}\) are splitting kernels, equivalently anomalous dimensions of
 the light-ray operators.  This is the precise sense in which short-distance
 quark and gluon variables control high-energy hadronic observables while
 physical asymptotic states remain color singlets.
+At leading order the quark-to-quark kernel is
+\[
+  P_{qq}(x)
+  =
+  \frac{g^2}{8\pi^2}C_F
+  \left[
+    \frac{1+x^2}{1-x}
+  \right]_+
+  +\frac{3g^2}{16\pi^2}C_F\,\delta(1-x),
+\]
+with the plus prescription defined by
+\[
+  \int_0^1\dd x\,[h(x)]_+\,\varphi(x)
+  =
+  \int_0^1\dd x\,h(x)\,[\varphi(x)-\varphi(1)] .
+\]
+The remaining leading kernels are obtained by the same collinear projection of
+the relevant partonic matrix elements and form the matrix \(P_{ab}\) in
+\eqref{eq:dglap-evolution}.
 
 \section{Local Twist-Two Operators and Integer Moments}
 
@@ -1393,7 +1415,7 @@ Equivalently, with
 \[
   \omega:=\frac{2P\cdot q}{Q^2}=\frac1{x_B},
 \]
-the \(N\)-th moment contribution has the schematic large-\(Q\) behavior
+the leading large-\(Q\) term in the \(N\)-th moment contribution has the form
 \begin{equation}
   W_N(Q,\omega)
   \propto

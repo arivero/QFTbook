@@ -270,6 +270,44 @@ When equality holds for one summand, the corresponding projected first
 descendant is a null operator.  Higher-level Gram matrices can impose further
 conditions in special cases, as the scalar trace descendant did above.
 
+\section{Spinor Primaries}
+
+For spinor primaries the rotation representation is a representation of
+\(\operatorname{Spin}(D)\), the double cover of \(SO(D)\).  Let \(S\) be an
+irreducible spinor representation.  With the Casimir normalization used above,
+\[
+  C_S=\frac{D(D-1)}8,
+  \qquad
+  C_1=D-1 .
+\]
+The tensor product of a vector with a spinor contains a gamma-trace spinor
+summand,
+\[
+  \mathcal H_1\otimes S
+  =
+  S\oplus S_{3/2},
+\]
+where \(S_{3/2}\) denotes the gamma-traceless vector-spinor summand.  Applying
+\eqref{eq:general-level-one-unitarity-test} to the \(Q=S\) channel gives
+\[
+  \Delta+\frac12(C_S-C_1-C_S)
+  =
+  \Delta-\frac{D-1}{2}
+  \ge0 .
+\]
+Thus a spin-\(\frac12\) primary satisfies
+\begin{equation}
+  \Delta_\psi\ge\frac{D-1}{2}.
+  \label{eq:spinor-primary-unitarity-bound}
+\end{equation}
+At equality the gamma-trace descendant is null.  In local-operator notation
+this is the Dirac shortening equation
+\[
+  \gamma^\mu\partial_\mu\psi(x)=0,
+\]
+with gamma matrices acting on the spinor index.  The other vector-spinor
+channel gives a weaker inequality for \(D\ge3\).
+
 \section{Symmetric Traceless Tensor Primaries}
 
 Let

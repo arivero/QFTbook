@@ -194,14 +194,42 @@ and
   -2\ii c^\mu x^\nu(S_{\mu\nu})_a{}^b\mathcal O_b(x).
   \label{eq:primary-sct-transform}
 \end{align}
-These formulae follow from \eqref{eq:primary-state-data},
-\eqref{eq:operator-from-origin-translation}, and the conformal algebra.
-In particular, the special-conformal formula is obtained by translating
-\(\widehat K_\mu\ket{\mathcal O_a}=0\) from the origin to \(x\), or
-equivalently by repeatedly commuting \(\widehat K_\mu\) through
-\(\ee^{-\ii x^\rho\widehat P_\rho}\) in the Hermitian translation convention.
-This derivation fixes the orbital, spin, and scaling terms in
-\eqref{eq:primary-sct-transform} simultaneously.
+The special-conformal line is obtained directly from
+\eqref{eq:primary-infinitesimal-transform}.  For
+\[
+  \epsilon_c^\mu(x)=c^\mu x^2-2(c\cdot x)x^\mu
+\]
+one has
+\[
+  \partial_\mu\epsilon_c^\mu=-2D(c\cdot x),
+  \qquad
+  \sigma_{\epsilon_c}=-2(c\cdot x),
+\]
+and
+\[
+  \omega_{\epsilon_c,\mu\nu}
+  =
+  \frac12(\partial_\nu\epsilon_{c,\mu}-\partial_\mu\epsilon_{c,\nu})
+  =
+  2(c_\mu x_\nu-c_\nu x_\mu).
+\]
+Substitution gives
+\[
+  -\Delta\sigma_{\epsilon_c}\mathcal O_a
+  =
+  2\Delta(c\cdot x)\mathcal O_a,
+\]
+and, using \(S_{\mu\nu}=-S_{\nu\mu}\),
+\[
+  -\frac{\ii}{2}\omega_{\epsilon_c}^{\mu\nu}
+  (S_{\mu\nu})_a{}^b\mathcal O_b
+  =
+  -2\ii c^\mu x^\nu(S_{\mu\nu})_a{}^b\mathcal O_b.
+\]
+This proves \eqref{eq:primary-sct-transform} from the source-Ward contact
+operator.  At \(x=0\), all three terms vanish for \(\epsilon_c\), so the same
+formula is consistent with \(\widehat K_\mu\ket{\mathcal O_a}=0\) in the
+state--operator correspondence.
 
 \section{Finite Transformation Law}
 
