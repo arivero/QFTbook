@@ -873,30 +873,170 @@ renormalized gauge theory.
 
 \section{Current Correlators and the Hadronic Tensor}
 
-Deep inelastic scattering probes a hadron by a local current.  Let
-\(\ket{P}\) be a one-hadron momentum eigenstate with \(P^2=M^2\).  For an
-electromagnetic current
+Deep inelastic scattering probes a hadron by a local current.  The process is
+inclusive:
 \[
-  J^\mu(x)=\sum_I e_I\,\bar q_I(x)\gamma^\mu q_I(x),
+  e^-(k,\sigma)+N(P,s)\longrightarrow e^-(k',\sigma')+X,
+  \qquad
+  q:=k-k',
 \]
-define the hadronic tensor
-\begin{equation}
-  W^{\mu\nu}(P,q)
-  =
-  \frac1{4\pi}
-  \int \dd^4 x\,
-  \ee^{\ii q\cdot x}
-  \bra{P}
-  [J^\mu(x),J^\nu(0)]
-  \ket{P}.
-  \label{eq:hadronic-tensor-definition}
-\end{equation}
-The momentum transfer is spacelike:
+where \(N\) is the target hadron and \(X\) runs over all hadronic final states
+with total momentum \(P_X=P+q\).  The exchange momentum is spacelike,
 \[
   Q^2:=-q^2>0,
   \qquad
   x_B:=\frac{Q^2}{2P\cdot q}.
 \]
+The variable \(x_B\) is the Bjorken scaling variable.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.86\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize},
+    photon/.style={decorate,decoration={snake,amplitude=1.35pt,segment length=6pt},
+      line width=0.8pt,blue!70!black},
+    fermion/.style={line width=0.85pt},
+    hadron/.style={line width=0.9pt}]
+    \coordinate (eIn) at (-4.3,1.45);
+    \coordinate (eV) at (-0.8,1.05);
+    \coordinate (eOut) at (3.0,1.72);
+    \coordinate (hIn) at (-4.3,-1.2);
+    \coordinate (hV) at (-0.8,-0.95);
+    \coordinate (hOut) at (3.0,-0.55);
+
+    \draw[fermion,-{Latex[length=2mm]}] (eIn)--(eV);
+    \draw[fermion,-{Latex[length=2mm]}] (eV)--(eOut);
+    \draw[photon,-{Latex[length=2mm]}] (eV)--(hV);
+    \draw[hadron,-{Latex[length=2mm]}] (hIn)--(hV);
+    \draw[hadron,-{Latex[length=2mm]}] (hV)--(hOut);
+    \fill (eV) circle (2pt);
+    \fill (hV) circle (2pt);
+
+    \node[above] at (-3.1,1.45) {\(k,\sigma\)};
+    \node[above] at (1.42,1.55) {\(k',\sigma'\)};
+    \node[right,blue!70!black] at (-0.63,0.05) {\(q=k-k'\)};
+    \node[below] at (-3.1,-1.22) {\(P,s\)};
+    \node[below] at (1.40,-0.72) {\(X\)};
+    \node[left] at (-4.35,1.45) {electron};
+    \node[left] at (-4.35,-1.2) {hadron \(N\)};
+    \node[right,align=left] at (3.08,-0.55) {summed hadronic\\final state};
+  \end{tikzpicture}
+  }
+  \caption{Inclusive deep inelastic scattering.  The lepton line is treated
+  perturbatively in the electromagnetic coupling, while the hadronic part is
+  the current-current matrix element in QCD.}
+  \label{fig:qcd-dis-inclusive-kinematics}
+\end{figure}
+
+Let the electromagnetic current be
+\[
+  J^\mu(x)=\sum_I e_I\,\bar q_I(x)\gamma^\mu q_I(x),
+\]
+where \(e_I\) is the electric charge of flavor \(I\).  At leading order in the
+electromagnetic coupling, the amplitude for a fixed hadronic final state has
+the form
+\begin{equation}
+  \mathcal A_{\sigma'\!,X;\sigma,s}
+  =
+  \bar u_{\sigma'}(k')\,e\gamma_\mu\,u_{\sigma}(k)\,
+  \frac{-\ii}{q^2-\ii\epsilon}\,
+  \bra{X}J^\mu(0)\ket{P,s}.
+  \label{eq:qcd-dis-leading-amplitude}
+\end{equation}
+After summing over all hadronic final states \(X\) with the fixed transferred
+momentum \(q\), the QCD part of the differential cross section is the
+spin-averaged positive tensor
+\begin{equation}
+  W^{\mu\nu}(P,q)
+  =
+  \frac12\sum_s
+  \sum_X (2\pi)^4\delta^{(4)}(P_X-P-q)\,
+  \bra{P,s}J^\nu(0)\ket{X}
+  \bra{X}J^\mu(0)\ket{P,s}.
+  \label{eq:hadronic-tensor-definition}
+\end{equation}
+where \(\sum_X\) denotes the sum over species and the invariant phase-space
+integrals for a complete set of hadronic states, using the same state
+normalization as in the scattering chapters.  Completeness and translation
+covariance give the equivalent form
+\begin{equation}
+  W^{\mu\nu}(P,q)
+  =
+  \frac12\sum_s
+  \int\dd^4x\,\ee^{-\ii q\cdot x}
+  \bra{P,s}J^\nu(x)J^\mu(0)\ket{P,s},
+  \label{eq:hadronic-tensor-current-product}
+\end{equation}
+in those conventions.  Thus \(W^{\mu\nu}\) is a Wightman matrix element
+between hadron states.  Its positivity follows directly from the sum over
+\(X\) in
+\eqref{eq:hadronic-tensor-definition}.
+
+Current conservation gives
+\[
+  q_\mu W^{\mu\nu}=q_\nu W^{\mu\nu}=0 .
+\]
+For an unpolarized target, Lorentz covariance, current conservation, and
+parity give two scalar structure functions.  Define
+\[
+  \Pi^\mu(P,q)
+  :=
+  P^\mu-\frac{P\cdot q}{q^2}q^\mu .
+\]
+Then
+\begin{equation}
+  W^{\mu\nu}(P,q)
+  =
+  \left(\eta^{\mu\nu}-\frac{q^\mu q^\nu}{q^2}\right)W_1(\nu,Q^2)
+  +
+  \Pi^\mu(P,q)\Pi^\nu(P,q)\,W_2(\nu,Q^2),
+  \qquad
+  \nu:=\frac{P\cdot q}{M},
+  \label{eq:qcd-dis-tensor-decomposition}
+\end{equation}
+where \(M^2=P^2\).  Other common normalizations absorb powers of \(M\) and
+\(P\cdot q\) into \(W_1,W_2\).
+
+The support condition is kinematic.  If \(N\) is the lightest hadron with the
+chosen conserved quantum numbers, then
+\[
+  (P+q)^2=P_X^2\ge M^2 .
+\]
+Since \(q^2=-Q^2\), this implies
+\[
+  2P\cdot q\ge Q^2,
+  \qquad
+  0<x_B\le1
+\]
+for the physical inclusive region.
+
+The time-ordered forward Compton amplitude is
+\begin{equation}
+  T^{\mu\nu}(P,q)
+  =
+  \frac{\ii}{2}\sum_s
+  \int\dd^4x\,\ee^{-\ii q\cdot x}
+  \bra{P,s}\operatorname T\,J^\nu(x)J^\mu(0)\ket{P,s}.
+  \label{eq:qcd-forward-compton-amplitude}
+\end{equation}
+Its discontinuity in the energy variable is determined by the same Wightman
+matrix elements:
+\begin{equation}
+  \operatorname{Disc}\,T^{\mu\nu}(P,q)
+  =
+  2\pi
+  \left[
+    W^{\mu\nu}(P,q)
+    +W^{\nu\mu}(P,-q)
+  \right],
+  \label{eq:qcd-dis-discontinuity}
+\end{equation}
+with the second term absent in the physical region \(P\cdot q>0\) for the
+spacelike process.  Thus the inclusive cross section is controlled by the
+absorptive part of a time-ordered current-current amplitude, and the
+observable tensor is the Wightman object
+\eqref{eq:hadronic-tensor-definition}.
+
 The Bjorken limit is
 \[
   Q^2\to\infty,
@@ -904,10 +1044,10 @@ The Bjorken limit is
   x_B\ \text{fixed}.
 \]
 The short-distance region \(x\to0\) in
-\eqref{eq:hadronic-tensor-definition} is then controlled by the operator
-product expansion of two currents:
+\eqref{eq:qcd-forward-compton-amplitude} is then controlled by the operator
+product expansion of the two currents:
 \begin{equation}
-  J^\mu(x)J^\nu(0)
+  \operatorname T\,J^\mu(x)J^\nu(0)
   \sim
   \sum_a C_a^{\mu\nu}(x,\mu)\,\mathcal O_a(0,\mu).
   \label{eq:dis-current-ope}
@@ -952,6 +1092,62 @@ matrix element
 The Wilson line makes the nonlocal operator gauge covariant, and the
 subscript \(\mu\) indicates the renormalization scale of the light-ray
 operator.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (0,2.35) {current product};
+      \fill[blue!70!black] (-1.05,0.55) circle (2.4pt);
+      \fill[blue!70!black] (1.05,0.55) circle (2.4pt);
+      \draw[blue!70!black,thick] (-1.05,0.55)--(1.05,0.55);
+      \node[above] at (-1.05,0.65) {\(J^\mu(x)\)};
+      \node[above] at (1.05,0.65) {\(J^\nu(0)\)};
+      \draw[<->,orange!85!black,thick] (-1.05,0.16)--(1.05,0.16);
+      \node[orange!85!black,below] at (0,0.16) {\(|x|\sim Q^{-1}\)};
+      \node[align=center] at (0,-0.8)
+        {short-distance coefficients\\\(C_a^{\mu\nu}(x,\mu)\)};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]},thick] (2.25,0.45)--(3.75,0.45);
+    \node[align=center] at (3.0,0.88) {OPE};
+
+    \begin{scope}[shift={(5.35,0)}]
+      \node[font=\small] at (0,2.35) {local tower};
+      \draw[thick] (-1.4,0.85)--(1.4,0.85);
+      \foreach \x in {-1.05,-0.55,-0.05,0.45,0.95} {
+        \draw[blue!65!black,thick,-{Latex[length=1.6mm]}] (\x,0.15)--(\x,0.78);
+      }
+      \node[align=center] at (0,-0.68)
+        {\(\bar q\,\gamma^{(\mu_1}\ii D^{\mu_2}\cdots \ii D^{\mu_N)}q\),\\
+        \(F^{(\mu_1}{}_{\rho}\ii D^{\mu_2}\cdots F^{\mu_N)\rho}\)};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]},thick] (7.85,0.45)--(9.25,0.45);
+    \node[align=center] at (8.55,0.88) {resum\\on light ray};
+
+    \begin{scope}[shift={(11.0,0)}]
+      \node[font=\small] at (0,2.35) {renormalized light-ray operator};
+      \draw[purple!70!black,thick,decorate,
+        decoration={snake,amplitude=0.85pt,segment length=7pt}]
+        (-1.75,0.52)--(1.75,0.52);
+      \fill[blue!70!black] (-1.75,0.52) circle (2.3pt);
+      \fill[red!70!black] (1.75,0.52) circle (2.3pt);
+      \node[below] at (-1.75,0.35) {\(\bar q(\lambda n)\)};
+      \node[below] at (1.75,0.35) {\(q(0)\)};
+      \node[purple!70!black,above] at (0,0.78) {\(W(\lambda n,0)\)};
+      \node[align=center] at (0,-0.72)
+        {matrix element in \(\ket P\)\\defines \(f_{a/H}(x,\mu)\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The short-distance current product is first expanded into local
+  renormalized operators.  The leading-twist tower can then be packaged into
+  gauge-invariant light-ray operators whose hadron matrix elements define
+  parton distributions.}
+  \label{fig:qcd-dis-ope-light-ray-factorization}
+\end{figure}
 
 Factorization expresses a structure function \(F_i\) in the form
 \begin{equation}
@@ -1050,3 +1246,35 @@ The coefficient functions in the current OPE obey the dual evolution so that
 the physical structure functions are independent of the auxiliary
 factorization scale.  This is the local-operator form of perturbative
 scaling violation in deep inelastic scattering.
+
+For a spin-\(N\) leading-twist operator whose scaling dimension near the
+ultraviolet is
+\[
+  \Delta_N(g)=N+2+\tau_{1,N}g^2+O(g^4),
+\]
+the one-loop running
+\[
+  \frac{\dd}{\dd\log\mu}\frac1{g^2(\mu)}
+  =
+  \frac{b}{2\pi^2}+O(g^2)
+\]
+implies logarithmic scaling of its matrix element and Wilson coefficient.
+Equivalently, with
+\[
+  \omega:=\frac{2P\cdot q}{Q^2}=\frac1{x_B},
+\]
+the \(N\)-th moment contribution has the schematic large-\(Q\) behavior
+\begin{equation}
+  W_N(Q,\omega)
+  \propto
+  \omega^N
+  \left(
+    \log\frac{Q}{\Lambda}
+  \right)^{-2\pi^2\tau_{1,N}/b}
+  \left[1+O\!\left(\frac1{\log(Q/\Lambda)}\right)\right],
+  \label{eq:qcd-dis-logarithmic-scaling-violation}
+\end{equation}
+up to the matrix of anomalous dimensions when several operators mix.  The
+power \(\omega^N\) is the Bjorken-scaling kinematic dependence of a spin-\(N\)
+operator; asymptotic freedom turns exact scaling into logarithmic scaling
+violation.

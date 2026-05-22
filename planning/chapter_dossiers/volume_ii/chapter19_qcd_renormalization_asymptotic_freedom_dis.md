@@ -60,8 +60,11 @@ The chapter must define and derive:
   Yang--Mills area-law diagnostics and QCD with dynamical fundamental quarks;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD;
-- DIS kinematics, current correlators, twist-two operators, Wilson lines, and
-  factorization assumptions.
+- DIS kinematics, inclusive final-state sums, the leading electromagnetic
+  amplitude, the non-time-ordered hadronic tensor, the current-conservation
+  tensor decomposition, support in \(x_B\), the discontinuity of the
+  time-ordered forward Compton amplitude, twist-two operators, Wilson lines,
+  factorization assumptions, and logarithmic scaling violation.
 
 ## Claim Ledger
 
@@ -97,6 +100,14 @@ The chapter must define and derive:
 10. Colored quark and gluon fields are not physical asymptotic states of QCD;
    physical scattering statements must be formulated in terms of gauge-invariant
    states or controlled high-energy factorization data.
+11. DIS is controlled by an inclusive Wightman current-current tensor; the
+    time-ordered forward Compton amplitude supplies its discontinuity, and the
+    short-distance OPE applies to the time-ordered product before analytic
+    continuation to the physical inclusive tensor.
+12. The leading-twist local operators and the gauge-invariant light-ray
+    operators are two presentations of the same short-distance data; asymptotic
+    freedom changes Bjorken scaling into logarithmic scaling violation governed
+    by anomalous dimensions.
 
 ## Figure Requirements
 
@@ -112,6 +123,7 @@ The chapter must define and derive:
   continued strong-coupling flow.
 - Wilson-line/Wilson-loop figure distinguishing open flux-tube operators from
   rectangular loop extraction of \(V(L)\).
+- DIS inclusive-scattering kinematics figure.
 - DIS factorization figures must distinguish operator definitions from
   parton-model mnemonics.
 
@@ -135,3 +147,7 @@ The chapter must define and derive:
   nonperturbative scattering and BRST/physical-Hilbert-space framework.
 - Keep 1PI RG, Wilsonian RG, and physical scaling/factorization statements
   separate unless the connecting map is stated.
+- The DIS block was expanded on 2026-05-22 to restore the source chain from
+  inclusive final-state sums to the hadronic tensor, forward Compton
+  discontinuity, OPE, local twist-two operators, light-ray operators, and
+  logarithmic scaling violation.
