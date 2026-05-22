@@ -379,6 +379,53 @@ all local operators.  The use of a smooth cutoff is important: it keeps the
 infinitesimal shell operation compatible with a derivative expansion at
 external momenta small compared with \(\Lambda\).
 
+The sign in \eqref{eq:wilson-polchinski-flow} is fixed by the direction of the
+cutoff derivative.  For \(\Lambda'=\Lambda-\delta\Lambda\), the shell covariance
+is
+\[
+  \delta C(k)
+  =
+  C_\Lambda(k)-C_{\Lambda'}(k)
+  =
+  \delta\Lambda\,\partial_\Lambda C_\Lambda(k)+O(\delta\Lambda^2).
+\]
+The Gaussian convolution formula gives, to first order in \(\delta\Lambda\),
+\[
+  \ee^{-L_{\Lambda-\delta\Lambda}[\phi]}
+  =
+  \left[
+    1+
+    \frac12\int_k
+    \delta\Lambda\,\partial_\Lambda C_\Lambda(k)
+    \frac{\delta^2}
+      {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+  \right]
+  \ee^{-L_\Lambda[\phi]} .
+\]
+Since
+\[
+  \frac{\delta^2\ee^{-L_\Lambda}}
+    {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+  =
+  \left[
+    \frac{\delta L_\Lambda}{\delta\widehat\phi(k)}
+    \frac{\delta L_\Lambda}{\delta\widehat\phi(-k)}
+    -
+    \frac{\delta^2L_\Lambda}
+      {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+  \right]\ee^{-L_\Lambda},
+\]
+and
+\[
+  L_{\Lambda-\delta\Lambda}
+  =
+  L_\Lambda-\delta\Lambda\,\partial_\Lambda L_\Lambda+O(\delta\Lambda^2),
+\]
+the displayed Wilson-Polchinski equation follows.  This derivation is an
+identity for the regulated finite-dimensional Gaussian integral; the continuum
+notation suppresses the regulator that makes the functional derivatives
+ordinary derivatives on a finite vector space.
+
 \section{Linearized Flow and Scaling Coordinates}
 
 A fixed point of the Wilsonian flow is a scale-invariant interaction
@@ -398,16 +445,25 @@ Choosing eigenvectors of \(M\) gives scaling coordinates \(u_\alpha\):
 \begin{equation}
   \frac{\dd u_\alpha}{\dd t}
   =
-  y_\alpha u_\alpha+O(u^2).
+  -y_\alpha u_\alpha+O(u^2).
   \label{eq:wilsonian-linearized-eigenflow}
 \end{equation}
-The number \(y_\alpha\) is the RG eigenvalue of the corresponding scaling
-operator.  In the convention \(t=\log\Lambda\), decreasing the cutoff moves
-toward the infrared.  A coordinate with \(y_\alpha>0\) grows toward the
-ultraviolet and must be fixed by a renormalization condition to define a
-continuum limit; it is relevant.  A coordinate with \(y_\alpha<0\) is
-irrelevant: its value at a fixed physical scale is attracted to a function of
-the relevant and marginal coordinates along a renormalized trajectory.
+The number \(y_\alpha\) is the relevance exponent.  In the convention
+\(t=\log\Lambda\), decreasing the cutoff moves toward the infrared, so
+\eqref{eq:wilsonian-linearized-eigenflow} implies
+\[
+  u_\alpha(\Lambda)
+  =
+  u_\alpha(\Lambda_0)
+  \left(\frac{\Lambda}{\Lambda_0}\right)^{-y_\alpha}
+  +O(u^2).
+\]
+A coordinate with \(y_\alpha>0\) grows when \(\Lambda\) is lowered.  It is a
+relevant coordinate and must be tuned to reach the critical surface, or fixed
+by a renormalization condition when a continuum limit is constructed.  A
+coordinate with \(y_\alpha<0\) is irrelevant: its value at a fixed physical
+scale is attracted to a function of the relevant and marginal coordinates
+along a renormalized trajectory.
 
 The critical surface associated with a fixed point is the set of points whose
 infrared flow approaches that fixed point.  Its codimension equals the number
@@ -488,7 +544,7 @@ flow gives
 \[
   u_i(\Lambda_R)
   =
-  \left(\frac{\Lambda_R}{\Lambda_0}\right)^{y_i}
+  \left(\frac{\Lambda_R}{\Lambda_0}\right)^{-y_i}
   u_i(\Lambda_0)
   +\text{nonlinear terms},
   \qquad
@@ -497,8 +553,8 @@ flow gives
 for a fixed reference scale \(\Lambda_R\ll\Lambda_0\).  Thus the difference in
 low-energy correlation functions is suppressed by powers of
 \(\Lambda_R/\Lambda_0\), after the relevant coordinates and field
-normalizations have been matched.  The exponent is not a matter of
-microscopic aesthetics; it is the RG eigenvalue of the first omitted operator.
+normalizations have been matched.  The suppression exponent is
+\(-y_i=\Delta_i-D>0\) for the first omitted irrelevant operator.
 
 This gives a precise meaning to effective field theory.  A finite list of
 relevant and marginal coordinates must be measured or tuned.  Irrelevant

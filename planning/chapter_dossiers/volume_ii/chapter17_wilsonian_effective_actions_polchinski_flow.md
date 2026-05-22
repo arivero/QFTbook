@@ -43,8 +43,13 @@ The chapter must define and derive:
 - the shell-integration formula defining \(L_{\Lambda'}[\phi']\);
 - the infinitesimal Wilson-Polchinski equation, with functional-derivative
   conventions;
+- the finite-shell derivation of the Wilson-Polchinski sign from
+  \(\Lambda'=\Lambda-\delta\Lambda\);
 - the diagrammatic meaning of its two terms: connecting two vertices and
   contracting two legs at one vertex;
+- the linearized scaling-coordinate convention
+  \(\dd u_\alpha/\dd\log\Lambda=-y_\alpha u_\alpha+\cdots\), with
+  \(y_\alpha=D-\Delta_\alpha\);
 - the \(D=4\) massless scalar toy truncation
   \(L_\Lambda=\int(g_4\phi^4+g_6\phi^6)\), with
   \(\lambda_4=g_4\), \(\lambda_6=\Lambda^2g_6\);
@@ -72,14 +77,17 @@ The chapter must define and derive:
 5. Locality of the Wilsonian action is a derivative expansion assumption tied
    to smooth cutoffs and scales below the cutoff, not a finite-operator
    ansatz.
-6. In the quartic-sextic toy truncation, the irrelevant coupling approaches a
+6. With \(t=\log\Lambda\), relevance exponents obey
+   \(\dd u/\dd t=-yu+\cdots\); positive \(y\) grows toward the infrared, while
+   negative \(y\) is irrelevant.
+7. In the quartic-sextic toy truncation, the irrelevant coupling approaches a
    cutoff-dependent function of the marginal coupling along IR flow.
-7. Perturbative renormalizability is formulated by a limiting procedure:
+8. Perturbative renormalizability is formulated by a limiting procedure:
    remove the UV cutoff while tuning bare couplings so selected physical
    couplings at a fixed reference scale remain fixed.
-8. The perturbative argument requires explicit hypotheses on small couplings,
+9. The perturbative argument requires explicit hypotheses on small couplings,
    mild beta-function variation, and control of omitted irrelevant operators.
-9. Lattice QFT fits the same logic because finite dimensionless irrelevant
+10. Lattice QFT fits the same logic because finite dimensionless irrelevant
    lattice couplings correspond to dimensionful coefficients suppressed by
    powers of the UV cutoff.
 
@@ -101,5 +109,7 @@ The chapter must define and derive:
   pedagogy.
 - Avoid slogan-level descriptions of renormalizability; state the limiting
   problem and the hypotheses.
+- Keep the relevance sign convention consistent with the earlier chapters:
+  \(y=D-\Delta\) and flow in \(\log\Lambda\) has linear term \(-yu\).
 - Do not introduce Yang-Mills content in this chapter.
 - Do not treat axiomatic QFT frameworks as the foundation of this construction.
