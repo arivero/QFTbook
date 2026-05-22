@@ -4,8 +4,11 @@
 \section{Regulated Euclidean Actions}
 
 Let \(\phi\) be a real scalar field on \(D\)-dimensional Euclidean space.
-Fix a regulator, denoted collectively by \(\Lambda\).  The regulated
-functional integral has the form
+Fix a regulator, denoted collectively by \(\Lambda\).  At finite regulator the
+field is an element of a regulated field space \(\mathcal F_{\Lambda}\): for
+example a finite lattice field, a finite collection of Fourier modes, or a
+field paired only with test functions after a smoothing kernel has been
+inserted.  The regulated functional integral has the form
 \[
   Z_{\Lambda}
   =
@@ -14,7 +17,8 @@ functional integral has the form
     -\int \dd^Dx\,\mathcal L_{E,\Lambda}
   \right],
 \]
-with bare Euclidean Lagrangian
+where \([D\phi]_{\Lambda}\) denotes the regulated measure.  The bare Euclidean
+Lagrangian is written as
 \[
   \mathcal L_{E,\Lambda}
   =
@@ -27,80 +31,135 @@ with bare Euclidean Lagrangian
 Each \(\mathcal O_I\) is a local polynomial, or more generally a local
 function, of \(\phi(x)\) and finitely many derivatives
 \(\partial_{\mu}\phi(x),\partial_{\mu}\partial_{\nu}\phi(x),\ldots\).
-The coefficient \(g_I\) is a bare coupling.  The collection of bare couplings
-includes both the parameters chosen as inputs and the counterterm
-coefficients needed by the regulator.
+The index \(I\) includes all discrete labels required to specify the monomial:
+the number of fields, the derivative multi-indices, and the internal symmetry
+contraction when such indices are present.  Operators that differ by a total
+derivative or by a chosen integration-by-parts convention are represented once.
+The coefficient \(g_I\) is a bare coordinate.  The collection of bare
+coordinates includes the parameters chosen as inputs and the regulator-dependent
+coordinates later called counterterms.
 
 Two regulator languages will be used repeatedly.  A momentum cutoff restricts
 Fourier modes to
 \[
-  |\vec k|<\Lambda .
+  p^2<\Lambda^2
 \]
-Dimensional regularization computes the same formal integrals in
+in a Euclidean invariant notation, or to a corresponding finite Brillouin zone
+on a lattice.  Dimensional regularization assigns analytic meaning to
+momentum integrals in
 \[
   D=d-\varepsilon
 \]
-and removes the regulator by taking \(\varepsilon\to0\).  In both languages
-the bare couplings are allowed to depend on the regulator.
+and removes the regulator by taking \(\varepsilon\to0\) after a subtraction
+prescription has been specified.  In both languages the bare coordinates are
+allowed to depend on the regulator.
 
-The perturbative renormalization problem is the following finite-parameter
-problem.  Choose a finite list of physical coordinates
+\begin{definition}[Finite-parameter renormalized family]
+Choose an open set \(U\subset\R^N\) with coordinates
 \[
-  \lambda_{\rm phys}=(\lambda_1,\ldots,\lambda_N)
+  \lambda=(\lambda_1,\ldots,\lambda_N),
 \]
-on the family of theories under consideration.  These coordinates may be
-defined by masses, residues, specified 1PI vertices at a subtraction point, or
-other finite observables.  One seeks bare couplings of the form
+and choose, for each regulator value, a map from \(U\) to the bare coordinate
+space,
 \[
-  g_I=g_I(\lambda_{\rm phys},\Lambda)
+  b_{\Lambda}\colon U\longrightarrow \{g_I\}_{I\in\mathcal I},
   \qquad
-  \hbox{or}
+  \lambda\longmapsto g_I(\lambda,\Lambda),
+ \]
+or, in dimensional regularization,
+\[
+  b_{\varepsilon}\colon U\longrightarrow \{g_I\}_{I\in\mathcal I},
   \qquad
-  g_I=g_I(\lambda_{\rm phys},\varepsilon)
+  \lambda\longmapsto g_I(\lambda,\varepsilon).
 \]
-such that all renormalized quantities being used to define the theory have
-finite limits as the regulator is removed.
+The coordinates \(\lambda_a\) are renormalized coordinates if they are fixed by
+finite conditions on regulated correlation functions or 1PI kernels and if,
+after inserting the corresponding map \(b_\Lambda\) or \(b_\varepsilon\), the
+chosen class of renormalized observables has a regulator-independent limit.
+\end{definition}
+
+Thus a perturbatively renormalizable family consists of a finite-dimensional
+family of coordinate maps into regulated Lagrangians.  Masses, residues, and
+specified 1PI vertex values at Euclidean subtraction momenta are common choices
+of the coordinates \(\lambda_a\), but the definition only requires the chosen
+conditions to be finite and locally independent.  Local counterterms are the
+regulator-dependent local coordinates in \(b_{\Lambda}\) or
+\(b_{\varepsilon}\) that make these finite conditions compatible with the
+existence of the continuum limit.
 
 \section{Renormalized Fields and Effective Couplings}
 
-A convenient sufficient criterion is the finiteness of Euclidean Green
-functions of a renormalized field.  Define
+Let \(\Gamma_{E,\Lambda}\) be the regulated Euclidean 1PI effective action,
+defined by the Euclidean Legendre construction of the preceding chapter.  A
+field normalization is a regulator-dependent nonzero scalar \(Z_R(\lambda,
+\Lambda)\), or a matrix in a theory with several fields.  For a single scalar
+we write
 \[
-  \phi_R(x)=Z_R^{-1/2}\phi(x),
+  \phi_R(x)=Z_R^{-1/2}\phi(x).
 \]
-where \(Z_R\) is a regulator-dependent normalization factor.  The criterion is
-that, after expressing the bare couplings in terms of
-\(\lambda_{\rm phys}\),
+The normalization condition can be imposed, for instance, by requiring the
+coefficient of \(p^2\) in the renormalized two-point 1PI kernel at a chosen
+Euclidean subtraction point to equal a prescribed finite value.  The precise
+condition is part of the coordinate choice \(\lambda\).
+
+The Green-function finiteness criterion is distributional.  For every \(n\)
+in the chosen class and every test function
+\(f\in C_c^\infty((\R^D)^n)\), require
 \[
   \lim_{\Lambda\to\infty}
-  \vev{\phi_R(x_1)\cdots\phi_R(x_n)}_{E,\Lambda}
+  \int\prod_{a=1}^n\dd^Dx_a\,
+  f(x_1,\ldots,x_n)
+  \vev{\phi_R(x_1)\cdots\phi_R(x_n)}_{E,\Lambda;\lambda}
 \]
-exists as a distribution for every \(n\) in the class under consideration.
-Equivalently, the 1PI effective action expressed as a functional of
-\(\phi_R\),
+to exist.  The same statement in dimensional regularization is the existence
+of the \(\varepsilon\to0\) limit after the prescribed subtractions.  This is a
+criterion for the correlation distributions themselves; it is stronger than
+the statement that a finite number of Taylor coefficients is finite.
+
+On a Euclidean momentum domain where the two-point kernel is invertible and no
+infrared singularity is being tested, the connected Green functions are
+reconstructed from the exact 1PI kernels by trees.  Therefore, order by order
+in perturbation theory, finiteness of the renormalized 1PI kernels
 \[
-  \widetilde\Gamma_{\Lambda}[\phi_R]
+  \Gamma^{(n)}_{E,R,\Lambda}(p_1,\ldots,p_n;\lambda)
   =
-  \Gamma_{\Lambda}[Z_R^{1/2}\phi_R],
+  Z_R^{n/2}
+  \Gamma^{(n)}_{E,\Lambda}(p_1,\ldots,p_n;b_\Lambda(\lambda))
 \]
-has finite local effective couplings.  More explicitly, expand
+as distributions on such momentum domains is equivalent to finiteness of the
+connected functions on the corresponding domains.  This equivalence uses the
+Legendre relation and the inverse two-point kernel.
+
+For local counterterm classification one extracts only the local Taylor
+coefficients of the renormalized 1PI action.  Define
 \[
-  \widetilde\Gamma_{\Lambda}[\phi_R]
+  \widetilde\Gamma_{E,\Lambda}[\phi_R]
+  =
+  \Gamma_{E,\Lambda}[Z_R^{1/2}\phi_R].
+\]
+Near a subtraction point at which the relevant kernels are analytic, write the
+local part as
+\[
+  \widetilde\Gamma_{E,\Lambda}^{\rm loc}[\phi_R]
   =
   S_{\rm kin}[\phi_R]
   +
   \int \dd^Dx\,
-  \sum_I g^{\rm eff}_{I,\Lambda}\,
-  \mathcal O_I(\phi_R),
+  \sum_I g^{\rm eff}_{I,\Lambda}(\lambda)\,
+  \mathcal O_I(\phi_R).
 \]
-where \(S_{\rm kin}\) is the chosen finite quadratic reference action.  The
-1PI finiteness criterion is
+Here \(S_{\rm kin}\) is the chosen finite quadratic reference action and
+\(\widetilde\Gamma^{\rm loc}\) denotes the Taylor-polynomial part in external
+momenta.  The local 1PI finiteness condition is
 \[
   \lim_{\Lambda\to\infty}
-  g^{\rm eff}_{I,\Lambda}(\lambda_{\rm phys})
-  \quad\hbox{finite}
+  g^{\rm eff}_{I,\Lambda}(\lambda)
+  \qquad
+  \hbox{finite}
 \]
-for every local operator coefficient included in the renormalized description.
+for every local operator coefficient included in the finite-list
+renormalized description.  Nonlocal terms in the exact 1PI action, such as
+threshold logarithms, belong to the finite continuum correlation functions.
 
 The same structure appears directly in the bare action.  Suppose the bare
 quadratic term is
@@ -138,25 +197,24 @@ Thus perturbation theory is organized by writing
   =
   S_{\rm ref}[\phi_R]
   +
-  S_{\rm int}[\phi_R;\lambda_{\rm phys}]
+  S_{\rm int}[\phi_R;\lambda]
   +
-  S_{\rm ct}[\phi_R;\lambda_{\rm phys},\Lambda],
+  S_{\rm ct}[\phi_R;\lambda,\Lambda],
 \]
 where \(S_{\rm ct}\) is local and regulator dependent.  The finite parts of
 the counterterms are part of the renormalization prescription: changing them
-changes the coordinate system \(\lambda_{\rm phys}\) on the same perturbative
-family.
+changes the coordinate system \(\lambda\) on the same perturbative family.
 
 \section{Locality as Extension of Distributions}
 
-The locality of counterterms can be formulated without reference to a
-particular regulator.  In position space, a Feynman graph with vertices
+The locality of counterterms has an intrinsic position-space formulation.  In
+position space, a Feynman graph with vertices
 \[
   x_1,\ldots,x_r
 \]
 defines a distribution on the configuration space where no ultraviolet
-collision has occurred.  Ultraviolet renormalization is the problem of
-extending this distribution across the collision diagonals, such as
+collision has occurred.  Ultraviolet renormalization extends this distribution
+across the collision diagonals, such as
 \[
   x_{i_1}=\cdots=x_{i_k}.
 \]
@@ -223,11 +281,18 @@ allowed derivative-of-delta ambiguity on that diagonal.
 \section{First Counterterm Census in Four Dimensions}
 
 The local nature of the required terms is visible in elementary scalar
-examples.  In the following diagrams, a shaded disk labelled \(1{\rm PI}\)
-denotes the full one-particle-irreducible vertex being tested.
+examples.  Vacuum-energy terms are omitted from the census because they affect
+only the zero-point functional.  Linear tadpole terms are fixed by the chosen
+expansion point; in a theory without a symmetry forbidding them, their
+counterterms are included among the local coordinates.  In the following
+diagrams, a shaded disk labelled \(1{\rm PI}\) denotes the full
+one-particle-irreducible vertex being tested after this vacuum and tadpole
+bookkeeping has been imposed.
 
-First take a formal \(D=4\) scalar theory with a cubic vertex
-\(\int g_3\phi^3\).  The one-loop two-point graph contains the integral
+First take a \(D=4\) scalar theory with a cubic vertex
+\(\int g_3\phi^3\), expanded about a point at which the one-point function has
+been fixed by a tadpole condition.  The one-loop two-point graph contains the
+integral
 \[
   g_3^2
   \int^{\Lambda}
@@ -240,7 +305,7 @@ It contributes to the local operator \(\phi^2\), and is canceled by a mass
 counterterm.  The corresponding one-loop triangle and box integrals are
 ultraviolet finite in four dimensions.
 
-For \(D=4\) scalar theory with a quartic vertex \(\int g_4\phi^4\), the
+For a \(D=4\) scalar theory with a quartic vertex \(\int g_4\phi^4\), the
 two-point 1PI function receives a quadratically divergent tadpole and, at the
 next order, a logarithmic momentum-dependent contribution.  The four-point
 1PI function has a logarithmic divergence.  These divergences are canceled by
@@ -259,8 +324,8 @@ For \(D=4\) scalar theory with a sextic vertex \(\int g_6\phi^6\), the first
 tests already generate higher local terms.  A one-loop eight-point function
 has logarithmic behavior, requiring a local \(\phi^8\) counterterm.  Once
 \(\phi^8\) is present, further diagrams generate \(\phi^{10}\), and the
-process continues.  A finite number of physical coordinates then does not
-determine all local coefficients in the cutoff-removal limit.
+process continues.  The cutoff-removal limit then requires an unbounded
+sequence of independent local coefficients.
 
 \begin{figure}[H]
   \centering
@@ -307,27 +372,37 @@ determine all local coefficients in the cutoff-removal limit.
 
     \begin{scope}[shift={(11.1,0)}]
       \node[font=\normalsize] at (0,2.55) {\(D=4,\ \phi^6\)};
-      \node[blob,minimum size=1.0cm] (B) at (0,0.55) {\(1{\rm PI}\)};
-      \foreach \a in {20,70,140,200,250,320} {
-        \draw[line] ({0.5*cos(\a)},{0.55+0.5*sin(\a)})
-          --++({0.82*cos(\a)},{0.82*sin(\a)});
-      }
-      \draw[line] (-0.32,0.18)..controls (0,-0.45)..(0.32,0.18);
+      \coordinate (L) at (-0.62,0.55);
+      \coordinate (R) at (0.62,0.55);
+      \fill (L) circle (2.3pt);
+      \fill (R) circle (2.3pt);
+      \draw[line] (L)..controls (-0.25,1.15) and (0.25,1.15)..(R);
+      \draw[line] (L)..controls (-0.25,-0.05) and (0.25,-0.05)..(R);
+      \draw[line] (L)--(-1.55,1.45);
+      \draw[line] (L)--(-1.78,0.95);
+      \draw[line] (L)--(-1.78,0.08);
+      \draw[line] (L)--(-1.55,-0.45);
+      \draw[line] (R)--(1.55,1.45);
+      \draw[line] (R)--(1.78,0.95);
+      \draw[line] (R)--(1.78,0.08);
+      \draw[line] (R)--(1.55,-0.45);
       \node[red!70!black,align=center] at (0,-1.35)
-        {higher local terms\\\(\phi^8,\phi^{10},\ldots\)};
+        {one-loop eight-point\\\(\phi^8\), then \(\phi^{10},\ldots\)};
     \end{scope}
   \end{tikzpicture}
   }
-  \caption{A first counterterm census in four dimensions.  Cubic and quartic
-  scalar interactions require local terms from a finite operator list, while a
-  sextic interaction generates higher local operators under loop corrections.}
+  \caption{A first counterterm census in four dimensions, after vacuum-energy
+  and tadpole bookkeeping has been fixed.  Cubic and quartic scalar
+  interactions require local terms from a finite operator list, while a sextic
+  interaction generates higher local operators under loop corrections.}
   \label{fig:volume-ii-counterterm-census}
 \end{figure}
 
 \section{Engineering Dimensions and the Finite List}
 
-The preceding examples are organized by mass dimension.  The Euclidean action
-is dimensionless.  Since the kinetic term is
+The preceding examples are organized by engineering dimension.  Assign
+dimension \([x]=-1\) and \([\partial_\mu]=1\).  The Euclidean action is
+dimensionless.  Since the kinetic term is
 \[
   \frac12\int \dd^Dx\,\partial_{\mu}\phi\,\partial_{\mu}\phi ,
 \]
@@ -348,40 +423,52 @@ and the coupling multiplying it has dimension
 The coefficient \(g_I^{\rm eff}\) of \(\mathcal O_I\) in the 1PI effective
 action is extracted by differentiating an \(n_I\)-point 1PI vertex with
 respect to the appropriate external momenta and then setting those momenta to
-zero, provided the zero-momentum limit is infrared regular.  A diagram built
-from inserted vertices \(J\) has the superficial ultraviolet form
+zero, or to a specified Euclidean subtraction point, provided the chosen point
+is infrared regular.  Let \(G\) be a graph contributing to the coefficient of
+\(\mathcal O_I\).  Denote by \(V(G)\) the multiset of interaction vertices in
+the graph, and let \(d_v\) be the engineering dimension of the local operator
+at the vertex \(v\).  Dimensional analysis gives the superficial ultraviolet
+form
 \[
-  \left(\prod_{J\in G}g_J\right)
+  \left(\prod_{v\in V(G)}g_v\right)
   \Lambda^{
-    (D-d_I)-\sum_{J\in G}(D-d_J)
+    (D-d_I)-\sum_{v\in V(G)}(D-d_v)
   }
   \bigl(\log\Lambda\bigr)^{r},
   \qquad
   0\le r\le L,
 \]
-where \(L\) is the loop number.  Therefore a counterterm for
+where \(L\) is the loop number and \(r\) records possible logarithms.  This is
+a statement about the overall ultraviolet scaling of the graph after its
+external momentum derivatives have selected \(\mathcal O_I\); subdivergences
+are treated recursively in the next chapter.  An overall counterterm for
 \(\mathcal O_I\) can be required only when
 \[
-  D-d_I-\sum_{J\in G}(D-d_J)\ge0 .
+  D-d_I-\sum_{v\in V(G)}(D-d_v)\ge0 .
 \]
 
-If every coupling appearing in the action has \(d_J\le D\), then
-\(D-d_J\ge0\).  The inequality above implies \(d_I\le D\).  For scalar
-polynomial interactions with finitely many derivatives at fixed \(D\), there
-are only finitely many local operators with \(d_I\le D\).  This is the
-power-counting finite-list criterion for perturbative renormalizability.
+If every coupling appearing in the action has \(d_v\le D\), then
+\(D-d_v\ge0\).  The inequality above implies \(d_I\le D\).  For scalar
+polynomial interactions with finitely many derivatives at fixed \(D\), after
+imposing the chosen symmetries and integration-by-parts conventions there are
+only finitely many local operators with \(d_I\le D\).  This is the
+power-counting finite-list criterion for perturbative renormalizability: every
+local ambiguity allowed by superficial ultraviolet scaling lies in a fixed
+finite-dimensional local operator space.
 
 If an interaction with \(d_J>D\) is included and its coefficient is allowed to
 participate in the cutoff-removal problem on the same footing, repeated
 insertions can satisfy the inequality for operators of arbitrarily large
 dimension.  Such a Lagrangian is still a valid low-energy effective
-description at finite cutoff, but it does not define a finite-parameter
-cutoff-removal problem by this criterion.
+description at finite cutoff.  Its cutoff-removal problem, with that
+interaction iterated to all orders on the same footing as marginal or relevant
+couplings, requires an unbounded sequence of independent local coordinates by
+this power-counting criterion.
 
 \section{A Renormalizable Model in Six Dimensions}
 
 The scalar cubic interaction is marginal in \(D=6\).  Use the Euclidean
-Lagrangian
+Lagrangian, written in terms of the renormalized field,
 \[
 \begin{aligned}
   \mathcal L_E
@@ -403,11 +490,18 @@ Lagrangian
   \frac1{3!}(g_R+\delta g)\phi^3 .
 \end{aligned}
 \]
-The finite parameters are \(m_R\), \(g_R\), and the normalization convention
-for \(\phi\).  The local counterterms are
+In dimensional regularization with \(D=6-\varepsilon\), the last term is
+understood as
+\[
+  \frac{\mu^{\varepsilon/2}}{3!}(g_R+\delta g)\phi^3,
+\]
+so that \(g_R\) is dimensionless and \(\mu\) is the subtraction scale.  The
+finite parameters are \(m_R\), \(g_R\), and the normalization convention for
+\(\phi\).  The counterterm coordinates are
 \[
   \delta Z,\qquad \delta m^2,\qquad \delta g .
 \]
+They are functions of \(m_R,g_R,\mu\) and of the regulator.
 
 At order \(g_R^2\), the one-loop self-energy is
 \[
@@ -580,7 +674,7 @@ insertion, the pole part has the local form
 \[
   \Sigma_{\rm insertion}(k)\big|_{\rm pole}
   =
-  A_{\varepsilon}k^2+B_{\varepsilon},
+  A_{\varepsilon}k^2+B_{\varepsilon}m_R^2,
   \qquad
   A_{\varepsilon}
   =

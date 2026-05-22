@@ -26,10 +26,14 @@ The chapter must define:
 - the regulated Euclidean functional integral \(Z_\Lambda\);
 - local operators \(\mathcal O_I\) and bare couplings \(g_I\);
 - regulator choices \(\Lambda\) and \(D=d-\varepsilon\);
+- the finite-dimensional renormalized coordinate domain \(U\) and the
+  regulator-dependent bare coordinate maps \(b_\Lambda,b_\varepsilon\);
 - renormalized field \(\phi_R=Z_R^{-1/2}\phi\);
 - the effective action \(\widetilde\Gamma[\phi_R]=\Gamma[Z_R^{1/2}\phi_R]\);
-- finite effective couplings \(g_I^{\rm eff}\);
-- physical coordinate parameters \(\lambda_{\rm phys}\);
+- the distinction between full distributional Green-function finiteness and
+  the local Taylor coefficients \(g_I^{\rm eff}\) used for counterterm
+  classification;
+- renormalized coordinate parameters \(\lambda\);
 - engineering dimension \(d_I\) and coupling dimension \(D-d_I\);
 - the superficial degree condition for a local counterterm;
 - the \(D=6\), \(\phi^3\) counterterm split;
@@ -39,34 +43,41 @@ The chapter must define:
 ## Claim Ledger
 
 1. Bare couplings are functions of the regulator and of a finite set of
-   physical input parameters.
+   renormalized input coordinates.
 2. A sufficient perturbative finiteness criterion is the finiteness of
-   renormalized Euclidean Green functions.
-3. Equivalently, the 1PI effective action expressed in terms of
-   \(\phi_R\) has finite local effective couplings.
-4. Wavefunction, mass, and interaction counterterms are local terms in the
+   renormalized Euclidean Green functions as distributions.
+3. On infrared-regular Euclidean momentum domains with invertible two-point
+   kernel, perturbative finiteness of connected functions is equivalent to
+   finiteness of the corresponding renormalized 1PI kernels by the Legendre
+   reconstruction.
+4. The local effective couplings are Taylor coefficients of the local part of
+   the 1PI action; nonlocal finite terms such as threshold logarithms are part
+   of the continuum 1PI kernels.
+5. Wavefunction, mass, and interaction counterterms are local terms in the
    same operator basis used to define the regulated action.
-5. In \(D=4\), \(\phi^3\) and \(\phi^4\) illustrate finite counterterm
-   closure, while \(\phi^6\) illustrates proliferation of higher local terms.
-6. For an operator with \(n\) fields and \(\ell\) derivatives,
+6. In \(D=4\), after vacuum-energy and tadpole bookkeeping, \(\phi^3\) and
+   \(\phi^4\) illustrate finite counterterm closure, while \(\phi^6\)
+   illustrates proliferation of higher local terms.
+7. For an operator with \(n\) fields and \(\ell\) derivatives,
    \(d_I=\ell+n(D-2)/2\).
-7. A diagram with inserted vertices \(J\) can generate a counterterm for
+8. A diagram with inserted vertices \(J\) can generate a counterterm for
    \(O_I\) only when
    \[
      D-d_I-\sum_J(D-d_J)\ge0
    \]
    at the level of superficial power counting, assuming no infrared
    singularity.
-8. If all couplings in the action have \(d_J\le D\), the required local
+9. If all couplings in the action have \(d_J\le D\), the required local
    counterterms are drawn from a finite-dimensional space.
-9. In \(D=6\), \(\phi^3\), one-loop two- and three-point divergences are
-   canceled by \(\delta Z\), \(\delta m^2\), and \(\delta g\).
-10. A renormalized one-loop self-energy insertion has large-momentum behavior
+10. In \(D=6\), \(\phi^3\), one-loop two- and three-point divergences are
+   canceled by \(\delta Z\), \(\delta m^2\), and \(\delta g\); in
+   \(D=6-\varepsilon\) the cubic vertex carries \(\mu^{\varepsilon/2}\).
+11. A renormalized one-loop self-energy insertion has large-momentum behavior
     \((\alpha q^2+\beta)\log(q^2/\mu^2)\), and Taylor subtraction of the
     remaining propagator leaves a finite integral.
-11. Dimensional regularization exposes the pole part as a polynomial
-    \(A_\varepsilon k^2+B_\varepsilon\), hence as local.
-12. In the two-loop diamond graph, Schwinger-parameter subdivergences occur
+12. Dimensional regularization exposes the pole part as a polynomial
+    \(A_\varepsilon k^2+B_\varepsilon m_R^2\), hence as local.
+13. In the two-loop diamond graph, Schwinger-parameter subdivergences occur
     when subgraph parameters shrink; counterterm insertions subtract these
     limiting pieces before the overall divergence is treated.
 
@@ -85,3 +96,7 @@ The chapter must define:
   finite-parameter condition explicitly.
 - Keep BPHZ as the theorem at the boundary of this chapter; the full forest
   formula belongs in the next chapter.
+- 2026-05-22 pass: tightened the finite-parameter coordinate definition,
+  separated full 1PI/Green-function finiteness from local Taylor-coefficient
+  finiteness, added tadpole bookkeeping to the \(D=4\) census, and fixed the
+  \(D=6-\varepsilon\) \(\phi^3\) dimensional factor and self-energy pole form.
