@@ -2,9 +2,9 @@
 
 ## Status
 
-Current status: re-audited under the stricter definition and symbol rules in
-the 2026-05-22 development pass.  The chapter remains in the compiled
-manuscript as the opening framework chapter.
+Current status: certified against handwritten 253a pp. 1--2 in the
+2026-05-22 development pass.  The chapter remains in the compiled manuscript
+as the opening framework chapter.
 
 ## Logical Role
 
@@ -32,6 +32,9 @@ chapter.
 
 - `transcription/tex/253a/foundations.tex`: opening local-field and locality
   discussion.
+- `references/253a lectures 2022.pdf`, pp. 1--2: opening distinction between
+  continuum local QFT and EFT presentations, examples, and initial dependency
+  plan.
 - `transcription/tex/253b/scattering_rg_qcd.tex`: recap of local QFT and
   spectral representation.
 - handwritten PDFs in `references/` for disputed wording or figures.
@@ -59,11 +62,16 @@ Use these only for theorem boundaries and later comparisons.
 | \(\mathcal O\) | bounded open spacetime region | localization |
 | \(\Obs(\mathcal O)\) | local algebra assigned to \(\mathcal O\) | observable net |
 | \(\widehat\Phi_A(f)\) | smeared field operator/distribution | field coordinate |
+| \(\mathrm{EFT}\) | effective field theory presentation, not a separate axiom system | regulated/local expansion framework |
 
 ## Definition Ledger
 
 - Vacuum Minkowski local quantum framework: working data for the opening
   volume.
+- Continuum local quantum field theory: local data that exist after removing
+  a UV regulator in a declared topology and framework.
+- Effective field theory presentation: regulated or renormalized local
+  prescription for a specified scale window, expansion, and observable class.
 - Local observable assignment: region-to-algebra assignment with covariance,
   isotony, and locality.
 - Smeared field: operator-valued distribution evaluated on a test function.
@@ -75,6 +83,7 @@ Definitions must specify domains and support conditions.
 | Claim | Status | Certification |
 | --- | --- | --- |
 | The opening framework consists of Hilbert space, symmetry, spectrum, vacuum, and local observables. | Working definition | Defined in chapter |
+| Continuum local QFT and EFT presentations share locality but make different mathematical-status claims. | Source-certified framework distinction | Added from handwritten pp. 1--2 with caveats about regulator removal, scale windows, and power counting |
 | Fields in this framework are distributional coordinates on local data. | Framework statement | Defined and compared with Wightman language |
 | Particles, S-matrix, LSZ, and perturbative scattering require further hypotheses. | Structural claim | Stated as dependency plan; derived later |
 | Kallen--Lehmann will be the first bridge from local fields to particle content. | Ordering rule | Source spine |
@@ -90,9 +99,16 @@ Definitions must specify domains and support conditions.
   closure imposed only when declared.
 - Completed: moved non-vacuum and non-flat settings into a positive domain
   statement about changed data.
+- Completed: restored the handwritten opening fork as rigorous prose and a
+  non-course-specific figure; course labels and semester arrows were not
+  imported.
 
 ## Figure Ledger
 
+- `fig:opening-local-qft-eft`: TikZ source-fork figure distinguishing
+  continuum local QFT data from EFT presentations.  Must keep the examples
+  status-qualified: constructive low-dimensional/scaling-limit examples on
+  the continuum side, perturbative scale-window examples on the EFT side.
 - `fig:opening-framework-comparison`: TikZ comparison map among Wightman
   fields, local nets, Euclidean data, and the Hilbert-space vacuum sector.
   The figure must be checked after every layout-affecting edit to ensure arrow

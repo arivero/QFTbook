@@ -43,6 +43,99 @@ The connected proper orthochronous Lorentz group is denoted
 \((x-y)^2>0\) for every \(x\in\mathcal O_1\) and
 \(y\in\mathcal O_2\).
 
+\section{Local Continuum Theories And Effective Presentations}
+
+The organizing structure of quantum field theory is quantum dynamics together
+with spacetime localization.  The word ``localization'' has a precise content:
+observables, or field coordinates for observables, are attached to spacetime
+regions or test functions; spacetime symmetries move these localized objects
+covariantly; and observables localized in spacelike separated regions obey the
+appropriate commutativity law.  The exact algebraic, field-theoretic, or
+Euclidean form of this structure must always be specified.
+
+Two different mathematical statuses will appear throughout the monograph.
+They share locality, but they are not the same assertion.
+
+\begin{definition}[Continuum local quantum field theory]
+  A continuum local quantum field theory is a local quantum theory whose
+  declared correlation functions, local algebras, or Hilbert-space operators
+  exist after the ultraviolet regulator has been removed, in a stated
+  topology and within a stated spacetime and state-sector framework.  In a
+  Minkowski vacuum presentation this includes Poincare symmetry, a spectrum
+  condition, local observables or local field distributions, and
+  microcausality.  The phrase ``infinitely many degrees of freedom'' will be
+  used in the operational sense that the local data are indexed by
+  infinite-dimensional test-function or region data and are not specified by a
+  finite list of canonical coordinates.
+\end{definition}
+
+\begin{definition}[Effective field theory presentation]
+  An effective field theory presentation is a regulated or renormalized local
+  prescription for computing observables in a specified range of length,
+  energy, and external-state scales.  Its defining data include the fields or
+  local variables, the symmetries, the regulator or renormalization
+  prescription, the expansion parameters, and the class of observables for
+  which the expansion is claimed.  When it is perturbative, it defines an
+  asymptotic expansion of Green functions, and of scattering quantities only
+  after the nonperturbative scattering framework and LSZ interpretation have
+  been supplied.
+\end{definition}
+
+Power-counting renormalizability is a property of an effective presentation
+near a chosen fixed point or scaling regime: only finitely many local
+operators are needed as independent counterterms at a fixed order in the
+declared expansion.  It is not, by itself, a proof that the ultraviolet
+continuum theory exists.  Power-counting nonrenormalizable presentations are
+also local effective theories when the infinitely many allowed operators are
+organized by scale and symmetry.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      root/.style={draw,rounded corners=4pt,line width=0.85pt,
+        fill=black!3,minimum width=5.1cm,minimum height=0.7cm,align=center},
+      box/.style={draw,rounded corners=4pt,line width=0.8pt,
+        minimum width=5.4cm,minimum height=1.0cm,align=center},
+      textbox/.style={draw,rounded corners=4pt,line width=0.55pt,
+        align=left,inner sep=5pt,text width=5.8cm},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt}
+    }
+    \node[root] (root) at (0,2.35)
+      {quantum dynamics with spacetime localization};
+    \node[box,fill=blue!5] (local) at (-4.0,0.82)
+      {continuum local QFT\\data exist after removing the ultraviolet regulator};
+    \node[box,fill=orange!7] (eft) at (4.0,0.82)
+      {effective field theory presentation\\local expansion valid in a declared scale window};
+    \draw[arrow] (root.south west) -- (local.north);
+    \draw[arrow] (root.south east) -- (eft.north);
+
+    \node[textbox,anchor=north,fill=blue!2] at (-4.0,-0.15)
+      {\(\Hilb\), Poincare representation, spectrum condition\\
+       local observables or local field distributions\\
+       microcausality for spacelike separated supports\\[2pt]
+       guiding examples: low-dimensional constructive scalar theories;
+       scaling limits of lattice models near criticality; Yang--Mills/QCD as
+       physical continuum local gauge theories};
+
+    \node[textbox,anchor=north,fill=orange!3] at (4.0,-0.15)
+      {regulated path integral or equivalent local prescription\\
+       symmetry-controlled local operator expansion\\
+       long-distance or low-energy observables in the stated regime\\[2pt]
+       examples: \(\phi^4\) theory in \(D=4\), QED, and the Standard Model as
+       power-counting renormalizable perturbative presentations; chiral
+       perturbation theory and perturbative quantum gravity as
+       nonrenormalizable effective presentations};
+  \end{tikzpicture}
+  }
+  \caption{The opening distinction between continuum local QFT data and
+  effective field theory presentations.  Both sides use locality; the
+  difference is the mathematical status of the construction and the range of
+  claims made from it.}
+  \label{fig:opening-local-qft-eft}
+\end{figure}
+
 \section{Opening Framework}
 
 The first construction takes place in a flat-spacetime vacuum sector. The
@@ -408,3 +501,14 @@ The opening construction will proceed as follows:
 \]
 Each arrow indicates an added construction or theorem. The construction will
 use each arrow only after its assumptions have been stated.
+
+The first detailed computations follow three dependency bands.  First, finite
+and regulated Lagrangian quantum mechanics supplies path integrals,
+regularization, perturbation theory for correlation functions, diagrammatics,
+and local counterterms.  Second, relativistic scalar fields supply the first
+local field examples, Green functions, spectral representations, asymptotic
+states, the nonperturbative scattering operator, and LSZ.  Third, spin and
+gauge fields require representation theory, fermionic and gauge-field
+quantization, gauge fixing, ghosts, BRST cohomology, and applications such as
+QED precision observables.  Perturbative Feynman rules for scattering
+amplitudes belong after the second band has supplied their interpretation.
