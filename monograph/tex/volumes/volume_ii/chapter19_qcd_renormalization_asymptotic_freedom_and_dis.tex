@@ -448,6 +448,164 @@ the small parameter \(g(Q)\) when \(Q\gg\Lambda\).  At scales comparable to
 small coupling.  Statements about the spectrum, confinement, and the mass gap
 then require nonperturbative input.
 
+\section{Infrared Possibilities and Wilson Loop Diagnostics}
+
+The one-loop beta function determines the ultraviolet direction of the flow
+when \(b_0>0\).  It does not by itself determine the infrared theory.  Suppose
+the beta function of a dimensionless coupling \(\lambda\) has the perturbative
+form
+\[
+  \beta(\lambda)
+  =
+  b_1\lambda^3+b_2\lambda^5+O(\lambda^7),
+  \qquad
+  b_1<0 .
+\]
+The coefficients \(b_1\) and \(b_2\) are invariant under analytic changes of
+renormalized coupling whose linear term is the identity.  If \(b_2>0\), the
+two-loop expression has a nonzero zero
+\[
+  \lambda_*^2=-\frac{b_1}{b_2}+O(b_1^2).
+\]
+When this value is small, perturbation theory gives evidence for an
+interacting infrared fixed point.  For \(SU(N_c)\) gauge theory with \(N_f\)
+massless fundamental Dirac fermions, the weakly coupled window near the upper
+edge of asymptotic freedom is
+\begin{equation}
+  \frac{34N_c^3}{13N_c^2-3}
+  <
+  N_f
+  <
+  \frac{11}{2}N_c .
+  \label{eq:banks-zaks-window-core}
+\end{equation}
+The fixed points obtained in this way are the Banks--Zaks fixed points.  The
+statement is perturbative: its controlled regime is the part of the window
+where \(\lambda_*\) is small.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.45)
+      {two infrared possibilities visible in a two-loop beta function};
+    \draw[-{Latex[length=2mm]}] (-0.35,0)--(6.4,0) node[below] {\(\lambda\)};
+    \draw[-{Latex[length=2mm]}] (0,-1.55)--(0,1.55) node[left] {\(\beta(\lambda)\)};
+    \draw[blue!70!black,very thick]
+      (0,0) .. controls (1.4,-0.22) and (3.1,-0.85) .. (5.7,-1.35);
+    \node[blue!70!black,fill=white,inner sep=1.2pt,align=center] at (4.55,-0.98)
+      {\(\beta<0\) through\\the perturbative range};
+    \draw[purple!75!black,very thick]
+      (0,0) .. controls (0.85,-0.35) and (1.55,-0.42) .. (2.38,0)
+      .. controls (3.25,0.48) and (4.25,1.0) .. (5.45,1.24);
+    \fill[red!75!black] (2.38,0) circle (2.6pt);
+    \node[red!75!black,align=center] at (2.08,0.58)
+      {IR fixed\\point};
+    \node[purple!75!black,align=center] at (4.35,1.18)
+      {Banks--Zaks\\zero};
+  \end{tikzpicture}
+  }
+  \caption{A negative one-loop coefficient implies ultraviolet asymptotic
+  freedom.  The infrared behavior depends on the subsequent terms.  A small
+  two-loop zero gives a controlled perturbative fixed point; absence of such a
+  zero leaves the flow outside perturbative control in the infrared.}
+  \label{fig:qcd-banks-zaks-beta-shapes}
+\end{figure}
+
+For smaller \(N_f\), the usual QCD expectation is that the infrared theory is
+confining rather than conformal.  In this chapter confinement is used as a
+spectral and observable statement: isolated finite-energy asymptotic particles
+do not carry color, and physical states are created from the vacuum by
+gauge-invariant operators.  This is not a statement about the absence of the
+quark and gluon fields from the short-distance formulation; those fields remain
+the convenient local variables in the renormalized gauge theory.
+
+The basic nonlocal observable for this confinement diagnostic is the Wilson
+line.  For an oriented path \(C\) from \(x_1\) to \(x_2\), define
+\begin{equation}
+  W_R(C)
+  =
+  P\exp\left\{
+    \ii\int_C A_\mu^a(x)t_R^a\,\dd x^\mu
+  \right\},
+  \label{eq:qcd-wilson-line-definition}
+\end{equation}
+where \(R\) is a representation of the gauge group, \(t_R^a\) are its
+generators, and \(P\) denotes ordering along the path.  The nonlocal operator
+\[
+  \bar q(x_2)\,W_R(C)\,q(x_1)
+\]
+is gauge invariant when the endpoints transform in conjugate representations.
+It creates a color-neutral state containing a quark, an antiquark, and the
+gauge flux connecting them.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small,align=center] at (0,2.45)
+        {open Wilson line};
+      \draw[thick] (-2.35,0) .. controls (-1.2,0.65) and (1.05,-0.55) .. (2.35,0.08);
+      \foreach \dy/\col in {-0.25/purple!70!black,0/purple!55!black,0.25/purple!70!black} {
+        \draw[\col,thick,decorate,decoration={snake,amplitude=0.85pt,segment length=7pt}]
+          (-2.15,\dy) .. controls (-1.05,{0.58+\dy}) and (0.95,{-0.50+\dy}) .. (2.15,{0.08+\dy});
+      }
+      \fill[blue!75!black] (-2.35,0) circle (2.8pt);
+      \fill[red!75!black] (2.35,0.08) circle (2.8pt);
+      \node[below left,blue!75!black] at (-2.35,0) {quark};
+      \node[below right,red!75!black] at (2.35,0.08) {anti-quark};
+      \node[above] at (0.15,0.55) {\(C\)};
+      \node[purple!75!black,align=center] at (0,-1.02)
+        {gauge flux carried by \(W_R(C)\)};
+    \end{scope}
+
+    \begin{scope}[shift={(6.2,0)}]
+      \node[font=\small,align=center] at (0,2.45)
+        {rectangular Wilson loop};
+      \draw[->,thick] (-1.7,-1.0)--(1.7,-1.0)--(1.7,1.0)--(-1.7,1.0)--(-1.7,-0.92);
+      \draw[<->,blue!70!black,thick] (-1.7,-1.34)--(1.7,-1.34);
+      \node[blue!70!black,below] at (0,-1.34) {\(L\)};
+      \draw[<->,orange!85!black,thick] (2.05,-1.0)--(2.05,1.0);
+      \node[orange!85!black,right] at (2.05,0) {\(T\)};
+      \node[align=center] at (0,0)
+        {Euclidean time\\evolution of\\static sources};
+      \node[purple!75!black,align=center] at (0,-1.95)
+        {\(\langle W_R(C)\rangle\sim\ee^{-V(L)T}\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{An open Wilson line attached to endpoint fields gives a
+  gauge-invariant operator with color flux between the endpoints.  A large
+  Euclidean rectangular Wilson loop extracts the static potential between
+  external color sources.}
+  \label{fig:qcd-wilson-line-loop}
+\end{figure}
+
+In pure Yang--Mills theory, where there are no dynamical fundamental quarks,
+a fundamental flux string cannot break by pair creation of fundamental matter.
+It carries a charge under the center one-form symmetry.  For a large Euclidean
+rectangle \(C_{L,T}\) of spatial width \(L\) and time height \(T\),
+\begin{equation}
+  \langle W_R(C_{L,T})\rangle
+  \sim
+  \ee^{-V_R(L)T}
+  \qquad (T\to\infty).
+  \label{eq:qcd-wilson-loop-static-potential}
+\end{equation}
+An area law
+\[
+  \langle W_R(C_{L,T})\rangle\sim\ee^{-\gamma LT}
+\]
+is equivalent, in this static-source setup, to a linearly growing potential
+\[
+  V_R(L)\sim\gamma L .
+\]
+In QCD with dynamical fundamental quarks, the same Wilson loop is no longer a
+sharp order parameter for confinement because the flux tube can break by
+quark-antiquark pair creation.  The physical spectral statement remains that
+asymptotic particles are color singlets.
+
 \section{Color and Physical External States}
 
 The gauge-fixed quark and gluon fields are useful local variables in

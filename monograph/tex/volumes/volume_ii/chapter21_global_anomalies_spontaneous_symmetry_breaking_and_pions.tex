@@ -387,6 +387,176 @@ where the covariant derivative in external left and right flavor backgrounds
 Setting \(\ell_\mu=r_\mu=0\) gives the ordinary pion kinetic term and its
 derivative self-interactions.
 
+\section{Low-Energy Pion Scattering}
+
+The two-derivative chiral Lagrangian is not merely a parametrization of
+massless fields.  It determines the leading low-energy \(S\)-matrix of the
+Goldstone bosons, because every interaction is derivative and therefore
+ordered by powers of external momentum.  For the \(N_f=2\) theory it is useful
+to write \(SU(2)\simeq S^3\) in stereographic coordinates
+\(\vec\xi=(\xi_1,\xi_2,\xi_3)\):
+\begin{equation}
+  U(\xi)
+  =
+  \frac{1-\vec\xi^{\,2}+2\ii\,\vec\xi\cdot\vec\sigma}
+       {1+\vec\xi^{\,2}} .
+  \label{eq:su2-stereographic-pion-field}
+\end{equation}
+Let \(F_{\rm st}\) denote the normalization used in these stereographic
+coordinates:
+\begin{equation}
+  \mathcal L_2
+  =
+  -\frac{F_{\rm st}^2}{16}
+  \operatorname{Tr}(\partial_\mu U\,\partial^\mu U^\dagger)
+  =
+  -\frac{F_{\rm st}^2}{2}
+  \frac{\partial_\mu\vec\xi\cdot\partial^\mu\vec\xi}
+       {(1+\vec\xi^{\,2})^2}.
+  \label{eq:su2-stereographic-lagrangian}
+\end{equation}
+With canonical fields
+\[
+  \vec\pi=F_{\rm st}\vec\xi,
+\]
+the expansion begins as
+\begin{equation}
+  \mathcal L_2
+  =
+  -\frac12\partial_\mu\vec\pi\cdot\partial^\mu\vec\pi
+  +
+  \frac1{F_{\rm st}^2}
+  \vec\pi^{\,2}\,
+  \partial_\mu\vec\pi\cdot\partial^\mu\vec\pi
+  +O(\pi^6/F_{\rm st}^4).
+  \label{eq:su2-stereographic-expansion}
+\end{equation}
+This coordinate choice is only a local chart on \(S^3\); the scattering
+amplitude obtained from it is coordinate independent.  In the axial-current
+normalization of \eqref{eq:goldstone-current-matrix-element}, one may convert
+between \(F_{\rm st}\) and \(f_\pi\) after fixing the current convention.
+
+For
+\[
+  \pi^a(k_1)+\pi^b(k_2)\to \pi^c(k_3)+\pi^d(k_4),
+\]
+use the Mandelstam variables
+\[
+  s=-(k_1+k_2)^2,\qquad
+  t=-(k_1-k_3)^2,\qquad
+  u=-(k_1-k_4)^2 .
+\]
+The \(SU(2)_V\)-invariant amplitude has the form
+\begin{equation}
+  \mathcal A_{ab\to cd}
+  =
+  \delta_{ab}\delta_{cd}A(s,t,u)
+  +\delta_{ac}\delta_{bd}A(u,t,s)
+  +\delta_{ad}\delta_{bc}A(t,s,u).
+  \label{eq:pion-scattering-isospin-decomposition}
+\end{equation}
+At order \(E^2/F_{\rm st}^2\), the four-pion vertex from
+\eqref{eq:su2-stereographic-expansion} gives
+\begin{equation}
+  A(s,t,u)
+  =
+  \frac{4s}{F_{\rm st}^2}
+  +O(E^4/F_{\rm st}^4).
+  \label{eq:pion-leading-scattering-amplitude}
+\end{equation}
+Equivalently, after converting to the convention in which the axial current
+matrix element defines \(f_\pi\), this is the standard leading chiral theorem
+with the corresponding \(f_\pi\)-normalization.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.9\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (0,2.0) {leading two-derivative vertex};
+      \draw[thick] (-1.7,1.0)--(0,0)--(1.7,1.0);
+      \draw[thick] (-1.7,-1.0)--(0,0)--(1.7,-1.0);
+      \fill (0,0) circle (2.2pt);
+      \node[left] at (-1.7,1.0) {\(a,k_1\)};
+      \node[left] at (-1.7,-1.0) {\(b,k_2\)};
+      \node[right] at (1.7,1.0) {\(c,k_3\)};
+      \node[right] at (1.7,-1.0) {\(d,k_4\)};
+      \node[below] at (0,-1.42) {\(A(s,t,u)=4s/F_{\rm st}^2\)};
+    \end{scope}
+
+    \begin{scope}[shift={(6.2,0)}]
+      \node[font=\small] at (0,2.0) {next order in the chiral expansion};
+      \draw[thick] (-1.95,0.65)--(-0.75,0.24);
+      \draw[thick] (-1.95,-0.65)--(-0.75,-0.24);
+      \draw[thick] (0.75,0.24)--(1.95,0.65);
+      \draw[thick] (0.75,-0.24)--(1.95,-0.65);
+      \draw[thick] (-0.75,0.24) arc (160:-160:0.80);
+      \draw[thick] (0.75,-0.24) arc (-20:200:0.80);
+      \node at (2.48,0) {\(+\)};
+      \begin{scope}[shift={(4.45,0)}]
+        \draw[thick] (-1.25,0.75)--(0,0)--(1.25,0.75);
+        \draw[thick] (-1.25,-0.75)--(0,0)--(1.25,-0.75);
+        \fill (0,0) circle (2.2pt);
+        \node[below] at (0,-0.35) {\(C_1,C_2\)};
+      \end{scope}
+      \node[align=center] at (1.9,-1.42)
+        {one loop from \(\mathcal L_2\)\\and local four-derivative terms};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The leading pion scattering amplitude is fixed by the
+  two-derivative nonlinear sigma model.  At the next order, one-loop diagrams
+  from \(\mathcal L_2\) are combined with local four-derivative counterterms.}
+  \label{fig:pion-scattering-leading-next}
+\end{figure}
+
+At order \(E^4/F_{\rm st}^4\), the effective Lagrangian contains local
+four-derivative terms.  In the stereographic \(SU(2)\) chart these may be
+written, to the order needed for four-pion scattering, as
+\[
+  -\frac{C_1}{F_{\rm st}^4}
+  (\partial_\mu\vec\pi\cdot\partial^\mu\vec\pi)^2
+  -
+  \frac{C_2}{F_{\rm st}^4}
+  (\partial_\mu\vec\pi\cdot\partial_\nu\vec\pi)
+  (\partial^\mu\vec\pi\cdot\partial^\nu\vec\pi).
+\]
+The same order also receives one-loop contributions from two insertions of
+the two-derivative interaction.  A regulator that does not preserve the
+nonlinearly realized symmetry may generate power terms that look like a
+potential on \(S^3\); such terms must be absent in a symmetry-preserving
+scheme or canceled by symmetry-restoring local counterterms.  After this
+local renormalization, the logarithmic part has the form
+\begin{align}
+  A(s,t,u)
+  &=
+  \frac{4s}{F_{\rm st}^2}
+  +
+  \frac1{F_{\rm st}^4}
+  \biggl\{
+  \frac1{12\pi^2}
+    \biggl[
+      3s^2\log\frac{\mu^2}{-s}
+      \notag\\
+  &\hspace{2.4cm}
+      +(u^2-s^2+3t^2)\log\frac{\mu^2}{-t}
+      \notag\\
+  &\hspace{2.4cm}
+      +(t^2-s^2+3u^2)\log\frac{\mu^2}{-u}
+    \biggr]
+    \notag\\
+  &\hspace{1.6cm}
+    -C_1(\mu)s^2
+    -C_2(\mu)(t^2+u^2)
+  \biggr\}
+  +O(E^6).
+  \label{eq:pion-one-loop-chiral-log-amplitude}
+\end{align}
+The constants \(C_1(\mu)\) and \(C_2(\mu)\) are low-energy constants.  Their
+values depend on the microscopic dynamics and on the subtraction convention,
+but the logarithmic dependence and the required \(\mu\)-dependence of
+\(C_1,C_2\) are fixed by the low-energy effective theory.
+
 \section{Mass Spurions and Pseudo-Goldstone Bosons}
 
 Quark masses explicitly break the chiral symmetry.  Introduce a complex mass

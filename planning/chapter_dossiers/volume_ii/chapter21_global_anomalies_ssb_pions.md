@@ -13,7 +13,9 @@
 ## Source And Reference Controls
 
 - `SRC-QFT-PDF`: second-sequence handwritten material on global anomalies,
-  spontaneous symmetry breaking, pions, and the Wess--Zumino--Witten term.
+  spontaneous symmetry breaking, pions, the Wess--Zumino--Witten term, and
+  chiral perturbation theory; in the page register this is 253b pages
+  226--257.
 - `SRC-STUDENT`: Ben Lou transcription around Goldstone theorem, chiral
   symmetry breaking, and the WZW term; used only as a comparison aid.
 - `SRC-EXTERNAL`:
@@ -62,6 +64,9 @@
 | \(F_{Aa}\) | Goldstone decay-constant matrix |
 | \(U(x)\) | pion field valued in \(SU(N_f)\) |
 | \(\ell_\mu,r_\mu\) | external left and right flavor gauge fields |
+| \(F_{\rm st}\) | stereographic-coordinate pion normalization used for the explicit \(N_f=2\) scattering calculation |
+| \(A(s,t,u)\) | invariant scalar function in the \(SU(2)_V\) pion scattering amplitude |
+| \(C_1(\mu),C_2(\mu)\) | local four-derivative low-energy constants in the \(N_f=2\) pion EFT |
 | \(M,\chi,B_0\) | quark mass spurion, chiral spurion, and low-energy constant |
 | \(\Gamma_{\mathrm{WZ}}\) | ungauged Wess--Zumino functional |
 | \(\Gamma_{\mathrm{WZW}}\) | gauged Wess--Zumino--Witten functional |
@@ -81,6 +86,11 @@
   by the Ward identity and a nonzero order parameter.
 - The leading pion Lagrangian is the invariant two-derivative functional of
   the \(SU(N_f)\)-valued Goldstone field and external flavor backgrounds.
+- For \(N_f=2\), the stereographic-coordinate expansion of the nonlinear sigma
+  model gives the leading pion scattering amplitude
+  \(A(s,t,u)=4s/F_{\rm st}^2+O(E^4/F_{\rm st}^4)\), and the next order is the
+  sum of one-loop two-derivative graphs and local four-derivative terms with
+  low-energy constants.
 - Quark masses enter the chiral effective action through a spurion with the
   same chiral transformation law as the microscopic mass matrix.
 - The Wess--Zumino--Witten coefficient is quantized and equals \(N_c\) for QCD

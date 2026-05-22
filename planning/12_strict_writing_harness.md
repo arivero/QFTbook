@@ -19,10 +19,13 @@ No step may be skipped because the topic is familiar.
 ## No-Skip Source Coverage Rule
 
 The 253a and 253b source notes are a coverage obligation for the core
-monograph.  A chapter may deepen, reorganize, correct, or generalize the
-source material, but it may not silently omit a source derivation, example,
-figure, definition, or conceptual distinction.  Each source block must be
-accounted for in a dossier, audit note, or coverage register as one of:
+monograph.  The 253c source notes are a coverage obligation for the CFT and
+later special-topic volumes, with only the core CFT portion currently included
+in the compiled manuscript.  A chapter may deepen, reorganize, correct, or
+generalize the source material, but it may not silently omit a source
+derivation, example, figure, definition, or conceptual distinction.  Each
+source block must be accounted for in a dossier, audit note, or coverage
+register as one of:
 
 - incorporated in the compiled monograph;
 - incorporated after a corrected derivation or notation change;

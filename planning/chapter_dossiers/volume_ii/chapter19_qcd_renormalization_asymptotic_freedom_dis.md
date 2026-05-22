@@ -48,6 +48,11 @@ The chapter must define and derive:
   \(\beta(g)=-g^3(11C_A/3-4T_RN_f/3)/(16\pi^2)+O(g^5)\);
 - dimensional transmutation and the perturbative domain of the one-loop
   running coupling;
+- the two-loop Banks--Zaks alternative as a perturbative infrared fixed-point
+  diagnostic, with its controlled domain stated;
+- Wilson lines, open gauge-invariant quark-antiquark operators, rectangular
+  Wilson loops, static potentials, and the distinction between pure
+  Yang--Mills area-law diagnostics and QCD with dynamical fundamental quarks;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD;
 - DIS kinematics, current correlators, twist-two operators, Wilson lines, and
@@ -73,7 +78,13 @@ The chapter must define and derive:
 6. Bare-coupling independence in dimensional regularization gives the
    one-loop beta function after \(\lambda^2(\mu)=\mu^\epsilon g^2(\mu)\) is
    introduced.
-7. Colored quark and gluon fields are not physical asymptotic states of QCD;
+7. A perturbative two-loop zero near the upper edge of asymptotic freedom is a
+   controlled Banks--Zaks fixed-point diagnostic, not a statement about
+   ordinary low-flavor QCD.
+8. A rectangular Euclidean Wilson loop extracts the static potential between
+   external color sources; an area law in pure Yang--Mills is a confinement
+   diagnostic, while dynamical fundamental matter can break the flux tube.
+9. Colored quark and gluon fields are not physical asymptotic states of QCD;
    physical scattering statements must be formulated in terms of gauge-invariant
    states or controlled high-energy factorization data.
 
@@ -84,6 +95,10 @@ The chapter must define and derive:
 - Constant-background box figure showing the IR scale \(L\sim\mu^{-1}\).
 - Running-coupling/dimensional-transmutation figure if the discussion is
   expanded beyond the displayed one-loop solution.
+- Banks--Zaks beta-shape figure distinguishing a perturbative fixed point from
+  continued strong-coupling flow.
+- Wilson-line/Wilson-loop figure distinguishing open flux-tube operators from
+  rectangular loop extraction of \(V(L)\).
 - DIS factorization figures must distinguish operator definitions from
   parton-model mnemonics.
 
