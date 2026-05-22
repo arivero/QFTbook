@@ -71,6 +71,24 @@ The chapter must define and derive:
 - the explicit continuum-limit estimate showing that the memory of
   \(\lambda_6(\Lambda_0)=0\) is suppressed by
   \((\Lambda_R/\Lambda_0)^2\);
+- a finite-coordinate cutoff-removal estimate for a split
+  \(z=(u,v)\) into retained renormalized coordinates and irrelevant
+  coordinates, including:
+  - the projected flow
+    \(\dd u/\dd t=B(u,v)\),
+    \(\dd v/\dd t=Av+F(u,v)\);
+  - the backward semigroup bound
+    \(\|e^{A\tau}\|\le C_A e^{\omega\tau}\) for \(\tau\le0\);
+  - the variation-of-constants formula separating direct irrelevant
+    boundary memory from the generated integral;
+  - the finite-coordinate continuum graph
+    \(v=V_R(u_R)\) at the reference scale when the generated integral
+    converges after tuning \(u(t_R)=u_R\);
+  - the estimate
+    \(v(t_R)=V_R(u_R)
+      +O((\Lambda_R/\Lambda_0)^{\min(\omega,\omega_F)})\), where
+    \(\omega_F\) is the convergence rate of the generated-integral
+    remainder;
 - the role of finite dimensionless irrelevant bare couplings in lattice
   regularizations.
 - the bridge to BPHZ and 1PI coordinates: finite-regulator equality of
@@ -110,14 +128,18 @@ The chapter must define and derive:
 11. Lattice QFT fits the same logic because finite dimensionless irrelevant
    lattice couplings correspond to dimensionful coefficients suppressed by
    powers of the UV cutoff.
-12. The Wilsonian action \(L_\Lambda\) is an action for remaining low modes,
+12. In a finite local projection, cutoff removal separates into two estimates:
+    direct memory of irrelevant bare coordinates is power-suppressed by the
+    irrelevant semigroup, and the continuum graph is selected by the generated
+    integral after retained coordinates are tuned.
+13. The Wilsonian action \(L_\Lambda\) is an action for remaining low modes,
     not the 1PI effective action; it must be followed by low-mode integration
     and a Legendre transform before comparison with 1PI coordinates.
-13. BPHZ, Wilsonian, and 1PI descriptions are related by maps.  BPHZ supplies
+14. BPHZ, Wilsonian, and 1PI descriptions are related by maps.  BPHZ supplies
     local Taylor subtractions, Wilsonian RG supplies Gaussian pushforward in
     cutoff space, and 1PI RG supplies finite projected coordinates at a
     subtraction scale.
-14. Beta-function components in Wilsonian and 1PI coordinates are comparable
+15. Beta-function components in Wilsonian and 1PI coordinates are comparable
     only after a matching map is chosen; under finite coordinate changes they
     transform by the chain rule.
 
@@ -132,6 +154,9 @@ The chapter must define and derive:
 - Continuum-limit flow diagram with UV cutoff \(\Lambda_0\), physical scale
   \(\Lambda_R\), fixed \(\lambda_4^R\), and limiting
   \(\lambda_6(\Lambda_R)\).
+- Finite-coordinate cutoff-removal estimate diagram showing the separation
+  between direct irrelevant boundary memory and the generated integral along
+  the tuned trajectory.
 - BPHZ--Wilsonian--1PI bridge diagram showing the bare regulated action,
   BPHZ \(R\)-operation, Wilsonian pushforward, low-source connected
   functional, Legendre transform, and coordinate projections.
@@ -157,3 +182,7 @@ The chapter must define and derive:
   match the original regulated connected functional; 1PI equality enters only
   after Legendre transformation.  The section separates BPHZ locality,
   Wilsonian cutoff flow, and 1PI subtraction-scale flow.
+- 2026-05-22 continuum-estimate pass: added a finite-coordinate local
+  cutoff-removal section that states the hypotheses for a projected
+  Wilsonian continuum graph and proves the power suppression of irrelevant
+  boundary memory from the semigroup estimate.

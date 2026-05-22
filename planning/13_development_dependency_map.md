@@ -106,9 +106,10 @@ Do not promote further material before: every renormalization claim identifies
 the regulator, subtraction or flow scheme, locality statement, and equivalence
 relation.
 
-Immediate target: deepen worked examples and continuum-limit estimates after
-the source-dependent Wilsonian/operator insertion bridge; keep the
-gauge-theory extension routed through BV.
+Immediate target: propagate the finite-coordinate cutoff-removal estimate
+into critical scaling and universality, then deepen worked examples of the
+BPHZ--Wilsonian--1PI matching.  Keep the gauge-theory extension routed through
+BV.
 
 ### Volume IV: Gauge Theory, Infrared Structure, and Anomalies
 

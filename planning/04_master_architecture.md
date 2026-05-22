@@ -136,7 +136,8 @@ Further development targets:
   gauge-theory 1PI/Wilsonian effective actions require the BV master
   framework developed in the gauge-theory volume;
 - deepen operator mixing and anomalous dimensions;
-- strengthen the continuum-limit discussion of critical phenomena;
+- extend the local cutoff-removal estimates into the critical-phenomena and
+  universality chapters;
 - prepare the logical bridge to the CFT volume.
 
 ## Volume IV: Gauge Theory, Infrared Structure, And Anomalies
