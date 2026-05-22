@@ -106,11 +106,10 @@ Do not promote further material before: every renormalization claim identifies
 the regulator, subtraction or flow scheme, locality statement, and equivalence
 relation.
 
-Immediate target: extend source-dependent operator insertions to
-multi-insertion contact-term conventions, then use the explicit
-BPHZ--Wilsonian--1PI matching and mass-insertion examples to tighten
-observable correlation-function statements in the universality and CFT
-transition chapters.  Keep the gauge-theory extension routed through BV.
+Immediate target: use the explicit BPHZ--Wilsonian--1PI matching,
+mass-insertion example, and multi-insertion contact-coordinate construction
+to tighten observable correlation-function statements in the universality and
+CFT transition chapters.  Keep the gauge-theory extension routed through BV.
 
 ### Volume IV: Gauge Theory, Infrared Structure, and Anomalies
 

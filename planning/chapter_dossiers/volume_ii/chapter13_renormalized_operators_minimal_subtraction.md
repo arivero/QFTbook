@@ -59,6 +59,16 @@ The chapter must define:
   of the insertion bubble, the Wilsonian insertion representative, the
   BPHZ normal-product subtraction, and the 1PI source-coordinate
   normalization condition;
+- the full local Taylor expansion of the source coordinate map
+  \(\eta_0=\mathcal Z_\Lambda(\eta_\Lambda)\) needed for multiple
+  insertions and contact terms;
+- the partition formula for multi-insertion connected distributions under a
+  nonlinear local source-coordinate change;
+- the two-insertion Wilsonian identity separating the connected product of
+  one-insertion representatives from the second source derivative of the
+  Wilsonian action;
+- the corresponding 1PI source-Hessian identity showing the
+  Legendre-transform subtraction by the low-field two-point function;
 - the anomalous-dimension transformation law under scale-dependent
   source-coordinate changes,
   \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\);
@@ -114,23 +124,28 @@ The chapter must define:
    part corrects the Wilsonian insertion, the low-low part is produced by the
    remaining low-field 1PI insertion, and the mixed part is represented by
    local source-coordinate data in the low-momentum expansion.
-9. Under scale-dependent finite changes of renormalized source coordinates,
+9. For multiple inserted operators, the finite-regulator chain rule for the
+   full local source chart expresses renormalized distributions as a sum over
+   partitions of the insertion labels.  The singleton partition gives the
+   noncoincident operator mixing, while partitions with larger blocks are
+   local distributions supported on collision diagonals.
+10. Under scale-dependent finite changes of renormalized source coordinates,
    anomalous dimensions transform by the connection law
    \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\).
-10. The operator-insertion Callan--Symanzik equation follows by
+11. The operator-insertion Callan--Symanzik equation follows by
    differentiating the renormalized insertion chart at fixed bare data.
-11. Contact terms in inserted correlators are local distributions supported on
+12. Contact terms in inserted correlators are local distributions supported on
    collision diagonals and depend on the contact-term convention.
-12. Minimal subtraction defines dimensionless couplings by retaining only pole
+13. Minimal subtraction defines dimensionless couplings by retaining only pole
    terms in the relation between bare and renormalized couplings.
-13. In four-dimensional scalar quartic theory, the one-loop MS relation is
+14. In four-dimensional scalar quartic theory, the one-loop MS relation is
    \(g^\epsilon=\mu^\epsilon[\lambda+3\lambda^2/(16\pi^2\epsilon)+O(\lambda^3)]\).
-14. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
+15. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
    of \(\beta_I^\epsilon\).
-15. Perturbative order counting implies
+16. Perturbative order counting implies
    \(\beta_I^{(m)}=0\) for \(m\ge2\) and
    \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).
-16. The nonnegative epsilon structure of the MS beta function leaves the
+17. The nonnegative epsilon structure of the MS beta function leaves the
     \(\epsilon^0\) beta function as the beta function of the target
     \(d\)-dimensional theory; the remaining pole coefficients are determined
     recursively, with the homogeneous-sector form reproducing the source
@@ -150,6 +165,9 @@ The chapter must define:
   insertion bubble into high-high, low-low, and mixed contributions and their
   images in the Wilsonian insertion, low-field 1PI insertion, and local
   source-coordinate map.
+- Multi-insertion contact-coordinate diagram separating the linear source
+  jet controlling noncoincident mixing from higher source jets supported on
+  collision diagonals.
 - Minimal-subtraction pole structure diagram.
 - One-loop \(\phi^4\) MS subtraction diagram with the pole coefficient.
 - Laurent/recursive structure figure showing how positive powers of
@@ -193,3 +211,7 @@ The chapter must define:
   assignment, writes the Wilsonian mass insertion, writes the BPHZ normal
   product subtraction at \(\mathcal Q_\mu\), and derives the 1PI
   source-coordinate normalization condition.
+- 2026-05-22 multi-insertion contact pass: added the full local Taylor
+  expansion of the source coordinate chart, the partition formula for
+  multiple connected insertions, the noncoincident/contact-term separation,
+  the two-insertion Wilsonian identity, and the 1PI source-Hessian identity.

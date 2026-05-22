@@ -740,6 +740,229 @@ bundle over theory space.  Equation
 coordinate version of the cotangent flow
 \(\gamma_{IK}=\partial\beta_K/\partial g_I\) for deformation operators.
 
+\section{Multiple Insertions and Contact-Term Coordinates}
+\label{sec:multiple-insertions-contact-coordinates}
+
+The linear source map in
+\eqref{eq:source-coordinate-local-differential-map} is the part of the source
+coordinate change seen by a single insertion.  Multiple insertions require
+the full Taylor expansion of the source chart.  At finite regulator let
+\(\mathcal S_\Lambda\) denote the space of regulated source functions
+\(\eta_\Lambda^A(x)\).  A local source coordinate chart is a smooth map
+\[
+  \mathcal Z_\Lambda:\mathcal S_\Lambda\longrightarrow \mathcal S_0,
+  \qquad
+  \eta_0=\mathcal Z_\Lambda(\eta_\Lambda),
+\]
+whose Taylor coefficients at the origin are local distributions.  Explicitly,
+\begin{equation}
+  \eta_0^I(z)
+  =
+  \sum_{r\ge1}\frac1{r!}
+  \int\prod_{a=1}^r\dd^D x_a\,
+  \mathcal Z^I{}_{A_1\cdots A_r}
+    (z;x_1,\ldots,x_r)
+  \eta_\Lambda^{A_1}(x_1)\cdots\eta_\Lambda^{A_r}(x_r).
+  \label{eq:local-source-coordinate-taylor-map}
+\end{equation}
+The \(r=1\) coefficient is the linear differential operator in
+\eqref{eq:source-coordinate-local-differential-map}.  For \(r\ge2\), locality
+means that
+\(\mathcal Z^I{}_{A_1\cdots A_r}(z;x_1,\ldots,x_r)\) is supported on the
+small diagonal \(z=x_1=\cdots=x_r\) and is a finite sum of derivatives of
+delta functions, with coefficients depending on the chosen regulator scale
+and subtraction convention.  These higher Taylor coefficients do not
+contribute for separated insertion points, but they determine the extension
+of inserted correlators as distributions across collision diagonals.
+
+Let
+\[
+  G^0_{I_1\cdots I_s}(z_1,\ldots,z_s;J)
+  =
+  (-1)^s
+  \frac{\delta^s W_{\Lambda_0}[J,\eta_0]}
+       {\delta\eta_0^{I_1}(z_1)\cdots
+        \delta\eta_0^{I_s}(z_s)}
+  \bigg|_{\eta_0=0}
+\]
+be the connected bare distribution with \(s\) operator insertions and
+arbitrary external source \(J\).  The renormalized distribution in the source
+coordinate \(\eta_\Lambda\) is
+\[
+  G^\Lambda_{A_1\cdots A_r}(x_1,\ldots,x_r;J)
+  =
+  (-1)^r
+  \frac{\delta^r W_{\Lambda_0}[J,\mathcal Z_\Lambda(\eta_\Lambda)]}
+       {\delta\eta_\Lambda^{A_1}(x_1)\cdots
+        \delta\eta_\Lambda^{A_r}(x_r)}
+  \bigg|_{\eta_\Lambda=0}.
+\]
+The chain rule gives the finite-regulator partition formula
+\begin{equation}
+  \begin{aligned}
+  G^\Lambda_{A_1\cdots A_r}(x_1,\ldots,x_r;J)
+  &=
+  \sum_{\pi\in\mathrm{Part}(r)}
+  (-1)^{r-|\pi|}
+  \int\prod_{B\in\pi}\dd^D z_B\,
+  G^0_{I_B\,:\,B\in\pi}(z_B\,:\,B\in\pi;J)
+  \\
+  &\hspace{2.0cm}\times
+  \prod_{B\in\pi}
+  \mathcal Z^{I_B}{}_{A_B}
+    (z_B;x_B).
+  \end{aligned}
+  \label{eq:multi-insertion-source-partition-formula}
+\end{equation}
+Here \(\mathrm{Part}(r)\) is the set of partitions of
+\(\{1,\ldots,r\}\).  If \(B=\{b_1,\ldots,b_s\}\), then
+\[
+  \mathcal Z^{I_B}{}_{A_B}(z_B;x_B)
+  =
+  \mathcal Z^{I_B}{}_{A_{b_1}\cdots A_{b_s}}
+    (z_B;x_{b_1},\ldots,x_{b_s}).
+\]
+The sign in \eqref{eq:multi-insertion-source-partition-formula} follows only
+from the Euclidean convention that each insertion is
+\(-\delta/\delta\eta\).
+
+For two insertions the formula reads
+\begin{equation}
+  \begin{aligned}
+  G^\Lambda_{AB}(x,y;J)
+  &=
+  \int\dd^D z\,\dd^D w\,
+  \mathcal Z^I{}_A(z;x)\mathcal Z^J{}_B(w;y)
+  G^0_{IJ}(z,w;J)
+  \\
+  &\quad
+  -
+  \int\dd^D z\,
+  \mathcal Z^I{}_{AB}(z;x,y)
+  G^0_I(z;J).
+  \end{aligned}
+  \label{eq:two-insertion-contact-coordinate-formula}
+\end{equation}
+The first term is the product of the single-insertion linear maps.  The
+second term is supported at \(x=y\) and is therefore a contact term.
+
+\begin{proposition}[Noncoincident insertions and contact coordinates]
+On the configuration space
+\[
+  \mathrm{Conf}_r
+  =
+  \{(x_1,\ldots,x_r)\mid x_a\ne x_b\ {\rm for}\ a\ne b\},
+\]
+only the partition of \(\{1,\ldots,r\}\) into singletons contributes to
+\eqref{eq:multi-insertion-source-partition-formula}.  All other partitions
+are local distributions supported on collision diagonals.
+\end{proposition}
+
+\begin{proof}
+If a block \(B\) has more than one element, the corresponding Taylor
+coefficient
+\[
+  \mathcal Z^{I_B}{}_{A_B}(z_B;x_B)
+\]
+is supported on the diagonal where all points \(x_b\), \(b\in B\), coincide
+with \(z_B\).  This support does not intersect \(\mathrm{Conf}_r\).  The only
+surviving term away from the collision diagonals is therefore the singleton
+partition, for which every Taylor coefficient is the linear source map.
+\end{proof}
+
+The same structure appears directly in the Wilsonian representation.  Define
+higher Wilsonian source derivatives by
+\[
+  \mathcal O^{\rm W}_{A_1\cdots A_r}(x_1,\ldots,x_r;\phi)
+  =
+  \frac{\delta^r L_\Lambda[\phi;\eta_\Lambda]}
+       {\delta\eta_\Lambda^{A_1}(x_1)\cdots
+        \delta\eta_\Lambda^{A_r}(x_r)}
+  \bigg|_{\eta_\Lambda=0}.
+\]
+For two insertions, differentiating the low-field functional integral gives
+\begin{equation}
+  G^\Lambda_{AB}(x,y;J)
+  =
+  \bigl\langle
+    \mathcal O^{\rm W}_A(x)\mathcal O^{\rm W}_B(y)
+  \bigr\rangle_{\!{\rm conn},J,\Lambda}^{\rm low}
+  -
+  \bigl\langle
+    \mathcal O^{\rm W}_{AB}(x,y)
+  \bigr\rangle_{J,\Lambda}^{\rm low}.
+  \label{eq:wilsonian-two-insertion-contact-term}
+\end{equation}
+Thus the contact term is the second source derivative of the
+source-extended Wilsonian action in the chosen source chart.
+
+For 1PI coordinates one must also distinguish the source Hessian of the
+Legendre transform from the connected two-insertion distribution.  In
+condensed notation, with field indices \(i,j\) integrated or summed,
+\[
+  \left.\frac{\delta^2\Gamma_\Lambda}
+    {\delta\eta_\Lambda^A\delta\eta_\Lambda^B}\right|_\varphi
+  =
+  \left.\frac{\delta^2 W_\Lambda^{\rm low}}
+    {\delta\eta_\Lambda^A\delta\eta_\Lambda^B}\right|_J
+  -
+  \frac{\delta^2 W_\Lambda^{\rm low}}
+       {\delta\eta_\Lambda^A\delta J_i}
+  \left(
+    \frac{\delta^2 W_\Lambda^{\rm low}}
+         {\delta J_i\delta J_j}
+  \right)^{-1}
+  \frac{\delta^2 W_\Lambda^{\rm low}}
+       {\delta J_j\delta\eta_\Lambda^B}.
+\]
+This is the finite-dimensional Legendre-transform identity applied to the
+regulated theory.  The second term subtracts the part connected by one
+low-field two-point function.  Consequently projected 1PI multi-insertion
+kernels have a contact-term convention inherited from both the nonlinear
+source chart and the Legendre-transform projection.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=3pt,align=center,
+        minimum width=2.75cm,minimum height=0.78cm,line width=0.8pt},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \node[box] (source) at (0,1.5)
+      {local source chart\\\(\eta_0=\mathcal Z_\Lambda(\eta_\Lambda)\)};
+    \node[box] (linear) at (4.0,2.55)
+      {linear jet\\\(D\mathcal Z_\Lambda\)};
+    \node[box] (higher) at (4.0,0.45)
+      {higher jets\\\(D^r\mathcal Z_\Lambda,\ r\ge2\)};
+    \node[box] (sep) at (8.05,2.55)
+      {noncoincident\\insertions};
+    \node[box] (diag) at (8.05,0.45)
+      {collision\\diagonals};
+    \node[box] (dist) at (12.0,1.5)
+      {renormalized\\inserted distribution};
+
+    \draw[arr] (source)--(linear);
+    \draw[arr] (source)--(higher);
+    \draw[arr] (linear)--(sep);
+    \draw[arr] (higher)--(diag);
+    \draw[arr] (sep)--(dist);
+    \draw[arr] (diag)--(dist);
+
+    \node[blue!70!black,align=center] at (6.1,3.05)
+      {operator mixing};
+    \node[red!70!black,align=center] at (6.1,-0.10)
+      {contact convention};
+  \end{tikzpicture}
+  }
+  \caption{A full source coordinate chart has a linear jet and higher local
+  jets.  The linear jet determines operator mixing at separated insertion
+  points.  The higher jets are supported on collision diagonals and determine
+  the contact-term convention for the full distribution.}
+  \label{fig:multi-insertion-contact-source-jets}
+\end{figure}
+
 \section{Anomalous Dimensions and Scaling Operators}
 
 If a basis can be chosen along the flow in which
@@ -880,9 +1103,11 @@ renormalization-factor contributions to the left gives
 Contact terms must be added when \(x\) collides with one of the other
 insertion points, or when several inserted operators are present and collide
 with one another.  Those terms are local distributions supported on collision
-diagonals.  Their coefficients are governed by the same renormalized local
-operator basis, but they depend on the contact-term convention chosen for the
-source-renormalized generating functional.
+diagonals, as described by the source-coordinate Taylor expansion in
+Section~\ref{sec:multiple-insertions-contact-coordinates}.  Their coefficients
+are governed by the same renormalized local operator basis, but they depend on
+the contact-term convention chosen for the source-renormalized generating
+functional.
 
 At a fixed point, diagonalizing \(\gamma_{IK}(g_\ast)\) gives scaling
 operators.  If \([O_A]\) is an eigenoperator with anomalous dimension
