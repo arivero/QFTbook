@@ -42,12 +42,11 @@ Cauchy surfaces \(\Sigma_-\) and \(\Sigma_+\), then
 \end{equation}
 Here conservation identifies the charge on \(\Sigma_\pm\) with the same
 abstract symmetry generator when no insertion lies between the two surfaces.
-Equation \eqref{eq:lorentzian-charge-commutator-by-slices} is therefore not a
-new assumption; it is the definition of the commutator after the charge has
-been represented on the Hilbert spaces immediately to the future and past of
-the insertion.  After Euclidean continuation, the two surfaces close into a
-small hypersurface surrounding the insertion, and the commutator becomes the
-small-surface action used below.
+Equation \eqref{eq:lorentzian-charge-commutator-by-slices} is the definition
+of the commutator after the charge has been represented on the Hilbert spaces
+immediately to the future and past of the insertion.  After Euclidean
+continuation, the two surfaces close into a small hypersurface surrounding the
+insertion, and the commutator becomes the small-surface action used below.
 
 \begin{figure}[H]
   \centering
@@ -204,55 +203,99 @@ This is the global Ward identity associated with the conformal Killing vector
 space of distinct points, completed by contact terms on diagonals when
 operator products collide.
 
-\section{Local Ward Identities}
+\section{Source-Derived Local Ward Identities}
 
-The surface identity can be written locally by leaving the stress tensor at
-the point \(x\).  For scalar insertions the diffeomorphism Ward identity has
-the distributional form
+The surface identity is the integral form of the source Ward identities
+introduced in Section~\ref{sec:cft-source-functionals-ward-contacts}.  Let
+\[
+  X=\mathcal O_1(x_1)\cdots\mathcal O_n(x_n),
+  \qquad x_i\ne x_j ,
+\]
+where the \(\mathcal O_i\) are scalar local operators.  In the source chart
+used for the stress tensor and the operators, translation invariance gives the
+distributional identity
 \begin{equation}
   \partial_\mu
   \left\langle
-    T^{\mu\nu}(x)\prod_{i=1}^n\mathcal O_i(x_i)
+    T^{\mu\nu}(x)X
   \right\rangle
   =
   -\sum_{i=1}^n
   \delta^{(D)}(x-x_i)
-  \frac{\partial}{\partial x_i^\nu}
   \left\langle
-    \prod_{i=1}^n\mathcal O_i(x_i)
-  \right\rangle
+    \mathcal O_1(x_1)\cdots
+    \partial_i^\nu\mathcal O_i(x_i)\cdots
+    \mathcal O_n(x_n)
+  \right\rangle .
   \label{eq:local-translation-ward}
 \end{equation}
-away from additional contact terms associated with composite-operator
-renormalization.  If \(\mathcal O_i\) carries spin, the right side also
-contains a local rotation acting on its spin indices.
+Here \(\partial_i^\nu\) differentiates the \(i\)th insertion coordinate.  A
+spin-carrying insertion adds the local representation term dictated by the
+diffeomorphism action on its source.  Equation
+\eqref{eq:local-translation-ward} is equivalent to the smeared identity
+\eqref{eq:cft-smeared-translation-ward}; the displayed delta functions record
+the extension of the separated-point distribution across the diagonals
+\(x=x_i\).
 
-The trace Ward identity records the response to Weyl rescaling.  For scalar
-primary insertions of dimensions \(\Delta_i\), its flat-space form at a
-conformal fixed point is
+For scalar primary insertions of dimensions \(\Delta_i\), the flat-space trace
+Ward identity in the same source chart is
 \begin{equation}
   \left\langle
-    T^\mu{}_\mu(x)\prod_{i=1}^n\mathcal O_i(x_i)
+    T^\mu{}_\mu(x)X
   \right\rangle
   =
   -\sum_{i=1}^n
   \Delta_i\,\delta^{(D)}(x-x_i)
-  \left\langle
-    \prod_{i=1}^n\mathcal O_i(x_i)
-  \right\rangle
+  \left\langle X\right\rangle
   +
-  \mathcal A(x;\{x_i\}).
+  \mathcal A(x;X).
   \label{eq:local-trace-ward}
 \end{equation}
-The term \(\mathcal A\) is the possible Weyl-anomaly contribution in a curved
-background, specialized after variation to flat space.  On flat space with
-separated insertions it vanishes except for contact terms.
+The distribution \(\mathcal A(x;X)\) is the local anomaly or contact term
+obtained by differentiating the local source functional
+\(\mathcal A_\sigma[X]\) in \eqref{eq:cft-smeared-weyl-ward} with respect to
+the Weyl parameter \(\sigma(x)\).  It vanishes on the configuration space of
+distinct flat-space points; on collision diagonals or curved backgrounds it is
+part of the specified source convention.
 
-Equations \eqref{eq:local-translation-ward} and
-\eqref{eq:local-trace-ward}, integrated against a conformal Killing vector
-\(\epsilon^\nu\), reproduce \eqref{eq:global-conformal-ward-identity}.  The
-conformal algebra therefore acts on local operators through stress-tensor
-surface integrals, and the same action constrains all correlation functions.
+Let \(\epsilon^\mu\) be a conformal Killing vector, let
+\[
+  \sigma_\epsilon=\frac1D\partial_\rho\epsilon^\rho,
+  \qquad
+  J^\mu_\epsilon=T^\mu{}_\nu\epsilon^\nu ,
+\]
+and assume the stress tensor is symmetric.  Combining
+\eqref{eq:local-translation-ward} and \eqref{eq:local-trace-ward} gives
+\begin{equation}
+  \partial_\mu
+  \left\langle J^\mu_\epsilon(x)X\right\rangle
+  =
+  \sum_{i=1}^n
+  \delta^{(D)}(x-x_i)
+  \left\langle
+    \mathcal O_1(x_1)\cdots
+    \delta_\epsilon\mathcal O_i(x_i)\cdots
+    \mathcal O_n(x_n)
+  \right\rangle
+  +
+  \sigma_\epsilon(x)\mathcal A(x;X),
+  \label{eq:local-conformal-current-ward}
+\end{equation}
+where for a scalar primary
+\[
+  \delta_\epsilon\mathcal O_i(x_i)
+  =
+  -\epsilon^\nu(x_i)\partial_{i,\nu}\mathcal O_i(x_i)
+  -\Delta_i\sigma_\epsilon(x_i)\mathcal O_i(x_i).
+\]
+For spin \(\rho_i\), \(\delta_\epsilon\mathcal O_i\) includes the local
+rotation term displayed later in
+\eqref{eq:primary-infinitesimal-transform}.  Integrating
+\eqref{eq:local-conformal-current-ward} over a region whose boundary is
+\(\Sigma\cup_i(-S_i)\) gives the surface decomposition
+\eqref{eq:surface-ward-decomposition}; if the large boundary contribution
+vanishes and the anomaly term integrates to zero in the chosen background, the
+global Ward identity \eqref{eq:global-conformal-ward-identity} follows.
 
 \section{Conformal Charges on the Cylinder}
 
