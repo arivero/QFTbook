@@ -124,6 +124,88 @@ any modes removed between two scales contribute only local background
 counterterms to the long-distance functional.  Under these assumptions the
 cocycle class is unchanged by RG flow.
 
+\section{A Perturbative Example of a Global Anomaly}
+
+The local triangle computation already distinguishes two uses of a current.
+Consider a four-dimensional massless Dirac fermion with vector and axial
+currents
+\[
+  j^\mu=\ii\bar\psi\gamma^\mu\psi,
+  \qquad
+  j_A^\mu=\ii\bar\psi\gamma^\mu\gamma_5\psi .
+\]
+The preceding chapter fixed the regularization convention in which the vector
+current coupled to an ordinary \(U(1)\) gauge field is preserved and the axial
+current carries the \(j_Ajj\) anomaly.  To test the axial \(U(1)\) itself as a
+background symmetry, couple a background gauge field \(A_\mu\) to \(j_A^\mu\),
+\[
+  \Delta S=\int\dd^4x\,A_\mu j_A^\mu .
+\]
+Gauge invariance of this background coupling would require the Ward identity
+for the vector-current divergence in the three-point function with two axial
+insertions:
+\[
+  \partial_\mu
+  \langle\Omega|
+  \operatorname T\,j^\mu(x)j_A^\nu(y)j_A^\rho(z)
+  |\Omega\rangle .
+\]
+The same oriented triangle graphs as in the local axial anomaly appear, with
+two \(\gamma_5\) insertions.  In the \(D=4-\epsilon\) regulator, split
+\(\ell=\ell_\parallel+\ell_\perp\) and keep \(\gamma_5\) four-dimensional.
+The trace term that remains after imposing the two axial-vector external Ward
+identities is proportional to
+\[
+  \ell_\perp^2(-4\ii)\epsilon^{\nu\rho\alpha\beta}
+  (k-2\ell)_\alpha p_\beta .
+\]
+The loop integral is symmetric under permutations of the three external
+momenta \(k,p,-k-p\).  Its finite local part is linear in the external
+momenta, hence
+\[
+  \epsilon^{\nu\rho\alpha\beta}(k-2\ell)_\alpha p_\beta
+  \longmapsto
+  \frac13\epsilon^{\nu\rho\alpha\beta}k_\alpha p_\beta
+\]
+inside the regulated contact term.  With the conventions of the preceding
+chapter this gives
+\begin{equation}
+  \partial_\mu
+  \langle\Omega|
+  \operatorname T\,j^\mu(x)j_A^\nu(y)j_A^\rho(z)
+  |\Omega\rangle
+  =
+  -\frac1{6\pi^2}
+  \epsilon^{\nu\rho\alpha\beta}
+  \partial_\alpha\delta^{(4)}(x-z)
+  \partial_\beta\delta^{(4)}(y-z).
+  \label{eq:vector-current-two-axial-contact-term}
+\end{equation}
+Expanding the background-field effective action
+\[
+  \ee^{\ii\Gamma[A]}
+  =
+  \int D\psi\,
+  \exp\left\{\ii S_0[\psi]
+    +\ii\int\dd^4x\,A_\mu j_A^\mu\right\}
+\]
+to second order in \(A\), equation
+\eqref{eq:vector-current-two-axial-contact-term} implies
+\begin{equation}
+  \Gamma[A+\dd\zeta]-\Gamma[A]
+  =
+  \int\dd^4x\,\zeta(x)\,
+  \frac1{48\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  F_{\mu\nu}F_{\rho\sigma}.
+  \label{eq:axial-background-gauge-variation}
+\end{equation}
+Thus the axial \(U(1)\) is an exact global symmetry only if one does not
+require a gauge-invariant functional of an axial background field.  Its
+background response is the anomaly class.  Promoting the same background to a
+dynamical gauge field would demand invariance under \(A\mapsto A+\dd\zeta\)
+and is obstructed by \eqref{eq:axial-background-gauge-variation}.
+
 \section{Example: A Finite SU(2) Anomaly}
 
 Let \(M\) be a compact spin four-manifold and let \(G_{\mathrm f}=SU(2)\).
@@ -180,6 +262,96 @@ If this \(SU(2)\) symmetry is gauged, the sign in
 descending to a function on gauge-equivalence classes of backgrounds.  If the
 same \(SU(2)\) is kept as a global symmetry, the sign is an anomaly class that
 must be reproduced by the infrared theory.
+
+\section{Vacuum Sectors and Locality}
+
+Spontaneous symmetry breaking is a statement about phases of an infinite-volume
+quantum system.  A useful comparison is a one-dimensional quantum mechanical
+Hamiltonian
+\[
+  H=\frac{P^2}{2}+V(x),
+  \qquad
+  V(x)=V(-x),
+\]
+where \(V\) has two degenerate minima at \(x=\pm a\).
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.92,baseline={(0,-0.1)}]
+    \draw[->] (-2.7,0) -- (2.7,0) node[right] {\(x\)};
+    \draw[->] (0,-0.15) -- (0,2.15) node[above] {\(V(x)\)};
+    \draw[thick,domain=-2.25:2.25,smooth,variable=\x]
+      plot ({\x},{0.18*(\x*\x-1.35)^2+0.18});
+    \draw[thick,blue!70,domain=-1.85:-0.55,smooth,variable=\x]
+      plot ({\x},{0.24+0.32*exp(-8*(\x+1.16)*(\x+1.16))});
+    \draw[thick,blue!70,domain=0.55:1.85,smooth,variable=\x]
+      plot ({\x},{0.24+0.32*exp(-8*(\x-1.16)*(\x-1.16))});
+    \fill (-1.16,0.18) circle (1.6pt);
+    \fill (1.16,0.18) circle (1.6pt);
+    \node[below] at (-1.16,0) {\(-a\)};
+    \node[below] at (1.16,0) {\(a\)};
+    \node[blue!70] at (-1.72,0.64) {\(\ket{-a}\)};
+    \node[blue!70] at (1.72,0.64) {\(\ket{+a}\)};
+    \node at (1.9,1.65) {\(V(x)\)};
+  \end{tikzpicture}
+  \caption{A finite-dimensional double well has localized semiclassical states
+  near the two minima, but the exact ground state is a symmetric
+  superposition.}
+  \label{fig:double-well-finite-volume}
+\end{figure}
+The localized semiclassical states \(\ket{+a}\) and \(\ket{-a}\) combine into
+Hamiltonian eigenstates
+\[
+  \ket{\psi_\pm}
+  =
+  \frac1{\sqrt2}\bigl(\ket{+a}\pm\ket{-a}\bigr).
+\]
+The splitting between them is exponentially small in the Euclidean tunneling
+action,
+\[
+  \Delta E\sim \ee^{-S_0},
+  \qquad
+  -\ddot x+V'(x)=0,
+  \qquad
+  x(\pm\infty)=\pm a .
+\]
+For a local quantum field theory with the analogous set of homogeneous
+minima, the tunneling action is proportional to the spatial volume.  In the
+infinite-volume limit the transition amplitude between distinct homogeneous
+phases is suppressed as
+\[
+  \exp(-S_0\,\operatorname{Vol})
+  \longrightarrow 0 .
+\]
+The pure vacua therefore define distinct phases rather than two nearly
+degenerate levels of one finite-dimensional Hamiltonian.
+
+Locality gives the corresponding superselection statement.  Let
+\(\{\ket{\Omega_i}\}\) be translation-invariant pure vacua in infinite volume.
+For any local operator \(\mathcal A(x)\), the vacuum matrix
+\[
+  A_{ij}:=\bra{\Omega_i}\mathcal A(0)\ket{\Omega_j}
+\]
+can be chosen diagonal in the phase label.  One way to see the constraint is
+to compare two local operators \(\mathcal A(x)\) and \(\mathcal B(y)\) at
+large spacelike separation.  Insert the vacuum sector decomposition and use
+cluster decomposition in a pure phase:
+\[
+  \bra{\Omega_i}\mathcal A(x)\mathcal B(y)\ket{\Omega_j}
+  =
+  \sum_k A_{ik}B_{kj}+\hbox{terms vanishing as }|x-y|\to\infty .
+\]
+For spacelike separation, locality gives
+\([\mathcal A(x),\mathcal B(y)]=0\), hence the vacuum matrices satisfy
+\[
+  \sum_k A_{ik}B_{kj}=\sum_k B_{ik}A_{kj}
+\]
+for all local \(\mathcal A,\mathcal B\).  The commuting family of vacuum
+matrices may be diagonalized simultaneously.  In that basis, local operators
+do not connect distinct pure phases:
+\[
+  \bra{\Omega_i}\mathcal A(x)\ket{\Omega_j}=0
+  \qquad (i\ne j).
+\]
 
 \section{Spontaneous Symmetry Breaking}
 
@@ -297,6 +469,103 @@ chosen phase, the matrix \(F_{Aa}\) has rank equal to the number of broken
 generators.  These massless states are the quanta described by the Goldstone
 coordinates \(\pi^a(x)\).
 
+\section{The \(U(1)\) Goldstone Model}
+
+The spectral conclusion is realized explicitly by a complex scalar field with
+\[
+  \mathcal L
+  =
+  -\partial_\mu\phi^*\partial^\mu\phi
+  -V(|\phi|).
+\]
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \draw[->,gray!75] (0,0) -- (0,2.25) node[above] {\(V\)};
+      \draw[->,gray!75] (0,0) -- (1.95,-0.55) node[right] {\(\operatorname{Im}\phi\)};
+      \draw[->,gray!75] (0,0) -- (-1.6,-0.85) node[left] {\(\operatorname{Re}\phi\)};
+      \draw[thick,blue!70,domain=-1.45:1.45,smooth,variable=\x]
+        plot ({\x},{0.42+0.64*(\x*\x-0.95)^2});
+      \draw[dashed,blue!60] (-1.05,-0.12) arc (200:340:1.15 and 0.34);
+      \draw[dashed,blue!60] (-1.05,-0.12) arc (160:20:1.15 and 0.34);
+      \fill[blue!70] (0.86,-0.02) circle (1.4pt);
+      \node[blue!70,align=center] at (0,-0.75)
+        {\(\langle\phi\rangle=v\ee^{\ii\theta_0}\)};
+      \node at (0,2.82) {exact \(U(1)\)};
+    \end{scope}
+    \begin{scope}[xshift=5.2cm]
+      \draw[->] (-1.9,0) -- (1.9,0) node[right] {\(\operatorname{Re}\phi\)};
+      \draw[->] (0,-0.15) -- (0,2.2) node[above] {\(V+\Delta V\)};
+      \draw[thick,blue!70,domain=-1.55:1.55,smooth,variable=\x]
+        plot ({\x},{0.16*(\x*\x-1.05)^2+0.34-0.22*\x});
+      \draw[dashed,blue!45,domain=-1.35:1.35,smooth,variable=\x]
+        plot ({\x},{0.16*(\x*\x-1.05)^2+0.24});
+      \fill[red!70] (1.08,0.10) circle (1.6pt);
+      \node[red!70,below right] at (1.08,0.10) {\(\langle\phi\rangle>0\)};
+      \node at (0,2.82) {small explicit breaking};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{For a \(U(1)\)-invariant potential minimized at \(|\phi|=v\), the
+  minima form a circle of vacua.  A small deformation
+  \(\Delta V=-\epsilon\,\operatorname{Re}\phi\) selects one point on that
+  circle.}
+  \label{fig:u1-goldstone-vacuum-circle}
+\end{figure}
+The \(U(1)\) current is
+\[
+  j^\mu
+  =
+  -\ii(\phi^*\partial^\mu\phi-\phi\partial^\mu\phi^*).
+\]
+Write
+\[
+  \phi(x)=r(x)\ee^{\ii\theta(x)}.
+\]
+Then
+\[
+  \mathcal L
+  =
+  -\partial_\mu r\,\partial^\mu r
+  -V(r)
+  -r^2\partial_\mu\theta\,\partial^\mu\theta,
+  \qquad
+  j^\mu=2r^2\partial^\mu\theta .
+\]
+The charge \(Q=\int\dd^3x\,j^0\) generates the shift of the angular field,
+\[
+  [Q,\theta(x)]=\ii ,
+\]
+with the sign fixed by the current convention.  If \(V(r)\) is minimized at
+\(r=v>0\), write \(r=v+\rho\).  The quadratic Lagrangian contains
+\[
+  -\partial_\mu\rho\,\partial^\mu\rho
+  -\frac12V''(v)\rho^2
+  -v^2\partial_\mu\theta\,\partial^\mu\theta .
+\]
+The radial field \(\rho\) is massive when \(V''(v)>0\), while \(\theta\) is a
+massless field whose constant shifts move along the vacuum circle.
+
+A small explicit symmetry-breaking deformation selects a phase.  For example,
+\[
+  \Delta V(\phi)=-\epsilon\,\operatorname{Re}\phi,
+  \qquad
+  \epsilon>0,
+\]
+chooses the vacuum with \(\theta=0\).  In the angular effective theory,
+\[
+  \Delta\mathcal L
+  =
+  \epsilon v\cos\theta
+  =
+  \epsilon v-\frac{\epsilon v}{2}\theta^2+O(\theta^4),
+\]
+so the Goldstone boson becomes a pseudo-Goldstone boson with
+\[
+  m_\theta^2\propto \frac{\epsilon}{v}.
+\]
+This is the prototype for the pion mass generated by small quark masses.
+
 \section{Chiral Symmetry of Massless QCD}
 
 Let \(q_L^I=P_Lq^I\) and \(q_R^I=P_Rq^I\), \(I=1,\ldots,N_f\), be massless
@@ -325,7 +594,8 @@ The left and right transformations act by
   \qquad
   (L,R)\in SU(N_f)_L\times SU(N_f)_R .
 \]
-Assume that the QCD phase under consideration has a bilinear condensate
+Assume that the QCD phase under consideration has a bilinear condensate whose
+orientation can be chosen as
 \[
   \Sigma_{IJ}
   =
@@ -333,7 +603,19 @@ Assume that the QCD phase under consideration has a bilinear condensate
   =
   \Sigma_0\,\delta_{IJ},
 \]
-the stabilizer is the diagonal subgroup.  The breaking pattern is therefore
+so that the stabilizer is the diagonal subgroup.  More explicitly, before
+choosing the orientation of the vacuum, write
+\[
+  A_{IJ}:=\langle\bar q_{R,J}q_{L,I}\rangle .
+\]
+Under \(SU(N_f)_L\times SU(N_f)_R\),
+\[
+  A\longmapsto R^\dagger A L .
+\]
+A choice of \(L\) and \(R\) can diagonalize \(A\).  If the vacuum is invariant
+under the non-chiral subgroup, then \(A\) is proportional to the identity.
+The unbroken transformations are precisely \(L=R\).  The breaking pattern is
+therefore
 \begin{equation}
   SU(N_f)_L\times SU(N_f)_R
   \longrightarrow
@@ -342,6 +624,29 @@ the stabilizer is the diagonal subgroup.  The breaking pattern is therefore
 \end{equation}
 The breaking pattern is an input about the QCD vacuum.  Given this input, the
 number of Goldstone bosons is \(N_f^2-1\).
+
+At \(\theta=0\), the non-chiral flavor symmetry is protected by the positivity
+structure of the Euclidean vectorlike theory.  With equal positive quark
+masses, the Euclidean functional integral contains
+\[
+  \det(\not D_A+m)
+\]
+for each flavor.  The nonzero eigenvalues of the anti-Hermitian Euclidean
+Dirac operator occur in pairs \(\ii\lambda,-\ii\lambda\), so the determinant is
+nonnegative.  For equal masses the expectation value of the flavor matrix
+\(\bar q_{R,J}q_{L,I}\) is proportional to \(\delta_{IJ}\) configuration by
+configuration after flavor averaging.  Taking the small-mass limit then
+selects a vacuum preserving \(SU(N_f)_V\).  This is the Vafa--Witten
+positivity argument in the form needed here.  It does not by itself prove the
+existence of the chiral condensate; it constrains the orientation of the
+condensate once the vectorlike massive regulator is used.
+
+The complex phase of \(\Sigma_0\) is tied to the topological angle.  A
+flavor-singlet axial rotation would rotate \(\Sigma_0\), but the same
+transformation is anomalous and shifts \(\theta\).  Thus the invariant data
+are the condensate orientation together with the anomaly-invariant
+combination of \(\theta\) and the quark-mass phase discussed in the preceding
+chapter.
 
 Choose Hermitian flavor generators \(T^a\) with
 \(\operatorname{Tr}(T^aT^b)=\frac12\delta^{ab}\).  The pion field is the
@@ -431,6 +736,53 @@ the expansion begins as
   +O(\pi^6/F_{\rm st}^4).
   \label{eq:su2-stereographic-expansion}
 \end{equation}
+The infinitesimal \(SU(2)_L\times SU(2)_R\) action in this chart is useful for
+organizing local terms.  Write
+\[
+  L=\exp\!\left(\frac{\ii}{2}\vec\theta_L\cdot\vec\sigma\right),
+  \qquad
+  R=\exp\!\left(\frac{\ii}{2}\vec\theta_R\cdot\vec\sigma\right),
+  \qquad
+  \vec\theta_V=\frac{\vec\theta_L+\vec\theta_R}{2},
+  \qquad
+  \vec\theta_A=\frac{\vec\theta_L-\vec\theta_R}{2}.
+\]
+For \(U\mapsto LUR^{-1}\), a direct computation from
+\eqref{eq:su2-stereographic-pion-field} gives
+\begin{equation}
+  \delta\vec\xi
+  =
+  -\vec\theta_V\times\vec\xi
+  +\frac12(1-\vec\xi^{\,2})\vec\theta_A
+  +\vec\xi(\vec\xi\cdot\vec\theta_A).
+  \label{eq:su2-stereographic-chiral-transformation}
+\end{equation}
+Thus the diagonal subgroup acts linearly on \(\vec\xi\), while the axial
+directions act by a nonlinear shift plus higher powers of \(\vec\xi\).
+Define
+\begin{equation}
+  \vec D_\mu
+  =
+  \frac{\partial_\mu\vec\xi}{1+\vec\xi^{\,2}} .
+  \label{eq:su2-stereographic-d-field}
+\end{equation}
+For constant transformation parameters,
+\begin{equation}
+  \delta\vec D_\mu
+  =
+  -\vec\theta_V\times\vec D_\mu
+  -(\vec\xi\times\vec\theta_A)\times\vec D_\mu .
+  \label{eq:su2-stereographic-d-transformation}
+\end{equation}
+The two independent four-derivative invariants relevant to four-pion
+scattering can be written as
+\[
+  (\vec D_\mu\cdot\vec D^\mu)^2,
+  \qquad
+  (\vec D_\mu\cdot\vec D_\nu)(\vec D^\mu\cdot\vec D^\nu),
+\]
+up to integrations by parts and terms that first affect higher-point
+amplitudes.
 This coordinate choice is only a local chart on \(S^3\); the scattering
 amplitude obtained from it is coordinate independent.  In the axial-current
 normalization of \eqref{eq:goldstone-current-matrix-element}, one may convert
@@ -497,7 +849,7 @@ with the corresponding \(f_\pi\)-normalization.
         \draw[thick] (-1.25,0.75)--(0,0)--(1.25,0.75);
         \draw[thick] (-1.25,-0.75)--(0,0)--(1.25,-0.75);
         \fill (0,0) circle (2.2pt);
-        \node[below] at (0,-0.35) {\(C_1,C_2\)};
+        \node[below] at (0,-0.35) {\(C_4,C'_4\)};
       \end{scope}
       \node[align=center] at (1.9,-1.42)
         {one loop from \(\mathcal L_2\)\\and local four-derivative terms};
@@ -514,10 +866,10 @@ At order \(E^4/F_{\rm st}^4\), the effective Lagrangian contains local
 four-derivative terms.  In the stereographic \(SU(2)\) chart these may be
 written, to the order needed for four-pion scattering, as
 \[
-  -\frac{C_1}{F_{\rm st}^4}
+  -\frac{C_4}{4F_{\rm st}^4}
   (\partial_\mu\vec\pi\cdot\partial^\mu\vec\pi)^2
   -
-  \frac{C_2}{F_{\rm st}^4}
+  \frac{C'_4}{4F_{\rm st}^4}
   (\partial_\mu\vec\pi\cdot\partial_\nu\vec\pi)
   (\partial^\mu\vec\pi\cdot\partial^\nu\vec\pi).
 \]
@@ -546,16 +898,28 @@ local renormalization, the logarithmic part has the form
     \biggr]
     \notag\\
   &\hspace{1.6cm}
-    -C_1(\mu)s^2
-    -C_2(\mu)(t^2+u^2)
+    -\frac12 C_4(\mu)s^2
+    -\frac12 C'_4(\mu)(t^2+u^2)
   \biggr\}
   +O(E^6).
   \label{eq:pion-one-loop-chiral-log-amplitude}
 \end{align}
-The constants \(C_1(\mu)\) and \(C_2(\mu)\) are low-energy constants.  Their
-values depend on the microscopic dynamics and on the subtraction convention,
-but the logarithmic dependence and the required \(\mu\)-dependence of
-\(C_1,C_2\) are fixed by the low-energy effective theory.
+Equivalently, in a Wilsonian cutoff notation in which the logarithms are
+written as \(\log(\Lambda^2/-s)\), \(\log(\Lambda^2/-t)\), and
+\(\log(\Lambda^2/-u)\), the remaining cutoff dependence is absorbed by
+\[
+  C_4(\Lambda)
+  =
+  C_4(\mu)+\frac{2}{3\pi^2}\log\frac{\Lambda^2}{\mu^2},
+  \qquad
+  C'_4(\Lambda)
+  =
+  C'_4(\mu)+\frac{4}{3\pi^2}\log\frac{\Lambda^2}{\mu^2}.
+\]
+The finite constants \(C_4(\mu)\) and \(C'_4(\mu)\) are low-energy constants.
+Their values depend on the microscopic dynamics and on the subtraction
+convention, but the logarithmic dependence and the required \(\mu\)-dependence
+are fixed by the low-energy effective theory.
 
 \section{Mass Spurions and Pseudo-Goldstone Bosons}
 
@@ -598,6 +962,57 @@ at leading order.  For two light flavors,
 up to higher-order chiral and electromagnetic corrections.  For degenerate
 light quarks \(m_u=m_d=m_q\), this becomes \(m_\pi^2=2B_0m_q\).
 
+The same normalization can be seen directly in the \(SU(2)\) stereographic
+chart.  Let
+\[
+  M=\begin{pmatrix}m_u&0\\0&m_d\end{pmatrix}.
+\]
+In terms of the quark bilinear \(\Phi^I{}_{J}=\bar q_L^Iq_{R,J}\), the
+microscopic deformation has the form
+\[
+  \Delta\mathcal L
+  =
+  -\frac{m_u+m_d}{2}
+  \operatorname{Tr}(\Phi+\Phi^\dagger)
+  -\frac{m_u-m_d}{2}
+  \operatorname{Tr}\bigl(\sigma_3(\Phi+\Phi^\dagger)\bigr).
+\]
+Restricting the pion field to the \(U(1)\subset SU(2)\) generated by
+\(\sigma_3\),
+\[
+  U(\xi_3)
+  =
+  1+2\ii\xi_3\sigma_3+\cdots
+  =
+  \begin{pmatrix}\ee^{\ii\theta}&0\\0&\ee^{-\ii\theta}\end{pmatrix}
+  +\cdots ,
+  \qquad
+  \theta=2\xi_3+\cdots .
+\]
+Since the kinetic term in \eqref{eq:su2-stereographic-lagrangian} gives
+\[
+  \mathcal L_2=-\frac{F_{\rm st}^2}{2}\partial_\mu\vec\xi\cdot
+  \partial^\mu\vec\xi+\cdots,
+\]
+the \(U(1)\) comparison has radius \(R=F_{\rm st}/2\).  Expanding the mass
+deformation therefore gives
+\[
+  -\frac12 m_{ab}^2\pi_a\pi_b,
+  \qquad
+  m_{ab}^2
+  =
+  \delta_{ab}\frac{4}{F_{\rm st}^2}(m_u+m_d)
+  \left\langle-\frac{\bar q q}{2}\right\rangle_0 ,
+\]
+which is the same leading relation as the \(B_0\)-notation after converting
+normalizations.  Empirically,
+\[
+  m_{\pi^0}\simeq135\,\mathrm{MeV},
+  \qquad
+  m_{\pi^\pm}\simeq140\,\mathrm{MeV},
+\]
+with the splitting produced by isospin breaking and electromagnetism.
+
 The chiral expansion counts \(D_\mu U=O(p)\), external vector and axial
 backgrounds as \(O(p)\), and \(M\) as \(O(p^2)\).  The functional obtained from
 \(\mathcal L_2+\mathcal L_{\mathrm{mass}}\) is therefore the leading
@@ -609,8 +1024,29 @@ with the chiral-symmetry-breaking scale.
 The pion effective action must reproduce the global anomalies of the
 microscopic quarks.  For \(N_f\ge3\), let \(M_4\) be spacetime and choose a
 five-manifold \(B_5\) with \(\partial B_5=M_4\).  Extend
-\(U:M_4\to SU(N_f)\) to \(\widetilde U:B_5\to SU(N_f)\).  The ungauged
-Wess--Zumino functional is
+\(U:M_4\to SU(N_f)\) to \(\widetilde U:B_5\to SU(N_f)\).
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[thick] (0,0) ellipse (2.0 and 1.25);
+    \draw[thick] (-2,0) arc (180:360:2.0 and 0.42);
+    \draw[dashed] (2,0) arc (0:180:2.0 and 0.42);
+    \fill[blue!12] (-1.58,0.08)
+      .. controls (-0.9,0.42) and (0.25,0.35) .. (1.18,0.12)
+      .. controls (0.8,-0.12) and (-0.5,-0.18) .. (-1.58,0.08);
+    \draw[blue!70,thick] (-1.58,0.08)
+      .. controls (-0.9,0.42) and (0.25,0.35) .. (1.18,0.12)
+      .. controls (0.8,-0.12) and (-0.5,-0.18) .. (-1.58,0.08);
+    \node[blue!70] at (-0.15,0.15) {\(B_5\)};
+    \node at (2.25,0.35) {\(M_4=\partial B_5\)};
+    \draw[->] (1.95,0.28) -- (1.35,0.1);
+  \end{tikzpicture}
+  \caption{The Wess--Zumino functional is written by extending the spacetime
+  field \(U:M_4\to SU(N_f)\) to a five-dimensional filling \(B_5\).  Changing
+  the filling changes the integral by a quantized period.}
+  \label{fig:wzw-five-dimensional-filling}
+\end{figure}
+The ungauged Wess--Zumino functional is
 \begin{equation}
   \Gamma_{\mathrm{WZ}}[U]
   =
@@ -655,6 +1091,45 @@ Embedding electromagnetism by
   \qquad
   Q=\operatorname{diag}(q_1,\ldots,q_{N_f}),
 \]
+the relevant microscopic diagram is the quark triangle
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.9,baseline={(0,-0.1)},
+    photon/.style={decorate,decoration={snake,amplitude=1.4pt,segment length=6pt},
+      line width=0.75pt}]
+    \coordinate (v1) at (0,1.1);
+    \coordinate (v2) at (-1.15,-0.85);
+    \coordinate (v3) at (1.15,-0.85);
+    \draw[thick] (v1)--(v2)--(v3)--cycle;
+    \draw[->,thick] (-2.45,0.15)--(v2);
+    \draw[photon,->] (v1)--(0,2.25);
+    \draw[photon,->] (v3)--(2.25,-0.85);
+    \fill (v1) circle (1.5pt);
+    \fill (v2) circle (1.5pt);
+    \fill (v3) circle (1.5pt);
+    \node[left] at (-2.45,0.15) {\(j^{A\mu}_a\)};
+    \node[above] at (0,2.25) {\(\gamma\)};
+    \node[right] at (2.25,-0.85) {\(\gamma\)};
+  \end{tikzpicture}
+  \caption{The electromagnetic background probes the axial \(SU(2)\) flavor
+  anomaly through the quark triangle with one axial-current insertion and two
+  electromagnetic-current insertions.}
+  \label{fig:em-axial-flavor-triangle}
+\end{figure}
+The corresponding axial-flavor Ward identity is
+\[
+  \partial_\mu j_a^{A\mu}
+  =
+  -\frac{N_c}{16\pi^2}
+  \operatorname{Tr}\!\left(\frac{\sigma_a}{2}Q^2\right)
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}.
+\]
+For \(Q=e\,\operatorname{diag}(2/3,-1/3)\), the trace is nonzero only for
+\(a=3\), where
+\[
+  \operatorname{Tr}\!\left(\frac{\sigma_3}{2}Q^2\right)=\frac{e^2}{6}.
+\]
+Consequently
 the gauged WZW functional contains the neutral-pion coupling
 \begin{equation}
   \mathcal L_{\pi^0\gamma\gamma}
@@ -670,6 +1145,33 @@ For \(N_c=3\), \(Q=\operatorname{diag}(2/3,-1/3)\), and
 \(\pi^0F_{\mu\nu}\widetilde F^{\mu\nu}\) is \(e^2/(16\pi^2f_\pi)\).
 The coefficient is the low-energy coefficient required by matching the
 microscopic electromagnetic flavor anomaly.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.9,baseline={(0,-0.1)},
+    photon/.style={decorate,decoration={snake,amplitude=1.4pt,segment length=6pt},
+      line width=0.75pt}]
+    \draw[thick,dashed,->] (-2.0,0) -- (0,0);
+    \draw[photon,->] (0,0) -- (1.75,0.75);
+    \draw[photon,->] (0,0) -- (1.75,-0.75);
+    \fill (0,0) circle (2pt);
+    \node[left] at (-2.0,0) {\(\pi^0\)};
+    \node[right] at (1.75,0.75) {\(\gamma\)};
+    \node[right] at (1.75,-0.75) {\(\gamma\)};
+  \end{tikzpicture}
+  \caption{The electromagnetic flavor anomaly produces the local
+  \(\pi^0\gamma\gamma\) vertex in the pion effective action.}
+  \label{fig:pi-zero-two-photon-decay}
+\end{figure}
+
+The corresponding decay rate scales as
+\[
+  \Gamma(\pi^0\to2\gamma)
+  \propto
+  \frac{N_c^2\alpha^2}{f_\pi^2}m_{\pi^0}^3,
+\]
+with the proportionality factor fixed by the normalization of
+\eqref{eq:pi-zero-two-photon-anomaly} and the convention for \(f_\pi\).
 
 \section{Conceptual Output of the Gauge-Dynamics Sequence}
 
