@@ -106,11 +106,20 @@ certificate:
 
 - it is a definition or convention introduced in the text;
 - it is derived in the text from named assumptions;
-- it is quoted as a theorem with hypotheses and reference;
+- it is quoted as a theorem with hypotheses, reference, conclusion, and proof
+  status;
 - it is a controlled approximation with expansion parameter and error class;
 - it is labelled formal, heuristic, conjectural, or open.
 
 Uncertified claims are draft debt.
+
+Self-contained development is the default.  A nontrivial physics claim may not
+be imported from an external reference merely because the reference is sound.
+When the claim is part of the book's logical construction, the text must give
+the definition, assumptions, and derivation or argument needed by the reader.
+Large external theorems may be used as inputs only after the theorem is stated
+with its hypotheses and domain, the chapter explains how those hypotheses
+enter, and the proof status is explicit.
 
 ## Limits
 
@@ -174,7 +183,7 @@ Particles arise from spectral and asymptotic structure. A Wigner one-particle
 representation, a free Fock representation, a local observable net, and an
 asymptotic scattering space are distinct mathematical objects.
 
-## Proof Depth
+## Self-Contained Proof Depth
 
 Full proofs are expected for central results when the proof is within the
 scope of the book. Proof sketches are allowed for large external theorems only

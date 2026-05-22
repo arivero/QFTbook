@@ -16,6 +16,12 @@ For each chapter, work in this order:
 
 No step may be skipped because the topic is familiar.
 
+External references are study tools and theorem-boundary checks. They do not
+license the manuscript to import a nontrivial physics claim as an unexplained
+fact. If a claim is used in the logical development, the chapter must carry
+its assumptions and argument, or else mark it as an external theorem with a
+precise statement and state that the proof is outside the present scope.
+
 ## No-Skip Source Coverage Rule
 
 The 253a and 253b source notes are a coverage obligation for the core
@@ -80,12 +86,21 @@ Every load-bearing claim must be one of:
 - assumption;
 - construction;
 - derivation in the chapter;
-- theorem with hypotheses and reference;
+- theorem with hypotheses, reference, and a statement of whether the proof is
+  included, sketched, or deliberately deferred;
 - controlled approximation;
 - formal calculation with formal status;
 - conjecture or open problem.
 
 Uncertified claims cannot appear in polished TeX.
+
+A citation alone is not a certificate for a nontrivial physics claim. For
+central physics claims, the monograph should give a self-contained derivation
+or argument from the chapter's stated data. External theorem citations are
+permitted only when the theorem is a mathematical input whose hypotheses,
+domain, conclusion, and role in the local argument have been made explicit.
+If those hypotheses are not verified in the chapter, the conclusion must be
+phrased conditionally.
 
 For invariance, anomaly, duality, matching, universality, or reconstruction
 claims, the text must identify the object being compared and the equivalence
@@ -155,7 +170,9 @@ files.
 - Are all symbols defined?
 - Are all definitions proper?
 - What is the first nontrivial claim?
-- Where is that claim proved, sourced, or classified?
+- Where is that claim proved, argued, or classified?
+- If an external theorem is cited, are its hypotheses, conclusion, and local
+  role stated, and is the proof status clear?
 - Are all limits and approximations stated?
 - Are all figures mathematical content?
 - Does the chapter preserve the source-order spine?

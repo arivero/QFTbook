@@ -35,6 +35,13 @@ External sources do not determine the monograph's logical order. Standard
 textbooks are not models for organization. Rigorous references may force a
 draft claim to be weakened, qualified, or moved to an open problem.
 
+External sources also do not replace exposition. A nontrivial physics claim
+may enter the monograph only after the manuscript supplies the needed
+definitions, assumptions, and derivation or argument. When a large theorem is
+used without proof, the chapter must state the theorem's hypotheses and
+conclusion, identify precisely how it is used, and make clear which parts are
+external inputs rather than consequences derived in the book.
+
 ## Local Source Map
 
 | Source | Local path | Role |
@@ -91,7 +98,10 @@ For imported material, record:
 - exact page, section, theorem, or equation when available;
 - claim imported;
 - framework of validity;
-- whether the proof is reproduced, sketched, or cited;
+- whether the proof is reproduced, sketched, cited as an external theorem, or
+  deferred as outside scope;
+- if the claim is physical rather than purely mathematical, the local
+  derivation or argument that will appear in the manuscript;
 - whether notation has been adapted;
 - whether figures or diagrams were checked.
 

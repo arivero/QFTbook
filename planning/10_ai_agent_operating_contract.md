@@ -15,7 +15,9 @@ source-grounded, logically ordered, symbol-complete monograph.
 - Use proper definitions in the stated framework.
 - State assumptions before consequences.
 - Classify every major claim.
-- Use external references for theorem-level claims not proved in the chapter.
+- Use external references for theorem-level boundary control, but do not
+  import nontrivial physics claims without a self-contained derivation,
+  argument, or explicitly conditional theorem statement.
 - Keep the transcription layer separate from the monograph.
 - Include only audited chapters in the compiled TeX.
 
@@ -55,6 +57,12 @@ For each framework, state its data and domain:
 Never move formulas among these frameworks without a theorem, derivation, or
 explicit formal-status label.
 
+Never use a reference, standard name, or community habit as evidence by
+itself. If a result is needed for the chapter's physics logic, reproduce the
+argument at the appropriate level of detail. If reproducing the proof would
+take the text outside its scope, state the theorem precisely, record the
+hypotheses, and make the dependence conditional.
+
 ## Required Outputs For Chapter Work
 
 After drafting or revising a chapter, report:
@@ -65,6 +73,7 @@ After drafting or revising a chapter, report:
 - definitions introduced or corrected;
 - symbols added to the notation inventory;
 - claims added, proved, quoted, or reclassified;
+- for any quoted external theorem, hypotheses stated and proof status;
 - figures added or changed;
 - build and audit result;
 - unresolved issues.

@@ -71,12 +71,17 @@ For every major claim, record:
 - claim statement;
 - status;
 - assumptions;
-- proof in chapter, theorem reference, or formal status;
+- proof or argument in chapter, theorem reference with hypotheses and proof
+  status, or formal status;
 - framework of validity;
 - failure mode or changed-domain case;
 - downstream dependency.
 
 Claims without certification cannot enter polished prose.
+For nontrivial physics claims, a reference is not enough: the ledger must
+point to the self-contained derivation or argument planned for the chapter, or
+state that the claim is conditional on an external theorem whose hypotheses
+are explicitly listed.
 
 ## Derivation Plan
 
@@ -125,7 +130,10 @@ constructions, and consequences.
 - Are all assumptions visible?
 - Are exact, regulated, perturbative, formal, heuristic, conjectural, and open
   statements separated?
-- Are theorem-level claims sourced or proved?
+- Are theorem-level claims proved, sketched, or quoted with hypotheses and
+  proof status?
+- Does every nontrivial physics claim have a self-contained argument in the
+  chapter or a clearly conditional theorem dependency?
 - Are figures accurate?
 - Does the chapter preserve the source order?
 - Does the chapter avoid textbook ordering habits?
