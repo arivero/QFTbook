@@ -3,7 +3,9 @@
 ## Status
 
 Current status: certified on 2026-05-22 after handwritten source and
-rendered-figure audit for the 253a pp. 52--62 free-scalar canonical block.
+rendered-figure audit for the 253a pp. 52--62 free-scalar canonical block;
+tightened on 2026-05-23 so the canonical construction is explicitly separated
+from the regulated Lagrangian path-integral construction.
 
 ## Logical Role
 
@@ -44,7 +46,9 @@ Working framework:
 - canonical field coordinate \(\phi(t,\vec x)\) and conjugate momentum
   \(\Pi(t,\vec x)\);
 - quantum fields as operator-valued distributions on a dense finite-particle
-  domain.
+  domain;
+- regulated path-integral symbols \(R,\mathcal C_R,\dd\mu_R,S_R\) when the
+  chapter contrasts canonical quantization with the later scalar path integral.
 
 ## Notation Inventory
 
@@ -63,6 +67,7 @@ Working framework:
 | \(a(\vec k),a^\dagger(\vec k)\) | operator-valued distributions | invariant-measure normalization used earlier |
 | \(\Delta(x)\) | distribution | Pauli--Jordan commutator distribution |
 | \(\mathcal D_0\) | dense domain | finite-particle vectors |
+| \(R,\mathcal C_R,\dd\mu_R,S_R\) | regulator data | finite-dimensional or lattice path-integral approximation |
 
 ## Definition Ledger
 
@@ -71,6 +76,8 @@ Working framework:
 - free massive scalar Lagrangian and Klein-Gordon equation;
 - Cauchy data for the free scalar field;
 - canonical momentum and Hamiltonian density;
+- regulated field-configuration integral notation used only as a later
+  construction target;
 - equal-time Poisson brackets and equal-time commutation relations;
 - canonical oscillator normalization and invariant mass-shell normalization;
 - finite-regulator vacuum-energy shift;
@@ -84,6 +91,7 @@ Working framework:
 | The free scalar Euler-Lagrange equation is \((\partial^\mu\partial_\mu-m^2)\phi=0\). | Derived | Variation of the action |
 | Classical free solutions are supported on the mass shell \(k^2+m^2=0\). | Derived | Fourier transform of Klein-Gordon equation |
 | Cauchy data \(\phi(0,\vec x)\), \(\partial_t\phi(0,\vec x)\) determine the free solution. | Derived | Positive/negative frequency decomposition |
+| The Lagrangian field path-integral symbol denotes a specified limit or asymptotic expansion of regulated integrals over \((\mathcal C_R,\dd\mu_R,S_R)\). | Framework statement | 2026-05-23 rigor pass |
 | Equal-time CCR determine the oscillator algebra once a mode normalization is fixed. | Derived | Fourier inversion |
 | The free Hamiltonian selects \(\omega_{\vec k}=\sqrt{\vec k^2+m^2}\) as the diagonal oscillator frequency. | Derived | Substitution into \(H_0\) |
 | Oscillator algebras related by Bogoliubov transformations do not by themselves determine the vacuum. | Derived/construction | 2026-05-22 source audit of handwritten Bogoliubov remark |

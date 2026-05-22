@@ -97,10 +97,16 @@ multiplication. The momentum operators are
 \[
   \widehat p_a=-\ii\hbar\,\frac{\partial}{\partial q^a}
 \]
-on a suitable dense domain, and satisfy
+first on the common invariant test domain
+\(\mathcal S(\mathbb R^d)\subset\Hilb_{\mathcal Q}\), and satisfy
 \[
   [\widehat q^a,\widehat p_b]=\ii\hbar\,\delta^a_b.
 \]
+Closures or self-adjoint extensions are specified when a Hamiltonian is
+chosen.  The Schwartz-domain convention is enough for the distributional kernel
+manipulations below; the operator limit is then stated at the Hilbert-space
+level.
+
 Let \(\widehat H\) be a self-adjoint Hamiltonian on \(\Hilb_{\mathcal Q}\).
 The time-evolution operator over time \(T\in\mathbb R\) is
 \[
@@ -123,7 +129,23 @@ constructed below gives a regulated representation of matrix elements of this
 Hamiltonian time evolution.
 
 The position and momentum generalized eigenstates are denoted by
-\(\ket{q}\) and \(\ket{p}\). They are distributions, normalized by
+\(\ket{q}\) and \(\ket{p}\). They are elements of
+\(\mathcal S'(\mathbb R^d)\) in the rigged Hilbert space
+\[
+  \mathcal S(\mathbb R^d)
+  \subset
+  L^2(\mathbb R^d,\dd^dq)
+  \subset
+  \mathcal S'(\mathbb R^d),
+\]
+with the \(\hbar\)-dependent Fourier convention
+\[
+  \widetilde\psi(p)
+  =
+  \int_{\mathbb R^d}\dd^dq\,
+  \ee^{-\frac{\ii}{\hbar}p_aq^a}\psi(q).
+\]
+They are normalized by
 \[
   \braket{q}{p}=\ee^{\frac{\ii}{\hbar}p_aq^a},
 \]
@@ -133,22 +155,25 @@ and used through the resolutions
   \qquad
   \int_{\mathbb R^d}\frac{\dd^dp}{(2\pi\hbar)^d}\,\ket{p}\bra{p}=1.
 \]
+These are weak identities: after inserting test vectors on the left and right
+they become the ordinary Fourier inversion formula.
 The transition amplitude is the distributional kernel
 \[
   K(q_f,T;q_i,0)
   =
   \bra{q_f}U(T)\ket{q_i}.
 \]
-In Lagrangian notation one often writes this kernel formally as
+The continuum Lagrangian path-integral notation for this same kernel is
 \[
   \bra{q_f}U(T)\ket{q_i}
   =
   \int_{q(0)=q_i}^{q(T)=q_f} [Dq]\,
   \exp\left(\frac{\ii}{\hbar}S[q]\right).
 \]
-The rest of this chapter gives this formula its regulated meaning.  The
-symbol \([Dq]\) obtains its meaning from the regulator, limiting procedure,
-operator symbol, and boundary conditions.
+This displayed equation is a compact name for the regulated construction
+below.  The symbol \([Dq]\) is determined by the regulator, limiting procedure,
+operator symbol, and boundary conditions; at fixed regulator the object is a
+finite-dimensional oscillatory integral.
 
 \section{Finite Time Slicing}
 

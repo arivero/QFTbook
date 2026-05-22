@@ -177,9 +177,17 @@ so that
 
 There are two constructions to keep distinct. Canonical quantization starts
 from the equal-time phase space \((\phi,\Pi)\) and a Hamiltonian. The
-Lagrangian path integral formally starts from
-\(\int[D\phi]\exp(\ii S[\phi]/\hbar)\), whose measure requires a regulator
-before it becomes a construction. This chapter develops the canonical
+Lagrangian path-integral construction is defined by first choosing a regulator
+that replaces the field by finitely many coordinates or modes:
+\[
+  \int_{\mathcal C_R}\dd\mu_R(\phi_R)\,
+  \exp\left(\frac{\ii}{\hbar}S_R[\phi_R]\right).
+\]
+Here \(R\) labels the chosen cutoff, \(\mathcal C_R\) is the regulated
+configuration space, \(\dd\mu_R\) is the corresponding finite-dimensional or
+lattice measure, and \(S_R\) is the regulated action.  The continuum symbol
+\(\int[D\phi]\exp(\ii S[\phi]/\hbar)\) denotes a specified limit or asymptotic
+expansion of these regulated objects. This chapter develops the canonical
 construction; the scalar field path integral is introduced later.
 
 \section{Canonical Hamiltonian Formalism}

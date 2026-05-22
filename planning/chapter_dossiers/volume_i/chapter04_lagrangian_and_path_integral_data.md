@@ -3,7 +3,9 @@
 ## Status
 
 Current status: source-certified against handwritten 253a pp. 10--14 after
-the 2026-05-22 derivation and figure pass.
+the 2026-05-22 derivation and figure pass; tightened on 2026-05-23 so the
+position/momentum kernels explicitly use the rigged-Hilbert-space convention
+and the continuum path-integral symbol is tied to finite regulators.
 
 ## Logical Role
 
@@ -27,7 +29,8 @@ Working framework:
 - self-adjoint Hamiltonian \(\widehat H\);
 - unitary time-evolution group \(U(T)=\exp(-\ii T\widehat H/\hbar)\);
 - generalized position and momentum eigenstates used as a distributional
-  resolution of identity;
+  resolution of identity in
+  \(\mathcal S(\mathbb R^d)\subset L^2(\mathbb R^d)\subset\mathcal S'(\mathbb R^d)\);
 - finite time partition \(0=t_0<t_1<\cdots<t_N=T\);
 - finite-dimensional phase-space integrals at fixed \(N\).
 
@@ -66,10 +69,13 @@ Working framework:
 | \(G_{ab}(q)\) | positive-definite configuration-space metric | Lagrangian form |
 | \(J(t)\) | external source | generating functional |
 | \(\beta_{\mathrm T}\) | Euclidean inverse temperature in trace kernels | thermal trace |
+| \(\mathcal S(\mathbb R^d)\subset L^2\subset\mathcal S'\) | Gelfand triple | generalized position and momentum kernels |
 
 ## Definition Ledger
 
 - regular Legendre transform from classical Lagrangian to Hamiltonian data;
+- weak position/momentum resolutions of identity with the \(\hbar\)-Fourier
+  normalization;
 - finite time-sliced phase-space integral;
 - discrete phase-space action;
 - ordering-dependent Hamiltonian symbols and local \(O(\hbar)\) counterterms;
@@ -84,6 +90,7 @@ Working framework:
 | --- | --- | --- |
 | A regular classical Lagrangian determines Hamiltonian data through the Legendre transform \(p_a=\partial L/\partial\dot q^a\), \(H=p_a\dot q^a-L\). | Construction with hypothesis | Added before the quantum time-slicing construction and checked against handwritten p. 10 |
 | Schrödinger and Heisenberg time evolution are two representations of \(U(t)=e^{-\ii t\widehat H/\hbar}\), with \(\dot{\widehat O}(t)=\ii[\widehat H,\widehat O(t)]/\hbar\) on the relevant domain. | Operator identity | Restored from handwritten p. 11 |
+| Position and momentum kets are distributional vectors in a Gelfand triple; their resolutions of identity are weak Fourier-inversion identities. | Definition/construction | 2026-05-23 rigor pass |
 | Inserting position and momentum resolutions gives a finite-dimensional phase-space expression for time evolution at fixed partition. | Construction | Derived in chapter |
 | The continuum path-integral notation is shorthand for a regulator and limiting procedure. | Framework statement | Definition of \(K_N\) and limiting convention |
 | Distinct time-lattice orderings define distinct operator symbols \(h\) and \(h'\), differing by local \(O(\hbar)\) terms. | Regulator statement | Explicit finite-slice comparison patched from handwritten p. 13 |
