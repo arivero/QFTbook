@@ -157,14 +157,22 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
   of \(\Hilb\); when spinor fields are present, \(SO^+(1,D-1)\) is replaced
   by the appropriate double cover;
   \item self-adjoint translation generators \(P_\mu\), defined by
-  \(U(a,1)=\exp(-\ii a^\mu P_\mu)\), whose joint spectral measure has support
+  \(U(a,1)=\exp(\ii a^\mu P_\mu)\), whose joint spectral measure has support
   contained in the closed future cone
   \[
     \overline V_+
     =
     \{p\in\mathbb R^D:p^0\ge0,\ \eta_{\mu\nu}p^\mu p^\nu\le0\};
   \]
-  \item a nonzero Poincare-invariant unit vector \(\vac\in\Hilb\);
+  \item a nonzero Poincare-invariant unit vector \(\vac\in\Hilb\), satisfying
+  \(U(a,\Lambda)\vac=\vac\), with vacuum uniqueness in the chosen sector
+  expressed by
+  \[
+    \{\psi\in\Hilb:U(a,\Lambda)\psi=\psi
+    \text{ for all }(a,\Lambda)\}
+    =
+    \mathbb C\vac;
+  \]
   \item an assignment
   \[
     \mathcal O\longmapsto\Obs(\mathcal O)\subset\mathcal B(\Hilb)
@@ -173,7 +181,7 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
   concrete \(*\)-subalgebras of the bounded operators on \(\Hilb\), satisfying
   covariance, isotony, and locality:
   \[
-    U(a,\Lambda)\Obs(\mathcal O)U(a,\Lambda)^{-1}
+    U(a,\Lambda)^{-1}\Obs(\mathcal O)U(a,\Lambda)
     =
     \Obs(\Lambda\mathcal O+a),
   \]
@@ -198,13 +206,30 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
 \end{enumerate}
 \end{definition}
 
+The direction of conjugation is part of the convention.  With
+\(U(a,1)=\exp(\ii a^\mu P_\mu)\), a coordinate-labelled scalar field obeys
+\[
+  U(a,1)^{-1}\widehat\Phi(x)U(a,1)
+  =
+  \widehat\Phi(x+a),
+  \qquad
+  [P_\mu,\widehat\Phi(x)]
+  =
+  \ii\,\partial_\mu\widehat\Phi(x)
+\]
+as an identity of distributions on a common invariant domain.  Equivalently,
+conjugation by \(U(a,1)\) shifts the coordinate label by \(-a\).  The local-net
+covariance law above uses the same passive coordinate convention: conjugating
+an observable by \(U(a,\Lambda)^{-1}\) sends its localization region to
+\(\Lambda\mathcal O+a\).
+
 In this opening convention \(\Obs(\mathcal O)\) is a concrete algebra of
 bounded observables on the chosen Hilbert space and is not assumed to be norm
 closed or weakly closed unless this is stated.  If a \(C^*\)-algebra or von
 Neumann algebra is needed, the relevant closure or bicommutant is included in
-the datum or constructed explicitly.  This minimal convention is sufficient
-for the first dependency layer: localization, covariance, the spectrum
-condition, vacuum matrix elements, and comparison with field coordinates.
+the datum or constructed explicitly.  This convention is sufficient for the
+first dependency layer: localization, covariance, the spectrum condition,
+vacuum matrix elements, and comparison with field coordinates.
 
 This framework describes a vacuum representation on flat spacetime. Thermal
 states, boundary conditions, curved spacetimes, and non-vacuum superselection
@@ -226,12 +251,38 @@ carries hypotheses.
     (\Hilb,\vac,U,\mathcal D,\{\Phi_a\}_{a\in A})
   \]
   where \(A\) is an index set for fields, \(\mathcal D\subset\Hilb\) is a
-  dense domain invariant under the fields and the spacetime symmetry action
-  on its natural domain, and each \(\Phi_a\) is an operator-valued
-  distribution on a declared test-function space, such as
+  dense common invariant domain containing \(\vac\), and each \(\Phi_a\) is an
+  operator-valued distribution on a declared test-function space, such as
   \(\mathcal S(\mathbb M^D)\) or \(C_c^\infty(\mathbb M^D)\), with common
-  domain \(\mathcal D\).  Its primary correlation data are the vacuum
-  distributions whose distribution kernels are written
+  domain \(\mathcal D\).  Thus \(\Phi_a(f)\mathcal D\subset\mathcal D\), finite
+  products of smeared fields are defined on \(\mathcal D\), and the vectors
+  obtained by applying such products to \(\vac\) lie in \(\Hilb\).
+
+  Let \(g=(a,\Lambda)\), \(gx=\Lambda x+a\), and
+  \(f_g(y)=f(g^{-1}y)\).  If the fields carry a finite-dimensional Lorentz
+  representation \(R\), covariance is the smeared identity
+  \[
+    U(g)^{-1}\Phi_a(f)U(g)
+    =
+    R(\Lambda)_a{}^b\,\Phi_b(f_g),
+  \]
+  with summation over repeated component labels.  In point-field notation this
+  is
+  \[
+    U(g)^{-1}\Phi_a(x)U(g)=R(\Lambda)_a{}^b\Phi_b(gx).
+  \]
+  The representation \(U\) satisfies the spectrum condition of
+  Definition~\ref{def:vacuum-minkowski-local-qft}.
+
+  Locality is imposed after smearing:
+  \[
+    [\Phi_a(f),\Phi_b(h)]_{\rm gr}=0
+  \]
+  whenever \(\operatorname{supp}f\) and \(\operatorname{supp}h\) are spacelike
+  separated, with the ordinary commutator in the purely bosonic case.
+
+  Its primary correlation data are the vacuum distributions whose distribution
+  kernels are written
   \[
     W_{a_1\cdots a_n}(x_1,\ldots,x_n)
     =
@@ -239,9 +290,28 @@ carries hypotheses.
     \Phi_{a_1}(x_1)\cdots\Phi_{a_n}(x_n)
     \ket{\vac}.
   \]
-  The structural hypotheses are covariance, the spectrum condition, locality
-  after smearing, positivity of the Wightman hierarchy, and a cyclicity
-  condition for the vacuum.
+  Positivity of the hierarchy means the following.  For every finite sequence
+  of compactly supported test tensors
+  \[
+    F=\{F^{(n)}_{a_1\cdots a_n}\}_{0\leq n\leq N},
+    \qquad
+    F^{(0)}\in\mathbb C,
+  \]
+  define
+  \[
+    \Psi_F
+    =
+    F^{(0)}\vac
+    +
+    \sum_{n=1}^N
+    \sum_{a_1,\ldots,a_n}
+    \int F^{(n)}_{a_1\cdots a_n}(x_1,\ldots,x_n)
+    \Phi_{a_1}(x_1)\cdots\Phi_{a_n}(x_n)\vac\,
+    \dd^Dx_1\cdots\dd^Dx_n .
+  \]
+  The condition is \(\langle\Psi_F,\Psi_F\rangle\geq0\), with the inner product
+  evaluated by the distributions \(W_n\).  Vacuum cyclicity means that the
+  linear span of all such vectors \(\Psi_F\) is dense in \(\Hilb\).
 \end{definition}
 
 \begin{definition}[Local-net presentation]
@@ -266,13 +336,44 @@ carries hypotheses.
     S_{a_1\cdots a_n}(x_1,\ldots,x_n),
     \qquad x_i\in\mathbb R^D,
   \]
-  with Euclidean covariance, permutation symmetry or graded permutation
-  symmetry, regularity and growth assumptions, and reflection positivity with
-  respect to a chosen Euclidean time.  Reflection positivity means that the
-  sesquilinear form obtained by reflecting positive-time test insertions by
-  Euclidean time reflection is positive semidefinite.  Under the
-  Osterwalder--Schrader hypotheses these data reconstruct a Lorentzian
-  Hilbert-space theory.
+  an adjoint involution \(a\mapsto a^\dagger\) on component labels, Euclidean
+  covariance, permutation symmetry or graded permutation symmetry, and stated
+  regularity and growth assumptions.  Choose Euclidean coordinates
+  \(x=(\tau,\mathbf x)\) and let
+  \[
+    \theta(\tau,\mathbf x)=(-\tau,\mathbf x)
+  \]
+  be time reflection.  Reflection positivity is the requirement that for every
+  finite sequence of test tensors
+  \[
+    F=\{F^{(n)}_{a_1\cdots a_n}\}_{0\leq n\leq N},
+    \qquad
+    \operatorname{supp}F^{(n)}
+    \subset(\mathbb R_+\times\mathbb R^{D-1})^n,
+  \]
+  the quadratic form
+  \[
+  \begin{aligned}
+    \langle F,F\rangle_{\rm OS}
+    &=
+    \sum_{m,n=0}^N
+    \sum_{\substack{a_1,\ldots,a_m\\ b_1,\ldots,b_n}}
+    \int
+    \overline{F^{(m)}_{a_1\cdots a_m}(x_1,\ldots,x_m)}
+    F^{(n)}_{b_1\cdots b_n}(y_1,\ldots,y_n)
+    \\
+    &\qquad\qquad\qquad\quad
+    \times
+    S_{a_m^\dagger\cdots a_1^\dagger b_1\cdots b_n}
+    (\theta x_m,\ldots,\theta x_1,y_1,\ldots,y_n)
+    \prod_{i=1}^m\dd^Dx_i\prod_{j=1}^n\dd^Dy_j
+  \end{aligned}
+  \]
+  is nonnegative.  The convention \(S_0=1\) is used in the terms with
+  \(m=0\) or \(n=0\).  Under the full Osterwalder--Schrader hypotheses,
+  quotienting by the null space of this form and completing reconstructs the
+  Lorentzian Hilbert space; analytic continuation then gives Wightman boundary
+  values.
 \end{definition}
 
 The comparison from fields to a local net is obtained, when the needed

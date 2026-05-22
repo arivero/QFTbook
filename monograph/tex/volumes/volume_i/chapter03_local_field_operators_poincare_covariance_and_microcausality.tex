@@ -102,7 +102,7 @@ For \(f\in C_c^\infty(\mathbb M^D)\), define the transformed test function
 A field multiplet \(\widehat\Phi_A\) is Poincare covariant with component
 representation \(S\) when
 \[
-  U(g)\widehat\Phi_A(f)U(g)^{-1}
+  U(g)^{-1}\widehat\Phi_A(f)U(g)
   =
   S(\Lambda)_A{}^B\,\widehat\Phi_B(f_g)
 \]
@@ -112,12 +112,14 @@ index \(A\), with summation over repeated component indices.
 
 In point-field notation this covariance law is written
 \[
-  U(a,\Lambda)\widehat\Phi_A(x)U(a,\Lambda)^{-1}
+  U(a,\Lambda)^{-1}\widehat\Phi_A(x)U(a,\Lambda)
   =
   S(\Lambda)_A{}^B\,\widehat\Phi_B(\Lambda x+a).
 \]
 The smeared equation is the definition; the point-field equation is its compact
-distributional form.
+distributional form.  With \(U(a,\mathbf 1)=\exp(\ii a^\mu P_\mu)\), conjugation
+with \(U^{-1}\) on the left is the convention in which the coordinate label is
+translated by \(+a\).
 
 For a scalar field \(S(\Lambda)=1\). The infinitesimal translation law is
 \[
