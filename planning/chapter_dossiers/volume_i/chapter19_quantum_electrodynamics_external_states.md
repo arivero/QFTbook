@@ -1,5 +1,7 @@
 # Volume I, Chapter 19 Dossier: Quantum Electrodynamics and External States
 
+Status: revised and source-audited on 2026-05-22.
+
 ## Source Placement
 
 - Follows the construction of spinor fields, massless helicity
@@ -11,6 +13,9 @@
 - Precedes QED renormalization, vacuum polarization, vertex corrections,
   anomalous magnetic moments, and infrared-inclusive scattering.
 - Source material used:
+  - handwritten 253a trace pages
+    `monograph/tex/build/source_visual_trace/253a_trace-216.png` through
+    `253a_trace-223.png`;
   - `transcription/tex/253a/foundations.tex`, roughly lines 9114--9545;
   - `references/sound_references/buchholz_dybalski_scattering_2023.pdf`
     for the boundary between ordinary particle scattering and infraparticles;
@@ -53,9 +58,11 @@
 | \(j^\mu\) | electromagnetic current represented, in these gamma conventions, by \(\ii g\bar\psi\gamma^\mu\psi\) |
 | \(\xi_{\mathrm g}\) | covariant gauge-fixing parameter |
 | \(J^\mu,\eta,\bar\eta\) | sources for \(A_\mu,\bar\psi,\psi\) in the generating functional |
+| \(C_x,C_{y\to x}\) | dressing paths for charged Wilson-line insertions |
 | \(Z_\psi,Z_A\) | pole residues for spinor and photon representative fields |
 | \(u^\sigma,v^\sigma\) | massive spinor intertwiners fixed in Chapter 16 |
 | \(e_\mu^h\) | massless helicity-one polarization representative |
+| \(\not e^{\,h}\) | \(e_\mu^h\gamma^\mu\) |
 | \(\mathcal M\) | reduced scattering amplitude after removing the momentum-conservation delta function |
 
 ## Claims Established
@@ -67,10 +74,10 @@
   already derived in Chapters 18 and 16, together with a single cubic vertex
   \(-g\gamma^\mu\) in the present conventions.
 - Local gauge-invariant observables have zero net local charge; charged
-  representative fields are used in gauge-fixed Green functions, and genuinely
-  charged insertions require dressing data.
+  representative fields are used in gauge-fixed Green functions, and charged
+  insertions require dressing data such as Wilson lines with specified paths.
 - External electron, positron, and photon factors are pole residues supplied by
-  LSZ, not independent diagrammatic definitions.
+  LSZ, with open spinor or Lorentz indices contracted into amputated kernels.
 - In a hard tree-level process such as Compton scattering, replacing a photon
   polarization by a longitudinal representative gives zero after summing the
   two diagrams and using the external Dirac equations and momentum
@@ -83,6 +90,8 @@
 
 - A compact Feynman-rule display for the spinor propagator, photon propagator,
   and QED vertex.
+- A compact external-factor diagram showing LSZ residues attached to
+  amputated kernels.
 - A Compton-scattering diagram with both tree-level channels, with momentum
   labels that match the analytic expression.
 - A small conceptual diagram showing representative Green functions being

@@ -88,18 +88,44 @@ A local monomial containing \(N_\psi\) factors of \(\psi\) and
 Gauge invariance of a pointlike local monomial therefore requires the net
 local charge to vanish.
 
-Charged insertions can be represented by adding dressing data. If \(C_x\) is
-an oriented curve beginning at \(x\) and ending at spatial infinity, define
+Charged insertions are represented by adding dressing data. Let \(C_x\) be an
+oriented curve beginning at \(x\) and ending at a prescribed asymptotic
+endpoint. For gauge parameters that vanish at that endpoint, define
 \[
   \Psi_{C_x}(x)
   =
   \exp\left(\ii g\int_{C_x} A_\mu(y)\,\dd y^\mu\right)\psi(x).
 \]
-For gauge functions that vanish at the endpoint at infinity, the phase
-acquired by the line integral cancels the phase of \(\psi(x)\). The dressing
-records the electromagnetic field attached to the charged insertion. Its
-dependence on the curve is physical dressing data; the pointlike local
-observables remain the neutral expressions above.
+Indeed,
+\[
+  \int_{C_x}\partial_\mu\xi(y)\,\dd y^\mu
+  =
+  \xi(\infty)-\xi(x)
+  =
+  -\xi(x),
+\]
+so the phase acquired by the line integral cancels the phase of \(\psi(x)\).
+The curve is part of the insertion: it records electromagnetic dressing data.
+It is therefore not an additional pointlike local observable.
+
+Similarly, for a path \(C_{y\to x}\) from \(y\) to \(x\),
+\[
+  \psi_\alpha(x)
+  \exp\left(
+    -\ii g\int_{C_{y\to x}} A_\mu(z)\,\dd z^\mu
+  \right)
+  \bar\psi^\beta(y)
+\]
+is invariant under compactly supported representative changes, because the
+Wilson-line phase changes by
+\[
+  \exp\{-\ii g(\xi(x)-\xi(y))\}.
+\]
+This cancels the endpoint phases of \(\psi_\alpha(x)\) and
+\(\bar\psi^\beta(y)\). The line operator itself may require short-distance
+renormalization when it is defined as an operator-valued distribution. That
+renormalization question is separate from the elementary gauge-covariance
+calculation displayed here.
 
 \begin{remark}
 Gauge-fixed perturbation theory uses \(A_\mu,\psi,\bar\psi\) Green functions
@@ -139,11 +165,16 @@ formal Lorentzian generating functional is
   \Biggr\}.
 \end{aligned}
 \]
-It is understood perturbatively by expanding the interaction term
+As in the preceding finite-dimensional Berezin discussion, this notation is
+shorthand for a regulated Gaussian integral followed by perturbative
+expansion of the interaction term
 \[
   \ii gA_\mu\bar\psi\gamma^\mu\psi
 \]
-around the Gaussian Maxwell and Dirac functionals already constructed.
+around the Gaussian Maxwell and Dirac functionals already constructed. The
+covariant gauge parameter \(\xi_{\mathrm g}\) changes representative
+correlators; the local gauge-invariant correlators obtained from neutral
+operators and field strengths do not depend on this representative choice.
 
 The elementary momentum-space rules are as follows. A directed fermion line
 from \(\psi_\alpha\) to \(\bar\psi^\beta\) carries
@@ -213,13 +244,13 @@ e^-_{\mathrm{out}}(\vec p,\sigma)
 &
 \displaystyle
 \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,
-\bar u^\sigma(\vec p)
+(\bar u^\sigma)^\alpha(\vec p)
 \\[1.1em]
 e^+_{\mathrm{out}}(\vec p,\sigma)
 &
 \displaystyle
 \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,
-v^\sigma(\vec p)
+v^\sigma_\alpha(\vec p)
 \\[1.1em]
 \gamma_{\mathrm{out}}(\vec k,h)
 &
@@ -231,13 +262,13 @@ e^-_{\mathrm{in}}(\vec p,\sigma)
 &
 \displaystyle
 \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,
-u^\sigma(\vec p)
+u^\sigma_\alpha(\vec p)
 \\[1.1em]
 e^+_{\mathrm{in}}(\vec p,\sigma)
 &
 \displaystyle
 \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,
-\bar v^\sigma(\vec p)
+(\bar v^\sigma)^\alpha(\vec p)
 \\[1.1em]
 \gamma_{\mathrm{in}}(\vec k,h)
 &
@@ -246,6 +277,15 @@ e^+_{\mathrm{in}}(\vec p,\sigma)
 e_\mu^h(\vec k).
 \end{array}
 \]
+The free spinor or photon line adjacent to the external leg is not retained:
+the LSZ operator removes that propagator and evaluates the residue at the
+one-particle pole. The displayed spinor index is contracted with the
+corresponding open index of the amputated Green-function kernel. In a
+Fourier convention in which all momenta flow into a Green function, outgoing
+massive particles are represented by the boundary value with the opposite
+energy sign; the table above is written directly in terms of the physical
+future-directed external momenta.
+
 The massive spinor momenta satisfy
 \[
   p^0=\omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
@@ -264,6 +304,10 @@ polarization representatives obey
 \[
   k^\mu e_\mu^h(\vec k)=0,\qquad
   e_\mu^h(\vec k)\sim e_\mu^h(\vec k)+\alpha k_\mu .
+\]
+For any polarization representative,
+\[
+  \not e^{\,h}(\vec k)=e_\mu^h(\vec k)\gamma^\mu .
 \]
 
 \begin{center}
@@ -294,6 +338,52 @@ The vertical mark in the diagram indicates a boundary of this chapter. The
 hard-amplitude rules are perturbative rules for fixed external momenta and
 helicities. The infrared completion of charged scattering is a further
 construction.
+
+Diagrammatically, the external factors attach to amputated kernels as follows:
+\[
+\begin{array}{cc}
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.86]
+  \tikzset{
+    fermion/.style={line width=0.55pt,-{Stealth[length=3pt]}},
+    blob/.style={circle,draw,fill=gray!16,minimum size=0.72cm,inner sep=0pt}
+  }
+  \node[blob] (b) at (1.25,0) {};
+  \draw[fermion] (0,0)--(b);
+  \node[below] at (0.62,-0.05) {\scriptsize \(u_\alpha^\sigma(\vec p)\)};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.86]
+  \tikzset{
+    fermion/.style={line width=0.55pt,-{Stealth[length=3pt]}},
+    blob/.style={circle,draw,fill=gray!16,minimum size=0.72cm,inner sep=0pt}
+  }
+  \node[blob] (b) at (0,0) {};
+  \draw[fermion] (b)--(1.25,0);
+  \node[below] at (0.85,-0.05) {\scriptsize \((\bar u^\sigma)^\alpha(\vec p)\)};
+\end{tikzpicture}
+\\[1.5em]
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.86]
+  \tikzset{
+    photon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=5pt},line width=0.55pt},
+    blob/.style={circle,draw,fill=gray!16,minimum size=0.72cm,inner sep=0pt}
+  }
+  \node[blob] (b) at (1.25,0) {};
+  \draw[photon] (0,0)--(b);
+  \node[below] at (0.55,-0.05) {\scriptsize \(e_\mu^h(\vec k)\)};
+\end{tikzpicture}
+&
+\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.86]
+  \tikzset{
+    photon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=5pt},line width=0.55pt},
+    blob/.style={circle,draw,fill=gray!16,minimum size=0.72cm,inner sep=0pt}
+  }
+  \node[blob] (b) at (0,0) {};
+  \draw[photon] (b)--(1.25,0);
+  \node[below] at (0.82,-0.05) {\scriptsize \(e_\mu^{h*}(\vec k)\)};
+\end{tikzpicture}
+\end{array}
+\]
+with the common normalization factors displayed in the table.
 
 \section{Compton Scattering at Tree Level}
 

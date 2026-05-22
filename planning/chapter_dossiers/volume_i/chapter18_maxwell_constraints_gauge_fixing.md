@@ -11,7 +11,7 @@ Status: rewritten and source-audited on 2026-05-22.
 - Source material used:
   - handwritten 253a trace pages
     `monograph/tex/build/source_visual_trace/253a_trace-197.png` through
-    `253a_trace-211.png`;
+    `253a_trace-215.png`;
   - `transcription/tex/253a/foundations.tex`, roughly lines 8366--9110;
   - `references/sound_references/harlow_wu_covariant_phase_space_1906.08616.pdf`
     and text sidecar for constraint and phase-space orientation.

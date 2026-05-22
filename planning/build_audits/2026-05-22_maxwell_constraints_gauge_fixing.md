@@ -15,13 +15,14 @@ Date: 2026-05-22
 
 - Handwritten QFT source images:
   `monograph/tex/build/source_visual_trace/253a_trace-197.png` through
-  `monograph/tex/build/source_visual_trace/253a_trace-211.png`.
+  `monograph/tex/build/source_visual_trace/253a_trace-215.png`.
 - Source content checked against `transcription/tex/253a/foundations.tex`,
   roughly lines 8366--9110.
 - The checked handwritten block covers the Maxwell action, canonical
   constraints, axial gauge, gauge-slice path integral, finite-dimensional
-  Faddeev--Popov model, axial propagator, field-strength correlator, and
-  Lorenz/covariant gauges.
+  Faddeev--Popov model, axial propagator, Lorenz/covariant gauges,
+  field-strength one-photon matrix elements, polarization completeness, and
+  the comparison with the free field-strength Wightman function.
 
 ## Manuscript Rendering
 
