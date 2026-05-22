@@ -101,6 +101,35 @@ On solutions,
 \[
   \partial_\mu j_R^\mu=0.
 \]
+The same current can be identified by localizing the symmetry parameter. Let
+\(\epsilon\in C_c^\infty(M)\), replace the constant infinitesimal parameter by
+\(\epsilon(x)\), and use
+\[
+  \delta_{\epsilon R}\phi^A=\epsilon R^A .
+\]
+Modulo the compactly supported total derivative
+\(\partial_\mu(\epsilon K_R^\mu)\), the variation of the action is
+\[
+  \delta_{\epsilon R}S_M
+  =
+  \int_M\dd^Dx\,(\partial_\mu\epsilon)\,j_R^\mu .
+\]
+If the field is a solution, the compactly supported variation has zero first
+variation; hence integration by parts gives
+\[
+  0
+  =
+  \delta_{\epsilon R}S_M
+  =
+  \int_M\dd^Dx\,(\partial_\mu\epsilon)\,j_R^\mu
+  =
+  -\int_M\dd^Dx\,\epsilon\,\partial_\mu j_R^\mu .
+\]
+Since \(\epsilon\) is arbitrary with compact support, this is equivalent to the
+on-shell conservation law. This local-parameter test is often the cleanest way
+to read off the current, because \(j_R^\mu\) is precisely the coefficient of
+\(\partial_\mu\epsilon\) after the constant-parameter total derivative has been
+separated.
 
 The current is a representative of a local equivalence class. If
 \[
@@ -184,6 +213,46 @@ derivatives and boundary terms are defined. In particular,
   R^A(t,\vec x)=\{\phi^A(t,\vec x),Q_R\}.
 \]
 
+For the common first-order case in which \(K_R^0=0\) and \(R^A\) is a function
+of canonical coordinates and spatial derivatives but not of velocities, the
+charge has the form
+\[
+  Q_R=\int_{\Sigma_t}\dd^{D-1}\vec x\,\Pi_A R^A ,
+\]
+up to possible spatial-divergence improvements. Then
+\(\delta Q_R/\delta\Pi_A=R^A\), and the displayed generator identity follows
+directly from the equal-time bracket. When \(R^A\) or \(K_R^0\) contains
+velocities, the Noether charge is first rewritten as a phase-space functional.
+For example, a time translation by \(\tau\) gives
+\[
+  R^A=-\tau\dot\phi^A,\qquad Q_R=-\tau H,
+\]
+so Hamilton's equation yields
+\[
+  \{\phi^A,-\tau H\}=-\tau\dot\phi^A .
+\]
+Thus the generator statement is a statement on phase space, with the Noether
+charge expressed in canonical variables.
+
+\section{Poincare Transformations of Scalar Fields}
+
+For a scalar field, a finite Poincare transformation is described by
+\[
+  x'^\mu=\Lambda^\mu{}_\nu x^\nu+a^\mu,\qquad
+  \phi'(x')=\phi(x),
+\]
+where \(\Lambda^T\eta\Lambda=\eta\). Write
+\(\Lambda^\mu{}_\nu=\delta^\mu{}_\nu+\omega^\mu{}_\nu+O(\omega^2)\), with
+\(\omega_{\mu\nu}=-\omega_{\nu\mu}\). The fixed-coordinate infinitesimal
+variation is
+\[
+  \delta\phi(x)
+  =
+  -\left(a^\mu+\omega^\mu{}_\nu x^\nu\right)\partial_\mu\phi(x).
+\]
+The translation and Lorentz currents below are the Noether currents for the
+two independent parameters \(a^\mu\) and \(\omega_{\mu\nu}\).
+
 \section{Translation Symmetry and the Stress Tensor}
 
 Assume that \(\mathcal L\) has no explicit dependence on \(x\). For a constant
@@ -217,6 +286,17 @@ On solutions,
 \[
   \partial_\mu T^\mu{}_\nu=0.
 \]
+Equivalently, let \(\xi^\nu(x)\) be a compactly supported vector field and use
+\(\delta_\xi\phi^A=-\xi^\nu\partial_\nu\phi^A\). After separating the total
+derivative \(-\partial_\mu(\xi^\mu\mathcal L)\), the action variation is
+\[
+  \delta_\xi S_M
+  =
+  \int_M\dd^Dx\,(\partial_\mu\xi^\nu)\,T^\mu{}_\nu .
+\]
+For arbitrary compactly supported \(\xi^\nu\), integration by parts on a
+solution is equivalent to \(\partial_\mu T^\mu{}_\nu=0\). Thus
+\(T^\mu{}_\nu\) is the response coefficient for a localized translation.
 The translation charges are
 \[
   P_\nu=\int\dd^{D-1}\vec x\,T^0{}_\nu,

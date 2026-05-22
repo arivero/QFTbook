@@ -2,7 +2,11 @@
 
 ## Status
 
-Current status: ready for TeX rewrite.
+Current status: source-block certified against 253a pp. 63--71 on
+2026-05-22. The chapter has been rebuilt and visually audited in the rendered
+PDF after adding the local-parameter current derivation, the explicit
+canonical-generator check, the finite Poincare scalar transformation, and the
+localized-translation stress-tensor derivation.
 
 ## Logical Role
 
@@ -20,6 +24,11 @@ currents.
 - `transcription/tex/253a/foundations.tex`, section "Symmetries and Noether's
   Theorem", including the translation-current and stress-energy tensor
   subsection.
+- Source visual trace:
+  `monograph/tex/build/source_visual_trace/253a_trace-063.png` through
+  `monograph/tex/build/source_visual_trace/253a_trace-071.png`.
+- Rendered audit:
+  `planning/build_audits/2026-05-22_noether_stress_tensor_source_figures.md`.
 - `references/253a_notes.tex`, corresponding section "Noether's Theorem and
   Conserved Currents", used only as a comparison layer.
 - `monograph/tex/volumes/volume_i/chapter06_relativistic_scalar_fields_and_canonical_quantization.tex`,
@@ -89,8 +98,11 @@ Working framework:
 | --- | --- | --- |
 | The variation of a first-derivative action decomposes into Euler-Lagrange terms plus a total divergence. | Derived | Direct integration by parts |
 | If \(\delta_R\mathcal L=\partial_\mu K^\mu_R\), then \(j^\mu_R=\partial\mathcal L/\partial(\partial_\mu\phi^A)R^A-K^\mu_R\) is conserved on shell. | Derived | Variation identity |
+| The same current is the coefficient of \(\partial_\mu\epsilon\) when a constant symmetry parameter is localized to a compactly supported \(\epsilon(x)\). | Derived | Local-parameter variation with the constant-parameter total derivative separated |
 | The integral \(Q_R(t)=\int j^0_R\) is time independent when the current is conserved and boundary flux vanishes. | Derived | Divergence theorem on a time slab |
-| In canonical phase space, a charge generates the associated transformation when \(\delta F=\{F,Q\}\) and the required functional derivatives exist. | Derived in standard cases; framework statement generally | Direct computation for first-order internal transformations and translations |
+| In canonical phase space, a charge generates the associated transformation when \(\delta F=\{F,Q\}\) and the required functional derivatives exist. | Derived in standard cases; framework statement generally | Direct computation for first-order internal transformations and the time-translation charge \(Q=-\tau H\) |
+| For a scalar field, the finite Poincare law \(\phi'(x')=\phi(x)\) gives fixed-coordinate infinitesimal variation \(-\left(a^\mu+\omega^\mu{}_\nu x^\nu\right)\partial_\mu\phi\). | Derived | First-order expansion of \(x'=\Lambda x+a\) |
+| The stress tensor \(T^\mu{}_\nu\) is the coefficient of \(\partial_\mu\xi^\nu\) in a compactly supported localized translation. | Derived | Localized translation variation after the total derivative is separated |
 | The free scalar stress tensor gives \(T^{00}=\mathcal H\). | Derived | Substitution of the scalar Lagrangian |
 | Lorentz-current conservation follows from stress-tensor conservation and symmetry. | Derived | Antisymmetry of Lorentz parameter |
 | In quantum theory, local currents and stress tensors must be defined as renormalized operator-valued distributions in the chosen framework. | Framework statement | Local operator construction, not an automatic consequence of Poincare invariance alone |
@@ -101,6 +113,13 @@ Included figure:
 
 - a time-slab diagram showing that charge conservation is flux conservation
   through the boundary of a spacetime region.
+
+Rendered check:
+
+- physical PDF pages 72--78 (`/tmp/qft_ch10_noether_audit-072.png` through
+  `/tmp/qft_ch10_noether_audit-078.png`) were inspected after rebuild; the
+  time-slab figure is legible and the added derivations fit without visual
+  crowding.
 
 ## Audit Targets
 
