@@ -95,6 +95,15 @@ The chapter must define and derive:
   low-source connected functionals, Legendre transform to 1PI kernels, finite
   matching from Wilsonian local coordinates to 1PI subtraction coordinates,
   and the distinction between a Wilsonian vertex and a 1PI vertex.
+- a one-loop quartic scalar matching calculation that:
+  - splits the regulated bubble into low-low, high-high, and mixed covariance
+    assignments;
+  - identifies the high-high part as the Wilsonian quartic vertex correction;
+  - identifies the low-low part as the remaining low-field 1PI loop;
+  - treats the mixed part as local matching data and omitted irrelevant
+    coordinates in the low-momentum derivative expansion;
+  - writes the BPHZ-subtracted 1PI four-point kernel and the matching map
+    from \(u_4(\Lambda;\mathcal S_\mu)\) to \(g(\mu)\).
 
 ## Claim Ledger
 
@@ -142,6 +151,11 @@ The chapter must define and derive:
 15. Beta-function components in Wilsonian and 1PI coordinates are comparable
     only after a matching map is chosen; under finite coordinate changes they
     transform by the chain rule.
+16. In the one-loop quartic example, the full regulated bubble decomposes by
+    covariance assignment.  The mixed covariance terms are represented in the
+    exact Wilsonian computation by generated vertices and low-mode
+    integration; in a finite low-momentum projection their Taylor expansion is
+    part of the local matching map.
 
 ## Figure Requirements
 
@@ -160,6 +174,9 @@ The chapter must define and derive:
 - BPHZ--Wilsonian--1PI bridge diagram showing the bare regulated action,
   BPHZ \(R\)-operation, Wilsonian pushforward, low-source connected
   functional, Legendre transform, and coordinate projections.
+- One-loop quartic matching diagram showing the split of the full regulated
+  bubble into high-high, low-low, and mixed contributions and their images in
+  Wilsonian, low-field 1PI, and local matching data.
 
 ## Audit Notes
 
@@ -186,3 +203,10 @@ The chapter must define and derive:
   cutoff-removal section that states the hypotheses for a projected
   Wilsonian continuum graph and proves the power suppression of irrelevant
   boundary memory from the semigroup estimate.
+- 2026-05-22 one-loop-matching pass: added a worked quartic scalar example
+  inside the BPHZ--Wilsonian--1PI bridge.  The example defines the bubble
+  functional \(\mathcal B_{A,B}\), proves the covariance split into
+  low-low/high-high/mixed terms, writes the Wilsonian quartic vertex
+  correction, states the BPHZ-subtracted 1PI four-point kernel, and derives
+  the matching map from the Wilsonian quartic coordinate to the 1PI
+  subtraction coordinate.
