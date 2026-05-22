@@ -27,6 +27,65 @@ charge may be evaluated on a large sphere surrounding several insertions, or
 on a union of small spheres surrounding them separately.  The equality of
 these two evaluations is the Ward identity.
 
+The Lorentzian operator meaning of the same construction is the following.
+Let \(\widehat Q_\epsilon(\Sigma)\) be the flux of the conserved current
+through a spacelike Cauchy surface \(\Sigma\), with future-directed unit normal.
+If a local operator \(\widehat{\mathcal O}(0)\) is inserted between two nearby
+Cauchy surfaces \(\Sigma_-\) and \(\Sigma_+\), then
+\begin{equation}
+  [\widehat Q_\epsilon,\widehat{\mathcal O}(0)]
+  =
+  \widehat Q_\epsilon(\Sigma_+)\widehat{\mathcal O}(0)
+  -
+  \widehat{\mathcal O}(0)\widehat Q_\epsilon(\Sigma_-).
+  \label{eq:lorentzian-charge-commutator-by-slices}
+\end{equation}
+Here conservation identifies the charge on \(\Sigma_\pm\) with the same
+abstract symmetry generator when no insertion lies between the two surfaces.
+Equation \eqref{eq:lorentzian-charge-commutator-by-slices} is therefore not a
+new assumption; it is the definition of the commutator after the charge has
+been represented on the Hilbert spaces immediately to the future and past of
+the insertion.  After Euclidean continuation, the two surfaces close into a
+small hypersurface surrounding the insertion, and the commutator becomes the
+small-surface action used below.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.88\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      slice/.style={green!45!black,line width=0.95pt},
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.8pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt}
+    }
+    \draw[arrow] (-4.7,-1.8)--(-4.7,2.25) node[above] {time};
+    \draw[arrow] (-5.0,-1.45)--(3.9,-1.45) node[right] {space};
+    \draw[slice]
+      (-4.1,-0.65) .. controls (-2.8,-0.35) and (-1.45,-0.85) ..
+      (0.0,-0.50) .. controls (1.45,-0.15) and (2.35,-0.55) .. (3.25,-0.25);
+    \draw[slice]
+      (-4.1,0.95) .. controls (-2.8,1.25) and (-1.45,0.75) ..
+      (0.0,1.10) .. controls (1.45,1.45) and (2.35,1.05) .. (3.25,1.35);
+    \node[green!45!black] at (3.55,-0.25) {\(\Sigma_-\)};
+    \node[green!45!black] at (3.55,1.35) {\(\Sigma_+\)};
+    \node[insertion] at (-0.35,0.25) {};
+    \node[violet!80!black,below right] at (-0.25,0.19) {\(\widehat{\mathcal O}(0)\)};
+    \draw[blue!65!black,dashed,line width=0.8pt]
+      (-1.35,-0.78) .. controls (-1.65,-0.05) and (-1.25,0.78) ..
+      (-0.42,1.15) .. controls (0.55,1.58) and (1.35,0.75) ..
+      (1.22,-0.05) .. controls (1.10,-0.88) and (-0.35,-1.10) ..
+      (-1.35,-0.78);
+    \node[blue!65!black,align=center] at (1.95,0.35)
+      {closed surface\\after continuation};
+  \end{tikzpicture}
+  }
+  \caption{A Lorentzian commutator with a conserved charge is represented by
+  the difference between charge insertions on slices immediately after and
+  before the local operator.  In Euclidean signature this difference is encoded
+  by a closed surface enclosing the insertion.}
+  \label{fig:charge-commutator-slices}
+\end{figure}
+
 \begin{figure}[H]
   \centering
   \resizebox{0.95\textwidth}{!}{%
@@ -110,6 +169,25 @@ below is then unchanged.
 Suppose the vacuum is invariant under the charge, and suppose the large
 surface can be moved to infinity with vanishing contribution.  Then for
 separated insertions,
+\begin{equation}
+  0
+  =
+  \left\langle
+    Q_\epsilon(\Sigma)
+    \prod_{i=1}^n\mathcal O_i(x_i)
+  \right\rangle
+  =
+  \sum_{i=1}^n
+  \left\langle
+    \mathcal O_1(x_1)\cdots
+    Q_\epsilon(S_i)\mathcal O_i(x_i)\cdots
+    \mathcal O_n(x_n)
+  \right\rangle ,
+  \label{eq:surface-ward-decomposition}
+\end{equation}
+where \(\Sigma\) encloses all insertions and \(S_i\) is a small sphere
+enclosing \(x_i\).  Using
+\eqref{eq:variation-by-small-charge}, this becomes
 \begin{equation}
   \sum_{i=1}^n
   \left\langle
@@ -197,3 +275,55 @@ become mutually adjoint raising and lowering operators:
 This adjointness is a consequence of reflection positivity under
 \(\tau\mapsto-\tau\), which is inversion in flat space.  It is the positivity
 input used below to derive unitarity bounds.
+
+More explicitly, let
+\[
+  \Pi_{\mu\nu}(n)=\delta_{\mu\nu}-n_\mu n_\nu
+\]
+be the projector onto the tangent space of \(S^{D-1}\) at \(n\).  Acting on
+functions on \(\R_\tau\times S^{D-1}\), the flat-space conformal Killing
+vectors become
+\begin{align}
+  D_{\rm rad}
+  &=
+  \partial_\tau,
+  \\
+  P_\mu
+  &=
+  \ee^{-\tau}\left(n_\mu\partial_\tau
+  +\Pi_{\mu\nu}(n)\frac{\partial}{\partial n_\nu}\right),
+  \\
+  K_\mu
+  &=
+  \ee^\tau\left(-n_\mu\partial_\tau
+  +\Pi_{\mu\nu}(n)\frac{\partial}{\partial n_\nu}\right),
+  \label{eq:pk-cylinder-vector-fields}
+\end{align}
+with rotations acting as vector fields tangent to the sphere.  Thus inversion
+\(x^\mu\mapsto x^\mu/x^2\), which is \(\tau\mapsto-\tau\), exchanges
+\(P_\mu\) and \(K_\mu\).  The factors \(\ee^{-\tau}\) and \(\ee^\tau\) show
+that \(P_\mu\) raises and \(K_\mu\) lowers the cylinder energy by one unit in
+radial quantization.
+
+The Hamiltonian identification is also visible directly from the stress
+tensor.  On the sphere \(S^{D-1}_r\) of radius \(r\), with \(x^\mu=rn^\mu\),
+\begin{equation}
+  \widehat D_{\rm rad}
+  =
+  \int_{S^{D-1}_r}\dd\sigma\,n^\mu \widehat T_{\mu\nu}(x)x^\nu
+  =
+  r^D\int_{S^{D-1}}\dd\Omega\,
+  n^\mu n^\nu \widehat T_{\mu\nu}(rn).
+  \label{eq:dilatation-charge-stress-tensor-sphere}
+\end{equation}
+Under the Weyl map this is the cylinder Hamiltonian
+\[
+  \widehat H_{\rm cyl}
+  =
+  \int_{S^{D-1}}\dd\Omega\,\widehat T_{\tau\tau}^{\rm cyl}.
+\]
+In Lorentzian cylinder time \(t=-\ii\tau\), the corresponding Hermitian
+generator differs from the Euclidean radial generator by the standard
+Wick-rotation factor.  The monograph uses \(\widehat D_{\rm rad}\) for the
+positive Euclidean cylinder Hamiltonian that grades local operators by their
+scaling dimensions.

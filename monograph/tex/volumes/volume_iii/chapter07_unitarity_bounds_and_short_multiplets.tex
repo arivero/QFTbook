@@ -13,6 +13,22 @@ physical Hilbert space.  The adjoint relation
 \]
 implies that every Gram matrix of descendant states must be positive
 semidefinite.
+For example, for every complex vector \(a^\mu\) and every state created by a
+local operator \(\mathcal O(0)\),
+\begin{equation}
+  \left\|
+    a^\mu\widehat P_\mu\ket{\mathcal O}
+  \right\|^2
+  =
+  \overline a^\mu a^\nu
+  \bra{\mathcal O}\widehat K_\mu\widehat P_\nu\ket{\mathcal O}
+  \ge0.
+  \label{eq:first-descendant-positivity-basic}
+\end{equation}
+Thus \(\bra{\mathcal O}\widehat K_\mu\widehat P_\nu\ket{\mathcal O}\) is a
+positive semidefinite Hermitian matrix in the vector indices and in any
+additional spin or degeneracy labels.  The unitarity bounds are obtained by
+computing such matrices from the conformal algebra.
 
 In this chapter the generators are the radial-quantization generators, with
 the conventional factors of \(\ii\) absorbed relative to Lorentzian Hermitian
