@@ -15,15 +15,15 @@ be the joint projection-valued spectral measure of \(P^\mu\), where
   =
   \{p\in\mathbb R^D:p^0\ge0,\ p^2\le0\},
 \]
-with \(p^2=\eta_{\mu\nu}p^\mu p^\nu\). Let \(\Omega\) be a translation
-invariant vacuum vector.
+with \(p^2=\eta_{\mu\nu}p^\mu p^\nu\). Let \(\vac\) be a translation-invariant
+vacuum vector.
 
 Let \(\widehat\phi\) be a scalar operator-valued distribution. If
 \[
-  \langle\Omega|\widehat\phi(x)|\Omega\rangle
+  \langle\vac|\widehat\phi(x)|\vac\rangle
 \]
 is nonzero, replace \(\widehat\phi\) by
-\(\widehat\phi-\langle\Omega|\widehat\phi|\Omega\rangle\). This removes the
+\(\widehat\phi-\langle\vac|\widehat\phi|\vac\rangle\). This removes the
 vacuum atom from the two-point function and keeps the connected spectral data.
 Point-field notation below is distributional notation; after smearing, the
 matrix elements are ordinary Hilbert-space pairings.
@@ -32,9 +32,9 @@ The Wightman two-point distribution is
 \[
   W_2(x-y)
   =
-  \langle\Omega|
+  \langle\vac|
   \widehat\phi(x)\widehat\phi(y)
-  |\Omega\rangle.
+  |\vac\rangle.
 \]
 Translation covariance gives
 \[
@@ -46,16 +46,16 @@ where the positive measure \(\nu_\phi\) is
 \[
   \dd\nu_\phi(p)
   =
-  \langle\Omega|
+  \langle\vac|
   \widehat\phi(0)E(\dd p)\widehat\phi(0)
-  |\Omega\rangle.
+  |\vac\rangle.
 \]
 Positivity is immediate from the spectral theorem: for a Borel set
 \(\Delta\),
 \[
   \nu_\phi(\Delta)
   =
-  \|E(\Delta)\widehat\phi(0)\Omega\|^2
+  \|E(\Delta)\widehat\phi(0)\vac\|^2
   \ge0.
 \]
 Equivalently, if one writes the same statement in generalized
@@ -70,7 +70,7 @@ then
   \int \dd\alpha\,
   \ee^{\ii p_\alpha\cdot(x-y)}
   \left|
-    \langle\alpha|\widehat\phi(0)|\Omega\rangle
+    \langle\alpha|\widehat\phi(0)|\vac\rangle
   \right|^2 .
 \]
 This formula is only notation for the spectral measure above; the measure
@@ -94,12 +94,58 @@ and define the positive Borel measure
 \[
   \rho(B)=\nu_\phi(\pi^{-1}(B)).
 \]
-This is the pushforward of \(\nu_\phi\) by the invariant-mass map.  By
-disintegration of positive measures, \(\nu_\phi\) is an integral over
-conditional measures supported on the level sets \(\pi^{-1}(\mu^2)\).  Lorentz
-invariance fixes each nonzero conditional measure to be proportional to the
-standard invariant measure on the positive mass shell.  With the normalization
-absorbed into \(\dd\rho(\mu^2)\), this gives
+This is the pushforward of \(\nu_\phi\) by the invariant-mass map.
+
+\begin{proposition}[Invariant mass-shell disintegration]
+\label{prop:kallen-lehmann-mass-shell-disintegration}
+Let \(\nu\) be a positive locally finite Borel measure on
+\(\overline V_+\) that is invariant under \(SO^+(1,D-1)\).  Assume that
+\(\nu\) has no atom at \(p=0\).  Then there is a positive Borel measure
+\(\rho\) on \([0,\infty)\) such that for every
+\(F\in C_c(\overline V_+)\),
+\[
+  \int_{\overline V_+}F(p)\,\dd\nu(p)
+  =
+  \int_{[0,\infty)}\dd\rho(\mu^2)
+  \int\frac{\dd^Dp}{(2\pi)^{D-1}}\,
+  \theta(p^0)\delta(p^2+\mu^2)F(p).
+\]
+The measure \(\rho\) is the spectral density measure after the normalization of
+the invariant measure on each shell has been fixed.
+\end{proposition}
+
+\begin{proof}
+Let \(\pi(p)=-p^2\).  The map \(\pi:\overline V_+\to[0,\infty)\) is Borel and
+Lorentz invariant, hence the pushforward \(\pi_*\nu\) is a positive Borel
+measure.  Disintegration of locally finite positive measures gives conditional
+measures \(\nu_s\), supported on \(\pi^{-1}(s)\), such that
+\[
+  \int F(p)\,\dd\nu(p)
+  =
+  \int_{[0,\infty)}
+  \left(\int_{\pi^{-1}(s)}F(p)\,\dd\nu_s(p)\right)
+  \dd(\pi_*\nu)(s).
+\]
+For \(s>0\), the set \(\pi^{-1}(s)\cap\{p^0>0\}\) is the positive mass shell
+of mass \(\sqrt{s}\), and \(SO^+(1,D-1)\) acts transitively on it.  The
+stabilizer of a point is \(SO(D-1)\); therefore an invariant Radon measure on
+the shell is unique up to an overall positive scalar.  The standard choice is
+\[
+  \dd\sigma_s(p)
+  =
+  \frac{\dd^Dp}{(2\pi)^{D-1}}\,
+  \theta(p^0)\delta(p^2+s).
+\]
+For \(s=0\), the same argument applies to the nonzero future light cone, whose
+orbit is \(SO^+(1,D-1)/ISO(D-2)\); an atom at \(p=0\) would be a separate
+vacuum contribution and is excluded by hypothesis.  Thus
+\(\nu_s=c(s)\sigma_s\) for a nonnegative measurable function \(c\).  Absorbing
+\(c(s)\) into \(\dd(\pi_*\nu)(s)\) defines the measure \(\dd\rho(s)\), which
+gives the displayed formula.
+\end{proof}
+
+Applying Proposition~\ref{prop:kallen-lehmann-mass-shell-disintegration} to
+\(\nu_\phi\), with the vacuum atom removed as above, gives
 \[
   \dd\nu_\phi(p)
   =
@@ -171,11 +217,11 @@ The time-ordered two-point function is
 \[
   G_T(x)
   =
-  \langle\Omega|
+  \langle\vac|
   \operatorname{T}\{
     \widehat\phi(x)\widehat\phi(0)
   \}
-  |\Omega\rangle.
+  |\vac\rangle.
 \]
 Using the definition of time ordering,
 \[
@@ -371,7 +417,7 @@ that, on a common invariant domain,
 \]
 The commutator two-point distribution is
 \[
-  \langle\Omega|[\widehat\phi(x),\widehat\phi(0)]|\Omega\rangle
+  \langle\vac|[\widehat\phi(x),\widehat\phi(0)]|\vac\rangle
   =
   \int_{[0,\infty)}\dd\rho(\mu^2)\,
   \bigl(\Delta_+(x;\mu^2)-\Delta_+(-x;\mu^2)\bigr).
@@ -516,11 +562,11 @@ the matrix element
 \[
   A(\vec k)
   =
-  {}_\delta\langle\vec k|\widehat\phi(0)|\Omega\rangle
+  {}_\delta\langle\vec k|\widehat\phi(0)|\vac\rangle
 \]
 has the same \(\vec k\)-dependence as \(N(\vec k)\). Indeed,
 \(U(\Lambda)^{-1}\widehat\phi(0)U(\Lambda)=\widehat\phi(0)\) and
-\(U(\Lambda)\Omega=\Omega\) give
+\(U(\Lambda)\vac=\vac\) give
 \[
   A(\vec k)
   =
@@ -535,7 +581,7 @@ up to the phase convention already fixed in the definition of the
 one-particle states. Thus there is a nonnegative number \(Z\), depending on the
 chosen field, such that
 \[
-  {}_\delta\langle\vec k|\widehat\phi(0)|\Omega\rangle
+  {}_\delta\langle\vec k|\widehat\phi(0)|\vac\rangle
   =
   \left[
     \frac{Z}{(2\pi)^{D-1}2\omega_{\vec k}}
@@ -543,7 +589,7 @@ chosen field, such that
 \]
 or equivalently
 \[
-  {}_{\rm inv}\langle\vec k|\widehat\phi(0)|\Omega\rangle
+  {}_{\rm inv}\langle\vec k|\widehat\phi(0)|\vac\rangle
   =
   Z^{1/2}.
 \]
@@ -564,7 +610,7 @@ construction,
 \]
 define \(Z\ge0\) by
 \[
-  {}_{\rm inv}\langle\vec p|\widehat\phi(0)|\Omega\rangle=Z^{1/2}
+  {}_{\rm inv}\langle\vec p|\widehat\phi(0)|\vac\rangle=Z^{1/2}
 \]
 for scalar one-particle states. Lorentz covariance makes the right-hand side
 independent of \(\vec p\) in this normalization. The one-particle contribution
@@ -589,7 +635,7 @@ section, the same statement is the calculation
   &=
   \int\dd^{D-1}\vec k\,
   \left|
-    {}_\delta\langle\vec k|\widehat\phi(0)|\Omega\rangle
+    {}_\delta\langle\vec k|\widehat\phi(0)|\vac\rangle
   \right|^2
   \delta^D(p-k)\,\dd^Dp
   \\
@@ -607,13 +653,13 @@ Comparison with the invariant-mass decomposition then gives
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95]
-  \node (v) at (0,0) {$\widehat\phi(f)\Omega$};
+  \node (v) at (0,0) {$\widehat\phi(f)\vac$};
   \node[draw,rounded corners=2pt,inner sep=4pt,blue!70!black] (vac) at (3.0,1.25)
-    {$E(\{0\})\widehat\phi(f)\Omega$};
+    {$E(\{0\})\widehat\phi(f)\vac$};
   \node[draw,rounded corners=2pt,inner sep=4pt,green!45!black] (one) at (3.25,0)
-    {$E(\mu^2=m^2)\widehat\phi(f)\Omega$};
+    {$E(\mu^2=m^2)\widehat\phi(f)\vac$};
   \node[draw,rounded corners=2pt,inner sep=4pt,orange!80!black] (cont) at (3.35,-1.25)
-    {$E_{\mathrm c}\widehat\phi(f)\Omega$};
+    {$E_{\mathrm c}\widehat\phi(f)\vac$};
   \draw[->,thick] (v) -- (vac);
   \draw[->,thick] (v) -- (one);
   \draw[->,thick] (v) -- (cont);
