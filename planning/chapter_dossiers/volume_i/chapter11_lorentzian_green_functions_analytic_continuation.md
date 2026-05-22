@@ -33,8 +33,12 @@
 
 - Lorentzian spacetime \(\mathbb R^{1,D-1}\) with mostly-plus metric
   \(\eta=\operatorname{diag}(-,+,\ldots,+)\).
-- A scalar local field \(\widehat\phi\), vacuum vector \(\Omega\), and
-  time-ordered Green functions \(G_n\).
+- A scalar Wightman field presentation in a vacuum sector, including
+  \(\Hilb\), \(\Omega\), translation generators \(P^\mu\) with spectrum in
+  \(\overline V_+\), and a scalar operator-valued distribution
+  \(\widehat\phi\).
+- Time-ordered Green functions \(G_n\) are distributions extending the
+  noncoincident ordered Wightman restrictions across partial diagonals.
 - Perturbative Lorentzian rules are boundary-value prescriptions for
   time-ordered Green functions, obtained from Euclidean rules by specified
   contour continuation.
@@ -46,8 +50,14 @@
 | \(x^\mu\) | Lorentzian coordinate |
 | \(k^\mu=(k^0,\vec k)\) | Lorentzian momentum |
 | \(k^2=\eta_{\mu\nu}k^\mu k^\nu\) | mostly-plus square |
+| \(M\) | Lorentzian spacetime \(\mathbb R^{1,D-1}\) |
+| \(\overline V_+\) | closed forward spectrum cone \(\{p:p^0\ge0,\ p^2\le0\}\) |
+| \(W_n\) | Wightman \(n\)-point distribution |
 | \(\omega_{\vec k}\) | \(\sqrt{\vec k^{\,2}+m^2}\) |
 | \(G_n\) | time-ordered Lorentzian \(n\)-point function |
+| \(M_\pi^n\) | strict time-ordering region for permutation \(\pi\) |
+| \(\mathcal W_{n,\pi}\) | holomorphic continuation of the Wightman ordering \(\pi\) |
+| \(S_n\) | Euclidean Schwinger \(n\)-point distribution |
 | \(\widetilde G(k)\) | Fourier transform of the two-point function |
 | \(\epsilon\) | positive infinitesimal defining Feynman boundary value |
 | \(\Sigma(k)\) | Lorentzian self-energy, first-sheet continuation of Euclidean \(\Sigma_E\) |
@@ -57,6 +67,21 @@
 
 ## Claims To Establish
 
+- A vacuum time-ordered Green function is a distribution whose restriction
+  to each strict time-ordering region agrees with the corresponding Wightman
+  ordering.
+- Local commutativity gives compatibility across spacelike equal-time
+  boundaries; extension across partial diagonals is local time-ordered product
+  data.
+- The spectrum condition gives tube analyticity in relative variables, with
+  boundary values obtained after pairing with test functions.
+- Ordered imaginary shifts
+  \(\epsilon_1>\cdots>\epsilon_n>0\) give the time-ordered boundary value of
+  the holomorphic Wightman function.
+- Ordered Euclidean times give Schwinger functions as imaginary-time
+  restrictions of the same holomorphic functions under Wightman tube
+  analyticity, while OS-admissible Schwinger data reconstructs Wightman
+  boundary values by the reconstruction theorem.
 - The Lorentzian time-ordered two-point free propagator has denominator
   \(k^2+m^2-i\epsilon\) and poles at
   \(-\omega_{\vec k}+i0\) and \(+\omega_{\vec k}-i0\).

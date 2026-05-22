@@ -10,23 +10,48 @@ metric
   \qquad
   k^2=\eta_{\mu\nu}k^\mu k^\nu.
 \]
-Let \(\widehat\phi\) be a scalar local field and let \(\Omega\) be the vacuum
-vector. The Lorentzian time-ordered \(n\)-point distribution is
+Write \(M=\mathbb R^{1,D-1}\).  The framework in this chapter is a scalar
+Wightman field presentation in a vacuum sector: a Hilbert space \(\Hilb\), a
+vacuum vector \(\Omega\), a strongly continuous unitary representation of
+translations with self-adjoint generators \(P^\mu\) whose joint spectrum lies
+in the closed forward cone
 \[
-  G_n(x_1,\ldots,x_n)
+  \overline V_+=\{p\in M:p^0\ge0,\ p^2\le0\},
+\]
+and a scalar
+operator-valued distribution \(\widehat\phi\) defined on a common invariant
+dense domain.  Point-field notation denotes the kernel notation for smeared
+operator-valued distributions.
+
+The Wightman \(n\)-point distribution is
+\[
+  W_n(x_1,\ldots,x_n)
   =
   \langle\Omega|
-  \operatorname T\{
-    \widehat\phi(x_1)\cdots\widehat\phi(x_n)
-  \}
+  \widehat\phi(x_1)\cdots\widehat\phi(x_n)
+  |\Omega\rangle
+  \in \mathcal S'(M^n).
+\]
+For a permutation \(\pi\in S_n\), set
+\[
+  M_\pi^n
+  =
+  \{(x_1,\ldots,x_n):x_{\pi(1)}^0>\cdots>x_{\pi(n)}^0\}.
+\]
+A vacuum time-ordered Green function for this field is a distribution
+\[
+  G_n\in\mathcal S'(M^n)
+\]
+whose restriction to \(M_\pi^n\) is
+\[
+  G_n(x_1,\ldots,x_n)\big|_{M_\pi^n}
+  =
+  \langle\Omega|
+  \widehat\phi(x_{\pi(1)})\cdots
+  \widehat\phi(x_{\pi(n)})
   |\Omega\rangle .
 \]
-Away from coincident time coordinates, order the fields by their time
-coordinates.  If
-\[
-  x_{\pi(1)}^0>x_{\pi(2)}^0>\cdots>x_{\pi(n)}^0,
-\]
-then
+Equivalently, on \(M_\pi^n\) away from coincident insertion points,
 \[
   G_n(x_1,\ldots,x_n)
   =
@@ -35,9 +60,23 @@ then
   \widehat\phi(x_{\pi(n)})
   |\Omega\rangle .
 \]
-Coincident-time terms are local distributional data of the chosen
-time-ordered product. In perturbation theory they are fixed together with the
-renormalization prescription for local products.
+Local commutativity makes the restrictions compatible across spacelike
+equal-time boundaries.  A choice of \(G_n\) is therefore an extension across
+partial diagonals \(x_{a_1}=\cdots=x_{a_r}\).  The possible differences
+between two such extensions are local distributions supported on these
+diagonals.  In perturbation theory this extension datum is fixed together
+with the renormalization prescription for local products.  The compact
+operator notation
+\[
+  G_n(x_1,\ldots,x_n)
+  =
+  \langle\Omega|
+  \operatorname T\{
+    \widehat\phi(x_1)\cdots\widehat\phi(x_n)
+  \}
+  |\Omega\rangle
+\]
+refers to this specified distribution.
 
 For the free scalar field of mass \(m>0\), the two-point time-ordered Green
 function has Fourier representation
@@ -115,6 +154,86 @@ exactly the pole displacement
   \frac1{k^2+m^2-\ii\epsilon}
 \]
 appearing in the Feynman propagator.
+
+\section{Boundary-Value Dictionary}
+
+The preceding tube statement gives a precise dictionary among Wightman,
+time-ordered, and Euclidean functions.  Fix an ordering \(\pi\) and real
+Lorentzian points with
+\[
+  x_{\pi(1)}^0>x_{\pi(2)}^0>\cdots>x_{\pi(n)}^0 .
+\]
+Choose positive numbers
+\[
+  \epsilon_1>\epsilon_2>\cdots>\epsilon_n>0
+\]
+and set
+\[
+  z_{\pi(j)}=x_{\pi(j)}-\ii\epsilon_j e_0,
+  \qquad e_0=(1,\vec0).
+\]
+Then
+\[
+  z_{\pi(j)}-z_{\pi(j+1)}
+  =
+  x_{\pi(j)}-x_{\pi(j+1)}
+  -
+  \ii(\epsilon_j-\epsilon_{j+1})e_0
+\]
+lies in the forward tube for the \(j\)-th relative variable.  The
+time-ordered boundary value on the region \(M_\pi^n\) is
+\[
+  G_n(x_1,\ldots,x_n)\big|_{M_\pi^n}
+  =
+  \lim_{\epsilon_1>\cdots>\epsilon_n\downarrow0}
+  \mathcal W_{n,\pi}(z_{\pi(1)},\ldots,z_{\pi(n)}),
+\]
+where \(\mathcal W_{n,\pi}\) denotes the holomorphic continuation of the
+Wightman ordering displayed by \(\pi\).  The limit is a distributional
+boundary value: it is taken after pairing with a test function.
+
+Euclidean Schwinger functions arise from the same holomorphic functions by
+restriction to imaginary time.  For Euclidean points
+\[
+  x_{E,a}=(\tau_a,\vec x_a),
+\]
+with
+\[
+  \tau_{\pi(1)}>\tau_{\pi(2)}>\cdots>\tau_{\pi(n)},
+\]
+define
+\[
+  z_{\pi(j)}^0=-\ii\tau_{\pi(j)},
+  \qquad
+  \vec z_{\pi(j)}=\vec x_{\pi(j)} .
+\]
+Then
+\[
+\begin{aligned}
+  &S_n(x_{E,1},\ldots,x_{E,n})
+    \big|_{\tau_{\pi(1)}>\cdots>\tau_{\pi(n)}}  \\
+  &\qquad =
+  \mathcal W_{n,\pi}(z_{\pi(1)},\ldots,z_{\pi(n)}).
+\end{aligned}
+\]
+Conversely, an OS-admissible Schwinger hierarchy reconstructs Wightman
+boundary values by the positive-time quotient and analytic-continuation
+theorem of Chapter~\ref{ch:volume-iv-osterwalder-schrader-reconstruction}.
+Thus the boundary-value dictionary has two certified entrances: spectral
+Wightman data with tube analyticity, and Euclidean data satisfying the OS
+positivity, covariance, regularity, and growth hypotheses.
+
+For \(n=2\), the dictionary gives the Feynman prescription.  If
+\(x^0>0\), the ordered boundary value is obtained with the positive-energy
+pole below the real \(k^0\)-axis and the negative-energy pole above it:
+\[
+  k^0=+\omega_{\vec k}-\ii0,
+  \qquad
+  k^0=-\omega_{\vec k}+\ii0.
+\]
+If \(x^0<0\), the contour closure selects the opposite residue in the same
+single distribution \(\Delta_F\).  This two-point pole rule is the momentum
+space encoding of the ordered tube boundary value above.
 
 \section{Lorentzian Feynman Rules for Green Functions}
 
