@@ -585,7 +585,13 @@ The corresponding dimensionless coordinates are
 \end{equation}
 The canonical term in the second equation is \(2\lambda_6\), because
 \(\phi^6\) has coefficient of mass dimension \(-2\) in four dimensions.  A
-typical small-coupling part of the projected Wilsonian flow has the form
+projected Wilsonian beta function is, by definition,
+\[
+  \beta_A(\lambda):=\Lambda\frac{\dd\lambda_A}{\dd\Lambda}.
+\]
+The variables \(\lambda_A\) are coordinates on a chosen cutoff scheme, not
+observables by themselves.  To isolate the structural point, choose local
+coordinates in which the small-coupling flow begins as
 \begin{equation}
   \Lambda\frac{\dd\lambda_4}{\dd\Lambda}
   =
@@ -597,21 +603,37 @@ typical small-coupling part of the projected Wilsonian flow has the form
   \label{eq:quartic-sextic-beta-functions}
 \end{equation}
 where \(a\) and \(b\) depend on the cutoff profile and on the normalization of
-the two operators.  The ellipses denote terms of higher order in the local
-coordinates and contributions from omitted operators.
+the two operators.  The ellipses denote terms of higher order in the retained
+local coordinates and terms involving the omitted coordinates.  The coefficient
+\(2\) is the canonical irrelevant eigenvalue in the convention
+\(t=\log\Lambda\): at fixed dimensionful \(g_6\), the dimensionless
+\(\lambda_6=\Lambda^2g_6\) decreases when the cutoff is lowered.
 
 Assume \(\lambda_6=O(\lambda_4^2)\) along the trajectory and work to the first
-nontrivial order.  Then
+nontrivial order.  Let
+\[
+  h(\Lambda):=\lambda_6(\Lambda)+\frac b2\lambda_4(\Lambda)^2 .
+\]
+Using \eqref{eq:quartic-sextic-beta-functions},
 \begin{equation}
   \Lambda\frac{\dd}{\dd\Lambda}
   \left(\lambda_6+\frac b2\lambda_4^2\right)
   =
   2\left(\lambda_6+\frac b2\lambda_4^2\right)
-  +O(\lambda_4^3).
+  +O(\lambda_4h)+O(\lambda_4^3).
   \label{eq:slaving-combination}
 \end{equation}
-Along the flow toward the infrared, \(\Lambda\downarrow0\), the combination in
-parentheses is proportional to \(\Lambda^2\) to this order.  Therefore
+Thus, over a perturbative range in which the variation of \(\lambda_4\) only
+affects this equation at higher order,
+\[
+  h(\Lambda)
+  =
+  h(\Lambda_*)\left(\frac{\Lambda}{\Lambda_*}\right)^2
+  +O(\lambda_4^3).
+\]
+Along the flow toward the infrared, \(\Lambda\downarrow0\), the transverse
+combination \(h\) is suppressed by the canonical irrelevant power.  The
+attracting curve is therefore
 \begin{equation}
   \lambda_6(\Lambda)
   =
@@ -625,8 +647,12 @@ on the attracting curve.  Substitution into the \(\lambda_4\) equation gives
   \frac{ab}{2}\lambda_4^2+O(\lambda_4^3).
   \label{eq:lambda-four-induced-beta}
 \end{equation}
-The ordinary beta function for the quartic coordinate is recovered after the
-irrelevant coordinate has been eliminated along the Wilsonian trajectory.
+This equation is the induced beta function for the retained marginal
+coordinate in the reduced coordinate system.  Comparison with a 1PI
+renormalization convention requires the usual finite redefinition between
+Wilsonian coordinates and the renormalized coupling used to label Green
+functions; the structural fact is that the irrelevant coordinate has been
+eliminated by solving its own flow equation.
 
 \begin{figure}[H]
   \centering
@@ -640,8 +666,6 @@ irrelevant coordinate has been eliminated along the Wilsonian trajectory.
 
     \draw[blue!65!black,very thick,domain=0.05:5.8,samples=100]
       plot (\x,{-0.055*\x*\x});
-    \node[blue!65!black,align=center,fill=white,inner sep=2pt] at (4.72,-1.73)
-      {\(\lambda_6=-\frac b2\lambda_4^2+O(\lambda_4^3)\)\\attracting curve};
 
     \foreach \y/\bend in {1.85/22,1.25/17,0.70/12,-0.55/-10,-1.35/-18} {
       \draw[green!45!black,thick,-{Latex[length=2mm]}]
@@ -656,12 +680,17 @@ irrelevant coordinate has been eliminated along the Wilsonian trajectory.
     }
     \node[green!45!black,align=center] at (4.95,1.85)
       {decreasing \(\Lambda\)\\flows toward the curve};
+    \node[blue!65!black,align=center,fill=white,inner sep=3pt] at (4.55,-1.82)
+      {\(\lambda_6=-\frac b2\lambda_4^2+O(\lambda_4^3)\)\\attracting curve};
     \node[blue!65!black] at (1.0,0.45) {IR};
   \end{tikzpicture}
   }
   \caption{In the two-coordinate projection, the irrelevant coordinate
   \(\lambda_6\) rapidly approaches a curve determined by \(\lambda_4\).  The
-  arrows indicate the direction of decreasing cutoff.}
+  arrows indicate the direction of decreasing cutoff.  The curve is drawn in
+  a normalization with \(b>0\); changing the sign convention for the
+  \(\phi^6\) coordinate reflects the vertical axis but not the attraction
+  statement.}
   \label{fig:quartic-sextic-ir-flow}
 \end{figure}
 
@@ -717,8 +746,35 @@ this projection is whether
 \end{equation}
 exists.  Under perturbative control, with small couplings along the trajectory
 and sufficiently mild dependence of the beta functions on the irrelevant
-coordinate, the limit exists order by order and lands on the attracting curve
-selected by \(\lambda_4^R\).
+coordinate, the limit can be seen directly from the transverse coordinate
+\(h\).  The boundary condition \(\lambda_6(\Lambda_0)=0\) gives
+\[
+  h(\Lambda_0)
+  =
+  \frac b2\lambda_4(\Lambda_0)^2 .
+\]
+After tuning \(\lambda_4(\Lambda_R)=\lambda_4^R\), the homogeneous memory of
+this ultraviolet boundary condition is
+\[
+  h(\Lambda_R)
+  =
+  h(\Lambda_0)
+  \left(\frac{\Lambda_R}{\Lambda_0}\right)^2
+  +O\bigl((\lambda_4^R)^3\bigr)
+\]
+within the perturbative domain.  Therefore
+\[
+  \lambda_6(\Lambda_R)
+  =
+  -\frac b2(\lambda_4^R)^2
+  +O\bigl((\lambda_4^R)^3\bigr)
+  +O\left(\left(\frac{\Lambda_R}{\Lambda_0}\right)^2\right),
+\]
+where the coefficient of the last term is bounded by the assumed control of
+the bare trajectory.  This displays the continuum-limit mechanism: the
+irrelevant coordinate at the fixed physical scale is selected by the
+renormalized trajectory, while the memory of the microscopic boundary
+condition is power-suppressed.
 
 \begin{figure}[H]
   \centering
@@ -735,7 +791,7 @@ selected by \(\lambda_4^R\).
     \draw[blue!65!black,very thick,domain=0.35:7.35,samples=120]
       plot (\x,{0.32+0.07*(\x-1.35)+0.045*(\x-1.35)*(\x-1.35)});
     \node[blue!65!black,align=center,fill=white,inner sep=2pt] at (5.6,2.38)
-      {renormalized\\trajectory surface};
+      {renormalized\\trajectory curve};
 
     \foreach \x/\y in {7.2/0,6.4/0,5.6/0,4.8/0,4.0/0} {
       \fill[purple!80!black] (\x,\y) circle (1.8pt);
@@ -751,8 +807,8 @@ selected by \(\lambda_4^R\).
     \node[green!45!black,align=left,fill=white,inner sep=1pt] at (2.05,-0.32)
       {\((\lambda_4^R,\lambda_6(\Lambda_R))\)};
 
-    \draw[red!70!black,thick,dashed] (0.22,0.32)--(1.35,0.32);
-    \draw[-{Latex[length=2mm]},red!70!black,thick] (0.28,0.32)--(0.28,0.32);
+    \draw[-{Latex[length=2mm]},red!70!black,thick,dashed]
+      (0.22,0.32)--(1.25,0.32);
     \node[red!70!black,align=center,fill=white,inner sep=2pt] at (0.72,0.85)
       {limiting value\\as \(\Lambda_0\to\infty\)};
 

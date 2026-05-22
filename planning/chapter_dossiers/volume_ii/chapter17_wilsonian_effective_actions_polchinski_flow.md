@@ -53,13 +53,22 @@ The chapter must define and derive:
 - the \(D=4\) massless scalar toy truncation
   \(L_\Lambda=\int(g_4\phi^4+g_6\phi^6)\), with
   \(\lambda_4=g_4\), \(\lambda_6=\Lambda^2g_6\);
-- the two-coupling Wilsonian flow and the slaving relation
-  \(\lambda_6+\frac b2\lambda_4^2=O(\Lambda^2)\) toward the IR;
-- the emergence of the usual 1PI beta function after irrelevant couplings are
-  eliminated along the RG trajectory;
+- the beta-function convention
+  \(\beta_A=\Lambda\,\dd\lambda_A/\dd\Lambda\) for projected Wilsonian
+  coordinates;
+- the two-coupling Wilsonian flow, the transverse coordinate
+  \(h=\lambda_6+\frac b2\lambda_4^2\), and its canonical suppression
+  \(h(\Lambda)=h(\Lambda_*)(\Lambda/\Lambda_*)^2+\cdots\) toward the IR;
+- the induced beta function for the retained marginal coordinate after
+  irrelevant couplings are eliminated along the RG trajectory, with a clear
+  warning that comparison to a 1PI beta function requires a coordinate
+  redefinition;
 - the Wilsonian formulation of perturbative renormalizability as the existence
   of a \(\Lambda_0\to\infty\) limit after tuning bare couplings to hold
   physical coordinates fixed at \(\Lambda_R\);
+- the explicit continuum-limit estimate showing that the memory of
+  \(\lambda_6(\Lambda_0)=0\) is suppressed by
+  \((\Lambda_R/\Lambda_0)^2\);
 - the role of finite dimensionless irrelevant bare couplings in lattice
   regularizations.
 
@@ -81,7 +90,9 @@ The chapter must define and derive:
    \(\dd u/\dd t=-yu+\cdots\); positive \(y\) grows toward the infrared, while
    negative \(y\) is irrelevant.
 7. In the quartic-sextic toy truncation, the irrelevant coupling approaches a
-   cutoff-dependent function of the marginal coupling along IR flow.
+   cutoff-dependent function of the marginal coupling along IR flow; the
+   transverse memory of the ultraviolet boundary condition is suppressed by
+   the canonical irrelevant power.
 8. Perturbative renormalizability is formulated by a limiting procedure:
    remove the UV cutoff while tuning bare couplings so selected physical
    couplings at a fixed reference scale remain fixed.
@@ -98,7 +109,7 @@ The chapter must define and derive:
 - Shell integration as a graphical replacement of old propagators.
 - Wilson-Polchinski equation with its two diagrammatic terms.
 - Quartic-sextic toy flow, including IR attraction of \(\lambda_6\) to the
-  slaved curve.
+  slaved curve and the sign-convention dependence of the vertical coordinate.
 - Continuum-limit flow diagram with UV cutoff \(\Lambda_0\), physical scale
   \(\Lambda_R\), fixed \(\lambda_4^R\), and limiting
   \(\lambda_6(\Lambda_R)\).
@@ -111,5 +122,7 @@ The chapter must define and derive:
   problem and the hypotheses.
 - Keep the relevance sign convention consistent with the earlier chapters:
   \(y=D-\Delta\) and flow in \(\log\Lambda\) has linear term \(-yu\).
+- In the two-coordinate toy figures, call the renormalized trajectory a curve,
+  not a surface.
 - Do not introduce Yang-Mills content in this chapter.
 - Do not treat axiomatic QFT frameworks as the foundation of this construction.
