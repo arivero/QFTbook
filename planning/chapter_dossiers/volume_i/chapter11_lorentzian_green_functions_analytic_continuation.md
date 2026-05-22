@@ -9,6 +9,11 @@
   - `transcription/tex/253a/foundations.tex`, roughly lines 4380--4558;
   - `references/253a_notes.tex`, corresponding Lorentzian Feynman-rule block,
     used only as a non-authoritative comparison.
+- Source/figure certification:
+  - handwritten pp. 110--112 were checked against the compiled manuscript on
+    2026-05-22;
+  - audit file:
+    `planning/build_audits/2026-05-22_perturbative_green_functions_source_figures.md`.
 
 ## External Reference Boundary
 
@@ -46,6 +51,7 @@
 | \(\widetilde G(k)\) | Fourier transform of the two-point function |
 | \(\epsilon\) | positive infinitesimal defining Feynman boundary value |
 | \(\Sigma(k)\) | Lorentzian self-energy, first-sheet continuation of Euclidean \(\Sigma_E\) |
+| \(k_E^D\) | Euclidean external energy related by \(k^0=i k_E^D\) |
 | \(M\) | lightest invariant mass in the continuum channel under discussion |
 | \(E_M(\vec k)\) | \(\sqrt{\vec k^{\,2}+M^2}\) |
 
@@ -56,6 +62,9 @@
   \(-\omega_{\vec k}+i0\) and \(+\omega_{\vec k}-i0\).
 - For labelled quartic vertices the Lorentzian vertex rule is
   \(-ig(2\pi)^D\delta^D(\sum k_i)\).
+- For unlabelled four-field insertions direct expansion gives
+  \(-ig(2\pi)^D\delta^D(\sum k_i)/4!\), and the labelled rule follows by
+  contraction counting.
 - The one-loop tadpole contour rotation gives \(i\) times the Euclidean
   self-energy contribution with the sign convention of Chapter 10.
 - The full perturbative two-point function has the form
@@ -69,6 +78,8 @@
 - The first-sheet boundary value on the positive-energy cut is obtained by
   continuation from the Euclidean axis to the real axis from above; the
   negative-energy cut has the conjugate Feynman prescription.
+- The continuation path is stated as \(k^0=i k_E^D\) from the imaginary
+  \(k^0\)-axis to the real boundary value without crossing first-sheet cuts.
 
 ## Figure Requirements
 

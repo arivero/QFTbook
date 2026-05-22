@@ -11,6 +11,11 @@
   - `transcription/tex/253a/foundations.tex`, roughly lines 3905--4383;
   - `references/253a_notes.tex`, corresponding non-authoritative comparison
     around the scalar perturbation chapter.
+- Source/figure certification:
+  - handwritten pp. 100--109 were checked against the compiled manuscript on
+    2026-05-22;
+  - audit file:
+    `planning/build_audits/2026-05-22_perturbative_green_functions_source_figures.md`.
 
 ## External Reference Boundary
 
@@ -48,7 +53,10 @@
 | \(\phi\) | real scalar field variable |
 | \(m\) | mass parameter in the quadratic part of the regulated action |
 | \(g\) | quartic coupling |
+| \(\mathcal L\) | Lorentzian scalar \(\phi^4\) density used only to identify the model |
+| \(\mathcal L_E\) | Euclidean scalar \(\phi^4\) density used for Schwinger functions |
 | \(S_E=S_{0,E}+S_{\mathrm{int},E}\) | Euclidean action |
+| \([\dd\phi]_\Lambda\) | regulated finite-mode integration symbol |
 | \(C_\Lambda(k)\) | regulated free propagator |
 | \(Z_\Lambda[J]\) | regulated source functional |
 | \(W_\Lambda[J]\) | logarithm of \(Z_\Lambda[J]\) |
@@ -57,6 +65,7 @@
 | \(\Gamma\) | graph with labelled external legs |
 | \(\operatorname{Aut}\Gamma\) | automorphism group fixing external labels |
 | \(\Sigma_E(k)\) | Euclidean self-energy defined by \(G_E(k)=(k^2+m^2-\Sigma_E(k))^{-1}\) |
+| \(C_1(\Lambda,m)\) | cutoff tadpole integral including the factor \(1/2\) |
 | \(m_*\) | spectral pole mass identified from the two-point function |
 | \(m_R\) | renormalized mass parameter chosen by a prescription |
 | \(\delta m^2\) | mass counterterm |
@@ -72,6 +81,12 @@
 - For \(\phi^4\), each vertex has valence four; the graph weight can be stated
   using vertex factor \(-g\), propagators, loop integrations, momentum
   conservation, and a symmetry factor.
+- The unlabelled action-expansion vertex \(-g/4!\) and the labelled-leg rule
+  \(-g\) are the same convention after Wick-contraction multiplicities are
+  counted.
+- The tadpole and sunset coefficients are explicitly
+  \(4\cdot3!/2(-g/4!)=-g/2\) and
+  \(\frac1{2!}(2\cdot4^2\cdot3!)(-g/4!)^2=g^2/6\).
 - The two-point function admits a Dyson form once the self-energy is defined as
   the sum of amputated 1PI two-point insertions.
 - At order \(g\), the tadpole contribution is
@@ -83,7 +98,7 @@
   \]
   before regularization.
 - With a momentum cutoff \(\Lambda\), the tadpole integral diverges as
-  \(\log\Lambda\) in \(D=2\) and as a power \(\Lambda^{D-2}\) in \(D\ge3\).
+  \(\log(\Lambda/m)\) in \(D=2\) and as a power \(\Lambda^{D-2}\) in \(D\ge3\).
 - A mass counterterm reorganizes perturbation theory so that the pole mass can
   be fixed order by order.
 - The leading connected four-point Green function is

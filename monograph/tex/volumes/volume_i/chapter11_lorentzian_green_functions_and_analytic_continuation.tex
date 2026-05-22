@@ -153,8 +153,12 @@ Lorentzian momenta on every line.
 
 This is the labelled-leg convention matching the Euclidean convention of the
 previous chapter. Direct expansion of the interaction density instead assigns
-\(-\ii g/4!\) to an unlabelled four-field insertion and recovers the labelled
-rule by counting contractions.
+\[
+  -\frac{\ii g}{4!}\,(2\pi)^D
+  \delta^D(k_1+k_2+k_3+k_4)
+\]
+to an unlabelled four-field insertion and recovers the labelled rule by
+counting contractions.
 
 \section{Loop Rotation and the Tadpole}
 
@@ -243,9 +247,14 @@ where
   \frac{-\ii}{k^2+m^2-\ii\epsilon-\Sigma(k)} .
 \]
 The function \(\Sigma(k)\) is initially computed for Euclidean external
-momenta, where loop integrals have Euclidean denominators. Its Lorentzian
-value is the boundary value obtained by analytic continuation of \(k^0\) from
-the Euclidean axis to the prescribed side of the real axis.
+momenta, where loop integrals have Euclidean denominators. Using
+\[
+  k^0=\ii k_E^D ,
+\]
+the Euclidean external energy lies on the imaginary \(k^0\)-axis. The
+Lorentzian value is the boundary value obtained by analytic continuation of
+\(k^0\) from this axis to the prescribed side of the real axis without crossing
+the first-sheet cuts.
 
 The spectral representation fixes the location of the first singular
 thresholds. Suppose the continuum part in the two-point spectral measure has
@@ -265,8 +274,9 @@ Consequently the first sheet has branch cuts beginning at
   k^0=-E_M(\vec k).
 \]
 The Feynman boundary value on the positive-energy cut is reached from the
-upper half-plane; the negative-energy cut is reached with the conjugate
-placement.
+upper half-plane. Thus the value of \(\Sigma(k)\) at real positive \(k^0\) is
+the boundary value approached from \(\operatorname{Im}k^0>0\) on the first
+sheet. The negative-energy cut is reached with the conjugate placement.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.95,>=Stealth]

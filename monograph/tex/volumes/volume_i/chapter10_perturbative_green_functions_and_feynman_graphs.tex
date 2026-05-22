@@ -6,7 +6,25 @@
 Let \(D\ge1\). In this chapter \(x\in\mathbb R^D\) denotes a Euclidean
 spacetime point and \(k\in\mathbb R^D\) denotes the corresponding Euclidean
 momentum. The field variable is a real scalar function \(\phi\). The
-interaction is
+Lorentzian model whose Green functions are studied perturbatively has classical
+density, in the mostly-plus convention,
+\[
+  \mathcal L
+  =
+  -\frac{1}{2}\partial_\mu\phi\,\partial^\mu\phi
+  -\frac{1}{2}m^2\phi^2
+  -\frac{g}{4!}\phi^4 .
+\]
+The perturbative construction in this chapter is made first for Euclidean
+Green functions. Its Euclidean density is
+\[
+  \mathcal L_E
+  =
+  \frac{1}{2}(\partial\phi)^2
+  +\frac{1}{2}m^2\phi^2
+  +\frac{g}{4!}\phi^4 ,
+\]
+so that the interaction part of the Euclidean action is
 \[
   S_{\mathrm{int},E}[\phi]
   =
@@ -40,6 +58,18 @@ an ordinary finite-dimensional Gaussian expectation, or the limit of such
 expectations. Formulas written without \(\Lambda\) are formal perturbative
 formulas or shorthand for regulator-dependent formulas before the limit is
 studied.
+With a sharp Fourier cutoff this finite-dimensional statement may be displayed
+schematically as
+\[
+  \int[\dd\phi]_\Lambda
+  \quad\leadsto\quad
+  \int\prod_{|k|\le\Lambda}\dd\widetilde\phi(k),
+  \qquad
+  \widetilde\phi(-k)=\overline{\widetilde\phi(k)}
+\]
+up to the usual choice of independent real coordinates and normalization
+constants. The symbol \([\dd\phi]\) is never used here as an unregulated
+Lebesgue measure on an infinite-dimensional vector space.
 
 The normalized Euclidean \(n\)-point function is
 \[
@@ -230,12 +260,38 @@ unchanged.
 For example, the order-\(g\) tadpole correction to the two-point function has
 one quartic vertex. The two external labels are fixed, while the two remaining
 half-edges form the loop and may be interchanged. Hence
-\(|\operatorname{Aut}\Gamma|=2\), and the coefficient is \(-g/2\). The
-single quartic contribution to the connected four-point function with four
-labelled external insertions has trivial automorphism group, and its
-coefficient is \(-g\). Vacuum components have already been removed by
-normalization; the logarithm of the generating functional then selects the
-component in which all external labels are connected.
+\(|\operatorname{Aut}\Gamma|=2\), and the coefficient is \(-g/2\). In the
+unlabelled-vertex convention this same count is
+\[
+  \left(-\frac{g}{4!}\right)
+  \left(4\cdot\frac{3!}{2}\right)
+  =
+  -\frac{g}{2}.
+\]
+Here the \(4\) chooses the vertex field contracted with one external endpoint,
+the remaining \(3!\) orders the second external contraction together with the
+two loop half-edges, and the division by \(2\) removes the interchange of the
+two half-edges forming the loop.
+
+For the two-vertex sunset insertion in the two-point function, the expansion
+prefactor and the Wick-pairing count give
+\[
+  \frac{1}{2!}
+  \left(-\frac{g}{4!}\right)^2
+  \left(2\cdot4^2\cdot3!\right)
+  =
+  4\cdot4!\left(-\frac{g}{4!}\right)^2
+  =
+  \frac{g^2}{6}.
+\]
+The first factor \(2\) assigns the two external endpoints to the two
+interaction vertices, each \(4\) chooses the external half-edge at one vertex,
+and \(3!\) pairs the remaining half-edges between the vertices. The single
+quartic contribution to the connected four-point function with four labelled
+external insertions has trivial automorphism group, and its coefficient is
+\(-g\). Vacuum components have already been removed by normalization; the
+logarithm of the generating functional then selects the component in which all
+external labels are connected.
 
 \section{Two-Point Function and Self-Energy}
 
@@ -344,8 +400,11 @@ The order-\(g\) tadpole is
 -\frac{g}{2}
 \int \frac{\dd^D q}{(2\pi)^D}\,\frac{1}{q^2+m^2}.
 \]
-The factor \(1/2\) is the symmetry factor of the tadpole graph. With a sharp
-momentum cutoff used only to display the degree of divergence,
+The factor \(1/2\) is the symmetry factor of the tadpole graph. This insertion
+is independent of the external momentum \(k\), because no external momentum
+flows through the closed loop. In the continuum notation the loop integral is
+ultraviolet divergent for \(D\ge2\). With a sharp momentum cutoff used only to
+display the degree of divergence,
 \[
   C_1(\Lambda,m)
   =
@@ -368,15 +427,23 @@ Thus
   C_1(\Lambda,m)
   \sim
   \begin{cases}
-    \dfrac{1}{4\pi}\log\Lambda, & D=2,\\[2mm]
+    \dfrac{1}{4\pi}\log\dfrac{\Lambda}{m}, & D=2,\\[2mm]
     \dfrac{1}{2}
     \dfrac{\operatorname{vol}(S^{D-1})}{(2\pi)^D}
     \dfrac{\Lambda^{D-2}}{D-2}, & D\ge3,
   \end{cases}
 \]
 up to finite terms and convention-dependent cutoff terms.  The first line uses
-\(\int_0^\Lambda r(r^2+m^2)^{-1}\dd r=\log\Lambda+O(1)\).  The second line
-uses \(r^{D-1}(r^2+m^2)^{-1}=r^{D-3}+O(r^{D-5})\) at large \(r\).  Hence
+\[
+  \int_0^\Lambda
+  \frac{r\,\dd r}{r^2+m^2}
+  =
+  \frac{1}{2}\log\frac{\Lambda^2+m^2}{m^2}
+  =
+  \log\frac{\Lambda}{m}+O(\Lambda^{-2})
+\]
+inside the radial expression. The second line uses
+\(r^{D-1}(r^2+m^2)^{-1}=r^{D-3}+O(r^{D-5})\) at large \(r\).  Hence
 \[
   \Sigma_E^{(1)}(k)=-g\,C_1(\Lambda,m).
 \]
@@ -419,7 +486,14 @@ The spectral representation of the Euclidean two-point function has the form
 \]
 with an isolated atom at \(s=m_*^2\) when the chosen field has nonzero overlap
 with a stable one-particle state. The parameter \(m_*\) is the pole mass read
-from the two-point function.
+from the two-point function. Equivalently, singularities of the Euclidean
+function in the complex \(k^2\)-plane lie at \(k^2=-s\), and an isolated
+one-particle state gives the nearest such pole when no lighter state couples to
+the field. At fixed spatial momentum, the same pole appears in the complex
+Euclidean energy plane at
+\[
+  k_D=\pm\ii\sqrt{\vec k^{\,2}+m_*^2}.
+\]
 
 Using
 \[
@@ -434,6 +508,12 @@ and the tadpole value above, the pole position satisfies, to first order,
 in this cutoff scheme. The parameter \(m\) is therefore a parameter of the
 regulated quadratic action. Its relation to the spectral pole mass depends on
 the regulator and on the prescription used to define the finite theory.
+At fixed regulator, the expansion is an expansion in the formal parameter
+\(g\). The coefficient \(C_1(\Lambda,m)\) grows with the cutoff in
+\(D\ge2\), so the product \(gC_1(\Lambda,m)\) is not uniformly small as
+\(\Lambda\to\infty\). Thus the distinction between a bare Lagrangian parameter
+and a mass defined by spectral data is operational in the cutoff-dependent
+calculation.
 
 A perturbative mass prescription introduces a renormalized parameter \(m_R\)
 and a counterterm \(\delta m^2\):
@@ -469,8 +549,13 @@ requires
   -C_1(\Lambda,m_R)+\text{finite prescription term}.
 \]
 Different finite terms correspond to different renormalization prescriptions.
-The physical statement is made after Green functions are expressed in terms of
-the chosen finite parameters, such as the pole mass \(m_*\).
+The split into \(m_R^2\) and \(\delta m^2\) is a prescription-dependent
+reorganization of the regulated perturbative calculation. Its role is to make
+the cancellation of cutoff-dependent local terms occur coefficient by
+coefficient in the expansion in \(g\). The physical statement is made after
+Green functions are expressed in terms of the chosen finite parameters, such as
+the pole mass \(m_*\). In the on-shell mass prescription the finite terms are
+chosen so that \(m_R=m_*\) order by order.
 
 \section{Connected Four-Point Function}
 
