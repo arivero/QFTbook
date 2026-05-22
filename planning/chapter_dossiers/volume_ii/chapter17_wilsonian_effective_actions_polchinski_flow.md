@@ -23,6 +23,8 @@
 - `SRC-EXTERNAL`: Polchinski's 1984 effective-Lagrangian paper and Rosten's
   exact-RG review, used only to guard terminology and theorem boundaries.  The
   chapter follows the local logical order and conventions.
+- `SRC-AUDIT`: page-level source and figure audit completed on 2026-05-22 in
+  `planning/build_audits/2026-05-22_wilsonian_effective_actions_source_figures.md`.
 
 ## Construction Task
 
@@ -81,24 +83,27 @@ The chapter must define and derive:
 3. Lowering \(\Lambda\) is represented exactly, at the formal path-integral
    level, by a decomposition of Gaussian covariance and integration over an
    independent shell field.
-4. The infinitesimal shell-integration identity gives a functional differential
+4. Before the shell source term is discarded, the split generating functional
+   contains \(J(\phi'+\widehat\phi)\); the \(J\widehat\phi\) term vanishes only
+   by the regulated support assumption on the source.
+5. The infinitesimal shell-integration identity gives a functional differential
    equation for \(L_\Lambda\).
-5. Locality of the Wilsonian action is a derivative expansion assumption tied
+6. Locality of the Wilsonian action is a derivative expansion assumption tied
    to smooth cutoffs and scales below the cutoff, not a finite-operator
    ansatz.
-6. With \(t=\log\Lambda\), relevance exponents obey
+7. With \(t=\log\Lambda\), relevance exponents obey
    \(\dd u/\dd t=-yu+\cdots\); positive \(y\) grows toward the infrared, while
    negative \(y\) is irrelevant.
-7. In the quartic-sextic toy truncation, the irrelevant coupling approaches a
+8. In the quartic-sextic toy truncation, the irrelevant coupling approaches a
    cutoff-dependent function of the marginal coupling along IR flow; the
    transverse memory of the ultraviolet boundary condition is suppressed by
    the canonical irrelevant power.
-8. Perturbative renormalizability is formulated by a limiting procedure:
+9. Perturbative renormalizability is formulated by a limiting procedure:
    remove the UV cutoff while tuning bare couplings so selected physical
    couplings at a fixed reference scale remain fixed.
-9. The perturbative argument requires explicit hypotheses on small couplings,
+10. The perturbative argument requires explicit hypotheses on small couplings,
    mild beta-function variation, and control of omitted irrelevant operators.
-10. Lattice QFT fits the same logic because finite dimensionless irrelevant
+11. Lattice QFT fits the same logic because finite dimensionless irrelevant
    lattice couplings correspond to dimensionful coefficients suppressed by
    powers of the UV cutoff.
 
@@ -126,3 +131,7 @@ The chapter must define and derive:
   not a surface.
 - Do not introduce Yang-Mills content in this chapter.
 - Do not treat axiomatic QFT frameworks as the foundation of this construction.
+- The compiled pages checked in the 2026-05-22 audit were physical PDF
+  pages 243--252.  The continuum-limit figure was adjusted to show visible RG
+  trajectory arrows toward \(\Lambda_R\), matching the source sketch more
+  faithfully.

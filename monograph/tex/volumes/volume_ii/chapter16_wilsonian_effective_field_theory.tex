@@ -257,9 +257,36 @@ indicated by their momentum arguments.
   \label{fig:propagator-split-shell-integration}
 \end{figure}
 
-With the source support specified above, the source term couples only to
-\(\phi'\).  The shell field may then be integrated out by the defining
-identity
+Before the support of the source is used, the covariance split rewrites the
+cutoff-\(\Lambda\) functional as
+\begin{align}
+  Z_\Lambda[J]
+  &=
+  \int[D\phi']\,
+  \exp\left[
+    -S_{\mathrm{kin},\Lambda'}[\phi']
+  \right]
+  \int[D\widehat\phi]\,
+  \exp\left[
+    -\widehat S_{\mathrm{kin}}[\widehat\phi]
+    -L_\Lambda[\phi'+\widehat\phi]
+  \right]
+  \notag\\
+  &\hspace{2.0cm}\times
+  \exp\left[
+    -\int\dd^Dx\,J(x)\bigl(\phi'(x)+\widehat\phi(x)\bigr)
+  \right].
+  \label{eq:z-lambda-after-shell-split}
+\end{align}
+The condition on \(J\) is now used in its precise regulated meaning: the source
+belongs to the low subspace, while the shell covariance belongs to the
+complement.  Equivalently, in Fourier notation
+\(\int\dd^Dx\,J(x)\widehat\phi(x)=0\) for the shell field.  With a smooth cutoff
+profile one enforces this by choosing the source momenta in a slightly smaller
+region on which the shell covariance vanishes, or by using a profile with a
+plateau.  Thus the source term in
+\eqref{eq:z-lambda-after-shell-split} couples only to \(\phi'\).  The shell
+field may then be integrated out by the defining identity
 \begin{equation}
   \exp\{-L_{\Lambda'}[\phi']\}
   =
@@ -780,6 +807,17 @@ condition is power-suppressed.
   \centering
   \resizebox{0.88\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      midflow/.style={
+        postaction={
+          decorate,
+          decoration={
+            markings,
+            mark=at position 0.60 with {\arrow{Latex[length=2mm]}}
+          }
+        }
+      }
+    }
     \draw[-{Latex[length=2mm]},thick] (-0.2,0)--(8.0,0)
       node[below] {\(\lambda_4\)};
     \draw[-{Latex[length=2mm]},thick] (0,-1.65)--(0,3.05)
@@ -795,11 +833,13 @@ condition is power-suppressed.
 
     \foreach \x/\y in {7.2/0,6.4/0,5.6/0,4.8/0,4.0/0} {
       \fill[purple!80!black] (\x,\y) circle (1.8pt);
-      \draw[purple!80!black,thick,-{Latex[length=2mm]}]
+      \draw[purple!80!black,thick,midflow]
         (\x,\y)
         .. controls ({0.72*\x+0.62},{1.40}) and (2.45,0.55)
         .. (1.35,0.32);
     }
+    \node[purple!80!black,align=center,fill=white,inner sep=1pt] at (4.25,1.14)
+      {RG flow\\toward \(\Lambda_R\)};
     \node[purple!80!black,align=center] at (5.85,-0.62)
       {bare actions\\\(\lambda_6(\Lambda_0)=0\)};
 
