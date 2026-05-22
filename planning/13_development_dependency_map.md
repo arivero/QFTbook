@@ -34,8 +34,8 @@ Each item supplies data, constructions, or theorems used by later items.
 10. Renormalization, local counterterms, effective actions, Wilsonian flows,
     renormalized operators, critical phenomena, and continuum limits.
 11. Gauge theory as constrained local quantum theory: gauge representatives,
-    BRST organization, physical observables, infrared sectors, anomalies,
-    symmetry breaking, and global form.
+    BRST organization, BV master formalism, physical observables, infrared
+    sectors, anomalies, symmetry breaking, and global form.
 12. Fixed-point local QFT and CFT operator data, built after the local,
     spectral, path-integral, and renormalization foundations are stable.
 13. Special QFT structures: integrability, supersymmetry, topology,
@@ -97,7 +97,10 @@ functionals, distributions, scales, counterterms, and continuum limits.
 Supplies: generating functionals, 1PI effective actions, local counterterm
 criteria, BPHZ forests, renormalized operators, RG equations, Wilsonian
 effective actions, critical fixed points, and universality statements with
-specified convergence objects.
+specified convergence objects.  For ordinary scalar and matter systems these
+objects are developed directly; for gauge theories, the gauge-compatible 1PI
+and Wilsonian effective actions depend on the BV master formalism developed in
+Volume IV.
 
 Do not promote further material before: every renormalization claim identifies
 the regulator, subtraction or flow scheme, locality statement, and equivalence
@@ -114,17 +117,19 @@ Depends on: Volumes I--III, especially local observables, path-integral
 Green functions, renormalization, and nonperturbative scattering.
 
 Supplies: spinor and gauge-field foundations, constraints, gauge fixing,
-BRST complexes, QED and QCD renormalization, inclusive infrared observables,
-local and global anomalies, spontaneous symmetry breaking, pion effective
-theory, and anomaly matching.
+BRST complexes, BV master formalism, QED and QCD renormalization, inclusive
+infrared observables, local and global anomalies, spontaneous symmetry
+breaking, pion effective theory, and anomaly matching.
 
 Do not promote further material before: gauge-representative statements are
 related to gauge-invariant observables or cohomology classes, and anomaly
 claims identify the compared cocycle class modulo local counterterms.
 
-Immediate target: deepen gauge-invariant operator construction, confinement
-diagnostics, global form, theta-angle, and anomaly inflow without importing
-premature TQFT or supersymmetric machinery.
+Immediate target: deepen gauge-invariant operator construction and then add a
+systematic BV block connecting BRST cohomology to gauge-theory 1PI and
+Wilsonian effective actions.  Continue confinement diagnostics, global form,
+theta-angle, and anomaly inflow without importing premature TQFT or
+supersymmetric machinery.
 
 ### Volume V: Conformal Field Theory
 
@@ -277,8 +282,10 @@ spacetime QFT prematurely.
    S-matrix, and LSZ material by making theorem/example/application layers.
 5. Volume III, Chapters 1--8: connect 1PI, BPHZ, Wilsonian, operator-mixing,
    and critical phenomena treatments.
-6. Volume IV, Chapters 2--10: deepen gauge observables, BRST cohomology,
-   infrared sectors, anomalies, and global form.
+6. Volume IV, Chapters 2--10: deepen gauge observables, BRST cohomology, add
+   the BV master formalism as the framework for gauge-theory 1PI/Wilsonian
+   effective actions, and then refine infrared sectors, anomalies, and global
+   form.
 7. Volume V: audit every CFT chapter for fixed-point assumptions, convergence
    statements, and the boundary between core CFT and later special volumes.
 

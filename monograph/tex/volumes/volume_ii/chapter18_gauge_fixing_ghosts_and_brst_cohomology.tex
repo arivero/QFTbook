@@ -10,6 +10,15 @@ trivialization, the space of gauge potentials is the affine space
 \[
   \mathcal A=\Omega^1(M,\mathfrak g).
 \]
+Here \(\mathfrak g=i\,\mathfrak g_{\mathrm{ah}}\) is the Hermitian coordinate
+space associated with the anti-Hermitian Lie algebra
+\(\mathfrak g_{\mathrm{ah}}=\operatorname{Lie}(G)\) in a unitary
+representation.  If \(X,Y\in\mathfrak g\), the compact real Lie bracket is
+\[
+  [X,Y]_{\mathrm H}:=-\ii[X,Y],
+\]
+where the bracket on the right is the matrix commutator in a unitary
+representation.
 The local gauge group is
 \[
   \mathcal G=C^\infty(M,G),
@@ -24,6 +33,8 @@ The infinitesimal action associated with
 \(\zeta=\zeta^a t^a\in C^\infty(M,\mathfrak g)\) is
 \[
   \delta_\zeta A_\mu=D_\mu(A)\zeta,
+  \qquad
+  D_\mu(A)\zeta=\partial_\mu\zeta+[A_\mu,\zeta]_{\mathrm H},
   \qquad
   (D_\mu(A)\zeta)^a
   =
@@ -92,9 +103,15 @@ fields \(c^a(x)\) and \(\bar c^a(x)\) in the adjoint representation:
   \det\mathcal M(A)
   =
   \int [D\bar c\,Dc]\,
-  \exp\left\{\ii\int_M \bar c^a\mathcal M^{ab}(A)c^b\,\dd^D x\right\}.
+  \exp\left\{-\ii\int_M \bar c^a\mathcal M^{ab}(A)c^b\,\dd^D x\right\}.
   \label{eq:ghost-determinant}
 \end{equation}
+This equality is understood up to a field-independent normalization and phase:
+in a finite-dimensional Grassmann Gaussian, changing the sign multiplying
+\(\bar c\,\mathcal M c\) multiplies the integral by a power of \(-1\) and
+\(\ii\), but does not change its dependence on \(A\).  The sign in
+\eqref{eq:ghost-determinant} is chosen so that the ghost term agrees with the
+BRST gauge-fixing fermion below in the Minkowski weight \(\exp(\ii S)\).
 The field \(c\) is called the ghost and \(\bar c\) the antighost.  They are
 Lorentz scalars with fermionic statistics.  Their role is determined by
 \eqref{eq:ghost-determinant}: they encode the Jacobian of gauge fixing and
@@ -144,6 +161,16 @@ the Yang--Mills sector it is defined by
   sB^a=0 .
   \label{eq:brst-transformations}
 \end{equation}
+The ghost \(c=c^a t^a\) is an odd field valued in the same Hermitian coordinate
+space as the infinitesimal gauge parameter.  For an odd \(\mathfrak g\)-valued
+field, the expression \([c,c]_{\mathrm H}\) is defined by combining the Lie
+bracket with the Grassmann product:
+\[
+  [c,c]_{\mathrm H}^a=f^a{}_{bc}c^b c^c .
+\]
+Thus \(sc=-\frac12[c,c]_{\mathrm H}\).  The antighost \(\bar c\) is an
+independent odd adjoint-valued scalar of ghost number \(-1\), and \(B\) is an
+even adjoint-valued scalar of ghost number \(0\).
 For a matter field \(\psi\in V_R\), with representation matrices \(t_R^a\),
 \begin{equation}
   s\psi=\ii c^a t_R^a\psi,
@@ -155,16 +182,61 @@ The derivation rule is graded:
 \[
   s(XY)=(sX)Y+(-1)^{|X|}X(sY),
 \]
-where \(|X|\) is the Grassmann parity of \(X\).  The Jacobi identity for
-the structure constants and the representation identity
-\([t_R^a,t_R^b]=\ii f^{ab}{}_{c}t_R^c\) imply
+where \(|X|\) is the Grassmann parity of \(X\).
+
+Nilpotency is an algebraic consequence of the Jacobi identity.  For the ghost,
+using the graded derivation rule gives
+\[
+  s^2c^a
+  =
+  \frac14 f^a{}_{bc} f^b{}_{de} c^d c^e c^c
+  -\frac14 f^a{}_{bc} f^c{}_{de} c^b c^d c^e .
+\]
+After antisymmetrizing over the three odd ghost factors, this is
+\[
+  s^2c^a
+  =
+  -\frac1{12}
+  \left(
+    f^a{}_{be}f^e{}_{cd}
+    +f^a{}_{ce}f^e{}_{db}
+    +f^a{}_{de}f^e{}_{bc}
+  \right)c^b c^c c^d
+  =
+  0 .
+\]
+For the gauge field, the matrix form of the same computation is
+\[
+  s^2A_\mu
+  =
+  D_\mu(sc)+[D_\mu c,c]_{\mathrm H}
+  =
+  -\frac12D_\mu[c,c]_{\mathrm H}+[D_\mu c,c]_{\mathrm H}
+  =
+  0,
+\]
+because \(D_\mu[c,c]_{\mathrm H}=2[D_\mu c,c]_{\mathrm H}\) for odd \(c\).
+For a matter field, the representation identity
+\([t_R^a,t_R^b]=\ii f^{ab}{}_{c}t_R^c\) gives
+\[
+  s^2\psi
+  =
+  \ii(sc^a)t_R^a\psi+c^a c^b t_R^a t_R^b\psi
+  =
+  -\frac{\ii}{2} f^a{}_{bc}c^b c^c t_R^a\psi
+  +\frac12 c^a c^b[t_R^a,t_R^b]\psi
+  =
+  0,
+\]
+and similarly for \(\bar\psi\).  Hence
 \begin{equation}
   s^2=0.
   \label{eq:brst-nilpotency}
 \end{equation}
-Thus the BRST differential packages infinitesimal gauge transformations with
-the Lie algebra of the gauge group itself, the gauge parameter having been
-replaced by the ghost field.
+Thus \(s\) is the infinitesimal gauge-orbit differential with the even gauge
+parameter replaced by the odd field \(c\), combined with the
+Chevalley--Eilenberg differential of the gauge algebra and the nonminimal
+contractible pair \((\bar c,B)\).
 
 Let
 \[
@@ -192,8 +264,9 @@ The full gauge-fixed action is therefore
   S_{\mathrm{YM}}+S_{\mathrm{matter}}+s\Psi .
 \]
 Since \(S_{\mathrm{YM}}+S_{\mathrm{matter}}\) is gauge invariant and \(s^2=0\),
-one obtains \(sS_{\mathrm{gf}}=0\).  The gauge-fixed formalism has replaced
-manifest gauge invariance by a nilpotent fermionic symmetry.
+one obtains \(sS_{\mathrm{gf}}=0\).  The gauge-fixed action is therefore
+controlled by a nilpotent fermionic symmetry acting on the enlarged field
+space, including ghosts, antighosts, and the Nakanishi--Lautrup field.
 
 \section{Local BRST Cohomology}
 
@@ -404,6 +477,22 @@ identity
   0 .
   \label{eq:slavnov-taylor-identity}
 \end{equation}
+The sources \(K^{a\mu}\) and \(L^a\) have ghost numbers \(-1\) and \(-2\),
+respectively, so that the source terms \(K^{a\mu}sA^a_\mu\) and \(L^a sc^a\)
+have ghost number zero.  They are introduced because the BRST transformations
+of \(A_\mu\) and \(c\) are nonlinear composite fields.  The
+Batalin--Vilkovisky formulation replaces this case-by-case source assignment:
+for every field \(\Phi^A\), one introduces an antifield \(\Phi^*_A\) of
+opposite Grassmann parity and ghost number
+\[
+  \operatorname{gh}(\Phi^*_A)=-1-\operatorname{gh}(\Phi^A),
+\]
+and encodes gauge symmetry by an odd Poisson bracket, the antibracket, and a
+master equation.  The present Slavnov--Taylor identity is the gauge-fixed
+Yang--Mills specialization of that homological structure.  A later chapter
+will develop the BV formalism as the natural framework for gauge-theory
+1PI effective actions, Wilsonian effective actions, and renormalization
+compatible with gauge symmetry.
 The displayed formula suppresses the sign refinements required by left and
 right functional derivatives for odd variables; its content is that the
 quantum effective action is invariant under the BRST differential after the

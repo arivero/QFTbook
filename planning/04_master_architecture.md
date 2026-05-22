@@ -130,6 +130,9 @@ Current compiled material:
 Further development targets:
 
 - connect BPHZ, Wilsonian, and 1PI viewpoints more explicitly;
+- mark where these constructions are ordinary-field constructions and where
+  gauge-theory 1PI/Wilsonian effective actions require the BV master
+  framework developed in the gauge-theory volume;
 - deepen operator mixing and anomalous dimensions;
 - strengthen the continuum-limit discussion of critical phenomena;
 - prepare the logical bridge to the CFT volume.
@@ -138,7 +141,9 @@ Further development targets:
 
 Purpose: develop gauge theory as local quantum physics with constraints,
 redundant representatives, BRST organization, infrared sectors, anomalies,
-and physical observables.
+and physical observables.  The BV formalism belongs to this volume as the
+homological framework for gauge-theory 1PI effective actions, Wilsonian
+effective actions, gauge fixing, and renormalization identities.
 
 Current compiled material:
 
@@ -157,6 +162,10 @@ Further development targets:
 
 - place all gauge-representative statements in relation to observable data;
 - expand nonabelian BRST and gauge-invariant operator construction;
+- add a dedicated BV development after the elementary BRST and anomaly
+  material, with fields, ghosts, antifields, antibracket, classical and quantum
+  master equations, gauge fixing by Lagrangian submanifolds, and the BV form of
+  1PI and Wilsonian effective actions;
 - deepen confinement, global form, theta-angle, and anomaly-inflow material;
 - prepare the later global-structure and TQFT volumes.
 

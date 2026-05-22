@@ -78,9 +78,10 @@ Required checks:
 
 Likely placement:
 
-- Volume I gauge-fixing introduction;
-- Volume II Yang--Mills and QCD;
-- Volume IV/V BV and homological frameworks.
+- Volume IV gauge fixing, Yang--Mills, QCD, and anomalies;
+- a dedicated BV block in the gauge-theory volume, where antifields,
+  antibrackets, master equations, and the BV forms of the 1PI and Wilsonian
+  effective actions are developed systematically.
 
 ### Local Quantum Field Theories
 

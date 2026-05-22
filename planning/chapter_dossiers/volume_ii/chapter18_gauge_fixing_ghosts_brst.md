@@ -25,7 +25,10 @@
   \(H(s\mid d)\), for the contractible-pair/nonminimal-sector statement, and for
   the roles of ghost-number-zero and ghost-number-one local cohomology.
 - The chapter does not reproduce the full antifield/BV computation of local
-  BRST cohomology.
+  BRST cohomology.  BV is now recorded as a required later development for
+  gauge-theory 1PI and Wilsonian effective actions, with Weinberg Volume II,
+  the stringbook appendices, and standard BV literature treated as convention
+  checks and source leads rather than as exposition to import.
 
 ## Framework
 
@@ -33,6 +36,10 @@
   trivialization of the gauge bundle.
 - Compact gauge group \(G\) with structure constants fixed by the preceding
   Yang--Mills chapter.
+- Gauge potentials, infinitesimal gauge parameters, and ghosts are written in
+  the Hermitian coordinate space
+  \(\mathfrak g=i\,\mathfrak g_{\mathrm{ah}}\), with
+  \([X,Y]_{\mathrm H}=-i[X,Y]\).
 - Local gauge fixing around a field-space region where the Faddeev--Popov
   operator is transverse after separating residual zero modes.
 - Off-shell nilpotent BRST differential using the Nakanishi--Lautrup field.
@@ -48,7 +55,7 @@
 | \(F(A)\) | gauge-condition map |
 | \(\mathcal M_F(A)\) | Faddeev--Popov operator |
 | \(\Delta_F(A)\) | Faddeev--Popov determinant |
-| \(c,\bar c\) | ghost and antighost fields |
+| \(c,\bar c\) | odd adjoint-valued ghost and independent antighost fields |
 | \(B\) | Nakanishi--Lautrup auxiliary field |
 | \(s\) | BRST differential |
 | \(\Psi\) | gauge-fixing fermion |
@@ -60,14 +67,21 @@
 | \(Q\) | canonical BRST charge |
 | \(\mathcal K\) | gauge-fixed indefinite state space |
 | \(\mathcal H_{\mathrm{phys}}\) | ghost-number-zero BRST cohomology of states |
+| \(K^{a\mu},L^a\) | sources for nonlinear BRST variations, precursor to antifields |
+| \(\Phi^*_A\) | BV antifield paired with a field \(\Phi^A\), deferred to the BV chapter |
 
 ## Claims Established
 
 - Gauge fixing is a local coordinate construction on gauge orbits, encoded
   perturbatively by the Faddeev--Popov determinant.
 - Ghosts represent the Faddeev--Popov determinant and carry fermionic statistics
-  although they are Lorentz scalars.
-- The BRST differential is an odd ghost-number-one derivation with \(s^2=0\).
+  although they are Lorentz scalars; the determinant sign is fixed to match the
+  \(s\Psi\) convention in the Minkowski weight, up to field-independent
+  Grassmann-Gaussian normalization.
+- The BRST differential is an odd ghost-number-one derivation with \(s^2=0\);
+  the chapter now derives nilpotency on \(c\), \(A_\mu\), and matter fields from
+  the Jacobi identity, the graded derivation rule, and the representation
+  identity.
 - The gauge-fixing and ghost action is \(s\)-exact after introducing the
   Nakanishi--Lautrup field.
 - \(H^0(s;\mathcal F_{\mathrm{loc}})\) describes local gauge-invariant
@@ -78,6 +92,9 @@
   cohomology under the standard perturbative regularity assumptions.
 - Physical states are represented by ghost-number-zero cohomology of the
   canonical BRST charge when positivity of the quotient is established.
+- The Slavnov--Taylor sources \(K,L\) are identified as the elementary
+  precursor of BV antifields; the full BV formalism is reserved for a dedicated
+  later development of gauge-theory 1PI and Wilsonian effective actions.
 
 ## Figure Requirements
 
@@ -88,7 +105,8 @@
 
 ## Open Boundaries
 
-- Full BV/antifield formalism is not developed here.
+- Full BV/antifield formalism is not developed here; it is a required later
+  gauge-theory framework, not an optional appendix.
 - Global Gribov-copy issues are acknowledged as beyond the perturbative local
   slice.
 - Positivity of the BRST quotient is stated as a required condition rather than
