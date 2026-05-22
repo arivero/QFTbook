@@ -8,6 +8,8 @@
   \(2\to2\) scattering and the first-sheet boundary value.
 - States real analyticity and crossing as analytic properties of the
   continued amplitude under the standard massive-local-QFT hypotheses.
+- Records the partial-wave unitarity boundary condition on the physical
+  \(s\)-channel cut before using analytic continuation away from it.
 - Derives the Landau equations from Feynman-parameter pinches.
 - Works out the two-particle threshold and triangle/anomalous-threshold
   examples.
@@ -33,8 +35,10 @@
 | first sheet | branch reached from the physical Feynman prescription without crossing a cut |
 | \(\alpha_i\) | Feynman parameters for internal lines |
 | \(q_i(\ell,p)\) | internal momentum on line \(i\), affine in loop momenta and external momenta |
+| \(S_\ell(s)\) | angular-momentum-\(\ell\) partial-wave scattering eigenvalue in the two-particle sector |
+| \(M_{\mathrm{inel}}\) | invariant mass threshold of the lightest inelastic channel |
 | Landau equations | on-shell and stationary conditions for a contour pinch |
-| anomalous threshold | first-sheet singularity from a Landau pinch not equal to an ordinary intermediate-state threshold or bound-state pole |
+| anomalous threshold | first-sheet singularity from a compatible positive-parameter Landau pinch |
 
 ## Assumptions
 
@@ -44,6 +48,9 @@
   \(q_i^2+m_i^2=0\).
 - Perturbative diagrams are considered with Feynman denominators
   \(q_i^2+m_i^2-\ii0\).
+- Partial-wave unitarity is stated as a boundary condition on the upper edge
+  of the physical cut; angular analyticity and high-energy boundedness are
+  deferred.
 - Analyticity and crossing are used as structural hypotheses supported by
   locality, spectral support, LSZ, and perturbation theory; existing rigorous
   theorem sets cover only parts of the desired physical domain.
@@ -59,6 +66,17 @@
 - For fixed \(t<0\), the first sheet has a right-hand \(s\)-channel cut
   starting at \(4m^2\), a left-hand crossed-channel cut starting at \(-t\),
   and possible bound-state poles.
+- On the physical \(s\)-channel cut,
+  \[
+    \mathcal M(s,t)
+    =
+    -16\pi i\sqrt{\frac{s}{s-4m^2}}
+    \sum_{\ell=0}^{\infty}(2\ell+1)P_\ell(\cos\theta)(S_\ell(s)-1),
+    \qquad
+    \cos\theta=1+\frac{2t}{s-4m^2},
+  \]
+  with \(|S_\ell(s)|\le1\) for \(s\ge4m^2\) and
+  \(|S_\ell(s)|=1\) below the first inelastic threshold.
 - Feynman-parameter pinches obey
   \[
     \alpha_i(q_i^2+m_i^2)=0,\qquad
@@ -68,7 +86,8 @@
 - The two-propagator Landau equations give the ordinary two-particle
   threshold \(P^2=-4m^2\) in the equal-mass example.
 - Triangle diagrams can produce first-sheet anomalous thresholds, including
-  the Coleman--Thun type mechanism.
+  the equal-internal-mass criterion \(M_1,M_2<\sqrt2m\) versus
+  \(M_1,M_2>\sqrt2m\), and the Coleman--Thun type mechanism.
 
 ## Figures
 
