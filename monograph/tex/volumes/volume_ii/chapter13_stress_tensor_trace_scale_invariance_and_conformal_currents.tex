@@ -180,14 +180,17 @@ modulo total derivatives and equation-of-motion operators.
       {\(\displaystyle T^\mu{}_\mu=\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\)};
   \end{tikzpicture}
   }
-  \caption{The bare trace is the engineering-dimension defect of the regulated
-  interaction terms.}
+  \caption{The bare trace is the engineering-dimension contribution of the
+  regulated interaction terms.}
   \label{fig:volume-ii-scale-trace-engineering}
 \end{figure}
 
 \section{The Renormalized Trace Identity}
 
-Minimal subtraction expresses each bare coupling as
+The preceding identity is a bare operator statement in the regulated theory.
+To convert it to a renormalized statement, use the same MS chart and
+source-renormalized operator convention as in the previous chapter.  Minimal
+subtraction expresses each bare coupling as
 \[
   g_I^\epsilon
   =
@@ -205,6 +208,24 @@ where
   =
   \delta_I^{(0)}+\epsilon\delta_I^{(1)}.
 \]
+At finite \(\epsilon\), define the MS insertion associated with the coordinate
+\(\lambda_J\) by
+\[
+  \mathcal O_{J,\epsilon}^{\rm MS}
+  =
+  \frac{\partial}{\partial\lambda_J}
+  \left(\sum_I g_I^\epsilon O_I\right),
+\]
+where the derivative is taken at fixed bare operator basis \(O_I\) and fixed
+\(\mu\).  The renormalized insertion is the finite limit
+\[
+  [O_J]_\mu
+  =
+  \lim_{\epsilon\to0}\mathcal O_{J,\epsilon}^{\rm MS}
+\]
+as a distribution away from coincident insertion points.  Contact-term
+extensions of this distribution are additional scheme data.
+
 Bare couplings are independent of \(\mu\).  If
 \[
   \beta_I^\epsilon(\lambda)
@@ -239,27 +260,37 @@ Substituting this relation into the bare trace identity gives
   =
   \sum_J
   \bigl(\beta_J+\epsilon\delta_J^{(1)}\lambda_J\bigr)
-  \frac{\partial}{\partial\lambda_J}
-  \left(\sum_I g_I^\epsilon O_I\right).
+  \mathcal O_{J,\epsilon}^{\rm MS}.
 \]
-The derivative in parentheses is the renormalized operator associated with
-the MS coordinate \(\lambda_J\):
-\[
-  [O_J]_\mu
-  =
-  \frac{\partial}{\partial\lambda_J}
-  \left(\sum_I g_I^\epsilon O_I\right).
-\]
-Taking the finite \(\epsilon\to0\) limit gives the renormalized trace identity
+
+\begin{proposition}[Flat-space renormalized trace identity]
+In the MS coordinate chart above, and for separated insertions in flat space,
+the finite stress-tensor trace satisfies
 \[
   T^\mu{}_\mu
   =
   \sum_J\beta_J(\lambda)\,[O_J]_\mu .
+  \label{eq:renormalized-trace-identity}
 \]
-This identity is an operator identity in flat space for separated insertions;
-contact terms, total derivatives, and equation-of-motion operators are fixed
-by the corresponding Ward identities and by the chosen stress-tensor
-improvement convention.
+\end{proposition}
+
+\begin{proof}
+The finite \(\epsilon\to0\) limit of
+\(\mathcal O_{J,\epsilon}^{\rm MS}\) is \([O_J]_\mu\) by definition of the
+renormalized source chart.  The additional term
+\(\epsilon\delta_J^{(1)}\lambda_J\mathcal O_{J,\epsilon}^{\rm MS}\) vanishes
+in the separated-point limit because \(\mathcal O_{J,\epsilon}^{\rm MS}\) has
+a finite distributional limit there.  Taking the renormalized
+\(\epsilon\to0\) limit of the bare trace equation therefore gives
+\eqref{eq:renormalized-trace-identity}.
+\end{proof}
+
+The identity is local only after its residual local terms are specified.
+Contact terms are fixed by the source Ward identities.  Total derivatives and
+equation-of-motion operators are fixed by the chosen stress-tensor convention
+and by the allowed improvements.  On a curved background there can also be
+curvature-dependent terms; these are not part of the flat-space identity used
+in this chapter.
 
 \begin{figure}[H]
   \centering
@@ -286,7 +317,7 @@ improvement convention.
     \draw[-{Latex[length=2mm]}, thick] (-2.35,0.7)--(-1.55,0.7);
     \draw[-{Latex[length=2mm]}, thick] (1.7,0.7)--(2.55,0.7);
     \node[blue!70!black] at (0,-0.8)
-      {\([O_J]_\mu=\partial_{\lambda_J}(\sum_Ig_I^\epsilon O_I)\)};
+      {\([O_J]_\mu=\lim_{\epsilon\to0}\partial_{\lambda_J}(\sum_Ig_I^\epsilon O_I)\)};
   \end{tikzpicture}
   }
   \caption{The MS trace identity is obtained by converting the engineering
@@ -303,13 +334,11 @@ which
   \beta_J(\lambda_\ast)=0
   \qquad\text{for all }J .
 \]
-At such a point the beta-function contribution to the trace vanishes:
-\[
-  T^\mu{}_\mu=0,
-\]
-again modulo total derivatives, contact terms, and equation-of-motion
-operators.  Suppose that the stress tensor has been chosen symmetric,
-conserved, and traceless as a flat-space renormalized operator:
+At such a point the beta-function contribution to the trace vanishes.  The
+remaining trace terms, if any, are total derivatives, contact terms,
+equation-of-motion operators, or improvement-dependent terms.  Suppose that
+the stress tensor has been chosen symmetric, conserved, and traceless as a
+flat-space renormalized operator:
 \[
   T^{\mu\nu}=T^{\nu\mu},
   \qquad

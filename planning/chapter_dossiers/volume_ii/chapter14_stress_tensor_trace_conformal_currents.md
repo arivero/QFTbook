@@ -45,14 +45,23 @@ The chapter must define and derive:
   \(T^\mu{}_\mu=\sum_I\delta_I(\epsilon)g_I^\epsilon O_I\), modulo total
   derivatives and equations-of-motion terms;
 - the MS relation between bare couplings and renormalized coordinates;
+- the finite MS insertion
+  \(\mathcal O_{J,\epsilon}^{\rm MS}
+  =\partial_{\lambda_J}(\sum_I g_I^\epsilon O_I)\) and its separated-point
+  limit \([O_J]_\mu\);
 - the consequence of bare \(\mu\)-independence,
   \(\delta_I(\epsilon)g_I^\epsilon
   =\sum_J(\beta_J+\epsilon\delta_J^{(1)}\lambda_J)
   \partial g_I^\epsilon/\partial\lambda_J\);
 - the renormalized trace identity
   \(T^\mu{}_\mu=\sum_J\beta_J(\lambda)[O_J]_\mu\);
-- the fixed-point implication \(T^\mu{}_\mu=0\), up to total derivatives and
-  contact/equation-of-motion terms;
+- the scope of the trace identity as a flat-space separated-insertion
+  statement, with contact terms, equation-of-motion terms, total derivatives,
+  improvements, and curved-background curvature terms kept as separate local
+  data;
+- the fixed-point implication that the beta-function contribution to the trace
+  vanishes, while the existence of a traceless stress tensor still depends on
+  improvement and virial-current data;
 - conformal Killing vector fields and the conserved currents
   \(j^\mu_\xi=T^{\mu\nu}\xi_\nu\);
 - the virial-current possibility
@@ -68,14 +77,14 @@ The chapter must define and derive:
    \(\delta a^\mu=\sigma x^\mu\), together with the engineering field
    transformation determined by the kinetic term.
 3. For a regulated MS action, the bare trace is the engineering-dimension
-   defect of the interaction terms.
+   contribution of the interaction terms.
 4. Minimal subtraction and bare \(\mu\)-independence re-express the bare trace
    in terms of finite renormalized operators.
 5. The finite flat-space trace identity is
    \(T^\mu{}_\mu=\sum_J\beta_J[O_J]_\mu\), modulo the stated local
    ambiguities.
-6. At an RG fixed point, the beta-function contribution to the trace
-   vanishes.
+6. At an RG fixed point, the beta-function contribution to the trace vanishes;
+   tracelessness is an additional stress-tensor/improvement statement.
 7. A symmetric conserved traceless stress tensor generates conserved currents
    for all conformal Killing vector fields.
 8. A virial current gives scale invariance without immediately giving
@@ -98,6 +107,11 @@ The chapter must define and derive:
   invariance.
 - Keep all fixed-point and conformal-current claims conditional on the stated
   stress-tensor properties.
+- Do not state \(T^\mu{}_\mu=0\) at a fixed point without specifying the
+  removal or absence of virial, total-derivative, equation-of-motion, contact,
+  and improvement-dependent terms.
+- State the trace identity as a separated-point flat-space identity before
+  discussing contact terms or curved-background contributions.
 - Do not merge the Wilson-Fisher fixed-point example into this chapter; it is
   the next source block.
 - No reader-facing source-page references.
