@@ -19,11 +19,29 @@ representation.  If \(X,Y\in\mathfrak g\), the compact real Lie bracket is
 \]
 where the bracket on the right is the matrix commutator in a unitary
 representation.
-The local gauge group is
+The gauge transformations form the infinite-dimensional group
 \[
-  \mathcal G=C^\infty(M,G),
+  \mathcal G=C^\infty(M,G).
 \]
-acting on \(A\in\mathcal A\) by
+This group must be distinguished from the finite-dimensional internal group
+\(G\).  In local coordinates near the identity, a gauge transformation can be
+written as
+\[
+  g(x)=\exp\bigl(\ii\zeta_a(x)t^a\bigr),
+  \qquad
+  \xi^\alpha\equiv \zeta_a(x),\qquad
+  \alpha=(a,x).
+\]
+Repeated condensed indices include sums over Lie algebra labels and integrals
+over spacetime; for example
+\begin{equation}
+  f_\alpha g^\alpha
+  =
+  \sum_a\int_M f_a(x)g^a(x)\,\dd^D x .
+  \label{eq:brst-condensed-index-notation}
+\end{equation}
+
+The action of \(g\in\mathcal G\) on \(A\in\mathcal A\) is
 \[
   A_\mu\longmapsto A_\mu^g
   =
@@ -40,45 +58,198 @@ The infinitesimal action associated with
   =
   \partial_\mu\zeta^a+f^{bc}{}_{a}A_\mu^b\zeta^c .
 \]
-Gauge-invariant classical functionals are constant along \(\mathcal G\)-orbits
-in \(\mathcal A\).  A formal path integral over gauge fields therefore
-contains a redundant integral over orbit directions unless a coordinate on the
-orbit space is chosen.
-
-A gauge condition is a map
-\[
-  F:\mathcal A\longrightarrow C^\infty(M,\mathfrak g),
+Let \(\phi\) denote the complete list of fields: gauge potentials and, when
+present, matter fields.  A formal unfixed path integral has the schematic form
+\begin{equation}
+  Z_{\mathrm{formal}}
+  \sim
+  \int[D\phi]\,\exp(\ii S[\phi]),
   \qquad
-  A\longmapsto F(A)=F^a(A)t^a ,
-\]
-with the intended local slice \(F(A)=0\).  Its infinitesimal variation along a
-gauge orbit defines the Faddeev--Popov operator
+  S[\phi^\xi]=S[\phi],
+  \qquad
+  [D\phi^\xi]=[D\phi].
+  \label{eq:formal-unfixed-gauge-path-integral}
+\end{equation}
+The integral in \eqref{eq:formal-unfixed-gauge-path-integral} includes an
+integration over every point on each \(\mathcal G\)-orbit.  In canonical
+language the same redundancy appears as first-class constraints.  Covariant
+perturbation theory instead chooses local coordinates transverse to the orbits.
+
+A gauge condition is a collection of functionals \(F^A[\phi]\), with the index
+\(A\) carrying the same number of local degrees of freedom as the gauge
+parameter index \(\alpha\).  The intended local slice is \(F^A[\phi]=0\).
+Figure~\ref{fig:fp-gauge-slice} records the geometric content.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.86\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \foreach \x/\bend in {-3.6/0.25,-2.1/-0.35,-0.55/0.28,1.05/-0.22,2.65/0.35} {
+      \draw[blue!70!black,line width=0.95pt]
+        (\x,-1.8)
+        .. controls ({\x+\bend},-0.85) and ({\x-\bend},0.75) ..
+        ({\x+0.08},1.85);
+    }
+    \draw[red!75!black,line width=1.15pt]
+      (-4.35,-0.55)
+      .. controls (-2.55,0.45) and (-1.15,0.45) ..
+      (-0.15,-0.05)
+      .. controls (1.0,-0.65) and (2.45,-0.25) ..
+      (4.25,0.65);
+
+    \node[blue!70!black,fill=white,inner sep=2pt] at (-3.0,2.12)
+      {gauge orbits};
+    \node[red!75!black,fill=white,inner sep=2pt] at (2.65,1.08)
+      {gauge slice \(F^A[\phi]=0\)};
+
+    \fill[black] (-0.95,0.42) circle (2.4pt);
+    \node[above left] at (-0.95,0.42) {\(\phi\)};
+    \fill[purple!80!black] (-0.42,-0.08) circle (2.4pt);
+    \node[below right,purple!80!black] at (-0.42,-0.08) {\(\phi^\xi\)};
+    \draw[-{Latex[length=2mm]},purple!80!black,line width=0.9pt]
+      (-0.88,0.27) .. controls (-0.55,0.08) and (-0.36,0.03) .. (-0.42,-0.03);
+    \node[purple!80!black,fill=white,inner sep=2pt] at (-1.35,-0.55)
+      {gauge transformation};
+
+  \end{tikzpicture}
+  }
+  \caption{A local gauge condition is a slice through field space.  The blue
+  curves are gauge orbits, the red curve is the surface \(F^A[\phi]=0\), and
+  \(\phi\) and \(\phi^\xi\) are two representatives of the same gauge orbit.
+  The Faddeev--Popov determinant is the Jacobian that converts integration
+  along the orbit to integration through the slice.}
+  \label{fig:fp-gauge-slice}
+\end{figure}
+
+The infinitesimal variation of the gauge condition along the orbit defines the
+Faddeev--Popov matrix
+\begin{equation}
+  \mathcal M^A{}_\alpha[\phi]
+  :=
+  \left.
+  \frac{\partial F^A[\phi^\xi]}{\partial \xi^\alpha}
+  \right|_{\xi=\id}.
+  \label{eq:fp-condensed-operator-definition}
+\end{equation}
+For Yang--Mills gauge potentials alone this is the distributional operator
 \begin{equation}
   \mathcal M^{ab}_F(A;x,y)
-  :=
+  =
   \left.
   \frac{\delta F^a(A^{\exp(\ii\zeta)})(x)}
        {\delta\zeta^b(y)}
   \right|_{\zeta=0}.
   \label{eq:fp-operator-definition}
 \end{equation}
-In a region of field space where the slice is transverse to the orbit, the
-operator \(\mathcal M_F(A)\) is invertible after zero modes associated with
-unfixed global transformations have been separated.  The formal identity
+In a field-space region where the slice is transverse to the orbit, and after
+separating zero modes associated with unfixed global transformations, the local
+Faddeev--Popov identity is
 \begin{equation}
   1
   =
-  \Delta_F(A)
-  \int_{\mathcal G}Dg\,
-  \delta\bigl(F(A^g)\bigr),
-  \qquad
-  \Delta_F(A)=\det \mathcal M_F(A),
-  \label{eq:fp-identity}
+  \int_{\mathcal G}D\xi\,
+  \delta\bigl(F^A[\phi^\xi]\bigr)
+  \det\left(
+    \frac{\partial F^A[\phi^\xi]}{\partial\xi^\alpha}
+  \right).
+  \label{eq:fp-local-identity}
 \end{equation}
-is then the change-of-variables formula from orbit coordinates to a local
-slice.  Global obstructions to a single smooth slice are real features of
-nonabelian gauge theory; the perturbative construction around a chosen
-background uses the local form \eqref{eq:fp-identity}.
+Inserting \eqref{eq:fp-local-identity} in
+\eqref{eq:formal-unfixed-gauge-path-integral} and changing variables
+\(\phi\mapsto \phi^{\xi^{-1}}\) gives a factor depending only on integration
+over the gauge group.  More explicitly, the determinant at a general point
+\(\xi\) on the orbit splits as
+\[
+  \left.
+  \det
+  \frac{\partial F^A[\phi^{\xi'}]}{\partial\xi'^\alpha}
+  \right|_{\xi'=\xi}
+  =
+  \left.
+  \det
+  \frac{\partial(\xi''\circ\xi)^\alpha}{\partial\xi''^\beta}
+  \right|_{\xi''=\id}
+  \left.
+  \det
+  \frac{\partial F^A[\phi^{\xi''}]}{\partial\xi''^\alpha}
+  \right|_{\xi''=\id}.
+\]
+The first factor converts the coordinate measure \(D\xi\) to the right Haar
+measure \([D\xi]_{\mathrm H}\), characterized formally by
+\begin{equation}
+  [D(\xi\circ\xi_1)]_{\mathrm H}=[D\xi]_{\mathrm H},
+  \qquad
+  \xi_1\in\mathcal G \ \hbox{fixed}.
+  \label{eq:functional-haar-measure-property}
+\end{equation}
+Thus
+\[
+  \int_{\mathcal G}[D\xi]_{\mathrm H}
+\]
+is the formal volume of the gauge-transformation group, and the normalized
+gauge-theory path integral is
+\begin{equation}
+  Z
+  =
+  \frac{1}{\int_{\mathcal G}[D\xi]_{\mathrm H}}
+  \int[D\phi]\,\exp(\ii S[\phi]).
+  \label{eq:gauge-theory-divide-by-gauge-volume}
+\end{equation}
+The same expression, written in local gauge-fixed coordinates, is
+\begin{equation}
+  Z
+  =
+  \int[D\phi]\,
+  \delta\bigl(F^A[\phi]\bigr)
+  \Delta_{\mathrm{FP}}[\phi]\,
+  \exp(\ii S[\phi]),
+  \qquad
+  \Delta_{\mathrm{FP}}[\phi]=\det\mathcal M[\phi].
+  \label{eq:fp-gauge-fixed-integral}
+\end{equation}
+Global obstructions to a single smooth slice are genuine features of
+nonabelian gauge theory.  The construction in this chapter is the local
+perturbative construction around a chosen region of field space.
+
+The determinant in \eqref{eq:fp-gauge-fixed-integral} is represented by
+Grassmann-odd variables \(b_A\) and \(c^\alpha\):
+\begin{equation}
+  \Delta_{\mathrm{FP}}[\phi]
+  =
+  \int[Db][Dc]\,
+  \exp\left[
+    \ii b_A
+    \left.
+    \frac{\partial F^A[\phi^\xi]}{\partial\xi^\alpha}
+    \right|_{\xi=\id}
+    c^\alpha
+  \right].
+  \label{eq:general-ghost-determinant-bc}
+\end{equation}
+The field \(c^\alpha\) is the ghost associated with the gauge parameter
+\(\xi^\alpha\), and \(b_A\) is the antighost associated with the gauge condition
+\(F^A\).  The delta functional is represented by a commuting auxiliary field
+\(B_A\):
+\begin{equation}
+  \delta\bigl(F^A[\phi]\bigr)
+  =
+  \int[DB]\,
+  \exp\bigl(\ii B_A F^A[\phi]\bigr).
+  \label{eq:delta-functional-b-field}
+\end{equation}
+The gauge-fixed action in these condensed variables is therefore
+\begin{equation}
+  S_{\mathrm{tot}}[\phi,B,b,c]
+  =
+  S[\phi]+S_{\mathrm{GF}}[\phi,B,b,c],
+  \qquad
+  S_{\mathrm{GF}}
+  =
+  B_AF^A[\phi]+b_A\mathcal M^A{}_\alpha[\phi]c^\alpha .
+  \label{eq:general-gauge-fixed-action}
+\end{equation}
+The term \(S_{\mathrm{GF}}\) is not gauge invariant; its controlling symmetry is
+the nilpotent BRST symmetry constructed below.
 
 \section{Covariant Gauges and Ghost Fields}
 
@@ -97,6 +268,19 @@ For this choice,
   \partial_\mu c^a+f^{bc}{}_{a}A_\mu^b c^c .
   \label{eq:covariant-fp-operator}
 \end{equation}
+For this local gauge condition the condensed labels are
+\[
+  A=(a,x),\qquad \alpha=(b,y),
+\]
+and \(\mathcal M^{ab}(A;x,y)=\partial^\mu D_\mu^{ab}(A)\delta^{(D)}(x-y)\).
+The \(b_A\) notation used in
+\eqref{eq:general-ghost-determinant-bc} is related to the conventional
+antighost by
+\[
+  \bar c_A=-b_A .
+\]
+With this convention the ghost term in the Lagrangian has the sign displayed
+below, while the BRST transformation of the old variable is \(s b_A=-B_A\).
 The determinant of \(\mathcal M(A)\) is represented by Grassmann-valued scalar
 fields \(c^a(x)\) and \(\bar c^a(x)\) in the adjoint representation:
 \begin{equation}
@@ -171,6 +355,28 @@ the Yang--Mills sector it is defined by
   sB^a=0 .
   \label{eq:brst-transformations}
 \end{equation}
+In condensed field-space notation this reads
+\begin{equation}
+  s\phi=c^\alpha S_\alpha\phi,\qquad
+  sB_A=0,\qquad
+  sb_A=-B_A,\qquad
+  sc^\alpha=-\frac12f^\alpha{}_{\beta\gamma}c^\beta c^\gamma,
+  \label{eq:brst-condensed-transformations}
+\end{equation}
+where
+\[
+  S_\alpha\phi
+  =
+  \left.
+  \frac{\partial\phi^\xi}{\partial\xi^\alpha}
+  \right|_{\xi=\id},
+  \qquad
+  [S_\beta,S_\gamma]=f^\alpha{}_{\beta\gamma}S_\alpha .
+\]
+The two notations agree because \(b_A=-\bar c_A\).  If \(\epsilon\) is a
+constant Grassmann-odd parameter, the finite-parity infinitesimal variation is
+\(\delta_B X=\epsilon\,sX\); in particular \(\epsilon c^\alpha\) is even, as a
+gauge parameter must be.
 The ghost \(c=c^a t^a\) is an odd field valued in the same Hermitian coordinate
 space as the infinitesimal gauge parameter.  For an odd \(\mathfrak g\)-valued
 field, the expression \([c,c]_{\mathrm H}\) is defined by combining the Lie
@@ -194,8 +400,23 @@ The derivation rule is graded:
 \]
 where \(|X|\) is the Grassmann parity of \(X\).
 
-Nilpotency is an algebraic consequence of the Jacobi identity.  For the ghost,
-using the graded derivation rule gives
+Nilpotency is an algebraic consequence of the Jacobi identity.  For any
+original field \(\phi\), the condensed notation gives
+\[
+\begin{aligned}
+  s^2\phi
+  &=
+  -\frac12 f^\alpha{}_{\beta\gamma}c^\beta c^\gamma S_\alpha\phi
+  -c^\alpha c^\beta S_\beta S_\alpha\phi
+\\
+  &=
+  -\frac12 f^\alpha{}_{\beta\gamma}c^\beta c^\gamma S_\alpha\phi
+  +\frac12 c^\alpha c^\beta[S_\alpha,S_\beta]\phi
+  =
+  0 .
+\end{aligned}
+\]
+For the ghost, using the graded derivation rule gives
 \[
   s^2c^a
   =
@@ -269,6 +490,34 @@ Using \eqref{eq:brst-transformations},
   \right]\dd^D x .
   \label{eq:gauge-fixing-fermion}
 \end{equation}
+For \(\xi=0\), this is the covariant-gauge specialization of the condensed
+formula
+\[
+  S_{\mathrm{GF}}
+  =
+  -s\bigl(b_AF^A[\phi]\bigr)
+  =
+  B_AF^A[\phi]+b_A\mathcal M^A{}_\alpha[\phi]c^\alpha .
+\]
+Equivalently, if the BRST charge \(Q_B\) is defined by the convention
+\begin{equation}
+  \delta_B X=\ii\epsilon\,Q_B\cdot X,
+  \qquad
+  Q_B=-\ii s,
+  \label{eq:qb-convention-from-s}
+\end{equation}
+then
+\begin{equation}
+  S_{\mathrm{GF}}
+  =
+  -\ii Q_B\cdot\bigl(b_AF^A[\phi]\bigr),
+  \qquad
+  Q_B^2=0 .
+  \label{eq:b-notation-gauge-fixing-qb-exact}
+\end{equation}
+The \(\xi B^2\) term in \eqref{eq:gauge-fixing-fermion} is an additional
+BRST-exact deformation of the same gauge-fixing fermion and does not alter the
+cohomology.
 The full gauge-fixed action is therefore
 \[
   S_{\mathrm{gf}}
@@ -358,15 +607,88 @@ theory.
 \section{Cohomology of States and Observables}
 
 In canonical quantization of the gauge-fixed theory, the state space before
-the BRST quotient is an indefinite inner-product space \(\mathcal K\).  The
-BRST differential is represented by a charge \(Q\) of ghost number \(+1\):
+the BRST quotient is an indefinite inner-product space \(\mathcal K\).  At a
+fixed time a state can be represented, in a Schrödinger notation, by a
+wavefunctional
 \[
-  Q^2=0,
-  \qquad
-  [Q,A_\mu^a]=\ii sA_\mu^a
+  \Psi[\phi,B,b,c]\big|_{x^0=t}.
 \]
-with the graded commutator understood for fermionic fields.  The physical
-state space is the cohomology
+The first-order functional differential operator \(Q_B\) in
+\eqref{eq:qb-convention-from-s} is promoted to an operator
+\(\widehat Q_B\) on \(\mathcal K\):
+\[
+  \widehat Q_B\ket{\Psi}
+  =
+  \ket{Q_B\cdot\Psi},
+  \qquad
+  \widehat Q_B^{\,2}=0 .
+\]
+Insertion of a functional \(R[\Phi]\), where \(\Phi=(\phi,B,b,c)\), corresponds
+to an operator \(\widehat R\), and the insertion \(Q_B\cdot R\) corresponds to
+the graded commutator with \(\widehat Q_B\), with the sign fixed by the parity
+of \(R\).  In the rest of this section we write \(Q\) for \(\widehat Q_B\).
+
+A state is admissible when
+\begin{equation}
+  Q\ket{\Psi}=0 .
+  \label{eq:brst-admissible-state}
+\end{equation}
+This condition is selected by gauge-fixing independence.  Consider the
+transition amplitude between two admissible boundary states,
+\[
+  \mathcal A_F(\Psi_f,\Psi_i)
+  =
+  \int[D\Phi]_{t_i}^{t_f}\,
+  \Psi_f^*[\Phi(t_f)]\,
+  \exp(\ii S_F[\Phi])\,
+  \Psi_i[\Phi(t_i)],
+\]
+where the subscript \(F\) records the chosen gauge condition.  If
+\(F^A[\phi]\) is deformed to \(F^A[\phi]+\overline\delta F^A[\phi]\), then
+\eqref{eq:b-notation-gauge-fixing-qb-exact} gives
+\[
+  \overline\delta S_F[\Phi]
+  =
+  -\ii Q_B\cdot\bigl(b_A\overline\delta F^A[\phi]\bigr).
+\]
+Therefore, to first order in the deformation,
+\begin{align}
+  \overline\delta\,\mathcal A_F(\Psi_f,\Psi_i)
+  &=
+  \int[D\Phi]\,
+  \Psi_f^*\,\exp(\ii S_F)\,\Psi_i\,
+  Q_B\cdot\bigl(b_A\overline\delta F^A\bigr)
+  \notag\\
+  &=
+  \int[D\Phi]\,
+  Q_B\cdot
+  \left(
+    \Psi_f^*\,\exp(\ii S_F)\,\Psi_i\,
+    b_A\overline\delta F^A
+  \right)
+  =
+  0 .
+  \label{eq:brst-gauge-fixing-independence}
+\end{align}
+The last equality assumes that the functional measure is BRST invariant and
+that the BRST integration by parts has no boundary contribution in field
+space.  The equalities also use \(Q\ket{\Psi_i}=0\), the corresponding
+condition on the final bra, and \(Q_B\cdot S_F=0\).
+
+Nilpotency implies that \(Q\ket{\chi}\) is admissible for every
+\(\ket{\chi}\).  Such a state has zero matrix element against any admissible
+state when \(Q\) is symmetric with respect to the indefinite inner product:
+\[
+  \bra{\Psi}Q\ket{\chi}=0,
+  \qquad
+  Q\ket{\Psi}=0 .
+\]
+Thus
+\[
+  \ket{\Psi}\sim \ket{\Psi}+Q\ket{\chi}
+\]
+is the equivalence relation on admissible states.  The physical state space is
+the ghost-number-zero BRST cohomology
 \begin{equation}
   \mathcal H_{\mathrm{phys}}
   =
@@ -376,20 +698,17 @@ state space is the cohomology
        {\operatorname{im}(Q:\mathcal K^{-1}\to\mathcal K^0)} .
   \label{eq:brst-physical-state-cohomology}
 \end{equation}
-Here \(\mathcal K^n\) is the subspace of ghost number \(n\).  The numerator
-selects BRST-closed states, and the denominator identifies states differing by
-a BRST-exact vector.  Gauge-invariant local operators define classes in the
-ghost-number-zero cohomology of \(s\), while BRST-exact insertions have
-vanishing matrix elements between physical states when the BRST symmetry is
-preserved by the regulator and renormalization.
+Here \(\mathcal K^n\) is the subspace of ghost number \(n\).  Gauge-invariant
+local operators define classes in the ghost-number-zero cohomology of \(s\),
+while BRST-exact insertions have vanishing matrix elements between physical
+states when the BRST symmetry is preserved by the regulator and
+renormalization.
 
-The perturbative \(S\)-matrix of a gauge-fixed nonabelian theory is therefore
-an operator first constructed on \(\mathcal K\) and then descended to
-\(\mathcal H_{\mathrm{phys}}\).  This statement keeps the construction aligned
-with the earlier order of the monograph: asymptotic states and LSZ are the
-conceptual definition of scattering, while gauge fixing is a local
-computational realization whose output must be independent of the chosen
-coordinate on gauge orbits.
+The perturbative \(S\)-matrix of a gauge-fixed nonabelian theory is an operator
+first constructed on \(\mathcal K\) and then descended to
+\(\mathcal H_{\mathrm{phys}}\).  Asymptotic states and LSZ define scattering;
+gauge fixing supplies local Green-function rules whose matrix elements are
+well defined on BRST cohomology classes.
 
 \section{Positivity of the BRST Quotient}
 
