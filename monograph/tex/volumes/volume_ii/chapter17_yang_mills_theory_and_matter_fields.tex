@@ -6,20 +6,35 @@
 This chapter formulates the local classical field theory of nonabelian gauge
 fields.  We work first on a spacetime region over which the relevant principal
 \(G\)-bundle has been trivialized.  In such a local trivialization, a gauge
-field is represented by a Lie-algebra-valued one-form
+field is represented by a Hermitian matrix-valued one-form
 \[
   A=A_\mu(x)\,\dd x^\mu,
   \qquad
   A_\mu(x)=A^a_\mu(x)t^a .
 \]
 The index \(\mu=0,\ldots,D-1\) is a spacetime index.  The index \(a\) labels a
-basis of the Lie algebra \(\mathfrak g=\operatorname{Lie}(G)\).  We use
-Hermitian generators \(t^a\), so
+basis of the gauge algebra in the Hermitian-generator convention.  If
+\(\mathfrak g_{\mathrm{ah}}=\operatorname{Lie}(G)\) is realized by
+anti-Hermitian matrices in a unitary representation, then the Hermitian
+generators used here span \(i\,\mathfrak g_{\mathrm{ah}}\).  The associated
+anti-Hermitian connection one-form, denoted \(\mathsf A_{\mathrm{ah}}\), is
+\(\mathsf A_{\mathrm{ah}}=-\ii A\).  We write
+\(\mathfrak g:=i\,\mathfrak g_{\mathrm{ah}}\) for this Hermitian coordinate
+space.  Throughout this chapter \([X,Y]\) denotes the ordinary matrix
+commutator of Hermitian representatives, while the real compact Lie bracket in
+Hermitian coordinates is
+\[
+  [X,Y]_{\mathrm H}:=-\ii[X,Y].
+\]
+With this convention,
 \begin{equation}
   [t^a,t^b]=\ii f^{ab}{}_{c}t^c .
   \label{eq:ym-lie-algebra-conventions}
 \end{equation}
-The real constants \(f^{ab}{}_{c}\) are the structure constants in this basis.
+The real constants \(f^{ab}{}_{c}\) are the structure constants of
+\([\ ,\ ]_{\mathrm H}\) in this basis.  Formulas below include explicit factors
+of \(\ii\) so that \(A_\mu\), \(\zeta\), and \(F_{\mu\nu}\) remain Hermitian
+matrix fields.
 
 The infinitesimal local transformation with parameter
 \(\zeta(x)=\zeta_a(x)t^a\) is
@@ -119,6 +134,24 @@ identity
 then shows that conjugation by \(g(x)\) maps \(\mathfrak g\) to
 \(\mathfrak g\).  Thus \eqref{eq:ym-finite-gauge-transformation} produces
 another local representative \(A_\mu'=A_\mu^{\prime a}t^a\).
+
+The same formula is also the transition law between local trivializations.
+If \(U_i\) and \(U_j\) are two coordinate patches and
+\(h_{ji}:U_i\cap U_j\to G\) is the transition function, then their local
+connection representatives satisfy
+\[
+  A_\mu^{(j)}
+  =
+  h_{ji}A_\mu^{(i)}h_{ji}^{-1}
+  +\ii h_{ji}\partial_\mu h_{ji}^{-1}.
+\]
+Thus the local field \(A_\mu\) is not itself a globally defined tensor on a
+nontrivial bundle.  The curvature constructed below does glue covariantly:
+\[
+  F_{\mu\nu}^{(j)}=h_{ji}F_{\mu\nu}^{(i)}h_{ji}^{-1}.
+\]
+The local formulas therefore describe a connection on a principal bundle; they
+do not assume that the bundle is globally trivial.
 
 \section{Curvature and the Yang-Mills Action}
 
@@ -234,8 +267,8 @@ The basic example \(SU(2)\) has
   t^a=\frac12\sigma^a,\qquad a=1,2,3,
 \]
 where \(\sigma^a\) are the Pauli matrices.  More generally,
-\(\mathfrak{su}(N)\) is represented by traceless Hermitian \(N\times N\)
-matrices, and
+the Hermitian coordinate space \(i\,\mathfrak{su}(N)\) is represented by
+traceless Hermitian \(N\times N\) matrices, and
 \[
   SU(N)=\{g\in U(N):\det g=1\}.
 \]
@@ -286,6 +319,10 @@ The matrices \(t_R^a\) obey
   [t_R^a,t_R^b]=\ii f^{ab}{}_{c}t_R^c.
   \label{eq:ym-representation-commutator}
 \end{equation}
+For compact \(G\), every finite-dimensional complex representation used in a
+unitary theory may be equipped with a \(G\)-invariant Hermitian inner product.
+In such a basis the matrices \(t_R^a\) are Hermitian.  This is the matter-field
+version of the same Hermitian convention used for the gauge potential.
 
 For \(G=SU(N)\), three representations recur throughout gauge theory:
 \[
@@ -294,15 +331,27 @@ For \(G=SU(N)\), three representations recur throughout gauge theory:
 \text{fundamental } \square & \mathbb C^N & t_\square^a=t^a \\
 \text{anti-fundamental } \overline{\square} & \mathbb C^N &
   t_{\overline{\square}}^a=-(t^a)^* \\
-\text{adjoint} & \mathfrak{su}(N)\simeq\mathbb R^{N^2-1} &
-  \widetilde\rho_{\mathrm{adj}}(t^a)(t^b)=\ii f^{ab}{}_{c}t^c
+\text{adjoint} & \mathfrak g_{\mathbb C} &
+  t_{\mathrm{adj}}^a(t^b)=\ii f^{ab}{}_{c}t^c
 \end{array}
 \]
-The adjoint representation is conjugation on the algebra:
+Here \(\mathfrak g_{\mathbb C}\) denotes the complexification of the real
+Hermitian coordinate space.  A real adjoint-valued field is obtained by
+imposing the corresponding reality condition on its components.  The finite
+adjoint representation is conjugation on the algebra:
 \[
   v\mapsto gvg^{-1},
   \qquad
-  \widetilde\rho_{\mathrm{adj}}(t^a)v=[t^a,v].
+  \rho_{\mathrm{adj}}(g)v=gvg^{-1}.
+\]
+Its infinitesimal form is consistent with the convention
+differentiating \(v\mapsto \ee^{\ii\zeta_a t^a}v\ee^{-\ii\zeta_a t^a}\):
+\[
+  \delta v
+  =
+  \ii\zeta_a[t^a,v]
+  =
+  \ii\zeta_a t_{\mathrm{adj}}^a v .
 \]
 
 If \(\psi(x)\in V_R\), its finite gauge transformation is
@@ -325,6 +374,12 @@ Using \eqref{eq:ym-finite-gauge-transformation} and
 \end{equation}
 This covariance is the algebraic reason that replacing ordinary derivatives
 by \(D_\mu\) produces gauge-invariant matter kinetic terms.
+For example, if \((\ ,\ )_R\) is the invariant Hermitian pairing on \(V_R\),
+then \((D_\mu\psi,D^\mu\psi)_R\) is gauge invariant for scalar matter.  For
+Dirac matter, the gauge index contraction in \(\bar\psi\gamma^\mu D_\mu\psi\)
+uses the pairing between \(R^*\) and \(R\).  Mass and Yukawa couplings are
+gauge invariant only when their flavor and representation tensors define
+intertwiners from the tensor product of fields to the trivial representation.
 
 \begin{figure}[H]
   \centering

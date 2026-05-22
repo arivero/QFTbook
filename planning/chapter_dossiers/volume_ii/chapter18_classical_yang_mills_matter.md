@@ -27,6 +27,15 @@
 The chapter must define and derive:
 
 - gauge potentials \(A_{a\mu}\) carrying spacetime and internal indices;
+- the distinction between the anti-Hermitian mathematical Lie algebra
+  \(\mathfrak g_{\mathrm{ah}}=\operatorname{Lie}(G)\) and the Hermitian
+  generator coordinate space \(\mathfrak g=i\,\mathfrak g_{\mathrm{ah}}\);
+- the anti-Hermitian connection one-form
+  \(\mathsf A_{\mathrm{ah}}=-iA\) corresponding to the Hermitian local
+  representative \(A\);
+- the Hermitian-coordinate bracket
+  \([X,Y]_{\mathrm H}=-i[X,Y]_{\mathrm{mat}}\), so explicit factors of \(i\)
+  in transformation laws keep \(A_\mu,\zeta,F_{\mu\nu}\) Hermitian;
 - Hermitian Lie-algebra generators \(t^a\) with
   \([t^a,t^b]=i f^{ab}{}_c t^c\);
 - infinitesimal gauge transformation
@@ -34,6 +43,8 @@ The chapter must define and derive:
 - finite gauge transformation
   \(A_\mu'=gA_\mu g^{-1}+i g\partial_\mu g^{-1}\) with
   \(g(x)=\exp(i\zeta^a(x)t^a)\);
+- the overlap transformation law for local connection representatives on
+  nontrivial principal bundles and the covariant gluing of curvature;
 - BCH closure and the adjoint action \(e^X Y e^{-X}\);
 - covariant derivative \(\nabla_\mu=\partial_\mu-iA_\mu\);
 - field strength \(F_{\mu\nu}=i[\nabla_\mu,\nabla_\nu]\);
@@ -48,7 +59,10 @@ The chapter must define and derive:
 - the four-dimensional \(\theta\)-term and its perturbative/topological roles;
 - matter representations \(\rho_R:G\to GL(V_R)\), Lie-algebra generators
   \(t_R^a\), and the matter covariant derivative;
-- fundamental, anti-fundamental, and adjoint representations of \(SU(N)\);
+- invariant Hermitian pairings on compact-group representations and the
+  resulting gauge-invariant contractions for scalar and Dirac matter;
+- fundamental, anti-fundamental, and complexified adjoint representations of
+  \(SU(N)\);
 - QCD quark indices \(i,I,\alpha\), fermion kinetic term, Hermitian mass
   matrices \(m,\widetilde m\), and equivalent chiral complex mass matrix \(M\).
 
@@ -56,21 +70,29 @@ The chapter must define and derive:
 
 1. The local Yang-Mills field is a connection one-form on a local
    trivialization of a principal \(G\)-bundle.
-2. Closure of the local infinitesimal transformations is encoded by the Lie
+2. With Hermitian generators, the compact real Lie bracket is represented by
+   \([X,Y]_{\mathrm H}=-i[X,Y]_{\mathrm{mat}}\), while formulas use ordinary
+   matrix commutators with explicit \(i\)'s.
+3. Closure of the local infinitesimal transformations is encoded by the Lie
    bracket of \(\mathfrak g\).
-3. The finite transformation law is characterized by covariance of
+4. The finite transformation law is characterized by covariance of
    \(\partial_\mu-iA_\mu\).
-4. Curvature transforms by conjugation, and invariant actions are built using
+5. Local connection representatives on overlapping trivializations obey the
+   same transformation law as local gauge changes; curvature glues by
+   conjugation.
+6. Curvature transforms by conjugation, and invariant actions are built using
    invariant tensors on \(\mathfrak g\).
-5. A positive invariant quadratic form gives the kinetic energy sign needed
+7. A positive invariant quadratic form gives the kinetic energy sign needed
    for unitary Lorentzian gauge fields.
-6. In \(D=4\), the \(\theta\)-density is local and gauge invariant; as a total
+8. In \(D=4\), the \(\theta\)-density is local and gauge invariant; as a total
    derivative it enters perturbatively only through global/topological sectors.
-7. Matter fields carry representations of \(G\), and their covariant
+9. Matter fields carry representations of \(G\), and their covariant
    derivative transforms in the same representation.
-8. QCD uses the fundamental and anti-fundamental representations for quarks
-   and antiquarks; the adjoint representation describes the gauge field.
-9. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
+10. QCD uses the fundamental and anti-fundamental representations for quarks
+    and antiquarks; the complexified adjoint representation describes
+    adjoint-valued fields, with real adjoint fields selected by a reality
+    condition.
+11. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
    matrices into a complex flavor matrix.
 
 ## Figure Requirements
@@ -87,6 +109,8 @@ The chapter must define and derive:
 
 - Stop before Faddeev-Popov gauge fixing and BRST.
 - State conventions for Hermitian generators and \(\gamma_5\) projectors.
+- Do not let Hermitian-generator notation obscure the anti-Hermitian
+  mathematical connection convention used in Chern-Weil and descent formulas.
 - Avoid saying gauge symmetry is a physical symmetry; formulate it as local
   covariance/redundancy of field coordinates.
 - No reader-facing source-page references or course labels.
