@@ -22,6 +22,11 @@
 ## Framework
 
 - Massive scalar particle of mass \(m>0\), isolated one-particle subspace.
+- Haag--Ruelle wave operators
+  \(\Omega_{\mathrm{in/out}}:\mathcal F_s(\Hilb_1)\to\Hilb\) already
+  constructed in the preceding chapter.
+- Scattering operator \(S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) on
+  the asymptotic Fock space when the incoming and outgoing ranges coincide.
 - Relativistically normalized generalized momentum states.
 - Scalar local field \(\widehat\phi\) with one-particle residue \(Z>0\).
 - Time-ordered Green functions as Lorentzian distributions.
@@ -33,9 +38,14 @@
 | Symbol | Meaning |
 | --- | --- |
 | \(d\) | spatial dimension, \(D-1\) |
+| \(\mathcal F_s(\Hilb_1)\) | bosonic asymptotic Fock space over the isolated one-particle subspace |
+| \(\Omega_{\mathrm{in/out}}\) | Haag--Ruelle wave operators |
+| \(S\) | scattering operator \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) |
 | \(\omega_{\vec p}\) | \(\sqrt{\vec p^{\,2}+m^2}\) |
 | \(\dd\mu_m\) | Lorentz-invariant mass-shell measure |
+| \(\Sigma_m^+\) | positive-energy mass shell |
 | \(Z\) | one-particle pole residue for \(\widehat\phi\) |
+| \(F_{\rm in/out}\) | incoming/outgoing asymptotic Fock wave-packet vectors |
 | \(G_N\) | Lorentzian time-ordered \(N\)-point function |
 | \(\widetilde G_N\) | Fourier transform of \(G_N\) |
 | \(\widetilde G_{N}^{\mathrm{conn}}\) | connected part of the Fourier-space Green function |
@@ -47,6 +57,13 @@
 
 ## Claims Established
 
+- The object computed by LSZ is the Hilbert-space matrix element
+  \(\langle F_{\rm out},S F_{\rm in}\rangle_{\mathcal F_s(\Hilb_1)}\), with
+  \(S\) supplied by Haag--Ruelle wave operators.
+- The wave-packet LSZ theorem identifies the connected component of that
+  matrix element with the external one-particle residue of
+  \(\widetilde G^{\mathrm{conn}}_{m+n}\), after distributional smearing and
+  boundary-value restriction to \(\Sigma_m^+\).
 - The two-point pole residue \(Z\) supplies the external wavefunction factor.
 - LSZ is a distributional theorem for wave-packet matrix elements.
 - Incoming physical momenta enter the Green function as \(-p_j\) in the
