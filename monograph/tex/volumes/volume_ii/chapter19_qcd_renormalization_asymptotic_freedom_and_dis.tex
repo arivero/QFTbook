@@ -496,12 +496,13 @@ Here \(\operatorname{Tr}\) includes integration over spacetime and trace over
 all indices, while \(\operatorname{tr}\) is the finite-dimensional trace over
 spin, Lorentz, and color indices of the symbol \(M(k)\).
 
-For the quark determinant, the symbol is
-\[
-  M_\psi(k)=\ii\left(\not k-\gamma^\mu\widetilde A_\mu^a t_R^a\right).
-\]
-Expanding \(\operatorname{tr}\log M_\psi(k)\) to fourth order in the constant
-background and using rotational invariance in \(D=4-\epsilon\),
+The coefficient can be extracted either by expanding the finite-dimensional
+symbols in \eqref{eq:qcd-constant-background-functional-trace} or,
+equivalently, by computing the logarithmic heat-kernel coefficient of the
+same local operators.  The equivalence follows because both calculations
+isolate the parity-even curvature-squared functional that renormalizes
+\(1/g^2\).  In the symbol expansion, the only tensor average needed at fourth
+order is
 \begin{equation}
   \frac{k^{\nu_1}k^{\nu_2}k^{\nu_3}k^{\nu_4}}{(k^2)^4}
   \longrightarrow
@@ -510,26 +511,10 @@ background and using rotational invariance in \(D=4-\epsilon\),
     \delta^{\nu_1\nu_2}\delta^{\nu_3\nu_4}
     +\delta^{\nu_1\nu_3}\delta^{\nu_2\nu_4}
     +\delta^{\nu_1\nu_4}\delta^{\nu_2\nu_3}
-  \right),
+  \right).
   \label{eq:qcd-k-four-rotational-average}
 \end{equation}
-one obtains
-\begin{equation}
-  \left.
-  \int\frac{\dd^Dk}{(2\pi)^D}\operatorname{tr}\log M_\psi(k)
-  \right|_{\widetilde A^4}
-  =
-  \frac13
-  \operatorname{tr}_R
-  \left(
-    [\widetilde A_\mu,\widetilde A_\nu]
-    [\widetilde A^\mu,\widetilde A^\nu]
-  \right)
-  \int\frac{\dd^Dk}{(2\pi)^D}\frac1{(k^2)^2}.
-  \label{eq:qcd-fermion-quartic-background}
-\end{equation}
-Background gauge invariance completes this quartic expression to the full
-curvature invariant.  With the infrared cutoff \(|k|>\mu\),
+The scalar integral carrying the logarithmic divergence is
 \begin{equation}
   I_\epsilon(\mu)
   :=
@@ -540,33 +525,175 @@ curvature invariant.  With the infrared cutoff \(|k|>\mu\),
   +\hbox{finite}.
   \label{eq:qcd-basic-log-integral}
 \end{equation}
-Thus one quark flavor in representation \(R\) contributes
+
+For a self-contained evaluation, use the Euclidean logarithmic coefficient of
+a Laplace-type operator
+\[
+  \mathcal L=-\nabla^2+E
+\]
+on a vector bundle \(\mathcal E\).  Let
+\(\Omega_{\mu\nu}:=[\nabla_\mu,\nabla_\nu]\).  In flat space,
 \begin{equation}
-  \Gamma_\psi^{(1)}[\widetilde A]
+  \operatorname{Tr}\log\mathcal L
+  \supset
+  -I_\epsilon(\mu)
+  \int\dd^Dx\,
+  \operatorname{tr}_{\mathcal E}
+  \left(
+    \frac12 E^2+\frac1{12}\Omega_{\mu\nu}\Omega^{\mu\nu}
+  \right).
+  \label{eq:qcd-laplace-heat-coefficient}
+\end{equation}
+This is obtained from
+\(\operatorname{Tr}\log\mathcal L=-\int_0^\infty
+\frac{\dd t}{t}\operatorname{Tr}\ee^{-t\mathcal L}\) and the flat-space heat
+kernel
+\[
+  \operatorname{Tr}\ee^{-t\mathcal L}
+  \sim
+  (4\pi t)^{-D/2}
+  \int\dd^Dx\,\operatorname{tr}_{\mathcal E}
+  \left[
+    1+tE+t^2
+    \left(
+      \frac12 E^2+\frac1{12}\Omega_{\mu\nu}\Omega^{\mu\nu}
+    \right)+\cdots
+  \right].
+\]
+The pole in dimensional regularization is the same pole as
+\eqref{eq:qcd-basic-log-integral}.
+
+The adjoint connection in the conventions of
+\eqref{eq:qcd-casimir-definitions} satisfies
+\begin{equation}
+  \operatorname{tr}_{\rm ad}
+  \bigl(
+    \operatorname{ad}\widetilde F_{\mu\nu}\,
+    \operatorname{ad}\widetilde F^{\mu\nu}
+  \bigr)
+  =
+  -C_A\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
+  \label{eq:qcd-adjoint-trace-sign}
+\end{equation}
+because the adjoint matrices are real antisymmetric.  For a matter
+representation \(R\) with Hermitian generators \(t_R^a\),
+\[
+  \operatorname{tr}_{R}
+  \bigl(
+    (-\ii \widetilde F^a_{\mu\nu}t_R^a)
+    (-\ii \widetilde F^{b\mu\nu}t_R^b)
+  \bigr)
+  =
+  -T_R\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
+\]
+
+First consider one Dirac quark in \(R\).  The first-order operator is
+\(\mathcal D_\psi:=\gamma^\mu\widetilde D_\mu\), and the logarithmic
+part of \(\operatorname{Tr}\log\mathcal D_\psi\) is one half of that
+of the Laplace-type operator \(-\mathcal D_\psi^{\,2}\).  With
+\[
+  -\mathcal D_\psi^{\,2}
+  =
+  -\widetilde D^2
+  -\frac12\gamma^{\mu\nu}\Omega_{\mu\nu},
+  \qquad
+  \gamma^{\mu\nu}:=\frac12[\gamma^\mu,\gamma^\nu],
+\]
+one has
+\[
+  E_\psi=-\frac12\gamma^{\mu\nu}\Omega_{\mu\nu}.
+\]
+Using
+\[
+  \operatorname{tr}_{\rm spin}
+  \gamma^{\mu\nu}\gamma^{\rho\sigma}
+  =
+  4\left(
+    \delta^{\mu\sigma}\delta^{\nu\rho}
+    -\delta^{\mu\rho}\delta^{\nu\sigma}
+  \right),
+\]
+the heat-kernel density is
+\[
+  \operatorname{tr}_{\rm spin\otimes R}
+  \left(
+    \frac12E_\psi^2
+    +\frac1{12}\Omega_{\mu\nu}\Omega^{\mu\nu}
+  \right)
+  =
+  \frac23 T_R\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
+\]
+The extra factor \(1/2\) relating
+\(\operatorname{Tr}\log\mathcal D_\psi\) to
+\(\operatorname{Tr}\log(-\mathcal D_\psi^{\,2})\) gives
+\begin{equation}
+  \operatorname{Tr}\log D_\psi
   \supset
   -\frac13 T_R I_\epsilon(\mu)
   \int\dd^Dx\,
-  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}
   \label{eq:qcd-quark-determinant-f2}
 \end{equation}
+for one Dirac flavor.
 
-The ghost and gauge-field determinants are evaluated by the same
-constant-background method.  Their logarithmic parts are
-\begin{align}
+For the Faddeev--Popov ghosts in background gauge, the relevant Laplace-type
+operator is the scalar adjoint operator \(\mathcal L_{\rm gh}=-\widetilde
+D^2\).  Hence \(E_{\rm gh}=0\), and
+\eqref{eq:qcd-laplace-heat-coefficient} gives
+\begin{equation}
   \operatorname{Tr}\log D_{\rm gh}
-  &\supset
+  \supset
   \frac1{12}C_A I_\epsilon(\mu)
   \int\dd^Dx\,
-  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
-  \notag\\
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
+  \label{eq:qcd-ghost-determinant-f2}
+\end{equation}
+
+For the gauge fluctuation in background Feynman gauge, the Euclidean vector
+operator has the form
+\[
+  (\mathcal L_A)_\mu{}^\nu
+  =
+  -\widetilde D^2\delta_\mu{}^\nu
+  -2\,\operatorname{ad}(\widetilde F_\mu{}^\nu).
+\]
+It is a Laplace-type operator on one-forms valued in the adjoint bundle with
+\[
+  (E_A)_\mu{}^\nu=-2\,\operatorname{ad}(\widetilde F_\mu{}^\nu),
+  \qquad
+  (\Omega_{\rho\sigma})_\mu{}^\nu
+  =
+  \delta_\mu{}^\nu\,\operatorname{ad}(\widetilde F_{\rho\sigma}).
+\]
+Therefore
+at the pole coefficient, where terms proportional to \(D-4\) in
+finite-dimensional traces multiply the pole only into finite contributions,
+\[
+  \operatorname{tr}\frac12E_A^2
+  =
+  2C_A\,\widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
+  \qquad
+  \operatorname{tr}\frac1{12}\Omega_{\rho\sigma}\Omega^{\rho\sigma}
+  =
+  -\frac13C_A\,\widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
+\]
+where the first trace includes one-form and adjoint indices, and the second
+uses the four one-form components.  Thus
+\begin{equation}
   \operatorname{Tr}\log D_A
-  &\supset
+  \supset
   -\frac53 C_A I_\epsilon(\mu)
   \int\dd^Dx\,
   \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
-  \label{eq:qcd-ghost-vector-determinants-f2}
-\end{align}
-Combining these terms with the determinant weights in
+  \label{eq:qcd-vector-determinant-f2}
+\end{equation}
+
+Combining \eqref{eq:qcd-quark-determinant-f2},
+\eqref{eq:qcd-ghost-determinant-f2}, and
+\eqref{eq:qcd-vector-determinant-f2} with the determinant weights in
 \eqref{eq:qcd-background-determinant-ratio} gives the coefficient
 \begin{equation}
   b
@@ -582,7 +709,7 @@ Combining these terms with the determinant weights in
 \end{equation}
 The term \(5C_A/6\) comes from the vector determinant after the bosonic
 factor \(-1/2\), the term \(C_A/12\) from the Faddeev--Popov determinant, and
-the term \(-N_fT_R/3\) from the quark determinants.
+the term \(-N_fT_R/3\) from the \(N_f\) quark determinants.
 
 Comparing the logarithmic part of \(\Gamma[\widetilde A]\) with
 \eqref{eq:qcd-background-effective-coupling} gives

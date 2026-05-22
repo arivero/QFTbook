@@ -18,8 +18,10 @@
   section "Yang-Mills Feynman rules and the one-loop QCD beta function", used
   only as a comparison layer.
 - `SRC-EXTERNAL`: standard background-field and dimensional-regularization
-  checks are allowed as guardrails, but the chapter follows the local source
-  logic and conventions.
+  checks are allowed as guardrails.  The heat-kernel identity now used to
+  compute determinant coefficients is derived in the chapter from the
+  proper-time representation and flat-space coefficient, rather than imported
+  as an external table.
 
 ## Construction Task
 
@@ -46,7 +48,9 @@ The chapter must define and derive:
   the distinction between \(\operatorname{Tr}\) and \(\operatorname{tr}\);
 - the rotational average for four loop momenta in \(D=4-\epsilon\);
 - the basic logarithmic integral with IR cutoff \(|k|>\mu\);
-- the quark, ghost, and vector determinant coefficients;
+- the flat-space heat-kernel coefficient for Laplace-type operators, the
+  adjoint trace sign, and the quark, ghost, and vector determinant
+  coefficients;
 - the coefficient
   \(b=\frac{11}{12}C_A-\frac{N_f}{3}T_R\);
 - the conversion from bare-coupling independence to
@@ -82,10 +86,13 @@ The chapter must define and derive:
 4. A nearly constant background field in a box extracts the logarithmic
    coefficient of the local curvature term; the box size supplies the IR
    scale.
-5. The fermion determinant quartic term completes to
-   \(-\frac13\operatorname{tr}_R \widetilde F^2 I_\epsilon\).
-6. The handwritten source gives the ghost coefficient \(1/12\), the vector
-   determinant coefficient \(-5/3\), and hence
+5. The Dirac determinant coefficient follows from applying the heat-kernel
+   coefficient to \(-\slashed{\widetilde D}^{\,2}\), including the
+   \(\frac12\) relating the first-order determinant to the squared operator.
+6. The ghost coefficient \(1/12\) and vector determinant coefficient
+   \(-5/3\) follow from the scalar adjoint Laplacian and the background
+   Feynman-gauge one-form operator, with the adjoint trace sign stated.
+   Their weighted sum gives
    \(-\frac12(-5/3)+1/12=11/12\) for the pure-gauge part in the source
    normalization.
 7. Bare-coupling independence in dimensional regularization gives the
@@ -142,6 +149,11 @@ The chapter must define and derive:
 - Do not collapse the beta-function derivation to a final coefficient.  The
   background-field covariance and determinant comparison are part of the
   conceptual content.
+- 2026-05-22 follow-up: the manuscript no longer leaves the ghost and vector
+  determinant coefficients as asserted values.  It derives the heat-kernel
+  logarithmic coefficient, the adjoint trace sign, the Dirac square, the
+  scalar ghost coefficient, and the one-form vector coefficient before
+  forming \(b=\frac{11}{12}C_A-\frac{N_f}{3}T_R\).
 - Do not introduce perturbative \(S\)-matrix diagrams for colored external
   states.  QCD external-state statements must respect the earlier
   nonperturbative scattering and BRST/physical-Hilbert-space framework.
