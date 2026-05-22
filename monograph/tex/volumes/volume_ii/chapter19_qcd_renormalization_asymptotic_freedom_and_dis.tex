@@ -39,7 +39,8 @@ renormalization scheme.  The beta function is
 \[
   \beta(g):=\mu\frac{\dd g}{\dd\mu}.
 \]
-In a mass-independent scheme its first coefficient is scheme independent:
+The first coefficient is obtained below from the background-field 1PI
+effective action.  In a mass-independent scheme the result is
 \begin{equation}
   \beta(g)
   =
@@ -61,10 +62,345 @@ Equivalently,
   +O(g^5)
   \label{eq:qcd-one-loop-beta-fundamental}
 \end{equation}
-for fundamental quarks.  The \(C_A\) term is the gauge-field and ghost
-contribution; the \(T_F N_f\) term is the quark contribution.  The relative
-sign follows from the tensor structure required by BRST identities and from
-the spin-statistics of the loop fields.
+for fundamental quarks.
+
+\section{Background-Field Derivation of the One-Loop Beta Function}
+
+The coupling in a nonabelian gauge theory is most cleanly extracted from the
+coefficient of the background curvature term in the 1PI effective action.  Let
+\(A_\mu=\widetilde A_\mu+a_\mu\), where \(\widetilde A_\mu\) is a background
+connection and \(a_\mu\) is the quantum fluctuation.  The background covariant
+derivative in a representation \(R\) is denoted
+\[
+  \widetilde D_\mu=\partial_\mu-\ii \widetilde A_\mu^a t_R^a ,
+  \qquad
+  \widetilde F_{\mu\nu}
+  =
+  \partial_\mu\widetilde A_\nu-\partial_\nu\widetilde A_\mu
+  -\ii[\widetilde A_\mu,\widetilde A_\nu].
+\]
+In the adjoint representation,
+\[
+  (\widetilde D_\mu X)^a
+  =
+  \partial_\mu X^a+f^{a}{}_{bc}\widetilde A_\mu^bX^c .
+\]
+Choose the background-field gauge condition
+\[
+  \widetilde D^\mu a_\mu=0 .
+\]
+Under a background gauge transformation with parameter
+\(\zeta=\zeta^a t^a\),
+\[
+  \delta \widetilde A_\mu=\widetilde D_\mu\zeta,\qquad
+  \delta a_\mu=-\ii[a_\mu,\zeta],
+\]
+and the ghosts and quarks transform in the adjoint and \(R\) representations,
+respectively.  Since this transformation acts linearly on the variables
+integrated over in the path integral and as a connection transformation on
+\(\widetilde A\), the resulting 1PI functional
+\(\Gamma[\widetilde A]\) is invariant under background gauge transformations.
+Its dimension-four term therefore has the form
+\begin{equation}
+  \Gamma[\widetilde A]
+  \supset
+  -\frac1{4g^2(\mu)}
+  \int\dd^4x\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}
+  \label{eq:qcd-background-effective-coupling}
+\end{equation}
+in Lorentzian signature, up to terms with more powers of
+\(\widetilde F\), covariant derivatives, or quark fields.  The problem is
+therefore reduced to computing one coefficient in a gauge-invariant
+functional, rather than separately renormalizing gauge-fixed vertices.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.45) {background-field extraction of \(g(\mu)\)};
+
+    \begin{scope}[shift={(-5.25,0)}]
+      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
+      \node[align=center] at (0,0.42)
+        {\(A_\mu=\widetilde A_\mu+a_\mu\)};
+      \node[align=center,blue!70!black] at (0,-0.42)
+        {\(\widetilde D^\mu a_\mu=0\)};
+      \node[below] at (0,-1.25) {background split};
+    \end{scope}
+
+    \begin{scope}[shift={(-1.75,0)}]
+      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
+      \node[align=center] at (0,0.48)
+        {\(\delta\widetilde A_\mu=\widetilde D_\mu\zeta\)};
+      \node[align=center,blue!70!black] at (0,-0.42)
+        {\(\delta a_\mu,\delta c,\delta q\)\\homogeneous};
+      \node[below] at (0,-1.25) {background covariance};
+    \end{scope}
+
+    \begin{scope}[shift={(1.75,0)}]
+      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
+      \node[align=center] at (0,0.45)
+        {\(\displaystyle
+        \frac{(\det D_\psi)^{N_f}\det D_{\rm gh}}
+        {(\det D_A)^{1/2}}\)};
+      \node[align=center,blue!70!black] at (0,-0.46)
+        {quadratic fluctuations};
+      \node[below] at (0,-1.25) {one-loop determinants};
+    \end{scope}
+
+    \begin{scope}[shift={(5.25,0)}]
+      \draw[thick,rounded corners=3pt] (-1.55,-0.95) rectangle (1.55,1.10);
+      \node[align=center] at (0,0.45)
+        {\(\displaystyle
+        \Gamma[\widetilde A]\supset
+        -\frac1{4g^2(\mu)}
+        \int \widetilde F^2\)};
+      \node[align=center,blue!70!black] at (0,-0.46)
+        {read off the coupling};
+      \node[below] at (0,-1.25) {gauge-invariant coefficient};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]},thick] (-3.55,0.08)--(-2.03,0.08);
+    \draw[-{Latex[length=2mm]},thick] (-0.05,0.08)--(1.47,0.08);
+    \draw[-{Latex[length=2mm]},thick] (3.45,0.08)--(4.97,0.08);
+  \end{tikzpicture}
+  }
+  \caption{The background-field method keeps a gauge symmetry acting on
+  \(\widetilde A\).  The one-loop determinants then renormalize the single
+  invariant coefficient multiplying \(\widetilde F_{\mu\nu}^a
+  \widetilde F^{a\mu\nu}\).}
+  \label{fig:qcd-background-field-beta}
+\end{figure}
+
+Set the background quark and ghost fields to zero and use background Feynman
+gauge.  The part of the action quadratic in \(a_\mu,q,\bar q,c,\bar c\) has
+the form
+\begin{equation}
+  S^{(2)}
+  =
+  \int\dd^4x\,
+  \left[
+    -\frac1{4g_0^2}a^\mu_a(D_A)_{a\mu,b\nu}a^\nu_b
+    +\bar q D_\psi q
+    +\bar c^aD_{\rm gh}^{ab}c^b
+  \right],
+  \label{eq:qcd-background-quadratic-action}
+\end{equation}
+where \(g_0\) is the bare coupling.  The operators are differential operators
+whose coefficients are built from \(\widetilde D_\mu\) and
+\(\widetilde F_{\mu\nu}\).  In background Feynman gauge their principal
+pieces are
+\[
+  D_\psi=-\gamma^\mu\widetilde D_\mu,\qquad
+  D_{\rm gh}=\widetilde D_\mu\widetilde D^\mu,
+\]
+and \(D_A\) is the adjoint vector operator obtained from the quadratic part of
+\((\widetilde F+\widetilde D a-\widetilde D a+[a,a])^2\) together with
+the gauge-fixing term.  The Gaussian integral gives
+\begin{equation}
+  \ii\Gamma^{(1)}[\widetilde A]
+  =
+  \log
+  \left[
+    \frac{(\det D_\psi)^{N_f}\det D_{\rm gh}}
+    {(\det D_A)^{1/2}}
+  \right].
+  \label{eq:qcd-background-determinant-ratio}
+\end{equation}
+The numerator reflects Grassmann integration for quarks and ghosts; the
+denominator is the square root from the bosonic gauge-field Gaussian.
+
+To extract the logarithmic coefficient, take \(\widetilde A_\mu\) to be
+approximately constant inside a large box and to vanish smoothly outside.
+The box size supplies an infrared scale \(L\sim\mu^{-1}\).  In the constant
+region, the functional trace of a function of a differential operator reduces
+to an ordinary momentum integral:
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.78\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \draw[thick] (-3.2,-1.55) rectangle (3.2,1.55);
+    \fill[blue!10] (-1.55,0) circle (1.35);
+    \draw[blue!65!black,thick] (-1.55,0) circle (1.35);
+    \foreach \x/\y/\dx/\dy in {-2.45/-0.62/0.66/0.42,-2.52/0.28/0.78/0.30,-1.88/0.92/0.58/-0.35,-1.12/-0.82/0.50/0.48,-0.72/0.28/0.35/-0.45} {
+      \draw[blue!65!black,thick,->] (\x,\y)--++(\dx,\dy);
+    }
+    \node[blue!65!black,align=center] at (-1.55,0)
+      {\(\widetilde A_\mu\simeq\text{const.}\)};
+    \node[align=center] at (1.42,0.82)
+      {\(\widetilde A_\mu\to0\)\\near the boundary};
+    \draw[->,thick] (1.2,0.35)--(-0.18,0.42);
+    \draw[<->,purple!75!black,thick] (-3.2,-1.92)--(3.2,-1.92);
+    \node[purple!75!black,below] at (0,-1.92)
+      {\(L\sim\mu^{-1}\)};
+    \node[align=center,orange!85!black] at (0,2.12)
+      {UV pole from \(k\to\infty\), infrared scale from the box};
+  \end{tikzpicture}
+  }
+  \caption{The constant-background computation is a local extraction of the
+  logarithmic coefficient.  The background is chosen nearly constant in a
+  region of size \(L\), and the scale \(\mu\sim L^{-1}\) is used as the
+  infrared cutoff in the momentum integral.}
+  \label{fig:qcd-constant-background-box}
+\end{figure}
+
+\begin{equation}
+  \operatorname{Tr} f(D)
+  =
+  \int\dd^Dx
+  \int\frac{\dd^Dk}{(2\pi)^D}\,
+  \operatorname{tr} f(M(k)).
+  \label{eq:qcd-constant-background-functional-trace}
+\end{equation}
+Here \(\operatorname{Tr}\) includes integration over spacetime and trace over
+all indices, while \(\operatorname{tr}\) is the finite-dimensional trace over
+spin, Lorentz, and color indices of the symbol \(M(k)\).
+
+For the quark determinant, the symbol is
+\[
+  M_\psi(k)=\ii\left(\not k-\gamma^\mu\widetilde A_\mu^a t_R^a\right).
+\]
+Expanding \(\operatorname{tr}\log M_\psi(k)\) to fourth order in the constant
+background and using rotational invariance in \(D=4-\epsilon\),
+\begin{equation}
+  \frac{k^{\nu_1}k^{\nu_2}k^{\nu_3}k^{\nu_4}}{(k^2)^4}
+  \longrightarrow
+  \frac1{(k^2)^2D(D+2)}
+  \left(
+    \delta^{\nu_1\nu_2}\delta^{\nu_3\nu_4}
+    +\delta^{\nu_1\nu_3}\delta^{\nu_2\nu_4}
+    +\delta^{\nu_1\nu_4}\delta^{\nu_2\nu_3}
+  \right),
+  \label{eq:qcd-k-four-rotational-average}
+\end{equation}
+one obtains
+\begin{equation}
+  \left.
+  \int\frac{\dd^Dk}{(2\pi)^D}\operatorname{tr}\log M_\psi(k)
+  \right|_{\widetilde A^4}
+  =
+  \frac13
+  \operatorname{tr}_R
+  \left(
+    [\widetilde A_\mu,\widetilde A_\nu]
+    [\widetilde A^\mu,\widetilde A^\nu]
+  \right)
+  \int\frac{\dd^Dk}{(2\pi)^D}\frac1{(k^2)^2}.
+  \label{eq:qcd-fermion-quartic-background}
+\end{equation}
+Background gauge invariance completes this quartic expression to the full
+curvature invariant.  With the infrared cutoff \(|k|>\mu\),
+\begin{equation}
+  I_\epsilon(\mu)
+  :=
+  \int_{|k|>\mu}
+  \frac{\dd^{4-\epsilon}k}{(2\pi)^{4-\epsilon}}\frac1{(k^2)^2}
+  =
+  \frac1{8\pi^2}\frac{\mu^{-\epsilon}}{\epsilon}
+  +\hbox{finite}.
+  \label{eq:qcd-basic-log-integral}
+\end{equation}
+Thus one quark flavor in representation \(R\) contributes
+\begin{equation}
+  \Gamma_\psi^{(1)}[\widetilde A]
+  \supset
+  -\frac13 T_R I_\epsilon(\mu)
+  \int\dd^Dx\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
+  \label{eq:qcd-quark-determinant-f2}
+\end{equation}
+
+The ghost and gauge-field determinants are evaluated by the same
+constant-background method.  Their logarithmic parts are
+\begin{align}
+  \operatorname{Tr}\log D_{\rm gh}
+  &\supset
+  \frac1{12}C_A I_\epsilon(\mu)
+  \int\dd^Dx\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
+  \notag\\
+  \operatorname{Tr}\log D_A
+  &\supset
+  -\frac53 C_A I_\epsilon(\mu)
+  \int\dd^Dx\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
+  \label{eq:qcd-ghost-vector-determinants-f2}
+\end{align}
+Combining these terms with the determinant weights in
+\eqref{eq:qcd-background-determinant-ratio} gives the coefficient
+\begin{equation}
+  b
+  =
+  -\frac{N_f}{3}T_R
+  +
+  \left[
+    -\frac12\left(-\frac53\right)+\frac1{12}
+  \right]C_A
+  =
+  \frac{11}{12}C_A-\frac{N_f}{3}T_R .
+  \label{eq:qcd-background-b-coefficient}
+\end{equation}
+The term \(5C_A/6\) comes from the vector determinant after the bosonic
+factor \(-1/2\), the term \(C_A/12\) from the Faddeev--Popov determinant, and
+the term \(-N_fT_R/3\) from the quark determinants.
+
+Comparing the logarithmic part of \(\Gamma[\widetilde A]\) with
+\eqref{eq:qcd-background-effective-coupling} gives
+\begin{equation}
+  -\frac1{4g^2(\mu)}
+  =
+  -\frac1{4g_0^2}
+  +
+  \frac{b}{8\pi^2}\frac{\mu^{-\epsilon}}{\epsilon}
+  +\hbox{finite}.
+  \label{eq:qcd-background-bare-renormalized-relation}
+\end{equation}
+In \(D=4-\epsilon\), write the dimensionless coupling as
+\[
+  \lambda^2(\mu)=\mu^\epsilon g^2(\mu).
+\]
+Equivalently,
+\begin{equation}
+  \frac1{g_0^2}
+  =
+  \mu^\epsilon
+  \left[
+    \frac1{\lambda^2(\mu)}
+    +
+    \frac{b}{2\pi^2}\frac1{\epsilon}
+    +\hbox{finite}
+    +O(\lambda^2)
+  \right].
+  \label{eq:qcd-background-bare-coupling-ms}
+\end{equation}
+The bare coupling \(g_0\) is independent of the auxiliary scale \(\mu\).
+Differentiating \eqref{eq:qcd-background-bare-coupling-ms} at fixed \(g_0\)
+and then taking \(\epsilon\to0\) gives
+\begin{equation}
+  \frac{\dd}{\dd\log\mu}\frac1{\lambda^2(\mu)}
+  =
+  \frac{b}{2\pi^2}+O(\lambda^2),
+  \qquad
+  \beta(\lambda)
+  =
+  -\frac{b}{4\pi^2}\lambda^3+O(\lambda^5).
+  \label{eq:qcd-background-beta-lambda}
+\end{equation}
+Setting \(\epsilon=0\) and writing \(g\) for the four-dimensional
+dimensionless coupling,
+\[
+  \frac{b}{4\pi^2}
+  =
+  \frac1{16\pi^2}
+  \left(
+    \frac{11}{3}C_A-\frac{4}{3}T_RN_f
+  \right),
+\]
+which is \eqref{eq:qcd-one-loop-beta-general}.  For fundamental quarks of
+\(SU(N_c)\), \(T_R=T_F=1/2\) and \(C_A=N_c\), giving
+\eqref{eq:qcd-one-loop-beta-fundamental}.
 
 \section{Dimensional Transmutation}
 

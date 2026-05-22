@@ -16,6 +16,23 @@ For each chapter, work in this order:
 
 No step may be skipped because the topic is familiar.
 
+## No-Skip Source Coverage Rule
+
+The 253a and 253b source notes are a coverage obligation for the core
+monograph.  A chapter may deepen, reorganize, correct, or generalize the
+source material, but it may not silently omit a source derivation, example,
+figure, definition, or conceptual distinction.  Each source block must be
+accounted for in a dossier, audit note, or coverage register as one of:
+
+- incorporated in the compiled monograph;
+- incorporated after a corrected derivation or notation change;
+- deferred to a specified later core chapter;
+- moved to a specified non-core or deprecated file because the topic is
+  outside the current core scope.
+
+Compression is not coverage.  A result stated without the source calculation
+is a gap when the source calculation carries conceptual content.
+
 ## Modular Foundation Rule
 
 No existing framework is the universal foundation of the monograph. For every
@@ -106,6 +123,20 @@ misreading.
 - The S-matrix is nonperturbative first.
 - LSZ follows the nonperturbative scattering construction.
 - Perturbative S-matrix diagrams follow LSZ.
+
+## Gauge And RG Separation Rule
+
+- Spectral representations are statements about operators acting on the
+  relevant positive Hilbert space, or about explicitly stated indefinite
+  gauge-fixed spaces.  Gauge-variant propagators must not be treated as
+  physical spectral measures.
+- The 1PI renormalization group is a comparison of scale-dependent
+  coordinates on the 1PI effective action.
+- The Wilsonian renormalization group is a cutoff-dependent action flow
+  defined by integrating out modes while preserving low-momentum observables.
+- Physical scaling limits are statements about correlation functions,
+  operator dimensions, spectra, or other specified observables.  These three
+  RG notions may be related only after the map between their data is stated.
 
 ## Compilation Gate
 
