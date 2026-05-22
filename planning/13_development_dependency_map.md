@@ -148,10 +148,11 @@ Do not promote further material before: fixed-point assumptions and Hilbert
 space or Euclidean reconstruction assumptions are stated, and crossing/OPE
 claims are formulated as convergence or distributional statements.
 
-Immediate target: keep the core volume focused on local operator structure;
-move two-dimensional, supersymmetric, integrable, topological, defect, and
-bootstrap-specialized material into later volumes or deprecated drafts until
-their prerequisites are complete.
+Immediate target: use the new source-functional Ward-contact conventions in
+the conformal-current and conformal-charge chapters, then connect them to
+primary transformation laws.  Keep two-dimensional, supersymmetric,
+integrable, topological, defect, and bootstrap-specialized material in later
+volumes or deprecated drafts until their prerequisites are complete.
 
 ### Volume VI: Integrable Quantum Field Theory
 

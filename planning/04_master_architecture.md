@@ -195,6 +195,9 @@ Current compiled material:
 Further development targets:
 
 - keep the core CFT volume focused on local operator structure;
+- use the source-functional Ward-identity conventions from the opening
+  chapter when deriving conformal currents, charges, and primary
+  transformation laws;
 - develop crossing equations only through convergent OPE and Hilbert-space
   radial quantization;
 - reserve two-dimensional, supersymmetric, integrable, and topological
