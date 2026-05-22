@@ -142,7 +142,45 @@ regularity conditions are imposed on the classical solution. The Cauchy data
   \phi(0,\vec x),\qquad \partial_t\phi(0,\vec x)
 \]
 determine \(A(\vec k)\) and \(A(\vec k)^*\), hence determine the free
-solution for all \(t\).
+solution for all \(t\). Explicitly, write
+\[
+  \phi(0,\vec x)
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  \widetilde\phi_0(\vec k)\ee^{\ii\vec k\cdot\vec x},
+  \qquad
+  \partial_t\phi(0,\vec x)
+  =
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  \widetilde\pi_0(\vec k)\ee^{\ii\vec k\cdot\vec x}.
+\]
+Then
+\[
+  \widetilde\phi_0(\vec k)
+  =
+  A(\vec k)+A(-\vec k)^*,
+  \qquad
+  \widetilde\pi_0(\vec k)
+  =
+  -\ii\omega_{\vec k}\bigl(A(\vec k)-A(-\vec k)^*\bigr),
+\]
+so that
+\[
+  A(\vec k)
+  =
+  \frac12\left(
+    \widetilde\phi_0(\vec k)
+    +
+    \frac{\ii}{\omega_{\vec k}}\widetilde\pi_0(\vec k)
+  \right).
+\]
+
+There are two constructions to keep distinct. Canonical quantization starts
+from the equal-time phase space \((\phi,\Pi)\) and a Hamiltonian. The
+Lagrangian path integral formally starts from
+\(\int[D\phi]\exp(\ii S[\phi]/\hbar)\), whose measure requires a regulator
+before it becomes a construction. This chapter develops the canonical
+construction; the scalar field path integral is introduced later.
 
 \section{Canonical Hamiltonian Formalism}
 
@@ -293,7 +331,31 @@ The equal-time commutation relations are equivalent to
   (2\pi)^{D-1}\delta^{D-1}(\vec k-\vec q).
 \]
 This algebra holds for every positive choice of \(\nu_{\vec k}\). The
-Hamiltonian selects the oscillator normalization.
+notation \(b_{\vec k}\), \(b^\dagger_{\vec k}\) should therefore not yet be
+read as a particle interpretation. If \(\lambda_{\vec k}>0\) is another even
+function, define \(c_{\vec k}\), \(c^\dagger_{\vec k}\) by
+\[
+  c_{\vec k}+c^\dagger_{-\vec k}
+  =
+  \lambda_{\vec k}\bigl(b_{\vec k}+b^\dagger_{-\vec k}\bigr),
+  \qquad
+  c_{\vec k}-c^\dagger_{-\vec k}
+  =
+  \lambda_{\vec k}^{-1}\bigl(b_{\vec k}-b^\dagger_{-\vec k}\bigr).
+\]
+Equivalently,
+\[
+  c_{\vec k}
+  =
+  \frac{\lambda_{\vec k}+\lambda_{\vec k}^{-1}}{2}\,b_{\vec k}
+  +
+  \frac{\lambda_{\vec k}-\lambda_{\vec k}^{-1}}{2}\,
+  b^\dagger_{-\vec k}.
+\]
+The \(c\)'s obey the same canonical oscillator algebra. If a vector is
+annihilated by every \(b_{\vec k}\), it is not annihilated by every
+\(c_{\vec k}\) unless \(\lambda_{\vec k}=1\). The Hamiltonian is the datum
+that selects the oscillator normalization.
 
 Let
 \[
@@ -337,8 +399,11 @@ With this choice,
   \right).
 \]
 At finite spatial volume and finite momentum cutoff, the second term is a
-finite scalar multiple of the identity. Subtracting this scalar gives the
-renormalized free Hamiltonian
+finite scalar multiple of the identity. A constant multiple of the identity
+does not change Heisenberg evolution, but the quantum Hamiltonian must be a
+well-defined self-adjoint operator after the regulator is removed. We
+therefore choose the additive energy normalization so that the invariant
+vacuum has zero energy. With this normalization the free Hamiltonian is
 \[
   \widehat H_0^{\mathrm{ren}}
   =

@@ -2,7 +2,8 @@
 
 ## Status
 
-Current status: ready for TeX rewrite.
+Current status: certified on 2026-05-22 after handwritten source and
+rendered-figure audit for the 253a pp. 52--62 free-scalar canonical block.
 
 ## Logical Role
 
@@ -25,6 +26,11 @@ integral chapter.
   remain consistent.
 - `references/253a_notes.tex`, the corresponding scalar-field and
   microcausality sections, used only as a comparison layer.
+- Handwritten source visual trace:
+  `monograph/tex/build/source_visual_trace/253a_trace-052.png` through
+  `monograph/tex/build/source_visual_trace/253a_trace-062.png`.
+- Build audit:
+  `planning/build_audits/2026-05-22_free_scalar_canonical_source_figures.md`.
 
 ## Framework
 
@@ -80,6 +86,7 @@ Working framework:
 | Cauchy data \(\phi(0,\vec x)\), \(\partial_t\phi(0,\vec x)\) determine the free solution. | Derived | Positive/negative frequency decomposition |
 | Equal-time CCR determine the oscillator algebra once a mode normalization is fixed. | Derived | Fourier inversion |
 | The free Hamiltonian selects \(\omega_{\vec k}=\sqrt{\vec k^2+m^2}\) as the diagonal oscillator frequency. | Derived | Substitution into \(H_0\) |
+| Oscillator algebras related by Bogoliubov transformations do not by themselves determine the vacuum. | Derived/construction | 2026-05-22 source audit of handwritten Bogoliubov remark |
 | The free scalar field is an operator-valued distribution on finite-particle vectors. | Construction | Fock-space formula |
 | The Pauli-Jordan distribution vanishes at spacelike separation. | Derived | Lorentz invariance and equal-time reduction |
 
@@ -88,7 +95,9 @@ Working framework:
 Included figure:
 
 - mass shell \(k^2+m^2=0\) with positive and negative energy branches, used to
-  explain the support of classical Fourier modes.
+  explain the support of classical Fourier modes. Certified on rendered
+  manuscript physical PDF pages 66--71 (printed pages 50--55) against
+  handwritten pp. 52--62.
 
 ## Audit Targets
 
@@ -97,4 +106,4 @@ Included figure:
 - Avoid letting the word "particle" carry unexplained content; identify the
   one-particle interpretation through the diagonalized Fock representation.
 - Present normal ordering/vacuum-energy subtraction as a regulated scalar
-  energy shift, not as an informal deletion.
+  energy shift, not as an informal deletion. Certified in the 2026-05-22 audit.
