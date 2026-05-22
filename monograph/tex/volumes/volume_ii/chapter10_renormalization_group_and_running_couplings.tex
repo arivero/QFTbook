@@ -481,59 +481,199 @@ comparison between two widely separated scales can contain powers of
 small steps and then integrates the result, thereby summing the logarithmic
 terms determined by the computed beta function.
 
-\section{Callan--Symanzik Equation}
+\section{Callan--Symanzik Equation from Bare-Scale Independence}
 
 The beta function is a vector field on the renormalized coordinate space.  Its
-action on correlation functions is the Callan--Symanzik equation.  Let
-\(\phi_R=Z_\phi(\mu)^{-1/2}\phi_0\) be a renormalized scalar field, and let
+action on correlation functions follows from the same construction of
+renormalized coordinates.  Let \(\phi_0\) be the regulated bare scalar field
+and choose a field renormalization \(Z_\phi\) by
 \[
-  G_R^{(n)}(x_1,\ldots,x_n;\lambda(\mu),\mu)
+  \phi_R=Z_\phi(\lambda(\mu),\mu,\Lambda)^{-1/2}\phi_0 .
+\]
+For a connected noncoincident \(n\)-point function, write
+\[
+  G_{0,\Lambda}^{(n)}(x_1,\ldots,x_n;g_0,\Lambda)
   =
   \langle
-    \phi_R(x_1)\cdots\phi_R(x_n)
-  \rangle
+    \phi_0(x_1)\cdots\phi_0(x_n)
+  \rangle_{\!{\rm conn},\Lambda,g_0}
 \]
-be a renormalized connected correlation function in a one-coupling family.
-The bare correlation function is independent of the auxiliary scale \(\mu\).
-Define
+for the regulated bare function.  A renormalization chart consists of
+functions
+\[
+  g_0^a=F^a(\lambda(\mu),\mu,\Lambda)
+\]
+and a field factor \(Z_\phi\) such that
+\[
+  G_R^{(n)}(x_1,\ldots,x_n;\lambda,\mu)
+  =
+  \lim_{\Lambda\to\infty}
+  Z_\phi^{-n/2}
+  G_{0,\Lambda}^{(n)}
+  \bigl(x_1,\ldots,x_n;F(\lambda,\mu,\Lambda),\Lambda\bigr)
+\]
+exists as a distribution away from coincident points.  The finite coordinates
+\(\lambda_I\) are dimensionless coordinates; dimensionful parameters are
+either included as additional dimensionless ratios or are displayed separately
+below.
+
+Let \(t=\log\mu\).  The RG vector field in this chart is
+\[
+  \beta_I(\lambda)
+  =
+  \left.
+  \frac{\dd\lambda_I}{\dd t}
+  \right|_{g_0,\Lambda}.
+\]
+The anomalous dimension of the elementary field in the same chart is
 \[
   \gamma_\phi(\lambda)
   =
-  \frac12\frac{\dd\log Z_\phi}{\dd\log\mu}.
+  \frac12
+  \left.
+  \frac{\dd\log Z_\phi}{\dd t}
+  \right|_{g_0,\Lambda}.
 \]
-Then
-\begin{equation}
-  \left(
-    \mu\frac{\partial}{\partial\mu}
-    +
-    \beta(\lambda)\frac{\partial}{\partial\lambda}
-    +
-    n\gamma_\phi(\lambda)
-  \right)
-  G_R^{(n)}
-  =
-  0.
-  \label{eq:callan-symanzik-connected}
-\end{equation}
-The derivative \(\mu\partial_\mu\) is taken at fixed coordinates \(x_i\) and
-fixed value of the renormalized coordinate \(\lambda\); the second term moves
-the theory point along the RG vector field.
+The convention agrees with the normalization used earlier:
+\(\phi_R=Z_\phi^{-1/2}\phi_0\).
 
-For several couplings the equation is
-\[
+\begin{proposition}[Callan--Symanzik equation]
+With the definitions above, the renormalized connected noncoincident
+\(n\)-point function satisfies
+\begin{equation}
   \left(
     \mu\frac{\partial}{\partial\mu}
     +
     \sum_I\beta_I(\lambda)\frac{\partial}{\partial\lambda_I}
     +
     n\gamma_\phi(\lambda)
-  \right)G_R^{(n)}=0.
+  \right)
+  G_R^{(n)}
+  =
+  0 .
+  \label{eq:callan-symanzik-connected}
+\end{equation}
+The derivative \(\mu\partial_\mu\) is taken at fixed \(x_i\) and fixed
+renormalized coordinates \(\lambda_I\).
+\end{proposition}
+
+\begin{proof}
+The regulated bare function contains no independent dependence on the
+auxiliary scale \(\mu\).  Therefore
+\[
+  0
+  =
+  \left.
+  \frac{\dd}{\dd t}
+  G_{0,\Lambda}^{(n)}(x_1,\ldots,x_n;g_0,\Lambda)
+  \right|_{g_0,\Lambda}.
 \]
-For a collection of operators \(\mathcal O_A\), the last term is replaced by
-the anomalous-dimension matrix acting on the operator labels.  Thus scaling
-laws at a fixed point are obtained by diagonalizing the linear action of the
-RG on local operators, while running away from a fixed point is governed by
-the full vector field \(\beta_I\partial_{\lambda_I}\).
+Using
+\[
+  G_{0,\Lambda}^{(n)}
+  =
+  Z_\phi^{n/2}G_R^{(n)}
+\]
+inside the renormalization chart and differentiating at fixed bare data gives
+\[
+  0
+  =
+  Z_\phi^{n/2}
+  \left[
+    \left(
+      \frac{\partial}{\partial t}
+      +
+      \sum_I\beta_I\frac{\partial}{\partial\lambda_I}
+    \right)G_R^{(n)}
+    +
+    \frac n2
+    \frac{\dd\log Z_\phi}{\dd t}
+    G_R^{(n)}
+  \right].
+\]
+The cutoff limit exists by the definition of the chart, and the displayed
+identity becomes \eqref{eq:callan-symanzik-connected}.
+\end{proof}
+
+Contact terms are not part of the displayed noncoincident equation.  When
+insertion points collide, the omitted terms are local distributions supported
+on the collision diagonals.  Their organization requires a renormalized local
+operator basis and is developed in the next chapter.
+
+\section{Canonical Scaling and Fixed Points}
+
+The Callan--Symanzik equation records dependence on the auxiliary
+renormalization scale.  Dimensional homogeneity is a separate statement.
+Suppose the elementary scalar has engineering dimension
+\[
+  d_\phi^{\rm eng}=\frac{D-2}{2}
+\]
+and let \(u_A\) denote displayed dimensionful renormalized parameters with
+engineering dimensions \(y_A\).  Away from coincident points, dimensional
+homogeneity gives
+\[
+  \left(
+    \sum_{i=1}^n x_i^\nu\frac{\partial}{\partial x_i^\nu}
+    -
+    \mu\frac{\partial}{\partial\mu}
+    -
+    \sum_A y_Au_A\frac{\partial}{\partial u_A}
+    +
+    n d_\phi^{\rm eng}
+  \right)
+  G_R^{(n)}
+  =
+  0 .
+\]
+If the \(u_A\) are displayed rather than converted into dimensionless ratios,
+the Callan--Symanzik equation includes the additional term
+\(\sum_A\beta_{u_A}\partial/\partial u_A\), where
+\[
+  \beta_{u_A}
+  =
+  \left.
+  \frac{\dd u_A}{\dd\log\mu}
+  \right|_{g_0,\Lambda}.
+\]
+Combining that equation with dimensional homogeneity gives
+\[
+  \left(
+    \sum_{i=1}^n x_i^\nu\frac{\partial}{\partial x_i^\nu}
+    +
+    \sum_I\beta_I\frac{\partial}{\partial\lambda_I}
+    +
+    \sum_A(\beta_{u_A}-y_Au_A)\frac{\partial}{\partial u_A}
+    +
+    n(d_\phi^{\rm eng}+\gamma_\phi)
+  \right)
+  G_R^{(n)}
+  =
+  0 .
+\]
+Equivalently, one may replace \(u_A\) by dimensionless ratios
+\(u_A/\mu^{y_A}\); then the canonical terms are included in the beta functions
+of those ratios.
+
+At a fixed point with no displayed dimensionful deformation,
+\(\beta_I(\lambda_\ast)=0\) and
+\(\gamma_\phi(\lambda_\ast)=\gamma_{\phi,\ast}\).  The noncoincident
+correlator then obeys
+\[
+  \left(
+    \sum_{i=1}^n x_i^\nu\frac{\partial}{\partial x_i^\nu}
+    +
+    n\Delta_\phi
+  \right)
+  G_R^{(n)}(x_1,\ldots,x_n;\lambda_\ast)
+  =
+  0,
+  \qquad
+  \Delta_\phi=d_\phi^{\rm eng}+\gamma_{\phi,\ast}.
+\]
+Thus the field scaling dimension at the fixed point is the engineering
+dimension plus the anomalous dimension defined by the field normalization in
+the renormalization chart.  Scaling dimensions of composite operators require
+the mixing analysis of local operator insertions.
 
 \section{Logarithmic Consistency}
 

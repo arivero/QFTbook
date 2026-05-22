@@ -45,6 +45,14 @@ The chapter must define:
   vertices;
 - dimensionless coordinates
   \(\lambda_I(\mu)=\mu^{d_I-D}g_I(\mu)\);
+- a renormalization chart for connected noncoincident correlators, including
+  the bare-to-renormalized parameter map and field factor \(Z_\phi\);
+- the Callan--Symanzik equation derived from \(\mu\)-independence of bare
+  correlators, with the derivative conventions stated;
+- the separation between auxiliary-scale dependence and dimensional
+  homogeneity, including displayed dimensionful parameters;
+- fixed-point field scaling dimensions as
+  \(\Delta_\phi=d_\phi^{\rm eng}+\gamma_{\phi,\ast}\);
 - logarithmic consistency in a cutoff expansion and the condition
   \(c_1=-b_1^2\);
 - finite scheme redefinitions and the induced transformation of beta
@@ -74,10 +82,16 @@ The chapter must define:
    dimensionless coordinate \(\lambda_I(\mu)=\mu^{d_I-D}g_I(\mu)\) can have an
    autonomous beta function once explicit dimensionful ratios are encoded in
    the coordinate choice or treated as additional couplings.
-9. The absence of explicit cutoff logarithms in beta functions imposes
+9. The Callan--Symanzik equation for noncoincident elementary-field
+   correlators follows from differentiating
+   \(G_{0,\Lambda}^{(n)}=Z_\phi^{n/2}G_R^{(n)}\) at fixed bare data.
+10. Dimensional homogeneity is independent of the Callan--Symanzik equation;
+    combining the two gives the fixed-point field dimension
+    \(d_\phi^{\rm eng}+\gamma_{\phi,\ast}\).
+11. The absence of explicit cutoff logarithms in beta functions imposes
    relations among higher logarithmic coefficients; at the displayed order,
    \(c_1=-b_1^2\).
-10. A finite redefinition
+12. A finite redefinition
     \(\widetilde\lambda=f(\lambda)=\lambda+\alpha\lambda^2+\cdots\) transforms
     beta functions by the chain rule; for one classically marginal coupling,
     the first two perturbative coefficients are invariant while later
@@ -104,5 +118,11 @@ The chapter must define:
   later.
 - State all regulators, fields, momenta, subtraction points, and scheme
   choices before formulas using them.
+- Do not let the Callan--Symanzik equation appear as an asserted textbook
+  formula.  It must be derived from the renormalization chart and from
+  \(\mu\)-independence of bare quantities.
+- Keep operator-insertion Callan--Symanzik equations in the next chapter; this
+  chapter should only state the elementary noncoincident correlator equation
+  and the handoff to operator mixing.
 - The main text should explain the 1PI RG by its constructed data and finite
   comparisons, with any limitations placed in remarks after the construction.
