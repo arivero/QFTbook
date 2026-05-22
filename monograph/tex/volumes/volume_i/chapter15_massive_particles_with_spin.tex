@@ -32,6 +32,26 @@ For every \(p\in\Sigma_m^+\), choose a standard Lorentz transformation
   \qquad
   L(p)p_R=p.
 \]
+It is sometimes useful to compare this covariant normalization with the
+delta-function normalization
+\[
+  {}_\delta\langle \vec q,\tau|\vec p,\sigma\rangle_\delta
+  =
+  \delta^3(\vec q-\vec p)\delta_{\tau\sigma}.
+\]
+In that convention one may define
+\[
+  |\vec p,\sigma\rangle_\delta
+  =
+  N(\vec p)\,U(L(p))|\vec0,\sigma\rangle_\delta ,
+  \qquad
+  N(\vec p)=\left(\frac{m}{\omega_{\vec p}}\right)^{1/2}.
+\]
+The factor \(N(\vec p)\) is the Jacobian needed to keep the measure
+\(d^3\vec p\) compatible with Lorentz transformations in a
+delta-normalized basis. The covariantly normalized states used below absorb
+this factor into the invariant mass-shell measure.
+
 The stabilizer of \(p_R\) is the rotation group \(SO(3)\). Its double cover
 \[
   \operatorname{Spin}(3)\simeq SU(2)
@@ -71,6 +91,19 @@ states transform as
 where \(\sigma,\tau=-j,-j+1,\ldots,j\). The covariant normalization above
 absorbs the Jacobian of the mass-shell measure, so no additional
 \(\sqrt{(\Lambda p)^0/p^0}\) factor appears.
+In the delta-normalized convention the same computation gives
+\[
+  U(\Lambda)|\vec p,\sigma\rangle_\delta
+  =
+  \left(\frac{(\Lambda p)^0}{p^0}\right)^{1/2}
+  \sum_{\tau=-j}^{j}
+  D^{(j)}_{\tau\sigma}\!\left(W(\Lambda,p)\right)
+  |\Lambda\vec p,\tau\rangle_\delta .
+\]
+This is the same representation written in a basis adapted to
+\(d^3\vec p\) rather than to \(d^3\vec p/(2p^0)\). Keeping both formulas
+visible prevents the normalization factor from being mistaken for a property
+of spin.
 
 \begin{center}
 \begin{tikzpicture}[scale=0.95,>=Stealth]
@@ -105,6 +138,77 @@ A \(2\pi\) rotation acts on \(V_j\) by
 \]
 Integer and half-integer spins are therefore distinct representations of the
 same massive little-group construction.
+
+\section{Projective Rotations and the Covering Group}
+
+The appearance of \(SU(2)\) rather than only \(SO(3)\) is forced by the
+quantum implementation of rotations. A physical pure state is a ray, so the
+operator associated with a rotation \(R\in SO(3)\) is defined on Hilbert
+space only up to a phase if no continuity convention has been chosen. Thus a
+projective representation may obey
+\[
+  U(R_2)U(R_1)
+  =
+  \ee^{\ii\alpha(R_2,R_1)}U(R_2R_1)
+\]
+for a real phase function \(\alpha\). The phase ambiguity is removed by
+lifting rotations to paths. If \(\gamma:[0,1]\to SO(3)\) is a continuous path
+with \(\gamma(0)=1\) and \(\gamma(1)=R\), continuity of the infinitesimal
+generators determines an operator \(U_\gamma\) starting from \(U_{\gamma(0)}=1\).
+If \(\gamma\) and \(\gamma'\) are homotopic with endpoints fixed, then
+\[
+  U_\gamma=U_{\gamma'} .
+\]
+Consequently the correct group acting linearly is the universal cover of
+\(SO(3)\), whose points are endpoint-fixed homotopy classes of such paths.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95,>=Stealth]
+  \draw[gray!50,thick] (-3,0) circle (1.15);
+  \fill (-4.15,0) circle (1.8pt) node[left] {\(1\)};
+  \fill (-1.85,0) circle (1.8pt) node[right] {\(R\)};
+  \draw[blue!75!black,very thick,->]
+    (-4.05,0.12).. controls (-3.7,0.95) and (-2.3,0.95) .. (-1.95,0.12);
+  \draw[blue!75!black,very thick,->]
+    (-4.05,-0.12).. controls (-3.7,-0.95) and (-2.3,-0.95) .. (-1.95,-0.12);
+  \node[blue!75!black] at (-3,1.55) {homotopic paths};
+
+  \draw[gray!50,thick] (2.3,0) circle (1.15);
+  \fill (1.15,0) circle (1.8pt) node[left] {\(1\)};
+  \fill (3.45,0) circle (1.8pt) node[right] {\(1\)};
+  \draw[red!75!black,very thick,->]
+    (1.23,0.02).. controls (1.55,1.08) and (3.05,1.08) .. (3.37,0.02);
+  \draw[red!75!black,very thick,->]
+    (3.37,-0.02).. controls (3.05,-1.08) and (1.55,-1.08) .. (1.23,-0.02);
+  \node[red!75!black] at (2.3,1.55) {\(2\pi\) loop};
+  \node[align=center] at (2.3,-1.62)
+    {not contractible in \(SO(3)\)\\but its square is};
+\end{tikzpicture}
+\end{center}
+
+The fundamental group is
+\[
+  \pi_1(SO(3))\simeq \mathbb Z_2 .
+\]
+A loop representing a \(2\pi\) rotation is not contractible, while the loop
+representing a \(4\pi\) rotation is contractible. The universal cover is
+\[
+  \widetilde{SO(3)}\simeq SU(2),
+\]
+and every finite-dimensional unitary representation decomposes as
+\[
+  D(W)\simeq \bigoplus_a D^{(j_a)}(W),
+  \qquad
+  j_a=0,\frac12,1,\frac32,\ldots .
+\]
+When an irreducible massive one-particle representation is chosen, only one
+spin \(j\) occurs. With column vectors the representation matrices satisfy
+\[
+  D(W_2W_1)=D(W_2)D(W_1).
+\]
+If the spin labels are carried as row indices on bras or on matrix elements,
+the displayed order is transposed; this is only an index convention and has no
+physical content.
 
 \section{Spin Frames on the Mass Shell}
 
@@ -249,6 +353,33 @@ spinor. Let the gamma matrices obey
   \qquad
   \eta=\operatorname{diag}(-,+,+,+).
 \]
+One concrete realization, useful for checking signs, is
+\[
+  \gamma^0
+  =
+  -\ii
+  \begin{pmatrix}
+    0&I_2\\ I_2&0
+  \end{pmatrix},
+  \qquad
+  \gamma^i
+  =
+  -\ii
+  \begin{pmatrix}
+    0&\sigma_i\\ -\sigma_i&0
+  \end{pmatrix},
+  \qquad i=1,2,3,
+\]
+where
+\[
+  \sigma_1=\begin{pmatrix}0&1\\1&0\end{pmatrix},
+  \quad
+  \sigma_2=\begin{pmatrix}0&-\ii\\ \ii&0\end{pmatrix},
+  \quad
+  \sigma_3=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\]
+The following formulas are basis-independent statements about the Clifford
+module.
 Define
 \[
   S^{\mu\nu}
@@ -278,6 +409,21 @@ and therefore
   =
   \Lambda^\mu{}_\nu\gamma^\nu .
 \]
+On the rest subspace, a spatial rotation by angle \(\theta\) about the
+\(3\)-axis acts in the spin-\(\frac12\) representation as
+\[
+  D\!\left(R_{12}(\theta)\right)
+  =
+  \exp\!\left(-\frac{\ii\theta}{2}\sigma_3\right)
+  =
+  \begin{pmatrix}
+    \ee^{-\ii\theta/2}&0\\
+    0&\ee^{\ii\theta/2}
+  \end{pmatrix}.
+\]
+Thus a \(2\pi\) rotation acts by \(-1\) on a spinor, while a \(4\pi\)
+rotation acts by \(+1\). This is the infinitesimal form of the covering-group
+discussion above.
 
 Write
 \[
@@ -319,26 +465,111 @@ Let
   \qquad
   \bar v=v^\dagger\beta .
 \]
+The hermiticity identities in the above signature are
+\[
+  (\gamma^0)^\dagger=-\gamma^0,
+  \qquad
+  (\gamma^i)^\dagger=\gamma^i,
+  \qquad
+  R(\Lambda)^\dagger=\beta R(\Lambda^{-1})\beta .
+\]
+They imply that the \(\beta\)-pairing is Lorentz invariant:
+\[
+  (R(\Lambda)s)^\dagger\beta R(\Lambda)t=s^\dagger\beta t .
+\]
 The projectors onto the two eigenspaces of \(\not p\) are
 \[
   \Pi_+(p)=\frac{m-\ii\not p}{2m},
   \qquad
   \Pi_-(p)=\frac{m+\ii\not p}{2m}.
 \]
-With an orthonormal basis of rest spinors, the spin sums are proportional to
-these projectors:
+For the delta-normalized one-particle states it is useful to include the same
+Jacobian factor as in the state normalization and define
 \[
-  \sum_{\sigma=1}^2 u^\sigma(p)\bar u^\sigma(p)
-  \propto
-  m-\ii\not p,
+  \mathcal U^\sigma(p)
+  =
+  \left(\frac{m}{p^0}\right)^{1/2}R(L(p)^{-1})\mathcal U_R^\sigma,
   \qquad
-  \sum_{\sigma=1}^2 v^\sigma(p)\bar v^\sigma(p)
-  \propto
-  m+\ii\not p,
+  \mathcal V^\sigma(p)
+  =
+  \left(\frac{m}{p^0}\right)^{1/2}R(L(p)^{-1})\mathcal V_R^\sigma .
 \]
-where the proportionality constant is fixed by the normalization chosen for
-one-particle spinor wavefunctions. These projector identities are the algebraic
-source of the external spinor factors in spinorial LSZ reduction.
+Choose rest spinors so that
+\[
+  \mathcal U_R^{\sigma\dagger}\beta\mathcal U_R^\tau=\delta^{\sigma\tau},
+  \qquad
+  \mathcal V_R^{\sigma\dagger}\beta\mathcal V_R^\tau=-\delta^{\sigma\tau},
+  \qquad
+  \mathcal U_R^{\sigma\dagger}\beta\mathcal V_R^\tau=0 .
+\]
+Then
+\[
+  \mathcal U^\sigma(p)^\dagger\beta\mathcal U^\tau(p)
+  =
+  \frac{m}{p^0}\delta^{\sigma\tau},
+  \qquad
+  \mathcal V^\sigma(p)^\dagger\beta\mathcal V^\tau(p)
+  =
+  -\frac{m}{p^0}\delta^{\sigma\tau}.
+\]
+The corresponding spin sums, with ordinary matrix multiplication in spinor
+indices, are
+\[
+  \sum_{\sigma=1}^2
+  \mathcal U^\sigma(p)\mathcal U^\sigma(p)^\dagger
+  =
+  \frac{m-\ii\not p}{2p^0}\,\beta,
+  \qquad
+  \sum_{\sigma=1}^2
+  \mathcal V^\sigma(p)\mathcal V^\sigma(p)^\dagger
+  =
+  \frac{-m-\ii\not p}{2p^0}\,\beta .
+\]
+Equivalently,
+\[
+  \sum_{\sigma=1}^2
+  \mathcal U^\sigma(p)\overline{\mathcal U}^{\,\sigma}(p)
+  =
+  \frac{m-\ii\not p}{2p^0},
+  \qquad
+  \sum_{\sigma=1}^2
+  \mathcal V^\sigma(p)\overline{\mathcal V}^{\,\sigma}(p)
+  =
+  -\frac{m+\ii\not p}{2p^0}.
+\]
+The minus sign in the second identity is fixed by the sign of the
+\(\beta\)-norm on the negative Dirac eigenspace; the particle Hilbert-space
+inner product remains positive.
+
+For the explicit gamma matrices displayed above, an adapted rest basis is
+\[
+  \mathcal U_R^1=\frac{1}{\sqrt2}
+  \begin{pmatrix}1\\0\\1\\0\end{pmatrix},
+  \qquad
+  \mathcal U_R^2=\frac{1}{\sqrt2}
+  \begin{pmatrix}0\\1\\0\\1\end{pmatrix},
+\]
+\[
+  \mathcal V_R^1=\frac{1}{\sqrt2}
+  \begin{pmatrix}1\\0\\-1\\0\end{pmatrix},
+  \qquad
+  \mathcal V_R^2=\frac{1}{\sqrt2}
+  \begin{pmatrix}0\\1\\0\\-1\end{pmatrix}.
+\]
+If
+\[
+  \gamma_5=-\ii\gamma^0\gamma^1\gamma^2\gamma^3
+  =
+  \begin{pmatrix}
+    I_2&0\\ 0&-I_2
+  \end{pmatrix},
+\]
+then
+\[
+  \mathcal V_R^\sigma=\gamma_5\mathcal U_R^\sigma .
+\]
+These projector identities are the algebraic source of the external spinor
+factors in spinorial LSZ reduction.
 
 \section{Particle Spin and Field Indices}
 

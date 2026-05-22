@@ -8,7 +8,9 @@
   integral, and the spinorial pole structure needed for external fermions.
 - Precedes massless helicity, gauge redundancy, Maxwell theory, and QED.
 - Source material used:
-  - `transcription/tex/253a/foundations.tex`, roughly lines 6773--7825;
+  - `transcription/tex/253a/foundations.tex`, roughly lines 6773--7825,
+    with the spin-statistics sign derivation from handwritten p. 165 checked
+    on 2026-05-22;
   - `references/sound_references/straumann_poincare_representations_0809.4942.pdf`
     and text sidecar for free-field representation and spin-statistics
     context;
@@ -19,6 +21,9 @@
 
 - The chapter verifies locality for the free Dirac field built from the
   spinor one-particle data of Chapter 15.
+- The ordinary-commutator trial field is included only as a locality check:
+  it shows the nonvanishing spacelike scalar part and fixes the CAR sign
+  used in the actual local spinor algebra.
 - The full spin-statistics theorem is cited only as a theorem-level statement
   under Wightman-type assumptions; its proof is not reproduced.
 - The Berezin path integral is constructed first in finite dimension and then
@@ -40,6 +45,8 @@
 | \(\psi_\alpha,\bar\psi^\alpha\) | Dirac spinor field and Dirac adjoint |
 | \(\beta\) | \(\ii\gamma^0\), used in \(\bar\psi=\psi^\dagger\beta\) |
 | \(b_\sigma^\dagger,d_\sigma^\dagger\) | creation operators for charged spin-\(\frac12\) particle and antiparticle |
+| \(a_\sigma^\dagger,c_\sigma\) | trial oscillators used only to compare ordinary commutators with CAR |
+| \(\mathcal U^\sigma,\mathcal V^\sigma\) | delta-normalized spinor polarizations from Chapter 15 used in the sign check |
 | \(\Delta_+\) | positive-frequency scalar two-point distribution |
 | \(P_\pm\) | chiral projectors \((1\pm\gamma_5)/2\) |
 | \(B\) | matrix implementing complex conjugation on gamma matrices |
@@ -54,6 +61,10 @@
 
 - The free Dirac field built from spin-\(\frac12\) one-particle data is local
   when its creation and annihilation operators obey CAR.
+- If the same spinor mode expansion is equipped with ordinary commutators,
+  the field commutator contains
+  \(m(\Delta_+(x-y)+\Delta_+(y-x))\), which is nonzero at spacelike
+  separation; hence the commutator sign fails locality.
 - Its anticommutator is a Dirac differential operator applied to the
   Pauli--Jordan distribution, hence has causal support.
 - Chiral and Majorana spinor fields are Lorentz-covariant reductions of the

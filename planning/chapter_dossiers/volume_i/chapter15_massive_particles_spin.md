@@ -6,7 +6,9 @@
 - Begins the particle-classification and spinning-external-state arc.
 - Precedes spinor fields, Grassmann variables, and spinorial LSZ.
 - Source material used:
-  - `transcription/tex/253a/foundations.tex`, roughly lines 6026--6908;
+  - `transcription/tex/253a/foundations.tex`, roughly lines 6024--6909,
+    with the handwritten pages pp. 146--165 rendered and checked on
+    2026-05-22;
   - `references/sound_references/straumann_poincare_representations_0809.4942.pdf`
     and text sidecar, especially Sections 2--3.
 
@@ -36,6 +38,7 @@
 | \(\Sigma_m^+\) | positive-energy mass shell |
 | \(p_R\) | reference rest momentum \((m,\vec0)\) |
 | \(L(p)\) | standard Lorentz transformation sending \(p_R\) to \(p\) |
+| \(N(\vec p)\) | delta-normalization boost factor \((m/\omega_{\vec p})^{1/2}\) |
 | \(W(\Lambda,p)\) | Wigner rotation \(L(\Lambda p)^{-1}\Lambda L(p)\) |
 | \(Q(p)\) | momentum-dependent little-group change of spin frame |
 | \(j\) | spin label of an irreducible \(SU(2)\) representation |
@@ -47,16 +50,30 @@
 | \(S^{\mu\nu}\) | spinor Lorentz generators |
 | \(\not p\) | \(p_\mu\gamma^\mu\) |
 | \(u^\sigma(p),v^\sigma(p)\) | spinor polarization wavefunctions |
+| \(\mathcal U^\sigma(p),\mathcal V^\sigma(p)\) | delta-normalized spinor polarizations with the source normalization |
+| \(\beta\) | \(\ii\gamma^0\), defining the Lorentz-invariant spinor pairing |
+| \(\gamma_5\) | chirality matrix \(-\ii\gamma^0\gamma^1\gamma^2\gamma^3\) in the displayed Clifford basis |
 | \(\Pi_\pm(p)\) | projectors onto \(\not p=\pm i m\) eigenspaces |
 
 ## Claims Established
 
 - Massive spin is the irreducible representation label of the \(SU(2)\)
   little group.
+- The covariant and delta-function normalizations are related by the
+  boost/Jacobian factor \(N(\vec p)=(m/\omega_{\vec p})^{1/2}\).
+- The delta-normalized Lorentz transformation of spin states carries the
+  factor \(((\Lambda p)^0/p^0)^{1/2}\), while the covariantly normalized
+  transformation does not.
 - Wigner rotations govern Lorentz transformations of one-particle spin states.
 - Wigner rotations obey a cocycle identity, and a different choice of
   standard boosts is a momentum-dependent change of spin frame over the mass
   shell.
+- Projective rotation representations become honest representations on the
+  universal cover; endpoint-fixed path homotopy gives the \(SU(2)\) lift, the
+  \(2\pi\)/\(4\pi\) distinction, and the allowed spin labels
+  \(j=0,\frac12,1,\ldots\).
+- The source row-index convention for little-group matrices is recorded and
+  reconciled with the column-vector convention used in the monograph.
 - Spin-frame components of wavefunctions and dual external states transform
   oppositely, leaving amplitudes frame independent.
 - Covariant field indices and one-particle spin labels are connected by
@@ -68,13 +85,20 @@
   representation contains spin \(j\) upon restriction to the little group.
 - Spin-\(\frac12\) intertwiners obey momentum-space Dirac equations as a
   consequence of the Clifford realization of the Lorentz representation.
-- Spin sums are projectors onto mass-shell eigenspaces and supply the algebra
-  for later spinorial LSZ.
+- In an explicit mostly-plus Clifford basis, the Pauli rotation
+  \(\exp(-\ii\theta\sigma_3/2)\), rest spinors, \(\gamma_5\), and
+  \(\mathcal V_R^\sigma=\gamma_5\mathcal U_R^\sigma\) reproduce the
+  handwritten spinor convention.
+- The \(\beta\)-pairing, delta-normalized spinor inner products, and spin
+  sums are fixed with their signs and factors of \(p^0\); these identities
+  supply the algebra for later spinorial LSZ.
 
 ## Figure Requirements
 
 - Double-cover schematic showing the lift from \(SO(3)\) to \(SU(2)\) and the
   \(2\pi\)/\(4\pi\) distinction.
+- Endpoint-fixed path-homotopy schematic showing homotopic paths and the
+  noncontractible \(2\pi\) loop whose square is contractible.
 
 ## Exclusions
 

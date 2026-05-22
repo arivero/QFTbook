@@ -108,9 +108,86 @@ then
   \ee^{-\ii\theta}\widehat{\bar\psi}^{\alpha}(x).
 \]
 
+\section{The Statistics Sign from Locality}
+
+The sign in the canonical relations is fixed by locality once the
+spin-\(\frac12\) one-particle representation and the covariant spinor
+intertwiners have been chosen. To see the point without obscuring it by
+normalization factors, use the delta-normalized polarizations
+\(\mathcal U,\mathcal V\) of the previous chapter. Let
+\[
+  \Delta_+(z;m^2)
+  =
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,\ee^{\ii p\cdot z}
+\]
+be the positive-frequency scalar distribution, and form the trial field
+\[
+  \widehat\Phi_\alpha(x)
+  =
+  \sum_{\sigma=1}^2
+  \int\frac{d^3\vec p}{(2\pi)^{3/2}}
+  \left[
+    \mathcal V_\alpha^\sigma(p)a_\sigma^\dagger(\vec p)
+      \ee^{-\ii p\cdot x}
+    +
+    \mathcal U_\alpha^\sigma(p)c_\sigma(\vec p)
+      \ee^{\ii p\cdot x}
+  \right].
+\]
+Suppose first that the oscillator algebra used ordinary commutators,
+\[
+  [a_\sigma(\vec p),a_\tau^\dagger(\vec q)]
+  =
+  [c_\sigma(\vec p),c_\tau^\dagger(\vec q)]
+  =
+  \delta_{\sigma\tau}\delta^3(\vec p-\vec q),
+\]
+with all other commutators zero. Using the spin sums from the previous
+chapter gives
+\[
+\begin{aligned}
+  [\widehat\Phi_\alpha(x),\widehat{\bar\Phi}^{\beta}(y)]
+  &=
+  \int\frac{d^3\vec p}{(2\pi)^3}\,
+  \left[
+    \ee^{-\ii p\cdot(x-y)}
+    \frac{m+\ii\not p}{2p^0}
+    +
+    \ee^{\ii p\cdot(x-y)}
+    \frac{m-\ii\not p}{2p^0}
+  \right]_\alpha{}^\beta .
+\end{aligned}
+\]
+The scalar part contains
+\[
+  m\bigl(\Delta_+(x-y;m^2)+\Delta_+(y-x;m^2)\bigr),
+\]
+which has nonzero spacelike values. For example, at equal times and
+\(\vec x\ne\vec y\) it equals the distribution
+\[
+  2m\int\frac{d^3\vec p}{(2\pi)^3\,2\omega_{\vec p}}\,
+  \ee^{\ii\vec p\cdot(\vec x-\vec y)} .
+\]
+Thus the field obtained with the commutator sign is nonlocal.
+
+If instead the oscillator algebra is the canonical anticommutator algebra,
+the same spin sums give
+\[
+  \{\widehat\psi_\alpha(x),\widehat{\bar\psi}^{\beta}(y)\}
+  =
+  (-\not\partial_x+m)_\alpha{}^\beta
+  \left[
+    \Delta_+(x-y;m^2)-\Delta_+(y-x;m^2)
+  \right].
+\]
+The bracket is the Pauli--Jordan distribution. It vanishes for spacelike
+separation, so the spinor field is local as an odd field in a graded local
+algebra. This computation is the free-field derivation of the statistics sign
+used in the rest of the chapter.
+
 \section{Locality and the CAR}
 
-Define the positive-frequency scalar distribution
+With the same positive-frequency scalar distribution
 \[
   \Delta_+(x;m^2)
   =
