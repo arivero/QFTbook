@@ -115,6 +115,39 @@ or, at fixed \(x\),
   -
   \sigma\frac{D-2}{2}\,\phi(x).
 \]
+In the local-translation notation this means that, for the scalar field, the
+trace of the chosen differential operator satisfies
+\[
+  \mathcal D^\mu{}_\mu\phi
+  =
+  -\frac{D-2}{2}\phi .
+\]
+The invariance of the kinetic term can be checked directly.  Put
+\(\Delta_\phi=(D-2)/2\).  For compactly supported variations,
+\[
+\begin{aligned}
+  \delta S_{\rm kin}
+  &=
+  -\sigma\int\dd^D x\,
+  \partial_\mu\phi\,
+  \partial^\mu\bigl(x^\nu\partial_\nu\phi+\Delta_\phi\phi\bigr)       \\
+  &=
+  -\sigma\int\dd^D x\,
+  \left[
+    (1+\Delta_\phi)\,\partial_\mu\phi\,\partial^\mu\phi
+    +
+    \frac12 x^\nu\partial_\nu
+    \bigl(\partial_\mu\phi\,\partial^\mu\phi\bigr)
+  \right]                                                            \\
+  &=
+  -\sigma\left[
+    1+\Delta_\phi-\frac{D}{2}
+  \right]
+  \int\dd^D x\,\partial_\mu\phi\,\partial^\mu\phi
+  =
+  0 .
+\end{aligned}
+\]
 
 Let now \(D=d-\epsilon\), and let \(O_I\) be a local monomial or polynomial in
 fields and derivatives with engineering dimension

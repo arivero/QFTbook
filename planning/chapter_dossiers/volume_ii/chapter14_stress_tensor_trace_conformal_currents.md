@@ -115,3 +115,10 @@ The chapter must define and derive:
 - Do not merge the Wilson-Fisher fixed-point example into this chapter; it is
   the next source block.
 - No reader-facing source-page references.
+- 2026-05-22 source-certification pass: handwritten pages 119--123 were
+  checked end-to-end against both local transcription layers.  The manuscript
+  includes the local-translation definition of \(T^{\mu\nu}\), the
+  \(\mathcal D^\mu{}_\mu=-(D-2)/2\) scalar convention, the explicit kinetic
+  scaling check, the bare engineering trace identity, the MS conversion to
+  \(T^\mu{}_\mu=\beta_J[O_J]_\mu\), the conformal Killing current derivation,
+  and the virial-current/improvement caveat.
