@@ -52,6 +52,13 @@ The chapter must define and derive:
   density having leading field \(\varepsilon\);
 - the scalar-coordinate statement that \(\phi\) represents \(\sigma\) and the
   identity-subtracted mass operator \([\phi^2]\) represents \(\varepsilon\);
+- observable scaling limits as source-dependent distributions, including
+  smeared renormalized lattice spin and energy observables;
+- the source-dependent generating-functional limit
+  \(W_a[\mathcal Z_a(\eta)]-W_a[0]-P_a(\eta)\to W_\ast[\eta]\);
+- the separation between universal separated-point kernels, linear
+  source-normalization data, and model- or scheme-dependent contact-term
+  extensions;
 - the generalized Ising model with a single-site potential and continuous
   spin variable;
 - the rewriting of the generalized Ising partition function as a lattice
@@ -101,6 +108,11 @@ The chapter must define and derive:
     continuum correlators at separated points; model dependence remains in
     critical temperatures, coordinate metric factors, field normalizations,
     and finite-cutoff corrections.
+12. A source-dependent scaling limit gives operator-valued distributions by
+    differentiating the limiting source functional.  The linear source jet
+    fixes separated-point observable normalizations, while higher local
+    source jets and source-local vacuum terms determine contact-term
+    extensions on collision diagonals.
 
 ## Figure Requirements
 
@@ -148,3 +160,10 @@ The chapter must define and derive:
   \(G^X_a=G_{u_R}+O((\mu_R a)^\kappa)\), with leading exponent identified
   with the smallest irrelevant eigenvalue when the generated-integral
   remainder is faster.
+- 2026-05-22 source-dependent-observable pass: added a distributional
+  source-functional formulation of observable scaling limits.  The manuscript
+  now defines smeared renormalized lattice spin and energy observables,
+  states the source-dependent scaling limit with local source maps and
+  source-local vacuum subtractions, and proves that separated universality is
+  controlled by the linear source jet while contact conventions are supported
+  on collision diagonals.

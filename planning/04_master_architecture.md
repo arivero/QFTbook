@@ -131,8 +131,8 @@ Further development targets:
 
 - deepen the new BPHZ--Wilsonian--1PI bridge with worked examples;
 - use the source-dependent Wilsonian/operator insertion bridge, now including
-  multi-insertion contact-term coordinates, to tighten later observable
-  correlator and scaling-operator statements;
+  multi-insertion contact-term coordinates, to tighten the transition from
+  universality correlators to fixed-point and CFT data;
 - propagate the explicit one-loop BPHZ--Wilsonian--1PI matching calculation
   into later operator and observable examples where it clarifies coordinate
   changes;

@@ -420,6 +420,100 @@ Since \(\xi^{-1}\propto |u_t|^{1/(D-\Delta_\varepsilon)}\), comparison with
   D-\frac1\nu .
 \]
 
+\section{Observable Limits as Source-Dependent Distributions}
+
+The separated-point scaling formula is the restriction of a stronger
+distributional statement.  Let \(a\) be the lattice spacing and let
+\(\mathcal D(\mathbb R^D)\) be the space of smooth compactly supported test
+functions.  For \(f,g\in\mathcal D(\mathbb R^D)\), define the renormalized
+smeared lattice observables
+\[
+  \Sigma_a(f)
+  =
+  a^D\sum_{n\in\mathbb Z^D}
+  f(an)\,C_\sigma^{-1}a^{-\Delta_\sigma}s_n,
+\]
+and
+\[
+  E_a(g)
+  =
+  a^D\sum_{n\in\mathbb Z^D}
+  g(an)\,C_\varepsilon^{-1}a^{-\Delta_\varepsilon}
+  \bigl(e_n-\vev{e}_c\bigr),
+\]
+where the sums are restricted to the finite lattice region before the
+thermodynamic limit is taken.  The constants \(C_\sigma\) and
+\(C_\varepsilon\) are the same nonuniversal normalization constants appearing
+in the leading scaling-field expansion.  The point fields \(\sigma(x)\) and
+\(\varepsilon(x)\) are the distributional kernels whose smeared limits are
+\(\Sigma(f)=\int\dd^Dx\,f(x)\sigma(x)\) and
+\(E(g)=\int\dd^Dx\,g(x)\varepsilon(x)\).
+
+\begin{definition}[Source-dependent scaling limit]
+Fix the thermal scaling trajectory used above.  A source-dependent scaling
+limit for a chosen collection of microscopic local observables \(A_a^I\)
+consists of a continuum source coordinate \(\eta^A(x)\), a lattice source
+coordinate \(\eta_a^I(n)\), and local source maps
+\[
+  \eta_a=\mathcal Z_a(\eta),
+\]
+such that, after subtraction of source-local vacuum terms,
+\begin{equation}
+  W_a[\mathcal Z_a(\eta)]-W_a[0]-P_a(\eta)
+  \longrightarrow
+  W_\ast[\eta]
+  \label{eq:ising-source-dependent-scaling-limit}
+\end{equation}
+as a functional of test sources near \(\eta=0\).  Here
+\[
+  \exp W_a[\eta_a]
+  =
+  \left\langle
+    \exp\left[
+      -a^D\sum_n\eta_a^I(n)A_a^I(n)
+    \right]
+  \right\rangle_a ,
+\]
+and \(P_a(\eta)\) is a local polynomial in the continuum sources and their
+derivatives.  The linear part of \(\mathcal Z_a\) fixes field normalization
+and operator mixing.  Its higher local Taylor coefficients fix the contact
+extension of products of continuum fields.
+\end{definition}
+
+The term \(P_a(\eta)\) removes vacuum terms such as powers of the volume and
+local source self-contractions.  It has no effect on separated normalized
+correlators, but it is part of the definition of the full distributional
+generating functional.
+
+\begin{proposition}[Separated universality]
+Assume the source-dependent scaling limit
+\eqref{eq:ising-source-dependent-scaling-limit} exists for two microscopic
+realizations \(X\) and \(Y\) and that their continuum source coordinates have
+been identified by the same fixed-point operator normalization.  Then their
+noncoincident continuum correlators of the corresponding scaling fields agree.
+Their contact-term extensions may differ by local distributions supported on
+collision diagonals.
+\end{proposition}
+
+\begin{proof}
+Functional derivatives of
+\eqref{eq:ising-source-dependent-scaling-limit} at \(\eta=0\) give the
+scaling limits of smeared inserted correlators.  Restricting the resulting
+distributions to the configuration space of distinct insertion points removes
+all terms supported on collision diagonals.  By the source-coordinate
+partition formula of
+Section~\ref{sec:multiple-insertions-contact-coordinates}, only the linear
+source jet contributes on this configuration space.  Once the linear jet has
+been fixed by the common operator normalization, the two realizations have the
+same separated-point correlators.  Higher source jets and the local
+polynomials \(P_a\) change only the extension across collision diagonals.
+\end{proof}
+
+Thus microscopic observables enter the continuum theory through renormalized
+source derivatives whose limits are operator-valued distributions.  The
+universal data are the separated-point kernels obtained after the relevant
+scaling coordinates and linear operator normalizations have been fixed.
+
 \section{A Lattice Scalar Path Integral}
 
 The Ising variables may be enlarged from two values to a real local variable
