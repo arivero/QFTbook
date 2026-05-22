@@ -55,11 +55,11 @@ free covariance by
 \]
 At finite regulator the Gaussian expectation \(\vev{\cdots}_{0,\Lambda}\) is
 an ordinary finite-dimensional Gaussian expectation, or the limit of such
-expectations. Formulas written without \(\Lambda\) are formal perturbative
-formulas or shorthand for regulator-dependent formulas before the limit is
-studied.
-With a sharp Fourier cutoff this finite-dimensional statement may be displayed
-schematically as
+expectations. Formulas written without \(\Lambda\) are coefficientwise
+perturbative formulas or shorthand for regulator-dependent formulas before
+the limit is studied.
+With a sharp Fourier cutoff this finite-dimensional statement is represented
+by
 \[
   \int[\dd\phi]_\Lambda
   \quad\leadsto\quad
@@ -67,8 +67,9 @@ schematically as
   \qquad
   \widetilde\phi(-k)=\overline{\widetilde\phi(k)}
 \]
-up to the usual choice of independent real coordinates and normalization
-constants. The symbol \([\dd\phi]\) is never used here as an unregulated
+after choosing independent real coordinates for one representative of each
+pair \(k,-k\) and fixing the resulting finite-dimensional Gaussian
+normalization. The symbol \([\dd\phi]\) is never used here as an unregulated
 Lebesgue measure on an infinite-dimensional vector space.
 
 The normalized Euclidean \(n\)-point function is
@@ -86,7 +87,8 @@ The normalized Euclidean \(n\)-point function is
 \]
 It is a distribution in the insertion points after the regulator is removed,
 when that limit exists or has been renormalized. Perturbation theory is the
-formal expansion of this expression in powers of \(g\).
+coefficientwise expansion of this expression in powers of the coupling \(g\),
+with the regulator kept fixed before renormalized limits are considered.
 
 \section{Wick Expansion and Connected Functions}
 
@@ -508,8 +510,8 @@ and the tadpole value above, the pole position satisfies, to first order,
 in this cutoff scheme. The parameter \(m\) is therefore a parameter of the
 regulated quadratic action. Its relation to the spectral pole mass depends on
 the regulator and on the prescription used to define the finite theory.
-At fixed regulator, the expansion is an expansion in the formal parameter
-\(g\). The coefficient \(C_1(\Lambda,m)\) grows with the cutoff in
+At fixed regulator, \(g\) is a bookkeeping parameter for the coefficientwise
+expansion. The coefficient \(C_1(\Lambda,m)\) grows with the cutoff in
 \(D\ge2\), so the product \(gC_1(\Lambda,m)\) is not uniformly small as
 \(\Lambda\to\infty\). Thus the distinction between a bare Lagrangian parameter
 and a mass defined by spectral data is operational in the cutoff-dependent

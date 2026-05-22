@@ -239,12 +239,18 @@ have parity \(0\).
 
 \begin{remark}
 The preceding computation is the free spin-\(\frac12\) instance of the
-spin-statistics connection. In a Wightman setting with positivity of energy,
-locality, covariance, and the usual domain assumptions, the spin-statistics
-theorem identifies integer-spin fields with even local commutation and
-half-integer-spin fields with odd local anticommutation. This chapter uses the
-theorem only as orientation; the displayed anticommutator is the direct
-verification needed for the free Dirac field used below.
+spin-statistics connection.  A theorem-level spin-statistics statement
+requires a specified Wightman framework: a common invariant dense domain for
+the smeared fields, a positive-energy unitary representation of the spin
+cover of the proper orthochronous Poincare group, covariance of the fields as
+operator-valued tempered distributions, locality on the common domain,
+positivity of the Hilbert-space inner product, and the standard adjoint
+compatibility between fields and their conjugates.  Under those hypotheses,
+integer-spin fields have even local commutation and half-integer-spin fields
+have odd local anticommutation, except for fields that vanish in the physical
+Hilbert space.  This chapter does not use that theorem as an input; the
+displayed anticommutator is the direct verification needed for the free Dirac
+field used below.
 \end{remark}
 
 \section{Dirac, Weyl, and Majorana Fields}
@@ -971,7 +977,8 @@ therefore gives the canonical odd bracket
   =
   \ii\delta_\alpha{}^\beta\,\delta^{(3)}(\vec x-\vec y).
 \]
-The formal Lorentzian generating functional is normalized so that
+The regulated Lorentzian generating functional, written in continuum
+shorthand, is normalized so that
 \[
 \begin{aligned}
   Z[\bar J,J]

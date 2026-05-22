@@ -120,12 +120,12 @@ Equivalently, the spectral theorem may be written as a direct integral
   \int_X^\oplus \lambda\,\mathbf 1_{\Hilb_\lambda}\,\dd\nu(\lambda).
 \]
 The label \(\lambda\) indexes fibers over the spectrum. A formal vector
-\(|\lambda,a\rangle\), where \(a\) labels a basis in the fiber
-\(\Hilb_\lambda\), is a distributional coordinate functional on this direct
-integral. Delta-normalization records the kernel of the identity relative to
-the measure \(\dd\nu\). Changing \(\dd\nu\) rescales the generalized kets and
-therefore changes the displayed delta factors; the Hilbert-space vector
-obtained after smearing is unchanged.
+\(|\lambda,a\rangle\) is not an element of \(\Hilb\).  It denotes the
+distributional coordinate functional that extracts the \(a\)-component in the
+fiber \(\Hilb_\lambda\) of the direct integral.  Delta-normalization records
+the kernel of the identity relative to the measure \(\dd\nu\). Changing
+\(\dd\nu\) rescales these generalized kets and therefore changes the displayed
+delta factors; the Hilbert-space vector obtained after smearing is unchanged.
 
 For a relativistic one-particle mass shell this gives, for example,
 \[
@@ -438,8 +438,8 @@ also specifies which operators are localized in each bounded spacetime region.
 
 \section{Locality As A Constraint On Interacting Particle Dynamics}
 
-Starting from the free Fock representation, one may write a formal interacting
-Hamiltonian
+At a cutoff or algebraic bookkeeping level, an interaction written in free
+Fock variables has the form
 \[
   H=H_0+H_{\mathrm{int}},
 \]
@@ -454,12 +454,13 @@ where \(H_{\mathrm{int}}\) is a sum of normally ordered monomials such as
   \cdots ,
 \]
 with kernels \(K_{r,s}\) and the mass-shell measures suppressed in the
-notation.  The relativistic local-theory datum extends such a formal
-Hamiltonian by translation generators \(P_\mu\), Lorentz generators
-\(J^{\mu\nu}\), a Poincare-invariant vacuum, and local observables or fields
-satisfying covariance and microcausality.  In an interacting theory the boost
-generators, the Hamiltonian, and the local field operators are tied together
-by the Poincare algebra and locality.
+displayed shorthand.  This expression is not yet a definition of a
+relativistic local theory.  A local-theory datum also includes translation
+generators \(P_\mu\), Lorentz generators \(J^{\mu\nu}\), a Poincare-invariant
+vacuum, and local observables or fields satisfying covariance and
+microcausality.  In an interacting theory the boost generators, the
+Hamiltonian, and the local field operators are tied together by the Poincare
+algebra and locality.
 
 The causal input is spacetime-local operation.  A local operation near a point
 or region can influence only its causal future.  The algebraic expression of

@@ -118,6 +118,25 @@ Every example used in the main text must do at least one of the following:
 
 Examples that only decorate the prose fail the harness.
 
+## Soft Phrase Audit Rule
+
+Reader-facing prose must not use community habit as a substitute for data.
+During every audit pass, search for soft phrases such as "usual",
+"standard", "well-known", "schematic", "formal", "one can show", and "it is
+known".  Each occurrence must be classified as one of:
+
+- a harmless fixed name or convention already defined in the text;
+- a displayed shorthand whose regulated or distributional meaning is stated
+  immediately nearby;
+- a theorem-level input with hypotheses and proof status;
+- a phrase to be rewritten into explicit assumptions, definitions, or a
+  conditional statement.
+
+The words themselves are not banned, since terms such as standard boost or
+standard representation can be mathematically precise after definition.  What
+is forbidden is using them to hide hypotheses, domains, convergence,
+normalization, or proof obligations.
+
 ## Positive Formulation Rule
 
 The main text explains objects by their data, definitions, assumptions, and
