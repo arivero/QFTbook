@@ -22,6 +22,16 @@ or distributionally after removing the regulator, a state vector
 \[
   \Psi_t[\varphi]=\langle\varphi;t|\Psi\rangle.
 \]
+The generalized vector \(\ket{\varphi_i;t_i}\) is represented in this basis by
+a functional delta distribution:
+\[
+  \langle\varphi;t_i|\varphi_i;t_i\rangle
+  =
+  \delta[\varphi-\varphi_i],
+\]
+with the right hand side understood after imposing a finite spatial regulator.
+Equivalently, the operator \(\widehat\phi(t,\vec x)\) acts as multiplication by
+\(\varphi(\vec x)\) on the regulated wave functional.
 
 To give these expressions a literal finite-dimensional meaning, impose a
 spatial regulator, for example a finite spatial lattice or a finite set of
@@ -52,6 +62,14 @@ It represents the matrix element of time evolution:
 for a time-independent regulated Hamiltonian \(H_\Lambda\). Continuum
 notation suppresses \(\Lambda\), but the regulator is part of the construction
 whenever convergence or operator domains are being asserted.
+
+The compact formal notation
+\[
+  Z=\int [D\phi]\,\ee^{\ii S[\phi]}
+\]
+is used only as an abbreviation for such regulated limits or for asymptotic
+expansions derived from them. Its meaning is part of the chosen regularization
+and limiting prescription.
 
 Vacuum correlation functions avoid direct use of field-configuration
 eigenvectors. For points \(x_a=(x_a^0,\vec x_a)\), the basic Lorentzian
@@ -126,6 +144,20 @@ Put the complex time on the Euclidean axis by writing
   \qquad
   x_E=(\tau,\vec x)\in\mathbb R^D.
 \]
+When the analytic continuation of vacuum correlators exists, Euclidean
+field-insertion notation is defined inside ordered correlation functions by
+\[
+  \widehat\phi_E(\tau,\vec x)
+  \quad\text{corresponding to}\quad
+  \widehat\phi(x^0=-\ii\tau,\vec x).
+\]
+For Euclidean times ordered as
+\[
+  \tau_{i_1}>\tau_{i_2}>\cdots>\tau_{i_n},
+\]
+this notation records the same analytic boundary value that rotates to the
+Lorentzian time-ordered product with
+\(x_{i_1}^0>x_{i_2}^0>\cdots>x_{i_n}^0\).
 For a Lorentzian Lagrangian density
 \[
   \mathcal L(\phi,\partial_0\phi,\partial_i\phi),
@@ -340,6 +372,8 @@ As \(\alpha\to0^+\), these poles approach the real axis as
     node[right] {$\operatorname{Re}k^0$};
   \draw[->,line width=0.7pt] (0,-2.25) -- (0,2.35)
     node[above] {$\operatorname{Im}k^0$};
+  \draw[purple!70!black,line width=1.1pt,->] (-3.05,0) -- (3.05,0)
+    node[below right] {real \(k^0\) contour};
   \node[blue!70!black,scale=1.3] at (0,1.52) {$\times$};
   \node[blue!70!black,right=0.08cm] at (0,1.52) {$-\ee^{-\ii\pi/2}\omega_{\vec k}$};
   \node[blue!70!black,scale=1.3] at (0,-1.52) {$\times$};
@@ -348,6 +382,10 @@ As \(\alpha\to0^+\), these poles approach the real axis as
   \node[violet!70!black,scale=1.25] at (1.18,-1.18) {$\times$};
   \draw[dashed,gray!70,->] (0,1.52) arc[start angle=90,end angle=150,radius=1.52];
   \draw[dashed,gray!70,->] (0,-1.52) arc[start angle=270,end angle=330,radius=1.52];
+  \draw[blue!60!black,thick,->]
+    (2.05,-0.36) .. controls (1.72,-1.08) and (0.48,-1.36) .. (-0.72,-1.08);
+  \draw[blue!60!black,thick,->]
+    (-2.05,0.36) .. controls (-1.72,1.08) and (-0.48,1.36) .. (0.72,1.08);
   \node[red!75!black,scale=1.3] at (-2.1,0.17) {$\times$};
   \node[red!75!black,above=0.02cm] at (-2.1,0.17)
     {$-\omega_{\vec k}+\ii0$};

@@ -2,7 +2,11 @@
 
 ## Status
 
-Current status: ready for TeX rewrite.
+Current status: source-block certified against 253a pp. 72--79 on
+2026-05-22. The chapter has been rebuilt and visually audited after adding the
+functional-delta field-eigenstate representation, the formal \(Z\) shorthand
+with regulator status, the Euclidean field-insertion notation, and a more
+explicit \(k^0\)-plane pole/contour figure.
 
 ## Logical Role
 
@@ -21,6 +25,11 @@ the spectral and Green-function structure is in place.
 - `transcription/tex/253a/foundations.tex`, section "Path Integral
   Quantization of Scalar Field Theory", from the field wave functional through
   the definitions of Wightman, time-ordered, and Euclidean Green functions.
+- Source visual trace:
+  `monograph/tex/build/source_visual_trace/253a_trace-072.png` through
+  `monograph/tex/build/source_visual_trace/253a_trace-079.png`.
+- Rendered audit:
+  `planning/build_audits/2026-05-22_scalar_path_integrals_green_functions_source_figures.md`.
 - `references/253a_notes.tex`, corresponding section, used only as a
   comparison layer for figures and formulas.
 - `monograph/tex/volumes/volume_i/chapter04_lagrangian_formalism_and_quantum_mechanical_path_integrals.tex`,
@@ -84,7 +93,10 @@ Working framework:
 | Claim | Status | Certification |
 | --- | --- | --- |
 | The field path-integral kernel is obtained as the regulated continuum limit of time-sliced quantum mechanics. | Construction | Spatial cutoff plus Chapter 4 time slicing |
+| Field-configuration eigenvectors are represented by functional delta distributions after a finite spatial regulator is imposed. | Framework construction | Direct regulated field-coordinate basis |
+| The formal notation \(Z=\int[D\phi]e^{iS[\phi]}\) has meaning as regulated shorthand or an asymptotic expansion derived from a regulated theory. | Framework statement | Regulator dependence stated explicitly |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
+| Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
 | Rotating the Euclidean momentum contour gives the Feynman denominator \(k^2+m^2-i\epsilon\). | Derived in free theory | Pole tracking |
 | Wightman, time-ordered, and Euclidean Green functions are distinct distributions related by ordering and analytic continuation. | Definition plus framework statement | Explicit definitions |
@@ -97,6 +109,13 @@ Figures to include:
 - uniform Wick rotation from Euclidean insertions to ordered Lorentzian times;
 - pole motion in the complex \(k^0\)-plane that records the \(i\epsilon\)
   prescription.
+
+Rendered check:
+
+- physical PDF pages 79--84 (`/tmp/qft_ch11_scalar_path_audit-079.png`
+  through `/tmp/qft_ch11_scalar_path_audit-084.png`) were inspected after
+  rebuild; the three TeX figures are legible and the revised pole figure
+  displays both the real contour and the displaced poles.
 
 ## Audit Targets
 
