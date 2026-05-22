@@ -73,14 +73,14 @@ is a gap whenever the source calculation carries conceptual content.
 | pp. 34--40, analyticity, crossing, Landau singularities | mapped | `volume_ii/chapter06_analyticity_crossing_and_landau_singularities.tex` | Check Landau-equation figures and Coleman--Norton interpretation status. |
 | pp. 41--55, Lehmann ellipses, dispersion relations, Froissart--Martin | mapped | `volume_ii/chapter07_partial_waves_dispersion_relations_and_high_energy_bounds.tex` | Verify all assumptions behind polynomial boundedness and subtractions. |
 | pp. 56--70, infrared divergences and inclusive QED amplitudes | mapped | `volume_ii/chapter22_infrared_divergences_and_inclusive_qed.tex` | Check soft theorem, real/virtual cancellation, and regulator logic. |
-| pp. 71--80, generating functionals and 1PI effective action | partial | `volume_iii` include: `volume_ii/chapter23_generating_functionals_and_the_one_particle_irreducible_effective_action.tex` | Verify Legendre transform, tree expansion of \(\Gamma\), Euclidean concavity/convexity, and toy model. |
+| pp. 71--80, generating functionals and 1PI effective action | mapped after 2026-05-22 source-transcription audit | `volume_ii/chapter23_generating_functionals_and_the_one_particle_irreducible_effective_action.tex` | Legendre transform, tree expansion of \(\Gamma\), Euclidean convexity, and toy model are present; final certification still requires handwritten figure-level recheck in the compiled PDF. |
 | pp. 81--96, renormalizability and local counterterms | mapped | `volume_ii/chapter08_renormalizability_and_local_counterterms.tex`; `volume_ii/chapter09_subdivergences_and_bphz_subtractions.tex` | Check power-counting proof and local subtraction logic. |
-| pp. 97--110, 1PI renormalization group | partial | `volume_ii/chapter10_renormalization_group_and_running_couplings.tex` | Verify scale-dependent field normalization, symmetric subtraction, Callan--Symanzik derivation, and scheme-dependence formula. |
+| pp. 97--110, 1PI renormalization group | mapped after 2026-05-22 source-transcription audit | `volume_ii/chapter10_renormalization_group_and_running_couplings.tex` | Scale-dependent field normalization, symmetric subtraction, nearby-scale comparison, logarithmic consistency, Callan--Symanzik derivation, and scheme-dependence formula are present; scheme-change coefficient formula was tightened in this pass. |
 | pp. 111--118, renormalized operators and minimal subtraction | mapped | `volume_ii/chapter12_renormalized_operators_and_minimal_subtraction.tex` | Check operator mixing and \(\partial\beta/\partial g\) relation. |
 | pp. 119--123, stress-tensor trace and conformal currents | mapped | `volume_ii/chapter13_stress_tensor_trace_scale_invariance_and_conformal_currents.tex` | Verify local-translation derivation and separated/contact-term caveats. |
 | pp. 124--135, Wilson--Fisher fixed point and scaling operators | mapped | `volume_ii/chapter14_the_wilson_fisher_fixed_point_and_scaling_operators.tex` | Check anomalous-dimension calculations and descendant/irrelevant-operator discussion. |
 | pp. 136--146, Ising universality | mapped | `volume_ii/chapter15_the_statistical_ising_model_and_universality.tex` | Check lattice-to-continuum scaling limit and universality statement. |
-| pp. 147--156, Wilsonian effective actions and Polchinski flow | partial | `volume_ii/chapter16_wilsonian_effective_field_theory.tex` | Verify smooth cutoff, shell integration, Polchinski equation, irrelevant-coupling slaving, and continuum limit. |
+| pp. 147--156, Wilsonian effective actions and Polchinski flow | mapped after 2026-05-22 source-transcription audit | `volume_ii/chapter16_wilsonian_effective_field_theory.tex` | Smooth cutoff, covariance split, shell integration, Wilson--Polchinski equation, irrelevant-coupling slaving, and continuum-limit construction are present; final certification still requires handwritten figure-level recheck in the compiled PDF. |
 | pp. 157--168, classical Yang--Mills theory and matter | mapped | `volume_ii/chapter17_yang_mills_theory_and_matter_fields.tex` | Check principal-bundle/connection language against source-level formulas. |
 | pp. 169--181, gauge fixing, ghosts, and BRST cohomology | mapped | `volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` | Check BRST nilpotence, gauge-fixing independence, and physical cohomology. |
 | pp. 182--201, YM Feynman rules and one-loop QCD beta function | certified for background-field beta; partial for ordinary YM rules | `volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_and_dis.tex`; `volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` | Background-field determinant coefficients were checked on 2026-05-22; ordinary Lorenz-gauge propagator/ghost/gluon Feynman-rule diagrams still need figure audit. |
@@ -115,9 +115,9 @@ now.  The following table records what is core-covered and what is deferred.
 | Source block | Current status | Control file |
 | --- | --- | --- |
 | 253a pp. 43--51, derivative interactions and measure/counterterms | partial | `volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex`; `volume_ii/chapter08_renormalizability_and_local_counterterms.tex` |
-| 253b pp. 71--80, generating functionals and 1PI effective action | partial | `planning/chapter_dossiers/volume_ii/chapter09_generating_functionals_1pi_effective_action.md` |
-| 253b pp. 97--110, 1PI RG | partial | `planning/chapter_dossiers/volume_ii/chapter12_1pi_renormalization_group.md` |
-| 253b pp. 147--156, Wilsonian effective actions and Polchinski flow | partial | `planning/chapter_dossiers/volume_ii/chapter17_wilsonian_effective_actions_polchinski_flow.md` |
+| 253b pp. 71--80, generating functionals and 1PI effective action | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter09_generating_functionals_1pi_effective_action.md` |
+| 253b pp. 97--110, 1PI RG | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter12_1pi_renormalization_group.md` |
+| 253b pp. 147--156, Wilsonian effective actions and Polchinski flow | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter17_wilsonian_effective_actions_polchinski_flow.md` |
 | 253b pp. 182--201, QCD beta function | certified for background-field derivation | `planning/build_audits/2026-05-22_qcd_beta_background_field_derivation.md` |
 | 253b pp. 202--210, Banks--Zaks and Wilson-loop diagnostics | mapped after this pass | `planning/chapter_dossiers/volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_dis.md` |
 | 253b pp. 249--257, pion scattering and chiral perturbation theory | mapped after this pass | `planning/chapter_dossiers/volume_ii/chapter21_global_anomalies_ssb_pions.md` |
@@ -148,10 +148,11 @@ now.  The following table records what is core-covered and what is deferred.
 
 ## Next Pass
 
-The next page-level audit should work through the `partial` rows above first,
-then promote `mapped` rows to `certified` only after checking the handwritten
-PDF figures and derivations.  For selected 253c, the core-covered material
-through OPE/crossing should be audited now; the projective-lightcone,
-bootstrap, two-dimensional, supersymmetric, and large-\(N\) blocks remain
-source obligations for later special volumes, not omissions from the current
-core volumes.
+The next page-level audit should work through the remaining `partial` rows
+first, especially the 253a derivative-interaction block and ordinary
+Lorenz-gauge Yang--Mills Feynman-rule figures, then promote `mapped` rows to
+`certified` only after checking the handwritten PDF figures and derivations.
+For selected 253c, the core-covered material through OPE/crossing should be
+audited now; the projective-lightcone, bootstrap, two-dimensional,
+supersymmetric, and large-\(N\) blocks remain source obligations for later
+special volumes, not omissions from the current core volumes.

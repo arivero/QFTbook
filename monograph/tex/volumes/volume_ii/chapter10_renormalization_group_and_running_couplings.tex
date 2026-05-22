@@ -766,11 +766,12 @@ A renormalization scheme is a coordinate system on the renormalized family of
 theories.  Let \(\lambda\) and \(\widetilde\lambda\) be two coordinates related
 by a finite redefinition
 \[
-  \widetilde\lambda=f(\lambda)
-  =
-  \lambda+\alpha\lambda^2+O(\lambda^3),
+  \widetilde\lambda=f(\lambda),
+  \qquad
+  f(0)=0,\qquad f'(0)=1,
 \]
-where \(f'(0)=1\).  If
+where the last condition fixes the leading normalization of the coordinate.
+If
 \[
   \frac{\dd\lambda}{\dd\log\mu}=\beta(\lambda),
   \qquad
@@ -784,7 +785,12 @@ then the chain rule gives
   \qquad
   \beta(\lambda)=\frac{\widetilde\beta(f(\lambda))}{f'(\lambda)}.
 \]
-Expanding to first order in the finite redefinition parameter,
+If only the first nonlinear coefficient is displayed,
+\[
+  f(\lambda)=\lambda+\alpha\lambda^2+O(\lambda^3),
+\]
+then, to first order in \(\alpha\) and without fixing the omitted cubic
+coefficient,
 \[
   \beta(\lambda)
   =
@@ -807,17 +813,38 @@ For one classically marginal coordinate,
   \widetilde b_1\lambda^2+\widetilde b_2\lambda^3
   +\widetilde b_3\lambda^4+\cdots .
 \]
-The relation above implies
+The relation above already implies
 \[
   b_1=\widetilde b_1,
   \qquad
-  b_2=\widetilde b_2,
-  \qquad
-  \widetilde b_3=b_3-\alpha b_2
+  b_2=\widetilde b_2 .
 \]
-for the displayed redefinition.  Thus the first two coefficients are invariant
-for a single marginal coupling under such finite reparametrizations, while
-later coefficients are coordinate dependent.
+To see the first scheme-dependent coefficient without hiding the role of the
+next finite redefinition, write
+\[
+  \widetilde\lambda
+  =
+  \lambda+\alpha\lambda^2+\rho\lambda^3+O(\lambda^4).
+\]
+Using
+\[
+  \widetilde\beta(\widetilde\lambda)
+  =
+  f'(\lambda)\,\beta(\lambda),
+  \qquad
+  \widetilde\lambda=f(\lambda),
+\]
+and re-expanding in powers of \(\widetilde\lambda\) gives
+\[
+  \widetilde b_1=b_1,\qquad
+  \widetilde b_2=b_2,\qquad
+  \widetilde b_3
+  =
+  b_3-\alpha b_2+(\rho-\alpha^2)b_1 .
+\]
+Thus, for a single marginal coupling and with the leading normalization fixed,
+the first two perturbative coefficients are invariant under finite analytic
+reparametrizations, while later coefficients are coordinate dependent.
 
 \section{Invariant Data at Fixed Points}
 
