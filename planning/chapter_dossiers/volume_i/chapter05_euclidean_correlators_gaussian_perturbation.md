@@ -5,6 +5,8 @@
 Current status: spectral/Wick-rotation opening block certified against
 handwritten 253a pp. 15--18 on 2026-05-22; harmonic-oscillator Euclidean
 propagator certified against handwritten 253a pp. 19--23 on 2026-05-22;
+finite and functional Gaussian integral block certified against handwritten
+253a pp. 24--29 on 2026-05-22;
 derivative-interaction/regulator counterterm block also certified on
 2026-05-22 after handwritten source and rendered-figure audit.
 
@@ -110,7 +112,8 @@ Working framework:
 | Long Euclidean time projects onto the ground state under overlap and gap assumptions. | Derived | Spectral decomposition |
 | The projected correlator has a regulated complex-time path-integral representation with endpoint wavefunctions included in the contour measure. | Construction | Patched from handwritten pp. 16--17 and rendered on physical PDF page 65 |
 | The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived; source-certified 2026-05-22 | Dirichlet sine-mode expansion, \(k_n=n\pi/(2T)\) Riemann-sum limit, endpoint image term, and contour integral |
-| Gaussian moments are sums over complete pairings. | Derived | Source differentiation |
+| Gaussian moments are sums over complete pairings. | Derived; source-certified 2026-05-22 | Finite source differentiation, explicit two- and four-point calculations, and \(4!\)-assignment grouping |
+| The Gaussian functional integral has two-point function equal to the Green kernel \(A^{-1}\). | Derived; source-certified 2026-05-22 | Regulated functional integration by parts and Fourier-space diagonalization |
 | The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived | Partition combinatorics |
 | Normalized two-point functions retain diagrams connected to the external insertions. | Derived | Vacuum factor cancellation |
 | The full two-point function is obtained from the self-energy by a geometric series in momentum space. | Derived | 1PI decomposition |
@@ -153,3 +156,8 @@ Figures to include:
   interval before taking \(T\to\infty\): sine modes, coefficient covariance,
   Riemann-sum conversion, image contribution from Dirichlet endpoints, and the
   contour suppression criterion.
+- The Gaussian-integral source block is certified to retain the source
+  derivative convention, the explicit four-point combinatorics, the
+  contraction-value definition, the functional derivative normalization, the
+  integration-by-parts derivation of \(G(\tau_1,\tau_2)\), and the
+  Fourier-space covariance.

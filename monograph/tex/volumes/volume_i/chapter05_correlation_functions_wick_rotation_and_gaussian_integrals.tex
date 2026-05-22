@@ -556,22 +556,53 @@ Differentiating with respect to \(J\) gives
   \frac{Z_A[J]}{Z_A[0]}
   \right|_{J=0}.
 \]
-In particular,
+Let \(C=A^{-1}\).  Then
 \[
-  \langle q_i\rangle_A=0,\qquad
-  \langle q_iq_j\rangle_A=(A^{-1})_{ij}.
+  \langle q_i\rangle_A
+  =
+  \left.
+  \frac{\partial}{\partial J_i}
+  \exp\left(\frac12J_aC_{ab}J_b\right)
+  \right|_{J=0}
+  =
+  0
 \]
-For four variables,
+and
+\[
+  \langle q_iq_j\rangle_A
+  =
+  \left.
+  \frac{\partial}{\partial J_i}
+  \frac{\partial}{\partial J_j}
+  \exp\left(\frac12J_aC_{ab}J_b\right)
+  \right|_{J=0}
+  =
+  C_{ij}.
+\]
+Write \(\partial_i=\partial/\partial J_i\).  For four variables,
 \[
 \begin{aligned}
   \langle q_iq_jq_kq_\ell\rangle_A
   &=
-  (A^{-1})_{ij}(A^{-1})_{k\ell}
-  +(A^{-1})_{ik}(A^{-1})_{j\ell}  \\
-  &\quad
-  +(A^{-1})_{i\ell}(A^{-1})_{jk}.
+  \left.
+  \partial_i\partial_j\partial_k\partial_\ell
+  \exp\left(\frac12J_aC_{ab}J_b\right)
+  \right|_{J=0}  \\
+  &=
+  \left.
+  \partial_i\partial_j\partial_k\partial_\ell
+  \frac12\left(\frac12J_aC_{ab}J_b\right)^2
+  \right|_{J=0}  \\
+  &=
+  C_{ij}C_{k\ell}+C_{ik}C_{j\ell}+C_{i\ell}C_{jk}.
 \end{aligned}
 \]
+Only the quadratic term squared in the exponential can survive after four
+source derivatives and then setting \(J=0\).  The four derivatives can be
+assigned to the four source factors in \(4!\) ways; these assignments group
+into the three displayed pairings, and the numerical factor
+\(\frac12(\frac12)^2=\frac18\) cancels the repeated orientations and the
+exchange of the two covariance factors inside each pairing.
 
 \begin{center}
 \begin{tikzpicture}[scale=1.0]
@@ -606,7 +637,7 @@ For four variables,
 
 A Wick contraction is an assigned pairing of two labels with value
 \[
-  (q_iq_j)_{\mathrm{contr}}=(A^{-1})_{ij}.
+  (q_iq_j)_{\mathrm{contr}}=C_{ij}=(A^{-1})_{ij}.
 \]
 Wick's theorem says that the Gaussian expectation of \(2r\) variables is the
 sum over all complete pairings, with one covariance factor for each pair:
@@ -673,6 +704,50 @@ Consequently
   =
   G(\tau_1,\tau_2).
 \]
+The same result can be obtained without tracking the normalization of the
+functional measure under discretization.  At finite cutoff this is ordinary
+integration by parts in finitely many variables; the continuum notation is the
+limit of that identity.  The functional derivative is normalized by
+\[
+  \frac{\delta q(\tau_2)}{\delta q(\tau')}=\delta(\tau'-\tau_2).
+\]
+Since
+\[
+  \frac{\delta}{\delta q(\tau')}
+  \exp\left[-\frac12(q,Aq)\right]
+  =
+  -(Aq)(\tau')\exp\left[-\frac12(q,Aq)\right],
+\]
+one has
+\[
+  q(\tau_1)\exp\left[-\frac12(q,Aq)\right]
+  =
+  -
+  \left(A^{-1}\frac{\delta}{\delta q}\right)(\tau_1)
+  \exp\left[-\frac12(q,Aq)\right],
+\]
+where
+\[
+  \left(A^{-1}\frac{\delta}{\delta q}\right)(\tau_1)
+  =
+  \int G(\tau_1,\tau')\frac{\delta}{\delta q(\tau')}\,\dd\tau'.
+\]
+The regulated Gaussian has no boundary term in this finite-dimensional
+integration by parts. Therefore
+\[
+\begin{aligned}
+  &\int[Dq]\,\exp\left[-\frac12(q,Aq)\right]
+    q(\tau_1)q(\tau_2)  \\
+  &\quad =
+  \int[Dq]\,\exp\left[-\frac12(q,Aq)\right]
+  \left(A^{-1}\frac{\delta}{\delta q}\right)(\tau_1)q(\tau_2)  \\
+  &\quad =
+  \int[Dq]\,\exp\left[-\frac12(q,Aq)\right]
+  \int G(\tau_1,\tau')\delta(\tau'-\tau_2)\,\dd\tau' .
+\end{aligned}
+\]
+After division by \(Z_0[0]\), this gives again
+\(\langle q(\tau_1)q(\tau_2)\rangle_0=G(\tau_1,\tau_2)\).
 
 On the infinite Euclidean line, write
 \[
