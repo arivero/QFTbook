@@ -10,6 +10,11 @@ nearest-neighbor unordered pairs, and spin variables
   s_x\in\{-1,+1\},
   \qquad x\in\Lambda .
 \]
+The set \(E(\Lambda)\) encodes the boundary convention.  For example, it may
+come from free boundary conditions on a box, or from periodic boundary
+conditions after identifying opposite faces.  Bulk thermodynamic quantities are
+defined by taking \(\Lambda\nearrow\mathbb Z^D\) along a specified family and
+then checking which limits are independent of this boundary convention.
 For ferromagnetic coupling \(J>0\), external magnetic field \(h\), and inverse
 temperature \(\beta=T^{-1}\) in units with Boltzmann's constant equal to one,
 the energy of a spin configuration \(s=\{s_x\}_{x\in\Lambda}\) is
@@ -265,29 +270,46 @@ where \(\nu\) is defined by the divergence
 
 \section{The Scaling Limit}
 
-The continuum Ising field theory is defined from large-distance lattice
-correlators near criticality.  Let \(L\) be a large dimensionless length in
-lattice units, and let \([Lx]\in\Lambda\) denote a nearest lattice point to
-\(Lx\), where \(x\in\mathbb R^D\) is fixed.  Choose a sequence of temperatures
-\(T(L)\to T_c\) such that
+The continuum Ising field theory is defined, when the limit exists, from
+large-distance lattice correlators near criticality.  Let \(a=L^{-1}\) be the
+lattice spacing in continuum units.  A fixed point \(x\in\mathbb R^D\)
+corresponds to a nearest lattice point \([x/a]=[Lx]\).  In this subsection set
+the magnetic field to zero, so the \(\mathbb Z_2\) symmetry is preserved and
+the thermal coordinate is the relevant coordinate being varied.
+
+Let \(\xi_{\rm lat}(T)\) be the correlation length measured in lattice units,
+using connected correlators in a chosen pure phase when \(T<T_c\).  Choose a
+sequence of temperatures \(T(L)\to T_c\) such that the signed thermal scale
 \[
-  \frac{L}{\xi(T(L))}\longrightarrow m\geq0 .
+  \mathfrak m
+  =
+  \lim_{L\to\infty}
+  \operatorname{sgn}(T(L)-T_c)\,
+  \frac{L}{\xi_{\rm lat}(T(L))}
 \]
-The number \(m\) is the mass gap of the continuum scaling limit in the units in
-which the physical position is \(x\).  A spin-field renormalization factor
-\(Z_\sigma(L,T)>0\) is chosen so that the limit
+exists.  The physical inverse correlation length is \(|\mathfrak m|\).  The
+sign records which side of the critical point is approached.  More general
+scaling limits with a magnetic deformation require a second scaling coordinate
+to be held fixed.  If \(u_h\) is the coefficient of the spin field, this
+coordinate has the form \(L^{D-\Delta_\sigma}u_h\).  It is set to zero here.
+
+A spin-field renormalization factor \(Z_\sigma(L,T)>0\) is chosen so that the
+limit
 \[
-  \lim_{\substack{T\to T_c,\ L\to\infty\\ L/\xi(T)\to m}}
+  \lim_{\substack{T\to T_c,\ L\to\infty\\
+      \operatorname{sgn}(T-T_c)L/\xi_{\rm lat}(T)\to\mathfrak m}}
   Z_\sigma(L,T)^{-n/2}
   \vev{s_{[Lx_1]}\cdots s_{[Lx_n]}}_{\beta(T)}
   =
-  \vev{\sigma(x_1)\cdots\sigma(x_n)}_{\operatorname{Ising},m}
+  \vev{\sigma(x_1)\cdots\sigma(x_n)}_{\operatorname{Ising},\mathfrak m}
 \]
-exists for separated points.  At \(m=0\), equivalently at
-\(\xi(T)/L\to\infty\), the limiting theory is the Ising conformal field
-theory.  At criticality \(Z_\sigma(L,T_c)\) may be chosen proportional to
- \(L^{-2\Delta_\sigma}\), so the rescaled spin insertions have finite
-correlators.
+exists for separated points.  At \(\mathfrak m=0\), equivalently at
+\(\xi_{\rm lat}(T)/L\to\infty\), the limiting theory is the critical Ising
+fixed point.  When the limiting fixed point is rotation and scale invariant
+with the usual stress-tensor properties, this fixed point is the Ising
+conformal field theory.  At criticality \(Z_\sigma(L,T_c)\) may be chosen
+proportional to \(L^{-2\Delta_\sigma}\), so the rescaled spin insertions have
+finite correlators.
 
 \begin{figure}[H]
   \centering
@@ -315,7 +337,7 @@ correlators.
         \node[purple!75!black, above right=-1pt] at (\x,\y) {\(\sigma(x_i)\)};
       }
       \node[align=center, blue!70!black] at (1.65,-0.45)
-        {\(L/\xi(T)\to m\)};
+        {\(L/\xi_{\rm lat}(T)\to |\mathfrak m|\)};
     \end{scope}
 
     \node[draw=black, rounded corners, align=center, inner sep=7pt]
@@ -324,26 +346,66 @@ correlators.
         Z_\sigma^{-n/2}\,
         \vev{s_{[Lx_1]}\cdots s_{[Lx_n]}}
         \longrightarrow
-        \vev{\sigma(x_1)\cdots\sigma(x_n)}_{\operatorname{Ising},m}
+        \vev{\sigma(x_1)\cdots\sigma(x_n)}_{\operatorname{Ising},\mathfrak m}
       \)};
   \end{tikzpicture}
   }
   \caption{The Ising field theory is the continuum scaling limit of
-  long-distance spin correlators.  The parameter \(m\) is the mass gap in the
-  limiting continuum units, and \(m=0\) gives the critical conformal theory.}
+  long-distance spin correlators.  The absolute value of \(\mathfrak m\) is
+  the inverse correlation length in the limiting continuum units, while its
+  sign records the high- or low-temperature side.}
   \label{fig:volume-ii-ising-scaling-limit}
 \end{figure}
 
-The operator dictionary at the critical fixed point begins with
+Microscopic lattice observables become continuum operators through their
+leading terms in the scaling-field expansion.  Let
 \[
-  \sigma(x)\longleftrightarrow \phi(x),
-  \qquad
-  \varepsilon(x)\longleftrightarrow \phi^2(x).
+  e_x
+  =
+  -\sum_{\mu=1}^D s_xs_{x+\hat\mu}
 \]
-Here \(\sigma\) is the spin field, and \(\varepsilon\) is the energy operator,
-the scalar operator coupled to the temperature deformation.  The normalization
-of either field is conventional; their scaling dimensions are invariant data.
-The relation between the energy dimension and the exponent \(\nu\) is
+be a local energy-density observable on the hypercubic lattice.  At separated
+continuum points and at criticality,
+\[
+  s_{[x/a]}
+  =
+  C_\sigma\,a^{\Delta_\sigma}\sigma(x)
+  +
+  \sum_j C_j\,a^{\Delta_j}O_j(x),
+  \qquad
+  \Delta_j>\Delta_\sigma ,
+\]
+and
+\[
+  e_{[x/a]}-\vev{e}_{c}
+  =
+  C_\varepsilon\,a^{\Delta_\varepsilon}\varepsilon(x)
+  +
+  \sum_k C'_k\,a^{\Delta'_k}O'_k(x),
+  \qquad
+  \Delta'_k>\Delta_\varepsilon .
+\]
+The constants \(C_\sigma\) and \(C_\varepsilon\) depend on the microscopic
+normalization of the lattice observables.  The dimensions and operator-product
+coefficients of the scaling fields are fixed-point data.
+
+In scalar continuum coordinates, the leading \(\mathbb Z_2\)-odd scalar field
+\(\phi\) represents the Ising spin field \(\sigma\), while the leading
+\(\mathbb Z_2\)-even mass operator, denoted \(\phi^2\) after identity mixing is
+subtracted, represents the energy field \(\varepsilon\):
+\[
+  \phi \longrightarrow \sigma,
+  \qquad
+  [\phi^2]\longrightarrow\varepsilon .
+\]
+If \(u_t\) denotes the thermal scaling coordinate, then
+\[
+  \Delta S_t=\int\dd^D x\,u_t\,\varepsilon(x),
+  \qquad
+  [u_t]=D-\Delta_\varepsilon .
+\]
+Since \(\xi^{-1}\propto |u_t|^{1/(D-\Delta_\varepsilon)}\), comparison with
+\(\xi\propto |T-T_c|^{-\nu}\) gives
 \[
   \Delta_\varepsilon
   =
@@ -361,8 +423,11 @@ Ising partition function is
   \widetilde Z_\Lambda
   =
   \int\prod_{x\in\Lambda}\dd s_x\,
-  \exp\!\left[-P(s_x)\right]\,
-  \exp\!\left[\beta\sum_{\langle x y\rangle}s_xs_y\right].
+  \exp\!\left[
+    -\sum_{x\in\Lambda}P(s_x)
+    +
+    \beta\sum_{\langle x y\rangle}s_xs_y
+  \right].
 \]
 Equivalently,
 \[
@@ -484,16 +549,17 @@ lattice symmetry.
   \label{fig:volume-ii-ising-lattice-scalar}
 \end{figure}
 
-\section{Universality as Fixed-Point Attraction}
+\section{Universality Classes and Relevant Coordinates}
 
 The lattice scalar action just constructed and the continuum quartic scalar
 action differ in their short-distance coordinates.  The lattice action has a
 finite cutoff, lattice-anisotropic derivative terms, and many allowed local
 couplings such as \(\phi^6\) and higher powers or derivatives.  These
-differences define distinct points in the same large theory space.  In
-\(D=2,3\), after the relevant \(\mathbb Z_2\)-even coupling is tuned to
-criticality, their long-distance trajectories approach the same Ising fixed
-point.
+differences define distinct points in the same local theory space.  The
+universality statement is that, in \(D=2,3\) and under the existence of the
+scaling limit described above, these distinct ultraviolet points have
+long-distance trajectories that approach the same Ising fixed point after the
+relevant coordinates are tuned.
 
 Near the fixed point, write a general local deformation as
 \[
@@ -501,57 +567,73 @@ Near the fixed point, write a general local deformation as
   =
   \int\dd^Dx\,
   \left(
-    h\,\sigma(x)
+    u_h\,\sigma(x)
     +
-    \delta m^2\,\varepsilon(x)
+    u_t\,\varepsilon(x)
     +
-    \sum_I\delta g_I\,O_I(x)
+    \sum_I u_I\,O_I(x)
   \right),
   \qquad
   \Delta_I=\dim O_I .
 \]
-The coupling \(\delta g_I\) has mass dimension \(D-\Delta_I\).  At a physical
-mass scale \(\mu\), the dimensionless strength of this perturbation is
+The coefficient \(u_I\) has mass dimension \(D-\Delta_I\).  At a physical mass
+scale \(\mu\), the dimensionless strength of this perturbation is
 \[
-  \delta g_I\,\mu^{\Delta_I-D}.
+  \lambda_I(\mu)=u_I\,\mu^{\Delta_I-D}.
 \]
-If \(\Delta_I>D\), this strength tends to zero as \(\mu\to0\).  These are the
-irrelevant perturbations.  They account for microscopic differences such as
-the choice of square or hexagonal lattice, the details of \(P(s)\), and
-higher-derivative cutoff terms.
+To linear order at the fixed point,
+\[
+  \frac{\dd\lambda_I}{\dd\log\mu}
+  =
+  (\Delta_I-D)\lambda_I+O(\lambda^2).
+\]
+If \(\Delta_I>D\), the dimensionless strength tends to zero as \(\mu\to0\).
+These are the irrelevant perturbations.  They account for microscopic
+differences such as the choice of square or hexagonal lattice, the details of
+\(P(s)\), and higher-derivative cutoff terms.
 
-The two relevant scalar directions of the Ising fixed point are the spin field
-\(\sigma\) and the energy field \(\varepsilon\):
+The relevant scalar directions of the Ising fixed point are the
+\(\mathbb Z_2\)-odd spin field \(\sigma\) and the \(\mathbb Z_2\)-even energy
+field \(\varepsilon\):
 \[
   \Delta_\sigma<D,
   \qquad
   \Delta_\varepsilon=D-\frac1\nu<D .
 \]
-The magnetic field \(h\) couples to \(\sigma\).  The temperature deviation
-couples to \(\varepsilon\):
+Their linear RG eigenvalues are
 \[
-  \Delta S_T
-  =
-  \int\dd^Dx\,\delta m^2\,\varepsilon(x),
+  y_h=D-\Delta_\sigma,
   \qquad
-  \delta m^2\propto T-T_c .
+  y_t=D-\Delta_\varepsilon=\frac1\nu .
 \]
-Since \(\delta m^2\) has dimension \(D-\Delta_\varepsilon\), it generates the
-correlation length
+The magnetic field couples to \(u_h\).  If the microscopic \(\mathbb Z_2\)
+symmetry is imposed, then \(u_h=0\) and the displayed theory-space slice has
+only the thermal relevant direction.  The temperature deviation determines the
+thermal scaling coordinate by
+\[
+  u_t
+  =
+  c_T(T-T_c)+O((T-T_c)^2),
+  \qquad
+  c_T\neq0 ,
+\]
+after a choice of temperature coordinate near \(T_c\).  Since \(u_t\) has
+dimension \(D-\Delta_\varepsilon\), it generates the correlation length
 \[
   \xi(T)
   \propto
-  |\delta m^2|^{-1/(D-\Delta_\varepsilon)}
+  |u_t|^{-1/(D-\Delta_\varepsilon)}
   \propto
   |T-T_c|^{-\nu}.
 \]
-This relation is the RG origin of the exponent \(\nu\).
+The coefficient \(c_T\) and the amplitude of \(\xi\) are not universal; the
+exponent is.
 
 \begin{figure}[H]
   \centering
   \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \node[font=\small] at (0,3.6) {theory space near the Ising fixed point};
+    \node[font=\small] at (0,3.6) {\(\mathbb Z_2\)-even theory space near the Ising fixed point};
     \fill[purple!80!black] (0,0) circle (3pt);
 
     \node[draw=black, rounded corners, align=center, fill=blue!7, inner sep=5pt]
@@ -586,16 +668,16 @@ This relation is the RG origin of the exponent \(\nu\).
       {Ising CFT\\fixed point};
   \end{tikzpicture}
   }
-  \caption{Universality is fixed-point attraction in theory space.  Lattice
-  spin models and scalar field theories can have different ultraviolet
-  coordinates while their critical trajectories approach the same Ising fixed
-  point.  Relevant deformations move the theory away from criticality and
-  produce massive scaling limits.}
+  \caption{The \(\mathbb Z_2\)-even theory-space slice has a basin whose
+  critical trajectories approach the same Ising fixed point.  Lattice spin
+  models and scalar field theories can have different ultraviolet coordinates
+  inside this basin.  Relevant thermal deformations move the theory away from
+  criticality and produce massive scaling limits.}
   \label{fig:volume-ii-ising-universality-rg}
 \end{figure}
 
-Thus the statistical Ising model supplies a precise bridge from microscopic
-lattice ensembles to continuum Euclidean QFT.  The bridge is made by
-correlators: after tuning the relevant directions and rescaling fields, the
-large-distance spin correlators become correlators of local fields at, or near,
+Thus the statistical Ising model supplies a constructive route from
+microscopic lattice ensembles to continuum Euclidean QFT.  The construction is
+by correlators: after tuning the relevant coordinates and rescaling fields, the
+large-distance spin correlators define correlators of local fields at, or near,
 the Ising fixed point.
