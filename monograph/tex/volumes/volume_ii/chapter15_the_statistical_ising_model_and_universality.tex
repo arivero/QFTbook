@@ -236,14 +236,14 @@ field.
     \draw[purple!75!black, very thick]
       (0,2.45)..controls (0.5,1.45) and (0.95,0.55)..(1.75,0.22)
       ..controls (2.5,0.06) and (3.4,0.03)..(4.8,0.02);
-    \node[green!50!black] at (5.2,2.25) {\(T<T_c\)};
-    \node[blue!75!black] at (5.1,0.75) {\(T=T_c\)};
-    \node[purple!75!black] at (2.3,0.62) {\(T>T_c\)};
-    \node[green!50!black, align=center] at (2.2,2.35)
+    \node[green!50!black, fill=white, inner sep=1pt] at (5.2,2.25) {\(T<T_c\)};
+    \node[blue!75!black, fill=white, inner sep=1pt] at (5.1,0.75) {\(T=T_c\)};
+    \node[purple!75!black, fill=white, inner sep=1pt] at (2.3,0.62) {\(T>T_c\)};
+    \node[green!50!black, align=center, fill=white, inner sep=1pt] at (2.2,2.35)
       {ordered\\plateau};
-    \node[blue!75!black, align=center] at (5.7,1.28)
+    \node[blue!75!black, align=center, fill=white, inner sep=1pt] at (5.7,1.28)
       {\(f_\beta(r)\sim r^{-2\Delta_\sigma}\)};
-    \node[purple!75!black, align=center] at (4.6,0.34)
+    \node[purple!75!black, align=center, fill=white, inner sep=1pt] at (4.55,0.45)
       {\(\exp[-r/\xi(T)]\)};
   \end{tikzpicture}
   }
@@ -310,6 +310,12 @@ with the usual stress-tensor properties, this fixed point is the Ising
 conformal field theory.  At criticality \(Z_\sigma(L,T_c)\) may be chosen
 proportional to \(L^{-2\Delta_\sigma}\), so the rescaled spin insertions have
 finite correlators.
+The limiting objects in this display are Euclidean separated-point Schwinger
+functions.  When the lattice measures supply reflection positivity and the
+limits obey the remaining reconstruction hypotheses, these Schwinger functions
+determine a Lorentzian QFT Hilbert space by reconstruction.  That reconstructed
+Hilbert space is not the finite-dimensional spin-trace space
+\(\Hilb_\Lambda\) used to define the classical thermal ensemble.
 
 \begin{figure}[H]
   \centering
@@ -592,9 +598,11 @@ These are the irrelevant perturbations.  They account for microscopic
 differences such as the choice of square or hexagonal lattice, the details of
 \(P(s)\), and higher-derivative cutoff terms.
 
-The relevant scalar directions of the Ising fixed point are the
-\(\mathbb Z_2\)-odd spin field \(\sigma\) and the \(\mathbb Z_2\)-even energy
-field \(\varepsilon\):
+The fixed-point spectral input used in the Ising universality statement is
+that, after omitting the identity, total derivatives, equation-of-motion
+descendants, and metric deformations, the only relevant scalar action
+deformations are the \(\mathbb Z_2\)-odd spin field \(\sigma\) and the
+\(\mathbb Z_2\)-even energy field \(\varepsilon\):
 \[
   \Delta_\sigma<D,
   \qquad

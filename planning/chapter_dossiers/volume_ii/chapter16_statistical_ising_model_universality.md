@@ -105,6 +105,17 @@ The chapter must define and derive:
 
 ## Audit Notes
 
+- 2026-05-22 source-certification pass: handwritten 253b pages 136--146 were
+  checked against rendered source images and comparison transcriptions.  The
+  manuscript includes the finite Ising ensemble and diagonal trace notation,
+  the entropy/Boltzmann and finite-state \(H\)-theorem reminder, low- and
+  high-temperature spin-correlator regimes, the critical-exponent table, the
+  continuum scaling limit with signed thermal scale, the separation between
+  Euclidean Schwinger functions and reconstructed Lorentzian Hilbert space,
+  the leading scaling-field dictionary, the generalized Ising scalar path
+  integral, the Brillouin-zone derivative expansion and cutoff, and the RG
+  universality argument with relevant scalar coordinates and nonuniversal
+  temperature metric factors.
 - Do not state or imply that the statistical spin Hilbert space is the
   Lorentzian QFT Hilbert space.
 - Do not present universality as microscopic equality.
