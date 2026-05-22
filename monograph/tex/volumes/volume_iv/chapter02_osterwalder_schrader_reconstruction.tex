@@ -7,28 +7,67 @@ Let \(E=\mathbb R^D\) be Euclidean space with coordinates
 \[
   x=(\tau,\mathbf x),\qquad \mathbf x\in\mathbb R^{D-1}.
 \]
-Euclidean correlation functions are distributions
+Let \(V\) be the complex vector space of field labels.  For scalar fields
+\(V=\mathbb C\).  For tensor, spinor, or internal multiplets, \(V\) carries the
+corresponding Euclidean rotation and internal representations.  An \(n\)-point
+Euclidean test insertion is an element of
 \[
-  S_{\alpha_1\cdots \alpha_n}(x_1,\ldots,x_n),
+  \mathcal S(E^n;V^{\otimes n}),
+\]
+or of \(C_c^\infty(E^n;V^{\otimes n})\) if compactly supported test functions
+are the chosen test class.  The test class is part of the data because it
+determines the topology in which the Schwinger functions are distributions.
+
+\begin{definition}[Schwinger hierarchy]
+A Schwinger hierarchy with field-label space \(V\) is a family
+\[
+  S_n\in \mathcal S'(E^n;(V^*)^{\otimes n}),
+  \qquad n\ge0,
+\]
+with \(S_0=1\).  The value \(S_n(f_n)\) denotes the distributional pairing of
+\(S_n\) with the \(V^{\otimes n}\)-valued test function \(f_n\).  In
+component notation this is written as
+\[
+  S_{\alpha_1\cdots\alpha_n}(x_1,\ldots,x_n),
   \qquad \alpha_j\in I,
 \]
-on \(E^n\), where \(I\) is the field-label set.  Equivalently,
-\(S_n\) is a multilinear distribution on compactly supported or Schwartz test
-functions with \(n\) field labels.  In a construction by a Euclidean measure,
-these distributions are moments of random distributions.  In an axiomatic
-Euclidean formulation, the hierarchy \(\{S_n\}_{n\ge0}\) is primary data.
+where \(I\) is a basis of labels for \(V\).  The component notation is a
+kernel notation for the distributional pairing; the pairing with test
+functions is the primary object.
+\end{definition}
+
+In a construction by a Euclidean measure, these distributions are moments of
+random distributions.  In an axiomatic Euclidean formulation, the hierarchy
+\(\{S_n\}_{n\ge0}\) is primary data.
 
 Let \(\theta\) be time reflection:
 \[
   \theta(\tau,\mathbf x)=(-\tau,\mathbf x).
 \]
-For a test function \(f_n\) supported in the ordered positive-time region
+The Euclidean group is
 \[
-  0<\tau_1<\cdots<\tau_n ,
+  \operatorname{Euc}(D)=\mathbb R^D\rtimes O(D).
+\]
+It acts on test insertions by pullback on \(E^n\) and by the declared label
+representation on \(V\).
+The reflection also acts on labels.  We denote by \(J:V\to V\) the antilinear
+label map induced by field adjunction and by the Euclidean reflection of
+tensor or spinor indices.  For a scalar Hermitian field, \(J\) is ordinary
+complex conjugation.  For a test function \(f_n\) supported in the ordered
+positive-time region
+\[
+  E^n_>=\{(x_1,\ldots,x_n):0<\tau_1<\cdots<\tau_n\},
 \]
 define the reflected adjoint test function \(\Theta f_n\) by reversing the
-order, reflecting all arguments, complex conjugating, and applying the field
-adjunction.  Let \(\mathcal E_+\) be the vector space of finite sequences
+order, reflecting all arguments, and applying \(J\) to the labels.  For a
+scalar test function this reads
+\[
+  (\Theta f_n)(x_1,\ldots,x_n)
+  =
+  \overline{f_n(\theta x_n,\ldots,\theta x_1)}.
+\]
+With labels, the same formula is composed with \(J^{\otimes n}\).  Let
+\(\mathcal E_+\) be the vector space of finite sequences
 \[
   F=(f_0,f_1,f_2,\ldots),
 \]
@@ -49,10 +88,38 @@ satisfy
 \end{equation}
 for every \(F\in\mathcal E_+\).
 
-The other Osterwalder--Schrader data are Euclidean covariance, permutation
-symmetry, regularity and growth assumptions sufficient for analytic
-continuation, and a normalization \(S_0=1\).  Clustering is added when the
-target theory is required to have a unique vacuum.
+The notation \(S_{m+n}(\Theta f_m,g_n)\) means that the reflected \(m\)
+negative-time insertions are followed by the \(n\) positive-time insertions in
+the argument of the distribution.  Thus the object required to be positive is
+the reflected positive-time sesquilinear form on \(\mathcal E_+\).
+
+\begin{definition}[OS-admissible Euclidean data]
+An OS-admissible Euclidean field presentation is a Schwinger hierarchy
+\(\{S_n\}_{n\ge0}\), together with the label reflection \(J\), satisfying:
+\begin{enumerate}[label=(\roman*)]
+  \item normalization: \(S_0=1\);
+  \item Euclidean covariance: \(S_n(gf_n)=S_n(f_n)\) for
+  \(g\in \operatorname{Euc}(D)\);
+  \item permutation symmetry: \(S_n\) is invariant under simultaneous
+  permutation of arguments and labels;
+  \item Hermiticity: the hierarchy is compatible with the adjunction encoded
+  by \(J\);
+  \item reflection positivity:
+  \(\langle F,F\rangle_{\rm OS}\ge0\) for all \(F\in\mathcal E_+\);
+  \item regularity and growth: the hierarchy has the continuity and growth
+  bounds required below.
+\end{enumerate}
+For fermionic or graded fields, the permutation line is replaced by graded
+permutation symmetry with the Koszul sign determined by the declared parity of
+each label.  Clustering is added when the target Lorentzian theory is required
+to have a unique vacuum vector.
+\end{definition}
+
+The regularity and growth line has operational content.  It supplies three
+analytic facts used later: the positive-time translations act continuously on
+the quotient, Euclidean rotations can be analytically continued to Lorentz
+boosts, and the continued correlation functions have boundary values in the
+target distribution class, usually tempered distributions.
 
 \begin{figure}[H]
   \centering
@@ -101,15 +168,31 @@ The reconstructed Hilbert space is
   \overline{\mathcal E_+/\mathcal N}.
 \]
 The vector represented by \(F=(1,0,0,\ldots)\) is the vacuum.
+The quotient is taken before completion.  Since
+\eqref{eq:os-positive-time-form} is positive semidefinite, the
+Cauchy--Schwarz inequality holds on \(\mathcal E_+\), and
+\(\mathcal N\) is exactly the subspace of zero-norm vectors.  Therefore
+\(\mathcal E_+/\mathcal N\) is a pre-Hilbert space with inner product induced
+by \(\langle\cdot,\cdot\rangle_{\rm OS}\).
 
 Euclidean time translations by \(s\ge0\) preserve positive-time support and
-therefore define a contraction semigroup on \(\Hilb_{\rm OS}\):
+therefore act on \(\mathcal E_+\).  The OS continuity and contractivity
+hypotheses say that this action descends to a strongly continuous contraction
+semigroup on \(\Hilb_{\rm OS}\):
 \[
   T_E(s)=\ee^{-sH},\qquad H\ge0.
 \]
-The self-adjoint generator \(H\) is the Lorentzian Hamiltonian.  Spatial
-translations and rotations act unitarily, and the analytic continuation of
-Euclidean rotations supplies the Lorentz boosts under the OS hypotheses.
+The equality is the spectral theorem for a self-adjoint nonnegative generator
+\(H\).  This \(H\) is the Lorentzian Hamiltonian in the reconstructed vacuum
+sector.  Spatial translations and rotations act unitarily on the quotient.
+Together with the analytic continuation of Euclidean rotations, the full OS
+theorem gives a strongly continuous unitary representation of the connected
+Poincare group with joint translation spectrum contained in the closed forward
+cone.
+
+The passage from Euclidean covariance to Lorentzian covariance occurs here:
+the Lorentzian Hilbert space and Poincare representation are constructed from
+the positive-time quotient and the analytic-continuation data.
 
 \begin{figure}[H]
   \centering
@@ -145,24 +228,24 @@ Euclidean rotations supplies the Lorentz boosts under the OS hypotheses.
 
 Let \(\mathcal D_{\rm OS}\subset\Hilb_{\rm OS}\) be the image of
 \(\mathcal E_+\) in the quotient.  This dense subspace is the natural common
-domain for the reconstructed fields.  If \(h_\alpha\) is a Euclidean test
-function with field label \(\alpha\), whose support is at positive time and
-remains ordered to the left of the supports appearing in
-\(F\in\mathcal E_+\), define
+domain for the reconstructed fields before closure.  If \(h\) is a Euclidean
+test function valued in \(V\), with support at positive time and ordered
+before the supports appearing in \(F\in\mathcal E_+\), define
 \[
-  \Phi_{E,\alpha}(h)[F]
+  \Phi_E(h)[F]
   =
-  [h_\alpha\otimes F],
+  [h\otimes F],
 \]
-where \(h_\alpha\otimes F\) denotes the sequence obtained by inserting one
-additional Euclidean field smeared with \(h\).  Permutation symmetry of the
-Schwinger functions and reflection positivity make this definition compatible
-with the null quotient whenever the supports obey the stated ordering.  Taking
-limits of ordered supports gives the Euclidean fields as closable operators
-on \(\mathcal D_{\rm OS}\).
+where \(h\otimes F\) denotes the sequence obtained by inserting one additional
+Euclidean field smeared with \(h\).  Permutation symmetry of the Schwinger
+functions and reflection positivity make this definition compatible with the
+null quotient whenever the supports obey the stated ordering.  Under the
+operator-domain hypotheses included in the reconstruction theorem, limits of
+ordered supports give closable Euclidean field operators on
+\(\mathcal D_{\rm OS}\).
 
-Lorentzian fields are obtained by continuing these matrix elements, not by
-declaring a separate Hilbert space.  For ordered imaginary parts
+Lorentzian fields are obtained by continuing these matrix elements on the
+reconstructed Hilbert space.  For ordered imaginary parts
 \[
   \epsilon_1>\epsilon_2>\cdots>\epsilon_n>0,
 \]
@@ -183,6 +266,15 @@ Thus the OS construction produces the vacuum vector, the Hilbert space, the
 positive Hamiltonian, and the field domains from the same Euclidean
 correlation hierarchy.
 
+As in the Wightman presentation, these reconstructed fields are generally
+unbounded distributional coordinates.  A represented local observable algebra
+\(\mathcal R(\mathcal O)\) is obtained by specifying a closure, affiliation,
+or bounded functional-calculus construction, or by building a local net
+directly and proving that the reconstructed fields are affiliated with it.
+The OS theorem reconstructs a Lorentzian Wightman field
+presentation; comparison with AQFT local observable content is a further
+construction with its own hypotheses.
+
 \section{Reconstruction Theorem}
 
 \begin{theorem}[Osterwalder--Schrader reconstruction]
@@ -199,18 +291,68 @@ The reconstructed Wightman functions are obtained as boundary values of
 analytic continuations of the \(S_n\).
 \end{theorem}
 
-The theorem has two distinct pieces.  Reflection positivity constructs the
-Hilbert space and positive Hamiltonian.  Growth and analyticity assumptions
-control the distributional boundary values and produce Wightman functions in
-the intended test-function class.  In the tempered case, this target class is
-\(\mathcal S'(M^n)\).  In larger analytic frameworks, such as hyperfunction
-versions of reconstruction, the target distribution class is correspondingly
-larger and the growth hypotheses are changed.
+The theorem has three distinct pieces.  First, reflection positivity constructs
+the Hilbert space, vacuum vector, and positive Hamiltonian by the positive-time
+quotient.  Second, Euclidean covariance and the OS regularity assumptions
+construct the Lorentzian Poincare representation and its spectrum condition.
+Third, growth and analyticity assumptions control the distributional boundary
+values and produce Wightman functions in the intended test-function class.  In
+the tempered case, this target class is \(\mathcal S'(M^n)\).  In larger
+analytic frameworks, such as hyperfunction versions of reconstruction, the
+target distribution class is correspondingly larger and the growth hypotheses
+are changed.
+
+The uniqueness statement is internal to the specified Euclidean hierarchy,
+label space, reflection map, and test-function class.  Two reconstructions of
+the same OS-admissible data are related by a unitary equivalence preserving the
+vacuum, the reconstructed Poincare representation, and the smeared fields.
+Equivalence of two different Euclidean presentations, or of the local nets
+generated after taking closures and affiliations, is an additional comparison
+problem.
+
+\section{Two-Point Spectral Positivity}
+
+For a scalar field, OS positivity gives a direct Euclidean form of spectral
+positivity.  Let \(f(\mathbf x)\) be a spatial test function and let
+\(\Phi_E(\tau,f)\) denote the reconstructed Euclidean field smeared at
+positive time \(\tau\).  The notation \(\Phi_E(0,f)\) below denotes the
+boundary value from positive Euclidean time when this domain limit exists.
+For \(\tau>0\), time translation in the reconstructed Hilbert space gives
+\[
+  \langle \vac_{\rm OS},
+  \Phi_E(\tau,f)\Phi_E(0,g)\vac_{\rm OS}\rangle_{\rm OS}
+  =
+  \langle \Phi_E(0,f)^\dagger\vac_{\rm OS},
+  \ee^{-\tau H}\Phi_E(0,g)\vac_{\rm OS}\rangle_{\rm OS}.
+\]
+Applying the spectral theorem to the nonnegative operator \(H\), this is
+\[
+  \int_{[0,\infty)} \ee^{-\tau E}\,
+  \dd\nu_{f,g}(E),
+\]
+where
+\[
+  \nu_{f,g}(\Delta)
+  =
+  \langle \Phi_E(0,f)^\dagger\vac_{\rm OS},
+  E_H(\Delta)\Phi_E(0,g)\vac_{\rm OS}\rangle_{\rm OS}
+\]
+and \(E_H\) is the spectral measure of \(H\).  For \(f=g\), the measure is
+positive.  Including spatial translations refines this to the joint spectral
+measure of \((H,\mathbf P)\).  Lorentz covariance and the spectrum condition
+then repackage the scalar two-point measure by invariant mass, giving the
+K\"all\'en--Lehmann representation used in Chapter~\ref{ch:kallen-lehmann}.
+
+This calculation identifies the precise bridge: reflection positivity builds
+the Hilbert-space inner product, the Euclidean time semigroup gives the
+nonnegative Hamiltonian, and the spectral theorem supplies the positive
+energy-momentum measure.
 
 \section{Euclidean Measures and Generating Functionals}
 
 Suppose a Euclidean theory is given by a probability measure \(\mu\) on a
-space of scalar distributions \(\varphi\), with generating functional
+specified measurable space of scalar distributions \(\varphi\), with
+generating functional
 \[
   Z_E[J]=\int \exp\left(\int_E J(x)\varphi(x)\,\dd^Dx\right)\,\dd\mu(\varphi)
 \]
@@ -225,6 +367,16 @@ Reflection positivity is then a property of the measure together with the
 chosen time reflection.  It is stable under lattice approximations only when
 the regulator action, observable insertions, and continuum limit preserve the
 positive-time quadratic form.
+
+\begin{remark}
+Ordinary positivity of the probability measure \(\mu\) means
+\(\int |F(\varphi)|^2\,\dd\mu(\varphi)\ge0\) for measurable functions \(F\).
+OS positivity is the reflected statement
+\(\int \overline{F(\theta\varphi)}F(\varphi)\,\dd\mu(\varphi)\ge0\) for
+positive-time cylinder functions \(F\), with the label adjunction included.
+It is this reflected positivity that becomes the Lorentzian Hilbert-space
+inner product.
+\end{remark}
 
 \section{Reflection Positivity for Generating Functionals}
 
@@ -299,8 +451,8 @@ one-particle Hilbert space of the free scalar field.
       node[midway,left] {analytic continuation};
   \end{tikzpicture}
   }
-  \caption{A Euclidean measure yields a Lorentzian QFT only after the OS
-  positivity, covariance, and growth requirements are verified.}
+  \caption{A Euclidean measure yields Lorentzian Wightman data through the
+  verified OS positivity, covariance, and growth requirements.}
   \label{fig:euclidean-measure-os-data}
 \end{figure}
 
