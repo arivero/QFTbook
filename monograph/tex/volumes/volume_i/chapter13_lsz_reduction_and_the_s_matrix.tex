@@ -286,6 +286,87 @@ and then taking the boundary value in which every \(q_i\) and \(p_j\) lies on
 function because all momenta in
 \(\widetilde G_{m+n}\) are taken to enter the time-ordered correlator.
 
+\section{Large-Time Oscillations and External Residues}
+
+The wave-packet statement above can be made more explicit.  Let
+\(\hat\phi_{f_i^{(T)}}\) create the outgoing packets at large positive time and
+\(\hat\phi_{g_j^{(-T)}}\) create the incoming packets at large negative time, as
+in the Haag--Ruelle construction.  The scattering matrix element is obtained
+from
+\[
+\begin{aligned}
+&\lim_{T\to+\infty}
+\langle\Omega|
+\hat\phi_{f_m^{(T)}}^*\cdots\hat\phi_{f_1^{(T)}}^*
+\hat\phi_{g_1^{(-T)}}\cdots\hat\phi_{g_n^{(-T)}}
+|\Omega\rangle .
+\end{aligned}
+\]
+For large \(T\), locality permits this expression to be written as the
+corresponding time-ordered vacuum distribution, up to errors that vanish in the
+Haag--Ruelle limit.  After Fourier transform each outgoing external variable
+carries an oscillatory phase of the form
+\[
+  \ee^{-\ii(k^0-\omega_{\vec k})T},
+\]
+and each incoming external variable carries a phase of the form
+\[
+  \ee^{\ii(-k^0-\omega_{\vec k})(-T)}
+  =
+  \ee^{\ii(k^0+\omega_{\vec k})T},
+\]
+where the Green-function momentum \(k\) is taken as entering the time-ordered
+correlator.  If the Fourier-transformed Green function is regular at
+\(k^0=\omega_{\vec k}\) or \(k^0=-\omega_{\vec k}\), the large-\(T\) integral
+vanishes by repeated integration by parts.  A nonzero limit is produced by the
+one-particle pole.
+
+The elementary contour integral displays the residue.  With the denominator
+convention used in the Lorentzian Green functions,
+\[
+\begin{aligned}
+&\lim_{T\to+\infty}
+\int\frac{\dd^Dk}{(2\pi)^D}\,
+\frac{\widetilde g(-k)\,
+\ee^{\ii(k^0+\omega_{\vec k})T}}
+     {k^2+m^2-\ii0}
+\\
+&\qquad =
+\int\frac{\dd^d\vec k}{(2\pi)^d}\,
+\widetilde g(\omega_{\vec k},-\vec k)\,
+\frac{\ii}{2\omega_{\vec k}} .
+\end{aligned}
+\]
+The pole enclosed by the large-time prescription is
+\[
+  k^0=-\omega_{\vec k}+\ii0 .
+\]
+For an outgoing external variable the conjugate calculation selects
+\[
+  k^0=\omega_{\vec k}-\ii0 .
+\]
+If the full Feynman two-point singularity
+\(-\ii Z/(k^2+m^2-\ii0)\) is used instead of the bare denominator in the
+displayed integral, the extra factor \(-\ii Z\) combines with the residue above
+to give the mass-shell measure and the external factor \(Z^{1/2}\).  The LSZ
+operator \(Z^{-1/2}\ii(k^2+m^2)\) is the distributional way of extracting this
+same residue from every external leg at once.
+
+This also explains the identity term in the \(S\)-matrix.  A disconnected
+two-point factor
+\[
+  (2\pi)^D\delta^D(k+k')\,
+  \frac{-\ii Z}{k^2+m^2-\ii0}
+\]
+has a simultaneous one-particle pole and gives, after the same limiting
+procedure,
+\[
+  Z\int\dd\mu_m(\vec p)\,f(\vec p)^*g(\vec p),
+\]
+which is the one-particle inner product created by the chosen field.  In a
+multi-particle matrix element these two-point factors reproduce the free
+permutation terms; the remaining part is the connected scattering kernel.
+
 \section{Momentum-Space Kernel}
 
 The time-ordered \(N\)-point function is
@@ -402,6 +483,42 @@ With this convention the operator identity \(S=\mathbf 1+\ii T\) gives
 Here \(P_{\mathrm{out}}=\sum_i q_i\) and
 \(P_{\mathrm{in}}=\sum_j p_j\).
 
+This convention uses relativistically normalized external momentum states.  If
+one instead uses \(\delta\)-normalized states
+\[
+  {}_\delta\langle \vec q\,|\vec p\rangle_\delta
+  =
+  \delta^{(d)}(\vec q-\vec p),
+\]
+related to the relativistic states by
+\[
+  |\vec p\rangle
+  =
+  \bigl[(2\pi)^d2\omega_{\vec p}\bigr]^{1/2}
+  |\vec p\rangle_\delta ,
+\]
+then the connected kernel is often written
+\[
+  {}_{\delta,\mathrm{out}}\langle q|p\rangle_{\delta,\mathrm{in,conn}}
+  =
+  \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  M_\delta(q|p),
+\]
+where
+\[
+  M_\delta(q|p)
+  =
+  \left[
+  \prod_{i=1}^{m}
+  \bigl((2\pi)^d2\omega_{\vec q_i}\bigr)^{-1/2}
+  \prod_{j=1}^{n}
+  \bigl((2\pi)^d2\omega_{\vec p_j}\bigr)^{-1/2}
+  \right]
+  \mathcal M(q|p).
+\]
+The invariant object is \(\mathcal M\); \(M_\delta\) carries the normalization
+factors attached to a nonrelativistic delta-function basis.
+
 \begin{center}
 \begin{tikzpicture}[scale=0.9,>=Stealth]
   \begin{scope}
@@ -432,6 +549,57 @@ The diagram displays the operation. The left object is the connected
 time-ordered Green function with its external one-particle poles. The right
 object is the on-shell invariant amplitude obtained after the pole residues
 have been extracted.
+
+\section{Cluster Decomposition of the Scattering Kernel}
+
+The full scattering kernel is obtained by summing connected kernels over
+partitions of the incoming and outgoing particle labels.  Let
+\(\alpha\) denote the ordered list of incoming external momenta and \(\beta\)
+the ordered list of outgoing external momenta.  A cluster decomposition is a
+common partition
+\[
+  \alpha=\bigsqcup_{I\in\mathcal P}\alpha_I,
+  \qquad
+  \beta=\bigsqcup_{I\in\mathcal P}\beta_I,
+\]
+where each block \(I\) contains the incoming and outgoing labels that belong to
+one connected scattering component.  Then
+\[
+  S(\beta|\alpha)
+  =
+  \sum_{\mathcal P}
+  \prod_{I\in\mathcal P}
+  S^{\mathrm{conn}}(\beta_I|\alpha_I),
+\]
+with the one-particle identity blocks included.  This formula is the
+scattering analogue of the cumulant decomposition of time-ordered correlation
+functions.  Its content is not perturbative: it follows from the Hilbert-space
+cluster property of asymptotic states.  Perturbation theory later represents
+the connected blocks by connected Feynman graphs, but the connected/disconnected
+separation is already present in the nonperturbative scattering kernel.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9,>=Stealth]
+  \draw[purple!75!black,very thick,->] (-4.2,1.2)--(-2.9,0.55);
+  \draw[purple!75!black,very thick,->] (-4.2,0.25)--(-2.9,0.05);
+  \draw[purple!75!black,very thick,->] (-4.2,-0.9)--(-2.9,-0.55);
+  \draw[purple!75!black,very thick,->] (-1.65,0.35)--(-0.55,1.0);
+  \draw[purple!75!black,very thick,->] (-1.65,-0.35)--(-0.55,-0.95);
+  \node[circle,draw=black,thick,minimum size=1.1cm,fill=green!8]
+    at (-2.25,0) {$S_c$};
+  \node at (0.15,0) {$+$};
+  \draw[purple!75!black,very thick,->] (0.9,1.0)--(1.9,0.55);
+  \draw[purple!75!black,very thick,->] (0.9,0.2)--(1.9,0.05);
+  \draw[purple!75!black,very thick,->] (0.9,-1.0)--(1.9,-0.55);
+  \node[circle,draw=black,thick,minimum size=0.95cm,fill=green!8]
+    at (2.45,0.45) {$S_c$};
+  \node[circle,draw=black,thick,minimum size=0.95cm,fill=green!8]
+    at (2.45,-0.55) {$S_c$};
+  \draw[purple!75!black,very thick,->] (2.95,0.45)--(4.0,0.95);
+  \draw[purple!75!black,very thick,->] (2.95,-0.55)--(4.0,-1.0);
+  \draw[purple!75!black,very thick,->] (1.9,0.05)--(4.0,0.05);
+\end{tikzpicture}
+\end{center}
 
 \section{Perturbative Evaluation After Reduction}
 

@@ -64,6 +64,71 @@ after subtracting the identity contribution.  The connected contribution to
   \ii(2\pi)^D\delta^D(P_{\rm out}-P_{\rm in})\mathcal M .
 \]
 
+\section{Sharp-Momentum Limit and Delta-Squares}
+
+The wave-packet definition is primary, but the conventional plane-wave formula
+is useful as a check on all factors.  Temporarily use
+\(\delta\)-normalized one-particle states in \(d=D-1\) spatial dimensions,
+\[
+  {}_\delta\langle \vec q\,|\vec p\rangle_\delta
+  =
+  \delta^{(d)}(\vec q-\vec p),
+\]
+and write the connected kernel as
+\[
+  S^{\rm conn}_{\beta\alpha}
+  =
+  \ii(2\pi)^D\delta^D(P_\beta-P_\alpha)M_\delta(\beta|\alpha).
+\]
+Let \(\mathcal D\) be a final region that does not contain the identity
+no-scattering contribution.  Squaring the distributional kernel gives
+\[
+  P_{\alpha\to\mathcal D}
+  =
+  (2\pi)^D\delta^D(0)
+  \int_{\mathcal D}\dd\beta_\delta\,
+  (2\pi)^D\delta^D(P_\beta-P_\alpha)
+  |M_\delta(\beta|\alpha)|^2 ,
+\]
+where \(\dd\beta_\delta\) is the product of the final \(\dd^d\vec q\) measures,
+including the appropriate identical-particle symmetry factors.  A finite box
+regularization of spatial volume \(V\) and observation time \(\mathcal T\) gives
+\[
+  (2\pi)^D\delta^D(0)=V\mathcal T,
+  \qquad
+  \delta^{(d)}(0)=\frac{V}{(2\pi)^d}.
+\]
+For two sharp incoming particles, the normalized box state carries the factor
+\(\delta^{(d)}(0)^{-2}\).  Hence
+\[
+  P_{\alpha\to\mathcal D}
+  =
+  \frac{(2\pi)^{2d}\mathcal T}{V}
+  \int_{\mathcal D}\dd\beta_\delta\,
+  (2\pi)^D\delta^D(P_\beta-P_\alpha)
+  |M_\delta(\beta|\alpha)|^2 .
+\]
+If the two beams have relative speed \(v_{\rm rel}=|\vec v_1-\vec v_2|\) in
+the frame used for the box, the geometric probability to scatter into
+\(\mathcal D\) during time \(\mathcal T\) is
+\[
+  P_{\alpha\to\mathcal D}
+  =
+  \frac{\sigma_{\mathcal D}v_{\rm rel}\mathcal T}{V}.
+\]
+Therefore
+\[
+  \sigma_{\mathcal D}
+  =
+  \frac{(2\pi)^{2D-2}}{v_{\rm rel}}
+  \int_{\mathcal D}\dd\beta_\delta\,
+  (2\pi)^D\delta^D(P_\beta-P_\alpha)
+  |M_\delta(\beta|\alpha)|^2 .
+\]
+Converting \(M_\delta\) to the invariant amplitude \(\mathcal M\) by the
+external normalization factors stated in the LSZ chapter gives the covariant
+phase-space formula below.
+
 \section{Wave-Packet Origin of Cross Sections}
 
 Cross sections are transition probabilities per incoming transverse flux.
@@ -254,6 +319,39 @@ Therefore
 For identical final particles, the right hand side is divided by \(2\) when
 the integral is taken over the full labeled solid angle.
 
+For elastic scattering of identical scalar particles this formula is
+equivalently obtained by doing the delta-function integration directly.  Let
+\(E=E_{\rm cm}\), \(p=|\vec p_*|\), and \(q=|\vec q_*|\).  Then
+\[
+\begin{aligned}
+  \sigma_{2\to2}
+  &=
+  \frac12\frac{1}{4E_1E_2v_{\rm rel}}
+  \int
+  \frac{\dd^3\vec q_1}{(2\pi)^3 2\omega_1}
+  \frac{\dd^3\vec q_2}{(2\pi)^3 2\omega_2}
+\\
+  &\qquad\qquad\times
+  (2\pi)^4\delta^4(p_1+p_2-q_1-q_2)
+  |\mathcal M|^2 .
+\end{aligned}
+\]
+The spatial delta function sets \(\vec q_2=-\vec q_1\), and the radial
+energy-conservation integral is
+\[
+  \int q^2\dd q\,
+  \delta(\omega_1(q)+\omega_2(q)-E)
+  =
+  \frac{q\,\omega_1\omega_2}{E}.
+\]
+Using \(E_1E_2v_{\rm rel}=pE\) and \(q=p\) for elastic scattering gives
+\[
+  \sigma_{2\to2}
+  =
+  \frac{1}{2^7\pi^2E^2}
+  \int\dd\Omega\,|\mathcal M(E,\Omega)|^2 .
+\]
+
 For elastic scattering of identical scalar particles of mass \(m\),
 \[
   |\vec q_*|=|\vec p_*|,
@@ -316,7 +414,80 @@ For two incoming particles,
 The amplitude on the left is the forward amplitude: the outgoing labels are
 the same as the incoming labels.
 
-\section{Partial Waves in Four Dimensions}
+\section{Partial-Wave States in Four Dimensions}
+
+Partial waves are most transparently defined as generalized eigenstates of the
+free two-particle asymptotic representation.  In the center-of-mass frame use
+the \(\delta\)-normalized two-particle basis and write, for scalar particles,
+\[
+  {}_\delta\langle \vec k_1,\vec k_2
+  |E,\vec P=\vec0,\ell,m\rangle
+  =
+  \delta^{(3)}(\vec k_1+\vec k_2)\,
+  \delta(\omega_1+\omega_2-E)\,
+  \mathcal N(E)Y_{\ell m}(\widehat k_1).
+\]
+The angular momentum labels satisfy
+\[
+  J^2=\ell(\ell+1),\qquad J_3=m.
+\]
+For identical spinless bosons, only even \(\ell\) occurs.  The normalization is
+chosen so that
+\[
+  \langle E',\vec P',\ell',m'|E,\vec P,\ell,m\rangle
+  =
+  \delta(E'-E)\delta^{(3)}(\vec P'-\vec P)
+  \delta_{\ell'\ell}\delta_{m'm}.
+\]
+Using
+\[
+  \int k^2\dd k\,\delta(\omega_1(k)+\omega_2(k)-E)
+  =
+  \frac{k\,\omega_1\omega_2}{E},
+\]
+and including the factor \(1/2\) for unordered identical-particle states, one
+finds
+\[
+  \mathcal N(E)
+  =
+  \left(\frac{2E}{k\,\omega_1\omega_2}\right)^{1/2}
+  \qquad\text{for identical scalar bosons}.
+\]
+For distinguishable particles the same formula lacks the factor of \(2\) under
+the square root.
+
+Rotational invariance in the center-of-mass frame makes the elastic partial
+waves diagonal:
+\[
+  S(E',\vec P',\ell',m'|E,\vec P,\ell,m)
+  =
+  \delta(E'-E)\delta^{(3)}(\vec P'-\vec P)
+  \delta_{\ell'\ell}\delta_{m'm}\,S_\ell(E)
+\]
+in an elastic single-channel region.  If inelastic channels are present, this
+equation describes the elastic matrix element of a larger unitary matrix, so
+\[
+  |S_\ell(E)|\le 1,
+\]
+with equality in a purely elastic partial wave.
+
+In the same \(\delta\)-normalized convention, the connected elastic
+sharp-momentum kernel is obtained by inserting the resolution of the identity
+in partial waves.  For identical scalar bosons in the center-of-mass frame,
+\[
+  \ii(2\pi)^4M_\delta(\widehat q|\widehat p)
+  =
+  \frac{\mathcal N(E)^2}{4\pi}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)P_\ell(\widehat q\cdot\widehat p)
+  \bigl(S_\ell(E)-1\bigr).
+\]
+This formula is the direct bridge between the partial-wave diagonalization of
+the \(S\)-operator and the sharp-momentum amplitude.  Multiplying by the
+external normalization factors converts \(M_\delta\) into the invariant
+amplitude \(\mathcal M\) used in the cross-section formula.
+
+\section{Partial-Wave Amplitudes in Four Dimensions}
 
 For scalar \(2\to2\) scattering in the center-of-mass frame, rotational
 invariance makes the amplitude a function of \(s\) and

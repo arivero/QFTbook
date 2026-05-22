@@ -27,6 +27,7 @@
 | --- | --- |
 | \(T\) | transition operator defined by \(S=\mathbf 1+iT\) |
 | \(\mathcal M\) | invariant amplitude |
+| \(M_\delta\) | connected amplitude in the \(\delta^{(d)}\)-normalized sharp-momentum basis |
 | \(\dd\Phi_m\) | invariant \(m\)-body final-state phase space |
 | \(\mathcal F\) | invariant two-particle flux factor |
 | \(v_{\mathrm{rel}}\) | invariant relative speed |
@@ -36,11 +37,15 @@
 | \(a_\ell(s)\) | partial-wave amplitude |
 | \(S_\ell(s)\) | partial-wave S-matrix eigenvalue |
 | \(\rho(s)\) | two-body elastic phase-space factor \(2|\vec p_*|/\sqrt s\) |
+| \(\mathcal N(E)\) | normalization of the COM partial-wave generalized state |
 | \(\delta_\ell(s)\) | elastic phase shift |
 
 ## Claims Established
 
 - Cross sections are transition probabilities divided by invariant flux.
+- The sharp-momentum delta-square derivation is included as a regulated check:
+  \((2\pi)^D\delta^D(0)=V\mathcal T\) and
+  \(\delta^{(d)}(0)=V/(2\pi)^d\).
 - The \(m\)-body phase-space measure and flux factor are fixed in the chosen
   normalization.
 - For \(2\to2\) scattering in \(D=4\),
@@ -54,6 +59,10 @@
 - Unitarity gives the amplitude-level cutting relation and the optical
   theorem.
 - Partial waves diagonalize scalar \(2\to2\) scattering in the COM frame.
+- The COM partial-wave state normalization is derived from the radial
+  energy-conservation delta function, including the identical-particle factor.
+- The sharp-momentum partial-wave kernel is reconstructed explicitly from
+  \(S_\ell(E)-1\), before converting to the invariant amplitude convention.
 - Elastic unitarity gives \(S_\ell=e^{2i\delta_\ell}\) and
   \(\operatorname{Im}a_\ell=\rho|a_\ell|^2\).
 

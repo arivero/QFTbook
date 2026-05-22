@@ -145,6 +145,133 @@ The one-particle vector created by this family is
 It is independent of \(t\). The role of the phase in \(h_t\) is precisely to
 cancel the free time evolution on the mass shell.
 
+\section{Point-Field Smearing and Propagation}
+
+The bounded-operator formulation is the cleanest theorem statement.  In
+applications one often starts from a scalar Wightman field \(\hat\phi(x)\).  The
+same construction is then expressed by smearing \(\hat\phi\) against spacetime
+test functions and by choosing the Fourier support so that only the isolated
+one-particle shell is selected.
+
+Assume that \(\hat\phi\) is a scalar local field whose matrix element between
+the vacuum and the one-particle sector is nonzero.  With relativistically
+normalized generalized one-particle kets,
+\[
+  \langle q|p\rangle
+  =
+  (2\pi)^d2\omega_{\vec p}\,\delta^{(d)}(\vec q-\vec p),
+  \qquad
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,|p\rangle\langle p|=\mathbf 1_{\Hilb_1},
+\]
+where
+\[
+  \dd\mu_m(p)
+  =
+  \frac{\dd^d\vec p}{(2\pi)^d2\omega_{\vec p}},
+  \qquad
+  p=(\omega_{\vec p},\vec p),
+\]
+the one-particle part of \(\hat\phi(x)\Omega\) has the form
+\[
+  P_1\hat\phi(x)\Omega
+  =
+  Z_\phi^{1/2}
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,
+  \ee^{-\ii p\cdot x}|p\rangle .
+\]
+Here \(Z_\phi>0\) is the residue of the two-point function at this particular
+field's one-particle pole.  All remaining spectral components of
+\(\hat\phi(x)\Omega\) have invariant mass separated from \(m\) by the assumed
+gap.
+
+Let
+\[
+  f(x)=\int\frac{\dd^D k}{(2\pi)^D}\,\tilde f(k)\,\ee^{\ii k\cdot x},
+  \qquad
+  \hat\phi_f=\int\dd^D x\,f(x)\hat\phi(x).
+\]
+If \(\tilde f\) is supported in a small neighborhood of \(\Sigma_m^+\) and away
+from the rest of the energy-momentum spectrum, then
+\[
+  \hat\phi_f\Omega
+  =
+  Z_\phi^{1/2}
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,
+  \tilde f(p)|p\rangle ,
+\]
+with no continuum contribution.  A Gaussian packet centered near a spacetime
+point \((t_*,\vec x_*)\) and a momentum \((E_*,\vec P_*)\) may be used as an
+approximation,
+\[
+  f(x)
+  =
+  \exp\left[
+    -\frac{(x^0-t_*)^2+|\vec x-\vec x_*|^2}{L^2}
+    +\ii\vec P_*\cdot(\vec x-\vec x_*)
+    -\ii E_*(x^0-t_*)
+  \right],
+  \qquad E_*^2=\vec P_*^{\,2}+m^2 .
+\]
+For exact spectral separation it is better to choose \(\tilde f\) smooth and
+compactly supported in momentum space; the spacetime function is then rapidly
+decreasing rather than compactly supported.  This is the analytic setting used
+by Haag--Ruelle theory.
+
+Define the translated family \(f^{(T)}\) by
+\[
+  \tilde f^{(T)}(k)
+  =
+  \ee^{\ii(k^0-\omega_{\vec k})T}\tilde f(k),
+  \qquad
+  \omega_{\vec k}=\sqrt{\vec k^{\,2}+m^2}.
+\]
+On the positive mass shell the extra phase is equal to \(1\).  Consequently
+\[
+  P_1\hat\phi_{f^{(T)}}\Omega=P_1\hat\phi_f\Omega
+\]
+for all \(T\), while the spacetime profile of the smearing function moves.  In
+position space,
+\[
+\begin{aligned}
+  f^{(T)}(x^0,\vec x)
+  &=
+  \int\frac{\dd^Dk}{(2\pi)^D}\,
+  \ee^{\ii k\cdot x+\ii(k^0-\omega_{\vec k})T}\tilde f(k)
+  \\
+  &=
+  \int\dd^d\vec y\,K(\vec x-\vec y;T)\,
+  f(x^0-T,\vec y),
+\end{aligned}
+\]
+where
+\[
+  K(\vec x;T)
+  =
+  \int\frac{\dd^d\vec k}{(2\pi)^d}\,
+  \ee^{\ii\vec k\cdot\vec x-\ii\omega_{\vec k}T}.
+\]
+The kernel satisfies the Klein--Gordon equation in the variables
+\((T,\vec x)\),
+\[
+  \left(\partial_T^2-\Delta_{\vec x}+m^2\right)K(\vec x;T)=0,
+  \qquad
+  K(\vec x;0)=\delta^{(d)}(\vec x)
+\]
+in the distributional sense.  If \(\tilde f\) is concentrated near
+\(\vec P_*\), stationary phase shows that the packet center moves as
+\[
+  (t_*,\vec x_*)
+  \longmapsto
+  (t_*+T,\vec x_*+\vec v_*T),
+  \qquad
+  \vec v_*=\nabla_{\vec p}\omega_{\vec p}\big|_{\vec p=\vec P_*}
+  =\frac{\vec P_*}{E_*}.
+\]
+Thus the same one-particle vector may be represented by smearing a local field
+over different large spacetime regions.  The equality is only after projection
+to \(\Hilb_1\); the parts outside the isolated shell are removed by the spectral
+support condition.
+
 The velocity support of \(h\) is
 \[
   V(h)
@@ -288,6 +415,41 @@ velocity clusters are separated by spacelike distances growing linearly in
 \(|t|\). The cluster property and locality reduce the large-time scalar
 product to the product of the corresponding one-particle scalar products.
 
+In the point-field notation above, for two packets with disjoint velocity
+supports one may write
+\[
+  \Psi_T=\hat\phi_{f_1^{(T)}}\hat\phi_{f_2^{(T)}}\Omega .
+\]
+For fixed \(\Delta T\),
+\[
+\begin{aligned}
+  \langle\Psi_T,\Psi_{T+\Delta T}\rangle
+  =
+  \langle\Omega|
+  \hat\phi_{f_2^{(T)}}^*
+  \hat\phi_{f_1^{(T)}}^*
+  \hat\phi_{f_1^{(T+\Delta T)}}
+  \hat\phi_{f_2^{(T+\Delta T)}}
+  |\Omega\rangle .
+\end{aligned}
+\]
+As \(T\to+\infty\) or \(T\to-\infty\), the two spacetime clusters separate
+spacelike.  The vacuum cluster property gives
+\[
+  \langle\Psi_T,\Psi_{T+\Delta T}\rangle
+  -
+  \langle\hat\phi_{f_1}\Omega,\hat\phi_{f_1}\Omega\rangle
+  \langle\hat\phi_{f_2}\Omega,\hat\phi_{f_2}\Omega\rangle
+  \longrightarrow 0,
+\]
+and the same limit is obtained for \(\Delta T=0\).  Therefore
+\[
+  \|\Psi_{T+\Delta T}-\Psi_T\|\longrightarrow0 .
+\]
+Under the smooth spectral separation hypotheses of Haag--Ruelle theory, the
+error decreases faster than any inverse power of \(|T|\).  This explicit
+two-packet calculation is the concrete model for the general Cook estimate.
+
 \section{The Estimate Behind the Limit}
 
 The preceding theorem is a norm-convergence statement.  Its proof is governed
@@ -405,6 +567,34 @@ Haag--Ruelle wave operators intertwine the physical and free actions:
 \]
 This equation states that an asymptotic \(n\)-particle state transforms as
 the corresponding symmetrized tensor product of one-particle Wigner states.
+
+Equivalently, the isometries may be described by generalized momentum kernels.
+For bosons,
+\[
+\begin{aligned}
+&{}^{\mathrm{out/in}}\langle
+q_1,\ldots,q_m|p_1,\ldots,p_n\rangle^{\mathrm{out/in}}
+\\
+&\qquad =
+\delta_{mn}\sum_{\sigma\in S_n}
+\prod_{j=1}^n
+(2\pi)^d2\omega_{\vec p_j}\,
+\delta^{(d)}(\vec q_j-\vec p_{\sigma(j)}).
+\end{aligned}
+\]
+For smooth wave packets,
+\[
+  \Psi^{\mathrm{out/in}}(f_1,\ldots,f_n)
+  =
+  Z_\phi^{n/2}
+  \int\prod_{j=1}^n\dd\mu_m(p_j)\,
+  \prod_{j=1}^n\tilde f_j(p_j)\,
+  |p_1,\ldots,p_n\rangle^{\mathrm{out/in}},
+\]
+whenever the \(f_j\) are chosen with separated velocity supports.  This is the
+precise form of the statement that either the incoming or the outgoing
+asymptotic basis labels states by free particle momenta, while the comparison
+between the two bases is the scattering matrix.
 
 \begin{center}
 \begin{tikzcd}[column sep=large,row sep=large]

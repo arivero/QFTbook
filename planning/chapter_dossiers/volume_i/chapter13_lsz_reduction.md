@@ -43,6 +43,7 @@
 | \(q_i\) | outgoing positive-energy physical momentum |
 | \(k_a\) | all-incoming Green-function momentum, \(q_i\) or \(-p_j\) |
 | \(\mathcal M\) | invariant scattering amplitude |
+| \(M_\delta\) | connected amplitude in a nonrelativistic \(\delta^{(d)}\)-normalized basis |
 
 ## Claims Established
 
@@ -53,8 +54,14 @@
 - Connected scattering kernels are obtained by applying
   \(Z^{-1/2}i(k^2+m^2)\) to every external leg and taking the on-shell
   boundary value.
+- The large-time Haag--Ruelle matrix element becomes an oscillatory integral
+  whose nonzero limit is precisely the external one-particle pole residue.
 - Disconnected two-point factors reproduce the identity part of the
   S-operator.
+- The relation between \(\mathcal M\) and \(M_\delta\) is fixed by the external
+  relativistic normalization factors.
+- The full scattering kernel decomposes into products of connected kernels
+  over compatible partitions of incoming and outgoing labels.
 - Perturbative \(\phi^4\) Green functions yield
   \(\mathcal M=-g+O(g^2)\) for tree-level \(2\to2\) scattering after LSZ.
 
@@ -62,6 +69,8 @@
 
 - A compact diagram showing external Green-function legs being amputated by
   LSZ into an invariant amplitude.
+- A connected-kernel decomposition diagram showing the full \(S\)-kernel as a
+  sum over connected components.
 
 ## Exclusions
 

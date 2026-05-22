@@ -47,6 +47,9 @@
 | \(h_t\) | positive-energy Klein--Gordon wave packet |
 | \(B_t(h)\) | Haag--Ruelle creation approximant |
 | \(V(h)\) | velocity support of \(h\) |
+| \(f^{(T)}\) | spacetime-smearing packet whose one-particle projection is independent of \(T\) |
+| \(K(\vec x;T)\) | positive-energy Klein--Gordon propagation kernel for spacetime smearing |
+| \(Z_\phi\) | one-particle pole residue of the chosen scalar interpolating field |
 | \(\mathcal F_s(\Hilb_1)\) | bosonic Fock space over \(\Hilb_1\) |
 | \(\Omega_{\mathrm{in/out}}\) | Haag--Ruelle wave operators |
 | \(\Hilb_{\mathrm{in/out}}\) | incoming/outgoing scattering subspaces |
@@ -58,12 +61,21 @@
   explicit spectral/locality hypotheses.
 - A local operator with nonzero one-particle overlap can be energy-momentum
   filtered and smeared with a positive-energy Klein--Gordon wave packet.
+- In point-field notation, the smeared field \(\hat\phi_f\Omega\) projects to
+  the isolated mass shell with coefficient \(Z_\phi^{1/2}\tilde f\).
+- The family \(f^{(T)}\) preserves the one-particle vector while moving the
+  spacetime support with group velocity \(\vec p/\omega_{\vec p}\).
 - Disjoint velocity supports imply asymptotic spacelike separation of the
   corresponding wave packets.
 - Haag--Ruelle limits exist in norm under the stated hypotheses and depend
   only on the one-particle vectors.
+- The two-packet Cauchy estimate is tied explicitly to the four-point vacuum
+  correlator and its cluster factorization at asymptotically spacelike
+  separation.
 - The limits carry the bosonic Fock inner product and define isometric wave
   operators from free Fock space into the physical Hilbert space.
+- Generalized in/out momentum kernels obey the symmetrized relativistic
+  delta-function normalization.
 - The S-operator is \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) when the
   incoming and outgoing ranges coincide.
 - LSZ is positioned as the next theorem relating these nonperturbative matrix
@@ -77,6 +89,8 @@
   spacelike separated.
 - Wave-operator diagram relating Fock space, incoming/outgoing subspaces, and
   the S-operator.
+- Point-field propagation is represented algebraically by \(f^{(T)}\) and
+  \(K(\vec x;T)\); no handwritten page image is included.
 
 ## Exclusions
 
