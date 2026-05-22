@@ -30,6 +30,11 @@
   `253b_trace-018.png` for the above-threshold tree pole, unitarity
   obstruction, resonance interpretation, and one-dimensional outgoing-wave
   setup.
+- Rendered handwritten trace
+  `monograph/tex/build/source_visual_trace/253b_trace-019.png` through
+  `253b_trace-026.png` for the resonance \(k\)- and \(E\)-plane pictures,
+  dressed \(\phi_2\) propagator, one-loop self-energy, Wick rotation,
+  cutoff subtraction, threshold cut, phase motion, and second-sheet pole.
 
 ## Definitions and Symbols
 
@@ -72,6 +77,11 @@
   are linked by probability conservation; the object is a singular outgoing
   functional rather than a normalizable eigenvector of the self-adjoint
   Hamiltonian.
+- The nonrelativistic energy-plane figure records that resonance poles lie on
+  the sheet reached through the positive-energy cut.
+- The one-loop self-energy derivation now includes the shifted loop-energy
+  Wick-rotation contour and the Euclidean cutoff evaluation used in the
+  handwritten notes.
 - The one-loop \(\phi_1\) bubble gives
   \[
     \Sigma^R(k)
@@ -96,6 +106,11 @@
   up to the stated normalization convention for the cubic interaction.
 - Elastic partial-wave unitarity is represented by phase motion of \(S_0(s)\),
   not by a physical-axis divergence.
+- The first-sheet sign argument is recorded: in the upper half \(s\)-plane
+  both \(\operatorname{Im}(-s)\) and the imaginary part of the logarithmic
+  term have the same negative sign, while the lower half-plane has the
+  conjugate positive sign. Hence the resonance zero of the denominator is not
+  on the first sheet.
 - The first-sheet amplitude has the threshold cut; the resonance pole is on
   the continuation through that cut.
 

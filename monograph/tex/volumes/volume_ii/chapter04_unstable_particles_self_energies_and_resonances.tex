@@ -182,6 +182,33 @@ map to negative real energies on the physical sheet. Resonance poles with
 complex energies below the positive real axis on the sheet reached by
 continuing through the scattering cut.
 
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \draw[->,line width=0.7pt] (-2.25,0)--(4.45,0)
+    node[right] {\(\operatorname{Re}E\)};
+  \draw[->,line width=0.7pt] (0,-1.65)--(0,2.05)
+    node[above] {\(\operatorname{Im}E\)};
+  \draw[blue!70!black,line width=1.05pt,->] (0,0)--(3.85,0);
+  \node[blue!70!black,below,font=\small] at (2.55,-0.12)
+    {physical continuum};
+  \fill[red!75!black] (-1.18,0) circle (2.4pt);
+  \fill[red!75!black] (-0.62,0) circle (2.4pt);
+  \node[red!75!black,align=center,font=\small] at (-1.22,0.72)
+    {bound\\states};
+  \fill[orange!90!black] (2.35,-0.78) circle (2.5pt);
+  \node[orange!90!black,anchor=west,font=\small] at (2.52,-0.78)
+    {resonance pole};
+  \draw[orange!90!black,dashed,line width=0.75pt] (2.35,-0.78)--(2.35,0);
+  \draw[purple,->,line width=0.95pt]
+    (1.0,0.72) .. controls (1.75,1.12) and (2.62,0.72) .. (2.82,0.08);
+  \draw[green!55!black,->,line width=0.95pt]
+    (0.52,-0.12) .. controls (0.82,-0.82) and (1.62,-1.18) .. (2.22,-0.84);
+  \node[purple,font=\small] at (2.26,1.03) {first sheet};
+  \node[green!55!black,font=\small] at (1.24,-1.3) {second sheet};
+  \fill (0,0) circle (1.8pt) node[below left] {\(0\)};
+\end{tikzpicture}
+\end{center}
+
 \section{The Dressed Propagator}
 
 Return to the relativistic exchange model. Define the exact time-ordered
@@ -263,6 +290,30 @@ contour according to the Feynman prescription. The Euclidean expression is
   \frac{1}{
     \left[\ell_E^2+k^2x(1-x)+m_1^2-\ii0\right]^2}.
 \]
+The rotation is a contour statement, not a change of notation: for the
+shifted loop variable the pole displacements prescribed by \(-\ii0\) leave a
+sector through which the \(\ell^0\)-contour can be moved to the Euclidean
+axis without crossing singularities.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.9]
+  \draw[->,line width=0.7pt] (-2.8,0)--(2.8,0)
+    node[right] {\(\operatorname{Re}\ell^0\)};
+  \draw[->,line width=0.7pt] (0,-2.0)--(0,2.2)
+    node[above] {\(\operatorname{Im}\ell^0\)};
+  \draw[purple,line width=1.0pt,->] (-2.45,0)--(2.25,0);
+  \draw[green!55!black,line width=1.0pt,->] (0,-1.7)--(0,1.75);
+  \fill[red!75!black] (-1.12,0.35) circle (2.3pt);
+  \fill[red!75!black] (1.15,-0.35) circle (2.3pt);
+  \node[red!75!black,font=\small] at (-1.62,0.82)
+    {Feynman poles};
+  \draw[orange!90!black,->,line width=1.0pt]
+    (1.6,0.18) .. controls (1.25,0.92) and (0.62,1.28) .. (0.08,1.34);
+  \node[purple,font=\small,below] at (-1.62,-0.12) {Lorentzian};
+  \node[green!55!black,font=\small,anchor=west] at (0.18,1.58)
+    {Euclidean};
+\end{tikzpicture}
+\end{center}
 
 In four dimensions, with a Euclidean cutoff \(|\ell_E|<\Lambda\),
 \[
@@ -342,6 +393,11 @@ and therefore
   =
   \frac{g^2}{32\pi}\rho_1(s).
 \]
+This boundary value is fixed by the same Wick-rotation prescription that
+relates the Euclidean Green function to the Lorentzian time-ordered Green
+function. For real positive energy above the two-particle threshold,
+\(k^0\) is reached by analytic continuation from the imaginary \(k^0\)-axis
+to the positive real axis through the upper half-plane.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.92]
@@ -480,6 +536,22 @@ sign. Equivalently, the logarithm in \(F(s)\) has the discontinuity
 The first sheet contains the physical branch cut beginning at \(4m_1^2\).
 The resonance pole is reached by continuing through this cut to the adjacent
 sheet.
+
+The first-sheet denominator has a useful sign property. Continue \(F(s)\)
+from the real interval \(s<4m_1^2\) into the upper half-plane. For
+\(\operatorname{Im}s>0\),
+\[
+  \operatorname{Im}\!\left[
+    \log\left(1-\frac{s\,x(1-x)}{m_1^2}\right)
+  \right]<0,
+  \qquad
+  \operatorname{Im}(-s)<0,
+\]
+for \(0<x<1\). Hence \(\operatorname{Im}F(s)<0\) on the upper half of the
+first sheet, so \(F(s)\) has no zero there. The lower half-plane gives the
+conjugate sign statement. Thus the resonance associated with the dressed
+\(\phi_2\) exchange is not a pole of either half of the first sheet; its pole
+appears only after passing through the cut.
 
 Near a narrow resonance, this continuation places the pole at
 \[
