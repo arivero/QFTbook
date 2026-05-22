@@ -3,6 +3,12 @@
 
 \section{Scattering Operator and Kernel Notation}
 
+This chapter fixes the distributional kernel notation used in the analytic
+chapters.  The nonperturbative construction of \(S\) by Haag--Ruelle wave
+operators was given in Chapters~\ref{ch:haag-ruelle} and
+\ref{ch:volume-iv-haag-ruelle-mathematical-scattering}; it is not being
+redefined here.
+
 Fix a stable scalar particle of mass \(m>0\). Its positive mass shell is
 \[
   \Sigma_m^+
@@ -218,7 +224,8 @@ For \(m\) outgoing and \(n\) incoming particles, set \(N=m+n\) and
 Incoming momenta enter the Green function with a minus sign because all
 momenta \(k_a\) are taken to flow into the time-ordered distribution.
 
-The LSZ formula for the connected kernel is
+The LSZ formula for the connected kernel is the kernel specialization of
+Theorem~\ref{thm:lsz-wave-packet}:
 \[
 \boxed{
 \begin{aligned}
@@ -291,26 +298,65 @@ the blocks partition all incoming and outgoing labels. Define
   =
   S^{\mathrm c}(\beta_B|\alpha_B).
 \]
-Then cluster decomposition is the identity
-\[
+
+\begin{proposition}[Connected scattering kernels]
+For fixed incoming and outgoing labels, the full scattering kernel has a unique
+expansion
+\begin{equation}
   S(\beta|\alpha)
   =
   \sum_{\Pi}
-  \prod_{B\in\Pi}S_B^{\mathrm c}.
-\]
-This equation is also a recursive definition of the connected kernels. The
-one-particle identity kernel is included as the connected kernel for a block
-with one incoming and one outgoing label:
-\[
+  \prod_{B\in\Pi}S^{\mathrm c}(\beta_B|\alpha_B),
+  \label{eq:scattering-kernel-cluster-partition}
+\end{equation}
+where the sum is over process partitions.  Equivalently, the connected kernel
+is determined recursively by
+\begin{equation}
+  S^{\mathrm c}(\beta|\alpha)
+  =
+  S(\beta|\alpha)
+  -
+  \sum_{\Pi\ne\{\alpha\cup\beta\}}
+  \prod_{B\in\Pi}S^{\mathrm c}(\beta_B|\alpha_B).
+  \label{eq:connected-scattering-recursion}
+\end{equation}
+The one-particle identity kernel is included as the connected kernel for a
+block with one incoming and one outgoing label:
+\begin{equation}
   S^{\mathrm c}(q|p)
   =
   (2\pi)^d2\omega_{\vec p}\delta^d(\vec q-\vec p)
   +
   \ii(2\pi)^D\delta^D(q-p)\mathcal M(q|p).
-\]
+  \label{eq:one-particle-connected-kernel}
+\end{equation}
 In a translationally invariant vacuum without external backgrounds, the
 nontrivial one-particle amplitude vanishes for a stable isolated species, and
 the identity term remains.
+\end{proposition}
+
+\begin{proof}
+Order the finite label sets by their total number of external labels.  For one
+block the statement defines \(S^{\mathrm c}\).  Suppose the connected kernels
+have been defined for every proper subcollection.  Then
+\eqref{eq:connected-scattering-recursion} defines the connected kernel for the
+given collection by subtracting all factorizations into proper subprocesses.
+Substituting this definition back into the right-hand side of
+\eqref{eq:scattering-kernel-cluster-partition} gives \(S(\beta|\alpha)\);
+uniqueness follows because every other solution would have a difference whose
+highest-size nonzero component appears only in the one-block term and hence
+must vanish.  This is the moment-cumulant recursion for scattering kernels,
+with process partitions replacing ordinary set partitions.
+\end{proof}
+
+The physical cluster property is the support and large-separation statement
+attached to this recursion.  If the wave packets are separated into two groups
+whose relative spacetime translation is taken to infinity in a spacelike
+direction, then the full wave-packet matrix element factorizes into the product
+of the two lower-point matrix elements.  Equivalently, a connected kernel has
+no distributional component carrying separate momentum conservation for a
+proper subprocess; it carries only the total conservation law of the connected
+process.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95,
