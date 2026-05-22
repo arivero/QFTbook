@@ -6,26 +6,65 @@
 Let a Euclidean local theory be coupled to a smooth background metric
 \(g_{\mu\nu}\) on a \(D\)-dimensional manifold \(M\).  The stress tensor is
 defined by the first variation of the action or of the renormalized generating
-functional with respect to \(g_{\mu\nu}\).  In an action formulation,
+functional with respect to the metric.  This chapter uses the
+contravariant-metric convention
 \begin{equation}
   \delta S[\Phi;g]
   =
   \frac12
   \int_M \dd^D x\,\sqrt g\,
-  T^{\mu\nu}(x)\,\delta g_{\mu\nu}(x),
+  T_{\mu\nu}(x)\,\delta g^{\mu\nu}(x),
   \label{eq:stress-tensor-metric-variation}
 \end{equation}
 where \(\Phi\) denotes the dynamical fields and
-\(g=\det(g_{\mu\nu})\).  With this sign convention, a flat-space translation
-current is obtained by evaluating \(T_{\mu\nu}\) at
+\(g=\det(g_{\mu\nu})\).  Since
+\(\delta g^{\mu\nu}=-g^{\mu\rho}g^{\nu\sigma}\delta g_{\rho\sigma}\), the same
+convention is equivalently
+\[
+  \delta S[\Phi;g]
+  =
+  -\frac12
+  \int_M \dd^D x\,\sqrt g\,
+  T^{\mu\nu}(x)\,\delta g_{\mu\nu}(x).
+\]
+With this sign convention, evaluating \(T_{\mu\nu}\) on the flat metric gives
+the translation Noether tensor after adding the divergence term that makes the
+Noether tensor symmetric.
+
+A flat classical action can have several curved extensions.  For example,
+\[
+  S[\phi]
+  =
+  \int_{\R^D}\dd^Dx\,
+  \left(
+  \frac12\partial_\mu\phi\,\partial^\mu\phi
+  +
+  \frac12m^2\phi^2
+  \right)
+\]
+may be extended as
+\[
+  S[\phi;g]
+  =
+  \int_M\dd^Dx\,\sqrt g\,
+  \left(
+  \frac12g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi
+  +
+  \frac12m^2\phi^2
+  +
+  \text{local curvature couplings}
+  \right).
+\]
+Curvature couplings that vanish on flat space still affect \(T_{\mu\nu}\),
+because \(T_{\mu\nu}\) is defined by varying \(g_{\mu\nu}\) before setting
 \(g_{\mu\nu}=\delta_{\mu\nu}\).
 
 If the theory is invariant under diffeomorphisms of the background, then an
 infinitesimal vector field \(\xi^\mu\) gives
 \[
-  \delta_\xi g_{\mu\nu}
+  \delta_\xi g^{\mu\nu}
   =
-  \nabla_\mu\xi_\nu+\nabla_\nu\xi_\mu .
+  -\nabla^\mu\xi^\nu-\nabla^\nu\xi^\mu .
 \]
 Substituting this variation into
 \eqref{eq:stress-tensor-metric-variation} and integrating by parts gives
@@ -37,6 +76,39 @@ as an operator equation away from insertions.  In flat space this becomes
 \(\partial_\mu T^{\mu\nu}=0\).  Symmetry of \(T_{\mu\nu}\) follows from
 variation with respect to the symmetric tensor \(g_{\mu\nu}\).
 
+\section{Metric Perturbations and Stress Insertions}
+
+Set \(g_{\mu\nu}=\delta_{\mu\nu}+\delta g_{\mu\nu}\), with \(\delta g\) smooth
+and compactly supported.  To first order, the Euclidean path integral changes
+by the insertion
+\begin{equation}
+  \exp[-\delta_g S]
+  =
+  \exp\left[
+  -\frac12\int_{\R^D}\dd^Dx\,
+  \delta g^{\mu\nu}(x)T_{\mu\nu}(x)
+  \right],
+  \label{eq:stress-insertion-small-metric}
+\end{equation}
+where indices on \(\delta g^{\mu\nu}\) are raised with the flat metric at this
+order.  Thus, for an operator product \(X\) supported away from
+\(\operatorname{supp}(\delta g)\),
+\[
+  \langle X\rangle_{\delta+\delta g}
+  =
+  \langle X\rangle_{\delta}
+  -
+  \frac12\int\dd^Dx\,\delta g^{\mu\nu}(x)
+  \langle T_{\mu\nu}(x)X\rangle_{\delta}
+  +
+  O(\delta g^2).
+\]
+Higher metric variations require a prescription for coincident products of
+stress tensors.  The short-distance singularities in
+\(T_{\mu\nu}(x)T_{\rho\sigma}(y)\) and the corresponding contact terms are part
+of the renormalized definition of the theory on curved backgrounds.  In even
+dimensions these contact terms include the Weyl anomaly data.
+
 \section{Weyl Transformations}
 
 A Weyl transformation is a local rescaling of the background metric:
@@ -45,36 +117,42 @@ A Weyl transformation is a local rescaling of the background metric:
 \]
 where \(\omega\) is a smooth real function.  Infinitesimally,
 \[
-  \delta_\omega g_{\mu\nu}=2\omega g_{\mu\nu}.
+  \delta_\omega g_{\mu\nu}=2\omega g_{\mu\nu},
+  \qquad
+  \delta_\omega g^{\mu\nu}=-2\omega g^{\mu\nu}.
 \]
 The corresponding metric variation gives
 \[
   \delta_\omega S
   =
+  -
   \int_M\dd^D x\,\sqrt g\,
   \omega(x)\,T^\mu{}_\mu(x).
 \]
-Thus Weyl invariance of the flat-space theory coupled to background metrics
-is expressed by vanishing trace, modulo contact terms and possible curvature
-anomalies:
+The action may also assign a Weyl transformation to the dynamical fields
+\(\Phi\).  Weyl invariance of the theory coupled to background metrics means
+that the combined transformation of \(g_{\mu\nu}\) and \(\Phi\) leaves the
+renormalized functional invariant, up to anomaly terms described below.  In
+flat space this gives the trace condition, modulo equations of motion and
+contact terms,
 \begin{equation}
   T^\mu{}_\mu=0
   \label{eq:weyl-trace-zero}
 \end{equation}
-in flat space.  The use of a background metric is not an additional dynamical
-field; it is a device for defining stress-tensor insertions and their Ward
-identities.
+as the operator form of Weyl invariance at separated points.  The background
+metric is an external source for stress-tensor insertions and Ward identities.
 
 In even dimensions, the renormalized generating functional may transform
-under a Weyl rescaling by a local curvature functional.  Such a Weyl anomaly
-does not obstruct flat-space conformal Ward identities at separated points,
-but it contributes contact terms and curved-space response data.  The core
-monograph records this structural fact; the special two-dimensional extension
-of conformal symmetry is deferred to a separate treatment.
+under a Weyl rescaling by a local curvature functional.  At separated
+flat-space points the conformal Ward identities are governed by
+\eqref{eq:weyl-trace-zero}; the anomaly contributes contact terms and
+curved-space response data.  The core monograph records this structural fact;
+the special two-dimensional extension of conformal symmetry is deferred to a
+separate treatment.
 
 \section{Improvement of the Stress Tensor}
 
-The stress tensor is not unique.  If \(L_{\mu\nu}(x)\) is a local symmetric
+The stress tensor has improvement freedom.  If \(L(x)\) is a local scalar
 operator, then
 \begin{equation}
   T_{\mu\nu}
@@ -84,18 +162,18 @@ operator, then
   T_{\mu\nu}
   +
   \left(
-  \partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2
+  \delta_{\mu\nu}\partial^2-\partial_\mu\partial_\nu
   \right)L
   \label{eq:scalar-stress-improvement}
 \end{equation}
-for a scalar \(L\) preserves conservation in flat space.  More general
-improvements are possible, but \eqref{eq:scalar-stress-improvement} is the
-case needed for the free scalar and many scalar fixed points.  Its trace is
+preserves conservation in flat space.  More general improvements are possible,
+but \eqref{eq:scalar-stress-improvement} is the case needed for the free
+scalar and many scalar fixed points.  Its trace is
 \[
   T'^\mu{}_\mu
   =
   T^\mu{}_\mu
-  -(D-1)\partial^2L .
+  +(D-1)\partial^2L .
  \]
 If \(T^\mu{}_\mu\) is a total Laplacian of a local scalar, an improvement can
 make the trace vanish in flat space.
@@ -109,19 +187,33 @@ background-metric action.  For a scalar field \(\phi\), the term
   \int_M\dd^D x\,\sqrt g\,R(g)\phi^2
 \]
 vanishes in flat space when \(R(g)=0\), but its metric variation contributes
-to \(T_{\mu\nu}\) at flat \(g_{\mu\nu}\).  This is why a term invisible in the
+to \(T_{\mu\nu}\) at flat \(g_{\mu\nu}\).  Thus a term absent from the
 flat-space action can change the flat-space stress tensor.
 
 \section{The Conformally Coupled Free Scalar}
 
-Consider a real massless scalar field in Euclidean signature with action
+Consider a real massless scalar field in Euclidean signature.  The minimally
+coupled curved-space action is
 \[
-  S_0[\phi]
+  S_0[\phi;g]
   =
-  \frac12\int\dd^D x\,
-  \partial_\mu\phi\,\partial^\mu\phi .
+  \frac12\int_M\dd^D x\,\sqrt g\,
+  g^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi .
 \]
-The canonical stress tensor is
+Its metric variation is
+\[
+  \delta_g S_0
+  =
+  \frac12\int_M\dd^Dx\,\sqrt g\,
+  \delta g^{\mu\nu}
+  \left(
+  \partial_\mu\phi\,\partial_\nu\phi
+  -
+  \frac12g_{\mu\nu}g^{\rho\sigma}
+  \partial_\rho\phi\,\partial_\sigma\phi
+  \right).
+\]
+On the flat background this gives
 \[
   T_{\mu\nu}^{(0)}
   =
@@ -135,7 +227,8 @@ Its trace is
   =
   \left(1-\frac D2\right)(\partial\phi)^2 .
 \]
-Using the equation of motion \(\partial^2\phi=0\), the identity
+For \(D>2\) this trace is a nonzero local operator before improvement.  Using
+the equation of motion \(\partial^2\phi=0\), the identity
 \[
   \partial^2\phi^2
   =
@@ -143,7 +236,46 @@ Using the equation of motion \(\partial^2\phi=0\), the identity
 \]
 shows that the trace is a Laplacian modulo the equation of motion.
 
-The improved stress tensor is
+Now add the curvature functional
+\[
+  S_1[\phi;g]
+  =
+  \frac12\int_M\dd^Dx\,\sqrt g\,R(g)\phi^2 .
+\]
+The scalar curvature variation with respect to \(g^{\mu\nu}\) is
+\[
+  \delta R
+  =
+  R_{\mu\nu}\delta g^{\mu\nu}
+  +
+  \nabla_\rho
+  \left(
+  g^{\mu\nu}\delta\Gamma^\rho_{\mu\nu}
+  -
+  g^{\mu\rho}\delta\Gamma^\nu_{\mu\nu}
+  \right),
+\]
+where \(\delta\Gamma^\rho_{\mu\nu}\) is the variation of the Levi-Civita
+connection.  Integrating the total derivative by parts and then setting
+\(g_{\mu\nu}=\delta_{\mu\nu}\) gives
+\[
+  \delta_g S_1\big|_{g=\delta}
+  =
+  \frac12\int_{\R^D}\dd^Dx\,\delta g^{\mu\nu}
+  \left(
+  -\partial_\mu\partial_\nu\phi^2
+  +
+  \delta_{\mu\nu}\partial^2\phi^2
+  \right).
+\]
+The remaining terms in the full curved-space variation are proportional to
+curvature and vanish after the metric is set to \(\delta_{\mu\nu}\).
+
+For
+\[
+  S[\phi;g]=S_0[\phi;g]+aS_1[\phi;g],
+\]
+the flat-space stress tensor is
 \begin{equation}
   T_{\mu\nu}
   =
@@ -151,27 +283,37 @@ The improved stress tensor is
   -
   \frac12\delta_{\mu\nu}(\partial\phi)^2
   +
-  \xi_\ast
+  a
   \left(
   \delta_{\mu\nu}\partial^2-\partial_\mu\partial_\nu
   \right)\phi^2,
   \label{eq:improved-free-scalar-stress}
 \end{equation}
-where
-\begin{equation}
-  \xi_\ast=\frac{D-2}{4(D-1)}.
-  \label{eq:conformal-scalar-xi}
-\end{equation}
-Indeed,
+The total translation generators
+\(P^\nu=\int_\Sigma\dd^{D-1}x\,T^{0\nu}\) are unchanged by the improvement
+term when spatial total derivatives integrate to zero on the constant-time
+slice.  The trace changes:
 \[
   T^\mu{}_\mu
   =
-  \left(1-\frac D2+2(D-1)\xi_\ast\right)(\partial\phi)^2
+  \left(1-\frac D2\right)(\partial\phi)^2
   +
-  2(D-1)\xi_\ast\,\phi\,\partial^2\phi,
+  a(D-1)\partial^2\phi^2
 \]
-and this vanishes as an operator equation modulo the scalar equation of
-motion.  The corresponding curved-space action is
+and therefore
+\[
+  T^\mu{}_\mu
+  =
+  \left(1-\frac D2+2(D-1)a\right)(\partial\phi)^2
+  +
+  2(D-1)a\,\phi\,\partial^2\phi .
+\]
+The trace vanishes modulo the scalar equation of motion if and only if
+\begin{equation}
+  a=\xi_\ast=\frac{D-2}{4(D-1)}.
+  \label{eq:conformal-scalar-xi}
+\end{equation}
+The corresponding curved-space action is
 \begin{equation}
   S[\phi;g]
   =
@@ -184,6 +326,19 @@ motion.  The corresponding curved-space action is
   \right].
   \label{eq:conformal-scalar-curved-action}
 \end{equation}
+With the Weyl transformation
+\[
+  g_{\mu\nu}\mapsto \ee^{2\omega}g_{\mu\nu},
+  \qquad
+  \phi\mapsto \ee^{-\frac{D-2}{2}\omega}\phi,
+\]
+this action is Weyl invariant at the classical level.  In the corresponding
+free massless scalar QFT, the improved stress tensor obeys
+\[
+  \widehat T^\mu{}_\mu(x)=0
+\]
+as an operator equation, with the scalar equation of motion imposed in the
+operator algebra.
 
 \begin{figure}[H]
   \centering
@@ -201,7 +356,7 @@ motion.  The corresponding curved-space action is
     \node at (5.45,0.95) {\(\frac{\xi_\ast}{2}\int\sqrt g\,R\phi^2\)};
 
     \draw[-{Latex[length=2mm]},thick] (7.50,0.95)--(8.90,0.95);
-    \node[align=center] at (8.20,1.45) {vary\\\(g_{\mu\nu}\)};
+    \node[align=center] at (8.20,1.45) {vary\\\(g^{\mu\nu}\)};
 
     \node[font=\small] at (10.65,2.2) {improved tensor};
     \draw[rounded corners=4pt,thick] (9.05,0.45) rectangle (12.25,1.45);
@@ -235,8 +390,8 @@ The Ward identity for diffeomorphisms has the local form
   +
   \cdots ,
 \]
-where the omitted contact terms account for spin indices and for the
-variation of composite operators under diffeomorphisms.  The trace Ward
+where the terms represented by the ellipsis account for spin indices and for
+the variation of composite operators under diffeomorphisms.  The trace Ward
 identity similarly records the response under Weyl transformations.  At a
 flat-space conformal fixed point, the separated-point trace insertion
 vanishes, while contact terms encode scaling dimensions and conformal
