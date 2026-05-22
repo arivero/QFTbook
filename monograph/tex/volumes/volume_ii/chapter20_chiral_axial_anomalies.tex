@@ -672,7 +672,10 @@ The current obtained by differentiating the effective action,
 is the consistent current.  Its anomaly is the variation of a functional and
 therefore obeys the Wess--Zumino consistency condition.  This integrability is
 the reason that the consistent anomaly is the object classified by
-\(H^{1,4}(s\mid d)\).
+\(H^{1,4}(s\mid d)\).  More precisely, the anomaly class modulo local
+counterterms is the consistent descent class represented by
+\(\int_M I_4^{(1)}\); covariant Ward identities are obtained after taking a
+local differential of this class and adding a Bardeen--Zumino polynomial.
 
 The consistent current need not transform covariantly under background gauge
 transformations.  There is a local polynomial current
@@ -685,17 +688,51 @@ called the Bardeen--Zumino current, whose addition gives a covariant current
   =
   J_{\mathrm{cons}}^{a\mu}+J_{\mathrm{BZ}}^{a\mu}.
 \]
+In the anti-Hermitian form convention used in the descent formula above, the
+dual three-form of the Bardeen--Zumino current for one left-handed fermion in
+the representation \(R\) may be chosen as
+\begin{equation}
+  \star J_{\mathrm{BZ}}^a
+  =
+  \kappa\,
+  \operatorname{tr}_R
+  \left[
+    T_R^a
+    \left(
+      \mathsf A\mathsf F+\mathsf F\mathsf A
+      -\frac12\mathsf A^3
+    \right)
+  \right],
+  \qquad
+  \kappa=\frac{\ii}{24\pi^2},
+  \label{eq:bardeen-zumino-current-polynomial}
+\end{equation}
+where \(T_R^a\) is the anti-Hermitian generator used to vary
+\(\mathsf A\), products include wedge product and matrix multiplication, and
+\(\star J_{\mathrm{BZ}}^a\) denotes
+\[
+  \star J_{\mathrm{BZ}}^a
+  =
+  \frac1{3!}
+  \epsilon_{\mu\nu\rho\sigma}
+  J_{\mathrm{BZ}}^{a\mu}
+  \dd x^\nu\wedge\dd x^\rho\wedge\dd x^\sigma .
+\]
+For a set of Weyl fermions, sum \eqref{eq:bardeen-zumino-current-polynomial}
+over left-handed representations and subtract the corresponding right-handed
+representations, in parallel with the anomaly polynomial \(I_6\).
 The divergence of \(J_{\mathrm{cov}}\) is gauge covariant and is often the most
 compact local expression of the anomaly.  However,
 \(J_{\mathrm{cov}}\) is generally not the functional derivative of a local
 effective action.  Thus it is not the current that appears directly in the
 integrability condition \eqref{eq:wess-zumino-consistency}.  The consistent
 anomaly is the cohomology class.  The covariant anomaly is obtained from a
-particular representative by adding the Bardeen--Zumino differential; it does
-not define a new obstruction class.  Gauge-anomaly cancellation is therefore a
-statement about the consistent class; after that class vanishes, covariant
-currents may be used as convenient representatives of gauge-covariant Ward
-identities.
+particular representative by applying the local differential of that class and
+adding the Bardeen--Zumino polynomial; it is a covariant representative of the
+Ward identity, not a representative of a second obstruction class.
+Gauge-anomaly cancellation is therefore a statement about the consistent
+class; after that class vanishes, covariant currents may be used as convenient
+representatives of gauge-covariant Ward identities.
 
 \section{Local Counterterms and Preserved Currents}
 
