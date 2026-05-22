@@ -889,3 +889,184 @@ the trajectory that the irrelevant directions are genuinely suppressed.  In
 this regime, the Wilsonian flow gives the structural reason that the
 power-counting classification of local operators organizes perturbative
 renormalization.
+
+\section{The Bridge to BPHZ and 1PI Coordinates}
+
+The preceding sections define the Wilsonian action \(S_\Lambda\) by preserving
+low-momentum source correlators while changing the cutoff.  Earlier chapters
+defined BPHZ subtractions and 1PI renormalized coordinates.  These are three
+different constructions, so their relation must be stated with the maps that
+connect them.
+
+Fix a finite ultraviolet regulator \(\Lambda_0\), a smooth intermediate cutoff
+\(\Lambda\), and a Euclidean subtraction scale \(\mu\) satisfying
+\[
+  \mu\ll\Lambda\ll\Lambda_0 .
+\]
+The external momenta used in the 1PI projectors are assumed to have size
+\(O(\mu)\) and to be nonexceptional.  Let
+\[
+  W_{\Lambda_0}[J]=\log Z_{\Lambda_0}[J]
+\]
+be the connected generating functional of the regulated bare theory, with
+counterterms chosen so that the selected 1PI coordinates have finite limits.
+Let \(L_\Lambda\) be the Wilsonian interaction obtained from
+\eqref{eq:define-lambda-prime-interaction} by integrating modes between
+\(\Lambda_0\) and \(\Lambda\).  The connected functional computed from this
+Wilsonian action by integrating the remaining low field is denoted
+\[
+  W_{\Lambda}^{\rm low}[J]
+  =
+  \log
+  \int[D\phi]\,
+  \exp\left[
+    -S_{\mathrm{kin},\Lambda}[\phi]
+    -L_\Lambda[\phi]
+    -\int J\phi
+  \right].
+\]
+For sources supported below \(\Lambda\), the defining Gaussian convolution
+identity gives
+\begin{equation}
+  W_{\Lambda}^{\rm low}[J]=W_{\Lambda_0}[J]
+  \label{eq:wilsonian-low-w-equals-bare-w}
+\end{equation}
+at the finite regulator.  Thus \(L_\Lambda\) is an action for the remaining
+low field whose subsequent functional integral reconstructs the same
+connected low-momentum correlators.
+
+The 1PI effective action at the same finite regulator is the Legendre
+transform of the connected functional.  If
+\[
+  \varphi(x)=\frac{\delta W[J]}{\delta J(x)},
+\]
+then, in the Euclidean sign convention of this volume,
+\[
+  \Gamma[\varphi]
+  =
+  W[J]-\int\dd^Dx\,J(x)\varphi(x),
+  \qquad
+  J=J[\varphi].
+\]
+Equation \eqref{eq:wilsonian-low-w-equals-bare-w} therefore implies equality
+of the low-momentum 1PI kernels obtained from the two regulated descriptions,
+after the same Legendre transform and the same field normalization convention
+are used.  The Wilsonian vertices \(L_\Lambda^{(n)}\) and the 1PI vertices
+\(\Gamma^{(n)}\) are distinct vertices; equality requires special limits, and
+the general relation includes all tree and loop diagrams built from the
+Wilsonian vertices and the remaining low covariance.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=3pt,line width=0.8pt,
+        align=center,minimum width=2.65cm,minimum height=0.85cm},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+    \node[box] (bare) at (0,1.8)
+      {regulated bare action\\at \(\Lambda_0\)};
+    \node[box] (bphz) at (4.05,3.25)
+      {BPHZ \(R\)-operation\\on 1PI graphs};
+    \node[box] (wil) at (4.05,1.8)
+      {Wilsonian action\\\(L_\Lambda\)};
+    \node[box] (low) at (8.15,1.8)
+      {low-source\\\(W[J]\)};
+    \node[box] (leg) at (8.15,3.25)
+      {Legendre transform\\\(\Gamma[\varphi]\)};
+    \node[box] (coord) at (12.15,3.25)
+      {1PI coordinates\\\(g_I(\mu)\)};
+    \node[box] (ct) at (12.15,1.8)
+      {Wilsonian coordinates\\\(u_A(\Lambda)\)};
+
+    \draw[arr] (bare)--(bphz);
+    \draw[arr] (bare)--(wil);
+    \draw[arr] (wil)--(low);
+    \draw[arr] (low)--(leg);
+    \draw[arr] (bphz)--(leg);
+    \draw[arr] (leg)--(coord);
+    \draw[arr] (wil)--(ct);
+    \draw[arr,dashed] (ct)--(coord);
+
+    \node[align=center,blue!70!black] at (2.02,3.72)
+      {local Taylor\\subtractions};
+    \node[align=center,green!45!black] at (2.02,1.18)
+      {Gaussian\\pushforward};
+    \node[align=center,orange!85!black] at (10.15,1.23)
+      {finite matching\\after low modes};
+    \node[align=center,red!70!black] at (6.08,0.92)
+      {source support below \(\Lambda\)};
+  \end{tikzpicture}
+  }
+  \caption{BPHZ, Wilsonian, and 1PI constructions are connected by maps.
+  BPHZ acts directly on 1PI graphs, the Wilsonian action is obtained by
+  Gaussian pushforward, and 1PI coordinates are obtained after the connected
+  low-source functional is Legendre transformed.}
+  \label{fig:bphz-wilsonian-one-pi-bridge}
+\end{figure}
+
+\begin{proposition}[Comparison of the three renormalization descriptions]
+Consider a massive Euclidean scalar theory with local polynomial interactions,
+a finite ultraviolet regulator \(\Lambda_0\), nonexceptional external
+momenta, and a fixed finite list of 1PI subtraction projectors
+\(\Pi_I\) at scale \(\mu\).  Suppose the BPHZ counterterms have been chosen so
+that the projected 1PI kernels \(\Pi_I\Gamma^{(n_I)}_{\Lambda_0}\) have
+finite limits as \(\Lambda_0\to\infty\).  Suppose also that the Wilsonian
+flow from \(\Lambda_0\) to \(\Lambda\) remains in a local coordinate
+neighborhood where the derivative expansion is controlled for momenta
+\(O(\mu)\).  Then the 1PI coordinates extracted from the BPHZ-renormalized
+graphs are obtained from the Wilsonian coordinates at scale \(\Lambda\) by a
+finite change of coordinates, together with corrections from omitted
+irrelevant coordinates suppressed by powers of \(\mu/\Lambda\) in the stated
+local expansion.
+\end{proposition}
+
+\begin{proof}
+At finite regulator, \eqref{eq:finite-regulator-gaussian-convolution} is an
+identity of Gaussian integrals.  Applying it repeatedly from \(\Lambda_0\) to
+\(\Lambda\) gives \eqref{eq:wilsonian-low-w-equals-bare-w} for all sources in
+the low-momentum test space.  Functional differentiation in such sources gives
+equality of connected low-momentum correlators.  Legendre transformation on
+the same low test space gives equality of the corresponding regulated 1PI
+kernels.
+
+BPHZ subtractions replace each ultraviolet divergent subgraph by a local
+Taylor polynomial in its external variables.  Therefore changing the BPHZ
+subtraction point or changing the smooth cutoff profile changes the regulated
+1PI kernels, at fixed low external momenta, by local Taylor coefficients and
+by terms whose nonlocal dependence begins at the scale where the cutoff
+profile varies.  These local Taylor coefficients are precisely changes of
+coordinates in the space of local Wilsonian interactions.  The derivative
+expansion of \(L_\Lambda\) expresses the remaining dependence on high-scale
+data as a series in powers of \(\mu/\Lambda\).  Keeping only a finite set of
+Wilsonian coordinates leaves the first omitted irrelevant operators, and their
+contribution to the selected 1PI projectors is suppressed by the powers fixed
+by their dimensions and by the stated control of the flow.
+
+Taking \(\Lambda_0\to\infty\) after imposing the BPHZ finiteness conditions
+therefore gives the same renormalized 1PI coordinate chart as the Wilsonian
+continuum-limit construction, up to the finite reparametrization associated
+with the chosen cutoff profile, field normalization, and subtraction
+projectors.
+\end{proof}
+
+This proposition also fixes the role of beta functions.  The BPHZ construction
+proves locality and finiteness of the subtracted 1PI kernels.  The 1PI
+renormalization group differentiates finite coordinates \(g_I(\mu)\) with
+respect to the subtraction scale \(\mu\).  The Wilsonian flow differentiates
+the cutoff-dependent action \(L_\Lambda\) with respect to \(\Lambda\).  These
+two vector fields live on different coordinate spaces.  They become comparable
+only after the matching map from \(L_\Lambda\) to the 1PI coordinates
+\(g_I(\mu)\) has been specified.  Under a finite change of coordinates,
+their components transform by the chain rule, as in the 1PI scheme-change
+discussion.  Equality of physical low-momentum correlators is therefore a
+weaker statement than equality of the displayed beta-function components in
+two unmatched coordinate systems.
+
+For gauge theories the same diagram of constructions must be lifted to the
+BRST/BV setting.  The Wilsonian pushforward must preserve the quantum master
+equation, and the 1PI Legendre transform must satisfy the corresponding
+Slavnov--Taylor or BV master identity.  That gauge-theoretic refinement is
+developed in the BV chapter; the present scalar discussion supplies the
+renormalization-theoretic comparison without adding gauge constraints.

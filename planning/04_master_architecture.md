@@ -129,7 +129,8 @@ Current compiled material:
 
 Further development targets:
 
-- connect BPHZ, Wilsonian, and 1PI viewpoints more explicitly;
+- deepen the new BPHZ--Wilsonian--1PI bridge with worked examples and
+  operator insertions;
 - mark where these constructions are ordinary-field constructions and where
   gauge-theory 1PI/Wilsonian effective actions require the BV master
   framework developed in the gauge-theory volume;

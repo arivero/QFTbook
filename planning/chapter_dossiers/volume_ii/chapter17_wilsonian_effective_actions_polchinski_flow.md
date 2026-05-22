@@ -73,6 +73,10 @@ The chapter must define and derive:
   \((\Lambda_R/\Lambda_0)^2\);
 - the role of finite dimensionless irrelevant bare couplings in lattice
   regularizations.
+- the bridge to BPHZ and 1PI coordinates: finite-regulator equality of
+  low-source connected functionals, Legendre transform to 1PI kernels, finite
+  matching from Wilsonian local coordinates to 1PI subtraction coordinates,
+  and the distinction between a Wilsonian vertex and a 1PI vertex.
 
 ## Claim Ledger
 
@@ -106,6 +110,16 @@ The chapter must define and derive:
 11. Lattice QFT fits the same logic because finite dimensionless irrelevant
    lattice couplings correspond to dimensionful coefficients suppressed by
    powers of the UV cutoff.
+12. The Wilsonian action \(L_\Lambda\) is an action for remaining low modes,
+    not the 1PI effective action; it must be followed by low-mode integration
+    and a Legendre transform before comparison with 1PI coordinates.
+13. BPHZ, Wilsonian, and 1PI descriptions are related by maps.  BPHZ supplies
+    local Taylor subtractions, Wilsonian RG supplies Gaussian pushforward in
+    cutoff space, and 1PI RG supplies finite projected coordinates at a
+    subtraction scale.
+14. Beta-function components in Wilsonian and 1PI coordinates are comparable
+    only after a matching map is chosen; under finite coordinate changes they
+    transform by the chain rule.
 
 ## Figure Requirements
 
@@ -118,12 +132,15 @@ The chapter must define and derive:
 - Continuum-limit flow diagram with UV cutoff \(\Lambda_0\), physical scale
   \(\Lambda_R\), fixed \(\lambda_4^R\), and limiting
   \(\lambda_6(\Lambda_R)\).
+- BPHZ--Wilsonian--1PI bridge diagram showing the bare regulated action,
+  BPHZ \(R\)-operation, Wilsonian pushforward, low-source connected
+  functional, Legendre transform, and coordinate projections.
 
 ## Audit Notes
 
 - No reader-facing page references, course labels, or claims about rewriting
   pedagogy.
-- Avoid slogan-level descriptions of renormalizability; state the limiting
+- Avoid compressed descriptions of renormalizability; state the limiting
   problem and the hypotheses.
 - Keep the relevance sign convention consistent with the earlier chapters:
   \(y=D-\Delta\) and flow in \(\log\Lambda\) has linear term \(-yu\).
@@ -135,3 +152,8 @@ The chapter must define and derive:
   pages 243--252.  The continuum-limit figure was adjusted to show visible RG
   trajectory arrows toward \(\Lambda_R\), matching the source sketch more
   faithfully.
+- 2026-05-22 follow-up: added a terminal bridge section proving, at finite
+  regulator and for low source support, how Wilsonian connected functionals
+  match the original regulated connected functional; 1PI equality enters only
+  after Legendre transformation.  The section separates BPHZ locality,
+  Wilsonian cutoff flow, and 1PI subtraction-scale flow.
