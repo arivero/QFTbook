@@ -106,6 +106,25 @@ ellipse of this type, when it exists, is called the Lehmann ellipse at energy
 \(s\).  The estimates use only smaller ellipses whose closures stay a positive
 distance from the singular set.
 
+It is useful to parametrize these ellipses before using them.  Write
+\[
+  R=\ee^\eta,\qquad \eta>0,
+\]
+and define the ellipse \(E_R\) by \(|\zeta(x)|=R\), where
+\(\zeta(x)=x+\sqrt{x^2-1}\) is specified below.  Its right endpoint is
+\[
+  x_R=\frac12(R+R^{-1})=\cosh\eta .
+\]
+Thus the point corresponding to a crossed-channel value \(t_*\) has
+\[
+  x_*(s)=1+\frac{2t_*}{s-4m^2}=\cosh\eta_*(s),
+  \qquad
+  \eta_*(s)=2\sqrt{\frac{t_*}{s}}+O(s^{-3/2})
+\]
+at fixed \(t_*>0\) and large \(s\).  The singular value \(t_0\) determines
+the limiting ellipse in the same way, but estimates are made at
+\(0<t_*<t_0\) and only then is \(t_*\) allowed to approach \(t_0\).
+
 \section{Expansion Inside the Lehmann Ellipse}
 
 Let \(\gamma_s\) be a counterclockwise contour inside the angular analytic
@@ -122,7 +141,13 @@ Choose the branch of
 \]
 for which \(\zeta(z)\sim2z\) at infinity.  The level sets
 \(|\zeta(z)|=R>1\) are ellipses with foci at \(z=\pm1\), and the physical
-interval is the degenerate ellipse \(R=1\).
+interval is the degenerate ellipse \(R=1\).  On the level set \(R=\ee^\eta\)
+one may write
+\[
+  z=\frac12\left(R\ee^{\ii\varphi}+R^{-1}\ee^{-\ii\varphi}\right),
+  \qquad 0\le\varphi<2\pi ,
+\]
+so the semimajor and semiminor axes are \(\cosh\eta\) and \(\sinh\eta\).
 
 The kernel has the Legendre expansion
 \[
@@ -150,11 +175,17 @@ Indeed, at large \(\ell\),
   Q_\ell(z)\sim
   \left(z+\sqrt{z^2-1}\right)^{-\ell},
 \]
-Thus angular analyticity implies convergence of the partial-wave expansion
-throughout every smaller ellipse inside the Lehmann ellipse.  More
-quantitatively, if \(\mathcal A(s,z)\) is bounded by \(B_s(R)\) on
-\(|\zeta(z)|=R\), then the corresponding Legendre coefficients are bounded
-by a constant times \(B_s(R)R^{-\ell}\).  This is the analytic input later
+with the usual algebraic prefactors suppressed.  Thus angular analyticity
+implies convergence of the partial-wave expansion throughout every smaller
+ellipse inside the Lehmann ellipse.  More quantitatively, if
+\(\mathcal A(s,z)\) is bounded by \(B_s(R)\) on \(|\zeta(z)|=R\), and if
+\(|\zeta(x)|\le r<R\), then the Legendre expansion inside the contour is
+bounded term by term by
+\[
+  C(R,r)\,B_s(R)\left(\frac rR\right)^\ell .
+\]
+In particular, the partial-wave coefficients obtained from the contour have
+exponential decay \(O(B_s(R)R^{-\ell})\).  This is the analytic input later
 combined with unitarity: high angular momentum is exponentially suppressed
 inside an ellipse, while the physical partial-wave weights are bounded by
 unitarity.
@@ -348,19 +379,24 @@ momentum, then
 \end{tikzpicture}
 \end{center}
 
-For \(x>1\), the integral representation
+For \(x>1\), write \(x=\cosh\eta\), \(\eta>0\).  The integral representation
 \[
-  P_\ell(x)=\frac{1}{\pi}\int_0^\pi
-  \left(x+\cos\alpha\,\sqrt{x^2-1}\right)^\ell\dd\alpha
+  P_\ell(\cosh\eta)=\frac{1}{\pi}\int_0^\pi
+  \left(\cosh\eta+\cos\alpha\,\sinh\eta\right)^\ell\dd\alpha
 \]
-implies the following lower bound: for every fixed small \(\delta>0\) there
-is a constant \(C_\delta>0\) such that
+implies the following lower bound.  For every fixed small \(\delta>0\) there
+is a constant \(C_\delta>0\), independent of \(s\) and \(\ell\) in the
+large-energy regime used below, such that
 \[
-  P_\ell(x)\ge
+  P_\ell(\cosh\eta)\ge
   C_\delta
-  \left(1+(1-\delta)\sqrt{x^2-1}\right)^\ell
+  \left(1+(1-\delta)\sinh\eta\right)^\ell
   \equiv C_\delta y^\ell .
 \]
+Indeed, restrict the integral to an interval of \(\alpha\) on which
+\(\cos\alpha\ge1-\delta\); on that interval the integrand is bounded below by
+the displayed base.
+
 The actual weighted sum is bounded below by the same sum evaluated on the
 minimizing box profile.  Therefore, for \(x>1\) inside the angular analytic
 domain,
@@ -373,8 +409,13 @@ domain,
   \ge
   C'\,\rho(s)^{-1}L\,\frac{y^L}{y-1},
 \]
-with constants independent of \(s\) at sufficiently large energy, for fixed
-\(\delta\) and fixed \(t\) away from the singularity.
+whenever \(L(y-1)\ge1\).  If \(L(y-1)<1\), then
+\(L^2\lesssim (y-1)^{-2}\), and the relation between \(L^2\) and
+\(\sigma_{\rm tot}\) already gives a high-energy bound stronger than a
+logarithmic-square estimate.  Hence the displayed lower bound covers the only
+case in which the Froissart estimate is nontrivial.  The constants are
+independent of \(s\) at sufficiently large energy, for fixed \(\delta\) and
+fixed \(t\) away from the singularity.
 
 Now choose a number \(t_*\) with
 \[
@@ -429,7 +470,7 @@ and unitarity bounds the weight carried by each such partial wave.
 \section{Polynomial Boundedness}
 
 The polynomial boundedness assumption has a causal interpretation.  A
-one-dimensional model already exhibits the relevant analytic structure.  Let
+one-dimensional model isolates the relevant analytic structure.  Let
 \[
   f_{\rm out}(t)=\int\dd t'\,K(t-t')f_{\rm in}(t'),
   \qquad
@@ -441,11 +482,10 @@ If the kernel has retarded support,
 \]
 then \(\widetilde K(\omega)\) is analytic for \(\operatorname{Im}\omega>0\).
 Moreover a growth like \(\exp(c\,\operatorname{Im}\omega)\) in the upper half
-plane would correspond to support at negative time.  Relativistic scattering
-does not reduce to this one-dimensional model, but the model explains the
-form of the hypothesis: locality and causal propagation are reflected in
-analyticity and in the absence of exponential growth in complex energy
-directions.
+plane would correspond to support at negative time.  For relativistic
+scattering the hypothesis is formulated directly for the invariant amplitude:
+locality and causal propagation are reflected in analyticity and in the
+absence of exponential growth in complex energy directions.
 
 For the invariant amplitude, fix real \(t<0\) and continue \(s\) to the
 complex plane.  The displayed dispersion formula records the cut terms in a
@@ -603,13 +643,17 @@ variable satisfies \(-1<x<1\).  In this range \(|P_\ell(x)|\le1\), while
   \le
   \operatorname{Im}\mathcal A(s,0)
 \]
-for the absorptive partial-wave sum.  Consequently
+for the absorptive partial-wave sum.  Thus, for every \(0<\epsilon<1\),
 \[
-  \lim_{s\to\infty}
-  \left|\frac{\mathcal A(s,t)}{s^2}\right|=0,
-  \qquad t<0,
+  |\operatorname{Im}\mathcal A(s,t)|\le C_\epsilon s^{2-\epsilon}
+  \qquad (s\to+\infty)
 \]
-so two subtractions are sufficient in the massive scalar setting.
+at fixed real \(t<0\).  Applying the preceding conditional subtraction-count
+argument with \(N=2\) rules out genuine subtraction terms of degree two or
+higher.  Under the finite-subtraction hypothesis stated at the beginning of
+this section, two subtractions are therefore sufficient in the massive scalar
+setting, and the twice-subtracted representation has
+\(\mathcal A(s,t)/s^2\to0\) at fixed real \(t<0\) in the dispersion domain.
 
 The extension from real \(t<0\) to complex \(t\) inside the disk set by the
 nearest \(t\)-plane singularity uses positivity of the Taylor coefficients of
@@ -622,9 +666,16 @@ the absorptive part at \(t=0\):
   \ge0 .
 \]
 This positivity follows from the same partial-wave expansion: derivatives of
-\(P_\ell(1+2t/(s-4m^2))\) at \(t=0\) are nonnegative.  It allows the Taylor
-expansion in \(t\) to commute with the dispersive integral inside its
-convergence disk.  With two subtractions, \(N=2\) in the previous
+\(P_\ell(1+2t/(s-4m^2))\) at \(t=0\) are nonnegative, since
+\[
+  \left.\frac{\dd^n}{\dd x^n}P_\ell(x)\right|_{x=1}
+  =
+  \frac{(\ell+n)!}{2^n n!(\ell-n)!}
+  \ge0
+\]
+for \(n\le\ell\), and the derivative is zero for \(n>\ell\).  This positivity
+allows the Taylor expansion in \(t\) to commute with the dispersive integral
+inside its convergence disk.  With two subtractions, \(N=2\) in the previous
 Froissart--Martin estimate, and the four-dimensional massive scalar bound is
 \[
   \sigma_{\rm tot}(s)
@@ -646,8 +697,8 @@ analyticity, unitarity, crossing, and boundedness hypotheses.  The mass gap
 is part of the statement.  When massless particles are present, the total
 cross section may diverge because arbitrarily small scattering angles or
 collinear emissions are experimentally unresolved.  The corresponding
-observable is then an inclusive or angularly cut cross section, not the total
-cross section used above.
+observable is then an inclusive or angularly cut cross section, while the
+quantity bounded above is the total cross section of the massive problem.
 
 Gravity also lies outside the same massive-QFT hypothesis.  In \(D\) spacetime
 dimensions, a black hole of energy \(E\) has Schwarzschild radius
@@ -655,5 +706,5 @@ dimensions, a black hole of energy \(E\) has Schwarzschild radius
   r_H\sim (G_NE)^{1/(D-3)},
 \]
 so the effective interaction size grows as a power of energy.  This is a
-different high-energy problem, not a modification of the massive
-Froissart--Martin argument.
+different high-energy problem governed by long-range gravitational dynamics
+rather than the massive Froissart--Martin hypotheses.
