@@ -148,12 +148,13 @@ Do not promote further material before: fixed-point assumptions and Hilbert
 space or Euclidean reconstruction assumptions are stated, and crossing/OPE
 claims are formulated as convergence or distributional statements.
 
-Immediate target: connect the source-derived conformal current Ward identity
-in the charge chapter to the primary transformation chapter, including spin
-source terms and finite transformations.  Keep two-dimensional,
-supersymmetric, integrable, topological, defect, and bootstrap-specialized
-material in later volumes or deprecated drafts until their prerequisites are
-complete.
+Immediate target: strengthen the unitarity-bounds and short-multiplets chapter
+from radial reflection positivity and the adjointness
+\(P_\mu^\dagger=K_\mu\), then carry the resulting representation-theoretic
+constraints into the correlation-function and OPE chapters.  Keep
+two-dimensional, supersymmetric, integrable, topological, defect, and
+bootstrap-specialized material in later volumes or deprecated drafts until
+their prerequisites are complete.
 
 ### Volume VI: Integrable Quantum Field Theory
 

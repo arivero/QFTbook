@@ -198,7 +198,8 @@ Further development targets:
 - use the source-functional Ward-identity conventions from the opening
   chapter when deriving conformal currents, charges, and primary
   transformation laws; the charge chapter now uses these conventions for
-  local current Ward identities;
+  local current Ward identities, and the primary chapter now uses them for
+  spin-source contact terms and finite transformation laws;
 - develop crossing equations only through convergent OPE and Hilbert-space
   radial quantization;
 - reserve two-dimensional, supersymmetric, integrable, and topological
