@@ -308,9 +308,90 @@ where
   x_{ij}=x_i-x_j.
 \]
 The constants \(C_{123}\), after fixing the two-point normalization of
-primaries, are the scalar three-point OPE coefficients.  With spin, the same
-logic gives a finite-dimensional space of allowed tensor structures; each
-structure has its own coefficient.
+primaries, are the scalar three-point OPE coefficients.  If the primaries
+carry spin, let \(a_i\) denote indices in the corresponding finite-dimensional
+\(SO(D)\) representations.  Conformal covariance says that
+\begin{equation}
+  \left\langle
+    \mathcal O_{1,a_1}(x_1)
+    \mathcal O_{2,a_2}(x_2)
+    \mathcal O_{3,a_3}(x_3)
+  \right\rangle
+  =
+  \sum_{r=1}^{n_{123}}
+  C_{123}^{(r)}
+  \mathcal I_{a_1a_2a_3}^{(r)}(x_{12},x_{13}),
+  \label{eq:spinning-three-point-structures}
+\end{equation}
+where the tensors \(\mathcal I^{(r)}\) form a basis of conformally covariant
+three-point tensor structures, including the required homogeneity in the
+separations.  The finite integer \(n_{123}\) is representation-theoretic; the
+numbers \(C_{123}^{(r)}\) are dynamical data after a convention for two-point
+normalization has been fixed.
+
+The stress tensor illustrates why some three-point coefficients are
+constrained but not removed from the data.  In a parity-even CFT in
+\(D\ge4\), the separated three-point function of a symmetric conserved
+traceless stress tensor has the form
+\begin{equation}
+  \left\langle
+    T_{\mu\nu}(x_1)T_{\rho\sigma}(x_2)T_{\alpha\beta}(x_3)
+  \right\rangle
+  =
+  \sum_{r=1}^3
+  a_r\,
+  \mathcal I_{\mu\nu,\rho\sigma,\alpha\beta}^{(r)}(x_{12},x_{13}),
+  \label{eq:stress-tensor-three-point-structures}
+\end{equation}
+with three parity-even structures compatible with conformal covariance and
+conservation at separated points.  A Ward identity fixes one linear
+combination of \(a_1,a_2,a_3\) in terms of the two-point coefficient \(C_T\):
+integrating \(T_{\alpha\beta}\epsilon^\beta n^\alpha\) over a small sphere
+around \(x_3\) gives the conformal variation of the other two stress tensors,
+and that variation is determined by
+\eqref{eq:stress-tensor-two-point}.  The remaining independent combinations
+are genuine CFT data.  In lower dimensions or in parity-violating theories
+the list of admissible structures changes; the statement above is tied to the
+stated assumptions.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.82\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!80!black,inner sep=1.8pt},
+      sphere/.style={blue!65!black,line width=0.85pt},
+      arrow/.style={-{Latex[length=2mm]},line width=0.8pt}
+    }
+    \node[insertion] at (-3.1,0.75) {};
+    \node[violet!80!black,above] at (-3.1,0.75) {\(T_{\mu\nu}(x_1)\)};
+    \node[insertion] at (3.1,0.75) {};
+    \node[violet!80!black,above] at (3.1,0.75) {\(T_{\rho\sigma}(x_2)\)};
+    \node[insertion] at (0,-0.35) {};
+    \node[violet!80!black,below] at (0,-0.35) {\(T_{\alpha\beta}(x_3)\)};
+    \draw[sphere] (0,-0.35) circle (0.95);
+    \draw[arrow,blue!65!black] (0,-0.35)--(0.68,0.32);
+    \node[blue!65!black,right] at (0.68,0.32) {\(n^\alpha\)};
+    \draw[orange!85!black,line width=0.8pt]
+      (-3.1,0.75) .. controls (-1.85,1.45) and (-0.85,1.05) .. (0,0.60)
+      .. controls (0.85,1.05) and (1.85,1.45) .. (3.1,0.75);
+    \node[align=center] at (0,-1.85)
+      {\(\displaystyle
+        Q_\epsilon(S_{x_3})=
+        \int_{S_{x_3}}\dd\sigma\,
+        n^\alpha T_{\alpha\beta}\epsilon^\beta
+      \)};
+    \draw[arrow] (4.1,-0.35)--(5.35,-0.35);
+    \node[align=center] at (6.85,-0.35)
+      {acts on the other\\stress tensors by the\\conformal Ward identity};
+  \end{tikzpicture}
+  }
+  \caption{The Ward identity relates a small-sphere stress-tensor flux inside
+  \(\langle TTT\rangle\) to the conformal variation of the remaining
+  insertions.  This fixes the Ward-normalized part of the \(TTT\) data in
+  terms of \(C_T\).}
+  \label{fig:stress-tensor-three-point-ward}
+\end{figure}
 
 As an important mixed example, the Ward identity fixes the coefficient of the
 stress-tensor three-point function with two identical scalar primaries.  For
@@ -334,9 +415,45 @@ with
   X^\mu=\frac{x_{13}^\mu}{x_{13}^2}
        -\frac{x_{23}^\mu}{x_{23}^2}.
 \]
-The constant \(C_{\mathcal O\mathcal O T}\) is determined by
-\(\Delta\) and by the two-point normalization of \(\mathcal O\), because
-\(T_{\mu\nu}\) generates translations and dilatations.
+More generally, for two scalar primaries \(\mathcal O_1,\mathcal O_2\) of the
+same dimension \(\Delta\) with
+\[
+  \left\langle
+    \mathcal O_1(x)\mathcal O_2(0)
+  \right\rangle
+  =
+  \frac{N_{12}}{|x|^{2\Delta}},
+\]
+the same tensor structure appears with coefficient
+\begin{equation}
+  C_{12T}
+  =
+  -\,\frac{D\Delta}{(D-1)A_{D-1}}\,N_{12},
+  \qquad
+  A_{D-1}=\operatorname{vol}(S^{D-1})
+  =
+  \frac{2\pi^{D/2}}{\Gamma(D/2)}.
+  \label{eq:scalar-scalar-stress-ward-coefficient}
+\end{equation}
+Here the sign is the sign of the stress-tensor convention in
+\eqref{eq:cft-charge-surface} and \eqref{eq:variation-by-small-charge}.  The
+derivation is a small-sphere Ward identity for the dilatation vector
+\(\epsilon^\nu=x^\nu\).  With \(x_2=0\) and \(r=|x_3|\to0\), the flux
+integral contains
+\[
+  \int_{S^{D-1}}\dd\Omega\,
+  n^\mu n^\nu
+  \left(
+    n_\mu n_\nu-\frac1D\delta_{\mu\nu}
+  \right)
+  =
+  A_{D-1}\left(1-\frac1D\right),
+\]
+and matching the charge action on \(\mathcal O_2(0)\) gives
+\eqref{eq:scalar-scalar-stress-ward-coefficient}.  If
+\(\Delta_1\ne\Delta_2\), the two-point coefficient \(N_{12}\) vanishes by
+dilatation covariance, and the corresponding stress-tensor three-point
+function vanishes.
 
 \section{Four-Point Functions and Cross Ratios}
 
@@ -356,8 +473,13 @@ Equivalently, the four points can be moved into a two-plane and placed at
 \]
 with
 \[
+  z=\frac{z_{12}z_{34}}{z_{13}z_{24}},
+  \qquad
   u=z\bar z,\qquad v=(1-z)(1-\bar z).
 \]
+This frame is obtained by first using the conformal group to put the four
+points in a common two-plane and then using the residual fractional-linear
+transformation \(z\mapsto(\alpha z+\beta)/(\gamma z+\delta)\) on that plane.
 
 \begin{figure}[H]
   \centering
