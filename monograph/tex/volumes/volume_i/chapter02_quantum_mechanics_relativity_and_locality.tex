@@ -169,7 +169,19 @@ representation
   (a,\Lambda)\mapsto U(a,\Lambda),
 \]
 or the corresponding representation of the double cover when spinorial
-representations are present. Infinitesimally,
+representations are present.  The group law is
+\[
+  (a',\Lambda')(a,\Lambda)
+  =
+  (a'+\Lambda'a,\Lambda'\Lambda),
+\]
+so a genuine unitary representation satisfies
+\[
+  U(a',\Lambda')U(a,\Lambda)
+  =
+  U(a'+\Lambda'a,\Lambda'\Lambda).
+\]
+Infinitesimally,
 \[
   U(a,\Lambda)
   =
@@ -373,9 +385,116 @@ with all other commutators vanishing. The free Hamiltonian is
   E_{\vec p}\,a^\dagger(\vec p)a(\vec p),
 \]
 after the vacuum energy has been normalized.
+The spatial momentum is
+\[
+  \vec P_0
+  =
+  \int
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}}\,
+  \vec p\,a^\dagger(\vec p)a(\vec p).
+\]
+
+There is a second common normalization, useful for displaying the elementary
+Fock construction.  Define operator-valued distributions
+\(\mathfrak a_{\vec p}\) by
+\[
+  a(\vec p)
+  =
+  \sqrt{(2\pi)^{D-1}2E_{\vec p}}\;\mathfrak a_{\vec p}.
+\]
+Then
+\[
+  [\mathfrak a_{\vec p},\mathfrak a_{\vec q}^{\dagger}]
+  =
+  \delta^{D-1}(\vec p-\vec q),
+  \qquad
+  [\mathfrak a,\mathfrak a]=
+  [\mathfrak a^\dagger,\mathfrak a^\dagger]=0.
+\]
+The corresponding sharp-momentum kets are distributional vectors,
+\[
+  |\vec p\rangle=\mathfrak a_{\vec p}^{\dagger}\vac,
+  \qquad
+  |\vec p_1,\ldots,\vec p_n\rangle
+  =
+  \mathfrak a_{\vec p_1}^{\dagger}\cdots
+  \mathfrak a_{\vec p_n}^{\dagger}\vac,
+\]
+and
+\[
+  \langle\vec p|\vec q\rangle=\delta^{D-1}(\vec p-\vec q).
+\]
+In this normalization
+\[
+  H_0=\int\dd^{D-1}\vec p\,
+  E_{\vec p}\,\mathfrak a_{\vec p}^{\dagger}\mathfrak a_{\vec p},
+  \qquad
+  \vec P_0=\int\dd^{D-1}\vec p\,
+  \vec p\,\mathfrak a_{\vec p}^{\dagger}\mathfrak a_{\vec p}.
+\]
 
 The Fock construction gives a free multi-particle representation. A local QFT
 also specifies which operators are localized in each bounded spacetime region.
+
+\section{Locality As A Constraint On Interacting Particle Dynamics}
+
+Starting from the free Fock representation, one may write a formal interacting
+Hamiltonian
+\[
+  H=H_0+H_{\mathrm{int}},
+\]
+where \(H_{\mathrm{int}}\) is a sum of normally ordered monomials such as
+\[
+  \int K_{2,1}\,
+  a^\dagger a^\dagger a
+  +
+  \int K_{1,2}\,
+  a^\dagger a a
+  +
+  \cdots ,
+\]
+with kernels \(K_{r,s}\) and the mass-shell measures suppressed in the
+notation.  The relativistic local-theory datum extends such a formal
+Hamiltonian by translation generators \(P_\mu\), Lorentz generators
+\(J^{\mu\nu}\), a Poincare-invariant vacuum, and local observables or fields
+satisfying covariance and microcausality.  In an interacting theory the boost
+generators, the Hamiltonian, and the local field operators are tied together
+by the Poincare algebra and locality.
+
+The causal input is spacetime-local operation.  A local operation near a point
+or region can influence only its causal future.  The algebraic expression of
+this statement is locality for spacelike separated regions.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.72\textwidth}{!}{%
+  \begin{tikzpicture}[scale=0.95,>=Stealth]
+    \draw[->,line width=0.75pt] (-0.1,-2.45) -- (-0.1,2.65)
+      node[above] {\(x^0\)};
+    \draw[->,line width=0.75pt] (-2.65,0) -- (3.45,0)
+      node[right] {\(\vec x\)};
+    \draw[green!45!black,line width=1.15pt] (0,0)--(-1.75,2.25);
+    \draw[green!45!black,line width=1.15pt] (0,0)--(1.75,2.25);
+    \draw[green!45!black,line width=1.15pt] (0,0)--(-1.75,-2.25);
+    \draw[green!45!black,line width=1.15pt] (0,0)--(1.75,-2.25);
+    \node[green!45!black] at (2.25,2.38) {light cone};
+    \fill[blue!75!black] (0,0) circle (2pt);
+    \node[blue!75!black,below left] at (0,0) {local operation};
+    \draw[purple,dashed,line width=0.95pt,->]
+      (0,0).. controls (0.25,0.55) and (0.35,1.2)..(0.62,1.92);
+    \fill[purple] (0.62,1.92) circle (2.8pt);
+    \draw[red!78!black,dashed,line width=0.95pt,->] (0,0)--(2.15,0.92);
+    \fill[red!78!black] (2.15,0.92) circle (2.8pt);
+    \node[red!78!black,align=left,anchor=west] at (2.35,0.92)
+      {spacelike signal\\excluded by locality};
+  \end{tikzpicture}
+  }
+  \caption{Causal localization in Minkowski space.  The field-theoretic
+  condition corresponding to the exclusion of spacelike signaling is
+  commutativity, or graded commutativity, of observables localized in
+  spacelike separated regions.}
+  \label{fig:causal-lightcone-local-operation}
+\end{figure}
 
 \section{Locality Data}
 
@@ -417,6 +536,37 @@ where \(p^0=E_{\vec p}\) and
 For \(f\in C_c^\infty(\mathbb M^D)\), the smeared field is
 \[
   \widehat\phi(f)=\int\dd^Dx\,f(x)\widehat\phi(x).
+\]
+In the noncovariant normalization this is equivalently
+\[
+  \widehat\phi(x)
+  =
+  \int
+  \frac{\dd^{D-1}\vec p}
+       {\sqrt{(2\pi)^{D-1}2E_{\vec p}}}
+  \left(
+    \mathfrak a_{\vec p}\ee^{\ii p\cdot x}
+    +
+    \mathfrak a_{\vec p}^{\dagger}\ee^{-\ii p\cdot x}
+  \right).
+\]
+
+The free scalar field is covariant.  Let \(g=(b,\Lambda)\in G_D\), and let
+\(U_1(g)\) be the one-particle scalar representation on \(\Hilb_1\).  The
+free Fock representation is its second quantization \(U_0(g)=\Gamma(U_1(g))\),
+so
+\[
+  U_0(g)a^\dagger(\psi)U_0(g)^{-1}
+  =
+  a^\dagger(U_1(g)\psi)
+\]
+for every one-particle wave packet \(\psi\).  Applying this identity to the
+distributional creation and annihilation kernels, and using invariance of the
+mass-shell measure, gives
+\[
+  U_0(b,\Lambda)\widehat\phi(x)U_0(b,\Lambda)^{-1}
+  =
+  \widehat\phi(\Lambda x+b).
 \]
 
 The commutator is

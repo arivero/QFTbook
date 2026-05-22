@@ -2,8 +2,8 @@
 
 ## Status
 
-Current status: first mature draft written and included in the compiled
-manuscript after local audit and build.
+Current status: included in the compiled manuscript and cross-checked against
+handwritten 253a pp. 5--9 in the 2026-05-22 source pass.
 
 ## Logical Role
 
@@ -30,6 +30,9 @@ Working framework:
 - `transcription/tex/253a/foundations.tex`, lines around the first field
   operator discussion, Poincare covariance, microcausality, and the
   interacting-theory postulates.
+- `references/253a lectures 2022.pdf`, pp. 5--9: spacetime point labels for
+  field operators, Poincare transformation of local fields, microcausality,
+  and the interacting-theory postulates.
 - `references/sound_references/fewster_rejzner_aqft_intro_1904.04051.pdf`,
   Section 4.1 for local-algebra requirements and field-coordinate comparison.
 - `references/sound_references/buchholz_dybalski_scattering_2023.pdf`,
@@ -51,6 +54,7 @@ Working framework:
 | \(C_c^\infty(\mathbb M^D)\) | test-function space | distributions |
 | \(\mathcal D\) | dense invariant domain in \(\Hilb\) | unbounded operators |
 | \(\widehat\Phi_A\) | operator-valued distribution | field coordinate |
+| \(x\in\mathbb M^D\) | spacetime label for point-field notation, not a Hilbert-space operator | localization |
 | \(f\) | test function | smearing |
 | \(\widehat\Phi_A(f)\) | operator on \(\mathcal D\) or affiliated local operator | smeared field |
 | \(S(\Lambda)\) | finite-dimensional representation on field indices | covariance |
@@ -59,6 +63,7 @@ Working framework:
 ## Definition Ledger
 
 - operator-valued distribution;
+- spacetime label versus Hilbert-space operator;
 - smeared field;
 - local support of a smeared field;
 - Poincare-covariant field;
@@ -70,6 +75,7 @@ Working framework:
 | Claim | Status | Certification |
 | --- | --- | --- |
 | Point-field notation is shorthand for distributional smearing. | Definition/framework statement | Wightman-style definition |
+| The spacetime argument \(x\) in \(\widehat\Phi_A(x)\) is a localization label and becomes an operator only after smearing. | Source-certified convention | Added from handwritten p. 5 |
 | Covariance acts simultaneously on spacetime arguments and field indices. | Definition | Chapter definition |
 | Microcausality is a support condition on smeared commutators. | Definition | Chapter definition |
 | Local fields can coordinate local observable data but need not be the only primitive. | Framework comparison | AQFT comparison, stated carefully |

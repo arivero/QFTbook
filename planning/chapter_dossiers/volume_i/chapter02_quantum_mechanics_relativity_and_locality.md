@@ -2,8 +2,9 @@
 
 ## Status
 
-Current status: rewritten once, now requires re-audit under symbol and
-definition integrity rules.
+Current status: certified against handwritten 253a pp. 3--9 in the
+2026-05-22 source pass, with rendered checks of the new causal figure and
+free-field normalization/covariance material.
 
 ## Logical Role
 
@@ -35,7 +36,10 @@ state the relation among them.
 
 - `transcription/tex/253a/foundations.tex`: relativistic particles, local field
   operators, Poincare covariance, and microcausality.
-- handwritten source PDF for sign and normalization checks.
+- `references/253a lectures 2022.pdf`, pp. 3--9: free relativistic particles,
+  creation/annihilation normalization, interaction Hamiltonian question,
+  causal light-cone figure, Poincare covariance, and free-field
+  microcausality.
 
 ## External Reference Needs
 
@@ -59,6 +63,8 @@ state the relation among them.
 | \(\Hilb_1\) | one-particle Hilbert space | Wigner representation |
 | \(E_{\vec p}\) | positive energy \((\vec p^{\,2}+m^2)^{1/2}\) | mass shell |
 | \(a(\vec p),a^\dagger(\vec p)\) | operator-valued distributions in momentum | free Fock space |
+| \(\mathfrak a_{\vec p},\mathfrak a_{\vec p}^\dagger\) | noncovariantly normalized creation/annihilation kernels | source normalization |
+| \(K_{r,s}\) | interaction kernels in formal normally ordered Hamiltonian terms | interaction bookkeeping |
 | \(\widehat\phi(f)\) | smeared free scalar field | local field |
 | \(\Delta\) | Pauli--Jordan distribution | commutator support |
 
@@ -70,9 +76,15 @@ state the relation among them.
   spectrum.
 - Direct-integral spectral representation and delta-normalized kernels.
 - Strongly continuous unitary Poincare representation.
+- Poincare group law and its unitary implementation.
 - Spectrum condition.
 - Massive spinless one-particle Hilbert space.
 - Bosonic and fermionic Fock spaces.
+- Covariant and noncovariant momentum-space creation/annihilation
+  normalizations.
+- Formal interacting Hamiltonian as kernels added to the free Fock
+  Hamiltonian, with locality and the Poincare algebra as additional required
+  data.
 - Local observable assignment.
 - Free scalar smeared field.
 
@@ -84,19 +96,27 @@ state the relation among them.
 | Delta-normalization is the weak kernel of the identity relative to a chosen spectral or mass-shell measure. | Definition/construction | Established by the Gelfand triple/direct-integral discussion |
 | Massive spinless one-particle states are realized as \(L^2\) functions on the positive mass shell with invariant measure. | Construction | Derived from representation choice; external Wigner reference needed |
 | Fock space is constructed from one-particle Hilbert space by symmetric or antisymmetric tensor powers. | Definition/construction | Defined in chapter |
+| The noncovariant creation/annihilation normalization with \(\delta^{D-1}(\vec p-\vec q)\) is equivalent to the covariant mass-shell normalization. | Calculation/convention | Added from handwritten pp. 3--4 and checked in the chapter |
+| A formal \(H_0+H_{\mathrm{int}}\) written in Fock kernels is part of the interaction data only together with Poincare generators and locality. | Framework statement | Added from handwritten pp. 4--5 with positive formulation |
 | Local observable assignments are additional local data. | Framework statement | Definition of local QFT data |
-| The free scalar commutator vanishes at spacelike separation. | Proposition | Computed in chapter; support theorem reference desirable |
+| The free scalar field is Poincare covariant and its commutator vanishes at spacelike separation. | Proposition | Computed in chapter from the second-quantized one-particle representation, invariant mass-shell measure, and odd-integrand spacelike frame argument |
 
 ## Required Revisions
 
-- Type all operators and domains more carefully.
-- State that \(a(\vec p)\) and \(a^\dagger(\vec p)\) are distributional
+- Completed: typed all operators and domains more carefully.
+- Completed: stated that \(a(\vec p)\) and \(a^\dagger(\vec p)\) are distributional
   annihilation and creation operators.
+- Completed: propagated the source normalization through sharp momentum kets,
+  \(H_0\), and \(\vec P_0\).
 - Propagate the rigged-Hilbert-space convention to later chapters that use
   sharp-momentum kernels.
 - Ensure the local algebra language is consistent with Chapter 1.
-- Replace the conclusion with a positive summary of constructed structures.
+- Completed: replaced the conclusion with a positive summary of constructed
+  structures.
 
 ## Figure Ledger
 
-No required figure in the current chapter.
+- `fig:translation-spectrum-mass-shell`: spectrum and isolated particle shell.
+- `fig:causal-lightcone-local-operation`: source light-cone/causality figure,
+  redrawn as a TikZ causal localization diagram.  Rendered on
+  `/tmp/qft_253a_003_009_cert2-049.png` after label adjustment.
