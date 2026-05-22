@@ -397,19 +397,78 @@ Therefore
   \frac{\hbar\,f_n(\tau_1)f_n(\tau_2)}
        {\left(\frac{n\pi}{2T}\right)^2+\omega^2}.
 \]
-Taking \(T\to\infty\) gives
+The passage to the infinite Euclidean line is not a formal replacement of a
+sum by an integral; it is a limit at fixed insertion points.  Set
 \[
-  \langle q(\tau_1)q(\tau_2)\rangle
-  =
-  \hbar
-  \int_{-\infty}^{\infty}\frac{\dd k}{2\pi}\,
-  \frac{\ee^{\ii k(\tau_1-\tau_2)}}{k^2+\omega^2}.
+  k_n=\frac{n\pi}{2T},
+  \qquad
+  \Delta k=\frac{\pi}{2T}.
 \]
-The remaining integral is evaluated by residues. For \(\tau>0\), close the
-contour in the upper half-plane:
+Using the explicit sine basis,
 \[
+\begin{aligned}
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  &=
+  \sum_{n=1}^{\infty}
+  \frac{\hbar}{T}
+  \frac{
+    \sin k_n(\tau_1+T)\sin k_n(\tau_2+T)
+  }{k_n^2+\omega^2}  \\
+  &=
+  \frac{2\hbar}{\pi}
+  \sum_{n=1}^{\infty}\Delta k\,
+  \frac{
+    \sin k_n(\tau_1+T)\sin k_n(\tau_2+T)
+  }{k_n^2+\omega^2}.
+\end{aligned}
+\]
+To state the limit as an operation on the regulated path integral, insert
+temporarily an Abel factor \(\ee^{-\varepsilon k_n}\), \(\varepsilon>0\), in
+the mode sum and the corresponding factor \(\ee^{-\varepsilon k}\) in the
+continuum integral.  The Riemann limit is then taken at fixed
+\(\varepsilon\), and the limit \(\varepsilon\downarrow0\) is taken after the
+Fourier integral has been evaluated.  Suppressing this auxiliary factor from
+the notation, the continuum expression is
+\[
+  \frac{2\hbar}{\pi}
+  \int_{0}^{\infty}\dd k\,
+  \frac{
+    \sin k(\tau_1+T)\sin k(\tau_2+T)
+  }{k^2+\omega^2}.
+\]
+Writing \(2\sin a\sin b=\cos(a-b)-\cos(a+b)\), equivalently
+\[
+\begin{aligned}
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  &=
+  \frac{\hbar}{\pi}
+  \int_{-\infty}^{\infty}\frac{\dd k}{k^2+\omega^2}
+  \biggl[
+    \frac14\ee^{\ii k(\tau_1-\tau_2)}
+    +\frac14\ee^{-\ii k(\tau_1-\tau_2)}  \\
+  &\hspace{5.0cm}
+    -\frac14\ee^{\ii k(\tau_1+\tau_2+2T)}
+    -\frac14\ee^{-\ii k(\tau_1+\tau_2+2T)}
+  \biggr]
+  +o(1),
+\end{aligned}
+\]
+where \(o(1)\) denotes the regulator error in the infinite-volume limit.
+Thus the finite interval produces, besides the translation-invariant term, an
+image term tied to the Dirichlet endpoints.
+
+The elementary Fourier integral needed here is
+\[
+  I(\tau)
+  =
   \int_{-\infty}^{\infty}
-  \frac{\ee^{\ii k\tau}}{k^2+\omega^2}\,\dd k
+  \frac{\ee^{\ii k\tau}}{k^2+\omega^2}\,\dd k .
+\]
+For \(\tau>0\), \(|\ee^{\ii k\tau}|=\ee^{-(\operatorname{Im}k)\tau}\), so the
+large semicircle is suppressed in the upper half-plane and the pole enclosed
+is \(k=\ii\omega\).  Therefore
+\[
+  I(\tau)
   =
   \frac{\pi}{\omega}\ee^{-\omega\tau}.
 \]
@@ -433,7 +492,19 @@ For \(\tau<0\), close the contour in the lower half-plane and obtain
 \end{tikzpicture}
 \end{center}
 
-The Euclidean two-point function of the harmonic oscillator is
+For fixed \(\tau_1,\tau_2\), the quantity \(\tau_1+\tau_2+2T\) is positive for
+large \(T\), and the preceding integral gives
+\[
+  \langle q(\tau_1)q(\tau_2)\rangle_T
+  =
+  \frac{\hbar}{2\omega}\ee^{-\omega|\tau_1-\tau_2|}
+  -
+  \frac{\hbar}{2\omega}\ee^{-\omega(\tau_1+\tau_2+2T)}
+  +o(1).
+\]
+The second term is the endpoint image contribution and vanishes as
+\(T\to\infty\).  Hence the Euclidean two-point function of the harmonic
+oscillator on the line is
 \[
   \boxed{
   \langle q(\tau_1)q(\tau_2)\rangle

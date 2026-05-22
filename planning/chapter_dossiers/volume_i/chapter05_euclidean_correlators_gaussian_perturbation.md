@@ -3,9 +3,10 @@
 ## Status
 
 Current status: spectral/Wick-rotation opening block certified against
-handwritten 253a pp. 15--18 on 2026-05-22; derivative-interaction/regulator
-counterterm block also certified on 2026-05-22 after handwritten source and
-rendered-figure audit.
+handwritten 253a pp. 15--18 on 2026-05-22; harmonic-oscillator Euclidean
+propagator certified against handwritten 253a pp. 19--23 on 2026-05-22;
+derivative-interaction/regulator counterterm block also certified on
+2026-05-22 after handwritten source and rendered-figure audit.
 
 ## Logical Role
 
@@ -108,7 +109,7 @@ Working framework:
 | Wick rotation \(t=-\ii\tau\) gives exponential Euclidean decay \(e^{-(E_n-E_0)\tau/\hbar}\). | Derived | Spectral expansion |
 | Long Euclidean time projects onto the ground state under overlap and gap assumptions. | Derived | Spectral decomposition |
 | The projected correlator has a regulated complex-time path-integral representation with endpoint wavefunctions included in the contour measure. | Construction | Patched from handwritten pp. 16--17 and rendered on physical PDF page 65 |
-| The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived | Mode expansion and contour integral |
+| The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived; source-certified 2026-05-22 | Dirichlet sine-mode expansion, \(k_n=n\pi/(2T)\) Riemann-sum limit, endpoint image term, and contour integral |
 | Gaussian moments are sums over complete pairings. | Derived | Source differentiation |
 | The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived | Partition combinatorics |
 | Normalized two-point functions retain diagrams connected to the external insertions. | Derived | Vacuum factor cancellation |
@@ -120,8 +121,10 @@ Working framework:
 Figures to include:
 
 - complex-time Wick rotation and Euclidean projection interval;
-- harmonic-oscillator path with Dirichlet endpoints;
-- contour integral in the complex \(k\)-plane;
+- harmonic-oscillator path with Dirichlet endpoints, certified against
+  handwritten pp. 19--23 on 2026-05-22;
+- contour integral in the complex \(k\)-plane, certified against handwritten
+  pp. 22--23 on 2026-05-22;
 - Wick pairings for a four-point Gaussian moment;
 - connected/disconnected vacuum graph schematic;
 - cancellation of vacuum bubbles in a normalized two-point function;
@@ -146,3 +149,7 @@ Figures to include:
   of the finite counterterm part.
 - The chapter must end at the threshold of relativistic fields; the transition
   to fields is for the next chapter.
+- The harmonic-oscillator source block is certified to retain the finite
+  interval before taking \(T\to\infty\): sine modes, coefficient covariance,
+  Riemann-sum conversion, image contribution from Dirichlet endpoints, and the
+  contour suppression criterion.
