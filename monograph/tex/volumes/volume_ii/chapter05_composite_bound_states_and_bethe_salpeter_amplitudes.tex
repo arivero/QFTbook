@@ -4,8 +4,9 @@
 \section{Composite Particles as Poles}
 
 Let \(\phi\) be a real scalar field whose stable one-particle states have
-mass \(m\). A stable two-particle composite state \(B\) of mass \(M_B\) is a
-normalizable one-particle state in the spectrum with
+mass \(m\). A stable two-particle composite species \(B\) of mass \(M_B\) is an
+isolated one-particle sector whose wavepacket states are normalizable and whose
+mass satisfies
 \[
   0<M_B<2m .
 \]
@@ -17,8 +18,16 @@ function by a pole at
   \qquad
   s=-(k_1+k_2)^2 .
 \]
-After LSZ reduction of the external stable \(\phi\) particles, the same pole
-appears in the connected scattering amplitude.
+Equivalently, for the \(2\to2\) amplitude
+\(\ii\mathcal A(s,t)\) with
+\[
+  t=-(k_1-k_3)^2 ,
+\]
+the same state appears as a pole in \(s\), at fixed quantum numbers in the
+\((12)\)-channel. After LSZ reduction of the external stable \(\phi\)
+particles, the pole is present in the connected scattering amplitude; the
+external one-particle residues multiply the amplitude and do not determine the
+position of the pole.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95]
@@ -180,8 +189,12 @@ large-field behavior of the potential. For example,
   -\frac{m^2\beta^2}{4!}\phi^4
   +O(\phi^6)
 \]
-has an attractive quartic term in its local expansion while retaining a
-well-defined periodic potential.
+has an attractive quartic term in its local expansion, with local quartic
+coefficient \(g_{\mathrm{local}}=-m^2\beta^2\), while retaining a potential
+bounded from below. The bubble-chain computation should therefore be read as a
+statement about the local interaction coefficients around the chosen vacuum,
+not as a nonperturbative definition of an unstable negative-quartic polynomial
+theory.
 
 \section{Bethe--Salpeter Amplitude}
 
@@ -190,6 +203,17 @@ with
 \[
   P^2=-M_B^2,\qquad P^0>0 .
 \]
+We use the covariant plane-wave normalization
+\[
+  \langle B(\vec P\,')|B(\vec P)\rangle
+  =
+  (2\pi)^{D-1}2\omega_{\vec P}\,
+  \delta^{D-1}(\vec P-\vec P\,'),
+  \qquad
+  \omega_{\vec P}=\sqrt{\vec P^{\,2}+M_B^2}.
+\]
+The momentum eigenstate is distributional; physical Hilbert-space states are
+obtained by smearing it with square-integrable wavepackets.
 The Bethe--Salpeter amplitude associated with the scalar field \(\phi\) is
 the time-ordered matrix element
 \[
@@ -201,9 +225,10 @@ Translation covariance gives
 \[
   \Phi_B(x_1+a,x_2+a;P)
   =
-  \ee^{-\ii P\cdot a}\Phi_B(x_1,x_2;P).
+  \ee^{\ii P\cdot a}\Phi_B(x_1,x_2;P),
 \]
-Therefore its Fourier transform has support on total momentum \(P\):
+with the Fourier convention used below. Therefore its Fourier transform has
+support on total momentum \(P\):
 \[
   \Phi_B(x_1,x_2;P)
   =
@@ -213,8 +238,11 @@ Therefore its Fourier transform has support on total momentum \(P\):
   (2\pi)^D\delta^D(k_1+k_2-P)
   \widetilde\Phi_B(k_1,k_2;P).
 \]
-The normalization of \(\widetilde\Phi_B\) depends on the normalization of the
-one-particle state; the pole residue fixes it.
+If instead one uses unit-normalized momentum kets, a factor
+\(\bigl[(2\pi)^{D-1}2\omega_{\vec P}\bigr]^{-1/2}\) appears on the right-hand
+side; here that factor is absorbed into the definition of
+\(\widetilde\Phi_B\). The invariant normalization of
+\(\widetilde\Phi_B\) is fixed by the four-point pole residue.
 
 Now consider the momentum-space time-ordered four-point function
 \[
@@ -234,7 +262,10 @@ All four momenta are taken incoming, so translation invariance supplies
 \[
   P=k_1+k_2,\qquad P^2\to -M_B^2,
 \]
-insertion of a complete set of states gives the factorization
+insertion of a complete set of states gives the factorization. More precisely,
+project the spectral resolution in the intermediate channel onto the isolated
+mass-\(M_B\) one-particle subspace, and collect all other intermediate states
+into terms analytic at \(P^2=-M_B^2\). The pole part is
 \[
 \begin{aligned}
   \widetilde G_4(k_1,k_2,k_3,k_4)
@@ -251,7 +282,9 @@ insertion of a complete set of states gives the factorization
 \]
 This is the four-point analogue of the spectral pole in a two-point
 function. The residue is the product of the amplitudes for two fields to
-create and annihilate the stable composite state.
+create and annihilate the stable composite state. The sign and the factor
+\(-\ii/(P^2+M_B^2-\ii0)\) are the scalar Feynman propagator convention in the
+mostly-plus metric.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.9,
@@ -302,7 +335,12 @@ and define the two-particle propagator
 \]
 Let \(\mathcal K_P(p,q)\) be the amputated two-particle irreducible kernel in
 the chosen channel: by definition, it cannot be separated into two pieces by
-cutting the two constituent lines carrying total momentum \(P\).
+cutting the two constituent lines carrying total momentum \(P\). Contact
+vertices, crossed exchanges, and self-energy insertions on a constituent line
+may be part of this kernel after the constituent propagator convention has been
+fixed; an iteration of two kernels connected by the two constituent lines is
+not part of the kernel, because that iteration is precisely what the
+Bethe--Salpeter equation resums.
 
 The amputated four-point scattering block \(\mathcal T_P(p,p')\) obeys the
 operator equation
@@ -333,6 +371,10 @@ A bound-state pole at \(P^2=-M_B^2\) has the form
        {P^2+M_B^2-\ii0}
   +\text{regular terms}.
 \]
+Here \(\overline{\Psi}_B\) denotes the residue on the right side of the
+four-point function; for scalar constituents it is the complex conjugate with
+the momenta reversed, up to the same convention choices already present in
+\(\widetilde\Phi_B^*(-k_3,-k_4;P)\).
 Substituting this pole form into the integral equation and equating residues
 gives the homogeneous Bethe--Salpeter equation
 \[
@@ -343,6 +385,20 @@ gives the homogeneous Bethe--Salpeter equation
   \qquad
   P^2=-M_B^2 .
 \]
+Equivalently, define the integral operator
+\[
+  (\widehat V_P F)(p)
+  =
+  \int\frac{\dd^D q}{(2\pi)^D}\,
+  \mathcal K_P(p,q)\mathcal G_P(q)F(q).
+\]
+Then a bound state is a nonzero vector \(\Psi_B\) in the domain of this
+operator for which
+\[
+  (\mathbf 1-\widehat V_P)\Psi_B=0 .
+\]
+The pole condition is thus an eigenvalue-one condition for the repeated
+two-particle propagation at \(P^2=-M_B^2\).
 The unamputated Bethe--Salpeter amplitude is related to the amputated vertex by
 \[
   \widetilde\Phi_B(p;P)
@@ -351,37 +407,71 @@ The unamputated Bethe--Salpeter amplitude is related to the amputated vertex by
 \]
 up to the same convention-dependent one-particle normalization used in the
 four-point residue.
+In unamputated form the equation reads
+\[
+  \widetilde\Phi_B(p;P)
+  =
+  \mathcal G_P(p)
+  \int\frac{\dd^D q}{(2\pi)^D}\,
+  \mathcal K_P(p,q)\widetilde\Phi_B(q;P),
+  \qquad
+  P^2=-M_B^2 .
+\]
 
 \begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.88,
+\begin{tikzpicture}[>=Stealth,scale=0.82,
   leg/.style={line width=0.82pt},
   kern/.style={draw,fill=blue!8,rounded corners=2pt,minimum width=0.7cm,minimum height=1.25cm,inner sep=0pt},
-  amp/.style={draw,fill=green!10,ellipse,minimum width=1.18cm,minimum height=1.0cm,inner sep=0pt}]
-  \begin{scope}[xshift=-4.1cm]
+  amp/.style={draw,fill=green!10,ellipse,minimum width=1.18cm,minimum height=1.0cm,inner sep=0pt},
+  cut/.style={green!55!black,dashed,line width=0.9pt}]
+  \begin{scope}[xshift=-5.75cm,yshift=1.05cm]
     \node[kern] (k) at (0,0) {\(\mathcal K\)};
     \draw[leg] (-1.1,0.42)--(k.west|-0,0.42);
     \draw[leg] (-1.1,-0.42)--(k.west|-0,-0.42);
     \draw[leg] (k.east|-0,0.42)--(1.1,0.42);
     \draw[leg] (k.east|-0,-0.42)--(1.1,-0.42);
-    \node[align=center,font=\small] at (0,-1.08)
-      {two-particle\\irreducible};
+    \node[align=center,font=\small] at (0,-1.0)
+      {allowed kernel:\\no two-particle cut};
   \end{scope}
-  \node[align=center] at (-0.45,0.22)
-    {\(\mathcal T_P=\mathcal K_P+\mathcal K_P\mathcal G_P\mathcal T_P\)};
-  \node[align=center,font=\small] at (-0.45,-0.62)
-    {inhomogeneous\\scattering equation};
-  \begin{scope}[xshift=3.35cm]
-    \node[amp] (psi) at (-1.25,0) {\(\Psi_B\)};
-    \node at (-0.25,0) {\(=\)};
-    \node[kern] (k2) at (0.72,0) {\(\mathcal K\)};
-    \draw[leg] (1.08,0.42)--(1.95,0.42);
-    \draw[leg] (1.08,-0.42)--(1.95,-0.42);
-    \node[amp] (psi2) at (2.75,0) {\(\Psi_B\)};
-    \draw[leg] (1.95,0.42)--(psi2.west|-0,0.25);
-    \draw[leg] (1.95,-0.42)--(psi2.west|-0,-0.25);
-    \node[font=\small,blue!70!black] at (1.68,0.78) {\(\mathcal G_P\)};
-    \node[align=center,font=\small] at (1.0,-1.08)
-      {zero mode at\\\(P^2=-M_B^2\)};
+  \begin{scope}[xshift=-1.85cm,yshift=1.05cm]
+    \node[kern] (a) at (-0.58,0) {\(\mathcal K\)};
+    \node[kern] (b) at (0.92,0) {\(\mathcal K\)};
+    \draw[leg] (-1.65,0.42)--(a.west|-0,0.42);
+    \draw[leg] (-1.65,-0.42)--(a.west|-0,-0.42);
+    \draw[leg] (a.east|-0,0.42)--(b.west|-0,0.42);
+    \draw[leg] (a.east|-0,-0.42)--(b.west|-0,-0.42);
+    \draw[leg] (b.east|-0,0.42)--(1.98,0.42);
+    \draw[leg] (b.east|-0,-0.42)--(1.98,-0.42);
+    \draw[cut] (0.18,-0.72)--(0.18,0.72);
+    \node[orange!75!black,align=center,font=\small] at (0.18,-1.05)
+      {excluded from \(\mathcal K\):\\two-particle cut};
+    \node[orange!75!black] at (2.22,-0.72) {\(\times\)};
+  \end{scope}
+  \begin{scope}[xshift=3.6cm,yshift=1.05cm]
+    \node[kern] (v) at (-1.38,0) {\(\mathcal K\)};
+    \node[draw,fill=gray!12,rounded corners=2pt,minimum width=0.85cm,minimum height=1.25cm,inner sep=0pt] (t) at (0.3,0) {\(\mathcal T\)};
+    \draw[leg] (-2.35,0.42)--(v.west|-0,0.42);
+    \draw[leg] (-2.35,-0.42)--(v.west|-0,-0.42);
+    \draw[leg] (v.east|-0,0.42)--(t.west|-0,0.42);
+    \draw[leg] (v.east|-0,-0.42)--(t.west|-0,-0.42);
+    \draw[leg] (t.east|-0,0.42)--(1.32,0.42);
+    \draw[leg] (t.east|-0,-0.42)--(1.32,-0.42);
+    \node[font=\small,blue!70!black] at (-0.54,0.77) {\(\mathcal G_P\)};
+    \node[align=center,font=\small] at (-0.55,-1.05)
+      {\(\mathcal T_P=\mathcal K_P+\mathcal K_P\mathcal G_P\mathcal T_P\)};
+  \end{scope}
+  \begin{scope}[xshift=-1.0cm,yshift=-1.8cm]
+    \node[amp] (psi) at (-1.4,0) {\(\Psi_B\)};
+    \node at (-0.38,0) {\(=\)};
+    \node[kern] (k2) at (0.62,0) {\(\mathcal K\)};
+    \draw[leg] (0.98,0.42)--(1.82,0.42);
+    \draw[leg] (0.98,-0.42)--(1.82,-0.42);
+    \node[amp] (psi2) at (2.62,0) {\(\Psi_B\)};
+    \draw[leg] (1.82,0.42)--(psi2.west|-0,0.25);
+    \draw[leg] (1.82,-0.42)--(psi2.west|-0,-0.25);
+    \node[font=\small,blue!70!black] at (1.5,0.78) {\(\mathcal G_P\)};
+    \node[align=left,font=\scriptsize,anchor=west] at (3.45,0)
+      {homogeneous equation:\\\((\mathbf 1-\widehat V_P)\Psi_B=0\)};
   \end{scope}
 \end{tikzpicture}
 \end{center}

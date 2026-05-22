@@ -10,6 +10,8 @@
 - Defines the Bethe--Salpeter amplitude as a time-ordered matrix element and
   derives the homogeneous Bethe--Salpeter equation from four-point
   factorization.
+- Certifies handwritten 253b pp. 27--33 after checking the rendered source
+  trace and the manuscript figures on 2026-05-22.
 
 ## Source Spine
 
@@ -32,9 +34,12 @@
 | \(\Phi_B(x_1,x_2;P)\) | Bethe--Salpeter amplitude, a time-ordered matrix element |
 | \(\widetilde\Phi_B(p;P)\) | momentum-space Bethe--Salpeter amplitude |
 | \(\Psi_B(p;P)\) | amputated Bethe--Salpeter vertex/wavefunction |
+| \(\overline{\Psi}_B(p;P)\) | right residue of the four-point pole; scalar conjugate with reversed momenta up to conventions |
 | \(\mathcal K_P(p,q)\) | two-particle irreducible kernel in the chosen channel |
 | \(\mathcal G_P(q)\) | product of two exact constituent propagators |
+| \(\widehat V_P\) | integral operator with kernel \(\mathcal K_P(p,q)\mathcal G_P(q)\) acting on the amputated amplitude |
 | \(f(s)\) | \(D=2\) scalar bubble Feynman-parameter integral |
+| \(s,t\) | Mandelstam variables \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\) in the source convention |
 
 ## Assumptions
 
@@ -47,6 +52,11 @@
   two-particle propagation; it is used only in its domain of weak binding.
 - The Bethe--Salpeter kernel is defined to be two-particle irreducible in the
   channel being resummed.
+- Plane-wave bound-state kets are distributional and are used with covariant
+  normalization; finite states are wavepacket smearings.
+- The local attractive quartic example is interpreted inside a stable
+  large-field completion, not as a nonperturbative negative-quartic scalar
+  potential.
 
 ## Claims to Derive
 
@@ -73,12 +83,21 @@
     \mathcal K_P(p,q)\mathcal G_P(q)\Psi_B(q;P)
   \]
   at \(P^2=-M_B^2\).
+- Equivalently, \((\mathbf 1-\widehat V_P)\Psi_B=0\), and the unamputated
+  amplitude obeys
+  \[
+    \widetilde\Phi_B(p;P)
+    =
+    \mathcal G_P(p)\int { \dd^D q\over (2\pi)^D}\,
+    \mathcal K_P(p,q)\widetilde\Phi_B(q;P).
+  \]
 
 ## Figures
 
 - First-sheet composite pole and bubble-chain resummation.
 - Four-point Green function factorization through a bound-state propagator.
-- Kernel recursion and homogeneous Bethe--Salpeter equation.
+- Kernel recursion, excluded two-particle cuts, and homogeneous
+  Bethe--Salpeter equation.
 - Amputated versus unamputated Bethe--Salpeter amplitude.
 
 ## Boundaries
