@@ -30,6 +30,11 @@ The chapter must define:
 
 - infinitesimal local deformations
   \(\delta S=\int \dd^Dx\,\sum_I\delta g_I O_I\);
+- smooth compactly supported source deformations
+  \(\delta S_\eta=\int\dd^Dx\,\eta_0^I(x)O_I(x)\), with constant sources as
+  the coupling-deformation special case;
+- the source-renormalization relation
+  \(\eta_0^I(x)=\eta_\mu^J(x)N_{JI}(\mu)\);
 - the relation between bare deformation coefficients \(\delta g_I\) and
   running deformation coefficients \(\delta g_I(\mu)\);
 - the renormalized operator
@@ -39,6 +44,10 @@ The chapter must define:
   convention;
 - operator running and its diagonal/scaling form;
 - the field operator as the special case governed by \(Z(\mu)\);
+- the operator-insertion Callan--Symanzik equation derived from
+  \(G_I^{(n)}=Z_\phi^{-n/2}N_{IJ}G_{0,J,\Lambda}^{(n)}\), with contact terms
+  excluded from the noncoincident equation and described as local collision
+  terms;
 - the dimensional-regularization action in \(D=d-\epsilon\);
 - engineering dimensions
   \([\phi]=(d-\epsilon-2)/2\),
@@ -59,7 +68,8 @@ The chapter must define:
 ## Claim Ledger
 
 1. Renormalized local operators are defined by the response of the action to
-   renormalized infinitesimal coupling deformations.
+   renormalized infinitesimal source deformations; constant sources recover
+   coupling deformations.
 2. The mixing matrix \(N_{IJ}(\mu)\) is fixed by the same beta functions that
    govern the couplings.
 3. In the chosen convention,
@@ -70,16 +80,20 @@ The chapter must define:
 5. The elementary field operator satisfies
    \([\phi]_\mu=Z(\mu)^{-1/2}\phi\) and
    \(\gamma_\phi=\frac12\dd\log Z/\dd\log\mu\).
-6. Minimal subtraction defines dimensionless couplings by retaining only pole
+6. The operator-insertion Callan--Symanzik equation follows by
+   differentiating the renormalized insertion chart at fixed bare data.
+7. Contact terms in inserted correlators are local distributions supported on
+   collision diagonals and depend on the contact-term convention.
+8. Minimal subtraction defines dimensionless couplings by retaining only pole
    terms in the relation between bare and renormalized couplings.
-7. In four-dimensional scalar quartic theory, the one-loop MS relation is
+9. In four-dimensional scalar quartic theory, the one-loop MS relation is
    \(g^\epsilon=\mu^\epsilon[\lambda+3\lambda^2/(16\pi^2\epsilon)+O(\lambda^3)]\).
-8. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
+10. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
    of \(\beta_I^\epsilon\).
-9. Perturbative order counting implies
+11. Perturbative order counting implies
    \(\beta_I^{(m)}=0\) for \(m\ge2\) and
    \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).
-10. The nonnegative epsilon structure of the MS beta function leaves the
+12. The nonnegative epsilon structure of the MS beta function leaves the
     \(\epsilon^0\) beta function as the beta function of the target
     \(d\)-dimensional theory; the remaining pole coefficients are determined
     recursively.
@@ -104,5 +118,12 @@ The chapter must define:
 - Keep stress-tensor trace material for the next chapter.
 - State all index conventions for \(N_{IJ}\), \(\gamma_{IK}\), and
   \(K_I^{(n)}\).
+- Make clear that \(\gamma_{IK}=\partial\beta_K/\partial g_I\) is the
+  deformation-operator convention for the selected coordinate chart; arbitrary
+  local operators require enlarging the chart or adding an independent mixing
+  matrix.
+- Operator-insertion Callan--Symanzik equations must be derived from the
+  source/insertion renormalization chart, not quoted without proof.
+- Separate noncoincident correlator equations from contact-term conventions.
 - Keep the MS discussion as a coordinate construction, not as an ontological
   foundation.

@@ -8,17 +8,30 @@ The 1PI renormalization group compares scale-dependent coordinates
 same structure through infinitesimal deformations of the action.  Fix a finite
 or graded local operator basis \(\{O_I\}_{I\in\mathcal I}\), chosen so that
 operators with the same spacetime and internal quantum numbers are included
-together whenever perturbation theory can mix them.  A small local deformation
-is written as
+together whenever perturbation theory can mix them.  To define insertions as
+distributions, first allow smooth compactly supported source functions
+\(\eta_0^I(x)\) and write
+\[
+  \delta S_\eta
+  =
+  \int \dd^D x\,\eta_0^I(x)\,O_I(x).
+\]
+Constant sources \(\eta_0^I(x)=\delta g_I\) give the deformation
 \[
   \delta S
   =
   \int \dd^D x\,\sum_I \delta g_I\,O_I(x).
 \]
 Here \(\delta g_I\) are bare deformation coefficients.  At scale \(\mu\), the
-same deformation can be described by renormalized deformation coefficients
-\(\delta g_I(\mu)\).  Linearity in the infinitesimal deformation gives a
-matrix \(N_{JI}(\mu)\) such that
+same deformation can be described by renormalized source functions
+\(\eta_\mu^J(x)\).  Linearity in the infinitesimal source gives a matrix
+\(N_{JI}(\mu)\) such that
+\[
+  \eta_0^I(x)
+  =
+  \sum_J\eta_\mu^J(x)\,N_{JI}(\mu).
+\]
+For constant sources this becomes
 \[
   \delta g_I
   =
@@ -34,7 +47,8 @@ Substituting this into \(\delta S\) gives
 
 \begin{definition}[Renormalized local operator]
 In the deformation chart above, the renormalized operator associated with the
-coordinate \(g_I(\mu)\) is
+source coordinate \(\eta_\mu^I\), or equivalently with the coupling
+coordinate \(g_I(\mu)\) for constant sources, is
 \[
   [O_I]_\mu
   =
@@ -48,7 +62,10 @@ Equivalently,
 \]
 The matrix \(N_{IJ}(\mu)\) is part of the renormalization scheme.  Its rows
 label renormalized deformation coordinates, and its columns label the chosen
-bare operator basis.
+bare operator basis.  As an insertion in correlation functions, the equality
+is an equality of distributions away from coincident points; different
+renormalization prescriptions for contact terms differ by local terms
+supported on collision diagonals.
 \end{definition}
 
 \section{Operators as Cotangent Data}
@@ -77,8 +94,12 @@ must transform the operator representatives by the inverse Jacobian:
   \frac{\partial g_I}{\partial \widetilde g_A}\,
   [O_I]_\mu .
 \]
-This is the cotangent transformation law.  It is the local-operator version of
-the statement that beta functions are components of a vector field.
+This is the cotangent transformation law, with the Jacobian evaluated at the
+theory point under consideration.  It is the local-operator version of the
+statement that beta functions are components of a vector field.  The statement
+applies to the deformation operators dual to the selected coordinate chart;
+additional local operators may require enlarging the chart before their mixing
+can be described by the same matrix.
 
 Let \(t=\log\mu\).  The tangent vector \(\delta g_K\) evolves by the
 linearized RG equation
@@ -243,10 +264,19 @@ At a fixed point, constant \(\gamma_\phi\) gives
 
 \section{Callan--Symanzik Equations With Operator Insertions}
 
-The operator mixing equation is the insertion version of the Callan--Symanzik
-equation.  Let \(G_I^{(n)}\) denote a renormalized connected correlation
-function with one insertion of \([O_I]_\mu\) and \(n\) elementary renormalized
-fields:
+The operator mixing equation gives the insertion version of the
+Callan--Symanzik equation.  Let
+\[
+  G_{0,J,\Lambda}^{(n)}
+  (x;x_1,\ldots,x_n;g_0,\Lambda)
+  =
+  \left\langle
+    O_J(x)\,\phi_0(x_1)\cdots\phi_0(x_n)
+  \right\rangle_{\!{\rm conn},\Lambda,g_0}
+\]
+be the regulated bare connected correlator with one bare operator insertion.
+Let \(G_I^{(n)}\) denote the corresponding renormalized correlator with one
+insertion of \([O_I]_\mu\) and \(n\) elementary renormalized fields:
 \[
   G_I^{(n)}
   =
@@ -255,8 +285,17 @@ fields:
     \phi_R(x_1)\cdots\phi_R(x_n)
   \right\rangle_{\rm conn}.
 \]
-Away from coincident points, the scale independence of the corresponding bare
-correlation function gives
+Away from coincident points, the renormalization chart gives
+\[
+  G_I^{(n)}
+  =
+  Z_\phi^{-n/2}\,N_{IJ}\,G_{0,J,\Lambda}^{(n)}
+\]
+after the cutoff-removal limit.  Repeated bare-operator labels are summed.
+
+\begin{proposition}[Operator-insertion Callan--Symanzik equation]
+For noncoincident points \(x,x_1,\ldots,x_n\), the renormalized insertion
+correlators satisfy
 \begin{equation}
   \left(
     \mu\frac{\partial}{\partial\mu}
@@ -271,10 +310,47 @@ correlation function gives
   0 .
   \label{eq:cs-with-operator-mixing}
 \end{equation}
-Summation over repeated coupling and operator labels is understood.  Contact
-terms must be added when \(x\) collides with one of the other insertion
-points; those terms are local and are governed by the same renormalized
-operator basis.
+\end{proposition}
+
+\begin{proof}
+Let \(t=\log\mu\).  The bare correlator
+\(G_{0,J,\Lambda}^{(n)}\) has no independent dependence on \(t\) at fixed bare
+couplings and cutoff.  Differentiating
+\[
+  G_I^{(n)}
+  =
+  Z_\phi^{-n/2}N_{IJ}G_{0,J,\Lambda}^{(n)}
+\]
+at fixed bare data gives
+\[
+  \left(
+    \frac{\partial}{\partial t}
+    +
+    \beta_A\frac{\partial}{\partial g_A}
+  \right)G_I^{(n)}
+  =
+  -n\gamma_\phi\,G_I^{(n)}
+  +
+  \frac{\dd N_{IJ}}{\dd t}\,
+  Z_\phi^{-n/2}G_{0,J,\Lambda}^{(n)} .
+\]
+Using
+\[
+  \frac{\dd N_{IJ}}{\dd t}
+  =
+  -\gamma_{IK}N_{KJ}
+\]
+turns the last term into \(-\gamma_{IK}G_K^{(n)}\).  Moving both
+renormalization-factor contributions to the left gives
+\eqref{eq:cs-with-operator-mixing}.
+\end{proof}
+
+Contact terms must be added when \(x\) collides with one of the other
+insertion points, or when several inserted operators are present and collide
+with one another.  Those terms are local distributions supported on collision
+diagonals.  Their coefficients are governed by the same renormalized local
+operator basis, but they depend on the contact-term convention chosen for the
+source-renormalized generating functional.
 
 At a fixed point, diagonalizing \(\gamma_{IK}(g_\ast)\) gives scaling
 operators.  If \([O_A]\) is an eigenoperator with anomalous dimension
