@@ -96,7 +96,9 @@ The chapter must define:
 12. The nonnegative epsilon structure of the MS beta function leaves the
     \(\epsilon^0\) beta function as the beta function of the target
     \(d\)-dimensional theory; the remaining pole coefficients are determined
-    recursively.
+    recursively, with the homogeneous-sector form reproducing the source
+    equations involving
+    \((1-\lambda_J\partial_{\lambda_J})K_I^{(n)}\).
 
 ## Figure Requirements
 
@@ -127,3 +129,12 @@ The chapter must define:
 - Separate noncoincident correlator equations from contact-term conventions.
 - Keep the MS discussion as a coordinate construction, not as an ontological
   foundation.
+- 2026-05-22 source-certification pass: the handwritten pages from the bottom
+  of page 110 through page 118 were checked end-to-end against the two local
+  transcription layers.  The manuscript now includes the full derivative of
+  \(\delta g_I=\delta g_J(\mu)N_{JI}\), the arbitrary-displacement argument
+  leading to \(\dd N/\dd\log\mu=-\gamma N\), the field-operator
+  \(Z^{-1/2}\) specialization, the \(d=4\ \phi^4\) one-loop MS pole
+  \(3/(16\pi^2\epsilon)\), the positive-power constraints on
+  \(\beta_I^\epsilon\), and both the general and homogeneous recursive pole
+  equations.

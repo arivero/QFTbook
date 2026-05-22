@@ -146,6 +146,31 @@ Differentiating
 \(\delta g_I=\sum_J\delta g_J(\mu)N_{JI}(\mu)\) with respect to
 \(\log\mu\) and using the preceding linearized flow gives
 \[
+\begin{aligned}
+  0
+  &=
+  \frac{\dd\,\delta g_I}{\dd\log\mu}                                      \\
+  &=
+  \sum_J
+  \left[
+    \delta\beta_J(g(\mu))\,N_{JI}(\mu)
+    +
+    \delta g_J(\mu)
+    \frac{\dd N_{JI}(\mu)}{\dd\log\mu}
+  \right]                                                                  \\
+  &=
+  \sum_{J,K}
+  \delta g_K(\mu)\,
+  \frac{\partial\beta_J}{\partial g_K}(g(\mu))\,N_{JI}(\mu)
+  +
+  \sum_J
+  \delta g_J(\mu)\,
+  \frac{\dd N_{JI}(\mu)}{\dd\log\mu}.
+\end{aligned}
+\]
+Since the infinitesimal renormalized displacement \(\delta g_J(\mu)\) is
+arbitrary, this is equivalent to
+\[
   \frac{\dd N_{IJ}}{\dd\log\mu}
   =
   -\sum_K \gamma_{IK}(g(\mu))\,N_{KJ}(\mu).
@@ -718,6 +743,38 @@ For \(n\ge1\), the coefficient of \(\epsilon^{-n}\) gives
 These relations are triangular in perturbation theory: once
 \(\beta_I(\lambda)\) and lower perturbative orders of the pole terms are
 known, higher pole coefficients are fixed order by order.
+In a homogeneous sector in which every coupling entering the pole coefficient
+for \(g_I^\epsilon\) has the same \(\epsilon\)-slope
+\(\delta_J^{(1)}=\delta_I^{(1)}\), the operator \(D_\epsilon\) reduces on that
+sector to
+\[
+  D_\epsilon
+  =
+  \delta_I^{(1)}
+  \lambda_J\frac{\partial}{\partial\lambda_J}.
+\]
+The pole equations then take the simpler form
+\[
+  \beta_I(\lambda)-\delta_I^{(0)}\lambda_I
+  =
+  \delta_I^{(1)}
+  \left(
+    1-\lambda_J\frac{\partial}{\partial\lambda_J}
+  \right)K_I^{(1)}(\lambda),
+\]
+and, for \(n\ge1\),
+\[
+  \left(
+    \beta_J\frac{\partial}{\partial\lambda_J}
+    -\delta_I^{(0)}
+  \right)K_I^{(n)}(\lambda)
+  =
+  \delta_I^{(1)}
+  \left(
+    1-\lambda_J\frac{\partial}{\partial\lambda_J}
+  \right)K_I^{(n+1)}(\lambda).
+\]
+The single-coupling scalar quartic example belongs to this homogeneous case.
 
 For a single marginal coupling with
 \(\delta^{(0)}=0\) and \(\delta^{(1)}=-1\), as in \(d=4\) scalar quartic
