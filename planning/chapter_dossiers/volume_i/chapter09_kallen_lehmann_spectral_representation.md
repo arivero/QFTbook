@@ -2,7 +2,7 @@
 
 ## Status
 
-Current status: ready for TeX rewrite.
+Current status: certified against 253a pp. 80--99 on 2026-05-22.
 
 ## Logical Role
 
@@ -17,6 +17,9 @@ correlation-function diagrams and precedes all scattering theory.
 - `transcription/tex/253a/foundations.tex`, section "Spectral Representations
   and Particle Content", through the Kallen-Lehmann representation and the
   decomposition into one-particle and continuum spectral support.
+- Handwritten visual trace
+  `monograph/tex/build/source_visual_trace/253a_trace-080.png` through
+  `253a_trace-099.png`.
 - `references/253a_notes.tex`, corresponding Kallen-Lehmann and particle
   content sections, used only as a comparison layer.
 - `monograph/tex/volumes/volume_i/chapter08_scalar_path_integrals_and_euclidean_green_functions.tex`,
@@ -54,6 +57,9 @@ Working framework:
 | \(d\rho(\mu^2)\) | positive measure | Kallen-Lehmann spectral measure |
 | \(Z\) | nonnegative number | atom of \(d\rho\) at an isolated one-particle mass \(m^2\) |
 | \(d\rho_{\mathrm c}\) | positive measure | continuum part of the spectral measure |
+| \(L(\vec k)\) | Lorentz transformation | standard boost from rest momentum to \(k^\mu=(\omega_{\vec k},\vec k)\) |
+| \(W(\Lambda,k)\) | little-group element | Wigner rotation \(L(\Lambda k)^{-1}\Lambda L(k)\) |
+| \(N(\vec k)\) | normalization factor | factor relating delta-normalized scalar one-particle states to standard boosts |
 
 ## Definition Ledger
 
@@ -61,6 +67,9 @@ Working framework:
 - positive-frequency scalar two-point function \(\Delta_+\);
 - Kallen-Lehmann spectral measure \(d\rho\);
 - time-ordered and Euclidean Kallen-Lehmann representations;
+- \(k^0\)-contour derivation of the Feynman prescription;
+- scalar one-particle standard boosts, Wigner little group, and invariant
+  normalization;
 - isolated one-particle atom and field-strength overlap \(Z\);
 - continuum spectral support and threshold assumptions.
 
@@ -71,8 +80,11 @@ Working framework:
 | The two-point Wightman function is the Fourier transform of a positive measure supported in the forward cone. | Theorem/construction | Joint spectral theorem and spectrum condition |
 | Scalar covariance makes the spectral measure a positive measure over invariant masses. | Derived | Lorentz invariance of the vacuum and scalar field |
 | \(W_2(x)=\int d\rho(\mu^2)\Delta_+(x;\mu^2)\). | Derived | Disintegration of the positive spectral measure |
+| \(\Delta_+(x;\mu^2)=\Delta_+(-x;\mu^2)\) for spacelike \(x\). | Derived | Lorentz frame with \(x^0=0\) and \(\vec p\mapsto-\vec p\) |
 | \(G_T(x)=\int d\rho(\mu^2)\Delta_F(x;\mu^2)\). | Derived | Definition of time ordering and linearity |
+| The \(i\epsilon\) prescription places the positive-energy pole below and the negative-energy pole above the real \(k^0\)-axis. | Derived | Explicit contour closure for \(x^0>0\) and \(x^0<0\) |
 | \(G_E(x_E)=\int d\rho(\mu^2)\Delta_E(x_E;\mu^2)\) under analytic continuation. | Framework statement/derived from Chapter 8 conditions | Spectral positivity and Euclidean continuation |
+| Delta-normalized scalar one-particle states have \(N(\vec k)=\sqrt{m/\omega_{\vec k}}\). | Derived | Standard boost construction plus Lorentz invariance of the on-shell measure |
 | An isolated one-particle mass created by \(\widehat\phi\) is an atom \(Z\delta(\mu^2-m^2)\) of the spectral measure. | Definition plus derivation | Projection onto the isolated mass shell |
 | \(Z\) depends on the local field normalization and is intrinsic once the field is fixed. | Definition/consequence | Matrix element normalization |
 
@@ -80,6 +92,9 @@ Working framework:
 
 Figures to include:
 
+- \(k^0\)-plane contour figure with the \(+\omega-\ii0\) pole below and
+  \(-\omega+\ii0\) pole above;
+- positive mass-shell figure showing the standard boost \(L(\vec k)\);
 - spectral projection of \(\widehat\phi(f)\Omega\) into vacuum, one-particle,
   and continuum spectral components;
 - spectral measure with an isolated atom at \(m\) and continuum support
@@ -92,3 +107,17 @@ Figures to include:
 - State the assumptions behind the \(2m\) threshold.
 - Do not define scattering or asymptotic states in this chapter.
 - Keep \(Z\) as a field-overlap datum, not a slogan.
+
+## Certification Notes
+
+- Added the generalized spectral insertion notation while keeping the
+  projection-valued measure as the rigorous object.
+- Added the spacelike equality of \(\Delta_+\), the \(k^0\)-residue calculation
+  for \(\Delta_F\), and the lower-half-plane Euclidean continuation condition.
+- Added the scalar one-particle representation construction, including the
+  standard boost, Wigner little group, \(N(\vec k)=\sqrt{m/\omega_{\vec k}}\),
+  and the delta-normalized and invariant-normalized versions of the \(Z\)
+  overlap.
+- Rendered manuscript pages `kallen_render-090.png` through
+  `kallen_render-098.png`; figures are legible and do not use handwritten
+  inclusions.
