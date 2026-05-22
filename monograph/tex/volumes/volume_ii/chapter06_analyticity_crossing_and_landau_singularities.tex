@@ -217,6 +217,120 @@ These inequalities are boundary conditions on the upper edge of the physical
 cut; they are not by themselves an analytic continuation principle.  They will
 combine with angular analyticity in the following chapter.
 
+\section{Perturbative Discontinuities and Cut Rules}
+
+The Hilbert-space unitarity statement also determines the discontinuity of
+perturbative amplitudes across a physical cut.  Write
+\[
+  S=\mathbf 1+\ii T,
+  \qquad
+  \operatorname{Disc}_s\mathcal M
+  =
+  \mathcal M(s+\ii0,t)-\mathcal M(s-\ii0,t).
+\]
+From \(S^\dagger S=\mathbf 1\) one obtains
+\[
+  -\ii(T-T^\dagger)=T^\dagger T .
+\]
+Taking connected matrix elements and removing the common momentum-conserving
+delta function gives, on the \(s\)-channel physical cut,
+\begin{equation}
+  \operatorname{Disc}_s\mathcal M_{\beta\alpha}
+  =
+  \ii
+  \sum_X
+  \int \dd\Phi_X\,
+  \mathcal M_{X\alpha}\,
+  \mathcal M_{\beta X}^{\,*}.
+  \label{eq:cutkosky-unitarity-discontinuity}
+\end{equation}
+Here \(X\) runs over on-shell intermediate states with total momentum
+\(P_\alpha\), and \(\dd\Phi_X\) is the Lorentz-invariant phase-space measure,
+including the factor \(1/N!\) for \(N\) identical particles when the state sum is
+over unordered particles.
+
+\begin{theorem}[Cut rule for a perturbative physical cut]
+Consider a perturbative contribution to a connected amplitude whose
+\(s\)-channel discontinuity is produced by putting a set \(C\) of internal
+lines on shell so that the graph separates into a left subamplitude and a right
+subamplitude.  With the amplitude normalization fixed by \(S=\mathbf 1+\ii T\),
+the discontinuity contribution of this cut is obtained by replacing each cut
+propagating line of mass \(m_i\) by the on-shell measure
+\[
+  \frac{\dd^D q_i}{(2\pi)^D}\,
+  (2\pi)\theta(q_i^0)\delta(q_i^2+m_i^2),
+\]
+multiplying the left and right lower-order amplitudes, complex conjugating the
+amplitude on the lower-edge side, and integrating over the common on-shell
+phase space.  Equivalently, the graph contribution is the corresponding term in
+\eqref{eq:cutkosky-unitarity-discontinuity}.
+\end{theorem}
+
+\begin{proof}
+Expand \(T=\sum_r T^{(r)}\) in the chosen interaction order.  The order-\(N\)
+part of \(-\ii(T-T^\dagger)=T^\dagger T\) is
+\[
+  -\ii\bigl(T^{(N)}-T^{(N)\dagger}\bigr)
+  =
+  \sum_{r=1}^{N-1}T^{(r)\dagger}T^{(N-r)} .
+\]
+Insert the spectral resolution of the identity on the physical Hilbert space
+between the two factors on the right.  For a sector of \(n\) stable particles of
+masses \(m_i\), this resolution contains
+\[
+  \frac1{n!}
+  \prod_{i=1}^n
+  \left[
+    \int\frac{\dd^D q_i}{(2\pi)^{D-1}}\,
+    \theta(q_i^0)\delta(q_i^2+m_i^2)
+  \right]
+  (2\pi)^D\delta^{(D)}\!\left(P_\alpha-\sum_i q_i\right).
+\]
+After the external LSZ residues and the overall momentum-conserving delta
+function are removed, this is precisely the phase-space integral in
+\eqref{eq:cutkosky-unitarity-discontinuity}.  In a Feynman-graph expansion the
+same insertion cuts the internal lines that carry the intermediate on-shell
+momenta and leaves the two lower-order amplitudes on the two sides of the cut.
+\end{proof}
+
+For the two-particle equal-mass cut, the phase-space factor appearing in
+\eqref{eq:cutkosky-unitarity-discontinuity} is explicit.  Let \(P^2=-s\) and
+\[
+  \dd\Phi_2(P)
+  =
+  \int
+  \frac{\dd^4 q}{(2\pi)^3}\theta(q^0)\delta(q^2+m^2)\,
+  \frac{\dd^4 r}{(2\pi)^3}\theta(r^0)\delta(r^2+m^2)\,
+  (2\pi)^4\delta^{(4)}(P-q-r).
+\]
+In the center-of-mass frame \(P=(\sqrt s,\vec0)\) this becomes
+\[
+  \dd\Phi_2(P)
+  =
+  \frac{\dd^3\vec q}{(2\pi)^2\,4\omega_{\vec q}^{\,2}}\,
+  \delta(\sqrt s-2\omega_{\vec q}).
+\]
+Using \(\omega_{\vec q}=\sqrt{\vec q^{\,2}+m^2}\), the radial delta function
+fixes
+\[
+  |\vec q|=\frac12\sqrt{s-4m^2},
+\]
+and hence
+\begin{equation}
+  \int\dd\Phi_2(P)
+  =
+  \frac1{8\pi}
+  \sqrt{1-\frac{4m^2}{s}}\,
+  \theta(s-4m^2).
+  \label{eq:two-body-phase-space-four-d}
+\end{equation}
+For identical intermediate particles this is multiplied by \(1/2!\) if the
+state sum is over unordered two-particle states.  Thus a one-loop bubble cut
+has discontinuity equal to \(\ii\) times the product of the two tree
+subamplitudes times \eqref{eq:two-body-phase-space-four-d}, with this symmetry
+factor when appropriate.  The square-root branch point is the same threshold
+that the Landau equations identify below.
+
 \section{Crossing From Locality and Tube Analyticity}
 
 The structural origin of crossing is the same analytic mechanism used for

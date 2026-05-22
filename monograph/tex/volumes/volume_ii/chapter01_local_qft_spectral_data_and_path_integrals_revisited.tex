@@ -19,7 +19,7 @@ The data are:
   spin cover when spinor fields are present;
   \item commuting self-adjoint translation generators \(P^\mu\), normalized by
   \[
-    U(\mathbf 1,a)=\exp\{-\ii a^\mu P_\mu\};
+    U(\mathbf 1,a)=\exp\{\ii a^\mu P_\mu\};
   \]
   \item the spectrum condition
   \[
@@ -50,7 +50,7 @@ the generators \(P^\mu\) and \(J^{\mu\nu}\) are defined by
 \[
   U(\Lambda,a)
   =
-  1-\ii\epsilon^\mu P_\mu
+  1+\ii\epsilon^\mu P_\mu
   +\frac{\ii}{2}\omega_{\mu\nu}J^{\mu\nu}
   +O(\epsilon^2,\omega^2,\epsilon\omega).
 \]
@@ -78,13 +78,16 @@ The vacuum condition is
 \]
 A local field with Lorentz index \(\alpha\) transforms as
 \[
-  U(\Lambda,a)\widehat\Phi_\alpha(x)U(\Lambda,a)^{-1}
+  U(\Lambda,a)^{-1}\widehat\Phi_\alpha(x)U(\Lambda,a)
   =
   R(\Lambda)_\alpha{}^\beta\,
   \widehat\Phi_\beta(\Lambda x+a),
 \]
 where \(R\) is the finite-dimensional Lorentz representation appropriate to
-the field. Since fields are distributions, this identity means equality after
+the field.  This active/passive convention is the one used in the scattering
+chapters: the unitary representation translates states by \(U\), while the
+coordinate argument of a field is translated by conjugation with \(U^{-1}\) on
+the left. Since fields are distributions, this identity means equality after
 smearing against test functions. For translations it gives
 \[
   \widehat\Phi_\alpha(x)
