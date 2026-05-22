@@ -1,103 +1,262 @@
 \chapter{Fixed Points and Conformal Data}
 \label{ch:volume-iii-fixed-points-conformal-data}
 
-\section{Fixed Points of the Renormalization Group}
+\section{Local QFT Data Used in Fixed-Point Analysis}
 
-Let \(\mathcal T\) be a local quantum field theory in \(D\) spacetime
-dimensions and let \(\{g_I(\mu)\}_{I\in\mathcal I}\) be a set of
-dimensionless renormalized coordinates on a space of local deformations.  The
-scale \(\mu>0\) is the renormalization scale, and \(\mathcal I\) labels local
-operators included in the coordinate chart.  The renormalization-group vector
-field is
+Let \(D\geq2\) be the spacetime dimension, let \(d=D-1\), and let
+\(\eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+)\).  The local Lorentzian
+data used in this volume are the following.
+\begin{enumerate}
+  \item A Hilbert space \(\Hilb\) of physical states.
+  \item A strongly continuous unitary representation \(U(\Lambda,a)\) of the
+  proper orthochronous Poincare group, or of its spin cover when spinorial
+  fields occur.  The group law is
+  \[
+    U(\Lambda',a')U(\Lambda,a)
+    =
+    U(\Lambda'\Lambda,\Lambda'a+a') .
+  \]
+  \item Self-adjoint generators \(P_\mu\) and \(J_{\mu\nu}=-J_{\nu\mu}\),
+  normalized near the identity by
+  \[
+    U(\Lambda,a)
+    =
+    1-\ii a^\mu P_\mu
+    +\frac{\ii}{2}\omega^{\mu\nu}J_{\mu\nu}
+    +O(a^2,\omega^2,a\omega),
+    \qquad
+    \Lambda^\mu{}_\nu=\delta^\mu{}_\nu+\omega^\mu{}_\nu .
+  \]
+  The operators \(P_\mu\) generate energy and momentum, while \(J_{\mu\nu}\)
+  generates spatial rotations and Lorentz boosts.
+  \item A Poincare-invariant unit vector \(\Omega\in\Hilb\), so
+  \(U(\Lambda,a)\Omega=\Omega\).
+  \item Local fields \(\widehat\Phi_\alpha(x)\), understood as
+  operator-valued distributions on a common invariant dense domain, with
+  Poincare covariance
+  \[
+    U(\Lambda,a)\widehat\Phi_\alpha(x)U(\Lambda,a)^{-1}
+    =
+    R(\Lambda)_\alpha{}^\beta\,
+    \widehat\Phi_\beta(\Lambda x+a).
+  \]
+  Here \(R\) is the finite-dimensional Lorentz representation carried by the
+  field component label \(\alpha\).  Bosonic local fields commute, and
+  fermionic local fields anticommute, after smearing with test functions whose
+  supports are spacelike separated.
+\end{enumerate}
+
+In addition, the discussion of conformal symmetry assumes a renormalized
+local stress tensor \(\widehat T_{\mu\nu}(x)\).  It is a symmetric tensor-valued
+operator distribution satisfying
 \begin{equation}
-  \mu\frac{\dd g_I}{\dd\mu}
-  =
-  \beta_I(g).
-  \label{eq:cft-rg-vector-field}
+  \partial_\mu\widehat T^{\mu\nu}=0,
+  \qquad
+  \widehat T^{\mu\nu}=\widehat T^{\nu\mu}.
+  \label{eq:cft-opening-stress-conservation}
 \end{equation}
-An RG fixed point in this chart is a point \(g_\ast\) satisfying
+where the conservation equation is distributional.  When the spatial
+integrals exist with the chosen domain and infrared prescription, the
+translation and Lorentz generators are represented by
+\begin{equation}
+  P^\mu
+  =
+  \int_{\Sigma_t}\dd^d\vec x\,
+  \widehat T^{0\mu}(t,\vec x).
+  \label{eq:cft-opening-p-charge}
+\end{equation}
+and
+\begin{equation}
+  J^{\mu\nu}
+  =
+  \int_{\Sigma_t}\dd^d\vec x\,
+  \bigl(
+    x^\mu\widehat T^{0\nu}(t,\vec x)
+    -
+    x^\nu\widehat T^{0\mu}(t,\vec x)
+  \bigr).
+  \label{eq:cft-opening-j-charge}
+\end{equation}
+with \(\Sigma_t=\{x^0=t\}\).  These equations are operator equations after
+the same smearing, renormalization, and boundary conventions used to define
+\(\widehat T_{\mu\nu}\).
+
+Lorentz covariance of the stress tensor means
+\begin{equation}
+  U(\Lambda,0)\widehat T_{\mu\nu}(x)U(\Lambda,0)^{-1}
+  =
+  \Lambda_\mu{}^\rho\Lambda_\nu{}^\sigma
+  \widehat T_{\rho\sigma}(\Lambda x).
+  \label{eq:cft-opening-stress-lorentz}
+\end{equation}
+where indices on \(\Lambda\) are moved with \(\eta_{\mu\nu}\).  Hence
+\(\widehat T^\mu{}_\mu(x)\) is a scalar local operator:
+\[
+  U(\Lambda,0)\widehat T^\mu{}_\mu(x)U(\Lambda,0)^{-1}
+  =
+  \widehat T^\mu{}_\mu(\Lambda x).
+\]
+
+\section{Renormalized Operators and the Trace Equation}
+
+Fix a renormalized coordinate chart \(\{g_I(\mu)\}_{I\in\mathcal I}\) on a
+space of local scalar deformations.  The index set \(\mathcal I\) labels
+renormalized local insertions \([O_I]_\mu(x)\).  In a Lagrangian presentation
+with bare scalar operators \(O_I^{\rm bare}\), write the interaction density as
+\begin{equation}
+  \mathcal L_{\rm int}^{\rm bare}
+  =
+  \sum_I g_I^{\rm bare}O_I^{\rm bare}.
+  \label{eq:cft-opening-bare-interaction}
+\end{equation}
+The renormalized insertions are defined by the response of the bare density to
+renormalized coordinates:
+\begin{equation}
+  \delta\mathcal L_{\rm int}^{\rm bare}
+  =
+  \sum_I \delta g_I^{\rm bare}O_I^{\rm bare}
+  =
+  \sum_I \delta g_I(\mu)\,[O_I]_\mu .
+  \label{eq:cft-opening-renormalized-insertions}
+\end{equation}
+This equation fixes the normalization and mixing convention for the local
+operators in the chosen scheme.  The beta-function vector field is
+\begin{equation}
+  \frac{\dd}{\dd\log\mu}g_I(\mu)
+  =
+  \beta_I(g(\mu)).
+  \label{eq:cft-opening-beta-function}
+\end{equation}
+
+The trace equation is the local form of the response to a change of scale.
+For the MS-type source charts developed earlier, the derivation has two
+steps.  First, the regulated scale variation of the bare interaction produces
+the engineering-dimension factors multiplying \(g_I^{\rm bare}O_I^{\rm bare}\).
+Second, the identity
+\[
+  0
+  =
+  \frac{\dd g_I^{\rm bare}}{\dd\log\mu}
+  =
+  -(\text{engineering dimension of }g_I^{\rm bare})\,g_I^{\rm bare}
+  +
+  \sum_J\beta_J(g)
+  \frac{\partial g_I^{\rm bare}}{\partial g_J}
+  \]
+converts those engineering factors into the beta-function vector field acting
+on the same bare density.  Passing to the finite renormalized insertion
+defined in \eqref{eq:cft-opening-renormalized-insertions} gives, in flat space
+and away from coincident insertions,
+\begin{equation}
+  \widehat T^\mu{}_\mu
+  =
+  \sum_I\beta_I(g)\,[O_I]_\mu
+  +
+  \partial_\mu V^\mu .
+  \label{eq:cft-opening-trace-beta}
+\end{equation}
+The vector \(V^\mu\) is a local vector operator recording possible virial and
+improvement contributions in the chosen stress-tensor representative.  Contact
+terms in \eqref{eq:cft-opening-trace-beta} are fixed together with the
+renormalized source Ward identities.  Curvature terms appear after coupling
+the theory to a background metric, but vanish in the flat separated-point
+identity displayed here.
+
+An RG fixed point in the coordinate chart is a point \(g_\ast\) satisfying
 \begin{equation}
   \beta_I(g_\ast)=0
   \qquad
-  \text{for all }I\in\mathcal I .
-  \label{eq:cft-rg-fixed-point}
+  \text{for every }I\in\mathcal I .
+  \label{eq:cft-opening-fixed-point}
 \end{equation}
-At such a point, correlation functions have no dependence on an auxiliary
-renormalization scale except through explicit operator normalizations and
-possible background anomalies.
-
-The infinitesimal behavior near a fixed point is controlled by the matrix
+At such a point the beta-function part of the trace vanishes.  A flat-space
+conformal fixed point is obtained when the stress tensor can be chosen, by
+allowed improvements and contact-term conventions, so that
 \begin{equation}
-  M_{IJ}
+  \widehat T^\mu{}_\mu=0
+  \label{eq:cft-opening-traceless-stress}
+\end{equation}
+as a renormalized local operator equation in flat space.  Equation
+\eqref{eq:cft-opening-traceless-stress}, together with
+\eqref{eq:cft-opening-stress-conservation}, is the local input from which the
+conformal currents and charges are derived in the next chapter.
+
+The linearized RG flow near \(g_\ast\) records the scaling dimensions of
+deformations.  Let
+\[
+  B_{IJ}
   =
   \left.
   \frac{\partial\beta_I}{\partial g_J}
   \right|_{g=g_\ast}.
-  \label{eq:cft-linearized-rg-matrix}
-\end{equation}
-If \(v^{(a)}_J\) is an eigenvector of \(M\),
-\[
-  \sum_J M_{IJ}v^{(a)}_J=y_a v^{(a)}_I,
 \]
-then the corresponding infinitesimal coupling
-\(\lambda_a=\sum_I v_I^{(a)}(g_I-g_{\ast I})\) obeys
+Choose an eigenvector \(v^{(a)}_J\) and write
+\[
+  g_I-g_{\ast I}=\lambda_a v^{(a)}_I+O(\lambda^2),
+  \qquad
+  \sum_J B_{IJ}v^{(a)}_J=-y_a v^{(a)}_I .
+\]
+With the momentum scale \(\mu\) as flow parameter,
 \[
   \mu\frac{\dd\lambda_a}{\dd\mu}
   =
-  y_a\lambda_a+O(\lambda^2).
+  -y_a\lambda_a+O(\lambda^2).
 \]
-The number \(y_a\) is the RG eigenvalue of the deformation.  If the associated
-local operator has scaling dimension \(\Delta_a\), then
+Equivalently, under a length rescaling \(x\mapsto b x\), \(b>1\),
+\[
+  \lambda_a(b)=b^{y_a}\lambda_a+O(\lambda^2).
+\]
+If the corresponding scalar perturbation is
+\(\int\dd^Dx\,\lambda_a O_a(x)\), then
 \begin{equation}
-  y_a=D-\Delta_a .
-  \label{eq:rg-eigenvalue-scaling-dimension}
+  y_a=D-\Delta_a,
+  \label{eq:cft-opening-y-delta}
 \end{equation}
-Thus relevant, marginal, and irrelevant deformations are characterized by
-\(y_a>0\), \(y_a=0\), and \(y_a<0\), respectively, with the convention that
-the flow parameter is the momentum scale.
+where \(\Delta_a\) is the scaling dimension of \(O_a\).  Thus \(y_a>0\),
+\(y_a=0\), and \(y_a<0\) define relevant, marginal, and irrelevant
+directions, respectively, in the long-distance flow.
 
 \section{Conformal Field Theory as Local Fixed-Point Data}
 
-The local data of a conformal field theory consist of the following objects.
-First, there is a vector space \(\mathcal V_{\mathrm{loc}}\) of local
-operators.  Its elements are denoted
-\[
-  \mathcal O_A(x),
-  \qquad
-  A\in\mathcal A,
-\]
-where \(\mathcal A\) is an index set labeling an operator basis or a collection
-of operator multiplets.  Second, there is an action of the conformal algebra
-on \(\mathcal V_{\mathrm{loc}}\).  Third, there are Euclidean correlation
-functions
-\begin{equation}
-  \left\langle
-  \mathcal O_{A_1}(x_1)\cdots\mathcal O_{A_n}(x_n)
-  \right\rangle,
-  \qquad
-  x_i\in\R^D,
-  \label{eq:cft-euclidean-correlators}
-\end{equation}
-defined as distributions away from coincident points and completed by local
-contact-term prescriptions when necessary.  Fourth, there is a stress tensor
-\(T_{\mu\nu}\) whose conserved charges generate spacetime conformal
-transformations.
-
-When the theory is unitary in Lorentzian signature, these Euclidean data are
-the analytic continuation of Wightman functions satisfying positivity,
-locality, and the spectral condition.  The present volume develops the
-Euclidean operator language first because it is the most efficient coordinate
-system for conformal symmetry, while the relation to Lorentzian local quantum
-fields remains the same relation developed earlier for Green functions.
+The local data of a conformal field theory in flat \(D\)-dimensional space are
+organized as follows.
+\begin{enumerate}
+  \item A vector space \(\mathcal V_{\rm loc}\) of renormalized local
+  operators.  Its elements are denoted
+  \(\mathcal O_A(x)\), with \(A\) labeling a basis or a collection of
+  multiplets.
+  \item A stress tensor \(T_{\mu\nu}\) satisfying conservation, symmetry, and
+  the flat-space tracelessness condition
+  \[
+    \partial_\mu T^{\mu\nu}=0,
+    \qquad
+    T^{\mu\nu}=T^{\nu\mu},
+    \qquad
+    T^\mu{}_\mu=0 .
+  \]
+  \item An action of the conformal algebra on \(\mathcal V_{\rm loc}\),
+  generated by the stress-tensor charges associated with conformal Killing
+  fields.
+  \item Euclidean separated-point correlation functions
+  \[
+    \left\langle
+    \mathcal O_{A_1}(x_1)\cdots\mathcal O_{A_n}(x_n)
+    \right\rangle,
+    \qquad
+    x_i\in\R^D,
+  \]
+  interpreted as distributions on the configuration space
+  \(x_i\neq x_j\), together with contact-term extensions specified by the
+  source Ward identities.
+\end{enumerate}
+For unitary Lorentzian theories these Euclidean distributions are related to
+Wightman distributions by analytic continuation and reflection positivity,
+under the same reconstruction hypotheses used for ordinary Euclidean Green
+functions.
 
 A scalar primary operator \(\mathcal O\) has a scaling dimension
-\(\Delta_{\mathcal O}\).  Under a uniform scale transformation
-\[
-  x^\mu\mapsto \lambda x^\mu,
-  \qquad
-  \lambda>0,
-\]
-its separated-point correlation functions transform as
+\(\Delta_{\mathcal O}\).  For scalar primaries
+\(\mathcal O_i\), separated-point scale covariance is
 \begin{equation}
   \left\langle
   \mathcal O_1(\lambda x_1)\cdots\mathcal O_n(\lambda x_n)
@@ -106,136 +265,248 @@ its separated-point correlation functions transform as
   \lambda^{-\sum_i\Delta_i}
   \left\langle
   \mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
-  \right\rangle
-  \label{eq:cft-scale-covariance}
+  \right\rangle,
+  \qquad
+  \lambda>0 .
+  \label{eq:cft-opening-scale-covariance}
 \end{equation}
-when all \(\mathcal O_i\) are scalar primaries.  Operators with spin carry
-additional finite-dimensional rotation matrices.  The systematic treatment of
-spin appears below when primary operators are defined by the full conformal
-algebra.
+Operators with spin carry the corresponding finite-dimensional rotation or
+Lorentz matrices.  The subsequent chapters derive these transformation laws
+from stress-tensor charges.
 
 \section{Ising Universality as a Fixed-Point Example}
 
-The statistical Ising model in \(D\) Euclidean dimensions assigns to each
-lattice site \(x\) a spin \(s_x\in\{+1,-1\}\).  With nearest-neighbor
-interaction and inverse temperature \(\beta_{\mathrm{th}}\), the partition
-function is
+The statistical Ising model is a Euclidean lattice model whose microscopic
+state sum has a finite-dimensional diagonal trace representation.  Let
+\(\Lambda\subset\mathbb Z^D\) be a finite lattice.  At every site
+\(x\in\Lambda\) there is a spin variable \(s_x=\pm1\), represented in diagonal
+operator notation by
 \[
-  Z_{\mathrm{Ising}}
-  =
-  \sum_{\{s_x=\pm1\}}
-  \exp\left\{
-  \beta_{\mathrm{th}}\sum_{\langle x y\rangle}s_xs_y
-  \right\}.
-\]
-The connected spin correlator determines a correlation length
-\(\xi(\beta_{\mathrm{th}})\) away from criticality:
-\[
-  \langle s_xs_y\rangle_{\mathrm c}
-  \sim
-  \exp\{-|x-y|/\xi\}
+  V_x=\operatorname{span}\{\ket{\uparrow}_x,\ket{\downarrow}_x\},
   \qquad
-  (|x-y|\gg1).
+  \widetilde{\Hilb}_\Lambda=\bigotimes_{x\in\Lambda}V_x,
 \]
-At the critical inverse temperature \(\beta_{\mathrm c}\), the correlation
-length diverges.  The long-distance scaling limit is described by a conformal
-field theory, the Ising CFT.  In that continuum theory, the lattice spin
-approaches a scalar primary \(\sigma(x)\), and the energy-density perturbation
-approaches another scalar primary \(\varepsilon(x)\).
+and by commuting diagonal operators \(\widehat S_x\) with eigenvalues
+\(\pm1\).  With nearest-neighbor coupling normalized to one,
+\[
+  \widetilde H
+  =
+  -\sum_{\langle x x'\rangle}\widehat S_x\widehat S_{x'} .
+\]
+The thermal expectation of an observable \(\widehat O\) is
+\begin{equation}
+  \langle\widehat O\rangle_{\beta_{\rm T}}
+  =
+  \frac1Z
+  \operatorname{Tr}_{\widetilde{\Hilb}_\Lambda}
+  \left(
+    \ee^{-\beta_{\rm T}\widetilde H}\widehat O
+  \right),
+  \qquad
+  Z=
+  \operatorname{Tr}_{\widetilde{\Hilb}_\Lambda}
+  \ee^{-\beta_{\rm T}\widetilde H},
+  \qquad
+  \beta_{\rm T}=\frac1T .
+  \label{eq:cft-opening-ising-thermal-trace}
+\end{equation}
+The tilde distinguishes the finite-dimensional trace space of the statistical
+ensemble from the Hilbert space reconstructed from a continuum scaling limit.
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.98\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
     \begin{scope}
-      \node[font=\small] at (0,2.35) {lattice scale};
+      \node[font=\small] at (1.35,3.0) {lattice spins};
       \foreach \i in {0,...,4} {
-        \draw[gray!65] (-2,\i*0.45) -- (0,\i*0.45);
-        \draw[gray!65] (-2+\i*0.5,0) -- (-2+\i*0.5,1.8);
+        \draw[gray!55] (0,\i*0.45)--(2.7,\i*0.45);
+        \draw[gray!55] (\i*0.675,0)--(\i*0.675,1.8);
       }
-      \foreach \x/\y/\s in {-2/0/1,-1.5/0/-1,-1/0/1,-.5/0/1,0/0/-1,
-        -2/.45/-1,-1.5/.45/1,-1/.45/1,-.5/.45/-1,0/.45/1,
-        -2/.9/1,-1.5/.9/1,-1/.9/-1,-.5/.9/1,0/.9/-1,
-        -2/1.35/-1,-1.5/1.35/1,-1/1.35/1,-.5/1.35/1,0/1.35/-1} {
+      \foreach \x/\y/\s in {
+        0/0/1,.675/0/-1,1.35/0/1,2.025/0/1,2.7/0/-1,
+        0/.45/-1,.675/.45/1,1.35/.45/1,2.025/.45/-1,2.7/.45/1,
+        0/.9/1,.675/.9/1,1.35/.9/-1,2.025/.9/1,2.7/.9/-1,
+        0/1.35/-1,.675/1.35/1,1.35/1.35/1,2.025/1.35/1,2.7/1.35/-1,
+        0/1.8/1,.675/1.8/-1,1.35/1.8/1,2.025/1.8/-1,2.7/1.8/1} {
         \ifnum\s=1
           \draw[green!50!black,->,thick] (\x,\y-0.15)--(\x,\y+0.15);
         \else
           \draw[green!50!black,->,thick] (\x,\y+0.15)--(\x,\y-0.15);
         \fi
       }
-      \node at (-1.0,-0.45) {spins \(s_x=\pm1\)};
+      \node[align=center] at (1.35,-0.45)
+        {\(x=(i,j)\) in \(D=2\)\\\(s_x=\pm1\)};
     \end{scope}
 
-    \draw[-{Latex[length=2.5mm]},thick] (0.6,0.9)--(3.0,0.9);
-    \node[align=center] at (1.8,1.35)
-      {tune to\\\(\beta_{\mathrm c}\)};
-    \node[align=center] at (1.8,0.36)
-      {take scaling\\limit};
+    \begin{scope}[shift={(4.45,0)}]
+      \node[font=\small] at (1.75,3.0) {magnetization};
+      \draw[-{Latex[length=2mm]}, thick] (0,0)--(3.55,0) node[below] {\(\beta_{\rm T}\)};
+      \draw[-{Latex[length=2mm]}, thick] (0,0)--(0,2.3) node[left] {\(|\langle s\rangle|\)};
+      \draw[dashed,gray!70] (1.23,0)--(1.23,2.05);
+      \node[below] at (1.23,0) {\(\beta_c\)};
+      \draw[blue!75!black,very thick]
+        (0.05,0.02)--(1.23,0.02)
+        .. controls (1.30,0.38) and (1.65,1.30) .. (2.45,1.78)
+        .. controls (2.85,2.00) and (3.2,2.05) .. (3.45,2.05);
+      \node[blue!75!black,align=center] at (2.65,1.15)
+        {ordered\\phase};
+      \node[gray!70!black] at (-0.18,2.05) {\(1\)};
+    \end{scope}
 
-    \begin{scope}[shift={(4.6,0)}]
-      \node[font=\small] at (0,2.35) {continuum fixed point};
-      \draw[thick,blue!60!black] (-1.25,0.15)..controls (-0.55,1.85)
-        and (0.55,1.85)..(1.25,0.15);
-      \draw[thick,blue!60!black,dashed] (-1.25,0.15)..controls (-0.55,-0.38)
-        and (0.55,-0.38)..(1.25,0.15);
-      \fill[purple!75!black] (-0.42,0.75) circle (2pt);
-      \node[purple!75!black,above] at (-0.42,0.87) {\(\sigma(x)\)};
-      \fill[orange!85!black] (0.55,0.58) circle (2pt);
-      \node[orange!85!black,above] at (0.55,0.70) {\(\varepsilon(y)\)};
-      \node[align=center] at (0,-0.55)
-        {operator data and\\power-law correlators};
+    \begin{scope}[shift={(9.45,0)}]
+      \node[font=\small] at (1.75,3.0) {spin two-point function};
+      \draw[-{Latex[length=2mm]}, thick] (0,0)--(3.8,0) node[below] {\(r\)};
+      \draw[-{Latex[length=2mm]}, thick] (0,0)--(0,2.3) node[left] {\(f(r)\)};
+      \draw[green!50!black, very thick]
+        (0.15,2.02)..controls (0.85,1.72) and (1.75,1.48)..(3.55,1.46);
+      \draw[blue!75!black, very thick]
+        (0.15,2.02)..controls (0.55,1.28) and (1.25,0.70)..(3.35,0.28);
+      \draw[purple!75!black, very thick]
+        (0.15,2.02)..controls (0.45,0.95) and (0.95,0.28)..(2.25,0.05);
+      \node[green!50!black] at (2.85,1.78) {\(T<T_c\)};
+      \node[blue!75!black] at (2.65,0.73) {\(T=T_c\)};
+      \node[purple!75!black] at (1.45,0.43) {\(T>T_c\)};
     \end{scope}
   \end{tikzpicture}
   }
-  \caption{The critical Ising scaling limit replaces lattice observables by
-  local operators of a continuum fixed point.  The spin and energy-density
-  observables become distinguished scalar operators of the Ising CFT.}
-  \label{fig:cft-ising-scaling-limit}
+  \caption{The Ising fixed point is reached by tuning the temperature.  The
+  finite lattice trace space defines the statistical ensemble, spontaneous
+  magnetization appears for \(T<T_c\), and the critical two-point function has
+  power-law decay.}
+  \label{fig:cft-opening-ising-source-figures}
 \end{figure}
 
-The leading separated two-point functions at criticality take the form
+In \(D=2\), write \(S_{N,M}\) for the spin observable at
+\(x=(N,M)\) and set
 \[
-  \langle\sigma(x)\sigma(0)\rangle
+  f_{N,M}
   =
-  \frac{C_\sigma}{|x|^{2\Delta_\sigma}},
+  \langle S_{0,0}S_{N,M}\rangle_{\beta_{\rm T}}
+  \simeq f(r),
   \qquad
-  \langle\varepsilon(x)\varepsilon(0)\rangle
-  =
-  \frac{C_\varepsilon}{|x|^{2\Delta_\varepsilon}},
+  r=(N^2+M^2)^{1/2},
 \]
-with positive normalization constants \(C_\sigma,C_\varepsilon\) in a unitary
-normalization.  The thermal exponent \(\nu\) is related to the scaling
-dimension of the energy operator by
+for \(r\gg1\) and \(T\) close to \(T_c\).  The long-distance regimes are
 \[
-  \Delta_\varepsilon=D-\frac1{\nu}.
+  f(r)\longrightarrow |\langle s\rangle|^2>0
+  \qquad (T<T_c),
 \]
-These relations are definitions inside the continuum fixed-point description:
-the critical exponents of the lattice model are recovered from scaling
-dimensions of operators in the CFT.
-
-\section{Trace Equation at a Fixed Point}
-
-Let \(T_{\mu\nu}\) be the symmetric conserved stress tensor.  Away from a
-fixed point, the trace Ward identity has the renormalized local form
+\[
+  f(r)\sim \ee^{-r/\xi(T)}
+  \qquad (T>T_c),
+  \qquad
+  \xi(T)\sim (T-T_c)^{-\nu},
+\]
+and
 \begin{equation}
-  T^\mu{}_\mu
+  f(r)\sim r^{-2\Delta_\sigma}
+  \qquad (T=T_c).
+  \label{eq:cft-opening-ising-critical-power}
+\end{equation}
+The first numerical values to keep in view are
+\[
+\begin{array}{c|cc}
+  D & \Delta_\sigma & \nu \\ \hline
+  2 & \frac18 & 1\\[2pt]
+  3 & 0.518\ldots & 0.62998\ldots
+\end{array}
+\]
+where \(\Delta_\sigma\) is the scaling dimension of the continuum spin field
+and \(\nu\) is the correlation-length exponent.
+
+The same universality class can be represented by a scalar Euclidean lattice
+field theory.  Replace the two-valued spin by a real variable \(\phi_x\), use
+a \(\mathbb Z_2\)-even double-well single-site potential, and retain the
+finite Brillouin-zone cutoff.  At long distance its action has the form
+\begin{equation}
+  S_{\rm lat}[\phi]
   =
-  \sum_I\beta_I(g)[\mathcal O_I]_\mu
-  +
-  \partial_\mu V^\mu
-  +
-  \text{curvature terms in a background metric}.
-  \label{eq:cft-trace-beta-local-form}
+  \int\dd^Dx\,
+  \left[
+    \frac12 Z_\phi(\partial_\mu\phi)^2
+    +
+    V(\phi)
+    +
+    \sum_A c_A\,\mathcal O_A^{\rm aniso}(\phi,\partial\phi)
+  \right],
+  \label{eq:cft-opening-ising-scalar-cutoff}
 \end{equation}
-The vector operator \(V^\mu\) records possible improvement ambiguities in flat
-space.  At a fixed point, the beta-function terms vanish.  A theory is
-conformal in flat space when the remaining flat-space trace can be removed by
-an allowed improvement so that
+where the last sum consists of higher-derivative operators allowed by the
+hypercubic lattice symmetry.  These terms display the finite cutoff and the
+breaking of \(SO(D)\) rotations at the microscopic scale.
+
+At \(T=T_c\), equivalently at the tuned massless critical point, the
+correlation length is infinite in lattice units.  The separated long-distance
+correlators are described by the Ising conformal field theory.  For
+\(D=2,3\), this is the infrared fixed point of the \(\mathbb Z_2\)-invariant
+massless scalar \(\phi^4\) universality class.  The continuum fields obey the
+dictionary
+\[
+  \phi \longmapsto \sigma,
+  \qquad
+  [\phi^2]\longmapsto \varepsilon ,
+\]
+where \(\sigma\) is the spin field and \(\varepsilon\) is the thermal
+energy-density field after identity mixing has been subtracted.  The thermal
+deformation
+\[
+  \Delta S_t=\int\dd^Dx\,u_t\,\varepsilon(x)
+\]
+has RG eigenvalue \(y_t=D-\Delta_\varepsilon\).  Since
+\(\xi^{-1}\propto |u_t|^{1/y_t}\), comparison with
+\(\xi\propto |T-T_c|^{-\nu}\) gives
 \begin{equation}
-  T^\mu{}_\mu=0
-  \label{eq:cft-flat-traceless-stress}
+  \Delta_\varepsilon
+  =
+  D-\frac1{\nu}.
+  \label{eq:cft-opening-ising-energy-dimension}
 \end{equation}
-as a local operator equation, up to contact terms in Ward identities.  The
-next chapters derive the conformal charges from
-\eqref{eq:cft-flat-traceless-stress} and then explain the role of Weyl
-transformations and stress-tensor improvements.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (0,2.65) {cutoff scalar model};
+      \draw[-{Latex[length=2mm]}, thick] (-1.35,0)--(1.45,0) node[below] {\(\phi\)};
+      \draw[-{Latex[length=2mm]}, thick] (0,-0.2)--(0,2.05) node[left] {\(V(\phi)\)};
+      \draw[blue!70!black,very thick]
+        plot[smooth] coordinates {(-1.25,1.85) (-0.72,0.35) (0,1.05) (0.72,0.35) (1.25,1.85)};
+      \node[blue!70!black] at (0,-0.55) {\(\mathbb Z_2\)-even};
+    \end{scope}
+
+    \begin{scope}[shift={(4.1,0)}]
+      \node[font=\small] at (0,2.65) {finite momentum cutoff};
+      \draw[thick] (-1.15,-1.15) rectangle (1.15,1.15);
+      \draw[-{Latex[length=2mm]}, gray!70] (-1.55,0)--(1.65,0) node[below] {\(k^1\)};
+      \draw[-{Latex[length=2mm]}, gray!70] (0,-1.55)--(0,1.65) node[left] {\(k^2\)};
+      \node at (-1.15,-1.42) {\(-\pi\)};
+      \node at (1.15,-1.42) {\(\pi\)};
+      \node[align=center] at (0,-1.9) {Brillouin zone};
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]}, thick] (5.75,0.55)--(7.05,0.55);
+    \node[align=center] at (6.40,1.05) {tune\\mass};
+
+    \begin{scope}[shift={(8.05,0)}]
+      \node[font=\small] at (0,2.65) {infrared fixed point};
+      \draw[thick,blue!60!black] (-1.2,0.15)..controls (-0.55,1.7)
+        and (0.55,1.7)..(1.2,0.15);
+      \draw[thick,blue!60!black,dashed] (-1.2,0.15)..controls (-0.55,-0.38)
+        and (0.55,-0.38)..(1.2,0.15);
+      \fill[purple!75!black] (-0.42,0.75) circle (2pt);
+      \node[purple!75!black,above] at (-0.42,0.86) {\(\sigma\)};
+      \fill[orange!85!black] (0.55,0.58) circle (2pt);
+      \node[orange!85!black,above] at (0.55,0.69) {\(\varepsilon\)};
+      \node[align=center] at (0,-0.70)
+        {\(\Delta_\sigma\), \(\Delta_\varepsilon=D-1/\nu\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The scalar cutoff representation of the Ising universality class
+  has a finite Brillouin-zone cutoff and lattice anisotropy.  At the tuned
+  critical point its long-distance operator data are those of the Ising
+  conformal field theory.}
+  \label{fig:cft-opening-ising-scalar-cutoff}
+\end{figure}
