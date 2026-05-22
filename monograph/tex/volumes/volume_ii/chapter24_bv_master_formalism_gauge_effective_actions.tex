@@ -372,27 +372,47 @@ no boundary contribution is present.
 
 If the regulated theory fails to satisfy \eqref{eq:quantum-master-equation},
 the failure has ghost number \(+1\).  To first order in \(\hbar\), write
-\[
+\begin{equation}
+  \mathcal M(S)
+  :=
   \frac12(S,S)-\ii\hbar\,\Delta_{\rm BV}S
   =
   \hbar\,\mathcal A+O(\hbar^2).
+  \label{eq:qme-anomaly-defect}
+\end{equation}
+The BV Jacobi identity, the second-order identity for \(\Delta_{\rm BV}\), and
+\(\Delta_{\rm BV}^2=0\) give the quantum consistency identity
+\begin{equation}
+  (S,\mathcal M(S))-\ii\hbar\,\Delta_{\rm BV}\mathcal M(S)=0.
+  \label{eq:qme-defect-consistency}
+\end{equation}
+Indeed, for even \(S\), \((S,\frac12(S,S))=0\) and
+\(\Delta_{\rm BV}(S,S)=2(\Delta_{\rm BV}S,S)\), so the two order-\(\hbar\)
+terms in \eqref{eq:qme-defect-consistency} cancel.  Substituting
+\eqref{eq:qme-anomaly-defect} and \(S=S_0+O(\hbar)\) into
+\eqref{eq:qme-defect-consistency} gives
+\[
+  0
+  =
+  \hbar\,(S_0,\mathcal A)+O(\hbar^2).
 \]
-Applying the classical differential \(s_{\rm BV}=(S_0,\cdot)\) and using the
-Jacobi identity gives
+Therefore, with \(s_{\rm BV}:=(S_0,\cdot)\),
 \[
   s_{\rm BV}\mathcal A=0 .
 \]
 Changing the local counterterm by \(\hbar B\) changes the anomaly by
-\[
+\begin{equation}
   \mathcal A\longmapsto \mathcal A+s_{\rm BV}B .
-\]
+  \label{eq:qme-anomaly-counterterm-shift}
+\end{equation}
 Thus the obstruction class lies in ghost-number-one local BV cohomology.  This
 is the antifield version of the anomaly classification by
 \(H^{1,D}(s\mid d)\).  In the chiral gauge example of
 Chapter~\ref{ch:volume-ii-20}, the representative is the
-descent cocycle whose bottom component gives the consistent anomaly; adding a
-local counterterm changes the representative by an \(s_{\rm BV}\)-exact
-cocycle, matching the counterterm ambiguity above.
+descent cocycle whose bottom component gives the consistent anomaly
+\eqref{eq:consistent-descent-anomaly-representative}; adding a local
+counterterm changes the representative by an \(s_{\rm BV}\)-exact cocycle,
+matching \eqref{eq:qme-anomaly-counterterm-shift}.
 
 \section{The 1PI Master Equation}
 
