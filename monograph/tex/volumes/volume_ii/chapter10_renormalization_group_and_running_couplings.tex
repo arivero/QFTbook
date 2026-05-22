@@ -59,6 +59,71 @@ on \(\Lambda\).  That construction will be developed later.  The present
 chapter uses the 1PI effective action and subtraction conditions on its
 vertices.
 
+At the level of perturbative graphs, the scale comparison is a precise reuse
+of lower-order subgraph data.  A one-loop subgraph that determines the
+variation of a 1PI coordinate reappears inside higher-order 1PI graphs.  The
+renormalization-group equation records this reuse as a differential equation
+for the finite coordinate, after the local counterterms have removed the
+cutoff dependence.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.88\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (0,1.65) {tree datum};
+      \coordinate (v) at (0,0);
+      \foreach \a in {35,145,215,325} {
+        \draw[thick] (v)--++({0.95*cos(\a)},{0.95*sin(\a)});
+      }
+      \fill (v) circle (2pt);
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]}, thick] (1.55,0)--(2.25,0);
+
+    \begin{scope}[shift={(3.85,0)}]
+      \node[font=\small] at (0,1.65) {one-loop scale dependence};
+      \coordinate (a) at (-0.85,0);
+      \coordinate (b) at (0.85,0);
+      \draw[thick] (-1.8,0)--(a);
+      \draw[thick] (b)--(1.8,0);
+      \draw[thick] (a)..controls (-0.35,0.72) and (0.35,0.72)..(b);
+      \draw[thick] (a)..controls (-0.35,-0.72) and (0.35,-0.72)..(b);
+      \fill (a) circle (2pt);
+      \fill (b) circle (2pt);
+      \draw[orange!85!black, rounded corners, line width=0.9pt]
+        (-1.05,-0.88) rectangle (1.05,0.88);
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]}, thick] (6.05,0)--(6.75,0);
+
+    \begin{scope}[shift={(8.85,0)}]
+      \node[font=\small] at (0,1.65) {same subgraph in a larger 1PI graph};
+      \coordinate (a) at (-1.25,0);
+      \coordinate (b) at (-0.15,0);
+      \coordinate (c) at (1.05,0);
+      \draw[thick] (-2.05,0.72)--(a)--(-2.05,-0.72);
+      \draw[thick] (1.85,0.72)--(c)--(1.85,-0.72);
+      \draw[thick] (a)..controls (-0.9,0.72) and (-0.45,0.72)..(b);
+      \draw[thick] (a)..controls (-0.9,-0.72) and (-0.45,-0.72)..(b);
+      \draw[thick] (b)..controls (0.25,0.62) and (0.75,0.62)..(c);
+      \draw[thick] (b)..controls (0.25,-0.62) and (0.75,-0.62)..(c);
+      \draw[orange!85!black, rounded corners, line width=0.9pt]
+        (-1.45,-0.88) rectangle (0.05,0.88);
+      \fill (a) circle (2pt);
+      \fill (b) circle (2pt);
+      \fill (c) circle (2pt);
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The scale derivative of a 1PI coordinate is local in perturbation
+  theory because the scale-dependent part of a lower-order 1PI subgraph is
+  reused inside larger graphs.  The differential equation is written only
+  after the subgraph counterterms of the previous chapters have made the
+  coordinate comparison finite.}
+  \label{fig:volume-ii-rg-subgraph-reuse}
+\end{figure}
+
 \begin{figure}[H]
   \centering
   \resizebox{0.98\textwidth}{!}{%
@@ -212,8 +277,8 @@ the displayed formula.
 
 \section{One-Loop Running in the Quartic Example}
 
-At one loop, the four-point bubble changes the quartic vertex, while the
-two-point bubble is independent of \(k^2\).  Therefore
+At one loop, the four-point bubbles change the quartic vertex, while the
+two-point tadpole is independent of \(k^2\).  Therefore
 \[
   Z_R=1+O(g_R^2),
   \qquad
@@ -223,35 +288,65 @@ for the one-loop computation of \(g(\mu)\).
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.92\textwidth}{!}{%
+  \resizebox{0.98\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \begin{scope}
-      \node[font=\small] at (0,1.85) {tree vertex};
+    \begin{scope}[shift={(-5.2,0)}]
+      \node[font=\small] at (0,1.75) {tree};
       \foreach \a in {45,135,225,315} {
-        \draw[thick] (0,0)--++({1.0*cos(\a)},{1.0*sin(\a)});
+        \draw[thick] (0,0)--++({0.82*cos(\a)},{0.82*sin(\a)});
       }
       \fill[black] (0,0) circle (2pt);
       \node[below] at (0,-1.0) {\(-g_R\)};
     \end{scope}
 
-    \node[font=\large] at (2.0,0) {\(+\)};
+    \node[font=\large] at (-3.85,0) {\(+\)};
 
-    \begin{scope}[shift={(4.0,0)}]
-      \node[font=\small] at (0,1.85) {bubble channel};
-      \draw[thick] (-2.0,0)--(-0.72,0);
-      \draw[thick] (0.72,0)--(2.0,0);
-      \draw[thick] (-0.72,0)..controls (-0.35,0.65) and (0.35,0.65)..(0.72,0);
-      \draw[thick] (-0.72,0)..controls (-0.35,-0.65) and (0.35,-0.65)..(0.72,0);
-      \node[above] at (0,0.72) {\(\ell\)};
-      \node[below] at (0,-1.0) {\(s,t,u\) channels};
+    \begin{scope}[shift={(-2.35,0)}]
+      \node[font=\small] at (0,1.75) {\(s\)-channel};
+      \coordinate (a) at (-0.55,0);
+      \coordinate (b) at (0.55,0);
+      \draw[thick] (-1.45,0.68)--(a)--(-1.45,-0.68);
+      \draw[thick] (1.45,0.68)--(b)--(1.45,-0.68);
+      \draw[thick] (a)..controls (-0.18,0.58) and (0.18,0.58)..(b);
+      \draw[thick] (a)..controls (-0.18,-0.58) and (0.18,-0.58)..(b);
+      \fill (a) circle (1.8pt);
+      \fill (b) circle (1.8pt);
     \end{scope}
 
-    \node[font=\large] at (7.0,0) {\(+\)};
+    \node[font=\large] at (-0.7,0) {\(+\)};
 
-    \begin{scope}[shift={(9.0,0)}]
-      \node[font=\small] at (0,1.85) {local counterterm};
+    \begin{scope}[shift={(0.75,0)}]
+      \node[font=\small] at (0,1.75) {\(t\)-channel};
+      \coordinate (a) at (0,0.54);
+      \coordinate (b) at (0,-0.54);
+      \draw[thick] (-1.12,1.1)--(a)--(1.12,1.1);
+      \draw[thick] (-1.12,-1.1)--(b)--(1.12,-1.1);
+      \draw[thick] (a)..controls (0.58,0.22) and (0.58,-0.22)..(b);
+      \draw[thick] (a)..controls (-0.58,0.22) and (-0.58,-0.22)..(b);
+      \fill (a) circle (1.8pt);
+      \fill (b) circle (1.8pt);
+    \end{scope}
+
+    \node[font=\large] at (2.25,0) {\(+\)};
+
+    \begin{scope}[shift={(3.6,0)}]
+      \node[font=\small] at (0,1.75) {\(u\)-channel};
+      \coordinate (a) at (-0.42,0.42);
+      \coordinate (b) at (0.42,-0.42);
+      \draw[thick] (-1.25,1.12)--(a)--(-1.25,-1.12);
+      \draw[thick] (1.25,1.12)--(b)--(1.25,-1.12);
+      \draw[thick] (a)..controls (0.1,0.88) and (0.85,0.1)..(b);
+      \draw[thick] (a)..controls (-0.1,-0.88) and (-0.85,-0.1)..(b);
+      \fill (a) circle (1.8pt);
+      \fill (b) circle (1.8pt);
+    \end{scope}
+
+    \node[font=\large] at (5.05,0) {\(+\)};
+
+    \begin{scope}[shift={(6.35,0)}]
+      \node[font=\small] at (0,1.75) {counterterm};
       \foreach \a in {45,135,225,315} {
-        \draw[thick] (0,0)--++({1.0*cos(\a)},{1.0*sin(\a)});
+        \draw[thick] (0,0)--++({0.82*cos(\a)},{0.82*sin(\a)});
       }
       \draw[red!75!black, thick] (-0.23,-0.23)--(0.23,0.23);
       \draw[red!75!black, thick] (-0.23,0.23)--(0.23,-0.23);
@@ -260,8 +355,8 @@ for the one-loop computation of \(g(\mu)\).
   \end{tikzpicture}
   }
   \caption{The one-loop scalar quartic coordinate receives the tree vertex,
-  the three bubble channels, and the local quartic counterterm fixed by the
-  chosen subtraction condition.}
+  the three distinct bubble channels, and the local quartic counterterm fixed
+  by the chosen subtraction condition.}
   \label{fig:volume-ii-phi-four-one-loop-rg}
 \end{figure}
 
@@ -450,6 +545,45 @@ coordinate at scale \(\mu\) is extracted from the \(n_I\)-point vertex by
 The projector \(\Pi_I\) includes the sign and tensor normalization
 conventions.  In the scalar quartic example, \(\Pi_I\) is multiplication by
 \(-1\) at the symmetric four-point configuration.
+
+Two elementary coordinates fix the normalization conventions.  First consider
+the two-derivative quadratic operator, schematically
+\(\mathcal O_{2,2}=\phi\,\Box\phi\), in the same self-energy convention
+used above.  Its 1PI Taylor coefficient at \(k^2=\mu^2\) is
+\[
+  \Gamma^{(2;2)}\big|_{k^2=\mu^2}
+  =
+  \left.
+  \frac{\partial\Sigma}{\partial k^2}
+  \right|_{k^2=\mu^2}
+  =
+  1-Z(\mu)^{-1}.
+\]
+With the minus sign included in the quadratic-coordinate projector, the
+corresponding renormalized coordinate is
+\[
+  g_{2,2}(\mu)
+  =
+  -Z(\mu)\left(1-Z(\mu)^{-1}\right)
+  =
+  1-Z(\mu).
+\]
+This is the same field-normalization information expressed as a 1PI
+coordinate.  Second, for the mass operator with bare coefficient
+\(g_2^{\rm bare}=m_0^2\), the dimensionless coordinate may be written
+\[
+  \lambda_2(\mu)
+  =
+  \mu^{-2}Z(\mu)
+  \left[
+    g_2^{\rm bare}
+    -
+    \Sigma(k)\big|_{k^2=\mu^2}
+  \right],
+\]
+again in the same self-energy and projector convention.  These examples
+make explicit that the field normalization, relevant mass coordinate, and
+higher 1PI vertex coordinates are part of one coordinate chart.
 
 The finite comparison of nearby scales gives
 \[
@@ -717,9 +851,9 @@ vanishes:
 
 \begin{figure}[H]
   \centering
-  \resizebox{0.86\textwidth}{!}{%
+  \resizebox{0.96\textwidth}{!}{%
   \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
-    \begin{scope}
+    \begin{scope}[shift={(-4.2,0.15)}]
       \node[font=\small] at (0,2.0) {single logarithm};
       \draw[thick] (-2.0,0)--(-0.75,0);
       \draw[thick] (0.75,0)--(2.0,0);
@@ -728,10 +862,10 @@ vanishes:
       \node[blue!70!black] at (0,-1.05) {\(\sim b_1 g_0^2 L\)};
     \end{scope}
 
-    \node[font=\large] at (3.2,0) {\(\Longrightarrow\)};
+    \node[font=\large] at (-1.1,0.15) {\(\Longrightarrow\)};
 
-    \begin{scope}[shift={(6.3,0)}]
-      \node[font=\small] at (0,2.0) {nested logarithm};
+    \begin{scope}[shift={(2.0,0.55)}]
+      \node[font=\small] at (0,1.85) {nested four-point logarithms};
       \draw[thick] (-2.15,0)--(-0.9,0);
       \draw[thick] (0.9,0)--(2.15,0);
       \draw[thick] (-0.9,0)..controls (-0.45,0.72) and (0.45,0.72)..(0.9,0);
@@ -740,10 +874,27 @@ vanishes:
         (0.15,0.72)..(0.45,0.35);
       \draw[orange!85!black, thick] (-0.45,0.35)..controls (-0.15,0.02) and
         (0.15,0.02)..(0.45,0.35);
-      \node[blue!70!black] at (0,-1.05) {\(\sim c_1g_0^3L^2\)};
+      \node[blue!70!black] at (0,-1.0) {\(\sim c_1g_0^3L^2\)};
     \end{scope}
 
-    \node[align=center, red!75!black] at (11.1,0)
+    \node[font=\large] at (4.55,0.55) {\(+\)};
+
+    \begin{scope}[shift={(6.55,0.55)}]
+      \node[font=\small] at (0,1.85) {permuted channels};
+      \coordinate (a) at (-0.9,0);
+      \coordinate (b) at (0.9,0);
+      \draw[thick] (-1.75,0.75)--(a)--(-1.75,-0.75);
+      \draw[thick] (1.75,0.75)--(b)--(1.75,-0.75);
+      \draw[thick] (a)..controls (-0.28,0.72) and (0.28,0.72)..(b);
+      \draw[thick] (a)..controls (-0.28,-0.72) and (0.28,-0.72)..(b);
+      \draw[orange!85!black, thick] (0,0.72)
+        ..controls (0.45,1.25) and (-0.45,1.25)..(0,0.72);
+      \fill (a) circle (1.8pt);
+      \fill (b) circle (1.8pt);
+      \node[blue!70!black] at (0,-1.0) {plus subleading single logs};
+    \end{scope}
+
+    \node[align=center, red!75!black] at (2.0,-1.75)
       {finite beta function\\requires\\\(c_1=-b_1^2\)};
   \end{tikzpicture}
   }

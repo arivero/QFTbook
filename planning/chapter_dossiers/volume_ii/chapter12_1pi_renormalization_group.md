@@ -16,7 +16,9 @@
 
 - `SRC-QFT-PDF`: `references/253b lecture notes 2023.pdf`, pages 97--110;
   checked against rendered page images in
-  `monograph/tex/build/source_visual_1pi_rg/`.
+  `monograph/tex/build/source_visual_1pi_rg/` and compiled pages
+  `/tmp/qft_ch32_rg_audit-215.png` through
+  `/tmp/qft_ch32_rg_audit-226.png` on 2026-05-22.
 - `SRC-BEN-COMPARISON`: `references/253b transcribed lecture notes.tex`,
   lines around the source-page block 97--110, used only as a comparison layer.
 - `SRC-EXTERNAL`: exact-RG material in Rosten for the later Wilsonian
@@ -65,33 +67,40 @@ The chapter must define:
    at the same scale.
 2. In four-dimensional scalar quartic theory, the one-loop four-point bubble
    changes the quartic coordinate while \(Z(\mu)=1+O(g_R^2)\) at that order.
-3. The relation between \(g(\mu')\) and \(g(\mu)\) is finite after the UV
+3. The corresponding one-loop two-point tadpole is independent of \(k^2\), so
+   it does not change the field normalization at this order.
+4. The relation between \(g(\mu')\) and \(g(\mu)\) is finite after the UV
    regulator is removed when the counterterms of the previous chapters have
    been fixed.
-4. Comparing nearby scales produces a differential equation whose right-hand
+5. Comparing nearby scales produces a differential equation whose right-hand
    side is the beta function in the chosen coordinate system.
-5. For \(\mu\gg m_R\), the one-loop scalar quartic beta function is
+6. For \(\mu\gg m_R\), the one-loop scalar quartic beta function is
    \(3g^2/(16\pi^2)+O(g^3)\) in the conventions of the source notes.
-6. The integrated one-loop equation resums leading logarithms, with validity
+7. The integrated one-loop equation resums leading logarithms, with validity
    controlled by the smallness of the running coupling throughout the interval
    being compared.
-7. The one-loop scalar quartic flow has a perturbative Landau scale
+8. The one-loop scalar quartic flow has a perturbative Landau scale
    \(\mu_0=\mu'\exp(16\pi^2/(3g(\mu')))\); perturbation theory gives no
    controlled description at scales where the running coupling is large.
-8. For a general local operator \(O_I\) with mass dimension \(d_I\), the
+9. For a general local operator \(O_I\) with mass dimension \(d_I\), the
    dimensionless coordinate \(\lambda_I(\mu)=\mu^{d_I-D}g_I(\mu)\) can have an
    autonomous beta function once explicit dimensionful ratios are encoded in
    the coordinate choice or treated as additional couplings.
-9. The Callan--Symanzik equation for noncoincident elementary-field
-   correlators follows from differentiating
-   \(G_{0,\Lambda}^{(n)}=Z_\phi^{n/2}G_R^{(n)}\) at fixed bare data.
-10. Dimensional homogeneity is independent of the Callan--Symanzik equation;
+10. The quadratic derivative coordinate satisfies
+    \(g_{2,2}(\mu)=1-Z(\mu)\) in the chapter's self-energy and projector
+    convention; the mass coordinate is
+    \(\lambda_2(\mu)=\mu^{-2}Z(\mu)
+    [g_2^{\rm bare}-\Sigma(k)|_{k^2=\mu^2}]\).
+11. The Callan--Symanzik equation for noncoincident elementary-field
+    correlators follows from differentiating
+    \(G_{0,\Lambda}^{(n)}=Z_\phi^{n/2}G_R^{(n)}\) at fixed bare data.
+12. Dimensional homogeneity is independent of the Callan--Symanzik equation;
     combining the two gives the fixed-point field dimension
     \(d_\phi^{\rm eng}+\gamma_{\phi,\ast}\).
-11. The absence of explicit cutoff logarithms in beta functions imposes
+13. The absence of explicit cutoff logarithms in beta functions imposes
    relations among higher logarithmic coefficients; at the displayed order,
    \(c_1=-b_1^2\).
-12. A finite redefinition
+14. A finite redefinition
     \(\widetilde\lambda=f(\lambda)=\lambda+\alpha\lambda^2+\cdots\) transforms
     beta functions by the chain rule; for one classically marginal coupling,
     the first two perturbative coefficients are invariant while later
@@ -101,12 +110,14 @@ The chapter must define:
 
 - A scale-dependent 1PI-coordinate figure: field normalization, symmetric
   four-point vertex, and nearby-scale comparison.
-- A scalar quartic one-loop vertex figure showing the tree vertex, bubble
-  channels, and local counterterm.
+- A subdiagram-reuse figure showing a lower-order scale-dependent 1PI
+  subgraph appearing inside a larger graph.
+- A scalar quartic one-loop vertex figure showing the tree vertex, the three
+  distinct bubble channels, and local counterterm.
 - A Landau-scale running figure with the perturbative domain separated from
   the strong-coupling region.
-- A logarithmic-consistency figure showing nested one-loop subgraphs fixing
-  the double logarithm.
+- A logarithmic-consistency figure showing nested one-loop subgraphs,
+  permuted channels, and the double-logarithm condition.
 - A scheme-change diagram showing coordinate charts on the same renormalized
   theory family.
 
@@ -126,3 +137,9 @@ The chapter must define:
   and the handoff to operator mixing.
 - The main text should explain the 1PI RG by its constructed data and finite
   comparisons, with any limitations placed in remarks after the construction.
+- 2026-05-22 page-level source/figure audit complete.  Handwritten pages
+  97--110 were checked through
+  `monograph/tex/build/source_visual_1pi_rg/253b_rg-097.png` through
+  `253b_rg-110.png`; compiled pages were checked as
+  `/tmp/qft_ch32_rg_audit-215.png` through
+  `/tmp/qft_ch32_rg_audit-226.png`.
