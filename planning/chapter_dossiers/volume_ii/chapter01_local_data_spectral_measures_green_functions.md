@@ -6,10 +6,16 @@
   constructions: local quantum data, spectral measures, time-ordered and
   Euclidean Green functions, and regulated path-integral calculus.
 - Preserves the order of the source sequence:
-  local QFT data, spectral representation, path-integral representation,
+  Poincare representation and local fields, field-on-vacuum one-particle
+  projection, Kallen--Lehmann spectral representation, Lorentzian/Euclidean
+  Green functions, Wick rotation, regulated path-integral representation,
   then scattering and LSZ in the next chapter.
 - Source material used:
-  - `transcription/tex/253b/scattering_rg_qcd.tex`, roughly lines 1--260;
+  - rendered handwritten trace
+    `monograph/tex/build/source_visual_trace/253b_trace-001.png` through
+    `253b_trace-006.png`;
+  - `transcription/tex/253b/scattering_rg_qcd.tex`, roughly lines 1--260,
+    used only as an index against the handwritten pages;
   - Volume I chapters on local fields, Kallen--Lehmann representation,
     Euclidean Green functions, and Lorentzian analytic continuation;
   - `references/sound_references/schmidt_euclidean_reconstruction_math-ph_9811002.pdf`
@@ -38,11 +44,16 @@
 | Symbol | Meaning |
 | --- | --- |
 | \(\Hilb\) | physical Hilbert space |
-| \(U(a,\Lambda)\) | unitary Poincare representation |
+| \(U(\Lambda,a)\) | unitary Poincare representation |
 | \(P^\mu\) | self-adjoint translation generators |
+| \(J^{\mu\nu}\) | Lorentz generators |
+| \(T^{\mu\nu}\) | stress tensor whose regulated charges generate Poincare transformations |
 | \(\Omega\) | invariant vacuum vector |
 | \(\Obs(O)\) | local algebra assigned to a bounded region \(O\) |
 | \(\widehat\Phi_\alpha(f)\) | smeared local field with Lorentz index \(\alpha\) |
+| \(R(\Lambda)\) | finite-dimensional Lorentz representation carried by the field |
+| \(\Sigma_m^+\) | positive one-particle mass shell |
+| \(Z_\phi\) | one-particle overlap of a scalar interpolating field |
 | \(E(\Delta)\) | joint spectral projection of \(P^\mu\) |
 | \(\rho_\Phi(\mu^2)\) | Kallen--Lehmann spectral measure for a scalar interpolating field |
 | \(G_N\) | Lorentzian time-ordered \(N\)-point distribution |
@@ -54,6 +65,12 @@
 
 - The second sequence uses the same local Hilbert-space data as the first
   sequence and adds no new primitive notion of particle.
+- The Poincare generators, field covariance law, stress-tensor charge
+  formulas, and invariant-vacuum assumptions are stated explicitly with
+  regulator/domain caveats.
+- A local scalar field applied to the vacuum decomposes into an isolated
+  one-particle contribution with residue \(Z_\phi\) and a continuum
+  contribution.
 - A scalar two-point function is controlled by a positive invariant spectral
   measure.
 - An isolated atom in the spectral measure is the input for stable
@@ -62,6 +79,8 @@
 - Time-ordered and Euclidean Green functions are related by analytic
   continuation only under hypotheses; in perturbative calculations this is a
   boundary-value statement.
+- The Wick-rotation sketch is transcribed as a complex-time contour figure
+  with Lorentzian ordered points and Euclidean insertions.
 - A regulated path integral is a calculus for Green functions. Removing the
   regulator requires counterterms, tuning, or a separate construction.
 - The next constructions depend on three distinct operations:
@@ -72,8 +91,12 @@
 
 - A dependency diagram from local data to spectral measures to Green functions
   and then to scattering constructions.
-- A spectral-measure picture showing a one-particle atom and a continuum
-  threshold.
+- A spectral-measure picture showing a one-particle atom at \(\mu=m\), a gap,
+  and a continuum threshold at \(\mu=2m\) in the source example.
+- A complex-time Wick-rotation figure matching the source layout: Lorentzian
+  contour \(C\), ordered real-time insertions, rotation
+  \(x_a^0=e^{-i\alpha}\tau_a\), and Euclidean insertions on the imaginary-time
+  axis.
 - A regulator diagram separating cutoff definition, counterterm choice, and
   continuum Green-function limit.
 

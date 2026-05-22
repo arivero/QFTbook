@@ -3,8 +3,67 @@
 
 \section{Scattering Operator and Kernel Notation}
 
-Fix a stable scalar particle of mass \(m>0\). Let \(\Hilb_1\subset\Hilb\) be
-its one-particle Hilbert space, and let
+Fix a stable scalar particle of mass \(m>0\). Its positive mass shell is
+\[
+  \Sigma_m^+
+  =
+  \{(\omega_{\vec p},\vec p):\vec p\in\mathbb R^d\},
+  \qquad
+  \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2}.
+\]
+Let \(\widehat\phi\) be a scalar local field with nonzero one-particle
+overlap with this species. For a test function \(f\), define
+\[
+  \widehat\phi_f=\int\dd^D x\,f(x)\widehat\phi(x),
+  \qquad
+  f(x)=\int\frac{\dd^D k}{(2\pi)^D}\,
+  \widetilde f(k)\ee^{\ii k\cdot x}.
+\]
+Assume that \(\widetilde f(k)\) is supported in a sufficiently small
+neighborhood of \(\Sigma_m^+\) and away from other spectral support. The
+Haag--Ruelle time translate used to isolate the one-particle part is
+\[
+  f^{(T)}(x)
+  =
+  \int\frac{\dd^D k}{(2\pi)^D}\,
+  \widetilde f(k)\,
+  \ee^{\ii(k^0-\omega_{\vec k})T}\,
+  \ee^{\ii k\cdot x},
+\]
+where \(\omega_{\vec k}=(\vec k^{\,2}+m^2)^{1/2}\) is evaluated using the
+chosen particle mass. The phase is stationary on the positive mass shell and
+oscillatory away from it. Under the usual massive Haag--Ruelle hypotheses, and
+with wave packets whose velocity supports are disjoint, the limits
+\[
+  |\phi_{f_1},\ldots,\phi_{f_n}\rangle_{\mathrm{out/in}}
+  =
+  \lim_{T\to\pm\infty}
+  \widehat\phi_{f_1^{(T)}}\cdots
+  \widehat\phi_{f_n^{(T)}}\Omega
+\]
+exist and depend only on the one-particle wave functions selected by the
+test functions.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.9]
+  \draw[->,line width=0.72pt] (-3.2,0)--(3.45,0) node[right] {$\vec p$};
+  \draw[->,line width=0.72pt] (0,-0.2)--(0,3.25) node[above] {$p^0$};
+  \draw[blue!70!black,line width=1.2pt,domain=-2.7:2.7,samples=80]
+    plot (\x,{0.45+0.45*sqrt(\x*\x+1.25)});
+  \node[blue!70!black,anchor=west] at (2.45,2.0) {\(\Sigma_m^+\)};
+  \draw[purple!75!black,line width=1pt,fill=purple!12]
+    (1.05,1.35) ellipse (0.52 and 0.28);
+  \node[purple!75!black,anchor=west] at (1.58,1.34)
+    {\(\operatorname{supp}\widetilde f\)};
+  \draw[red!70!black,dashed,line width=0.9pt]
+    (-2.6,2.55) .. controls (-1.1,2.75) and (1.2,2.75) .. (2.75,2.55);
+  \node[red!70!black,anchor=west] at (2.72,2.55)
+    {continuum};
+\end{tikzpicture}
+\end{center}
+
+Let \(\Hilb_1\subset\Hilb\) be the resulting one-particle Hilbert space, and
+let
 \[
   \mathcal F_s(\Hilb_1)
   =
@@ -25,15 +84,7 @@ the scattering operator is
 \]
 This is the object whose kernels will be studied throughout this part.
 
-Generalized momentum states on the positive mass shell
-\[
-  \Sigma_m^+
-  =
-  \{(\omega_{\vec p},\vec p):\vec p\in\mathbb R^d\},
-  \qquad
-  \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
-\]
-are normalized by
+Generalized momentum states on \(\Sigma_m^+\) are normalized by
 \[
   \langle\vec q\,|\vec p\rangle
   =
@@ -182,6 +233,15 @@ The LSZ formula for the connected kernel is
 The vertical bar denotes the distributional boundary value obtained after
 smearing with wave packets and then restricting every physical external
 momentum to \(\Sigma_m^+\).
+With delta-normalized one-particle vectors the same statement contains the
+external factors
+\[
+  \prod_a
+  \left(Z_\phi(2\pi)^d2\omega_{\vec k_a}\right)^{-1/2}
+\]
+in addition to the amputating factors \(\ii(k_a^2+m^2)\). In the covariant
+kernel convention used here, those factors are absorbed into the invariant
+mass-shell measures and state normalization.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.91]
