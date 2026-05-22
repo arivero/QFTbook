@@ -9,7 +9,10 @@ operators was given in Chapters~\ref{ch:haag-ruelle} and
 \ref{ch:volume-iv-haag-ruelle-mathematical-scattering}; it is not being
 redefined here.
 
-Fix a stable scalar particle of mass \(m>0\). Its positive mass shell is
+Work in one massive Haag--Ruelle scattering sector satisfying the hypotheses of
+Theorem~\ref{thm:haag-ruelle-limits} and
+Theorem~\ref{thm:algebraic-haag-ruelle-scattering}.  Fix a stable scalar
+species of mass \(m>0\).  Its positive mass shell is
 \[
   \Sigma_m^+
   =
@@ -17,69 +20,20 @@ Fix a stable scalar particle of mass \(m>0\). Its positive mass shell is
   \qquad
   \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2}.
 \]
-Let \(\widehat\phi\) be a scalar local field with nonzero one-particle
-overlap with this species. For a test function \(f\), define
+The corresponding one-particle Hilbert space is denoted by \(\Hilb_1\).  In
+the scalar case it is represented as \(L^2(\Sigma_m^+,\dd\mu_m)\), where
 \[
-  \widehat\phi_f=\int\dd^D x\,f(x)\widehat\phi(x),
-  \qquad
-  f(x)=\int\frac{\dd^D k}{(2\pi)^D}\,
-  \widetilde f(k)\ee^{\ii k\cdot x}.
-\]
-Assume that \(\widetilde f(k)\) is supported in a sufficiently small
-neighborhood of \(\Sigma_m^+\) and away from other spectral support. The
-Haag--Ruelle time translate used to isolate the one-particle part is
-\[
-  f^{(T)}(x)
+  \dd\mu_m(\vec p)
   =
-  \int\frac{\dd^D k}{(2\pi)^D}\,
-  \widetilde f(k)\,
-  \ee^{\ii(k^0-\omega_{\vec k})T}\,
-  \ee^{\ii k\cdot x},
+  \frac{\dd^d\vec p}{(2\pi)^d2\omega_{\vec p}} .
 \]
-where \(\omega_{\vec k}=(\vec k^{\,2}+m^2)^{1/2}\) is evaluated using the
-chosen particle mass. The phase is stationary on the positive mass shell and
-oscillatory away from it.  Assume the massive Haag--Ruelle hypotheses for this
-species: positive energy, locality, a unique vacuum, an isolated mass shell
-\(\Sigma_m^+\) separated from the remaining spectrum in a neighborhood of the
-packet supports, local interpolating fields with nonzero one-particle
-projection, and wave packets whose velocity supports are disjoint.  Then the
-limits
-\[
-  |\phi_{f_1},\ldots,\phi_{f_n}\rangle_{\mathrm{out/in}}
-  =
-  \lim_{T\to\pm\infty}
-  \widehat\phi_{f_1^{(T)}}\cdots
-  \widehat\phi_{f_n^{(T)}}\Omega
-\]
-exist and depend only on the one-particle wave functions selected by the
-test functions.
-
-\begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.9]
-  \draw[->,line width=0.72pt] (-3.2,0)--(3.45,0) node[right] {$\vec p$};
-  \draw[->,line width=0.72pt] (0,-0.2)--(0,3.25) node[above] {$p^0$};
-  \draw[blue!70!black,line width=1.2pt,domain=-2.7:2.7,samples=80]
-    plot (\x,{0.45+0.45*sqrt(\x*\x+1.25)});
-  \node[blue!70!black,anchor=west] at (2.45,2.0) {\(\Sigma_m^+\)};
-  \draw[purple!75!black,line width=1pt,fill=purple!12]
-    (1.05,1.35) ellipse (0.52 and 0.28);
-  \node[purple!75!black,anchor=west] at (1.58,1.34)
-    {\(\operatorname{supp}\widetilde f\)};
-  \draw[red!70!black,dashed,line width=0.9pt]
-    (-2.6,2.55) .. controls (-1.1,2.75) and (1.2,2.75) .. (2.75,2.55);
-  \node[red!70!black,anchor=west] at (2.72,2.55)
-    {continuum};
-\end{tikzpicture}
-\end{center}
-
-Let \(\Hilb_1\subset\Hilb\) be the resulting one-particle Hilbert space, and
-let
+The symmetric Fock space over \(\Hilb_1\) is
 \[
   \mathcal F_s(\Hilb_1)
   =
-  \bigoplus_{n=0}^\infty \Hilb_1^{\odot n}
+  \bigoplus_{n=0}^\infty \Hilb_1^{\odot n}.
 \]
-be the symmetric Fock space over \(\Hilb_1\). The Haag--Ruelle wave operators
+The Haag--Ruelle wave operators from the preceding theorem layers
 are isometries
 \[
   \Omega_{\mathrm{in/out}}:
@@ -100,13 +54,6 @@ Generalized momentum states on \(\Sigma_m^+\) are normalized by
   =
   (2\pi)^d2\omega_{\vec p}\,\delta^d(\vec q-\vec p).
 \]
-The invariant mass-shell measure is
-\[
-  \dd\mu_m(\vec p)
-  =
-  \frac{\dd^d\vec p}{(2\pi)^d2\omega_{\vec p}} .
-\]
-
 For outgoing momenta \(q_i=(\omega_{\vec q_i},\vec q_i)\) and incoming
 momenta \(p_j=(\omega_{\vec p_j},\vec p_j)\), write
 \[
