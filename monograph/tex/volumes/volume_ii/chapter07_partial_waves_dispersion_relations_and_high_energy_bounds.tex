@@ -25,6 +25,15 @@ a displayed dispersion formula omits bound-state pole terms, those poles are
 assumed absent in the displayed kinematic range; if they are present, their
 residues are added explicitly.
 
+The results in this chapter are therefore conditional statements.  They are
+deductions from specified analyticity, crossing, unitarity, and boundedness
+hypotheses, not a claim that all such hypotheses are presently derivable from
+one universally accepted axiom system for interacting quantum field theory.
+Only restricted versions of the analyticity and boundedness inputs are known
+as theorems under robust assumptions.  This distinction matters: the
+mathematical content below is the implication from the hypotheses to the
+high-energy bound, with every hypothesis stated before it is used.
+
 For a fixed physical value \(s>4m^2\), introduce
 \[
   x=\cos\theta
@@ -55,6 +64,14 @@ large \(s\), the nearest right singularity is approached at
 \[
   x_0(s)=1+\frac{2t_0}{s-4m^2}.
 \]
+In the simplest equal-mass case with no crossed-channel bound state,
+\(t_0=4m^2\).  If there is a stable crossed-channel bound-state pole of mass
+\(M_B<2m\) and no closer singularity, then \(t_0=M_B^2\).  In the elementary
+single-pole situation this is summarized as
+\[
+  t_0=\min\{4m^2,M_B^2\},
+\]
+with the convention that \(M_B^2\) is omitted when no such pole exists.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
@@ -161,6 +178,21 @@ where
   =
   \frac12\int_{-1}^{1}\dd y\,\frac{P_\ell(y)}{z-y}.
 \]
+With the same branch choice for \(\sqrt{z^2-1}\), the Legendre function of
+the second kind also has the useful representation
+\[
+  Q_\ell(z)
+  =
+  \int_{\zeta(z)}^{\infty}
+  \frac{\dd \xi}
+  {\xi^{\ell+1}\sqrt{1-2z\xi+\xi^2}},
+  \qquad
+  \zeta(z)=z+\sqrt{z^2-1},
+\]
+where the integration path is taken in the \(\xi\)-plane with the square-root
+branch obtained by continuation from large positive \(z\).  This form makes
+the exponential large-\(\ell\) decay transparent: the leading suppression is
+controlled by the lower endpoint \(\zeta(z)\).
 This expansion converges when
 \[
   \left|z+\sqrt{z^2-1}\right|
@@ -579,6 +611,40 @@ points.  On a real cut where real analyticity holds,
 \]
 The formula is an \(N\)-subtracted fixed-\(t\) dispersion relation.
 
+Equivalently, parametrize the left cut by the positive crossed-channel
+variable
+\[
+  u'=4m^2-s'-t,\qquad u=4m^2-s-t,\qquad
+  u_j=4m^2-s_j-t .
+\]
+For an amplitude with the standard crossing identification of the left-cut
+discontinuity with the absorptive part in the \(u\)-channel, the same
+dispersion relation may be written as
+\[
+\begin{aligned}
+  \mathcal A(s,t)
+  &=
+  P_{N-1}(s;t)
+  +
+  \int_{4m^2}^{\infty}
+  \frac{\dd s'}{\pi}\,
+  \frac{\operatorname{Im}\mathcal A(s'+\ii0,t)}{s'-s}
+  \prod_{j=1}^N\frac{s-s_j}{s'-s_j}
+\\
+  &\quad
+  +
+  \int_{4m^2}^{\infty}
+  \frac{\dd u'}{\pi}\,
+  \frac{\operatorname{Im}\mathcal A_u(u'+\ii0,t)}{u'-u}
+  \prod_{j=1}^N\frac{u-u_j}{u'-u_j}.
+\end{aligned}
+\]
+Here \(\mathcal A_u\) denotes the amplitude in the crossed channel, with
+external labels crossed as appropriate.  For identical scalar scattering
+\(\mathcal A_u\) is the same analytic function with \(s\) replaced by \(u\);
+for general external species this displayed formula must be read with the
+corresponding crossed process.
+
 \section{Two Subtractions}
 
 The previous derivation used a complex-plane polynomial bound.  A useful
@@ -590,7 +656,8 @@ some finite number of subtractions exists, and suppose
   |\operatorname{Im}\mathcal A(s,t)|\le C s^{N-\epsilon}
   \qquad(s\to+\infty)
 \]
-for some \(\epsilon>0\), uniformly for \(t\) in a small real interval.  If a
+for some \(\epsilon>0\), uniformly for \(t\) in a small real interval, with
+the same power bound also available at the forward endpoint \(t=0\).  If a
 larger subtraction number \(N'\ge N+1\) were genuinely required, the
 subtraction polynomial would contain a nonzero term
 \[
@@ -602,29 +669,53 @@ below.  On the physical interval for elastic scattering,
 \[
   -(s-4m^2)\le t\le0,
 \]
-the identical-particle elastic cross section contains the positive integral
+write
 \[
-  \sigma_{\rm el}(s)
-  =
-  \frac{1}{32\pi s(s-4m^2)}
-  \int_{-(s-4m^2)}^0\dd t\,
-  |\mathcal A(s,t)|^2 .
+  k^2=\frac{s-4m^2}{4},
+  \qquad
+  t=2k^2(x-1).
 \]
-Together with the optical theorem this gives
+Unitarity gives a positive estimate for the forward absorptive part:
 \[
+\begin{aligned}
   \operatorname{Im}\mathcal A(s,0)
-  =
+  &=
   \sqrt{s(s-4m^2)}\,\sigma_{\rm tot}(s)
-  \ge
-  \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s).
+\\
+  &\ge
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s)
+\\
+  &=
+  8\pi\sqrt{\frac{s}{s-4m^2}}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)|S_\ell(s)-1|^2
+\\
+  &=
+  \frac{1}{64\pi}\sqrt{\frac{s-4m^2}{s}}
+  \int_{-1}^{1}\dd x\,
+  |\mathcal A(s,2k^2(x-1))|^2
+\\
+  &=
+  \frac{1}{32\pi\sqrt{s(s-4m^2)}}
+  \int_{-(s-4m^2)}^0
+  \dd t\,|\mathcal A(s,t)|^2 .
+\end{aligned}
 \]
-The nonzero polynomial term would then force, along a high-energy sequence,
+The last equality is the change of variables from \(x\) to \(t\).  If the
+nonzero polynomial coefficient \(C_{N'-1}(t)\) is bounded below on a fixed
+real \(t\)-interval inside \((-\infty,0)\), this estimate gives, along a
+high-energy sequence,
 \[
   \operatorname{Im}\mathcal A(s,0)
   \ge c\,s^{2N'-3}
 \]
-for some \(c>0\).  Since \(N'\ge N+1\), this contradicts the assumed
-real-axis bound.  Therefore the real-axis absorptive bound fixes the
+for some \(c>0\).  This fixed-\(t\) version is the only estimate needed here:
+since \(N'\ge N+1\), it contradicts the assumed bound
+\(|\operatorname{Im}\mathcal A(s,0)|\le C s^{N-\epsilon}\) at the forward
+point.  A stronger estimate is obtained if the leading behavior persists on a
+subinterval of scattering angles of nonzero length, because the corresponding
+\(t\)-interval has length of order \(s\); the fixed-\(t\) estimate avoids
+assuming such uniformity.  Therefore the real-axis absorptive bound fixes the
 subtraction number, apart from polynomial terms whose leading coefficients
 vanish identically and hence were not genuine subtractions.
 
@@ -689,6 +780,34 @@ geometric power is
 \[
   \sigma_{\rm tot}(s)\le C\,(\log s)^{D-2}.
 \]
+
+This last formula may be restated through an effective transverse radius.  If
+one defines \(R_{\rm eff}(s)\) by the geometric scaling relation
+\[
+  \sigma_{\rm tot}(s)\asymp R_{\rm eff}(s)^{D-2},
+\]
+then the massive high-energy bound implies \(R_{\rm eff}(s)=O(\log s)\).
+This is only a translation of the cross-section estimate, not an additional
+dynamical assumption.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.9,every node/.style={font=\small}]
+  \fill[blue!9] (0,0) circle (1.35);
+  \draw[blue!65!black,line width=1.05pt] (0,0) circle (1.35);
+  \foreach \y in {-0.9,-0.45,0,0.45,0.9} {
+    \draw[->,line width=0.85pt] (-3.25,\y)--(-1.42,\y);
+  }
+  \foreach \y in {-0.72,-0.24,0.24,0.72} {
+    \draw[->,line width=0.85pt] (1.42,\y)--(3.05,\y);
+  }
+  \draw[red!70!black,line width=0.9pt] (0,0)--(0.95,0.95);
+  \node[red!70!black,anchor=west] at (0.76,0.78) {\(R_{\rm eff}(s)\)};
+  \node[blue!65!black,align=center] at (0,-1.75)
+    {\(\sigma_{\rm tot}\asymp R_{\rm eff}^{D-2}\)};
+  \node[align=center] at (0,1.78)
+    {\(R_{\rm eff}(s)=O(\log s)\) under the stated massive hypotheses};
+\end{tikzpicture}
+\end{center}
 
 \section{Scope of the Bound}
 
