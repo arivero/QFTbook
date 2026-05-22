@@ -7,8 +7,10 @@
   chapter.
 - Primary manuscript file:
   `monograph/tex/volumes/volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex`.
-- This was a source-transcription audit, not a final handwritten-PDF visual
-  certification pass.
+- Follow-up handwritten-PDF visual certification was completed on 2026-05-22.
+  Source images `253a_trace-043.png` through `253a_trace-051.png` were
+  compared against the rendered manuscript pages containing Section 8.8
+  (physical PDF pages 63--65, printed pages 47--49).
 
 ## Source Substance Required
 
@@ -59,14 +61,34 @@
 - Replaced the one-panel contraction sketch with a three-panel figure showing
   the divergent loop-derivative term, the finite wavefunction term, and the
   vanishing odd-loop term.
+- Added explicit \(k\) and \(k'\) labels to the divergent contraction panel
+  and recorded in the caption that the loop momentum is restricted by
+  \(|k'|<\Lambda\) after cutoff regularization.
+- Added text emphasizing that the divergent expression is not a value of an
+  already-defined continuum measure; the regulated measure and local
+  counterterms are part of the definition.
 - Added the two-point-function pole calculation and explained how the finite
   counterterm part selects the quantum Hamiltonian represented by the
   regulated Lagrangian path integral.
+- Added the physical-input statement for fixing \(C_{\mathrm{fin}}\), including
+  the comparison between quantum-mechanical ordering data and the stronger
+  relativistic constraints from Poincare covariance, locality/microcausality,
+  internal symmetries, and normalization conditions.
+
+## Visual Certification
+
+- Rendered manuscript pages were inspected after the TeX patch. The
+  derivative-contraction figure is legible and preserves the source distinction
+  among the linearly divergent loop-derivative term, the finite wavefunction
+  term, and the parity-odd vanishing term.
+- The cutoff self-energy, counterterm, choice
+  \(C=\Lambda/(4\pi)+C_{\mathrm{fin}}\), and pole formula are correctly placed
+  after the figure and match the handwritten calculation.
+- No handwritten page image is included in the manuscript; the source diagrams
+  are rewritten as TeX/TikZ figures.
 
 ## Register Update
 
-- Promoted 253a pp. 43--51 from `partial` to
-  `mapped after 2026-05-22 source-transcription audit`.
-- This row should be promoted to `certified` only after a handwritten-PDF
-  figure and derivation pass on the compiled manuscript.
-
+- Promoted 253a pp. 43--51 from `mapped after 2026-05-22
+  source-transcription audit` to `certified after 2026-05-22
+  derivative-interaction source/figure audit`.

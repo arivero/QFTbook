@@ -934,6 +934,9 @@ local counterterm can absorb it.
         (b) .. controls (0.88,0.74) and (1.82,0.74) .. (b);
       \draw[blue!65!black,line width=1pt] (1.17,0.43) -- (1.01,0.67);
       \draw[blue!65!black,line width=1pt] (1.53,0.43) -- (1.69,0.67);
+      \node[blue!65!black] at (1.35,0.98) {\(k'\)};
+      \node[blue!65!black] at (0.55,-0.22) {\(k\)};
+      \node[blue!65!black] at (2.15,-0.22) {\(k\)};
       \node[align=center,blue!70!black] at (1.35,-0.95)
         {\(\displaystyle
         \int \frac{\dd k'}{2\pi}\frac{k'^2}{k'^2+1}\)};
@@ -977,9 +980,17 @@ local counterterm can absorb it.
   \caption{Derivative interactions produce derivatives acting on Wick
   contractions.  When both derivatives act on the internal loop, the
   coincident-point contraction is sensitive to the high-frequency regulator.
-  Other first-order contractions are finite or vanish by parity.}
+  After cutoff regularization, the loop momentum \(k'\) in the first panel is
+  restricted by \(|k'|<\Lambda\).  Other first-order contractions are finite or
+  vanish by parity.}
   \label{fig:volume-i-derivative-interaction-contractions}
 \end{figure}
+
+The divergent expression is therefore not a value assigned by an already
+defined continuum measure.  It is a signal that the formal product
+\([Dq]=\prod_k \dd\widetilde q(k)\) must first be replaced by a regulated
+finite-dimensional measure, and that the limiting prescription must be
+specified together with local counterterms.
 
 Define a frequency cutoff by
 \[
@@ -1058,6 +1069,13 @@ choice; it fixes which quantum Hamiltonian, within the ordering ambiguity of
 the derivative-coupled classical expression, the path integral represents.
 Once that quantum definition is fixed, the pole position is an ordinary
 observable.
+
+Fixing \(C_{\mathrm{fin}}\) requires physical input, for instance a
+renormalization condition on the energy gap or an independently specified
+operator ordering of the Hamiltonian.  In a relativistic field theory the
+analogous finite local terms are constrained by Poincare covariance,
+locality/microcausality, internal symmetries, and the chosen normalization
+conditions on observables.
 
 The structural statement carried forward to field theory is this: a path
 integral with interactions is a regulated construction of Green functions,

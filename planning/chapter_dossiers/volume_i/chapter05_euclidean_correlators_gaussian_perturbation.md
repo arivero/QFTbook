@@ -2,8 +2,8 @@
 
 ## Status
 
-Current status: source-transcription audit refreshed on 2026-05-22 for the
-derivative-interaction/regulator/counterterm block.
+Current status: derivative-interaction/regulator/counterterm block certified
+on 2026-05-22 after handwritten source and rendered-figure audit.
 
 ## Logical Role
 
@@ -36,6 +36,9 @@ not introduce scattering amplitudes.
 - `references/253a_notes.tex`, sections on correlation functions, harmonic
   oscillator, Gaussian integrals, anharmonic oscillator, and derivative
   interactions. This is a comparison layer only, not an authority.
+- Handwritten source visual trace:
+  `monograph/tex/build/source_visual_trace/253a_trace-043.png` through
+  `monograph/tex/build/source_visual_trace/253a_trace-051.png`.
 
 ## Framework
 
@@ -95,7 +98,7 @@ Working framework:
 | The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived | Partition combinatorics |
 | Normalized two-point functions retain diagrams connected to the external insertions. | Derived | Vacuum factor cancellation |
 | The full two-point function is obtained from the self-energy by a geometric series in momentum space. | Derived | 1PI decomposition |
-| Derivative interactions require a regulator and local counterterm data to define the path-integral expression. | Framework/construction | Explicit cutoff computation |
+| Derivative interactions require a regulator and local counterterm data to define the path-integral expression. | Framework/construction | Explicit cutoff computation; 2026-05-22 handwritten source/figure audit |
 
 ## Figure Ledger
 
@@ -111,7 +114,8 @@ Figures to include:
 - derivative-interaction vertex schematic with derivative marks.
 - derivative-interaction contraction figure separating the linearly divergent
   loop-derivative term, the finite wavefunction term, and the parity-odd
-  vanishing term.
+  vanishing term. Certified on rendered manuscript physical PDF pages 63--65
+  (printed pages 47--49) against handwritten pp. 43--51.
 
 ## Audit Targets
 
@@ -121,7 +125,7 @@ Figures to include:
   diagrams, not scattering amplitudes.
 - Counterterms must be presented as part of the regulated definition, not as a
   slogan about removing infinities.
-- The derivative-coupled oscillator block must retain the classical
+- The derivative-coupled oscillator block is certified to retain the classical
   \(q\mapsto y\) coordinate check, the cutoff self-energy, the local
   \(Cg\hbar q^2/2\) counterterm, and the first-pole energy-gap interpretation
   of the finite counterterm part.
