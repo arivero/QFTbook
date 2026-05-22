@@ -27,10 +27,11 @@
   \(H(s\mid d)\), for the contractible-pair/nonminimal-sector statement, and for
   the roles of ghost-number-zero and ghost-number-one local cohomology.
 - The chapter does not reproduce the full antifield/BV computation of local
-  BRST cohomology.  BV is now recorded as a required later development for
-  gauge-theory 1PI and Wilsonian effective actions, with Weinberg Volume II,
-  the stringbook appendices, and standard BV literature treated as convention
-  checks and source leads rather than as exposition to import.
+  BRST cohomology.  The following BV chapter develops the field-antifield
+  framework for gauge-theory 1PI and Wilsonian effective actions, with
+  Weinberg Volume II, the stringbook appendices, and standard BV literature
+  treated as convention checks and source leads rather than as exposition to
+  import.
 
 ## Framework
 
@@ -108,8 +109,9 @@
   the exact-state equivalence \(|\Psi\rangle\sim|\Psi\rangle+Q|\chi\rangle\)
   included explicitly.
 - The Slavnov--Taylor sources \(K,L\) are identified as the elementary
-  precursor of BV antifields; the full BV formalism is reserved for a dedicated
-  later development of gauge-theory 1PI and Wilsonian effective actions.
+  precursor of BV antifields; the dedicated BV chapter now develops the
+  field-antifield framework for gauge-theory 1PI and Wilsonian effective
+  actions.
 
 ## Figure Requirements
 
@@ -121,8 +123,8 @@
 
 ## Open Boundaries
 
-- Full BV/antifield formalism is not developed here; it is a required later
-  gauge-theory framework, not an optional appendix.
+- Full BV/antifield formalism is developed in the following compiled chapter.
+  This BRST chapter remains the elementary gauge-fixed precursor.
 - Global Gribov-copy issues are acknowledged as beyond the perturbative local
   slice.
 - Positivity of the BRST quotient is stated as a required condition rather than

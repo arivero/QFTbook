@@ -154,18 +154,17 @@ Current compiled material:
 5. Infrared Divergences And Inclusive QED
 6. Yang--Mills Theory And Matter Fields
 7. Gauge Fixing, Ghosts, And BRST Cohomology
-8. QCD Renormalization, Asymptotic Freedom, And Deep Inelastic Scattering
-9. Chiral And Axial Anomalies
-10. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
+8. The BV Master Formalism For Gauge Effective Actions
+9. QCD Renormalization, Asymptotic Freedom, And Deep Inelastic Scattering
+10. Chiral And Axial Anomalies
+11. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
 
 Further development targets:
 
 - place all gauge-representative statements in relation to observable data;
 - expand nonabelian BRST and gauge-invariant operator construction;
-- add a dedicated BV development after the elementary BRST and anomaly
-  material, with fields, ghosts, antifields, antibracket, classical and quantum
-  master equations, gauge fixing by Lagrangian submanifolds, and the BV form of
-  1PI and Wilsonian effective actions;
+- deepen the BV development for reducible gauge symmetries, open algebras,
+  exact RG implementations, and global BV integration-cycle issues;
 - deepen confinement, global form, theta-angle, and anomaly-inflow material;
 - prepare the later global-structure and TQFT volumes.
 

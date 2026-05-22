@@ -125,11 +125,11 @@ Do not promote further material before: gauge-representative statements are
 related to gauge-invariant observables or cohomology classes, and anomaly
 claims identify the compared cocycle class modulo local counterterms.
 
-Immediate target: deepen gauge-invariant operator construction and then add a
-systematic BV block connecting BRST cohomology to gauge-theory 1PI and
-Wilsonian effective actions.  Continue confinement diagnostics, global form,
-theta-angle, and anomaly inflow without importing premature TQFT or
-supersymmetric machinery.
+Immediate target: deepen gauge-invariant operator construction and extend the
+new BV block toward reducible/open gauge algebras, explicit exact-RG
+realizations, and global BV integration-cycle issues.  Continue confinement
+diagnostics, global form, theta-angle, and anomaly inflow without importing
+premature TQFT or supersymmetric machinery.
 
 ### Volume V: Conformal Field Theory
 

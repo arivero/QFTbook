@@ -1,0 +1,565 @@
+\chapter{The BV Master Formalism for Gauge Effective Actions}
+\label{ch:bv-master-formalism}
+
+\section{Why Antifields Are Introduced}
+
+The BRST chapter introduced sources \(K^{a\mu}\) and \(L^a\) for the nonlinear
+variations \(sA_\mu^a\) and \(sc^a\).  Their role is to serve as coordinates
+dual to the BRST variations, thereby making the Slavnov--Taylor identity a
+functional equation for the 1PI effective action.
+
+The Batalin--Vilkovisky formalism is the intrinsic version of this
+construction.  It assigns a dual coordinate, called an antifield, to every
+field in the gauge-fixed or ungauge-fixed complex.  The antibracket pairs a
+field with its antifield, and the master equation is the single equation that
+encodes gauge invariance, BRST nilpotency, gauge fixing, and the compatible
+renormalization identities.
+
+The framework in this chapter is perturbative and local.  We work with a
+regulated field theory or, equivalently for algebraic purposes, with the
+graded algebra of local functionals in finitely many jets of fields.  Infinite
+dimensional functional derivatives are therefore shorthand for the
+corresponding regulated or local-jet operation.  When an identity involves the
+BV Laplacian, the regulator and measure are part of the data.
+
+\section{Fields, Antifields, and Gradings}
+
+Let \(\{\Phi^A\}\) denote the full set of fields in the gauge-theory complex.
+The index \(A\) includes discrete labels, spacetime indices, Lie-algebra
+indices, and the spacetime point in condensed notation.  Examples are
+\[
+  A_\mu^a,\qquad c^a,\qquad \bar c^a,\qquad B^a,
+  \qquad \psi,\qquad \bar\psi .
+\]
+Each field has a Grassmann parity
+\[
+  \epsilon_A\in\mathbb Z/2\mathbb Z
+\]
+and a ghost number \(\operatorname{gh}(\Phi^A)\).  The antifield paired with
+\(\Phi^A\) is denoted by \(\Phi^*_A\) and is assigned
+\[
+  \epsilon(\Phi^*_A)=\epsilon_A+1\pmod 2,
+  \qquad
+  \operatorname{gh}(\Phi^*_A)=-1-\operatorname{gh}(\Phi^A).
+\]
+Thus antifields have opposite parity and complementary ghost number.  For the
+Yang--Mills nonminimal sector,
+\[
+\begin{array}{c|cccc}
+  \Phi^A & A_\mu & c & \bar c & B\\ \hline
+  \operatorname{gh}(\Phi^A) & 0 & 1 & -1 & 0\\
+  \operatorname{gh}(\Phi^*_A) & -1 & -2 & 0 & -1
+\end{array}
+\]
+and the parities are reversed in the antifield row.
+
+Let \(\mathcal F_{\rm BV}\) be the graded-commutative algebra of local
+functionals in \(\Phi^A,\Phi^*_A\) and finitely many of their spacetime
+derivatives, modulo integration by parts when integrated local functionals are
+being compared.  A functional \(F\in\mathcal F_{\rm BV}\) has parity
+\(|F|\) and ghost number \(\operatorname{gh}(F)\) when it is homogeneous.
+Left and right variational derivatives are defined by
+\[
+  \delta F
+  =
+  \int
+  \delta\Phi^A\,
+  \frac{\delta^L F}{\delta\Phi^A}
+  =
+  \int
+  \frac{\delta^R F}{\delta\Phi^A}\,
+  \delta\Phi^A ,
+\]
+and similarly for antifields.  The distinction is necessary because odd
+variables do not commute with the variation symbols.
+
+\section{The Antibracket}
+
+\begin{definition}[BV antibracket]
+For homogeneous functionals \(F,G\in\mathcal F_{\rm BV}\), the BV
+antibracket is
+\begin{equation}
+  (F,G)
+  =
+  \int
+  \left[
+  \frac{\delta^R F}{\delta\Phi^A}
+  \frac{\delta^L G}{\delta\Phi^*_A}
+  -
+  \frac{\delta^R F}{\delta\Phi^*_A}
+  \frac{\delta^L G}{\delta\Phi^A}
+  \right]\dd^D x ,
+  \label{eq:bv-antibracket}
+\end{equation}
+with summation over all field labels \(A\).  The spacetime integral is absent
+when the same formula is applied to a finite-dimensional regulator.
+\end{definition}
+
+The bracket has parity and ghost number
+\[
+  |(F,G)|=|F|+|G|+1,
+  \qquad
+  \operatorname{gh}(F,G)=\operatorname{gh}(F)+\operatorname{gh}(G)+1.
+\]
+It satisfies
+\[
+  (F,G)
+  =
+  -(-1)^{(|F|+1)(|G|+1)}(G,F)
+\]
+and the odd Jacobi identity
+\[
+  (F,(G,H))
+  =
+  ((F,G),H)
+  +
+  (-1)^{(|F|+1)(|G|+1)}(G,(F,H)).
+\]
+The elementary brackets are
+\[
+  (\Phi^A(x),\Phi^*_B(y))=\delta^A{}_B\,\delta^{(D)}(x-y),
+  \qquad
+  (\Phi^A,\Phi^B)=0,
+  \qquad
+  (\Phi^*_A,\Phi^*_B)=0,
+\]
+with the delta distribution understood in the same regulated or distributional
+sense as the fields themselves.
+
+\section{The Classical Master Equation}
+
+\begin{definition}[Classical BV action]
+A classical BV action is an even local functional \(S_{\rm BV}\in
+\mathcal F_{\rm BV}\) of ghost number zero satisfying the classical master
+equation
+\begin{equation}
+  \frac12(S_{\rm BV},S_{\rm BV})=0 .
+  \label{eq:classical-master-equation}
+\end{equation}
+It is required to reduce to the classical gauge-invariant action when all
+ghosts and antifields are set to zero.
+\end{definition}
+
+The associated BV differential is
+\[
+  s_{\rm BV}F=(S_{\rm BV},F).
+\]
+
+\begin{proposition}[Nilpotency from the master equation]
+If \(S_{\rm BV}\) satisfies \eqref{eq:classical-master-equation}, then
+\[
+  s_{\rm BV}^2=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+Using the odd Jacobi identity with \(F=G=S_{\rm BV}\),
+\[
+  (S_{\rm BV},(S_{\rm BV},H))
+  =
+  \frac12((S_{\rm BV},S_{\rm BV}),H)
+\]
+for every functional \(H\).  The right hand side vanishes by
+\eqref{eq:classical-master-equation}.  Hence
+\[
+  s_{\rm BV}^2H=(S_{\rm BV},(S_{\rm BV},H))=0 .
+\]
+\end{proof}
+
+This proposition is the algebraic reason the master equation is stronger than
+a compact rewriting of a Ward identity.  It constructs a differential on the
+space of fields, ghosts, antifields, and local functionals.
+
+\section{Minimal Yang--Mills BV Action}
+
+For a gauge theory whose BRST transformations close off shell, the minimal BV
+action is obtained by coupling antifields to the BRST variations.  With the
+Hermitian Yang--Mills conventions of the preceding chapter,
+\[
+  sA_\mu^a=(D_\mu c)^a,\qquad
+  sc^a=-\frac12 f^a{}_{bc}c^b c^c .
+\]
+The minimal BV action for the gauge and ghost sector is
+\begin{equation}
+  S_{\rm min}
+  =
+  S_{\rm YM}[A]
+  +
+  \int_M
+  \left[
+  A^{*\mu}_a(D_\mu c)^a
+  -
+  \frac12 c^*_a f^a{}_{bc}c^b c^c
+  \right]\dd^D x .
+  \label{eq:minimal-yang-mills-bv-action}
+\end{equation}
+Matter fields are included by adding their classical action and antifield
+couplings
+\[
+  \int_M
+  \left[
+  \psi^*\,(\ii c^a t_R^a\psi)
+  +
+  (-\ii\bar\psi\,c^a t_R^a)\,\bar\psi^*
+  \right]\dd^D x ,
+\]
+with the order of odd factors fixed by the left/right derivative convention.
+
+The master equation for \eqref{eq:minimal-yang-mills-bv-action} is the
+combined statement that \(S_{\rm YM}\) is gauge invariant and that the BRST
+transformations are nilpotent.  Indeed, the component of
+\((S_{\rm min},S_{\rm min})\) with no antifields is the variation of
+\(S_{\rm YM}\) under \(sA=Dc\).  The component linear in antifields is
+equivalent to \(s^2A=0\) and \(s^2c=0\).  These are precisely the identities
+derived in the BRST chapter from gauge invariance and the Jacobi identity.
+
+If the gauge algebra closes only on shell, or if there are reducibility
+relations among gauge transformations, the action contains additional
+antifield terms.  The defining condition remains
+\(\frac12(S_{\rm BV},S_{\rm BV})=0\); the higher antifield terms are not
+extra notation but the terms required for the BV differential to square to
+zero off shell.
+
+\section{Nonminimal Sector and Gauge Fixing}
+
+Gauge fixing is implemented by adding a contractible nonminimal pair and then
+choosing a Lagrangian submanifold in the BV field-antifield space.  The
+cohomological content is carried by the same BV differential.
+
+For Yang--Mills theory the nonminimal pair is \((\bar c^a,B^a)\), with
+\[
+  s\bar c^a=B^a,\qquad sB^a=0.
+\]
+The nonminimal BV term is
+\[
+  S_{\rm nm}
+  =
+  \int_M \bar c^*_a B^a\,\dd^D x .
+\]
+The total classical BV action is
+\[
+  S_{\rm BV}=S_{\rm min}+S_{\rm nm}.
+\]
+
+\begin{definition}[Gauge-fixing fermion]
+A gauge-fixing fermion is an odd functional \(\Psi[\Phi]\) of ghost number
+\(-1\) depending only on the fields.  It determines the Lagrangian
+submanifold
+\begin{equation}
+  \Phi^*_A=\frac{\delta^L\Psi}{\delta\Phi^A}.
+  \label{eq:gauge-fixing-lagrangian-submanifold}
+\end{equation}
+The gauge-fixed action is the restriction
+\[
+  S_\Psi[\Phi]
+  =
+  S_{\rm BV}\left[\Phi,\Phi^*=\frac{\delta^L\Psi}{\delta\Phi}\right].
+\]
+\end{definition}
+
+For covariant Yang--Mills gauges,
+\[
+  \Psi
+  =
+  \int_M
+  \bar c^a\left(
+  \partial^\mu A_\mu^a+\frac{g_{\rm YM}^2\xi}{2}B^a
+  \right)\dd^D x .
+\]
+Substituting \eqref{eq:gauge-fixing-lagrangian-submanifold} into
+\(S_{\rm BV}\), and integrating by parts with the same boundary convention as
+in the BRST chapter, gives
+\[
+  S_\Psi
+  =
+  S_{\rm YM}
+  +
+  \int_M
+  \left[
+  B^a\partial^\mu A_\mu^a
+  +
+  \frac{g_{\rm YM}^2\xi}{2}B^aB^a
+  -
+  \bar c^a\partial^\mu D_\mu^{ab}(A)c^b
+  \right]\dd^D x .
+\]
+Thus the Faddeev--Popov action is the restriction of the BV action to a
+gauge-fixing Lagrangian submanifold.  Different gauge choices correspond to
+different Lagrangian submanifolds.  They define equivalent physical
+cohomology when the BV integral has no boundary contribution and the quantum
+master equation is preserved.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,thick,node distance=2.2cm]
+    \node[draw,rounded corners=2pt,fill=blue!8,align=center,minimum width=3.4cm,minimum height=1.1cm] (fields)
+      {fields and ghosts\\\(\Phi^A\)};
+    \node[draw,rounded corners=2pt,fill=purple!8,align=center,right=of fields,minimum width=3.4cm,minimum height=1.1cm] (anti)
+      {antifields\\\(\Phi^*_A\)};
+    \node[draw,rounded corners=2pt,fill=green!8,align=center,right=of anti,minimum width=3.6cm,minimum height=1.1cm] (master)
+      {master equation\\\((S_{\rm BV},S_{\rm BV})=0\)};
+    \node[draw,rounded corners=2pt,fill=orange!10,align=center,below=1.55cm of anti,minimum width=4.2cm,minimum height=1.1cm] (gf)
+      {gauge fixing\\\(\Phi^*=\delta\Psi/\delta\Phi\)};
+    \node[draw,rounded corners=2pt,fill=red!8,align=center,right=of gf,minimum width=4.2cm,minimum height=1.1cm] (eff)
+      {1PI/Wilsonian identities\\BV master equation};
+    \draw[->] (fields)--(anti) node[midway,above] {dualize};
+    \draw[->] (anti)--(master) node[midway,above] {antibracket};
+    \draw[->] (master)--(eff);
+    \draw[->] (anti)--(gf);
+    \draw[->] (gf)--(eff);
+  \end{tikzpicture}
+  }
+  \caption{BV replaces separate sources for nonlinear BRST variations by
+  antifields for all variables.  Gauge fixing is a choice of Lagrangian
+  submanifold, while effective actions are constrained by the same master
+  equation.}
+  \label{fig:bv-field-antifield-master-map}
+\end{figure}
+
+\section{The Quantum Master Equation}
+
+The classical master equation controls the algebra of gauge symmetry.  The
+quantum functional integral also depends on a measure.  In a finite-dimensional
+odd symplectic regulator with coordinates \(\Phi^A,\Phi^*_A\), the BV
+Laplacian is
+\begin{equation}
+  \Delta_{\rm BV}
+  =
+  \sum_A
+  (-1)^{\epsilon_A}
+  \frac{\partial^R}{\partial\Phi^A}
+  \frac{\partial^R}{\partial\Phi^*_A}.
+  \label{eq:bv-laplacian}
+\end{equation}
+In field theory this operator requires a regulator because the two functional
+derivatives act at the same point.  A choice of regularization and measure is
+therefore part of the definition of the quantum BV problem.
+
+\begin{definition}[Quantum master equation]
+For Lorentzian weight \(\exp(\ii S/\hbar)\), the quantum master equation is
+\begin{equation}
+  \frac12(S,S)-\ii\hbar\,\Delta_{\rm BV}S=0.
+  \label{eq:quantum-master-equation}
+\end{equation}
+Equivalently,
+\[
+  \Delta_{\rm BV}\exp(\ii S/\hbar)=0.
+\]
+\end{definition}
+
+The exponential form is conceptually direct: the integrand is closed under the
+divergence operator associated with the chosen BV measure.  Gauge independence
+is then a version of Stokes' theorem: changing the gauge-fixing Lagrangian
+submanifold changes the integral by the integral of a BV-exact term, provided
+no boundary contribution is present.
+
+If the regulated theory fails to satisfy \eqref{eq:quantum-master-equation},
+the failure has ghost number \(+1\).  To first order in \(\hbar\), write
+\[
+  \frac12(S,S)-\ii\hbar\,\Delta_{\rm BV}S
+  =
+  \hbar\,\mathcal A+O(\hbar^2).
+\]
+Applying the classical differential \(s_{\rm BV}=(S_0,\cdot)\) and using the
+Jacobi identity gives
+\[
+  s_{\rm BV}\mathcal A=0 .
+\]
+Changing the local counterterm by \(\hbar B\) changes the anomaly by
+\[
+  \mathcal A\longmapsto \mathcal A+s_{\rm BV}B .
+\]
+Thus the obstruction class lies in ghost-number-one local BV cohomology.  This
+is the antifield version of the anomaly classification by
+\(H^{1,D}(s\mid d)\).
+
+\section{The 1PI Master Equation}
+
+The antifields are also the natural sources for nonlinear BRST variations in
+the 1PI formalism.  With a gauge-fixing Lagrangian submanifold chosen for the
+fields, define
+\[
+  Z[J,\Phi^*]
+  =
+  \int_{\mathcal L_\Psi}
+  [D\Phi]\,
+  \exp\left\{
+  \frac{\ii}{\hbar}
+  \left(S_{\rm BV}[\Phi,\Phi^*]+\int J_A\Phi^A\right)
+  \right\}.
+\]
+The external antifields are not integrated; they record the response to BRST
+variations.  Let \(W[J,\Phi^*]\) be the connected generator and let
+\[
+  \varphi^A=\frac{\delta W}{\delta J_A},
+  \qquad
+  \Gamma[\varphi,\Phi^*]
+  =
+  W[J,\Phi^*]-\int J_A\varphi^A
+\]
+be the 1PI effective action in the Lorentzian convention used earlier.
+
+Assume that the regularized measure and action obey the quantum master
+equation and that the Legendre transform is well defined on the field
+directions under consideration.  The Ward identity obtained by applying
+\(\Delta_{\rm BV}\) to the integrand gives
+\[
+  \int
+  \frac{\delta^R\Gamma}{\delta\varphi^A}
+  \frac{\delta^L\Gamma}{\delta\Phi^*_A}
+  \dd^D x
+  =
+  0 .
+\]
+Equivalently,
+\begin{equation}
+  \frac12(\Gamma,\Gamma)=0,
+  \label{eq:1pi-master-equation}
+\end{equation}
+where the bracket now pairs the mean field \(\varphi^A\) with the antifield
+\(\Phi^*_A\).  In the Yang--Mills variables of the preceding chapter,
+\eqref{eq:1pi-master-equation} is the Slavnov--Taylor identity
+\eqref{eq:slavnov-taylor-identity}, with \(A^*\) and \(c^*\) replacing the
+special sources \(K\) and \(L\), and with the nonminimal term producing
+\(B\,\delta\Gamma/\delta\bar c\).
+
+\section{Wilsonian BV Pushforward}
+
+The Wilsonian effective action is obtained by integrating out degrees of
+freedom above a scale.  BV gives the condition under which this operation is
+compatible with gauge symmetry.
+
+Consider first a finite-dimensional odd symplectic vector space split as
+\[
+  \mathcal E=\mathcal E_{\rm low}\oplus\mathcal E_{\rm high},
+  \qquad
+  \Delta_{\rm BV}=\Delta_{\rm low}+\Delta_{\rm high}.
+\]
+Let \(\mathcal L_{\rm high}\subset\mathcal E_{\rm high}\) be a Lagrangian
+subspace used to integrate out the high variables.  Define the effective
+low-energy integrand by
+\begin{equation}
+  \exp(\ii S_{\rm eff}/\hbar)
+  =
+  \int_{\mathcal L_{\rm high}}
+  \exp(\ii S/\hbar).
+  \label{eq:bv-wilsonian-pushforward}
+\end{equation}
+
+\begin{proposition}[BV pushforward]
+Assume
+\[
+  \Delta_{\rm BV}\exp(\ii S/\hbar)=0
+\]
+and assume the integral over \(\mathcal L_{\rm high}\) has no boundary
+contribution for \(\Delta_{\rm high}\).  Then
+\[
+  \Delta_{\rm low}\exp(\ii S_{\rm eff}/\hbar)=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+Using \(\Delta_{\rm BV}=\Delta_{\rm low}+\Delta_{\rm high}\),
+\[
+\begin{aligned}
+  \Delta_{\rm low}\exp(\ii S_{\rm eff}/\hbar)
+  &=
+  \int_{\mathcal L_{\rm high}}
+  \Delta_{\rm low}\exp(\ii S/\hbar)
+\\
+  &=
+  -\int_{\mathcal L_{\rm high}}
+  \Delta_{\rm high}\exp(\ii S/\hbar)
+  =
+  0 .
+\end{aligned}
+\]
+The last equality is the BV Stokes statement for the chosen Lagrangian
+integration cycle.
+\end{proof}
+
+This proposition is the regulated mathematical core of the Wilsonian BV
+identity.  In a field theory with cutoff \(\Lambda\), the Wilsonian action
+\(S_\Lambda\) is a scale-dependent local or quasi-local representative of the
+BV pushforward.  Its master equation has the form
+\[
+  \frac12(S_\Lambda,S_\Lambda)_\Lambda
+  -
+  \ii\hbar\,\Delta_\Lambda S_\Lambda
+  =
+  0,
+\]
+where the bracket and Laplacian include the cutoff covariance and the
+remaining low-mode measure.  Exact RG flow is compatible with gauge symmetry
+when it preserves this equation.  Changes of cutoff scheme are then BV
+canonical transformations together with possible local counterterm changes,
+with the gauge symmetry encoded by the transformed master action.
+
+\section{Counterterms, Anomalies, and Physical Operators}
+
+Let \(S_{\rm BV}\) be a classical solution of the master equation and let
+\[
+  s_{\rm BV}=(S_{\rm BV},\cdot).
+\]
+A first-order local deformation
+\[
+  S_{\rm BV}\longmapsto S_{\rm BV}+\epsilon C
+\]
+preserves the classical master equation to order \(\epsilon\) precisely when
+\[
+  s_{\rm BV}C=0,
+  \qquad
+  \operatorname{gh}(C)=0.
+\]
+If \(C=s_{\rm BV}B\), then the deformation is generated by a BV canonical
+transformation and does not change the physical theory.  Thus invariant
+counterterms are classified by ghost-number-zero BV cohomology of local
+functionals, modulo total derivatives and canonical redefinitions.
+
+An anomaly candidate is a ghost-number-one functional \(\mathcal A\) satisfying
+\[
+  s_{\rm BV}\mathcal A=0.
+\]
+It is removable by a local counterterm exactly when
+\[
+  \mathcal A=s_{\rm BV}B .
+\]
+This gives the precise cohomological meaning of anomaly cancellation in the
+perturbative BV framework: the obstruction class must vanish in the relevant
+local BV cohomology.
+
+Physical local operators are treated in the same language.  An insertion
+\(\mathcal O\) is compatible with the gauge symmetry when
+\[
+  s_{\rm BV}\mathcal O=0,
+  \qquad
+  \operatorname{gh}(\mathcal O)=0,
+\]
+and two insertions differing by \(s_{\rm BV}\mathcal X\) define the same
+cohomology class.  After gauge fixing, this statement reduces to the BRST
+cohomology of local observables described in the preceding chapter.  Before
+gauge fixing, it is expressed without choosing a particular gauge slice.
+
+\section{Logical Output}
+
+The output of this chapter is the following framework.
+
+\begin{enumerate}
+  \item A gauge theory is represented on an enlarged graded field space with
+  fields, ghosts, nonminimal variables, and antifields.
+  \item The antibracket is the odd symplectic pairing between fields and
+  antifields.
+  \item The classical master equation constructs a nilpotent differential.
+  \item Gauge fixing is restriction to a Lagrangian submanifold determined by
+  a gauge-fixing fermion.
+  \item The quantum master equation is the regulated statement of
+  measure-compatible gauge symmetry.
+  \item The 1PI and Wilsonian effective actions in gauge theory must satisfy
+  the corresponding BV master identities.
+  \item Counterterms, anomalies, and physical operators are local BV
+  cohomology classes at the appropriate ghost numbers.
+\end{enumerate}
+
+This is the framework used below whenever gauge-theory effective actions are
+discussed beyond elementary Faddeev--Popov perturbation theory.
