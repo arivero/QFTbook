@@ -7,6 +7,8 @@ handwritten 253a pp. 15--18 on 2026-05-22; harmonic-oscillator Euclidean
 propagator certified against handwritten 253a pp. 19--23 on 2026-05-22;
 finite and functional Gaussian integral block certified against handwritten
 253a pp. 24--29 on 2026-05-22;
+anharmonic-oscillator vacuum/two-point/self-energy block certified against
+handwritten 253a pp. 30--43 on 2026-05-22;
 derivative-interaction/regulator counterterm block also certified on
 2026-05-22 after handwritten source and rendered-figure audit.
 
@@ -42,6 +44,8 @@ not introduce scattering amplitudes.
   oscillator, Gaussian integrals, anharmonic oscillator, and derivative
   interactions. This is a comparison layer only, not an authority.
 - Handwritten source visual trace:
+  253a pp. 30--43 rendered for the 2026-05-22 source pass from
+  `references/253a lectures 2022.pdf`; derivative-interaction trace
   `monograph/tex/build/source_visual_trace/253a_trace-043.png` through
   `monograph/tex/build/source_visual_trace/253a_trace-051.png`.
 
@@ -114,9 +118,9 @@ Working framework:
 | The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived; source-certified 2026-05-22 | Dirichlet sine-mode expansion, \(k_n=n\pi/(2T)\) Riemann-sum limit, endpoint image term, and contour integral |
 | Gaussian moments are sums over complete pairings. | Derived; source-certified 2026-05-22 | Finite source differentiation, explicit two- and four-point calculations, and \(4!\)-assignment grouping |
 | The Gaussian functional integral has two-point function equal to the Green kernel \(A^{-1}\). | Derived; source-certified 2026-05-22 | Regulated functional integration by parts and Fourier-space diagonalization |
-| The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived | Partition combinatorics |
-| Normalized two-point functions retain diagrams connected to the external insertions. | Derived | Vacuum factor cancellation |
-| The full two-point function is obtained from the self-energy by a geometric series in momentum space. | Derived | 1PI decomposition |
+| The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived; source-certified 2026-05-22 | Component-counting formula with \(m_\ell\), linked-cluster exponentiation, and counted three-vertex topology |
+| Normalized two-point functions retain diagrams connected to the external insertions. | Derived; source-certified 2026-05-22 | Vacuum factor cancellation in \(Z_g^{-1}\langle q(\tau)q(0)\cdots\rangle_0\) |
+| The full two-point function is obtained from the self-energy by a geometric series in momentum space. | Derived; source-certified 2026-05-22 | Amputated 1PI convention, second-order topologies, and \(\widetilde G(k)=1/(k^2+1-\Sigma(k))\) |
 | Derivative interactions require a regulator and local counterterm data to define the path-integral expression. | Framework/construction | Explicit cutoff computation; 2026-05-22 handwritten source/figure audit |
 
 ## Figure Ledger
@@ -130,8 +134,14 @@ Figures to include:
   pp. 22--23 on 2026-05-22;
 - Wick pairings for a four-point Gaussian moment;
 - connected/disconnected vacuum graph schematic;
+- second-order connected vacuum topologies and counted three-vertex connected
+  vacuum graph, certified against handwritten pp. 30--43 on 2026-05-22;
 - cancellation of vacuum bubbles in a normalized two-point function;
+- connected two-point graph series and second-order two-point topologies,
+  certified against handwritten pp. 30--43 on 2026-05-22;
 - 1PI self-energy chain;
+- complex \(k\)-plane pole-extraction contour for the anharmonic oscillator
+  two-point function, certified against handwritten pp. 30--43 on 2026-05-22;
 - derivative-interaction vertex schematic with derivative marks.
 - derivative-interaction contraction figure separating the linearly divergent
   loop-derivative term, the finite wavefunction term, and the parity-odd
@@ -161,3 +171,11 @@ Figures to include:
   contraction-value definition, the functional derivative normalization, the
   integration-by-parts derivation of \(G(\tau_1,\tau_2)\), and the
   Fourier-space covariance.
+- The anharmonic-oscillator source block is certified to retain the regulated
+  coefficientwise meaning of the perturbative expansion, first-order vacuum
+  graph, second-order connected/disconnected vacuum topologies,
+  linked-cluster component counting, ground-state-energy interpretation,
+  normalized two-point vacuum-bubble cancellation, order-\(g\) Fourier tadpole
+  computation, second-order two-point graph row, amputated self-energy
+  convention, \(g^2\) self-energy expression, complex-\(k\)-plane contour, and
+  first gap \(E_1-E_0=1+g/8-g^2/32+O(g^3)\).

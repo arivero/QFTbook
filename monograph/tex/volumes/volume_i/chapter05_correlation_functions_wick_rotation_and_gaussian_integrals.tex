@@ -802,8 +802,19 @@ Let
   \qquad
   S_{\mathrm{int}}[q]=\frac{g}{4!}\int q(\tau)^4\,\dd\tau .
 \]
-At finite cutoff, perturbation theory is the expansion of
-\(\exp[-S_{\mathrm{int}}]\) inside a finite-dimensional Gaussian integral.
+At finite cutoff, perturbation theory is the coefficientwise expansion of
+\(\exp[-S_{\mathrm{int}}]\) inside a finite-dimensional Gaussian integral:
+\[
+  \ee^{-S_{\mathrm{int}}[q]}
+  =
+  \sum_{n=0}^{\infty}
+  \frac{1}{n!}
+  \left(-\frac{g}{4!}\int q(\tau)^4\,\dd\tau\right)^n .
+\]
+No convergence of the infinite-dimensional integral or of the resulting power
+series in \(g\) is assumed at this point; the coefficients are first defined in
+the regulated Gaussian integral, and limits are then discussed coefficient by
+coefficient.
 For the partition function,
 \[
   Z_g=\int[Dq]\,\exp[-S_0[q]-S_{\mathrm{int}}[q]],
@@ -834,58 +845,176 @@ At first order in \(g\),
 \]
 The factor \(3\) in \(\langle q^4\rangle_0=3G_0(\tau,\tau)^2\) is the number
 of pairings of four fields at the vertex.
+Since \(G_0(\tau,\tau)=G_0(0)\) is independent of \(\tau\), this term is
+proportional to the Euclidean time interval.  Its interpretation as a correction
+to the ground-state energy is derived below from the spectral decomposition of
+the Euclidean transition kernel.
+
+At second order,
+\[
+  \frac12\left(-\frac{g}{4!}\right)^2
+  \int\dd\tau_1\,\dd\tau_2\,
+  \left\langle q(\tau_1)^4q(\tau_2)^4\right\rangle_0
+\]
+contains disconnected contractions and connected contractions.  The connected
+sector already has distinct topologies: the two vertices may be joined by two
+propagators with one tadpole at each vertex, or they may be joined by four
+propagators.
 
 \begin{center}
-\begin{tikzpicture}[scale=0.95]
-  \node at (-1.2,0) {order \(g^2\):};
-  \node at (0.4,1.0) {disconnected};
-  \foreach \x in {-0.15,0.85} {
-    \draw[thick] (\x,0) .. controls (\x-0.35,0.48) and (\x+0.35,0.48) .. (\x,0);
-    \draw[thick] (\x,0) .. controls (\x-0.35,-0.48) and (\x+0.35,-0.48) .. (\x,0);
-    \fill (\x,0) circle (1.4pt);
+\begin{tikzpicture}[scale=0.82]
+  \node at (-0.25,1.08) {\scriptsize disconnected};
+  \foreach \x in {-0.9,0.4} {
+    \fill (\x,0) circle (1.5pt);
+    \draw[thick] (\x-0.16,-0.16) -- (\x+0.16,0.16);
+    \draw[thick] (\x-0.16,0.16) -- (\x+0.16,-0.16);
+    \draw[thick,blue!65!black]
+      (\x,0) .. controls (\x-0.36,0.46) and (\x+0.36,0.46) .. (\x,0);
+    \draw[thick,blue!65!black]
+      (\x,0) .. controls (\x-0.36,-0.46) and (\x+0.36,-0.46) .. (\x,0);
   }
-  \node at (1.65,0) {$+$};
-  \node at (3.2,1.0) {connected};
-  \foreach \x in {2.55,3.85} {
-    \fill (\x,0) circle (1.4pt);
+  \node at (1.22,0) {$+$};
+
+  \node at (3.0,1.08) {\scriptsize connected};
+  \foreach \x in {2.25,3.55} {
+    \fill (\x,0) circle (1.5pt);
+    \draw[thick] (\x-0.16,-0.16) -- (\x+0.16,0.16);
+    \draw[thick] (\x-0.16,0.16) -- (\x+0.16,-0.16);
+    \draw[thick,blue!65!black]
+      (\x,0) .. controls (\x-0.32,0.72) and (\x+0.32,0.72) .. (\x,0);
   }
   \draw[thick,blue!65!black]
-    (2.55,0) .. controls (2.75,0.62) and (3.65,0.62) .. (3.85,0);
+    (2.25,0) .. controls (2.6,0.28) and (3.2,0.28) .. (3.55,0);
   \draw[thick,blue!65!black]
-    (2.55,0) .. controls (2.75,-0.62) and (3.65,-0.62) .. (3.85,0);
+    (2.25,0) .. controls (2.6,-0.28) and (3.2,-0.28) .. (3.55,0);
+  \node at (4.25,0) {$+$};
+
+  \foreach \x in {5.05,6.35} {
+    \fill (\x,0) circle (1.5pt);
+    \draw[thick] (\x-0.16,-0.16) -- (\x+0.16,0.16);
+    \draw[thick] (\x-0.16,0.16) -- (\x+0.16,-0.16);
+  }
   \draw[thick,blue!65!black]
-    (2.55,0) .. controls (2.95,0.2) and (3.45,0.2) .. (3.85,0);
+    (5.05,0) .. controls (5.25,0.62) and (6.15,0.62) .. (6.35,0);
   \draw[thick,blue!65!black]
-    (2.55,0) .. controls (2.95,-0.2) and (3.45,-0.2) .. (3.85,0);
+    (5.05,0) .. controls (5.25,-0.62) and (6.15,-0.62) .. (6.35,0);
+  \draw[thick,blue!65!black]
+    (5.05,0) .. controls (5.45,0.2) and (5.95,0.2) .. (6.35,0);
+  \draw[thick,blue!65!black]
+    (5.05,0) .. controls (5.45,-0.2) and (5.95,-0.2) .. (6.35,0);
 \end{tikzpicture}
 \end{center}
 
 Let \(G^{(\ell)}\) be the sum of connected vacuum Wick contractions involving
 \(\ell\) interaction vertices, including the coupling factors and integration
 over the \(\ell\) vertex positions. If \(m_\ell\) is the number of connected
-components of size \(\ell\), then
+components of size \(\ell\), and if \(K\) is the total number of connected
+components, then
 \[
+  \sum_{\ell\ge1}m_\ell=K,
+  \qquad
   \sum_{\ell\ge1}\ell\,m_\ell=n.
 \]
 The number of ways to partition \(n\) labelled vertices into this pattern is
 \[
   \frac{n!}{\prod_{\ell\ge1}(\ell!)^{m_\ell}m_\ell!}.
 \]
-Summing over all patterns gives the linked-cluster formula
+For this fixed component pattern, the corresponding contribution to
+\(Z_g/Z_0\) is therefore
+\[
+  \frac{1}{n!}\,
+  \frac{n!}{\prod_{\ell\ge1}(\ell!)^{m_\ell}m_\ell!}
+  \prod_{\ell\ge1}\bigl(G^{(\ell)}\bigr)^{m_\ell}
+  =
+  \prod_{\ell\ge1}
+  \frac{1}{m_\ell!}
+  \left(\frac{1}{\ell!}G^{(\ell)}\right)^{m_\ell}.
+\]
+Summing over all nonnegative integers \(m_\ell\) gives the linked-cluster
+formula
 \[
   \frac{Z_g}{Z_0}
+  =
+  \sum_{\{m_\ell\}}
+  \prod_{\ell\ge1}
+  \frac{1}{m_\ell!}
+  \left(\frac{1}{\ell!}G^{(\ell)}\right)^{m_\ell}
   =
   \exp\left[
     \sum_{\ell\ge1}\frac{1}{\ell!}G^{(\ell)}
   \right].
 \]
 Equivalently, \(\log Z_g\) is the sum of connected vacuum diagrams.
+The factor \(1/\ell!\) is often absorbed into the symmetry factor assigned to
+the connected graph.
 
-On a long interval of Euclidean length \(T_{\mathrm{tot}}\),
+For example, the connected three-vertex topology with two propagators on each
+edge has
 \[
-  Z_g\sim \exp[-E_0(g)T_{\mathrm{tot}}],
+  N_\triangle=\binom{4}{2}^3(2!)^3=1728
 \]
-up to endpoint factors. Hence
+Wick-contraction assignments: at each vertex one chooses which two of the four
+half-edges go to one neighboring vertex, and along each of the three double
+edges one pairs the two half-edges.  Its contribution to
+\(\frac{1}{3!}G^{(3)}\) is therefore
+\begin{center}
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.78]
+  \coordinate (a) at (0,0);
+  \coordinate (b) at (1.55,0);
+  \coordinate (c) at (0.78,1.08);
+  \foreach \p in {a,b,c} {
+    \fill (\p) circle (1.4pt);
+    \draw[thick] ($(\p)+(-0.15,-0.15)$) -- ($(\p)+(0.15,0.15)$);
+    \draw[thick] ($(\p)+(-0.15,0.15)$) -- ($(\p)+(0.15,-0.15)$);
+  }
+  \draw[thick,blue!65!black] (a) .. controls (0.45,0.23) and (1.1,0.23) .. (b);
+  \draw[thick,blue!65!black] (a) .. controls (0.45,-0.23) and (1.1,-0.23) .. (b);
+  \draw[thick,blue!65!black] (b) .. controls (1.18,0.47) and (1.08,0.72) .. (c);
+  \draw[thick,blue!65!black] (b) .. controls (1.58,0.55) and (1.22,1.04) .. (c);
+  \draw[thick,blue!65!black] (c) .. controls (0.48,0.72) and (0.37,0.47) .. (a);
+  \draw[thick,blue!65!black] (c) .. controls (-0.02,1.04) and (-0.04,0.55) .. (a);
+\end{tikzpicture}
+\end{center}
+\[
+\begin{aligned}
+  &\frac{1}{3!}
+  \left(-\frac{g}{4!}\right)^3
+  N_\triangle
+  \int\dd\tau_1\,\dd\tau_2\,\dd\tau_3\,
+  G_0(\tau_1,\tau_2)^2
+  G_0(\tau_2,\tau_3)^2
+  G_0(\tau_3,\tau_1)^2                                      \\
+  &\hspace{4em}
+  =
+  -\frac{g^3}{48}\int\dd\tau_1\,\dd\tau_2\,\dd\tau_3\,
+  G_0(\tau_1,\tau_2)^2
+  G_0(\tau_2,\tau_3)^2
+  G_0(\tau_3,\tau_1)^2,
+\end{aligned}
+\]
+where the last equality uses the normalization \(4!\) in the interaction
+vertex.  Translation invariance leaves one unrestricted
+center-of-time integral, so every connected vacuum graph is proportional to
+the total Euclidean time interval.
+
+On a finite Euclidean interval of length \(T_{\mathrm{tot}}\), with endpoint
+values \(q_i\) and \(q_f\), the path integral is the transition kernel
+\[
+  Z_g(T_{\mathrm{tot}};q_f,q_i)
+  =
+  \bra{q_f}\ee^{-T_{\mathrm{tot}}\widehat H}\ket{q_i}.
+\]
+For the anharmonic oscillator the spectrum is discrete and the ground state is
+nondegenerate.  If the endpoint wavefunctions have nonzero overlap with the
+ground state, the spectral theorem gives
+\[
+  Z_g(T_{\mathrm{tot}};q_f,q_i)
+  =
+  \psi_0(q_f)\overline{\psi_0(q_i)}
+  \ee^{-E_0(g)T_{\mathrm{tot}}}
+  +O(\ee^{-E_1(g)T_{\mathrm{tot}}}),
+\]
+and hence
 \[
   E_0(g)
   =
@@ -900,7 +1029,9 @@ The first correction is
   =
   \frac{g}{32}+O(g^2),
 \]
-in agreement with first-order Hamiltonian perturbation theory:
+where the second equality uses \(\omega=1\); with general oscillator frequency
+the same term is \(g(2\omega)^{-2}/8\).
+This agrees with first-order Hamiltonian perturbation theory:
 \[
   \bra{\psi_0}\frac{g}{4!}\widehat q^4\ket{\psi_0}
   =
@@ -919,6 +1050,17 @@ The normalized Euclidean two-point function is
   =
   \frac{1}{Z_g}
   \int[Dq]\,\ee^{-S_0[q]-S_{\mathrm{int}}[q]}\,q(\tau)q(0).
+\]
+Equivalently, at the regulated level,
+\[
+  G(\tau)
+  =
+  \frac{1}{Z_g}
+  \left\langle
+    q(\tau)q(0)
+    \sum_{n=0}^{\infty}\frac{1}{n!}
+    \left(-\frac{g}{4!}\int q(\tau')^4\,\dd\tau'\right)^n
+  \right\rangle_0 .
 \]
 In the perturbative expansion, every Wick contraction splits uniquely into
 the connected component containing the two external insertions and a product
@@ -948,6 +1090,59 @@ two-point diagrams.
 \end{tikzpicture}
 \end{center}
 
+Consequently the normalized correlator is represented by connected diagrams
+with the two external insertions fixed at \(\tau\) and \(0\):
+\[
+\begin{tikzpicture}[baseline=-0.5ex,scale=0.66]
+  \fill[red!80!black] (0,0) circle (2.4pt);
+  \draw[thick] (0,0) -- (1.1,0);
+  \fill[red!80!black] (1.1,0) circle (2.4pt);
+  \node at (1.55,0) {$+$};
+
+  \fill[red!80!black] (2.0,0) circle (2.4pt);
+  \draw[thick] (2.0,0) -- (3.2,0);
+  \fill[red!80!black] (3.2,0) circle (2.4pt);
+  \fill (2.6,0) circle (1.8pt);
+  \draw[thick,blue!65!black] (2.6,0) .. controls (2.22,0.72) and (2.98,0.72) .. (2.6,0);
+  \node at (3.65,0) {$+$};
+
+  \fill[red!80!black] (4.08,0) circle (2.4pt);
+  \draw[thick] (4.08,0) -- (5.65,0);
+  \fill[red!80!black] (5.65,0) circle (2.4pt);
+  \foreach \x in {4.6,5.13} {
+    \fill (\x,0) circle (1.8pt);
+    \draw[thick,blue!65!black] (\x,0) .. controls (\x-0.26,0.62) and (\x+0.26,0.62) .. (\x,0);
+  }
+  \node at (6.08,0) {$+$};
+
+  \fill[red!80!black] (6.48,0) circle (2.4pt);
+  \draw[thick] (6.48,0) -- (7.75,0);
+  \fill[red!80!black] (7.75,0) circle (2.4pt);
+  \fill (7.12,0) circle (1.8pt);
+  \draw[thick,blue!65!black] (7.12,0) .. controls (6.78,0.55) and (7.46,0.55) .. (7.12,0);
+  \draw[thick,blue!65!black] (7.12,0) .. controls (6.78,1.02) and (7.46,1.02) .. (7.12,0);
+  \node at (8.16,0) {$+$};
+
+  \fill[red!80!black] (8.56,0) circle (2.4pt);
+  \draw[thick] (8.56,0) -- (10.0,0);
+  \fill[red!80!black] (10.0,0) circle (2.4pt);
+  \foreach \x in {9.05,9.52} {\fill (\x,0) circle (1.8pt);}
+  \draw[thick,blue!65!black] (9.05,0) .. controls (9.1,0.72) and (9.47,0.72) .. (9.52,0);
+  \draw[thick,blue!65!black] (9.05,0) .. controls (9.1,-0.72) and (9.47,-0.72) .. (9.52,0);
+  \node at (10.42,0) {$+\cdots$};
+\end{tikzpicture}
+\]
+The same path integral, with the same Euclidean ordering convention, computes
+\(\bra0\widehat q(0)\widehat q(\tau)\ket0\) when \(\tau<0\). Thus
+\[
+  G(\tau)
+  =
+  \begin{cases}
+    \bra0\widehat q(\tau)\widehat q(0)\ket0, & \tau>0,\\
+    \bra0\widehat q(0)\widehat q(\tau)\ket0, & \tau<0.
+  \end{cases}
+\]
+
 At zeroth order,
 \[
   G_0(\tau)=\frac12\ee^{-|\tau|}
@@ -961,12 +1156,59 @@ At order \(g\), the connected tadpole correction is
   \int \dd\tau'\,
   G_0(\tau-\tau')G_0(\tau')G_0(0).
 \]
-In momentum space this becomes
+In momentum space this is
+\[
+\begin{aligned}
+  &-\frac{g}{2}\int\dd\tau'\,
+  \int\frac{\dd k}{2\pi}\frac{\dd k'}{2\pi}
+       \frac{\dd k''}{2\pi}\,
+  \widetilde G_0(k)\widetilde G_0(k')\widetilde G_0(k'')\,
+  \ee^{\ii k(\tau-\tau')+\ii k'\tau'}                         \\
+  &\hspace{4.5em}
+  =
+  -\frac{g}{2}
+  \left(\int\frac{\dd k''}{2\pi}\,\widetilde G_0(k'')\right)
+  \int\frac{\dd k}{2\pi}\,
+  \frac{\ee^{\ii k\tau}}{(k^2+1)^2}.
+\end{aligned}
+\]
+Since \(\int\dd k''\,\widetilde G_0(k'')/(2\pi)=G_0(0)=1/2\), this becomes
 \[
   -\frac{g}{4}
   \int_{-\infty}^{\infty}\frac{\dd k}{2\pi}\,
   \frac{\ee^{\ii k\tau}}{(k^2+1)^2}.
 \]
+
+At second order the connected two-point graphs include
+\[
+\begin{tikzpicture}[baseline=-0.5ex,scale=0.72]
+  \fill[red!80!black] (0,0) circle (2.2pt);
+  \draw[thick] (0,0) -- (1.55,0);
+  \fill[red!80!black] (1.55,0) circle (2.2pt);
+  \foreach \x in {0.52,1.03} {
+    \fill (\x,0) circle (1.6pt);
+    \draw[thick,blue!65!black] (\x,0) .. controls (\x-0.28,0.6) and (\x+0.28,0.6) .. (\x,0);
+  }
+  \node at (1.95,0) {$,\qquad$};
+
+  \fill[red!80!black] (2.75,0) circle (2.2pt);
+  \draw[thick] (2.75,0) -- (4.05,0);
+  \fill[red!80!black] (4.05,0) circle (2.2pt);
+  \fill (3.4,0) circle (1.6pt);
+  \draw[thick,blue!65!black] (3.4,0) .. controls (3.08,0.53) and (3.72,0.53) .. (3.4,0);
+  \draw[thick,blue!65!black] (3.4,0) .. controls (3.08,1.0) and (3.72,1.0) .. (3.4,0);
+  \node at (4.45,0) {$,\qquad$};
+
+  \fill[red!80!black] (5.25,0) circle (2.2pt);
+  \draw[thick] (5.25,0) -- (6.75,0);
+  \fill[red!80!black] (6.75,0) circle (2.2pt);
+  \foreach \x in {5.75,6.25} {\fill (\x,0) circle (1.6pt);}
+  \draw[thick,blue!65!black] (5.75,0) .. controls (5.85,0.72) and (6.15,0.72) .. (6.25,0);
+  \draw[thick,blue!65!black] (5.75,0) .. controls (5.85,-0.72) and (6.15,-0.72) .. (6.25,0);
+\end{tikzpicture}
+\]
+The first diagram is a chain of two one-loop insertions; the other two are the
+second-order amputated insertions that enter the self-energy below.
 
 A connected two-point diagram is one-particle-irreducible, abbreviated
 \(1\mathrm{PI}\), when it remains connected after cutting any one internal
@@ -1020,6 +1262,21 @@ For the anharmonic oscillator,
   \right)
   +O(g^3).
 \]
+The external free propagators are not part of \(\Sigma\); in this convention
+the order-\(g\) term is the amputated tadpole, while the two displayed
+order-\(g^2\) terms come from the two non-chain second-order topologies shown
+above after their external legs are amputated.  The chain of two one-loop
+insertions is instead produced by the geometric series in
+\(\widetilde G_0(k)\Sigma(k)\).  Consequently
+\[
+  \widetilde G(k)
+  =
+  \frac{1}{
+    k^2+1+\frac{g}{4}
+    -\frac{g^2}{8}\left(\frac14+\frac{1}{k^2+9}\right)
+    +O(g^3)
+  }.
+\]
 The spectral expansion says that for \(\tau>0\),
 \[
   G(\tau)
@@ -1035,7 +1292,26 @@ The Fourier representation
   \int_{-\infty}^{\infty}\frac{\dd k}{2\pi}\,
   \widetilde G(k)\ee^{\ii k\tau}
 \]
-is evaluated by closing the contour in the upper half-plane. If
+is evaluated for \(\tau>0\) by closing the contour in the upper half-plane,
+where \(\ee^{\ii k\tau}\) decays on the large semicircle.
+\[
+\begin{tikzpicture}[baseline=-0.45ex,scale=0.78]
+  \draw[->,thick,blue!70!black] (-2.7,0) -- (2.9,0)
+    node[right] {\(\operatorname{Re}k\)};
+  \draw[->,thick] (0,-1.8) -- (0,2.1)
+    node[above] {\(\operatorname{Im}k\)};
+  \draw[very thick,green!50!black,->]
+    (-2.25,0) .. controls (-1.8,1.7) and (1.8,1.7) .. (2.25,0);
+  \foreach \y/\lab in {0.76/{\ii\omega_1},1.36/{\ii\omega_2}} {
+    \node[red!80!black] at (0,\y) {\(\times\)};
+    \node[right=4pt] at (0,\y) {\(\lab\)};
+  }
+  \foreach \y in {-0.75,-1.35} {
+    \node[red!80!black] at (0,\y) {\(\times\)};
+  }
+\end{tikzpicture}
+\]
+If
 \(\widetilde G(k)\) has simple poles at \(k=\ii\omega_n\), then
 \[
   G(\tau)
