@@ -31,6 +31,32 @@ source functional is
     +\ii\langle J,\phi\rangle
   \right\}.
 \]
+With the Fourier convention
+\[
+  \phi(x)=\int\frac{\dd^Dk}{(2\pi)^D}\,
+  \ee^{\ii k\cdot x}\,\widetilde\phi(k),
+\]
+the source pairing is
+\[
+  \langle J,\phi\rangle
+  =
+  \int\frac{\dd^Dk}{(2\pi)^D}\,
+  \widetilde J(k)\widetilde\phi(-k).
+\]
+Perturbatively, the source is therefore a one-valent vertex with factor
+\(\ii\widetilde J(k)\):
+\[
+  \begin{tikzpicture}[baseline=-0.35ex,>=Stealth,scale=0.82,
+    src/.style={circle,fill=blue!70!black,inner sep=1.9pt},
+    qline/.style={line width=0.75pt,-{Latex[length=1.7mm]}}]
+    \node[src] (J) at (0,0) {};
+    \draw[qline] (1.25,0)--(J);
+    \node[blue!70!black] at (0,-0.42) {\(J\)};
+    \node at (0.72,0.32) {\(-k\)};
+  \end{tikzpicture}
+  \quad =\quad
+  \ii\widetilde J(k).
+\]
 Here \([D\phi]_{\Lambda}\) and \(S_{\Lambda}\) denote the regulated measure and
 regulated action.  The regulator may be a lattice, a momentum cutoff, a
 Pauli--Villars system, dimensional regularization together with a
@@ -299,6 +325,52 @@ linear vertex
 \[
   \ii\langle J_{\varphi},\widehat\phi\rangle .
 \]
+For example, if the microscopic action contains a cubic interaction, then
+after the split one has schematically
+\[
+  \phi^3
+  =
+  \varphi^3+3\varphi^2\widehat\phi
+  +3\varphi\widehat\phi^2+\widehat\phi^3 .
+\]
+Thus a single local interaction produces vertices with zero, one, two, or
+three quantum fluctuation legs.  The first term is a purely background
+contribution to the zero-loop effective action; the terms with
+\(\widehat\phi\)-legs are contracted in the shifted functional integral; and
+the source supplies one more one-point quantum vertex.  Diagrammatically:
+\[
+  \begin{tikzpicture}[>=Stealth,scale=0.86,
+    q/.style={line width=0.75pt},
+    bg/.style={line width=0.75pt,densely dotted,blue!70!black},
+    src/.style={line width=0.75pt,orange!85!black},
+    dot/.style={circle,fill=black,inner sep=1.5pt}]
+    \node[dot] (v) at (-4.4,0) {};
+    \foreach \a in {25,145,270} \draw[q] (v) -- ++(\a:0.82);
+    \node at (-4.4,-1.03) {\(\phi^3\)};
+    \node at (-3.25,0) {\(\rightsquigarrow\)};
+    \node[dot] (a) at (-2.1,0) {};
+    \foreach \ang in {25,145,270} \draw[bg] (a) -- ++(\ang:0.75);
+    \node at (-2.1,-1.03) {\(\varphi^3\)};
+    \node[font=\large] at (-1.18,0) {\(+\)};
+    \node[dot] (b) at (-0.2,0) {};
+    \draw[q] (b) -- ++(270:0.78);
+    \foreach \ang in {30,150} \draw[bg] (b) -- ++(\ang:0.78);
+    \node at (-0.2,-1.03) {\(\varphi^2\widehat\phi\)};
+    \node[font=\large] at (0.78,0) {\(+\)};
+    \node[dot] (c) at (1.75,0) {};
+    \draw[bg] (c) -- ++(90:0.78);
+    \foreach \ang in {210,330} \draw[q] (c) -- ++(\ang:0.78);
+    \node at (1.75,-1.03) {\(\varphi\widehat\phi^2\)};
+    \node[font=\large] at (2.76,0) {\(+\)};
+    \node[dot] (d) at (3.65,0) {};
+    \foreach \ang in {25,145,270} \draw[q] (d) -- ++(\ang:0.78);
+    \node at (3.65,-1.03) {\(\widehat\phi^3\)};
+    \node[font=\large] at (4.7,0) {\(+\)};
+    \draw[src] (5.25,0)--(5.95,0);
+    \fill[orange!85!black] (5.95,0) circle (1.8pt);
+    \node[orange!85!black] at (5.6,-0.48) {\(J_\varphi\widehat\phi\)};
+  \end{tikzpicture}
+\]
 Since \(J_{\varphi}\) is fixed by \(\vev{\widehat\phi}=0\), all tadpole
 subdiagrams in the shifted theory cancel in the sum.
 
@@ -310,6 +382,14 @@ stationary equation for \(\varphi_J\) and joining lower kernels by exact
 propagators.  They are therefore part of the tree reconstruction of connected
 functions from \(\Gamma\), rather than new kernels in \(\Gamma\) itself.  The
 new kernels in \(\Gamma\) are the one-particle-irreducible ones.
+
+Equivalently, in a shifted connected vacuum diagram, cut an internal quantum
+propagator.  Each side becomes a connected subdiagram with one open quantum
+leg and any number of background legs.  When all graphs with the same
+external background data are summed, either side is precisely the
+source-dependent tadpole functional; it vanishes by
+\(\vev{\widehat\phi}_\varphi=0\).  This is the diagrammatic content of the
+Legendre transform, not an additional dynamical assumption.
 
 \begin{figure}[!ht]
   \centering
@@ -753,6 +833,85 @@ more than one local minimum, different ranges of \(J\) select different
 stationary branches, and the exact Legendre transform produces a convex
 function of \(\varphi\).  A perturbative expansion around a chosen branch is
 valid where the quadratic fluctuation operator at that branch is positive.
+
+The last clause is an analytic condition, not a matter of terminology.  Choose
+a point \(\phi_0\) on a stationary branch and choose the source
+\[
+  J_0=-S'(\phi_0).
+\]
+The Euclidean background representation of the effective action is
+\[
+  \ee^{-\Gamma_E(\phi_0)}
+  =
+  \left.
+  \int \dd\widehat\phi\,
+  \exp\{-S(\phi_0+\widehat\phi)-J_0\widehat\phi\}
+  \right|_{\langle\widehat\phi\rangle_{\phi_0,J_0}=0}.
+\]
+The exponent is obtained by subtracting the tangent line to \(S\) at
+\(\phi_0\).  Its expansion begins
+\[
+  S(\phi_0+\widehat\phi)+J_0\widehat\phi
+  =
+  S(\phi_0)
+  +
+  \frac12 S''(\phi_0)\widehat\phi^2
+  +
+  O(\widehat\phi^3).
+\]
+If \(S''(\phi_0)<0\), the Gaussian integral around this point is not a
+positive quadratic approximation to the finite-dimensional Euclidean
+integral.  The exact \(\Gamma_E\) is then determined by the global supporting
+line data encoded in the Legendre--Fenchel transform, while a formal expansion
+around that branch computes only a local branch functional.  This is the
+finite-dimensional form of the distinction between the exact convex effective
+action and a perturbative effective potential computed around a specified
+saddle.
+
+\begin{figure}[!ht]
+  \centering
+  \resizebox{0.94\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{axis/.style={->,line width=0.75pt}, curve/.style={line width=1.05pt}}
+    \begin{scope}
+      \node[font=\normalsize] at (0,2.2) {branch and tangent};
+      \draw[axis] (-2.2,-1.25)--(2.35,-1.25) node[right] {\(\phi\)};
+      \draw[axis] (-1.85,-1.45)--(-1.85,1.55) node[above] {\(S(\phi)\)};
+      \draw[blue!70!black,curve]
+        plot[smooth,tension=0.82] coordinates {
+          (-2.0,1.35) (-1.45,-0.55) (-0.5,0.42) (0.28,0.05) (0.95,-0.62) (1.75,1.25)
+        };
+      \coordinate (p) at (0.25,0.08);
+      \fill (p) circle (2.2pt);
+      \node[above right] at (p) {\(\phi_0\)};
+      \draw[orange!85!black,dashed,line width=0.9pt] (-1.35,1.25)--(1.45,-0.65);
+      \node[orange!85!black] at (0.95,-1.02) {\(J_0=-S'(\phi_0)\)};
+      \node[orange!85!black] at (-1.05,-0.74) {tangent line};
+    \end{scope}
+
+    \begin{scope}[shift={(6.1,0)}]
+      \node[font=\normalsize] at (0,2.2) {shifted exponent};
+      \draw[axis] (-2.25,-1.25)--(2.35,-1.25) node[right] {\(\widehat\phi\)};
+      \draw[axis] (-1.85,-1.45)--(-1.85,1.55)
+        node[above] {\(S(\phi_0+\widehat\phi)+J_0\widehat\phi\)};
+      \draw[purple!80!black,curve]
+        plot[smooth,tension=0.82] coordinates {
+          (-1.9,1.05) (-1.15,-0.82) (-0.35,-0.18) (0,0.0) (0.55,-0.38) (1.45,1.15)
+        };
+      \fill[red!75!black] (0,0) circle (2.2pt);
+      \node[red!75!black,align=center] at (0.75,-0.88)
+        {\(S''(\phi_0)<0\)\\no Gaussian saddle};
+      \draw[gray!65,dashed] (-0.65,0.55)--(0.65,-0.55);
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{In the finite-dimensional model, the source subtracts the tangent
+  line at the chosen mean field.  Perturbation theory around that point
+  requires the shifted exponent to have a positive quadratic part.  The exact
+  Legendre--Fenchel effective action instead uses the global supporting-line
+  structure and is convex.}
+  \label{fig:volume-ii-branch-perturbation-condition}
+\end{figure}
 
 \clearpage
 
