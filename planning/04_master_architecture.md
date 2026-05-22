@@ -129,8 +129,9 @@ Current compiled material:
 
 Further development targets:
 
-- deepen the new BPHZ--Wilsonian--1PI bridge with worked examples and
-  operator insertions;
+- deepen the new BPHZ--Wilsonian--1PI bridge with worked examples;
+- extend the source-dependent Wilsonian/operator insertion bridge beyond the
+  scalar finite-regulator construction where needed;
 - mark where these constructions are ordinary-field constructions and where
   gauge-theory 1PI/Wilsonian effective actions require the BV master
   framework developed in the gauge-theory volume;

@@ -39,6 +39,24 @@ The chapter must define:
   running deformation coefficients \(\delta g_I(\mu)\);
 - the renormalized operator
   \([O_I]_\mu=\sum_J N_{IJ}(\mu)O_J\);
+- the source-extended finite-regulator Wilsonian pushforward
+  \(L_\Lambda[\phi;\eta_\Lambda]\) with a local differential source map
+  \(\eta_0=\mathcal Z_\Lambda\eta_\Lambda\);
+- the sign convention
+  \(-\delta W/\delta\eta=\langle O\rangle\) for Euclidean sources coupled
+  through the action;
+- the Wilsonian composite representative
+  \(\mathcal O_{\Lambda,A}^{\rm W}=\delta L_\Lambda/\delta\eta_\Lambda^A\)
+  and its distinction from connected and 1PI insertion kernels;
+- the source-extended connected-functional equality
+  \(W_\Lambda^{\rm low}[J,\eta_\Lambda]
+    =W_{\Lambda_0}[J,\eta_0(\eta_\Lambda)]\) at finite regulator;
+- the 1PI insertion representative
+  \(\mathcal O^\Gamma_{\Lambda,A}
+    =-\delta\Gamma_\Lambda/\delta\eta_\Lambda^A\);
+- the anomalous-dimension transformation law under scale-dependent
+  source-coordinate changes,
+  \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\);
 - the anomalous-dimension matrix
   \(\gamma_{IK}=\partial\beta_K/\partial g_I\) in this deformation
   convention;
@@ -80,20 +98,29 @@ The chapter must define:
 5. The elementary field operator satisfies
    \([\phi]_\mu=Z(\mu)^{-1/2}\phi\) and
    \(\gamma_\phi=\frac12\dd\log Z/\dd\log\mu\).
-6. The operator-insertion Callan--Symanzik equation follows by
+6. At finite regulator, a source-extended Wilsonian action preserves
+   connected low-momentum correlators with local-operator insertions after
+   the local source-coordinate map is applied.
+7. A Wilsonian composite insertion is the source derivative of the Wilsonian
+   action; the corresponding 1PI insertion is obtained by low-field
+   integration followed by Legendre transform.
+8. Under scale-dependent finite changes of renormalized source coordinates,
+   anomalous dimensions transform by the connection law
+   \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\).
+9. The operator-insertion Callan--Symanzik equation follows by
    differentiating the renormalized insertion chart at fixed bare data.
-7. Contact terms in inserted correlators are local distributions supported on
+10. Contact terms in inserted correlators are local distributions supported on
    collision diagonals and depend on the contact-term convention.
-8. Minimal subtraction defines dimensionless couplings by retaining only pole
+11. Minimal subtraction defines dimensionless couplings by retaining only pole
    terms in the relation between bare and renormalized couplings.
-9. In four-dimensional scalar quartic theory, the one-loop MS relation is
+12. In four-dimensional scalar quartic theory, the one-loop MS relation is
    \(g^\epsilon=\mu^\epsilon[\lambda+3\lambda^2/(16\pi^2\epsilon)+O(\lambda^3)]\).
-10. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
+13. The \(\mu\)-independence of bare couplings constrains the Laurent expansion
    of \(\beta_I^\epsilon\).
-11. Perturbative order counting implies
+14. Perturbative order counting implies
    \(\beta_I^{(m)}=0\) for \(m\ge2\) and
    \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).
-12. The nonnegative epsilon structure of the MS beta function leaves the
+15. The nonnegative epsilon structure of the MS beta function leaves the
     \(\epsilon^0\) beta function as the beta function of the target
     \(d\)-dimensional theory; the remaining pole coefficients are determined
     recursively, with the homogeneous-sector form reproducing the source
@@ -106,6 +133,9 @@ The chapter must define:
   \(\gamma_{IK}\).
 - Field insertion special case showing that the running is the wavefunction
   normalization.
+- Source-extended Wilsonian/operator bridge showing the path from bare
+  sources to Wilsonian insertions, connected insertions, 1PI insertion
+  kernels, and projected mixing data.
 - Minimal-subtraction pole structure diagram.
 - One-loop \(\phi^4\) MS subtraction diagram with the pole coefficient.
 - Laurent/recursive structure figure showing how positive powers of
@@ -129,6 +159,11 @@ The chapter must define:
 - Separate noncoincident correlator equations from contact-term conventions.
 - Keep the MS discussion as a coordinate construction, not as an ontological
   foundation.
+- Keep Wilsonian composite representatives, connected insertions, and 1PI
+  insertion kernels as separate objects connected by explicit maps.
+- State the Euclidean source sign convention before using source derivatives.
+- Treat scale-dependent source redefinitions as connection transformations
+  for anomalous dimensions.
 - 2026-05-22 source-certification pass: the handwritten pages from the bottom
   of page 110 through page 118 were checked end-to-end against the two local
   transcription layers.  The manuscript now includes the full derivative of

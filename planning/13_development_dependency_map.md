@@ -106,9 +106,9 @@ Do not promote further material before: every renormalization claim identifies
 the regulator, subtraction or flow scheme, locality statement, and equivalence
 relation.
 
-Immediate target: use the new BPHZ--1PI--Wilsonian bridge to revisit
-anomalous dimensions, source renormalization, and operator mixing, keeping
-the gauge-theory extension routed through BV.
+Immediate target: deepen worked examples and continuum-limit estimates after
+the source-dependent Wilsonian/operator insertion bridge; keep the
+gauge-theory extension routed through BV.
 
 ### Volume IV: Gauge Theory, Infrared Structure, and Anomalies
 

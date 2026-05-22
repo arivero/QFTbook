@@ -233,6 +233,284 @@ Consequently the renormalized operators satisfy
   \label{fig:volume-ii-operator-mixing-field}
 \end{figure}
 
+\section{Source-Extended Wilsonian Representatives}
+
+The preceding discussion used local sources to define renormalized operators
+as cotangent vectors to a space of couplings.  The same source coordinates
+also have a Wilsonian representative.  The complete construction consists of
+three linked objects: a Wilsonian insertion functional, its connected
+low-field expectation, and its 1PI Legendre-transform representative.
+
+Work at a finite ultraviolet regulator \(\Lambda_0\), and let
+\(\Lambda<\Lambda_0\) be a smooth Wilsonian cutoff.  The regulated field is
+decomposed as a sum of an independent low field \(\phi\) with covariance
+\(C_\Lambda\) and a shell field \(\widehat\phi\) with positive covariance
+\(\widehat C_{\Lambda_0,\Lambda}=C_{\Lambda_0}-C_\Lambda\), or with any
+equivalent smooth positive covariance decomposition.  The shell kinetic term
+\(\widehat S_{\mathrm{kin}}\) is the quadratic form inverse to
+\(\widehat C_{\Lambda_0,\Lambda}\) on the regulated vector space.  Choose a
+local bare operator basis \(O_I(x)\) and source functions \(\eta_0^I(x)\).  In
+the Euclidean sign convention used in this volume,
+\[
+  Z_{\Lambda_0}[J,\eta_0]
+  =
+  \int[D\phi]\,
+  \exp\left[
+    -S_{\Lambda_0}[\phi]
+    -\int\dd^D x\,J(x)\phi(x)
+    -\int\dd^D x\,\eta_0^I(x)O_I(x)
+  \right].
+\]
+Thus
+\[
+  -\frac{\delta W_{\Lambda_0}[J,\eta_0]}
+          {\delta\eta_0^I(x)}
+  \bigg|_{\eta_0=0}
+  =
+  \bigl\langle O_I(x)\bigr\rangle_{J,\Lambda_0},
+  \qquad
+  W_{\Lambda_0}=\log Z_{\Lambda_0},
+\]
+where the expectation value is computed with the source \(J\) still present.
+Higher derivatives with respect to \(\eta_0\) give connected insertions, with
+the corresponding signs determined by the same convention.
+
+The Wilsonian source coordinates at scale \(\Lambda\) are denoted
+\(\eta_\Lambda^A(x)\).  Locality permits a source-coordinate change by a local
+linear differential operator,
+\begin{equation}
+  \eta_0^I(x)
+  =
+  \bigl(\mathcal Z_\Lambda\bigr)^I{}_A(\partial_x)\,
+  \eta_\Lambda^A(x),
+  \label{eq:source-coordinate-local-differential-map}
+\end{equation}
+where
+\[
+  \bigl(\mathcal Z_\Lambda\bigr)^I{}_A(\partial)
+  =
+  \sum_{|\alpha|\ge0}
+  \bigl(\mathcal Z_\Lambda\bigr)^I{}_{A,\alpha}\,
+  \partial^\alpha
+\]
+as a formal derivative expansion, restricted by the spacetime and internal
+quantum numbers of the sources.  For constant sources only the
+\(\alpha=0\) term contributes.  The finite matrix \(N_{AI}(\mu)\) introduced
+above is the corresponding zero-momentum source-renormalization matrix in a
+chosen 1PI coordinate chart.
+
+Define the source-extended Wilsonian interaction \(L_\Lambda[\phi;\eta_\Lambda]\)
+by the Gaussian pushforward
+\begin{equation}
+  \exp\bigl[-L_\Lambda[\phi;\eta_\Lambda]\bigr]
+  =
+  \int[D\widehat\phi]\,
+  \exp\left[
+    -\widehat S_{\mathrm{kin}}[\widehat\phi]
+    -L_{\Lambda_0}[\phi+\widehat\phi;\eta_0(\eta_\Lambda)]
+  \right],
+  \label{eq:source-extended-wilsonian-pushforward}
+\end{equation}
+where the covariance of \(\widehat\phi\) is the shell covariance between
+\(\Lambda_0\) and \(\Lambda\).  Equation
+\eqref{eq:source-extended-wilsonian-pushforward} is first an identity in the
+finite-dimensional regulated system; the continuum derivative expansion is
+then studied after the regulator is removed.
+
+\begin{definition}[Wilsonian composite insertion]
+The Wilsonian representative of the source coordinate \(\eta_\Lambda^A\) is
+the local functional
+\[
+  \mathcal O_{\Lambda,A}^{\rm W}(x;\phi)
+  =
+  \frac{\delta L_\Lambda[\phi;\eta_\Lambda]}
+       {\delta\eta_\Lambda^A(x)}
+  \bigg|_{\eta_\Lambda=0}.
+\]
+It is a functional of the remaining low field \(\phi\).  Its connected and
+1PI images are obtained from the subsequent low-field integration and
+Legendre transform.
+\end{definition}
+
+Let
+\[
+  W_\Lambda^{\rm low}[J,\eta_\Lambda]
+  =
+  \log
+  \int[D\phi]\,
+  \exp\left[
+    -S_{\mathrm{kin},\Lambda}[\phi]
+    -L_\Lambda[\phi;\eta_\Lambda]
+    -\int J\phi
+  \right].
+\]
+For source functions \(J\) and \(\eta_\Lambda\) whose Fourier transforms are
+supported in the low-momentum region where the cutoff profile is unchanged,
+the Gaussian convolution identity gives
+\begin{equation}
+  W_\Lambda^{\rm low}[J,\eta_\Lambda]
+  =
+  W_{\Lambda_0}[J,\eta_0(\eta_\Lambda)]
+  \label{eq:source-extended-low-w-equality}
+\end{equation}
+at the finite regulator.  Differentiating at \(\eta_\Lambda=0\) gives
+\[
+  -\frac{\delta W_\Lambda^{\rm low}[J,\eta_\Lambda]}
+          {\delta\eta_\Lambda^A(x)}
+  \bigg|_{\eta_\Lambda=0}
+  =
+  \bigl\langle
+    \mathcal O_{\Lambda,A}^{\rm W}(x;\phi)
+  \bigr\rangle_{J,\Lambda}^{\rm low}.
+\]
+The equality
+\eqref{eq:source-extended-low-w-equality} therefore identifies connected
+operator insertions computed from the bare and Wilsonian descriptions, after
+the source-coordinate map \eqref{eq:source-coordinate-local-differential-map}
+has been applied.
+
+The 1PI insertion is obtained by performing the remaining low-field integral
+and then taking the Legendre transform.  If
+\[
+  \varphi(x)=\frac{\delta W_\Lambda^{\rm low}[J,\eta_\Lambda]}
+                  {\delta J(x)}
+\]
+and
+\[
+  \Gamma_\Lambda[\varphi,\eta_\Lambda]
+  =
+  W_\Lambda^{\rm low}[J,\eta_\Lambda]
+  -
+  \int\dd^D x\,J(x)\varphi(x),
+  \qquad
+  J=J[\varphi,\eta_\Lambda],
+\]
+then the cancellation of the \(J\)-variation in the Legendre transform gives
+\[
+  \frac{\delta\Gamma_\Lambda[\varphi,\eta_\Lambda]}
+       {\delta\eta_\Lambda^A(x)}
+  \bigg|_{\varphi}
+  =
+  \frac{\delta W_\Lambda^{\rm low}[J,\eta_\Lambda]}
+       {\delta\eta_\Lambda^A(x)}
+  \bigg|_{J=J[\varphi,\eta_\Lambda]} .
+\]
+Consequently the 1PI representative of the insertion is
+\[
+  \mathcal O_{\Lambda,A}^{\Gamma}(x;\varphi)
+  =
+  -\frac{\delta\Gamma_\Lambda[\varphi,\eta_\Lambda]}
+        {\delta\eta_\Lambda^A(x)}
+  \bigg|_{\eta_\Lambda=0}.
+\]
+Its field derivatives at \(\varphi=0\) are the amputated 1PI kernels with one
+operator insertion.  These kernels agree with the projected 1PI insertion
+kernels in another subtraction scheme after the corresponding finite
+source-coordinate map and field normalization have been specified.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=3pt,line width=0.8pt,
+        align=center,text width=1.85cm,minimum height=0.82cm},
+      lowbox/.style={draw,rounded corners=3pt,line width=0.8pt,
+        align=center,text width=2.05cm,minimum height=0.76cm},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt},
+      darr/.style={-{Latex[length=2mm]},line width=0.85pt,dashed}
+    }
+    \node[box] (bare) at (0,2.12)
+      {bare\\sources\\\(\eta_0\)};
+    \node[box] (map) at (2.30,2.12)
+      {local\\source map\\\(\mathcal Z_\Lambda\)};
+    \node[box] (wil) at (4.60,2.12)
+      {Wilsonian\\action\\\(L_\Lambda\)};
+    \node[box] (wlow) at (6.90,2.12)
+      {connected\\functional\\\(W_\Lambda^{\rm low}\)};
+    \node[box] (leg) at (9.20,2.12)
+      {1PI\\effective action\\\(\Gamma_\Lambda\)};
+    \node[box] (proj) at (11.50,2.12)
+      {projected\\1PI kernels\\and \(N\)};
+
+    \node[lowbox] (opw) at (4.60,0.35)
+      {Wilsonian insertion\\\(\mathcal O_\Lambda^{\rm W}\)};
+    \node[lowbox] (opc) at (6.90,0.35)
+      {connected insertion\\\(-\delta W/\delta\eta\)};
+    \node[lowbox] (opg) at (9.20,0.35)
+      {1PI insertion\\\(\mathcal O_\Lambda^\Gamma\)};
+
+    \draw[arr] (bare)--(map);
+    \draw[arr] (map)--(wil);
+    \draw[arr] (wil)--(wlow);
+    \draw[arr] (wlow)--(leg);
+    \draw[arr] (leg)--(proj);
+    \draw[darr] (wil)--(opw);
+    \draw[darr] (wlow)--(opc);
+    \draw[darr] (leg)--(opg);
+    \draw[arr] (opw)--(opc);
+    \draw[arr] (opc)--(opg);
+
+    \node[blue!70!black,align=center] at (1.15,3.02)
+      {local differential\\source coordinates};
+    \node[green!45!black,align=center] at (4.60,3.02)
+      {Gaussian\\pushforward};
+    \node[orange!85!black,align=center] at (5.75,-0.55)
+      {low-field\\integral};
+    \node[red!70!black,align=center] at (8.05,-0.55)
+      {Legendre\\transform};
+    \node[purple!70!black,align=center] at (10.35,3.24)
+      {1PI subtraction\\coordinates};
+  \end{tikzpicture}
+  }
+  \caption{Local operator insertions have several representatives connected
+  by explicit maps.  The top row maps source-dependent functionals.  The
+  lower row records their source derivatives: Wilsonian insertion functional,
+  connected insertion, and 1PI insertion, with
+  \(\mathcal O_\Lambda^{\rm W}=\delta L_\Lambda/\delta\eta_\Lambda\) and
+  \(\mathcal O_\Lambda^\Gamma=-\delta\Gamma_\Lambda/\delta\eta_\Lambda\).}
+  \label{fig:source-extended-wilsonian-operator-bridge}
+\end{figure}
+
+This construction also clarifies the transformation law of anomalous
+dimensions.  Let \(t=\log\mu\), and suppose a scale-dependent finite
+source-coordinate change relates two renormalized operator bases by
+\[
+  [\widetilde O_A]_\mu
+  =
+  M_{AI}(\mu)\,[O_I]_\mu .
+\]
+If
+\[
+  \frac{\dd}{\dd t}[O_I]_\mu
+  =
+  -\gamma_{IK}[O_K]_\mu,
+\]
+then
+\[
+  \frac{\dd}{\dd t}[\widetilde O_A]_\mu
+  =
+  -
+  \widetilde\gamma_{AB}
+  [\widetilde O_B]_\mu
+\]
+with
+\begin{equation}
+  \widetilde\gamma
+  =
+  M\gamma M^{-1}
+  -
+  \frac{\dd M}{\dd t}M^{-1}.
+  \label{eq:operator-anomalous-dimension-connection-law}
+\end{equation}
+Thus the anomalous-dimension matrix transforms by conjugation only for
+scale-independent changes of operator coordinates.  For scale-dependent
+renormalized source coordinates, it is a connection on the local-operator
+bundle over theory space.  Equation
+\eqref{eq:operator-anomalous-dimension-connection-law} is the finite
+coordinate version of the cotangent flow
+\(\gamma_{IK}=\partial\beta_K/\partial g_I\) for deformation operators.
+
 \section{Anomalous Dimensions and Scaling Operators}
 
 If a basis can be chosen along the flow in which
