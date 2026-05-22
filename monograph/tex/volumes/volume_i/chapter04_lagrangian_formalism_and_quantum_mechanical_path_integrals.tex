@@ -1,6 +1,90 @@
 \chapter{Hamiltonian Evolution and Time-Sliced Path Integrals}
 \label{ch:hamiltonian-evolution-time-sliced-path-integrals}
 
+\section{Classical Lagrangian and Hamiltonian Data}
+
+Let \(Q\) be a smooth \(d\)-dimensional configuration manifold.  Local
+coordinates on \(Q\) are denoted by \(q^a\), \(a=1,\ldots,d\).  A tangent
+vector is written \((q,\dot q)\in TQ\), and a cotangent vector is written
+\((q,p)\in T^*Q\), with \(p=p_a\,\dd q^a\).  A classical Lagrangian is a
+function
+\[
+  L:TQ\to\mathbb R.
+\]
+For a path \(q:[t_i,t_f]\to Q\), the action is
+\[
+  S[q]=\int_{t_i}^{t_f}L(q(t),\dot q(t))\,\dd t .
+\]
+The variational principle with fixed endpoints gives the Euler--Lagrange
+equations
+\[
+  \frac{\dd}{\dd t}\frac{\partial L}{\partial \dot q^a}
+  =
+  \frac{\partial L}{\partial q^a}.
+\]
+Thus a Lagrangian description uses the pair \((q,\dot q)\) as local Cauchy
+data for the classical second-order equation.
+
+Assume now that the fiber derivative of \(L\),
+\[
+  (q,\dot q)\longmapsto
+  \left(q,p_a=\frac{\partial L}{\partial\dot q^a}\right),
+\]
+is invertible on the region under consideration.  The Hamiltonian associated
+to this regular Lagrangian is the Legendre transform
+\[
+  H(q,p)=p_a\dot q^a-L(q,\dot q)
+  \quad
+  \text{with }\dot q=\dot q(q,p).
+\]
+The canonical Poisson bracket on \(T^*Q\) is
+\[
+  \{f,g\}_{\rm P}
+  =
+  \frac{\partial f}{\partial q^a}\frac{\partial g}{\partial p_a}
+  -
+  \frac{\partial f}{\partial p_a}\frac{\partial g}{\partial q^a},
+\]
+where repeated indices are summed.  Hamiltonian time evolution is
+\[
+  \dot f=\{f,H\}_{\rm P},
+\]
+and, in particular,
+\[
+  \dot q^a=\frac{\partial H}{\partial p_a},
+  \qquad
+  \dot p_a=-\frac{\partial H}{\partial q^a}.
+\]
+The Lagrangian and Hamiltonian descriptions are equivalent only after the
+regularity hypothesis above has been imposed; without it, constraints must be
+included as part of the classical data.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth,node distance=1.7cm,
+  every node/.style={font=\small}]
+  \node[draw,rounded corners=2pt,align=center,inner sep=4pt] (lagdata)
+    {Lagrangian data\\ \((q,\dot q)\)};
+  \node[draw,rounded corners=2pt,align=center,inner sep=4pt,right=of lagdata]
+    (action) {Action\\ \(S=\int L(q,\dot q)\,\dd t\)};
+  \node[draw,rounded corners=2pt,align=center,inner sep=4pt,right=of action]
+    (eom) {Equations\\ \(\delta S=0\)};
+  \node[draw,rounded corners=2pt,align=center,inner sep=4pt,below=of action]
+    (hamdata) {Hamiltonian data\\ \((q,p)\), \(H(q,p)\)};
+  \draw[->] (lagdata) -- (action);
+  \draw[->] (action) -- (eom);
+  \draw[<->] (action) -- node[right,font=\scriptsize]
+    {\(p_a=\partial L/\partial\dot q^a\)} (hamdata);
+  \node[align=left,font=\scriptsize,right=0.55cm of hamdata] {
+    \(H=p_a\dot q^a-L\)\\[2pt]
+    \(\dot q^a=\partial H/\partial p_a\)\\[2pt]
+    \(\dot p_a=-\partial H/\partial q^a\)};
+\end{tikzpicture}
+\caption{Classical Lagrangian and Hamiltonian descriptions, related by a
+regular Legendre transform.}
+\label{fig:classical-lagrangian-hamiltonian-data}
+\end{figure}
+
 \section{Canonical Quantum-Mechanical Data}
 
 Let \(d\) be the number of degrees of freedom and let
@@ -22,6 +106,21 @@ The time-evolution operator over time \(T\in\mathbb R\) is
 \[
   U(T)=\exp\left(-\frac{\ii}{\hbar}T\widehat H\right).
 \]
+In the Schr\"odinger picture, a vector evolves as
+\[
+  \ket\psi\longmapsto U(t)\ket\psi .
+\]
+In the Heisenberg picture, an operator \(\widehat O\) evolves as
+\[
+  \widehat O(t)=U(t)^{-1}\widehat O\,U(t),
+  \qquad
+  \frac{\dd}{\dd t}\widehat O(t)
+  =
+  \frac{\ii}{\hbar}[\widehat H,\widehat O(t)]
+\]
+on vectors for which the commutator expression is defined.  The path integral
+constructed below gives a regulated representation of matrix elements of this
+Hamiltonian time evolution.
 
 The position and momentum generalized eigenstates are denoted by
 \(\ket{q}\) and \(\ket{p}\). They are distributions, normalized by
@@ -40,6 +139,16 @@ The transition amplitude is the distributional kernel
   =
   \bra{q_f}U(T)\ket{q_i}.
 \]
+In Lagrangian notation one often writes this kernel formally as
+\[
+  \bra{q_f}U(T)\ket{q_i}
+  =
+  \int_{q(0)=q_i}^{q(T)=q_f} [Dq]\,
+  \exp\left(\frac{\ii}{\hbar}S[q]\right).
+\]
+The rest of this chapter gives this formula its regulated meaning.  The
+symbol \([Dq]\) obtains its meaning from the regulator, limiting procedure,
+operator symbol, and boundary conditions.
 
 \section{Finite Time Slicing}
 
@@ -48,7 +157,20 @@ Choose an integer \(N\ge1\), set \(\epsilon=T/N\), and define
   t_n=n\epsilon,\qquad n=0,\ldots,N,
 \]
 with \(q_0=q_i\) and \(q_N=q_f\). Inserting \(N-1\) position resolutions and
-\(N\) momentum resolutions gives
+\[
+  U(T)=\left[\exp\left(-\frac{\ii}{\hbar}\epsilon\widehat H\right)\right]^N
+\]
+gives first the position-space finite product
+\[
+  K(q_f,T;q_i,0)
+  =
+  \int\prod_{n=1}^{N-1}\dd^dq_n\,
+  \prod_{n=0}^{N-1}
+  \bra{q_{n+1}}
+  \exp\left(-\frac{\ii}{\hbar}\epsilon\widehat H\right)
+  \ket{q_n}.
+\]
+Inserting \(N\) momentum resolutions gives
 \[
 \begin{aligned}
   K(q_f,T;q_i,0)
@@ -91,7 +213,25 @@ ordering convention, for example by
 \[
   \bra{p}\widehat H\ket{q}=h(q,p)\braket{p}{q}
 \]
-on the chosen domain. The associated finite-\(N\) phase-space approximant is
+on the chosen domain.  Replacing each short-time matrix element by the first
+terms of its symbol expansion gives
+\[
+  \bra{q_{n+1}}p_n\rangle
+  \bra{p_n}\ee^{-\ii\epsilon\widehat H/\hbar}\ket{q_n}
+  =
+  \exp\left[
+    \frac{\ii}{\hbar}
+    \left(
+      p_{n,a}(q_{n+1}^a-q_n^a)
+      -\epsilon h(q_n,p_n)
+      +O(\epsilon^2)+O(\hbar\epsilon)
+    \right)
+  \right]
+\]
+for this convention, with the error understood in the regulated
+operator-symbol expansion rather than as a pointwise statement about an
+undefined continuum integral.  The associated finite-\(N\) phase-space
+approximant is
 \[
   K_N(q_f,T;q_i,0)
   =
@@ -191,6 +331,40 @@ for the same operator. Their difference is of order \(\hbar\) in the
 continuum action and appears as a local counterterm in the time-sliced
 description.
 
+At fixed \(N\), two representative choices are
+\[
+  \cdots
+  \bra{q_{n+1}}p_n\rangle
+  \bra{p_n}\ee^{-\ii\epsilon\widehat H/\hbar}\ket{q_n}
+  \cdots,
+  \qquad
+  \bra{p_n}\widehat H\ket{q_n}
+  =
+  h(q_n,p_n)\braket{p_n}{q_n},
+\]
+and
+\[
+  \cdots
+  \bra{p_{n+1}}q_{n+1}\rangle
+  \bra{q_{n+1}}\ee^{-\ii\epsilon\widehat H/\hbar}\ket{p_n}
+  \cdots,
+  \qquad
+  \bra{q_n}\widehat H\ket{p_n}
+  =
+  h'(q_n,p_n)\braket{q_n}{p_n}.
+\]
+They discretize the kinetic term respectively as
+\[
+  \sum_{n=0}^{N-1}p_{n,a}(q_{n+1}^a-q_n^a),
+  \qquad
+  \sum_{n=0}^{N-1}p_{n+1,a}(q_{n+1}^a-q_n^a),
+\]
+after relabelling endpoints where necessary.  The two symbols \(h\) and
+\(h'\) represent the same operator only with their specified ordering
+conventions, and they can differ by terms of order \(\hbar\).  Such terms
+survive in the exponent as local regulator-dependent additions to the
+effective Lagrangian.
+
 Thus the data of the regulated path integral are
 \[
   (\text{partition},\ \text{measure},\ \text{operator symbol},\
@@ -240,6 +414,15 @@ The Lagrangian function obtained by Legendre transform is
   =
   \frac12G_{ab}(q)\dot q^a\dot q^b-V(q).
 \]
+Conversely, if a classical Lagrangian in generalized coordinates has this
+metric form, as in the rigid-body configuration space example, then the
+corresponding quantum Hamiltonian symbol is
+\[
+  h(q,p)=\frac12G^{ab}(q)p_ap_b+V(q)+O(\hbar)
+\]
+until an ordering convention and measure convention have been fixed.  The
+\(O(\hbar)\) term records the same local regulator dependence described
+above.
 The finite-\(N\) configuration-space expression is therefore
 \[
 \begin{aligned}
