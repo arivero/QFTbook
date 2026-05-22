@@ -321,11 +321,28 @@ negative superficial degree of divergence, so this interaction closes on a
 finite local counterterm list.
 
 For \(D=4\) scalar theory with a sextic vertex \(\int g_6\phi^6\), the first
-tests already generate higher local terms.  A one-loop eight-point function
-has logarithmic behavior, requiring a local \(\phi^8\) counterterm.  Once
-\(\phi^8\) is present, further diagrams generate \(\phi^{10}\), and the
-process continues.  The cutoff-removal limit then requires an unbounded
-sequence of independent local coefficients.
+tests already generate both a cutoff-dependent correction to the sextic
+coupling and higher local terms.  The six-point 1PI kernel receives a
+quadratically divergent local contribution of the form
+\[
+  \delta g_6\,\phi^6,
+  \qquad
+  \delta g_6=O(g_6^2\Lambda^2)
+\]
+up to logarithms and finite prescription-dependent terms.  The eight-point
+1PI kernel has logarithmic behavior,
+\[
+  \delta g_8\,\phi^8,
+  \qquad
+  \delta g_8=O(g_6^2\log\Lambda).
+\]
+At the next stages, the same local-subgraph mechanism generates
+\[
+  \delta g_{10}\phi^{10},\qquad
+  \delta g_{12}\phi^{12},\qquad \ldots .
+\]
+The cutoff-removal limit then requires an unbounded sequence of independent
+local coefficients.
 
 \begin{figure}[H]
   \centering
@@ -387,7 +404,7 @@ sequence of independent local coefficients.
       \draw[line] (R)--(1.78,0.08);
       \draw[line] (R)--(1.55,-0.45);
       \node[red!70!black,align=center] at (0,-1.35)
-        {one-loop eight-point\\\(\phi^8\), then \(\phi^{10},\ldots\)};
+        {six-point local term\\then \(\phi^8,\phi^{10},\ldots\)};
     \end{scope}
   \end{tikzpicture}
   }
@@ -533,8 +550,17 @@ In dimensional regularization,
   \frac{\Gamma(n-D/2)}{\Gamma(n)}
   \Delta^{D/2-n}.
 \]
-For \(D=6-\varepsilon\), the pole part of \(\Sigma_2(k)\) is a local
-polynomial
+For \(D=6-\varepsilon\), this gives
+\[
+  \Sigma_2(k)
+  =
+  \frac12 g_R^2
+  \frac{\Gamma(-1+\varepsilon/2)}
+       {(4\pi)^{3-\varepsilon/2}}
+  \int_0^1\dd x\,
+  \bigl(m_R^2+x(1-x)k^2\bigr)^{1-\varepsilon/2}.
+\]
+The pole part is therefore a local polynomial
 \[
   \Sigma_2(k)\big|_{\rm pole}
   =
@@ -543,8 +569,32 @@ polynomial
   B_1(\varepsilon)\,m_R^2,
 \]
 where \(A_1\) and \(B_1\) have simple \(1/\varepsilon\) poles in minimal
-subtraction.  The counterterms \(\delta Z\) and \(\delta m^2\) are chosen so
-that the renormalized self-energy is finite.
+subtraction.  In the normalization of the displayed integral,
+\[
+  A_1(\varepsilon)
+  =
+  -\frac{g_R^2}{6(4\pi)^3}\frac1{\varepsilon}
+  +O(\varepsilon^0),
+  \qquad
+  B_1(\varepsilon)
+  =
+  -\frac{g_R^2}{(4\pi)^3}\frac1{\varepsilon}
+  +O(\varepsilon^0),
+\]
+where the finite parts depend on the subtraction prescription.  The finite
+renormalized self-energy has the large-momentum form
+\[
+  \Sigma_{2,R}(k)
+  =
+  (\alpha k^2+\beta m_R^2)
+  \log\frac{k^2}{\mu^2}
+  +c_1k^2+c_0m_R^2+O(m_R^4/k^2)
+  \qquad (k^2\gg m_R^2)
+\]
+for finite constants \(\alpha,\beta,c_0,c_1\) fixed by the chosen finite
+renormalization.  The counterterms \(\delta Z\) and \(\delta m^2\) are chosen
+so that the pole part is canceled and \(\Sigma_{2,R}\) is finite at the
+subtraction point.
 
 At order \(g_R^3\), the one-loop three-point triangle has a logarithmic
 ultraviolet divergence.  Its pole is independent of external momenta at the
@@ -609,7 +659,7 @@ large Euclidean momentum behavior
 \[
   \Sigma_R(q)
   \sim
-  (\alpha q^2+\beta)\log\frac{q^2}{\mu^2},
+  (\alpha q^2+\beta m_R^2)\log\frac{q^2}{\mu^2},
   \qquad
   q^2\gg m_R^2,
 \]
@@ -688,6 +738,34 @@ The coefficients \(a_i,b_i\) are finite constants depending on the finite
 renormalization prescription.  The pole part is polynomial in the external
 momentum, so it is represented by local counterterms already present in the
 six-dimensional cubic Lagrangian.
+The absence of a pole of the form
+\[
+  \frac1{\varepsilon}\log k^2
+\]
+is essential: such a term would be nonlocal in position space and could not
+be canceled by a local Lagrangian counterterm.  The reason it is absent is
+visible before integration over Feynman parameters.  For \(D=6-\varepsilon\)
+and \(n=2,3\),
+\[
+  \frac1{(4\pi)^{D/2}}
+  \frac{\Gamma(n-D/2)}{\Gamma(n)}
+  \Delta^{D/2-n}
+  =
+  \left(\frac{c_n}{\varepsilon}+c'_n\log\Delta\right)
+  \Delta^{3-n}+O(\varepsilon^0),
+\]
+with constants \(c_n,c'_n\).  Differentiating with respect to \(n\), as in
+the logarithmic integral above, produces
+\[
+  \left(
+    \frac{c_{n,2}}{\varepsilon^2}
+    +\frac{c_{n,1}}{\varepsilon}
+  \right)\Delta^{3-n}
+  +O(\varepsilon^0),
+\]
+because the \(\varepsilon^{-1}\log\Delta\) pieces cancel between the
+derivative of the gamma function and the derivative of
+\(\Delta^{D/2-n}\).
 
 \begin{figure}[H]
   \centering
@@ -707,7 +785,7 @@ six-dimensional cubic Lagrangian.
       \draw[line] (0.5,0.6)--(1.5,1.05);
       \draw[line] (0.5,0.6)--(1.5,0.15);
       \node[blue!70!black,align=center] at (-0.55,-0.8)
-        {\((\alpha q^2+\beta)\log(q^2/\mu^2)\)};
+        {\((\alpha q^2+\beta m_R^2)\log(q^2/\mu^2)\)};
       \draw[arr] (2.0,0.6)--(3.3,0.6);
     \end{scope}
 
@@ -783,6 +861,36 @@ with
 \]
 The function \(Q(\alpha)\) is nonnegative.  Ultraviolet regions are boundary
 regions in which Schwinger parameters of a subgraph go to zero.
+Explicitly,
+\[
+  Q(\alpha)
+  =
+  \alpha_2+\alpha_4
+  -
+  (\alpha_2,\alpha_4)
+  A^{-1}
+  \begin{pmatrix}
+    \alpha_2\\
+    \alpha_4
+  \end{pmatrix}
+  \ge0 .
+\]
+Writing
+\[
+  F(k^2;\alpha_1,\ldots,\alpha_5)
+  =
+  \frac{\exp[-k^2Q(\alpha)]}{(\det A)^3},
+\]
+one has the homogeneous scaling relation
+\[
+  \rho^6
+  F\!\left(
+    \frac{k^2}{\rho};
+    \rho\alpha_1,\ldots,\rho\alpha_5
+  \right)
+  =
+  F(k^2;\alpha_1,\ldots,\alpha_5).
+\]
 
 There are two one-loop subdivergent regions:
 \[
@@ -792,8 +900,27 @@ There are two one-loop subdivergent regions:
 \]
 They correspond to shrinking the left or right one-loop self-energy subgraph.
 The counterterm insertions for the one-loop self-energy subtract the limiting
-functions associated with these boundary regions.  After these subtractions,
-the remaining overall ultraviolet region is the simultaneous scaling
+functions associated with these boundary regions.  At the level of the
+Schwinger-parameter integrand this replacement is
+\[
+\begin{aligned}
+  \widetilde F
+  &=
+  F
+  -
+  \lim_{\rho\to0}
+  \rho^3
+  F(k^2;\rho\alpha_1,\rho\alpha_2,\alpha_3,\alpha_4,\rho\alpha_5)
+\\
+  &\quad
+  -
+  \lim_{\rho\to0}
+  \rho^3
+  F(k^2;\alpha_1,\alpha_2,\rho\alpha_3,\rho\alpha_4,\rho\alpha_5).
+\end{aligned}
+\]
+After these subtractions, the remaining overall ultraviolet region is the
+simultaneous scaling
 \[
   \alpha_1,\ldots,\alpha_5\to0 .
 \]
@@ -801,6 +928,20 @@ Power counting then says that its dependence on the external momentum is at
 most quadratic.  Subtracting the \(k^0\) and \(k^2\) Taylor terms leaves a
 finite parameter integral.  The overall counterterm is therefore again a
 linear combination of \(\phi^2\) and \((\partial\phi)^2\).
+Equivalently, the finite remainder may be represented by replacing
+\(\widetilde F\) with
+\[
+  \widetilde F_R(k^2;\alpha)
+  =
+  \widetilde F(k^2;\alpha)
+  -
+  \widetilde F(0;\alpha)
+  -
+  \left.
+    \frac{\partial\widetilde F}{\partial k^2}
+  \right|_{k^2=0}
+  k^2 .
+\]
 
 \begin{figure}[H]
   \centering

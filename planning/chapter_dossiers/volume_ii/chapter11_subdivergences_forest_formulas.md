@@ -95,3 +95,9 @@ The chapter must define:
 - 2026-05-22 pass: tightened the 1PI graph convention, external-half-line
   definition of subgraphs, Taylor-operator holding data, connected spinney and
   forest conventions, and the BPHZ proof sketch.
+- 2026-05-22 source-certification pass for pp. 89--96: the preceding local
+  counterterm chapter now contains the handwritten Schwinger-parameter
+  \(D=6\ \phi^3\) diamond calculation through \(A\), \(Q\), the homogeneous
+  scaling relation, the two \(\widetilde F\) subdivergence subtractions, and
+  the final \(k^0,k^2\) overall Taylor subtraction.  This chapter supplies the
+  systematic forest-formula continuation of that source calculation.

@@ -57,7 +57,8 @@ The chapter must define:
    same operator basis used to define the regulated action.
 6. In \(D=4\), after vacuum-energy and tadpole bookkeeping, \(\phi^3\) and
    \(\phi^4\) illustrate finite counterterm closure, while \(\phi^6\)
-   illustrates proliferation of higher local terms.
+   first renormalizes its own sextic coupling and then illustrates
+   proliferation of higher local terms \(\phi^8,\phi^{10},\ldots\).
 7. For an operator with \(n\) fields and \(\ell\) derivatives,
    \(d_I=\ell+n(D-2)/2\).
 8. A diagram with inserted vertices \(J\) can generate a counterterm for
@@ -70,8 +71,12 @@ The chapter must define:
 9. If all couplings in the action have \(d_J\le D\), the required local
    counterterms are drawn from a finite-dimensional space.
 10. In \(D=6\), \(\phi^3\), one-loop two- and three-point divergences are
-   canceled by \(\delta Z\), \(\delta m^2\), and \(\delta g\); in
-   \(D=6-\varepsilon\) the cubic vertex carries \(\mu^{\varepsilon/2}\).
+    canceled by \(\delta Z\), \(\delta m^2\), and \(\delta g\); in
+    \(D=6-\varepsilon\) the cubic vertex carries \(\mu^{\varepsilon/2}\).
+    The one-loop self-energy should display the Feynman-parameter integral,
+    the dimensional-regularization pole polynomial in \(k^2\) and \(m_R^2\),
+    and the resulting large-\(k\) finite behavior
+    \((\alpha k^2+\beta m_R^2)\log(k^2/\mu^2)\) up to local finite terms.
 11. A renormalized one-loop self-energy insertion has large-momentum behavior
     \((\alpha q^2+\beta)\log(q^2/\mu^2)\), and Taylor subtraction of the
     remaining propagator leaves a finite integral.
@@ -80,6 +85,9 @@ The chapter must define:
 13. In the two-loop diamond graph, Schwinger-parameter subdivergences occur
     when subgraph parameters shrink; counterterm insertions subtract these
     limiting pieces before the overall divergence is treated.
+    The Schwinger-parameter matrix \(A\), nonnegative \(Q\), homogeneous
+    scaling relation, and explicit \(\widetilde F\) subtraction should be
+    written, not only described.
 
 ## Figure Requirements
 
@@ -100,3 +108,9 @@ The chapter must define:
   separated full 1PI/Green-function finiteness from local Taylor-coefficient
   finiteness, added tadpole bookkeeping to the \(D=4\) census, and fixed the
   \(D=6-\varepsilon\) \(\phi^3\) dimensional factor and self-energy pole form.
+- 2026-05-22 source-certification pass: handwritten pp. 81--96 checked
+  against the chapter; missing \(D=4\ \phi^6\) sextic self-counterterm,
+  explicit \(D=6\ \phi^3\) self-energy pole/large-momentum display,
+  absence of \(\varepsilon^{-1}\log k^2\) pole, Schwinger \(Q\), scaling
+  relation, \(\widetilde F\) subtraction, and final \(k^0,k^2\) subtraction
+  formula were added.
