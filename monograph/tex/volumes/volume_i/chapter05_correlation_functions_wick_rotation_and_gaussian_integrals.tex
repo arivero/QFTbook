@@ -837,6 +837,35 @@ and the corresponding Hamiltonian function is
   \frac12\left(1-\frac{g}{4}q^2\right)^{-1}p^2
   +\frac12q^2.
 \]
+Already at the classical level this Hamiltonian shows the point that will
+matter quantum mechanically: the product of the \(q\)-dependent coefficient
+and \(p^2\) has no unique operator meaning until an ordering prescription, or
+equivalently a regulated path-integral prescription, has been specified.
+
+There is a useful classical check. Define a new coordinate \(y\), to first
+order in \(g\), by
+\[
+  \frac{\dd y}{\dd q}
+  =
+  \left(1-\frac{g}{4}q^2\right)^{1/2},
+  \qquad
+  y=q-\frac{g}{24}q^3+O(g^2).
+\]
+Then \(q=y+\frac{g}{24}y^3+O(g^2)\), and the Lorentzian Lagrangian becomes
+\[
+  L
+  =
+  \frac12\dot y^2
+  -
+  \left(
+    \frac12y^2+\frac{g}{24}y^4
+  \right)
+  +O(g^2).
+\]
+Thus the derivative-coupled oscillator is classically equivalent, through
+order \(g\), to an ordinary anharmonic oscillator. The computation below keeps
+the \(q\)-coordinate and shows where the quantum prescription enters.
+
 The Euclidean Lagrangian is
 \[
   L_E(q,q')
@@ -868,25 +897,89 @@ In momentum space this contains
   \int\frac{\dd k'}{2\pi}\frac{k'^2}{k'^2+1},
 \]
 which depends on the high-frequency definition of the path integral.
+Other contractions in the same Wick expansion are finite or vanish by parity.
+For example, with \(G_0(k)=1/(k^2+1)\), one obtains terms of the form
+\[
+  \frac{g}{4}
+  \int\frac{\dd k}{2\pi}
+    \frac{\ee^{\ii k\tau}k^2}{(k^2+1)^2}
+  \int\frac{\dd k'}{2\pi}\frac{1}{k'^2+1},
+\]
+and
+\[
+  -\frac{g}{2}
+  \int\frac{\dd k}{2\pi}
+    \frac{\ee^{\ii k\tau}\ii k}{(k^2+1)^2}
+  \int\frac{\dd k'}{2\pi}\frac{\ii k'}{k'^2+1}=0.
+\]
+The divergent term is local in the external momentum expansion; this is why a
+local counterterm can absorb it.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.9]
-  \coordinate (a) at (0,0);
-  \coordinate (b) at (1.35,0);
-  \coordinate (c) at (2.7,0);
-  \fill[red!80!black] (a) circle (2pt);
-  \node[below=3pt] at (a) {$\tau$};
-  \fill[red!80!black] (c) circle (2pt);
-  \node[below=3pt] at (c) {$0$};
-  \fill (b) circle (1.6pt);
-  \draw[thick] (a) -- (b) -- (c);
-  \draw[thick,blue!65!black]
-    (b) .. controls (0.9,0.72) and (1.8,0.72) .. (b);
-  \draw[blue!65!black,line width=1pt] (1.18,0.42) -- (1.02,0.66);
-  \draw[blue!65!black,line width=1pt] (1.52,0.42) -- (1.68,0.66);
-  \node[above=18pt] at (b) {derivatives on loop};
-\end{tikzpicture}
-\end{center}
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (1.35,1.85) {derivatives on loop};
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (1.35,0);
+      \coordinate (c) at (2.7,0);
+      \fill[red!80!black] (a) circle (2pt);
+      \node[below=3pt] at (a) {\(\tau\)};
+      \fill[red!80!black] (c) circle (2pt);
+      \node[below=3pt] at (c) {\(0\)};
+      \fill (b) circle (1.7pt);
+      \draw[thick] (a) -- (b) -- (c);
+      \draw[thick,blue!65!black]
+        (b) .. controls (0.88,0.74) and (1.82,0.74) .. (b);
+      \draw[blue!65!black,line width=1pt] (1.17,0.43) -- (1.01,0.67);
+      \draw[blue!65!black,line width=1pt] (1.53,0.43) -- (1.69,0.67);
+      \node[align=center,blue!70!black] at (1.35,-0.95)
+        {\(\displaystyle
+        \int \frac{\dd k'}{2\pi}\frac{k'^2}{k'^2+1}\)};
+    \end{scope}
+
+    \begin{scope}[shift={(4.4,0)}]
+      \node[font=\small] at (1.35,1.85) {one derivative outside};
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (1.35,0);
+      \coordinate (c) at (2.7,0);
+      \fill[red!80!black] (a) circle (2pt);
+      \fill[red!80!black] (c) circle (2pt);
+      \fill (b) circle (1.7pt);
+      \draw[thick] (a) -- (b) -- (c);
+      \draw[thick,blue!65!black]
+        (b) .. controls (0.90,0.70) and (1.80,0.70) .. (b);
+      \draw[blue!65!black,line width=1pt] (1.52,0.42) -- (1.68,0.66);
+      \draw[blue!65!black,line width=1pt] (0.72,0.0) -- (0.52,0.18);
+      \node[align=center,blue!70!black] at (1.35,-0.95)
+        {finite\\wavefunction term};
+    \end{scope}
+
+    \begin{scope}[shift={(8.8,0)}]
+      \node[font=\small] at (1.35,1.85) {odd loop momentum};
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (1.35,0);
+      \coordinate (c) at (2.7,0);
+      \fill[red!80!black] (a) circle (2pt);
+      \fill[red!80!black] (c) circle (2pt);
+      \fill (b) circle (1.7pt);
+      \draw[thick] (a) -- (b) -- (c);
+      \draw[thick,blue!65!black]
+        (b) .. controls (0.90,0.70) and (1.80,0.70) .. (b);
+      \draw[blue!65!black,line width=1pt] (1.17,0.43) -- (1.01,0.67);
+      \draw[blue!65!black,line width=1pt] (2.02,0.0) -- (2.22,0.18);
+      \node[align=center,blue!70!black] at (1.35,-0.95)
+        {vanishes by\\\(k'\mapsto-k'\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Derivative interactions produce derivatives acting on Wick
+  contractions.  When both derivatives act on the internal loop, the
+  coincident-point contraction is sensitive to the high-frequency regulator.
+  Other first-order contractions are finite or vanish by parity.}
+  \label{fig:volume-i-derivative-interaction-contractions}
+\end{figure}
 
 Define a frequency cutoff by
 \[
@@ -936,6 +1029,35 @@ Choosing
 defines a finite limiting two-point function as \(\Lambda\to\infty\). The
 finite constant \(C_{\mathrm{fin}}\) is part of the quantum definition of the
 Hamiltonian represented by this regulated Lagrangian path integral.
+
+The pole of the regulated two-point function,
+\[
+  \widetilde G_\Lambda(k)
+  =
+  \frac{\hbar}{k^2+1-\Sigma_\Lambda(k)},
+\]
+gives the first energy gap. Setting \(k=\ii\omega_1\) and expanding to first
+order in \(g\) gives
+\[
+  \omega_1
+  =
+  1+\hbar g
+  \left(
+    -\frac{\Lambda}{8\pi}+\frac{C}{2}+\frac18
+  \right)
+  +O(g^2)
+  =
+  1+\hbar g
+  \left(
+    \frac{C_{\mathrm{fin}}}{2}+\frac18
+  \right)
+  +O(g^2).
+\]
+Thus the finite part of the local counterterm is not a removable notation
+choice; it fixes which quantum Hamiltonian, within the ordering ambiguity of
+the derivative-coupled classical expression, the path integral represents.
+Once that quantum definition is fixed, the pole position is an ordinary
+observable.
 
 The structural statement carried forward to field theory is this: a path
 integral with interactions is a regulated construction of Green functions,

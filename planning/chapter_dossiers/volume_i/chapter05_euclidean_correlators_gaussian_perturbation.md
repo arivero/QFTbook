@@ -2,7 +2,8 @@
 
 ## Status
 
-Current status: ready for TeX rewrite.
+Current status: source-transcription audit refreshed on 2026-05-22 for the
+derivative-interaction/regulator/counterterm block.
 
 ## Logical Role
 
@@ -108,6 +109,9 @@ Figures to include:
 - cancellation of vacuum bubbles in a normalized two-point function;
 - 1PI self-energy chain;
 - derivative-interaction vertex schematic with derivative marks.
+- derivative-interaction contraction figure separating the linearly divergent
+  loop-derivative term, the finite wavefunction term, and the parity-odd
+  vanishing term.
 
 ## Audit Targets
 
@@ -117,5 +121,9 @@ Figures to include:
   diagrams, not scattering amplitudes.
 - Counterterms must be presented as part of the regulated definition, not as a
   slogan about removing infinities.
+- The derivative-coupled oscillator block must retain the classical
+  \(q\mapsto y\) coordinate check, the cutoff self-energy, the local
+  \(Cg\hbar q^2/2\) counterterm, and the first-pole energy-gap interpretation
+  of the finite counterterm part.
 - The chapter must end at the threshold of relativistic fields; the transition
   to fields is for the next chapter.

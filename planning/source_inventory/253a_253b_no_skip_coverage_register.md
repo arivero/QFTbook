@@ -46,7 +46,7 @@ is a gap whenever the source calculation carries conceptual content.
 | pp. 19--23, harmonic oscillator propagator | mapped | `volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex` | Check mode expansion, contour integral, and \(T\to\infty\) limit. |
 | pp. 24--29, finite and functional Gaussian integrals, Wick contractions | mapped | `volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex` | Verify determinant normalizations and source-derivative conventions. |
 | pp. 30--43, anharmonic oscillator, vacuum diagrams, two-point function, self-energy, spectrum extraction | mapped | `volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex`; `volume_i/chapter10_perturbative_green_functions_and_feynman_graphs.tex` | Check every vacuum and two-point diagram against the source figures. |
-| pp. 43--51, derivative interactions, regulator dependence, counterterms | partial | `volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex`; `volume_ii/chapter08_renormalizability_and_local_counterterms.tex` | Verify that the derivative-interaction measure/counterterm lesson is not diluted into generic renormalization prose. |
+| pp. 43--51, derivative interactions, regulator dependence, counterterms | mapped after 2026-05-22 source-transcription audit | `volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex`; `volume_ii/chapter08_renormalizability_and_local_counterterms.tex` | The derivative-coupled oscillator now includes the classical coordinate check, derivative-contraction figure, cutoff self-energy, local counterterm, and pole/energy-gap interpretation; final certification still requires handwritten figure-level recheck in the compiled PDF. |
 | pp. 52--62, classical and canonical free scalar field | mapped | `volume_i/chapter06_relativistic_scalar_fields_and_canonical_quantization.tex` | Check canonical normalization, mode expansion, zero-point-energy treatment, and Bogoliubov remark. |
 | pp. 63--71, Noether theorem, stress tensor, Poincare generators | mapped | `volume_i/chapter07_symmetries_noether_theorem_and_stress_tensors.tex` | Check current-improvement and stress-tensor figures. |
 | pp. 72--79, scalar field path integral and Euclidean propagators | mapped | `volume_i/chapter08_scalar_path_integrals_and_euclidean_green_functions.tex` | Verify Wick rotation, Green-function inverse, and \(i\epsilon\) bridge. |
@@ -114,7 +114,7 @@ now.  The following table records what is core-covered and what is deferred.
 
 | Source block | Current status | Control file |
 | --- | --- | --- |
-| 253a pp. 43--51, derivative interactions and measure/counterterms | partial | `volume_i/chapter05_correlation_functions_wick_rotation_and_gaussian_integrals.tex`; `volume_ii/chapter08_renormalizability_and_local_counterterms.tex` |
+| 253a pp. 43--51, derivative interactions and measure/counterterms | mapped after 2026-05-22 source-transcription audit | `planning/build_audits/2026-05-22_derivative_interactions_measure_counterterms.md` |
 | 253b pp. 71--80, generating functionals and 1PI effective action | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter09_generating_functionals_1pi_effective_action.md` |
 | 253b pp. 97--110, 1PI RG | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter12_1pi_renormalization_group.md` |
 | 253b pp. 147--156, Wilsonian effective actions and Polchinski flow | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter17_wilsonian_effective_actions_polchinski_flow.md` |
@@ -149,9 +149,9 @@ now.  The following table records what is core-covered and what is deferred.
 ## Next Pass
 
 The next page-level audit should work through the remaining `partial` rows
-first, especially the 253a derivative-interaction block and ordinary
-Lorenz-gauge Yang--Mills Feynman-rule figures, then promote `mapped` rows to
-`certified` only after checking the handwritten PDF figures and derivations.
+first, especially the ordinary Lorenz-gauge Yang--Mills Feynman-rule figures,
+then promote `mapped` rows to `certified` only after checking the handwritten
+PDF figures and derivations.
 For selected 253c, the core-covered material through OPE/crossing should be
 audited now; the projective-lightcone, bootstrap, two-dimensional,
 supersymmetric, and large-\(N\) blocks remain source obligations for later
