@@ -1,6 +1,152 @@
 \chapter{Radial Quantization and the State-Operator Correspondence}
 \label{ch:volume-iii-radial-quantization}
 
+\section{Local Correlators as the Primary Data}
+
+Let \(\widehat{\mathcal O}_I(x)\) denote a Lorentzian local operator-valued
+distribution on \(\R^{1,D-1}\).  The label \(I\) includes all internal and
+spin indices.  Local commutativity means that for spacelike separated points
+\[
+  [\widehat{\mathcal O}_I(x),\widehat{\mathcal O}_J(y)]_\pm=0,
+  \qquad
+  (x-y)^2>0,
+\]
+where the graded commutator is used when fermionic operators are present.
+For a vacuum vector \(\ket{\Omega}\), the unordered Lorentzian correlation
+functions are the Wightman distributions
+\[
+  W_{I_1\cdots I_n}(x_1,\ldots,x_n)
+  =
+  \bra{\Omega}
+  \widehat{\mathcal O}_{I_1}(x_1)\cdots
+  \widehat{\mathcal O}_{I_n}(x_n)
+  \ket{\Omega}.
+\]
+Time-ordered Green functions are
+\[
+  G^T_{I_1\cdots I_n}(x_1,\ldots,x_n)
+  =
+  \bra{\Omega}
+  T\{\widehat{\mathcal O}_{I_1}(x_1)\cdots
+  \widehat{\mathcal O}_{I_n}(x_n)\}
+  \ket{\Omega}.
+\]
+The corresponding Euclidean Schwinger functions are denoted by
+\[
+  S_{I_1\cdots I_n}(x^E_1,\ldots,x^E_n)
+  =
+  \left\langle
+  \mathcal O_{I_1}(x^E_1)\cdots\mathcal O_{I_n}(x^E_n)
+  \right\rangle_E .
+\]
+
+These three versions are related by analytic continuation whenever the
+Lorentzian theory satisfies the spectral and locality hypotheses needed for
+the tube-domain construction.  For an ordered Wightman product, continue
+\[
+  x^0_k=-\ii x^D_{E,k}
+\]
+through a domain in which the imaginary parts remain ordered.  With the
+convention \(x^0=-\ii\tau\), the ordering
+\[
+  \operatorname{Im}x^0_1<\operatorname{Im}x^0_2<\cdots<
+  \operatorname{Im}x^0_n
+\]
+corresponds to
+\[
+  \tau_1>\tau_2>\cdots>\tau_n .
+\]
+The Euclidean correlator is the boundary value obtained after this rotation.
+Time-ordered Green functions arise from a contour whose real-time projection
+places the insertions in chronological order.
+
+When a path-integral representation is available, this analytic continuation
+can be represented by a contour \(C\) in complex time:
+\[
+  S_C[\Phi]
+  =
+  \int_C \dd x^0\int\dd^{D-1}\mathbf x\,
+  \mathcal L(\Phi,\partial\Phi),
+  \qquad
+  \left\langle\prod_i\mathcal O_i(x_i)\right\rangle_C
+  =
+  \int[D\Phi]\,\ee^{\ii S_C[\Phi]}\prod_i\mathcal O_i(x_i).
+\]
+The contour formula is a representation of the same distributional analytic
+continuation; it is not an additional axiom of the conformal theory.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      axis/.style={-{Latex[length=2mm]},thick},
+      contour/.style={green!45!black,line width=0.95pt},
+      point/.style={circle,fill=violet!75!black,inner sep=1.8pt}
+    }
+    \begin{scope}
+      \node[font=\small] at (0,2.48) {Wightman contour};
+      \draw[axis] (-2.45,0)--(2.55,0) node[right] {\(\operatorname{Re}x^0\)};
+      \draw[axis] (0,-1.55)--(0,1.55)
+        node[above left] {\(-\operatorname{Im}x^0\)};
+      \draw[contour]
+        (-2.10,-0.45) .. controls (-1.20,-0.30) and (-0.75,-0.95) ..
+        (-0.25,-0.78) .. controls (0.20,-0.60) and (0.25,0.68) ..
+        (0.80,0.72) .. controls (1.55,0.78) and (1.65,1.28) .. (1.80,1.50);
+      \foreach \x/\y/\lab in {-1.55/-0.35/{x_3^0},-0.22/-0.78/{x_4^0},0.72/0.72/{x_1^0},1.48/0.95/{x_2^0}} {
+        \node[point] at (\x,\y) {};
+        \node[violet!75!black,below right] at (\x,\y) {\(\lab\)};
+      }
+    \end{scope}
+
+    \begin{scope}[shift={(5.85,0)}]
+      \node[font=\small] at (0,2.48) {time ordered};
+      \draw[axis] (-2.20,0)--(2.30,0) node[right] {\(\operatorname{Re}x^0\)};
+      \draw[axis] (0,-1.55)--(0,1.55)
+        node[above left] {\(-\operatorname{Im}x^0\)};
+      \draw[contour] (-2.0,-0.95)--(1.90,0.58);
+      \foreach \x/\y/\lab in {-1.55/-0.77/{x_4^0},-0.78/-0.46/{x_3^0},0.18/-0.08/{x_2^0},1.05/0.27/{x_1^0}} {
+        \node[point] at (\x,\y) {};
+        \node[violet!75!black,above] at (\x,\y) {\(\lab\)};
+      }
+    \end{scope}
+
+    \begin{scope}[shift={(11.35,0)}]
+      \node[font=\small] at (0,2.48) {Euclidean};
+      \draw[axis] (-1.65,0)--(1.65,0) node[right] {\(\operatorname{Re}x^0\)};
+      \draw[axis] (0,-1.55)--(0,1.55)
+        node[above left] {\(-\operatorname{Im}x^0=\tau\)};
+      \draw[contour] (0,-1.25)--(0,1.45);
+      \foreach \y/\lab in {1.05/{x_1^0},0.35/{x_2^0},-0.35/{x_3^0},-1.05/{x_4^0}} {
+        \node[point] at (0,\y) {};
+        \node[violet!75!black,right] at (0,\y) {\(\lab\)};
+      }
+    \end{scope}
+
+    \draw[-{Latex[length=2mm]},orange!80!black,thick] (8.40,-1.70)
+      .. controls (9.30,-2.18) and (10.30,-2.18) .. (11.20,-1.70);
+    \node[orange!80!black] at (9.80,-2.25) {Wick rotation};
+  \end{tikzpicture}
+  }
+  \caption{Different real-time orderings and Euclidean Schwinger functions are
+  boundary values of the same analytic correlation functions, reached by
+  deforming the complex-time contour without crossing singularities.}
+  \label{fig:cft-wightman-time-euclidean-contours}
+\end{figure}
+
+\begin{remark}[Observables at a conformal fixed point]
+At a conformal fixed point, the data used in this volume are local operators,
+their correlation functions, and the Hilbert-space structure obtained from
+radial quantization.  A separate scattering theory requires asymptotic
+particle states.  Many conformal theories have no mass gap and no isolated
+massive particle sectors, so their intrinsic observable data are organized by
+local correlations rather than an \(S\)-matrix.  Four-dimensional Yang--Mills
+theory illustrates a different situation: the classical action has no
+dimensionful coupling, but quantum renormalization produces
+\(\Lambda_{\rm QCD}\) and a nonzero trace anomaly, so the quantum theory is
+not a conformal field theory.
+\end{remark}
+
 \section{The Weyl Map to the Cylinder}
 
 Let \(x^\mu\) be Euclidean coordinates on \(\R^D\), and write
@@ -33,6 +179,14 @@ Euclidean cylinder
 \]
 The origin corresponds to \(\tau=-\infty\), and infinity corresponds to
 \(\tau=+\infty\).
+
+The use of this Weyl map assumes that the flat-space conformal theory has
+been extended to background metrics with a specified Weyl transformation law
+for renormalized local operators.  In even dimensions a Weyl anomaly may add
+local curvature terms to the generating functional.  On the punctured flat
+space and cylinder comparison below, such terms affect contact and vacuum
+normalization data; the separated-point operator map is fixed after a choice
+of renormalized operator basis.
 
 \begin{figure}[H]
   \centering
@@ -76,6 +230,39 @@ The origin corresponds to \(\tau=-\infty\), and infinity corresponds to
   \label{fig:radial-cylinder-map}
 \end{figure}
 
+\section{Operators Under the Cylinder Map}
+
+For a scalar primary \(\mathcal O(x)\) of dimension \(\Delta\), define the
+cylinder operator
+\begin{equation}
+  \widetilde{\mathcal O}(\tau,n)
+  =
+  \ee^{\Delta\tau}\mathcal O(\ee^\tau n).
+  \label{eq:scalar-cylinder-operator-map}
+\end{equation}
+This is the ordinary Weyl transformation of a scalar primary under
+\(\dd s^2\mapsto r^{-2}\dd s^2\).  Operators with spin are transformed using
+the same Weyl factor together with the orthonormal-frame rotation induced by
+the coordinate change \(x^\mu=r n^\mu\).
+
+For a general renormalized local operator basis, the map can mix operators
+with the same quantum numbers when local counterterms are changed.  The
+statement used in radial quantization is that, after fixing this basis, the
+correlation functions on the two Weyl-related backgrounds agree:
+\begin{equation}
+  \left\langle
+    \mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
+  \right\rangle_{\R^D}
+  =
+  \left\langle
+    \widetilde{\mathcal O}_1(\tau_1,n_1)\cdots
+    \widetilde{\mathcal O}_n(\tau_n,n_n)
+  \right\rangle_{\R\times S^{D-1}},
+  \label{eq:cylinder-flat-correlator-equivalence}
+\end{equation}
+for separated points \(x_i=\ee^{\tau_i}n_i\), up to the specified local
+curvature and contact terms.
+
 \section{States from Local Operators}
 
 Let \(\mathcal O(0)\) be a local operator inserted at the origin.  In the
@@ -106,6 +293,20 @@ space.  This gives the state-operator map
   \mathcal O\longmapsto\ket{\mathcal O}.
   \label{eq:state-operator-map}
 \end{equation}
+Equivalently, for insertions ordered by cylinder time
+\(\tau_1>\tau_2>\cdots>\tau_n\),
+\begin{equation}
+  \left\langle
+  \mathcal O(0)\mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
+  \right\rangle_{\R^D}
+  =
+  \bra{\Omega}
+  \widetilde{\mathcal O}_1(\tau_1,n_1)\cdots
+  \widetilde{\mathcal O}_n(\tau_n,n_n)
+  \ket{\mathcal O}_{\rm cyl}.
+  \label{eq:state-operator-correlation-formula}
+\end{equation}
+The state \(\ket{\Omega}\) is the ground state on \(S^{D-1}\).
 
 The vacuum state corresponds to the identity operator:
 \[
@@ -115,6 +316,57 @@ Products of local operators inserted at the origin are defined by the
 short-distance operator product expansion and correspond to the corresponding
 states after radial ordering.
 
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      insertion/.style={circle,fill=violet!75!black,inner sep=2pt},
+      sphere/.style={green!45!black,line width=0.9pt},
+      arrow/.style={-{Latex[length=2mm]},thick}
+    }
+    \begin{scope}
+      \node[font=\small] at (0,2.20) {punctured flat space};
+      \draw[thick] (-2.55,-1.55) rectangle (2.55,1.70);
+      \draw[sphere] (0,0) ellipse (1.30 and 0.48);
+      \draw[sphere] (0,0) circle (1.00);
+      \node[insertion] at (0,0) {};
+      \node[violet!75!black,above] at (0,0.12) {\(\mathcal O(0)\)};
+      \node[insertion] at (1.75,-0.92) {};
+      \node[violet!75!black,below left] at (1.75,-0.92) {\(\mathcal O'(x)\)};
+      \draw[blue!65!black,arrow] (0,0)--(0,1.00);
+      \draw[blue!65!black,arrow] (0,0)--(1.15,0.40);
+      \draw[blue!65!black,arrow] (0,0)--(-0.90,-0.35);
+      \node[blue!65!black] at (1.10,0.82) {radial time};
+    \end{scope}
+
+    \draw[arrow] (3.05,0.10)--(4.35,0.10);
+    \node[align=center] at (3.70,0.62) {\(r=\ee^\tau\)\\and Weyl rescale};
+
+    \begin{scope}[shift={(6.95,0)}]
+      \node[font=\small] at (0,2.20) {cylinder};
+      \draw[thick] (-1.45,-1.45)--(-1.45,1.55);
+      \draw[thick] (1.45,-1.45)--(1.45,1.55);
+      \draw[thick] (-1.45,1.55) arc[start angle=180,end angle=360,x radius=1.45,y radius=0.30];
+      \draw[thick,dashed] (-1.45,1.55) arc[start angle=180,end angle=0,x radius=1.45,y radius=0.30];
+      \draw[thick] (-1.45,-1.45) arc[start angle=180,end angle=360,x radius=1.45,y radius=0.30];
+      \draw[thick,dashed] (-1.45,-1.45) arc[start angle=180,end angle=0,x radius=1.45,y radius=0.30];
+      \draw[sphere] (-1.45,-0.35) arc[start angle=180,end angle=360,x radius=1.45,y radius=0.30];
+      \draw[sphere,dashed] (-1.45,-0.35) arc[start angle=180,end angle=0,x radius=1.45,y radius=0.30];
+      \draw[blue!65!black,arrow] (-1.95,-1.35)--(-1.95,1.35);
+      \node[blue!65!black,left] at (-1.95,0.10) {\(\tau\)};
+      \node[violet!75!black] at (-0.85,-1.22) {\(\ket{\mathcal O}\)};
+      \node[violet!75!black] at (0.95,0.92) {\(\widetilde{\mathcal O}'(\tau,\Omega)\)};
+      \node at (0,-1.95) {spatial sphere \(S^{D-1}\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The singular endpoint \(r=0\) of the Weyl map becomes
+  \(\tau=-\infty\) on the cylinder.  A local insertion at the origin therefore
+  prepares a state on the spatial sphere.}
+  \label{fig:state-from-origin-cylinder}
+\end{figure}
+
 \section{Dilatation as the Cylinder Hamiltonian}
 
 The dilatation vector field on \(\R^D\) is
@@ -122,20 +374,20 @@ The dilatation vector field on \(\R^D\) is
   x^\mu\partial_\mu=r\partial_r=\partial_\tau.
 \]
 Therefore the dilatation charge maps to the Hamiltonian generating
-translations in cylinder time.  With Lorentzian cylinder time
+translations in cylinder time.  Let \(\widehat H_{\mathrm{cyl}}\) be defined
+by Euclidean evolution
 \[
-  t=-\ii\tau,
+  \ket{\psi(\tau+a)}
+  =
+  \ee^{-a\widehat H_{\mathrm{cyl}}}\ket{\psi(\tau)} .
 \]
-write the cylinder Hamiltonian as \(\widehat H_{\mathrm{cyl}}\).  The
-corresponding operator relation is
+In radial-quantization conventions the factors of \(\ii\) in the Lorentzian
+Hermitian conformal charges are absorbed, and
 \begin{equation}
-  \widehat D
-  \longleftrightarrow
-  \ii \widehat H_{\mathrm{cyl}}
+  \widehat H_{\mathrm{cyl}}=\widehat D_{\rm rad}.
   \label{eq:dilatation-cylinder-hamiltonian}
 \end{equation}
-in Euclidean conventions, or equivalently the eigenvalue of
-\(\widehat H_{\mathrm{cyl}}\) is the scaling dimension.
+The eigenvalue of \(\widehat H_{\mathrm{cyl}}\) is the scaling dimension.
 
 If \(\mathcal O\) has scaling dimension \(\Delta\), then
 \[
@@ -159,9 +411,9 @@ If \(\mathcal O_\alpha\) transforms in a finite-dimensional spin
 representation with matrices \((S_{\mu\nu})_\alpha{}^\beta\), then a primary
 state obeys
 \[
-  \widehat D\ket{\mathcal O_\alpha}
+  \widehat D_{\rm rad}\ket{\mathcal O_\alpha}
   =
-  \ii\Delta\ket{\mathcal O_\alpha},
+  \Delta\ket{\mathcal O_\alpha},
   \qquad
   \widehat J_{\mu\nu}\ket{\mathcal O_\alpha}
   =
@@ -173,12 +425,11 @@ Translations generate descendants:
 \[
   \widehat P_{\mu_1}\cdots\widehat P_{\mu_n}\ket{\mathcal O}
   \longleftrightarrow
-  \ii^n
   \partial_{\mu_1}\cdots\partial_{\mu_n}\mathcal O(0).
 \]
 The commutator
 \[
-  [\widehat D,\widehat P_\mu]=\ii\widehat P_\mu
+  [\widehat D_{\rm rad},\widehat P_\mu]=\widehat P_\mu
 \]
 shows that each derivative raises the scaling dimension by one.
 
@@ -278,14 +529,39 @@ allowed primary data.
 
 \section{The Free Scalar Check}
 
-For the conformally coupled free scalar on
-\(\R\times S^{D-1}\), the scalar curvature of the unit cylinder is
+Let \(\phi\) be a free massless scalar primary with
 \[
-  R=(D-1)(D-2).
+  \Delta_\phi=\frac{D-2}{2}.
 \]
-With \(\xi_\ast=(D-2)/(4(D-1))\), the conformal mass term is
+The flat action is equivalent, by the Weyl transformation already described
+in Chapter~\ref{ch:volume-iii-stress-tensor-weyl}, to the
+conformally coupled action on the cylinder.  If
 \[
-  m_{\mathrm{cyl}}^2=\xi_\ast R=\frac{(D-2)^2}{4}.
+  \widetilde\phi(\tau,n)=\ee^{\Delta_\phi\tau}\phi(\ee^\tau n),
+\]
+then
+\begin{equation}
+  S_{\rm cyl}[\widetilde\phi]
+  =
+  \frac12\int_{\R\times S^{D-1}}\dd\tau\,\dd\Omega_{D-1}
+  \left[
+    (\partial_\tau\widetilde\phi)^2
+    +
+    \nabla_{S^{D-1}}\widetilde\phi\cdot
+    \nabla_{S^{D-1}}\widetilde\phi
+    +
+    \xi_\ast R_{\rm cyl}\widetilde\phi^2
+  \right].
+  \label{eq:free-scalar-cylinder-action}
+\end{equation}
+Here \(\xi_\ast=(D-2)/(4(D-1))\), and the scalar curvature of the unit
+cylinder is
+\[
+  R_{\rm cyl}=(D-1)(D-2).
+\]
+The conformal mass term is
+\[
+  m_{\mathrm{cyl}}^2=\xi_\ast R_{\rm cyl}=\frac{(D-2)^2}{4}.
 \]
 For a one-particle mode on \(S^{D-1}\) with angular momentum \(\ell\),
 \[
@@ -308,3 +584,74 @@ Modes with \(\ell>0\) correspond to derivative descendants of \(\phi\).  This
 explicit spectrum realizes the state-operator correspondence in a theory where
 all local operators can be built from normal-ordered products of \(\phi\) and
 its derivatives, modulo the equation of motion.
+
+\section{The Operator Partition Function of the Free Scalar}
+
+At a fixed point, it is often useful to count linearly independent local
+operators by their scaling dimension.  Let
+\[
+  Z_{\rm op}(q)=\operatorname{Tr}_{\mathcal V_{\rm loc}}q^{\widehat D_{\rm rad}}
+\]
+be the formal character of the local-operator space.  In the free scalar
+theory, the independent single-letter operators are the symmetric traceless
+derivatives
+\[
+  \partial_{(\mu_1}\cdots\partial_{\mu_\ell)}\phi
+  \quad\text{with traces removed},
+  \qquad
+  \ell=0,1,2,\ldots .
+\]
+The trace removal is the equation of motion \(\partial^2\phi=0\) and all of
+its derivatives.  Counting all symmetric derivatives and subtracting the
+traces gives the single-letter character
+\begin{equation}
+  f_\phi(q)
+  =
+  q^{\frac{D-2}{2}}
+  \frac{1-q^2}{(1-q)^D}.
+  \label{eq:free-scalar-letter-partition}
+\end{equation}
+Equivalently,
+\[
+  f_\phi(q)
+  =
+  q^{\frac{D-2}{2}}
+  \sum_{\ell=0}^\infty d_{\ell,D}q^\ell,
+  \qquad
+  d_{\ell,D}
+  =
+  \binom{D+\ell-1}{\ell}
+  -
+  \binom{D+\ell-3}{\ell-2},
+\]
+with the second binomial interpreted as zero for \(\ell<2\).  These
+\(d_{\ell,D}\) are the dimensions of scalar spherical harmonics of degree
+\(\ell\) on \(S^{D-1}\).
+
+Normal-ordered products of the letters form the bosonic symmetric algebra of
+single-particle letters.  If
+\[
+  f_\phi(q)=\sum_\Delta a_\Delta q^\Delta,
+\]
+then the free scalar operator partition function is
+\begin{equation}
+  Z_{\rm op}^{\phi}(q)
+  =
+  \prod_\Delta
+  \frac1{(1-q^\Delta)^{a_\Delta}}
+  =
+  \exp\left(
+    \sum_{m=1}^{\infty}\frac1m f_\phi(q^m)
+  \right).
+  \label{eq:free-scalar-operator-partition}
+\end{equation}
+For \(D=3\), \(d_{\ell,3}=2\ell+1\), and therefore
+\[
+  f_\phi(q)
+  =
+  \sum_{\ell=0}^{\infty}(2\ell+1)q^{\ell+\frac12}
+  =
+  q^{1/2}\frac{1-q^2}{(1-q)^3}.
+\]
+This is the same counting obtained from the one-particle spectrum of
+\(\widehat H_{\rm cyl}=\sqrt{-\nabla_{S^2}^2+1/4}\) on \(S^2\).

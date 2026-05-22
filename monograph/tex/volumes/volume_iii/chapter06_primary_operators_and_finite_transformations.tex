@@ -19,7 +19,7 @@ conformal primary operator of spin \(\rho\) and scaling dimension
 \(\Delta\) is an operator whose state at the origin obeys
 \begin{equation}
   \widehat K_\mu\ket{\mathcal O_a}=0,\qquad
-  \widehat D\ket{\mathcal O_a}=\ii\Delta\ket{\mathcal O_a},\qquad
+  \widehat D_{\rm rad}\ket{\mathcal O_a}=\Delta\ket{\mathcal O_a},\qquad
   \widehat J_{\mu\nu}\ket{\mathcal O_a}
   =
   -(S_{\mu\nu})_a{}^b\ket{\mathcal O_b}.
@@ -29,19 +29,20 @@ The translation generators create the descendant states:
 \[
   \widehat P_{\mu_1}\cdots\widehat P_{\mu_k}\ket{\mathcal O_a}
   \longleftrightarrow
-  \ii^k\partial_{\mu_1}\cdots\partial_{\mu_k}\mathcal O_a(0).
+  \partial_{\mu_1}\cdots\partial_{\mu_k}\mathcal O_a(0).
 \]
 
-An operator at a general point is obtained by translation from the origin,
+An operator at a general point is obtained by translating the insertion from
+the origin, equivalently by its Taylor expansion in descendants:
 \begin{equation}
   \mathcal O_a(x)
   =
-  \ee^{-\ii x^\mu\widehat P_\mu}
-  \mathcal O_a(0)
-  \ee^{\ii x^\mu\widehat P_\mu},
+  \sum_{k=0}^\infty
+  \frac1{k!}
+  x^{\mu_1}\cdots x^{\mu_k}
+  \partial_{\mu_1}\cdots\partial_{\mu_k}\mathcal O_a(0).
   \label{eq:operator-from-origin-translation}
 \end{equation}
-or equivalently by its Taylor expansion in descendants.
 
 \section{Infinitesimal Action at a General Point}
 
@@ -50,7 +51,7 @@ Let
   \epsilon^\mu(x)
   =
   a^\mu+\omega^\mu{}_\nu x^\nu+\lambda x^\mu
-  +2(b\cdot x)x^\mu-b^\mu x^2
+  +c^\mu x^2-2(c\cdot x)x^\mu
 \]
 be a conformal Killing vector in \(D\ge3\).  Define
 \[
@@ -87,14 +88,14 @@ and
   -\omega^\mu{}_\nu x^\nu\partial_\mu\mathcal O_a(x)
   -\frac12\omega^{\mu\nu}(S_{\mu\nu})_a{}^b\mathcal O_b(x),
   \\
-  \delta_b\mathcal O_a(x)
+  \delta_c\mathcal O_a(x)
   &=
-  -\bigl(2(b\cdot x)x^\mu-b^\mu x^2\bigr)
+  -\bigl(c^\mu x^2-2(c\cdot x)x^\mu\bigr)
   \partial_\mu\mathcal O_a(x)
-  -2\Delta(b\cdot x)\mathcal O_a(x)
+  +2\Delta(c\cdot x)\mathcal O_a(x)
   \notag\\
   &\hspace{2.5em}
-  -2b^\mu x^\nu(S_{\mu\nu})_a{}^b\mathcal O_b(x).
+  +2c^\mu x^\nu(S_{\mu\nu})_a{}^b\mathcal O_b(x).
   \label{eq:primary-sct-transform}
 \end{align}
 These formulae follow from \eqref{eq:primary-state-data},
