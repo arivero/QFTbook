@@ -382,11 +382,89 @@ representation data, to one Weyl spinor together with its conjugate. These
 are statements about local field representations. Particle content is
 determined separately by the spectral and asymptotic data of the theory.
 
+\section{Odd Field Variables and Configuration Superspaces}
+
+There are two distinct meanings of the word ``fermionic field'' in this
+chapter. The operator field \(\widehat\psi_\alpha(x)\) is an
+operator-valued distribution on a \(\mathbb Z_2\)-graded Hilbert space. After
+smearing by test functions, it gives conventional linear operators on a
+common dense domain, with parity \(1\). Its locality property is the
+vanishing of the graded commutator at spacelike separation. This is a
+statement about the local operator algebra.
+
+The variables \(\psi_\alpha(x)\), \(\bar\psi^\alpha(x)\) appearing in a
+fermionic path integral are different objects. In a finite-dimensional
+regularization they are odd coordinates on a supermanifold. Let \(V\) be a
+finite-dimensional complex vector space carrying the cutoff spinor labels,
+including spacetime lattice points, spinor indices, and any internal indices.
+The purely odd affine superspace with those labels is \(\Pi V\). As a
+locally super-ringed space it is
+\[
+  \Pi V=\bigl(\{\ast\},\mathcal O_{\Pi V}\bigr),
+  \qquad
+  \mathcal O_{\Pi V}=\Lambda(V^\vee),
+\]
+where \(V^\vee\) is placed in odd degree. Equivalently, for every
+supercommutative test algebra
+\(R=R_{\overline{0}}\oplus R_{\overline{1}}\), its
+\(R\)-points are
+\[
+  (\Pi V)(R)=R_{\overline{1}}\otimes_{\mathbb C} V .
+\]
+Thus a Grassmann field variable is an odd coordinate in the structure sheaf,
+or equivalently an \(R_{\overline{1}}\)-valued component in the
+functor-of-points description. It is not an ordinary function on spacetime
+and it is not a point of an underlying set of configurations. For independent
+Dirac variables the finite-dimensional configuration superspace is
+\[
+  \Pi(V_\psi\oplus V_{\bar\psi}),
+  \qquad
+  \mathcal O=\Lambda(V_\psi^\vee\oplus V_{\bar\psi}^\vee),
+\]
+with \(\psi\) and \(\bar\psi\) treated as independent odd coordinates until a
+real or adjoint structure is imposed by the operator theory.
+
+If bosonic cutoff fields are present, their configuration space is an
+ordinary affine or smooth space \(B\). Fermionic directions are then encoded
+by an odd vector bundle \(E\to B\), and the corresponding configuration
+supermanifold is the locally super-ringed space
+\[
+  \bigl(B,\mathcal O_B\otimes \Lambda(E^\vee)\bigr)
+\]
+in a local trivialization. This description is the finite-dimensional
+geometric meaning of the formal phrase ``integration over fermionic
+fields.''
+
+Berezin integration is the associated algebraic integration on the
+Berezinian line. For a purely odd coordinate system
+\((\eta_1,\ldots,\eta_N)\), choosing the ordered Berezinian element
+\(\dd\eta_N\cdots\dd\eta_1\) defines the linear functional which extracts the
+coefficient of \(\eta_1\cdots\eta_N\). Under a change of odd coordinates
+\(\eta'=A\eta\), this ordered Berezinian transforms as
+\[
+  \dd\eta'_N\cdots\dd\eta'_1
+  =
+  (\det A)^{-1}\dd\eta_N\cdots\dd\eta_1 .
+\]
+This inverse determinant is the odd part of the Berezinian transformation
+law. The Berezin integral is therefore neither a positive measure nor a
+countably additive Borel measure on a topological space; it is a coordinate
+independent algebraic functional on Berezinian densities. The continuum
+symbol
+\[
+  \int[\dd\bar\psi\,\dd\psi]\;(\cdots)
+\]
+used below denotes a compatible family of such finite-dimensional Berezin
+integrals after a regulator has supplied finitely many odd coordinates. All
+determinants, Pfaffians, source contractions, and fermionic signs in the
+formal continuum notation are inherited from these finite-dimensional
+Berezinian operations.
+
 \section{Classical Grassmann Mechanics and Dirac Brackets}
 
 The finite-dimensional model underlying fermion path integrals is specified
-by its coordinate algebra. Let \(\eta_\alpha\), \(\alpha=1,\ldots,N\), be odd
-generators of a Grassmann algebra,
+by its coordinate superalgebra. Let \(\eta_\alpha\), \(\alpha=1,\ldots,N\),
+be odd generators of a Grassmann algebra,
 \[
   \eta_\alpha\eta_\beta=-\eta_\beta\eta_\alpha,
   \qquad

@@ -30,6 +30,130 @@ In a stable sector \(H\) is bounded below. Spacetime localization is additional
 structure: a local relativistic theory assigns operators or algebras to
 spacetime regions.
 
+\section{Rigged Hilbert Spaces and Continuous Spectra}
+\label{sec:rigged-hilbert-continuous-spectrum}
+
+The Hilbert space contains the normalizable states. The momentum kets, energy
+kets, position kets, and plane-wave scattering states used throughout the
+monograph are generalized vectors. Their precise home is a rigged Hilbert
+space, also called a Gelfand triple.
+
+A rigged Hilbert space consists of a dense subspace \(\Phi\subset\Hilb\),
+equipped with a locally convex topology finer than the Hilbert norm topology,
+together with the continuous inclusions
+\[
+  \Phi\subset\Hilb\subset\Phi^\times .
+\]
+Here \(\Phi^\times\) is the continuous antilinear dual of \(\Phi\). The second
+inclusion sends \(h\in\Hilb\) to the functional
+\[
+  \phi\longmapsto \langle \phi,h\rangle_{\Hilb},
+  \qquad \phi\in\Phi .
+\]
+Thus every Hilbert vector defines a generalized vector, but
+\(\Phi^\times\) is larger than \(\Hilb\). Distributional eigenvectors live in
+\(\Phi^\times\).
+
+The basic model is
+\[
+  \mathcal S(\mathbb R^d)
+  \subset
+  L^2(\mathbb R^d,\dd^d x)
+  \subset
+  \mathcal S'(\mathbb R^d),
+\]
+where \(\mathcal S\) is the Schwartz space and \(\mathcal S'\) is the space
+of tempered distributions. The position and momentum kets are the tempered
+distributions defined by
+\[
+  \langle x|\psi\rangle=\psi(x),
+  \qquad
+  \langle p|\psi\rangle=\widetilde\psi(p),
+  \qquad
+  \psi\in\mathcal S(\mathbb R^d),
+\]
+with the Fourier convention chosen in the relevant chapter. The identities
+\[
+  \langle x|x'\rangle=\delta^{(d)}(x-x'),
+  \qquad
+  \langle p|p'\rangle=(2\pi)^d\delta^{(d)}(p-p'),
+\]
+and
+\[
+  \int\dd^d x\,|x\rangle\langle x|=\mathbf 1,
+  \qquad
+  \int\frac{\dd^d p}{(2\pi)^d}\,|p\rangle\langle p|=\mathbf 1
+\]
+are weak identities: after pairing with test vectors in \(\Phi\) on the left
+and right, they become ordinary identities for functions or distributions.
+
+For a self-adjoint operator \(A\) with spectral measure \(E_A\), a number
+\(\lambda\) is an eigenvalue in the Hilbert-space sense precisely when
+\[
+  E_A(\{\lambda\})\Hilb\ne0 .
+\]
+If \(E_A(\{\lambda\})=0\) but \(\lambda\) lies in the continuous spectrum,
+there is no normalizable eigenvector with that eigenvalue. A generalized
+eigenvector at \(\lambda\) is instead a functional
+\[
+  F_\lambda\in\Phi^\times
+\]
+such that, on a common invariant test domain,
+\[
+  F_\lambda(A\phi)=\lambda F_\lambda(\phi),
+  \qquad
+  \phi\in\Phi .
+\]
+This is the mathematical meaning of a plane wave of sharp momentum or an
+energy eigenstate in a continuous spectrum. It is a distributional object
+used to write kernels. Physical Hilbert vectors are obtained by smearing such
+kernels with square-integrable wave packets.
+
+Equivalently, the spectral theorem may be written as a direct integral
+\[
+  \Hilb
+  \simeq
+  \int_X^\oplus \Hilb_\lambda\,\dd\nu(\lambda),
+  \qquad
+  A
+  =
+  \int_X^\oplus \lambda\,\mathbf 1_{\Hilb_\lambda}\,\dd\nu(\lambda).
+\]
+The label \(\lambda\) indexes fibers over the spectrum. A formal vector
+\(|\lambda,a\rangle\), where \(a\) labels a basis in the fiber
+\(\Hilb_\lambda\), is a distributional coordinate functional on this direct
+integral. Delta-normalization records the kernel of the identity relative to
+the measure \(\dd\nu\). Changing \(\dd\nu\) rescales the generalized kets and
+therefore changes the displayed delta factors; the Hilbert-space vector
+obtained after smearing is unchanged.
+
+For a relativistic one-particle mass shell this gives, for example,
+\[
+  \Phi_1
+  =
+  C_c^\infty(\Sigma_m^+;V)
+  \subset
+  \Hilb_1
+  =
+  L^2(\Sigma_m^+,\dd\mu_m;V)
+  \subset
+  \Phi_1^\times ,
+\]
+where \(V\) is the finite-dimensional little-group representation space. The
+symbol \(|p,\sigma\rangle\) is an element of \(\Phi_1^\times\), and
+\[
+  \langle p,\tau|p',\sigma\rangle
+  =
+  (2\pi)^{D-1}2p^0\,
+  \delta^{D-1}(\vec p-\vec p')
+  \delta_{\tau\sigma}
+\]
+is the distribution kernel for the identity in the covariant mass-shell
+measure. All scattering kernels written later with sharp external momenta
+are to be read in this sense. The wave-packet formulation is the primary
+Hilbert-space statement; the plane-wave formula is the corresponding
+distributional kernel.
+
 \section{Poincare Symmetry}
 
 Let

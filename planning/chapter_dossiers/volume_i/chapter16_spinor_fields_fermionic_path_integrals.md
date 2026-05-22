@@ -48,8 +48,12 @@
 - Gamma matrices obey \(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\).
 - Spinor fields are operator-valued distributions on a common dense domain,
   with a fermion-parity grading.
-- Functional integrals over spinor fields are formal continuum limits of
-  finite-dimensional Grassmann Gaussian integrals.
+- Fermionic path-integral variables are odd coordinates on finite-dimensional
+  configuration superspaces in a regulator, understood as locally
+  super-ringed spaces or through functor-of-points language.
+- Berezin integration is an algebraic functional on Berezinian densities, not
+  a Borel measure; continuum fermionic path integrals are formal regulated
+  limits of finite-dimensional Berezin integrals.
 
 ## Symbols
 
@@ -63,6 +67,9 @@
 | \(\Delta_+\) | positive-frequency scalar two-point distribution |
 | \(P_\pm\) | chiral projectors \((1\pm\gamma_5)/2\) |
 | \(B\) | matrix implementing complex conjugation on gamma matrices |
+| \(\Pi V\) | purely odd affine superspace with structure sheaf \(\Lambda(V^\vee)\) |
+| \(R_{\overline 0}\oplus R_{\overline 1}\) | supercommutative test algebra used for functor-of-points language |
+| \(\operatorname{Ber}\) / Berezinian line | line whose densities are integrated by Berezin integration |
 | \(\Lambda_N\) | Grassmann algebra on \(N\) generators |
 | \(\eta_a,\bar\eta_a\) | finite-dimensional Grassmann generators |
 | \(\chi_a,\pi_a\) | second-class constraints and canonical momenta in finite-dimensional Grassmann mechanics |
@@ -89,6 +96,17 @@
 - The matrix \(B=\gamma_2\) in the displayed gamma basis implements charge
   conjugation, and the Majorana condition is checked directly against
   Lorentz covariance and chirality projection.
+- Fermionic operator fields and fermionic path-integral variables are distinct
+  objects: the former are Hilbert-space operator-valued distributions with
+  graded locality, while the latter are Grassmann-odd coordinates on a
+  supergeometric configuration object.
+- A finite Grassmann field configuration space is a locally super-ringed space,
+  such as \((\{\ast\},\Lambda(V^\vee))\) in the purely odd affine case, and
+  the functor of points assigns \(R_{\overline1}\otimes V\) to a
+  supercommutative test algebra \(R\).
+- Berezin integration extracts the top coefficient relative to an ordered
+  Berezinian element and transforms with the inverse determinant in odd
+  coordinates; it is not a countably additive Borel measure.
 - Finite-dimensional Grassmann first-order mechanics has second-class
   constraints; the Dirac bracket gives
   \(\{\eta_\alpha,\eta_\beta\}_{\mathrm D}
