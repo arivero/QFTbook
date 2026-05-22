@@ -64,6 +64,244 @@ Equivalently,
 \end{equation}
 for fundamental quarks.
 
+\section{Ordinary Covariant-Gauge Green-Function Rules}
+
+The covariant gauge-fixed rules used in ordinary Yang--Mills perturbation
+theory are rules for time-ordered Green functions of the local variables
+\(A_\mu^a,c^a,\bar c^a,q,\bar q\).  Their physical interpretation is supplied
+by the BRST cohomology and by gauge-invariant operators, but the local rules
+themselves are needed for renormalization and for comparing different gauges.
+
+In this section write \(g\) for \(g_{\mathrm{YM}}\), and use the normalization
+\[
+  \mathcal L_{\mathrm{YM}}
+  =
+  -\frac1{4g^2}F^a_{\mu\nu}F^{a\mu\nu},
+  \qquad
+  F^a_{\mu\nu}
+  =
+  \partial_\mu A^a_\nu-\partial_\nu A^a_\mu
+  +f^{bc}{}_{a}A^b_\mu A^c_\nu .
+\]
+The Lorenz gauge condition is
+\[
+  F^a(A)=\partial^\mu A_\mu^a .
+\]
+Under the infinitesimal gauge transformation
+\[
+  \delta_\zeta A_a^\mu
+  =
+  \partial^\mu\zeta_a+f^{bc}{}_{a}A_b^\mu\zeta_c ,
+\]
+the variation of \(F^a(A)\) is
+\[
+  \delta_\zeta F^a(A)
+  =
+  \partial_\mu
+  \left(\partial^\mu\zeta_a+f^{bc}{}_{a}A_b^\mu\zeta_c\right).
+\]
+Replacing the gauge parameter by the ghost \(c_a\), and pairing the gauge
+condition with the antighost \(\bar c^a\), gives the Faddeev--Popov action
+\begin{equation}
+  S_{\mathrm{gh}}
+  =
+  -\int\dd^4x\,
+  \bar c^a\partial_\mu
+  \left(\partial^\mu c_a+f^{bc}{}_{a}A_b^\mu c_c\right).
+  \label{eq:qcd-ordinary-ghost-action}
+\end{equation}
+Equivalently, after integrating by parts and discarding the boundary term,
+\[
+  S_{\mathrm{gh}}
+  =
+  \int\dd^4x\,
+  \partial_\mu\bar c^a
+  \left(\partial^\mu c_a+f^{bc}{}_{a}A_b^\mu c_c\right).
+\]
+The operator is the massless scalar kinetic operator, while the fields are
+Grassmann odd.  With the momentum convention displayed in the figure below,
+\begin{equation}
+  \langle\Omega|
+  \operatorname T\,\widehat{\bar c}^{\,a}(x)\widehat c_b(y)
+  |\Omega\rangle
+  =
+  \delta^a{}_{b}
+  \int\frac{\dd^4k}{(2\pi)^4}
+  \ee^{\ii k\cdot(x-y)}
+  \frac{-\ii}{k^2-\ii\epsilon}.
+  \label{eq:qcd-ordinary-ghost-propagator}
+\end{equation}
+Every closed ghost loop carries the additional factor \(-1\) coming from the
+cyclic permutation of Grassmann-odd fields in the Wick contraction.
+
+The ghost-gluon vertex is read from the term
+\[
+  \int\dd^4x\,
+  \partial_\mu\bar c^a\,f^{bc}{}_{a}A_b^\mu c_c .
+\]
+If the momentum \(k\) is assigned to the antighost line as in
+figure~\ref{fig:qcd-ordinary-covariant-gauge-rules}, the displayed local
+vertex factor is
+\begin{equation}
+  V_{\bar c^a c_c A_b^\mu}(k)
+  =
+  -k_\mu f^{bc}{}_{a}.
+  \label{eq:qcd-ordinary-ghost-gluon-vertex}
+\end{equation}
+Changing the direction of the ghost arrow or the sign convention for incoming
+momenta changes the displayed sign in the corresponding way; the invariant
+object is the action \eqref{eq:qcd-ordinary-ghost-action}.  There is no local
+\(\bar c\,c\,A\,A\) vertex in this Lorenz gauge, because
+\(\partial^\mu D_\mu(A)\) is only linear in \(A_\mu\).
+
+The \(B\)-field form of the gauge-fixing term is
+\[
+  \int\dd^4x\,
+  \left(
+    B^a\partial^\mu A_\mu^a+\frac{g^2\xi}{2}B^aB^a
+  \right).
+\]
+Eliminating \(B^a\) gives
+\begin{equation}
+  S_{\mathrm{gf}}
+  =
+  -\frac1{2g^2\xi}
+  \int\dd^4x\,
+  (\partial^\mu A_\mu^a)(\partial^\nu A_\nu^a).
+  \label{eq:qcd-ordinary-covariant-gauge-term}
+\end{equation}
+The quadratic gauge-field action is then inverted by
+\begin{equation}
+  \langle\Omega|
+  \operatorname T\,\widehat A_{a\mu}(x)\widehat A_{b\nu}(y)
+  |\Omega\rangle
+  =
+  \int\frac{\dd^4k}{(2\pi)^4}
+  \ee^{\ii k\cdot(x-y)}
+  g^2
+  \frac{-\ii\delta_{ab}}{k^2-\ii\epsilon}
+  \left[
+    \eta_{\mu\nu}
+    +(\xi-1)\frac{k_\mu k_\nu}{k^2}
+  \right].
+  \label{eq:qcd-ordinary-gluon-propagator}
+\end{equation}
+The factor \(g^2\) is a consequence of the \(1/g^2\) multiplying the
+Yang--Mills kinetic term in the connection normalization used here.
+
+Expanding \(F^a_{\mu\nu}F^{a\mu\nu}\) gives the cubic and quartic gluon
+self-interactions:
+\begin{align}
+  S_{AAA}
+  &=
+  -\frac1{2g^2}
+  \int\dd^4x\,
+  f^{bc}{}_{a}
+  \bigl(\partial_\mu A^a_\nu-\partial_\nu A^a_\mu\bigr)
+  A_b^\mu A_c^\nu ,
+  \notag\\
+  S_{AAAA}
+  &=
+  -\frac1{4g^2}
+  \int\dd^4x\,
+  f^{bc}{}_{a}f^{de}{}_{a}
+  A_b^\mu A_c^\nu A_{d\mu}A_{e\nu}.
+  \label{eq:qcd-ordinary-gluon-self-interactions}
+\end{align}
+These displayed action terms specify the convention before any momentum-flow
+choice is made for a vertex tensor.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize},
+    ghost/.style={densely dashed,line width=0.75pt},
+    gluon/.style={decorate,decoration={snake,amplitude=1.2pt,segment length=5pt},
+      line width=0.75pt}]
+    \node[font=\small] at (0,3.35)
+      {ordinary Lorenz-gauge Yang--Mills rules for Green functions};
+
+    \begin{scope}[shift={(-5.35,1.45)}]
+      \draw[ghost,-{Latex[length=2mm]}] (-1.45,0)--(1.45,0);
+      \node[left] at (-1.45,0) {\(\bar c^a\)};
+      \node[right] at (1.45,0) {\(c_b\)};
+      \node[blue!70!black] at (0,0.58) {ghost propagator};
+      \node[align=center] at (0,-0.68)
+        {\(\displaystyle
+        \frac{-\ii\delta^a{}_{b}}{k^2-\ii\epsilon}\)};
+    \end{scope}
+
+    \begin{scope}[shift={(0,1.45)}]
+      \coordinate (v) at (0,0);
+      \draw[ghost,-{Latex[length=2mm]}] (-1.55,0)--(v);
+      \draw[ghost,-{Latex[length=2mm]}] (v)--(1.55,0);
+      \draw[gluon] (v)--(0,1.28);
+      \fill (v) circle (2pt);
+      \node[left] at (-1.55,0) {\(\bar c^a\)};
+      \node[right] at (1.55,0) {\(c_c\)};
+      \node[above] at (0,1.30) {\(A_b^\mu\)};
+      \node[blue!70!black] at (-0.82,0.34) {\(k\)};
+      \node[align=center] at (0,-0.75)
+        {\(\displaystyle -k_\mu f^{bc}{}_{a}\)};
+      \node[blue!70!black,align=center] at (1.35,0.83)
+        {ghost-gluon\\vertex};
+    \end{scope}
+
+    \begin{scope}[shift={(5.25,1.45)}]
+      \draw[gluon] (-1.55,0)--(1.55,0);
+      \node[left] at (-1.55,0) {\(A_{a\mu}\)};
+      \node[right] at (1.55,0) {\(A_{b\nu}\)};
+      \node[blue!70!black] at (0,0.58) {gluon propagator};
+      \node[align=center] at (0,-0.78)
+        {\(\displaystyle
+        \frac{-\ii g^2\delta_{ab}}{k^2-\ii\epsilon}
+        \left[
+        \eta_{\mu\nu}+(\xi-1)\frac{k_\mu k_\nu}{k^2}
+        \right]\)};
+    \end{scope}
+
+    \begin{scope}[shift={(-4.8,-1.25)}]
+      \coordinate (v) at (0,0);
+      \draw[ghost] (-1.15,0)--(v)--(1.15,0);
+      \draw[gluon] (v)--(-0.68,1.0);
+      \draw[gluon] (v)--(0.68,1.0);
+      \fill (v) circle (1.8pt);
+      \draw[red!75!black,line width=1pt] (-0.58,-0.42)--(0.58,0.78);
+      \draw[red!75!black,line width=1pt] (-0.58,0.78)--(0.58,-0.42);
+      \node[align=center] at (0,-0.88)
+        {no local \(\bar c c A A\)\\vertex in Lorenz gauge};
+    \end{scope}
+
+    \begin{scope}[shift={(0,-1.25)}]
+      \coordinate (v) at (0,0);
+      \foreach \ang in {90,210,330}
+        \draw[gluon] (v)--++(\ang:1.08);
+      \fill (v) circle (2pt);
+      \node[align=center] at (0,-0.88)
+        {three-gluon term\\from \(S_{AAA}\)};
+    \end{scope}
+
+    \begin{scope}[shift={(4.8,-1.25)}]
+      \coordinate (v) at (0,0);
+      \foreach \ang in {45,135,225,315}
+        \draw[gluon] (v)--++(\ang:1.08);
+      \fill (v) circle (2pt);
+      \node[align=center] at (0,-0.88)
+        {four-gluon term\\from \(S_{AAAA}\)};
+    \end{scope}
+
+    \node[align=center,orange!85!black] at (0,-2.95)
+      {closed ghost loops acquire an extra factor \(-1\)};
+  \end{tikzpicture}
+  }
+  \caption{The ordinary covariant-gauge rules following from the Lorenz
+  Faddeev--Popov action.  Dashed arrows denote the ghost-number flow from
+  antighost to ghost; wavy lines denote gauge fields.  The rules organize
+  gauge-fixed Green functions, while physical state spaces are described by
+  BRST cohomology.}
+  \label{fig:qcd-ordinary-covariant-gauge-rules}
+\end{figure}
+
 \section{Background-Field Derivation of the One-Loop Beta Function}
 
 The coupling in a nonabelian gauge theory is most cleanly extracted from the

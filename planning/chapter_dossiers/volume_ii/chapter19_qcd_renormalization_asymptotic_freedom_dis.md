@@ -28,6 +28,11 @@ The chapter must define and derive:
 - QCD fields \(q^i_{I\alpha}\), color/flavor/spinor indices, and the
   \(SU(N_c)\) group constants \(C_A,T_R,C_R,T_F,C_F\);
 - the renormalized coupling and beta function;
+- the ordinary Lorenz-gauge Faddeev--Popov operator, ghost action, ghost
+  propagator, ghost-loop sign, ghost-gluon vertex, absence of a local
+  \(\bar c c A A\) vertex in Lorenz gauge, covariant-gauge gluon propagator,
+  and cubic/quartic gluon self-interaction terms in the
+  \(-F^2/(4g^2)\) normalization;
 - the background split \(A_\mu=\widetilde A_\mu+a_\mu\);
 - the background covariant derivative and background curvature;
 - the background-field gauge condition \(\widetilde D^\mu a_\mu=0\);
@@ -63,33 +68,41 @@ The chapter must define and derive:
 1. The background-field gauge preserves a gauge symmetry acting on
    \(\widetilde A\), so the dimension-four background effective action is
    proportional to \(\widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}\).
-2. The one-loop determinant ratio follows from Gaussian integration over
+2. The ordinary covariant-gauge Faddeev--Popov action produces scalar
+   kinetic operators for ghosts with Grassmann statistics, no two-gluon ghost
+   seagull in Lorenz gauge, and a gluon propagator multiplied by \(g^2\)
+   because the connection normalization puts \(1/g^2\) in the Yang--Mills
+   kinetic term.
+3. The one-loop determinant ratio follows from Gaussian integration over
    quarks, ghosts, and gauge fluctuations, with Grassmann and bosonic signs
    stated.
-3. A nearly constant background field in a box extracts the logarithmic
+4. A nearly constant background field in a box extracts the logarithmic
    coefficient of the local curvature term; the box size supplies the IR
    scale.
-4. The fermion determinant quartic term completes to
+5. The fermion determinant quartic term completes to
    \(-\frac13\operatorname{tr}_R \widetilde F^2 I_\epsilon\).
-5. The handwritten source gives the ghost coefficient \(1/12\), the vector
+6. The handwritten source gives the ghost coefficient \(1/12\), the vector
    determinant coefficient \(-5/3\), and hence
    \(-\frac12(-5/3)+1/12=11/12\) for the pure-gauge part in the source
    normalization.
-6. Bare-coupling independence in dimensional regularization gives the
+7. Bare-coupling independence in dimensional regularization gives the
    one-loop beta function after \(\lambda^2(\mu)=\mu^\epsilon g^2(\mu)\) is
    introduced.
-7. A perturbative two-loop zero near the upper edge of asymptotic freedom is a
+8. A perturbative two-loop zero near the upper edge of asymptotic freedom is a
    controlled Banks--Zaks fixed-point diagnostic, not a statement about
    ordinary low-flavor QCD.
-8. A rectangular Euclidean Wilson loop extracts the static potential between
+9. A rectangular Euclidean Wilson loop extracts the static potential between
    external color sources; an area law in pure Yang--Mills is a confinement
    diagnostic, while dynamical fundamental matter can break the flux tube.
-9. Colored quark and gluon fields are not physical asymptotic states of QCD;
+10. Colored quark and gluon fields are not physical asymptotic states of QCD;
    physical scattering statements must be formulated in terms of gauge-invariant
    states or controlled high-energy factorization data.
 
 ## Figure Requirements
 
+- Ordinary covariant-gauge rules figure: ghost propagator, ghost-gluon
+  vertex with momentum convention, gluon propagator, absence of the
+  \(\bar c c A A\) vertex, and cubic/quartic gluon self-interactions.
 - Background-field logic figure: split, background covariance, determinant
   ratio, and invariant curvature coefficient.
 - Constant-background box figure showing the IR scale \(L\sim\mu^{-1}\).
@@ -108,6 +121,12 @@ The chapter must define and derive:
   summary as \(1/2\); the handwritten page shows \(1/12\).  The manuscript
   follows the handwritten source and the arithmetic
   \(5/6+1/12=11/12\).
+- The ordinary Lorenz-gauge Feynman-rule block was patched on 2026-05-22.
+  The manuscript uses \(\bar c\) rather than \(b\) for the antighost, records
+  the source's ghost propagator and ghost-gluon momentum convention, and keeps
+  these as Green-function rules rather than colored external-state rules.
+  The repaired figure was rendered against handwritten pages 182--184 on
+  2026-05-22.
 - Do not collapse the beta-function derivation to a final coefficient.  The
   background-field covariance and determinant comparison are part of the
   conceptual content.

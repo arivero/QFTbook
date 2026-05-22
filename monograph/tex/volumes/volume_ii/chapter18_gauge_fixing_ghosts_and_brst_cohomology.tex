@@ -119,25 +119,35 @@ produce the loop contributions required by gauge covariance of the
 renormalized theory.
 
 It is useful to introduce an auxiliary real field \(B^a(x)\), the
-Nakanishi--Lautrup field.  For a real parameter \(\xi\), the gauge-fixing and
-ghost Lagrangian density can be written
+Nakanishi--Lautrup field.  For a real parameter \(\xi\), and for the
+Yang--Mills normalization
+\[
+  \mathcal L_{\mathrm{YM}}
+  =
+  -\frac1{4g_{\mathrm{YM}}^2}F^a_{\mu\nu}F^{a\mu\nu},
+\]
+the gauge-fixing and ghost Lagrangian density can be written
 \begin{equation}
   \mathcal L_{\mathrm{gf+gh}}
   =
   B^a\partial^\mu A_\mu^a
-  +\frac{\xi}{2}B^aB^a
+  +\frac{g_{\mathrm{YM}}^2\xi}{2}B^aB^a
   -\bar c^a\,\partial^\mu D_\mu^{ab}(A)c^b .
   \label{eq:gf-ghost-lagrangian}
 \end{equation}
 Eliminating \(B\) by its algebraic equation of motion gives
 \[
-  B^a=-\frac1{\xi}\partial^\mu A_\mu^a,
+  B^a=-\frac1{g_{\mathrm{YM}}^2\xi}\partial^\mu A_\mu^a,
   \qquad
   \mathcal L_{\mathrm{gf}}
   =
-  -\frac1{2\xi}(\partial^\mu A_\mu^a)(\partial^\nu A_\nu^a),
+  -\frac1{2g_{\mathrm{YM}}^2\xi}
+  (\partial^\mu A_\mu^a)(\partial^\nu A_\nu^a),
 \]
 with the usual limiting interpretation of Landau gauge as \(\xi\to0\).
+Setting \(g_{\mathrm{YM}}=1\), or rescaling the gauge potential to canonical
+quadratic normalization, gives the more common version without the displayed
+factor of \(g_{\mathrm{YM}}^2\) in the \(B^2\) term.
 
 \section{The BRST Differential}
 
@@ -243,7 +253,9 @@ Let
   \Psi
   =
   \int_M
-  \bar c^a\left(\partial^\mu A_\mu^a+\frac{\xi}{2}B^a\right)\dd^D x .
+  \bar c^a\left(
+    \partial^\mu A_\mu^a+\frac{g_{\mathrm{YM}}^2\xi}{2}B^a
+  \right)\dd^D x .
 \]
 Using \eqref{eq:brst-transformations},
 \begin{equation}
@@ -252,7 +264,7 @@ Using \eqref{eq:brst-transformations},
   \int_M
   \left[
   B^a\partial^\mu A_\mu^a
-  +\frac{\xi}{2}B^aB^a
+  +\frac{g_{\mathrm{YM}}^2\xi}{2}B^aB^a
   -\bar c^a\partial^\mu D_\mu^{ab}(A)c^b
   \right]\dd^D x .
   \label{eq:gauge-fixing-fermion}

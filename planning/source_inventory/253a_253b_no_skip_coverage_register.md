@@ -83,7 +83,7 @@ is a gap whenever the source calculation carries conceptual content.
 | pp. 147--156, Wilsonian effective actions and Polchinski flow | mapped after 2026-05-22 source-transcription audit | `volume_ii/chapter16_wilsonian_effective_field_theory.tex` | Smooth cutoff, covariance split, shell integration, Wilson--Polchinski equation, irrelevant-coupling slaving, and continuum-limit construction are present; final certification still requires handwritten figure-level recheck in the compiled PDF. |
 | pp. 157--168, classical Yang--Mills theory and matter | mapped | `volume_ii/chapter17_yang_mills_theory_and_matter_fields.tex` | Check principal-bundle/connection language against source-level formulas. |
 | pp. 169--181, gauge fixing, ghosts, and BRST cohomology | mapped | `volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` | Check BRST nilpotence, gauge-fixing independence, and physical cohomology. |
-| pp. 182--201, YM Feynman rules and one-loop QCD beta function | certified for background-field beta; partial for ordinary YM rules | `volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_and_dis.tex`; `volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` | Background-field determinant coefficients were checked on 2026-05-22; ordinary Lorenz-gauge propagator/ghost/gluon Feynman-rule diagrams still need figure audit. |
+| pp. 182--201, YM Feynman rules and one-loop QCD beta function | certified after ordinary-rule figure audit and background-field beta audit | `volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_and_dis.tex`; `volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` | Background-field determinant coefficients were checked on 2026-05-22.  The ordinary Lorenz-gauge ghost/gluon propagators, ghost-gluon vertex, no \(\bar c c A A\) vertex, \(B\)-field normalization, and cubic/quartic gluon self-interaction diagrams were patched and rendered against handwritten pp. 182--184 on 2026-05-22. |
 | pp. 202--210, Banks--Zaks, confinement expectation, Wilson lines/loops, DIS/OPE | mapped | `volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_and_dis.tex` | Banks--Zaks and Wilson-loop diagnostics were patched in this audit pass; still needs PDF figure-level check before certification. |
 | pp. 211--225, chiral anomalies | mapped | `volume_ii/chapter20_chiral_axial_anomalies.tex` | Check 2D contact-term derivation, contour charge figures, and 4D triangle coefficient. |
 | pp. 226--238, global anomalies and spontaneous symmetry breaking | mapped | `volume_ii/chapter21_global_anomalies_spontaneous_symmetry_breaking_and_pions.tex` | Check finite-anomaly example and Goldstone spectral proof. |
@@ -118,7 +118,7 @@ now.  The following table records what is core-covered and what is deferred.
 | 253b pp. 71--80, generating functionals and 1PI effective action | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter09_generating_functionals_1pi_effective_action.md` |
 | 253b pp. 97--110, 1PI RG | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter12_1pi_renormalization_group.md` |
 | 253b pp. 147--156, Wilsonian effective actions and Polchinski flow | mapped after 2026-05-22 source-transcription audit | `planning/chapter_dossiers/volume_ii/chapter17_wilsonian_effective_actions_polchinski_flow.md` |
-| 253b pp. 182--201, QCD beta function | certified for background-field derivation | `planning/build_audits/2026-05-22_qcd_beta_background_field_derivation.md` |
+| 253b pp. 182--201, QCD beta function | certified after ordinary-rule figure audit and background-field derivation audit | `planning/build_audits/2026-05-22_qcd_beta_background_field_derivation.md`; `planning/build_audits/2026-05-22_ordinary_yang_mills_feynman_rules.md` |
 | 253b pp. 202--210, Banks--Zaks and Wilson-loop diagnostics | mapped after this pass | `planning/chapter_dossiers/volume_ii/chapter19_qcd_renormalization_asymptotic_freedom_dis.md` |
 | 253b pp. 249--257, pion scattering and chiral perturbation theory | mapped after this pass | `planning/chapter_dossiers/volume_ii/chapter21_global_anomalies_ssb_pions.md` |
 
@@ -148,10 +148,9 @@ now.  The following table records what is core-covered and what is deferred.
 
 ## Next Pass
 
-The next page-level audit should work through the remaining `partial` rows
-first, especially the ordinary Lorenz-gauge Yang--Mills Feynman-rule figures,
-then promote `mapped` rows to `certified` only after checking the handwritten
-PDF figures and derivations.
+The next page-level audit should promote `mapped after repair` rows to
+`certified` only after checking the handwritten PDF figures and derivations
+against the compiled PDF.
 For selected 253c, the core-covered material through OPE/crossing should be
 audited now; the projective-lightcone, bootstrap, two-dimensional,
 supersymmetric, and large-\(N\) blocks remain source obligations for later
