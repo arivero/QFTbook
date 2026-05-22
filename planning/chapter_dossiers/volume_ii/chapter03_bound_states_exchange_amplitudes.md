@@ -9,6 +9,9 @@
 - Stops before the unstable-particle/resonance self-energy analysis, which
   belongs to the next chapter.
 - Source material used:
+  - rendered handwritten trace
+    `monograph/tex/build/source_visual_trace/253b_trace-013.png` through
+    `253b_trace-017.png`;
   - `transcription/tex/253b/scattering_rg_qcd.tex`, roughly lines 430--704;
   - Volume II chapters 1--2 for spectral data, connected kernels, and LSZ.
 
@@ -42,6 +45,7 @@
 | \(M_B\) | bound-state mass below threshold |
 | \(k\) | nonrelativistic relative momentum |
 | \(E_{\mathrm{nr}}\) | nonrelativistic energy |
+| \(\mathcal N(E)\) | normalization of delta-normalized two-particle partial-wave states |
 
 ## Claims Established
 
@@ -56,6 +60,18 @@
 - In relativistic partial waves, a stable spin-\(\ell\) state below threshold
   gives a pole in \(\mathcal M_\ell(s)\) or \(S_\ell(s)\) at
   \(s=M_B^2<4m^2\).
+- The partial-wave state normalization is explicitly recorded in the
+  chapter: for identical scalar bosons
+  \(\mathcal N(E)=(2E/(k\omega_1\omega_2))^{1/2}\), only even \(\ell\)
+  occur, and open inelastic channels imply \(|S_\ell(E)|\le1\) for the
+  elastic component.
+- The chapter distinguishes this unordered identical-boson normalization from
+  the ordered \(16\pi\) invariant-amplitude expansion and from
+  distinguishable equal-mass channels, where odd partial waves are present.
+- A scalar-QED photon exchange supplies a channel check for spin assignment:
+  the scalar-antiscalar numerator is proportional to
+  \(4k^2P_1(\cos\theta)\), so the massless pole has \(\ell=1\) residue in
+  that channel.
 - The residue of a bound-state pole factorizes into couplings of the
   bound-state one-particle vector to the external two-particle channel.
 
@@ -67,6 +83,8 @@
   cut.
 - Nonrelativistic \(k\)-plane picture showing bound-state poles on the upper
   imaginary axis.
+- Source-matched short-range potential sketch with incoming/outgoing waves
+  and a decaying bound-state profile.
 - Partial-wave pole diagram relating a two-particle channel to a stable
   one-particle state.
 

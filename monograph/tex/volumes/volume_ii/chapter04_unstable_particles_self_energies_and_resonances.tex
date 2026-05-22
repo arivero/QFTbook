@@ -32,8 +32,10 @@ Assume now
 The value \(s=m_2^2\) lies in the two-\(\phi_1\) scattering region
 \(s\ge4m_1^2\). The relevant scattering problem is therefore a problem with
 stable external \(\phi_1\) states and an open two-particle continuum in the
-same channel as the exchanged \(\phi_2\) line. The pole suggested by the
-tree graph is reorganized by the exact two-point function of \(\phi_2\).
+same channel as the exchanged \(\phi_2\) line. The exact physical-axis
+\(S\)-matrix is a bounded unitary boundary value; the pole suggested by the
+tree graph is the lowest-order expansion of an analytic structure reorganized
+by the exact two-point function of \(\phi_2\).
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.94,
@@ -83,10 +85,16 @@ on the physical upper boundary. Elastic unitarity gives
 \[
   |S_\ell(s)|=1 .
 \]
-Thus the exact physical-axis partial wave is finite. A resonance is the
-corresponding analytic structure: a nearby pole of the continuation of
-\(S_\ell(s)\), or equivalently of \(\mathcal M_\ell(s)\), through the
-threshold cut.
+With inelastic channels included on the same Hilbert space, the elastic
+matrix element instead obeys \(|S_\ell(s)|\le1\). Thus the exact physical-axis
+partial wave is finite. The divergence of
+\(\mathcal M_s^{\mathrm{tree}}\) at \(s=m_2^2\) records that the perturbative
+description has expanded around a stable bare line in a region where the
+state couples to an open decay channel. The exact object is a resonance: a
+nearby pole of the continuation of \(S_\ell(s)\), or equivalently of
+\(\mathcal M_\ell(s)\), through the threshold cut. On the physical sheet the
+same channel is represented by the continuum part of the spectral measure;
+an isolated real mass atom occurs only for a stable one-particle state.
 
 \section{Outgoing Poles in a One-Dimensional Model}
 
@@ -122,9 +130,11 @@ Then
 \]
 The negative imaginary part of \(E_\ast\) is the exponential decay rate of
 the time dependence. The same wave grows in space along the outgoing
-direction, so it is not a normalizable Hilbert-space eigenvector; it is the
-singular vector associated with the pole of the analytically continued
-scattering function.
+direction. This spatial growth is forced by probability conservation for a
+state with only outgoing flux: a uniformly decaying packet cannot also be a
+normalizable stationary eigenvector of a self-adjoint Hamiltonian. The pole
+therefore defines a singular outgoing functional, often called a resonance or
+Gamow vector, associated with the analytically continued scattering function.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.9]

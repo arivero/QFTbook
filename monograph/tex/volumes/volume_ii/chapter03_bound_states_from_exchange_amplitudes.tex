@@ -159,15 +159,50 @@ on the line, where \(V(x)\) is real and decreases sufficiently fast as
 \[
   E_{\mathrm{nr}}=\frac{k^2}{2\mu}.
 \]
-For \(x\to+\infty\), choose the outgoing solution normalized by
+For \(x\to+\infty\), choose incoming and outgoing scattering solutions by
 \[
+  \psi_k^{\mathrm{in}}(x)
+  \sim
+  \ee^{-\ii kx}+S(k)\ee^{\ii kx},
+  \qquad
   \psi_k^{\mathrm{out}}(x)
+  =
+  S(k)^{-1}\psi_k^{\mathrm{in}}(x)
   \sim
   S(k)^{-1}\ee^{-\ii kx}+\ee^{\ii kx}.
 \]
 Here \(S(k)\) is the one-channel scattering function in this normalization.
 
-Analytically continue to \(k=\ii\alpha\), \(\alpha>0\). Then
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \draw[->,line width=0.7pt] (-3.0,0)--(4.1,0) node[right] {\(x\)};
+  \draw[->,line width=0.7pt] (-2.75,-1.5)--(-2.75,2.1)
+    node[above] {\(V(x)\)};
+  \draw[blue!70!black,line width=1.15pt]
+    (-2.55,0.15) .. controls (-2.1,0.1) and (-1.8,-0.12) .. (-1.38,-0.95)
+    .. controls (-0.86,-1.82) and (-0.12,-1.6) .. (0.35,-0.55)
+    .. controls (0.72,0.28) and (1.08,0.52) .. (1.55,0.16)
+    .. controls (2.05,-0.16) and (2.8,0.03) .. (3.55,0.02);
+  \draw[gray!65,line width=0.65pt,dashed] (-2.55,0.72)--(3.55,0.72);
+  \node[gray!60!black,anchor=west,font=\small] at (3.62,0.72)
+    {\(E_{\mathrm{nr}}>0\)};
+  \draw[red!75!black,line width=1.05pt,domain=-1.7:1.8,samples=90]
+    plot (\x,{-0.92+0.58*exp(-1.4*\x*\x)});
+  \node[red!75!black,font=\small] at (2.58,-0.94) {bound wave};
+  \draw[brown!75!black,->,line width=0.85pt] (2.45,1.16)--(3.2,1.16);
+  \node[brown!75!black,font=\small,anchor=west] at (3.27,1.16)
+    {outgoing};
+  \draw[brown!75!black,->,line width=0.85pt] (3.18,1.48)--(2.42,1.48);
+  \node[brown!75!black,font=\small,anchor=east] at (2.35,1.48)
+    {incoming};
+  \node[blue!70!black,font=\small] at (-0.55,-1.32)
+    {short-range potential};
+\end{tikzpicture}
+\end{center}
+
+The analytic continuation is applied to the solution of the differential
+equation after the real-axis scattering normalization has been fixed. For
+\(k=\ii\alpha\), \(\alpha>0\),
 \[
   E_{\mathrm{nr}}=-\frac{\alpha^2}{2\mu},
 \]
@@ -227,12 +262,59 @@ poles on the physical sheet below the cut.
 
 \section{Partial Waves}
 
-For two identical scalar particles of mass \(m\) in four dimensions, write
+For an equal-mass scalar elastic channel in four dimensions, write
 \[
   z=\cos\theta,
   \qquad
   s=E^2 .
 \]
+The underlying partial waves are generalized two-particle asymptotic states.
+In the center-of-mass frame, with the \(\delta\)-normalized sharp-momentum
+basis,
+\[
+  \langle \vec k_1,\vec k_2
+  |E,\vec P=\vec0,\ell,m_\ell\rangle_\delta
+  =
+  \delta^{(3)}(\vec k_1+\vec k_2)\,
+  \delta(\omega_1+\omega_2-E)\,
+  \mathcal N(E)Y_{\ell m_\ell}(\widehat k_1),
+\]
+where
+\[
+  \omega_i=\sqrt{|\vec k_i|^2+m^2},
+  \qquad
+  |\vec k_1|=|\vec k_2|=k,
+  \qquad
+  E=2\sqrt{k^2+m^2}.
+\]
+For identical scalar bosons,
+\[
+  \mathcal N(E)
+  =
+  \left(\frac{2E}{k\,\omega_1\omega_2}\right)^{1/2},
+  \qquad
+  \ell\in2\mathbb Z_{\ge0}.
+\]
+For a distinguishable equal-mass pair, such as a charged scalar and its
+antiparticle, the factor of \(2\) under the square root is absent and both
+even and odd \(\ell\) occur. The ordered-particle invariant amplitude below
+uses the conventional \(16\pi\) normalization; for unordered identical
+bosons, the same physical information is obtained after restricting to the
+Bose-even partial waves with the corresponding identical-particle
+normalization.
+
+Rotational invariance diagonalizes the elastic single-channel matrix element,
+\[
+  |E,\ell,m_\ell\rangle^{\mathrm{in}}
+  =
+  S_\ell(E)|E,\ell,m_\ell\rangle^{\mathrm{out}}
+  \quad
+  \text{in the elastic sector}.
+\]
+When additional channels with the same conserved quantum numbers are open,
+the displayed equation is the elastic component of a larger unitary matrix
+and gives \(|S_\ell(E)|\le1\).
+
 In the elastic region, define partial-wave amplitudes by
 \[
   \mathcal M(s,z)
@@ -292,6 +374,25 @@ below-threshold pole therefore appears in the \(\ell=0\) partial wave. Higher
 spin bound states arise when the pole residue has the angular dependence of
 \(P_\ell(z)\), or more generally the corresponding spin-\(\ell\) tensor
 structure.
+
+The spin carried by a channel pole can be read directly from this angular
+dependence. In scalar electrodynamics, for example, the charged
+scalar-antiscalar annihilation channel has an \(s\)-channel photon exchange
+with numerator proportional to
+\[
+  (p_1-p_2)^\mu(p_3-p_4)_\mu .
+\]
+In the center-of-mass frame this numerator is
+\[
+  4k^2\cos\theta
+  =
+  4k^2P_1(\cos\theta),
+\]
+up to the overall sign fixed by momentum routing and metric conventions. The
+massless pole is therefore an \(\ell=1\) pole in this channel. The invariant
+statement is the pole position and spin-one residue in the scalar-antiscalar
+scattering amplitude; the microscopic description of the corresponding
+one-particle state is additional data of the theory.
 
 \section{Operator Interpretation}
 

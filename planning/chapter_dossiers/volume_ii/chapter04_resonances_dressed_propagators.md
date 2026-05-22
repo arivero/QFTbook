@@ -25,6 +25,11 @@
   cross sections.
 - Volume II Chapters 1--3 for the local notation, scattering kernel
   convention, and below-threshold pole discussion.
+- Rendered handwritten trace
+  `monograph/tex/build/source_visual_trace/253b_trace-017.png` and
+  `253b_trace-018.png` for the above-threshold tree pole, unitarity
+  obstruction, resonance interpretation, and one-dimensional outgoing-wave
+  setup.
 
 ## Definitions and Symbols
 
@@ -57,6 +62,16 @@
 
 - A real-axis tree pole in the open two-particle region is replaced, in the
   dressed amplitude, by a branch cut plus a complex pole on the adjacent sheet.
+- The exact physical-axis partial wave remains bounded by unitarity:
+  \(|S_\ell|=1\) in a one-channel elastic interval and \(|S_\ell|\le1\) for
+  the elastic component of a larger unitary matrix. The tree-level divergence
+  is therefore a perturbative expansion signal, not an exact physical-axis
+  singularity.
+- A one-dimensional outgoing resonance pole is represented by a purely
+  outgoing analytically continued solution. Its time decay and spatial growth
+  are linked by probability conservation; the object is a singular outgoing
+  functional rather than a normalizable eigenvector of the self-adjoint
+  Hamiltonian.
 - The one-loop \(\phi_1\) bubble gives
   \[
     \Sigma^R(k)
