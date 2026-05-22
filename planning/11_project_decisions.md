@@ -71,14 +71,16 @@ Date: 2026-05-21
 
 Date: 2026-05-22
 
-- Xi's stringbook appendices may be used as inspiration, convention checks, and
-  source leads for CFT and supersymmetric field theory.
-- The CFT and supersymmetric QFT volumes must be developed as new,
-  comprehensive QFT monograph treatments, not adapted appendices or a string
-  theory support text.
-- Any stringbook use in CFT or supersymmetry must be recorded in the relevant
-  dossier as a cross-check or seed, with independent definitions, hypotheses,
-  derivations, and external references supplied for the QFT monograph.
+- Xi's stringbook appendices may be used as internal source material,
+  convention checks, examples, and source leads wherever the content is
+  relevant to QFT.
+- The QFT monograph must develop such material in its own framework: no
+  adapted appendix, inherited string-theory context, or unproved physics claim
+  enters without independent definitions, hypotheses, and derivation or an
+  explicit theorem boundary.
+- Any stringbook use must be recorded in the relevant dossier as an internal
+  source, cross-check, or seed, with independent QFT-side definitions,
+  hypotheses, derivations, and external references supplied as needed.
 
 ## Current Implementation Decisions
 

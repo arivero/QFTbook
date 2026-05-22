@@ -5,11 +5,10 @@ Source:
 - `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`
 
 The string book is an adjacent high-value source. It may supply mature
-appendix material, examples, convention checks, and source leads. For CFT and
-supersymmetric field theory it is not an import source in the ordinary sense:
-the QFT monograph must give an entirely new comprehensive development, with
-its own order, definitions, hypotheses, proofs, examples, and external
-reference boundaries.
+appendix material, examples, convention checks, and source leads for any
+QFT-relevant topic. It is not an import source in the ordinary textbook sense:
+the QFT monograph must give an independent development, with its own order,
+definitions, hypotheses, proofs, examples, and external reference boundaries.
 
 The stringbook may inspire what to include and may help detect convention
 conflicts. It must not determine the monograph's exposition, chapter sequence,
@@ -30,15 +29,22 @@ For any string-book import, record:
 - whether figures or diagrams are reused or redrawn;
 - monograph chapter placement.
 
-For CFT and supersymmetric field theory, do not reuse prose or rely on the
-string-theory context as the logical setting.  Rebuild the material as QFT:
-state the local quantum framework, operator or path-integral status, symmetry
-algebra, representation category, and analytic assumptions before using any
+Do not reuse prose or rely on the string-theory context as the logical
+setting. Rebuild the material as QFT: state the local quantum framework,
+operator or path-integral status, symmetry algebra, representation category,
+regularization, and analytic assumptions before using any
 stringbook-motivated formula.
 
 ## Relevant Sections
 
 ### The Path Integral
+
+Consulted source:
+
+- `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
+  section "The path integral", especially the subsections "Path integral
+  formulation of quantum mechanics" and "Path integral with Grassmann-odd
+  field variables".
 
 Potential use:
 
@@ -46,6 +52,9 @@ Potential use:
 - phase-space and configuration-space forms;
 - measure dependence;
 - Grassmann path integrals;
+- bosonic trace as periodic Euclidean boundary condition;
+- fermionic thermal trace as anti-periodic Euclidean boundary condition and
+  supertrace as periodic fermionic boundary condition;
 - semiclassical analysis;
 - instantons, Borel summation, and Lefschetz thimbles.
 
@@ -60,6 +69,15 @@ Likely placement:
 - Volume I path-integral chapters;
 - Volume II perturbation and renormalization;
 - advanced semiclassical appendices.
+
+Current absorption:
+
+- Volume I, Chapter 4 now includes the bosonic Euclidean trace and periodic
+  boundary condition derivation.
+- Volume I, Chapter 16 now includes the coherent-state completeness
+  derivation, ordered finite-dimensional Berezin measure, fermionic thermal
+  trace, anti-periodic boundary condition, and supertrace/periodic boundary
+  condition.
 
 ### Path Integral Quantization Of Gauge Theories
 

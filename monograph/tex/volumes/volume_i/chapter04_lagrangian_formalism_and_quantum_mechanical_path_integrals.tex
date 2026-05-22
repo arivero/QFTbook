@@ -298,6 +298,40 @@ coordinate insertions by differentiation with respect to \(J\). This is the
 finite-dimensional ancestor of QFT generating functionals for Green
 functions.
 
+\section{Euclidean Traces and Periodic Boundary Conditions}
+
+Assume that \(\widehat H\) is semibounded and that
+\(\ee^{-\beta_{\mathrm T}\widehat H/\hbar}\) is trace class for
+\(\beta_{\mathrm T}>0\). The Euclidean thermal trace is
+\[
+  Z(\beta_{\mathrm T})
+  =
+  \operatorname{Tr}_{\Hilb_{\mathcal Q}}
+  \ee^{-\beta_{\mathrm T}\widehat H/\hbar}.
+\]
+Inserting the position resolution of the identity gives
+\[
+  Z(\beta_{\mathrm T})
+  =
+  \int_{\mathbb R^d}\dd^dq_0\,
+  \bra{q_0}
+  \ee^{-\beta_{\mathrm T}\widehat H/\hbar}
+  \ket{q_0}.
+\]
+The same time-sliced construction as above, now with Euclidean time
+\(\tau\in[0,\beta_{\mathrm T}]\), therefore has
+\[
+  q_N=q_0 .
+\]
+Thus the trace of a bosonic quantum-mechanical system is represented by the
+Euclidean path integral over periodic paths
+\[
+  q(\tau+\beta_{\mathrm T})=q(\tau).
+\]
+This conclusion is a statement about the boundary condition produced by the
+trace; the existence and convergence of the resulting continuum measure still
+depend on the same operator and regularization hypotheses stated above.
+
 \section{Vacuum Projection}
 
 Assume \(\widehat H\) has a normalized ground state \(\ket{0}\), with energy

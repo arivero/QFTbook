@@ -33,7 +33,7 @@ Working framework:
   time-evolution/path-integral measure.
 - `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, section
   "The path integral", subsection "Path integral formulation of quantum
-  mechanics".
+  mechanics", including the trace boundary-condition check.
 
 ## External Reference Needs
 
@@ -57,6 +57,7 @@ Working framework:
 | \(S_N\) | discrete phase-space action | regulator |
 | \(G_{ab}(q)\) | positive-definite configuration-space metric | Lagrangian form |
 | \(J(t)\) | external source | generating functional |
+| \(\beta_{\mathrm T}\) | Euclidean inverse temperature in trace kernels | thermal trace |
 
 ## Definition Ledger
 
@@ -64,6 +65,7 @@ Working framework:
 - discrete phase-space action;
 - Lagrangian form after Gaussian momentum integration;
 - source-dependent generating functional at finite cutoff;
+- Euclidean trace boundary condition for bosonic paths;
 - vacuum projection by Euclidean time evolution.
 
 ## Claim Ledger
@@ -74,6 +76,7 @@ Working framework:
 | The continuum path-integral notation is shorthand for a regulator and limiting procedure. | Framework statement | Definition of \(K_N\) and limiting convention |
 | Quadratic momentum dependence yields a Lagrangian form with a determinant measure. | Derivation | Gaussian integration in chapter |
 | Source derivatives generate time-ordered insertions. | Construction | Derived from discrete source insertion |
+| The Euclidean trace of a bosonic quantum-mechanical system identifies the endpoints \(q_N=q_0\), hence produces periodic paths. | Construction | Derived by inserting the position resolution into \(\operatorname{Tr} e^{-\beta_{\mathrm T}\widehat H/\hbar}\) |
 | Euclidean long-time evolution projects onto the ground state under a spectral gap/overlap assumption. | Proposition | Derived from spectral decomposition |
 
 ## Figure Ledger

@@ -203,7 +203,7 @@ field anticommutator is
     \Delta_+(x-y;m^2)-\Delta_+(y-x;m^2)
   \right].
 \]
-The bracketed distribution is the Pauli--Jordan distribution up to the
+The bracketed distribution is the Pauli--Jordan distribution in the
 normalization convention already used for the scalar field. It vanishes at
 spacelike separation. Hence
 \[
@@ -287,6 +287,28 @@ subject to
 \[
   \widehat\chi_\pm=P_\pm\widehat\chi_\pm .
 \]
+In the explicit Clifford basis used in the previous chapter,
+\[
+  \gamma_5
+  =
+  \begin{pmatrix}
+    I_2&0\\0&-I_2
+  \end{pmatrix},
+  \qquad
+  P_+
+  =
+  \begin{pmatrix}
+    I_2&0\\0&0
+  \end{pmatrix},
+  \qquad
+  P_-
+  =
+  \begin{pmatrix}
+    0&0\\0&I_2
+  \end{pmatrix}.
+\]
+Thus a Weyl condition removes two of the four complex Dirac components while
+preserving Lorentz covariance.
 The two chiralities are inequivalent complex representations of
 \(\operatorname{Spin}^+(1,3)\). The Dirac mass term couples them because
 \(\gamma^\mu\) maps one chirality to the other.
@@ -300,7 +322,8 @@ matrix \(B\) is chosen so that
 \]
 Here \( * \) denotes the antilinear operation on spinor components, combined
 with componentwise adjunction when it is applied to operator-valued spinor
-fields. Then
+fields. In the displayed gamma basis one may take \(B=\gamma_2\). Since
+\(\sigma_2^*=-\sigma_2\), this choice obeys the two identities above. Then
 \[
   \widehat\psi^c=B^{-1}\widehat\psi^*
 \]
@@ -309,6 +332,21 @@ field satisfies
 \[
   \widehat\xi=\widehat\xi^c .
 \]
+The covariance check is direct:
+\[
+\begin{aligned}
+  U(\Lambda)\widehat\psi^c(x)U(\Lambda)^{-1}
+  &=
+  B^{-1}
+  \left(R(\Lambda)\widehat\psi(\Lambda x)\right)^*      \\
+  &=
+  B^{-1}BR(\Lambda)B^{-1}\widehat\psi^*(\Lambda x)
+   =
+  R(\Lambda)\widehat\psi^c(\Lambda x).
+\end{aligned}
+\]
+The second identity for \(B\) gives \((\psi^c)^c=\psi\), so the Majorana
+condition is a genuine reality condition on the complex Dirac module.
 If \(\widehat\chi_+=P_+\widehat\chi_+\) is a Weyl field, then
 \[
   \widehat\xi
@@ -321,8 +359,171 @@ is Majorana, and
 \[
   P_+\widehat\xi=\widehat\chi_+ .
 \]
+Indeed \(P_+B^*=B^*P_-^*\), so
+\[
+  P_+B^*\widehat\chi_+^*
+  =
+  B^*P_-^*\widehat\chi_+^*
+  =
+  B^*(P_-\widehat\chi_+)^*
+  =
+  0.
+\]
+Moreover \(B^*\widehat\chi_+^*\) is anti-chiral:
+\[
+  \gamma_5B^*\widehat\chi_+^*
+  =
+  -B^*\gamma_5^*\widehat\chi_+^*
+  =
+  -B^*\widehat\chi_+^* .
+\]
 Thus in four dimensions a Majorana spinor is equivalent, as Lorentz
-representation data, to one Weyl spinor together with its conjugate.
+representation data, to one Weyl spinor together with its conjugate. These
+are statements about local field representations. Particle content is
+determined separately by the spectral and asymptotic data of the theory.
+
+\section{Classical Grassmann Mechanics and Dirac Brackets}
+
+The finite-dimensional model underlying fermion path integrals is specified
+by its coordinate algebra. Let \(\eta_\alpha\), \(\alpha=1,\ldots,N\), be odd
+generators of a Grassmann algebra,
+\[
+  \eta_\alpha\eta_\beta=-\eta_\beta\eta_\alpha,
+  \qquad
+  \eta_\alpha^2=0.
+\]
+Functions of the formal coordinates are elements of this algebra. Consider
+the first-order action
+\[
+  S[\eta]
+  =
+  \int\dd t\,
+  M_{\alpha\beta}\eta_\alpha\dot\eta_\beta,
+  \qquad
+  M_{\alpha\beta}=M_{\beta\alpha},
+\]
+where \(M\) is nondegenerate. The symmetry of \(M\) is compatible with the
+odd nature of the coordinates because integration by parts gives
+\[
+  -\int\dd t\,M_{\alpha\beta}\dot\eta_\alpha\eta_\beta
+  =
+  \int\dd t\,M_{\alpha\beta}\eta_\beta\dot\eta_\alpha .
+\]
+Using the right derivative with respect to \(\dot\eta_\alpha\), the canonical
+momenta are
+\[
+  \pi_\alpha
+  =
+  L\frac{\overleftarrow\partial}{\partial\dot\eta_\alpha}
+  =
+  M_{\alpha\beta}\eta_\beta .
+\]
+Thus the phase-space variables obey primary constraints
+\[
+  \chi_\alpha=\pi_\alpha-M_{\alpha\beta}\eta_\beta=0 .
+\]
+For odd canonical variables use the graded Poisson brackets
+\[
+  \{\eta_\alpha,\eta_\beta\}_{\mathrm P}=0,
+  \qquad
+  \{\pi_\alpha,\pi_\beta\}_{\mathrm P}=0,
+  \qquad
+  \{\eta_\alpha,\pi_\beta\}_{\mathrm P}
+  =
+  \{\pi_\beta,\eta_\alpha\}_{\mathrm P}
+  =
+  \delta_{\alpha\beta}.
+\]
+The constraint matrix is
+\[
+  K_{\alpha\beta}
+  =
+  \{\chi_\alpha,\chi_\beta\}_{\mathrm P}
+  =
+  -2M_{\alpha\beta},
+\]
+so the constraints are second class. The Dirac bracket is
+\[
+  \{f,g\}_{\mathrm D}
+  =
+  \{f,g\}_{\mathrm P}
+  -
+  \{f,\chi_\alpha\}_{\mathrm P}
+  (K^{-1})^{\alpha\beta}
+  \{\chi_\beta,g\}_{\mathrm P}.
+\]
+It makes the constraints identically invisible:
+\[
+  \{f,\chi_\alpha\}_{\mathrm D}=0.
+\]
+For the coordinates themselves,
+\[
+\begin{aligned}
+  \{\eta_\alpha,\eta_\beta\}_{\mathrm D}
+  &=
+  - (K^{-1})_{\alpha\beta}
+   =
+  \frac12(M^{-1})_{\alpha\beta},\\
+  \{\eta_\alpha,\pi_\beta\}_{\mathrm D}
+  &=
+  \frac12\delta_{\alpha\beta}.
+\end{aligned}
+\]
+These are the classical brackets to be quantized.
+
+For \(N=2\), take
+\[
+  S=\int\dd t\,\ii(\eta_1\dot\eta_1+\eta_2\dot\eta_2).
+\]
+Equivalently, with
+\[
+  \eta=\eta_1+\ii\eta_2,
+  \qquad
+  \chi=\eta_1-\ii\eta_2,
+\]
+the difference between
+\(\int\dd t\,\ii(\eta_1\dot\eta_1+\eta_2\dot\eta_2)\) and
+\(\int\dd t\,\ii\chi\dot\eta\) is a total derivative. The endpoint convention
+fixes which representative of the first-order action is used. The Dirac
+brackets are
+\[
+  \{\eta,\chi\}_{\mathrm D}=-\ii,
+  \qquad
+  \{\eta,\eta\}_{\mathrm D}=0=\{\chi,\chi\}_{\mathrm D}.
+\]
+Quantization replaces \(\eta_\alpha\) by operators satisfying
+\[
+  \{\widehat\eta_\alpha,\widehat\eta_\beta\}
+  =
+  \frac{\ii\hbar}{2}(M^{-1})_{\alpha\beta}.
+\]
+In units \(\hbar=1\), the oscillator with
+\[
+  L=\ii\eta_1\dot\eta_1+\ii\eta_2\dot\eta_2-\ii\omega\eta_1\eta_2
+\]
+has Hamiltonian \(H=\ii\omega\eta_1\eta_2\). A minimal representation is
+\[
+  \widehat\eta_1
+  =
+  \frac12
+  \begin{pmatrix}0&1\\1&0\end{pmatrix},
+  \qquad
+  \widehat\eta_2
+  =
+  \frac12
+  \begin{pmatrix}0&-\ii\\ \ii&0\end{pmatrix},
+\]
+so that
+\[
+  \widehat H
+  =
+  \ii\omega\widehat\eta_1\widehat\eta_2
+  =
+  \begin{pmatrix}
+    -\omega/4&0\\0&\omega/4
+  \end{pmatrix}.
+\]
+The finite Grassmann system therefore quantizes to a two-state Hilbert space.
 
 \section{Berezin Calculus}
 
@@ -342,7 +543,10 @@ and \(Y\) are homogeneous, then
   XY=(-1)^{|X||Y|}YX
 \]
 when every generator appearing in \(X\) is distinct from every generator
-appearing in \(Y\).
+appearing in \(Y\). Berezin differentials are treated as odd symbols, so
+\[
+  \eta_a\,\dd\eta_b=-\dd\eta_b\,\eta_a .
+\]
 
 The left derivative \(\partial^L/\partial\eta_a\) is defined by
 \[
@@ -401,6 +605,23 @@ The normalized two-point contraction is
   \langle\eta_a\bar\eta_b\rangle_A
   =
   (A^{-1})_a{}^b .
+\]
+This identity follows from Berezin integration by parts. Since
+\[
+  0=
+  \int[\dd\bar\eta\,\dd\eta]\,
+  \frac{\partial^L}{\partial\bar\eta_b}
+  \left[
+    \bar\eta_c
+    \exp\!\left(-\bar\eta_aA^a{}_d\eta_d\right)
+  \right],
+\]
+the normalized integral obeys
+\[
+  \delta_c{}^b
+  =
+  A^b{}_d
+  \langle\eta_d\bar\eta_c\rangle_A .
 \]
 Higher Gaussian moments are obtained by repeated contractions, with the sign
 determined by the number of odd variables moved past one another to bring a
@@ -462,11 +683,31 @@ It satisfies
 \[
   \langle\!\langle\chi|\eta\rangle=\chi-\eta .
 \]
+It also gives the left action
+\[
+  \langle\!\langle\chi|\widehat\eta
+  =
+  -\chi\,\langle\!\langle\chi| .
+\]
 The resolution of the identity is
 \[
   \int\ket{\eta}\,\dd\eta\,\langle\!\langle\eta|
   =
   \mathbf 1 .
+\]
+The sign in this formula is part of the ordered Berezin convention. Written
+with the differential moved to the left, it is
+\[
+\begin{aligned}
+  \int\ket{\eta}\,\dd\eta\,\langle\!\langle\eta|
+  &=
+  \int\dd\eta\,\ket{-\eta}\,\langle\!\langle\eta|       \\
+  &=
+  \int\dd\eta\,
+  (-\ket{1}\eta+\ket{0})(-\bra{1}+\eta\bra{0})          \\
+  &=
+  \ket{1}\bra{1}+\ket{0}\bra{0}.
+\end{aligned}
 \]
 
 Let
@@ -479,15 +720,47 @@ Insert the coherent-state resolution of identity at times
   \qquad
   t_{n+1}-t_n=\varepsilon=T/N.
 \]
-With \(\eta_0=\eta_i\) and \(\eta_N=\eta_f\), the time-sliced kernel is
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \foreach \x/\lab in {0/{\eta_0},1.8/{\eta_1},3.6/{\eta_2},5.4/{\eta_3},7.2/{\eta_N}} {
+    \fill[black] (\x,0) circle (1.6pt);
+    \node[below] at (\x,-0.03) {\(\lab\)};
+  }
+  \draw[thick] (0,0)--(7.2,0);
+  \draw[->,thick] (7.2,0)--(7.85,0) node[right] {\(t\)};
+  \foreach \x/\lab in {0.9/{\chi_0},2.7/{\chi_1},4.5/{\chi_2},6.3/{\chi_{N-1}}} {
+    \draw[blue!70!black,thick] (\x,-0.16)--(\x,0.16);
+    \node[above,blue!70!black] at (\x,0.16) {\(\lab\)};
+  }
+  \node[below] at (0,-0.45) {\(t_0\)};
+  \node[below] at (7.2,-0.45) {\(t_N\)};
+\end{tikzpicture}
+\end{center}
+The elementary overlap identities are
+\[
+  \langle\!\langle\eta_{n+1}|\eta_n\rangle
+  =
+  -\int\dd\chi_n\,
+  \exp\!\left[-\chi_n(\eta_{n+1}-\eta_n)\right],
+\]
+and
+\[
+  \langle\!\langle\eta_{n+1}|\widehat\chi|\eta_n\rangle
+  =
+  -\int\dd\chi_n\,\chi_n\,
+  \exp\!\left[-\chi_n(\eta_{n+1}-\eta_n)\right].
+\]
+The endpoint convention fixes the signs in these formulas. With
+\(\eta_0=\eta_i\), \(\eta_N=\eta_f\), and the ordered measure displayed
+below, the finite-\(N\) kernel is
 \[
 \begin{aligned}
-  \langle\!\langle\eta_f|U(T)|\eta_i\rangle
-  =
-  \lim_{N\to\infty}
-  \int
-  \prod_{n=0}^{N-1}\dd\chi_n
-  \prod_{n=1}^{N-1}\dd\eta_n\,
+  K_N(\eta_f,T;\eta_i,0)
+  &=
+  -\int
+  \dd\chi_0
+  \prod_{n=1}^{N-1}\dd\eta_n\,\dd\chi_n                 \\
+  &\quad\times
   \exp
   \sum_{n=0}^{N-1}
   \left[
@@ -496,6 +769,15 @@ With \(\eta_0=\eta_i\) and \(\eta_N=\eta_f\), the time-sliced kernel is
   \right].
 \end{aligned}
 \]
+The kernel itself is the continuum limit of these regulated Berezin
+integrals,
+\[
+  \langle\!\langle\eta_f|U(T)|\eta_i\rangle
+  =
+  \lim_{N\to\infty}K_N(\eta_f,T;\eta_i,0),
+\]
+when that limit exists in the chosen topology. Equivalently, the global sign
+may be absorbed into the definition of the ordered finite-dimensional measure.
 The continuum notation for the same construction is
 \[
   \int D\chi\,D\eta\,
@@ -514,6 +796,53 @@ the continuum Grassmann path-integral notation assigns the weight
 \(\ee^{\ii S}\) to the kernel. This expression denotes the limit, when it exists,
 of the finite time-sliced Berezin integrals displayed above; the time-sliced
 expression is the regulated meaning of the notation.
+In this first-order odd system the Hamiltonian and Lagrangian forms coincide:
+\(\chi\) is the odd conjugate variable of \(\eta\), and it remains in the
+first-order action rather than being removed by a nondegenerate even Gaussian
+integration.
+
+\section{Fermionic Traces and Thermal Boundary Conditions}
+
+The trace of a fermionic Hilbert-space operator carries one extra sign from
+the odd coherent-state resolution. For inverse temperature
+\(\beta_{\mathrm T}>0\),
+\[
+\begin{aligned}
+  Z(\beta_{\mathrm T})
+  &=
+  \operatorname{Tr}_{\mathcal H}\ee^{-\beta_{\mathrm T}\widehat H}        \\
+  &=
+  \int
+  \operatorname{Tr}_{\mathcal H}
+  \left(
+    \ket{\eta}\,\dd\eta\,\langle\!\langle\eta|\,
+    \ee^{-\beta_{\mathrm T}\widehat H}
+  \right)                                      \\
+  &=
+  \int\dd\eta\,
+  \langle\!\langle\eta|
+  \ee^{-\beta_{\mathrm T}\widehat H}
+  \ket{-\eta}.
+\end{aligned}
+\]
+The state \(\ket{-\eta}\) appears because moving the odd ket
+\(\ket{\eta}=\ket0+\ket1\eta\) through the odd differential \(\dd\eta\)
+changes the sign of its odd component. After Euclidean time slicing this
+identity becomes the finite-dimensional Berezin integral with boundary
+condition
+\[
+  \eta(\tau+\beta_{\mathrm T})=-\eta(\tau).
+\]
+Thus ordinary thermal traces impose anti-periodic boundary conditions on
+fermionic variables. The supertrace
+\[
+  \operatorname{Tr}_{\mathcal H}
+  \left((-1)^F\ee^{-\beta_{\mathrm T}\widehat H}\right)
+\]
+replaces the final \(\ket{-\eta}\) by \(\ket{\eta}\), and therefore imposes
+periodic fermionic boundary conditions. This distinction is the
+finite-dimensional origin of the spin-structure choice for fermionic fields
+on a Euclidean time circle.
 
 \section{Dirac Functional Integrals and Propagators}
 
@@ -523,6 +852,12 @@ For a classical Grassmann spinor field \(\psi_\alpha(x)\), define
   =
   \bigl(\psi^\dagger(x)\beta\bigr)^\alpha .
 \]
+Here \(\beta=\ii\gamma^0\), so
+\[
+  (\gamma^\mu)^\dagger\beta=-\beta\gamma^\mu .
+\]
+This is the adjoint convention for which \(\bar\psi(\not\partial+m)\psi\)
+is a Lorentz scalar density.
 The free Dirac Lagrangian density in the conventions of this volume is
 \[
   \mathcal L_{\mathrm D}
@@ -532,6 +867,31 @@ The free Dirac Lagrangian density in the conventions of this volume is
 Its Euler--Lagrange equation is
 \[
   (\not\partial+m)\psi=0.
+\]
+The momentum conjugate to \(\psi\), using the right derivative appropriate
+for odd variables, is
+\[
+  \Pi_\psi{}^\alpha
+  =
+  \mathcal L_{\mathrm D}
+  \frac{\overleftarrow\partial}{\partial(\partial_0\psi_\alpha)}
+  =
+  -\bar\psi^\beta(\gamma^0)_\beta{}^\alpha .
+\]
+The equal-time anticommutator computed from the mode expansion in the
+previous chapter,
+\[
+  \{\widehat\psi_\alpha(t,\vec x),
+    \widehat{\bar\psi}^{\beta}(t,\vec y)\}
+  =
+  \ii(\gamma^0)_\alpha{}^\beta\,\delta^{(3)}(\vec x-\vec y),
+\]
+therefore gives the canonical odd bracket
+\[
+  \{\widehat\psi_\alpha(t,\vec x),
+    \widehat\Pi_\psi{}^\beta(t,\vec y)\}
+  =
+  \ii\delta_\alpha{}^\beta\,\delta^{(3)}(\vec x-\vec y).
 \]
 The formal Lorentzian generating functional is normalized so that
 \[
@@ -566,6 +926,16 @@ function is
   \}
   |\Omega\rangle .
 \]
+Charge conservation gives
+\[
+  \langle\Omega|\operatorname T\{
+    \widehat\psi_\alpha(x)\widehat\psi_\beta(y)\}|\Omega\rangle=0,
+  \qquad
+  \langle\Omega|\operatorname T\{
+    \widehat{\bar\psi}^{\alpha}(x)
+    \widehat{\bar\psi}^{\beta}(y)\}|\Omega\rangle=0
+\]
+for the free charged Dirac field.
 It is the Feynman inverse of \(\not\partial+m\):
 \[
   S_F(x;m)
@@ -596,8 +966,33 @@ Let an interacting theory have a global \(U(1)\) charge \(\widehat Q\), a
 vacuum satisfying \(\widehat Q\Omega=0\), and an isolated massive
 spin-\(\frac12\) one-particle sector of mass \(m\) and charge \(+1\). Let
 \(\widehat\psi_\alpha\) be a local spinor field of charge \(+1\) with nonzero
-overlap with this sector. After choosing the phase of one-particle states,
-write
+overlap with this sector:
+\[
+  [\widehat Q,\widehat\psi_\alpha]=\widehat\psi_\alpha,
+  \qquad
+  [\widehat Q,\widehat{\bar\psi}^{\alpha}]
+  =
+  -\widehat{\bar\psi}^{\alpha}.
+\]
+In the delta-normalized one-particle convention, Lorentz covariance permits
+the matrix element
+\[
+  \langle\vec p,\sigma,+|\widehat\psi_\alpha(x)|\Omega\rangle
+  =
+  \frac{\ee^{-\ii p\cdot x}}{(2\pi)^{3/2}}
+  \left[
+    Z_v^{1/2}\mathcal V_\alpha^\sigma(p)
+    +
+    Z_u^{1/2}\mathcal U_\alpha^\sigma(p)
+  \right],
+\]
+where \(\mathcal U,\mathcal V\) are the two massive spinor intertwiners
+constructed from the one-particle representation. A constant local
+redefinition inside the span of \(\psi\) and \(\gamma_5\psi\), together with a
+phase convention for one-particle states, chooses an interpolating field whose
+isolated pole residue is proportional to one chosen intertwiner. After making
+that choice and passing to the covariant one-particle normalization used in
+the LSZ formulas, write
 \[
   \langle\vec p,\sigma,+|\widehat\psi_\alpha(x)|\Omega\rangle
   =
@@ -616,6 +1011,38 @@ sector,
   \ee^{-\ii p\cdot x}\bar u^{\sigma,\alpha}(p),
 \]
 with the same pole residue after the phase convention is fixed.
+The equality of residues is a locality condition on the isolated pole.
+Indeed the one-particle contribution to the vacuum anticommutator has the
+form
+\[
+\begin{aligned}
+  C_\alpha{}^\beta(x-y)
+  &=
+  \sum_\sigma\int\dd\Pi_p\,
+  \bigl[
+    Z_\psi\,
+    \ee^{-\ii p\cdot(x-y)}
+    v_\alpha^\sigma(p)\bar v^{\sigma,\beta}(p)  \\
+  &\hspace{3.2cm}
+    +
+    Z_{\bar\psi}\,
+    \ee^{\ii p\cdot(x-y)}
+    u_\alpha^\sigma(p)\bar u^{\sigma,\beta}(p)
+  \bigr].
+\end{aligned}
+\]
+The spin sums of the preceding chapter convert this to
+\[
+  C_\alpha{}^\beta(x-y)
+  =
+  Z_\psi(-\not\partial_x+m)_\alpha{}^\beta
+  \Delta(x-y;m^2)
+\]
+precisely when \(Z_{\bar\psi}=Z_\psi\). Here \(\Delta\) is the scalar
+Pauli--Jordan distribution, hence the pole contribution has support in the
+closed light cone. The positive- and negative-frequency terms separately do
+not have this support property, so the equality of residues is fixed by
+locality and the chosen normalization.
 
 The time-ordered two-point function then has the one-particle pole
 \[
@@ -641,7 +1068,35 @@ isolated one-particle mass shell. In momentum space the pole term is
 
 Spinorial LSZ reduction applies the same Haag--Ruelle and pole-extraction
 logic as the scalar case. The difference is that the residue has spinor
-indices. Amputation of an external spinor leg therefore consists of:
+indices. With Fourier transform convention
+\[
+  F(k)=\int\dd^4x\,\ee^{\ii k\cdot x}F(x),
+\]
+the pole assignments are:
+\[
+\renewcommand{\arraystretch}{1.25}
+\begin{array}{c|c|c}
+  \text{field insertion} & \text{mass-shell limit}
+  & \text{external one-particle state and residue} \\ \hline
+  \widehat{\bar\psi}^{\alpha}(k)
+  & k^0\to+\omega_{\vec k}
+  & \text{outgoing charge }+,\quad
+    Z_\psi^{1/2}\bar v^{\sigma,\alpha}(k)\\
+  \widehat{\bar\psi}^{\alpha}(k)
+  & k^0\to-\omega_{\vec k}
+  & \text{incoming charge }-,\quad
+    Z_\psi^{1/2}\bar u^{\sigma,\alpha}(k)\\
+  \widehat\psi_\alpha(k)
+  & k^0\to+\omega_{\vec k}
+  & \text{outgoing charge }-,\quad
+    Z_\psi^{1/2}u_\alpha^\sigma(k)\\
+  \widehat\psi_\alpha(k)
+  & k^0\to-\omega_{\vec k}
+  & \text{incoming charge }+,\quad
+    Z_\psi^{1/2}v_\alpha^\sigma(k).
+\end{array}
+\]
+Thus amputation of an external spinor leg consists of:
 \[
   \text{multiply by }(k^2+m^2),\qquad
   \text{take }k^0\to\omega_{\vec k},\qquad
@@ -651,6 +1106,121 @@ with the choice of \(u\) or \(v\) determined by the external charge and by
 whether the particle is incoming or outgoing. Thus external spinor factors in
 perturbative scattering are the one-particle pole intertwiners of local
 spinor fields.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.9]
+  \node[draw,ellipse,minimum width=1.3cm,minimum height=0.85cm] (G1) at (0,0) {\(G\)};
+  \node[draw,circle,minimum size=0.78cm] (S1) at (4.5,0) {\(S\)};
+  \draw[->,thick] (-1.35,0)--(G1.west)
+    node[midway,above] {\(\bar\psi^\alpha(k)\)};
+  \draw[->,thick] (G1.east)--(S1.west)
+    node[midway,above] {\((k^2+m^2)\)};
+  \draw[->,thick] (S1.east)--(5.9,0)
+    node[midway,above] {\(\bar v^{\sigma,\alpha}\)};
+  \node[below] at (2.25,-0.45) {\(k^0\to+\omega_{\vec k}\)};
+
+  \node[draw,ellipse,minimum width=1.3cm,minimum height=0.85cm] (G2) at (0,-2.0) {\(G\)};
+  \node[draw,circle,minimum size=0.78cm] (S2) at (4.5,-2.0) {\(S\)};
+  \draw[->,thick] (-1.35,-2.0)--(G2.west)
+    node[midway,above] {\(\psi_\alpha(k)\)};
+  \draw[->,thick] (G2.east)--(S2.west)
+    node[midway,above] {\((k^2+m^2)\)};
+  \draw[->,thick] (S2.east)--(5.9,-2.0)
+    node[midway,above] {\(u^\sigma_\alpha\)};
+  \node[below] at (2.25,-2.45) {\(k^0\to+\omega_{\vec k}\)};
+\end{tikzpicture}
+\end{center}
+
+\section{A First Fermionic Vertex}
+
+At this point the S-matrix has already been defined through asymptotic
+one-particle states, and LSZ has related its matrix elements to pole
+residues of time-ordered Green functions. Perturbation theory now enters as a
+method for computing those Green functions. Consider
+\[
+  \mathcal L
+  =
+  -\bar\psi(\not\partial+m)\psi
+  -
+  \frac g2(\bar\psi\psi)^2 .
+\]
+To first order in \(g\), the connected four-point function has one local
+vertex. With all propagators oriented from \(\psi\) to \(\bar\psi\), the
+spinor-index kernel of the vertex is
+\[
+  K_{\alpha\beta}{}^{\gamma\delta}
+  =
+  \ii g\,
+  \left(
+    \delta_\alpha{}^\gamma\delta_\beta{}^\delta
+    -
+    \delta_\alpha{}^\delta\delta_\beta{}^\gamma
+  \right).
+\]
+The two terms are the direct and exchange contractions. Their relative sign
+is the sign obtained by moving odd fields through one another before applying
+the Gaussian contraction.
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \node[fill=black,circle,inner sep=2pt] (v1) at (0,0) {};
+  \coordinate (a1) at (-1.7,0.85);
+  \coordinate (a2) at (-1.7,-0.85);
+  \coordinate (b1) at (1.7,0.85);
+  \coordinate (b2) at (1.7,-0.85);
+  \draw[->,thick] (a1)--(v1);
+  \draw[->,thick] (a2)--(v1);
+  \draw[->,thick] (v1)--(b1);
+  \draw[->,thick] (v1)--(b2);
+  \node[left] at (a1) {\(\alpha\)};
+  \node[left] at (a2) {\(\beta\)};
+  \node[right] at (b1) {\(\gamma\)};
+  \node[right] at (b2) {\(\delta\)};
+  \node[below] at (0,-1.25) {\(+\,\ii g\,\delta_\alpha{}^\gamma\delta_\beta{}^\delta\)};
+
+  \node[fill=black,circle,inner sep=2pt] (v2) at (5.2,0) {};
+  \coordinate (c1) at (3.5,0.85);
+  \coordinate (c2) at (3.5,-0.85);
+  \coordinate (d1) at (6.9,0.85);
+  \coordinate (d2) at (6.9,-0.85);
+  \draw[->,thick] (c1)--(v2);
+  \draw[->,thick] (c2)--(v2);
+  \draw[->,thick] (v2)--(d2);
+  \draw[->,thick] (v2)--(d1);
+  \node[left] at (c1) {\(\alpha\)};
+  \node[left] at (c2) {\(\beta\)};
+  \node[right] at (d1) {\(\gamma\)};
+  \node[right] at (d2) {\(\delta\)};
+  \node[below] at (5.2,-1.25) {\(-\,\ii g\,\delta_\alpha{}^\delta\delta_\beta{}^\gamma\)};
+\end{tikzpicture}
+\end{center}
+
+For external spinors \(\zeta_i\) selected by the LSZ table, the corresponding
+tree-level four-fermion amplitude has the index contraction
+\[
+  \mathcal M
+  =
+  \bar\zeta_3{}^\gamma\bar\zeta_4{}^\delta\,
+  K_{\alpha\beta}{}^{\gamma\delta}\,
+  \zeta_1^\alpha\zeta_2^\beta .
+\]
+For two identical incoming and two identical outgoing charge-\(+\) particles
+this reads
+\[
+  \mathcal M
+  =
+  \ii g
+  \left[
+    (\bar\zeta_3\zeta_1)(\bar\zeta_4\zeta_2)
+    -
+    (\bar\zeta_4\zeta_1)(\bar\zeta_3\zeta_2)
+  \right],
+\]
+with \(\zeta_i\) replaced by the charge and in/out spinors appropriate to the
+chosen process. This example is the elementary template for fermionic
+Feynman diagrams: every vertex has a local index tensor, every internal line
+is the time-ordered two-point function, and every exchange of odd fields
+contributes its parity sign.
 
 The next chapter turns to massless particles. The logical input will again be
 the one-particle representation theory, now with the massless little group and
