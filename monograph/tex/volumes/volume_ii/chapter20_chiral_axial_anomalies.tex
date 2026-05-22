@@ -43,6 +43,350 @@ Lagrangian.  Quantum mechanically, the vector transformation is preserved
 when it is gauged consistently, while the axial current acquires a local
 divergence determined by the gauge background.
 
+\section{A Two-Dimensional Contact-Term Calculation}
+
+The local origin of an axial anomaly is already visible in a free
+two-dimensional Dirac fermion.  Use the Lorentzian action
+\[
+  S_2=-\int\dd^2x\,\bar\psi\gamma^\mu\partial_\mu\psi,
+  \qquad
+  \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},
+  \qquad
+  \bar\psi=\ii\psi^\dagger\gamma^0,
+\]
+and define
+\[
+  \gamma:=\gamma^0\gamma^1,
+  \qquad
+  \gamma^2=1,
+  \qquad
+  j^\mu=\ii\bar\psi\gamma^\mu\psi,
+  \qquad
+  j_A^\mu=\ii\bar\psi\gamma^\mu\gamma\psi .
+\]
+The classical massless action is invariant under
+\(\psi\mapsto \ee^{\ii\alpha}\psi\) and under
+\(\psi\mapsto\ee^{\ii\beta\gamma}\psi\).  The quantum question is the
+renormalized Ward identity obeyed by time-ordered current products.  Consider
+\[
+  G_A^{\mu\nu}(x)
+  :=
+  \langle\Omega|
+  \operatorname T\,j_A^\mu(x)j^\nu(0)
+  |\Omega\rangle .
+\]
+At one loop the relevant momentum-space graph is
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=1.0,baseline={(0,-0.2)},
+    fermion/.style={line width=0.75pt},
+    current/.style={circle,fill=black,inner sep=1.7pt}]
+    \coordinate (L) at (-1.45,0);
+    \coordinate (R) at (1.45,0);
+    \draw[fermion,->] (L) to[bend left=55] node[above] {\(p+k\)} (R);
+    \draw[fermion,->] (R) to[bend left=55] node[below] {\(k\)} (L);
+    \draw[fermion,->] (-2.6,0) -- (L);
+    \draw[fermion,->] (R) -- (2.6,0);
+    \node[current,label=below:\(\gamma^\mu\gamma\)] at (L) {};
+    \node[current,label=below:\(\gamma^\nu\)] at (R) {};
+    \node[left] at (-2.6,0) {\(p\)};
+  \end{tikzpicture}
+  \caption{The two-dimensional current two-point function.  The left insertion
+  is the axial current and the right insertion is the vector current.}
+  \label{fig:two-dimensional-axial-vector-loop}
+\end{figure}
+\[
+  -\int\frac{\dd^2k}{(2\pi)^2}\,
+  \frac{
+    \operatorname{tr}\!\left[
+      \ii\gamma^\nu(\not p+\not k)
+      \ii\gamma^\mu\gamma\,\not k
+    \right]
+  }{(k^2-\ii\epsilon)((p+k)^2-\ii\epsilon)} .
+\]
+Contracting with \(p_\mu\), Feynman parametrizing, and shifting
+\(k\mapsto k-xp\) gives
+\begin{align}
+  \int\dd^2x\,\ee^{-\ii p\cdot x}
+  \partial_\mu G_A^{\mu\nu}(x)
+  &=
+  \ii\int_0^1\dd x
+  \int\frac{\dd^2k}{(2\pi)^2}\,
+  \frac{
+    \operatorname{tr}(\gamma^\nu\not k\,\not p\,\gamma\,\not k)
+    -x(1-x)p^2
+    \operatorname{tr}(\gamma^\nu\gamma\not p)
+  }{(k^2+p^2x(1-x)-\ii\epsilon)^2}.
+  \label{eq:two-dimensional-anomaly-shifted-integral}
+\end{align}
+The expression is a contact term, so its value depends on the regulator used
+to define the composite current.  Continue the loop momentum to
+\(D=2-\epsilon\) dimensions while keeping the chirality matrix
+\(\gamma=\gamma^0\gamma^1\) two-dimensional.  Rotational averaging gives
+\[
+  \operatorname{tr}(\gamma^\nu\not k\,\not p\,\gamma\,\not k)
+  \longmapsto
+  \frac{k^2}{D}
+  \operatorname{tr}(\gamma^\nu\gamma_\rho\not p\,\gamma\,\gamma^\rho)
+  =
+  \frac{2-D}{D}k^2
+  \operatorname{tr}(\gamma^\nu\not p\,\gamma).
+\]
+The factor \(2-D=\epsilon\) multiplies the logarithmic divergence of the loop
+integral and leaves a finite local term.  With
+\(\operatorname{tr}(\gamma^\nu\gamma\not p)=2\epsilon^{\mu\nu}p_\mu\), one
+finds
+\[
+  \int\dd^2x\,\ee^{-\ii p\cdot x}
+  \partial_\mu G_A^{\mu\nu}(x)
+  =
+  -\frac1{\pi}\epsilon^{\mu\nu}p_\mu .
+\]
+Equivalently,
+\begin{equation}
+  \partial_\mu
+  \langle\Omega|
+  \operatorname T\,j_A^\mu(x)j^\nu(y)
+  |\Omega\rangle
+  =
+  \frac{\ii}{\pi}\epsilon^{\mu\nu}
+  \partial_\mu\delta^{(2)}(x-y),
+  \label{eq:two-dimensional-axial-vector-contact-term}
+\end{equation}
+whereas the vector Ward identity is preserved:
+\[
+  \partial_\mu
+  \langle\Omega|
+  \operatorname T\,j^\mu(x)j^\nu(y)
+  |\Omega\rangle
+  =0 .
+\]
+
+Now couple the vector current to a background \(U(1)\) gauge field,
+\[
+  D_\mu=\partial_\mu-\ii A_\mu,
+  \qquad
+  \Delta S=\int\dd^2x\,j^\mu A_\mu .
+\]
+Expanding time-ordered correlators in powers of \(A\), the first-order term in
+\eqref{eq:two-dimensional-axial-vector-contact-term} gives the local operator
+identity
+\begin{equation}
+  \partial_\mu j_A^\mu(x)
+  =
+  \frac1{2\pi}\epsilon^{\mu\nu}F_{\mu\nu}(x),
+  \qquad
+  F_{\mu\nu}:=\partial_\mu A_\nu-\partial_\nu A_\mu .
+  \label{eq:two-dimensional-axial-anomaly}
+\end{equation}
+Thus the anomaly is already present before any interaction among the fermions:
+it is the finite remnant of a regulated contact term in a composite-current
+Ward identity.
+
+\section{Contour Charges and Anomalous Charge Transport}
+
+The contact term has a geometric interpretation.  In Euclidean two-space, a
+conserved current \(j^\mu\) defines a charge on a closed contour \(C\),
+\[
+  Q_C=\int_C j^\mu n_\mu\,\dd s ,
+\]
+where \(n_\mu\) is the outward unit normal to the contour.  If
+\(\partial_\mu j^\mu=0\) away from operator insertions, the contour can be
+deformed through regions with no insertions.  For two local operators this is
+represented by
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.95,baseline={(0,-0.15)}]
+    \draw[thick] (-2.2,-1.15) rectangle (2.2,1.15);
+    \node at (-1.25,0.2) {\(\mathcal O_1\)};
+    \node at (1.15,-0.1) {\(\mathcal O_2\)};
+    \draw[blue!70!black,thick,->] (-1.25,0.2) ellipse (0.45 and 0.32);
+    \draw[blue!70!black,thick,->] (1.15,-0.1) ellipse (0.45 and 0.32);
+    \draw[purple!70!black,thick,->] (0,0) ellipse (1.95 and 0.88);
+    \node[blue!70!black] at (-1.25,-0.55) {\(C_1\)};
+    \node[blue!70!black] at (1.15,-0.75) {\(C_2\)};
+    \node[purple!70!black] at (0,1.42) {\(C\)};
+    \node at (0,-1.55) {\(\displaystyle \int_D\partial_\mu j^\mu\,\dd^2x=0\)};
+  \end{tikzpicture}
+  \caption{For a conserved current, the charge contour can be moved from small
+  circles around operator insertions to a larger contour without changing the
+  insertion.}
+  \label{fig:conserved-contour-charge-deformation}
+\end{figure}
+If \(C\) encloses all insertions and can be moved to infinity, the ordinary
+global transformation leaves the correlation function invariant.
+
+For the anomalous axial current the small contour still gives the local action
+of the axial rotation on an operator.  The difference between the charge on a
+large contour and the sum of charges on small contours is the flux of the
+anomaly through the interpolating domain \(D\):
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.95,baseline={(0,-0.15)}]
+    \draw[thick] (-2.3,-1.25) rectangle (2.3,1.25);
+    \draw[purple!70!black,thick,->] (0,0) ellipse (2.0 and 1.0);
+    \draw[blue!70!black,thick,->] (-0.9,0.25) ellipse (0.38 and 0.28);
+    \draw[blue!70!black,thick,->] (0.85,-0.25) ellipse (0.38 and 0.28);
+    \node at (-0.9,0.25) {\(\mathcal O_1\)};
+    \node at (0.85,-0.25) {\(\mathcal O_2\)};
+    \node[purple!70!black] at (1.7,1.05) {\(C_\infty\)};
+    \node[blue!70!black] at (-1.35,-0.15) {\(C_1\)};
+    \node[blue!70!black] at (1.3,-0.65) {\(C_2\)};
+    \node at (0,0.78) {\(D\)};
+  \end{tikzpicture}
+  \caption{For the axial current in a background field, deforming the contour
+  across the domain \(D\) changes the charge by the integral of the anomalous
+  divergence.}
+  \label{fig:anomalous-contour-charge-deformation}
+\end{figure}
+Using \eqref{eq:two-dimensional-axial-anomaly},
+\begin{equation}
+  \Delta Q_A
+  =
+  Q_{A,C_\infty}-\sum_iQ_{A,C_i}
+  =
+  \int_D\dd^2x\,\partial_\mu j_A^\mu
+  =
+  \frac1{2\pi}\int_D\dd^2x\,
+  \epsilon^{\mu\nu}F_{\mu\nu}.
+  \label{eq:two-dimensional-anomalous-charge-shift}
+\end{equation}
+Therefore an axial rotation by \(\alpha\) multiplies the correlation function
+by the background-dependent phase
+\[
+  \exp(\ii\alpha\Delta Q_A).
+\]
+Equivalently, in the background-field effective action the transformation
+shifts the action by
+\[
+  \Delta S
+  =
+  \frac{\alpha}{2\pi}\int\dd^2x\,
+  \epsilon^{\mu\nu}F_{\mu\nu}.
+\]
+
+\section{The Four-Dimensional Triangle Contact Term}
+
+The four-dimensional axial anomaly is produced by an analogous regulated
+contact term with one higher short-distance singularity.  For a massless
+Dirac fermion, study
+\[
+  \langle\Omega|
+  \operatorname T\,j_5^\mu(x)j^\nu(y)j^\rho(z)
+  |\Omega\rangle .
+\]
+There are two oriented triangle graphs:
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,scale=0.92,baseline={(0,-0.2)},
+    fermion/.style={line width=0.75pt},
+    current/.style={circle,fill=black,inner sep=1.7pt}]
+    \coordinate (A) at (-1.15,-0.85);
+    \coordinate (B) at (1.15,-0.85);
+    \coordinate (C) at (0,1.05);
+    \draw[fermion,->] (A) -- node[below] {\(\ell+p\)} (B);
+    \draw[fermion,->] (B) -- node[right] {\(\ell-k\)} (C);
+    \draw[fermion,->] (C) -- node[left] {\(\ell\)} (A);
+    \draw[fermion,->] (-2.25,-0.85) -- (A);
+    \draw[fermion,->] (B) -- (2.25,-0.85);
+    \draw[fermion,->] (C) -- (0,2.05);
+    \node[current,label=below:\(j_5^\mu\)] at (A) {};
+    \node[current,label=below:\(j^\rho\)] at (B) {};
+    \node[current,label=right:\(j^\nu\)] at (C) {};
+    \node[left] at (-2.25,-0.85) {\(p\)};
+    \node[below right] at (2.25,-0.85) {\(-p-k\)};
+    \node[above] at (0,2.05) {\(k\)};
+    \node at (2.85,0) {\(+\)};
+    \begin{scope}[xshift=6.2cm]
+      \coordinate (A2) at (-1.15,-0.85);
+      \coordinate (B2) at (1.15,-0.85);
+      \coordinate (C2) at (0,1.05);
+      \draw[fermion,->] (B2) -- node[below] {\(\ell\)} (A2);
+      \draw[fermion,->] (A2) -- node[left] {\(\ell+p\)} (C2);
+      \draw[fermion,->] (C2) -- node[right] {\(\ell+p+k\)} (B2);
+      \draw[fermion,->] (-2.25,-0.85) -- (A2);
+      \draw[fermion,->] (B2) -- (2.25,-0.85);
+      \draw[fermion,->] (C2) -- (0,2.05);
+      \node[current,label=below:\(j_5^\mu\)] at (A2) {};
+      \node[current,label=below:\(j^\rho\)] at (B2) {};
+      \node[current,label=right:\(j^\nu\)] at (C2) {};
+      \node[above left] at (-2.25,-0.85) {\(p\)};
+      \node[right] at (2.25,-0.85) {\(-p-k\)};
+      \node[above] at (0,2.05) {\(k\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The two orientations of the one-axial, two-vector triangle.  The
+  regulator is chosen so that the vector-current Ward identities are
+  preserved.}
+  \label{fig:four-dimensional-axial-vector-vector-triangle}
+\end{figure}
+The divergence of the axial insertion is the Fourier transform of a local
+contact term.  In a dimensional regulator set \(D=4-\epsilon\) and split the
+loop momentum as
+\[
+  \ell=\ell_\parallel+\ell_\perp ,
+\]
+where \(\ell_\parallel\) lies in the physical four-dimensional subspace.
+Keep \(\gamma_5=\ii\gamma^{0123}\) four-dimensional, so that
+\(\not\ell_\parallel\) anticommutes with \(\gamma_5\) and
+\(\not\ell_\perp\) commutes with \(\gamma_5\).  In the first triangle one uses
+\[
+  \not p\,\gamma_5
+  =
+  \bigl[(\not\ell+\not p)\gamma_5+\gamma_5\not\ell\bigr]
+  -2\not\ell_\perp\gamma_5 .
+\]
+The bracketed terms implement the formal axial Ward identity and cancel
+against the partner orientation once the vector Ward identities are fixed.
+The entire contact term is therefore carried by the evanescent
+\(\ell_\perp\) contribution.  The remaining trace is
+\[
+  \ell_\perp^2(-4\ii)
+  \epsilon^{\nu\rho\alpha\beta}k_\alpha p_\beta .
+\]
+The required scalar integral is finite after the evanescent factor is kept:
+\[
+  \int\frac{\dd^D\ell}{(2\pi)^D}
+  \frac{\ell_\perp^2}
+       {\ell^2(\ell-k)^2(\ell+p)^2}
+  =
+  -\frac1{32\pi^2}.
+\]
+With the sign convention of \eqref{eq:abelian-axial-anomaly}, this gives
+\begin{equation}
+  \partial_\mu
+  \langle\Omega|
+  \operatorname T\,j_5^\mu(x)j^\nu(y)j^\rho(0)
+  |\Omega\rangle
+  =
+  \frac1{2\pi^2}
+  \epsilon^{\nu\rho\alpha\beta}
+  \partial_\alpha\delta^{(4)}(x)
+  \partial_\beta\delta^{(4)}(y).
+  \label{eq:four-dimensional-triangle-contact-term}
+\end{equation}
+The local coefficient is independent of the long-distance state; it is fixed
+by the regulated short-distance singularity of the current product.
+
+Coupling the vector current to a background field,
+\[
+  \Delta S=\int\dd^4x\,A_\mu j^\mu,
+\]
+and expanding the time-ordered exponential to second order, the contact term
+\eqref{eq:four-dimensional-triangle-contact-term} yields
+\[
+  \partial_\mu j_5^\mu
+  =
+  \frac1{16\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+\]
+for a unit-charge Dirac fermion in the convention of
+\eqref{eq:abelian-axial-anomaly}.  A fermion of electric charge \(q\) coupled
+with electromagnetic coupling \(e\) replaces \(F\) by \(eqF\), giving the
+factor \(e^2q^2\) in the next section.
+
 \section{The Abelian Axial Anomaly}
 
 For a Dirac fermion of electric charge \(q\) coupled to an electromagnetic

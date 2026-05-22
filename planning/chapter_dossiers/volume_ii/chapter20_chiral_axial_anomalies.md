@@ -8,10 +8,11 @@
 - Precedes global anomalies, spontaneous symmetry breaking, pions, and the
   Wess--Zumino--Witten term.
 - Role in the monograph: define local axial and gauge anomalies as
-  renormalized Ward identities, derive the abelian anomaly through regulated
-  measure/index language, classify local gauge anomalies through BRST descent,
-  and identify which anomalies are inconsistencies and which are global
-  symmetry data to be matched.
+  renormalized Ward identities, derive the two-dimensional and
+  four-dimensional contact-term mechanisms, derive the abelian anomaly through
+  regulated measure/index language, classify local gauge anomalies through
+  BRST descent, and identify which anomalies are inconsistencies and which
+  are global symmetry data to be matched.
 
 ## Source And Reference Controls
 
@@ -47,6 +48,10 @@
 | Symbol | Meaning |
 | --- | --- |
 | \(j^\mu,j_5^\mu\) | vector and axial currents |
+| \(\gamma=\gamma^0\gamma^1\) | two-dimensional chirality matrix |
+| \(G_A^{\mu\nu}\) | two-dimensional axial-vector current correlator |
+| \(Q_C\) | current charge integrated over a Euclidean contour \(C\) |
+| \(\Delta Q_A\) | anomalous axial charge transported between contours |
 | \(\mathcal D\) | Euclidean Dirac operator |
 | \(J\) | fermion-measure Jacobian |
 | \(n_\pm\) | zero modes of chirality \(\pm1\) |
@@ -66,6 +71,14 @@
 
 - The axial anomaly is a renormalized composite-operator identity, not a
   classical equation of motion.
+- In two dimensions the anomalous Ward identity is the finite remnant of a
+  regulated axial-vector current contact term.
+- The contour-charge interpretation of the two-dimensional anomaly identifies
+  the anomalous phase as the integral of the divergence through the domain
+  crossed by the deformed contour.
+- In four dimensions the one-axial, two-vector triangle coefficient is carried
+  by the evanescent \(\ell_\perp\) part of the dimensionally regulated loop
+  momentum when vector Ward identities are preserved.
 - The regulated trace of \(\gamma_5\) in a gauge background gives the local
   anomaly density and the integrated index theorem.
 - Gauge anomalies are ghost-number-one local BRST cohomology classes.
@@ -89,3 +102,17 @@
 - Global anomalies are deferred to the next chapter.
 - The Wess--Zumino--Witten functional is introduced in the next chapter, after
   chiral symmetry breaking and pion effective fields have been set up.
+
+## Figure Requirements
+
+- Two-dimensional axial-vector current loop with momentum labels.
+- Conserved-current contour deformation and anomalous axial contour
+  deformation.
+- Four-dimensional one-axial, two-vector triangle pair with both orientations.
+
+## Audit Notes
+
+- On 2026-05-22 the source block corresponding to handwritten pp. 211--225 was
+  expanded to include the two-dimensional contact-term calculation,
+  contour-charge interpretation, and four-dimensional triangle contact-term
+  derivation before the measure/index and descent sections.
