@@ -70,6 +70,16 @@ This equation is a representation-theoretic constraint.  Positivity of
 \(G^{(1)}\) gives lower bounds on \(\Delta\) once the \(SO(D)\) representation
 \(\rho\) is specified.
 
+The Hilbert-space convention is the following.  A primary multiplet is a
+finite-dimensional subspace \(V_\rho\subset\mathcal H_{\rm rad}\) on which
+\(\widehat D\) acts by the scalar \(\Delta\), and the rotation generators act
+as a unitary \(SO(D)\) representation.  Descendants are obtained by applying
+the closed operators \(\widehat P_\mu\) on their common finite-energy
+invariant domain.  Positivity is imposed on every finite Gram matrix of
+descendants in this domain; null vectors are then quotiented.  Thus each
+shortening equation below is an operator equation in the quotient of the
+local-operator space by null operators.
+
 \section{Scalar Primaries}
 
 For a scalar primary \(\phi\), the spin matrices vanish.  The level-one Gram
@@ -170,8 +180,8 @@ The corresponding conformal multiplet is the free massless scalar multiplet.
 \section{Level-One Decomposition for Spin}
 
 Let \(\mathcal H_\ell\) denote the \(SO(D)\) representation of rank-\(\ell\)
-symmetric traceless tensors.  For a primary in \(\mathcal H_\ell\), the
-level-one descendants transform in
+symmetric traceless tensors, with \(D\ge3\).  For a primary in
+\(\mathcal H_\ell\), the level-one descendants transform in
 \[
   \mathcal H_1\otimes\mathcal H_\ell .
 \]
@@ -185,27 +195,79 @@ The \(SO(D)\)-orthogonal decomposition is
   \oplus
   \mathcal H_{\ell-1},
 \]
-with absent summands omitted when the corresponding representation is not
-defined.  The last summand is the divergence channel.  Projecting the
-level-one Gram matrix \eqref{eq:level-one-gram-general} onto these summands
-diagonalizes it.  With positive \(SO(D)\)-invariant projector normalizations,
-the three eigenvalues are positive constants times
+where \(\mathcal H_{\ell,1}\) is the traceless mixed-symmetry representation
+with two-row Young shape \((\ell,1)\), and absent summands are omitted.  For
+\(\ell=0\) the decomposition reduces to the vector descendant of a scalar.  For
+\(\ell\ge1\), the last summand is the divergence channel.
+
+The level-one Gram operator is \(SO(D)\)-equivariant.  Because the above
+decomposition is multiplicity free, Schur's lemma implies that the Gram
+operator is scalar on each summand.  The scalar is computed from quadratic
+Casimirs.  Write
 \[
-  \Delta+\ell,\qquad
-  \Delta-1,\qquad
-  \Delta-\ell-D+2.
+  C_\ell=\ell(\ell+D-2),
+  \qquad
+  C_1=D-1
 \]
-The constants depend only on \(D\), \(\ell\), and the normalization of the
-projectors; their signs are positive.  For \(\ell\ge1\) and \(D\ge3\), the
-strongest condition is therefore the positivity of the divergence channel:
+for the \(SO(D)\) Casimirs of \(\mathcal H_\ell\) and the vector
+representation.  In the descendant space, the spin-coupling operator appearing
+in \eqref{eq:level-one-gram-general} has eigenvalue
+\begin{equation}
+  L_Q
+  =
+  -\frac12\left(C_Q-C_1-C_\ell\right)
+  \label{eq:spin-coupling-casimir-eigenvalue}
+\end{equation}
+on an irreducible summand \(Q\subset\mathcal H_1\otimes\mathcal H_\ell\).  The
+minus sign is fixed by the radial commutator
+\eqref{eq:radial-pk-commutator}.  The relevant Casimirs are
+\begin{align}
+  C_{\ell+1}
+  &=
+  (\ell+1)(\ell+D-1),\\
+  C_{\ell,1}
+  &=
+  \ell(\ell+D-2)+D-3,\\
+  C_{\ell-1}
+  &=
+  (\ell-1)(\ell+D-3).
+\end{align}
+Substitution in \eqref{eq:spin-coupling-casimir-eigenvalue} gives
 \[
+  L_{\ell+1}=-\ell,
+  \qquad
+  L_{\ell,1}=1,
+  \qquad
+  L_{\ell-1}=\ell+D-2.
+\]
+Since \(G^{(1)}=2(\Delta-L_Q)\) on the summand \(Q\), positivity gives
+\begin{equation}
+  \Delta+\ell\ge0,
+  \qquad
+  \Delta-1\ge0,
+  \qquad
   \Delta-\ell-D+2\ge0.
-\]
-When this eigenvalue vanishes, the projected descendant in
-\(\mathcal H_{\ell-1}\) is null.  In position space that projected descendant is
-the divergence of the tensor primary.  Thus saturation of the spin bound is not
-an additional conservation assumption; conservation is the null-state equation
-forced by positivity of the conformal representation.
+  \label{eq:spin-level-one-three-inequalities}
+\end{equation}
+For \(\ell\ge1\), the last inequality is the strongest one.  Its null channel
+is the \(\mathcal H_{\ell-1}\) projection of \(P_\mu\mathcal O\), namely the
+divergence of the symmetric traceless tensor.  Thus conservation at the
+unitarity bound is the null-state equation forced by positivity of the
+conformal representation.
+
+The same first-level test applies to any irreducible \(SO(D)\) representation
+\(\rho\).  If \(Q\) runs over the irreducible summands in
+\(\mathcal H_1\otimes\rho\), then positivity of the level-one Gram form
+requires
+\begin{equation}
+  \Delta+\frac12\left(C_Q-C_1-C_\rho\right)\ge0
+  \qquad
+  \text{for every }Q\subset\mathcal H_1\otimes\rho .
+  \label{eq:general-level-one-unitarity-test}
+\end{equation}
+When equality holds for one summand, the corresponding projected first
+descendant is a null operator.  Higher-level Gram matrices can impose further
+conditions in special cases, as the scalar trace descendant did above.
 
 \section{Symmetric Traceless Tensor Primaries}
 

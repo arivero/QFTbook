@@ -148,13 +148,13 @@ Do not promote further material before: fixed-point assumptions and Hilbert
 space or Euclidean reconstruction assumptions are stated, and crossing/OPE
 claims are formulated as convergence or distributional statements.
 
-Immediate target: strengthen the unitarity-bounds and short-multiplets chapter
-from radial reflection positivity and the adjointness
-\(P_\mu^\dagger=K_\mu\), then carry the resulting representation-theoretic
-constraints into the correlation-function and OPE chapters.  Keep
-two-dimensional, supersymmetric, integrable, topological, defect, and
-bootstrap-specialized material in later volumes or deprecated drafts until
-their prerequisites are complete.
+Immediate target: carry the primary transformation laws and unitarity
+constraints into the correlation-function chapter, deriving two- and
+three-point tensor structures with source-contact caveats and positivity
+normalizations before using them in the OPE chapter.  Keep two-dimensional,
+supersymmetric, integrable, topological, defect, and bootstrap-specialized
+material in later volumes or deprecated drafts until their prerequisites are
+complete.
 
 ### Volume VI: Integrable Quantum Field Theory
 

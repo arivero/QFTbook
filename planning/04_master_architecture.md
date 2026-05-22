@@ -200,6 +200,9 @@ Further development targets:
   transformation laws; the charge chapter now uses these conventions for
   local current Ward identities, and the primary chapter now uses them for
   spin-source contact terms and finite transformation laws;
+- use radial reflection positivity and \(P_\mu^\dagger=K_\mu\) as the source
+  of unitarity bounds; the short-multiplet chapter now derives the
+  symmetric-traceless spin bounds from first-level Casimir eigenvalues;
 - develop crossing equations only through convergent OPE and Hilbert-space
   radial quantization;
 - reserve two-dimensional, supersymmetric, integrable, and topological
