@@ -123,6 +123,17 @@ The chapter must define and derive:
 
 ## Audit Notes
 
+- 2026-05-22 source-certification pass: handwritten 253b pages 124--135 were
+  checked against rendered source images and comparison transcriptions.  The
+  manuscript now includes the finite-\(\epsilon\) one-loop coupling, the
+  intermediate derivative used to extract \(\beta(\lambda)\), the fixed point
+  and its IR direction, the bare/renormalized coupling distinction,
+  \(O_1\) and \(O_2\) anomalous dimensions, the momentum-source cure for the
+  \(\phi^2\) infrared subtraction, one-loop \(\gamma_2\), correlator scaling,
+  the nonlocality caveat for modewise \([O_2(x)]\), point splitting, the
+  \(O_3\) descendant relation, the \(O_4\) source analysis including the
+  zero-source-momentum check, \(\gamma_{4*}=\beta'(\lambda_*)\), and the
+  low-lying dimension table.
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
 - Do not present composite operators as unregulated products of fields.
