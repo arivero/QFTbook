@@ -44,7 +44,13 @@ multiplet.  This convention makes the descendant Gram matrices real
 Euclidean inner products.
 
 Let \(\ket{\mathcal O_a}\) be a primary of dimension \(\Delta\) and spin
-representation \(\rho\).  At level one the descendant Gram matrix is
+representation \(\rho\), normalized so that
+\[
+  \widehat D\ket{\mathcal O_a}=\Delta\ket{\mathcal O_a},
+  \qquad
+  \widehat K_\mu\ket{\mathcal O_a}=0.
+\]
+At level one the descendant Gram matrix is
 \begin{equation}
   G_{\mu a,\nu b}^{(1)}
   =
@@ -77,6 +83,17 @@ Thus
 \[
   \Delta_\phi\ge0.
 \]
+If \(\Delta_\phi=0\), all first descendants have zero norm.  After quotienting
+null states, this gives
+\[
+  \widehat P_\mu\ket{\phi}=0.
+\]
+Since \(\widehat P_\mu\) represents the derivative of the local insertion at the
+origin, the corresponding local field obeys \(\partial_\mu\phi(x)=0\).  Under
+the standard assumptions of a unique conformally invariant vacuum and cluster
+decomposition, this is the identity representation.  The hypothesis is stated
+because a direct sum with a decoupled topological or superselection sector can
+otherwise contain additional zero-energy central operators.
 
 The sharper scalar bound comes from level two.  Define
 \[
@@ -101,10 +118,21 @@ primary,
   \right]\braket{\phi}{\phi}.
   \label{eq:scalar-level-two-gram}
 \end{equation}
+This formula is obtained by commuting the two \(\widehat K\)'s to the right
+until they annihilate the primary.  No dynamical equation has been assumed; the
+only inputs are \eqref{eq:radial-pk-commutator}, the scalar action of
+\(\widehat D\), and the vanishing spin action on \(\ket{\phi}\).
 Contracting with \(\delta^{\alpha\beta}\delta^{\mu\nu}\) computes the norm of
 \(\widehat P^2\ket{\phi}\):
 \begin{equation}
+  \delta^{\alpha\beta}\delta^{\mu\nu}
+  M^{(2)}_{\alpha\beta,\mu\nu}
+  =
   \left\|\widehat P^2\ket{\phi}\right\|^2
+  =
+  4\left[
+    2D\,\Delta_\phi(\Delta_\phi+1)-D^2\Delta_\phi
+  \right]\braket{\phi}{\phi}
   =
   4D\,\Delta_\phi\bigl(2\Delta_\phi+2-D\bigr)
   \braket{\phi}{\phi}.
@@ -121,10 +149,11 @@ For a positive-norm scalar primary, positivity gives the alternatives
   \Delta_\phi\ge\frac{D-2}{2}.
   \label{eq:scalar-unitarity-bound}
 \end{equation}
-The first branch is the identity representation.  The second branch is the
-scalar unitarity bound.
+The first branch was identified above as the identity representation under the
+stated vacuum assumptions.  The second branch is the scalar unitarity bound for
+non-identity scalar primaries.
 
-When
+When \(D>2\) and
 \[
   \Delta_\phi=\frac{D-2}{2},
 \]
@@ -171,8 +200,10 @@ strongest condition is therefore the positivity of the divergence channel:
   \Delta-\ell-D+2\ge0.
 \]
 When this eigenvalue vanishes, the projected descendant in
-\(\mathcal H_{\ell-1}\) is null.  In position space that descendant is the
-divergence of the tensor primary.
+\(\mathcal H_{\ell-1}\) is null.  In position space that projected descendant is
+the divergence of the tensor primary.  Thus saturation of the spin bound is not
+an additional conservation assumption; conservation is the null-state equation
+forced by positivity of the conformal representation.
 
 \section{Symmetric Traceless Tensor Primaries}
 

@@ -1,6 +1,53 @@
 \chapter{Correlation Functions and Conformal Frames}
 \label{ch:volume-iii-correlation-functions-conformal-frames}
 
+\section{Ward Identities for Correlators}
+
+Throughout this chapter, correlators are Euclidean vacuum correlators at
+separated insertion points.  The conformal vacuum is assumed to be invariant
+under the connected conformal group, so that the global Ward identity of
+Chapter~\ref{ch:volume-iii-conformal-charges-ward-identities} applies.  If
+\(\epsilon^\mu(x)\partial_\mu\) is a conformal Killing vector and
+\(\delta_\epsilon\mathcal O_i\) is the corresponding infinitesimal variation of
+the \(i\)th local operator, then
+\begin{equation}
+  \sum_{i=1}^n
+  \left\langle
+    \mathcal O_1(x_1)\cdots
+    \delta_\epsilon\mathcal O_i(x_i)\cdots
+    \mathcal O_n(x_n)
+  \right\rangle
+  =
+  0
+  \label{eq:correlator-global-ward-identity}
+\end{equation}
+as a distribution on the configuration space \(x_i\ne x_j\).  Contact terms on
+coincident-point diagonals are part of the local Ward identities and are not
+used in the kinematic classification below.
+
+Equivalently, for a finite conformal transformation \(f:x\mapsto \widetilde x\)
+implemented by a unitary operator \(U_f\), invariance of the vacuum gives
+\[
+  \left\langle
+    \mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
+  \right\rangle
+  =
+  \left\langle
+    (U_f\mathcal O_1U_f^{-1})(x_1)\cdots
+    (U_f\mathcal O_nU_f^{-1})(x_n)
+  \right\rangle .
+\]
+The operators on the right are written at the same coordinate labels as before;
+their transformation laws supply the Jacobian and spin factors.  For a scalar
+primary \(\phi\) of dimension \(\Delta_\phi\),
+\begin{equation}
+  \widetilde\phi(\widetilde x)
+  =
+  \left|\det\frac{\partial\widetilde x}{\partial x}\right|^{-\Delta_\phi/D}
+  \phi(x).
+  \label{eq:scalar-primary-finite-transform-correlators}
+\end{equation}
+
 \section{One- and Two-Point Functions}
 
 Let \(\mathcal O_i\) be scalar primary operators of dimensions
@@ -14,8 +61,9 @@ Scale covariance gives
   \qquad
   \text{for all }\lambda>0.
 \]
-Hence \(c_i=0\) unless \(\Delta_i=0\).  In a unitary theory, the scalar
-primary with \(\Delta=0\) is the identity representation.
+Hence \(c_i=0\) unless \(\Delta_i=0\).  In a unitary theory satisfying the
+vacuum assumptions stated in Chapter~\ref{ch:volume-iii-unitarity-bounds-short-multiplets},
+the scalar primary with \(\Delta=0\) is the identity representation.
 
 For two scalar primaries, translation and rotation invariance imply
 \[
@@ -27,52 +75,100 @@ Scale covariance gives
 \[
   F_{ij}(r)=\frac{C_{ij}}{r^{\Delta_i+\Delta_j}}.
 \]
-Inversion covariance then requires \(C_{ij}=0\) unless
-\(\Delta_i=\Delta_j\).  Therefore
+The condition \(\Delta_i=\Delta_j\) for a nonzero coefficient follows from a
+conformal transformation that fixes both points but has different local scale
+factors at the two points.  Put the two points at \(0\) and \(e_1\), where
+\(e_1\) is a fixed unit vector, and define
+\[
+  f_\lambda(x)^\mu
+  =
+  \lambda
+  \frac{x^\mu+a^\mu x^2}{1+2a\cdot x+a^2x^2},
+  \qquad
+  a^\mu=(\lambda-1)e_1^\mu,
+  \qquad
+  \lambda>0 .
+\]
+Then \(f_\lambda(0)=0\), \(f_\lambda(e_1)=e_1\),
+\[
+  \left.\frac{\partial f_\lambda^\mu}{\partial x^\nu}\right|_{x=0}
+  =
+  \lambda\,\delta^\mu{}_\nu,
+  \qquad
+  \left.\frac{\partial f_\lambda^\mu}{\partial x^\nu}\right|_{x=e_1}
+  =
+  \lambda^{-1}\delta^\mu{}_\nu .
+\]
+Applying \eqref{eq:scalar-primary-finite-transform-correlators} to
+\(\langle\mathcal O_i(e_1)\mathcal O_j(0)\rangle\) gives
+\[
+  C_{ij}=\lambda^{\Delta_i-\Delta_j}C_{ij}
+  \qquad\text{for all }\lambda>0,
+\]
+so \(C_{ij}=0\) unless \(\Delta_i=\Delta_j\).  Therefore
 \begin{equation}
   \left\langle \mathcal O_i(x)\mathcal O_j(y)\right\rangle
   =
-  \frac{C_{ij}\,\delta_{\Delta_i,\Delta_j}}
-       {|x-y|^{2\Delta_i}}.
+  \begin{cases}
+    \displaystyle \frac{C_{ij}}{|x-y|^{2\Delta_i}},
+    &\Delta_i=\Delta_j,\\[1.0em]
+    0,&\Delta_i\ne\Delta_j .
+  \end{cases}
   \label{eq:scalar-primary-two-point}
 \end{equation}
 Within a finite-dimensional space of primaries with the same dimension and the
 same spin, one may choose a basis that diagonalizes the Hermitian matrix
 \(C_{ij}\).
 
-\section{Spin Structures}
+\section{Radial Inner Product and BPZ Conjugation}
 
-The inversion tensor
+Let \(x=r\Omega\), \(r>0\), \(\Omega\in S^{D-1}\), and set
+\(\tau=\log r\).  The Weyl map from \(\R^D\setminus\{0\}\) to
+\(\R_\tau\times S^{D-1}\) relates a scalar primary on flat space to the
+cylinder operator by
 \begin{equation}
-  I_{\mu\nu}(x)
-  =
-  \delta_{\mu\nu}-2\frac{x_\mu x_\nu}{x^2}
-  \label{eq:inversion-tensor}
+  \mathcal O(x)=r^{-\Delta}\widetilde{\mathcal O}(\tau,\Omega).
+  \label{eq:flat-cylinder-scalar-primary}
 \end{equation}
-is the orthogonal part of the inversion Jacobian.  It is the elementary
-building block for two-point functions with vector or tensor indices.  For
-the stress tensor,
+The state created by insertion at the origin is
 \begin{equation}
-  \left\langle T_{\mu\nu}(x)T_{\rho\sigma}(0)\right\rangle
+  \ket{\mathcal O}
   =
-  \frac{C_T}{|x|^{2D}}
-  I_{\mu\nu,\rho\sigma}(x),
-  \label{eq:stress-tensor-two-point}
+  \lim_{\tau\to-\infty}
+  e^{-\Delta\tau}
+  \widetilde{\mathcal O}(\tau,\Omega)\ket{\Omega_0},
+  \label{eq:ket-from-cylinder-limit}
 \end{equation}
-where
-\[
-  I_{\mu\nu,\rho\sigma}(x)
+where \(\ket{\Omega_0}\) is the conformal vacuum.  For a primary the limit is
+independent of \(\Omega\).  The conjugate bra is obtained by the opposite
+cylinder-time limit,
+\begin{equation}
+  \langle\!\langle \mathcal O|
   =
-  \frac12\bigl(
-    I_{\mu\rho}(x)I_{\nu\sigma}(x)
-    +
-    I_{\mu\sigma}(x)I_{\nu\rho}(x)
-  \bigr)
-  -
-  \frac1D\delta_{\mu\nu}\delta_{\rho\sigma}.
-\]
-The coefficient \(C_T\) is part of the intrinsic CFT data because the
-normalization of \(T_{\mu\nu}\) is fixed by the translation Ward identity.
+  \lim_{\tau\to+\infty}
+  e^{\Delta\tau}
+  \bra{\Omega_0}\widetilde{\mathcal O}(\tau,\Omega).
+  \label{eq:bpz-bra-from-cylinder-limit}
+\end{equation}
+This radial conjugation is often called BPZ conjugation.  In a
+reflection-positive theory, after including the ordinary internal adjoint of the
+local operator, it is the Hilbert-space adjoint of the state.  Consequently the
+two-point coefficient has the inner-product interpretation
+\begin{equation}
+  \langle\!\langle \mathcal O_i|\mathcal O_j\rangle
+  =
+  \lim_{\tau_i\to+\infty,\ \tau_j\to-\infty}
+  e^{\Delta_i\tau_i-\Delta_j\tau_j}
+  \left\langle
+    \widetilde{\mathcal O}_i(\tau_i,\Omega_i)
+    \widetilde{\mathcal O}_j(\tau_j,\Omega_j)
+  \right\rangle
+  =
+  C_{ij},
+  \label{eq:bpz-inner-product-two-point-coefficient}
+\end{equation}
+for primaries with equal dimension.  Positivity of this matrix is the same
+positivity used in the unitarity-bound derivation.
 
 \begin{figure}[H]
   \centering
@@ -104,7 +200,8 @@ normalization of \(T_{\mu\nu}\) is fixed by the translation Ward identity.
       \draw[cylinder] (-0.10,1.25)--(-0.10,-1.25);
       \draw[cylinder] (-1.15,-1.25) ellipse (1.05 and 0.25);
       \node[violet!80!black] at (-1.15,-0.70) {\(\ket{\mathcal O_j}\)};
-      \node[violet!80!black] at (-1.15,0.78) {\(\bra{\mathcal O_i}\)};
+      \node[violet!80!black] at (-1.15,0.78)
+        {\(\langle\!\langle\mathcal O_i|\)};
       \draw[green!45!black,line width=0.8pt] (-2.20,0.15) arc[start angle=180,end angle=360,x radius=1.05,y radius=0.25];
       \draw[green!45!black,dashed,line width=0.8pt] (-2.20,0.15) arc[start angle=180,end angle=0,x radius=1.05,y radius=0.25];
       \draw[arrow,orange!85!black] (0.38,-1.10)--(0.38,1.10);
@@ -112,11 +209,84 @@ normalization of \(T_{\mu\nu}\) is fixed by the translation Ward identity.
     \end{scope}
   \end{tikzpicture}
   }
-  \caption{The two-point coefficient is the radial-quantization inner product
-  between the state created at the origin and the conjugate insertion at
-  infinity.}
+  \caption{The scalar two-point coefficient is the radial-quantization inner
+  product between the state created at the origin and the BPZ-conjugate
+  insertion at future cylinder time.}
   \label{fig:two-point-cylinder-inner-product}
 \end{figure}
+
+\section{Spin Structures}
+
+The inversion tensor
+\begin{equation}
+  I_{\mu\nu}(x)
+  =
+  \delta_{\mu\nu}-2\frac{x_\mu x_\nu}{x^2}
+  \label{eq:inversion-tensor}
+\end{equation}
+is the orthogonal part of the inversion Jacobian.  It is the elementary
+building block for two-point functions with vector or tensor indices.  For
+example, a vector primary of dimension \(\Delta_V\) obeys
+\begin{equation}
+  \left\langle V_\mu(x)V_\nu(0)\right\rangle
+  =
+  \frac{C_V}{|x|^{2\Delta_V}}I_{\mu\nu}(x),
+  \label{eq:vector-primary-two-point}
+\end{equation}
+after diagonalizing any degeneracy labels.
+
+More generally, let
+\(\mathcal O_{\mu_1\cdots\mu_s}\) be a rank-\(s\) symmetric traceless tensor
+primary.  Define
+\[
+  \mathcal I^{(s)}_{\mu_1\cdots\mu_s,\nu_1\cdots\nu_s}(x)
+  =
+  \Pi_{\operatorname{STT}}
+  \left[
+    I_{\mu_1\nu_1}(x)\cdots I_{\mu_s\nu_s}(x)
+  \right],
+\]
+where \(\Pi_{\operatorname{STT}}\) symmetrizes separately in the
+\(\mu\)-indices and the \(\nu\)-indices and removes all traces with respect to
+\(\delta_{\mu\nu}\).  Conformal covariance fixes the two-point function to be
+\begin{equation}
+  \left\langle
+    \mathcal O_{\mu_1\cdots\mu_s}(x)
+    \mathcal O_{\nu_1\cdots\nu_s}(0)
+  \right\rangle
+  =
+  \frac{C_{\mathcal O}}{|x|^{2\Delta_{\mathcal O}}}
+  \mathcal I^{(s)}_{\mu_1\cdots\mu_s,\nu_1\cdots\nu_s}(x),
+  \label{eq:stt-primary-two-point}
+\end{equation}
+up to the same positive Hermitian coefficient matrix in possible degeneracy
+labels.  Two-point functions between inequivalent \(SO(D)\) representations
+vanish by rotational covariance.
+
+For the stress tensor, \(s=2\), \(\Delta_T=D\), and conservation gives a
+canonical normalization convention through the Ward identity.  Its two-point
+function is
+\begin{equation}
+  \left\langle T_{\mu\nu}(x)T_{\rho\sigma}(0)\right\rangle
+  =
+  \frac{C_T}{|x|^{2D}}
+  I_{\mu\nu,\rho\sigma}(x),
+  \label{eq:stress-tensor-two-point}
+\end{equation}
+where
+\[
+  I_{\mu\nu,\rho\sigma}(x)
+  =
+  \frac12\bigl(
+    I_{\mu\rho}(x)I_{\nu\sigma}(x)
+    +
+    I_{\mu\sigma}(x)I_{\nu\rho}(x)
+  \bigr)
+  -
+  \frac1D\delta_{\mu\nu}\delta_{\rho\sigma}.
+\]
+The coefficient \(C_T\) is part of the intrinsic CFT data because the
+normalization of \(T_{\mu\nu}\) is fixed by the translation Ward identity.
 
 \section{Three-Point Functions}
 
