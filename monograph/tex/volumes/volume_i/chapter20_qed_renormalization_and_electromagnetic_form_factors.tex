@@ -54,6 +54,17 @@ then Abelian gauge covariance gives the Ward organization
 \[
   Z_1=Z_\psi .
 \]
+The same statement can be read from the renormalized representative gauge
+transformation,
+\[
+  A_\mu\mapsto A_\mu+\partial_\mu\xi,\qquad
+  \psi\mapsto \ee^{-\ii e\xi}\psi,\qquad
+  \bar\psi\mapsto \bar\psi\,\ee^{\ii e\xi}.
+\]
+The coefficient \(e\), not \(eZ_\psi\), is the charge appearing in this
+transformation law.  The common factor \(Z_\psi\) multiplies the whole spinor
+covariant derivative and therefore belongs to the spinor residue
+normalization.
 Thus
 \[
   \mathcal L_B
@@ -89,6 +100,19 @@ counterterms:
 The last line is the vertex counterterm tied to the spinor wavefunction
 counterterm by the Abelian Ward identity. The mass counterterm is independent
 because \(m\bar\psi\psi\) is gauge-invariant.
+
+The current normalized by the renormalized field strength is obtained from
+the Euler--Lagrange equation for \(A_\mu\):
+\[
+  \partial_\nu F^{\mu\nu}
+  =
+  -\ii Z_A^{-1}eZ_\psi\,\bar\psi\gamma^\mu\psi
+  \equiv j^\mu .
+\]
+This identity is an operator identity at separated insertions in the regulated
+theory.  In time-ordered products, differentiating the ordering symbols may
+also produce local contact terms; the nonlocal momentum dependence discussed
+below is insensitive to such polynomial contact terms.
 
 \section{Photon Self-Energy and Transversality}
 
@@ -127,16 +151,30 @@ one-particle-irreducible photon self-energies into the free propagator:
 \end{gathered}
 \]
 Let \(\ii\Pi^{\mu\nu}(k)\) denote the sum of amputated one-particle
-irreducible photon two-point insertions. Current conservation implies
-transversality. More explicitly, the Maxwell equation with the renormalized
+irreducible photon two-point insertions.  Current conservation implies
+transversality in a way that does not depend on a gauge-dependent
+longitudinal representative.  The Maxwell equation with the renormalized
 current has the form
 \[
   \partial_\nu \widehat F^{\mu\nu}=\widehat j^\mu,
   \qquad
   \partial_\mu\widehat j^\mu=0
 \]
-up to local contact terms inside time-ordered products. In momentum space the
-nonlocal part of the current two-point function is transverse, and hence
+at separated points.  Let \(M^{\mu\nu}(k)\) be the noncontact coefficient in
+the Fourier transform of
+\(\langle\Omega|\operatorname T\widehat j^\mu(x)\widehat j^\nu(0)|\Omega\rangle\).
+Then
+\[
+  k_\mu M^{\mu\nu}(k)=0,\qquad k_\nu M^{\mu\nu}(k)=0 .
+\]
+On the other hand, applying
+\(\partial_\alpha F^{\mu\alpha}\) to the photon Dyson series acts on each
+external photon line by the transverse differential operator
+\[
+  k^2\eta^{\mu\rho}-k^\mu k^\rho .
+\]
+The local contact terms are polynomials in \(k\).  The nonlocal part is
+therefore transverse only if the amputated 1PI insertion obeys
 \[
   k_\mu\Pi^{\mu\nu}(k)=0 .
 \]
@@ -226,7 +264,12 @@ The minus sign is the closed fermion loop. Continue the integral to
   \eta^{\mu\nu}\eta_{\mu\nu}=D,\qquad
   \operatorname{Tr}\mathbf 1=4 .
 \]
-After Wick rotation and the Feynman-parameter identity, shift
+After Wick rotation and the Feynman-parameter identity
+\[
+  \frac1{ab}=\int_0^1\dd x\,
+  \frac1{\bigl(xa+(1-x)b\bigr)^2},
+\]
+shift
 \[
   p\mapsto p+xk .
 \]
@@ -249,8 +292,40 @@ allows
 \[
   p_\mu p_\nu\mapsto \frac1D\eta_{\mu\nu}p^2
 \]
-inside the integral, and all terms linear in \(p\) vanish. The result is
-transverse:
+inside the integral, and all terms linear in \(p\) vanish.  With
+\[
+  M_x^2=m^2+x(1-x)k^2,
+\]
+the angularly averaged numerator can be written as
+\[
+\begin{aligned}
+  N_{\mu\nu}
+  =
+  4\Bigl[
+    &\eta_{\mu\nu}\bigl(p^2-x(1-x)k^2+m^2\bigr)
+    -\frac2D\eta_{\mu\nu}p^2
+\\
+    &\qquad\qquad
+    +2x(1-x)k_\mu k_\nu
+  \Bigr].
+\end{aligned}
+\]
+The two scalar integrals needed are
+\[
+\begin{aligned}
+  \int\frac{\dd^Dp}{(2\pi)^D}\frac1{(p^2+M_x^2)^2}
+  &=
+  \frac1{(4\pi)^{D/2}}
+  \Gamma(2-D/2)(M_x^2)^{D/2-2},\\
+  \int\frac{\dd^Dp}{(2\pi)^D}\frac{p^2}{(p^2+M_x^2)^2}
+  &=
+  \frac{D}{2}\frac1{(4\pi)^{D/2}}
+  \Gamma(1-D/2)(M_x^2)^{D/2-1},
+\end{aligned}
+\]
+where the second formula is defined by analytic continuation in \(D\).
+Substitution cancels the nontransverse local-looking pieces and leaves the
+transverse tensor
 \[
   \Pi^{(1)}_{\mu\nu}(k)
   =
@@ -276,6 +351,10 @@ The pole normalization \(\pi(0)=0\) fixes
   =
   1-
   \frac{8e^2}{(4\pi)^{D/2}}\Gamma(2-D/2)\frac16\,m^{D-4}.
+\]
+For \(D=4-\epsilon\), this has the pole part
+\[
+  Z_A=1-\frac{e^2}{6\pi^2}\frac1\epsilon+\text{finite}.
 \]
 Subtracting the value at \(k^2=0\) and taking \(D\to4\) gives the finite
 one-loop vacuum-polarization function
@@ -310,11 +389,14 @@ Modulo the on-shell Dirac equations
   (\not p-\ii m)u^\sigma(\vec p)=0,\qquad
   \bar u^{\sigma'}(\vec p')(\not p'-\ii m)=0,
 \]
-a parity-even Lorentz vector can be expressed using
+a parity-even Lorentz vector between spinor solutions can be reduced, by the
+Clifford algebra, to the span of
 \[
   \gamma^\mu,\qquad (p+p')^\mu,\qquad (p-p')^\mu .
 \]
-Current conservation removes the component proportional to
+Terms with \(\gamma_5\) are excluded by parity, and terms with
+\([\gamma^\mu,\gamma^\nu]\) are equivalent to the displayed basis by the
+Gordon identity.  Current conservation removes the component proportional to
 \((p-p')^\mu\). Therefore
 \[
   M^\mu(p',p)
@@ -360,6 +442,10 @@ Thus
 \[
   F(0)+G(0)=1.
 \]
+The equality is understood in the usual delta-normalized sense: after
+smearing the external plane waves by a common wave packet and then removing
+the smearing, the spatial integral supplies the same
+\(\delta^{(3)}(\vec p'-\vec p)\) on both sides.
 
 \section{Magnetic Moment from the Form Factor}
 
@@ -374,6 +460,22 @@ For a slowly varying magnetic field choose
   A_0^{\mathrm{cl}}=0,\qquad
   \nabla\times\vec A^{\mathrm{cl}}=\vec B .
 \]
+The part of the form-factor matrix element proportional to
+\((p+p')^\mu\) gives the spin-independent Lorentz-force contribution in the
+nonrelativistic limit.  The spin-dependent term is exposed by writing the
+\(\gamma^\mu F\) term with the Gordon identity.  Equivalently, after an
+integration by parts,
+\[
+  \int\dd^3\vec x\,
+  A_i^{\mathrm{cl}}(x)\,
+  \ee^{\ii(\vec p-\vec p')\cdot\vec x}(p'-p)_jS^{ij}
+  =
+  \frac{\ii}{2}\int\dd^3\vec x\,
+  \ee^{\ii(\vec p-\vec p')\cdot\vec x}
+  F^{\mathrm{cl}}_{ij}(x)S^{ij},
+\]
+up to terms higher order in the spatial momentum transfer; only the
+antisymmetric part contributes to the spin coupling.
 The spin-dependent part of
 \(\langle\vec p',\sigma'|\Delta H|\vec p,\sigma\rangle\) is obtained from
 the identity
@@ -421,9 +523,9 @@ The current is represented by
 \[
   \widehat j^\mu
   =
-  -\ii e\,Z_\psi\,\bar\psi\gamma^\mu\psi
+  -\ii Z_A^{-1}e\,Z_\psi\,\bar\psi\gamma^\mu\psi
   =
-  -\ii e^B Z_A^{1/2}Z_\psi\,\bar\psi\gamma^\mu\psi .
+  -\ii e^B Z_A^{-1/2}Z_\psi\,\bar\psi\gamma^\mu\psi .
 \]
 The current insertion between external electron states is computed by reducing
 the external spinor legs by LSZ:
@@ -445,6 +547,29 @@ the external spinor legs by LSZ:
   \node[right] at (1.05,-0.65) {\scriptsize \(u(p)\)};
 \end{tikzpicture}
 \]
+If the three-point function is written in bare fields, each external fermion
+leg supplies a factor \(Z_\psi^{1/2}\) in the LSZ residue.  If it is written
+in renormalized fields, those factors are absent from the external residues
+but reappear through the counterterm vertices.  These two bookkeepings give
+the same matrix element.
+
+The tree current vertex gives
+\[
+  -\ii Z_A^{-1}e\,\frac{Z_\psi}{(2\pi)^3}
+  \bar u^{\sigma'}(\vec p')\gamma^\mu u^\sigma(\vec p).
+\]
+The current insertion can also be followed by any number of photon
+self-energy insertions before the photon attaches to the electron line.  The
+transverse photon chain contributes \(Z_A/(1-\pi(k^2))\), so the whole
+tree-plus-vacuum-polarization chain contributes
+\[
+  -\ii e\,\frac{Z_\psi}{(2\pi)^3}
+  \frac1{1-\pi(k^2)}
+  \bar u^{\sigma'}(\vec p')\gamma^\mu u^\sigma(\vec p).
+\]
+This changes only the coefficient of \(\gamma^\mu\), hence only \(F(k^2)\).
+It does not contribute to \(G(k^2)\).
+
 At order \(e^2\), the contribution to \(G(k^2)\) comes from the vertex
 correction
 \[
@@ -474,7 +599,7 @@ correction
 in Feynman gauge. Its integrand is
 \[
 \begin{aligned}
-  &-\ii e\,\frac{Z_\psi}{(2\pi)^3}
+  &-\ii Z_A^{-1}e\,\frac{Z_\psi}{(2\pi)^3}
   \int\frac{\dd^4q}{(2\pi)^4}
   \frac{-\ii}{q^2-\ii\epsilon}\,
   \bar u(p')\,e\gamma^\rho
@@ -488,11 +613,18 @@ in Feynman gauge. Its integrand is
   e\gamma_\rho\,u(p).
 \end{aligned}
 \]
-The terms proportional to \(\gamma^\mu\) contribute to \(F(k^2)\); together
-with \(Z_\psi\) they enforce the charge normalization. The coefficient of
-\((p+p')^\mu\bar u(p')u(p)\) gives \(G(k^2)\). After Wick rotation,
-dimensional regularization, Feynman parametrization, and use of the external
-Dirac equations, this finite coefficient is
+To isolate the term that affects the magnetic moment, Wick rotate, continue
+the loop integral dimensionally, combine the three denominators by Feynman
+parameters, and use the external Dirac equations.  The reduced numerator has
+the form
+\[
+  \bar u(p')\gamma^\mu u(p)\,A(k^2)
+  +(p+p')^\mu\bar u(p')u(p)\,B(k^2).
+\]
+The scalar \(A(k^2)\) contains ultraviolet and infrared singular terms whose
+contribution is fixed by the charge normalization and the spinor
+wavefunction counterterm.  The scalar \(B(k^2)\) is finite at this order and
+determines \(G(k^2)\).  The resulting coefficient is
 \[
   G(k^2)
   =
@@ -503,6 +635,11 @@ Dirac equations, this finite coefficient is
 \]
 At zero momentum transfer,
 \[
+  \int_0^1\dd x\int_0^x\dd y\,
+  \frac{x(1-x)}{m^2x^2}
+  =
+  \frac1{2m^2},
+  \qquad
   G(0)
   =
   -\frac{e^2}{8\pi^2}.

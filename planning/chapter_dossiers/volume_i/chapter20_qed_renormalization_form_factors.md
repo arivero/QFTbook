@@ -1,5 +1,7 @@
 # Volume I, Chapter 20 Dossier: QED Renormalization and Electromagnetic Form Factors
 
+Status: revised and source-audited on 2026-05-22.
+
 ## Source Placement
 
 - Follows QED as a gauge-fixed representative perturbation theory with LSZ
@@ -10,7 +12,9 @@
 - Precedes the systematic treatment of infrared divergences and inclusive or
   dressed charged scattering.
 - Source material used:
-  - `transcription/tex/253a/foundations.tex`, roughly lines 9490--10515;
+  - handwritten `references/253a lectures 2022.pdf`, trace pp. 224--244;
+  - `references/253a_notes.tex`, roughly lines 4579--4855, used only as
+    secondary text after checking against the handwritten pages;
   - `references/sound_references/fredenhagen_rejzner_paqft_1208.1428.pdf`
     for the interpretation of renormalization as local counterterm freedom;
   - `references/sound_references/rosten_exact_rg_1003.1366.pdf` for
@@ -38,6 +42,10 @@
   \(\operatorname{Tr}\mathbf 1=4\).
 - Charge normalization is imposed through the zero-momentum current matrix
   element.
+- The handwritten source, not the student transcription, fixes the charge
+  convention: \(e=e^B Z_A^{1/2}\).  The factor \(Z_\psi\) multiplies the
+  spinor covariant derivative and is not part of the gauge-representative
+  charge.
 
 ## Symbols
 
@@ -49,7 +57,9 @@
 | \(\delta m\) | mass counterterm |
 | \(\Pi^{\mu\nu}\) | photon one-particle-irreducible self-energy |
 | \(\pi(k^2)\) | scalar vacuum-polarization function |
-| \(j^\mu\) | electromagnetic current |
+| \(j^\mu\) | electromagnetic current normalized by \(\partial_\nu F^{\mu\nu}=j^\mu\) |
+| \(M^{\mu\nu}(k)\) | noncontact current-current two-point coefficient |
+| \(M_x^2\) | \(m^2+x(1-x)k^2\) in the vacuum-polarization integral |
 | \(F(k^2),G(k^2)\) | electron electromagnetic form factors in the chapter's gamma convention |
 | \(g_{\mathrm{mag}}\) | electron magnetic \(g\)-factor |
 | \(\alpha\) | fine-structure parameter \(e^2/(4\pi)\) |
@@ -58,6 +68,9 @@
 
 - Gauge-covariant local counterterms organize the electron kinetic and QED
   vertex counterterms through the Abelian Ward identity \(Z_1=Z_\psi\).
+- The current entering form factors is
+  \(j^\mu=-iZ_A^{-1}eZ_\psi\bar\psi\gamma^\mu\psi\), as follows from the
+  renormalized Maxwell equation.
 - Current conservation forces the photon self-energy to be transverse:
   \(k_\mu\Pi^{\mu\nu}=0\).
 - Lorentz covariance then gives
@@ -66,9 +79,15 @@
   one loop.
 - The one-loop finite vacuum-polarization function is the standard
   Feynman-parameter integral after subtraction at \(k^2=0\).
+- The dimensional-regularization algebra is displayed through the shifted
+  numerator, \(p_\mu p_\nu\mapsto D^{-1}\eta_{\mu\nu}p^2\), and the two scalar
+  integrals analytically continued in \(D\).
 - The electron current matrix element has two form factors in the stated
   parity-preserving theory, and charge normalization gives \(F(0)+G(0)=1\).
 - In a weak magnetic background, \(g_{\mathrm{mag}}=2F(0)\).
+- The tree current vertex plus photon self-energy chain contributes only to
+  \(F(k^2)\); the order-\(e^2\) contribution to \(G(k^2)\) comes from the
+  proper vertex correction.
 - The one-loop vertex correction gives \(G(0)=-\alpha/(2\pi)\), hence
   \(g_{\mathrm{mag}}=2+\alpha/\pi+O(\alpha^2)\).
 
