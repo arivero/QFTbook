@@ -40,14 +40,41 @@ Inserting the energy basis gives
   \exp\left[-\frac{\ii}{\hbar}(E_n-E_0)t\right].
 \end{aligned}
 \]
-When the matrix elements have the convergence properties needed for this
-series or its distributional analogue, the spectrum condition
-\(E_n-E_0\ge0\) gives an analytic continuation to the lower half \(t\)-plane.
+The displayed sum is the pure-point case of a spectral-measure statement.
+Let \(P_{\widehat H}\) be the projection-valued spectral measure of
+\(\widehat H\), set
+\[
+\eta_q:=\widehat q\ket0,
+\]
+and define the positive Borel measure
+\[
+  \mu_q(B)=\langle \eta_q,P_{\widehat H}(B)\eta_q\rangle
+\]
+for Borel sets \(B\subset\mathbb R\).  Then, whenever
+\(\eta_q\in\Hilb\), \(\mu_q\) is finite, has support in \([E_0,\infty)\),
+and the two-point function is
+\[
+  W(t)=
+  \int_{[E_0,\infty)}
+  \exp\left[-\frac{\ii}{\hbar}(E-E_0)t\right]\,\dd\mu_q(E).
+\]
+For \(t=x+\ii y\) with \(y<0\), the integrand has modulus
+\(\exp[(E-E_0)y/\hbar]\le1\).  Dominated convergence therefore gives a
+holomorphic continuation of \(W(t)\) to the lower half \(t\)-plane.  The
+discrete expansion above is recovered when \(\mu_q\) is a sum of atoms at
+the eigenvalues \(E_n\).
 For \(\tau>0\), define
 \[
   G_E(\tau)
   =
   W(-\ii\tau)
+  =
+  \int_{[E_0,\infty)}
+  \exp\left[-\frac{1}{\hbar}(E-E_0)\tau\right]\,\dd\mu_q(E),
+\]
+which in the pure-point case is
+\[
+  G_E(\tau)
   =
   \sum_n
   \left|\bra n\widehat q(0)\ket 0\right|^2
@@ -170,7 +197,59 @@ as \(T\to\infty\).  The phase \(c_0/|c_0|\) cancels between bra and ket in
 vacuum expectation values.  For \(0<\tau_1<\cdots<\tau_r<T\), the
 Euclidean correlation function is the long-time limit of matrix elements of
 \(\exp(-\tau\widehat H/\hbar)\) with insertions at the specified Euclidean
-times. In the Lagrangian path-integral notation this is expressed as
+times.
+
+The same limit may be represented before Wick rotation by a regulated path
+integral on a complex-time contour.  Let \(\Gamma_{T,t}\) run from
+\(t_i=\ii T\) to \(0\), then along the real segment from \(0\) to \(t\),
+and then to \(t_f=t-\ii T\), so that
+\[
+  \operatorname{Im} t_i\to+\infty,
+  \qquad
+  \operatorname{Im} t_f\to-\infty
+\]
+as \(T\to\infty\).  If \([Dq]_{\Gamma,\psi}\) denotes the time-sliced
+measure on this contour with endpoint wavefunctions of a vector \(\ket\psi\)
+included, then
+\[
+  \bra 0\widehat q(t)\widehat q(0)\ket 0
+  =
+  \lim_{T\to\infty}
+  \frac{
+    \int [Dq]_{\Gamma_{T,t},\psi}\,
+    \exp\left[
+      \frac{\ii}{\hbar}\int_{\Gamma_{T,t}}
+      L(q,\dot q)\,\dd t
+    \right]q(t)q(0)
+  }{
+    \int [Dq]_{\Gamma_{T,t},\psi}\,
+    \exp\left[
+      \frac{\ii}{\hbar}\int_{\Gamma_{T,t}}
+      L(q,\dot q)\,\dd t
+    \right]
+  },
+\]
+under the same ground-state overlap and gap hypotheses.  This formula is a
+contour version of the operator projection above; the regulator and endpoint
+data are part of \([Dq]_{\Gamma,\psi}\).
+
+\begin{center}
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[->] (-0.65,0) -- (3.5,0) node[right] {$\operatorname{Re}t$};
+  \draw[->] (0,-2.05) -- (0,2.15) node[above] {$-\operatorname{Im}t$};
+  \draw[blue!70!black,line width=1.05pt,->] (0,-1.72) -- (0,-0.08);
+  \draw[green!45!black,line width=1.05pt,->] (0,0) -- (2.15,0);
+  \draw[purple!75!black,line width=1.05pt,->] (2.15,0.05) -- (2.15,1.75);
+  \fill[orange] (0,0) circle (2pt) node[below left=2pt] {$0$};
+  \fill[red] (2.15,0) circle (2pt) node[below=2pt] {$t$};
+  \node[blue!70!black,left] at (0,-1.6) {$t_i$};
+  \node[purple!75!black,right] at (2.15,1.6) {$t_f$};
+  \node[green!45!black,above] at (1.15,0.05) {real segment};
+\end{tikzpicture}
+\end{center}
+
+After the Wick rotation of the contour to Euclidean time, the Lagrangian
+path-integral notation becomes
 \[
   \bra 0T_E\{\widehat q_E(\tau_1)\cdots\widehat q_E(\tau_r)\}\ket 0
   =
@@ -219,6 +298,17 @@ procedure, and
     (1.15,0.35) -- node[midway,above=5pt] {\scriptsize projection} (2.6,0.35);
 \end{tikzpicture}
 \end{center}
+
+A concrete evaluation begins by specifying the regulator.  One common
+choice is a mode cutoff: choose functions \(f_n(\tau)\), write
+\[
+  q(\tau)=\sum_{n=1}^{N_{\rm max}}q_nf_n(\tau),
+\]
+and define the regulated measure by a finite product of Lebesgue measures in
+the coefficients \(q_n\), together with whatever normalization and boundary
+conditions are dictated by the time-sliced construction.  The limit
+\(N_{\rm max}\to\infty\) is then a further analytic step.  The harmonic
+oscillator provides the basic Gaussian example.
 
 \section{The Harmonic Oscillator}
 

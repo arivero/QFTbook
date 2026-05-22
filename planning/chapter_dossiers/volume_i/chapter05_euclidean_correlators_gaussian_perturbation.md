@@ -2,8 +2,10 @@
 
 ## Status
 
-Current status: derivative-interaction/regulator/counterterm block certified
-on 2026-05-22 after handwritten source and rendered-figure audit.
+Current status: spectral/Wick-rotation opening block certified against
+handwritten 253a pp. 15--18 on 2026-05-22; derivative-interaction/regulator
+counterterm block also certified on 2026-05-22 after handwritten source and
+rendered-figure audit.
 
 ## Logical Role
 
@@ -49,7 +51,11 @@ Working framework:
 - Hilbert space with self-adjoint Hamiltonian \(\widehat H\);
 - normalized ground state \(\ket 0\) with energy \(E_0\);
 - complete orthonormal energy eigenbasis in examples with discrete spectrum;
+- projection-valued spectral measure \(P_{\widehat H}\) and the positive
+  two-point spectral measure \(\mu_q\) when continuous spectrum is allowed;
 - Euclidean time \(\tau\) defined from real time \(t\) by \(t=-\ii\tau\);
+- complex-time vacuum-projection contour with endpoint wavefunctions included
+  in the regulated path-integral data;
 - Euclidean action \(S_E\) defined from the Lagrangian after analytic
   continuation;
 - regulated functional integrals understood as mode-cutoff or time-sliced
@@ -61,10 +67,15 @@ Working framework:
 | --- | --- | --- |
 | \(\widehat H\) | self-adjoint operator | Hamiltonian |
 | \(\ket n,E_n\) | eigenstate/eigenvalue | energy basis |
+| \(P_{\widehat H}\) | projection-valued measure | spectral theorem for \(\widehat H\) |
+| \(\eta_q\) | vector | \(\widehat q\ket0\) |
+| \(\mu_q\) | positive Borel measure | \(\mu_q(B)=\langle\eta_q,P_{\widehat H}(B)\eta_q\rangle\) |
 | \(\omega_n\) | nonnegative number | \((E_n-E_0)/\hbar\), or \(E_n-E_0\) after \(\hbar=1\) |
 | \(G(t)\) | distribution/function | real-time two-point function in a specified ordering |
 | \(G_E(\tau)\) | Euclidean Green function | analytic continuation of \(G(t)\) for \(\tau>0\), extended by Euclidean ordering |
 | \(S_E,L_E\) | Euclidean action/Lagrangian | weight \(\exp(-S_E/\hbar)\) |
+| \(\Gamma_{T,t}\) | complex-time contour | vacuum projection and real-time insertion contour |
+| \([Dq]_{\Gamma,\psi}\) | regulated contour path-integral data | includes endpoint wavefunctions of \(\ket\psi\) |
 | \(A\) | positive operator/matrix | Gaussian quadratic kernel |
 | \(A^{-1}\) | covariance | propagator/Green function |
 | \(J\) | source | generates insertions |
@@ -77,7 +88,10 @@ Working framework:
 
 - Euclidean two-point function for \(\tau>0\) by spectral analytic
   continuation.
+- spectral-measure representation of the two-point function.
 - Euclidean ordered \(r\)-point function.
+- complex-contour path-integral representation of the projected real-time
+  correlator.
 - Gaussian expectation and covariance.
 - Wick contraction and complete pairing.
 - Gaussian functional integral with Green function kernel.
@@ -90,9 +104,10 @@ Working framework:
 
 | Claim | Status | Certification |
 | --- | --- | --- |
-| The vacuum two-point function has a lower-half-plane analytic continuation under spectral positivity and suitable convergence hypotheses. | Derived | Spectral expansion |
+| The vacuum two-point function has a lower-half-plane analytic continuation under spectral positivity and suitable convergence hypotheses. | Derived | Spectral expansion and positive spectral-measure representation |
 | Wick rotation \(t=-\ii\tau\) gives exponential Euclidean decay \(e^{-(E_n-E_0)\tau/\hbar}\). | Derived | Spectral expansion |
 | Long Euclidean time projects onto the ground state under overlap and gap assumptions. | Derived | Spectral decomposition |
+| The projected correlator has a regulated complex-time path-integral representation with endpoint wavefunctions included in the contour measure. | Construction | Patched from handwritten pp. 16--17 and rendered on physical PDF page 65 |
 | The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived | Mode expansion and contour integral |
 | Gaussian moments are sums over complete pairings. | Derived | Source differentiation |
 | The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived | Partition combinatorics |
