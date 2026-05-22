@@ -146,9 +146,9 @@ for the vector-current divergence in the three-point function with two axial
 insertions:
 \[
   \partial_\mu
-  \langle\Omega|
+  \bra{\vac}
   \operatorname T\,j^\mu(x)j_A^\nu(y)j_A^\rho(z)
-  |\Omega\rangle .
+  \ket{\vac} .
 \]
 The same oriented triangle graphs as in the local axial anomaly appear, with
 two \(\gamma_5\) insertions.  In the \(D=4-\epsilon\) regulator, split
@@ -171,9 +171,9 @@ inside the regulated contact term.  With the conventions of the preceding
 chapter this gives
 \begin{equation}
   \partial_\mu
-  \langle\Omega|
+  \bra{\vac}
   \operatorname T\,j^\mu(x)j_A^\nu(y)j_A^\rho(z)
-  |\Omega\rangle
+  \ket{\vac}
   =
   -\frac1{6\pi^2}
   \epsilon^{\nu\rho\alpha\beta}
@@ -357,11 +357,11 @@ do not connect distinct pure phases:
 
 Consider a Lorentz-invariant quantum theory in infinite spatial volume with an
 exact continuous internal symmetry group \(G\).  Choose one pure phase and let
-\(\ket{\Omega}\) be its vacuum vector.  The unbroken subgroup is
+\(\ket{\vac}\) be its vacuum vector.  The unbroken subgroup is
 \[
   H
   =
-  \{h\in G:U(h)\ket{\Omega}=\ket{\Omega}\}.
+  \{h\in G:U(h)\ket{\vac}=\ket{\vac}\}.
 \]
 The symmetry is spontaneously broken from \(G\) to \(H\) when \(H\) is a proper
 subgroup.  Let \(\mathfrak g=\operatorname{Lie}(G)\) and
@@ -426,9 +426,9 @@ The spectral input behind \eqref{eq:goldstone-leading-action} is as follows.
 Assume a conserved current \(j_A^\mu\), a local operator \(\mathcal O\), and a
 nonzero order parameter
 \begin{equation}
-  \langle\Omega,[Q_A,\mathcal O(0)]\Omega\rangle
+  \langle\vac,[Q_A,\mathcal O(0)]\vac\rangle
   =
-  \langle\Omega,\delta_A\mathcal O(0)\Omega\rangle
+  \langle\vac,\delta_A\mathcal O(0)\vac\rangle
   \ne0 ,
   \label{eq:goldstone-order-parameter}
 \end{equation}
@@ -436,28 +436,28 @@ where \(Q_A\) is obtained as the infinite-volume limit of smeared charges.
 The Ward identity for the time-ordered distribution is
 \begin{equation}
   \partial_\mu
-  \langle\Omega,T\{j_A^\mu(x)\mathcal O(0)\}\Omega\rangle
+  \langle\vac,T\{j_A^\mu(x)\mathcal O(0)\}\vac\rangle
   =
   -\ii\delta^{(4)}(x)
-  \langle\Omega,\delta_A\mathcal O(0)\Omega\rangle .
+  \langle\vac,\delta_A\mathcal O(0)\vac\rangle .
   \label{eq:goldstone-ward-distribution}
 \end{equation}
 Fourier transforming gives a distribution \(\widehat G_A^\mu(p)\) satisfying
 \[
   p_\mu\widehat G_A^\mu(p)
   =
-  \langle\Omega,\delta_A\mathcal O(0)\Omega\rangle .
+  \langle\vac,\delta_A\mathcal O(0)\vac\rangle .
 \]
 Lorentz covariance implies that the singular part of
 \(\widehat G_A^\mu(p)\) is of the form \(p^\mu F_A(p^2)\).  Since the
 right-hand side is nonzero at \(p=0\), \(F_A(p^2)\) must contain a
-\(1/p^2\) singularity.  In the Kallen--Lehmann language this singularity is a
+\(1/p^2\) singularity.  In the K\"all\'en--Lehmann language this singularity is a
 massless contribution to the current-operator spectral measure.
 
 Equivalently, for each broken direction there are zero-mass one-particle
 states \(\ket{\pi_a(p)}\) created by the current:
 \begin{equation}
-  \bra{\Omega}j_A^\mu(0)\ket{\pi_a(p)}
+  \bra{\vac}j_A^\mu(0)\ket{\pi_a(p)}
   =
   \ii F_{Aa}p^\mu,
   \qquad p^2=0 .
@@ -668,7 +668,7 @@ transforming as
 \end{equation}
 The axial-current normalization is
 \[
-  \bra{\Omega}A^{a\mu}(0)\ket{\pi^b(p)}
+  \bra{\vac}A^{a\mu}(0)\ket{\pi^b(p)}
   =
   \ii f_\pi p^\mu\delta^{ab}.
 \]

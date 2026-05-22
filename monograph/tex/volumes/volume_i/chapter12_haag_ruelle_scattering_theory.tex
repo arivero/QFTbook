@@ -11,7 +11,7 @@ constructed, the scattering operator is a comparison between two Hilbert-space
 identifications: one made in the far past and one made in the far future.
 
 The construction in this chapter is for a massive stable bosonic particle. It
-uses a Hilbert space \(\Hilb\), a vacuum vector \(\Omega\), local operators, the
+uses a Hilbert space \(\Hilb\), a vacuum vector \(\vac\), local operators, the
 Poincare representation, the spectrum condition, and an isolated
 one-particle mass shell. These hypotheses are stated explicitly because the
 large-time limit is a theorem under hypotheses, not an algebraic manipulation
@@ -102,7 +102,7 @@ The particle must be creatable from the vacuum by local operations. In the
 present scalar setting this means that there is a local operator \(A\) such
 that
 \[
-  P_1A\Omega\ne0 .
+  P_1A\vac\ne0 .
 \]
 Choose a Schwartz test function \(\chi\in\mathcal S(\mathbb R^D)\) whose
 Fourier transform is supported in a small neighborhood of the positive mass
@@ -140,7 +140,7 @@ The associated Haag--Ruelle operator is
 \]
 The one-particle vector created by this family is
 \[
-  \psi_h:=P_1B_t(h)\Omega .
+  \psi_h:=P_1B_t(h)\vac .
 \]
 It is independent of \(t\). The role of the phase in \(h_t\) is precisely to
 cancel the free time evolution on the mass shell.
@@ -173,9 +173,9 @@ where
   \qquad
   p=(\omega_{\vec p},\vec p),
 \]
-the one-particle part of \(\hat\phi(x)\Omega\) has the form
+the one-particle part of \(\hat\phi(x)\vac\) has the form
 \[
-  P_1\hat\phi(x)\Omega
+  P_1\hat\phi(x)\vac
   =
   Z_\phi^{1/2}
   \int_{\Sigma_m^+}\dd\mu_m(p)\,
@@ -183,7 +183,7 @@ the one-particle part of \(\hat\phi(x)\Omega\) has the form
 \]
 Here \(Z_\phi>0\) is the residue of the two-point function at this particular
 field's one-particle pole.  All remaining spectral components of
-\(\hat\phi(x)\Omega\) have invariant mass separated from \(m\) by the assumed
+\(\hat\phi(x)\vac\) have invariant mass separated from \(m\) by the assumed
 gap.
 
 Let
@@ -195,7 +195,7 @@ Let
 If \(\tilde f\) is supported in a small neighborhood of \(\Sigma_m^+\) and away
 from the rest of the energy-momentum spectrum, then
 \[
-  \hat\phi_f\Omega
+  \hat\phi_f\vac
   =
   Z_\phi^{1/2}
   \int_{\Sigma_m^+}\dd\mu_m(p)\,
@@ -229,7 +229,7 @@ Define the translated family \(f^{(T)}\) by
 \]
 On the positive mass shell the extra phase is equal to \(1\).  Consequently
 \[
-  P_1\hat\phi_{f^{(T)}}\Omega=P_1\hat\phi_f\Omega
+  P_1\hat\phi_{f^{(T)}}\vac=P_1\hat\phi_f\vac
 \]
 for all \(T\), while the spacetime profile of the smearing function moves.  In
 position space,
@@ -369,7 +369,7 @@ supports. Define the time-dependent vector
 \[
   \Psi_t(h_1,\ldots,h_n)
   =
-  B_{1,t}(h_1)\cdots B_{n,t}(h_n)\Omega .
+  B_{1,t}(h_1)\cdots B_{n,t}(h_n)\vac .
 \]
 
 \begin{theorem}[Haag--Ruelle limits]
@@ -388,7 +388,7 @@ Under the assumptions stated above, the limits
 exist in the norm topology of \(\Hilb\). The limits depend only on the
 one-particle vectors
 \[
-  \psi_j=P_1B_{j,t}(h_j)\Omega\in\Hilb_1,
+  \psi_j=P_1B_{j,t}(h_j)\vac\in\Hilb_1,
   \qquad j=1,\ldots,n,
 \]
 and not on the auxiliary operators \(B_j\) used to interpolate them.
@@ -401,7 +401,7 @@ spacelike at large \(|t|\). Locality then gives rapid decay of commutators
   [B_{i,t}(h_i),B_{j,t}(h_j)]
 \]
 for \(i\ne j\). Second, spectral isolation of the mass shell controls the part
-of \(B_{j,t}(h_j)\Omega\) orthogonal to \(\Hilb_1\). In Cook's method one
+of \(B_{j,t}(h_j)\vac\) orthogonal to \(\Hilb_1\). In Cook's method one
 estimates \(\frac{\dd}{\dd t}\Psi_t\); the commutator terms and the
 orthogonal spectral-error terms are integrable in \(t\), hence
 \(\Psi_t\) is a Cauchy family at \(+\infty\) and at \(-\infty\).
@@ -421,19 +421,19 @@ product to the product of the corresponding one-particle scalar products.
 In the point-field notation above, for two packets with disjoint velocity
 supports one may write
 \[
-  \Psi_T=\hat\phi_{f_1^{(T)}}\hat\phi_{f_2^{(T)}}\Omega .
+  \Psi_T=\hat\phi_{f_1^{(T)}}\hat\phi_{f_2^{(T)}}\vac .
 \]
 For fixed \(\Delta T\),
 \[
 \begin{aligned}
   \langle\Psi_T,\Psi_{T+\Delta T}\rangle
   =
-  \langle\Omega|
+  \bra{\vac}
   \hat\phi_{f_2^{(T)}}^*
   \hat\phi_{f_1^{(T)}}^*
   \hat\phi_{f_1^{(T+\Delta T)}}
   \hat\phi_{f_2^{(T+\Delta T)}}
-  |\Omega\rangle .
+  \ket{\vac} .
 \end{aligned}
 \]
 As \(T\to+\infty\) or \(T\to-\infty\), the two spacetime clusters separate
@@ -441,8 +441,8 @@ spacelike.  The vacuum cluster property gives
 \[
   \langle\Psi_T,\Psi_{T+\Delta T}\rangle
   -
-  \langle\hat\phi_{f_1}\Omega,\hat\phi_{f_1}\Omega\rangle
-  \langle\hat\phi_{f_2}\Omega,\hat\phi_{f_2}\Omega\rangle
+  \langle\hat\phi_{f_1}\vac,\hat\phi_{f_1}\vac\rangle
+  \langle\hat\phi_{f_2}\vac,\hat\phi_{f_2}\vac\rangle
   \longrightarrow 0,
 \]
 and the same limit is obtained for \(\Delta T=0\).  Therefore
@@ -473,7 +473,7 @@ operators eventually commute: it gives an integrable error.
 
 The time derivative of a single approximant has no one-particle component:
 \[
-  P_1\frac{\dd}{\dd t}B_{j,t}(h_j)\Omega=0 .
+  P_1\frac{\dd}{\dd t}B_{j,t}(h_j)\vac=0 .
 \]
 The remaining spectral support lies away from the isolated mass shell.  By
 choosing the energy-momentum support of the smearing function \(\chi\) inside
@@ -524,7 +524,7 @@ For wave packets with disjoint velocity supports, define
   =
   \Psi^{\mathrm{in}}(h_1,\ldots,h_n),
 \]
-where \(\psi_j=P_1B_{j,t}(h_j)\Omega\). The theorem above makes these
+where \(\psi_j=P_1B_{j,t}(h_j)\vac\). The theorem above makes these
 definitions independent of the choice of interpolating operators. By
 linearity and continuity they extend from such vectors to all of
 \(\mathcal F_s(\Hilb_1)\).
@@ -669,8 +669,8 @@ sector is captured by such asymptotic particle data.
 
 The construction above produces the \(S\)-operator from Hilbert-space limits.
 It also identifies what a later reduction formula must compute. If
-\(\psi_j=P_1B_{j,t}(h_j)\Omega\) and
-\(\varphi_i=P_1C_{i,t}(g_i)\Omega\), then an \(m\)-out, \(n\)-in matrix
+\(\psi_j=P_1B_{j,t}(h_j)\vac\) and
+\(\varphi_i=P_1C_{i,t}(g_i)\vac\), then an \(m\)-out, \(n\)-in matrix
 element is
 \[
 \begin{aligned}
@@ -683,12 +683,10 @@ element is
 \\
 &\quad =
   \lim_{T\to+\infty}
-  \left\langle
-  \Omega\left|
+  \bra{\vac}
   C_{m,T}(g_m)^*\cdots C_{1,T}(g_1)^*
   B_{1,-T}(h_1)\cdots B_{n,-T}(h_n)
-  \right|\Omega
-  \right\rangle .
+  \ket{\vac}.
 \end{aligned}
 \]
 For large \(T\), the outgoing packets are localized near future timelike

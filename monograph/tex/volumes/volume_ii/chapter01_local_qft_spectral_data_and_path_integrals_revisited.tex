@@ -1,416 +1,155 @@
-\chapter{Local Data, Spectral Measures, and Green Functions}
+\chapter{Local Data and Kernel Conventions}
 \label{ch:volume-ii-local-data}
 
-\section{Hilbert-Space Data and Poincare Generators}
+\section{Purpose of This Chapter}
 
-The constructions in this volume use the local Hilbert-space data introduced
-earlier. Fix a spacetime dimension \(D\), write \(d=D-1\), and use the
-mostly-plus metric
+The preceding part constructed the local Hilbert-space frameworks, the
+K\"all\'en--Lehmann spectral representation, Haag--Ruelle scattering states,
+and LSZ reduction.  This chapter does not rederive those constructions.  Its
+role is to fix the notation used in the analytic scattering chapters:
+Poincare-action conventions, one-particle normalizations, spectral-threshold
+symbols, and Green-function boundary-value conventions.
+
+\section{Poincare and Field Conventions}
+
+The unitary representation is written
+\[
+  U(a,\Lambda),\qquad
+  U(a,\mathbf 1)=\exp(\ii a^\mu P_\mu),
+\]
+with group law
+\[
+  U(a',\Lambda')U(a,\Lambda)
+  =
+  U(a'+\Lambda'a,\Lambda'\Lambda).
+\]
+The metric is mostly plus,
 \[
   \eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+),
   \qquad
-  p^2=\eta_{\mu\nu}p^\mu p^\nu .
+  p^2=\eta_{\mu\nu}p^\mu p^\nu,
 \]
-The data are:
-\begin{enumerate}
-  \item a Hilbert space \(\Hilb\);
-  \item a strongly continuous unitary representation
-  \(U(\Lambda,a)\) of the proper orthochronous Poincare group, or of its
-  spin cover when spinor fields are present;
-  \item commuting self-adjoint translation generators \(P^\mu\), normalized by
-  \[
-    U(\mathbf 1,a)=\exp\{\ii a^\mu P_\mu\};
-  \]
-  \item the spectrum condition
-  \[
-    \operatorname{Spec}(P)\subset\overline V_+
-    =
-    \{p\in\mathbb R^D:p^0\ge0,\ p^2\le0\};
-  \]
-  \item a Poincare-invariant unit vector \(\Omega\in\Hilb\);
-  \item local observables \(\Obs(O)\) assigned to bounded spacetime regions
-  \(O\), or equivalently a compatible family of operator-valued distributions
-  \(\widehat\Phi_\alpha(x)\) on a common invariant dense domain.
-\end{enumerate}
-The group law is
+and the spectrum condition is
 \[
-  U(\Lambda',a')U(\Lambda,a)
+  \operatorname{Spec}(P)\subset\overline V_+
   =
-  U(\Lambda'\Lambda,\Lambda'a+a') .
+  \{p:p^0\ge0,\ p^2\le0\}.
 \]
-For an infinitesimal transformation
+The vacuum vector is denoted by \(\vac\) and satisfies
 \[
-  \Lambda^\mu{}_\nu=\delta^\mu{}_\nu+\omega^\mu{}_\nu,
-  \qquad
-  a^\mu=\epsilon^\mu,
-  \qquad
-  \omega_{\mu\nu}=-\omega_{\nu\mu},
+  U(a,\Lambda)\vac=\vac .
 \]
-the generators \(P^\mu\) and \(J^{\mu\nu}\) are defined by
-\[
-  U(\Lambda,a)
-  =
-  1+\ii\epsilon^\mu P_\mu
-  +\frac{\ii}{2}\omega_{\mu\nu}J^{\mu\nu}
-  +O(\epsilon^2,\omega^2,\epsilon\omega).
-\]
-When a conserved stress tensor \(T^{\mu\nu}\) is available, the corresponding
-charges have the structural form
-\[
-  P^\mu=\int_{\Sigma_t}\dd^d\vec x\,T^{0\mu}(t,\vec x),
-\]
-and
-\[
-  J^{\mu\nu}
-  =
-  \int_{\Sigma_t}\dd^d\vec x\,
-  \bigl(x^\mu T^{0\nu}(t,\vec x)-x^\nu T^{0\mu}(t,\vec x)\bigr).
-\]
-In an interacting continuum theory these formulae require the same regulator,
-domain, and renormalization choices as the stress tensor itself. The displayed
-integrals specify the covariance charges when those choices have been made.
 
-The vacuum condition is
+For a local field transforming in a finite-dimensional Lorentz
+representation \(R\),
 \[
-  P^\mu\Omega=0,
-  \qquad
-  J^{\mu\nu}\Omega=0 .
-\]
-A local field with Lorentz index \(\alpha\) transforms as
-\[
-  U(\Lambda,a)^{-1}\widehat\Phi_\alpha(x)U(\Lambda,a)
+  U(a,\Lambda)^{-1}\widehat\Phi_\alpha(x)U(a,\Lambda)
   =
-  R(\Lambda)_\alpha{}^\beta\,
-  \widehat\Phi_\beta(\Lambda x+a),
+  R(\Lambda)_\alpha{}^\beta\widehat\Phi_\beta(\Lambda x+a).
 \]
-where \(R\) is the finite-dimensional Lorentz representation appropriate to
-the field.  This active/passive convention is the one used in the scattering
-chapters: the unitary representation translates states by \(U\), while the
-coordinate argument of a field is translated by conjugation with \(U^{-1}\) on
-the left. Since fields are distributions, this identity means equality after
-smearing against test functions. For translations it gives
+Thus translations give
 \[
   \widehat\Phi_\alpha(x)
   =
-  \exp\{-\ii x^\mu P_\mu\}\widehat\Phi_\alpha(0)
-  \exp\{\ii x^\mu P_\mu\}.
+  \ee^{-\ii x^\mu P_\mu}\widehat\Phi_\alpha(0)
+  \ee^{\ii x^\mu P_\mu}.
 \]
-Locality means that if \(O_1\) and \(O_2\) are spacelike separated, bounded
-observables \(A_i\in\Obs(O_i)\) commute. For fields, the corresponding
-statement is imposed after smearing with test functions whose supports are
-spacelike separated.
+All such identities are identities of smeared operator-valued distributions on
+the stated common domains.
 
-These data support several constructions, each with its own hypotheses:
-\[
-\begin{tikzpicture}[>=Stealth,scale=0.92,
-  box/.style={draw,thick,align=center,minimum width=3.05cm,
-    minimum height=0.92cm,fill=blue!4},
-  arr/.style={->,thick}]
-  \node[box] (local) at (0,0) {Poincare-local\\Hilbert data};
-  \node[box] (spectral) at (4.15,0) {spectral\\measures};
-  \node[box] (greens) at (8.3,0) {Green-function\\distributions};
-  \node[box,fill=green!5] (scatter) at (4.15,-1.85)
-    {asymptotic states\\and kernels};
-  \node[box,fill=orange!7] (ren) at (8.3,-1.85)
-    {renormalized\\continuum limits};
-  \draw[arr] (local)--(spectral);
-  \draw[arr] (spectral)--(greens);
-  \draw[arr] (spectral)--(scatter);
-  \draw[arr] (greens)--(scatter);
-  \draw[arr] (greens)--(ren);
-\end{tikzpicture}
-\]
-The first arrow is the joint spectral theorem applied to \(P^\mu\). The arrows
-to scattering use isolated one-particle spectral support and large-time
-limits. The arrow to renormalized continuum limits uses regulated correlation
-functions and locality of counterterms.
+\section{One-Particle Normalization}
 
-\section{One-Particle States Created by Local Fields}
-
-Let \(m>0\) and let
+For a stable scalar species of mass \(m>0\),
 \[
   \Sigma_m^+
   =
-  \{p\in\mathbb R^D:p^0=\omega_{\vec p},\ p^2=-m^2\},
-  \qquad
-  \omega_{\vec p}=(\vec p^{\,2}+m^2)^{1/2}.
+  \{(\omega_{\vec p},\vec p):\omega_{\vec p}=(\vec p^{\,2}+m^2)^{1/2}\}
 \]
-An isolated one-particle species is represented by a spectral subspace
-supported on \(\Sigma_m^+\) and separated from the rest of the spectrum by a
-mass gap in a neighborhood of the shell. Delta-normalized momentum vectors
-\(|\vec p\rangle_\delta\) obey
+is the positive mass shell.  Delta-normalized vectors and covariantly
+normalized vectors are related by
 \[
-  {}_\delta\langle\vec q\,|\vec p\rangle_\delta
+  \ket{\vec p}
+  =
+  \bigl((2\pi)^d2\omega_{\vec p}\bigr)^{1/2}\ket{\vec p}_\delta,
+\]
+with
+\[
+  {}_\delta\!\braket{\vec q}{\vec p}_\delta
   =
   \delta^d(\vec q-\vec p),
   \qquad
-  P^i|\vec p\rangle_\delta=p^i|\vec p\rangle_\delta,
-  \qquad
-  P^0|\vec p\rangle_\delta=\omega_{\vec p}|\vec p\rangle_\delta .
-\]
-Covariantly normalized generalized vectors are
-\[
-  |\vec p\rangle
+  \braket{\vec q}{\vec p}
   =
-  \bigl((2\pi)^d2\omega_{\vec p}\bigr)^{1/2}
-  |\vec p\rangle_\delta,
-  \qquad
-  \langle\vec q\,|\vec p\rangle
+  (2\pi)^d2\omega_{\vec p}\delta^d(\vec q-\vec p).
+\]
+The invariant mass-shell measure is
+\[
+  \dd\mu_m(\vec p)
   =
-  (2\pi)^d2\omega_{\vec p}\,\delta^d(\vec q-\vec p).
+  \frac{\dd^d\vec p}{(2\pi)^d2\omega_{\vec p}} .
 \]
 
-For a scalar local field \(\widehat\phi\), the one-particle matrix element is
-specified by a nonnegative constant \(Z_\phi\):
+If a scalar interpolating field \(\widehat\phi\) creates the species, its
+one-particle residue is fixed by
 \[
-  \langle\vec p\,|\widehat\phi(0)|\Omega\rangle=Z_\phi^{1/2}.
+  \bra{\vac}\widehat\phi(0)\ket{\vec p}=Z_\phi^{1/2},
+  \qquad Z_\phi>0.
 \]
-Equivalently, in delta normalization,
-\[
-  {}_\delta\langle\vec p\,|\widehat\phi(0)|\Omega\rangle
-  =
-  \left(\frac{Z_\phi}{(2\pi)^d2\omega_{\vec p}}\right)^{1/2}.
-\]
-Using translation covariance, the field applied to the vacuum has the
-decomposition
-\[
-\begin{aligned}
-  \widehat\phi(x)\Omega
-  &=
-  \int \dd^d\vec p\,
-  \ee^{-\ii\vec p\cdot\vec x+\ii\omega_{\vec p}x^0}
-  \left(\frac{Z_\phi}{(2\pi)^d2\omega_{\vec p}}\right)^{1/2}
-  |\vec p\rangle_\delta
-\\
-  &\quad
-  +\int_{\mathrm{cont}}\dd\alpha\,
-  \ee^{-\ii p_\alpha\cdot x}
-  \langle\alpha|\widehat\phi(0)|\Omega\rangle\,|\alpha\rangle .
-\end{aligned}
-\]
-The second integral denotes the part of the spectral decomposition supported
-away from the isolated one-particle shell, including multiparticle states
-with the same quantum numbers as \(\widehat\phi\). Thus \(Z_\phi\) is the
-one-particle overlap of the chosen interpolating field. If \(Z_\phi=0\), that
-particular field does not create the particle from the vacuum, although a
-different local or composite field may.
+This \(Z_\phi\) is the atom of the K\"all\'en--Lehmann measure at
+\(\mu^2=m^2\), as derived in Chapter~\ref{ch:kallen-lehmann}.  The symbol
+\(M_{\rm cont}\) denotes the lowest invariant mass in the continuous spectral
+support with the same quantum numbers.  When the first continuum consists of
+two particles of the same mass \(m\), \(M_{\rm cont}=2m\).
 
-\section{Positive Spectral Measures}
+\section{Green-Function Boundary Values}
 
-Let \(E(\Delta)\) be the joint spectral projection of \(P^\mu\) for a Borel
-set \(\Delta\subset\mathbb R^D\). If
-\[
-  v_\alpha=\widehat\Phi_\alpha(f)\Omega ,
-\]
-then
-\[
-  \nu_{\Phi,f}(\Delta)
-  =
-  \langle v_\alpha,E(\Delta)v_\alpha\rangle_{\Hilb}
-\]
-is a positive Borel measure on momentum space. It records the
-energy-momentum content created from the vacuum by the smeared local field.
-
-For a scalar field \(\widehat\phi\), translation invariance, Lorentz
-covariance, the spectrum condition, and Hilbert-space positivity imply that
-the two-point Wightman distribution has the K\"all\'en--Lehmann form
-\[
-  W_2(x-y)
-  =
-  \langle\Omega|\widehat\phi(x)\widehat\phi(y)|\Omega\rangle
-  =
-  \int_0^\infty \dd\rho_\phi(\mu^2)\,
-  \Delta_+(x-y;\mu^2),
-\]
-where \(\dd\rho_\phi\) is a positive Borel measure on \([0,\infty)\), and
-\[
-  \Delta_+(x;\mu^2)
-  =
-  \int\frac{\dd^D k}{(2\pi)^{D-1}}\,
-  \theta(k^0)\delta(k^2+\mu^2)\,\ee^{\ii k\cdot x}.
-\]
-Positivity of \(\dd\rho_\phi\) is not an additional dynamical assumption in
-this derivation. It is the positivity of Hilbert-space norms applied to the
-spectral projections of \(\widehat\phi(f)\Omega\).
-
-If a stable scalar particle of mass \(m\) is created by \(\widehat\phi\), the
-spectral measure contains an atom
-\[
-  \dd\rho_\phi(\mu^2)
-  =
-  Z_\phi\,\delta(\mu^2-m^2)\,\dd\mu^2
-  +
-  \dd\rho_{\phi,\mathrm c}(\mu^2),
-  \qquad
-  Z_\phi>0.
-\]
-The continuous part begins at the lowest invariant mass accessible to the
-field with the same quantum numbers. If the first such continuum consists of
-two particles of mass \(m\), the threshold is at \(\mu=2m\).
-
-\begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.98]
-  \draw[->,line width=0.7pt] (0,0)--(7.25,0) node[right] {$\mu$};
-  \draw[->,line width=0.7pt] (0,0)--(0,3.1)
-    node[above] {$\rho_\phi(\mu^2)$};
-  \draw[blue!75!black,line width=1.35pt] (1.85,0)--(1.85,2.78);
-  \node[blue!75!black,below] at (1.85,-0.1) {$m$};
-  \node[blue!75!black,anchor=west] at (2.08,2.78)
-    {$Z_\phi\delta(\mu^2-m^2)$};
-  \draw[dashed,line width=0.75pt] (3.65,0)--(3.65,1.05);
-  \node[red!75!black,below] at (3.65,-0.1) {$2m$};
-  \draw[red!75!black,line width=1.4pt]
-    (3.65,0.06) .. controls (3.95,0.85) and (4.45,1.42) .. (5.18,1.33)
-    .. controls (5.9,1.24) and (6.38,0.78) .. (6.86,0.58);
-  \node[red!75!black,align=center] at (5.78,2.24)
-    {multiparticle\\continuum};
-  \draw[red!75!black,->,line width=0.7pt] (5.56,1.78)--(5.08,1.24);
-  \draw[decorate,decoration={brace,amplitude=5pt},gray!75]
-    (1.98,0.55)--(3.45,0.55);
-  \node[gray!70!black] at (2.72,0.92) {gap};
-\end{tikzpicture}
-\end{center}
-
-The atom supplies the one-particle Hilbert space and the pole residue used in
-LSZ. The continuous support supplies threshold data, branch cuts of Green
-functions, and the channels in which bound states or resonances may appear.
-
-\section{Lorentzian and Euclidean Green Functions}
-
-For local fields \(\widehat\Phi_{a_1},\ldots,\widehat\Phi_{a_N}\), where
-\(a_i\) denotes all tensor, spinor, and species labels, define the
-time-ordered distribution
+For local fields \(\widehat\Phi_{a_1},\ldots,\widehat\Phi_{a_N}\), the
+time-ordered distribution is
 \[
   G_{a_1\cdots a_N}(x_1,\ldots,x_N)
   =
-  \langle\Omega|
+  \bra{\vac}
   \operatorname T\{
-    \widehat\Phi_{a_1}(x_1)\cdots
-    \widehat\Phi_{a_N}(x_N)
+    \widehat\Phi_{a_1}(x_1)\cdots\widehat\Phi_{a_N}(x_N)
   \}
-  |\Omega\rangle .
+  \ket{\vac}.
 \]
-This is a distributional matrix element. Products at coincident points require
-a specified time-ordering prescription or a renormalized definition of
-composite insertions.
+Products at coincident points require a specified time-ordering prescription
+or a renormalized composite-operator convention.
 
-For a scalar field, the same positive spectral measure gives
+For a scalar two-point function, the positive spectral measure gives the
+boundary-value formula
 \[
   G_2(x)
   =
   \int_0^\infty \dd\rho_\phi(\mu^2)\,\Delta_F(x;\mu^2),
 \]
-with
+where
 \[
   \Delta_F(x;\mu^2)
   =
-  -\ii
-  \int\frac{\dd^D k}{(2\pi)^D}\,
+  -\ii\int\frac{\dd^D k}{(2\pi)^D}
   \frac{\ee^{\ii k\cdot x}}{k^2+\mu^2-\ii0}.
 \]
-The \(-\ii0\) is the boundary-value prescription associated with time
-ordering in the mostly-plus convention.
-
-Euclidean points are written \(x_E=(\vec x,\tau)\in\mathbb R^D\), with
-\(x^0=-\ii\tau\). When Schwinger functions \(S_N\) have been constructed and
-satisfy the reconstruction hypotheses, the scalar two-point Schwinger
-function has the representation
+The Euclidean two-point Schwinger function, when OS reconstruction hypotheses
+are satisfied, is
 \[
   S_2(x_E)
   =
-  \int_0^\infty \dd\rho_\phi(\mu^2)\,\Delta_E(x_E;\mu^2),
-\]
-where
-\[
-  \Delta_E(x_E;\mu^2)
-  =
-  \int\frac{\dd^D k_E}{(2\pi)^D}\,
+  \int_0^\infty \dd\rho_\phi(\mu^2)\,
+  \int\frac{\dd^D k_E}{(2\pi)^D}
   \frac{\ee^{\ii k_E\cdot x_E}}{k_E^2+\mu^2}.
 \]
-The passage between Wightman, time-ordered, and Euclidean functions is
-controlled by spectral support, analyticity domains, and reconstruction
-conditions. In perturbation theory it is implemented as a contour and
-boundary-value calculation. In a constructive Euclidean framework it is part
-of the reconstruction problem.
+The passage among Wightman, time-ordered, and Euclidean functions is governed
+by the tube-domain and OS hypotheses stated in the foundational chapters.  In
+the present part these formulas serve only as notation and as inputs to LSZ,
+dispersion theory, and threshold analysis.
 
-\section{Wick Rotation and Regulated Functional Integrals}
+\section{Regulated Functional Integrals as Downstream Data}
 
-For ordered insertions in an analyticity domain, the rotation from Lorentzian
-time to Euclidean time is represented by
-\[
-  x_a^0=\ee^{-\ii\alpha}\tau_a,
-  \qquad
-  \alpha:0\longrightarrow \frac{\pi}{2},
-  \qquad
-  x_a^D=\tau_a .
-\]
-At \(\alpha=\pi/2\), the insertions lie on the Euclidean time axis.
-
-\begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.86]
-  \draw[->,line width=0.7pt] (-4.2,0)--(4.4,0)
-    node[below right] {$\operatorname{Re}x^0$};
-  \draw[->,line width=0.7pt] (0,-3.4)--(0,3.0)
-    node[above] {$-\operatorname{Im}x^0$};
-  \draw[green!45!black,line width=1.25pt,->]
-    (-3.6,-1.05) .. controls (-2.05,-0.55) and (-0.7,-0.1) .. (0,0);
-  \draw[green!45!black,line width=1.25pt]
-    (0,0) .. controls (1.15,0.24) and (2.45,0.53) .. (3.45,0.78);
-  \node[green!45!black,below left] at (-3.5,-1.0) {$C$};
-  \foreach \x/\y/\lab in {-2.9/-0.86/x_n^0,1.12/0.25/x_2^0,2.35/0.54/x_1^0} {
-    \fill[red!75!black] (\x,\y) circle (2.2pt);
-    \node[red!75!black,below] at (\x,\y-0.06) {\(\lab\)};
-  }
-  \node[red!75!black] at (-1.85,-0.48) {\(\cdots\)};
-  \draw[red!75!black,->,line width=0.75pt] (1.62,0.42)--(2.42,0.6);
-  \node[red!75!black,above] at (2.22,0.88) {time ordered};
-  \foreach \y/\lab in {2.0/\tau_1,0.82/\tau_2,-2.55/\tau_n} {
-    \fill[purple!80!black] (0,\y) circle (2.2pt);
-    \node[purple!80!black,right] at (0.15,\y) {\(\lab\)};
-  }
-  \node[purple!80!black,right] at (0.16,-0.92) {\(\vdots\)};
-  \node[purple!80!black,below right] at (0.18,-3.0) {Euclidean};
-  \draw[orange!85!black,line width=1.0pt,->]
-    (2.18,0.76) .. controls (2.76,1.52) and (1.15,1.92) .. (0.18,2.02);
-  \draw[orange!85!black,line width=1.0pt,->]
-    (-2.7,-1.03) .. controls (-2.0,-2.2) and (-0.82,-2.52) .. (-0.15,-2.55);
-  \node[blue!70!black,align=left] at (5.95,1.7)
-    {\(\displaystyle x_a^0=\ee^{-\ii\alpha}\tau_a\)\\[3pt]
-     \(\displaystyle \alpha:0\to\frac{\pi}{2}\)\\[3pt]
-     \(\displaystyle x_a^D=\tau_a\)};
-\end{tikzpicture}
-\end{center}
-
-For a scalar Lagrangian whose analytic continuation is defined by the chosen
-regulator, write
-\[
-  S=\int\dd^D x\,\mathcal L[\phi],
-  \qquad
-  S_E=\int\dd^D x_E\,\mathcal L_E[\phi],
-\]
-with
-\[
-  \mathcal L_E[\phi]
-  =
-  -\mathcal L[\phi]\big|_{x^0\to-\ii x_E^D,\ \vec x=\vec x_E}
-\]
-after the continuation of time derivatives and tensor components has been
-specified. The Euclidean functional integral is then a regulated construction
-of Schwinger functions. Let \(\Lambda\) be a regulator scale. A regulated
-Euclidean field configuration space is denoted by \(\mathcal C_\Lambda\), and
-its integration symbol by \(D_\Lambda\varphi\). This symbol denotes the
-finite-dimensional or otherwise regulated integration supplied by the
-regulator; it is not an unregulated measure on all distributions.
-
-The regulated action is a functional
-\[
-  S_{\Lambda,E}[\varphi;g_I(\Lambda)]
-  =
-  \sum_I g_I(\Lambda) O_{I,\Lambda}[\varphi],
-\]
-where \(O_{I,\Lambda}\) are regulated local or quasi-local functionals and
-\(g_I(\Lambda)\) are cutoff-dependent coefficients. For a source \(J\), the
-regulated generating functional is
+Regulated path integrals are used later to compute Green functions and their
+renormalized limits.  If \(\Lambda\) is a regulator and \(J\) is a source, the
+notation
 \[
   Z_\Lambda[J]
   =
@@ -418,47 +157,13 @@ regulated generating functional is
   \exp\left(
     -S_{\Lambda,E}[\varphi;g_I(\Lambda)]
     +\int \dd^D x_E\,J(x_E)\varphi(x_E)
-  \right).
+  \right)
 \]
-Regulated \(N\)-point functions are obtained by differentiating
-\[
-  \langle\varphi(x_1)\cdots\varphi(x_N)\rangle_\Lambda
-  =
-  \frac{1}{Z_\Lambda[0]}
-  \frac{\delta^N Z_\Lambda[J]}
-  {\delta J(x_1)\cdots\delta J(x_N)}
-  \bigg|_{J=0}.
-\]
-
-A continuum Schwinger function is a limit
-\[
-  S_N(x_1,\ldots,x_N)
-  =
-  \lim_{\Lambda\to\infty}
-  \langle\varphi(x_1)\cdots\varphi(x_N)\rangle_\Lambda
-\]
-in a specified distribution topology, after choosing the cutoff dependence of
-the coefficients \(g_I(\Lambda)\). Existence of this limit is a dynamical
-claim. Perturbative renormalization proves the existence of finite formal
-coefficients order by order in selected classes of theories; constructive
-methods prove stronger nonperturbative statements in selected models.
-
-\begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.94,
-  box/.style={draw,thick,align=center,minimum width=3.25cm,
-    minimum height=0.86cm,fill=green!5},
-  arr/.style={->,thick}]
-  \node[box] (cutoff) at (0,0)
-    {cutoff data\\\(\mathcal C_\Lambda,S_{\Lambda,E}\)};
-  \node[box] (coeff) at (4.35,0)
-    {local coefficients\\\(g_I(\Lambda)\)};
-  \node[box] (corr) at (8.7,0)
-    {regulated\\correlators};
-  \node[box,fill=orange!7] (limit) at (4.35,-1.85)
-    {distributional\\continuum limit};
-  \draw[arr] (cutoff)--(coeff);
-  \draw[arr] (coeff)--(corr);
-  \draw[arr] (corr)--(limit);
-  \draw[arr] (coeff)--(limit);
-\end{tikzpicture}
-\end{center}
+means the finite-dimensional or otherwise regulated integral specified by the
+chosen cutoff.  A continuum Schwinger function is a distributional limit of
+source derivatives of \(Z_\Lambda\), after the cutoff dependence of the
+coefficients \(g_I(\Lambda)\) has been chosen.  Existence of such a limit
+requires a renormalization or construction theorem: the notation records the
+regulated objects and the topology of the intended limit.
+The systematic renormalized-source treatment begins in the renormalization and
+effective-action chapters.

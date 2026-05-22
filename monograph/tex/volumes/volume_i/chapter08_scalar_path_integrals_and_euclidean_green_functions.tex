@@ -108,9 +108,9 @@ Vacuum correlation functions avoid direct use of field-configuration
 eigenvectors. For points \(x_a=(x_a^0,\vec x_a)\), the basic Lorentzian
 operator distributions are
 \[
-  \langle\Omega|
+  \bra{\vac}
   \widehat\phi(x_1)\cdots\widehat\phi(x_n)
-  |\Omega\rangle.
+  \ket{\vac}.
 \]
 These are distributions in the spacetime variables, and their analytic
 continuations require spectral and growth assumptions.
@@ -306,9 +306,9 @@ correlator with \(t_1>\cdots>t_n\):
 \[
   \langle\phi(x_{E,1})\cdots\phi(x_{E,n})\rangle_E
   \longrightarrow
-  \langle\Omega|
+  \bra{\vac}
   \operatorname{T}\{\widehat\phi(x_1)\cdots\widehat\phi(x_n)\}
-  |\Omega\rangle.
+  \ket{\vac}.
 \]
 Here \(\operatorname{T}\) denotes time ordering of the operator-valued
 distributions.
@@ -533,13 +533,13 @@ with test functions or after the contour integral has been evaluated.
 \section{Three Green Functions}
 
 Let \(\widehat\phi\) be a scalar operator-valued distribution with vacuum
-\(\Omega\). The Wightman \(n\)-point distribution is
+\(\vac\). The Wightman \(n\)-point distribution is
 \[
   W_n(x_1,\ldots,x_n)
   =
-  \langle\Omega|
+  \bra{\vac}
   \widehat\phi(x_1)\cdots\widehat\phi(x_n)
-  |\Omega\rangle.
+  \ket{\vac}.
 \]
 The order displayed in the formula is part of the definition.
 
@@ -547,11 +547,11 @@ For distinct time coordinates, the time-ordered Green function is
 \[
   G_{T,n}(x_1,\ldots,x_n)
   =
-  \langle\Omega|
+  \bra{\vac}
   \operatorname{T}\{
     \widehat\phi(x_1)\cdots\widehat\phi(x_n)
   \}
-  |\Omega\rangle.
+  \ket{\vac}.
 \]
 If
 \[
@@ -566,9 +566,11 @@ then
 Coincident-time prescriptions are contact-term data and must be fixed in the
 chosen operator or path-integral framework.
 
-The Euclidean Green function, also called the Schwinger function, is a
-distribution in Euclidean points \(x_{E,a}=(\tau_a,\vec x_a)\). When the
-analytic continuation from Wightman functions exists and
+The Euclidean Green function is a distribution in Euclidean points
+\(x_{E,a}=(\tau_a,\vec x_a)\).  It is denoted \(G_{E,n}\) in this
+path-integral construction.  When the same distributions are used as OS
+reconstruction data, they are denoted \(S_n\) and called Schwinger functions.
+When the analytic continuation from Wightman functions exists and
 \[
   \tau_{i_1}>\tau_{i_2}>\cdots>\tau_{i_n},
 \]

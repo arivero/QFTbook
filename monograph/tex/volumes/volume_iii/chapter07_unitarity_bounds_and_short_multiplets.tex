@@ -36,7 +36,7 @@ charges.  The commutator used below is
 \begin{equation}
   [\widehat K_\mu,\widehat P_\nu]
   =
-  2\delta_{\mu\nu}\widehat D-2\widehat J_{\nu\mu},
+  2\delta_{\mu\nu}\widehat D_{\rm rad}-2\widehat J_{\nu\mu},
   \label{eq:radial-pk-commutator}
 \end{equation}
 where \(\widehat J_{\mu\nu}\) acts on the spin indices of the operator
@@ -46,7 +46,7 @@ Euclidean inner products.
 Let \(\ket{\mathcal O_a}\) be a primary of dimension \(\Delta\) and spin
 representation \(\rho\), normalized so that
 \[
-  \widehat D\ket{\mathcal O_a}=\Delta\ket{\mathcal O_a},
+  \widehat D_{\rm rad}\ket{\mathcal O_a}=\Delta\ket{\mathcal O_a},
   \qquad
   \widehat K_\mu\ket{\mathcal O_a}=0.
 \]
@@ -63,7 +63,7 @@ Using \(\widehat K_\mu\ket{\mathcal O_b}=0\) and the conformal algebra gives
   =
   2
   \bra{\mathcal O_a}
-  (\delta_{\mu\nu}\widehat D-\widehat J_{\nu\mu})
+  (\delta_{\mu\nu}\widehat D_{\rm rad}-\widehat J_{\nu\mu})
   \ket{\mathcal O_b}.
 \]
 This equation is a representation-theoretic constraint.  Positivity of
@@ -72,7 +72,7 @@ This equation is a representation-theoretic constraint.  Positivity of
 
 The Hilbert-space convention is the following.  A primary multiplet is a
 finite-dimensional subspace \(V_\rho\subset\mathcal H_{\rm rad}\) on which
-\(\widehat D\) acts by the scalar \(\Delta\), and the rotation generators act
+\(\widehat D_{\rm rad}\) acts by the scalar \(\Delta\), and the rotation generators act
 as a unitary \(SO(D)\) representation.  Descendants are obtained by applying
 the closed operators \(\widehat P_\mu\) on their common finite-energy
 invariant domain.  Positivity is imposed on every finite Gram matrix of
@@ -133,7 +133,7 @@ primary,
 This formula is obtained by commuting the two \(\widehat K\)'s to the right
 until they annihilate the primary.  No dynamical equation has been assumed; the
 only inputs are \eqref{eq:radial-pk-commutator}, the scalar action of
-\(\widehat D\), and the vanishing spin action on \(\ket{\phi}\).
+\(\widehat D_{\rm rad}\), and the vanishing spin action on \(\ket{\phi}\).
 Contracting with \(\delta^{\alpha\beta}\delta^{\mu\nu}\) computes the norm of
 \(\widehat P^2\ket{\phi}\):
 \begin{equation}

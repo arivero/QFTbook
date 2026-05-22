@@ -1,6 +1,6 @@
 # Volume III, Chapter 7 Dossier: Unitarity Bounds And Short Multiplets
 
-## Source Position
+## Logical Role
 
 - Role in the monograph: derive CFT unitarity bounds from radial Hilbert-space
   positivity, the adjointness \(P_\mu^\dagger=K_\mu\), and conformal
@@ -9,9 +9,9 @@
   transformations.
 - Immediate successor: correlation functions and conformal frames.
 
-## Construction Task
+## Definitions And Results
 
-The chapter must define and control:
+The chapter establishes:
 
 - the radial Hilbert-space domain on which finite descendant Gram matrices are
   formed;
@@ -29,7 +29,7 @@ The chapter must define and control:
 - conservation and free-field equations as null-state equations in the
   quotient local-operator space.
 
-## Claim Ledger
+## Claims To Verify
 
 1. Positivity of finite descendant Gram matrices is inherited from radial
    reflection positivity.
@@ -44,12 +44,12 @@ The chapter must define and control:
    \(\Delta+\frac12(C_Q-C_1-C_\rho)\ge0\) for
    \(Q\subset\mathcal H_1\otimes\rho\).
 
-## Figure Requirements
+## Figures
 
 - No figure is required; the chapter is algebraic.  Future diagrams should be
   reserved for representation decompositions only if they clarify notation.
 
-## Audit Notes
+## Checks
 
 - Keep all bounds tied to a positive radial Hilbert space and a specified
   null quotient.

@@ -431,9 +431,9 @@ The Lorentzian Feynman boundary value therefore gives, for
 \(\mu,\nu=0,1,2\),
 \[
 \begin{aligned}
-  &\langle\Omega|
+  &\bra{\vac}
   \operatorname T\{\widehat A_\mu(x)\widehat A_\nu(y)\}
-  |\Omega\rangle_{\mathrm{ax}}  \\
+  \ket{\vac}_{\mathrm{ax}}  \\
   &=
   \int\frac{\dd^4k}{(2\pi)^4}\,
   \ee^{\ii k\cdot(x-y)}
@@ -453,11 +453,11 @@ contact terms fixed by the definition of time ordering, the \(k_\mu k_\nu\)
 part of the axial propagator cancels:
 \[
 \begin{aligned}
-  &\langle\Omega|
+  &\bra{\vac}
   \operatorname T\{
     \widehat F_{\mu\nu}(x)\widehat F_{\rho\sigma}(y)
   \}
-  |\Omega\rangle  \\
+  \ket{\vac}  \\
   &=
   \int\frac{\dd^4k}{(2\pi)^4}\,
   \ee^{\ii k\cdot(x-y)}
@@ -594,9 +594,9 @@ The verification is
 The Feynman two-point function of the representative field is
 \[
 \begin{aligned}
-  &\langle\Omega|
+  &\bra{\vac}
   \operatorname T\{\widehat A_\mu(x)\widehat A_\nu(y)\}
-  |\Omega\rangle_{\xi_{\mathrm g}}  \\
+  \ket{\vac}_{\xi_{\mathrm g}}  \\
   &=
   \int\frac{\dd^4k}{(2\pi)^4}
   \ee^{\ii k\cdot(x-y)}
@@ -638,15 +638,15 @@ antisymmetrization.
 The Wightman two-point function has the one-photon spectral form
 \[
 \begin{aligned}
-  &\langle\Omega|
+  &\bra{\vac}
   \widehat F_{\mu\nu}(x)\widehat F_{\rho\sigma}(y)
-  |\Omega\rangle  \\
+  \ket{\vac}  \\
   &=
   \sum_{h=\pm1}
   \int
   \frac{\dd^3\vec k}{(2\pi)^3\,2|\vec k|}
-  \langle\Omega|\widehat F_{\mu\nu}(x)|k,h\rangle
-  \langle k,h|\widehat F_{\rho\sigma}(y)|\Omega\rangle ,
+  \bra{\vac}\widehat F_{\mu\nu}(x)|k,h\rangle
+  \langle k,h|\widehat F_{\rho\sigma}(y)\ket{\vac} ,
 \end{aligned}
 \]
 where the sharp states are generalized one-particle vectors in the sense of
@@ -654,7 +654,7 @@ Section~\ref{sec:rigged-hilbert-continuous-spectrum}. With the helicity
 representatives of
 Chapter~\ref{ch:massless-particles-helicity-gauge-redundancy},
 \[
-  \langle k,h|\widehat F_{\mu\nu}(x)|\Omega\rangle
+  \langle k,h|\widehat F_{\mu\nu}(x)\ket{\vac}
   =
   Z_A^{1/2}\ee^{-\ii k\cdot x}
   \left(

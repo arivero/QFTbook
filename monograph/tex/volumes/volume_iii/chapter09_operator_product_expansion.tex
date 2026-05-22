@@ -7,7 +7,7 @@ Let \(\mathcal O_i(x)\) and \(\mathcal O_j(0)\) be local operators inserted
 inside a sphere of radius \(R\), and let all other insertions lie outside that
 sphere.  Radial quantization turns the product
 \[
-  \mathcal O_i(x)\mathcal O_j(0)\ket{\Omega},
+  \mathcal O_i(x)\mathcal O_j(0)\ket{\vac},
   \qquad |x|<R,
 \]
 into a state on \(S_R^{D-1}\).  Since the Hilbert space on the sphere is
@@ -27,12 +27,12 @@ correlation functions with all other insertions farther from the origin than
 \(|x|\), or equivalently as a Hilbert-space expansion on the separating
 sphere.
 
-Equivalently, write \(x=e^\tau\Omega_x\) under the Weyl map
+Equivalently, write \(x=\ee^\tau n_x\) under the Weyl map
 \(\R^D\setminus\{0\}\simeq\R_\tau\times S^{D-1}\).  For scalar primaries,
-\(\mathcal O_i(x)=|x|^{-\Delta_i}\widetilde{\mathcal O}_i(\tau,\Omega_x)\),
+\(\mathcal O_i(x)=|x|^{-\Delta_i}\widetilde{\mathcal O}_i(\tau,n_x)\),
 so the product creates the cylinder state
 \[
-  \widetilde{\mathcal O}_i(\tau,\Omega_x)\ket{\mathcal O_j}
+  \widetilde{\mathcal O}_i(\tau,n_x)\ket{\mathcal O_j}
   \in\mathcal H_{S^{D-1}}.
 \]
 The OPE is the statement that this state is represented, in every exterior
@@ -51,7 +51,7 @@ operator spectrum and the conformal representation theory of descendants.
   Consider a reflection-positive CFT whose Hilbert space on \(S^{D-1}\) has a
   nonnegative self-adjoint dilatation operator with discrete spectrum of finite
   multiplicity below every finite energy.  Let
-  \(\mathcal O_i(x)\mathcal O_j(0)\Omega\) be inserted inside a sphere of
+  \(\mathcal O_i(x)\mathcal O_j(0)\vac\) be inserted inside a sphere of
   radius \(r\), and let all remaining insertions lie outside radius \(R>r\).
   Then the expansion of this state in eigenspaces of the dilatation operator
   converges in Hilbert norm for \(r<R\), and the resulting OPE converges inside
@@ -366,7 +366,7 @@ points in a plane at
 \[
   x_1=\rho,\qquad x_2=-\rho,\qquad x_3=-1,\qquad x_4=1,
   \qquad
-  \rho=re^{\ii\alpha},\quad 0\le r<1.
+  \rho=r\ee^{\ii\alpha},\quad 0\le r<1.
 \]
 With the cross-ratio convention of
 \eqref{eq:cross-ratios-u-v}, this frame gives
@@ -433,7 +433,7 @@ outer insertions lie at \(\tau=0\).
     \end{scope}
   \end{tikzpicture}
   }
-  \caption{The radial variable \(\rho=re^{\ii\alpha}\) puts the
+  \caption{The radial variable \(\rho=r\ee^{\ii\alpha}\) puts the
   \(12\to34\) OPE channel into a cylinder frame.  Inserting a complete set of
   cylinder energy eigenstates gives a convergent expansion in powers of \(r\).}
   \label{fig:rho-cylinder-frame}
@@ -445,26 +445,20 @@ inserting a complete basis of states gives
 \begin{align}
   2^{-4\Delta_\phi}\mathcal G(u,v)
   &=
-  \left\langle
-    \Omega\left|
+  \bra{\vac}
     \widetilde\phi(0,0)\widetilde\phi(0,\pi)
     \widetilde\phi(\log r,\alpha)
     \widetilde\phi(\log r,\alpha+\pi)
-    \right|\Omega
-  \right\rangle
+  \ket{\vac}
   \notag\\
   &=
   \sum_n r^{E_n}
-  \left\langle
-    \Omega\left|
+  \bra{\vac}
     \widetilde\phi(0,0)\widetilde\phi(0,\pi)
-    \right|n
-  \right\rangle
-  \left\langle
-    n\left|
+  \ket{n}
+  \bra{n}
     \widetilde\phi(0,\alpha)\widetilde\phi(0,\alpha+\pi)
-    \right|\Omega
-  \right\rangle .
+  \ket{\vac}.
   \label{eq:cylinder-four-point-complete-set}
 \end{align}
 For a primary \(\Phi_i\) of spin \(s_i\) and dimension \(\Delta_i\), its
@@ -537,7 +531,7 @@ has coefficient
 \]
 in the channel where the first pair of operators is radially inside the
 second pair.  This nonnegative number is the squared norm of the projection of
-the state \(\phi(x)\phi(0)\Omega\) onto the conformal multiplet of
+the state \(\phi(x)\phi(0)\vac\) onto the conformal multiplet of
 \(\mathcal O\).
 
 When several operators with the same quantum numbers mix, the statement is
@@ -547,7 +541,7 @@ degenerate subspace of fixed spin and scaling dimension.  For any coefficients
 \[
   \left\|
     P_\Delta
-    \sum_i\alpha_i\,\mathcal O_i(x_i)\Omega
+    \sum_i\alpha_i\,\mathcal O_i(x_i)\vac
   \right\|^2
   \ge0 .
 \]

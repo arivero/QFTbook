@@ -87,16 +87,19 @@ the tube-domain construction.  For an ordered Wightman product, continue
   x^0_k=-\ii x^D_{E,k}
 \]
 through a domain in which the imaginary parts remain ordered.  With the
-convention \(x^0=-\ii\tau\), the ordering
+convention \(x^0=-\ii\tau_E\), the ordering
 \[
   \operatorname{Im}x^0_1<\operatorname{Im}x^0_2<\cdots<
   \operatorname{Im}x^0_n
 \]
 corresponds to
 \[
-  \tau_1>\tau_2>\cdots>\tau_n .
+  \tau_{E,1}>\tau_{E,2}>\cdots>\tau_{E,n}.
 \]
-The Euclidean correlator is the boundary value obtained after this rotation.
+Here \(\tau_E\) denotes Euclidean time inherited from Lorentzian analytic
+continuation.  It is distinct from the cylinder coordinate \(\tau=\log r\)
+introduced below.  The Euclidean correlator is the boundary value obtained
+after this rotation.
 Time-ordered Green functions arise from a contour whose real-time projection
 places the insertions in chronological order.
 
@@ -155,7 +158,7 @@ continuation; it is not an additional axiom of the conformal theory.
       \node[font=\small] at (0,2.48) {Euclidean};
       \draw[axis] (-1.65,0)--(1.65,0) node[right] {\(\operatorname{Re}x^0\)};
       \draw[axis] (0,-1.55)--(0,1.55)
-        node[above left] {\(-\operatorname{Im}x^0=\tau\)};
+        node[above left] {\(-\operatorname{Im}x^0=\tau_E\)};
       \draw[contour] (0,-1.25)--(0,1.45);
       \foreach \y/\lab in {1.05/{x_1^0},0.35/{x_2^0},-0.35/{x_3^0},-1.05/{x_4^0}} {
         \node[point] at (0,\y) {};
@@ -340,17 +343,17 @@ Equivalently, for insertions ordered by cylinder time
   \mathcal O(0)\mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
   \right\rangle_{\R^D}
   =
-  \bra{\Omega}
+  \bra{\vac}
   \widetilde{\mathcal O}_1(\tau_1,n_1)\cdots
   \widetilde{\mathcal O}_n(\tau_n,n_n)
   \ket{\mathcal O}_{\rm cyl}.
   \label{eq:state-operator-correlation-formula}
 \end{equation}
-The state \(\ket{\Omega}\) is the ground state on \(S^{D-1}\).
+The state \(\ket{\vac}\) is the ground state on \(S^{D-1}\).
 
 The vacuum state corresponds to the identity operator:
 \[
-  \mathbf 1\longleftrightarrow\ket{\Omega}.
+  \mathbf 1\longleftrightarrow\ket{\vac}.
 \]
 Products of local operators inserted at the origin are defined by the
 short-distance operator product expansion and correspond to the corresponding
@@ -396,7 +399,7 @@ states after radial ordering.
       \draw[blue!65!black,arrow] (-1.95,-1.35)--(-1.95,1.35);
       \node[blue!65!black,left] at (-1.95,0.10) {\(\tau\)};
       \node[violet!75!black] at (-0.85,-1.22) {\(\ket{\mathcal O}\)};
-      \node[violet!75!black] at (0.95,0.92) {\(\widetilde{\mathcal O}'(\tau,\Omega)\)};
+      \node[violet!75!black] at (0.95,0.92) {\(\widetilde{\mathcal O}'(\tau,n)\)};
       \node at (0,-1.95) {spatial sphere \(S^{D-1}\)};
     \end{scope}
   \end{tikzpicture}

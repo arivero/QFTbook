@@ -1,6 +1,6 @@
 # Volume III, Chapter 5 Dossier: Conformal Charges And Ward Identities
 
-## Source Position
+## Logical Role
 
 - Role in the monograph: convert stress-tensor Ward identities into surface
   charges, local current Ward identities, and global conformal constraints on
@@ -10,9 +10,9 @@
 - Immediate successor: primary operators and finite conformal
   transformations.
 
-## Construction Task
+## Definitions And Results
 
-The chapter must define and control:
+The chapter establishes:
 
 - Euclidean surface charges \(Q_\epsilon(\Sigma)\) for conformal Killing
   fields \(\epsilon^\mu\);
@@ -25,7 +25,7 @@ The chapter must define and control:
 - the cylinder interpretation of conformal charges and the adjointness
   \(P_\mu^\dagger=K_\mu\) under reflection positivity.
 
-## Claim Ledger
+## Claims To Verify
 
 1. A conformal charge is a stress-tensor flux through an oriented
    codimension-one surface.
@@ -40,14 +40,14 @@ The chapter must define and control:
    the outer boundary and anomaly contributions vanish in the chosen
    background.
 
-## Figure Requirements
+## Figures
 
 - The existing surface-deformation figures are conceptually useful and should
   remain tied to the local source Ward identities.
 - Any future figure must clarify an orientation, boundary, or cylinder map
   convention.
 
-## Audit Notes
+## Checks
 
 - Avoid deriving conformal transformation laws from informal generator
   shortcuts; derive them from local current Ward identities, charge fluxes,

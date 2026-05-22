@@ -1,6 +1,6 @@
 # Volume III, Chapter 1 Dossier: Fixed Points And Conformal Data
 
-## Source Position
+## Logical Role
 
 - Role in the monograph: open the core CFT volume by formulating fixed points
   as local QFT data, with stress-tensor assumptions, renormalized operator
@@ -10,9 +10,9 @@
   observable limits.
 - Immediate successor: conformal Killing vectors and the conformal group.
 
-## Construction Task
+## Definitions And Results
 
-The chapter must define and control:
+The chapter establishes:
 
 - Lorentzian local QFT data used in fixed-point analysis: Hilbert space,
   Poincare representation, vacuum, local operator-valued distributions, and
@@ -35,7 +35,7 @@ The chapter must define and control:
   finite statistical trace space from any reconstructed continuum Hilbert
   space.
 
-## Claim Ledger
+## Claims To Verify
 
 1. CFT correlators are restrictions of source-dependent distributions to
    noncoincident configurations.
@@ -49,13 +49,13 @@ The chapter must define and control:
    continuum CFT data are obtained from scaling limits of correlators, not
    from the finite lattice trace space.
 
-## Figure Requirements
+## Figures
 
 - Existing Ising fixed-point figures may remain.
 - Add figures only when they clarify a construction not already captured by
   equations; avoid decorative diagrams.
 
-## Audit Notes
+## Checks
 
 - Keep the CFT opening chapter tied to local QFT data and source
   distributions.

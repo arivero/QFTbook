@@ -8,7 +8,7 @@ Let \(M=\mathbb M^D\) be Minkowski spacetime, and let
   \mathcal O\longmapsto \mathcal R(\mathcal O)\subset\mathcal B(\Hilb)
 \]
 be a Poincare-covariant vacuum net of von Neumann algebras.  The standing
-data are a Hilbert space \(\Hilb\), a unit vector \(\Omega\), and a strongly
+data are a Hilbert space \(\Hilb\), a unit vector \(\vac\), and a strongly
 continuous unitary representation \(U\) of the proper orthochronous Poincare
 group such that
 \[
@@ -16,7 +16,7 @@ group such that
   =
   \mathcal R(\Lambda\mathcal O+a),
   \qquad
-  U(a,\Lambda)\Omega=\Omega .
+  U(a,\Lambda)\vac=\vac .
 \]
 The translation generators \(P^\mu\) obey the spectrum condition
 \[
@@ -92,17 +92,17 @@ set
 \]
 Then \(B\) is almost local.  Since the vacuum has momentum \(0\),
 \[
-  B\Omega=E(\operatorname{supp}\widehat\chi)B\Omega=P_1B\Omega,
+  B\vac=E(\operatorname{supp}\widehat\chi)B\vac=P_1B\vac,
   \qquad P_1=E(\Sigma_m^+),
 \]
 provided the support of \(\widehat\chi\) meets the spectrum only on the
 isolated shell.  If \(-\operatorname{supp}\widehat\chi\) is disjoint from the
 forward spectrum and \(\operatorname{supp}\widehat\chi\) avoids \(0\), then
 \[
-  B^*\Omega=0 .
+  B^*\vac=0 .
 \]
 An almost-local operator satisfying these spectral support properties and
-\(B\Omega\ne0\) is a regular Haag--Ruelle creator for the shell.
+\(B\vac\ne0\) is a regular Haag--Ruelle creator for the shell.
 
 \begin{figure}[H]
   \centering
@@ -127,7 +127,7 @@ An almost-local operator satisfying these spectral support properties and
     \node[orange!85!black,align=center] at (-1.42,-0.72)
       {transfer of \(B^*\)};
     \fill[black] (0,0) circle (1.7pt);
-    \node[below right] at (0,0) {\(\Omega\)};
+    \node[below right] at (0,0) {\(\vac\)};
   \end{tikzpicture}
   }
   \caption{A spacetime smearing with \(\chi\) restricts energy-momentum
@@ -157,7 +157,7 @@ and the time-dependent operator
 \]
 The one-particle vector
 \[
-  \psi_h=P_1B_t(h)\Omega
+  \psi_h=P_1B_t(h)\vac
 \]
 is independent of \(t\); the phase in \(h_t\) cancels the free time evolution
 on the mass shell.
@@ -194,7 +194,7 @@ Let \(B_1,\ldots,B_n\) be regular creators and let
 have pairwise disjoint velocity supports.  Define
 \[
   \Psi_t=
-  B_{1,t}(h_1)\cdots B_{n,t}(h_n)\Omega .
+  B_{1,t}(h_1)\cdots B_{n,t}(h_n)\vac .
 \]
 
 \begin{theorem}[Haag--Ruelle scattering for a vacuum net]
@@ -208,7 +208,7 @@ to generate a dense subspace of \(\Hilb_1\).  Then the limits
   \Psi_{\rm in}=\lim_{t\to-\infty}\Psi_t
 \]
 exist in Hilbert norm.  They depend only on the one-particle vectors
-\(\psi_{h_j}=P_1B_{j,t}(h_j)\Omega\), and they define isometric wave
+\(\psi_{h_j}=P_1B_{j,t}(h_j)\vac\), and they define isometric wave
 operators from the symmetric Fock space \(\mathcal F_s(\Hilb_1)\) into
 \(\Hilb\).
 \end{theorem}

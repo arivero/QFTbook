@@ -57,7 +57,7 @@ The corresponding positive-energy mass shell is
 The field normalization on this shell is recorded by the positive number
 \(Z\) defined by
 \[
-  \langle\Omega|\widehat\phi(0)|\vec p\rangle=Z^{1/2}.
+  \bra{\vac}\widehat\phi(0)|\vec p\rangle=Z^{1/2}.
 \]
 Kernel notation such as
 \[
@@ -145,7 +145,7 @@ space.
 The definition of \(Z\) above says that \(\widehat\phi\) is a scalar field
 with
 \[
-  \langle\Omega|\widehat\phi(0)|\vec p\rangle
+  \bra{\vac}\widehat\phi(0)|\vec p\rangle
   =
   Z^{1/2},
   \qquad Z>0,
@@ -206,14 +206,14 @@ mass-shell restrictions by
 With the translation convention \(U(a)=\exp(\ii a_\mu P^\mu)\), the matrix
 element above gives
 \[
-  P_1\widehat\phi(f)\Omega
+  P_1\widehat\phi(f)\vac
   =
   Z^{1/2}\int \dd\mu_m(\vec p)\,
   f_-(\vec p)|\vec p\rangle.
 \]
 Equivalently, for another test function \(g\),
 \[
-  \langle\Omega|\widehat\phi(f)P_1\widehat\phi(g)\Omega\rangle
+  \bra{\vac}\widehat\phi(f)P_1\widehat\phi(g)\ket{\vac}
   =
   Z\int \dd\mu_m(\vec p)\,
   f_+(\vec p)g_-(\vec p).
@@ -240,9 +240,9 @@ in notation.  First, the connected time-ordered functions are obtained from
 the generating functional by taking cumulants.  If
 \[
   Z[J]=
-  \left\langle\Omega\left|
+  \bra{\vac}
   \operatorname T\exp\left(\ii\int J(x)\widehat\phi(x)\,\dd^Dx\right)
-  \right|\Omega\right\rangle,
+  \ket{\vac},
 \]
 then
 \[
@@ -310,7 +310,7 @@ products; they are simply not external one-particle residues.
 Second, the local field used in the reduction is an interpolating field.  Let
 \(\widehat\phi'\) be another scalar local field with
 \[
-  \langle\Omega|\widehat\phi'(0)|\vec p\rangle
+  \bra{\vac}\widehat\phi'(0)|\vec p\rangle
   =
   a\,Z^{1/2},
   \qquad a\ne0,
@@ -392,10 +392,10 @@ from
 \[
 \begin{aligned}
 &\lim_{T\to+\infty}
-\langle\Omega|
+\bra{\vac}
 \hat\phi_{f_m^{(T)}}^*\cdots\hat\phi_{f_1^{(T)}}^*
 \hat\phi_{g_1^{(-T)}}\cdots\hat\phi_{g_n^{(-T)}}
-|\Omega\rangle .
+\ket{\vac} .
 \end{aligned}
 \]
 For large \(T\), locality permits this expression to be written as the
@@ -470,11 +470,11 @@ The time-ordered \(N\)-point function is
 \[
   G_N(x_1,\ldots,x_N)
   =
-  \langle\Omega|
+  \bra{\vac}
   \operatorname T\{
     \widehat\phi(x_1)\cdots\widehat\phi(x_N)
   \}
-  |\Omega\rangle .
+  \ket{\vac} .
 \]
 Its Fourier transform is defined by
 \[

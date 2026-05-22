@@ -270,13 +270,13 @@ as observables.
 
 \section{Reeh--Schlieder and Local Cyclicity}
 
-Let \(\Omega\) be the vacuum vector in a Poincare-covariant representation.
-Assume the translation spectrum lies in \(\overline V_+\), \(\Omega\) is
+Let \(\vac\) be the vacuum vector in a Poincare-covariant representation.
+Assume the translation spectrum lies in \(\overline V_+\), \(\vac\) is
 translation invariant, the net is local and additive, and \(\mathcal O\) is a
 nonempty open region whose causal completion is not all of spacetime.  The
 Reeh--Schlieder property says that
 \[
-  \overline{\mathcal R(\mathcal O)\Omega}=\Hilb .
+  \overline{\mathcal R(\mathcal O)\vac}=\Hilb .
 \]
 Thus local operations on the vacuum generate a dense set of states.  The
 statement is a theorem about the analytic consequences of energy positivity
@@ -293,8 +293,8 @@ analysis, and scattering theory in algebraic form.
       arrow/.style={-{Latex[length=2mm]},line width=0.85pt}
     }
     \node[box] (local) at (-3.6,0.8) {local algebra\\\(\mathcal R(\mathcal O)\)};
-    \node[box] (vac) at (0,0.8) {vacuum\\\(\Omega\)};
-    \node[box] (dense) at (3.6,0.8) {dense subspace\\\(\overline{\mathcal R(\mathcal O)\Omega}\)};
+    \node[box] (vac) at (0,0.8) {vacuum\\\(\vac\)};
+    \node[box] (dense) at (3.6,0.8) {dense subspace\\\(\overline{\mathcal R(\mathcal O)\vac}\)};
     \node[box,fill=green!7] (inputs) at (0,-1.15)
       {locality + covariance + spectrum condition};
     \draw[arrow] (local)--(vac);

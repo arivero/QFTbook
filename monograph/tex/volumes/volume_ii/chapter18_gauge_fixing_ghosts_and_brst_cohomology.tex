@@ -56,7 +56,7 @@ The infinitesimal action associated with
   \qquad
   (D_\mu(A)\zeta)^a
   =
-  \partial_\mu\zeta^a+f^{bc}{}_{a}A_\mu^b\zeta^c .
+  \partial_\mu\zeta^a+f^{a}{}_{bc}A_\mu^b\zeta^c .
 \]
 Let \(\phi\) denote the complete list of fields: gauge potentials and, when
 present, matter fields.  At a fixed ultraviolet and infrared regulator, before
@@ -274,7 +274,7 @@ For this choice,
   \qquad
   (D_\mu c)^a
   =
-  \partial_\mu c^a+f^{bc}{}_{a}A_\mu^b c^c .
+  \partial_\mu c^a+f^{a}{}_{bc}A_\mu^b c^c .
   \label{eq:covariant-fp-operator}
 \end{equation}
 For this local gauge condition the condensed labels are
@@ -459,7 +459,7 @@ For the gauge field, the matrix form of the same computation is
 \]
 because \(D_\mu[c,c]_{\mathrm H}=2[D_\mu c,c]_{\mathrm H}\) for odd \(c\).
 For a matter field, the representation identity
-\([t_R^a,t_R^b]=\ii f^{ab}{}_{c}t_R^c\) gives
+\([t_R^a,t_R^b]=\ii f^{c}{}_{ab}t_R^c\) gives
 \[
   s^2\psi
   =
@@ -747,7 +747,7 @@ form on ghost number zero cohomology be positive and that zero-norm closed
 states represent the zero cohomology class.  When this holds, completing the
 quotient gives the physical Hilbert space.
 
-\begin{proposition}[Positivity from a BRST doublet decomposition]
+\begin{theorem}[Kugo--Ojima positivity criterion in a BRST doublet sector]
 Let \(Q^2=0\) be symmetric for the nondegenerate indefinite inner product on
 the ghost-graded space \(\mathcal K\).  Assume that the ghost-number-zero closed
 subspace admits a direct decomposition
@@ -768,7 +768,7 @@ definite.  Assume further that every closed state with zero norm lies in
 inherits a positive-definite inner product and is isometric to the positive
 subspace \(\mathcal P\) by the map that sends a closed state to its
 \(\mathcal P\)-component.
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
 Exact states are orthogonal to closed states by the calculation above, so the

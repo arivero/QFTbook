@@ -122,12 +122,12 @@ same spin, one may choose a basis that diagonalizes the Hermitian matrix
 
 \section{Radial Inner Product and BPZ Conjugation}
 
-Let \(x=r\Omega\), \(r>0\), \(\Omega\in S^{D-1}\), and set
+Let \(x=rn\), \(r>0\), \(n\in S^{D-1}\), and set
 \(\tau=\log r\).  The Weyl map from \(\R^D\setminus\{0\}\) to
 \(\R_\tau\times S^{D-1}\) relates a scalar primary on flat space to the
 cylinder operator by
 \begin{equation}
-  \mathcal O(x)=r^{-\Delta}\widetilde{\mathcal O}(\tau,\Omega).
+  \mathcal O(x)=r^{-\Delta}\widetilde{\mathcal O}(\tau,n).
   \label{eq:flat-cylinder-scalar-primary}
 \end{equation}
 The state created by insertion at the origin is
@@ -135,19 +135,19 @@ The state created by insertion at the origin is
   \ket{\mathcal O}
   =
   \lim_{\tau\to-\infty}
-  e^{-\Delta\tau}
-  \widetilde{\mathcal O}(\tau,\Omega)\ket{\Omega_0},
+  \ee^{-\Delta\tau}
+  \widetilde{\mathcal O}(\tau,n)\ket{\vac},
   \label{eq:ket-from-cylinder-limit}
 \end{equation}
-where \(\ket{\Omega_0}\) is the conformal vacuum.  For a primary the limit is
-independent of \(\Omega\).  The conjugate bra is obtained by the opposite
+where \(\ket{\vac}\) is the conformal vacuum.  For a primary the limit is
+independent of \(n\).  The conjugate bra is obtained by the opposite
 cylinder-time limit,
 \begin{equation}
   \langle\!\langle \mathcal O|
   =
   \lim_{\tau\to+\infty}
-  e^{\Delta\tau}
-  \bra{\Omega_0}\widetilde{\mathcal O}(\tau,\Omega).
+  \ee^{\Delta\tau}
+  \bra{\vac}\widetilde{\mathcal O}(\tau,n).
   \label{eq:bpz-bra-from-cylinder-limit}
 \end{equation}
 This radial conjugation is often called BPZ conjugation.  In a
@@ -158,10 +158,10 @@ two-point coefficient has the inner-product interpretation
   \langle\!\langle \mathcal O_i|\mathcal O_j\rangle
   =
   \lim_{\tau_i\to+\infty,\ \tau_j\to-\infty}
-  e^{\Delta_i\tau_i-\Delta_j\tau_j}
+  \ee^{\Delta_i\tau_i-\Delta_j\tau_j}
   \left\langle
-    \widetilde{\mathcal O}_i(\tau_i,\Omega_i)
-    \widetilde{\mathcal O}_j(\tau_j,\Omega_j)
+    \widetilde{\mathcal O}_i(\tau_i,n_i)
+    \widetilde{\mathcal O}_j(\tau_j,n_j)
   \right\rangle
   =
   C_{ij},

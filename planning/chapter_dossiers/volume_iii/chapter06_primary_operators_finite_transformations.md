@@ -1,6 +1,6 @@
 # Volume III, Chapter 6 Dossier: Primary Operators And Finite Transformations
 
-## Source Position
+## Logical Role
 
 - Role in the monograph: derive primary-operator transformation laws from
   radial module data, source-contact conventions, and conformal-current Ward
@@ -8,9 +8,9 @@
 - Immediate predecessor: conformal charges and Ward identities.
 - Immediate successor: unitarity bounds and short multiplets.
 
-## Construction Task
+## Definitions And Results
 
-The chapter must define and control:
+The chapter establishes:
 
 - spin representations \(\rho\) of \(SO(D)\), the vector space \(V_\rho\),
   and infinitesimal spin matrices \(S_{\mu\nu}\);
@@ -27,7 +27,7 @@ The chapter must define and control:
   separated points;
 - inversion, including the extra representation choice needed for spin.
 
-## Claim Ledger
+## Claims To Verify
 
 1. The source for a spin-\(\rho\) primary is valued in the dual
    representation \(V_\rho^\vee\).
@@ -39,12 +39,12 @@ The chapter must define and control:
 5. The inversion matrix is an \(O(D)\) element of determinant \(-1\), so spin
    inversion data require a specified extension beyond \(SO(D)\).
 
-## Figure Requirements
+## Figures
 
 - No figure is required for this chapter unless future work needs a diagram of
   source/contact support on collision diagonals.
 
-## Audit Notes
+## Checks
 
 - Keep all spin signs tied to the chosen convention
   \(\rho(R)=\exp(-\frac i2\omega^{\mu\nu}S_{\mu\nu})\).

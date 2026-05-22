@@ -12,7 +12,7 @@ metric
 \]
 Write \(M=\mathbb R^{1,D-1}\).  The framework in this chapter is a scalar
 Wightman field presentation in a vacuum sector: a Hilbert space \(\Hilb\), a
-vacuum vector \(\Omega\), a strongly continuous unitary representation of
+vacuum vector \(\vac\), a strongly continuous unitary representation of
 translations with self-adjoint generators \(P^\mu\) whose joint spectrum lies
 in the closed forward cone
 \[
@@ -27,9 +27,9 @@ The Wightman \(n\)-point distribution is
 \[
   W_n(x_1,\ldots,x_n)
   =
-  \langle\Omega|
+  \bra{\vac}
   \widehat\phi(x_1)\cdots\widehat\phi(x_n)
-  |\Omega\rangle
+  \ket{\vac}
   \in \mathcal S'(M^n).
 \]
 For a permutation \(\pi\in S_n\), set
@@ -46,19 +46,19 @@ whose restriction to \(M_\pi^n\) is
 \[
   G_n(x_1,\ldots,x_n)\big|_{M_\pi^n}
   =
-  \langle\Omega|
+  \bra{\vac}
   \widehat\phi(x_{\pi(1)})\cdots
   \widehat\phi(x_{\pi(n)})
-  |\Omega\rangle .
+  \ket{\vac} .
 \]
 Equivalently, on \(M_\pi^n\) away from coincident insertion points,
 \[
   G_n(x_1,\ldots,x_n)
   =
-  \langle\Omega|
+  \bra{\vac}
   \widehat\phi(x_{\pi(1)})\cdots
   \widehat\phi(x_{\pi(n)})
-  |\Omega\rangle .
+  \ket{\vac} .
 \]
 Local commutativity makes the restrictions compatible across spacelike
 equal-time boundaries.  A choice of \(G_n\) is therefore an extension across
@@ -70,11 +70,11 @@ operator notation
 \[
   G_n(x_1,\ldots,x_n)
   =
-  \langle\Omega|
+  \bra{\vac}
   \operatorname T\{
     \widehat\phi(x_1)\cdots\widehat\phi(x_n)
   \}
-  |\Omega\rangle
+  \ket{\vac}
 \]
 refers to this specified distribution.
 
@@ -108,9 +108,9 @@ more general analytic fact.  Let
 \[
   W_n(x_1,\ldots,x_n)
   =
-  \bra{\Omega}
+  \bra{\vac}
   \widehat\phi(x_1)\cdots\widehat\phi(x_n)
-  \ket{\Omega}
+  \ket{\vac}
 \]
 be a Wightman distribution.  By translation invariance write it in the
 relative variables

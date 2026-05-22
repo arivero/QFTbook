@@ -69,7 +69,7 @@ with canonical anticommutation relations
   (2\pi)^3\,2\omega_{\vec p}\,
   \delta_{\sigma\tau}\delta^3(\vec p-\vec q),
 \]
-all other anticommutators being zero. The vacuum vector \(\Omega\) is
+all other anticommutators being zero. The vacuum vector \(\vac\) is
 annihilated by all \(b_\sigma(\vec p)\) and \(d_\sigma(\vec p)\).
 
 The charged Dirac field is the operator-valued distribution
@@ -104,7 +104,7 @@ states created by \(b^\dagger\) and charge \(-1\) to the states created by
 \[
   U_\theta=\ee^{\ii\theta \widehat Q},
   \qquad
-  U_\theta\Omega=\Omega ,
+  U_\theta\vac=\vac ,
 \]
 then
 \[
@@ -1014,20 +1014,20 @@ function is
 \[
   S_{F,\alpha}{}^\beta(x-y)
   =
-  \langle\Omega|
+  \bra{\vac}
   \operatorname T\{
     \widehat\psi_\alpha(x)\widehat{\bar\psi}^{\beta}(y)
   \}
-  |\Omega\rangle .
+  \ket{\vac} .
 \]
 Charge conservation gives
 \[
-  \langle\Omega|\operatorname T\{
-    \widehat\psi_\alpha(x)\widehat\psi_\beta(y)\}|\Omega\rangle=0,
+  \bra{\vac}\operatorname T\{
+    \widehat\psi_\alpha(x)\widehat\psi_\beta(y)\}\ket{\vac}=0,
   \qquad
-  \langle\Omega|\operatorname T\{
+  \bra{\vac}\operatorname T\{
     \widehat{\bar\psi}^{\alpha}(x)
-    \widehat{\bar\psi}^{\beta}(y)\}|\Omega\rangle=0
+    \widehat{\bar\psi}^{\beta}(y)\}\ket{\vac}=0
 \]
 for the free charged Dirac field.
 It is the Feynman inverse of \(\not\partial+m\):
@@ -1057,7 +1057,7 @@ the denominator is the scalar mass-shell pole with the Feynman boundary value.
 \section{Spinor Spectral Poles and LSZ}
 
 Let an interacting theory have a global \(U(1)\) charge \(\widehat Q\), a
-vacuum satisfying \(\widehat Q\Omega=0\), and an isolated massive
+vacuum satisfying \(\widehat Q\vac=0\), and an isolated massive
 spin-\(\frac12\) one-particle sector of mass \(m\) and charge \(+1\). Let
 \(\widehat\psi_\alpha\) be a local spinor field of charge \(+1\) with nonzero
 overlap with this sector:
@@ -1071,7 +1071,7 @@ overlap with this sector:
 In the delta-normalized one-particle convention, Lorentz covariance permits
 the matrix element
 \[
-  \langle\vec p,\sigma,+|\widehat\psi_\alpha(x)|\Omega\rangle
+  \langle\vec p,\sigma,+|\widehat\psi_\alpha(x)\ket{\vac}
   =
   \frac{\ee^{-\ii p\cdot x}}{(2\pi)^{3/2}}
   \left[
@@ -1088,7 +1088,7 @@ isolated pole residue is proportional to one chosen intertwiner. After making
 that choice and passing to the covariant one-particle normalization used in
 the LSZ formulas, write
 \[
-  \langle\vec p,\sigma,+|\widehat\psi_\alpha(x)|\Omega\rangle
+  \langle\vec p,\sigma,+|\widehat\psi_\alpha(x)\ket{\vac}
   =
   Z_\psi^{1/2}\,
   \ee^{-\ii p\cdot x}v_\alpha^\sigma(p),
@@ -1099,7 +1099,7 @@ The conjugate field has the corresponding overlap with the charge \(-1\)
 sector,
 \[
   \langle\vec p,\sigma,-|
-  \widehat{\bar\psi}^{\alpha}(x)|\Omega\rangle
+  \widehat{\bar\psi}^{\alpha}(x)\ket{\vac}
   =
   Z_\psi^{1/2}\,
   \ee^{-\ii p\cdot x}\bar u^{\sigma,\alpha}(p),
@@ -1140,11 +1140,11 @@ locality and the chosen normalization.
 
 The time-ordered two-point function then has the one-particle pole
 \[
-  \langle\Omega|
+  \bra{\vac}
   \operatorname T\{
     \widehat\psi_\alpha(x)\widehat{\bar\psi}^{\beta}(y)
   \}
-  |\Omega\rangle
+  \ket{\vac}
   =
   Z_\psi
   (-\not\partial_x+m)_\alpha{}^\beta
