@@ -229,6 +229,12 @@ a chosen representation as
 \end{equation}
 Cyclicity gives
 \[
+  \operatorname{tr}([t^a,t^b]t^c)
+  =
+  \operatorname{tr}(t^a[t^b,t^c])
+\]
+and, equivalently,
+\[
   \operatorname{tr}(gXg^{-1}gYg^{-1})
   =
   \operatorname{tr}(XY)
@@ -258,9 +264,18 @@ If \(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\), this is
 \]
 For a unitary Lorentzian quantum theory built from these fields, the invariant
 quadratic form on the gauge algebra is chosen positive definite.  Equivalently,
-the local gauge algebra is a compact reductive Lie algebra: a direct sum of an
-abelian part and compact simple factors.  For the simple compact factors one
-may choose a basis in which \(\kappa^{ab}\) is positive diagonal.
+the local gauge algebra is a compact reductive Lie algebra: a direct sum of
+abelian \(\mathbb R\) factors and compact simple factors.  The compact simple
+factors are the simple Lie algebras of Cartan type
+\[
+  A,\ B,\ C,\ D,\ E,\ F,\ G .
+\]
+For these algebras one may choose a linear basis in which
+\[
+  \kappa^{ab}=\operatorname{tr}(t^a t^b)=\frac12\delta^{ab},
+\]
+which is the normalization used unless another normalization is explicitly
+declared.
 
 The basic example \(SU(2)\) has
 \[
@@ -284,12 +299,13 @@ scalar of power-counting dimension four:
   \label{eq:ym-theta-density}
 \end{equation}
 This density is odd under parity and time reversal.  In local coordinates it
-is a total derivative, so perturbation theory around the trivial gauge-field
-sector has no local Feynman vertex associated with
-\eqref{eq:ym-theta-density}.  Finite-action gauge fields may approach
-nontrivial pure gauges at spatial infinity, and then the spacetime integral of
-\eqref{eq:ym-theta-density} can be nonzero.  Thus \(\theta\) enters through
-global topological sectors of the gauge field.
+is a total derivative, so it does not change the local Euler-Lagrange equations
+under boundary conditions that keep the boundary variation fixed.  Perturbation
+theory around the trivial gauge-field sector consequently has no local Feynman
+vertex associated with \eqref{eq:ym-theta-density}.  Finite-action gauge fields
+may approach nontrivial pure gauges at spatial infinity, and then the spacetime
+integral of \eqref{eq:ym-theta-density} can be nonzero.  Thus \(\theta\)
+enters through global topological sectors of the gauge field.
 
 \section{Matter Representations}
 
@@ -335,6 +351,17 @@ For \(G=SU(N)\), three representations recur throughout gauge theory:
   t_{\mathrm{adj}}^a(t^b)=\ii f^{ab}{}_{c}t^c
 \end{array}
 \]
+In the fundamental representation,
+\(\rho_{\square}(g)=g\) and \(t_{\square}^a=t^a\).  In the
+anti-fundamental representation,
+\[
+  \rho_{\overline{\square}}(g)=g^*
+  \qquad\hbox{complex conjugation, without transposition,}
+\]
+so differentiating
+\(\rho_{\overline{\square}}(\ee^{\ii\zeta_a t^a})
+=\ee^{\ii\zeta_a t_{\overline{\square}}^a}\) gives
+\(t_{\overline{\square}}^a=-(t^a)^*\).
 Here \(\mathfrak g_{\mathbb C}\) denotes the complexification of the real
 Hermitian coordinate space.  A real adjoint-valued field is obtained by
 imposing the corresponding reality condition on its components.  The finite
@@ -353,6 +380,50 @@ differentiating \(v\mapsto \ee^{\ii\zeta_a t^a}v\ee^{-\ii\zeta_a t^a}\):
   =
   \ii\zeta_a t_{\mathrm{adj}}^a v .
 \]
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,3.05) {\(SU(N)\) representation data};
+
+    \draw[rounded corners=4pt,thick] (-5.90,0.35) rectangle (-2.10,2.50);
+    \node[font=\bfseries] at (-4.00,2.17) {fundamental \(\square\)};
+    \node at (-4.00,1.67) {\(V=\mathbb C^N\)};
+    \node at (-4.00,1.25) {\(\rho_\square(g)=g\)};
+    \node at (-4.00,0.83) {\(t_\square^a=t^a\)};
+
+    \draw[rounded corners=4pt,thick] (-1.90,0.35) rectangle (1.90,2.50);
+    \node[font=\bfseries\small] at (0,2.17)
+      {anti-fundamental \(\overline{\square}\)};
+    \node at (0,1.67) {\(V=\mathbb C^N\)};
+    \node at (0,1.25) {\(\rho_{\overline{\square}}(g)=g^*\)};
+    \node at (0,0.83) {\(t_{\overline{\square}}^a=-(t^a)^*\)};
+
+    \draw[rounded corners=4pt,thick] (2.10,0.35) rectangle (5.90,2.50);
+    \node[font=\bfseries] at (4.00,2.17) {adjoint};
+    \node at (4.00,1.67) {\(V=\mathfrak g\) or \(\mathfrak g_{\mathbb C}\)};
+    \node at (4.00,1.25) {\(\rho_{\mathrm{adj}}(g)v=gvg^{-1}\)};
+    \node at (4.00,0.83) {\((t_{\mathrm{adj}}^a)^b{}_{c}=\ii f^{ab}{}_{c}\)};
+
+    \node[font=\small] at (0,-0.10) {QCD quark indices};
+    \draw[rounded corners=4pt,thick] (-3.60,-1.95) rectangle (3.60,-0.45);
+    \node at (0,-0.92)
+      {\(\psi^{\,i}_{I\alpha}(x)\)};
+    \node[blue!65!black,align=center] at (-2.22,-1.47)
+      {\(i=1,\ldots,N\)\\color in \(\square\)};
+    \node[purple!75!black,align=center] at (0,-1.47)
+      {\(I=1,\ldots,N_f\)\\flavor};
+    \node[orange!80!black,align=center] at (2.22,-1.47)
+      {\(\alpha\)\\spinor};
+  \end{tikzpicture}
+  }
+  \caption{The fundamental, anti-fundamental, and adjoint representations of
+  \(SU(N)\) used in Yang-Mills theory and QCD.  The anti-fundamental finite
+  action is complex conjugation of the matrix entries, not Hermitian
+  conjugation.}
+  \label{fig:ym-su-n-representation-data}
+\end{figure}
 
 If \(\psi(x)\in V_R\), its finite gauge transformation is
 \begin{equation}

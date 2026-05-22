@@ -107,6 +107,23 @@ The chapter must define and derive:
 
 ## Audit Notes
 
+- 2026-05-22 source pass: compared handwritten pages 157--168, the local
+  transcription, and Ben Lou's transcription against
+  `volume_ii/chapter17_yang_mills_theory_and_matter_fields.tex`.
+- Tightened the invariant trace discussion by adding the source-level cyclicity
+  identity
+  \(\operatorname{tr}([t^a,t^b]t^c)=\operatorname{tr}(t^a[t^b,t^c])\).
+- Made explicit the positive-form classification as abelian \(\mathbb R\)
+  factors plus compact simple Cartan types \(A,B,C,D,E,F,G\), with
+  \(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\) as the default
+  normalization.
+- Added a rendered \(SU(N)\) representation/QCD-index figure, including the
+  source convention
+  \(\rho_{\overline{\square}}(g)=g^*\) without transposition and
+  \(t_{\overline{\square}}^a=-(t^a)^*\).
+- Rechecked the \(\theta\)-term statement: total derivative locally, no local
+  perturbative vertex around the trivial sector, but nonzero action on
+  finite-action topological sectors.
 - Stop before Faddeev-Popov gauge fixing and BRST.
 - State conventions for Hermitian generators and \(\gamma_5\) projectors.
 - Do not let Hermitian-generator notation obscure the anti-Hermitian
