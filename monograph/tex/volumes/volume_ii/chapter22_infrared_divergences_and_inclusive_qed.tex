@@ -105,6 +105,31 @@ The same leading factor is obtained in spinor QED.  The numerator of the
 nearly on-shell fermion propagator acts on the external spinor and reduces to
 the corresponding momentum factor; spin first enters in subleading soft
 terms.
+Indeed, for an outgoing fermion line the soft attachment contains
+\[
+  \left[
+  \bar u^\sigma(p)(-g\gamma^\mu)
+  \frac{-\ii[-\ii(\not p+\not k)+m]}
+       {(p+k)^2+m^2-\ii\epsilon}
+  \right]e^*_{h,\mu}(k).
+\]
+The denominator is \(2p\cdot k-\ii\epsilon+O(k^2)\).  In the numerator,
+using the on-shell equation for the external spinor and moving
+\(\gamma^\mu\) through the Dirac numerator gives
+\[
+  \bar u^\sigma(p)\gamma^\mu(-\ii\not p+m)
+  =
+  \bar u^\sigma(p)(\ii\not p+m)\gamma^\mu
+  -2\ii p^\mu\bar u^\sigma(p)
+  =
+  -2\ii p^\mu\bar u^\sigma(p).
+\]
+Thus the leading soft limit is
+\[
+  g\,\frac{p\cdot e_h^*(k)}{p\cdot k-\ii\epsilon}\,
+  \bar u^\sigma(p),
+\]
+the same eikonal factor multiplying the original spinor amplitude.
 
 For \(N\) real soft photons the leading factors multiply:
 \[
@@ -121,8 +146,25 @@ For \(N\) real soft photons the leading factors multiply:
 \]
 For two photons emitted from the same line, the two possible orderings of the
 emissions turn the nested eikonal denominators into the product displayed
-above.  The same combinatorics gives the product for any finite number of
-soft photons.
+above.  For an outgoing scalar line this is the elementary identity
+\[
+\begin{aligned}
+  &\frac{g\,p\cdot e_{h_2}^*(k_2)}
+        {p\cdot k_2-\ii\epsilon}\,
+   \frac{g\,p\cdot e_{h_1}^*(k_1)}
+        {p\cdot(k_1+k_2)-\ii\epsilon}
+  +(1\leftrightarrow2)
+\\
+  &\qquad =
+  \frac{g\,p\cdot e_{h_1}^*(k_1)}
+       {p\cdot k_1-\ii\epsilon}\,
+  \frac{g\,p\cdot e_{h_2}^*(k_2)}
+       {p\cdot k_2-\ii\epsilon}.
+\end{aligned}
+\]
+Corrections from the non-eikonal parts of the propagators and vertices are
+less singular in the soft scaling.  The same combinatorics gives the product
+for any finite number of soft photons.
 
 \begin{figure}[!ht]
   \centering
@@ -252,7 +294,35 @@ For massive external particles, define the relative-velocity parameter
   \sqrt{1-\frac{m_n^2m_m^2}{(p_n\cdot p_m)^2}} .
 \]
 The diagonal term \(n=m\) is understood as the \(\beta_{nm}\to0\) limit.  The
-standard angular integral is
+angular integral may be evaluated directly by combining the two denominators:
+\[
+\begin{aligned}
+  &\int\dd^2\hat k\,
+  \frac{1}
+       {(p_n^0-\vec p_n\cdot\hat k)
+        (p_m^0-\vec p_m\cdot\hat k)}
+\\
+  &=
+  \int_0^1\dd x
+  \int\dd^2\hat k\,
+  \frac{1}
+  {\left[
+    p_n^0x+p_m^0(1-x)
+    -(\vec p_nx+\vec p_m(1-x))\cdot\hat k
+  \right]^2}.
+\end{aligned}
+\]
+Choose the polar axis along
+\(\vec p_nx+\vec p_m(1-x)\).  The \(\hat k\)-integral becomes an elementary
+integral of
+\[
+  \frac{2\pi\sin\theta\,\dd\theta}
+  {\left[
+    p_n^0x+p_m^0(1-x)
+    -|\vec p_nx+\vec p_m(1-x)|\cos\theta
+  \right]^2}.
+\]
+Performing the \(x\)-integral gives
 \[
   \int\dd^2\hat k\,
   \frac{1}
@@ -311,8 +381,81 @@ The virtual soft photons exchanged among distinct external lines exponentiate:
 \]
 This expression omits the soft photons whose two endpoints lie on the same
 external charged line.  Those terms are tied to the infrared part of the LSZ
-normalization factors.  In scalar QED the one-loop self-energy has the soft
-part
+normalization factors.  A direct way to see the accounting is to insert the
+electromagnetic current
+\[
+  \widehat j^\mu(x)=\partial_\nu \widehat F^{\mu\nu}(x)
+\]
+between one-particle states.  In scalar QED, with
+\(k=p_2-p_1\) and
+\(\omega_p=\sqrt{\vec p^{\,2}+m^2}\),
+\[
+  \langle \vec p_2|\widehat j^\mu(0)|\vec p_1\rangle
+  =
+  \frac{g}{(2\pi)^3\sqrt{2\omega_{p_1}}\sqrt{2\omega_{p_2}}}
+  (p_1+p_2)^\mu F(k^2),
+  \qquad F(0)=1 .
+\]
+In spinor QED the corresponding decomposition is
+\[
+\begin{aligned}
+  &\langle \vec p_2,\sigma_2|\widehat j^\mu(0)
+  |\vec p_1,\sigma_1\rangle
+\\
+  &\qquad =
+  \frac{\ii g}{(2\pi)^3}\,
+  \bar u^{\sigma_2}(\vec p_2)
+  \left[
+    \gamma^\mu F(k^2)
+    -\frac{\ii}{2m}(p_1+p_2)^\mu G(k^2)
+  \right]
+  u^{\sigma_1}(\vec p_1),
+  \qquad F(0)+G(0)=1 .
+\end{aligned}
+\]
+In these conventions the one-loop value \(G(0)=-g^2/(8\pi^2)+O(g^4)\) is a
+finite contribution to the magnetic form factor.  The electromagnetic matrix
+element at \(k^2=0\) is free of infrared divergence, although derivatives such
+as \(\left.\dd F/\dd k^2\right|_{k^2=0}\) need not be.  Thus the soft virtual
+photons attached to the current insertion must be accompanied by the same
+infrared part of the LSZ factors.
+In the current form factor, soft photons connecting
+the two charged legs exponentiate as \(e^{g^2J_{12}}\).  Finiteness at
+\(k^2=0\) then fixes the infrared factor in \(Z\):
+\[
+  Z_{\rm IR}
+  =
+  \left.
+  e^{-g^2J_{12}}
+  \right|_{p_2=p_1,\ \eta_2=-\eta_1}.
+\]
+
+Equivalently, compare this with the formal same-line eikonal loop
+\[
+  ``J_{11}''
+  =
+  -\ii p_1^2
+  \int_{\mu<|\vec q|<M}
+  \frac{\dd^4q}{(2\pi)^4}
+  \frac{1}
+       {(q^2-\ii\epsilon)
+        (p_1\cdot q-\ii\epsilon)
+        (-p_1\cdot q-\ii\epsilon)} .
+\]
+The two matter poles in the \(q^0\)-plane contribute to the imaginary part.
+The real part satisfies
+\[
+  \operatorname{Re}J_{11}
+  =
+  -\left.
+  \operatorname{Re}J_{12}
+  \right|_{p_2=p_1,\ \eta_2=-\eta_1},
+  \qquad
+  Z_{\rm IR}=e^{g^2\operatorname{Re}J_{11}} .
+\]
+
+At one-loop order this same statement follows directly from the scalar-QED
+self-energy.  The soft part is
 \[
   \ii\Sigma(p)
   =
@@ -321,16 +464,91 @@ part
   \frac{-\ii}{k^2-\ii\epsilon}
   (\ii g)^2(2p+k)^2+\cdots ,
 \]
-and the external factor
+whose infrared approximation is
 \[
-  Z^{-1}
+  \ii\Sigma(p)\big|_{\rm soft}
   =
-  1-\left.
-  \frac{\partial\Sigma}{\partial p^2}\right|_{p^2=-m^2}
+  4g^2p^2
+  \int_{|\vec k|<M}
+  \frac{\dd^4k}{(2\pi)^4}
+  \frac{1}{p^2+m^2+2p\cdot k-\ii\epsilon}
+  \frac{1}{k^2-\ii\epsilon}.
 \]
-contains the same soft logarithm as the same-line eikonal loop.  Combining
-the distinct-line soft loops with the infrared parts of the \(Z_n^{1/2}\)
-factors gives
+The corresponding external factor
+\[
+  Z
+  =
+  \left(
+    1-\left.
+    \frac{\partial\Sigma}{\partial p^2}\right|_{p^2=-m^2}
+  \right)^{-1}
+\]
+contains the same soft logarithm as the same-line eikonal loop.  In the
+infrared region,
+\[
+  \log Z_{\rm IR}
+  =
+  \ii g^2\,4p^2
+  \int_{|\vec k|<M}
+  \frac{\dd^4k}{(2\pi)^4}
+  \frac{1}
+       {(2p\cdot k-\ii\epsilon)^2(k^2-\ii\epsilon)}
+  =
+  g^2\operatorname{Re}J_{11}+O(g^4).
+\]
+Thus soft loops beginning and ending on a single external charged line are
+not additional uncancelled infrared factors; they are already included in
+the LSZ normalization of that charged external line.
+
+\begin{figure}[!ht]
+  \centering
+  \resizebox{0.82\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,x=1cm,y=1cm,every node/.style={font=\small}]
+    \tikzset{
+      photon/.style={purple!80!black,decorate,
+        decoration={snake,amplitude=0.72mm,segment length=3.1mm},
+        line width=0.95pt},
+      matter/.style={line width=1.0pt,-{Latex[length=1.8mm]}},
+      blob/.style={circle,draw=black,fill=gray!18,line width=0.9pt,minimum size=0.75cm},
+      zblob/.style={circle,draw=purple!80!black,fill=purple!12,line width=0.9pt,
+        minimum size=0.42cm}
+    }
+    \begin{scope}
+      \node[font=\normalsize] at (0,2.05) {current form factor};
+      \draw[matter] (-3.3,0)--(-0.45,0);
+      \node[blob] at (0,0) {};
+      \draw[matter] (0.45,0)--(3.3,0);
+      \draw[photon] (0,-1.25)--(0,-0.42);
+      \draw[photon] (-2.05,0) .. controls (-1.55,1.05) and
+        (1.25,1.05) .. (1.85,0);
+      \node[purple!80!black] at (-0.1,1.28) {soft virtual photons};
+      \node[blue!70!black] at (-2.65,-0.35) {\(Z^{1/2}\)};
+      \node[blue!70!black] at (2.65,-0.35) {\(Z^{1/2}\)};
+      \node[purple!80!black,below] at (0,-1.25) {\(j^\mu\)};
+    \end{scope}
+    \begin{scope}[shift={(7.3,0)}]
+      \node[font=\normalsize] at (0,2.05) {same-line soft loops};
+      \draw[matter] (-3.25,0)--(3.25,0);
+      \node[zblob] at (-1.65,0) {};
+      \node[zblob] at (-0.55,0) {};
+      \draw[photon] (-0.55,0) .. controls (-0.15,0.85) and
+        (1.3,0.85) .. (1.7,0);
+      \draw[photon] (0.2,0) .. controls (0.45,0.45) and
+        (1.0,0.45) .. (1.25,0);
+      \node[purple!80!black] at (-1.1,0.62) {\(Z_{\rm IR}\)};
+      \node[purple!80!black] at (1.35,1.1) {absorbed into \(Z_{\rm IR}\)};
+      \node[align=center,blue!70!black] at (0,-0.78)
+        {no separate same-line\\infrared factor remains};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The infrared part of the external LSZ factor accounts for soft
+  virtual photons whose two endpoints lie on the same charged external line.}
+  \label{fig:volume-ii-same-line-ir-cancellation}
+\end{figure}
+
+Combining the distinct-line soft loops with the infrared parts of the
+\(Z_n^{1/2}\) factors gives
 \[
   \exp\!\left[
     \frac12\sum_{n\ne m}g_ng_mJ_{nm}
@@ -342,7 +560,29 @@ factors gives
   \right].
 \]
 
-The real part of the soft loop is
+The \(k^0\)-plane poles of \(J_{nm}\) are, schematically,
+\[
+  -|\vec k|+\ii\epsilon,\qquad
+  |\vec k|-\ii\epsilon,\qquad
+  \frac{\vec p_n\cdot\vec k}{p_n^0}-\ii\eta_n\epsilon,\qquad
+  \frac{\vec p_m\cdot\vec k}{p_m^0}+\ii\eta_m\epsilon .
+\]
+The photon poles give the real part of the eikonal integral, while the
+matter poles may contribute to its phase.  Evaluating the photon-pole
+contribution gives
+\[
+  \operatorname{Re}J_{nm}
+  =
+  -\eta_n\eta_m\,
+  \frac{p_n\cdot p_m}{2}
+  \int_{\mu<|\vec k|<M}
+  \frac{\dd^3\vec k}{(2\pi)^3}
+  \frac{1}
+       {|\vec k|^3
+        (p_n^0-\vec p_n\cdot\hat k)
+        (p_m^0-\vec p_m\cdot\hat k)} .
+\]
+Using the same angular integral as for real emission,
 \[
   \operatorname{Re}J_{nm}
   =

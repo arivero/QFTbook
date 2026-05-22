@@ -50,21 +50,35 @@ The chapter should state:
 1. External-line emission of a soft photon in scalar QED gives the eikonal
    factor \(g p\cdot e^*/(p\cdot k-\ii\epsilon)\).
 2. The leading soft factor is spin-independent: spin changes subleading terms.
+   The spinor-QED check should display the nearly on-shell Dirac numerator and
+   its reduction to the same eikonal factor.
 3. For hard state labels \(\alpha,\beta\), the leading one-photon factor is
    \[
      \sum_n {g_n p_n\cdot e_h^*(k)\over \eta_np_n\cdot k-\ii\epsilon}.
    \]
 4. Multiple real soft photons factorize into the product of the one-photon
    factors at leading order.
+   The two-soft-photon identity on one external line should be displayed,
+   since it explains how nested eikonal denominators become independent
+   one-photon factors.
 5. After summing physical polarizations, charge conservation removes the
    gauge-vector terms in the polarization sum.
 6. Real unresolved photons produce \((E_T/\mu)^{A_{\beta\alpha}}\) at leading
    soft logarithmic order.
+   The angular integral defining \(A_{\beta\alpha}\) should be derived with a
+   Feynman parameter and the polar-axis integral, not merely quoted.
 7. Virtual soft photon exchange between distinct external lines exponentiates.
 8. Same-line virtual soft singularities are accounted for by the infrared part
    of the LSZ factors \(Z_n^{1/2}\).
+   The electromagnetic form-factor insertion should be used to identify this
+   cancellation, including the scalar and spinor current decompositions and
+   the finite \(G(0)=-g^2/(8\pi^2)+O(g^4)\), the relation between
+   \(Z_{\rm IR}\), \(J_{12}\), and the formal \(J_{11}\), and the scalar
+   self-energy derivative that produces the same logarithm in \(Z\).
 9. The virtual rate factor is \((\mu/M)^{A_{\beta\alpha}}\), up to a phase at
    the amplitude level.
+   The \(k^0\)-plane pole locations should be stated: photon poles determine
+   the real logarithm, while matter poles contribute only to the phase.
 10. The inclusive product is finite as \(\mu\to0\):
    \[
      (\mu/M)^{A_{\beta\alpha}}(E_T/\mu)^{A_{\beta\alpha}}
@@ -81,6 +95,8 @@ The chapter should state:
 
 - External-line soft photon factorization, including the multiplication of
   factors for two photons emitted from the same line.
+- Same-line virtual soft loops and their absorption into the infrared part of
+  external LSZ factors.
 - Real-versus-virtual soft factor cancellation at the level of rates.
 - Abelian-Higgs regulator figure showing the vacuum of the regulator scalar
   and the induced photon mass.
@@ -93,3 +109,8 @@ The chapter should state:
   regulator behavior and then state the inclusive/dressed constructions.
 - Define every symbol before use, especially \(A_{\beta\alpha}\),
   \(\eta_n\), \(E_T\), \(M\), \(\mu\), and \(\beta_{nm}\).
+- 2026-05-22 source pass: handwritten pp. 56--70 checked against the chapter;
+  missing two-soft-photon identity, spinor soft-factor derivation,
+  angular-integral derivation, electromagnetic form-factor/LSZ same-line
+  cancellation, \(G(0)\), self-energy derivative check, \(k^0\)-pole analysis,
+  and same-line cancellation figure were added.
