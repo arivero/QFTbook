@@ -3,8 +3,10 @@
 ## Source Position
 
 - Primary local source: second-sequence handwritten material, pages 71--80.
-- Immediate predecessor: infrared divergences and inclusive QED.
-- Immediate successor in the source order: renormalizability and local
+- Current monograph position: opening chapter of the renormalization volume,
+  after the analytic \(S\)-matrix and high-energy-bound development.
+- Source-order predecessor: infrared divergences and inclusive QED.
+- Immediate successor in the monograph: renormalizability and local
   counterterms.
 - Role in the monograph: introduce the exact source functional, its connected
   logarithm, and the Legendre transform whose vertices are the one-particle
