@@ -78,6 +78,11 @@ The chapter must define and derive:
 - the comparison table for \(d=4-\epsilon\), \(d=3\), and \(d=2\), with the
   last two rows explicitly not presented as consequences of the first-order
   epsilon expansion.
+- scaling coordinates as a finite local RG chart: the projected beta vector
+  field, its linearization at the fixed point, relevant eigenvalues
+  \(y_A=D-\Delta_A\), irrelevant eigenvalues
+  \(\omega_\rho=\Delta_\rho-D\), and the endpoint-map definition of the
+  critical surface.
 
 ## Claim Ledger
 
@@ -105,6 +110,9 @@ The chapter must define and derive:
    point.
 11. \(\phi^4\) is irrelevant at the interacting fixed point even though it is
    needed to reach that fixed point.
+12. A finite critical surface is an endpoint condition \(u(\mu_R)=0\) in a
+    local RG chart, with the codimension determined by the relevant
+    coordinates allowed by the imposed symmetry.
 
 ## Figure Requirements
 
@@ -144,3 +152,9 @@ The chapter must define and derive:
   full local chart.
 - Keep the Ising model itself for the next chapter.
 - No reader-facing source-page references or course-note references.
+- 2026-05-22 local-RG-chart pass: added a section making scaling coordinates
+  into a finite projected RG chart, defining the critical surface as a
+  relevant-coordinate endpoint condition, and deriving the linear tuning
+  powers between \(\Lambda_0\) and \(\mu_R\).  This prepares the Ising
+  universality statement to use the Wilsonian cutoff-removal estimate without
+  treating universality as an informal identification of microscopic actions.

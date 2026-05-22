@@ -64,6 +64,12 @@ The chapter must define and derive:
 - the distinction between nonuniversal metric factors, such as the coefficient
   relating \(T-T_c\) to the thermal scaling coordinate, and universal
   exponents.
+- finite-cutoff universality in a local RG chart: endpoint maps for relevant
+  coordinates, a conditional proposition applying the Wilsonian
+  cutoff-removal estimate, nonuniversal microscopic coordinate maps, and
+  scaling-field expansions of lattice observables into continuum operators;
+- the correction-to-scaling structure obtained by differentiating the
+  coordinate-to-correlator map in retained irrelevant coordinates.
 
 ## Claim Ledger
 
@@ -90,6 +96,11 @@ The chapter must define and derive:
 10. In the \(\mathbb Z_2\)-even slice, only the thermal relevant coordinate
     must be tuned; without the symmetry, the magnetic coordinate is also
     relevant.
+11. Under stated local RG hypotheses, tuned microscopic realizations have the
+    same limiting relevant-coordinate graph and the same normalized
+    continuum correlators at separated points; model dependence remains in
+    critical temperatures, coordinate metric factors, field normalizations,
+    and finite-cutoff corrections.
 
 ## Figure Requirements
 
@@ -123,5 +134,17 @@ The chapter must define and derive:
   field; use the scaling-field expansion and state nonuniversal normalizations.
 - Do not erase the sign of the thermal deformation in the massive scaling
   limit.
-- Keep Wilsonian cutoff-flow equations for the next chapter.
+- Use Wilsonian cutoff-flow estimates only with their stated finite-chart
+  hypotheses; do not promote them to an uncontrolled infinite-dimensional
+  theorem.
 - No reader-facing source-page references or course-note references.
+- 2026-05-22 finite-cutoff-universality pass: added a section defining
+  \(z=(u,v)\) at a reference scale, the microscopic endpoint map
+  \(E_X(\Lambda_0,p_X)\), a local universality proposition derived from the
+  finite-coordinate cutoff-removal estimate, the linear tuning relation
+  \(T-T_{c,X}\sim A_X^{-1}(\mu_R/\Lambda_0)^{y_t}\lambda_{t,R}\), and the
+  normalized scaling-field limit for separated lattice correlators.  Added
+  the finite-chart correction-to-scaling expansion
+  \(G^X_a=G_{u_R}+O((\mu_R a)^\kappa)\), with leading exponent identified
+  with the smallest irrelevant eigenvalue when the generated-integral
+  remainder is faster.

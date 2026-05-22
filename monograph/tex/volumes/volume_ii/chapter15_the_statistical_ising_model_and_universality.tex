@@ -691,3 +691,212 @@ microscopic lattice ensembles to continuum Euclidean QFT.  The construction is
 by correlators: after tuning the relevant coordinates and rescaling fields, the
 large-distance spin correlators define correlators of local fields at, or near,
 the Ising fixed point.
+
+\section{Finite-Cutoff Universality in a Local Chart}
+
+The preceding paragraph can be made into a local finite-cutoff statement.
+Let \(\Lambda_0=a^{-1}\) be the lattice cutoff and let \(\mu_R\) be a fixed
+reference momentum scale with \(\mu_R<\Lambda_0\).  Choose a finite local RG
+chart near the Ising fixed point and write the projected Wilsonian coordinates
+at \(\mu_R\) as
+\[
+  z(\mu_R;\Lambda_0)=(u(\mu_R;\Lambda_0),v(\mu_R;\Lambda_0)).
+\]
+Here \(u\) denotes the relevant coordinates and \(v\) denotes the retained
+irrelevant coordinates.  In the full scalar chart
+\[
+  u=(\lambda_h,\lambda_t),
+\]
+where \(\lambda_h\) is the dimensionless coordinate coupled to the spin field
+\(\sigma\), and \(\lambda_t\) is the dimensionless coordinate coupled to the
+energy field \(\varepsilon\).  In the \(\mathbb Z_2\)-even chart
+\(\lambda_h\) is absent.  The target value
+\[
+  u_R=(\lambda_{h,R},\lambda_{t,R})
+\]
+specifies either the critical theory, when \(u_R=0\), or a massive scaling
+limit, when one of the relevant coordinates is held at a fixed nonzero value
+at the scale \(\mu_R\).
+
+Let \(X\) label a microscopic realization in the same proposed universality
+class: a nearest-neighbor Ising model, a generalized single-site potential, or
+a lattice scalar action with different short-distance couplings.  Let
+\(p_X\) denote the microscopic parameters available for tuning, such as
+temperature and magnetic field.  The endpoint map in the finite chart is
+\[
+  E_X(\Lambda_0,p_X)
+  =
+  u_X(\mu_R;\Lambda_0,p_X).
+\]
+The local tuning problem is to solve
+\[
+  E_X(\Lambda_0,p_X)=u_R .
+\]
+In the \(\mathbb Z_2\)-even one-parameter case this is the precise version of
+tuning the temperature: if \(p_X=T\), then the condition at criticality is
+\(\lambda_t(\mu_R;\Lambda_0,T)=0\).
+
+\begin{proposition}[Local universality from RG coordinates]
+Fix a finite local RG chart near the Ising fixed point and a target relevant
+coordinate \(u_R\).  Suppose that, for every sufficiently large
+\(\Lambda_0\) and for each microscopic realization \(X\) under consideration,
+the following conditions hold.
+\begin{enumerate}[label=(\roman*)]
+  \item The endpoint equation
+  \(E_X(\Lambda_0,p_X)=u_R\) has a solution \(p_X(\Lambda_0,u_R)\), and the
+  corresponding trajectory remains in the chosen chart between
+  \(\Lambda_0\) and \(\mu_R\).
+  \item The retained irrelevant block obeys the same backward contraction
+  estimate used in the Wilsonian cutoff-removal theorem.
+  \item The microscopic irrelevant coordinates are uniformly bounded after
+  expressing the bare action in the chosen local coordinates.
+  \item The generated integral along the tuned trajectory converges uniformly
+  as \(\Lambda_0\to\infty\).
+\end{enumerate}
+Then there is a graph \(v=V_{\mu_R}(u_R)\), depending on the fixed point and
+on the chosen RG coordinates but not on the microscopic label \(X\), such that
+\[
+  v_X(\mu_R;\Lambda_0,p_X(\Lambda_0,u_R))
+  =
+  V_{\mu_R}(u_R)
+  +
+  O\!\left[
+    \left(\frac{\mu_R}{\Lambda_0}\right)^\kappa
+  \right]
+\]
+for some \(\kappa>0\) determined by the irrelevant exponents and by the
+convergence rate of the generated integral.
+\end{proposition}
+
+\begin{proof}
+Apply the finite-coordinate cutoff-removal estimate to the RG trajectory
+whose relevant endpoint coordinate is fixed to be \(u_R\).  The irrelevant
+part of the bare coordinate contributes at order
+\((\mu_R/\Lambda_0)^\omega\), where \(\omega\) is the smallest retained
+irrelevant exponent in the chart.  The generated integral has the assumed
+cutoff limit and a convergence rate, say \(\omega_F\).  Taking
+\(\kappa=\min(\omega,\omega_F)\) gives the displayed estimate.  The limiting
+graph is independent of \(X\) because all dependence on \(X\) has been placed
+either in the solved relevant-coordinate tuning or in bounded irrelevant
+bare data whose direct memory is power-suppressed.
+\end{proof}
+
+This proposition is a coordinate form of universality.  It separates three
+kinds of data.  First, the fixed point and its scaling operators determine
+\(\Delta_\sigma\), \(\Delta_\varepsilon\), \(y_h\), \(y_t\), and the limiting
+operator algebra.  Second, the microscopic model determines nonuniversal
+coordinate maps, such as
+\[
+  \lambda_t(\Lambda_0)
+  =
+  A_X\,(T-T_{c,X})+O((T-T_{c,X})^2),
+  \qquad
+  A_X\neq0 .
+\]
+Third, the irrelevant microscopic coordinates determine finite-cutoff
+corrections.  At linear order the tuning relation for a fixed thermal target
+\(\lambda_{t,R}\) is
+\[
+  \lambda_t(\Lambda_0)
+  =
+  \left(\frac{\mu_R}{\Lambda_0}\right)^{y_t}
+  \lambda_{t,R}
+  +\hbox{higher-order terms},
+\]
+so
+\[
+  T-T_{c,X}
+  =
+  A_X^{-1}
+  \left(\frac{\mu_R}{\Lambda_0}\right)^{y_t}
+  \lambda_{t,R}
+  +\cdots .
+\]
+The factor \(A_X\) is not fixed-point data.  The exponent
+\(y_t=D-\Delta_\varepsilon\) is.
+
+The same separation applies to observables.  Let \(A^X_{\rm spin}\) be a
+microscopic odd lattice observable and \(A^X_{\rm eng}\) a microscopic even
+energy-density observable with identity part subtracted.  Their scaling-field
+expansions have the form
+\[
+  A^X_{\rm spin}
+  =
+  b^X_\sigma a^{\Delta_\sigma}\sigma
+  +
+  \sum_J b^X_J a^{\Delta_J}O_J,
+  \qquad
+  A^X_{\rm eng}
+  =
+  b^X_\varepsilon a^{\Delta_\varepsilon}\varepsilon
+  +
+  \sum_K c^X_K a^{\Delta_K}O_K,
+\]
+where the sums contain fields with larger scaling dimensions in the same
+symmetry sector, and \(b^X_\sigma,b^X_\varepsilon\) are nonzero for the
+chosen observables.  For separated continuum points \(x_i\), the normalized
+lattice correlators therefore have the limit
+\[
+  \lim_{a\to0}
+  \prod_i
+  \left((b^X_i)^{-1}a^{-\Delta_i}\right)
+  \left\langle
+    \prod_i A^X_i([x_i/a])
+  \right\rangle_{X,a,p_X(a,u_R)}
+  =
+  \left\langle
+    \prod_i O_i(x_i)
+  \right\rangle_{u_R},
+\]
+with the same limiting continuum correlator for all \(X\) satisfying the
+hypotheses.  The constants \(b^X_i\), the critical temperature \(T_{c,X}\),
+and finite-cutoff corrections are microscopic.  The dimensions, RG
+eigenvalues, and normalized continuum correlators are fixed-point data.
+
+\begin{remark}
+The proposition is local in the chosen finite projection.  A complete
+construction of the Ising continuum QFT requires existence of the scaling
+limit for the full set of Schwinger functions and the corresponding
+positivity, locality, and regularity properties.  The local RG statement
+identifies the mechanism by which different microscopic lattice coordinates
+lead to the same continuum endpoint once those analytic inputs are available.
+\end{remark}
+
+If the coordinate-to-correlator map is differentiable in the retained
+irrelevant coordinates, the same estimate gives the standard correction
+structure with all symbols fixed.  Let
+\[
+  G^X_a(x_1,\ldots,x_n)
+\]
+denote a normalized separated-point lattice correlator after solving the
+relevant endpoint equation for \(u_R\).  In the finite chart,
+\[
+  G^X_a
+  =
+  G_{u_R}
+  +
+  \sum_\rho
+  \left(
+    v^\rho_X(\mu_R;\Lambda_0)-V^\rho_{\mu_R}(u_R)
+  \right)
+  \left.
+    \frac{\partial G}{\partial v^\rho}
+  \right|_{v=V_{\mu_R}(u_R)}
+  +
+  \cdots .
+\]
+For bounded microscopic irrelevant coordinates this gives
+\[
+  G^X_a(x_1,\ldots,x_n)
+  =
+  G_{u_R}(x_1,\ldots,x_n)
+  +
+  O((\mu_R a)^\kappa),
+  \qquad
+  a=\Lambda_0^{-1}.
+\]
+When the generated-integral convergence is faster than the leading irrelevant
+correction, the smallest irrelevant exponent in the symmetry sector gives the
+leading correction-to-scaling exponent.  The amplitudes multiplying these
+corrections depend on \(X\); the exponents and the limiting correlator do not,
+under the hypotheses stated above.

@@ -780,3 +780,96 @@ The first row is the perturbative epsilon expansion.  The \(d=3\) and \(d=2\)
 rows are data about the corresponding fixed points themselves; they are not
 deduced by substituting \(\epsilon=1\) or \(\epsilon=2\) into the first-order
 series.
+
+\section{Scaling Coordinates as a Local RG Chart}
+
+The preceding computations identify individual scaling operators.  For the
+universality discussion, the corresponding coordinate statement is needed.
+Fix a finite projection of the local action space near a fixed point, after
+quotienting by total derivatives and equation-of-motion redundancies in the
+chosen renormalized-operator scheme.  Let \(g^\alpha(\mu)\) be dimensionless
+coordinates in this projection, with \(g^\alpha=0\) at the fixed point, and
+let
+\[
+  \frac{\dd g^\alpha}{\dd\log\mu}
+  =
+  \beta^\alpha(g)
+\]
+be the projected RG vector field.  The linearized matrix is
+\[
+  M^\alpha{}_\beta
+  =
+  \left.
+  \frac{\partial\beta^\alpha}{\partial g^\beta}
+  \right|_{g=0}.
+\]
+Assume, in the finite projection under consideration, that \(M\) is
+diagonalizable in a basis represented by scaling operators.  A relevant
+coordinate \(u^A\) is one whose operator has dimension
+\(\Delta_A<D\); write
+\[
+  y_A=D-\Delta_A>0 .
+\]
+An irrelevant coordinate \(v^\rho\) is one whose operator has dimension
+\(\Delta_\rho>D\); write
+\[
+  \omega_\rho=\Delta_\rho-D>0 .
+\]
+With the convention that \(\mu\) is the running physical momentum scale, the
+linearized equations are
+\begin{equation}
+  \frac{\dd u^A}{\dd\log\mu}
+  =
+  -y_Au^A+O(g^2),
+  \qquad
+  \frac{\dd v^\rho}{\dd\log\mu}
+  =
+  \omega_\rho v^\rho+O(g^2).
+  \label{eq:critical-scaling-coordinate-linear-flow}
+\end{equation}
+Thus a relevant coordinate grows toward the infrared unless it is tuned, while
+an irrelevant coordinate decays toward the infrared at the linearized level.
+This is a statement about the endpoint map of the RG flow, not about a
+microscopic equality of actions.
+
+\begin{definition}[Critical surface in a finite RG chart]
+Let \(u=(u^1,\ldots,u^r)\) be the relevant coordinates in a finite local RG
+chart at a fixed point.  At a reference scale \(\mu_R\), the critical surface
+in that chart is the set of ultraviolet coordinates whose RG trajectory exists
+down to \(\mu_R\) and satisfies
+\[
+  u(\mu_R)=0 .
+\]
+If the theory is restricted by a symmetry, only relevant coordinates
+compatible with that symmetry are included in \(u\).
+\end{definition}
+
+At linear order between a microscopic cutoff \(\Lambda_0\) and a reference
+scale \(\mu_R<\Lambda_0\), equation
+\eqref{eq:critical-scaling-coordinate-linear-flow} gives
+\[
+  u^A(\mu_R)
+  =
+  \left(\frac{\Lambda_0}{\mu_R}\right)^{y_A}
+  u^A(\Lambda_0),
+  \qquad
+  v^\rho(\mu_R)
+  =
+  \left(\frac{\mu_R}{\Lambda_0}\right)^{\omega_\rho}
+  v^\rho(\Lambda_0).
+\]
+Therefore holding \(u^A(\mu_R)\) fixed as \(\Lambda_0\to\infty\) requires
+the ultraviolet coordinate \(u^A(\Lambda_0)\) to be tuned with precision of
+order \((\mu_R/\Lambda_0)^{y_A}\).  A bounded ultraviolet irrelevant coordinate
+contributes to \(v^\rho(\mu_R)\) only at order
+\((\mu_R/\Lambda_0)^{\omega_\rho}\), apart from the generated contribution
+along the tuned trajectory.  The Wilsonian cutoff-removal estimate gives the
+nonlinear finite-coordinate form of this statement.
+
+For the Wilson-Fisher fixed point in the \(\mathbb Z_2\)-even scalar chart,
+the leading relevant coordinate is the thermal coordinate dual to
+\([O_2]\), with \(y_t=D-\Delta_{\phi^2}\).  In the full scalar chart the odd
+coordinate dual to \(\phi\) is also relevant, with
+\(y_h=D-\Delta_\phi\).  The phrase ``codimension-one critical surface'' will
+therefore mean the \(\mathbb Z_2\)-even chart unless the magnetic coordinate
+has been included and separately tuned.
