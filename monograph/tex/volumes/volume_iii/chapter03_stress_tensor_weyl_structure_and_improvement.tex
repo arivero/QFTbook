@@ -406,29 +406,82 @@ operator algebra.
 
 \section{Ward Identities with Stress-Tensor Insertions}
 
-Let \(\mathcal O_i(x_i)\) be local operators inserted at separated points.
-The Ward identity for diffeomorphisms has the local form
+Let
 \[
+  X=
+  \mathcal O_{A_1}(x_1)\cdots\mathcal O_{A_n}(x_n),
+  \qquad
+  X_i[B]=
+  \mathcal O_{A_1}(x_1)\cdots B(x_i)\cdots
+  \mathcal O_{A_n}(x_n),
+\]
+where \(B(x_i)\) replaces the \(i\)-th operator.  Suppose first that each
+\(\mathcal O_{A_i}\) belongs to a finite-dimensional source representation of
+linearized diffeomorphisms, with matrices
+\((\mathsf R^{\mu\nu}_{(i)})_{A_i}{}^{B_i}\) defined by the linear term
+\[
+  \delta_\xi \mathcal O_{A_i}(x_i)
+  =
+  \xi^\rho(x_i)\partial_\rho\mathcal O_{A_i}(x_i)
+  +
+  \partial_\mu\xi_\nu(x_i)
+  (\mathsf R^{\mu\nu}_{(i)})_{A_i}{}^{B_i}
+  \mathcal O_{B_i}(x_i).
+\]
+For scalar operators the matrices \(\mathsf R^{\mu\nu}_{(i)}\) vanish.  For
+operators carrying only orthonormal-frame spin, the antisymmetric part of
+\(\mathsf R^{\mu\nu}_{(i)}\) is the usual spin matrix
+\(\mathsf S^{\mu\nu}_{(i)}=-\mathsf S^{\nu\mu}_{(i)}\), and the symmetric
+traceless part is absent.  The source-functional identity
+\eqref{eq:cft-source-diffeomorphism-ward}, differentiated with respect to the
+corresponding sources and then evaluated at zero source, gives the smeared
+flat-space Ward identity
+\begin{equation}
+  \int\dd^D x\,
+  \partial_\mu\xi_\nu(x)
+  \left\langle T^{\mu\nu}(x)X\right\rangle
+  =
+  \sum_{i=1}^n
+  \xi^\nu(x_i)\partial_{x_i^\nu}\langle X\rangle
+  +
+  \sum_{i=1}^n
+  \partial_\mu\xi_\nu(x_i)
+  \left\langle
+    X_i[
+    (\mathsf R^{\mu\nu}_{(i)})_{A_i}{}^{B_i}\mathcal O_{B_i}]
+  \right\rangle .
+  \label{eq:stress-ward-spinning-smeared}
+\end{equation}
+Equivalently, as an identity of distributions in \(x\),
+\begin{equation}
   \partial_\mu
   \left\langle
-  T^{\mu\nu}(x)\mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
+  T^{\mu\nu}(x)X
   \right\rangle
   =
   -\sum_{i=1}^n
   \delta(x-x_i)
   \partial_{x_i^\nu}
-  \left\langle
-  \mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
-  \right\rangle
+  \langle X\rangle
   +
-  \cdots ,
-\]
-where the terms represented by the ellipsis account for spin indices and for
-the variation of composite operators under diffeomorphisms.  The trace Ward
-identity similarly records the response under Weyl transformations.  At a
-flat-space conformal fixed point, the separated-point trace insertion
-vanishes, while contact terms encode scaling dimensions and conformal
-transformations of the inserted operators.
+  \sum_{i=1}^n
+  \partial_\mu
+  \left[
+    \delta(x-x_i)
+    \left\langle
+      X_i[
+      (\mathsf R^{\mu\nu}_{(i)})_{A_i}{}^{B_i}\mathcal O_{B_i}]
+    \right\rangle
+  \right].
+  \label{eq:stress-ward-spinning-local}
+\end{equation}
+For a basis of composite operators that mixes under the linearized
+diffeomorphism, the displayed representation matrix is replaced by the
+corresponding source-chart representation matrix.  The trace Ward identity
+similarly records the response under Weyl transformations.  At a flat-space
+conformal fixed point, the separated-point trace insertion vanishes, while
+contact terms encode scaling dimensions and conformal transformations of the
+inserted operators.
 
 The charge form of the Ward identity follows by integrating
 \(T^\mu{}_\nu\epsilon^\nu\) over a small sphere around each insertion.  This
