@@ -170,8 +170,8 @@ the Gaussian convolution identity says
   \int_{E_\Lambda}F(\phi)\,\dd\mu_{C_\Lambda}(\phi)
   =
   \int_{E_{\Lambda'}}\int_{\widehat E_{\Lambda,\Lambda'}}
-  F(\phi'+\widehat\phi)\,
-  \dd\mu_{\widehat C_{\Lambda,\Lambda'}}(\widehat\phi)\,
+  F(\phi'+\phi_{\mathrm{sh}})\,
+  \dd\mu_{\widehat C_{\Lambda,\Lambda'}}(\phi_{\mathrm{sh}})\,
   \dd\mu_{C_{\Lambda'}}(\phi')
   \label{eq:finite-regulator-gaussian-convolution}
 \end{equation}
@@ -193,18 +193,20 @@ The algebraic step behind Wilsonian RG is the covariance identity
   \label{eq:wilsonian-covariance-split}
 \end{equation}
 The first covariance belongs to a low field \(\phi'\).  The second covariance
-belongs to an independent shell field \(\widehat\phi\), with kinetic term
+belongs to an independent shell field \(\phi_{\mathrm{sh}}\), with kinetic term
 \begin{equation}
-  \widehat S_{\mathrm{kin}}[\widehat\phi]
+  \widehat S_{\mathrm{kin}}[\phi_{\mathrm{sh}}]
   =
   \frac12\int_k
-  \widehat\phi(-k)\,
+  \widehat\phi_{\mathrm{sh}}(-k)\,
   \frac{k^2+m^2}{\chi_\Lambda(k)-\chi_{\Lambda'}(k)}\,
-  \widehat\phi(k).
+  \widehat\phi_{\mathrm{sh}}(k).
   \label{eq:shell-kinetic-term}
 \end{equation}
-In this paragraph, \(\widehat\phi\) denotes the shell field; Fourier modes are
-indicated by their momentum arguments.
+The shell field is denoted \(\phi_{\mathrm{sh}}\).  A hat continues to denote
+Fourier transformation; thus \(\widehat\phi_{\mathrm{sh}}(k)\) is the shell
+field's Fourier mode, while \(\widehat\phi(k)\) elsewhere is the Fourier mode
+of the active field variable \(\phi\).
 
 \begin{figure}[H]
   \centering
@@ -220,12 +222,12 @@ indicated by their momentum arguments.
     \draw[very thick,orange!85!black,dashed] (1.35,1.25)--(2.55,1.25);
     \node[orange!85!black] at (1.95,1.55) {\(\widehat C_{\Lambda,\Lambda'}\)};
     \node[align=center,green!50!black] at (0.05,0.42) {low field\\\(\phi'\)};
-    \node[align=center,orange!85!black] at (1.95,0.42) {shell field\\\(\widehat\phi\)};
+    \node[align=center,orange!85!black] at (1.95,0.42) {shell field\\\(\phi_{\mathrm{sh}}\)};
 
     \begin{scope}[shift={(5.10,0)}]
       \node[font=\small] at (1.30,2.55) {shell integration};
       \draw[rounded corners=4pt,thick] (0,0.58) rectangle (2.60,1.68);
-      \node at (1.30,1.13) {\(L_\Lambda[\phi'+\widehat\phi]\)};
+      \node at (1.30,1.13) {\(L_\Lambda[\phi'+\phi_{\mathrm{sh}}]\)};
       \draw[green!50!black,thick] (0,1.40)--(-0.72,1.82);
       \draw[green!50!black,thick] (0,0.82)--(-0.72,0.42);
       \draw[green!50!black,thick] (2.60,1.40)--(3.32,1.82);
@@ -266,34 +268,34 @@ cutoff-\(\Lambda\) functional as
   \exp\left[
     -S_{\mathrm{kin},\Lambda'}[\phi']
   \right]
-  \int[D\widehat\phi]\,
+  \int[D\phi_{\mathrm{sh}}]\,
   \exp\left[
-    -\widehat S_{\mathrm{kin}}[\widehat\phi]
-    -L_\Lambda[\phi'+\widehat\phi]
+    -\widehat S_{\mathrm{kin}}[\phi_{\mathrm{sh}}]
+    -L_\Lambda[\phi'+\phi_{\mathrm{sh}}]
   \right]
   \notag\\
   &\hspace{2.0cm}\times
   \exp\left[
-    -\int\dd^Dx\,J(x)\bigl(\phi'(x)+\widehat\phi(x)\bigr)
+    -\int\dd^Dx\,J(x)\bigl(\phi'(x)+\phi_{\mathrm{sh}}(x)\bigr)
   \right].
   \label{eq:z-lambda-after-shell-split}
 \end{align}
 The condition on \(J\) is now used in its precise regulated meaning: the source
 belongs to the low subspace, while the shell covariance belongs to the
 complement.  Equivalently, in Fourier notation
-\(\int\dd^Dx\,J(x)\widehat\phi(x)=0\) for the shell field.  With a smooth cutoff
-profile one enforces this by choosing the source momenta in a slightly smaller
-region on which the shell covariance vanishes, or by using a profile with a
-plateau.  Thus the source term in
+\(\int\dd^Dx\,J(x)\phi_{\mathrm{sh}}(x)=0\) for the shell field.  With a smooth
+cutoff profile one enforces this by choosing the source momenta in a slightly
+smaller region on which the shell covariance vanishes, or by using a profile
+with a plateau.  Thus the source term in
 \eqref{eq:z-lambda-after-shell-split} couples only to \(\phi'\).  The shell
 field may then be integrated out by the defining identity
 \begin{equation}
   \exp\{-L_{\Lambda'}[\phi']\}
   =
-  \int[D\widehat\phi]\,
+  \int[D\phi_{\mathrm{sh}}]\,
   \exp\left[
-    -\widehat S_{\mathrm{kin}}[\widehat\phi]
-    -L_\Lambda[\phi'+\widehat\phi]
+    -\widehat S_{\mathrm{kin}}[\phi_{\mathrm{sh}}]
+    -L_\Lambda[\phi'+\phi_{\mathrm{sh}}]
   \right],
   \label{eq:define-lambda-prime-interaction}
 \end{equation}
@@ -366,8 +368,8 @@ whereas the second derivative contracts two legs of a single vertex.
       }
       \node[align=center] at (1.35,0.16)
         {\(\displaystyle
-        \frac{\delta L_\Lambda}{\delta\phi(k)}
-        \frac{\delta L_\Lambda}{\delta\phi(-k)}\)};
+        \frac{\delta L_\Lambda}{\delta\widehat\phi(k)}
+        \frac{\delta L_\Lambda}{\delta\widehat\phi(-k)}\)};
     \end{scope}
 
     \node at (7.05,1.15) {\(-\)};
@@ -384,7 +386,7 @@ whereas the second derivative contracts two legs of a single vertex.
       \node[align=center,fill=white,inner sep=1pt] at (1.25,0.12)
         {\(\displaystyle
         \frac{\delta^2 L_\Lambda}
-        {\delta\phi(k)\delta\phi(-k)}\)};
+        {\delta\widehat\phi(k)\delta\widehat\phi(-k)}\)};
     \end{scope}
 
     \node[orange!85!black,align=center,fill=white,inner sep=1pt] at (5.8,2.05)
