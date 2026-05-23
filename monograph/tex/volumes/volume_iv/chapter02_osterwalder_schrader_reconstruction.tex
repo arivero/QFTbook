@@ -178,15 +178,47 @@ Cauchy--Schwarz inequality holds on \(\mathcal E_+\), and
 by \(\langle\cdot,\cdot\rangle_{\rm OS}\).
 
 Euclidean time translations by \(s\ge0\) preserve positive-time support and
-therefore act on \(\mathcal E_+\).  The OS continuity and contractivity
-hypotheses say that this action descends to a strongly continuous contraction
-semigroup on \(\Hilb_{\rm OS}\):
+therefore act on \(\mathcal E_+\).  Write \(a_s(\tau,\mathbf x)=(\tau+s,\mathbf
+x)\), and let \(R_s\) be the induced action on test sequences, so that each
+component is translated by \(a_s\).  The OS regularity hypotheses needed at
+this point are the following seminorm statements on \(\mathcal E_+\):
+\begin{align}
+  R_0&=\mathbf 1,
+  &
+  R_{s+t}&=R_sR_t,
+  \label{eq:os-time-semigroup-law}\\
+  \|R_sF\|_{\rm OS}&\le \|F\|_{\rm OS},
+  \label{eq:os-time-contractivity}\\
+  \langle R_sF,G\rangle_{\rm OS}
+  &=
+  \langle F,R_sG\rangle_{\rm OS},
+  \label{eq:os-time-symmetry}\\
+  \lim_{s\downarrow0}\|R_sF-F\|_{\rm OS}&=0,
+  \label{eq:os-time-strong-continuity}
+\end{align}
+for all \(F,G\in\mathcal E_+\), where
+\(\|F\|_{\rm OS}^2=\langle F,F\rangle_{\rm OS}\).  Contractivity implies
+\(R_s\mathcal N\subset\mathcal N\), so \(R_s\) descends to a bounded operator
+\(T_E(s)\) on the quotient and then to \(\Hilb_{\rm OS}\).  Equations
+\eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity} say
+precisely that \(\{T_E(s)\}_{s\ge0}\) is a strongly continuous semigroup of
+self-adjoint contractions.
+
+Let \(A\) be its infinitesimal generator,
 \[
-  T_E(s)=\ee^{-sH},\qquad H\ge0.
+  A\psi=\lim_{s\downarrow0}\frac{T_E(s)\psi-\psi}{s},
 \]
-The equality is the spectral theorem for a self-adjoint nonnegative generator
-\(H\).  This \(H\) is the Lorentzian Hamiltonian in the reconstructed vacuum
-sector.  Spatial translations and rotations act unitarily on the quotient.
+on the vectors for which the limit exists in \(\Hilb_{\rm OS}\).  The
+self-adjoint contraction-semigroup theorem gives \(A=A^*\) and
+\(\sigma(A)\subset(-\infty,0]\).  Setting \(H=-A\), the spectral theorem gives
+\[
+  T_E(s)=\ee^{-sH},\qquad H=H^*,\qquad H\ge0 .
+\]
+Stone's theorem then applies to the strongly continuous unitary group
+\(U_{\rm time}(t)=\ee^{-\ii tH}\): its named hypotheses are the unitary group
+law, strong continuity in \(t\), and self-adjointness of the generator.  This
+\(H\) is the Lorentzian Hamiltonian in the reconstructed vacuum sector.
+Spatial translations and rotations act unitarily on the quotient.
 Together with the analytic continuation of Euclidean rotations, the full OS
 theorem gives a strongly continuous unitary representation of the connected
 Poincare group with joint translation spectrum contained in the closed forward
