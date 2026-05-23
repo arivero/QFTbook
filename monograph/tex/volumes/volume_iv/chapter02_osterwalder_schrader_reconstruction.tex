@@ -199,9 +199,16 @@ this point are the following seminorm statements on \(\mathcal E_+\):
   \label{eq:os-time-strong-continuity}
 \end{align}
 for all \(F,G\in\mathcal E_+\), where
-\(\|F\|_{\rm OS}^2=\langle F,F\rangle_{\rm OS}\).  Contractivity implies
-\(R_s\mathcal N\subset\mathcal N\), so \(R_s\) descends to a bounded operator
-\(T_E(s)\) on the quotient and then to \(\Hilb_{\rm OS}\).  Equations
+\(\|F\|_{\rm OS}^2=\langle F,F\rangle_{\rm OS}\).  The inequality
+\eqref{eq:os-time-contractivity} is the OS-II contractivity strengthening.  It
+is an analytic hypothesis on the reflection-positive seminorm, additional to
+the algebraic preservation of positive-time support and to Euclidean covariance
+of the Schwinger functions.  This is the point at which the Klein--Landau
+regularity gap in the original reconstruction argument is closed.
+
+Contractivity implies \(R_s\mathcal N\subset\mathcal N\), so \(R_s\) descends to
+a bounded operator \(T_E(s)\) on the quotient and then to \(\Hilb_{\rm OS}\).
+Equations
 \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity} say
 precisely that \(\{T_E(s)\}_{s\ge0}\) is a strongly continuous semigroup of
 self-adjoint contractions.
@@ -316,8 +323,9 @@ construction with its own hypotheses.
 \begin{theorem}[Osterwalder--Schrader reconstruction]
 Let \(\{S_n\}_{n\ge0}\) be Euclidean distributions satisfying Euclidean
 covariance, permutation symmetry, reflection positivity, Hermiticity,
-normalization, and the regularity and growth assumptions required for
-tempered reconstruction.  Then there exists Wightman field data
+normalization, the OS-II contractivity and continuity conditions for
+positive-time translations, and the regularity and growth assumptions required
+for tempered reconstruction.  Then there exists Wightman field data
 \[
   (\Hilb_{\rm OS},\vac_{\rm OS},U,\mathcal D_{\rm OS},
   \{\widehat\Phi_\alpha\}_{\alpha\in I})
