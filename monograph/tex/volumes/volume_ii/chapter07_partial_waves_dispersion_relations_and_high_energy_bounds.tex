@@ -24,8 +24,10 @@ where \(k_1,k_2\) are incoming and \(k_3,k_4\) are outgoing.  Hence
   s+t+u=4m^2 .
 \]
 The normalization of \(\mathcal M\) is the identical-particle normalization
-fixed in Chapter~\ref{ch:cross-sections-unitarity}.  Thus the forward
-optical theorem below will contain no additional convention-dependent factor.
+fixed in Chapter~\ref{ch:cross-sections-unitarity}.  The forward optical
+theorem is rederived below in this normalization, because the unordered
+two-particle convention, the even-partial-wave projection, and the final-state
+factor \(1/2\) must be kept together.
 
 The hypotheses used in this chapter are the following.  The theory has a mass
 gap above the vacuum, the external scalar is stable and is the lightest
@@ -261,6 +263,7 @@ inside an ellipse, while the physical partial-wave weights are bounded by
 unitarity.
 
 \section{Partial-Wave Normalization}
+\label{sec:high-energy-partial-wave-normalization}
 
 Let \(\mathcal M_{\rm ord}(s,x)\) denote the ordered two-particle amplitude
 with distinguishable external labels and expansion
@@ -332,29 +335,58 @@ The inequality \(|S_\ell|\le1\) implies the pointwise bound
 The lower bound is simply \(\operatorname{Re}S_\ell\le |S_\ell|\le1\); the
 upper bound follows from \(\operatorname{Re}S_\ell\ge-|S_\ell|\ge-1\).
 
-The elastic and inelastic cross sections are
+We now derive the forward optical theorem in the same convention.  In the
+center-of-mass frame put
+\[
+  p=|\vec p_*|=\frac12\sqrt{s-4m^2},
+  \qquad
+  \rho(s)=\frac{2p}{\sqrt s}.
+\]
+The unordered identical-boson two-particle space contains only the even
+orbital partial waves in this scalar channel.  The same normalization that
+produces \eqref{eq:identical-partial-wave-conversion} gives the elastic
+partial-wave cross section
+\[
+  \sigma_{\rm el}
+  =
+  \frac{2\pi}{p^2}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)|S_\ell(s)-1|^2 .
+\]
+The coefficient \(2\pi/p^2\) is the place where the identical final-state
+factor has already entered: the full solid-angle integral is divided by \(2\),
+while the Bose-symmetrized amplitude contains only the even angular momenta.
+Equivalently, since \(p^2=(s-4m^2)/4\),
 \[
   \sigma_{\rm el}
   =
   \frac{8\pi}{s-4m^2}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
-  (2\ell+1)|S_\ell(s)-1|^2
+  (2\ell+1)|S_\ell(s)-1|^2 .
 \]
-and
+The loss of probability from the elastic two-particle channel in the same
+partial wave gives
 \[
   \sigma_{\rm inel}
+  =
+  \frac{2\pi}{p^2}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)\bigl(1-|S_\ell(s)|^2\bigr)
   =
   \frac{8\pi}{s-4m^2}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)\bigl(1-|S_\ell(s)|^2\bigr).
 \]
-The first formula is the identical-boson formula
+Both formulas have the same prefactor because they are projections of the same
+unitary partial-wave channel decomposition.  In the elastic term the factor
 \[
   \frac{2\pi}{|\vec p_*|^2}
   \sum_{\ell\ {\rm even}}(2\ell+1)|S_\ell-1|^2
 \]
-written using \(|\vec p_*|^2=(s-4m^2)/4\).  The second formula is the loss of
-elastic probability in each partial wave.  Adding the two expressions gives
+is just the identical-boson formula of
+Chapter~\ref{ch:cross-sections-unitarity}; in the inelastic term it is the
+same incoming-flux normalization multiplied by the deficit
+\(1-|S_\ell|^2\) of elastic probability.  Adding the two expressions gives
 \[
   |S_\ell-1|^2+1-|S_\ell|^2
   =
@@ -370,15 +402,44 @@ Adding them gives
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)w_\ell(s).
 \]
-Equivalently,
+On the other hand, the forward absorptive part follows directly from the
+symmetrized amplitude.  Setting \(x=1\), using \(P_\ell(1)=1\), and writing
+\(S_\ell=1+2\ii\rho a_\ell\), one obtains
+\[
+  \mathcal M(s,1)
+  =
+  32\pi
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)\frac{S_\ell(s)-1}{2\ii\rho(s)}
+  =
+  -16\pi\ii\,\rho(s)^{-1}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)\bigl(S_\ell(s)-1\bigr).
+\]
+Therefore
+\[
+  \operatorname{Im}\mathcal M(s,1)
+  =
+  16\pi\,\rho(s)^{-1}
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)w_\ell(s).
+\]
+Since \(\rho(s)=2p/\sqrt s=\sqrt{s-4m^2}/\sqrt s\), the preceding two
+displays imply
 \[
   \sigma_{\rm tot}
+  =
+  \frac{\rho(s)}{s-4m^2}\,
+  \operatorname{Im}\mathcal M(s,1)
   =
   \frac{1}{\sqrt{s(s-4m^2)}}\,
   \operatorname{Im}\mathcal M(s,1).
 \]
-This is the optical theorem in the present normalization, since
-\(\rho(s)=\sqrt{s-4m^2}/\sqrt s\).
+This is the optical theorem in the present normalization.  There is no further
+factor of \(1/2\) to insert: the identical-particle \(1/2\) has already been
+used in the partial-wave cross-section prefactor, while the forward amplitude
+appearing here is the Bose-symmetrized amplitude with the \(32\pi\) expansion
+in \eqref{eq:identical-partial-wave-conversion}.
 
 \section{The Froissart--Martin Mechanism}
 
