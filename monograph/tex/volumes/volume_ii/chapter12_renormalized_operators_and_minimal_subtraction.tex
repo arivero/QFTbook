@@ -270,7 +270,7 @@ low-field expectation, and its 1PI Legendre-transform representative.
 Work at a finite ultraviolet regulator \(\Lambda_0\), and let
 \(\Lambda<\Lambda_0\) be a smooth Wilsonian cutoff.  The regulated field is
 decomposed as a sum of an independent low field \(\phi\) with covariance
-\(C_\Lambda\) and a shell field \(\widehat\phi\) with positive covariance
+\(C_\Lambda\) and a shell field \(\phi_{\mathrm{sh}}\) with positive covariance
 \(\widehat C_{\Lambda_0,\Lambda}=C_{\Lambda_0}-C_\Lambda\), or with any
 equivalent smooth positive covariance decomposition.  The shell kinetic term
 \(\widehat S_{\mathrm{kin}}\) is the quadratic form inverse to
@@ -330,14 +330,14 @@ by the Gaussian pushforward
 \begin{equation}
   \exp\bigl[-L_\Lambda[\phi;\eta_\Lambda]\bigr]
   =
-  \int[D\widehat\phi]\,
+  \int[D\phi_{\mathrm{sh}}]\,
   \exp\left[
-    -\widehat S_{\mathrm{kin}}[\widehat\phi]
-    -L_{\Lambda_0}[\phi+\widehat\phi;\eta_0(\eta_\Lambda)]
+    -\widehat S_{\mathrm{kin}}[\phi_{\mathrm{sh}}]
+    -L_{\Lambda_0}[\phi+\phi_{\mathrm{sh}};\eta_0(\eta_\Lambda)]
   \right],
   \label{eq:source-extended-wilsonian-pushforward}
 \end{equation}
-where the covariance of \(\widehat\phi\) is the shell covariance between
+where the covariance of \(\phi_{\mathrm{sh}}\) is the shell covariance between
 \(\Lambda_0\) and \(\Lambda\).  Equation
 \eqref{eq:source-extended-wilsonian-pushforward} is first an identity in the
 finite-dimensional regulated system; the continuum derivative expansion is

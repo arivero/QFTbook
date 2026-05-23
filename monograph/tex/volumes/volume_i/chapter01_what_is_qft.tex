@@ -25,23 +25,31 @@ spacelike when
 A test function is a smooth compactly supported complex-valued function on
 \(\mathbb M^D\), an element of \(C_c^\infty(\mathbb M^D)\), unless another
 test-function space is explicitly declared. A pointlike quantum field
-\(\Phi_A(x)\) is an operator-valued distribution: its primary
+\(\widehat\Phi_A(x)\) is an operator-valued distribution: its primary
 operator expression is the smeared field
 \[
-  \Phi_A(f)
+  \widehat\Phi_A(f)
   =
-  \int_{\mathbb M^D}\dd^Dx\,f(x)\Phi_A(x),
+  \int_{\mathbb M^D}\dd^Dx\,f(x)\widehat\Phi_A(x),
   \qquad
   f\in C_c^\infty(\mathbb M^D).
 \]
 The integral sign is distributional notation for evaluating the field on the
-test function \(f\).  When \(\Phi_A(f)\) is unbounded, its common dense
+test function \(f\).  When \(\widehat\Phi_A(f)\) is unbounded, its common dense
 domain is part of the field framework being used.  The symbol
 \(\mathcal B(\Hilb)\) denotes the algebra of bounded linear operators on a
 Hilbert space \(\Hilb\), and \(\mathcal U(\Hilb)\) denotes its unitary group.
 The label \(A\) denotes a component in a finite-dimensional representation
 space for Lorentz and internal indices, or a composite-operator label, as
 specified in the chapter where the field is introduced.
+
+This notation distinguishes mathematical object classes.  In Hilbert-space
+formulas a hat on a field symbol denotes an operator-valued distribution:
+\(\widehat\phi\) for a scalar field and \(\widehat\Phi_A\) for a multiplet.
+Unhatted fields such as \(\phi\), \(\varphi\), or \(\Phi_E\) denote classical
+variables, path-integral variables, or Euclidean Schwinger/random fields unless
+a chapter explicitly declares a different use.  Fourier transforms of such
+variables are written with a tilde, for example \(\widetilde\phi(k)\).
 
 The test-function space is part of the framework data.  Locality statements
 use \(C_c^\infty\) because support controls localization in bounded spacetime
@@ -265,25 +273,25 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
   \item when unbounded field coordinates are part of the presentation, a
   specified field-domain datum
   \[
-    (\mathcal D_\Phi,\{\Phi_A\}_{A\in I}).
+    (\mathcal D_\Phi,\{\widehat\Phi_A\}_{A\in I}).
   \]
   Here \(I\) is the field-label set, \(\mathcal D_\Phi\subset\Hilb\) is a dense
   linear subspace with \(\vac\in\mathcal D_\Phi\), \(U(g)\mathcal D_\Phi\subset
   \mathcal D_\Phi\) for all \(g\in\mathcal P\), and each smeared field is a
   linear operator
   \[
-    \Phi_A(f):\mathcal D_\Phi\to\mathcal D_\Phi,
+    \widehat\Phi_A(f):\mathcal D_\Phi\to\mathcal D_\Phi,
     \qquad f\in\mathcal T_A,
   \]
   where \(\mathcal T_A\) is the declared test-function space for that field
   component.  Finite products of such smeared fields are defined on
   \(\mathcal D_\Phi\).  If adjoints are used, then
-  \(\mathcal D_\Phi\subset\operatorname{Dom}(\Phi_A(f)^*)\) and the adjoint
+  \(\mathcal D_\Phi\subset\operatorname{Dom}(\widehat\Phi_A(f)^*)\) and the adjoint
   fields preserve \(\mathcal D_\Phi\).  For every
   \(\psi,\chi\in\mathcal D_\Phi\), the matrix elements of finite smeared
   products are continuous multilinear functionals of their test functions.
   Field covariance, field locality, and any relation between
-  \(\Phi_A(f)\) with \(\operatorname{supp}f\subset\mathcal O\) and
+  \(\widehat\Phi_A(f)\) with \(\operatorname{supp}f\subset\mathcal O\) and
   \(\Obs(\mathcal O)\) are imposed on this same domain or by a specified
   affiliation to the chosen local observable algebra.
 \end{enumerate}
@@ -292,13 +300,13 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
 The covariance convention has the following infinitesimal form.  With
 \(U(a,1)=\exp(\ii a^\mu P_\mu)\), a coordinate-labelled scalar field obeys
 \[
-  U(a,1)^{-1}\Phi(x)U(a,1)
+  U(a,1)^{-1}\widehat\phi(x)U(a,1)
   =
-  \Phi(x+a),
+  \widehat\phi(x+a),
   \qquad
-  [P_\mu,\Phi(x)]
+  [P_\mu,\widehat\phi(x)]
   =
-  \ii\,\partial_\mu\Phi(x)
+  \ii\,\partial_\mu\widehat\phi(x)
 \]
 as an identity of distributions on a common invariant domain.  Equivalently,
 conjugation by \(U(a,1)\) shifts the coordinate label by \(-a\).  The local-net
@@ -331,10 +339,10 @@ carries hypotheses.
 \begin{definition}[Wightman field presentation]
   A Wightman field presentation consists of Hilbert-space data
   \[
-    (\Hilb,\vac,U,\mathcal D,\{\Phi_A\}_{A\in I})
+    (\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_A\}_{A\in I})
   \]
   where \(I\) is an index set for fields, \(\mathcal D\subset\Hilb\) is a
-  dense common invariant domain containing \(\vac\), and each \(\Phi_A\) is an
+  dense common invariant domain containing \(\vac\), and each \(\widehat\Phi_A\) is an
   operator-valued distribution on a declared invariant test-function space
   \(\mathcal T\), with common domain \(\mathcal D\).  In the standard
   Wightman case \(\mathcal T=\mathcal S(\mathbb M^D)\), so the vacuum
@@ -342,11 +350,11 @@ carries hypotheses.
   \[
     \vac\in\mathcal D,\qquad
     U(g)\mathcal D\subset\mathcal D\quad(g\in\mathcal P),\qquad
-    \Phi_A(f)\mathcal D\subset\mathcal D\quad(A\in I,\ f\in\mathcal T),
+    \widehat\Phi_A(f)\mathcal D\subset\mathcal D\quad(A\in I,\ f\in\mathcal T),
   \]
   and, for every \(n\ge1\),
   \[
-    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\mathcal D
+    \widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\mathcal D
     \subset
     \mathcal D,
     \qquad A_i\in I,\quad f_i\in\mathcal T.
@@ -357,7 +365,7 @@ carries hypotheses.
     (f_1,\ldots,f_n)
     \longmapsto
     \left\langle\psi,
-    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\chi
+    \widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\chi
     \right\rangle
     \in\mathbb C,
     \qquad \psi,\chi\in\mathcal D .
@@ -367,14 +375,14 @@ carries hypotheses.
   \(f_g(y)=f(g^{-1}y)\).  If the fields carry a finite-dimensional Lorentz
   representation \(R\) of \(G_{\rm Lor}\), covariance is the smeared identity
   \[
-    U(g)^{-1}\Phi_A(f)U(g)
+    U(g)^{-1}\widehat\Phi_A(f)U(g)
     =
-    R(\Lambda)_A{}^B\,\Phi_B(f_g),
+    R(\Lambda)_A{}^B\,\widehat\Phi_B(f_g),
   \]
   with summation over repeated component labels.  In point-field notation this
   is
   \[
-    U(g)^{-1}\Phi_A(x)U(g)=R(\Lambda)_A{}^B\Phi_B(gx).
+    U(g)^{-1}\widehat\Phi_A(x)U(g)=R(\Lambda)_A{}^B\widehat\Phi_B(gx).
   \]
   The representation \(U\) satisfies the spectrum condition of
   Definition~\ref{def:vacuum-minkowski-local-qft}: if \(E_P\) is the joint
@@ -385,7 +393,7 @@ carries hypotheses.
 
   Locality is imposed after smearing:
   \[
-    [\Phi_A(f),\Phi_B(h)]_{\rm gr}=0
+    [\widehat\Phi_A(f),\widehat\Phi_B(h)]_{\rm gr}=0
   \]
   whenever \(\operatorname{supp}f\) and \(\operatorname{supp}h\) are spacelike
   separated, with the ordinary commutator in the purely bosonic case.
@@ -396,7 +404,7 @@ carries hypotheses.
     W_{A_1\cdots A_n}(x_1,\ldots,x_n)
     =
     \bra{\vac}
-    \Phi_{A_1}(x_1)\cdots\Phi_{A_n}(x_n)
+    \widehat\Phi_{A_1}(x_1)\cdots\widehat\Phi_{A_n}(x_n)
     \ket{\vac}.
   \]
   Equivalently,
@@ -404,7 +412,7 @@ carries hypotheses.
     W_{A_1\cdots A_n}(f_1,\ldots,f_n)
     =
     \left\langle\vac,
-    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\vac
+    \widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\vac
     \right\rangle .
   \]
   Translation invariance gives a distribution in difference variables.  With
@@ -438,7 +446,7 @@ carries hypotheses.
     \sum_{n=1}^N
     \sum_{A_1,\ldots,A_n}
     \int F^{(n)}_{A_1\cdots A_n}(x_1,\ldots,x_n)
-    \Phi_{A_1}(x_1)\cdots\Phi_{A_n}(x_n)\vac\,
+    \widehat\Phi_{A_1}(x_1)\cdots\widehat\Phi_{A_n}(x_n)\vac\,
     \dd^Dx_1\cdots\dd^Dx_n .
   \]
   The condition is \(\langle\Psi_F,\Psi_F\rangle\geq0\), with the inner product
@@ -450,7 +458,7 @@ carries hypotheses.
   \[
     \overline{
     \operatorname{span}\{
-    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\vac
+    \widehat\Phi_{A_1}(f_1)\cdots\widehat\Phi_{A_n}(f_n)\vac
     : n\ge0,\ f_i\in\mathcal T,\ A_i\in I
     \}
     }^{\,\|\cdot\|_{\Hilb}}
@@ -596,7 +604,7 @@ The comparison from fields to a local net is obtained, when the needed
 operator-domain and affiliation statements hold, by assigning to a region
 \(\mathcal O\) the von Neumann algebra generated by bounded functions,
 resolvents, or other bounded functional-calculus representatives of smeared
-fields \(\Phi_A(f)\) with \(\operatorname{supp}f\subset\mathcal O\).  The
+fields \(\widehat\Phi_A(f)\) with \(\operatorname{supp}f\subset\mathcal O\).  The
 comparison from a local net to a Hilbert-space theory is the GNS construction
 applied to a state, followed by the representation of the local algebras on
 the GNS Hilbert space.  The comparison from Euclidean correlations to
@@ -614,7 +622,7 @@ Wightman boundary values.
       note/.style={align=center,font=\scriptsize}
     }
     \node[box] (w) at (-4.4,1.55)
-      {Wightman fields\\\(\Phi_A(f),\,W_n\)};
+      {Wightman fields\\\(\widehat\Phi_A(f),\,W_n\)};
     \node[box] (a) at (4.4,1.55)
       {local nets\\\(\mathcal O\mapsto\Obs(\mathcal O)\)};
     \node[box] (e) at (0,-2.15)
@@ -698,9 +706,9 @@ A field presentation assigns localized distributional operators to test
 functions. For a test function \(f\in C_c^\infty(\mathbb M^D)\) with
 \(\operatorname{supp}f\subset\mathcal O\),
 \[
-  \Phi_A(f)
+  \widehat\Phi_A(f)
   =
-  \int_{\mathbb M^D}\dd^Dx\,f(x)\Phi_A(x)
+  \int_{\mathbb M^D}\dd^Dx\,f(x)\widehat\Phi_A(x)
 \]
 is localized in \(\mathcal O\), in the sense that the smeared operator is
 affiliated with the local algebra \(\Obs(\mathcal O)\) or belongs to a common
@@ -715,8 +723,8 @@ functions:
   W_{A_1\cdots A_n}(x_1,\ldots,x_n)
   =
   \bra{\vac}
-  \Phi_{A_1}(x_1)\cdots
-  \Phi_{A_n}(x_n)
+  \widehat\Phi_{A_1}(x_1)\cdots
+  \widehat\Phi_{A_n}(x_n)
   \ket{\vac},
 \]
 again as distributions. Under suitable positivity, covariance, spectral, and
@@ -785,7 +793,7 @@ condition imply that the two-point function admits a positive spectral
 measure on invariant mass.  Let \(\dd\rho(\mu^2)\) denote this positive Borel
 measure on \([0,\infty)\).  The time-ordered two-point function has the form
 \[
-  \bra{\vac}T\{\phi(x)\phi(0)\}\ket{\vac}
+  \bra{\vac}T\{\widehat\phi(x)\widehat\phi(0)\}\ket{\vac}
   =
   \int_{[0,\infty)} \dd\rho(\mu^2)\,\Delta_F(x;\mu^2).
 \]

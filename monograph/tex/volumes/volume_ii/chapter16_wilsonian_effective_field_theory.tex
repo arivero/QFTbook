@@ -7,15 +7,15 @@ We work in Euclidean signature on \(\R^D\), first for one real scalar field.
 Fourier transforms are normalized by
 \[
   \phi(x)=\int\frac{\dd^Dk}{(2\pi)^D}\,
-  \ee^{\ii k\cdot x}\widehat\phi(k),
+  \ee^{\ii k\cdot x}\widetilde\phi(k),
   \qquad
-  \widehat\phi(k)=\int\dd^Dx\,\ee^{-\ii k\cdot x}\phi(x).
+  \widetilde\phi(k)=\int\dd^Dx\,\ee^{-\ii k\cdot x}\phi(x).
 \]
 For compactness, write
 \[
   \int_k F(k):=\int\frac{\dd^Dk}{(2\pi)^D}\,F(k),
   \qquad
-  \frac{\delta\widehat\phi(p)}{\delta\widehat\phi(k)}
+  \frac{\delta\widetilde\phi(p)}{\delta\widetilde\phi(k)}
   =(2\pi)^D\delta^{(D)}(p-k).
 \]
 
@@ -40,9 +40,9 @@ where
   S_{\mathrm{kin},\Lambda}[\phi]
   =
   \frac12\int_k
-  \widehat\phi(-k)\,
+  \widetilde\phi(-k)\,
   \frac{k^2+m^2}{\chi_\Lambda(k)}\,
-  \widehat\phi(k).
+  \widetilde\phi(k).
   \label{eq:smooth-cutoff-kinetic-term}
 \end{equation}
 Perturbation theory around this Gaussian measure uses \(C_\Lambda(k)\) as
@@ -119,8 +119,8 @@ polynomial function of finitely many Fourier modes.  Its vertex expansion is
   L_\Lambda^{(n)}(k_1,\ldots,k_{n-1})
   \notag\\
   &\hspace{3.35cm}\times
-  \widehat\phi(k_1)\cdots\widehat\phi(k_{n-1})
-  \widehat\phi(-k_1-\cdots-k_{n-1}).
+  \widetilde\phi(k_1)\cdots\widetilde\phi(k_{n-1})
+  \widetilde\phi(-k_1-\cdots-k_{n-1}).
   \label{eq:general-wilsonian-interaction}
 \end{align}
 The coefficient functions \(L_\Lambda^{(n)}\) are symmetric in their \(n\)
@@ -149,7 +149,7 @@ the equality
   Z_{\Lambda'}[J]=Z_\Lambda[J]
   \label{eq:low-momentum-generating-function-preserved}
 \end{equation}
-for all sources whose Fourier transform \(\widehat J(k)\) is supported in the
+for all sources whose Fourier transform \(\widetilde J(k)\) is supported in the
 low-momentum region \(|k|<\Lambda'\), or more generally in a region where the
 new cutoff profile is indistinguishable from one.  Thus the scale label on
 \(S_\Lambda\) is a label on a description of the same low-momentum correlation
@@ -198,14 +198,14 @@ belongs to an independent shell field \(\phi_{\mathrm{sh}}\), with kinetic term
   \widehat S_{\mathrm{kin}}[\phi_{\mathrm{sh}}]
   =
   \frac12\int_k
-  \widehat\phi_{\mathrm{sh}}(-k)\,
+  \widetilde\phi_{\mathrm{sh}}(-k)\,
   \frac{k^2+m^2}{\chi_\Lambda(k)-\chi_{\Lambda'}(k)}\,
-  \widehat\phi_{\mathrm{sh}}(k).
+  \widetilde\phi_{\mathrm{sh}}(k).
   \label{eq:shell-kinetic-term}
 \end{equation}
-The shell field is denoted \(\phi_{\mathrm{sh}}\).  A hat continues to denote
-Fourier transformation; thus \(\widehat\phi_{\mathrm{sh}}(k)\) is the shell
-field's Fourier mode, while \(\widehat\phi(k)\) elsewhere is the Fourier mode
+The shell field is denoted \(\phi_{\mathrm{sh}}\).  A tilde denotes
+Fourier transformation; thus \(\widetilde\phi_{\mathrm{sh}}(k)\) is the shell
+field's Fourier mode, while \(\widetilde\phi(k)\) elsewhere is the Fourier mode
 of the active field variable \(\phi\).
 
 \begin{figure}[H]
@@ -322,15 +322,15 @@ satisfies
   \frac12\int_k
   \Lambda\partial_\Lambda C_\Lambda(k)
   \left[
-    \frac{\delta L_\Lambda}{\delta\widehat\phi(k)}
-    \frac{\delta L_\Lambda}{\delta\widehat\phi(-k)}
+    \frac{\delta L_\Lambda}{\delta\widetilde\phi(k)}
+    \frac{\delta L_\Lambda}{\delta\widetilde\phi(-k)}
     -
     \frac{\delta^2 L_\Lambda}
-      {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+      {\delta\widetilde\phi(k)\delta\widetilde\phi(-k)}
   \right].
   \label{eq:wilson-polchinski-flow}
 \end{equation}
-In \eqref{eq:wilson-polchinski-flow}, \(\widehat\phi(k)\) denotes the Fourier
+In \eqref{eq:wilson-polchinski-flow}, \(\widetilde\phi(k)\) denotes the Fourier
 mode of the remaining field.  The notation matches the functional derivative
 convention; after the infinitesimal shell has been integrated, there is again
 only one field argument of \(L_\Lambda\).
@@ -368,8 +368,8 @@ whereas the second derivative contracts two legs of a single vertex.
       }
       \node[align=center] at (1.35,0.16)
         {\(\displaystyle
-        \frac{\delta L_\Lambda}{\delta\widehat\phi(k)}
-        \frac{\delta L_\Lambda}{\delta\widehat\phi(-k)}\)};
+        \frac{\delta L_\Lambda}{\delta\widetilde\phi(k)}
+        \frac{\delta L_\Lambda}{\delta\widetilde\phi(-k)}\)};
     \end{scope}
 
     \node at (7.05,1.15) {\(-\)};
@@ -386,7 +386,7 @@ whereas the second derivative contracts two legs of a single vertex.
       \node[align=center,fill=white,inner sep=1pt] at (1.25,0.12)
         {\(\displaystyle
         \frac{\delta^2 L_\Lambda}
-        {\delta\widehat\phi(k)\delta\widehat\phi(-k)}\)};
+        {\delta\widetilde\phi(k)\delta\widetilde\phi(-k)}\)};
     \end{scope}
 
     \node[orange!85!black,align=center,fill=white,inner sep=1pt] at (5.8,2.05)
@@ -427,21 +427,21 @@ The Gaussian convolution formula gives, to first order in \(\delta\Lambda\),
     \frac12\int_k
     \delta\Lambda\,\partial_\Lambda C_\Lambda(k)
     \frac{\delta^2}
-      {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+      {\delta\widetilde\phi(k)\delta\widetilde\phi(-k)}
   \right]
   \ee^{-L_\Lambda[\phi]} .
 \]
 Since
 \[
   \frac{\delta^2\ee^{-L_\Lambda}}
-    {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+    {\delta\widetilde\phi(k)\delta\widetilde\phi(-k)}
   =
   \left[
-    \frac{\delta L_\Lambda}{\delta\widehat\phi(k)}
-    \frac{\delta L_\Lambda}{\delta\widehat\phi(-k)}
+    \frac{\delta L_\Lambda}{\delta\widetilde\phi(k)}
+    \frac{\delta L_\Lambda}{\delta\widetilde\phi(-k)}
     -
     \frac{\delta^2L_\Lambda}
-      {\delta\widehat\phi(k)\delta\widehat\phi(-k)}
+      {\delta\widetilde\phi(k)\delta\widetilde\phi(-k)}
   \right]\ee^{-L_\Lambda},
 \]
 and

@@ -236,13 +236,14 @@ We use the covariant plane-wave normalization
 \]
 The momentum eigenstate is distributional; physical Hilbert-space states are
 obtained by smearing it with square-integrable wavepackets.
-The Bethe--Salpeter amplitude associated with the scalar field \(\phi\) is
-the time-ordered matrix element
+The Bethe--Salpeter amplitude associated with the scalar local field
+\(\widehat\phi\) is the time-ordered matrix element
 \[
   \Phi_B(x_1,x_2;P)
   =
-  \bra{\vac}T\phi(x_1)\phi(x_2)|B(P)\rangle .
+  \bra{\vac}T\widehat\phi(x_1)\widehat\phi(x_2)|B(P)\rangle .
 \]
+Here \(\Phi_B\) names a c-number bound-state amplitude, not a field operator.
 Translation covariance gives
 \[
   \Phi_B(x_1+a,x_2+a;P)
@@ -268,7 +269,7 @@ side; here that factor is absorbed into the definition of
 No constituent LSZ factors are divided out in this definition.  If the scalar
 field has one-particle residue
 \[
-  \bra{\vac}\phi(0)|\vec p\rangle=Z_\phi^{1/2},
+  \bra{\vac}\widehat\phi(0)|\vec p\rangle=Z_\phi^{1/2},
 \]
 then \(\widetilde\Phi_B\) is the unamputated, field-normalized
 Bethe--Salpeter amplitude and contains the \(Z_\phi^{1/2}\) normalization
