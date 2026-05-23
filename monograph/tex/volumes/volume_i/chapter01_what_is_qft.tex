@@ -462,25 +462,77 @@ carries hypotheses.
 \end{definition}
 
 \begin{definition}[Euclidean correlation presentation]
-  A Euclidean correlation presentation consists of Schwinger distributions
+  Let \(E=\mathbb R^D\) be Euclidean space and let \(V\) be the
+  finite-dimensional complex field-label space, with homogeneous basis labels
+  \(a\) and parity \(|a|\in\mathbb Z/2\mathbb Z\) when a grading is present.  A
+  Euclidean correlation presentation consists of a test-function space
+  \(\mathcal T_E\), usually \(\mathcal S(E)\) in the tempered OS framework, an
+  adjoint antilinear involution \(a\mapsto a^\dagger\) on labels, a Euclidean
+  rotation representation \(R_E\) on \(V\), and a hierarchy
   \[
-    S_{a_1\cdots a_n}(x_1,\ldots,x_n),
-    \qquad x_i\in\mathbb R^D,
+    S_n\in\mathcal T_E'(E^n;(V^*)^{\otimes n}),
+    \qquad n\ge0,\qquad S_0=1.
   \]
-  an adjoint involution \(a\mapsto a^\dagger\) on component labels, Euclidean
-  covariance, permutation symmetry or graded permutation symmetry, and stated
-  regularity and growth assumptions.  Choose Euclidean coordinates
+  Here \(\mathcal T_E(E^n;V^{\otimes n})\) denotes the corresponding
+  \(V^{\otimes n}\)-valued test-function space on \(E^n\), the prime denotes its
+  continuous dual, and \(S_n(F)\) denotes the distributional pairing.
+  The component notation
+  \[
+    S_{a_1\cdots a_n}(x_1,\ldots,x_n)
+  \]
+  is kernel notation for the distributional pairing of \(S_n\) with
+  \(V^{\otimes n}\)-valued test functions.  If
+  \(g=(b,r)\in\mathbb R^D\rtimes O(D)\), \(gx=rx+b\), define the action on test
+  tensors by
+  \[
+    (gF)^{a_1\cdots a_n}(x_1,\ldots,x_n)
+    =
+    R_E(r)^{a_1}{}_{b_1}\cdots R_E(r)^{a_n}{}_{b_n}\,
+    F^{b_1\cdots b_n}(g^{-1}x_1,\ldots,g^{-1}x_n).
+  \]
+  Euclidean covariance is the distributional identity
+  \[
+    S_n(gF)=S_n(F),
+    \qquad g\in\mathbb R^D\rtimes O(D).
+  \]
+  For a permutation \(\sigma\in\mathfrak S_n\), graded permutation symmetry is
+  \[
+    S_{a_{\sigma(1)}\cdots a_{\sigma(n)}}
+    (x_{\sigma(1)},\ldots,x_{\sigma(n)})
+    =
+    \epsilon(\sigma;a_1,\ldots,a_n)\,
+    S_{a_1\cdots a_n}(x_1,\ldots,x_n),
+  \]
+  as an equality of distributions, where
+  \[
+    \epsilon(\sigma;a_1,\ldots,a_n)
+    =
+    \prod_{\substack{i<j\\ \sigma(i)>\sigma(j)}}
+    (-1)^{|a_i||a_j|}.
+  \]
+  In the ungraded case all parities are zero.  Hermiticity is
+  \[
+    \overline{
+    S_{a_1\cdots a_n}(x_1,\ldots,x_n)}
+    =
+    S_{a_n^\dagger\cdots a_1^\dagger}(x_n,\ldots,x_1),
+  \]
+  again as a distributional statement.
+
+  Choose Euclidean coordinates
   \(x=(\tau,\mathbf x)\) and let
   \[
     \theta(\tau,\mathbf x)=(-\tau,\mathbf x)
   \]
-  be time reflection.  Reflection positivity is the requirement that for every
-  finite sequence of test tensors
+  be time reflection.  Set \(E_+=\{(\tau,\mathbf x)\in E:\tau>0\}\).  Reflection
+  positivity is the requirement that for every finite sequence of test tensors
   \[
     F=\{F^{(n)}_{a_1\cdots a_n}\}_{0\leq n\leq N},
     \qquad
+    F^{(n)}\in\mathcal T_E(E^n;V^{\otimes n}),
+    \qquad
     \operatorname{supp}F^{(n)}
-    \subset(\mathbb R_+\times\mathbb R^{D-1})^n,
+    \subset E_+^n,
   \]
   the quadratic form
   \[
@@ -501,7 +553,26 @@ carries hypotheses.
   \end{aligned}
   \]
   is nonnegative.  The convention \(S_0=1\) is used in the terms with
-  \(m=0\) or \(n=0\).  Under the full Osterwalder--Schrader hypotheses,
+  \(m=0\) or \(n=0\).
+
+  The regularity and growth condition is also part of the data.  In the
+  tempered presentation it means that, for each \(n\), there are constants
+  \(C_n\) and \(N_n\) such that every
+  \(F\in\mathcal S(E^n;V^{\otimes n})\) obeys a Schwartz-seminorm bound,
+  using any fixed norm on the finite-dimensional space \(V^{\otimes n}\):
+  \[
+    |S_n(F)|
+    \le
+    C_n
+    \sum_{|\alpha|,|\beta|\le N_n}
+    \sup_{X\in E^n}
+    \left|X^\beta\partial^\alpha F(X)\right|.
+  \]
+  If a different nuclear test-function space is chosen, the corresponding
+  continuity seminorms and the growth assumptions needed for OS reconstruction
+  must be stated with the presentation.
+
+  Under the full Osterwalder--Schrader hypotheses,
   quotienting by the null space of this form and completing reconstructs the
   Lorentzian Hilbert space; analytic continuation then gives Wightman boundary
   values.
