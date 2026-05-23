@@ -27,6 +27,23 @@ convention is equivalently
   \int_M \dd^D x\,\sqrt g\,
   T^{\mu\nu}(x)\,\delta g_{\mu\nu}(x).
 \]
+Equivalently, at the level of functional derivatives with all other sources
+held fixed,
+\begin{equation}
+  T^{\mu\nu}(x)
+  =
+  -\frac{2}{\sqrt g(x)}
+  \frac{\delta}{\delta g_{\mu\nu}(x)}
+  =
+  \frac{2}{\sqrt g(x)}
+  g^{\mu\rho}(x)g^{\nu\sigma}(x)
+  \frac{\delta}{\delta g^{\rho\sigma}(x)} .
+  \label{eq:stress-tensor-covariant-contravariant-derivatives}
+\end{equation}
+The first differential operator acts on the functional written as a function of
+\(g_{\mu\nu}\), and the second acts on the same functional written as a function
+of \(g^{\mu\nu}\).  This identity is only the chain rule applied to
+\(\delta g^{\mu\nu}=-g^{\mu\rho}g^{\nu\sigma}\delta g_{\rho\sigma}\).
 This is the convention used by the metric derivative of the Euclidean
 source functional.  At a regulator scale for which the metric-dependent
 functional integral is a well-defined regulated integral, let
