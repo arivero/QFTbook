@@ -329,6 +329,75 @@ The Euclidean version is the semigroup limit
 \]
 when the corresponding semibounded form construction applies.
 
+For Schr\"odinger operators the words ``suppose the hypotheses hold'' can be
+replaced by concrete analytic criteria.  Work on
+\(L^2(\mathbb R^d,\dd^dq)\), let
+\[
+  \widehat p_a=-\ii\hbar\partial_a,
+  \qquad
+  T=\frac{1}{2m}\widehat p^2=-\frac{\hbar^2}{2m}\Delta ,
+\]
+and let \(V(\widehat q)\) be multiplication by a real measurable function
+\(V\).  For a measurable function \(W\), define the Kato class
+\(\mathcal K_d\) by
+\[
+  \lim_{t\downarrow0}
+  \sup_{x\in\mathbb R^d}
+  \int_0^t
+  \bigl(\ee^{s\Delta}|W|\bigr)(x)\,\dd s
+  =
+  0,
+\]
+where \(\ee^{s\Delta}\) is the heat semigroup on \(\mathbb R^d\).  Define the
+local Kato class by requiring \(\chi_K W\in\mathcal K_d\) for every compact
+\(K\subset\mathbb R^d\).  A standard sufficient Euclidean hypothesis is the
+Kato decomposition
+\[
+  V=V_+-V_-,
+  \qquad
+  V_\pm\ge0,
+  \qquad
+  V_+\in\mathcal K_{d,\operatorname{loc}},
+  \qquad
+  V_-\in\mathcal K_d,
+\]
+together with a lower bound when the literal multiplication factors
+\(\ee^{-\delta V/\hbar}\) are used as bounded operators.  Under these
+hypotheses the negative part is infinitesimally form-bounded relative to the
+free kinetic form: for every \(a>0\) there is \(b_a<\infty\) such that
+\[
+  \int_{\mathbb R^d} V_-(q)|\psi(q)|^2\,\dd^dq
+  \le
+  a\int_{\mathbb R^d}|\nabla\psi|^2\,\dd^dq
+  +
+  b_a\int_{\mathbb R^d}|\psi(q)|^2\,\dd^dq .
+\]
+Therefore the KLMN theorem applies.  The quadratic form
+\[
+  Q[\psi]
+  =
+  \frac{\hbar^2}{2m}\int_{\mathbb R^d}|\nabla\psi|^2\,\dd^dq
+  +
+  \int_{\mathbb R^d}V(q)|\psi(q)|^2\,\dd^dq
+\]
+on \(H^1(\mathbb R^d)\cap L^2(V_+(q)\dd^dq)\) is closed and semibounded, and it
+defines the Friedrichs Hamiltonian \(H=T+V\).  The Euclidean semigroup has the
+Trotter--Kato product formula, and its kernel is represented by the
+Feynman--Kac construction whenever the stated Kato hypotheses hold.
+
+Essential self-adjointness on the algebraic core \(C_c^\infty(\mathbb R^d)\)
+is a separate issue.  One convenient sufficient theorem is the Faris--Lavine
+criterion, often cited as Reed--Simon Theorem X.41: if \(V\) is real,
+\(C^\infty\), and satisfies
+\[
+  V(q)\ge -C(1+|q|^2)
+\]
+for some \(C<\infty\), then
+\(-\Delta+V\) is essentially self-adjoint on \(C_c^\infty(\mathbb R^d)\).
+Thus polynomial oscillator potentials with positive leading part have a unique
+self-adjoint closure from the natural differential operator core, and the
+Trotter formula applies to that closure.
+
 For the standard Hamiltonian
 \[
   \widehat H=\frac{1}{2m}\widehat p^2+V(\widehat q),
