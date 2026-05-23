@@ -264,28 +264,28 @@ renormalized metric-and-operator source limit constructed in
 Section~\ref{sec:background-metric-source-functional}, specialized to a point
 of the RG flow where the beta functions vanish and to a stress-tensor
 improvement convention appropriate to the fixed point.  Thus \(g_{\mu\nu}\) is
-a smooth background metric, \(\eta^A(x)\) are smooth compactly supported
+a smooth background metric, \(J^A(x)\) are smooth compactly supported
 sources for a chosen local operator basis \(\mathcal O_A\), and local
-functionals of \(g\) and \(\eta\) specify the contact-term chart.  In the source
+functionals of \(g\) and \(J\) specify the contact-term chart.  In the source
 convention used here,
 \[
-  \exp W_\ast[g,\eta]
+  \exp W_\ast[g,J]
   =
   \left\langle
-    \exp\left[-\int\dd^D x\,\sqrt g\,\eta^A(x)\mathcal O_A(x)\right]
+    \exp\left[-\int\dd^D x\,\sqrt g\,J^A(x)\mathcal O_A(x)\right]
   \right\rangle_g .
 \]
 The stress tensor and local operators are the source derivatives
 \begin{equation}
-  \left\langle T^{\mu\nu}(x)\right\rangle_{g,\eta}
+  \left\langle T^{\mu\nu}(x)\right\rangle_{g,J}
   =
   -\frac{2}{\sqrt g(x)}
-  \frac{\delta W_\ast[g,\eta]}{\delta g_{\mu\nu}(x)},
+  \frac{\delta W_\ast[g,J]}{\delta g_{\mu\nu}(x)},
   \qquad
-  \left\langle \mathcal O_A(x)\right\rangle_{g,\eta}
+  \left\langle \mathcal O_A(x)\right\rangle_{g,J}
   =
   -\frac{1}{\sqrt g(x)}
-  \frac{\delta W_\ast[g,\eta]}{\delta\eta^A(x)} .
+  \frac{\delta W_\ast[g,J]}{\delta J^A(x)} .
   \label{eq:cft-source-derivative-conventions}
 \end{equation}
 Higher derivatives define Euclidean Schwinger distributions.  The source
@@ -304,22 +304,22 @@ field \(\xi^\mu\),
   =
   \nabla_\mu\xi_\nu+\nabla_\nu\xi_\mu,
   \qquad
-  \delta_\xi\eta^A
+  \delta_\xi J^A
   =
-  \xi^\mu\nabla_\mu\eta^A
+  \xi^\mu\nabla_\mu J^A
 \]
-for scalar sources.  Invariance of \(W_\ast[g,\eta]\) gives
+for scalar sources.  Invariance of \(W_\ast[g,J]\) gives
 \begin{equation}
   \nabla_\mu
-  \left\langle T^{\mu\nu}(x)\right\rangle_{g,\eta}
+  \left\langle T^{\mu\nu}(x)\right\rangle_{g,J}
   =
-  \left\langle \mathcal O_A(x)\right\rangle_{g,\eta}
-  \nabla^\nu\eta^A(x),
+  \left\langle \mathcal O_A(x)\right\rangle_{g,J}
+  \nabla^\nu J^A(x),
   \label{eq:cft-source-diffeomorphism-ward}
 \end{equation}
 with extra representation terms when the source carries spin indices.
-Differentiating this identity with respect to \(\eta\) and then setting
-\(\eta=0\) produces the contact terms in stress-tensor Ward identities.
+Differentiating this identity with respect to \(J\) and then setting
+\(J=0\) produces the contact terms in stress-tensor Ward identities.
 Equivalently, for scalar insertions
 \[
   X=\mathcal O_{A_1}(x_1)\cdots\mathcal O_{A_n}(x_n),
@@ -347,7 +347,7 @@ infinitesimal Weyl transformation satisfies
 \[
   \delta_\sigma g_{\mu\nu}=2\sigma g_{\mu\nu},
   \qquad
-  \delta_\sigma\eta^A=(\Delta_A-D)\sigma\eta^A .
+  \delta_\sigma J^A=(\Delta_A-D)\sigma J^A .
 \]
 Differentiating the corresponding source Ward identity gives, for scalar
 primaries and in flat space,
