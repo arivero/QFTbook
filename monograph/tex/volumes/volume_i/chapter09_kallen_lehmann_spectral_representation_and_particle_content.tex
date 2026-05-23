@@ -422,9 +422,63 @@ The commutator two-point distribution is
   \int_{[0,\infty)}\dd\rho(\mu^2)\,
   \bigl(\Delta_+(x;\mu^2)-\Delta_+(-x;\mu^2)\bigr).
 \]
-For each fixed \(\mu^2\), the equal-time derivative of the expression in
-parentheses gives the canonical delta distribution.  Therefore the canonical
-commutator fixes the total spectral weight:
+For each fixed \(\mu^2\), this equal-time derivative is computed directly from
+the spatial Fourier representation.  Write
+\[
+  \omega_{\vec p,\mu}=\sqrt{\vec p^{\,2}+\mu^2},
+  \qquad x=(t,\vec r).
+\]
+Then, as an identity in \(\mathcal S'(\mathbb R^{D-1}_{\vec r})\),
+\[
+\begin{aligned}
+  &\left.
+  \partial_t
+  \bigl(
+    \Delta_+(t,\vec r;\mu^2)-\Delta_+(-t,-\vec r;\mu^2)
+  \bigr)
+  \right|_{t=0}                                      \\
+  &\quad =
+  \left.
+  \partial_t
+  \int\frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}\,
+  \frac{
+    \ee^{\ii\vec p\cdot\vec r-\ii\omega_{\vec p,\mu}t}
+    -
+    \ee^{-\ii\vec p\cdot\vec r+\ii\omega_{\vec p,\mu}t}
+  }{2\omega_{\vec p,\mu}}
+  \right|_{t=0}                                      \\
+  &\quad =
+  -\frac{\ii}{2}
+  \int\frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}\,
+  \left(\ee^{\ii\vec p\cdot\vec r}
+  +\ee^{-\ii\vec p\cdot\vec r}\right)
+  =
+  -\ii\,\delta^{D-1}(\vec r).
+\end{aligned}
+\]
+The result is independent of \(\mu^2\).  On the other hand, the assumed
+canonical commutator gives
+\[
+  \left.
+  \partial_t
+  \langle\vac|[\widehat\phi(t,\vec r),\widehat\phi(0,\vec 0)]|\vac\rangle
+  \right|_{t=0}
+  =
+  \langle\vac|
+  [\partial_t\widehat\phi(0,\vec r),\widehat\phi(0,\vec 0)]
+  |\vac\rangle
+  =
+  -\ii\,\delta^{D-1}(\vec r).
+\]
+Comparing this with the spectral representation gives
+\[
+  -\ii
+  \left(\int_{[0,\infty)}\dd\rho(\mu^2)\right)
+  \delta^{D-1}(\vec r)
+  =
+  -\ii\delta^{D-1}(\vec r).
+\]
+Therefore the canonical commutator fixes the total spectral weight:
 \begin{equation}
   \int_{[0,\infty)}\dd\rho(\mu^2)=1.
   \label{eq:kallen-lehmann-canonical-sum-rule}
