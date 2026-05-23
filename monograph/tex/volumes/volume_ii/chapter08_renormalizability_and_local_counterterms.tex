@@ -306,12 +306,29 @@ counterterm.  The corresponding one-loop triangle and box integrals are
 ultraviolet finite in four dimensions.
 
 For a \(D=4\) scalar theory with a quartic vertex \(\int g_4\phi^4\), the
-two-point 1PI function receives a quadratically divergent tadpole and, at the
-next order, a logarithmic momentum-dependent contribution.  Thus the field
-strength counterterm is part of the closed renormalizable coordinate chart even
-though its coefficient vanishes at one loop in \(\phi^4\) theory.  The
-four-point 1PI function has a logarithmic divergence.  These divergences are
-canceled by
+one-loop two-point 1PI graph is a tadpole.  Up to the normalization chosen for
+the quartic vertex, it has the form
+\[
+  \Sigma^{(1)}(p)
+  =
+  C_4 g_4
+  \int^\Lambda
+  \frac{\dd^4q}{(2\pi)^4}\,
+  \frac{1}{q^2+m^2},
+\]
+where \(C_4\) is a numerical combinatorial constant.  This expression is
+independent of the external momentum \(p\).  It therefore contributes to the
+local operator \(\phi^2\), but not to
+\(\partial_\mu\phi\,\partial_\mu\phi\); equivalently the one-loop coefficient
+of the wavefunction counterterm is
+\[
+  \delta Z^{(1)}_{\phi^4}=0 .
+\]
+The first logarithmically divergent momentum-dependent two-point contribution
+in \(\phi^4_4\) is the two-loop sunset graph, whose Taylor coefficient at order
+\(p^2\) is local and is canceled by \(\delta Z\).  The four-point 1PI function
+already has a logarithmic divergence at one loop.  The closed renormalizable
+coordinate chart therefore contains
 \[
   \delta m^2\phi^2,
   \qquad
@@ -377,17 +394,34 @@ local coefficients.
 
     \begin{scope}[shift={(5.6,0)}]
       \node[font=\normalsize] at (0,2.55) {\(D=4,\ \phi^4\)};
-      \draw[line] (-2.2,1.15)--(-1.0,1.15);
-      \draw[line] (1.0,1.15)--(2.2,1.15);
-      \draw[line] (-1.0,1.15)..controls (-0.5,1.8) and (0.5,1.8)..(1.0,1.15);
-      \draw[line] (-1.0,1.15)..controls (-0.5,0.5) and (0.5,0.5)..(1.0,1.15);
-      \node[blue!70!black,align=center] at (0,0.08)
-        {\(\phi^2\) and\\\((\partial\phi)^2\)};
-      \draw[line] (-1.45,-1.0)--(1.45,-1.0);
-      \draw[line] (-1.45,-1.55)--(1.45,-1.55);
-      \draw[line] (-1.45,-1.0)..controls (-1.85,-1.28) and (-1.85,-1.27)..(-1.45,-1.55);
-      \draw[line] (1.45,-1.0)..controls (1.85,-1.28) and (1.85,-1.27)..(1.45,-1.55);
-      \node[green!50!black] at (0,-2.15) {\(\phi^4\) logarithm};
+      \coordinate (T) at (0,1.58);
+      \draw[line] (-2.15,1.58)--(2.15,1.58);
+      \fill (T) circle (2.4pt);
+      \draw[line] (T)..controls (-0.62,2.2) and (0.62,2.2)..(T);
+      \node[blue!70!black,align=center] at (0,0.88)
+        {one-loop tadpole\\\(\delta m^2\), no \(p^2\)};
+      \coordinate (SL) at (-1.0,-0.08);
+      \coordinate (SR) at (1.0,-0.08);
+      \draw[line] (-2.15,-0.08)--(SL);
+      \draw[line] (SR)--(2.15,-0.08);
+      \fill (SL) circle (2.4pt);
+      \fill (SR) circle (2.4pt);
+      \draw[line] (SL)--(SR);
+      \draw[line] (SL)..controls (-0.45,0.5) and (0.45,0.5)..(SR);
+      \draw[line] (SL)..controls (-0.45,-0.66) and (0.45,-0.66)..(SR);
+      \node[blue!70!black,align=center] at (0,-1.08)
+        {two-loop sunset\\\(\delta Z\)};
+      \coordinate (BL) at (-0.78,-1.78);
+      \coordinate (BR) at (0.78,-1.78);
+      \fill (BL) circle (2.4pt);
+      \fill (BR) circle (2.4pt);
+      \draw[line] (BL)..controls (-0.25,-1.42) and (0.25,-1.42)..(BR);
+      \draw[line] (BL)..controls (-0.25,-2.14) and (0.25,-2.14)..(BR);
+      \draw[line] (BL)--(-1.75,-1.28);
+      \draw[line] (BL)--(-1.75,-2.28);
+      \draw[line] (BR)--(1.75,-1.28);
+      \draw[line] (BR)--(1.75,-2.28);
+      \node[green!50!black] at (0,-2.62) {one-loop \(\phi^4\) logarithm};
     \end{scope}
 
     \begin{scope}[shift={(11.1,0)}]
@@ -413,8 +447,11 @@ local coefficients.
   }
   \caption{A first counterterm census in four dimensions, after vacuum-energy
   and tadpole bookkeeping has been fixed.  Cubic and quartic scalar
-  interactions require local terms from a finite operator list, while a sextic
-  interaction generates higher local operators under loop corrections.}
+  interactions require local terms from a finite operator list.  In the
+  quartic theory the one-loop tadpole fixes only the mass counterterm, while
+  the field-strength counterterm first appears through the two-loop sunset.
+  A sextic interaction generates higher local operators under loop
+  corrections.}
   \label{fig:volume-ii-counterterm-census}
 \end{figure}
 
