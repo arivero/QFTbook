@@ -81,14 +81,20 @@ spin \(j\), with
   j=0,\frac12,1,\frac32,\ldots,
 \]
 let \(D^{(j)}\) be the corresponding irreducible unitary representation of
-\(SU(2)\) on a vector space \(V_j\) of dimension \(2j+1\). The one-particle
-states transform as
+\(SU(2)\) on a vector space \(V_j\) of dimension \(2j+1\).  For a four-vector
+\(r\), write \(\operatorname{sp}(r)\) for its spatial part, so
+\[
+  p=(\omega_{\vec p},\vec p),
+  \qquad
+  \operatorname{sp}(p)=\vec p .
+\]
+The one-particle states transform as
 \[
   U(\Lambda)|\vec p,\sigma\rangle
   =
   \sum_{\tau=-j}^{j}
   D^{(j)}_{\tau\sigma}\!\left(W(\Lambda,p)\right)
-  |\Lambda\vec p,\tau\rangle ,
+  |\operatorname{sp}(\Lambda p),\tau\rangle ,
 \]
 where \(\sigma,\tau=-j,-j+1,\ldots,j\). The covariant normalization above
 absorbs the Jacobian of the mass-shell measure, so no additional
@@ -100,7 +106,7 @@ In the delta-normalized convention the same computation gives
   \left(\frac{(\Lambda p)^0}{p^0}\right)^{1/2}
   \sum_{\tau=-j}^{j}
   D^{(j)}_{\tau\sigma}\!\left(W(\Lambda,p)\right)
-  |\Lambda\vec p,\tau\rangle_\delta .
+  |\operatorname{sp}(\Lambda p),\tau\rangle_\delta .
 \]
 This is the same representation written in a basis adapted to
 \(d^3\vec p\) rather than to \(d^3\vec p/(2p^0)\). Keeping both formulas
