@@ -332,27 +332,219 @@ normalization has been fixed.
 The stress tensor illustrates why some three-point coefficients are
 constrained but not removed from the data.  In a parity-even CFT in
 \(D\ge4\), the separated three-point function of a symmetric conserved
-traceless stress tensor has the form
+traceless stress tensor has the following explicit form.  Set
+\[
+  X\equiv X_{12,3}
+  =
+  \frac{x_{13}}{x_{13}^2}
+  -
+  \frac{x_{23}}{x_{23}^2},
+  \qquad
+  \widehat X_\mu=\frac{X_\mu}{(X^2)^{1/2}},
+\]
+and, for a dimensionless tensor
+\(t_{\mu\nu,\rho\sigma,\alpha\beta}(\widehat X)\), define
+\begin{equation}
+  \mathfrak C[t]_{\mu\nu,\rho\sigma,\alpha\beta}
+  =
+  \frac{
+    I_{\mu\nu,\mu'\nu'}(x_{13})
+    I_{\rho\sigma,\rho'\sigma'}(x_{23})
+    t_{\mu'\nu',\rho'\sigma',\alpha\beta}(\widehat X)}
+  {|x_{12}|^D |x_{13}|^D |x_{23}|^D}.
+  \label{eq:op-ttt-prefactor}
+\end{equation}
+Let \(\operatorname{Sym}_{\mu\nu}\) denote the unnormalized symmetrization
+obtained by adding the expression with \(\mu\) and \(\nu\) interchanged.  The
+elementary symmetric-traceless tensors are
+\begin{align}
+  h^1_{\mu\nu}
+  &=
+  \widehat X_\mu\widehat X_\nu-\frac1D\delta_{\mu\nu},
+  \nonumber\\
+  h^2_{\mu\nu,\rho\sigma}
+  &=
+  \widehat X_\mu\widehat X_\rho\delta_{\nu\sigma}
+  +\widehat X_\nu\widehat X_\rho\delta_{\mu\sigma}
+  +\widehat X_\mu\widehat X_\sigma\delta_{\nu\rho}
+  +\widehat X_\nu\widehat X_\sigma\delta_{\mu\rho}
+  \nonumber\\
+  &\quad
+  -\frac4D
+  \left(
+    \widehat X_\mu\widehat X_\nu\delta_{\rho\sigma}
+    +
+    \widehat X_\rho\widehat X_\sigma\delta_{\mu\nu}
+  \right)
+  +
+  \frac4{D^2}\delta_{\mu\nu}\delta_{\rho\sigma},
+  \nonumber\\
+  h^3_{\mu\nu,\rho\sigma}
+  &=
+  \delta_{\mu\rho}\delta_{\nu\sigma}
+  +
+  \delta_{\mu\sigma}\delta_{\nu\rho}
+  -
+  \frac2D\delta_{\mu\nu}\delta_{\rho\sigma},
+  \nonumber\\
+  h^4_{\mu\nu,\rho\sigma,\alpha\beta}
+  &=
+  \operatorname{Sym}_{\rho\sigma}
+  \operatorname{Sym}_{\alpha\beta}
+  \left[
+    h^3_{\mu\nu,\rho\alpha}
+    \widehat X_\sigma\widehat X_\beta
+  \right]
+  -
+  \frac2D\delta_{\rho\sigma}h^2_{\mu\nu,\alpha\beta}
+  \nonumber\\
+  &\quad
+  -
+  \frac2D\delta_{\alpha\beta}h^2_{\mu\nu,\rho\sigma}
+  -
+  \frac8{D^2}\delta_{\rho\sigma}\delta_{\alpha\beta}h^1_{\mu\nu},
+  \nonumber\\
+  h^5_{\mu\nu,\rho\sigma,\alpha\beta}
+  &=
+  \operatorname{Sym}_{\mu\nu}
+  \operatorname{Sym}_{\rho\sigma}
+  \operatorname{Sym}_{\alpha\beta}
+  \left[
+    \delta_{\mu\rho}\delta_{\nu\alpha}\delta_{\sigma\beta}
+  \right]
+  \nonumber\\
+  &\quad
+  -
+  \frac4D
+  \left(
+    \delta_{\mu\nu}h^3_{\rho\sigma,\alpha\beta}
+    +
+    \delta_{\rho\sigma}h^3_{\mu\nu,\alpha\beta}
+    +
+    \delta_{\alpha\beta}h^3_{\mu\nu,\rho\sigma}
+  \right)
+  -
+  \frac8{D^2}
+  \delta_{\mu\nu}\delta_{\rho\sigma}\delta_{\alpha\beta}.
+  \label{eq:op-h-tensors}
+\end{align}
+Each \(h^r\) is symmetric and traceless in every displayed index pair.  The
+most general parity-even separated-point structure satisfying stress-tensor
+conservation is the three-parameter tensor
+\begin{align}
+  t[a,b,c]_{\mu\nu,\rho\sigma,\alpha\beta}
+  &=
+  a\,h^5_{\mu\nu,\rho\sigma,\alpha\beta}
+  +
+  b\,h^4_{\alpha\beta,\mu\nu,\rho\sigma}
+  -
+  (2a+b)
+  \left(
+    h^4_{\mu\nu,\rho\sigma,\alpha\beta}
+    +
+    h^4_{\rho\sigma,\mu\nu,\alpha\beta}
+  \right)
+  \nonumber\\
+  &\quad
+  +
+  c\,h^3_{\mu\nu,\rho\sigma}h^1_{\alpha\beta}
+  +
+  c
+  \left(
+    h^3_{\rho\sigma,\alpha\beta}h^1_{\mu\nu}
+    +
+    h^3_{\mu\nu,\alpha\beta}h^1_{\rho\sigma}
+  \right)
+  \nonumber\\
+  &\quad
+  +
+  e\,h^2_{\mu\nu,\rho\sigma}h^1_{\alpha\beta}
+  +
+  e'
+  \left(
+    h^2_{\rho\sigma,\alpha\beta}h^1_{\mu\nu}
+    +
+    h^2_{\mu\nu,\alpha\beta}h^1_{\rho\sigma}
+  \right)
+  \nonumber\\
+  &\quad
+  +
+  f\,h^1_{\mu\nu}h^1_{\rho\sigma}h^1_{\alpha\beta},
+  \label{eq:op-ttt-tensor}
+\end{align}
+where conservation fixes the auxiliary coefficients to be
+\begin{align}
+  e=(D+2)(Da+b-c),
+  \qquad
+  e'=-(D+4)(D-2)a-(D-2)b+Dc,
+  \nonumber\\
+  f=(D+4)(D-2)(4a+2b-c).
+  \label{eq:op-ttt-dependent-coefficients}
+\end{align}
+The three tensor structures in
+\eqref{eq:stress-tensor-three-point-structures} are therefore
+\[
+  \mathcal I^{(1)}=\mathfrak C[t[1,0,0]],
+  \qquad
+  \mathcal I^{(2)}=\mathfrak C[t[0,1,0]],
+  \qquad
+  \mathcal I^{(3)}=\mathfrak C[t[0,0,1]].
+\]
+Equivalently,
 \begin{equation}
   \left\langle
     T_{\mu\nu}(x_1)T_{\rho\sigma}(x_2)T_{\alpha\beta}(x_3)
   \right\rangle
   =
-  \sum_{r=1}^3
-  a_r\,
-  \mathcal I_{\mu\nu,\rho\sigma,\alpha\beta}^{(r)}(x_{12},x_{13}),
+  a\,\mathcal I^{(1)}_{\mu\nu,\rho\sigma,\alpha\beta}
+  +
+  b\,\mathcal I^{(2)}_{\mu\nu,\rho\sigma,\alpha\beta}
+  +
+  c\,\mathcal I^{(3)}_{\mu\nu,\rho\sigma,\alpha\beta}
+  =
+  \mathfrak C[t[a,b,c]]_{\mu\nu,\rho\sigma,\alpha\beta},
   \label{eq:stress-tensor-three-point-structures}
 \end{equation}
-with three parity-even structures compatible with conformal covariance and
-conservation at separated points.  A Ward identity fixes one linear
-combination of \(a_1,a_2,a_3\) in terms of the two-point coefficient \(C_T\):
-integrating \(T_{\alpha\beta}\epsilon^\beta n^\alpha\) over a small sphere
-around \(x_3\) gives the conformal variation of the other two stress tensors,
-and that variation is determined by
-\eqref{eq:stress-tensor-two-point}.  The remaining independent combinations
-are genuine CFT data.  In lower dimensions or in parity-violating theories
-the list of admissible structures changes; the statement above is tied to the
-stated assumptions.
+with three independent coefficients \(a,b,c\).  The Ward identity fixes one
+linear combination of these coefficients in terms of the two-point coefficient
+\(C_T\).  Let
+\[
+  S_D=\frac{2\pi^{D/2}}{\Gamma(D/2)}
+\]
+be the area of the unit \((D-1)\)-sphere.  The small-sphere Ward identity uses
+the angular averages
+\[
+  \int_{S^{D-1}}\dd\Omega\,\widehat n_\mu\widehat n_\nu
+  =
+  \frac{S_D}{D}\delta_{\mu\nu},
+  \qquad
+  \int_{S^{D-1}}\dd\Omega\,
+  \widehat n_\mu\widehat n_\nu\widehat n_\rho\widehat n_\sigma
+  =
+  \frac{S_D}{D(D+2)}
+  \left(
+    \delta_{\mu\nu}\delta_{\rho\sigma}
+    +
+    \delta_{\mu\rho}\delta_{\nu\sigma}
+    +
+    \delta_{\mu\sigma}\delta_{\nu\rho}
+  \right).
+\]
+Substituting \eqref{eq:op-ttt-tensor} into the flux
+\(\int_{\partial B_\epsilon(x_3)}\dd S\,n_\lambda
+T^{\lambda\tau}\epsilon_\tau\), taking \(\epsilon\to0\), and comparing with
+the conformal variation of the two remaining stress tensors in
+\eqref{eq:stress-tensor-two-point} gives
+\begin{equation}
+  4S_D\,
+  \frac{(D-2)(D+3)a-2b-(D+1)c}{D(D+2)}
+  =
+  C_T .
+  \label{eq:ttt-ward-ct-relation}
+\end{equation}
+The remaining two independent combinations are genuine CFT data.  In lower
+dimensions or in parity-violating theories the list of admissible structures
+changes; the statement above is tied to the stated assumptions.
 
 \begin{figure}[H]
   \centering
