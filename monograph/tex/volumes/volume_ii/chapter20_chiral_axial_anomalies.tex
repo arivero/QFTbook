@@ -642,6 +642,45 @@ is the pseudoscalar mass-breaking operator in the mostly-plus adjoint
 convention, and \(j_5^\mu\) is the renormalized current whose vector-current
 Ward identities have been preserved.
 
+The factor relating this component formula to the heat-kernel trace below is
+as follows.  Define
+\[
+  \widetilde F^{\mu\nu}
+  =
+  \frac12\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma},
+  \qquad
+  F=\frac12F_{\mu\nu}\dd x^\mu\wedge\dd x^\nu .
+\]
+Then
+\[
+  F_{\mu\nu}\widetilde F^{\mu\nu}
+  =
+  \frac12\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma},
+  \qquad
+  F\wedge F
+  =
+  \frac14\epsilon^{\mu\nu\rho\sigma}
+  F_{\mu\nu}F_{\rho\sigma}\,\dd^4x .
+\]
+The local heat-kernel trace
+\eqref{eq:heat-kernel-anomaly-density} gives the index density
+\((32\pi^2)^{-1}\epsilon^{\mu\nu\rho\sigma}
+\operatorname{tr}_{R}(F_{\mu\nu}F_{\rho\sigma})\).  The Dirac axial Ward
+identity has twice this density because the chiral change of variables rotates
+\(\psi\) and \(\bar\psi\) with the same sign, giving the prefactor \(2\ii\) in
+\eqref{eq:fujikawa-regulated-trace}.  For a single charge-one Abelian Dirac
+fermion, the representation trace is trivial and
+\[
+  2\cdot
+  \frac{1}{32\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+  =
+  \frac{1}{16\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma},
+\]
+which is the coefficient in \eqref{eq:abelian-axial-anomaly}; a field of
+charge \(eq\) contributes the additional factor \(e^2q^2\).
+
 \section{Measure Derivation}
 
 The same coefficient is obtained from the path-integral measure.  Work in
