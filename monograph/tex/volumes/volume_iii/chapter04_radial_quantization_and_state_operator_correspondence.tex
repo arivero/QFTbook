@@ -633,12 +633,28 @@ then
   \right].
   \label{eq:free-scalar-cylinder-action}
 \end{equation}
-Here \(\xi_\ast=(D-2)/(4(D-1))\).  The cylinder metric is the product metric on
-\(\mathbb R_\tau\times S^{D-1}\).  The \(\mathbb R_\tau\) factor has zero scalar
-curvature, and the unit sphere \(S^{D-1}\) has scalar curvature
-\((D-1)(D-2)\); hence the scalar curvature of the unit cylinder is
+Here \(\xi_\ast=(D-2)/(4(D-1))\).  The cylinder metric is
 \[
-  R_{\rm cyl}=(D-1)(D-2).
+  \dd s_{\rm cyl}^2=\dd\tau^2+\dd\Omega_{D-1}^2,
+\]
+where \(\dd\Omega_{D-1}^2=\gamma_{ab}\dd\theta^a\dd\theta^b\) is the unit
+round metric on \(S^{D-1}\).  The Levi-Civita connection of this product
+metric splits.  Thus
+\[
+  R_{\tau\tau}^{\rm cyl}=0,
+  \qquad
+  R_{ab}^{\rm cyl}=R_{ab}^{S^{D-1}}=(D-2)\gamma_{ab},
+\]
+and contraction with \(g_{\rm cyl}^{\tau\tau}=1\) and
+\(g_{\rm cyl}^{ab}=\gamma^{ab}\) gives
+\[
+  R_{\rm cyl}
+  =
+  g_{\rm cyl}^{MN}R_{MN}^{\rm cyl}
+  =
+  \gamma^{ab}(D-2)\gamma_{ab}
+  =
+  (D-1)(D-2).
 \]
 The conformal mass term is
 \[
