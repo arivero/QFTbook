@@ -1194,6 +1194,7 @@ At second order the connected two-point graphs include
     \fill (\x,0) circle (1.6pt);
     \draw[thick,blue!65!black] (\x,0) .. controls (\x-0.28,0.6) and (\x+0.28,0.6) .. (\x,0);
   }
+  \node[font=\scriptsize] at (0.78,-0.63) {chain};
   \node at (1.95,0) {$,\qquad$};
 
   \fill[red!80!black] (2.75,0) circle (2.2pt);
@@ -1202,6 +1203,7 @@ At second order the connected two-point graphs include
   \fill (3.4,0) circle (1.6pt);
   \draw[thick,blue!65!black] (3.4,0) .. controls (3.08,0.53) and (3.72,0.53) .. (3.4,0);
   \draw[thick,blue!65!black] (3.4,0) .. controls (3.08,1.0) and (3.72,1.0) .. (3.4,0);
+  \node[font=\scriptsize] at (3.4,-0.63) {tadpole-bubble};
   \node at (4.45,0) {$,\qquad$};
 
   \fill[red!80!black] (5.25,0) circle (2.2pt);
@@ -1210,6 +1212,7 @@ At second order the connected two-point graphs include
   \foreach \x in {5.75,6.25} {\fill (\x,0) circle (1.6pt);}
   \draw[thick,blue!65!black] (5.75,0) .. controls (5.85,0.72) and (6.15,0.72) .. (6.25,0);
   \draw[thick,blue!65!black] (5.75,0) .. controls (5.85,-0.72) and (6.15,-0.72) .. (6.25,0);
+  \node[font=\scriptsize] at (6.0,-0.63) {sunset};
 \end{tikzpicture}
 \end{center}
 The first diagram is a chain of two one-loop insertions; the other two are the
@@ -1255,7 +1258,70 @@ two-point function is the geometric series
 \end{tikzpicture}
 \end{center}
 
-For the anharmonic oscillator,
+For the anharmonic oscillator, the two non-chain order-\(g^2\) contributions
+are as follows.  The perturbative coefficient before Wick contraction is
+\(g^2/(2(4!)^2)\).  For the tadpole-bubble topology, both external fields are
+contracted to one interaction vertex, two lines connect the two vertices, and
+the remaining two fields at the second vertex contract with each other.  The
+number of such contractions is
+\[
+  2\cdot (4\cdot3)\cdot\binom42\,2! = 288,
+\]
+so the net symmetry factor is \(288/[2(4!)^2]=1/4\).  With
+\[
+  G_0(0)
+  =
+  \int_{-\infty}^{\infty}\frac{\dd p}{2\pi}\,\widetilde G_0(p)
+  =
+  \frac12,
+  \qquad
+  \int_{-\infty}^{\infty}\frac{\dd p}{2\pi}\,\widetilde G_0(p)^2
+  =
+  \frac14,
+\]
+this topology contributes
+\[
+  \Sigma_{\mathrm{tb}}^{(2)}(k)
+  =
+  \frac{g^2}{4}\,G_0(0)
+  \int_{-\infty}^{\infty}\frac{\dd p}{2\pi}\,\widetilde G_0(p)^2
+  =
+  \frac{g^2}{32}
+  =
+  \frac{g^2}{8}\,\frac14 .
+\]
+For the sunset topology, the two external fields attach to different vertices
+and the remaining three legs at one vertex are paired with the remaining three
+legs at the other.  The contraction count is
+\[
+  2\cdot4\cdot4\cdot3! = 192,
+\]
+so the symmetry factor is \(192/[2(4!)^2]=1/6\).  Its momentum integral is the
+three-fold convolution
+\[
+\begin{aligned}
+  I_{\mathrm{sun}}(k)
+  &=
+  \int\frac{\dd p}{2\pi}\frac{\dd q}{2\pi}\,
+  \widetilde G_0(p)\widetilde G_0(q)\widetilde G_0(k-p-q)  \\
+  &=
+  \int_{-\infty}^{\infty}\dd\tau\,\ee^{-\ii k\tau}G_0(\tau)^3
+  =
+  \frac18
+  \int_{-\infty}^{\infty}\dd\tau\,\ee^{-\ii k\tau}\ee^{-3|\tau|}
+  =
+  \frac{3}{4}\,\frac{1}{k^2+9}.
+\end{aligned}
+\]
+Thus
+\[
+  \Sigma_{\mathrm{sun}}^{(2)}(k)
+  =
+  \frac{g^2}{6}I_{\mathrm{sun}}(k)
+  =
+  \frac{g^2}{8}\,\frac{1}{k^2+9}.
+\]
+Combining the one-loop term with these two order-\(g^2\) contributions gives
 \[
   \Sigma(k)
   =
