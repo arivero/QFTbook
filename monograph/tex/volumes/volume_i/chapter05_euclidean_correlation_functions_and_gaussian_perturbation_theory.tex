@@ -1473,8 +1473,12 @@ term is
 \[
   \frac{g}{4}\int\dd\tau'\,
   G_0(\tau-\tau')G_0(\tau')\,
-  \bigl[-\partial_{\tau'}^2G_0(\tau'-\tau')\bigr].
+  \left.
+    \bigl[-\partial_{\tau'}^2G_0(\tau'-\tau'')\bigr]
+  \right|_{\tau''=\tau'} .
 \]
+The derivative is taken with respect to one endpoint of the propagator before
+the coincident-point limit \(\tau''\to\tau'\) is imposed.
 In momentum space this contains
 \[
   \int\frac{\dd k'}{2\pi}\frac{k'^2}{k'^2+1},
