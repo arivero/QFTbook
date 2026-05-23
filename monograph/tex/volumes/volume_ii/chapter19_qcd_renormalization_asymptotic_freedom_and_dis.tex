@@ -1313,25 +1313,82 @@ where \(P_{ab}\) are splitting kernels, equivalently anomalous dimensions of
 the light-ray operators.  This is the precise sense in which short-distance
 quark and gluon variables control high-energy hadronic observables while
 physical asymptotic states remain color singlets.
-At leading order the quark-to-quark kernel is
+At leading order, in the same convention as \eqref{eq:dglap-evolution},
 \[
-  P_{qq}(x)
+  P_{ab}(x,g)
   =
-  \frac{g^2}{8\pi^2}C_F
-  \left[
-    \frac{1+x^2}{1-x}
-  \right]_+
-  +\frac{3g^2}{16\pi^2}C_F\,\delta(1-x),
+  \frac{g^2}{8\pi^2}P_{ab}^{(0)}(x)+O(g^4).
 \]
-with the plus prescription defined by
+For unpolarized distributions in the \(\overline{\mathrm{MS}}\) scheme,
+\[
+  C_F=\frac{N_c^2-1}{2N_c},
+  \qquad
+  C_A=N_c,
+  \qquad
+  T_R=\frac12,
+\]
+and the nonzero leading kernels are
+\begin{align}
+  P_{q_iq_j}^{(0)}(x)
+  &=
+  \delta_{ij}\,
+  C_F\left[
+    \left(\frac{1+x^2}{1-x}\right)_+
+    +\frac32\delta(1-x)
+  \right],
+  \notag\\
+  P_{\bar q_i\bar q_j}^{(0)}(x)
+  &=
+  P_{q_iq_j}^{(0)}(x),
+  \notag\\
+  P_{q_i g}^{(0)}(x)
+  &=
+  P_{\bar q_i g}^{(0)}(x)
+  =
+  T_R\bigl[x^2+(1-x)^2\bigr],
+  \notag\\
+  P_{gq_i}^{(0)}(x)
+  &=
+  P_{g\bar q_i}^{(0)}(x)
+  =
+  C_F\,\frac{1+(1-x)^2}{x},
+  \notag\\
+  P_{gg}^{(0)}(x)
+  &=
+  2C_A\left[
+    \left(\frac{x}{1-x}\right)_+
+    +\frac{1-x}{x}
+    +x(1-x)
+  \right]
+  +
+  \frac{11C_A-4T_RN_f}{6}\delta(1-x).
+  \label{eq:lo-dglap-splitting-kernels}
+\end{align}
+The plus prescription is defined by
 \[
   \int_0^1\dd x\,[h(x)]_+\,\varphi(x)
   =
-  \int_0^1\dd x\,h(x)\,[\varphi(x)-\varphi(1)] .
+  \int_0^1\dd x\,h(x)\,[\varphi(x)-\varphi(1)]
 \]
-The remaining leading kernels are obtained by the same collinear projection of
-the relevant partonic matrix elements and form the matrix \(P_{ab}\) in
-\eqref{eq:dglap-evolution}.
+for every smooth test function \(\varphi\).  Equivalently, for the flavor
+singlet quark distribution
+\(\Sigma=\sum_{i=1}^{N_f}(q_i+\bar q_i)\),
+\[
+  \mu\frac{\dd}{\dd\mu}
+  \begin{pmatrix}\Sigma\\ f_g\end{pmatrix}
+  =
+  \frac{g^2}{8\pi^2}
+  \begin{pmatrix}
+    P_{qq}^{(0)} & 2N_fP_{qg}^{(0)}\\
+    P_{gq}^{(0)} & P_{gg}^{(0)}
+  \end{pmatrix}
+  \otimes
+  \begin{pmatrix}\Sigma\\ f_g\end{pmatrix}
+  +O(g^4),
+\]
+where \(\otimes\) denotes the convolution appearing in
+\eqref{eq:dglap-evolution}.  Nonsinglet quark combinations evolve with the
+same \(P_{qq}^{(0)}\) and do not mix with the gluon at this order.
 
 \section{Local Twist-Two Operators and Integer Moments}
 
@@ -1370,6 +1427,53 @@ are fixed by Lorentz covariance up to scalar reduced matrix elements:
   \bigl(P^{\mu_1}\cdots P^{\mu_N}-\text{traces}\bigr),
   \qquad a=q,g .
 \]
+The normalization of \(a_{a,N}\) is fixed already at tree level by replacing
+the hadron with a single parton state.  Let
+\(\ket{p,i,s}\) be a massless quark of flavor \(i\) and spin \(s\), and use
+\(\bar u_s(p)\gamma^\mu u_s(p)=2p^\mu\).  Since each covariant derivative in
+\(\mathcal O_{q_j}\) acts on the external plane wave as multiplication by
+\(p^\mu\) at tree level,
+\[
+  \bra{p,i,s}\mathcal O_{q_j}^{\mu_1\cdots\mu_N}\ket{p,i,s}_{\rm tree}
+  =
+  2\delta_{ij}
+  \bigl(p^{\mu_1}\cdots p^{\mu_N}-\text{traces}\bigr).
+\]
+Thus a quark target has
+\[
+  a_{q_j,N}^{\,q_i,{\rm tree}}=\delta_{ij},
+  \qquad
+  a_{g,N}^{\,q_i,{\rm tree}}=0 .
+\]
+For a single gluon state \(\ket{p,A,\lambda}\), the linearized field strength
+is
+\[
+  F^{\mu\nu,A}(x)
+  =
+  \ii\bigl(p^\mu\varepsilon^\nu_\lambda
+  -p^\nu\varepsilon^\mu_\lambda\bigr)\ee^{-\ii p\cdot x},
+  \qquad
+  p\cdot\varepsilon_\lambda=0 .
+\]
+The color- and spin-averaged partonic matrix element is
+\[
+  \frac{1}{2(N_c^2-1)}
+  \sum_{A,\lambda}
+  \bra{p,A,\lambda}\mathcal O_{g}^{\mu_1\cdots\mu_N}
+  \ket{p,A,\lambda}_{\rm tree}
+  =
+  2
+  \bigl(p^{\mu_1}\cdots p^{\mu_N}-\text{traces}\bigr),
+\]
+so
+\[
+  a_{g,N}^{\,g,{\rm tree}}=1,
+  \qquad
+  a_{q_j,N}^{\,g,{\rm tree}}=0 .
+\]
+Equivalently, the tree-level parton distributions are
+\(f_{q_j/q_i}(x)=\delta_{ij}\delta(1-x)\),
+\(f_{g/g}(x)=\delta(1-x)\), and the mixed quark-gluon distributions vanish.
 
 Expanding the light-ray operator near zero separation gives these local
 operators contracted with the lightlike vector \(n^\mu\).  Consequently the
