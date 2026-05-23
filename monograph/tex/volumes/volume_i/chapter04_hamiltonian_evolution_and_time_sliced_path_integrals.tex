@@ -171,9 +171,12 @@ The continuum Lagrangian path-integral notation for this same kernel is
   \exp\left(\frac{\ii}{\hbar}S[q]\right).
 \]
 This displayed equation is a compact name for the regulated construction
-below.  The symbol \([Dq]\) is determined by the regulator, limiting procedure,
-operator symbol, and boundary conditions; at fixed regulator the object is a
-finite-dimensional oscillatory integral.
+below.  The bracketed symbols \([Dq]\) and, in phase-space formulas, \([Dp]\)
+are determined by the regulator, limiting procedure, operator symbol, and
+boundary conditions; at fixed regulator the object is a finite-dimensional
+oscillatory integral.  Unbracketed products such as \(\dd^dq_n\) and
+\(\dd^dp_n\) are reserved for the finite-dimensional measures that define the
+regulated expression.
 
 \section{Finite Time Slicing}
 
@@ -277,7 +280,7 @@ where the discrete phase-space action is
 \]
 The continuum notation
 \[
-  \int Dq\,Dp\,
+  \int [Dq]\,[Dp]\,
   \exp\left[
     \frac{\ii}{\hbar}\int_0^T
     \bigl(p_a\dot q^a-h(q,p)\bigr)\dd t
@@ -395,7 +398,7 @@ Thus the data of the regulated path integral are
   (\text{partition},\ \text{measure},\ \text{operator symbol},\
   \text{boundary conditions}).
 \]
-A formula involving \(Dq\,Dp\) is meaningful as notation for a regulated
+A formula involving \([Dq]\,[Dp]\) is meaningful as notation for a regulated
 construction once these data have been declared.
 
 \section{Lagrangian Form for Quadratic Momentum Dependence}
