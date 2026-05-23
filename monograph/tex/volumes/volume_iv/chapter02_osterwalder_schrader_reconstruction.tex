@@ -338,6 +338,44 @@ reconstruction; it is a subscripted instance of the global vacuum notation
 \(\vac\).
 \end{theorem}
 
+\begin{corollary}[OS reconstruction with and without clustering]
+\label{cor:os-reconstruction-vacuum-sector}
+Let \(P_0^{\rm OS}\) be the joint spectral projection of the reconstructed
+Lorentzian translation representation onto zero momentum.  The reconstruction
+theorem by itself produces an invariant cyclic vector \(\vac_{\rm OS}\) and a
+positive-energy representation, but it leaves the dimension of
+\(P_0^{\rm OS}\Hilb_{\rm OS}\) to the Schwinger hierarchy.  Thus, in the
+absence of a cluster condition, the reconstructed representation may contain
+several translation-invariant vacuum vectors.
+
+If the Euclidean hierarchy clusters, then for finite polynomial Euclidean
+field insertions \(A_E\) and \(B_E\) separated by a large spatial Euclidean
+translation,
+\[
+  \lim_{\lambda\to+\infty}
+  \langle A_E\,B_E(\lambda a)\rangle_E
+  =
+  \langle A_E\rangle_E\,\langle B_E\rangle_E,
+  \qquad a\in\mathbb R^{D-1},\ a\ne0,
+\]
+then its Lorentzian reconstruction satisfies the Wightman weak cluster
+property.  Consequently
+\[
+  P_0^{\rm OS}\Hilb_{\rm OS}=\mathbb C\vac_{\rm OS}
+\]
+by Theorem~\ref{thm:wightman-cluster-vacuum-uniqueness}.  Conversely, a
+one-dimensional reconstructed zero-momentum subspace gives Wightman
+clustering, and its restriction back to noncoincident Euclidean points gives
+the corresponding Euclidean cluster property.
+\end{corollary}
+
+When \(P_0^{\rm OS}\Hilb_{\rm OS}\) has dimension larger than one, the
+Schwinger functional is a translation-invariant state that is not extremal. Its
+central decomposition is a direct integral, or in finite mixtures a convex
+sum, of pure vacuum sectors.  OS positivity and covariance still reconstruct a
+valid Wightman presentation, while clustering is the additional condition that
+selects a single pure infinite-volume phase.
+
 The theorem has three distinct pieces.  First, reflection positivity constructs
 the Hilbert space, vacuum vector, and positive Hamiltonian by the positive-time
 quotient.  Second, Euclidean covariance and the OS regularity assumptions
