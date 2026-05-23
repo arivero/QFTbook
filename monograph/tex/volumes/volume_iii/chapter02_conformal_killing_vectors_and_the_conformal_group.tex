@@ -354,8 +354,8 @@ Let the quantum charges associated with the vector fields
   \widehat K_\mu .
 \]
 Their commutators are the charge realization of the Lie bracket of conformal
-Killing vector fields.  In Lorentzian signature, with metric
-\(\eta_{\mu\nu}\), the algebra is
+Killing vector fields.  In the Euclidean convention of this chapter, indices
+are contracted with \(\delta_{\mu\nu}\), and the algebra is
 \begin{align}
   [\widehat D,\widehat P_\mu]&=\ii\widehat P_\mu,
   &
@@ -365,53 +365,58 @@ Killing vector fields.  In Lorentzian signature, with metric
   \label{eq:conf-alg-dilatation}\\
   [\widehat P_\mu,\widehat K_\nu]
   &=
-  2\ii(\eta_{\mu\nu}\widehat D-\widehat J_{\mu\nu}),
+  2\ii(\delta_{\mu\nu}\widehat D-\widehat J_{\mu\nu}),
   \label{eq:conf-alg-pk}
 \end{align}
 together with the Poincare commutators
 \begin{align}
   [\widehat J_{\mu\nu},\widehat P_\rho]
   &=
-  \ii(\eta_{\rho\mu}\widehat P_\nu-\eta_{\rho\nu}\widehat P_\mu),
+  \ii(\delta_{\rho\mu}\widehat P_\nu-\delta_{\rho\nu}\widehat P_\mu),
   \\
   [\widehat J_{\mu\nu},\widehat J_{\rho\sigma}]
   &=
   \ii(
-  \eta_{\mu\rho}\widehat J_{\nu\sigma}
-  -\eta_{\nu\rho}\widehat J_{\mu\sigma}
-  -\eta_{\mu\sigma}\widehat J_{\nu\rho}
-  +\eta_{\nu\sigma}\widehat J_{\mu\rho}).
+  \delta_{\mu\rho}\widehat J_{\nu\sigma}
+  -\delta_{\nu\rho}\widehat J_{\mu\sigma}
+  -\delta_{\mu\sigma}\widehat J_{\nu\rho}
+  +\delta_{\nu\sigma}\widehat J_{\mu\rho}).
 \end{align}
 All unlisted commutators among the \(\widehat P_\mu\)'s and among the
 \(\widehat K_\mu\)'s vanish.
 
-The algebra is isomorphic to \(\mathfrak{so}(D,2)\).  Introduce indices
+The Euclidean conformal algebra is isomorphic to \(\mathfrak{so}(D+1,1)\).
+Introduce indices
 \[
-  M,N=-1,0,1,\ldots,D
+  A,B=-1,0,1,\ldots,D
 \]
 and a metric
 \[
-  \eta_{MN}^{(D,2)}=\operatorname{diag}(-1,-1,+1,\ldots,+1).
+  \eta_{AB}^{(D+1,1)}=\operatorname{diag}(-1,+1,\ldots,+1),
 \]
-The generators \(\widehat{\mathcal J}_{MN}=-\widehat{\mathcal J}_{NM}\) are
+where the negative entry is the \((-1)\)-direction.  The generators
+\(\widehat{\mathcal J}_{AB}=-\widehat{\mathcal J}_{BA}\) are
 related to the conformal generators by
 \[
   \widehat{\mathcal J}_{\mu\nu}=\widehat J_{\mu\nu},\qquad
-  \widehat{\mathcal J}_{D,-1}=\widehat D,\qquad
-  \widehat{\mathcal J}_{D,\mu}=\frac12(\widehat P_\mu-\widehat K_\mu),
+  \widehat{\mathcal J}_{0,-1}=\widehat D,\qquad
+  \widehat{\mathcal J}_{0,\mu}=\frac12(\widehat P_\mu-\widehat K_\mu),
   \qquad
   \widehat{\mathcal J}_{-1,\mu}=\frac12(\widehat P_\mu+\widehat K_\mu).
 \]
 Then
 \[
-  [\widehat{\mathcal J}_{MN},\widehat{\mathcal J}_{PQ}]
+  [\widehat{\mathcal J}_{AB},\widehat{\mathcal J}_{CD}]
   =
   \ii(
-  \eta_{MP}^{(D,2)}\widehat{\mathcal J}_{NQ}
-  -\eta_{NP}^{(D,2)}\widehat{\mathcal J}_{MQ}
-  -\eta_{MQ}^{(D,2)}\widehat{\mathcal J}_{NP}
-  +\eta_{NQ}^{(D,2)}\widehat{\mathcal J}_{MP}).
+  \eta_{AC}^{(D+1,1)}\widehat{\mathcal J}_{BD}
+  -\eta_{BC}^{(D+1,1)}\widehat{\mathcal J}_{AD}
+  -\eta_{AD}^{(D+1,1)}\widehat{\mathcal J}_{BC}
+  +\eta_{BD}^{(D+1,1)}\widehat{\mathcal J}_{AC}).
 \]
+The Lorentzian conformal algebra is obtained by analytic continuation of one
+physical coordinate and has real form \(\mathfrak{so}(D,2)\); it is not the
+real form used in the Euclidean derivation above.
 
 \section{Two Euclidean Dimensions}
 
