@@ -1161,6 +1161,79 @@ isolated one-particle mass shell. In momentum space the pole term is
        {k^2+m^2-\ii\epsilon}.
 \]
 
+The normalization content of this pole fixes the external spinor factor.  Put
+\(p=(\omega_{\vec p},\vec p)\).  The
+delta-normalized spinor intertwiners obey
+\begin{equation}
+  \sum_{\sigma=1}^2
+  u_\alpha^\sigma(p)\bar u^{\sigma,\beta}(p)
+  =
+  \frac{(m-\ii\not p)_\alpha{}^\beta}{2\omega_{\vec p}},
+  \qquad
+  \sum_{\sigma=1}^2
+  v_\alpha^\sigma(p)\bar v^{\sigma,\beta}(p)
+  =
+  -\,\frac{(m+\ii\not p)_\alpha{}^\beta}{2\omega_{\vec p}} .
+  \label{eq:spinor-sum-lsz-normalization}
+\end{equation}
+Thus the numerator of the Dirac pole contains the mass-shell Jacobian:
+\begin{equation}
+  m-\ii\not p
+  =
+  2\omega_{\vec p}
+  \sum_{\sigma=1}^2 u^\sigma(p)\bar u^\sigma(p),
+  \qquad
+  m+\ii\not p
+  =
+  -2\omega_{\vec p}
+  \sum_{\sigma=1}^2 v^\sigma(p)\bar v^\sigma(p).
+  \label{eq:spinor-numerator-jacobian}
+\end{equation}
+Since
+\[
+  k^2+m^2-\ii0
+  =
+  -2\omega_{\vec k}\bigl(k^0-\omega_{\vec k}+\ii0\bigr)
+  +
+  O\bigl((k^0-\omega_{\vec k})^2\bigr)
+\]
+near the positive-energy pole, the pole contribution is
+\begin{equation}
+  Z_\psi
+  \frac{-\ii(m-\ii\not k)_\alpha{}^\beta}
+       {k^2+m^2-\ii0}
+  =
+  \frac{\ii Z_\psi}
+       {k^0-\omega_{\vec k}+\ii0}
+  \sum_{\sigma=1}^2
+  u_\alpha^\sigma(k)\bar u^{\sigma,\beta}(k)
+  +\text{terms regular at }k^0=\omega_{\vec k}.
+  \label{eq:positive-energy-spinor-pole-residue}
+\end{equation}
+The negative-energy pole has the same form with \(v^\sigma\) and
+\(k^0+\omega_{\vec k}-\ii0\).  Therefore the factor \(2\omega_{\vec k}\) from
+the mass-shell denominator is already accounted for by the spinor completeness
+relation \eqref{eq:spinor-sum-lsz-normalization}.  In the
+\(\delta^3(\vec p-\vec q)\)-normalized external basis, each external
+wavefunction carries the Fourier factor \((2\pi)^{-3/2}\), while the spinor
+intertwiner carries the energy normalization in
+\(\bar u^\sigma u^\tau=(m/\omega_{\vec p})\delta^{\sigma\tau}\) and
+\(\bar v^\sigma v^\tau=-(m/\omega_{\vec p})\delta^{\sigma\tau}\).  Hence a
+spinor external leg contributes
+\begin{equation}
+  \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,u^\sigma_\alpha(p),
+  \qquad
+  \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,\bar u^{\sigma,\alpha}(p),
+  \qquad
+  \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,v^\sigma_\alpha(p),
+  \qquad
+  \frac{Z_\psi^{1/2}}{(2\pi)^{3/2}}\,\bar v^{\sigma,\alpha}(p),
+  \label{eq:spinor-external-normalization-factors}
+\end{equation}
+with the choice among them fixed by charge and by the in/out convention.  This
+is the spinorial normalization counterpart of the scalar one-particle
+normalization in Chapter~\ref{ch:volume-ii-local-data}.
+
 Spinorial LSZ reduction applies the same Haag--Ruelle and pole-extraction
 logic as the scalar case. The difference is that the residue has spinor
 indices. With Fourier transform convention
