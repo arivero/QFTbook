@@ -39,12 +39,20 @@ are written
   \qquad a\in\mathbb R^D,
 \]
 in the convention of Chapter \ref{ch:starting-data-local-qft}.  Let \(E_P\) be
-the joint spectral measure of \(P=(P_0,\ldots,P_{D-1})\).  The spectrum
-condition is
+the joint spectral measure of \(P=(P_0,\ldots,P_{D-1})\).  With
+\(p^2=\eta_{\mu\nu}p^\mu p^\nu\), define the open and closed forward cones by
 \[
-  \operatorname{Spec}(P)\subset \overline V_+
+  V_+
+  =
+  \{p\in\mathbb R^D\mid p^0>0,\ p^2<0\},
+  \qquad
+  \overline V_+
   =
   \{p\in\mathbb R^D\mid p^0\ge0,\ p^2\le0\}.
+\]
+The spectrum condition is
+\[
+  \operatorname{Spec}(P)\subset \overline V_+ .
 \]
 If the field multiplet transforms in a finite-dimensional Lorentz
 representation \(R\), covariance is the identity
