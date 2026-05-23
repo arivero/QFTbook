@@ -273,40 +273,103 @@ conditions in special cases, as the scalar trace descendant did above.
 \section{Spinor Primaries}
 
 For spinor primaries the rotation representation is a representation of
-\(\operatorname{Spin}(D)\), the double cover of \(SO(D)\).  Let \(S\) be an
-irreducible spinor representation.  With the Casimir normalization used above,
+\(\operatorname{Spin}(D)\), the double cover of \(SO(D)\).  Let \(D\ge3\), and
+let \(S\) be an irreducible complex spinor representation.  In even \(D\),
+\(S\) may be one of the two chiral spinor representations; Clifford
+multiplication by a vector then maps \(S\) to the opposite chirality.  Denote
+the spinor representation reached by Clifford multiplication by \(S_\gamma\).
+Thus \(S_\gamma\simeq S\) in odd dimension, while \(S_\gamma\) is the opposite
+chiral spinor in even dimension.  Choose Euclidean Clifford maps
 \[
-  C_S=\frac{D(D-1)}8,
+  \Gamma_\mu:S\longrightarrow S_\gamma,
   \qquad
-  C_1=D-1 .
-\]
-The tensor product of a vector with a spinor contains a gamma-trace spinor
-summand,
-\[
-  \mathcal H_1\otimes S
+  \Gamma_\mu^\dagger:S_\gamma\longrightarrow S,
+  \qquad
+  \Gamma_\mu^\dagger\Gamma_\nu+\Gamma_\nu^\dagger\Gamma_\mu
   =
-  S\oplus S_{3/2},
+  2\delta_{\mu\nu}\id_S .
 \]
-where \(S_{3/2}\) denotes the gamma-traceless vector-spinor summand.  Applying
-\eqref{eq:general-level-one-unitarity-test} to the \(Q=S\) channel gives
-\[
-  \Delta+\frac12(C_S-C_1-C_S)
-  =
-  \Delta-\frac{D-1}{2}
-  \ge0 .
-\]
-Thus a spin-\(\frac12\) primary satisfies
+These maps are intertwiners for the \(\operatorname{Spin}(D)\) action and
+therefore identify the gamma-trace summand in the level-one descendant space.
+
+\begin{proposition}[Spinor unitarity bound]
+\label{prop:spinor-unitarity-bound}
+Let \(\psi\) be a spinor primary of scaling dimension \(\Delta_\psi\) whose
+radial-quantization primary space carries the unitary spin representation
+\(S\).  Then
 \begin{equation}
   \Delta_\psi\ge\frac{D-1}{2}.
   \label{eq:spinor-primary-unitarity-bound}
 \end{equation}
-At equality the gamma-trace descendant is null.  In local-operator notation
-this is the Dirac shortening equation
+If equality holds, the gamma-trace first descendant is null.  In local-operator
+notation the shortening equation is
+\begin{equation}
+  \Gamma^\mu\partial_\mu\psi(x)=0 .
+  \label{eq:spinor-dirac-shortening}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The relevant \(SO(D)\) Casimir eigenvalues, in the normalization used in
+\eqref{eq:spin-coupling-casimir-eigenvalue}, are
 \[
-  \gamma^\mu\partial_\mu\psi(x)=0,
+  C_S=C_{S_\gamma}=\frac{D(D-1)}8,
+  \qquad
+  C_1=D-1 .
 \]
-with gamma matrices acting on the spinor index.  The other vector-spinor
-channel gives a weaker inequality for \(D\ge3\).
+The tensor product of the vector representation with \(S\) decomposes as
+\[
+  \mathcal H_1\otimes S
+  =
+  S_\gamma\oplus S_{3/2},
+\]
+where \(S_{3/2}\) is the gamma-traceless vector-spinor representation.  The
+orthogonal projection onto the first summand is the gamma-trace projection:
+for \(A_\mu\in\mathcal H_1\otimes S\),
+\[
+  (\Pi_\gamma A)_\mu
+  =
+  \frac1D\,\Gamma_\mu^\dagger\Gamma^\nu A_\nu,
+  \qquad
+  \Gamma^\mu(A_\mu-\Pi_\gamma A_\mu)=0 .
+\]
+Equivalently, after normalizing the primary state so that
+\(\|\ket{\psi(s)}\|^2=\|s\|_S^2\) for \(s\in S\), the gamma-trace descendant
+has Gram norm
+\begin{equation}
+  \left\|
+    \frac1{\sqrt D}\Gamma^\mu\widehat P_\mu\ket{\psi(s)}
+  \right\|^2
+  =
+  2\left(\Delta_\psi-\frac{D-1}{2}\right)\|s\|_S^2 .
+  \label{eq:spinor-gamma-trace-descendant-norm}
+\end{equation}
+This is precisely \eqref{eq:level-one-gram-general} restricted to the
+\(Q=S_\gamma\) irreducible summand, because
+\[
+  \Delta_\psi+\frac12(C_{S_\gamma}-C_1-C_S)
+  =
+  \Delta_\psi-\frac{D-1}{2}.
+\]
+Reflection positivity of radial quantization requires the left-hand side of
+\eqref{eq:spinor-gamma-trace-descendant-norm} to be nonnegative for every
+\(s\), giving \eqref{eq:spinor-primary-unitarity-bound}.  If equality holds,
+the gamma-trace descendant is a null state and therefore vanishes in the
+quotient local-operator space, which gives
+\eqref{eq:spinor-dirac-shortening}.
+
+For completeness, the complementary vector-spinor summand has
+\[
+  C_{S_{3/2}}=C_S+D .
+\]
+Its level-one inequality is
+\[
+  \Delta_\psi+\frac12(C_{S_{3/2}}-C_1-C_S)
+  =
+  \Delta_\psi+\frac12\ge0,
+\]
+so it gives no stronger lower bound for a positive-energy spinor primary.
+\end{proof}
 
 \section{Symmetric Traceless Tensor Primaries}
 
