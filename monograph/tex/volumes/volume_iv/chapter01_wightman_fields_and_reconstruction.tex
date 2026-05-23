@@ -223,28 +223,54 @@ variables has support in \(\overline V_+^{\,n-1}\).  This is the same positive
 spectral input that will lead in Chapter \ref{ch:kallen-lehmann} to the
 K\"all\'en--Lehmann representation of two-point functions.
 
-The Wightman hierarchy satisfies four structural conditions that are directly
-read from the Hilbert-space data:
+The Wightman hierarchy also records the adjunction operation on fields.  We
+assume the field labels are closed under an adjunction operation
+\(\alpha\mapsto \alpha^\dagger\), extended antilinearly to finite label
+spaces and chosen so that
 \[
-\begin{array}{ll}
-  \text{covariance:} &
-  W\text{ transforms under } \mathcal P_+^\uparrow \text{ with the field
-  representations},\\[0.25em]
-  \text{spectrum:} &
-  \operatorname{supp}\widehat W_n\subset \overline V_+^{\,n-1}
-  \text{ in difference variables},\\[0.25em]
-  \text{locality:} &
-  W_n\text{ has the graded permutation property at spacelike separated
-  adjacent points},\\[0.25em]
-  \text{positivity:} &
-  \sum_{m,n}\overline c_m c_n\,
-  W_{m+n}(f_m^\dagger\otimes f_n)\ge0 .
-\end{array}
+  \Phi_\alpha(f)^*|_{\mathcal D}
+  =
+  \Phi_{\alpha^\dagger}(\overline f)|_{\mathcal D}
 \]
-In the positivity line, \(f_n\) denotes a compactly supported or Schwartz test
+whenever the adjoint is restricted to the common invariant domain.  If a
+chosen multiplet is not already in such a basis, the involution includes the
+corresponding finite-dimensional conjugation matrix on the label space.
+
+The Wightman hierarchy satisfies five structural conditions that are directly
+read from the Hilbert-space data:
+\begin{description}[leftmargin=2.9cm,style=nextline]
+\item[Covariance.]
+The distribution \(W_n\) transforms under \(\mathcal P_+^\uparrow\) by the
+\(n\)-fold field representation on its labels and test functions.
+\item[Spectrum.]
+In translation-difference variables,
+\[
+  \operatorname{supp}\widehat W_n\subset \overline V_+^{\,n-1}.
+\]
+\item[Hermiticity.]
+For all labels and test functions,
+\[
+  \overline{W_{\alpha_1\cdots\alpha_n}
+    (f_1\otimes\cdots\otimes f_n)}
+  =
+  W_{\alpha_n^\dagger\cdots\alpha_1^\dagger}
+  (\overline f_n\otimes\cdots\otimes\overline f_1).
+\]
+\item[Locality.]
+\(W_n\) has the graded permutation property when adjacent field insertions
+are smeared with spacelike separated test functions.
+\item[Positivity.]
+For every finite sequence \(F=(f_0,f_1,f_2,\ldots)\) of test functions,
+\[
+  \sum_{m,n} W_{m+n}(f_m^\dagger\otimes f_n)\ge0 .
+\]
+\end{description}
+In these formulas, \(f_n\) denotes a compactly supported or Schwartz test
 function valued in the appropriate finite direct sum of field labels, and
-\(f_m^\dagger\) reverses order and complex conjugates the test functions
-with the field adjunction included.
+\(f_m^\dagger\) reverses order, complex conjugates the test functions, and
+applies the field-label adjunction to each tensor factor.  Hermiticity is the
+compatibility condition that makes the reconstructed left-multiplication
+fields have the intended adjoints on the common domain.
 
 \section{Clustering and the Vacuum Sector}
 
