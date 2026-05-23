@@ -1135,6 +1135,53 @@ Fix a finite ultraviolet regulator \(\Lambda_0\), a smooth intermediate cutoff
 \[
   \mu\ll\Lambda\ll\Lambda_0 .
 \]
+Keep distinct names for the two RG times:
+\[
+  t_{\rm W}:=\log\Lambda,
+  \qquad
+  t_{\rm 1PI}:=\log\mu .
+\]
+They parameterize different vector fields.  The Wilsonian time \(t_{\rm W}\)
+acts on the cutoff action before the remaining low field is integrated, while
+\(t_{\rm 1PI}\) acts on projected 1PI vertices after the connected functional
+has been Legendre transformed.  To compare the two flows, choose a fixed
+matching ratio
+\[
+  \zeta:=\frac{\Lambda}{\mu}\gg 1 .
+\]
+Along such a matched comparison,
+\[
+  t_{\rm W}=t_{\rm 1PI}+\log\zeta,
+  \qquad
+  \left.\frac{\dd}{\dd t_{\rm 1PI}}\right|_{\zeta}
+  =
+  \left.\frac{\dd}{\dd t_{\rm W}}\right|_{\zeta}.
+\]
+If \(u_A(\Lambda)\) are Wilsonian coordinates and \(g_I(\mu)\) are 1PI
+coordinates, the bridge is a finite matching map at fixed \(\zeta\),
+\[
+  g_I(\mu)
+  =
+  M_I(u(\Lambda),\zeta)
+  +
+  O(\zeta^{-\Delta_{\rm irr}}),
+\]
+where \(\Delta_{\rm irr}>0\) is the smallest suppression exponent among the
+omitted irrelevant coordinates in the chosen local expansion.  Differentiating
+at fixed \(\zeta\) gives the corresponding relation between beta functions,
+\[
+  \beta_I^{\rm 1PI}
+  =
+  \frac{\partial M_I}{\partial u_A}\,
+  \beta_A^{\rm W}
+  +
+  O(\zeta^{-\Delta_{\rm irr}}),
+\]
+with summation over \(A\).  Thus the two uses of \(t\) in the preceding
+chapters have the same orientation only after this matching convention is
+chosen; without the matching map they refer to different mathematical
+constructions.
+
 The external momenta used in the 1PI projectors are assumed to have size
 \(O(\mu)\) and to be nonexceptional.  Let
 \[
