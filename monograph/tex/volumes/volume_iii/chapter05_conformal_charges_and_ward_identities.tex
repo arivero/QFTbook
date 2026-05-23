@@ -179,7 +179,8 @@ correlators under consideration, assume the following two properties.
   \]
   on the common invariant domain on which the correlators are defined.
   \item If \(\Sigma_R\) is a family of smooth enclosing surfaces whose distance
-  from the insertions tends to infinity, then
+  from the insertions tends to infinity, then clustering makes the large
+  boundary flux vanish:
   \[
     \lim_{R\to\infty}
     \left\langle
@@ -189,6 +190,23 @@ correlators under consideration, assume the following two properties.
     =
     0 .
   \]
+  More explicitly, with
+  \[
+    Q_\epsilon(\Sigma_R)
+    =
+    \int_{\Sigma_R}\dd S_\mu\,
+    \epsilon_\nu(x)T^{\mu\nu}(x),
+  \]
+  the connected correlator
+  \[
+    \left\langle
+      T^{\mu\nu}(x)\prod_{i=1}^n\mathcal O_i(x_i)
+    \right\rangle_{\!c}
+  \]
+  must decay at large \(|x|\) fast enough to overcome the area growth of
+  \(\Sigma_R\) and the polynomial growth of the displayed conformal Killing
+  vectors.  This is the cluster-decomposition input in the deformation of the
+  large surface to the small spheres \(S_i\).
 \end{enumerate}
 \end{hypothesis}
 
