@@ -427,85 +427,136 @@ spectral support.
 
 \section{Canonical Normalization and Spectral Weight}
 
-The measure \(d\rho\) depends on the normalization of the local field.  When
-\(\widehat\phi\) is a canonically normalized scalar field, the equal-time
-commutation relation supplies an additional normalization condition.  Assume
-that, on a common invariant domain,
+The measure \(d\rho\) depends on the normalization of the local field.  A
+canonical equal-time normalization consists of a regularity datum on the
+operator-valued distribution together with a smeared commutator identity.
+Let \(d=D-1\).  Assume there is a dense common invariant domain
+\(\mathcal D\subset\Hilb\), with \(\vac\in\mathcal D\), such that for every
+\(f\in\mathcal S(\mathbb R^d)\) the smeared equal-time fields
+\[
+  \widehat\phi_t(f)=\int\dd^d\vec x\,f(\vec x)\widehat\phi(t,\vec x),
+  \qquad
+  \widehat\pi_t(f)=\int\dd^d\vec x\,f(\vec x)\widehat\pi(t,\vec x)
+\]
+preserve \(\mathcal D\), and
+\[
+  \frac{\dd}{\dd t}\widehat\phi_t(f)\psi
+  =
+  \widehat\pi_t(f)\psi,
+  \qquad \psi\in\mathcal D,
+\]
+where the derivative is taken in the Hilbert norm.  This is \(C^1\)
+distributional time-regularity of \(\widehat\phi\).  The canonical
+normalization is the domain identity
+\[
+  [\widehat\phi_t(f),\widehat\pi_t(g)]\psi
+  =
+  \ii\int_{\mathbb R^d} f(\vec x)g(\vec x)\,\dd^d\vec x\,\psi,
+  \qquad f,g\in\mathcal S(\mathbb R^d),\quad \psi\in\mathcal D .
+\]
+The formal notation
 \[
   [\widehat\phi(t,\vec x),\partial_t\widehat\phi(t,\vec y)]
   =
-  \ii\,\delta^{(D-1)}(\vec x-\vec y)\mathbf 1 .
+  \ii\,\delta^{(d)}(\vec x-\vec y)\mathbf 1
 \]
+means precisely this smeared statement with
+\(\widehat\pi_t=\partial_t\widehat\phi_t\) as an operator-valued distribution.
+
 The commutator two-point distribution is
 \[
+  C(x):=
   \langle\vac|[\widehat\phi(x),\widehat\phi(0)]|\vac\rangle
   =
-  \int_{[0,\infty)}\dd\rho(\mu^2)\,
-  \bigl(\Delta_+(x;\mu^2)-\Delta_+(-x;\mu^2)\bigr).
+  \int_{[0,\infty)}\dd\rho(s)\,
+  \bigl(\Delta_+(x;s)-\Delta_+(-x;s)\bigr).
 \]
-For each fixed \(\mu^2\), this equal-time derivative is computed directly from
-the spatial Fourier representation.  Write
+The \(C^1\) hypothesis gives the equal-time derivative as a spatial tempered
+distribution:
+\begin{equation}
+  \left.\partial_t C(t,\vec r)\right|_{t=0}
+  =
+  \langle\vac|[\widehat\pi_0(\vec r),\widehat\phi_0(\vec 0)]|\vac\rangle
+  =
+  -\ii\,\delta^{(d)}(\vec r).
+  \label{eq:kallen-lehmann-equal-time-commutator-derivative}
+\end{equation}
+
+It remains to justify the spectral calculation of the same derivative.  Let
+\(\rho_R\) be the restriction of \(\rho\) to \([0,R]\), and let
 \[
-  \omega_{\vec p,\mu}=\sqrt{\vec p^{\,2}+\mu^2},
-  \qquad x=(t,\vec r).
+  C_R(t,\vec r)=
+  \int_{[0,R]}\dd\rho(s)\,
+  \bigl(\Delta_+(t,\vec r;s)-\Delta_+(-t,-\vec r;s)\bigr).
 \]
-Then, as an identity in \(\mathcal S'(\mathbb R^{D-1}_{\vec r})\),
+The measure \(\rho_R\) is finite by local finiteness.  For a spatial test
+function \(h\in\mathcal S(\mathbb R^d)\), set
+\[
+  F_s(t;h)=
+  \int_{\mathbb R^d}\dd^d\vec r\,h(\vec r)
+  \bigl(\Delta_+(t,\vec r;s)-\Delta_+(-t,-\vec r;s)\bigr).
+\]
+Writing \(\omega_{\vec p,s}=\sqrt{\vec p^{\,2}+s}\), the spatial Fourier
+representation gives
 \[
 \begin{aligned}
-  &\left.
-  \partial_t
-  \bigl(
-    \Delta_+(t,\vec r;\mu^2)-\Delta_+(-t,-\vec r;\mu^2)
-  \bigr)
-  \right|_{t=0}                                      \\
-  &\quad =
-  \left.
-  \partial_t
-  \int\frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}\,
-  \frac{
-    \ee^{\ii\vec p\cdot\vec r-\ii\omega_{\vec p,\mu}t}
-    -
-    \ee^{-\ii\vec p\cdot\vec r+\ii\omega_{\vec p,\mu}t}
-  }{2\omega_{\vec p,\mu}}
-  \right|_{t=0}                                      \\
-  &\quad =
+  \frac{\dd}{\dd t}F_s(t;h)
+  &=
   -\frac{\ii}{2}
-  \int\frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}\,
-  \left(\ee^{\ii\vec p\cdot\vec r}
-  +\ee^{-\ii\vec p\cdot\vec r}\right)
-  =
-  -\ii\,\delta^{(D-1)}(\vec r).
+  \int\frac{\dd^d\vec p}{(2\pi)^d}
+  \left(
+    \widetilde h(\vec p)\ee^{-\ii\omega_{\vec p,s}t}
+    +
+    \widetilde h(-\vec p)\ee^{+\ii\omega_{\vec p,s}t}
+  \right),
 \end{aligned}
 \]
-The result is independent of \(\mu^2\).  On the other hand, the assumed
-canonical commutator gives
+where
 \[
-  \left.
-  \partial_t
-  \langle\vac|[\widehat\phi(t,\vec r),\widehat\phi(0,\vec 0)]|\vac\rangle
-  \right|_{t=0}
+  \widetilde h(\vec p)
   =
-  \langle\vac|
-  [\partial_t\widehat\phi(0,\vec r),\widehat\phi(0,\vec 0)]
-  |\vac\rangle
-  =
-  -\ii\,\delta^{(D-1)}(\vec r).
+  \int_{\mathbb R^d}\dd^d\vec r\,
+  h(\vec r)\ee^{\ii\vec p\cdot\vec r}.
 \]
-Comparing this with the spectral representation gives
+The bound
 \[
-  -\ii
-  \left(\int_{[0,\infty)}\dd\rho(\mu^2)\right)
-  \delta^{(D-1)}(\vec r)
-  =
-  -\ii\delta^{(D-1)}(\vec r).
+  \left|\frac{\dd}{\dd t}F_s(t;h)\right|
+  \le
+  \int\frac{\dd^d\vec p}{(2\pi)^d}\,|\widetilde h(\vec p)|
 \]
-Therefore the canonical commutator fixes the total spectral weight:
+is uniform in \(s\ge0\) and \(t\).  Hence, for every finite \(R\), dominated
+convergence permits the derivative to pass through the \(s\)-integral.  At
+\(t=0\),
+\[
+  \left.\frac{\dd}{\dd t}F_s(t;h)\right|_{t=0}
+  =
+  -\ii h(\vec0).
+\]
+Therefore
+\[
+  \left\langle
+    \left.\partial_t C_R(t,\cdot)\right|_{t=0},
+    h
+  \right\rangle
+  =
+  -\ii\,\rho([0,R])\,h(\vec0).
+\]
+
+The final limiting step is part of the equal-time regularity assumption: the
+spectral truncations \(C_R\) converge to \(C\) after applying the operation
+\(\partial_t|_{t=0}\) in \(\mathcal S'(\mathbb R^d)\).  Comparing with
+\eqref{eq:kallen-lehmann-equal-time-commutator-derivative} gives
+\[
+  \rho([0,R])\longrightarrow 1
+  \qquad (R\to\infty),
+\]
+and monotone convergence yields the canonical sum rule
 \begin{equation}
-  \int_{[0,\infty)}\dd\rho(\mu^2)=1.
+  \int_{[0,\infty)}\dd\rho(s)=1.
   \label{eq:kallen-lehmann-canonical-sum-rule}
 \end{equation}
-This is a statement about the chosen field normalization, not about a
-normalization-independent observable.
+It fixes the chosen field normalization; changing the field normalization
+rescales the spectral measure.
 
 If the same field has a one-particle atom \(Z\delta_{m^2}\), positivity of
 \(d\rho\) and \eqref{eq:kallen-lehmann-canonical-sum-rule} imply
