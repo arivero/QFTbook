@@ -109,20 +109,48 @@ Let
   \qquad
   P_{\mathrm{in}}=\sum_{j=1}^n p_j .
 \]
-Translation invariance implies that every connected scattering kernel is
-supported on \(P_{\mathrm{out}}=P_{\mathrm{in}}\). The invariant amplitude
-\(\mathcal M\) is defined by removing this overall conservation law:
+Translation invariance implies that the non-identity part of every connected
+scattering kernel is supported on \(P_{\mathrm{out}}=P_{\mathrm{in}}\).  The
+phase convention is fixed once and for all by distinguishing the connected
+\(S\)-kernel from the connected \(T\)-kernel.  With
+\[
+  S=\mathbf 1+\ii T,
+\]
+write
 \[
 \begin{aligned}
 &S^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n)
 \\
 &\qquad =
-  \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  I^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n)
+  +
+  \ii\,T^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n),
+\end{aligned}
+\]
+where \(I^{\mathrm c}\) is zero except for one incoming and one outgoing
+particle of the same species, in which case
+\[
+  I^{\mathrm c}(q|p)
+  =
+  (2\pi)^d2\omega_{\vec p}\delta^d(\vec q-\vec p).
+\]
+The invariant amplitude \(\mathcal M\) is the reduced connected \(T\)-kernel:
+\[
+\begin{aligned}
+&T^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n)
+\\
+&\qquad =
+  (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
   \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n).
 \end{aligned}
 \]
-Here \(S^{\mathrm c}\) is the connected part of the kernel. The convention
-\(S=\mathbf 1+\ii T\) gives
+Equivalently, the transition part of the connected \(S\)-kernel is
+\[
+  S^{\mathrm c}-I^{\mathrm c}
+  =
+  \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})\mathcal M .
+\]
+The connected \(T\)-matrix kernel is therefore
 \[
   {}_{\mathrm{out}}\langle q|T|p\rangle_{\mathrm c}
   =
@@ -268,14 +296,21 @@ is determined recursively by
   \prod_{B\in\Pi}S^{\mathrm c}(\beta_B|\alpha_B).
   \label{eq:connected-scattering-recursion}
 \end{equation}
-The one-particle identity kernel is included as the connected kernel for a
-block with one incoming and one outgoing label:
+The one-particle identity kernel \(I^{\mathrm c}\) introduced above is included
+as the connected kernel for a block with one incoming and one outgoing label:
 \begin{equation}
+  \begin{aligned}
   S^{\mathrm c}(q|p)
-  =
+  &=
+  I^{\mathrm c}(q|p)
+  +
+  \ii(2\pi)^D\delta^D(q-p)\mathcal M(q|p)
+  \\
+  &=
   (2\pi)^d2\omega_{\vec p}\delta^d(\vec q-\vec p)
   +
   \ii(2\pi)^D\delta^D(q-p)\mathcal M(q|p).
+  \end{aligned}
   \label{eq:one-particle-connected-kernel}
 \end{equation}
 In a translationally invariant vacuum without external backgrounds, the
