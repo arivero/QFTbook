@@ -406,6 +406,33 @@ and the fermionic Fock space
   =
   \bigoplus_{n=0}^{\infty}\wedge^n\Hilb_1.
 \]
+For the massive scalar one-particle space
+\(\Hilb_1=L^2(\Sigma_m^+,\dd\mu_m)\), identify the mass shell with
+\(\mathbb R^{D-1}\) by
+\[
+  \vec p\longmapsto (E_{\vec p},\vec p),
+  \qquad E_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
+\]
+and define
+\[
+  \mathcal S_m=\mathcal S(\Sigma_m^+)
+\]
+to be the wave packets whose pullback to the \(\vec p\)-chart is a Schwartz
+function.  The space \(\mathcal S_m\) is dense in \(\Hilb_1\), is contained in
+the domain of every polynomial in the one-particle energy-momentum operators,
+and is invariant under the one-particle Poincare representation.  The common
+algebraic Fock domain used below is
+\[
+  \mathcal D_0
+  =
+  \operatorname{span}\{
+    a^\dagger(\psi_1)\cdots a^\dagger(\psi_n)\vac
+    \mid
+    n\ge0,\ \psi_1,\ldots,\psi_n\in\mathcal S_m
+  \}.
+\]
+It is dense in \(\mathcal F_s(\Hilb_1)\) and invariant under creation and
+annihilation operators smeared by elements of \(\mathcal S_m\).
 For a free scalar species, the momentum-space annihilation and creation
 operators \(a(\vec p)\) and \(a^\dagger(\vec p)\) are operator-valued
 distributions characterized by
@@ -437,9 +464,8 @@ Write
   =
   \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}} .
 \]
-For a one-particle wave packet
-\(\psi\in C_c^\infty(\Sigma_m^+)\subset\Hilb_1\), the smeared creation and
-annihilation operators on the finite-particle domain are
+For a one-particle test wave packet \(\psi\in\mathcal S_m\), the smeared
+creation and annihilation operators on \(\mathcal D_0\) are
 \[
   a^\dagger(\psi)
   =
@@ -449,7 +475,10 @@ annihilation operators on the finite-particle domain are
   =
   \int \dd\mu_m(\vec p)\,\overline{\psi(\vec p)}a(\vec p).
 \]
-They extend to all \(\psi\in\Hilb_1\) on that domain, and satisfy
+The closed Fock operators can be defined for all \(\psi\in\Hilb_1\).  The
+operator-valued distribution notation and the common-domain commutator
+calculation use the dense test class \(\mathcal S_m\).  For
+\(\psi,\chi\in\mathcal S_m\), the operators on \(\mathcal D_0\) satisfy
 \[
   [a(\psi),a^\dagger(\chi)]
   =
@@ -579,9 +608,9 @@ matrix elements are defined.
 
 \section{Free Scalar Field As A Derived Example}
 
-Let \(\mathcal D_0\subset\mathcal F_s(\Hilb_1)\) be the dense subspace of
-finite-particle vectors generated from the vacuum by finitely many smeared
-creation operators. On \(\mathcal D_0\), define the free scalar field as the
+Use the dense domain \(\mathcal D_0\subset\mathcal F_s(\Hilb_1)\) generated
+from the mass-shell Schwartz test space \(\mathcal S_m\).  On \(\mathcal D_0\),
+define the free scalar field as the
 operator-valued distribution
 \[
   \widehat\phi(x)
@@ -625,9 +654,12 @@ so
   =
   a^\dagger(U_1(g)\psi)
 \]
-for every one-particle wave packet \(\psi\).  Applying this identity to the
-distributional creation and annihilation kernels, and using invariance of the
-mass-shell measure, gives
+for \(\psi\in\mathcal S_m\) on \(\mathcal D_0\).  Since \(U_1(g)\mathcal S_m
+\subset\mathcal S_m\), this identity preserves the common test domain; the
+closed operators give the corresponding Hilbert-space identity for arbitrary
+\(\psi\in\Hilb_1\).  Applying the test-space identity to the distributional
+creation and annihilation kernels, and using invariance of the mass-shell
+measure, gives
 \[
   U_0(b,\Lambda)\widehat\phi(x)U_0(b,\Lambda)^{-1}
   =
