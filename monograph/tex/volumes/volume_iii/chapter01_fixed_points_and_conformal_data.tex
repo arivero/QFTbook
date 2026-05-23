@@ -267,7 +267,9 @@ improvement convention appropriate to the fixed point.  Thus \(g_{\mu\nu}\) is
 a smooth background metric, \(J^A(x)\) are smooth compactly supported
 sources for a chosen local operator basis \(\mathcal O_A\), and local
 functionals of \(g\) and \(J\) specify the contact-term chart.  The sign
-normalization of \(W_\ast\) is the Euclidean effective-action normalization.
+normalization of \(W_\ast\) is the Euclidean free-energy, or effective-action,
+normalization \(W_\ast=-\log Z_\ast\).  The connected-log functional is denoted
+\(K_\ast=\log Z_\ast\) when it is used.
 For a regulated path-integral representative this convention reads
 \[
   \exp\{-W_\ast[g,J]\}
@@ -278,8 +280,11 @@ For a regulated path-integral representative this convention reads
     +\int\dd^D x\,\sqrt g\,J^A(x)\mathcal O_A(x)
   \right\},
 \]
-up to the local counterterms that define the source chart.  In an abstract CFT
-the displayed integral is replaced by the corresponding renormalized source
+up to the local counterterms that define the source chart.  The minus sign in
+the operator derivative below is forced by combining \(W_\ast=-\log Z_\ast\)
+with the source term \(+\int J^A\mathcal O_A\) in the exponent; a source written
+with the opposite sign would reverse this derivative convention.  In an abstract
+CFT the displayed integral is replaced by the corresponding renormalized source
 functional; the first derivatives below are the definition of the associated
 contact-term convention.
 The stress tensor and local operators are the source derivatives
