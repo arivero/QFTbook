@@ -155,66 +155,34 @@ where \(M_B\) is the bound-state mass. The functions
 they are determined by matrix elements between the one-particle state \(B\)
 and two-particle states created by local or composite operators.
 
-\section{A One-Dimensional Scattering Calculation}
+\section{One-Dimensional Pole Criterion as Orientation}
+\label{sec:bound-state-one-dimensional-orientation}
 
-The pole criterion can be seen directly in a short-range Schrödinger problem.
-Let
+The elementary one-dimensional Schr\"odinger model is useful here only as an
+orientation for the bound-state pole criterion.  Its Hilbert-space conventions
+belong to the general discussion of continuous spectra in
+Section~\ref{sec:rigged-hilbert-continuous-spectrum}, and its unitary
+Schr\"odinger evolution is part of the quantum-mechanical setup of
+Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.  The
+detailed one-dimensional analytic continuation, including outgoing resonance
+poles and the two-sheeted energy plane, is treated in
+Section~\ref{sec:resonance-one-dimensional-outgoing-poles}.
+
+For the present stable-bound-state purpose, take a short-range Hamiltonian
 \[
-  H=-\frac{1}{2\mu}\frac{\dd^2}{\dd x^2}+V(x)
-\]
-on the line, where \(V(x)\) is real and decreases sufficiently fast as
-\(|x|\to\infty\). Let
-\[
-  E_{\mathrm{nr}}=\frac{k^2}{2\mu}.
-\]
-For \(x\to+\infty\), choose incoming and outgoing scattering solutions by
-\[
-  \psi_k^{\mathrm{in}}(x)
-  \sim
-  \ee^{-\ii kx}+S(k)\ee^{\ii kx},
+  H=-\frac{1}{2\mu}\frac{\dd^2}{\dd x^2}+V(x),
   \qquad
-  \psi_k^{\mathrm{out}}(x)
-  =
-  S(k)^{-1}\psi_k^{\mathrm{in}}(x)
-  \sim
-  S(k)^{-1}\ee^{-\ii kx}+\ee^{\ii kx}.
+  E_{\mathrm{nr}}=\frac{k^2}{2\mu},
 \]
-Here \(S(k)\) is the one-channel scattering function in this normalization.
-
-\begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.92]
-  \draw[->,line width=0.7pt] (-3.0,0)--(4.1,0) node[right] {\(x\)};
-  \draw[->,line width=0.7pt] (-2.75,-1.5)--(-2.75,2.1)
-    node[above] {\(V(x)\)};
-  \draw[blue!70!black,line width=1.15pt]
-    (-2.55,0.15) .. controls (-2.1,0.1) and (-1.8,-0.12) .. (-1.38,-0.95)
-    .. controls (-0.86,-1.82) and (-0.12,-1.6) .. (0.35,-0.55)
-    .. controls (0.72,0.28) and (1.08,0.52) .. (1.55,0.16)
-    .. controls (2.05,-0.16) and (2.8,0.03) .. (3.55,0.02);
-  \draw[gray!65,line width=0.65pt,dashed] (-2.55,0.72)--(3.55,0.72);
-  \node[gray!60!black,anchor=west,font=\small] at (3.62,0.72)
-    {\(E_{\mathrm{nr}}>0\)};
-  \draw[red!75!black,line width=1.05pt,domain=-1.7:1.8,samples=90]
-    plot (\x,{-0.92+0.58*exp(-1.4*\x*\x)});
-  \node[red!75!black,font=\small] at (2.58,-0.94) {bound wave};
-  \draw[brown!75!black,->,line width=0.85pt] (2.45,1.16)--(3.2,1.16);
-  \node[brown!75!black,font=\small,anchor=west] at (3.27,1.16)
-    {outgoing};
-  \draw[brown!75!black,->,line width=0.85pt] (3.18,1.48)--(2.42,1.48);
-  \node[brown!75!black,font=\small,anchor=east] at (2.35,1.48)
-    {incoming};
-  \node[blue!70!black,font=\small] at (-0.55,-1.32)
-    {short-range potential};
-\end{tikzpicture}
-\end{center}
-
-The analytic continuation is applied to the solution of the differential
-equation after the real-axis scattering normalization has been fixed. For
-\(k=\ii\alpha\), \(\alpha>0\),
+with \(V\) real.  After fixing the real-\(k\) scattering normalization, an
+outgoing solution has the asymptotic form
 \[
-  E_{\mathrm{nr}}=-\frac{\alpha^2}{2\mu},
+  \psi_k^{\mathrm{out}}(x)
+  \sim
+  S(k)^{-1}\ee^{-\ii kx}+\ee^{\ii kx}
+  \qquad (x\to+\infty).
 \]
-and the asymptotic form becomes
+Analytic continuation to \(k=\ii\alpha\), \(\alpha>0\), gives
 \[
   \psi_{\ii\alpha}^{\mathrm{out}}(x)
   \sim
@@ -222,52 +190,18 @@ and the asymptotic form becomes
   +
   \ee^{-\alpha x}.
 \]
-A normalizable bound-state wave function decays as \(x\to+\infty\), so the
-coefficient of \(\ee^{\alpha x}\) must vanish. Thus a pole of \(S(k)\) at
+An \(L^2\) bound-state wave function cannot contain the growing term
+\(\ee^{\alpha x}\).  Thus normalizability requires
 \[
-  k=\ii\alpha,\qquad \alpha>0,
+  S(\ii\alpha)^{-1}=0,
+  \qquad
+  E_{\mathrm{nr}}=-\frac{\alpha^2}{2\mu},
 \]
-is the analytic signal of a bound state with energy
-\(-\alpha^2/(2\mu)\).
-
-\begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.94]
-  \begin{scope}
-    \draw[->,line width=0.7pt] (-2.2,0)--(2.8,0);
-    \node[right] at (2.8,0) {\(\operatorname{Re}k\)};
-    \draw[->,line width=0.7pt] (0,-1.35)--(0,2.65)
-      node[above] {\(\operatorname{Im}k\)};
-    \draw[blue!70!black,line width=1.1pt,->] (0,0)--(2.05,0);
-    \node[blue!70!black,below] at (1.52,-0.12) {physical \(k>0\)};
-    \fill[red!75!black] (0,0.82) circle (2.4pt);
-    \fill[red!75!black] (0,1.55) circle (2.4pt);
-    \node[red!75!black,anchor=west] at (0.35,1.78)
-      {bound-state poles};
-    \draw[red!75!black,->,line width=0.7pt] (0.58,1.52)--(0.08,1.53);
-    \node[below left] at (0,0) {$0$};
-  \end{scope}
-  \begin{scope}[xshift=6.1cm]
-    \draw[->,line width=0.7pt] (-2.2,0)--(2.8,0);
-    \node[right] at (2.8,0) {\(E_{\mathrm{nr}}\)};
-    \draw[->,line width=0.7pt] (0,-1.35)--(0,2.65)
-      node[above] {\(\operatorname{Im}E_{\mathrm{nr}}\)};
-    \draw[blue!70!black,line width=1.1pt,->] (0,0)--(2.08,0);
-    \node[blue!70!black,below] at (1.55,-0.12) {scattering};
-    \fill[red!75!black] (-0.55,0) circle (2.4pt);
-    \fill[red!75!black] (-1.18,0) circle (2.4pt);
-    \node[red!75!black,align=center] at (-1.08,0.78)
-      {negative\\energies};
-    \node[below] at (0,0) {$0$};
-  \end{scope}
-  \node at (3.05,2.2) {$E_{\mathrm{nr}}=k^2/(2\mu)$};
-\end{tikzpicture}
-\end{center}
-
-The relativistic statement uses the invariant energy \(s\) and the
-partial-wave decomposition of the connected amplitude, but the same analytic
-logic is visible: normalizable states below a continuum threshold appear as
-poles on the physical, or first, sheet below the cut, using the sheet convention
-of Section~\ref{sec:physical-region-and-first-sheet}.
+or equivalently a pole of \(S(k)\) at \(k=\ii\alpha\) on the positive imaginary
+\(k\)-axis.  In the relativistic amplitude this statement becomes: a stable
+bound state below a two-particle threshold appears as a first-sheet pole below
+the corresponding branch cut, with the sheet convention of
+Section~\ref{sec:physical-region-and-first-sheet}.
 
 \section{Partial Waves}
 
