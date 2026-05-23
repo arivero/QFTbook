@@ -143,7 +143,8 @@ The real parts are free variables. The ordering in imaginary time provides the
 analytic separation that will become time ordering after a uniform rotation to
 real time.
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.92]
   \draw[->,line width=0.7pt] (-3.5,0) -- (4.1,0)
     node[right] {$\operatorname{Re}z^0$};
@@ -165,7 +166,11 @@ real time.
     {$S_C=\displaystyle\int_C\dd z^0
       \int\dd^{D-1}\vec x\,\mathcal L$};
 \end{tikzpicture}
-\end{center}
+\caption{Complex-time contour data for ordered vacuum insertions.  The
+ordering of imaginary parts determines the analytic domain that rotates to
+Lorentzian time ordering.}
+\label{fig:complex-time-contour-ordering}
+\end{figure}
 
 The figure records only the ordering data. The analytic statement is the
 existence of a holomorphic continuation of the relevant correlation function
@@ -278,7 +283,8 @@ the ordering
 \]
 is maintained throughout the rotation.
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.9]
   \draw[->,line width=0.7pt] (-1.0,0) -- (5.05,0)
     node[right] {$\operatorname{Re}z^0$};
@@ -300,7 +306,11 @@ is maintained throughout the rotation.
     {$z_a^0(\alpha)=\ee^{-\ii\alpha}t_a$\\
      \(\alpha:\pi/2\to0^+\)};
 \end{tikzpicture}
-\end{center}
+\caption{Uniform Wick rotation of ordered insertion times.  The deformation
+\(z_a^0(\alpha)=\ee^{-\ii\alpha}t_a\) preserves the imaginary-time ordering
+until the Lorentzian boundary is reached.}
+\label{fig:uniform-wick-rotation-insertion-times}
+\end{figure}
 
 Under the stated analyticity assumptions, the Euclidean correlation function
 continued along this common rotation becomes the Lorentzian time-ordered
@@ -483,7 +493,8 @@ As \(\alpha\to0^+\), these poles approach the real axis as
   +\omega_{\vec k}-\ii0.
 \]
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.95]
   \draw[->,line width=0.7pt] (-3.35,0) -- (3.55,0)
     node[right] {$\operatorname{Re}k^0$};
@@ -511,7 +522,11 @@ As \(\alpha\to0^+\), these poles approach the real axis as
     {$+\omega_{\vec k}-\ii0$};
   \node[gray!70!black] at (-2.35,1.10) {$\alpha\to0^+$};
 \end{tikzpicture}
-\end{center}
+\caption{Pole motion under Wick rotation.  The Euclidean poles rotate to the
+Lorentzian Feynman positions
+\(-\omega_{\vec k}+\ii0\) and \(+\omega_{\vec k}-\ii0\).}
+\label{fig:feynman-prescription-from-wick-rotation}
+\end{figure}
 
 The limiting Lorentzian distribution is therefore
 \[

@@ -289,7 +289,8 @@ After the remaining spatial Fourier transform this is exactly
   \theta(-x^0)\Delta_+(-x;\mu^2).
 \]
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.95]
   \draw[->,line width=0.7pt] (-3.7,0) -- (3.9,0)
     node[right] {$\operatorname{Re} k^0$};
@@ -311,7 +312,11 @@ After the remaining spatial Fourier transform this is exactly
     (-2.50,-1.75) arc[start angle=-145,end angle=-180,radius=3.05];
   \node[green!45!black] at (-2.35,-2.05) {$x^0>0$};
 \end{tikzpicture}
-\end{center}
+\caption{Contour closures for the Feynman two-point kernel.  Closing below for
+\(x^0>0\) and above for \(x^0<0\) produces the time-ordered combination of
+positive-frequency two-point functions.}
+\label{fig:kallen-lehmann-feynman-contour-closures}
+\end{figure}
 
 Equivalently,
 \[
@@ -537,7 +542,8 @@ write
   N(\vec 0)=1.
 \]
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.92]
   \draw[->,line width=0.7pt] (-3.0,0) -- (3.2,0) node[right] {$p^1$};
   \draw[->,line width=0.7pt] (0,0) -- (0,3.35) node[above] {$p^0$};
@@ -550,7 +556,11 @@ write
     node[midway,above] {$L(\vec k)$};
   \node[blue!65!black] at (-1.95,2.65) {$p^2=-m^2,\ p^0>0$};
 \end{tikzpicture}
-\end{center}
+\caption{Standard boost from the rest momentum to a point on the positive mass
+shell.  The choice of \(L(\vec k)\) fixes the Wigner-rotation convention used
+for one-particle states.}
+\label{fig:standard-boost-positive-mass-shell}
+\end{figure}
 
 For a Lorentz transformation \(\Lambda\), define the Wigner rotation
 \[
@@ -707,7 +717,8 @@ section, the same statement is the calculation
 Comparison with the invariant-mass decomposition then gives
 \(d\rho_1(\mu^2)=Z\delta_{m^2}(d\mu^2)\).
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.95]
   \node (v) at (0,0) {$\widehat\phi(f)\vac$};
   \node[draw,rounded corners=2pt,inner sep=4pt,blue!70!black] (vac) at (3.0,1.25)
@@ -723,7 +734,11 @@ Comparison with the invariant-mass decomposition then gives
   \node[green!45!black] at (6.6,0) {one-particle atom};
   \node[orange!80!black] at (6.6,-1.25) {continuum spectral part};
 \end{tikzpicture}
-\end{center}
+\caption{Spectral projections of the vector
+\(\widehat\phi(f)\vac\).  The vacuum atom, isolated one-particle atom, and
+continuum part are distinct contributions to the two-point spectral measure.}
+\label{fig:field-state-spectral-projections}
+\end{figure}
 
 After subtracting the vacuum expectation value of \(\widehat\phi\), the vacuum
 projection in the first line is absent. The one-particle atom remains precisely
@@ -755,7 +770,8 @@ When \(d\rho_{\mathrm c}\) has a density \(\sigma(\mu^2)\) in that region,
   \dd\mu^2\,\sigma(\mu^2)\Delta_F(x;\mu^2).
 \]
 
-\begin{center}
+\begin{figure}[H]
+\centering
 \begin{tikzpicture}[>=Stealth,scale=0.95]
   \draw[->,line width=0.7pt] (0,0) -- (6.4,0) node[right] {$s=\mu^2$};
   \draw[->,line width=0.7pt] (0,0) -- (0,3.05) node[above] {$\dd\rho(s)$};
@@ -769,7 +785,11 @@ When \(d\rho_{\mathrm c}\) has a density \(\sigma(\mu^2)\) in that region,
   \node[blue!65!black,align=center] at (4.85,2.25)
     {continuum support\\under the stated threshold assumption};
 \end{tikzpicture}
-\end{center}
+\caption{One-particle pole and continuum part of the K\"all\'en--Lehmann
+measure.  Under the stated threshold assumption the atom at \(m^2\) is
+separated from continuum support beginning at \(4m^2\).}
+\label{fig:kallen-lehmann-pole-and-continuum}
+\end{figure}
 
 The number \(Z\) is attached to the chosen local field. Rescaling the field
 rescales \(Z\). Once the field normalization is fixed, \(Z\) is a definite
