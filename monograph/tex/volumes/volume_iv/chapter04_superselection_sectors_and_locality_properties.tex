@@ -161,6 +161,14 @@ The minimal value of \(\|R\|\,\|\bar R\|\) defines the statistical dimension
 \[
   d(\rho).
 \]
+In the Doplicher--Haag--Roberts setting, saying that a sector has finite
+statistics is shorthand for a categorical finiteness package, not only for a
+choice of exchange sign.  In the form used below it means that the sector lies
+in a \(C^*\)-tensor category with finite-dimensional intertwiner spaces, admits
+a conjugate satisfying the conjugate equations, and has finite statistical
+dimension \(d(\rho)<\infty\).  For reducible sectors, the statement is applied
+after decomposing into irreducible subobjects and requiring only finitely many
+irreducible summands in each object under consideration.
 For sectors reconstructed from a compact internal group, \(d(\rho)\) is the
 ordinary dimension of the corresponding irreducible group representation.
 Thus charge conjugation, fusion multiplicities, and statistics are encoded in
@@ -209,11 +217,25 @@ algebra is the fixed-point algebra
 
 \begin{theorem}[Doplicher--Roberts reconstruction]
 \label{thm:doplicher-roberts-reconstruction}
-Let \(D\ge3\), and let the vacuum observable net satisfy Haag duality.  Let
-\(\mathcal C\) be the DHR category of transportable localized endomorphisms of
-\(\Obs_{\rm qloc}\).  Assume that \(\mathcal C\) is a symmetric \(C^*\)-tensor
-category with simple tensor unit, finite-dimensional intertwiner spaces, finite
-direct sums, subobjects, conjugates, and finite statistics for every object.
+Let \(D\ge3\).  Let the vacuum representation of the observable net be
+irreducible and satisfy Haag duality for double cones.  Let \(\mathcal C\) be
+the category of DHR sectors represented by transportable localized
+endomorphisms of \(\Obs_{\rm qloc}\).  Equivalently, their associated
+representations satisfy the localization criterion
+\eqref{eq:dhr-localization} in some bounded double cone and are transportable
+to every other such double cone; in the endomorphism realization they act
+trivially on the algebra of the spacelike complement.  Assume that
+\(\mathcal C\) has the following structure:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item it is a symmetric \(C^*\)-tensor category with simple tensor unit;
+\item each intertwiner space \(\operatorname{Hom}(\rho,\sigma)\) is
+finite-dimensional;
+\item the category is closed under finite direct sums and subobjects;
+\item every irreducible object has a conjugate object satisfying the conjugate
+equations and has finite statistical dimension \(d(\rho)<\infty\);
+\item every object of \(\mathcal C\) is a finite direct sum of irreducible
+subobjects of the preceding kind.
+\end{enumerate}
 Then there is a compact group
 \[
   G=\operatorname{Aut}^{\otimes,*}(\omega_{\rm fib})
