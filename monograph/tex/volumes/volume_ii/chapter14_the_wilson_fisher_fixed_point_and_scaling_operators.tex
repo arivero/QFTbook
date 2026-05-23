@@ -679,15 +679,26 @@ coincident-point limit is taken.
 \section{Descendants and Irrelevant Directions}
 
 The cubic operator is not independent at the interacting fixed point.  In the
-renormalized operator algebra, the equation of motion gives the descendant
-relation
+renormalized operator algebra, the equation of motion gives a descendant
+relation with a coupling-dependent normalization.  If the renormalized
+dimensionful quartic coupling is written as
 \[
-  O_3(x)=\phi^3(x)=\kappa_*(\mu)\,\Box\phi(x),
+  g_R(\mu)=\mu^\epsilon\lambda(\mu),
 \]
-where \(\kappa_*(\mu)\) is a nonzero normalization depending on the convention
-for the renormalized quartic interaction and on the normalization of
-\([O_3]_\mu\).  The statement invariant under such choices is that \(O_3\) is
-an equation-of-motion descendant of \(O_1=\phi\).  Its dimension is
+then, away from contact terms and up to the overall sign convention for
+\(\Box\), the renormalized equation of motion gives
+\[
+  \Box\phi(x)=\frac{g_R(\mu)}{3!}\,[\phi^3(x)]_\mu .
+\]
+At the fixed point this is equivalently
+\[
+  [\phi^3(x)]_\mu
+  =
+  \frac{3!}{\mu^\epsilon\lambda_*}\,\Box\phi(x),
+\]
+again modulo contact terms and finite normalizations of the chosen composite
+operator.  The statement invariant under such choices is that \(O_3\) is an
+equation-of-motion descendant of \(O_1=\phi\).  Its dimension is
 \[
   \Delta_{\phi^3}
   =
