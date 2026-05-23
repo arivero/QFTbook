@@ -797,7 +797,61 @@ coordinate \(\eta_\Lambda\) is
         \delta\eta_\Lambda^{A_r}(x_r)}
   \bigg|_{\eta_\Lambda=0}.
 \]
-The chain rule gives the finite-regulator partition formula
+Set
+\[
+  H[\eta_\Lambda]=
+  W_{\Lambda_0}[J,\mathcal Z_\Lambda(\eta_\Lambda)] .
+\]
+The functional Fa\`a di Bruno formula for this composite map gives, before
+rewriting functional derivatives as insertion distributions,
+\[
+  \left.
+  \frac{\delta^r H}
+       {\delta\eta_\Lambda^{A_1}(x_1)\cdots
+        \delta\eta_\Lambda^{A_r}(x_r)}
+  \right|_{\eta_\Lambda=0}
+  =
+  \sum_{\pi\in\mathrm{Part}(r)}
+  \int\prod_{B\in\pi}\dd^D z_B\,
+  \left.
+  \frac{\delta^{|\pi|}W_{\Lambda_0}[J,\eta_0]}
+       {\prod_{B\in\pi}\delta\eta_0^{I_B}(z_B)}
+  \right|_{\eta_0=0}
+  \prod_{B\in\pi}
+  \mathcal Z^{I_B}{}_{A_B}
+    (z_B;x_B).
+\]
+The partition records which of the \(r\) renormalized source derivatives hit
+the same Taylor coefficient of the nonlinear source map
+\(\mathcal Z_\Lambda\).  Rewriting this identity in terms of insertion
+distributions supplies the signs:
+\[
+  \begin{aligned}
+  G^\Lambda_{A_1\cdots A_r}(x_1,\ldots,x_r;J)
+  &=
+  (-1)^r
+  \left.
+  \frac{\delta^r H}
+       {\delta\eta_\Lambda^{A_1}(x_1)\cdots
+        \delta\eta_\Lambda^{A_r}(x_r)}
+  \right|_{\eta_\Lambda=0}.
+  \end{aligned}
+\]
+For the bare derivative attached to a partition \(\pi\),
+\[
+  \begin{aligned}
+  \left.
+  \frac{\delta^{|\pi|}W_{\Lambda_0}[J,\eta_0]}
+       {\prod_{B\in\pi}\delta\eta_0^{I_B}(z_B)}
+  \right|_{\eta_0=0}
+  &=
+  (-1)^{|\pi|}
+  G^0_{I_B\,:\,B\in\pi}(z_B\,:\,B\in\pi;J).
+  \end{aligned}
+\]
+Thus a term indexed by \(\pi\) carries the factor
+\((-1)^r(-1)^{|\pi|}=(-1)^{r-|\pi|}\).  The finite-regulator partition formula
+is therefore
 \begin{equation}
   \begin{aligned}
   G^\Lambda_{A_1\cdots A_r}(x_1,\ldots,x_r;J)
@@ -822,14 +876,6 @@ Here \(\mathrm{Part}(r)\) is the set of partitions of
   \mathcal Z^{I_B}{}_{A_{b_1}\cdots A_{b_s}}
     (z_B;x_{b_1},\ldots,x_{b_s}).
 \]
-The sign in \eqref{eq:multi-insertion-source-partition-formula} follows after
-two pieces are combined: each operator insertion is represented by
-\(-\delta/\delta\eta\), and the connected functional derivatives obey the
-Fa\`a di Bruno partition rule for the composite source map
-\(\eta\mapsto\eta^0(\eta)\).  For a partition with \(|\pi|\) blocks, the
-connected functional contributes one source derivative for each block, whereas
-the left-hand side has \(r\) insertion derivatives; the relative sign is
-therefore \((-1)^{r-|\pi|}\).
 
 For two insertions the formula reads
 \begin{equation}
