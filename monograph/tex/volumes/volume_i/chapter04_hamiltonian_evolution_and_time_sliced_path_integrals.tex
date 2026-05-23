@@ -622,6 +622,31 @@ Assume that \(\widehat H\) is semibounded and that
   \operatorname{Tr}_{\Hilb_{\mathcal Q}}
   \ee^{-\beta_{\mathrm T}\widehat H/\hbar}.
 \]
+This trace-class hypothesis is a finite-volume or confining
+quantum-mechanical hypothesis.  It is the correct assumption for a harmonic
+oscillator, for stable anharmonic oscillators with discrete spectrum growing
+fast enough, and for field theories after both an ultraviolet regulator and a
+finite spatial-volume regulator have been imposed.  It is not the Hilbert-space
+structure of an infinite-volume translation-invariant QFT.  In infinite
+spatial volume, translating a finite-energy local excitation through disjoint
+spatial regions produces the usual volume divergence; correspondingly
+\(\operatorname{Tr}\ee^{-\beta H}\) is infinite even when local thermal
+correlators exist.
+
+Thermal QFT is therefore formulated by one of two equivalent local procedures.
+One may put the theory in a finite spatial box \(\Lambda\), form
+\[
+  \rho_{\beta,\Lambda}
+  =
+  Z_{\beta,\Lambda}^{-1}\ee^{-\beta H_\Lambda},
+  \qquad
+  Z_{\beta,\Lambda}=\operatorname{Tr}_{\Hilb_\Lambda}\ee^{-\beta H_\Lambda},
+\]
+and then take thermodynamic limits of local observables.  Or one may define
+the infinite-volume thermal state directly as a KMS state on the quasilocal
+observable algebra.  Formal traces per unit volume, or traces with the
+translation volume divided out, compute densities rather than the literal trace
+over the full infinite-volume Hilbert space.
 Inserting the position resolution of the identity gives
 \[
   Z(\beta_{\mathrm T})
