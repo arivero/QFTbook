@@ -114,7 +114,27 @@ representation from \((\Obs,\omega)\).  Let
 \[
   \mathcal N_\omega=\{A\in\Obs\mid \omega(A^*A)=0\}.
 \]
-The quotient \(\Obs/\mathcal N_\omega\) has inner product
+The positivity of \(\omega\) gives the Cauchy--Schwarz inequality
+\[
+  |\omega(C^*D)|^2\le \omega(C^*C)\,\omega(D^*D),
+  \qquad C,D\in\Obs.
+\]
+Hence \(C\in\mathcal N_\omega\) implies
+\(\omega(C^*D)=\omega(D^*C)=0\) for all \(D\in\Obs\), so that
+\(\mathcal N_\omega\) is a linear subspace.  It is also a left ideal.  Indeed,
+if \(C\in\mathcal N_\omega\) and \(A\in\Obs\), then the \(C^*\)-algebra order
+inequality \(0\le A^*A\le \|A\|^2 1\) gives
+\[
+  0\le \omega((AC)^*(AC))
+  =
+  \omega(C^*A^*AC)
+  \le
+  \|A\|^2\omega(C^*C)
+  =
+  0 .
+\]
+Thus \(AC\in\mathcal N_\omega\).  The quotient
+\(\Obs/\mathcal N_\omega\) therefore has the well-defined inner product
 \[
   \langle [A],[B]\rangle_\omega=\omega(A^*B).
 \]
@@ -122,7 +142,16 @@ Its completion is \(\Hilb_\omega\).  The representation is
 \[
   \pi_\omega(A)[B]=[AB],
 \]
-and the cyclic vector is
+which is well-defined because \(\mathcal N_\omega\) is a left ideal.  Moreover
+\[
+  \|\pi_\omega(A)[B]\|_\omega^2
+  =
+  \omega(B^*A^*AB)
+  \le
+  \|A\|^2\omega(B^*B),
+\]
+so \(\pi_\omega(A)\) extends to a bounded operator on \(\Hilb_\omega\).
+The cyclic vector is
 \[
   \Omega_\omega=[1].
 \]
