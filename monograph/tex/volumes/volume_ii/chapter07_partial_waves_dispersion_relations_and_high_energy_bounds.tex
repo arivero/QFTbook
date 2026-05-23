@@ -7,7 +7,7 @@ Work in \(D=4\) and consider scattering of the lightest stable identical
 scalar particle of mass \(m\).  The connected invariant amplitude is denoted
 by
 \[
-  \mathcal A(s,t).
+  \mathcal M(s,t).
 \]
 The Mandelstam variables are the mostly-plus physical scattering variables
 \[
@@ -21,7 +21,7 @@ where \(k_1,k_2\) are incoming and \(k_3,k_4\) are outgoing.  Hence
 \[
   s+t+u=4m^2 .
 \]
-The normalization of \(\mathcal A\) is the identical-particle normalization
+The normalization of \(\mathcal M\) is the identical-particle normalization
 fixed in Chapter~\ref{ch:cross-sections-unitarity}.  Thus the forward
 optical theorem below will contain no additional convention-dependent factor.
 
@@ -125,7 +125,7 @@ with the convention that \(M_B^2\) is omitted when no such pole exists.
 \end{center}
 
 The angular analyticity hypothesis used below is this precise statement: for
-each such \(s\), the boundary value \(\mathcal A(s+\ii0,x)\), continued in
+each such \(s\), the boundary value \(\mathcal M(s+\ii0,x)\), continued in
 the angular variable \(x\), is analytic in a domain containing the physical
 interval \([-1,1]\).  For every ellipse with foci at \(\pm1\) whose closure
 lies in this domain, the amplitude is bounded on the ellipse.  The largest
@@ -157,10 +157,10 @@ the limiting ellipse in the same way, but estimates are made at
 Let \(\gamma_s\) be a counterclockwise contour inside the angular analytic
 domain and enclosing \([-1,1]\).  For \(x\) inside \(\gamma_s\),
 \[
-  \mathcal A(s,x)
+  \mathcal M(s,x)
   =
   \oint_{\gamma_s}\frac{\dd z}{2\pi\ii}\,
-  \frac{\mathcal A(s,z)}{z-x}.
+  \frac{\mathcal M(s,z)}{z-x}.
 \]
 Choose the branch of
 \[
@@ -221,7 +221,7 @@ where the omitted prefactors are powers of \(\ell\) and algebraic functions
 of \(x\) or \(z\) that do not change the exponential rate.  Thus angular analyticity
 implies convergence of the partial-wave expansion throughout every smaller
 ellipse inside the Lehmann ellipse.  More quantitatively, if
-\(\mathcal A(s,z)\) is bounded by \(B_s(R)\) on \(|\zeta(z)|=R\), and if
+\(\mathcal M(s,z)\) is bounded by \(B_s(R)\) on \(|\zeta(z)|=R\), and if
 \(|\zeta(x)|\le r<R\), then the Legendre expansion inside the contour is
 bounded term by term by
 \[
@@ -248,7 +248,7 @@ The physical amplitude on the two-particle space of identical scalar bosons
 is Bose symmetric.  With the convention fixed in
 Chapter~\ref{ch:cross-sections-unitarity}, it is
 \[
-  \mathcal A(s,x)
+  \mathcal M(s,x)
   =
   \mathcal M_{\rm ord}(s,x)+\mathcal M_{\rm ord}(s,-x)
   =
@@ -268,7 +268,7 @@ Using
 \]
 this becomes the convention
 \[
-  \mathcal A(s,x)
+  \mathcal M(s,x)
   =
   -16\pi\ii\,\rho(s)^{-1}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
@@ -285,7 +285,7 @@ unitary matrix on the channel space, hence
 For real \(x\) inside the Lehmann ellipse, the partial-wave series for the
 physical upper-edge boundary value gives
 \[
-  \operatorname{Im}\mathcal A(s,x)
+  \operatorname{Im}\mathcal M(s,x)
   =
   16\pi\,\rho(s)^{-1}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
@@ -345,7 +345,7 @@ Equivalently,
   \sigma_{\rm tot}
   =
   \frac{1}{\sqrt{s(s-4m^2)}}\,
-  \operatorname{Im}\mathcal A(s,1).
+  \operatorname{Im}\mathcal M(s,1).
 \]
 This is the optical theorem in the present normalization, since
 \(\rho(s)=\sqrt{s-4m^2}/\sqrt s\).
@@ -444,7 +444,7 @@ The actual weighted sum is bounded below by the same sum evaluated on the
 minimizing box profile.  Therefore, for \(x>1\) inside the angular analytic
 domain,
 \[
-  \operatorname{Im}\mathcal A(s,x)
+  \operatorname{Im}\mathcal M(s,x)
   \ge
   C\,\rho(s)^{-1}
   \sum_{\substack{0\le\ell\le L\\ \ell\ {\rm even}}}
@@ -490,7 +490,7 @@ Therefore the exponential factor obeys
 \]
 Suppose the amplitude is polynomially bounded at this nonphysical point:
 \[
-  |\mathcal A(s,x_*(s))|\le C_Ns^N
+  |\mathcal M(s,x_*(s))|\le C_Ns^N
   \qquad(s\to\infty),
 \]
 for some fixed integer \(N\).  The lower bound contains the prefactor
@@ -537,7 +537,7 @@ terms are absent; when such terms are present, their residues are added
 explicitly.  Assume that for some integer \(N\),
 \[
   \lim_{|s|\to\infty}
-  \left|\frac{\mathcal A(s,t)}{s^N}\right|=0
+  \left|\frac{\mathcal M(s,t)}{s^N}\right|=0
 \]
 in the domain used to deform the contour.  Choose subtraction points
 \[
@@ -545,16 +545,16 @@ in the domain used to deform the contour.  Choose subtraction points
 \]
 away from the cuts and from the evaluation point \(s\).  Then
 \[
-  \frac{\mathcal A(s',t)}{\prod_{j=1}^N(s'-s_j)}
+  \frac{\mathcal M(s',t)}{\prod_{j=1}^N(s'-s_j)}
 \]
 has sufficient decay for the large circle to be removed in Cauchy's theorem.
 Equivalently,
 \[
-  \mathcal A(s,t)
+  \mathcal M(s,t)
   =
   \oint_{\gamma}
   \frac{\dd s'}{2\pi\ii}\,
-  \frac{\mathcal A(s',t)}{s'-s}
+  \frac{\mathcal M(s',t)}{s'-s}
   \prod_{j=1}^N\frac{s-s_j}{s'-s_j},
 \]
 where \(\gamma\) encloses \(s\) and the subtraction points before deformation.
@@ -594,20 +594,20 @@ where \(\gamma\) encloses \(s\) and the subtraction points before deformation.
 
 Let
 \[
-  \operatorname{disc}\mathcal A(s,t)
+  \operatorname{disc}\mathcal M(s,t)
   =
-  \mathcal A(s+\ii0,t)-\mathcal A(s-\ii0,t).
+  \mathcal M(s+\ii0,t)-\mathcal M(s-\ii0,t).
 \]
 After deforming \(\gamma\) onto the right and left cuts, one obtains
 \[
-  \mathcal A(s,t)
+  \mathcal M(s,t)
   =
   P_{N-1}(s;t)
   +
   \frac{1}{2\pi\ii}
   \int_{C_s\cup C_u}
   \dd s'\,
-  \operatorname{disc}\mathcal A(s',t)\,
+  \operatorname{disc}\mathcal M(s',t)\,
   \frac{1}{s'-s}
   \prod_{j=1}^N\frac{s-s_j}{s'-s_j}.
 \]
@@ -616,9 +616,9 @@ crossed cut in the \(s'\)-plane, and \(P_{N-1}(s;t)\) is the polynomial of
 degree at most \(N-1\) produced by the small circles around the subtraction
 points.  On a real cut where real analyticity holds,
 \[
-  \operatorname{disc}\mathcal A(s,t)
+  \operatorname{disc}\mathcal M(s,t)
   =
-  2\ii\,\operatorname{Im}\mathcal A(s+\ii0,t).
+  2\ii\,\operatorname{Im}\mathcal M(s+\ii0,t).
 \]
 The formula is an \(N\)-subtracted fixed-\(t\) dispersion relation.
 
@@ -633,26 +633,26 @@ discontinuity with the absorptive part in the \(u\)-channel, the same
 dispersion relation may be written as
 \[
 \begin{aligned}
-  \mathcal A(s,t)
+  \mathcal M(s,t)
   &=
   P_{N-1}(s;t)
   +
   \int_{4m^2}^{\infty}
   \frac{\dd s'}{\pi}\,
-  \frac{\operatorname{Im}\mathcal A(s'+\ii0,t)}{s'-s}
+  \frac{\operatorname{Im}\mathcal M(s'+\ii0,t)}{s'-s}
   \prod_{j=1}^N\frac{s-s_j}{s'-s_j}
 \\
   &\quad
   +
   \int_{4m^2}^{\infty}
   \frac{\dd u'}{\pi}\,
-  \frac{\operatorname{Im}\mathcal A_u(u'+\ii0,t)}{u'-u}
+  \frac{\operatorname{Im}\mathcal M_u(u'+\ii0,t)}{u'-u}
   \prod_{j=1}^N\frac{u-u_j}{u'-u_j}.
 \end{aligned}
 \]
-Here \(\mathcal A_u\) denotes the amplitude in the crossed channel, with
+Here \(\mathcal M_u\) denotes the amplitude in the crossed channel, with
 external labels crossed as appropriate.  For identical scalar scattering
-\(\mathcal A_u\) is the same analytic function with \(s\) replaced by \(u\);
+\(\mathcal M_u\) is the same analytic function with \(s\) replaced by \(u\);
 for general external species this displayed formula must be read with the
 corresponding crossed process.
 
@@ -664,7 +664,7 @@ number of subtractions.  The form needed here is the following conditional
 statement.  Fix \(t<0\), assume a fixed-\(t\) dispersion representation with
 some finite number of subtractions exists, and suppose
 \[
-  |\operatorname{Im}\mathcal A(s,t)|\le C s^{N-\epsilon}
+  |\operatorname{Im}\mathcal M(s,t)|\le C s^{N-\epsilon}
   \qquad(s\to+\infty)
 \]
 for some \(\epsilon>0\), uniformly for \(t\) in a small real interval, with
@@ -689,7 +689,7 @@ write
 Unitarity gives a positive estimate for the forward absorptive part:
 \[
 \begin{aligned}
-  \operatorname{Im}\mathcal A(s,0)
+  \operatorname{Im}\mathcal M(s,0)
   &=
   \sqrt{s(s-4m^2)}\,\sigma_{\rm tot}(s)
 \\
@@ -704,12 +704,12 @@ Unitarity gives a positive estimate for the forward absorptive part:
   &=
   \frac{1}{64\pi}\sqrt{\frac{s-4m^2}{s}}
   \int_{-1}^{1}\dd x\,
-  |\mathcal A(s,2k^2(x-1))|^2
+  |\mathcal M(s,2k^2(x-1))|^2
 \\
   &=
   \frac{1}{32\pi\sqrt{s(s-4m^2)}}
   \int_{-(s-4m^2)}^0
-  \dd t\,|\mathcal A(s,t)|^2 .
+  \dd t\,|\mathcal M(s,t)|^2 .
 \end{aligned}
 \]
 The last equality is the change of variables from \(x\) to \(t\).  If the
@@ -717,12 +717,12 @@ nonzero polynomial coefficient \(C_{N'-1}(t)\) is bounded below on a fixed
 real \(t\)-interval inside \((-\infty,0)\), this estimate gives, along a
 high-energy sequence,
 \[
-  \operatorname{Im}\mathcal A(s,0)
+  \operatorname{Im}\mathcal M(s,0)
   \ge c\,s^{2N'-3}
 \]
 for some \(c>0\).  This fixed-\(t\) version is the only estimate needed here:
 since \(N'\ge N+1\), it contradicts the assumed bound
-\(|\operatorname{Im}\mathcal A(s,0)|\le C s^{N-\epsilon}\) at the forward
+\(|\operatorname{Im}\mathcal M(s,0)|\le C s^{N-\epsilon}\) at the forward
 point.  A stronger estimate is obtained if the leading behavior persists on a
 subinterval of scattering angles of nonzero length, because the corresponding
 \(t\)-interval has length of order \(s\); the fixed-\(t\) estimate avoids
@@ -733,7 +733,7 @@ vanish identically and hence were not genuine subtractions.
 The preceding Froissart mechanism, applied with any finite initial polynomial
 bound, gives at forward scattering
 \[
-  \operatorname{Im}\mathcal A(s,0)
+  \operatorname{Im}\mathcal M(s,0)
   \le
   C\,s(\log s)^2 .
 \]
@@ -741,13 +741,13 @@ For fixed real \(t<0\) and sufficiently large \(s\), the corresponding angular
 variable satisfies \(-1<x<1\).  In this range \(|P_\ell(x)|\le1\), while
 \(P_\ell(1)=1\).  Using the positive weights \(w_\ell\),
 \[
-  |\operatorname{Im}\mathcal A(s,t)|
+  |\operatorname{Im}\mathcal M(s,t)|
   \le
-  \operatorname{Im}\mathcal A(s,0)
+  \operatorname{Im}\mathcal M(s,0)
 \]
 for the absorptive partial-wave sum.  Thus, for every \(0<\epsilon<1\),
 \[
-  |\operatorname{Im}\mathcal A(s,t)|\le C_\epsilon s^{2-\epsilon}
+  |\operatorname{Im}\mathcal M(s,t)|\le C_\epsilon s^{2-\epsilon}
   \qquad (s\to+\infty)
 \]
 at fixed real \(t<0\).  Applying the preceding conditional subtraction-count
@@ -755,7 +755,7 @@ argument with \(N=2\) rules out genuine subtraction terms of degree two or
 higher.  Under the finite-subtraction hypothesis stated at the beginning of
 this section, two subtractions are therefore sufficient in the massive scalar
 setting, and the twice-subtracted representation has
-\(\mathcal A(s,t)/s^2\to0\) at fixed real \(t<0\) in the dispersion domain.
+\(\mathcal M(s,t)/s^2\to0\) at fixed real \(t<0\) in the dispersion domain.
 
 The extension from real \(t<0\) to complex \(t\) inside the disk set by the
 nearest \(t\)-plane singularity uses positivity of the Taylor coefficients of
@@ -763,7 +763,7 @@ the absorptive part at \(t=0\):
 \[
   \left.
   \frac{\partial^n}{\partial t^n}
-  \operatorname{Im}\mathcal A(s,t)
+  \operatorname{Im}\mathcal M(s,t)
   \right|_{t=0}
   \ge0 .
 \]
