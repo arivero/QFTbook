@@ -25,17 +25,17 @@ spacelike when
 A test function is a smooth compactly supported complex-valued function on
 \(\mathbb M^D\), an element of \(C_c^\infty(\mathbb M^D)\), unless another
 test-function space is explicitly declared. A pointlike quantum field
-\(\widehat\Phi_A(x)\) is an operator-valued distribution: its primary
+\(\Phi_A(x)\) is an operator-valued distribution: its primary
 operator expression is the smeared field
 \[
-  \widehat\Phi_A(f)
+  \Phi_A(f)
   =
-  \int_{\mathbb M^D}\dd^Dx\,f(x)\widehat\Phi_A(x),
+  \int_{\mathbb M^D}\dd^Dx\,f(x)\Phi_A(x),
   \qquad
   f\in C_c^\infty(\mathbb M^D).
 \]
 The integral sign is distributional notation for evaluating the field on the
-test function \(f\).  When \(\widehat\Phi_A(f)\) is unbounded, its common dense
+test function \(f\).  When \(\Phi_A(f)\) is unbounded, its common dense
 domain is part of the field framework being used.  The symbol
 \(\mathcal B(\Hilb)\) denotes the algebra of bounded linear operators on a
 Hilbert space \(\Hilb\), and \(\mathcal U(\Hilb)\) denotes its unitary group.
@@ -278,13 +278,13 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
 The covariance convention has the following infinitesimal form.  With
 \(U(a,1)=\exp(\ii a^\mu P_\mu)\), a coordinate-labelled scalar field obeys
 \[
-  U(a,1)^{-1}\widehat\Phi(x)U(a,1)
+  U(a,1)^{-1}\Phi(x)U(a,1)
   =
-  \widehat\Phi(x+a),
+  \Phi(x+a),
   \qquad
-  [P_\mu,\widehat\Phi(x)]
+  [P_\mu,\Phi(x)]
   =
-  \ii\,\partial_\mu\widehat\Phi(x)
+  \ii\,\partial_\mu\Phi(x)
 \]
 as an identity of distributions on a common invariant domain.  Equivalently,
 conjugation by \(U(a,1)\) shifts the coordinate label by \(-a\).  The local-net
@@ -317,10 +317,10 @@ carries hypotheses.
 \begin{definition}[Wightman field presentation]
   A Wightman field presentation consists of Hilbert-space data
   \[
-    (\Hilb,\vac,U,\mathcal D,\{\Phi_a\}_{a\in A})
+    (\Hilb,\vac,U,\mathcal D,\{\Phi_A\}_{A\in I})
   \]
-  where \(A\) is an index set for fields, \(\mathcal D\subset\Hilb\) is a
-  dense common invariant domain containing \(\vac\), and each \(\Phi_a\) is an
+  where \(I\) is an index set for fields, \(\mathcal D\subset\Hilb\) is a
+  dense common invariant domain containing \(\vac\), and each \(\Phi_A\) is an
   operator-valued distribution on a declared invariant test-function space
   \(\mathcal T\), with common domain \(\mathcal D\).  In the standard
   Wightman case \(\mathcal T=\mathcal S(\mathbb M^D)\), so the vacuum
@@ -328,14 +328,14 @@ carries hypotheses.
   \[
     \vac\in\mathcal D,\qquad
     U(g)\mathcal D\subset\mathcal D\quad(g\in\mathcal P),\qquad
-    \Phi_a(f)\mathcal D\subset\mathcal D\quad(a\in A,\ f\in\mathcal T),
+    \Phi_A(f)\mathcal D\subset\mathcal D\quad(A\in I,\ f\in\mathcal T),
   \]
   and, for every \(n\ge1\),
   \[
-    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\mathcal D
+    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\mathcal D
     \subset
     \mathcal D,
-    \qquad a_i\in A,\quad f_i\in\mathcal T.
+    \qquad A_i\in I,\quad f_i\in\mathcal T.
   \]
   Matrix elements of finite products are required to be continuous multilinear
   functionals of the test functions:
@@ -343,7 +343,7 @@ carries hypotheses.
     (f_1,\ldots,f_n)
     \longmapsto
     \left\langle\psi,
-    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\chi
+    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\chi
     \right\rangle
     \in\mathbb C,
     \qquad \psi,\chi\in\mathcal D .
@@ -353,14 +353,14 @@ carries hypotheses.
   \(f_g(y)=f(g^{-1}y)\).  If the fields carry a finite-dimensional Lorentz
   representation \(R\) of \(G_{\rm Lor}\), covariance is the smeared identity
   \[
-    U(g)^{-1}\Phi_a(f)U(g)
+    U(g)^{-1}\Phi_A(f)U(g)
     =
-    R(\Lambda)_a{}^b\,\Phi_b(f_g),
+    R(\Lambda)_A{}^B\,\Phi_B(f_g),
   \]
   with summation over repeated component labels.  In point-field notation this
   is
   \[
-    U(g)^{-1}\Phi_a(x)U(g)=R(\Lambda)_a{}^b\Phi_b(gx).
+    U(g)^{-1}\Phi_A(x)U(g)=R(\Lambda)_A{}^B\Phi_B(gx).
   \]
   The representation \(U\) satisfies the spectrum condition of
   Definition~\ref{def:vacuum-minkowski-local-qft}: if \(E_P\) is the joint
@@ -371,7 +371,7 @@ carries hypotheses.
 
   Locality is imposed after smearing:
   \[
-    [\Phi_a(f),\Phi_b(h)]_{\rm gr}=0
+    [\Phi_A(f),\Phi_B(h)]_{\rm gr}=0
   \]
   whenever \(\operatorname{supp}f\) and \(\operatorname{supp}h\) are spacelike
   separated, with the ordinary commutator in the purely bosonic case.
@@ -379,39 +379,39 @@ carries hypotheses.
   Its primary correlation data are the vacuum distributions whose distribution
   kernels are written
   \[
-    W_{a_1\cdots a_n}(x_1,\ldots,x_n)
+    W_{A_1\cdots A_n}(x_1,\ldots,x_n)
     =
     \bra{\vac}
-    \Phi_{a_1}(x_1)\cdots\Phi_{a_n}(x_n)
+    \Phi_{A_1}(x_1)\cdots\Phi_{A_n}(x_n)
     \ket{\vac}.
   \]
   Equivalently,
   \[
-    W_{a_1\cdots a_n}(f_1,\ldots,f_n)
+    W_{A_1\cdots A_n}(f_1,\ldots,f_n)
     =
     \left\langle\vac,
-    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\vac
+    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\vac
     \right\rangle .
   \]
   Translation invariance gives a distribution in difference variables.  With
   \[
     \xi_j=x_{j+1}-x_j,\qquad
-    \mathcal W_{a_1\cdots a_n}(\xi_1,\ldots,\xi_{n-1})
+    \mathcal W_{A_1\cdots A_n}(\xi_1,\ldots,\xi_{n-1})
     =
-    W_{a_1\cdots a_n}
+    W_{A_1\cdots A_n}
     (0,\xi_1,\xi_1+\xi_2,\ldots,\xi_1+\cdots+\xi_{n-1}),
   \]
   the Wightman spectral condition is the support equation
   \[
     \operatorname{supp}
-    \widehat{\mathcal W}_{a_1\cdots a_n}
+    \widehat{\mathcal W}_{A_1\cdots A_n}
     \subset
     \overline V_+^{\,n-1}.
   \]
   Positivity of the hierarchy means the following.  For every finite sequence
   of test tensors in the declared test-function space
   \[
-    F=\{F^{(n)}_{a_1\cdots a_n}\}_{0\leq n\leq N},
+    F=\{F^{(n)}_{A_1\cdots A_n}\}_{0\leq n\leq N},
     \qquad
     F^{(0)}\in\mathbb C,
   \]
@@ -422,9 +422,9 @@ carries hypotheses.
     F^{(0)}\vac
     +
     \sum_{n=1}^N
-    \sum_{a_1,\ldots,a_n}
-    \int F^{(n)}_{a_1\cdots a_n}(x_1,\ldots,x_n)
-    \Phi_{a_1}(x_1)\cdots\Phi_{a_n}(x_n)\vac\,
+    \sum_{A_1,\ldots,A_n}
+    \int F^{(n)}_{A_1\cdots A_n}(x_1,\ldots,x_n)
+    \Phi_{A_1}(x_1)\cdots\Phi_{A_n}(x_n)\vac\,
     \dd^Dx_1\cdots\dd^Dx_n .
   \]
   The condition is \(\langle\Psi_F,\Psi_F\rangle\geq0\), with the inner product
@@ -436,8 +436,8 @@ carries hypotheses.
   \[
     \overline{
     \operatorname{span}\{
-    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\vac
-    : n\ge0,\ f_i\in\mathcal T,\ a_i\in A
+    \Phi_{A_1}(f_1)\cdots\Phi_{A_n}(f_n)\vac
+    : n\ge0,\ f_i\in\mathcal T,\ A_i\in I
     \}
     }^{\,\|\cdot\|_{\Hilb}}
     =
@@ -582,7 +582,7 @@ The comparison from fields to a local net is obtained, when the needed
 operator-domain and affiliation statements hold, by assigning to a region
 \(\mathcal O\) the von Neumann algebra generated by bounded functions,
 resolvents, or other bounded functional-calculus representatives of smeared
-fields \(\Phi_a(f)\) with \(\operatorname{supp}f\subset\mathcal O\).  The
+fields \(\Phi_A(f)\) with \(\operatorname{supp}f\subset\mathcal O\).  The
 comparison from a local net to a Hilbert-space theory is the GNS construction
 applied to a state, followed by the representation of the local algebras on
 the GNS Hilbert space.  The comparison from Euclidean correlations to
@@ -600,7 +600,7 @@ Wightman boundary values.
       note/.style={align=center,font=\scriptsize}
     }
     \node[box] (w) at (-4.4,1.55)
-      {Wightman fields\\\(\Phi_a(f),\,W_n\)};
+      {Wightman fields\\\(\Phi_A(f),\,W_n\)};
     \node[box] (a) at (4.4,1.55)
       {local nets\\\(\mathcal O\mapsto\Obs(\mathcal O)\)};
     \node[box] (e) at (0,-2.15)
@@ -684,9 +684,9 @@ A field presentation assigns localized distributional operators to test
 functions. For a test function \(f\in C_c^\infty(\mathbb M^D)\) with
 \(\operatorname{supp}f\subset\mathcal O\),
 \[
-  \widehat\Phi_A(f)
+  \Phi_A(f)
   =
-  \int_{\mathbb M^D}\dd^Dx\,f(x)\widehat\Phi_A(x)
+  \int_{\mathbb M^D}\dd^Dx\,f(x)\Phi_A(x)
 \]
 is localized in \(\mathcal O\), in the sense that the smeared operator is
 affiliated with the local algebra \(\Obs(\mathcal O)\) or belongs to a common
@@ -701,8 +701,8 @@ functions:
   W_{A_1\cdots A_n}(x_1,\ldots,x_n)
   =
   \bra{\vac}
-  \widehat\Phi_{A_1}(x_1)\cdots
-  \widehat\Phi_{A_n}(x_n)
+  \Phi_{A_1}(x_1)\cdots
+  \Phi_{A_n}(x_n)
   \ket{\vac},
 \]
 again as distributions. Under suitable positivity, covariance, spectral, and
@@ -771,7 +771,7 @@ condition imply that the two-point function admits a positive spectral
 measure on invariant mass.  Let \(\dd\rho(\mu^2)\) denote this positive Borel
 measure on \([0,\infty)\).  The time-ordered two-point function has the form
 \[
-  \bra{\vac}T\{\widehat\phi(x)\widehat\phi(0)\}\ket{\vac}
+  \bra{\vac}T\{\phi(x)\phi(0)\}\ket{\vac}
   =
   \int_{[0,\infty)} \dd\rho(\mu^2)\,\Delta_F(x;\mu^2).
 \]
