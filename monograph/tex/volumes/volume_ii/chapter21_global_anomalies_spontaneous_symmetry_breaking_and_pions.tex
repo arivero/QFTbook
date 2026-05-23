@@ -785,15 +785,32 @@ up to integrations by parts and terms that first affect higher-point
 amplitudes.
 This coordinate choice is only a local chart on \(S^3\); the scattering
 amplitude obtained from it is coordinate independent.  In the axial-current
-normalization of \eqref{eq:goldstone-current-matrix-element}, the stereographic
-coordinate normalization used above has
+normalization above, \(T^a=\sigma^a/2\) and therefore
 \[
-  F_{\rm st}=f_\pi
+  \exp\left(\frac{2\ii}{f_\pi}\pi_{\rm ax}^aT^a\right)
+  =
+  1+\frac{\ii}{f_\pi}\pi_{\rm ax}^a\sigma^a+O(\pi_{\rm ax}^2).
 \]
-when the pion fields are normalized so that the kinetic term is
-\(\frac12\partial_\mu\pi^a\partial^\mu\pi^a+O(\pi^4)\).  A rescaling of the
-stereographic coordinates rescales \(F_{\rm st}\) and the pion fields together
-without changing the physical amplitude.
+The stereographic chart has
+\[
+  \frac{1-\vec\xi^{\,2}+2\ii\,\vec\xi\cdot\vec\sigma}
+       {1+\vec\xi^{\,2}}
+  =
+  1+2\ii\,\xi^a\sigma^a+O(\xi^2),
+  \qquad
+  \pi_{\rm st}^a=F_{\rm st}\xi^a .
+\]
+Identifying the one-pion field defined by the axial current with the
+canonical stereographic field,
+\(\pi_{\rm ax}^a=\pi_{\rm st}^a\), gives the conversion
+\begin{equation}
+  F_{\rm st}=2f_\pi .
+  \label{eq:fst-fpi-conversion}
+\end{equation}
+A convention that rescales the stereographic coordinate rescales
+\(F_{\rm st}\) and the coordinate field together; in the fixed chart
+\eqref{eq:su2-stereographic-pion-field} the numerical factor in
+\eqref{eq:fst-fpi-conversion} is part of the convention.
 
 For
 \[
@@ -825,7 +842,9 @@ At order \(E^2/F_{\rm st}^2\), the four-pion vertex from
 \end{equation}
 Equivalently, after converting to the convention in which the axial current
 matrix element defines \(f_\pi\), this is the standard leading chiral theorem
-with the corresponding \(f_\pi\)-normalization.
+\[
+  A(s,t,u)=\frac{s}{f_\pi^2}+O(E^4/f_\pi^4).
+\]
 
 \begin{figure}[H]
   \centering
