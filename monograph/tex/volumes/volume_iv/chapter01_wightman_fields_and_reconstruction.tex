@@ -236,6 +236,30 @@ whenever the adjoint is restricted to the common invariant domain.  If a
 chosen multiplet is not already in such a basis, the involution includes the
 corresponding finite-dimensional conjugation matrix on the label space.
 
+For test functions valued in field-label tensor powers, this adjunction is
+defined before it is used in the positivity condition.  Let
+\[
+  E_I=\bigoplus_{\alpha\in I}\mathbb C e_\alpha
+\]
+be the field-label vector space and let \(J:E_I\to E_I\) be the antilinear map
+with \(J e_\alpha=e_{\alpha^\dagger}\).  For
+\(f_n\in\mathcal S(M^n,E_I^{\otimes n})\), define the antilinear tensor
+reversal \(R_n:E_I^{\otimes n}\to E_I^{\otimes n}\) by
+\[
+  R_n(v_1\otimes\cdots\otimes v_n)
+  =
+  Jv_n\otimes\cdots\otimes Jv_1
+\]
+and set
+\[
+  f_n^\dagger(x_1,\ldots,x_n)
+  =
+  R_n\bigl(f_n(x_n,\ldots,x_1)\bigr).
+\]
+Thus \(f_n^\dagger\) simultaneously reverses the order of insertions, complex
+conjugates the coefficient functions, and applies the field-label adjunction to
+each tensor factor.
+
 The Wightman hierarchy satisfies five structural conditions that are directly
 read from the Hilbert-space data:
 \begin{description}[leftmargin=2.9cm,style=nextline]
@@ -265,12 +289,11 @@ For every finite sequence \(F=(f_0,f_1,f_2,\ldots)\) of test functions,
   \sum_{m,n} W_{m+n}(f_m^\dagger\otimes f_n)\ge0 .
 \]
 \end{description}
-In these formulas, \(f_n\) denotes a compactly supported or Schwartz test
-function valued in the appropriate finite direct sum of field labels, and
-\(f_m^\dagger\) reverses order, complex conjugates the test functions, and
-applies the field-label adjunction to each tensor factor.  Hermiticity is the
-compatibility condition that makes the reconstructed left-multiplication
-fields have the intended adjoints on the common domain.
+In the positivity condition, \(f_n\) denotes a compactly supported or Schwartz
+test function valued in the appropriate finite direct sum of field labels.
+Hermiticity is the compatibility condition that makes the
+reconstructed left-multiplication fields have the intended adjoints on the
+common domain.
 
 \section{Clustering and the Vacuum Sector}
 
