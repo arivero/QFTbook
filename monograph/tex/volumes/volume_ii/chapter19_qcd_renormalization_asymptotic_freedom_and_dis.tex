@@ -131,11 +131,36 @@ Grassmann odd.  With the momentum convention displayed in the figure below,
   \frac{-\ii}{k^2-\ii\epsilon}.
   \label{eq:qcd-ordinary-ghost-propagator}
 \end{equation}
-Every closed ghost loop carries the additional factor \(-1\).  In the
-Grassmann functional integral, a closed ghost cycle contracts a product
-\(\bar c_1c_1\cdots\bar c_Nc_N\) by a cyclic permutation of odd variables before
-the fields can be paired in propagator order; the parity of this cycle gives
-the same minus sign as a closed fermion loop.
+The extra sign of a closed ghost loop is a Berezin-Gaussian fact, not an
+independent rule.  Let \(K\) denote the free ghost kinetic operator and let
+\(V\) denote any matrix of background insertions carrying the ghost-gluon
+vertices.  In a finite-dimensional regulator, with the ordered Berezin
+convention used for Grassmann Gaussians in the spinor path-integral chapter,
+\[
+  \frac{Z_{\rm gh}[V]}{Z_{\rm gh}[0]}
+  =
+  \frac{\int[\dd\bar c\,\dd c]\,
+    \exp[-\bar c(K+V)c]}
+       {\int[\dd\bar c\,\dd c]\,
+    \exp[-\bar cKc]}
+  =
+  \det(1+K^{-1}V).
+\]
+Hence the connected \(n\)-insertion ghost cycle is the term
+\[
+  \operatorname{Tr}\log(1+K^{-1}V)
+  =
+  \sum_{n\ge1}\frac{(-1)^{n+1}}{n}
+  \operatorname{Tr}\bigl((K^{-1}V)^n\bigr).
+\]
+A commuting complex scalar with the same quadratic operator would instead
+produce \(\det(1+K^{-1}V)^{-1}\), and therefore the opposite sign for the same
+closed cycle after the local vertex factors are held fixed.  Equivalently, in
+the Wick-contraction expansion, closing a ghost cycle requires a cyclic
+permutation of Grassmann-odd variables before the \(c\)'s and \(\bar c\)'s are
+paired; this cyclic parity is the same closed-loop sign as for fermions.  The
+Feynman rules below implement this determinant sign by assigning a factor
+\(-1\) to each closed ghost loop.
 
 The ghost-gluon vertex is read from the term
 \[
