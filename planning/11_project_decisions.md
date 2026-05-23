@@ -104,6 +104,13 @@ Date: 2026-05-23
   technical proofs whose length would obscure the main line, but an appendix
   reference never licenses a gap in the main chapter: the main text must state
   the precise result, hypotheses, dependency, and role in the argument.
+- Machine-readable planning metadata remains Markdown-first for now.  The
+  required near-term structure is an auditable heading contract for chapter
+  dossiers, enforced by `tools/audit_chapter_dossiers.sh`.  YAML dossiers,
+  separate notation/claim/figure ledger files, generated dependency graphs,
+  citation-support checks, and visual PDF audits are deferred until the chapter
+  architecture stabilizes enough for those artifacts to reduce errors rather
+  than create bookkeeping churn.
 
 ## Current Implementation Decisions
 
@@ -118,5 +125,4 @@ Date: 2026-05-23
 ## Open Decisions
 
 - Final TeX class and volume compilation strategy.
-- How much machine-readable source metadata to maintain.
 - Exact chapter allocation inside future special-topic volumes.

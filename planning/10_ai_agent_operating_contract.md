@@ -100,18 +100,28 @@ After drafting or revising a chapter, report:
 - adding decorative figures;
 - moving unrevised scaffold chapters into the compiled manuscript.
 
-## Machine-Readable Structure To Add Later
+## Machine-Readable Structure
 
-The project may eventually add:
+Current decision: Markdown chapter dossiers remain the canonical planning
+metadata.  They must keep machine-auditable headings for source position,
+symbol or definition inventory, claim ledger, and figure requirements.  The
+enforced audit is:
+
+- `tools/audit_chapter_dossiers.sh`.
+
+The current machine-readable layer is therefore deliberately small:
+
+- chapter dossier heading audit through `tools/audit_chapter_dossiers.sh`;
+- dependency control in `planning/13_development_dependency_map.md`;
+- reader-facing TeX phrase audit through `tools/audit_monograph_text.sh`;
+- build and log audit through `tools/build_monograph.sh`.
+
+Deferred until the chapter architecture is more stable:
 
 - YAML chapter dossiers;
-- notation ledgers;
-- claim ledgers;
-- figure ledgers;
-- dependency graphs;
+- separate notation, claim, and figure ledger files;
+- generated dependency graphs;
 - citation-support checks;
-- automated TeX audits;
 - visual PDF audits.
 
-These tools should support the book; they should not replace mathematical
-judgment.
+These tools support the book; they do not replace mathematical judgment.
