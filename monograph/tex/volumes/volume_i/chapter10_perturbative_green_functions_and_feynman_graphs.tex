@@ -266,14 +266,16 @@ half-edges form the loop and may be interchanged. Hence
 unlabelled-vertex convention this same count is
 \[
   \left(-\frac{g}{4!}\right)
-  \left(4\cdot\frac{3!}{2}\right)
+  \left(4\cdot3\cdot\frac{2!}{2}\right)
   =
   -\frac{g}{2}.
 \]
-Here the \(4\) chooses the vertex field contracted with one external endpoint,
-the remaining \(3!\) orders the second external contraction together with the
-two loop half-edges, and the division by \(2\) removes the interchange of the
-two half-edges forming the loop.
+Here the \(4\) chooses the vertex half-edge contracted with the first external
+endpoint, and the \(3\) chooses the half-edge contracted with the second
+external endpoint.  The remaining two half-edges form the loop.  If they are
+temporarily ordered this gives a factor \(2!\), and the quotient by \(2\)
+identifies the interchange of the two ends of the same loop, leaving one loop
+pairing.
 
 For the two-vertex sunset insertion in the two-point function, the expansion
 prefactor and the Wick-pairing count give
