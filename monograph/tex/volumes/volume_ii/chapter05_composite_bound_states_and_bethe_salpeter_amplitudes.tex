@@ -264,6 +264,24 @@ If instead one uses unit-normalized momentum kets, a factor
 side; here that factor is absorbed into the definition of
 \(\widetilde\Phi_B\). The invariant normalization of
 \(\widetilde\Phi_B\) is fixed by the four-point pole residue.
+No constituent LSZ factors are divided out in this definition.  If the scalar
+field has one-particle residue
+\[
+  \bra{\vac}\phi(0)|\vec p\rangle=Z_\phi^{1/2},
+\]
+then \(\widetilde\Phi_B\) is the unamputated, field-normalized
+Bethe--Salpeter amplitude and contains the \(Z_\phi^{1/2}\) normalization
+associated with each constituent field.  A convention using LSZ-normalized
+constituent fields would instead use
+\[
+  \widetilde\Phi_B^{\rm LSZ}
+  =
+  Z_\phi^{-1}\widetilde\Phi_B
+\]
+for two identical scalar constituents.  In this chapter the inverse LSZ factors
+\(Z_\phi^{-1/2}\) are not part of \(\widetilde\Phi_B\); they are inserted only
+when a four-point Green function is converted to an invariant scattering
+amplitude.
 
 Now consider the momentum-space time-ordered four-point function
 \[
@@ -454,8 +472,20 @@ The unamputated Bethe--Salpeter amplitude is related to the amputated vertex by
   =
   \mathcal G_P(p)\Psi_B(p;P),
 \]
-up to the same convention-dependent one-particle normalization used in the
-four-point residue.
+with the same field normalization used in
+\eqref{eq:bethe-salpeter-four-point-pole-factorization}.  Here \(D(k)\) is the
+exact propagator of the local field \(\phi\), including its pole residue
+\(Z_\phi\).  Thus no extra \(Z_\phi\) factor is hidden in
+\(\Psi_B\).  Changing to LSZ-normalized constituent fields sends
+\[
+  \widetilde\Phi_B\mapsto Z_\phi^{-1}\widetilde\Phi_B,
+  \qquad
+  D\mapsto Z_\phi^{-1}D,
+  \qquad
+  \Psi_B\mapsto Z_\phi\,\Psi_B
+\]
+for two identical scalar constituents, so the convention can be translated
+without changing the pole condition.
 In unamputated form the equation reads
 \[
   \widetilde\Phi_B(p;P)
