@@ -162,18 +162,42 @@ The corresponding metric variation gives
   \int_M\dd^D x\,\sqrt g\,
   \omega(x)\,T^\mu{}_\mu(x).
 \]
-The action may also assign a Weyl transformation to the dynamical fields
-\(\Phi\).  Weyl invariance of the theory coupled to background metrics means
-that the combined transformation of \(g_{\mu\nu}\) and \(\Phi\) leaves the
-renormalized functional invariant, up to anomaly terms described below.  In
-flat space this gives the trace condition, modulo equations of motion and
-contact terms,
+\begin{theorem}[Flat-space trace condition from Weyl invariance]
+\label{thm:flat-space-weyl-trace-condition}
+Assume that the renormalized theory is coupled to a background metric, that
+the stress tensor is defined by metric variation as in
+\eqref{eq:stress-insertion-small-metric}, and that a choice of field Weyl
+transformations and allowed improvements has been made for which the
+renormalized functional is invariant under compactly supported Weyl
+rescalings in flat space, apart from curvature anomaly terms and contact terms
+on coincident insertions.  Then, at separated flat-space points,
 \begin{equation}
   T^\mu{}_\mu=0
   \label{eq:weyl-trace-zero}
 \end{equation}
-as the operator form of Weyl invariance at separated points.  The background
-metric is an external source for stress-tensor insertions and Ward identities.
+\end{theorem}
+
+\begin{proof}
+The action may assign Weyl transformations to the dynamical fields \(\Phi\).
+After including these field variations and the chosen improvement terms, Weyl
+invariance says that the first variation of every separated correlator under
+\(\delta_\omega g_{\mu\nu}=2\omega g_{\mu\nu}\) vanishes, modulo the stated
+anomaly and contact contributions.  The metric-variation formula above gives
+\[
+  \delta_\omega\langle X\rangle
+  =
+  -\int\dd^Dx\,\omega(x)
+  \left\langle T^\mu{}_\mu(x)X\right\rangle
+\]
+for every operator product \(X\) supported away from
+\(\operatorname{supp}(\omega)\).  Since \(\omega\) is an arbitrary smooth test
+function in the separated region, the distributional insertion of
+\(T^\mu{}_\mu\) vanishes there.  This is the local operator equation
+\eqref{eq:weyl-trace-zero} at separated flat-space points.
+\end{proof}
+
+The background metric is an external source for stress-tensor insertions and
+Ward identities.
 
 In even dimensions, the renormalized generating functional may transform
 under a Weyl rescaling by a local curvature functional.  At separated

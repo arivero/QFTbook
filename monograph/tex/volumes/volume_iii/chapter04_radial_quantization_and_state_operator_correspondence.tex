@@ -325,18 +325,28 @@ the state in \(\tau\).  The state associated with \(\mathcal O\) is denoted
 \[
   \ket{\mathcal O}.
 \]
-Conversely, a state on \(S^{D-1}\) evolved to \(\tau=-\infty\) determines a
-local insertion at the origin when the limit exists within the local operator
-space.  This gives the state-operator map
+\begin{theorem}[State--operator correspondence]
+\label{thm:state-operator-correspondence}
+Assume the radial reconstruction data of
+Assumption~\ref{ass:radial-reconstruction-data}.  Let
+\(\mathcal V_{\rm loc}\) be the complex vector space of renormalized local
+operators at the origin, including descendants, modulo operators whose radial
+two-point pairing with every local operator vanishes.  Let
+\(\mathcal H_{\rm fin}\subset\mathcal H_{S^{D-1}}\) be the finite-energy
+subspace of the radial Hilbert space.  Then insertion at the origin defines an
+isometric linear map
 \begin{equation}
   \mathcal V_{\mathrm{loc}}
-  \longleftrightarrow
-  \mathcal H_{S^{D-1}},
+  \longrightarrow
+  \mathcal H_{\rm fin},
   \qquad
   \mathcal O\longmapsto\ket{\mathcal O}.
   \label{eq:state-operator-map}
 \end{equation}
-Equivalently, for insertions ordered by cylinder time
+If every finite-energy radial state has an asymptotic local representative as
+\(\tau\to-\infty\), this map is a Hilbert-space isomorphism after completing
+\(\mathcal V_{\rm loc}\) in the radial inner product.  Equivalently, for
+insertions ordered by cylinder time
 \(\tau_1>\tau_2>\cdots>\tau_n\),
 \begin{equation}
   \left\langle
@@ -349,6 +359,24 @@ Equivalently, for insertions ordered by cylinder time
   \ket{\mathcal O}_{\rm cyl}.
   \label{eq:state-operator-correlation-formula}
 \end{equation}
+\end{theorem}
+
+\begin{proof}
+Radial reflection positivity supplies the positive semidefinite inner product
+on local insertions inside a sphere.  Quotienting its null space makes the map
+\(\mathcal O\mapsto\ket{\mathcal O}\) injective, and the path-integral
+construction of the wavefunctional on \(S_R^{D-1}\) identifies its norm with
+the radial two-point pairing; hence the map is isometric.  Dilatation
+covariance transports the state from radius \(R\) to the cylinder and places
+it in the finite-energy subspace by
+Assumption~\ref{ass:radial-reconstruction-data}.  Cutting the cylinder along
+constant-\(\tau\) slices gives
+\eqref{eq:state-operator-correlation-formula}.  The additional asymptotic
+local-representative hypothesis gives surjectivity onto
+\(\mathcal H_{\rm fin}\); completion then gives the stated Hilbert-space
+isomorphism.
+\end{proof}
+
 The state \(\ket{\vac}\) is the ground state on \(S^{D-1}\).
 
 The vacuum state corresponds to the identity operator:

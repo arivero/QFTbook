@@ -50,22 +50,48 @@ representation \(\rho\), normalized so that
   \qquad
   \widehat K_\mu\ket{\mathcal O_a}=0.
 \]
-At level one the descendant Gram matrix is
+
+\begin{theorem}[Level-one descendant Gram positivity]
+\label{thm:level-one-descendant-gram-positivity}
+Assume reflection positivity in radial quantization, the adjoint relation
+\(\widehat P_\mu^\dagger=\widehat K_\mu\), and a primary multiplet
+\(V_\rho=\operatorname{span}\{\ket{\mathcal O_a}\}\) of dimension
+\(\Delta\).  Then the level-one descendant Gram matrix
 \begin{equation}
   G_{\mu a,\nu b}^{(1)}
   =
   \bra{\mathcal O_a}\widehat K_\mu\widehat P_\nu\ket{\mathcal O_b}.
   \label{eq:level-one-gram-general}
 \end{equation}
-Using \(\widehat K_\mu\ket{\mathcal O_b}=0\) and the conformal algebra gives
-\[
+is positive semidefinite and is given by
+\begin{equation}
   G_{\mu a,\nu b}^{(1)}
   =
   2
   \bra{\mathcal O_a}
   (\delta_{\mu\nu}\widehat D_{\rm rad}-\widehat J_{\nu\mu})
   \ket{\mathcal O_b}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For any finite array \(c^{\mu a}\),
+\[
+  \overline c^{\mu a}G^{(1)}_{\mu a,\nu b}c^{\nu b}
+  =
+  \left\|
+    c^{\nu b}\widehat P_\nu\ket{\mathcal O_b}
+  \right\|^2
+  \ge0,
 \]
+which is the positivity assertion.  Since
+\(\widehat K_\mu\ket{\mathcal O_b}=0\), the Gram matrix is
+\[
+  \bra{\mathcal O_a}[\widehat K_\mu,\widehat P_\nu]\ket{\mathcal O_b}.
+\]
+Substituting \eqref{eq:radial-pk-commutator} gives the displayed formula.
+\end{proof}
+
 This equation is a representation-theoretic constraint.  Positivity of
 \(G^{(1)}\) gives lower bounds on \(\Delta\) once the \(SO(D)\) representation
 \(\rho\) is specified.
@@ -150,31 +176,40 @@ Contracting with \(\delta^{\alpha\beta}\delta^{\mu\nu}\) computes the norm of
   \braket{\phi}{\phi}.
   \label{eq:scalar-laplacian-descendant-norm}
 \end{equation}
-For a positive-norm scalar primary, positivity gives the alternatives
+\begin{theorem}[Scalar unitarity bound and scalar shortening]
+\label{thm:scalar-unitarity-bound-shortening}
+Assume a positive-norm scalar primary \(\phi\) in a reflection-positive
+radial-quantized CFT in \(D>2\).  Then either \(\Delta_\phi=0\) and
+\(\widehat P_\mu\ket{\phi}=0\), or
 \begin{equation}
-  \Delta_\phi=0
-  \quad\text{with}\quad
-  \widehat P_\mu\ket{\phi}=0,
-  \qquad
-  \text{or}
-  \qquad
   \Delta_\phi\ge\frac{D-2}{2}.
   \label{eq:scalar-unitarity-bound}
 \end{equation}
-The first branch was identified above as the identity representation under the
-stated vacuum assumptions.  The second branch is the scalar unitarity bound for
-non-identity scalar primaries.
-
-When \(D>2\) and
-\[
-  \Delta_\phi=\frac{D-2}{2},
-\]
-the state \(\widehat P^2\ket{\phi}\) is null.  In the quotient Hilbert space
-this gives the operator equation
+If \(\Delta_\phi=(D-2)/2\), the scalar trace descendant is null and the
+quotient local-operator space obeys
 \begin{equation}
   \partial^2\phi(x)=0.
   \label{eq:scalar-shortening-laplace}
 \end{equation}
+\end{theorem}
+
+\begin{proof}
+The level-one Gram matrix for a scalar is
+\(2\Delta_\phi\delta_{\mu\nu}\braket{\phi}{\phi}\).  Thus
+\(\Delta_\phi\ge0\), and if \(\Delta_\phi=0\) then every first descendant is
+null, giving \(\widehat P_\mu\ket{\phi}=0\) in the quotient Hilbert space.
+For \(\Delta_\phi>0\), positivity of the level-two scalar descendant
+\(\widehat P^2\ket{\phi}\) gives
+\eqref{eq:scalar-laplacian-descendant-norm}; hence
+\(2\Delta_\phi+2-D\ge0\), which is
+\eqref{eq:scalar-unitarity-bound}.  At equality the norm in
+\eqref{eq:scalar-laplacian-descendant-norm} vanishes, so the corresponding
+local descendant is the Laplace equation \eqref{eq:scalar-shortening-laplace}.
+\end{proof}
+
+The \(\Delta_\phi=0\) branch was identified above as the identity
+representation under the stated vacuum assumptions.  The second branch is the
+scalar unitarity bound for non-identity scalar primaries.
 At the level of conformal representation theory, the resulting shortened
 multiplet is the massless scalar multiplet.
 
@@ -383,18 +418,42 @@ be a primary transforming as a rank-\(\ell\) symmetric traceless tensor of
   \delta^{\mu_1\mu_2}
   \mathcal O_{\mu_1\mu_2\cdots\mu_\ell}=0.
 \]
-Decomposing the level-one descendants into irreducible \(SO(D)\)
-representations gives the bound
+\begin{theorem}[Symmetric-traceless unitarity bound]
+\label{thm:stt-unitarity-bound-shortening}
+Assume a positive-norm primary
+\(\mathcal O_{\mu_1\cdots\mu_\ell}\), \(\ell\ge1\), transforming in the
+rank-\(\ell\) symmetric traceless representation of \(SO(D)\), with \(D\ge3\).
+Then
 \begin{equation}
   \Delta_{\mathcal O}\ge \ell+D-2.
   \label{eq:spin-ell-unitarity-bound}
 \end{equation}
-At equality, the divergence descendant is null:
+At equality, the divergence descendant is null and therefore
 \begin{equation}
   \partial^{\mu_1}
   \mathcal O_{\mu_1\mu_2\cdots\mu_\ell}(x)=0.
   \label{eq:spin-ell-conservation-shortening}
 \end{equation}
+\end{theorem}
+
+\begin{proof}
+The level-one descendant space decomposes as
+\[
+  \mathcal H_1\otimes\mathcal H_\ell
+  =
+  \mathcal H_{\ell+1}\oplus\mathcal H_{\ell,1}\oplus\mathcal H_{\ell-1}.
+\]
+By Theorem~\ref{thm:level-one-descendant-gram-positivity}, the Gram operator is
+positive on each irreducible summand.  The Casimir computation above gives the
+three inequalities in \eqref{eq:spin-level-one-three-inequalities}; for
+\(\ell\ge1\), the strongest is
+\(\Delta_{\mathcal O}-\ell-D+2\ge0\).  The corresponding summand is
+\(\mathcal H_{\ell-1}\), obtained by taking the divergence of the symmetric
+traceless tensor.  Saturation therefore makes precisely the divergence
+descendant null, giving \eqref{eq:spin-ell-conservation-shortening} in the
+quotient local-operator space.
+\end{proof}
+
 For \(\ell=1\) this is current conservation and
 \(\Delta_J=D-1\).  For \(\ell=2\) it is stress-tensor conservation and
 \(\Delta_T=D\).

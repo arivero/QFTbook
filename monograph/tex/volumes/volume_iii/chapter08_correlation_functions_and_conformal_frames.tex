@@ -65,7 +65,27 @@ Hence \(c_i=0\) unless \(\Delta_i=0\).  In a unitary theory satisfying the
 vacuum assumptions stated in Chapter~\ref{ch:volume-iii-unitarity-bounds-short-multiplets},
 the scalar primary with \(\Delta=0\) is the identity representation.
 
-For two scalar primaries, translation and rotation invariance imply
+\begin{theorem}[Scalar two-point selection rule]
+\label{thm:scalar-two-point-selection-rule}
+Assume the separated-point global conformal Ward identities
+\eqref{eq:correlator-global-ward-identity} and scalar primary transformation
+law \eqref{eq:scalar-primary-finite-transform-correlators}.  If
+\(\mathcal O_i,\mathcal O_j\) are scalar primaries of dimensions
+\(\Delta_i,\Delta_j\), then
+\begin{equation}
+  \left\langle \mathcal O_i(x)\mathcal O_j(y)\right\rangle
+  =
+  \begin{cases}
+    \displaystyle \frac{C_{ij}}{|x-y|^{2\Delta_i}},
+    &\Delta_i=\Delta_j,\\[1.0em]
+    0,&\Delta_i\ne\Delta_j .
+  \end{cases}
+  \label{eq:scalar-primary-two-point}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Translation and rotation invariance imply
 \[
   \left\langle \mathcal O_i(x)\mathcal O_j(y)\right\rangle
   =
@@ -105,17 +125,9 @@ Applying \eqref{eq:scalar-primary-finite-transform-correlators} to
   C_{ij}=\lambda^{\Delta_i-\Delta_j}C_{ij}
   \qquad\text{for all }\lambda>0,
 \]
-so \(C_{ij}=0\) unless \(\Delta_i=\Delta_j\).  Therefore
-\begin{equation}
-  \left\langle \mathcal O_i(x)\mathcal O_j(y)\right\rangle
-  =
-  \begin{cases}
-    \displaystyle \frac{C_{ij}}{|x-y|^{2\Delta_i}},
-    &\Delta_i=\Delta_j,\\[1.0em]
-    0,&\Delta_i\ne\Delta_j .
-  \end{cases}
-  \label{eq:scalar-primary-two-point}
-\end{equation}
+so \(C_{ij}=0\) unless \(\Delta_i=\Delta_j\).  Substituting this condition in
+the scale-covariant form gives \eqref{eq:scalar-primary-two-point}.
+\end{proof}
 Within a finite-dimensional space of primaries with the same dimension and the
 same spin, one may choose a basis that diagonalizes the Hermitian matrix
 \(C_{ij}\).
