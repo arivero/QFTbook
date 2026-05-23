@@ -1228,8 +1228,42 @@ integer for maps representing \(\pi_5(SU(N_f))\simeq\mathbb Z\).  Hence
 \[
   \exp\{\ii n\Gamma_{\mathrm{WZ}}[U]\}
 \]
-is independent of the extension precisely when \(n\in\mathbb Z\).  For QCD
-with quarks in the color fundamental representation, anomaly matching fixes
+is independent of the extension precisely when \(n\in\mathbb Z\).  The value of
+this integer in QCD is fixed by matching the infinitesimal background anomaly.
+It is enough to gauge a left flavor background \(A=A_\mu\dd x^\mu\), set the
+right background to zero, and retain the part quadratic in \(A\).  Matrix
+multiplication and wedge product are implicit in the following formulas.  A
+single left-handed quark multiplet gives the consistent variation
+\[
+  \delta_\alpha\Gamma_{\mathrm{1\,color}}[A]
+  =
+  \frac1{48\pi^2}
+  \int_{M_4}\operatorname{Tr}
+  \bigl(\alpha\,\dd A\,\dd A\bigr)
+  +O(A^3),
+\]
+where \(\alpha=\alpha^aT^a\).  QCD has \(N_c\) identical color copies of this
+flavor representation, hence
+\[
+  \delta_\alpha\Gamma_{\mathrm{quark}}[A]
+  =
+  \frac{N_c}{48\pi^2}
+  \int_{M_4}\operatorname{Tr}
+  \bigl(\alpha\,\dd A\,\dd A\bigr)
+  +O(A^3).
+\]
+The gauged Wess--Zumino functional at level \(n\) has the corresponding
+Goldstone variation
+\[
+  \delta_\alpha\bigl(n\Gamma_{\mathrm{WZW}}[U;A,0]\bigr)
+  =
+  \frac{n}{48\pi^2}
+  \int_{M_4}\operatorname{Tr}
+  \bigl(\alpha\,\dd A\,\dd A\bigr)
+  +O(A^3).
+\]
+Equality of the anomaly phases for arbitrary infinitesimal
+\(\alpha\) and background \(A\) gives
 \[
   n=N_c .
 \]
@@ -1242,7 +1276,7 @@ Wess--Zumino functional is completed by local four-dimensional terms involving
   \delta_{\alpha_L,\alpha_R}
   \Gamma_{\mathrm{WZW}}[U;\ell,r]
   =
-  -\mathcal A_{\mathrm{quark}}[\alpha_L,\alpha_R;\ell,r],
+  \mathcal A_{\mathrm{quark}}[\alpha_L,\alpha_R;\ell,r],
 \]
 where \(\mathcal A_{\mathrm{quark}}\) is the consistent flavor anomaly of the
 microscopic quarks.  Thus the pion functional supplies exactly the anomaly
