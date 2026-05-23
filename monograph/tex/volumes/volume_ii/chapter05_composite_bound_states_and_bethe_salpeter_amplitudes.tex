@@ -269,7 +269,7 @@ decomposition in this channel.  With
   P=k_1+k_2,\qquad P^2\to -M_B^2,
 \]
 the pole part of the Fourier-transformed four-point function is
-\[
+\begin{equation}
 \begin{aligned}
   \widetilde G_4(k_1,k_2,k_3,k_4)
   &\sim
@@ -282,7 +282,8 @@ the pole part of the Fourier-transformed four-point function is
        {P^2+M_B^2-\ii0}
   +\text{terms regular at }P^2=-M_B^2 .
 \end{aligned}
-\]
+  \label{eq:bethe-salpeter-four-point-pole-factorization}
+\end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -304,9 +305,10 @@ regular at the pole.  Translation invariance gives the overall delta
 function.
 \end{proof}
 
-This is the four-point analogue of the spectral pole in a two-point function.
-The residue is the product of the amplitudes for two fields to create and
-annihilate the stable composite state.
+Equation~\eqref{eq:bethe-salpeter-four-point-pole-factorization} is the
+four-point analogue of the spectral pole in a two-point function.  The residue
+is the product of the amplitudes for two fields to create and annihilate the
+stable composite state.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.9,
@@ -366,15 +368,16 @@ Bethe--Salpeter equation resums.
 
 The amputated four-point scattering block \(\mathcal T_P(p,p')\) obeys the
 operator equation
-\[
+\begin{equation}
   \mathcal T_P
   =
   \mathcal K_P
   +
   \mathcal K_P\mathcal G_P\mathcal T_P ,
-\]
+  \label{eq:bethe-salpeter-operator-equation}
+\end{equation}
 or explicitly
-\[
+\begin{equation}
 \begin{aligned}
   \mathcal T_P(p,p')
   &=
@@ -384,29 +387,32 @@ or explicitly
   \int\frac{\dd^D q}{(2\pi)^D}\,
   \mathcal K_P(p,q)\mathcal G_P(q)\mathcal T_P(q,p') .
 \end{aligned}
-\]
+  \label{eq:bethe-salpeter-integral-equation-for-t}
+\end{equation}
 A bound-state pole at \(P^2=-M_B^2\) has the form
-\[
+\begin{equation}
   \mathcal T_P(p,p')
   \sim
   \frac{\Psi_B(p;P)\,\overline{\Psi}_B(p';P)}
        {P^2+M_B^2-\ii0}
   +\text{regular terms}.
-\]
+  \label{eq:bethe-salpeter-amputated-bound-state-pole}
+\end{equation}
 Here \(\overline{\Psi}_B\) denotes the residue on the right side of the
 four-point function; for scalar constituents it is the complex conjugate with
 the momenta reversed, up to the same convention choices already present in
 \(\widetilde\Phi_B^*(-k_3,-k_4;P)\).
 Substituting this pole form into the integral equation and equating residues
 gives the homogeneous Bethe--Salpeter equation
-\[
+\begin{equation}
   \Psi_B(p;P)
   =
   \int\frac{\dd^D q}{(2\pi)^D}\,
   \mathcal K_P(p,q)\mathcal G_P(q)\Psi_B(q;P),
   \qquad
   P^2=-M_B^2 .
-\]
+  \label{eq:homogeneous-bethe-salpeter-equation}
+\end{equation}
 Equivalently, define the integral operator
 \[
   (\widehat V_P F)(p)

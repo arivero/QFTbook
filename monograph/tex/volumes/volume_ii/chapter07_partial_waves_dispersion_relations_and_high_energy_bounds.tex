@@ -785,18 +785,20 @@ exchange.  Assume:
 \end{enumerate}
 Then, in four spacetime dimensions, for every fixed \(0<\delta<1\) there are
 constants \(M_0\) and \(s_0\) such that
-\[
+\begin{equation}
   \sigma_{\rm tot}(s)
   \le
   \frac{1}{(1-\delta)^2}\,
   \frac{4\pi}{t_0}
   \left(\log\frac{s}{M_0^2}\right)^2,
   \qquad s\ge s_0 .
-\]
+  \label{eq:froissart-martin-four-dimensional-bound}
+\end{equation}
 In \(D\) spacetime dimensions the corresponding geometric estimate is
-\[
+\begin{equation}
   \sigma_{\rm tot}(s)\le C\,(\log s)^{D-2}.
-\]
+  \label{eq:froissart-martin-d-dimensional-bound}
+\end{equation}
 \end{theorem}
 
 \begin{proof}
@@ -807,15 +809,18 @@ polynomial boundedness or absorptive real-axis hypothesis bounds the number
 of partial waves that can contribute with order-one strength by
 \(L(s)=O(\sqrt{s}\log s)\).  The optical theorem converts the forward
 absorptive part into \(\sigma_{\rm tot}\), and summing the unitary partial-wave
-weights up to \(L(s)\) gives the four-dimensional coefficient displayed above,
-with the harmless \((1-\delta)^{-2}\) recording the margin in the ellipse
-estimate.  In \(D\) dimensions the same argument sums over transverse angular
+weights up to \(L(s)\) gives the coefficient in
+\eqref{eq:froissart-martin-four-dimensional-bound}, with the harmless
+\((1-\delta)^{-2}\) recording the margin in the ellipse estimate.  In \(D\)
+dimensions the same argument sums over transverse angular
 momenta in \(D-2\) impact-parameter directions, giving the power
-\((\log s)^{D-2}\).
+\((\log s)^{D-2}\) in
+\eqref{eq:froissart-martin-d-dimensional-bound}.
 \end{proof}
 
-This last formula may be restated through an effective transverse radius.  If
-one defines \(R_{\rm eff}(s)\) by the geometric scaling relation
+Equation~\eqref{eq:froissart-martin-d-dimensional-bound} may be restated
+through an effective transverse radius.  If one defines \(R_{\rm eff}(s)\) by
+the geometric scaling relation
 \[
   \sigma_{\rm tot}(s)\asymp R_{\rm eff}(s)^{D-2},
 \]
