@@ -110,7 +110,12 @@ manipulations below; the operator limit is then stated at the Hilbert-space
 level.
 
 Let \(\widehat H\) be a self-adjoint Hamiltonian on \(\Hilb_{\mathcal Q}\).
-The time-evolution operator over time \(T\in\mathbb R\) is
+This is an analytic hypothesis on the chosen Hilbert-space realization of the
+formal classical Hamiltonian.  By Stone's theorem, self-adjointness of
+\(\widehat H\) is exactly the condition that the following formula defines a
+strongly continuous unitary one-parameter group with generator
+\(-\ii\widehat H/\hbar\).  The time-evolution operator over
+time \(T\in\mathbb R\) is
 \[
   U(T)=\exp\left(-\frac{\ii}{\hbar}T\widehat H\right).
 \]
@@ -394,9 +399,34 @@ criterion, often cited as Reed--Simon Theorem X.41: if \(V\) is real,
 \]
 for some \(C<\infty\), then
 \(-\Delta+V\) is essentially self-adjoint on \(C_c^\infty(\mathbb R^d)\).
-Thus polynomial oscillator potentials with positive leading part have a unique
-self-adjoint closure from the natural differential operator core, and the
-Trotter formula applies to that closure.
+Every smooth potential bounded below satisfies this growth-from-below
+hypothesis, and polynomial oscillator potentials with positive leading part do
+as well.  These cases have a unique self-adjoint closure from the natural
+differential operator core, and the Trotter formula applies to that closure.
+
+The lower-growth hypothesis in the Faris--Lavine criterion is substantive.  In
+one dimension, the symmetric differential operator
+\[
+  -\frac{\dd^2}{\dd q^2}+q^3
+\]
+on \(\mathcal S(\mathbb R)\) is a concrete failure mode.  At
+\(q\to-\infty\), the deficiency equations
+\[
+  \left(-\frac{\dd^2}{\dd q^2}+q^3\right)\psi_\pm=\pm\ii\,\psi_\pm
+\]
+have WKB solutions with leading behavior
+\[
+  \psi_\pm(q)\sim |q|^{-3/4}
+  \exp\left(\pm\ii\,\frac{2}{5}|q|^{5/2}\right).
+\]
+Both branches are square-integrable at that end because
+\(\int^\infty r^{-3/2}\dd r<\infty\).  The endpoint \(q=-\infty\) is therefore
+limit-circle, so the symmetric operator is not essentially self-adjoint on the
+Schwartz core.  A self-adjoint Hamiltonian requires an additional boundary
+condition at this singular endpoint at infinity, and different self-adjoint
+extensions give different unitary groups.  Thus the formal expression
+\(\widehat p^2/2m+V(\widehat q)\) does not by itself define the operator
+appearing in \(\exp(-\ii T\widehat H/\hbar)\).
 
 For the standard Hamiltonian
 \[
