@@ -620,8 +620,45 @@ terms determined by the computed beta function.
 
 The beta function is a vector field on the renormalized coordinate space.  Its
 action on correlation functions follows from the same construction of
-renormalized coordinates.  Let \(\phi_0\) be the regulated bare scalar field
-and choose a field renormalization \(Z_\phi\) by
+renormalized coordinates.
+
+There are two logically distinct field factors in the preceding discussion.
+The factor \(Z(\mu)\) is finite after renormalization; it relates an already
+renormalized reference field \(\phi_R^{\rm ref}\) to the momentum-subtraction
+field used in the scale-\(\mu\) coordinate chart,
+\[
+  [\phi]_\mu=Z(\mu)^{-1/2}\phi_R^{\rm ref}.
+\]
+The factor denoted \(Z_\phi\) in the Callan--Symanzik equation is instead the
+cutoff-dependent total factor that relates the regulated bare field to the
+renormalized field chosen for the chart.  If
+\[
+  \phi_R^{\rm ref}
+  =
+  \bigl(Z_\phi^{\rm ref}(\lambda,\mu_{\rm ref},\Lambda)\bigr)^{-1/2}\phi_0 ,
+\]
+then the momentum-subtraction chart whose elementary field is \([\phi]_\mu\)
+has
+\[
+  [\phi]_\mu
+  =
+  \bigl(Z_\phi^{\rm ref}(\lambda,\mu_{\rm ref},\Lambda)\,Z(\mu)\bigr)^{-1/2}
+  \phi_0 .
+\]
+Thus, in that chart,
+\[
+  Z_\phi^{\rm chart}(\lambda(\mu),\mu,\Lambda)
+  =
+  Z_\phi^{\rm ref}(\lambda,\mu_{\rm ref},\Lambda)\,Z(\mu).
+\]
+Below the superscript ``chart'' is suppressed: \(Z_\phi\) always denotes the
+total bare-to-renormalized field factor for the correlation functions being
+studied, while \(Z(\mu)\) denotes the finite momentum-subtraction rescaling
+appearing in the 1PI vertex coordinates.
+
+Let \(\phi_0\) be the regulated bare scalar field.  Let \(\phi_R\) now denote
+the elementary field of the selected chart, for instance \([\phi]_\mu\) in the
+momentum-subtraction chart above, and choose \(Z_\phi\) by
 \[
   \phi_R=Z_\phi(\lambda(\mu),\mu,\Lambda)^{-1/2}\phi_0 .
 \]
