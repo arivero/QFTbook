@@ -832,21 +832,37 @@ local formulas for propagators, counterterms, and Slavnov--Taylor identities.
 
 BRST symmetry gives functional identities for the generating functional and
 for the 1PI effective action.  In a compact notation, introduce sources
-\(K^{a\mu}\) and \(L^a\) coupled to \(sA_\mu^a\) and \(sc^a\).  The 1PI
-effective action \(\Gamma[A,c,\bar c,B;K,L]\) obeys the Slavnov--Taylor
-identity
+\(K^{a\mu}\) and \(L^a\) coupled to \(sA_\mu^a\) and \(sc^a\).  We use left
+and right functional derivatives defined by
+\[
+  \delta F
+  =
+  \int_M \delta\Phi^A
+  \frac{\delta_L F}{\delta\Phi^A}
+  =
+  \int_M
+  \frac{\delta_R F}{\delta\Phi^A}\delta\Phi^A,
+\]
+for each homogeneous field or source \(\Phi^A\).  The parities are
+\[
+  \epsilon(A_\mu)=\epsilon(B)=\epsilon(L)=0,
+  \qquad
+  \epsilon(c)=\epsilon(\bar c)=\epsilon(K)=1 .
+\]
+The 1PI effective action \(\Gamma[A,c,\bar c,B;K,L]\) obeys the
+Slavnov--Taylor identity
 \begin{equation}
   \mathcal S(\Gamma)
   :=
   \int_M
   \left[
-  \frac{\delta\Gamma}{\delta K^{a\mu}}
-  \frac{\delta\Gamma}{\delta A_\mu^a}
+  \frac{\delta_R\Gamma}{\delta A_\mu^a}
+  \frac{\delta_L\Gamma}{\delta K^{a\mu}}
   +
-  \frac{\delta\Gamma}{\delta L^a}
-  \frac{\delta\Gamma}{\delta c^a}
+  \frac{\delta_R\Gamma}{\delta c^a}
+  \frac{\delta_L\Gamma}{\delta L^a}
   +
-  B^a\frac{\delta\Gamma}{\delta\bar c^a}
+  B^a\frac{\delta_L\Gamma}{\delta\bar c^a}
   \right]\dd^D x
   =
   0 .
@@ -865,14 +881,55 @@ opposite Grassmann parity and ghost number
 and encodes gauge symmetry by an odd Poisson bracket, the antibracket, and a
 master equation.  The present Slavnov--Taylor identity is the gauge-fixed
 Yang--Mills specialization of that homological structure.
+
+The signs in \eqref{eq:slavnov-taylor-identity} follow directly from these
+left/right conventions.  At the classical source-coupled level write
+\[
+  S_{\rm ext}
+  =
+  S_{\rm gf}
+  +
+  \int_M
+  \bigl(K^{a\mu}sA_\mu^a+L^a sc^a\bigr)\dd^D x .
+\]
+Since \(K\) is odd and \(L\) is even,
+\[
+  \frac{\delta_L S_{\rm ext}}{\delta K^{a\mu}}=sA_\mu^a,
+  \qquad
+  \frac{\delta_L S_{\rm ext}}{\delta L^a}=sc^a .
+\]
+Applying the odd derivation \(s\) from the left gives
+\[
+  0=sS_{\rm ext}
+  =
+  \int_M
+  \left[
+    (sA_\mu^a)\frac{\delta_L S_{\rm ext}}{\delta A_\mu^a}
+    +(sc^a)\frac{\delta_L S_{\rm ext}}{\delta c^a}
+    +B^a\frac{\delta_L S_{\rm ext}}{\delta\bar c^a}
+  \right]\dd^D x .
+\]
+For the effective action, the Legendre transform is taken in the elementary
+fields but not in \(K,L\).  With the derivative convention above,
+\[
+  \frac{\delta_L\Gamma}{\delta K^{a\mu}}
+  =
+  \bigl\langle sA_\mu^a\bigr\rangle_{\rm 1PI},
+  \qquad
+  \frac{\delta_L\Gamma}{\delta L^a}
+  =
+  \bigl\langle sc^a\bigr\rangle_{\rm 1PI},
+\]
+and the elementary source terms are replaced by the right derivatives
+\(\delta_R\Gamma/\delta A_\mu^a\) and
+\(\delta_R\Gamma/\delta c^a\).  Substitution gives
+\eqref{eq:slavnov-taylor-identity} with no additional hidden sign; the
+\(c\)-term is written with \(\delta_R\Gamma/\delta c\) precisely because \(c\)
+is odd.
 Chapter~\ref{ch:bv-master-formalism} develops the BV formalism as the natural
 framework for gauge-theory
 1PI effective actions, Wilsonian effective actions, and renormalization
 compatible with gauge symmetry.
-The displayed formula suppresses the sign refinements required by left and
-right functional derivatives for odd variables; its content is that the
-quantum effective action is invariant under the BRST differential after the
-nonlinear variations have been sourced.
 
 Renormalization is compatible with gauge theory when counterterms can be
 chosen so that \eqref{eq:slavnov-taylor-identity} remains valid order by
