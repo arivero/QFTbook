@@ -462,6 +462,19 @@ The formal notation
 \]
 means precisely this smeared statement with
 \(\widehat\pi_t=\partial_t\widehat\phi_t\) as an operator-valued distribution.
+An interacting local field used as an interpolating operator need not satisfy
+this canonical identity.  If an analogous equal-time commutator exists with a
+central normalization \(C_\phi\ge0\),
+\[
+  [\widehat\phi_t(f),\widehat\pi_t(g)]\psi
+  =
+  \ii C_\phi
+  \int_{\mathbb R^d} f(\vec x)g(\vec x)\,\dd^d\vec x\,\psi ,
+\]
+then the same argument below gives \(\int\dd\rho=C_\phi\).  If no such
+equal-time normalization is part of the field data, the K\"all\'en--Lehmann
+representation by itself gives positivity and support, but not a total-weight
+sum rule.
 
 The commutator two-point distribution is
 \[
@@ -558,17 +571,27 @@ and monotone convergence yields the canonical sum rule
 It fixes the chosen field normalization; changing the field normalization
 rescales the spectral measure.
 
-If the same field has a one-particle atom \(Z\delta_{m^2}\), positivity of
-\(d\rho\) and \eqref{eq:kallen-lehmann-canonical-sum-rule} imply
+If the same canonically normalized field has a one-particle atom
+\(Z\delta_{m^2}\), positivity of \(d\rho\) and
+\eqref{eq:kallen-lehmann-canonical-sum-rule} imply
 \[
   0\le Z\le1.
 \]
 The remainder \(1-Z\) is the total spectral weight carried by all continuum
-states and by any other atoms.  For a noncanonical interpolating field, a
-composite operator, or a renormalized field in a different convention, the
-same K\"all\'en--Lehmann representation holds, but the right-hand side of
-\eqref{eq:kallen-lehmann-canonical-sum-rule} is replaced by the corresponding
-equal-time commutator normalization.
+states and by any other atoms in this normalization.  For a noncanonical
+interpolating field, a composite operator, or a renormalized field in a
+different convention, the same K\"all\'en--Lehmann representation holds, but
+\eqref{eq:kallen-lehmann-canonical-sum-rule} is replaced, when an equal-time
+commutator normalization exists, by
+\[
+  \int_{[0,\infty)}\dd\rho(s)=C_\phi .
+\]
+Then positivity gives \(0\le Z\le C_\phi\).  Without such a finite
+normalization, the coefficient \(Z\) is still a positive spectral weight of the
+chosen interpolating field, but it has no universal upper bound; rescaling the
+field rescales \(Z\).  The canonical free field used later in LSZ is the
+asymptotic field on the one-particle Fock space, normalized separately from the
+interpolating local field whose correlators contain the pole.
 
 \section{Scalar One-Particle States and Normalization}
 
