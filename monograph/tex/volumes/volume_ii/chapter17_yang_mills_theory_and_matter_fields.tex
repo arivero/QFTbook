@@ -161,10 +161,25 @@ Define the covariant differential operator
   \label{eq:ym-adjoint-covariant-operator}
 \end{equation}
 The gauge coupling has been absorbed into the connection in this chapter:
-relative to the QED convention \(\partial_\mu-\ii g A_\mu\), the present
-connection is \(A_\mu^{\rm here}=gA_\mu^{\rm QED}\).  With this choice the
+if \(g_{\rm el}\) denotes the Abelian charge called \(g\) in
+Chapter~\ref{ch:qed-external-states}, then relative to the QED convention
+\(\partial_\mu-\ii g_{\rm el} A_\mu^{\rm QED}\) the present connection is
+\(A_\mu^{\rm here}=g_{\rm el}A_\mu^{\rm QED}\).  With this choice the
 curvature and the action carry the coupling in the Yang--Mills kinetic term
-rather than in the covariant derivative.
+rather than in the covariant derivative.  In the \(U(1)\) specialization,
+\begin{equation}
+  A_\mu^{\rm here}=g_{\rm el}A_\mu^{\rm QED},
+  \qquad
+  F_{\mu\nu}^{\rm here}
+  =
+  \partial_\mu A_\nu^{\rm here}-\partial_\nu A_\mu^{\rm here}
+  =
+  g_{\rm el}F_{\mu\nu}^{\rm QED}.
+  \label{eq:ym-qed-curvature-rescaling}
+\end{equation}
+This is a change of field normalization, not a new physical assumption; every
+occurrence of \(F_{\mu\nu}\) below is in the coupling-absorbed Yang--Mills
+normalization.
 The finite transformation law \eqref{eq:ym-finite-gauge-transformation} is
 equivalent to
 \begin{equation}
