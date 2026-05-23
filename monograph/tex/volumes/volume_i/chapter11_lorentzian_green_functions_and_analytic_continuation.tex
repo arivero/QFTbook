@@ -351,6 +351,37 @@ Thus the Lorentzian two-point insertion is \(\ii\Sigma(k)\), where
 self-energy \(\Sigma_E(k_E)\) with the sign convention of
 Chapter~\ref{ch:perturbative-green-functions}.
 
+The contour rotation just used is a special case with no external energy
+flowing through the loop.  The same direct rotation is also legitimate for
+loop integrals with Euclidean external momenta, where the external energies
+lie on the imaginary axis and the Feynman poles can be separated continuously
+from the rotating contours.  For general Lorentzian timelike external momenta,
+one must instead analyze the full contour deformation in the complex loop
+energy variables.  The obstruction is a pinch singularity: poles from different
+propagators can trap the integration cycle so that it cannot be deformed to
+the Euclidean cycle without crossing singularities.
+
+For example, the Lorentzian continuation of the order-\(g^2\) sunset
+self-energy contains the denominator product
+\[
+  \frac{1}{
+  (q_1^2+m^2-\ii0)(q_2^2+m^2-\ii0)
+  \bigl((k-q_1-q_2)^2+m^2-\ii0\bigr)} .
+\]
+At \(\vec k=0\), the Landau equations have a solution with all three internal
+lines on shell and carrying positive energy when
+\[
+  (k^0)^2\ge (3m)^2 .
+\]
+At and above this three-particle threshold the \(q_1^0,q_2^0\) contours are
+pinched.  Thus the Euclidean sunset integral defines a first-sheet analytic
+function away from its Landau singularities, and the physical Lorentzian value
+above threshold is the specified boundary value on the cut, not the result of
+a naive independent rotation of each loop energy.  The discontinuity across
+such cuts is computed by the Cutkosky rules, which are the perturbative
+expression of the same spectral and unitarity structure developed in
+Chapter~\ref{ch:volume-ii-analyticity-crossing-landau}.
+
 \section{Full Two-Point Function and First Sheet}
 
 The perturbative time-ordered two-point function is written as
