@@ -231,8 +231,18 @@ In a vacuum sector there is a unit vector \(\vac\in\Hilb\) satisfying
 
 \section{Translation Spectrum and Mass Sectors}
 
-The translation generators are commuting self-adjoint operators.  Their joint
-spectral theorem gives a projection-valued measure
+The translation generators are strongly commuting self-adjoint operators.  This
+statement is stronger than the formal infinitesimal relation
+\([P^\mu,P^\nu]=0\) on a common invariant domain: for unbounded operators,
+commutation on a core does not by itself imply that the spectral projections
+commute.  Here strong commutativity follows from the structure already assumed.
+The restriction
+\[
+  a\longmapsto U(a,\mathbf 1)
+\]
+is a strongly continuous unitary representation of the abelian locally compact
+group \(\mathbb R^D\).  The joint Stone--Naimark spectral theorem for such a
+representation gives a unique projection-valued measure
 \[
   E:\{\text{Borel subsets of }\mathbb R^D\}\longrightarrow
   \{\text{orthogonal projections on }\Hilb\}
@@ -245,6 +255,11 @@ such that
   =
   \int_{\mathbb R^D}\ee^{\ii a^\mu p_\mu}\,\dd E(p).
 \]
+The one-parameter Stone generators \(P^\mu\) are therefore the coordinate
+operators of this single joint spectral measure.  In particular the spectral
+projections \(E(\Delta)\) commute, and the displayed Lie-algebra commutator is
+the differential shadow of this joint functional calculus rather than an
+independent substitute for it.
 For a vector \(\psi\in\Hilb\), its energy-momentum spectral measure is
 \[
   \mu_\psi(\Delta)=\|E(\Delta)\psi\|^2 ,
