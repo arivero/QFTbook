@@ -323,13 +323,13 @@ There are two oriented triangle graphs:
   \label{fig:four-dimensional-axial-vector-vector-triangle}
 \end{figure}
 The divergence of the axial insertion is the Fourier transform of a local
-contact term.  In a dimensional regulator set \(D=4-\epsilon\) and split the
-loop momentum as
+contact term.  In the dimensional-reduction implementation of the perturbative
+regulator, set \(D=4-\epsilon\) and split the loop momentum as
 \[
   \ell=\ell_\parallel+\ell_\perp ,
 \]
 where \(\ell_\parallel\) lies in the physical four-dimensional subspace.
-Keep \(\gamma_5=\ii\gamma^{0123}\) four-dimensional, so that
+Keep \(\gamma_5=-\ii\gamma^{0123}\) four-dimensional, so that
 \(\not\ell_\parallel\) anticommutes with \(\gamma_5\) and
 \(\not\ell_\perp\) commutes with \(\gamma_5\).  In the first triangle one uses
 \[
@@ -340,11 +340,116 @@ Keep \(\gamma_5=\ii\gamma^{0123}\) four-dimensional, so that
 \]
 The two bracketed terms are adjacent inverse-propagator numerators.  In the two
 oriented triangle graphs they reduce one fermion propagator and become a pair of
-vector-current contact terms with opposite routing.  The regulator is chosen so
-that the vector Ward identities are imposed exactly; after the loop momentum in
-one orientation is shifted to the routing of the other, these contact terms
-cancel.  The entire axial contact term is therefore carried by the evanescent
-\(\ell_\perp\) contribution.  The remaining trace is
+vector-current contact terms with opposite routing.  Here is the cancellation
+explicitly for the leading routing in Figure
+\ref{fig:four-dimensional-axial-vector-vector-triangle}.  Set
+\[
+  D_0=\ell^2,\qquad
+  D_k=(\ell-k)^2,\qquad
+  D_p=(\ell+p)^2 .
+\]
+The bracketed part of the first orientation gives
+\[
+\begin{aligned}
+  \mathcal C^{\nu\rho}_1
+  =
+  -\ii\int\frac{\dd^D\ell}{(2\pi)^D}
+  \bigg[
+  &
+  \frac{
+    \operatorname{tr}\!\left[
+      \gamma_5\not\ell\gamma^\nu(\not\ell-\not k)\gamma^\rho
+    \right]
+  }{D_0D_k}
+\\
+  &+
+  \frac{
+    \operatorname{tr}\!\left[
+      \gamma_5\gamma^\nu(\not\ell-\not k)\gamma^\rho(\not\ell+\not p)
+    \right]
+  }{D_kD_p}
+  \bigg].
+\end{aligned}
+\]
+The first term came from the adjacent factor
+\((\not\ell+\not p)^2=D_p\), after cyclically moving the first
+\((\not\ell+\not p)\) to the end of the trace; the second came from
+\(\not\ell^2=D_0\).  The bracketed part of the opposite orientation is
+\[
+\begin{aligned}
+  \mathcal C^{\nu\rho}_2
+  =
+  -\ii\int\frac{\dd^D\ell}{(2\pi)^D}
+  \bigg[
+  &
+  \frac{
+    \operatorname{tr}\!\left[
+      \gamma_5\not\ell\gamma^\rho
+      (\not\ell+\not p+\not k)\gamma^\nu
+    \right]
+  }{\ell^2(\ell+p+k)^2}
+\\
+  &+
+  \frac{
+    \operatorname{tr}\!\left[
+      \gamma_5\gamma^\rho
+      (\not\ell+\not p+\not k)\gamma^\nu(\not\ell+\not p)
+    \right]
+  }{(\ell+p+k)^2D_p}
+  \bigg].
+\end{aligned}
+\]
+The dimensional-reduction regulator is defined so that the reduced
+two-propagator integrals are translation invariant; this is the perturbative
+implementation of the vector Ward identities.  In the second term of
+\(\mathcal C_2\), set
+\(\ell'=\ell+p+k\) and then rename \(\ell'\) as \(\ell\).  It has the same
+denominator \(D_0D_k\) as the first term of \(\mathcal C_1\), while
+\[
+\begin{aligned}
+  &\operatorname{tr}\!\left[
+    \gamma_5\not\ell\gamma^\nu(\not\ell-\not k)\gamma^\rho
+  \right]
+  =
+  4\ii\epsilon^{\alpha\nu\beta\rho}\ell_\alpha(\ell-k)_\beta,
+\\
+  &\operatorname{tr}\!\left[
+    \gamma_5\gamma^\rho\not\ell\gamma^\nu(\not\ell-\not k)
+  \right]
+  =
+  4\ii\epsilon^{\rho\alpha\nu\beta}\ell_\alpha(\ell-k)_\beta
+  =
+  -4\ii\epsilon^{\alpha\nu\beta\rho}\ell_\alpha(\ell-k)_\beta .
+\end{aligned}
+\]
+Thus these two terms cancel.  In the first term of \(\mathcal C_2\), set
+\(\ell'=\ell+k\).  It has the same denominator \(D_kD_p\) as the second term
+of \(\mathcal C_1\), and
+\[
+\begin{aligned}
+  &\operatorname{tr}\!\left[
+    \gamma_5\gamma^\nu(\not\ell-\not k)\gamma^\rho(\not\ell+\not p)
+  \right]
+  =
+  4\ii\epsilon^{\nu\alpha\rho\beta}
+  (\ell-k)_\alpha(\ell+p)_\beta,
+\\
+  &\operatorname{tr}\!\left[
+    \gamma_5(\not\ell-\not k)\gamma^\rho(\not\ell+\not p)\gamma^\nu
+  \right]
+  =
+  4\ii\epsilon^{\alpha\rho\beta\nu}
+  (\ell-k)_\alpha(\ell+p)_\beta
+\\
+  &\hspace{3.6cm}
+  =
+  -4\ii\epsilon^{\nu\alpha\rho\beta}
+  (\ell-k)_\alpha(\ell+p)_\beta .
+\end{aligned}
+\]
+The bracketed contact terms therefore cancel pairwise once the vector Ward
+identities are imposed by the regulator.  The entire axial contact term is
+carried by the evanescent \(\ell_\perp\) contribution.  The remaining trace is
 \[
   \ell_\perp^2(-4\ii)
   \epsilon^{\nu\rho\alpha\beta}k_\alpha p_\beta .
