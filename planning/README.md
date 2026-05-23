@@ -46,3 +46,19 @@ finished monograph.
   uniformization queue for compiled and future volumes.
 
 Historical build audits and chapter dossiers are preserved in subdirectories.
+
+## Compiled Volumes and On-Disk Directories
+
+The directory names under `monograph/tex/volumes/` are historical storage
+locations.  They do not by themselves define the compiled volume order.  The
+compiled order is defined by the manifest files
+`monograph/tex/volumes/volume_*/*_current.tex`, each of which lists the
+chapters included in that compiled volume.
+
+| Compiled volume | Part title | Chapter count | On-disk chapter directories used |
+| --- | --- | ---: | --- |
+| I | Foundations of Local Quantum Field Theory | 15 | `volume_i/`, `volume_iv/` |
+| II | Particles, Scattering, and Analyticity | 13 | `volume_i/`, `volume_ii/`, `volume_iv/` |
+| III | Renormalization, Effective Field Theory, and Critical Phenomena | 9 | `volume_ii/` |
+| IV | Gauge Theory, Infrared Structure, and Anomalies | 11 | `volume_i/`, `volume_ii/` |
+| V | Conformal Field Theory | 9 | `volume_iii/` |
