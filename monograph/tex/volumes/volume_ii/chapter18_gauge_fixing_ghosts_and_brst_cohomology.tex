@@ -227,7 +227,7 @@ Grassmann-odd variables \(b_A\) and \(c^\alpha\):
   =
   \int[Db][Dc]\,
   \exp\left[
-    \ii b_A
+    -\ii b_A
     \left.
     \frac{\partial F^A[\phi^\xi]}{\partial\xi^\alpha}
     \right|_{\xi=\id}
@@ -254,7 +254,7 @@ The gauge-fixed action in these condensed variables is therefore
   \qquad
   S_{\mathrm{GF}}
   =
-  B_AF^A[\phi]+b_A\mathcal M^A{}_\alpha[\phi]c^\alpha .
+  B_AF^A[\phi]-b_A\mathcal M^A{}_\alpha[\phi]c^\alpha .
   \label{eq:general-gauge-fixed-action}
 \end{equation}
 The term \(S_{\mathrm{GF}}\) is not gauge invariant; its controlling symmetry is
@@ -286,10 +286,10 @@ The \(b_A\) notation used in
 \eqref{eq:general-ghost-determinant-bc} is related to the conventional
 antighost by
 \[
-  \bar c_A=-b_A .
+  \bar c_A=b_A .
 \]
 With this convention the ghost term in the Lagrangian has the sign displayed
-below, while the BRST transformation of the old variable is \(s b_A=-B_A\).
+below, while the BRST transformation of the antighost is \(s b_A=B_A\).
 The determinant of \(\mathcal M(A)\) is represented by Grassmann-valued scalar
 fields \(c^a(x)\) and \(\bar c^a(x)\) in the adjoint representation:
 \begin{equation}
@@ -370,7 +370,7 @@ In condensed field-space notation this reads
 \begin{equation}
   s\phi=c^\alpha S_\alpha\phi,\qquad
   sB_A=0,\qquad
-  sb_A=-B_A,\qquad
+  sb_A=B_A,\qquad
   sc^\alpha=-\frac12f^\alpha{}_{\beta\gamma}c^\beta c^\gamma,
   \label{eq:brst-condensed-transformations}
 \end{equation}
@@ -384,7 +384,7 @@ where
   \qquad
   [S_\beta,S_\gamma]=f^\alpha{}_{\beta\gamma}S_\alpha .
 \]
-The two notations agree because \(b_A=-\bar c_A\).  If \(\epsilon\) is a
+The two notations agree because \(b_A=\bar c_A\).  If \(\epsilon\) is a
 constant Grassmann-odd parameter, the finite-parity infinitesimal variation is
 \(\delta_B X=\epsilon\,sX\); in particular \(\epsilon c^\alpha\) is even, as a
 gauge parameter must be.
@@ -506,9 +506,9 @@ formula
 \[
   S_{\mathrm{GF}}
   =
-  -s\bigl(b_AF^A[\phi]\bigr)
+  s\bigl(b_AF^A[\phi]\bigr)
   =
-  B_AF^A[\phi]+b_A\mathcal M^A{}_\alpha[\phi]c^\alpha .
+  B_AF^A[\phi]-b_A\mathcal M^A{}_\alpha[\phi]c^\alpha .
 \]
 Equivalently, if the BRST charge \(Q_B\) is defined by the convention
 \begin{equation}
@@ -521,7 +521,7 @@ then
 \begin{equation}
   S_{\mathrm{GF}}
   =
-  -\ii Q_B\cdot\bigl(b_AF^A[\phi]\bigr),
+  \ii Q_B\cdot\bigl(b_AF^A[\phi]\bigr),
   \qquad
   Q_B^2=0 .
   \label{eq:b-notation-gauge-fixing-qb-exact}
@@ -660,18 +660,18 @@ where the subscript \(F\) records the chosen gauge condition.  If
 \[
   \overline\delta S_F[\Phi]
   =
-  -\ii Q_B\cdot\bigl(b_A\overline\delta F^A[\phi]\bigr).
+  \ii Q_B\cdot\bigl(b_A\overline\delta F^A[\phi]\bigr).
 \]
 Therefore, to first order in the deformation,
 \begin{align}
   \overline\delta\,\mathcal A_F(\Psi_f,\Psi_i)
   &=
-  \int[D\Phi]\,
+  -\int[D\Phi]\,
   \Psi_f^*\,\exp(\ii S_F)\,\Psi_i\,
   Q_B\cdot\bigl(b_A\overline\delta F^A\bigr)
   \notag\\
   &=
-  \int[D\Phi]\,
+  -\int[D\Phi]\,
   Q_B\cdot
   \left(
     \Psi_f^*\,\exp(\ii S_F)\,\Psi_i\,
