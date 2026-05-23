@@ -321,15 +321,37 @@ carries hypotheses.
   \]
   where \(A\) is an index set for fields, \(\mathcal D\subset\Hilb\) is a
   dense common invariant domain containing \(\vac\), and each \(\Phi_a\) is an
-  operator-valued distribution on a declared test-function space, such as
-  \(\mathcal S(\mathbb M^D)\) or \(C_c^\infty(\mathbb M^D)\), with common
-  domain \(\mathcal D\).  Thus \(\Phi_a(f)\mathcal D\subset\mathcal D\), finite
-  products of smeared fields are defined on \(\mathcal D\), and the vectors
-  obtained by applying such products to \(\vac\) lie in \(\Hilb\).
+  operator-valued distribution on a declared invariant test-function space
+  \(\mathcal T\), with common domain \(\mathcal D\).  In the standard
+  Wightman case \(\mathcal T=\mathcal S(\mathbb M^D)\), so the vacuum
+  distributions below are tempered.  The domain assumptions are
+  \[
+    \vac\in\mathcal D,\qquad
+    U(g)\mathcal D\subset\mathcal D\quad(g\in\mathcal P),\qquad
+    \Phi_a(f)\mathcal D\subset\mathcal D\quad(a\in A,\ f\in\mathcal T),
+  \]
+  and, for every \(n\ge1\),
+  \[
+    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\mathcal D
+    \subset
+    \mathcal D,
+    \qquad a_i\in A,\quad f_i\in\mathcal T.
+  \]
+  Matrix elements of finite products are required to be continuous multilinear
+  functionals of the test functions:
+  \[
+    (f_1,\ldots,f_n)
+    \longmapsto
+    \left\langle\psi,
+    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\chi
+    \right\rangle
+    \in\mathbb C,
+    \qquad \psi,\chi\in\mathcal D .
+  \]
 
-  Let \(g=(a,\Lambda)\), \(gx=\Lambda x+a\), and
+  Let \(g=(a,\Lambda)\in\mathcal P\), \(gx=\pi(\Lambda)x+a\), and
   \(f_g(y)=f(g^{-1}y)\).  If the fields carry a finite-dimensional Lorentz
-  representation \(R\), covariance is the smeared identity
+  representation \(R\) of \(G_{\rm Lor}\), covariance is the smeared identity
   \[
     U(g)^{-1}\Phi_a(f)U(g)
     =
@@ -341,7 +363,11 @@ carries hypotheses.
     U(g)^{-1}\Phi_a(x)U(g)=R(\Lambda)_a{}^b\Phi_b(gx).
   \]
   The representation \(U\) satisfies the spectrum condition of
-  Definition~\ref{def:vacuum-minkowski-local-qft}.
+  Definition~\ref{def:vacuum-minkowski-local-qft}: if \(E_P\) is the joint
+  spectral measure of the translation generators, then
+  \[
+    \operatorname{supp}E_P\subset\overline V_+.
+  \]
 
   Locality is imposed after smearing:
   \[
@@ -359,8 +385,31 @@ carries hypotheses.
     \Phi_{a_1}(x_1)\cdots\Phi_{a_n}(x_n)
     \ket{\vac}.
   \]
+  Equivalently,
+  \[
+    W_{a_1\cdots a_n}(f_1,\ldots,f_n)
+    =
+    \left\langle\vac,
+    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\vac
+    \right\rangle .
+  \]
+  Translation invariance gives a distribution in difference variables.  With
+  \[
+    \xi_j=x_{j+1}-x_j,\qquad
+    \mathcal W_{a_1\cdots a_n}(\xi_1,\ldots,\xi_{n-1})
+    =
+    W_{a_1\cdots a_n}
+    (0,\xi_1,\xi_1+\xi_2,\ldots,\xi_1+\cdots+\xi_{n-1}),
+  \]
+  the Wightman spectral condition is the support equation
+  \[
+    \operatorname{supp}
+    \widehat{\mathcal W}_{a_1\cdots a_n}
+    \subset
+    \overline V_+^{\,n-1}.
+  \]
   Positivity of the hierarchy means the following.  For every finite sequence
-  of compactly supported test tensors
+  of test tensors in the declared test-function space
   \[
     F=\{F^{(n)}_{a_1\cdots a_n}\}_{0\leq n\leq N},
     \qquad
@@ -379,8 +428,21 @@ carries hypotheses.
     \dd^Dx_1\cdots\dd^Dx_n .
   \]
   The condition is \(\langle\Psi_F,\Psi_F\rangle\geq0\), with the inner product
-  evaluated by the distributions \(W_n\).  Vacuum cyclicity means that the
-  linear span of all such vectors \(\Psi_F\) is dense in \(\Hilb\).
+  evaluated by the distributions \(W_n\):
+  \[
+    \langle\Psi_F,\Psi_F\rangle\ge0.
+  \]
+  Vacuum cyclicity is the density equation
+  \[
+    \overline{
+    \operatorname{span}\{
+    \Phi_{a_1}(f_1)\cdots\Phi_{a_n}(f_n)\vac
+    : n\ge0,\ f_i\in\mathcal T,\ a_i\in A
+    \}
+    }^{\,\|\cdot\|_{\Hilb}}
+    =
+    \Hilb .
+  \]
 \end{definition}
 
 \begin{definition}[Local-net presentation]
