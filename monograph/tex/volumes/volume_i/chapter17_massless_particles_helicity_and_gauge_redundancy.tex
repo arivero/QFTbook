@@ -545,6 +545,42 @@ cohomology. In that formulation the vector potential is a calculational
 representative, and \(F_{\mu\nu}\) descends to the physical local algebra.
 \end{remark}
 
+\begin{remark}[Two external photons]
+For an amplitude with an incoming photon of momentum \(k\) and an outgoing
+photon of momentum \(k'\), write the reduced tensor before choosing
+polarization representatives as \(\mathcal M^{\mu\nu}\).  Descent to the two
+helicity lines requires two Ward identities,
+\[
+  k_\mu\mathcal M^{\mu\nu}=0,
+  \qquad
+  k'_\nu\mathcal M^{\mu\nu}=0 .
+\]
+In tree-level spinor Compton scattering these identities are obtained by
+summing the two electron-exchange diagrams.  Let
+\[
+  N(q)=-\ii\not q+m,\qquad D(q)=q^2+m^2-\ii0 ,
+\]
+with \(\not q=\gamma^\rho q_\rho\),
+and impose the external on-shell Dirac equations.  Replacing the incoming
+polarization by \(k_\mu\) gives, up to the common charge and normalization
+factor, the two terms
+\[
+  \bar u(p')\,\not\epsilon'{}^*(k')\,\frac{N(p+k)\not k}{D(p+k)}\,u(p)
+  =
+  -\ii\,\bar u(p')\not\epsilon'{}^*(k')u(p),
+\]
+and
+\[
+  \bar u(p')\,\not k\,\frac{N(p-k')}{D(p-k')}\,
+  \not\epsilon'{}^*(k')\,u(p)
+  =
+  +\ii\,\bar u(p')\not\epsilon'{}^*(k')u(p).
+\]
+The contact terms produced by the Ward contraction of the \(s\)- and
+\(u\)-channel diagrams therefore cancel.  Replacing the outgoing polarization
+by \(k'_\nu\) gives the same cancellation with \(k\) and \(k'\) interchanged.
+\end{remark}
+
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95]
   \draw[->,gray!70,line width=0.7pt] (-3.4,0)--(3.6,0)
