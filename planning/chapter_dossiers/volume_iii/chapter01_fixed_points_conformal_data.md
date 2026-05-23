@@ -26,7 +26,7 @@ The chapter establishes:
   \(y_a=D-\Delta_a\);
 - CFT data as local operator space, stress tensor, conformal-algebra action,
   and Euclidean separated-point distributions;
-- source functionals \(W_\ast[g,\eta]\) whose derivatives define stress
+- source functionals \(W_\ast[g,J]\) whose derivatives define stress
   tensor insertions and local-operator insertions;
 - diffeomorphism and Weyl Ward identities as identities of
   source-dependent distributions, with contact terms fixed by the source
@@ -34,6 +34,14 @@ The chapter establishes:
 - Ising universality as a fixed-point example, while distinguishing the
   finite statistical trace space from any reconstructed continuum Hilbert
   space.
+- The displayed \(D=3\) Ising numerical entries are rounded from the
+  mixed-correlator conformal-bootstrap/stress-tensor computation
+  "Bootstrapping the 3d Ising Stress Tensor" by Chang, Dommes, Erramilli,
+  Homrich, Kravchuk, Liu, Mitchell, Poland, and Simmons-Duffin
+  (arXiv:2411.15300), which reports
+  \(\Delta_\sigma=0.518148806(24)\) and
+  \(\Delta_\varepsilon=1.41262528(29)\), giving
+  \(\nu=1/(3-\Delta_\varepsilon)=0.629970975\ldots\).
 
 ## Claims To Verify
 
