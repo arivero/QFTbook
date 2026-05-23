@@ -602,8 +602,23 @@ kernel
 The pole in dimensional regularization is the same pole as
 \eqref{eq:qcd-basic-log-integral}.
 
-The adjoint connection in the conventions of
-\eqref{eq:qcd-casimir-definitions} satisfies
+Let \(t_{\rm ad}^a\) denote the Hermitian adjoint-representation generators,
+defined by
+\[
+  (t_{\rm ad}^a)^b{}_{c}=-\ii f^{ab}{}_{c},
+  \qquad
+  \operatorname{tr}_{\rm ad}(t_{\rm ad}^a t_{\rm ad}^b)
+  =
+  C_A\delta^{ab}.
+\]
+The curvature endomorphism of the adjoint covariant derivative is the
+anti-Hermitian operator
+\[
+  \operatorname{ad}\widetilde F_{\mu\nu}
+  :=
+  -\ii \widetilde F^a_{\mu\nu}t_{\rm ad}^a .
+\]
+Thus the adjoint trace used in the heat-kernel coefficient satisfies
 \begin{equation}
   \operatorname{tr}_{\rm ad}
   \bigl(
@@ -611,11 +626,15 @@ The adjoint connection in the conventions of
     \operatorname{ad}\widetilde F^{\mu\nu}
   \bigr)
   =
+  (-\ii)^2
+  \widetilde F^a_{\mu\nu}\widetilde F^{b\mu\nu}
+  \operatorname{tr}_{\rm ad}(t_{\rm ad}^a t_{\rm ad}^b)
+  =
   -C_A\,
   \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
   \label{eq:qcd-adjoint-trace-sign}
 \end{equation}
-because the adjoint matrices are real antisymmetric.  For a matter
+where the sign comes from the two explicit factors of \(-\ii\).  For a matter
 representation \(R\) with Hermitian generators \(t_R^a\),
 \[
   \operatorname{tr}_{R}
