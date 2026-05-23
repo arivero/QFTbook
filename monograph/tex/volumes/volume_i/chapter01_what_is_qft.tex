@@ -768,19 +768,21 @@ spectral measures is derived in Chapter~\ref{ch:kallen-lehmann}.
 For a scalar Wightman field in the vacuum Hilbert-space framework, positivity
 of the Hilbert-space inner product, translation invariance, and the spectrum
 condition imply that the two-point function admits a positive spectral
-measure on invariant mass. In the common case where the measure can be
-written in terms of a density \(\rho\), the time-ordered two-point function
-has the form
+measure on invariant mass.  Let \(\dd\rho(\mu^2)\) denote this positive Borel
+measure on \([0,\infty)\).  The time-ordered two-point function has the form
 \[
   \bra{\vac}T\{\widehat\phi(x)\widehat\phi(0)\}\ket{\vac}
   =
-  \int_0^\infty \dd\mu^2\,\rho(\mu^2)\Delta_F(x;\mu^2),
-  \qquad
-  \rho(\mu^2)\ge0.
+  \int_{[0,\infty)} \dd\rho(\mu^2)\,\Delta_F(x;\mu^2).
 \]
-If the spectral measure is not absolutely continuous, the integral is written
-with respect to the positive measure
-\(\dd\rho(\mu^2)\) rather than a density.
+When this measure is absolutely continuous with respect to Lebesgue measure,
+one may write
+\[
+  \dd\rho(\mu^2)=\rho_{\rm ac}(\mu^2)\,\dd\mu^2,
+  \qquad
+  \rho_{\rm ac}(\mu^2)\ge0
+  \quad\text{for almost every }\mu^2 .
+\]
 This formula will be derived from the stated Hilbert-space assumptions in
 Chapter~\ref{ch:kallen-lehmann}.  It is the first result in the text that
 relates local two-point data to particle content: isolated atoms of the spectral
