@@ -322,40 +322,35 @@ Therefore
 For identical final particles, the right hand side is divided by \(2\) when
 the integral is taken over the full labeled solid angle.
 
-For elastic scattering of identical scalar particles this formula is
-equivalently obtained by doing the delta-function integration directly.  Let
-\(E=E_{\rm cm}\), \(p=|\vec p_*|\), and \(q=|\vec q_*|\).  Then
+For elastic scattering of identical scalar particles the preceding formula
+already gives the total cross section.  Since
+\(|\vec q_*|=|\vec p_*|\) and \(s=E_{\rm cm}^2\),
 \[
-\begin{aligned}
-  \sigma_{2\to2}
-  &=
-  \frac12\frac{1}{4E_1E_2v_{\rm rel}}
-  \int
-  \frac{\dd^3\vec q_1}{(2\pi)^3 2\omega_1}
-  \frac{\dd^3\vec q_2}{(2\pi)^3 2\omega_2}
-\\
-  &\qquad\qquad\times
-  (2\pi)^4\delta^{(4)}(p_1+p_2-q_1-q_2)
-  |\mathcal M|^2 .
-\end{aligned}
+  \sigma_{2\to2}^{\rm id}
+  =
+  \frac12
+  \int\dd\Omega\,
+  \frac{|\mathcal M(E_{\rm cm},\Omega)|^2}{64\pi^2s}
+  =
+  \frac{1}{2^7\pi^2E_{\rm cm}^2}
+  \int\dd\Omega\,|\mathcal M(E_{\rm cm},\Omega)|^2 .
 \]
-The spatial delta function sets \(\vec q_2=-\vec q_1\), and the radial
+The direct delta-function integration gives the same expression and is a useful
+normalization check.  In the center-of-mass frame the spatial delta function
+sets \(\vec q_2=-\vec q_1\).  Writing \(q=|\vec q_1|\), the radial
 energy-conservation integral is
 \[
   \int q^2\dd q\,
-  \delta(\omega_1(q)+\omega_2(q)-E)
+  \delta(\omega_1(q)+\omega_2(q)-E_{\rm cm})
   =
-  \frac{q\,\omega_1\omega_2}{E}.
+  \frac{q\,\omega_1\omega_2}{E_{\rm cm}}.
 \]
-Using \(E_1E_2v_{\rm rel}=pE\) and \(q=p\) for elastic scattering gives
-\[
-  \sigma_{2\to2}
-  =
-  \frac{1}{2^7\pi^2E^2}
-  \int\dd\Omega\,|\mathcal M(E,\Omega)|^2 .
-\]
+Together with \(E_1E_2v_{\rm rel}=|\vec p_*|E_{\rm cm}\), this reduces the
+labeled two-body phase-space integral to the same result above, with the
+factor \(1/2\) supplied by the two identical final particles.
 
-For elastic scattering of identical scalar particles of mass \(m\),
+For the tree-level \(\phi^4\) example with a single scalar mass \(m\), the
+elastic kinematics obey
 \[
   |\vec q_*|=|\vec p_*|,
   \qquad
