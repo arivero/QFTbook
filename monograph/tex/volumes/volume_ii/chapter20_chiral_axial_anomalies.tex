@@ -3,8 +3,14 @@
 
 \section{Classical Chiral Currents}
 
-Let \(\psi\) be a Dirac fermion in four dimensions, coupled to a background or
-dynamical gauge field through
+Let \(\psi\) be a Dirac fermion in four dimensions.  Throughout this chapter
+the Lorentzian metric is mostly plus and the Dirac adjoint is
+\[
+  \bar\psi:=\ii\psi^\dagger\gamma^0 .
+\]
+With this adjoint the Hermitian bilinear current associated with a real
+phase rotation contains an explicit factor of \(\ii\).  Couple \(\psi\) to a
+background or dynamical gauge field through
 \[
   D_\mu\psi=\partial_\mu\psi-\ii A_\mu\psi .
 \]
@@ -18,9 +24,9 @@ For a mass \(m\), the Dirac Lagrangian is
 When \(m=0\), the classical equations of motion imply conservation of the
 vector and axial currents
 \[
-  j^\mu=\bar\psi\gamma^\mu\psi,
+  j^\mu=\ii\bar\psi\gamma^\mu\psi,
   \qquad
-  j_5^\mu=\bar\psi\gamma^\mu\gamma_5\psi,
+  j_5^\mu=\ii\bar\psi\gamma^\mu\gamma_5\psi,
   \qquad
   \partial_\mu j^\mu=0,
   \qquad
@@ -28,9 +34,17 @@ vector and axial currents
 \]
 For \(m\neq0\), the axial divergence becomes
 \[
-  \partial_\mu j_5^\mu=2m\,\bar\psi\gamma_5\psi
+  \partial_\mu j_5^\mu=2\ii m\,\bar\psi\gamma_5\psi
 \]
 with the \(\gamma_5\) convention fixed in the preceding QCD chapter.
+Here \(D_\mu\bar\psi=\partial_\mu\bar\psi+\ii\bar\psi A_\mu\), and the
+classical equations of motion are
+\((\gamma^\mu D_\mu+m)\psi=0\) and
+\((D_\mu\bar\psi)\gamma^\mu-m\bar\psi=0\).  Since
+\(\{\gamma_5,\gamma^\mu\}=0\), these equations give
+\(\partial_\mu(\bar\psi\gamma^\mu\gamma_5\psi)=2m\bar\psi\gamma_5\psi\);
+the explicit factor of \(\ii\) in \(j_5^\mu\) gives the displayed
+normalization.
 
 The corresponding infinitesimal transformations are
 \[
@@ -607,7 +621,7 @@ that
 \begin{equation}
   \partial_\mu j_5^\mu
   =
-  2m\,\bar\psi\gamma_5\psi
+  2\ii m\,\bar\psi\gamma_5\psi
   +
   \frac{e^2 q^2}{16\pi^2}
   \epsilon^{\mu\nu\rho\sigma}
@@ -623,9 +637,10 @@ Ward identity.
 Equation \eqref{eq:abelian-axial-anomaly} is a statement about a
 renormalized composite operator identity.  Each symbol in it has a prescribed
 meaning: \(F_{\mu\nu}\) is the electromagnetic field strength,
-\(\epsilon^{0123}=+1\) in the chosen orientation, \(m\bar\psi\gamma_5\psi\)
-is the pseudoscalar mass operator, and \(j_5^\mu\) is the renormalized current
-whose vector-current Ward identities have been preserved.
+\(\epsilon^{0123}=+1\) in the chosen orientation, \(\ii m\bar\psi\gamma_5\psi\)
+is the pseudoscalar mass-breaking operator in the mostly-plus adjoint
+convention, and \(j_5^\mu\) is the renormalized current whose vector-current
+Ward identities have been preserved.
 
 \section{Measure Derivation}
 
