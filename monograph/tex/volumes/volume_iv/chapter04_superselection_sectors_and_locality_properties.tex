@@ -204,15 +204,40 @@ algebra is the fixed-point algebra
 \[
   \Obs_{\rm qloc}=\mathcal F^G .
 \]
-Under the finite-statistics assumptions of the Doplicher--Roberts theorem,
-the symmetric tensor category of DHR sectors determines such a compact group
-\(G\) and a corresponding field algebra.  In this theorem, the word gauge
-means a reconstruction of charged field coordinates from the neutral
-observable category; physical observables remain the \(G\)-invariant elements.
 
-This result explains how internal charge labels can emerge from locality and
-sector structure.  It also identifies the assumptions under which a compact
-group description is available.
+\begin{theorem}[Doplicher--Roberts reconstruction]
+\label{thm:doplicher-roberts-reconstruction}
+Let \(D\ge3\), and let the vacuum observable net satisfy Haag duality.  Let
+\(\mathcal C\) be the DHR category of transportable localized endomorphisms of
+\(\Obs_{\rm qloc}\).  Assume that \(\mathcal C\) is a symmetric \(C^*\)-tensor
+category with simple tensor unit, finite-dimensional intertwiner spaces, finite
+direct sums, subobjects, conjugates, and finite statistics for every object.
+Then there is a compact group
+\[
+  G=\operatorname{Aut}^{\otimes,*}(\omega_{\rm fib})
+\]
+for a faithful symmetric tensor \(*\)-functor
+\(\omega_{\rm fib}:\mathcal C\to{\rm Hilb}_{\rm fd}\), where
+\({\rm Hilb}_{\rm fd}\) denotes finite-dimensional Hilbert spaces, and
+\[
+  \mathcal C\simeq {\rm Rep}_{\rm fd}(G)
+\]
+as symmetric \(C^*\)-tensor categories.  Moreover, after the standard
+Doplicher--Roberts field-algebra reconstruction, there is a \(C^*\)-algebra
+\(\mathcal F\) carrying a continuous action of \(G\) by automorphisms such that
+\[
+  \Obs_{\rm qloc}\simeq \mathcal F^G .
+\]
+The irreducible DHR sectors correspond to irreducible finite-dimensional
+unitary representations of \(G\), and charged field multiplets in
+\(\mathcal F\) transform according to these representations.
+\end{theorem}
+
+In this theorem, the word gauge means a reconstruction of charged field
+coordinates from the neutral observable category; physical observables remain
+the \(G\)-invariant elements.  The compact group description is therefore not
+an input at this stage.  It is a conclusion from locality, transportability,
+Haag duality, symmetric exchange, and finite statistics.
 
 \section{Split Property and Local Tensor Factorization}
 
