@@ -40,6 +40,38 @@ The delta-normalized spinors used below inherit the normalization
 \]
 where \(\bar u=u^\dagger\beta\), \(\bar v=v^\dagger\beta\), and
 \(p^0=\omega_{\vec p}\) on \(\Sigma_m^+\).
+The corresponding individual completeness relations are
+\begin{equation}
+  \sum_{\sigma=1}^2
+  u_\alpha^\sigma(p)\bar u^{\sigma,\beta}(p)
+  =
+  \frac{(m-\ii\not p)_\alpha{}^\beta}{2\omega_{\vec p}},
+  \qquad
+  \sum_{\sigma=1}^2
+  v_\alpha^\sigma(p)\bar v^{\sigma,\beta}(p)
+  =
+  -\frac{(m+\ii\not p)_\alpha{}^\beta}{2\omega_{\vec p}} .
+  \label{eq:dirac-individual-spin-sums}
+\end{equation}
+At the reference momentum \(p_R=(m,\vec0)\), \(\not p_R=\ii m\beta\), so
+\[
+  \sum_\sigma u^\sigma(p_R)\bar u^\sigma(p_R)
+  =
+  \frac{1+\beta}{2},
+  \qquad
+  \sum_\sigma v^\sigma(p_R)\bar v^\sigma(p_R)
+  =
+  -\frac{1-\beta}{2}.
+\]
+These rest-frame matrices obey
+\[
+  (\not p_R-\ii m)\frac{1+\beta}{2}=0,
+  \qquad
+  (\not p_R+\ii m)\left[-\frac{1-\beta}{2}\right]=0,
+\]
+and have traces \(2\) and \(-2\), reproducing the summed Dirac-adjoint
+normalizations at \(p^0=m\).  Lorentz covariance of the intertwiners transports
+the identities to all \(p\in\Sigma_m^+\).
 Let
 \[
   \dd\mu_m(p)
@@ -152,8 +184,8 @@ Suppose first that the oscillator algebra used ordinary commutators,
   =
   \delta_{\sigma\tau}\delta^3(\vec p-\vec q),
 \]
-with all other commutators zero. Using the spin sums from the previous
-chapter gives
+with all other commutators zero. Using
+\eqref{eq:dirac-individual-spin-sums} gives
 \[
 \begin{aligned}
   [\widehat\Phi_\alpha(x),\widehat{\bar\Phi}^{\beta}(y)]
@@ -181,7 +213,7 @@ which has nonzero spacelike values. For example, at equal times and
 Thus the field obtained with the commutator sign is nonlocal.
 
 If instead the oscillator algebra is the canonical anticommutator algebra,
-the same spin sums give
+\eqref{eq:dirac-individual-spin-sums} gives
 \[
   \{\widehat\psi_\alpha(x),\widehat{\bar\psi}^{\beta}(y)\}
   =
