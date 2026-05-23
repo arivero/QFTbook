@@ -33,6 +33,46 @@ denotes the smeared operator.  This integral notation means distributional
 pairing, and all products of fields below are products of smeared operators on
 the common domain.
 
+The field labels carry an antilinear involution.  Let
+\[
+  E_I=\bigoplus_{\alpha\in I}\mathbb C e_\alpha
+\]
+be the finite field-label space used in a given multiplet, and let
+\[
+  J:E_I\to E_I,\qquad J e_\alpha=e_{\alpha^\dagger},
+  \qquad J^2=1,
+\]
+be an antilinear map; if the chosen field basis is not closed under componentwise
+conjugation, \(J\) includes the corresponding finite-dimensional conjugation
+matrix.  For an \(E_I\)-valued test function \(h=\sum_\alpha h^\alpha e_\alpha\)
+define
+\[
+  \widehat\Phi(h)=\sum_\alpha \widehat\Phi_\alpha(h^\alpha),
+  \qquad
+  h^\dagger(x)=Jh(x)
+  =
+  \sum_\alpha \overline{h^\alpha(x)}\,e_{\alpha^\dagger}.
+\]
+The Hermiticity hypothesis for the operator-valued distribution is the domain
+inclusion
+\begin{equation}
+  \widehat\Phi(h)^*\supset \widehat\Phi(h^\dagger).
+  \label{eq:wightman-field-adjoint-inclusion}
+\end{equation}
+Equivalently, for a scalar test function \(f\),
+\[
+  \widehat\Phi_\alpha(f)^*
+  \supset
+  \widehat\Phi_{\alpha^\dagger}(\overline f).
+\]
+Here \(\widehat\Phi(h)^*\) is the Hilbert-space adjoint of the densely defined
+operator \(\widehat\Phi(h):\mathcal D\to\mathcal D\); the inclusion means that
+\(\mathcal D\subset\operatorname{Dom}(\widehat\Phi(h)^*)\) and that the two
+operators agree on \(\mathcal D\).  Thus a Hermitian field smeared with a real
+test function is symmetric on \(\mathcal D\).  Essential self-adjointness of its
+closure is an additional analytic assertion, not part of the formal adjoint
+identity.
+
 The vacuum is invariant:
 \[
   U(g)\vac=\vac,\qquad g\in \Poinc .
@@ -240,26 +280,11 @@ variables has support in \(\overline V_+^{\,n-1}\).  This is the same positive
 spectral input that will lead in Chapter \ref{ch:kallen-lehmann} to the
 K\"all\'en--Lehmann representation of two-point functions.
 
-The Wightman hierarchy also records the adjunction operation on fields.  We
-assume the field labels are closed under an adjunction operation
-\(\alpha\mapsto \alpha^\dagger\), extended antilinearly to finite label
-spaces and chosen so that
-\[
-  \widehat\Phi_\alpha(f)^*|_{\mathcal D}
-  =
-  \widehat\Phi_{\alpha^\dagger}(\overline f)|_{\mathcal D}
-\]
-whenever the adjoint is restricted to the common invariant domain.  If a
-chosen multiplet is not already in such a basis, the involution includes the
-corresponding finite-dimensional conjugation matrix on the label space.
-
-For test functions valued in field-label tensor powers, this adjunction is
-defined before it is used in the positivity condition.  Let
-\[
-  E_I=\bigoplus_{\alpha\in I}\mathbb C e_\alpha
-\]
-be the field-label vector space and let \(J:E_I\to E_I\) be the antilinear map
-with \(J e_\alpha=e_{\alpha^\dagger}\).  For
+The Wightman hierarchy also records the adjunction operation on fields.  On
+one-field test functions the adjunction is the map \(h\mapsto h^\dagger\) fixed
+in \eqref{eq:wightman-field-adjoint-inclusion}.  On test functions valued in
+field-label tensor powers, one must also reverse the order of insertions because
+the Hilbert-space adjoint reverses products.  For
 \(f_n\in\mathcal S(M^n,E_I^{\otimes n})\), define the antilinear tensor
 reversal \(R_n:E_I^{\otimes n}\to E_I^{\otimes n}\) by
 \[
@@ -297,6 +322,9 @@ For all labels and test functions,
   W_{\alpha_n^\dagger\cdots\alpha_1^\dagger}
   (\overline f_n\otimes\cdots\otimes\overline f_1).
 \]
+This is the vacuum distribution form of the operator-domain adjoint condition
+\(\widehat\Phi(h)^*\supset\widehat\Phi(h^\dagger)\), with product order
+reversed after taking adjoints.
 \item[Locality.]
 \(W_n\) has the graded permutation property when adjacent field insertions
 are smeared with spacelike separated test functions.
@@ -421,17 +449,36 @@ Let
   \mathcal N_W=\{F\in\mathcal V\mid \langle F,F\rangle_W=0\}.
 \]
 The dense domain \(\mathcal D\) is the image of \(\mathcal V/\mathcal N_W\)
-inside its Hilbert-space completion.  For a test function \(h\) with field
-label \(\alpha\), the reconstructed smeared field is
+inside its Hilbert-space completion.  For an \(E_I\)-valued one-field test
+function \(h\), the reconstructed smeared field is
 \[
-  \widehat\Phi_\alpha(h)[F]=[h_\alpha\otimes F],
+  \widehat\Phi(h)[F]=[h\otimes F],
 \]
-where \(h_\alpha\otimes F\) means left insertion of the one-field test
-function before the sequence \(F\).  Positivity and the Wightman identities
+where \(h\otimes F\) means left insertion of the one-field test function before
+the sequence \(F\).  In components,
+\(\widehat\Phi_\alpha(k)[F]=[(k e_\alpha)\otimes F]\).  Positivity and the
+Wightman identities
 ensure that this action is well defined on the null quotient and that the
 vacuum vector is the class of \((1,0,0,\ldots)\).  The Poincare
 representation acts by transforming all test functions; covariance of
 \(\{W_n\}\) makes this action unitary.
+
+The same formula verifies the adjoint inclusion on the reconstructed common
+domain.  For an \(E_I\)-valued one-field test function \(h\) and finite
+sequences \(F,G\),
+\[
+  \langle \widehat\Phi(h)F,G\rangle_W
+  =
+  \langle F,\widehat\Phi(h^\dagger)G\rangle_W .
+\]
+Indeed, inserting \(h\) on the left of \(F\) and then applying the dagger in
+\eqref{eq:wightman-reconstruction-inner-product} moves \(h\) to the right
+place with the label adjunction and complex conjugation fixed above.  After
+quotienting by \(\mathcal N_W\), this identity says precisely that
+\[
+  \widehat\Phi(h)^*\supset \widehat\Phi(h^\dagger)
+\]
+on the dense finite-sequence domain.
 
 \begin{figure}[H]
   \centering
