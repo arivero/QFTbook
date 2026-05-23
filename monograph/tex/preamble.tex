@@ -71,3 +71,75 @@
 \newcommand{\vev}[1]{\langle #1\rangle}
 \newcommand{\R}{\mathbb R}
 \newcommand{\C}{\mathbb C}
+
+\newcommand{\ChapterConventions}[5]{%
+  \par\smallskip
+  \noindent\textbf{Conventions in this chapter.}
+  \begin{itemize}[leftmargin=1.6em,itemsep=0pt,topsep=0.15em,parsep=0pt]
+    \item \textbf{Signature.} #1.
+    \item \textbf{Metric sign.} #2.
+    \item \(\boldsymbol{\hbar}\). #3.
+    \item \textbf{Vacuum symbol.} #4.
+    \item \textbf{Generator convention.} #5.
+  \end{itemize}
+}
+\newcommand{\ConventionsLorentzian}{%
+  \ChapterConventions{Lorentzian \(\mathbb M^D\)}
+  {\(\eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+)\)}
+  {\(1\), unless explicitly displayed}
+  {\(\vac=\Omega\)}
+  {\(U(a)=\exp(\ii a^\mu P_\mu)\), hence
+  \([P_\mu,\widehat\Phi(x)]=\ii\partial_\mu\widehat\Phi(x)\) when the
+  field is translation covariant}%
+}
+\newcommand{\ConventionsEuclidean}{%
+  \ChapterConventions{Euclidean \(\R^D\)}
+  {positive metric \(\delta_{\mu\nu}\)}
+  {\(1\), unless explicitly displayed}
+  {\(\vac=\Omega\) only after Hilbert-space reconstruction; otherwise
+  brackets denote the stated functional expectation}
+  {Lorentzian generators introduced by continuation use
+  \(U(a)=\exp(\ii a^\mu P_\mu)\)}%
+}
+\newcommand{\ConventionsMixed}{%
+  \ChapterConventions{Lorentzian formulas use \(\mathbb M^D\); Euclidean
+  formulas use \(\R^D\)}
+  {Lorentzian \(\eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+)\);
+  Euclidean \(\delta_{\mu\nu}\)}
+  {\(1\), unless explicitly displayed}
+  {\(\vac=\Omega\) for Hilbert-space vacuum matrix elements; functional
+  averages are named separately}
+  {Lorentzian translations use \(U(a)=\exp(\ii a^\mu P_\mu)\)}%
+}
+\newcommand{\ConventionsRealTime}{%
+  \ChapterConventions{real time; no spacetime metric unless a field-theory
+  example is explicitly introduced}
+  {field-theory examples use
+  \(\eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+)\)}
+  {\(1\), unless explicitly displayed}
+  {\(\vac=\Omega\) when a vacuum vector is present}
+  {time evolution is \(\exp(-\ii Ht)\), and spacetime translations use
+  \(U(a)=\exp(\ii a^\mu P_\mu)\) when introduced}%
+}
+\newcommand{\ConventionsEuclideanCFT}{%
+  \ChapterConventions{Euclidean \(\R^D\), with radial quantization invoked
+  where stated}
+  {positive metric \(\delta_{\mu\nu}\)}
+  {\(1\), unless explicitly displayed}
+  {\(\vac=\Omega\) for the radial-quantization vacuum when a Hilbert space is
+  used}
+  {represented symmetry transformations use \(\exp(\ii\epsilon^A\widehat Q_A)\);
+  differential conformal generators are defined with the sign displayed in
+  the relevant formula}%
+}
+\newcommand{\ConventionsMixedCFT}{%
+  \ChapterConventions{Lorentzian local-operator data and Euclidean radial or
+  conformal geometry where stated}
+  {Lorentzian \(\eta_{\mu\nu}=\operatorname{diag}(-,+,\ldots,+)\);
+  Euclidean \(\delta_{\mu\nu}\)}
+  {\(1\), unless explicitly displayed}
+  {\(\vac=\Omega\) for the Lorentzian or radial-quantization vacuum}
+  {Poincare translations use \(U(a)=\exp(\ii a^\mu P_\mu)\); represented
+  conformal charges use \(\exp(\ii\epsilon^A\widehat Q_A)\) when a unitary
+  Hilbert-space action is present}%
+}
