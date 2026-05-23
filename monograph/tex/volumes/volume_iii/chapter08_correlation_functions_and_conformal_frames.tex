@@ -237,7 +237,14 @@ The inversion tensor
   \label{eq:inversion-tensor}
 \end{equation}
 is the orthogonal part of the inversion Jacobian.  It is the elementary
-building block for two-point functions with vector or tensor indices.  For
+building block for two-point functions with vector or tensor indices.  Its
+action on the line spanned by \(x^\mu\) is multiplication by \(-1\), while its
+action on the orthogonal complement of \(x^\mu\) is the identity.  Hence
+\(\det I(x)=-1\): inversion lies in \(O(D)\setminus SO(D)\).  Every use of
+\(I_{\mu\nu}(x)\) in a spin tensor structure therefore presupposes the extension
+of the \(SO(D)\) spin action to the disconnected orthogonal, or pin, action
+specified in Chapter~\ref{ch:volume-iii-primary-operators-finite-transformations}.
+For
 example, a vector primary of dimension \(\Delta_V\) obeys
 \begin{equation}
   \left\langle V_\mu(x)V_\nu(0)\right\rangle
