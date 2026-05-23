@@ -97,12 +97,18 @@ residue of a time-ordered Green function.
 
 Let
 \[
-  q_i=(\omega_{\vec q_i},\vec q_i),
+  q_i=(q_i^0,\vec q_i),
   \qquad
-  p_j=(\omega_{\vec p_j},\vec p_j)
+  p_j=(p_j^0,\vec p_j)
 \]
-be positive-energy momenta on \(\Sigma_m^+\), and introduce all-incoming
-Green-function momenta
+be external momentum variables. Their physical boundary values lie on
+\(\Sigma_m^+\):
+\[
+  q_i^0=\omega_{\vec q_i},
+  \qquad
+  p_j^0=\omega_{\vec p_j}.
+\]
+Introduce all-incoming Green-function momenta
 \[
   k_i=q_i\quad(1\le i\le m),
   \qquad
@@ -112,26 +118,53 @@ Let \(G_{m+n}^{\rm conn}\) be the connected time-ordered distribution and let
 \(\widetilde G_{m+n}^{\rm conn}\) denote its Fourier transform in the
 convention of Section~\ref{sec:lsz-momentum-space-kernel}.
 
-\begin{theorem}[LSZ reduction for a massive scalar]
-\label{thm:lsz-wave-packet}
-Under the assumptions above, the connected component of
-\(\langle F_{\mathrm{out}},SF_{\mathrm{in}}\rangle_{\mathcal F_s(\Hilb_1)}\) is obtained
-from the distributional boundary value
-\[
+For off-shell external variables in a neighborhood of the physical mass shells,
+define the amputated external-residue distribution
+\begin{equation}
 \begin{aligned}
-&\left[
+&\mathcal L_{m,n}(q_1,\ldots,q_m|p_1,\ldots,p_n)
+\\
+&\quad =
+  \left[
   \prod_{a=1}^{m+n}
   Z^{-1/2}\,\ii(k_a^2+m^2)
   \right]
-  \widetilde G_{m+n}^{\rm conn}(k_1,\ldots,k_{m+n})
+  \widetilde G_{m+n}^{\rm conn}(k_1,\ldots,k_{m+n}).
 \end{aligned}
-\]
-by restricting every external \(q_i\) and \(p_j\) to \(\Sigma_m^+\) and
-smearing with the wave packets \(f_i^*(\vec q_i)\) and \(g_j(\vec p_j)\)
-against the mass-shell measures \(\dd\mu_m\).  The restriction is a
-boundary-value operation in the sense of
-Chapter~\ref{ch:lorentzian-green-functions}: the expression is first paired
-with the wave packets, and the external one-particle residues are then taken.
+\label{eq:lsz-external-residue-distribution}
+\end{equation}
+The notation
+\(\mathcal L_{m,n}^{\mathrm{on}}\) denotes the distributional boundary value of
+\eqref{eq:lsz-external-residue-distribution} obtained after smearing the
+spatial momenta with wave packets, taking the simultaneous external
+one-particle residues, and then setting
+\(q_i^0=\omega_{\vec q_i}\), \(p_j^0=\omega_{\vec p_j}\).
+
+\begin{theorem}[LSZ reduction for a massive scalar]
+\label{thm:lsz-wave-packet}
+Under the assumptions above,
+\begin{equation}
+\begin{aligned}
+&\left(
+\langle F_{\mathrm{out}},S F_{\mathrm{in}}
+\rangle_{\mathcal F_s(\Hilb_1)}
+\right)_{\mathrm{conn}}
+\\
+&\quad =
+  \int
+  \prod_{i=1}^m\dd\mu_m(\vec q_i)\,f_i(\vec q_i)^*
+  \prod_{j=1}^n\dd\mu_m(\vec p_j)\,g_j(\vec p_j)
+\\
+&\qquad\qquad\times
+  \mathcal L_{m,n}^{\mathrm{on}}
+  (q_1,\ldots,q_m|p_1,\ldots,p_n).
+\end{aligned}
+\label{eq:lsz-wave-packet-theorem}
+\end{equation}
+The left side is the connected component in the partition expansion of the
+scattering kernel.  The right side is the simultaneous external one-particle
+residue of the connected time-ordered distribution, paired with the same
+incoming and outgoing wave packets.
 \end{theorem}
 
 The theorem compares two already constructed objects.  The left side is the
@@ -144,16 +177,10 @@ space.
 
 \section{The One-Particle Pole}
 
-The definition of \(Z\) above says that \(\widehat\phi\) is a scalar field
-with
-\[
-  \bra{\vac}\widehat\phi(0)|\vec p\rangle
-  =
-  Z^{1/2},
-  \qquad Z>0,
-\]
-for the particle species under consideration. With the normalization above,
-the K\"all\'en--Lehmann measure of \(\widehat\phi\) contains the atom
+The matrix element defining \(Z\) says that \(\widehat\phi\) is an interpolating
+scalar field for the particle species under consideration. With the
+normalization above, the K\"all\'en--Lehmann measure of \(\widehat\phi\)
+contains the atom
 \[
   \dd\rho(s)=Z\,\delta(s-m^2)\,\dd s+\dd\rho_{\mathrm{cont}}(s).
 \]
@@ -327,63 +354,6 @@ out of the reduction formula.  The scattering operator belongs to the
 asymptotic Hilbert space; the interpolating local fields are coordinates used
 to access its matrix elements.
 
-\section{Wave-Packet Form of LSZ}
-
-Let
-\[
-  q_i=(\omega_{\vec q_i},\vec q_i),
-  \qquad
-  p_j=(\omega_{\vec p_j},\vec p_j)
-\]
-be outgoing and incoming positive-energy momenta. For test wave packets
-\(f_i,g_j\in C_c^\infty(\mathbb R^d)\), define the smeared scattering matrix
-element
-\[
-\begin{aligned}
-&S[f_1,\ldots,f_m;g_1,\ldots,g_n]
-\\
-&\quad =
-  \int
-  \prod_{i=1}^m \dd\mu_m(\vec q_i)\, f_i(\vec q_i)^*
-  \prod_{j=1}^n \dd\mu_m(\vec p_j)\, g_j(\vec p_j)
-\\
-&\qquad\qquad\times
-  {}_{\mathrm{out}}\langle
-  \vec q_1,\ldots,\vec q_m
-  |\vec p_1,\ldots,\vec p_n
-  \rangle_{\mathrm{in}} .
-\end{aligned}
-\]
-The Haag--Ruelle construction expresses this number as a large-time limit of
-vacuum matrix elements of local fields. Locality moves the fields associated
-with future packets to the future side of the time-ordered product and the
-fields associated with past packets to the past side. After Fourier transform,
-the large-time oscillatory integrals select the one-particle poles
-\[
-  q_i^2=-m^2,
-  \qquad
-  p_j^2=-m^2.
-\]
-
-In distribution form, LSZ says that the connected part of the smeared matrix
-element is obtained by replacing the scattering kernel with
-\[
-\begin{aligned}
-&\left[
-  \prod_{i=1}^m Z^{-1/2}\,\ii(q_i^2+m^2)
-  \prod_{j=1}^n Z^{-1/2}\,\ii(p_j^2+m^2)
-  \right]
-\\
-&\qquad\qquad\times
-  \widetilde G^{\mathrm{conn}}_{m+n}
-  (q_1,\ldots,q_m,-p_1,\ldots,-p_n)
-\end{aligned}
-\]
-and then taking the boundary value in which every \(q_i\) and \(p_j\) lies on
-\(\Sigma_m^+\). Incoming physical momenta appear as \(-p_j\) in the Green
-function because all momenta in
-\(\widetilde G_{m+n}\) are taken to enter the time-ordered correlator.
-
 \section{Large-Time Oscillations and External Residues}
 
 The wave-packet statement above can be made more explicit.  Let
@@ -503,9 +473,8 @@ For \(m\) outgoing and \(n\) incoming scalar particles, set
   \qquad
   k_{m+j}=-p_j\quad (1\le j\le n).
 \]
-The connected LSZ kernel is
+The wave-packet theorem is abbreviated by the distributional kernel notation
 \[
-\boxed{
 \begin{aligned}
 &{}_{\mathrm{out}}\langle
   \vec q_1,\ldots,\vec q_m
@@ -513,18 +482,14 @@ The connected LSZ kernel is
   \rangle_{\mathrm{in,conn}}
 \\
 &\quad =
-  \left[
-  \prod_{a=1}^{m+n} Z^{-1/2}\,\ii(k_a^2+m^2)
-  \right]
-  \widetilde G^{\mathrm{conn}}_{m+n}(k_1,\ldots,k_{m+n})
-  \bigg|_{\mathrm{on\ shell}} .
+  \mathcal L_{m,n}^{\mathrm{on}}
+  (q_1,\ldots,q_m|p_1,\ldots,p_n).
 \end{aligned}
-}
 \]
-The vertical bar means the distributional on-shell boundary value obtained
-after smearing with wave packets. The formula is a statement about
-distributions; the displayed kernel is the compact notation for that
-statement.
+This equality is not a pointwise evaluation of generalized momentum states. It
+means that both sides give the same result after smearing with test wave
+packets and taking the external boundary value specified in
+Theorem~\ref{thm:lsz-wave-packet}.
 
 Disconnected terms are treated by the same rule, but one-particle two-point
 factors reproduce the identity contribution to the scattering operator. For
