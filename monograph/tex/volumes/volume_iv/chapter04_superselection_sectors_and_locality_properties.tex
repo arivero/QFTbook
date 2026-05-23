@@ -326,11 +326,40 @@ where \(\mathcal R'\) denotes the commutant of \(\mathcal R\) in
 \(\mathcal B(\Hilb)\).
 \end{theorem}
 
-For many vacuum representations, the Bisognano--Wichmann property identifies
-the modular flow of a wedge algebra with the Lorentz boosts preserving that
-wedge.  It identifies \(J\) with a geometric reflection combined with charge
-conjugation.  This result connects locality, positivity of energy, thermal KMS
-structure for accelerated observers, and CPT-type symmetries.
+Let
+\[
+  W_R=\{x\in\mathbb M^D:\ x^1>|x^0|\}
+\]
+be the standard right wedge, and let \(\Lambda_R(s)\) be the boost in the
+\((x^0,x^1)\)-plane,
+\[
+  \Lambda_R(s):
+  \begin{pmatrix}x^0\\ x^1\end{pmatrix}
+  \longmapsto
+  \begin{pmatrix}
+    \cosh s & \sinh s\\
+    \sinh s & \cosh s
+  \end{pmatrix}
+  \begin{pmatrix}x^0\\ x^1\end{pmatrix}.
+\]
+For a Poincare-covariant vacuum net, the Bisognano--Wichmann property for
+wedges is the condition that, for each wedge \(W=gW_R\), the modular data
+\((J_W,\Delta_W)\) of \((\mathcal R(W),\vac)\) satisfy
+\[
+  \Delta_W^{\ii t}=U\!\left(g\Lambda_R(-2\pi t)g^{-1}\right),
+  \qquad t\in\mathbb R,
+\]
+and \(J_W\) implements the corresponding wedge reflection \(j_W\) on local
+observable algebras:
+\[
+  J_W\mathcal R(\mathcal O)J_W=\mathcal R(j_W\mathcal O).
+\]
+When charged field coordinates are reconstructed, the same antiunitary action
+includes the charge-conjugation operation on those charged coordinates.
+For vacuum representations of nets satisfying this property, modular flow is
+therefore geometric Lorentz boost flow.  The property connects locality,
+positivity of energy, thermal KMS structure for accelerated observers, and
+CPT-type symmetries.
 
 \begin{figure}[H]
   \centering
