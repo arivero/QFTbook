@@ -247,6 +247,7 @@ the blocks partition all incoming and outgoing labels. Define
 \]
 
 \begin{proposition}[Connected scattering kernels]
+\label{prop:connected-scattering-kernels}
 For fixed incoming and outgoing labels, the full scattering kernel has a unique
 expansion
 \begin{equation}
@@ -296,14 +297,47 @@ must vanish.  This is the moment-cumulant recursion for scattering kernels,
 with process partitions replacing ordinary set partitions.
 \end{proof}
 
-The physical cluster property is the support and large-separation statement
-attached to this recursion.  If the wave packets are separated into two groups
-whose relative spacetime translation is taken to infinity in a spacelike
-direction, then the full wave-packet matrix element factorizes into the product
-of the two lower-point matrix elements.  Equivalently, a connected kernel has
-no distributional component carrying separate momentum conservation for a
-proper subprocess; it carries only the total conservation law of the connected
-process.
+\begin{theorem}[Cluster decomposition for scattering kernels]
+\label{thm:scattering-cluster-decomposition}
+Assume a Haag--Ruelle scattering theory with a unique translation-invariant
+vacuum, a mass gap above the vacuum, local commutativity, and clustering of
+vacuum Wightman functions for spacelike separated operator groups.  Let
+\(\Psi_A^{\rm in/out}\) and \(\Psi_B^{\rm in/out}\) be two groups of
+wave-packet scattering states whose velocity supports stay disjoint after a
+relative spacelike translation \(a\), with \(a^2>0\) and \(|a|\to\infty\).
+Then the full scattering matrix element factorizes:
+\[
+  \left\langle
+    \Psi_A^{\rm out}\otimes U(a)\Psi_B^{\rm out},
+    S\,
+    \Psi_A^{\rm in}\otimes U(a)\Psi_B^{\rm in}
+  \right\rangle
+  \longrightarrow
+  \left\langle\Psi_A^{\rm out},S\Psi_A^{\rm in}\right\rangle
+  \left\langle\Psi_B^{\rm out},S\Psi_B^{\rm in}\right\rangle .
+\]
+Equivalently, the connected kernel
+\(S^{\mathrm c}(\beta|\alpha)\) has no distributional component carrying
+separate momentum conservation for a proper subprocess; it carries only the
+total conservation law of the connected process.
+\end{theorem}
+
+\begin{proof}
+Haag--Ruelle scattering states are obtained as large-time limits of products
+of almost-local creation operators with separated velocity supports.  After a
+large spacelike relative translation, every local operator belonging to group
+\(A\) is spacelike separated from every local operator belonging to group
+\(B\) throughout the time ranges used in the scattering limit.  Local
+commutativity orders the two groups without extra commutator terms, and vacuum
+clustering factors the Wightman functions into the product of the two
+subprocess Wightman functions.  The mass gap gives the uniform estimates
+needed to pass this factorization through the Haag--Ruelle limits.  Applying
+the cumulant recursion of Proposition~\ref{prop:connected-scattering-kernels}
+then removes all products of proper subprocesses from \(S^{\mathrm c}\).  A
+separate momentum-conserving delta function for a proper subprocess would
+survive precisely as such a product term, so it is absent from the connected
+kernel.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95,

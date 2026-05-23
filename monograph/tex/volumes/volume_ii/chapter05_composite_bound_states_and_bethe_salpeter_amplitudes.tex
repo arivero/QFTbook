@@ -257,15 +257,18 @@ Now consider the momentum-space time-ordered four-point function
 \end{aligned}
 \]
 All four momenta are taken incoming, so translation invariance supplies
-\((2\pi)^D\delta^D(k_1+k_2+k_3+k_4)\). Near the bound-state pole in the
-\((12)\)-channel,
+\((2\pi)^D\delta^D(k_1+k_2+k_3+k_4)\).
+
+\begin{theorem}[Bethe--Salpeter pole factorization]
+\label{thm:bethe-salpeter-pole-factorization}
+Assume that the \((12)\)-channel contains an isolated stable scalar bound
+state \(B\) of mass \(M_B\), separated from the multiparticle continuum, and
+that the time-ordered four-point function admits the usual spectral
+decomposition in this channel.  With
 \[
   P=k_1+k_2,\qquad P^2\to -M_B^2,
 \]
-insertion of a complete set of states gives the factorization. More precisely,
-project the spectral resolution in the intermediate channel onto the isolated
-mass-\(M_B\) one-particle subspace, and collect all other intermediate states
-into terms analytic at \(P^2=-M_B^2\). The pole part is
+the pole part of the Fourier-transformed four-point function is
 \[
 \begin{aligned}
   \widetilde G_4(k_1,k_2,k_3,k_4)
@@ -280,11 +283,30 @@ into terms analytic at \(P^2=-M_B^2\). The pole part is
   +\text{terms regular at }P^2=-M_B^2 .
 \end{aligned}
 \]
-This is the four-point analogue of the spectral pole in a two-point
-function. The residue is the product of the amplitudes for two fields to
-create and annihilate the stable composite state. The sign and the factor
-\(-\ii/(P^2+M_B^2-\ii0)\) are the scalar Feynman propagator convention in the
-mostly-plus metric.
+\end{theorem}
+
+\begin{proof}
+Insert the spectral resolution of the Hilbert space between the pair of fields
+carrying total momentum \(P\) and the remaining pair.  The isolated
+one-particle bound-state subspace contributes the projection
+\[
+  \sum_{\sigma\in B}\ket{B(P,\sigma)}\bra{B(P,\sigma)}
+\]
+with the invariant one-particle normalization used throughout the scattering
+chapters.  For a scalar bound state the spin label is absent.  Fourier
+transforming the two matrix elements on the left and right of this projection
+gives \(\widetilde\Phi_B(k_1,k_2;P)\) and
+\(\widetilde\Phi_B^*(-k_3,-k_4;P)\).  The propagation of the isolated
+intermediate state supplies the scalar Feynman pole
+\(-\ii/(P^2+M_B^2-\ii0)\) in the mostly-plus metric, while all continuum
+states are separated from \(P^2=-M_B^2\) and therefore contribute terms
+regular at the pole.  Translation invariance gives the overall delta
+function.
+\end{proof}
+
+This is the four-point analogue of the spectral pole in a two-point function.
+The residue is the product of the amplitudes for two fields to create and
+annihilate the stable composite state.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.9,

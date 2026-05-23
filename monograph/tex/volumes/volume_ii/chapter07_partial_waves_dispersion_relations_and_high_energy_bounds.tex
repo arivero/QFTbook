@@ -767,20 +767,52 @@ This positivity follows from the same partial-wave expansion: derivatives of
 \]
 for \(n\le\ell\), and the derivative is zero for \(n>\ell\).  This positivity
 allows the Taylor expansion in \(t\) to commute with the dispersive integral
-inside its convergence disk.  With two subtractions, \(N=2\) in the previous
-Froissart--Martin estimate, and the four-dimensional massive scalar bound is
+inside its convergence disk.
+
+\begin{theorem}[Froissart--Martin high-energy bound]
+\label{thm:froissart-martin-bound}
+Consider massive \(2\to2\) scalar scattering with mass gap and no massless
+exchange.  Assume:
+\begin{enumerate}
+  \item partial-wave unitarity in the physical \(s\)-channel;
+  \item analyticity in the Lehmann--Martin ellipse with nearest
+  \(t\)-channel singularity at \(t=t_0>0\);
+  \item crossing symmetry and a fixed-\(t\) dispersion representation with a
+  finite number of subtractions;
+  \item polynomial boundedness of the nonphysical fixed-\(t\) amplitude, or
+  equivalently the real-axis absorptive bound used above to reduce the
+  dispersion representation to two subtractions.
+\end{enumerate}
+Then, in four spacetime dimensions, for every fixed \(0<\delta<1\) there are
+constants \(M_0\) and \(s_0\) such that
 \[
   \sigma_{\rm tot}(s)
   \le
   \frac{1}{(1-\delta)^2}\,
   \frac{4\pi}{t_0}
-  \left(\log\frac{s}{M_0^2}\right)^2
+  \left(\log\frac{s}{M_0^2}\right)^2,
+  \qquad s\ge s_0 .
 \]
-for sufficiently large \(s\).  In \(D\) spacetime dimensions the corresponding
-geometric power is
+In \(D\) spacetime dimensions the corresponding geometric estimate is
 \[
   \sigma_{\rm tot}(s)\le C\,(\log s)^{D-2}.
 \]
+\end{theorem}
+
+\begin{proof}
+Partial-wave unitarity bounds each physical partial-wave contribution.
+Analyticity in the Lehmann--Martin ellipse gives exponential decay of large
+angular momenta at fixed \(s\), with the decay rate set by \(t_0/s\).  The
+polynomial boundedness or absorptive real-axis hypothesis bounds the number
+of partial waves that can contribute with order-one strength by
+\(L(s)=O(\sqrt{s}\log s)\).  The optical theorem converts the forward
+absorptive part into \(\sigma_{\rm tot}\), and summing the unitary partial-wave
+weights up to \(L(s)\) gives the four-dimensional coefficient displayed above,
+with the harmless \((1-\delta)^{-2}\) recording the margin in the ellipse
+estimate.  In \(D\) dimensions the same argument sums over transverse angular
+momenta in \(D-2\) impact-parameter directions, giving the power
+\((\log s)^{D-2}\).
+\end{proof}
 
 This last formula may be restated through an effective transverse radius.  If
 one defines \(R_{\rm eff}(s)\) by the geometric scaling relation
