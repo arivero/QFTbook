@@ -34,8 +34,8 @@ The vacuum is invariant:
 \]
 Translations are written
 \[
-  U(b,1)=\exp(-\ii b^\mu P_\mu),
-  \qquad b\in\mathbb R^D,
+  U(a,1)=\exp(\ii a^\mu P_\mu),
+  \qquad a\in\mathbb R^D,
 \]
 in the convention of Chapter \ref{ch:starting-data-local-qft}.  Let \(E_P\) be
 the joint spectral measure of \(P=(P_0,\ldots,P_{D-1})\).  The spectrum
@@ -48,14 +48,23 @@ condition is
 If the field multiplet transforms in a finite-dimensional Lorentz
 representation \(R\), covariance is the identity
 \[
-  U(b,\Lambda)\Phi_\alpha(f)U(b,\Lambda)^{-1}
+  U(a,\Lambda)^{-1}\Phi_\alpha(f)U(a,\Lambda)
   =
   R(\Lambda)_\alpha{}^\beta\,
-  \Phi_\beta(f_{b,\Lambda}),
+  \Phi_\beta(f_{a,\Lambda}),
 \]
 where
 \[
-  f_{b,\Lambda}(x)=f\bigl(\Lambda^{-1}(x-b)\bigr).
+  f_{a,\Lambda}(x)=f\bigl(\Lambda^{-1}(x-a)\bigr).
+\]
+Equivalently, for a pure translation, conjugating in the opposite direction
+gives
+\[
+  U(a,1)\Phi_\alpha(f)U(a,1)^{-1}
+  =
+  \Phi_\alpha(f^{(+a)}),
+  \qquad
+  f^{(+a)}(x)=f(x+a).
 \]
 The precise spin and internal indices are carried by the label \(\alpha\).
 
