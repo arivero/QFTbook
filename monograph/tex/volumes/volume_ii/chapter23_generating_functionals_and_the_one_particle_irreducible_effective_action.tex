@@ -695,9 +695,56 @@ regulated Euclidean source functional be
   =
   \ee^{-W_E[J]} .
 \]
-Assume in this subsection that \([D\phi]_{\Lambda}\ee^{-S_E[\phi]}\) is a
-positive finite measure for the class of real sources under consideration.
-For \(0\le t\le1\), Holder's inequality gives
+\begin{theorem}[Euclidean convexity at finite regulator]
+\label{thm:volume-ii-euclidean-convexity-finite-regulator}
+Let \(\mathcal D\) be a convex set of real regulated sources.  Assume that
+\[
+  \dd\mu_\Lambda(\phi)
+  =
+  [D\phi]_{\Lambda}\ee^{-S_E[\phi]}
+\]
+is a positive finite measure and that \(Z_E[J]\) is finite and nonzero for
+every \(J\in\mathcal D\).  Define
+\[
+  K[J]=\log Z_E[J],
+  \qquad
+  W_E[J]=-K[J].
+\]
+Then \(K\) is convex on \(\mathcal D\), and \(W_E\) is concave on
+\(\mathcal D\).  The finite-regulator Euclidean effective action
+\[
+  \Gamma_E[\varphi]
+  =
+  \sup_{J\in\mathcal D}
+  \left\{
+    W_E[J]-\langle J,\varphi\rangle
+  \right\}
+\]
+is a convex functional of \(\varphi\).  At a differentiability point where the
+supremum is attained by a locally unique source \(J_\varphi\) satisfying
+\[
+  \varphi(x)
+  =
+  \left.
+  \frac{\delta W_E[J]}{\delta J(x)}
+  \right|_{J=J_\varphi},
+\]
+this definition reduces to the local Legendre transform
+\[
+  \Gamma_E[\varphi]
+  =
+  W_E[J_\varphi]-\langle J_\varphi,\varphi\rangle,
+  \qquad
+  \frac{\delta\Gamma_E[\varphi]}{\delta\varphi(x)}
+  =
+  -J_\varphi(x),
+\]
+and its second variation is nonnegative on the subspace where the
+source-field map is nonsingular.
+\end{theorem}
+
+\begin{proof}
+For \(J_1,J_2\in\mathcal D\) and \(0\le t\le1\), Holder's inequality gives
 \[
 \begin{aligned}
   Z_E[tJ_1+(1-t)J_2]
@@ -713,45 +760,42 @@ For \(0\le t\le1\), Holder's inequality gives
   Z_E[J_1]^t Z_E[J_2]^{1-t}.
 \end{aligned}
 \]
-Taking \(-\log\) yields
+Taking the logarithm yields
+\[
+  K[tJ_1+(1-t)J_2]
+  \le
+  tK[J_1]+(1-t)K[J_2],
+\]
+so \(K\) is convex.  Equivalently,
 \[
   W_E[tJ_1+(1-t)J_2]
   \ge
   tW_E[J_1]+(1-t)W_E[J_2].
 \]
-Thus \(W_E\) is concave in this convention.  Define
-\[
-  \varphi_J(x)=\frac{\delta W_E[J]}{\delta J(x)}
-\]
-and, where the inverse source \(J_{\varphi}\) exists,
-\[
-  \Gamma_E[\varphi]
-  =
-  W_E[J_{\varphi}]
-  -
-  \langle J_{\varphi},\varphi\rangle .
-\]
-The same variation as before gives
-\[
-  \frac{\delta\Gamma_E[\varphi]}{\delta\varphi(x)}
-  =
-  -J_{\varphi}(x).
-\]
-Since \(-W_E\) is convex, this Legendre transform gives a convex functional
-\(\Gamma_E\).  Equivalently, its second variation is nonnegative on the
-subspace where the source-field map is nonsingular:
+For each fixed source \(J\), the map
+\(\varphi\mapsto W_E[J]-\langle J,\varphi\rangle\) is affine.  The supremum of
+affine functionals is convex, proving convexity of \(\Gamma_E\).  If the
+supremum is attained at a locally unique differentiability point, its
+stationarity condition is
+\(\varphi=\delta W_E/\delta J|_{J=J_\varphi}\).  Differentiating
+\(W_E[J_\varphi]-\langle J_\varphi,\varphi\rangle\) then cancels the
+\(\delta J_\varphi\) terms and gives
+\(\delta\Gamma_E/\delta\varphi=-J_\varphi\).  Convexity gives, in any
+nonsingular local chart,
 \[
   \int \dd^Dx\,\dd^Dy\,
   f(x)\Gamma_E^{(2)}(x,y)f(y)\ge0
 \]
-for real test functions \(f\) in that subspace.
+for every real test function \(f\) in the corresponding tangent subspace.
+\end{proof}
 
 \section{Legendre--Fenchel Form at Finite Regulator}
 
-The local inverse \(J_{\varphi}\) used above is a convenient notation.  The
-exact finite-regulator definition is the convex-conjugate formula below.  At
-finite regulator, the source space is a finite-dimensional vector space or a
-specified space of test functions, depending on the regulator.  Its dual is
+The local inverse \(J_{\varphi}\) used above is a convenient notation.
+Theorem~\ref{thm:volume-ii-euclidean-convexity-finite-regulator} identifies the
+exact finite-regulator definition as a convex-conjugate formula.  At finite
+regulator, the source space is a finite-dimensional vector space or a specified
+space of test functions, depending on the regulator.  Its dual is
 the space in which the regulated mean field \(\varphi\) lives, and the pairing is
 \[
   \langle J,\varphi\rangle
@@ -766,9 +810,10 @@ Let
   \qquad
   W_E[J]=-K[J].
 \]
-The positivity assumption in the preceding section makes \(K\) a convex
-functional.  The exact Euclidean effective action is the convex conjugate
-with the sign convention fixed by the source term \(-\langle J,\phi\rangle\):
+Under the positivity assumption of
+Theorem~\ref{thm:volume-ii-euclidean-convexity-finite-regulator}, \(K\) is
+convex.  The exact Euclidean effective action is the convex conjugate with the
+sign convention fixed by the source term \(-\langle J,\phi\rangle\):
 \[
   \Gamma_E[\varphi]
   =
