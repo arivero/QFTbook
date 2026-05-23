@@ -968,17 +968,46 @@ at leading order.  For two light flavors,
 \]
 up to higher-order chiral and electromagnetic corrections.  For degenerate
 light quarks \(m_u=m_d=m_q\), this becomes \(m_\pi^2=2B_0m_q\).
-Combining this with the condensate convention gives the canonical GMOR form
+The condensate notation in this chapter is flavor-summed:
+\[
+  \Sigma_{\mathrm{sum}}
+  :=
+  \langle\bar q q\rangle_0
+  =
+  \sum_{i=1}^{N_f}\langle\bar q_iq_i\rangle_0,
+  \qquad
+  \Sigma_{\mathrm{fl}}
+  :=
+  \frac{1}{N_f}\Sigma_{\mathrm{sum}} .
+\]
+The leading-order identity following from the two preceding equations is
 \[
   m_{\pi^\pm}^2f_\pi^2
   =
+  -(m_u+m_d)\,\Sigma_{\mathrm{fl}}
+  =
   -(m_u+m_d)\,
-  \frac{\langle\bar q q\rangle_0}{N_f}
+  \frac{\langle\bar q q\rangle_0}{N_f}.
+  \label{eq:gmor-flavor-sum-dictionary}
 \]
-with the present definition of \(\langle\bar q q\rangle_0\) as the flavor sum.
-If \(\langle\bar u u+\bar d d\rangle_0=2\langle\bar u u\rangle_0\) is written
-explicitly for \(N_f=2\), this is the usual
-\(m_\pi^2f_\pi^2=-(m_u+m_d)\langle\bar u u\rangle_0\) at leading order.
+For \(N_f=2\) in the isospin-symmetric chiral vacuum,
+\[
+  \Sigma_{\mathrm{fl}}
+  =
+  \langle\bar u u\rangle_0
+  =
+  \langle\bar d d\rangle_0,
+\]
+and \eqref{eq:gmor-flavor-sum-dictionary} is the canonical
+Gell-Mann--Oakes--Renner relation
+\[
+  m_{\pi}^2f_\pi^2
+  =
+  -(m_u+m_d)\langle\bar u u\rangle_0
+\]
+at leading order.  Thus no factor of \(2\) is missing: it is carried by the
+conversion between the flavor-summed condensate and the per-flavor
+condensate.
 
 The same normalization can be seen directly in the \(SU(2)\) stereographic
 chart.  Let
