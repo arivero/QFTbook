@@ -1200,9 +1200,15 @@ The corresponding axial-flavor Ward identity is
   \partial_\mu j_a^{A\mu}
   =
   -\frac{N_c e^2}{16\pi^2}
-  \operatorname{Tr}\!\left(T^a q^2\right)
+  \operatorname{Tr}\!\left(T^a\{q,q\}\right)
   F_{\mu\nu}\widetilde F^{\mu\nu}.
 \]
+The anticommutator records the two identical electromagnetic insertions in the
+triangle; since the charge matrix is diagonal,
+\(\{q,q\}=2q^2\).  This is the same anomaly coefficient as the preceding
+chapter's Dirac-fermion formula, rewritten from
+\(\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}\) to
+\(2F_{\mu\nu}\widetilde F^{\mu\nu}\).
 For \(q=\operatorname{diag}(2/3,-1/3)\), the trace is nonzero only for
 \(a=3\), where
 \[
@@ -1214,7 +1220,7 @@ the gauged WZW functional contains the neutral-pion coupling
   \mathcal L_{\pi^0\gamma\gamma}
   =
   \frac{N_c e^2}{16\pi^2 f_\pi}
-  \operatorname{Tr}(T^3q^2)\,
+  \operatorname{Tr}\!\left(T^3\{q,q\}\right)\,
   \pi^0 F_{\mu\nu}\widetilde F^{\mu\nu},
   \label{eq:pi-zero-two-photon-anomaly}
 \end{equation}
@@ -1222,11 +1228,11 @@ namely
 \[
   \mathcal L_{\pi^0\gamma\gamma}
   =
-  \frac{N_c e^2}{96\pi^2 f_\pi}
+  \frac{N_c e^2}{48\pi^2 f_\pi}
   \pi^0 F_{\mu\nu}\widetilde F^{\mu\nu}.
 \]
 For \(N_c=3\), the coefficient multiplying
-\(\pi^0F_{\mu\nu}\widetilde F^{\mu\nu}\) is \(e^2/(32\pi^2f_\pi)\).
+\(\pi^0F_{\mu\nu}\widetilde F^{\mu\nu}\) is \(e^2/(16\pi^2f_\pi)\).
 The coefficient is the low-energy coefficient required by matching the
 microscopic electromagnetic flavor anomaly.
 
@@ -1248,14 +1254,21 @@ microscopic electromagnetic flavor anomaly.
   \label{fig:pi-zero-two-photon-decay}
 \end{figure}
 
-The corresponding decay rate scales as
+Writing
+\[
+  \mathcal L_{\pi^0\gamma\gamma}
+  =
+  \frac{g_{\pi\gamma\gamma}}4\,
+  \pi^0 F_{\mu\nu}\widetilde F^{\mu\nu}
+\]
+gives \(g_{\pi\gamma\gamma}=e^2/(4\pi^2f_\pi)=\alpha/(\pi f_\pi)\) for
+\(N_c=3\).  The corresponding decay rate is
 \[
   \Gamma(\pi^0\to2\gamma)
-  \propto
-  \frac{N_c^2\alpha^2}{f_\pi^2}m_{\pi^0}^3,
+  =
+  \frac{\alpha^2m_{\pi^0}^3}{64\pi^3f_\pi^2},
 \]
-with the proportionality factor fixed by the normalization of
-\eqref{eq:pi-zero-two-photon-anomaly} and the convention for \(f_\pi\).
+in the convention for \(f_\pi\) used above.
 
 \section{Conceptual Output of the Gauge-Dynamics Sequence}
 
