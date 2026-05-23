@@ -414,9 +414,35 @@ Gordon identity.  Current conservation removes the component proportional to
   k=p-p' .
 \]
 The scalar functions \(F\) and \(G\) are the electromagnetic form factors in
-the present gamma-matrix convention.  They are related to the more common
-Dirac--Pauli notation by \(F=F_1\) and \(G=F_2\), after converting the Gordon
-identity to the mostly-plus gamma-matrix convention used here.
+the present gamma-matrix convention and in the \((p+p')^\mu\) basis.  For
+comparison with the Dirac--Pauli basis, let
+\(F_1^{\rm DP}\) and \(F_2^{\rm DP}\) be defined in this same gamma-matrix
+convention by
+\[
+  \bar u(p')M^\mu u(p)
+  =
+  \bar u(p')
+  \left[
+    \gamma^\mu F_1^{\rm DP}(k^2)
+    +
+    \left(\gamma^\mu+\frac{\ii}{2m}(p+p')^\mu\right)
+    F_2^{\rm DP}(k^2)
+  \right]
+  u(p).
+\]
+The second structure is the Gordon-identity form of the Pauli tensor
+structure; its matrix element vanishes at \(p'=p\).  Comparing coefficients
+with the displayed \((F,G)\) decomposition gives
+\[
+  F_1^{\rm DP}=F+G,
+  \qquad
+  F_2^{\rm DP}=-G,
+  \qquad
+  F=F_1^{\rm DP}+F_2^{\rm DP}.
+\]
+Thus the charge normalization below, \(F(0)+G(0)=1\), is precisely
+\(F_1^{\rm DP}(0)=1\), while the anomalous magnetic moment is
+\(F_2^{\rm DP}(0)=-G(0)\).
 
 Charge normalization fixes one combination at zero momentum transfer. Taking
 \(p'\to p\), using
