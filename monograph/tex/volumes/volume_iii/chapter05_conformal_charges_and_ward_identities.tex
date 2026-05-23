@@ -165,9 +165,35 @@ Changing the orientation convention changes both sides of
 \eqref{eq:variation-by-small-charge} by the same sign; the Ward identity
 below is then unchanged.
 
-Suppose the vacuum is invariant under the charge, and suppose the large
-surface can be moved to infinity with vanishing contribution.  Then for
-separated insertions,
+\begin{hypothesis}[Vacuum and large-boundary behavior]
+\label{hyp:conformal-charge-vacuum-boundary}
+For the conformal Killing vector \(\epsilon^\mu\partial_\mu\) and the
+correlators under consideration, assume the following two properties.
+\begin{enumerate}[label=(\roman*)]
+  \item The vacuum is invariant under the corresponding charge.  In Lorentzian
+  notation this means
+  \[
+    \widehat Q_\epsilon\ket{\vac}=0,
+    \qquad
+    \bra{\vac}\widehat Q_\epsilon=0
+  \]
+  on the common invariant domain on which the correlators are defined.
+  \item If \(\Sigma_R\) is a family of smooth enclosing surfaces whose distance
+  from the insertions tends to infinity, then
+  \[
+    \lim_{R\to\infty}
+    \left\langle
+      Q_\epsilon(\Sigma_R)
+      \prod_{i=1}^n\mathcal O_i(x_i)
+    \right\rangle
+    =
+    0 .
+  \]
+\end{enumerate}
+\end{hypothesis}
+
+Under Hypothesis~\ref{hyp:conformal-charge-vacuum-boundary}, for separated
+insertions,
 \begin{equation}
   0
   =
