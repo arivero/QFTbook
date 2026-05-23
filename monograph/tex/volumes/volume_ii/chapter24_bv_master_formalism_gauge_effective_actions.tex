@@ -158,7 +158,7 @@ ghosts and antifields are set to zero.
 
 The associated BV differential is
 \[
-  s_{\rm BV}F=(S_{\rm BV},F).
+  s_{\rm BV}F=(F,S_{\rm BV}).
 \]
 
 \begin{proposition}[Nilpotency from the master equation]
@@ -169,16 +169,16 @@ If \(S_{\rm BV}\) satisfies \eqref{eq:classical-master-equation}, then
 \end{proposition}
 
 \begin{proof}
-Using the odd Jacobi identity with \(F=G=S_{\rm BV}\),
+Using the odd Jacobi identity and the evenness of \(S_{\rm BV}\),
 \[
-  (S_{\rm BV},(S_{\rm BV},H))
+  ((H,S_{\rm BV}),S_{\rm BV})
   =
-  \frac12((S_{\rm BV},S_{\rm BV}),H)
+  \frac12(H,(S_{\rm BV},S_{\rm BV}))
 \]
 for every functional \(H\).  The right hand side vanishes by
 \eqref{eq:classical-master-equation}.  Hence
 \[
-  s_{\rm BV}^2H=(S_{\rm BV},(S_{\rm BV},H))=0 .
+  s_{\rm BV}^2H=((H,S_{\rm BV}),S_{\rm BV})=0 .
 \]
 \end{proof}
 
@@ -223,11 +223,110 @@ with the order of odd factors fixed by the left/right derivative convention.
 
 The master equation for \eqref{eq:minimal-yang-mills-bv-action} is the
 combined statement that \(S_{\rm YM}\) is gauge invariant and that the BRST
-transformations are nilpotent.  Indeed, the component of
-\((S_{\rm min},S_{\rm min})\) with no antifields is the variation of
-\(S_{\rm YM}\) under \(sA=Dc\).  The component linear in antifields is
-equivalent to \(s^2A=0\) and \(s^2c=0\).  These are precisely the identities
-derived in the BRST chapter from gauge invariance and the Jacobi identity.
+transformations are nilpotent.  Let
+\[
+  R_\mu^a(A,c):=(D_\mu c)^a,
+  \qquad
+  R_c^a(c):=-\frac12 f^a{}_{bc}c^b c^c,
+\]
+and write
+\[
+  S_{\rm min}=S_{\rm YM}+S_1,
+  \qquad
+  S_1=\int_M\left(A^{*\mu}_a R_\mu^a+c^*_aR_c^a\right)\dd^D x .
+\]
+Give each antifield antifield number \(1\) and each field antifield number
+\(0\).  Since \(S_{\rm YM}\) is independent of antifields and \(S_1\) is
+linear in antifields,
+\[
+  \frac12(S_{\rm min},S_{\rm min})
+  =
+  (S_{\rm YM},S_1)+\frac12(S_1,S_1),
+\]
+and the two displayed terms have antifield numbers \(0\) and \(1\),
+respectively.  The antifield-number-zero component is
+\[
+  (S_{\rm YM},S_1)
+  =
+  \int_M
+  \frac{\delta^R S_{\rm YM}}{\delta A_\mu^a}
+  R_\mu^a\,\dd^D x
+  =
+  \int_M
+  \frac{\delta S_{\rm YM}}{\delta A_\mu^a}
+  (D_\mu c)^a\,\dd^D x .
+\]
+Gauge invariance of \(S_{\rm YM}\) means that this expression vanishes when
+the odd ghost \(c\) is replaced by an arbitrary even infinitesimal gauge
+parameter \(\zeta\).  Because the identity is algebraic in the parameter and
+its derivatives, the same coefficient identity gives the vanishing for \(c\).
+
+For the antifield-number-one component, the antibracket calculation gives
+\[
+  \frac12(S_1,S_1)
+  =
+  \int_M
+  \left[
+    A^{*\mu}_a\,sR_\mu^a
+    +
+    c^*_a\,sR_c^a
+  \right]\dd^D x ,
+\]
+where \(s\) acts on functions of \(A,c\) by
+\[
+  sX
+  =
+  \int_M
+  \left[
+    R_\mu^a\frac{\delta_L X}{\delta A_\mu^a}
+    +
+    R_c^a\frac{\delta_L X}{\delta c^a}
+  \right]\dd^D x .
+\]
+The two coefficients are explicitly
+\[
+\begin{aligned}
+  sR_\mu^a
+  &=
+  D_\mu R_c^a
+  +
+  f^a{}_{bc}R_\mu^b c^c
+\\
+  &=
+  -\frac12 f^a{}_{bc}D_\mu(c^b c^c)
+  +
+  f^a{}_{bc}(D_\mu c)^b c^c
+  =
+  0,
+\end{aligned}
+\]
+where \(D_\mu\) is an even derivation and the two terms in
+\(D_\mu(c^b c^c)\) are equal after antisymmetry of \(f^a{}_{bc}\) and the odd
+commutation of \(c\) with \(D_\mu c\).  Similarly,
+\[
+\begin{aligned}
+  sR_c^a
+  &=
+  -\frac12 f^a{}_{bc}
+  \left(R_c^b c^c-c^b R_c^c\right)
+\\
+  &=
+  -\frac1{12}
+  \left(
+    f^a{}_{be}f^e{}_{cd}
+    +
+    f^a{}_{ce}f^e{}_{db}
+    +
+    f^a{}_{de}f^e{}_{bc}
+  \right)c^b c^c c^d
+  =
+  0
+\end{aligned}
+\]
+by the Jacobi identity.  There are no higher antifield-number components for
+this off-shell closed Yang--Mills algebra.  Thus
+\(\frac12(S_{\rm min},S_{\rm min})=0\) is exactly the pair of statements
+\(sS_{\rm YM}=0\) and \(s^2A=s^2c=0\).
 
 If the gauge algebra closes only on shell, or if there are reducibility
 relations among gauge transformations, the action contains additional
@@ -396,13 +495,15 @@ terms in \eqref{eq:qme-defect-consistency} cancel.  Substituting
   =
   \hbar\,(S_0,\mathcal A)+O(\hbar^2).
 \]
-Therefore, with \(s_{\rm BV}:=(S_0,\cdot)\),
+Equivalently, with \(s_{\rm BV}:=(\cdot,S_0)\),
 \[
-  s_{\rm BV}\mathcal A=0 .
+  s_{\rm BV}\mathcal A=(\mathcal A,S_0)=0 .
 \]
 Changing the local counterterm by \(\hbar B\) changes the anomaly by
 \begin{equation}
-  \mathcal A\longmapsto \mathcal A+s_{\rm BV}B .
+  \mathcal A\longmapsto \mathcal A+s_{\rm BV}B
+  =
+  \mathcal A+(B,S_0) .
   \label{eq:qme-anomaly-counterterm-shift}
 \end{equation}
 Thus the obstruction class lies in ghost-number-one local BV cohomology.  This
@@ -540,7 +641,7 @@ with the gauge symmetry encoded by the transformed master action.
 
 Let \(S_{\rm BV}\) be a classical solution of the master equation and let
 \[
-  s_{\rm BV}=(S_{\rm BV},\cdot).
+  s_{\rm BV}=(\cdot,S_{\rm BV}).
 \]
 A first-order local deformation
 \[
