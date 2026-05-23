@@ -2,6 +2,7 @@
 \label{ch:volume-ii-analyticity-crossing-landau}
 
 \section{Physical Region and First Sheet}
+\label{sec:physical-region-and-first-sheet}
 
 Consider \(2\to2\) scattering of identical stable scalar particles of mass
 \(m\).  The metric is mostly plus, so a physical mass-\(m\) momentum \(k\)
@@ -99,10 +100,13 @@ value
 \[
   \lim_{\epsilon\to0^+}\mathcal M(s+\ii\epsilon,t)
 \]
-on the first sheet.  The first sheet is the branch reached from the Euclidean
-or Feynman domain by the \(+\ii0\) prescription without analytically
-continuing through a unitarity cut.  In the fixed-\(t\) \(s\)-plane it has the
-right-hand \(s\)-channel cut
+on the first sheet.  In this monograph the terms \emph{first sheet} and
+\emph{physical sheet} mean the same analytic branch: the germ reached from the
+Euclidean or Feynman domain by the prescribed \(+\ii0\) continuation without
+passing through any unitarity cut.  This is a statement about a branch of the
+complexified invariant variables, not a synonym for the physical region of real
+external momenta.  In the fixed-\(t\) \(s\)-plane this branch has the right-hand
+\(s\)-channel cut
 \[
   C_s=[4m^2,\infty),
 \]
@@ -119,6 +123,19 @@ channel this same statement appears as a pole at
 For the purposes used here, the first-sheet data consist of this cut plane
 together with the possible pole data and with any additional first-sheet
 singularities allowed by the full spectral problem.
+
+A \emph{second sheet} is always defined relative to a specified cut.  It is the
+adjacent analytic germ obtained by continuing the first-sheet germ through that
+cut.  Near a single two-particle threshold, with
+\[
+  \rho(s)=\sqrt{1-\frac{s_{\mathrm{th}}}{s}}
+\]
+chosen so that \(\rho(s)>0\) on the physical upper edge \(s>s_{\mathrm{th}}\),
+the continuation through the corresponding unitarity cut sends
+\(\rho\mapsto-\rho\).  With several thresholds there is no cut-independent
+meaning of ``the'' second sheet; the sheet is labelled by the set of cuts
+through which the analytic germ has been continued, or equivalently by the
+monodromy choices for the associated channel momenta.
 
 \section{Real Analyticity and Crossing}
 
@@ -525,10 +542,10 @@ stationary configuration around each loop.  Solutions with some
 lines have been contracted.  Solutions with all relevant \(\alpha_i>0\) are
 the leading Landau singularities of that graph.
 
-The physical sheet is selected by the sign of the Feynman prescription and by
-positive Feynman parameters.  The physical sheet is not the same notion as the
-physical region of real external momenta: it is a branch of the analytic
-continuation.  Positivity of the Feynman parameters distinguishes a
+With the terminology fixed in
+Section~\ref{sec:physical-region-and-first-sheet}, the physical sheet is
+selected by the sign of the Feynman prescription together with positive
+Feynman parameters.  Positivity of the Feynman parameters distinguishes a
 first-sheet threshold from the same algebraic locus reached only after
 continuation through a cut.
 
