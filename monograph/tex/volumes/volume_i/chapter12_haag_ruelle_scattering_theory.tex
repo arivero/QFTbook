@@ -98,6 +98,23 @@ For unbounded point fields, this is the corresponding statement after
 smearing and restricting to the common invariant domain on which the products
 are defined.
 
+\begin{definition}[Almost-local bounded operator]
+\label{def:almost-local-bounded-operator}
+Let \(\mathcal O_R\) be a cofinal family of double cones whose radii tend to
+infinity; for example, one may take
+\[
+  \mathcal O_R=\{(x^0,\vec x): |x^0|+|\vec x|<R\},
+  \qquad R\ge1 .
+\]
+A bounded operator \(B\in\mathcal B(\Hilb)\) is \emph{almost local} if there
+are bounded operators \(B_R\in\Obs(\mathcal O_R)\) such that, for every integer
+\(N\ge1\), there is a constant \(C_N<\infty\) with
+\[
+  \|B-B_R\|\le C_N R^{-N}
+  \qquad (R\ge1).
+\]
+\end{definition}
+
 The particle must be creatable from the vacuum by local operations. In the
 present scalar setting this means that there is a local operator \(A\) such
 that
@@ -115,10 +132,13 @@ Define
   \qquad
   A(x)=U(x)AU(x)^{-1}.
 \]
-The operator \(B\) is almost local: it is approximated in norm by local
-operators in larger and larger bounded regions, with errors decreasing faster
-than any inverse power of the size of the region. This property is sufficient
-for the locality estimates used below.
+The operator \(B\) is almost local in the sense of
+Definition~\ref{def:almost-local-bounded-operator}.  Indeed, truncate the
+spacetime integral to a double cone of radius \(R\), enlarged by the bounded
+localization region of \(A\).  The Schwartz decay of \(\chi\), together with
+\(\|A(x)\|=\|A\|\), gives the bound
+\(\|B-B_R\|\le C_N R^{-N}\) for every \(N\).  This property is sufficient for
+the locality estimates used below.
 
 Let \(h\in C_c^\infty(\mathbb R^d)\) be a smooth compactly supported momentum
 wave packet. Define the positive-energy Klein--Gordon solution
