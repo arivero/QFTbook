@@ -379,6 +379,83 @@ same argument gives stronger decay estimates.  Selecting a pure vacuum sector
 is the condition that the zero-momentum projection is the one-dimensional
 projection onto \(\mathbb C\vac\).
 
+\begin{theorem}[Cluster decomposition and vacuum uniqueness]
+\label{thm:wightman-cluster-vacuum-uniqueness}
+Let
+\((\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_\alpha\})\)
+be Wightman field data satisfying the assumptions above, and let
+\[
+  P_0=E(\{0\})
+\]
+be the joint spectral projection of the translation generators onto zero
+momentum.  The following conditions are equivalent.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item The zero-momentum subspace is one-dimensional:
+\[
+  P_0\Hilb=\mathbb C\vac .
+\]
+\item The vacuum is the unique translation-invariant vector up to scalar
+multiple.
+\item The weak cluster property \eqref{eq:wightman-weak-cluster} holds for
+all polynomial field insertions \(A\) and \(B\) and for every spacelike
+translation direction \(a\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of (i) and (ii) is the joint spectral theorem for the
+translation representation: translation-invariant vectors are precisely the
+vectors in \(\operatorname{Ran}P_0\).  For (i) \(\Rightarrow\) (iii), write
+\[
+  \langle\vac,A\,B(\lambda a)\vac\rangle
+  =
+  \langle A^\dagger\vac,U(\lambda a)B\vac\rangle ,
+\]
+first for polynomial fields whose domain adjoints are defined on
+\(\mathcal D\), and then by linearity.  The Wightman spectral condition and
+temperedness make this matrix element the Fourier transform, in the weak
+large-spacelike-separation sense, of the spectral distribution between
+\(A^\dagger\vac\) and \(B\vac\).  Its zero-momentum atom contributes
+\[
+  \langle A^\dagger\vac,P_0 B\vac\rangle
+  =
+  \langle\vac,A\vac\rangle\,\langle\vac,B\vac\rangle ,
+\]
+because \(P_0=|\vac\rangle\langle\vac|\).  The remaining spectral part has no
+zero-momentum atom.  The analytic input is the following consequence of the
+Wightman assumptions.  For vectors of the form
+\(\psi=A^\dagger\vac\) and \(\chi=B\vac\) with \(P_0\chi=0\), the matrix
+coefficient \(\langle\psi,U(\lambda a)\chi\rangle\) tends to zero as
+\(\lambda\to+\infty\) for spacelike \(a\).  Indeed, after smearing the field
+insertions, this coefficient is the boundary value of a tempered analytic
+function in the forward tube.  Locality identifies the boundary values obtained
+from the two spacelike orderings at the corresponding Jost points.  The
+edge-of-the-wedge continuation removes singular support at finite nonzero
+spacelike separation; the only translation-invariant spectral atom compatible
+with all spacelike translates is the atom at \(p=0\).  After subtracting
+\(P_0\), the remaining one-parameter spectral distribution has locally
+integrable density in the separation variable relevant to the smeared matrix
+element, and its Fourier transform vanishes at infinity by the
+Riemann--Lebesgue lemma.  This gives the required weak large-separation limit.
+
+Conversely, assume the weak cluster property.  The same spectral decomposition
+shows that the large-separation limit of the non-oscillatory part is
+\(\langle A^\dagger\vac,P_0B\vac\rangle\).  Comparing with
+\eqref{eq:wightman-weak-cluster} gives
+\[
+  \langle A^\dagger\vac,P_0B\vac\rangle
+  =
+  \langle A^\dagger\vac,\vac\rangle\,\langle\vac,B\vac\rangle
+\]
+for all polynomial \(A,B\).  Since the polynomial field orbit of \(\vac\) is
+dense, this identity implies
+\[
+  P_0B\vac=\vac\,\langle\vac,B\vac\rangle
+\]
+on a dense set of vectors \(B\vac\).  Hence \(P_0=|\vac\rangle\langle\vac|\),
+which is (i).
+\end{proof}
+
 \section{Reconstruction From Correlation Functions}
 
 The Wightman reconstruction theorem says that the correlation hierarchy is
@@ -428,12 +505,14 @@ The cyclic reconstruction satisfying these properties is unique up to the
 canonical unitary induced by identifying finite test-function sequences with
 the same Wightman inner products.
 
-If the hierarchy also satisfies the weak cluster condition
-\eqref{eq:wightman-weak-cluster} for all polynomial field insertions, then the
-translation-invariant subspace in the reconstructed Hilbert space is
-\(\mathbb C\vac\).  This additional condition selects a pure vacuum sector; it
-is not required for the existence of the Wightman reconstruction.
 \end{theorem}
+
+For a hierarchy satisfying the reconstruction hypotheses, the reconstructed
+translation representation has a zero-momentum projection \(P_0\).  Adding the
+weak cluster condition \eqref{eq:wightman-weak-cluster} selects exactly the
+case \(P_0\Hilb=\mathbb C\vac\) by Theorem
+\ref{thm:wightman-cluster-vacuum-uniqueness}.  Thus clustering is the
+correlation-function condition for reconstructing a pure vacuum sector.
 
 The uniqueness statement is internal to the specified hierarchy and its field
 labels.  It says that two cyclic reconstructions of the same \(\{W_n\}\) have
