@@ -160,30 +160,51 @@ following definition gives the data used in the opening volume.
 In the opening framework, a vacuum Minkowski local quantum theory consists of:
 \begin{enumerate}
   \item a complex Hilbert space \(\Hilb\);
+  \item a spacetime symmetry convention.  Let \(G_{\rm Lor}\) be
+  \(SO^+(1,D-1)\), or the appropriate double cover when spinor fields are
+  included, and let
+  \(\pi:G_{\rm Lor}\to SO^+(1,D-1)\) be the covering projection.  The connected
+  Poincare group used here is
+  \[
+    \mathcal P=\mathbb R^D\rtimes G_{\rm Lor},
+    \qquad
+    (a,\Lambda)(b,\Gamma)
+    =
+    (a+\pi(\Lambda)b,\Lambda\Gamma).
+  \]
+  It acts on \(\mathbb M^D\) from the left by
+  \[
+    g x=\pi(\Lambda)x+a,
+    \qquad g=(a,\Lambda)\in\mathcal P,
+  \]
+  and \(g\mathcal O:=\{gx:x\in\mathcal O\}\) for a region
+  \(\mathcal O\subset\mathbb M^D\);
   \item a strongly continuous unitary representation
   \[
-    U:\mathbb R^D\rtimes SO^+(1,D-1)\to\mathcal U(\Hilb),
+    U:\mathcal P\to\mathcal U(\Hilb),
     \qquad
-    (a,\Lambda)\mapsto U(a,\Lambda),
+    g\mapsto U(g),
   \]
-  where \(a\in\mathbb R^D\) is a translation vector,
-  \(\Lambda\in SO^+(1,D-1)\), and \(\mathcal U(\Hilb)\) is the unitary group
-  of \(\Hilb\); when spinor fields are present, \(SO^+(1,D-1)\) is replaced
-  by the appropriate double cover;
+  as a left representation, \(U(g_1g_2)=U(g_1)U(g_2)\), where
+  \(\mathcal U(\Hilb)\) is the unitary group of \(\Hilb\);
   \item self-adjoint translation generators \(P_\mu\), defined by
-  \(U(a,1)=\exp(\ii a^\mu P_\mu)\), whose joint spectral measure has support
-  contained in the closed future cone
+  \(U(a,1)=\exp(\ii a^\mu P_\mu)\).  Let \(E_P\) be the joint
+  projection-valued spectral measure of \(P=(P_0,\ldots,P_{D-1})\).  The
+  spectrum condition is
   \[
+    \operatorname{supp}E_P\subset
     \overline V_+
     =
     \{p\in\mathbb R^D:p^0\ge0,\ \eta_{\mu\nu}p^\mu p^\nu\le0\};
   \]
-  \item a nonzero Poincare-invariant unit vector \(\vac\in\Hilb\), satisfying
-  \(U(a,\Lambda)\vac=\vac\), with vacuum uniqueness in the chosen sector
-  expressed by
+  \item a Poincare-invariant unit vector \(\vac\in\Hilb\),
   \[
-    \{\psi\in\Hilb:U(a,\Lambda)\psi=\psi
-    \text{ for all }(a,\Lambda)\}
+    U(g)\vac=\vac,\qquad g\in\mathcal P.
+  \]
+  Vacuum uniqueness in the chosen sector means that the zero-momentum spectral
+  projection is one-dimensional:
+  \[
+    E_P(\{0\})\Hilb
     =
     \mathbb C\vac;
   \]
@@ -195,9 +216,10 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
   concrete \(*\)-subalgebras of the bounded operators on \(\Hilb\), satisfying
   covariance, isotony, and locality:
   \[
-    U(a,\Lambda)^{-1}\Obs(\mathcal O)U(a,\Lambda)
+    U(g)^{-1}\Obs(\mathcal O)U(g)
     =
-    \Obs(\Lambda\mathcal O+a),
+    \Obs(g\mathcal O),
+    \qquad g\in\mathcal P,
   \]
   \[
     \mathcal O_1\subset\mathcal O_2
@@ -216,11 +238,44 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
     [A,B]_{\rm gr}=AB-(-1)^{|A||B|}BA
   \]
   used for homogeneous odd operators after a fermion parity grading and the
-  parities \(|A|,|B|\in\mathbb Z/2\mathbb Z\) have been specified.
+  parities \(|A|,|B|\in\mathbb Z/2\mathbb Z\) have been specified;
+  \item vacuum cyclicity for the bounded local observable content.  Let
+  \(\Obs_{\rm loc}^{\rm alg}\) denote the unital \(*\)-algebra generated in
+  \(\mathcal B(\Hilb)\) by \(\bigcup_{\mathcal O}\Obs(\mathcal O)\), where the
+  union is over bounded open regions.  Then
+  \[
+    \overline{\Obs_{\rm loc}^{\rm alg}\vac}^{\,\|\cdot\|_{\Hilb}}
+    =
+    \Hilb;
+  \]
+  \item when unbounded field coordinates are part of the presentation, a
+  specified field-domain datum
+  \[
+    (\mathcal D_\Phi,\{\Phi_A\}_{A\in I}).
+  \]
+  Here \(I\) is the field-label set, \(\mathcal D_\Phi\subset\Hilb\) is a dense
+  linear subspace with \(\vac\in\mathcal D_\Phi\), \(U(g)\mathcal D_\Phi\subset
+  \mathcal D_\Phi\) for all \(g\in\mathcal P\), and each smeared field is a
+  linear operator
+  \[
+    \Phi_A(f):\mathcal D_\Phi\to\mathcal D_\Phi,
+    \qquad f\in\mathcal T_A,
+  \]
+  where \(\mathcal T_A\) is the declared test-function space for that field
+  component.  Finite products of such smeared fields are defined on
+  \(\mathcal D_\Phi\).  If adjoints are used, then
+  \(\mathcal D_\Phi\subset\operatorname{Dom}(\Phi_A(f)^*)\) and the adjoint
+  fields preserve \(\mathcal D_\Phi\).  For every
+  \(\psi,\chi\in\mathcal D_\Phi\), the matrix elements of finite smeared
+  products are continuous multilinear functionals of their test functions.
+  Field covariance, field locality, and any relation between
+  \(\Phi_A(f)\) with \(\operatorname{supp}f\subset\mathcal O\) and
+  \(\Obs(\mathcal O)\) are imposed on this same domain or by a specified
+  affiliation to the chosen local observable algebra.
 \end{enumerate}
 \end{definition}
 
-The direction of conjugation is part of the convention.  With
+The covariance convention has the following infinitesimal form.  With
 \(U(a,1)=\exp(\ii a^\mu P_\mu)\), a coordinate-labelled scalar field obeys
 \[
   U(a,1)^{-1}\widehat\Phi(x)U(a,1)
@@ -234,8 +289,8 @@ The direction of conjugation is part of the convention.  With
 as an identity of distributions on a common invariant domain.  Equivalently,
 conjugation by \(U(a,1)\) shifts the coordinate label by \(-a\).  The local-net
 covariance law above uses the same passive coordinate convention: conjugating
-an observable by \(U(a,\Lambda)^{-1}\) sends its localization region to
-\(\Lambda\mathcal O+a\).
+an observable by \(U(g)^{-1}\), with \(g=(a,\Lambda)\), sends its localization
+region to \(g\mathcal O=\pi(\Lambda)\mathcal O+a\).
 
 In this opening convention \(\Obs(\mathcal O)\) is a concrete algebra of
 bounded observables on the chosen Hilbert space and is not assumed to be norm
