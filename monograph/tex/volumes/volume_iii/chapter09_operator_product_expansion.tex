@@ -504,10 +504,15 @@ standard normalization of the block,
   O(r^{\Delta+1}),
   \label{eq:block-leading-gegenbauer}
 \end{equation}
-where \(C_s^{(\lambda)}\) is the Gegenbauer polynomial.  For example this is
-\(\cos(s\alpha)\) in \(D=2\), the Legendre polynomial \(P_s(\cos\alpha)\) in
-\(D=3\), and \(\sin((s+1)\alpha)/((s+1)\sin\alpha)\) in \(D=4\), after the
-corresponding conventional normalizations.
+where \(C_s^{(\lambda)}\) is the standard Gegenbauer polynomial.  Thus
+\(C_s^{(1/2)}(\cos\alpha)=P_s(\cos\alpha)\) in \(D=3\), while
+\[
+  C_s^{(1)}(\cos\alpha)
+  =
+  \frac{\sin((s+1)\alpha)}{\sin\alpha}
+\]
+in \(D=4\).  The \(D=2\) angular functions are the separate limiting harmonic
+\(\cos(s\alpha)\), since the Gegenbauer parameter \(\lambda=D/2-1\) vanishes.
 
 \section{Reflection Positivity and OPE Coefficients}
 
