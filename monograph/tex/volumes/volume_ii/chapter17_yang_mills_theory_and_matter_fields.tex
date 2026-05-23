@@ -333,14 +333,39 @@ Authors who write the component density with coefficient
 \(\theta/(32\pi^2)\) are using a trace convention without the factor
 \(\frac12\), or are absorbing that factor into the definition of the component
 curvature.
+The normalization is fixed by the Chern--Weil integer.  For an \(SU(N)\)
+bundle over an oriented compact four-manifold \(M\), with
+\[
+  F=\frac12F_{\mu\nu}\,\dd x^\mu\wedge\dd x^\nu,
+\]
+the number
+\begin{equation}
+  Q(P,A)
+  :=
+  \frac1{8\pi^2}\int_M\operatorname{tr}(F\wedge F)
+  =
+  \frac1{32\pi^2}
+  \int_M\dd^4x\,
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma})
+  \in\mathbb Z
+  \label{eq:ym-theta-instanton-number}
+\end{equation}
+is the integral characteristic number determined by the second Chern class,
+with the overall sign fixed by the Hermitian curvature convention.  For
+finite-action \(SU(N)\) fields on \(\mathbb R^4\), compactification by the
+point at infinity gives the same integer; equivalently, it is the degree of
+the limiting pure gauge map \(S^3_\infty\to SU(N)\).
 This density is odd under parity and time reversal.  In local coordinates it
 is a total derivative, so it does not change the local Euler-Lagrange equations
 under boundary conditions that keep the boundary variation fixed.  Perturbation
 theory around the trivial gauge-field sector consequently has no local Feynman
 vertex associated with \eqref{eq:ym-theta-density}.  Finite-action gauge fields
 may approach nontrivial pure gauges at spatial infinity, and then the spacetime
-integral of \eqref{eq:ym-theta-density} can be nonzero.  Thus \(\theta\)
-enters through global topological sectors of the gauge field.
+integral of \eqref{eq:ym-theta-density} equals \(\theta Q(P,A)\).  Thus
+\(\theta\) enters through global topological sectors of the gauge field, and
+the Lorentzian path-integral phase is invariant under
+\(\theta\mapsto\theta+2\pi\).
 
 \section{Matter Representations}
 
