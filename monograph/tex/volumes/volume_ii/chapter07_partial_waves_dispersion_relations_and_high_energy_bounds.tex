@@ -37,8 +37,11 @@ value of an analytic first-sheet function with the crossing properties
 described in Section~\ref{sec:physical-region-and-first-sheet} and
 Chapter~\ref{ch:volume-ii-analyticity-crossing-landau}.  Whenever
 a displayed dispersion formula omits bound-state pole terms, those poles are
-assumed absent in the displayed kinematic range; if they are present, their
-residues are added explicitly.
+assumed absent in the displayed kinematic range.  If they are present, their
+residues are added explicitly; for a stable composite pole these residues are
+the Bethe--Salpeter pole-factorization data of
+Theorem~\ref{thm:bethe-salpeter-pole-factorization}, transported to the
+channel under discussion by crossing.
 
 The results in this chapter are therefore conditional statements.  They are
 deductions from specified analyticity, crossing, unitarity, and boundedness
@@ -87,6 +90,15 @@ single-pole situation this is summarized as
   t_0=\min\{4m^2,M_B^2\},
 \]
 with the convention that \(M_B^2\) is omitted when no such pole exists.
+When \(B\) is composite, \(M_B\) is not an additional kinematic parameter
+chosen independently of the dynamics.  It is the invariant mass of an isolated
+spectral state, and in a two-constituent description it is characterized by the
+eigenvalue-one condition
+\((\mathbf 1-\widehat V_P)\Psi_B=0\) of
+Section~\ref{sec:bethe-salpeter-homogeneous-equation}.  The high-energy
+estimate below depends on the nearest singular location \(t_0\); the associated
+residue becomes relevant when the fixed-\(t\) dispersion relation is written
+with explicit pole terms.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.86,every node/.style={font=\small}]
@@ -625,7 +637,32 @@ For the invariant amplitude, fix real \(t<0\) and continue \(s\) to the
 complex plane.  The displayed dispersion formula records the cut terms in a
 kinematic situation where bound-state pole terms and anomalous first-sheet
 terms are absent; when such terms are present, their residues are added
-explicitly.  Assume that for some integer \(N\),
+explicitly.  More concretely, if the first sheet contains simple stable-particle
+poles with local behavior
+\[
+  \mathcal M(s,t)\sim\frac{R_B^{(s)}(t)}{M_B^2-s}
+  \qquad\text{or}\qquad
+  \mathcal M(s,t)\sim
+  \frac{R_B^{(u)}(t)}{4m^2-t-M_B^2-s},
+\]
+where \(R_B^{(u)}(t)\) is defined with respect to the \(s\)-plane local
+coordinate \(4m^2-t-M_B^2-s\).  Equivalently, it includes the sign relating this
+coordinate to \(M_B^2-u\).
+Then the subtracted dispersion relation contains the corresponding Cauchy
+residue terms
+\[
+  \frac{R_B^{(s)}(t)}{M_B^2-s}
+  \prod_{j=1}^N\frac{s-s_j}{M_B^2-s_j},
+  \qquad
+  \frac{R_B^{(u)}(t)}{4m^2-t-M_B^2-s}
+  \prod_{j=1}^N
+  \frac{s-s_j}{4m^2-t-M_B^2-s_j}.
+\]
+For a composite stable state the functions \(R_B^{(s)}(t)\) and
+\(R_B^{(u)}(t)\) are the crossed forms of the four-point pole residue described
+in Theorem~\ref{thm:bethe-salpeter-pole-factorization}; the homogeneous
+Bethe--Salpeter equation fixes the corresponding pole location when the
+two-constituent description is valid.  Assume that for some integer \(N\),
 \[
   \lim_{|s|\to\infty}
   \left|\frac{\mathcal M(s,t)}{s^N}\right|=0
