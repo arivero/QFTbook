@@ -263,6 +263,78 @@ descending to a function on gauge-equivalence classes of backgrounds.  If the
 same \(SU(2)\) is kept as a global symmetry, the sign is an anomaly class that
 must be reproduced by the infrared theory.
 
+\section{Low-Degree Homotopy Groups in Four-Dimensional Applications}
+
+The preceding example used \(\pi_4(SU(2))\) because a gauge transformation on
+the compactified four-space \(S^4\) is a map \(S^4\to G\).  Other nearby
+homotopy groups enter different constructions.  If a principal \(G\)-bundle on
+\(S^4\) is described by transition data on the equator, the transition function
+is a map \(S^3\to G\), so the instanton number is controlled by \(\pi_3(G)\)
+and by the normalization of the corresponding characteristic class.  If a
+four-dimensional nonlinear sigma model has target \(G\) and its Wess--Zumino
+term is written by extending a field \(U:M^4\to G\) to a five-manifold, the
+quantization is governed by the integral cohomology class of the closed
+five-form used in the Wess--Zumino functional.  For the standard simple-group
+case \(G=SU(N)\), \(N\ge3\), this quantization is tested on maps
+\(S^5\to G\), hence by \(\pi_5(G)\simeq\mathbb Z\).  Thus
+\(\pi_3,\pi_4,\pi_5\) play different roles and should not be conflated.
+
+The following table records the low-degree groups most often met for compact
+connected classical gauge groups.  The entries for \(SO(N)\) with \(N\ge7\),
+\(U(N)\) with \(N\ge3\), \(SU(N)\) with \(N\ge3\), and \(Sp(N)\) with \(N\ge2\)
+are the stable values in the displayed range, as given by Bott periodicity.
+For \(d\ge2\), \(SO(N)\) and \(Spin(N)\) have the same \(\pi_d\); their
+\(\pi_1\) differs because \(Spin(N)\to SO(N)\) is the universal double cover.
+\[
+\begin{array}{c|ccccc}
+G & \pi_1(G) & \pi_2(G) & \pi_3(G) & \pi_4(G) & \pi_5(G) \\
+\hline
+U(1) & \mathbb Z & 0 & 0 & 0 & 0 \\
+U(N),\ N\ge3 & \mathbb Z & 0 & \mathbb Z & 0 & \mathbb Z \\
+SU(2)\simeq Sp(1) & 0 & 0 & \mathbb Z & \mathbb Z_2 & \mathbb Z_2 \\
+SU(N),\ N\ge3 & 0 & 0 & \mathbb Z & 0 & \mathbb Z \\
+SO(N),\ N\ge7 & \mathbb Z_2 & 0 & \mathbb Z & 0 & 0 \\
+Spin(N),\ N\ge7 & 0 & 0 & \mathbb Z & 0 & 0 \\
+Sp(N),\ N\ge2 & 0 & 0 & \mathbb Z & \mathbb Z_2 & \mathbb Z_2
+\end{array}
+\]
+The low-rank orthogonal groups are exceptional because of accidental
+isomorphisms:
+\[
+\begin{array}{c|ccc}
+G & \pi_3(G) & \pi_4(G) & \pi_5(G) \\
+\hline
+Spin(3)\simeq SU(2) & \mathbb Z & \mathbb Z_2 & \mathbb Z_2 \\
+Spin(4)\simeq SU(2)\times SU(2)
+  & \mathbb Z^2 & \mathbb Z_2^2 & \mathbb Z_2^2 \\
+Spin(5)\simeq Sp(2) & \mathbb Z & \mathbb Z_2 & \mathbb Z_2 \\
+Spin(6)\simeq SU(4) & \mathbb Z & 0 & \mathbb Z .
+\end{array}
+\]
+For simply connected exceptional compact groups
+\[
+  G=G_2,F_4,E_6,E_7,E_8
+\]
+one has
+\[
+  \pi_1(G)=\pi_2(G)=0,\qquad
+  \pi_3(G)\simeq\mathbb Z,\qquad
+  \pi_4(G)=\pi_5(G)=0 .
+\]
+There are further low-degree torsion groups in special cases, for example
+\(\pi_6(SU(2))\simeq\mathbb Z_{12}\),
+\(\pi_6(SU(3))\simeq\mathbb Z_6\), and
+\(\pi_6(G_2)\simeq\mathbb Z_3\).  These become relevant in higher-dimensional
+global-anomaly questions.
+
+This table is a guide to the first topological obstructions, not a replacement
+for the anomaly itself.  A modern finite anomaly is a phase of the fermion
+determinant or Pfaffian line, and in its most invariant formulation it is an
+invertible field theory on one higher dimension.  Homotopy groups detect
+important test families of backgrounds; the complete torsion classification can
+depend on spin structure, global form of the group, matter representation, and
+bordism data.
+
 \section{Vacuum Sectors and Locality}
 
 Spontaneous symmetry breaking is a statement about phases of an infinite-volume
