@@ -297,12 +297,16 @@ contour according to the Feynman prescription. The Euclidean expression is
   \int_0^1\dd x
   \int\frac{\dd^D\ell_E}{(2\pi)^D}\,
   \frac{1}{
-    \left[\ell_E^2+k^2x(1-x)+m_1^2-\ii0\right]^2}.
+    \left[\ell_E^2+k^2x(1-x)+m_1^2\right]^2}.
 \]
 The rotation is a contour statement, not a change of notation: for the
 shifted loop variable the pole displacements prescribed by \(-\ii0\) leave a
 sector through which the \(\ell^0\)-contour can be moved to the Euclidean
-axis without crossing singularities.
+axis without crossing singularities.  After the contour has been rotated, the
+Euclidean denominator is an ordinary real denominator.  Its boundary value on a
+timelike cut is obtained by analytically continuing the resulting function with
+the original Feynman prescription; it is not encoded by leaving a residual
+\(-\ii0\) in the Euclidean integrand.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.9]
@@ -324,7 +328,8 @@ axis without crossing singularities.
 \end{tikzpicture}
 \end{center}
 
-In four dimensions, with a Euclidean cutoff \(|\ell_E|<\Lambda\),
+In four dimensions, with a Euclidean cutoff \(|\ell_E|<\Lambda\) and with
+\(k\) in the domain reached by the contour rotation,
 \[
   \Sigma_1(k)
   =
@@ -332,7 +337,7 @@ In four dimensions, with a Euclidean cutoff \(|\ell_E|<\Lambda\),
   \int_0^1\dd x
   \left[
     \log
-    \frac{\Lambda^2}{k^2x(1-x)+m_1^2-\ii0}
+    \frac{\Lambda^2}{k^2x(1-x)+m_1^2}
     -1+O(\Lambda^{-2})
   \right].
 \]
@@ -350,8 +355,11 @@ subtraction is
   -\frac{g^2}{32\pi^2}
   \int_0^1\dd x\,
   \log
-  \frac{k^2x(1-x)+m_1^2-\ii0}{m_1^2}.
+  \frac{k^2x(1-x)+m_1^2}{m_1^2}.
 \]
+This is first an analytic function on the Euclidean side of the cut.  The
+physical boundary value is specified only after the external invariant is
+continued to a timelike value.
 
 \section{The Threshold Cut and the Width}
 
