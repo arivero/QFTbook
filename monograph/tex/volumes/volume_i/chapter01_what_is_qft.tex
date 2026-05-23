@@ -753,6 +753,18 @@ The spectrum condition is
   =
   \{p\in\mathbb R^D:p^0\ge0,\ p^2\le0\}.
 \]
+For \(\mu^2\ge0\), write \(\Delta_F(x;\mu^2)\) for the free scalar Feynman
+distribution with mass parameter \(\mu\):
+\[
+  \Delta_F(x;\mu^2)
+  =
+  -\ii\lim_{\epsilon\downarrow0}
+  \int\frac{\dd^Dk}{(2\pi)^D}\,
+  \frac{\ee^{\ii k\cdot x}}{k^2+\mu^2-\ii\epsilon},
+\]
+where the limit is taken in the sense of tempered distributions.  This is only
+a notation-setting definition at this point; its relation to time ordering and
+spectral measures is derived in Chapter~\ref{ch:kallen-lehmann}.
 For a scalar Wightman field in the vacuum Hilbert-space framework, positivity
 of the Hilbert-space inner product, translation invariance, and the spectrum
 condition imply that the two-point function admits a positive spectral
@@ -766,9 +778,8 @@ has the form
   \qquad
   \rho(\mu^2)\ge0.
 \]
-Here \(\Delta_F(x;\mu^2)\) denotes the free scalar Feynman distribution of
-mass parameter \(\mu\).  If the spectral measure is not absolutely
-continuous, the integral is written with respect to the positive measure
+If the spectral measure is not absolutely continuous, the integral is written
+with respect to the positive measure
 \(\dd\rho(\mu^2)\) rather than a density.
 This formula will be derived from the stated Hilbert-space assumptions in
 Chapter~\ref{ch:kallen-lehmann}.  It is the first result in the text that
