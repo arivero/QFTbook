@@ -17,6 +17,19 @@ under `monograph/tex/volumes/volume_iii/`.  If a future reorganization renames
 the dossier directories by compiled volume, this README and
 `planning/README.md` must be updated in the same change.
 
+Within a dossier directory, filename prefixes are not a reliable unique
+chapter key.  Some were assigned from the source-note sequence before later
+manifest reordering.  The known collision in `volume_ii/` is:
+
+| Dossier | Reason for prefix |
+| --- | --- |
+| `chapter18_classical_yang_mills_matter.md` | Historical source-order dossier for classical Yang-Mills theory and matter, following Wilsonian effective actions in the 253b sequence |
+| `chapter18_gauge_fixing_ghosts_brst.md` | Dossier keyed to the current on-disk chapter file `monograph/tex/volumes/volume_ii/chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` |
+
+Use the dossier heading, the `Source Position` block, and the current manifest
+files to identify the intended chapter; do not use the numeric filename prefix
+alone as a database key.
+
 Some source chapters under `monograph/tex/volumes/volume_iv/` are included in
 compiled Volumes I and II.  A dedicated `planning/chapter_dossiers/volume_iv/`
 directory has not yet been created; until it is, their planning status is
