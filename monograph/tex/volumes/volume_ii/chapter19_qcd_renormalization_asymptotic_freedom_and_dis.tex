@@ -1085,6 +1085,180 @@ sharp order parameter for confinement because the flux tube can break by
 quark-antiquark pair creation.  The physical spectral statement remains that
 asymptotic particles are color singlets.
 
+\section{QCD Strings and Flux-Tube Effective Theory}
+
+The QCD string is the long-distance effective dynamics of a chromoelectric
+flux tube, defined by gauge-invariant line observables and by the spectrum in
+sectors with external color sources.  In pure \(SU(N_c)\) Yang--Mills theory
+there is a center one-form symmetry with charge in
+\(\mathbb Z_{N_c}\).  A Wilson line in a representation \(R\) has center charge
+equal to its \(N\)-ality \(k_R\in\mathbb Z_{N_c}\).  A static pair of external
+sources with nonzero \(k_R\) lies in a superselection sector that cannot relax
+to the vacuum by local gluonic excitations alone.  The flux tube connecting the
+sources is the lowest-energy state in this sector at fixed separation.
+
+For a Euclidean rectangle \(C_{L,T}\), the transfer-matrix interpretation of
+\(\langle W_R(C_{L,T})\rangle\) gives the spectral expansion
+\begin{equation}
+  \langle W_R(C_{L,T})\rangle
+  =
+  \sum_{\alpha}
+  |\langle \alpha;L,R|\mathcal O_R(L)\vac\rangle|^2
+  \ee^{-E_\alpha(L)T},
+  \qquad T>0,
+  \label{eq:qcd-string-static-source-spectral-expansion}
+\end{equation}
+where \(\mathcal O_R(L)\) is a gauge-invariant operator that creates the two
+static sources separated by \(L\), and \(\ket{\alpha;L,R}\) are eigenstates of
+the Hamiltonian in the corresponding static-source sector.  If the lowest
+energy is isolated and the overlap in
+\eqref{eq:qcd-string-static-source-spectral-expansion} is nonzero, then
+\[
+  V_R(L)=E_0(L)
+  =
+  -\lim_{T\to\infty}\frac1T\log \langle W_R(C_{L,T})\rangle .
+\]
+The string tension in this sector is the asymptotic slope, when the limit
+exists,
+\begin{equation}
+  \sigma_R
+  :=
+  \lim_{L\to\infty}\frac{E_0(L)}{L}.
+  \label{eq:qcd-string-tension-definition}
+\end{equation}
+For representations with the same \(N\)-ality, gluon screening can change the
+short-distance representation carried by the flux, so the asymptotic tension
+depends on the center charge \(k_R\), not on the full microscopic
+representation \(R\), after all lower-energy screening channels are included.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.95\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (0,2.35) {static-source flux tube};
+      \shade[left color=purple!18,right color=purple!18,middle color=purple!45]
+        (-2.25,-0.28) .. controls (-1.0,0.03) and (1.0,0.03) .. (2.25,-0.28)
+        -- (2.25,0.28) .. controls (1.0,-0.03) and (-1.0,-0.03) .. (-2.25,0.28)
+        -- cycle;
+      \draw[purple!70!black,thick]
+        (-2.25,-0.28) .. controls (-1.0,0.03) and (1.0,0.03) .. (2.25,-0.28);
+      \draw[purple!70!black,thick]
+        (-2.25,0.28) .. controls (-1.0,-0.03) and (1.0,-0.03) .. (2.25,0.28);
+      \fill[blue!75!black] (-2.55,0) circle (3pt);
+      \fill[red!75!black] (2.55,0) circle (3pt);
+      \node[below,blue!75!black] at (-2.55,-0.08) {source};
+      \node[below,red!75!black] at (2.55,-0.08) {antisource};
+      \draw[<->,blue!70!black,thick] (-2.55,-1.0)--(2.55,-1.0);
+      \node[below] at (0,-1.0) {\(L\)};
+      \node[purple!70!black,align=center] at (0,0.85)
+        {energy \(E_0(L)\sim\sigma_R L\)};
+    \end{scope}
+    \begin{scope}[shift={(7.0,0)}]
+      \node[font=\small] at (0,2.35) {worldsheet fluctuations};
+      \draw[gray!55,step=0.5] (-2.2,-1.1) grid (2.2,1.1);
+      \draw[-{Latex[length=2mm]}] (-2.45,-1.25)--(2.55,-1.25)
+        node[right] {spatial coordinate \(s\)};
+      \draw[-{Latex[length=2mm]}] (-2.45,-1.25)--(-2.45,1.35)
+        node[above] {Euclidean time \(\tau\)};
+      \draw[purple!75!black,very thick]
+        (-2.0,-0.45) .. controls (-1.2,0.65) and (-0.2,-0.55) .. (0.7,0.25)
+        .. controls (1.35,0.85) and (1.75,0.18) .. (2.0,0.62);
+      \draw[purple!75!black,very thick]
+        (-2.0,-0.15) .. controls (-1.25,0.95) and (-0.25,-0.25) .. (0.65,0.55)
+        .. controls (1.28,1.15) and (1.75,0.48) .. (2.0,0.92);
+      \node[align=center,purple!75!black] at (0,-1.85)
+        {transverse fields \(X^i(\tau,s)\)};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The QCD string is the long-distance flux-tube sector selected by
+  gauge-invariant line operators.  At large separation the lowest energy is
+  extensive in the source separation, while the low-energy excitations are
+  transverse fluctuations of the flux-tube worldsheet.}
+  \label{fig:qcd-string-flux-tube-worldsheet}
+\end{figure}
+
+The effective string description uses QCD as its microscopic definition and
+expands the flux-tube energies and matrix elements at large \(L\).  Choose
+worldsheet coordinates \((\tau,s)\), with
+\(0\le s\le L\), and fix static gauge so that the embedding of the worldsheet
+in \(D\)-dimensional spacetime is
+\[
+  X^0(\tau,s)=\tau,\qquad
+  X^1(\tau,s)=s,\qquad
+  X^i(\tau,s)\ \ (i=2,\ldots,D-1)
+\]
+for the transverse fluctuations.  The leading local action compatible with
+worldsheet locality, Euclidean time translation, spatial rotations transverse
+to the string, and the nonlinear realization of target-space Poincare symmetry
+is the area action
+\begin{equation}
+  S_{\mathrm{eff}}
+  =
+  \sigma_R
+  \int\dd\tau\,\dd s\,
+  \sqrt{\det\!\left(\delta_{ab}
+  +\partial_aX^i\partial_bX^i\right)}
+  +\mu_R\int\dd\tau
+  +S_{\mathrm{higher}},
+  \label{eq:qcd-string-effective-action}
+\end{equation}
+where \(a,b\in\{\tau,s\}\), repeated transverse indices \(i\) are summed, and
+\(\mu_R\) is an endpoint energy for an open string ending on external sources.
+The term \(S_{\mathrm{higher}}\) contains local operators with more derivatives
+and possible boundary terms.  Expanding the square root gives
+\[
+  S_{\mathrm{eff}}
+  =
+  \sigma_RLT
+  +
+  \frac{\sigma_R}{2}
+  \int\dd\tau\,\dd s\,
+  \partial_aX^i\partial_aX^i
+  +\cdots .
+\]
+Thus the first quantum correction to the ground-state energy is the Casimir
+energy of \(D-2\) massless scalar fields on an interval with endpoint boundary
+conditions fixed by the static sources:
+\begin{equation}
+  E_0(L)
+  =
+  \sigma_R L+\mu_R
+  -\frac{\pi(D-2)}{24L}
+  +O(L^{-3})
+  \label{eq:qcd-string-open-luscher}
+\end{equation}
+for a long open flux tube.  For a closed flux tube winding a spatial circle of
+length \(L\), the corresponding leading form is
+\begin{equation}
+  E_0^{\mathrm{closed}}(L)
+  =
+  \sigma_k L
+  -\frac{\pi(D-2)}{6L}
+  +O(L^{-3}),
+  \label{eq:qcd-string-closed-luscher}
+\end{equation}
+again under the assumption that the only gapless worldsheet fields are the
+transverse displacement modes.  The coefficients of the displayed \(1/L\)
+terms are universal because they depend only on the central charge \(D-2\) of
+these free transverse modes.  The higher powers in \(1/L\), the spectrum of
+massive worldsheet excitations, and the validity range of the expansion are
+dynamical properties of the particular gauge theory.
+
+With dynamical fundamental quarks the fundamental one-form symmetry is
+explicitly broken.  The static-source Hilbert space then contains states made
+from two color-singlet static-light mesons, and the ground-state energy at very
+large \(L\) approaches the two-meson threshold rather than growing without
+bound.  A flux tube can still be a well-defined long-lived state over a range
+of \(L\), and its worldsheet effective theory can describe the corresponding
+resonant or metastable channel, but the limiting string tension
+\eqref{eq:qcd-string-tension-definition} is no longer an order parameter in the
+same sense as in pure Yang--Mills theory.  This distinction is essential when
+using string language in QCD: line operators, static-source sectors, and
+calorimetric observables are physical, and asymptotic final states are
+color-singlet hadrons.
+
 \section{Color and Physical External States}
 
 The gauge-fixed quark and gluon fields are useful local variables in
@@ -1111,6 +1285,104 @@ spectral sense when discussing QCD phenomenology: the asymptotic states are
 hadrons, while the short-distance operator expansion is expressed in terms of
 quark and gluon fields because those are the local variables of the
 renormalized gauge theory.
+
+\section{Detector Observables and Energy Correlators}
+
+A nonperturbative formulation of jet observables begins with color-singlet
+detector measurements in the physical Hilbert space.  The basic calorimetric
+observable is built from the renormalized, gauge-invariant stress tensor
+\(T^{\mu\nu}\).  For a smooth test function \(f\in C^\infty(S^2)\), define the
+energy-flow operator, when the following weak limit of quadratic forms exists
+on the finite-energy scattering domain, by
+\begin{equation}
+  \widehat{\mathcal E}(f)
+  =
+  \mathrm{w}\!-\!\lim_{R\to\infty}
+  R^2
+  \int_{-\infty}^{\infty}\dd t
+  \int_{S^2}\dd\Omega(\mathbf n)\,
+  f(\mathbf n)\,
+  n_i\,\widehat T^{0i}(t,R\mathbf n).
+  \label{eq:energy-flow-operator-smeared}
+\end{equation}
+Here \(\mathbf n\in S^2\) is a unit spatial direction and
+\(\dd\Omega\) is the rotation-invariant measure on \(S^2\).  The distribution
+\(\widehat{\mathcal E}(\mathbf n)\) is defined by
+\(\widehat{\mathcal E}(f)=\int_{S^2}\dd\Omega(\mathbf n)
+f(\mathbf n)\widehat{\mathcal E}(\mathbf n)\).  On an outgoing state of
+stable hadrons with momenta \(p_r\), species labels \(a_r\), and the
+normalization conventions of scattering theory,
+\begin{equation}
+  \widehat{\mathcal E}(f)
+  \ket{p_1,a_1;\ldots;p_N,a_N}_{\mathrm{out}}
+  =
+  \left(\sum_{r=1}^N p_r^0\,f(\widehat{\mathbf p}_r)\right)
+  \ket{p_1,a_1;\ldots;p_N,a_N}_{\mathrm{out}},
+  \qquad
+  \widehat{\mathbf p}_r:=\frac{\mathbf p_r}{|\mathbf p_r|}.
+  \label{eq:energy-flow-on-hadron-state}
+\end{equation}
+Equation~\eqref{eq:energy-flow-on-hadron-state} is not a definition in terms
+of a parton model; it is the spectral action of the detector limit on physical
+hadronic asymptotic states.
+
+Given a normalized incoming physical state \(\Psi_{\mathrm{in}}\), or a state
+prepared by a local color-singlet current and then evolved to future infinity,
+the \(k\)-point energy correlator is the distribution on \((S^2)^k\)
+\begin{equation}
+  \mathcal G_k(f_1,\ldots,f_k;\Psi)
+  =
+  {}_{\mathrm{out}}\!\bra{\Psi}
+  \widehat{\mathcal E}(f_1)\cdots
+  \widehat{\mathcal E}(f_k)
+  \ket{\Psi}_{\mathrm{out}} .
+  \label{eq:energy-correlator-definition}
+\end{equation}
+After inserting a complete set of physical hadronic out-states, this becomes
+\begin{equation}
+  \mathcal G_k(f_1,\ldots,f_k;\Psi)
+  =
+  \sum_X
+  |\braket{X,\mathrm{out}}{\Psi,\mathrm{out}}|^2
+  \prod_{\ell=1}^k
+  \left(
+    \sum_{r\in X} p_r^0\,f_\ell(\widehat{\mathbf p}_r)
+  \right),
+  \label{eq:energy-correlator-hadron-sum}
+\end{equation}
+with the usual replacement of the displayed sum by direct integrals over
+continuous multiparticle phase space.  This formula is nonperturbative: all
+states in \(X\) are physical hadronic states, and the operator being measured
+is built from \(T^{\mu\nu}\).
+
+The same formula also states the infrared and collinear stability of energy
+correlators in their smeared form.  Adding a final particle of energy
+\(\varepsilon\) changes \(\widehat{\mathcal E}(f)\) by
+\(\varepsilon f(\mathbf n)\), hence gives a vanishing contribution as
+\(\varepsilon\to0\).  Replacing two particles with collinear momenta
+\(p_a,p_b\) by one particle of momentum \(p_a+p_b\) leaves the detector weight
+\[
+  p_a^0 f(\widehat{\mathbf p}_a)+p_b^0 f(\widehat{\mathbf p}_b)
+\]
+equal, up to terms that vanish with the opening angle, to
+\((p_a^0+p_b^0)f((\mathbf p_a+\mathbf p_b)/
+|\mathbf p_a+\mathbf p_b|)\).  Thus soft emission
+and collinear fragmentation do not change the measured observable at separated
+angular resolution.  Unsmeared products
+\(\widehat{\mathcal E}(\mathbf n_1)\cdots
+\widehat{\mathcal E}(\mathbf n_k)\) are distributions and may have contact
+singularities when directions coincide; the infrared-safe observables are the
+smeared correlators or their distributional values away from coincident
+directions.
+
+Hadronization, in this formulation, is not a rule that converts an exact
+colored partonic final state into hadrons.  The exact final states of QCD are
+already hadronic.  Perturbative quark and gluon calculations enter through
+short-distance expansions, factorization theorems, and anomalous dimensions for
+the same color-singlet detector observables.  The difference between the exact
+correlator \eqref{eq:energy-correlator-definition} and a finite-order
+short-distance approximation is organized by long-distance matrix elements and
+power corrections, not by a colored asymptotic \(S\)-matrix.
 
 \section{Current Correlators and the Hadronic Tensor}
 
