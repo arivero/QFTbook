@@ -407,12 +407,25 @@ With the Weyl transformation
   \phi\mapsto \ee^{-\frac{D-2}{2}\omega}\phi,
 \]
 this action is Weyl invariant at the classical level.  In the corresponding
-free massless scalar QFT, the improved stress tensor obeys
+free massless scalar QFT, the improved trace is
 \[
-  \widehat T^\mu{}_\mu(x)=0
+  \widehat T^\mu{}_\mu(x)
+  =
+  2(D-1)\xi_\ast\,\widehat\phi(x)\,\partial^2\widehat\phi(x).
 \]
-as an operator equation, with the scalar equation of motion imposed in the
-operator algebra.
+It represents the zero class in the local-operator vector space modulo the
+free equation-of-motion ideal.  Equivalently, for local insertions
+\(\mathcal O_i(y_i)\) with \(x\ne y_i\),
+\[
+  \left\langle
+    \widehat T^\mu{}_\mu(x)\,
+    \prod_i\mathcal O_i(y_i)
+  \right\rangle
+  =
+  0 .
+\]
+At coincident points the factor \(\partial^2\widehat\phi\) generates the
+Schwinger--Dyson contact terms of the free Gaussian measure.
 
 \begin{figure}[H]
   \centering
