@@ -707,20 +707,66 @@ It is a Laplace-type operator on one-forms valued in the adjoint bundle with
   =
   \delta_\mu{}^\nu\,\operatorname{ad}(\widetilde F_{\rho\sigma}).
 \]
-Therefore
-at the pole coefficient, where terms proportional to \(D-4\) in
-finite-dimensional traces multiply the pole only into finite contributions,
-\[
+The finite-dimensional trace is taken in \(D=4-\epsilon\) one-form
+components and in the adjoint representation.  Using
+\eqref{eq:qcd-adjoint-trace-sign} and the antisymmetry of
+\(\widetilde F_{\mu\nu}\),
+\begin{align}
   \operatorname{tr}\frac12E_A^2
+  &=
+  \frac12\operatorname{tr}_{\rm ad}
+  \left[
+    (-2\operatorname{ad}\widetilde F_\mu{}^\nu)
+    (-2\operatorname{ad}\widetilde F_\nu{}^\mu)
+  \right]
   =
   2C_A\,\widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
-  \qquad
+  \label{eq:qcd-vector-e-trace}\\
   \operatorname{tr}\frac1{12}\Omega_{\rho\sigma}\Omega^{\rho\sigma}
+  &=
+  \frac{D}{12}\operatorname{tr}_{\rm ad}
+  \bigl(
+    \operatorname{ad}\widetilde F_{\rho\sigma}
+    \operatorname{ad}\widetilde F^{\rho\sigma}
+  \bigr)
   =
-  -\frac13C_A\,\widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu},
+  -\frac{D}{12}C_A\,
+  \widetilde F^a_{\rho\sigma}\widetilde F^{a\rho\sigma}.
+  \label{eq:qcd-vector-omega-trace-d}
+\end{align}
+The \(D\)-dependence in \eqref{eq:qcd-vector-omega-trace-d} has an
+evanescent part.  Write
+\[
+  \mu^{-\epsilon}=1-\epsilon L_\mu+O(\epsilon^2),
 \]
-where the first trace includes one-form and adjoint indices, and the second
-uses the four one-form components.  Thus
+where \(L_\mu\) is the finite logarithm determined by the subtraction
+convention in \eqref{eq:qcd-basic-log-integral}.  Then
+\[
+  (2-D)\frac{\mu^{-\epsilon}}{\epsilon}
+  =
+  (-2+\epsilon)\frac{\mu^{-\epsilon}}{\epsilon}
+  =
+  -\frac2\epsilon+1+2L_\mu+O(\epsilon),
+  \qquad
+  D\frac{\mu^{-\epsilon}}{\epsilon}
+  =
+  \frac4\epsilon-1-4L_\mu+O(\epsilon).
+\]
+Consequently, replacing \(D\) by \(4\) is legitimate for the pole
+coefficient; the omitted \((D-4)I_\epsilon(\mu)\) part is a finite local
+contribution.
+Equations \eqref{eq:qcd-vector-e-trace} and
+\eqref{eq:qcd-vector-omega-trace-d} therefore give the pole density
+\[
+  \left(
+    2-\frac{4}{12}
+  \right)C_A\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}
+  =
+  \frac53C_A\,
+  \widetilde F^a_{\mu\nu}\widetilde F^{a\mu\nu}.
+\]
+The vector determinant contribution is therefore
 \begin{equation}
   \operatorname{Tr}\log D_A
   \supset
