@@ -498,7 +498,7 @@ the spectral gap the one-particle remainder need not be integrable; without
 positive energy the large-time stationary-phase localization has no stable
 direction of propagation.
 
-\section{Fock Structure}
+\section{Fock Structure and Wave Operators}
 
 Let
 \[
@@ -510,6 +510,12 @@ be the bosonic Fock space over \(\Hilb_1\), where
 \(\Hilb_1^{\odot n}\) denotes the symmetric \(n\)-fold tensor product and
 \(\Hilb_1^{\odot0}=\mathbb C\Omega_F\). The vector \(\Omega_F\) is the Fock
 vacuum.
+
+The asymptotic identifications from this free Fock space to the physical
+Hilbert space are called the incoming and outgoing Haag--Ruelle wave operators.
+Concretely, each wave operator is an asymptotic identification map: it assigns
+to an abstract collection of asymptotic one-particle wave packets the physical
+Hilbert-space vector obtained as a large-time Haag--Ruelle limit.
 
 For wave packets with disjoint velocity supports, define
 \[
@@ -552,8 +558,8 @@ and the same formula holds for incoming states. Therefore
   :
   \mathcal F_s(\Hilb_1)\longrightarrow \Hilb
 \]
-are isometries. Their ranges are the outgoing and incoming scattering
-subspaces,
+are isometric wave operators. Their ranges are the outgoing and incoming
+scattering subspaces,
 \[
   \Hilb_{\mathrm{out}}=\operatorname{Ran}\Omega_{\mathrm{out}},
   \qquad
@@ -571,7 +577,8 @@ Haag--Ruelle wave operators intertwine the physical and free actions:
 This equation states that an asymptotic \(n\)-particle state transforms as
 the corresponding symmetrized tensor product of one-particle Wigner states.
 
-Equivalently, the isometries may be described by generalized momentum kernels.
+Equivalently, the wave operators may be described by generalized momentum
+kernels.
 For bosons,
 \[
 \begin{aligned}
