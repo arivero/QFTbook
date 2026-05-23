@@ -49,7 +49,7 @@ The invariant amplitude convention inherited from LSZ is
 \[
   \langle q_1,\ldots,q_m|T|p_1,\ldots,p_n\rangle
   =
-  (2\pi)^D\delta^D(P_{\rm out}-P_{\rm in})
+  (2\pi)^D\delta^{(D)}(P_{\rm out}-P_{\rm in})
   \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n).
 \]
 The bra and ket are generalized basis vectors in \(\mathcal H_{\rm as}\).
@@ -62,7 +62,7 @@ distribution is obtained from the connected part of the Haag--Ruelle kernel
 after subtracting the identity contribution.  The connected contribution to
 \(S\) is therefore
 \[
-  \ii(2\pi)^D\delta^D(P_{\rm out}-P_{\rm in})\mathcal M .
+  \ii(2\pi)^D\delta^{(D)}(P_{\rm out}-P_{\rm in})\mathcal M .
 \]
 
 \section{Sharp-Momentum Limit and Delta-Squares}
@@ -79,23 +79,23 @@ and write the connected kernel as
 \[
   S^{\rm conn}_{\beta\alpha}
   =
-  \ii(2\pi)^D\delta^D(P_\beta-P_\alpha)M_\delta(\beta|\alpha).
+  \ii(2\pi)^D\delta^{(D)}(P_\beta-P_\alpha)M_\delta(\beta|\alpha).
 \]
 Let \(\mathcal D\) be a final region that does not contain the identity
 no-scattering contribution.  Squaring the distributional kernel gives
 \[
   P_{\alpha\to\mathcal D}
   =
-  (2\pi)^D\delta^D(0)
+  (2\pi)^D\delta^{(D)}(0)
   \int_{\mathcal D}\dd\beta_\delta\,
-  (2\pi)^D\delta^D(P_\beta-P_\alpha)
+  (2\pi)^D\delta^{(D)}(P_\beta-P_\alpha)
   |M_\delta(\beta|\alpha)|^2 ,
 \]
 where \(\dd\beta_\delta\) is the product of the final \(\dd^d\vec q\) measures,
 including the appropriate identical-particle symmetry factors.  A finite box
 regularization of spatial volume \(V\) and observation time \(\mathcal T\) gives
 \[
-  (2\pi)^D\delta^D(0)=V\mathcal T,
+  (2\pi)^D\delta^{(D)}(0)=V\mathcal T,
   \qquad
   \delta^{(d)}(0)=\frac{V}{(2\pi)^d}.
 \]
@@ -106,7 +106,7 @@ For two sharp incoming particles, the normalized box state carries the factor
   =
   \frac{(2\pi)^{2d}\mathcal T}{V}
   \int_{\mathcal D}\dd\beta_\delta\,
-  (2\pi)^D\delta^D(P_\beta-P_\alpha)
+  (2\pi)^D\delta^{(D)}(P_\beta-P_\alpha)
   |M_\delta(\beta|\alpha)|^2 .
 \]
 If the two beams have relative speed \(v_{\rm rel}=|\vec v_1-\vec v_2|\) in
@@ -123,7 +123,7 @@ Therefore
   =
   \frac{(2\pi)^{2D-2}}{v_{\rm rel}}
   \int_{\mathcal D}\dd\beta_\delta\,
-  (2\pi)^D\delta^D(P_\beta-P_\alpha)
+  (2\pi)^D\delta^{(D)}(P_\beta-P_\alpha)
   |M_\delta(\beta|\alpha)|^2 .
 \]
 Converting \(M_\delta\) to the invariant amplitude \(\mathcal M\) by the
@@ -169,7 +169,7 @@ conservation.  The long-time Haag--Ruelle localization enforces energy and
 longitudinal momentum conservation in the scattering limit.  Together these
 produce the single overall distribution
 \[
-  (2\pi)^D\delta^D(P_{\rm out}-P_{\rm in})
+  (2\pi)^D\delta^{(D)}(P_{\rm out}-P_{\rm in})
 \]
 appearing in the invariant amplitude convention.  The incoming current
 through the transverse impact-parameter plane is the invariant relative speed
@@ -201,7 +201,7 @@ For \(m\) final particles with total incoming momentum \(P\), define the
 \[
   \dd\Phi_m(P;q_1,\ldots,q_m)
   =
-  (2\pi)^D\delta^D\!\left(P-\sum_{a=1}^m q_a\right)
+  (2\pi)^D\delta^{(D)}\!\left(P-\sum_{a=1}^m q_a\right)
   \prod_{a=1}^m\dd\mu_{M_a}(q_a).
 \]
 If some final particles are identical, the phase-space integral over labeled
@@ -333,7 +333,7 @@ equivalently obtained by doing the delta-function integration directly.  Let
   \frac{\dd^3\vec q_2}{(2\pi)^3 2\omega_2}
 \\
   &\qquad\qquad\times
-  (2\pi)^4\delta^4(p_1+p_2-q_1-q_2)
+  (2\pi)^4\delta^{(4)}(p_1+p_2-q_1-q_2)
   |\mathcal M|^2 .
 \end{aligned}
 \]

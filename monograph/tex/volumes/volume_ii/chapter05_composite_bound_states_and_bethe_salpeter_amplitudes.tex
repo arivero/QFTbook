@@ -230,7 +230,7 @@ We use the covariant plane-wave normalization
   \langle B(\vec P\,')|B(\vec P)\rangle
   =
   (2\pi)^{D-1}2\omega_{\vec P}\,
-  \delta^{D-1}(\vec P-\vec P\,'),
+  \delta^{(D-1)}(\vec P-\vec P\,'),
   \qquad
   \omega_{\vec P}=\sqrt{\vec P^{\,2}+M_B^2}.
 \]
@@ -257,7 +257,7 @@ support on total momentum \(P\):
   \int\frac{\dd^D k_1}{(2\pi)^D}
        \frac{\dd^D k_2}{(2\pi)^D}\,
   \ee^{\ii k_1\cdot x_1+\ii k_2\cdot x_2}
-  (2\pi)^D\delta^D(k_1+k_2-P)
+  (2\pi)^D\delta^{(D)}(k_1+k_2-P)
   \widetilde\Phi_B(k_1,k_2;P).
 \]
 If instead one uses unit-normalized momentum kets, a factor
@@ -297,7 +297,7 @@ Now consider the momentum-space time-ordered four-point function
 \end{aligned}
 \]
 All four momenta are taken incoming, so translation invariance supplies
-\((2\pi)^D\delta^D(k_1+k_2+k_3+k_4)\).
+\((2\pi)^D\delta^{(D)}(k_1+k_2+k_3+k_4)\).
 
 \begin{theorem}[Bethe--Salpeter pole factorization]
 \label{thm:bethe-salpeter-pole-factorization}
@@ -313,7 +313,7 @@ the pole part of the Fourier-transformed four-point function is
 \begin{aligned}
   \widetilde G_4(k_1,k_2,k_3,k_4)
   &\sim
-  (2\pi)^D\delta^D(k_1+k_2+k_3+k_4)
+  (2\pi)^D\delta^{(D)}(k_1+k_2+k_3+k_4)
 \\
   &\quad\times
   \frac{-\ii\,

@@ -413,7 +413,7 @@ that, on a common invariant domain,
 \[
   [\widehat\phi(t,\vec x),\partial_t\widehat\phi(t,\vec y)]
   =
-  \ii\,\delta^{D-1}(\vec x-\vec y)\mathbf 1 .
+  \ii\,\delta^{(D-1)}(\vec x-\vec y)\mathbf 1 .
 \]
 The commutator two-point distribution is
 \[
@@ -453,7 +453,7 @@ Then, as an identity in \(\mathcal S'(\mathbb R^{D-1}_{\vec r})\),
   \left(\ee^{\ii\vec p\cdot\vec r}
   +\ee^{-\ii\vec p\cdot\vec r}\right)
   =
-  -\ii\,\delta^{D-1}(\vec r).
+  -\ii\,\delta^{(D-1)}(\vec r).
 \end{aligned}
 \]
 The result is independent of \(\mu^2\).  On the other hand, the assumed
@@ -468,15 +468,15 @@ canonical commutator gives
   [\partial_t\widehat\phi(0,\vec r),\widehat\phi(0,\vec 0)]
   |\vac\rangle
   =
-  -\ii\,\delta^{D-1}(\vec r).
+  -\ii\,\delta^{(D-1)}(\vec r).
 \]
 Comparing this with the spectral representation gives
 \[
   -\ii
   \left(\int_{[0,\infty)}\dd\rho(\mu^2)\right)
-  \delta^{D-1}(\vec r)
+  \delta^{(D-1)}(\vec r)
   =
-  -\ii\delta^{D-1}(\vec r).
+  -\ii\delta^{(D-1)}(\vec r).
 \]
 Therefore the canonical commutator fixes the total spectral weight:
 \begin{equation}
@@ -524,7 +524,7 @@ With generalized momentum eigenvectors normalized by
 \[
   {}_\delta\langle\vec k\,{}'|\vec k\rangle_\delta
   =
-  \delta^{D-1}(\vec k\,{}'-\vec k),
+  \delta^{(D-1)}(\vec k\,{}'-\vec k),
 \]
 write
 \[
@@ -570,10 +570,10 @@ Unitarity fixes \(N\). Since the on-shell measure
 \]
 is Lorentz invariant,
 \[
-  \delta^{D-1}(\Lambda\vec k\,{}'-\Lambda\vec k)
+  \delta^{(D-1)}(\Lambda\vec k\,{}'-\Lambda\vec k)
   =
   \frac{k^0}{(\Lambda k)^0}
-  \delta^{D-1}(\vec k\,{}'-\vec k).
+  \delta^{(D-1)}(\vec k\,{}'-\vec k).
 \]
 Comparing
 \[
@@ -606,7 +606,7 @@ for which
   {}_{\rm inv}\langle\vec k\,{}'|\vec k\rangle_{\rm inv}
   =
   (2\pi)^{D-1}2\omega_{\vec k}\,
-  \delta^{D-1}(\vec k\,{}'-\vec k),
+  \delta^{(D-1)}(\vec k\,{}'-\vec k),
   \qquad
   U(\Lambda)|\vec k\rangle_{\rm inv}=|\Lambda\vec k\rangle_{\rm inv}.
 \]
@@ -658,7 +658,7 @@ construction,
   \langle\vec p\,{}'|\vec p\rangle
   =
   (2\pi)^{D-1}2\omega_{\vec p}\,
-  \delta^{D-1}(\vec p\,{}'-\vec p),
+  \delta^{(D-1)}(\vec p\,{}'-\vec p),
   \qquad
   \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
 \]
@@ -691,12 +691,12 @@ section, the same statement is the calculation
   \left|
     {}_\delta\langle\vec k|\widehat\phi(0)|\vac\rangle
   \right|^2
-  \delta^D(p-k)\,\dd^Dp
+  \delta^{(D)}(p-k)\,\dd^Dp
   \\
   &=
   \int\dd^{D-1}\vec k\,
   \frac{Z}{(2\pi)^{D-1}2\omega_{\vec k}}\,
-  \delta^D(p-k)\,\dd^Dp
+  \delta^{(D)}(p-k)\,\dd^Dp
   =
   \frac{Z\,\dd^Dp}{(2\pi)^{D-1}}\,
   \theta(p^0)\delta(p^2+m^2).

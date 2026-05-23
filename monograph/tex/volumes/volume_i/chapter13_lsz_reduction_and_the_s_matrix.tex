@@ -38,7 +38,7 @@ normalized by
   \langle \vec q\,|\vec p\rangle
   =
   (2\pi)^d\,2\omega_{\vec p}\,
-  \delta^d(\vec q-\vec p),
+  \delta^{(d)}(\vec q-\vec p),
   \qquad
   \omega_{\vec p}=\sqrt{\vec p^{\,2}+m^2},
 \]
@@ -451,7 +451,7 @@ same residue from every external leg at once.
 This also explains the identity term in the \(S\)-matrix.  A disconnected
 two-point factor
 \[
-  (2\pi)^D\delta^D(k+k')\,
+  (2\pi)^D\delta^{(D)}(k+k')\,
   \frac{-\ii Z}{k^2+m^2-\ii0}
 \]
 has a simultaneous one-particle pole and gives, after the same limiting
@@ -489,7 +489,7 @@ Translation invariance gives
 \[
   \widetilde G_N(k_1,\ldots,k_N)
   =
-  (2\pi)^D\delta^D(k_1+\cdots+k_N)\,
+  (2\pi)^D\delta^{(D)}(k_1+\cdots+k_N)\,
   \widetilde{\mathcal G}_N(k_1,\ldots,k_{N-1}),
 \]
 where \(\widetilde{\mathcal G}_N\) denotes the reduced distribution after
@@ -535,12 +535,12 @@ two identical scalar particles,
   \rangle_{\mathrm{in}}
 \\
 &\quad =
-  (2\pi)^d2\omega_{\vec p_1}\delta^d(\vec q_1-\vec p_1)\,
-  (2\pi)^d2\omega_{\vec p_2}\delta^d(\vec q_2-\vec p_2)
+  (2\pi)^d2\omega_{\vec p_1}\delta^{(d)}(\vec q_1-\vec p_1)\,
+  (2\pi)^d2\omega_{\vec p_2}\delta^{(d)}(\vec q_2-\vec p_2)
 \\
 &\qquad+
-  (2\pi)^d2\omega_{\vec p_1}\delta^d(\vec q_2-\vec p_1)\,
-  (2\pi)^d2\omega_{\vec p_2}\delta^d(\vec q_1-\vec p_2)
+  (2\pi)^d2\omega_{\vec p_1}\delta^{(d)}(\vec q_2-\vec p_1)\,
+  (2\pi)^d2\omega_{\vec p_2}\delta^{(d)}(\vec q_1-\vec p_2)
 \\
 &\qquad+
   {}_{\mathrm{out}}\langle
@@ -566,7 +566,7 @@ It is conventional to define the invariant amplitude \(\mathcal M\) by
 \\
 &\quad =
   \ii(2\pi)^D
-  \delta^D(q_1+\cdots+q_m-p_1-\cdots-p_n)\,
+  \delta^{(D)}(q_1+\cdots+q_m-p_1-\cdots-p_n)\,
   \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n).
 \end{aligned}
 \]
@@ -574,7 +574,7 @@ With this convention the operator identity \(S=\mathbf 1+\ii T\) gives
 \[
   {}_{\mathrm{out}}\langle q|T|p\rangle
   =
-  (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})\,
+  (2\pi)^D\delta^{(D)}(P_{\mathrm{out}}-P_{\mathrm{in}})\,
   \mathcal M(q|p).
 \]
 Here \(P_{\mathrm{out}}=\sum_i q_i\) and
@@ -598,7 +598,7 @@ then the connected kernel is often written
 \[
   {}_{\delta,\mathrm{out}}\langle q|p\rangle_{\delta,\mathrm{in,conn}}
   =
-  \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  \ii(2\pi)^D\delta^{(D)}(P_{\mathrm{out}}-P_{\mathrm{in}})
   M_\delta(q|p),
 \]
 where
@@ -717,7 +717,7 @@ the leading connected four-point Green function is
   (q_1,q_2,-p_1,-p_2)
 \\
 &\quad =
-  (2\pi)^D\delta^D(q_1+q_2-p_1-p_2)
+  (2\pi)^D\delta^{(D)}(q_1+q_2-p_1-p_2)
   (-\ii g)
   \prod_{a=1}^4
   \frac{-\ii}{k_a^2+m^2-\ii0}
@@ -737,7 +737,7 @@ Applying LSZ gives
   |\vec p_1,\vec p_2
   \rangle_{\mathrm{in,conn}}
   =
-  (2\pi)^D\delta^D(q_1+q_2-p_1-p_2)
+  (2\pi)^D\delta^{(D)}(q_1+q_2-p_1-p_2)
   \left[-\ii g+O(g^2)\right].
 \]
 Therefore

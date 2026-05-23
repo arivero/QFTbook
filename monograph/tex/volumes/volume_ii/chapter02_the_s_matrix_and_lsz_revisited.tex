@@ -52,7 +52,7 @@ Generalized momentum states on \(\Sigma_m^+\) are normalized by
 \[
   \langle\vec q\,|\vec p\rangle
   =
-  (2\pi)^d2\omega_{\vec p}\,\delta^d(\vec q-\vec p).
+  (2\pi)^d2\omega_{\vec p}\,\delta^{(d)}(\vec q-\vec p).
 \]
 For outgoing momenta \(q_i=(\omega_{\vec q_i},\vec q_i)\) and incoming
 momenta \(p_j=(\omega_{\vec p_j},\vec p_j)\), write
@@ -132,7 +132,7 @@ particle of the same species, in which case
 \[
   I^{\mathrm c}(q|p)
   =
-  (2\pi)^d2\omega_{\vec p}\delta^d(\vec q-\vec p).
+  (2\pi)^d2\omega_{\vec p}\delta^{(d)}(\vec q-\vec p).
 \]
 The invariant amplitude \(\mathcal M\) is the reduced connected \(T\)-kernel:
 \[
@@ -140,7 +140,7 @@ The invariant amplitude \(\mathcal M\) is the reduced connected \(T\)-kernel:
 &T^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n)
 \\
 &\qquad =
-  (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  (2\pi)^D\delta^{(D)}(P_{\mathrm{out}}-P_{\mathrm{in}})
   \mathcal M(q_1,\ldots,q_m|p_1,\ldots,p_n).
 \end{aligned}
 \]
@@ -148,13 +148,13 @@ Equivalently, the transition part of the connected \(S\)-kernel is
 \[
   S^{\mathrm c}-I^{\mathrm c}
   =
-  \ii(2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})\mathcal M .
+  \ii(2\pi)^D\delta^{(D)}(P_{\mathrm{out}}-P_{\mathrm{in}})\mathcal M .
 \]
 The connected \(T\)-matrix kernel is therefore
 \[
   {}_{\mathrm{out}}\langle q|T|p\rangle_{\mathrm c}
   =
-  (2\pi)^D\delta^D(P_{\mathrm{out}}-P_{\mathrm{in}})
+  (2\pi)^D\delta^{(D)}(P_{\mathrm{out}}-P_{\mathrm{in}})
   \mathcal M(q|p).
 \]
 
@@ -304,12 +304,12 @@ as the connected kernel for a block with one incoming and one outgoing label:
   &=
   I^{\mathrm c}(q|p)
   +
-  \ii(2\pi)^D\delta^D(q-p)\mathcal M(q|p)
+  \ii(2\pi)^D\delta^{(D)}(q-p)\mathcal M(q|p)
   \\
   &=
-  (2\pi)^d2\omega_{\vec p}\delta^d(\vec q-\vec p)
+  (2\pi)^d2\omega_{\vec p}\delta^{(d)}(\vec q-\vec p)
   +
-  \ii(2\pi)^D\delta^D(q-p)\mathcal M(q|p).
+  \ii(2\pi)^D\delta^{(D)}(q-p)\mathcal M(q|p).
   \end{aligned}
   \label{eq:one-particle-connected-kernel}
 \end{equation}
