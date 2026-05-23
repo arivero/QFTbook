@@ -423,8 +423,9 @@ hold.
 On the first sheet one finds stable one-particle poles, ordinary thresholds,
 and anomalous thresholds.  An anomalous threshold is a contour-pinch
 singularity on the physical sheet, caused by several internal lines going on
-shell in a compatible spacetime arrangement.  Its invariant location is
-determined by the Landau configuration of those internal lines.
+shell in a spacetime arrangement satisfying the positive Coleman--Norton
+orientation condition defined below.  Its invariant location is determined by
+the Landau configuration of those internal lines.
 
 The singularities of perturbative amplitudes arise when an integration contour
 is forced against singularities of the integrand.  Consider a scalar graph with
@@ -536,31 +537,63 @@ continuation through a cut.
 The sign condition on the parameters has a spacetime meaning.  Consider a
 Landau solution in a real physical region and keep only the active internal
 lines, namely those with \(\alpha_i>0\).  Let the graph vertices be labelled
-by \(v\).  If an active line \(i\) is oriented from \(v_-(i)\) to \(v_+(i)\),
-the stationary equations around every loop are equivalent to the existence of
-vertex positions \(x_v\) such that
+by \(v\), and orient each active edge \(i\) from a tail \(v_-(i)\) to a head
+\(v_+(i)\).  The momentum \(q_i\) is the momentum assigned to this oriented
+edge by the chosen loop-momentum routing.  The loop-stationarity equations say
+that, for every oriented cycle \(C\) of the active graph,
+\[
+  \sum_{i\in C}\sigma_{Ci}\alpha_i q_i=0,\qquad
+  \sigma_{Ci}=
+  \begin{cases}
+    +1,&\text{if the edge orientation agrees with the orientation of }C,\\
+    -1,&\text{if it is opposite.}
+  \end{cases}
+\]
+Equivalently, the vector assigned to an active edge by \(\alpha_i q_i\) has
+zero sum around every closed path.  Hence, on each connected component, there
+are vertex positions \(x_v\), unique up to a common translation, such that
 \[
   x_{v_+(i)}-x_{v_-(i)}=\lambda_i q_i,
   \qquad
   \lambda_i\ge0 ,
 \]
-after choosing orientations of the on-shell momenta \(q_i\).  For a
-first-sheet physical singularity these oriented momenta must be compatible
-with future-directed propagation through the spacetime diagram.  The factor
-\(\lambda_i\) is proportional to the Feynman parameter \(\alpha_i\); its
-normalization depends only on the convention used for the quadratic form in
-the parametrized denominator.  Since \(q_i^2=-m_i^2\), this equation is the
-worldline equation for a classical massive particle propagating between two
-vertices.
+with \(\lambda_i\) proportional to \(\alpha_i\).  The proportionality constant
+depends only on the convention used for the quadratic form in the parametrized
+denominator.
 
-Thus a real leading Landau solution with compatible future-directed momenta is
-a classical spacetime process: all active internal particles go on shell,
-travel for nonnegative proper time, and meet at the vertices with energy and
-momentum conserved.  This is the Coleman--Norton interpretation.  It is a
-criterion for first-sheet physical singularities that must be combined with
-the pinch analysis: a formal algebraic solution contributes to the physical
-singularity only on the relevant sheet, with the integration contour trapped,
-and with a numerator that leaves a nonzero local singular term.
+The positive-energy condition is an additional orientation condition.  Choose a
+time orientation in Minkowski space.  A positive Coleman--Norton realization of
+the Landau solution consists of an orientation of every active edge in its
+classical direction of propagation and momenta \(k_i\) on those oriented edges
+such that
+\[
+  k_i^2=-m_i^2,\qquad k_i^0>0,\qquad
+  x_{v_+(i)}-x_{v_-(i)}=\lambda_i k_i,\qquad
+  \lambda_i\ge0 .
+\]
+If the loop-momentum routing originally assigned the opposite orientation to
+that edge, then \(k_i=-q_i\) and the tail and head used in the spacetime
+equation are interchanged.  Equivalently, one may reorient the active graph so
+that \(q_i=k_i\) on every active edge.  Thus the compatibility condition is
+precisely that each active internal momentum be a future-directed
+positive-energy on-shell momentum in the direction in which the corresponding
+edge is traversed in spacetime.
+
+For \(m_i>0\), this is the worldline equation for a classical massive particle
+propagating for nonnegative proper time, with \(\lambda_i m_i\) proportional to
+that proper time.  For \(m_i=0\), it is the corresponding future-directed null
+geodesic equation with nonnegative affine parameter.  Momentum conservation at
+each vertex is the graph momentum conservation for the same oriented momenta,
+with the external momenta assigned to that vertex.  Thus a real leading Landau
+solution satisfying the positive Coleman--Norton orientation condition is a
+classical spacetime process: all active internal particles go on shell, carry
+positive energy in their direction of propagation, and meet at the vertices
+with energy and momentum conserved.  This is the Coleman--Norton
+interpretation.  It is a criterion for first-sheet physical singularities that
+must be combined with the pinch analysis: a formal algebraic solution
+contributes to the physical singularity only on the relevant sheet, with the
+integration contour trapped, and with a numerator that leaves a nonzero local
+singular term.
 
 Subleading Landau solutions have some \(\alpha_i=0\).  Geometrically, the
 corresponding internal lines are contracted, and the classical propagation
@@ -663,8 +696,10 @@ For one choice of loop orientation this means
 \]
 Together with momentum conservation at the vertices, these equations define
 the candidate singular locus in the external invariants.  Equivalently, the
-Gram determinant of the on-shell internal momenta degenerates in a way
-compatible with positive Feynman parameters.
+Gram matrix \(G_{ij}=q_i\cdot q_j\) has a null vector
+\((\alpha_1,\alpha_2,\alpha_3)\) with strictly positive entries.  Thus the
+condition is not only \(\det G=0\), but the existence of a positive null vector
+for the oriented on-shell momenta.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.86]
@@ -760,12 +795,13 @@ the corresponding value \(P_3^2=-M_3^2\).
 
 The vector sketch represents the Coleman--Norton condition.  The actual
 singular locus is obtained by solving the three on-shell equations together
-with the positive-parameter stationary equation.  A solution whose active
-lines admit future-directed propagation with nonnegative parameters gives a
-first-sheet anomalous threshold at the determined value of
-\(P_3^2=-M_3^2\).  A solution requiring reversed time ordering or a negative
-proper-time segment lies on a continued sheet, even if it solves the same
-algebraic Landau equations.
+with the positive-parameter stationary equation.  A solution gives a
+first-sheet anomalous threshold at the determined value of \(P_3^2=-M_3^2\)
+only when the active edges can be oriented with momenta \(k_i^0>0\) and
+separations \(x_{v_+(i)}-x_{v_-(i)}=\lambda_i k_i\), \(\lambda_i\ge0\).  A
+solution requiring reversed time ordering or a negative proper-time segment
+lies on a continued sheet, even if it solves the same algebraic Landau
+equations.
 
 Such a singularity is an anomalous threshold: a first-sheet singularity of
 the amplitude produced by on-shell internal propagation and contour pinching.
