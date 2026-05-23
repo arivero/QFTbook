@@ -335,24 +335,44 @@ itself a complete encoding of a chosen Wightman field presentation, provided
 the hierarchy satisfies the Wightman conditions with the required regularity.
 
 \begin{theorem}[Wightman reconstruction]
-Let \(\{W_n\}_{n\ge0}\) be a hierarchy of tempered distributions with field
-indices, with \(W_0=1\).  Suppose the hierarchy satisfies Poincare covariance,
-the spectral support condition, Hermiticity, locality, and positivity.  Then
-there exists Wightman field data
+Let \(\{W_n\}_{n\ge0}\) be a hierarchy with \(W_0=1\), where \(W_n\) is a
+continuous linear functional on
+\(\mathcal S(M^n,E_I^{\otimes n})\).  Equivalently, on every finite
+field-label subspace, each component distribution is bounded by finitely many
+Schwartz seminorms: after choosing scalar components \(F_j\) of a test function
+\(F\), there are \(C,N<\infty\) such that
+\[
+  |W_n(F)|
+  \le
+  C\sum_j\sum_{|a|,|b|\le N}
+  \sup_{x\in M^n}|x^a\partial^b F_j(x)| .
+\]
+Suppose the hierarchy satisfies Poincare covariance, the spectral support
+condition, Hermiticity, locality, and positivity.  Then there exists Wightman
+field data
 \[
   (\Hilb,\vac,U,\mathcal D,\{\Phi_\alpha\}_{\alpha\in I})
 \]
 whose vacuum correlation functions are exactly \(\{W_n\}\).  The resulting
-data are unique up to a unitary equivalence preserving the vacuum, the
-Poincare representation, and all smeared fields.
+cyclic reconstruction is unique up to the canonical unitary induced by
+identifying finite test-function sequences with the same Wightman inner
+products.
+
+If the hierarchy also satisfies the weak cluster condition
+\eqref{eq:wightman-weak-cluster} for all polynomial field insertions, then the
+translation-invariant subspace in the reconstructed Hilbert space is
+\(\mathbb C\vac\).  This additional condition selects a pure vacuum sector; it
+is not required for the existence of the Wightman reconstruction.
 \end{theorem}
 
 The uniqueness statement is internal to the specified hierarchy and its field
-labels.  It says that two reconstructions of the same \(\{W_n\}\) are related
-by a unitary map sending each reconstructed smeared field to the corresponding
-smeared field.  It does not identify different choices of field
-coordinatization whose local observable algebras may agree only after
-additional closure, affiliation, or quotient constructions.  Those
+labels.  It says that two cyclic reconstructions of the same \(\{W_n\}\) have
+the same pre-Hilbert space of finite test-function sequences modulo null
+vectors, hence the same vacuum matrix elements for every finite product of
+field insertions.  This is a uniqueness statement about the Wightman hierarchy
+and the cyclic field presentation it generates.  It does not identify different
+choices of field coordinatization whose local observable algebras may agree
+only after additional closure, affiliation, or quotient constructions.  Those
 comparisons belong to the relation between Wightman fields and local nets
 described above and in Chapter
 \ref{ch:volume-iv-aqft-local-nets-states}.
