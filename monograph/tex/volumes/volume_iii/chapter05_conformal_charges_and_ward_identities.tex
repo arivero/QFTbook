@@ -388,9 +388,27 @@ vectors become
 \end{align}
 with rotations acting as vector fields tangent to the sphere.  Thus inversion
 \(x^\mu\mapsto x^\mu/x^2\), which is \(\tau\mapsto-\tau\), exchanges
-\(P_\mu\) and \(K_\mu\).  The factors \(\ee^{-\tau}\) and \(\ee^\tau\) show
-that \(P_\mu\) raises and \(K_\mu\) lowers the cylinder energy by one unit in
-radial quantization.
+\(P_\mu\) and \(K_\mu\).  As vector fields their weights under
+\(D_{\rm rad}^{\rm vec}=\partial_\tau\) are
+\[
+  [\partial_\tau,P_\mu^{\rm vec}]=-P_\mu^{\rm vec},
+  \qquad
+  [\partial_\tau,K_\mu^{\rm vec}]=K_\mu^{\rm vec}.
+\]
+The Hilbert-space grading has the opposite sign because the induced
+infinitesimal action on local operators contains the differential operator
+\(-\mathcal L_\epsilon\), as in \eqref{eq:local-conformal-current-ward}.  In
+the radial Hilbert-space representation recalled in
+Chapter~\ref{ch:volume-iii-radial-quantization},
+\[
+  [\widehat D_{\rm rad},\widehat P_\mu]=\widehat P_\mu .
+\]
+Since \(\widehat D_{\rm rad}\) is self-adjoint and
+\(\widehat P_\mu^\dagger=\widehat K_\mu\) by
+\eqref{eq:p-k-adjoint-cylinder}, the adjoint commutator is
+\([\widehat D_{\rm rad},\widehat K_\mu]=-\widehat K_\mu\).
+Consequently \(\widehat P_\mu\) raises and \(\widehat K_\mu\) lowers the
+cylinder energy by one unit.
 
 The Hamiltonian identification is also visible directly from the stress
 tensor.  On the sphere \(S^{D-1}_r\) of radius \(r\), with \(x^\mu=rn^\mu\),
