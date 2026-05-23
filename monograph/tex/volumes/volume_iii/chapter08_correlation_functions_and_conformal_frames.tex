@@ -649,8 +649,44 @@ the same tensor structure appears with coefficient
 Here the sign is the sign of the stress-tensor convention in
 \eqref{eq:cft-charge-surface} and \eqref{eq:variation-by-small-charge}.  The
 derivation is a small-sphere Ward identity for the dilatation vector
-\(\epsilon^\nu=x^\nu\).  With \(x_2=0\) and \(r=|x_3|\to0\), the flux
-integral contains
+\(\epsilon^\nu=x^\nu\).  Put \(x_1=x\), \(x_2=0\), \(x_3=y=r n\), where
+\(|n|=1\), and send \(r\to0\) with \(x\) fixed.  Then
+\[
+  X^\mu
+  =
+  \frac{(x-y)^\mu}{|x-y|^2}
+  -
+  \frac{(-y)^\mu}{|y|^2}
+  =
+  \frac{n^\mu}{r}+\frac{x^\mu}{|x|^2}+O\!\left(\frac{r}{|x|^2}\right),
+\]
+and therefore
+\[
+  \frac{X_\mu X_\nu}{X^2}-\frac1D\delta_{\mu\nu}
+  =
+  n_\mu n_\nu-\frac1D\delta_{\mu\nu}+O\!\left(\frac{r}{|x|}\right),
+  \qquad
+  \frac1{|x_{13}|^D|x_{23}|^D|x_{12}|^{2\Delta-D}}
+  =
+  \frac{r^{-D}}{|x|^{2\Delta}}
+  \left(1+O\!\left(\frac{r}{|x|}\right)\right).
+\]
+The sphere \(S_2\) is oriented as the boundary of the punctured integration
+domain, hence \(\dd S_\mu=-r^{D-1}n_\mu\dd\Omega\), while
+\(\epsilon_\nu(y)=r n_\nu\).  The leading flux is consequently
+\[
+  \left\langle
+    \mathcal O_1(x)Q_\epsilon(S_2)\mathcal O_2(0)
+  \right\rangle
+  =
+  -\,\frac{C_{12T}}{|x|^{2\Delta}}
+  \int_{S^{D-1}}\dd\Omega\,
+  n^\mu n^\nu
+  \left(
+    n_\mu n_\nu-\frac1D\delta_{\mu\nu}
+  \right),
+\]
+up to terms that vanish as \(r\to0\).  The angular projection is
 \[
   \int_{S^{D-1}}\dd\Omega\,
   n^\mu n^\nu
@@ -660,7 +696,21 @@ integral contains
   =
   A_{D-1}\left(1-\frac1D\right),
 \]
-and matching the charge action on \(\mathcal O_2(0)\) gives
+so the flux equals
+\[
+  -\,\frac{D-1}{D}A_{D-1}
+  \frac{C_{12T}}{|x|^{2\Delta}}.
+\]
+The same orientation convention converts the local dilatation Ward identity
+\(\delta_\epsilon\mathcal O_2(0)=-\Delta\mathcal O_2(0)\) into
+\[
+  \left\langle
+    \mathcal O_1(x)Q_\epsilon(S_2)\mathcal O_2(0)
+  \right\rangle
+  =
+  \frac{\Delta N_{12}}{|x|^{2\Delta}}.
+\]
+Matching the two expressions gives
 \eqref{eq:scalar-scalar-stress-ward-coefficient}.  If
 \(\Delta_1\ne\Delta_2\), the two-point coefficient \(N_{12}\) vanishes by
 dilatation covariance, and the corresponding stress-tensor three-point
