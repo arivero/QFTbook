@@ -449,16 +449,120 @@ of \(\mathcal C_1\), and
 \]
 The bracketed contact terms therefore cancel pairwise once the vector Ward
 identities are imposed by the regulator.  The entire axial contact term is
-carried by the evanescent \(\ell_\perp\) contribution.  The remaining trace is
+carried by the evanescent \(\ell_\perp\) contribution.  For the first
+orientation this contribution is
 \[
-  \ell_\perp^2(-4\ii)
-  \epsilon^{\nu\rho\alpha\beta}k_\alpha p_\beta .
-\]
-The required scalar integral is finite after the evanescent factor is kept:
-\[
+  2\ii
   \int\frac{\dd^D\ell}{(2\pi)^D}
-  \frac{\ell_\perp^2}
-       {\ell^2(\ell-k)^2(\ell+p)^2}
+  \frac{
+    \operatorname{tr}\!\left[
+      \gamma_5\not\ell_\perp\not\ell\gamma^\nu
+      (\not\ell-\not k)\gamma^\rho(\not\ell+\not p)
+    \right]
+  }{D_0D_kD_p}.
+\]
+The coefficient of the local two-vector contact term is obtained by keeping
+the part with two external momenta and no physical loop momentum in the
+\(\gamma_5\)-trace.  Terms with a symmetric pair of physical loop momenta
+contracted into the antisymmetric tensor vanish after rotational averaging, and
+terms with an unpaired perpendicular gamma matrix or the wrong number of
+physical gamma matrices have zero \(\gamma_5\)-trace.  Using
+\[
+  \not\ell_\perp\not\ell_\perp=\ell_\perp^2,
+  \qquad
+  \operatorname{tr}\!
+  \left(\gamma_5\gamma^\nu\gamma^\alpha\gamma^\rho\gamma^\beta\right)
+  =
+  4\ii\epsilon^{\nu\alpha\rho\beta},
+\]
+one obtains
+\[
+\begin{aligned}
+  \operatorname{tr}\!\left[
+    \gamma_5\not\ell_\perp\not\ell\gamma^\nu
+    (\not\ell-\not k)\gamma^\rho(\not\ell+\not p)
+  \right]_{\rm local}
+  &=
+  -\ell_\perp^2 k_\alpha p_\beta
+  \operatorname{tr}\!
+  \left(\gamma_5\gamma^\nu\gamma^\alpha\gamma^\rho\gamma^\beta\right)
+\\
+  &=
+  4\ii\,\ell_\perp^2
+  \epsilon^{\nu\rho\alpha\beta}k_\alpha p_\beta .
+\end{aligned}
+\]
+Thus the first orientation contributes
+\[
+  -8\,\epsilon^{\nu\rho\alpha\beta}k_\alpha p_\beta\,
+  I(k,p),
+  \qquad
+  I(k,p):=
+  \int\frac{\dd^D\ell}{(2\pi)^D}
+  \frac{\ell_\perp^2}{D_0D_kD_p}.
+\]
+The opposite orientation gives the same local tensor after
+\((\nu,k)\leftrightarrow(\rho,-p-k)\).
+
+It remains to evaluate \(I(k,p)\).  Take the external momenta nonexceptional
+during the ultraviolet computation; the contact coefficient extracted below is
+independent of this infrared choice.  Feynman parametrization gives
+\[
+\begin{aligned}
+  I(k,p)
+  &=
+  2\int_0^1\dd x\int_0^1\dd y\int_0^1\dd z\,
+  \delta(1-x-y-z)
+  \int\frac{\dd^D r}{(2\pi)^D}
+  \frac{r_\perp^2}{(r^2+\Delta)^{3}},
+\\
+  r&=\ell-y k+z p,
+\\
+  \Delta
+  &=
+  y(1-y)k^2+z(1-z)p^2+2yz\,k\cdot p-\ii0 .
+\end{aligned}
+\]
+The shift does not change the perpendicular component because \(p\) and \(k\)
+lie in the physical four-dimensional subspace.  In the continued
+\(D=4-\epsilon\) dimensional rotation-invariant integral,
+\[
+  \int\dd^D r\,r_\perp^2 f(r^2)
+  =
+  \frac{D-4}{D}
+  \int\dd^D r\,r^2 f(r^2)
+  =
+  -\frac{\epsilon}{4-\epsilon}
+  \int\dd^D r\,r^2 f(r^2).
+\]
+Therefore
+\[
+\begin{aligned}
+  \int\frac{\dd^D r}{(2\pi)^D}
+  \frac{r_\perp^2}{(r^2+\Delta)^3}
+  &=
+  \frac{D-4}{D}
+  \int\frac{\dd^D r}{(2\pi)^D}
+  \frac{r^2}{(r^2+\Delta)^3}
+\\
+  &=
+  \frac{D-4}{4}
+  \frac{\Gamma(2-D/2)}{(4\pi)^{D/2}}
+  \Delta^{D/2-2}
+\\
+  &=
+  -\frac1{32\pi^2}+O(\epsilon).
+\end{aligned}
+\]
+Since
+\[
+  2\int_0^1\dd x\int_0^1\dd y\int_0^1\dd z\,
+  \delta(1-x-y-z)=1
+\]
+and
+\(\Delta^{-\epsilon/2}=1+O(\epsilon)\), the required scalar integral is
+\[
+  I(k,p)
   =
   -\frac1{32\pi^2}.
 \]
