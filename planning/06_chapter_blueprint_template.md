@@ -134,6 +134,14 @@ constructions, and consequences.
   proof status?
 - Does every nontrivial physics claim have a self-contained argument in the
   chapter or a clearly conditional theorem dependency?
+- Does every load-bearing theorem, proposition, construction, approximation,
+  or formal calculation have enough proof detail in the main chapter for the
+  reader to see why it applies in the stated framework?
+- If a proof is deferred to an appendix, does the main chapter still state the
+  exact result, all hypotheses, the sense of equality or convergence, and the
+  specific role of the deferred argument?
+- Is any "sketch" explicitly non-load-bearing, or else upgraded to a complete
+  derivation, a precise theorem boundary, or a marked open problem?
 - Are figures accurate?
 - Does the chapter preserve the source order?
 - Does the chapter avoid textbook ordering habits?

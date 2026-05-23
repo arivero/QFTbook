@@ -97,6 +97,13 @@ Date: 2026-05-23
   reader-facing bibliography.  A future bibliography apparatus may be added
   only as a deliberate project-level change with a single style decision and a
   complete audit of all promoted citations.
+- The main chapters carry the logical proof burden.  Every result used in the
+  main development must have its definitions, assumptions, and derivation or
+  theorem boundary visible at the point of use.  Appendices may contain long
+  estimates, background machinery, repeated algebra, classification details, or
+  technical proofs whose length would obscure the main line, but an appendix
+  reference never licenses a gap in the main chapter: the main text must state
+  the precise result, hypotheses, dependency, and role in the argument.
 
 ## Current Implementation Decisions
 
@@ -111,6 +118,5 @@ Date: 2026-05-23
 ## Open Decisions
 
 - Final TeX class and volume compilation strategy.
-- How much theorem-proof detail belongs in main chapters versus appendices.
 - How much machine-readable source metadata to maintain.
 - Exact chapter allocation inside future special-topic volumes.
