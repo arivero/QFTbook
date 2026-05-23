@@ -73,6 +73,14 @@ operators in the two-particle channel create it.
 
 \section{A Bubble-Chain Example}
 
+The explicit calculation in this section is a \(D=2\) spacetime-dimensional
+model.  The purpose is to exhibit, in a finite elementary integral, how a
+geometric sum of connected four-point kernels can generate a stable pole below
+the two-particle threshold.  In \(D=4\) the same channel has a different
+threshold behavior and the pole condition involves the renormalized contact
+interaction at threshold; the numerical estimate for \(M_B\) below is therefore
+not a dimension-independent formula.
+
 Consider the scalar theory
 \[
   \mathcal L
@@ -81,8 +89,9 @@ Consider the scalar theory
   -\frac12m^2\phi^2
   -\frac{g}{4!}\phi^4 .
 \]
-The four-point vertex is \(-\ii g\). In the \(s\)-channel bubble-chain
-approximation to \(2\to2\) scattering, the one-loop bubble is
+The four-point vertex is \(-\ii g\).  Before specializing the integral, the
+\(s\)-channel bubble-chain approximation to \(2\to2\) scattering contains the
+one-loop bubble
 \[
   \frac{(-\ii g)^2}{2}
   \int\frac{\dd^D\ell}{(2\pi)^D}\,
@@ -90,15 +99,18 @@ approximation to \(2\to2\) scattering, the one-loop bubble is
   \frac{-\ii}{(k_1+k_2-\ell)^2+m^2-\ii0}.
 \]
 The factor \(1/2\) is the symmetry factor of the two identical internal
-lines. Feynman parametrization and Wick rotation give
+lines.  Feynman parametrization and Wick rotation give
 \[
   \frac{\ii g^2}{2}
   \int_0^1\dd x
   \int\frac{\dd^D\ell_E}{(2\pi)^D}\,
-  \frac{1}{\left[\ell_E^2-sx(1-x)+m^2-\ii0\right]^2}.
+  \frac{1}{\left[\ell_E^2-sx(1-x)+m^2\right]^2}.
 \]
+As in the self-energy calculation, the Wick-rotated denominator is real on the
+Euclidean side; the \(-\ii0\) prescription enters only when the resulting
+function is continued back to a Lorentzian boundary value.
 
-In \(D=2\), this becomes
+Specializing now to \(D=2\), this becomes
 \[
   \frac{\ii g^2}{8\pi} f(s),
   \qquad
