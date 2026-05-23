@@ -414,6 +414,32 @@ The spatial momentum is
   \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}}\,
   \vec p\,a^\dagger(\vec p)a(\vec p).
 \]
+Write
+\[
+  \dd\mu_m(\vec p)
+  =
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2E_{\vec p}} .
+\]
+For a one-particle wave packet
+\(\psi\in C_c^\infty(\Sigma_m^+)\subset\Hilb_1\), the smeared creation and
+annihilation operators on the finite-particle domain are
+\[
+  a^\dagger(\psi)
+  =
+  \int \dd\mu_m(\vec p)\,\psi(\vec p)a^\dagger(\vec p),
+  \qquad
+  a(\psi)
+  =
+  \int \dd\mu_m(\vec p)\,\overline{\psi(\vec p)}a(\vec p).
+\]
+They extend to all \(\psi\in\Hilb_1\) on that domain, and satisfy
+\[
+  [a(\psi),a^\dagger(\chi)]
+  =
+  \int \dd\mu_m(\vec p)\,\overline{\psi(\vec p)}\chi(\vec p)
+  =
+  \langle\psi,\chi\rangle_{\Hilb_1}.
+\]
 
 There is a second common normalization, useful for displaying the elementary
 Fock construction.  Define operator-valued distributions
