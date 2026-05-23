@@ -70,6 +70,32 @@ supported on collision diagonals.
 
 \section{Operators as Cotangent Data}
 
+\begin{warning}[\(\gamma\)-indices]
+Throughout this chapter the anomalous-dimension matrix for deformation
+operators is indexed in the cotangent convention
+\[
+  \frac{\dd}{\dd\log\mu}[O_I]_\mu
+  =
+  -\gamma_{IK}[O_K]_\mu,
+  \qquad
+  \gamma_{IK}
+  =
+  \frac{\partial\beta_K}{\partial g_I}.
+\]
+Thus the first index labels the source or coupling coordinate dual to the
+operator being differentiated, and the second index labels the operator
+appearing after the cotangent action.  Many column-vector conventions in the
+physics literature denote the same Jacobian component by
+\[
+  \gamma^{\rm col}_{KI}
+  =
+  \frac{\partial\beta_K}{\partial g_I}
+  =
+  \gamma_{IK}.
+\]
+Comparisons of formulae must therefore transpose this pair of labels.
+\end{warning}
+
 The preceding definition has a geometric interpretation.  The infinitesimal
 coupling displacement
 \[
