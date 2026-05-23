@@ -275,19 +275,32 @@ The vacuum subspace is the zero-momentum subspace
 In a pure vacuum sector this subspace is one-dimensional and is spanned by
 \(\vac\).
 
-\begin{definition}[Mass sector and isolated particle shell]
+\begin{definition}[Mass sector and particle shell]
   A mass sector of mass \(m\ge0\) is the spectral subspace of \(M^2\) at the
-  value \(m^2\).  For \(m>0\), the corresponding positive-energy mass shell is
+  value \(m^2\), namely \(E_M(\{m^2\})\Hilb\).  For \(m>0\), the corresponding
+  positive-energy mass shell is the smooth hyperboloid
   \[
     \Sigma_m^+
     =
     \{p\in\mathbb R^D:p^0=\sqrt{\vec p^{\,2}+m^2},\ p_\mu p^\mu=-m^2\}.
   \]
-  It is isolated when there is an open neighborhood \(N\subset\mathbb R^D\) of
-  \(\Sigma_m^+\) such that
+  For \(m=0\), the nonzero massless particle shell is the punctured future
+  light cone
   \[
-    \operatorname{Spec}(P)\cap N=\Sigma_m^+ .
+    \Sigma_0^+
+    =
+    \{p\in\mathbb R^D:p^0=|\vec p|,\ p_\mu p^\mu=0,\ p\ne0\}.
   \]
+  It is isolated when there is an open neighborhood \(N\subset\mathbb R^D\) of
+  the shell under discussion such that
+  \[
+    \operatorname{Spec}(P)\cap N=\Sigma_m^+
+  \]
+  in the massive case, and analogously with \(\Sigma_0^+\) in a massless
+  sector when such a global isolation statement is true.  In a vacuum
+  representation the massless cone usually accumulates at the vacuum point
+  \(p=0\), so the global isolation condition is a genuine additional spectral
+  hypothesis beyond the invariant-mass equation \(M^2=0\).
 \end{definition}
 
 An isolated massive particle in a local quantum theory is the closed spectral
