@@ -82,6 +82,22 @@ Date: 2026-05-22
   source, cross-check, or seed, with independent QFT-side definitions,
   hypotheses, derivations, and external references supplied as needed.
 
+Date: 2026-05-23
+
+- The current compiled manuscript has no formal BibTeX or biblatex layer and
+  no reader-facing `\cite{...}` commands.  Named theorems and named mechanisms
+  in the text are attribution labels and theorem-boundary markers, not imported
+  claims.  The exposition must remain self-contained: every nontrivial physics
+  or mathematical claim used in the logical development is either derived,
+  stated with hypotheses, or explicitly bounded as an assumption, conjecture,
+  open problem, controlled approximation, or formal calculation.
+- External sources remain essential for rigor checks, convention checks, and
+  source leads, but for the current compiled manuscript they are recorded in
+  `references/`, planning files, and chapter dossiers rather than promoted to a
+  reader-facing bibliography.  A future bibliography apparatus may be added
+  only as a deliberate project-level change with a single style decision and a
+  complete audit of all promoted citations.
+
 ## Current Implementation Decisions
 
 - Keep `transcription/` as the faithful source layer.
@@ -94,7 +110,6 @@ Date: 2026-05-22
 
 ## Open Decisions
 
-- Final bibliography style.
 - Final TeX class and volume compilation strategy.
 - How much theorem-proof detail belongs in main chapters versus appendices.
 - How much machine-readable source metadata to maintain.

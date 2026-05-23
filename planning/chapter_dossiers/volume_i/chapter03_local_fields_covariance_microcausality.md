@@ -42,7 +42,7 @@ Working framework:
 ## External Reference Needs
 
 - Wightman axioms for operator-valued distributions: still needs a classical
-  reference in the bibliography.
+  reference candidate in the source-control layer.
 - AQFT local algebra comparison: Fewster--Rejzner currently used.
 - Scattering-oriented Wightman/AQFT comparison: Buchholz--Dybalski currently
   used.
