@@ -92,11 +92,12 @@ Let
   \qquad
   \pi(p)=-p^2,
 \]
-and define the positive Borel measure
-\[
-  \rho(B)=\nu_\phi(\pi^{-1}(B)).
-\]
-This is the pushforward of \(\nu_\phi\) by the invariant-mass map.
+which is a Borel map between standard Borel spaces.  The spectral density
+measure below is a quotient measure for the Lorentz orbits of this map, not the
+literal pushforward \(\pi_*\nu_\phi\): a single massive shell has infinite
+Lorentz-invariant volume, so the raw pushforward would assign infinite mass to
+an isolated one-particle shell.  The normalization of the invariant measure on
+each shell must be fixed first.
 
 \begin{proposition}[Invariant mass-shell disintegration]
 \label{prop:kallen-lehmann-mass-shell-disintegration}
@@ -117,17 +118,26 @@ the invariant measure on each shell has been fixed.
 \end{proposition}
 
 \begin{proof}
-Let \(\pi(p)=-p^2\).  The map \(\pi:\overline V_+\to[0,\infty)\) is Borel and
-Lorentz invariant, hence the pushforward \(\pi_*\nu\) is a positive Borel
-measure.  Disintegration of locally finite positive measures gives conditional
-measures \(\nu_s\), supported on \(\pi^{-1}(s)\), such that
+Let \(\pi(p)=-p^2\).  The space \(\overline V_+\) is a closed subspace of
+\(\mathbb R^D\), hence locally compact, second countable, Polish, and
+\(\sigma\)-compact; \([0,\infty)\) is the same.  A locally finite Borel measure
+on \(\overline V_+\) is therefore \(\sigma\)-finite.  We use the standard
+orbit-disintegration theorem for a continuous action of the locally compact
+second countable group \(SO^+(1,D-1)\) on a standard Borel space with a
+\(\sigma\)-finite invariant Radon measure: after choosing a measurable
+normalization of invariant Radon measures on the orbits, every invariant measure
+disintegrates uniquely into those orbit measures against a measure on the orbit
+space.  Applied to the orbit map \(\pi\), this gives conditional measures
+\(\nu_s\), supported on \(\pi^{-1}(s)\), such that
 \[
   \int F(p)\,\dd\nu(p)
   =
   \int_{[0,\infty)}
   \left(\int_{\pi^{-1}(s)}F(p)\,\dd\nu_s(p)\right)
-  \dd(\pi_*\nu)(s).
+  \dd\lambda(s)
 \]
+for a positive Borel measure \(\lambda\) on \([0,\infty)\).  This \(\lambda\)
+is an orbit-space measure, not the raw pushforward of \(\nu\).
 For \(s>0\), the set \(\pi^{-1}(s)\cap\{p^0>0\}\) is the positive mass shell
 of mass \(\sqrt{s}\), and \(SO^+(1,D-1)\) acts transitively on it.  The
 stabilizer of a point is \(SO(D-1)\); therefore an invariant Radon measure on
@@ -141,9 +151,13 @@ the shell is unique up to an overall positive scalar.  The standard choice is
 For \(s=0\), the same argument applies to the nonzero future light cone, whose
 orbit is \(SO^+(1,D-1)/ISO(D-2)\); an atom at \(p=0\) would be a separate
 vacuum contribution and is excluded by hypothesis.  Thus
-\(\nu_s=c(s)\sigma_s\) for a nonnegative measurable function \(c\).  Absorbing
-\(c(s)\) into \(\dd(\pi_*\nu)(s)\) defines the measure \(\dd\rho(s)\), which
-gives the displayed formula.
+\(\nu_s=c(s)\sigma_s\) for a nonnegative measurable function \(c\).  The
+measurability of \(c\) is part of the uniqueness clause in the disintegration
+theorem after the family \(s\mapsto\sigma_s\) has been chosen measurably, which
+is immediate from the displayed formula for \(\sigma_s\) when paired with
+compactly supported continuous test functions.  Absorbing \(c(s)\) into
+\(\dd\lambda(s)\) defines the measure \(\dd\rho(s)\), which gives the displayed
+formula.
 \end{proof}
 
 Applying Proposition~\ref{prop:kallen-lehmann-mass-shell-disintegration} to
