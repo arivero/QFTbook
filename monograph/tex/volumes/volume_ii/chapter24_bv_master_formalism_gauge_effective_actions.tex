@@ -330,12 +330,82 @@ this off-shell closed Yang--Mills algebra.  Thus
 \(\frac12(S_{\rm min},S_{\rm min})=0\) is exactly the pair of statements
 \(sS_{\rm YM}=0\) and \(s^2A=s^2c=0\).
 
-If the gauge algebra closes only on shell, or if there are reducibility
-relations among gauge transformations, the action contains additional
-antifield terms.  The defining condition remains
-\(\frac12(S_{\rm BV},S_{\rm BV})=0\); the higher antifield terms are not
-extra notation but the terms required for the BV differential to square to
-zero off shell.
+\begin{remark}[Off-shell closed and open gauge algebras]
+The preceding construction used a special property of Yang--Mills theory.  Let
+\(\Phi^i\) denote the classical fields, let
+\[
+  E_i(\Phi):=\frac{\delta S_0}{\delta\Phi^i}
+\]
+be the Euler--Lagrange derivative of the classical gauge-invariant action, and
+write an infinitesimal gauge variation as
+\[
+  \delta_\epsilon\Phi^i=R^i{}_\alpha(\Phi)\epsilon^\alpha .
+\]
+Here \(i\) and \(\alpha\) are condensed indices, including spacetime position
+and possible derivatives acting on the gauge parameter.  The algebra is
+off-shell closed when the commutator of gauge vector fields satisfies an
+identity on field space,
+\begin{equation}
+  R^j{}_\beta\frac{\delta R^i{}_\alpha}{\delta\Phi^j}
+  -
+  R^j{}_\alpha\frac{\delta R^i{}_\beta}{\delta\Phi^j}
+  =
+  R^i{}_\gamma C^\gamma{}_{\alpha\beta}(\Phi),
+  \label{eq:bv-off-shell-closed-algebra}
+\end{equation}
+with no use of \(E_i=0\).  Yang--Mills theory has
+\(C^\gamma{}_{\alpha\beta}=f^\gamma{}_{\alpha\beta}\), in the local
+Lie-algebra notation of the BRST chapter.  Then the minimal action is linear
+in antifields, apart from the ghost antifield term encoding
+\eqref{eq:bv-off-shell-closed-algebra}, and the master equation is precisely
+the gauge-invariance and Jacobi-identity calculation displayed above.
+
+An open algebra closes only modulo the equations of motion.  For bosonic
+gauge parameters and bosonic fields, the corresponding commutator identity is
+\begin{equation}
+  R^j{}_\beta\frac{\delta R^i{}_\alpha}{\delta\Phi^j}
+  -
+  R^j{}_\alpha\frac{\delta R^i{}_\beta}{\delta\Phi^j}
+  =
+  R^i{}_\gamma C^\gamma{}_{\alpha\beta}(\Phi)
+  +
+  M^{ij}{}_{\alpha\beta}(\Phi)E_j(\Phi),
+  \label{eq:bv-open-algebra}
+\end{equation}
+with the standard Koszul signs inserted in theories with fermionic fields or
+fermionic gauge parameters.  The coefficient
+\(M^{ij}{}_{\alpha\beta}\) is graded antisymmetric in the pair
+\((i,j)\) in the sense required by the Noether identities.  If one couples
+antifields only linearly to the naive BRST variations, the antibracket
+\(\frac12(S,S)\) contains a term proportional to
+\(\Phi^*_i M^{ij}{}_{\alpha\beta}E_j c^\alpha c^\beta\).  This is zero after
+imposing the classical equations of motion, but it is not zero as an identity
+on the field algebra.  The BV solution cancels it by adding higher
+antifield-number terms.  In the same ungraded sign convention, the first such
+term is a quadratic antifield term of the form
+\[
+  \frac14\int \Phi^*_i\Phi^*_j
+  M^{ij}{}_{\alpha\beta}(\Phi)c^\alpha c^\beta ,
+\]
+with signs fixed by the parity convention.  Further terms are then fixed
+recursively by the single equation
+\(\frac12(S_{\rm BV},S_{\rm BV})=0\).  Thus BV does not merely rewrite an
+already nilpotent BRST operator; in open algebras it constructs an off-shell
+nilpotent differential on the extended field-antifield algebra.
+
+Reducible symmetries require additional ghosts.  If
+\[
+  R^i{}_\alpha Z^\alpha{}_{a_1}=0
+\]
+identically, or modulo the equations of motion, then the gauge parameters
+themselves have gauge redundancies, and one introduces ghosts-for-ghosts
+together with their antifields.  Standard examples where the BV framework is
+structural rather than optional include supergravity theories without a
+complete off-shell auxiliary-field formulation, type-II superstring field
+theory, and the Poisson sigma model.  The elementary Faddeev--Popov/BRST
+construction in the preceding chapter concerns the off-shell closed
+Yang--Mills case.
+\end{remark}
 
 \section{Nonminimal Sector and Gauge Fixing}
 

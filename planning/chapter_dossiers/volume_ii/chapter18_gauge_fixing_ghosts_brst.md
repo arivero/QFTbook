@@ -53,6 +53,8 @@
   orbit space; they are not asserted to be a single global nonperturbative
   gauge fixing for nonabelian gauge theory.
 - Off-shell nilpotent BRST differential using the Nakanishi--Lautrup field.
+  The nilpotency proof assumes the Yang--Mills gauge generators close as vector
+  fields on field space before imposing the Euler--Lagrange equations.
 - Local cohomology is formulated in the algebra of finite jets of fields and
   ghosts.
 
@@ -110,10 +112,15 @@
   determinant is field-independent and ghosts decouple.  In Yang--Mills theory
   the \(A\)-dependent determinant is represented by dynamical ghost fields with
   local ghost-gluon interactions.
-- The BRST differential is an odd ghost-number-one derivation with \(s^2=0\);
-  the chapter now derives nilpotency on general fields in condensed notation,
-  on \(c\), on \(A_\mu\), and on matter fields from the Jacobi identity, the
-  graded derivation rule, and the representation identity.
+- The BRST differential is an odd ghost-number-one derivation with \(s^2=0\)
+  for the off-shell closed Yang--Mills algebra; the chapter now derives
+  nilpotency on general fields in condensed notation, on \(c\), on \(A_\mu\),
+  and on matter fields from the Jacobi identity, the graded derivation rule,
+  and the representation identity.
+- The chapter explicitly separates this elementary Faddeev--Popov/BRST
+  construction from gauge systems whose commutator closes only modulo the
+  equations of motion; those require the BV field-antifield framework for an
+  off-shell nilpotent differential.
 - The gauge-fixing and ghost action is \(s\)-exact after introducing the
   Nakanishi--Lautrup field, equivalently
   \(S_{\rm GF}=-iQ_B\cdot(b_AF^A)\) in the \(Q_B\) convention.
@@ -162,3 +169,5 @@
   Faddeev--Popov contrast.  The manuscript now points back to the Maxwell
   linear-gauge determinant and states that nonabelian \(A\)-dependence is why
   ghosts are dynamical rather than a field-independent normalization.
+- 2026-05-24 issue #245 pass: flagged the off-shell closure hypothesis in the
+  BRST nilpotency proof and linked open/on-shell closure to the BV chapter.

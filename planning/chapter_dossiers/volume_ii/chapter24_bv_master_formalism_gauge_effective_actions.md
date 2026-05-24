@@ -37,6 +37,10 @@
 - Local functionals are understood modulo total derivatives when integrated.
 - BV Laplacian and quantum master equation require a chosen regulator and
   measure.
+- Yang--Mills is treated as the off-shell closed model case.  Open algebras
+  and reducible symmetries are described in condensed field-space notation to
+  display the additional antifield-number terms required by the master
+  equation.
 
 ## Symbols
 
@@ -55,6 +59,11 @@
 | \(\mathcal L_\Psi\) | gauge-fixing Lagrangian submanifold |
 | \(\Delta_{\rm BV}\) | regulator-dependent BV Laplacian |
 | \(S_\Lambda\) | Wilsonian BV action at cutoff \(\Lambda\) |
+| \(R^i{}_\alpha\) | gauge generator in condensed field-space notation |
+| \(E_i\) | Euler--Lagrange derivative \(\delta S_0/\delta\Phi^i\) |
+| \(C^\gamma{}_{\alpha\beta}\) | structure function for the gauge-generator commutator |
+| \(M^{ij}{}_{\alpha\beta}\) | coefficient of equation-of-motion closure in an open gauge algebra |
+| \(Z^\alpha{}_{a_1}\) | first-stage reducibility operator for gauge parameters |
 
 ## Claims Established
 
@@ -66,6 +75,15 @@
   odd Jacobi identity.
 - The Yang--Mills minimal BV action couples antifields to the BRST variations
   \(sA=Dc\) and \(sc=-\frac12[c,c]\).
+- Off-shell closure is stated as the field-space identity
+  \(R_\beta^j\delta_jR_\alpha^i-R_\alpha^j\delta_jR_\beta^i
+  =R_\gamma^iC^\gamma{}_{\alpha\beta}\).  Open closure is stated as the same
+  identity plus an Euler--Lagrange term \(M^{ij}{}_{\alpha\beta}E_j\).
+- The chapter explains why a linear antifield coupling gives only on-shell
+  nilpotency for open algebras and why quadratic and higher antifield-number
+  terms are required to solve the classical master equation off shell.
+- Reducible symmetries are identified by \(R^i{}_\alpha Z^\alpha{}_{a_1}=0\)
+  and require ghosts-for-ghosts and corresponding antifields.
 - The nonminimal sector \((\bar c,B)\) and gauge-fixing fermion reproduce the
   Faddeev--Popov gauge-fixed action by restriction to a Lagrangian
   submanifold.
@@ -87,10 +105,12 @@
 
 ## Open Boundaries
 
-- Reducible gauge symmetries and open algebras are only described by their BV
-  requirement: additional ghosts and higher antifield terms are needed.
 - Global Gribov problems and nonperturbative BV integration cycles are not
   solved here.
 - The cutoff-dependent Wilsonian master equation is stated at the framework
   level; later work should deepen explicit exact-RG realizations in gauge
   theory.
+- 2026-05-24 issue #245 pass: replaced the opaque open-algebra sentence by
+  explicit off-shell/open closure formulae, showed the equation-of-motion term
+  that obstructs naive BRST nilpotency, and stated the associated reducible
+  symmetry data.
