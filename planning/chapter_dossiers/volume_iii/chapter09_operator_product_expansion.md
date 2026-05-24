@@ -29,6 +29,8 @@ The chapter establishes:
   operator displayed, the two Frobenius branches \(\Delta\) and \(D-\Delta\),
   and the radial descendant/Gram-matrix construction proving local existence
   and uniqueness of the OPE-normalized block;
+- the finite-level quotient Gram-matrix projector used in the radial block
+  expansion, including null descendant removal before matrix inversion;
 - conformal partial waves as shadow-projector/harmonic-analysis kernels,
   distinct from OPE-channel blocks and normalized together with their
   Plancherel density;
@@ -85,6 +87,9 @@ The chapter establishes:
     OPE corners.  It follows from equality of Euclidean separated-point
     correlators, convergence of each channel expansion in its own radial
     domain, and analytic continuation on the common connected domain.
+12. Radial block coefficients use finite-dimensional quotient Gram matrices
+    \(M^{(n)}\) at each descendant level; null descendants are removed because
+    reflection positivity makes them zero against all physical states.
 
 ## Figures
 
@@ -106,6 +111,8 @@ The chapter establishes:
 - Do not derive crossing by skipping the channel domains; display the
   \(s\)- and \(t\)-channel radial variables and identify the analytic
   continuation step.
+- Do not describe radial block construction as an inverse of one infinite Gram
+  matrix; use levelwise quotient projectors.
 
 ## Audit Notes
 
@@ -129,3 +136,6 @@ The chapter establishes:
   to show nested-OPE associativity, the \(s\)- and \(t\)-channel convergence
   domains, and the prefactor derivation of
   \(v^{\Delta_\phi}\mathcal G(u,v)=u^{\Delta_\phi}\mathcal G(v,u)\).
+- 2026-05-24 issue pass: addressed #278 by spelling out the raw descendant
+  space, null quotient, quotient Gram matrix, level projector, and levelwise
+  contraction formula for radial conformal-block coefficients.

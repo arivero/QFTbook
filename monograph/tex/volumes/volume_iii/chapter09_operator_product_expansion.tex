@@ -881,26 +881,75 @@ inserting a complete basis of states gives
 \end{align}
 For a primary \(\Phi_i\) of spin \(s_i\) and dimension \(\Delta_i\), its
 level-\(n\) descendants have energy \(\Delta_i+n\).  If
-\(\underline N=(\beta;N_1,\ldots,N_D)\), with
-\(\sum_\mu N_\mu=n\), labels a descendant
+\(a=(\beta;N_1,\ldots,N_D)\), with \(\sum_\mu N_\mu=n\), labels a raw
+descendant
 \[
-  \ket{\Phi_i,\underline N}
+  \ket{\Phi_i,a}
   =
   \prod_{\mu=1}^D \widehat P_\mu^{\,N_\mu}
   \ket{\Phi_i,\beta},
 \]
-then the Gram matrix
+let
 \[
-  G_{\underline N\underline M}
+  G^{\rm raw}_{ab}
   =
   \langle
-    \Phi_i,\underline N\,|\,\Phi_i,\underline M
+    \Phi_i,a\,|\,\Phi_i,b
   \rangle
 \]
-and its inverse contract the two matrix elements in
-\eqref{eq:cylinder-four-point-complete-set}.  If null descendants are
-present, one first passes to a reduced linearly independent basis.  Therefore
-a block has a radial expansion
+be the level-\(n\) Gram form.  This raw Gram form is finite-dimensional at
+fixed \(n\), but it can be singular.  Its null subspace is
+\[
+  \mathcal N_{i,n}
+  =
+  \{v\in W_{i,n}:\langle v|w\rangle=0\ \text{for every }w\in W_{i,n}\},
+\]
+where \(W_{i,n}\) is the raw level-\(n\) descendant space.  Reflection
+positivity implies that every \(v\in\mathcal N_{i,n}\) has zero matrix element
+against every physical state, by the Cauchy--Schwarz inequality.  Hence null
+descendants are first quotiented:
+\[
+  Q_{i,n}=W_{i,n}/\mathcal N_{i,n}.
+\]
+Choose any basis \(\{\ket{e_A^{(n)}}\}_A\) of \(Q_{i,n}\), represented by raw
+descendants, and define the nonsingular quotient Gram matrix
+\[
+  M^{(n)}_{AB}
+  =
+  \langle e_A^{(n)}|e_B^{(n)}\rangle .
+\]
+The level-\(n\) projector onto the exchanged conformal family is
+\begin{equation}
+  \Pi_{i,n}
+  =
+  \sum_{A,B}
+  \ket{e_A^{(n)}}\,
+  \bigl(M^{(n)}\bigr)^{-1}_{AB}\,
+  \bra{e_B^{(n)}} .
+  \label{eq:radial-block-level-projector}
+\end{equation}
+This expression is independent of the chosen quotient basis: under
+\(\ket{e_A}\mapsto S_A{}^B\ket{e_B}\), the Gram matrix and its inverse
+transform contragrediently.  The complete-set term at level \(n\) is therefore
+\begin{equation}
+  r^{\Delta_i+n}
+  \sum_{A,B}
+  \bra{\vac}
+    \widetilde\phi(0,0)\widetilde\phi(0,\pi)
+  \ket{e_A^{(n)}}\,
+  \bigl(M^{(n)}\bigr)^{-1}_{AB}\,
+  \bra{e_B^{(n)}}
+    \widetilde\phi(0,\alpha)\widetilde\phi(0,\alpha+\pi)
+  \ket{\vac}.
+  \label{eq:radial-block-level-gram-inversion}
+\end{equation}
+The block is obtained by applying
+\eqref{eq:radial-block-level-gram-inversion} to each finite level and then
+summing over levels.  Thus no inverse of an infinite descendant Gram matrix is
+being assumed; the inverse is taken after quotienting null states at each
+energy level.  Conservation laws and other shortening conditions enter exactly
+through the null subspaces \(\mathcal N_{i,n}\).  Consequently a block has a
+radial expansion
 \begin{equation}
   2^{-4\Delta_\phi}
   G_{\Delta_i,s_i}(u,v)
