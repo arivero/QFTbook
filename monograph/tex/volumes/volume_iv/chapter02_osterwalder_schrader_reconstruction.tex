@@ -70,6 +70,9 @@ scalar test function this reads
   \overline{f_n(\theta x_n,\ldots,\theta x_1)}.
 \]
 With labels, the same formula is composed with \(J^{\otimes n}\).  Let
+\(\Theta\) denote the same antilinear operation on arbitrary \(n\)-point test
+functions; positive-time support is needed only when we form the OS
+pre-Hilbert space below.  Let
 \(\mathcal E_+\) be the vector space of finite sequences
 \[
   F=(f_0,f_1,f_2,\ldots),
@@ -105,8 +108,14 @@ An OS-admissible Euclidean field presentation is a Schwinger hierarchy
   \(g\in \operatorname{Euc}(D)\);
   \item permutation symmetry: \(S_n\) is invariant under simultaneous
   permutation of arguments and labels;
-  \item Hermiticity: the hierarchy is compatible with the adjunction encoded
-  by \(J\);
+  \item Hermiticity: for every \(n\ge0\) and every labelled \(n\)-point test
+  function \(f_n\),
+  \begin{equation}
+    S_n(\Theta f_n)
+    =
+    \overline{S_n(f_n)} .
+    \label{eq:os-hermiticity}
+  \end{equation}
   \item reflection positivity:
   \(\langle F,F\rangle_{\rm OS}\ge0\) for all \(F\in\mathcal E_+\);
   \item regularity and growth: the hierarchy has the continuity and growth
