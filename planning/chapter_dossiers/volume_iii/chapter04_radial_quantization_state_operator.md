@@ -26,8 +26,9 @@ The chapter establishes:
   Euclidean generators;
 - the cylinder sewing identity on ordered constant-\(\tau\) slabs and its
   Heisenberg-operator form;
-- the assumptions needed for discreteness, finite multiplicity, clustering,
-  tube-domain continuation, and radial local completeness;
+- the assumptions needed for discreteness, finite multiplicity, unique
+  conformal vacuum, cluster factorization, tube-domain continuation, and radial
+  local completeness;
 - Theorem `thm:state-operator-correspondence`, which states that origin
   insertion gives an isometric linear isomorphism
   \(\mathcal V_{\rm loc}\simeq\mathcal H_{\rm fin}\), and after Hilbert
@@ -51,6 +52,9 @@ The chapter establishes:
    must keep the patchwise \(SO(D)\) rotation \(R^{\hat a}{}_\mu(n)\) separate
    from the Weyl scale and must state the transition-function dependence on
    overlaps.
+7. Cluster decomposition is part of the consolidated radial reconstruction
+   hypothesis, with the large-translation factorization limit displayed
+   explicitly.
 
 ## Figures
 
@@ -75,3 +79,6 @@ The chapter establishes:
 - 2026-05-24 issue #269 pass: added the patchwise cylinder coframe
   \(\widehat e^{\hat a}{}_\mu\), the rotation \(R^{\hat a}{}_\mu\), the vector
   primary cylinder map, and the corresponding spin-one state map.
+- 2026-05-24 issue #270 pass: expanded the hypothesis block to state unique
+  conformal vacuum and the explicit cluster-factorization limit for separated
+  Euclidean local correlators.

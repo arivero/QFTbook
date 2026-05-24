@@ -19,6 +19,8 @@ The chapter establishes:
 - the level-one Gram form
   \(\langle\mathcal O|K_\mu P_\nu|\mathcal O\rangle\);
 - the scalar level-two trace descendant and the scalar unitarity bound;
+- the \(\Delta=0\) scalar branch, tied explicitly to the unique-vacuum and
+  cluster-decomposition assumptions in the radial reconstruction hypothesis;
 - the \(SO(D)\) decomposition
   \(\mathcal H_1\otimes\mathcal H_\ell
     =\mathcal H_{\ell+1}\oplus\mathcal H_{\ell,1}\oplus
@@ -59,3 +61,6 @@ The chapter establishes:
   Gram matrices, derived the symmetric-traceless level-one eigenvalues from
   \(SO(D)\) Casimirs, and added the general first-level irreducible
   representation test.
+- 2026-05-24 issue #270 pass: the \(\Delta=0\) scalar discussion now points
+  back to Hypothesis `hyp:radial-reconstruction-data` for unique vacuum and
+  cluster decomposition, avoiding an unstated identity-branch assumption.

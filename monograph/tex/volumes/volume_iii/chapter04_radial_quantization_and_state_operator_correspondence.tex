@@ -68,7 +68,8 @@ Schwinger hierarchy \(S_{I_1\cdots I_n}\) satisfying the following conditions.
   on the finite-energy subspace is discrete, and for every \(E<\infty\) the
   spectral subspace with \(D_{\rm rad}\le E\) is finite-dimensional.  In
   particular every eigenspace has finite multiplicity, and the eigenvalue
-  \(0\) subspace is spanned by the vacuum vector.
+  \(0\) subspace is spanned by the vacuum vector.  Thus the conformally
+  invariant vacuum in the radial Hilbert space is unique.
   \item For each local operator \(\mathcal O_I\) used below, the radial limit of
   the insertion at the origin defines a finite-energy vector.  Descendant
   vectors are obtained by applying the translation generators, equivalently by
@@ -86,8 +87,25 @@ Schwinger hierarchy \(S_{I_1\cdots I_n}\) satisfying the following conditions.
   \item The Euclidean correlators are related to Lorentzian Wightman
   distributions by the standard tube-domain analytic continuation, with the
   Lorentzian distributions satisfying the spectrum condition and local
-  commutativity.  The flat-space vacuum correlators obey cluster
-  decomposition.
+  commutativity.  The flat-space vacuum correlators obey cluster decomposition:
+  for two finite products of separated local insertions,
+  \[
+    A(x_1,\ldots,x_m)=\mathcal O_{I_1}(x_1)\cdots\mathcal O_{I_m}(x_m),
+    \qquad
+    B(y_1,\ldots,y_n)=\mathcal O_{J_1}(y_1)\cdots\mathcal O_{J_n}(y_n),
+  \]
+  and for a Euclidean vector \(a\) such that no coincident-point singularity is
+  crossed along the translated configuration,
+  \[
+    \lim_{\lambda\to+\infty}
+    \left\langle
+      A(x_1+\lambda a,\ldots,x_m+\lambda a)\,
+      B(y_1,\ldots,y_n)
+    \right\rangle_E
+    =
+    \langle A(x_1,\ldots,x_m)\rangle_E\,
+    \langle B(y_1,\ldots,y_n)\rangle_E .
+  \]
 \end{enumerate}
 \end{hypothesis}
 
