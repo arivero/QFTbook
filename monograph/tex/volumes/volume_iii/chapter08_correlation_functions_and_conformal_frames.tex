@@ -353,7 +353,13 @@ normalization has been fixed.
 The stress tensor illustrates why some three-point coefficients are
 constrained but not removed from the data.  In a parity-even CFT in
 \(D\ge4\), the separated three-point function of a symmetric conserved
-traceless stress tensor has the following explicit form.  Set
+traceless stress tensor is classified by the following Osborn--Petkou
+basis.\footnote{This is the position-space basis of H.~Osborn and
+A.~C.~Petkou, \emph{Implications of Conformal Invariance in Field Theories
+for General Dimensions}, Ann. Phys. 231 (1994), 311--362,
+arXiv:hep-th/9307010, specialized here to the separated-point, parity-even
+stress-tensor three-point function and rewritten in the conventions of this
+chapter.}  Set
 \[
   X\equiv X_{12,3}
   =
@@ -526,7 +532,87 @@ Equivalently,
   \mathfrak C[t[a,b,c]]_{\mu\nu,\rho\sigma,\alpha\beta},
   \label{eq:stress-tensor-three-point-structures}
 \end{equation}
-with three independent coefficients \(a,b,c\).  The Ward identity fixes one
+with three independent coefficients \(a,b,c\) when \(D\ge4\).  The
+independence statement is not a counting by inspection.  Before imposing
+conservation, conformal covariance, tracelessness, and the exchange symmetries
+of the three stress tensors reduce the parity-even separated-point ansatz to
+the five coefficients \(a,b,c,e,f\); the coefficient \(e'\) appearing in
+\eqref{eq:op-ttt-tensor} is then fixed by
+\[
+  e+e'=8a+4b-2c .
+\]
+The conservation equation
+\[
+  \left(\partial_\mu-D\frac{X_\mu}{X^2}\right)
+  t_{\mu\nu,\rho\sigma,\alpha\beta}(X)=0
+\]
+imposes two independent linear equations.  In the parametrization above these
+equations are exactly the formulae
+\eqref{eq:op-ttt-dependent-coefficients}, which determine
+\(e,e'\), and \(f\) in terms of \(a,b,c\).  To see that no further relation is
+hidden for \(D\ge4\), put the three insertion points in a collinear frame by a
+conformal transformation.  The residual group is \(O(D-1)\).  The completely
+transverse part of the conserved tensor is then parametrized by three
+\(O(D-1)\)-invariant tensors with coefficients \(r,s,u\), and the
+Osborn--Petkou comparison gives
+\begin{equation}
+  D^2 r=16a-2Db+(D+4)c,
+  \qquad
+  D s=-4a-c,
+  \qquad
+  u=a .
+  \label{eq:op-collinear-rsu}
+\end{equation}
+For \(D\ge4\), the transverse space has dimension at least three, and these
+three invariant tensors are linearly independent.  Hence
+\((a,b,c)\mapsto(r,s,u)\) has no universal null direction in the space of
+separated-point parity-even \(TTT\) structures.
+
+For \(D=3\), the transverse space in the collinear frame is two-dimensional.
+The three transverse invariant tensors obey one Schouten identity, and the
+collinear tensor depends only on
+\begin{equation}
+  r-4u,
+  \qquad
+  s+2u .
+  \label{eq:op-d3-two-invariants}
+\end{equation}
+Using \eqref{eq:op-collinear-rsu} at \(D=3\), the null direction is
+\[
+  (a,b,c)=(1,-1,2).
+\]
+Thus, as separated parity-even three-dimensional structures,
+\begin{equation}
+  \mathcal I^{(1)}_{D=3}
+  -
+  \mathcal I^{(2)}_{D=3}
+  +
+  2\mathcal I^{(3)}_{D=3}
+  =
+  0,
+  \qquad
+  \mathcal I^{(3)}_{D=3}
+  =
+  \frac12\left(
+    \mathcal I^{(2)}_{D=3}-\mathcal I^{(1)}_{D=3}
+  \right).
+  \label{eq:op-d3-ttt-relation}
+\end{equation}
+Consequently a parity-even three-dimensional stress-tensor three-point
+function has two separated structures, for instance
+\[
+  \left\langle TTT\right\rangle_{D=3}^{\rm even}
+  =
+  A\,\mathcal I^{(1)}_{D=3}
+  +
+  B\,\mathcal I^{(2)}_{D=3}.
+  \label{eq:op-d3-two-ttt-structures}
+\]
+If parity is not imposed in \(D=3\), there is a further parity-odd separated
+structure; it is not part of the parity-even Osborn--Petkou basis displayed
+here.
+
+The Ward identity fixes one
 linear combination of these coefficients in terms of the two-point coefficient
 \(C_T\).  Let
 \[

@@ -15,6 +15,10 @@ The chapter establishes:
 - conformally invariant coordinate combinations and cross-ratios;
 - scalar two- and three-point functions from Ward identities;
 - spinning tensor structures with stated representation data;
+- the Osborn--Petkou parity-even stress-tensor three-point basis, including
+  the explicit \(h^1,\ldots,h^5\) tensors, the three \(D\ge4\) structures,
+  the conservation equations fixing dependent coefficients, and the
+  three-dimensional Schouten degeneration to two parity-even structures;
 - radial conjugation and BPZ-type bra construction from cylinder-time limits;
 - conformal frames and residual stabilizer groups;
 - positivity conditions on two-point coefficient matrices.
@@ -29,6 +33,10 @@ The chapter establishes:
    null quotient; two-point coefficient matrices are Gram matrices.
 4. Angular coordinates on \(S^{D-1}\) are denoted by \(n\)-type symbols in
    sections where the vacuum \(\vac\) is also present.
+5. The count of parity-even separated \(TTT\) structures is three only for
+   \(D\ge4\); in \(D=3\) the Osborn--Petkou structures obey
+   \(\mathcal I^{(1)}-\mathcal I^{(2)}+2\mathcal I^{(3)}=0\), leaving two
+   parity-even structures before any parity-odd \(D=3\) structure is added.
 
 ## Figures
 
@@ -39,3 +47,6 @@ The chapter establishes:
 - Avoid numerical CFT data unless accompanied by a source policy or removed.
 - Keep the distinction between separated-point correlators and contact-term
   extensions explicit.
+- 2026-05-24 issue #291 pass: tied the \(TTT\) count to the
+  Osborn--Petkou basis, displayed the collinear-frame independence check, and
+  made the \(D=3\) two-structure relation explicit.
