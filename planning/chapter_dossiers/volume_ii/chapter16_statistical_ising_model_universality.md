@@ -117,6 +117,11 @@ The chapter must define and derive:
   functional convergence, sequential continuity of the coordinate-to-source
   map at the continuum graph, common field normalization, and convergence of
   reflection-positive OS quadratic forms;
+- an end-to-end conditional Ising universality theorem from thermodynamic
+  lattice data through Wilsonian coordinate convergence and source-functional
+  scaling limits to CFT data, stating precisely when normalized long-distance
+  Ising scaling functions are determined by the Ising CFT/OPE data and its
+  constructed relevant deformations;
 - the correction-to-scaling structure obtained by differentiating the
   coordinate-to-correlator map in retained irrelevant coordinates.
 
@@ -165,6 +170,13 @@ The chapter must define and derive:
      microscopic representatives have the same normalized separated-point
      Schwinger functions, while source-local polynomial differences change
      only contact terms.
+13b. The end-to-end conditional Ising universality theorem additionally
+     assumes the fixed point satisfies OS/radial reconstruction, the
+     stress-tensor hypotheses for a CFT, and radial OPE convergence.  Under
+     those hypotheses the critical separated scaling functions are determined
+     by the fixed-point CFT data, while nonzero thermal or magnetic scaling
+     functions require the constructed relevant deformation by
+     \(\varepsilon\) or \(\sigma\).
 14. Reflection positivity is automatic for the ferromagnetic nearest-neighbor
     Ising model, and for the nearest-neighbor scalar model with positive
     one-site measure and nonnegative cross-reflection coupling, by an explicit
@@ -218,6 +230,12 @@ The chapter must define and derive:
 - Use Wilsonian cutoff-flow estimates only with their stated finite-chart
   hypotheses; do not promote them to an uncontrolled infinite-dimensional
   theorem.
+- 2026-05-24 issue #339 pass: added
+  `thm:conditional-ising-universality-lattice-to-cft-data`, chaining
+  thermodynamic lattice limits, finite-coordinate Wilsonian convergence,
+  source-functional scaling limits, OS/radial reconstruction, and CFT/OPE data
+  into one conditional theorem for normalized separated Ising scaling
+  functions.
 - Do not present local RG coordinate convergence as a theorem proving
   existence of a continuum lattice scaling limit.
 - Do not infer Osterwalder--Schrader positivity from membership in a proposed

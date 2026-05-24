@@ -136,6 +136,11 @@ The chapter establishes:
 - Every convergence claim must state the Hilbert-space and spectral
   hypotheses being used, and must use the same \(D_{\rm rad}\) spectrum
   condition as Chapter 4.
+- Never formulate the OPE as a literal multiplication law in the
+  local-operator space.  A separated pair of local insertions defines a
+  sphere state; the OPE is convergence, in BPZ/radial Hilbert norm, of a
+  sequence of finite local-operator states at the origin to that sphere
+  state.
 - Every Lorentzian convergence claim must identify the Wightman ordering,
   tube component, radial-variable domain, and boundary-value interpretation.
 - Do not use ``conformal block'' and ``conformal partial wave''
@@ -189,3 +194,6 @@ The chapter establishes:
   `def:radial-ope-convergence-hypotheses`, making the scope of the
   reflection-positive radial OPE theorem a direct expansion of Chapter 4's
   radial reconstruction data, with Euclidean and Lorentzian inputs separated.
+- 2026-05-24 follow-up pass: replaced literal product/equality language in
+  the opening OPE formulation and reconstruction discussion by state-valued
+  BPZ/radial-norm convergence of local-operator partial sums.

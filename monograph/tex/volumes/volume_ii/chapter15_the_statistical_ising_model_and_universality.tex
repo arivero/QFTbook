@@ -1413,6 +1413,116 @@ common reconstructed Euclidean/Lorentzian theory; it is not supplied by the
 finite-dimensional RG coordinate estimate.
 \end{proof}
 
+\begin{theorem}[Conditional Ising universality from lattice data to CFT data]
+\label{thm:conditional-ising-universality-lattice-to-cft-data}
+Fix a spatial dimension \(D\) and a class \(\mathfrak U\) of
+reflection-positive \(\mathbb Z_2\)-invariant microscopic lattice models whose
+thermodynamic limits exist in the pure-state convention used above.  Let
+\(A^X_{\sigma,a}\) and \(A^X_{\varepsilon,a}\) be odd and even microscopic
+observables in a model \(X\in\mathfrak U\), normalized by nonzero constants
+so that their leading scaling fields are \(\sigma\) and \(\varepsilon\).
+Assume the following data and hypotheses.
+\begin{enumerate}[label=(\roman*)]
+  \item The tuned finite-coordinate Wilsonian hypotheses of
+  Proposition~\ref{prop:local-universality-rg-coordinates} hold uniformly for
+  \(\mathfrak U\), with relevant endpoint coordinate
+  \(u_R=(\lambda_{h,R},\lambda_{t,R})\).  In the \(\mathbb Z_2\)-even critical
+  slice this means \(\lambda_{h,R}=\lambda_{t,R}=0\).
+  \item The source-dependent scaling-limit hypotheses of
+  Theorem~\ref{thm:conditional-lattice-to-continuum-universality} hold for the
+  source coordinates coupled to \(A^X_{\sigma,a}\), \(A^X_{\varepsilon,a}\),
+  and the other selected scaling observables.  The reflected OS quadratic
+  forms converge on the positive-time test-function domain.
+  \item At \(u_R=0\), the common limiting Schwinger hierarchy
+  \(W_\ast(\eta;0)\) satisfies Euclidean covariance, reflection positivity,
+  regularity, clustering, and the radial reconstruction hypotheses of
+  Hypothesis~\ref{hyp:radial-reconstruction-data}.  It has a conserved
+  symmetric stress tensor improvable to traceless form, so the fixed point is
+  a CFT in the sense of
+  Chapter~\ref{ch:volume-iii-fixed-points-conformal-data}.
+  \item The fixed-point local CFT data include the local scaling-operator
+  spectrum, two-point pairings, OPE coefficients, stress-tensor Ward data, and
+  the OPE convergence hypotheses of
+  Definition~\ref{def:radial-ope-convergence-hypotheses}.  For nonzero
+  \(u_R\), the corresponding relevant deformation of the fixed-point source
+  functional by
+  \[
+    \int\dd^Dx\,
+    \bigl(
+      \lambda_{h,R}\mu_R^{D-\Delta_\sigma}\sigma(x)
+      +
+      \lambda_{t,R}\mu_R^{D-\Delta_\varepsilon}\varepsilon(x)
+    \bigr)
+  \]
+  is constructed in a source-functional neighborhood large enough to determine
+  the separated scaling functions under discussion.
+\end{enumerate}
+Then, for every \(X\in\mathfrak U\), every list of selected microscopic
+observables, and every configuration of pairwise distinct continuum points
+\(x_1,\ldots,x_n\), the normalized thermodynamic lattice correlators have the
+common scaling limit
+\[
+  \lim_{a\downarrow0}
+  \left\langle
+    \prod_{j=1}^n
+    a^{-\Delta_{I_j}}
+    (b^X_{I_j})^{-1}A^X_{I_j,a}(x_j)
+  \right\rangle_{X,p_X(a,u_R)}
+  =
+  S^{\rm Ising}_{I_1\ldots I_n}(x_1,\ldots,x_n;u_R),
+  \label{eq:conditional-ising-universality-scaling-functions}
+\]
+where \(I_j\) labels \(\sigma,\varepsilon\), or another selected scaling
+operator, \(b^X_{I_j}\neq0\) is the leading microscopic normalization, and
+\(p_X(a,u_R)\) is the tuned microscopic parameter supplied by hypothesis
+(i).  At \(u_R=0\), the functions on the right are the separated-point
+correlators of the Ising CFT.  They are determined by the fixed-point CFT
+data in item (iv) through radial OPE convergence and the Ward identities.  At
+nonzero \(u_R\) inside the constructed relevant-deformation neighborhood, the
+same fixed-point data together with the specified relevant coordinates
+determine the massive or magnetized scaling functions.
+
+The quantities \(T_{c,X}\), metric factors relating \(T-T_{c,X}\) and the
+magnetic field to \(\lambda_{t,R}\) and \(\lambda_{h,R}\), the constants
+\(b^X_I\), finite-cutoff corrections, and contact-term extensions are not
+part of the universal separated-point functions
+\eqref{eq:conditional-ising-universality-scaling-functions}.
+\end{theorem}
+
+\begin{proof}
+The thermodynamic limit supplies the infinite-volume lattice state for each
+fixed cutoff and tuned microscopic parameter.  Hypothesis (i), by
+Proposition~\ref{prop:local-universality-rg-coordinates}, sends every tuned
+microscopic realization to the same retained Wilsonian coordinate
+\[
+  z_\ast(u_R)=(u_R,V_{\mu_R}(u_R))
+\]
+at the reference scale.  Hypothesis (ii), by
+Theorem~\ref{thm:conditional-lattice-to-continuum-universality}, upgrades that
+coordinate convergence to convergence of the renormalized source functionals:
+after the local source maps and source-local vacuum subtractions are applied,
+all \(X\in\mathfrak U\) have the same limiting functional
+\(W_\ast(\eta;u_R)\) modulo source-local polynomials.  Functional derivatives
+with respect to the normalized sources give
+\eqref{eq:conditional-ising-universality-scaling-functions}.  Source-local
+polynomials are supported on collision diagonals, so they vanish on the
+configuration space \(x_i\neq x_j\).
+
+At \(u_R=0\), hypothesis (iii) gives the OS/radial reconstruction data and the
+stress-tensor condition needed to regard \(W_\ast(\eta;0)\) as the source
+functional of a unitary CFT.  Hypothesis (iv) supplies the local CFT data and
+OPE convergence.  The radial OPE theorem then reconstructs separated-point
+correlators from the local scaling spectrum, two-point pairings, OPE
+coefficients, and Ward data, with the contact chart fixed by the source
+functional.  For \(u_R\neq0\) in the stated source-functional neighborhood,
+the deformation by \(\sigma\) and \(\varepsilon\) is part of the constructed
+functional data, so the same argument gives the corresponding scaling
+functions with the relevant coordinates held fixed.  The last sentence lists
+parameters removed either by tuning, by field normalization, or by restriction
+to separated points; the preceding argument never identifies them with CFT
+data.
+\end{proof}
+
 The same separation applies to observables.  Let \(A^X_{\rm spin}\) be a
 microscopic odd lattice observable and \(A^X_{\rm eng}\) a microscopic even
 energy-density observable with identity part subtracted.  Their scaling-field
