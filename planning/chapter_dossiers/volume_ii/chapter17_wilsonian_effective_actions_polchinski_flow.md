@@ -71,6 +71,11 @@ The chapter must define and derive:
 - the explicit continuum-limit estimate showing that the memory of
   \(\lambda_6(\Lambda_0)=0\) is suppressed by
   \((\Lambda_R/\Lambda_0)^2\);
+- the limitation that this perturbative finite-coordinate estimate is not a
+  constructive existence theorem for non-Gaussian four-dimensional
+  \(\lambda\phi^4\) scaling limits, in view of the known triviality theorem
+  for the specified positive lattice scalar and nearest-neighbor
+  ferromagnetic Ising-type families;
 - a finite-coordinate cutoff-removal estimate for a split
   \(z=(u,v)\) into retained renormalized coordinates and irrelevant
   coordinates, including:
@@ -134,6 +139,12 @@ The chapter must define and derive:
    couplings at a fixed reference scale remain fixed.
 10. The perturbative argument requires explicit hypotheses on small couplings,
    mild beta-function variation, and control of omitted irrelevant operators.
+10a. In four-dimensional scalar \(\lambda\phi^4\), these hypotheses must be
+     distinguished from the known constructive result that the standard
+     positive lattice scalar and nearest-neighbor ferromagnetic Ising-type
+     critical scaling limits are Gaussian; the Wilsonian estimate explains
+     local perturbative suppression of irrelevant boundary data but does not
+     prove a non-Gaussian continuum scalar theory.
 11. Lattice QFT fits the same logic because finite dimensionless irrelevant
    lattice couplings correspond to dimensionful coefficients suppressed by
    powers of the UV cutoff.
@@ -219,3 +230,5 @@ The chapter must define and derive:
   finite-coordinate cutoff-removal estimate, emphasizing that the Wilsonian
   generated-integral hypothesis contains information beyond formal
   perturbation theory.
+- 2026-05-24 issue pass: addressed #224 by inserting the scalar triviality
+  theorem boundary into the perturbative Wilsonian continuum-limit discussion.

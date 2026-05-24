@@ -43,6 +43,10 @@ The chapter must define:
 - the beta function as a differential comparison of renormalized coordinates;
 - the one-loop solution and Landau scale in four-dimensional scalar quartic
   theory, with perturbative domain stated;
+- the rigorous triviality theorem for the standard four-dimensional positive
+  lattice \(\lambda\phi^4\) and nearest-neighbor ferromagnetic Ising-type
+  scaling-limit problems, separated from the perturbative Landau-scale
+  argument and from broader UV-completion questions;
 - general 1PI coordinates \(g_I(\mu)\) from Taylor coefficients of 1PI
   vertices;
 - dimensionless coordinates
@@ -89,6 +93,14 @@ The chapter must define:
 8. The one-loop scalar quartic flow has a perturbative Landau scale
    \(\mu_0=\mu'\exp(16\pi^2/(3g(\mu')))\); perturbation theory gives no
    controlled description at scales where the running coupling is large.
+8a. The standard reflection-positive four-dimensional lattice
+    \(\lambda\phi^4\) and nearest-neighbor ferromagnetic Ising-type critical
+    or near-critical scaling limits covered by the Aizenman--Duminil-Copin
+    theorem are Gaussian.  This is a nonperturbative
+    constructive/probabilistic theorem, not a consequence of the one-loop
+    Landau-scale equation, and it does not by itself rule out an exotic
+    ultraviolet-complete local QFT agreeing with formal \(\phi^4_4\)
+    perturbation theory to all orders.
 9. For a general local operator \(O_I\) with mass dimension \(d_I\), the
    dimensionless coordinate \(\lambda_I(\mu)=\mu^{d_I-D}g_I(\mu)\) can have an
    autonomous beta function once explicit dimensionful ratios are encoded in
@@ -181,3 +193,7 @@ The chapter must define:
 - 2026-05-24 issue pass: addressed #223 by adding a cautious renormalon
   discussion that avoids universal claims about all perturbative series and
   ties ambiguities to specified observables and matching data.
+- 2026-05-24 issue pass: addressed #224 by stating the standard
+  four-dimensional scalar triviality theorem at the Landau-scale discussion,
+  with theorem-boundary language separating it from perturbative RG and from
+  broader UV-completion questions.
