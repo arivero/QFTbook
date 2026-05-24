@@ -40,6 +40,10 @@ The chapter must define and derive:
   measure before thermodynamic or scaling limits;
 - the role of boundary conventions in \(E(\Lambda)\) and thermodynamic
   limits;
+- the ferromagnetic thermodynamic-limit theorem: FKG positive association,
+  GKS monotonicity, GHS concavity, monotone plus/minus infinite-volume limits,
+  one-sided \(h\downarrow0\) phase selection, and clustering as the condition
+  that makes a limiting Gibbs state pure;
 - the equivalent finite-dimensional diagonal-operator trace notation;
 - the canonical Boltzmann distribution and its maximum-entropy role;
 - thermal spin correlators and the distinction among ordered, disordered, and
@@ -123,9 +127,10 @@ The chapter must define and derive:
    bookkeeping.  Its use as a continuum-QFT regulator requires separate
    thermodynamic and scaling-limit hypotheses.
 2. Canonical weights arise from maximizing entropy at fixed expected energy.
-3. The low-temperature ordered phase is defined by infinite-volume limits with
-   boundary conditions or a symmetry-breaking field before the thermodynamic
-   limit.
+3. The low-temperature ordered phase is defined by plus/minus
+   infinite-volume Gibbs limits or one-sided symmetry-breaking-field limits;
+   these limits exist in the ferromagnetic setting by FKG/GKS monotonicity,
+   and they are pure only when the corresponding limiting state is clustering.
 4. Critical spin correlators define the spin scaling dimension
    \(\Delta_\sigma\).
 5. The scaling limit of near-critical lattice correlators produces Euclidean
@@ -263,3 +268,9 @@ The chapter must define and derive:
   sequential continuity of the coordinate-to-source map, common field
   normalization, and convergence of reflection-positive OS quadratic forms to
   prove equality of normalized separated-point Schwinger functions.
+- 2026-05-24 issue #327 pass: added the ferromagnetic thermodynamic-limit
+  theorem before the phase discussion.  The theorem records the finite-volume
+  FKG, GKS, and GHS inequalities, proves FKG from log-supermodularity,
+  derives monotone plus/minus infinite-volume and one-sided field limits, and
+  states clustering as the condition under which a boundary-selected Gibbs
+  state is pure.
