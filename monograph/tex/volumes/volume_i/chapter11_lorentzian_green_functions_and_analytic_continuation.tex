@@ -25,6 +25,28 @@ operator-valued distribution \(\widehat\phi\) defined on a common invariant
 dense domain.  Point-field notation denotes the kernel notation for smeared
 operator-valued distributions.
 
+For \(r\ge1\), \(\mathcal S(M^r)\) denotes the Schwartz space on \(M^r\), and
+\(\mathcal S'(M^r)\) its continuous dual.  This chapter works in the tempered
+distribution category:
+\[
+  W_r,\ G_r\in\mathcal S'(M^r).
+\]
+Every compactly supported smearing used to define a local field matrix element
+is also a Schwartz test function, so this convention is compatible with the
+local operator-valued-distribution notation.  After translation invariance is
+used, analytic boundary values are paired with test functions in the relative
+variables.  Thus a holomorphic function \(F\) on a tube over \(M^{r-1}\) has
+boundary value \(T\in\mathcal S'(M^{r-1})\) when, for every
+\(f\in\mathcal S(M^{r-1})\),
+\[
+  \lim_{y\to0}
+  \int_{M^{r-1}}\dd^{D(r-1)}\xi\,
+  F(\xi-\ii y)f(\xi)
+  =
+  \langle T,f\rangle ,
+\]
+with \(y\) approaching the real edge inside the specified tube cone.
+
 The Wightman \(n\)-point distribution is
 \[
   W_n(x_1,\ldots,x_n)
@@ -120,17 +142,61 @@ relative variables
   \xi_j=x_j-x_{j+1},
   \qquad j=1,\ldots,n-1.
 \]
-The spectrum condition implies that the joint Fourier transform in the
-relative variables is supported where each conjugate momentum lies in the
-closed forward cone.  Hence the distribution is the boundary value of a
-function holomorphic in the forward tube
+Let
+\[
+  w_n(\xi_1,\ldots,\xi_{n-1})\in\mathcal S'(M^{n-1})
+\]
+be the corresponding relative-coordinate distribution.  Its Fourier transform
+\(\widetilde w_n\) is defined with the convention
+\[
+  w_n(\xi)
+  =
+  \int\frac{\dd^{D(n-1)}p}{(2\pi)^{D(n-1)}}\,
+  \ee^{\ii\sum_j p_j\cdot\xi_j}\widetilde w_n(p)
+\]
+in distribution notation.  Equivalently, for \(f\in\mathcal S(M^{n-1})\),
+\[
+  \langle w_n,f\rangle
+  =
+  \left\langle \widetilde w_n,\check f\right\rangle,
+  \qquad
+  \check f(p)
+  =
+  \int\frac{\dd^{D(n-1)}\xi}{(2\pi)^{D(n-1)}}\,
+  \ee^{\ii\sum_jp_j\cdot\xi_j}f(\xi).
+\]
+The spectrum condition gives the support inclusion
+\[
+  \operatorname{supp}\widetilde w_n
+  \subset
+  \overline V_+^{\,n-1}.
+\]
+For \(\eta=(\eta_1,\ldots,\eta_{n-1})\in V_+^{n-1}\), the function
+\(\exp(\sum_j p_j\cdot\eta_j)\) decreases exponentially on every closed
+subcone of \(\overline V_+^{\,n-1}\) which contains the support of
+\(\widetilde w_n\).  Multiplication of \(\widetilde w_n\) by this function is
+therefore a well-defined tempered distribution after inserting any smooth
+cutoff equal to one on a conic neighborhood of the support; the result is
+independent of the cutoff.  The inverse Fourier transform is a holomorphic
+function of
 \begin{equation}
-  \xi_j\longmapsto \xi_j-\ii\eta_j,
+  z_j=\xi_j-\ii\eta_j,
   \qquad
   \eta_j\in V_+,\qquad j=1,\ldots,n-1,
   \label{eq:wightman-forward-tube}
 \end{equation}
-where \(V_+\) is the open future light cone.  Indeed, for
+where \(V_+\) is the open future light cone.  In distribution notation this
+Fourier-Laplace transform is written as
+\[
+  \mathcal W_n(z)
+  =
+  \frac{1}{(2\pi)^{D(n-1)}}
+  \left\langle
+    \widetilde w_n(p),
+    \exp\!\left\{\ii\sum_{j=1}^{n-1}p_j\cdot z_j\right\}
+  \right\rangle .
+\]
+Indeed, for
 \(p\in\overline V_+\) and \(\eta\in V_+\), the mostly-plus inner product
 satisfies
 \[
@@ -143,15 +209,52 @@ so the factor
   \exp\{\ii p\cdot\xi+p\cdot\eta\}
 \]
 is damped rather than enlarged.
+The boundary value is \(w_n\) in \(\mathcal S'(M^{n-1})\):
+\[
+  \lim_{\eta\to0,\ \eta_j\in V_+}
+  \int_{M^{n-1}}\dd^{D(n-1)}\xi\,
+  \mathcal W_n(\xi-\ii\eta)f(\xi)
+  =
+  \langle w_n,f\rangle,
+  \qquad f\in\mathcal S(M^{n-1}).
+\]
 
 Different operator orderings give holomorphic functions in corresponding
-permuted tubes.  Local commutativity identifies their boundary values when
-neighboring points are spacelike separated.  The edge-of-the-wedge theorem
-then glues the corresponding holomorphic functions across such common real
-regions.  Time-ordered Green functions are boundary values obtained by
-approaching real Lorentzian points from imaginary time orderings compatible
-with the chosen operator order.  For two points, this general construction is
-exactly the pole displacement
+permuted tubes.  Local commutativity identifies their boundary values on real
+regions where the exchanged neighboring points are spacelike separated.
+
+\begin{theorem}[Distributional edge-of-the-wedge statement used here]
+\label{thm:distributional-edge-of-the-wedge}
+Let \(U\subset\mathbb R^N\) be open, and let \(C_+\) and \(C_-\) be open
+convex cones in \(\mathbb R^N\).  Suppose \(F_\pm\) are holomorphic on the
+tubes \(U+\ii C_\pm\).  Assume the following polynomial boundary growth: for
+every compact \(K\subset U\) and every closed cone \(C'_\pm\) whose nonzero
+vectors lie in \(C_\pm\), there are constants \(A,N<\infty\) such that
+\[
+  |F_\pm(x+\ii y)|
+  \le
+  A(1+|x|)^N |y|^{-N},
+  \qquad
+  x\in K,\quad y\in C'_\pm,\quad 0<|y|<1.
+\]
+These estimates define distributional boundary values
+\[
+  b_\pm\in\mathcal D'(U).
+\]
+If \(b_+=b_-\) on a nonempty open real subset \(O\subset U\), then there is a
+connected complex neighborhood \(\mathcal N\) of \(O\) and a holomorphic
+function \(F\) on \(\mathcal N\) whose restrictions agree with \(F_+\) and
+\(F_-\) wherever the original tubes meet \(\mathcal N\).
+\end{theorem}
+
+In the Wightman application, the polynomial growth hypothesis comes from the
+tempered Fourier-Laplace construction above, and the equality of boundary
+values comes from local commutativity on the spacelike real edge.  The theorem
+therefore supplies the common holomorphic continuation of the permuted tube
+functions across those spacelike real regions.  Time-ordered Green functions
+are boundary values obtained by approaching real Lorentzian points from
+imaginary time orderings compatible with the chosen operator order.  For two
+points, this general construction is exactly the pole displacement
 \[
   \frac1{k^2+m^2-\ii\epsilon}
 \]
@@ -192,7 +295,8 @@ time-ordered boundary value on the region \(M_\pi^n\) is
 \]
 where \(\mathcal W_{n,\pi}\) denotes the holomorphic continuation of the
 Wightman ordering displayed by \(\pi\).  The limit is a distributional
-boundary value: it is taken after pairing with a test function.
+boundary value: it is taken after pairing with a Schwartz test function in
+the relative variables.
 
 Euclidean Schwinger functions arise from the same holomorphic functions by
 restriction to imaginary time.  For Euclidean points

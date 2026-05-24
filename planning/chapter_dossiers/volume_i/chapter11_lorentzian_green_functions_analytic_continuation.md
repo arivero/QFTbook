@@ -37,6 +37,9 @@
   \(\Hilb\), \(\Omega\), translation generators \(P^\mu\) with spectrum in
   \(\overline V_+\), and a scalar operator-valued distribution
   \(\widehat\phi\).
+- The analytic-continuation category is the tempered Schwartz pairing:
+  Lorentzian kernels live in \(\mathcal S'(M^r)\), and relative-coordinate
+  boundary values live in \(\mathcal S'(M^{r-1})\).
 - Time-ordered Green functions \(G_n\) are distributions extending the
   noncoincident ordered Wightman restrictions across partial diagonals.
 - Perturbative Lorentzian rules are boundary-value prescriptions for
@@ -53,10 +56,13 @@
 | \(M\) | Lorentzian spacetime \(\mathbb R^{1,D-1}\) |
 | \(\overline V_+\) | closed forward spectrum cone \(\{p:p^0\ge0,\ p^2\le0\}\) |
 | \(W_n\) | Wightman \(n\)-point distribution |
+| \(w_n\) | relative-coordinate Wightman distribution in \(\mathcal S'(M^{n-1})\) |
+| \(\widetilde w_n\) | Fourier transform of \(w_n\), supported in \(\overline V_+^{\,n-1}\) |
 | \(\omega_{\vec k}\) | \(\sqrt{\vec k^{\,2}+m^2}\) |
 | \(G_n\) | time-ordered Lorentzian \(n\)-point function |
 | \(M_\pi^n\) | strict time-ordering region for permutation \(\pi\) |
 | \(\mathcal W_{n,\pi}\) | holomorphic continuation of the Wightman ordering \(\pi\) |
+| \(F_\pm\) | holomorphic tube functions in the distributional edge-of-the-wedge theorem |
 | \(S_n\) | Euclidean Schwinger \(n\)-point distribution |
 | \(\widetilde G(k)\) | Fourier transform of the two-point function |
 | \(\epsilon\) | positive infinitesimal defining Feynman boundary value |
@@ -75,6 +81,12 @@
   data.
 - The spectrum condition gives tube analyticity in relative variables, with
   boundary values obtained after pairing with test functions.
+- Boundary values in this chapter are \(\mathcal S'\)-limits in relative
+  variables; compactly supported local-field smearing is compatible because
+  \(C_c^\infty\) test functions are Schwartz.
+- The edge-of-the-wedge step uses holomorphic tube functions with polynomial
+  growth near the real edge and equal distributional boundary values on an
+  open spacelike real set.
 - Ordered imaginary shifts
   \(\epsilon_1>\cdots>\epsilon_n>0\) give the time-ordered boundary value of
   the holomorphic Wightman function.
@@ -120,3 +132,12 @@
 - No interpretation of external legs as asymptotic particles.
 - No claim that Euclidean data reconstruct Lorentzian QFT without stating
   reconstruction hypotheses.
+
+## Audit Notes
+
+- 2026-05-24 issue #330 pass: fixed the function-space drift by declaring
+  \(\mathcal S/\mathcal S'\) as the chapter's analytic-continuation category,
+  writing the relative Wightman distribution, Fourier support condition,
+  Fourier-Laplace transform, and \(\mathcal S'\) boundary-value limit
+  explicitly, and adding the distributional edge-of-the-wedge theorem with
+  growth and boundary-agreement hypotheses.
