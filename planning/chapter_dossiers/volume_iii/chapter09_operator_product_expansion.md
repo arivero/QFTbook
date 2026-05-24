@@ -15,6 +15,10 @@ The chapter establishes:
 
 - the radial Hilbert-space statement of OPE convergence for insertions inside
   a separating sphere;
+- Definition `def:radial-ope-convergence-hypotheses`, which expands the
+  cross-reference to Chapter 4's radial reconstruction hypothesis into the
+  exact Euclidean inputs used by the OPE theorem and the additional Lorentzian
+  analytic-continuation inputs used later;
 - the use of the same nonnegative self-adjoint radial Hamiltonian
   \(D_{\rm rad}\) specified in Chapter 4's radial reconstruction hypothesis;
 - the separation between Euclidean radial Hilbert-space convergence and
@@ -181,3 +185,7 @@ The chapter establishes:
   \(D_{\rm rad}\) by name and explicitly identify it as the nonnegative
   self-adjoint radial Hamiltonian from
   `hyp:radial-reconstruction-data`.
+- 2026-05-24 issue #337 pass: added
+  `def:radial-ope-convergence-hypotheses`, making the scope of the
+  reflection-positive radial OPE theorem a direct expansion of Chapter 4's
+  radial reconstruction data, with Euclidean and Lorentzian inputs separated.

@@ -52,8 +52,36 @@ created by separated local insertions.
 The convergence parameter is radial separation.  If the nearest outside
 insertion is at radial distance \(R\), the expansion is organized by powers of
 \(|x|/R\), with larger scaling dimensions contributing at higher radial
-energy.  Thus the OPE is a structural expansion controlled by the local
-operator spectrum and the conformal representation theory of descendants.
+energy.  The OPE is therefore a convergent spectral expansion controlled by
+the local operator spectrum and the conformal representation theory of
+descendants.
+
+\begin{definition}[Radial OPE convergence hypotheses]
+\label{def:radial-ope-convergence-hypotheses}
+The Euclidean radial OPE theorem below is stated for a Schwinger hierarchy
+satisfying the radial reconstruction data of
+Hypothesis~\ref{hyp:radial-reconstruction-data}.  Its Euclidean part uses the
+following inputs from that hypothesis:
+\begin{enumerate}
+  \item distributional Euclidean correlators of renormalized local operators,
+  with covariance, graded permutation symmetry, and contact-term
+  prescriptions;
+  \item radial reflection positivity and the corresponding null quotient and
+  Hilbert completion;
+  \item a nonnegative self-adjoint radial Hamiltonian \(D_{\rm rad}\) with
+  discrete point spectrum and finite-dimensional spectral subspaces below
+  every finite energy;
+  \item radial local completeness, so the algebraic direct sum of local
+  scaling-operator states is dense and its homogeneous components identify
+  with the \(D_{\rm rad}\)-eigenspaces as in
+  Theorem~\ref{thm:state-operator-correspondence}.
+\end{enumerate}
+The Lorentzian continuation statements in this chapter additionally use the
+tube-domain analytic continuation, spectrum condition, and local
+commutativity part of the same hypothesis.  Thus the phrase
+``radial OPE convergence under reflection positivity'' denotes this listed
+Hilbert-space and spectral package.
+\end{definition}
 
 \begin{theorem}[Euclidean radial OPE convergence]
   Assume Hypothesis~\ref{hyp:radial-reconstruction-data}.  Let
