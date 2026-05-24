@@ -50,6 +50,11 @@ The chapter establishes:
   and Euclidean separated-point distributions;
 - source functionals \(W_\ast[g,J]\) whose derivatives define stress
   tensor insertions and local-operator insertions;
+- the status of fixed-point source brackets
+  \(\langle\exp(\int\sqrt g\,J^A\mathcal O_A)\rangle_{g,\ast}\): constructive
+  measure expectation, regulated continuum-limit source functional, abstract
+  CFT generating functional for Schwinger distributions, or perturbative
+  formal source series, depending on the supplied fixed-point construction;
 - diffeomorphism and Weyl Ward identities as identities of
   source-dependent distributions, with contact terms fixed by the source
   chart;
@@ -84,6 +89,11 @@ The chapter establishes:
    are not determined by separated-point kernels alone.
 3. Stress-tensor Ward identities are distributional identities obtained by
    differentiating the background-metric/source functional.
+3a. The fixed-point brackets used in \(W_\ast[g,J]\) are typed
+    source-functional data; they are measure expectations only in constructive
+    measure settings, continuum-limit brackets in lattice/Wilsonian settings,
+    distributional generating brackets in abstract CFT settings, and formal
+    source series in perturbative settings.
 4. The trace equation at a fixed point becomes a conformal trace condition
    only after improvement and contact-term conventions have been specified.
 5. The statement that scale invariance implies conformal invariance is used
@@ -143,3 +153,7 @@ The chapter establishes:
   define scale-invariant but nonconformal local QFTs by a nonzero virial class
   in the improvement quotient and to cite Polchinski's virial-current
   obstruction.
+- 2026-05-24 issue #303 pass: added
+  `def:cft-fixed-point-source-bracket-status`, classifying the fixed-point
+  source brackets and \(Z_\ast[g,J]\) by construction type instead of leaving
+  them as untyped continuum expectation notation.

@@ -535,6 +535,45 @@ functionals of \(g\) and \(J\) specify the contact-term chart.  The sign
 normalization of \(W_\ast\) is the Euclidean free-energy, or effective-action,
 normalization \(W_\ast=-\log Z_\ast\).  The connected-log functional is denoted
 \(K_\ast=\log Z_\ast\) when it is used.
+
+\begin{definition}[Status of fixed-point source brackets]
+\label{def:cft-fixed-point-source-bracket-status}
+The fixed-point partition functional
+\[
+  Z_\ast[g,J]:=\exp\{-W_\ast[g,J]\}
+\]
+is source-functional data of the fixed point.  The bracket notation
+\[
+  \left\langle
+  \exp\left(\int\dd^Dx\,\sqrt g\,J^A(x)\mathcal O_A(x)\right)
+  \right\rangle_{g,\ast}
+  :=
+  Z_\ast[g,J]
+\]
+is a shorthand for that data.  Its mathematical construction depends on the
+framework in which the fixed point has been supplied:
+\begin{enumerate}[label=(\roman*)]
+  \item in a constructive Euclidean model, \(Z_\ast[g,J]\) is obtained from
+  the constructed measure or generalized random field after the local
+  source counterterms have been fixed;
+  \item in a lattice or Wilsonian construction, \(Z_\ast[g,J]\) is the
+  continuum limit of regulated source functionals in a specified topology of
+  distributions, after tuning and renormalizing the source chart;
+  \item in an abstract CFT presentation, \(Z_\ast[g,J]\) is a generating
+  functional for a compatible family of Euclidean Schwinger distributions and
+  contact-term extensions satisfying the stated Ward identities, positivity
+  or reflection-positivity hypotheses when unitarity is required, and the
+  reconstruction assumptions used in this volume;
+  \item in perturbative fixed-point calculations, \(Z_\ast[g,J]\) is a formal
+  power series whose coefficients are renormalized source distributions.
+\end{enumerate}
+Thus the brackets in this section are typed by the chosen fixed-point
+construction.  They are expectation brackets when a measure construction has
+been provided, continuum-limit brackets when a regulated limit has been
+proved or assumed as part of the data, and distributional generating
+brackets in an axiomatic or perturbative presentation.
+\end{definition}
+
 For a regulated path-integral representative this convention reads
 \[
   \exp\{-W_\ast[g,J]\}
