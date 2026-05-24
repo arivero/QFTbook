@@ -51,6 +51,15 @@ The chapter must define and derive:
 - the shell-integration formula defining \(L_{\Lambda'}[\phi']\);
 - the infinitesimal Wilson-Polchinski equation, with functional-derivative
   conventions;
+- the analytic status of the Wilson-Polchinski equation in three nested
+  settings:
+  finite-regulator \(C^2\) functions on a finite-dimensional mode space, the
+  Fr\'echet coefficient topology on smooth vertex kernels, and a weighted
+  Banach RG chart \(\mathcal B_{\Lambda}^{m,a}\) for theorem-level estimates;
+- the notion of solution in each setting: ordinary finite-regulator
+  \(C^1\)-in-\(\Lambda\) solution, coefficientwise formal perturbative
+  solution, and Banach-norm solution after identifying scales by
+  dimensionless momenta;
 - the finite-shell derivation of the Wilson-Polchinski sign from
   \(\Lambda'=\Lambda-\delta\Lambda\);
 - the diagrammatic meaning of its two terms: connecting two vertices and
@@ -148,6 +157,12 @@ The chapter must define and derive:
    by the regulated support assumption on the source.
 5. The infinitesimal shell-integration identity gives a functional differential
    equation for \(L_\Lambda\).
+5a. The Wilson-Polchinski equation has a stated topology only after choosing
+    its setting.  At finite regulator the derivative is an ordinary derivative
+    of \(C^2\) functions on a finite mode space; in perturbation theory it is
+    coefficientwise in the Fr\'echet topology of smooth vertex kernels; in a
+    theorem-level RG argument it is a Banach-space vector-field equation in a
+    specified weighted norm.
 6. Locality of the Wilsonian action is a derivative expansion assumption tied
    to smooth cutoffs and scales below the cutoff, not a finite-operator
    ansatz.
@@ -278,3 +293,8 @@ The chapter must define and derive:
   to a \(C^k\) codimension-\(r\) submanifold only under an explicit endpoint
   submersion hypothesis; the text now distinguishes this from the bare
   linearized eigenvalue count.
+- 2026-05-24 issue pass: addressed #231 by specifying the function-space and
+  topology status of the Wilson-Polchinski equation.  The manuscript now
+  separates the finite-regulator \(C^2\) setting, the Fr\'echet topology on
+  vertex kernels for formal perturbation theory, and weighted Banach RG charts
+  for theorem-level existence and estimate claims.
