@@ -42,6 +42,11 @@ The chapter establishes:
 - Ising universality as a fixed-point example, while distinguishing the
   finite statistical trace space from any reconstructed continuum Hilbert
   space.
+- the \(D\geq4\) existence status: explicit free Gaussian CFTs, formal
+  Wilson--Fisher \(\epsilon\)-expansion data, scalar triviality constraints in
+  four dimensions, and gauge/supersymmetric fixed-point constructions used
+  only with their stress-tensor, positivity, locality, spectrum, and Ward-data
+  hypotheses stated.
 - The displayed \(D=3\) Ising numerical entries are rounded from the
   mixed-correlator conformal-bootstrap/stress-tensor computation
   "Bootstrapping the 3d Ising Stress Tensor" by Chang, Dommes, Erramilli,
@@ -67,6 +72,10 @@ The chapter establishes:
 6. The Ising fixed point supplies a statistical-mechanics example whose
    continuum CFT data are obtained from scaling limits of correlators, not
    from the finite lattice trace space.
+7. Claims about interacting \(D\geq4\) CFTs must distinguish exact free
+   conformal theories, formal perturbative fixed-point data, scalar
+   triviality theorems, and physical gauge-theory constructions whose
+   nonperturbative CFT data are additional hypotheses in this volume.
 
 ## Figures
 
@@ -94,3 +103,7 @@ The chapter establishes:
   opening CFT chapter, defining the dilatation current, removable virial class,
   scalar stress-tensor improvement, and the dimension-dependent status with a
   cross-reference to the fuller stress-tensor treatment.
+- 2026-05-24 issue #272 pass: added the \(D\geq4\) existence-status remark,
+  separating free Gaussian CFTs, noninteger-dimensional Wilson--Fisher
+  perturbative data, four-dimensional scalar triviality, and gauge/supersymmetric
+  fixed-point constructions with explicit data requirements.
