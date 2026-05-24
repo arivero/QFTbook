@@ -78,6 +78,13 @@ The chapter must define and derive:
 - the linearized scaling-coordinate convention
   \(\dd u_\alpha/\dd\log\Lambda=-y_\alpha u_\alpha+\cdots\), with
   \(y_\alpha=D-\Delta_\alpha\);
+- the sign bridge to the earlier 1PI thermal coordinate:
+  \(\dd\tau/\dd\log\mu=-y_t\tau+\cdots\) uses the same increasing-scale
+  convention, while the infrared-oriented variables
+  \(s_{\rm W}=\log(\Lambda_0/\Lambda)\) and
+  \(s_{\rm 1PI}=\log(\mu_0/\mu)\) both reverse the sign, so positive relevance
+  exponents grow toward the infrared after the Wilsonian--1PI matching map is
+  specified;
 - the fact that a codimension statement about a critical surface requires a
   specified \(C^k\) Banach RG chart and a differentiable endpoint map, not
   merely the linearized eigenvalue calculation;
@@ -213,7 +220,11 @@ The chapter must define and derive:
    ansatz.
 7. With \(t=\log\Lambda\), relevance exponents obey
    \(\dd u/\dd t=-yu+\cdots\); positive \(y\) grows toward the infrared, while
-   negative \(y\) is irrelevant.
+   negative \(y\) is irrelevant.  This is the same increasing-scale sign
+   convention as the Wilson--Fisher 1PI equation
+   \(\dd\tau/\dd\log\mu=-y_t\tau+\cdots\); with IR-oriented variables
+   \(s_{\rm W}\) and \(s_{\rm 1PI}\), both equations acquire \(+y\) linear
+   terms.
 7a. A smooth codimension statement about a critical surface is certified only
     after choosing a \(C^k\) Banach or finite-dimensional RG chart and proving
     the endpoint-map submersion condition.  Linearized relevant eigenvalues
@@ -312,7 +323,11 @@ The chapter must define and derive:
 - Avoid compressed descriptions of renormalizability; state the limiting
   problem and the hypotheses.
 - Keep the relevance sign convention consistent with the earlier chapters:
-  \(y=D-\Delta\) and flow in \(\log\Lambda\) has linear term \(-yu\).
+  \(y=D-\Delta\) and flow in \(\log\Lambda\) has linear term \(-yu\).  Do not
+  infer a physical sign mismatch with the 1PI thermal coordinate; both
+  equations are differentiated with respect to increasing scale, and both grow
+  toward the infrared after changing to
+  \(s=\log(\hbox{reference scale}/\hbox{running scale})\).
 - In the two-coordinate toy figures, call the renormalized trajectory a curve,
   not a surface.
 - Do not introduce Yang-Mills content in this chapter.

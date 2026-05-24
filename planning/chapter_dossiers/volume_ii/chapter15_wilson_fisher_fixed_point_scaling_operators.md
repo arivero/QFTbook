@@ -113,6 +113,12 @@ The chapter must define and derive:
   \(\tau(\mu)=\mu^{-y_t}t\), its linearized flow
   \(\dd\tau/\dd\log\mu=-y_t\tau+\cdots\), and the linearized massless
   endpoint condition \(\tau=0\);
+- the convention bridge to the Wilsonian chapter: the displayed 1PI equation is
+  differentiated with respect to the increasing subtraction scale \(\mu\); with
+  the infrared-oriented variable \(s_{\rm 1PI}=\log(\mu_0/\mu)\) it becomes
+  \(\dd\tau/\dd s_{\rm 1PI}=y_t\tau+\cdots\), matching the Wilsonian
+  \(s_{\rm W}=\log(\Lambda_0/\Lambda)\) orientation after a finite coordinate
+  matching has been specified;
 - the correlation-length exponent
   \(\nu=1/y_t=1/2+\epsilon/12+O(\epsilon^2)\);
 - the odd source \(h[\phi]\) and its eigenvalue
@@ -182,7 +188,10 @@ The chapter must define and derive:
    also relevant.
 9. The mass/temperature perturbation has eigenvalue
    \(y_t=D-\Delta_{\phi^2}\), hence
-   \(\nu=1/y_t\) in the perturbative calculation.
+   \(\nu=1/y_t\) in the perturbative calculation.  The sign in
+   \(\dd\tau/\dd\log\mu=-y_t\tau+\cdots\) is the increasing-scale convention; it
+   becomes positive when the flow is parameterized by an infrared-oriented scale
+   variable, as in the Wilsonian cutoff comparison.
 10. Properly renormalized composite operators are finite local fields;
    unregulated products of distributions at coincident points are not
    definitions.
