@@ -1403,6 +1403,80 @@ Slavnov--Taylor identity
   0 .
   \label{eq:slavnov-taylor-identity}
 \end{equation}
+There are two separate functional identities in the gauge theories developed
+so far.  In Abelian QED, after the gauge-fixing term has been separated, the
+gauge-invariant part of the 1PI functional is annihilated by a fixed
+first-order Ward--Takahashi differential operator on field space:
+\[
+  \mathcal W_\alpha\Gamma_{\rm inv}=0 .
+\]
+The operator \(\mathcal W_\alpha\) contains the infinitesimal field
+variations, but it does not contain \(\Gamma_{\rm inv}\).  The equation is
+therefore linear in the unknown functional.  Differentiating it gives the
+Ward--Takahashi relations, including photon self-energy transversality
+and the equality between the Abelian vertex and spinor residue counterterms
+in Chapter~\ref{ch:qed-renormalization-form-factors}.
+
+The nonabelian gauge-fixed identity above has a different origin and a
+different algebraic form.  The BRST variations \(sA_\mu^a=(D_\mu c)^a\) and
+\(sc^a=-\frac12 f^a{}_{bc}c^b c^c\) are composite local fields.  To express
+their insertions in the quantum theory one introduces the sources \(K,L\).
+Let \(W[J,K,L]\) be the connected generating functional with ordinary sources
+\(J_A\) for the fields \(\Phi^A=(A,c,\bar c,B)\) and with \(K,L\) coupled to
+the nonlinear BRST variations.  The BRST change of variables gives the
+connected identity, before Legendre transformation in the \(J_A\) variables,
+\[
+  \int
+  \left[
+    J_{A_\mu^a}\frac{\delta_LW}{\delta K^{a\mu}}
+    +
+    J_{c^a}\frac{\delta_LW}{\delta L^a}
+    +
+    J_{\bar c^a}\frac{\delta_LW}{\delta J_{B^a}}
+  \right]\dd^D x
+  =
+  0
+\]
+with the source signs chosen to match \eqref{eq:slavnov-taylor-identity}.
+Passing to the 1PI functional replaces the ordinary sources by
+\[
+  J_{\Phi^A}
+  =
+  -\,\frac{\delta_R\Gamma}{\delta\Phi^A}
+\]
+while leaving the BRST-variation sources \(K,L\) as external coordinates.
+Moreover
+\[
+  \frac{\delta_LW}{\delta K^{a\mu}}
+  =
+  \frac{\delta_L\Gamma}{\delta K^{a\mu}},
+  \qquad
+  \frac{\delta_LW}{\delta L^a}
+  =
+  \frac{\delta_L\Gamma}{\delta L^a},
+  \qquad
+  \frac{\delta_LW}{\delta J_{B^a}}=B^a .
+\]
+Consequently the Legendre transform converts the connected BRST identity
+into a product of derivatives of the same functional \(\Gamma\).  In the
+Yang--Mills coordinates displayed in \eqref{eq:slavnov-taylor-identity}, this
+product is precisely the quadratic Slavnov--Taylor operator
+\(\mathcal S(\Gamma)\):
+\[
+  \int_M
+  \left[
+  \frac{\delta_R\Gamma}{\delta A_\mu^a}
+  \frac{\delta_L\Gamma}{\delta K^{a\mu}}
+  +
+  \frac{\delta_R\Gamma}{\delta c^a}
+  \frac{\delta_L\Gamma}{\delta L^a}
+  +
+  B^a\frac{\delta_L\Gamma}{\delta\bar c^a}
+  \right]\dd^D x .
+\]
+The quadratic form is the 1PI shadow of the homological statement \(s^2=0\)
+and is the reason antifield/BV coordinates are the natural language for
+renormalized nonabelian gauge theory.
 The sources \(K^{a\mu}\) and \(L^a\) have ghost numbers \(-1\) and \(-2\),
 respectively, so that the source terms \(K^{a\mu}sA^a_\mu\) and \(L^a sc^a\)
 have ghost number zero.  They are introduced because the BRST transformations

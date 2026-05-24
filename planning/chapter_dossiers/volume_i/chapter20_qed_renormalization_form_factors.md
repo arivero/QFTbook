@@ -63,6 +63,7 @@ Status: revised and source-audited on 2026-05-22.
 | \(F(k^2),G(k^2)\) | electron electromagnetic form factors in the chapter's gamma convention |
 | \(g_{\mathrm{mag}}\) | electron magnetic \(g\)-factor |
 | \(\alpha\) | fine-structure parameter \(e^2/(4\pi)\) |
+| \(\mathcal W_\alpha\) | Abelian Ward--Takahashi generator acting as a fixed first-order differential operator on the QED 1PI functional |
 
 ## Claims Established
 
@@ -73,6 +74,12 @@ Status: revised and source-audited on 2026-05-22.
   renormalized Maxwell equation.
 - Current conservation forces the photon self-energy to be transverse:
   \(k_\mu\Pi^{\mu\nu}=0\).
+- The transversality statement is now identified as the two-photon consequence
+  of a linear Abelian Ward--Takahashi identity
+  \(\mathcal W_\alpha\Gamma_{\rm inv}=0\).  The chapter contrasts this with
+  the nonabelian Slavnov--Taylor identity, which is quadratic in the 1PI
+  functional because BRST variations of \(A_\mu\) and \(c\) are composite
+  insertions represented by external BRST sources.
 - Lorentz covariance then gives
   \(\Pi^{\mu\nu}=(\eta^{\mu\nu}k^2-k^\mu k^\nu)\pi(k^2)\).
 - The photon pole normalization condition is \(\pi(0)=0\), fixing \(Z_A\) at
@@ -105,4 +112,12 @@ Status: revised and source-audited on 2026-05-22.
   subtraction.
 - No all-order Ward--Takahashi proof.
 - No infrared cancellation or soft-photon exponentiation.
-- No nonabelian generalization.
+- No derivation of the nonabelian Slavnov--Taylor identity in this QED
+  chapter; the chapter only cross-references the BRST chapter to mark the
+  linear-versus-quadratic distinction.
+
+## Audit Notes
+
+- 2026-05-24 issue #248 pass: added the linear Ward--Takahashi functional
+  identity behind photon self-energy transversality and cross-referenced the
+  BRST chapter's quadratic Slavnov--Taylor identity.

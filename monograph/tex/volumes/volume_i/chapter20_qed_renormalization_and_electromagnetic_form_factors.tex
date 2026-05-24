@@ -195,6 +195,39 @@ therefore transverse only if the amputated 1PI insertion obeys
 \[
   k_\mu\Pi^{\mu\nu}(k)=0 .
 \]
+This is the two-photon consequence of a linear Ward--Takahashi identity.  If
+\(\Gamma_{\rm inv}[A,\psi,\bar\psi]\) denotes the gauge-invariant part of the
+QED 1PI functional, the infinitesimal transformation
+\[
+  \delta_\alpha A_\mu=\partial_\mu\alpha,\qquad
+  \delta_\alpha\psi=-\ii e\alpha\psi,\qquad
+  \delta_\alpha\bar\psi=\ii e\alpha\bar\psi
+\]
+gives
+\[
+  \mathcal W_\alpha\Gamma_{\rm inv}
+  :=
+  \int
+  \left[
+    \partial_\mu\alpha\,\frac{\delta\Gamma_{\rm inv}}{\delta A_\mu}
+    -
+    \ii e\alpha\psi\,\frac{\delta_L\Gamma_{\rm inv}}{\delta\psi}
+    +
+    \ii e\alpha\bar\psi\,
+      \frac{\delta_R\Gamma_{\rm inv}}{\delta\bar\psi}
+  \right]\dd^4x
+  =
+  0 .
+\]
+The operator \(\mathcal W_\alpha\) is fixed before \(\Gamma_{\rm inv}\) is
+known; hence the identity is linear in \(\Gamma_{\rm inv}\).  Differentiating
+twice with respect to \(A\) and then setting the fields to zero gives
+transversality of the photon 1PI two-point kernel, up to the local contact
+terms already separated above.  The nonabelian Slavnov--Taylor identity in
+Chapter~\ref{ch:volume-ii-18} has a different mathematical
+form: because the BRST variations of \(A_\mu\) and \(c\) are composite local
+fields, the corresponding 1PI identity is quadratic in \(\Gamma\), as in
+\eqref{eq:slavnov-taylor-identity}.
 Lorentz covariance then gives the tensor decomposition
 \[
   \Pi^{\mu\nu}(k)

@@ -116,6 +116,9 @@
 | \(F_{\mathrm{KO}}(p^2)\) | convention \(F_{\mathrm{KO}}=-u\), so the original infrared criterion is \(F_{\mathrm{KO}}(0)=1\) |
 | \(G_{\rm gh}(p^2)\) | Landau-gauge ghost dressing function in \(\langle c\bar c\rangle=G_{\rm gh}(p^2)/p^2\) |
 | \(K^{a\mu},L^a\) | sources for nonlinear BRST variations, precursor to antifields |
+| \(W[J,K,L]\) | connected generating functional with ordinary field sources \(J\) and BRST-variation sources \(K,L\) |
+| \(J_{\Phi^A}\) | ordinary source conjugate to the field \(\Phi^A\), eliminated in the 1PI Legendre transform |
+| \(\mathcal W_\alpha\) | Abelian Ward--Takahashi first-order operator used for comparison with the quadratic nonabelian Slavnov--Taylor identity |
 | \(\Phi^*_A\) | BV antifield paired with a field \(\Phi^A\), deferred to the BV chapter |
 | \(D=d-\epsilon\) | complex dimension parameter used in dimensional analytic regularization |
 | \(I_G(D,\nu,p,m)\) | meromorphically continued scalar graph integral for graph \(G\) |
@@ -205,6 +208,15 @@
   precursor of BV antifields; the dedicated BV chapter now develops the
   field-antifield framework for gauge-theory 1PI and Wilsonian effective
   actions.
+- The manuscript now distinguishes Abelian Ward--Takahashi identities from
+  nonabelian Slavnov--Taylor identities at the point where the latter are
+  introduced.  An Abelian Ward identity is linear in the unknown 1PI
+  functional because a fixed first-order field-space operator
+  \(\mathcal W_\alpha\) annihilates \(\Gamma_{\rm inv}\).  The
+  Slavnov--Taylor identity is quadratic in \(\Gamma\) after Legendre
+  transformation because the composite BRST variations are represented by
+  \(K,L\) derivatives while ordinary sources become field derivatives of
+  \(\Gamma\).
 - Dimensional regularization is defined as a perturbative meromorphic
   graph-distribution assignment, not as a literal noninteger-dimensional
   path-integral measure.  The manuscript separates scalar analytic
@@ -278,6 +290,10 @@
 - 2026-05-24 issue #247 pass: inserted a Krein-space foundations section for
   covariant gauge quantization and added the required functional-analytic
   symbols and domain assumptions to this dossier.
+- 2026-05-24 issue #248 pass: added the linear Ward--Takahashi versus
+  quadratic Slavnov--Taylor distinction to both the QED renormalization chapter
+  and the BRST chapter, including the connected-to-1PI Legendre-transform
+  mechanism that produces the product of \(\Gamma\)-derivatives.
 - 2026-05-24 issue #502 pass: inserted a dimensional-regularization section
   before Slavnov--Taylor counterterms.  The pass defines dimensional
   regularization as meromorphic analytic regularization of graph
