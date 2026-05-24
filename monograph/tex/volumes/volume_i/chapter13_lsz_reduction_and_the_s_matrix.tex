@@ -282,11 +282,43 @@ then
   \frac{\delta^N \log Z[J]}
        {\delta J(x_1)\cdots\delta J(x_N)}
   \right|_{J=0}.
+  \label{eq:lsz-connected-cumulant}
 \]
 With the sign convention for \(J\) inherited from the exponential above, this
 is the cumulant part of the time-ordered distribution: it contains precisely
 the vacuum-connected components.  External one-particle propagators remain
 until the residue operation is applied.
+
+The Euclidean source convention is compatible with this normalization.  Let
+\[
+  Z_E[J_E]
+  =
+  \bra{\vac}
+  T_E\exp\left(\int J_E(\tau,\vec x)
+    \widehat\phi_E(\tau,\vec x)\,\dd\tau\,\dd^d\vec x\right)
+  \ket{\vac}
+\]
+denote the corresponding Euclidean ordered source functional.  Along the
+imaginary-time contour used in Chapter~\ref{ch:lorentzian-green-functions},
+\[
+  x^0=-\ii\tau,\qquad \dd x^0=-\ii\,\dd\tau,
+\]
+the Lorentzian source term transforms as
+\[
+  \ii\int \dd x^0\,\dd^d\vec x\,
+    J_L(x^0,\vec x)\widehat\phi(x^0,\vec x)
+  \longmapsto
+  \int \dd\tau\,\dd^d\vec x\,
+    J_L(-\ii\tau,\vec x)\widehat\phi_E(\tau,\vec x).
+\]
+Thus \(Z_E[J_E]\) is the imaginary-time restriction of \(Z[J_L]\) with
+\(J_E(\tau,\vec x)=J_L(-\ii\tau,\vec x)\), in the convention where the
+Euclidean exponential contains \(+\int J_E\phi_E\).  Before this contour
+rotation is made, differentiating the Lorentzian exponential \(N\) times with
+respect to the real-time source produces a factor \(\ii^N\); the prefactor
+\(\ii^{-N}\) in Eq.~\eqref{eq:lsz-connected-cumulant} is exactly the
+compensation that leaves the connected time-ordered distribution rather than
+the source-normalized derivative.
 
 Second, amputation in LSZ is residue extraction at the isolated mass shell:
 \[

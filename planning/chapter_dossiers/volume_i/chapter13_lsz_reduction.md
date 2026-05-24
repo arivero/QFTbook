@@ -52,6 +52,8 @@
 | \(G_N\) | Lorentzian time-ordered \(N\)-point function |
 | \(\widetilde G_N\) | Fourier transform of \(G_N\) |
 | \(\widetilde G_{N}^{\mathrm{conn}}\) | connected part of the Fourier-space Green function |
+| \(Z[J]\) | Lorentzian time-ordered source functional with source term \(i\int J\phi\) |
+| \(Z_E[J_E]\) | Euclidean ordered source functional with source term \(+\int J_E\phi_E\) |
 | \(p_j\) | incoming positive-energy physical momentum |
 | \(q_i\) | outgoing positive-energy physical momentum |
 | \(k_a\) | all-incoming Green-function momentum, \(q_i\) or \(-p_j\) |
@@ -74,6 +76,11 @@
 - Connected scattering kernels are obtained by applying
   \(Z^{-1/2}i(k^2+m^2)\) to every external leg and taking the on-shell
   boundary value.
+- With \(x^0=-i\tau\), the Lorentzian source term
+  \(i\int dx^0\,J_L\phi\) becomes \(+\int d\tau\,J_E\phi_E\) for
+  \(J_E(\tau,\vec x)=J_L(-i\tau,\vec x)\); the factor \(i^{-N}\) in the
+  connected cumulant formula compensates the \(i^N\) produced by differentiating
+  the Lorentzian source exponential before contour rotation.
 - The large-time Haag--Ruelle matrix element becomes an oscillatory integral
   whose nonzero limit is precisely the external one-particle pole residue.
 - Disconnected two-point factors reproduce the identity part of the
@@ -100,3 +107,10 @@
 - No cross-section formulas; those belong in the next chapter.
 - No unitarity/optical theorem development beyond the amplitude convention.
 - No LSZ formula for massless gauge particles or infraparticles.
+
+## Audit Notes
+
+- 2026-05-24 issue #377 pass: labelled the connected cumulant equation and
+  displayed the source-functional Wick-rotation identity in the
+  \(x^0=-i\tau\) convention, separating the Euclidean \(+\int J_E\phi_E\)
+  source from the Lorentzian \(i^{-N}\) source-derivative compensation.
