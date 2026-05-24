@@ -804,6 +804,117 @@ The exclusive fixed-\(N\) probability tends to zero because it samples a set
 of vanishing measure inside the infrared cloud selected by the long-range
 electromagnetic field.
 
+\section{Charged Asymptotic Sectors and Infraparticles}
+
+The preceding formulas describe a scattering problem whose charged asymptotic
+representation is fixed by Gauss' law.  Let \(\mathfrak A_{\mathrm{loc}}\) denote
+the algebra of gauge-invariant observables localized in bounded spacetime
+regions, and let
+\[
+  E^i=F^{i0}
+\]
+be the electric field.  At a fixed time, for a smooth function \(f\) on the
+unit sphere, define the large-radius electric-flux observable formally by
+\[
+  \Phi_R(f)
+  =
+  \int_{S^2}\dd\Omega(\mathbf n)\,
+  R^2 f(\mathbf n)\,n_i E^i(0,R\mathbf n).
+\]
+The constant test function gives the total electric charge in the limit
+\[
+  Q=\lim_{R\to\infty}\Phi_R(1),
+\]
+when the limit exists in the representation under consideration.  More
+generally, the limiting angular flux functional
+\[
+  \Phi_\infty(f)=\lim_{R\to\infty}\Phi_R(f)
+\]
+records the electromagnetic field at spacelike infinity.  Local observables
+cannot change this limiting flux: if \(A\in\mathfrak A_{\mathrm{loc}}\) has
+support in a fixed bounded region, then for \(R\) large enough the flux
+surface is spacelike separated from the support of \(A\), and locality makes
+the commutator vanish before the limit is taken.  Thus the limiting flux, when
+it is represented sharply, is a superselection datum for the charged sector.
+For \(f=1\) this is the usual electric charge superselection rule; for
+nonconstant \(f\) it is the angular Coulomb field attached to the asymptotic
+charged motion.
+
+\begin{theorem}[Buchholz infraparticle obstruction]
+\label{thm:buchholz-infraparticle-obstruction}
+In a local relativistic quantum field theory satisfying Maxwell's equations
+and Gauss' law, a pure state carrying nonzero abelian gauge charge cannot be a
+Wigner one-particle state with a sharp mass shell.  More precisely, charged
+particle weights are accompanied by asymptotic electromagnetic flux, and the
+representations induced by different charged velocities need not be unitarily
+equivalent.  In particular, the charged sector is not an ordinary tensor
+product of a Wigner electron one-particle representation with the vacuum
+photon Fock representation, and Lorentz boosts of a charged particle change
+the flux sector rather than acting inside one fixed Fock sector.
+\end{theorem}
+
+The electron in four-dimensional QED is therefore an infraparticle.  The
+conclusion is an algebraic consequence of locality and Gauss'
+law.\footnote{The theorem-level result used here is Buchholz's Gauss-law
+analysis of the infraparticle problem.  The spectral analysis of charged
+infraparticles was developed by Fr\"ohlich--Morchio--Strocchi, while the
+coherent asymptotic construction used in perturbation theory is the
+Faddeev--Kulish construction.  The review of Buchholz--Dybalski gives a
+modern scattering-theoretic account of these relations.}  Perturbation theory
+displays the same point in a direct way.
+For a charged particle of velocity
+\[
+  \mathbf v=\frac{\mathbf p}{p^0},
+\]
+the Coulomb field boosted to that velocity has radial flux density
+\begin{equation}
+  \mathcal E_{g,\mathbf v}(\mathbf n)
+  =
+  \frac{g}{4\pi}
+  \frac{1-|\mathbf v|^2}
+       {(1-\mathbf v\cdot\mathbf n)^2},
+  \qquad
+  \int_{S^2}\dd\Omega(\mathbf n)\,
+  \mathcal E_{g,\mathbf v}(\mathbf n)=g .
+  \label{eq:boosted-coulomb-flux-density}
+\end{equation}
+Different velocities give different angular flux functionals.  A multiparticle
+charged configuration carries the sum of the corresponding flux densities.
+This flux data is what the soft photon cloud implements.
+
+The non-Fock nature of the dressing can already be read from the one-photon
+Hilbert norm.  The physical photon one-particle space has norm
+\[
+  \|f\|_{\gamma}^2
+  =
+  \sum_h
+  \int
+  \frac{\dd^3\mathbf k}{(2\pi)^3\,2\omega}\,
+  |f^h(k)|^2 .
+\]
+For the leading charged soft profile
+\[
+  f_p^h(k)\sim g\,\frac{p\cdot e_h^*(k)}{p\cdot k},
+  \qquad \omega=|\mathbf k|,
+\]
+one has \(p\cdot k=\omega(p^0-\mathbf p\cdot\mathbf n)\) and therefore
+\[
+  \|f_p\|_{\gamma}^2
+  \sim
+  C(p,g)\int_0^\Lambda\frac{\dd\omega}{\omega},
+  \qquad C(p,g)>0\quad(g\ne0).
+\]
+Thus \(f_p\notin\mathcal H_{1,\gamma}\) after the infrared cutoff is removed.
+At finite cutoff the coherent operator below is a unitary Weyl operator on
+photon Fock space; in the limit it defines an inequivalent representation
+labelled by the asymptotic flux.  If two dressings have different limiting
+flux, their difference is not square-integrable in the same norm, so they are
+assigned to inequivalent infrared representations rather than to two vectors
+in one common photon Fock representation.  The inclusive construction avoids
+choosing a sharp charged flux sector by summing over detector-unresolved
+radiation; the dressed construction chooses a sector adapted to the hard
+charged asymptotic data.
+
 \section{Dressed Charged States}
 
 The same eikonal data can also be incorporated into the asymptotic states.
@@ -828,12 +939,15 @@ with leading coefficient
   f_p^h(k)\sim g\,\frac{p\cdot e_h^*(k)}{p\cdot k}.
 \]
 The operator \(\mathcal W_p\) attaches the long-range electromagnetic field
-carried by the charged particle.  This is the leading Faddeev--Kulish
-dressing datum: the asymptotic charged state is a charged hard state together
-with its coherent soft electromagnetic field.  Dressed-state and inclusive
-descriptions use the same soft factor.  The inclusive construction sums over
-unresolved radiation in probabilities, while the dressed construction builds
-part of the soft cloud into the state space.
+carried by the charged particle.  With a positive infrared cutoff it is a
+well-defined Fock-space Weyl operator.  Removing the cutoff is the
+representation-changing step described in the preceding section: the limiting
+state is a charged hard datum together with a coherent soft electromagnetic
+field in the corresponding asymptotic flux sector.  This is the leading
+Faddeev--Kulish dressing datum.  Dressed-state and inclusive descriptions use
+the same soft factor.  The inclusive construction sums over unresolved
+radiation in probabilities, while the dressed construction builds part of the
+soft cloud into the state representation.
 
 \section{A Gauge-Invariant Infrared Regulator}
 

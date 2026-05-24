@@ -19,9 +19,11 @@
 - `SRC-BEN-COMPARISON`: `references/253b transcribed lecture notes.tex`,
   lines around the infrared section, used only as a comparison layer.
 - `SRC-EXTERNAL`: Bloch--Nordsieck, Yennie--Frautschi--Suura,
-  Kinoshita--Lee--Nauenberg, and Kulish--Faddeev provide theorem and
-  reference context for inclusive probabilities, soft exponentiation, mass
-  singularity cancellation, and dressed asymptotic states.
+  Kinoshita--Lee--Nauenberg, Kulish--Faddeev, Buchholz's Gauss-law theorem,
+  Fröhlich--Morchio--Strocchi infraparticle analysis, and the
+  Buchholz--Dybalski scattering review provide theorem and reference context
+  for inclusive probabilities, soft exponentiation, mass singularity
+  cancellation, infraparticle sectors, and dressed asymptotic states.
 
 ## Construction Task
 
@@ -48,6 +50,24 @@ The chapter should state:
 - the role of LSZ wavefunction factors in the same-line virtual loops;
 - the distinction between soft and collinear degeneracies;
 - the Abelian-Higgs regulator as a gauge-invariant infrared deformation.
+- the observable-algebra statement that limiting electric flux at spacelike
+  infinity is a superselection datum in charged sectors;
+- Buchholz's theorem that nonzero abelian gauge charge is incompatible with a
+  sharp Wigner mass shell and ordinary charged Fock asymptotic space;
+- the fact that the Faddeev--Kulish soft profile is not square-integrable in
+  the photon one-particle Hilbert norm after the infrared cutoff is removed,
+  hence implements a representation change rather than a vector in the
+  original photon Fock space.
+
+Additional symbols introduced in the charged-sector discussion:
+
+| Symbol | Meaning |
+| --- | --- |
+| \(\mathfrak A_{\mathrm{loc}}\) | gauge-invariant local observable algebra |
+| \(E^i=F^{i0}\) | electric field |
+| \(\Phi_R(f),\Phi_\infty(f)\) | large-radius smeared electric flux and its limiting asymptotic flux functional |
+| \(\mathcal E_{g,\mathbf v}(\mathbf n)\) | boosted Coulomb radial flux density for charge \(g\) with velocity \(\mathbf v\) |
+| \(\mathcal H_{1,\gamma}\) | physical one-photon Hilbert space |
 
 ## Claim Ledger
 
@@ -91,9 +111,15 @@ The chapter should state:
 11. For massless charged particles, collinear degeneracies require the KLN
    sum and average over detector-degenerate sectors.
 12. Dressed charged asymptotic states use the same eikonal data as coherent
-   soft photon clouds.
+   soft photon clouds, but the zero-cutoff Faddeev--Kulish profile is not an
+   element of the photon one-particle Hilbert space, so the limiting dressing
+   changes representation.
 13. A small photon mass introduced through an Abelian-Higgs deformation is a
    consistent gauge-invariant infrared regulator.
+14. Buchholz's Gauss-law theorem gives the nonperturbative structural
+    boundary: charged QED sectors are infraparticle sectors, not ordinary
+    Wigner-particle Fock sectors; asymptotic electric flux labels
+    superselection data.
 
 ## Figure Requirements
 
@@ -118,3 +144,8 @@ The chapter should state:
   angular-integral derivation, electromagnetic form-factor/LSZ same-line
   cancellation, \(G(0)\), self-energy derivative check, \(k^0\)-pole analysis,
   and same-line cancellation figure were added.
+- 2026-05-24 issue #256 pass: added the charged asymptotic sectors section,
+  including limiting electric flux superselection, Buchholz's infraparticle
+  obstruction, the boosted Coulomb angular flux density, and the
+  square-integrability calculation showing that the Faddeev--Kulish soft cloud
+  is not a vector in photon Fock space after the infrared cutoff is removed.
