@@ -1676,7 +1676,27 @@ and the coefficient of \(\epsilon^2\) has the form
   0.
 \]
 The pole \(K_I^{(n)}\) begins at increasingly high perturbative order as
-\(n\) grows.  Solving these equations recursively in perturbation theory gives
+\(n\) grows.  More precisely, grade the formal power series by perturbative
+degree and assume \(K_I^{(n)}\in F^{n+1}\), where \(F^L\) denotes terms of
+degree at least \(L\) in the interaction coordinates.  Then
+\(\partial K_I^{(n)}/\partial\lambda_J\in F^n\).  For the coefficient of
+\(\epsilon^r\) with \(r\ge2\), the homogeneous degree-\(L\) part of
+\[
+  \beta_I^{(r)}
+  +
+  \sum_{n\ge1}
+  \frac{\partial K_I^{(n)}}{\partial\lambda_J}
+  \beta_J^{(n+r)}
+  =
+  0
+\]
+contains \(\beta_J^{(n+r)}\) only in degrees strictly smaller than \(L\).
+Writing \(\beta_{I,L}^{(r)}\) for the degree-\(L\) component, the lowest
+perturbative degree therefore gives \(\beta_{I,L}^{(r)}=0\), and induction on
+\(L\) gives \(\beta_I^{(r)}=0\) for every \(r\ge2\).  Returning to the
+coefficient of \(\epsilon^1\), the remaining summation involves only
+\(\beta_J^{(n+1)}\) with \(n+1\ge2\), hence vanishes by the preceding
+induction, leaving \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).  Consequently
 \[
   \beta_I^{(m)}=0\quad(m\ge2),
   \qquad

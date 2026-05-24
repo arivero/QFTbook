@@ -162,7 +162,12 @@ The chapter must define:
    of \(\beta_I^\epsilon\).
 16. Perturbative order counting implies
    \(\beta_I^{(m)}=0\) for \(m\ge2\) and
-   \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).
+   \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\): using the filtration
+   \(K_I^{(n)}\in F^{n+1}\), the homogeneous degree-\(L\) part of the
+   \(\epsilon^r\) equation with \(r\ge2\) depends on
+   \(\beta_J^{(n+r)}\) only in lower perturbative degrees, so induction on
+   \(L\) kills all \(r\ge2\) components before the \(\epsilon^1\) equation is
+   read.
 17. The nonnegative epsilon structure of the MS beta function leaves the
     \(\epsilon^0\) beta function as the beta function of the target
     \(d\)-dimensional theory; the remaining pole coefficients are determined
@@ -268,3 +273,8 @@ The chapter must define:
   to invert, states the bounded-pole-order and nonresonance hypotheses, and
   explains how resonant sectors require extra normalization rather than an
   automatic triangular recursion.
+- 2026-05-24 issue #355 pass: expanded the positive-\(\epsilon\) MS recursion
+  argument into an explicit perturbative-filtration induction, showing why the
+  higher \(\epsilon\)-components of \(\beta_I^\epsilon\) vanish before the
+  \(\epsilon^1\) coefficient fixes
+  \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).
