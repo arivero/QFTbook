@@ -42,6 +42,12 @@ The chapter must define:
 - the scale-normalized field
   \([\phi]_\mu=Z_{\rm MOM}(\mu)^{-1/2}\phi_R\);
 - the symmetric Euclidean subtraction point for the four-point 1PI vertex;
+- the Euclidean-to-Lorentzian Mandelstam bridge at that subtraction point: for
+  mostly-plus Lorentzian momenta continued by \(k_i=(\ii p_i^0,\vec p_i)\),
+  \((k_i+k_j)^2_{\rm E}=(p_i+p_j)^2_{\rm L}\), so
+  \(s_{\rm E}=-(k_1+k_2)^2_{\rm E}\) equals the scattering-chapter
+  \(s_{\rm L}=-(p_1+p_2)^2_{\rm L}\); the apparent sign flip is only with the
+  bare Lorentzian quadratic form, not with the mostly-plus Mandelstam variable;
 - the running quartic coupling \(g(\mu)\) as a coordinate on the 1PI effective
   action;
 - the sign convention in \(g(\mu)=-Z_{\rm MOM}(\mu)^2\Gamma_R^{(4)}\): the tree
@@ -116,6 +122,11 @@ The chapter must define:
     \(-\sum_{j=2}^4(k_1+k_j)^2\) and using
     \(k_1+k_2+k_3+k_4=0\).  Thus \(k_i^2=\mu^2\) and the symmetric condition
     \(s=t=u\) imply \(s=t=u=-4\mu^2/3\).
+2c. The Euclidean subtraction variable
+    \(s_{\rm E}=-(k_1+k_2)^2_{\rm E}\) matches the Lorentzian mostly-plus
+    Mandelstam variable \(s_{\rm L}=-(p_1+p_2)^2_{\rm L}\) under Wick
+    continuation; it differs by a sign only from the bare mostly-plus quadratic
+    form \((p_1+p_2)^2_{\rm L}\).
 3. The corresponding one-loop two-point tadpole is independent of \(k^2\), so
    it does not change the field normalization at this order.
 4. The relation between \(g(\mu')\) and \(g(\mu)\) is finite after the UV
