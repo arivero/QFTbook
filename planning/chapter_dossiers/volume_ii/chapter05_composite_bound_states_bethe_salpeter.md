@@ -38,6 +38,7 @@
 | \(\mathcal K_P(p,q)\) | two-particle irreducible kernel in the chosen channel |
 | \(\mathcal G_P(q)\) | product of two exact constituent propagators |
 | \(\widehat V_P\) | integral operator with kernel \(\mathcal K_P(p,q)\mathcal G_P(q)\) acting on the amputated amplitude |
+| \(\mathcal X\) | chosen test-function, Sobolev, or Hilbert space on which the amputated Bethe--Salpeter operator is realized |
 | \(f(s)\) | \(D=2\) scalar bubble Feynman-parameter integral |
 | \(s,t\) | Mandelstam variables \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\) in the source convention |
 
@@ -58,6 +59,20 @@
   control.
 - The Bethe--Salpeter kernel is defined to be two-particle irreducible in the
   channel being resummed.
+- The exact Bethe--Salpeter kernel is an operator-level object only after a
+  topology has been chosen: \(\mathcal K_P\) must act from the selected
+  relative-momentum space \(\mathcal X\) to its dual, or
+  \(\mathcal K_P\mathcal G_P\) must define a densely defined/compact operator
+  on \(\mathcal X\).
+- A converse from a homogeneous Bethe--Salpeter eigenvector to a genuine bound
+  state requires analytic Fredholm hypotheses, nonzero overlap with the
+  interpolating two-field channel, and absence of competing threshold
+  singularities near the pole; \(\mathbf 1-\widehat V(z)\) must also be
+  invertible somewhere in the analytic neighborhood.
+- Ladder sums converge as Neumann series only in regions where the selected
+  \(\widehat V_P^{(0)}\) has operator norm below one; bound-state poles are
+  described by meromorphic resolvent continuation rather than convergence of
+  the raw series at the pole.
 - Plane-wave bound-state kets are distributional and are used with covariant
   normalization; finite states are wavepacket smearings.
 - The local attractive quartic example is interpreted inside a stable
@@ -100,6 +115,13 @@
 - The Bethe--Salpeter equation is a necessary residue equation for an existing
   exact pole.  In a truncated kernel it is a self-consistency condition inside
   the approximation, not an existence theorem for the underlying QFT.
+- Under analytic compact-operator Fredholm hypotheses on
+  \(\widehat V(z)=\mathcal K_z\mathcal G_z\), a pole of the represented
+  four-point block is equivalent, with nonzero external-channel overlap, to
+  a nonzero vector in \(\ker(\mathbf 1-\widehat V(z_B))\).
+- A ladder approximation is a controlled approximation only after a norm or
+  compact-operator topology is supplied and the omitted two-particle
+  irreducible kernels are bounded in that topology.
 
 ## Figures
 
@@ -116,3 +138,10 @@
   begin in the next chapter.
 - No nonrelativistic potential reduction beyond a controlled limiting
   statement.
+
+## Audit Notes
+
+- 2026-05-24 issue pass: addressed #216 by adding the missing
+  function-space status of \(\mathcal K_P\), the conditional Fredholm converse
+  between poles and homogeneous Bethe--Salpeter eigenvectors, and the
+  operator-norm/meromorphic-continuation status of ladder sums.

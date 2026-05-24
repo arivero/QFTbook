@@ -428,6 +428,28 @@ fixed; an iteration of two kernels connected by the two constituent lines is
 not part of the kernel, because that iteration is precisely what the
 Bethe--Salpeter equation resums.
 
+This definition is an operator statement once the relative-momentum variables
+are smeared.  Let \(\mathcal X\) be a chosen test-function or Hilbert space of
+amputated relative wavefunctions, for instance a weighted Sobolev space on a
+Euclidean relative-momentum contour in a massive model.  The distribution
+\(\mathcal K_P(p,q)\) represents a kernel only if it induces a continuous map
+from \(\mathcal X\) to its dual, or, after the factors of
+\(\mathcal G_P\) are included, a densely defined operator on \(\mathcal X\).
+Equivalently, in a regulated theory one may define \(\mathcal K_P\) by the
+exact four-point block \(\mathcal T_P\) through
+\[
+  \mathcal K_P
+  =
+  \mathcal T_P(\mathbf 1+\mathcal G_P\mathcal T_P)^{-1},
+\]
+on any open \(P^2\)-domain where the inverse exists on the chosen space.  The
+continuum kernel is then the limit of this regulated kernel in the same
+operator topology.  The present chapter assumes this analytic operator
+realization when it writes \(\mathcal K_P\mathcal G_P\) as an integral
+operator.  Without such a realization the displayed Bethe--Salpeter equation is
+only distributional notation for a desired decomposition of the four-point
+function.
+
 The amputated four-point scattering block \(\mathcal T_P(p,p')\) obeys the
 operator equation
 \begin{equation}
@@ -497,6 +519,37 @@ eigenvalue-one condition occurs at a point corresponding to a normalizable
 positive-energy state below the continuum.  In truncated kernels, a solution
 of the homogeneous equation is therefore evidence inside the approximation,
 not a derivation of the exact spectrum from the Lagrangian.
+
+A precise converse can be stated only after the preceding functional-analytic
+data have been supplied.  Suppose \(z=P^2\) varies in a complex neighborhood
+\(U\) of \(z_B=-M_B^2\) below the first two-constituent threshold after the
+chosen continuation, and suppose
+\[
+  \widehat V(z)=\mathcal K_z\mathcal G_z:\mathcal X\to\mathcal X
+\]
+is an analytic family of compact operators and that
+\(\mathbf 1-\widehat V(z)\) is invertible for at least one \(z\in U\).  The
+analytic Fredholm theorem then implies that
+\((\mathbf 1-\widehat V(z))^{-1}\), where defined, extends meromorphically to
+\(U\), with finite-rank principal parts.  If
+\(\mathbf 1-\widehat V(z_B)\) has a nonzero kernel, and if the corresponding
+finite-rank residue couples to the external fields used to define
+\(\mathcal T_z\), then
+\[
+  \mathcal T_z
+  =
+  (\mathbf 1-\mathcal K_z\mathcal G_z)^{-1}\mathcal K_z
+\]
+has a pole at \(z_B\).  Conversely, a pole of \(\mathcal T_z\) whose residue is
+represented on \(\mathcal X\) gives a nonzero vector in
+\(\ker(\mathbf 1-\widehat V(z_B))\).  This Fredholm statement is the rigorous
+operator version of the Bethe--Salpeter pole criterion.  Its hypotheses are
+substantial: compactness, analytic continuation, absence of competing
+threshold singularities in \(U\), and nonzero overlap with the interpolating
+two-field channel are all part of the assertion.  An eigenvector of a truncated
+or ill-specified kernel, by contrast, need not define a normalizable
+positive-energy bound state in the exact Hilbert space.
+
 The unamputated Bethe--Salpeter amplitude is related to the amputated vertex by
 \[
   \widetilde\Phi_B(p;P)
@@ -611,6 +664,28 @@ example, a single exchanged scalar particle produces the model kernel
 \]
 with \(\mu\) the exchanged mass and with numerator factors determined by the
 spins and couplings of the fields.
+
+The ladder sum has a controlled meaning only after the same operator topology
+has been fixed.  For a selected kernel \(\mathcal K_P^{(0)}\), set
+\[
+  \widehat V_P^{(0)}=\mathcal K_P^{(0)}\mathcal G_P .
+\]
+If \(\|\widehat V_P^{(0)}\|_{\mathcal B(\mathcal X)}<1\) in a region of
+complex \(P^2\), the Neumann series
+\[
+  \mathcal T_P^{\rm lad}
+  =
+  \sum_{n=0}^{\infty}(\widehat V_P^{(0)})^n\mathcal K_P^{(0)}
+  =
+  (\mathbf 1-\widehat V_P^{(0)})^{-1}\mathcal K_P^{(0)}
+\]
+converges in operator norm there.  At a bound-state pole the relevant
+eigenvalue reaches \(1\), so the Neumann series itself is no longer a
+convergent expansion at the pole; the pole is obtained by the meromorphic
+Fredholm continuation of the resolvent.  Thus a ladder Bethe--Salpeter
+eigenvalue is a theorem inside a specified compact-operator approximation, and
+becomes a statement about the exact QFT only when the omitted two-particle
+irreducible kernels are controlled in the same topology.
 
 In a weakly bound massive system, let
 \[
