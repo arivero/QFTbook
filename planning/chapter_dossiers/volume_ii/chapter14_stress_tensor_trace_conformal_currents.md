@@ -55,10 +55,12 @@ The chapter must define and derive:
   \partial g_I^\epsilon/\partial\lambda_J\);
 - the renormalized trace identity
   \(T^\mu{}_\mu=\sum_J\beta_J(\lambda)[O_J]_\mu\);
-- the scope of the trace identity as a flat-space separated-insertion
-  statement, with contact terms, equation-of-motion terms, total derivatives,
-  improvements, and curved-background curvature terms kept as separate local
-  data;
+- the extension of the trace identity from the flat-space separated-insertion
+  statement to a source-functional contact distribution, with the local
+  Weyl/RG source vector field, anomaly functional, Wess--Zumino consistency,
+  and contact terms on collision diagonals stated explicitly;
+- equation-of-motion terms, total derivatives, improvements, and
+  curved-background curvature terms as local data fixed by the source chart;
 - the fixed-point implication that the beta-function contribution to the trace
   vanishes, while the existence of a traceless stress tensor still depends on
   improvement and virial-current data;
@@ -90,9 +92,11 @@ The chapter must define and derive:
    contribution of the interaction terms.
 4. Minimal subtraction and bare \(\mu\)-independence re-express the bare trace
    in terms of finite renormalized operators.
-5. The finite flat-space trace identity is
-   \(T^\mu{}_\mu=\sum_J\beta_J[O_J]_\mu\), modulo the stated local
-   ambiguities.
+5. The finite flat-space separated trace identity is
+   \(T^\mu{}_\mu=\sum_J\beta_J[O_J]_\mu\).  Its contact-distribution extension is
+   obtained by differentiating the source-functional local RG identity; the
+   Weyl-anomaly functional and derivatives of the local source vector field
+   supply the contact terms.
 6. At an RG fixed point, the beta-function contribution to the trace vanishes;
    tracelessness is an additional stress-tensor/improvement statement.
 7. A symmetric conserved traceless stress tensor generates conserved currents
@@ -142,8 +146,9 @@ The chapter must define and derive:
 - When displaying the scalar improvement coefficient, keep the chapter's
   flat-space \(L\)-convention distinct from the positive coefficient of the
   curved-background \(R\phi^2\) term.
-- State the trace identity as a separated-point flat-space identity before
-  discussing contact terms or curved-background contributions.
+- State the trace identity first as a separated-point flat-space identity, then
+  close the contact-term gap by giving the source-functional distributional
+  identity and Wess--Zumino consistency condition.
 - Do not merge the Wilson-Fisher fixed-point example into this chapter; it is
   the next source block.
 - No reader-facing source-page references.
@@ -161,3 +166,9 @@ The chapter must define and derive:
   trace, displaying \(\xi_D^{\rm conf}=(D-2)/(4(D-1))\), and recording the
   sign relation \(L=-\xi_D^{\rm conf}\phi^2\) for this chapter's improvement
   convention.
+- 2026-05-24 issue #232 pass: added the contact-distribution trace identity.
+  The chapter now explains why the \(\epsilon\mathcal O^{\rm MS}_\epsilon\)
+  term may leave finite collision-diagonal distributions, formulates the local
+  RG identity for \(\mathcal W[g,\eta]\), identifies the anomaly and source
+  vector field contributions to the contact terms, and records Wess--Zumino
+  consistency.

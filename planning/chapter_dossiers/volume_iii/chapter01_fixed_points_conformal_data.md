@@ -31,6 +31,9 @@ The chapter establishes:
 - diffeomorphism and Weyl Ward identities as identities of
   source-dependent distributions, with contact terms fixed by the source
   chart;
+- dependence of the CFT contact-term chart on the source-functional trace
+  identity and Wess--Zumino anomaly consistency inherited from the RG/fixed-point
+  construction;
 - Ising universality as a fixed-point example, while distinguishing the
   finite statistical trace space from any reconstructed continuum Hilbert
   space.
@@ -75,3 +78,7 @@ The chapter establishes:
   \(W_\ast[g,\eta]\), stress-tensor and operator derivative conventions, the
   diffeomorphism Ward identity, and smeared translation/Weyl contact Ward
   identities.
+- 2026-05-24 issue #232 pass: tied \(W_\ast[g,\eta]\) explicitly to the
+  contact-distribution trace identity and Wess--Zumino consistency condition in
+  the stress-tensor trace chapter, so the CFT source-functional Ward identities
+  no longer rest only on separated-point trace data.

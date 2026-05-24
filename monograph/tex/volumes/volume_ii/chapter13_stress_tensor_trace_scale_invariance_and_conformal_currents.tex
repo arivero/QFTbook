@@ -439,12 +439,162 @@ a finite distributional limit there.  Taking the renormalized
 \eqref{eq:renormalized-trace-identity}.
 \end{proof}
 
-The identity is local only after its residual local terms are specified.
-Contact terms are fixed by the source Ward identities.  Total derivatives and
-equation-of-motion operators are fixed by the chosen stress-tensor convention
-and by the allowed improvements.  On a curved background there can also be
-curvature-dependent terms; these are not part of the flat-space identity used
-in this chapter.
+At coincident insertion points the preceding proof has a narrower scope.  The
+insertion \(\mathcal O^{\rm MS}_{J,\epsilon}\) may have pole parts supported on
+collision diagonals, and multiplication by \(\epsilon\) can leave a finite local
+distribution.  Those finite remnants are the Weyl-anomaly and Ward-identity
+contact terms.  The contact-distribution identity is formulated through the
+renormalized source functional of
+Section~\ref{sec:background-metric-source-functional}, together with its local
+source coordinate chart.
+
+Let \(\eta^A(x)\) denote all local sources in a chosen chart, including the
+constant coupling coordinates \(\lambda^I\) as the special case
+\(\eta^I(x)=\lambda^I\).  A local Weyl/RG source vector field is a first-order
+differential operator on source space,
+\[
+  \mathfrak B_\sigma
+  =
+  \int\dd^d x\,
+  \mathcal B^A_\sigma(x;g,\eta)\,
+  \frac{\delta}{\delta\eta^A(x)},
+\]
+where \(\mathcal B^A_\sigma\) is a local polynomial in the sources, the metric,
+\(\sigma\), and finitely many of their derivatives.  Its zeroth-order part in
+the coupling-source directions is
+\[
+  \begin{aligned}
+  \mathcal B^I_\sigma(x;g,\eta)\big|_{\eta=\lambda}
+  &=
+  \sigma(x)\,\beta^I(\lambda)
+  \\
+  &\quad+
+  \text{terms with derivatives of }\sigma
+  \\
+  &\quad+
+  \text{terms with positive powers of nonconstant sources}.
+  \end{aligned}
+\]
+The derivative-of-\(\sigma\) terms encode improvement and scheme-dependent local
+source choices; they vanish in the constant flat separated-point calculation
+above but contribute to contact distributions.
+
+\begin{proposition}[Trace identity as a contact distribution]
+\label{prop:trace-identity-contact-distribution}
+Assume that the renormalized source functional
+\(\mathcal W[g,\eta]\) exists in the sense of
+Section~\ref{sec:background-metric-source-functional} and satisfies the local
+RG identity
+\begin{equation}
+  \left[
+    \int\dd^d x\,2\sigma(x)g_{\mu\nu}(x)
+    \frac{\delta}{\delta g_{\mu\nu}(x)}
+    +
+    \mathfrak B_\sigma
+  \right]\mathcal W[g,\eta]
+  =
+  -\mathcal A_\sigma[g,\eta].
+  \label{eq:source-functional-local-rg-identity}
+\end{equation}
+Here \(\sigma\) is a compactly supported smooth Weyl parameter and
+\(\mathcal A_\sigma[g,\eta]\) is a local functional, linear in \(\sigma\) and
+its derivatives.  For
+\[
+  X=O_{A_1}(x_1)\cdots O_{A_n}(x_n),
+\]
+define the full contact distribution by differentiating
+\eqref{eq:source-functional-local-rg-identity} with respect to the corresponding
+sources and then setting \(g=\delta\) and \(\eta=\lambda\).  In insertion
+notation this gives
+\begin{equation}
+  \int\dd^d x\,\sigma(x)
+  \left\langle
+    \bigl(T^\mu{}_\mu-\beta^I[O_I]_\mu\bigr)(x)\,X
+  \right\rangle_{\!c}
+  =
+  \mathcal A_\sigma[X]+\mathcal C_\sigma^{\mathfrak B}[X].
+  \label{eq:trace-contact-distribution}
+\end{equation}
+The term \(\mathcal A_\sigma[X]\) is the source derivative of
+\(\mathcal A_\sigma[g,\eta]\).  The term
+\(\mathcal C_\sigma^{\mathfrak B}[X]\) is the finite sum obtained when one or
+more source derivatives hit the coefficients
+\(\mathcal B_\sigma^A(x;g,\eta)\) rather than \(\mathcal W\).  Both terms are
+local: after differentiating with respect to sources, their kernels are
+supported on collision diagonals, and the remaining terms contain derivatives
+of the Weyl parameter associated with improvement or source-scheme choices.
+For constant \(\sigma\) and mutually distinct flat-space insertion points,
+these local terms vanish, and \eqref{eq:trace-contact-distribution} reduces to
+\eqref{eq:renormalized-trace-identity}.
+\end{proposition}
+
+\begin{proof}
+The metric derivative convention
+\eqref{eq:volume-iii-source-derivative-conventions} gives
+\[
+  \int\dd^d x\,2\sigma g_{\mu\nu}
+  \frac{\delta\mathcal W}{\delta g_{\mu\nu}}
+  =
+  -\int\dd^d x\,\sqrt g\,\sigma
+  \left\langle T^\mu{}_\mu(x)\right\rangle_{g,\eta}.
+\]
+The zeroth-order coupling-source part of \(\mathfrak B_\sigma\) gives
+\[
+  \int\dd^d x\,\sigma(x)\beta^I(\lambda)
+  \frac{\delta\mathcal W}{\delta\eta^I(x)}
+  =
+  \int\dd^d x\,\sqrt g\,\sigma(x)\beta^I(\lambda)
+  \left\langle [O_I]_\mu(x)\right\rangle_{g,\eta}
+\]
+in the source-sign convention of this chapter.  Substituting these two
+identities into \eqref{eq:source-functional-local-rg-identity} gives the
+one-insertion form of \eqref{eq:trace-contact-distribution}.  Apply the
+functional derivative operator
+\[
+  \frac{\delta}{\delta\eta^{A_1}(x_1)}\cdots
+  \frac{\delta}{\delta\eta^{A_n}(x_n)}
+\]
+to \eqref{eq:source-functional-local-rg-identity}.  When all derivatives hit
+\(\mathcal W\), the result is the connected distribution with the insertion
+\(T^\mu{}_\mu-\beta^I[O_I]_\mu\), with the standard alternating connected-sign
+convention inherited from \(\mathcal W=-\log Z\).  When at least one derivative
+hits a coefficient \(\mathcal B^A_\sigma\), locality of
+\(\mathcal B^A_\sigma\) forces the resulting kernel to be supported where the
+corresponding source points collide with one another or with the point \(x\).
+Those terms are, by definition, \(\mathcal C_\sigma^{\mathfrak B}[X]\).  The
+derivatives of the local functional \(\mathcal A_\sigma[g,\eta]\) give
+\(\mathcal A_\sigma[X]\), also supported on the same local loci after
+specializing to flat space.  On the configuration space
+\(x_i\ne x_j\) and \(x\ne x_i\), these local distributions vanish, leaving the
+separated-point proposition.
+\end{proof}
+
+Because infinitesimal Weyl transformations commute, the anomaly in
+\eqref{eq:source-functional-local-rg-identity} must satisfy the Wess--Zumino
+consistency condition
+\begin{equation}
+  \Delta_{\sigma_1}\mathcal A_{\sigma_2}
+  -
+  \Delta_{\sigma_2}\mathcal A_{\sigma_1}
+  =
+  0,
+  \qquad
+  \Delta_\sigma
+  =
+  \int\dd^d x\,2\sigma g_{\mu\nu}
+  \frac{\delta}{\delta g_{\mu\nu}}
+  +
+  \mathfrak B_\sigma .
+  \label{eq:weyl-wess-zumino-consistency-trace}
+\end{equation}
+This equation is a condition on local functionals of sources and background
+fields.  In even dimensions, curvature terms in \(\mathcal A_\sigma[g,0]\) may
+produce flat-space stress-tensor contact distributions after differentiating
+with respect to the metric even though they vanish at separated flat points.
+Thus a conformal fixed point is not specified by separated-point correlators
+alone; it also requires a source chart, an anomaly functional satisfying
+\eqref{eq:weyl-wess-zumino-consistency-trace}, and a stress-tensor improvement
+convention.
 
 \begin{figure}[H]
   \centering
