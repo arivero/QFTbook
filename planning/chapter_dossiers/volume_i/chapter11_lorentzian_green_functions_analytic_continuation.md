@@ -108,7 +108,10 @@
   the tadpole residual automorphism has order \(2\), giving the coefficient
   \(-ig/2\).
 - The one-loop tadpole contour rotation gives \(i\) times the Euclidean
-  self-energy contribution with the sign convention of Chapter 10.
+  self-energy contribution with the sign convention of Chapter 10; for the
+  chapter's orientation \(\ell^0=i\ell_E^D\), the Jacobian
+  \(d\ell^0=i\,d\ell_E^D\) and the propagator numerator \(-i\) multiply to
+  convert the Lorentzian measure-propagator factor into the Euclidean one.
 - In the same regulator and local two-point subtraction convention,
   \[
     \Sigma(k^0=i k_E^D,\vec k_E)=\Sigma_E(k_E),
@@ -161,3 +164,6 @@
 - 2026-05-24 issue #373 pass: restated the labelled quartic vertex convention
   locally and identified the residual external-label-preserving automorphism
   factor responsible for the Lorentzian tadpole coefficient.
+- 2026-05-24 issue #374 pass: displayed the Wick-rotation Jacobian
+  \(d\ell^0=i\,d\ell_E^D\), the denominator transformation, and the resulting
+  measure-propagator sign before the tadpole equality.
