@@ -20,7 +20,17 @@ group such that
   \qquad
   U(a,\Lambda)\vac=\vac .
 \]
-The translation generators \(P^\mu\) obey the spectrum condition
+For translations alone we write
+\[
+  U(a)=U(a,\mathbf 1)=\exp(\ii a_\mu P^\mu),
+\]
+where \(P^\mu\) are the commuting self-adjoint energy-momentum generators.
+The scalar product in Fourier transforms is the same contraction
+\(q\cdot x=q_\mu x^\mu\).  This sign convention is part of the standing data:
+with the opposite convention for \(U(a)\), every spectral-transfer formula
+below would contain \(-\operatorname{supp}\widehat f\) instead of
+\(\operatorname{supp}\widehat f\).
+The translation generators obey the spectrum condition
 \[
   \operatorname{Spec}(P)\subset \overline V_+ .
 \]
@@ -119,6 +129,18 @@ in \(\operatorname{supp}\widehat f\):
   \bigl(\Delta_2+\operatorname{supp}\widehat f\bigr)=\emptyset .
   \label{eq:haag-ruelle-spectral-transfer}
 \end{equation}
+Indeed, by the joint spectral theorem,
+\[
+  E(\dd p)\,A(f)\,E(\dd r)
+  =
+  \left(\int \dd^D x\,f(x)\ee^{\ii x_\mu(p^\mu-r^\mu)}\right)
+  E(\dd p)\,A\,E(\dd r)
+  =
+  \widehat f(p-r)\,E(\dd p)\,A\,E(\dd r).
+\]
+After integrating \(p\in\Delta_1\) and \(r\in\Delta_2\), the operator can be
+nonzero only if \(p-r\in\operatorname{supp}\widehat f\), equivalently
+\(\Delta_1\cap(\Delta_2+\operatorname{supp}\widehat f)\ne\emptyset\).
 Equation \eqref{eq:haag-ruelle-spectral-transfer} is the precise meaning of
 selecting a particle shell by smearing in spacetime.
 
