@@ -25,6 +25,10 @@
     for the status of perturbative time-ordered products;
   - `references/sound_references/rosten_exact_rg_1003.1366.pdf` for the
     regulated/Wilsonian interpretation of path-integral cutoffs.
+  - Volume I perturbative Green-function chapter for the status distinction
+    between low-dimensional constructive scalar models, standard
+    four-dimensional \(\lambda\phi^4\) triviality results, and finite-cutoff
+    perturbative/EFT use.
 
 ## Framework
 
@@ -38,6 +42,12 @@
   not a separate primitive unless an Euclidean framework is explicitly chosen.
 - Path integrals are regulated calculi for correlation functions. Their
   continuum limit is a construction problem.
+- Four-dimensional scalar polynomial examples in this volume are interpreted
+  as finite-cutoff perturbative/EFT models or as conditional exact-QFT inputs.
+  The standard reflection-positive lattice \(\lambda\phi^4_4\) scaling-limit
+  triviality theorem is recorded without claiming a universal nonexistence
+  theorem for every possible UV-complete QFT matching formal \(\phi^4_4\)
+  perturbation theory.
 
 ## Symbols
 
@@ -65,6 +75,10 @@
 
 - The second sequence uses the same local Hilbert-space data as the first
   sequence and adds no new primitive notion of particle.
+- Scalar examples are classified by logical status: constructive
+  low-dimensional continuum theories, four-dimensional finite-cutoff/EFT
+  perturbative models, and conditional exact theories with separately supplied
+  Hilbert-space and analytic data.
 - The Poincare generators, field covariance law, stress-tensor charge
   formulas, and invariant-vacuum assumptions are stated explicitly with
   regulator/domain caveats.
@@ -107,3 +121,10 @@
 - No renormalization group equation.
 - No claims of equivalence among Wightman, Euclidean, AQFT, and path-integral
   frameworks beyond local theorem boundaries already stated.
+
+## Audit Notes
+
+- 2026-05-24 issue pass: addressed #217 by adding the scalar-model status
+  paragraph to the chapter and recording the precise scope of
+  four-dimensional \(\lambda\phi^4\) triviality versus the broader open
+  UV-completion question.

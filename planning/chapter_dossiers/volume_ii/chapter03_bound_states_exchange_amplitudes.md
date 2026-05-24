@@ -20,6 +20,10 @@
 - Four-dimensional massive scalar theory with two real scalar fields
   \(\phi_1,\phi_2\), masses \(m_1,m_2>0\), and cubic interaction
   \(-g\phi_1^2\phi_2/2\).
+- The scalar Lagrangian is an exchange-model source of a tree kernel in the
+  logical sense fixed by Volume II Chapter 1: finite-cutoff perturbative/EFT
+  data unless an exact massive local QFT with the stated spectral properties is
+  separately supplied.
 - Tree-level perturbation theory is used only for the connected
   \(\phi_1\phi_1\to\phi_1\phi_1\) amplitude after LSZ.
 - Bound-state identification is stated as an analytic scattering criterion:
