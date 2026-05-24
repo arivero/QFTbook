@@ -56,6 +56,10 @@ The chapter must define and derive:
 - the shell-integration formula defining \(L_{\Lambda'}[\phi']\);
 - the infinitesimal Wilson-Polchinski equation, with functional-derivative
   conventions;
+- the field-independent Gaussian normalization as the vacuum-energy
+  coordinate: it may be fixed separately, and the displayed Polchinski
+  equation is the interaction flow modulo that constant because functional
+  derivatives annihilate it;
 - the analytic status of the Wilson-Polchinski equation in three nested
   settings:
   finite-regulator \(C^2\) functions on a finite-dimensional mode space, the
@@ -185,6 +189,11 @@ The chapter must define and derive:
     Wilsonian flow additionally requires convergence of the interacting
     source functionals and convergence of the pushforward or vector field in a
     specified topology.
+3b. The \(\phi\)-independent normalization in the shell Gaussian integral is
+    the vacuum-energy coordinate.  Retaining it adds only
+    \(\Lambda\partial_\Lambda c_\Lambda\) to the left side of the flow; the
+    functional derivatives in the Polchinski equation annihilate it, so the
+    displayed interaction equation is written modulo this constant.
 4. Before the shell source term is discarded, the split generating functional
    contains \(J(\phi'+\widehat\phi)\); the \(J\widehat\phi\) term vanishes only
    by the regulated support assumption on the source.
@@ -372,3 +381,7 @@ The chapter must define and derive:
   coordinates, and the recursive loop-order construction of the matching map;
   cross-links were added back to the BPHZ finite-parts and normal-product
   discussions.
+- 2026-05-24 issue #358 pass: added the vacuum-energy normalization note after
+  the Wilson-Polchinski derivation, explaining why the
+  \(\phi\)-independent shell normalization is absent from the displayed
+  functional-derivative flow.
