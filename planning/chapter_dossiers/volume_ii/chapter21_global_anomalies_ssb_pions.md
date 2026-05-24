@@ -62,6 +62,9 @@
 | \(\mathcal A_g[B]\) | finite anomaly cocycle representative |
 | \(C[B]\) | local background counterterm |
 | \(X_g\) | mapping torus associated to a gauge transformation \(g\) |
+| \(Y,B_Y\) | closed or filling five-manifold and its extended background field |
+| \(\mathcal I_5[Y,B_Y]\) | five-dimensional invertible anomaly-theory phase |
+| \(B_g\) | induced background field on the mapping torus \(X_g\) |
 | \(\zeta(X_g,E_g)\) | mod-two index of the coupled real Dirac operator |
 | \(G,H\) | symmetry group and unbroken subgroup in a phase |
 | \(\xi(\pi)\) | coset representative for Goldstone coordinates |
@@ -94,6 +97,19 @@
   background-field variation is \((48\pi^2)^{-1}\int \zeta\,\epsilon FF\).
 - A single four-dimensional left-handed \(SU(2)\) fundamental Weyl fermion has
   a finite anomaly detected by a mod-two index on a mapping torus.
+- Finite anomaly inflow is stated through the mapping-torus phase
+  \[
+    Z[B^g]/Z[B]=\mathcal I_5[X_g,B_g],
+  \]
+  after a local counterterm convention is chosen.
+- The \(SU(2)\) global anomaly is identified with the invertible phase
+  \[
+    \mathcal I_5^{SU(2)}[X_g,E_g]=(-1)^{\zeta(X_g,E_g)}.
+  \]
+- The SPT/cobordism interpretation is stated with hypotheses: it is a
+  framework for invertible, symmetry-protected, short-range-entangled
+  responses with specified tangential and background structures, not a
+  substitute for defining the QFT determinant or Pfaffian line.
 - Anomaly matching is equality of the background anomaly cocycle class between
   UV and IR descriptions.
 - Infinite-volume vacuum sectors are separated from finite-dimensional
@@ -148,7 +164,8 @@
 ## Open Boundaries
 
 - The full global form of QCD flavor symmetry, higher-form symmetries, and
-  anomaly inflow are deferred to the global-structure volume.
+  complete cobordism classification of invertible responses are deferred to the
+  global-structure volume.
 - The complete gauged WZW functional is not expanded term by term here; only
   the defining variation and the neutral-pion two-photon coefficient are used.
 - A rigorous theorem proving the QCD chiral condensate pattern is not supplied;
@@ -157,3 +174,7 @@
   the stereographic section; the handwritten notes use the opposite left/right
   naming in places, so future edits must not mix the two conventions without
   converting all formulas simultaneously.
+- 2026-05-24 issue #252 pass: added the finite anomaly-inflow section with the
+  mapping-torus identity, connected the \(SU(2)\) mod-two index to the
+  five-dimensional invertible phase, and tied the gauged WZW functional to the
+  same inflow class.

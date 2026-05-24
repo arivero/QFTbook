@@ -79,9 +79,9 @@ gauge-equivalence class of \(B\), and \(Z[B]\) is a section of this anomaly
 line.  Local counterterms change a trivialization of the line.  When the anomaly is
 represented by an invertible field theory on a five-dimensional manifold \(Y\)
 with \(\partial Y=M\), equality of boundary variations identifies the phase in
-\eqref{eq:finite-background-anomaly}.  The later volume on global structure
-develops this formulation as a theory of invertible field theories and anomaly
-inflow; here it supplies the object-level language needed for matching.
+\eqref{eq:finite-background-anomaly}.  The local Chern--Simons version of this
+bulk-boundary identity was described in Chapter~\ref{ch:volume-ii-20}; below
+we use mapping tori to state the finite version needed for global anomalies.
 
 \begin{figure}[H]
   \centering
@@ -277,6 +277,73 @@ If this \(SU(2)\) symmetry is gauged, the sign in
 descending to a function on gauge-equivalence classes of backgrounds.  If the
 same \(SU(2)\) is kept as a global symmetry, the sign is an anomaly class that
 must be reproduced by the infrared theory.
+
+\section{Anomaly Inflow and Mapping Tori}
+
+The finite anomaly in \eqref{eq:finite-background-anomaly} is represented by a
+five-dimensional invertible response.  Its holonomy on a mapping torus gives
+the finite transformation phase.  In the form needed here, an invertible
+anomaly theory assigns a phase
+\[
+  \mathcal I_5[Y,B_Y]\in U(1)
+\]
+to every closed five-manifold \(Y\) equipped with the relevant spin structure,
+global-symmetry background \(B_Y\), and any additional geometric structures
+required by the fermions.  If \(M=\partial Y\), the same theory assigns an
+anomaly line over the space of boundary backgrounds, and the four-dimensional
+partition function \(Z[B]\) is a vector in that line.  Choosing a filling
+\((Y,B_Y)\) trivializes the line by multiplying by the bulk phase.  Changing
+the filling changes the trivialization by the phase of the closed
+five-manifold obtained by gluing the two fillings.
+
+For a finite background gauge transformation \(g\), choose a path \(B_t\) from
+\(B\) to \(B^g\) and identify the two ends by \(g\).  The resulting mapping
+torus \(X_g\) carries the induced background \(B_g\).  The inflow statement is
+the equality
+\begin{equation}
+  \frac{Z[B^g]}{Z[B]}
+  =
+  \mathcal I_5[X_g,B_g],
+  \label{eq:mapping-torus-inflow-phase}
+\end{equation}
+after a choice of local counterterm convention.  On the identity component of
+the background gauge group, cutting the mapping torus open reduces
+\eqref{eq:mapping-torus-inflow-phase} to the descent formula of the preceding
+chapter.  Infinitesimally, the five-dimensional Chern--Simons response varies
+by the boundary term \(-\int_M I_4^{(1)}\), while the boundary generating
+functional varies by \(+\int_M I_4^{(1)}\).  For a disconnected component, the
+mapping-torus phase can remain nontrivial even when the local polynomial
+anomaly vanishes.
+
+The \(SU(2)\) example above is exactly of this finite type.  Its anomaly
+theory assigns
+\begin{equation}
+  \mathcal I^{SU(2)}_5[X_g,E_g]
+  =
+  (-1)^{\zeta(X_g,E_g)}
+  \label{eq:su2-invertible-anomaly-theory}
+\end{equation}
+to the mapping torus with the induced rank-two bundle.  Equation
+\eqref{eq:su2-global-anomaly-pfaffian} is therefore the mapping-torus inflow
+law \eqref{eq:mapping-torus-inflow-phase}.  An odd number of fundamental Weyl
+doublets has nontrivial \(\mathcal I^{SU(2)}_5\); an even number has the
+trivial product phase for this test, and the Pfaffian line has no sign
+holonomy around the generator detected by \(X_g\).
+
+This language is also the precise version of the symmetry-protected
+topological interpretation of anomalies.  A gapped short-range-entangled
+five-dimensional phase with symmetry \(G_{\mathrm f}\) and no intrinsic
+topological order has an invertible response \(\mathcal I_5\).  A
+four-dimensional theory with anomaly \(\mathcal I_5\) can occur as a boundary
+whose anomalous transformation is cancelled by the inverse bulk response.  In
+mathematical treatments, deformation classes of fully extended
+reflection-positive invertible responses with a specified tangential and
+\(G_{\mathrm f}\)-background structure are often organized by characters of
+the corresponding bordism groups, together with possible free Chern--Simons or
+theta-type terms.  This cobordism organization is a classification framework
+for invertible responses; each use in QFT still requires specifying the
+background fields, spin or pin structure, locality assumptions, and the
+normalization of the fermion determinant or Pfaffian line.
 
 \section{Low-Degree Homotopy Groups in Four-Dimensional Applications}
 
@@ -1282,7 +1349,11 @@ Wess--Zumino functional is completed by local four-dimensional terms involving
 \]
 where \(\mathcal A_{\mathrm{quark}}\) is the consistent flavor anomaly of the
 microscopic quarks.  Thus the pion functional supplies exactly the anomaly
-phase required by \eqref{eq:finite-background-anomaly}.
+phase required by \eqref{eq:finite-background-anomaly}.  Equivalently, the
+gauged Wess--Zumino--Witten functional is a Goldstone-field realization of the
+same inflow class: its five-dimensional extension transgresses the microscopic
+anomaly polynomial, and its four-dimensional gauge variation is the boundary
+term that matches the quark anomaly.
 
 For the electromagnetic specialization use the dual tensor defined at the start
 of the chapter and fix

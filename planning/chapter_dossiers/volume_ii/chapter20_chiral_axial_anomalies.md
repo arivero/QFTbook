@@ -73,6 +73,8 @@
 | \(I_6\) | six-form anomaly polynomial |
 | \(I_5^{(0)}\) | Chern--Simons five-form in the descent sequence |
 | \(I_4^{(1)}\) | ghost-number-one four-form anomaly representative |
+| \(X,\mathsf A_X\) | five-dimensional inflow manifold and extension of the background connection |
+| \(W_X^{\mathrm{bulk}}\) | local five-dimensional Chern--Simons response whose boundary variation cancels the consistent anomaly |
 | \(d^{abc}\) | symmetric cubic gauge-anomaly tensor |
 | \(J_{\mathrm{cons}}\) | consistent current, \(\delta W/\delta A\) |
 | \(J_{\mathrm{cov}}\) | covariant current after Bardeen--Zumino improvement |
@@ -115,6 +117,21 @@
 - Gauge anomalies are ghost-number-one local BRST cohomology classes.
 - In four dimensions the local chiral gauge anomaly descends from the six-form
   polynomial \(I_6\propto \operatorname{tr}\mathsf F^3\).
+- Local anomaly inflow is displayed as the bulk-boundary identity
+  \[
+    \delta_\lambda\left(W_M[\mathsf A]+W_X^{\mathrm{bulk}}[\mathsf A_X]\right)
+    =
+    \int_M I_4^{(1)}(\lambda,\mathsf A)
+    -
+    \int_{\partial X}I_4^{(1)}(\lambda,\mathsf A_X)
+    =
+    0,
+  \]
+  with \(W_X^{\mathrm{bulk}}=-\int_X I_5^{(0)}\) and
+  \(\partial X=M\).
+- The Callan--Harvey mechanism is identified as the domain-wall realization of
+  this identity: localized chiral modes carry the boundary anomaly and the
+  bulk Chern--Simons response supplies the opposite variation.
 - Local gauge-anomaly cancellation is the vanishing of the symmetric cubic
   tensor \(d^{abc}\) for the gauged symmetry.
 - The consistent current is obtained from the effective action and obeys the
@@ -167,3 +184,7 @@
   by the closed spin Dirac Atiyah--Singer theorem with hypotheses, the
   flat-gauge specialization used in the anomaly calculation, and the
   Atiyah--Patodi--Singer boundary formula with eta-invariant correction.
+- 2026-05-24 issue #252 pass: inserted the local anomaly-inflow section,
+  including the Chern--Simons bulk response, the bulk-boundary cancellation
+  identity, the Callan--Harvey domain-wall interpretation, and the transition
+  from local descent to finite invertible anomaly theories.

@@ -852,8 +852,8 @@ theorem gives
 For non-product data one either deforms to product form near the boundary, or
 includes the corresponding local transgression term; the sum of the bulk,
 local boundary, and spectral terms is the invariant integer.  The appearance
-of \(\eta_{B_A}\) is the analytic reason that a boundary or interface anomaly
-cannot be inferred from the bulk density alone.  Boundary extension,
+of \(\eta_{B_A}\) shows that boundary or interface anomaly data include
+spectral terms in addition to the bulk density.  Boundary extension,
 global-anomaly, and inflow applications use \eqref{eq:aps-index-boundary};
 the local Ward identity in the present chapter uses only the bulk density
 before this spectral correction is imposed.
@@ -1038,6 +1038,72 @@ equivalently the vanishing of the symmetric cubic tensor
 \]
 If this polynomial is nonzero only for a background field coupled to a global
 symmetry, it is an anomaly to be matched rather than an inconsistency.
+
+\section{Anomaly Inflow for Local Anomalies}
+
+The descent equations have a second interpretation when the four-dimensional
+theory is placed on the boundary of a five-dimensional invertible response.
+Let \(X\) be an oriented five-manifold with boundary
+\(\partial X=M\), and let \(\mathsf A_X\) be a smooth background connection on
+\(X\) whose restriction to \(M\) is the four-dimensional connection
+\(\mathsf A\).  The local Chern--Simons functional
+\begin{equation}
+  W_X^{\mathrm{bulk}}[\mathsf A_X]
+  =
+  -\int_X I_5^{(0)}(\mathsf A_X)
+  \label{eq:local-inflow-bulk-functional}
+\end{equation}
+has gauge variation
+\begin{equation}
+  \delta_\lambda W_X^{\mathrm{bulk}}
+  =
+  -\int_X \dd I_4^{(1)}(\lambda,\mathsf A_X)
+  =
+  -\int_M I_4^{(1)}(\lambda,\mathsf A).
+  \label{eq:local-inflow-bulk-variation}
+\end{equation}
+Writing the four-dimensional effective action in
+\eqref{eq:consistent-descent-anomaly-representative} as \(W_M[\mathsf A]\),
+one obtains the bulk-boundary identity
+\begin{equation}
+  \delta_\lambda
+  \left(
+    W_M[\mathsf A]+W_X^{\mathrm{bulk}}[\mathsf A_X]
+  \right)
+  =
+  \int_M I_4^{(1)}(\lambda,\mathsf A)
+  -
+  \int_{\partial X} I_4^{(1)}(\lambda,\mathsf A_X)
+  =
+  0,
+  \label{eq:local-anomaly-inflow-cancellation}
+\end{equation}
+where the boundary orientation on \(\partial X\) is the orientation of \(M\).
+This is anomaly inflow.  The boundary theory by itself transforms by the
+consistent anomaly; the bulk Chern--Simons response transforms by the opposite
+boundary term.  The gauge-invariant object is the combined bulk-boundary
+system.
+
+In the Callan--Harvey realization, \(X\) is a physical gapped bulk or a
+domain-wall geometry, and \(M\) supports chiral modes localized at the wall.
+Integrating out the massive bulk modes produces a Chern--Simons response whose
+coefficient jumps across the wall.  The jump supplies precisely the term
+\(-\int_M I_4^{(1)}\) in \eqref{eq:local-inflow-bulk-variation}, while the
+localized chiral modes supply \(+\int_M I_4^{(1)}\).  The boundary chiral
+modes retain their consistent anomaly, and gauge invariance is a property of
+the combined bulk-boundary system.
+
+The formula \eqref{eq:local-inflow-bulk-functional} is local in a chosen
+trivialization.  On topologically nontrivial bundles the Chern--Simons form is
+defined patchwise, and the exponentiated bulk functional must be defined by
+differential-geometric data with integral periods, equivalently by an
+invertible five-dimensional field theory whose curvature is the anomaly
+polynomial \(I_6\).  The local descent computation fixes the infinitesimal
+variation.  Global questions require the finite version: a closed
+five-manifold carrying a background field is assigned a phase, and cutting it
+open gives the anomalous transformation law of a boundary theory.  That finite
+form is the starting point of the global-anomaly discussion in
+Chapter~\ref{ch:volume-ii-21}.
 
 \section{Consistent and Covariant Currents}
 
