@@ -994,6 +994,111 @@ Rychkov.\footnote{See M.~Hogervorst and S.~Rychkov, ``Radial Coordinates for
 Conformal Blocks,'' Phys. Rev. D \textbf{87} (2013) 106004,
 arXiv:1303.1111.}
 
+\begin{theorem}[Hogervorst--Rychkov radial block convergence]
+\label{thm:hogervorst-rychkov-rho-convergence}
+Assume the radial reconstruction hypotheses of
+Hypothesis~\ref{hyp:radial-reconstruction-data}, finite multiplicity of radial
+energy eigenspaces, and reflection positivity in the channel under
+consideration.  For each exchanged conformal family in a scalar four-point
+function, the radial block expansion constructed below converges absolutely,
+with convergence uniform on every closed subdisk \(|\rho|\le q<1\), in the
+Euclidean radial configuration where \(\bar\rho=\rho^*\).  Equivalently, after
+analytic continuation of \(z\) with the square-root branch
+\(\operatorname{Re}\sqrt{1-z}>0\),
+\[
+  \rho(z)
+  =
+  \frac{z}{(1+\sqrt{1-z})^2}
+  =
+  \frac{1-\sqrt{1-z}}{1+\sqrt{1-z}}
+\]
+maps the cut \(z\)-plane \(\mathbb C\setminus[1,\infty)\) to the unit disk,
+and every compact subset of the cut plane maps into \(|\rho|\le q\) for some
+\(q<1\).  The radial series therefore gives the analytic continuation of the
+block throughout that regularity domain.
+\end{theorem}
+
+\begin{proof}
+The geometric part is elementary.  Put \(w=\sqrt{1-z}\) with
+\(\operatorname{Re}w>0\).  Then
+\[
+  \rho=\frac{1-w}{1+w}.
+\]
+The Cayley transform sends the right half-plane to the unit disk because
+\[
+  |\rho|^2
+  =
+  \frac{|1-w|^2}{|1+w|^2}
+  =
+  1-\frac{4\operatorname{Re}w}{|1+w|^2}<1 .
+\]
+Its inverse is \(z=4\rho/(1+\rho)^2\).  Hence the unit disk in \(\rho\) is not
+only the old \(|z|<1\) power-series domain in disguise; it is the
+uniformizing radial disk for the whole \(z\)-plane cut along the crossed
+channel singular locus.
+
+The analytic convergence is the radial Hilbert-space argument in the symmetric
+cylinder frame.  After the standard external kinematic factors have been
+removed, the contribution of one exchanged conformal family is obtained by
+inserting the orthogonal projection to that family between the two states
+created by the two operator pairs.  Denote these states by \(A\) and \(B\).
+Let \(P_E\) be the spectral projection of the cylinder Hamiltonian
+\(D_{\rm rad}\) onto the finite-dimensional eigenspace of radial energy \(E\)
+inside the chosen family.  Rotations of \(S^{D-1}\) commute with
+\(D_{\rm rad}\), so the level expansion is a matrix element of
+\[
+  r^{D_{\rm rad}}U(\alpha),
+  \qquad
+  \rho=r\ee^{\ii\alpha},
+\]
+where \(U(\alpha)\) is the unitary rotation relating the angular positions of
+the two pairs.  For \(r\le q<1\), Cauchy--Schwarz gives
+\[
+  \sum_E r^E
+  \left|
+    \langle A,P_EU(\alpha)B\rangle
+  \right|
+  \le
+  \left(\sum_E q^E\|P_EA\|^2\right)^{1/2}
+  \left(\sum_E q^E\|P_EB\|^2\right)^{1/2}.
+\]
+The two sums on the right are
+\[
+  \|q^{D_{\rm rad}/2}A\|^2,\qquad
+  \|q^{D_{\rm rad}/2}B\|^2 .
+\]
+By reflection positivity these norms are Euclidean correlation functions in
+which the two operator pairs are separated by an annulus of radial modulus
+\(q\).  The radial reconstruction hypothesis asserts exactly that such
+separated Euclidean configurations define finite Hilbert-space vectors.  Hence
+the displayed bound is finite and independent of the partial-sum cutoff and of
+\(\alpha\).  This proves absolute convergence uniformly for \(r\le q\).
+
+Finite multiplicity makes each energy-level contribution a finite matrix
+element in the corresponding space of spherical harmonics; for scalar external
+operators it is a finite linear combination of Gegenbauer polynomials in the
+angular variable.  The same majorant therefore controls every compact
+subdisk \(|\rho|\le q\), and the Weierstrass test gives local uniform
+convergence of the radial series.  The identity with the conformal block
+follows on the real radial domain from the complete-set construction; the
+locally uniform limit is analytic in the radial variable, so the identity
+theorem continues the equality to the \(\rho\)-disk and, through the inverse
+map \(z=4\rho/(1+\rho)^2\), to the cut \(z\)-plane.
+\end{proof}
+
+At the crossing-symmetric Euclidean point \(z=\bar z=1/2\),
+\begin{equation}
+  \rho(1/2)
+  =
+  \frac{1-\sqrt{1/2}}{1+\sqrt{1/2}}
+  =
+  3-2\sqrt2\approx0.1716 .
+  \label{eq:rho-crossing-symmetric-point}
+\end{equation}
+This small value, and for identical external scalars the additional even-level
+selection discussed below, is the convergence mechanism behind efficient
+radial-block evaluation near the bootstrap crossing point.
+
 \begin{figure}[H]
   \centering
   \resizebox{0.88\textwidth}{!}{%

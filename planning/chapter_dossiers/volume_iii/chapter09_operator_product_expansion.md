@@ -40,7 +40,10 @@ The chapter establishes:
   analyticity, reflection-positivity, and Regge-boundedness hypotheses;
 - the Hogervorst--Rychkov radial variable \(\rho=z/(1+\sqrt{1-z})^2\) and the
   interpretation of \(|\rho|<1\) as the radial-ordering domain for the
-  channel expansion;
+  channel expansion, together with the theorem that the radial block series
+  converges absolutely and locally uniformly in the full \(\rho\)-unit disk,
+  equivalently on the cut \(z\)-plane \(\mathbb C\setminus[1,\infty)\) for the
+  chosen branch;
 - reflection-positivity constraints on OPE coefficient matrices;
 - OPE associativity as equality of nested spectral expansions in a common
   Euclidean radial domain, followed by analytic continuation of the
@@ -91,7 +94,11 @@ The chapter establishes:
    Euclidean projection operation.
 9. The radial-block expansion is explicitly the Hogervorst--Rychkov radial
    expansion, with the chosen square-root branch tied to the radial-ordering
-   domain.
+   domain.  The map
+   \(\rho=(1-\sqrt{1-z})/(1+\sqrt{1-z})\) is a Cayley transform from
+   \(\operatorname{Re}\sqrt{1-z}>0\) to \(|\rho|<1\), and radial Hilbert-space
+   spectral estimates give absolute, locally uniform block convergence on
+   compact subdisks.  At \(z=1/2\), \(\rho=3-2\sqrt2\).
 10. Lorentzian OPE convergence is obtained as a tube-domain analytic
     continuation plus Wightman boundary value; real timelike configurations
     require an \(i\epsilon\) ordering and remain controlled only when the
@@ -164,3 +171,6 @@ The chapter establishes:
   theorem from abstract OPE data and isolated the all-primary/generator
   four-point OPE inverse problem from the underdetermined single-correlator
   crossing problem.
+- 2026-05-24 issue #293 pass: stated and proved the Hogervorst--Rychkov
+  radial block convergence theorem in the \(\rho\)-disk, including the Cayley
+  map from the cut \(z\)-plane and the value \(\rho(1/2)=3-2\sqrt2\).
