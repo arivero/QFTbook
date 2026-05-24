@@ -42,6 +42,10 @@ The chapter must define and derive:
 - the fixed point
   \(\lambda_*=16\pi^2\epsilon/3+O(\epsilon^2)\) and its IR attractiveness
   for decreasing \(\mu\) along the massless critical surface;
+- the formal status of \(\lambda_*(\epsilon)\): the perturbative calculation
+  recursively determines coefficients of a formal small-\(\epsilon\) series
+  for a zero of the beta vector field, not by itself an honest
+  nonperturbative fixed-point existence theorem;
 - the distinction between the dimensionless bare coordinate
   \(\mu^{-\epsilon}g_0\) and the finite renormalized 1PI coordinate
   \(\lambda(\mu)\);
@@ -94,8 +98,11 @@ The chapter must define and derive:
 
 1. In \(4-\epsilon\) dimensions the classical relevance of \(g_0\) and the
    one-loop screening term can balance.
-2. The nonzero fixed point is perturbatively accessible for small positive
-   \(\epsilon\).
+2. The nonzero perturbative zero is a formal small-\(\epsilon\) fixed-point
+   coordinate.  Each finite truncation gives a zero up to higher-order
+   residuals; existence of an exact RG fixed point or nonperturbative
+   continuum QFT requires separate constructive, lattice, Wilsonian, or
+   summability input.
 3. The fixed point is attractive in the infrared along the quartic direction.
 4. The mass parameter must be tuned separately; inside the
    \(\mathbb Z_2\)-even subspace the fixed point is reached on the massless
@@ -155,6 +162,9 @@ The chapter must define and derive:
   low-lying dimension table.
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
+- Do not say that the perturbative zero of the \(4-\epsilon\) beta function is
+  an honest fixed point of a nonperturbative RG flow unless a separate
+  existence theorem or summability-and-reconstruction argument is supplied.
 - Do not present the epsilon expansion as convergent.  If numerical
   finite-\(\epsilon\) extraction is discussed, state the resummation
   prescription and assumptions.
@@ -176,3 +186,7 @@ The chapter must define and derive:
   dimension table with the asymptotic nature of the epsilon expansion and the
   need for separate Borel/conformal-Borel resummation assumptions at
   \(\epsilon=1\).
+- 2026-05-24 issue pass: addressed #227 by replacing the unqualified
+  perturbative-domain statement with a formal-series status convention for
+  \(\lambda_*(\epsilon)\) and by recording that nonperturbative existence
+  requires separate input.
