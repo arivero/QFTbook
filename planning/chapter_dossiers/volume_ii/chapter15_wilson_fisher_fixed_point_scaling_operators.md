@@ -105,6 +105,10 @@ The chapter must define and derive:
 - the mass perturbation as the relevant direction dual to \([O_2]\);
 - the thermal eigenvalue
   \(y_t=D-\Delta_{\phi^2}=2-\epsilon/3+O(\epsilon^2)\);
+- the source-space no-mixing condition behind the preceding formula: relevant
+  exponents are eigenvalues of the even-scalar linearized source-RG matrix, and
+  in the one-component \(\mathbb Z_2\)-even calculation the thermal block is
+  one-dimensional after removing identity and redundant directions;
 - the dimensionless mass/temperature coordinate
   \(\tau(\mu)=\mu^{-y_t}t\), its linearized flow
   \(\dd\tau/\dd\log\mu=-y_t\tau+\cdots\), and the linearized massless
@@ -244,6 +248,11 @@ The chapter must define and derive:
   anomalous-dimension computation now uses \(Z_\phi^{\rm MS}\) and
   \(\lambda_{\rm MS}\), while the text states the finite-reparametrization
   argument that leaves \(\eta=\epsilon^2/54+O(\epsilon^3)\) unchanged at the
+  displayed order.
+- 2026-05-24 issue #351 pass: inserted the even-scalar source-space
+  linearization \(d g^A/d\log\mu=-M^A{}_B g^B+O(g^2)\), stated that \(y_t\) is an
+  eigenvalue after diagonalizing possible operator mixing, and explained why the
+  one-component \(\mathbb Z_2\)-even thermal block is one-dimensional at the
   displayed order.
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
