@@ -17,6 +17,10 @@ The chapter establishes:
 - primary state data at the origin:
   \(K_\mu|\mathcal O\rangle=0\), radial dimension \(\Delta\), and spin under
   rotations;
+- the terminology distinction between global primaries/quasi-primaries and
+  Virasoro primaries in \(D=2\), together with the statement that in \(D\ge3\)
+  the finite conformal algebra supplies the intrinsic primary notion used in
+  this volume;
 - translations from the origin and the descendant Taylor expansion;
 - sources \(\eta^a\in V_\rho^\vee\), their conformal source variation, and
   the induced contact operator on insertions;
@@ -38,6 +42,9 @@ The chapter establishes:
    infinitesimal Ward action on the connected conformal group.
 5. The inversion matrix is an \(O(D)\) element of determinant \(-1\), so spin
    inversion data require a specified extension beyond \(SO(D)\).
+6. In \(D=2\), a statement about a primary in this volume means a global
+   primary unless full Virasoro symmetry and the \(L_n,\bar L_n\) annihilation
+   condition for \(n>0\) have been specified.
 
 ## Figures
 
@@ -54,3 +61,6 @@ The chapter establishes:
   operator, the spinful local current Ward identity, finite transformation
   cocycle conventions, tensor determinant-factor derivations, and the
   orientation-reversing qualification for inversion with spin.
+- 2026-05-24 issue #284 pass: added the global-primary/quasi-primary/Virasoro
+  primary terminology remark, separating the \(D\ge3\) finite-algebra usage
+  from the stronger \(D=2\) Virasoro-primary condition.
