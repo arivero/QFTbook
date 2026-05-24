@@ -15,6 +15,8 @@ The chapter establishes:
 
 - the radial Hilbert-space statement of OPE convergence for insertions inside
   a separating sphere;
+- the use of the same nonnegative self-adjoint radial Hamiltonian
+  \(D_{\rm rad}\) specified in Chapter 4's radial reconstruction hypothesis;
 - the separation between Euclidean radial Hilbert-space convergence and
   Lorentzian Wightman boundary-value convergence;
 - a tube-domain continuation criterion for Lorentzian OPE convergence in a
@@ -128,7 +130,8 @@ The chapter establishes:
 
 - Do not import analytic or numerical bootstrap claims into the core chapter.
 - Every convergence claim must state the Hilbert-space and spectral
-  hypotheses being used.
+  hypotheses being used, and must use the same \(D_{\rm rad}\) spectrum
+  condition as Chapter 4.
 - Every Lorentzian convergence claim must identify the Wightman ordering,
   tube component, radial-variable domain, and boundary-value interpretation.
 - Do not use ``conformal block'' and ``conformal partial wave''
@@ -174,3 +177,7 @@ The chapter establishes:
 - 2026-05-24 issue #293 pass: stated and proved the Hogervorst--Rychkov
   radial block convergence theorem in the \(\rho\)-disk, including the Cayley
   map from the cut \(z\)-plane and the value \(\rho(1/2)=3-2\sqrt2\).
+- 2026-05-24 issue #297 pass: changed the OPE convergence proof to use
+  \(D_{\rm rad}\) by name and explicitly identify it as the nonnegative
+  self-adjoint radial Hamiltonian from
+  `hyp:radial-reconstruction-data`.
