@@ -94,7 +94,8 @@ no-scattering contribution.  Squaring the distributional kernel gives
   |M_\delta(\beta|\alpha)|^2 ,
 \]
 where \(\dd\beta_\delta\) is the product of the final \(\dd^d\vec q\) measures,
-including the appropriate identical-particle symmetry factors.  A finite box
+with the resolution-of-identity factors appropriate to the outgoing Fock
+sector.  A finite box
 regularization of spatial volume \(V\) and observation time \(\mathcal T\) gives
 \[
   (2\pi)^D\delta^{(D)}(0)=V\mathcal T,
@@ -206,9 +207,36 @@ For \(m\) final particles with total incoming momentum \(P\), define the
   (2\pi)^D\delta^{(D)}\!\left(P-\sum_{a=1}^m q_a\right)
   \prod_{a=1}^m\dd\mu_{M_a}(q_a).
 \]
-If some final particles are identical, the phase-space integral over labeled
-momenta is divided by the factorial of the number of identical particles of
-each species.
+This formula is written first for labeled outgoing particles.  The identical
+particle factors come from the resolution of the identity on the asymptotic
+Fock space.  For one bosonic species, the \(r\)-particle space is
+\(\Hilb_1^{\odot r}\).  If
+\[
+  |\vec q_1,\ldots,\vec q_r\rangle_{\rm sym}
+  =
+  a^\dagger(\vec q_1)\cdots a^\dagger(\vec q_r)\Omega_F ,
+\]
+with the relativistic one-particle normalization used above, then the identity
+on this symmetric sector is
+\[
+  \mathbf 1_{\Hilb_1^{\odot r}}
+  =
+  \frac1{r!}
+  \int
+  \prod_{j=1}^r\dd\mu_m(q_j)\,
+  |\vec q_1,\ldots,\vec q_r\rangle_{\rm sym}
+  {}_{\rm sym}\langle \vec q_1,\ldots,\vec q_r| .
+\]
+The factor \(1/r!\) compensates for the \(r!\) labeled tuples that represent
+the same unordered Bose state.  For several species, the physical phase-space
+measure carries the product
+\[
+  \prod_\lambda\frac1{n_\lambda!},
+\]
+where \(n_\lambda\) is the number of identical outgoing particles of species
+\(\lambda\).  Fermionic sectors have the corresponding antisymmetric identity
+resolution; the same factorial appears, with signs carried by the
+antisymmetric external wavefunctions and matrix elements.
 
 For a two-particle initial state, the invariant flux factor is
 \[
@@ -319,8 +347,9 @@ Therefore
   \frac{|\vec q_*|}{|\vec p_*|}
   |\mathcal M(s,\Omega)|^2 .
 \]
-For identical final particles, the right hand side is divided by \(2\) when
-the integral is taken over the full labeled solid angle.
+For two identical final particles, the symmetric two-particle identity
+resolution supplies the factor \(1/2\) when the integral is written over the
+full labeled solid angle.
 
 For elastic scattering of identical scalar particles the preceding formula
 already gives the total cross section.  Since
@@ -347,7 +376,8 @@ energy-conservation integral is
 \]
 Together with \(E_1E_2v_{\rm rel}=|\vec p_*|E_{\rm cm}\), this reduces the
 labeled two-body phase-space integral to the same result above, with the
-factor \(1/2\) supplied by the two identical final particles.
+factor \(1/2\) supplied by the symmetric two-particle resolution of the
+identity.
 
 For the tree-level \(\phi^4\) example with a single scalar mass \(m\), the
 elastic kinematics obey
@@ -470,8 +500,8 @@ Using
   =
   \frac{k\,\omega_1\omega_2}{E},
 \]
-and including the factor \(1/2\) for unordered identical-particle states, one
-finds
+and using the \(1/2\) in the symmetric two-particle resolution of the identity,
+one finds
 \[
   \mathcal N(E)
   =

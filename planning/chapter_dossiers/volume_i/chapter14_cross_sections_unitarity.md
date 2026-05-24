@@ -48,6 +48,11 @@
   \(\delta^{(d)}(0)=V/(2\pi)^d\).
 - The \(m\)-body phase-space measure and flux factor are fixed in the chosen
   normalization.
+- Identical-particle factors are derived from the resolution of the identity
+  on symmetric or antisymmetric asymptotic Fock sectors:
+  \(\mathbf 1_{\Hilb_1^{\odot r}}\) carries
+  \(r!^{-1}\int\prod_j\dd\mu(q_j)|q_1,\ldots,q_r\rangle
+  \langle q_1,\ldots,q_r|\).
 - For \(2\to2\) scattering in \(D=4\),
   \[
     \frac{\dd\sigma}{\dd\Omega}
@@ -55,7 +60,8 @@
     \frac{1}{64\pi^2s}
     \frac{|\vec q_*|}{|\vec p_*|}|\mathcal M|^2
   \]
-  before identical-particle symmetry factors.
+  before specializing the outgoing identity resolution to identical-particle
+  sectors.
 - Unitarity gives the amplitude-level cutting relation and the optical
   theorem.
 - The optical theorem is stated as a complete outgoing-state sum.  Finite
@@ -66,7 +72,8 @@
   regulator.
 - Partial waves diagonalize scalar \(2\to2\) scattering in the COM frame.
 - The COM partial-wave state normalization is derived from the radial
-  energy-conservation delta function, including the identical-particle factor.
+  energy-conservation delta function, including the identical-particle factor
+  from the symmetric two-particle identity resolution.
 - The sharp-momentum partial-wave kernel is reconstructed explicitly from
   \(S_\ell(E)-1\), before converting to the invariant amplitude convention.
 - Elastic unitarity gives \(S_\ell=e^{2i\delta_\ell}\) and
