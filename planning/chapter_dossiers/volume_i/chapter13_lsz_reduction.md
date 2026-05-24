@@ -25,6 +25,9 @@
 - Haag--Ruelle wave operators
   \(\Omega_{\mathrm{in/out}}:\mathcal F_s(\Hilb_1)\to\Hilb\) already
   constructed in the preceding chapter.
+- The symmetric Fock space and plus permutation signs are scalar-boson data.
+  Fermionic external particles use the graded asymptotic Fock space with signs
+  fixed by spin-statistics.
 - Scattering operator \(S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) on
   the asymptotic Fock space when the incoming and outgoing ranges coincide.
 - Relativistically normalized generalized momentum states.
@@ -75,6 +78,9 @@
   whose nonzero limit is precisely the external one-particle pole residue.
 - Disconnected two-point factors reproduce the identity part of the
   S-operator.
+- The identity kernel for identical scalar particles is the symmetric
+  permutation sum; the fermionic analogue carries the antisymmetric Koszul
+  signs.
 - The relation between \(\mathcal M\) and \(M_\delta\) is fixed by the external
   relativistic normalization factors.
 - The full scattering kernel decomposes into products of connected kernels

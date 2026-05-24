@@ -74,6 +74,9 @@
   separation.
 - The limits carry the bosonic Fock inner product and define isometric wave
   operators from free Fock space into the physical Hilbert space.
+- The use of \(\mathcal F_s(\Hilb_1)\) is scoped to the scalar bosonic sector;
+  the graded asymptotic Fock space for general spin/statistics is fixed by the
+  spin-statistics theorem stated in the spinor chapter.
 - Generalized in/out momentum kernels obey the symmetrized relativistic
   delta-function normalization.
 - The S-operator is \(\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) when the
