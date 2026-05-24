@@ -1707,9 +1707,111 @@ For \(n\ge1\), the coefficient of \(\epsilon^{-n}\) gives
   \bigl(\delta_I^{(1)}-D_\epsilon\bigr)
   K_I^{(n+1)}(\lambda).
 \]
-These relations are triangular in perturbation theory: once
-\(\beta_I(\lambda)\) and lower perturbative orders of the pole terms are
-known, higher pole coefficients are fixed order by order.
+The word ``recursive'' here has a precise algebraic meaning.  Choose a
+perturbative filtration of the formal power-series ring in the couplings, for
+example by loop order or by the usual interaction degree in a finite
+renormalizable chart.  Let \(\mathcal P_{I,L}\) denote the finite-dimensional
+space of homogeneous monomials of filtration degree \(L\) that can contribute
+to the pole coefficient of \(g_I^\epsilon\).  The operator
+\[
+  A_I:=\delta_I^{(1)}-D_\epsilon
+\]
+acts diagonally on monomials:
+\[
+  A_I(\lambda^\alpha)
+  =
+  \left(
+    \delta_I^{(1)}
+    -
+    \sum_J\alpha_J\delta_J^{(1)}
+  \right)\lambda^\alpha,
+  \qquad
+  \lambda^\alpha=\prod_J\lambda_J^{\alpha_J}.
+\]
+Thus the only possible obstruction to solving the pole equation in a given
+monomial sector is a resonance
+\[
+  \delta_I^{(1)}=\sum_J\alpha_J\delta_J^{(1)}.
+\]
+
+\begin{proposition}[Existence and uniqueness of the MS pole recursion]
+\label{prop:ms-pole-recursion-existence-uniqueness}
+Assume the following data.
+\begin{enumerate}[label=(\roman*)]
+\item The chosen MS coordinate chart has a finite perturbative filtration:
+  for each \(I\) and each filtration degree \(L\), only finitely many monomials
+  occur in \(\mathcal P_{I,L}\).
+\item The pole order is bounded at fixed perturbative order: the component
+  \(K_{I,L}^{(n)}\) of \(K_I^{(n)}\) in \(\mathcal P_{I,L}\) vanishes for
+  \(n\) larger than a finite bound depending on \(L\).
+\item For every sector in which a new coefficient \(K_{I,L}^{(n+1)}\) is to be
+  solved, the linear map
+  \(A_I=\delta_I^{(1)}-D_\epsilon:\mathcal P_{I,L}\to\mathcal P_{I,L}\) is
+  invertible.
+\end{enumerate}
+Then a formal target-dimension beta-function vector field
+\(\beta_I(\lambda)\) determines at most one family of pole coefficients
+\(\{K_I^{(n)}\}_{n\ge1}\) satisfying the MS pole equations and the MS condition
+that no finite counterterm part is added.  If the right-hand sides produced by
+the recursion lie in the corresponding sectors \(\mathcal P_{I,L}\), the
+solution exists and is given degree by degree by
+\[
+  K_{I,L}^{(1)}
+  =
+  A_I^{-1}
+  \left[
+    \beta_I-\delta_I^{(0)}\lambda_I
+  \right]_L,
+\]
+and, for \(n\ge1\),
+\[
+  K_{I,L}^{(n+1)}
+  =
+  A_I^{-1}
+  \left[
+    \bigl(D_\beta-\delta_I^{(0)}\bigr)K_I^{(n)}
+  \right]_L .
+\]
+Here \([\cdots]_L\) denotes projection to filtration degree \(L\).
+\end{proposition}
+
+\begin{proof}
+At fixed \((I,L)\), the sector \(\mathcal P_{I,L}\) is finite-dimensional by
+hypothesis.  The coefficient of \(\epsilon^0\) is the linear equation
+\[
+  A_I K_{I,L}^{(1)}
+  =
+  [\beta_I-\delta_I^{(0)}\lambda_I]_L .
+\]
+Invertibility of \(A_I\) on \(\mathcal P_{I,L}\) gives a unique solution
+whenever the displayed right-hand side belongs to that sector.  Suppose
+inductively that \(K_I^{(n)}\) has already been determined through the
+filtration degree under consideration.  The coefficient of \(\epsilon^{-n}\)
+is
+\[
+  A_I K_{I,L}^{(n+1)}
+  =
+  \left[
+    \bigl(D_\beta-\delta_I^{(0)}\bigr)K_I^{(n)}
+  \right]_L ,
+\]
+which is again a finite-dimensional linear equation with the same invertible
+left-hand side.  This gives existence, when the right-hand side is in the
+chosen local sector, and uniqueness.  The pole-order bound ensures that at a
+fixed perturbative degree only finitely many such equations must be solved.
+If two solutions existed, their difference in the first sector where they
+differ would lie in \(\ker A_I\), contradicting the invertibility hypothesis.
+\end{proof}
+
+In ordinary renormalizable MS computations these hypotheses are supplied by
+the graph expansion: at fixed loop order there are finitely many local
+counterterm monomials in the selected chart, locality bounds the pole order,
+and nonresonance of \(A_I\) is checked on the monomials that actually occur.
+If a resonant monomial is present, the pole equations do not by themselves
+give a unique coefficient in that sector; one must add a normalization
+condition, enlarge the coordinate chart, or treat the resonance as a
+consistency condition rather than an automatic recursion.
+
 In a homogeneous sector in which every coupling entering the pole coefficient
 for \(g_I^\epsilon\) has the same \(\epsilon\)-slope
 \(\delta_J^{(1)}=\delta_I^{(1)}\), the operator \(D_\epsilon\) reduces on that

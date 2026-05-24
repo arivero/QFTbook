@@ -100,7 +100,11 @@ The chapter must define:
 - the Laurent expansion of \(\beta_I^\epsilon\) and the conclusion
   \(\beta_I^\epsilon=\beta_I(\lambda)+\epsilon\delta_I^{(1)}\lambda_I\);
 - the recursive pole equations that determine \(K_I^{(n)}\) from
-  \(\beta_I(\lambda)\).
+  \(\beta_I(\lambda)\);
+- the finite-filtration hypotheses under which the MS pole recursion has a
+  unique solution at each perturbative order: finite-dimensional homogeneous
+  sectors, bounded pole order, and invertibility of
+  \(A_I=\delta_I^{(1)}-D_\epsilon\) on each new monomial sector.
 
 ## Claim Ledger
 
@@ -158,6 +162,15 @@ The chapter must define:
     recursively, with the homogeneous-sector form reproducing the source
     equations involving
     \((1-\lambda_J\partial_{\lambda_J})K_I^{(n)}\).
+18. The recursive determination is a theorem only after the finite
+    perturbative filtration and nonresonance hypotheses are stated.  At fixed
+    \(I\), filtration degree \(L\), and pole order \(n+1\), the new coefficient
+    is the solution of the finite-dimensional linear system
+    \(A_IK_{I,L}^{(n+1)}
+    =[(D_\beta-\delta_I^{(0)})K_I^{(n)}]_L\), with
+    \(A_I=\delta_I^{(1)}-D_\epsilon\).  If \(A_I\) has a resonant kernel in
+    the sector, the pole equation is not a unique recursion without an
+    additional normalization or an enlarged coordinate chart.
 
 ## Figure Requirements
 
@@ -198,6 +211,9 @@ The chapter must define:
 - Separate noncoincident correlator equations from contact-term conventions.
 - Keep the MS discussion as a coordinate construction, not as an ontological
   foundation.
+- Do not describe the pole equations as triangular without stating the
+  finite-dimensional sector and the invertibility/nonresonance condition for
+  \(A_I=\delta_I^{(1)}-D_\epsilon\).
 - Keep Wilsonian composite representatives, connected insertions, and 1PI
   insertion kernels as separate objects connected by explicit maps.
 - State the Euclidean source sign convention before using source derivatives.
@@ -234,3 +250,9 @@ The chapter must define:
   transitions, proves the connection transformation law, and derives
   \(\gamma_{IK}=\partial\beta_K/\partial g_I\) from the cotangent pairing with
   the linearized RG flow.
+- 2026-05-24 issue #242 pass: added a labeled existence/uniqueness proposition
+  for the MS pole recursion.  The manuscript now defines the finite
+  homogeneous sectors, identifies the matrix \(A_I=\delta_I^{(1)}-D_\epsilon\)
+  to invert, states the bounded-pole-order and nonresonance hypotheses, and
+  explains how resonant sectors require extra normalization rather than an
+  automatic triangular recursion.
