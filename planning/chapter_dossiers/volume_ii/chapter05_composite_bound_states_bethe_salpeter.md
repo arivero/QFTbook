@@ -48,8 +48,14 @@
   states of mass \(m\).
 - A composite bound state is a stable spectral state below the relevant
   two-particle threshold.
+- The existence of that state is an explicit spectral assumption; the chapter
+  derives pole and residue consequences rather than proving bound-state
+  existence from the Lagrangian.
 - The bubble-chain calculation is an approximation that isolates repeated
   two-particle propagation; it is used only in its domain of weak binding.
+- A zero of the bubble-chain denominator is a pole of the approximate kernel;
+  identifying it with an exact particle requires additional nonperturbative
+  control.
 - The Bethe--Salpeter kernel is defined to be two-particle irreducible in the
   channel being resummed.
 - Plane-wave bound-state kets are distributional and are used with covariant
@@ -91,6 +97,9 @@
     \mathcal G_P(p)\int { \dd^D q\over (2\pi)^D}\,
     \mathcal K_P(p,q)\widetilde\Phi_B(q;P).
   \]
+- The Bethe--Salpeter equation is a necessary residue equation for an existing
+  exact pole.  In a truncated kernel it is a self-consistency condition inside
+  the approximation, not an existence theorem for the underlying QFT.
 
 ## Figures
 

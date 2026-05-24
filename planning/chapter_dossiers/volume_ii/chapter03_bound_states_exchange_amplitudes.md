@@ -26,6 +26,9 @@
   a pole below a two-particle threshold represents a stable one-particle state
   coupled to that channel. Whether the state is elementary or composite is
   extra microscopic information.
+- Existence of a composite below-threshold pole is treated as a dynamical
+  spectral input, not as something derived from the Lagrangian by general
+  principles.
 - A short-range one-dimensional Schrödinger problem is used as a controlled
   mathematical model for the pole criterion.
 
@@ -74,6 +77,8 @@
   that channel.
 - The residue of a bound-state pole factorizes into couplings of the
   bound-state one-particle vector to the external two-particle channel.
+- The chapter computes consequences of an isolated stable pole; it does not
+  prove that an arbitrary interacting QFT contains such a pole.
 
 ## Figure Requirements
 

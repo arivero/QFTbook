@@ -13,6 +13,18 @@ mass satisfies
   0<M_B<2m .
 \]
 The inequality places the state below the two-\(\phi\) continuum threshold.
+
+\begin{assumption}[Bound-state pole hypothesis]
+The existence of \(B\) is an input in this chapter.  More explicitly, assume
+that the Hilbert space contains an isolated positive-energy one-particle
+subrepresentation of mass \(M_B\), separated from the two-\(\phi\) continuum,
+and that at least one operator in the two-\(\phi\) channel has nonzero matrix
+element with this state.  The following sections derive the consequences of
+that spectral hypothesis for four-point functions, scattering amplitudes, and
+Bethe--Salpeter residues.  They do not give a general proof that an arbitrary
+Lagrangian with attractive interactions has such a state.
+\end{assumption}
+
 It is then represented, on the first sheet in the sense of
 Section~\ref{sec:physical-region-and-first-sheet}, by a pole of the appropriate
 four-point function at
@@ -83,6 +95,11 @@ the two-particle threshold.  In \(D=4\) the same channel has a different
 threshold behavior and the pole condition involves the renormalized contact
 interaction at threshold; the numerical estimate for \(M_B\) below is therefore
 not a dimension-independent formula.
+The word generate in this paragraph refers to the specified bubble-chain
+approximation.  A zero of the resummed denominator is a pole of that
+approximate kernel.  Promoting it to an exact particle statement for a complete
+model requires additional nonperturbative control of the spectrum and of the
+analytic continuation of the exact four-point function.
 
 Consider the scalar theory
 \[
@@ -200,8 +217,9 @@ coupling,
   \simeq
   2m-\frac{g^2}{256m^3}.
 \]
-Thus the chain produces a stable pole slightly below the two-particle
-threshold.
+Thus, within the \(D=2\) bubble-chain approximation and for attractive weak
+coupling, the resummed denominator has a stable-pole zero slightly below the
+two-particle threshold.
 
 The calculation uses the local expansion around a perturbative vacuum. A
 complete scalar model with an attractive quartic term must specify the
@@ -471,6 +489,14 @@ operator for which
 \]
 The pole condition is thus an eigenvalue-one condition for the repeated
 two-particle propagation at \(P^2=-M_B^2\).
+This is a necessary pole-residue equation once the exact kernel and the
+isolated pole exist.  By itself it is not an existence theorem.  An existence
+proof would have to define the exact kernel as an operator on an appropriate
+function space, control its analytic dependence on \(P^2\), and show that the
+eigenvalue-one condition occurs at a point corresponding to a normalizable
+positive-energy state below the continuum.  In truncated kernels, a solution
+of the homogeneous equation is therefore evidence inside the approximation,
+not a derivation of the exact spectrum from the Lagrangian.
 The unamputated Bethe--Salpeter amplitude is related to the amputated vertex by
 \[
   \widetilde\Phi_B(p;P)
