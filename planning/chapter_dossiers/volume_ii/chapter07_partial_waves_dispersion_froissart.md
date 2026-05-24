@@ -12,6 +12,9 @@ This chapter should explain how angular analyticity gives a Lehmann ellipse,
 how partial-wave unitarity turns positivity into an angular-momentum cutoff,
 how polynomial boundedness gives the Froissart-Martin logarithmic bound, and
 how fixed-\(t\) dispersion relations with subtractions arise.
+The detailed angular derivation is four-dimensional.  Any \(D>4\) logarithmic
+power statement must be separated as a conditional Gegenbauer/angular-tube
+generalization, not inferred from the displayed \(D=4\) Lehmann ellipse.
 
 The chapter must not present these statements as slogans. It must state the
 hypotheses:
@@ -48,6 +51,11 @@ hypotheses:
 - \(\sigma_{\mathrm{tot}}\): total cross section in this normalization.
 - \(N\): number of subtractions.
 - \(P_{N-1}(s;t)\): subtraction polynomial.
+- \(\lambda=(D-3)/2\): Gegenbauer index in \(D\) spacetime dimensions.
+- \(C_\ell^\lambda(x)\): Gegenbauer polynomial replacing \(P_\ell(x)\) for
+  \(D>4\).
+- \(g_\ell^{(D)}\): degree-\(\ell\) spherical-harmonic degeneracy on
+  \(S^{D-2}\), growing as \(O(\ell^{D-3})\).
 
 ## Claim Ledger
 
@@ -92,6 +100,11 @@ hypotheses:
     the missing axiomatic step, namely two subtractions without an independent
     finite-subtraction premise.  The chapter must cite it and must not conflate
     it with the conditional bootstrap.
+14. The \(D>4\) estimate \(\sigma_{\mathrm{tot}}\le C(\log s)^{D-2}\) is a
+    separate conditional statement: assume a higher-dimensional angular tube
+    whose Gegenbauer coefficients decay like
+    \(\exp[-\ell\eta_*(s)]\), then combine unitarity with
+    \(\sum_{\ell\le L}g_\ell^{(D)}=O(L^{D-2})\).
 
 ## Figure Requirements
 
@@ -100,7 +113,8 @@ hypotheses:
 - Fixed-\(t\) dispersion contour with right and left cuts and subtraction circles.
 - Effective-radius schematic for the \(D\)-dimensional scaling
   \(\sigma_{\mathrm{tot}}\asymp R_{\mathrm{eff}}^{D-2}\), explicitly marked
-  as a restatement of the bound rather than an additional assumption.
+  as a restatement of the conditional higher-dimensional bound rather than an
+  additional assumption.
 
 ## Audit Notes
 
@@ -113,3 +127,6 @@ hypotheses:
 - 2026-05-24 issue pass: separated the conditional bootstrap to \(N=2\) from
   the stronger Lukaszuk-Martin/Yndurain two-subtraction theorem and recorded
   the citations in the chapter.
+- 2026-05-24 issue pass: separated the \(D=4\) Lehmann-ellipse derivation from
+  the \(D>4\) Gegenbauer/angular-tube generalization and added the degeneracy
+  counting needed for the \((\log s)^{D-2}\) power.

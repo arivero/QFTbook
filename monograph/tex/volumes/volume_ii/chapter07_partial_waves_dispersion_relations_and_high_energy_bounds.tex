@@ -5,8 +5,12 @@
 
 \section{Hypotheses and Angular Analyticity}
 
-Work in \(D=4\) and consider scattering of the lightest stable identical
-scalar particle of mass \(m\).  The connected invariant amplitude is denoted
+Work in \(D=4\) for the detailed Lehmann-ellipse and Legendre-polynomial
+derivation.  The higher-dimensional logarithmic-power estimate is separated
+near Theorem~\ref{thm:froissart-martin-bound} as an additional
+Gegenbauer/angular-tube hypothesis.  Consider scattering of the lightest
+stable identical scalar particle of mass \(m\).  The connected invariant
+amplitude is denoted
 by
 \[
   \mathcal M(s,t).
@@ -974,6 +978,109 @@ for \(n\le\ell\), and the derivative is zero for \(n>\ell\).  This positivity
 allows the Taylor expansion in \(t\) to commute with the dispersive integral
 inside its convergence disk.
 
+\begin{hypothesis}[Higher-dimensional angular tube]
+\label{hyp:higher-dimensional-angular-tube}
+Let \(D\ge4\) be the spacetime dimension and set
+\[
+  \lambda=\frac{D-3}{2}.
+\]
+For scalar \(2\to2\) scattering in the center-of-mass frame, the angular
+variable is a point on \(S^{D-2}\).  For an \(SO(D-1)\)-invariant scalar
+amplitude this dependence is through \(x=\cos\theta\), and the partial-wave
+basis is the Gegenbauer basis \(C_\ell^\lambda(x)\).  The degeneracy of
+degree-\(\ell\) spherical harmonics on \(S^{D-2}\) is
+\[
+  g_\ell^{(D)}
+  =
+  \frac{(2\ell+D-3)(\ell+D-4)!}{\ell!(D-3)!}
+  =
+  O(\ell^{D-3}).
+\]
+Assume that the \(D\)-dimensional analogue of the Lehmann ellipse is available
+in the following form.  For every \(0<t_*<t_0\) and all sufficiently large
+\(s\), the amplitude has an \(SO(D-1)\)-invariant holomorphic continuation to
+a complex angular tube containing the point
+\[
+  x_*(s)=1+\frac{2t_*}{s-4m^2}
+  =
+  \cosh\eta_*(s),
+  \qquad
+  \eta_*(s)=2\sqrt{\frac{t_*}{s}}+O(s^{-3/2}),
+\]
+and its Gegenbauer coefficients obey the Cauchy-type large-\(\ell\) estimate
+\[
+  |a_\ell(s)|\le A\,s^N\,\ell^q\,\ee^{-\ell\eta_*(s)}
+\]
+for constants \(A,N,q\) depending on the chosen tube margin but not on
+\(\ell\) or large \(s\).  This hypothesis is the higher-dimensional
+replacement for the \(D=4\) Lehmann ellipse and Legendre-coefficient estimate;
+it is an additional angular-domain input beyond the displayed
+four-dimensional ellipse.
+\end{hypothesis}
+
+\begin{proposition}[Angular counting in \(D\) spacetime dimensions]
+\label{prop:higher-dimensional-froissart-counting}
+Assume Hypothesis~\ref{hyp:higher-dimensional-angular-tube}, partial-wave
+unitarity, a two-subtraction input giving the required polynomial bound at
+fixed nonphysical \(0<t_*<t_0\), and the usual massive scalar kinematics.
+Then
+\[
+  \sigma_{\rm tot}(s)\le C_D(\log s)^{D-2}
+\]
+for sufficiently large \(s\), with \(C_D\) depending on the normalization,
+\(t_0\), and the angular-tube constants.
+\end{proposition}
+
+\begin{proof}
+With the normalization convention absorbed into \(\mathcal N_D(s)\), the
+\(D\)-dimensional scalar partial-wave expansion has the form
+\[
+  \mathcal M_D(s,x)
+  =
+  \mathcal N_D(s)
+  \sum_{\ell=0}^{\infty}
+  g_\ell^{(D)} a_\ell(s)
+  \frac{C_\ell^\lambda(x)}{C_\ell^\lambda(1)} ,
+\]
+with only even \(\ell\) in the identical-boson channel.  Omitting the odd
+partial waves changes constants but not powers.  Unitarity bounds the physical
+weights \(w_\ell(s)=1-\operatorname{Re}S_\ell(s)\) by a constant independent
+of \(s\) and \(\ell\).  The total cross section has the high-energy form
+\[
+  \sigma_{\rm tot}(s)
+  \le
+  C_D'\,s^{-(D-2)/2}
+  \sum_{\ell\ge0} g_\ell^{(D)}w_\ell(s),
+\]
+where \(C_D'\) records the normalization convention and the
+\((1+O(m^2/s))\) phase-space factor.
+
+The angular-tube estimate gives exponential suppression
+\(\ee^{-\ell\eta_*(s)}\) of the partial-wave coefficients up to powers of
+\(\ell\).  Compatibility with the polynomial bound \(s^N\) at the
+nonphysical point therefore permits order-one partial waves only up to
+\[
+  L(s)=C\sqrt{s}\log s
+\]
+for a sufficiently large constant \(C\).  The remaining tail is absorbed into
+the polynomial bound by the exponential decay.  Hence
+\[
+  \sum_{\ell\le L(s)}g_\ell^{(D)}
+  =
+  O(L(s)^{D-2}),
+\]
+because \(g_\ell^{(D)}=O(\ell^{D-3})\).  Substituting this into the preceding
+cross-section estimate gives
+\[
+  \sigma_{\rm tot}(s)
+  \le
+  C_D''s^{-(D-2)/2}
+  \bigl(\sqrt{s}\log s\bigr)^{D-2}
+  =
+  C_D(\log s)^{D-2}.
+\]
+\end{proof}
+
 \begin{theorem}[Froissart--Martin high-energy bound]
 \label{thm:froissart-martin-bound}
 Consider massive \(2\to2\) scalar scattering with mass gap and no massless
@@ -999,7 +1106,9 @@ constants \(M_0\) and \(s_0\) such that
   \qquad s\ge s_0 .
   \label{eq:froissart-martin-four-dimensional-bound}
 \end{equation}
-In \(D\) spacetime dimensions the corresponding geometric estimate is
+In \(D\) spacetime dimensions, after replacing the \(D=4\) Lehmann-ellipse
+input by Hypothesis~\ref{hyp:higher-dimensional-angular-tube}, the
+corresponding conditional estimate is
 \begin{equation}
   \sigma_{\rm tot}(s)\le C\,(\log s)^{D-2}.
   \label{eq:froissart-martin-d-dimensional-bound}
@@ -1019,16 +1128,16 @@ that can contribute with order-one strength by
 \(\sigma_{\rm tot}\), and summing the unitary partial-wave weights up to
 \(L(s)\) gives the coefficient in
 \eqref{eq:froissart-martin-four-dimensional-bound}, with the harmless
-\((1-\delta)^{-2}\) recording the margin in the ellipse estimate.  In \(D\)
-dimensions the same argument sums over transverse angular
-momenta in \(D-2\) impact-parameter directions, giving the power
-\((\log s)^{D-2}\) in
-\eqref{eq:froissart-martin-d-dimensional-bound}.
+\((1-\delta)^{-2}\) recording the margin in the ellipse estimate.  The
+displayed \(D\)-dimensional estimate is the separate conditional
+Gegenbauer/angular-counting result of
+Proposition~\ref{prop:higher-dimensional-froissart-counting}.
 \end{proof}
 
 Equation~\eqref{eq:froissart-martin-d-dimensional-bound} may be restated
-through an effective transverse radius.  If one defines \(R_{\rm eff}(s)\) by
-the geometric scaling relation
+through an effective transverse radius whenever the higher-dimensional
+angular-tube hypothesis has been assumed.  If one defines \(R_{\rm eff}(s)\)
+by the geometric scaling relation
 \[
   \sigma_{\rm tot}(s)\asymp R_{\rm eff}(s)^{D-2},
 \]
