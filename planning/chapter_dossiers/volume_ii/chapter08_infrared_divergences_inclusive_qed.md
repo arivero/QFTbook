@@ -54,6 +54,11 @@ The chapter should state:
   the inclusive degeneracy sum, or at fixed perturbative order combine all
   degenerate real-emission terms and virtual terms contributing to that
   coefficient, and only then remove the infrared regulator;
+- a labeled finite-degeneracy KLN theorem with explicit hypotheses:
+  finite-dimensional unperturbed degenerate subspaces, bounded self-adjoint
+  perturbation, existence of the long-time inclusive transition probability
+  after regulators, and unitary regulator-singular mixing inside the
+  degenerate subspaces;
 - the observable-algebra statement that limiting electric flux at spacelike
   infinity is a superselection datum in charged sectors;
 - Buchholz's theorem that nonzero abelian gauge charge is incompatible with a
@@ -124,7 +129,16 @@ Additional symbols introduced in the charged-sector discussion:
     \]
     is regulator independent, whereas an individual fixed-\(N\) term is not.
 12. For massless charged particles, collinear degeneracies require the KLN
-   sum and average over detector-degenerate sectors.
+   sum and average over detector-degenerate sectors.  The abstract
+   finite-degeneracy theorem assumes finite-dimensional degenerate subspaces
+   \(P_A\mathcal H_0\), \(P_B\mathcal H_0\), a bounded perturbation, an
+   existing long-time inclusive limit, and unitary regulator-singular mixing
+   inside the degenerate subspaces; under these hypotheses the trace
+   \[
+     d_A^{-1}\operatorname{Tr}_{P_B\mathcal H_0}
+     (S_{\rm fin}S_{\rm fin}^\dagger)
+   \]
+   is regulator independent.
 13. Dressed charged asymptotic states use the same eikonal data as coherent
    soft photon clouds, but the zero-cutoff Faddeev--Kulish profile is not an
    element of the photon one-particle Hilbert space, so the limiting dressing
@@ -168,3 +182,7 @@ Additional symbols introduced in the charged-sector discussion:
   Bloch--Nordsieck construction and added a coefficientwise cancellation
   proposition showing exactly how the fixed-order sum over unresolved photon
   numbers cancels the regulator logarithms.
+- 2026-05-24 issue #258 pass: added a labeled finite-degeneracy KLN theorem
+  with hypotheses and proof, and separated that abstract theorem from the
+  additional regulator and detector-cell construction needed in relativistic
+  field theory.

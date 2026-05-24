@@ -867,11 +867,121 @@ follow from the same soft factorization formulas.
 The discussion so far treated massive charged particles, where the angular
 integral is finite.  If massless charged particles occur, photon emission
 collinear to a charged external line produces additional singularities.  The
-Kinoshita--Lee--Nauenberg construction enlarges the inclusive sum: one sums
-over final states and averages over initial states inside the same detector
-degeneracy class.  In symbols, if \([\alpha]\) and \([\beta]\) are the
-incoming and outgoing equivalence classes defined by the detector resolution,
-one considers
+soft Bloch--Nordsieck sum is then only part of the required inclusive
+construction.  The finite-degeneracy statement behind the
+Kinoshita--Lee--Nauenberg prescription is the following.
+
+\begin{theorem}[Finite-degeneracy KLN cancellation]
+\label{thm:finite-degeneracy-kln}
+Let \(\mathcal H_0\) be a Hilbert space with unperturbed Hamiltonian \(H_0\).
+Let \(P_A\) and \(P_B\) be the orthogonal projectors onto two
+finite-dimensional degenerate subspaces of \(H_0\), with
+\[
+  d_A=\operatorname{rank}P_A<\infty,\qquad
+  d_B=\operatorname{rank}P_B<\infty .
+\]
+Let \(H=H_0+V\), where \(V\) is a bounded self-adjoint perturbation, and let
+\[
+  U_T
+  =
+  \mathcal T\exp\left\{-\ii\int_{-T}^{T}
+    e^{\ii H_0t}V e^{-\ii H_0t}\,\dd t\right\}
+\]
+be the interaction-picture evolution, possibly with an adiabatic switch-on
+understood.  Assume that, after introducing whatever ultraviolet and infrared
+regulators are being used, the inclusive long-time limit
+\[
+  \mathcal P^{(\rho)}_{B|A}
+  =
+  \lim_{T\to\infty}
+  \frac{1}{d_A}\operatorname{Tr}_{\mathcal H_0}
+  \left(P_B U_T P_A U_T^\dagger P_B\right)
+\]
+exists coefficientwise in the perturbation expansion.  Finally assume that
+the regulator-singular factors associated with exact degeneracy act by
+unitary rotations inside the degenerate subspaces: for the
+\(P_A\to P_B\) block of the regulated scattering operator,
+\[
+  P_B S_\rho P_A
+  =
+  U_B(\rho)\,S_{\rm fin}(\rho)\,U_A(\rho)^\dagger ,
+\]
+where \(U_A(\rho)\) and \(U_B(\rho)\) are unitary on \(P_A\mathcal H_0\) and
+\(P_B\mathcal H_0\), respectively, and \(S_{\rm fin}(\rho)\) has a finite
+coefficientwise limit as the regulator \(\rho\downarrow0\).  Then
+\[
+  \lim_{\rho\downarrow0}\mathcal P^{(\rho)}_{B|A}
+  =
+  \frac{1}{d_A}
+  \operatorname{Tr}_{P_B\mathcal H_0}
+  \left(S_{\rm fin}S_{\rm fin}^\dagger\right)
+\]
+exists coefficientwise.  The final-state sum removes the outgoing
+degenerate rotation \(U_B(\rho)\), and the initial-state average removes the
+incoming degenerate rotation \(U_A(\rho)\).
+\end{theorem}
+
+\begin{proof}
+The normalized incoming density matrix for an unresolved initial degeneracy
+class is
+\[
+  \varrho_A=\frac{P_A}{d_A}.
+\]
+The inclusive probability of finding the outgoing state in \(P_B\mathcal H_0\)
+is
+\[
+  \operatorname{Tr}_{\mathcal H_0}
+  \left(P_B S_\rho \varrho_A S_\rho^\dagger P_B\right)
+  =
+  \frac1{d_A}
+  \operatorname{Tr}_{P_B\mathcal H_0}
+  \left(
+    P_B S_\rho P_A S_\rho^\dagger P_B
+  \right).
+\]
+Insert
+\[
+  P_B S_\rho P_A
+  =
+  U_B(\rho)S_{\rm fin}(\rho)U_A(\rho)^\dagger .
+\]
+Because \(U_A(\rho)^\dagger U_A(\rho)=P_A\) on the incoming degenerate
+subspace and \(U_B(\rho)^\dagger U_B(\rho)=P_B\) on the outgoing degenerate
+subspace, cyclicity of the finite-dimensional trace gives
+\[
+\begin{aligned}
+  \mathcal P^{(\rho)}_{B|A}
+  &=
+  \frac1{d_A}
+  \operatorname{Tr}_{P_B\mathcal H_0}
+  \left[
+    U_B(\rho)S_{\rm fin}(\rho)
+    S_{\rm fin}(\rho)^\dagger U_B(\rho)^\dagger
+  \right]
+\\
+  &=
+  \frac1{d_A}
+  \operatorname{Tr}_{P_B\mathcal H_0}
+  \left[
+    S_{\rm fin}(\rho)S_{\rm fin}(\rho)^\dagger
+  \right].
+\end{aligned}
+\]
+The assumed coefficientwise limit of \(S_{\rm fin}(\rho)\) therefore gives the
+claimed coefficientwise limit of the inclusive probability.
+\end{proof}
+
+The theorem is an abstract finite-regulator statement.  In a relativistic
+field theory the interaction is generally an unbounded operator-valued
+distribution on the physical Hilbert space, and exact massless degeneracy is
+typically continuous rather than finite-dimensional.  The theorem identifies
+the finite-volume, energy-resolution, and regulator structure that must be
+implemented before the regulator limits are taken.  After those
+regularizations have turned detector-degenerate sectors into finite
+subspaces, the inclusive construction sums over final states and averages over
+initial states inside the same detector degeneracy class.  In symbols, if
+\([\alpha]\) and \([\beta]\) are the incoming and outgoing equivalence classes
+defined by the detector resolution, one considers
 \[
   P([\alpha]\to[\beta])
   =
