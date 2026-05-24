@@ -1,4 +1,4 @@
-# Quantum Field Theory
+# Notes on Quantum Field Theory
 
 This repository contains the working manuscript and project infrastructure for
 a comprehensive multi-volume monograph on quantum field theory.
