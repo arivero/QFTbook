@@ -22,6 +22,13 @@
   Simmons-Duffin's bootstrap lectures for CFT scaling-operator language.
   External sources orient theorem boundaries; the chapter follows the local
   logical order.
+- `SRC-EXTERNAL`: Smirnov and Chelkak--Hongler--Izyurov for rigorous
+  two-dimensional planar Ising scaling limits; Nelson, Simon, and
+  Glimm--Jaffe for \(P(\phi)_2\) and massive \(\phi^4_3\) constructive
+  scalar field theories with OS-to-Wightman reconstruction;
+  Aizenman--Duminil-Copin and its corrigendum, together with earlier
+  Aizenman/Fr\"ohlich triviality results, for four-dimensional and
+  above-four-dimensional Ising/\(\phi^4\) triviality status.
 
 ## Construction Task
 
@@ -43,6 +50,10 @@ The chapter must define and derive:
   quoted \(D=2\) and \(D=3\) values from the local source;
 - the scaling limit in which lattice spin correlators become correlators of a
   continuum Ising field theory;
+- the dimension-dependent theorem-status table separating proved \(D=2\)
+  Ising scaling limits, constructive \(P(\phi)_2/\phi^4_3\) scalar results,
+  conditional/unproved \(D=3\) Ising continuum-limit/CFT claims, and
+  \(D\ge4\) scalar/Ising triviality theorems;
 - the signed thermal scaling parameter \(\mathfrak m\), whose absolute value
   is the continuum inverse correlation length and whose sign records the
   high- or low-temperature side;
@@ -144,6 +155,13 @@ The chapter must define and derive:
     Osterwalder--Schrader quadratic forms of the renormalized lattice
     observables converge; separated-point convergence or finite RG-coordinate
     convergence is insufficient.
+16. The theorem status of Ising/\(\phi^4\) continuum limits is
+    dimension-dependent: planar critical Ising has rigorous scaling-limit
+    constructions; \(P(\phi)_2\) and massive \(\phi^4_3\) have constructive
+    scalar QFT constructions with Wightman reconstruction; the
+    three-dimensional Ising fixed point as a CFT remains conditional; and
+    standard \(D\ge4\) critical Ising/\(\phi^4\) scaling limits in the known
+    theorem classes are Gaussian.
 
 ## Figure Requirements
 
@@ -217,3 +235,9 @@ The chapter must define and derive:
   cross-reflection coupling preserves reflection positivity, while negative
   next-nearest-neighbor or non-positive higher-derivative cross-plane kernels
   can fail.
+- 2026-05-24 issue #317 pass: added a dimension-dependent status table for
+  Ising and scalar \(\phi^4\) continuum limits.  The manuscript now names the
+  theorem-level two-dimensional Ising and massive \(\phi^4_3\) Wightman
+  constructive results, separates them from the still-conditional
+  three-dimensional Ising fixed point as a CFT, and records the
+  Aizenman--Duminil-Copin/four-dimensional triviality boundary.
