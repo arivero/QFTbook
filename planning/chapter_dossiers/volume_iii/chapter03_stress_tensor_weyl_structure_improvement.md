@@ -25,6 +25,24 @@ The chapter establishes:
   the separated-point correlators meaningful on the relevant test functions;
 - the convention relating flat-space \(T_{\mu\nu}\) to curved-background
   derivatives.
+- the trace-anomaly density \(\mathcal A[g]\), its sign convention relative to
+  the metric-source stress tensor, and the fact that functional derivatives of
+  \(\mathcal A[g]\) give contact terms in traced stress-tensor Ward identities;
+- the two-dimensional normalization
+  \(\mathcal A_2[g]=-c_{2d}R/(24\pi)\), tied to
+  \(\langle T(z)T(0)\rangle=c_{2d}/(2z^4)\);
+- the four-dimensional anomaly coefficients \(a_{\rm W},c_{\rm W},b_{\rm D}\)
+  in
+  \(\mathcal A_4=(16\pi^2)^{-1}(c_{\rm W}W^2-a_{\rm W}E_4+
+  b_{\rm D}\nabla^2R)\), with \(b_{\rm D}\) identified as scheme-dependent
+  and \(a_{\rm W},c_{\rm W}\) as fixed-point data;
+- the relation \(C_T=40c_{\rm W}/\pi^4\) in the chapter's stress-tensor
+  two-point normalization;
+- the link between the three separated four-dimensional \(TTT\) structures of
+  Chapter 8 and the Weyl-anomaly coefficients: \(c_{\rm W}\) is the
+  Ward-fixed \(C_T\) combination, \(a_{\rm W}\) is a second independent
+  anomaly functional extracted from the traced three-point Ward identity, and
+  a third combination remains separated \(TTT\) data.
 
 ## Claims To Verify
 
@@ -40,6 +58,14 @@ The chapter establishes:
 5. Scaling-degree/contact-term arguments classify ultraviolet ambiguities at
    coincident stress insertions; they do not replace the infrared construction
    of the massless source functional.
+6. The symbols \(a,b,c\) used for the Osborn--Petkou separated \(TTT\)
+   structures must be distinguished from the Weyl-anomaly coefficients
+   \(a_{\rm W},c_{\rm W}\); the chapter uses temporary notation
+   \(a_{\rm OP},b_{\rm OP},c_{\rm OP}\) at the point where both appear.
+7. The four-dimensional free-field stress-tensor structures form a convenient
+   basis for parity-even \(TTT\) data; the anomaly map in that basis uses
+   Dirac-fermion normalization, so a Weyl fermion contributes one half of the
+   fermion entry.
 
 ## Figures
 
@@ -51,3 +77,7 @@ The chapter establishes:
 - The chapter should not use conformal current conservation as an input before
   deriving the current from the source Ward identities.
 - All claims about removable virial currents require stated assumptions.
+- 2026-05-24 issue #279 pass: added the trace-anomaly central-charge section,
+  including the \(2D\) \(c_{2d}\) normalization, the \(4D\)
+  \(a_{\rm W},c_{\rm W}\) definitions, the \(C_T\)-\(c_{\rm W}\) relation, and
+  the connection to the Chapter 8 \(TTT\) structures.

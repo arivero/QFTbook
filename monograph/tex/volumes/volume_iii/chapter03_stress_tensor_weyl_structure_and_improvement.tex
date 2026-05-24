@@ -230,6 +230,163 @@ curved-space response data.  The present volume records this contact-term
 distinction; the special two-dimensional extension of conformal symmetry is
 deferred to a separate treatment.
 
+\section{Weyl Anomaly Coefficients and Stress-Tensor Correlators}
+
+Define the trace anomaly density by
+\begin{equation}
+  \delta_\omega\mathcal W[g]
+  =
+  -\int_M\dd^D x\,\sqrt g\,\omega(x)\,\mathcal A[g](x),
+  \qquad
+  \mathcal A[g](x)=\left\langle T^\mu{}_\mu(x)\right\rangle_g .
+  \label{eq:weyl-anomaly-density-definition}
+\end{equation}
+This sign follows from the convention
+\(\langle T^{\mu\nu}\rangle_g=-2g^{-1/2}\delta\mathcal W/\delta g_{\mu\nu}\)
+and \(\delta_\omega g_{\mu\nu}=2\omega g_{\mu\nu}\).  The anomaly density is a
+local scalar of Weyl weight \(D\), defined modulo the Weyl variation of local
+metric counterterms.  Its functional derivatives are contact terms in
+stress-tensor Ward identities.  More explicitly, let
+\[
+  X_{n-1}
+  =
+  T^{\rho_1\sigma_1}(x_1)\cdots
+  T^{\rho_{n-1}\sigma_{n-1}}(x_{n-1}).
+\]
+Tracing one stress tensor in an \(n\)-point distribution gives, away from
+separated-point terms,
+\[
+  \begin{aligned}
+  g_{\mu\nu}(x)
+  \left\langle T^{\mu\nu}(x)X_{n-1}\right\rangle
+  =
+  \left.
+  \frac{\delta^{\,n-1}\mathcal A[g](x)}
+       {\prod_{j=1}^{n-1}\delta g_{\rho_j\sigma_j}(x_j)}
+  \right|_{g=\delta}
+  +\text{index-variation contact terms}.
+  \end{aligned}
+\]
+Here the denominator denotes the iterated functional derivative with respect
+to the displayed metric components.  Thus anomaly coefficients are part of
+the metric-source definition of the stress-tensor correlators, even though
+\(T^\mu{}_\mu=0\) at separated flat-space points.
+
+In two dimensions, with the convention above, write
+\begin{equation}
+  \mathcal A_2[g]=-\frac{c_{2d}}{24\pi}R .
+  \label{eq:two-dimensional-weyl-anomaly}
+\end{equation}
+The same number \(c_{2d}\) is the Virasoro central charge in the holomorphic
+stress-tensor OPE normalization
+\[
+  \langle T(z)T(0)\rangle=\frac{c_{2d}}{2z^4}.
+\]
+The equality of these two definitions is obtained by taking two metric
+variations of \eqref{eq:two-dimensional-weyl-anomaly} around a flat metric and
+then rewriting the resulting contact Ward identity in complex coordinates.
+
+In four dimensions, define
+\[
+  E_4
+  =
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+  -4R_{\mu\nu}R^{\mu\nu}
+  +R^2,
+  \qquad
+  W^2
+  =
+  W_{\mu\nu\rho\sigma}W^{\mu\nu\rho\sigma},
+\]
+where \(W_{\mu\nu\rho\sigma}\) is the Weyl tensor.  A parity-even CFT has
+\begin{equation}
+  \mathcal A_4[g]
+  =
+  \frac{1}{16\pi^2}
+  \left(
+    c_{\rm W} W^2
+    -a_{\rm W} E_4
+    +b_{\rm D}\nabla^2 R
+  \right).
+  \label{eq:four-dimensional-weyl-anomaly}
+\end{equation}
+The coefficient \(b_{\rm D}\) is changed by adding a local \(R^2\) counterterm
+to \(\mathcal W[g]\).  The coefficients \(a_{\rm W}\) and \(c_{\rm W}\) are
+unchanged by such counterterms at a conformal fixed point.  With the two-point
+normalization of \eqref{eq:stress-tensor-two-point}, the Weyl-squared
+coefficient is fixed by the separated stress-tensor two-point coefficient:
+\begin{equation}
+  C_T=\frac{40}{\pi^4}\,c_{\rm W}.
+  \label{eq:four-dimensional-ct-cw-relation}
+\end{equation}
+This relation is a normalization statement.  It follows by taking two metric
+variations of the \(W^2\) term in
+\eqref{eq:four-dimensional-weyl-anomaly}, Fourier transforming the resulting
+quadratic curvature contact term, and matching the logarithmic scale
+dependence of the flat-space \(TT\) correlator to
+\eqref{eq:stress-tensor-two-point}.  The Euler term begins to contribute
+independent information at the next metric variation.
+
+The parity-even separated \(TTT\) correlator in \(D=4\) is described in
+Chapter~\ref{ch:volume-iii-correlation-functions-conformal-frames} by three
+coefficients, denoted there by \(a,b,c\) in
+\eqref{eq:stress-tensor-three-point-structures}.  To avoid notation collision,
+call them \(a_{\rm OP},b_{\rm OP},c_{\rm OP}\) in this paragraph.  The Ward
+identity relation \eqref{eq:ttt-ward-ct-relation} gives, at \(D=4\),
+\begin{equation}
+  C_T
+  =
+  \frac{\pi^2}{3}
+  \left(
+    14a_{\rm OP}-2b_{\rm OP}-5c_{\rm OP}
+  \right),
+  \label{eq:op-coefficients-ct-four-d}
+\end{equation}
+so \(c_{\rm W}\) is this same linear combination through
+\eqref{eq:four-dimensional-ct-cw-relation}.  The Euler coefficient
+\(a_{\rm W}\) is a second, independent linear functional of
+\((a_{\rm OP},b_{\rm OP},c_{\rm OP})\), obtained by taking three metric
+variations of the \(E_4\) term in
+\eqref{eq:four-dimensional-weyl-anomaly} and projecting the resulting trace
+Ward identity onto the three separated tensor structures.  Equivalently, one
+may use the free-field basis of four-dimensional stress-tensor structures:
+\begin{equation}
+  \langle TTT\rangle
+  =
+  n_s\langle TTT\rangle_{\rm real\ scalar}
+  +
+  n_f\langle TTT\rangle_{\rm Dirac\ fermion}
+  +
+  n_v\langle TTT\rangle_{\rm Maxwell\ vector}.
+  \label{eq:ttt-free-field-basis}
+\end{equation}
+In that basis,
+\begin{equation}
+  a_{\rm W}
+  =
+  \frac{n_s}{360}
+  +
+  \frac{11n_f}{360}
+  +
+  \frac{31n_v}{180},
+  \qquad
+  c_{\rm W}
+  =
+  \frac{n_s}{120}
+  +
+  \frac{n_f}{20}
+  +
+  \frac{n_v}{10}.
+  \label{eq:four-dimensional-free-basis-anomaly-map}
+\end{equation}
+Here \(n_f\) multiplies the Dirac-fermion stress-tensor structure; using a
+Weyl fermion instead halves the fermion entries.  The third independent
+linear combination of \(a_{\rm OP},b_{\rm OP},c_{\rm OP}\) is genuine \(TTT\)
+data not fixed by \(a_{\rm W}\) and \(c_{\rm W}\).  After \(C_T\) has fixed
+the overall stress-tensor normalization, Chapter~\ref{ch:cft-light-ray-energy-correlators}
+uses the conformal-collider coordinates \(t_2,t_4\) as detector coordinates on
+the remaining separated \(TTT\) data.
+
 \section{Improvement of the Stress Tensor}
 
 The stress tensor has improvement freedom.  If \(L(x)\) is a local scalar
