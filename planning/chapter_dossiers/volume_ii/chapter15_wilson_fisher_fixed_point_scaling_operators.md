@@ -82,6 +82,10 @@ The chapter must define and derive:
   resulting pole
   \(\partial\Sigma^{(2)}/\partial k^2
   =-\lambda^2/[12(16\pi^2)^2\epsilon]+\cdots\);
+- the sign derivation from the negative self-energy derivative pole to the
+  positive field anomalous dimension, through
+  \(Z=(1-\partial_{k^2}\Sigma)^{-1}\) and
+  \(\frac12\beta(\lambda)\partial_\lambda\log Z\);
 - why an \(x\)-independent \(\phi^2\) source is an IR-bad subtraction in the
   massless theory;
 - why this infrared obstruction is not a failure of the local
@@ -221,6 +225,12 @@ The chapter must define and derive:
   field anomalous-dimension coefficient, showing the \(1/6\) graph symmetry
   factor, the two massless two-point integrations, the pole
   \(I(k)=-k^2/[2(4\pi)^4\epsilon]+\cdots\), and the resulting \(1/12\).
+- 2026-05-24 issue #349 pass: inserted the residue-renormalization sign derivation
+  from
+  \(\partial_{k^2}\Sigma^{(2)}|_{\rm div}<0\)
+  to \(\gamma_\phi>0\), displaying the pole part
+  \(Z=1-a(\lambda)/\epsilon+\cdots\) and the fixed-regulator derivative with
+  \(\beta(\lambda)=-\epsilon\lambda+O(\lambda^2)\).
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
 - Do not say that the perturbative zero of the \(4-\epsilon\) beta function is

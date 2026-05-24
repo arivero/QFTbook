@@ -437,7 +437,32 @@ Multiplying it by the sunset symmetry factor \(1/6\) gives the coefficient
   =
   -\frac{\lambda^2}{12(16\pi^2)^2}\,\frac1\epsilon ,
 \]
-and therefore
+where the derivative is taken in the self-energy convention used in the
+definition of \(Z(\mu)\) above.  Write
+\[
+  a(\lambda)=\frac{\lambda^2}{12(16\pi^2)^2}.
+\]
+The residue condition gives
+\[
+  Z
+  =
+  \left(1-\partial_{k^2}\Sigma\right)^{-1}
+  =
+  1-\frac{a(\lambda)}{\epsilon}
+  +O(\lambda^3,\epsilon^0)
+\]
+for the pole part.  The sign in the anomalous dimension is then fixed by
+differentiating at fixed regulator definition.  To the order needed here
+\(\beta(\lambda)=-\epsilon\lambda+O(\lambda^2)\), so
+\[
+  \frac12\mu\frac{\dd}{\dd\mu}\log Z
+  =
+  \frac12\beta(\lambda)\frac{\partial}{\partial\lambda}
+  \left(-\frac{a(\lambda)}{\epsilon}\right)
+  =
+  a(\lambda)+O(\lambda^3).
+\]
+Therefore
 \[
   \gamma_\phi(\lambda)
   =
