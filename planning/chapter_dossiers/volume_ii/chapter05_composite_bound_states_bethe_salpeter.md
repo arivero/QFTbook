@@ -72,6 +72,11 @@
   interpolating two-field channel, and absence of competing threshold
   singularities near the pole; \(\mathbf 1-\widehat V(z)\) must also be
   invertible somewhere in the analytic neighborhood.
+- The Fredholm criterion is now a theorem, not an informal converse: the exact
+  kernel must be an analytic compact-operator family on the chosen Banach
+  space, the represented four-point block must factor through analytic
+  external-channel maps, and spectral positivity below threshold is an extra
+  Hilbert-space input beyond analytic Fredholm theory.
 - Ladder sums converge as Neumann series only in regions where the selected
   \(\widehat V_P^{(0)}\) has operator norm below one; bound-state poles are
   described by meromorphic resolvent continuation rather than convergence of
@@ -96,11 +101,11 @@
   \[
     \ii\mathcal A_{\mathrm{chain}}
     =
-    {-\,\ii g\over 1+g f(s)/(8\pi)}
+    \frac{-\,\ii g}{1+g f(s)/(8\pi)}
   \]
   and, for attractive weak coupling \(g<0\),
   \[
-    M_B\simeq 2m-{g^2\over 256m^3}.
+    M_B\simeq 2m-\frac{g^2}{256m^3}.
   \]
 - The residue of the four-point pole factorizes into Bethe--Salpeter
   amplitudes.  The proof now smears relative coordinates, inserts the
@@ -111,7 +116,7 @@
   \[
     \Psi_B(p;P)
     =
-    \int { \dd^D q\over (2\pi)^D}\,
+    \int \frac{\dd^D q}{(2\pi)^D}\,
     \mathcal K_P(p,q)\mathcal G_P(q)\Psi_B(q;P)
   \]
   at \(P^2=-M_B^2\).
@@ -120,7 +125,7 @@
   \[
     \widetilde\Phi_B(p;P)
     =
-    \mathcal G_P(p)\int { \dd^D q\over (2\pi)^D}\,
+    \mathcal G_P(p)\int \frac{\dd^D q}{(2\pi)^D}\,
     \mathcal K_P(p,q)\widetilde\Phi_B(q;P).
   \]
 - The Bethe--Salpeter equation is a necessary residue equation for an existing
@@ -130,6 +135,15 @@
   \(\widehat V(z)=\mathcal K_z\mathcal G_z\), a pole of the represented
   four-point block is equivalent, with nonzero external-channel overlap, to
   a nonzero vector in \(\ker(\mathbf 1-\widehat V(z_B))\).
+- In the simple-root case, if the analytic eigenvalue \(\lambda(z)\) of
+  \(\widehat V(z)\) satisfies \(\lambda(z_B)=1\) and
+  \(\lambda'(z_B)\ne0\), the pole residue is explicitly
+  \[
+    -\frac{(\mathcal F_{z_B}\psi)\otimes(\chi\mathcal E_{z_B})}
+      {\lambda'(z_B)(z-z_B)}
+  \]
+  up to terms holomorphic at \(z_B\); the pole is absent from a chosen channel
+  exactly when the channel maps kill this rank-one residue.
 - A ladder approximation is a controlled approximation only after a norm or
   compact-operator topology is supplied and the omitted two-particle
   irreducible kernels are bounded in that topology.
@@ -163,3 +177,7 @@
   Bethe--Salpeter and bubble-chain objects inherit the scattering
   time-ordered-correlator status convention rather than an implicit continuum
   path-integral definition.
+- 2026-05-24 issue #324 pass: upgraded the Bethe--Salpeter pole criterion
+  from an informal Fredholm converse to a labeled theorem with compactness,
+  analyticity, invertibility-somewhere, channel-overlap, and spectral
+  positivity hypotheses, including the simple-eigenvalue residue formula.

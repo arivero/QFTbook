@@ -33,6 +33,10 @@
 - Existence of a composite below-threshold pole is treated as a dynamical
   spectral input, not as something derived from the Lagrangian by general
   principles.
+- When the same question is formulated through a Bethe--Salpeter kernel, the
+  later analytic Fredholm theorem supplies the precise operator hypotheses;
+  this chapter's below-threshold pole criterion is not a hidden proof that a
+  truncated kernel eigenvalue produces an exact Hilbert-space particle.
 - A short-range one-dimensional Schrödinger problem is used as a controlled
   mathematical model for the pole criterion.
 
@@ -83,6 +87,10 @@
   bound-state one-particle vector to the external two-particle channel.
 - The chapter computes consequences of an isolated stable pole; it does not
   prove that an arbitrary interacting QFT contains such a pole.
+- The cross-reference to the later Bethe--Salpeter Fredholm theorem now makes
+  explicit that pole existence, operator compactness, channel overlap, and
+  spectral positivity are separate assumptions or results, not consequences of
+  the elementary exchange diagram.
 
 ## Figure Requirements
 

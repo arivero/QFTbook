@@ -594,44 +594,121 @@ operator for which
 \]
 The pole condition is thus an eigenvalue-one condition for the repeated
 two-particle propagation at \(P^2=-M_B^2\).
-This is a necessary pole-residue equation once the exact kernel and the
-isolated pole exist.  By itself it is not an existence theorem.  An existence
-proof would have to define the exact kernel as an operator on an appropriate
-function space, control its analytic dependence on \(P^2\), and show that the
-eigenvalue-one condition occurs at a point corresponding to a normalizable
-positive-energy state below the continuum.  In truncated kernels, a solution
-of the homogeneous equation is therefore evidence inside the approximation,
-not a derivation of the exact spectrum from the Lagrangian.
+This statement has the logical status of a residue equation unless the
+operator problem is supplied with enough analytic structure.  The following
+theorem records the standard Fredholm form of the missing structure.  It is
+not a general existence theorem for bound states in arbitrary Lagrangians; it
+is the precise local theorem that converts an eigenvalue-one Bethe--Salpeter
+condition into a pole of the represented four-point block, and conversely,
+when the exact kernel has been realized as an analytic compact-operator
+family.
 
-A precise converse can be stated only after the preceding functional-analytic
-data have been supplied.  Suppose \(z=P^2\) varies in a complex neighborhood
-\(U\) of \(z_B=-M_B^2\) below the first two-constituent threshold after the
-chosen continuation, and suppose
+\begin{theorem}[Analytic Fredholm Bethe--Salpeter pole criterion]
+\label{thm:bethe-salpeter-fredholm-pole-criterion}
+Let \(z=P^2\), and let \(U\subset\mathbb C\) be a connected open neighborhood
+of \(z_B=-M_B^2\) whose closure is separated from the two-constituent
+threshold and from every other singular locus of the chosen first-sheet
+continuation.  Let \(\mathcal X\) be the Banach space of amputated
+relative-momentum test functions used to realize the exact two-particle
+irreducible kernel.  Assume that
 \[
   \widehat V(z)=\mathcal K_z\mathcal G_z:\mathcal X\to\mathcal X
 \]
-is an analytic family of compact operators and that
-\(\mathbf 1-\widehat V(z)\) is invertible for at least one \(z\in U\).  The
-analytic Fredholm theorem then implies that
-\((\mathbf 1-\widehat V(z))^{-1}\), where defined, extends meromorphically to
-\(U\), with finite-rank principal parts.  If
-\(\mathbf 1-\widehat V(z_B)\) has a nonzero kernel, and if the corresponding
-finite-rank residue couples to the external fields used to define
-\(\mathcal T_z\), then
-\[
-  \mathcal T_z
+is analytic in \(z\) as a family of compact operators, and that
+\(\mathbf 1-\widehat V(z_0)\) is invertible for at least one \(z_0\in U\).
+Assume also that the part of the amputated four-point block seen by the
+external two-field channel has an operator representation
+\begin{equation}
+  \mathcal T_z^{\mathrm{rep}}
   =
-  (\mathbf 1-\mathcal K_z\mathcal G_z)^{-1}\mathcal K_z
+  \mathcal R_z+\mathcal F_z
+  \bigl(\mathbf 1-\widehat V(z)\bigr)^{-1}\mathcal E_z ,
+  \label{eq:bethe-salpeter-fredholm-representation}
+\end{equation}
+where \(\mathcal E_z:\mathcal Y\to\mathcal X\),
+\(\mathcal F_z:\mathcal X\to\mathcal Y'\), and
+\(\mathcal R_z:\mathcal Y\to\mathcal Y'\) are analytic bounded-operator
+families for the selected external test space \(\mathcal Y\).
+
+Then \((\mathbf 1-\widehat V(z))^{-1}\), initially defined where the inverse
+exists, extends to a meromorphic family on \(U\), and each coefficient in its
+principal part has finite rank.  Therefore
+\(\mathcal T_z^{\mathrm{rep}}\) is meromorphic on \(U\).  It has a pole at
+\(z_B\) precisely when the finite-rank principal part of
+\((\mathbf 1-\widehat V(z))^{-1}\) at \(z_B\) is not annihilated by the channel
+maps \(\mathcal F_z\) and \(\mathcal E_z\).  In particular, if
+\(\ker(\mathbf 1-\widehat V(z_B))\ne0\) and the corresponding root subspace
+has nonzero external overlap, then \(z_B\) is a pole of the represented
+four-point block.  Conversely, any pole of \(\mathcal T_z^{\mathrm{rep}}\)
+whose singular part is represented through
+\eqref{eq:bethe-salpeter-fredholm-representation} comes from a nonzero
+root vector of \(\mathbf 1-\widehat V(z_B)\).
+
+If the root space is simple, so that
+\(\ker(\mathbf 1-\widehat V(z_B))=\mathbb C\psi\),
+\(\ker(\mathbf 1-\widehat V(z_B))^*=\mathbb C\chi\),
+\(\chi(\psi)=1\), and the corresponding analytic eigenvalue
+\(\lambda(z)\) of \(\widehat V(z)\) satisfies
+\(\lambda(z_B)=1\), \(\lambda'(z_B)\ne0\), then the singular part is
+\begin{equation}
+  \mathcal T_z^{\mathrm{rep}}
+  =
+  -\,\frac{(\mathcal F_{z_B}\psi)\otimes(\chi\mathcal E_{z_B})}
+      {\lambda'(z_B)(z-z_B)}
+  +\text{\rm holomorphic terms}.
+  \label{eq:bethe-salpeter-simple-fredholm-residue}
+\end{equation}
+The pole is visible in the chosen channel if and only if
+\(\mathcal F_{z_B}\psi\ne0\) and \(\chi\mathcal E_{z_B}\ne0\).
+When, in addition, \(z_B\) lies on the first sheet below threshold and the
+exact Hilbert-space spectral representation has positive one-particle residue
+there, this pole is the scattering signature of a stable bound state.
+\end{theorem}
+
+\begin{proof}
+The analytic Fredholm theorem applies because \(\widehat V(z)\) is analytic
+and compact and because \(\mathbf 1-\widehat V(z_0)\) is invertible at one
+point of the connected domain \(U\).  Hence
+\((\mathbf 1-\widehat V(z))^{-1}\) is meromorphic on \(U\), with singular
+coefficients of finite rank supported on the finite-dimensional generalized
+root spaces of \(\widehat V(z_B)\) at eigenvalue \(1\).  Multiplication on the
+left and right by analytic bounded families \(\mathcal F_z\) and
+\(\mathcal E_z\), and addition of the analytic background \(\mathcal R_z\),
+preserve meromorphicity and can only remove a singularity by annihilating its
+finite-rank principal part.  This proves the pole criterion in
+\eqref{eq:bethe-salpeter-fredholm-representation}.
+
+For the simple-root formula, choose analytic right and left eigenvectors
+\(\psi(z)\), \(\chi(z)\) near \(z_B\) with
+\(\chi(z)\psi(z)=1\).  On the rank-one spectral subspace,
+\(\mathbf 1-\widehat V(z)\) acts by multiplication by \(1-\lambda(z)\).
+Since
+\[
+  1-\lambda(z)=-\lambda'(z_B)(z-z_B)+O\bigl((z-z_B)^2\bigr),
 \]
-has a pole at \(z_B\).  Conversely, a pole of \(\mathcal T_z\) whose residue is
-represented on \(\mathcal X\) gives a nonzero vector in
-\(\ker(\mathbf 1-\widehat V(z_B))\).  This Fredholm statement is the rigorous
-operator version of the Bethe--Salpeter pole criterion.  Its hypotheses are
-substantial: compactness, analytic continuation, absence of competing
-threshold singularities in \(U\), and nonzero overlap with the interpolating
-two-field channel are all part of the assertion.  An eigenvector of a truncated
-or ill-specified kernel, by contrast, need not define a normalizable
-positive-energy bound state in the exact Hilbert space.
+the inverse has principal part
+\[
+  -\,\frac{\psi\otimes\chi}{\lambda'(z_B)(z-z_B)} .
+\]
+Substitution into \eqref{eq:bethe-salpeter-fredholm-representation} gives
+\eqref{eq:bethe-salpeter-simple-fredholm-residue}.  The final sentence is not
+a Fredholm consequence: it is the separate spectral identification supplied by
+the exact Hilbert-space theory, namely a first-sheet isolated pole below the
+continuum with positive residue in a physical channel.
+\end{proof}
+
+\begin{remark}[What the homogeneous equation proves]
+The homogeneous Bethe--Salpeter equation is therefore an existence theorem
+only relative to the hypotheses of
+Theorem~\ref{thm:bethe-salpeter-fredholm-pole-criterion}: exact kernel,
+specified Banach space, compact analytic dependence on \(P^2\), invertibility
+somewhere in the analytic neighborhood, nonzero external overlap, and
+spectral positivity for the first-sheet below-threshold pole.  In a ladder or
+other truncated kernel, a nonzero solution of
+\((\mathbf 1-\widehat V_P)\Psi=0\) is a self-consistency condition inside that
+approximation.  It is not, by itself, a derivation of a normalizable
+positive-energy bound state in the exact QFT.
+\end{remark}
 
 The unamputated Bethe--Salpeter amplitude is related to the amputated vertex by
 \[
