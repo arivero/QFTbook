@@ -36,6 +36,12 @@ The chapter must define and derive:
 - scalar quartic theory in \(D=4-\epsilon\) dimensions with
   \(\mathcal L_E=\frac12(\partial\phi)^2+\frac12m_0^2\phi^2
   +\frac1{4!}g_0\phi^4\);
+- the dimensional-regularization status of the calculation: graph-level
+  meromorphic continuation of finite-dimensional loop-momentum integrals in
+  \(D=4-\epsilon\), applied coefficient by coefficient in perturbation theory,
+  rather than a field-configuration-space measure in noninteger dimension;
+- the formal-series status of \(\beta^\epsilon(\lambda)\), anomalous
+  dimensions, \(\lambda_*(\epsilon)\), and the resulting scaling dimensions;
 - the tuning of \(m_0^2\) as the condition for a massless infrared limit;
 - the reminder that \(m_0^2\) is a bare cutoff coordinate, not a spectral pole
   mass;
@@ -122,6 +128,10 @@ The chapter must define and derive:
 
 1. In \(4-\epsilon\) dimensions the classical relevance of \(g_0\) and the
    one-loop screening term can balance.
+1a. The \(4-\epsilon\) graph integrals in the chapter are dimensional
+    regularization: meromorphic continuation of loop-momentum graph
+    coefficients, with subtractions and RG functions defined coefficient by
+    coefficient in a formal perturbative expansion.
 2. The nonzero perturbative zero is a formal small-\(\epsilon\) fixed-point
    coordinate.  Each finite truncation gives a zero up to higher-order
    residuals; existence of an exact RG fixed point or nonperturbative
@@ -216,6 +226,11 @@ The chapter must define and derive:
   hypotheses; the odd field source is relevant in the full local chart.
 - Keep the Ising model itself for the next chapter.
 - No reader-facing source-page references or course-note references.
+- At the start of the chapter, classify dimensional regularization as a
+  graph-level formal coefficientwise analytic continuation and state that the
+  Wilson--Fisher beta functions, anomalous dimensions, and scaling dimensions
+  are formal perturbative series unless a separate summability or
+  constructive theorem is supplied.
 - 2026-05-22 local-RG-chart pass: added a section making scaling coordinates
   into a finite projected RG chart, defining the critical surface as a
   relevant-coordinate endpoint condition, and deriving the linear tuning
@@ -243,3 +258,7 @@ The chapter must define and derive:
   numerical conformal-bootstrap origins and identifies the \(\phi^4\) column
   with \(\varepsilon'\); the \(d=2\) row is identified as exact Ising
   minimal-model data with \(\sigma\), \(\varepsilon\), and \(T\bar T\).
+- 2026-05-24 issue #302 pass: added
+  `def:wilson-fisher-dimensional-regularization-status`, making the
+  dimensional-regularization and formal-series status explicit at the top of
+  the chapter.

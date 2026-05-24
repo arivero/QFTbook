@@ -11,9 +11,41 @@ controlled small-\(\epsilon\) calculation.  Consider a single real scalar field 
 \[
   D=4-\epsilon
 \]
-Euclidean dimensions, where \(\epsilon>0\) is treated as a small fixed
-parameter rather than as a regulator to be removed at the end.  The bare
-Lagrangian is
+Euclidean dimensions.
+
+\begin{definition}[Dimensional-regularized perturbative status]
+\label{def:wilson-fisher-dimensional-regularization-status}
+The calculation in this chapter is a dimensionally regularized perturbative
+calculation.  At each fixed loop order and for each fixed graph, the symbol
+\[
+  \int \frac{\dd^{\,4-\epsilon}\ell}{(2\pi)^{4-\epsilon}}\,
+  F(\ell,p,m)
+\]
+denotes the meromorphic continuation in the complex variable
+\(D=4-\epsilon\) of the corresponding rotationally invariant Euclidean
+loop-momentum integral, defined first in a domain where the graph integral or
+its Feynman-parameter representation converges.  Subtractions are then applied
+coefficient by coefficient in the loop expansion.  Thus the graph rules use
+analytic continuation of finite-dimensional momentum integrals; no
+field-configuration-space measure in noninteger dimension is being
+constructed.
+
+The quantities
+\(\beta^\epsilon(\lambda)\), \(\gamma_\phi(\lambda)\),
+\(\gamma_2(\lambda)\), \(\lambda_*(\epsilon)\), and the scaling dimensions
+extracted from them are formal perturbative objects in a specified
+subtraction scheme.  Before solving for the fixed point, the beta function and
+anomalous dimensions are formal power series in the dimensionless coupling
+\(\lambda\), with coefficients meromorphic, and after subtraction regular, as
+\(\epsilon\to0\) in the displayed orders.  The Wilson--Fisher fixed-point
+coordinate is obtained as a formal small-\(\epsilon\) branch
+\(\lambda_*(\epsilon)\in\epsilon\,\mathbb R[[\epsilon]]\).  Substituting this
+branch into anomalous dimensions gives formal \(\epsilon\)-expansions for
+\(\Delta_\phi\), \(\Delta_{\phi^2}\), and other scaling data.  Convergence or
+summability of these formal series is an additional analytic question.
+\end{definition}
+
+The local action density used to generate the perturbative graph rules is
 \[
   \mathcal L_E
   =
