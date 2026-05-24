@@ -22,6 +22,9 @@ hypotheses:
 - fixed physical \(s>4m^2\) for angular analyticity;
 - fixed real \(t<0\) for the dispersion relation;
 - polynomial boundedness when the contour at infinity is discarded;
+- separation between the conditional finite-subtraction bootstrap to two
+  subtractions and the stronger Lukaszuk-Martin/Yndurain theorem-level input
+  that supplies two subtractions without assuming finite subtractions first;
 - conditional status of these analyticity and boundedness hypotheses, since
   only restricted versions are presently theorem-level consequences of robust
   axiom systems;
@@ -77,7 +80,14 @@ hypotheses:
     \]
     and distinguishes fixed-\(t\) uniformity from stronger fixed-angle
     uniformity.
-12. Froissart plus positivity of absorptive derivatives implies two subtractions are enough in the massive scalar setting.
+12. Conditional subtraction-count statement: if a fixed-\(t\) dispersion
+    representation with some finite subtraction number exists, Froissart plus
+    positivity of absorptive derivatives reduces the genuine subtraction count
+    to two in the massive scalar setting.
+13. Stronger theorem-level input: the Lukaszuk-Martin/Yndurain result supplies
+    the missing axiomatic step, namely two subtractions without an independent
+    finite-subtraction premise.  The chapter must cite it and must not conflate
+    it with the conditional bootstrap.
 
 ## Figure Requirements
 
@@ -96,3 +106,6 @@ hypotheses:
 - 2026-05-22 source pass: handwritten pp. 41--55 checked against the chapter;
   missing \(Q_\ell\) representation, explicit crossed dispersion form,
   unitarity/subtraction details, and effective-radius figure were added.
+- 2026-05-24 issue pass: separated the conditional bootstrap to \(N=2\) from
+  the stronger Lukaszuk-Martin/Yndurain two-subtraction theorem and recorded
+  the citations in the chapter.

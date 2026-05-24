@@ -918,6 +918,30 @@ this section, two subtractions are therefore sufficient in the massive scalar
 setting, and the twice-subtracted representation has
 \(\mathcal M(s,t)/s^2\to0\) at fixed real \(t<0\) in the dispersion domain.
 
+This conclusion is conditional in exactly the sense stated: the argument
+starts from the existence of a fixed-\(t\) dispersion representation with some
+finite subtraction number.  It is not a proof, by itself, that the axioms of
+massive local QFT imply a two-subtracted representation without first knowing
+that a finite-subtracted representation exists.
+
+\begin{remark}[\L{}ukaszuk--Martin/Yndur\'ain two-subtraction theorem]
+There is a stronger theorem-level input in the axiomatic
+analyticity-unitarity program: for massive two-particle scattering satisfying
+the Wightman hypotheses and the usual mass-gap assumptions used in the
+Lehmann--Martin analysis, fixed-\(t\) dispersion theory can be brought to the
+two-subtraction form without assuming a finite number of subtractions as an
+independent premise.\footnote{See L.~\L{}ukaszuk and A.~Martin, ``Absolute
+upper bounds for \(\pi\pi\) scattering,'' \emph{Nuovo Cimento A} \textbf{52}
+(1967) 122--145, doi:10.1007/BF02739279; and F.~J.~Yndur\'ain, ``Rigorous
+constraints, bounds, and relations for scattering amplitudes,'' \emph{Rev.
+Mod. Phys.} \textbf{44} (1972) 645--667, doi:10.1103/RevModPhys.44.645.}
+The conditional proof above supplies a useful internal mechanism: once a
+finite subtraction number is available, positivity and the Froissart
+absorptive bound remove all genuine higher subtraction coefficients.  The
+cited theorem supplies the additional axiomatic step.  In later uses, these
+two inputs must not be conflated.
+\end{remark}
+
 The extension from real \(t<0\) to complex \(t\) inside the disk set by the
 nearest \(t\)-plane singularity uses positivity of the Taylor coefficients of
 the absorptive part at \(t=0\):
@@ -948,11 +972,11 @@ exchange.  Assume:
   \item partial-wave unitarity in the physical \(s\)-channel;
   \item analyticity in the Lehmann--Martin ellipse with nearest
   \(t\)-channel singularity at \(t=t_0>0\);
-  \item crossing symmetry and a fixed-\(t\) dispersion representation with a
-  finite number of subtractions;
-  \item polynomial boundedness of the nonphysical fixed-\(t\) amplitude, or
-  equivalently the real-axis absorptive bound used above to reduce the
-  dispersion representation to two subtractions.
+  \item crossing symmetry and a fixed-\(t\) dispersion representation;
+  \item either the conditional finite-subtraction hypothesis together with the
+  real-axis absorptive bound used above to reduce the representation to two
+  subtractions, or the \L{}ukaszuk--Martin/Yndur\'ain two-subtraction theorem
+  as an additional axiomatic input.
 \end{enumerate}
 Then, in four spacetime dimensions, for every fixed \(0<\delta<1\) there are
 constants \(M_0\) and \(s_0\) such that
@@ -976,11 +1000,14 @@ In \(D\) spacetime dimensions the corresponding geometric estimate is
 Partial-wave unitarity bounds each physical partial-wave contribution.
 Analyticity in the Lehmann--Martin ellipse gives exponential decay of large
 angular momenta at fixed \(s\), with the decay rate set by \(t_0/s\).  The
-polynomial boundedness or absorptive real-axis hypothesis bounds the number
-of partial waves that can contribute with order-one strength by
-\(L(s)=O(\sqrt{s}\log s)\).  The optical theorem converts the forward
-absorptive part into \(\sigma_{\rm tot}\), and summing the unitary partial-wave
-weights up to \(L(s)\) gives the coefficient in
+two-subtraction input supplies the polynomial boundedness with exponent
+\(N=2\) at the nonphysical positive-\(t\) point used in the preceding
+Froissart comparison.  That comparison bounds the number of partial waves
+that can contribute with order-one strength by
+\(L(s)=O(\sqrt{s}\log s)\), with the coefficient corresponding to
+\((N-1)^2=1\).  The optical theorem converts the forward absorptive part into
+\(\sigma_{\rm tot}\), and summing the unitary partial-wave weights up to
+\(L(s)\) gives the coefficient in
 \eqref{eq:froissart-martin-four-dimensional-bound}, with the harmless
 \((1-\delta)^{-2}\) recording the margin in the ellipse estimate.  In \(D\)
 dimensions the same argument sums over transverse angular
