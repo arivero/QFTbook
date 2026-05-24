@@ -32,6 +32,10 @@ hypotheses:
   complexified on-shell invariant surface, with physical values and cut
   discontinuities understood as distributional boundary values in the topology
   fixed in the preceding analyticity chapter;
+- for confining gauge theories, the external particles are stable
+  gauge-invariant one-particle states in the physical Hilbert space, such as
+  glueballs or hadrons, and the positive mass gap is an input to the bound
+  rather than a conclusion of the scattering argument;
 - separation between the conditional finite-subtraction bootstrap to two
   subtractions and the stronger Lukaszuk-Martin/Yndurain theorem-level input
   that supplies two subtractions without assuming finite subtractions first;
@@ -110,6 +114,11 @@ hypotheses:
     whose Gegenbauer coefficients decay like
     \(\exp[-\ell\eta_*(s)]\), then combine unitarity with
     \(\sum_{\ell\le L}g_\ell^{(D)}=O(L^{D-2})\).
+15. For confining gauge theories satisfying the massive hypotheses, the
+    Froissart amplitude is the amplitude between gauge-invariant hadronic or
+    glueball asymptotic states.  Four-dimensional pure Yang--Mills requires a
+    separately supplied positive mass gap and construction of the corresponding
+    physical Hilbert space.
 
 ## Figure Requirements
 
@@ -138,3 +147,6 @@ hypotheses:
 - 2026-05-24 issue pass: separated physical-region, fixed-\(t\) cut-plane, and
   angular-tube polynomial bounds; the Froissart comparison now explicitly uses
   the angular-tube bound.
+- 2026-05-24 issue pass: added the confining-gauge-theory scope of the bound:
+  external states are gauge-invariant hadrons or glueballs, and the
+  Yang--Mills mass gap is a separate input/open construction problem.
