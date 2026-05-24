@@ -23,6 +23,10 @@
 - `SRC-EXTERNAL`:
   `references/sound_references/barnich_brandt_henneaux_local_brst_cohomology_hep-th_0002245.pdf`
   and text sidecar, especially Sections 2.3, 2.6, and 2.7.
+- `SRC-EXTERNAL-GRIBOV`: Singer's 1978 theorem on the Gribov ambiguity and
+  Gribov's original 1978 analysis, used to state the global obstruction to a
+  smooth gauge slice and to define the first Gribov region/fundamental modular
+  domain.
 - The external source is used for the distinction between \(H(s)\) and
   \(H(s\mid d)\), for the contractible-pair/nonminimal-sector statement, and for
   the roles of ghost-number-zero and ghost-number-one local cohomology.
@@ -45,6 +49,9 @@
   \([X,Y]_{\mathrm H}=-i[X,Y]\).
 - Local gauge fixing around a field-space region where the Faddeev--Popov
   operator is transverse after separating residual zero modes.
+- The Faddeev--Popov path-integral formulae are local coordinate formulae on
+  orbit space; they are not asserted to be a single global nonperturbative
+  gauge fixing for nonabelian gauge theory.
 - Off-shell nilpotent BRST differential using the Nakanishi--Lautrup field.
 - Local cohomology is formulated in the algebra of finite jets of fields and
   ghosts.
@@ -60,6 +67,8 @@
 | \(F(A)\) | gauge-condition map |
 | \(\mathcal M_F(A)\) | Faddeev--Popov operator |
 | \(\Delta_F(A)\) | Faddeev--Popov determinant |
+| \(\Omega_{\rm G}\) | first Gribov region in Landau gauge, \(\partial^\mu A_\mu=0\) and \(\mathcal M_L(A)\ge0\) after zero modes are removed |
+| \(\mathfrak F\) | fundamental modular domain of absolute minima of \(\|A^g\|^2\) along gauge orbits |
 | \(b_A\) | condensed-index antighost paired with \(F^A\), related to the conventional \(\bar c_A\) by \(b_A=-\bar c_A\) |
 | \(c,\bar c\) | odd adjoint-valued ghost and independent antighost fields |
 | \(B\) | Nakanishi--Lautrup auxiliary field |
@@ -83,6 +92,13 @@
   now gives the formal normalization by
   \((\int_{\mathcal G}[D\xi]_{\rm H})^{-1}\), the right-Haar property, and the
   local Faddeev--Popov determinant identity before introducing ghosts.
+- Singer's theorem is stated in structural form: the irreducible-connection
+  bundle over nonabelian gauge-orbit space is not globally trivial in the
+  standard continuum setting, so no single smooth gauge condition supplies an
+  everywhere transverse one-representative slice.  The chapter defines the
+  first Gribov region, the Gribov horizon, and the fundamental modular domain,
+  and states that perturbative Faddeev--Popov/BRST formulae are local near a
+  chosen background.
 - Ghosts represent the Faddeev--Popov determinant and carry fermionic statistics
   although they are Lorentz scalars; the determinant sign is fixed to match the
   \(s\Psi\) convention in the Minkowski weight, up to field-independent
@@ -125,7 +141,14 @@
 
 - Full BV/antifield formalism is developed in the following compiled chapter.
   This BRST chapter remains the elementary gauge-fixed precursor.
-- Global Gribov-copy issues are acknowledged as beyond the perturbative local
-  slice.
+- The chapter states the Gribov/Singer obstruction and its effect on the scope
+  of Faddeev--Popov gauge fixing, but it does not construct a full
+  nonperturbative gauge-fixed continuum measure on the fundamental modular
+  domain.
 - Positivity of the BRST quotient is stated as a required condition rather than
   proved in full generality.
+- 2026-05-24 issue #243 pass: added a dedicated Gribov/Singer block to the
+  manuscript.  The chapter now labels the global obstruction, defines local
+  slice versus global section, gives the first Gribov region and fundamental
+  modular domain, and explicitly states that the path-integral formulae in the
+  chapter are locally valid perturbative Faddeev--Popov coordinates.

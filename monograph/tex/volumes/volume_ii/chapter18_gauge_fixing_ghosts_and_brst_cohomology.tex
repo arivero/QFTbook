@@ -218,9 +218,96 @@ The same expression, written in local gauge-fixed coordinates, is
   \Delta_{\mathrm{FP}}[\phi]=\det\mathcal M[\phi].
   \label{eq:fp-gauge-fixed-integral}
 \end{equation}
-Global obstructions to a single smooth slice are genuine features of
-nonabelian gauge theory.  The construction in this chapter is the local
-perturbative construction around a chosen region of field space.
+
+\begin{definition}[Local gauge slice and global section]
+A local gauge slice in a region \(U\subset\mathcal F_\Lambda\) is a subspace
+\(\mathcal S_F=\{\phi\in U:F^A[\phi]=0\}\) such that the map
+\[
+  \mathcal S_F\times\mathcal G\longrightarrow U,
+  \qquad
+  (\phi,\xi)\longmapsto \phi^\xi
+\]
+is locally invertible after zero modes and stabilizers have been separated.
+Equivalently, the Faddeev--Popov operator
+\(\mathcal M^A{}_\alpha[\phi]\) is invertible on the nonzero gauge directions.
+A global smooth gauge fixing would be a smooth section of the quotient map
+\(\mathcal F_\Lambda\to\mathcal F_\Lambda/\mathcal G\), or of the
+corresponding irreducible-connection quotient after stabilizers are removed.
+\end{definition}
+
+\begin{theorem}[Singer obstruction, structural form]
+\label{thm:singer-gribov-obstruction}
+Let \(P\to M\) be a principal bundle over a compact smooth Euclidean
+spacetime, let \(G\) be compact and nonabelian, let
+\(\mathcal A_{\rm irr}\) be the space of irreducible connections, and divide
+by a based gauge group \(\mathcal G_\ast\) so that the action is free.  In the
+standard Yang--Mills cases covered by Singer's theorem, the principal
+\(\mathcal G_\ast\)-bundle
+\[
+  \mathcal A_{\rm irr}\longrightarrow
+  \mathcal A_{\rm irr}/\mathcal G_\ast
+\]
+is not globally trivial.  Consequently there is no smooth gauge condition that
+supplies one representative on every gauge orbit and is everywhere transverse
+to the orbit.  Any Faddeev--Popov gauge condition must therefore fail globally
+either by encountering zero modes of \(\mathcal M\), by intersecting some
+orbits more than once, or by requiring multiple coordinate charts on orbit
+space.
+\end{theorem}
+
+This theorem is a global topological statement, not a perturbative loop
+calculation.\footnote{See I.~M.~Singer, ``Some remarks on the Gribov
+ambiguity,'' \emph{Commun. Math. Phys.} \textbf{60} (1978) 7--12, and
+V.~N.~Gribov, ``Quantization of non-Abelian gauge theories,'' \emph{Nucl.
+Phys. B} \textbf{139} (1978) 1--19.}  It is the mathematical reason why
+\eqref{eq:fp-gauge-fixed-integral} is not a single global definition of the
+nonperturbative gauge-field integral for a nonabelian gauge theory.
+
+\begin{definition}[Gribov region and fundamental modular domain]
+For Landau gauge on a compact Euclidean manifold, write the gauge condition as
+\[
+  \partial^\mu A_\mu=0
+\]
+in a local trivialization and remove the constant gauge zero modes.  The
+Landau Faddeev--Popov operator is
+\[
+  \mathcal M_L(A)=-\partial^\mu D_\mu(A).
+\]
+The first Gribov region is
+\[
+  \Omega_{\rm G}
+  =
+  \{\,A:\partial^\mu A_\mu=0,\ \mathcal M_L(A)\ge0\,\}.
+\]
+Its boundary, where \(\mathcal M_L(A)\) has a zero mode, is the Gribov
+horizon.  The fundamental modular domain is the set of absolute minima along
+each gauge orbit of the norm functional
+\[
+  \|A\|^2=\int_M\dd^D x\,\operatorname{tr}(A_\mu A^\mu):
+  \qquad
+  \mathfrak F
+  =
+  \{\,A:\|A\|^2\le \|A^g\|^2\ \text{for all }g\in\mathcal G\,\}.
+\]
+The domain \(\mathfrak F\) lies inside \(\Omega_{\rm G}\), but boundary points
+of \(\mathfrak F\) can still be gauge-equivalent.  Thus even this sharper
+domain is not a smooth global slice without boundary identifications.
+\end{definition}
+
+The perturbative Faddeev--Popov construction used in this chapter is the local
+construction near a chosen background, usually \(A=0\) or a fixed classical
+solution.  Near \(A=0\), after global gauge zero modes are removed,
+\(\mathcal M_L(0)=-\partial^2\) is positive on nonconstant modes, so the
+implicit-function theorem gives a local transverse slice.  Ghost fields then
+represent the local Jacobian of this coordinate change.  BRST symmetry, in the
+form used below, is the corresponding local algebraic symmetry of the
+gauge-fixed perturbative integrand.  It should not be read as a proof that the
+same gauge condition gives a global nonperturbative measure on
+\(\mathcal F_\Lambda/\mathcal G\).  Nonperturbative approaches must either use
+gauge-invariant variables, patch local slices, formulate the theory on a
+lattice before gauge fixing, or impose a Gribov-region/fundamental-domain
+restriction with the additional boundary and BRST questions that such a
+restriction creates.
 
 The determinant in \eqref{eq:fp-gauge-fixed-integral} is represented by
 Grassmann-odd variables \(b_A\) and \(c^\alpha\):
