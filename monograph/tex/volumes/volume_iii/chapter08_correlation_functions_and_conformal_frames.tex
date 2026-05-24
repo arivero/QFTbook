@@ -775,15 +775,32 @@ domain, hence \(\dd S_\mu=-r^{D-1}n_\mu\dd\Omega\), while
   \right),
 \]
 up to terms that vanish as \(r\to0\).  The angular projection is
-\[
+\begin{align}
   \int_{S^{D-1}}\dd\Omega\,
   n^\mu n^\nu
   \left(
     n_\mu n_\nu-\frac1D\delta_{\mu\nu}
   \right)
+  &=
+  \int_{S^{D-1}}\dd\Omega\,
+  \left[
+    (n^\mu n_\mu)(n^\nu n_\nu)
+    -
+    \frac1D n^\mu n_\mu
+  \right]
+  \nonumber\\
+  &=
+  \int_{S^{D-1}}\dd\Omega\,
+  \left[
+    1-\frac1D
+  \right]
   =
-  A_{D-1}\left(1-\frac1D\right),
-\]
+  A_{D-1}\left(1-\frac1D\right).
+  \label{eq:scalar-stress-ward-angular-projection}
+\end{align}
+In the second line we used \(n^\mu n_\mu=1\) pointwise on the unit sphere;
+this is the entire reduction of the fourth-order angular expression in this
+particular contraction.
 so the flux equals
 \[
   -\,\frac{D-1}{D}A_{D-1}

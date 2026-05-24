@@ -37,6 +37,9 @@ The chapter establishes:
    \(D\ge4\); in \(D=3\) the Osborn--Petkou structures obey
    \(\mathcal I^{(1)}-\mathcal I^{(2)}+2\mathcal I^{(3)}=0\), leaving two
    parity-even structures before any parity-odd \(D=3\) structure is added.
+6. The scalar-scalar-stress Ward coefficient uses the pointwise identity
+   \(n^\mu n_\mu=1\) on the unit sphere to reduce
+   \(n^\mu n^\nu(n_\mu n_\nu-\delta_{\mu\nu}/D)\) to \(1-1/D\).
 
 ## Figures
 
@@ -50,3 +53,5 @@ The chapter establishes:
 - 2026-05-24 issue #291 pass: tied the \(TTT\) count to the
   Osborn--Petkou basis, displayed the collinear-frame independence check, and
   made the \(D=3\) two-structure relation explicit.
+- 2026-05-24 issue #292 pass: expanded the scalar-scalar-stress Ward
+  angular projection to show explicitly where \(n^\mu n_\mu=1\) enters.
