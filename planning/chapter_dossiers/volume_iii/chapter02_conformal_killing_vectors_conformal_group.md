@@ -17,12 +17,20 @@ The chapter establishes:
 - the derivation that its local polynomial solutions in \(D\ge3\) are
   translations, rotations, dilatations, and special conformal fields;
 - the commutation relations with a declared Euclidean-signature convention;
+- the Euclidean conformal compactification
+  \(\widehat{\mathbb R^D}\simeq S^D\), stereographic coordinates, and the
+  round metric as a Weyl rescaling of the flat metric;
+- the radial cylinder \(\mathbb R_\tau\times S^{D-1}\) as the Weyl frame on
+  \(\mathbb R^D\setminus\{0\}\), with dilatations as cylinder translations
+  and inversion as \(\tau\mapsto-\tau\);
 - the embedding of the connected conformal group into the appropriate
   orthogonal group acting on the projective null cone;
 - the Lorentzian conformal compactification as the projective null cone in
   \(\mathbb R^{D,2}\), with explicit ambient representatives for the
   Poincare patch and the finite translation, Lorentz, dilatation, and special
   conformal transformations;
+- the Lorentzian Einstein-cylinder coordinates, identifying the universal
+  cover of the compactification with \(\mathbb R_T\times S^{D-1}\);
 - the distinction between the projective spacetime group \(PO_0(D,2)\) and
   the universal covering group that acts on the Hilbert space of a unitary
   CFT;
@@ -48,6 +56,9 @@ The chapter establishes:
    cover, not merely of \(SO(D,2)\) or \(PO_0(D,2)\); otherwise the compact
    \(SO(2)\) cylinder-time factor would incorrectly force integral scaling
    dimensions.
+6. The cylinder introduced in radial quantization is a Weyl representative of
+   the conformal compactification with two points removed, not an independent
+   geometric structure.
 
 ## Figures
 
