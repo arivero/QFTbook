@@ -64,6 +64,7 @@
 | \(J_{\mathrm{cons}}\) | consistent current, \(\delta W/\delta A\) |
 | \(J_{\mathrm{cov}}\) | covariant current after Bardeen--Zumino improvement |
 | \(J_{\mathrm{BZ}}\) | Bardeen--Zumino local polynomial current |
+| \(T_R^a\) | anti-Hermitian generator in representation \(R\) used in the Bardeen--Zumino and descent formulas |
 | \(\bar\theta\) | anomaly-invariant QCD CP-odd parameter |
 | \(Q[A]\) | instanton/topological charge |
 
@@ -91,6 +92,19 @@
 - The covariant current differs from the consistent current by a
   Bardeen--Zumino current and need not be a functional derivative of a local
   effective action.
+- The Bardeen--Zumino current is displayed both as a dual three-form and as
+  explicit component polynomials:
+  \[
+    J_{\mathrm{BZ}}^{a\mu}
+    =
+    \frac{\kappa}{2}\epsilon^{\mu\nu\rho\sigma}
+    \operatorname{tr}_R
+    T_R^a(\mathsf A_\nu\mathsf F_{\rho\sigma}
+    +\mathsf F_{\rho\sigma}\mathsf A_\nu
+    -\mathsf A_\nu\mathsf A_\rho\mathsf A_\sigma)
+  \]
+  and the expanded \(\partial\mathsf A\) form with the noncommutative ordering
+  written explicitly in the manuscript.
 - A nonzero global-symmetry anomaly is data to be matched by the infrared
   theory, while a nonzero gauge anomaly obstructs the gauge theory.
 - The strong CP parameter is the anomaly-invariant combination of the
@@ -116,3 +130,6 @@
   expanded to include the two-dimensional contact-term calculation,
   contour-charge interpretation, and four-dimensional triangle contact-term
   derivation before the measure/index and descent sections.
+- 2026-05-24 issue #250 pass: made the Bardeen--Zumino current explicit in
+  components, including both the curvature form and the derivative-expanded
+  nonabelian polynomial with ordering fixed.

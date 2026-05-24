@@ -1013,6 +1013,67 @@ where \(T_R^a\) is the anti-Hermitian generator used to vary
   J_{\mathrm{BZ}}^{a\mu}
   \dd x^\nu\wedge\dd x^\rho\wedge\dd x^\sigma .
 \]
+Equivalently, with
+\[
+  \mathsf A=\mathsf A_\mu\dd x^\mu,\qquad
+  \mathsf F=\frac12\mathsf F_{\rho\sigma}\dd x^\rho\wedge\dd x^\sigma,
+\]
+the component current is the local polynomial
+\begin{equation}
+  J_{\mathrm{BZ}}^{a\mu}
+  =
+  \frac{\kappa}{2}\,
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}_R
+  \left[
+    T_R^a
+    \left(
+      \mathsf A_\nu\mathsf F_{\rho\sigma}
+      +
+      \mathsf F_{\rho\sigma}\mathsf A_\nu
+      -
+      \mathsf A_\nu\mathsf A_\rho\mathsf A_\sigma
+    \right)
+  \right].
+  \label{eq:bardeen-zumino-current-component-curvature}
+\end{equation}
+Expanding
+\[
+  \mathsf F_{\rho\sigma}
+  =
+  \partial_\rho\mathsf A_\sigma
+  -
+  \partial_\sigma\mathsf A_\rho
+  +
+  [\mathsf A_\rho,\mathsf A_\sigma]
+\]
+and using antisymmetry of
+\(\epsilon^{\mu\nu\rho\sigma}\) gives the derivative form
+\begin{equation}
+  J_{\mathrm{BZ}}^{a\mu}
+  =
+  \kappa\,\epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}_R
+  \left[
+    T_R^a
+    \left(
+      \mathsf A_\nu\partial_\rho\mathsf A_\sigma
+      +
+      \partial_\rho\mathsf A_\sigma\,\mathsf A_\nu
+      +
+      \frac12\mathsf A_\nu\mathsf A_\rho\mathsf A_\sigma
+      +
+      \mathsf A_\rho\mathsf A_\sigma\mathsf A_\nu
+    \right)
+  \right].
+  \label{eq:bardeen-zumino-current-component-derivative}
+\end{equation}
+The two displayed component expressions are the same polynomial written once
+with \(\mathsf F\) and once with \(\partial\mathsf A\).  The ordering of
+matrices in \eqref{eq:bardeen-zumino-current-component-derivative} is part of
+the convention; replacing it by a commutative shorthand would lose the
+distinction between consistent and covariant currents for a nonabelian
+background.
 For a set of Weyl fermions, sum \eqref{eq:bardeen-zumino-current-polynomial}
 over left-handed representations and subtract the corresponding right-handed
 representations, in parallel with the anomaly polynomial \(I_6\).
