@@ -54,6 +54,7 @@
 | \(\widetilde G_{N}^{\mathrm{conn}}\) | connected part of the Fourier-space Green function |
 | \(Z[J]\) | Lorentzian time-ordered source functional with source term \(i\int J\phi\) |
 | \(Z_E[J_E]\) | Euclidean ordered source functional with source term \(+\int J_E\phi_E\) |
+| \(\operatorname{bv}_{\Sigma_m}\) | Feynman boundary value at the isolated mass shell after wave-packet smearing |
 | \(p_j\) | incoming positive-energy physical momentum |
 | \(q_i\) | outgoing positive-energy physical momentum |
 | \(k_a\) | all-incoming Green-function momentum, \(q_i\) or \(-p_j\) |
@@ -69,7 +70,11 @@
   matrix element with the external one-particle residue of
   \(\widetilde G^{\mathrm{conn}}_{m+n}\), after distributional smearing and
   boundary-value restriction to \(\Sigma_m^+\).
-- The two-point pole residue \(Z\) supplies the external wavefunction factor.
+- The two-point pole coefficient \(Z\) supplies the external wavefunction
+  factor.  In the Feynman two-point function, \(-iZ\) is the coefficient of
+  \(k^2+m^2-i0\), whereas the complex \(k^0\)-plane residues at fixed
+  \(\vec k\) are \(iZ/(2\omega_{\vec k})\) and
+  \(-iZ/(2\omega_{\vec k})\).
 - LSZ is a distributional theorem for wave-packet matrix elements.
 - Incoming physical momenta enter the Green function as \(-p_j\) in the
   all-momenta-incoming Fourier convention.
@@ -114,3 +119,7 @@
   displayed the source-functional Wick-rotation identity in the
   \(x^0=-i\tau\) convention, separating the Euclidean \(+\int J_E\phi_E\)
   source from the Lorentzian \(i^{-N}\) source-derivative compensation.
+- 2026-05-24 issue #378 pass: replaced the misleading
+  \(\operatorname{Res}_{k^2=-m^2}\) notation by the invariant-denominator
+  boundary-value coefficient and displayed the two linear \(k^0\)-pole residues
+  explicitly.

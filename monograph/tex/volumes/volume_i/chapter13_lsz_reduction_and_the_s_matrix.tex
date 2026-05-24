@@ -139,6 +139,10 @@ The notation
 spatial momenta with wave packets, taking the simultaneous external
 one-particle residues, and then setting
 \(q_i^0=\omega_{\vec q_i}\), \(p_j^0=\omega_{\vec p_j}\).
+Here ``residue'' means the coefficient of the isolated Feynman denominator in
+each external variable after the boundary value has been taken.  It is not a
+complex residue in a one-dimensional variable \(k_a^2\); for fixed spatial
+momentum the meromorphic variable is \(k_a^0\).
 
 \begin{theorem}[LSZ reduction for a massive scalar]
 \label{thm:lsz-wave-packet}
@@ -199,6 +203,32 @@ The particle state and the \(S\)-operator are invariant data; changing the
 interpolating field changes the residue factor appearing in the reduction
 formula.
 
+The preceding display identifies the coefficient of the invariant Feynman
+denominator.  For fixed \(\vec k\), the actual meromorphic variable is
+\(k^0\), and
+\[
+  k^2+m^2-\ii0
+  =
+  -\bigl(k^0-\omega_{\vec k}+\ii0\bigr)
+    \bigl(k^0+\omega_{\vec k}-\ii0\bigr).
+\]
+Consequently
+\[
+  \frac{-\ii Z}{k^2+m^2-\ii0}
+  =
+  \frac{\ii Z}{2\omega_{\vec k}}
+  \left[
+    \frac{1}{k^0-\omega_{\vec k}+\ii0}
+    -
+    \frac{1}{k^0+\omega_{\vec k}-\ii0}
+  \right].
+\]
+Thus the complex residues at the two linear \(k^0\)-poles are
+\(\ii Z/(2\omega_{\vec k})\) and \(-\ii Z/(2\omega_{\vec k})\), whereas
+\(-\ii Z\) is the coefficient of the invariant denominator
+\(k^2+m^2-\ii0\).  LSZ uses the latter coefficient, together with the
+mass-shell measure, to match the Haag--Ruelle one-particle normalization.
+
 The operation
 \[
   Z^{-1/2}\,\ii(k^2+m^2)
@@ -211,8 +241,8 @@ Lorentzian Green-function chapter:
   \longrightarrow
   Z^{1/2}
 \]
-as a mass-shell residue. Applying one such operation to every external field
-is the analytic core of LSZ reduction.
+as a mass-shell boundary-value coefficient. Applying one such operation to
+every external field is the analytic core of LSZ reduction.
 
 \section{The Pole as a Spectral Projection}
 
@@ -320,13 +350,22 @@ respect to the real-time source produces a factor \(\ii^N\); the prefactor
 compensation that leaves the connected time-ordered distribution rather than
 the source-normalized derivative.
 
-Second, amputation in LSZ is residue extraction at the isolated mass shell:
+Second, amputation in LSZ is extraction of the coefficient of the isolated
+external denominator, not a residue in the complex variable \(k^2\).  More
+precisely,
 \[
-  \operatorname*{Res}_{k^2=-m^2}
-  \widetilde G_2(k)
+  \operatorname*{bv}_{\Sigma_m}
+  \left[
+    (k^2+m^2)\widetilde G_2(k)
+  \right]
   =
   -\ii Z .
 \]
+The symbol \(\operatorname*{bv}_{\Sigma_m}\) denotes the Feynman mass-shell
+boundary value: one first regards the two-point function, for fixed \(\vec k\),
+as a boundary value of a meromorphic function of \(k^0\), then multiplies by
+the invariant denominator and restricts to the appropriate positive- or
+negative-energy shell selected by the external wave packet.
 Multiplication by \(Z^{-1/2}\ii(k^2+m^2)\) is meaningful after smearing in a
 neighborhood of the mass shell and taking the boundary value.  It removes
 only the external pole associated with the chosen stable particle.  Internal
