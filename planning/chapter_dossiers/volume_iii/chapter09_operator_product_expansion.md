@@ -40,6 +40,12 @@ The chapter establishes:
   interpretation of \(|\rho|<1\) as the radial-ordering domain for the
   channel expansion;
 - reflection-positivity constraints on OPE coefficient matrices;
+- OPE associativity as equality of nested spectral expansions in a common
+  Euclidean radial domain, followed by analytic continuation of the
+  separated-point correlator;
+- the \(s\)- and \(t\)-channel radial convergence domains
+  \(\mathcal D_s,\mathcal D_t\), their radial variables, and the derivation of
+  identical-scalar crossing from permutation symmetry plus prefactor algebra;
 - the boundary between core OPE machinery and later specialized bootstrap
   methods.
 
@@ -75,6 +81,10 @@ The chapter establishes:
     require an \(i\epsilon\) ordering and remain controlled only when the
     corresponding radial variables stay in a compact subdomain
     \(|\rho|,|\bar\rho|\le q<1\).
+11. Crossing is not a termwise equality of two channel expansions at distinct
+    OPE corners.  It follows from equality of Euclidean separated-point
+    correlators, convergence of each channel expansion in its own radial
+    domain, and analytic continuation on the common connected domain.
 
 ## Figures
 
@@ -93,6 +103,9 @@ The chapter establishes:
 - Do not invoke Lorentzian inversion without recording the double
   discontinuity, the spin range or subtractions, and the analyticity/Regge
   conditions that suppress contour arcs.
+- Do not derive crossing by skipping the channel domains; display the
+  \(s\)- and \(t\)-channel radial variables and identify the analytic
+  continuation step.
 
 ## Audit Notes
 
@@ -112,3 +125,7 @@ The chapter establishes:
   Euclidean theorem, adding a Lorentzian tube-domain continuation proposition,
   and recording the \(i\epsilon\), light-cone, and \(\rho,\bar\rho\) domain
   conditions needed for Lorentzian OPE convergence.
+- 2026-05-24 issue pass: addressed #277 by expanding the crossing discussion
+  to show nested-OPE associativity, the \(s\)- and \(t\)-channel convergence
+  domains, and the prefactor derivation of
+  \(v^{\Delta_\phi}\mathcal G(u,v)=u^{\Delta_\phi}\mathcal G(v,u)\).

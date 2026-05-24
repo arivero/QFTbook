@@ -975,23 +975,28 @@ assumption.
 
 \section{Associativity}
 
-Consider a correlation function with three nearby operators.  There are two
-ways to apply the OPE:
+Consider a Euclidean correlation function with three operators inside a sphere
+that separates them from all other insertions.  If the insertion points admit
+nested separating spheres, there are two ways to apply the OPE:
 \[
   (\mathcal O_1\mathcal O_2)\mathcal O_3,
   \qquad
   \mathcal O_1(\mathcal O_2\mathcal O_3).
 \]
-Both compute the same local state on a sphere enclosing all three insertions.
-Associativity of the OPE is the equality of these two expansions in their
-common domain of convergence and by analytic continuation beyond it.  For
-four-point functions this associativity becomes crossing symmetry.  In the
-core monograph, crossing is used only at this structural level: a complete
-solution theory for crossing equations requires additional analytic and
-numerical machinery and belongs to a later dedicated treatment.
+Let \(S_{\rm out}\) be the outer separating sphere.  The product of the three
+operators defines a vector in the radial Hilbert space on \(S_{\rm out}\).
+The two nested OPE procedures are two ways of inserting complete spectral
+resolutions of the same vector.  On a common nested radial domain the two
+partial sums converge in Hilbert norm to that vector, hence have the same
+matrix elements against exterior states.  Away from the common domain, the
+statement becomes an analytic-continuation statement: each nested expansion
+defines a holomorphic function in its own channel domain, and both are
+restrictions of the same separated-point correlation function on the
+connected component of complexified configuration space reached without
+crossing coincident-point or light-cone singular hypersurfaces.
 
 For identical scalar primaries \(\phi\) of dimension \(\Delta_\phi\), write
-the four-point function in the standard form
+the four-point function in the form
 \[
   \langle
     \phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4)
@@ -1006,7 +1011,60 @@ where \(x_{ij}=x_i-x_j\) and the conformal cross-ratios are
   \qquad
   v=\frac{x_{14}^2x_{23}^2}{x_{13}^2x_{24}^2}.
 \]
-Exchanging \(x_2\) and \(x_4\) gives the crossing relation
+Introduce \(z,\bar z\) by \(u=z\bar z\) and
+\(v=(1-z)(1-\bar z)\).  The \(12\to34\) channel is controlled by
+\[
+  \rho_s=\frac{z}{(1+\sqrt{1-z})^2},
+  \qquad
+  \bar\rho_s=\frac{\bar z}{(1+\sqrt{1-\bar z})^2},
+\]
+and its Euclidean radial block expansion converges on compact subsets of
+\begin{equation}
+  \mathcal D_s
+  =
+  \{(z,\bar z): |\rho_s|<1,\ |\bar\rho_s|<1\}.
+  \label{eq:s-channel-radial-domain}
+\end{equation}
+The \(14\to23\) channel uses the crossed variables
+\[
+  \rho_t=\frac{1-z}{(1+\sqrt z)^2},
+  \qquad
+  \bar\rho_t=\frac{1-\bar z}{(1+\sqrt{\bar z})^2},
+\]
+and converges on compact subsets of
+\begin{equation}
+  \mathcal D_t
+  =
+  \{(z,\bar z): |\rho_t|<1,\ |\bar\rho_t|<1\}.
+  \label{eq:t-channel-radial-domain}
+\end{equation}
+These domains are channel domains, not identical power-series neighborhoods:
+\(\mathcal D_s\) contains the \(u\to0\) OPE boundary, while
+\(\mathcal D_t\) contains the \(v\to0\) OPE boundary.  Their Euclidean
+intersection is nonempty; for example \(0<z=\bar z<1\) lies in both domains.
+On that intersection the two convergent Hilbert-space expansions compute the
+same four-point function.  The identity theorem then identifies their
+holomorphic continuations on every connected component where both
+continuations are defined.
+
+The crossing equation itself follows from the permutation symmetry of the
+identical Euclidean scalar correlator.  Exchanging \(x_2\) and \(x_4\) sends
+\((u,v)\) to \((v,u)\).  The same separated-point function may therefore be
+written as
+\[
+  \frac{\mathcal G(u,v)}
+       {|x_{12}|^{2\Delta_\phi}|x_{34}|^{2\Delta_\phi}}
+  =
+  \frac{\mathcal G(v,u)}
+       {|x_{14}|^{2\Delta_\phi}|x_{23}|^{2\Delta_\phi}} .
+\]
+Since
+\[
+  \frac{u}{v}
+  =
+  \frac{x_{12}^2x_{34}^2}{x_{14}^2x_{23}^2},
+\]
+this equality is equivalent to
 \begin{equation}
   v^{\Delta_\phi}\mathcal G(u,v)
   =
@@ -1027,11 +1085,12 @@ If \(\phi\) is Hermitian and the exchanged primaries are orthonormal, the
   \label{eq:identical-scalar-positive-block-expansion}
 \end{equation}
 The identity block gives the constant \(1\).  The \(14\to23\) expansion gives
-the same formula with \((u,v)\mapsto(v,u)\).  Equation
-\eqref{eq:identical-scalar-crossing} is therefore not an additional
-postulate; it is the equality of two convergent local expansions of one
-Euclidean correlation function, continued to the same analytic function where
-the continuations overlap.
+the same formula with \((u,v)\mapsto(v,u)\), valid in the channel domain
+\(\mathcal D_t\).  Equation~\eqref{eq:identical-scalar-crossing} is therefore
+the equality of two OPE-defined holomorphic functions after both have been
+identified with the analytic continuation of one Euclidean separated-point
+correlator.  It is not obtained by comparing two unrelated power series at
+their distinct expansion corners.
 
 \section{A First Consequence of Crossing and Positivity}
 
