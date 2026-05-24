@@ -20,6 +20,9 @@ The chapter establishes:
   yields conformal current conservation;
 - the difference between separated-point stress-tensor correlators and their
   contact-term extensions;
+- the infrared proviso that, in massless theories, stress-tensor contact-term
+  extensions presuppose an infrared state or regulator that has already made
+  the separated-point correlators meaningful on the relevant test functions;
 - the convention relating flat-space \(T_{\mu\nu}\) to curved-background
   derivatives.
 
@@ -34,6 +37,9 @@ The chapter establishes:
    translation and rotation charges under stated boundary conditions.
 4. Weyl anomalies are local curvature terms in even dimension and do not
    change separated-point flat-space primary transformation laws.
+5. Scaling-degree/contact-term arguments classify ultraviolet ambiguities at
+   coincident stress insertions; they do not replace the infrared construction
+   of the massless source functional.
 
 ## Figures
 

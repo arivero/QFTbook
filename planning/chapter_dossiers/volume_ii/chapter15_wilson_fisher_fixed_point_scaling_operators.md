@@ -49,6 +49,9 @@ The chapter must define and derive:
   \(\Delta_\phi=1-\epsilon/2+O(\epsilon^2)\);
 - why an \(x\)-independent \(\phi^2\) source is an IR-bad subtraction in the
   massless theory;
+- why this infrared obstruction is not a failure of the local
+  scaling-degree/contact-term extension theorem, whose hypotheses require an
+  already-defined separated-point distribution;
 - the momentum-dependent source definition for \(\phi^2\);
 - the one-loop anomalous dimension
   \(\gamma_{2*}=\epsilon/3+O(\epsilon^2)\) and
@@ -97,7 +100,8 @@ The chapter must define and derive:
 5. Operator dimensions at the fixed point come from the same renormalized
    operator construction as before.
 6. The \(\phi^2\) source must carry momentum to avoid an infrared-singular
-   subtraction.
+   subtraction; this is an infrared kinematic condition, distinct from the
+   ultraviolet definition of the local composite operator.
 7. Without the \(\mathbb Z_2\) restriction, the odd source for \(\phi\) is
    also relevant.
 8. The mass/temperature perturbation has eigenvalue

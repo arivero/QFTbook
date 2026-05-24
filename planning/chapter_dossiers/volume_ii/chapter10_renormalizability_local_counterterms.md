@@ -18,6 +18,8 @@
 - `SRC-EXTERNAL`: Fredenhagen--Rejzner for perturbative locality and
   extensions of time-ordered products; Rosten for Wilsonian context.  The
   chapter itself is written as a self-contained perturbative construction.
+  Steinmann scaling degree is used only as a local ultraviolet tool, not as an
+  infrared existence theorem.
 
 ## Construction Task
 
@@ -39,6 +41,9 @@ The chapter must define:
 - the \(D=6\), \(\phi^3\) counterterm split;
 - the large-momentum self-energy insertion and its local Taylor subtractions;
 - the Schwinger-parameter picture of subdivergent regions.
+- the boundary of the scaling-degree extension theorem: it assumes a
+  distribution on the punctured configuration space and controls only the
+  ultraviolet extension across a collision diagonal.
 
 ## Claim Ledger
 
@@ -88,6 +93,10 @@ The chapter must define:
     The Schwinger-parameter matrix \(A\), nonnegative \(Q\), homogeneous
     scaling relation, and explicit \(\widetilde F\) subtraction should be
     written, not only described.
+14. For massless graphs, finite scaling degree at a diagonal does not by
+    itself prove infrared existence.  The punctured-space distribution must be
+    supplied by an infrared-safe prescription before the local extension
+    theorem can classify ultraviolet contact-term ambiguities.
 
 ## Figure Requirements
 
@@ -114,3 +123,7 @@ The chapter must define:
   absence of \(\varepsilon^{-1}\log k^2\) pole, Schwinger \(Q\), scaling
   relation, \(\widetilde F\) subtraction, and final \(k^0,k^2\) subtraction
   formula were added.
+- 2026-05-24 issue pass: addressed #220 by stating the massless caveat for
+  the scaling-degree extension theorem and by linking downstream stress-tensor
+  contact terms and Wilson--Fisher composite insertions to the same
+  ultraviolet-versus-infrared distinction.
