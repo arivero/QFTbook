@@ -50,6 +50,10 @@ The chapter must define and derive:
 - the dimensionless 1PI quartic coupling
   \(\lambda(\mu)=-\mu^{-\epsilon}Z(\mu)^2\Gamma^{(4)}\) at the symmetric
   Euclidean subtraction point;
+- the notation convention that \(\lambda(\mu)\), not \(\lambda_4(\mu)\), is the
+  running dimensionless quartic coordinate throughout the chapter; \(\delta g_4\)
+  denotes a source perturbation for \(O_4=\phi^4\), not a second running-coupling
+  symbol;
 - the one-loop formula for \(\lambda(\mu)\) in terms of \(g_0\);
 - the beta function
   \(\beta(\lambda)=-\epsilon\lambda+
@@ -205,6 +209,9 @@ The chapter must define and derive:
   \(O_3\) descendant relation, the \(O_4\) source analysis including the
   zero-source-momentum check, \(\gamma_{4*}=\beta'(\lambda_*)\), and the
   low-lying dimension table.
+- 2026-05-24 issue #347 pass: removed the stray \(\lambda_4\) notation from the
+  \(\phi^2\) anomalous-dimension and \(O_4\) linearized-RG sections; the chapter
+  now uses \(\lambda\) uniformly for the quartic running coordinate.
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
 - Do not say that the perturbative zero of the \(4-\epsilon\) beta function is

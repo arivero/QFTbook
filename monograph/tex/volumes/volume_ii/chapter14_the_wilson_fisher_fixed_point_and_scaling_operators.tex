@@ -503,7 +503,7 @@ At \(p^2=\mu^2\), define
       \draw[thick] (0.82,0.85)--(1.85,1.2);
       \draw[thick] (0.82,0.55)--(1.85,0.2);
       \node[blue!70!black, align=center] at (0,-0.85)
-        {\(\gamma_2=\lambda_4/(16\pi^2)+\cdots\)};
+        {\(\gamma_2=\lambda/(16\pi^2)+\cdots\)};
     \end{scope}
   \end{tikzpicture}
   }
@@ -550,12 +550,12 @@ It follows that
 \[
   \gamma_2(\mu)
   =
-  \lambda_4(\mu)
+  \lambda(\mu)
   \left(
     \frac{1}{16\pi^2}+O(\epsilon)
   \right)
   +
-  O(\lambda_4(\mu)^2).
+  O(\lambda(\mu)^2).
 \]
 At the Wilson-Fisher fixed point,
 \[
@@ -864,8 +864,8 @@ A small source perturbation obeys the linearized RG equation
 \[
   \frac{\dd\,\delta g_4(\mu)}{\dd\log\mu}
   =
-  \frac{\partial\beta^\epsilon(\lambda_4(\mu))}
-       {\partial\lambda_4(\mu)}
+  \frac{\partial\beta^\epsilon(\lambda(\mu))}
+       {\partial\lambda(\mu)}
   \,\delta g_4(\mu).
 \]
 Therefore
@@ -873,14 +873,14 @@ Therefore
   \gamma_{4*}
   =
   \left.
-  \frac{\partial\beta^\epsilon(\lambda_4)}{\partial\lambda_4}
-  \right|_{\lambda_4=\lambda_{4*}}
+  \frac{\partial\beta^\epsilon(\lambda)}{\partial\lambda}
+  \right|_{\lambda=\lambda_*}
   =
   \left.
   \left(
-    -\epsilon+\frac{3\lambda_4}{8\pi^2}+O(\lambda_4^2,\epsilon\lambda_4)
+    -\epsilon+\frac{3\lambda}{8\pi^2}+O(\lambda^2,\epsilon\lambda)
   \right)
-  \right|_{\lambda_4=\frac{16\pi^2}{3}\epsilon+O(\epsilon^2)}
+  \right|_{\lambda=\frac{16\pi^2}{3}\epsilon+O(\epsilon^2)}
   =
   \epsilon+O(\epsilon^2),
 \]
