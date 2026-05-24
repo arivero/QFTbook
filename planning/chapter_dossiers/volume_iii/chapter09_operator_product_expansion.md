@@ -45,6 +45,20 @@ The chapter establishes:
 - OPE associativity as equality of nested spectral expansions in a common
   Euclidean radial domain, followed by analytic continuation of the
   separated-point correlator;
+- Definition `def:abstract-radial-ope-datum`, specifying the additional
+  positivity, convergence, all-tree compatibility, covariance, reflection
+  positivity, and contact-term data required beyond the numerical list
+  \(\{\Delta,\rho,\lambda\}\);
+- Theorem `thm:conditional-cft-reconstruction-from-ope`, reconstructing a
+  separated-point Euclidean conformal hierarchy from an abstract radial OPE
+  datum and identifying the extra tube-domain hypotheses needed for the
+  Lorentzian Wightman CFT;
+- Open Problem `op:bootstrap-completeness-from-ope-data`, separating the
+  conditional reconstruction theorem from the inverse problem of deriving the
+  full abstract radial OPE datum from complete all-primary four-point OPE data
+  or complete generator four-point OPE data in \(D>2\), while explicitly
+  rejecting the claim that a single four-point crossing equation determines a
+  correlator or a CFT;
 - the \(s\)- and \(t\)-channel radial convergence domains
   \(\mathcal D_s,\mathcal D_t\), their radial variables, and the derivation of
   identical-scalar crossing from permutation symmetry plus prefactor algebra;
@@ -90,6 +104,13 @@ The chapter establishes:
 12. Radial block coefficients use finite-dimensional quotient Gram matrices
     \(M^{(n)}\) at each descendant level; null descendants are removed because
     reflection positivity makes them zero against all physical states.
+13. Reconstruction from OPE data is theorem-level only for an abstract radial
+    OPE datum with all-tree convergence, channel compatibility, positivity,
+    and distributional/contact-term prescriptions.  Complete all-primary
+    four-point OPE data may be rigid enough to determine a CFT under
+    generator/completeness hypotheses, but a single four-point crossing
+    equation is underdetermined and does not even determine its correlator
+    without extra data.
 
 ## Figures
 
@@ -139,3 +160,7 @@ The chapter establishes:
 - 2026-05-24 issue pass: addressed #278 by spelling out the raw descendant
   space, null quotient, quotient Gram matrix, level projector, and levelwise
   contraction formula for radial conformal-block coefficients.
+- 2026-05-24 issue #288 pass: added a conditional radial reconstruction
+  theorem from abstract OPE data and isolated the all-primary/generator
+  four-point OPE inverse problem from the underdetermined single-correlator
+  crossing problem.
