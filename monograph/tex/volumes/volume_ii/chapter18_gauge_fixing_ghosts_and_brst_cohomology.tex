@@ -248,6 +248,89 @@ A global smooth gauge fixing would be a smooth section of the quotient map
 corresponding irreducible-connection quotient after stabilizers are removed.
 \end{definition}
 
+\begin{proposition}[Coulomb-slice atlas on irreducible connections]
+\label{prop:coulomb-slice-atlas}
+Let \(X\) be a compact Euclidean spacetime, let \(P\to X\) be a smooth
+principal \(G\)-bundle with \(G\) compact, and fix an integer
+\(k>\dim X/2+1\).  Write
+\[
+  \mathcal A_k(P)
+  =
+  A_0+L^2_k(T^*X\otimes\operatorname{ad}P),
+  \qquad
+  \mathcal G_{k+1}(P)=L^2_{k+1}\Gamma(\operatorname{Ad}P)
+\]
+for the Sobolev-completed space of connections and gauge group.  Let
+\(A\in\mathcal A_k(P)\) be irreducible, and divide by a based gauge group, or
+equivalently remove the finite stabilizer, so that the gauge action is free at
+\(A\).  Denote by
+\[
+  d_A:
+  L^2_{k+1}(\operatorname{ad}P)
+  \longrightarrow
+  L^2_k(T^*X\otimes\operatorname{ad}P)
+\]
+the infinitesimal gauge action and by \(d_A^*\) its \(L^2\)-adjoint.  After
+the stabilizer directions have been removed, the elliptic operator
+\[
+  \mathcal M_A=d_A^*d_A
+\]
+has trivial kernel.  Hence, for sufficiently small \(\epsilon>0\),
+\[
+  \mathcal S_A(\epsilon)
+  =
+  \{\,A+a:\ d_A^*a=0,\ \|a\|_{L^2_k}<\epsilon\,\}
+\]
+is a local slice: the map
+\[
+  \mathcal S_A(\epsilon)\times \mathcal U_{\id}
+  \longrightarrow
+  \mathcal A_k(P),
+  \qquad
+  (B,g)\longmapsto B^g ,
+\]
+with \(\mathcal U_{\id}\) a small neighborhood of the identity in the based
+gauge group, is a Hilbert-manifold coordinate chart onto a neighborhood of the
+orbit of \(A\).  In these coordinates \(\mathcal M_A\) is the
+Faddeev--Popov operator of the background Coulomb gauge condition
+\(d_A^*(B-A)=0\).
+\end{proposition}
+
+\begin{proof}
+The derivative of the displayed map at \((A,\id)\) sends a transverse
+variation \(a\) and an infinitesimal gauge parameter \(\zeta\) to
+\[
+  a+d_A\zeta .
+\]
+The Coulomb condition imposes \(d_A^*a=0\).  Elliptic Fredholm theory gives the
+orthogonal decomposition
+\[
+  L^2_k(T^*X\otimes\operatorname{ad}P)
+  =
+  \ker d_A^*
+  \oplus
+  \operatorname{im}d_A
+\]
+after the finite-dimensional kernel of \(d_A\) has been removed.  The inverse
+on the orbit directions is obtained by solving
+\[
+  d_A^*d_A\zeta=d_A^*u
+\]
+for the longitudinal part of a one-form \(u\).  The operator \(d_A^*d_A\) is
+elliptic and invertible on the separated gauge algebra, so the derivative is a
+Banach-space isomorphism.  The Sobolev inequality \(k>\dim X/2+1\) makes the
+gauge action smooth in the relevant Hilbert-manifold category, and the inverse
+function theorem supplies the stated local product chart.
+\end{proof}
+
+The word ``local'' in the Faddeev--Popov formulae below means precisely this
+kind of chart, or its finite-regulator analogue.  Perturbation theory around a
+background uses one such chart and expands the resulting local Jacobian.  A
+nonperturbative continuum gauge-fixed measure would require compatible
+integration data on an atlas of such charts, with boundary and overlap
+contributions controlled.  The elementary Faddeev--Popov formula is not that
+global construction.
+
 \begin{theorem}[Singer obstruction, structural form]
 \label{thm:singer-gribov-obstruction}
 Let \(P\to M\) be a principal bundle over a compact smooth Euclidean
@@ -277,6 +360,7 @@ Phys. B} \textbf{139} (1978) 1--19.}  It is the mathematical reason why
 nonperturbative gauge-field integral for a nonabelian gauge theory.
 
 \begin{definition}[Gribov region and fundamental modular domain]
+\label{def:gribov-region-fundamental-domain}
 For Landau gauge on a compact Euclidean manifold, write the gauge condition as
 \[
   \partial^\mu A_\mu=0
@@ -306,6 +390,119 @@ The domain \(\mathfrak F\) lies inside \(\Omega_{\rm G}\), but boundary points
 of \(\mathfrak F\) can still be gauge-equivalent.  Thus even this sharper
 domain is not a smooth global slice without boundary identifications.
 \end{definition}
+
+\begin{proposition}[Where the Landau Faddeev--Popov chart is Gribov-free]
+\label{prop:landau-gribov-free-regime}
+On a compact flat Euclidean spacetime with constant gauge zero modes removed,
+the interior
+\[
+  \Omega_{\rm G}^{\circ}
+  =
+  \{\,A:\partial^\mu A_\mu=0,
+  \langle\zeta,\mathcal M_L(A)\zeta\rangle_{L^2}>0
+  \text{ for all }0\ne\zeta\,\}
+\]
+is the Landau-gauge region where the infinitesimal Faddeev--Popov chart is
+transverse to the gauge orbit.  The Gribov horizon
+\(\partial\Omega_{\rm G}\) is the locus where this infinitesimal chart loses
+invertibility.  The fundamental modular domain \(\mathfrak F\) selects
+absolute minima of \(\|A^g\|^2\) on each orbit, but its boundary
+identifications mean that it is not a smooth global coordinate slice.
+\end{proposition}
+
+\begin{proof}
+For a fixed connection \(A\), define the orbit norm functional
+\[
+  N_A(g)=\|A^g\|^2
+  =
+  \int_X\dd^D x\,\operatorname{tr}(A_\mu^g A_\mu^g).
+\]
+Let \(g(t)=\exp(\ii t\zeta)\).  With the conventions of this chapter,
+\[
+  \left.\frac{\dd}{\dd t}A_\mu^{g(t)}\right|_{t=0}
+  =
+  D_\mu(A)\zeta .
+\]
+Using invariance of the trace and integrating by parts on the compact
+manifold gives
+\[
+  \left.\frac{\dd}{\dd t}N_A(g(t))\right|_{t=0}
+  =
+  2\int_X\operatorname{tr}(A_\mu D_\mu(A)\zeta)\,\dd^D x
+  =
+  -2\int_X\operatorname{tr}((\partial^\mu A_\mu)\zeta)\,\dd^D x .
+\]
+Thus the stationary points of \(N_A\) on the orbit are precisely the Landau
+representatives.  At such a stationary point,
+\[
+  \left.
+  \frac{\dd^2}{\dd t^2}N_A(g(t))
+  \right|_{t=0}
+  =
+  2\int_X\operatorname{tr}\bigl(\zeta\,[-\partial^\mu D_\mu(A)]\zeta\bigr)
+  \,\dd^D x
+  =
+  2\langle\zeta,\mathcal M_L(A)\zeta\rangle_{L^2}.
+\]
+Therefore strict positivity of \(\mathcal M_L(A)\) on the nonzero gauge
+directions is exactly the nondegeneracy condition for the Landau slice to be a
+local transverse chart.  When a zero mode appears, the derivative of the gauge
+condition along the orbit is singular, and the Faddeev--Popov coordinate
+formula ceases to be locally invertible.  Absolute minima of \(N_A\) define
+\(\mathfrak F\), but two absolute minima on the boundary may be related by a
+gauge transformation; such boundary identifications are quotient data, not
+ordinary smooth coordinates.
+\end{proof}
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.78\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,every node/.style={font=\scriptsize}]
+    \fill[gray!8] (0,0) ellipse (4.7 and 2.55);
+    \draw[gray!70,line width=0.9pt] (0,0) ellipse (4.7 and 2.55);
+    \node[gray!70!black,fill=white,inner sep=2pt] at (-3.15,2.25)
+      {Landau surface \(\partial^\mu A_\mu=0\)};
+
+    \fill[blue!8] (0.05,0.02) ellipse (3.35 and 1.72);
+    \draw[blue!65!black,line width=1.05pt] (0.05,0.02) ellipse (3.35 and 1.72);
+    \node[blue!65!black,fill=white,inner sep=2pt] at (2.1,1.55)
+      {first Gribov region \(\Omega_{\rm G}\)};
+    \node[blue!65!black,fill=white,inner sep=2pt] at (3.55,-0.1)
+      {\(\det\mathcal M_L=0\)};
+
+    \fill[red!9]
+      plot[smooth cycle] coordinates {
+        (-1.55,-0.45) (-0.75,-1.05) (0.55,-0.92) (1.35,-0.25)
+        (1.12,0.72) (0.05,1.05) (-1.2,0.72)
+      };
+    \draw[red!75!black,line width=1.05pt]
+      plot[smooth cycle] coordinates {
+        (-1.55,-0.45) (-0.75,-1.05) (0.55,-0.92) (1.35,-0.25)
+        (1.12,0.72) (0.05,1.05) (-1.2,0.72)
+      };
+    \node[red!75!black,fill=white,inner sep=2pt] at (-0.15,0.18)
+      {\(\mathfrak F\)};
+
+    \draw[purple!80!black,dashed,line width=0.9pt]
+      (-1.32,0.63) .. controls (-0.25,1.5) and (1.0,1.35) .. (2.55,0.88);
+    \node[purple!80!black,fill=white,inner sep=2pt] at (1.35,1.15)
+      {gauge-equivalent boundary points};
+
+    \fill[black] (-0.55,0.52) circle (2.2pt);
+    \fill[black] (0.82,-0.55) circle (2.2pt);
+    \draw[-{Latex[length=2mm]},black!70,line width=0.8pt]
+      (-0.45,0.46) .. controls (0.18,0.12) and (0.55,-0.22) .. (0.76,-0.48);
+    \node[black!75,fill=white,inner sep=2pt] at (0.12,-0.36)
+      {same orbit};
+  \end{tikzpicture}
+  }
+  \caption{Landau gauge does not define a single global coordinate system on
+  nonabelian orbit space.  The interior of \(\Omega_{\rm G}\) is the
+  infinitesimal Gribov-free regime where \(\mathcal M_L\) is positive after
+  zero modes are removed.  The fundamental modular domain \(\mathfrak F\)
+  lies inside it but carries boundary identifications.}
+  \label{fig:gribov-region-fundamental-domain}
+\end{figure}
 
 The perturbative Faddeev--Popov construction used in this chapter is the local
 construction near a chosen background, usually \(A=0\) or a fixed classical
@@ -1145,9 +1342,9 @@ for another scalar form factor \(v\).  Under this regularity assumption,
 This equivalence is often the form in which the criterion is compared with
 Dyson--Schwinger or lattice Landau-gauge data.
 
-The status of Conjecture~\ref{conj:kugo-ojima-confinement} is not that of a
-proved nonperturbative theorem for four-dimensional Yang--Mills theory.  The
-criterion assumes a global BRST charge and a covariant-gauge state space
+This is a conditional Kugo--Ojima scenario, not a theorem for
+four-dimensional Yang--Mills theory.  It assumes a global BRST charge and a
+covariant-gauge state space
 precisely in the regime where Gribov copies and possible fundamental-domain
 boundaries make the nonperturbative BRST construction delicate.  Moreover,
 large-volume lattice studies of minimal Landau gauge and Gribov--Zwanziger

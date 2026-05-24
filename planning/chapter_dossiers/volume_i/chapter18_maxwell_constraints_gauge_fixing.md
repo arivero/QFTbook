@@ -139,3 +139,8 @@ Status: rewritten and source-audited on 2026-05-22.
   in Lorenz gauge, including the Krein-Fock space, weak Lorenz condition, null
   quotient, isomorphism to transverse helicity Fock space, and equality of
   field-strength correlators with the reduced positive quantization.
+- 2026-05-24 issue #312 pass: added an explicit forward contrast between the
+  abelian linear-gauge Faddeev--Popov determinant, which is field independent
+  after zero modes are handled, and the later nonabelian local-chart problem,
+  where the Faddeev--Popov operator depends on \(A\) and may develop zero
+  modes.
