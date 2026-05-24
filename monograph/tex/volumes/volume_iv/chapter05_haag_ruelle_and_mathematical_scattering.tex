@@ -315,7 +315,33 @@ Let
 \]
 be the Haag--Ruelle wave operators, in the terminology introduced in
 Chapter~\ref{ch:haag-ruelle}, produced by Haag--Ruelle limits.  They are
-isometric maps.  Their ranges
+isometric maps.  Their construction has two equivalent topological
+descriptions.  First, for each finite velocity-separated Fock vector
+\[
+  F=\psi_1\odot\cdots\odot\psi_n
+\]
+represented by regular creators \(B_j\) and packets \(h_j\), the vector family
+\[
+  \Omega_{{\rm out},t}^{\rm HR}F
+  =
+  B_{1,t}(h_1)\cdots B_{n,t}(h_n)\vac
+\]
+converges in the Hilbert norm of \(\Hilb\).  Second, after these vector limits
+are packaged as maps from the algebraic velocity-separated Fock domain to
+\(\Hilb\), the same assertion is strong convergence of the approximating maps:
+\[
+  \Omega_{{\rm out},t}^{\rm HR}F
+  \longrightarrow
+  \Omega_{\rm out}F
+  \quad\text{in }\Hilb
+  \quad\text{for every fixed }F.
+  \label{eq:algebraic-haag-ruelle-strong-operator-limit}
+\]
+The incoming map is obtained by the same statement with \(t\to-\infty\).
+Weak convergence of matrix elements follows from this norm convergence for
+each \(F\), while weak convergence alone would not determine the isometric
+identification.  No operator-norm limit over the unit sphere of
+\(\mathcal F_s(\Hilb_1)\) is part of the theorem.  Their ranges
 \[
   \Hilb_{\mathrm{in}}=\operatorname{Ran}\Omega_{\mathrm{in}},
   \qquad

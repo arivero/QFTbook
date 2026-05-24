@@ -643,6 +643,41 @@ Concretely, each wave operator is an asymptotic identification map: it assigns
 to an abstract collection of asymptotic one-particle wave packets the physical
 Hilbert-space vector obtained as a large-time Haag--Ruelle limit.
 
+The topology in this statement is pointwise Hilbert-norm convergence on the
+asymptotic Fock domain.  Choose, for a dense algebraic subspace
+\(\mathcal F_{s,{\rm sep}}^{\rm alg}(\Hilb_1)\subset\mathcal F_s(\Hilb_1)\),
+Haag--Ruelle creators and velocity-separated wave packets representing each
+decomposable vector \(F\).  The time-dependent identification map
+\(\Omega_{{\rm out},t}^{\rm HR}\) is defined on that vector by the corresponding
+product of Haag--Ruelle operators applied to the vacuum.  The theorem says
+\[
+  \lim_{t\to+\infty}
+  \left\|
+    \Omega_{{\rm out},t}^{\rm HR}F-\Omega_{\rm out}F
+  \right\|_{\Hilb}
+  =0,
+  \qquad
+  F\in\mathcal F_{s,{\rm sep}}^{\rm alg}(\Hilb_1),
+  \label{eq:haag-ruelle-strong-topology-out}
+\]
+and analogously for \(t\to-\infty\) and \(\Omega_{\rm in}\).  Packaged as
+maps from the asymptotic Fock domain to \(\Hilb\), this is strong operator
+convergence on that domain: convergence holds after applying the approximating
+map to each fixed vector \(F\).  The weak convergence of all matrix elements
+\(\langle\eta,\Omega_{{\rm out},t}^{\rm HR}F\rangle\) follows immediately from
+\eqref{eq:haag-ruelle-strong-topology-out}, while the converse weak statement
+does not by itself give the isometric wave operator.  Operator-norm
+convergence,
+\[
+  \sup_{\|F\|_{\mathcal F_s}=1}
+  \left\|
+    \Omega_{{\rm out},t}^{\rm HR}F-\Omega_{\rm out}F
+  \right\|_{\Hilb}\longrightarrow0,
+\]
+is not asserted in Haag--Ruelle theory.  The isometric extension of
+\(\Omega_{\rm out/in}\) to all of \(\mathcal F_s(\Hilb_1)\) is obtained after
+the Fock inner product has been reproduced on the dense algebraic domain.
+
 For wave packets with disjoint velocity supports, define
 \[
   \Omega_{\mathrm{out}}
