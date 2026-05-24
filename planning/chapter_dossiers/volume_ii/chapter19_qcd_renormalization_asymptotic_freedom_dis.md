@@ -77,6 +77,9 @@ The chapter must define and derive:
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
+- a labeled open problem for physical QCD asymptotic completeness, separating
+  the construction of hadronic wave operators and detector limits from
+  asymptotic freedom, factorization, mass gap, and confinement hypotheses;
 - the energy-flow detector as a weak limit of stress-tensor flux quadratic
   forms on the physical scattering domain;
 - calorimetric final-state measures, smeared \(k\)-point energy correlators,
@@ -159,6 +162,12 @@ The chapter must define and derive:
     an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
     renormalized Wilson-line light-ray operators defining PDFs, and the
     resulting factorization-scale dependence is governed by DGLAP evolution.
+18. Physical QCD asymptotic completeness remains an open large-time problem:
+    one must construct wave operators from stable color-singlet asymptotic
+    spaces, treat resonances through analytic scattering data, include
+    massless Goldstone modes when chiral limits are taken, and prove that
+    detector observables such as energy flow are limits on the same scattering
+    domain.
 
 ## Figure Requirements
 
@@ -237,3 +246,7 @@ The chapter must define and derive:
   the strong-coupling theorem in the new lattice Yang--Mills chapter and
   separated that finite-cutoff result from the continuum four-dimensional
   confinement problem.
+- 2026-05-24 issue #332 pass: added a labeled open problem for asymptotic
+  completeness of physical QCD, explicitly distinguishing the hadronic
+  Hilbert-space wave-operator theorem from asymptotic freedom, factorization,
+  mass gap, and spectral confinement inputs.

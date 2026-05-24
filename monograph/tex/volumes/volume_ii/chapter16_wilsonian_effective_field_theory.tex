@@ -1657,6 +1657,97 @@ Wilsonian vertices and the remaining low covariance.
   \label{fig:bphz-wilsonian-one-pi-bridge}
 \end{figure}
 
+\begin{definition}[BPHZ--Wilsonian comparison datum]
+\label{def:bphz-wilsonian-comparison-datum}
+A comparison datum consists of the following finite choices.
+First choose a BPHZ scheme \(\mathfrak b\): a Taylor subtraction point and
+subtraction degree \(\delta(\gamma)\) for every superficially divergent
+1PI subgraph type \(\gamma\), including the oversubtraction degrees used for
+normal products.  The corresponding forest operation is
+\[
+  R_\Gamma^{\mathfrak b}I_\Gamma
+  =
+  \sum_{F\in\mathfrak F(\Gamma)}
+  (-1)^{|F|}
+  \left(\prod_{\gamma\in F} t_{\gamma}^{\delta(\gamma),\mathfrak b}\right)
+  I_\Gamma ,
+\]
+with nested products ordered from smaller subgraphs to larger ones.  Second
+choose the Wilsonian covariance split
+\[
+  C_{\Lambda_0}=C_\Lambda+C_{>},
+\]
+the Banach chart \(\mathcal B_{\Lambda}^{m,a}\) in which Wilsonian kernels are
+estimated, the finite local coordinate projectors
+\(\rho_A(L_\Lambda)=u_A\), and the finite 1PI projectors \(\Pi_I\) at
+nonexceptional Euclidean momenta of size \(O(\mu)\).  Third choose a matching
+ratio \(\zeta=\Lambda/\mu\) in a compact subinterval of \((1,\infty)\).
+All statements below are statements relative to this datum.
+\end{definition}
+
+\begin{proposition}[BPHZ local parts as Wilsonian local coordinates]
+\label{prop:bphz-local-parts-wilsonian-coordinates}
+Consider a power-counting finite scalar theory in a massive Euclidean
+momentum-subtraction setting.  For every superficially divergent subgraph
+\(\gamma\) with \(E_\gamma\) external scalar legs, the BPHZ local part
+\[
+  t_{\gamma}^{\delta(\gamma),\mathfrak b}\,\overline R_\gamma I_\gamma
+\]
+is a finite sum of external-momentum monomials
+\[
+  \sum_{|\alpha|\leq\delta(\gamma)}
+  c_{\gamma,\alpha}^{\mathfrak b}\,p_\gamma^\alpha .
+\]
+After Fourier transform, each term is a local vertex of the form
+\[
+  c_{\gamma,\alpha}^{\mathfrak b}
+  \int\dd^Dx\,
+  P_{\alpha}(\partial_1,\ldots,\partial_{E_\gamma})
+  \phi(x_1)\cdots\phi(x_{E_\gamma})\big|_{x_i=x}.
+\]
+For the minimal BPHZ degree
+\(\delta(\gamma)=\omega(\gamma)\), these vertices are precisely among the
+relevant or marginal local Wilsonian coordinates determined by power
+counting.  Oversubtractions add a finite list of higher-derivative local
+coordinates, and Zimmermann identities are the corresponding finite changes
+of local operator coordinates.
+\end{proposition}
+
+\begin{proof}
+The prepared integrand \(\overline R_\gamma I_\gamma\) has all proper
+subdivergences subtracted.  The operation \(t_\gamma^{\delta,\mathfrak b}\)
+is the Taylor polynomial in the independent external momenta of \(\gamma\) at
+the specified subtraction configuration, hence it has the displayed monomial
+form.  Multiplication by \(p^\alpha\) in momentum space is the Fourier
+transform of a derivative acting on the fields incident to the contracted
+vertex, so insertion of this Taylor polynomial into the contracted graph is
+the insertion of a local interaction vertex with \(E_\gamma\) fields and
+\(|\alpha|\) derivatives.
+
+For a scalar field with engineering dimension \([\phi]=(D-2)/2\), the
+dimension of such a local monomial in the derivative-free scalar examples of
+this chapter is
+\[
+  \Delta_{\gamma,\alpha}
+  =
+  E_\gamma\frac{D-2}{2}+|\alpha|.
+\]
+The superficial degree \(\omega(\gamma)\) is precisely the largest derivative
+order for which the local counterterm has scaling dimension at most \(D\), in
+the power-counting convention used to define the BPHZ subtraction degree.
+Thus \(|\alpha|\leq\omega(\gamma)\) is equivalent to
+\(\Delta_{\gamma,\alpha}\leq D\) in this scalar setting.  These are the
+relevant or marginal local coordinates in the Wilsonian linearized scaling
+convention \(y_A=D-\Delta_A\).  If
+\(\delta(\gamma)>\omega(\gamma)\), the additional Taylor coefficients have
+\(\Delta_A>D\); they are irrelevant Wilsonian coordinates retained by the
+chosen oversubtracted local chart.  The difference between two choices of
+subtraction degree or finite Taylor part is therefore a finite change of
+coefficients multiplying local vertices, which is the Wilsonian coordinate
+form of the Zimmermann identity described in
+Chapter~\ref{ch:volume-ii-subdivergences-forest-formulas}.
+\end{proof}
+
 \begin{lemma}[Low-momentum Taylor remainder from a Wilsonian norm]
 \label{lem:low-momentum-taylor-remainder-wilsonian}
 Fix a finite loop order \(\ell\), a finite list of low-momentum 1PI projectors
@@ -1808,6 +1899,60 @@ implicit function theorem gives a local finite change of coordinates
 with the same \(O((\mu/\Lambda)^{p_N})\) truncation error.
 \end{theorem}
 
+The finite change of coordinates in
+Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} can be constructed
+recursively in the loop expansion.  Write
+\[
+  M_I^{(\ell,N)}(u)
+  =
+  \sum_{r=0}^{\ell}\hbar^r M_{I,r}(u),
+  \qquad
+  u_A
+  =
+  \sum_{r=0}^{\ell}\hbar^r U_{A,r},
+  \qquad
+  g_I
+  =
+  \sum_{r=0}^{\ell}\hbar^r g_{I,r}.
+\]
+Choose the sublist \(A_0\) with invertible tree-level Jacobian
+\[
+  J_{IA}=
+  \frac{\partial M_{I,0}}{\partial u_A}\bigg|_{u=U_0},
+  \qquad A\in A_0 .
+\]
+At order zero, solve \(g_{I,0}=M_{I,0}(U_0)\).  Suppose that
+\(U_{A,s}\) has been determined for \(s<r\).  The coefficient of
+\(\hbar^r\) in \(M_I(u)\) has the form
+\[
+  [\hbar^r]\,M_I(u)
+  =
+  J_{IA}U_{A,r}
+  +
+  \mathcal F_{I,r}(U_0,\ldots,U_{r-1};u_{\bar A}),
+\]
+where \(\mathcal F_{I,r}\) is computed from lower-order coordinate
+coefficients, the explicit \(r\)-loop low-mode 1PI graphs, and the retained
+coordinates \(u_{\bar A}\) outside \(A_0\).  Therefore
+\[
+  U_{A,r}
+  =
+  (J^{-1})_{AI}
+  \left[
+    g_{I,r}
+    -
+    \mathcal F_{I,r}(U_0,\ldots,U_{r-1};u_{\bar A})
+  \right].
+\]
+This recursion is the perturbative coordinate map
+\[
+  u_A=G_A(g,u_{\bar A};\Lambda/\mu,\mathfrak b)
+\]
+order by order.  The coefficients
+\(\mathcal F_{I,r}\) are finite because BPHZ supplies finite 1PI projectors at
+the chosen loop order, and the Wilsonian Taylor-remainder lemma controls the
+omitted local coordinates by the displayed power of \(\mu/\Lambda\).
+
 \begin{proof}
 The finite-regulator Gaussian convolution identity gives
 \eqref{eq:wilsonian-low-w-equals-bare-w} for all sources in \(\mathcal E_<\).
@@ -1870,6 +2015,21 @@ relation to the present one is another finite matching map.  A
 nonperturbative equivalence between BPHZ and Wilsonian constructions would
 require nonperturbative existence of the relevant measures, Legendre
 transforms, and cutoff-uniform Banach estimates.
+\end{remark}
+
+\begin{remark}[Status of the comparison]
+The exact finite-regulator input is
+\eqref{eq:wilsonian-low-w-equals-bare-w}.  The Legendre-transform step is a
+finite-dimensional local theorem under Hessian invertibility on the chosen
+low test space.  The BPHZ input is an order-by-order theorem for the specified
+massive forest formula, with BPHZL or another infrared prescription required
+for massless exceptional regions.  The Wilsonian input is an estimate in the
+chosen normed RG chart, such as the smooth-cutoff estimates behind
+Polchinski's perturbative proof.  Minimal subtraction, momentum subtraction,
+and Wilsonian coordinates are different coordinate systems; their comparison
+is the finite matching problem just constructed.  A nonperturbative
+identification requires additional existence and uniform-estimate theorems for
+the model under study.
 \end{remark}
 
 \section{One-Loop Matching in the Quartic Scalar Theory}

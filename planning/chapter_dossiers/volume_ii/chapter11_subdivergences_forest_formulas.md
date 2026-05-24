@@ -97,6 +97,10 @@ The chapter must define:
     BPHZL introduces auxiliary mass/subtraction data and IR degrees so that
     UV-local subtractions possess a distributional massless limit when the
     Lowenstein--Zimmermann power-counting conditions hold.
+13. The finite local freedom produced by Taylor subtractions is the BPHZ side
+    of the BPHZ--Wilsonian comparison: in the Wilsonian chapter, these local
+    polynomials are identified with finite local coordinates in the retained
+    Wilsonian chart.
 
 ## Figure Requirements
 
@@ -133,3 +137,6 @@ The chapter must define:
   before the graph formalism that BPHZ renormalizes formal perturbative
   coefficient distributions extracted from a regulated source functional and
   is not a nonperturbative continuum path-integral construction.
+- 2026-05-24 issue #497 pass: added a forward cross-reference from the finite
+  subtraction-coordinate discussion to the Wilsonian comparison theorem, where
+  BPHZ local Taylor parts are identified with Wilsonian local-coordinate data.

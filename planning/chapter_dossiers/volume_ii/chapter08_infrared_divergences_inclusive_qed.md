@@ -75,7 +75,12 @@ The chapter should state:
 - the fact that the Faddeev--Kulish soft profile is not square-integrable in
   the photon one-particle Hilbert norm after the infrared cutoff is removed,
   hence implements a representation change rather than a vector in the
-  original photon Fock space.
+  original photon Fock space;
+- a labeled open problem specifying the charged asymptotic-completeness theorem
+  still missing for massless QED: asymptotic spaces with hard charged data,
+  transverse photons, angular electric-flux labels, dressed or Wilson-line
+  charged creators, wave operators into the charged physical Hilbert space,
+  and agreement with inclusive detector probabilities.
 
 Additional symbols introduced in the charged-sector discussion:
 
@@ -180,6 +185,11 @@ Additional symbols introduced in the charged-sector discussion:
     boundary: charged QED sectors are infraparticle sectors, not ordinary
     Wigner-particle Fock sectors; asymptotic electric flux labels
     superselection data.
+19. The open charged-QED asymptotic-completeness problem asks for a single
+    nonperturbative large-time theorem whose asymptotic data include hard
+    charged labels, transverse radiation, Gauss-law flux at infinity, and the
+    detector probabilities computed by inclusive or dressed perturbation
+    theory.
 
 ## Figure Requirements
 
@@ -224,3 +234,7 @@ Additional symbols introduced in the charged-sector discussion:
 - 2026-05-24 issue #260 pass: added an Abelian-scope remark for
   Bloch--Nordsieck exponentiation and cross-referenced the QCD factorization
   replacement through renormalized PDFs and DGLAP evolution.
+- 2026-05-24 issue #332 pass: added a labeled open problem for charged
+  asymptotic completeness in massless QED, including the required
+  flux-labelled asymptotic space, dressed charged creators, wave operators,
+  and matching to inclusive detector probabilities.

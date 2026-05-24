@@ -253,6 +253,16 @@ The chapter must define and derive:
      Jacobian-invertibility hypothesis are stated.  The matching map is
      \(M_I=\Pi_I\Gamma^<_{\Lambda,N}\), computed from retained Wilsonian
      coordinates and remaining low-mode integration.
+14b. BPHZ Taylor local parts are Wilsonian local-coordinate data: a prepared
+     subgraph subtraction gives a finite external-momentum polynomial, whose
+     Fourier transform is a local vertex.  Minimal BPHZ subtractions land in
+     relevant or marginal coordinates by power counting, while
+     oversubtractions add a finite retained list of irrelevant operator
+     coordinates.
+14c. The finite matching map can be constructed recursively in the loop
+     expansion.  At each order the already computed lower-order coordinates
+     determine an inhomogeneous term, and the selected tree-level Jacobian is
+     inverted to solve for the next Wilsonian coordinate coefficient.
 15. Beta-function components in Wilsonian and 1PI coordinates are comparable
     only after a matching map is chosen; under finite coordinate changes they
     transform by the chain rule.
@@ -357,3 +367,8 @@ The chapter must define and derive:
   generated-integral hypotheses, and records convergence of continuous
   projected low-energy quantities with a Lipschitz error estimate when
   applicable.
+- 2026-05-24 issue #497 pass: added the formal comparison datum, the
+  proposition identifying BPHZ Taylor local parts with Wilsonian local
+  coordinates, and the recursive loop-order construction of the matching map;
+  cross-links were added back to the BPHZ finite-parts and normal-product
+  discussions.

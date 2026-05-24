@@ -135,6 +135,9 @@ The chapter must define:
    part corrects the Wilsonian insertion, the low-low part is produced by the
    remaining low-field 1PI insertion, and the mixed part is represented by
    local source-coordinate data in the low-momentum expansion.
+8a. Zimmermann normal-product choices are local source-coordinate choices in
+    the Wilsonian comparison theorem: changing the normal product changes the
+    finite local operator coordinate and hence the source coordinate map.
 9. For multiple inserted operators, the finite-regulator chain rule for the
    full local source chart expresses renormalized distributions as a sum over
    partitions of the insertion labels.  The singleton partition gives the
@@ -228,6 +231,9 @@ The chapter must define:
 - Do not call anomalous dimensions a connection unless the base, fiber,
   transition functions, regularity assumptions, and local expression of the
   connection have been stated.
+- 2026-05-24 issue #497 pass: added the cross-reference identifying the finite
+  BPHZ normal-product choice with local source-coordinate data in the
+  BPHZ--Wilsonian matching theorem.
 - Keep the transition convention explicit: the displayed
   \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\) law is for local
   representative columns transforming as \(\widetilde v=Mv\).

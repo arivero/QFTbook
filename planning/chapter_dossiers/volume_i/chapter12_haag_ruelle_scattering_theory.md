@@ -70,7 +70,8 @@
   perturbative four-dimensional \(\lambda\phi^4\) does not by itself; QED
   charged sectors are infraparticle sectors; QCD colored shells are absent
   from the gauge-invariant observable spectrum; resonances are not
-  Haag--Ruelle external particles.
+  Haag--Ruelle external particles.  The later charged-QED and physical-QCD
+  open problems specify the corresponding asymptotic-completeness questions.
 - The notation \(\Hilb_1=E(\Sigma_m^+)\Hilb\) is explicitly scoped to the case
   \(E(\Sigma_m^+)\Hilb\ne0\); a continuous Kallen-Lehmann threshold with no
   atom leaves the ordinary massive Haag--Ruelle construction vacuous for that
@@ -147,3 +148,7 @@
   \(L^2(\Sigma_m^+,d\mu_m)\) model of \(\Hilb_1\), the induced symmetric
   Fock-space wave-function representation, and the corresponding inner-product
   formula before invoking Haag--Ruelle wave operators.
+- 2026-05-24 issue #332 pass: cross-referenced the charged-QED and physical
+  QCD asymptotic-completeness open problems from the Haag--Ruelle scope
+  discussion, so the failure of the massive isolated-shell hypotheses is tied
+  to explicit replacement problems rather than left implicit.
