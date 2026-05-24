@@ -51,8 +51,10 @@ The chapter must define and derive:
 - the separate continuum Wilsonian pushforward hypothesis, distinguishing
   convergence of the interacting source functional from convergence of the
   pushforward or infinitesimal Wilson-Polchinski flow;
-- the Gaussian field split \(\phi=\phi'+\widehat\phi\), including the shell
-  kinetic term;
+- the Gaussian field split \(\phi=\phi'+\phi_{\mathrm{sh}}\), including the
+  shell kinetic term, and the notation convention that hats are reserved for
+  covariance differences such as \(\widehat C_{\Lambda,\Lambda'}\), not for
+  shell fields;
 - the shell-integration formula defining \(L_{\Lambda'}[\phi']\);
 - the infinitesimal Wilson-Polchinski equation, with functional-derivative
   conventions;
@@ -195,8 +197,9 @@ The chapter must define and derive:
     functional derivatives in the Polchinski equation annihilate it, so the
     displayed interaction equation is written modulo this constant.
 4. Before the shell source term is discarded, the split generating functional
-   contains \(J(\phi'+\widehat\phi)\); the \(J\widehat\phi\) term vanishes only
-   by the regulated support assumption on the source.
+   contains \(J(\phi'+\phi_{\mathrm{sh}})\); the
+   \(J\phi_{\mathrm{sh}}\) term vanishes only by the regulated support
+   assumption on the source.
 5. The infinitesimal shell-integration identity gives a functional differential
    equation for \(L_\Lambda\).
 5a. The Wilson-Polchinski equation has a stated topology only after choosing
@@ -385,3 +388,6 @@ The chapter must define and derive:
   the Wilson-Polchinski derivation, explaining why the
   \(\phi\)-independent shell normalization is absent from the displayed
   functional-derivative flow.
+- 2026-05-24 issue #359 pass: made the shell/Fourier notation unambiguous:
+  the shell field is \(\phi_{\mathrm{sh}}\), while hats are reserved for
+  covariance differences such as \(\widehat C_{\Lambda,\Lambda'}\).
