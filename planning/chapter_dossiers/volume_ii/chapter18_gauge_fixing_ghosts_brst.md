@@ -27,6 +27,11 @@
   Gribov's original 1978 analysis, used to state the global obstruction to a
   smooth gauge slice and to define the first Gribov region/fundamental modular
   domain.
+- `SRC-EXTERNAL-KUGO-OJIMA`: Kugo--Ojima's 1979 covariant operator formalism,
+  lattice Landau-gauge tests by Nakajima--Furui, Kondo's Gribov--Zwanziger
+  infrared analysis, and the 2023 lattice computation of the Kugo--Ojima
+  correlation function.  These sources control the quartet terminology, the
+  \(u(0)=-1\) condition, and the current status caveat.
 - The external source is used for the distinction between \(H(s)\) and
   \(H(s\mid d)\), for the contractible-pair/nonminimal-sector statement, and for
   the roles of ghost-number-zero and ghost-number-one local cohomology.
@@ -71,7 +76,7 @@
 | \(\Delta_F(A)\) | Faddeev--Popov determinant |
 | \(\Omega_{\rm G}\) | first Gribov region in Landau gauge, \(\partial^\mu A_\mu=0\) and \(\mathcal M_L(A)\ge0\) after zero modes are removed |
 | \(\mathfrak F\) | fundamental modular domain of absolute minima of \(\|A^g\|^2\) along gauge orbits |
-| \(b_A\) | condensed-index antighost paired with \(F^A\), related to the conventional \(\bar c_A\) by \(b_A=-\bar c_A\) |
+| \(b_A\) | condensed-index antighost paired with \(F^A\), related to the conventional \(\bar c_A\) by \(b_A=\bar c_A\) in this chapter |
 | \(c,\bar c\) | odd adjoint-valued ghost and independent antighost fields |
 | \(B\) | Nakanishi--Lautrup auxiliary field |
 | \(s\) | BRST differential |
@@ -85,6 +90,9 @@
 | \(Q\) | canonical BRST charge |
 | \(\mathcal K\) | gauge-fixed indefinite state space |
 | \(\mathcal H_{\mathrm{phys}}\) | ghost-number-zero BRST cohomology of states |
+| \(u(p^2)\) | transverse Kugo--Ojima function defined by the \((D_\mu c,g_{\mathrm{YM}}A_\nu\times\bar c)\) two-point function in Landau gauge |
+| \(F_{\mathrm{KO}}(p^2)\) | convention \(F_{\mathrm{KO}}=-u\), so the original infrared criterion is \(F_{\mathrm{KO}}(0)=1\) |
+| \(G_{\rm gh}(p^2)\) | Landau-gauge ghost dressing function in \(\langle c\bar c\rangle=G_{\rm gh}(p^2)/p^2\) |
 | \(K^{a\mu},L^a\) | sources for nonlinear BRST variations, precursor to antifields |
 | \(\Phi^*_A\) | BV antifield paired with a field \(\Phi^A\), deferred to the BV chapter |
 
@@ -137,6 +145,21 @@
   canonical BRST charge when positivity of the quotient is established, with
   the exact-state equivalence \(|\Psi\rangle\sim|\Psi\rangle+Q|\chi\rangle\)
   included explicitly.
+- The perturbative doublet argument is now separated from the Kugo--Ojima
+  quartet mechanism.  A BRST quartet is defined as two conjugate doublets in
+  the indefinite metric space, and the manuscript states that perturbative
+  longitudinal/timelike gauge modes and ghost/antighost modes form quartets
+  mode by mode after the BRST charge and positive quotient are constructed.
+- The nonperturbative Kugo--Ojima confinement criterion is stated as a
+  conjectural Landau-gauge BRST scenario with explicit hypotheses: existence of
+  the nonperturbative BRST charge and global color charges, unbroken BRST,
+  absence of a massless boundary contribution from
+  \(\partial^\nu F_{\mu\nu}^a\), and \(u(0)=-1\) without a compensating singular
+  longitudinal remainder.
+- The manuscript gives the conditional ghost-dressing relation
+  \(G_{\rm gh}^{-1}=1+u+p^2v\) and records that lattice minimal-Landau-gauge
+  and Gribov--Zwanziger infrared studies generally find finite ghost dressing
+  and do not realize the original Kugo--Ojima condition.
 - The Slavnov--Taylor sources \(K,L\) are identified as the elementary
   precursor of BV antifields; the dedicated BV chapter now develops the
   field-antifield framework for gauge-theory 1PI and Wilsonian effective
@@ -160,6 +183,9 @@
   domain.
 - Positivity of the BRST quotient is stated as a required condition rather than
   proved in full generality.
+- The Kugo--Ojima criterion is treated as a conditional covariant-gauge
+  confinement scenario, not as a proved nonperturbative theorem for
+  four-dimensional Yang--Mills theory.
 - 2026-05-24 issue #243 pass: added a dedicated Gribov/Singer block to the
   manuscript.  The chapter now labels the global obstruction, defines local
   slice versus global section, gives the first Gribov region and fundamental
@@ -171,3 +197,7 @@
   ghosts are dynamical rather than a field-independent normalization.
 - 2026-05-24 issue #245 pass: flagged the off-shell closure hypothesis in the
   BRST nilpotency proof and linked open/on-shell closure to the BV chapter.
+- 2026-05-24 issue #246 pass: added the Kugo--Ojima quartet mechanism, the
+  Landau-gauge Kugo--Ojima two-point function, the \(F_{\mathrm{KO}}(0)=1\)
+  / \(u(0)=-1\) infrared condition, the conditional relation to ghost dressing,
+  and the lattice/Gribov status statement.
