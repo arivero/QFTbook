@@ -102,6 +102,11 @@
 - For unlabelled four-field insertions direct expansion gives
   \(-ig(2\pi)^D\delta^D(\sum k_i)/4!\), and the labelled rule follows by
   contraction counting.
+- In the labelled-leg convention, the quartic \(4!\) has already been absorbed
+  into the vertex \(-ig\), so a connected graph with labelled external legs is
+  divided only by the residual automorphism group fixing the external labels;
+  the tadpole residual automorphism has order \(2\), giving the coefficient
+  \(-ig/2\).
 - The one-loop tadpole contour rotation gives \(i\) times the Euclidean
   self-energy contribution with the sign convention of Chapter 10.
 - In the same regulator and local two-point subtraction convention,
@@ -153,3 +158,6 @@
   Lorentzian denominator self-energies under \(k^0=i k_E^D\), with the
   corresponding \(\widetilde G(i k_E^D,\vec k_E)=-i\widetilde G_E(k_E)\)
   identity.
+- 2026-05-24 issue #373 pass: restated the labelled quartic vertex convention
+  locally and identified the residual external-label-preserving automorphism
+  factor responsible for the Lorentzian tadpole coefficient.
