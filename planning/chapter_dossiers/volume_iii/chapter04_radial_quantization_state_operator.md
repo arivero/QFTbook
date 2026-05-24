@@ -29,6 +29,16 @@ The chapter establishes:
 - the CFT-specific inversion pairing \(x\mapsto x/|x|^2\), whose reflection
   positivity quotient and completion upgrades the radial state space to a
   Hilbert space;
+- the state prepared by an origin insertion as a vector defined by radial
+  pairings with dense inside-supported insertion states, together with the
+  optional Lagrangian representative as a finite radial time-sliced and
+  angular-spectral cutoff on \(B_R\setminus B_\rho\);
+- the finite-regulator boundary trace map
+  \(\operatorname{Tr}_{\varepsilon,R}:\mathcal F_{\varepsilon,R}\to
+  \mathcal B_{\varepsilon,R}\), the boundary measure/density
+  \(d\lambda_{\varepsilon,R}^{\partial}\), and the conditional interior
+  wavefunctional whose continuum limit is taken in radial Hilbert or stated
+  distribution topology;
 - the local orthonormal-frame rotation for spinning operators under the Weyl
   map, including the vector-primary construction
   \(\widetilde V_{\hat a}=\ee^{\Delta\tau}R_{\hat a}{}^\mu V_\mu\);
@@ -90,6 +100,12 @@ The chapter establishes:
    chapter: it is obtained from the inversion pairing and reflection
    positivity, whereas the general cutting/gluing assignment gives a
    topological vector space of boundary states.
+8a. The ball path-integral representative of an origin-created state is a
+    regulated construction: the chapter must state the radial regulator, the
+    finite boundary trace map, and the boundary measure/density used for
+    gluing.  Continuum vectors are obtained as radial Hilbert or distributional
+    limits, while abstract CFTs use the Schwinger-distribution pairing
+    definition directly.
 9. The state--operator correlation formula follows from explicit cylinder
    sewing: insert constant-\(\tau\) cuts, compose the positive-time semigroup
    through ordered slabs, project the outgoing boundary to the vacuum, and
@@ -158,3 +174,8 @@ The chapter establishes:
   \(D_{\rm rad}\) hypothesis explicit as the shared radial spectrum condition
   used by the OPE convergence theorem, while distinguishing it from the
   primary unitarity bounds derived later.
+- 2026-05-24 issue #304 pass: replaced the untyped ball path-integral
+  wavefunctional by `def:regulated-ball-preparation`, specifying the radial
+  time-sliced/angular-spectral regulator, finite boundary trace space,
+  boundary measure or Berezin/BV density, conditional interior integral,
+  gluing pairing, and continuum-limit topology.

@@ -578,20 +578,121 @@ curvature and contact terms.
 
 \section{States from Local Operators}
 
-Let \(\mathcal O(0)\) be a local operator inserted at the origin.  In the
-Euclidean path integral on a ball of radius \(R\), the insertion defines a
-state on the boundary sphere \(S_R^{D-1}\):
+Let
 \[
+  B_R=\{x\in\R^D:|x|<R\},
+  \qquad
+  \Sigma_R=\partial B_R=S_R^{D-1}.
+\]
+The state prepared by a local operator at the origin is defined, in the
+radial reconstruction used in this chapter, by its radial pairings with the
+dense states prepared by insertions inside \(B_R\).  If \(A\) is a finite
+linear combination of renormalized local insertions supported in
+\(B_R\setminus\{0\}\), and \(\Theta_R\) denotes reflection through
+\(\Sigma_R\),
+\[
+  \Theta_R(x)=\frac{R^2x}{|x|^2},
+\]
+then the vector \(\ket{\mathcal O;R}\) is characterized on the dense
+finite-energy domain by
+\begin{equation}
+  \left\langle A,\mathcal O;R\right\rangle_{\rm rad}
+  =
+  \left\langle
+    \Theta_R A\,\mathcal O(0)
+  \right\rangle_E .
+  \label{eq:radial-state-exterior-pairing}
+\end{equation}
+Here \(\Theta_RA\) includes the Weyl factors and spin-frame rotations of the
+reflected insertions.  Equation
+\eqref{eq:radial-state-exterior-pairing} is the definition used for an
+abstract CFT supplied by Schwinger distributions.  It uses the radial
+reflection-positive pairing and the null quotient of
+Hypothesis~\ref{hyp:radial-reconstruction-data}; it does not require a
+continuum field-configuration measure.
+
+\begin{definition}[Regulated ball preparation]
+\label{def:regulated-ball-preparation}
+When a Lagrangian representative is used as a mnemonic or as an actual
+regularized construction, the ball preparation is the following finite
+regulator family.  Map \(B_R\setminus B_\rho\) to the cylinder slab
+\([\log\rho,\log R]\times S^{D-1}\).  Choose a radial time spacing \(a>0\),
+a finite angular spectral cutoff \(L\) for the eigenmodes of the relevant
+elliptic kinetic operator on \(S^{D-1}\), and a renormalized operator
+representative \(\mathcal O_{\rho,a,L}\) supported in the inner cap
+\(|x|\le\rho\).  The regulator parameter is
+\[
+  \varepsilon=(\rho,a,L),
+  \qquad
+  \rho\downarrow0,\quad a\downarrow0,\quad L\uparrow\infty .
+  \label{eq:radial-ball-regulator-parameter}
+\]
+At fixed \(\varepsilon\), the boundary configuration space
+\(\mathcal B_{\varepsilon,R}\) consists of the retained boundary modes on
+\(\Sigma_R\).  The finite-dimensional trace map
+\[
+  \operatorname{Tr}_{\varepsilon,R}:
+  \mathcal F_{\varepsilon,R}\longrightarrow \mathcal B_{\varepsilon,R}
+\]
+restricts a regulated bulk field configuration to those boundary modes.  The
+finite-regulator measure or density on \(\mathcal F_{\varepsilon,R}\) factors
+as
+\begin{equation}
+  d\nu_{\varepsilon,R}(\Phi)
+  =
+  d\nu_{\varepsilon,R}^{\rm bulk}
+    (\Phi\mid\varphi_\varepsilon)\,
+  d\lambda_{\varepsilon,R}^{\partial}(\varphi_\varepsilon),
+  \qquad
+  \varphi_\varepsilon=
+  \operatorname{Tr}_{\varepsilon,R}\Phi .
+  \label{eq:radial-ball-boundary-factorization}
+\end{equation}
+For even bosonic modes \(d\lambda_{\varepsilon,R}^{\partial}\) is an ordinary
+finite-dimensional boundary measure.  For odd variables it is the
+corresponding Berezin density, and in gauge theories it is supplied only
+after the finite-regulator gauge-fixing or BV data have been specified.  The
+conditioned ball wavefunctional is
+\begin{equation}
+  \Psi_{\mathcal O,R,\varepsilon}(\varphi_\varepsilon)
+  =
+  \int_{\operatorname{Tr}_{\varepsilon,R}\Phi=\varphi_\varepsilon}
+  d\nu_{\varepsilon,R}^{\rm bulk}(\Phi\mid\varphi_\varepsilon)\,
+  \exp\{-S_{\varepsilon,R}[\Phi]\}\,
+  \mathcal O_{\rho,a,L} .
+  \label{eq:regulated-ball-wavefunctional}
+\end{equation}
+The displayed conditioning is a finite-dimensional conditional integral over
+interior regulated variables.  Gluing two regulated regions along
+\(\Sigma_R\) means pairing their boundary wavefunctionals by integration
+against \(d\lambda_{\varepsilon,R}^{\partial}\), with the Berezin or
+gauge-fixed/BV analogue in the corresponding cases.
+
+The continuum state represented by the regulated ball is the limit
+\begin{equation}
   \ket{\mathcal O;R}
   =
-  \int_{\Phi|_{S_R}=\varphi}
-  [D\Phi]_{B_R}\,
-  \ee^{-S[\Phi]}\,
-  \mathcal O(0).
-\]
-The right side is a wavefunctional of the boundary field configuration
-\(\varphi\).  After the Weyl map to the cylinder, changing \(R\) translates
-the state in \(\tau\).  The state associated with \(\mathcal O\) is denoted
+  \lim_{\varepsilon\to0}
+  \mathfrak R_{\varepsilon,R}
+  \Psi_{\mathcal O,R,\varepsilon},
+  \label{eq:ball-preparation-continuum-limit}
+\end{equation}
+whenever this limit exists in the radial Hilbert norm, or in the stated
+distribution topology before Hilbert completion.  The map
+\(\mathfrak R_{\varepsilon,R}\) embeds or identifies the finite-regulator
+boundary state with the regulated radial state space.  In constructive
+positive-measure examples, \eqref{eq:ball-preparation-continuum-limit} is
+compatible with disintegration of the constructed Euclidean field over the
+chosen boundary sigma-algebra or boundary Sobolev trace space.  In the general
+CFT setting of this chapter, the mathematical state is the vector determined
+by \eqref{eq:radial-state-exterior-pairing}, and
+\eqref{eq:regulated-ball-wavefunctional} is a regulator-dependent
+representative of that vector when such a representative has been supplied.
+\end{definition}
+
+After the Weyl map to the cylinder, changing \(R\) translates the state in
+\(\tau\).  The state associated with \(\mathcal O\), with the radius
+dependence absorbed into cylinder evolution, is denoted
 \[
   \ket{\mathcal O}.
 \]
@@ -708,11 +809,14 @@ extends uniquely to a Hilbert-space isomorphism onto
 \begin{proof}
 Radial reflection positivity supplies the positive semidefinite inner product
 on local insertions inside a sphere.  Quotienting its null space makes the map
-\(\mathcal O\mapsto\ket{\mathcal O}\) injective, and the path-integral
-construction of the wavefunctional on \(S_R^{D-1}\) identifies its norm with
-the radial two-point pairing; hence the map is isometric.  Dilatation
-covariance transports the state from radius \(R\) to the cylinder and places
-it in the finite-energy subspace by
+\(\mathcal O\mapsto\ket{\mathcal O}\) injective, and the defining pairing
+\eqref{eq:radial-state-exterior-pairing} identifies its norm with the radial
+two-point pairing; hence the map is isometric.  In a regulated Lagrangian
+representative this equality is the gluing identity obtained from
+\eqref{eq:radial-ball-boundary-factorization}, followed by the continuum
+limit \eqref{eq:ball-preparation-continuum-limit}.  Dilatation covariance
+transports the state from radius \(R\) to the cylinder and places it in the
+finite-energy subspace by
 Hypothesis~\ref{hyp:radial-reconstruction-data}.  The radial-completeness
 clause of the same hypothesis gives surjectivity onto
 \(\mathcal H_{\rm fin}\).  Since \(D_{\rm rad}\) is nonnegative
