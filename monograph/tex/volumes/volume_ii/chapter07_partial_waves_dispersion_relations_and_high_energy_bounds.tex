@@ -616,7 +616,30 @@ Therefore the exponential factor obeys
     \sqrt{\frac{t_*\,\sigma_{\rm tot}}{4\pi}}
   \right].
 \]
-Suppose the amplitude is polynomially bounded at this nonphysical point:
+
+\begin{definition}[Polynomial bounds used in dispersion theory]
+\label{def:physical-fixedt-angular-polynomial-bounds}
+For the on-shell amplitude \(\mathcal M(s,t)\), three polynomial estimates
+occur in distinct domains.
+\begin{enumerate}
+  \item A \emph{physical-region bound} controls
+  \(\mathcal M(s+\ii0,t)\) for real physical scattering angles
+  \(-(s-4m^2)\le t\le0\).
+  \item A \emph{fixed-\(t\) cut-plane bound} controls the first-sheet function
+  of complex \(s\) at a fixed real \(t<0\), on the contours used for a
+  fixed-\(t\) dispersion relation.
+  \item An \emph{angular-tube bound} controls the analytically continued
+  amplitude at \(0<t<t_0\), equivalently at
+  \(x=1+2t/(s-4m^2)>1\) inside a Lehmann ellipse or its
+  higher-dimensional angular-tube replacement.
+\end{enumerate}
+The Froissart comparison below uses the third estimate.  The Jin--Martin
+fixed-\(t\) theorem supplies the second estimate, while the angular-tube
+estimate is an additional input unless it has been derived from a stronger
+Lehmann--Martin domain theorem in the theory under study.
+\end{definition}
+
+Assume the angular-tube polynomial bound at the chosen nonphysical point:
 \[
   |\mathcal M(s,x_*(s))|\le C_Ns^N
   \qquad(s\to\infty),
@@ -1090,10 +1113,14 @@ exchange.  Assume:
   \item analyticity in the Lehmann--Martin ellipse with nearest
   \(t\)-channel singularity at \(t=t_0>0\);
   \item crossing symmetry and a fixed-\(t\) dispersion representation;
-  \item either the conditional finite-subtraction hypothesis together with the
-  real-axis absorptive bound used above to reduce the representation to two
-  subtractions, or the \L{}ukaszuk--Martin/Yndur\'ain two-subtraction theorem
-  as an additional axiomatic input.
+  \item a two-subtraction input, obtained either from the conditional
+  finite-subtraction hypothesis together with the real-axis absorptive bound
+  used above, or from the \L{}ukaszuk--Martin/Yndur\'ain theorem as an
+  additional axiomatic input;
+  \item the angular-tube polynomial bound of
+  Definition~\ref{def:physical-fixedt-angular-polynomial-bounds} at
+  \(0<t<t_0\), with the exponent \(N=2\) supplied by the two-subtraction
+  input.
 \end{enumerate}
 Then, in four spacetime dimensions, for every fixed \(0<\delta<1\) there are
 constants \(M_0\) and \(s_0\) such that
@@ -1121,8 +1148,10 @@ Analyticity in the Lehmann--Martin ellipse gives exponential decay of large
 angular momenta at fixed \(s\), with the decay rate set by \(t_0/s\).  The
 two-subtraction input supplies the polynomial boundedness with exponent
 \(N=2\) at the nonphysical positive-\(t\) point used in the preceding
-Froissart comparison.  That comparison bounds the number of partial waves
-that can contribute with order-one strength by
+Froissart comparison; this is the angular-tube bound of
+Definition~\ref{def:physical-fixedt-angular-polynomial-bounds}.  That
+comparison bounds the number of partial waves that can contribute with
+order-one strength by
 \(L(s)=O(\sqrt{s}\log s)\), with the coefficient corresponding to
 \((N-1)^2=1\).  The optical theorem converts the forward absorptive part into
 \(\sigma_{\rm tot}\), and summing the unitary partial-wave weights up to

@@ -25,6 +25,9 @@ hypotheses:
 - fixed physical \(s>4m^2\) for angular analyticity;
 - fixed real \(t<0\) for the dispersion relation;
 - polynomial boundedness when the contour at infinity is discarded;
+- separate polynomial-boundedness domains: physical-region bounds, fixed-\(t\)
+  cut-plane bounds, and angular-tube bounds at \(0<t<t_0\); the Froissart
+  comparison uses the angular-tube estimate;
 - \(\mathcal M(s,t)\) is a polynomial-growth holomorphic germ on the
   complexified on-shell invariant surface, with physical values and cut
   discontinuities understood as distributional boundary values in the topology
@@ -81,6 +84,8 @@ hypotheses:
    \]
 8. A box-profile comparison and Legendre lower bound at \(x>1\) give the Froissart-Martin mechanism.
 9. Polynomial boundedness at the ellipse edge yields \(\sigma_{\mathrm{tot}}\lesssim (4\pi/t_0)\log^2s\), with constants depending on the precise boundedness exponent until the two-subtraction refinement is invoked.
+   The bound here is an angular-tube bound at \(x=1+2t/(s-4m^2)>1\), distinct
+   from physical real-angle bounds and from fixed-\(t<0\) cut-plane bounds.
 10. Fixed-\(t\) polynomial boundedness gives an \(N\)-subtracted dispersion relation with a subtraction polynomial and cut integrals.
     The compact right/left-cut formula should be accompanied by the explicit
     \(s'\)- and crossed \(u'\)-channel version, with \(u=4m^2-s-t\).
@@ -130,3 +135,6 @@ hypotheses:
 - 2026-05-24 issue pass: separated the \(D=4\) Lehmann-ellipse derivation from
   the \(D>4\) Gegenbauer/angular-tube generalization and added the degeneracy
   counting needed for the \((\log s)^{D-2}\) power.
+- 2026-05-24 issue pass: separated physical-region, fixed-\(t\) cut-plane, and
+  angular-tube polynomial bounds; the Froissart comparison now explicitly uses
+  the angular-tube bound.
