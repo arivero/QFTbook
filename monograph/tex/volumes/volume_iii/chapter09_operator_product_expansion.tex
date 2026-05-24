@@ -49,27 +49,105 @@ insertion is at radial distance \(R\), the expansion is organized by powers of
 energy.  Thus the OPE is a structural expansion controlled by the local
 operator spectrum and the conformal representation theory of descendants.
 
-\begin{theorem}[Radial OPE convergence]
+\begin{theorem}[Euclidean radial OPE convergence]
   Assume Hypothesis~\ref{hyp:radial-reconstruction-data}.  Let
-  \(\mathcal O_i(x)\mathcal O_j(0)\vac\) be inserted inside a sphere of
-  radius \(r\), and let all remaining insertions lie outside radius \(R>r\).
-  Then the expansion of this state in eigenspaces of the dilatation operator
-  converges in Hilbert norm for \(r<R\), and the resulting OPE converges inside
-  the corresponding correlation functions.  Truncating to states of scaling
-  dimension at most \(\Delta_*\) gives a remainder controlled by powers of
-  \(r/R\) determined by the omitted dimensions.
+  \(\mathcal O_i(x_E)\mathcal O_j(0)\vac\) be inserted at Euclidean points
+  inside a sphere of radius \(r\) in \(\R^D_E\), and let all remaining
+  Euclidean insertions lie outside radius \(R>r\).  Then the expansion of this
+  state in eigenspaces of the dilatation operator converges in Hilbert norm for
+  \(r<R\), and the resulting OPE converges inside the corresponding Euclidean
+  correlation functions.  Truncating to states of scaling dimension at most
+  \(\Delta_*\) gives a remainder controlled by powers of \(r/R\) determined by
+  the omitted dimensions.
 \end{theorem}
 
-The proof is the spectral theorem applied to radial quantization.  Radial time
-is \(\tau=\log |x|\), and the dilatation operator is the Hamiltonian
-generating translations in \(\tau\).  A separating sphere at radius \(R\)
-inserts the damping factor \(\exp[-(\log(R/r))D_{\rm cyl}]\), where
-\(D_{\rm cyl}\) is the cylinder Hamiltonian.  Since the spectrum is discrete
-with finite multiplicities below any fixed dimension, the spectral projection
-onto \(\Delta\le\Delta_*\) gives a finite partial OPE and the complement is
-suppressed by the corresponding power of \(r/R\) relative to the norm of the
-external state.  This is the mathematical reason the OPE is an operator
-algebraic expansion in unitary CFTs satisfying the stated radial hypotheses.
+The proof is the spectral theorem applied to Euclidean radial quantization.
+Radial time is \(\tau=\log |x_E|\), and the dilatation operator is the
+Hamiltonian generating translations in \(\tau\).  A separating sphere at radius
+\(R\) inserts the damping factor
+\(\exp[-(\log(R/r))D_{\rm cyl}]\), where \(D_{\rm cyl}\) is the cylinder
+Hamiltonian.  Since the spectrum is discrete with finite multiplicities below
+any fixed dimension, the spectral projection onto \(\Delta\le\Delta_*\) gives a
+finite partial OPE and the complement is suppressed by the corresponding power
+of \(r/R\) relative to the norm of the external state.  This is the
+mathematical reason the Euclidean OPE is an operator algebraic expansion in
+unitary CFTs satisfying the stated radial hypotheses.
+
+The preceding theorem is a statement in the Euclidean radial Hilbert space.
+It does not by itself assert pointwise convergence at arbitrary real
+Lorentzian configurations.  Lorentzian OPE convergence is obtained by applying
+the Euclidean expansion inside a common holomorphic domain and then taking the
+appropriate Wightman boundary value.
+
+\begin{proposition}[Lorentzian continuation of the radial OPE]
+\label{prop:lorentzian-ope-continuation-domain}
+Assume the tube-domain part of
+Hypothesis~\ref{hyp:radial-reconstruction-data}.  Work with a fixed Wightman
+ordering \(\pi\) and write \(V_+\subset\R^{1,D-1}\) for the open future light
+cone in the mostly-plus metric.  Let
+\(\mathcal W_\pi(z_1,\ldots,z_n)\) be the holomorphic continuation in the tube
+component
+\[
+  z_{\pi(a)}-z_{\pi(a+1)}
+  =
+  \xi_a-\ii\eta_a,
+  \qquad
+  \eta_a\in V_+ .
+\]
+For a chosen OPE channel, let \(\rho,\bar\rho\) denote the radial cross-ratios
+of that channel.  On every compact subset of the tube component on which
+\[
+  |\rho|\le q,\qquad |\bar\rho|\le q,\qquad q<1,
+  \label{eq:lorentzian-rho-compact-domain}
+\]
+the channel OPE converges locally uniformly as a holomorphic function.  Its
+boundary value is the Lorentzian Wightman OPE in that ordering.  Strictly
+timelike configurations in which the fused pair lies in each other's future or
+past light cone are included when the specified \(i\epsilon\) approach remains
+in such a compact radial domain.  Null separation, coincident points, and
+crossings of external light cones are boundary strata and require the
+distributional boundary-value interpretation.
+\end{proposition}
+
+\begin{proof}
+The Euclidean radial theorem gives a convergent expansion in the open polydisc
+of radial variables.  On a compact set satisfying
+\eqref{eq:lorentzian-rho-compact-domain}, the same spectral estimate supplies a
+summable majorant: each level-\(\Delta\) descendant contribution is multiplied
+by a factor bounded by \(q^\Delta\), while finite multiplicity below each level
+and radial Hilbert convergence control the corresponding coefficient norm.
+Therefore the OPE partial sums converge uniformly on compact subsets of the
+radial polydisc after analytic continuation of \(\rho,\bar\rho\).
+
+Each finite partial sum is a finite linear combination of Wightman matrix
+elements of local operators at the origin with the remaining insertions.  By
+the spectrum condition, these matrix elements are boundary values of functions
+holomorphic in the tube component displayed above.  Local uniform convergence
+of holomorphic partial sums gives a holomorphic limit by the Weierstrass
+theorem.  On the Euclidean subdomain this limit equals
+\(\mathcal W_\pi\), because both sides are the Euclidean radial OPE.  The
+identity theorem then identifies the holomorphic limit with
+\(\mathcal W_\pi\) throughout the connected tube component reached without
+crossing singular hypersurfaces.  Taking ordered \(i\epsilon\) boundary values
+gives the stated Lorentzian distributional convergence.
+\end{proof}
+
+\begin{remark}[Status of Lorentzian OPE convergence]
+The criterion above separates the Euclidean Hilbert-space theorem from its
+Lorentzian continuation.  The tube condition fixes the operator ordering, and
+the radial inequality \(|\rho|,|\bar\rho|<1\) fixes the OPE channel.  For
+scalar four-point functions in unitary Euclidean CFT, Kravchuk, Qiao, and
+Rychkov prove the needed forward-tube radial bound and distributional
+Minkowski OPE convergence; Qiao gives a channel-by-channel classification of
+real Lorentzian four-point configurations.\footnote{See G.~Mack,
+``Convergence of operator product expansions on the vacuum in conformal
+invariant quantum field theory,'' Commun. Math. Phys. \textbf{53} (1977)
+155--184; P.~Kravchuk, J.~Qiao, and S.~Rychkov, ``Distributions in CFT II.
+Minkowski Space,'' JHEP \textbf{08} (2021) 094, arXiv:2104.02090; and
+J.~Qiao, ``Classification of Convergent OPE Channels for Lorentzian CFT
+Four-Point Functions,'' SciPost Phys. \textbf{13} (2022) 093,
+arXiv:2005.09105.}
+\end{remark}
 
 \begin{figure}[H]
   \centering

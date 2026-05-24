@@ -15,6 +15,11 @@ The chapter establishes:
 
 - the radial Hilbert-space statement of OPE convergence for insertions inside
   a separating sphere;
+- the separation between Euclidean radial Hilbert-space convergence and
+  Lorentzian Wightman boundary-value convergence;
+- a tube-domain continuation criterion for Lorentzian OPE convergence in a
+  fixed Wightman ordering, with the radial bounds \(|\rho|,|\bar\rho|<1\) as
+  channel conditions;
 - the local operator expansion into primaries and descendants;
 - coefficient functions as distributions or analytic functions on the
   convergence domain;
@@ -41,7 +46,8 @@ The chapter establishes:
 ## Claims To Verify
 
 1. OPE convergence is a Hilbert-space norm statement under radial
-   reconstruction, discreteness, and finite-multiplicity assumptions.
+   reconstruction, discreteness, and finite-multiplicity assumptions in the
+   Euclidean radial domain.
 2. Correlator convergence follows by pairing the inside state with exterior
    states at larger radius.
 3. Positivity of squared OPE coefficients is a Gram-matrix statement in a
@@ -64,6 +70,11 @@ The chapter establishes:
 9. The radial-block expansion is explicitly the Hogervorst--Rychkov radial
    expansion, with the chosen square-root branch tied to the radial-ordering
    domain.
+10. Lorentzian OPE convergence is obtained as a tube-domain analytic
+    continuation plus Wightman boundary value; real timelike configurations
+    require an \(i\epsilon\) ordering and remain controlled only when the
+    corresponding radial variables stay in a compact subdomain
+    \(|\rho|,|\bar\rho|\le q<1\).
 
 ## Figures
 
@@ -75,6 +86,8 @@ The chapter establishes:
 - Do not import analytic or numerical bootstrap claims into the core chapter.
 - Every convergence claim must state the Hilbert-space and spectral
   hypotheses being used.
+- Every Lorentzian convergence claim must identify the Wightman ordering,
+  tube component, radial-variable domain, and boundary-value interpretation.
 - Do not use ``conformal block'' and ``conformal partial wave''
   interchangeably; later inversion formulae use the latter.
 - Do not invoke Lorentzian inversion without recording the double
@@ -95,3 +108,7 @@ The chapter establishes:
   Lorentzian inversion formula, defining the double discontinuity and pole
   extraction convention, stating the theorem-boundary hypotheses, and naming
   the Hogervorst--Rychkov radial coordinate used in the radial expansion.
+- 2026-05-24 issue pass: addressed #276 by renaming the radial theorem as a
+  Euclidean theorem, adding a Lorentzian tube-domain continuation proposition,
+  and recording the \(i\epsilon\), light-cone, and \(\rho,\bar\rho\) domain
+  conditions needed for Lorentzian OPE convergence.
