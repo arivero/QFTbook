@@ -38,6 +38,9 @@ The chapter must define the following objects before using them:
   \(J_E=-J_L^{\rm W}\), and the connected-derivative normalizations;
 - the source-dependent field \(\varphi_J(x)=\delta W/\delta J(x)\);
 - the Legendre transform \(\Gamma[\varphi]=W[J_\varphi]-\int\varphi J_\varphi\);
+- the distinction between the local differentiable/formal Legendre transform
+  used to define perturbative 1PI functionals and the convex
+  Legendre--Fenchel transform defined from a positive Euclidean measure;
 - the field-source inverse relation and \(\delta\Gamma/\delta\varphi=-J\);
 - the background split \(\phi=\varphi+\widehat\phi\);
 - the condition \(\langle\widehat\phi\rangle_{\varphi}=0\);
@@ -54,6 +57,10 @@ The chapter must define the following objects before using them:
 2. If the source-field map is locally invertible, the Legendre transform
    \(\Gamma[\varphi]=W[J_\varphi]-\int\varphi J_\varphi\) obeys
    \(\delta\Gamma/\delta\varphi=-J_\varphi\).
+2a. In perturbative regulators such as dimensional regularization with
+    minimal subtraction, \(W\), \(J_\varphi\), and \(\Gamma\) are formal local
+    source-chart objects constructed coefficient by coefficient; no convexity
+    statement follows because there is no positive finite measure.
 3. The Hessians satisfy
    \[
      \int \dd^Dz\,
@@ -97,6 +104,10 @@ The chapter must define the following objects before using them:
     the domain of the perturbative saddle expansion: after the source
     subtracts the tangent line at a chosen branch, perturbation theory
     requires a positive quadratic shifted exponent.
+15. The convex Legendre--Fenchel effective action and the perturbative 1PI
+    effective action agree only where both constructions are defined, the
+    convex conjugate is differentiable, and the source-field map is locally
+    invertible.
 
 ## Figure Requirements
 
@@ -124,6 +135,11 @@ The chapter must define the following objects before using them:
   introduced by the Euclidean source term.
 - Avoid slogan-based contrasts.  Define the objects being used and state their
   assumptions.
+- When later chapters use dimensional regularization, minimal subtraction, or
+  formal BPHZ/1PI diagrams, interpret \(\Gamma\) as the local formal
+  perturbative 1PI functional, not as the exact convex Legendre--Fenchel
+  effective action, unless a positive Euclidean regulator is explicitly
+  assumed.
 - 2026-05-22 page-level source/figure audit complete.  Handwritten pages
   71--80 were rendered as `/tmp/qft253b_1pi_src-071.png` through
   `/tmp/qft253b_1pi_src-080.png`; compiled pages were checked as
@@ -135,3 +151,9 @@ The chapter must define the following objects before using them:
   \(J_E=-J_L^{\rm W}\) sign map for the chapter's Euclidean source convention,
   and the instruction that Lorentz/spin/time-derivative indices require their
   own Wick-rotation matrices.
+- 2026-05-24 issue #240 pass: added an explicit distinction between the local
+  differentiable/formal 1PI Legendre transform used in perturbation theory
+  and the convex Legendre--Fenchel transform that requires a positive finite
+  Euclidean measure.  The manuscript now states that dimensional
+  regularization/MS does not supply the positivity hypotheses for the
+  Euclidean convexity theorem.

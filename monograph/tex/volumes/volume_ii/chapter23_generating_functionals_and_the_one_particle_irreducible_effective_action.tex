@@ -203,6 +203,19 @@ The one-particle-irreducible effective action is the Legendre transform
   -
   \langle J_{\varphi},\varphi\rangle .
 \]
+This is a local differentiable Legendre transform in the chosen source chart.
+It is the definition used by perturbative 1PI diagrammatics: \(W\) and
+\(\Gamma\) may be formal power series, and \(J_\varphi\) is obtained
+coefficient by coefficient by inverting
+\(\varphi=\delta W/\delta J\).  This formal operation does not require a
+positive measure and does not imply convexity.  In particular, in dimensional
+regularization with minimal subtraction the regulated functional integral is
+not a positive finite measure on field configurations; it is a prescription
+for formal amplitudes.  Whenever later perturbative MS or BPHZ discussions use
+the 1PI effective action, this local formal 1PI functional is the operative
+object unless a positive Euclidean regulator and the convex
+Legendre--Fenchel construction are explicitly invoked.
+
 Varying this definition gives
 \[
 \begin{aligned}
@@ -684,8 +697,9 @@ inverse.
 
 \section{Euclidean Convexity}
 
-The convexity statement is cleanest in Euclidean signature.  Let the
-regulated Euclidean source functional be
+The convexity statement is a theorem in a different regime from formal
+dimensional regularization.  In this section the regulated Euclidean source
+functional is assumed to be defined by a positive finite measure.  Let it be
 \[
   Z_E[J]
   =
@@ -889,6 +903,14 @@ for every real test function \(f\) in the corresponding tangent subspace.
 \end{proof}
 
 \section{Legendre--Fenchel Form at Finite Regulator}
+
+This section remains in the positive-measure setting of
+Theorem~\ref{thm:volume-ii-euclidean-convexity-finite-regulator}.  It is not a
+replacement for the perturbative 1PI definition used in dimensional
+regularization or in any other regulator whose ``path integral'' is only a
+formal algebraic prescription.  The two constructions agree only in a domain
+where both are defined and the convex conjugate is differentiable with a
+locally invertible source-field map.
 
 The local inverse \(J_{\varphi}\) used above is a convenient notation.
 Theorem~\ref{thm:volume-ii-euclidean-convexity-finite-regulator} identifies the
@@ -1111,9 +1133,11 @@ saddle.
   \label{fig:volume-ii-euclidean-convexity}
 \end{figure}
 
-The Euclidean convexity theorem is a statement about the exact Legendre
-transform.  A Wilsonian action at a finite cutoff scale, a bare action used to
-define the regulated integral, and a perturbative effective potential
-computed around one stationary branch are distinct functionals with distinct
-definitions.  The next chapter uses the 1PI functional as the arena in which
-local counterterms are identified and organized.
+The Euclidean convexity theorem is a statement about the exact
+Legendre--Fenchel transform of a positive finite-measure source functional.  A
+Wilsonian action at a finite cutoff scale, the regulated action that appears
+in the Euclidean measure, the local formal perturbative 1PI effective action,
+and a perturbative effective potential computed around one stationary branch
+are distinct functionals with distinct definitions.  The next chapter uses the
+local formal 1PI functional as the arena in which perturbative local
+counterterms are identified and organized.
