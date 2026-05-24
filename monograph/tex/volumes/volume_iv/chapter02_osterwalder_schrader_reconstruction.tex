@@ -20,11 +20,29 @@ Euclidean test insertion is an element of
 or of \(C_c^\infty(E^n;V^{\otimes n})\) if compactly supported test functions
 are the chosen test class.  The test class is part of the data because it
 determines the topology in which the Schwinger functions are distributions.
+Let
+\[
+  \Delta_n
+  =
+  \bigcup_{1\le i<j\le n}\{(x_1,\ldots,x_n)\in E^n\mid x_i=x_j\}
+\]
+be the union of partial diagonals.  The corrected OS reconstruction theorem is
+most honestly stated on the zero-diagonal Schwartz space
+\[
+  \mathcal S_\circ(E^n;V^{\otimes n})
+  =
+  \{f\in\mathcal S(E^n;V^{\otimes n})
+    \mid \partial^\alpha f|_{\Delta_n}=0\text{ for every multi-index }\alpha\}.
+\]
+Pairing with \(\mathcal S_\circ\) treats the Schwinger functions as
+distributions away from coincident points.  A choice of contact-term extension
+to the full Schwartz space is extra structure and is not part of the OS
+reconstruction input used here.
 
 \begin{definition}[Schwinger hierarchy]
 A Schwinger hierarchy with field-label space \(V\) is a family
 \[
-  S_n\in \mathcal S'(E^n;(V^*)^{\otimes n}),
+  S_n\in \mathcal S_\circ'(E^n;(V^*)^{\otimes n}),
   \qquad n\ge0,
 \]
 with \(S_0=1\).  The value \(S_n(f_n)\) denotes the distributional pairing of
@@ -78,8 +96,8 @@ pre-Hilbert space below.  Let
   F=(f_0,f_1,f_2,\ldots),
 \]
 where only finitely many \(f_n\) are nonzero and every \(f_n\) is a labelled
-test function supported in positive Euclidean time with a chosen ordering of
-its time variables.  Reflection positivity is the requirement that the
+zero-diagonal test function supported in positive Euclidean time with a chosen
+ordering of its time variables.  Reflection positivity is the requirement that the
 sesquilinear form
 \begin{equation}
   \langle F,G\rangle_{\rm OS}
@@ -100,6 +118,7 @@ the argument of the distribution.  Thus the object required to be positive is
 the reflected positive-time sesquilinear form on \(\mathcal E_+\).
 
 \begin{definition}[OS-admissible Euclidean data]
+\label{def:os-admissible-euclidean-data}
 An OS-admissible Euclidean field presentation is a Schwinger hierarchy
 \(\{S_n\}_{n\ge0}\), together with the label reflection \(J\), satisfying:
 \begin{enumerate}[label=(\roman*)]
@@ -118,8 +137,9 @@ An OS-admissible Euclidean field presentation is a Schwinger hierarchy
   \end{equation}
   \item reflection positivity:
   \(\langle F,F\rangle_{\rm OS}\ge0\) for all \(F\in\mathcal E_+\);
-  \item regularity and growth: the hierarchy has the continuity and growth
-  bounds required below.
+  \item OS-II regularity and linear growth: the hierarchy has the
+  positive-time semigroup continuity, contractivity, and linear-growth bounds
+  stated below.
 \end{enumerate}
 For fermionic or graded fields, the permutation line is replaced by graded
 permutation symmetry with the Koszul sign determined by the declared parity of
@@ -127,12 +147,83 @@ each label.  Clustering is added when the target Lorentzian theory is required
 to have a unique vacuum vector.
 \end{definition}
 
-The regularity and growth line has operational content.  It supplies three
-analytic facts used later: the positive-time translations act continuously on
-the quotient, Euclidean rotations can be analytically continued to Lorentz
-boosts, and the continued correlation functions have boundary values in the
-declared target distribution class, for example tempered distributions when
-the Schwinger functions have the corresponding growth bounds.
+The last line is a load-bearing analytic hypothesis, not a cosmetic
+regularity clause.  Let \(S_n^{\rm red}\) denote the translation-reduced
+Schwinger distribution in \(n-1\) difference variables, acting on the
+corresponding zero-diagonal difference-test space.  With a fixed family of
+Schwartz seminorms
+\[
+  q_{n,N}(F)
+  =
+  \sum_{|\alpha|,|\beta|\le N}
+  \sup_{\Xi\in E^{n-1}}
+  \left|\Xi^\beta\partial^\alpha F(\Xi)\right|,
+  \qquad F\in\mathcal S_\circ(E^{n-1};V^{\otimes n}),
+\]
+one convenient OS-II linear-growth condition is the existence of constants
+\[
+  C_{\rm OS},N_0\in\mathbb N,\qquad
+  A,B,\gamma>0,
+\]
+independent of \(n\), such that
+\begin{equation}
+  |S_n^{\rm red}(F)|
+  \le
+  A\,B^n\,(n!)^\gamma\,
+  q_{n,N_0+C_{\rm OS}n}(F)
+  \label{eq:os-linear-growth-condition}
+\end{equation}
+for all \(F\) in that test space.  Equivalent OS-II formulations package the
+same content by using a fixed seminorm family \(|\cdot|_{s,n}\) whose
+definition already contains the \(n\)-dependence, together with constants
+\(\sigma_n\le A B^n(n!)^\gamma\).  The word ``linear'' refers to the allowed
+growth of the distributional seminorm order with the number of insertions.  It
+is not a statement that a fixed \(n\)-point function grows linearly in
+spacetime.
+
+Together with the positive-time semigroup hypotheses
+\eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}, this
+condition supplies three analytic facts used later: positive-time translations
+act continuously on the quotient, Euclidean rotations can be analytically
+continued to Lorentz boosts, and the continued correlation functions have
+boundary values in the declared target distribution class, for example
+tempered distributions when the Schwinger functions obey
+\eqref{eq:os-linear-growth-condition}.  The correction from the first
+Osterwalder--Schrader reconstruction paper to the second is precisely that
+reflection positivity, Euclidean covariance, symmetry, clustering, and
+ordinary temperedness do not by themselves supply this continuation theorem.
+Thus an application of OS reconstruction must either prove an OS-II growth
+condition such as \eqref{eq:os-linear-growth-condition}, or replace it by a
+different theorem that supplies the same Lorentzian boundary-value estimates.
+\footnote{See K.~Osterwalder and R.~Schrader, ``Axioms for Euclidean Green's
+Functions,'' Commun. Math. Phys. \textbf{31} (1973) 83--112, and ``Axioms for
+Euclidean Green's Functions II,'' Commun. Math. Phys. \textbf{42} (1975)
+281--305.  The second paper states the corrected reconstruction theorem with
+the linear-growth input.  Modern checks of this analytic input are model
+dependent.  For example, Gubinelli and Hofmanov\'a, ``A PDE Construction of
+the Euclidean \(\Phi^4_3\) Quantum Field Theory,'' Commun. Math. Phys.
+\textbf{384} (2021) 1--75, construct limit measures with reflection
+positivity, translation invariance, non-Gaussianity, and stretched exponential
+integrability estimates strong enough for the OS distributional regularity
+axiom in their formulation; rotation invariance and clustering remain separate
+inputs in that construction.}
+
+\begin{remark}[CFT reconstruction is a different route]
+For a Euclidean CFT, one should not silently replace the OS-II growth package
+by conformal terminology.  Conformal kinematics gives additional structure:
+radial ordering, the inversion pairing, positivity of the state-operator
+inner product, and conformal covariance of operator insertions.  In that
+setting a Lorentzian theory can be reconstructed by proving the convergence
+and distributional boundary-value properties of conformal correlation
+functions directly from the conformal Hilbert-space and OPE data.  This is a
+different theorem from OS reconstruction.  Kravchuk, Qiao, and Rychkov prove
+the relevant Lorentzian distribution and OPE-convergence estimates for CFT
+correlators using conformal kinematics and radial variables;\footnote{See
+P.~Kravchuk, J.~Qiao, and S.~Rychkov, ``Distributions in CFT II. Minkowski
+Space,'' JHEP \textbf{08} (2021) 094, arXiv:2104.02090.} the CFT volume uses
+that route only after the state-operator Hilbert space and conformal
+representation theory have been stated as hypotheses.
+\end{remark}
 
 \begin{figure}[H]
   \centering
@@ -330,11 +421,14 @@ construction with its own hypotheses.
 \section{Reconstruction Theorem}
 
 \begin{theorem}[Osterwalder--Schrader reconstruction]
+\label{thm:os-reconstruction}
 Let \(\{S_n\}_{n\ge0}\) be Euclidean distributions satisfying Euclidean
 covariance, permutation symmetry, reflection positivity, Hermiticity,
-normalization, the OS-II contractivity and continuity conditions for
-positive-time translations, and the regularity and growth assumptions required
-for tempered reconstruction.  Then there exists Wightman field data
+normalization, the OS-II positive-time semigroup conditions
+\eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}, and a
+linear-growth estimate such as \eqref{eq:os-linear-growth-condition} strong
+enough to produce tempered Lorentzian boundary values.  Then there exists
+Wightman field data
 \[
   (\Hilb_{\rm OS},\vac_{\rm OS},U,\mathcal D_{\rm OS},
   \{\widehat\Phi_\alpha\}_{\alpha\in I})
@@ -346,6 +440,46 @@ The symbol \(\vac_{\rm OS}\) denotes the vacuum vector produced by this
 reconstruction; it is a subscripted instance of the global vacuum notation
 \(\vac\).
 \end{theorem}
+
+\begin{corollary}[path-integral Schwinger limits as Wightman data]
+\label{cor:path-integral-schwinger-limit-to-wightman}
+Let \(\{\mathcal E_\Lambda,\langle\,\cdot\,\rangle_\Lambda\}\) be a regulated
+Euclidean path-integral presentation, where \(\Lambda\) denotes the regulator
+and \(\langle\,\cdot\,\rangle_\Lambda\) is the regulated expectation
+functional on a declared algebra of Euclidean field insertions.  Assume that
+for every \(n\) and every labelled test insertion \(f_n\) in the chosen test
+class the regulated moments
+\[
+  S_{n,\Lambda}(f_n)
+  :=
+  \langle f_n(\Phi_E,\ldots,\Phi_E)\rangle_\Lambda
+\]
+converge to a distributional limit \(S_n(f_n)\), and that the limiting
+hierarchy \(\{S_n\}_{n\ge0}\) satisfies the OS-admissibility hypotheses of
+Definition~\ref{def:os-admissible-euclidean-data}.  Then the continuum path-integral
+presentation determines a Wightman field presentation by applying
+Theorem~\ref{thm:os-reconstruction} to the limiting Schwinger hierarchy.
+If the limiting hierarchy also satisfies the Euclidean cluster condition in
+Corollary~\ref{cor:os-reconstruction-vacuum-sector}, the reconstructed
+zero-momentum subspace is \(\mathbb C\vac_{\rm OS}\).
+\end{corollary}
+
+\begin{proof}
+The convergence assumption defines a family
+\(\{S_n\}_{n\ge0}\) of continuous linear functionals on the declared
+test-function spaces; \(S_0=1\) is the normalization of the regulated
+expectation functional after taking the limit.  The OS-admissibility
+assumption supplies Euclidean covariance, permutation symmetry, Hermiticity,
+reflection positivity, and the OS-II semigroup and linear-growth estimates used in
+Theorem~\ref{thm:os-reconstruction}.  Applying that theorem constructs
+\[
+  (\Hilb_{\rm OS},\vac_{\rm OS},U,\mathcal D_{\rm OS},
+  \{\widehat\Phi_\alpha\})
+\]
+whose Wightman boundary values have the limiting Schwinger hierarchy as their
+Euclidean continuation at noncoincident points.  The last sentence is exactly
+Corollary~\ref{cor:os-reconstruction-vacuum-sector}.
+\end{proof}
 
 \begin{corollary}[OS reconstruction with and without clustering]
 \label{cor:os-reconstruction-vacuum-sector}

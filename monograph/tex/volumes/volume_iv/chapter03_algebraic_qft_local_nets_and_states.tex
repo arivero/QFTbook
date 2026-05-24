@@ -311,6 +311,125 @@ Fields are then coordinatizations of local observables, organized by symmetry,
 scaling, and the operator product expansion when those structures are
 available.
 
+\begin{theorem}[Wightman fields generate a represented local net]
+\label{thm:wightman-to-aqft-net}
+Let
+\[
+  (\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_\alpha\}_{\alpha\in I})
+\]
+be a Wightman field presentation on \(M\).  Enlarge the field-label space, if
+needed, so that the smeared generators used below are Hermitian on
+\(\mathcal D\).  Suppose that for every real Hermitian labelled test function
+\(h\) the symmetric operator \(\widehat\Phi(h)\) is essentially self-adjoint on
+\(\mathcal D\); write \(X(h)\) for its self-adjoint closure and
+\[
+  E_{h}(\Delta)
+\]
+for the spectral projection of \(X(h)\) associated with the Borel set
+\(\Delta\subset\mathbb R\).  Define, for every region
+\(\mathcal O\in\mathcal K(M)\),
+\begin{equation}
+  \mathcal R_\Phi(\mathcal O)
+  :=
+  \{E_h(\Delta)\mid
+    \operatorname{supp}h\subset\mathcal O,\quad
+    h=h^\dagger,\quad
+    \Delta\subset\mathbb R\text{ Borel}\}'' .
+  \label{eq:wightman-generated-net-from-spectral-projections}
+\end{equation}
+Assume strong locality of these closures: if
+\(\mathcal O_1\perp\mathcal O_2\), then every spectral projection entering
+\(\mathcal R_\Phi(\mathcal O_1)\) commutes with every spectral projection
+entering \(\mathcal R_\Phi(\mathcal O_2)\).  Then
+\[
+  \mathcal O\longmapsto\mathcal R_\Phi(\mathcal O)
+\]
+is an isotonic, Poincare-covariant represented local net of von Neumann
+algebras on \(\Hilb\).  The vector state
+\[
+  A\longmapsto\langle\vac,A\vac\rangle
+\]
+is invariant under the represented Poincare action.
+\end{theorem}
+
+\begin{proof}
+If \(\mathcal O_1\subset\mathcal O_2\), then the test functions with support in
+\(\mathcal O_1\) are among those with support in \(\mathcal O_2\), hence the
+generating spectral projections for
+\(\mathcal R_\Phi(\mathcal O_1)\) are contained in
+\(\mathcal R_\Phi(\mathcal O_2)\).  This proves isotony.  Wightman covariance
+gives
+\[
+  U(g)X(h)U(g)^{-1}=X(g h),
+\]
+where \(g h\) is the transformed labelled test function.  The spectral theorem
+then gives
+\[
+  U(g)E_h(\Delta)U(g)^{-1}=E_{g h}(\Delta),
+\]
+so
+\[
+  U(g)\mathcal R_\Phi(\mathcal O)U(g)^{-1}
+  =
+  \mathcal R_\Phi(g\mathcal O).
+\]
+Strong locality is exactly the commutation of the spectral-projection
+generators for spacelike separated regions; taking double commutants preserves
+commutation of von Neumann algebras.  The vacuum invariance follows from
+\(U(g)\vac=\vac\).
+\end{proof}
+
+\begin{theorem}[field coordinates on a local net give Wightman data]
+\label{thm:aqft-to-wightman-fields}
+Let
+\[
+  \mathcal O\longmapsto\mathcal R(\mathcal O)
+\]
+be a Poincare-covariant represented local net on a Hilbert space \(\Hilb\),
+with unitary implementation \(U\) and invariant unit vector \(\Omega\).  Assume
+the translation spectrum of \(U\) is contained in \(\overline V_+\).  Suppose
+there are a dense subspace \(\mathcal D\subset\Hilb\), a label set \(I\), and
+operators \(\widehat\Phi_\alpha(f)\) such that:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item \(\Omega\in\mathcal D\), \(U(g)\mathcal D\subset\mathcal D\), and
+\(\widehat\Phi_\alpha(f)\mathcal D\subset\mathcal D\);
+\item for each \(\alpha\), the map
+\(f\mapsto\widehat\Phi_\alpha(f)\) is an operator-valued tempered
+distribution on the common domain \(\mathcal D\);
+\item if \(\operatorname{supp}f\subset\mathcal O\), then
+\(\widehat\Phi_\alpha(f)\) is affiliated with \(\mathcal R(\mathcal O)\);
+\item the fields satisfy the Wightman covariance and adjunction identities on
+\(\mathcal D\);
+\item fields affiliated with spacelike separated regions have vanishing graded
+commutator on \(\mathcal D\);
+\item the polynomial field orbit of \(\Omega\) is dense in \(\Hilb\).
+\end{enumerate}
+Then
+\[
+  (\Hilb,\Omega,U,\mathcal D,\{\widehat\Phi_\alpha\}_{\alpha\in I})
+\]
+is a Wightman field presentation, and its vacuum distributions are the matrix
+elements
+\[
+  W_{\alpha_1\cdots\alpha_n}(f_1,\ldots,f_n)
+  =
+  \langle\Omega,
+  \widehat\Phi_{\alpha_1}(f_1)\cdots
+  \widehat\Phi_{\alpha_n}(f_n)\Omega\rangle .
+\]
+\end{theorem}
+
+\begin{proof}
+The Hilbert space, invariant vacuum vector, unitary Poincare representation,
+dense common domain, and operator-valued tempered distributions are the data
+listed in the hypotheses.  The spectral condition is the assumed joint
+spectrum condition for translations.  Covariance, adjunction, locality, and
+cyclicity are precisely items (iv), (v), and (vi).  Continuity of the vacuum
+matrix elements follows from the operator-valued tempered-distribution
+hypothesis applied successively on the common invariant domain.  These are the
+Wightman field-presentation axioms.
+\end{proof}
+
 This relation is important for gauge theories.  The algebraic observable net
 can be defined from gauge-invariant observables without choosing gauge
 potentials as physical operators.  If charged fields are introduced, they
