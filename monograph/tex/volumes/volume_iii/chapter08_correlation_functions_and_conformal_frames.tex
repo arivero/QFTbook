@@ -12,8 +12,11 @@ Section~\ref{sec:flat-conformal-cylinder-vacua}: the Poincare vacuum of the
 flat Wightman theory, the conformally invariant vacuum under the hypotheses of
 Proposition~\ref{prop:poincare-vacuum-is-conformal-vacuum}, and the
 zero-energy cylinder ground state after the Weyl-map normalization of radial
-quantization.  With this identification, the global Ward identity of
-Chapter~\ref{ch:volume-iii-conformal-charges-ward-identities} applies.  If
+quantization.  With this identification, and with the special-conformal
+vacuum invariance derived in
+Lemma~\ref{lem:vacuum-k-invariance-from-radial-spectrum}, the global Ward
+identity of Chapter~\ref{ch:volume-iii-conformal-charges-ward-identities}
+applies.  If
 \(\epsilon^\mu(x)\partial_\mu\) is a conformal Killing vector and
 \(\delta_\epsilon\mathcal O_i\) is the corresponding infinitesimal variation of
 the \(i\)th local operator, then
@@ -31,6 +34,49 @@ the \(i\)th local operator, then
 as a distribution on the configuration space \(x_i\ne x_j\).  Contact terms on
 coincident-point diagonals are part of the local Ward identities and are not
 used in the kinematic classification below.
+
+\begin{lemma}[Special-conformal invariance from radial spectrum positivity]
+\label{lem:vacuum-k-invariance-from-radial-spectrum}
+Let \(\ket{\vac}\) be the common vacuum of
+Section~\ref{sec:flat-conformal-cylinder-vacua}.  Assume that
+\(\widehat D_{\rm rad}\) is a nonnegative self-adjoint generator of cylinder
+time translations, that
+\[
+  \widehat D_{\rm rad}\ket{\vac}=0,
+\]
+and that the special conformal generators are defined on the vacuum and obey,
+on the relevant common domain,
+\begin{equation}
+  [\widehat D_{\rm rad},\widehat K_\mu]=-\widehat K_\mu .
+  \label{eq:radial-d-k-vacuum-commutator}
+\end{equation}
+Then
+\[
+  \widehat K_\mu\ket{\vac}=0 .
+\]
+Thus the special-conformal part of the vacuum Ward identity follows from
+radial spectral positivity and the conformal commutation relation; it is not an
+extra invariance assumption.
+\end{lemma}
+
+\begin{proof}
+Let \(\psi_\mu=\widehat K_\mu\ket{\vac}\).  By the domain hypothesis and
+\eqref{eq:radial-d-k-vacuum-commutator},
+\[
+  \widehat D_{\rm rad}\psi_\mu
+  =
+  \widehat D_{\rm rad}\widehat K_\mu\ket{\vac}
+  =
+  \widehat K_\mu\widehat D_{\rm rad}\ket{\vac}
+  -
+  \widehat K_\mu\ket{\vac}
+  =
+  -\psi_\mu .
+\]
+If \(\psi_\mu\ne0\), this would be an eigenvector of the nonnegative
+self-adjoint operator \(\widehat D_{\rm rad}\) with eigenvalue \(-1\), which is
+impossible.  Hence \(\psi_\mu=0\).
+\end{proof}
 
 Equivalently, for a finite conformal transformation \(f:x\mapsto \widetilde x\)
 implemented by a unitary operator \(U_f\), invariance of the vacuum gives

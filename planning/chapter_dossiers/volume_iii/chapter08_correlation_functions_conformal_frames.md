@@ -15,6 +15,11 @@ The chapter establishes:
 - the use of the common vacuum \(\ket{\vac}\) only after Chapter 4 identifies
   the flat Poincare vacuum, conformal vacuum, and zero-energy cylinder ground
   state;
+- Lemma `lem:vacuum-k-invariance-from-radial-spectrum`, deriving
+  \(\widehat K_\mu\ket{\vac}=0\) from
+  \(\widehat D_{\rm rad}\ket{\vac}=0\),
+  \([\widehat D_{\rm rad},\widehat K_\mu]=-\widehat K_\mu\), and the
+  nonnegative spectrum of \(\widehat D_{\rm rad}\);
 - conformally invariant coordinate combinations and cross-ratios;
 - scalar two- and three-point functions from Ward identities;
 - spinning tensor structures with stated representation data;
@@ -33,17 +38,20 @@ The chapter establishes:
 2. Vacuum invariance in correlation-function formulas must refer back to the
    Chapter 4 vacuum-identification section rather than silently conflating the
    flat, conformal, and cylinder vacua.
-3. Tensor structures require explicit \(SO(D)\) representation data and are
+3. Special conformal invariance of the vacuum must be derived from radial
+   spectral positivity and the conformal commutator, not inserted as an
+   independent assumption.
+4. Tensor structures require explicit \(SO(D)\) representation data and are
    not determined by scalar formulas.
-4. The radial inner product is positive after reflection positivity and the
+5. The radial inner product is positive after reflection positivity and the
    null quotient; two-point coefficient matrices are Gram matrices.
-5. Angular coordinates on \(S^{D-1}\) are denoted by \(n\)-type symbols in
+6. Angular coordinates on \(S^{D-1}\) are denoted by \(n\)-type symbols in
    sections where the vacuum \(\vac\) is also present.
-6. The count of parity-even separated \(TTT\) structures is three only for
+7. The count of parity-even separated \(TTT\) structures is three only for
    \(D\ge4\); in \(D=3\) the Osborn--Petkou structures obey
    \(\mathcal I^{(1)}-\mathcal I^{(2)}+2\mathcal I^{(3)}=0\), leaving two
    parity-even structures before any parity-odd \(D=3\) structure is added.
-7. The scalar-scalar-stress Ward coefficient uses the pointwise identity
+8. The scalar-scalar-stress Ward coefficient uses the pointwise identity
    \(n^\mu n_\mu=1\) on the unit sphere to reduce
    \(n^\mu n^\nu(n_\mu n_\nu-\delta_{\mu\nu}/D)\) to \(1-1/D\).
 
@@ -64,3 +72,7 @@ The chapter establishes:
 - 2026-05-24 issue #295 pass: the chapter opening now points to
   Section `sec:flat-conformal-cylinder-vacua` before using the common vacuum
   in conformal Ward identities and radial cylinder limits.
+- 2026-05-24 issue #296 pass: added Lemma
+  `lem:vacuum-k-invariance-from-radial-spectrum`, proving
+  \(\widehat K_\mu\ket{\vac}=0\) from the radial spectrum condition and
+  \([\widehat D_{\rm rad},\widehat K_\mu]=-\widehat K_\mu\).
