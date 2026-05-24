@@ -1,0 +1,91 @@
+# Volume III, Chapter 10 Dossier: Light-Ray Operators And Energy Correlators
+
+## Logical Role
+
+- Role in the monograph: introduce nonlocal detector observables in CFT after
+  local operator structure and the OPE have been developed, and connect them
+  to the gauge-theory energy correlators of the QCD chapter.
+- Immediate predecessor: operator product expansion.
+- Immediate successor: later CFT developments on crossing, Lorentzian
+  inversion, and special structures.
+
+## Source And Reference Controls
+
+- `SRC-EXTERNAL-HOFMAN-MALDACENA`: conformal collider energy and charge
+  correlations, used for the stress-tensor-state one-point energy flux normal
+  form and the \(t_2,t_4\) positivity inequalities.
+- `SRC-EXTERNAL-LIGHT-RAY-OPE`: Kologlu--Kravchuk--Simmons-Duffin--Zhiboedov,
+  used as theorem boundary for the convergent light-ray OPE under Lorentzian
+  CFT hypotheses.
+- `SRC-INTERNAL-QCD-DETECTORS`: Volume IV QCD detector-observable section,
+  used to keep the CFT and QCD definitions of energy correlators aligned.
+
+## Definitions And Results
+
+The chapter establishes:
+
+- normalizable collider states as wavepacket-smeared local-operator states;
+- the CFT energy detector \(\mathcal E(f)\) as a stress-tensor flux limit at
+  future null infinity;
+- \(k\)-point energy correlators as distributions on \((S^{D-2})^k\);
+- the averaged null energy light-ray operator
+  \(\mathcal A_n(x_\perp)\);
+- the relation between calorimeter detectors and null-integrated stress-tensor
+  light transforms;
+- the four-dimensional stress-tensor one-point energy flux form with
+  parameters \(t_2,t_4\);
+- the conformal-collider inequalities following from detector positivity;
+- the CFT energy-energy correlator and its relation to the QCD EEC;
+- the light-ray OPE theorem boundary for separated-angle detector products.
+
+## Symbols
+
+| Symbol | Meaning |
+| --- | --- |
+| \(D\) | spacetime dimension of the CFT |
+| \(S^{D-2}\) | celestial sphere of detector directions |
+| \(\mathbf n\) | unit spatial detector direction |
+| \(n^\mu=(1,\mathbf n)\) | future null vector associated to \(\mathbf n\) |
+| \(f\) | smooth angular detector test function |
+| \(\mathcal E(f)\), \(\mathcal E(\mathbf n)\) | smeared and distributional energy detector |
+| \(\mathcal G_k\) | \(k\)-point energy correlator |
+| \(\mathcal A_n(x_\perp)\) | averaged null energy operator on a null line |
+| \(t_2,t_4\) | parity-even four-dimensional stress-tensor three-point coordinates in conformal collider normalization |
+| \(\mathrm{EEC}_\Psi(\chi)\) | normalized energy-energy correlator in state \(\Psi\) |
+| \(\mathbb L_\alpha\) | light-ray operator appearing in the light-ray OPE |
+
+## Claim Ledger
+
+1. Energy detector operators require a stated null-infinity limit hypothesis as
+   quadratic forms on collider states.
+2. Energy correlators are distributions; coincident detector directions carry
+   contact terms that must be included or removed by an explicit convention.
+3. The averaged null energy operator is the null-line version of the
+   calorimetric energy detector after conformal compactification.
+4. Positivity of the energy detector implies the displayed
+   Hofman--Maldacena inequalities once the one-point function is put in
+   \(t_2,t_4\) normal form.
+5. The CFT EEC and the QCD EEC are the same detector construction with
+   different dynamical state spaces.
+6. The convergent light-ray OPE is used with explicit Lorentzian CFT
+   hypotheses rather than treated as a general axiom of QFT.
+
+## Figures
+
+- Detector-at-null-infinity figure: local operator creates a state, energy
+  flux reaches a calorimeter direction on \(S^{D-2}\).
+- Null-line/light-ray figure: conformal map between a null generator and a
+  detector at future null infinity.
+- Conformal-collider polarization figure: helicity \(2,1,0\) stress-tensor
+  polarizations relative to a detector direction.
+- Energy-energy correlator figure: two detectors at opening angle \(\chi\)
+  with coincidence locus marked.
+
+## Checks
+
+- Do not import AdS/CFT, supersymmetry, or integrability as part of the core
+  CFT energy-correlator construction.
+- Keep all sharp-momentum collider states as wavepacket limits.
+- Do not conflate contact terms in detector products with counterterms in a
+  regulated action.
+- Keep theorem boundaries visible for ANEC positivity and the light-ray OPE.

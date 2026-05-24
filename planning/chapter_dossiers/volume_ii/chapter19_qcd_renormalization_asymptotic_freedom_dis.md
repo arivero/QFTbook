@@ -22,6 +22,13 @@
   compute determinant coefficients is derived in the chapter from the
   proper-time representation and flat-space coefficient, rather than imported
   as an external table.
+- `SRC-EXTERNAL-ENERGY-CORRELATORS`: Basham--Brown--Ellis--Love for the
+  original energy-energy correlator in \(e^+e^-\) annihilation,
+  Larkoski--Salam--Thaler for jet energy correlation functions, and
+  Komiske--Metodiev--Thaler for energy-flow polynomials.  These references
+  control terminology and examples; the chapter gives its own detector
+  definition from the stress tensor and its own soft/collinear continuity
+  estimate.
 
 ## Construction Task
 
@@ -64,6 +71,16 @@ The chapter must define and derive:
   Yang--Mills area-law diagnostics and QCD with dynamical fundamental quarks;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD;
+- the energy-flow detector as a weak limit of stress-tensor flux quadratic
+  forms on the physical scattering domain;
+- calorimetric final-state measures, smeared \(k\)-point energy correlators,
+  contact terms at coincident detector directions, and the total-energy sum
+  rule;
+- the soft and collinear continuity estimate for smeared detector observables;
+- the normalized \(e^+e^-\) energy-energy correlator and its contact term at
+  zero opening angle;
+- multipoint jet energy correlators and energy-flow polynomials as polynomial
+  functionals of calorimetric data;
 - DIS kinematics, inclusive final-state sums, the leading electromagnetic
   amplitude, the non-time-ordered hadronic tensor, the current-conservation
   tensor decomposition, support in \(x_B\), the discontinuity of the
@@ -107,11 +124,18 @@ The chapter must define and derive:
 10. Colored quark and gluon fields are not physical asymptotic states of QCD;
    physical scattering statements must be formulated in terms of gauge-invariant
    states or controlled high-energy factorization data.
-11. DIS is controlled by an inclusive Wightman current-current tensor; the
+11. Energy correlators are nonperturbative detector observables once the
+    stress-tensor flux limit is constructed on the physical Hilbert space.
+12. Smeared detector observables are continuous under soft emission and
+    collinear recombination, and this supplies the measurement-function input
+    for KLN/factorization finiteness at fixed perturbative order.
+13. The energy-energy correlator and energy-flow polynomials are formulated in
+    terms of positive calorimetric measures rather than colored parton labels.
+14. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
     continuation to the physical inclusive tensor.
-12. The leading-twist local operators and the gauge-invariant light-ray
+15. The leading-twist local operators and the gauge-invariant light-ray
     operators are two presentations of the same short-distance data; asymptotic
     freedom changes Bjorken scaling into logarithmic scaling violation governed
     by anomalous dimensions.
@@ -130,6 +154,11 @@ The chapter must define and derive:
   continued strong-coupling flow.
 - Wilson-line/Wilson-loop figure distinguishing open flux-tube operators from
   rectangular loop extraction of \(V(L)\).
+- Energy-flow detector figure: stress-tensor flux through a large sphere,
+  smeared angular test functions, and the induced calorimetric measure on
+  \(S^2\).
+- Energy-energy correlator figure: two calorimeters at opening angle \(\chi\),
+  with coincident-angle contact contribution marked separately.
 - DIS inclusive-scattering kinematics figure.
 - DIS factorization figures must distinguish operator definitions from
   parton-model mnemonics.
@@ -163,3 +192,8 @@ The chapter must define and derive:
   inclusive final-state sums to the hadronic tensor, forward Compton
   discontinuity, OPE, local twist-two operators, light-ray operators, and
   logarithmic scaling violation.
+- 2026-05-24 issue #491 pass: expanded detector observables into a detailed
+  energy-correlator treatment, including the energy-flow detector hypothesis,
+  calorimetric measures, smeared correlators, contact terms, soft/collinear
+  continuity estimates, \(e^+e^-\) EEC normalization, and energy-flow
+  polynomial definitions.

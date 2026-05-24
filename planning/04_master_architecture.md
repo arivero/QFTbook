@@ -169,6 +169,9 @@ Current compiled material:
 Further development targets:
 
 - place all gauge-representative statements in relation to observable data;
+- develop detector observables, especially energy correlators, as
+  stress-tensor-defined color-singlet observables before discussing partonic
+  approximations, jet algorithms, or hadronization models;
 - expand nonabelian BRST and gauge-invariant operator construction;
 - deepen the BV development for reducible gauge symmetries, open algebras,
   exact RG implementations, and global BV integration-cycle issues;
@@ -191,10 +194,15 @@ Current compiled material:
 7. Unitarity Bounds And Short Multiplets
 8. Correlation Functions And Conformal Frames
 9. Operator Product Expansion
+10. Light-Ray Operators And Energy Correlators
 
 Further development targets:
 
 - keep the core CFT volume focused on local operator structure;
+- treat light-ray and energy-detector observables as the first nonlocal CFT
+  observables in the compiled CFT volume, with the null-integral hypotheses,
+  contact terms, and conformal-collider positivity conditions stated at the
+  point of use;
 - use the source-functional Ward-identity conventions from the opening
   chapter when deriving conformal currents, charges, and primary
   transformation laws; the charge chapter now uses these conventions for

@@ -1289,12 +1289,19 @@ renormalized gauge theory.
 
 \section{Detector Observables and Energy Correlators}
 
-A nonperturbative formulation of jet observables begins with color-singlet
-detector measurements in the physical Hilbert space.  The basic calorimetric
+A nonperturbative formulation of high-energy QCD final states begins with
+detector measurements in the physical Hilbert space.  The calorimetric
 observable is built from the renormalized, gauge-invariant stress tensor
-\(T^{\mu\nu}\).  For a smooth test function \(f\in C^\infty(S^2)\), define the
-energy-flow operator, when the following weak limit of quadratic forms exists
-on the finite-energy scattering domain, by
+\(T^{\mu\nu}\), whose normalization is fixed by the translation generators:
+\[
+  P^\nu=\int_{\R^3}\dd^3x\,T^{0\nu}(t,\mathbf x)
+\]
+on the common domain of finite-energy states where the integral is defined as
+a quadratic form.
+
+\begin{hypothesis}[Energy-flow detector]
+\label{hyp:qcd-energy-flow-detector}
+For every real \(f\in C^\infty(S^2)\), the weak limit of quadratic forms
 \begin{equation}
   \widehat{\mathcal E}(f)
   =
@@ -1306,8 +1313,18 @@ on the finite-energy scattering domain, by
   n_i\,\widehat T^{0i}(t,R\mathbf n).
   \label{eq:energy-flow-operator-smeared}
 \end{equation}
-Here \(\mathbf n\in S^2\) is a unit spatial direction and
-\(\dd\Omega\) is the rotation-invariant measure on \(S^2\).  The distribution
+exists on a dense scattering domain of finite-energy physical states and gives
+an essentially self-adjoint operator after closure.  If \(f\geq0\), its closure
+is positive.  The constant test function satisfies
+\[
+  \widehat{\mathcal E}(1)=H_{\mathrm{out}}
+\]
+on outgoing scattering states, where \(H_{\mathrm{out}}\) is the outgoing
+Hamiltonian restricted to the physical scattering Hilbert space.
+\end{hypothesis}
+
+Here \(\mathbf n\in S^2\) is a unit spatial direction and \(\dd\Omega\) is the
+rotation-invariant measure on \(S^2\).  The distribution
 \(\widehat{\mathcal E}(\mathbf n)\) is defined by
 \(\widehat{\mathcal E}(f)=\int_{S^2}\dd\Omega(\mathbf n)
 f(\mathbf n)\widehat{\mathcal E}(\mathbf n)\).  On an outgoing state of
@@ -1323,9 +1340,18 @@ normalization conventions of scattering theory,
   \widehat{\mathbf p}_r:=\frac{\mathbf p_r}{|\mathbf p_r|}.
   \label{eq:energy-flow-on-hadron-state}
 \end{equation}
-Equation~\eqref{eq:energy-flow-on-hadron-state} is not a definition in terms
-of a parton model; it is the spectral action of the detector limit on physical
-hadronic asymptotic states.
+Equation~\eqref{eq:energy-flow-on-hadron-state} is the spectral action of the
+detector limit on physical hadronic asymptotic states.  The corresponding
+classical calorimetric measure of the final state \(X\) is
+\[
+  \mu_X
+  =
+  \sum_{r\in X}p_r^0\,\delta_{\widehat{\mathbf p}_r},
+  \qquad
+  \widehat{\mathcal E}_X(f)=\int_{S^2}f\,\dd\mu_X .
+\]
+The detector observable depends on \(X\) only through the positive measure
+\(\mu_X\).
 
 Given a normalized incoming physical state \(\Psi_{\mathrm{in}}\), or a state
 prepared by a local color-singlet current and then evolved to future infinity,
@@ -1356,34 +1382,162 @@ continuous multiparticle phase space.  This formula is nonperturbative: all
 states in \(X\) are physical hadronic states, and the operator being measured
 is built from \(T^{\mu\nu}\).
 
-The same formula also states the infrared and collinear stability of energy
-correlators in their smeared form.  Adding a final particle of energy
-\(\varepsilon\) changes \(\widehat{\mathcal E}(f)\) by
-\(\varepsilon f(\mathbf n)\), hence gives a vanishing contribution as
-\(\varepsilon\to0\).  Replacing two particles with collinear momenta
-\(p_a,p_b\) by one particle of momentum \(p_a+p_b\) leaves the detector weight
+\begin{lemma}[Soft and collinear continuity of smeared energy flow]
+\label{lem:energy-flow-irc-continuity}
+Let \(f\in C^1(S^2)\).  Suppose a final-state calorimetric measure
+\(\mu_X\) is changed either by adding one particle of energy \(\varepsilon\) at
+direction \(\mathbf m\), or by replacing two particles of energies \(E_a,E_b\)
+and directions \(\mathbf n_a,\mathbf n_b\) by one particle of energy
+\(E_a+E_b\) in the direction
 \[
-  p_a^0 f(\widehat{\mathbf p}_a)+p_b^0 f(\widehat{\mathbf p}_b)
+  \mathbf n_{ab}
+  =
+  \frac{E_a\mathbf n_a+E_b\mathbf n_b}
+       {|E_a\mathbf n_a+E_b\mathbf n_b|}.
 \]
-equal, up to terms that vanish with the opening angle, to
-\((p_a^0+p_b^0)f((\mathbf p_a+\mathbf p_b)/
-|\mathbf p_a+\mathbf p_b|)\).  Thus soft emission
-and collinear fragmentation do not change the measured observable at separated
-angular resolution.  Unsmeared products
-\(\widehat{\mathcal E}(\mathbf n_1)\cdots
-\widehat{\mathcal E}(\mathbf n_k)\) are distributions and may have contact
-singularities when directions coincide; the infrared-safe observables are the
-smeared correlators or their distributional values away from coincident
-directions.
+Then
+\[
+  \left|\Delta\widehat{\mathcal E}_X(f)\right|
+  \leq
+  \varepsilon \|f\|_\infty
+\]
+in the soft case, and
+\[
+  \left|\Delta\widehat{\mathcal E}_X(f)\right|
+  \leq
+  (E_a+E_b)\operatorname{Lip}(f)\,
+  \operatorname{diam}\{\mathbf n_a,\mathbf n_b,\mathbf n_{ab}\}
+\]
+in the collinear case.
+\end{lemma}
 
-Hadronization, in this formulation, is not a rule that converts an exact
-colored partonic final state into hadrons.  The exact final states of QCD are
-already hadronic.  Perturbative quark and gluon calculations enter through
-short-distance expansions, factorization theorems, and anomalous dimensions for
-the same color-singlet detector observables.  The difference between the exact
-correlator \eqref{eq:energy-correlator-definition} and a finite-order
-short-distance approximation is organized by long-distance matrix elements and
-power corrections, not by a colored asymptotic \(S\)-matrix.
+\begin{proof}
+For a soft particle, the measure changes by
+\(\varepsilon\delta_{\mathbf m}\), so the change of the detector value is
+\(\varepsilon f(\mathbf m)\).  For a collinear recombination, the change is
+\[
+  E_a f(\mathbf n_a)+E_b f(\mathbf n_b)
+  -(E_a+E_b)f(\mathbf n_{ab}).
+\]
+Adding and subtracting
+\((E_a+E_b)f(\mathbf n_{ab})\) gives the displayed bound from the Lipschitz
+constant of \(f\).  The bound tends to zero uniformly for bounded total energy
+when the opening angle tends to zero.
+\end{proof}
+
+The same estimate applies to products
+\(\prod_{\ell=1}^k\widehat{\mathcal E}_X(f_\ell)\) on any fixed
+finite-energy sector by the elementary telescoping identity
+\[
+  \prod_{\ell=1}^k A_\ell-\prod_{\ell=1}^k B_\ell
+  =
+  \sum_{j=1}^k
+  \left(\prod_{\ell<j}A_\ell\right)
+  (A_j-B_j)
+  \left(\prod_{\ell>j}B_\ell\right),
+\]
+with \(A_\ell=\widehat{\mathcal E}_{X'}(f_\ell)\) and
+\(B_\ell=\widehat{\mathcal E}_X(f_\ell)\).  Thus smeared energy correlators
+are continuous functions of the calorimetric measure for soft and collinear
+degenerations.  Perturbative finiteness then has a precise theorem boundary:
+at each fixed order in a regulator for which the Kinoshita--Lee--Nauenberg
+cancellation and QCD factorization hold for the chosen inclusive channel,
+measurement functions with the above continuity produce finite coefficients
+after summing over degenerate final states and virtual corrections.  The
+operator definition \eqref{eq:energy-correlator-definition} is the
+nonperturbative observable; perturbation theory computes its short-distance
+expansion in the regime where asymptotic freedom supplies a controlled small
+coupling.
+
+The unsmeared product
+\(\widehat{\mathcal E}(\mathbf n_1)\cdots
+\widehat{\mathcal E}(\mathbf n_k)\) is a distribution.  Coincident directions
+carry contact singularities because several detector insertions can act on the
+same hadron.  The separated-angle correlator is obtained by testing against
+functions supported away from the coincidence diagonals in \((S^2)^k\); fully
+smeared correlators include the contact terms determined by the detector
+operator product itself.
+
+\subsection{Energy-Energy Correlation in Electron-Positron Annihilation}
+
+Let a color-singlet current create a state of total center-of-mass energy
+\(Q\).  For each physical hadronic final state \(X\), write
+\[
+  z_r=\frac{p_r^0}{Q},
+  \qquad
+  \cos\chi_{rs}=
+  \widehat{\mathbf p}_r\cdot\widehat{\mathbf p}_s .
+\]
+The normalized two-point energy-energy correlator is the distribution
+\begin{equation}
+  \mathrm{EEC}(\chi)
+  =
+  \frac{1}{\sigma_{\mathrm{tot}}}
+  \sum_X
+  \int \dd\sigma_X\,
+  \sum_{r,s\in X}
+  z_r z_s\,
+  \delta(\cos\chi-\cos\chi_{rs}),
+  \label{eq:qcd-eec-definition}
+\end{equation}
+where \(\dd\sigma_X\) is the differential cross-section measure for the
+exclusive hadronic channel \(X\), and the sum is a direct integral over
+continuous phase space.  The terms \(r=s\) are the coincident-detector contact
+part at \(\chi=0\).  A convention that removes this contact part defines a
+different distribution at \(\chi=0\) and the same separated-angle function for
+\(0<\chi<\pi\).
+
+Equation~\eqref{eq:qcd-eec-definition} is the detector form of the
+Basham--Brown--Ellis--Love observable.  Its perturbative expansion in
+asymptotically free QCD is a calculation of the current-created state and of
+the detector insertions in the short-distance region.  The back-to-back limit
+\(\chi\to\pi\) is controlled by soft and collinear radiation constrained by
+transverse momentum conservation; the small-angle limit is controlled by a
+collinear operator product of energy-flow insertions.  Both limits require
+resummation because the separated-angle distribution contains large logarithms
+of \(1+\cos\chi\) or \(1-\cos\chi\), respectively.
+
+\subsection{Multipoint Correlators and Energy-Flow Polynomials}
+
+For a jet or event with a chosen positive energy scale \(E_{\mathrm{ref}}\),
+define \(z_i=E_i/E_{\mathrm{ref}}\) and
+\(\theta_{ij}\) to be the angular distance between directions \(i\) and \(j\).
+For \(\beta>0\), the \(N\)-point energy correlation function used in jet
+substructure has the form
+\begin{equation}
+  e_N^{(\beta)}
+  =
+  \sum_{i_1<\cdots<i_N}
+  z_{i_1}\cdots z_{i_N}
+  \prod_{a<b}
+  \theta_{i_a i_b}^{\beta}.
+  \label{eq:qcd-energy-correlation-function-jet}
+\end{equation}
+The strict positivity of \(\beta\) makes the observable collinear continuous:
+when two labels become collinear, every factor distinguishing the split
+vanishes or recombines into the total energy weight.  The soft behavior is
+linear in the soft energy weight.  Thus \eqref{eq:qcd-energy-correlation-function-jet}
+is infrared and collinear safe in the sense of
+Lemma~\ref{lem:energy-flow-irc-continuity}.
+
+More generally, a finite graph \(G\) with vertices
+\(\{1,\ldots,N\}\) defines an energy-flow polynomial
+\begin{equation}
+  \mathrm{EFP}_G^{(\beta)}
+  =
+  \sum_{i_1,\ldots,i_N}
+  z_{i_1}\cdots z_{i_N}
+  \prod_{(a,b)\in E(G)}
+  \theta_{i_a i_b}^{\beta}.
+  \label{eq:qcd-energy-flow-polynomial}
+\end{equation}
+This is again a polynomial functional of the calorimetric measure and angular
+kernel.  It is a useful coordinate system on infrared-collinear safe event
+information because it is built from the same positive detector measure
+\(\mu_X\) rather than from colored partonic labels.  In an exact QCD
+calculation the final states are hadrons; in a short-distance approximation,
+quark and gluon variables enter through factorized coefficient functions,
+evolution kernels, and power corrections for this color-singlet observable.
 
 \section{Current Correlators and the Hadronic Tensor}
 

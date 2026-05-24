@@ -112,6 +112,16 @@ Date: 2026-05-23
   architecture stabilizes enough for those artifacts to reduce errors rather
   than create bookkeeping churn.
 
+Date: 2026-05-24
+
+- Energy correlators are core QFT observables for the monograph, not optional
+  phenomenology.  The gauge-theory volume treats them as stress-tensor-defined
+  color-singlet detector observables in the physical Hilbert space before
+  introducing partonic approximations.  The CFT volume treats the same
+  observables as light-ray operators and conformal-collider distributions,
+  with null-integral hypotheses, contact terms, positivity, and theorem
+  boundaries stated explicitly.
+
 ## Current Implementation Decisions
 
 - Keep `transcription/` as the faithful source layer.
