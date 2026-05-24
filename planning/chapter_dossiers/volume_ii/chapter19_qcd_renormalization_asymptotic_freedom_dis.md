@@ -73,7 +73,8 @@ The chapter must define and derive:
   Wilson loops, static potentials, and the distinction between pure
   Yang--Mills area-law diagnostics and QCD with dynamical fundamental quarks;
 - the distinction between colored gauge-fixed fields and physical external
-  states in QCD;
+  states in QCD, with confinement stated as a nonperturbative spectral
+  hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
 - the energy-flow detector as a weak limit of stress-tensor flux quadratic
   forms on the physical scattering domain;
 - calorimetric final-state measures, smeared \(k\)-point energy correlators,
@@ -126,14 +127,17 @@ The chapter must define and derive:
 9. The one-loop running coupling and dimensional transmutation do not prove
    four-dimensional continuum Yang--Mills existence, mass gap, or confinement.
    The pure Yang--Mills existence and mass-gap problem is the Clay Millennium
-   problem; QCD spectral and flux-tube statements require separate
+   problem; QCD spectral confinement and flux-tube statements require separate
    nonperturbative input or a regulated/lattice context.
 10. A rectangular Euclidean Wilson loop extracts the static potential between
    external color sources; an area law in pure Yang--Mills is a confinement
    diagnostic, while dynamical fundamental matter can break the flux tube.
-11. Colored quark and gluon fields are not physical asymptotic states of QCD;
-   physical scattering statements must be formulated in terms of gauge-invariant
-   states or controlled high-energy factorization data.
+11. Colored quark and gluon fields are not physical asymptotic states in the
+   QCD confinement scenario; deriving this spectral property from the
+   four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
+   as a nonperturbative physical hypothesis when discussing phenomenology.
+   Physical scattering statements must be formulated in terms of
+   gauge-invariant states or controlled high-energy factorization data.
 12. Energy correlators are nonperturbative detector observables once the
     stress-tensor flux limit is constructed on the physical Hilbert space.
 13. Smeared detector observables are continuous under soft emission and
@@ -219,3 +223,7 @@ The chapter must define and derive:
   dimensional transmutation, identifying pure four-dimensional Yang--Mills
   continuum existence plus a positive mass gap as the Clay Millennium problem
   and separating it from perturbative running-coupling statements.
+- 2026-05-24 issue #262 pass: revised the confinement wording so the
+  color-singlet asymptotic-state property is stated as a nonperturbative
+  spectral hypothesis/physical input, with the derivation from the
+  four-dimensional continuum QCD Lagrangian flagged as open.
