@@ -143,6 +143,7 @@ Working framework:
 | The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived; source-certified 2026-05-22 | Component-counting formula with \(m_\ell\), linked-cluster exponentiation, and counted three-vertex topology |
 | Normalized two-point functions retain diagrams connected to the external insertions. | Derived; source-certified 2026-05-22 | Vacuum factor cancellation in \(Z_g^{-1}\langle q(\tau)q(0)\cdots\rangle_0\) |
 | The full two-point function is obtained from the self-energy by a geometric series in momentum space. | Derived; source-certified 2026-05-22 | Amputated 1PI convention, second-order topologies, and \(\widetilde G(k)=1/(k^2+1-\Sigma(k))\) |
+| In the anharmonic self-energy, the order-\(g^2\) constant \(g^2/32\) is the tadpole-bubble/double-bubble insertion, while \((g^2/8)(k^2+9)^{-1}\) is the sunset insertion with singularities \(k=\pm3i\), equivalently \(k^2=-9\), from the three-quantum intermediate energy. | Derived | 2026-05-24 issue #376 topology-identification pass |
 | Derivative interactions require a regulator and local counterterm data to define the path-integral expression. | Framework/construction | Explicit cutoff computation; 2026-05-22 handwritten source/figure audit |
 
 ## Figure Ledger
@@ -182,6 +183,10 @@ Figures to include:
   \(N\to\infty\) covariance limit, and classified the interacting
   \(\Lambda\to\infty\) operation as coefficientwise perturbative unless a
   finite limit or counterterm/subtraction coordinate is specified.
+- 2026-05-24, issue #376: identified the two non-chain order-\(g^2\)
+  anharmonic self-energy components as the double-bubble and sunset, and tied
+  the sunset denominator \(k^2+9\) to the Fourier transform of
+  \(\exp(-3|\tau|)\) and the three-quantum intermediate energy.
 
 ## Audit Targets
 
