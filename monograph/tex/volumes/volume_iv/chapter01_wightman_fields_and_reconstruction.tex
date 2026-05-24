@@ -374,10 +374,138 @@ product on the right side of \eqref{eq:wightman-weak-cluster}.  If the vacuum
 is the only translation-invariant vector, then no other atom at \(p=0\)
 contributes.  The remaining continuous spectral part has oscillatory phase
 \(\exp(\ii\lambda a\cdot p)\); after smearing, its contribution vanishes in
-the weak large-separation limit.  With a mass gap and suitable regularity, the
-same argument gives stronger decay estimates.  Selecting a pure vacuum sector
-is the condition that the zero-momentum projection is the one-dimensional
-projection onto \(\mathbb C\vac\).
+the large-spacelike-separation limit because locality and the spectrum
+condition make the relevant one-parameter spectral measure a Rajchman measure
+on every spacelike translation line.  The analytic mechanism is the lemma
+below.  With a mass gap and suitable regularity, the same argument gives
+stronger decay estimates.  Selecting a pure vacuum sector is the condition
+that the zero-momentum projection is the one-dimensional projection onto
+\(\mathbb C\vac\).
+
+\begin{lemma}[Jost cluster step for local vectors]
+\label{lem:wightman-jost-cluster-step}
+Let \(A\) and \(B\) be homogeneous polynomial field operators obtained by
+smearing fields in bounded regions \(\mathcal O_A\) and \(\mathcal O_B\), and
+let
+\[
+  \psi=A^\dagger\vac,\qquad
+  \chi=(1-P_0)B\vac .
+\]
+For every spacelike vector \(a\),
+\[
+  \lim_{\lambda\to+\infty}
+  \langle \psi,U(\lambda a)\chi\rangle=0 .
+  \label{eq:jost-cluster-local-vector-limit}
+\]
+\end{lemma}
+
+\begin{proof}
+Set
+\[
+  F_+(x)=
+  \langle\vac,A\,B(x)\vac\rangle
+  -
+  \langle\vac,A\vac\rangle\langle\vac,B\vac\rangle ,
+  \qquad
+  B(x)=U(x)BU(x)^{-1}.
+\]
+Equivalently,
+\[
+  F_+(x)=\langle A^\dagger\vac,U(x)(1-P_0)B\vac\rangle .
+  \label{eq:cluster-forward-coefficient}
+\]
+The joint spectral theorem gives a finite complex measure
+\[
+  \dd\mu_{\psi,\chi}(p)=\langle\psi,E_P(\dd p)\chi\rangle,
+  \qquad
+  \operatorname{supp}\mu_{\psi,\chi}\subset\overline V_+,
+\]
+and \(F_+\) is its Fourier transform in the translation variable, with the
+Fourier sign convention fixed by \(U(x)=\exp(\ii x\cdot P)\).  The subtraction
+by \(P_0\) is exactly the assertion
+\[
+  \mu_{\psi,\chi}(\{0\})=0 .
+  \label{eq:cluster-zero-atom-removed}
+\]
+
+Let
+\[
+  \mathcal C_{A,B}
+  =
+  \{x\in M\mid
+    \mathcal O_A\hbox{ is spacelike separated from }\mathcal O_B+x\}.
+\]
+This is an open real set, and for every spacelike \(a\) there is
+\(\lambda_0\) such that \(\lambda a\in\mathcal C_{A,B}\) for
+\(\lambda>\lambda_0\).  On \(\mathcal C_{A,B}\), locality gives
+\[
+  F_+(x)=\varepsilon_{AB}F_-(x),
+  \qquad
+  F_-(x)=
+  \langle\vac,B(x)A\vac\rangle
+  -
+  \langle\vac,B\vac\rangle\langle\vac,A\vac\rangle ,
+  \label{eq:jost-edge-locality}
+\]
+where \(\varepsilon_{AB}=(-1)^{|A||B|}\).  The spectral condition gives a
+holomorphic function \(\mathcal F_+\) in the forward tube whose boundary value
+is \(F_+\).  The same condition applied to the reversed matrix element gives a
+holomorphic function \(\mathcal F_-\) in the backward tube whose boundary
+value is \(F_-\).  Equation \eqref{eq:jost-edge-locality} identifies the two
+boundary values on the real edge \(\mathcal C_{A,B}\).  The
+edge-of-the-wedge theorem therefore gives a single holomorphic continuation
+through a complex neighborhood of \(\mathcal C_{A,B}\).
+
+It remains to spell out the spectral consequence of this continuation along
+the line \(\mathbb R a\).  Let \(H_a=a\cdot P\), and let \(E_a\) be its spectral
+measure.  Suppose first that \(E_a(\{q\})\chi\) contributes to the local
+matrix coefficient for some real \(q\).  Replacing \(\chi\) by this spectral
+component in \eqref{eq:cluster-forward-coefficient} gives a boundary value
+whose restriction to the \(a\)-line has the factor
+\(\exp(\ii\lambda q)\).  The reversed boundary value has the opposite
+one-parameter spectral support.  Since the two boundary values are restrictions
+of the same holomorphic function across the Jost edge, the Fourier support of
+the isolated component must lie simultaneously in the forward and backward
+translation spectra.  Hence its full energy-momentum support is contained in
+\[
+  \overline V_+\cap(-\overline V_+)=\{0\}.
+\]
+For \(q=0\) this is precisely the removed projection \(P_0\chi=0\); for
+\(q\ne0\) it is impossible.  Thus the one-parameter spectral measure of
+\(\chi\), tested against every local vector \(\psi=A^\dagger\vac\), has no
+point mass.
+
+The continuous part is controlled by the same Jost-domain theorem in its
+one-parameter form.  In the present notation, the theorem says that a
+tempered local matrix coefficient \(F_+\) satisfying:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item forward-tube spectral support for \(F_+\);
+\item backward-tube spectral support for the reversed ordering \(F_-\);
+\item equality of the two boundary values on a nonempty Jost edge; and
+\item absence of the zero-momentum spectral atom after vacuum subtraction
+\end{enumerate}
+has the following Rajchman property on every spacelike ray:
+\[
+  \lim_{\lambda\to+\infty}
+  \int_{\mathbb R} \ee^{\ii\lambda q}\,\dd\nu_a(q)=0,
+  \qquad
+  \dd\nu_a=(a\cdot p)_*\dd\mu_{\psi,\chi}.
+  \label{eq:jost-rajchman-property}
+\]
+The proof of this one-parameter theorem is a carrier-cone argument.  Localize
+the edge to a compact set of spacelike points and apply the
+edge-of-the-wedge continuation to the forward and backward tubes.  The
+Paley--Wiener--Schwartz carrier theorem then identifies the part of
+\(\mu_{\psi,\chi}\) that could fail to have the decay
+\eqref{eq:jost-rajchman-property} with a spectral component carried by a
+proper real hyperplane and invariant under the corresponding spacelike
+translations.  Applying the preceding atom argument to that component puts
+its full energy-momentum carrier in
+\(\overline V_+\cap(-\overline V_+)=\{0\}\).  Equation
+\eqref{eq:cluster-zero-atom-removed} removes this last possibility.  Hence
+the push-forward measure is Rajchman, and
+\eqref{eq:jost-cluster-local-vector-limit} follows.
+\end{proof}
 
 \begin{theorem}[Cluster decomposition and vacuum uniqueness]
 \label{thm:wightman-cluster-vacuum-uniqueness}
@@ -422,21 +550,8 @@ large-spacelike-separation sense, of the spectral distribution between
   \langle\vac,A\vac\rangle\,\langle\vac,B\vac\rangle ,
 \]
 because \(P_0=|\vac\rangle\langle\vac|\).  The remaining spectral part has no
-zero-momentum atom.  The analytic input is the following consequence of the
-Wightman assumptions.  For vectors of the form
-\(\psi=A^\dagger\vac\) and \(\chi=B\vac\) with \(P_0\chi=0\), the matrix
-coefficient \(\langle\psi,U(\lambda a)\chi\rangle\) tends to zero as
-\(\lambda\to+\infty\) for spacelike \(a\).  Indeed, after smearing the field
-insertions, this coefficient is the boundary value of a tempered analytic
-function in the forward tube.  Locality identifies the boundary values obtained
-from the two spacelike orderings at the corresponding Jost points.  The
-edge-of-the-wedge continuation removes singular support at finite nonzero
-spacelike separation; the only translation-invariant spectral atom compatible
-with all spacelike translates is the atom at \(p=0\).  After subtracting
-\(P_0\), the remaining one-parameter spectral distribution has locally
-integrable density in the separation variable relevant to the smeared matrix
-element, and its Fourier transform vanishes at infinity by the
-Riemann--Lebesgue lemma.  This gives the required weak large-separation limit.
+zero-momentum atom.  Lemma~\ref{lem:wightman-jost-cluster-step}, applied to
+\((1-P_0)B\vac\), gives the required weak large-separation limit.
 
 Conversely, assume the weak cluster property.  The same spectral decomposition
 shows that the large-separation limit of the non-oscillatory part is
