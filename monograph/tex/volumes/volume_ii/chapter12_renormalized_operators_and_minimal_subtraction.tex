@@ -1001,8 +1001,20 @@ rewriting functional derivatives as insertion distributions,
 \]
 The partition records which of the \(r\) renormalized source derivatives hit
 the same Taylor coefficient of the nonlinear source map
-\(\mathcal Z_\Lambda\).  Rewriting this identity in terms of insertion
-distributions supplies the signs:
+\(\mathcal Z_\Lambda\).  The signs in the final partition formula are not
+additional signs attached to the Taylor coefficients of \(\mathcal Z_\Lambda\).
+They come from rewriting the ordinary Fa\`a di Bruno identity for the connected
+functional \(W=\log Z\) in terms of connected insertion derivatives.  Define
+\[
+  D^\Lambda_A:=-\frac{\delta}{\delta\eta_\Lambda^A},
+  \qquad
+  D^0_I:=-\frac{\delta}{\delta\eta_0^I}.
+\]
+Then \(G^\Lambda_{A_1\cdots A_r}=D^\Lambda_{A_1}\cdots
+D^\Lambda_{A_r}H|_{\eta_\Lambda=0}\), while
+\(G^0_{I_1\cdots I_s}=D^0_{I_1}\cdots D^0_{I_s}
+W_{\Lambda_0}|_{\eta_0=0}\).  Because the displayed Fa\`a di Bruno formula was
+written with ordinary derivatives \(\delta/\delta\eta\), the left side obeys
 \[
   \begin{aligned}
   G^\Lambda_{A_1\cdots A_r}(x_1,\ldots,x_r;J)
@@ -1015,7 +1027,7 @@ distributions supplies the signs:
   \right|_{\eta_\Lambda=0}.
   \end{aligned}
 \]
-For the bare derivative attached to a partition \(\pi\),
+For the bare connected cumulant attached to a partition \(\pi\),
 \[
   \begin{aligned}
   \left.
@@ -1027,9 +1039,17 @@ For the bare derivative attached to a partition \(\pi\),
   G^0_{I_B\,:\,B\in\pi}(z_B\,:\,B\in\pi;J).
   \end{aligned}
 \]
-Thus a term indexed by \(\pi\) carries the factor
-\((-1)^r(-1)^{|\pi|}=(-1)^{r-|\pi|}\).  The finite-regulator partition formula
-is therefore
+Thus a term indexed by \(\pi\) carries the chain-rule cumulant factor
+\[
+  (-1)^r(-1)^{|\pi|}
+  =
+  (-1)^{r-|\pi|}.
+\]
+Equivalently, a block \(B\) of size \(|B|\) collapses \(|B|\) renormalized
+insertion derivatives into one bare connected cumulant and contributes the
+relative sign \((-1)^{|B|-1}\); multiplying over the blocks gives
+\((-1)^{\sum_B(|B|-1)}=(-1)^{r-|\pi|}\).  The finite-regulator partition
+formula is therefore
 \begin{equation}
   \begin{aligned}
   G^\Lambda_{A_1\cdots A_r}(x_1,\ldots,x_r;J)

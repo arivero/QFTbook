@@ -67,6 +67,10 @@ The chapter must define:
   insertions and contact terms;
 - the partition formula for multi-insertion connected distributions under a
   nonlinear local source-coordinate change;
+- the sign in that partition formula as a connected-cumulant chain-rule sign:
+  ordinary Faà di Bruno derivatives of \(W=\log Z\) are converted to insertion
+  derivatives \(D=-\delta/\delta\eta\), and a partition with \(|\pi|\) bare
+  connected cumulants carries \((-1)^r(-1)^{|\pi|}=(-1)^{r-|\pi|}\);
 - the two-insertion Wilsonian identity separating the connected product of
   one-insertion representatives from the second source derivative of the
   Wilsonian action;
@@ -143,6 +147,11 @@ The chapter must define:
    partitions of the insertion labels.  The singleton partition gives the
    noncoincident operator mixing, while partitions with larger blocks are
    local distributions supported on collision diagonals.
+9a. The factor \((-1)^{r-|\pi|}\) in the partition formula is the cumulant sign
+    obtained by applying ordinary Faà di Bruno to \(W=\log Z\) and then
+    rewriting ordinary source derivatives as connected insertion derivatives
+    \(D=-\delta/\delta\eta\).  It is not an independent sign attached to the
+    Taylor coefficients of the source map.
 10. Under scale-dependent finite changes of renormalized source coordinates,
    anomalous dimensions transform by the connection law
    \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\).
@@ -261,6 +270,10 @@ The chapter must define:
   expansion of the source coordinate chart, the partition formula for
   multiple connected insertions, the noncoincident/contact-term separation,
   the two-insertion Wilsonian identity, and the 1PI source-Hessian identity.
+- 2026-05-24 issue #364 pass: rewrote the partition-sign explanation so
+  \((-1)^{r-|\pi|}\) is derived as the connected-cumulant chain-rule sign from
+  Faà di Bruno applied to \(W=\log Z\), after converting ordinary source
+  derivatives to \(D=-\delta/\delta\eta\).
 - 2026-05-24 issue #233 pass: elevated the anomalous-dimension connection
   statement to a theorem.  The manuscript now defines the deformation-operator
   bundle, states the \(C^1\)/formal regularity needed for source-frame
