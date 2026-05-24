@@ -51,6 +51,9 @@
   triviality theorem is recorded without claiming a universal nonexistence
   theorem for every possible UV-complete QFT matching formal \(\phi^4_4\)
   perturbation theory.
+- Wilsonian cutoff removal is cross-referenced to the later conditional
+  finite-coordinate continuum-limit theorem; the scalar-status section does
+  not treat regulator removal as an informal claim of renormalizability.
 
 ## Symbols
 
@@ -140,3 +143,7 @@
   for \(D_\Lambda\varphi\), separated it from Gaussian-reference notation
   \(\dd\mu_{C_\Lambda}\), and required non-scalar regularizations to specify
   their integration object before source-functional formulas are used.
+- 2026-05-24 issue #325 pass: cross-referenced the Wilsonian
+  finite-coordinate continuum-limit theorem from the scalar-model status
+  paragraph so that cutoff removal is tied to explicit tuning, semigroup, and
+  generated-integral hypotheses.

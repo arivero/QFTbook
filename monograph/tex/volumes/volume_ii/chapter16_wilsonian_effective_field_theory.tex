@@ -834,7 +834,7 @@ The suppression exponent is \(-y_i=\Delta_i-D>0\) for the first omitted
 irrelevant operator.  Nonlinear versions of this statement require the
 Banach-norm estimates used in
 Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} and in the
-finite-coordinate cutoff-removal estimate below.
+finite-coordinate continuum-limit theorem below.
 
 This gives a precise meaning to effective field theory.  A finite list of
 relevant and marginal coordinates must be measured or tuned.  Irrelevant
@@ -1006,6 +1006,13 @@ functions can be expressed in terms of the Wilsonian coordinates
 of \(\Lambda_0\) so that selected physical coordinates at \(\Lambda_R\) are
 held fixed and the remaining Wilsonian coordinates at \(\Lambda_R\) approach
 limits.
+The theorem-level statement of this assertion is
+Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
+below.  It is conditional: it assumes the tuning problem, the irrelevant
+semigroup estimate, and the convergence of the generated integral in a
+specified finite coordinate projection.  The Wilsonian mechanism is the proof
+that these hypotheses imply a cutoff-independent reference-scale point, not a
+proof that the hypotheses hold in every regulated model.
 
 In the quartic-sextic projection, impose the ultraviolet boundary condition
 \[
@@ -1286,7 +1293,8 @@ For finite \(\Lambda_0\), define the generated-integral remainder
   V_R(u_R).
 \]
 
-\begin{proposition}[Finite-coordinate cutoff-removal estimate]
+\begin{theorem}[Conditional finite-coordinate Wilsonian continuum limit]
+\label{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
 Fix \(u_R\) and suppose that, for every sufficiently large \(t_0\), the
 retained bare coordinates can be tuned so that \(u(t_R)=u_R\).  Assume:
 \begin{enumerate}[label=(\roman*)]
@@ -1305,7 +1313,21 @@ retained bare coordinates can be tuned so that \(u(t_R)=u_R\).  Assume:
   \]
   for some \(C_F,\omega_F>0\).
 \end{enumerate}
-Then the irrelevant coordinates at the reference scale have the form
+For the tuned finite-cutoff trajectory, write
+\[
+  z_R(t_0;u_R)
+  :=
+  \bigl(u(t_R;t_0,u_R),\,v(t_R;t_0,u_R)\bigr).
+\]
+Then the reference-scale Wilsonian coordinates have the limit
+\begin{equation}
+  \lim_{\Lambda_0\to\infty}z_R(t_0;u_R)
+  =
+  \bigl(u_R,V_R(u_R)\bigr)
+  \label{eq:finite-coordinate-wilsonian-continuum-limit}
+\end{equation}
+in the retained coordinate space \(U\times V\), and the irrelevant
+coordinates at the reference scale obey
 \[
   v(t_R)
   =
@@ -1319,7 +1341,18 @@ Then the irrelevant coordinates at the reference scale have the form
 \]
 with the exponent replaced by the smallest retained irrelevant exponent when
 several irrelevant coordinates are present.
-\end{proposition}
+Consequently, if \(Q\) is any continuous finite-coordinate observable,
+projected vertex, or low-momentum kernel functional defined in a neighborhood
+of \((u_R,V_R(u_R))\), then
+\[
+  \lim_{\Lambda_0\to\infty}Q\bigl(z_R(t_0;u_R)\bigr)
+  =
+  Q\bigl(u_R,V_R(u_R)\bigr).
+\]
+If \(Q\) is Lipschitz in the chosen coordinate norm, the same power gives an
+error bound for this convergence, with a constant multiplied by the Lipschitz
+constant of \(Q\).
+\end{theorem}
 
 \begin{proof}
 Equation \eqref{eq:irrelevant-coordinate-variation-of-constants} writes
@@ -1328,9 +1361,16 @@ contribution.  The preceding proposition bounds the boundary contribution by
 \((\Lambda_R/\Lambda_0)^\omega\).  The generated contribution is
 \(V_R(u_R)+R_F(t_0;u_R)\), with \(R_F\) bounded by the fourth hypothesis.
 Combining the two estimates gives the stated asymptotic form.
+The relevant coordinate is fixed by the tuning condition
+\(u(t_R;t_0,u_R)=u_R\), so the full retained coordinate vector converges to
+\((u_R,V_R(u_R))\).  The final assertion follows by continuity of \(Q\), and
+the quantitative estimate follows from the Lipschitz bound applied to the
+coordinate difference.
 \end{proof}
 
-The hypotheses of the proposition are the mathematical content of a
+The hypotheses of
+Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit} are
+the mathematical content of a
 Wilsonian continuum-limit argument in a chosen local projection.  The tuning
 condition \(u(t_R)=u_R\) is a statement about the endpoint map from bare
 coordinates at \(\Lambda_0\) to renormalized coordinates at \(\Lambda_R\).
@@ -1342,7 +1382,7 @@ the implicit function theorem gives the local tuning functions at finite
 neighborhood and make the generated integral converge.
 
 \begin{remark}[Status of the cutoff-removal hypotheses]
-The finite-coordinate cutoff-removal proposition is conditional.  It proves
+The finite-coordinate continuum-limit theorem is conditional.  It proves
 the displayed asymptotic estimate from the four listed hypotheses; it does not
 prove those hypotheses for an arbitrary quantum field theory, nor even for an
 arbitrary finite projection of a regulated action.  Hypothesis (ii) is a
@@ -1448,8 +1488,9 @@ hypothesis contains information beyond formal perturbation theory.
 For a lattice regulator with lattice spacing \(a=\Lambda_0^{-1}\), a bounded
 dimensionless irrelevant bare coordinate \(v^\rho(t_0)\) corresponds to a
 dimensionful coefficient multiplied by the appropriate positive power of
-\(a\).  The proposition explains the resulting universality statement in this
-local projection: after the retained coordinates are tuned at
+\(a\).  Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
+explains the resulting universality statement in this local projection: after
+the retained coordinates are tuned at
 \(\Lambda_R\), bounded changes of microscopic irrelevant lattice couplings
 alter \(v(t_R)\) only by powers of \(\Lambda_R/\Lambda_0\), while the limiting
 value belongs to the continuum graph selected by the flow.
