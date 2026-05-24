@@ -644,6 +644,53 @@ field rescales \(Z\).  The canonical free field used later in LSZ is the
 asymptotic field on the one-particle Fock space, normalized separately from the
 interpolating local field whose correlators contain the pole.
 
+\begin{remark}[Existence of an isolated mass shell is a spectral statement]
+\label{rem:kallen-lehmann-mass-shell-existence-status}
+The K\"all\'en--Lehmann representation does not imply the existence of a
+one-particle state.  For a fixed scalar local field \(\widehat\phi\), a term
+\[
+  \dd\rho_\phi(s)=Z_\phi\,\delta_{m^2}(\dd s)+\dd\rho_{\phi,\mathrm c}(s),
+  \qquad Z_\phi>0,
+\]
+is exactly the statement that \(\widehat\phi\vac\) has nonzero spectral
+projection onto the positive mass shell of invariant mass \(m\).  A positive
+measure whose support begins at \(m^2\) but has no atom at \(m^2\) gives a
+threshold, not a normalizable Wigner one-particle vector created by that
+field.
+
+The field-independent Hilbert-space assertion needed by Haag--Ruelle theory is
+stronger and has two parts.  With \(E\) the joint spectral measure of
+\(P^\mu\) and
+\[
+  \Sigma_m^+=\{p:p^0>0,\ p^2=-m^2\},
+\]
+one must have
+\[
+  E(\Sigma_m^+)\Hilb\ne\{0\},
+  \qquad
+  \operatorname{Spec}(P)\cap N=\Sigma_m^+
+\]
+for some open neighborhood \(N\) of \(\Sigma_m^+\).  The first condition says
+that the one-particle subspace is nonzero; the second says that the shell is
+isolated from the rest of the energy-momentum spectrum.  If the first condition
+fails, the notation \(E(\Sigma_m^+)\Hilb\) denotes the zero subspace and the
+corresponding scattering construction is vacuous.  If the second condition
+fails, the sharp Wigner particle hypothesis required by ordinary
+Haag--Ruelle estimates is absent even when spectral weight accumulates at the
+same invariant mass.
+
+An atom may be invisible to a particular interpolating field if that field has
+zero matrix element to the corresponding superselection sector or internal
+channel.  Conversely, absence of an atom in every physical local
+interpolating field is evidence for absence of that stable particle sector, but
+the invariant statement is the vanishing of the spectral projection on the
+physical Hilbert space.  The nonzero isolated-shell property is a theorem in
+free massive fields and in those constructive massive models for which the
+Wightman theory, the mass gap, and a separated one-particle spectral component
+have actually been proved.  Formal perturbation theory alone supplies
+candidate pole data rather than this Hilbert-space spectral theorem.
+\end{remark}
+
 \section{Scalar One-Particle States and Normalization}
 
 Assume now that the Hilbert space contains an isolated positive-mass

@@ -71,6 +71,8 @@ Working framework:
 - scalar one-particle standard boosts, Wigner little group, and invariant
   normalization;
 - isolated one-particle atom and field-strength overlap \(Z\);
+- spectral distinction between a nonzero isolated Hilbert-space mass shell and
+  a merely continuous Kallen-Lehmann threshold;
 - continuum spectral support and threshold assumptions.
 
 ## Claim Ledger
@@ -86,6 +88,7 @@ Working framework:
 | \(G_E(x_E)=\int d\rho(\mu^2)\Delta_E(x_E;\mu^2)\) under analytic continuation. | Framework statement/derived from Chapter 8 conditions | Spectral positivity and Euclidean continuation |
 | Delta-normalized scalar one-particle states have \(N(\vec k)=\sqrt{m/\omega_{\vec k}}\). | Derived | Standard boost construction plus Lorentz invariance of the on-shell measure |
 | An isolated one-particle mass created by \(\widehat\phi\) is an atom \(Z\delta(\mu^2-m^2)\) of the spectral measure. | Definition plus derivation | Projection onto the isolated mass shell |
+| The existence of a stable one-particle species is the nonzero isolated spectral projection \(E(\Sigma_m^+)\Hilb\ne0\), not a consequence of the Kallen-Lehmann formula itself. | Clarified assumption/status statement | Joint spectral theorem plus atom criterion |
 | \(Z\) depends on the local field normalization and is intrinsic once the field is fixed. | Definition/consequence | Matrix element normalization |
 
 ## Figure Ledger
@@ -118,6 +121,10 @@ Figures to include:
   standard boost, Wigner little group, \(N(\vec k)=\sqrt{m/\omega_{\vec k}}\),
   and the delta-normalized and invariant-normalized versions of the \(Z\)
   overlap.
+- 2026-05-24 issue #328 pass: added an explicit remark that a
+  Kallen-Lehmann measure may have no atom, that \(E(\Sigma_m^+)\Hilb\) may be
+  zero or non-isolated, and that Haag--Ruelle/LSZ use of that shell is then
+  absent rather than implicit.
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.

@@ -29,7 +29,7 @@
 - Local or almost-local bounded operators are used to state the theorem
   without domain distractions from unbounded point fields.
 - A massive one-particle subspace \(\Hilb_1\) of mass \(m>0\) is assumed to be
-  isolated from the remaining spectrum.
+  nonzero and isolated from the remaining spectrum.
 - The isolated-shell condition is treated as a model-specific spectral theorem
   or hypothesis, not as an automatic consequence of a formal Lagrangian.
 
@@ -70,6 +70,10 @@
   charged sectors are infraparticle sectors; QCD colored shells are absent
   from the gauge-invariant observable spectrum; resonances are not
   Haag--Ruelle external particles.
+- The notation \(\Hilb_1=E(\Sigma_m^+)\Hilb\) is explicitly scoped to the case
+  \(E(\Sigma_m^+)\Hilb\ne0\); a continuous Kallen-Lehmann threshold with no
+  atom leaves the ordinary massive Haag--Ruelle construction vacuous for that
+  species.
 - A local operator with nonzero one-particle overlap can be energy-momentum
   filtered and smeared with a positive-energy Klein--Gordon wave packet.
 - In point-field notation, the smeared field \(\hat\phi_f\Omega\) projects to
@@ -130,3 +134,6 @@
   both Haag--Ruelle presentations, separating proved model-theoretic spectral
   gaps from perturbative poles, infraparticle spectra, confinement, and
   resonances.
+- 2026-05-24 issue #328 pass: made nonzero one-particle spectral projection
+  and isolation separate hypotheses, and connected Haag--Ruelle vacuity to the
+  absence of Kallen-Lehmann atoms.
