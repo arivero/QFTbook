@@ -50,6 +50,10 @@ The chapter establishes:
   and Euclidean separated-point distributions;
 - source functionals \(W_\ast[g,J]\) whose derivatives define stress
   tensor insertions and local-operator insertions;
+- the explicit existence hypothesis for the fixed-point source chart:
+  \(W_\ast[g,J]\) is used only when all metric/source derivatives exist as
+  distributions in a specified test-function topology, and when regulated
+  realizations converge after local source counterterms;
 - the status of fixed-point source brackets
   \(\langle\exp(\int\sqrt g\,J^A\mathcal O_A)\rangle_{g,\ast}\): constructive
   measure expectation, regulated continuum-limit source functional, abstract
@@ -104,6 +108,11 @@ The chapter establishes:
     measure settings, continuum-limit brackets in lattice/Wilsonian settings,
     distributional generating brackets in abstract CFT settings, and formal
     source series in perturbative settings.
+3b. The metric and source derivatives of \(W_\ast[g,J]\) are legitimate only
+    inside a source chart satisfying the explicit existence hypothesis:
+    distributional Gateaux derivatives exist, regulated derivatives converge
+    when a regulator presentation is used, and regulator changes are tracked by
+    local source counterterms.
 4. The trace equation at a fixed point becomes a conformal trace condition
    only after improvement and contact-term conventions have been specified.
 5. The statement that scale invariance implies conformal invariance is used
@@ -182,3 +191,7 @@ The chapter establishes:
   critical separated-point scaling functions under OPE convergence, and a
   status remark separating \(D=3\) bootstrap numerical uncertainties from
   lattice convergence rates or constructive continuum-limit error bounds.
+- 2026-05-24 issue #343 pass: added
+  `hyp:cft-fixed-point-source-chart-existence`, which states the distributional
+  existence, regulated convergence, and regulator-independence-modulo-local
+  counterterm requirements before \(W_\ast[g,J]\) is differentiated.

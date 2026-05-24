@@ -586,6 +586,60 @@ proved or assumed as part of the data, and distributional generating
 brackets in an axiomatic or perturbative presentation.
 \end{definition}
 
+\begin{hypothesis}[Existence of the fixed-point source chart]
+\label{hyp:cft-fixed-point-source-chart-existence}
+All differentiations of \(W_\ast[g,J]\) below are made in a source chart with
+the following properties.  There is an open neighborhood \(\mathcal U_\ast\)
+of \((g,J)=(\delta,0)\) in the Frechet space of smooth Euclidean metrics equal
+to \(\delta_{\mu\nu}\) outside a compact set and smooth compactly supported
+operator sources.  The functional \(W_\ast\) is a real-valued functional on
+\(\mathcal U_\ast\), defined modulo local functionals of \(g\) and \(J\), whose
+Gateaux derivatives of all orders exist as distributions.  More explicitly,
+for every \((g,J)\in\mathcal U_\ast\) and every finite list of compactly
+supported metric and source variations
+\[
+  u_r=(h^{(r)}_{\mu\nu},j^{(r)A}),\qquad r=1,\ldots,n,
+\]
+the multilinear functional
+\[
+  D_{u_1}\cdots D_{u_n} W_\ast[g,J]
+\]
+is continuous in the test-function topology and is represented by a
+distribution on the corresponding Cartesian power of spacetime.
+
+If the fixed point is supplied by a regulator, this hypothesis means that
+there are regulated functionals \(Z_{\Lambda}[g,J]\) and local source
+counterterms \(P_{\Lambda}[g,J]\) such that
+\[
+  W_{\Lambda}^{\rm ren}[g,J]
+  =
+  -\log Z_{\Lambda}[g,J]+P_{\Lambda}[g,J]
+\]
+has distributional limits of all such source derivatives on
+\(\mathcal U_\ast\):
+\[
+  D_{u_1}\cdots D_{u_n}W_{\Lambda}^{\rm ren}[g,J]
+  \longrightarrow
+  D_{u_1}\cdots D_{u_n}W_\ast[g,J]
+  \quad\hbox{in }\mathcal D' .
+\]
+Two regulators or subtraction prescriptions define the same source chart only
+after a transition function has been specified; their difference is allowed to
+be a local functional of the background fields, which changes only contact
+terms in source derivatives.  Diffeomorphism and Weyl Ward identities for
+\(W_\ast\) are additional properties of this chart, including the anomaly
+functional when one is present.  They are not consequences of flat separated
+correlators alone.
+\end{hypothesis}
+
+The definitions and Ward identities in the rest of this section are conditional
+on Hypothesis~\ref{hyp:cft-fixed-point-source-chart-existence}.  In
+perturbative constructions the hypothesis is a statement about formal power
+series whose coefficients are renormalized source distributions.  In a
+constructive, lattice, or Wilsonian construction it is a nonperturbative
+source-dependent scaling-limit theorem when proved; otherwise it is part of
+the CFT data being assumed.
+
 For a regulated path-integral representative this convention reads
 \[
   \exp\{-W_\ast[g,J]\}
