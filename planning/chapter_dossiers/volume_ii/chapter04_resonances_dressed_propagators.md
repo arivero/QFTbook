@@ -52,6 +52,8 @@
 | \(\Sigma(k)\) | amputated one-particle-irreducible two-point insertion for \(\phi_2\) |
 | \(\Sigma^R(k)\) | renormalized self-energy after subtracting the mass counterterm |
 | \(\rho_1(s)\) | two-\(\phi_1\) phase-space square root, \(\sqrt{1-4m_1^2/s}\) |
+| \(a_\ell(s)\) | identical-boson partial-wave coordinate in the \(32\pi\), even-\(\ell\) convention |
+| \(S_\ell(s)\) | elastic partial-wave \(S\)-matrix element on the symmetric two-\(\phi_1\) channel |
 | \(F(s)\) | dressed inverse denominator of the \(s\)-channel exchange amplitude |
 | \(s_\ast\) | complex pole of the second-sheet continuation |
 | \(M_R,\Gamma_R\) | real resonance mass parameter and narrow-width decay rate |
@@ -71,6 +73,17 @@
 - The physical boundary value is obtained from the Feynman prescription:
   Euclidean momenta are analytically continued to positive real energy from
   above.
+- The partial-wave normalization for the \(\phi_1\phi_1\) resonance channel is
+  the unordered identical-boson convention
+  \[
+    \mathcal M(s,z)
+    =
+    32\pi\sum_{\ell\ {\rm even}}(2\ell+1)a_\ell(s)P_\ell(z),
+    \qquad
+    S_\ell=1+2i\rho_1a_\ell .
+  \]
+  Ordered \(16\pi\) amplitudes may be used only as labelled-leg
+  bookkeeping before Bose symmetrization.
 - The cut width uses the two-point specialization of the exact unitarity
   discontinuity; the displayed inclusive line-replacement expression is its
   weak-coupling perturbative expansion.
@@ -120,6 +133,12 @@
   up to the stated normalization convention for the cubic interaction.
 - Elastic partial-wave unitarity is represented by phase motion of \(S_0(s)\),
   not by a physical-axis divergence.
+- For the angle-independent resonant \(s\)-channel exchange,
+  \(a_0^{(s)}=\mathcal M_s/(32\pi)\), hence
+  \[
+    \mathcal M_s=-16\pi i\,\rho_1^{-1}(S_0-1),
+  \]
+  which is the normalization used in the phase-motion derivation.
 - The first-sheet sign argument is recorded: in the upper half \(s\)-plane
   both \(\operatorname{Im}(-s)\) and the imaginary part of the logarithmic
   term have the same negative sign, while the lower half-plane has the
@@ -163,3 +182,12 @@
   and LSZ framework already established in Volume I.
 - The external-resonance section is an isolated-pole construction and open
   problem statement.  It is not an LSZ theorem for unstable particles.
+
+## Audit Notes
+
+- 2026-05-24 issue #386 pass: corrected the opening partial-wave convention
+  from the ordered \(16\pi\) expansion to the unordered identical-boson
+  \(32\pi\), even-\(\ell\) convention, replaced \(\mathcal M_\ell\) by
+  \(a_\ell\), and displayed the inversion
+  \(a_0^{(s)}=\mathcal M_s/(32\pi)\Rightarrow
+  \mathcal M_s=-16\pi i\rho_1^{-1}(S_0-1)\).

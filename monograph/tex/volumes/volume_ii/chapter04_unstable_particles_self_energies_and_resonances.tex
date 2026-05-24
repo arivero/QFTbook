@@ -69,23 +69,26 @@ by the exact two-point function of \(\phi_2\).
 \end{tikzpicture}
 \end{center}
 
-The partial-wave normalization used below is the ordered \(16\pi\) convention
-for the labeled \(\phi_1\phi_1\to\phi_1\phi_1\) amplitude:
+The partial-wave normalization used below is the unordered identical-boson
+convention for the physical \(\phi_1\phi_1\to\phi_1\phi_1\) channel:
 \begin{equation}
   \mathcal M(s,z)
   =
-  16\pi\sum_{\ell=0}^\infty(2\ell+1)\mathcal M_\ell(s)P_\ell(z),
+  32\pi
+  \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
+  (2\ell+1)a_\ell(s)P_\ell(z),
   \qquad z=\cos\theta,
   \label{eq:resonance-partial-wave-expansion}
 \end{equation}
-Passing to the unordered identical-boson scattering channel amounts to the Bose
-symmetrization displayed in
-Equation~\eqref{eq:identical-partial-wave-conversion}; this chapter tracks the
-analytic motion of fixed ordered-channel partial waves, so
-\eqref{eq:resonance-partial-wave-expansion} is kept throughout.
+This is the \(32\pi\), even-\(\ell\) convention of
+Equation~\eqref{eq:identical-partial-wave-conversion}.  The ordered
+\(16\pi\) convention may still be used as an intermediate labelled-leg
+bookkeeping device, but the elastic \(S_\ell\) below acts on the symmetric
+two-\(\phi_1\) Hilbert-space channel, so the physical partial-wave coordinate
+is \(a_\ell\).
 In an elastic one-channel interval,
 \begin{equation}
-  S_\ell(s)=1+2\ii\,\rho_1(s)\mathcal M_\ell(s),
+  S_\ell(s)=1+2\ii\,\rho_1(s)a_\ell(s),
   \qquad
   \rho_1(s)=\sqrt{1-\frac{4m_1^2}{s}} .
   \label{eq:resonance-elastic-s-matrix-normalization}
@@ -104,7 +107,7 @@ partial wave is finite. The divergence of
 description has expanded around a stable bare line in a region where the
 state couples to an open decay channel. The exact object is a resonance: a
 nearby pole of the continuation of \(S_\ell(s)\), or equivalently of
-\(\mathcal M_\ell(s)\), through the threshold cut. On the physical sheet the
+\(a_\ell(s)\), through the threshold cut. On the physical sheet the
 same channel is represented by the continuum part of the spectral measure;
 an isolated real mass atom occurs only for a stable one-particle state.
 
@@ -656,7 +659,16 @@ overlapping pair of poles, or near a threshold branch point,
 \section{Elastic Phase Motion}
 
 In the same approximation, only the \(\ell=0\) partial wave carries the
-resonant scalar exchange. Using
+resonant scalar exchange.  Since the resonant \(s\)-channel term is independent
+of \(z\), Equation~\eqref{eq:resonance-partial-wave-expansion} gives
+\[
+  a_0^{(s)}(s)=\frac{\mathcal M_s(s)}{32\pi},
+  \qquad
+  S_0(s)-1=2\ii\rho_1(s)a_0^{(s)}(s)
+  =
+  \frac{\ii\rho_1(s)}{16\pi}\mathcal M_s(s).
+\]
+Equivalently,
 \[
   \mathcal M_s(s)
   \approx
