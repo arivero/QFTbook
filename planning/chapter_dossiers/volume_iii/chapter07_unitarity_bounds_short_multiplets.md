@@ -22,6 +22,8 @@ The chapter establishes:
   on conformal generalized Verma modules, with the finite conformal-algebra
   Kac determinant locating singular vectors;
 - the scalar level-two trace descendant and the scalar unitarity bound;
+- the labeled spinor unitarity-bound theorem and gamma-trace Dirac
+  shortening;
 - the \(\Delta=0\) scalar branch, tied explicitly to the unique-vacuum and
   cluster-decomposition assumptions in the radial reconstruction hypothesis;
 - the \(SO(D)\) decomposition
@@ -33,6 +35,9 @@ The chapter establishes:
   representations;
 - conservation and free-field equations as null-state equations in the
   quotient local-operator space.
+- Theorem `thm:basic-unitarity-bounds-short-multiplets`, which collects the
+  scalar, spinor, and symmetric-traceless bounds and their saturation
+  equations in one labeled statement.
 
 ## Claims To Verify
 
@@ -73,3 +78,7 @@ The chapter establishes:
   Shapovalov form on conformal generalized Verma modules and named the finite
   conformal-algebra Kac determinant framework while retaining explicit
   Gram-matrix derivations.
+- 2026-05-24 issue #286 pass: promoted the spinor result to a theorem and
+  added the labeled basic unitarity-bounds/short-multiplets theorem collecting
+  scalar Laplace, spinor Dirac, and symmetric-traceless divergence
+  shortenings.
