@@ -697,20 +697,52 @@ inverse.
 
 \section{Euclidean Convexity}
 
-The convexity statement is a theorem in a different regime from formal
-dimensional regularization.  In this section the regulated Euclidean source
-functional is assumed to be defined by a positive finite measure.  Let it be
+The convexity statement is a theorem only after the Euclidean functional
+integral has been given positive measure-theoretic meaning.  The analytic input
+used in the proof is isolated in the following assumption.
+
+\begin{assumption}[Positive finite Euclidean regulator for convexity]
+\label{ass:positive-euclidean-regulator-convexity}
+Fix a regulator \(\Lambda\).  There is a measurable regulated configuration
+space \((\mathcal C_\Lambda,\mathcal A_\Lambda)\), a positive finite measure
+\(\mu_\Lambda\) on it, and a real vector space \(\mathcal S_\Lambda\) of
+regulated sources paired with the regulated field by a measurable real
+functional
 \[
-  Z_E[J]
-  =
-  \int [D\phi]_{\Lambda}\,
-  \exp\!\left\{
-    -S_E[\phi]
-    -\langle J,\phi\rangle
-  \right\}
-  =
-  \ee^{-W_E[J]} .
+  (J,\phi)\longmapsto \langle J,\phi\rangle_\Lambda .
 \]
+There is a nonempty convex source domain
+\(\mathcal D_\Lambda\subset\mathcal S_\Lambda\) such that, for every
+\(J\in\mathcal D_\Lambda\),
+\begin{equation}
+  0<
+  Z_{E,\Lambda}[J]
+  :=
+  \int_{\mathcal C_\Lambda}
+  \exp\{-\langle J,\phi\rangle_\Lambda\}\,
+  \dd\mu_\Lambda(\phi)
+  <\infty .
+  \label{eq:positive-regulator-partition-function}
+\end{equation}
+The notation
+\[
+  \dd\mu_\Lambda(\phi)
+  =
+  [D\phi]_\Lambda\,\ee^{-S_E[\phi]}
+\]
+is only a shorthand for this positive finite measure in the present section.
+It is not the formal dimensional-regularization prescription, not an
+oscillatory Lorentzian integral, and not a Berezin integral over odd variables.
+\end{assumption}
+
+Under Assumption~\ref{ass:positive-euclidean-regulator-convexity} define
+\[
+  Z_E[J]=Z_{E,\Lambda}[J]=\ee^{-W_E[J]} .
+\]
+Any continuum limit \(\Lambda\to\infty\) of the statements below requires an
+additional existence theorem for the limiting Schwinger functional.  The
+finite-regulator argument by itself does not prove such a limit for a proposed
+model.
 
 \begin{definition}[Lorentzian--Euclidean source-convention bridge]
 \label{def:lorentzian-euclidean-source-bridge}
@@ -802,14 +834,7 @@ in the convex Legendre transform below.
 
 \begin{theorem}[Euclidean convexity at finite regulator]
 \label{thm:volume-ii-euclidean-convexity-finite-regulator}
-Let \(\mathcal D\) be a convex set of real regulated sources.  Assume that
-\[
-  \dd\mu_\Lambda(\phi)
-  =
-  [D\phi]_{\Lambda}\ee^{-S_E[\phi]}
-\]
-is a positive finite measure and that \(Z_E[J]\) is finite and nonzero for
-every \(J\in\mathcal D\).  Define
+Assume Assumption~\ref{ass:positive-euclidean-regulator-convexity}.  Define
 \[
   K[J]=\log Z_E[J],
   \qquad
@@ -823,12 +848,12 @@ term \(-\langle J,\phi\rangle\), one has
 \(\delta W_E/\delta J=\langle\phi\rangle_J\).  For a source term
 \(+\langle J,\mathcal O\rangle\), the same free-energy convention gives
 \(\delta W/\delta J=-\langle\mathcal O\rangle_J\).
-Then \(K\) is convex on \(\mathcal D\), and \(W_E\) is concave on
-\(\mathcal D\).  The finite-regulator Euclidean effective action
+Then \(K\) is convex on \(\mathcal D_\Lambda\), and \(W_E\) is concave on
+\(\mathcal D_\Lambda\).  The finite-regulator Euclidean effective action
 \[
   \Gamma_E[\varphi]
   =
-  \sup_{J\in\mathcal D}
+  \sup_{J\in\mathcal D_\Lambda}
   \left\{
     W_E[J]-\langle J,\varphi\rangle
   \right\}
@@ -857,18 +882,20 @@ source-field map is nonsingular.
 \end{theorem}
 
 \begin{proof}
-For \(J_1,J_2\in\mathcal D\) and \(0\le t\le1\), Holder's inequality gives
+For \(J_1,J_2\in\mathcal D_\Lambda\) and \(0\le t\le1\), Holder's inequality
+with respect to the positive measure \(\mu_\Lambda\) gives
 \[
 \begin{aligned}
   Z_E[tJ_1+(1-t)J_2]
   &=
-  \int [D\phi]_{\Lambda}\,
+  \int_{\mathcal C_\Lambda}
   \left(
-    \ee^{-S_E[\phi]-\langle J_1,\phi\rangle}
+    \ee^{-\langle J_1,\phi\rangle_\Lambda}
   \right)^t
   \left(
-    \ee^{-S_E[\phi]-\langle J_2,\phi\rangle}
-  \right)^{1-t}          \\
+    \ee^{-\langle J_2,\phi\rangle_\Lambda}
+  \right)^{1-t}
+  \dd\mu_\Lambda(\phi)          \\
   &\le
   Z_E[J_1]^t Z_E[J_2]^{1-t}.
 \end{aligned}

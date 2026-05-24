@@ -36,6 +36,10 @@ The chapter must define the following objects before using them:
 - the Lorentzian--Euclidean source-convention bridge, including
   \(\mathcal W_L=iW_L\), \(\mathcal W_E=-W_E\), the source-sign map
   \(J_E=-J_L^{\rm W}\), and the connected-derivative normalizations;
+- the positive finite Euclidean regulator assumption for convexity, including
+  the regulated measurable configuration space, positive finite measure, real
+  source domain, source-field pairing, and finiteness/nonvanishing of
+  \(Z_{E,\Lambda}[J]\);
 - the source-dependent field \(\varphi_J(x)=\delta W/\delta J(x)\);
 - the Legendre transform \(\Gamma[\varphi]=W[J_\varphi]-\int\varphi J_\varphi\);
 - the distinction between the local differentiable/formal Legendre transform
@@ -90,8 +94,10 @@ The chapter must define the following objects before using them:
    stationary equation \(\delta\Gamma/\delta\varphi=-J\); diagrammatically,
    connected functions are trees made from exact 1PI vertices.
 12. In the Euclidean convention
-    \(Z_E[J]=e^{-W_E[J]}\), \(W_E\) is concave for positive bosonic measure,
-    and the corresponding Legendre transform is convex.
+    \(Z_E[J]=e^{-W_E[J]}\), under the labeled positive finite Euclidean
+    regulator assumption, \(W_E\) is concave and the corresponding
+    Legendre--Fenchel transform is convex.  The finite-regulator convexity
+    proof does not by itself establish a continuum Schwinger-functional limit.
 13. The convention bridge is
     \(\mathcal W_L=\log Z_L=iW_L\) and
     \(\mathcal W_E=\log Z_E=-W_E\).  For the Euclidean source term
@@ -157,3 +163,9 @@ The chapter must define the following objects before using them:
   Euclidean measure.  The manuscript now states that dimensional
   regularization/MS does not supply the positivity hypotheses for the
   Euclidean convexity theorem.
+- 2026-05-24 issue #308 pass: promoted the positive-measure input for the
+  Euclidean convexity theorem to the labeled assumption
+  `ass:positive-euclidean-regulator-convexity`, with the regulated measurable
+  space, positive finite measure, source domain, pairing, and
+  integrability/nonzero partition-function hypotheses stated before the
+  Hölder argument.
