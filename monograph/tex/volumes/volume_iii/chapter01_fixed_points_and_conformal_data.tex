@@ -164,6 +164,57 @@ renormalized source Ward identities.  Curvature terms appear after coupling
 the theory to a background metric, but vanish in the flat separated-point
 identity displayed here.
 
+\begin{remark}[Scale invariance versus conformal invariance]
+\label{rem:cft-opening-scale-versus-conformal}
+At a fixed point the vanishing of the beta-function part of
+\eqref{eq:cft-opening-trace-beta} gives
+\begin{equation}
+  \widehat T^\mu{}_\mu=\partial_\mu V^\mu
+  \label{eq:cft-opening-scale-trace-virial}
+\end{equation}
+in the flat-space local-operator quotient determined by the source chart.  If
+\(\widehat T^{\mu\nu}\) is symmetric and conserved, then
+\begin{equation}
+  D^\mu=x_\nu\widehat T^{\mu\nu}-V^\mu
+  \label{eq:cft-opening-dilatation-current}
+\end{equation}
+is a conserved dilatation current exactly when
+\eqref{eq:cft-opening-scale-trace-virial} holds.  Conformal symmetry requires
+the stronger local statement that the virial class is removable by the allowed
+stress-tensor improvements.  For the scalar improvement
+\[
+  \widehat T^{\mu\nu}\longmapsto
+  \widehat T^{\mu\nu}
+  +
+  (\partial^\mu\partial^\nu-\eta^{\mu\nu}\partial^2)L ,
+\]
+the trace changes by \(-(D-1)\partial^2L\), so the trace can be removed when
+\begin{equation}
+  V^\mu=(D-1)\partial^\mu L+J^\mu,
+  \qquad
+  \partial_\mu J^\mu=0,
+  \label{eq:cft-opening-removable-virial}
+\end{equation}
+modulo the operator identities and contact-term convention of the source chart.
+More general improvement tensors enlarge the same quotient by the image of
+their trace-changing map.  Thus the scale-to-conformal implication is the
+local problem of proving that this virial obstruction class vanishes.
+
+The status is dimension-dependent.  In \(D=2\), the
+Zamolodchikov--Polchinski argument proves the implication under explicit
+Hilbert-space positivity, locality, stress-tensor, vacuum, spectrum, and
+regularity hypotheses strong enough for the \(c\)-function and stress-tensor
+two-point analysis.  In \(D=4\), the Luty--Polchinski--Rattazzi program and
+related anomaly/dilaton arguments give powerful conditional constraints, but
+this monograph does not use an unconditional theorem asserting that every
+unitary scale-invariant four-dimensional QFT is conformal.  In \(D=3\) and
+\(D>4\), later uses of conformal symmetry likewise require the traceless
+improved stress tensor, the vanishing virial class, or the equivalent conformal
+Ward identities as part of the stated data.  The cohomological formulation and
+references are given in
+Remark~\ref{rem:scale-conformal-dimension-status}.
+\end{remark}
+
 An RG fixed point in the coordinate chart is a point \(g_\ast\) satisfying
 \begin{equation}
   \beta_I(g_\ast)=0

@@ -20,6 +20,11 @@ The chapter establishes:
 - renormalized deformation operators and the trace equation
   \(T^\mu{}_\mu=\beta_I[O_I]+\partial_\mu V^\mu\), including the role of
   contact terms and improvements;
+- the scale-versus-conformal obstruction as the local virial class at a
+  fixed point, with the dimension-dependent status: theorem formulations in
+  two dimensions only under explicit analytic hypotheses, conditional
+  four-dimensional anomaly/dilaton constraints with no unconditional theorem
+  used here, and no assumed general theorem in other dimensions;
 - fixed points as zeros of the beta-function vector field in a chosen local
   coordinate chart;
 - scaling dimensions from the linearized RG eigenvalues
@@ -56,7 +61,10 @@ The chapter establishes:
    differentiating the background-metric/source functional.
 4. The trace equation at a fixed point becomes a conformal trace condition
    only after improvement and contact-term conventions have been specified.
-5. The Ising fixed point supplies a statistical-mechanics example whose
+5. The statement that scale invariance implies conformal invariance is used
+   only after the local virial obstruction class has been proved or included
+   in the fixed-point data.
+6. The Ising fixed point supplies a statistical-mechanics example whose
    continuum CFT data are obtained from scaling limits of correlators, not
    from the finite lattice trace space.
 
@@ -82,3 +90,7 @@ The chapter establishes:
   contact-distribution trace identity and Wess--Zumino consistency condition in
   the stress-tensor trace chapter, so the CFT source-functional Ward identities
   no longer rest only on separated-point trace data.
+- 2026-05-24 issue #271 pass: added the scale-versus-conformal remark in the
+  opening CFT chapter, defining the dilatation current, removable virial class,
+  scalar stress-tensor improvement, and the dimension-dependent status with a
+  cross-reference to the fuller stress-tensor treatment.
