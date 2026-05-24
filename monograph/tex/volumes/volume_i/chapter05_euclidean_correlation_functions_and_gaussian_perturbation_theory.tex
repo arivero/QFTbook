@@ -900,11 +900,17 @@ Here \(Z_0\) is the Gaussian partition function and
 \]
 
 At first order in \(g\),
-\[
+\begin{equation}
+  \label{eq:anharmonic-leading-correction}
+  \begin{aligned}
+  \left(\frac{Z_g}{Z_0}-1\right)_{O(g)}
+  &=
   -\frac{g}{4!}\int\dd\tau\,\langle q(\tau)^4\rangle_0
-  =
-  -\frac{g}{8}\int\dd\tau\,G_0(\tau,\tau)^2.
-\]
+  \\
+  &=
+  -\frac{g}{8}\int\dd\tau\,G_0(\tau,\tau)^2 .
+  \end{aligned}
+\end{equation}
 The factor \(3\) in \(\langle q^4\rangle_0=3G_0(\tau,\tau)^2\) is the number
 of pairings of four fields at the vertex.
 Since \(G_0(\tau,\tau)=G_0(0)\) is independent of \(\tau\), this term is
@@ -1083,7 +1089,28 @@ and hence
   -\lim_{T_{\mathrm{tot}}\to\infty}
   \frac{1}{T_{\mathrm{tot}}}\log Z_g.
 \]
-The first correction is
+The endpoint wavefunction factors contribute only \(O(1)\) to
+\(\log Z_g\), so they disappear after multiplication by
+\(T_{\mathrm{tot}}^{-1}\).  Taking the difference between the interacting and
+free kernels gives
+\[
+  E_0(g)-E_0(0)
+  =
+  -\lim_{T_{\mathrm{tot}}\to\infty}
+  \frac{1}{T_{\mathrm{tot}}}
+  \log\frac{Z_g}{Z_0}.
+\]
+The first-order term in \eqref{eq:anharmonic-leading-correction} is
+connected, hence it is also the first-order term in
+\(\log(Z_g/Z_0)\).  On an interval of length \(T_{\mathrm{tot}}\),
+\[
+  \frac{1}{T_{\mathrm{tot}}}\log\frac{Z_g}{Z_0}
+  =
+  -\frac{g}{8}G_0(0)^2+O(g^2).
+\]
+The sign of the energy shift therefore comes from the minus sign in
+\(E_0=-T_{\mathrm{tot}}^{-1}\log Z\) together with the per-vertex factor
+\(-g/4!\) in \eqref{eq:anharmonic-leading-correction}. Thus
 \[
   \Delta E_0
   =
