@@ -1,0 +1,693 @@
+\chapter{Lattice Yang--Mills as a Nonperturbative Formulation}
+\label{ch:lattice-yang-mills-nonperturbative-definition}
+\ConventionsEuclidean
+
+This chapter gives a regulator-level construction of pure Yang--Mills theory
+which does not begin by choosing a covariant gauge.  The construction is a
+finite-dimensional integral over compact groups at finite lattice spacing and
+finite volume.  Its continuum limit is a separate problem: one must prove, or
+assume with stated evidence, that a sequence of finite-cutoff theories has
+gauge-invariant Schwinger functions with a limit satisfying the Euclidean
+axioms and yielding a positive-energy Hilbert-space theory after
+Osterwalder--Schrader reconstruction.
+
+\section{Finite Lattice Gauge Fields}
+
+Fix a compact Lie group \(G\).  For most formulas below \(G=SU(N)\), and
+\(\operatorname{tr}\) denotes the trace in the fundamental representation with
+\(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\).  Let
+\[
+  \Lambda_{a,L}
+  =
+  (a\mathbb Z/L\mathbb Z)^4
+\]
+be a four-dimensional periodic hypercubic lattice, where \(a>0\) is the
+lattice spacing and \(L/a\) is an integer.  The positively oriented links are
+\[
+  E^+(\Lambda_{a,L})
+  =
+  \{(x,\mu)\mid x\in\Lambda_{a,L},\ \mu=1,\ldots,4\}.
+\]
+The link \((x,\mu)\) joins \(x\) to \(x+a\widehat\mu\).  A lattice gauge field
+is a function
+\[
+  U:E^+(\Lambda_{a,L})\longrightarrow G,
+  \qquad
+  (x,\mu)\longmapsto U_\mu(x).
+\]
+The inverse orientation is assigned the inverse group element,
+\[
+  U_{-\mu}(x+a\widehat\mu)=U_\mu(x)^{-1}.
+\]
+Thus a lattice gauge field is a point of the compact manifold
+\[
+  \mathcal A_{\Lambda}=G^{E^+(\Lambda_{a,L})}.
+\]
+
+The lattice gauge group is
+\[
+  \mathcal G_{\Lambda}=G^{\Lambda_{a,L}}.
+\]
+An element \(\Omega\in\mathcal G_{\Lambda}\) acts by
+\begin{equation}
+  U_\mu(x)\longmapsto
+  U^\Omega_\mu(x)
+  =
+  \Omega(x)U_\mu(x)\Omega(x+a\widehat\mu)^{-1}.
+  \label{eq:lattice-link-gauge-transformation}
+\end{equation}
+This convention matches the Hermitian continuum convention of
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  For a smooth field with
+\[
+  U_\mu(x)=\exp\bigl(\ii a A_\mu(x)+O(a^2)\bigr),
+\]
+the endpoint rule \eqref{eq:lattice-link-gauge-transformation} gives
+\[
+  A_\mu^\Omega
+  =
+  \Omega A_\mu\Omega^{-1}
+  +
+  \ii\,\Omega\partial_\mu\Omega^{-1}
+  +O(a).
+\]
+
+For \(\mu<\nu\), define the oriented plaquette based at \(x\) by
+\begin{equation}
+  U_{\mu\nu}(x)
+  =
+  U_\mu(x)
+  U_\nu(x+a\widehat\mu)
+  U_\mu(x+a\widehat\nu)^{-1}
+  U_\nu(x)^{-1}.
+  \label{eq:lattice-plaquette-definition}
+\end{equation}
+Under \eqref{eq:lattice-link-gauge-transformation},
+\begin{equation}
+  U_{\mu\nu}(x)\longmapsto
+  \Omega(x)U_{\mu\nu}(x)\Omega(x)^{-1}.
+  \label{eq:lattice-plaquette-covariance}
+\end{equation}
+Therefore every class function of \(U_{\mu\nu}(x)\), and in particular
+\(\operatorname{Re}\operatorname{tr}U_{\mu\nu}(x)\), is gauge invariant.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.82\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,every node/.style={font=\scriptsize}]
+    \coordinate (x) at (0,0);
+    \coordinate (xm) at (3.2,0);
+    \coordinate (xn) at (0,2.2);
+    \coordinate (xmn) at (3.2,2.2);
+    \fill[black] (x) circle (2pt);
+    \fill[black] (xm) circle (2pt);
+    \fill[black] (xn) circle (2pt);
+    \fill[black] (xmn) circle (2pt);
+    \draw[->,very thick,blue!70!black] (x)--(xm)
+      node[midway,below] {\(U_\mu(x)\)};
+    \draw[->,very thick,blue!70!black] (xm)--(xmn)
+      node[midway,right] {\(U_\nu(x+a\widehat\mu)\)};
+    \draw[->,very thick,blue!70!black] (xmn)--(xn)
+      node[midway,above] {\(U_\mu(x+a\widehat\nu)^{-1}\)};
+    \draw[->,very thick,blue!70!black] (xn)--(x)
+      node[midway,left] {\(U_\nu(x)^{-1}\)};
+    \node[below left] at (x) {\(x\)};
+    \node[below right] at (xm) {\(x+a\widehat\mu\)};
+    \node[above left] at (xn) {\(x+a\widehat\nu\)};
+    \node[above right] at (xmn) {\(x+a\widehat\mu+a\widehat\nu\)};
+    \node[align=center] at (1.6,1.1)
+      {\(U_{\mu\nu}(x)\)\\conjugates at \(x\)};
+
+    \begin{scope}[shift={(5.2,0.25)}]
+      \node[draw,rounded corners=2pt,inner sep=5pt,align=center] (links)
+        at (0,1.45) {link variables\\\(U_\mu(x)\in G\)};
+      \node[draw,rounded corners=2pt,inner sep=5pt,align=center] (plaq)
+        at (3.1,1.45) {plaquette\\\(U_{\mu\nu}(x)\)};
+      \node[draw,rounded corners=2pt,inner sep=5pt,align=center] (act)
+        at (6.0,1.45) {class functions\\\(\operatorname{Re}\operatorname{tr}U_{\mu\nu}\)};
+      \draw[->,thick] (links)--(plaq);
+      \draw[->,thick] (plaq)--(act);
+      \node[align=center] at (3.05,0.05)
+        {gauge covariance is exact\\at finite lattice spacing};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{The plaquette is the elementary lattice curvature.  Link variables
+  transform at their endpoints; around a closed elementary square the endpoint
+  factors cancel except for conjugation at the basepoint.}
+  \label{fig:lattice-plaquette-gauge-covariance}
+\end{figure}
+
+\section{Wilson Action and the Finite Haar Integral}
+
+For \(G=SU(N)\) the Wilson action is
+\begin{equation}
+  S_{W,\Lambda}[U]
+  =
+  \frac{\beta}{N}
+  \sum_{x\in\Lambda_{a,L}}
+  \sum_{1\leq\mu<\nu\leq 4}
+  \operatorname{Re}\operatorname{tr}
+  \bigl(\mathbf 1-U_{\mu\nu}(x)\bigr),
+  \qquad
+  \beta=\frac{2N}{g_0^2}.
+  \label{eq:lattice-wilson-action}
+\end{equation}
+Here \(g_0\) is the lattice coupling parameter.  The integrand
+\(\operatorname{Re}\operatorname{tr}(\mathbf 1-U_{\mu\nu})\) is nonnegative,
+because each eigenvalue of \(U_{\mu\nu}\) lies on the unit circle and hence
+\(\operatorname{Re}\operatorname{tr}U_{\mu\nu}\leq N\).  Gauge invariance of
+\(S_{W,\Lambda}\) follows from
+\eqref{eq:lattice-plaquette-covariance}.
+
+Let \(\dd U\) be normalized Haar measure on \(G\).  At finite \(a\) and finite
+\(L\), the lattice partition function is the finite-dimensional compact
+integral
+\begin{equation}
+  Z_{\Lambda}(\beta)
+  =
+  \int_{\mathcal A_{\Lambda}}
+  \prod_{\ell\in E^+(\Lambda_{a,L})}\dd U_\ell\,
+  \exp\{-S_{W,\Lambda}[U]\}.
+  \label{eq:lattice-partition-function}
+\end{equation}
+Since \(\mathcal A_{\Lambda}\) is compact and the integrand is continuous,
+\(Z_{\Lambda}(\beta)\) is finite and strictly positive.  For a bounded
+gauge-invariant function \(O:\mathcal A_{\Lambda}\to\mathbb C\),
+\begin{equation}
+  \langle O\rangle_{\Lambda,\beta}
+  =
+  Z_{\Lambda}(\beta)^{-1}
+  \int_{\mathcal A_{\Lambda}}
+  \prod_{\ell}\dd U_\ell\,
+  O[U]\,\exp\{-S_{W,\Lambda}[U]\}
+  \label{eq:lattice-expectation}
+\end{equation}
+is a completely defined number.  No division by an infinite gauge-group volume
+and no Faddeev--Popov determinant enter this finite-cutoff definition.
+
+The relation to the continuum Yang--Mills action is obtained by evaluating the
+plaquette on a smooth continuum connection.  With
+\[
+  U_\mu(x)
+  =
+  \exp\bigl(\ii a A_\mu(x+\tfrac a2\widehat\mu)+O(a^3)\bigr),
+\]
+the Baker--Campbell--Hausdorff expansion gives
+\begin{equation}
+  U_{\mu\nu}(x)
+  =
+  \exp\bigl(\ii a^2 F_{\mu\nu}(x)+O(a^3)\bigr),
+  \label{eq:lattice-plaquette-continuum-expansion}
+\end{equation}
+where \(F_{\mu\nu}\) is the Hermitian-coordinate curvature of
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  For \(SU(N)\),
+\(\operatorname{tr}F_{\mu\nu}=0\), and hence
+\[
+  \operatorname{Re}\operatorname{tr}(\mathbf 1-U_{\mu\nu})
+  =
+  \frac{a^4}{2}\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+  +O(a^6).
+\]
+Substitution in \eqref{eq:lattice-wilson-action} gives
+\begin{equation}
+  S_{W,\Lambda}[U(A)]
+  =
+  \frac{1}{2g_0^2}
+  \int_{\mathbb T_L^4}
+  \operatorname{tr}(F_{\mu\nu}F_{\mu\nu})\,\dd^4x
+  +O(a^2),
+  \label{eq:lattice-wilson-continuum-limit-formal}
+\end{equation}
+for smooth fields on the torus of side \(L\).  Equation
+\eqref{eq:lattice-wilson-continuum-limit-formal} is an expansion of the
+classical lattice action on smooth configurations.  The quantum continuum
+limit also requires control of the measure as \(a\downarrow0\), \(L\) is sent
+to the desired infrared limit, and \(\beta\to\infty\) along a trajectory that
+keeps a physical scale fixed.
+
+\section{Reflection Positivity and the Transfer Matrix}
+
+The Wilson lattice theory is Euclidean from the start.  To connect it to a
+Hilbert-space theory one uses the lattice version of reflection positivity,
+the discrete precursor of the Osterwalder--Schrader condition developed in
+Chapter~\ref{ch:os-reconstruction}.
+
+Choose the reflection \(\vartheta\) which sends the Euclidean time coordinate
+\(x_4\) to \(-x_4\) and reverses the orientation of reflected links.  Let
+\(\mathcal B_+\) be the algebra generated by gauge-invariant functions of link
+variables whose support lies in the positive-time half lattice.  For
+\(F\in\mathcal B_+\), set
+\[
+  \Theta F[U]=\overline{F[\vartheta U]}.
+\]
+
+\begin{theorem}[Osterwalder--Seiler reflection positivity for the Wilson action]
+\label{thm:lattice-wilson-reflection-positivity}
+On a reflection-invariant finite hypercubic lattice, the Wilson measure
+\[
+  \dd\mu_{\Lambda,\beta}(U)
+  =
+  Z_{\Lambda}(\beta)^{-1}
+  \prod_{\ell}\dd U_\ell\,\ee^{-S_{W,\Lambda}[U]}
+\]
+satisfies
+\begin{equation}
+  \int \Theta F[U]\,F[U]\,\dd\mu_{\Lambda,\beta}(U)\geq0,
+  \qquad
+  F\in\mathcal B_+.
+  \label{eq:lattice-reflection-positivity}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The proof is finite-dimensional.  Haar measure is invariant under reflection,
+inversion, and left and right multiplication.  The Wilson action splits into a
+positive-time part, its reflected part, and plaquette factors crossing the
+reflection plane.  A crossing plaquette factor is a continuous central
+function of a group element \(V\):
+\[
+  K_\beta(V)
+  =
+  \exp\left\{\frac{\beta}{N}
+  \operatorname{Re}\operatorname{tr}V\right\}.
+\]
+Peter--Weyl theory expands it as
+\begin{equation}
+  K_\beta(V)
+  =
+  \sum_{\lambda\in\widehat G}c_\lambda(\beta)\chi_\lambda(V),
+  \qquad
+  c_\lambda(\beta)
+  =
+  \int_G K_\beta(V)\overline{\chi_\lambda(V)}\,\dd V .
+  \label{eq:lattice-peter-weyl-crossing-kernel}
+\end{equation}
+For the Wilson plaquette kernel the coefficients entering the reflection
+plane decomposition are nonnegative.  Matrix-coefficient orthogonality rewrites
+each crossing contribution as a finite or absolutely convergent sum of terms
+\[
+  c_\lambda(\beta)\,
+  F_{\lambda,i}[U_+]\,\overline{F_{\lambda,i}[\vartheta U_+]},
+  \qquad c_\lambda(\beta)\geq0,
+\]
+after the links on the reflection plane have been integrated.  Multiplication
+by the positive-time Boltzmann weight and summation over \(\lambda,i\) turns
+\eqref{eq:lattice-reflection-positivity} into a sum of squared absolute values
+with nonnegative coefficients.
+\end{proof}
+
+Reflection positivity produces a Hilbert space at finite lattice spacing by
+quotienting \(\mathcal B_+\) by the null vectors of
+\eqref{eq:lattice-reflection-positivity} and completing.  Translation by one
+lattice unit in Euclidean time gives a positive transfer matrix
+\[
+  T_a=\ee^{-aH_a}.
+\]
+Thus the finite lattice theory has a genuine Hilbert-space interpretation with
+a nonnegative lattice Hamiltonian \(H_a\).  The continuum question is whether a
+family of such OS-positive finite-cutoff theories has a scaling limit whose
+Schwinger functions satisfy the continuum hypotheses of
+Chapter~\ref{ch:os-reconstruction}.
+
+\section{Wilson Loops and the Strong-Coupling Area Law}
+
+Let \(C\) be a closed oriented lattice path.  If \(C\) traverses the oriented
+link \(\ell\) with sign \(\epsilon_\ell=\pm1\), set
+\[
+  U(C)=\prod_{\ell\in C}U_\ell^{\epsilon_\ell},
+\]
+with the product ordered along the path.  For an irreducible representation
+\(R\) of \(G\) with character \(\chi_R\) and dimension \(d_R\), define the
+normalized Wilson loop
+\begin{equation}
+  W_R(C)
+  =
+  d_R^{-1}\chi_R(U(C)).
+  \label{eq:lattice-wilson-loop-definition}
+\end{equation}
+Gauge factors at adjacent endpoints cancel around the closed curve, so
+\(W_R(C)\) is gauge invariant.
+
+The strong-coupling expansion is the character expansion of each plaquette
+Boltzmann factor.  Write
+\begin{equation}
+  \exp\left\{\frac{\beta}{N}
+  \operatorname{Re}\operatorname{tr}U_P\right\}
+  =
+  c_0(\beta)
+  \left[
+    1+\sum_{\lambda\neq 0}d_\lambda u_\lambda(\beta)\chi_\lambda(U_P)
+  \right],
+  \qquad
+  u_\lambda(\beta)=O(\beta^{n_\lambda}),
+  \label{eq:lattice-character-expansion}
+\end{equation}
+where \(n_\lambda>0\) for every nontrivial representation.  The Haar
+orthogonality relation
+\begin{equation}
+  \int_G
+  R^\lambda(U)_{ij}R^\mu(U^{-1})_{kl}\,\dd U
+  =
+  \frac{\delta_{\lambda\mu}}{d_\lambda}
+  \delta_{il}\delta_{jk}
+  \label{eq:lattice-haar-orthogonality}
+\end{equation}
+implies a local constraint: after integrating a link, the representation
+matrices carried by the plaquettes and by the Wilson loop must combine to the
+trivial representation on that link.
+
+For a fundamental Wilson loop in \(SU(N)\), the lowest nonzero contribution is
+therefore obtained by filling a surface \(\Sigma\) with boundary \(C\) by
+fundamental plaquettes.  If \(A_{\min}(C)\) is the minimal number of plaquettes
+in such a surface, then
+\begin{equation}
+  \langle W_{\square}(C)\rangle_{\Lambda,\beta}
+  =
+  K_C\,
+  u_{\square}(\beta)^{A_{\min}(C)}
+  \bigl(1+O(\beta)\bigr)
+  \label{eq:lattice-strong-coupling-leading-area}
+\end{equation}
+for sufficiently small \(\beta\), with \(K_C>0\) determined by boundary group
+integrals and by the normalization of \(W_{\square}\).  More precisely, the
+polymer expansion obtained from \eqref{eq:lattice-character-expansion}
+converges absolutely when \(\beta\) is small enough; its polymer activities
+obey a bound of the form
+\[
+  \sum_{\Gamma\ni P}|z(\Gamma)|\ee^{\alpha|\Gamma|}
+  \leq \alpha
+\]
+for a positive \(\alpha\), after decreasing \(\beta\) if necessary.  This
+Kotecky--Preiss type estimate gives constants \(C(\beta)\) and
+\(\sigma(\beta)>0\) such that
+\begin{equation}
+  |\langle W_{\square}(C)\rangle_{\Lambda,\beta}|
+  \leq
+  C(\beta)\,
+  \exp\{-\sigma(\beta)A_{\min}(C)\}
+  \label{eq:lattice-strong-coupling-area-bound}
+\end{equation}
+uniformly in the finite volume, away from boundary effects.
+
+For a rectangular loop with spatial length \(R=na\) and Euclidean time length
+\(T=ma\), \eqref{eq:lattice-strong-coupling-area-bound} gives
+\[
+  \langle W_{\square}(C_{R,T})\rangle
+  \sim
+  \exp\{-\sigma_{\rm lat}(\beta)nm\}
+  =
+  \exp\{-[\sigma_{\rm lat}(\beta)R/a]\,T/a\}.
+  \]
+The transfer-matrix interpretation therefore gives a static-source potential
+which grows linearly with separation in the strong-coupling lattice theory.
+This is a rigorous confinement diagnostic at finite lattice cutoff for small
+\(\beta\).  The four-dimensional continuum confinement problem asks for
+control along a scaling trajectory with \(\beta\to\infty\).
+
+\section{Scaling Trajectories and Dimensional Transmutation}
+
+The continuum limit is not obtained by fixing \(\beta\) and sending
+\(a\downarrow0\).  One must choose a trajectory \(g_0(a)\), equivalently
+\(\beta(a)=2N/g_0(a)^2\), so that dimensionless lattice observables scale in
+a way compatible with finite physical observables.  For example, if the
+continuum theory has a string tension \(\sigma_{\rm phys}\), a scaling
+trajectory would satisfy
+\[
+  a^2\sigma_{\rm lat}(\beta(a))
+  \longrightarrow
+  a^2\sigma_{\rm phys}
+  \quad\text{with}\quad
+  a^2\sigma_{\rm phys}\downarrow0.
+\]
+Equivalently, the correlation length in lattice units must diverge.
+
+Perturbation theory around the Gaussian ultraviolet fixed point predicts the
+large-\(\beta\) relation between \(a\) and the lattice coupling.  For pure
+\(SU(N)\), define \(\beta_0,\beta_1\) by
+\begin{equation}
+  \mu\frac{\dd g}{\dd\mu}
+  =
+  -\beta_0 g^3-\beta_1 g^5+O(g^7),
+  \qquad
+  \beta_0=\frac{11N}{48\pi^2},
+  \qquad
+  \beta_1=\frac{34N^2}{3(16\pi^2)^2}.
+  \label{eq:lattice-pure-ym-beta-coefficients}
+\end{equation}
+Then the associated lattice scale \(\Lambda_L\) is characterized by
+\begin{equation}
+  a\Lambda_L
+  =
+  \exp\left\{-\frac{1}{2\beta_0g_0^2}\right\}
+  (\beta_0g_0^2)^{-\beta_1/(2\beta_0^2)}
+  \bigl(1+O(g_0^2)\bigr),
+  \qquad
+  g_0^2=\frac{2N}{\beta}.
+  \label{eq:lattice-asymptotic-scaling}
+\end{equation}
+The numerical value of \(\Lambda_L\) depends on the lattice action and on the
+definition of the bare coupling.  Ratios between \(\Lambda_L\) and scales in
+other schemes, such as \(\Lambda_{\overline{\mathrm{MS}}}\), are determined by
+matching a short-distance observable in the overlap of the two regularized
+perturbation theories.
+
+The formula \eqref{eq:lattice-asymptotic-scaling} is not a substitute for the
+nonperturbative continuum construction.  It gives the perturbative tangent to
+the scaling trajectory near \(g_0=0\).  A construction of four-dimensional
+Yang--Mills theory must also show that the gauge-invariant Schwinger functions
+or an equivalent algebraic object converge along such a trajectory and that
+the reconstructed Hilbert-space theory has the desired spectral properties.
+
+\section{Local Operators, Counterterms, and Lattice Symmetries}
+
+The Wilson lattice action has exact gauge invariance, lattice translations,
+hypercubic rotations and reflections, and charge conjugation when the
+\(\theta\)-angle is set to zero.  The continuum local terms that can be
+generated by the lattice regulator must respect these symmetries.  This gives
+the Symanzik form of a local long-distance effective action:
+\begin{equation}
+  S_{\rm Sym}
+  =
+  \int \dd^4x\,
+  \left[
+    \mathcal E_0(a)
+    +
+    \frac{1}{2g_R(a)^2}
+    \operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+    +
+    \sum_i a^{d_i-4}c_i(a)\mathcal O_i(x)
+  \right].
+  +
+  \ii\theta\,\frac{1}{8\pi^2}\int\operatorname{tr}(F\wedge F).
+  \label{eq:lattice-symanzik-effective-action}
+\end{equation}
+Here \(\mathcal E_0(a)\) is a vacuum-energy density, \(d_i>4\), and
+\(\mathcal O_i\) are gauge-invariant local operators compatible with the
+lattice symmetries.  In pure \(SU(N)\) Yang--Mills, with CP imposed, the only
+nontrivial gauge-invariant dimension-four term is
+\(\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})\).  If CP is not imposed, the
+topological density \(\operatorname{tr}(F\wedge F)\) supplies the separate
+\(\theta\)-parameter.  Gauge invariance forbids a gluon mass term, and
+hypercubic symmetry makes the coefficient of \(F_{\mu\nu}F_{\mu\nu}\) the same
+for every coordinate two-plane on an isotropic lattice.
+
+\begin{definition}[Tuning for a lattice continuum limit]
+A lattice parameter is tuned when it must be chosen as a function of \(a\) in
+order to keep a specified renormalized observable finite and nonzero as
+\(a\downarrow0\).  Parameters multiplying operators with dimension below four
+are relevant at the Gaussian fixed point; parameters multiplying
+dimension-four operators are marginal at tree level and must be classified by
+the beta function and by symmetry.
+\end{definition}
+
+For pure CP-even \(SU(N)\) Yang--Mills on an isotropic Wilson lattice, this
+power-counting and symmetry analysis leaves one running parameter, \(g_0(a)\).
+The mass gap, glueball spectrum, and string tension are then outputs of the
+continuum theory, if the continuum limit exists.  Different gauge-invariant
+lattice actions with the same symmetries change the coefficients of irrelevant
+operators in \eqref{eq:lattice-symanzik-effective-action} and change the
+relation between their lattice scales.  Symanzik improvement chooses additional
+irrelevant plaquette and loop terms so that the leading lattice artifacts begin
+at higher powers of \(a\).
+
+For theories whose ultraviolet flow is not asymptotically free, the preceding
+one-parameter mechanism may fail to produce an interacting continuum theory.
+Four-dimensional scalar \(\phi^4\) theory and four-dimensional QED are the
+basic cautionary examples: perturbation theory points toward a Landau-pole
+obstruction, and rigorous triviality results constrain large classes of
+lattice scalar limits.  Those results do not settle every possible
+UV-complete theory that has the same formal perturbative expansion around the
+Gaussian point.  The monograph therefore treats triviality and asymptotic
+non-freedom as theory-specific continuum-limit questions, not as consequences
+of formal power series alone.
+
+\section[Theta-Term and Lattice Topology]{The \(\theta\)-Term and Lattice Topology}
+
+For a smooth continuum \(SU(N)\) connection on a closed four-manifold,
+\[
+  Q[A]
+  =
+  \frac{1}{8\pi^2}\int \operatorname{tr}(F\wedge F)
+  \in\mathbb Z
+\]
+is the second Chern number.  The Euclidean action may include
+\(\ii\theta Q[A]\), and the integer-valuedness of \(Q\) gives
+\(2\pi\)-periodicity in \(\theta\).
+
+At finite lattice spacing, a generic lattice gauge field is only an assignment
+of group elements to links.  There is no literal smooth bundle connection from
+which \(Q\) can be read without an additional construction.  A plaquette
+discretization of the density \(\operatorname{tr}(F\wedge F)\) has the correct
+classical limit on smooth fields, but it is not integer-valued on arbitrary
+lattice fields.  Consequently \(\exp(\ii\theta Q_{\rm plaq})\) need not be
+\(2\pi\)-periodic at finite \(a\).
+
+There are several regulator-level ways to define topological charge more
+carefully.  A geometric definition interpolates admissible lattice fields to a
+bundle over the torus and evaluates the corresponding Chern number.  With
+Ginsparg--Wilson fermions, the index of the lattice Dirac operator gives an
+integer
+\[
+  Q_{\rm GW}
+  =
+  \operatorname{Tr}\,\gamma_5\left(1-\frac{aD_{\rm GW}}{2}\right)
+\]
+under the usual admissibility hypotheses.  Gradient-flow definitions smooth
+the gauge field before evaluating a lattice density and are designed to have a
+controlled continuum limit.  These choices agree in the continuum scaling
+regime when the required estimates hold, but they are distinct finite-cutoff
+definitions.  Thus the \(\theta\)-angle is an additional parameter whose
+nonperturbative lattice definition requires its own regulator convention.
+
+\section{Fermions: Doubling and Chiral Lattice Actions}
+
+A vectorlike gauge theory with fermions requires a lattice Dirac operator
+coupled to the link variables.  The naive free lattice Dirac operator is
+\begin{equation}
+  D_{\rm n}(p)
+  =
+  \frac{\ii}{a}\sum_{\mu=1}^4\gamma_\mu\sin(ap_\mu),
+  \qquad
+  p_\mu\in[-\pi/a,\pi/a).
+  \label{eq:lattice-naive-dirac-symbol}
+\end{equation}
+Its zeros occur whenever every \(ap_\mu\) is \(0\) or \(\pi\).  In four
+dimensions this gives \(2^4=16\) light species near the corners of the
+Brillouin zone.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.72\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,every node/.style={font=\scriptsize}]
+    \draw[->] (-3.2,0)--(3.35,0) node[right] {\(ap_1\)};
+    \draw[->] (0,-3.2)--(0,3.35) node[above] {\(ap_2\)};
+    \draw (-3.1416,-0.08)--(-3.1416,0.08) node[below=4pt] {\(-\pi\)};
+    \draw (3.1416,-0.08)--(3.1416,0.08) node[below=4pt] {\(\pi\)};
+    \draw (-0.08,-3.1416)--(0.08,-3.1416) node[left=4pt] {\(-\pi\)};
+    \draw (-0.08,3.1416)--(0.08,3.1416) node[left=4pt] {\(\pi\)};
+    \draw[blue!55!black,thick] (-3.1416,-3.1416) rectangle (3.1416,3.1416);
+    \foreach \x in {-3.1416,0,3.1416} {
+      \foreach \y in {-3.1416,0,3.1416} {
+        \fill[red!75!black] (\x,\y) circle (2.7pt);
+      }
+    }
+    \node[align=center] at (0,-3.85)
+      {zeros of \(\sin(ap_\mu)\) in two dimensions;\\
+       four dimensions have \(2^4\) corners};
+  \end{tikzpicture}
+  }
+  \caption{The naive lattice derivative vanishes at every Brillouin-zone
+  corner.  Each corner supplies a continuum Dirac cone, producing species
+  doubling.}
+  \label{fig:lattice-fermion-doubling}
+\end{figure}
+
+\begin{theorem}[Nielsen--Ninomiya obstruction, structural form]
+Let \(D(p)\) be a free lattice Dirac operator on a periodic hypercubic lattice
+which is local in position space, translationally invariant, has the correct
+single-particle continuum behavior near \(p=0\), anticommutes with a fixed
+\(\gamma_5\), and satisfies the usual Hermiticity condition giving a real
+spectrum for \(\gamma_5D\).  Then the zeros of \(D(p)\) in the Brillouin torus
+come with total chirality zero.  In particular, these hypotheses do not allow
+a single Weyl fermion.
+\end{theorem}
+
+\begin{proof}
+The normalized symbol of \(D(p)\) defines a map from the Brillouin torus with
+small balls around its zeros removed to a sphere of Dirac matrices.  The
+chirality of a zero is the local winding number of this map around that zero.
+The torus has no boundary.  Applying degree additivity to the boundary of the
+punctured torus gives that the sum of all local winding numbers is zero.  A
+single continuum Weyl fermion would contribute a nonzero total winding number,
+contradicting this identity.
+\end{proof}
+
+Standard lattice fermion constructions evade different hypotheses of this
+theorem.
+\begin{description}[leftmargin=2.9em,style=nextline]
+\item[Wilson fermions]
+Add \(r a\,\Delta/2\), giving doublers masses of order \(1/a\).  The Wilson
+term breaks chiral symmetry and produces additive mass renormalization, so the
+chiral limit requires tuning \(m_0(a)\) to a critical value \(m_c(a)\).
+\item[Staggered fermions]
+Diagonalize part of the spin structure and reduce the number of tastes.  The
+residual taste symmetry and rooting questions must be treated as finite-cutoff
+regularization issues.
+\item[Domain-wall fermions]
+Place chiral modes on separated boundaries of an auxiliary fifth direction.
+Finite fifth-dimensional size produces residual chiral-symmetry breaking.
+\item[Overlap and Ginsparg--Wilson fermions]
+Replace \(\{\gamma_5,D\}=0\) by
+\(\gamma_5D+D\gamma_5=aD\gamma_5D\), giving an exact modified lattice chiral
+symmetry and an index theorem at finite cutoff under admissibility hypotheses.
+\end{description}
+For vectorlike QCD, these formulations provide regulator choices for
+gauge-invariant correlation functions.  Their continuum equivalence requires
+the same kind of scaling-limit control as in the pure gauge theory, together
+with the relevant mass and chiral-symmetry tunings.
+
+\section{Status of the Four-Dimensional Continuum Construction}
+
+\begin{hypothesis}[Four-dimensional lattice Yang--Mills continuum limit]
+\label{hyp:lattice-yang-mills-continuum-limit}
+Let \(G=SU(N)\) and let the Wilson lattice measures
+\(\dd\mu_{\Lambda,\beta}\) be defined by
+\eqref{eq:lattice-partition-function}.  There exists a scaling trajectory
+\(\beta(a)\to\infty\) and an infinite-volume limit such that the
+gauge-invariant Schwinger functions of local and loop observables converge,
+after the required field and operator normalizations, to Schwinger functions
+satisfying the continuum Osterwalder--Schrader hypotheses.  The reconstructed
+Hilbert-space theory has a unique vacuum and a positive mass gap.
+\end{hypothesis}
+
+This hypothesis is the constructive content of four-dimensional pure
+Yang--Mills theory.  The finite lattice theory is rigorous; the hypothesis is
+the assertion that the rigorous finite-cutoff objects have the required
+continuum limit and spectral gap.  Renormalization-group analyses of lattice
+gauge theory, including Ba{\l}aban's multiscale program, prove substantial
+estimates toward such a construction.  Other constructive results in related
+models and dimensions give additional control of particular mechanisms.  A
+complete proof of Hypothesis~\ref{hyp:lattice-yang-mills-continuum-limit} for
+four-dimensional nonabelian Yang--Mills theory remains the Yang--Mills
+existence and mass-gap problem.
+
+The strong-coupling area law is a theorem inside the small-\(\beta\) lattice
+regime.  The weak-coupling continuum regime lies at \(\beta\to\infty\).  For
+four-dimensional pure \(SU(2)\) and \(SU(3)\) Wilson gauge theory, numerical
+and analytic evidence support a confining continuum limit connected to the
+strong-coupling phase without a physical deconfining transition at zero
+temperature.  For other groups and lattice actions, bulk lattice-artifact
+transitions may occur and must be distinguished from continuum physics.  The
+logical role of the lattice construction is therefore precise: it supplies a
+finite, gauge-invariant nonperturbative regulator and a clear continuum-limit
+problem; it does not by itself solve the mass-gap problem.
+
+Covariant gauge fixing, Faddeev--Popov ghosts, BRST cohomology, and the BV
+formalism developed in the following chapters are indispensable perturbative
+and cohomological tools.  Their nonperturbative identification with the
+continuum theory constructed from the lattice rests on two further inputs:
+first, the lattice continuum limit in
+Hypothesis~\ref{hyp:lattice-yang-mills-continuum-limit}; second, agreement of
+short-distance gauge-invariant observables with the covariant perturbative
+expansion order by order after matching the renormalized coupling and local
+operator normalizations.

@@ -143,3 +143,6 @@ The chapter must define and derive:
   Millennium problem and separating that open continuum construction from the
   classical local action, perturbative BRST expansions, and finite-cutoff
   lattice regularizations.
+- 2026-05-24 issue #263 pass: linked the status remark to the new lattice
+  Yang--Mills chapter, where the finite-cutoff compact Haar formulation and
+  continuum-limit hypothesis are developed before covariant gauge fixing.

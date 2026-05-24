@@ -227,3 +227,7 @@ The chapter must define and derive:
   color-singlet asymptotic-state property is stated as a nonperturbative
   spectral hypothesis/physical input, with the derivation from the
   four-dimensional continuum QCD Lagrangian flagged as open.
+- 2026-05-24 issue #263 pass: connected the Wilson-loop area-law diagnostic to
+  the strong-coupling theorem in the new lattice Yang--Mills chapter and
+  separated that finite-cutoff result from the continuum four-dimensional
+  confinement problem.

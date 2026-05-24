@@ -301,3 +301,8 @@
   Levi-Civita scheme data, proves the locality/Slavnov--Taylor cohomology
   control statement, and separates regularization from renormalization and
   composite-operator source regularization.
+- 2026-05-24 issue #263 pass: inserted the opening regulator-status remark.
+  The chapter now states before the gauge-orbit construction that covariant
+  BRST gauge fixing is perturbative/cohomological machinery whose
+  nonperturbative comparison target is the lattice Yang--Mills continuum-limit
+  hypothesis.
