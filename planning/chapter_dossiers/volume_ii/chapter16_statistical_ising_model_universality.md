@@ -76,8 +76,9 @@ The chapter must define and derive:
   exponents.
 - finite-cutoff universality in a local RG chart: endpoint maps for relevant
   coordinates, a conditional proposition applying the Wilsonian
-  cutoff-removal estimate, nonuniversal microscopic coordinate maps, and
-  scaling-field expansions of lattice observables into continuum operators;
+  cutoff-removal estimate, nonuniversal microscopic coordinate maps, and the
+  separate scaling-limit hypotheses needed before lattice observables become
+  continuum operators;
 - the correction-to-scaling structure obtained by differentiating the
   coordinate-to-correlator map in retained irrelevant coordinates.
 
@@ -107,15 +108,16 @@ The chapter must define and derive:
     must be tuned; without the symmetry, the magnetic coordinate is also
     relevant.
 11. Under stated local RG hypotheses, tuned microscopic realizations have the
-    same limiting relevant-coordinate graph and the same normalized
-    continuum correlators at separated points; model dependence remains in
-    critical temperatures, coordinate metric factors, field normalizations,
-    and finite-cutoff corrections.
+    same limiting finite-coordinate graph.  This coordinate statement does not
+    by itself prove existence of the continuum scaling limit.
 12. A source-dependent scaling limit gives operator-valued distributions by
     differentiating the limiting source functional.  The linear source jet
     fixes separated-point observable normalizations, while higher local
     source jets and source-local vacuum terms determine contact-term
     extensions on collision diagonals.
+13. Normalized continuum correlator universality follows only after adding
+    scaling-limit existence, positivity, locality, regularity, and continuity
+    hypotheses for the coordinate-to-correlator map.
 
 ## Figure Requirements
 
@@ -152,6 +154,8 @@ The chapter must define and derive:
 - Use Wilsonian cutoff-flow estimates only with their stated finite-chart
   hypotheses; do not promote them to an uncontrolled infinite-dimensional
   theorem.
+- Do not present local RG coordinate convergence as a theorem proving
+  existence of a continuum lattice scaling limit.
 - No reader-facing source-page references or course-note references.
 - 2026-05-22 finite-cutoff-universality pass: added a section defining
   \(z=(u,v)\) at a reference scale, the microscopic endpoint map
@@ -170,3 +174,8 @@ The chapter must define and derive:
   source-local vacuum subtractions, and proves that separated universality is
   controlled by the linear source jet while contact conventions are supported
   on collision diagonals.
+- 2026-05-24 issue #236 pass: promoted the scaling-limit caveat from a remark
+  to a proposition separating finite-coordinate universality from existence of
+  a continuum measure/source functional.  The manuscript now states that
+  normalized correlator universality requires additional scaling-limit,
+  positivity, locality, regularity, clustering, and continuity hypotheses.

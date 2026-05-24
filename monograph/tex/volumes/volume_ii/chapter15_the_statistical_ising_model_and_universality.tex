@@ -865,6 +865,7 @@ tuning the temperature: if \(p_X=T\), then the condition at criticality is
 \(\lambda_t(\mu_R;\Lambda_0,T)=0\).
 
 \begin{proposition}[Local universality from RG coordinates]
+\label{prop:local-universality-rg-coordinates}
 Fix a finite local RG chart near the Ising fixed point and a target relevant
 coordinate \(u_R\).  Suppose that, for every sufficiently large
 \(\Lambda_0\) and for each microscopic realization \(X\) under consideration,
@@ -943,6 +944,34 @@ so
 The factor \(A_X\) is not fixed-point data.  The exponent
 \(y_t=D-\Delta_\varepsilon\) is.
 
+\begin{proposition}[Coordinate universality versus scaling-limit existence]
+\label{prop:coordinate-universality-versus-scaling-limit-existence}
+Proposition~\ref{prop:local-universality-rg-coordinates} is a statement about
+convergence of finitely many projected RG coordinates at the reference scale
+\(\mu_R\).  It does not, by itself, construct a continuum probability measure,
+a Euclidean source functional, or a Wightman theory.  To upgrade the coordinate
+statement to a continuum universality theorem one must additionally establish
+the existence of the scaling limit of the relevant Schwinger functions or,
+equivalently in a source-functional formulation, convergence of the
+renormalized lattice source functionals on a source domain large enough to
+determine the desired correlators.  The limiting Schwinger functions must also
+satisfy the positivity, covariance, locality, regularity, and clustering
+hypotheses needed for the intended reconstruction or structural theorem.
+\end{proposition}
+
+\begin{proof}
+The local RG proposition controls the finite vector
+\(z(\mu_R;\Lambda_0)\) after projecting the exact cutoff action to the chosen
+coordinate chart.  A continuum measure or source functional contains
+infinitely many correlation data and their positivity properties.  Convergence
+of a finite coordinate vector does not imply tightness of the underlying
+measures, convergence of all moments or distributions, reflection positivity
+in the limit, locality of the reconstructed fields, or uniqueness of the
+continuum state.  Each of these is an additional analytic assertion about the
+regulated models.  Hence scaling-limit existence is an independent hypothesis
+or theorem, not a conclusion of the coordinate estimate.
+\end{proof}
+
 The same separation applies to observables.  Let \(A^X_{\rm spin}\) be a
 microscopic odd lattice observable and \(A^X_{\rm eng}\) a microscopic even
 energy-density observable with identity part subtracted.  Their scaling-field
@@ -962,8 +991,14 @@ expansions have the form
 \]
 where the sums contain fields with larger scaling dimensions in the same
 symmetry sector, and \(b^X_\sigma,b^X_\varepsilon\) are nonzero for the
-chosen observables.  For separated continuum points \(x_i\), the normalized
-lattice correlators therefore have the limit
+chosen observables.
+
+Assume now, in addition to the coordinate hypotheses above, that the
+renormalized separated-point lattice correlators for the selected observables
+have scaling limits as distributions and that the coordinate-to-correlator map
+is continuous at the limiting graph \(v=V_{\mu_R}(u_R)\).  For separated
+continuum points \(x_i\), the normalized lattice correlators then have the
+common limit
 \[
   \lim_{a\to0}
   \prod_i
@@ -977,18 +1012,11 @@ lattice correlators therefore have the limit
   \right\rangle_{u_R},
 \]
 with the same limiting continuum correlator for all \(X\) satisfying the
-hypotheses.  The constants \(b^X_i\), the critical temperature \(T_{c,X}\),
-and finite-cutoff corrections are microscopic.  The dimensions, RG
-eigenvalues, and normalized continuum correlators are fixed-point data.
-
-\begin{remark}
-The proposition is local in the chosen finite projection.  A complete
-construction of the Ising continuum QFT requires existence of the scaling
-limit for the full set of Schwinger functions and the corresponding
-positivity, locality, and regularity properties.  The local RG statement
-identifies the mechanism by which different microscopic lattice coordinates
-lead to the same continuum endpoint once those analytic inputs are available.
-\end{remark}
+coordinate hypotheses and the additional scaling-limit hypotheses.  The
+constants \(b^X_i\), the critical temperature \(T_{c,X}\), and finite-cutoff
+corrections are microscopic.  The dimensions, RG eigenvalues, and normalized
+continuum correlators are fixed-point data once the continuum limit has been
+constructed.
 
 If the coordinate-to-correlator map is differentiable in the retained
 irrelevant coordinates, the same estimate gives the standard correction
