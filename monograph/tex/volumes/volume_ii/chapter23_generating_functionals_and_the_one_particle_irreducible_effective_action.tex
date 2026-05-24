@@ -697,6 +697,95 @@ regulated Euclidean source functional be
   =
   \ee^{-W_E[J]} .
 \]
+
+\begin{definition}[Lorentzian--Euclidean source-convention bridge]
+\label{def:lorentzian-euclidean-source-bridge}
+Write the Lorentzian logarithm as
+\[
+  \mathcal W_L[J_L]=\log Z_L[J_L]=\ii W_L[J_L],
+  \qquad
+  Z_L[J_L]
+  =
+  \int[D\phi]\,\exp\!\left\{\ii S_L[\phi]
+  +\ii\langle J_L,\phi\rangle_L\right\}.
+\]
+Write the Euclidean logarithm in the convention used in this and the following
+Euclidean chapters as
+\[
+  \mathcal W_E[J_E]=\log Z_E[J_E]=-W_E[J_E],
+  \qquad
+  Z_E[J_E]
+  =
+  \int[D\phi]\,\exp\!\left\{-S_E[\phi]-\langle J_E,\phi\rangle_E\right\}.
+\]
+For scalar insertions with no tensor time indices, the analytic continuation
+from Lorentzian time-ordered connected distributions to Euclidean connected
+Schwinger distributions is recorded by the derivative identities
+\begin{equation}
+  G^{L,{\rm c}}_n
+  =
+  \left.
+  \ii^{-n}
+  \frac{\delta^n\mathcal W_L}
+       {\delta J_L(x_1)\cdots\delta J_L(x_n)}
+  \right|_{J_L=0}
+  =
+  \left.
+  \ii^{1-n}
+  \frac{\delta^n W_L}
+       {\delta J_L(x_1)\cdots\delta J_L(x_n)}
+  \right|_{J_L=0},
+  \label{eq:lorentzian-connected-derivative-normalization}
+\end{equation}
+and
+\begin{equation}
+  G^{E,{\rm c}}_n
+  =
+  \left.
+  (-1)^n
+  \frac{\delta^n\mathcal W_E}
+       {\delta J_E(x_1)\cdots\delta J_E(x_n)}
+  \right|_{J_E=0}
+  =
+  \left.
+  (-1)^{n+1}
+  \frac{\delta^n W_E}
+       {\delta J_E(x_1)\cdots\delta J_E(x_n)}
+  \right|_{J_E=0}.
+  \label{eq:euclidean-connected-derivative-normalization}
+\end{equation}
+The source signs in the exponents are related as follows.  Under the formal
+coordinate rotation \(t=-\ii\tau\), the Lorentzian pairing satisfies
+\[
+  \ii\langle J_L,\phi\rangle_L
+  \longmapsto
+  +\langle J_L^{\rm W},\phi_E\rangle_E,
+  \qquad
+  J_L^{\rm W}(\tau,\vec x)=J_L(-\ii\tau,\vec x),
+\]
+whereas the Euclidean convention above uses
+\(-\langle J_E,\phi_E\rangle_E\).  Therefore the Euclidean source variable of
+this chapter is
+\begin{equation}
+  J_E=-J_L^{\rm W}
+  \label{eq:lorentzian-euclidean-source-sign-map}
+\end{equation}
+when one translates a formal source insertion from the Lorentzian convention
+to the Euclidean convention.  Equations
+\eqref{eq:lorentzian-connected-derivative-normalization} and
+\eqref{eq:euclidean-connected-derivative-normalization}, together with the
+analytic continuation of the connected distributions, are the matching rule
+used by the later Euclidean path-integral and RG chapters.  For operators with
+Lorentz indices, spinor indices, or time derivatives, the usual Wick-rotation
+matrix for those indices must also be applied.
+\end{definition}
+
+In particular, the Euclidean free-energy convention \(W_E=-\log Z_E\) is
+opposite to the connected-log convention \(\mathcal W_E=\log Z_E\).  The source
+derivative of \(W_E\) has the sign displayed in
+\eqref{eq:euclidean-connected-derivative-normalization}; this is the sign used
+in the convex Legendre transform below.
+
 \begin{theorem}[Euclidean convexity at finite regulator]
 \label{thm:volume-ii-euclidean-convexity-finite-regulator}
 Let \(\mathcal D\) be a convex set of real regulated sources.  Assume that

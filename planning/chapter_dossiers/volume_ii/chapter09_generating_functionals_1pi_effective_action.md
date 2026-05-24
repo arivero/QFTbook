@@ -33,6 +33,9 @@ The chapter must define the following objects before using them:
 - the logarithm \(\mathcal W[J]=\log Z[J]\) and the Lorentzian connected
   functional \(W[J]\) with \(Z[J]=e^{iW[J]}\);
 - source derivatives of \(Z[J]\) and \(\mathcal W[J]\);
+- the Lorentzian--Euclidean source-convention bridge, including
+  \(\mathcal W_L=iW_L\), \(\mathcal W_E=-W_E\), the source-sign map
+  \(J_E=-J_L^{\rm W}\), and the connected-derivative normalizations;
 - the source-dependent field \(\varphi_J(x)=\delta W/\delta J(x)\);
 - the Legendre transform \(\Gamma[\varphi]=W[J_\varphi]-\int\varphi J_\varphi\);
 - the field-source inverse relation and \(\delta\Gamma/\delta\varphi=-J\);
@@ -82,7 +85,15 @@ The chapter must define the following objects before using them:
 12. In the Euclidean convention
     \(Z_E[J]=e^{-W_E[J]}\), \(W_E\) is concave for positive bosonic measure,
     and the corresponding Legendre transform is convex.
-13. The finite-dimensional double-well model illustrates convexification and
+13. The convention bridge is
+    \(\mathcal W_L=\log Z_L=iW_L\) and
+    \(\mathcal W_E=\log Z_E=-W_E\).  For the Euclidean source term
+    \(-\langle J_E,\phi\rangle_E\), connected Schwinger distributions are
+    \((-1)^n\delta^n\mathcal W_E|_{J=0}\), while Lorentzian connected
+    time-ordered distributions are
+    \(i^{-n}\delta^n\mathcal W_L|_{J=0}\).  The formal source-sign conversion
+    under \(t=-i\tau\) is \(J_E=-J_L^{\rm W}\).
+14. The finite-dimensional double-well model illustrates convexification and
     the domain of the perturbative saddle expansion: after the source
     subtracts the tangent line at a chosen branch, perturbation theory
     requires a positive quadratic shifted exponent.
@@ -108,6 +119,9 @@ The chapter must define the following objects before using them:
   transcription workflow.
 - Keep all signs explicit.  Lorentzian and Euclidean conventions are stated
   separately.
+- Do not pass from Lorentzian source derivatives to Euclidean source
+  derivatives without displaying the relevant powers of \(i\) and the sign
+  introduced by the Euclidean source term.
 - Avoid slogan-based contrasts.  Define the objects being used and state their
   assumptions.
 - 2026-05-22 page-level source/figure audit complete.  Handwritten pages
@@ -116,3 +130,8 @@ The chapter must define the following objects before using them:
   `/tmp/qft_ch29_1pi_actual-186.png` through
   `/tmp/qft_ch29_1pi_actual-196.png`, with the polished branch/tangent figure
   checked at `/tmp/qft_ch29_1pi_polished-195.png`.
+- 2026-05-24 issue #235 pass: added the Lorentzian--Euclidean source bridge,
+  including the log conventions, connected-derivative normalizations, the
+  \(J_E=-J_L^{\rm W}\) sign map for the chapter's Euclidean source convention,
+  and the instruction that Lorentz/spin/time-derivative indices require their
+  own Wick-rotation matrices.
