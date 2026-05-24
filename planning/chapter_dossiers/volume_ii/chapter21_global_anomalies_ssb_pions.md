@@ -85,7 +85,8 @@
 | \(Q\) | electromagnetic flavor-charge matrix embedded as a vector flavor background |
 | \(\Gamma_{\mathrm{WZ}}\) | ungauged Wess--Zumino functional |
 | \(\Gamma_{\mathrm{WZW}}\) | gauged Wess--Zumino--Witten functional |
-| \(\dd\nu_m(A)\) | Euclidean vectorlike gauge-field measure with positive quark mass \(m\), used only under the Vafa--Witten positivity hypotheses |
+| \(\dd\nu_{m,\Lambda}(A)\) | finite-regulator Euclidean vectorlike gauge-field measure with positive quark mass \(m\), used only under the Vafa--Witten positivity hypotheses |
+| \(\dd\nu_m(A)\) | continuum limiting functional or measure for the same vectorlike theory, assumed only when a continuum Vafa--Witten conclusion is claimed |
 
 ## Claims Established
 
@@ -172,9 +173,11 @@
   \(\operatorname{Tr}(\sigma_3Q^2/2)=e^2/6\), and the local
   \(\pi^0\gamma\gamma\) vertex in the gauged WZW functional.
 - The Vafa--Witten positivity argument is conditional on a well-defined
-  gauge-invariant Euclidean vectorlike measure, reflection positivity, the
-  vectorlike Dirac determinant pairing, and existence of the volume/mass limits
-  used to select a phase.
+  finite-regulator gauge-invariant Euclidean vectorlike measure, a continuum
+  scaling limit when a continuum conclusion is claimed, reflection positivity of
+  the full gauge-plus-fermion regulator, the vectorlike Dirac determinant
+  positivity condition, and existence of the volume/mass limits used to select
+  a phase.
 
 ## Figure And Render Checks
 
@@ -220,6 +223,11 @@
   measure, reflection positivity/OS reconstruction input, determinant
   positivity, and volume/mass-limit assumptions, and identifies continuum QCD
   measure construction as part of the open four-dimensional problem.
+- 2026-05-24 issue #345 pass: sharpened the same Vafa--Witten hypothesis to
+  distinguish finite-regulator measures \(\dd\nu_{m,\Lambda}\) from a continuum
+  limiting functional \(\dd\nu_m\), and to state that reflection positivity must
+  hold for the full regulator action and is not automatic for arbitrary
+  regulators or gauge-fixed formulae.
 - 2026-05-24 issue #265 pass: added a named chiral-symmetry-breaking
   conjecture before the pion construction.  The manuscript now states that
   \(\langle\bar q_R q_L\rangle\neq0\) and the

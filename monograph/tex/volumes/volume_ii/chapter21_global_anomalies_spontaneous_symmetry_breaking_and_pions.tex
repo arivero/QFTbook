@@ -896,34 +896,47 @@ precise theorem boundary.
 \begin{hypothesis}[Euclidean measure needed for Vafa--Witten positivity]
 \label{hyp:vafa-witten-measure-data}
 For the vectorlike theory with equal positive quark masses \(m>0\), assume that
-there is a gauge-invariant Euclidean measure \(\dd\nu_m(A)\) on the regulated
-or continuum gauge-field configuration space such that:
+there is a family of gauge-invariant Euclidean finite-regulator measures
+\(\dd\nu_{m,\Lambda}(A)\).  If a continuum statement is claimed, assume in
+addition that the gauge-invariant Schwinger functions and the source
+functionals for the order parameters used below have a continuum limit, denoted
+\(\dd\nu_m(A)\) in this paragraph, with the following properties:
 \begin{enumerate}[label=\roman*.]
-\item expectations of gauge-invariant polynomially bounded fermion bilinears
-and their source deformations are defined;
-\item the measure is reflection positive for a Euclidean time reflection.
-Thus OS reconstruction applies to the observables used in the argument;
-\item the massless Euclidean Dirac operator in a fixed gauge-field background
-is anti-Hermitian and has the usual vectorlike pairing of nonzero eigenvalues,
-so that
+\item expectations of gauge-invariant polynomially bounded fermion bilinears and
+their source deformations are defined at the regulator level and converge in
+the limit in which the Vafa--Witten conclusion is asserted;
+\item the full regulator measure, including the gauge action and the vectorlike
+fermion discretization or determinant, is reflection positive for a Euclidean
+time reflection, and this positivity is preserved by the limiting Schwinger
+functions.  Thus OS reconstruction applies to the observables used in the
+argument;
+\item the Dirac operator and fermion regulator have vectorlike determinant
+positivity in each fixed gauge-field background.  In the continuum notation
+this is the anti-Hermiticity and eigenvalue pairing statement
 \[
   \det(\not D_A+m)
   =
   \prod_{\lambda>0}(\lambda^2+m^2)\,m^{n_0(A)}
   \geq0;
 \]
+on a lattice it is replaced by the corresponding positivity property of the
+chosen vectorlike fermion action;
 \item the infinite-volume and small-mass limits used to select a phase exist
 for the order parameters under consideration.
 \end{enumerate}
 \end{hypothesis}
 
 At finite lattice spacing, these hypotheses are properties to verify for the
-chosen lattice gauge and fermion action; for the Wilson pure-gauge action the
-reflection-positivity mechanism was described in
-Chapter~\ref{ch:lattice-yang-mills-nonperturbative-definition}.  For the
-four-dimensional continuum gauge theory, the existence of
-\(\dd\nu_m(A)\) with the required positivity and scaling limits is part of the
-Yang--Mills/QCD construction problem.
+chosen lattice gauge and fermion action.  The Wilson plaquette gauge action is
+reflection positive in the sense described in
+Chapter~\ref{ch:lattice-yang-mills-nonperturbative-definition}, and standard
+vectorlike fermion discretizations must be checked with their own
+reflection-positivity and determinant-positivity conditions.  These properties
+are not automatic for an arbitrary regulator or gauge-fixed expression.  For
+the four-dimensional continuum gauge theory, the existence of \(\dd\nu_m(A)\)
+with the required locality, reflection positivity, and scaling limits is part
+of the Yang--Mills/QCD construction problem; the finite-lattice positivity
+argument is therefore not, by itself, a construction of continuum QCD.
 
 Under Hypothesis~\ref{hyp:vafa-witten-measure-data}, the determinant factor in
 each fixed gauge-field background is nonnegative, and for equal masses the
