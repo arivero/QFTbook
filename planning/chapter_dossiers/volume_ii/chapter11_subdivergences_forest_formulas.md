@@ -22,6 +22,10 @@
   perturbative AQFT and the Epstein--Glaser comparison; classic BPHZ theorem
   enters as a theorem-level mathematical control.  The chapter is written in
   Euclidean momentum-space language, matching the preceding construction.
+- `SRC-EXTERNAL`: Lowenstein--Zimmermann/BPHZL for the massless extension of
+  momentum-space subtraction, especially the power-counting theorem for
+  massless propagators and the infrared convergence theorem for the massless
+  \(\phi^4\) model.
 
 ## Construction Task
 
@@ -44,6 +48,9 @@ The chapter must define:
 - the overlapping-subgraph diamond example;
 - locality of counterterms and the finite-list conclusion for
   power-counting-renormalizable theories.
+- the theorem boundary between massive/nonexceptional BPHZ finiteness and the
+  massless critical case, where BPHZL or an equivalent infrared-safe
+  prescription is required.
 
 ## Claim Ledger
 
@@ -77,6 +84,10 @@ The chapter must define:
 11. The proof sketch must explicitly use the fact that external-momentum
     derivatives lower the superficial UV degree, so the Taylor remainder has
     negative UV degree in each forest sector.
+12. Massless zero-momentum subtractions require separate infrared control:
+    BPHZL introduces auxiliary mass/subtraction data and IR degrees so that
+    UV-local subtractions possess a distributional massless limit when the
+    Lowenstein--Zimmermann power-counting conditions hold.
 
 ## Figure Requirements
 
@@ -92,6 +103,10 @@ The chapter must define:
 - Keep the chapter as the bridge from local counterterms to the 1PI RG: finite
   renormalization and movement of subtraction points should point forward but
   not replace the RG chapter.
+- Keep the massless critical extension tied to the later Wilson--Fisher and
+  Ising chapters: they may use nonexceptional momenta, finite volume/small mass
+  limits, BPHZL, or Wilsonian exact RG, but the massive theorem alone is not
+  the full critical subtraction theorem.
 - 2026-05-22 pass: tightened the 1PI graph convention, external-half-line
   definition of subgraphs, Taylor-operator holding data, connected spinney and
   forest conventions, and the BPHZ proof sketch.
@@ -101,3 +116,6 @@ The chapter must define:
   scaling relation, the two \(\widetilde F\) subdivergence subtractions, and
   the final \(k^0,k^2\) overall Taylor subtraction.  This chapter supplies the
   systematic forest-formula continuation of that source calculation.
+- 2026-05-24 issue pass: addressed #219 by adding a massless/BPHZL remark to
+  the chapter, distinguishing the massive BPHZ theorem from the infrared-safe
+  subtraction framework needed for critical massless kernels.
