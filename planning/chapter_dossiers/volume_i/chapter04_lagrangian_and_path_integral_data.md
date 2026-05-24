@@ -5,7 +5,11 @@
 Current status: source-certified against handwritten 253a pp. 10--14 after
 the 2026-05-22 derivation and figure pass; tightened on 2026-05-23 so the
 position/momentum kernels explicitly use the rigged-Hilbert-space convention
-and the continuum path-integral symbol is tied to finite regulators.
+and the continuum path-integral symbol is tied to finite regulators; tightened
+again on 2026-05-24 for GitHub issue #298 by adding the Wiener-measure and
+Feynman--Kac existence theorem for Euclidean Schrödinger quantum mechanics,
+with an explicit warning that Borel measures are not a general foundation for
+fermionic, gauge, theta-angle, or perturbative QFT path integrals.
 
 ## Logical Role
 
@@ -45,9 +49,10 @@ Working framework:
 ## External Reference Needs
 
 - Trotter product formula and oscillatory-integral convergence references for
-  future mathematical interlude.
-- Feynman--Kac and Euclidean measure references for the later Wick-rotation
-  chapter.
+  future mathematical interludes.
+- Feynman--Kac/Wiener-measure references for further sharpening of the
+  Euclidean Schrödinger theorem; the chapter now contains the theorem and its
+  proof infrastructure at the level needed for the monograph.
 
 ## Notation Inventory
 
@@ -70,6 +75,9 @@ Working framework:
 | \(J(t)\) | external source | generating functional |
 | \(\beta_{\mathrm T}\) | Euclidean inverse temperature in trace kernels | thermal trace |
 | \(\mathcal S(\mathbb R^d)\subset L^2\subset\mathcal S'\) | Gelfand triple | generalized position and momentum kernels |
+| \(\mathbb W_x^\tau\) | Wiener probability measure on \(C([0,\tau],\mathbb R^d)\) | Feynman--Kac representation |
+| \(\mathbb W_{x,y}^\tau\) | Brownian-bridge probability measure | Euclidean transition kernel with fixed endpoints |
+| \(k_s^0(x,y)\) | heat kernel for diffusion constant \(\hbar/m\) | finite-dimensional distributions of Wiener measure |
 
 ## Definition Ledger
 
@@ -81,6 +89,9 @@ Working framework:
 - ordering-dependent Hamiltonian symbols and local \(O(\hbar)\) counterterms;
 - Lagrangian form after Gaussian momentum integration;
 - source-dependent generating functional at finite cutoff;
+- Kato class/local Kato class and the Friedrichs Schrödinger Hamiltonian;
+- Wiener measure and Brownian bridge for Euclidean quantum mechanics;
+- Feynman--Kac representation of the Euclidean semigroup;
 - Euclidean trace boundary condition for bosonic paths;
 - vacuum projection by Euclidean time evolution.
 
@@ -93,11 +104,20 @@ Working framework:
 | Position and momentum kets are distributional vectors in a Gelfand triple; their resolutions of identity are weak Fourier-inversion identities. | Definition/construction | 2026-05-23 rigor pass |
 | Inserting position and momentum resolutions gives a finite-dimensional phase-space expression for time evolution at fixed partition. | Construction | Derived in chapter |
 | The continuum path-integral notation is shorthand for a regulator and limiting procedure. | Framework statement | Definition of \(K_N\) and limiting convention |
+| Under locally Kato bounded-below Schrödinger hypotheses, Euclidean quantum mechanics has a genuine Wiener-measure/Feynman--Kac representation on continuous paths. | Theorem | Constructed from Gaussian finite-dimensional distributions, Kolmogorov continuity, Trotter product formula, monotone form convergence, and Brownian-bridge disintegration |
+| The Wiener/Feynman--Kac theorem is not a universal definition of QFT path integrals. | Framework distinction | The chapter explicitly separates Borel measures for bosonic Schrödinger/scalar cases from Berezin, gauge-fixed/BV, lattice, complex-weight, oscillatory, and perturbative constructions |
 | Distinct time-lattice orderings define distinct operator symbols \(h\) and \(h'\), differing by local \(O(\hbar)\) terms. | Regulator statement | Explicit finite-slice comparison patched from handwritten p. 13 |
 | Quadratic momentum dependence yields a Lagrangian form with a determinant measure. | Derivation | Gaussian integration in chapter |
 | Source derivatives generate time-ordered insertions. | Construction | Derived from discrete source insertion |
 | The Euclidean trace of a bosonic quantum-mechanical system identifies the endpoints \(q_N=q_0\), hence produces periodic paths. | Construction | Derived by inserting the position resolution into \(\operatorname{Tr} e^{-\beta_{\mathrm T}\widehat H/\hbar}\) |
+| Under Feynman--Kac hypotheses, the Euclidean trace path integral is a Brownian-loop integral with the endpoint constraint \(q(\beta_{\mathrm T})=q(0)\). | Construction/theorem corollary | Brownian-bridge/endpoint disintegration plus trace insertion |
 | Euclidean long-time evolution projects onto the ground state under a spectral gap/overlap assumption. | Proposition | Derived from spectral decomposition |
+
+## Audit Notes
+
+- 2026-05-24, issue #298: added Theorem
+  `thm:wiener-feynman-kac-qm`, its proof, and the conceptual restriction that
+  Borel measures are not the general recipe for QFT path integrals.
 
 ## Figure Ledger
 

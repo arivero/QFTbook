@@ -10,7 +10,11 @@ finite and functional Gaussian integral block certified against handwritten
 anharmonic-oscillator vacuum/two-point/self-energy block certified against
 handwritten 253a pp. 30--43 on 2026-05-22;
 derivative-interaction/regulator counterterm block also certified on
-2026-05-22 after handwritten source and rendered-figure audit.
+2026-05-22 after handwritten source and rendered-figure audit; tightened on
+2026-05-24 for GitHub issue #298 so the Euclidean quantum-mechanical
+path-integral notation refers to Wiener/Brownian-bridge measure precisely when
+Chapter 4's Feynman--Kac theorem applies, and otherwise remains a stated
+regulator or perturbative construction.
 
 ## Logical Role
 
@@ -67,6 +71,10 @@ Working framework:
   continuation;
 - regulated functional integrals understood as mode-cutoff or time-sliced
   limits.
+- for Schrödinger operators satisfying Chapter 4's Feynman--Kac hypotheses,
+  finite-interval Euclidean path integrals are Brownian-bridge expectations
+  with potential weight; this is not generalized to fermionic, gauge,
+  complex-weight, or perturbative QFT path integrals.
 
 ## Notation Inventory
 
@@ -83,6 +91,7 @@ Working framework:
 | \(S_E,L_E\) | Euclidean action/Lagrangian | weight \(\exp(-S_E/\hbar)\) |
 | \(\Gamma_{T,t}\) | complex-time contour | vacuum projection and real-time insertion contour |
 | \([Dq]_{\Gamma,\psi}\) | regulated contour path-integral data | includes endpoint wavefunctions of \(\ket\psi\) |
+| \(\mathbb W_{x,y}^\tau\) | Brownian-bridge measure | rigorous Euclidean Schrödinger path integral when Chapter 4 hypotheses hold |
 | \(A\) | positive operator/matrix | Gaussian quadratic kernel |
 | \(A^{-1}\) | covariance | propagator/Green function |
 | \(J\) | source | generates insertions |
@@ -99,6 +108,9 @@ Working framework:
 - Euclidean ordered \(r\)-point function.
 - complex-contour path-integral representation of the projected real-time
   correlator.
+- Wiener/Brownian-bridge interpretation of \([Dq]\) in the Schrödinger cases
+  covered by Chapter 4, separated from Gaussian regulator and perturbative
+  uses of the same notation.
 - Gaussian expectation and covariance.
 - Wick contraction and complete pairing.
 - Gaussian functional integral with Green function kernel.
@@ -115,6 +127,7 @@ Working framework:
 | Wick rotation \(t=-\ii\tau\) gives exponential Euclidean decay \(e^{-(E_n-E_0)\tau/\hbar}\). | Derived | Spectral expansion |
 | Long Euclidean time projects onto the ground state under overlap and gap assumptions. | Derived | Spectral decomposition |
 | The projected correlator has a regulated complex-time path-integral representation with endpoint wavefunctions included in the contour measure. | Construction | Patched from handwritten pp. 16--17 and rendered on physical PDF page 65 |
+| In Euclidean Schrödinger quantum mechanics satisfying Chapter 4's Feynman--Kac theorem, finite-interval \([Dq]\) denotes Brownian-bridge/Wiener expectation with potential weight. | Theorem application | Explicit paragraph after the Euclidean path-integral formula; distinguishes this from later Gaussian regulator and perturbative meanings |
 | The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived; source-certified 2026-05-22 | Dirichlet sine-mode expansion, \(k_n=n\pi/(2T)\) Riemann-sum limit, endpoint image term, and contour integral |
 | Gaussian moments are sums over complete pairings. | Derived; source-certified 2026-05-22 | Finite source differentiation, explicit two- and four-point calculations, and \(4!\)-assignment grouping |
 | The Gaussian functional integral has two-point function equal to the Green kernel \(A^{-1}\). | Derived; source-certified 2026-05-22 | Regulated functional integration by parts and Fourier-space diagonalization |
@@ -147,6 +160,13 @@ Figures to include:
   loop-derivative term, the finite wavefunction term, and the parity-odd
   vanishing term. Certified on rendered manuscript physical PDF pages 63--65
   (printed pages 47--49) against handwritten pp. 43--51.
+
+## Audit Notes
+
+- 2026-05-24, issue #298: added the Chapter 5 cross-reference to
+  Theorem `thm:wiener-feynman-kac-qm` and recorded that the Borel-measure
+  interpretation is only the Euclidean Schrödinger case, not a general QFT
+  path-integral foundation.
 
 ## Audit Targets
 

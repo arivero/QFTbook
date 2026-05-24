@@ -297,7 +297,7 @@ denotes this regulated construction together with the specified limiting
 procedure. In the present chapter, the finite-\(N\) expression is the defined
 object.
 
-\section{Trotter Limits and Kernel Convergence}
+\section{Trotter Limits, Wiener Measure, and Kernel Convergence}
 
 The passage from the finite product to a continuum path integral is a
 convergence statement about operators before it is a statement about kernels.
@@ -389,6 +389,153 @@ on \(H^1(\mathbb R^d)\cap L^2(V_+(q)\dd^dq)\) is closed and semibounded, and it
 defines the Friedrichs Hamiltonian \(H=T+V\).  The Euclidean semigroup has the
 Trotter--Kato product formula, and its kernel is represented by the
 Feynman--Kac construction whenever the stated Kato hypotheses hold.
+
+\begin{theorem}[Wiener measure and the Feynman--Kac formula]
+\label{thm:wiener-feynman-kac-qm}
+Let \(V:\mathbb R^d\to\mathbb R\) be real, locally Kato, and bounded from
+below.  Let \(H\) be the Friedrichs Hamiltonian associated to
+\[
+  Q[\psi]
+  =
+  \frac{\hbar^2}{2m}\int_{\mathbb R^d}|\nabla\psi|^2\,\dd^dq
+  +
+  \int_{\mathbb R^d}V(q)|\psi(q)|^2\,\dd^dq .
+\]
+For each \(x\in\mathbb R^d\) and \(\tau>0\), there is a countably additive
+probability measure \(\mathbb W_x^\tau\) on
+\[
+  C([0,\tau],\mathbb R^d)
+\]
+whose finite-dimensional distributions are
+\[
+\begin{aligned}
+  &\int F(\omega(t_1),\ldots,\omega(t_n))\,
+  \dd\mathbb W_x^\tau(\omega)  \\
+  &\quad =
+  \int_{\mathbb R^{dn}}
+  F(x_1,\ldots,x_n)
+  \prod_{j=1}^n k^0_{t_j-t_{j-1}}(x_{j-1},x_j)\,
+  \dd^dx_1\cdots\dd^dx_n ,
+\end{aligned}
+\]
+for \(0<t_1<\cdots<t_n\le\tau\), with \(t_0=0\), \(x_0=x\), and
+\[
+  k^0_s(x,y)
+  =
+  \left(\frac{m}{2\pi\hbar s}\right)^{d/2}
+  \exp\left[-\frac{m|x-y|^2}{2\hbar s}\right].
+\]
+This is Wiener measure with diffusion constant \(\hbar/m\).  For bounded
+Borel \(f\), and then by extension for \(f\in L^2(\mathbb R^d)\),
+\[
+  \bigl(\ee^{-\tau H/\hbar}f\bigr)(x)
+  =
+  \int_{C([0,\tau],\mathbb R^d)}
+  \exp\left[
+    -\frac1\hbar\int_0^\tau V(\omega(s))\,\dd s
+  \right]
+  f(\omega(\tau))\,
+  \dd\mathbb W_x^\tau(\omega)
+\]
+for almost every \(x\).  Disintegrating \(\mathbb W_x^\tau\) with respect to
+the endpoint \(\omega(\tau)=y\) gives the Brownian-bridge probability measure
+\(\mathbb W_{x,y}^\tau\), and the Euclidean transition kernel is
+\[
+  K_E(y,\tau;x,0)
+  =
+  k^0_\tau(x,y)
+  \int
+  \exp\left[
+    -\frac1\hbar\int_0^\tau V(\omega(s))\,\dd s
+  \right]
+  \dd\mathbb W_{x,y}^\tau(\omega).
+\]
+\end{theorem}
+
+\begin{proof}
+The functions \(k^0_s(x,y)\) are nonnegative, integrate to one in \(y\), and
+satisfy the convolution identity
+\[
+  \int_{\mathbb R^d} k^0_s(x,z)k^0_t(z,y)\,\dd^dz
+  =
+  k^0_{s+t}(x,y).
+\]
+The displayed finite-dimensional distributions are therefore consistent.
+Kolmogorov extension gives a probability measure on paths with values in
+\((\mathbb R^d)^{[0,\tau]}\).  The Gaussian increment moments obey
+\[
+  \mathbb E_{\mathbb W_x^\tau}
+  |\omega(t)-\omega(s)|^{2r}
+  =
+  C_{d,r}\left(\frac{\hbar}{m}|t-s|\right)^r ,
+\]
+and Kolmogorov's continuity criterion gives a version supported on continuous
+paths.  This proves the existence of the Wiener measure on
+\(C([0,\tau],\mathbb R^d)\).
+
+First assume that \(V\) is bounded and continuous.  Let
+\(M_g\) denote multiplication by \(g\), and let
+\[
+  L=\frac{\hbar}{2m}\Delta .
+\]
+The heat semigroup \(\ee^{sL}\) has kernel \(k^0_s\).  Iterating the Markov
+property gives
+\[
+\begin{aligned}
+  &\bigl(\ee^{\delta L}M_{\exp(-\delta V/\hbar)}
+  \bigr)^N f(x)\\
+  &\quad =
+  \mathbb E_x\left[
+    \exp\left(
+      -\frac{\delta}{\hbar}\sum_{j=1}^N V(B_{j\delta})
+    \right)
+    f(B_{N\delta})
+  \right],
+\end{aligned}
+\]
+where \(B\) is the coordinate process under \(\mathbb W_x^\tau\) and
+\(\delta=\tau/N\).  Since Brownian paths are continuous and \(V\) is bounded
+continuous, the Riemann sums converge almost surely to
+\(\int_0^\tau V(B_s)\,\dd s\), and dominated convergence gives the Wiener
+expectation.  The Trotter product formula identifies the same operator limit
+with \(\ee^{-\tau H/\hbar}\), because
+\[
+  -\frac{H}{\hbar}=L-\frac1\hbar V
+\]
+as a form sum.
+
+If \(V\) is continuous and bounded below, add a constant so that
+\(V\ge0\), prove the formula for \(V_M=\min(V,M)\), and then let
+\(M\to\infty\).  The path weights decrease pointwise to the displayed weight,
+and the quadratic forms for \(T+V_M\) increase to the quadratic form for
+\(T+V\); monotone convergence of closed forms gives strong convergence of the
+semigroups.  The locally Kato bounded-below case is obtained by approximating
+in the local Kato topology and using the Kato small-time estimate for the
+negative part.  Finally, the bridge formula is the conditional-distribution
+form of the preceding identity with respect to the endpoint density
+\(k^0_\tau(x,y)\).
+\end{proof}
+
+Thus in ordinary Euclidean quantum mechanics the continuum path integral is
+not merely the formal limit of time-sliced Lebesgue products.  Under the
+hypotheses of Theorem~\ref{thm:wiener-feynman-kac-qm}, it is a genuine
+Wiener expectation on continuous paths, multiplied by the potential weight.
+The Trotter product formula is still important, but its role is to identify
+the operator semigroup represented by the Wiener integral; it is weaker than,
+and should not be substituted for, the measure-level Feynman--Kac statement.
+This theorem is a theorem about bosonic Schr\"odinger quantum mechanics, and
+by extension an important model for constructive scalar field theories when a
+positive Euclidean measure exists.  It is not a general definition of the QFT
+path integral.  Fermionic fields use Berezin integration over Grassmann
+variables rather than countably additive Borel measures; gauge theories require
+quotient, gauge-fixing, BRST/BV, or lattice data in addition to any measure on
+fields; and topological terms such as a four-dimensional Yang--Mills
+\(\theta\)-angle generally make the Euclidean weight complex.  The general
+lesson carried forward is therefore not that every QFT path integral is a
+Borel probability measure, but that every use of path-integral notation must
+state the mathematical object being used: a measure, an oscillatory integral,
+a Berezin functional, a gauge-fixed/BV construction, a lattice regularization,
+or a formal perturbative expansion.
 
 Essential self-adjointness on the algebraic core \(C_c^\infty(\mathbb R^d)\)
 is a separate issue.  One convenient sufficient theorem is the Faris--Lavine
@@ -667,8 +814,15 @@ Euclidean path integral over periodic paths
   q(\tau+\beta_{\mathrm T})=q(\tau).
 \]
 This conclusion is a statement about the boundary condition produced by the
-trace; the existence and convergence of the resulting continuum measure still
-depend on the same operator and regularization hypotheses stated above.
+trace.  When Theorem~\ref{thm:wiener-feynman-kac-qm} applies, the
+corresponding continuum object is the Feynman--Kac weight integrated over
+Brownian loops, obtained by disintegrating Wiener measure with the endpoint
+constraint
+\[
+  q(\beta_{\rm T})=q(0).
+\]
+Outside such hypotheses, the trace path integral remains a regulated or formal
+expression whose convergence must be specified separately.
 
 \section{Vacuum Projection}
 
