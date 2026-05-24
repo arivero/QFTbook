@@ -600,3 +600,63 @@ measure beginning at threshold. A narrow resonance is a pronounced analytic
 feature of that continuum: it can appear as a peak in the spectral density and
 as a pole after analytic continuation, while the external scattering states
 remain the stable states used in the construction of the \(S\)-matrix.
+
+\section{Unstable Resonances and External-Leg Reduction}
+
+The LSZ theorem applies to an external particle only when the theory supplies
+an isolated real mass shell in the physical Hilbert space.  In the notation of
+Chapter~\ref{ch:lsz-reduction}, this means an orthogonal projection
+\[
+  P_1=E(\Sigma_m^+)
+\]
+onto a Wigner one-particle subspace, a positive pole residue in a local-field
+two-point function, and Haag--Ruelle incoming and outgoing states built from
+that subspace.  A resonance pole \(s_\ast=M_R^2-\ii M_R\Gamma_R+\cdots\) has
+none of these properties.  It is a pole of an analytically continued stable
+scattering amplitude on a nonphysical sheet; the associated outgoing Gamow
+functional is not a normalizable vector in \(\Hilb\), and there is no
+projection-valued spectral atom \(E(\{p:p^2=-s_\ast\})\).
+
+Therefore a residue at \(s=s_\ast\) is not an LSZ external-leg residue.
+Physical \(S\)-matrix elements with a resonance are matrix elements between
+stable asymptotic states.  Near an isolated resonance pole the meromorphic
+continuation of such a stable-particle amplitude may have the local form
+\[
+  \mathcal M_{a\to b}(s,\alpha,\beta)
+  =
+  \frac{r_{a}(\alpha)\,r_{b}(\beta)}{s_\ast-s}
+  +
+  \mathcal M_{\rm reg}(s,\alpha,\beta),
+\]
+where \(a,b\) label stable channels and \(\alpha,\beta\) denote the remaining
+kinematic variables.  The functions \(r_a,r_b\) are pole residues of the
+continued stable-channel amplitude.  They can be used to describe production
+and decay through the resonance, but they do not define an incoming or
+outgoing one-resonance Hilbert-space state.
+
+Perturbation theory often packages this pole information in a
+Stueckelberg--Veltman, or complex-mass-shell, prescription.  One analytically
+continues the inverse dressed propagator to the pole,
+\[
+  F_{\rm II}(s_\ast)=0,
+  \qquad
+  Z_\ast^{-1}= -F_{\rm II}'(s_\ast),
+\]
+and replaces the resonant propagator near the pole by
+\[
+  \frac{g^2}{F_{\rm II}(s)}
+  =
+  \frac{g^2 Z_\ast}{s_\ast-s}
+  +
+  \text{terms holomorphic near }s_\ast .
+\]
+This is a pole-scheme parametrization of the stable-channel amplitude, not a
+new LSZ theorem.  Its usefulness requires a controlled narrow-resonance
+regime: the pole must be isolated from other nearby poles and branch points,
+the width scale \(M_R\Gamma_R\) must be small compared with the squared-mass
+distance to thresholds or singularities whose variation is being neglected,
+and the nonresonant background must be slowly varying on the same scale.  If
+the pole lies close to a threshold, or if several channels produce nearby
+singularities, the simple Breit--Wigner or complex-mass-shell description is
+replaced by the corresponding multi-channel analytic line shape.  The
+external states remain the stable states in all cases.
