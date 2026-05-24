@@ -482,11 +482,12 @@ hold.
 \section{Pinches}
 
 On the first sheet one finds stable one-particle poles, ordinary thresholds,
-and anomalous thresholds.  An anomalous threshold is a contour-pinch
-singularity on the physical sheet, caused by several internal lines going on
-shell in a spacetime arrangement satisfying the positive Coleman--Norton
-orientation condition defined below.  Its invariant location is determined by
-the Landau configuration of those internal lines.
+and anomalous thresholds.  In perturbative graph analysis an anomalous
+threshold is a contour-pinch singularity on the physical sheet, caused by
+several internal lines going on shell in a spacetime arrangement satisfying
+the positive Coleman--Norton orientation condition defined below.  Its
+invariant location is determined by the Landau configuration of those internal
+lines.
 
 The singularities of perturbative amplitudes arise when an integration contour
 is forced against singularities of the integrand.  Consider a scalar graph with
@@ -655,6 +656,22 @@ must be combined with the pinch analysis: a formal algebraic solution
 contributes to the physical singularity only on the relevant sheet, with the
 integration contour trapped, and with a numerator that leaves a nonzero local
 singular term.
+
+\begin{warning}[Scope of the Coleman--Norton converse]
+The implication just proved is the geometric interpretation of a real positive
+Landau solution: such a solution is a classical spacetime process.  The
+converse statement, often phrased as ``every allowed classical process gives a
+singularity,'' has a narrower status.  For a fixed perturbative Feynman graph,
+a nondegenerate positive pinch on the relevant sheet produces a local
+singularity of the scalar integral; numerator factors, symmetry factors,
+subtractions, or sums of graphs may cancel the leading local term.  Thus the
+perturbative converse is a theorem only after the pinch orientation,
+nondegeneracy, and non-cancellation hypotheses have been checked.  In an exact
+nonperturbative QFT there is no general theorem that every such classical
+spacetime picture produces a singularity of the full \(S\)-matrix.  There it
+should be regarded as a diagnostic expectation, to be justified from the
+spectral and locality structure of the theory in each setting.
+\end{warning}
 
 Subleading Landau solutions have some \(\alpha_i=0\).  Geometrically, the
 corresponding internal lines are contracted, and the classical propagation
@@ -884,14 +901,18 @@ the same spectral and locality principles, with internal on-shell lines
 replaced by actual stable particles or by spectral continua of the theory.
 
 Within existing axiomatic frameworks, only parts of this analytic picture are
-presently theorems. The classification used here is precise: stable particles
-appear as first-sheet poles below thresholds, resonances as continued-sheet
-poles, ordinary thresholds as multi-particle continua, and anomalous thresholds
-as allowed on-shell propagation patterns encoded by the Landau equations.
-This classification will be used in the following chapter only at the level
-needed for angular analyticity: the nearest first-sheet crossed-channel
-singularity fixes the distance from the physical angular interval to the edge
-of the Lehmann ellipse.  Landau analysis supplies a concrete mechanism for
-such singularities.  The nonperturbative construction of the \(S\)-operator
-and the spectral assumptions stated earlier remain the structural input for
-the exact scattering problem.
+presently theorems.  The terminology used here is precise, but its logical
+status is not uniform: stable particles appear as first-sheet poles below
+thresholds under the one-particle spectral hypotheses, resonances are
+continued-sheet pole data, ordinary thresholds are tied to multi-particle
+spectral continua, and anomalous thresholds are perturbative on-shell
+propagation patterns encoded by the Landau equations.  Beyond perturbation
+theory the last statement is a conjectural guide unless a separate
+nonperturbative analytic construction is supplied.  This classification will
+be used in the following chapter only at the level needed for angular
+analyticity: the nearest first-sheet crossed-channel singularity fixes the
+distance from the physical angular interval to the edge of the Lehmann ellipse.
+Landau analysis supplies a concrete perturbative mechanism for such
+singularities.  The nonperturbative construction of the \(S\)-operator and the
+spectral assumptions stated earlier remain the structural input for the exact
+scattering problem.
