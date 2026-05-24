@@ -32,6 +32,12 @@
   infrared analysis, and the 2023 lattice computation of the Kugo--Ojima
   correlation function.  These sources control the quartet terminology, the
   \(u(0)=-1\) condition, and the current status caveat.
+- `SRC-EXTERNAL-KREIN`: Bognar's Krein-space monograph, Dollard--Friedman
+  product-integration reference for operator evolutions, and
+  Strocchi--Wightman/Strocchi indefinite-metric gauge-QFT references.  These
+  sources control the fundamental decomposition, fundamental symmetry,
+  Hilbert-majorant topology, Krein adjoint, and domain language used for the
+  BRST charge.
 - The external source is used for the distinction between \(H(s)\) and
   \(H(s\mid d)\), for the contractible-pair/nonminimal-sector statement, and for
   the roles of ghost-number-zero and ghost-number-one local cohomology.
@@ -62,6 +68,11 @@
   fields on field space before imposing the Euler--Lagrange equations.
 - Local cohomology is formulated in the algebra of finite jets of fields and
   ghosts.
+- The canonical state space before BRST quotient is a Krein space
+  \((\mathcal K,[\cdot,\cdot],J)\), not merely an algebraic indefinite
+  inner-product space.  The fundamental symmetry \(J\) supplies the Hilbert
+  majorant topology in which operator domains, closures, and adjoints are
+  interpreted.
 
 ## Symbols
 
@@ -88,7 +99,12 @@
 | \(H^g(s)\) | local BRST cohomology at ghost number \(g\) |
 | \(H^{g,D}(s\mid d)\) | BRST cohomology of local \(D\)-forms modulo \(d\) |
 | \(Q\) | canonical BRST charge |
-| \(\mathcal K\) | gauge-fixed indefinite state space |
+| \(\mathcal K\) | gauge-fixed Krein state space before BRST quotient |
+| \([\cdot,\cdot]\) | indefinite Hermitian form on \(\mathcal K\) |
+| \(J\) | fundamental symmetry determined by a decomposition \(\mathcal K=\mathcal K_+\oplus\mathcal K_-\) |
+| \((\cdot,\cdot)_J\) | positive Hilbert majorant inner product \((\psi,\chi)_J=[\psi,J\chi]\) |
+| \(T^\times\) | Krein adjoint of a densely defined operator \(T\) |
+| \(\mathcal D\) | common dense invariant domain used for \(Q^2=0\), Krein symmetry, and field operations |
 | \(\mathcal H_{\mathrm{phys}}\) | ghost-number-zero BRST cohomology of states |
 | \(u(p^2)\) | transverse Kugo--Ojima function defined by the \((D_\mu c,g_{\mathrm{YM}}A_\nu\times\bar c)\) two-point function in Landau gauge |
 | \(F_{\mathrm{KO}}(p^2)\) | convention \(F_{\mathrm{KO}}=-u\), so the original infrared criterion is \(F_{\mathrm{KO}}(0)=1\) |
@@ -145,9 +161,18 @@
   canonical BRST charge when positivity of the quotient is established, with
   the exact-state equivalence \(|\Psi\rangle\sim|\Psi\rangle+Q|\chi\rangle\)
   included explicitly.
+- The chapter now names the gauge-fixed state space as a Krein space and states
+  the functional-analytic data needed before the BRST quotient: fundamental
+  decomposition, fundamental symmetry \(J\), Hilbert majorant topology, Krein
+  adjoint \(T^\times\), and a dense invariant BRST domain on which \(Q^2=0\)
+  and \(Q\subset Q^\times\).
+- The manuscript distinguishes Krein symmetry/self-adjointness of \(Q\) from
+  Hilbert self-adjointness in a positive inner product, so the statement that
+  \(Q\) is Hermitian in covariant gauge has a precise operator-theoretic
+  meaning.
 - The perturbative doublet argument is now separated from the Kugo--Ojima
   quartet mechanism.  A BRST quartet is defined as two conjugate doublets in
-  the indefinite metric space, and the manuscript states that perturbative
+  the Krein space, and the manuscript states that perturbative
   longitudinal/timelike gauge modes and ghost/antighost modes form quartets
   mode by mode after the BRST charge and positive quotient are constructed.
 - The nonperturbative Kugo--Ojima confinement criterion is stated as a
@@ -183,6 +208,10 @@
   domain.
 - Positivity of the BRST quotient is stated as a required condition rather than
   proved in full generality.
+- The existence of a nonperturbative Krein-space operator domain for
+  interacting covariant-gauge Yang--Mills is stated as a construction problem;
+  Slavnov--Taylor identities from a regularized path integral are separate
+  formal consequences of the BRST symmetry.
 - The Kugo--Ojima criterion is treated as a conditional covariant-gauge
   confinement scenario, not as a proved nonperturbative theorem for
   four-dimensional Yang--Mills theory.
@@ -201,3 +230,6 @@
   Landau-gauge Kugo--Ojima two-point function, the \(F_{\mathrm{KO}}(0)=1\)
   / \(u(0)=-1\) infrared condition, the conditional relation to ghost dressing,
   and the lattice/Gribov status statement.
+- 2026-05-24 issue #247 pass: inserted a Krein-space foundations section for
+  covariant gauge quantization and added the required functional-analytic
+  symbols and domain assumptions to this dossier.

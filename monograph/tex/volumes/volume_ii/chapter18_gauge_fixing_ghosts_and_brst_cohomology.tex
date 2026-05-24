@@ -736,11 +736,108 @@ operators, counterterms, and anomalies may be represented in the minimal sector
 under the standard regularity assumptions used in perturbative Yang--Mills
 theory.
 
+\section{Krein Space Structure of Covariant Gauge Quantization}
+
+Before the BRST quotient, covariant gauge quantization uses an
+indefinite-metric state space with a specified topology.  The
+functional-analytic structure used here is a Krein space.\footnote{For the
+operator theory of Krein spaces, see J.~Bognar,
+\emph{Indefinite Inner Product Spaces}, Ergebnisse der Mathematik und ihrer
+Grenzgebiete \textbf{78}, Springer, 1974.  For product-integral technology
+useful in controlling operator evolutions, see J.~D.~Dollard and
+C.~N.~Friedman, \emph{Product Integration with Applications to Differential
+Equations}, Encyclopedia of Mathematics and its Applications \textbf{10},
+Addison--Wesley, 1979.  For the indefinite-metric framework in local covariant
+gauge QFT and QED, see F.~Strocchi and A.~S.~Wightman, ``Proof of the charge
+superselection rule in local relativistic quantum field theory,''
+\emph{Journal of Mathematical Physics} \textbf{15} (1974), 2198--2224, and
+F.~Strocchi, ``Local and covariant gauge quantum field theories.  Cluster
+property, superselection rules, and the infrared problem,'' \emph{Physical
+Review D} \textbf{17} (1978), 2010--2021.}
+
+\begin{definition}[Krein space and fundamental symmetry]
+A Krein space is a complex vector space \(\mathcal K\) equipped with a
+nondegenerate Hermitian form \([\cdot,\cdot]\) and a direct decomposition
+\[
+  \mathcal K=\mathcal K_+\oplus\mathcal K_- ,
+\]
+such that \([\cdot,\cdot]\) is positive definite on \(\mathcal K_+\), negative
+definite on \(\mathcal K_-\), and both summands are complete for the associated
+positive norms.  The fundamental symmetry is
+\[
+  J(\psi_++\psi_-)=\psi_+-\psi_-,
+  \qquad
+  \psi_\pm\in\mathcal K_\pm .
+\]
+It defines a Hilbert inner product
+\[
+  (\psi,\chi)_J=[\psi,J\chi]
+  =
+  [\psi_+,\chi_+]-[\psi_-,\chi_-],
+\]
+and the topology of \(\mathcal K\) is the Hilbert topology determined by
+\((\cdot,\cdot)_J\).  Different fundamental decompositions may give different
+fundamental symmetries; a statement about domains, closures, adjoints, or
+continuity is meaningful only after such a Hilbert majorant topology has been
+specified.
+\end{definition}
+
+Let \(T\) be a densely defined operator on \(\mathcal K\).  Its Krein adjoint
+\(T^\times\) is defined by
+\[
+  [T\psi,\chi]=[\psi,T^\times\chi]
+\]
+for all \(\psi\in\mathcal D(T)\) and all \(\chi\) in the domain for which the
+right-hand side is represented continuously.  If \(T_J^*\) denotes the Hilbert
+adjoint with respect to \((\cdot,\cdot)_J\), then formally
+\[
+  T^\times=J T_J^* J
+\]
+with the corresponding transformed domain.  Thus an assertion that a BRST
+charge is ``Hermitian'' in covariant gauge means Krein symmetry or
+Krein self-adjointness, not Hilbert self-adjointness in a positive inner
+product.
+
+\begin{hypothesis}[Krein-domain data for the BRST charge]
+\label{hyp:krein-brst-domain-data}
+The canonical covariant-gauge construction supplies:
+\[
+  (\mathcal K,[\cdot,\cdot],J),\qquad
+  N_{\rm gh},\qquad
+  Q:\mathcal D(Q)\subset\mathcal K\to\mathcal K ,
+\]
+where \(N_{\rm gh}\) is the ghost-number operator and \(Q\) is a densely
+defined closed odd operator of ghost number \(+1\).  There is a common dense
+invariant domain \(\mathcal D\subset\mathcal D(Q)\) containing the finite
+particle states, stable under the fields used in the BRST construction, such
+that
+\[
+  Q\mathcal D\subset\mathcal D,\qquad
+  Q^2\psi=0\quad(\psi\in\mathcal D),\qquad
+  [Q\psi,\chi]=[\psi,Q\chi]\quad(\psi,\chi\in\mathcal D).
+\]
+Equivalently, \(Q\subset Q^\times\) on the stated domain; when a Krein
+self-adjoint closure exists, this inclusion is replaced by equality for that
+closure.  The physical quotient below is formed first on this controlled
+domain and then completed only after positivity of the induced form has been
+proved.
+\end{hypothesis}
+
+The free Gupta--Bleuler and perturbative BRST Fock constructions provide the
+model example of this structure: longitudinal and timelike oscillator modes
+create the negative directions, the fundamental symmetry \(J\) records the
+chosen positive majorant Hilbert topology, and the BRST charge is symmetric
+for the indefinite form.  In an interacting nonperturbative gauge theory,
+Hypothesis~\ref{hyp:krein-brst-domain-data} is an additional construction
+problem.  The path-integral Slavnov--Taylor identities derived later are
+formal consequences of the regularized BRST symmetry; the Krein-space
+operator domain is separate analytic data.
+
 \section{Cohomology of States and Observables}
 
 In canonical quantization of the gauge-fixed theory, the state space before
-the BRST quotient is an indefinite inner-product space \(\mathcal K\).  At a
-fixed time a state can be represented, in a Schrödinger notation, by a
+the BRST quotient is the Krein space \(\mathcal K\) described above.  At a
+fixed time a state can be represented, in a Schrodinger notation, by a
 wavefunctional
 \[
   \Psi[\phi,B,b,c]\big|_{x^0=t}.
@@ -809,7 +906,7 @@ condition on the final bra, and \(Q_B\cdot S_F=0\).
 
 Nilpotency implies that \(Q\ket{\chi}\) is admissible for every
 \(\ket{\chi}\).  Such a state has zero matrix element against any admissible
-state when \(Q\) is symmetric with respect to the indefinite inner product:
+state when \(Q\) is symmetric with respect to the Krein form:
 \[
   \bra{\Psi}Q\ket{\chi}=0,
   \qquad
@@ -845,19 +942,19 @@ well defined on BRST cohomology classes.
 \section{Positivity of the BRST Quotient}
 
 The quotient in \eqref{eq:brst-physical-state-cohomology} is a Hilbert-space
-construction only after positivity has been checked.  Assume the indefinite
-inner product on \(\mathcal K\) is nondegenerate and that \(Q\) is symmetric
-with respect to it:
+construction only after positivity has been checked.  Assume the Krein form
+\([\cdot,\cdot]\) on \(\mathcal K\) is nondegenerate and that \(Q\) is
+symmetric with respect to it:
 \[
-  \langle Q\chi,\psi\rangle=\langle\chi,Q\psi\rangle .
+  [Q\chi,\psi]=[\chi,Q\psi] .
 \]
 If \(\psi\in\ker Q\) and \(\eta=Q\chi\), then
 \[
-  \langle\eta,\psi\rangle
+  [\eta,\psi]
   =
-  \langle Q\chi,\psi\rangle
+  [Q\chi,\psi]
   =
-  \langle\chi,Q\psi\rangle
+  [\chi,Q\psi]
   =
   0.
 \]
@@ -870,8 +967,8 @@ quotient gives the physical Hilbert space.
 
 \begin{theorem}[Positivity criterion for a BRST doublet sector]
 \label{thm:brst-doublet-positivity-criterion}
-Let \(Q^2=0\) be symmetric for the nondegenerate indefinite inner product on
-the ghost-graded space \(\mathcal K\).  Assume that the ghost-number-zero closed
+Let \(Q^2=0\) be symmetric for the nondegenerate Krein form on the
+ghost-graded space \(\mathcal K\).  Assume that the ghost-number-zero closed
 subspace admits a direct decomposition
 \[
   \ker(Q:\mathcal K^0\to\mathcal K^1)
@@ -933,8 +1030,8 @@ theory,'' \emph{Progress of Theoretical Physics} \textbf{122} (2009),
 correlation function,'' arXiv:2310.09010.}
 
 \begin{definition}[BRST quartet]
-Let \(Q\) be a nilpotent symmetric BRST charge on an indefinite inner-product
-space with ghost-number operator.  A BRST quartet is a four-dimensional
+Let \(Q\) be a nilpotent symmetric BRST charge on a Krein space with
+ghost-number operator.  A BRST quartet is a four-dimensional
 subcomplex generated by two BRST doublets related by the conjugation structure
 of the indefinite metric.  In a basis
 \[
