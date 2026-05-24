@@ -85,7 +85,9 @@ The chapter must define and derive:
   amplitude, the non-time-ordered hadronic tensor, the current-conservation
   tensor decomposition, support in \(x_B\), the discontinuity of the
   time-ordered forward Compton amplitude, twist-two operators, Wilson lines,
-  factorization assumptions, and logarithmic scaling violation.
+  factorization assumptions, the replacement of abelian Bloch--Nordsieck
+  cancellation by nonabelian PDF renormalization for incoming colored
+  partons, and logarithmic scaling violation.
 
 ## Claim Ledger
 
@@ -139,6 +141,10 @@ The chapter must define and derive:
     operators are two presentations of the same short-distance data; asymptotic
     freedom changes Bjorken scaling into logarithmic scaling violation governed
     by anomalous dimensions.
+16. In QCD, partonic initial-state collinear singularities are not removed by
+    an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
+    renormalized Wilson-line light-ray operators defining PDFs, and the
+    resulting factorization-scale dependence is governed by DGLAP evolution.
 
 ## Figure Requirements
 
@@ -197,3 +203,7 @@ The chapter must define and derive:
   calorimetric measures, smeared correlators, contact terms, soft/collinear
   continuity estimates, \(e^+e^-\) EEC normalization, and energy-flow
   polynomial definitions.
+- 2026-05-24 issue #260 pass: added the cross-reference from QCD factorization
+  back to the Abelian-scope Bloch--Nordsieck remark and stated that
+  initial-state collinear singularities of colored partons are absorbed into
+  renormalized PDFs rather than canceled by a final-state inclusive sum.
