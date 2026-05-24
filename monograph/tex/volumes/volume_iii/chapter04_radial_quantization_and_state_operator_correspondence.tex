@@ -72,7 +72,17 @@ Schwinger hierarchy \(S_{I_1\cdots I_n}\) satisfying the following conditions.
   \item For each local operator \(\mathcal O_I\) used below, the radial limit of
   the insertion at the origin defines a finite-energy vector.  Descendant
   vectors are obtained by applying the translation generators, equivalently by
-  derivatives of the insertion.
+  derivatives of the insertion.  The local operator basis is radially complete:
+  after quotienting by the null radial two-point pairing, origin insertions of
+  local operators and their descendants span precisely the finite-energy
+  subspace
+  \[
+    \mathcal H_{\rm fin}
+    =
+    \bigoplus_{\lambda<\infty}\ker(D_{\rm rad}-\lambda).
+  \]
+  Equivalently, every finite-energy eigenvector has a representative as a local
+  scaling field at the origin, unique modulo null operators.
   \item The Euclidean correlators are related to Lorentzian Wightman
   distributions by the standard tube-domain analytic continuation, with the
   Lorentzian distributions satisfying the spectrum condition and local
@@ -83,7 +93,8 @@ Schwinger hierarchy \(S_{I_1\cdots I_n}\) satisfying the following conditions.
 
 Under Hypothesis~\ref{hyp:radial-reconstruction-data}, radial reflection
 positivity gives the inner product, \(D_{\rm rad}\) gives the cylinder
-Hamiltonian, and local insertions at the origin give finite-energy states.
+Hamiltonian, and local insertions at the origin give the complete
+finite-energy state space.
 
 These three versions are related by analytic continuation whenever the
 Lorentzian theory satisfies the spectral and locality hypotheses needed for
@@ -414,19 +425,18 @@ operators at the origin, including descendants, modulo operators whose radial
 two-point pairing with every local operator vanishes.  Let
 \(\mathcal H_{\rm fin}\subset\mathcal H_{S^{D-1}}\) be the finite-energy
 subspace of the radial Hilbert space.  Then insertion at the origin defines an
-isometric linear map
+isometric linear isomorphism
 \begin{equation}
   \mathcal V_{\mathrm{loc}}
-  \longrightarrow
+  \xrightarrow{\;\sim\;}
   \mathcal H_{\rm fin},
   \qquad
   \mathcal O\longmapsto\ket{\mathcal O}.
   \label{eq:state-operator-map}
 \end{equation}
-If every finite-energy radial state has an asymptotic local representative as
-\(\tau\to-\infty\), this map is a Hilbert-space isomorphism after completing
-\(\mathcal V_{\rm loc}\) in the radial inner product.  Equivalently, for
-insertions ordered by cylinder time
+After completing \(\mathcal V_{\rm loc}\) in the radial inner product, the map
+extends uniquely to a Hilbert-space isomorphism onto
+\(\mathcal H_{S^{D-1}}\).  Equivalently, for insertions ordered by cylinder time
 \(\tau_1>\tau_2>\cdots>\tau_n\),
 \begin{equation}
   \left\langle
@@ -449,7 +459,14 @@ construction of the wavefunctional on \(S_R^{D-1}\) identifies its norm with
 the radial two-point pairing; hence the map is isometric.  Dilatation
 covariance transports the state from radius \(R\) to the cylinder and places
 it in the finite-energy subspace by
-Hypothesis~\ref{hyp:radial-reconstruction-data}.
+Hypothesis~\ref{hyp:radial-reconstruction-data}.  The radial-completeness
+clause of the same hypothesis gives surjectivity onto
+\(\mathcal H_{\rm fin}\).  Since \(D_{\rm rad}\) is nonnegative
+self-adjoint, the spectral projections \(P_{[0,E]}(D_{\rm rad})\) converge
+strongly to the identity as \(E\to\infty\).  Hence
+\(\mathcal H_{\rm fin}\) is dense in \(\mathcal H_{S^{D-1}}\), and the
+isometry extends by completion to the Hilbert-space isomorphism stated in the
+theorem.
 
 It remains to derive the correlation formula.  Put
 \[
@@ -491,9 +508,6 @@ at separated points with the flat-space radially ordered correlator.  Since
 the displayed order.  This gives
 \eqref{eq:state-operator-correlation-formula}.
 
-The additional asymptotic local-representative hypothesis gives surjectivity
-onto \(\mathcal H_{\rm fin}\); completion then gives the stated Hilbert-space
-isomorphism.
 \end{proof}
 
 The state \(\ket{\vac}\) is the ground state on \(S^{D-1}\).

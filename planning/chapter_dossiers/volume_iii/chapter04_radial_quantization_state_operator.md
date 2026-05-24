@@ -24,14 +24,18 @@ The chapter establishes:
 - the cylinder sewing identity on ordered constant-\(\tau\) slabs and its
   Heisenberg-operator form;
 - the assumptions needed for discreteness, finite multiplicity, clustering,
-  and reconstruction of local operators from radial states.
+  tube-domain continuation, and radial local completeness;
+- Theorem `thm:state-operator-correspondence`, which states that origin
+  insertion gives an isometric linear isomorphism
+  \(\mathcal V_{\rm loc}\simeq\mathcal H_{\rm fin}\), and after Hilbert
+  completion an isomorphism onto \(\mathcal H_{S^{D-1}}\).
 
 ## Claims To Verify
 
 1. Radial quantization is a Hilbert-space construction only after radial
    reflection positivity and null quotient have been specified.
-2. The state--operator map is a theorem under reconstruction assumptions, not
-   a notation convention.
+2. The state--operator map is a theorem under reconstruction assumptions,
+   including radial local completeness, not a notation convention.
 3. Euclidean time \(\tau_E\) from Wick rotation is distinct from cylinder time
    \(\tau=\log r\).
 4. \(\widehat D_{\rm rad}\) is the positive Euclidean cylinder Hamiltonian;
@@ -56,3 +60,8 @@ The chapter establishes:
 - The proof of the state--operator theorem must retain the slab-sewing
   construction; the correlation formula is not to be treated as a formal
   consequence of a drawing of the cylinder.
+- 2026-05-24 issue #268 pass: removed the conditional surjectivity clause from
+  the theorem by moving radial local completeness into the labeled hypothesis
+  block.  The theorem now states the isometric isomorphism directly and proves
+  extension to the full radial Hilbert space by density of finite-energy
+  spectral projections.
