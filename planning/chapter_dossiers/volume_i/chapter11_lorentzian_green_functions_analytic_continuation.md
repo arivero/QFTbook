@@ -112,6 +112,9 @@
   chapter's orientation \(\ell^0=i\ell_E^D\), the Jacobian
   \(d\ell^0=i\,d\ell_E^D\) and the propagator numerator \(-i\) multiply to
   convert the Lorentzian measure-propagator factor into the Euclidean one.
+  The tadpole symmetry factor \(1/2\) is signature-independent because it is a
+  Wick-contraction and residual-automorphism count, not a source of
+  Lorentzian \(i\)-factors.
 - In the same regulator and local two-point subtraction convention,
   \[
     \Sigma(k^0=i k_E^D,\vec k_E)=\Sigma_E(k_E),
@@ -167,3 +170,6 @@
 - 2026-05-24 issue #374 pass: displayed the Wick-rotation Jacobian
   \(d\ell^0=i\,d\ell_E^D\), the denominator transformation, and the resulting
   measure-propagator sign before the tadpole equality.
+- 2026-05-24 issue #375 pass: derived the signature-independence of the
+  tadpole symmetry factor by separating Wick combinatorics from Lorentzian
+  vertex and propagator phases.
