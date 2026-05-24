@@ -777,8 +777,38 @@ The left and right transformations act by
   \qquad
   (L,R)\in SU(N_f)_L\times SU(N_f)_R .
 \]
-Assume that the QCD phase under consideration has a bilinear condensate whose
-orientation can be chosen as
+
+\begin{conjecture}[Chiral symmetry breaking in QCD]
+\label{conj:qcd-chiral-symmetry-breaking}
+For four-dimensional \(SU(N_c)\) QCD with \(N_f\) light fundamental quarks in
+the range where the infrared theory is confining rather than conformal, the
+infinite-volume vacuum selected by equal positive quark masses has a nonzero
+chiral order parameter in the subsequent massless limit:
+\begin{equation}
+  \lim_{m\downarrow0}\lim_{V\to\infty}
+  \langle \bar q_{R,J}q_{L,I}\rangle_{m,V}
+  =
+  \Sigma_0\,\delta_{IJ},
+  \qquad
+  \Sigma_0\neq0 .
+  \label{eq:qcd-chiral-condensate-conjecture}
+\end{equation}
+The unbroken continuous nonabelian flavor symmetry in this phase is the
+diagonal vector subgroup \(SU(N_f)_V\).
+\end{conjecture}
+
+Conjecture~\ref{conj:qcd-chiral-symmetry-breaking} is a dynamical assertion
+about the QCD vacuum.  It is not presently a theorem derived from the
+four-dimensional continuum QCD Lagrangian or from a completed continuum limit
+of lattice QCD.  Lattice simulations and phenomenology give strong evidence
+for the small-\(N_f\) theory, while semiclassical instanton calculations do
+not supply a controlled derivation of the infrared condensate.  The pion
+effective theory below is the low-energy theory conditional on this chiral
+breaking phase.
+
+In the phase described by
+Conjecture~\ref{conj:qcd-chiral-symmetry-breaking}, the bilinear condensate has
+an orientation that can be chosen as
 \[
   \Sigma_{IJ}
   =
@@ -805,8 +835,7 @@ therefore
   SU(N_f)_V .
   \label{eq:qcd-chiral-breaking-pattern}
 \end{equation}
-The breaking pattern is an input about the QCD vacuum.  Given this input, the
-number of Goldstone bosons is \(N_f^2-1\).
+Given this dynamical input, the number of Goldstone bosons is \(N_f^2-1\).
 
 At \(\theta=0\), the non-chiral flavor symmetry is constrained by the
 positivity structure of the Euclidean vectorlike theory.  The statement has a

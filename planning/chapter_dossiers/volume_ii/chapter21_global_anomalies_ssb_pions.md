@@ -72,6 +72,7 @@
 | \(\xi(\pi)\) | coset representative for Goldstone coordinates |
 | \(e^a,\omega^i\) | broken vielbein and unbroken connection in the Maurer--Cartan form |
 | \(F_{Aa}\) | Goldstone decay-constant matrix |
+| \(\Sigma_{IJ}\), \(\Sigma_0\) | QCD chiral condensate matrix and its flavor-singlet value, used as a conjectural dynamical input for the pion EFT |
 | \(U(x)\) | pion field valued in \(SU(N_f)\) |
 | \(\ell_\mu,r_\mu\) | external left and right flavor gauge fields |
 | \(F_{\rm st}\) | stereographic-coordinate pion normalization used for the explicit \(N_f=2\) scattering calculation |
@@ -138,6 +139,10 @@
   \(j^\mu=2r^2\partial^\mu\theta\), \([Q,\theta]=i\), a massive radial mode,
   and a pseudo-Goldstone mass from a small \(-\epsilon\operatorname{Re}\phi\)
   deformation.
+- The QCD chiral condensate and breaking pattern
+  \(SU(N_f)_L\times SU(N_f)_R\to SU(N_f)_V\) are stated as a conjectural
+  dynamical property of small-\(N_f\) QCD, not as a theorem derived from the
+  continuum Lagrangian or from a completed lattice continuum construction.
 - The leading pion Lagrangian is the invariant two-derivative functional of
   the \(SU(N_f)\)-valued Goldstone field and external flavor backgrounds.
 - For \(N_f=2\), the stereographic-coordinate expansion of the nonlinear sigma
@@ -208,3 +213,9 @@
   measure, reflection positivity/OS reconstruction input, determinant
   positivity, and volume/mass-limit assumptions, and identifies continuum QCD
   measure construction as part of the open four-dimensional problem.
+- 2026-05-24 issue #265 pass: added a named chiral-symmetry-breaking
+  conjecture before the pion construction.  The manuscript now states that
+  \(\langle\bar q_R q_L\rangle\neq0\) and the
+  \(SU(N_f)_L\times SU(N_f)_R\to SU(N_f)_V\) pattern are dynamical inputs for
+  the low-energy pion EFT, supported by lattice/phenomenology but not proved
+  from the four-dimensional QCD Lagrangian.
