@@ -147,20 +147,63 @@ after this rotation.
 Time-ordered Green functions arise from a contour whose real-time projection
 places the insertions in chronological order.
 
-When a path-integral representation is available, this analytic continuation
-can be represented by a contour \(C\) in complex time:
+\begin{definition}[Status of the complex-time contour functional]
+\label{def:cft-contour-path-integral-status}
+When a Lagrangian path-integral representative is available, the contour
+notation used for this analytic continuation is tied to the Lorentzian
+oscillatory convention of
+Definition~\ref{def:lorentzian-oscillatory-path-integral} in
+Chapter~\ref{ch:scalar-path-integrals-green-functions}.  Choose a finite
+spatial regulator \(\Lambda\) and a finite subdivision \(P\) of the complex
+time contour \(C\).  Let \(\mathcal C_{\Lambda,P}\) be the resulting
+finite-dimensional space of retained bosonic variables, together with the
+corresponding finite odd variables when fermions are present.  The contour
+action is
 \[
-  S_C[\Phi]
+  S_{C,\Lambda,P}[\Phi]
   =
   \int_C \dd x^0\int\dd^{D-1}\mathbf x\,
-  \mathcal L(\Phi,\partial\Phi),
-  \qquad
-  \left\langle\prod_i\mathcal O_i(x_i)\right\rangle_C
-  =
-  \int[D\Phi]\,\ee^{\ii S_C[\Phi]}\prod_i\mathcal O_i(x_i).
+  \mathcal L_{\Lambda,P}(\Phi,\partial\Phi),
 \]
-The contour formula is a representation of the same distributional analytic
-continuation; it is not an additional axiom of the conformal theory.
+where the displayed integral is shorthand for the time-sliced finite
+regulator action along \(C\).  For
+\(F=\prod_i\mathcal O_i(x_i)\), the finite-regulator contour functional is
+\begin{equation}
+  I_{C,\Lambda,P}(F)
+  =
+  \int_{\mathcal C_{\Lambda,P}}
+  d\nu_{\Lambda,P}(\Phi)\,
+  \exp\{\ii S_{C,\Lambda,P}[\Phi]\}\,
+  F_{\Lambda,P}(\Phi).
+  \label{eq:regulated-complex-time-contour-functional}
+\end{equation}
+For even variables \(d\nu_{\Lambda,P}\) is an ordinary finite-dimensional
+reference measure.  For odd variables it is a Berezin density.  For gauge
+fields it is defined only after the finite-regulator gauge-fixing or BV data
+and boundary conditions have been supplied.  If \(C\) contains Lorentzian
+segments, \eqref{eq:regulated-complex-time-contour-functional} is an
+oscillatory integral or oscillatory distribution, with Abel/Fourier boundary
+value or stationary-phase meaning as in
+Definition~\ref{def:lorentzian-oscillatory-path-integral}; Euclidean segments
+contribute the corresponding heat-kernel damping in the same time-sliced
+regulator.
+
+The continuum symbol
+\begin{equation}
+  \left\langle\prod_i\mathcal O_i(x_i)\right\rangle_C
+  :=
+  \lim_{\Lambda,P}
+  I_{C,\Lambda,P}
+  \!\left(\prod_i\mathcal O_i(x_i)\right)
+  \label{eq:complex-time-contour-continuum-symbol}
+\end{equation}
+means the specified distributional boundary value in a construction where the
+limit exists.  In a perturbative construction it denotes the corresponding
+formal asymptotic expansion obtained from the same regulator data.  In an
+abstract CFT presentation the primary object is the Schwinger/Wightman
+hierarchy and its tube-domain analytic continuation; the contour functional
+is a representation of those boundary values.
+\end{definition}
 
 \begin{figure}[H]
   \centering

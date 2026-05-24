@@ -69,6 +69,10 @@ The chapter establishes:
 - the assumptions needed for discreteness, finite multiplicity, unique
   conformal vacuum, cluster factorization, tube-domain continuation, and radial
   local completeness;
+- the complex-time contour functional as a finite-regulator
+  oscillatory/distributional object tied to Volume I's Lorentzian
+  oscillatory path-integral convention, with separate status for
+  constructed boundary values and perturbative asymptotic expansions;
 - Theorem `thm:state-operator-correspondence`, which states that origin
   insertion gives an isometric linear isomorphism
   \(\mathcal V_{\rm loc}\simeq\mathcal H_{\rm fin}\), and after Hilbert
@@ -82,6 +86,11 @@ The chapter establishes:
    including radial local completeness, not a notation convention.
 3. Euclidean time \(\tau_E\) from Wick rotation is distinct from cylinder time
    \(\tau=\log r\).
+3a. Complex-time contour path-integral notation in the chapter must be
+    finite-regulator notation: ordinary finite-dimensional measure for even
+    variables, Berezin density for odd variables, gauge-fixed/BV data for
+    gauge fields, and oscillatory boundary-value or stationary-phase status on
+    Lorentzian contour segments.
 4. \(\widehat D_{\rm rad}\) is the positive Euclidean cylinder Hamiltonian;
    Hermitian Lorentzian commutators differ by the stated analytic continuation.
 5. The identification of the flat Poincare vacuum, conformal vacuum, and
@@ -179,3 +188,9 @@ The chapter establishes:
   time-sliced/angular-spectral regulator, finite boundary trace space,
   boundary measure or Berezin/BV density, conditional interior integral,
   gluing pairing, and continuum-limit topology.
+- 2026-05-24 issue #305 pass: added
+  `def:cft-contour-path-integral-status`, classifying the complex-time contour
+  functional through a finite spatial regulator and finite contour subdivision,
+  tying Lorentzian segments to Volume I's oscillatory path-integral
+  convention, and separating constructed distributional boundary values from
+  perturbative asymptotic expansions.
