@@ -38,6 +38,10 @@ The chapter must define and derive:
   \(\delta S=-\sigma\int\dd^Dx\,T^\mu{}_\mu\);
 - the choice of scalar engineering dimension that makes the free massless
   kinetic action scale invariant in \(D=d-\epsilon\);
+- the bridge from kinetic scale invariance to the bare trace identity: the
+  kinetic variation vanishes for compactly supported dilatation variations, so
+  only interaction coordinates contribute nonderivative terms to
+  \(T^\mu{}_\mu\);
 - the scaling transformation of a local operator
   \(O_I'(x')=(1+\sigma)^{-d_I(\epsilon)}O_I(x)\), with
   \(d_I(\epsilon)=D+\delta_I(\epsilon)\);
@@ -96,7 +100,10 @@ The chapter must define and derive:
 2. A scale transformation is the local translation parameter
    \(\delta a^\mu=\sigma x^\mu\), together with the engineering field
    transformation determined by the kinetic term.
-3. For a regulated MS action, the bare trace is the engineering-dimension
+3. For a regulated MS action, the kinetic term contributes no nonderivative
+   trace term because the engineering field dimension makes
+   \(S_{\rm kin}\) scale invariant for compactly supported dilatation
+   variations; the bare trace is therefore the engineering-dimension
    contribution of the interaction terms.
 4. Minimal subtraction and bare \(\mu\)-independence re-express the bare trace
    in terms of finite renormalized operators.
@@ -195,3 +202,6 @@ The chapter must define and derive:
   scale-implies-conformal is proving the vanishing of the virial obstruction
   class, with the dimension-dependent status tied to that precise local
   cohomological condition.
+- 2026-05-24 issue #357 pass: labeled the kinetic scale-invariance check and
+  inserted the bridge sentence explaining why the bare trace identity contains
+  only interaction terms.

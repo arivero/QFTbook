@@ -245,7 +245,8 @@ trace of the chosen differential operator satisfies
 \]
 The invariance of the kinetic term can be checked directly.  Put
 \(\Delta_\phi=(D-2)/2\).  For compactly supported variations,
-\[
+\begin{equation}
+\label{eq:volume-ii-kinetic-scale-invariance-check}
 \begin{aligned}
   \delta S_{\rm kin}
   &=
@@ -268,7 +269,7 @@ The invariance of the kinetic term can be checked directly.  Put
   =
   0 .
 \end{aligned}
-\]
+\end{equation}
 
 Let now \(D=d-\epsilon\), and let \(O_I\) be a local monomial or polynomial in
 fields and derivatives with engineering dimension
@@ -296,6 +297,11 @@ the interaction part transforms as
   \int\dd^D x\sum_I
   g_I^\epsilon(1+\sigma)^{-\delta_I(\epsilon)}O_I(x).
 \]
+The total variation is the sum of the kinetic and interaction variations.
+Equation~\eqref{eq:volume-ii-kinetic-scale-invariance-check} shows that the
+kinetic contribution vanishes in this engineering convention, for compactly
+supported versions of the dilatation variation.  Thus the nonderivative trace
+term comes only from the interaction coordinates.
 To first order in \(\sigma\),
 \[
   \delta S
