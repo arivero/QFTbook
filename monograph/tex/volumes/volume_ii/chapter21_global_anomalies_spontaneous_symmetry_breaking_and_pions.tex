@@ -808,21 +808,55 @@ therefore
 The breaking pattern is an input about the QCD vacuum.  Given this input, the
 number of Goldstone bosons is \(N_f^2-1\).
 
-At \(\theta=0\), the non-chiral flavor symmetry is protected by the positivity
-structure of the Euclidean vectorlike theory.  With equal positive quark
-masses, the Euclidean functional integral contains
+At \(\theta=0\), the non-chiral flavor symmetry is constrained by the
+positivity structure of the Euclidean vectorlike theory.  The statement has a
+precise theorem boundary.
+
+\begin{hypothesis}[Euclidean measure needed for Vafa--Witten positivity]
+\label{hyp:vafa-witten-measure-data}
+For the vectorlike theory with equal positive quark masses \(m>0\), assume that
+there is a gauge-invariant Euclidean measure \(\dd\nu_m(A)\) on the regulated
+or continuum gauge-field configuration space such that:
+\begin{enumerate}[label=\roman*.]
+\item expectations of gauge-invariant polynomially bounded fermion bilinears
+and their source deformations are defined;
+\item the measure is reflection positive for a Euclidean time reflection.
+Thus OS reconstruction applies to the observables used in the argument;
+\item the massless Euclidean Dirac operator in a fixed gauge-field background
+is anti-Hermitian and has the usual vectorlike pairing of nonzero eigenvalues,
+so that
 \[
   \det(\not D_A+m)
+  =
+  \prod_{\lambda>0}(\lambda^2+m^2)\,m^{n_0(A)}
+  \geq0;
 \]
-for each flavor.  The nonzero eigenvalues of the anti-Hermitian Euclidean
-Dirac operator occur in pairs \(\ii\lambda,-\ii\lambda\), so the determinant is
-nonnegative.  For equal masses the expectation value of the flavor matrix
-\(\bar q_{R,J}q_{L,I}\) is proportional to \(\delta_{IJ}\) configuration by
-configuration after flavor averaging.  Taking the small-mass limit then
-selects a vacuum preserving \(SU(N_f)_V\).  This is the Vafa--Witten
-positivity argument in the form needed here.  It does not by itself prove the
-existence of the chiral condensate; it constrains the orientation of the
-condensate once the vectorlike massive regulator is used.
+\item the infinite-volume and small-mass limits used to select a phase exist
+for the order parameters under consideration.
+\end{enumerate}
+\end{hypothesis}
+
+At finite lattice spacing, these hypotheses are properties to verify for the
+chosen lattice gauge and fermion action; for the Wilson pure-gauge action the
+reflection-positivity mechanism was described in
+Chapter~\ref{ch:lattice-yang-mills-nonperturbative-definition}.  For the
+four-dimensional continuum gauge theory, the existence of
+\(\dd\nu_m(A)\) with the required positivity and scaling limits is part of the
+Yang--Mills/QCD construction problem.
+
+Under Hypothesis~\ref{hyp:vafa-witten-measure-data}, the determinant factor in
+each fixed gauge-field background is nonnegative, and for equal masses the
+fermion determinant and gauge measure are invariant under \(SU(N_f)_V\).  A
+vector-flavor-breaking external source may then be averaged over the compact
+vector flavor group without decreasing the Euclidean functional integral.  In
+the infinite-volume limit this convexity/positivity comparison rules out a
+lower vacuum energy for a vector-flavor-breaking orientation.  Taking the
+small-mass limit therefore selects, when the limit exists, a vacuum preserving
+\(SU(N_f)_V\).  This is the Vafa--Witten positivity argument in the form
+needed here.  It does not by itself prove the existence of the chiral
+condensate; it constrains the orientation of the condensate once the
+vectorlike massive regulator and its reflection-positive measure have been
+constructed.
 
 The complex phase of \(\Sigma_0\) is tied to the topological angle.  A
 flavor-singlet axial rotation would rotate \(\Sigma_0\), but the same

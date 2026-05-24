@@ -83,6 +83,7 @@
 | \(Q\) | electromagnetic flavor-charge matrix embedded as a vector flavor background |
 | \(\Gamma_{\mathrm{WZ}}\) | ungauged Wess--Zumino functional |
 | \(\Gamma_{\mathrm{WZW}}\) | gauged Wess--Zumino--Witten functional |
+| \(\dd\nu_m(A)\) | Euclidean vectorlike gauge-field measure with positive quark mass \(m\), used only under the Vafa--Witten positivity hypotheses |
 
 ## Claims Established
 
@@ -158,6 +159,10 @@
 - The electromagnetic specialization includes the microscopic quark triangle,
   \(\operatorname{Tr}(\sigma_3Q^2/2)=e^2/6\), and the local
   \(\pi^0\gamma\gamma\) vertex in the gauged WZW functional.
+- The Vafa--Witten positivity argument is conditional on a well-defined
+  gauge-invariant Euclidean vectorlike measure, reflection positivity, the
+  vectorlike Dirac determinant pairing, and existence of the volume/mass limits
+  used to select a phase.
 
 ## Figure And Render Checks
 
@@ -198,3 +203,8 @@
   explicit in the SU(2) mapping-torus and inflow formulas, and stated that the
   mod-two index is a function of the complete structured background rather
   than of an oriented manifold alone.
+- 2026-05-24 issue #264 pass: promoted the Vafa--Witten caveat into an
+  explicit hypothesis block.  The manuscript now states the required Euclidean
+  measure, reflection positivity/OS reconstruction input, determinant
+  positivity, and volume/mass-limit assumptions, and identifies continuum QCD
+  measure construction as part of the open four-dimensional problem.
