@@ -69,6 +69,11 @@
   on-shell Wightman distributions, and the \(s\)-channel physical cut is the
   subsum whose mixed lines separate the external labels into the chosen
   subprocesses.
+- The analytic amplitudes are exact Hilbert-space boundary values when
+  spectral/locality/LSZ hypotheses are being used; Landau and
+  Feynman-parameter discussions are coefficientwise perturbative graph
+  analyses with the status declared in
+  `def:scattering-time-ordered-correlator-status`.
 - Analyticity and crossing are used as structural hypotheses supported by
   locality, spectral support, LSZ, and perturbation theory; existing rigorous
   theorem sets cover only parts of the desired physical domain.
@@ -134,3 +139,9 @@
   chapter.
 - No attempt to make an axiomatic foundation out of perturbative Landau
   analysis.
+
+## Audit Notes
+
+- 2026-05-24 issue #319 pass: added a chapter-opening status reminder
+  separating exact Hilbert-space analytic boundary values from
+  coefficientwise perturbative Landau/Feynman-parameter graph analysis.

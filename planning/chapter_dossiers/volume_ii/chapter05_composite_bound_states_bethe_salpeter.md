@@ -81,6 +81,11 @@
 - The local attractive quartic example is interpreted inside a stable
   large-field completion, not as a nonperturbative negative-quartic scalar
   potential.
+- Time-ordered functions, residues, and bubble integrals use the status
+  convention declared in
+  `def:scattering-time-ordered-correlator-status`: exact pole statements are
+  spectral/LSZ statements, while the bubble-chain integral is a formal
+  regulated graph calculation of a time-ordered kernel.
 
 ## Claims to Derive
 
@@ -154,3 +159,7 @@
 - 2026-05-24 issue #509 pass: expanded the pole-factorization proof to show
   which channel spectral resolution is inserted and how time ordering plus
   the spectrum condition produce the Feynman \(i0\) prescription.
+- 2026-05-24 issue #319 pass: added a chapter-opening reminder that the
+  Bethe--Salpeter and bubble-chain objects inherit the scattering
+  time-ordered-correlator status convention rather than an implicit continuum
+  path-integral definition.

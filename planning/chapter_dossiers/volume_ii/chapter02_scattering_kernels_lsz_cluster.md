@@ -42,6 +42,11 @@
   compactly supported wave packets on mass shells.
 - Connected kernels are defined by cluster decomposition of scattering
   matrix elements, matching connected time-ordered Green functions under LSZ.
+- Time-ordered correlators used in the scattering chapters carry an explicit
+  status: exact Hilbert-space distributions with one-particle pole data,
+  Euclidean reconstructed distributions after OS/analytic-continuation
+  hypotheses, or formal/regulator-dependent perturbative coefficients.  No
+  path integral defines the Haag--Ruelle \(S\)-operator.
 - The physical cluster theorem is stated with the quantitative estimate needed
   to pass from finite-time almost-local products to Haag--Ruelle scattering
   states.
@@ -76,6 +81,10 @@
 - Kernel notation is shorthand for wave-packet distributions on mass shells.
 - LSZ gives connected scattering kernels by extracting one-particle pole
   residues from connected time-ordered Green functions.
+- The path-integral language used later for Feynman graphs and
+  Feynman-parameter integrals is coefficientwise perturbative input for
+  time-ordered kernels, not a nonperturbative definition of the scattering
+  operator.
 - The external normalizations are made explicit both in covariant kernel
   convention and in delta-normalized source convention.
 - Cluster decomposition expresses scattering kernels as sums over products of
@@ -109,3 +118,14 @@
 - No bound-state or resonance derivation.
 - No dispersion relation.
 - No infrared-inclusive or dressed charged scattering construction.
+
+## Audit Notes
+
+- 2026-05-24 issue #319 pass: added
+  `def:scattering-time-ordered-correlator-status` at the chapter opening.
+  The manuscript now declares that \(G_N^{\mathrm c}\), \(Z_\phi\), and
+  Feynman-parameter graph integrals in the scattering chapters are either
+  exact Hilbert-space distributions, Euclidean reconstructed distributions,
+  or formal/regulator-dependent perturbative coefficients.  The definition
+  also states explicitly that the path integral does not define the
+  Haag--Ruelle scattering operator.
