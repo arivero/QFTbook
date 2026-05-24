@@ -54,6 +54,7 @@
 | --- | --- |
 | \(\Phi^A\) | full set of fields, ghosts, nonminimal variables, and matter fields |
 | \(\Phi^*_A\) | antifield paired with \(\Phi^A\) |
+| \(B^a\) | Nakanishi--Lautrup even auxiliary integration variable in the nonminimal sector |
 | \(\epsilon_A\) | Grassmann parity of \(\Phi^A\) |
 | \(\mathcal F_{\rm BV}\) | graded algebra of local BV functionals |
 | \((F,G)\) | BV antibracket |
@@ -97,6 +98,10 @@
 - The nonminimal sector \((\bar c,B)\) and gauge-fixing fermion reproduce the
   Faddeev--Popov gauge-fixed action by restriction to a Lagrangian
   submanifold.
+- The nonminimal \(B^a\) variable is explicitly part of the gauge-fixed BV
+  integration sector, not an external source.  Its Gaussian integral is written
+  out and shown to remove \(B\) from the remaining path integral while
+  producing the standard covariant-gauge quadratic term.
 - A half-density on the odd symplectic BV space restricts canonically to a
   Berezin density on every gauge-fixing Lagrangian submanifold; this is the
   precise finite-regulator meaning of the BV integration measure.
@@ -145,3 +150,6 @@
   operator \(\Delta_{\sigma_0}\), the restriction
   \(D_{\sigma_0,\Psi}\Phi=\iota_\Psi^*\sigma_0\), and rewrote the 1PI and
   Wilsonian BV integrals in semidensity form.
+- 2026-05-24 issue #320 pass: declared the Nakanishi--Lautrup field \(B^a\) to
+  be a nonminimal auxiliary integration variable and added its Gaussian
+  elimination after BV gauge fixing.

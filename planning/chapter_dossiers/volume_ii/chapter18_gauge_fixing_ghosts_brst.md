@@ -100,7 +100,7 @@
 | \(\mathfrak F\) | fundamental modular domain of absolute minima of \(\|A^g\|^2\) along gauge orbits |
 | \(b_A\) | condensed-index antighost paired with \(F^A\), related to the conventional \(\bar c_A\) by \(b_A=\bar c_A\) in this chapter |
 | \(c,\bar c\) | odd adjoint-valued ghost and independent antighost fields |
-| \(B\) | Nakanishi--Lautrup auxiliary field |
+| \(B\) | Nakanishi--Lautrup auxiliary integration variable; Gaussian elimination removes it from the remaining gauge-fixed path integral |
 | \(s\) | BRST differential |
 | \(Q_B\) | BRST charge convention defined by \(\delta_B X=i\epsilon Q_B\cdot X\), so \(Q_B=-is\) classically |
 | \(\Psi\) | gauge-fixing fermion |
@@ -184,6 +184,11 @@
 - The gauge-fixing and ghost action is \(s\)-exact after introducing the
   Nakanishi--Lautrup field, equivalently
   \(S_{\rm GF}=-iQ_B\cdot(b_AF^A)\) in the \(Q_B\) convention.
+- The Nakanishi--Lautrup field is now declared to be an integrated auxiliary
+  variable, not an external source.  The manuscript writes the fixed-regulator
+  Gaussian \(B\)-integral explicitly and shows that it produces the usual
+  \(-(\partial A)^2/(2g_{\rm YM}^2\xi)\) covariant-gauge term, up to the
+  field-independent normalization.
 - Transition amplitudes between BRST-closed boundary states are independent of
   infinitesimal deformations of the gauge-fixing functional, assuming BRST
   invariance of the measure and no field-space boundary contribution.
@@ -344,3 +349,6 @@
   adding a Sobolev Coulomb-slice local-chart theorem, deriving the Landau
   first Gribov region from the norm-functional Hessian, adding the
   Gribov/FMD figure, and making the abelian Maxwell contrast explicit.
+- 2026-05-24 issue #320 pass: declared \(B\) to be an integrated
+  Nakanishi--Lautrup auxiliary variable and added the explicit Gaussian
+  elimination formula in the covariant-gauge path integral.

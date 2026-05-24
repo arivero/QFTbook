@@ -427,6 +427,11 @@ The total classical BV action is
 \[
   S_{\rm BV}=S_{\rm min}+S_{\rm nm}.
 \]
+In a gauge-fixed BV functional integral the variables \(\bar c^a\) and \(B^a\)
+belong to the nonminimal integration sector.  The field \(B^a\) is an even
+auxiliary integration variable, not an external source.  Its purpose is to
+make the nonminimal BRST pair off-shell contractible and to write the
+gauge-fixing term before completing the square.
 
 \begin{definition}[Gauge-fixing fermion]
 A gauge-fixing fermion is an odd functional \(\Psi[\Phi]\) of ghost number
@@ -471,10 +476,31 @@ in the BRST chapter, gives
   \right]\dd^D x .
 \]
 Thus the Faddeev--Popov action is the restriction of the BV action to a
-gauge-fixing Lagrangian submanifold.  Different gauge choices correspond to
-different Lagrangian submanifolds.  They define equivalent physical
-cohomology when the BV integral has no boundary contribution and the quantum
-master equation is preserved.
+gauge-fixing Lagrangian submanifold.  At fixed regulator, the subsequent
+integration over \(B\) is Gaussian:
+\[
+  \int[DB]\,
+  \exp\left\{
+  \ii\int_M
+  \left[
+  B^a\partial^\mu A_\mu^a
+  +
+  \frac{g_{\rm YM}^2\xi}{2}B^aB^a
+  \right]\dd^D x
+  \right\}
+  =
+  \mathcal N_B(\xi)\,
+  \exp\left\{
+  -\frac{\ii}{2g_{\rm YM}^2\xi}
+  \int_M(\partial^\mu A_\mu^a)^2\,\dd^D x
+  \right\}.
+\]
+After this auxiliary integral is performed, \(B\) is no longer a remaining
+field variable in the gauge-fixed path integral; retaining it instead is an
+equivalent first-order presentation of the same regularized Gaussian factor.
+Different gauge choices correspond to different Lagrangian submanifolds.  They
+define equivalent physical cohomology when the BV integral has no boundary
+contribution and the quantum master equation is preserved.
 
 \begin{figure}[H]
   \centering

@@ -545,6 +545,11 @@ The field \(c^\alpha\) is the ghost associated with the gauge parameter
   \exp\bigl(\ii B_A F^A[\phi]\bigr).
   \label{eq:delta-functional-b-field}
 \end{equation}
+The field \(B_A\) is not an external background field or a new physical
+degree of freedom.  It is an integrated auxiliary variable in the local
+gauge-fixed functional integral.  Keeping it in the formula gives a polynomial
+local action and off-shell BRST nilpotency; carrying out the \(B\)-integration
+returns the delta functional imposing the sharp slice \(F^A[\phi]=0\).
 The gauge-fixed action in these condensed variables is therefore
 \begin{equation}
   S_{\mathrm{tot}}[\phi,B,b,c]
@@ -643,7 +648,30 @@ the gauge-fixing and ghost Lagrangian density can be written
   -\bar c^a\,\partial^\mu D_\mu^{ab}(A)c^b .
   \label{eq:gf-ghost-lagrangian}
 \end{equation}
-Eliminating \(B\) by its algebraic equation of motion gives
+At fixed regulator the covariant-gauge functional integral contains the
+ordinary auxiliary integration over \(B\):
+\begin{equation}
+  \int[DB]\,
+  \exp\left\{
+  \ii\int_M
+  \left[
+  B^a\partial^\mu A_\mu^a
+  +\frac{g_{\mathrm{YM}}^2\xi}{2}B^aB^a
+  \right]\dd^D x
+  \right\}
+  =
+  \mathcal N_B(\xi)\,
+  \exp\left\{
+  -\frac{\ii}{2g_{\mathrm{YM}}^2\xi}
+  \int_M(\partial^\mu A_\mu^a)^2\,\dd^D x
+  \right\},
+  \label{eq:nakanishi-lautrup-gaussian-integral}
+\end{equation}
+with the oscillatory Gaussian contour, or its Wick-rotated regulator-level
+version, fixed as part of the path integral.  The factor
+\(\mathcal N_B(\xi)\) is independent of \(A\) and cancels from normalized
+correlators.  Equivalently, completing the square and using the algebraic
+stationary equation gives
 \[
   B^a=-\frac1{g_{\mathrm{YM}}^2\xi}\partial^\mu A_\mu^a,
   \qquad
@@ -652,9 +680,12 @@ Eliminating \(B\) by its algebraic equation of motion gives
   -\frac1{2g_{\mathrm{YM}}^2\xi}
   (\partial^\mu A_\mu^a)(\partial^\nu A_\nu^a),
 \]
-and Landau gauge is the limiting gauge condition obtained by taking
-\(\xi\to0\) after the regulated Gaussian \(B\)-field integral has been
-defined.
+so the \(B\)-field has been Gaussian-integrated out and no longer appears
+among the remaining integration variables.  Landau gauge is the limiting gauge
+condition obtained by taking \(\xi\to0\) after the regulated Gaussian
+\(B\)-field integral has been defined; in that limit the Gaussian becomes the
+Fourier representation of the delta functional imposing
+\(\partial^\mu A_\mu^a=0\).
 Setting \(g_{\mathrm{YM}}=1\), or rescaling the gauge potential to canonical
 quadratic normalization, gives the more common version without the displayed
 factor of \(g_{\mathrm{YM}}^2\) in the \(B^2\) term.
