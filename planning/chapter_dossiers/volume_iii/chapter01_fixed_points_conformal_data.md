@@ -61,11 +61,14 @@ The chapter establishes:
   four dimensions, and gauge/supersymmetric fixed-point constructions used
   only with their stress-tensor, positivity, locality, spectrum, and Ward-data
   hypotheses stated.
-- The displayed \(D=3\) Ising numerical entries are rounded from the
-  mixed-correlator conformal-bootstrap/stress-tensor computation
-  "Bootstrapping the 3d Ising Stress Tensor" by Chang, Dommes, Erramilli,
-  Homrich, Kravchuk, Liu, Mitchell, Poland, and Simmons-Duffin
-  (arXiv:2411.15300), which reports
+- The displayed \(D=3\) Ising numerical entries are rounded from
+  mixed-correlator numerical conformal-bootstrap data.  The manuscript states
+  the operative input: crossing symmetry and reflection positivity for mixed
+  correlators of \(\sigma\), \(\varepsilon\), and \(T_{\mu\nu}\), finite
+  semidefinite relaxations, and gap assumptions defining the numerical search.
+  The computation cited is "Bootstrapping the 3d Ising Stress Tensor" by
+  Chang, Dommes, Erramilli, Homrich, Kravchuk, Liu, Mitchell, Poland, and
+  Simmons-Duffin, JHEP 03 (2025) 136 (arXiv:2411.15300), which reports
   \(\Delta_\sigma=0.518148806(24)\) and
   \(\Delta_\varepsilon=1.41262528(29)\), giving
   \(\nu=1/(3-\Delta_\varepsilon)=0.629970975\ldots\).
@@ -129,3 +132,7 @@ The chapter establishes:
   formulated \(2D\) \(c\)-function, \(3D\) entropic \(F\)-monotone, and
   \(4D\) Komargodski--Schwimmer \(a_{\rm W}\)-monotonicity argument, with
   assumptions and endpoint meanings stated.
+- 2026-05-24 issue #282 pass: strengthened the \(D=3\) Ising numerical
+  provenance remark to identify the conformal-bootstrap constraints and
+  semidefinite relaxations behind the displayed values, and to separate those
+  numerical CFT data from a constructive proof of the lattice scaling limit.
