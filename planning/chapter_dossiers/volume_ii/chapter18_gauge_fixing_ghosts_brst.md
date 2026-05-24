@@ -104,6 +104,12 @@
   \(s\Psi\) convention in the Minkowski weight, up to field-independent
   Grassmann-Gaussian normalization.  The \(b_A=-\bar c_A\) sign convention is
   explicit.
+- The nonabelian covariant Faddeev--Popov operator
+  \(\partial^\mu D_\mu^{ab}(A)\) depends on the gauge field.  This is the
+  structural difference from the abelian Maxwell linear-gauge case, where the
+  determinant is field-independent and ghosts decouple.  In Yang--Mills theory
+  the \(A\)-dependent determinant is represented by dynamical ghost fields with
+  local ghost-gluon interactions.
 - The BRST differential is an odd ghost-number-one derivation with \(s^2=0\);
   the chapter now derives nilpotency on general fields in condensed notation,
   on \(c\), on \(A_\mu\), and on matter fields from the Jacobi identity, the
@@ -152,3 +158,7 @@
   slice versus global section, gives the first Gribov region and fundamental
   modular domain, and explicitly states that the path-integral formulae in the
   chapter are locally valid perturbative Faddeev--Popov coordinates.
+- 2026-05-24 issue #244 pass: added the explicit abelian/nonabelian
+  Faddeev--Popov contrast.  The manuscript now points back to the Maxwell
+  linear-gauge determinant and states that nonabelian \(A\)-dependence is why
+  ghosts are dynamical rather than a field-independent normalization.
