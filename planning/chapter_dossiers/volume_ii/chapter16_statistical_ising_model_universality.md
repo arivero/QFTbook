@@ -28,6 +28,9 @@
 The chapter must define and derive:
 
 - the finite-volume statistical Ising ensemble on a \(D\)-dimensional lattice;
+- its status as the finite-lattice row of
+  `tab:regulator-integration-status-catalog`: an ordinary finite probability
+  measure before thermodynamic or scaling limits;
 - the role of boundary conventions in \(E(\Lambda)\) and thermodynamic
   limits;
 - the equivalent finite-dimensional diagonal-operator trace notation;
@@ -98,7 +101,8 @@ The chapter must define and derive:
 
 1. A finite Ising model is a classical probability measure on spin
    configurations; diagonal-operator notation is exact finite-dimensional
-   bookkeeping.
+   bookkeeping.  Its use as a continuum-QFT regulator requires separate
+   thermodynamic and scaling-limit hypotheses.
 2. Canonical weights arise from maximizing entropy at fixed expected energy.
 3. The low-temperature ordered phase is defined by infinite-volume limits with
    boundary conditions or a symmetry-breaking field before the thermodynamic

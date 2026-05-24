@@ -108,6 +108,63 @@ corresponding regulated integration object and its algebraic or analytic
 status separately.
 \end{definition}
 
+\begin{table}[H]
+\centering
+\footnotesize
+\begin{minipage}{0.94\textwidth}
+\textbf{Finite lattice or finite spin system.}
+The object is a finite product of site variables, link variables, or spins.
+The measure is an ordinary finite product measure, counting measure, compact
+Haar measure, or finite-dimensional density.  Thermodynamic and continuum
+limits are separate questions.\par\smallskip
+
+\textbf{Finite Fourier-mode cutoff.}
+At finite volume and finite mode number, this is a finite-dimensional field
+space with a reference density and, after the quadratic part is chosen, a
+Gaussian measure.  Sharp momentum cutoffs are useful perturbatively but need
+not preserve locality or reflection positivity.\par\smallskip
+
+\textbf{Smooth covariance or Wilsonian cutoff.}
+A profile such as
+\(C_\Lambda(k)=\chi(k^2/\Lambda^2)/(k^2+m^2)\) defines a regulated covariance.
+With a genuine finite regulator it gives a Gaussian measure or density; in
+continuum perturbation theory it is a covariance assignment for graphs and
+Wilsonian pushforwards.\par\smallskip
+
+\textbf{Heat-kernel, spectral, or point-splitting cutoff.}
+These are smoothing kernels, finite-rank projectors, or separated insertion
+prescriptions.  They regulate kernels, traces, determinants, or composite
+operators; they are not automatically measures on field configurations.\par\smallskip
+
+\textbf{Dimensional regularization.}
+This is a meromorphic assignment to perturbative graph distributions, with
+specified tensor, spinor, polarization, and external-state algebra in
+\(D=d-\varepsilon\).  It is not a Borel measure, not a Berezin measure, and
+not a measure on a noninteger-dimensional field-configuration space.\par\smallskip
+
+\textbf{BPHZ, momentum subtraction, MS.}
+These are subtraction and coordinate schemes imposed on already specified
+amplitudes or graph distributions.  They are not by themselves regulators of
+a field measure.
+\end{minipage}
+\caption{Regulator and subtraction classes used in the monograph.  The
+catalog names the object that exists before a limit is taken or before a
+formal expansion is interpreted, and separates cutoff measures from regulated
+covariances, operator-insertion regulators, dimensional regularization, and
+subtraction prescriptions.}
+\label{tab:regulator-integration-status-catalog}
+\end{table}
+
+Table~\ref{tab:regulator-integration-status-catalog} controls the shorthand
+used later.  A formula written with a lattice spacing, a Fourier cutoff, or a
+smooth covariance cutoff may denote an actual finite-regulator integral only
+after the finite field space and density have been specified.  A formula
+written in dimensional regularization denotes a perturbative meromorphic graph
+assignment; it is not an integral over a noninteger-dimensional space of
+fields.  A subtraction prescription is a further coordinate choice on
+regulated or meromorphic data, not a replacement for stating what was
+regulated.
+
 At fixed finite-dimensional \(\Lambda\), the field theory is represented by a
 quantum-mechanical system with finitely many coordinates.  Choose a time
 partition

@@ -34,6 +34,10 @@ The chapter must define:
 - regulator choices \(\Lambda\) and \(D=d-\varepsilon\);
 - the finite-dimensional renormalized coordinate domain \(U\) and the
   regulator-dependent bare coordinate maps \(b_\Lambda,b_\varepsilon\);
+- the distinction, cross-referenced to
+  `tab:regulator-integration-status-catalog`, between cutoff regulators that
+  may define finite field integrals and dimensional regularization as a
+  meromorphic perturbative graph assignment;
 - renormalized field \(\phi_R=Z_R^{-1/2}\phi\);
 - the effective action \(\widetilde\Gamma[\phi_R]=\Gamma[Z_R^{1/2}\phi_R]\);
 - the distinction between full distributional Green-function finiteness and
@@ -97,6 +101,9 @@ The chapter must define:
     remaining propagator leaves a finite integral.
 12. Dimensional regularization exposes the pole part as a polynomial
     \(A_\varepsilon k^2+B_\varepsilon m_R^2\), hence as local.
+12a. Dimensional regularization is not used as a measure on
+     \(\mathcal F_\Lambda\); in this chapter it is a formal perturbative
+     analytic regularization of graph distributions and tensor algebra.
 13. In the two-loop diamond graph, Schwinger-parameter subdivergences occur
     when subgraph parameters shrink; counterterm insertions subtract these
     limiting pieces before the overall divergence is treated.
@@ -143,3 +150,6 @@ The chapter must define:
   scalar notation by \(D_\Lambda^{\rm ref}\phi\) in the regulated action
   setup and cross-referenced the central distinction among reference density,
   Gaussian measure, and full Euclidean density.
+- 2026-05-24 issue #313 pass: cross-referenced the master regulator-status
+  table and made explicit that dimensional regularization is formal
+  perturbative analytic continuation, not a path-integral measure.

@@ -31,6 +31,10 @@
 The chapter must define:
 
 - the ambient Euclidean perturbative setting and UV regulator;
+- the status of that UV regulator as a cutoff class from
+  `tab:regulator-integration-status-catalog`, with dimensional
+  regularization separated as meromorphic graph assignment rather than a
+  finite-regulator measure;
 - the bare and renormalized scalar quartic Lagrangian in four dimensions;
 - the exact connected two-point function, the self-energy
   \(\Sigma_R(k)\), and the scale-dependent field normalization \(Z(\mu)\);
@@ -86,6 +90,10 @@ The chapter must define:
 1. A scale-dependent 1PI coupling is a renormalized coordinate obtained by
    evaluating a specified 1PI vertex, with external field normalization fixed
    at the same scale.
+1a. The symbol \(\Lambda\) denotes a cutoff regulator class; when the
+    calculation is done dimensionally, the regulated object is a formal
+    meromorphic graph assignment in \(D=d-\varepsilon\), not a measure on
+    fields.
 2. In four-dimensional scalar quartic theory, the one-loop four-point bubble
    changes the quartic coordinate while \(Z(\mu)=1+O(g_R^2)\) at that order.
 3. The corresponding one-loop two-point tadpole is independent of \(k^2\), so
