@@ -141,10 +141,10 @@ cutoff dependence.
       \draw[thick] (0.55,0.65)--(2.2,0.65);
       \node at (0,0.65) {\(\Sigma\)};
       \node[align=center] at (0,-0.45)
-        {\(Z(\mu)=\left(1-\partial_{k^2}\Sigma_R\right)^{-1}\)\\
+        {\(Z_{\rm MOM}(\mu)=\left(1-\partial_{k^2}\Sigma_R\right)^{-1}\)\\
          at \(k^2=\mu^2\)};
       \node[blue!70!black] at (0,-1.35)
-        {\([\phi]_\mu=Z(\mu)^{-1/2}\phi_R\)};
+        {\([\phi]_\mu=Z_{\rm MOM}(\mu)^{-1/2}\phi_R\)};
     \end{scope}
 
     \begin{scope}[shift={(5.2,0)}]
@@ -240,13 +240,13 @@ The connected two-point function is written in the form
 which defines the self-energy \(\Sigma_R(k)\) in this convention.  The
 scale-dependent normalization is
 \[
-  Z(\mu)
+  Z_{\rm MOM}(\mu)
   =
   \left(
     1-\frac{\partial\Sigma_R}{\partial k^2}
   \right)^{-1}_{k^2=\mu^2},
   \qquad
-  [\phi]_\mu=Z(\mu)^{-1/2}\phi_R .
+  [\phi]_\mu=Z_{\rm MOM}(\mu)^{-1/2}\phi_R .
 \]
 Thus the 1PI effective action, when viewed as a functional of
 \([\phi]_\mu\), has a canonically normalized quadratic term at momenta
@@ -277,7 +277,7 @@ The running quartic coupling in this momentum-subtraction scheme is
 \[
   g(\mu)
   =
-  -Z(\mu)^2
+  -Z_{\rm MOM}(\mu)^2
   \Gamma_R^{(4)}(k_1,k_2,k_3)
   \bigg|_{k_i^2=\mu^2,\;s=t=u=-\frac43\mu^2}.
 \]
@@ -298,7 +298,7 @@ two-point tadpole is independent of \(k^2\).  Therefore
 \[
   Z_R=1+O(g_R^2),
   \qquad
-  Z(\mu)=1+O(g_R^2)
+  Z_{\rm MOM}(\mu)=1+O(g_R^2)
 \]
 for the one-loop computation of \(g(\mu)\).
 
@@ -574,6 +574,40 @@ invisible to perturbation theory, is not settled by this theorem.
 
 \section{General 1PI Coordinates}
 
+\begin{definition}[Field-normalization factors]
+\label{def:three-field-normalization-factors}
+Three field-normalization factors occur in this chapter, and they have
+different domains of definition.
+\begin{center}
+\begin{tabular}{p{0.18\textwidth}p{0.72\textwidth}}
+\(\text{symbol}\) & meaning \\
+\hline
+\(Z_R\) &
+Cutoff-dependent factor used in the initial renormalization convention, for
+example \(\phi_R=Z_R^{-1/2}\phi\) in the scalar quartic example. \\
+\(Z_{\rm MOM}(\mu)\) &
+Finite momentum-subtraction rescaling between an already renormalized reference
+field and the scale-\(\mu\) 1PI coordinate field:
+\([\phi]_\mu=Z_{\rm MOM}(\mu)^{-1/2}\phi_R^{\rm ref}\). \\
+\(Z_\phi\) &
+Total bare-to-renormalized field factor used in the Callan--Symanzik equation
+for the selected chart:
+\(\phi_R^{\rm chart}=Z_\phi^{-1/2}\phi_0\).
+\end{tabular}
+\end{center}
+Thus \(Z_R\) and \(Z_{\rm MOM}(\mu)\) are not equal as written.  If
+\(\phi_R^{\rm ref}=(Z_\phi^{\rm ref})^{-1/2}\phi_0\), then the chart whose
+elementary field is \([\phi]_\mu\) has the total factor
+\[
+  Z_\phi^{\rm chart}
+  =
+  Z_\phi^{\rm ref}\,Z_{\rm MOM}(\mu).
+\]
+If the reference field is itself defined by the same momentum-subtraction
+condition at \(\mu=\mu_{\rm ref}\), then \(Z_{\rm MOM}(\mu_{\rm ref})=1\); the
+cutoff dependence is in \(Z_\phi^{\rm ref}\), not in the finite rescaling.
+\end{definition}
+
 Let a regulated Euclidean action be written as
 \[
   S_\Lambda[\phi]
@@ -591,7 +625,7 @@ coordinate at scale \(\mu\) is extracted from the \(n_I\)-point vertex by
   =
   \Pi_I
   \left[
-    Z(\mu)^{n_I/2}\,
+    Z_{\rm MOM}(\mu)^{n_I/2}\,
     \Gamma^{(n_I)}(k_1,\ldots,k_{n_I})
   \right]_{\mathcal S_{I,\mu}} .
 \]
@@ -611,16 +645,16 @@ self-energy convention used above.  Its 1PI Taylor coefficient at
   \frac{\partial\Sigma}{\partial k^2}
   \right|_{k^2=\mu^2}
   =
-  1-Z(\mu)^{-1}.
+  1-Z_{\rm MOM}(\mu)^{-1}.
 \]
 With the minus sign included in the quadratic-coordinate projector, the
 corresponding renormalized coordinate is
 \[
   g_{2,2}(\mu)
   =
-  -Z(\mu)\left(1-Z(\mu)^{-1}\right)
+  -Z_{\rm MOM}(\mu)\left(1-Z_{\rm MOM}(\mu)^{-1}\right)
   =
-  1-Z(\mu).
+  1-Z_{\rm MOM}(\mu).
 \]
 This is the same field-normalization information expressed as a 1PI
 coordinate.  Second, for the mass operator with bare coefficient
@@ -628,7 +662,7 @@ coordinate.  Second, for the mass operator with bare coefficient
 \[
   \lambda_2(\mu)
   =
-  \mu^{-2}Z(\mu)
+  \mu^{-2}Z_{\rm MOM}(\mu)
   \left[
     g_2^{\rm bare}
     -
@@ -769,12 +803,13 @@ The beta function is a vector field on the renormalized coordinate space.  Its
 action on correlation functions follows from the same construction of
 renormalized coordinates.
 
-There are two logically distinct field factors in the preceding discussion.
-The factor \(Z(\mu)\) is finite after renormalization; it relates an already
+There are two logically distinct field factors in the preceding discussion,
+after the reference renormalization convention has been chosen.  The factor
+\(Z_{\rm MOM}(\mu)\) is finite after renormalization; it relates an already
 renormalized reference field \(\phi_R^{\rm ref}\) to the momentum-subtraction
 field used in the scale-\(\mu\) coordinate chart,
 \[
-  [\phi]_\mu=Z(\mu)^{-1/2}\phi_R^{\rm ref}.
+  [\phi]_\mu=Z_{\rm MOM}(\mu)^{-1/2}\phi_R^{\rm ref}.
 \]
 The factor denoted \(Z_\phi\) in the Callan--Symanzik equation is instead the
 cutoff-dependent total factor that relates the regulated bare field to the
@@ -789,18 +824,19 @@ has
 \[
   [\phi]_\mu
   =
-  \bigl(Z_\phi^{\rm ref}(\lambda,\mu_{\rm ref},\Lambda)\,Z(\mu)\bigr)^{-1/2}
+  \bigl(Z_\phi^{\rm ref}(\lambda,\mu_{\rm ref},\Lambda)\,
+  Z_{\rm MOM}(\mu)\bigr)^{-1/2}
   \phi_0 .
 \]
 Thus, in that chart,
 \[
   Z_\phi^{\rm chart}(\lambda(\mu),\mu,\Lambda)
   =
-  Z_\phi^{\rm ref}(\lambda,\mu_{\rm ref},\Lambda)\,Z(\mu).
+  Z_\phi^{\rm ref}(\lambda,\mu_{\rm ref},\Lambda)\,Z_{\rm MOM}(\mu).
 \]
 Below the superscript ``chart'' is suppressed: \(Z_\phi\) always denotes the
 total bare-to-renormalized field factor for the correlation functions being
-studied, while \(Z(\mu)\) denotes the finite momentum-subtraction rescaling
+studied, while \(Z_{\rm MOM}(\mu)\) denotes the finite momentum-subtraction rescaling
 appearing in the 1PI vertex coordinates.
 
 Let \(\phi_0\) be the regulated bare scalar field.  Let \(\phi_R\) now denote

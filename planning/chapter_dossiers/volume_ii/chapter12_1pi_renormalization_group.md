@@ -37,8 +37,10 @@ The chapter must define:
   finite-regulator measure;
 - the bare and renormalized scalar quartic Lagrangian in four dimensions;
 - the exact connected two-point function, the self-energy
-  \(\Sigma_R(k)\), and the scale-dependent field normalization \(Z(\mu)\);
-- the scale-normalized field \([\phi]_\mu=Z(\mu)^{-1/2}\phi_R\);
+  \(\Sigma_R(k)\), and the finite momentum-subtraction field normalization
+  \(Z_{\rm MOM}(\mu)\);
+- the scale-normalized field
+  \([\phi]_\mu=Z_{\rm MOM}(\mu)^{-1/2}\phi_R\);
 - the symmetric Euclidean subtraction point for the four-point 1PI vertex;
 - the running quartic coupling \(g(\mu)\) as a coordinate on the 1PI effective
   action;
@@ -59,7 +61,11 @@ The chapter must define:
 - dimensionless coordinates
   \(\lambda_I(\mu)=\mu^{d_I-D}g_I(\mu)\);
 - a renormalization chart for connected noncoincident correlators, including
-  the bare-to-renormalized parameter map and field factor \(Z_\phi\);
+  the bare-to-renormalized parameter map and total field factor \(Z_\phi\);
+- the translation among \(Z_R\), \(Z_{\rm MOM}(\mu)\), and \(Z_\phi\): \(Z_R\)
+  belongs to an initial cutoff-dependent reference convention,
+  \(Z_{\rm MOM}(\mu)\) is finite after renormalization, and \(Z_\phi\) is the
+  total bare-to-chart field factor used in the Callan--Symanzik equation;
 - the Callan--Symanzik equation derived from \(\mu\)-independence of bare
   correlators, with the derivative conventions stated;
 - the separation between auxiliary-scale dependence and dimensional
@@ -95,7 +101,8 @@ The chapter must define:
     meromorphic graph assignment in \(D=d-\varepsilon\), not a measure on
     fields.
 2. In four-dimensional scalar quartic theory, the one-loop four-point bubble
-   changes the quartic coordinate while \(Z(\mu)=1+O(g_R^2)\) at that order.
+   changes the quartic coordinate while
+   \(Z_{\rm MOM}(\mu)=1+O(g_R^2)\) at that order.
 3. The corresponding one-loop two-point tadpole is independent of \(k^2\), so
    it does not change the field normalization at this order.
 4. The relation between \(g(\mu')\) and \(g(\mu)\) is finite after the UV
@@ -129,9 +136,9 @@ The chapter must define:
    autonomous beta function once explicit dimensionful ratios are encoded in
    the coordinate choice or treated as additional couplings.
 11. The quadratic derivative coordinate satisfies
-    \(g_{2,2}(\mu)=1-Z(\mu)\) in the chapter's self-energy and projector
+    \(g_{2,2}(\mu)=1-Z_{\rm MOM}(\mu)\) in the chapter's self-energy and projector
     convention; the mass coordinate is
-    \(\lambda_2(\mu)=\mu^{-2}Z(\mu)
+    \(\lambda_2(\mu)=\mu^{-2}Z_{\rm MOM}(\mu)
     [g_2^{\rm bare}-\Sigma(k)|_{k^2=\mu^2}]\).
 12. The Callan--Symanzik equation for noncoincident elementary-field
     correlators follows from differentiating
@@ -244,3 +251,8 @@ The chapter must define:
   are coordinate-dependent when the linear beta-function matrix is present,
   and why the single-coupling two-loop invariant does not become a
   componentwise multi-coupling invariant.
+- 2026-05-24 issue #352 pass: renamed the finite momentum-subtraction
+  field-rescaling factor in this chapter to \(Z_{\rm MOM}(\mu)\) and added
+  Definition~\ref{def:three-field-normalization-factors} to separate it from
+  the cutoff-dependent reference factor \(Z_R\) and the total
+  Callan--Symanzik field factor \(Z_\phi\).
