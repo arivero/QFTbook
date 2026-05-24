@@ -81,6 +81,9 @@ The chapter must define and derive:
 - the comparison table for \(d=4-\epsilon\), \(d=3\), and \(d=2\), with the
   last two rows explicitly not presented as consequences of the first-order
   epsilon expansion.
+- the asymptotic status of the Wilson--Fisher epsilon expansion and the
+  separate role of resummation when extracting finite-\(\epsilon\) numerical
+  estimates.
 - scaling coordinates as a finite local RG chart: the projected beta vector
   field, its linearization at the fixed point, relevant eigenvalues
   \(y_A=D-\Delta_A\), irrelevant eigenvalues
@@ -117,6 +120,10 @@ The chapter must define and derive:
 12. A finite critical surface is an endpoint condition \(u(\mu_R)=0\) in a
     local RG chart, with the codimension determined by the relevant
     coordinates allowed by the imposed symmetry.
+13. The epsilon expansion is a small-\(\epsilon\) asymptotic expansion unless a
+    stronger summability result is stated.  The \(d=3\) and \(d=2\) entries in
+    the dimension table are not obtained by evaluating a convergent Taylor
+    series at \(\epsilon=1,2\).
 
 ## Figure Requirements
 
@@ -148,6 +155,9 @@ The chapter must define and derive:
   low-lying dimension table.
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
+- Do not present the epsilon expansion as convergent.  If numerical
+  finite-\(\epsilon\) extraction is discussed, state the resummation
+  prescription and assumptions.
 - Do not present composite operators as unregulated products of fields.
 - Do not describe the Wilson-Fisher fixed point as an attractor for arbitrary
   massive scalar theories; the mass direction must be tuned away.
@@ -162,3 +172,7 @@ The chapter must define and derive:
   powers between \(\Lambda_0\) and \(\mu_R\).  This prepares the Ising
   universality statement to use the Wilsonian cutoff-removal estimate without
   treating universality as an informal identification of microscopic actions.
+- 2026-05-24 issue pass: addressed #222 by qualifying the Wilson--Fisher
+  dimension table with the asymptotic nature of the epsilon expansion and the
+  need for separate Borel/conformal-Borel resummation assumptions at
+  \(\epsilon=1\).

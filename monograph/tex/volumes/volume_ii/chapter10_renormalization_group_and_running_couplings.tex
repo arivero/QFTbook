@@ -1147,6 +1147,96 @@ observables, fixed-point eigenvalues, anomaly classes, and other invariant data
 are extracted.
 \end{remark}
 
+\section{Perturbative Series as Asymptotic Data}
+
+The beta functions, anomalous dimensions, fixed-point coordinates, and
+critical exponents computed in the preceding and following chapters are
+usually obtained as formal expansions.  The meaning of such an expansion must
+be specified separately from the rules used to compute its coefficients.
+
+\begin{definition}[Asymptotic expansion]
+Let \(A(g)\) be defined for \(g\) in a sector \(S\subset\mathbb C\) whose
+closure contains \(g=0\), and let \(\sum_{n\ge0}a_n g^n\) be a formal power
+series.  The series is an asymptotic expansion of \(A\) in \(S\) if, for every
+\(N\ge0\),
+\[
+  A(g)-\sum_{n=0}^{N}a_ng^n
+  =
+  o(g^N)
+  \qquad (g\to0,\ g\in S')
+\]
+on every closed subsector \(S'\) strictly contained in \(S\).  A stronger
+version replaces \(o(g^N)\) by \(O(g^{N+1})\) with constants depending on
+\(N\) and \(S'\).
+\end{definition}
+
+An asymptotic expansion need not converge.  Even when it determines every
+coefficient \(a_n\), it does not by itself determine the function \(A\):
+functions differing by terms such as \(\exp(-c/g)\), with \(c>0\) in the
+sector under consideration, have the same power-series asymptotic expansion at
+the origin.  Such nonperturbative terms are invisible to all orders in
+ordinary perturbation theory.
+
+The common mechanism behind divergence is factorial growth of coefficients.
+In finite-dimensional integrals and in many field-theoretic expansions, the
+number of diagrams grows factorially.  In examples where the saddle analysis
+of the analytically continued action is under control, the large-order
+coefficients have the form
+\[
+  a_n\sim C\,(-A)^{-n}\,\Gamma(n+b)
+\]
+for constants \(A,C,b\) depending on the observable and on the expansion
+coordinate.  Dyson's instability argument for QED is the simplest physical
+warning: if a perturbative series in \(e^2\) had a nonzero radius of
+convergence around \(e^2=0\), it would analytically continue to negative
+\(e^2\), where like charges attract and the vacuum is not stable in the same
+way.\footnote{See F.~J.~Dyson, ``Divergence of perturbation theory in quantum
+electrodynamics,'' \emph{Phys. Rev.} \textbf{85} (1952) 631--632,
+doi:10.1103/PhysRev.85.631.  For explicit large-order analysis in closely
+related settings, see C.~M.~Bender and T.~T.~Wu, ``Anharmonic oscillator,''
+\emph{Phys. Rev.} \textbf{184} (1969) 1231--1260, doi:10.1103/PhysRev.184.1231,
+and L.~N.~Lipatov, ``Divergence of the perturbation-theory series and the
+quasiclassical theory,'' \emph{Sov. Phys. JETP} \textbf{45} (1977) 216--223.}
+This argument is not a theorem about every renormalized quantity in every QFT;
+it is a structural reason not to identify perturbation theory with a convergent
+definition unless convergence or summability has actually been proved.
+
+One possible reconstruction mechanism is Borel summation.  Given
+\[
+  A_{\rm formal}(g)=\sum_{n\ge0}a_n g^n,
+\]
+its Borel transform is
+\[
+  \mathcal B A(t)=\sum_{n\ge0}\frac{a_n}{n!}t^n.
+\]
+If this series has a nonzero convergence radius, admits analytic continuation
+along the positive real \(t\)-axis, has suitable growth bounds, and has no
+obstructing singularities on the integration ray, one may define
+\[
+  A_{\rm Borel}(g)
+  =
+  \frac1g\int_0^\infty \dd t\,
+  \ee^{-t/g}\,\mathcal B A(t),
+  \qquad \Re g>0 .
+\]
+Then \(A_{\rm Borel}\) has the original formal series as an asymptotic
+expansion.  Borel summability is therefore an additional analytic theorem, not
+a consequence of having Feynman rules.  For particular stable
+superrenormalizable Euclidean scalar models, Borel summability of suitable
+Schwinger functions has been proved by constructive methods.  In general
+renormalized four-dimensional theories, gauge theories, and massless problems,
+summability must be studied with the ultraviolet, infrared, and scheme data
+specified.
+
+In this monograph a displayed perturbative beta function or critical exponent
+has the following default meaning unless a stronger statement is stated: it is
+a coefficientwise construction in a specified regularized and renormalized
+chart, giving an asymptotic small-coupling expansion or an effective
+finite-order approximation in its stated domain.  A finite truncation can be
+useful and sharply predictive when the running coupling and logarithms are
+controlled.  It is not, by itself, a nonperturbative definition of the QFT or a
+claim that the infinite formal series converges.
+
 \section{Invariant Data at Fixed Points}
 
 The preceding one-coordinate computation is a special case of the tensorial

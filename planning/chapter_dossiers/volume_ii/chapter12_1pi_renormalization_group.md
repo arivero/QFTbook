@@ -62,6 +62,8 @@ The chapter must define:
 - the scheme-equivalence theorem for matched physical observables, stated with
   hypotheses on finite analytic matching, common regulated observable data,
   field/source coordinate normalizations, and infrared safety.
+- the distinction between formal perturbative series, asymptotic expansions,
+  convergent series, and Borel summability.
 
 ## Claim Ledger
 
@@ -115,6 +117,11 @@ The chapter must define:
     map.  Off-shell kernels, beta-function components, anomalous-dimension
     matrices, and coincident-point contact conventions are chart-dependent
     representatives, not themselves physical invariants.
+16. Perturbative beta functions and anomalous dimensions are generally formal
+    or asymptotic expansions in a specified chart.  Their coefficients may be
+    meaningful and scheme-related even when the infinite series has zero radius
+    of convergence.  Borel summability, when available, is a separate analytic
+    theorem requiring hypotheses on the Borel transform and singularities.
 
 ## Figure Requirements
 
@@ -149,6 +156,8 @@ The chapter must define:
   comparisons, with any limitations placed in remarks after the construction.
 - Scheme independence must be stated as a matched-observable theorem, not as
   equality at identical numerical coupling values in two schemes.
+- Do not identify a perturbative expansion with a convergent definition unless
+  convergence or summability has actually been proved.
 - 2026-05-22 page-level source/figure audit complete.  Handwritten pages
   97--110 were checked through
   `monograph/tex/build/source_visual_1pi_rg/253b_rg-097.png` through
@@ -158,3 +167,5 @@ The chapter must define:
 - 2026-05-24 issue pass: addressed #221 by adding a labeled scheme-equivalence
   theorem for matched physical observables, using regulated path-integral
   action parameters rather than a separate ``bare Lagrangian'' terminology.
+- 2026-05-24 issue pass: addressed #222 by adding an asymptotic-series,
+  large-order, and Borel-summability discussion to the 1PI RG chapter.
