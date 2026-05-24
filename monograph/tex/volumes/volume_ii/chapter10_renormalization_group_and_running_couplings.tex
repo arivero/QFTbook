@@ -1047,6 +1047,106 @@ Thus, for a single marginal coupling and with the leading normalization fixed,
 the first two perturbative coefficients are invariant under finite analytic
 reparametrizations, while later coefficients are coordinate dependent.
 
+\begin{theorem}[Scheme equivalence for matched physical observables]
+\label{thm:scheme-equivalence-physical-observables}
+Let \(S_{\Lambda_0}(\theta)\) be the local action used in the regulated path
+integral, including all regulator-dependent local terms required by the chosen
+regularization procedure.  Here \(\Lambda_0\) denotes the ultraviolet regulator
+and \(\theta\) denotes the full list of regulated action parameters.  Let
+\(R\) and \(\widetilde R\) be two renormalization schemes on the same
+perturbative domain.  Assume the following data.
+\begin{enumerate}
+  \item Each scheme assigns a finite renormalized coordinate to the same
+  regulated action parameter \(\theta\):
+  \[
+    \lambda_\Lambda=\lambda_R(\theta,\Lambda_0),
+    \qquad
+    \widetilde\lambda_\Lambda=
+    \lambda_{\widetilde R}(\theta,\Lambda_0),
+  \]
+  and the cutoff-removal limits are related by a finite analytic matching map
+  \[
+    \widetilde\lambda=f(\lambda),
+    \qquad f(0)=0,\qquad Df(0)\ \hbox{invertible}.
+  \]
+  The same statement includes the finite field normalizations and local source
+  coordinate maps needed to define inserted operators.
+  \item The observable \(A_\Lambda\) is defined at the regulated level before a
+  renormalization scheme is chosen.  Examples are an on-shell transition
+  probability between normalized Haag--Ruelle particle states, a perturbative
+  LSZ matrix element after the pole positions and residues have been matched,
+  or an infrared-safe inclusive observable with the measurement function held
+  fixed.
+  \item The ultraviolet and infrared limits required to define \(A\) exist
+  order by order in the perturbative domain under the matching above.  In
+  massless theories this includes the infrared prescription, such as
+  nonexceptional Euclidean momenta for Green functions or an inclusive
+  measurement for scattering.
+\end{enumerate}
+Let \(A_R(\lambda)\) and
+\(A_{\widetilde R}(\widetilde\lambda)\) be the perturbative expansions obtained
+by computing the same regulated observable in the two schemes and then taking
+the common limit.  Then, as formal perturbative series,
+\begin{equation}
+  A_R(\lambda)
+  =
+  A_{\widetilde R}(f(\lambda)).
+  \label{eq:scheme-equivalence-observable}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+At finite \(\Lambda_0\), \(A_\Lambda\) is a number, distribution, or transition
+probability computed in the regulated theory with action parameter \(\theta\).  It
+does not know which finite coordinates will later be used to label the same
+regulated action.  Thus
+\[
+  A_\Lambda(\theta)
+  =
+  A_{\Lambda,R}(\lambda_R(\theta,\Lambda_0))
+  =
+  A_{\Lambda,\widetilde R}
+    (\lambda_{\widetilde R}(\theta,\Lambda_0))
+\]
+after including the field and source normalizations that belong to the two
+coordinate charts.  The matching map is defined by eliminating the regulated
+action parameters between the two coordinate assignments and then taking
+\(\Lambda_0\to\infty\):
+\[
+  \lambda_{\widetilde R}(\theta,\Lambda_0)
+  =
+  f_{\Lambda_0}(\lambda_R(\theta,\Lambda_0)),
+  \qquad
+  f_{\Lambda_0}\to f .
+\]
+If the observable has the stated perturbative limit, the finite-regulator
+identity passes to the limit order by order and gives
+\eqref{eq:scheme-equivalence-observable}.
+
+For an LSZ amplitude, the finite field rescaling between schemes changes
+off-shell Green functions and amputated kernels, but the residue and
+one-particle-state normalizations used in the LSZ construction change by the
+inverse factors.  The matched on-shell matrix element is therefore the same
+observable.  For a local source insertion, a finite local source-coordinate
+redefinition can change the coincident-point extension of the source
+functional.  This does not change a separated-point observable.  If the
+observable itself probes coincident support, then its definition includes that
+source-response convention and the convention must be matched as part of the
+observable data.
+\end{proof}
+
+\begin{remark}[What is not scheme invariant]
+Equation~\eqref{eq:scheme-equivalence-observable} is a statement with a
+matching map.  It does not say that
+\(A_R(\lambda)=A_{\widetilde R}(\lambda)\) after the same coordinate values are
+inserted in two different schemes.  It also does not make off-shell Green
+functions, beta-function components, anomalous-dimension matrices, or contact
+terms coordinate independent.  Those quantities are useful precisely because
+they are chart-dependent representatives from which matched physical
+observables, fixed-point eigenvalues, anomaly classes, and other invariant data
+are extracted.
+\end{remark}
+
 \section{Invariant Data at Fixed Points}
 
 The preceding one-coordinate computation is a special case of the tensorial

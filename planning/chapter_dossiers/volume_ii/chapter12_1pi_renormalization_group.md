@@ -59,6 +59,9 @@ The chapter must define:
   \(c_1=-b_1^2\);
 - finite scheme redefinitions and the induced transformation of beta
   functions.
+- the scheme-equivalence theorem for matched physical observables, stated with
+  hypotheses on finite analytic matching, common regulated observable data,
+  field/source coordinate normalizations, and infrared safety.
 
 ## Claim Ledger
 
@@ -105,6 +108,13 @@ The chapter must define:
     beta functions by the chain rule; for one classically marginal coupling,
     the first two perturbative coefficients are invariant while later
     coefficients depend on the scheme.
+15. If two schemes are finite analytic coordinate charts on the same regulated
+    path-integral action family, and if the same on-shell or infrared-safe
+    observable has a perturbative cutoff-removal limit after the matching map,
+    then the two perturbative expansions agree after applying that matching
+    map.  Off-shell kernels, beta-function components, anomalous-dimension
+    matrices, and coincident-point contact conventions are chart-dependent
+    representatives, not themselves physical invariants.
 
 ## Figure Requirements
 
@@ -137,9 +147,14 @@ The chapter must define:
   and the handoff to operator mixing.
 - The main text should explain the 1PI RG by its constructed data and finite
   comparisons, with any limitations placed in remarks after the construction.
+- Scheme independence must be stated as a matched-observable theorem, not as
+  equality at identical numerical coupling values in two schemes.
 - 2026-05-22 page-level source/figure audit complete.  Handwritten pages
   97--110 were checked through
   `monograph/tex/build/source_visual_1pi_rg/253b_rg-097.png` through
   `253b_rg-110.png`; compiled pages were checked as
   `/tmp/qft_ch32_rg_audit-215.png` through
   `/tmp/qft_ch32_rg_audit-226.png`.
+- 2026-05-24 issue pass: addressed #221 by adding a labeled scheme-equivalence
+  theorem for matched physical observables, using regulated path-integral
+  action parameters rather than a separate ``bare Lagrangian'' terminology.
