@@ -191,3 +191,8 @@
   \(a_\ell\), and displayed the inversion
   \(a_0^{(s)}=\mathcal M_s/(32\pi)\Rightarrow
   \mathcal M_s=-16\pi i\rho_1^{-1}(S_0-1)\).
+- 2026-05-24 issue #387 pass: corrected the nonrelativistic \(E\)-plane
+  resonance figure so the first-sheet trajectory remains on the upper lip of
+  the positive-real-energy cut, while the second-sheet path starts only after
+  a separate continuation through the cut and then runs on the lower lip to
+  the resonance pole.
