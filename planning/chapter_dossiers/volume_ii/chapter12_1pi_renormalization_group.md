@@ -64,6 +64,8 @@ The chapter must define:
   field/source coordinate normalizations, and infrared safety.
 - the distinction between formal perturbative series, asymptotic expansions,
   convergent series, and Borel summability.
+- the renormalon diagnostic as an observable- and scheme-dependent
+  Borel-plane obstruction tied to momentum regions and running couplings.
 
 ## Claim Ledger
 
@@ -122,6 +124,13 @@ The chapter must define:
     meaningful and scheme-related even when the infinite series has zero radius
     of convergence.  Borel summability, when available, is a separate analytic
     theorem requiring hypotheses on the Borel transform and singularities.
+17. Renormalon statements must be made with an observable or coefficient
+    function, expansion coordinate, scheme, and factorization prescription
+    specified; they should not be presented as properties of the beta function
+    alone.  In controlled running-coupling or bubble-chain analyses, integration
+    over infrared or ultraviolet momentum regions can produce factorial growth
+    and Borel singularities; positive-ray ambiguities require matching to
+    nonperturbative or effective-field-theory data.
 
 ## Figure Requirements
 
@@ -169,3 +178,6 @@ The chapter must define:
   action parameters rather than a separate ``bare Lagrangian'' terminology.
 - 2026-05-24 issue pass: addressed #222 by adding an asymptotic-series,
   large-order, and Borel-summability discussion to the 1PI RG chapter.
+- 2026-05-24 issue pass: addressed #223 by adding a cautious renormalon
+  discussion that avoids universal claims about all perturbative series and
+  ties ambiguities to specified observables and matching data.

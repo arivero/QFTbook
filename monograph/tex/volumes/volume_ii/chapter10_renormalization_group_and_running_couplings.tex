@@ -1228,6 +1228,76 @@ renormalized four-dimensional theories, gauge theories, and massless problems,
 summability must be studied with the ultraviolet, infrared, and scheme data
 specified.
 
+\begin{remark}[Renormalons and Borel-plane obstructions]
+The term \emph{renormalon} refers to a class of large-order effects in
+renormalized perturbation theory whose diagnostic is a Borel singularity
+associated with an integration over a momentum region.  It is not a theorem
+that every perturbative series in a QFT has a renormalon of a specified type,
+and it is not a replacement for a nonperturbative definition of the observable.
+Nor should it be stated as a property of the beta function alone.  The
+statement must always name the observable or coefficient function, the
+expansion coordinate, the renormalization scheme, and the factorization
+prescription.
+
+A controlled model calculation shows the mechanism.  Suppose a Euclidean
+short-distance quantity contains, after a specified set of approximations such
+as insertion of a chain of one-loop self-energy bubbles, an integral over a
+momentum \(k\) of the form
+\[
+  \int \frac{\dd k}{k}\,F(k/Q)\,\alpha(k),
+\]
+where \(Q\) is the external scale, \(F\) restricts the relevant region, and
+\(\alpha(k)\) is expanded around \(\alpha(Q)\) using one-loop running.  If
+\[
+  \alpha(k)
+  =
+  \frac{\alpha(Q)}
+       {1+\beta_0\alpha(Q)\log(k/Q)}
+  =
+  \alpha(Q)\sum_{n\ge0}
+  \bigl[-\beta_0\alpha(Q)\log(k/Q)\bigr]^n
+\]
+is inserted before the \(k\)-integral is performed, then integrals of powers of
+\(\log(k/Q)\) can give \(n!\)-growth.  In the Borel transform this factorial
+growth is represented, in this approximation, by singularities at finite Borel
+parameter.
+
+The name of the renormalon records the momentum region.  An infrared
+renormalon is produced by the small-\(k\) region of such an integral; in an
+asymptotically free theory such a singularity can lie on the positive Borel
+ray for particular Euclidean short-distance quantities and obstruct an
+unambiguous Borel sum of the perturbative coefficient function.  The associated
+lateral-summation ambiguity then has the size of a power correction,
+\[
+  \exp[-c/\alpha(Q)]
+  =
+  \left(\frac{\Lambda_{\rm RG}}{Q}\right)^p
+\]
+for suitable constants \(c,p>0\), where \(\Lambda_{\rm RG}\) is the
+renormalization-group invariant scale.  In QCD this is why infrared
+renormalon analysis is tied to the operator product expansion: perturbation
+theory for a Wilson coefficient and the definition of the corresponding
+long-distance matrix element are not separately physical, and their
+scheme/factorization ambiguities must cancel in the full observable.
+
+An ultraviolet renormalon is associated with the large-\(k\) region of the
+corresponding expansion.  In theories whose perturbative coordinate grows
+toward the ultraviolet, such as an IR-free scalar or Abelian gauge theory, this
+large-momentum sensitivity is tied to the same short-distance loss of
+perturbative control indicated by the Landau scale.  The precise location of a
+renormalon singularity, and whether it lies on the integration ray relevant for
+Borel summation, depends on the observable, the expansion variable, and the
+renormalization scheme.  The invariant lesson is not that renormalons by
+themselves define the theory, but that a perturbative representation can carry
+ambiguities of order \(\exp[-c/\alpha]\), or \(\exp[-c/g^2]\) when \(g\) is the
+gauge coupling.  Such terms are invisible to all orders in the perturbative
+expansion and must be fixed, canceled, or interpreted by additional
+nonperturbative or effective-field-theory data.
+\footnote{For a systematic review, see M.~Beneke, ``Renormalons,''
+\emph{Phys. Rept.} \textbf{317} (1999) 1--142,
+doi:10.1016/S0370-1573(98)00130-6, arXiv:hep-ph/9807443.}
+\end{remark}
+
 In this monograph a displayed perturbative beta function or critical exponent
 has the following default meaning unless a stronger statement is stated: it is
 a coefficientwise construction in a specified regularized and renormalized

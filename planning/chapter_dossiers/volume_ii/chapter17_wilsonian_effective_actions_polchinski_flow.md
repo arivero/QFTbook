@@ -141,6 +141,11 @@ The chapter must define and derive:
     direct memory of irrelevant bare coordinates is power-suppressed by the
     irrelevant semigroup, and the continuum graph is selected by the generated
     integral after retained coordinates are tuned.
+12a. The generated-integral convergence hypothesis is stronger than formal
+     perturbative coefficientwise existence.  Renormalon diagnostics identify
+     particular ways in which momentum-region integrations can create
+     factorial perturbative growth and require nonperturbative/OPE/effective
+     matching data.
 13. The Wilsonian action \(L_\Lambda\) is an action for remaining low modes,
     not the 1PI effective action; it must be followed by low-mode integration
     and a Legendre transform before comparison with 1PI coordinates.
@@ -210,3 +215,7 @@ The chapter must define and derive:
   correction, states the BPHZ-subtracted 1PI four-point kernel, and derives
   the matching map from the Wilsonian quartic coordinate to the 1PI
   subtraction coordinate.
+- 2026-05-24 issue pass: addressed #223 by adding a renormalon caveat to the
+  finite-coordinate cutoff-removal estimate, emphasizing that the Wilsonian
+  generated-integral hypothesis contains information beyond formal
+  perturbation theory.
