@@ -307,6 +307,160 @@ of renormalized operator basis.
   \label{fig:radial-cylinder-map}
 \end{figure}
 
+\section{Flat, Conformal, and Cylinder Vacua}
+\label{sec:flat-conformal-cylinder-vacua}
+
+Three vacuum vectors enter the radial construction, and their equality is a
+statement with hypotheses rather than a convention.  The Lorentzian flat-space
+vacuum will be denoted by \(\ket{\Omega_{\rm P}}\).  It is the normalized
+Poincare-invariant vector in the Wightman Hilbert space on
+\(\R^{1,D-1}\), with
+\[
+  P_\mu\ket{\Omega_{\rm P}}=0,
+  \qquad
+  M_{\mu\nu}\ket{\Omega_{\rm P}}=0,
+\]
+where \(P_\mu\) are the translation generators and \(M_{\mu\nu}\) are the
+Lorentz generators.  A conformal vacuum is a normalized vector
+\(\ket{\Omega_{\rm conf}}\) invariant under the connected conformal group, or
+equivalently on a common invariant domain,
+\[
+  P_\mu\ket{\Omega_{\rm conf}}
+  =
+  M_{\mu\nu}\ket{\Omega_{\rm conf}}
+  =
+  D\ket{\Omega_{\rm conf}}
+  =
+  K_\mu\ket{\Omega_{\rm conf}}
+  =
+  0 .
+\]
+The cylinder vacuum \(\ket{\Omega_0}_{\rm cyl}\) is the normalized
+zero-eigenvalue state of the radial Hamiltonian \(D_{\rm rad}\) in the Hilbert
+space on \(S^{D-1}\):
+\[
+  D_{\rm rad}\ket{\Omega_0}_{\rm cyl}=0 .
+\]
+It is represented by the empty Euclidean ball, or equivalently by insertion of
+the identity operator at the origin.
+
+\begin{proposition}[Identification of the flat and conformal vacua]
+\label{prop:poincare-vacuum-is-conformal-vacuum}
+Assume that the connected conformal group, or its universal cover, is
+implemented by strongly continuous unitaries on the Wightman Hilbert space on a
+common dense invariant domain containing \(\ket{\Omega_{\rm P}}\).  Assume also
+that the translation-invariant normalized vector is unique and that the
+generators obey the conformal Lie algebra on this domain.  Then the flat
+Poincare vacuum is invariant under the connected conformal group.  Thus
+\(\ket{\Omega_{\rm conf}}=\ket{\Omega_{\rm P}}\), up to the irrelevant overall
+phase of a normalized vector.
+\end{proposition}
+
+\begin{proof}
+Let \(U_D(s)=\exp(\ii sD)\) be the unitary one-parameter group of dilatations.
+The relation
+\[
+  U_D(s)^{-1}P_\mu U_D(s)=\ee^sP_\mu
+\]
+implies that \(U_D(s)\ket{\Omega_{\rm P}}\) is again annihilated by all
+translations.  By uniqueness of the normalized translation-invariant vector,
+\[
+  U_D(s)\ket{\Omega_{\rm P}}=\ee^{\ii\alpha(s)}\ket{\Omega_{\rm P}} .
+\]
+Strong continuity makes \(\alpha(s)\) linear, so
+\(D\ket{\Omega_{\rm P}}=d_0\ket{\Omega_{\rm P}}\) for some real number
+\(d_0\).  The number \(d_0\) is forced to vanish by the conformal algebra:
+because \(P_\nu\ket{\Omega_{\rm P}}=0\) and \(P_\nu\) is self-adjoint,
+\[
+  0
+  =
+  \bra{\Omega_{\rm P}}[P_\nu,K_\mu]\ket{\Omega_{\rm P}}
+  =
+  2\eta_{\mu\nu}d_0 .
+\]
+Thus \(D\ket{\Omega_{\rm P}}=0\), which is the representation-theoretic
+normalization in which the identity operator has dimension zero.
+
+Now use the conformal commutator
+\[
+  [P_\nu,K_\mu]=2\eta_{\mu\nu}D+2M_{\nu\mu}
+\]
+with Lorentzian metric \(\eta\).  Since \(P_\nu\), \(D\), and \(M_{\nu\mu}\)
+annihilate \(\ket{\Omega_{\rm P}}\),
+\[
+  P_\nu K_\mu\ket{\Omega_{\rm P}}
+  =
+  [P_\nu,K_\mu]\ket{\Omega_{\rm P}}
+  =
+  0 .
+\]
+Therefore \(K_\mu\ket{\Omega_{\rm P}}\) is translation-invariant.  Uniqueness
+of the translation-invariant vector gives
+\[
+  K_\mu\ket{\Omega_{\rm P}}=c_\mu\ket{\Omega_{\rm P}}
+\]
+for constants \(c_\mu\).  Lorentz invariance of \(\ket{\Omega_{\rm P}}\) and
+the vector transformation law of \(K_\mu\) force \(c_\mu\) to be a Lorentz
+invariant vector; hence \(c_\mu=0\).  Thus the vacuum is annihilated by
+translations, Lorentz generators, dilatations, and special conformal
+generators, which are the infinitesimal generators of the connected conformal
+group.
+\end{proof}
+
+The relation between \(\ket{\Omega_{\rm conf}}\) and
+\(\ket{\Omega_0}_{\rm cyl}\) is supplied by the Weyl map
+\(\R^D\setminus\{0\}\to\R_\tau\times S^{D-1}\).  The Euclidean radial Hilbert
+space is constructed from the same flat-space vacuum correlators by cutting
+the Schwinger functions on spheres.  Under this construction the identity
+operator at the origin creates the zero-energy state, so the common vacuum is
+identified as
+\[
+  \ket{\Omega_{\rm P}}
+  =
+  \ket{\Omega_{\rm conf}}
+  \longleftrightarrow
+  \ket{\Omega_0}_{\rm cyl}.
+\]
+This identification fixes the notation used below: \(\ket{\vac}\) denotes this
+common vacuum whenever the flat or cylinder realization is clear from context.
+
+The literal cutting-and-sewing meaning of radial quantization is a
+Kontsevich--Segal type Euclidean field-theoretic structure.  In that language,
+a closed Euclidean hypersurface such as \(S^{D-1}\) is assigned a state space,
+a Euclidean bordism such as an annulus or punctured ball is assigned a linear
+amplitude between boundary state spaces, and gluing of bordisms is represented
+by composition of amplitudes.  At this level the assigned state space should
+not be assumed to be a Hilbert space.  In a general Euclidean field theory it
+is more naturally a locally convex topological vector space, often a
+Fr\'echet or nuclear space in analytic formulations, and the bordism
+amplitudes are continuous linear maps or distributional pairings.
+
+The Hilbert space in radial quantization is the additional unitary CFT
+structure supplied by inversion.  The map \(x\mapsto x/|x|^2\) exchanges the
+inside and outside of a sphere, identifies the boundary sphere with its
+reflected copy up to the conformal Weyl factor, and turns reflection positivity
+of the doubled configuration into a positive semidefinite Hermitian form.
+Only after quotienting the null space and completing this form does one obtain
+the radial Hilbert space used below.  Thus the hypotheses in this chapter use
+the part of the Kontsevich--Segal cutting/gluing structure needed for a CFT
+together with the inversion pairing: the state space on \(S^{D-1}\), the
+positive radial inner product, the annular semigroup generated by
+\(D_{\rm rad}\), and the sewing identities for cylinder slabs.  We do not use
+the Kontsevich--Segal framework here as a complete axiom system for all QFTs;
+the point is narrower and structural: literal radial quantization is first a
+hypersurface-cutting and bordism-gluing construction, and in a CFT the
+inversion pairing upgrades it to a Hilbert-space construction.
+
+There remains a normalization convention.  If a cylinder Hamiltonian is defined
+by integrating a chosen renormalized stress tensor on the curved cylinder, Weyl
+anomaly terms and local curvature counterterms can add a scalar Casimir energy
+to that operator.  The radial Hamiltonian \(D_{\rm rad}\) used in this chapter
+is the shifted generator whose identity state has eigenvalue zero.  Equivalently
+the vacuum functional is normalized so that \(\langle 1\rangle=1\) on flat
+space and on the cylinder, with anomaly-dependent local curvature terms fixed
+once and for all.  Separated-point operator correlators are then related by
+\eqref{eq:cylinder-flat-correlator-equivalence}.
+
 \section{Operators Under the Cylinder Map}
 
 For a scalar primary \(\mathcal O(x)\) of dimension \(\Delta\), define the

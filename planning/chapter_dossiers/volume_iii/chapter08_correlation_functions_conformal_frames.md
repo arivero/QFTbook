@@ -12,6 +12,9 @@
 
 The chapter establishes:
 
+- the use of the common vacuum \(\ket{\vac}\) only after Chapter 4 identifies
+  the flat Poincare vacuum, conformal vacuum, and zero-energy cylinder ground
+  state;
 - conformally invariant coordinate combinations and cross-ratios;
 - scalar two- and three-point functions from Ward identities;
 - spinning tensor structures with stated representation data;
@@ -27,17 +30,20 @@ The chapter establishes:
 
 1. Coordinate dependence of scalar correlators follows from translations,
    rotations, dilatations, and special conformal Ward identities.
-2. Tensor structures require explicit \(SO(D)\) representation data and are
+2. Vacuum invariance in correlation-function formulas must refer back to the
+   Chapter 4 vacuum-identification section rather than silently conflating the
+   flat, conformal, and cylinder vacua.
+3. Tensor structures require explicit \(SO(D)\) representation data and are
    not determined by scalar formulas.
-3. The radial inner product is positive after reflection positivity and the
+4. The radial inner product is positive after reflection positivity and the
    null quotient; two-point coefficient matrices are Gram matrices.
-4. Angular coordinates on \(S^{D-1}\) are denoted by \(n\)-type symbols in
+5. Angular coordinates on \(S^{D-1}\) are denoted by \(n\)-type symbols in
    sections where the vacuum \(\vac\) is also present.
-5. The count of parity-even separated \(TTT\) structures is three only for
+6. The count of parity-even separated \(TTT\) structures is three only for
    \(D\ge4\); in \(D=3\) the Osborn--Petkou structures obey
    \(\mathcal I^{(1)}-\mathcal I^{(2)}+2\mathcal I^{(3)}=0\), leaving two
    parity-even structures before any parity-odd \(D=3\) structure is added.
-6. The scalar-scalar-stress Ward coefficient uses the pointwise identity
+7. The scalar-scalar-stress Ward coefficient uses the pointwise identity
    \(n^\mu n_\mu=1\) on the unit sphere to reduce
    \(n^\mu n^\nu(n_\mu n_\nu-\delta_{\mu\nu}/D)\) to \(1-1/D\).
 
@@ -55,3 +61,6 @@ The chapter establishes:
   made the \(D=3\) two-structure relation explicit.
 - 2026-05-24 issue #292 pass: expanded the scalar-scalar-stress Ward
   angular projection to show explicitly where \(n^\mu n_\mu=1\) enters.
+- 2026-05-24 issue #295 pass: the chapter opening now points to
+  Section `sec:flat-conformal-cylinder-vacua` before using the common vacuum
+  in conformal Ward identities and radial cylinder limits.
