@@ -82,17 +82,16 @@ approximation is valid:
   0<\mu<E_T<M .
 \]
 
-\begin{definition}[Resolution-inclusive transition probability]
+\begin{definition}[Regulated resolution-inclusive transition probability]
 Let \(S^{(\mu)}_{\beta;\{k_r,h_r\}|\alpha}\) denote an infrared-regulated hard
 kernel with hard charged configuration \(\beta\), incoming hard charged
 configuration \(\alpha\), and additional photons \((k_r,h_r)\).  The
 superscript \((\mu)\) records the auxiliary long-distance regulator.  The
 object \(S^{(\mu)}\) may be obtained from a regulated LSZ computation, but it
 is not assumed to have a regulator-independent fixed-photon-number limit.  The
-resolution-inclusive probability at threshold \(E_T\) is
-the sum
+regulated resolution-inclusive probability at threshold \(E_T\) is the sum
 \[
-  P_{\beta|\alpha}(E_T)
+  P^{(\mu)}_{\beta|\alpha}(E_T)
   =
   \sum_{N=0}^{\infty}\frac1{N!}
   \sum_{h_1,\ldots,h_N}
@@ -107,6 +106,9 @@ where \(\mathcal R_{E_T}\) is the detector-degenerate soft region.  At leading
 soft logarithmic order one may take \(\mu<\omega_r<E_T\) independently for
 each unresolved photon.  Refining the detector model changes finite functions
 of \(E_T/M\), but not the cancellation of the regulator \(\mu\).
+The regulator-free inclusive probability is not the termwise limit of the
+summands at fixed \(N\); it is the ordered limit constructed in
+Section~\ref{sec:volume-ii-inclusive-probabilities}.
 \end{definition}
 
 \section{External-Line Soft Factors}
@@ -708,12 +710,61 @@ and its contribution to a rate is
 \end{figure}
 
 \section{Inclusive Probabilities}
+\label{sec:volume-ii-inclusive-probabilities}
 
 The cancellation of the auxiliary photon-mass regulator between real
 unresolved emission and virtual soft exchange is the Bloch--Nordsieck
 cancellation.  Equivalently, real soft emission cancels virtual infrared
-divergences at the level of inclusive probabilities.  Multiplying the real
-and virtual factors gives the leading soft result
+divergences at the level of inclusive probabilities.  The order of operations
+is part of the statement.  Fix
+\[
+  0<\mu<E_T<M
+\]
+and compute in the regulated theory.  At fixed \(\mu\), first include all
+detector-degenerate unresolved photons, or, coefficientwise in perturbation
+theory, all detector-degenerate terms contributing to the chosen coefficient.
+Only after that inclusive sum has been formed is the regulator
+\(\mu\downarrow0\) removed.
+
+In the leading soft approximation this ordered construction is completely
+explicit.  Put
+\[
+  \ell_T(\mu)=\log\frac{E_T}{\mu},
+  \qquad
+  \ell_M(\mu)=\log\frac{M}{\mu}.
+\]
+The real contribution with exactly \(N\) unresolved photons is
+\[
+  R_N(E_T,\mu)
+  =
+  \frac{1}{N!}
+  \left[A_{\beta\alpha}\ell_T(\mu)\right]^N ,
+\]
+and the virtual soft factor in the rate is
+\[
+  R_{\rm virt}(M,\mu)
+  =
+  \exp\{-A_{\beta\alpha}\ell_M(\mu)\}.
+\]
+Thus the leading-soft regulated inclusive factor is
+\[
+  R_{\rm incl}^{(\mu)}(E_T,M)
+  =
+  R_{\rm virt}(M,\mu)
+  \sum_{N=0}^\infty R_N(E_T,\mu).
+\]
+The infinite sum over \(N\) is taken at fixed positive \(\mu\), where it is an
+ordinary exponential series.  It gives
+\[
+  R_{\rm incl}^{(\mu)}(E_T,M)
+  =
+  \exp\{-A_{\beta\alpha}\ell_M(\mu)\}
+  \exp\{A_{\beta\alpha}\ell_T(\mu)\}
+  =
+  \left(\frac{E_T}{M}\right)^{A_{\beta\alpha}},
+\]
+which is independent of \(\mu\).  Multiplying by the hard finite factor gives
+the leading soft result
 \[
   P_{\beta|\alpha}(E_T)
   =
@@ -727,7 +778,60 @@ leading logarithmic approximation.  The scale \(M\) separates hard and soft
 physics; dependence on it cancels once the hard finite correction is computed
 to the same order.
 
-For a fixed finite number \(N\) of photons, the rate contains
+\begin{proposition}[Coefficientwise Bloch--Nordsieck cancellation]
+\label{prop:coefficientwise-bloch-nordsieck}
+Let \(A_{\beta\alpha}\) be regarded as a formal quantity of order \(g^2\).
+At every fixed power \(A_{\beta\alpha}^L\), the coefficient of the inclusive
+leading-soft rate has a regulator-independent limit after the sum over
+unresolved photon numbers contributing to that coefficient is taken.  More
+precisely,
+\[
+\begin{aligned}
+  &[A_{\beta\alpha}^L]\,
+  \left[
+    \exp\{-A_{\beta\alpha}\ell_M(\mu)\}
+    \sum_{N=0}^{\infty}
+    \frac{\left[A_{\beta\alpha}\ell_T(\mu)\right]^N}{N!}
+  \right]
+\\
+  &\hspace{2cm}=
+  \sum_{N=0}^{L}
+  \frac{[-\ell_M(\mu)]^{L-N}}{(L-N)!}
+  \frac{\ell_T(\mu)^N}{N!}
+  =
+  \frac{1}{L!}
+  \left(\ell_T(\mu)-\ell_M(\mu)\right)^L
+\\
+  &\hspace{2cm}=
+  \frac{1}{L!}
+  \left(\log\frac{E_T}{M}\right)^L .
+\end{aligned}
+\]
+Thus the cancellation is not a statement about an individual fixed photon
+number.  It is a statement about the inclusive coefficient obtained after the
+degenerate real-emission terms and the virtual terms at the same perturbative
+order are combined.
+\end{proposition}
+
+\begin{proof}
+At fixed \(\mu>0\), the product of the virtual exponential and the real
+emission exponential is an identity of formal power series in
+\(A_{\beta\alpha}\).  The coefficient of \(A_{\beta\alpha}^L\) receives
+contributions from \(N\) real photons and \(L-N\) powers of the virtual
+exponential, with \(0\le N\le L\).  This gives the displayed binomial sum.
+Since
+\[
+  \ell_T(\mu)-\ell_M(\mu)
+  =
+  \log\frac{E_T}{\mu}-\log\frac{M}{\mu}
+  =
+  \log\frac{E_T}{M},
+\]
+all dependence on the auxiliary regulator cancels before the limit
+\(\mu\downarrow0\) is taken.
+\end{proof}
+
+For a fixed finite number \(N\) of photons, by contrast, the rate contains
 \[
   \left(\frac{\mu}{M}\right)^{A_{\beta\alpha}}
   \frac1{N!}
@@ -738,6 +842,16 @@ For a fixed finite number \(N\) of photons, the rate contains
 which tends to zero as \(\mu\to0\) when \(A_{\beta\alpha}>0\).  The
 resolution-inclusive sum remains finite because arbitrarily many unresolved
 soft photons are included.
+
+The coupling expansion and the infrared limit are therefore nonuniform in the
+exclusive fixed-\(N\) decomposition.  The perturbative statement is the
+coefficientwise one in
+Proposition~\ref{prop:coefficientwise-bloch-nordsieck}: coefficient extraction
+is performed at fixed regulator, all degenerate real and virtual terms at that
+coefficient are added, and only then is \(\mu\) removed.  The exponentiated
+leading-soft expression is a resummation of these coefficientwise
+cancellations, not a license to take the regulator limit term by term in
+photon number.
 
 \begin{remark}
 The fixed-photon-number matrix elements are exclusive kernels for an idealized

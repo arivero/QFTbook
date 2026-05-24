@@ -50,6 +50,10 @@ The chapter should state:
 - the role of LSZ wavefunction factors in the same-line virtual loops;
 - the distinction between soft and collinear degeneracies;
 - the Abelian-Higgs regulator as a gauge-invariant infrared deformation.
+- the ordered Bloch--Nordsieck limiting statement: at fixed regulator, form
+  the inclusive degeneracy sum, or at fixed perturbative order combine all
+  degenerate real-emission terms and virtual terms contributing to that
+  coefficient, and only then remove the infrared regulator;
 - the observable-algebra statement that limiting electric flux at spacelike
   infinity is a superselection datum in charged sectors;
 - Buchholz's theorem that nonzero abelian gauge charge is incompatible with a
@@ -108,15 +112,26 @@ Additional symbols introduced in the charged-sector discussion:
      (\mu/M)^{A_{\beta\alpha}}(E_T/\mu)^{A_{\beta\alpha}}
      =(E_T/M)^{A_{\beta\alpha}}.
    \]
-11. For massless charged particles, collinear degeneracies require the KLN
+11. The Bloch--Nordsieck cancellation is coefficientwise in perturbation
+    theory only after the inclusive sum has been formed.  At order
+    \(A_{\beta\alpha}^L\), the sum
+    \[
+      \sum_{N=0}^L
+      \frac{[-\log(M/\mu)]^{L-N}}{(L-N)!}
+      \frac{[\log(E_T/\mu)]^N}{N!}
+      =
+      \frac{[\log(E_T/M)]^L}{L!}
+    \]
+    is regulator independent, whereas an individual fixed-\(N\) term is not.
+12. For massless charged particles, collinear degeneracies require the KLN
    sum and average over detector-degenerate sectors.
-12. Dressed charged asymptotic states use the same eikonal data as coherent
+13. Dressed charged asymptotic states use the same eikonal data as coherent
    soft photon clouds, but the zero-cutoff Faddeev--Kulish profile is not an
    element of the photon one-particle Hilbert space, so the limiting dressing
    changes representation.
-13. A small photon mass introduced through an Abelian-Higgs deformation is a
+14. A small photon mass introduced through an Abelian-Higgs deformation is a
    consistent gauge-invariant infrared regulator.
-14. Buchholz's Gauss-law theorem gives the nonperturbative structural
+15. Buchholz's Gauss-law theorem gives the nonperturbative structural
     boundary: charged QED sectors are infraparticle sectors, not ordinary
     Wigner-particle Fock sectors; asymptotic electric flux labels
     superselection data.
@@ -149,3 +164,7 @@ Additional symbols introduced in the charged-sector discussion:
   obstruction, the boosted Coulomb angular flux density, and the
   square-integrability calculation showing that the Faddeev--Kulish soft cloud
   is not a vector in photon Fock space after the infrared cutoff is removed.
+- 2026-05-24 issue #257 pass: pinned down the order of limits in the
+  Bloch--Nordsieck construction and added a coefficientwise cancellation
+  proposition showing exactly how the fixed-order sum over unresolved photon
+  numbers cancels the regulator logarithms.
