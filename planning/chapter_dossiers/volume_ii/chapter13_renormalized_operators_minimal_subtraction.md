@@ -72,6 +72,10 @@ The chapter must define:
 - the anomalous-dimension transformation law under scale-dependent
   source-coordinate changes,
   \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\);
+- the deformation-operator bundle over a finite-dimensional theory-space chart,
+  its source-chart transition functions in the local-representative-column
+  convention, and the theorem that anomalous dimensions are the local
+  coefficients of an RG connection on this bundle;
 - the anomalous-dimension matrix
   \(\gamma_{IK}=\partial\beta_K/\partial g_I\) in this deformation
   convention;
@@ -132,6 +136,9 @@ The chapter must define:
 10. Under scale-dependent finite changes of renormalized source coordinates,
    anomalous dimensions transform by the connection law
    \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\).
+   The geometric statement is a theorem after specifying a finite-rank operator
+   bundle, \(C^1\) or formal transition functions, and the connection
+   \(D_t=\dd/\dd t+\gamma\) along the RG vector field.
 11. The operator-insertion Callan--Symanzik equation follows by
    differentiating the renormalized insertion chart at fixed bare data.
 12. Contact terms in inserted correlators are local distributions supported on
@@ -196,6 +203,12 @@ The chapter must define:
 - State the Euclidean source sign convention before using source derivatives.
 - Treat scale-dependent source redefinitions as connection transformations
   for anomalous dimensions.
+- Do not call anomalous dimensions a connection unless the base, fiber,
+  transition functions, regularity assumptions, and local expression of the
+  connection have been stated.
+- Keep the transition convention explicit: the displayed
+  \(\widetilde\gamma=M\gamma M^{-1}-(\dd M/\dd t)M^{-1}\) law is for local
+  representative columns transforming as \(\widetilde v=Mv\).
 - 2026-05-22 source-certification pass: the handwritten pages from the bottom
   of page 110 through page 118 were checked end-to-end against the two local
   transcription layers.  The manuscript now includes the full derivative of
@@ -215,3 +228,9 @@ The chapter must define:
   expansion of the source coordinate chart, the partition formula for
   multiple connected insertions, the noncoincident/contact-term separation,
   the two-insertion Wilsonian identity, and the 1PI source-Hessian identity.
+- 2026-05-24 issue #233 pass: elevated the anomalous-dimension connection
+  statement to a theorem.  The manuscript now defines the deformation-operator
+  bundle, states the \(C^1\)/formal regularity needed for source-frame
+  transitions, proves the connection transformation law, and derives
+  \(\gamma_{IK}=\partial\beta_K/\partial g_I\) from the cotangent pairing with
+  the linearized RG flow.

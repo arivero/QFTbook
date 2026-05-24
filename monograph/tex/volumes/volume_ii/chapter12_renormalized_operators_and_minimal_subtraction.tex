@@ -129,6 +129,37 @@ applies to the deformation operators dual to the selected coordinate chart;
 additional local operators may require enlarging the chart before their mixing
 can be described by the same matrix.
 
+\begin{definition}[Deformation-operator bundle]
+\label{def:deformation-operator-bundle}
+Let \(U\) be a coordinate neighborhood in the finite-dimensional
+renormalized theory space with coordinates \(g_I\).  The
+\emph{deformation-operator bundle} over \(U\) is the vector bundle
+\(\mathcal E_{\rm def}\to U\) whose local representative column over the chart
+\(g\) is the ordered family of source-normalized insertion distributions
+\[
+  e_I(g,\mu)=[O_I]_\mu .
+\]
+Its fiber at \(g\) is the span of the deformation operators dual to tangent
+vectors \(\partial/\partial g_I\), with equality of insertions understood on
+noncoincident test configurations and with a separately specified contact-term
+extension.  On an overlap with coordinates \(\widetilde g_A=f_A(g)\), the
+transition functions are specified in the convention that local representative
+columns transform by \(v_{\widetilde g}=M_{g\to\widetilde g}v_g\).  The
+operator column therefore obeys
+\begin{equation}
+  \widetilde e_A
+  =
+  M_{AI}(g)\,e_I,
+  \qquad
+  M_{AI}(g)=\frac{\partial g_I}{\partial\widetilde g_A}.
+  \label{eq:deformation-operator-bundle-transition}
+\end{equation}
+Thus, for deformation operators, \(\mathcal E_{\rm def}\) is the source-defined
+realization of \(T^*U\).  If one includes local operators not dual to coupling
+coordinates, the same construction gives a larger operator bundle only after a
+finite-rank source chart and its transition functions have been specified.
+\end{definition}
+
 Let \(t=\log\mu\).  The tangent vector \(\delta g_K\) evolves by the
 linearized RG equation
 \[
@@ -760,13 +791,120 @@ with
   \frac{\dd M}{\dd t}M^{-1}.
   \label{eq:operator-anomalous-dimension-connection-law}
 \end{equation}
+
+\begin{theorem}[Anomalous dimensions as an RG connection]
+\label{thm:anomalous-dimensions-rg-connection}
+Let \(\mathcal E\to U\) be a finite-rank renormalized operator bundle on a
+coordinate neighborhood \(U\) in theory space.  Assume that the beta-function
+vector field \(\beta=\beta_I(g)\partial/\partial g_I\) and the transition
+matrices \(M_{\alpha\beta}(g,t)\) between source charts are \(C^1\) along the
+RG trajectories under consideration, or are formal power series for which the
+following differentiations are performed coefficientwise.  In a local source
+chart, let \(e\) denote the local representative column
+\(e_I=[O_I]_\mu\), and suppose the RG variation is
+\begin{equation}
+  \frac{\dd}{\dd t}e_I
+  =
+  -\gamma_{IK}(g(t),t)e_K .
+  \label{eq:operator-frame-parallel-transport}
+\end{equation}
+Then the matrices \(\gamma\) define a connection on \(\mathcal E\) along the
+RG vector field by
+\begin{equation}
+  (D_t v)_\alpha
+  =
+  \frac{\dd v_\alpha}{\dd t}+\gamma_\alpha v_\alpha
+  \label{eq:operator-bundle-rg-connection}
+\end{equation}
+for local representative columns \(v_\alpha\) in a source chart \(\alpha\).
+Under a finite scale-dependent change of source chart with
+\(\widetilde e=M e\) and \(v_{\widetilde\alpha}=M v_\alpha\), the connection
+coefficients transform as
+\begin{equation}
+  \widetilde\gamma
+  =
+  M\gamma M^{-1}
+  -
+  \frac{\dd M}{\dd t}M^{-1}.
+  \label{eq:operator-connection-transformation-theorem}
+\end{equation}
+Conversely, any family of matrices obeying
+\eqref{eq:operator-connection-transformation-theorem} on overlaps is precisely
+the local expression of a connection along the RG vector field.  For the
+deformation-operator bundle of Definition~\ref{def:deformation-operator-bundle},
+the connection induced by the linearized beta-function flow has
+\begin{equation}
+  \gamma_{IK}
+  =
+  \frac{\partial\beta_K}{\partial g_I}
+  \label{eq:cotangent-rg-connection-jacobian}
+\end{equation}
+in the coordinate frame dual to \(g_I\).
+\end{theorem}
+
+\begin{proof}
+The operator frame equation
+\eqref{eq:operator-frame-parallel-transport} is the statement that the chosen
+renormalized source-representative column is parallel along the RG trajectory:
+\(D_t e=0\) in the local convention of
+\eqref{eq:operator-bundle-rg-connection}.  Let \(\widetilde e=M e\).
+Differentiating gives
+\[
+  \frac{\dd}{\dd t}\widetilde e
+  =
+  \left(\frac{\dd M}{\dd t}M^{-1}-M\gamma M^{-1}\right)\widetilde e .
+\]
+Writing the same equation in the new chart as
+\(\dd\widetilde e/\dd t=-\widetilde\gamma\,\widetilde e\) gives
+\eqref{eq:operator-connection-transformation-theorem}.  The same computation
+is the patching criterion for a connection along a one-dimensional direction:
+if local matrices obey this law, the formula \(D_t v=\dd v/\dd t+\gamma v\)
+is independent of the frame because
+\[
+  \left(\frac{\dd}{\dd t}+\widetilde\gamma\right)\widetilde v
+  =
+  M\left(\frac{\dd}{\dd t}+\gamma\right)v
+  \qquad
+  (\widetilde v=Mv).
+  \]
+Hence the local operators \(D_t\) glue to a well-defined connection along the
+RG vector field.
+
+For deformation operators, an infinitesimal tangent vector
+\(\delta g_K\partial/\partial g_K\) obeys the variational equation obtained by
+linearizing the RG flow:
+\[
+  \frac{\dd}{\dd t}\delta g_K
+  =
+  \frac{\partial\beta_K}{\partial g_I}\,\delta g_I .
+  \]
+The deformation insertion is the pairing
+\(\int\delta g_I e_I\).  Bare scale independence of this pairing gives
+\[
+  0
+  =
+  \frac{\dd}{\dd t}\bigl(\delta g_I e_I\bigr)
+  =
+  \frac{\partial\beta_I}{\partial g_K}\delta g_K e_I
+  +
+  \delta g_I\frac{\dd e_I}{\dd t}.
+  \]
+Renaming dummy indices and using the arbitrariness of \(\delta g_I\) yields
+\[
+  \frac{\dd e_I}{\dd t}
+  =
+  -
+  \frac{\partial\beta_K}{\partial g_I}e_K,
+  \]
+which is \eqref{eq:operator-frame-parallel-transport} with
+\(\gamma_{IK}=\partial\beta_K/\partial g_I\).
+\end{proof}
+
 Thus the anomalous-dimension matrix transforms by conjugation only for
 scale-independent changes of operator coordinates.  For scale-dependent
-renormalized source coordinates, it is a connection on the local-operator
-bundle over theory space.  Equation
-\eqref{eq:operator-anomalous-dimension-connection-law} is the finite
-coordinate version of the cotangent flow
-\(\gamma_{IK}=\partial\beta_K/\partial g_I\) for deformation operators.
+renormalized source coordinates,
+\eqref{eq:operator-anomalous-dimension-connection-law} is the connection
+transformation law of Theorem~\ref{thm:anomalous-dimensions-rg-connection}.
 
 \section{Multiple Insertions and Contact-Term Coordinates}
 \label{sec:multiple-insertions-contact-coordinates}
