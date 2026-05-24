@@ -12,9 +12,12 @@ sphere.  Radial quantization turns the product
   \mathcal O_i(x)\mathcal O_j(0)\ket{\vac},
   \qquad |x|<R,
 \]
-into a state on \(S_R^{D-1}\).  Since the Hilbert space on the sphere is
-spanned by local-operator states, this state can be expanded in a basis of
-primary multiplets:
+into a state on \(S_R^{D-1}\).  This state is not, as an object, a local
+operator at the origin.  The local-operator states of definite scaling
+dimension form an algebraic dense subspace of the BPZ/radial Hilbert space,
+and the finite-energy spectral projections of the product state are finite
+linear combinations of those local-operator states.  The OPE is the limit of
+these projections:
 \begin{equation}
   \mathcal O_i(x)\mathcal O_j(0)
   =
@@ -24,10 +27,11 @@ primary multiplets:
 \end{equation}
 The sum runs over primary operators \(\mathcal O\) and the differential
 operator \(C_{ij\mathcal O}(x,\partial)\) generates the descendants of
-\(\mathcal O\).  Equation \eqref{eq:ope-general-local} is understood inside
-correlation functions with all other insertions farther from the origin than
-\(|x|\), or equivalently as a Hilbert-space expansion on the separating
-sphere.
+\(\mathcal O\).  Equation \eqref{eq:ope-general-local} is therefore an
+identity of limits: its finite partial sums over dimensions \(\Delta\le
+\Delta_*\) converge in the BPZ/radial Hilbert norm on the separating sphere,
+and hence inside correlation functions with all other insertions farther from
+the origin than \(|x|\).
 
 Equivalently, write \(x=\ee^\tau n_x\) under the Weyl map
 \(\R^D\setminus\{0\}\simeq\R_\tau\times S^{D-1}\).  For scalar primaries,
@@ -40,8 +44,10 @@ so the product creates the cylinder state
 The OPE is the statement that this state is represented, in every exterior
 correlation function, by a convergent limit of local operators at the origin,
 organized into primary states and their descendants.  Thus the expansion is
-not a formal Taylor series in elementary fields; it is the spectral expansion
-of a local state in the Hilbert space of the conformal theory.
+not a formal Taylor series in elementary fields and not a multiplication law
+closing the local-operator space.  It is the spectral expansion, in the dense
+algebraic subspace of local-operator states, of the Hilbert-space state
+created by separated local insertions.
 
 The convergence parameter is radial separation.  If the nearest outside
 insertion is at radial distance \(R\), the expansion is organized by powers of

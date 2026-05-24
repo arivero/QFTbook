@@ -82,8 +82,12 @@ Schwinger hierarchy \(S_{I_1\cdots I_n}\) satisfying the following conditions.
     =
     \bigoplus_{\lambda<\infty}\ker(D_{\rm rad}-\lambda).
   \]
-  Equivalently, every finite-energy eigenvector has a representative as a local
-  scaling field at the origin, unique modulo null operators.
+  Equivalently, every finite-energy eigenvector admits the local radial
+  boundary-value data of
+  Definition~\ref{def:local-radial-boundary-value-state} below, and hence has
+  a representative as a local scaling field at the origin by
+  Theorem~\ref{thm:operator-from-state-radial-boundary-value}, unique modulo
+  null operators.
   \item The Euclidean correlators are related to Lorentzian Wightman
   distributions by the standard tube-domain analytic continuation, with the
   Lorentzian distributions satisfying the spectrum condition and local
@@ -740,6 +744,172 @@ dependence absorbed into cylinder evolution, is denoted
   \ket{\mathcal O}.
 \]
 
+\begin{definition}[Scaling operator classes and algebraic radial states]
+\label{def:scaling-operator-classes}
+A renormalized local operator class at the origin has definite scaling
+dimension \(\Delta\) if, in all separated-point Euclidean correlators and with
+the stated contact-term convention, its infinitesimal dilatation Ward identity
+is
+\[
+  D_{\rm op}\mathcal O(0)=\Delta\,\mathcal O(0).
+\]
+Equivalently, after the Weyl map to the cylinder, the corresponding
+origin-created state is an eigenvector of \(D_{\rm rad}\) with eigenvalue
+\(\Delta\).  Let \(\mathcal V_{\rm loc}^{(\Delta)}\) be the quotient vector
+space of such local scaling operators, including all spin components and
+descendants of dimension \(\Delta\), modulo operators whose radial two-point
+pairing with every local operator vanishes.
+
+The algebraic local-operator space is the direct sum over scaling dimensions,
+\[
+  \mathcal V_{\rm loc}^{\rm alg}
+  =
+  \bigoplus_{\Delta\in\operatorname{Spec}_{\rm pp}(D_{\rm rad})}
+  \mathcal V_{\rm loc}^{(\Delta)} ,
+  \label{eq:algebraic-local-operator-space}
+\]
+where the symbol \(\oplus\) denotes finite linear combinations.  The matching
+algebraic finite-energy subspace of the radial Hilbert space is
+\[
+  \mathcal H_{\rm alg}
+  =
+  \bigoplus_{\Delta\in\operatorname{Spec}_{\rm pp}(D_{\rm rad})}
+  \ker(D_{\rm rad}-\Delta)
+  \subset
+  \mathcal H_{S^{D-1}} .
+  \label{eq:algebraic-radial-state-space}
+\]
+Here \(\operatorname{Spec}_{\rm pp}\) denotes the point spectrum.  Under
+Hypothesis~\ref{hyp:radial-reconstruction-data} the eigenspaces appearing in
+\eqref{eq:algebraic-radial-state-space} have finite multiplicity and
+\(\mathcal H_{\rm alg}\) is dense in \(\mathcal H_{S^{D-1}}\).
+\end{definition}
+
+\begin{definition}[Local radial boundary value of a state]
+\label{def:local-radial-boundary-value-state}
+Let \(\psi_a\), \(a=1,\ldots,m\), be a finite rotation multiplet of vectors in
+\(\ker(D_{\rm rad}-\Delta)\).  The multiplet has local radial boundary-value
+data if the following distributions are specified.
+
+For every ordered list of renormalized local operators
+\(\mathcal O_{I_1},\ldots,\mathcal O_{I_n}\), define on the configuration
+space \(x_j\neq0\), \(x_i\neq x_j\), the punctured correlator
+\[
+  W_{\psi_a;I_1\ldots I_n}^{\circ}(x_1,\ldots,x_n)
+  =
+  \bra{\vac}
+    \widetilde{\mathcal O}_{I_1}(\tau_1,n_1)\cdots
+    \widetilde{\mathcal O}_{I_n}(\tau_n,n_n)
+  \ket{\psi_a}_{\rm cyl},
+  \qquad
+  x_j=\ee^{\tau_j}n_j ,
+  \label{eq:state-punctured-radial-correlator}
+\]
+first in every radial ordering chamber, and in other chambers by the
+Euclidean permutation and contact prescriptions of the Schwinger hierarchy.
+The required data are extensions
+\[
+  W_{\psi_a;I_1\ldots I_n}
+  \in
+  \mathcal D'\!\left((\R^D)^n\right)
+  \label{eq:state-local-boundary-distribution}
+\]
+of these punctured distributions such that:
+\begin{enumerate}
+  \item their singular support is contained in the union of the ordinary
+  partial diagonals \(x_i=x_j\) and the origin diagonals \(x_i=0\);
+  \item their Euclidean covariance, spin transformation, and internal
+  symmetry transformation laws are those of an additional insertion at the
+  origin transforming in the same rotation and internal representation as the
+  multiplet \(\psi_a\);
+  \item their dilatation Ward identity has weight \(\Delta\) at the origin,
+  namely scaling all \(x_j\) by \(\lambda>0\) multiplies the origin insertion
+  by \(\lambda^{-\Delta}\), with the known anomalous-dimension matrix already
+  diagonalized inside the finite-dimensional eigenspace;
+  \item translation of the origin insertion is represented by the descendant
+  multiplets \(P_{\mu_1}\cdots P_{\mu_k}\psi_a\), so differentiation with
+  respect to the origin agrees, distributionally, with minus the sum of
+  derivatives with respect to the exterior points;
+  \item for every radius \(R\) and every finite inside-supported insertion
+  state \(A\subset B_R\setminus\{0\}\), the exterior pairing obtained by
+  reflecting \(A\) through \(\Sigma_R\) agrees with the Hilbert-space pairing,
+  \[
+    W_{\psi_a;\Theta_R A}
+    =
+    \langle A,\psi_a\rangle_{\rm rad}.
+    \label{eq:local-boundary-value-pairing}
+  \]
+\end{enumerate}
+The topology of the extension in
+\eqref{eq:state-local-boundary-distribution} is the ordinary distribution
+topology on compact subsets after choosing the local contact-term convention.
+\end{definition}
+
+\begin{theorem}[Operator from a definite-energy radial state]
+\label{thm:operator-from-state-radial-boundary-value}
+Assume Hypothesis~\ref{hyp:radial-reconstruction-data}.  Let
+\(\psi_a\in\ker(D_{\rm rad}-\Delta)\) be a finite rotation multiplet with
+local radial boundary-value data in the sense of
+Definition~\ref{def:local-radial-boundary-value-state}.  Then there is a
+unique class
+\[
+  [\mathcal O_{\psi_a}]
+  \in
+  \mathcal V_{\rm loc}^{(\Delta)}
+\]
+such that, for every exterior product of local operators, its Euclidean
+correlators are the distributions
+\eqref{eq:state-local-boundary-distribution}.  Its radial state is precisely
+\(\psi_a\):
+\[
+  \ket{\mathcal O_{\psi_a}}=\psi_a .
+  \label{eq:operator-from-state-radial-state}
+\]
+Two representatives that give the same radial state differ by a null local
+operator, namely by an element whose radial two-point pairing with every local
+operator vanishes.
+
+Conversely, the radial-completeness clause of
+Hypothesis~\ref{hyp:radial-reconstruction-data} is exactly the assertion that
+every vector in each eigenspace \(\ker(D_{\rm rad}-\Delta)\) admits such local
+radial boundary-value data.  Under that clause, the operator-from-state map is
+surjective separately on every eigenspace.
+\end{theorem}
+
+\begin{proof}
+The extensions
+\eqref{eq:state-local-boundary-distribution} define the correlators of an
+additional distributional insertion supported at the origin.  The singular
+support condition and the stated contact prescriptions give locality at all
+separated points and a prescribed extension across origin diagonals.  The
+covariance and scaling Ward identities place this insertion in the
+\(\Delta\)-eigenspace of the local dilatation action, with the specified spin
+and internal quantum numbers, and the translation condition identifies its
+descendants with the radial states \(P_{\mu_1}\cdots P_{\mu_k}\psi_a\).
+Thus the data define a class
+\([\mathcal O_{\psi_a}]\in\mathcal V_{\rm loc}^{(\Delta)}\).
+
+The radial state of this class is computed by pairing it with the dense set of
+inside-supported insertion states.  For every such \(A\), the defining
+pairing \eqref{eq:radial-state-exterior-pairing} and the boundary-value
+condition \eqref{eq:local-boundary-value-pairing} give
+\[
+  \langle A,\mathcal O_{\psi_a};R\rangle_{\rm rad}
+  =
+  \langle A,\psi_a\rangle_{\rm rad}.
+\]
+Since these \(A\)'s are dense after the radial null quotient, the two radial
+vectors agree.  If two local insertions have the same radial state, their
+difference pairs to zero with every \(A\), hence with every local operator by
+radial reflection and density; this is precisely the null equivalence used in
+the definition of \(\mathcal V_{\rm loc}^{(\Delta)}\).
+
+The final assertion is a restatement of radial completeness with the
+existence condition made explicit: completeness supplies, for every
+finite-energy eigenvector, a local scaling field whose correlators furnish the
+boundary-value distributions above.
+\end{proof}
+
 \begin{construction}[cylinder sewing and Heisenberg operators]
 \label{constr:cylinder-sewing-heisenberg}
 Let
@@ -817,24 +987,34 @@ product of Heisenberg cylinder operators.
 \begin{theorem}[State--operator correspondence]
 \label{thm:state-operator-correspondence}
 Assume the radial reconstruction data of
-Hypothesis~\ref{hyp:radial-reconstruction-data}.  Let
-\(\mathcal V_{\rm loc}\) be the complex vector space of renormalized local
-operators at the origin, including descendants, modulo operators whose radial
-two-point pairing with every local operator vanishes.  Let
-\(\mathcal H_{\rm fin}\subset\mathcal H_{S^{D-1}}\) be the finite-energy
-subspace of the radial Hilbert space.  Then insertion at the origin defines an
-isometric linear isomorphism
+Hypothesis~\ref{hyp:radial-reconstruction-data}.  For every
+\(\Delta\in\operatorname{Spec}_{\rm pp}(D_{\rm rad})\), insertion at the
+origin defines an isometric linear isomorphism between local scaling operators
+of dimension \(\Delta\) and cylinder energy eigenstates of energy \(\Delta\):
 \begin{equation}
-  \mathcal V_{\mathrm{loc}}
+  \mathsf S_\Delta:
+  \mathcal V_{\rm loc}^{(\Delta)}
   \xrightarrow{\;\sim\;}
-  \mathcal H_{\rm fin},
+  \ker(D_{\rm rad}-\Delta),
   \qquad
   \mathcal O\longmapsto\ket{\mathcal O}.
-  \label{eq:state-operator-map}
+  \label{eq:state-operator-map-degree-delta}
 \end{equation}
-After completing \(\mathcal V_{\rm loc}\) in the radial inner product, the map
-extends uniquely to a Hilbert-space isomorphism onto
-\(\mathcal H_{S^{D-1}}\).  Equivalently, for insertions ordered by cylinder time
+Consequently finite linear combinations of definite-dimension local operators
+give an isometric algebraic isomorphism
+\[
+  \mathsf S_{\rm alg}:
+  \mathcal V_{\rm loc}^{\rm alg}
+  \xrightarrow{\;\sim\;}
+  \mathcal H_{\rm alg}.
+\]
+The BPZ, or radial, completion of
+\(\mathcal V_{\rm loc}^{\rm alg}\) is identified with
+\(\mathcal H_{S^{D-1}}\), because \(\mathcal H_{\rm alg}\) is dense.  A
+generic vector in this completed Hilbert space is a state on the sphere; it is
+represented by a local operator precisely when it lies in the algebraic
+finite-energy subspace with the local boundary-value property above.  For a
+definite-dimension operator and for insertions ordered by cylinder time
 \(\tau_1>\tau_2>\cdots>\tau_n\),
 \begin{equation}
   \left\langle
@@ -857,17 +1037,27 @@ on local insertions inside a sphere.  Quotienting its null space makes the map
 two-point pairing; hence the map is isometric.  In a regulated Lagrangian
 representative this equality is the gluing identity obtained from
 \eqref{eq:radial-ball-boundary-factorization}, followed by the continuum
-limit \eqref{eq:ball-preparation-continuum-limit}.  Dilatation covariance
-transports the state from radius \(R\) to the cylinder and places it in the
-finite-energy subspace by
-Hypothesis~\ref{hyp:radial-reconstruction-data}.  The radial-completeness
-clause of the same hypothesis gives surjectivity onto
-\(\mathcal H_{\rm fin}\).  Since \(D_{\rm rad}\) is nonnegative
-self-adjoint, the spectral projections \(P_{[0,E]}(D_{\rm rad})\) converge
-strongly to the identity as \(E\to\infty\).  Hence
-\(\mathcal H_{\rm fin}\) is dense in \(\mathcal H_{S^{D-1}}\), and the
-isometry extends by completion to the Hilbert-space isomorphism stated in the
-theorem.
+limit \eqref{eq:ball-preparation-continuum-limit}.  If
+\(\mathcal O\in\mathcal V_{\rm loc}^{(\Delta)}\), the dilatation Ward identity
+for \(\mathcal O(0)\) becomes the cylinder Hamiltonian equation
+\[
+  D_{\rm rad}\ket{\mathcal O}=\Delta\ket{\mathcal O}.
+\]
+Thus \(\mathsf S_\Delta\) maps
+\(\mathcal V_{\rm loc}^{(\Delta)}\) isometrically into
+\(\ker(D_{\rm rad}-\Delta)\).  Theorem
+\ref{thm:operator-from-state-radial-boundary-value}, together with the
+radial-completeness clause of
+Hypothesis~\ref{hyp:radial-reconstruction-data}, gives the reverse inclusion:
+each vector in \(\ker(D_{\rm rad}-\Delta)\) is represented by a local scaling
+operator of the same dimension, unique modulo null operators.  This proves
+\eqref{eq:state-operator-map-degree-delta}.  Taking finite direct sums gives
+the algebraic isomorphism.  Since \(D_{\rm rad}\) is nonnegative self-adjoint,
+the spectral projections \(P_{[0,E]}(D_{\rm rad})\) converge strongly to the
+identity as \(E\to\infty\).  Hence \(\mathcal H_{\rm alg}\) is dense in
+\(\mathcal H_{S^{D-1}}\), and the isometry extends by completion to the radial
+Hilbert space.  This completion is a completion of states, not an assertion
+that every Hilbert-space vector is itself a local operator.
 
 It remains to derive the correlation formula.  Put
 \[
@@ -917,9 +1107,15 @@ The vacuum state corresponds to the identity operator:
 \[
   \mathbf 1\longleftrightarrow\ket{\vac}.
 \]
-Products of local operators inserted at the origin are defined by the
-short-distance operator product expansion and correspond to the corresponding
-states after radial ordering.
+The algebraic local-operator space is dense in the BPZ/radial Hilbert norm but
+is not closed.  Accordingly, the product of two separated local insertions
+inside a sphere defines a state on that sphere, not a new local operator at
+the origin.  The operator product expansion is the statement that this state
+is the BPZ/radial-norm limit of finite sums of local scaling operators at the
+origin, organized by \(D_{\rm rad}\)-eigenspaces.  The density of
+\(\mathcal V_{\rm loc}^{\rm alg}\) in this norm is the functional-analytic
+input that permits separated products to be represented by convergent local
+operator partial sums after radial ordering.
 
 \begin{figure}[H]
   \centering
@@ -1254,9 +1450,13 @@ its derivatives, modulo the equation of motion.
 \section{The Operator Partition Function of the Free Scalar}
 
 At a fixed point, it is often useful to count linearly independent local
-operators by their scaling dimension.  Let
+operators by their scaling dimension.  This is a graded trace on the algebraic
+local-operator space, not a trace over the Hilbert completion.  Let
 \[
-  Z_{\rm op}(q)=\operatorname{Tr}_{\mathcal V_{\rm loc}}q^{\widehat D_{\rm rad}}
+  Z_{\rm op}(q)
+  =
+  \operatorname{Tr}_{\mathcal V_{\rm loc}^{\rm alg}}
+  q^{\widehat D_{\rm rad}}
 \]
 be the formal character of the local-operator space.  In the free scalar
 theory, the independent single-letter operators are the symmetric traceless
