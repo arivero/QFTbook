@@ -64,6 +64,9 @@ The chapter must define and derive:
   \(\beta(g)=-g^3(11C_A/3-4T_RN_f/3)/(16\pi^2)+O(g^5)\);
 - dimensional transmutation and the perturbative domain of the one-loop
   running coupling;
+- the explicit status of the four-dimensional pure Yang--Mills continuum
+  existence and positive mass-gap problem as an open Clay Millennium problem,
+  with spectral/confinement uses marked as nonperturbative inputs;
 - the two-loop Banks--Zaks alternative as a perturbative infrared fixed-point
   diagnostic, with its controlled domain stated;
 - Wilson lines, open gauge-invariant quark-antiquark operators, rectangular
@@ -120,28 +123,33 @@ The chapter must define and derive:
 8. A perturbative two-loop zero near the upper edge of asymptotic freedom is a
    controlled Banks--Zaks fixed-point diagnostic, not a statement about
    ordinary low-flavor QCD.
-9. A rectangular Euclidean Wilson loop extracts the static potential between
+9. The one-loop running coupling and dimensional transmutation do not prove
+   four-dimensional continuum Yang--Mills existence, mass gap, or confinement.
+   The pure Yang--Mills existence and mass-gap problem is the Clay Millennium
+   problem; QCD spectral and flux-tube statements require separate
+   nonperturbative input or a regulated/lattice context.
+10. A rectangular Euclidean Wilson loop extracts the static potential between
    external color sources; an area law in pure Yang--Mills is a confinement
    diagnostic, while dynamical fundamental matter can break the flux tube.
-10. Colored quark and gluon fields are not physical asymptotic states of QCD;
+11. Colored quark and gluon fields are not physical asymptotic states of QCD;
    physical scattering statements must be formulated in terms of gauge-invariant
    states or controlled high-energy factorization data.
-11. Energy correlators are nonperturbative detector observables once the
+12. Energy correlators are nonperturbative detector observables once the
     stress-tensor flux limit is constructed on the physical Hilbert space.
-12. Smeared detector observables are continuous under soft emission and
+13. Smeared detector observables are continuous under soft emission and
     collinear recombination, and this supplies the measurement-function input
     for KLN/factorization finiteness at fixed perturbative order.
-13. The energy-energy correlator and energy-flow polynomials are formulated in
+14. The energy-energy correlator and energy-flow polynomials are formulated in
     terms of positive calorimetric measures rather than colored parton labels.
-14. DIS is controlled by an inclusive Wightman current-current tensor; the
+15. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
     continuation to the physical inclusive tensor.
-15. The leading-twist local operators and the gauge-invariant light-ray
+16. The leading-twist local operators and the gauge-invariant light-ray
     operators are two presentations of the same short-distance data; asymptotic
     freedom changes Bjorken scaling into logarithmic scaling violation governed
     by anomalous dimensions.
-16. In QCD, partonic initial-state collinear singularities are not removed by
+17. In QCD, partonic initial-state collinear singularities are not removed by
     an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
     renormalized Wilson-line light-ray operators defining PDFs, and the
     resulting factorization-scale dependence is governed by DGLAP evolution.
@@ -207,3 +215,7 @@ The chapter must define and derive:
   back to the Abelian-scope Bloch--Nordsieck remark and stated that
   initial-state collinear singularities of colored partons are absorbed into
   renormalized PDFs rather than canceled by a final-state inclusive sum.
+- 2026-05-24 issue #261 pass: added an explicit mass-gap status remark after
+  dimensional transmutation, identifying pure four-dimensional Yang--Mills
+  continuum existence plus a positive mass gap as the Clay Millennium problem
+  and separating it from perturbative running-coupling statements.

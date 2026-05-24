@@ -54,6 +54,9 @@ The chapter must define and derive:
 - Yang-Mills Lagrangian
   \(-\frac1{2g_{\mathrm{YM}}^2}\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\);
 - positive definite invariant form and compact reductive Lie algebras;
+- the status distinction between the classical local Yang--Mills action and
+  the open four-dimensional continuum quantum Yang--Mills existence/mass-gap
+  problem;
 - \(SU(2)\) and \(SU(N)\) examples with
   \(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\);
 - the four-dimensional \(\theta\)-term and its perturbative/topological roles;
@@ -84,15 +87,19 @@ The chapter must define and derive:
    invariant tensors on \(\mathfrak g\).
 7. A positive invariant quadratic form gives the kinetic energy sign needed
    for unitary Lorentzian gauge fields.
-8. In \(D=4\), the \(\theta\)-density is local and gauge invariant; as a total
+8. The four-dimensional pure Yang--Mills continuum existence and positive
+   mass-gap problem is the Clay Millennium problem; the local classical action,
+   perturbative gauge-fixed expansions, and finite-cutoff lattice systems are
+   not by themselves a completed continuum quantum Yang--Mills construction.
+9. In \(D=4\), the \(\theta\)-density is local and gauge invariant; as a total
    derivative it enters perturbatively only through global/topological sectors.
-9. Matter fields carry representations of \(G\), and their covariant
+10. Matter fields carry representations of \(G\), and their covariant
    derivative transforms in the same representation.
-10. QCD uses the fundamental and anti-fundamental representations for quarks
+11. QCD uses the fundamental and anti-fundamental representations for quarks
     and antiquarks; the complexified adjoint representation describes
     adjoint-valued fields, with real adjoint fields selected by a reality
     condition.
-11. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
+12. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
    matrices into a complex flavor matrix.
 
 ## Figure Requirements
@@ -131,3 +138,8 @@ The chapter must define and derive:
 - Avoid saying gauge symmetry is a physical symmetry; formulate it as local
   covariance/redundancy of field coordinates.
 - No reader-facing source-page references or course labels.
+- 2026-05-24 issue #261 pass: added a status remark naming the
+  four-dimensional pure Yang--Mills existence and mass-gap problem as the Clay
+  Millennium problem and separating that open continuum construction from the
+  classical local action, perturbative BRST expansions, and finite-cutoff
+  lattice regularizations.
