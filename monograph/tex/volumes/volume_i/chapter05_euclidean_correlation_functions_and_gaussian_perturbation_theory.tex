@@ -325,6 +325,14 @@ conditions are dictated by the time-sliced construction.  The limit
 \(N_{\rm max}\to\infty\) is then a further analytic step.  The harmonic
 oscillator provides the basic Gaussian example.
 
+In this chapter the phrase ``remove the mode cutoff'' has two distinct
+meanings.  In the free Gaussian oscillator it denotes an actual limit of
+finite-dimensional Gaussian moments; the covariance kernels below converge
+after the finite mode projection is removed.  In the interacting examples it
+denotes a coefficientwise operation on a perturbative expansion first defined
+at finite cutoff.  No nonperturbative continuum measure, and no convergence
+of the formal power series in the coupling, is inferred from the notation.
+
 \section{The Harmonic Oscillator}
 
 Let
@@ -382,29 +390,53 @@ Consequently
 \end{tikzpicture}
 \end{center}
 
-Define the normalized finite-\(T\) expectation value by
+For \(N\in\mathbb N\), let
 \[
-  \langle F\rangle_T
+  q^{(N)}(\tau)=\sum_{n=1}^{N}q_nf_n(\tau),
+  \qquad
+  S_{E,T,N}(q_1,\ldots,q_N)
+  =
+  \frac12\sum_{n=1}^{N}
+  \left[
+    \left(\frac{n\pi}{2T}\right)^2+\omega^2
+  \right]q_n^2 .
+\]
+The normalized finite-\(T\), finite-mode expectation value is
+\[
+  \langle F\rangle_{T,N}
   =
   \frac{
-    \int\prod_{n=1}^{\infty}\dd q_n\,
-    \exp[-S_E[q]/\hbar]\,F
+    \int_{\mathbb R^N}\prod_{n=1}^{N}\dd q_n\,
+    \exp[-S_{E,T,N}/\hbar]\,F(q^{(N)})
   }{
-    \int\prod_{n=1}^{\infty}\dd q_n\,
-    \exp[-S_E[q]/\hbar]
-  },
+    \int_{\mathbb R^N}\prod_{n=1}^{N}\dd q_n\,
+    \exp[-S_{E,T,N}/\hbar]
+  } .
 \]
-with the understanding that a finite mode cutoff is used before the limiting
-operation. The independent Gaussian integrals give
+This is an ordinary finite-dimensional Gaussian integral.  In this free
+subsection, \(\langle F\rangle_T\) denotes the limit
+\(\lim_{N\to\infty}\langle F\rangle_{T,N}\) only for those observables for
+which that limit is being proved or has already been proved.  The independent
+Gaussian integrals give, for \(1\le n,m\le N\),
 \[
-  \langle q_nq_m\rangle_T
+  \langle q_nq_m\rangle_{T,N}
   =
   \delta_{nm}\,
   \frac{\hbar}{
     \left(\frac{n\pi}{2T}\right)^2+\omega^2
   }.
 \]
-Therefore
+Therefore the finite-mode covariance kernel is
+\[
+  \langle q^{(N)}(\tau_1)q^{(N)}(\tau_2)\rangle_{T,N}
+  =
+  \sum_{n=1}^{N}
+  \frac{\hbar\,f_n(\tau_1)f_n(\tau_2)}
+       {\left(\frac{n\pi}{2T}\right)^2+\omega^2}.
+\]
+Since \(\sum_{n\ge1}((n\pi/2T)^2+\omega^2)^{-1}<\infty\), this sequence has
+a pointwise limit for every fixed \(\tau_1,\tau_2\in[-T,T]\), and the
+finite-\(T\) Gaussian covariance is
 \[
   \langle q(\tau_1)q(\tau_2)\rangle_T
   =
@@ -838,8 +870,13 @@ At finite cutoff, perturbation theory is the coefficientwise expansion of
 \]
 No convergence of the infinite-dimensional integral or of the resulting power
 series in \(g\) is assumed at this point; the coefficients are first defined in
-the regulated Gaussian integral, and limits are then discussed coefficient by
-coefficient.
+the regulated Gaussian integral.  Removing the mode cutoff in this interacting
+section means taking \(N_{\rm max}\to\infty\), or equivalently
+\(\Lambda\to\infty\), separately for each coefficient after its regulator
+dependence has been displayed.  If the coefficient has a finite limit, that
+limit is part of the perturbative definition used here; if it does not, one
+must specify the local counterterm or subtraction coordinate before a finite
+coefficient is defined.
 For the partition function,
 \[
   Z_g=\int[Dq]\,\exp[-S_0[q]-S_{\mathrm{int}}[q]],

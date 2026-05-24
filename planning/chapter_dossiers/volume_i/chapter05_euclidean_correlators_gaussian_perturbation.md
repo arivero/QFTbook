@@ -14,7 +14,10 @@ derivative-interaction/regulator counterterm block also certified on
 2026-05-24 for GitHub issue #298 so the Euclidean quantum-mechanical
 path-integral notation refers to Wiener/Brownian-bridge measure precisely when
 Chapter 4's Feynman--Kac theorem applies, and otherwise remains a stated
-regulator or perturbative construction.
+regulator or perturbative construction.  Tightened again for issue #315 by
+making the finite-mode cutoff removal explicit: the free oscillator has an
+actual Gaussian moment limit, while interacting uses are coefficientwise
+formal perturbation theory unless counterterms/subtractions are specified.
 
 ## Logical Role
 
@@ -98,6 +101,9 @@ Working framework:
 | \(G_0\) | free covariance | harmonic oscillator propagator |
 | \(\Sigma(k)\) | self-energy | sum of amputated 1PI two-point insertions |
 | \(\Lambda\) | cutoff | frequency regulator |
+| \(N_{\rm max}\) or \(N\) | integer cutoff | number of retained oscillator modes |
+| \(q^{(N)}\) | projected path | finite-mode approximation \(\sum_{n\le N}q_nf_n\) |
+| \(S_{E,T,N}\) | finite-dimensional action | Gaussian action restricted to the first \(N\) modes on \([-T,T]\) |
 | \(C\) | counterterm coefficient | regulator-dependent local term |
 
 ## Definition Ledger
@@ -112,6 +118,8 @@ Working framework:
   covered by Chapter 4, separated from Gaussian regulator and perturbative
   uses of the same notation.
 - Gaussian expectation and covariance.
+- finite-mode Gaussian expectation
+  \(\langle F\rangle_{T,N}\) and its explicitly stated cutoff-removal status.
 - Wick contraction and complete pairing.
 - Gaussian functional integral with Green function kernel.
 - Connected vacuum graph and linked-cluster exponentiation.
@@ -128,6 +136,7 @@ Working framework:
 | Long Euclidean time projects onto the ground state under overlap and gap assumptions. | Derived | Spectral decomposition |
 | The projected correlator has a regulated complex-time path-integral representation with endpoint wavefunctions included in the contour measure. | Construction | Patched from handwritten pp. 16--17 and rendered on physical PDF page 65 |
 | In Euclidean Schrödinger quantum mechanics satisfying Chapter 4's Feynman--Kac theorem, finite-interval \([Dq]\) denotes Brownian-bridge/Wiener expectation with potential weight. | Theorem application | Explicit paragraph after the Euclidean path-integral formula; distinguishes this from later Gaussian regulator and perturbative meanings |
+| The harmonic-oscillator mode cutoff has an actual \(N\to\infty\) Gaussian covariance limit at fixed \(T\), while interacting cutoff removal is only coefficientwise formal perturbation theory until finite limits or counterterms are specified. | Framework distinction plus free Gaussian proof | Finite \(N\) definition of \(\langle F\rangle_{T,N}\), summability of \(((n\pi/2T)^2+\omega^2)^{-1}\), and perturbative-status paragraph before the anharmonic expansion |
 | The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived; source-certified 2026-05-22 | Dirichlet sine-mode expansion, \(k_n=n\pi/(2T)\) Riemann-sum limit, endpoint image term, and contour integral |
 | Gaussian moments are sums over complete pairings. | Derived; source-certified 2026-05-22 | Finite source differentiation, explicit two- and four-point calculations, and \(4!\)-assignment grouping |
 | The Gaussian functional integral has two-point function equal to the Green kernel \(A^{-1}\). | Derived; source-certified 2026-05-22 | Regulated functional integration by parts and Fourier-space diagonalization |
@@ -167,6 +176,12 @@ Figures to include:
   Theorem `thm:wiener-feynman-kac-qm` and recorded that the Borel-measure
   interpretation is only the Euclidean Schrödinger case, not a general QFT
   path-integral foundation.
+- 2026-05-24, issue #315: replaced the informal infinite product in the
+  harmonic-oscillator mode expansion by the finite-dimensional
+  \(\langle F\rangle_{T,N}\) integral, stated the actual free Gaussian
+  \(N\to\infty\) covariance limit, and classified the interacting
+  \(\Lambda\to\infty\) operation as coefficientwise perturbative unless a
+  finite limit or counterterm/subtraction coordinate is specified.
 
 ## Audit Targets
 
