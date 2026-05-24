@@ -25,6 +25,9 @@
 - The chapter does not claim asymptotic completeness for physical models.
 - The chapter states massless, confined, and long-range charged sectors as
   different asymptotic domains without constructing them here.
+- It explicitly excludes interpreting perturbative QED charged hard labels as
+  exact on-shell LSZ electron particles of massless QED; the infrared chapters
+  construct the appropriate inclusive and dressed replacements.
 
 ## Framework
 

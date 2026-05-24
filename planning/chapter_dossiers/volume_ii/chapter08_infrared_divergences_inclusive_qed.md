@@ -30,6 +30,10 @@ resolution-inclusive transition probabilities are the constructed observables
 for charged scattering in four-dimensional QED. Fixed-photon-number amplitudes
 are treated as exclusive kernels whose regulator dependence is derived, not as
 the main conceptual object.
+The hard charged labels appearing in the soft-factor formulas are not to be
+identified with exact regulator-independent LSZ external electron states of
+massless QED; they are infrared-regulated hard data to be completed by the
+inclusive or dressed construction.
 
 The chapter should state:
 

@@ -40,9 +40,13 @@ Introduce renormalized representative fields by
   \bar\psi^B=Z_\psi^{1/2}\bar\psi .
 \]
 The constants \(Z_A\) and \(Z_\psi\) are fixed by pole-residue
-normalizations: \(Z_A\) normalizes the one-photon component of
-\(\widehat F_{\mu\nu}\ket{\vac}\), and \(Z_\psi\) normalizes the
-one-electron and one-positron spinor poles. Write
+normalizations in the infrared-regulated hard theory: \(Z_A\) normalizes the
+one-photon component of \(\widehat F_{\mu\nu}\ket{\vac}\), and \(Z_\psi\)
+normalizes the one-electron and one-positron spinor poles before the
+long-distance regulator is removed.  In exact massless QED, \(Z_\psi\) is not
+a physical residue of an isolated electron Wigner particle; its infrared
+dependence is part of the hard-kernel bookkeeping that is combined with soft
+radiation in Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}. Write
 \[
   m^B=m+\delta m .
 \]
@@ -575,8 +579,9 @@ The current is represented by
   =
   -\ii e^B Z_A^{-1/2}Z_\psi\,\bar\psi\gamma^\mu\psi .
 \]
-The current insertion between external electron states is computed by reducing
-the external spinor legs by LSZ:
+Within the same infrared-regulated hard-kernel convention, the current
+insertion between external electron labels is computed by reducing the
+external spinor legs by LSZ:
 \[
 \begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.88]
   \tikzset{
@@ -600,6 +605,12 @@ leg supplies a factor \(Z_\psi^{1/2}\) in the LSZ residue.  If it is written
 in renormalized fields, those factors are absent from the external residues
 but reappear through the counterterm vertices.  These two bookkeepings give
 the same matrix element.
+After removing the infrared regulator in massless QED, this exclusive
+one-electron matrix element is not an autonomous physical scattering
+amplitude.  The hard form factor is one factor in either an inclusive
+probability, where unresolved photons are summed over, or a dressed-state
+matrix element whose charged asymptotic state already contains the soft
+electromagnetic field.
 
 The tree current vertex gives
 \[

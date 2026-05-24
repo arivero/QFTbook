@@ -77,7 +77,9 @@ Status: revised and source-audited on 2026-05-22.
   representative fields are used in gauge-fixed Green functions, and charged
   insertions require dressing data such as Wilson lines with specified paths.
 - External electron, positron, and photon factors are pole residues supplied by
-  LSZ, with open spinor or Lorentz indices contracted into amputated kernels.
+  LSZ only in an infrared-regulated hard theory with isolated charged
+  one-particle poles; in massless QED the charged spinor rows are hard-kernel
+  data to be completed by inclusive probabilities or soft dressings.
 - In a hard tree-level process such as Compton scattering, replacing a photon
   polarization by a longitudinal representative gives zero after summing the
   two diagrams and using the external Dirac equations and momentum
@@ -85,6 +87,9 @@ Status: revised and source-audited on 2026-05-22.
 - Ordinary fixed-photon-number charged S-matrix elements are a formal
   perturbative object in QED; the physical long-range theory requires
   infrared-inclusive observables or dressed asymptotic charged states.
+- Tree-level Compton scattering is presented as a Born hard kernel.  It is not
+  claimed to be an exact fixed-photon-number electron \(S\)-matrix element of
+  massless QED after removal of the infrared regulator.
 
 ## Figure Requirements
 

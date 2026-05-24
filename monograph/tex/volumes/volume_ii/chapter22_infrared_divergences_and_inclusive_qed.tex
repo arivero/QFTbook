@@ -10,6 +10,14 @@ asymptotic particles are massive.  Four-dimensional QED has a massless stable
 photon, and a charged
 particle may emit photons of arbitrarily small energy.  This chapter constructs
 the scattering quantities adapted to that long-distance structure.
+The point is structural, not merely technical: the ordinary LSZ theorem for a
+charged external electron would require an isolated massive charged pole.
+Massless QED instead has charged threshold data accompanied by arbitrarily
+soft electromagnetic radiation.  The fixed hard charged labels used below are
+therefore not exact fixed-photon-number Wigner-particle \(S\)-matrix labels.
+They are hard data in an infrared-regulated factorization problem; physical
+charged scattering is attached either to detector-inclusive probabilities or
+to asymptotic states dressed by their soft electromagnetic fields.
 
 Throughout the chapter, spacetime is \(D=4\) Minkowski space with metric
 \[
@@ -75,9 +83,13 @@ approximation is valid:
 \]
 
 \begin{definition}[Resolution-inclusive transition probability]
-Let \(S_{\beta;\{k_r,h_r\}|\alpha}\) be the scattering matrix element
-with hard charged configuration \(\beta\) and additional photons
-\((k_r,h_r)\).  The resolution-inclusive probability at threshold \(E_T\) is
+Let \(S^{(\mu)}_{\beta;\{k_r,h_r\}|\alpha}\) denote an infrared-regulated hard
+kernel with hard charged configuration \(\beta\), incoming hard charged
+configuration \(\alpha\), and additional photons \((k_r,h_r)\).  The
+superscript \((\mu)\) records the auxiliary long-distance regulator.  The
+object \(S^{(\mu)}\) may be obtained from a regulated LSZ computation, but it
+is not assumed to have a regulator-independent fixed-photon-number limit.  The
+resolution-inclusive probability at threshold \(E_T\) is
 the sum
 \[
   P_{\beta|\alpha}(E_T)
@@ -88,7 +100,7 @@ the sum
   \prod_{r=1}^{N}
   \frac{\dd^3\vec k_r}{(2\pi)^3\,2\omega_r}\,
   \left|
-    S_{\beta;\{k_r,h_r\}|\alpha}
+    S^{(\mu)}_{\beta;\{k_r,h_r\}|\alpha}
   \right|^2 ,
 \]
 where \(\mathcal R_{E_T}\) is the detector-degenerate soft region.  At leading
@@ -731,8 +743,11 @@ soft photons are included.
 The fixed-photon-number matrix elements are exclusive kernels for an idealized
 measurement that specifies the exact number of photons down to zero energy.
 The inclusive probability above is the transition probability associated with
-a finite energy resolution.  Both statements follow from the same soft
-factorization formulas.
+a finite energy resolution.  In a charged sector of massless QED, the
+exclusive kernels should not be reinterpreted as ordinary regulator-independent
+LSZ \(S\)-matrix elements for bare electron states.  Both the vanishing of
+fixed-\(N\) probabilities and the finiteness of the inclusive probability
+follow from the same soft factorization formulas.
 \end{remark}
 
 The discussion so far treated massive charged particles, where the angular
@@ -748,7 +763,7 @@ one considers
   =
   \sum_{\alpha'\in[\alpha]}\omega_{\alpha'}
   \sum_{\beta'\in[\beta]}
-  \left|S_{\beta'\alpha'}\right|^2,
+  \left|S^{(\mu)}_{\beta'\alpha'}\right|^2,
 \]
 with nonnegative weights \(\omega_{\alpha'}\) normalized on the incoming
 degenerate class.  Soft degeneracy and collinear degeneracy are therefore
