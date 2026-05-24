@@ -841,15 +841,199 @@ produce nearby singularities, the simple Breit--Wigner or complex-mass-shell
 description is replaced by the corresponding multi-channel analytic line
 shape.  The external states remain the stable states in all cases.
 
+\section{Pole-Factorized Resonance Objects}
+
+The preceding discussion leaves a precise mathematical problem.  Stable
+external particles are vectors in asymptotic Hilbert spaces.  Resonances are
+singularities of analytic continuations of matrix elements between such
+vectors.  A candidate ``amplitude with an external resonance'' must therefore
+be extracted from stable-channel amplitudes by pole residues.
+
+\begin{definition}[Local pole neighborhood]
+Fix stable channels \(a,b\) and kinematic variables
+\((s,\alpha,\beta)\), where \(s\) is the invariant mass squared of a channel
+whose analytic continuation has a pole.  A local pole neighborhood consists
+of a sheet \(\mathfrak s\) of the analytically continued amplitude
+\(\mathcal M^{\mathfrak s}_{a\to b}(s,\alpha,\beta)\), an open set
+\(U\subset\C\) containing \(s_\ast\), and open real or complex neighborhoods
+\(V_a,V_b\) of \(\alpha,\beta\), such that the only singularity in
+\((U\setminus\{s_\ast\})\times V_a\times V_b\) is a simple pole at
+\(s=s_\ast\).
+\end{definition}
+
+\begin{definition}[Pole-factorized resonance object]
+\label{def:pole-factorized-resonance-object}
+In a local pole neighborhood, the pole-residue kernel is
+\begin{equation}
+  R_{ab}(\alpha,\beta)
+  =
+  \lim_{s\to s_\ast}
+  (s_\ast-s)\,
+  \mathcal M^{\mathfrak s}_{a\to b}(s,\alpha,\beta).
+  \label{eq:resonance-residue-kernel}
+\end{equation}
+If the residue kernel has rank one in the channel variables, a
+pole-factorized resonance object is an equivalence class of factorizations
+\[
+  R_{ab}(\alpha,\beta)=r_{b}(\beta)\,r_{a}(\alpha),
+  \qquad
+  (r_a,r_b)\sim(\lambda r_a,\lambda^{-1}r_b),
+  \qquad
+  \lambda\in\C^\times .
+\]
+The functions \(r_a,r_b\) are production and decay residue functionals.  The
+equivalence class, rather than either factor separately, is the invariant
+object in the one-pole problem.
+\end{definition}
+
+For a resonance in a spin-\(j\) channel, the residue kernel carries the
+indices of the corresponding partial wave or covariant tensor structure.
+After projecting to the irreducible spin component at the pole, rank one means
+rank one in the remaining channel space.  In gauge theory this projection must
+be performed on the gauge-invariant stable-channel amplitude, or
+equivalently on BRST cohomology representatives whose pole residue is
+independent of the chosen gauge-fixing representatives.  Pole position and
+full stable-channel residues are the primary objects; a split into
+``production'' and ``decay'' factors is meaningful only after the
+normalization equivalence in
+Definition~\ref{def:pole-factorized-resonance-object} has been imposed.
+
+The same construction extends to several resonance variables only under a
+strong isolation hypothesis.  Suppose a stable-channel amplitude depends on
+complex variables \(s_1,\ldots,s_N\), and the chosen sheet contains simple
+poles at \(s_i=s_{\ast i}\).  If there is a polydisc
+\(\prod_i U_i\) in which the only singular divisors are these \(N\) simple
+pole hyperplanes, define the nested residue
+\begin{equation}
+  R^{(N)}
+  =
+  \lim_{s_N\to s_{\ast N}}\cdots
+  \lim_{s_1\to s_{\ast1}}
+  \left(\prod_{i=1}^N(s_{\ast i}-s_i)\right)
+  \mathcal M^{\mathfrak s}(s_1,\ldots,s_N,\gamma).
+  \label{eq:nested-resonance-residue}
+\end{equation}
+The order of residues is then immaterial by meromorphy in the polydisc.  This
+object is the mathematical candidate for an amplitude with \(N\) external
+resonance slots and any remaining stable external data \(\gamma\).  The
+definition collapses when a threshold branch point, an anomalous threshold, or
+another pole intersects the same neighborhood.
+
+\begin{proposition}[Properties inherited from stable-channel scattering]
+\label{prop:resonance-residue-inherited-properties}
+Assume the stable-channel \(S\)-matrix is unitary on the physical boundary,
+Poincare covariant, and obtained from local fields satisfying the analyticity
+hypotheses used in the preceding chapters.  Let
+\(R_{ab}\) be the pole-residue kernel in a local pole neighborhood.  Then:
+\begin{enumerate}
+\item \(s_\ast\) and \(R_{ab}\) are invariant under changes of interpolating
+fields that preserve the stable-channel \(S\)-matrix.
+\item covariance of the stable amplitude induces covariance of \(R_{ab}\) in
+the little-group or partial-wave representation labeling the pole.
+\item physical unitarity gives reality and conjugation constraints relating
+the pole on the chosen sheet to the conjugate singularity on the reflected
+sheet, and it fixes the positive inclusive decay rate in the narrow isolated
+regime through the discontinuity of the stable-channel amplitude.
+\item in a gauge theory, if the stable-channel amplitude is represented by
+BRST-closed external operators, the residue kernel is independent of BRST-exact
+changes of those representatives.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The residue kernel is obtained by applying the linear functional
+\(\operatorname{Res}_{s=s_\ast}\) to a meromorphic continuation of a
+stable-channel matrix element.  Field redefinitions that leave the
+stable-channel \(S\)-matrix unchanged leave this meromorphic germ unchanged,
+and hence leave its residue unchanged.  Poincare transformations act on the
+stable amplitude before continuation; since analytic continuation and taking a
+simple residue commute with the finite-dimensional tensor or partial-wave
+projection, the residue transforms in the corresponding representation.
+
+On the physical boundary, unitarity gives \(S^\dagger S=1\), or equivalently
+the discontinuity relation for \(T=S-1\) derived from stable-channel
+unitarity.  Continuing this relation
+through the cut relates the pole on one sheet to the conjugate analytic
+structure on the reflected sheet.  In the narrow isolated regime, projecting
+the discontinuity onto the pole term gives the same inclusive rate as the
+self-energy cut calculation of the previous section.  Finally, a BRST-exact
+change of a stable external representative changes a physical stable-channel
+matrix element by zero; applying the residue functional to zero gives zero.
+\end{proof}
+
+\section{Gamow Functionals and the Boundary of the Construction}
+
+A rigged-Hilbert formulation packages the pole residue into generalized
+vectors.  Choose dense test spaces
+\[
+  \Phi_-\subset\Hilb\subset\Phi_-^\times,
+  \qquad
+  \Phi_+\subset\Hilb\subset\Phi_+^\times
+\]
+whose energy wavefunctions have the analyticity needed to continue the
+incoming and outgoing scattering amplitudes to the pole.  A decaying Gamow
+functional associated with \(s_\ast\) is an element of one dual space whose
+pairing with test vectors reproduces the pole residue.  In the rest frame,
+with \(E_\ast=M_{\rm pole}-\ii\Gamma_{\rm pole}/2\), its time evolution is a
+semigroup:
+\[
+  \ee^{-\ii Ht}\ket{G_\ast}
+  =
+  \ee^{-\ii M_{\rm pole}t}\ee^{-\Gamma_{\rm pole}t/2}\ket{G_\ast},
+  \qquad t\ge0,
+\]
+as a statement about pairings with the chosen test space.  The restriction
+\(t\ge0\) is part of the analytic test-space construction; a self-adjoint
+Hamiltonian on \(\Hilb\) still generates a unitary group on normalizable
+vectors.
+
+This rigged-Hilbert language is useful because it records the decaying pole
+term without pretending that the resonance is a vector in \(\Hilb\).  It is
+also additional structure.  Different choices of test spaces can represent
+the same pole residue, and a general local QFT does not come equipped with a
+canonical Hardy-space rigging for every multiparticle channel.  For this
+monograph the invariant data remain the pole position, sheet, and residue
+kernels of stable-channel amplitudes; Gamow functionals are a representation
+of those data when the required analytic rigging has been supplied.
+
+\section{Obstructions to External-Resonance Amplitudes}
+
+The pole-residue construction has sharp failure modes.
+
+\begin{enumerate}
+\item \textbf{Threshold collision.}  If \(s_\ast\) lies at a distance
+comparable to its width from a branch point, there is no neighborhood in which
+the amplitude is a single simple pole plus a holomorphic remainder.  The
+observable line shape is controlled by the pole and the branch point together.
+\item \textbf{Coupled channels.}  With several open channels, the analytic
+continuation lives on a multi-sheeted surface.  A pole may be close on one
+sheet and absent or shadowed on another.  The residue is then a matrix in
+channel space, and rank-one factorization can fail.
+\item \textbf{Overlapping resonances.}  If two poles lie in the same local
+domain, the residue decomposition depends on the chosen basis in the
+finite-dimensional pole subspace unless the pole projectors are separated by
+contours.
+\item \textbf{Gauge and line-shape conventions.}  A complex pole of the full
+stable-channel amplitude is invariant, but masses, widths, branching
+fractions, and production factors extracted from a fitted real-axis line shape
+depend on the convention used to separate pole and background terms.
+\item \textbf{Long-range and massless effects.}  If the stable channels have
+infraparticle behavior or uncancelled soft radiation, the stable-channel
+amplitude itself must be replaced by an inclusive or dressed observable before
+any resonance residue is defined.
+\end{enumerate}
+
 \begin{openproblem}[External resonances]
-There is a further problem, distinct from ordinary LSZ reduction: formulate a
-theory of amplitudes whose external objects are unstable resonances.  Such a
-theory cannot use normalizable one-resonance vectors in the physical Hilbert
-space.  A satisfactory formulation would have to start from stable-channel
-unitarity and locality, continue amplitudes to the relevant sheets, identify
-field-redefinition-invariant pole data, and state factorization, covariance,
-gauge-invariance, and threshold conditions for the resulting resonance
-objects.  The complex-mass-shell prescription is a perturbative pole
-parametrization; it does not by itself solve this nonperturbative
-scattering-theoretic problem.
+The local construction above gives a candidate object in the isolated
+simple-pole regime.  The open problem is to promote these local residues to a
+general theory of amplitudes with resonance slots.  Such a theory must specify
+the class of local QFTs and channels for which the required analytic
+continuations exist, define the allowed rigged-Hilbert test spaces or avoid
+them in favor of purely meromorphic residue data, prove compatibility with
+stable-channel unitarity, formulate covariance for spin and gauge theories,
+and give precise replacement rules when thresholds, overlapping poles,
+massless sectors, or coupled-channel sheets obstruct rank-one pole
+factorization.  Perturbative complex-mass and pole schemes are calculational
+realizations of the isolated-pole part of this problem; they are not a
+nonperturbative external-state construction.
 \end{openproblem}

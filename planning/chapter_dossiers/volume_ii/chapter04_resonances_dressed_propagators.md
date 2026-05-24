@@ -25,6 +25,12 @@
   cross sections.
 - Volume II Chapters 1--3 for the local notation, scattering kernel
   convention, and below-threshold pole discussion.
+- External resonance references used as controls: rigged-Hilbert/Gamow-vector
+  treatments of S-matrix resonance poles, Stuart/Sirlin pole-scheme
+  gauge-invariance work, and Denner--Dittmaier/Denner--Lang complex-mass
+  scheme and unitarity analyses.  These are controls for terminology and
+  theorem boundaries; the chapter defines the local pole-residue construction
+  directly from stable-channel amplitudes.
 - Rendered handwritten trace
   `monograph/tex/build/source_visual_trace/253b_trace-017.png` and
   `253b_trace-018.png` for the above-threshold tree pole, unitarity
@@ -49,6 +55,11 @@
 | \(F(s)\) | dressed inverse denominator of the \(s\)-channel exchange amplitude |
 | \(s_\ast\) | complex pole of the second-sheet continuation |
 | \(M_R,\Gamma_R\) | real resonance mass parameter and narrow-width decay rate |
+| \(\mathfrak s\) | sheet of an analytically continued stable-channel amplitude |
+| \(R_{ab}\) | pole-residue kernel between stable channels \(a,b\) |
+| \(r_a,r_b\) | production and decay residue functionals, defined up to reciprocal rescaling |
+| \(\Phi_\pm\) | rigged-Hilbert test spaces for incoming/outgoing analytic continuations |
+| \(\ket{G_\ast}\) | Gamow functional representing the decaying pole term when a rigging is supplied |
 
 ## Assumptions
 
@@ -116,6 +127,22 @@
   on the first sheet.
 - The first-sheet amplitude has the threshold cut; the resonance pole is on
   the continuation through that cut.
+- A pole-factorized resonance object is defined as the residue kernel of a
+  stable-channel amplitude in a local pole neighborhood, with rank-one
+  factorization recorded only after the sheet, channel variables, and
+  normalization equivalence have been specified.
+- Multiple external resonance slots are represented by nested residues only in
+  a polydisc where the only singular divisors are isolated simple pole
+  hyperplanes.
+- Field-redefinition invariance, covariance, unitarity constraints, and
+  gauge-representative independence are inherited by applying residue
+  functionals to stable-channel amplitudes.
+- Gamow functionals live in duals of chosen test spaces and represent pole
+  residues as semigroup-evolving generalized vectors; they are not additional
+  Hilbert-space particles.
+- Threshold collisions, coupled channels, overlapping poles, real-axis
+  line-shape conventions, and massless long-range sectors are explicit
+  obstructions to naive external-resonance amplitudes.
 
 ## Figures
 
@@ -134,3 +161,5 @@
   local analytic structure needed for this resonance construction.
 - No perturbative S-matrix introduction before the nonperturbative scattering
   and LSZ framework already established in Volume I.
+- The external-resonance section is an isolated-pole construction and open
+  problem statement.  It is not an LSZ theorem for unstable particles.
