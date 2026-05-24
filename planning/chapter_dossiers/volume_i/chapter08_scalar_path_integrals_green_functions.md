@@ -6,7 +6,10 @@ Current status: source-block certified against 253a pp. 72--79 on
 2026-05-22. The chapter has been rebuilt and visually audited after adding the
 functional-delta field-eigenstate representation, the formal \(Z\) shorthand
 with regulator status, the Euclidean field-insertion notation, and a more
-explicit \(k^0\)-plane pole/contour figure.
+explicit \(k^0\)-plane pole/contour figure. Tightened on 2026-05-24 for
+GitHub issue #299 so the Chapter 4 Trotter/Feynman--Kac theorem is invoked
+only for finite-dimensional Schrödinger spatial regulators with a closed
+semibounded form.
 
 ## Logical Role
 
@@ -54,6 +57,13 @@ Working framework:
 - \(\hbar=1\) unless displayed;
 - finite spatial volume or spatial momentum cutoff whenever a functional
   integral is treated as an actual finite-dimensional integral;
+- finite-dimensional Trotter/Feynman--Kac statements require an actual
+  finite-dimensional configuration space \(E_\Lambda\), positive kinetic
+  quadratic form, and locally Kato bounded-below potential \(U_\Lambda\);
+- continuum smooth cutoffs that leave infinitely many modes, covariance
+  cutoffs, direct Euclidean spacetime lattice actions without a transfer
+  matrix, and purely formal perturbative cutoffs are not consequences of the
+  Chapter 4 Trotter theorem and must be separately constructed;
 - field eigenstates are distributional generalized vectors, used only as a
   regulated heuristic bridge to the path-integral kernel;
 - Euclidean correlators are initially defined either by a regulated Euclidean
@@ -76,11 +86,17 @@ Working framework:
 | \(\Delta_E\) | distribution | free Euclidean scalar propagator |
 | \(\Delta_F\) | distribution | free Lorentzian Feynman propagator |
 | \(\epsilon\) | positive regulator | pole-displacement parameter in the Feynman prescription |
+| \(E_\Lambda\) | finite-dimensional real vector space | spatially regulated field configurations |
+| \(G_\Lambda^{AB}\) | positive kinetic quadratic form | finite-dimensional regulator Hamiltonian |
+| \(U_\Lambda\) | real potential on \(E_\Lambda\) | finite-dimensional regulator Hamiltonian |
+| \(Q_\Lambda\) | closed semibounded quadratic form | condition for invoking Trotter/Feynman--Kac |
 
 ## Definition Ledger
 
 - regulated scalar-field path-integral kernel with fixed boundary field
   configurations;
+- finite-dimensional regulator class for which Trotter--Kato/Feynman--Kac is
+  a theorem;
 - field wave functional and field-configuration generalized eigenstate;
 - Euclidean scalar action and Euclidean correlation function;
 - uniform Wick rotation preserving imaginary-time ordering;
@@ -92,9 +108,11 @@ Working framework:
 
 | Claim | Status | Certification |
 | --- | --- | --- |
-| The field path-integral kernel is obtained as the regulated continuum limit of time-sliced quantum mechanics. | Construction | Spatial cutoff plus Chapter 4 time slicing |
+| The field path-integral kernel is obtained from time-sliced quantum mechanics only after choosing a finite-dimensional Schrödinger spatial regulator satisfying closed-form hypotheses. | Conditional theorem/application | Proposition `prop:scalar-regulator-trotter-status`; Chapter 4 theorem applied to \(E_\Lambda\) |
 | Field-configuration eigenvectors are represented by functional delta distributions after a finite spatial regulator is imposed. | Framework construction | Direct regulated field-coordinate basis |
-| The formal notation \(Z=\int[D\phi]e^{iS[\phi]}\) has meaning as regulated shorthand or an asymptotic expansion derived from a regulated theory. | Framework statement | Regulator dependence stated explicitly |
+| Finite lattice and genuine finite-mode stable polynomial regulators satisfy the finite-dimensional Trotter/Feynman--Kac hypotheses. | Proposition | Smooth bounded-below potential on \(E_\Lambda\) plus positive kinetic quadratic form |
+| Continuum smooth cutoffs that leave infinitely many spatial modes, formal covariance cutoffs, and direct Euclidean spacetime lattice actions without transfer matrices do not inherit the finite-dimensional Trotter theorem. | Framework distinction | Chapter text requires separate Hilbert-space/domain/constructive/perturbative data |
+| The formal notation \(Z=\int[D\phi]e^{iS[\phi]}\) has meaning as regulated shorthand or an asymptotic expansion derived from a regulated theory, and does not imply a Borel measure. | Framework statement | Regulator dependence stated explicitly; positive Borel measures restricted to some bosonic Euclidean scalar regimes |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
@@ -121,7 +139,18 @@ Rendered check:
 
 - Keep all path-integral formulas marked as regulated constructions or formal
   expressions until a regulator is specified.
+- Do not invoke Chapter 4's Trotter/Feynman--Kac theorem for a field-theory
+  regulator unless the regulator produces a finite-dimensional Schrödinger
+  Hamiltonian with a closed semibounded form.
 - Do not say the Euclidean functional expression is positive in all theories.
 - Do not introduce perturbative graph expansion in this chapter.
 - Do not use scattering language.
 - Preserve the transition into the Kallen-Lehmann chapter.
+
+## Audit Notes
+
+- 2026-05-24, issue #299: added
+  `prop:scalar-regulator-trotter-status`, separating finite lattice/finite-mode
+  Schrödinger regulators from continuum smooth cutoffs, covariance cutoffs,
+  direct Euclidean spacetime lattice actions without transfer matrices, and
+  formal perturbative cutoffs.

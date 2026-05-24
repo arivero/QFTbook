@@ -57,8 +57,9 @@ where \(\delta_\Lambda\) is the Dirac delta distribution relative to
 mean a compatible family of these regulated objects together with a stated
 limiting topology.
 
-At fixed \(\Lambda\), the field theory is an ordinary quantum-mechanical system
-with finitely many coordinates.  Choose a time partition
+At fixed finite-dimensional \(\Lambda\), the field theory is represented by a
+quantum-mechanical system with finitely many coordinates.  Choose a time
+partition
 \[
   t_i=t_0<t_1<\cdots<t_N=t_f.
 \]
@@ -76,8 +77,73 @@ The normalization factor \(\mathcal N_{\Lambda,N}\), the discrete action
 \(S_{\Lambda,N}\), and possible local measure factors are part of the chosen
 operator-symbol and time-slicing convention, exactly as in the
 finite-dimensional construction of
-Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.  If the
-Trotter limit exists for the regulated Hamiltonian \(H_\Lambda\), then
+Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.  The
+following proposition records the precise sense in which the
+finite-dimensional Trotter theorem may be imported.
+
+\begin{proposition}[Trotter status depends on the spatial regulator]
+\label{prop:scalar-regulator-trotter-status}
+Assume that the spatial regulator \(\Lambda\) has the following properties.
+The configuration space is a finite-dimensional real vector space
+\(E_\Lambda\simeq\mathbb R^{M_\Lambda}\), the kinetic energy is a positive
+constant-coefficient quadratic form in the conjugate momenta, and the
+Hamiltonian on \(L^2(E_\Lambda,\dd_\Lambda\varphi)\) is the Friedrichs
+Hamiltonian associated to
+\[
+  Q_\Lambda[\Psi]
+  =
+  \frac12
+  \int_{E_\Lambda}
+  G_\Lambda^{AB}
+  \partial_A\overline{\Psi}\,
+  \partial_B\Psi\,
+  \dd_\Lambda\varphi
+  +
+  \int_{E_\Lambda}
+  U_\Lambda(\varphi)|\Psi(\varphi)|^2\,
+  \dd_\Lambda\varphi ,
+\]
+where \(G_\Lambda^{AB}\) is positive definite and
+\(U_\Lambda:E_\Lambda\to\mathbb R\) is locally Kato and bounded from below.
+Then the finite-dimensional Trotter--Kato and Feynman--Kac statements of
+Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals} apply to
+\(H_\Lambda\).  In particular, the Euclidean fixed-\(\Lambda\) transition
+kernel is a Wiener or Brownian-bridge expectation on
+\(C([0,\tau],E_\Lambda)\) with potential weight
+\(\exp[-\int_0^\tau U_\Lambda(\Phi(s))\dd s]\), after the linear change of
+variables that puts \(G_\Lambda^{AB}\) in Euclidean form.
+
+This hypothesis is satisfied, for example, by a finite spatial lattice in a
+finite box with stable real polynomial potential energy, and by a genuine
+finite-mode truncation with a stable real polynomial potential.  It is not
+satisfied by a continuum smooth cutoff that leaves infinitely many spatial
+degrees of freedom, nor by a formal rule that only modifies the propagator in
+a functional integral.  In those cases the phrase ``the Trotter limit for
+\(H_\Lambda\)'' has no content until the Hilbert space, domain, closed
+quadratic form, and limiting topology have been specified.
+\end{proposition}
+
+\begin{proof}
+Choose linear coordinates on \(E_\Lambda\) that diagonalize
+\(G_\Lambda^{AB}\) and absorb its eigenvalues into the coordinates.  The form
+\(Q_\Lambda\) is then the finite-dimensional Schr\"odinger form of
+Theorem~\ref{thm:wiener-feynman-kac-qm}, with \(\hbar=m=1\) after the chosen
+normalization.  Local Kato regularity and the lower bound on \(U_\Lambda\)
+give a closed semibounded form and hence a Friedrichs Hamiltonian.  The
+Trotter--Kato product formula and the Feynman--Kac representation are exactly
+the theorem of Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}
+applied to the finite-dimensional vector space \(E_\Lambda\).  Stable
+polynomial lattice and finite-mode potentials are smooth and bounded below,
+so they obey these hypotheses.  A continuum smooth cutoff with infinitely many
+remaining modes does not reduce the problem to a finite-dimensional
+Schr\"odinger operator; a separate constructive or perturbative definition is
+then required.
+\end{proof}
+
+Under the hypotheses of
+Proposition~\ref{prop:scalar-regulator-trotter-status}, the Lorentzian
+time-sliced kernels have the corresponding strong operator or distributional
+limits after smearing boundary configurations.  In that case
 \[
   \lim_{N\to\infty}
   K_{\Lambda,N}(\varphi_f,t_f;\varphi_i,t_i)
@@ -97,6 +163,11 @@ continuum expression
 \]
 is a compact notation for this two-stage construction: first a finite regulator
 and time slicing, then a stated continuum or perturbative limiting procedure.
+If the regulator is instead a Euclidean covariance cutoff, a Euclidean
+spacetime lattice action introduced directly, or a purely perturbative cutoff,
+the construction requires its own definition: a Gaussian measure with an
+interaction, a finite lattice integral, a transfer-matrix or Hamiltonian
+construction, a constructive limit, or a formal asymptotic expansion.
 
 The compact path-integral notation
 \[
@@ -104,7 +175,10 @@ The compact path-integral notation
 \]
 is used only as an abbreviation for such regulated limits or for asymptotic
 expansions derived from them. Its meaning is part of the chosen regularization
-and limiting prescription.
+and limiting prescription.  A positive Borel measure is one possible
+mathematical object for some bosonic Euclidean scalar theories; it is not the
+definition of a general QFT path integral and is not implied by the symbol
+\([D\phi]\).
 
 Vacuum correlation functions avoid direct use of field-configuration
 eigenvectors. For points \(x_a=(x_a^0,\vec x_a)\), the basic Lorentzian
