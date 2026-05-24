@@ -30,6 +30,8 @@
   without domain distractions from unbounded point fields.
 - A massive one-particle subspace \(\Hilb_1\) of mass \(m>0\) is assumed to be
   isolated from the remaining spectrum.
+- The isolated-shell condition is treated as a model-specific spectral theorem
+  or hypothesis, not as an automatic consequence of a formal Lagrangian.
 
 ## Symbols
 
@@ -61,6 +63,13 @@
 
 - The massive scattering construction requires Hilbert-space data and
   explicit spectral/locality hypotheses.
+- The chapter now states the physical scope of the isolated-shell hypothesis:
+  free massive fields and constructive massive scalar models in regimes with
+  proved Wightman/mass-gap/one-particle spectral theorems supply examples;
+  perturbative four-dimensional \(\lambda\phi^4\) does not by itself; QED
+  charged sectors are infraparticle sectors; QCD colored shells are absent
+  from the gauge-invariant observable spectrum; resonances are not
+  Haag--Ruelle external particles.
 - A local operator with nonzero one-particle overlap can be energy-momentum
   filtered and smeared with a positive-energy Klein--Gordon wave packet.
 - In point-field notation, the smeared field \(\hat\phi_f\Omega\) projects to
@@ -117,3 +126,7 @@
 
 - 2026-05-24 issue pass: addressed #218 by distinguishing range coincidence,
   sector completeness, and full asymptotic completeness.
+- 2026-05-24 issue #323 pass: added isolated-shell physical-scope remarks to
+  both Haag--Ruelle presentations, separating proved model-theoretic spectral
+  gaps from perturbative poles, infraparticle spectra, confinement, and
+  resonances.
