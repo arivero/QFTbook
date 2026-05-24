@@ -91,6 +91,10 @@
   \(\Delta_{\rm BV}\exp(\ii S/\hbar)=0\).
 - The 1PI effective action satisfies \(\frac12(\Gamma,\Gamma)=0\) when the
   regularized measure and action obey the quantum master equation.
+- The chapter now points back to
+  `thm:all-order-slavnov-taylor-restoration`, identifying it as the
+  gauge-fixed Yang--Mills form of the perturbative BV master-equation
+  restoration theorem under vanishing ghost-number-one local obstruction.
 - Finite-dimensional BV pushforward preserves the quantum master equation;
   this is the regulated core of the Wilsonian BV identity.
 - Counterterms, anomalies, and physical operators are classified by local BV
@@ -114,3 +118,6 @@
   explicit off-shell/open closure formulae, showed the equation-of-motion term
   that obstructs naive BRST nilpotency, and stated the associated reducible
   symmetry data.
+- 2026-05-24 issue #267 pass: added an explicit cross-reference from the 1PI
+  master equation to the all-order Slavnov--Taylor restoration theorem in the
+  preceding BRST chapter.

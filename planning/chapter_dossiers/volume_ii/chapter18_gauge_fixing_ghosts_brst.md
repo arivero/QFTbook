@@ -119,6 +119,8 @@
 | \(W[J,K,L]\) | connected generating functional with ordinary field sources \(J\) and BRST-variation sources \(K,L\) |
 | \(J_{\Phi^A}\) | ordinary source conjugate to the field \(\Phi^A\), eliminated in the 1PI Legendre transform |
 | \(\mathcal W_\alpha\) | Abelian Ward--Takahashi first-order operator used for comparison with the quadratic nonabelian Slavnov--Taylor identity |
+| \(\mathcal B_X\) | linearized Slavnov operator at a functional \(X\) |
+| \(\Delta_N=\int a_N\) | order-\(N\) local Slavnov--Taylor breaking in the all-order restoration proof |
 | \(\Phi^*_A\) | BV antifield paired with a field \(\Phi^A\), deferred to the BV chapter |
 | \(D=d-\epsilon\) | complex dimension parameter used in dimensional analytic regularization |
 | \(I_G(D,\nu,p,m)\) | meromorphically continued scalar graph integral for graph \(G\) |
@@ -239,6 +241,16 @@
   and evanescent coordinates; the Slavnov--Taylor breaking is a local
   ghost-number-one cocycle; exact cocycles are removed by local counterterms,
   while nonzero cohomology classes are gauge anomalies.
+- Theorem `thm:all-order-slavnov-taylor-restoration` states the all-order
+  perturbative BRST renormalizability result with explicit hypotheses:
+  compact semisimple gauge group, off-shell nilpotent classical BRST
+  differential, power-counting renormalizable local coordinate set including
+  evanescent variables, a subtraction scheme satisfying the quantum action
+  principle, and vanishing local gauge-anomaly class in \(H^{1,D}(s_0\mid d)\).
+  The proof is an induction on loop order: the order-\(N\) breaking
+  \(\Delta_N\) is local, the Slavnov consistency identity makes it a
+  \(\mathcal B_{S_0}\)-cocycle, the anomaly hypothesis writes it as
+  \(s_0 b_N+d r_N\), and the local counterterm \(-\int b_N\) cancels it.
 - The chapter explicitly separates regularization, renormalization, and
   operator-insertion regularization/source-coordinate choices for composite
   operators.
@@ -306,3 +318,6 @@
   BRST gauge fixing is perturbative/cohomological machinery whose
   nonperturbative comparison target is the lattice Yang--Mills continuum-limit
   hypothesis.
+- 2026-05-24 issue #267 pass: added the all-order Slavnov--Taylor restoration
+  theorem and induction proof, and recorded that global gauge anomalies remain
+  outside the local \(H^{1,D}(s_0\mid d)\) obstruction.
