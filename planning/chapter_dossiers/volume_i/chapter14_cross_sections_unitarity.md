@@ -58,6 +58,12 @@
   before identical-particle symmetry factors.
 - Unitarity gives the amplitude-level cutting relation and the optical
   theorem.
+- The optical theorem is stated as a complete outgoing-state sum.  Finite
+  detector resolution is represented by a positive outgoing effect
+  \(E_{\mathcal C}\), with the full forward imaginary part corresponding to
+  \(E_{\mathcal C}=\mathbf 1\).  In massless theories the inclusive sum over
+  detector-degenerate soft states is taken before removing the infrared
+  regulator.
 - Partial waves diagonalize scalar \(2\to2\) scattering in the COM frame.
 - The COM partial-wave state normalization is derived from the radial
   energy-conservation delta function, including the identical-particle factor.
