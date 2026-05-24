@@ -21,10 +21,13 @@ The chapter establishes:
   \(T^\mu{}_\mu=\beta_I[O_I]+\partial_\mu V^\mu\), including the role of
   contact terms and improvements;
 - the scale-versus-conformal obstruction as the local virial class at a
-  fixed point, with the dimension-dependent status: theorem formulations in
-  two dimensions only under explicit analytic hypotheses, conditional
-  four-dimensional anomaly/dilaton constraints with no unconditional theorem
-  used here, and no assumed general theorem in other dimensions;
+  fixed point, including the definition of a scale-invariant but
+  nonconformal local QFT in this stress-tensor framework and Polchinski's
+  virial-current criterion; the dimension-dependent status is stated with
+  theorem formulations in two dimensions only under explicit analytic
+  hypotheses, conditional four-dimensional anomaly/dilaton constraints with no
+  unconditional theorem used here, and no assumed general theorem in other
+  dimensions;
 - fixed points as zeros of the beta-function vector field in a chosen local
   coordinate chart;
 - scaling dimensions from the linearized RG eigenvalues
@@ -136,3 +139,7 @@ The chapter establishes:
   provenance remark to identify the conformal-bootstrap constraints and
   semidefinite relaxations behind the displayed values, and to separate those
   numerical CFT data from a constructive proof of the lattice scaling limit.
+- 2026-05-24 issue #283 pass: expanded the scale-versus-conformal remark to
+  define scale-invariant but nonconformal local QFTs by a nonzero virial class
+  in the improvement quotient and to cite Polchinski's virial-current
+  obstruction.
