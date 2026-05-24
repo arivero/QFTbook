@@ -139,9 +139,11 @@ The chapter must define and derive:
   \(\Delta_{\phi^4}=4+O(\epsilon^2)>D\);
 - the comparison table for \(d=4-\epsilon\), \(d=3\), and \(d=2\), with the
   last two rows explicitly not presented as consequences of the first-order
-  epsilon expansion.
+  epsilon expansion and with the third column labeled by a generic
+  \(O_{\rm irr}\), not by \(\phi^4\), because lower-dimensional fixed-point CFTs
+  have their own scaling operators;
 - the provenance of the \(d=3\) numerical table entries and the \(d=2\) exact
-  entries, including the identification of the \(d=3\) \(\phi^4\) column with
+  entries, including the identification of the \(d=3\) third-column entry with
   the leading \(\mathbb Z_2\)-even scalar irrelevant primary
   \(\varepsilon'\), and of the \(d=2\) irrelevant scalar entry with
   \(T\bar T\);
@@ -319,9 +321,14 @@ The chapter must define and derive:
   codimension require a \(C^k\) endpoint map and submersion hypothesis.
 - 2026-05-24 issue #238 pass: added provenance for the nonperturbative entries
   in the low-lying-dimension comparison table.  The \(d=3\) row now records
-  numerical conformal-bootstrap origins and identifies the \(\phi^4\) column
+  numerical conformal-bootstrap origins and identifies the third column
   with \(\varepsilon'\); the \(d=2\) row is identified as exact Ising
   minimal-model data with \(\sigma\), \(\varepsilon\), and \(T\bar T\).
+- 2026-05-24 issue #363 pass: renamed the comparison table's third column from
+  \(\Delta_{\phi^4}\) to \(\Delta_{O_{\rm irr}}\), defining \(O_{\rm irr}\) as
+  the leading nonredundant \(\mathbb Z_2\)-even scalar irrelevant deformation.
+  The \(d=2\) entry is explicitly \(T\bar T\), not an unrenormalized fourth power
+  of the spin field.
 - 2026-05-24 issue #302 pass: added
   `def:wilson-fisher-dimensional-regularization-status`, making the
   dimensional-regularization and formal-series status explicit at the top of
