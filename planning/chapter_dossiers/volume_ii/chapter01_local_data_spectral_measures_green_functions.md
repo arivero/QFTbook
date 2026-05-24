@@ -72,6 +72,8 @@
 | \(G_N\) | Lorentzian time-ordered \(N\)-point distribution |
 | \(S_N\) | Euclidean \(N\)-point distribution or Schwinger function |
 | \(Z_\Lambda[J]\) | cutoff generating functional |
+| \(D_\Lambda^{\rm ref}\varphi\) | finite-dimensional bosonic scalar reference density |
+| \(\dd\mu_{C_\Lambda}\) | Gaussian measure carrying the quadratic kinetic form |
 | \(\Lambda\) | ultraviolet cutoff or regulator scale |
 
 ## Claims Established
@@ -134,3 +136,7 @@
   UV-completion question.
 - 2026-05-24 issue #300 pass: cross-referenced the Volume I constructive QFT
   status catalog from this chapter's scalar-model status section.
+- 2026-05-24 issue #310 pass: recorded the scalar reference-density convention
+  for \(D_\Lambda\varphi\), separated it from Gaussian-reference notation
+  \(\dd\mu_{C_\Lambda}\), and required non-scalar regularizations to specify
+  their integration object before source-functional formulas are used.

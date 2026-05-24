@@ -137,14 +137,28 @@ The source-dependent generating functional at cutoff \(\Lambda\) is
 \begin{equation}
   Z_\Lambda[J]
   =
-  \int[D\phi]\,
+  \int\dd\mu_{C_\Lambda}(\phi)\,
   \exp\left[
-    -S_{\mathrm{kin},\Lambda}[\phi]
     -L_\Lambda[\phi]
     -\int\dd^Dx\,J(x)\phi(x)
   \right].
   \label{eq:wilsonian-z-lambda}
 \end{equation}
+The Gaussian measure \(\dd\mu_{C_\Lambda}\) carries
+\(S_{\mathrm{kin},\Lambda}\) as in
+\eqref{eq:gaussian-reference-measure-from-density}; with the reference density
+convention the same expression is
+\[
+  Z_{0,\Lambda}^{-1}
+  \int D_\Lambda^{\rm ref}\phi\,
+  \exp\left[
+    -S_{\mathrm{kin},\Lambda}[\phi]
+    -L_\Lambda[\phi]
+    -\int\dd^Dx\,J(x)\phi(x)
+  \right].
+\]
+The normalization \(Z_{0,\Lambda}^{-1}\) is immaterial for connected
+correlators with at least one source derivative.
 The Wilsonian condition for lowering \(\Lambda\) to \(\Lambda'<\Lambda\) is
 the equality
 \begin{equation}
@@ -162,7 +176,19 @@ functions.
 The exact Wilsonian step is most transparent with a finite regulator.  Let
 \(E_\Lambda\) be the finite-dimensional real vector space of Fourier modes
 retained by the ultraviolet regulator, and let \(\dd\mu_{C_\Lambda}\) be the
-centered Gaussian measure with covariance \(C_\Lambda\) on this space.  If
+centered Gaussian measure with covariance \(C_\Lambda\) on this space.  In the
+notation of
+Definition~\ref{def:regulated-scalar-integration-conventions}, this chapter has
+absorbed the quadratic kinetic term into \(\dd\mu_{C_\Lambda}\); equivalently,
+\[
+  \dd\mu_{C_\Lambda}(\phi)
+  =
+  Z_{0,\Lambda}^{-1}
+  \exp\{-S_{\rm kin,\Lambda}[\phi]\}\,
+  D_\Lambda^{\rm ref}\phi .
+\]
+The interaction \(L_\Lambda\) is integrated against this Gaussian reference
+measure.  If
 \[
   C_\Lambda=C_{\Lambda'}+\widehat C_{\Lambda,\Lambda'}
 \]
@@ -1503,9 +1529,8 @@ Wilsonian action by integrating the remaining low field is denoted
   W_{\Lambda}^{\rm low}[J]
   =
   \log
-  \int[D\phi]\,
+  \int\dd\mu_{C_\Lambda}(\phi)\,
   \exp\left[
-    -S_{\mathrm{kin},\Lambda}[\phi]
     -L_\Lambda[\phi]
     -\int J\phi
   \right].

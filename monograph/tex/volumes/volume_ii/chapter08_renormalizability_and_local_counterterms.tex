@@ -14,13 +14,18 @@ inserted.  The regulated functional integral has the form
 \[
   Z_{\Lambda}
   =
-  \int [D\phi]_{\Lambda}\,
+  \int D_\Lambda^{\rm ref}\phi\,
   \exp\!\left[
     -\int \dd^Dx\,\mathcal L_{E,\Lambda}
   \right],
 \]
-where \([D\phi]_{\Lambda}\) denotes the regulated measure.  The bare Euclidean
-Lagrangian is written as
+where \(D_\Lambda^{\rm ref}\phi\) is the finite-regulator reference density of
+Definition~\ref{def:regulated-scalar-integration-conventions}.  In the
+alternative Gaussian-reference convention, the quadratic part of
+\(\mathcal L_{E,\Lambda}\) is absorbed into \(\dd\mu_{C_\Lambda}\), and the
+remaining interaction is integrated with density
+\(\exp\{-L_\Lambda[\phi]\}\dd\mu_{C_\Lambda}(\phi)\).  The Euclidean
+Lagrangian appearing in the path integral is written as
 \[
   \mathcal L_{E,\Lambda}
   =

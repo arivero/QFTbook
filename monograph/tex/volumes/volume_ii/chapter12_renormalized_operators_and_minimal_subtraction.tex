@@ -314,13 +314,20 @@ the Euclidean sign convention used in this volume,
 \[
   Z_{\Lambda_0}[J,\eta_0]
   =
-  \int[D\phi]\,
+  \int D_{\Lambda_0}^{\rm ref}\phi\,
   \exp\left[
     -S_{\Lambda_0}[\phi]
     -\int\dd^D x\,J(x)\phi(x)
     -\int\dd^D x\,\eta_0^I(x)O_I(x)
   \right].
 \]
+Here \(D_{\Lambda_0}^{\rm ref}\phi\) is the reference density of
+Definition~\ref{def:regulated-scalar-integration-conventions}; the full
+quadratic kinetic term is included in \(S_{\Lambda_0}\).  In the Gaussian
+form used for the Wilsonian pushforward below, the same finite-regulator
+integral is expressed by placing the quadratic form in a centered Gaussian
+measure and retaining only the interaction/source functional in the
+exponential.
 Thus
 \[
   -\frac{\delta W_{\Lambda_0}[J,\eta_0]}
@@ -364,15 +371,15 @@ by the Gaussian pushforward
 \begin{equation}
   \exp\bigl[-L_\Lambda[\phi;\eta_\Lambda]\bigr]
   =
-  \int[D\phi_{\mathrm{sh}}]\,
+  \int\dd\mu_{\widehat C_{\Lambda_0,\Lambda}}(\phi_{\mathrm{sh}})\,
   \exp\left[
-    -\widehat S_{\mathrm{kin}}[\phi_{\mathrm{sh}}]
     -L_{\Lambda_0}[\phi+\phi_{\mathrm{sh}};\eta_0(\eta_\Lambda)]
   \right],
   \label{eq:source-extended-wilsonian-pushforward}
 \end{equation}
-where the covariance of \(\phi_{\mathrm{sh}}\) is the shell covariance between
-\(\Lambda_0\) and \(\Lambda\).  Equation
+where \(\dd\mu_{\widehat C_{\Lambda_0,\Lambda}}\) is the centered Gaussian
+measure whose covariance is the shell covariance between \(\Lambda_0\) and
+\(\Lambda\).  Equation
 \eqref{eq:source-extended-wilsonian-pushforward} is first an identity in the
 finite-dimensional regulated system; the continuum derivative expansion is
 then studied after the regulator is removed.
@@ -397,9 +404,8 @@ Let
   W_\Lambda^{\rm low}[J,\eta_\Lambda]
   =
   \log
-  \int[D\phi]\,
+  \int\dd\mu_{C_\Lambda}(\phi)\,
   \exp\left[
-    -S_{\mathrm{kin},\Lambda}[\phi]
     -L_\Lambda[\phi;\eta_\Lambda]
     -\int J\phi
   \right].

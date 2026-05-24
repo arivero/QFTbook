@@ -26,6 +26,10 @@
 The chapter must define:
 
 - the regulated Euclidean functional integral \(Z_\Lambda\);
+- the scalar convention that \(D_\Lambda^{\rm ref}\phi\) is the
+  finite-regulator reference density, while Gaussian-reference formulas use
+  \(\dd\mu_{C_\Lambda}\) and keep only the remaining interaction in the
+  exponential;
 - local operators \(\mathcal O_I\) and bare couplings \(g_I\);
 - regulator choices \(\Lambda\) and \(D=d-\varepsilon\);
 - the finite-dimensional renormalized coordinate domain \(U\) and the
@@ -135,3 +139,7 @@ The chapter must define:
   ultraviolet-versus-infrared distinction.
 - 2026-05-24 issue #300 pass: added a cross-reference from the perturbative
   continuum-limit criterion to the Volume I constructive/triviality catalog.
+- 2026-05-24 issue #310 pass: replaced ambiguous \([D\phi]_\Lambda\)-style
+  scalar notation by \(D_\Lambda^{\rm ref}\phi\) in the regulated action
+  setup and cross-referenced the central distinction among reference density,
+  Gaussian measure, and full Euclidean density.

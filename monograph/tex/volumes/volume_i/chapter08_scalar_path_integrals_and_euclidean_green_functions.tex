@@ -57,6 +57,57 @@ where \(\delta_\Lambda\) is the Dirac delta distribution relative to
 mean a compatible family of these regulated objects together with a stated
 limiting topology.
 
+\begin{definition}[Regulated scalar integration conventions]
+\label{def:regulated-scalar-integration-conventions}
+For a finite-dimensional bosonic scalar regulator, the canonical reference
+density is the coordinate density
+\[
+  D_\Lambda^{\rm ref}\phi=\dd_\Lambda\phi ,
+\]
+including the lattice cell factors or Fourier-mode normalization chosen with
+the regulator.  If the Euclidean quadratic part is
+\[
+  S_{\rm kin,\Lambda}[\phi]
+  =
+  \frac12\langle\phi,C_\Lambda^{-1}\phi\rangle_\Lambda
+\]
+with positive covariance \(C_\Lambda\), the normalized Gaussian reference
+measure is
+\begin{equation}
+  \dd\mu_{C_\Lambda}(\phi)
+  =
+  Z_{0,\Lambda}^{-1}
+  \exp\{-S_{\rm kin,\Lambda}[\phi]\}\,
+  D_\Lambda^{\rm ref}\phi .
+  \label{eq:gaussian-reference-measure-from-density}
+\end{equation}
+If \(L_\Lambda[\phi]\) denotes the remaining interaction, the unnormalized full
+Euclidean density is
+\begin{equation}
+  \dd\rho_{\Lambda,S}(\phi)
+  =
+  \exp\{-L_\Lambda[\phi]\}\,\dd\mu_{C_\Lambda}(\phi)
+  =
+  Z_{0,\Lambda}^{-1}
+  \exp\{-S_{\rm kin,\Lambda}[\phi]-L_\Lambda[\phi]\}\,
+  D_\Lambda^{\rm ref}\phi .
+  \label{eq:full-density-reference-versus-gaussian}
+\end{equation}
+Thus \(D_\Lambda^{\rm ref}\phi\), \(\dd\mu_{C_\Lambda}\), and
+\(\dd\rho_{\Lambda,S}\) are distinct named objects related by explicit
+Radon--Nikodym factors.  In formulas where the older compact notation
+\([D\phi]_\Lambda\) appears, it denotes the reference density
+\(D_\Lambda^{\rm ref}\phi\) in the finite-dimensional bosonic scalar setting.
+Gaussian-measure formulas must use \(\dd\mu_{C_\Lambda}\), and full
+source-functional formulas must display the action weight or the density
+\(\dd\rho_{\Lambda,S}\).
+
+For fermionic, gauge, BV, Lorentzian oscillatory, dimensional regularization,
+and other schemes beyond finite Lebesgue densities, a chapter must specify the
+corresponding regulated integration object and its algebraic or analytic
+status separately.
+\end{definition}
+
 At fixed finite-dimensional \(\Lambda\), the field theory is represented by a
 quantum-mechanical system with finitely many coordinates.  Choose a time
 partition
@@ -465,7 +516,7 @@ With a regulator in place, the normalized Euclidean \(n\)-point function is
   \langle\phi(x_{E,1})\cdots\phi(x_{E,n})\rangle_{E,\Lambda}
   =
   \frac{1}{Z_{E,\Lambda}}
-  \int\mathcal D_\Lambda\phi\,
+  \int D_\Lambda^{\rm ref}\phi\,
   \ee^{-S_{E,\Lambda}[\phi]}\,
   \phi(x_{E,1})\cdots\phi(x_{E,n}),
 \]
@@ -473,9 +524,19 @@ where
 \[
   Z_{E,\Lambda}
   =
-  \int\mathcal D_\Lambda\phi\,
+  \int D_\Lambda^{\rm ref}\phi\,
   \ee^{-S_{E,\Lambda}[\phi]}.
 \]
+Here the Euclidean action \(S_{E,\Lambda}\) includes its quadratic part and
+\(D_\Lambda^{\rm ref}\phi\) is the reference density of
+Definition~\ref{def:regulated-scalar-integration-conventions}.  If
+\[
+  S_{E,\Lambda}=S_{\rm kin,\Lambda}+L_\Lambda ,
+\]
+the same normalized correlation function may equivalently be written with the
+Gaussian measure \(\dd\mu_{C_\Lambda}\) and interaction weight
+\(\ee^{-L_\Lambda[\phi]}\).  The choice of notation therefore records which
+factor carries the quadratic kinetic form.
 The continuum Euclidean Green function is the limit of these distributions
 when the limit exists in the chosen topology and with the chosen
 renormalization conditions.

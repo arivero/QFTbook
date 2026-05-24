@@ -27,7 +27,7 @@ source functional is
 \[
   Z[J]
   =
-  \int [D\phi]_{\Lambda}\,
+  \int D_\Lambda^{\rm ref}\phi\,
   \exp\!\left\{
     \ii S_{\Lambda}[\phi]
     +\ii\langle J,\phi\rangle
@@ -59,14 +59,18 @@ Perturbatively, the source is therefore a one-valent vertex with factor
   \quad =\quad
   \ii\widetilde J(k).
 \]
-Here \([D\phi]_{\Lambda}\) and \(S_{\Lambda}\) denote the regulated measure and
-regulated action.  The regulator may be a lattice, a momentum cutoff, a
-Pauli--Villars system, dimensional regularization together with a
-renormalization prescription, or another construction appropriate to the
-theory under study.  The notation suppresses \(\Lambda\) after this paragraph.
-All functional derivatives in this chapter are first derivatives of the
-regulated source functional; continuum statements are obtained only after the
-chosen renormalization prescription gives a distributional limit.
+Here \(D_\Lambda^{\rm ref}\phi\) is the reference integration density of
+Definition~\ref{def:regulated-scalar-integration-conventions} in a
+finite-dimensional bosonic scalar regulator, and \(S_{\Lambda}\) is the
+regulated action placed in the exponential.  If a chapter instead uses a
+Gaussian reference measure, it writes \(\dd\mu_{C_\Lambda}\) and moves the
+quadratic kinetic term into that measure.  Other regulators, such as
+fermionic, gauge, BV, Lorentzian oscillatory, or dimensional-regularization
+prescriptions, must specify their own regulated integration object.  The
+notation suppresses \(\Lambda\) after this paragraph.  All functional
+derivatives in this chapter are first derivatives of the regulated source
+functional; continuum statements are obtained only after the chosen
+renormalization prescription gives a distributional limit.
 
 Define the Lorentzian connected functional \(W\) by
 \[
@@ -110,10 +114,10 @@ The source-dependent one-point function is
   \frac{\delta W[J]}{\delta J(x)}
   =
   \frac1{Z[J]}
-  \int [D\phi]\,
+  \int D_\Lambda^{\rm ref}\phi\,
   \phi(x)\,
   \exp\!\left\{
-    \ii S[\phi]+\ii\langle J,\phi\rangle
+    \ii S_\Lambda[\phi]+\ii\langle J,\phi\rangle
   \right\}.
 \]
 At \(J=0\), this is the vacuum expectation value of \(\phi(x)\) in the chosen
@@ -724,15 +728,20 @@ There is a nonempty convex source domain
   <\infty .
   \label{eq:positive-regulator-partition-function}
 \end{equation}
-The notation
+In the scalar finite-dimensional convention this positive measure may be
+represented as a density
 \[
   \dd\mu_\Lambda(\phi)
   =
-  [D\phi]_\Lambda\,\ee^{-S_E[\phi]}
+  Z_\Lambda^{-1}
+  \ee^{-S_E[\phi]}\,
+  D_\Lambda^{\rm ref}\phi ,
 \]
-is only a shorthand for this positive finite measure in the present section.
-It is not the formal dimensional-regularization prescription, not an
-oscillatory Lorentzian integral, and not a Berezin integral over odd variables.
+where the normalization is optional in unnormalized source functionals.  In the
+Gaussian-reference convention the same object is written
+\(\ee^{-L_\Lambda[\phi]}\dd\mu_{C_\Lambda}(\phi)\), with the relation to
+\(D_\Lambda^{\rm ref}\phi\) given by
+\eqref{eq:gaussian-reference-measure-from-density}.
 \end{assumption}
 
 Under Assumption~\ref{ass:positive-euclidean-regulator-convexity} define
@@ -764,6 +773,14 @@ Euclidean chapters as
   =
   \int[D\phi]\,\exp\!\left\{-S_E[\phi]-\langle J_E,\phi\rangle_E\right\}.
 \]
+In this definition \([D\phi]\) is only compact continuum notation for the
+regulated integration object already specified earlier in the chapter.  In a
+finite-dimensional bosonic scalar regulator, the Euclidean line is represented
+by \(D_\Lambda^{\rm ref}\phi\,\ee^{-S_{E,\Lambda}[\phi]}\); after splitting
+\(S_{E,\Lambda}=S_{\rm kin,\Lambda}+L_\Lambda\), the same object is
+\(\dd\mu_{C_\Lambda}(\phi)\,\ee^{-L_\Lambda[\phi]}\).  The Lorentzian line is
+the corresponding oscillatory notation and carries its own regulator and
+boundary-value prescription.
 For scalar insertions with no tensor time indices, the analytic continuation
 from Lorentzian time-ordered connected distributions to Euclidean connected
 Schwinger distributions is recorded by the derivative identities

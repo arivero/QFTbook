@@ -11,6 +11,9 @@ GitHub issue #299 so the Chapter 4 Trotter/Feynman--Kac theorem is invoked
 only for finite-dimensional Schrödinger spatial regulators with a closed
 semibounded form. Tightened again for issue #300 by adding a named catalog of
 constructive existence and scalar triviality regimes relevant to \([D\phi]\).
+Issue #310 added the canonical finite-regulator scalar integration convention:
+reference density, Gaussian measure, and full Euclidean density are distinct
+named objects with displayed Radon--Nikodym factors.
 
 ## Logical Role
 
@@ -95,12 +98,19 @@ Working framework:
 | \(G_\Lambda^{AB}\) | positive kinetic quadratic form | finite-dimensional regulator Hamiltonian |
 | \(U_\Lambda\) | real potential on \(E_\Lambda\) | finite-dimensional regulator Hamiltonian |
 | \(Q_\Lambda\) | closed semibounded quadratic form | condition for invoking Trotter/Feynman--Kac |
+| \(D_\Lambda^{\rm ref}\phi\) | finite-regulator density | canonical reference density on bosonic scalar configurations |
+| \(\dd\mu_{C_\Lambda}\) | Gaussian measure | normalized Gaussian measure after absorbing \(S_{\rm kin,\Lambda}\) |
+| \(\dd\rho_{\Lambda,S}\) | Euclidean density | unnormalized full density \(\exp(-L_\Lambda)\dd\mu_{C_\Lambda}\) |
 | Table `tab:constructive-qft-status-catalog` | status catalog | constructive and triviality regimes |
 
 ## Definition Ledger
 
 - regulated scalar-field path-integral kernel with fixed boundary field
   configurations;
+- regulated scalar integration convention
+  `def:regulated-scalar-integration-conventions`, distinguishing
+  \(D_\Lambda^{\rm ref}\phi\), \(\dd\mu_{C_\Lambda}\), and
+  \(\dd\rho_{\Lambda,S}\);
 - finite-dimensional regulator class for which Trotter--Kato/Feynman--Kac is
   a theorem;
 - Lorentzian oscillatory path-integral notation as finite-regulator
@@ -123,6 +133,7 @@ Working framework:
 | Finite lattice and genuine finite-mode stable polynomial regulators satisfy the finite-dimensional Trotter/Feynman--Kac hypotheses. | Proposition | Smooth bounded-below potential on \(E_\Lambda\) plus positive kinetic quadratic form |
 | Continuum smooth cutoffs that leave infinitely many spatial modes, formal covariance cutoffs, and direct Euclidean spacetime lattice actions without transfer matrices do not inherit the finite-dimensional Trotter theorem. | Framework distinction | Chapter text requires separate Hilbert-space/domain/constructive/perturbative data |
 | The formal notation \(Z=\int[D\phi]e^{iS[\phi]}\) has meaning as regulated shorthand or an asymptotic expansion derived from a regulated theory, and does not imply a Borel measure. | Framework statement | Regulator dependence stated explicitly; positive Borel measures restricted to some bosonic Euclidean scalar regimes |
+| In a finite-dimensional bosonic scalar regulator, \(D_\Lambda^{\rm ref}\phi\), \(\dd\mu_{C_\Lambda}\), and \(\dd\rho_{\Lambda,S}\) are distinct objects related by explicit Radon--Nikodym factors. | Definition | Definition `def:regulated-scalar-integration-conventions`; equations `eq:gaussian-reference-measure-from-density` and `eq:full-density-reference-versus-gaussian` |
 | A Lorentzian finite-regulator path-integral expression is classified as an oscillatory integral/distribution; the continuum Lorentzian symbol is an oscillatory pseudo-integral specified by compatible finite-regulator boundary values or stationary-phase expansions. | Definition/framework statement | Definition `def:lorentzian-oscillatory-path-integral`; Fresnel formula with signature phase, Maslov-index note, and references to Hörmander and Albeverio--Høegh-Krohn frameworks |
 | \(P(\phi)_2\), \(\phi^4_3\), and two-dimensional Yang--Mills are named rigorous construction regimes, while standard scalar \(\phi^4_D\) scaling limits in \(D\ge4\) are constrained by triviality theorems. | Status catalog | Table `tab:constructive-qft-status-catalog` with references paragraph |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
@@ -176,3 +187,9 @@ Rendered check:
   continuum notation as an oscillatory pseudo-integral; also scoped the
   Glimm--Jaffe functional-integral reference to the positive-measure scalar
   sector.
+- 2026-05-24, issue #310: added
+  `def:regulated-scalar-integration-conventions`, fixing the canonical
+  finite-regulator scalar notation.  Later chapters now write
+  \(D_\Lambda^{\rm ref}\phi\) for the reference density,
+  \(\dd\mu_{C_\Lambda}\) for the Gaussian measure, and
+  \(\dd\rho_{\Lambda,S}\) for the full Euclidean density.

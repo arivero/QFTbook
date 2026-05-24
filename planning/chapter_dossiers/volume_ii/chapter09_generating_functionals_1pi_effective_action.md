@@ -30,6 +30,9 @@
 The chapter must define the following objects before using them:
 
 - the regulated functional integral \(Z[J]\);
+- the convention that \(D_\Lambda^{\rm ref}\phi\) denotes the finite-regulator
+  scalar reference density, while \(\dd\mu_{C_\Lambda}\) denotes a Gaussian
+  reference measure with the quadratic kinetic term absorbed;
 - the logarithm \(\mathcal W[J]=\log Z[J]\) and the Lorentzian connected
   functional \(W[J]\) with \(Z[J]=e^{iW[J]}\);
 - source derivatives of \(Z[J]\) and \(\mathcal W[J]\);
@@ -169,3 +172,7 @@ The chapter must define the following objects before using them:
   space, positive finite measure, source domain, pairing, and
   integrability/nonzero partition-function hypotheses stated before the
   Hölder argument.
+- 2026-05-24 issue #310 pass: replaced the ambiguous
+  \([D\phi]_\Lambda\) source-functional notation by
+  \(D_\Lambda^{\rm ref}\phi\) in the finite-dimensional scalar convention and
+  cross-referenced the Gaussian/reference-density distinction from Volume I.
