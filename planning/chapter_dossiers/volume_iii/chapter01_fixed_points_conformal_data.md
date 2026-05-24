@@ -29,6 +29,20 @@ The chapter establishes:
   coordinate chart;
 - scaling dimensions from the linearized RG eigenvalues
   \(y_a=D-\Delta_a\);
+- endpoint RG monotones as data attached to a stated class of unitary RG
+  trajectories, with length scale \(R\) increasing toward the infrared and
+  \(\mathfrak M_{\rm UV}\geq\mathfrak M_{\rm IR}\);
+- the two-dimensional \(c\)-function status: a stress-tensor two-point
+  construction whose derivative is negative by reflection positivity under
+  the Zamolodchikov--Polchinski hypotheses;
+- the three-dimensional entropic \(F\)-monotone
+  \(\mathcal F(R)=R S'(R)-S(R)\), its strong-subadditivity/Lorentz-invariance
+  monotonicity, and its endpoint identification with the \(S^3\) free energy
+  when the CFT and counterterm hypotheses are satisfied;
+- the four-dimensional Komargodski--Schwimmer \(a_{\rm W}\)-monotonicity
+  mechanism: Wess--Zumino anomaly matching for a weak spectator dilaton,
+  the forward four-dilaton amplitude, the dispersion relation, and the
+  positive cross-section sum rule for \(a_{\rm UV}-a_{\rm IR}\);
 - CFT data as local operator space, stress tensor, conformal-algebra action,
   and Euclidean separated-point distributions;
 - source functionals \(W_\ast[g,J]\) whose derivatives define stress
@@ -69,6 +83,10 @@ The chapter establishes:
 5. The statement that scale invariance implies conformal invariance is used
    only after the local virial obstruction class has been proved or included
    in the fixed-point data.
+5a. RG monotonicity statements must specify their class of trajectories and
+    analytic assumptions.  The chapter may use \(c_{2d}\), \(F\), and
+    \(a_{\rm W}\) as endpoint-ordering data only with the corresponding
+    positivity, entanglement, or S-matrix hypotheses stated.
 6. The Ising fixed point supplies a statistical-mechanics example whose
    continuum CFT data are obtained from scaling limits of correlators, not
    from the finite lattice trace space.
@@ -107,3 +125,7 @@ The chapter establishes:
   separating free Gaussian CFTs, noninteger-dimensional Wilson--Fisher
   perturbative data, four-dimensional scalar triviality, and gauge/supersymmetric
   fixed-point constructions with explicit data requirements.
+- 2026-05-24 issue #280 pass: added the RG-monotone section covering the
+  formulated \(2D\) \(c\)-function, \(3D\) entropic \(F\)-monotone, and
+  \(4D\) Komargodski--Schwimmer \(a_{\rm W}\)-monotonicity argument, with
+  assumptions and endpoint meanings stated.
