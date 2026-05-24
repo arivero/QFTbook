@@ -752,28 +752,111 @@ infinite-dimensional fermion space.  Finite-dimensional cyclic trace
 manipulations do not remove \eqref{eq:heat-kernel-anomaly-density}, because
 the regulator is part of the definition of the composite current.
 
-For a compact Euclidean four-manifold without boundary, the integrated version
-is the Atiyah--Singer index theorem
+The local heat-kernel density becomes a Fredholm index after the following
+global data are specified.  The analytic input is the spin Dirac case of the
+Atiyah--Singer index theorem.\footnote{M. F. Atiyah and
+I. M. Singer, ``The index of elliptic operators. I,'' Ann. of Math. (2) 87
+(1968), 484--530.  The boundary theorem used below is M. F. Atiyah,
+V. K. Patodi, and I. M. Singer, ``Spectral asymmetry and Riemannian
+geometry. I,'' Math. Proc. Cambridge Philos. Soc. 77 (1975), 43--69, with
+Parts II and III in Math. Proc. Cambridge Philos. Soc. 78 (1975), 405--432
+and 79 (1976), 71--99.}
+
+\begin{theorem}[Spin Dirac index theorem, four-dimensional form]
+Let \(M\) be a smooth compact oriented Riemannian spin four-manifold without
+boundary.  Let \(S=S^+\oplus S^-\) be its complex spinor bundle, let
+\(E_R\to M\) be a smooth Hermitian vector bundle associated to the fermion
+representation \(R\), and let \(\nabla^E\) be a smooth unitary connection with
+curvature \(F_R\) in the same gauge convention as the local anomaly
+calculation.  The chiral Dirac operator
+\[
+  \mathcal D_{A,+}:
+  \Gamma(S^+\otimes E_R)\longrightarrow
+  \Gamma(S^-\otimes E_R)
+\]
+is elliptic and hence has finite-dimensional kernel and cokernel.  Its
+Fredholm index is
 \begin{equation}
-  \operatorname{index}\mathcal D
+  \operatorname{index}\mathcal D_{A,+}
+  =
+  \dim\ker\mathcal D_{A,+}
+  -
+  \dim\ker\mathcal D_{A,-}
+  =
+  \int_M
+  \bigl[\widehat A(TM)\operatorname{ch}(E_R,\nabla^E)\bigr]_4 ,
+  \label{eq:dirac-index-as-form}
+\end{equation}
+where \([\cdots]_4\) denotes the four-form part of the Chern--Weil form,
+\(\widehat A(TM)\) is the \(\widehat A\)-class of the tangent bundle, and
+\(\operatorname{ch}(E_R,\nabla^E)\) is the Chern character form of the gauge
+bundle.  The operator \(\mathcal D_{A,-}\) is the opposite-chirality Dirac
+operator
+\(\Gamma(S^-\otimes E_R)\to\Gamma(S^+\otimes E_R)\).
+\end{theorem}
+
+On a flat four-torus or on \(\mathbb R^4\) after compactification by a smooth
+finite-action connection for which no boundary contribution is present, the
+tangent-bundle factor contributes only \(1\), and the gauge part of
+\eqref{eq:dirac-index-as-form} becomes the density computed in
+\eqref{eq:heat-kernel-anomaly-density}:
+\begin{equation}
+  \operatorname{index}\mathcal D_{A,+}
   =
   n_+-n_-
   =
   \frac1{32\pi^2}
-  \int
+  \int_M
   \epsilon^{\mu\nu\rho\sigma}
-  \operatorname{tr}_{R}(F_{\mu\nu}F_{\rho\sigma})\,\dd^4x ,
+  \operatorname{tr}_{R}(F_{\mu\nu}F_{\rho\sigma})\,\dd^4x .
   \label{eq:dirac-index-anomaly}
 \end{equation}
-where \(n_\pm\) are the numbers of zero modes of chirality \(\pm1\).
-If the four-manifold has a boundary, the corresponding analytic statement is
-the Atiyah--Patodi--Singer index theorem.  In that case the bulk integral in
-\eqref{eq:dirac-index-anomaly} is supplemented by boundary spectral data of the
-induced boundary Dirac operator: its \(\eta\)-invariant, measuring spectral
-asymmetry, and the dimension of its kernel, with APS spectral boundary
-conditions.  The boundary-extension and anomaly-inflow viewpoint is introduced
-in Chapter~\ref{ch:volume-ii-21}; the present chapter uses only the local bulk
-density that appears in the Ward identity.
+Here \(n_+=\dim\ker\mathcal D_{A,+}\) and
+\(n_-=\dim\ker\mathcal D_{A,-}\), equivalently the numbers of zero modes of
+chirality \(+1\) and \(-1\) in the convention of this chapter.  The equality
+between the integrated heat-kernel density and this integer uses the global
+hypotheses in the theorem.  Without those hypotheses the local Ward identity
+still has the density \eqref{eq:heat-kernel-anomaly-density}, but its integral
+is not by itself a Fredholm index.
+
+If \(M\) has a boundary, assume first that the Riemannian metric and the gauge
+connection have product form on a collar \(u\in[0,\varepsilon)\) of
+\(\partial M\).  In this collar the chiral Dirac operator can be written
+\[
+  \mathcal D_A
+  =
+  \gamma(n)\bigl(\partial_u+B_A\bigr),
+\]
+where \(n\) is the outward unit normal and \(B_A\) is the self-adjoint
+tangential Dirac operator on \(\partial M\).  Let
+\[
+  \eta_{B_A}(s)
+  =
+  \sum_{\lambda\in\operatorname{Spec}(B_A)\setminus\{0\}}
+  \operatorname{sign}(\lambda)|\lambda|^{-s}
+\]
+for \(\operatorname{Re}s\) large, continued meromorphically to \(s=0\), and
+let \(h_{B_A}=\dim\ker B_A\).  With the APS boundary condition
+\(P_{\geq0}\psi|_{\partial M}=0\), where \(P_{\geq0}\) is the spectral
+projection of \(B_A\) onto nonnegative eigenvalues, the Atiyah--Patodi--Singer
+theorem gives
+\begin{equation}
+  \operatorname{index}\mathcal D^{\mathrm{APS}}_{A,+}
+  =
+  \int_M
+  \bigl[\widehat A(TM)\operatorname{ch}(E_R,\nabla^E)\bigr]_4
+  -
+  \frac{\eta_{B_A}(0)+h_{B_A}}{2}.
+  \label{eq:aps-index-boundary}
+\end{equation}
+For non-product data one either deforms to product form near the boundary, or
+includes the corresponding local transgression term; the sum of the bulk,
+local boundary, and spectral terms is the invariant integer.  The appearance
+of \(\eta_{B_A}\) is the analytic reason that a boundary or interface anomaly
+cannot be inferred from the bulk density alone.  Boundary extension,
+global-anomaly, and inflow applications use \eqref{eq:aps-index-boundary};
+the local Ward identity in the present chapter uses only the bulk density
+before this spectral correction is imposed.
 
 \section{Nonabelian Flavor and Gauge Anomalies}
 

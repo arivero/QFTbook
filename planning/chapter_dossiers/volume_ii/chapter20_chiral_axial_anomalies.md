@@ -27,6 +27,12 @@
   and sidecar, especially Sections 3.7, 4.2, 8.3, 9.1--9.4, and 10, for
   measure/index derivations, consistent anomalies, descent equations, and
   anomaly-polynomial normalization.
+- Reader-facing bibliographic footnote added for the theorem-level analytic
+  inputs: Atiyah--Singer, "The index of elliptic operators. I" for the closed
+  spin Dirac index theorem, and Atiyah--Patodi--Singer, "Spectral asymmetry
+  and Riemannian geometry" I--III for the boundary spectral correction.  The
+  manuscript states the hypotheses and formulas used; it does not reproduce
+  the analytic proof of either theorem.
 - The chapter states the descent formulas used for four-dimensional chiral
   fermions but does not reproduce the full proof of the local BRST cohomology
   classification.
@@ -55,6 +61,13 @@
 | \(\mathcal D\) | Euclidean Dirac operator |
 | \(J\) | fermion-measure Jacobian |
 | \(n_\pm\) | zero modes of chirality \(\pm1\) |
+| \(M\) | compact oriented Riemannian spin four-manifold used in the index theorem statement |
+| \(S^\pm\) | positive and negative chirality spinor bundles on \(M\) |
+| \(E_R,\nabla^E\) | Hermitian bundle and smooth unitary connection associated to the fermion representation \(R\) |
+| \(\widehat A(TM)\) | Chern--Weil \(\widehat A\)-form of the tangent bundle |
+| \(\operatorname{ch}(E_R,\nabla^E)\) | Chern character form of the gauge bundle |
+| \(B_A\) | tangential boundary Dirac operator in the APS collar decomposition |
+| \(\eta_{B_A}(0),h_{B_A}\) | eta invariant and boundary zero-mode dimension in the APS formula |
 | \(\mathcal A(\zeta,A)\) | gauge variation of the effective action |
 | \(\mathsf A,\mathsf F\) | anti-Hermitian connection and curvature for descent |
 | \(I_6\) | six-form anomaly polynomial |
@@ -81,7 +94,24 @@
   by the evanescent \(\ell_\perp\) part of the dimensionally regulated loop
   momentum when vector Ward identities are preserved.
 - The regulated trace of \(\gamma_5\) in a gauge background gives the local
-  anomaly density and the integrated index theorem.
+  anomaly density.  Its integral is identified with a Fredholm index only
+  under the closed spin Dirac hypotheses of the Atiyah--Singer theorem; in the
+  flat tangent specialization this gives
+  \[
+    \operatorname{index}\mathcal D_{A,+}
+    =
+    (32\pi^2)^{-1}\int_M
+    \epsilon^{\mu\nu\rho\sigma}
+    \operatorname{tr}_R(F_{\mu\nu}F_{\rho\sigma})\,d^4x .
+  \]
+- With boundary and APS spectral boundary condition, the index is
+  \[
+    \int_M[\widehat A(TM)\operatorname{ch}(E_R,\nabla^E)]_4
+    -
+    \frac{\eta_{B_A}(0)+h_{B_A}}2,
+  \]
+  up to the standard local transgression term when the data are not product
+  near the boundary.
 - Gauge anomalies are ghost-number-one local BRST cohomology classes.
 - In four dimensions the local chiral gauge anomaly descends from the six-form
   polynomial \(I_6\propto \operatorname{tr}\mathsf F^3\).
@@ -133,3 +163,7 @@
 - 2026-05-24 issue #250 pass: made the Bardeen--Zumino current explicit in
   components, including both the curvature form and the derivative-expanded
   nonabelian polynomial with ordering fixed.
+- 2026-05-24 issue #251 pass: replaced the informal integrated-index sentence
+  by the closed spin Dirac Atiyah--Singer theorem with hypotheses, the
+  flat-gauge specialization used in the anomaly calculation, and the
+  Atiyah--Patodi--Singer boundary formula with eta-invariant correction.
