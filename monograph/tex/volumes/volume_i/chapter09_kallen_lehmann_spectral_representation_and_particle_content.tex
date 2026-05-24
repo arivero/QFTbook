@@ -659,6 +659,41 @@ field rescales \(Z\).  The canonical free field used later in LSZ is the
 asymptotic field on the one-particle Fock space, normalized separately from the
 interpolating local field whose correlators contain the pole.
 
+\begin{remark}[Support hypothesis for a single massive scalar channel]
+\label{rem:kallen-lehmann-single-massive-support}
+The lower endpoint \(0\) in the K\"all\'en--Lehmann integral is conventional:
+it is the possible lower endpoint of invariant mass squared under the spectrum
+condition, not a claim that the chosen field has spectral weight at zero.  In
+the special situation used by the elementary scalar LSZ discussion, assume:
+
+\begin{enumerate}[label=(\roman*)]
+  \item the theory has no massless particle seen by \(\widehat\phi\), so
+    \(d\rho_\phi(\{0\})=0\);
+  \item the field has nonzero overlap with a stable scalar one-particle mass
+    \(m>0\), giving the atom \(Z_\phi\delta_{m^2}(\dd s)\);
+  \item there are no lighter massive particles or bound-state atoms in this
+    channel; and
+  \item the non-one-particle part created by \(\widehat\phi\) begins with
+    states containing at least two particles of mass \(m\).
+\end{enumerate}
+
+Then the non-vacuum spectral measure has the support decomposition
+\[
+  \operatorname{supp}d\rho_\phi
+  \subset
+  \{m^2\}\cup[4m^2,\infty),
+  \qquad
+  \dd\rho_\phi(s)
+  =
+  Z_\phi\delta_{m^2}(\dd s)+\dd\rho_{\phi,\mathrm c}(s),
+\]
+with \(\operatorname{supp}d\rho_{\phi,\mathrm c}\subset[4m^2,\infty)\).  This
+gap between the atom and the rest of the support is the spectral input used
+later by Haag--Ruelle and LSZ.  If massless particles, infraparticle
+thresholds, or additional bound-state atoms are present, the displayed support
+decomposition must be replaced by the corresponding spectral statement.
+\end{remark}
+
 \begin{remark}[Existence of an isolated mass shell is a spectral statement]
 \label{rem:kallen-lehmann-mass-shell-existence-status}
 The K\"all\'en--Lehmann representation does not imply the existence of a

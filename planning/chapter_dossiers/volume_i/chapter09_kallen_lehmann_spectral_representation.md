@@ -93,6 +93,7 @@ Working framework:
 | The canonical sum-rule derivative uses \([\pi_0(\vec r),\phi_0(\vec0)]=-\ii\delta^{(d)}(\vec r)\mathbf1\), obtained from \([\phi_0,\pi_0]=+\ii\delta\mathbf1\) by commutator antisymmetry. | Derived | Explicit sign bridge added in issue #369 pass |
 | Delta-normalized scalar one-particle states have \(N(\vec k)=\sqrt{m/\omega_{\vec k}}\). | Derived | Standard boost construction plus Lorentz invariance of the on-shell measure |
 | An isolated one-particle mass created by \(\widehat\phi\) is an atom \(Z\,\delta_{m^2}(\dd\mu^2)\) of the spectral measure. | Definition plus derivation | Projection onto the isolated mass shell; issue #379 notation pass |
+| For a single stable massive scalar channel with no massless particle, no lighter particles or bound-state atoms, and two-particle continuum onset, \(\operatorname{supp}d\rho_\phi\subset\{m^2\}\cup[4m^2,\infty)\). | Conditional support hypothesis | Issue #382 pass; support remark before Haag--Ruelle/LSZ dependence |
 | The existence of a stable one-particle species is the nonzero isolated spectral projection \(E(\Sigma_m^+)\Hilb\ne0\), not a consequence of the Kallen-Lehmann formula itself. | Clarified assumption/status statement | Joint spectral theorem plus atom criterion |
 | \(Z\) depends on the local field normalization and is intrinsic once the field is fixed. | Definition/consequence | Matrix element normalization |
 
@@ -135,6 +136,10 @@ Figures to include:
 - 2026-05-24 issue #379 pass: standardized \(\delta_{m^2}\) as the unit point
   measure and wrote atomic contributions as \(Z\,\delta_{m^2}(\dd s)\) or
   \(Z\,\delta_{m^2}(\dd\mu^2)\), avoiding density-vs-measure overload.
+- 2026-05-24 issue #382 pass: added the single-massive-scalar support
+  hypothesis \(\dd\rho_\phi\) has no massless atom, has an isolated atom at
+  \(m^2\), and has continuum support beginning at \(4m^2\) under the stated
+  two-particle-threshold assumptions.
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.
