@@ -697,19 +697,56 @@ elements in the massive sector. The right hand side is an inner product in the
 physical Hilbert space; the left hand side records the same number in the
 free asymptotic particle basis.
 
-Asymptotic completeness is the stronger statement
+There are three logically distinct range statements.
+\begin{enumerate}[label=(\alph*)]
+  \item \emph{Range coincidence for the chosen asymptotic species.}  The
+  equality
+  \[
+    \Hilb_{\mathrm{in}}=\Hilb_{\mathrm{out}}=:\Hilb_{\mathrm{sc}}
+  \]
+  says that the incoming and outgoing Haag--Ruelle constructions based on the
+  selected isolated one-particle subspace have the same physical range.  This
+  is exactly the hypothesis needed for \(S\) above to be a unitary operator on
+  the corresponding asymptotic Fock space.
+
+  \item \emph{Completeness in a specified massive scattering sector.}  Let
+  \(\Hilb_{\mathrm{sec}}\subset\Hilb\) be a closed reducing subspace selected
+  by superselection charge, mass gap, and a finite list of stable isolated
+  particle species.  Replacing \(\mathcal F_s(\Hilb_1)\) by the appropriate
+  graded Fock space over the direct sum of those one-particle spaces, sector
+  completeness is the statement
+  \[
+    \Hilb_{\mathrm{in}}=\Hilb_{\mathrm{out}}=\Hilb_{\mathrm{sec}} .
+  \]
+  This is the level used by later cluster and partial-wave arguments for a
+  closed massive sector: all states in that sector are accounted for by the
+  listed asymptotic particles, while other superselection sectors or other
+  parts of the full theory may remain outside the discussion.
+
+  \item \emph{Full asymptotic completeness.}  After including every stable
+  particle species and superselection sector in the physical theory, full
+  asymptotic completeness is the statement
+  \[
+    \Hilb_{\mathrm{in}}=\Hilb_{\mathrm{out}}=\Hilb
+  \]
+  on the relevant finite-energy physical Hilbert space.
+\end{enumerate}
+
+Thus ordinary asymptotic completeness is the last statement, not merely the
+range coincidence in (a).  The definition of \(S\) on a chosen scattering
+sector requires (a).  The later closed-channel unitarity formulae require the
+sector statement (b) for the sector under analysis.  Full asymptotic
+completeness asserts
 \[
   \Hilb=\Hilb_{\mathrm{in}}=\Hilb_{\mathrm{out}}
 \]
-for the sector of finite-energy states under consideration. The definition of
-\(S\) on the scattering sector requires equality of the incoming and outgoing
-ranges. Full asymptotic completeness asserts that every physical state in the
-sector is captured by such asymptotic particle data.  This is an additional
-dynamical theorem or hypothesis.  For nontrivial interacting massive local
-Wightman theories in four spacetime dimensions, full asymptotic completeness is
-presently an open problem rather than a known consequence of the axioms.  Proofs
-exist only in restricted model classes, notably constructive or integrable
-models in lower spacetime dimensions and related weakened-locality settings.
+for the whole chosen physical Hilbert space.  This is an additional dynamical
+theorem or hypothesis.  For nontrivial interacting massive local Wightman
+theories in four spacetime dimensions, full asymptotic completeness is
+presently an open problem rather than a known consequence of the axioms.
+Proofs exist only in restricted model classes, notably constructive or
+integrable models in lower spacetime dimensions and related weakened-locality
+settings.
 
 \section{Relation to Local Correlation Functions}
 
