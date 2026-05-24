@@ -59,6 +59,33 @@ multiplets, or fermionic particles are present, \(\Hilb_1\) is replaced by the
 appropriate direct sum of isolated one-particle representations and
 \(\mathcal F_s(\Hilb_1)\) by the corresponding graded asymptotic Fock space.
 
+For a scalar multiplicity-one species, the one-particle Hilbert space is
+realized by the mass-shell spectral representation
+\[
+  W_1:L^2(\Sigma_m^+,\dd\mu_m)\overset{\sim}{\longrightarrow}\Hilb_1,
+  \qquad
+  \dd\mu_m(p)=\frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2\omega_{\vec p}},
+\]
+with
+\[
+  W_1 f=\int_{\Sigma_m^+}\dd\mu_m(p)\,f(p)|p\rangle,
+  \qquad
+  U(a,\mathbf 1)W_1f
+  =
+  W_1\bigl(p\mapsto \ee^{\ii a_\mu p^\mu}f(p)\bigr).
+\]
+The bosonic asymptotic Fock space is then the Hilbert direct sum
+\[
+  \mathcal F_s(\Hilb_1)
+  \simeq
+  \mathbb C\Omega_F
+  \oplus
+  \bigoplus_{n\ge1}
+  L^2_{\mathrm{sym}}\bigl((\Sigma_m^+)^n,\dd\mu_m^{\otimes n}\bigr).
+\]
+Thus the wave operators below start from a constructed free many-particle
+Hilbert space whose momentum labels are coordinates in the spectral model.
+
 \section{Almost-Local Operators and Spectral Transfer}
 
 Almost-locality is the norm-approximation condition of

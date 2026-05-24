@@ -43,6 +43,7 @@
 | \(\Hilb_1\) | one-particle Hilbert space of mass \(m\) |
 | \(P_1\) | orthogonal projection onto \(\Hilb_1\) |
 | \(\Sigma_m^+\) | positive-energy mass shell |
+| \(W_1\) | unitary spectral representation \(L^2(\Sigma_m^+,d\mu_m)\to\Hilb_1\) in the scalar multiplicity-one sector |
 | \(\omega_{\vec p}\) | \(\sqrt{\vec p^{\,2}+m^2}\) |
 | \(A,B\) | local or almost-local interpolating operators |
 | \(h\) | compactly supported momentum wave packet |
@@ -74,6 +75,9 @@
   \(E(\Sigma_m^+)\Hilb\ne0\); a continuous Kallen-Lehmann threshold with no
   atom leaves the ordinary massive Haag--Ruelle construction vacuous for that
   species.
+- The scalar one-particle sector is explicitly identified with
+  \(L^2(\Sigma_m^+,d\mu_m)\) by a unitary spectral representation before the
+  symmetric Fock construction is used.
 - A local operator with nonzero one-particle overlap can be energy-momentum
   filtered and smeared with a positive-energy Klein--Gordon wave packet.
 - In point-field notation, the smeared field \(\hat\phi_f\Omega\) projects to
@@ -89,6 +93,8 @@
   separation.
 - The limits carry the bosonic Fock inner product and define isometric wave
   operators from free Fock space into the physical Hilbert space.
+- The Fock-space inner product is derived from the \(L^2\) mass-shell model by
+  the symmetrized product formula for decomposable wave functions.
 - The use of \(\mathcal F_s(\Hilb_1)\) is scoped to the scalar bosonic sector;
   the graded asymptotic Fock space for general spin/statistics is fixed by the
   spin-statistics theorem stated in the spinor chapter.
@@ -137,3 +143,7 @@
 - 2026-05-24 issue #328 pass: made nonzero one-particle spectral projection
   and isolation separate hypotheses, and connected Haag--Ruelle vacuity to the
   absence of Kallen-Lehmann atoms.
+- 2026-05-24 issue #329 pass: displayed the unitary
+  \(L^2(\Sigma_m^+,d\mu_m)\) model of \(\Hilb_1\), the induced symmetric
+  Fock-space wave-function representation, and the corresponding inner-product
+  formula before invoking Haag--Ruelle wave operators.

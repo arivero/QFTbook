@@ -85,6 +85,47 @@ theory with a lightest stable particle, the picture is:
 Here \(M_{\mathrm{thr}}\) is the lowest invariant mass in the continuum channel
 under discussion.
 
+For the scalar multiplicity-one sector used below, the abstract Hilbert space
+\(\Hilb_1\) is represented concretely as wave functions on the positive mass
+shell.  Let
+\[
+  \dd\mu_m(p)
+  =
+  \frac{\dd^d\vec p}{(2\pi)^d2\omega_{\vec p}},
+  \qquad
+  p=(\omega_{\vec p},\vec p).
+\]
+After fixing the relativistic normalization of one-particle states, choose a
+unitary map
+\[
+  W_1:L^2(\Sigma_m^+,\dd\mu_m)\longrightarrow \Hilb_1
+\]
+which intertwines translations by
+\[
+  U(a,\mathbf 1)W_1 f
+  =
+  W_1\bigl(p\mapsto \ee^{\ii a_\mu p^\mu}f(p)\bigr).
+\]
+In generalized momentum notation this is
+\[
+  W_1 f
+  =
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,f(p)|p\rangle,
+  \qquad
+  \int_{\Sigma_m^+}\dd\mu_m(p)\,|p\rangle\langle p|
+  =
+  \mathbf 1_{\Hilb_1}.
+\]
+The kets in this display are distributional symbols for the spectral
+representation; Hilbert vectors are obtained after \(L^2\)-smearing.  With an
+internal multiplicity space or nontrivial spin, the scalar model is replaced by
+\[
+  \Hilb_1\simeq L^2(\Sigma_m^+,\dd\mu_m;\mathfrak k),
+\]
+where \(\mathfrak k\) carries the little-group/internal representation and the
+Poincare action contains the corresponding Wigner rotations.  The present
+chapter takes \(\mathfrak k=\mathbb C\).
+
 \begin{remark}[When the isolated shell is a theorem]
 \label{rem:haag-ruelle-isolated-shell-existence-scope}
 The definition above is an assumption on the Hilbert-space spectrum.  It is
@@ -550,6 +591,39 @@ be the bosonic Fock space over \(\Hilb_1\), where
 \(\Hilb_1^{\odot n}\) denotes the symmetric \(n\)-fold tensor product and
 \(\Hilb_1^{\odot0}=\mathbb C\Omega_F\). The vector \(\Omega_F\) is the Fock
 vacuum.
+
+The construction is intrinsic: it is the Hilbert completion of the algebraic
+finite symmetric tensor algebra over \(\Hilb_1\).  The mass-shell model above
+turns this intrinsic object into the familiar wave-function representation
+\[
+  \mathcal F_s(\Hilb_1)
+  \simeq
+  \mathbb C\Omega_F
+  \oplus
+  \bigoplus_{n\ge1}
+  L^2_{\mathrm{sym}}
+  \bigl((\Sigma_m^+)^n,\dd\mu_m(p_1)\cdots\dd\mu_m(p_n)\bigr).
+\]
+Under this identification a decomposable \(n\)-particle vector is represented
+by
+\[
+  (f_1\odot\cdots\odot f_n)(p_1,\ldots,p_n)
+  =
+  \frac{1}{\sqrt{n!}}
+  \sum_{\sigma\in S_n}
+  \prod_{j=1}^n f_j(p_{\sigma(j)}),
+\]
+which gives
+\[
+  \langle f_1\odot\cdots\odot f_n,
+  g_1\odot\cdots\odot g_n\rangle
+  =
+  \sum_{\sigma\in S_n}
+  \prod_{j=1}^n
+  \langle f_j,g_{\sigma(j)}\rangle_{L^2(\Sigma_m^+,\dd\mu_m)} .
+\]
+This is the Fock-space inner product that the Haag--Ruelle limits reproduce
+inside the physical Hilbert space.
 
 \begin{remark}[Statistics of the asymptotic Fock space]
 The notation \(\mathcal F_s(\Hilb_1)\) is appropriate here because the
