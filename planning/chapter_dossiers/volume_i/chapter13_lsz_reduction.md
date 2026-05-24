@@ -98,7 +98,10 @@
 - The full scattering kernel decomposes into products of connected kernels
   over compatible partitions of incoming and outgoing labels.
 - Perturbative \(\phi^4\) Green functions yield
-  \(\mathcal M=-g+O(g^2)\) for tree-level \(2\to2\) scattering after LSZ.
+  \(\mathcal M=-g+O(g^2)\) for tree-level \(2\to2\) scattering after LSZ;
+  the four external scalar propagator numerators \((-\ii)^4\) and four LSZ
+  multipliers \(\ii^4\) multiply to one before the vertex factor is converted
+  to the invariant amplitude.
 
 ## Figure Requirements
 
@@ -123,3 +126,6 @@
   \(\operatorname{Res}_{k^2=-m^2}\) notation by the invariant-denominator
   boundary-value coefficient and displayed the two linear \(k^0\)-pole residues
   explicitly.
+- 2026-05-24 issue #381 pass: displayed the tree-level \(2\to2\) external-leg
+  phase bookkeeping \((-\ii)^4=1\) and \(\ii^4(-\ii)^4=1\) before reading off
+  \(\mathcal M=-g+O(g^2)\).
