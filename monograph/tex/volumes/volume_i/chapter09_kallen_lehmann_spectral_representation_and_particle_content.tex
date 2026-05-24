@@ -636,8 +636,9 @@ and monotone convergence yields the canonical sum rule
 It fixes the chosen field normalization; changing the field normalization
 rescales the spectral measure.
 
-If the same canonically normalized field has a one-particle atom
-\(Z\delta_{m^2}\), positivity of \(d\rho\) and
+If the same canonically normalized field has a one-particle atomic contribution
+\(Z\,\delta_{m^2}(\dd s)\), where \(\delta_{m^2}\) is the unit point measure at
+\(s=m^2\), positivity of \(d\rho\) and
 \eqref{eq:kallen-lehmann-canonical-sum-rule} imply
 \[
   0\le Z\le1.
@@ -879,12 +880,13 @@ define \(Z\ge0\) by
   {}_{\rm inv}\langle\vec p|\widehat\phi(0)|\vac\rangle=Z^{1/2}
 \]
 for scalar one-particle states. Lorentz covariance makes the right-hand side
-independent of \(\vec p\) in this normalization. The one-particle contribution
-to the spectral measure is the atom
+independent of \(\vec p\) in this normalization. Let \(\delta_{m^2}\) denote
+the unit point measure at \(\mu^2=m^2\). The one-particle contribution to the
+spectral measure is
 \[
-  Z\,\delta_{m^2},
+  \dd\rho_1(\mu^2)=Z\,\delta_{m^2}(\dd\mu^2).
 \]
-where \(\delta_{m^2}\) is the unit point mass at \(\mu^2=m^2\). Thus
+Thus
 \[
   \dd\rho(\mu^2)
   =
@@ -893,8 +895,8 @@ where \(\delta_{m^2}\) is the unit point mass at \(\mu^2=m^2\). Thus
   \dd\rho_{\mathrm c}(\mu^2),
 \]
 where \(d\rho_{\mathrm c}\) is the remaining positive measure.
-In density notation, using the delta-normalized states in the previous
-section, the same statement is the calculation
+At the level of the momentum-space measure, using the delta-normalized states
+in the previous section, the same statement is the calculation
 \[
 \begin{aligned}
   \dd\nu_{\phi,1}(p)
@@ -915,7 +917,7 @@ section, the same statement is the calculation
 \end{aligned}
 \]
 Comparison with the invariant-mass decomposition then gives
-\(d\rho_1(\mu^2)=Z\delta_{m^2}(d\mu^2)\).
+\(\dd\rho_1(\mu^2)=Z\,\delta_{m^2}(\dd\mu^2)\).
 
 \begin{figure}[H]
 \centering
@@ -978,7 +980,7 @@ When \(d\rho_{\mathrm c}\) has a density \(\sigma(\mu^2)\) in that region,
   \draw (1.65,0.08) -- (1.65,-0.08) node[below] {$m^2$};
   \draw (3.35,0.08) -- (3.35,-0.08) node[below] {$4m^2$};
   \draw[red!75!black,very thick,->] (1.65,0) -- (1.65,2.45)
-    node[above] {$Z\,\delta_{m^2}$};
+    node[above] {$Z\,\delta_{m^2}(\dd s)$};
   \draw[blue!65!black,thick]
     (3.35,0) .. controls (3.7,0.65) and (4.15,1.20) .. (4.75,1.12)
     .. controls (5.35,1.04) and (5.75,0.48) .. (6.05,0.30);
@@ -1040,13 +1042,14 @@ where, in the Fourier convention
   \in\Hilb_1 .
 \]
 Haag--Ruelle constructs the asymptotic Fock space from such vectors, and LSZ
-extracts the corresponding pole residue from correlation functions of the
+extracts the corresponding pole coefficient from correlation functions of the
 interpolating local field.
 
 \begin{remark}[Infraparticle spectrum in charged QED]
 The word ``atom'' here means a literal point mass in the positive spectral
-measure, for example \(Z\delta_{m^2}\) with \(Z>0\).  This is exactly the
-input needed later by Haag--Ruelle theory and by LSZ residue extraction.  The
+measure, for example \(Z\,\delta_{m^2}(\dd s)\) with \(Z>0\).  This is exactly
+the input needed later by Haag--Ruelle theory and by LSZ pole-coefficient
+extraction.  The
 charged sector of QED with a massless photon realizes a different spectral
 structure.  It contains the charged threshold together with states differing by
 photons of arbitrarily small energy; the energy-momentum spectral support

@@ -55,6 +55,7 @@ Working framework:
 | \(\Delta_+(x;\mu^2)\) | distribution | positive-frequency free scalar two-point function of mass \(\mu\) |
 | \(\Delta_F(x;\mu^2)\) | distribution | Feynman propagator of mass \(\mu\) |
 | \(d\rho(\mu^2)\) | positive measure | Kallen-Lehmann spectral measure |
+| \(\delta_{a}\) | unit point measure | Borel measure on \([0,\infty)\) with total mass one at \(s=a\) |
 | \(Z\) | nonnegative number | atom of \(d\rho\) at an isolated one-particle mass \(m^2\) |
 | \(d\rho_{\mathrm c}\) | positive measure | continuum part of the spectral measure |
 | \(L(\vec k)\) | Lorentz transformation | standard boost from rest momentum to \(k^\mu=(\omega_{\vec k},\vec k)\) |
@@ -91,7 +92,7 @@ Working framework:
 | \(G_E(x_E)=\int d\rho(\mu^2)\Delta_E(x_E;\mu^2)\) under analytic continuation. | Framework statement/derived from Chapter 8 conditions | Spectral positivity and Euclidean continuation |
 | The canonical sum-rule derivative uses \([\pi_0(\vec r),\phi_0(\vec0)]=-\ii\delta^{(d)}(\vec r)\mathbf1\), obtained from \([\phi_0,\pi_0]=+\ii\delta\mathbf1\) by commutator antisymmetry. | Derived | Explicit sign bridge added in issue #369 pass |
 | Delta-normalized scalar one-particle states have \(N(\vec k)=\sqrt{m/\omega_{\vec k}}\). | Derived | Standard boost construction plus Lorentz invariance of the on-shell measure |
-| An isolated one-particle mass created by \(\widehat\phi\) is an atom \(Z\delta(\mu^2-m^2)\) of the spectral measure. | Definition plus derivation | Projection onto the isolated mass shell |
+| An isolated one-particle mass created by \(\widehat\phi\) is an atom \(Z\,\delta_{m^2}(\dd\mu^2)\) of the spectral measure. | Definition plus derivation | Projection onto the isolated mass shell; issue #379 notation pass |
 | The existence of a stable one-particle species is the nonzero isolated spectral projection \(E(\Sigma_m^+)\Hilb\ne0\), not a consequence of the Kallen-Lehmann formula itself. | Clarified assumption/status statement | Joint spectral theorem plus atom criterion |
 | \(Z\) depends on the local field normalization and is intrinsic once the field is fixed. | Definition/consequence | Matrix element normalization |
 
@@ -131,6 +132,9 @@ Figures to include:
   absent rather than implicit.
 - 2026-05-24 issue #369 pass: inserted the commutator-antisymmetry sign step in
   the canonical Kallen--Lehmann sum-rule derivation.
+- 2026-05-24 issue #379 pass: standardized \(\delta_{m^2}\) as the unit point
+  measure and wrote atomic contributions as \(Z\,\delta_{m^2}(\dd s)\) or
+  \(Z\,\delta_{m^2}(\dd\mu^2)\), avoiding density-vs-measure overload.
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.
