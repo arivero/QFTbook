@@ -154,9 +154,13 @@ At \(\eta=0\) and \(g=\delta\), this metric derivative agrees with the
 flat-space Noether stress tensor up to contact terms, equation-of-motion
 operators, and improvement terms fixed by the source chart.
 
-If the regulated theory and the subtraction functional are invariant under
-compactly supported diffeomorphisms, then \(\mathcal W[g,\eta]\) is invariant
-under
+\begin{assumption}[Covariant source regulator]
+\label{ass:diffeomorphism-covariant-source-regulator}
+The regulated functional \(Z_\Lambda[g,\eta]\), the local subtraction
+functional \(P_\Lambda[g,\eta]\), and the limiting source chart
+\(\mathcal W[g,\eta]\) are invariant under compactly supported
+diffeomorphisms.
+The metric and scalar sources transform by
 \[
   \delta_\xi g_{\mu\nu}
   =
@@ -166,8 +170,23 @@ under
   =
   \xi^\mu\nabla_\mu\eta^I
 \]
-for scalar sources.  Substituting these variations into
-\(\delta_\xi\mathcal W=0\), using
+for every smooth compactly supported vector field \(\xi\).  This regulator and
+subtraction-scheme hypothesis requires covariance of the cutoff and counterterm
+prescription in addition to locality.  It is available for regulator
+constructions and counterterm prescriptions that are covariant with respect to
+the background metric.  A cutoff tied to a fixed coordinate lattice, a fixed
+momentum frame, or a noncovariant smoothing kernel requires additional
+improvement terms before the hypothesis can hold.
+Dimensional regularization on a curved background also requires a covariant
+continuation of the tensor algebra and a covariant subtraction prescription.
+In a chiral theory with a gravitational anomaly, no local counterterm choice
+makes \(\mathcal W\) invariant under all such diffeomorphisms; the right-hand
+side of the Ward identity below is then the anomaly functional rather than
+zero.  The derivation in this section assumes the anomaly-free case.
+\end{assumption}
+
+Under Assumption~\ref{ass:diffeomorphism-covariant-source-regulator},
+substituting the variations above into \(\delta_\xi\mathcal W=0\), using
 \eqref{eq:volume-iii-source-derivative-conventions}, and integrating the
 metric term by parts gives the source Ward identity
 \begin{equation}

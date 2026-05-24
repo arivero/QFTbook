@@ -63,6 +63,11 @@ The chapter must define and derive:
   statement to a source-functional contact distribution, with the local
   Weyl/RG source vector field, anomaly functional, Wess--Zumino consistency,
   and contact terms on collision diagonals stated explicitly;
+- the labeled diffeomorphism-covariant source-regulator assumption behind the
+  stress-tensor Ward identity, including the fact that a fixed lattice,
+  fixed-momentum cutoff, or noncovariant smoothing kernel need not satisfy it
+  and that chiral gravitational anomalies obstruct diffeomorphism-invariant
+  source functionals;
 - equation-of-motion terms, total derivatives, improvements, and
   curved-background curvature terms as local data fixed by the source chart;
 - the fixed-point implication that the beta-function contribution to the trace
@@ -112,6 +117,12 @@ The chapter must define and derive:
    obtained by differentiating the source-functional local RG identity; the
    Weyl-anomaly functional and derivatives of the local source vector field
    supply the contact terms.
+5a. The source Ward identity
+    \(\nabla_\mu\langle T^{\mu\nu}\rangle=-\langle O_I\rangle\nabla^\nu\eta^I\)
+    is conditional on a diffeomorphism-covariant regulator, subtraction
+    functional, and continuum source chart.  In anomalous chiral theories the
+    same variation produces the gravitational-anomaly functional instead of
+    zero.
 6. At an RG fixed point, the beta-function contribution to the trace vanishes;
    tracelessness is an additional stress-tensor/improvement statement.
 7. A symmetric conserved traceless stress tensor generates conserved currents
@@ -205,3 +216,7 @@ The chapter must define and derive:
 - 2026-05-24 issue #357 pass: labeled the kinetic scale-invariance check and
   inserted the bridge sentence explaining why the bare trace identity contains
   only interaction terms.
+- 2026-05-24 issue #365 pass: promoted the compactly supported diffeomorphism
+  invariance clause to a labeled source-regulator assumption, with explicit
+  caveats for fixed lattice/momentum cutoffs, curved-background dimensional
+  regularization, and chiral gravitational anomalies.
