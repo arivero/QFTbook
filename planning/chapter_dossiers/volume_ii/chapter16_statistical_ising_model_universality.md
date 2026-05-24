@@ -50,6 +50,18 @@ The chapter must define and derive:
   deformation in the displayed scaling limit;
 - the critical \(\mathfrak m=0\) Ising fixed point and the assumptions under
   which it is interpreted as the Ising CFT;
+- finite-lattice reflection positivity with respect to a Euclidean time
+  reflection, as a property of the regulated measure rather than a consequence
+  of universality language;
+- the sum-of-squares proof that ferromagnetic nearest-neighbor Ising models
+  and nearest-neighbor scalar models with positive one-site measure preserve
+  reflection positivity;
+- the distinction between reflection-positive regulator families and
+  arbitrary lattice representatives in the same formal RG chart, including the
+  possible failure caused by negative cross-reflection couplings or
+  non-positive higher-derivative kernels;
+- preservation of reflection positivity under scaling limits as a separate
+  closedness statement for reflected quadratic forms;
 - the operator dictionary as a leading scaling-field expansion, with
   \(s_x\) having leading field \(\sigma\) and the subtracted lattice energy
   density having leading field \(\varepsilon\);
@@ -118,6 +130,16 @@ The chapter must define and derive:
 13. Normalized continuum correlator universality follows only after adding
     scaling-limit existence, positivity, locality, regularity, and continuity
     hypotheses for the coordinate-to-correlator map.
+14. Reflection positivity is automatic for the ferromagnetic nearest-neighbor
+    Ising model, and for the nearest-neighbor scalar model with positive
+    one-site measure and nonnegative cross-reflection coupling, by an explicit
+    expansion of the crossing Boltzmann factor into nonnegative
+    rank-one terms.  It is not automatic for arbitrary microscopic
+    representatives of a proposed universality class.
+15. A scaling limit preserves reflection positivity only when the
+    Osterwalder--Schrader quadratic forms of the renormalized lattice
+    observables converge; separated-point convergence or finite RG-coordinate
+    convergence is insufficient.
 
 ## Figure Requirements
 
@@ -156,6 +178,9 @@ The chapter must define and derive:
   theorem.
 - Do not present local RG coordinate convergence as a theorem proving
   existence of a continuum lattice scaling limit.
+- Do not infer Osterwalder--Schrader positivity from membership in a proposed
+  universality class.  State the reflection-positive regulator class or keep
+  positivity as a separate scaling-limit hypothesis.
 - No reader-facing source-page references or course-note references.
 - 2026-05-22 finite-cutoff-universality pass: added a section defining
   \(z=(u,v)\) at a reference scale, the microscopic endpoint map
@@ -179,3 +204,12 @@ The chapter must define and derive:
   a continuum measure/source functional.  The manuscript now states that
   normalized correlator universality requires additional scaling-limit,
   positivity, locality, regularity, clustering, and continuity hypotheses.
+- 2026-05-24 issue #237 pass: added a reflection-positivity section defining
+  the finite-lattice OS quadratic form, proving reflection positivity for
+  ferromagnetic nearest-neighbor Ising and scalar lattice measures by explicit
+  sum-of-squares factorization, and stating preservation under scaling limits
+  as a separate convergence theorem for reflected quadratic forms.  The
+  generalized scalar model now records that positive nearest-neighbor
+  cross-reflection coupling preserves reflection positivity, while negative
+  next-nearest-neighbor or non-positive higher-derivative cross-plane kernels
+  can fail.

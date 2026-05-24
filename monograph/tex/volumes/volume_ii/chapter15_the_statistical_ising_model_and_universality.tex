@@ -329,13 +329,16 @@ criticality \(Z_\sigma(L,T_c)\) may be chosen proportional to
 \(L^{-2\Delta_\sigma}\), so the rescaled spin insertions have finite
 correlators.
 The limiting objects in this display are Euclidean separated-point Schwinger
-functions.  When the lattice measures supply reflection positivity and the
-limits obey the remaining reconstruction hypotheses, these Schwinger functions
-determine a Lorentzian QFT Hilbert space by the Osterwalder--Schrader
-reconstruction of
-Chapter~\ref{ch:os-reconstruction}.  That
-reconstructed Hilbert space is not the finite-dimensional spin-trace space
-\(\Hilb_\Lambda\) used to define the classical thermal ensemble.
+functions.  Reflection positivity of these limiting distributions is not a
+consequence of the scaling formula alone.  It is a property that must either be
+proved from a reflection-positive regulated lattice model and a sufficiently
+strong mode of convergence, or imposed as a separate reconstruction
+hypothesis.  When this positivity and the remaining reconstruction hypotheses
+hold, the Schwinger functions determine a Lorentzian QFT Hilbert space by the
+Osterwalder--Schrader reconstruction of
+Chapter~\ref{ch:os-reconstruction}.  That reconstructed Hilbert space is not
+the finite-dimensional spin-trace space \(\Hilb_\Lambda\) used to define the
+classical thermal ensemble.
 
 \begin{figure}[H]
   \centering
@@ -382,6 +385,161 @@ reconstructed Hilbert space is not the finite-dimensional spin-trace space
   sign records the high- or low-temperature side.}
   \label{fig:volume-ii-ising-scaling-limit}
 \end{figure}
+
+\section{Reflection Positivity Along the Scaling Limit}
+
+Choose one lattice coordinate and call it Euclidean time.  Let
+\(\theta\) be reflection across the hyperplane midway between the time slices
+\(n^0=0\) and \(n^0=1\):
+\[
+  \theta(n^0,n^1,\ldots,n^{D-1})
+  =
+  (1-n^0,n^1,\ldots,n^{D-1}) .
+\]
+For a finite reflection-invariant lattice region \(\Lambda\), write
+\(\Lambda_+=\{n\in\Lambda:n^0\geq1\}\), and let
+\(\mathcal A_+\) be the algebra of complex functions of the lattice variables
+with support in \(\Lambda_+\).  If \(F\in\mathcal A_+\), define the
+anti-linear reflection
+\[
+  (\Theta F)(q)=\overline{F(q\circ\theta)} ,
+\]
+where \(q\) denotes the complete lattice configuration.
+
+\begin{definition}[Finite-lattice reflection positivity]
+A finite lattice probability measure \(\mu_\Lambda\) is reflection positive
+with respect to the time reflection \(\theta\) if
+\begin{equation}
+  \int (\Theta F)(q)\,F(q)\,\dd\mu_\Lambda(q)\geq0
+  \label{eq:finite-lattice-reflection-positivity}
+\end{equation}
+for every \(F\in\mathcal A_+\).  Equivalently, the sesquilinear form
+\((F,G)\mapsto\int(\Theta F)G\,\dd\mu_\Lambda\) is positive semidefinite on
+\(\mathcal A_+\).
+\end{definition}
+
+This is the finite-cutoff precursor of the Osterwalder--Schrader positivity
+condition.  It is stronger than pointwise positivity of the Boltzmann weight:
+it constrains how the action couples fields on opposite sides of every
+reflection plane used in reconstruction.
+
+\begin{proposition}[Ferromagnetic nearest-neighbor models are reflection positive]
+\label{prop:ferromagnetic-nearest-neighbor-reflection-positive}
+Consider a reflection-invariant finite box with free boundary conditions, or a
+periodic torus with the reflection plane chosen so that the action decomposes
+into reflected halves and bonds crossing the plane.  The source-free
+nearest-neighbor Ising measure with coupling \(J\geq0\) is reflection
+positive.  The real scalar lattice measure
+\begin{equation}
+  \dd\mu_\Lambda(s)
+  =
+  Z_\Lambda^{-1}
+  \prod_{x\in\Lambda}\rho(\dd s_x)\,
+  \exp\!\left[
+    \sum_{\langle x y\rangle}K\,s_xs_y
+  \right],
+  \qquad K\geq0,
+  \label{eq:scalar-ferromagnetic-rp-measure}
+\end{equation}
+is also reflection positive whenever \(\rho\) is a positive one-site measure
+for which the finite-volume partition function exists.  Thus the
+nearest-neighbor generalized Ising model with
+\(\rho(\dd s)=\exp[-P(s)]\dd s\), \(P\) bounded below with sufficient growth,
+and \(K=\beta\geq0\), preserves reflection positivity.  Convexity of \(P\) is
+not required; a double-well one-site potential does not by itself violate
+reflection positivity.
+\end{proposition}
+
+\begin{proof}
+The Ising model is the special case
+\(\rho=\frac12(\delta_{-1}+\delta_{+1})\) and \(K=\beta J\).  It is therefore
+enough to prove the scalar statement.  Decompose the action into terms
+strictly on the positive side, their reflected copies, and the bonds crossing
+the reflection plane:
+\[
+  \exp[-S_\Lambda(s)]
+  =
+  \exp[-S_+(s_+)]\,
+  \exp[-S_+(\theta s_-)]\,
+  \prod_{y\in\Sigma_+}\exp\!\left[K_y s_{\theta y}s_y\right],
+\]
+where \(y\) runs over the positive-side endpoints of the crossing bonds and
+\(K_y\geq0\).  Expanding every crossing factor gives
+\[
+  \prod_{y\in\Sigma_+}\exp[K_y s_{\theta y}s_y]
+  =
+  \sum_{m:\Sigma_+\to\mathbb Z_{\geq0}}
+  \prod_{y\in\Sigma_+}\frac{K_y^{m_y}}{m_y!}\,
+  \prod_{y\in\Sigma_+}s_{\theta y}^{m_y}
+  \prod_{y\in\Sigma_+}s_y^{m_y}.
+\]
+Substitution into the quadratic form
+\(\int(\Theta F)F\,\dd\mu_\Lambda\) factorizes the positive and negative
+half-lattice integrals.  For each multi-index \(m\) the contribution is
+\[
+  \frac{1}{Z_\Lambda}
+  \prod_{y\in\Sigma_+}\frac{K_y^{m_y}}{m_y!}
+  \left|
+    \int
+    F(s_+)\,
+    \prod_{y\in\Sigma_+}s_y^{m_y}\,
+    \exp[-S_+(s_+)]
+    \prod_{x\in\Lambda_+}\rho(\dd s_x)
+  \right|^2 .
+\]
+The coefficients are nonnegative because \(K_y\geq0\).  The sum of these
+nonnegative terms is the desired quadratic form, proving
+\eqref{eq:finite-lattice-reflection-positivity}.
+\end{proof}
+
+The proposition identifies a sufficient condition, not a definition of the
+universality class.  Adding next-nearest-neighbor, anisotropic, or
+higher-derivative lattice couplings preserves reflection positivity only when
+the interaction crossing each reflection plane is a positive kernel in the
+above sense.  Negative cross-reflection couplings, or derivative
+discretizations whose cross-plane kernel has negative directions, generally
+destroy the factorization into sums of squares.  Such models may still have
+the same formal RG relevant coordinates, but they do not automatically supply
+Osterwalder--Schrader positivity for a Lorentzian reconstruction.
+
+\begin{proposition}[Closedness of reflection positivity under scaling limits]
+\label{prop:reflection-positivity-closed-under-scaling-limits}
+Let \(a\downarrow0\) label reflection-positive lattice measures
+\(\mu_a\).  Let \(A_a^I(f)\) be renormalized smeared lattice observables whose
+linear normalizations are real and whose test functions are supported in the
+positive Euclidean half-space.  Suppose that for every finite collection of
+polynomial functionals \(F_\alpha(A_a)\) supported in that half-space and
+every set of complex coefficients \(c_\alpha\), the reflected quadratic forms
+\[
+  Q_a(c)
+  =
+  \sum_{\alpha,\beta}\overline{c_\alpha}c_\beta\,
+  \left\langle
+    \Theta F_\alpha(A_a)\,F_\beta(A_a)
+  \right\rangle_{\mu_a}
+\]
+converge to the corresponding continuum quadratic form \(Q_\ast(c)\).  Then
+\(Q_\ast(c)\geq0\) for all such \(c_\alpha\); the limiting Schwinger
+distributions are reflection positive on this test-function domain.
+\end{proposition}
+
+\begin{proof}
+For every \(a\), finite-lattice reflection positivity gives
+\(Q_a(c)\geq0\).  The assumed convergence of the quadratic forms gives
+\[
+  Q_\ast(c)=\lim_{a\downarrow0}Q_a(c),
+\]
+and the closedness of the cone \([0,\infty)\subset\mathbb R\) gives
+\(Q_\ast(c)\geq0\).
+\end{proof}
+
+The hypothesis in this proposition is deliberately a statement about
+quadratic forms, not merely about separated-point correlators.  Source-local
+subtractions used to define a distributional generating functional must either
+arise from genuine lattice observables whose reflected quadratic forms
+converge, or be separately checked to preserve the Osterwalder--Schrader
+quadratic inequalities.  Coordinate universality and critical exponent
+matching do not imply this positivity statement.
 
 Microscopic lattice observables become continuum operators through their
 leading terms in the scaling-field expansion.  Let
@@ -551,6 +709,14 @@ Ising partition function is
     \beta\sum_{\langle x y\rangle}s_xs_y
   \right].
 \]
+For \(P\) real and bounded below with sufficient growth and for
+\(\beta\geq0\), this nearest-neighbor scalar measure is in the
+reflection-positive class of
+Proposition~\ref{prop:ferromagnetic-nearest-neighbor-reflection-positive}.
+This assertion uses the positivity of the cross-reflection nearest-neighbor
+coupling.  It would not follow for an arbitrary lattice regularization with
+negative next-nearest-neighbor terms or other cross-plane kernels that are not
+positive in the sense used in the proof of that proposition.
 Equivalently,
 \[
   \widetilde Z_\Lambda
