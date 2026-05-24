@@ -66,6 +66,9 @@ Working framework:
 - spectral measure associated to a local scalar field acting on the vacuum;
 - positive-frequency scalar two-point function \(\Delta_+\);
 - Kallen-Lehmann spectral measure \(d\rho\);
+- canonical equal-time normalization and the commutator-antisymmetry sign
+  converting \([\phi,\pi]=+\ii\delta\) into
+  \([\pi,\phi]=-\ii\delta\) in the spectral sum-rule derivative;
 - time-ordered and Euclidean Kallen-Lehmann representations;
 - \(k^0\)-contour derivation of the Feynman prescription;
 - scalar one-particle standard boosts, Wigner little group, and invariant
@@ -86,6 +89,7 @@ Working framework:
 | \(G_T(x)=\int d\rho(\mu^2)\Delta_F(x;\mu^2)\). | Derived | Definition of time ordering and linearity |
 | The \(i\epsilon\) prescription places the positive-energy pole below and the negative-energy pole above the real \(k^0\)-axis. | Derived | Explicit contour closure for \(x^0>0\) and \(x^0<0\) |
 | \(G_E(x_E)=\int d\rho(\mu^2)\Delta_E(x_E;\mu^2)\) under analytic continuation. | Framework statement/derived from Chapter 8 conditions | Spectral positivity and Euclidean continuation |
+| The canonical sum-rule derivative uses \([\pi_0(\vec r),\phi_0(\vec0)]=-\ii\delta^{(d)}(\vec r)\mathbf1\), obtained from \([\phi_0,\pi_0]=+\ii\delta\mathbf1\) by commutator antisymmetry. | Derived | Explicit sign bridge added in issue #369 pass |
 | Delta-normalized scalar one-particle states have \(N(\vec k)=\sqrt{m/\omega_{\vec k}}\). | Derived | Standard boost construction plus Lorentz invariance of the on-shell measure |
 | An isolated one-particle mass created by \(\widehat\phi\) is an atom \(Z\delta(\mu^2-m^2)\) of the spectral measure. | Definition plus derivation | Projection onto the isolated mass shell |
 | The existence of a stable one-particle species is the nonzero isolated spectral projection \(E(\Sigma_m^+)\Hilb\ne0\), not a consequence of the Kallen-Lehmann formula itself. | Clarified assumption/status statement | Joint spectral theorem plus atom criterion |
@@ -125,6 +129,8 @@ Figures to include:
   Kallen-Lehmann measure may have no atom, that \(E(\Sigma_m^+)\Hilb\) may be
   zero or non-isolated, and that Haag--Ruelle/LSZ use of that shell is then
   absent rather than implicit.
+- 2026-05-24 issue #369 pass: inserted the commutator-antisymmetry sign step in
+  the canonical Kallen--Lehmann sum-rule derivation.
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.
