@@ -324,8 +324,9 @@ All four momenta are taken incoming, so translation invariance supplies
 \label{thm:bethe-salpeter-pole-factorization}
 Assume that the \((12)\)-channel contains an isolated stable scalar bound
 state \(B\) of mass \(M_B\), separated from the multiparticle continuum, and
-that the time-ordered four-point function admits the usual spectral
-decomposition in this channel.  With
+that after smearing the relative coordinates of the pairs \((12)\) and
+\((34)\), the resulting pair operators admit a channel spectral
+decomposition with this isolated one-particle subspace.  With
 \[
   P=k_1+k_2,\qquad P^2\to -M_B^2,
 \]
@@ -348,22 +349,97 @@ the pole part of the Fourier-transformed four-point function is
 \end{theorem}
 
 \begin{proof}
-Insert the spectral resolution of the Hilbert space between the pair of fields
-carrying total momentum \(P\) and the remaining pair.  The isolated
-one-particle bound-state subspace contributes the projection
+First prove the pole statement after smearing the relative coordinates.  Let
+\(\xi=x_1-x_2\), \(\eta=x_3-x_4\), \(X=(x_1+x_2)/2\), and
+\(Y=(x_3+x_4)/2\).  For test functions \(f,g\) in the relative variables set
 \[
-  \sum_{\sigma\in B}\ket{B(P,\sigma)}\bra{B(P,\sigma)}
+  \mathcal O_f(X)
+  =
+  \int\dd^D\xi\,f(\xi)\,
+  T\{\phi(X+\xi/2)\phi(X-\xi/2)\},
+\]
+and define \(\mathcal O_g(Y)\) similarly for the \((34)\) pair.  The
+singularity in the total momentum \(P\) is controlled by the Fourier transform
+in the cluster separation \(R=X-Y\).  Terms in which the two pairs are not
+separated by arbitrarily large positive or negative \(R^0\) have compact
+support, or rapid decrease after the relative smearing, in the \(R^0\)
+direction and therefore give functions regular at \(P^2=-M_B^2\).  The pole
+comes from the two cluster time orderings
+\[
+  \theta(R^0)\bra{\vac}\mathcal O_f(X)\mathcal O_g(Y)\ket{\vac}
+  +
+  \theta(-R^0)\bra{\vac}\mathcal O_g(Y)\mathcal O_f(X)\ket{\vac}.
+\]
+
+Insert the spectral resolution between the two pair operators.  The isolated
+one-particle bound-state subspace contributes
+\[
+  \int
+  \frac{\dd^{D-1}\vec Q}{(2\pi)^{D-1}2\omega_{\vec Q}}\,
+  |B(\vec Q)\rangle\langle B(\vec Q)|,
+  \qquad
+  \omega_{\vec Q}=\sqrt{\vec Q^{\,2}+M_B^2},
 \]
 with the invariant one-particle normalization used throughout the scattering
-chapters.  For a scalar bound state the spin label is absent.  Fourier
-transforming the two matrix elements on the left and right of this projection
-gives \(\widetilde\Phi_B(k_1,k_2;P)\) and
-\(\widetilde\Phi_B^*(-k_3,-k_4;P)\).  The propagation of the isolated
-intermediate state supplies the scalar Feynman pole
-\(-\ii/(P^2+M_B^2-\ii0)\) in the mostly-plus metric, while all continuum
-states are separated from \(P^2=-M_B^2\) and therefore contribute terms
-regular at the pole.  Translation invariance gives the overall delta
-function.
+chapters.  Translation covariance gives
+\[
+  \bra{\vac}\mathcal O_f(X)|B(\vec Q)\rangle
+  =
+  \ee^{\ii Q\cdot X}
+  F_f(\vec Q),
+  \qquad
+  \langle B(\vec Q)|\mathcal O_g(Y)|\vac\rangle
+  =
+  \ee^{-\ii Q\cdot Y}
+  F_g(\vec Q)^*,
+\]
+where \(Q^0=\omega_{\vec Q}\), and \(F_f,F_g\) are the relative-coordinate
+smearings of the Bethe--Salpeter amplitudes.  The bound-state part of the
+cluster-ordered correlator is therefore
+\[
+  \int
+  \frac{\dd^{D-1}\vec Q}{(2\pi)^{D-1}2\omega_{\vec Q}}\,
+  F_f(\vec Q)F_g(\vec Q)^*
+  \left[
+    \theta(R^0)\ee^{\ii Q\cdot R}
+    +
+    \theta(-R^0)\ee^{-\ii Q\cdot R}
+  \right],
+\]
+with the second term obtained from the reversed ordering.  Fourier transform
+the cluster separation with total momentum \(P\).  The time integral uses
+\[
+  \int_{-\infty}^{\infty}\dd\tau\,\ee^{\ii E\tau}
+  \left[
+    \theta(\tau)\ee^{-\ii\omega\tau}
+    +
+    \theta(-\tau)\ee^{\ii\omega\tau}
+  \right]
+  =
+  \frac{\ii}{E-\omega+\ii0}
+  -
+  \frac{\ii}{E+\omega-\ii0}
+  =
+  \frac{2\ii\omega}{E^2-\omega^2+\ii0}.
+  \label{eq:bs-time-ordering-feynman-pole}
+\]
+Combining this with the invariant measure \(1/(2\omega_{\vec Q})\) gives
+\[
+  \frac{\ii}{(P^0)^2-\omega_{\vec P}^{\,2}+\ii0}
+  =
+  \frac{-\ii}{P^2+M_B^2-\ii0}
+\]
+in the mostly-plus metric.  This is the origin of the displayed Feynman
+prescription.  The spatial Fourier transform fixes \(\vec Q=\vec P\), and
+the remaining common translation gives
+\((2\pi)^D\delta^{(D)}(k_1+k_2+k_3+k_4)\).
+
+Removing the relative-coordinate test functions gives the distributional
+kernel statement.  The two matrix elements \(F_f\) and \(F_g^*\) unsmear to
+\(\widetilde\Phi_B(k_1,k_2;P)\) and
+\(\widetilde\Phi_B^*(-k_3,-k_4;P)\).  The continuum spectral integral begins
+at invariant mass above \(M_B\), so its denominator has no singularity at
+\(P^2=-M_B^2\) and contributes the terms regular at the pole.
 \end{proof}
 
 Equation~\eqref{eq:bethe-salpeter-four-point-pole-factorization} is the

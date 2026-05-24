@@ -31,6 +31,9 @@
 | \(P\) | total momentum in the two-particle channel |
 | \(p,q\) | relative momenta in Bethe--Salpeter kernels |
 | \(M_B\) | mass of a stable composite particle |
+| \(X,Y\) | center coordinates of the two field pairs in the \((12)\)-channel spectral decomposition |
+| \(\xi,\eta\) | relative coordinates inside the two field pairs |
+| \(\mathcal O_f(X)\) | relative-coordinate-smeared time-ordered pair operator |
 | \(\Phi_B(x_1,x_2;P)\) | Bethe--Salpeter amplitude, a time-ordered matrix element |
 | \(\widetilde\Phi_B(p;P)\) | momentum-space Bethe--Salpeter amplitude |
 | \(\Psi_B(p;P)\) | amputated Bethe--Salpeter vertex/wavefunction |
@@ -95,7 +98,10 @@
     M_B\simeq 2m-{g^2\over 256m^3}.
   \]
 - The residue of the four-point pole factorizes into Bethe--Salpeter
-  amplitudes.
+  amplitudes.  The proof now smears relative coordinates, inserts the
+  bound-state spectral projection between pair operators, and derives the
+  \(-\ii/(P^2+M_B^2-\ii0)\) pole from the explicit
+  \(\theta(t)\)-Fourier identity.
 - The amputated residue obeys the homogeneous Bethe--Salpeter equation
   \[
     \Psi_B(p;P)
@@ -145,3 +151,6 @@
   function-space status of \(\mathcal K_P\), the conditional Fredholm converse
   between poles and homogeneous Bethe--Salpeter eigenvectors, and the
   operator-norm/meromorphic-continuation status of ladder sums.
+- 2026-05-24 issue #509 pass: expanded the pole-factorization proof to show
+  which channel spectral resolution is inserted and how time ordering plus
+  the spectrum condition produce the Feynman \(i0\) prescription.
