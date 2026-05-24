@@ -22,6 +22,8 @@ The chapter establishes:
   \(\widetilde V_{\hat a}=\ee^{\Delta\tau}R_{\hat a}{}^\mu V_\mu\);
 - the cylinder Hamiltonian \(\widehat D_{\rm rad}\) and its relation to
   scaling dimensions;
+- primary and descendant states as the radial Hilbert-space realization of
+  conformal generalized Verma modules before quotienting null states;
 - the explicit bridge between Hermitian Lorentzian generators and radial
   Euclidean generators;
 - the cylinder sewing identity on ordered constant-\(\tau\) slabs and its
@@ -103,3 +105,6 @@ The chapter establishes:
   the trace spectrally, stating the needed Hardy--Littlewood Tauberian
   implication, deriving the general \(D\) saddle relation, and deriving the
   \(2D\) modular-invariance Cardy formula with assumptions.
+- 2026-05-24 issue #285 pass: named the primary-descendant construction as
+  the conformal generalized Verma module before the null quotient and
+  cross-referenced the algebraic definition in Chapter 6.

@@ -18,6 +18,9 @@ The chapter establishes:
 - the null-state quotient and its interpretation as operator equations;
 - the level-one Gram form
   \(\langle\mathcal O|K_\mu P_\nu|\mathcal O\rangle\);
+- the relation between finite descendant Gram matrices and the Shapovalov form
+  on conformal generalized Verma modules, with the finite conformal-algebra
+  Kac determinant locating singular vectors;
 - the scalar level-two trace descendant and the scalar unitarity bound;
 - the \(\Delta=0\) scalar branch, tied explicitly to the unique-vacuum and
   cluster-decomposition assumptions in the radial reconstruction hypothesis;
@@ -45,6 +48,8 @@ The chapter establishes:
 5. General first-level bounds are computed by
    \(\Delta+\frac12(C_Q-C_1-C_\rho)\ge0\) for
    \(Q\subset\mathcal H_1\otimes\rho\).
+6. The Kac-determinant framework may be named, but each bound used in the
+   chapter must still be derived from a displayed finite Gram matrix.
 
 ## Figures
 
@@ -64,3 +69,7 @@ The chapter establishes:
 - 2026-05-24 issue #270 pass: the \(\Delta=0\) scalar discussion now points
   back to Hypothesis `hyp:radial-reconstruction-data` for unique vacuum and
   cluster decomposition, avoiding an unstated identity-branch assumption.
+- 2026-05-24 issue #285 pass: connected the descendant Gram forms to the
+  Shapovalov form on conformal generalized Verma modules and named the finite
+  conformal-algebra Kac determinant framework while retaining explicit
+  Gram-matrix derivations.

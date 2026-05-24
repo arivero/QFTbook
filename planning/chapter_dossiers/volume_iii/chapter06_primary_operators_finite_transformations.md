@@ -21,6 +21,12 @@ The chapter establishes:
   Virasoro primaries in \(D=2\), together with the statement that in \(D\ge3\)
   the finite conformal algebra supplies the intrinsic primary notion used in
   this volume;
+- conformal generalized Verma modules
+  \(M(\Delta,\rho)=U(\mathfrak g_{\mathbb C})
+  \otimes_{U(\mathfrak l\oplus\mathfrak n_-)}V_{\Delta,\rho}\), their
+  level spaces \(\operatorname{Sym}^n(\mathbb C^D)\otimes V_\rho\), singular
+  vectors, null submodules, irreducible quotients, and the relation to the
+  finite conformal-algebra Kac determinant and BGG organization;
 - translations from the origin and the descendant Taylor expansion;
 - sources \(\eta^a\in V_\rho^\vee\), their conformal source variation, and
   the induced contact operator on insertions;
@@ -45,6 +51,9 @@ The chapter establishes:
 6. In \(D=2\), a statement about a primary in this volume means a global
    primary unless full Virasoro symmetry and the \(L_n,\bar L_n\) annihilation
    condition for \(n>0\) have been specified.
+7. A primary multiplet before null quotient is a generalized Verma module
+   induced from the parabolic \(\mathfrak l\oplus\mathfrak n_-\), with levels
+   organized by symmetric powers of the translation representation.
 
 ## Figures
 
@@ -64,3 +73,6 @@ The chapter establishes:
 - 2026-05-24 issue #284 pass: added the global-primary/quasi-primary/Virasoro
   primary terminology remark, separating the \(D\ge3\) finite-algebra usage
   from the stronger \(D=2\) Virasoro-primary condition.
+- 2026-05-24 issue #285 pass: added the conformal generalized Verma module
+  definition, PBW level decomposition, singular-vector/null-submodule quotient
+  language, and the Kac-determinant/BGG framework pointer.
