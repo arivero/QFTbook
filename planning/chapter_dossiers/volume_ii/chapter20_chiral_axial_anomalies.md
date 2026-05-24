@@ -69,6 +69,7 @@
 | \(B_A\) | tangential boundary Dirac operator in the APS collar decomposition |
 | \(\eta_{B_A}(0),h_{B_A}\) | eta invariant and boundary zero-mode dimension in the APS formula |
 | \(\mathcal A(\zeta,A)\) | gauge variation of the effective action |
+| \(\delta_\zeta,D_\mu\zeta\) | infinitesimal gauge-variation derivation on background-field functionals and covariant derivative of the gauge parameter |
 | \(\Omega_{\mathrm{loc}}^{p,q}\) | local \(p\)-forms of ghost number \(q\) in the anomaly descent bicomplex |
 | \(a_4^{(1)},a_3^{(2)}\) | relative BRST cocycle representative and its descent partner for a four-dimensional anomaly |
 | \(b_4^{(0)},b_3^{(1)}\) | local counterterm density and total-derivative ambiguity in the relative coboundary relation |
@@ -118,6 +119,18 @@
   \]
   up to the standard local transgression term when the data are not product
   near the boundary.
+- The Wess--Zumino consistency condition is derived as an integrability
+  condition: the gauge-variation derivations obey
+  \([\delta_{\zeta_1},\delta_{\zeta_2}]A_\mu
+  =D_\mu[\zeta_1,\zeta_2]\), and applying the same commutator to
+  \(W[A]\) gives
+  \[
+    \delta_{\zeta_1}\mathcal A(\zeta_2,A)
+    -
+    \delta_{\zeta_2}\mathcal A(\zeta_1,A)
+    =
+    \mathcal A([\zeta_1,\zeta_2],A).
+  \]
 - Gauge anomalies are ghost-number-one local BRST cohomology classes.
 - The descent construction is now stated as a bicomplex:
   \(\Omega_{\mathrm{loc}}^{p,q}\) carries \(d\) of bidegree \((1,0)\) and
@@ -211,3 +224,7 @@
   \((s,d)\) bicomplex, proved the local-functional relation between
   Wess--Zumino consistency and \(H^{1,4}(s\mid d)\), and derived the first two
   descent equations from \(sI_6=0\) and the algebraic Poincare lemma.
+- 2026-05-24 issue #254 pass: inserted the missing integrability derivation of
+  Wess--Zumino consistency from the gauge-algebra commutator acting on the
+  effective action, including the closure calculation on the background
+  connection and the differentiability/regulator qualification.
