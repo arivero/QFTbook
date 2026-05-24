@@ -330,6 +330,81 @@ the state in \(\tau\).  The state associated with \(\mathcal O\) is denoted
 \[
   \ket{\mathcal O}.
 \]
+
+\begin{construction}[cylinder sewing and Heisenberg operators]
+\label{constr:cylinder-sewing-heisenberg}
+Let
+\[
+  \Sigma_\tau=\{\tau\}\times S^{D-1}
+\]
+be a constant-cylinder-time slice, and write
+\[
+  H_{\rm cyl}=D_{\rm rad}
+\]
+for the nonnegative self-adjoint generator of translations in \(\tau\).
+For a cylinder local operator \(X(n)\) placed on the slice \(\Sigma_0\), its
+Euclidean Heisenberg translate is the operator on the common finite-energy
+domain
+\begin{equation}
+  X(\tau,n)=
+  \ee^{\tau H_{\rm cyl}}X(0,n)\ee^{-\tau H_{\rm cyl}} .
+  \label{eq:cylinder-heisenberg-operator}
+\end{equation}
+For separated insertions
+\[
+  \tau_+>\tau_1>\tau_2>\cdots>\tau_n>\tau_- ,
+\]
+and boundary states \(v_-\) on \(\Sigma_{\tau_-}\) and \(v_+\) on
+\(\Sigma_{\tau_+}\), the cylinder amplitude obtained by cutting along all
+intermediate slices is
+\begin{align}
+  &\mathcal A_{\tau_+,\tau_-}
+  (v_+;X_1,\ldots,X_n;v_-)
+  \nonumber\\
+  &\quad =
+  \left\langle
+    v_+,
+    \ee^{-(\tau_+-\tau_1)H_{\rm cyl}}
+    X_1(0,n_1)
+    \ee^{-(\tau_1-\tau_2)H_{\rm cyl}}
+    \cdots
+    X_n(0,n_n)
+    \ee^{-(\tau_n-\tau_-)H_{\rm cyl}}
+    v_-
+  \right\rangle .
+  \label{eq:cylinder-slab-sewing}
+\end{align}
+Equation \eqref{eq:cylinder-slab-sewing} is the Hilbert-space form of
+Euclidean sewing.  In a functional-integral presentation it is obtained by
+integrating over the boundary field data on each cut \(\Sigma_{\tau_j}\); in
+the radial reconstruction presentation it is the composition law for the
+positive-time semigroup on the null quotient.  The two descriptions give the
+same sesquilinear form because both are defined by the same Schwinger
+correlation hierarchy.
+
+Taking \(v_+=\vac\) and using
+\[
+  \bra{\vac}\ee^{-sH_{\rm cyl}}=\bra{\vac},
+  \qquad s\ge0,
+\]
+turns \eqref{eq:cylinder-slab-sewing} into the Euclidean Heisenberg matrix
+element
+\begin{equation}
+  \bra{\vac}
+  X_1(\tau_1,n_1)\cdots X_n(\tau_n,n_n)
+  \ket{v}
+  =
+  \mathcal A_{\tau_+,\tau_-}
+  \bigl(\vac;X_1,\ldots,X_n;\ee^{-\tau_-H_{\rm cyl}}v\bigr),
+  \label{eq:cylinder-sewing-heisenberg-matrix-element}
+\end{equation}
+for every finite-energy vector \(v\) and every lower cut
+\(\tau_-<\tau_n\).  The right side is independent of the auxiliary cuts after
+the boundary state is transported as displayed.  Thus the cylinder correlation
+function with a state prepared in the far past is computed by an ordered
+product of Heisenberg cylinder operators.
+\end{construction}
+
 \begin{theorem}[State--operator correspondence]
 \label{thm:state-operator-correspondence}
 Assume the radial reconstruction data of
@@ -374,11 +449,50 @@ construction of the wavefunctional on \(S_R^{D-1}\) identifies its norm with
 the radial two-point pairing; hence the map is isometric.  Dilatation
 covariance transports the state from radius \(R\) to the cylinder and places
 it in the finite-energy subspace by
-Hypothesis~\ref{hyp:radial-reconstruction-data}.  Cutting the cylinder along
-constant-\(\tau\) slices gives
-\eqref{eq:state-operator-correlation-formula}.  The additional asymptotic
-local-representative hypothesis gives surjectivity onto
-\(\mathcal H_{\rm fin}\); completion then gives the stated Hilbert-space
+Hypothesis~\ref{hyp:radial-reconstruction-data}.
+
+It remains to derive the correlation formula.  Put
+\[
+  X_j(0,n_j)=\widetilde{\mathcal O}_j(0,n_j),
+  \qquad
+  X_j(\tau_j,n_j)=
+  \widetilde{\mathcal O}_j(\tau_j,n_j),
+\]
+where the second equality is the Heisenberg translation
+\eqref{eq:cylinder-heisenberg-operator}.  Choose cuts
+\(\tau_+>\tau_1\) and \(\tau_-<\tau_n\).  By
+\eqref{eq:cylinder-sewing-heisenberg-matrix-element} with
+\(v=\ket{\mathcal O}_{\rm cyl}\),
+\[
+  \bra{\vac}
+  \widetilde{\mathcal O}_1(\tau_1,n_1)\cdots
+  \widetilde{\mathcal O}_n(\tau_n,n_n)
+  \ket{\mathcal O}_{\rm cyl}
+\]
+is the cylinder Schwinger functional on the punctured cylinder with:
+\begin{itemize}
+\item the incoming boundary state prepared by the local insertion
+  \(\mathcal O(0)\), transported to the lower cut;
+\item insertions \(X_n,\ldots,X_1\) placed in the slabs ordered by increasing
+  cylinder time; and
+\item the outgoing boundary projected to the vacuum by the limit
+  \(\tau_+\to+\infty\).
+\end{itemize}
+The vacuum projection exists because \(H_{\rm cyl}\ge0\) and the zero-energy
+subspace is \(\mathbb C\vac\).  The sewing identity is unchanged if the
+auxiliary cuts are moved without crossing an insertion.
+
+Finally apply the Weyl map \(x_j=\ee^{\tau_j}n_j\).  The operator definition
+\eqref{eq:scalar-cylinder-operator-map}, with the corresponding spin-frame
+factor for spinning operators, identifies the cylinder Schwinger functional
+at separated points with the flat-space radially ordered correlator.  Since
+\(\tau_1>\cdots>\tau_n\), radial ordering places
+\(\mathcal O_1(x_1),\ldots,\mathcal O_n(x_n)\) outside the origin insertion in
+the displayed order.  This gives
+\eqref{eq:state-operator-correlation-formula}.
+
+The additional asymptotic local-representative hypothesis gives surjectivity
+onto \(\mathcal H_{\rm fin}\); completion then gives the stated Hilbert-space
 isomorphism.
 \end{proof}
 

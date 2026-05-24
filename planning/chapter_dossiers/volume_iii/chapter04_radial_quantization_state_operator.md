@@ -21,6 +21,8 @@ The chapter establishes:
   scaling dimensions;
 - the explicit bridge between Hermitian Lorentzian generators and radial
   Euclidean generators;
+- the cylinder sewing identity on ordered constant-\(\tau\) slabs and its
+  Heisenberg-operator form;
 - the assumptions needed for discreteness, finite multiplicity, clustering,
   and reconstruction of local operators from radial states.
 
@@ -34,6 +36,10 @@ The chapter establishes:
    \(\tau=\log r\).
 4. \(\widehat D_{\rm rad}\) is the positive Euclidean cylinder Hamiltonian;
    Hermitian Lorentzian commutators differ by the stated analytic continuation.
+5. The state--operator correlation formula follows from explicit cylinder
+   sewing: insert constant-\(\tau\) cuts, compose the positive-time semigroup
+   through ordered slabs, project the outgoing boundary to the vacuum, and
+   apply the Weyl map to the punctured flat-space correlator.
 
 ## Figures
 
@@ -47,3 +53,6 @@ The chapter establishes:
 - State all reconstruction assumptions in labeled form.
 - Do not identify cylinder Hilbert-space statements with flat-space
   distributions without the radial reflection-positivity bridge.
+- The proof of the state--operator theorem must retain the slab-sewing
+  construction; the correlation formula is not to be treated as a formal
+  consequence of a drawing of the cylinder.
