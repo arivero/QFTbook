@@ -7,7 +7,9 @@ rendered-figure audit for the 253a pp. 52--62 free-scalar canonical block;
 tightened on 2026-05-23 so the canonical construction is explicitly separated
 from the regulated Lagrangian path-integral construction; tightened on
 2026-05-24 so the Lorentzian finite-regulator path-integral object is
-classified as oscillatory.
+classified as oscillatory; tightened on 2026-05-24 for issue #371 by spelling
+out the mostly-plus index-raising sign in the canonical momentum
+\(\Pi=\partial_t\phi\).
 
 ## Logical Role
 
@@ -65,6 +67,7 @@ Working framework:
 | \(\eta_{\mu\nu}\) | bilinear form | mostly-plus Minkowski metric |
 | \(\mathcal L\) | scalar density | Lagrangian density |
 | \(S[\phi]\) | functional | classical action |
+| \(\partial^\mu=\eta^{\mu\nu}\partial_\nu\) | raised derivative | mostly-plus index-raised derivative, with \(\partial^0=-\partial_0\) |
 | \(\Pi(t,\vec x)\) | field density | canonical momentum conjugate to \(\phi(t,\vec x)\) |
 | \(\mathcal H\) | density | Hamiltonian density |
 | \(\omega_{\vec k}\) | positive function | \(\sqrt{\vec k^2+m^2}\) |
@@ -98,6 +101,7 @@ Working framework:
 | The free scalar Euler-Lagrange equation is \((\partial^\mu\partial_\mu-m^2)\phi=0\). | Derived | Variation of the action |
 | Classical free solutions are supported on the mass shell \(k^2+m^2=0\). | Derived | Fourier transform of Klein-Gordon equation |
 | Cauchy data \(\phi(0,\vec x)\), \(\partial_t\phi(0,\vec x)\) determine the free solution. | Derived | Positive/negative frequency decomposition |
+| For the mostly-plus covariant Lagrangian, the free canonical momentum is \(\Pi=-\partial^0\phi=\partial_0\phi=\partial_t\phi\). | Derived | 2026-05-24 issue #371 index-raising pass |
 | The Lagrangian field path-integral symbol denotes a specified limit or asymptotic expansion of regulated integrals over \((\mathcal C_R,\dd\mu_R,S_R)\). | Framework statement | 2026-05-23 rigor pass |
 | With Lorentzian phase, a finite-regulator Lagrangian path-integral expression is an oscillatory integral/distribution; the quadratic case is a Fresnel integral with determinant magnitude and signature phase. | Definition/framework statement | 2026-05-24 issue #301 pass; expanded in Chapter 8 Definition `def:lorentzian-oscillatory-path-integral` |
 | Equal-time CCR determine the oscillator algebra once a mode normalization is fixed. | Derived | Fourier inversion |
