@@ -322,6 +322,71 @@ Then
   \mathcal W_{n,\pi}(z_{\pi(1)},\ldots,z_{\pi(n)}).
 \end{aligned}
 \]
+
+The same dictionary fixes the sign in source functionals.  Let
+\[
+  Z_L^{(+)}[J]
+  =
+  \bra{\vac}
+  \operatorname T\exp\left(
+    \ii\int_{\mathbb R^{1,D-1}}J(x)\widehat\phi(x)\,\dd^Dx
+  \right)
+  \ket{\vac}
+\]
+denote the Lorentzian source convention in which functional derivatives
+produce factors of \(\ii\).  Its opposite-source convention is
+\[
+  Z_L^{(-)}[J]=Z_L^{(+)}[-J].
+\]
+To compare with a Euclidean source one must specify the contour, because a
+real Euclidean test function and a real Lorentzian test function live on
+different real slices.  Let \(C_-\) be the imaginary-time contour
+\[
+  z^0=-\ii\tau,\qquad \dd z^0=-\ii\,\dd\tau,
+\]
+with the orientation inherited from increasing \(\tau\), and let \(J_C\) be a
+source density defined on this contour.  Term by term in the source expansion,
+or in a regulated theory where the contour-ordered source exponential is an
+operator-valued analytic function of the source, the source part of the
+exponent is
+\[
+  \ii\int_{C_-}\dd z^0\,\dd^d\vec x\,
+    J_C(z^0,\vec x)\widehat\phi(z^0,\vec x)
+  =
+  \int_{\mathbb R}\dd\tau\,\dd^d\vec x\,
+    J_C(-\ii\tau,\vec x)
+    \widehat\phi_E(\tau,\vec x).
+\]
+Thus the Euclidean convention
+\[
+  Z_E[J_E]
+  =
+  \bra{\vac}
+  T_E\exp\left(
+    \int J_E(\tau,\vec x)
+      \widehat\phi_E(\tau,\vec x)\,\dd\tau\,\dd^d\vec x
+  \right)
+  \ket{\vac}
+\]
+is the \(C_-\) boundary value of \(Z_L^{(+)}\) with
+\[
+  J_E(\tau,\vec x)=J_C(-\ii\tau,\vec x).
+\]
+No additional minus sign is produced in this convention; the factor
+\(\ii\) in the Lorentzian source and the Jacobian
+\(-\ii\) of the lower-half-plane Wick contour multiply to \(+1\).  If one
+instead rotates through the opposite contour \(C_+\), \(z^0=+\ii\tau\), then
+\(\dd z^0=\ii\,\dd\tau\) and the same Lorentzian convention gives
+\[
+  \ii\int_{C_+}\dd z^0\,J_C\widehat\phi
+  =
+  -\int\dd\tau\,J_C(\ii\tau)\widehat\phi_E .
+\]
+In that contour convention the Euclidean functional with
+\(+\int J_E\phi_E\) is represented by \(Z_L^{(+)}[-J_C]\), equivalently by
+\(Z_L^{(-)}[J_C]\), after setting \(J_E(\tau,\vec x)=-J_C(\ii\tau,\vec x)\).
+The two formulas describe different contour/source-sign conventions, not two
+different Green functions.
 Conversely, an OS-admissible Schwinger hierarchy reconstructs Wightman
 boundary values by the positive-time quotient and analytic-continuation
 theorem of Chapter~\ref{ch:volume-iv-osterwalder-schrader-reconstruction}.

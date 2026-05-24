@@ -64,6 +64,10 @@
 | \(\mathcal W_{n,\pi}\) | holomorphic continuation of the Wightman ordering \(\pi\) |
 | \(F_\pm\) | holomorphic tube functions in the distributional edge-of-the-wedge theorem |
 | \(S_n\) | Euclidean Schwinger \(n\)-point distribution |
+| \(Z_L^{(+)}[J]\) | Lorentzian source functional with source term \(+i\int J\phi\) |
+| \(Z_L^{(-)}[J]\) | opposite Lorentzian source convention \(Z_L^{(+)}[-J]\) |
+| \(C_-\) | lower-half-plane Wick contour \(z^0=-i\tau\) |
+| \(J_C\) | source density restricted to a complex-time contour |
 | \(\widetilde G(k)\) | Fourier transform of the two-point function |
 | \(\epsilon\) | positive infinitesimal defining Feynman boundary value |
 | \(\Sigma(k)\) | Lorentzian self-energy, first-sheet continuation of Euclidean \(\Sigma_E\) |
@@ -94,6 +98,15 @@
   restrictions of the same holomorphic functions under Wightman tube
   analyticity, while OS-admissible Schwinger data reconstructs Wightman
   boundary values by the reconstruction theorem.
+- The source-functional dictionary depends on the chosen Wick contour and
+  Lorentzian source sign.  For the manuscript's lower-half-plane convention
+  \(z^0=-i\tau\),
+  \(i\,dz^0=+d\tau\), so the Euclidean convention \(+\int J_E\phi_E\)
+  is the \(C_-\) boundary value of \(Z_L^{(+)}\) with
+  \(J_E(\tau,\vec x)=J_C(-i\tau,\vec x)\).  The common
+  \(Z_L^{(+)}[-J]\) form belongs instead to the opposite Wick contour
+  \(z^0=+i\tau\), or equivalently to the opposite Lorentzian source-sign
+  convention after relabelling the contour source.
 - The Lorentzian time-ordered two-point free propagator has denominator
   \(k^2+m^2-i\epsilon\) and poles at
   \(-\omega_{\vec k}+i0\) and \(+\omega_{\vec k}-i0\).
@@ -148,6 +161,14 @@
 
 - No definition of the S-matrix.
 - No LSZ formula.
+
+## Audit Notes
+
+- 2026-05-24 issue #385 pass: added the source-functional Wick-contour
+  dictionary in the boundary-value section.  The text now displays that the
+  lower-half-plane convention used throughout Volume I gives no extra minus
+  sign, while the \(Z_L[-J]\) statement is valid for the opposite contour or
+  opposite Lorentzian source-sign convention.
 - No interpretation of external legs as asymptotic particles.
 - No claim that Euclidean data reconstruct Lorentzian QFT without stating
   reconstruction hypotheses.
