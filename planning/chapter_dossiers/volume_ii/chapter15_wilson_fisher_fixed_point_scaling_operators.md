@@ -124,7 +124,9 @@ The chapter must define and derive:
 - the point-splitting interpretation of the properly renormalized
   \(\phi^2\) operator;
 - the equation-of-motion relation
-  \(\phi^3\propto \Box\phi\) and the descendant dimension
+  \(\phi^3\propto \Box\phi\), its classical normalization
+  \(\kappa_{\rm cl}=6/g_R\) when
+  \([\phi^3]_\mu=\kappa_*(\mu)\Box\phi\), and the descendant dimension
   \(\Delta_{\phi^3}=\Delta_\phi+2\);
 - the quartic operator anomalous dimension
   \(\gamma_{4*}=\beta'(\lambda_*)=\epsilon+O(\epsilon^2)\) and
@@ -185,7 +187,11 @@ The chapter must define and derive:
    unregulated products of distributions at coincident points are not
    definitions.
 11. \(\phi^3\) is an equation-of-motion descendant of \(\phi\) at the fixed
-   point.
+   point.  In the action normalization
+   \(g_R\phi^4/4!\), the classical proportionality coefficient in
+   \([\phi^3]_\mu=\kappa_*(\mu)\Box\phi\) is
+   \(\kappa_{\rm cl}=6/g_R(\mu)\); finite composite-operator conventions change
+   it by a relative \(1+O(g_R)\) factor.
 12. \(\phi^4\) is irrelevant at the interacting fixed point even though it is
    needed to reach that fixed point.
 13. A finite critical surface is an endpoint condition \(u(\mu_R)=0\) in a
@@ -311,3 +317,7 @@ The chapter must define and derive:
   `def:wilson-fisher-dimensional-regularization-status`, making the
   dimensional-regularization and formal-series status explicit at the top of
   the chapter.
+- 2026-05-24 issue #356 pass: normalized the equation-of-motion descendant
+  coefficient by adding \(\kappa_{\rm cl}=6/g_R(\mu)\) and the convention
+  dependence
+  \(\kappa_*(\mu)=6g_R(\mu)^{-1}(1+O(g_R(\mu)))=6/g_R(\mu)+O(1)\).
