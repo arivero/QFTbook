@@ -43,6 +43,9 @@ The chapter must define and derive:
 - the signed thermal scaling parameter \(\mathfrak m\), whose absolute value
   is the continuum inverse correlation length and whose sign records the
   high- or low-temperature side;
+- the distinction between this inverse-correlation-length gap and a spectral
+  pole mass, which additionally requires an isolated one-particle atom in the
+  reconstructed spectral measure;
 - the magnetic scaling coordinate and the restriction to zero magnetic
   deformation in the displayed scaling limit;
 - the critical \(\mathfrak m=0\) Ising fixed point and the assumptions under

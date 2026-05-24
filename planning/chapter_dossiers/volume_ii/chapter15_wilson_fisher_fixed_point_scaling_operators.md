@@ -30,6 +30,8 @@ The chapter must define and derive:
   \(\mathcal L_E=\frac12(\partial\phi)^2+\frac12m_0^2\phi^2
   +\frac1{4!}g_0\phi^4\);
 - the tuning of \(m_0^2\) as the condition for a massless infrared limit;
+- the reminder that \(m_0^2\) is a bare cutoff coordinate, not a spectral pole
+  mass;
 - the restriction to the \(\mathbb Z_2\)-even RG chart when odd sources are
   not introduced;
 - the dimensionless 1PI quartic coupling

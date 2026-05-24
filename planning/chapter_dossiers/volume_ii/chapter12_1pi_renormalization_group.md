@@ -43,6 +43,9 @@ The chapter must define:
 - the beta function as a differential comparison of renormalized coordinates;
 - the one-loop solution and Landau scale in four-dimensional scalar quartic
   theory, with perturbative domain stated;
+- the separation between the spectral pole mass \(m_*\), a finite-subtraction
+  mass coordinate \(m_R\), an MS/running relevant coordinate \(\lambda_2(\mu)\),
+  and a cutoff or lattice bare coordinate \(m_0^2\);
 - the rigorous triviality theorem for the standard four-dimensional positive
   lattice \(\lambda\phi^4\) and nearest-neighbor ferromagnetic Ising-type
   scaling-limit problems, separated from the perturbative Landau-scale
@@ -87,13 +90,18 @@ The chapter must define:
    side is the beta function in the chosen coordinate system.
 6. For \(\mu\gg m_R\), the one-loop scalar quartic beta function is
    \(3g^2/(16\pi^2)+O(g^3)\) in the conventions of the source notes.
-7. The integrated one-loop equation resums leading logarithms, with validity
+7. The pole mass is spectral data from an isolated Kallen--Lehmann atom.  The
+   finite mass coordinate \(m_R\), the running relevant coordinate
+   \(\lambda_2(\mu)\), and the bare cutoff coordinate \(m_0^2\) are related to
+   it only after the subtraction scheme, matching condition, and scaling-limit
+   spectral hypotheses have been specified.
+8. The integrated one-loop equation resums leading logarithms, with validity
    controlled by the smallness of the running coupling throughout the interval
    being compared.
-8. The one-loop scalar quartic flow has a perturbative Landau scale
+9. The one-loop scalar quartic flow has a perturbative Landau scale
    \(\mu_0=\mu'\exp(16\pi^2/(3g(\mu')))\); perturbation theory gives no
    controlled description at scales where the running coupling is large.
-8a. The standard reflection-positive four-dimensional lattice
+9a. The standard reflection-positive four-dimensional lattice
     \(\lambda\phi^4\) and nearest-neighbor ferromagnetic Ising-type critical
     or near-critical scaling limits covered by the Aizenman--Duminil-Copin
     theorem are Gaussian.  This is a nonperturbative
@@ -101,42 +109,42 @@ The chapter must define:
     Landau-scale equation, and it does not by itself rule out an exotic
     ultraviolet-complete local QFT agreeing with formal \(\phi^4_4\)
     perturbation theory to all orders.
-9. For a general local operator \(O_I\) with mass dimension \(d_I\), the
+10. For a general local operator \(O_I\) with mass dimension \(d_I\), the
    dimensionless coordinate \(\lambda_I(\mu)=\mu^{d_I-D}g_I(\mu)\) can have an
    autonomous beta function once explicit dimensionful ratios are encoded in
    the coordinate choice or treated as additional couplings.
-10. The quadratic derivative coordinate satisfies
+11. The quadratic derivative coordinate satisfies
     \(g_{2,2}(\mu)=1-Z(\mu)\) in the chapter's self-energy and projector
     convention; the mass coordinate is
     \(\lambda_2(\mu)=\mu^{-2}Z(\mu)
     [g_2^{\rm bare}-\Sigma(k)|_{k^2=\mu^2}]\).
-11. The Callan--Symanzik equation for noncoincident elementary-field
+12. The Callan--Symanzik equation for noncoincident elementary-field
     correlators follows from differentiating
     \(G_{0,\Lambda}^{(n)}=Z_\phi^{n/2}G_R^{(n)}\) at fixed bare data.
-12. Dimensional homogeneity is independent of the Callan--Symanzik equation;
+13. Dimensional homogeneity is independent of the Callan--Symanzik equation;
     combining the two gives the fixed-point field dimension
     \(d_\phi^{\rm eng}+\gamma_{\phi,\ast}\).
-13. The absence of explicit cutoff logarithms in beta functions imposes
+14. The absence of explicit cutoff logarithms in beta functions imposes
    relations among higher logarithmic coefficients; at the displayed order,
    \(c_1=-b_1^2\).
-14. A finite redefinition
+15. A finite redefinition
     \(\widetilde\lambda=f(\lambda)=\lambda+\alpha\lambda^2+\cdots\) transforms
     beta functions by the chain rule; for one classically marginal coupling,
     the first two perturbative coefficients are invariant while later
     coefficients depend on the scheme.
-15. If two schemes are finite analytic coordinate charts on the same regulated
+16. If two schemes are finite analytic coordinate charts on the same regulated
     path-integral action family, and if the same on-shell or infrared-safe
     observable has a perturbative cutoff-removal limit after the matching map,
     then the two perturbative expansions agree after applying that matching
     map.  Off-shell kernels, beta-function components, anomalous-dimension
     matrices, and coincident-point contact conventions are chart-dependent
     representatives, not themselves physical invariants.
-16. Perturbative beta functions and anomalous dimensions are generally formal
+17. Perturbative beta functions and anomalous dimensions are generally formal
     or asymptotic expansions in a specified chart.  Their coefficients may be
     meaningful and scheme-related even when the infinite series has zero radius
     of convergence.  Borel summability, when available, is a separate analytic
     theorem requiring hypotheses on the Borel transform and singularities.
-17. Renormalon statements must be made with an observable or coefficient
+18. Renormalon statements must be made with an observable or coefficient
     function, expansion coordinate, scheme, and factorization prescription
     specified; they should not be presented as properties of the beta function
     alone.  In controlled running-coupling or bubble-chain analyses, integration
@@ -177,6 +185,9 @@ The chapter must define:
   comparisons, with any limitations placed in remarks after the construction.
 - Scheme independence must be stated as a matched-observable theorem, not as
   equality at identical numerical coupling values in two schemes.
+- Do not identify \(m_R\), \(\lambda_2(\mu)\), or \(m_0^2\) with a physical
+  pole mass unless the pole equation or the scaling-limit spectral hypothesis
+  has been stated.
 - Do not identify a perturbative expansion with a convergent definition unless
   convergence or summability has actually been proved.
 - 2026-05-22 page-level source/figure audit complete.  Handwritten pages
@@ -197,3 +208,8 @@ The chapter must define:
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from
   broader UV-completion questions.
+- 2026-05-24 issue #234 pass: added the mass-data distinction.  The manuscript
+  now defines the spectral pole mass from an isolated Kallen--Lehmann atom,
+  separates it from finite-subtraction, MS/running, and lattice bare mass
+  coordinates, proves the pole equation in the 1PI convention, and records the
+  lattice correlation-length relation to the continuum gap.
