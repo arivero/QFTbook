@@ -80,6 +80,10 @@ state the relation among them.
 - Spectrum condition.
 - Massive spinless one-particle Hilbert space.
 - Bosonic and fermionic Fock spaces.
+- Bosonic decomposable tensor convention
+  \(\psi_1\odot\cdots\odot\psi_n=\sqrt{n!}\Pi_{s,n}
+  (\psi_1\otimes\cdots\otimes\psi_n)\), with the corresponding permutation-sum
+  inner product.
 - Covariant and noncovariant momentum-space creation/annihilation
   normalizations.
 - Formal interacting Hamiltonian as kernels added to the free Fock
@@ -96,6 +100,7 @@ state the relation among them.
 | Delta-normalization is the weak kernel of the identity relative to a chosen spectral or mass-shell measure. | Definition/construction | Established by the Gelfand triple/direct-integral discussion |
 | Massive spinless one-particle states are realized as \(L^2\) functions on the positive mass shell with invariant measure. | Construction | Derived from representation choice; external Wigner reference needed |
 | Fock space is constructed from one-particle Hilbert space by symmetric or antisymmetric tensor powers. | Definition/construction | Defined in chapter |
+| The bosonic symbol \(\odot\) denotes the creation-operator normalization \(\sqrt{n!}\Pi_{s,n}(\otimes_j\psi_j)\), so decomposable symmetric tensors have the permutation-sum inner product. | Convention | Added to make the Haag--Ruelle Fock inner product normalization explicit |
 | The noncovariant creation/annihilation normalization with \(\delta^{D-1}(\vec p-\vec q)\) is equivalent to the covariant mass-shell normalization. | Calculation/convention | Added from handwritten pp. 3--4 and checked in the chapter |
 | A formal \(H_0+H_{\mathrm{int}}\) written in Fock kernels is part of the interaction data only together with Poincare generators and locality. | Framework statement | Added from handwritten pp. 4--5 with positive formulation |
 | Local observable assignments are additional local data. | Framework statement | Definition of local QFT data |
@@ -113,6 +118,8 @@ state the relation among them.
 - Ensure the local algebra language is consistent with Chapter 1.
 - Completed: replaced the conclusion with a positive summary of constructed
   structures.
+- 2026-05-24 issue #368 pass: declared the \(\odot\) normalization for bosonic
+  decomposable Fock tensors and displayed the corresponding inner product.
 
 ## Figure Ledger
 

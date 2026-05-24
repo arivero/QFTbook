@@ -54,6 +54,7 @@
 | \(K(\vec x;T)\) | positive-energy Klein--Gordon propagation kernel for spacetime smearing |
 | \(Z_\phi\) | one-particle pole residue of the chosen scalar interpolating field |
 | \(\mathcal F_s(\Hilb_1)\) | bosonic Fock space over \(\Hilb_1\) |
+| \(\odot\) | decomposable symmetric tensor in the creation-operator normalization fixed in Volume I, Chapter 5 |
 | \(\Omega_{\mathrm{in/out}}\) | Haag--Ruelle wave operators |
 | \(\Omega_{{\rm in/out},t}^{\rm HR}\) | time-dependent Haag--Ruelle identification maps on the dense algebraic velocity-separated Fock domain |
 | \(\Hilb_{\mathrm{in/out}}\) | incoming/outgoing scattering subspaces |
@@ -101,7 +102,8 @@
 - The limits carry the bosonic Fock inner product and define isometric wave
   operators from free Fock space into the physical Hilbert space.
 - The Fock-space inner product is derived from the \(L^2\) mass-shell model by
-  the symmetrized product formula for decomposable wave functions.
+  the symmetrized product formula for decomposable wave functions, using the
+  \(\sqrt{n!}\Pi_{s,n}\) convention for \(\odot\).
 - The use of \(\mathcal F_s(\Hilb_1)\) is scoped to the scalar bosonic sector;
   the graded asymptotic Fock space for general spin/statistics is fixed by the
   spin-statistics theorem stated in the spinor chapter.
@@ -164,3 +166,6 @@
   Hilbert-norm vector convergence, strong convergence of approximating
   identification maps on the Fock domain, weak matrix-element convergence, and
   the absent operator-norm assertion.
+- 2026-05-24 issue #368 pass: cross-recorded that the Haag--Ruelle Fock inner
+  product uses the \(\odot\) normalization fixed at the first Fock-space
+  construction.

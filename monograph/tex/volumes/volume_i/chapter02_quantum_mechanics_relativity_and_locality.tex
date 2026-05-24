@@ -427,6 +427,42 @@ and the fermionic Fock space
   =
   \bigoplus_{n=0}^{\infty}\wedge^n\Hilb_1.
 \]
+The symmetric tensor powers use the creation-operator normalization.  Let
+\[
+  \Pi_{s,n}
+  =
+  \frac{1}{n!}
+  \sum_{\sigma\in S_n}U_\sigma
+\]
+be the orthogonal projection from \(\Hilb_1^{\otimes n}\) to its symmetric
+subspace, where
+\[
+  U_\sigma(\psi_1\otimes\cdots\otimes\psi_n)
+  =
+  \psi_{\sigma^{-1}(1)}\otimes\cdots\otimes\psi_{\sigma^{-1}(n)} .
+\]
+For \(\psi_1,\ldots,\psi_n\in\Hilb_1\) define
+\begin{equation}
+  \psi_1\odot\cdots\odot\psi_n
+  :=
+  \sqrt{n!}\,
+  \Pi_{s,n}(\psi_1\otimes\cdots\otimes\psi_n)
+  \in \operatorname{Sym}^n\Hilb_1 .
+  \label{eq:bosonic-fock-odot-normalization}
+\end{equation}
+With this convention
+\begin{equation}
+  \bigl\langle
+  \psi_1\odot\cdots\odot\psi_n,\,
+  \chi_1\odot\cdots\odot\chi_m
+  \bigr\rangle
+  =
+  \delta_{mn}
+  \sum_{\sigma\in S_n}
+  \prod_{j=1}^n
+  \langle\psi_j,\chi_{\sigma(j)}\rangle_{\Hilb_1}.
+  \label{eq:bosonic-fock-odot-inner-product}
+\end{equation}
 For the massive scalar one-particle space
 \(\Hilb_1=L^2(\Sigma_m^+,\dd\mu_m)\), identify the mass shell with
 \(\mathbb R^{D-1}\) by
