@@ -300,9 +300,80 @@ cylinder operator
   \label{eq:scalar-cylinder-operator-map}
 \end{equation}
 This is the ordinary Weyl transformation of a scalar primary under
-\(\dd s^2\mapsto r^{-2}\dd s^2\).  Operators with spin are transformed using
-the same Weyl factor together with the orthonormal-frame rotation induced by
-the coordinate change \(x^\mu=r n^\mu\).
+\(\dd s^2\mapsto r^{-2}\dd s^2\).
+
+The spin factor is the local orthonormal-frame rotation induced by the same
+map.  Work on a coordinate patch \(U\subset S^{D-1}\) with a smooth oriented
+orthonormal tangent frame
+\[
+  E_A^\mu(n),
+  \qquad
+  A=1,\ldots,D-1,
+  \qquad
+  n_\mu E_A^\mu(n)=0,
+  \qquad
+  E_A^\mu(n)E_{B\mu}(n)=\delta_{AB}.
+\]
+The cylinder metric is \(\widehat g=r^{-2}\delta_{\mu\nu}\dd x^\mu\dd x^\nu\).
+An orthonormal coframe for \(\widehat g\), pulled back to the punctured flat
+space, is
+\begin{equation}
+  \widehat e^{\hat\tau}{}_\mu(x)=r^{-1}n_\mu,
+  \qquad
+  \widehat e^{\hat A}{}_\mu(x)=r^{-1}E_A{}_\mu(n).
+  \label{eq:cylinder-local-orthonormal-coframe}
+\end{equation}
+Removing the common Weyl scale gives the \(SO(D)\) rotation from the flat
+Cartesian orthonormal frame to the cylinder orthonormal frame,
+\begin{equation}
+  R^{\hat a}{}_\mu(n)
+  :=
+  r\,\widehat e^{\hat a}{}_\mu(x),
+  \qquad
+  R^{\hat\tau}{}_\mu(n)=n_\mu,
+  \qquad
+  R^{\hat A}{}_\mu(n)=E_A{}_\mu(n),
+  \label{eq:cylinder-frame-rotation}
+\end{equation}
+so \(R^{\hat a}{}_\mu R^{\hat b\mu}=\delta^{\hat a\hat b}\).  On overlaps of
+two patches the frames \(E_A\) differ by an \(SO(D-1)\) rotation; the formulas
+below transform by the corresponding tensor or spin representation.
+
+For a covariant vector primary \(V_\mu(x)\) of dimension \(\Delta\), the
+cylinder orthonormal-frame components are
+\begin{equation}
+  \widetilde V_{\hat a}(\tau,n)
+  =
+  \ee^{\Delta\tau}
+  R_{\hat a}{}^\mu(n)\,
+  V_\mu(\ee^\tau n).
+  \label{eq:vector-cylinder-operator-map}
+\end{equation}
+Equivalently,
+\[
+  V_\mu(\ee^\tau n)
+  =
+  \ee^{-\Delta\tau}
+  R_\mu{}^{\hat a}(n)\,
+  \widetilde V_{\hat a}(\tau,n).
+\]
+The associated spin-one state map is obtained by inserting the flat operator at
+the origin:
+\begin{equation}
+  \ket{V_\mu}:=V_\mu(0)\ket{\vac},
+  \qquad
+  \lim_{\tau\to-\infty}
+  \ee^{-\Delta\tau}\,
+  \widetilde V_{\hat a}(\tau,n)\ket{\vac}
+  =
+  R_{\hat a}{}^\mu(n)\ket{V_\mu}.
+  \label{eq:vector-primary-state-map}
+\end{equation}
+The direction dependence in the last expression is exactly the rotation between
+the local cylinder frame at \(n\) and the fixed flat spin index at the origin.
+For a primary in a representation \(\rho\) of \(SO(D)\), replace
+\(R_{\hat a}{}^\mu\) in \eqref{eq:vector-cylinder-operator-map} by
+\(\rho(R(n))\).
 
 For a general renormalized local operator basis, the map can mix operators
 with the same quantum numbers when local counterterms are changed.  The

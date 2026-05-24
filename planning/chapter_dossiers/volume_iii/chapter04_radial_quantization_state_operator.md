@@ -17,6 +17,9 @@ The chapter establishes:
 - the positive semidefinite radial inner product, null quotient, and Hilbert
   completion;
 - the Weyl map \(\mathbb R^D\setminus\{0\}\simeq\mathbb R_\tau\times S^{D-1}\);
+- the local orthonormal-frame rotation for spinning operators under the Weyl
+  map, including the vector-primary construction
+  \(\widetilde V_{\hat a}=\ee^{\Delta\tau}R_{\hat a}{}^\mu V_\mu\);
 - the cylinder Hamiltonian \(\widehat D_{\rm rad}\) and its relation to
   scaling dimensions;
 - the explicit bridge between Hermitian Lorentzian generators and radial
@@ -44,6 +47,10 @@ The chapter establishes:
    sewing: insert constant-\(\tau\) cuts, compose the positive-time semigroup
    through ordered slabs, project the outgoing boundary to the vacuum, and
    apply the Weyl map to the punctured flat-space correlator.
+6. Spinning operators require a local frame on \(S^{D-1}\).  The manuscript
+   must keep the patchwise \(SO(D)\) rotation \(R^{\hat a}{}_\mu(n)\) separate
+   from the Weyl scale and must state the transition-function dependence on
+   overlaps.
 
 ## Figures
 
@@ -65,3 +72,6 @@ The chapter establishes:
   block.  The theorem now states the isometric isomorphism directly and proves
   extension to the full radial Hilbert space by density of finite-energy
   spectral projections.
+- 2026-05-24 issue #269 pass: added the patchwise cylinder coframe
+  \(\widehat e^{\hat a}{}_\mu\), the rotation \(R^{\hat a}{}_\mu\), the vector
+  primary cylinder map, and the corresponding spin-one state map.
