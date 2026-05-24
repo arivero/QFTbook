@@ -26,10 +26,10 @@ Lagrangian is
 This action is invariant under the \(\mathbb Z_2\) transformation
 \(\phi\mapsto-\phi\).  Unless an odd source is explicitly introduced, the
 renormalization-group chart used in this chapter is the \(\mathbb Z_2\)-even
-one.  This convention matters for the dimension of the critical surface:
+one.  This convention matters for the count of relevant tuning conditions:
 inside the even chart the mass perturbation is the relevant deformation that
-must be tuned, while in the full local theory space an odd source for \(\phi\)
-is also a relevant coordinate.
+must be tuned, while in the full local theory space an odd source for
+\(\phi\) is also a relevant coordinate.
 The quartic coupling \(g_0\) has mass dimension \(\epsilon\).  The mass
 parameter \(m_0^2\) must be tuned so that the infrared two-point function has
 no mass gap.  This tuning is an infrared condition: it is not guaranteed by
@@ -277,7 +277,7 @@ points outside the small-coupling neighborhood.
       \node[red!75!black] at (-1.05,1.05) {\(\beta^\epsilon<0\)};
       \node[blue!75!black] at (2.15,1.05) {\(\beta^\epsilon>0\)};
       \node[purple!80!black, align=center] at (0.35,-1.05)
-        {formal IR-attractive\\on the critical surface};
+        {formal IR-attractive\\on the massless endpoint set};
     \end{scope}
   \end{tikzpicture}
   }
@@ -285,8 +285,8 @@ points outside the small-coupling neighborhood.
   subtraction.  In the formal \(4-\epsilon\) perturbative vector field the
   classical term \(-\epsilon\lambda\) and the one-loop term
   \(3\lambda^2/(16\pi^2)\) balance at the nonzero zero \(\lambda_*\).  The
-  displayed one-dimensional flow is the perturbative flow on the massless
-  critical surface.}
+  displayed one-dimensional flow is the perturbative flow after the mass
+  endpoint condition has been imposed.}
   \label{fig:volume-ii-wilson-fisher-flow}
 \end{figure}
 
@@ -571,10 +571,15 @@ obeys, to linear order at the fixed point,
   -y_t\,\tau+O(\tau^2,\tau(\lambda-\lambda_*)).
 \]
 Thus \(\tau\) grows when \(\mu\) is lowered.  In the \(\mathbb Z_2\)-even
-chart, the critical surface is the codimension-one surface \(\tau=0\), with
-the quartic coordinate flowing to \(\lambda_*\) along it.  Choosing \(m_0^2\)
-so that the long-distance theory is massless is the microscopic way of placing
-the trajectory on this surface.
+finite chart and to linear order at the fixed point, the condition
+\(\tau=0\) is the codimension-one relevant-coordinate condition, with the
+quartic coordinate flowing to \(\lambda_*\) along it.  The corresponding
+nonlinear statement that the tuned set is a \(C^k\) codimension-one
+submanifold is Theorem~\ref{thm:finite-reference-critical-surface} applied
+to the \(\mathbb Z_2\)-even RG chart, after the endpoint map and its
+nondegeneracy have been established.  Choosing \(m_0^2\) so that the
+long-distance theory is massless is the microscopic way of imposing this
+endpoint condition.
 
 If the \(\mathbb Z_2\) symmetry is not imposed, an odd deformation
 \[
@@ -591,9 +596,11 @@ is present.  Its fixed-point eigenvalue is
   3-\frac{\epsilon}{2}+O(\epsilon^2),
 \]
 so \(h\) is also relevant.  The statement that the massless critical surface
-has codimension one is therefore a statement about the \(\mathbb Z_2\)-even
-subspace; in the local chart including \(h\), both \(h\) and \(t\) must be set
-to zero to reach the symmetric Wilson-Fisher fixed point.
+has one relevant tuning condition is therefore a statement about the
+\(\mathbb Z_2\)-even subspace; in the local chart including \(h\), both
+\(h\) and \(t\) must be set to zero to reach the symmetric Wilson-Fisher
+fixed point.  A codimension statement again uses the Banach-chart hypotheses
+of Theorem~\ref{thm:finite-reference-critical-surface}.
 
 Let a trajectory start at a reference scale \(\mu_0\) with small nonzero
 \(\tau_0=\tau(\mu_0)\).  Linearized running gives
@@ -649,9 +656,9 @@ the thermal scaling field \(\tau\); the exponent does not.
        \(\nu=1/y_t\)};
   \end{tikzpicture}
   }
-  \caption{In the \(\mathbb Z_2\)-even slice, the Wilson-Fisher fixed point is
-  reached by flowing along the massless critical surface.  The mass
-  perturbation is the relevant direction dual to \([O_2]\), with eigenvalue
+  \caption{In the \(\mathbb Z_2\)-even finite chart, the massless endpoint
+  condition removes the relevant thermal direction.  The mass perturbation is
+  the direction dual to \([O_2]\), with eigenvalue
   \(y_t=D-\Delta_{\phi^2}\).}
   \label{fig:volume-ii-wilson-fisher-critical-surface}
 \end{figure}
@@ -920,12 +927,14 @@ rows are data about the corresponding fixed points themselves; they are not
 deduced by substituting \(\epsilon=1\) or \(\epsilon=2\) into the first-order
 series.  More generally, the Wilson--Fisher epsilon expansion is an asymptotic
 small-\(\epsilon\) expansion unless an additional summability theorem is
-specified.  Its higher coefficients are expected, and in related
-large-order analyses are found, to grow factorially.  Consequently a finite
-number of terms should be read as asymptotic information about the fixed point
-near four dimensions.  Extracting accurate \(d=3\) numbers from the epsilon
-series requires an extra resummation prescription, typically a Borel or
-conformal-Borel method with assumptions about singularities of the Borel
+specified.  Large-order analyses of related perturbative \(\phi^4\) series
+exhibit factorial coefficient growth, and no summability theorem is being
+assumed here for the displayed epsilon series.  Consequently a finite number
+of terms should be read as asymptotic information about the fixed point near
+four dimensions.  Extracting accurate \(d=3\) numbers from the epsilon series
+requires an extra resummation prescription, for example a Borel or
+conformal-Borel method together with assumptions about singularities of the
+Borel
 transform; it is not the same operation as evaluating a convergent Taylor
 series at \(\epsilon=1\).  The exact \(d=2\) entries in the table come from the
 two-dimensional Ising CFT, not from perturbative continuation of the
@@ -994,6 +1003,15 @@ If the theory is restricted by a symmetry, only relevant coordinates
 compatible with that symmetry are included in \(u\).
 \end{definition}
 
+This definition is set-theoretic.  Its promotion to a \(C^k\) submanifold
+statement is precisely the content of
+Theorem~\ref{thm:finite-reference-critical-surface}: one must specify a
+Banach or finite-dimensional RG chart, prove that the endpoint map is \(C^k\),
+and prove that its derivative in the relevant directions is invertible.  The
+linearized eigenvalue calculation identifies the candidate relevant
+coordinates; it does not by itself prove smoothness or codimension of the
+nonlinear tuned set.
+
 At linear order between a microscopic cutoff \(\Lambda_0\) and a reference
 scale \(\mu_R<\Lambda_0\), equation
 \eqref{eq:critical-scaling-coordinate-linear-flow} gives
@@ -1022,8 +1040,9 @@ the leading relevant coordinate is the thermal coordinate dual to
 \([O_2]\), with \(y_t=D-\Delta_{\phi^2}\).  In the full scalar chart the odd
 coordinate dual to \(\phi\) is also relevant, with
 \(y_h=D-\Delta_\phi\).  The phrase ``codimension-one critical surface'' will
-therefore mean the \(\mathbb Z_2\)-even chart unless the magnetic coordinate
-has been included and separately tuned.
+therefore mean the \(\mathbb Z_2\)-even chart and the finite-reference
+submanifold theorem above, unless the magnetic coordinate has been included
+and separately tuned.
 
 Chapter~\ref{ch:ising-universality} applies this fixed-point data to the
 statistical Ising model.  The coarse-grained Ising variables determine which

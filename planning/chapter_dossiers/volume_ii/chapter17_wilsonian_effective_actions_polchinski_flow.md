@@ -58,6 +58,13 @@ The chapter must define and derive:
 - the linearized scaling-coordinate convention
   \(\dd u_\alpha/\dd\log\Lambda=-y_\alpha u_\alpha+\cdots\), with
   \(y_\alpha=D-\Delta_\alpha\);
+- the fact that a codimension statement about a critical surface requires a
+  specified \(C^k\) Banach RG chart and a differentiable endpoint map, not
+  merely the linearized eigenvalue calculation;
+- the finite-reference critical-surface theorem: if the relevant-coordinate
+  endpoint map is \(C^k\) and its derivative in the relevant block is
+  invertible, its zero set is a \(C^k\) embedded Banach submanifold of
+  codimension equal to the number of relevant coordinates;
 - the \(D=4\) massless scalar toy truncation
   \(L_\Lambda=\int(g_4\phi^4+g_6\phi^6)\), with
   \(\lambda_4=g_4\), \(\lambda_6=\Lambda^2g_6\);
@@ -147,6 +154,11 @@ The chapter must define and derive:
 7. With \(t=\log\Lambda\), relevance exponents obey
    \(\dd u/\dd t=-yu+\cdots\); positive \(y\) grows toward the infrared, while
    negative \(y\) is irrelevant.
+7a. A smooth codimension statement about a critical surface is certified only
+    after choosing a \(C^k\) Banach or finite-dimensional RG chart and proving
+    the endpoint-map submersion condition.  Linearized relevant eigenvalues
+    identify the candidate tuning directions; they do not prove nonlinear
+    manifold structure.
 8. In the quartic-sextic toy truncation, the irrelevant coupling approaches a
    cutoff-dependent function of the marginal coupling along IR flow; the
    transverse memory of the ultraviolet boundary condition is suppressed by
@@ -260,3 +272,9 @@ The chapter must define and derive:
   what Polchinski, Salmhofer, and Brydges--Kennedy type estimates actually
   provide, and separates constructive \(\phi^4_2/\phi^4_3\) existence from
   four-dimensional scalar triviality.
+- 2026-05-24 issue pass: addressed #230 by adding the Banach RG chart
+  definition and finite-reference critical-surface theorem.  The theorem uses
+  the Banach-space implicit function theorem to promote the tuned endpoint set
+  to a \(C^k\) codimension-\(r\) submanifold only under an explicit endpoint
+  submersion hypothesis; the text now distinguishes this from the bare
+  linearized eigenvalue count.

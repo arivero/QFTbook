@@ -41,7 +41,7 @@ The chapter must define and derive:
   (3/(16\pi^2)+O(\epsilon))\lambda^2+O(\lambda^3)\);
 - the fixed point
   \(\lambda_*=16\pi^2\epsilon/3+O(\epsilon^2)\) and its IR attractiveness
-  for decreasing \(\mu\) along the massless critical surface;
+  for decreasing \(\mu\) after the massless endpoint condition is imposed;
 - the formal status of \(\lambda_*(\epsilon)\): the perturbative calculation
   recursively determines coefficients of a formal small-\(\epsilon\) series
   for a zero of the beta vector field, not by itself an honest
@@ -72,14 +72,15 @@ The chapter must define and derive:
   \(y_t=D-\Delta_{\phi^2}=2-\epsilon/3+O(\epsilon^2)\);
 - the dimensionless mass/temperature coordinate
   \(\tau(\mu)=\mu^{-y_t}t\), its linearized flow
-  \(\dd\tau/\dd\log\mu=-y_t\tau+\cdots\), and the critical surface
-  \(\tau=0\);
+  \(\dd\tau/\dd\log\mu=-y_t\tau+\cdots\), and the linearized massless
+  endpoint condition \(\tau=0\);
 - the correlation-length exponent
   \(\nu=1/y_t=1/2+\epsilon/12+O(\epsilon^2)\);
 - the odd source \(h[\phi]\) and its eigenvalue
   \(y_h=D-\Delta_\phi=3-\epsilon/2+O(\epsilon^2)\), explaining that the
-  codimension-one critical surface is a statement inside the
-  \(\mathbb Z_2\)-even subspace;
+  one-tuning-condition statement is inside the \(\mathbb Z_2\)-even subspace,
+  while a codimension-one submanifold statement requires the Banach-chart
+  endpoint theorem from the Wilsonian chapter;
 - the scaling of two-point functions in momentum and position space;
 - the point-splitting interpretation of the properly renormalized
   \(\phi^2\) operator;
@@ -99,7 +100,9 @@ The chapter must define and derive:
   field, its linearization at the fixed point, relevant eigenvalues
   \(y_A=D-\Delta_A\), irrelevant eigenvalues
   \(\omega_\rho=\Delta_\rho-D\), and the endpoint-map definition of the
-  critical surface.
+  critical surface, with a cross-reference to the finite-reference
+  critical-surface theorem that supplies smooth codimension only under an
+  explicit endpoint-map submersion hypothesis.
 
 ## Claim Ledger
 
@@ -116,8 +119,10 @@ The chapter must define and derive:
    classification of fixed points in scalar, gauge, or product theory spaces.
 4. The fixed point is attractive in the infrared along the quartic direction.
 5. The mass parameter must be tuned separately; inside the
-   \(\mathbb Z_2\)-even subspace the fixed point is reached on the massless
-   critical surface.
+   \(\mathbb Z_2\)-even subspace the fixed point is reached by imposing the
+   massless endpoint condition.  Calling the tuned set a codimension-one
+   submanifold requires the Banach-chart theorem and its endpoint-map
+   nondegeneracy hypothesis.
 6. Operator dimensions at the fixed point come from the same renormalized
    operator construction as before.
 7. The \(\phi^2\) source must carry momentum to avoid an infrared-singular
@@ -136,8 +141,9 @@ The chapter must define and derive:
 12. \(\phi^4\) is irrelevant at the interacting fixed point even though it is
    needed to reach that fixed point.
 13. A finite critical surface is an endpoint condition \(u(\mu_R)=0\) in a
-    local RG chart, with the codimension determined by the relevant
-    coordinates allowed by the imposed symmetry.
+    local RG chart.  Its codimension is a theorem only when the endpoint map
+    is \(C^k\) and submersive in the relevant coordinates; the linearized
+    eigenvalue count alone is not that theorem.
 14. The epsilon expansion is a small-\(\epsilon\) asymptotic expansion unless a
     stronger summability result is stated.  The \(d=3\) and \(d=2\) entries in
     the dimension table are not obtained by evaluating a convergent Taylor
@@ -185,9 +191,9 @@ The chapter must define and derive:
 - Do not present composite operators as unregulated products of fields.
 - Do not describe the Wilson-Fisher fixed point as an attractor for arbitrary
   massive scalar theories; the mass direction must be tuned away.
-- When saying the critical surface has codimension one, state the
-  \(\mathbb Z_2\)-even restriction; the odd field source is relevant in the
-  full local chart.
+- When saying the critical surface has codimension one, state both the
+  \(\mathbb Z_2\)-even restriction and the Banach-chart endpoint-map
+  hypotheses; the odd field source is relevant in the full local chart.
 - Keep the Ising model itself for the next chapter.
 - No reader-facing source-page references or course-note references.
 - 2026-05-22 local-RG-chart pass: added a section making scaling coordinates
@@ -207,3 +213,8 @@ The chapter must define and derive:
 - 2026-05-24 issue pass: addressed #228 by adding the local uniqueness
   argument for the one-component \(\mathbb Z_2\)-even quartic branch and by
   separating it from other fixed-point problems.
+- 2026-05-24 issue pass: addressed #230 by replacing unqualified
+  codimension-one critical-surface language with a linearized endpoint
+  condition plus a cross-reference to the Banach-chart finite-reference
+  critical-surface theorem.  The dossier now records that smoothness and
+  codimension require a \(C^k\) endpoint map and submersion hypothesis.

@@ -490,20 +490,99 @@ The number \(y_\alpha\) is the relevance exponent.  In the convention
   +O(u^2).
 \]
 A coordinate with \(y_\alpha>0\) grows when \(\Lambda\) is lowered.  It is a
-relevant coordinate and must be tuned to reach the critical surface, or fixed
-by a renormalization condition when a continuum limit is constructed.  A
-coordinate with \(y_\alpha<0\) is irrelevant: its value at a fixed physical
-scale is attracted to a function of the relevant and marginal coordinates
-along a renormalized trajectory.
+relevant coordinate and must be fixed by a renormalization condition, or
+tuned to zero when one asks for an infrared trajectory ending at the fixed
+point.  A coordinate with \(y_\alpha<0\) is irrelevant: its value at a fixed
+physical scale is attracted to a function of the relevant and marginal
+coordinates along a renormalized trajectory, provided the nonlinear
+cutoff-removal estimates stated below hold.
 
-The critical surface associated with a fixed point is the set of points whose
-infrared flow approaches that fixed point.  Its codimension equals the number
-of relevant directions, after quotienting redundant field redefinitions and
-symmetry directions.  This is the Wilsonian meaning of tuning.  A statistical
-system at a continuous transition is obtained by tuning the relevant
-coordinates to the critical surface; a continuum QFT near the fixed point is
-obtained by holding the relevant physical coordinates fixed while the
-ultraviolet cutoff is removed.
+A theorem-level codimension statement about a critical surface requires a
+smooth local model of theory space and a differentiable RG endpoint map.  The
+eigenvalue calculation supplies the candidate relevant tuning directions; the
+local smoothness and codimension assertion used in this volume is the
+following.
+
+\begin{definition}[Banach RG chart]
+Fix an integer \(k\geq1\).  A \(C^k\) Banach RG chart near a fixed point is a
+triple \((\mathfrak U,\psi,\Phi_s)\) with the following data.  The set
+\(\mathfrak U\) is an open neighborhood of the fixed point in a \(C^k\)
+Banach manifold \(\mathfrak T\) of regulated Wilsonian actions, modulo the
+redundant field redefinitions and symmetry identifications already fixed in
+the chart.  The chart map
+\[
+  \psi:\mathfrak U\longrightarrow X
+\]
+takes values in a Banach space \(X\), and
+\[
+  X=X_{\rm rel}\oplus X_{\rm rest}
+\]
+is a topological direct sum with finite-dimensional relevant block
+\(X_{\rm rel}\cong\mathbb R^r\).  The maps \(\Phi_s\), \(s\geq0\), are the
+local RG maps from the ultraviolet scale to a lower scale, with
+\(s=\log(\Lambda_0/\Lambda)\), and are \(C^k\) wherever the trajectory stays
+inside \(\mathfrak U\).  In coordinates write
+\[
+  \varphi_s=\psi\circ\Phi_s\circ\psi^{-1},
+  \qquad
+  \pi_{\rm rel}:X_{\rm rel}\oplus X_{\rm rest}\to X_{\rm rel}
+\]
+for the coordinate RG map and relevant projection.
+\end{definition}
+
+\begin{theorem}[Finite-reference critical surface]
+\label{thm:finite-reference-critical-surface}
+Let \((\mathfrak U,\psi,\Phi_s)\) be a \(C^k\) Banach RG chart and fix a
+finite RG time \(s_R=\log(\Lambda_0/\Lambda_R)>0\).  Let
+\[
+  E_{s_R}(z)=\pi_{\rm rel}\bigl(\varphi_{s_R}(z)\bigr),
+  \qquad
+  z=(u,w)\in X_{\rm rel}\oplus X_{\rm rest},
+\]
+be the endpoint map that extracts the relevant coordinates at the reference
+scale \(\Lambda_R\).  Suppose \(E_{s_R}\) is defined and \(C^k\) on an open
+neighborhood of a point \(z_*\), that \(E_{s_R}(z_*)=0\), and that the
+partial derivative
+\[
+  D_uE_{s_R}(z_*):X_{\rm rel}\longrightarrow X_{\rm rel}
+\]
+is an isomorphism.  Then, after possibly shrinking the neighborhood of
+\(z_*\), the set
+\[
+  \mathcal C_{s_R}=\{z:E_{s_R}(z)=0\}
+\]
+is a \(C^k\) embedded Banach submanifold of codimension \(r\).  In the chosen
+coordinates it is the graph
+\[
+  u=G_{s_R}(w)
+\]
+for a \(C^k\) map \(G_{s_R}\) defined on an open subset of \(X_{\rm rest}\).
+\end{theorem}
+
+\begin{proof}
+The hypotheses make \(E_{s_R}(u,w)=0\) an equation in the finite-dimensional
+relevant block \(X_{\rm rel}\), with \(C^k\) dependence on the remaining
+Banach variable \(w\).  Since \(D_uE_{s_R}(z_*)\) is invertible, the
+Banach-space implicit function theorem gives a neighborhood of \(z_*\) and a
+unique \(C^k\) map \(G_{s_R}\) such that
+\[
+  E_{s_R}(u,w)=0
+  \quad\Longleftrightarrow\quad
+  u=G_{s_R}(w)
+\]
+inside that neighborhood.  A graph over the closed complemented subspace
+\(X_{\rm rest}\) is an embedded \(C^k\) Banach submanifold, and its
+codimension is \(\dim X_{\rm rel}=r\).
+\end{proof}
+
+The theorem is a finite-reference statement.  The infinite-time critical
+surface consisting of trajectories that remain in the fixed-point
+neighborhood and converge to the fixed point as \(\Lambda\to0\) requires a
+stable- or center-stable-manifold theorem for the chosen Banach RG flow, with
+the corresponding spectral-gap, smoothness, and existence hypotheses.  The
+monograph will not use the phrase ``codimension \(r\) critical surface'' as a
+theorem-level assertion unless the local chart, endpoint map, and
+invertibility or stable-manifold hypotheses have been stated.
 
 The scaling dimension of the local operator conjugate to \(u_\alpha\) is
 \[
@@ -555,9 +634,10 @@ operator normalizations fixed as part of the coordinate choice.
 \section{Renormalized Trajectories and Universality}
 
 Let \(u_r\) denote the relevant coordinates and \(u_i\) the irrelevant
-coordinates near a fixed point.  A renormalized trajectory is a submanifold of
-theory space on which the irrelevant coordinates are functions of the relevant
-ones:
+coordinates near a fixed point.  In a Banach RG chart where the necessary graph
+estimates have been proved, a renormalized trajectory is represented by a
+submanifold of theory space on which the irrelevant coordinates are functions
+of the relevant ones:
 \[
   u_i=F_i(u_r).
 \]
