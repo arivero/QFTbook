@@ -380,11 +380,17 @@ boundary values or analytic continuations of the same positive spectral data.
 
 The Euclidean momentum-space two-point function contains the same information
 in a form that is often the most robust for constructive and lattice
-arguments.  Set
+arguments.  In this section \(z\) denotes the complex continuation of the
+Euclidean invariant \(Q^2\).  On the physical Euclidean axis set
 \[
   Q^2=k_E^2\ge0 .
 \]
-After Fourier transform,
+If the spectral measure obeys the Stieltjes integrability condition
+\begin{equation}
+  \int_{[0,\infty)}\frac{\dd\rho(s)}{1+s}<\infty ,
+  \label{eq:stieltjes-integrability-condition}
+\end{equation}
+then, after Fourier transform,
 \begin{equation}
   \widetilde G_E(Q^2)
   =
@@ -392,8 +398,30 @@ After Fourier transform,
   \frac{\dd\rho(s)}{Q^2+s}.
   \label{eq:euclidean-stieltjes-propagator}
 \end{equation}
-Thus \(\widetilde G_E\) is a Stieltjes transform of a positive measure.
-Consequently, wherever the derivatives exist,
+Equation~\eqref{eq:stieltjes-integrability-condition} is automatic if
+\(\rho([0,\infty))<\infty\), as in the canonically normalized elementary scalar
+case discussed below.  It is not automatic for arbitrary local composite
+operators; for them the two-point function may require subtractions, and
+polynomial ambiguities in \(Q^2\) are precisely the momentum-space form of
+contact terms at coincident Euclidean points.
+
+Under \eqref{eq:stieltjes-integrability-condition}, \(\widetilde G_E\) is a
+Stieltjes transform of a positive measure.  More precisely,
+\[
+  F(z)=\int_{[0,\infty)}\frac{\dd\rho(s)}{z+s}
+\]
+converges absolutely and uniformly on compact subsets of
+\(\mathbb C\setminus(-\infty,0]\): for every compact
+\(K\subset\mathbb C\setminus(-\infty,0]\) there is \(c_K>0\) such that
+\(|z+s|\ge c_K(1+s)\) for \(z\in K\) and \(s\ge0\).  Dominated convergence
+then permits differentiation under the integral sign, so \(F\) is holomorphic
+on this cut plane and its restriction to \(z=Q^2>0\) is the Euclidean function in
+\eqref{eq:euclidean-stieltjes-propagator}.  The endpoint \(z=0\) is part of
+the cut if the spectrum has support arbitrarily near \(s=0\); no continuation
+through that endpoint is being assumed.  If the spectral support begins at a
+positive mass gap \(s=m_0^2>0\), the cut instead begins at \(z=-m_0^2\), and
+the function is analytic in a neighborhood of \(z=0\).
+Consequently, for every \(Q^2>0\),
 \[
   (-1)^r
   \frac{\dd^r}{\dd (Q^2)^r}\widetilde G_E(Q^2)
@@ -406,13 +434,11 @@ Consequently, wherever the derivatives exist,
 These inequalities are not perturbative statements.  They are Hilbert-space
 positivity written in Euclidean momentum variables.
 
-The measure can be recovered from the discontinuity of the analytic function
-\[
-  z\longmapsto
-  \int_{[0,\infty)}\frac{\dd\rho(s)}{z+s}
-\]
-across its cut on the negative real \(z\)-axis.  If the absolutely continuous
-part has density \(\rho_{\rm ac}(s)\), then
+The measure can be recovered from the discontinuity across the negative real
+\(z\)-axis.  The continuation is performed by treating \(z\) as a complex
+variable on the cut plane and approaching the point \(z=-s\) from the two
+sides of the cut.  If the absolutely continuous part has density
+\(\rho_{\rm ac}(s)\), then
 \[
   \rho_{\rm ac}(s)
   =
@@ -424,6 +450,26 @@ with atoms appearing as simple poles at \(z=-s_0\) of positive residue.  This
 is the Euclidean form of the statement that stable particles are isolated
 positive atoms of the spectral measure and multiparticle states are continuous
 spectral support.
+
+For a more singular local field, the spectral measure may have only tempered
+growth, by which we mean here that there is an integer \(N\ge0\) such that
+\[
+  \int_{[0,\infty)}\frac{\dd\rho(s)}{(1+s)^{N+1}}<\infty .
+\]
+The unsubtracted Stieltjes integral need not define an ordinary function.  The
+nonlocal part of the Euclidean momentum-space distribution is nevertheless
+characterized by its \((N+1)\)-st derivative,
+\[
+  F^{(N+1)}(z)
+  =
+  (-1)^{N+1}(N+1)!
+  \int_{[0,\infty)}\frac{\dd\rho(s)}{(z+s)^{N+2}} .
+\]
+The right-hand side is holomorphic on the same cut plane.  Integrating this
+equation back determines a representative \(F(z)\) only up to a polynomial of
+degree \(N\), which is exactly the freedom to add contact terms.  The
+discontinuity across the cut, and therefore the spectral measure away from
+contact terms, is unaffected by this polynomial ambiguity.
 
 \section{Canonical Normalization and Spectral Weight}
 
