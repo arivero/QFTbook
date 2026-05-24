@@ -23,6 +23,10 @@
     for antifields, local BRST cohomology, and counterterm/anomaly roles;
   - `references/sound_references/fredenhagen_rejzner_paqft_1208.1428.txt`
     for BV as a functional and perturbative algebraic framework.
+  - Khudaverdian's semidensity construction on odd symplectic supermanifolds
+    and Schwarz's geometric BV quantization for the finite-dimensional
+    theorem boundary behind the canonical half-density operator, restriction
+    to Lagrangian submanifolds, and BV Stokes theorem.
 - These references are used as boundary checks.  The chapter itself gives the
   definitions, master-equation nilpotency proof, gauge-fixing construction,
   and finite-dimensional BV pushforward argument.
@@ -35,8 +39,10 @@
 - Antifields \(\Phi^*_A\) have opposite parity and ghost number
   \(-1-\operatorname{gh}(\Phi^A)\).
 - Local functionals are understood modulo total derivatives when integrated.
-- BV Laplacian and quantum master equation require a chosen regulator and
-  measure.
+- BV Laplacian and quantum master equation require a chosen finite-regulator
+  odd symplectic space and a normal reference half-density \(\sigma_0\);
+  the induced function Laplacian \(\Delta_{\sigma_0}\) is a divergence
+  operator only after this datum has been fixed.
 - Yang--Mills is treated as the off-shell closed model case.  Open algebras
   and reducible symmetries are described in condensed field-space notation to
   display the additional antifield-number terms required by the master
@@ -57,7 +63,11 @@
 | \(S_{\rm nm}\) | nonminimal contractible-pair BV action |
 | \(\Psi\) | gauge-fixing fermion |
 | \(\mathcal L_\Psi\) | gauge-fixing Lagrangian submanifold |
-| \(\Delta_{\rm BV}\) | regulator-dependent BV Laplacian |
+| \(\iota_\Psi\) | embedding of the gauge-fixing Lagrangian submanifold |
+| \(\sigma_0\) | normal reference BV half-density |
+| \(\Delta_{1/2}\) | canonical BV operator on half-densities |
+| \(\Delta_{\sigma_0}\) | divergence operator on functions induced by \(\sigma_0\) |
+| \(D_{\sigma_0,\Psi}\Phi\) | density on \(\mathcal L_\Psi\) obtained by restricting \(\sigma_0\) |
 | \(S_\Lambda\) | Wilsonian BV action at cutoff \(\Lambda\) |
 | \(R^i{}_\alpha\) | gauge generator in condensed field-space notation |
 | \(E_i\) | Euler--Lagrange derivative \(\delta S_0/\delta\Phi^i\) |
@@ -87,10 +97,18 @@
 - The nonminimal sector \((\bar c,B)\) and gauge-fixing fermion reproduce the
   Faddeev--Popov gauge-fixed action by restriction to a Lagrangian
   submanifold.
-- The quantum master equation is the regulated statement
-  \(\Delta_{\rm BV}\exp(\ii S/\hbar)=0\).
+- A half-density on the odd symplectic BV space restricts canonically to a
+  Berezin density on every gauge-fixing Lagrangian submanifold; this is the
+  precise finite-regulator meaning of the BV integration measure.
+- The canonical Khudaverdian BV operator \(\Delta_{1/2}\) acts on
+  half-densities; a normal reference half-density \(\sigma_0\) induces the
+  function operator \(\Delta_{\sigma_0}\) used in the quantum master equation.
+- The quantum master equation is the regulated half-density statement
+  \(\Delta_{1/2}(\exp(\ii S/\hbar)\sigma_0)=0\), equivalently
+  \(\frac12(S,S)-\ii\hbar\Delta_{\sigma_0}S=0\) for normal \(\sigma_0\).
 - The 1PI effective action satisfies \(\frac12(\Gamma,\Gamma)=0\) when the
-  regularized measure and action obey the quantum master equation.
+  regularized half-density integrand and action obey the quantum master
+  equation.
 - The chapter now points back to
   `thm:all-order-slavnov-taylor-restoration`, identifying it as the
   gauge-fixed Yang--Mills form of the perturbative BV master-equation
@@ -121,3 +139,9 @@
 - 2026-05-24 issue #267 pass: added an explicit cross-reference from the 1PI
   master equation to the all-order Slavnov--Taylor restoration theorem in the
   preceding BRST chapter.
+- 2026-05-24 issue #311 pass: inserted the finite-dimensional half-density
+  framework for the BV integration measure, defined the canonical
+  \(\Delta_{1/2}\), the normal datum \(\sigma_0\), the induced divergence
+  operator \(\Delta_{\sigma_0}\), the restriction
+  \(D_{\sigma_0,\Psi}\Phi=\iota_\Psi^*\sigma_0\), and rewrote the 1PI and
+  Wilsonian BV integrals in semidensity form.

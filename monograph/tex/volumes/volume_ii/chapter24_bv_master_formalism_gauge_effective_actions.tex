@@ -504,14 +504,70 @@ master equation is preserved.
   \label{fig:bv-field-antifield-master-map}
 \end{figure}
 
-\section{The Quantum Master Equation}
+\section{Half-Densities and the BV Integration Measure}
+\label{sec:bv-half-densities-measure}
 
-The classical master equation controls the algebra of gauge symmetry.  The
-quantum functional integral also depends on a measure.  In a finite-dimensional
-odd symplectic regulator with coordinates \(\Phi^A,\Phi^*_A\), the BV
-Laplacian is
+The phrase ``the BV measure'' has a precise finite-dimensional meaning.  Let
+\(\mathcal E\) be the finite-dimensional supermanifold of fields and
+antifields at a fixed regulator, equipped with the odd symplectic form
+\[
+  \omega
+  =
+  \delta\Phi^*_A\,\delta\Phi^A
+\]
+in Darboux coordinates.  A density on a supermanifold is a section of the
+Berezinian line \(\operatorname{Ber}(\mathcal E)\).  A half-density is a
+section of \(\operatorname{Ber}(\mathcal E)^{1/2}\).  In a coordinate system
+\(z^I=(\Phi^A,\Phi^*_A)\), a half-density is written
+\[
+  \sigma=f(z)\,|Dz|^{1/2},
+\]
+where \(f\) transforms by the square root of the Berezinian of the coordinate
+change.  This transformation law is exactly what makes the restriction of
+\(\sigma\) to a Lagrangian submanifold into an ordinary Berezin density on
+that submanifold.
+
+\begin{definition}[Canonical BV operator on half-densities]
+\label{def:canonical-bv-half-density-operator}
+On an odd symplectic supermanifold \((\mathcal E,\omega)\), the canonical BV
+operator on half-densities is the odd second-order operator
+\(\Delta_{1/2}\) defined in every Darboux chart by
 \begin{equation}
-  \Delta_{\rm BV}
+  \Delta_{1/2}\!\left(f\,|D\Phi\,D\Phi^*|^{1/2}\right)
+  =
+  \left[
+  \sum_A
+  (-1)^{\epsilon_A}
+  \frac{\partial^R}{\partial\Phi^A}
+  \frac{\partial^R f}{\partial\Phi^*_A}
+  \right]
+  |D\Phi\,D\Phi^*|^{1/2}.
+  \label{eq:canonical-half-density-bv-operator}
+\end{equation}
+The expression is invariant under odd-symplectic coordinate changes and
+\(\Delta_{1/2}^2=0\).  This is the finite-dimensional Khudaverdian
+semidensity operator; the displayed Darboux formula is the local expression
+used by perturbative regulators.
+\end{definition}
+
+\begin{definition}[Normal BV half-density datum]
+\label{def:normal-bv-half-density-datum}
+A finite-dimensional quantum BV regulator contains, in addition to
+\((\mathcal E,\omega)\), an even nowhere-vanishing reference half-density
+\(\sigma_0\).  It is called normal when
+\[
+  \Delta_{1/2}\sigma_0=0 .
+\]
+For a normal datum, the BV Laplacian on functions is the divergence operator
+\[
+  \Delta_{\sigma_0}F
+  :=
+  \sigma_0^{-1}\Delta_{1/2}(F\sigma_0).
+  \label{eq:function-bv-laplacian-from-half-density}
+\]
+In a Darboux chart in which \(\sigma_0=|D\Phi\,D\Phi^*|^{1/2}\), this becomes
+\begin{equation}
+  \Delta_{\sigma_0}
   =
   \sum_A
   (-1)^{\epsilon_A}
@@ -519,46 +575,117 @@ Laplacian is
   \frac{\partial^R}{\partial\Phi^*_A}.
   \label{eq:bv-laplacian}
 \end{equation}
-In field theory this operator requires a regulator because the two functional
-derivatives act at the same point.  A choice of regularization and measure is
-therefore part of the definition of the quantum BV problem.
+The square \(\sigma_0^2\) is the corresponding Berezinian density.  If a
+chosen regulator supplies a reference half-density with
+\(\Delta_{1/2}\sigma_0\ne0\), its logarithmic defect is an additional local
+measure term; the symbol \(\Delta_{\rm BV}\) in this chapter denotes the
+function operator \(\Delta_{\sigma_0}\) only after a normal half-density datum
+has been chosen.  In Schwarz's geometric terminology, the pair consisting of
+the odd symplectic structure and this compatible volume/half-density datum is
+the finite-dimensional measure structure behind BV quantization.
+\end{definition}
+
+\begin{proposition}[Restriction to Lagrangians and BV Stokes]
+\label{prop:bv-half-density-restriction-stokes}
+Let \(L\subset\mathcal E\) be a Lagrangian submanifold with embedding
+\(\iota_L\).  Every half-density \(\sigma\) on \(\mathcal E\) determines a
+Berezin density \(\iota_L^*\sigma\) on \(L\).  In a Darboux chart adapted to
+\(L\), so that \(L\) is given by \(\Phi^*_A=0\),
+\[
+  \iota_L^*\!\left(f(\Phi,\Phi^*)\,|D\Phi\,D\Phi^*|^{1/2}\right)
+  =
+  f(\Phi,0)\,|D\Phi|.
+\]
+If \(\eta\) is a compactly supported half-density, or if the chosen
+integration cycle has boundary behavior that kills total derivatives, then
+\[
+  \int_L \iota_L^*(\Delta_{1/2}\eta)=0 .
+  \label{eq:bv-stokes-half-density}
+\]
+\end{proposition}
+
+\begin{proof}
+In an adapted Darboux chart the stated restriction formula gives a Berezin
+density on the coordinates of \(L\).  Under a change of adapted Darboux
+coordinates, the half-density coefficient transforms by the square root of
+the Berezinian on the full odd symplectic space, and the Lagrangian condition
+identifies this factor with the Berezinian transformation of the induced
+coordinates on \(L\).  Hence the local formula glues to an intrinsic density.
+
+For the Stokes statement, write
+\(\eta=h(\Phi,\Phi^*)|D\Phi\,D\Phi^*|^{1/2}\) in an adapted chart.  Restricting
+\(\Delta_{1/2}\eta\) to \(L\) gives
+\[
+  \sum_A
+  (-1)^{\epsilon_A}
+  \frac{\partial^R}{\partial\Phi^A}
+  \left.
+  \frac{\partial^R h}{\partial\Phi^*_A}
+  \right|_{\Phi^*=0}
+  |D\Phi|,
+\]
+a total divergence on \(L\).  Its integral vanishes under the compact-support
+or boundary hypothesis.  A partition of unity gives the general finite
+dimensional statement.
+\end{proof}
+
+\section{The Quantum Master Equation}
+
+The classical master equation controls the algebra of gauge symmetry.  The
+quantum functional integral also depends on the half-density datum just
+defined.  In field theory the operator \(\Delta_{\sigma_0}\) requires a
+regulator because the two functional derivatives act at the same point.  A
+quantum BV problem therefore specifies the regularized odd symplectic space,
+the normal reference half-density \(\sigma_0\), and the action.
 
 \begin{definition}[Quantum master equation]
-For Lorentzian weight \(\exp(\ii S/\hbar)\), the quantum master equation is
+For Lorentzian weight \(\exp(\ii S/\hbar)\), the BV integrand is the
+half-density
+\[
+  \sigma_S
+  :=
+  \exp(\ii S/\hbar)\,\sigma_0 .
+\]
+The quantum master equation is the intrinsic condition
 \begin{equation}
-  \frac12(S,S)-\ii\hbar\,\Delta_{\rm BV}S=0.
+  \Delta_{1/2}\sigma_S=0 .
+  \label{eq:qme-half-density-form}
+\end{equation}
+When \(\sigma_0\) is normal, \eqref{eq:qme-half-density-form} is equivalent to
+\begin{equation}
+  \frac12(S,S)-\ii\hbar\,\Delta_{\sigma_0}S=0.
   \label{eq:quantum-master-equation}
 \end{equation}
 Equivalently,
 \[
-  \Delta_{\rm BV}\exp(\ii S/\hbar)=0.
+  \Delta_{\sigma_0}\exp(\ii S/\hbar)=0.
 \]
 \end{definition}
 
-The exponential form is conceptually direct: the integrand is closed under the
-divergence operator associated with the chosen BV measure.  Gauge independence
-is then a version of Stokes' theorem: changing the gauge-fixing Lagrangian
-submanifold changes the integral by the integral of a BV-exact term, provided
-no boundary contribution is present.
+The half-density form is the coordinate-free statement.  Gauge independence is
+then a version of Proposition~\ref{prop:bv-half-density-restriction-stokes}:
+changing the gauge-fixing Lagrangian submanifold changes the integral by the
+integral of a \(\Delta_{1/2}\)-exact half-density, provided no boundary
+contribution is present.
 
 If the regulated theory fails to satisfy \eqref{eq:quantum-master-equation},
 the failure has ghost number \(+1\).  To first order in \(\hbar\), write
 \begin{equation}
   \mathcal M(S)
   :=
-  \frac12(S,S)-\ii\hbar\,\Delta_{\rm BV}S
+  \frac12(S,S)-\ii\hbar\,\Delta_{\sigma_0}S
   =
   \hbar\,\mathcal A+O(\hbar^2).
   \label{eq:qme-anomaly-defect}
 \end{equation}
-The BV Jacobi identity, the second-order identity for \(\Delta_{\rm BV}\), and
-\(\Delta_{\rm BV}^2=0\) give the quantum consistency identity
+The BV Jacobi identity, the second-order identity for \(\Delta_{\sigma_0}\),
+and \(\Delta_{\sigma_0}^2=0\) give the quantum consistency identity
 \begin{equation}
-  (S,\mathcal M(S))-\ii\hbar\,\Delta_{\rm BV}\mathcal M(S)=0.
+  (S,\mathcal M(S))-\ii\hbar\,\Delta_{\sigma_0}\mathcal M(S)=0.
   \label{eq:qme-defect-consistency}
 \end{equation}
 Indeed, for even \(S\), \((S,\frac12(S,S))=0\) and
-\(\Delta_{\rm BV}(S,S)=2(\Delta_{\rm BV}S,S)\), so the two order-\(\hbar\)
+\(\Delta_{\sigma_0}(S,S)=2(\Delta_{\sigma_0}S,S)\), so the two order-\(\hbar\)
 terms in \eqref{eq:qme-defect-consistency} cancel.  Substituting
 \eqref{eq:qme-anomaly-defect} and \(S=S_0+O(\hbar)\) into
 \eqref{eq:qme-defect-consistency} gives
@@ -591,36 +718,47 @@ matching \eqref{eq:qme-anomaly-counterterm-shift}.
 
 The antifields are also the natural sources for nonlinear BRST variations in
 the 1PI formalism.  With a gauge-fixing Lagrangian submanifold chosen for the
-fields, define
+fields, let \(\iota_\Psi:\mathcal L_\Psi\hookrightarrow\mathcal E\) be its
+embedding and let \(\Phi^*_{\rm ext}\) denote the antifield coordinates left
+as external sources after the gauge-fixing canonical transformation.  Define
 \[
-  Z[J,\Phi^*]
+  Z[J,\Phi^*_{\rm ext}]
   =
   \int_{\mathcal L_\Psi}
-  [D\Phi]\,
+  \iota_\Psi^*
+  \left[
   \exp\left\{
   \frac{\ii}{\hbar}
-  \left(S_{\rm BV}[\Phi,\Phi^*]+\int J_A\Phi^A\right)
-  \right\}.
+  \left(S_{\rm BV}[\Phi,\Phi^*_{\rm ext}]+\int J_A\Phi^A\right)
+  \right\}
+  \sigma_0
+  \right].
 \]
-The external antifields are not integrated; they record the response to BRST
-variations.  Let \(W[J,\Phi^*]\) be the connected generator and let
+In an adapted finite-regulator chart this is the compact formula with
+\[
+  D_{\sigma_0,\Psi}\Phi:=\iota_\Psi^*\sigma_0
+\]
+in place of the undefined symbol \([D\Phi]\).  The external antifields are not
+integrated; they record the response to BRST variations.  Let
+\(W[J,\Phi^*_{\rm ext}]\) be the connected generator and let
 \[
   \varphi^A=\frac{\delta W}{\delta J_A},
   \qquad
-  \Gamma[\varphi,\Phi^*]
+  \Gamma[\varphi,\Phi^*_{\rm ext}]
   =
-  W[J,\Phi^*]-\int J_A\varphi^A
+  W[J,\Phi^*_{\rm ext}]-\int J_A\varphi^A
 \]
 be the 1PI effective action in the Lorentzian convention used earlier.
 
-Assume that the regularized measure and action obey the quantum master
-equation and that the Legendre transform is well defined on the field
-directions under consideration.  The Ward identity obtained by applying
-\(\Delta_{\rm BV}\) to the integrand gives
+Assume that the regularized half-density integrand obeys the quantum master
+equation at \(J=0\) and that the Legendre transform is well defined on the
+field directions under consideration.  The Ward identity obtained by applying
+\(\Delta_{1/2}\) to the source-dependent integrand and then using BV Stokes
+gives
 \[
   \int
   \frac{\delta^R\Gamma}{\delta\varphi^A}
-  \frac{\delta^L\Gamma}{\delta\Phi^*_A}
+  \frac{\delta^L\Gamma}{\delta\Phi^*_{\rm ext,A}}
   \dd^D x
   =
   0 .
@@ -631,7 +769,7 @@ Equivalently,
   \label{eq:1pi-master-equation}
 \end{equation}
 where the bracket now pairs the mean field \(\varphi^A\) with the antifield
-\(\Phi^*_A\).  In the Yang--Mills variables of the preceding chapter,
+\(\Phi^*_{\rm ext,A}\).  In the Yang--Mills variables of the preceding chapter,
 \eqref{eq:1pi-master-equation} is the Slavnov--Taylor identity
 \eqref{eq:slavnov-taylor-identity}, with \(A^*\) and \(c^*\) replacing the
 special sources \(K\) and \(L\), and with the nonminimal term producing
@@ -654,49 +792,70 @@ Consider first a finite-dimensional odd symplectic vector space split as
 \[
   \mathcal E=\mathcal E_{\rm low}\oplus\mathcal E_{\rm high},
   \qquad
-  \Delta_{\rm BV}=\Delta_{\rm low}+\Delta_{\rm high}.
+  \Delta_{1/2,\mathcal E}
+  =
+  \Delta_{1/2,{\rm low}}+\Delta_{1/2,{\rm high}}.
+\]
+Assume the normal half-density factorizes compatibly as
+\[
+  \sigma_0=\sigma_{0,{\rm low}}\otimes\sigma_{0,{\rm high}} .
 \]
 Let \(\mathcal L_{\rm high}\subset\mathcal E_{\rm high}\) be a Lagrangian
 subspace used to integrate out the high variables.  Define the effective
-low-energy integrand by
+low-energy half-density by
 \begin{equation}
-  \exp(\ii S_{\rm eff}/\hbar)
+  \exp(\ii S_{\rm eff}/\hbar)\,\sigma_{0,{\rm low}}
   =
   \int_{\mathcal L_{\rm high}}
-  \exp(\ii S/\hbar).
+  \iota_{\rm high}^*
+  \left[
+    \exp(\ii S/\hbar)\,\sigma_0
+  \right].
   \label{eq:bv-wilsonian-pushforward}
 \end{equation}
 
 \begin{proposition}[BV pushforward]
 Assume
 \[
-  \Delta_{\rm BV}\exp(\ii S/\hbar)=0
+  \Delta_{1/2,\mathcal E}
+  \left(\exp(\ii S/\hbar)\sigma_0\right)=0
 \]
 and assume the integral over \(\mathcal L_{\rm high}\) has no boundary
-contribution for \(\Delta_{\rm high}\).  Then
+contribution for \(\Delta_{1/2,\rm high}\).  Then
 \[
-  \Delta_{\rm low}\exp(\ii S_{\rm eff}/\hbar)=0 .
+  \Delta_{1/2,{\rm low}}
+  \left(\exp(\ii S_{\rm eff}/\hbar)\sigma_{0,{\rm low}}\right)=0 .
 \]
 \end{proposition}
 
 \begin{proof}
-Using \(\Delta_{\rm BV}=\Delta_{\rm low}+\Delta_{\rm high}\),
+Using the compatible split
+\(\Delta_{1/2,\mathcal E}=\Delta_{1/2,{\rm low}}+\Delta_{1/2,{\rm high}}\),
 \[
 \begin{aligned}
-  \Delta_{\rm low}\exp(\ii S_{\rm eff}/\hbar)
+  \Delta_{1/2,{\rm low}}
+  \left(\exp(\ii S_{\rm eff}/\hbar)\sigma_{0,{\rm low}}\right)
   &=
   \int_{\mathcal L_{\rm high}}
-  \Delta_{\rm low}\exp(\ii S/\hbar)
+  \iota_{\rm high}^*
+  \left[
+    \Delta_{1/2,{\rm low}}
+    \left(\exp(\ii S/\hbar)\sigma_0\right)
+  \right]
 \\
   &=
   -\int_{\mathcal L_{\rm high}}
-  \Delta_{\rm high}\exp(\ii S/\hbar)
+  \iota_{\rm high}^*
+  \left[
+    \Delta_{1/2,{\rm high}}
+    \left(\exp(\ii S/\hbar)\sigma_0\right)
+  \right]
   =
   0 .
 \end{aligned}
 \]
-The last equality is the BV Stokes statement for the chosen Lagrangian
-integration cycle.
+The last equality is Proposition~\ref{prop:bv-half-density-restriction-stokes}
+applied to the high Lagrangian integration cycle.
 \end{proof}
 
 This proposition is the regulated mathematical core of the Wilsonian BV
@@ -711,9 +870,9 @@ BV pushforward.  Its master equation has the form
   0,
 \]
 where the bracket and Laplacian include the cutoff covariance and the
-remaining low-mode measure.  Exact RG flow is compatible with gauge symmetry
-when it preserves this equation.  Changes of cutoff scheme are then BV
-canonical transformations together with possible local counterterm changes,
+remaining low-mode half-density.  Exact RG flow is compatible with gauge
+symmetry when it preserves this equation.  Changes of cutoff scheme are then
+BV canonical transformations together with possible local counterterm changes,
 with the gauge symmetry encoded by the transformed master action.
 
 \section{Counterterms, Anomalies, and Physical Operators}
@@ -773,7 +932,7 @@ The output of this chapter is the following framework.
   \item The classical master equation constructs a nilpotent differential.
   \item Gauge fixing is restriction to a Lagrangian submanifold determined by
   a gauge-fixing fermion.
-  \item The quantum master equation is the regulated statement of
+  \item The quantum master equation is the regulated half-density statement of
   measure-compatible gauge symmetry.
   \item The 1PI and Wilsonian effective actions in gauge theory must satisfy
   the corresponding BV master identities.
