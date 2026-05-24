@@ -55,6 +55,10 @@ The chapter establishes:
   measure expectation, regulated continuum-limit source functional, abstract
   CFT generating functional for Schwinger distributions, or perturbative
   formal source series, depending on the supplied fixed-point construction;
+- the curved-background meaning of \(\langle\cdots\rangle_{g,\ast}\): it is
+  evaluation by \(Z_\ast[g,J]\), and when only flat separated-point data are
+  supplied the compatible metric/source extension is an additional datum or
+  theorem, not an automatic consequence of the notation;
 - diffeomorphism and Weyl Ward identities as identities of
   source-dependent distributions, with contact terms fixed by the source
   chart;
@@ -157,3 +161,8 @@ The chapter establishes:
   `def:cft-fixed-point-source-bracket-status`, classifying the fixed-point
   source brackets and \(Z_\ast[g,J]\) by construction type instead of leaving
   them as untyped continuum expectation notation.
+- 2026-05-24 issue #321 pass: sharpened the same definition to state that
+  \(\langle\cdots\rangle_{g,\ast}\) denotes evaluation by the curved-background
+  source functional \(Z_\ast[g,J]\); if a CFT is supplied only by flat
+  separated-point correlators, the metric/source extension and Weyl-anomaly
+  contact chart must be separately supplied or proved.
