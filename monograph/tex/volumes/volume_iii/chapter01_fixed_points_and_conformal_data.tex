@@ -860,16 +860,17 @@ The first numerical values to keep in view are
 where \(\Delta_\sigma\) is the scaling dimension of the continuum spin field
 and \(\nu\) is the correlation-length exponent.
 \begin{remark}[Numerical provenance in three dimensions]
-The \(D=3\) entries are numerical conformal-bootstrap data, not results derived
-in this chapter.  They are obtained by applying crossing symmetry and
-reflection-positivity constraints to mixed four-point functions of
+The \(D=3\) entries come from numerical conformal-bootstrap computations.  They
+are obtained by applying crossing symmetry and reflection-positivity constraints
+to mixed four-point functions of
 \(\sigma\), \(\varepsilon\), and \(T_{\mu\nu}\), followed by
 finite-dimensional semidefinite relaxations of the resulting bootstrap
 inequalities and numerical stability tests as the relaxation order changes.
 In such a computation the assumptions are the existence of a
 unitary three-dimensional CFT with the \(\mathbb Z_2\) quantum numbers and
 operator gaps imposed in the search; the output is a small allowed region for
-low-lying CFT data, not a constructive proof of the lattice scaling limit.
+low-lying CFT data.  A constructive proof of the lattice scaling limit is a
+separate theorem.
 Chapter~\ref{ch:volume-iii-operator-product-expansion} develops the OPE,
 reflection-positivity, and crossing equations used by this method, but the
 present chapter records only the numerical CFT data and their provenance.  A
@@ -882,6 +883,129 @@ Ising CFT; using \(\Delta_\varepsilon=D-1/\nu\) at \(D=3\) gives
 Kravchuk, Liu, Mitchell, Poland, and Simmons-Duffin,
 \emph{Bootstrapping the 3d Ising Stress Tensor}, JHEP \textbf{03} (2025) 136,
 arXiv:2411.15300.
+\end{remark}
+
+\begin{definition}[Universal scaling functions in the Ising setting]
+\label{def:cft-opening-universal-scaling-functions}
+Fix a class \(\mathfrak R\) of reflection-positive microscopic regulators with
+\(\mathbb Z_2\) symmetry, one spinlike relevant direction, and one
+temperaturelike relevant direction.  For each regulator \(R\in\mathfrak R\),
+let \(a_R\) be the lattice spacing, let \(p_R\) denote microscopic couplings
+near the critical surface, and let \(X_A^{(R)}(x)\) be lattice observables
+whose leading scaling fields are \(O_A\).  A separated \(n\)-point scaling
+function is a distributional limit on the configuration space \(x_i\neq x_j\)
+of the form
+\[
+  \mathcal F_{A_1\ldots A_n}(x_1,\ldots,x_n;s)
+  =
+  \lim_{a_R\to0}
+  \prod_{i=1}^n Z_{A_i}^{(R)}
+  \left\langle
+    X_{A_1}^{(R)}(a_R^{-1}x_1)\cdots
+    X_{A_n}^{(R)}(a_R^{-1}x_n)
+  \right\rangle^{\rm conn}_{p_R(s)} ,
+\]
+where \(s=(s_t,s_h)\) are fixed continuum scaling coordinates for the thermal
+and magnetic relevant deformations, and \(Z_A^{(R)}\) are multiplicative
+normalizations of the scaling fields.  The scaling function is called
+universal for \(\mathfrak R\) when any two regulators in \(\mathfrak R\) give
+the same \(\mathcal F\) after analytic changes of the relevant coordinates
+\((p_R-p_{R,c})\mapsto(s_t,s_h)\), multiplicative field normalizations, and
+subtraction of analytic background terms in the free energy.  This definition
+concerns separated-point kernels and their finite-size or thermodynamic
+limits.  Critical temperatures, lattice metric factors, operator
+normalizations, analytic free-energy backgrounds, and contact-term extensions
+are regulator data rather than universal scaling functions.
+\end{definition}
+
+\begin{proposition}[Conditional determination by complete CFT data]
+\label{prop:cft-opening-ising-scaling-functions-conditional}
+Assume that a regulator class \(\mathfrak R\) has a continuum critical limit
+which is a unitary Euclidean CFT \(\mathcal C_{\rm Ising}\), that the lattice
+spin and energy observables converge to the primary fields \(\sigma\) and
+\(\varepsilon\) after the normalizations in
+Definition~\ref{def:cft-opening-universal-scaling-functions}, and that the
+OPE of \(\mathcal C_{\rm Ising}\) converges as a distribution on every
+separated Euclidean configuration.  Then the critical separated-point scaling
+functions are determined by the complete CFT data of \(\mathcal C_{\rm Ising}\):
+the primary spectrum with spin and \(\mathbb Z_2\) parity, two-point
+normalizations, and OPE coefficients.
+
+If, in addition, the relevant deformation
+\[
+  S_{\mathcal C}
+  \longmapsto
+  S_{\mathcal C}
+  +
+  s_t\int\dd^Dx\,\varepsilon(x)
+  +
+  s_h\int\dd^Dx\,\sigma(x)
+\]
+is constructed as a continuum source-dependent QFT with a specified
+renormalized contact-term chart, then the off-critical universal scaling
+functions in the variables \(s_t,s_h\) are the separated connected correlators
+of this deformed continuum theory.  Their short-distance expansion near the
+critical point is obtained by conformal perturbation theory from the complete
+CFT data and the chosen deformation scheme.  Their global massive scaling
+functions require the deformed continuum theory itself, because finitely many
+critical exponents such as \(\Delta_\sigma\) and \(\nu\) do not determine all
+massive correlation functions.
+\end{proposition}
+
+\begin{proof}
+The convergence hypothesis identifies the critical scaling limit of the
+normalized lattice observables with the separated-point correlators of
+\(\mathcal C_{\rm Ising}\).  The complete CFT data determine those correlators
+as follows.  In a ball of configuration space where \(x_1\) approaches \(x_2\)
+with all other insertions separated, OPE convergence gives
+\[
+  O_{A_1}(x_1)O_{A_2}(x_2)
+  =
+  \sum_B
+  C_{A_1A_2}{}^B(x_{12},\partial_{x_2})\,O_B(x_2)
+\]
+as an equality of distributions after pairing with test functions supported in
+that ball.  The coefficient distributions
+\(C_{A_1A_2}{}^B\) are fixed by the dimensions, spins, representation labels,
+two-point normalizations, and OPE coefficients.  Iterating the OPE reduces an
+\(n\)-point function on such a configuration-space chart to a convergent sum of
+two- and three-point tensor structures with the same data.  Compatibility of
+the convergent OPE expansions on overlapping charts is part of the CFT data
+through associativity/crossing.  Hence the critical separated-point kernels are
+fixed by the complete CFT data.
+
+For the deformed statement, the assumed continuum source-dependent QFT supplies
+a generating functional \(W_{\mathcal C}[s_t,s_h;J]\).  Its functional
+derivatives with respect to the sources \(J^A\), restricted to separated
+points, are precisely the off-critical scaling functions in the chosen
+normalization and scaling-coordinate chart.  Expanding
+\(\exp[-s_t\int\varepsilon-s_h\int\sigma]\) near \(s_t=s_h=0\) expresses the
+short-distance coefficients as integrated CFT correlators.  The specified
+renormalized contact-term chart is the datum that defines those integrals at
+coincident integration points.  The full finite-\(s\) functions are therefore
+correlators of the relevantly deformed continuum theory.
+\end{proof}
+
+\begin{remark}[Status of the three-dimensional Ising scaling functions]
+\label{rem:cft-opening-ising-scaling-function-status}
+For \(D=2\), the conformal data are exact data of the Ising minimal model, and
+many scaling limits of the planar lattice model are theorem-level objects.  For
+\(D=3\), the statement that the nearest-neighbor Ising model and the scalar
+\(\mathbb Z_2\)-invariant \(\phi^4\) regulator class converge to a single
+unitary Ising CFT with the scaling functions of
+Definition~\ref{def:cft-opening-universal-scaling-functions} is a
+mathematically open continuum-limit statement.  The numerical values displayed
+above are bootstrap estimates for the candidate CFT data.  The parenthetical
+uncertainties attached to
+\(\Delta_\sigma=0.518148806(24)\) and
+\(\Delta_\varepsilon=1.41262528(29)\) are numerical uncertainties reported by
+the finite semidefinite bootstrap computation; they are neither convergence
+rates for the lattice spacing \(a_R\to0\) nor rigorous error bounds for a
+constructive lattice-to-CFT theorem.  If a leading irrelevant exponent
+\(\omega>0\) and a regulator-dependent coefficient are supplied by a separate
+RG analysis, one may write corrections of the form \(O(a_R^\omega)\) for
+specified observables, but such a rate is additional data beyond the two
+numbers in the table.
 \end{remark}
 
 \begin{remark}[Existence status in \(D\geq4\)]
@@ -932,10 +1056,12 @@ structure of vector-like gauge theories with massless fermions,''
 \emph{Nucl. Phys. B} \textbf{196} (1982) 189--204.}
 \end{remark}
 
-The same universality class can be represented by a scalar Euclidean lattice
-field theory.  Replace the two-valued spin by a real variable \(\phi_x\), use
-a \(\mathbb Z_2\)-even double-well single-site potential, and retain the
-finite Brillouin-zone cutoff.  At long distance its action has the form
+The same fixed-point basin can be represented by a scalar Euclidean lattice
+field theory, in the sense of
+Definition~\ref{def:cft-opening-universal-scaling-functions}.  Replace the
+two-valued spin by a real variable \(\phi_x\), use a \(\mathbb Z_2\)-even
+double-well single-site potential, and retain the finite Brillouin-zone
+cutoff.  At long distance its action has the form
 \begin{equation}
   S_{\rm lat}[\phi]
   =
@@ -957,7 +1083,7 @@ At \(T=T_c\), equivalently at the tuned massless critical point, the
 correlation length is infinite in lattice units.  The separated long-distance
 correlators are described by the Ising conformal field theory.  For
 \(D=2,3\), this is the infrared fixed point of the \(\mathbb Z_2\)-invariant
-massless scalar \(\phi^4\) universality class.  The continuum fields obey the
+massless scalar \(\phi^4\) fixed-point basin.  The continuum fields obey the
 dictionary
 \[
   \phi \longmapsto \sigma,
@@ -1021,7 +1147,7 @@ has RG eigenvalue \(y_t=D-\Delta_\varepsilon\).  Since
     \end{scope}
   \end{tikzpicture}
   }
-  \caption{The scalar cutoff representation of the Ising universality class
+  \caption{The scalar cutoff representation of the Ising fixed-point basin
   has a finite Brillouin-zone cutoff and lattice anisotropy.  At the tuned
   critical point its long-distance operator data are those of the Ising
   conformal field theory.}

@@ -84,6 +84,12 @@ The chapter establishes:
   \(\Delta_\sigma=0.518148806(24)\) and
   \(\Delta_\varepsilon=1.41262528(29)\), giving
   \(\nu=1/(3-\Delta_\varepsilon)=0.629970975\ldots\).
+- Universal Ising scaling functions are defined as separated-point continuum
+  limits of normalized lattice observables after analytic changes of relevant
+  scaling coordinates, field normalizations, and analytic-background
+  subtractions.  The manuscript distinguishes these universal functions from
+  critical temperatures, metric factors, contact extensions, and bootstrap
+  numerical uncertainties.
 
 ## Claims To Verify
 
@@ -110,6 +116,11 @@ The chapter establishes:
 6. The Ising fixed point supplies a statistical-mechanics example whose
    continuum CFT data are obtained from scaling limits of correlators, not
    from the finite lattice trace space.
+6a. Complete fixed-point CFT data determine critical separated-point scaling
+    functions conditionally on CFT/OPE convergence; off-critical scaling
+    functions require the constructed relevant deformation, and the \(D=3\)
+    lattice-to-CFT identification remains a conditional continuum-limit
+    statement.
 7. Claims about interacting \(D\geq4\) CFTs must distinguish exact free
    conformal theories, formal perturbative fixed-point data, scalar
    triviality theorems, and physical gauge-theory constructions whose
@@ -166,3 +177,8 @@ The chapter establishes:
   source functional \(Z_\ast[g,J]\); if a CFT is supplied only by flat
   separated-point correlators, the metric/source extension and Weyl-anomaly
   contact chart must be separately supplied or proved.
+- 2026-05-24 issue #331 pass: added a definition of universal Ising scaling
+  functions, a conditional proposition proving that complete CFT data determine
+  critical separated-point scaling functions under OPE convergence, and a
+  status remark separating \(D=3\) bootstrap numerical uncertainties from
+  lattice convergence rates or constructive continuum-limit error bounds.
