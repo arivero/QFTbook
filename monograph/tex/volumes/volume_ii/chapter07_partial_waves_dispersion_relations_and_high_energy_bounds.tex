@@ -571,7 +571,7 @@ the displayed base.
 The actual weighted sum is bounded below by the same sum evaluated on the
 minimizing box profile.  Therefore, for \(x>1\) inside the angular analytic
 domain,
-\[
+  \begin{equation}
   \operatorname{Im}\mathcal M(s,x)
   \ge
   C\,\rho(s)^{-1}
@@ -579,7 +579,8 @@ domain,
   (2\ell+1)y^\ell
   \ge
   C'\,\rho(s)^{-1}L\,\frac{y^L}{y-1},
-\]
+  \label{eq:froissart-box-lower-bound}
+  \end{equation}
 whenever \(L(y-1)\ge1\).  If \(L(y-1)<1\), then
 \(L^2\lesssim (y-1)^{-2}\), and the relation between \(L^2\) and
 \(\sigma_{\rm tot}\) already gives a high-energy bound stronger than a
@@ -598,24 +599,26 @@ and evaluate the amplitude at
 \]
 This point lies strictly inside the Lehmann ellipse for sufficiently large
 \(s\).  At large \(s\),
-\[
+  \begin{equation}
   y-1=(1-\delta)\sqrt{x_*^2-1}+O(s^{-1})
   =
   2(1-\delta)\sqrt{\frac{t_*}{s}}+O(s^{-1}),
-\]
+  \label{eq:froissart-y-minus-one}
+  \end{equation}
 and
 \[
   L\simeq\sqrt{\frac{s\,\sigma_{\rm tot}}{16\pi}} .
 \]
 Therefore the exponential factor obeys
-\[
+  \begin{equation}
   y^L
   \simeq
   \exp\!\left[
     (1-\delta)
     \sqrt{\frac{t_*\,\sigma_{\rm tot}}{4\pi}}
   \right].
-\]
+  \label{eq:froissart-exponential-factor}
+  \end{equation}
 
 \begin{definition}[Polynomial bounds used in dispersion theory]
 \label{def:physical-fixedt-angular-polynomial-bounds}
@@ -1143,22 +1146,123 @@ corresponding conditional estimate is
 \end{theorem}
 
 \begin{proof}
-Partial-wave unitarity bounds each physical partial-wave contribution.
-Analyticity in the Lehmann--Martin ellipse gives exponential decay of large
-angular momenta at fixed \(s\), with the decay rate set by \(t_0/s\).  The
-two-subtraction input supplies the polynomial boundedness with exponent
-\(N=2\) at the nonphysical positive-\(t\) point used in the preceding
-Froissart comparison; this is the angular-tube bound of
-Definition~\ref{def:physical-fixedt-angular-polynomial-bounds}.  That
-comparison bounds the number of partial waves that can contribute with
-order-one strength by
-\(L(s)=O(\sqrt{s}\log s)\), with the coefficient corresponding to
-\((N-1)^2=1\).  The optical theorem converts the forward absorptive part into
-\(\sigma_{\rm tot}\), and summing the unitary partial-wave weights up to
-\(L(s)\) gives the coefficient in
-\eqref{eq:froissart-martin-four-dimensional-bound}, with the harmless
-\((1-\delta)^{-2}\) recording the margin in the ellipse estimate.  The
-displayed \(D\)-dimensional estimate is the separate conditional
+Fix \(0<t_*<t_0\).  To prove the theorem with the displayed margin
+\(\delta\), choose an auxiliary margin \(\delta_0\) with
+\[
+  0<\delta_0<\delta .
+\]
+The Legendre lower bound below will use \(\delta_0\), leaving the remaining
+margin \(\delta-\delta_0\) to absorb constants and lower-order logarithmic
+terms without changing the stated coefficient.  By the Lehmann--Martin
+angular-domain hypothesis, the
+point
+\[
+  x_*(s)=1+\frac{2t_*}{s-4m^2}
+\]
+lies inside the allowed angular domain for all sufficiently large \(s\).  The
+angular-tube polynomial bound with exponent \(N\) gives
+\begin{equation}
+  |\mathcal M(s,x_*(s))|\le C_Ns^N .
+  \label{eq:froissart-proof-polynomial-upper}
+\end{equation}
+The absorptive part at this point is nonnegative in the partial-wave
+representation used above, so
+\(\operatorname{Im}\mathcal M(s,x_*(s))\le|\mathcal M(s,x_*(s))|\).
+
+Let
+\[
+  W(s):=\sum_{\ell\ {\rm even}}(2\ell+1)w_\ell(s).
+\]
+The optical-theorem normalization derived in
+Section~\ref{sec:high-energy-partial-wave-normalization} gives
+\[
+  W(s)=\frac{s-4m^2}{16\pi}\,\sigma_{\rm tot}(s).
+\]
+The box-profile minimization in the Froissart comparison chooses
+\begin{equation}
+  L=W(s)^{1/2}+O(1)
+  =
+  \left(\frac{s-4m^2}{16\pi}\sigma_{\rm tot}(s)\right)^{1/2}
+  +O(1).
+  \label{eq:froissart-proof-l-from-sigma}
+\end{equation}
+For \(x_*(s)=\cosh\eta_*(s)\), the Legendre lower bound with margin
+\(\delta_0\) gives the base \(y=1+(1-\delta_0)\sinh\eta_*(s)\).  The same
+expansion as in \eqref{eq:froissart-y-minus-one}, with \(\delta\) replaced by
+\(\delta_0\), gives
+\begin{equation}
+  y-1=2(1-\delta_0)\sqrt{\frac{t_*}{s}}+O(s^{-1}).
+  \label{eq:froissart-proof-y-asymptotic}
+\end{equation}
+Combining this with \eqref{eq:froissart-proof-l-from-sigma} yields
+\begin{equation}
+  L(y-1)
+  =
+  (1-\delta_0)
+  \sqrt{\frac{t_*\,\sigma_{\rm tot}(s)}{4\pi}}
+  +o(1).
+  \label{eq:froissart-proof-exponent}
+\end{equation}
+The factor \(4\pi\) in this expression is the coefficient produced by the
+partial-wave normalization \(W=(s-4m^2)\sigma_{\rm tot}/(16\pi)\) together
+with the angular-distance estimate
+\(\sinh\eta_*(s)\sim2\sqrt{t_*/s}\).
+
+If \(L(y-1)<1\) along a high-energy subsequence, then
+\eqref{eq:froissart-proof-exponent} already gives
+\[
+  \sigma_{\rm tot}(s)
+  \le
+  \frac{4\pi}{(1-\delta_0)^2t_*}+o(1),
+\]
+which is stronger than the logarithmic-square estimate for large \(s\).  We
+therefore consider the case \(L(y-1)\ge1\), where
+\eqref{eq:froissart-box-lower-bound} applies.  Using
+\eqref{eq:froissart-proof-y-asymptotic}, the algebraic prefactor in
+\eqref{eq:froissart-box-lower-bound} is bounded below by a fixed positive
+constant times \(s\,\sigma_{\rm tot}(s)^{1/2}\).  Hence
+\eqref{eq:froissart-proof-polynomial-upper} can hold only if, for every
+\(\varepsilon>0\) and all sufficiently large \(s\),
+\begin{equation}
+  (1-\delta_0)
+  \sqrt{\frac{t_*\,\sigma_{\rm tot}(s)}{4\pi}}
+  \le
+  (N-1+\varepsilon)\log\frac{s}{M_0^2}.
+  \label{eq:froissart-proof-log-comparison}
+\end{equation}
+Indeed, if the left side exceeded the right side along a high-energy
+subsequence, the exponential \(y^L\) in
+\eqref{eq:froissart-box-lower-bound} would grow faster than
+\((s/M_0^2)^{N-1+\varepsilon}\); multiplying by the prefactor of order
+\(s\,\sigma_{\rm tot}^{1/2}\) would contradict
+\eqref{eq:froissart-proof-polynomial-upper}.
+
+Solving \eqref{eq:froissart-proof-log-comparison} for
+\(\sigma_{\rm tot}\) gives
+\[
+  \sigma_{\rm tot}(s)
+  \le
+  \frac{(N-1+\varepsilon)^2}{(1-\delta_0)^2}
+  \frac{4\pi}{t_*}
+  \left(\log\frac{s}{M_0^2}\right)^2 .
+\]
+Since \(\delta_0<\delta\), choose \(\varepsilon>0\) small enough that
+\[
+  \frac{N-1+\varepsilon}{1-\delta_0}
+  \le
+  \frac{N-1}{1-\delta}.
+\]
+This proves the same estimate with the displayed \((N-1)^2(1-\delta)^{-2}\)
+coefficient after increasing \(s_0\).  The two-subtraction input in the theorem
+supplies \(N=2\).  Finally take \(t_*\to t_0^-\), after the estimate has been
+established at fixed \(t_*<t_0\), to obtain
+\eqref{eq:froissart-martin-four-dimensional-bound}.  The factor
+\((1-\delta)^{-2}\) is therefore the square of the final reserved margin in
+the Legendre lower bound, and \(4\pi/t_0\) is the coefficient obtained from
+the optical-theorem normalization and the nearest crossed-channel angular
+distance.
+
+The displayed \(D\)-dimensional estimate is the separate conditional
 Gegenbauer/angular-counting result of
 Proposition~\ref{prop:higher-dimensional-froissart-counting}.
 \end{proof}

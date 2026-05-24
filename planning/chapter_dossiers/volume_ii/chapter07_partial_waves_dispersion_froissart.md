@@ -150,3 +150,11 @@ hypotheses:
 - 2026-05-24 issue pass: added the confining-gauge-theory scope of the bound:
   external states are gauge-invariant hadrons or glueballs, and the
   Yang--Mills mass gap is a separate input/open construction problem.
+- 2026-05-24 issue #511 pass: the Froissart--Martin theorem proof now derives
+  the \(4\pi/t_0\) and \((1-\delta)^{-2}\) coefficients from the box-profile
+  lower bound, \(W=(s-4m^2)\sigma_{\rm tot}/(16\pi)\), the
+  \(y-1=2(1-\delta)\sqrt{t_*/s}+O(s^{-1})\) angular-distance estimate, and the
+  angular-tube polynomial upper bound at
+  \(x_*(s)=1+2t_*/(s-4m^2)\).  The proof spends an auxiliary Legendre margin
+  \(\delta_0<\delta\) to obtain the displayed coefficient without hiding an
+  \(\varepsilon\) loss in the logarithmic scale.
