@@ -458,6 +458,48 @@ Current conservation is a distributional statement:
 Equivalently, all matrix elements between vectors in \(\mathcal D\) obey the
 corresponding distributional conservation law.
 
+In correlation functions with local insertions, the quantum statement is a
+Ward identity of distributions and includes contact terms on collision
+diagonals.  Its precise form is part of the chosen quantum construction.  In a
+regulated source-functional presentation, let \(X=\prod_i\mathcal O_i(x_i)\)
+be a product of renormalized local insertions and let the local symmetry
+parameter be \(\epsilon(x)\).  The finite-regulator change of variables gives
+\begin{equation}
+  \int\dd^Dx\,(\partial_\mu\epsilon)(x)\,
+  \left\langle j_R^\mu(x)X\right\rangle_{\rm reg}
+  =
+  \left\langle \delta_{\epsilon R}X\right\rangle_{\rm reg}
+  +
+  \left\langle \mathcal A_{\epsilon,R}X\right\rangle_{\rm reg}.
+  \label{eq:quantum-noether-ward-regulated}
+\end{equation}
+Here \(\mathcal A_{\epsilon,R}\) is the local term produced by the variation
+of the regulated integration density and by the local counterterms in the
+source chart; in a fermionic path integral this density is the finite
+Berezinian density described in
+Chapter~\ref{ch:spinor-fields-fermionic-path-integrals}.  If the symmetry is
+implemented without anomaly in the chosen regularization and source chart,
+\(\mathcal A_{\epsilon,R}=0\).  The first term on the right of
+\eqref{eq:quantum-noether-ward-regulated} gives the contact distributions
+supported at \(x=x_i\):
+\[
+  \delta_{\epsilon R}X
+  =
+  \sum_i
+  \epsilon(x_i)\,
+  \mathcal O_1(x_1)\cdots
+  (\delta_R\mathcal O_i)(x_i)\cdots
+  \mathcal O_n(x_n),
+\]
+with the corresponding spin or derivative-of-delta terms when the inserted
+operators carry spacetime indices or derivatives.  After the regulator is
+removed, \eqref{eq:quantum-noether-ward-regulated} becomes an identity in the
+renormalized source-functional contact-term chart.  The fixed-point version
+used later is formulated in
+Section~\ref{sec:cft-source-functionals-ward-contacts}, with the status of
+the source brackets specified in
+Definition~\ref{def:cft-fixed-point-source-bracket-status}.
+
 A quantum charge is defined as a limit of smeared local charges when that limit
 exists. Choose a compactly supported time smearing \(f_t(x^0)\) concentrated
 near \(t\) and spatial cutoff functions \(\chi_R(\vec x)\) with

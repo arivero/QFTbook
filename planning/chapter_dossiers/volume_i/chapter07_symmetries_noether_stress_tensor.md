@@ -61,6 +61,9 @@ Working framework:
   conjugate momenta \(\Pi_A(t,\vec x)\);
 - quantum fields understood as operator-valued distributions on a common dense
   invariant domain when current operators are discussed.
+- quantum Ward identities in correlators understood as source-functional
+  distributional identities after a regulator, integration density, and
+  contact-term chart have been specified.
 
 ## Notation Inventory
 
@@ -91,6 +94,9 @@ Working framework:
 - Lorentz current and Lorentz charge for scalar fields;
 - quantum current and charge as operator-valued distributions with regulator
   and domain status declared.
+- regulated quantum Noether Ward identity with insertion contact terms and a
+  possible local density/counterterm variation
+  \(\mathcal A_{\epsilon,R}\).
 
 ## Claim Ledger
 
@@ -106,6 +112,7 @@ Working framework:
 | The free scalar stress tensor gives \(T^{00}=\mathcal H\). | Derived | Substitution of the scalar Lagrangian |
 | Lorentz-current conservation follows from stress-tensor conservation and symmetry. | Derived | Antisymmetry of Lorentz parameter |
 | In quantum theory, local currents and stress tensors must be defined as renormalized operator-valued distributions in the chosen framework. | Framework statement | Local operator construction, not an automatic consequence of Poincare invariance alone |
+| Quantum Noether identities in correlation functions include insertion contact terms and possible local terms from the regulated integration density and source-chart counterterms. | Framework statement | Equation `eq:quantum-noether-ward-regulated`; cross-reference to CFT source-functional Ward identities |
 
 ## Figure Ledger
 
@@ -130,3 +137,11 @@ Rendered check:
   charges.
 - Do not turn anomaly or gauge subtleties into main-text negative framing; only
   mention them as framework qualifications when necessary.
+
+## Audit Notes
+
+- 2026-05-24 issue #307 pass: added the regulated quantum Noether Ward
+  identity `eq:quantum-noether-ward-regulated`, connecting the classical
+  localized-parameter identity to source-functional Ward identities with
+  insertion contact terms and possible local density/counterterm variation;
+  cross-referenced the CFT source-functional contact-term chart in Volume V.
