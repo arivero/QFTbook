@@ -69,7 +69,11 @@
 | \(B_A\) | tangential boundary Dirac operator in the APS collar decomposition |
 | \(\eta_{B_A}(0),h_{B_A}\) | eta invariant and boundary zero-mode dimension in the APS formula |
 | \(\mathcal A(\zeta,A)\) | gauge variation of the effective action |
+| \(\Omega_{\mathrm{loc}}^{p,q}\) | local \(p\)-forms of ghost number \(q\) in the anomaly descent bicomplex |
+| \(a_4^{(1)},a_3^{(2)}\) | relative BRST cocycle representative and its descent partner for a four-dimensional anomaly |
+| \(b_4^{(0)},b_3^{(1)}\) | local counterterm density and total-derivative ambiguity in the relative coboundary relation |
 | \(\mathsf A,\mathsf F\) | anti-Hermitian connection and curvature for descent |
+| \(\mathsf c\) | odd anti-Hermitian ghost used in the descent complex |
 | \(I_6\) | six-form anomaly polynomial |
 | \(I_5^{(0)}\) | Chern--Simons five-form in the descent sequence |
 | \(I_4^{(1)}\) | ghost-number-one four-form anomaly representative |
@@ -115,8 +119,23 @@
   up to the standard local transgression term when the data are not product
   near the boundary.
 - Gauge anomalies are ghost-number-one local BRST cohomology classes.
+- The descent construction is now stated as a bicomplex:
+  \(\Omega_{\mathrm{loc}}^{p,q}\) carries \(d\) of bidegree \((1,0)\) and
+  \(s\) of bidegree \((0,1)\), with \(d^2=s^2=sd+ds=0\).
+- A four-dimensional local anomaly density is a relative cocycle
+  \(a_4^{(1)}\) obeying \(s a_4^{(1)}-d a_3^{(2)}=0\), modulo
+  \(a_4^{(1)}\sim a_4^{(1)}+s b_4^{(0)}+d b_3^{(1)}\), hence a class in
+  \(H^{1,4}(s\mid d)\).
+- The text proves the local-functional identification: Wess--Zumino
+  consistency gives the relative cocycle condition, local counterterms give
+  relative coboundaries, and any relative cocycle gives a consistent local
+  anomalous variation after integration.
 - In four dimensions the local chiral gauge anomaly descends from the six-form
   polynomial \(I_6\propto \operatorname{tr}\mathsf F^3\).
+- The BRST descent is displayed as
+  \(\dd I_5^{(0)}=I_6\), \(sI_5^{(0)}=\dd I_4^{(1)}\), and
+  \(sI_4^{(1)}=\dd I_3^{(2)}\), with the even gauge parameter obtained by
+  replacing the odd ghost \(\mathsf c\) by \(\lambda\).
 - Local anomaly inflow is displayed as the bulk-boundary identity
   \[
     \delta_\lambda\left(W_M[\mathsf A]+W_X^{\mathrm{bulk}}[\mathsf A_X]\right)
@@ -188,3 +207,7 @@
   including the Chern--Simons bulk response, the bulk-boundary cancellation
   identity, the Callan--Harvey domain-wall interpretation, and the transition
   from local descent to finite invertible anomaly theories.
+- 2026-05-24 issue #253 pass: expanded the descent discussion into an explicit
+  \((s,d)\) bicomplex, proved the local-functional relation between
+  Wess--Zumino consistency and \(H^{1,4}(s\mid d)\), and derived the first two
+  descent equations from \(sI_6=0\) and the algebraic Poincare lemma.

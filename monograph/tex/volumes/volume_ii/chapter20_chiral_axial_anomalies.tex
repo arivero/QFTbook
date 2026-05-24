@@ -940,19 +940,121 @@ and adding a local counterterm \(X[A]\) shifts it by
 Thus the possible local gauge anomalies are cohomology classes of the BRST
 differential at ghost number one.
 
-For four-dimensional chiral fermions, this cohomology class is represented by
-the descent of a six-form anomaly polynomial.  To state the normalization
-without hiding convention-dependent factors, introduce the anti-Hermitian
-connection
+The local form of this statement is the relative cohomology described in
+Chapter~\ref{ch:volume-ii-18}.  Let
+\[
+  \Omega_{\mathrm{loc}}^{p,q}
+\]
+be the vector space of local \(p\)-forms of ghost number \(q\), built from the
+background connection, the ghost, and finitely many derivatives, with
+coefficients that are polynomial or formal power series in the fields in the
+chosen local coordinate chart.  In the abstract cohomological notation
+\(H(s\mid d)\), write \(d\) for the spacetime exterior derivative; in the
+connection formulas below the same exterior derivative is denoted \(\dd\).
+The derivative \(d\) has bidegree \((1,0)\),
+\[
+  d:\Omega_{\mathrm{loc}}^{p,q}\longrightarrow
+  \Omega_{\mathrm{loc}}^{p+1,q},
+\]
+and the BRST differential has bidegree \((0,1)\),
+\[
+  s:\Omega_{\mathrm{loc}}^{p,q}\longrightarrow
+  \Omega_{\mathrm{loc}}^{p,q+1}.
+\]
+Both are odd with respect to total degree, and with the sign convention used
+here
+\begin{equation}
+  d^2=0,\qquad s^2=0,\qquad sd+ds=0 .
+  \label{eq:descent-bicomplex-differentials}
+\end{equation}
+Thus \(\Omega_{\mathrm{loc}}^{\bullet,\bullet}\) is a bicomplex.  For a
+four-dimensional integrated anomaly, choose a representative
+\[
+  a_4^{(1)}\in\Omega_{\mathrm{loc}}^{4,1}.
+\]
+It is a relative cocycle when there exists
+\(a_3^{(2)}\in\Omega_{\mathrm{loc}}^{3,2}\) such that
+\begin{equation}
+  s a_4^{(1)}-d a_3^{(2)}=0 .
+  \label{eq:relative-anomaly-cocycle}
+\end{equation}
+Two representatives define the same relative class when there exist
+\(b_4^{(0)}\in\Omega_{\mathrm{loc}}^{4,0}\) and
+\(b_3^{(1)}\in\Omega_{\mathrm{loc}}^{3,1}\) such that
+\begin{equation}
+  a_4^{(1)}
+  \sim
+  a_4^{(1)}+s b_4^{(0)}+d b_3^{(1)} .
+  \label{eq:relative-anomaly-coboundary}
+\end{equation}
+The quotient of cocycles by this equivalence relation is
+\[
+  H^{1,4}(s\mid d).
+\]
+
+\begin{proposition}[Local anomalies as relative BRST classes]
+At the level of local functionals, a four-dimensional consistent gauge anomaly
+with local density \(a_4^{(1)}\) determines a class
+\([a_4^{(1)}]\in H^{1,4}(s\mid d)\).  Changing the renormalized effective
+action by a local counterterm changes \(a_4^{(1)}\) by the coboundary
+\eqref{eq:relative-anomaly-coboundary}.  Conversely, a representative of
+\(H^{1,4}(s\mid d)\) defines a local functional whose BRST variation obeys
+the infinitesimal Wess--Zumino consistency condition.
+\end{proposition}
+
+\begin{proof}
+Write the anomalous variation as
+\[
+  \delta_\zeta W[A]=\int_M a_4^{(1)}(\zeta,A).
+\]
+Replacing the even parameter \(\zeta\) by the odd ghost gives
+\(\int_M a_4^{(1)}(c,A)\).  Equation
+\eqref{eq:wess-zumino-consistency} is precisely the Chevalley--Eilenberg
+cocycle condition for this integrated functional, hence
+\[
+  s\int_M a_4^{(1)}=0 .
+\]
+For a local density this means \(s a_4^{(1)}\) is a total derivative,
+which is \eqref{eq:relative-anomaly-cocycle}.  If
+\(W[A]\) is changed by a local counterterm
+\(\int_M b_4^{(0)}\), its anomalous variation changes by
+\[
+  s\int_M b_4^{(0)}
+  =
+  \int_M s b_4^{(0)} ,
+\]
+and adding an identically integrated total derivative changes the local
+representative by \(d b_3^{(1)}\).  This is exactly the equivalence
+\eqref{eq:relative-anomaly-coboundary}.  Conversely, if
+\eqref{eq:relative-anomaly-cocycle} holds, then on a closed spacetime, or with
+boundary conditions for which the boundary integral is part of the specified
+inflow problem, the integrated BRST variation vanishes.  Unpacking \(s\) as
+the Lie-algebra differential gives \eqref{eq:wess-zumino-consistency}.
+\end{proof}
+
+For four-dimensional chiral fermions, this relative cohomology class is
+represented by the descent of a six-form anomaly polynomial.  To state the
+normalization without hiding convention-dependent factors, introduce the
+anti-Hermitian connection
 \[
   \mathsf A=-\ii A,
   \qquad
   \mathsf F=\dd\mathsf A+\mathsf A^2=-\ii F ,
 \]
 where \(A\) and \(F\) are the Hermitian gauge potential and curvature used in
-the Yang--Mills chapters.  Products of differential forms below include both
-matrix multiplication and wedge product.  For a left-handed Weyl fermion in a
-representation \(R\), define the six-form
+the Yang--Mills chapters.  Let \(\mathsf c\) be the corresponding odd
+anti-Hermitian ghost.  On the descent variables,
+\begin{equation}
+  s\mathsf A=\dd\mathsf c+[\mathsf A,\mathsf c],
+  \qquad
+  s\mathsf c=-\mathsf c^2,
+  \qquad
+  s\mathsf F=[\mathsf F,\mathsf c].
+  \label{eq:descent-brst-connection}
+\end{equation}
+Products of differential forms below include both matrix multiplication and
+wedge product with total-degree Koszul signs.  For a left-handed Weyl fermion
+in a representation \(R\), define the six-form
 \[
   I_6^R
   =
@@ -994,23 +1096,44 @@ For one left-handed representation \(R\), a standard representative is
   \qquad
   \dd I_{5,R}^{(0)}=I_6^R .
 \]
-For a gauge variation
+Because \(sI_6=0\) and \(I_6=\dd I_5^{(0)}\),
+\[
+  \dd(sI_5^{(0)})=-s(\dd I_5^{(0)})=-sI_6=0 .
+\]
+The algebraic Poincare lemma on local forms then gives the first descent
+equation
+\begin{equation}
+  s I_5^{(0)}
+  =
+  \dd I_4^{(1)}(\mathsf c,\mathsf A).
+  \label{eq:first-brst-descent}
+\end{equation}
+Applying \(s\) again and using \eqref{eq:descent-bicomplex-differentials}
+gives a second descent equation
+\begin{equation}
+  s I_4^{(1)}
+  =
+  \dd I_3^{(2)}
+  \label{eq:second-brst-descent}
+\end{equation}
+for some \(I_3^{(2)}\in\Omega_{\mathrm{loc}}^{3,2}\).  Hence
+\(I_4^{(1)}\) is a representative of \(H^{1,4}(s\mid d)\) in the convention
+of \eqref{eq:relative-anomaly-cocycle}.  Replacing the ghost \(\mathsf c\) by
+an even infinitesimal parameter \(\lambda\) gives the ordinary gauge variation
 \[
   \delta_\lambda \mathsf A=\dd\lambda+[\mathsf A,\lambda],
-\]
-one has the first descent equation
-\[
+  \qquad
   \delta_\lambda I_5^{(0)}
   =
   \dd I_4^{(1)}(\lambda,\mathsf A).
 \]
 In the same left-handed convention,
 \[
-  I_{4,R}^{(1)}(\lambda,\mathsf A)
+  I_{4,R}^{(1)}(\mathsf c,\mathsf A)
   =
   \kappa\,\operatorname{tr}_R
   \left[
-    \lambda\,\dd
+    \mathsf c\,\dd
     \left(
       \mathsf A\,\dd\mathsf A+\frac12\mathsf A^3
     \right)
