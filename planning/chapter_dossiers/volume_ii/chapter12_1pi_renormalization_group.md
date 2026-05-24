@@ -44,6 +44,10 @@ The chapter must define:
 - the symmetric Euclidean subtraction point for the four-point 1PI vertex;
 - the running quartic coupling \(g(\mu)\) as a coordinate on the 1PI effective
   action;
+- the sign convention in \(g(\mu)=-Z_{\rm MOM}(\mu)^2\Gamma_R^{(4)}\): the tree
+  1PI vertex is \(\Gamma_{\rm tree}^{(4)}=-g_R\), so \(g(\mu)\) is oriented as
+  the positive coefficient of \(\phi^4/4!\) and matches the later MS
+  coefficient convention;
 - the one-loop finite relation between \(g(\mu)\) and \(g_R=g(0)\);
 - nearby-scale comparison \(g(\mu')\) versus \(g(\mu)\);
 - the beta function as a differential comparison of renormalized coordinates;
@@ -103,6 +107,10 @@ The chapter must define:
 2. In four-dimensional scalar quartic theory, the one-loop four-point bubble
    changes the quartic coordinate while
    \(Z_{\rm MOM}(\mu)=1+O(g_R^2)\) at that order.
+2a. The minus sign in \(g(\mu)=-Z_{\rm MOM}(\mu)^2\Gamma_R^{(4)}\) compensates
+    the 1PI vertex convention \(\Gamma_{\rm tree}^{(4)}=-g_R\), so the
+    coordinate has the same positive orientation as the coefficient
+    \(\lambda(\mu)\) in the minimal-subtraction relation for \(g^\epsilon\).
 3. The corresponding one-loop two-point tadpole is independent of \(k^2\), so
    it does not change the field normalization at this order.
 4. The relation between \(g(\mu')\) and \(g(\mu)\) is finite after the UV
@@ -256,3 +264,6 @@ The chapter must define:
   Definition~\ref{def:three-field-normalization-factors} to separate it from
   the cutoff-dependent reference factor \(Z_R\) and the total
   Callan--Symanzik field factor \(Z_\phi\).
+- 2026-05-24 issue #353 pass: added the quartic-coordinate sign convention
+  after the momentum-subtraction definition and linked it to the scalar-quartic
+  minimal-subtraction coefficient convention.
