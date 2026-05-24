@@ -1002,3 +1002,140 @@ For \(D=3\), \(d_{\ell,3}=2\ell+1\), and therefore
 \]
 This is the same counting obtained from the one-particle spectrum of
 \(\widehat H_{\rm cyl}=\sqrt{-\nabla_{S^2}^2+1/4}\) on \(S^2\).
+
+\section{High-Temperature Operator Entropy and the Cardy Limit}
+\label{sec:cardy-operator-entropy}
+
+For a CFT satisfying Hypothesis~\ref{hyp:radial-reconstruction-data}, assume
+in addition that the spectral projection of \(D_{\rm rad}\) onto
+\([0,\Delta]\) has finite trace for every finite \(\Delta\).  The cylinder
+thermal trace is then
+\begin{equation}
+  Z_{\rm cyl}(\beta)
+  =
+  \operatorname{Tr}_{\mathcal H_{S^{D-1}}}
+  \ee^{-\beta D_{\rm rad}}
+  =
+  \int_{0}^{\infty}\ee^{-\beta E}\,dN(E),
+  \qquad
+  \beta>0,
+  \label{eq:cylinder-thermal-trace}
+\end{equation}
+where
+\[
+  N(\Delta)
+  =
+  \operatorname{Tr}_{\mathcal H_{S^{D-1}}}
+  \mathbf 1_{[0,\Delta]}(D_{\rm rad}).
+\]
+If the spectrum is pure point with finite degeneracies, this integral is
+\(\sum_\Delta d(\Delta)\ee^{-\beta\Delta}\), where
+\(d(\Delta)=\dim\ker(D_{\rm rad}-\Delta)\).  The operator partition function
+\(Z_{\rm op}(q)\) is this same trace with \(q=\ee^{-\beta}\) when the local
+operator basis is complete and the trace converges.  The large-\(\Delta\)
+density should therefore be understood as the integrated spectral counting
+function \(N(\Delta)\), or as a smoothed density obtained from it, rather than
+as an everywhere-defined ordinary function.
+
+Assume that the high-temperature cylinder free energy has the leading form
+\begin{equation}
+  \log Z_{\rm cyl}(\beta)
+  =
+  A\,\beta^{-(D-1)}+o(\beta^{-(D-1)}),
+  \qquad
+  A>0 .
+  \label{eq:cylinder-high-temp-free-energy}
+\end{equation}
+This hypothesis is a thermodynamic input about the CFT on
+\(S^{D-1}\): in \(D>2\) the constant \(A\) is not fixed by the stress-tensor
+two-point coefficient alone.  It is the finite-volume version of the flat
+thermal pressure coefficient.  The precise positivity input is the following
+Hardy--Littlewood Tauberian implication: if \(dN\) is a positive spectral
+measure on \([0,\infty)\) and
+\(\log\int_0^\infty\ee^{-\beta E}dN(E)=A\beta^{-\alpha}+o(\beta^{-\alpha})\)
+with \(A,\alpha>0\), then
+\[
+  \log N(E)
+  =
+  (\alpha+1)A^{1/(\alpha+1)}
+  \left(\frac{E}{\alpha}\right)^{\alpha/(\alpha+1)}
+  +o(E^{\alpha/(\alpha+1)}).
+\]
+Applying this with \(\alpha=D-1\) gives the leading microcanonical entropy
+\begin{equation}
+  \log N(\Delta)
+  =
+  D\,A^{1/D}
+  \left(\frac{\Delta}{D-1}\right)^{\frac{D-1}{D}}
+  +o(\Delta^{\frac{D-1}{D}}).
+  \label{eq:general-cft-entropy-dimension-asymptotic}
+\end{equation}
+The saddle calculation is explicit.  Extremize
+\[
+  \Phi(\beta)=\beta\Delta+A\beta^{-(D-1)}.
+\]
+The stationary point satisfies
+\[
+  \Delta=(D-1)A\beta_\ast^{-D},
+  \qquad
+  \beta_\ast=\left(\frac{(D-1)A}{\Delta}\right)^{1/D}.
+\]
+Substitution gives \eqref{eq:general-cft-entropy-dimension-asymptotic}.  Thus
+the power \(\Delta^{(D-1)/D}\) is fixed by extensivity of high-temperature
+thermal physics in \(D-1\) spatial dimensions, while the coefficient records
+the specific CFT thermal free energy.
+
+In \(D=2\) the torus supplies a stronger statement because modular invariance
+relates the high-temperature trace to the low-temperature vacuum.  Let the
+spatial circle have circumference \(2\pi\), and let
+\[
+  H_{\rm cyl}=L_0+\bar L_0-\frac{c_L+c_R}{24},
+  \qquad
+  \Delta=h+\bar h,
+  \qquad
+  J=h-\bar h .
+\]
+For a compact unitary two-dimensional CFT with discrete finite-multiplicity
+spectrum, unique vacuum, and modular-invariant torus partition function, the
+thermal trace
+\[
+  Z(\beta)
+  =
+  \operatorname{Tr}
+  \exp\left[-\beta\left(L_0+\bar L_0-\frac{c_L+c_R}{24}\right)\right]
+\]
+obeys \(Z(\beta)=Z(4\pi^2/\beta)\) for the rectangular torus.  As
+\(\beta\to0^+\), the transformed trace is dominated by the vacuum, and
+\begin{equation}
+  \log Z(\beta)
+  =
+  \frac{\pi^2(c_L+c_R)}{6\beta}
+  +o(\beta^{-1}).
+  \label{eq:modular-high-temp-cardy}
+\end{equation}
+If \(c_L=c_R=c\), then \(A=\pi^2c/3\) in
+\eqref{eq:cylinder-high-temp-free-energy}.  Equation
+\eqref{eq:general-cft-entropy-dimension-asymptotic} gives
+\begin{equation}
+  \log N(\Delta)
+  =
+  2\pi\sqrt{\frac{c\,\Delta}{3}}
+  +o(\sqrt{\Delta}).
+  \label{eq:cardy-total-dimension-asymptotic}
+\end{equation}
+This is the Cardy entropy-dimension relation for total scaling dimension.
+Keeping left and right energies separately gives the spin-resolved form
+\begin{equation}
+  \log \rho(h,\bar h)
+  =
+  2\pi\sqrt{\frac{c_L h}{6}}
+  +
+  2\pi\sqrt{\frac{c_R\bar h}{6}}
+  +o(\sqrt h+\sqrt{\bar h}),
+  \label{eq:cardy-spin-resolved}
+\end{equation}
+for \(h,\bar h\to\infty\) with \(h/\bar h\) remaining in a compact subinterval
+of \((0,\infty)\).  If the lowest left or right conformal weight is not the
+vacuum value, the same derivation replaces \(c_L,c_R\) by the corresponding
+effective central charges \(c_L-24h_{\min}\) and
+\(c_R-24\bar h_{\min}\).

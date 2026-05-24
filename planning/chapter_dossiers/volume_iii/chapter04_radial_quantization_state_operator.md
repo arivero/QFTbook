@@ -26,6 +26,18 @@ The chapter establishes:
   Euclidean generators;
 - the cylinder sewing identity on ordered constant-\(\tau\) slabs and its
   Heisenberg-operator form;
+- the cylinder thermal trace \(Z_{\rm cyl}(\beta)\) as the Laplace--Stieltjes
+  transform of the positive spectral measure \(dN(E)\), the integrated
+  spectral counting function \(N(\Delta)\), and the
+  high-temperature/microcanonical entropy relation
+  \(\log N(\Delta)\sim
+  D A^{1/D}(\Delta/(D-1))^{(D-1)/D}\) when
+  \(\log Z_{\rm cyl}(\beta)\sim A\beta^{-(D-1)}\);
+- the two-dimensional Cardy specialization from modular invariance of the
+  torus partition function, including
+  \(\log N(\Delta)\sim 2\pi\sqrt{c\Delta/3}\) for
+  \(c_L=c_R=c\) and the spin-resolved
+  \(2\pi\sqrt{c_Lh/6}+2\pi\sqrt{c_R\bar h/6}\) form;
 - the assumptions needed for discreteness, finite multiplicity, unique
   conformal vacuum, cluster factorization, tube-domain continuation, and radial
   local completeness;
@@ -55,6 +67,10 @@ The chapter establishes:
 7. Cluster decomposition is part of the consolidated radial reconstruction
    hypothesis, with the large-translation factorization limit displayed
    explicitly.
+8. Cardy and high-temperature entropy claims must be stated as asymptotic
+   spectral-counting statements with hypotheses: high-temperature cylinder
+   free energy for general \(D\), and modular invariance, compactness, unique
+   vacuum, and finite multiplicities in \(D=2\).
 
 ## Figures
 
@@ -82,3 +98,8 @@ The chapter establishes:
 - 2026-05-24 issue #270 pass: expanded the hypothesis block to state unique
   conformal vacuum and the explicit cluster-factorization limit for separated
   Euclidean local correlators.
+- 2026-05-24 issue #281 pass: added the high-temperature operator entropy and
+  Cardy section after the free-scalar operator partition function, formulating
+  the trace spectrally, stating the needed Hardy--Littlewood Tauberian
+  implication, deriving the general \(D\) saddle relation, and deriving the
+  \(2D\) modular-invariance Cardy formula with assumptions.
