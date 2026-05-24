@@ -2,6 +2,61 @@
 \label{ch:volume-ii-subdivergences-forest-formulas}
 \ConventionsEuclidean
 
+\section{Path-Integral Status: Formal Coefficientwise Renormalization}
+
+The construction in this chapter is a perturbative construction extracted from
+a regulated Euclidean source functional.  Let \(\langle-\rangle_{0,\Lambda}\)
+be a specified ultraviolet-regulated Gaussian expectation and let
+\(V_\Lambda\) be a finite linear combination of regulated local interaction
+functionals with couplings
+\[
+  g=(g_1,\ldots,g_r),
+  \qquad
+  V_\Lambda[\phi]=\sum_{\alpha=1}^r g_\alpha O_{\alpha,\Lambda}[\phi],
+\]
+where the subscript \(\Lambda\) denotes the ultraviolet regulator used to
+define both the covariance and the inserted local functionals.  The normalized
+source functional is
+\[
+  Z_{\Lambda,g}[J]
+  =
+  \frac{\left\langle
+    \exp\big(\langle J,\phi\rangle -V_\Lambda[\phi]\big)
+  \right\rangle_{0,\Lambda}}
+  {\left\langle
+    \exp\big(-V_\Lambda[\phi]\big)
+  \right\rangle_{0,\Lambda}},
+\]
+understood as an identity in the formal power-series ring
+\(\mathbb C[[g_1,\ldots,g_r]]\).  Its correlation functions are expanded as
+formal power series in \(g\):
+\[
+  \big\langle \phi(x_1)\cdots\phi(x_n)\big\rangle_{\Lambda,g}
+  =
+  \sum_{\nu\in\mathbb N^r}
+  g^\nu\,
+  G^{(\nu)}_{\Lambda,n}(x_1,\ldots,x_n),
+  \qquad
+  g^\nu=\prod_{\alpha=1}^r g_\alpha^{\nu_\alpha}.
+\]
+Each coefficient \(G^{(\nu)}_{\Lambda,n}\) is a finite sum of graph
+distributions, or equivalently of momentum-space graph integrals after a
+choice of momentum routing and test functions.  BPHZ renormalization acts on
+these coefficient distributions graph by graph.  For a graph \(\Gamma\), the
+forest formula constructs a renormalized coefficient \(R_\Gamma I_\Gamma\) by
+subtracting Taylor polynomials in the external momenta of divergent subgraphs.
+Only after this coefficientwise operation has been performed does one assemble
+the formal series again.
+
+Thus BPHZ, as used here, is not an assertion that the formal symbol
+\(\mathcal D\phi\) denotes a countably additive measure on an unregulated
+continuum field space, and it is not a nonperturbative construction of the
+theory.  It is a precise local subtraction scheme for the formal perturbative
+expansion of regulated Euclidean Green functions and 1PI kernels.  Its
+comparison with Wilsonian effective actions is therefore an order-by-order
+comparison between two coordinate systems on perturbative coefficient data,
+not an equality of nonperturbative path integrals.
+
 
 \section{Graphs and Ultraviolet Subgraphs}
 

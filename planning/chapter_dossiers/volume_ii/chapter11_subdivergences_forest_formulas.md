@@ -31,6 +31,10 @@
 
 The chapter must define:
 
+- the top-of-chapter path-integral status declaration: BPHZ is a
+  coefficient-by-coefficient renormalization of the formal perturbative
+  expansion extracted from a regulated Euclidean source functional, not a
+  nonperturbative continuum measure construction;
 - Euclidean Feynman graph \(\Gamma\), internal lines \(E(\Gamma)\), loop number
   \(L(\Gamma)\), external momenta \(p\), and integrand \(I_\Gamma(\ell,p)\);
 - the convention that the chapter works with 1PI kernels, while connected
@@ -54,6 +58,11 @@ The chapter must define:
 
 ## Claim Ledger
 
+0. The BPHZ construction in this chapter acts on graph coefficient
+   distributions in the formal expansion of regulated Euclidean Green functions
+   and 1PI kernels.  It does not assert the existence of an unregulated
+   continuum path-integral measure and is not by itself a nonperturbative
+   construction of the QFT.
 1. A UV subgraph is specified by a subset of internal lines; its external
    half-lines are all incident half-lines not contained in the subgraph.
    Internal loop momenta of the subgraph are scaled together while momenta in
@@ -119,3 +128,8 @@ The chapter must define:
 - 2026-05-24 issue pass: addressed #219 by adding a massless/BPHZL remark to
   the chapter, distinguishing the massive BPHZ theorem from the infrared-safe
   subtraction framework needed for critical massless kernels.
+- 2026-05-24 issue pass: addressed #316 by adding the missing
+  top-of-chapter path-integral status declaration.  The chapter now states
+  before the graph formalism that BPHZ renormalizes formal perturbative
+  coefficient distributions extracted from a regulated source functional and
+  is not a nonperturbative continuum path-integral construction.
