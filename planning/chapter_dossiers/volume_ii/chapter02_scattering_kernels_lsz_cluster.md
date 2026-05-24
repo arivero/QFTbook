@@ -72,6 +72,10 @@
   convention and in delta-normalized source convention.
 - Cluster decomposition expresses scattering kernels as sums over products of
   connected kernels associated to partitions of the external process.
+- The algebraic moment-cumulant recursion defining connected kernels is
+  separated from the physical cluster theorem: under uniqueness of the vacuum,
+  mass gap, local commutativity, and Wightman clustering, widely spacelike
+  separated scattering processes factorize.
 - The connected amplitude is the object whose poles, cuts, and analytic
   continuation will be studied in subsequent chapters.
 
