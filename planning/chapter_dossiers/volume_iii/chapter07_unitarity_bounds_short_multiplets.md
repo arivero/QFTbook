@@ -40,6 +40,9 @@ The chapter establishes:
   equations;
 - conservation and free-field equations as null-state equations in the
   quotient local-operator space.
+- the scalar Laplace shortening as the representation-theoretic source of the
+  \(1-q^2\) subtraction in the free-scalar single-letter character of
+  Chapter 4.
 - Theorem `thm:basic-unitarity-bounds-short-multiplets`, which collects the
   scalar, spinor, and symmetric-traceless bounds and their saturation
   equations in one labeled statement.
@@ -93,3 +96,6 @@ The chapter establishes:
 - 2026-05-24 issue #287 pass: added the two-row mixed-symmetry tensor
   first-level computation, including all vector-tensor channels in the stable
   range and the separate rectangular/non-rectangular shortening equations.
+- 2026-05-24 issue #294 pass: recorded that the scalar Laplace null descendant
+  at the unitarity bound is the null submodule subtracted in the free-scalar
+  single-letter character of Chapter 4.
