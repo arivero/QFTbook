@@ -1182,6 +1182,187 @@ lemma explains why physical cohomology depends on gauge-invariant transverse
 and matter data, while the doublet variables remain necessary in intermediate
 local formulas for propagators, counterterms, and Slavnov--Taylor identities.
 
+\section{Dimensional Regularization in Perturbative Gauge Theory}
+
+Dimensional regularization is a perturbative rule for assigning meromorphic
+functions of a complex dimension parameter to Feynman graph distributions.  It
+is specified graph by graph, together with algebraic rules for tensor indices,
+spinors, internal polarizations, and external states.  The datum is this
+meromorphic graph-distribution assignment; the field variables remain the
+fields of the physical-dimensional theory whose perturbative graphs are being
+regularized.
+
+\begin{definition}[Dimensional analytic regularization of graph integrals]
+Let \(G\) be a connected Feynman graph with loop number \(L\), external
+momenta \(p_i\) obeying physical \(d\)-dimensional momentum conservation, and
+propagator powers \(\nu_e\).  Put \(D=d-\epsilon\).  A dimensional
+regularization datum first defines the scalar integral
+\[
+  I_G(D,\nu,p,m)
+  =
+  \int
+  \prod_{\ell=1}^L
+  \frac{\dd^D q_\ell}{(2\pi)^D}
+  \prod_{e\in E(G)}
+  \frac{1}{(Q_e(q,p)^2+m_e^2-\ii0)^{\nu_e}}
+\]
+by Schwinger or Feynman parameters in a convergence domain and by meromorphic
+continuation in \(D\) and \(\nu_e\).  The notation \(\dd^Dq\) in this formula
+denotes this analytic rule, not a Borel measure on a literal vector space of
+nonintegral dimension.  Tensor integrals are then defined by adjoining a
+continued metric-contraction algebra.  Thus the \(D\)-dimensional metric
+\(\hat\eta^{\mu\nu}\) and identity \(\hat\delta^\mu{}_\nu\) satisfy
+\[
+  \hat\delta^\mu{}_\mu=D,\qquad
+  \hat\eta^{\mu\rho}\hat\eta_{\rho\nu}=\hat\delta^\mu{}_\nu,
+\]
+and rotational covariance in this formal algebra fixes, for example,
+\[
+  \int\dd^D q\,q^\mu q^\nu F(q^2)
+  =
+  \frac{\hat\eta^{\mu\nu}}{D}
+  \int\dd^D q\,q^2F(q^2),
+\]
+whenever the scalar integrals on the right are defined by the same
+meromorphic continuation.
+\end{definition}
+
+The continuation in \(D\) enters in three distinct places.
+
+\begin{enumerate}
+\item \textbf{Loop integration.}  Momentum integrals, phase-space integrals
+in unresolved sectors, and tensor averages use the \(D\)-dimensional metric
+\(\hat\eta\).
+\item \textbf{Algebra.}  The contractions of Lorentz indices, gauge-field
+polarization sums, Dirac matrices, and Levi-Civita tensors require an
+additional prescription.  This prescription is independent data beyond the
+scalar analytic continuation.
+\item \textbf{External kinematics.}  External observed momenta and
+polarizations may be kept in the physical \(d\)-dimensional subspace or
+continued together with the loops.  This choice changes finite terms and
+evanescent operators, hence it is part of the renormalization convention.
+\end{enumerate}
+
+The principal variants used in perturbative gauge theory differ precisely in
+these algebraic choices.\footnote{The original gauge-theory construction is
+G.~'t Hooft and M.~Veltman, ``Regularization and renormalization of gauge
+fields,'' \emph{Nuclear Physics B} \textbf{44} (1972), 189--213.  For the
+Breitenlohner--Maison/'t Hooft--Veltman treatment of \(\gamma_5\), see
+P.~Breitenlohner and D.~Maison, \emph{Communications in Mathematical Physics}
+\textbf{52} (1977), 11--38, 39--54, 55--75.  For dimensional reduction, see
+W.~Siegel, ``Supersymmetric dimensional regularization via dimensional
+reduction,'' \emph{Physics Letters B} \textbf{84} (1979), 193--196, and
+D.~Stockinger, ``Regularization by dimensional reduction: consistency, quantum
+action principle, and supersymmetry,'' arXiv:hep-ph/0503129.}
+
+\begin{definition}[CDR, HV, DRED, and FDH data]
+Let \(d=4\) for definiteness.
+\begin{enumerate}
+\item Conventional dimensional regularization, CDR, continues loop momenta,
+unobserved momenta, gauge polarizations, and Dirac gamma matrices to \(D\)
+dimensions.
+\item The HV prescription keeps observed external states in the physical
+four-dimensional subspace.  Loop momenta and unresolved internal polarizations
+are \(D\)-dimensional.
+\item Dimensional reduction, DRED, keeps a four-dimensional index algebra
+\(\eta_4\) and equips it with formal projectors
+\[
+  \eta_4=\hat\eta+\tilde\eta,\qquad
+  \hat\eta^\mu{}_\mu=D,\qquad
+  \tilde\eta^\mu{}_\mu=4-D ,
+\]
+where loop momenta live in the \(\hat\eta\)-sector while the gauge and spin
+algebra remain four-dimensional.  The \(\tilde\eta\)-components of a
+four-dimensional gauge field behave as evanescent scalar fields and require
+their own local counterterm coordinates when they are generated.
+\item The four-dimensional helicity prescription, FDH, is a scattering
+amplitude variant in which external observed helicities are four-dimensional
+and unresolved loop momenta are dimensionally continued.  Its finite
+conversion to CDR or HV is a scheme transformation only after the evanescent
+couplings have been specified.
+\end{enumerate}
+\end{definition}
+
+The distinction matters in gauge theory.  In vectorlike gauge theories without
+chiral \(\gamma_5\) insertions, CDR and HV preserve the tensor algebra needed
+for Ward and Slavnov--Taylor identities at the regulated level, modulo local
+subtractions fixed by the chosen renormalization conditions.  In
+supersymmetric theories, DRED has the specific advantage that the spin algebra
+remains four-dimensional.  Its consistency beyond the lowest orders requires
+the evanescent scalar sector and its couplings to be included as part of the
+local action.  A calculation that drops these evanescent coordinates has
+changed the regularization datum.
+
+\begin{definition}[\(\gamma_5\) and Levi-Civita data]
+A chiral dimensional regulator must specify the algebra generated by
+\(\gamma_5\), the physical four-dimensional Levi-Civita tensor
+\(\epsilon^{\mu\nu\rho\sigma}\), and the split between physical and evanescent
+subspaces.  In the Breitenlohner--Maison/'t Hooft--Veltman prescription,
+\[
+  \gamma_5=\ii\gamma^0\gamma^1\gamma^2\gamma^3
+\]
+is four-dimensional: it anticommutes with physical gamma matrices and commutes
+with evanescent gamma matrices.  In dimensional-reduction computations of the
+anomaly, \(\gamma_5\) and \(\epsilon^{\mu\nu\rho\sigma}\) remain
+four-dimensional objects while loop-momentum contractions are performed in the
+continued \(\hat\eta\)-sector and the evanescent \(\tilde\eta\)-sector is kept
+as an explicit local algebraic component.
+\end{definition}
+
+There is no prescription in which \(\gamma_5\) anticommutes with every
+\(D\)-dimensional gamma matrix, has the four-dimensional trace
+\(\operatorname{tr}(\gamma_5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)\),
+and preserves cyclic finite-dimensional trace manipulations for all divergent
+chiral graphs.  The finite anomaly is precisely the remnant left after the
+regulated Ward identities, local counterterms, and evanescent algebra have
+been handled consistently.  Chapter~\ref{ch:volume-ii-20} uses this
+logic to keep the vector Ward identity and compute the axial anomaly.
+
+\begin{proposition}[Locality and Slavnov--Taylor control]
+\label{prop:dimreg-st-control}
+In a power-counting renormalizable gauge theory regularized by a dimensional
+scheme whose field content includes all evanescent local fields generated by
+the algebraic prescription, the pole part of every superficially divergent
+subgraph is a local functional of the fields, sources, and evanescent
+coordinates.  If the ghost-number-one local BRST cohomology class of the
+Slavnov--Taylor breaking vanishes, local counterterms can be chosen order by
+order so that the renormalized effective action obeys the Slavnov--Taylor
+identity.  If that cohomology class is nonzero, the regulator has detected a
+gauge anomaly rather than a removable violation of the identity.
+\end{proposition}
+
+\begin{proof}
+Dimensional regularization assigns meromorphic distributions to graphs.  The
+forest formula subtracts Taylor polynomials in external momenta for each
+divergent subgraph.  These Taylor polynomials are local in position space, and
+the same statement applies to evanescent fields because they enter through
+local tensor contractions in the continued algebra.  The quantum action
+principle then identifies a breaking of the Slavnov--Taylor identity at a
+fixed loop order with an integrated local functional of ghost number one.
+Nilpotency of the linearized Slavnov operator makes the breaking a cocycle.
+If the cocycle is exact, subtracting the corresponding local functional
+restores the identity at that loop order.  If the cocycle has a nonzero class,
+no local counterterm removes it.  This is the algebraic-renormalization form
+of the anomaly obstruction.
+\end{proof}
+
+The statement is perturbative.  It does not construct a positive
+nonperturbative Hilbert space at \(D\neq d\), and it does not replace a
+lattice or other nonperturbative regulator.  Physical unitarity is recovered
+after renormalization and after taking the physical \(D\to d\) limit of
+stable-channel amplitudes or infrared-safe observables.  Cut identities at
+intermediate \(D\) are bookkeeping identities for the analytically continued
+integrands; the physical optical theorem is a statement about the resulting
+renormalized amplitudes in \(d\) dimensions.
+
+Finally, dimensional regularization is separate from renormalization and from
+operator-insertion regularization.  The regulator is the meromorphic
+assignment of graph distributions.  Renormalization is the choice of local
+coordinate map and finite subtraction convention used to take the physical
+limit.  A composite operator insertion requires its own source coordinate and
+contact-term prescription, even when the same dimensionally regularized graph
+integrals are used to compute its correlators.
+
 \section{Slavnov--Taylor Identities and Counterterms}
 
 BRST symmetry gives functional identities for the generating functional and

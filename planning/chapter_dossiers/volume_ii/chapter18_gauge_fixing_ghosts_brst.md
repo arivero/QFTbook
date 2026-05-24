@@ -38,6 +38,12 @@
   sources control the fundamental decomposition, fundamental symmetry,
   Hilbert-majorant topology, Krein adjoint, and domain language used for the
   BRST charge.
+- `SRC-EXTERNAL-DIMREG`: 't Hooft--Veltman's gauge-field dimensional
+  regularization paper, the Breitenlohner--Maison treatment of
+  \(\gamma_5\), Siegel's dimensional-reduction paper, and Stockinger's
+  consistency/QAP analysis for DRED.  These sources control only the
+  perturbative regularization machinery; the manuscript does not treat
+  dimensional regularization as a nonperturbative field-space measure.
 - The external source is used for the distinction between \(H(s)\) and
   \(H(s\mid d)\), for the contractible-pair/nonminimal-sector statement, and for
   the roles of ghost-number-zero and ghost-number-one local cohomology.
@@ -111,6 +117,16 @@
 | \(G_{\rm gh}(p^2)\) | Landau-gauge ghost dressing function in \(\langle c\bar c\rangle=G_{\rm gh}(p^2)/p^2\) |
 | \(K^{a\mu},L^a\) | sources for nonlinear BRST variations, precursor to antifields |
 | \(\Phi^*_A\) | BV antifield paired with a field \(\Phi^A\), deferred to the BV chapter |
+| \(D=d-\epsilon\) | complex dimension parameter used in dimensional analytic regularization |
+| \(I_G(D,\nu,p,m)\) | meromorphically continued scalar graph integral for graph \(G\) |
+| \(\hat\eta,\hat\delta\) | continued metric and identity used for \(D\)-dimensional loop contractions, with \(\hat\delta^\mu{}_\mu=D\) |
+| \(\eta_4,\tilde\eta\) | four-dimensional metric and evanescent complementary projector in DRED, \(\eta_4=\hat\eta+\tilde\eta\) |
+| CDR | conventional dimensional regularization: loop momenta, unobserved momenta, polarizations, and gamma algebra continued to \(D\) |
+| HV | 't Hooft--Veltman prescription: observed external states physical, unresolved/internal sectors continued |
+| DRED | dimensional reduction: four-dimensional spin/gauge algebra with \(D\)-dimensional momentum contractions and evanescent scalar coordinates |
+| FDH | four-dimensional helicity prescription for scattering amplitudes with scheme-dependent evanescent couplings |
+| \(\gamma_5\) | chirality matrix whose dimensional-regulator algebra must be specified before chiral traces are manipulated |
+| \(\epsilon^{\mu\nu\rho\sigma}\) | physical four-dimensional Levi-Civita tensor used in chiral and anomaly computations |
 
 ## Claims Established
 
@@ -189,6 +205,31 @@
   precursor of BV antifields; the dedicated BV chapter now develops the
   field-antifield framework for gauge-theory 1PI and Wilsonian effective
   actions.
+- Dimensional regularization is defined as a perturbative meromorphic
+  graph-distribution assignment, not as a literal noninteger-dimensional
+  path-integral measure.  The manuscript separates scalar analytic
+  continuation from the additional contraction algebra needed for tensors,
+  spinors, gauge polarizations, and external-state kinematics.
+- The chapter distinguishes CDR, HV, DRED, and FDH by their algebraic data.
+  DRED is formulated with the projectors
+  \(\eta_4=\hat\eta+\tilde\eta\), \(\hat\eta^\mu{}_\mu=D\), and
+  \(\tilde\eta^\mu{}_\mu=4-D\), so evanescent scalar components and their
+  couplings are part of the local coordinate system rather than optional
+  decorations.
+- The \(\gamma_5\) and Levi-Civita prescriptions are made explicit.  The
+  manuscript states the obstruction to a universal cyclic, fully anticommuting
+  \(D\)-dimensional \(\gamma_5\) prescription and directs the anomaly
+  computation to the four-dimensional chiral data retained in the anomaly
+  chapter.
+- Proposition `prop:dimreg-st-control` states the order-by-order
+  algebraic-renormalization control theorem needed here: pole parts of
+  superficially divergent subgraphs are local functionals of fields, sources,
+  and evanescent coordinates; the Slavnov--Taylor breaking is a local
+  ghost-number-one cocycle; exact cocycles are removed by local counterterms,
+  while nonzero cohomology classes are gauge anomalies.
+- The chapter explicitly separates regularization, renormalization, and
+  operator-insertion regularization/source-coordinate choices for composite
+  operators.
 
 ## Figure Requirements
 
@@ -215,6 +256,10 @@
 - The Kugo--Ojima criterion is treated as a conditional covariant-gauge
   confinement scenario, not as a proved nonperturbative theorem for
   four-dimensional Yang--Mills theory.
+- Dimensional regularization is used only as an order-by-order perturbative
+  regulator of graph distributions.  The chapter does not claim a positive
+  nonperturbative Hilbert space, a probability measure, or a continuum
+  gauge-field measure at \(D\neq d\).
 - 2026-05-24 issue #243 pass: added a dedicated Gribov/Singer block to the
   manuscript.  The chapter now labels the global obstruction, defines local
   slice versus global section, gives the first Gribov region and fundamental
@@ -233,3 +278,10 @@
 - 2026-05-24 issue #247 pass: inserted a Krein-space foundations section for
   covariant gauge quantization and added the required functional-analytic
   symbols and domain assumptions to this dossier.
+- 2026-05-24 issue #502 pass: inserted a dimensional-regularization section
+  before Slavnov--Taylor counterterms.  The pass defines dimensional
+  regularization as meromorphic analytic regularization of graph
+  distributions, distinguishes CDR/HV/DRED/FDH, records the \(\gamma_5\) and
+  Levi-Civita scheme data, proves the locality/Slavnov--Taylor cohomology
+  control statement, and separates regularization from renormalization and
+  composite-operator source regularization.
