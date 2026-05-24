@@ -53,6 +53,7 @@
 | \(\widetilde G_N\) | Fourier transform of \(G_N\) |
 | \(\widetilde G_{N}^{\mathrm{conn}}\) | connected part of the Fourier-space Green function |
 | \(Z[J]\) | Lorentzian time-ordered source functional with source term \(i\int J\phi\) |
+| \(Z_-[J]\) | alternate Lorentzian source functional with source term \(-i\int J\phi\) |
 | \(Z_E[J_E]\) | Euclidean ordered source functional with source term \(+\int J_E\phi_E\) |
 | \(\operatorname{bv}_{\Sigma_m}\) | Feynman boundary value at the isolated mass shell after wave-packet smearing |
 | \(p_j\) | incoming positive-energy physical momentum |
@@ -86,6 +87,9 @@
   \(J_E(\tau,\vec x)=J_L(-i\tau,\vec x)\); the factor \(i^{-N}\) in the
   connected cumulant formula compensates the \(i^N\) produced by differentiating
   the Lorentzian source exponential before contour rotation.
+- The source-derivative prefactor is convention-dependent: with the alternate
+  \(-i\int J\phi\) source coupling, the connected cumulant uses
+  \((-i)^{-N}=i^N\) rather than \(i^{-N}\).
 - The large-time Haag--Ruelle matrix element becomes an oscillatory integral
   whose nonzero limit is precisely the external one-particle pole residue.
 - Disconnected two-point factors reproduce the identity part of the
@@ -129,3 +133,6 @@
 - 2026-05-24 issue #381 pass: displayed the tree-level \(2\to2\) external-leg
   phase bookkeeping \((-\ii)^4=1\) and \(\ii^4(-\ii)^4=1\) before reading off
   \(\mathcal M=-g+O(g^2)\).
+- 2026-05-24 issue #384 pass: flagged the source-coupling-sign dependence of
+  the connected-cumulant prefactor, adding the alternate
+  \(Z_-[J]\) convention with \((-i)^{-N}=i^N\).

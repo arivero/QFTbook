@@ -318,6 +318,31 @@ With the sign convention for \(J\) inherited from the exponential above, this
 is the cumulant part of the time-ordered distribution: it contains precisely
 the vacuum-connected components.  External one-particle propagators remain
 until the residue operation is applied.
+The prefactor is part of the source convention.  If instead one defines
+\[
+  Z_-[J]=
+  \bra{\vac}
+  \operatorname T\exp\left(-\ii\int J(x)\widehat\phi(x)\,\dd^Dx\right)
+  \ket{\vac},
+\]
+then the same connected distribution is recovered by
+\[
+  G_N^{\rm conn}(x_1,\ldots,x_N)
+  =
+  \left.
+  (-\ii)^{-N}
+  \frac{\delta^N \log Z_-[J]}
+       {\delta J(x_1)\cdots\delta J(x_N)}
+  \right|_{J=0}
+  =
+  \left.
+  \ii^{N}
+  \frac{\delta^N \log Z_-[J]}
+       {\delta J(x_1)\cdots\delta J(x_N)}
+  \right|_{J=0}.
+\]
+Thus the Jacobian between source derivatives and time-ordered fields changes
+with the sign chosen in the source coupling; the Green function itself does not.
 
 The Euclidean source convention is compatible with this normalization.  Let
 \[
