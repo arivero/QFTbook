@@ -352,8 +352,11 @@ combine with angular analyticity in the following chapter.
 
 \section{Perturbative Discontinuities and Cut Rules}
 
-The Hilbert-space unitarity statement also determines the discontinuity of
-perturbative amplitudes across a physical cut.  Write
+The Hilbert-space unitarity statement determines the physical-cut
+discontinuity of exact on-shell amplitudes whenever the relevant upper and
+lower boundary values exist as distributions and the intermediate-state
+resolution is complete in the scattering sector under consideration.  Its
+perturbative expansion gives the graph-level cut rules.  Write
 \[
   S=\mathbf 1+\ii T,
   \qquad
@@ -381,6 +384,22 @@ Here \(X\) runs over on-shell intermediate states with total momentum
 \(P_\alpha\), and \(\dd\Phi_X\) is the Lorentz-invariant phase-space measure,
 including the factor \(1/N!\) for \(N\) identical particles when the state sum is
 over unordered particles.
+
+\begin{remark}[Unitarity discontinuity and perturbative cut rules]
+\label{rem:unitarity-discontinuity-versus-cutkosky}
+Equation~\eqref{eq:cutkosky-unitarity-discontinuity} is the
+nonperturbative on-shell unitarity identity: it relates boundary values of the
+exact amplitude to a sum over exact on-shell intermediate states and exact
+lower-point amplitudes.  Its hypotheses are Hilbert-space unitarity, the
+existence of the relevant scattering states and boundary values, and the
+completeness of the state sum used in the channel.  The Cutkosky rule is the
+perturbative refinement obtained after choosing a regulator and expansion,
+writing \(T=\sum_r T^{(r)}\), representing the terms by Feynman graphs, and
+identifying the contribution of a specified graph cut with on-shell
+propagator replacements.  Thus the full discontinuity formula and the
+graph-by-graph replacement theorem have different logical status, even though
+the latter is obtained by expanding the former.
+\end{remark}
 
 \begin{theorem}[Cutkosky cut rule for a perturbative physical cut]
 Consider a perturbative contribution to a connected amplitude whose

@@ -54,6 +54,10 @@
 - Partial-wave unitarity is stated as a boundary condition on the upper edge
   of the physical cut; angular analyticity and high-energy boundedness are
   deferred.
+- Physical-cut discontinuities are separated into the exact Hilbert-space
+  unitarity identity, which sums exact on-shell intermediate states, and the
+  perturbative Cutkosky line-replacement rule, which is obtained only after a
+  regulator, graph expansion, and perturbative ordering have been chosen.
 - Analyticity and crossing are used as structural hypotheses supported by
   locality, spectral support, LSZ, and perturbation theory; existing rigorous
   theorem sets cover only parts of the desired physical domain.

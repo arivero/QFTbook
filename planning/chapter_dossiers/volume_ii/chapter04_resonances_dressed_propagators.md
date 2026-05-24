@@ -60,6 +60,9 @@
 - The physical boundary value is obtained from the Feynman prescription:
   Euclidean momenta are analytically continued to positive real energy from
   above.
+- The cut width uses the two-point specialization of the exact unitarity
+  discontinuity; the displayed inclusive line-replacement expression is its
+  weak-coupling perturbative expansion.
 - Statements about the resonance pole use the analytic continuation of the
   amplitude, not a Hilbert-space eigenvector with real energy.
 
