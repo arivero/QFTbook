@@ -265,14 +265,27 @@ where
 \]
 These are Euclidean subtraction variables obtained by analytic continuation
 from the mostly-plus Mandelstam convention.  With all four Euclidean momenta
-taken incoming and \(k_1+k_2+k_3+k_4=0\), they obey
+taken incoming and \(k_1+k_2+k_3+k_4=0\), the identity fixing the common
+channel value is
 \[
-  s+t+u=-\sum_{i=1}^4 k_i^2 .
+\begin{aligned}
+  s+t+u
+  &=
+  -\sum_{j=2}^4 (k_1+k_j)^2  \\
+  &=
+  -\left(
+    3k_1^2+\sum_{j=2}^4 k_j^2
+    +2k_1\cdot\sum_{j=2}^4 k_j
+  \right) \\
+  &=
+  -\sum_{i=1}^4 k_i^2 .
+\end{aligned}
 \]
-At the symmetric point this gives \(s+t+u=-4\mu^2\), consistently with
-\(s=t=u=-4\mu^2/3\).  After continuing to Lorentzian on-shell scattering and
-crossing two momenta back to the physical outgoing convention, the same
-algebraic relation becomes \(s+t+u=\sum_i m_i^2\).
+At \(k_i^2=\mu^2\) this gives \(s+t+u=-4\mu^2\); imposing the symmetric
+subtraction condition \(s=t=u\) therefore gives \(s=t=u=-4\mu^2/3\).  After
+continuing to Lorentzian on-shell scattering and crossing two momenta back to
+the physical outgoing convention, the same algebraic relation becomes
+\(s+t+u=\sum_i m_i^2\).
 The running quartic coupling in this momentum-subtraction scheme is
 \[
   g(\mu)

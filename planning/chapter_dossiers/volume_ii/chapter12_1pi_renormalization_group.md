@@ -111,6 +111,11 @@ The chapter must define:
     the 1PI vertex convention \(\Gamma_{\rm tree}^{(4)}=-g_R\), so the
     coordinate has the same positive orientation as the coefficient
     \(\lambda(\mu)\) in the minimal-subtraction relation for \(g^\epsilon\).
+2b. At incoming Euclidean four-point kinematics,
+    \(s+t+u=-\sum_i k_i^2\) follows by expanding
+    \(-\sum_{j=2}^4(k_1+k_j)^2\) and using
+    \(k_1+k_2+k_3+k_4=0\).  Thus \(k_i^2=\mu^2\) and the symmetric condition
+    \(s=t=u\) imply \(s=t=u=-4\mu^2/3\).
 3. The corresponding one-loop two-point tadpole is independent of \(k^2\), so
    it does not change the field normalization at this order.
 4. The relation between \(g(\mu')\) and \(g(\mu)\) is finite after the UV
@@ -267,3 +272,6 @@ The chapter must define:
 - 2026-05-24 issue #353 pass: added the quartic-coordinate sign convention
   after the momentum-subtraction definition and linked it to the scalar-quartic
   minimal-subtraction coefficient convention.
+- 2026-05-24 issue #354 pass: expanded the symmetric Euclidean subtraction
+  point into a displayed kinematic derivation of
+  \(s+t+u=-\sum_i k_i^2=-4\mu^2\), hence \(s=t=u=-4\mu^2/3\).
