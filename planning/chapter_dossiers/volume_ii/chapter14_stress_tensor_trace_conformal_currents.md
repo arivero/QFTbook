@@ -67,6 +67,12 @@ The chapter must define and derive:
 - the virial-current possibility
   \(T^\mu{}_\mu=\partial_\mu V^\mu\) and the distinction between a conserved
   dilatation current and special conformal currents.
+- the proved stress-tensor criterion: if the virial current is an allowed
+  improvement derivative plus a conserved current, then an improved traceless
+  stress tensor exists and conformal Killing currents are conserved;
+- the dimension-dependent status of scale-implies-conformal claims, stated as
+  framework-dependent in \(d=2\), conditional/conjectural in general \(d=4\),
+  and not assumed in \(d>4\).
 
 ## Claim Ledger
 
@@ -90,6 +96,16 @@ The chapter must define and derive:
 8. A virial current gives scale invariance without immediately giving
    tracelessness; improvement data determine whether the virial term can be
    removed.
+9. The stress-tensor improvement criterion is an algebraic theorem once the
+   local operators and contact-term convention are fixed: if
+   \(V_\mu=(d-1)\partial_\mu L+J_\mu\) with \(\partial_\mu J^\mu=0\), then
+   \(T_{\mu\nu}+(\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2)L\) is
+   conserved and traceless.
+10. Scale-implies-conformal claims are not used as unqualified theorems.  The
+    two-dimensional Zamolodchikov--Polchinski result requires a specified
+    analytic/Hilbert-space framework; four-dimensional statements remain
+    conditional on additional spectral, regularity, and contact-term
+    assumptions; higher-dimensional conformal symmetry must be stated as data.
 
 ## Figure Requirements
 
@@ -107,6 +123,8 @@ The chapter must define and derive:
   invariance.
 - Keep all fixed-point and conformal-current claims conditional on the stated
   stress-tensor properties.
+- Do not label literature arguments as theorems unless their hypotheses and
+  mathematical framework are fully specified.
 - Do not state \(T^\mu{}_\mu=0\) at a fixed point without specifying the
   removal or absence of virial, total-derivative, equation-of-motion, contact,
   and improvement-dependent terms.
@@ -122,3 +140,6 @@ The chapter must define and derive:
   scaling check, the bare engineering trace identity, the MS conversion to
   \(T^\mu{}_\mu=\beta_J[O_J]_\mu\), the conformal Killing current derivation,
   and the virial-current/improvement caveat.
+- 2026-05-24 issue pass: addressed #225 by adding a proved stress-tensor
+  criterion for conformal currents and a cautious dimension-dependent status
+  remark for scale-implies-conformal claims.

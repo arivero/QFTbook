@@ -621,14 +621,114 @@ changes the trace by
 \]
 and removes this virial trace.
 
-\begin{remark}[Scale and conformal fixed points]
-The implication from scale invariance to conformal invariance depends on the
-existence and removability of \(V^\mu\), together with assumptions such as
-unitarity, locality, discreteness of scaling dimensions, and the dimension of
-spacetime.  The monograph will use the precise stress-tensor criterion above:
-conformal symmetry is present when the flat-space theory has a conserved
-symmetric stress tensor whose trace can be set to zero by allowed
-improvements.
+\begin{theorem}[Stress-tensor criterion for conformal currents]
+\label{thm:stress-tensor-criterion-conformal-currents}
+Let a flat-space local QFT in dimension \(d\ge2\) have a symmetric conserved
+stress tensor \(T_{\mu\nu}\).  Suppose that scale invariance is implemented by
+a conserved current
+\[
+  D^\mu=x_\nu T^{\mu\nu}-V^\mu,
+  \qquad
+  \partial_\mu D^\mu=0,
+\]
+so that \(T^\mu{}_\mu=\partial_\mu V^\mu\) as an operator identity, modulo
+equations of motion and contact terms with other insertions.  If the virial
+current has the form
+\[
+  V_\mu=(d-1)\partial_\mu L+J_\mu,
+  \qquad
+  \partial_\mu J^\mu=0,
+\]
+for a local scalar operator \(L\) and a conserved local current \(J_\mu\),
+then the improved stress tensor
+\[
+  T'_{\mu\nu}
+  =
+  T_{\mu\nu}
+  +
+  \bigl(\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2\bigr)L
+\]
+is symmetric, conserved, and traceless.  Consequently each conformal Killing
+vector \(\xi^\mu\) gives a conserved current
+\[
+  j^\mu_\xi=T'^{\mu\nu}\xi_\nu .
+\]
+\end{theorem}
+
+\begin{proof}
+The improvement term is symmetric.  Its divergence vanishes identically:
+\[
+  \partial^\mu
+  \bigl(\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2\bigr)L
+  =
+  \partial_\nu\partial^2L-\partial_\nu\partial^2L
+  =
+  0.
+\]
+Its trace is
+\[
+  \delta^{\mu\nu}
+  \bigl(\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2\bigr)L
+  =
+  -(d-1)\partial^2L .
+\]
+Using
+\[
+  T^\mu{}_\mu=\partial_\mu V^\mu
+  =(d-1)\partial^2L+\partial_\mu J^\mu
+  =(d-1)\partial^2L
+\]
+gives \(T'^\mu{}_\mu=0\).  Conservation of
+\(j^\mu_\xi=T'^{\mu\nu}\xi_\nu\) then follows from the conformal Killing
+equation by the computation in the preceding section.
+\end{proof}
+
+\begin{remark}[Scale invariance and conformal invariance: status]
+\label{rem:scale-conformal-dimension-status}
+The following are the status boundaries used in this monograph.
+\begin{enumerate}[label=(\alph*)]
+\item In \(d=2\), the Zamolodchikov--Polchinski implication admits theorem
+  formulations only after a definite analytic framework is specified.  In the
+  common formulation one assumes a unitary local relativistic QFT with a
+  normalizable vacuum, a local conserved stress tensor, a conserved scale
+  current, reflection positivity or Hilbert-space positivity, and
+  spectral/discreteness conditions strong enough for the stress-tensor
+  two-point functions and the \(c\)-function argument to be meaningful.  Under
+  such hypotheses the virial current is removable by an allowed improvement,
+  so Theorem~\ref{thm:stress-tensor-criterion-conformal-currents} applies.
+  This is a theorem about the formulated implication under those hypotheses,
+  not a statement about every object called a two-dimensional scale-invariant
+  theory in the literature.
+\item In \(d=4\), the implication is not used here as an unconditional
+  theorem.  There are important perturbative checks and nonperturbative
+  arguments based on four-dimensional anomaly monotonicity, dilaton
+  scattering, and stress-tensor correlator constraints, but the conclusion
+  depends on additional spectral, regularity, and contact-term assumptions
+  that must be stated separately.  Some claims in the physics literature are
+  better understood as conditional arguments or conjectural criteria rather
+  than fully formulated mathematical theorems.
+\item In \(d>4\), no general theorem of the form ``scale invariance implies
+  conformal invariance'' is assumed.  Whenever later chapters use conformal
+  symmetry in higher dimensions, the existence of a traceless improved stress
+  tensor, or equivalent conformal Ward identities, must be part of the stated
+  data.
+\end{enumerate}
+\footnote{For theorem formulations in two dimensions and their relation to
+Zamolodchikov's \(c\)-function argument, see A.~B.~Zamolodchikov,
+``Irreversibility of the flux of the
+renormalization group in a 2D field theory,'' \emph{JETP Lett.} \textbf{43}
+(1986) 730--732, and J.~Polchinski, ``Scale and conformal invariance in
+quantum field theory,'' \emph{Nucl. Phys. B} \textbf{303} (1988) 226--236.
+For four-dimensional conditional arguments and limitations, see
+M.~A.~Luty, J.~Polchinski, and R.~Rattazzi, ``The \(a\)-theorem and the
+asymptotics of 4D quantum field theory,'' \emph{JHEP} \textbf{01} (2013) 152,
+arXiv:1204.5221, and A.~Dymarsky, Z.~Komargodski, A.~Schwimmer, and
+S.~Theisen, ``On scale and conformal invariance in four dimensions,''
+\emph{JHEP} \textbf{10} (2015) 171, arXiv:1309.2921.  See also
+D.~Dorigoni and S.~Rychkov, ``Scale invariance \(+\) unitarity
+\(\Rightarrow\) conformal invariance?,'' arXiv:0910.1087, for perturbative
+checks and a discussion of why the two-dimensional proof does not directly
+extend to higher dimensions.}
 \end{remark}
 
 \begin{figure}[H]

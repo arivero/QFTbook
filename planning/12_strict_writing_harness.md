@@ -102,6 +102,13 @@ domain, conclusion, and role in the local argument have been made explicit.
 If those hypotheses are not verified in the chapter, the conclusion must be
 phrased conditionally.
 
+Do not promote an expected large-class statement to a theorem because the
+physics literature uses that name.  In CFT, RG flow, bootstrap, anomaly,
+duality, large-\(N\), or continuum-limit contexts, theorem labels require a
+specified framework, hypotheses, conclusion, and proof status.  Otherwise the
+claim must be stated as a conditional argument, conjecture, criterion, formal
+calculation, or open problem.
+
 For invariance, anomaly, duality, matching, universality, or reconstruction
 claims, the text must identify the object being compared and the equivalence
 relation.  Examples: equality of generating functionals, equality of cocycle

@@ -92,6 +92,16 @@ Every substantive statement must have one of the following statuses:
 The manuscript must not allow lore, formal calculation, or pedagogical habit to
 carry a conclusion that requires a theorem or stated assumption.
 
+The word "theorem" is reserved for a formulated mathematical statement in a
+specified framework, with stated hypotheses, conclusion, and proof status.  A
+statement often called a theorem in the physics literature but supported only
+by perturbative evidence, examples, expected genericity, an unverified
+regularity assumption, or an informal argument must be classified as a
+conditional argument, conjecture, criterion, or open problem.  This rule is
+especially important for scale-versus-conformal claims, RG monotonicity
+claims, bootstrap claims, duality claims, and any statement involving a
+continuum limit or an infinite-dimensional path integral.
+
 Named physical principles must be unpacked into object-level claims before
 they are used.  For example, anomaly matching is a statement about equality of
 background-field anomaly classes modulo local counterterms, not a free-standing
