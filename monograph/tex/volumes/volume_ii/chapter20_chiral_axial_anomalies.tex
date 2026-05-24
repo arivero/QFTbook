@@ -706,39 +706,101 @@ charge \(eq\) contributes the additional factor \(e^2q^2\).
 
 \section{Measure Derivation}
 
-The same coefficient is obtained from the path-integral measure.  Work in
-Euclidean signature with Dirac operator
+The same coefficient is obtained from the Berezinian change of variables in a
+regulated fermion path integral.  The construction uses the finite-dimensional
+Berezin calculus of Chapter~\ref{ch:spinor-fields-fermionic-path-integrals};
+the object that transforms is an ordered Berezinian density on a finite set of
+odd coefficients, not a Borel measure on a set of fermion fields.
+
+Work first on a compact Euclidean spin four-manifold, or in a finite box with
+elliptic boundary conditions, so that the Euclidean Dirac operator
 \[
-  \mathcal D=\gamma^\mu(\partial_\mu-\ii A_\mu).
+  \mathcal D_A=\gamma^\mu(\partial_\mu-\ii A_\mu)
 \]
-Expand the fermion fields in an orthonormal basis of eigenfunctions of
-\(\mathcal D\).  Under a local chiral rotation
+has a discrete \(L^2\)-orthonormal eigenbasis after the infrared regulator has
+been fixed.  The local formula obtained below is independent of this
+infrared auxiliary choice.  Let \(P_\Lambda\) be the spectral projection onto
+the span
+\[
+  V_\Lambda
+  =
+  \operatorname{span}\{\varphi_n:\ |\lambda_n|\le \Lambda\},
+  \qquad
+  \mathcal D_A\varphi_n=\lambda_n\varphi_n .
+\]
+The regulated fermion variables are odd coordinates
+\[
+  \psi_\Lambda(x)=\sum_{n\in I_\Lambda} c_n\varphi_n(x),
+  \qquad
+  \bar\psi_\Lambda(x)=\sum_{n\in I_\Lambda}\bar c_n\varphi_n^\dagger(x),
+\]
+with ordered Berezinian density
+\[
+  \Omega_\Lambda
+  =
+  \prod_{n\in I_\Lambda} d\bar c_n\,dc_n .
+\]
+An infinitesimal local chiral rotation
 \[
   \psi(x)\mapsto \ee^{\ii\beta(x)\gamma_5}\psi(x),
   \qquad
   \bar\psi(x)\mapsto \bar\psi(x)\ee^{\ii\beta(x)\gamma_5},
 \]
-the formal measure changes by a Jacobian.  The regulated logarithm of the
-Jacobian is
+acts on \(V_\Lambda\) by the finite matrix
+\[
+  U_{\Lambda,\beta}
+  =
+  1+\ii P_\Lambda\beta\gamma_5P_\Lambda+O(\beta^2),
+\]
+where \(\beta\) denotes the multiplication operator by the smooth function
+\(\beta(x)\).  The inverse determinant in the odd Berezinian transformation
+law gives, with the convention that \(J_\Lambda\) is the factor multiplying
+the transformed finite-dimensional Berezin integral,
+\[
+  \log J_\Lambda
+  =
+  2\ii\,
+  \operatorname{tr}_{V_\Lambda}
+  (P_\Lambda\beta\gamma_5P_\Lambda)
+  +O(\beta^2).
+\]
+The factor of \(2\) records that \(\psi\) and \(\bar\psi\) are rotated with
+the same chiral sign.
+
+The sharp projection \(P_\Lambda\) may be replaced, for the local asymptotic
+calculation, by the smooth gauge-covariant spectral regulator
+\[
+  \exp(-\mathcal D_A^2/M^2).
+\]
+This is the heat-kernel regulator of the Berezinian trace.  It introduces no
+regulator field; \(M\) is the ultraviolet scale in the heat semigroup of the
+elliptic operator \(\mathcal D_A^2\).  The regulated logarithm used below is
 \begin{equation}
-  \log J
+  \log J_M
   =
   2\ii\lim_{M\to\infty}
   \operatorname{Tr}
   \left[
-  \beta(x)\gamma_5
-  \exp\left(-\mathcal D^2/M^2\right)
+  \beta\,\gamma_5
+  \exp\left(-\mathcal D_A^2/M^2\right)
   \right],
   \label{eq:fujikawa-regulated-trace}
 \end{equation}
 where \(\operatorname{Tr}\) is the trace over spacetime, spin, and internal
-indices.  The heat-kernel expansion gives the local limit
+indices.  Equation \eqref{eq:fujikawa-regulated-trace} is therefore a
+regulated finite-mode Berezinian statement followed by a heat-kernel
+asymptotic limit.  It is the measure-language counterpart of the
+dimensionally regulated triangle computation above, in the scheme where the
+vector gauge Ward identity is preserved and the axial Ward identity carries
+the local term.
+
+The heat-kernel expansion gives the local limit
 \begin{equation}
   \lim_{M\to\infty}
   \operatorname{tr}_{\mathrm{spin}}
   \left[
   \gamma_5
-  \exp\left(-\mathcal D^2/M^2\right)
+  \exp\left(-\mathcal D_A^2/M^2\right)
   \right](x,x)
   =
   \frac{1}{32\pi^2}
@@ -747,10 +809,11 @@ indices.  The heat-kernel expansion gives the local limit
   \label{eq:heat-kernel-anomaly-density}
 \end{equation}
 with \(\operatorname{tr}_{R}\) the trace in the fermion representation.  The
-anomaly is therefore the regulated trace of \(\gamma_5\) over an
-infinite-dimensional fermion space.  Finite-dimensional cyclic trace
-manipulations do not remove \eqref{eq:heat-kernel-anomaly-density}, because
-the regulator is part of the definition of the composite current.
+anomaly density is therefore the heat-kernel limit of the regulated
+Berezinian traces of \(\gamma_5\) over cutoff eigenspaces.  Finite-dimensional
+cyclic trace manipulations at fixed cutoff do not remove
+\eqref{eq:heat-kernel-anomaly-density}, because the regulator is part of the
+definition of the composite current.
 
 The local heat-kernel density becomes a Fredholm index after the following
 global data are specified.  The analytic input is the spin Dirac case of the

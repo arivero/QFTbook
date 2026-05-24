@@ -41,6 +41,12 @@
 
 - Four-dimensional Lorentzian QFT with a Euclidean regulator used for
   heat-kernel and index statements.
+- The Fujikawa-style measure statement is a finite-mode Berezinian
+  change-of-coordinates calculation: the transformed object is the ordered
+  Berezinian density of the odd coefficient variables defined in Volume I's
+  fermionic path-integral chapter.  The heat kernel is a gauge-covariant
+  spectral regulator for the Berezinian trace, not a Pauli--Villars regulator
+  field.
 - Gauge potentials use the Hermitian convention of the Yang--Mills chapters.
 - Characteristic classes are written using the anti-Hermitian connection
   \(\mathsf A=-\ii A\), \(\mathsf F=\dd\mathsf A+\mathsf A^2=-\ii F\).
@@ -58,8 +64,10 @@
 | \(G_A^{\mu\nu}\) | two-dimensional axial-vector current correlator |
 | \(Q_C\) | current charge integrated over a Euclidean contour \(C\) |
 | \(\Delta Q_A\) | anomalous axial charge transported between contours |
-| \(\mathcal D\) | Euclidean Dirac operator |
-| \(J\) | fermion-measure Jacobian |
+| \(\mathcal D_A\) | Euclidean Dirac operator in a background gauge field |
+| \(P_\Lambda,V_\Lambda\) | finite spectral projector and cutoff eigenspace used to define the odd coefficient variables |
+| \(\Omega_\Lambda\) | ordered finite-dimensional Berezinian density for the cutoff fermion variables |
+| \(J_\Lambda,J_M\) | finite-mode and heat-kernel-regulated Berezinian Jacobian factors |
 | \(n_\pm\) | zero modes of chirality \(\pm1\) |
 | \(M\) | compact oriented Riemannian spin four-manifold used in the index theorem statement |
 | \(S^\pm\) | positive and negative chirality spinor bundles on \(M\) |
@@ -100,7 +108,8 @@
 - In four dimensions the one-axial, two-vector triangle coefficient is carried
   by the evanescent \(\ell_\perp\) part of the dimensionally regulated loop
   momentum when vector Ward identities are preserved.
-- The regulated trace of \(\gamma_5\) in a gauge background gives the local
+- The regulated trace of \(\gamma_5\) in a gauge background is the
+  heat-kernel limit of finite-mode Berezinian traces and gives the local
   anomaly density.  Its integral is identified with a Fredholm index only
   under the closed spin Dirac hypotheses of the Atiyah--Singer theorem; in the
   flat tangent specialization this gives
@@ -228,3 +237,9 @@
   Wess--Zumino consistency from the gauge-algebra commutator acting on the
   effective action, including the closure calculation on the background
   connection and the differentiability/regulator qualification.
+- 2026-05-24 issue #306 pass: rewrote the Fujikawa measure derivation as a
+  finite-dimensional Berezinian change-of-variables calculation tied to
+  Volume I's fermionic path-integral framework; classified the heat kernel as
+  a gauge-covariant spectral regulator for the Berezinian trace and added a
+  harness check against the old untyped "measure changes by a Jacobian"
+  phrasing.
