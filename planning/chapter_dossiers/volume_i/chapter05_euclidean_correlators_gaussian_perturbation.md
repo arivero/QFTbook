@@ -139,6 +139,7 @@ Working framework:
 | The harmonic-oscillator mode cutoff has an actual \(N\to\infty\) Gaussian covariance limit at fixed \(T\), while interacting cutoff removal is only coefficientwise formal perturbation theory until finite limits or counterterms are specified. | Framework distinction plus free Gaussian proof | Finite \(N\) definition of \(\langle F\rangle_{T,N}\), summability of \(((n\pi/2T)^2+\omega^2)^{-1}\), and perturbative-status paragraph before the anharmonic expansion |
 | The harmonic oscillator Euclidean two-point function is \(\hbar(2\omega)^{-1}e^{-\omega|\tau|}\). | Derived; source-certified 2026-05-22 | Dirichlet sine-mode expansion, \(k_n=n\pi/(2T)\) Riemann-sum limit, endpoint image term, and contour integral |
 | Gaussian moments are sums over complete pairings. | Derived; source-certified 2026-05-22 | Finite source differentiation, explicit two- and four-point calculations, and \(4!\)-assignment grouping |
+| The anharmonic first-order vacuum contraction uses the coincident-field Wick count \((4-1)!!=3\), distinct from the \(4!\) labeled half-edge assignment count. | Derived | Issue #383 combinatorics clarification |
 | The Gaussian functional integral has two-point function equal to the Green kernel \(A^{-1}\). | Derived; source-certified 2026-05-22 | Regulated functional integration by parts and Fourier-space diagonalization |
 | The logarithm of the partition function is the sum of connected vacuum diagrams. | Derived; source-certified 2026-05-22 | Component-counting formula with \(m_\ell\), linked-cluster exponentiation, and counted three-vertex topology |
 | Normalized two-point functions retain diagrams connected to the external insertions. | Derived; source-certified 2026-05-22 | Vacuum factor cancellation in \(Z_g^{-1}\langle q(\tau)q(0)\cdots\rangle_0\) |
@@ -192,6 +193,10 @@ Figures to include:
   \(\log(Z_g/Z_0)/T_{\rm tot}=-(g/8)G_0(0)^2+O(g^2)\) and
   \(E_0(g)-E_0(0)=-\lim T_{\rm tot}^{-1}\log(Z_g/Z_0)\), giving
   \(\Delta E_0=+(g/8)G_0(0)^2+O(g^2)\).
+- 2026-05-24, issue #383: clarified that
+  \(\langle q(\tau)^4\rangle_0=3G_0(\tau,\tau)^2\) uses the
+  \((4-1)!!=3\) pair partitions of four identical coincident fields, while
+  \(4!\) counts labeled half-edge assignments in a different graph problem.
 
 ## Audit Targets
 
