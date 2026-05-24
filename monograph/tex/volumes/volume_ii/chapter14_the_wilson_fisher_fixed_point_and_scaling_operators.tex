@@ -919,11 +919,11 @@ The low-lying scalar dimensions are summarized as follows:
       & 2-\frac{2}{3}\epsilon+O(\epsilon^2)
       & 4+O(\epsilon^2) \\
     d=3
-      & 0.518\ldots
-      & 1.412\ldots
-      & 3.829\ldots \\
+      & 0.518148806(24)
+      & 1.41262528(29)
+      & 3.82951(61) \\
     d=2
-      & 0.125
+      & \frac18
       & 1
       & 4
   \end{array}
@@ -931,7 +931,42 @@ The low-lying scalar dimensions are summarized as follows:
 The first row is the perturbative epsilon expansion.  The \(d=3\) and \(d=2\)
 rows are data about the corresponding fixed points themselves; they are not
 deduced by substituting \(\epsilon=1\) or \(\epsilon=2\) into the first-order
-series.  More generally, the Wilson--Fisher epsilon expansion is an asymptotic
+series.  In the \(d=3\) row the fixed-point fields are conventionally denoted
+\(\sigma,\varepsilon,\varepsilon'\): \(\phi,\phi^2,\phi^4\) are the Landau
+representatives of the corresponding scaling directions, not definitions by
+unrenormalized powers at the fixed point.  The displayed numerical values are
+conformal-bootstrap data for the three-dimensional Ising CFT.  The quoted
+\(\Delta_\sigma\) and \(\Delta_\varepsilon\) are the mixed-correlator values
+reported in Chang, Dommes, Erramilli, Homrich, Kravchuk, Liu, Mitchell,
+Poland, and Simmons-Duffin, \emph{Bootstrapping the 3d Ising Stress Tensor},
+arXiv:2411.15300; earlier precision islands for these two dimensions were
+obtained by El-Showk, Paulos, Poland, Rychkov, Simmons-Duffin, and Vichi,
+\emph{Phys. Rev. D} \textbf{86} (2012) 025022, arXiv:1203.6064;
+\emph{J. Stat. Phys.} \textbf{157} (2014) 869--914, arXiv:1403.4545; and by
+Kos, Poland, Simmons-Duffin, and Vichi, \emph{JHEP} \textbf{08} (2016) 036,
+arXiv:1603.04436.  The value in the \(\phi^4\) column is the dimension of the
+leading \(\mathbb Z_2\)-even scalar irrelevant primary \(\varepsilon'\), whose
+Landau representative is the quartic direction; the number displayed here is
+the spectral estimate quoted in Simmons-Duffin, \emph{JHEP} \textbf{03}
+(2017) 086, arXiv:1612.08471.
+
+The \(d=2\) row is exact CFT data.  The critical Ising CFT is the unitary
+minimal model \(\mathcal M(3,4)\) with Virasoro primaries
+\(\sigma\) and \(\varepsilon\) of weights
+\[
+  (h_\sigma,\bar h_\sigma)=\left(\frac1{16},\frac1{16}\right),
+  \qquad
+  (h_\varepsilon,\bar h_\varepsilon)=\left(\frac12,\frac12\right),
+\]
+so \(\Delta_\sigma=h_\sigma+\bar h_\sigma=1/8\) and
+\(\Delta_\varepsilon=1\).  The scalar irrelevant entry of dimension \(4\) is
+the \(T\bar T\) Virasoro descendant of the identity, the two-dimensional
+continuation of the leading even irrelevant lattice-scalar direction in this
+table.  These exact statements are the conformal-field-theoretic form of the
+Onsager critical Ising solution, and follow from the minimal-model
+classification of Belavin, Polyakov, and Zamolodchikov.
+
+More generally, the Wilson--Fisher epsilon expansion is an asymptotic
 small-\(\epsilon\) expansion unless an additional summability theorem is
 specified.  Large-order analyses of related perturbative \(\phi^4\) series
 exhibit factorial coefficient growth, and no summability theorem is being
@@ -940,11 +975,8 @@ of terms should be read as asymptotic information about the fixed point near
 four dimensions.  Extracting accurate \(d=3\) numbers from the epsilon series
 requires an extra resummation prescription, for example a Borel or
 conformal-Borel method together with assumptions about singularities of the
-Borel
-transform; it is not the same operation as evaluating a convergent Taylor
-series at \(\epsilon=1\).  The exact \(d=2\) entries in the table come from the
-two-dimensional Ising CFT, not from perturbative continuation of the
-first-order epsilon expansion.
+Borel transform; it is not the same operation as evaluating a convergent Taylor
+series at \(\epsilon=1\).
 
 \section{Scaling Coordinates as a Local RG Chart}
 

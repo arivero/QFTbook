@@ -21,6 +21,13 @@
   Rosten's exact RG review kept in mind for fixed-point and scaling-operator
   terminology.  The construction in the chapter remains tied to the local
   source order and to 1PI/MS coordinates already introduced.
+- `SRC-EXTERNAL-ISING-DATA`: the nonperturbative fixed-point entries in the
+  comparison table are external data, not derived in the chapter: 3D Ising
+  conformal-bootstrap dimensions from El-Showk--Paulos--Poland--Rychkov--
+  Simmons-Duffin--Vichi, Kos--Poland--Simmons-Duffin--Vichi,
+  Simmons-Duffin's spectrum paper, and the later mixed-correlator
+  stress-tensor bootstrap; 2D entries from the Ising minimal model
+  \(\mathcal M(3,4)\) / Onsager-BPZ solution.
 
 ## Construction Task
 
@@ -95,6 +102,11 @@ The chapter must define and derive:
 - the comparison table for \(d=4-\epsilon\), \(d=3\), and \(d=2\), with the
   last two rows explicitly not presented as consequences of the first-order
   epsilon expansion.
+- the provenance of the \(d=3\) numerical table entries and the \(d=2\) exact
+  entries, including the identification of the \(d=3\) \(\phi^4\) column with
+  the leading \(\mathbb Z_2\)-even scalar irrelevant primary
+  \(\varepsilon'\), and of the \(d=2\) irrelevant scalar entry with
+  \(T\bar T\);
 - the asymptotic status of the Wilson--Fisher epsilon expansion and the
   separate role of resummation when extracting finite-\(\epsilon\) numerical
   estimates.
@@ -150,6 +162,10 @@ The chapter must define and derive:
     stronger summability result is stated.  The \(d=3\) and \(d=2\) entries in
     the dimension table are not obtained by evaluating a convergent Taylor
     series at \(\epsilon=1,2\).
+15. The numerical \(d=3\) entries in the comparison table are imported
+    conformal-bootstrap data for the Ising CFT and must carry provenance.  The
+    exact \(d=2\) entries are minimal-model data; the dimension-four scalar
+    irrelevant entry is \(T\bar T\), not an independent Virasoro primary.
 
 ## Figure Requirements
 
@@ -190,6 +206,8 @@ The chapter must define and derive:
 - Do not present the epsilon expansion as convergent.  If numerical
   finite-\(\epsilon\) extraction is discussed, state the resummation
   prescription and assumptions.
+- Do not quote fixed-point numerical or exact table data without naming its
+  external origin when it is not derived in the chapter.
 - Do not present composite operators as unregulated products of fields.
 - Do not describe the Wilson-Fisher fixed point as an attractor for arbitrary
   massive scalar theories; the mass direction must be tuned away.
@@ -220,3 +238,8 @@ The chapter must define and derive:
   condition plus a cross-reference to the Banach-chart finite-reference
   critical-surface theorem.  The dossier now records that smoothness and
   codimension require a \(C^k\) endpoint map and submersion hypothesis.
+- 2026-05-24 issue #238 pass: added provenance for the nonperturbative entries
+  in the low-lying-dimension comparison table.  The \(d=3\) row now records
+  numerical conformal-bootstrap origins and identifies the \(\phi^4\) column
+  with \(\varepsilon'\); the \(d=2\) row is identified as exact Ising
+  minimal-model data with \(\sigma\), \(\varepsilon\), and \(T\bar T\).
