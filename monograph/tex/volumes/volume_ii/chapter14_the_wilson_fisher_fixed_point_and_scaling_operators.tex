@@ -198,6 +198,49 @@ chapter, unless a separate nonperturbative construction is explicitly stated,
 data.  The mass perturbation is a separate relevant direction and will be
 identified below from the \(\phi^2\) scaling operator.
 
+\begin{remark}[Local uniqueness of the perturbative branch]
+\label{rem:wilson-fisher-local-uniqueness}
+The uniqueness statement supplied by this calculation is local and
+chart-dependent.  Restrict to the one-component \(\mathbb Z_2\)-even scalar
+chart in which the mass has been tuned and the only displayed dimensionless
+interaction coordinate is \(\lambda\).  Put
+\[
+  \beta^\epsilon(\lambda)
+  =
+  -\epsilon\lambda+b\lambda^2+O(\epsilon\lambda^2,\lambda^3),
+  \qquad
+  b=\frac{3}{16\pi^2}.
+\]
+For a nonzero perturbative zero write \(\lambda=\epsilon u\).  Then
+\[
+  \epsilon^{-2}\beta^\epsilon(\epsilon u)
+  =
+  -u+bu^2+O(\epsilon).
+\]
+At \(\epsilon=0\) the nonzero root is
+\[
+  u_0=b^{-1}=\frac{16\pi^2}{3},
+\]
+and
+\[
+  \frac{\partial}{\partial u}(-u+bu^2)\bigg|_{u=u_0}=1\neq0 .
+\]
+Equivalently, solving order by order in \(\epsilon\) determines a unique
+formal branch \(u(\epsilon)=u_0+O(\epsilon)\) in a neighborhood of \(u_0\).
+Together with the Gaussian branch \(\lambda=0\), this exhausts the small
+one-coupling branches visible in this local chart.
+
+This is not a global uniqueness theorem in scalar theory space.  Other
+perturbative fixed-point constructions arise after changing the chart or the
+field content: \(O(N)\)-vector Wilson--Fisher fixed points, multicritical
+scalar fixed points such as the tricritical \(\phi^6\) branch near
+\(D=3-\epsilon\), multi-coupling gauge or gauge--Yukawa fixed points of
+Banks--Zaks type, and decoupled product fixed points.  These examples are
+different local problems; they do not contradict the local uniqueness just
+stated, and the local statement does not classify nonperturbative fixed
+points outside the small-coupling neighborhood.
+\end{remark}
+
 \begin{figure}[H]
   \centering
   \resizebox{0.98\textwidth}{!}{%

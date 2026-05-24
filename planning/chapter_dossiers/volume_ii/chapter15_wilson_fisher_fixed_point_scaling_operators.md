@@ -46,6 +46,13 @@ The chapter must define and derive:
   recursively determines coefficients of a formal small-\(\epsilon\) series
   for a zero of the beta vector field, not by itself an honest
   nonperturbative fixed-point existence theorem;
+- the local uniqueness statement in the one-component \(\mathbb Z_2\)-even
+  quartic chart: after writing \(\lambda=\epsilon u\), the nonzero branch
+  \(u=16\pi^2/3+O(\epsilon)\) is uniquely determined near that root by the
+  nonvanishing derivative of \(-u+(3/(16\pi^2))u^2\);
+- the limitation that this local uniqueness does not classify other fixed
+  points obtained from different field content, multicritical interactions,
+  multi-coupling gauge/Yukawa systems, or decoupled products;
 - the distinction between the dimensionless bare coordinate
   \(\mu^{-\epsilon}g_0\) and the finite renormalized 1PI coordinate
   \(\lambda(\mu)\);
@@ -103,31 +110,35 @@ The chapter must define and derive:
    residuals; existence of an exact RG fixed point or nonperturbative
    continuum QFT requires separate constructive, lattice, Wilsonian, or
    summability input.
-3. The fixed point is attractive in the infrared along the quartic direction.
-4. The mass parameter must be tuned separately; inside the
+3. In the one-component \(\mathbb Z_2\)-even quartic chart, the nonzero
+   small-coupling branch is unique near
+   \(\lambda=(16\pi^2/3)\epsilon\) as a formal branch; this is not a global
+   classification of fixed points in scalar, gauge, or product theory spaces.
+4. The fixed point is attractive in the infrared along the quartic direction.
+5. The mass parameter must be tuned separately; inside the
    \(\mathbb Z_2\)-even subspace the fixed point is reached on the massless
    critical surface.
-5. Operator dimensions at the fixed point come from the same renormalized
+6. Operator dimensions at the fixed point come from the same renormalized
    operator construction as before.
-6. The \(\phi^2\) source must carry momentum to avoid an infrared-singular
+7. The \(\phi^2\) source must carry momentum to avoid an infrared-singular
    subtraction; this is an infrared kinematic condition, distinct from the
    ultraviolet definition of the local composite operator.
-7. Without the \(\mathbb Z_2\) restriction, the odd source for \(\phi\) is
+8. Without the \(\mathbb Z_2\) restriction, the odd source for \(\phi\) is
    also relevant.
-8. The mass/temperature perturbation has eigenvalue
+9. The mass/temperature perturbation has eigenvalue
    \(y_t=D-\Delta_{\phi^2}\), hence
    \(\nu=1/y_t\) in the perturbative calculation.
-9. Properly renormalized composite operators are finite local fields;
+10. Properly renormalized composite operators are finite local fields;
    unregulated products of distributions at coincident points are not
    definitions.
-10. \(\phi^3\) is an equation-of-motion descendant of \(\phi\) at the fixed
+11. \(\phi^3\) is an equation-of-motion descendant of \(\phi\) at the fixed
    point.
-11. \(\phi^4\) is irrelevant at the interacting fixed point even though it is
+12. \(\phi^4\) is irrelevant at the interacting fixed point even though it is
    needed to reach that fixed point.
-12. A finite critical surface is an endpoint condition \(u(\mu_R)=0\) in a
+13. A finite critical surface is an endpoint condition \(u(\mu_R)=0\) in a
     local RG chart, with the codimension determined by the relevant
     coordinates allowed by the imposed symmetry.
-13. The epsilon expansion is a small-\(\epsilon\) asymptotic expansion unless a
+14. The epsilon expansion is a small-\(\epsilon\) asymptotic expansion unless a
     stronger summability result is stated.  The \(d=3\) and \(d=2\) entries in
     the dimension table are not obtained by evaluating a convergent Taylor
     series at \(\epsilon=1,2\).
@@ -165,6 +176,9 @@ The chapter must define and derive:
 - Do not say that the perturbative zero of the \(4-\epsilon\) beta function is
   an honest fixed point of a nonperturbative RG flow unless a separate
   existence theorem or summability-and-reconstruction argument is supplied.
+- Do not turn the one-coupling uniqueness statement into a global
+  classification.  Name the chart and neighborhood, and contrast it with
+  \(O(N)\), multicritical, gauge/Yukawa, and product fixed-point problems.
 - Do not present the epsilon expansion as convergent.  If numerical
   finite-\(\epsilon\) extraction is discussed, state the resummation
   prescription and assumptions.
@@ -190,3 +204,6 @@ The chapter must define and derive:
   perturbative-domain statement with a formal-series status convention for
   \(\lambda_*(\epsilon)\) and by recording that nonperturbative existence
   requires separate input.
+- 2026-05-24 issue pass: addressed #228 by adding the local uniqueness
+  argument for the one-component \(\mathbb Z_2\)-even quartic branch and by
+  separating it from other fixed-point problems.
