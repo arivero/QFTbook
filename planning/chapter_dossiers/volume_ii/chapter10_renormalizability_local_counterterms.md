@@ -44,6 +44,9 @@ The chapter must define:
 - the boundary of the scaling-degree extension theorem: it assumes a
   distribution on the punctured configuration space and controls only the
   ultraviolet extension across a collision diagonal.
+- the distinction between perturbative continuum-limit criteria and
+  constructive existence/triviality theorems, with cross-reference to the
+  Volume I catalog `tab:constructive-qft-status-catalog`.
 
 ## Claim Ledger
 
@@ -51,6 +54,9 @@ The chapter must define:
    renormalized input coordinates.
 2. A sufficient perturbative finiteness criterion is the finiteness of
    renormalized Euclidean Green functions as distributions.
+2a. Existence of the continuum limit means a theorem or hypothesis for a
+    specified regulator family; selected constructive and triviality regimes
+    are catalogued in Volume I.
 3. On infrared-regular Euclidean momentum domains with invertible two-point
    kernel, perturbative finiteness of connected functions is equivalent to
    finiteness of the corresponding renormalized 1PI kernels by the Legendre
@@ -127,3 +133,5 @@ The chapter must define:
   the scaling-degree extension theorem and by linking downstream stress-tensor
   contact terms and Wilson--Fisher composite insertions to the same
   ultraviolet-versus-infrared distinction.
+- 2026-05-24 issue #300 pass: added a cross-reference from the perturbative
+  continuum-limit criterion to the Volume I constructive/triviality catalog.

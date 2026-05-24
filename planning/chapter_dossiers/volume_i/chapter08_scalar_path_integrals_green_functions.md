@@ -9,7 +9,8 @@ with regulator status, the Euclidean field-insertion notation, and a more
 explicit \(k^0\)-plane pole/contour figure. Tightened on 2026-05-24 for
 GitHub issue #299 so the Chapter 4 Trotter/Feynman--Kac theorem is invoked
 only for finite-dimensional Schrödinger spatial regulators with a closed
-semibounded form.
+semibounded form. Tightened again for issue #300 by adding a named catalog of
+constructive existence and scalar triviality regimes relevant to \([D\phi]\).
 
 ## Logical Role
 
@@ -69,6 +70,10 @@ Working framework:
 - Euclidean correlators are initially defined either by a regulated Euclidean
   functional expression or by analytic continuation of Wightman functions when
   the required analyticity is available.
+- constructive existence claims are categorized explicitly: \(P(\phi)_2\),
+  \(\phi^4_3\), two-dimensional Yang--Mills, scalar triviality in
+  \(D\ge4\) under the standard reflection-positive scaling-limit hypotheses,
+  and the open four-dimensional Yang--Mills continuum problem.
 
 ## Notation Inventory
 
@@ -90,6 +95,7 @@ Working framework:
 | \(G_\Lambda^{AB}\) | positive kinetic quadratic form | finite-dimensional regulator Hamiltonian |
 | \(U_\Lambda\) | real potential on \(E_\Lambda\) | finite-dimensional regulator Hamiltonian |
 | \(Q_\Lambda\) | closed semibounded quadratic form | condition for invoking Trotter/Feynman--Kac |
+| Table `tab:constructive-qft-status-catalog` | status catalog | constructive and triviality regimes |
 
 ## Definition Ledger
 
@@ -97,6 +103,7 @@ Working framework:
   configurations;
 - finite-dimensional regulator class for which Trotter--Kato/Feynman--Kac is
   a theorem;
+- constructive-QFT status catalog for selected scalar and gauge examples;
 - field wave functional and field-configuration generalized eigenstate;
 - Euclidean scalar action and Euclidean correlation function;
 - uniform Wick rotation preserving imaginary-time ordering;
@@ -113,6 +120,7 @@ Working framework:
 | Finite lattice and genuine finite-mode stable polynomial regulators satisfy the finite-dimensional Trotter/Feynman--Kac hypotheses. | Proposition | Smooth bounded-below potential on \(E_\Lambda\) plus positive kinetic quadratic form |
 | Continuum smooth cutoffs that leave infinitely many spatial modes, formal covariance cutoffs, and direct Euclidean spacetime lattice actions without transfer matrices do not inherit the finite-dimensional Trotter theorem. | Framework distinction | Chapter text requires separate Hilbert-space/domain/constructive/perturbative data |
 | The formal notation \(Z=\int[D\phi]e^{iS[\phi]}\) has meaning as regulated shorthand or an asymptotic expansion derived from a regulated theory, and does not imply a Borel measure. | Framework statement | Regulator dependence stated explicitly; positive Borel measures restricted to some bosonic Euclidean scalar regimes |
+| \(P(\phi)_2\), \(\phi^4_3\), and two-dimensional Yang--Mills are named rigorous construction regimes, while standard scalar \(\phi^4_D\) scaling limits in \(D\ge4\) are constrained by triviality theorems. | Status catalog | Table `tab:constructive-qft-status-catalog` with references paragraph |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
@@ -154,3 +162,7 @@ Rendered check:
   Schrödinger regulators from continuum smooth cutoffs, covariance cutoffs,
   direct Euclidean spacetime lattice actions without transfer matrices, and
   formal perturbative cutoffs.
+- 2026-05-24, issue #300: added
+  `tab:constructive-qft-status-catalog`, a named catalog of constructive
+  scalar/gauge models, scalar triviality regimes, and the open four-dimensional
+  Yang--Mills continuum problem.

@@ -29,6 +29,9 @@
     between low-dimensional constructive scalar models, standard
     four-dimensional \(\lambda\phi^4\) triviality results, and finite-cutoff
     perturbative/EFT use.
+  - Volume I scalar path-integral chapter, Table
+    `tab:constructive-qft-status-catalog`, for the compact catalog of
+    constructive existence, triviality, and open continuum-limit regimes.
 
 ## Framework
 
@@ -78,7 +81,8 @@
 - Scalar examples are classified by logical status: constructive
   low-dimensional continuum theories, four-dimensional finite-cutoff/EFT
   perturbative models, and conditional exact theories with separately supplied
-  Hilbert-space and analytic data.
+  Hilbert-space and analytic data; the named catalog is
+  Table `tab:constructive-qft-status-catalog`.
 - The Poincare generators, field covariance law, stress-tensor charge
   formulas, and invariant-vacuum assumptions are stated explicitly with
   regulator/domain caveats.
@@ -128,3 +132,5 @@
   paragraph to the chapter and recording the precise scope of
   four-dimensional \(\lambda\phi^4\) triviality versus the broader open
   UV-completion question.
+- 2026-05-24 issue #300 pass: cross-referenced the Volume I constructive QFT
+  status catalog from this chapter's scalar-model status section.
