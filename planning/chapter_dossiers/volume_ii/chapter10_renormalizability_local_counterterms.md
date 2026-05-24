@@ -55,6 +55,12 @@ The chapter must define:
 - the distinction between perturbative continuum-limit criteria and
   constructive existence/triviality theorems, with cross-reference to the
   Volume I catalog `tab:constructive-qft-status-catalog`.
+- the \(D=4\), \(\phi^4\) field-strength census: the one-loop tadpole is
+  independent of external momentum and gives
+  \(\delta Z^{(1)}_{\phi^4}=0\), while the kinetic counterterm belongs to the
+  local chart because the two-loop sunset generates the first logarithmically
+  divergent \(p^2\) Taylor coefficient and power counting then proves closure of
+  the finite list.
 
 ## Claim Ledger
 
@@ -78,6 +84,12 @@ The chapter must define:
    \(\phi^4\) illustrate finite counterterm closure, while \(\phi^6\)
    first renormalizes its own sextic coupling and then illustrates
    proliferation of higher local terms \(\phi^8,\phi^{10},\ldots\).
+6a. In \(D=4\), \(\phi^4\), the one-loop tadpole contributes to the mass
+    coordinate but has no external-momentum dependence, so
+    \(\delta Z^{(1)}_{\phi^4}=0\).  The field-strength coordinate is nevertheless
+    part of the finite local chart: the two-loop sunset supplies the first
+    logarithmically divergent \(p^2\) Taylor coefficient, and the subsequent
+    power-counting argument closes the candidate list.
 7. For an operator with \(n\) fields and \(\ell\) derivatives,
    \(d_I=\ell+n(D-2)/2\).
 8. A diagram with inserted vertices \(J\) can generate a counterterm for
@@ -153,3 +165,7 @@ The chapter must define:
 - 2026-05-24 issue #313 pass: cross-referenced the master regulator-status
   table and made explicit that dimensional regularization is formal
   perturbative analytic continuation, not a path-integral measure.
+- 2026-05-24 issue #361 pass: sharpened the \(D=4\), \(\phi^4\) counterterm
+  census so the vanishing of \(\delta Z\) at one loop is not used as the logic
+  for excluding or including the kinetic counterterm; the two-loop sunset and
+  the power-counting closure argument now carry that burden explicitly.
