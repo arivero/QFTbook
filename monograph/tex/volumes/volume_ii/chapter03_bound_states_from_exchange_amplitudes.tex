@@ -164,6 +164,46 @@ eigenvalue of an unspecified or truncated kernel is not, by itself, a theorem
 that the exact QFT contains a stable particle.
 \end{remark}
 
+\begin{remark}[Near-threshold and unitary-limit caveat]
+\label{rem:near-threshold-bound-state-poles}
+The inequality \(M_B<2m_1\) is the physical location statement: the state lies
+below the two-particle continuum.  The pole statement used in this chapter is
+stronger.  It assumes an isolated one-particle spectral point of finite
+multiplicity, separated from the continuum and from other singularities by a
+nonzero gap, with nonzero overlap with the two-particle channel.  Under those
+hypotheses the amplitude has a simple first-sheet pole and a factorized
+residue.
+
+This hypothesis is not uniform as the binding energy tends to zero.  In a
+two-body channel with equal masses, write the relative momentum by
+\[
+  s=4(m_1^2+k^2),\qquad
+  k=\ii\kappa,\qquad
+  \kappa>0
+\]
+for a below-threshold bound state.  The threshold is \(k=0\).  The effective
+range expansion of an \(s\)-wave amplitude has the low-energy denominator
+\[
+  -a^{-1}+\frac12 r_e k^2-\ii k+\cdots ,
+\]
+so a shallow bound state has \(\kappa\sim a^{-1}\) when the effective range is
+finite.  As \(a^{-1}\to0^+\), the pole reaches the branch point at threshold:
+there is no fixed neighborhood of the pole disjoint from the two-particle cut,
+and the simple-pole expansion in the invariant \(s\)-plane ceases to be the
+right local description.  Depending on the side of the continuation one may
+obtain a threshold bound state, a virtual state, or a resonance pole on another
+sheet.  In three-body unitary physics, Efimov spectra give an even sharper
+warning: infinitely many poles may accumulate at threshold, so the isolated
+finite-rank pole hypothesis fails outright.
+
+Near-threshold molecular states and unitary-limit systems therefore require a
+separate threshold expansion, usually in the momentum variable \(k\) and with
+the branch point kept explicit.  The pole factorization below applies to an
+isolated stable bound state before this degeneration has occurred; it is not a
+claim that every attractive channel near threshold is described by a single
+simple pole in \(s\).
+\end{remark}
+
 Near a stable pole, the connected amplitude factorizes. If \(B\) denotes the
 one-particle state and \(P=k_1+k_2\), then
 \[

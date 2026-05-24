@@ -33,6 +33,11 @@
 - Existence of a composite below-threshold pole is treated as a dynamical
   spectral input, not as something derived from the Lagrangian by general
   principles.
+- The simple-pole criterion assumes an isolated finite-multiplicity spectral
+  point with nonzero channel overlap and a nonzero gap from the threshold.
+  Near-threshold, unitary-limit, and Efimov-accumulation regimes require a
+  separate threshold analysis in the relative momentum variable; the pole may
+  collide with the branch point or cease to be isolated.
 - When the same question is formulated through a Bethe--Salpeter kernel, the
   later analytic Fredholm theorem supplies the precise operator hypotheses;
   this chapter's below-threshold pole criterion is not a hidden proof that a
@@ -87,6 +92,11 @@
   bound-state one-particle vector to the external two-particle channel.
 - The chapter computes consequences of an isolated stable pole; it does not
   prove that an arbitrary interacting QFT contains such a pole.
+- The chapter now separates \(M_B<2m\) as a physical location statement from
+  the stronger mathematical simple-pole hypothesis; shallow molecular states,
+  zero-energy/unitary-limit states, virtual states, and Efimov accumulation
+  are outside the isolated-pole theorem unless additional threshold
+  hypotheses are supplied.
 - The cross-reference to the later Bethe--Salpeter Fredholm theorem now makes
   explicit that pole existence, operator compactness, channel overlap, and
   spectral positivity are separate assumptions or results, not consequences of
