@@ -179,6 +179,39 @@ outgoing particle is moved to the incoming side or conversely.  On the real
 complexified kinematic domain they are connected by analytic continuation,
 with the path and sheet specified by the singularities encountered.
 
+The Mandelstam representation is a stronger conjectural statement about this
+same four-point function.  For equal external masses, with
+\(u=4m^2-s-t\), it would assert that, after all first-sheet pole terms and a
+specified finite polynomial subtraction have been separated, the remaining
+amplitude admits a simultaneous two-variable dispersion representation of the
+form
+\[
+\begin{aligned}
+  \mathcal M_{\rm reg}(s,t)
+  &=
+  \sum_{\chi=s,t,u}
+  \int_{\chi_0}^{\infty}
+  \frac{\rho_\chi(\sigma)}{\sigma-\chi}\,\dd\sigma
+\\
+  &\quad+
+  \sum_{(\chi,\chi')=(s,t),(s,u),(t,u)}
+  \int_{\chi_0}^{\infty}\!\dd\sigma
+  \int_{\chi'_0}^{\infty}\!\dd\tau\,
+  \frac{\rho_{\chi\chi'}(\sigma,\tau)}
+  {(\sigma-\chi)(\tau-\chi')} ,
+\end{aligned}
+\]
+with \(i0\) boundary prescriptions assigned when a physical edge of a cut is
+approached.  Here \(\rho_\chi\) and \(\rho_{\chi\chi'}\) are single and double
+discontinuity distributions, and the support restrictions on the double
+spectral distributions are part of the conjectural content.  This
+simultaneous-cut representation is stronger than the single-variable
+Cauchy representation at fixed \(t\).  No derivation is presently available
+for general interacting four-dimensional Wightman theories with a mass gap.
+The arguments in this monograph use fixed-\(t\) or fixed-crossed-variable
+dispersion relations together with crossing and angular analyticity; the
+Mandelstam representation is not assumed in those deductions.
+
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.86]
   \draw[->,line width=0.75pt] (-3.7,0)--(3.85,0) node[right] {\(s\)};
