@@ -66,6 +66,13 @@ The chapter must define:
   \(c_1=-b_1^2\);
 - finite scheme redefinitions and the induced transformation of beta
   functions.
+- the multi-coupling jet transformation law for beta functions, including the
+  second-coordinate-derivative terms that enter the quadratic jet when the
+  linear beta-function matrix \(M\) is nonzero.
+- the precise sense in which the one-loop quadratic tensor is
+  scheme-independent only for purely marginal coordinates after fixing the
+  leading linear normalization, while the one-coupling two-loop invariance has
+  no componentwise multi-coupling analogue without extra structure.
 - the scheme-equivalence theorem for matched physical observables, stated with
   hypotheses on finite analytic matching, common regulated observable data,
   field/source coordinate normalizations, and infrared safety.
@@ -132,6 +139,13 @@ The chapter must define:
     beta functions by the chain rule; for one classically marginal coupling,
     the first two perturbative coefficients are invariant while later
     coefficients depend on the scheme.
+15a. For several couplings, the beta function is a vector-field jet.  The
+    linearization \(M\) transforms by similarity at a fixed point.  The
+    quadratic jet \(B\) receives second-coordinate-derivative terms unless
+    \(M=0\).  Thus one-loop tensor universality off the Gaussian point is a
+    tensorial statement only in the purely marginal case with fixed linear
+    normalization; the single-coupling \(b_2\) invariance has no general
+    componentwise multi-coupling analogue.
 16. If two schemes are finite analytic coordinate charts on the same regulated
     path-integral action family, and if the same on-shell or infrared-safe
     observable has a perturbative cutoff-removal limit after the matching map,
@@ -185,6 +199,9 @@ The chapter must define:
   comparisons, with any limitations placed in remarks after the construction.
 - Scheme independence must be stated as a matched-observable theorem, not as
   equality at identical numerical coupling values in two schemes.
+- Do not generalize the single-coupling \(b_1,b_2\) invariance to arbitrary
+  multi-coupling beta-function components.  State the vector-field jet formula
+  and the hypotheses under which the quadratic one-loop tensor is meaningful.
 - Do not identify \(m_R\), \(\lambda_2(\mu)\), or \(m_0^2\) with a physical
   pole mass unless the pole equation or the scaling-limit spectral hypothesis
   has been stated.
@@ -213,3 +230,9 @@ The chapter must define:
   separates it from finite-subtraction, MS/running, and lattice bare mass
   coordinates, proves the pole equation in the 1PI convention, and records the
   lattice correlation-length relation to the continuum gap.
+- 2026-05-24 issue #239 pass: added the multi-coupling scheme-change jet
+  formula for beta functions.  The manuscript now states exactly when the
+  quadratic one-loop tensor is scheme-independent, why quadratic coefficients
+  are coordinate-dependent when the linear beta-function matrix is present,
+  and why the single-coupling two-loop invariant does not become a
+  componentwise multi-coupling invariant.

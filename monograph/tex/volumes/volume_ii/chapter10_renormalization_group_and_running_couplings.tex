@@ -1178,6 +1178,106 @@ Thus, for a single marginal coupling and with the leading normalization fixed,
 the first two perturbative coefficients are invariant under finite analytic
 reparametrizations, while later coefficients are coordinate dependent.
 
+For several couplings the corresponding statement is a statement about jets of
+a vector field, not about a list of scalar coefficients.  Let a finite
+renormalized coordinate chart have coordinates \(\lambda^I\) centered at the
+point under discussion, and expand
+\begin{equation}
+  \beta^I(\lambda)
+  =
+  M^I{}_J\lambda^J
+  +
+  \frac12 B^I{}_{JK}\lambda^J\lambda^K
+  +
+  O(\lambda^3),
+  \qquad
+  B^I{}_{JK}=B^I{}_{KJ}.
+  \label{eq:multicoupling-beta-jet}
+\end{equation}
+Let another scheme be related by the finite analytic coordinate change
+\begin{equation}
+  \widetilde\lambda^A
+  =
+  R^A{}_I\lambda^I
+  +
+  \frac12 C^A{}_{IJ}\lambda^I\lambda^J
+  +
+  O(\lambda^3),
+  \qquad
+  C^A{}_{IJ}=C^A{}_{JI},
+  \label{eq:multicoupling-coordinate-jet}
+\end{equation}
+where \(R\) is invertible.  Write \(S=R^{-1}\), and write
+\(\widetilde M=RMS\).  Then the quadratic coefficient of
+\(\widetilde\beta\) is
+\begin{equation}
+  \begin{aligned}
+  \widetilde B^A{}_{BC}
+  &=
+  R^A{}_I B^I{}_{JK}S^J{}_B S^K{}_C  \\
+  &\quad
+  + C^A{}_{IJ}
+    \bigl(S^I{}_B M^J{}_K S^K{}_C
+          +S^I{}_C M^J{}_K S^K{}_B\bigr)
+  - \widetilde M^A{}_D C^D{}_{IJ}S^I{}_B S^J{}_C .
+  \end{aligned}
+  \label{eq:multicoupling-quadratic-beta-transform}
+\end{equation}
+Thus the quadratic beta-function jet is not, in general, a tensorial invariant
+of the renormalization scheme.  It is changed by the second derivative of the
+coordinate map whenever the linear term \(M\) is present.  The invariant
+linear data at a fixed point are the similarity class of \(M\), and hence its
+eigenvalues.
+
+\begin{proof}
+The beta function transforms as a vector field:
+\[
+  \widetilde\beta^A(\widetilde\lambda)
+  =
+  \frac{\partial\widetilde\lambda^A}{\partial\lambda^I}
+  \,\beta^I(\lambda).
+\]
+The inverse coordinate map has the expansion
+\[
+  \lambda^I
+  =
+  S^I{}_A\widetilde\lambda^A
+  -
+  \frac12 S^I{}_A C^A{}_{JK}S^J{}_B S^K{}_C
+  \widetilde\lambda^B\widetilde\lambda^C
+  +
+  O(\widetilde\lambda^3).
+\]
+Substituting this inverse expansion and
+\[
+  \frac{\partial\widetilde\lambda^A}{\partial\lambda^I}
+  =
+  R^A{}_I+C^A{}_{IJ}\lambda^J+O(\lambda^2)
+\]
+into the vector-field transformation law and collecting the terms quadratic in
+\(\widetilde\lambda\) gives
+\eqref{eq:multicoupling-quadratic-beta-transform}.
+\end{proof}
+
+There is an important special case.  If all displayed couplings are
+classically marginal at the reference point and the coordinate origin is the
+Gaussian fixed point, then \(M=0\).  In that case
+\eqref{eq:multicoupling-quadratic-beta-transform} reduces to
+\[
+  \widetilde B^A{}_{BC}
+  =
+  R^A{}_I B^I{}_{JK}S^J{}_B S^K{}_C .
+\]
+After the leading linear normalization \(R\) has been fixed, the one-loop
+quadratic tensor \(B\) is scheme independent.  Without fixing \(R\), the same
+geometric object is represented by different components in different linear
+bases.  If \(M\neq0\), for example when relevant, irrelevant, or explicitly
+dimensionful coordinates are included, the quadratic coefficients are already
+coordinate dependent.  At cubic order, even in the purely marginal case, the
+quadratic coordinate redefinition \(C\) combines with \(B\); hence the
+single-coupling statement \(b_2=\widetilde b_2\) has no componentwise
+multi-coupling analogue without additional structure.
+
 \begin{theorem}[Scheme equivalence for matched physical observables]
 \label{thm:scheme-equivalence-physical-observables}
 Let \(S_{\Lambda_0}(\theta)\) be the local action used in the regulated path
