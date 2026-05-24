@@ -621,6 +621,81 @@ changes the trace by
 \]
 and removes this virial trace.
 
+For the free massless scalar this improvement has a definite coefficient.
+Keep the spacetime dimension in this paragraph denoted by \(D\), with
+\(D>1\).  The flat canonical stress tensor for
+\[
+  S_{\rm kin}[\phi]
+  =
+  \frac12\int\dd^D x\,\partial_\rho\phi\,\partial^\rho\phi
+\]
+is
+\[
+  T^{\rm can}_{\mu\nu}
+  =
+  \partial_\mu\phi\,\partial_\nu\phi
+  -
+  \frac12\delta_{\mu\nu}\partial_\rho\phi\,\partial^\rho\phi .
+\]
+Its trace is
+\[
+\begin{aligned}
+  T^{{\rm can}\,\mu}{}_\mu
+  &=
+  -\frac{D-2}{2}\,\partial_\rho\phi\,\partial^\rho\phi                         \\
+  &=
+  -\frac{D-2}{4}\,\partial^2(\phi^2)
+  +
+  \frac{D-2}{2}\,\phi\,\partial^2\phi .
+\end{aligned}
+\]
+The second term is an equation-of-motion operator for the free action.  Thus,
+modulo the free equation of motion and separated-insertion contact
+conventions, the canonical trace is the total derivative
+\[
+  T^{{\rm can}\,\mu}{}_\mu
+  \equiv
+  -\frac{D-2}{4}\,\partial^2(\phi^2).
+\]
+Define the conformal-coupling coefficient
+\[
+  \xi_D^{\rm conf}
+  =
+  \frac{D-2}{4(D-1)}.
+\]
+With the improvement convention used above,
+\[
+  L_{\rm scalar}=-\xi_D^{\rm conf}\phi^2,
+\]
+so that
+\[
+\begin{aligned}
+  T^{\rm conf}_{\mu\nu}
+  &=
+  T^{\rm can}_{\mu\nu}
+  +
+  \bigl(\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2\bigr)L_{\rm scalar}
+  \\
+  &=
+  T^{\rm can}_{\mu\nu}
+  +
+  \xi_D^{\rm conf}
+  \bigl(\delta_{\mu\nu}\partial^2-\partial_\mu\partial_\nu\bigr)\phi^2 .
+\end{aligned}
+\]
+Its trace is
+\[
+  T^{{\rm conf}\,\mu}{}_\mu
+  =
+  \frac{D-2}{2}\,\phi\,\partial^2\phi,
+\]
+which vanishes as an operator modulo the free equation of motion.  The same
+\(\xi_D^{\rm conf}\) is the coefficient of the curved source term
+\(\frac12\int\dd^D x\,\sqrt g\,\xi_D^{\rm conf}R\phi^2\); the sign difference
+above is only the translation between that curvature-source coefficient and
+the scalar \(L\) in the flat-space convention
+\((\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2)L\).
+
 \begin{theorem}[Stress-tensor criterion for conformal currents]
 \label{thm:stress-tensor-criterion-conformal-currents}
 Let a flat-space local QFT in dimension \(d\ge2\) have a symmetric conserved

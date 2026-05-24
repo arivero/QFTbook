@@ -67,6 +67,10 @@ The chapter must define and derive:
 - the virial-current possibility
   \(T^\mu{}_\mu=\partial_\mu V^\mu\) and the distinction between a conserved
   dilatation current and special conformal currents.
+- the free massless scalar improvement coefficient
+  \(\xi_D^{\rm conf}=(D-2)/(4(D-1))\), including the sign translation between
+  the positive curvature-coupling coefficient and the flat-space scalar
+  \(L=-\xi_D^{\rm conf}\phi^2\) in the chapter's improvement convention;
 - the proved stress-tensor criterion: if the virial current is an allowed
   improvement derivative plus a conserved current, then an improved traceless
   stress tensor exists and conformal Killing currents are conserved;
@@ -96,12 +100,19 @@ The chapter must define and derive:
 8. A virial current gives scale invariance without immediately giving
    tracelessness; improvement data determine whether the virial term can be
    removed.
-9. The stress-tensor improvement criterion is an algebraic theorem once the
+9. For the free massless scalar in \(D\) dimensions, the canonical trace is
+   \(-((D-2)/4)\partial^2\phi^2\) modulo the free equation of motion; the
+   conformal improvement coefficient is
+   \(\xi_D^{\rm conf}=(D-2)/(4(D-1))\), with
+   \(T^{\rm conf}_{\mu\nu}=T^{\rm can}_{\mu\nu}
+   +\xi_D^{\rm conf}(\delta_{\mu\nu}\partial^2-\partial_\mu\partial_\nu)
+   \phi^2\).
+10. The stress-tensor improvement criterion is an algebraic theorem once the
    local operators and contact-term convention are fixed: if
    \(V_\mu=(d-1)\partial_\mu L+J_\mu\) with \(\partial_\mu J^\mu=0\), then
    \(T_{\mu\nu}+(\partial_\mu\partial_\nu-\delta_{\mu\nu}\partial^2)L\) is
    conserved and traceless.
-10. Scale-implies-conformal claims are not used as unqualified theorems.  The
+11. Scale-implies-conformal claims are not used as unqualified theorems.  The
     two-dimensional Zamolodchikov--Polchinski result requires a specified
     analytic/Hilbert-space framework; four-dimensional statements remain
     conditional on additional spectral, regularity, and contact-term
@@ -128,6 +139,9 @@ The chapter must define and derive:
 - Do not state \(T^\mu{}_\mu=0\) at a fixed point without specifying the
   removal or absence of virial, total-derivative, equation-of-motion, contact,
   and improvement-dependent terms.
+- When displaying the scalar improvement coefficient, keep the chapter's
+  flat-space \(L\)-convention distinct from the positive coefficient of the
+  curved-background \(R\phi^2\) term.
 - State the trace identity as a separated-point flat-space identity before
   discussing contact terms or curved-background contributions.
 - Do not merge the Wilson-Fisher fixed-point example into this chapter; it is
@@ -143,3 +157,7 @@ The chapter must define and derive:
 - 2026-05-24 issue pass: addressed #225 by adding a proved stress-tensor
   criterion for conformal currents and a cautious dimension-dependent status
   remark for scale-implies-conformal claims.
+- 2026-05-24 issue pass: addressed #226 by deriving the free-scalar canonical
+  trace, displaying \(\xi_D^{\rm conf}=(D-2)/(4(D-1))\), and recording the
+  sign relation \(L=-\xi_D^{\rm conf}\phi^2\) for this chapter's improvement
+  convention.
