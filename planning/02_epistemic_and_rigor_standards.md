@@ -131,6 +131,30 @@ Large external theorems may be used as inputs only after the theorem is stated
 with its hypotheses and domain, the chapter explains how those hypotheses
 enter, and the proof status is explicit.
 
+Proofs must construct the load-bearing objects named in their statements.  If
+a theorem asserts a change of coordinates, a matching map, a limiting object,
+a quotient, a contact distribution, a state space, a measure, or a topology,
+the proof must display that object or explicitly invoke a previously stated
+theorem that constructs it.  Phrases such as "is absorbed into a coordinate
+change", "is suppressed by powers", "the Legendre transform gives", "locality
+implies", or "the same argument shows" are not proof steps unless the map,
+norm, exponent, differentiability hypothesis, and object being compared have
+already been stated.
+
+Whenever a proof uses an approximation or truncation, the text must state the
+truncation parameter, the norm or seminorm in which the error is estimated,
+the exponent or order of the remainder, the constants' allowed dependencies,
+and the limiting regime.  A finite-order perturbative theorem must say the
+loop order and expansion variables.  A nonperturbative theorem must say the
+space of objects and the topology of convergence.
+
+Long technical arguments are not optional.  If a proof is too long for the
+main flow of a chapter, move the detailed proof to a chapter appendix or a
+clearly labelled technical subsection, and keep an exact pointer in the main
+text.  Do not replace a key derivation by a citation, a slogan, or a
+structural summary when the argument is within the intended scope of the
+monograph.
+
 ## Limits
 
 All limiting procedures require explicit meaning when used for substantive

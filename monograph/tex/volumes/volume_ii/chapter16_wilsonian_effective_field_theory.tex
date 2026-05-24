@@ -729,10 +729,20 @@ flow gives
   y_i<0,
 \]
 for a fixed reference scale \(\Lambda_R\ll\Lambda_0\).  Thus the difference in
-low-energy correlation functions is suppressed by powers of
-\(\Lambda_R/\Lambda_0\), after the relevant coordinates and field
-normalizations have been matched.  The suppression exponent is
-\(-y_i=\Delta_i-D>0\) for the first omitted irrelevant operator.
+any low-momentum coordinate or correlator projector whose linearization is
+bounded in this chart is
+\[
+  O\!\left(
+    \|u_i(\Lambda_0)\|
+    \left(\frac{\Lambda_R}{\Lambda_0}\right)^{-y_i}
+  \right),
+\]
+after the relevant coordinates and field normalizations have been matched.
+The suppression exponent is \(-y_i=\Delta_i-D>0\) for the first omitted
+irrelevant operator.  Nonlinear versions of this statement require the
+Banach-norm estimates used in
+Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} and in the
+finite-coordinate cutoff-removal estimate below.
 
 This gives a precise meaning to effective field theory.  A finite list of
 relevant and marginal coordinates must be measured or tuned.  Irrelevant
@@ -753,7 +763,8 @@ coordinates in the interaction,
   \label{eq:quartic-sextic-truncation}
 \end{equation}
 This is a two-dimensional projection of the full Wilsonian flow.  Numerical
-normalizations of \(g_4\) and \(g_6\) are absorbed into the constants below.
+normalizations of \(g_4\) and \(g_6\) are included in the constants \(a\) and
+\(b\) below.
 The corresponding dimensionless coordinates are
 \begin{equation}
   \lambda_4(\Lambda):=g_4(\Lambda),
@@ -768,7 +779,7 @@ projected Wilsonian beta function is, by definition,
   \beta_A(\lambda):=\Lambda\frac{\dd\lambda_A}{\dd\Lambda}.
 \]
 The variables \(\lambda_A\) are coordinates on a chosen cutoff scheme, not
-observables by themselves.  To isolate the structural point, choose local
+observables by themselves.  To isolate this two-coordinate mechanism, choose local
 coordinates in which the small-coupling flow begins as
 \begin{equation}
   \Lambda\frac{\dd\lambda_4}{\dd\Lambda}
@@ -829,8 +840,8 @@ This equation is the induced beta function for the retained marginal
 coordinate in the reduced coordinate system.  Comparison with a 1PI
 renormalization convention requires an explicitly chosen finite
 reparametrization between Wilsonian coordinates and the renormalized coupling
-used to label Green functions; the structural fact is that the irrelevant
-coordinate has been eliminated by solving its own flow equation.
+used to label Green functions; in the displayed coordinate system the
+irrelevant coordinate has been eliminated by solving its own flow equation.
 
 \begin{figure}[H]
   \centering
@@ -872,7 +883,7 @@ coordinate has been eliminated by solving its own flow equation.
   \label{fig:quartic-sextic-ir-flow}
 \end{figure}
 
-This example is deliberately modest.  It shows one structural feature of the
+This example is deliberately modest.  It shows one concrete feature of the
 full equation: irrelevant local coordinates are generally generated even if
 they are absent in the bare action, and near a controlled trajectory they are
 determined, order by order, by the coordinates that remain to be fixed at a
@@ -1042,9 +1053,9 @@ derivatives such as \(\partial\beta_6/\partial\lambda_6\) and
 \(\partial\beta_4/\partial\lambda_4\) must remain controlled; and the beta
 function for the retained marginal coordinate must vary slowly enough along
 the trajectory that the irrelevant directions are genuinely suppressed.  In
-this regime, the Wilsonian flow gives the structural reason that the
-power-counting classification of local operators organizes perturbative
-renormalization.
+this regime, the linearized irrelevant eigenvalues and the generated-integral
+estimate give the power-counting organization of local operators in
+perturbative renormalization.
 
 This finite-coordinate estimate should not be mistaken for a constructive
 existence theorem for a non-Gaussian four-dimensional scalar continuum limit.
@@ -1514,55 +1525,225 @@ Wilsonian vertices and the remaining low covariance.
   \label{fig:bphz-wilsonian-one-pi-bridge}
 \end{figure}
 
-\begin{proposition}[Comparison of the three renormalization descriptions]
-Consider a massive Euclidean scalar theory with local polynomial interactions,
-a finite ultraviolet regulator \(\Lambda_0\), nonexceptional external
-momenta, and a fixed finite list of 1PI subtraction projectors
-\(\Pi_I\) at scale \(\mu\).  Suppose the BPHZ counterterms have been chosen so
-that the projected 1PI kernels \(\Pi_I\Gamma^{(n_I)}_{\Lambda_0}\) have
-finite limits as \(\Lambda_0\to\infty\).  Suppose also that the Wilsonian
-flow from \(\Lambda_0\) to \(\Lambda\) remains in a local coordinate
-neighborhood where the derivative expansion is controlled for momenta
-\(O(\mu)\).  Then the 1PI coordinates extracted from the BPHZ-renormalized
-graphs are obtained from the Wilsonian coordinates at scale \(\Lambda\) by a
-finite change of coordinates, together with corrections from omitted
-irrelevant coordinates suppressed by powers of \(\mu/\Lambda\) in the stated
-local expansion.
-\end{proposition}
+\begin{lemma}[Low-momentum Taylor remainder from a Wilsonian norm]
+\label{lem:low-momentum-taylor-remainder-wilsonian}
+Fix a finite loop order \(\ell\), a finite list of low-momentum 1PI projectors
+\(\Pi_I\), and a comparison interval
+\[
+  1<\zeta_- \leq \Lambda/\mu \leq \zeta_+ <\infty .
+\]
+Work in a Wilsonian Banach chart \(\mathcal B_{\Lambda}^{m,a}\) of the form
+defined above, with \(m\) larger than the largest Taylor order extracted by
+the projectors \(\Pi_I\).  Let \(v_{\perp,N}\) be the omitted part of
+\(L_\Lambda\), and assume:
+\begin{enumerate}[label=(\roman*)]
+  \item \(\|v_{\perp,N}\|_{\Lambda,m,a}\leq K_N\);
+  \item every Taylor monomial in \(v_{\perp,N}\) that can enter one of the
+  projectors \(\Pi_I\) has excess scaling exponent at least \(p_N>0\) relative
+  to the retained projection;
+  \item the retained Wilsonian coordinates and the covariance
+  \(C_\Lambda(k)\) stay in a bounded subset of the same chart on the
+  comparison interval.
+\end{enumerate}
+Then, for every graph contributing through loop order \(\ell\) to one of the
+projectors \(\Pi_I\) and containing at least one insertion of
+\(v_{\perp,N}\), its contribution is bounded by
+\[
+  C_{I,\ell,N} K_N
+  \left(\frac{\mu}{\Lambda}\right)^{p_N},
+\]
+with \(C_{I,\ell,N}\) depending on the bounded retained-coordinate set, on the
+cutoff profile, on the projectors, and polynomially on
+\(\log(\Lambda/\mu)\) on the comparison interval.
+\end{lemma}
 
 \begin{proof}
-At finite regulator, \eqref{eq:finite-regulator-gaussian-convolution} is an
-identity of Gaussian integrals.  Applying it repeatedly from \(\Lambda_0\) to
-\(\Lambda\) gives \eqref{eq:wilsonian-low-w-equals-bare-w} for all sources in
-the low-momentum test space.  Functional differentiation in such sources gives
-equality of connected low-momentum correlators.  Legendre transformation on
-the same low test space gives equality of the corresponding regulated 1PI
-kernels.
+Consider first a single omitted vertex kernel with external momenta of size
+\(O(\mu)\).  Write those momenta as \(k_i=\mu \kappa_i\), where the
+\(\kappa_i\) range over a compact set fixed by the projectors.  The norm
+\(\|\cdot\|_{\Lambda,m,a}\) bounds all derivatives of the dimensionless
+kernel in the variables \(k_i/\Lambda\) up to order \(m\).  Since the Taylor
+monomials of excess smaller than \(p_N\) have been retained and subtracted
+into \(L_\Lambda^{(N)}\), Taylor's theorem with integral remainder gives
+\[
+  |\Pi_I v_{\perp,N}|
+  \leq
+  C_{I,N}K_N
+  \left(\frac{\mu}{\Lambda}\right)^{p_N}
+\]
+for each projected vertex contribution.
 
-BPHZ subtractions replace each ultraviolet divergent subgraph by a local
-Taylor polynomial in its external variables.  Therefore changing the BPHZ
-subtraction point or changing the smooth cutoff profile changes the regulated
-1PI kernels, at fixed low external momenta, by local Taylor coefficients and
-by terms whose nonlocal dependence begins at the scale where the cutoff
-profile varies.  These local Taylor coefficients are precisely changes of
-coordinates in the space of local Wilsonian interactions.  The derivative
-expansion of \(L_\Lambda\) expresses the remaining dependence on high-scale
-data as a series in powers of \(\mu/\Lambda\).  Keeping only a finite set of
-Wilsonian coordinates leaves the first omitted irrelevant operators, and their
-contribution to the selected 1PI projectors is suppressed by the powers fixed
-by their dimensions and by the stated control of the flow.
-
-Taking \(\Lambda_0\to\infty\) after imposing the BPHZ finiteness conditions
-therefore gives the same renormalized 1PI coordinate chart as the Wilsonian
-continuum-limit construction, up to the finite reparametrization associated
-with the chosen cutoff profile, field normalization, and subtraction
-projectors.
+For a fixed loop order \(\ell\) and a fixed finite family of projectors, only
+finitely many graph topologies and Taylor derivatives are involved.  Rescale
+each remaining low loop momentum by \(q=\Lambda x\).  The smooth cutoff gives
+uniform bounds on the rescaled covariance and its derivatives away from the
+mass singularities excluded by the massive, nonexceptional hypothesis.  The
+bounded retained vertices supply constants in the chosen chart.  The
+Taylor-remainder factor from at least one omitted vertex is therefore carried
+through the whole graph.  Logarithms arise only from scale integrations over
+the finite interval between \(\mu\) and \(\Lambda\), and on the fixed
+comparison interval they are bounded by a polynomial in \(\log(\Lambda/\mu)\).
+Summing the finite set of graph and derivative contributions gives the stated
+constant \(C_{I,\ell,N}\).
 \end{proof}
+
+\begin{theorem}[Finite-order BPHZ--Wilsonian matching]
+\label{thm:finite-order-bphz-wilsonian-matching}
+Consider a massive Euclidean scalar theory with local polynomial
+interactions, finite ultraviolet regulator \(\Lambda_0\), intermediate cutoff
+\(\Lambda\), and nonexceptional external momenta of size \(O(\mu)\), with
+\(\mu<\Lambda\).  Fix:
+\begin{enumerate}[label=(\roman*)]
+  \item a BPHZ subtraction scheme \(\mathfrak b\) consisting of the forest
+  formula of Chapter~\ref{ch:volume-ii-subdivergences-forest-formulas} with specified
+  Taylor subtraction points and oversubtraction degrees;
+  \item a finite-dimensional low test space \(\mathcal E_<\) of sources and
+  classical fields whose Fourier transforms are supported in
+  \(|k|<c_<\Lambda\), where \(0<c_<1\), and which contains the momenta used by
+  the selected 1PI projectors;
+  \item a finite list of 1PI projectors \(\Pi_I\) at scale \(\mu\), each
+  extracting a Taylor coefficient of a low-momentum 1PI kernel at a prescribed
+  nonexceptional subtraction configuration \(\mathcal S_I\);
+  \item a finite list of Wilsonian local-coordinate projectors \(\rho_A\) at
+  scale \(\Lambda\), extracting the coefficients \(u_A=\rho_A(L_\Lambda)\) of
+  local vertex tensors \(P_A\).
+\end{enumerate}
+Let \(L_\Lambda^{(N)}(u)\) be the local Wilsonian action reconstructed from
+the retained coordinates \(u_A\), and let
+\[
+  v_{\perp,N}:=L_\Lambda-L_\Lambda^{(N)}(u)
+\]
+be the omitted part.  For a fixed loop order \(\ell\), define the matching
+map
+\begin{equation}
+  M_I^{(\ell,N)}(u;\Lambda,\mu,\mathfrak b)
+  :=
+  \Pi_I\,
+  \Gamma^{<,(\leq\ell)}_{\Lambda,N}[u],
+  \label{eq:finite-order-bphz-wilsonian-matching-map}
+\end{equation}
+where \(\Gamma^{<,(\leq\ell)}_{\Lambda,N}[u]\) is the low-mode 1PI effective
+action obtained by integrating only fields in \(\mathcal E_<\) with covariance
+\(C_\Lambda\), vertices \(L_\Lambda^{(N)}(u)\), and the same finite local
+normalization convention as \(\mathfrak b\), truncated after loop order
+\(\ell\).
+
+Assume the following estimates hold on the coordinate neighborhood under
+consideration:
+\begin{enumerate}[label=(\alph*)]
+  \item the BPHZ forest theorem applies to all graphs through loop order
+  \(\ell\) that contribute to the projectors \(\Pi_I\);
+  \item the Hessian of \(W_\Lambda^{\rm low}\) on the low source space is
+  invertible on the source neighborhood used for the Legendre transform;
+  \item in a chosen Wilsonian Banach norm,
+  \(\|v_{\perp,N}\|_{\Lambda,m,a}\leq K_N\), and the first omitted local
+  tensor that can contribute to the projectors \(\Pi_I\) has excess scaling
+  exponent at least \(p_N>0\), with the retained coordinates and covariance
+  bounded as in Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian}.
+\end{enumerate}
+Then the BPHZ-renormalized 1PI coordinates through loop order \(\ell\) obey
+\begin{equation}
+  g_I^{\mathfrak b,(\leq\ell)}(\mu)
+  =
+  M_I^{(\ell,N)}(u(\Lambda);\Lambda,\mu,\mathfrak b)
+  +
+  R_I^{(\ell,N)}(\Lambda,\mu),
+  \qquad
+  |R_I^{(\ell,N)}|
+  \leq
+  C_{I,\ell,N}K_N
+  \left(\frac{\mu}{\Lambda}\right)^{p_N}.
+  \label{eq:finite-order-bphz-wilsonian-coordinate-comparison}
+\end{equation}
+If a sublist \(A_0\) of Wilsonian coordinates has the same cardinality as the
+chosen 1PI coordinates and the Jacobian
+\[
+  J_{IA}
+  =
+  \frac{\partial M_I^{(\ell,N)}}{\partial u_A}
+  \bigg|_{u=u_*},
+  \qquad
+  I\in\mathcal I,\ A\in A_0,
+\]
+is invertible at a reference point \(u_*\), then the finite-dimensional
+implicit function theorem gives a local finite change of coordinates
+\[
+  u_A
+  =
+  G_A\bigl(g^{\mathfrak b},u_{\bar A};\Lambda/\mu,\mathfrak b\bigr),
+  \qquad A\in A_0,
+\]
+with the same \(O((\mu/\Lambda)^{p_N})\) truncation error.
+\end{theorem}
+
+\begin{proof}
+The finite-regulator Gaussian convolution identity gives
+\eqref{eq:wilsonian-low-w-equals-bare-w} for all sources in \(\mathcal E_<\).
+This equality is an equality of functions on the same finite-dimensional
+source space.  By hypothesis (b), the maps
+\[
+  J\longmapsto \varphi=\frac{\delta W[J]}{\delta J}
+\]
+are locally invertible for both sides of
+\eqref{eq:wilsonian-low-w-equals-bare-w}.  Since the functions \(W\) agree,
+their first derivatives and local inverse maps agree.  Therefore the
+Legendre transforms on \(\mathcal E_<\),
+\[
+  \Gamma^<[\varphi]=W[J(\varphi)]-\langle J(\varphi),\varphi\rangle ,
+\]
+agree on the corresponding low classical-field neighborhood.  This proves
+equality of low-mode 1PI kernels at finite regulator.  The object just
+constructed is the 1PI functional for the low test space; it is the object
+used by the projectors \(\Pi_I\).
+
+The BPHZ theorem quoted in
+Chapter~\ref{ch:volume-ii-subdivergences-forest-formulas} says that, at the fixed
+loop order \(\ell\), every ultraviolet subtraction in the chosen scheme
+\(\mathfrak b\) is a Taylor polynomial in the external variables of the
+subgraph and that the subtracted graph has a finite
+\(\Lambda_0\to\infty\) limit.  Thus, after the selected subtraction points,
+field normalization, and oversubtraction degrees are fixed, the projected
+BPHZ coordinates \(g_I^{\mathfrak b,(\leq\ell)}(\mu)\) are finite Taylor
+coefficients of the same low-mode 1PI kernels obtained from the Wilsonian
+action.  Computing those kernels with the retained local action
+\(L_\Lambda^{(N)}(u)\) is exactly the definition
+\eqref{eq:finite-order-bphz-wilsonian-matching-map} of
+\(M_I^{(\ell,N)}\).
+
+It remains only to compare the exact Wilsonian action with its finite local
+projection.  Hypothesis (c) puts \(v_{\perp,N}\) in the situation of
+Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian}.  The lemma gives the
+displayed power bound for its contribution to the selected Taylor
+coefficients of low 1PI kernels.  Substituting this estimate into the equality
+of finite-regulator low 1PI kernels, and then taking the BPHZ-renormalized
+\(\Lambda_0\to\infty\) limit at fixed \(\Lambda\) and \(\mu\), gives
+\eqref{eq:finite-order-bphz-wilsonian-coordinate-comparison}.
+
+The final assertion is finite-dimensional.  If \(J_{IA}\) is invertible, the
+map from the selected Wilsonian coordinates \(u_A\), \(A\in A_0\), to the
+selected 1PI coordinates has an invertible derivative at \(u_*\).  The
+implicit function theorem therefore gives the displayed local coordinate
+map \(G_A\), with the same remainder estimate because the previous paragraph
+already controls the omitted Wilsonian coordinates.
+\end{proof}
+
+\begin{remark}[Scope of the matching theorem]
+The theorem is a fixed-loop perturbative statement in a specified subtraction
+scheme and a specified Wilsonian norm.  The massive BPHZ scheme used here is
+the forest-formula scheme of
+Chapter~\ref{ch:volume-ii-subdivergences-forest-formulas}.  Massless theories require
+BPHZL or another infrared-safe subtraction scheme, and dimensional
+regularization with minimal subtraction is a different coordinate system whose
+relation to the present one is another finite matching map.  A
+nonperturbative equivalence between BPHZ and Wilsonian constructions would
+require nonperturbative existence of the relevant measures, Legendre
+transforms, and cutoff-uniform Banach estimates.
+\end{remark}
 
 \section{One-Loop Matching in the Quartic Scalar Theory}
 
-The preceding proposition can be checked directly in the four-point function
-of the massive scalar theory in four Euclidean dimensions.  Work with
+The theorem's matching map can be displayed directly in the four-point
+function of the massive scalar theory in four Euclidean dimensions.  Work with
 \[
   S_{\rm int}[\phi]
   =
@@ -1771,9 +1952,19 @@ the one-loop matching map
 \end{equation}
 where \(\Pi_{\mathcal S_\mu}\) denotes evaluation of the four-point 1PI
 projector defining the coupling.  If the Wilsonian derivative expansion is
-truncated after the local quartic coordinate, the last displayed term is
-absorbed into a finite local redefinition of \(u_4\), while the discarded
-higher Taylor coefficients are suppressed by powers of \(\mu/\Lambda\).
+truncated after the local quartic coordinate, the finite matching map
+\eqref{eq:finite-order-bphz-wilsonian-matching-map} shifts the retained
+coordinate by
+\[
+  -\Pi_{\mathcal S_\mu}\mathcal M_\times(\Lambda)+O(u_4^3).
+\]
+If the first discarded Taylor coefficient in the four-point kernel has excess
+exponent \(p_N\), Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian}
+bounds its contribution to \(g(\mu)\) by
+\[
+  C_N\|v_{\perp,N}\|_{\Lambda,m,a}
+  \left(\frac{\mu}{\Lambda}\right)^{p_N}.
+\]
 
 Subtracting the value at \(\mathcal S_\mu\) from
 \eqref{eq:wilsonian-low-quartic-one-loop-kernel} and using the matching map

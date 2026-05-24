@@ -133,6 +133,21 @@ The chapter must define and derive:
   low-source connected functionals, Legendre transform to 1PI kernels, finite
   matching from Wilsonian local coordinates to 1PI subtraction coordinates,
   and the distinction between a Wilsonian vertex and a 1PI vertex.
+- a finite-order BPHZ--Wilsonian matching theorem that:
+  - fixes a BPHZ forest-formula scheme, a low source/classical-field test
+    space, finite 1PI projectors, and finite Wilsonian coordinate projectors;
+  - defines the matching map
+    \(M_I^{(\ell,N)}(u;\Lambda,\mu,\mathfrak b)
+      =\Pi_I\Gamma^{<,(\le\ell)}_{\Lambda,N}[u]\);
+  - proves the finite-dimensional low-mode Legendre-transform step from
+    equality of connected functionals and Hessian invertibility;
+  - proves a Wilsonian Taylor-remainder lemma giving
+    \(O((\mu/\Lambda)^{p_N})\) suppression from the chosen Banach norm and
+    the first omitted excess scaling exponent;
+  - obtains the finite coordinate change by the finite-dimensional implicit
+    function theorem when the selected Jacobian is invertible;
+  - states the fixed-loop perturbative scope and separates massive BPHZ,
+    BPHZL, and dimensional-regularization/MS coordinate systems.
 - a one-loop quartic scalar matching calculation that:
   - splits the regulated bubble into low-low, high-high, and mixed covariance
     assignments;
@@ -213,6 +228,12 @@ The chapter must define and derive:
     local Taylor subtractions, Wilsonian RG supplies Gaussian pushforward in
     cutoff space, and 1PI RG supplies finite projected coordinates at a
     subtraction scale.
+14a. The finite-order BPHZ--Wilsonian comparison is a theorem only after the
+     low-mode 1PI Legendre transform, BPHZ scheme, Wilsonian coordinate
+     projection, matching map, Banach remainder estimate, and finite
+     Jacobian-invertibility hypothesis are stated.  The matching map is
+     \(M_I=\Pi_I\Gamma^<_{\Lambda,N}\), computed from retained Wilsonian
+     coordinates and remaining low-mode integration.
 15. Beta-function components in Wilsonian and 1PI coordinates are comparable
     only after a matching map is chosen; under finite coordinate changes they
     transform by the chain rule.
@@ -298,3 +319,9 @@ The chapter must define and derive:
   separates the finite-regulator \(C^2\) setting, the Fr\'echet topology on
   vertex kernels for formal perturbation theory, and weighted Banach RG charts
   for theorem-level existence and estimate claims.
+- 2026-05-24 deep-proof pass: replaced the previous structural
+  BPHZ--Wilsonian comparison proposition with a finite-loop theorem.  The new
+  version constructs the matching map, proves the low-mode Legendre-transform
+  step, proves the Taylor-remainder power estimate from the Wilsonian norm,
+  obtains coordinate inversion by the finite-dimensional implicit function
+  theorem, and states the perturbative/scheme scope explicitly.

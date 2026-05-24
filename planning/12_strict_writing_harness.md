@@ -102,6 +102,28 @@ domain, conclusion, and role in the local argument have been made explicit.
 If those hypotheses are not verified in the chapter, the conclusion must be
 phrased conditionally.
 
+Proofs must not use structural prose as a substitute for construction.  When
+a statement asserts a coordinate change, a matching map, a quotient, a contact
+term, a limiting object, a topology, a measure, or an equivalence of
+functionals, the proof must construct the object or cite an earlier theorem in
+the monograph that constructs it.  In particular:
+
+- a phrase such as "absorbed into local coordinates" must be accompanied by
+  the displayed coordinate map or by a recursive construction of that map;
+- a phrase such as "suppressed by powers" must give the norm or seminorm, the
+  exponent, the constants' dependencies, and the scale regime;
+- a phrase such as "Legendre transformation gives" must identify the source
+  space, the classical-field space, the convexity or Hessian hypothesis, and
+  whether the object is a low-mode Legendre transform or a restriction of a
+  larger functional;
+- a phrase such as "same continuum limit" must state the object that
+  converges and the topology or correlation-function sense of convergence.
+
+Known proofs should be developed when they are part of the monograph's
+logical spine.  Highly technical proofs may be placed in chapter appendices or
+technical subsections, but the main text must point to the proof and state the
+precise theorem being proved.  Do not omit a key argument because it is long.
+
 Do not promote an expected large-class statement to a theorem because the
 physics literature uses that name.  In CFT, RG flow, bootstrap, anomaly,
 duality, large-\(N\), or continuum-limit contexts, theorem labels require a
