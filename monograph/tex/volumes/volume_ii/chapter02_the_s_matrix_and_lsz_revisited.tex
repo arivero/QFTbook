@@ -342,8 +342,27 @@ Hilbert-space and locality hypotheses, not consequences of the recursion.
 \begin{theorem}[Cluster decomposition for scattering kernels]
 \label{thm:scattering-cluster-decomposition}
 Assume a Haag--Ruelle scattering theory with a unique translation-invariant
-vacuum, a mass gap above the vacuum, local commutativity, and clustering of
-vacuum Wightman functions for spacelike separated operator groups.  Let
+vacuum, a mass gap above the vacuum, local commutativity, and the following
+quantitative clustering estimate for the almost-local Haag--Ruelle
+approximants used to construct the scattering states.  If \(F_T\) and \(G_T\)
+are finite products of such approximants at fixed time parameter \(T\), and
+if \(G_T(a)=U(a)G_TU(a)^*\), then for every \(N\) there are constants
+\(C_N,M_N,R_N\), depending on the chosen operator families and wave packets
+but independent of \(T\) and \(a\), such that
+\begin{equation}
+  \left|
+  \bra{\vac}F_TG_T(a)\ket{\vac}
+  -
+  \bra{\vac}F_T\ket{\vac}\bra{\vac}G_T\ket{\vac}
+  \right|
+  \le
+  C_N(1+|T|)^{M_N}(1+\rho(a,T))^{-N}.
+  \label{eq:hr-quantitative-cluster-estimate}
+\end{equation}
+Here \(\rho(a,T)\) is the spacelike separation of the two localization tubes
+after replacing the almost-local operators by local approximants; for
+velocity supports separated from the light cone of the relative translation,
+\(\rho(a,T)\ge c|a|-R_N(1+|T|)\) for some \(c>0\).  Let
 \(\Psi_A^{\mathrm{in/out}}\) and \(\Psi_B^{\mathrm{in/out}}\) be two groups of
 wave-packet scattering states whose velocity supports stay disjoint after a
 relative spacelike translation \(a\), with \(a^2>0\) and \(|a|\to\infty\).
@@ -365,20 +384,76 @@ total conservation law of the connected process.
 \end{theorem}
 
 \begin{proof}
-Haag--Ruelle scattering states are obtained as large-time limits of products
-of almost-local creation operators with separated velocity supports.  After a
-large spacelike relative translation, every local operator belonging to group
-\(A\) is spacelike separated from every local operator belonging to group
-\(B\) throughout the time ranges used in the scattering limit.  Local
-commutativity orders the two groups without extra commutator terms, and vacuum
-clustering factors the Wightman functions into the product of the two
-subprocess Wightman functions.  The mass gap gives the uniform estimates
-needed to pass this factorization through the Haag--Ruelle limits.  Applying
-the cumulant recursion of Proposition~\ref{prop:connected-scattering-kernels}
-then removes all products of proper subprocesses from \(S^{\mathrm c}\).  A
-separate momentum-conserving delta function for a proper subprocess would
-survive precisely as such a product term, so it is absent from the connected
-kernel.
+Choose Haag--Ruelle approximants
+\[
+  \Psi_{A,T}^{\mathrm{out}}=A_T^{\mathrm{out}}\vac,\qquad
+  \Psi_{A,T}^{\mathrm{in}}=A_{-T}^{\mathrm{in}}\vac,\qquad
+  \Psi_{B,T}^{\mathrm{out}}=B_T^{\mathrm{out}}\vac,\qquad
+  \Psi_{B,T}^{\mathrm{in}}=B_{-T}^{\mathrm{in}}\vac
+\]
+for the four scattering states.  The Haag--Ruelle theorem gives norm
+convergence as \(T\to+\infty\) for the outgoing approximants and as
+\(T\to+\infty\) for the incoming approximants written at time \(-T\).
+Translation by \(U(a)\) is
+unitary, so these norm errors are independent of the relative translation
+\(a\).  Hence, for every \(\varepsilon>0\), there exists \(T_\varepsilon\)
+such that for \(T\ge T_\varepsilon\) the exact matrix element differs by at
+most \(\varepsilon\), uniformly in \(a\), from the finite-time expression
+\[
+  M_T(a)
+  =
+  \bra{\vac}
+    (A_T^{\mathrm{out}})^*
+    (B_T^{\mathrm{out}}(a))^*
+    A_{-T}^{\mathrm{in}}
+    B_{-T}^{\mathrm{in}}(a)
+  \ket{\vac}.
+\]
+Almost-locality permits replacement of each approximant by a local operator
+localized in its Haag--Ruelle tube, with an error decreasing faster than any
+power of the tube size.  For the fixed \(T\) chosen above, large spacelike
+\(a\) makes the \(A\)-tube spacelike separated from the translated
+\(B\)-tube.  Local commutativity then orders the two groups, up to the
+almost-local tail estimate, into
+\[
+  M_T(a)
+  =
+  \bra{\vac}F_TG_T(a)\ket{\vac}
+  +
+  O_N((1+|a|)^{-N}),
+  \qquad
+  F_T=(A_T^{\mathrm{out}})^*A_{-T}^{\mathrm{in}},
+  \quad
+  G_T=(B_T^{\mathrm{out}})^*B_{-T}^{\mathrm{in}} .
+\]
+Applying \eqref{eq:hr-quantitative-cluster-estimate} gives
+\[
+  \lim_{|a|\to\infty}M_T(a)
+  =
+  \bra{\vac}F_T\ket{\vac}\bra{\vac}G_T\ket{\vac}.
+\]
+Finally take \(T\to\infty\) in the two factors.  The same norm convergence
+gives
+\[
+  \bra{\vac}F_T\ket{\vac}
+  \longrightarrow
+  \left\langle\Psi_A^{\mathrm{out}},S\Psi_A^{\mathrm{in}}\right\rangle,
+  \qquad
+  \bra{\vac}G_T\ket{\vac}
+  \longrightarrow
+  \left\langle\Psi_B^{\mathrm{out}},S\Psi_B^{\mathrm{in}}\right\rangle .
+\]
+Since \(\varepsilon\) was arbitrary, the scattering matrix element
+factorizes in the stated large-\(|a|\) limit.
+
+The kernel statement follows by testing the distributional kernel against
+wave packets whose velocity supports realize the two translated clusters.  If
+the connected kernel contained a component with separate momentum conservation
+inside a proper subprocess, its wave-packet pairing would survive the
+large-separation limit as a product contribution.  The recursion in
+Proposition~\ref{prop:connected-scattering-kernels} subtracts exactly those
+proper-subprocess products.  Therefore only the total momentum-conservation
+delta distribution remains in \(S^{\mathrm c}\).
 \end{proof}
 
 \begin{center}

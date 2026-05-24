@@ -22,6 +22,10 @@
   Haag--Ruelle wave operators exist under isolated-mass and locality
   hypotheses, and LSZ reduction restricts time-ordered boundary values to the
   mass shells.
+- Haag--Ruelle/Ruelle/Araki/Reed--Simon theorem boundaries are used for the
+  quantitative cluster-estimate hypothesis: almost-local approximants obey
+  cluster bounds whose spacelike separation decay dominates the polynomial
+  dependence on the finite Haag--Ruelle time parameter.
 - The chapter does not claim asymptotic completeness for physical models.
 - The chapter states massless, confined, and long-range charged sectors as
   different asymptotic domains without constructing them here.
@@ -38,6 +42,9 @@
   compactly supported wave packets on mass shells.
 - Connected kernels are defined by cluster decomposition of scattering
   matrix elements, matching connected time-ordered Green functions under LSZ.
+- The physical cluster theorem is stated with the quantitative estimate needed
+  to pass from finite-time almost-local products to Haag--Ruelle scattering
+  states.
 
 ## Symbols
 
@@ -55,6 +62,7 @@
 | \(G_N^{\mathrm c}\) | connected time-ordered \(N\)-point distribution |
 | \(\mathcal M\) | invariant amplitude after extracting the momentum-conservation delta function |
 | \(\Pi\) | partition of external labels into connected clusters |
+| \(\rho(a,T)\) | spacelike separation of the two Haag--Ruelle localization tubes after relative translation \(a\) at finite time parameter \(T\) |
 
 ## Claims Established
 
@@ -74,8 +82,13 @@
   connected kernels associated to partitions of the external process.
 - The algebraic moment-cumulant recursion defining connected kernels is
   separated from the physical cluster theorem: under uniqueness of the vacuum,
-  mass gap, local commutativity, and Wightman clustering, widely spacelike
-  separated scattering processes factorize.
+  mass gap, local commutativity, and a quantitative clustering estimate for
+  finite-time Haag--Ruelle approximants, widely spacelike separated scattering
+  processes factorize.
+- The cluster theorem proof now displays the finite-time estimate, the
+  \(\varepsilon\)-argument with Haag--Ruelle norm convergence uniform under
+  translations, and the final moment-cumulant subtraction of proper-process
+  products.
 - The connected amplitude is the object whose poles, cuts, and analytic
   continuation will be studied in subsequent chapters.
 
