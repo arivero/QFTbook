@@ -72,6 +72,7 @@
 | \(\xi(\pi)\) | coset representative for Goldstone coordinates |
 | \(e^a,\omega^i\) | broken vielbein and unbroken connection in the Maurer--Cartan form |
 | \(F_{Aa}\) | Goldstone decay-constant matrix |
+| \(m_A=gv\) | Abelian Higgs vector mass used in the Goldstone-versus-gauge-direction caveat |
 | \(\Sigma_{IJ}\), \(\Sigma_0\) | QCD chiral condensate matrix and its flavor-singlet value, used as a conjectural dynamical input for the pion EFT |
 | \(U(x)\) | pion field valued in \(SU(N_f)\) |
 | \(\ell_\mu,r_\mu\) | external left and right flavor gauge fields |
@@ -135,6 +136,12 @@
   decomposition.
 - The Goldstone theorem is derived as a massless spectral contribution forced
   by the Ward identity and a nonzero order parameter.
+- The Goldstone theorem is explicitly scoped to global charges acting on a
+  positive physical Hilbert space.  For gauged directions, the Abelian Higgs
+  quadratic term \((\partial_\mu\pi-m_AA_\mu)^2/2\), \(R_\xi\) gauge fixing,
+  and the BRST doublet/quartet structure explain why the would-be Goldstone
+  coordinate is absent from the positive BRST cohomology as an independent
+  massless particle.
 - The explicit \(U(1)\) Goldstone model is developed in polar variables, with
   \(j^\mu=2r^2\partial^\mu\theta\), \([Q,\theta]=i\), a massive radial mode,
   and a pseudo-Goldstone mass from a small \(-\epsilon\operatorname{Re}\phi\)
@@ -219,3 +226,6 @@
   \(SU(N_f)_L\times SU(N_f)_R\to SU(N_f)_V\) pattern are dynamical inputs for
   the low-energy pion EFT, supported by lattice/phenomenology but not proved
   from the four-dimensional QCD Lagrangian.
+- 2026-05-24 issue #266 pass: added the Goldstone/gauged-direction caveat with
+  the Abelian Higgs quadratic mixing, \(R_\xi\) gauge fixing, and BRST
+  doublet/quartet interpretation, cross-referenced to the BRST chapter.

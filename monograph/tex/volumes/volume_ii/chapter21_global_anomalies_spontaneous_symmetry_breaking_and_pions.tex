@@ -652,6 +652,58 @@ chosen phase, the matrix \(F_{Aa}\) has rank equal to the number of broken
 generators.  These massless states are the quanta described by the Goldstone
 coordinates \(\pi^a(x)\).
 
+\begin{remark}[Goldstone theorem and gauged directions]
+\label{rem:goldstone-gauge-brst-higgs}
+The spectral argument above is a theorem about a global symmetry current acting
+on the physical positive Hilbert space.  It assumes that \(Q_A\) is a charge
+defined on physical states and that \(\delta_A\mathcal O\) is the variation of
+a gauge-invariant local observable or of a local field in an ordinary
+positive-metric representation.
+
+Gauge redundancy is different.  In a covariant gauge-fixed description the
+state space before the physical quotient is a Krein space, as in
+Chapter~\ref{ch:volume-ii-18}, and physical states are BRST cohomology
+classes.  A scalar coordinate that moves along a gauged orbit is then a
+would-be Goldstone coordinate, not by itself a physical massless particle.  At
+quadratic order in the Abelian Higgs model, write
+\[
+  \phi(x)=\frac{1}{\sqrt2}\bigl(v+h(x)+\ii\pi(x)\bigr),
+  \qquad
+  m_A=gv .
+\]
+The scalar kinetic term contains
+\begin{equation}
+  |D_\mu\phi|^2
+  =
+  \frac12(\partial_\mu h)^2
+  +
+  \frac12(\partial_\mu\pi-m_A A_\mu)^2
+  +\text{higher powers of }h,\pi,A .
+  \label{eq:abelian-higgs-quadratic-mixing}
+\end{equation}
+Equivalently, away from zeros of \(v+h\), the gauge-invariant vector
+\[
+  \mathcal A_\mu
+  =
+  A_\mu-\frac{1}{m_A}\partial_\mu\pi
+\]
+has the Proca mass term \(\frac12m_A^2\mathcal A_\mu\mathcal A^\mu\) at
+quadratic order.  In an \(R_\xi\) gauge one instead uses the gauge-fixing
+functional
+\[
+  F_\xi=\partial^\mu A_\mu-\xi m_A\pi ,
+\]
+which cancels the \(A_\mu\partial^\mu\pi\) mixing and assigns the unphysical
+fields \(\pi\) and the Faddeev--Popov ghosts the gauge-dependent mass
+\(\sqrt{\xi}\,m_A\).  The longitudinal gauge polarization, the would-be
+Goldstone coordinate, and the ghost-antighost variables form BRST doublet or
+quartet sectors, so they have no independent positive-norm particle states in
+the BRST cohomology.  The physical spectrum contains a massive vector particle
+with three polarizations and the gauge-invariant scalar excitation \(h\), plus
+any Goldstone particles associated with broken global symmetries that remain
+after the gauge redundancy has been quotiented.
+\end{remark}
+
 \section{The \texorpdfstring{\(U(1)\)}{U(1)} Goldstone Model}
 
 The spectral conclusion is realized explicitly by a complex scalar field with
