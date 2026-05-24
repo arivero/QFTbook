@@ -90,9 +90,10 @@ dimension:
   \qquad
   \Delta_\lambda=O(\lambda^2).
 \]
-The symbol \(\lambda(\mu)\) in this chapter always denotes the dimensionless
-coordinate.  The term \(-\epsilon\lambda\) in the beta function is precisely
-the derivative of the factor \(\mu^{-\epsilon}g_0\) at fixed bare coupling.
+The symbol \(\lambda(\mu)\) in the momentum-subtraction calculation immediately
+below denotes the dimensionless coordinate.  The term \(-\epsilon\lambda\) in
+the beta function is precisely the derivative of the factor
+\(\mu^{-\epsilon}g_0\) at fixed bare coupling.
 
 Define a dimensionless 1PI quartic coordinate by the symmetric Euclidean
 subtraction condition
@@ -111,6 +112,14 @@ where
     1-\frac{\partial\Sigma}{\partial k^2}
   \right)^{-1}_{k^2=\mu^2}.
 \]
+Equations above define the symmetric Euclidean momentum-subtraction chart.  If
+several schemes are present, its coordinates will be denoted
+\(\lambda_{\rm MOM}(\mu)\) and \(Z_{\rm MOM}(\mu)\); the lighter notation
+\(\lambda(\mu)\) and \(Z(\mu)\) is used here only while no pole-subtraction
+field factor is being discussed.  In particular, \(Z_{\rm MOM}(\mu)\) is a
+finite residue normalization at the subtraction momentum, whereas the
+minimal-subtraction field factor introduced below contains only pole
+counterterms in \(\epsilon\).
 At one loop \(Z(\mu)=1\), and the bubble graph gives
 \[
   \lambda(\mu)
@@ -361,18 +370,36 @@ the 1PI coordinate definition is included, has the endpoint value
 \section{The First Scaling Operators}
 
 At a fixed point, the anomalous-dimension matrix can be diagonalized into
-scaling operators.  The elementary field \(O_1=\phi\) has anomalous dimension
+scaling operators.  The elementary field \(O_1=\phi\) has a fixed-point scaling
+dimension independent of finite analytic changes of the local field coordinate,
+but the anomalous-dimension function away from the fixed point depends on the
+renormalization chart.  We compute it below in the minimal-subtraction pole
+chart.  Let \(\lambda_{\rm MS}\) be the dimensionless quartic coordinate in this
+chart, and let
 \[
-  \gamma_\phi
+  \phi_0=\left(Z_\phi^{\rm MS}\right)^{1/2}\phi_{\rm MS},
+  \qquad
+  Z_\phi^{\rm MS}(\lambda_{\rm MS},\epsilon)
   =
-  \frac12\frac{\dd\log Z(\mu)}{\dd\log\mu}.
+  1+\sum_{r\geq 1}\frac{Z_{\phi,r}(\lambda_{\rm MS})}{\epsilon^r},
 \]
-Since \(Z(\mu)=1+O(\lambda^2)\) in scalar quartic theory, the field anomalous
-dimension starts only at order \(\lambda_*^2=O(\epsilon^2)\).  Thus
+where \(\phi_0\) is the regulated field appearing in the bare graph expansion
+and \(Z_\phi^{\rm MS}\) contains no finite part.  The field anomalous dimension
+in this chart is
+\[
+  \gamma_\phi^{\rm MS}(\lambda_{\rm MS})
+  =
+  \left.
+  \frac12\mu\frac{\dd}{\dd\mu}\log Z_\phi^{\rm MS}
+  \right|_{g_0,\epsilon}.
+\]
+Since \(Z_\phi^{\rm MS}=1+O(\lambda_{\rm MS}^2)\) in scalar quartic theory, the
+field anomalous dimension starts only at order
+\(\lambda_{{\rm MS},*}^2=O(\epsilon^2)\).  Thus
 \[
   \Delta_\phi
   =
-  \frac{D-2}{2}+\gamma_{\phi*}
+  \frac{D-2}{2}+\gamma_{\phi*}^{\rm MS}
   =
   1-\frac{\epsilon}{2}+O(\epsilon^2).
 \]
@@ -386,11 +413,11 @@ two-point decay
 Since a scalar primary of dimension \(\Delta_\phi\) has two-point exponent
 \(2\Delta_\phi\), this convention gives
 \[
-  \eta=2\Delta_\phi-(D-2)=2\gamma_{\phi *}.
+  \eta=2\Delta_\phi-(D-2)=2\gamma_{\phi *}^{\rm MS}.
 \]
 The first nonzero field anomalous dimension comes from the momentum-dependent
-part of the two-loop sunset self-energy.  In the same subtraction convention,
-the coefficient is obtained as follows.  With the interaction normalized as
+part of the two-loop sunset self-energy.  In the following pole computation
+write \(\lambda\) for \(\lambda_{\rm MS}\).  With the interaction normalized as
 \(\lambda\phi^4/4!\), the sunset graph has symmetry factor \(1/6\), hence
 \[
   \Sigma_{\rm sun}^{(2)}(k)
@@ -437,42 +464,62 @@ Multiplying it by the sunset symmetry factor \(1/6\) gives the coefficient
   =
   -\frac{\lambda^2}{12(16\pi^2)^2}\,\frac1\epsilon ,
 \]
-where the derivative is taken in the self-energy convention used in the
-definition of \(Z(\mu)\) above.  Write
+where the self-energy sign convention is the same as in the
+momentum-subtraction chart, but the subtraction now retains only the pole
+part.  Write
 \[
   a(\lambda)=\frac{\lambda^2}{12(16\pi^2)^2}.
 \]
-The residue condition gives
+The pole part of the minimal-subtraction field factor is determined by the same
+residue condition:
 \[
-  Z
+  Z_\phi^{\rm MS}
   =
-  \left(1-\partial_{k^2}\Sigma\right)^{-1}
+  \left[
+    \left(1-\partial_{k^2}\Sigma\right)^{-1}
+  \right]_{\rm pole}
   =
   1-\frac{a(\lambda)}{\epsilon}
   +O(\lambda^3,\epsilon^0)
 \]
-for the pole part.  The sign in the anomalous dimension is then fixed by
-differentiating at fixed regulator definition.  To the order needed here
-\(\beta(\lambda)=-\epsilon\lambda+O(\lambda^2)\), so
+where \([\cdot]_{\rm pole}\) means that all finite terms are discarded.  The
+sign in the anomalous dimension is then fixed by differentiating at fixed
+regulator definition.  To the order needed here
+\(\beta_{\rm MS}(\lambda)=-\epsilon\lambda+O(\lambda^2)\), so
 \[
-  \frac12\mu\frac{\dd}{\dd\mu}\log Z
+  \frac12\mu\frac{\dd}{\dd\mu}\log Z_\phi^{\rm MS}
   =
-  \frac12\beta(\lambda)\frac{\partial}{\partial\lambda}
+  \frac12\beta_{\rm MS}(\lambda)\frac{\partial}{\partial\lambda}
   \left(-\frac{a(\lambda)}{\epsilon}\right)
   =
   a(\lambda)+O(\lambda^3).
 \]
 Therefore
 \[
-  \gamma_\phi(\lambda)
+  \gamma_\phi^{\rm MS}(\lambda)
   =
   \frac{\lambda^2}{12(16\pi^2)^2}+O(\lambda^3).
 \]
-Substituting \(\lambda_*=(16\pi^2/3)\epsilon+O(\epsilon^2)\) gives
+Substituting \(\lambda_{{\rm MS},*}=(16\pi^2/3)\epsilon+O(\epsilon^2)\) gives
 \[
   \eta=\frac{\epsilon^2}{54}+O(\epsilon^3)
 \]
-in the normalization of the quartic coupling used in this chapter.
+in the interaction normalization \(\lambda\phi^4/4!\).
+This value is not an artifact of the pole chart.  If a second chart is obtained
+by a finite analytic coupling redefinition
+\(\lambda'=\lambda+c_2\lambda^2+O(\lambda^3)\) and the finite field-coordinate
+change \(\phi'=F(\lambda)^{-1}\phi\), \(F(0)=1\), then
+\[
+  \gamma'_\phi(\lambda')
+  =
+  \gamma_\phi(\lambda)
+  +
+  \beta(\lambda)\frac{\partial\log F(\lambda)}{\partial\lambda}.
+\]
+At an exact fixed point the second term vanishes.  In the present
+\(\epsilon\)-expansion, replacing \(\lambda_*\) by
+\(\lambda'_*= \lambda_*+O(\lambda_*^2)\) changes
+\(\gamma_\phi=A\lambda_*^2+O(\lambda_*^3)\) only at order \(O(\epsilon^3)\).
 
 The operator \(O_2=\phi^2\) is more delicate.  The constant source deformation
 \[

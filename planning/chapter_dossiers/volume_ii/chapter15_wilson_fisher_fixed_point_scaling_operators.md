@@ -50,8 +50,15 @@ The chapter must define and derive:
 - the dimensionless 1PI quartic coupling
   \(\lambda(\mu)=-\mu^{-\epsilon}Z(\mu)^2\Gamma^{(4)}\) at the symmetric
   Euclidean subtraction point;
+- the scheme distinction between the symmetric momentum-subtraction chart
+  \((\lambda_{\rm MOM},Z_{\rm MOM})\) and the minimal-subtraction pole chart
+  \((\lambda_{\rm MS},Z_\phi^{\rm MS})\), including why the displayed
+  \(O(\epsilon^2)\) value of \(\eta\) is unchanged by finite analytic
+  reparametrization at this order;
 - the notation convention that \(\lambda(\mu)\), not \(\lambda_4(\mu)\), is the
-  running dimensionless quartic coordinate throughout the chapter; \(\delta g_4\)
+  running dimensionless quartic coordinate when a single chart is under
+  discussion; explicit subscripts such as \(\lambda_{\rm MOM}\) and
+  \(\lambda_{\rm MS}\) are used when scheme distinctions matter; \(\delta g_4\)
   denotes a source perturbation for \(O_4=\phi^4\), not a second running-coupling
   symbol;
 - the one-loop formula for \(\lambda(\mu)\) in terms of \(g_0\);
@@ -84,8 +91,8 @@ The chapter must define and derive:
   =-\lambda^2/[12(16\pi^2)^2\epsilon]+\cdots\);
 - the sign derivation from the negative self-energy derivative pole to the
   positive field anomalous dimension, through
-  \(Z=(1-\partial_{k^2}\Sigma)^{-1}\) and
-  \(\frac12\beta(\lambda)\partial_\lambda\log Z\);
+  the pole part of \(Z_\phi^{\rm MS}\) and
+  \(\frac12\beta_{\rm MS}(\lambda)\partial_\lambda\log Z_\phi^{\rm MS}\);
 - why an \(x\)-independent \(\phi^2\) source is an IR-bad subtraction in the
   massless theory;
 - why this infrared obstruction is not a failure of the local
@@ -229,8 +236,15 @@ The chapter must define and derive:
   from
   \(\partial_{k^2}\Sigma^{(2)}|_{\rm div}<0\)
   to \(\gamma_\phi>0\), displaying the pole part
-  \(Z=1-a(\lambda)/\epsilon+\cdots\) and the fixed-regulator derivative with
-  \(\beta(\lambda)=-\epsilon\lambda+O(\lambda^2)\).
+  \(Z_\phi^{\rm MS}=1-a(\lambda)/\epsilon+\cdots\) and the fixed-regulator
+  derivative with
+  \(\beta_{\rm MS}(\lambda)=-\epsilon\lambda+O(\lambda^2)\).
+- 2026-05-24 issue #350 pass: separated the symmetric momentum-subtraction
+  chart from the minimal-subtraction pole chart; the two-loop sunset
+  anomalous-dimension computation now uses \(Z_\phi^{\rm MS}\) and
+  \(\lambda_{\rm MS}\), while the text states the finite-reparametrization
+  argument that leaves \(\eta=\epsilon^2/54+O(\epsilon^3)\) unchanged at the
+  displayed order.
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
 - Do not say that the perturbative zero of the \(4-\epsilon\) beta function is
