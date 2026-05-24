@@ -22,6 +22,10 @@ hypotheses:
 - fixed physical \(s>4m^2\) for angular analyticity;
 - fixed real \(t<0\) for the dispersion relation;
 - polynomial boundedness when the contour at infinity is discarded;
+- \(\mathcal M(s,t)\) is a polynomial-growth holomorphic germ on the
+  complexified on-shell invariant surface, with physical values and cut
+  discontinuities understood as distributional boundary values in the topology
+  fixed in the preceding analyticity chapter;
 - separation between the conditional finite-subtraction bootstrap to two
   subtractions and the stronger Lukaszuk-Martin/Yndurain theorem-level input
   that supplies two subtractions without assuming finite subtractions first;

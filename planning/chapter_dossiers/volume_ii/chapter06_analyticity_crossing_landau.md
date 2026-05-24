@@ -32,6 +32,9 @@
 | --- | --- |
 | \(s,t,u\) | Mandelstam invariants for identical scalar \(2\to2\) scattering |
 | \(\mathcal M(s,t)\) | connected invariant amplitude, analytically continued where defined |
+| \(\mathfrak S_m\) | complexified on-shell invariant surface \(s+t+u=4m^2\) |
+| \(\mathcal O_{\mathrm{poly}}(\mathcal D)\) | holomorphic functions on a complex kinematic domain with local polynomial-growth boundary estimates |
+| \(\operatorname{bv}F\) | boundary-value distribution of a holomorphic germ, tested in \(C_c^\infty\) locally and in Schwartz topology when polynomial growth controls noncompact edges |
 | first sheet | branch reached from the physical Feynman prescription without crossing a cut |
 | \(\alpha_i\) | Feynman parameters for internal lines |
 | \(q_i(\ell,p)\) | internal momentum on line \(i\), affine in loop momenta and external momenta |
@@ -54,6 +57,11 @@
 - Analyticity and crossing are used as structural hypotheses supported by
   locality, spectral support, LSZ, and perturbation theory; existing rigorous
   theorem sets cover only parts of the desired physical domain.
+- Analytic continuation means continuation of a polynomial-growth holomorphic
+  germ on the complexified on-shell invariant surface.  Equality on a real
+  edge is equality of boundary-value distributions, and uniqueness is by
+  edge-of-the-wedge plus the identity theorem on connected holomorphic
+  domains.
 
 ## Claims to Derive
 
@@ -66,6 +74,10 @@
 - For fixed \(t<0\), the first sheet has a right-hand \(s\)-channel cut
   starting at \(4m^2\), a left-hand crossed-channel cut starting at \(-t\),
   and possible bound-state poles.
+- The notation \(\mathcal M(s,t)\) must always specify whether it denotes the
+  physical boundary-value distribution or the holomorphic germ on the relevant
+  connected complex domain; no perturbative Borel summation is part of this
+  definition.
 - On the physical \(s\)-channel cut,
   \[
     \mathcal M(s,t)
