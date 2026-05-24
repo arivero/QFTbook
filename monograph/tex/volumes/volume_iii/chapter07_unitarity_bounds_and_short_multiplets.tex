@@ -318,6 +318,173 @@ When equality holds for one summand, the corresponding projected first
 descendant is a null operator.  Higher-level Gram matrices can impose further
 conditions in special cases, as the scalar trace descendant did above.
 
+\section{Two-Row Mixed-Symmetry Tensor Primaries}
+
+The first non-symmetric tensor case already displays the mechanism for
+mixed-symmetry shortening.  Let \(\mathcal H_{a,b}\) be the traceless
+\(SO(D)\) tensor representation with Young row lengths
+\((a,b)\), where \(a\ge b\ge1\).  Work first in the stable tensor range in
+which the Young diagrams displayed below are distinct irreducible tensor
+representations; in lower dimensions Hodge duality may split or identify
+summands, and the same Gram-matrix test is then applied to the resulting
+irreducible \(\operatorname{Spin}(D)\) summands.
+
+With the normalization \(C_1=D-1\) for the vector representation, the
+quadratic Casimir of a traceless tensor representation with row lengths
+\(\lambda=(\lambda_1,\lambda_2,\ldots)\) is
+\begin{equation}
+  C_\lambda
+  =
+  \sum_{i\ge1}\lambda_i(\lambda_i+D-2i).
+  \label{eq:soD-tensor-casimir-row-lengths}
+\end{equation}
+To derive this formula, let \(r=\lfloor D/2\rfloor\) and choose the
+orthonormal basis \(e_i\) for the weight space of
+\(\mathfrak{so}(D)_\mathbb C\) in which the vector representation has highest
+weight \(e_1\).  In the stable tensor range the highest weight of the tensor
+representation is \(\Lambda=\sum_i\lambda_i e_i\), while the Weyl vector
+\(\varrho\) obeys \(2\varrho_i=D-2i\).  The quadratic Casimir eigenvalue is
+\((\Lambda,\Lambda+2\varrho)\), normalized so that the vector highest weight
+\(e_1\) has \(C_1=(e_1,e_1+2\varrho)=D-1\), and this gives
+\eqref{eq:soD-tensor-casimir-row-lengths}.
+Thus
+\[
+  C_{a,b}=a(a+D-2)+b(b+D-4).
+\]
+The level-one descendant space decomposes by adding or removing one box from
+the Young diagram.  The derivative vector index may be projected into an
+added first, second, or third row, or it may be contracted with an index in
+the first or second row and then projected back to the traceless Young
+symmetry.  This gives
+\begin{align}
+  \mathcal H_1\otimes\mathcal H_{a,b}
+  &=
+  \mathcal H_{a+1,b}
+  \oplus
+  \mathcal H_{a,b+1}
+  \oplus
+  \mathcal H_{a,b,1}
+  \oplus
+  \mathcal H_{a-1,b}
+  \oplus
+  \mathcal H_{a,b-1}.
+  \label{eq:two-row-vector-tensor-decomposition}
+\end{align}
+Invalid summands are omitted: for example \(\mathcal H_{a,b+1}\) and
+\(\mathcal H_{a-1,b}\) are absent when \(a=b\), and
+\(\mathcal H_{a,b-1}\) becomes \(\mathcal H_a\) when \(b=1\).  The
+\(\mathcal H_{a,b,1}\) channel is present only when the corresponding
+three-row tensor representation is not removed by a low-dimensional duality.
+Each displayed summand has multiplicity one in the stable range, so the
+level-one Gram operator is diagonal on these channels.
+
+Substituting the Casimirs in
+\eqref{eq:general-level-one-unitarity-test} gives the following table:
+\begin{equation}
+\begin{array}{c|c|c}
+  Q
+  &
+  \frac12(C_Q-C_1-C_{a,b})
+  &
+  \text{level-one positivity condition}
+  \\ \hline
+  \mathcal H_{a+1,b}
+  &
+  a
+  &
+  \Delta+a\ge0
+  \\
+  \mathcal H_{a,b+1}
+  &
+  b-1
+  &
+  \Delta+b-1\ge0
+  \\
+  \mathcal H_{a,b,1}
+  &
+  -2
+  &
+  \Delta-2\ge0
+  \\
+  \mathcal H_{a-1,b}
+  &
+  -(a+D-2)
+  &
+  \Delta-a-D+2\ge0
+  \\
+  \mathcal H_{a,b-1}
+  &
+  -(b+D-3)
+  &
+  \Delta-b-D+3\ge0 .
+\end{array}
+\label{eq:two-row-level-one-bound-table}
+\end{equation}
+For instance,
+\[
+  \frac12(C_{a-1,b}-C_1-C_{a,b})
+  =
+  -a-D+2,
+\]
+because replacing \(a\) by \(a-1\) changes the first-row contribution to the
+Casimir by \(-2a-D+3\), and the vector Casimir subtracts another \(D-1\).
+The other entries follow from the same row-by-row subtraction in
+\eqref{eq:soD-tensor-casimir-row-lengths}.
+
+\begin{proposition}[Two-row tensor unitarity bound at first level]
+\label{prop:two-row-mixed-symmetry-unitarity-bound}
+Let \(\mathcal O\) be a primary whose rotation representation is
+\(\mathcal H_{a,b}\), \(a\ge b\ge1\), in the stable tensor range described
+above.  If \(a>b\), positivity of the first descendant Gram matrix implies
+\begin{equation}
+  \Delta_{\mathcal O}\ge a+D-2.
+  \label{eq:two-row-nonrectangular-bound}
+\end{equation}
+At equality the \(\mathcal H_{a-1,b}\) projection of
+\(P_\mu|\mathcal O\rangle\) is null.  In local-operator notation this is
+\begin{equation}
+  \Pi_{a-1,b}\,\partial\mathcal O=0,
+  \label{eq:two-row-nonrectangular-shortening}
+\end{equation}
+where \(\Pi_{a-1,b}:\mathcal H_1\otimes\mathcal H_{a,b}\to
+\mathcal H_{a-1,b}\) is the \(SO(D)\)-equivariant traceless Young projector.
+If \(a=b\), the channel \(\mathcal H_{a-1,b}\) is not an allowed Young shape,
+and the leading first-level condition is instead
+\begin{equation}
+  \Delta_{\mathcal O}\ge a+D-3.
+  \label{eq:two-row-rectangular-bound}
+\end{equation}
+At equality the \(\mathcal H_{a,a-1}\) projection of the first descendant is
+null:
+\begin{equation}
+  \Pi_{a,a-1}\,\partial\mathcal O=0.
+  \label{eq:two-row-rectangular-shortening}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The inequalities in \eqref{eq:two-row-level-one-bound-table} are precisely
+the eigenvalue inequalities for the positive semidefinite level-one Gram form.
+When \(a>b\), the removal channel \(\mathcal H_{a-1,b}\) is present, and its
+condition \(\Delta\ge a+D-2\) is stronger than
+\(\Delta\ge b+D-3\) because \(a-b+1>0\); it is also stronger than the
+add-a-box conditions for a positive-energy representation.  If equality holds,
+the Gram norm on that irreducible summand is zero, hence the corresponding
+state is in the null subspace and becomes the operator equation
+\eqref{eq:two-row-nonrectangular-shortening} in the quotient by null
+operators.
+
+When \(a=b\), the Young diagram \((a-1,a)\) is not allowed, so the
+\(\mathcal H_{a-1,b}\) row in the table is absent.  The strongest remaining
+condition is \(\Delta\ge a+D-3\), coming from
+\(\mathcal H_{a,a-1}\).  Equality makes the
+\(\mathcal H_{a,a-1}\) component of \(P_\mu|\mathcal O\rangle\) null, giving
+\eqref{eq:two-row-rectangular-shortening}.  The special case
+\((a,b)=(1,1)\) is the antisymmetric two-tensor primary: the shortening
+equation is the projected divergence \(\partial^\mu J_{\mu\nu}=0\), after
+traces are removed according to the representation.
+\end{proof}
+
 \section{Spinor Primaries}
 
 For spinor primaries the rotation representation is a representation of

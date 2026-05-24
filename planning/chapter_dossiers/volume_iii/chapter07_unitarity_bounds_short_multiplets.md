@@ -33,6 +33,11 @@ The chapter establishes:
 - the first-level Casimir computation of the spin-\(\ell\) eigenvalues;
 - the general first-level test for arbitrary irreducible \(SO(D)\)
   representations;
+- the worked two-row mixed-symmetry tensor computation for
+  \(\mathcal H_{a,b}\), including the vector-tensor decomposition, Casimir
+  table, non-rectangular bound \(\Delta\ge a+D-2\), rectangular bound
+  \(\Delta\ge a+D-3\), and the corresponding projected-divergence shortening
+  equations;
 - conservation and free-field equations as null-state equations in the
   quotient local-operator space.
 - Theorem `thm:basic-unitarity-bounds-short-multiplets`, which collects the
@@ -53,7 +58,10 @@ The chapter establishes:
 5. General first-level bounds are computed by
    \(\Delta+\frac12(C_Q-C_1-C_\rho)\ge0\) for
    \(Q\subset\mathcal H_1\otimes\rho\).
-6. The Kac-determinant framework may be named, but each bound used in the
+6. For two-row traceless tensor representations \(\mathcal H_{a,b}\), the
+   displayed Casimir table gives the correct first-level lower bound and
+   identifies the projected null descendant at saturation.
+7. The Kac-determinant framework may be named, but each bound used in the
    chapter must still be derived from a displayed finite Gram matrix.
 
 ## Figures
@@ -82,3 +90,6 @@ The chapter establishes:
   added the labeled basic unitarity-bounds/short-multiplets theorem collecting
   scalar Laplace, spinor Dirac, and symmetric-traceless divergence
   shortenings.
+- 2026-05-24 issue #287 pass: added the two-row mixed-symmetry tensor
+  first-level computation, including all vector-tensor channels in the stable
+  range and the separate rectangular/non-rectangular shortening equations.
