@@ -339,24 +339,266 @@ coefficients fixed by the conformal algebra.
 \end{figure}
 
 The block is characterized representation-theoretically by the quadratic
-Casimir.  Let \(\mathcal C_{12}\) be the differential operator representing
-the quadratic conformal Casimir acting on points \(x_1,x_2\).  Then
+Casimir, together with an OPE boundary condition.  Put
 \[
-  \mathcal C_{12}\,
+  u=z\bar z,\qquad v=(1-z)(1-\bar z),
+  \qquad
+  a=\frac{\Delta_2-\Delta_1}{2},\qquad
+  b=\frac{\Delta_3-\Delta_4}{2},
+  \qquad
+  \varepsilon_D=\frac D2-1 .
+\]
+After the external scalar prefactor in
+\eqref{eq:scalar-four-point-general} has been removed, the \(12\)-channel
+quadratic Casimir acts on the reduced function by
+\begin{equation}
+  \mathcal C_{12}^{(u,v)}=2\mathcal D_{a,b},
+  \label{eq:scalar-casimir-uv-definition}
+\end{equation}
+where
+\begin{align}
+  \mathcal D_{a,b}
+  &=
+  u^2(1-u+v)\partial_u^2
+  -2uv(1+u-v)\partial_u\partial_v
+  +v\bigl((1-v)^2-u(1+v)\bigr)\partial_v^2
+  \notag\\
+  &\quad
+  -u\bigl((a+b+1)(1+u-v)+2\varepsilon_D\bigr)\partial_u
+  +(a+b+1)\bigl((1-v)^2-u(1+v)\bigr)\partial_v
+  \notag\\
+  &\quad
+  -ab(1+u-v).
+  \label{eq:scalar-casimir-uv}
+\end{align}
+Equivalently, in the algebraic coordinates \(z,\bar z\),
+\begin{align}
+  \mathcal D_{a,b}
+  &=
+  D_z+D_{\bar z}
+  +
+  2\varepsilon_D
+  \frac{z\bar z}{z-\bar z}
+  \bigl((1-z)\partial_z-(1-\bar z)\partial_{\bar z}\bigr),
+  \label{eq:scalar-casimir-zbarz}
+  \\
+  D_z
+  &=
+  z^2(1-z)\partial_z^2
+  -(a+b+1)z^2\partial_z
+  -abz,
+  \qquad
+  D_{\bar z}=D_z\big|_{z\mapsto\bar z}.
+  \notag
+\end{align}
+The conversion from \eqref{eq:scalar-casimir-zbarz} to
+\eqref{eq:scalar-casimir-uv} is the chain rule together with
+\[
+  z+\bar z=1+u-v,\qquad
+  \partial_z=\bar z\,\partial_u-(1-\bar z)\partial_v,\qquad
+  \partial_{\bar z}=z\,\partial_u-(1-z)\partial_v .
+\]
+The apparently singular term in \eqref{eq:scalar-casimir-zbarz} is regular on
+symmetric functions of \(z,\bar z\), since
+\[
+  (1-z)\partial_z-(1-\bar z)\partial_{\bar z}
+  =
+  (\bar z-z)\partial_u .
+\]
+The factor \(2\) in \eqref{eq:scalar-casimir-uv-definition} fixes the
+normalization of the conformal-algebra quadratic Casimir used in this chapter:
+\begin{equation}
+  \mathcal C_{12}^{(u,v)}
   G_{\Delta,\ell}^{(12|34)}(u,v)
   =
-  C_{\Delta,\ell}\,
+  C_{\Delta,\ell}
   G_{\Delta,\ell}^{(12|34)}(u,v),
-\]
-with eigenvalue
-\[
+  \qquad
   C_{\Delta,\ell}
   =
   \Delta(\Delta-D)+\ell(\ell+D-2).
+  \label{eq:scalar-block-casimir-equation}
+\end{equation}
+The equality \(C_{\Delta,\ell}=C_{D-\Delta,\ell}\) already shows that the
+differential equation alone does not select an OPE block.  In the radial frame
+of \eqref{eq:rho-cross-ratio-map}, the two local Frobenius branches at the
+\(12\) OPE boundary are
+\begin{align}
+  G_{\Delta,\ell}^{(12|34)}(u,v)
+  &=
+  r^\Delta C_\ell^{(D/2-1)}(\cos\alpha)
+  +O(r^{\Delta+1}),
+  \label{eq:block-ope-frobenius-branch}
+  \\
+  G_{D-\Delta,\ell}^{(12|34)}(u,v)
+  &=
+  r^{D-\Delta} C_\ell^{(D/2-1)}(\cos\alpha)
+  +O(r^{D-\Delta+1}).
+  \label{eq:block-shadow-frobenius-branch}
+\end{align}
+The conformal block in the OPE sum is the solution with the first leading
+coefficient normalized as in
+\eqref{eq:block-ope-frobenius-branch} and with zero coefficient multiplying the
+shadow branch \eqref{eq:block-shadow-frobenius-branch}.
+
+\begin{theorem}[Local existence and uniqueness of the OPE block]
+\label{thm:casimir-block-local-existence-uniqueness}
+Assume the radial reconstruction hypotheses of
+Hypothesis~\ref{hyp:radial-reconstruction-data}, finite multiplicity of
+descendant states at each level, and passage to the quotient by null
+descendants when they occur.  For scalar external operators and one exchanged
+symmetric-traceless primary of dimension \(\Delta\) and spin \(\ell\), there is
+a unique \(12\)-channel block with the OPE normalization
+\eqref{eq:block-ope-frobenius-branch}.  It is a convergent radial series for
+\(r<1\), satisfies the Casimir equation
+\eqref{eq:scalar-block-casimir-equation}, and contains no shadow branch.
+\end{theorem}
+
+\begin{proof}
+Let \(V_{\Delta,\ell}\) be the conformal multiplet generated from the exchanged
+primary.  At descendant level \(n\), choose a basis
+\(\{\ket{A,n}\}_A\) of the quotient by null states and let
+\[
+  M^{(n)}_{AB}=\langle A,n|B,n\rangle
 \]
-The boundary condition is fixed by the leading OPE term as \(x_1\to x_2\).
+be the Gram matrix.  The quotient basis is linearly independent, hence
+\(M^{(n)}\) is invertible on this finite-dimensional space.  The contribution
+of this level to the four-point function is
+\begin{equation}
+  r^{\Delta+n}
+  \sum_{A,B}
+  \langle \mathcal O_4\mathcal O_3|A,n\rangle\,
+  (M^{(n)})^{-1}_{AB}\,
+  \langle B,n|\mathcal O_1\mathcal O_2\rangle ,
+  \label{eq:block-level-n-gram-construction}
+\end{equation}
+with the angular dependence carried by the cylinder wavefunctions of the
+descendants.  The three-point Ward identities fix the two vectors of matrix
+elements in \eqref{eq:block-level-n-gram-construction} recursively from the
+primary three-point structures, because moving a conformal generator from a
+descendant state onto the external primaries is governed by the conformal
+algebra and by the scalar transformation law.  Summing over all \(n\geq0\)
+therefore constructs a radial series whose leading term is the primary
+matrix element
+\[
+  r^\Delta C_\ell^{(D/2-1)}(\cos\alpha).
+\]
+The convergence for \(r<1\) is the radial OPE convergence theorem applied after
+projecting the inside state to the multiplet \(V_{\Delta,\ell}\).
+
+The same construction gives the Casimir equation.  The operator
+\(\mathcal C_{12}\) is the square of the total conformal generator acting on the
+pair \((1,2)\).  On the projected intermediate multiplet it acts by the scalar
+\(C_{\Delta,\ell}\), while the external scalar prefactor converts this action
+on the four-point function into the differential operator
+\(\mathcal C_{12}^{(u,v)}\) displayed in
+\eqref{eq:scalar-casimir-uv}.  Hence the constructed radial series satisfies
+\eqref{eq:scalar-block-casimir-equation}.
+
+For uniqueness, let \(H(r,\alpha)\) be the difference of two local solutions
+with the OPE normalization \eqref{eq:block-ope-frobenius-branch} and no shadow
+branch.  Its first nonzero radial coefficient, if present, has some level
+\(n>0\) and lies in the finite descendant space at that level.  The Casimir
+equation and the Ward identities impose the same finite linear system as in
+\eqref{eq:block-level-n-gram-construction}.  Since \(M^{(n)}\) is invertible on
+the quotient by null states and all lower-level coefficients of \(H\) vanish,
+that coefficient must vanish.  This contradicts the choice of the first
+nonzero level.  Therefore \(H=0\), proving uniqueness.
+\end{proof}
+
 Thus the spectrum and OPE coefficients are the dynamical data, while the
-blocks are kinematic functions determined by conformal representation theory.
+blocks are kinematic functions determined by conformal representation theory
+and by the OPE branch condition.
+
+\subsection{Blocks, Shadows, and Partial Waves}
+
+The object just defined is an OPE-channel conformal block.  Its normalization
+in this chapter is the OPE normalization: in the \(12\to34\) channel the
+leading term as \(x_1\to x_2\) is the contribution of a primary of dimension
+\(\Delta\) and spin \(\ell\), with no contribution from the shadow dimension.
+This is the normalization used in the discrete OPE sum
+\eqref{eq:general-scalar-conformal-block-expansion}.
+
+A \emph{conformal partial wave} is a different, although closely related,
+object.  It is the harmonic-analysis kernel obtained from the conformal
+projector onto an irreducible principal-series representation.  Let
+\(\widetilde\Delta=D-\Delta\) be the shadow dimension of
+\(\Delta\).  For scalar external operators and a single exchanged
+symmetric-traceless tensor structure, the shadow-projector normalization may
+be represented, with the symmetric-traceless spin-index contraction suppressed
+from the notation, by
+\begin{equation}
+  \Psi_{\Delta,\ell}^{(12|34)}(x_i)
+  =
+  \frac{1}{\mathcal N_{\Delta,\ell}}
+  \int_{\R^D}\dd^D x_0\,
+  \bigl\langle
+    \mathcal O_1(x_1)\mathcal O_2(x_2)
+    \mathcal O_{\Delta,\ell}(x_0)
+  \bigr\rangle
+  \bigl\langle
+    \widetilde{\mathcal O}_{\widetilde\Delta,\ell}(x_0)
+    \mathcal O_3(x_3)\mathcal O_4(x_4)
+  \bigr\rangle .
+  \label{eq:shadow-projector-partial-wave}
+\end{equation}
+The spin indices of
+\(\mathcal O_{\Delta,\ell}\) and
+\(\widetilde{\mathcal O}_{\widetilde\Delta,\ell}\) are contracted with the
+invariant two-point pairing.  The constant
+\(\mathcal N_{\Delta,\ell}\) is fixed once the two-point functions and the
+shadow transform are normalized; the convention is that the resulting
+projector is idempotent on the irreducible representation and that the
+Plancherel formula below has no additional scalar normalization.  With
+spinning external operators or multiple three-point tensor structures,
+\(\Psi_{\Delta,\ell}\) becomes a matrix in the corresponding structure labels.
+
+After the same external kinematic prefactor has been factored out as in the
+four-point decomposition, the partial wave gives a function
+\(\Psi_{\Delta,\ell}^{(12|34)}(u,v)\).  It satisfies the same quadratic
+Casimir equation as the block with eigenvalue \(C_{\Delta,\ell}\), but it has
+different analytic boundary data.  In the \(12\) OPE limit it is a fixed
+linear combination
+\begin{equation}
+  \Psi_{\Delta,\ell}^{(12|34)}(u,v)
+  =
+  A_{\Delta,\ell}^{(12|34)}
+  G_{\Delta,\ell}^{(12|34)}(u,v)
+  +
+  A_{\widetilde\Delta,\ell}^{(12|34)}
+  G_{\widetilde\Delta,\ell}^{(12|34)}(u,v),
+  \qquad
+  \widetilde\Delta=D-\Delta ,
+  \label{eq:partial-wave-block-shadow-block}
+\end{equation}
+where the coefficients \(A_{\Delta,\ell}\) are determined by the chosen
+shadow-transform normalization.  Thus a partial wave is not the same object
+as the conformal block appearing in a physical Euclidean OPE sum.  The block
+selects one OPE boundary condition; the partial wave is a single-valued
+Euclidean conformal harmonic, containing both the block and the shadow block.
+
+For functions of cross-ratios satisfying the hypotheses of conformal harmonic
+analysis, the partial waves on the principal series
+\(\Delta=D/2+\ii\nu\), \(\nu\in\R\), form the continuous basis
+\begin{equation}
+  \mathcal F(u,v)
+  =
+  \sum_{\ell=0}^{\infty}
+  \int_{-\infty}^{\infty}\frac{\dd\nu}{2\pi}\,
+  \mu(\nu,\ell)\,
+  a(\nu,\ell)\,
+  \Psi_{D/2+\ii\nu,\ell}(u,v).
+  \label{eq:conformal-partial-wave-plancherel}
+\end{equation}
+Here \(\mu(\nu,\ell)\) is the Plancherel density associated with the
+normalization in \eqref{eq:shadow-projector-partial-wave}, and
+\(a(\nu,\ell)\) is the partial-wave transform of \(\mathcal F\).  Physical
+OPE data are recovered, when the required analyticity and growth hypotheses
+hold, by moving the \(\nu\)-contour and taking residues at poles in
+\(\Delta\).  This is why one must distinguish the two objects: conformal
+blocks organize the discrete OPE in a channel, whereas conformal partial
+waves provide the representation-theoretic resolution of identity used in
+integral inversion formulae.
 
 \subsection{Radial Expansion of a Block}
 
