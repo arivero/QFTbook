@@ -1,0 +1,484 @@
+\chapter{Jets, Infrared-Safe Observables, and Hadronization}
+\label{ch:jets-ir-safe-observables-hadronization}
+\ConventionsMixed
+
+Jets enter quantum field theory as observables built from the energy and
+momentum deposited by physical final states.  The final states in QCD are
+hadronic states in the physical Hilbert space; quarks and gluons are
+short-distance variables used inside a gauge-fixed or factorized calculation.
+The mathematical question is therefore not how to assign reality to colored
+partons, but when a measurement on physical final states admits a controlled
+short-distance expansion in which partonic variables are legitimate internal
+coordinates.
+
+\section{Weighted Cross Sections and Measurement Functions}
+
+Let \(\ket{i}\) be an incoming scattering state and let \(X\) range over a
+complete family of outgoing physical states.  A detector observable is a
+measurable function \(F(X)\) of the final state.  Its weighted inclusive cross
+section has the form
+\begin{equation}
+  \sigma[F]
+  =
+  \frac{1}{\mathcal N_i}
+  \sum_X
+  (2\pi)^D\delta^{(D)}(P_i-P_X)
+  |\langle X|T|i\rangle|^2\,F(X),
+  \label{eq:jet-weighted-cross-section-hilbert}
+\end{equation}
+where \(\mathcal N_i\) is the incoming flux normalization and \(T\) is the
+transition operator defined by \(S=\mathbf 1+\ii T\).  Equation
+\eqref{eq:jet-weighted-cross-section-hilbert} is stated in terms of physical
+states.  A perturbative partonic formula is a further expansion of the same
+quantity, after an infrared regulator and an ultraviolet renormalization
+scheme have been chosen:
+\begin{equation}
+  \sigma_{\rm part}[F]
+  =
+  \sum_{n\geq0}
+  \int \dd\Phi_n\,
+  |\mathcal M_n(p_1,\ldots,p_n)|^2\,
+  F_n(p_1,\ldots,p_n).
+  \label{eq:jet-partonic-measurement-function}
+\end{equation}
+Here \(\dd\Phi_n\) is the \(n\)-body Lorentz-invariant phase-space measure,
+\(\mathcal M_n\) is a renormalized partonic matrix element, and \(F_n\) is the
+partonic representative of the detector measurement.  The functions \(F_n\)
+must satisfy compatibility conditions at the boundaries of phase space where a
+parton becomes soft or two partons become collinear.
+
+\begin{definition}[Infrared and collinear safety]
+\label{def:irc-safe-measurement}
+A family of measurement functions \(F=\{F_n\}_{n\geq0}\) is infrared and
+collinear safe, abbreviated IRC safe, if the following limits hold on the
+phase-space regions relevant to the observable:
+\begin{align}
+  \lim_{\lambda\downarrow0}
+  F_{n+1}(p_1,\ldots,p_n,\lambda q)
+  &=
+  F_n(p_1,\ldots,p_n),
+  \label{eq:irc-soft-safety}\\
+  \lim_{\theta\downarrow0}
+  F_{n+1}(p_1,\ldots,zp,(1-z)p,\ldots,p_n)
+  &=
+  F_n(p_1,\ldots,p,\ldots,p_n),
+  \qquad 0<z<1.
+  \label{eq:irc-collinear-safety}
+\end{align}
+The convergence is required with enough uniformity that the difference between
+the two sides is integrable against the soft and collinear factorization
+kernels of the theory at the perturbative order under consideration.
+Equivalently, near a single unresolved boundary and away from other unresolved
+boundaries, there must be constants \(C,\alpha>0\), depending on the compact
+set of resolved momenta but not on the unresolved scale, such that
+\begin{align}
+  |F_{n+1}(p_1,\ldots,p_n,\lambda q)-F_n(p_1,\ldots,p_n)|
+  &\le C\lambda^\alpha,\\
+  |F_{n+1}(p_1,\ldots,zp,(1-z)p,\ldots,p_n)
+    -F_n(p_1,\ldots,p,\ldots,p_n)|
+  &\le C\theta^\alpha ,
+\end{align}
+where \(\theta\) is the splitting angle.  On corners where several emissions
+are unresolved, the same estimate is required after replacing each unresolved
+cluster by its reduced soft or collinear configuration.  These estimates make
+the products with \(\dd\lambda/\lambda\) and
+\(\dd\theta^2/\theta^2\) locally integrable after the real--virtual
+subtraction.
+\end{definition}
+
+\begin{proposition}[Fixed-order finiteness criterion for IRC-safe measurements]
+\label{prop:irc-safety-fixed-order-finiteness}
+Consider an inclusive observable in a massless gauge theory for which the
+renormalized real and virtual matrix elements admit the soft and collinear
+boundary factorizations displayed below, with remainders locally integrable
+after subtracting the reduced lower-multiplicity channel.  If the measurement
+family \(F\) is IRC safe in the sense of
+Definition~\ref{def:irc-safe-measurement}, then real-emission singularities
+and virtual singularities cancel locally on the unresolved phase-space
+boundaries after the KLN sum over degenerate final states.  With incoming
+hadrons, the remaining initial-state collinear singularities are absorbed into
+the renormalized parton distribution functions.
+\end{proposition}
+
+\begin{proof}
+In a soft region, with an extra gluon momentum \(k=\lambda q\), the real
+matrix element factorizes as
+\[
+  |\mathcal M_{n+1}|^2\,\dd\Phi_{n+1}
+  =
+  |\mathcal M_n|^2\,\dd\Phi_n\,
+  \left[
+    \sum_{i,j}\mathcal S_{ij}(q)
+  \right]
+  \frac{\dd\lambda}{\lambda}\dd\Omega_q
+  +R_{\rm soft}.
+\]
+The remainder \(R_{\rm soft}\) is locally integrable by the hypothesis of the
+proposition.
+The eikonal factor \(\mathcal S_{ij}\) is the same factor that appears with
+opposite sign in the virtual soft correction to the \(n\)-parton channel.
+Equation \eqref{eq:irc-soft-safety} replaces the real measurement by
+\(F_n\) on the singular part of the integral, so the real and virtual soft
+integrals have the same weight and cancel.
+
+In a final-state collinear region, two momenta approach
+\[
+  p_a=zp+r,\qquad p_b=(1-z)p-r,
+  \qquad r_\perp^2\to0.
+\]
+The real matrix element and phase space factorize as
+\[
+  |\mathcal M_{n+1}|^2\,\dd\Phi_{n+1}
+  =
+  |\mathcal M_n(\ldots,p,\ldots)|^2\,\dd\Phi_n\,
+  \frac{\alpha_s}{2\pi}
+  P_{a b\leftarrow c}(z)
+  \frac{\dd r_\perp^2}{r_\perp^2}\dd z
+  +R_{\rm coll}.
+\]
+The remainder \(R_{\rm coll}\) is locally integrable by the hypothesis of the
+proposition.
+Equation \eqref{eq:irc-collinear-safety} gives the same measurement weight to
+the unresolved pair and to its parent momentum.  The singular integral then
+cancels against the corresponding virtual collinear correction in the KLN
+sum.  If the collinear parton is in the initial state of a hadron collision,
+the same factorization kernel multiplies the operator renormalization of the
+parton distribution function rather than canceling inside the hard partonic
+subprocess.  The finite hard coefficient is obtained after this mass
+factorization step.
+\end{proof}
+
+Examples of IRC-safe observables include the total \(e^+e^-\) hadronic cross
+section, thrust
+\[
+  T(X)
+  =
+  \max_{\widehat n}
+  \frac{\sum_{h\in X}|\vec p_h\cdot\widehat n|}
+       {\sum_{h\in X}|\vec p_h|},
+\]
+the \(C\)-parameter, jet masses defined with an IRC-safe algorithm, and the
+energy correlators of
+Chapter~\ref{ch:volume-ii-19}.  Observables that measure an identified
+hadron, a charged-particle multiplicity, or a single unsummed collinear
+fragment require additional nonperturbative input such as fragmentation
+functions or detector-specific response functions.
+
+\section{Sterman--Weinberg Jets}
+
+The original two-jet observable of Sterman and Weinberg is a clean example of
+the preceding definition.  In \(e^+e^-\) annihilation at center-of-mass energy
+\(Q\), choose two parameters
+\[
+  0<\epsilon_{\rm out}<1,\qquad 0<\delta_{\rm cone}<\pi.
+\]
+An event is counted as a two-jet event if there exist two cones of half-angle
+\(\delta_{\rm cone}\) such that the total energy outside the two cones is at
+most \(\epsilon_{\rm out}Q\).  The corresponding measurement function is
+\[
+  F_{\rm SW}(X)
+  =
+  \begin{cases}
+  1,& \text{if }X\text{ satisfies the two-cone energy condition},\\
+  0,& \text{otherwise}.
+  \end{cases}
+\]
+
+Soft safety follows because adding a particle of energy \(\lambda Q\) changes
+the out-of-cone energy by at most \(\lambda Q\).  Away from the boundary
+where the out-of-cone energy is exactly \(\epsilon_{\rm out}Q\), the
+classification is unchanged for sufficiently small \(\lambda\).  The boundary
+has zero measure in the phase-space integral, and the unresolved soft
+singularity is integrated with the same measurement weight as the event
+without the soft particle.
+
+Collinear safety follows because a sufficiently collinear splitting of a
+momentum inside one of the cones remains inside the same cone, while a
+splitting outside the cones preserves the total out-of-cone energy in the
+collinear limit.  The singular collinear phase-space integral therefore sees
+the parent momentum measurement.
+
+For very small \(\epsilon_{\rm out}\) and \(\delta_{\rm cone}\), the fixed-order
+series contains logarithms such as
+\[
+  \alpha_s^m
+  \log^r\epsilon_{\rm out}\,
+  \log^s\delta_{\rm cone},
+  \qquad r+s\leq 2m.
+\]
+The two-jet cross section is then still an IRC-safe observable, but the useful
+short-distance expansion is a resummed expansion rather than a fixed-order
+polynomial in \(\alpha_s(Q)\).
+
+\section{Sequential Recombination Jet Algorithms}
+
+Modern collider jet definitions are usually algorithmic.  For a hadron
+collider, let \(p_{Ti}\) be transverse momentum, \(y_i\) rapidity, and
+\(\phi_i\) azimuth.  Define
+\[
+  \Delta R_{ij}^2=(y_i-y_j)^2+(\phi_i-\phi_j)^2.
+\]
+The generalized \(k_T\) family with radius \(R\) and exponent \(p\) uses
+\begin{equation}
+  d_{ij}
+  =
+  \min(p_{Ti}^{2p},p_{Tj}^{2p})
+  \frac{\Delta R_{ij}^2}{R^2},
+  \qquad
+  d_{iB}=p_{Ti}^{2p}.
+  \label{eq:generalized-kt-distance}
+\end{equation}
+At each step the smallest number among all \(d_{ij}\) and \(d_{iB}\) is
+selected.  If it is \(d_{ij}\), the two objects are recombined, usually by
+adding their four-momenta.  If it is \(d_{iB}\), object \(i\) is declared a
+jet and removed from the list.  The cases
+\[
+  p=1,\qquad p=0,\qquad p=-1
+\]
+give the \(k_T\), Cambridge--Aachen, and anti-\(k_T\) algorithms,
+respectively.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.92\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,every node/.style={font=\scriptsize}]
+    \node[draw,rounded corners=2pt,align=center,minimum width=3.2cm,minimum height=0.9cm]
+      (state) at (0,0) {physical final state\\hadrons or calorimeter cells};
+    \node[draw,rounded corners=2pt,align=center,minimum width=3.0cm,minimum height=0.9cm]
+      (measure) at (4.0,0) {measurement\\\(F(X)\)};
+    \node[draw,rounded corners=2pt,align=center,minimum width=3.3cm,minimum height=0.9cm]
+      (irc) at (8.0,0) {soft and collinear\\compatibility};
+    \node[draw,rounded corners=2pt,align=center,minimum width=3.3cm,minimum height=0.9cm]
+      (calc) at (12.1,0) {fixed order,\\factorization, resummation};
+    \draw[->,thick] (state)--(measure);
+    \draw[->,thick] (measure)--(irc);
+    \draw[->,thick] (irc)--(calc);
+
+    \node[align=center,blue!65!black] at (4.0,-1.2)
+      {jet algorithm, event shape,\\energy correlator};
+    \node[align=center,purple!70!black] at (8.0,-1.2)
+      {\(F_{n+1}\to F_n\) on\\unresolved boundaries};
+    \node[align=center,orange!80!black] at (12.1,-1.2)
+      {partonic variables are\\internal coordinates};
+  \end{tikzpicture}
+  }
+  \caption{A perturbative jet calculation begins with a physical measurement.
+  IRC safety is the compatibility condition that lets the measurement be
+  represented on unresolved partonic phase-space boundaries.}
+  \label{fig:jets-measurement-irc-flow}
+\end{figure}
+
+\begin{proposition}[IRC safety of generalized \(k_T\) clustering]
+\label{prop:generalized-kt-irc-safety}
+For \(p=1,0,-1\), the generalized \(k_T\) clustering algorithm with
+four-momentum recombination defines IRC-safe jet momenta and IRC-safe
+cross sections after imposing a finite jet transverse-momentum threshold.
+\end{proposition}
+
+\begin{proof}
+For a collinear splitting \(p\to zp,(1-z)p\), the angular distance satisfies
+\(\Delta R_{ab}\to0\), so \(d_{ab}\to0\).  The two collinear objects are
+therefore recombined before they can affect finite-angle clustering, and
+four-momentum recombination restores the parent momentum.
+
+For a soft momentum \(q\), the effect of recombination with a hard object
+changes the hard jet momentum by \(O(q)\).  If the soft object is clustered
+among other soft objects or declared as a separate jet, a finite jet
+transverse-momentum threshold removes it in the soft limit.  In the anti-\(k_T\)
+case, a soft object within radius \(R\) of a hard jet has pair distance
+controlled by the hard transverse momentum, so it is pulled into the hard jet
+without moving the hard boundary at leading power.  The \(k_T\) and
+Cambridge--Aachen cases may cluster soft radiation differently, but the
+resulting change of any finite-energy jet momentum vanishes with the soft
+energy.  Thus the measurement functions associated with the algorithm obey
+\eqref{eq:irc-soft-safety} and \eqref{eq:irc-collinear-safety}.
+\end{proof}
+
+The anti-\(k_T\) algorithm is widely used because hard jets acquire stable,
+approximately circular catchment areas in the rapidity--azimuth plane while
+retaining IRC safety.  Cone algorithms require more care.  A seedless
+infrared-safe cone algorithm can be defined by searching over all stable
+cones.  A seed-based cone algorithm with a transverse-momentum seed threshold
+can fail soft safety: adding an arbitrarily soft seed may create a stable cone
+that was absent before, changing the hard jets by a finite amount.
+
+\section{Factorization and Resummation}
+
+IRC safety makes fixed-order perturbation theory finite, but it does not make
+every region of the observable distribution well approximated by a few fixed
+orders.  When an event shape \(e(X)\) is small, the final state is constrained
+to contain narrow energetic jets plus soft radiation.  A factorized
+description separates the scales.  For a two-jet event shape in
+\(e^+e^-\), a typical factorized form is
+\begin{equation}
+  \frac{\dd\sigma}{\dd e}
+  =
+  H(Q,\mu)
+  \int \dd s_1\,\dd s_2\,\dd k\,
+  J(s_1,\mu)J(s_2,\mu)S(k,\mu)\,
+  \delta\!\left(e-\frac{s_1+s_2}{Q^2}-\frac{k}{Q}\right)
+  +
+  O(e^0).
+  \label{eq:jet-event-shape-factorization}
+\end{equation}
+The hard function \(H\) contains fluctuations at virtuality \(Q^2\), the jet
+functions \(J\) contain collinear fluctuations at smaller invariant mass, and
+the soft function \(S\) is a vacuum matrix element of Wilson lines measuring
+soft energy flow.  Their renormalization-group equations resum logarithms of
+the separated scales.
+
+Soft-collinear effective theory gives a systematic operator language for
+factorizations of the form
+\eqref{eq:jet-event-shape-factorization}.  Its assumptions are visible in the
+operator definitions: mode scaling, Wilson-line decoupling at leading power,
+measurement factorization, and a power expansion in the small event-shape
+parameter.  The same logic applies to hadron-collider observables, with the
+additional parton distribution functions needed for incoming hadrons and with
+factorization-breaking channels treated as separate hypotheses.
+
+\begin{controlledapproximation}[Perturbative prediction for an IRC-safe jet observable]
+A perturbative prediction for a jet observable consists of:
+the renormalized fixed-order hard functions through a stated order in
+\(\alpha_s\); the logarithmic accuracy of any resummation, such as LL, NLL,
+NNLL, or beyond; the factorization theorem and its power corrections; the
+renormalized PDFs or fragmentation functions when they enter; and a
+prescription for matching resummed and fixed-order regions without double
+counting.
+\end{controlledapproximation}
+
+\section{Parton Showers}
+
+A parton shower is a stochastic implementation of soft and collinear
+factorized evolution.  At leading soft-collinear order, a final-state
+branching probability for a parton of type \(i\) is built from the Sudakov
+factor
+\begin{equation}
+  \Delta_i(t_1,t_0)
+  =
+  \exp\left[
+    -\int_{t_0}^{t_1}\frac{\dd t}{t}
+    \sum_{i\to jk}
+    \int \dd z\,
+    \frac{\alpha_s(\kappa(t,z))}{2\pi}
+    P_{i\to jk}(z)
+  \right],
+  \label{eq:parton-shower-sudakov}
+\end{equation}
+where \(t\) is the shower ordering variable, \(z\) is the splitting fraction,
+\(P_{i\to jk}\) is an Altarelli--Parisi splitting kernel, and
+\(\kappa(t,z)\) is the scale at which the running coupling is evaluated.
+The probability for the next branching between \(t\) and \(t+\dd t\) is the
+Sudakov no-branching probability multiplied by the differential splitting
+kernel.
+
+Different showers choose different evolution variables, recoil maps, momentum
+conservation prescriptions, and color structures.  Angular-ordered showers
+encode color coherence through emission angles.  Dipole and antenna showers
+use color-connected pairs as emitters.  Many practical implementations use a
+leading-color approximation in which the color algebra is replaced by a
+planar color-flow structure; subleading-color corrections require additional
+operator information.
+
+\begin{controlledapproximation}[Shower accuracy]
+A shower calculation has a stated logarithmic accuracy only for a specified
+class of observables and a specified matching or merging scheme.  The basic
+Markov shower reproduces leading soft-collinear logarithms for observables
+compatible with its ordering variable.  NLO-matched prescriptions such as
+MC@NLO or POWHEG replace the first hard emission and inclusive normalization
+by exact NLO matrix-element information while retaining the shower resummation
+for subsequent unresolved radiation.  Multijet merging combines samples with
+different resolved parton multiplicities using a merging scale whose residual
+dependence is part of the perturbative uncertainty estimate.
+\end{controlledapproximation}
+
+\section{Hadronization and Fragmentation Functions}
+
+Hadronization is the nonperturbative formation of outgoing hadrons from the
+high-energy QCD state produced by the short-distance interaction.  In the
+exact theory it is simply time evolution in the physical Hilbert space of
+QCD.  In phenomenological calculations it is represented by additional
+nonperturbative inputs after the perturbative hard, jet, and soft evolution
+has been organized.
+
+For identified hadron production, the corresponding input is a fragmentation
+function.  Let \(n^\mu\) be a lightlike vector and let
+\(\bar n^\mu\) satisfy \(n\cdot\bar n=2\).  A quark fragmentation function may
+be represented by a light-ray operator with Wilson lines:
+\begin{equation}
+  D_{h/q}(z,\mu)
+  =
+  \frac{1}{2zN_c}
+  \sum_X
+  \int\frac{\dd y^+}{2\pi}
+  \ee^{-\ii P_h^- y^+/z}
+  \operatorname{tr}
+  \left[
+    \frac{\gamma\cdot\bar n}{2}
+    \langle0|W^\dagger(y^+)q(y^+)|hX\rangle
+    \langle hX|\bar q(0)W(0)|0\rangle
+  \right]_{\rm ren}.
+  \label{eq:quark-fragmentation-function-operator}
+\end{equation}
+Here \(P_h^-\) is the large light-cone momentum of the observed hadron,
+\(z=P_h^-/k^-\) is the momentum fraction relative to the parent partonic
+coordinate \(k^-\), \(W\) is the appropriate lightlike Wilson line, and the
+subscript indicates operator renormalization.  The scale dependence of
+\(D_{h/q}\) is governed by DGLAP evolution, while its boundary value at a
+finite scale is nonperturbative data.
+
+Lund string and cluster hadronization models are phenomenological
+parametrizations of this nonperturbative stage.  A string model uses color
+flux-tube breaking with fitted parameters for string tension, flavor
+production, and transverse momentum.  A cluster model first organizes the
+partonic state into color-singlet clusters and then decays those clusters into
+hadrons with fitted rules.  Their predictions therefore carry model and tuning
+uncertainties in addition to perturbative uncertainties.
+
+The lattice formulation of
+Chapter~\ref{ch:lattice-yang-mills-nonperturbative-definition} is the
+regulator-level nonperturbative definition of the gauge theory used in this
+volume.  It computes Euclidean finite-volume correlation functions directly in
+terms of hadronic states.  Real-time fragmentation functions and fully
+exclusive hadronization histories involve lightlike or timelike information,
+so their extraction from Euclidean lattice data requires additional
+reconstruction, finite-volume, or large-momentum matching ideas.  This is a
+technical obstruction in the observable, not a license to replace the
+nonperturbative QCD input by a perturbative calculation.
+
+\section{Classes of QCD Final-State Observables}
+
+The useful separation is by the mathematical input required by the observable.
+
+\begin{description}[style=nextline,leftmargin=1.5em]
+\item[Total inclusive rates and IRC-safe event shapes.]
+The required input is renormalized fixed-order amplitudes, KLN cancellation,
+and resummation when hierarchical scales are measured.
+
+\item[IRC-safe jet cross sections.]
+The required input is an IRC-safe jet algorithm, fixed-order hard functions,
+PDFs for incoming hadrons, and logarithmic resummation where jet vetoes or
+small radii introduce large logarithms.
+
+\item[Energy correlators.]
+The required input is the stress-tensor energy-flow operators on the physical
+Hilbert space, with partonic perturbation theory used only after the detector
+observable is defined.
+
+\item[Identified hadron spectra.]
+The required input is fragmentation functions or fracture functions, their
+operator renormalization, and nonperturbative boundary data.
+
+\item[Fully exclusive hadronization patterns.]
+The required input is the full QCD final-state distribution or a
+phenomenological model with stated fit parameters and model uncertainty.
+\end{description}
+
+This classification keeps the physics claims separated.  Perturbative QCD
+computes short-distance coefficients and IRC-safe partonic representatives.
+Fragmentation functions, PDFs, shape functions, and hadronization models are
+additional nonperturbative data or controlled approximations with their own
+definitions and uncertainties.  Energy correlators are especially valuable
+because they are nonperturbatively defined by the stress tensor and are
+insensitive, after smearing, to soft emissions and collinear recombination in
+the precise sense used in
+Proposition~\ref{prop:irc-safety-fixed-order-finiteness}.

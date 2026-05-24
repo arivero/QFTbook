@@ -1,0 +1,102 @@
+# Volume IV, Jets, Infrared-Safe Observables, And Hadronization Dossier
+
+## Logical Role
+
+- Compiled in Volume IV immediately after the QCD renormalization and DIS
+  chapter.
+- Purpose in the monograph: formulate jets and final-state QCD observables as
+  measurements on physical hadronic states, identify the precise infrared and
+  collinear compatibility conditions under which partonic representatives are
+  legitimate perturbative coordinates, and separate perturbative predictions
+  from fragmentation and hadronization inputs.
+- Immediate predecessor: QCD Renormalization, Asymptotic Freedom, And Deep
+  Inelastic Scattering.
+- Immediate successor: Chiral And Axial Anomalies.
+
+## Definitions And Results
+
+The chapter establishes:
+
+- weighted inclusive cross sections with measurement functions on physical
+  final states;
+- partonic measurement representatives after choosing an infrared regulator
+  and ultraviolet renormalization scheme;
+- Definition `def:irc-safe-measurement` of infrared and collinear safety,
+  including local estimates near unresolved boundaries;
+- Proposition `prop:irc-safety-fixed-order-finiteness`, which derives the
+  fixed-order cancellation mechanism from KLN sums and displayed
+  soft/collinear factorization hypotheses;
+- the Sterman--Weinberg two-jet measurement and its soft/collinear
+  compatibility;
+- generalized \(k_T\), Cambridge--Aachen, and anti-\(k_T\) sequential
+  recombination algorithms;
+- Proposition `prop:generalized-kt-irc-safety`, proving IRC safety of the
+  generalized \(k_T\) family with four-momentum recombination and finite jet
+  transverse-momentum thresholds;
+- a factorized event-shape formula separating hard, jet, and soft functions,
+  with SCET identified as the operator framework for such factorizations;
+- controlled-approximation statements for perturbative jet predictions and
+  parton-shower logarithmic accuracy;
+- a light-ray operator definition of quark fragmentation functions with Wilson
+  lines;
+- the status of Lund string and cluster hadronization models as
+  phenomenological nonperturbative inputs with fitted parameters;
+- a classification table separating inclusive rates, IRC-safe event shapes,
+  IRC-safe jet cross sections, energy correlators, identified hadron spectra,
+  and fully exclusive hadronization patterns by required QCD input.
+
+## Claim Ledger
+
+1. A detector observable is first a function, distribution, or positive
+   functional of physical final states; partonic formulae are perturbative
+   representatives, not definitions of the observable.
+2. IRC safety requires soft and collinear limits with local integrability
+   estimates sufficient to pair the measurement difference with the singular
+   factorization kernels.
+3. Under displayed soft and collinear factorization hypotheses, IRC safety
+   makes the real--virtual KLN cancellation local on unresolved final-state
+   phase-space boundaries.
+4. Initial-state collinear singularities in hadron collisions are absorbed
+   into renormalized PDFs rather than canceled inside the hard subprocess.
+5. Sterman--Weinberg jets are IRC safe because soft emissions change the
+   out-of-cone energy continuously and collinear splittings preserve cone
+   membership or out-of-cone energy in the collinear limit.
+6. The generalized \(k_T\), Cambridge--Aachen, and anti-\(k_T\) algorithms are
+   IRC safe with four-momentum recombination and finite transverse-momentum
+   thresholds.
+7. Seed-based cone algorithms with transverse-momentum seed thresholds may
+   fail soft safety because a soft seed can alter the stable-cone set.
+8. A fixed-order finite observable may still require resummation in regions
+   with hierarchical measured scales.
+9. Parton showers are controlled approximations whose logarithmic accuracy is
+   observable- and scheme-dependent.
+10. Fragmentation functions are nonperturbative light-ray matrix elements with
+    perturbative scale evolution; their finite-scale boundary data are not
+    produced by fixed-order perturbation theory.
+11. Hadronization models supply phenomenological nonperturbative data and
+    carry model and tuning uncertainties.
+12. Lattice QCD supplies a regulator-level nonperturbative definition of the
+    gauge theory, while real-time fragmentation and exclusive hadronization
+    require additional reconstruction or matching ideas.
+
+## Figure Requirements
+
+- Measurement-function flow figure:
+  physical final state \(\to\) measurement \(F(X)\) \(\to\) soft/collinear
+  compatibility \(\to\) fixed-order, factorization, and resummation.
+- Future refinements may add algorithmic jet-clustering diagrams only if the
+  diagrams distinguish physical measurements from partonic coordinates.
+
+## Checks
+
+- Keep jet observables tied to physical final-state measurements before
+  introducing partons.
+- Do not treat hadronization models as derivations from continuum QCD.
+- State the accuracy and matching assumptions whenever parton showers are used.
+- Preserve the separation between IRC-safe observables, fragmentation
+  functions, and fully exclusive hadronization patterns.
+- 2026-05-24 issue #490 pass: compiled the jets/hadronization chapter into
+  Volume IV, strengthened the IRC safety definition with local estimates,
+  made the fixed-order finiteness statement conditional on displayed
+  factorization hypotheses, and updated planning documents to record the
+  chapter in the gauge-theory volume.

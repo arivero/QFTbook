@@ -121,6 +121,13 @@ Date: 2026-05-24
   observables as light-ray operators and conformal-collider distributions,
   with null-integral hypotheses, contact terms, positivity, and theorem
   boundaries stated explicitly.
+- Jets and hadronization belong in the gauge-theory volume as a careful
+  treatment of final-state observables.  Jet definitions must be formulated as
+  measurement functions on physical final states and tested for infrared and
+  collinear safety before perturbative partonic representatives are used.
+  Hadronization, fragmentation functions, and parton showers enter only with
+  their operator definitions, controlled-approximation status, or
+  nonperturbative-input status explicitly stated.
 
 ## Current Implementation Decisions
 

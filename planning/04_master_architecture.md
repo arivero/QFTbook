@@ -160,11 +160,13 @@ Current compiled material:
 4. QED Renormalization And Electromagnetic Form Factors
 5. Infrared Divergences And Inclusive QED
 6. Yang--Mills Theory And Matter Fields
-7. Gauge Fixing, Ghosts, And BRST Cohomology
-8. The BV Master Formalism For Gauge Effective Actions
-9. QCD Renormalization, Asymptotic Freedom, And Deep Inelastic Scattering
-10. Chiral And Axial Anomalies
-11. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
+7. Lattice Yang--Mills As A Nonperturbative Definition
+8. Gauge Fixing, Ghosts, And BRST Cohomology
+9. The BV Master Formalism For Gauge Effective Actions
+10. QCD Renormalization, Asymptotic Freedom, And Deep Inelastic Scattering
+11. Jets, Infrared-Safe Observables, And Hadronization
+12. Chiral And Axial Anomalies
+13. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
 
 Further development targets:
 
@@ -172,6 +174,9 @@ Further development targets:
 - develop detector observables, especially energy correlators, as
   stress-tensor-defined color-singlet observables before discussing partonic
   approximations, jet algorithms, or hadronization models;
+- treat jet definitions through IRC-safe measurement functions, controlled
+  fixed-order/resummed approximations, and explicitly stated nonperturbative
+  inputs for fragmentation and hadronization;
 - expand nonabelian BRST and gauge-invariant operator construction;
 - deepen the BV development for reducible gauge symmetries, open algebras,
   exact RG implementations, and global BV integration-cycle issues;

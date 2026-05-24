@@ -120,8 +120,10 @@ Green functions, renormalization, and nonperturbative scattering.
 
 Supplies: spinor and gauge-field foundations, constraints, gauge fixing,
 BRST complexes, BV master formalism, QED and QCD renormalization, inclusive
-infrared observables, local and global anomalies, spontaneous symmetry
-breaking, pion effective theory, and anomaly matching.
+infrared observables, IRC-safe jet observables, parton-shower accuracy
+boundaries, fragmentation and hadronization inputs, local and global
+anomalies, spontaneous symmetry breaking, pion effective theory, and anomaly
+matching.
 
 Do not promote further material before: gauge-representative statements are
 related to gauge-invariant observables or cohomology classes, and anomaly
@@ -130,8 +132,8 @@ claims identify the compared cocycle class modulo local counterterms.
 Immediate target: deepen gauge-invariant operator construction and extend the
 new BV block toward reducible/open gauge algebras, explicit exact-RG
 realizations, and global BV integration-cycle issues.  Continue confinement
-diagnostics, global form, theta-angle, and anomaly inflow without importing
-premature TQFT or supersymmetric machinery.
+diagnostics, global form, theta-angle, jet/final-state observables, and
+anomaly inflow without importing premature TQFT or supersymmetric machinery.
 
 ### Volume V: Conformal Field Theory
 

@@ -5,6 +5,8 @@
 - Primary local source: second-sequence handwritten material, pages 182--210.
 - Immediate predecessor: gauge fixing, ghosts, and BRST cohomology.
 - Immediate successor in the source order: anomalies and chiral symmetry.
+- Immediate successor in the compiled Volume IV sequence: jets,
+  infrared-safe observables, and hadronization.
 - Role in the monograph: derive the one-loop QCD beta function using the
   background-field 1PI effective action, then use asymptotic freedom to set up
   the short-distance analysis of deep inelastic scattering.
@@ -215,6 +217,10 @@ The chapter must define and derive:
   calorimetric measures, smeared correlators, contact terms, soft/collinear
   continuity estimates, \(e^+e^-\) EEC normalization, and energy-flow
   polynomial definitions.
+- 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
+  develops jets, IRC-safe measurement functions, parton showers,
+  fragmentation functions, and hadronization as the final-state observable
+  continuation of the QCD chapter.
 - 2026-05-24 issue #260 pass: added the cross-reference from QCD factorization
   back to the Abelian-scope Bloch--Nordsieck remark and stated that
   initial-state collinear singularities of colored partons are absorbed into
