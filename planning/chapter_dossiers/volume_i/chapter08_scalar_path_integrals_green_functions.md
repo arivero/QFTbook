@@ -79,9 +79,12 @@ Working framework:
   functional expression or by analytic continuation of Wightman functions when
   the required analyticity is available.
 - constructive existence claims are categorized explicitly: \(P(\phi)_2\),
-  \(\phi^4_3\), two-dimensional Yang--Mills, scalar triviality in
+  \(\phi^4_3\), selected low-dimensional superrenormalizable
+  scalar--fermion models, two-dimensional Yang--Mills, scalar triviality in
   \(D\ge4\) under the standard reflection-positive scaling-limit hypotheses,
-  and the open four-dimensional Yang--Mills continuum problem.
+  the open four-dimensional Yang--Mills continuum problem, and the broader
+  open problem of constructing physically interacting four-dimensional
+  Wightman/OS QFTs of scalar or gauge type.
 
 ## Notation Inventory
 
@@ -147,7 +150,7 @@ Working framework:
 | Pauli--Villars is an auxiliary-field or determinant-ratio prescription, not a measure on the original field space; any path-integral use must specify the enlarged field variables, statistics, masses, coefficients, integration density or cycle, and symmetry action. | Framework distinction | Table `tab:regulator-integration-status-catalog` |
 | Dimensional regularization is not a measure on field configurations; it is a formal perturbative meromorphic assignment to graph distributions and their tensor/spinor algebra. | Framework distinction | Table `tab:regulator-integration-status-catalog` |
 | A Lorentzian finite-regulator path-integral expression is classified as an oscillatory integral/distribution; the continuum Lorentzian symbol is an oscillatory pseudo-integral specified by compatible finite-regulator boundary values or stationary-phase expansions. | Definition/framework statement | Definition `def:lorentzian-oscillatory-path-integral`; Fresnel formula with signature phase, Maslov-index note, and references to Hörmander and Albeverio--Høegh-Krohn frameworks |
-| \(P(\phi)_2\), \(\phi^4_3\), and two-dimensional Yang--Mills are named rigorous construction regimes, while standard scalar \(\phi^4_D\) scaling limits in \(D\ge4\) are constrained by triviality theorems. | Status catalog | Table `tab:constructive-qft-status-catalog` with references paragraph |
+| \(P(\phi)_2\), \(\phi^4_3\), selected low-dimensional superrenormalizable scalar--fermion models, and two-dimensional Yang--Mills are named rigorous construction regimes, while standard scalar \(\phi^4_D\) scaling limits in \(D\ge4\) are constrained by triviality theorems and broad four-dimensional interacting scalar/gauge construction remains open. | Status catalog | Table `tab:constructive-qft-status-catalog` with references paragraph and Open Problem `op:four-dimensional-constructive-qft` |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
@@ -193,6 +196,10 @@ Rendered check:
   `tab:constructive-qft-status-catalog`, a named catalog of constructive
   scalar/gauge models, scalar triviality regimes, and the open four-dimensional
   Yang--Mills continuum problem.
+- 2026-05-24, issue #333: expanded the catalog with selected
+  low-dimensional superrenormalizable scalar--fermion constructions and an
+  explicit four-dimensional interacting local-QFT row, linked conceptually to
+  Open Problem `op:four-dimensional-constructive-qft` in the opening chapter.
 - 2026-05-24, issue #301: added
   `def:lorentzian-oscillatory-path-integral`, classifying the Lorentzian
   finite-regulator object as an oscillatory integral/distribution and the

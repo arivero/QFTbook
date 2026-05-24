@@ -84,6 +84,10 @@ Use these only for theorem boundaries and later comparisons.
 - Local source chart: source fields, a source functional, and distributional
   source derivatives, modulo local finite changes that alter diagonal-supported
   contact terms.
+- Four-dimensional constructive local QFT open problem: construction of
+  Wightman/OS data, Hilbert space or local observable net, positivity,
+  covariance, locality, and spectral properties for a non-Gaussian local
+  scalar or gauge model.
 
 Definitions must specify domains and support conditions.
 
@@ -96,6 +100,7 @@ Definitions must specify domains and support conditions.
 | Fields in this framework are distributional coordinates on local data. | Framework statement | Defined and compared with Wightman language |
 | Contact terms are coincident-point/source-response data supported on collision diagonals, not determined by separated-point correlators alone. | Framework definition | Added as Definition `contact-terms-source-chart` |
 | Wightman/OS data for selected fields do not by themselves fix composite products, time-ordered products, nonlinear source couplings, or repeated source derivatives on diagonals. | Boundary statement | Stated in opening analytic-status section |
+| Constructive existence of physically interacting four-dimensional local QFT is an open problem except for free/generalized-free examples and model-specific conditional or trivial regimes. | Status/open problem | Added as Open Problem `op:four-dimensional-constructive-qft`; cross-checks the path-integral status catalog |
 | Particles, S-matrix, LSZ, and perturbative scattering require further hypotheses. | Structural claim | Stated as dependency plan; derived later |
 | Kallen--Lehmann will be the first bridge from local fields to particle content. | Ordering rule | Source spine |
 
@@ -117,6 +122,11 @@ Definitions must specify domains and support conditions.
   definition and separated Wightman/OS distributional field data from
   composite, time-ordered, source-response, Ward-identity, and anomaly contact
   conventions.
+- Completed: issue #333 pass added the four-dimensional constructive-QFT open
+  problem at the opening-framework level, separating low-dimensional
+  constructive examples, scalar triviality regimes, finite regulators,
+  perturbative expansions, and open four-dimensional gauge/scalar
+  construction problems.
 
 ## Figure Ledger
 
