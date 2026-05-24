@@ -179,9 +179,72 @@ the Gaussian convolution identity says
 \end{equation}
 for every integrable regulated function \(F\).  Equation
 \eqref{eq:finite-regulator-gaussian-convolution} is a theorem about Gaussian
-measures on finite-dimensional vector spaces.  The continuum notation below is
-the shorthand obtained by applying this identity at each regulator and then
-studying the regulator-removal limit.
+measures on finite-dimensional vector spaces.  Its proof and its continuum
+status are logically separate.
+
+\begin{proposition}[Finite-regulator Gaussian pushforward]
+\label{prop:finite-regulator-gaussian-pushforward}
+Assume \(E_\Lambda=E_{\Lambda'}\oplus \widehat E_{\Lambda,\Lambda'}\) and that
+\(C_{\Lambda'}\) and \(\widehat C_{\Lambda,\Lambda'}\) are positive covariance
+operators on the two summands.  Let \(C_\Lambda=C_{\Lambda'}\oplus
+\widehat C_{\Lambda,\Lambda'}\).  If \(F\) is integrable with respect to the
+centered Gaussian measure \(\mu_{C_\Lambda}\), then
+\eqref{eq:finite-regulator-gaussian-convolution} holds.
+\end{proposition}
+
+\begin{proof}
+Let \(X'\) and \(X_{\rm sh}\) be independent centered Gaussian random variables
+with values in \(E_{\Lambda'}\) and \(\widehat E_{\Lambda,\Lambda'}\) and
+covariances \(C_{\Lambda'}\) and \(\widehat C_{\Lambda,\Lambda'}\).  For every
+linear functional \(\ell\in E_\Lambda^*\),
+\[
+  \mathbb E\,\ee^{\ii\ell(X'+X_{\rm sh})}
+  =
+  \exp\!\left\{-\frac12\ell(C_{\Lambda'}\ell)\right\}
+  \exp\!\left\{-\frac12\ell(\widehat C_{\Lambda,\Lambda'}\ell)\right\}
+  =
+  \exp\!\left\{-\frac12\ell(C_\Lambda\ell)\right\}.
+\]
+Thus \(X'+X_{\rm sh}\) has the centered Gaussian law with covariance
+\(C_\Lambda\).  Equality of expectations of every integrable \(F\) gives
+\eqref{eq:finite-regulator-gaussian-convolution}.
+\end{proof}
+
+\begin{hypothesis}[Continuum interpretation of Wilsonian pushforward]
+\label{hyp:wilsonian-pushforward-continuum-interpretation}
+Choose a sequence of finite regulators \(N\to\infty\), source spaces
+\(\mathcal S_{<}\) for momenta below a fixed physical scale, and a topology
+\(\mathcal T\) on Schwinger functionals or on local Wilsonian kernels.  A
+nonperturbative continuum interpretation of the Wilsonian pushforward requires
+the following additional assertions.
+
+First, the interacting finite-regulator source functionals
+\[
+  Z_{\Lambda,N}[J]
+  =
+  \int_{E_{\Lambda,N}}
+  \exp\{-L_{\Lambda,N}[\phi]-\langle J,\phi\rangle\}\,
+  \dd\mu_{C_{\Lambda,N}}(\phi)
+\]
+must converge in \(\mathcal T\), after the chosen renormalization conditions
+are imposed, for \(J\in\mathcal S_<\).  This is an existence statement for the
+interacting integral, logically independent of the Gaussian convolution
+identity.
+
+Second, for each pair \(\Lambda'<\Lambda\), the finite-regulator pushforwards
+defined by \eqref{eq:finite-regulator-gaussian-convolution} must converge in
+the same topology to a limiting map that preserves the limiting low-source
+functional.  If the infinitesimal Wilson-Polchinski equation is used, the
+finite-regulator vector fields and their solutions must also converge in the
+chosen function-space topology.
+\end{hypothesis}
+
+The finite-regulator proposition is the theorem used in the algebra below.
+Hypothesis~\ref{hyp:wilsonian-pushforward-continuum-interpretation} is a
+separate regulator-removal problem.  In a model where this hypothesis remains
+unproved, the continuum Wilsonian flow is a controlled formal or perturbative
+construction, while a nonperturbative use requires the convergence asserted in
+Hypothesis~\ref{hyp:wilsonian-pushforward-continuum-interpretation}.
 
 The algebraic step behind Wilsonian RG is the covariance identity
 \begin{equation}
@@ -306,10 +369,13 @@ up to a \(\phi'\)-independent normalization.  Combining
 \eqref{eq:define-lambda-prime-interaction} with the Gaussian measure for
 \(\phi'\) gives \eqref{eq:low-momentum-generating-function-preserved}.  The
 definition is exact for each finite regulator by
-\eqref{eq:finite-regulator-gaussian-convolution}.  Perturbation theory expands
-the logarithm of the shell expectation in connected shell contractions, and
-the continuum claim is the existence of the corresponding limit after the
-renormalization conditions have been imposed.
+Proposition~\ref{prop:finite-regulator-gaussian-pushforward}.  Perturbation
+theory expands the logarithm of the shell expectation in connected shell
+contractions.  The continuum claim is the additional
+Hypothesis~\ref{hyp:wilsonian-pushforward-continuum-interpretation}: after the
+renormalization conditions are imposed, both the interacting source functional
+and the Wilsonian pushforward or its infinitesimal flow must have the stated
+regulator-removal limit.
 
 \section{The Wilson-Polchinski Equation}
 
@@ -1959,8 +2025,8 @@ coordinate by
   -\Pi_{\mathcal S_\mu}\mathcal M_\times(\Lambda)+O(u_4^3).
 \]
 If the first discarded Taylor coefficient in the four-point kernel has excess
-exponent \(p_N\), Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian}
-bounds its contribution to \(g(\mu)\) by
+exponent \(p_N\), the Taylor-remainder estimate of
+Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian} gives the bound
 \[
   C_N\|v_{\perp,N}\|_{\Lambda,m,a}
   \left(\frac{\mu}{\Lambda}\right)^{p_N}.

@@ -46,6 +46,11 @@ The chapter must define and derive:
   \(\Lambda'\);
 - the propagator decomposition
   \(C_\Lambda=C_{\Lambda'}+\widehat C_{\Lambda,\Lambda'}\);
+- the finite-regulator Gaussian pushforward proposition and its proof by
+  characteristic functions of independent Gaussian random variables;
+- the separate continuum Wilsonian pushforward hypothesis, distinguishing
+  convergence of the interacting source functional from convergence of the
+  pushforward or infinitesimal Wilson-Polchinski flow;
 - the Gaussian field split \(\phi=\phi'+\widehat\phi\), including the shell
   kinetic term;
 - the shell-integration formula defining \(L_{\Lambda'}[\phi']\);
@@ -167,6 +172,11 @@ The chapter must define and derive:
 3. Lowering \(\Lambda\) is represented exactly, at the formal path-integral
    level, by a decomposition of Gaussian covariance and integration over an
    independent shell field.
+3a. The Gaussian pushforward is a finite-regulator theorem about Gaussian
+    measures on finite-dimensional vector spaces.  A nonperturbative continuum
+    Wilsonian flow additionally requires convergence of the interacting
+    source functionals and convergence of the pushforward or vector field in a
+    specified topology.
 4. Before the shell source term is discarded, the split generating functional
    contains \(J(\phi'+\widehat\phi)\); the \(J\widehat\phi\) term vanishes only
    by the regulated support assumption on the source.
@@ -319,6 +329,12 @@ The chapter must define and derive:
   separates the finite-regulator \(C^2\) setting, the Fr\'echet topology on
   vertex kernels for formal perturbation theory, and weighted Banach RG charts
   for theorem-level existence and estimate claims.
+- 2026-05-24 issue #309 pass: separated the finite-regulator Gaussian
+  pushforward theorem from the continuum Wilsonian interpretation.  The
+  manuscript now proves the finite-dimensional Gaussian convolution by
+  characteristic functions and states the additional continuum hypothesis as
+  two independent convergence requirements: the interacting source-functional
+  limit and the pushforward/vector-field limit.
 - 2026-05-24 deep-proof pass: replaced the previous structural
   BPHZ--Wilsonian comparison proposition with a finite-loop theorem.  The new
   version constructs the matching map, proves the low-mode Legendre-transform
