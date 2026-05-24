@@ -10,6 +10,8 @@ source-grounded, logically ordered, symbol-complete monograph.
 - Do not draft from generic memory.
 - Do not treat student transcriptions as authoritative.
 - Do not treat any axiomatic framework as the universal foundation.
+- Do not treat any axiomatic framework as valuable apart from the physics,
+  mathematics, examples, and framework relationships it actually clarifies.
 - Do not import the organization of standard textbooks.
 - Define all symbols before load-bearing use.
 - Use proper definitions in the stated framework.
@@ -56,6 +58,11 @@ For each framework, state its data and domain:
 
 Never move formulas among these frameworks without a theorem, derivation, or
 explicit formal-status label.
+
+Do not write framework material as taxonomy.  Every framework passage must
+serve at least one mathematical purpose: proving a claim, defining data,
+constructing an example, relating two formulations, isolating a failure of a
+comparison theorem, or formulating a genuine open problem.
 
 Never use a reference, standard name, or community habit as evidence by
 itself. If a result is needed for the chapter's physics logic, reproduce the

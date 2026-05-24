@@ -3,10 +3,13 @@
 ## Status
 
 Existing axiomatic and structural frameworks for QFT are indispensable, but
-none is the single strict foundation of the monograph. Each framework supplies
-precise data, theorems, examples, and open comparison problems. The manuscript
-uses them to certify claims and clarify domains, while the logical order of the
-book follows the construction spine.
+none is the single strict foundation of the monograph and none is treated as a
+privileged court of appeal.  A framework earns its place only by producing
+nontrivial physics or mathematics: precise data, theorems, constructions,
+examples, comparison maps, or sharply formulated open problems.  The manuscript
+uses frameworks to certify claims, clarify domains, study relationships, and
+build substantial examples, while the logical order of the book follows the
+construction of the subject.
 
 ## Working Principle
 
@@ -17,6 +20,8 @@ For any theorem or construction, state:
 - the hypotheses needed;
 - the conclusion obtained;
 - the relation, if known, to other frameworks;
+- the examples in which the framework supplies genuine information;
+- the physics or mathematics learned from using it;
 - what remains open or outside the framework.
 
 ## Wightman Framework

@@ -44,11 +44,14 @@ is a gap when the source calculation carries conceptual content.
 
 ## Modular Foundation Rule
 
-No existing framework is the universal foundation of the monograph. For every
-construction, state the local framework and its data. Use Wightman, OS, AQFT,
-perturbative AQFT, constructive, factorization, functorial, and
-Kontsevich--Segal-type frameworks as theorem sources and comparison lenses,
-with their domains stated.
+No existing framework is the universal foundation of the monograph, and no
+framework is valuable merely because it is axiomatic.  For every construction,
+state the local framework and its data. Use Wightman, OS, AQFT, perturbative
+AQFT, constructive, factorization, functorial, and Kontsevich--Segal-type
+frameworks as theorem sources, comparison lenses, and example-building tools,
+with their domains stated.  A framework discussion passes the harness only if
+it produces nontrivial information: a theorem with hypotheses, a construction,
+an example, a comparison map, a limitation, or a precise open problem.
 
 ## Definition Integrity Rule
 

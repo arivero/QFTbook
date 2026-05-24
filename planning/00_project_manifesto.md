@@ -33,7 +33,9 @@ The monograph therefore uses a modular foundation. Each construction states its
 own data and hypotheses. A theorem is valid only in the framework where its
 hypotheses have been stated. A comparison with an axiomatic framework is made
 when it clarifies a domain, a theorem, a limitation, or an open mathematical
-problem.
+problem. Frameworks are instruments for understanding QFT; their value in the
+monograph is measured by the physics and mathematics they reveal, the examples
+they organize, and the relationships among formulations that they make precise.
 
 ## Spine
 
