@@ -27,6 +27,13 @@ The chapter establishes:
 - conformal partial waves as shadow-projector/harmonic-analysis kernels,
   distinct from OPE-channel blocks and normalized together with their
   Plancherel density;
+- the Lorentzian inversion formula as a boundary theorem extracting a
+  spin-analytic meromorphic OPE coefficient from the crossed-channel double
+  discontinuity, subject to stated Euclidean OPE convergence, tube
+  analyticity, reflection-positivity, and Regge-boundedness hypotheses;
+- the Hogervorst--Rychkov radial variable \(\rho=z/(1+\sqrt{1-z})^2\) and the
+  interpretation of \(|\rho|<1\) as the radial-ordering domain for the
+  channel expansion;
 - reflection-positivity constraints on OPE coefficient matrices;
 - the boundary between core OPE machinery and later specialized bootstrap
   methods.
@@ -51,6 +58,12 @@ The chapter establishes:
 7. Local existence and uniqueness of the OPE-normalized block follow from the
    finite-level descendant construction, invertibility of Gram matrices after
    quotienting null descendants, and radial OPE convergence.
+8. Lorentzian inversion is used only as a theorem under its analytic and Regge
+   hypotheses; the double discontinuity is a Lorentzian branch-cut datum, not a
+   Euclidean projection operation.
+9. The radial-block expansion is explicitly the Hogervorst--Rychkov radial
+   expansion, with the chosen square-root branch tied to the radial-ordering
+   domain.
 
 ## Figures
 
@@ -64,6 +77,9 @@ The chapter establishes:
   hypotheses being used.
 - Do not use ``conformal block'' and ``conformal partial wave''
   interchangeably; later inversion formulae use the latter.
+- Do not invoke Lorentzian inversion without recording the double
+  discontinuity, the spin range or subtractions, and the analyticity/Regge
+  conditions that suppress contour arcs.
 
 ## Audit Notes
 
@@ -75,3 +91,7 @@ The chapter establishes:
 - 2026-05-24 issue pass: addressed #274 by adding a subsection distinguishing
   OPE-normalized conformal blocks from shadow-projector conformal partial
   waves and recording the associated Plancherel normalization convention.
+- 2026-05-24 issue pass: addressed #275 by adding the scalar Caron-Huot
+  Lorentzian inversion formula, defining the double discontinuity and pole
+  extraction convention, stating the theorem-boundary hypotheses, and naming
+  the Hogervorst--Rychkov radial coordinate used in the radial expansion.

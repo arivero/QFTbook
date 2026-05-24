@@ -600,11 +600,103 @@ blocks organize the discrete OPE in a channel, whereas conformal partial
 waves provide the representation-theoretic resolution of identity used in
 integral inversion formulae.
 
+\subsection{Lorentzian Inversion as a Boundary Theorem}
+
+The Euclidean OPE sum determines correlators by summing over the discrete
+operator spectrum.  Lorentzian inversion goes in the opposite direction: under
+additional Lorentzian analyticity and boundedness hypotheses, it reconstructs
+the spin-analytic OPE coefficient function from a double discontinuity of the
+four-point function.  For identical scalar primaries, define the \(t\)-channel
+double discontinuity across the branch cut \(\bar z\in[1,\infty)\) by
+\begin{equation}
+  \operatorname{dDisc}_t[\mathcal G](z,\bar z)
+  =
+  \mathcal G(z,\bar z)
+  -
+  \frac12\,\mathcal G^{\circlearrowleft}(z,\bar z)
+  -
+  \frac12\,\mathcal G^{\circlearrowright}(z,\bar z),
+  \label{eq:lorentzian-ddisc-identical}
+\end{equation}
+where the arrows denote the two analytic continuations of \(\bar z\) around
+\(\bar z=1\).  For unequal external dimensions the two continued terms are
+multiplied by the corresponding monodromy phases fixed by the external
+weights.
+
+In the scalar normalization compatible with the partial-wave convention above,
+the \(t\)-channel contribution to the Caron-Huot Lorentzian inversion formula
+has the form
+\begin{equation}
+  c^t(\Delta,J)
+  =
+  \frac{\kappa_{\Delta+J}}{4}
+  \int_0^1\dd z\int_0^1\dd\bar z\,
+  \frac{|z-\bar z|^{D-2}}{(z\bar z)^D}\,
+  G_{J+D-1,\,\Delta-D+1}^{(12|34)}(z,\bar z)\,
+  \operatorname{dDisc}_t[\mathcal G](z,\bar z),
+  \label{eq:caron-huot-lorentzian-inversion-identical}
+\end{equation}
+with
+\begin{equation}
+  \kappa_\beta
+  =
+  \frac{\Gamma(\beta/2)^4}
+       {2\pi^2\,\Gamma(\beta-1)\Gamma(\beta)}
+  \qquad
+  \text{for identical external scalars.}
+  \label{eq:caron-huot-kappa-identical}
+\end{equation}
+The full identical-scalar coefficient includes the crossed \(u\)-channel
+contribution
+\[
+  c(\Delta,J)=c^t(\Delta,J)+(-1)^Jc^u(\Delta,J),
+\]
+with the same kernel after the corresponding interchange of points.  The block
+appearing in the kernel has analytically continued labels: its first label is
+\(J+D-1\), and its second label is \(\Delta-D+1\).  This is the same
+block/partial-wave duality already visible in
+\eqref{eq:partial-wave-block-shadow-block}; the inversion integral pairs the
+Lorentzian double discontinuity with the shadow-side harmonic kernel.
+
+The coefficient function \(c(\Delta,J)\) is meromorphic in \(\Delta\) for the
+spins covered by the Regge boundedness hypothesis.  If a primary of spin \(J\)
+and dimension \(\Delta_{\mathcal O}\) appears in the \(\phi\times\phi\) OPE,
+then near the pole
+\begin{equation}
+  c(\Delta,J)
+  =
+  \frac{\lambda_{\phi\phi\mathcal O}^{\,2}}
+       {\Delta-\Delta_{\mathcal O}}
+  +\text{holomorphic near }\Delta_{\mathcal O}.
+  \label{eq:lorentzian-inversion-pole-extraction}
+\end{equation}
+Thus the formula extracts OPE data from Lorentzian branch-cut data rather than
+from Euclidean projection onto a discrete radial spectrum.
+
+\begin{remark}[Hypotheses and scope]
+\label{rem:lorentzian-inversion-scope}
+Equation~\eqref{eq:caron-huot-lorentzian-inversion-identical} is not an
+additional axiom of CFT data.  It is a theorem under hypotheses: unitarity or
+reflection positivity sufficient for the Lorentzian continuation, Euclidean OPE
+convergence in the required domains, analyticity in the relevant tube domains,
+and Regge boundedness strong enough to suppress the arcs used in the contour
+deformation.  The spin range begins above the Regge intercept; in many unitary
+CFT applications this gives \(J>1\), with possible lower-spin terms requiring
+separate subtractions.  Later analytic-bootstrap and light-ray discussions use
+the inversion formula only at this theorem boundary.\footnote{See
+S.~Caron-Huot, ``Analyticity in spin in conformal theories,'' JHEP
+\textbf{09} (2017) 078, arXiv:1703.00278; D.~Simmons-Duffin,
+D.~Stanford, and E.~Witten, ``A spacetime derivation of the Lorentzian OPE
+inversion formula,'' JHEP \textbf{07} (2018) 085, arXiv:1711.03816; and
+P.~Kravchuk and D.~Simmons-Duffin, ``Light-ray operators in conformal field
+theory,'' JHEP \textbf{11} (2018) 102, arXiv:1805.00098.}
+\end{remark}
+
 \subsection{Radial Expansion of a Block}
 
 For identical Hermitian scalar primaries \(\phi\), there is a particularly
-transparent block expansion in the radial variable \(\rho\).  Put the four
-points in a plane at
+transparent block expansion in the Hogervorst--Rychkov radial variable
+\(\rho\).  Put the four points in a plane at
 \[
   x_1=\rho,\qquad x_2=-\rho,\qquad x_3=-1,\qquad x_4=1,
   \qquad
@@ -620,7 +712,13 @@ With the cross-ratio convention of
 \end{equation}
 The Weyl map to the cylinder places the two inner insertions at radial time
 \(\tau=\log r\) and angular positions separated by \(\pi\), while the two
-outer insertions lie at \(\tau=0\).
+outer insertions lie at \(\tau=0\).  The map
+\eqref{eq:rho-cross-ratio-map} is chosen so that \(|\rho|<1\) is precisely the
+radial ordering domain for the \(12\to34\) OPE channel; the descendant expansion
+below is the radial-coordinate expansion introduced by Hogervorst and
+Rychkov.\footnote{See M.~Hogervorst and S.~Rychkov, ``Radial Coordinates for
+Conformal Blocks,'' Phys. Rev. D \textbf{87} (2013) 106004,
+arXiv:1303.1111.}
 
 \begin{figure}[H]
   \centering
