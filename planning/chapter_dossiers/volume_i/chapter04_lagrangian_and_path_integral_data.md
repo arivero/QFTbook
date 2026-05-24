@@ -105,7 +105,7 @@ Working framework:
 | Inserting position and momentum resolutions gives a finite-dimensional phase-space expression for time evolution at fixed partition. | Construction | Derived in chapter |
 | The continuum path-integral notation is shorthand for a regulator and limiting procedure. | Framework statement | Definition of \(K_N\) and limiting convention |
 | Under locally Kato bounded-below Schrödinger hypotheses, Euclidean quantum mechanics has a genuine Wiener-measure/Feynman--Kac representation on continuous paths. | Theorem | Constructed from Gaussian finite-dimensional distributions, Kolmogorov continuity, Trotter product formula, monotone form convergence, and Brownian-bridge disintegration |
-| The Wiener/Feynman--Kac theorem is not a universal definition of QFT path integrals. | Framework distinction | The chapter explicitly separates Borel measures for bosonic Schrödinger/scalar cases from Berezin, gauge-fixed/BV, lattice, complex-weight, oscillatory, and perturbative constructions |
+| The Wiener/Feynman--Kac theorem supplies the positive-measure bosonic Schrödinger/scalar entry in a broader typed path-integral taxonomy. | Framework distinction | The chapter explicitly separates Borel measures for bosonic Schrödinger/scalar cases from Berezin, gauge-fixed/BV, lattice, complex-weight, oscillatory, and perturbative constructions |
 | Distinct time-lattice orderings define distinct operator symbols \(h\) and \(h'\), differing by local \(O(\hbar)\) terms. | Regulator statement | Explicit finite-slice comparison patched from handwritten p. 13 |
 | Quadratic momentum dependence yields a Lagrangian form with a determinant measure. | Derivation | Gaussian integration in chapter |
 | Source derivatives generate time-ordered insertions. | Construction | Derived from discrete source insertion |
@@ -117,7 +117,10 @@ Working framework:
 
 - 2026-05-24, issue #298: added Theorem
   `thm:wiener-feynman-kac-qm`, its proof, and the conceptual restriction that
-  Borel measures are not the general recipe for QFT path integrals.
+  path-integral notation must specify its mathematical object, such as a
+  measure, oscillatory integral, Berezin functional, gauge-fixed/BV
+  construction, lattice or holonomy construction, or formal perturbative
+  expansion.
 
 ## Figure Ledger
 

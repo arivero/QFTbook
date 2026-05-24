@@ -5,7 +5,9 @@
 Current status: certified on 2026-05-22 after handwritten source and
 rendered-figure audit for the 253a pp. 52--62 free-scalar canonical block;
 tightened on 2026-05-23 so the canonical construction is explicitly separated
-from the regulated Lagrangian path-integral construction.
+from the regulated Lagrangian path-integral construction; tightened on
+2026-05-24 so the Lorentzian finite-regulator path-integral object is
+classified as oscillatory.
 
 ## Logical Role
 
@@ -49,6 +51,9 @@ Working framework:
   domain;
 - regulated path-integral symbols \(R,\mathcal C_R,\dd\mu_R,S_R\) when the
   chapter contrasts canonical quantization with the later scalar path integral.
+- Lorentzian finite-regulator path-integral expressions as oscillatory
+  integrals or oscillatory distributions, with quadratic cases treated as
+  Fresnel integrals.
 
 ## Notation Inventory
 
@@ -78,6 +83,8 @@ Working framework:
 - canonical momentum and Hamiltonian density;
 - regulated field-configuration integral notation used only as a later
   construction target;
+- finite-regulator Lorentzian path-integral expression as an oscillatory
+  integral/distribution;
 - equal-time Poisson brackets and equal-time commutation relations;
 - canonical oscillator normalization and invariant mass-shell normalization;
 - finite-regulator vacuum-energy shift;
@@ -92,6 +99,7 @@ Working framework:
 | Classical free solutions are supported on the mass shell \(k^2+m^2=0\). | Derived | Fourier transform of Klein-Gordon equation |
 | Cauchy data \(\phi(0,\vec x)\), \(\partial_t\phi(0,\vec x)\) determine the free solution. | Derived | Positive/negative frequency decomposition |
 | The Lagrangian field path-integral symbol denotes a specified limit or asymptotic expansion of regulated integrals over \((\mathcal C_R,\dd\mu_R,S_R)\). | Framework statement | 2026-05-23 rigor pass |
+| With Lorentzian phase, a finite-regulator Lagrangian path-integral expression is an oscillatory integral/distribution; the quadratic case is a Fresnel integral with determinant magnitude and signature phase. | Definition/framework statement | 2026-05-24 issue #301 pass; expanded in Chapter 8 Definition `def:lorentzian-oscillatory-path-integral` |
 | Equal-time CCR determine the oscillator algebra once a mode normalization is fixed. | Derived | Fourier inversion |
 | The free Hamiltonian selects \(\omega_{\vec k}=\sqrt{\vec k^2+m^2}\) as the diagonal oscillator frequency. | Derived | Substitution into \(H_0\) |
 | Oscillator algebras related by Bogoliubov transformations do not by themselves determine the vacuum. | Derived/construction | 2026-05-22 source audit of handwritten Bogoliubov remark |

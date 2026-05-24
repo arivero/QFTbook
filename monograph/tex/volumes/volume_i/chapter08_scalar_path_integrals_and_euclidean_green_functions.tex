@@ -180,6 +180,79 @@ mathematical object for some bosonic Euclidean scalar theories; it is not the
 definition of a general QFT path integral and is not implied by the symbol
 \([D\phi]\).
 
+\begin{definition}[Lorentzian oscillatory path-integral notation]
+\label{def:lorentzian-oscillatory-path-integral}
+Fix a finite spatial regulator \(\Lambda\), a finite time partition, and
+coordinates \(u=(u^1,\ldots,u^M)\) on all intermediate field variables.  With
+an insertion \(F\), the regulated Lorentzian expression has the form
+\[
+  I_{\Lambda,N}(F)
+  =
+  \int_{\mathbb R^M}
+  \exp\!\left(\ii S_{\Lambda,N}(u)\right)
+  a_{\Lambda,N}(u;F)\,\dd^M u .
+\]
+This formula is classified as an oscillatory integral or oscillatory
+distribution.  One concrete definition is the Abel boundary value
+\[
+  I_{\Lambda,N}(F)
+  =
+  \lim_{\epsilon\downarrow0}
+  \int_{\mathbb R^M}
+  \exp\!\left(\ii S_{\Lambda,N}(u)-\epsilon Q(u)\right)
+  a_{\Lambda,N}(u;F)\,\dd^M u ,
+\]
+whenever the limit exists in the stated distribution topology; here \(Q\) is a
+positive definite quadratic form used only to approach the boundary value.
+Equivalent finite-dimensional formulations use the Fourier-transform
+definition of oscillatory integrals with amplitudes in a specified symbol
+class.
+
+For a nondegenerate quadratic phase
+\[
+  S(u)=\frac12 u^T A u+J^T u,
+  \qquad
+  A=A^T,\quad \det A\ne0 ,
+\]
+the normalized Fresnel value is
+\[
+  \lim_{\epsilon\downarrow0}
+  \int_{\mathbb R^M}
+  \exp\!\left(
+    \frac{\ii}{2}u^TAu+\ii J^Tu-\frac{\epsilon}{2}u^Tu
+  \right)\dd^M u
+  =
+  (2\pi)^{M/2}
+  \ee^{\ii\pi\,\operatorname{sgn}(A)/4}
+  |\det A|^{-1/2}
+  \exp\!\left(-\frac{\ii}{2}J^TA^{-1}J\right),
+\]
+where
+\(\operatorname{sgn}(A)=n_+(A)-n_-(A)\) is the signature.  The phase
+\(\ee^{\ii\pi\operatorname{sgn}(A)/4}\) is part of the finite-regulator
+definition; in families of quadratic phases its changes are recorded by the
+Maslov index.  For a nonlinear phase, perturbation theory is the stationary
+phase expansion of the finite-regulator oscillatory distribution around the
+chosen critical configurations, with Hessian signatures and contour or
+boundary-value data included in the definition.
+
+The continuum Lorentzian symbol
+\[
+  \int[D\phi]\,\ee^{\ii S[\phi]}
+\]
+is therefore an oscillatory pseudo-integral: a shorthand for compatible
+finite-regulator oscillatory distributions, their Abel or Fourier boundary
+values, or their stationary-phase asymptotic expansions.  This classification
+is separate from the Euclidean positive-measure construction used in
+constructive scalar examples, from Berezin integration for fermionic
+variables, and from gauge-fixed, BRST/BV, lattice, or holonomy constructions
+for gauge theories.  The relevant analytic frameworks are finite-dimensional
+oscillatory-integral theory and stationary phase in the sense of
+H\"ormander, the Maslov-index refinement of the Fresnel phase, and the
+Albeverio--H\o egh-Krohn theory of infinite-dimensional Fresnel integrals
+when such infinite-dimensional oscillatory objects are constructed directly.
+\end{definition}
+
 \begin{table}[H]
 \centering
 \footnotesize
@@ -251,6 +324,13 @@ dimensions; and M.~Aizenman and H.~Duminil-Copin, ``Marginal triviality of the
 scaling limits of critical 4D Ising and \(\phi^4_4\) models,'' \emph{Ann. of
 Math.} \textbf{194} (2021) 163--235, for the four-dimensional marginal
 triviality theorem.
+The Glimm--Jaffe functional-integral construction is used here as a reference
+for the positive-measure scalar sector.  The organizing framework of this
+monograph is broader: a path integral is specified by the mathematical object
+assigned by the chosen regulator and limiting prescription, which may be a
+Borel measure, an oscillatory distribution, a Berezin functional, a
+gauge-fixed or BV integral, a lattice or holonomy construction, or a formal
+asymptotic expansion.
 
 Vacuum correlation functions avoid direct use of field-configuration
 eigenvectors. For points \(x_a=(x_a^0,\vec x_a)\), the basic Lorentzian

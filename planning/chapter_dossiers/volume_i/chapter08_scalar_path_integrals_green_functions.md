@@ -103,6 +103,9 @@ Working framework:
   configurations;
 - finite-dimensional regulator class for which Trotter--Kato/Feynman--Kac is
   a theorem;
+- Lorentzian oscillatory path-integral notation as finite-regulator
+  oscillatory distributions, Fresnel boundary values, or stationary-phase
+  asymptotic expansions;
 - constructive-QFT status catalog for selected scalar and gauge examples;
 - field wave functional and field-configuration generalized eigenstate;
 - Euclidean scalar action and Euclidean correlation function;
@@ -120,6 +123,7 @@ Working framework:
 | Finite lattice and genuine finite-mode stable polynomial regulators satisfy the finite-dimensional Trotter/Feynman--Kac hypotheses. | Proposition | Smooth bounded-below potential on \(E_\Lambda\) plus positive kinetic quadratic form |
 | Continuum smooth cutoffs that leave infinitely many spatial modes, formal covariance cutoffs, and direct Euclidean spacetime lattice actions without transfer matrices do not inherit the finite-dimensional Trotter theorem. | Framework distinction | Chapter text requires separate Hilbert-space/domain/constructive/perturbative data |
 | The formal notation \(Z=\int[D\phi]e^{iS[\phi]}\) has meaning as regulated shorthand or an asymptotic expansion derived from a regulated theory, and does not imply a Borel measure. | Framework statement | Regulator dependence stated explicitly; positive Borel measures restricted to some bosonic Euclidean scalar regimes |
+| A Lorentzian finite-regulator path-integral expression is classified as an oscillatory integral/distribution; the continuum Lorentzian symbol is an oscillatory pseudo-integral specified by compatible finite-regulator boundary values or stationary-phase expansions. | Definition/framework statement | Definition `def:lorentzian-oscillatory-path-integral`; Fresnel formula with signature phase, Maslov-index note, and references to Hörmander and Albeverio--Høegh-Krohn frameworks |
 | \(P(\phi)_2\), \(\phi^4_3\), and two-dimensional Yang--Mills are named rigorous construction regimes, while standard scalar \(\phi^4_D\) scaling limits in \(D\ge4\) are constrained by triviality theorems. | Status catalog | Table `tab:constructive-qft-status-catalog` with references paragraph |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
@@ -166,3 +170,9 @@ Rendered check:
   `tab:constructive-qft-status-catalog`, a named catalog of constructive
   scalar/gauge models, scalar triviality regimes, and the open four-dimensional
   Yang--Mills continuum problem.
+- 2026-05-24, issue #301: added
+  `def:lorentzian-oscillatory-path-integral`, classifying the Lorentzian
+  finite-regulator object as an oscillatory integral/distribution and the
+  continuum notation as an oscillatory pseudo-integral; also scoped the
+  Glimm--Jaffe functional-integral reference to the positive-measure scalar
+  sector.
