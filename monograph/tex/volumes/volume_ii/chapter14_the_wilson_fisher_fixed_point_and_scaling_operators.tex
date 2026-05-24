@@ -390,7 +390,46 @@ Since a scalar primary of dimension \(\Delta_\phi\) has two-point exponent
 \]
 The first nonzero field anomalous dimension comes from the momentum-dependent
 part of the two-loop sunset self-energy.  In the same subtraction convention,
-the divergent part of its derivative is
+the coefficient is obtained as follows.  With the interaction normalized as
+\(\lambda\phi^4/4!\), the sunset graph has symmetry factor \(1/6\), hence
+\[
+  \Sigma_{\rm sun}^{(2)}(k)
+  =
+  \frac{\lambda^2}{6}\,\mu^{2\epsilon} I(k),
+  \qquad
+  I(k)=
+  \int_{p,q}
+  \frac{1}{p^2q^2(p+q+k)^2},
+  \qquad
+  \int_p:=\int\frac{\dd^{4-\epsilon}p}{(2\pi)^{4-\epsilon}} .
+\]
+First integrate over \(q\):
+\[
+  \int_q\frac{1}{q^2(q+p+k)^2}
+  =
+  \frac{1}{(4\pi)^{D/2}}
+  \frac{\Gamma(\epsilon/2)\Gamma(1-\epsilon/2)^2}{\Gamma(2-\epsilon)}
+  \bigl((p+k)^2\bigr)^{-\epsilon/2},
+  \qquad D=4-\epsilon .
+\]
+The remaining massless two-point integral gives
+\[
+\begin{aligned}
+  I(k)
+  &=
+  \frac{(k^2)^{1-\epsilon}}{(4\pi)^D}
+  \frac{\Gamma(1-\epsilon/2)^3\Gamma(-1+\epsilon)}
+       {\Gamma(3-3\epsilon/2)}
+  \\
+  &=
+  -\,\frac{k^2}{2(4\pi)^4}\,\frac1\epsilon
+  + \hbox{finite and higher-order terms in }\epsilon .
+\end{aligned}
+\]
+The factor \(1/2\) is the \(\Gamma(3)^{-1}\) value in this last two-point
+integral, equivalently the corresponding Feynman-parameter normalization.
+Multiplying it by the sunset symmetry factor \(1/6\) gives the coefficient
+\(1/12\).  Therefore the divergent part of the derivative is
 \[
   \left.
   \frac{\partial\Sigma^{(2)}(k)}{\partial k^2}

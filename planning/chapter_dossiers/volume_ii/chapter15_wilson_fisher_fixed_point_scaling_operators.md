@@ -77,6 +77,11 @@ The chapter must define and derive:
   \(\lambda(\mu)\);
 - the field dimension
   \(\Delta_\phi=1-\epsilon/2+O(\epsilon^2)\);
+- the two-loop sunset coefficient controlling \(\gamma_\phi\), including the
+  symmetry factor \(1/6\), the massless two-point integral evaluation, and the
+  resulting pole
+  \(\partial\Sigma^{(2)}/\partial k^2
+  =-\lambda^2/[12(16\pi^2)^2\epsilon]+\cdots\);
 - why an \(x\)-independent \(\phi^2\) source is an IR-bad subtraction in the
   massless theory;
 - why this infrared obstruction is not a failure of the local
@@ -212,6 +217,10 @@ The chapter must define and derive:
 - 2026-05-24 issue #347 pass: removed the stray \(\lambda_4\) notation from the
   \(\phi^2\) anomalous-dimension and \(O_4\) linearized-RG sections; the chapter
   now uses \(\lambda\) uniformly for the quartic running coordinate.
+- 2026-05-24 issue #348 pass: inserted the sunset-integral derivation of the
+  field anomalous-dimension coefficient, showing the \(1/6\) graph symmetry
+  factor, the two massless two-point integrations, the pole
+  \(I(k)=-k^2/[2(4\pi)^4\epsilon]+\cdots\), and the resulting \(1/12\).
 - Do not say that the epsilon expansion proves the \(d=3\) or \(d=2\) fixed
   points.
 - Do not say that the perturbative zero of the \(4-\epsilon\) beta function is
