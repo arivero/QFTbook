@@ -46,7 +46,7 @@
   Berezinian density of the odd coefficient variables defined in Volume I's
   fermionic path-integral chapter.  The heat kernel is a gauge-covariant
   spectral regulator for the Berezinian trace, not a Pauli--Villars regulator
-  field.
+  field or determinant-ratio prescription.
 - Gauge potentials use the Hermitian convention of the Yang--Mills chapters.
 - Characteristic classes are written using the anti-Hermitian connection
   \(\mathsf A=-\ii A\), \(\mathsf F=\dd\mathsf A+\mathsf A^2=-\ii F\).
@@ -243,3 +243,7 @@
   a gauge-covariant spectral regulator for the Berezinian trace and added a
   harness check against the old untyped "measure changes by a Jacobian"
   phrasing.
+- 2026-05-24 issue #314 pass: cross-referenced the regulator catalog and
+  stated explicitly that the anomaly computation uses dimensional reduction
+  and heat-kernel/spectral trace regulation, not Pauli--Villars auxiliary
+  fields.
