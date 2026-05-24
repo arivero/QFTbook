@@ -695,6 +695,75 @@ denote different objects in different constructions.
   another declared topology.
 \end{definition}
 
+\begin{definition}[Contact terms and local source charts]
+\label{def:contact-terms-source-chart}
+Let \(M\) be the spacetime manifold and let
+\[
+  \Delta_n=\bigcup_{1\le i<j\le n}\{(x_1,\ldots,x_n)\in M^n\mid x_i=x_j\}
+\]
+be the collision locus.  A separated-point \(n\)-point distribution is a
+distribution \(T^\circ\in\mathcal D'(M^n\setminus\Delta_n)\), with values in
+the appropriate tensor product of operator-label bundles.  A contact-term
+extension of \(T^\circ\) is a distribution \(T\in\mathcal D'(M^n)\) whose
+restriction to \(M^n\setminus\Delta_n\) equals \(T^\circ\).  A contact term is
+a distribution supported on \(\Delta_n\), or on one of its partial collision
+diagonals.  Locally near a smooth partial diagonal, with coordinates \(z\) on
+the diagonal and normal coordinates \(y\), such a distribution has finite
+normal order,
+\[
+  C
+  =
+  \sum_{|\alpha|\le N}
+  \partial_y^\alpha\delta(y)\,c_\alpha(z),
+  \qquad
+  c_\alpha\in\mathcal D'(\Delta),
+\]
+after choosing local coordinates and a density convention.  Thus contact
+terms are ordinary distributional data on collision strata.
+
+A local source chart consists of source fields \(J^A\in C_c^\infty(M,E_A)\),
+a source functional \(W[J]\) in the chosen category, and distributional
+source derivatives
+\[
+  G_{A_1\cdots A_n}(x_1,\ldots,x_n)
+  =
+  \left.
+  \frac{\delta^n W[J]}
+       {\delta J^{A_1}(x_1)\cdots\delta J^{A_n}(x_n)}
+  \right|_{J=0}.
+\]
+Changing the chart by a local functional
+\(\int_M\mathcal L(x,j_x^kJ)\dd^Dx\), or by a local source-coordinate change
+whose nonlinear part is supported through jets at the same point, changes
+these derivatives by finite sums of distributions supported on collision
+diagonals.  With the linear source normalization fixed, the restriction of
+\(G_{A_1\cdots A_n}\) to \(M^n\setminus\Delta_n\) is unchanged by such
+purely local finite choices, while the contact-term extension changes.
+\end{definition}
+
+The Wightman and Osterwalder--Schrader frameworks assign distributional
+correlators to the selected elementary or named fields.  This assignment gives
+the distributions specified by those frameworks, including their declared
+domains and positivity properties.  It does not canonically choose composite
+fields, time-ordered products, nonlinear source couplings, or the response of
+correlators to repeated local source differentiation on collision diagonals.
+Those choices are additional local source or operator-product data.  Ward
+identities, current algebra, stress-tensor products, anomaly formulae, and
+deformations of a theory therefore carry contact-term conventions in addition
+to their separated-point correlation functions.
+
+Renormalization is one construction in which these local extension choices
+are produced and compared.  The concept is broader: a contact term is
+coincident-point/source-response data, while a counterterm is a local term in
+a chosen regulated or perturbative action functional.  Perturbative
+Epstein--Glaser constructions, perturbative algebraic QFT, microlocal
+extension methods, Hollands--Wald local Wick-polynomial and time-ordered
+product constructions, and Costello--Gwilliam factorization algebras give
+precise comparison frameworks for such extensions under their stated
+hypotheses.  They will be used as technical models where their hypotheses
+match the problem under discussion, without being treated as a complete
+nonperturbative axiom system for all QFTs.
+
 \begin{definition}[Hilbert-space or algebraic completion]
   A Hilbert-space or algebraic completion is a reconstruction of operators,
   states, local algebras, and symmetries from correlation data or from an

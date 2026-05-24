@@ -62,6 +62,9 @@ Use these only for theorem boundaries and later comparisons.
 | \(\mathcal O\) | bounded open spacetime region | localization |
 | \(\Obs(\mathcal O)\) | local algebra assigned to \(\mathcal O\) | observable net |
 | \(\widehat\Phi_A(f)\) | smeared field operator/distribution | field coordinate |
+| \(\Delta_n\) | collision locus in \(M^n\) where at least two insertion points coincide | contact-term geometry |
+| \(J^A\) | compactly supported local source field | source chart |
+| \(W[J]\) | source functional whose derivatives define inserted distributions | source-response data |
 | \(\mathrm{EFT}\) | effective field theory presentation, not a separate axiom system | regulated/local expansion framework |
 
 ## Definition Ledger
@@ -75,6 +78,12 @@ Use these only for theorem boundaries and later comparisons.
 - Local observable assignment: region-to-algebra assignment with covariance,
   isotony, and locality.
 - Smeared field: operator-valued distribution evaluated on a test function.
+- Contact-term extension: an extension of a separated-point distribution from
+  \(M^n\setminus\Delta_n\) to \(M^n\), with differences supported on collision
+  diagonals.
+- Local source chart: source fields, a source functional, and distributional
+  source derivatives, modulo local finite changes that alter diagonal-supported
+  contact terms.
 
 Definitions must specify domains and support conditions.
 
@@ -85,6 +94,8 @@ Definitions must specify domains and support conditions.
 | The opening framework consists of Hilbert space, symmetry, spectrum, vacuum, and local observables. | Working definition | Defined in chapter |
 | Continuum local QFT and EFT presentations share locality but make different mathematical-status claims. | Source-certified framework distinction | Added from handwritten pp. 1--2 with caveats about regulator removal, scale windows, and power counting |
 | Fields in this framework are distributional coordinates on local data. | Framework statement | Defined and compared with Wightman language |
+| Contact terms are coincident-point/source-response data supported on collision diagonals, not determined by separated-point correlators alone. | Framework definition | Added as Definition `contact-terms-source-chart` |
+| Wightman/OS data for selected fields do not by themselves fix composite products, time-ordered products, nonlinear source couplings, or repeated source derivatives on diagonals. | Boundary statement | Stated in opening analytic-status section |
 | Particles, S-matrix, LSZ, and perturbative scattering require further hypotheses. | Structural claim | Stated as dependency plan; derived later |
 | Kallen--Lehmann will be the first bridge from local fields to particle content. | Ordering rule | Source spine |
 
@@ -102,6 +113,10 @@ Definitions must specify domains and support conditions.
 - Completed: restored the handwritten opening fork as rigorous prose and a
   non-course-specific figure; course labels and semester arrows were not
   imported.
+- Completed: issue #498 pass added the foundational contact-term/source-chart
+  definition and separated Wightman/OS distributional field data from
+  composite, time-ordered, source-response, Ward-identity, and anomaly contact
+  conventions.
 
 ## Figure Ledger
 

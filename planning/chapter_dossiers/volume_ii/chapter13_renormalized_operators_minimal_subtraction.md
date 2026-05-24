@@ -42,6 +42,9 @@ The chapter must define:
 - the source-extended finite-regulator Wilsonian pushforward
   \(L_\Lambda[\phi;\eta_\Lambda]\) with a local differential source map
   \(\eta_0=\mathcal Z_\Lambda\eta_\Lambda\);
+- the chapter-level use of the opening definition of contact terms as
+  distributions supported on collision diagonals and controlled by local source
+  charts;
 - the sign convention
   \(-\delta W/\delta\eta=\langle O\rangle\) for Euclidean sources coupled
   through the action;
@@ -146,7 +149,8 @@ The chapter must define:
 11. The operator-insertion Callan--Symanzik equation follows by
    differentiating the renormalized insertion chart at fixed bare data.
 12. Contact terms in inserted correlators are local distributions supported on
-   collision diagonals and depend on the contact-term convention.
+   collision diagonals in the sense of the opening source-chart definition and
+   depend on the contact-term convention.
 13. Minimal subtraction defines dimensionless couplings by retaining only pole
    terms in the relation between bare and renormalized couplings.
 14. In four-dimensional scalar quartic theory, the one-loop MS relation is
@@ -209,6 +213,8 @@ The chapter must define:
 - Operator-insertion Callan--Symanzik equations must be derived from the
   source/insertion renormalization chart, not quoted without proof.
 - Separate noncoincident correlator equations from contact-term conventions.
+- Use contact terms as source-response/coincident-point data, not as a synonym
+  for renormalization counterterms.
 - Keep the MS discussion as a coordinate construction, not as an ontological
   foundation.
 - Do not describe the pole equations as triangular without stating the
