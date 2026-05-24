@@ -368,7 +368,7 @@ This is first an analytic function on the Euclidean side of the cut.  The
 physical boundary value is specified only after the external invariant is
 continued to a timelike value.
 
-\section{The Threshold Cut and the Width}
+\section{The Threshold Cut and the Cut Width}
 
 For the \(s\)-channel exchange, \(k=K=k_1+k_2\) and \(K^2=-s\). The dressed
 contribution is
@@ -471,18 +471,184 @@ At weak coupling, and to leading order in the variation of the real part of
 \[
   \mathcal M_s(s)
   \simeq
-  \frac{g^2}{M_R^2-s-\ii M_R\Gamma_R},
+  \frac{g^2}{M_R^2-s-\ii M_R\Gamma_{\rm cut}(M_R)},
 \]
 where
 \[
-  M_R\Gamma_R
+  M_R\Gamma_{\rm cut}(M_R)
   =
   \frac{g^2}{32\pi}
   \sqrt{1-\frac{4m_1^2}{M_R^2}}
   +O(g^4).
 \]
-The positive number \(\Gamma_R\) is the narrow-width decay rate in this
-normalization of the cubic interaction.
+The subscript ``cut'' is deliberate.  The number above is extracted from the
+absorptive part of the two-point function on the physical cut.  It is the
+quantity computed by the inclusive cut, or Fermi golden rule, calculation at
+the real energy \(M_R\).  It is not, by itself, a definition of every
+resonance width.
+
+\section{Width Parameters and Their Comparison}
+
+There are several operationally different quantities that are often denoted by
+the same letter \(\Gamma\).  In a narrow isolated resonance they agree to the
+order at which the local Breit--Wigner approximation is meaningful, but their
+definitions are distinct.
+
+First, the cut width \(\Gamma_{\rm cut}(M)\) is defined at a real energy
+\(M\) by the inclusive transition rate obtained from the discontinuity of the
+self-energy.  For a scalar resonance coupled to stable final channels \(X\),
+the perturbative expression has the form
+\[
+  \Gamma_{\rm cut}(M)
+  =
+  \frac{1}{2M}
+  \sum_X
+  \int \dd\Phi_X(P)\,
+  \left|\mathcal A(R(P)\to X)\right|^2 ,
+  \qquad P^2=-M^2,\quad P^0>0,
+\]
+with the symmetry factors included in the invariant phase-space measure
+\(\dd\Phi_X(P)\) and in the amplitude \(\mathcal A\).  This formula should be
+read as a weak-coupling construction using the stable state \(R\) of the
+decoupled or lower-order theory as an interpolating state.  Once the channel is
+open, the exact theory has stable asymptotic states in the final channels, not
+an exact external one-resonance state.
+
+Second, the line-shape width \(\Gamma_{\rm line}\) is an observable extracted
+from a physical inclusive cross section or event distribution.  After a
+specified smooth background subtraction and a specified resolution function,
+one may define it as the full width at half maximum in the energy variable
+\(E=\sqrt{s}\) of the resonant contribution.  This definition depends on the
+chosen process, on the observable used to form the inclusive distribution, and
+on how nonresonant background is separated from the pole term.  It is therefore
+not an invariant analytic datum for a broad resonance.
+
+Third, the Gamow time width, or complex-energy pole width, is defined from the
+second-sheet pole after choosing an energy square root.  If \(s_\ast\) is a
+simple resonance pole and the square-root branch is chosen so that
+\(\operatorname{Re}\sqrt{s_\ast}>0\) near the resonance, write
+\[
+  E_\ast=\sqrt{s_\ast}
+  =
+  M_{\rm pole}-\frac{\ii}{2}\Gamma_{\rm pole},
+  \qquad M_{\rm pole}>0,\quad \Gamma_{\rm pole}>0.
+\]
+Equivalently,
+\[
+  s_\ast
+  =
+  M_{\rm pole}^2
+  -\ii M_{\rm pole}\Gamma_{\rm pole}
+  -\frac14\Gamma_{\rm pole}^2 .
+\]
+This definition is independent of a particular production process once the
+pole and sheet have been specified.  The associated outgoing Gamow functional
+evolves as
+\[
+  \ee^{-\ii E_\ast t}
+  =
+  \ee^{-\ii M_{\rm pole}t}\,
+  \ee^{-\Gamma_{\rm pole}t/2},
+\]
+so its probability norm, in the formal Gamow description, decays as
+\(\ee^{-\Gamma_{\rm pole}t}\).  This is the time-decay width of the pole
+functional.  The statement concerns the pole contribution in the rigged-Hilbert
+analytic continuation; an exact normalizable state in a self-adjoint
+Hamiltonian does not have a purely exponential survival law for all times.
+
+Fourth, one can define an \(s\)-plane pole-imaginary width by
+\[
+  M_s=\sqrt{\operatorname{Re}s_\ast},
+  \qquad
+  \Gamma_s=-\frac{\operatorname{Im}s_\ast}{M_s}.
+\]
+This convention uses the imaginary part of the pole in the \(s\)-plane rather
+than the imaginary part of the energy \(E=\sqrt{s}\).  It agrees with
+\(\Gamma_{\rm pole}\) only up to the kinematic conversion
+\[
+  \Gamma_s
+  =
+  \Gamma_{\rm pole}
+  \left[
+    1+O\!\left(\frac{\Gamma_{\rm pole}^2}{M_{\rm pole}^2}\right)
+  \right].
+\]
+
+\begin{controlledapproximation}[Narrow-resonance comparison of widths]
+Suppose that, in the energy window
+\(|E-M_{\rm pole}|=O(\Gamma_{\rm pole})\), the continued stable-channel
+amplitude is dominated by a single simple pole, the residue and the
+nonresonant background are holomorphic and vary only on a scale of order
+\(M_{\rm pole}\), and the pole is separated from thresholds and other
+singularities by a squared-mass distance much larger than
+\(M_{\rm pole}\Gamma_{\rm pole}\).  Then the ideal resonant line shape
+obtained from the pole term, with the smooth residue replaced by its value at
+the pole and with the smooth background removed, has
+\[
+  \Gamma_{\rm line}
+  =
+  \Gamma_{\rm pole}
+  \left[
+    1+O\!\left(\frac{\Gamma_{\rm pole}^2}{M_{\rm pole}^2}\right)
+  \right],
+\]
+as follows.  Keeping only the pole term and writing
+\(E=M_{\rm pole}+x\),
+\[
+  |s_\ast-E^2|^2
+  =
+  \left(
+    2M_{\rm pole}x+x^2+\frac14\Gamma_{\rm pole}^2
+  \right)^2
+  +
+  M_{\rm pole}^2\Gamma_{\rm pole}^2 .
+\]
+The half-maximum points of the pole term, measured in the energy variable, are
+therefore
+\[
+  x_\pm
+  =
+  \pm\frac12\Gamma_{\rm pole}
+  -\frac{1}{4M_{\rm pole}}\Gamma_{\rm pole}^2
+  +O\!\left(\frac{\Gamma_{\rm pole}^3}{M_{\rm pole}^2}\right),
+\]
+so \(x_+-x_-=\Gamma_{\rm pole}[1+O(\Gamma_{\rm pole}^2/M_{\rm pole}^2)]\).
+The common shift of the two half-maximum points records that the peak in
+\(E\) is not centered exactly at \(M_{\rm pole}\) once the quadratic relation
+\(s=E^2\) is retained.  If the residue, phase space, detector resolution, or
+subtracted background varies appreciably over the same energy interval, the
+measured line-shape width receives additional process-dependent corrections.
+That is precisely why \(\Gamma_{\rm line}\) is not an invariant analytic datum
+for a broad resonance.
+
+The cut calculation at the real resonance energy gives
+\[
+  M_{\rm pole}\Gamma_{\rm pole}
+  =
+  M_R\Gamma_{\rm cut}(M_R)
+  +O(g^4)
+\]
+in the weak-coupling scalar model above.  Indeed, on the second sheet the
+discontinuity computation gives
+\[
+  F_{\rm II}(M_R^2)
+  =
+  -\ii M_R\Gamma_{\rm cut}(M_R)+O(g^4),
+  \qquad
+  F_{\rm II}'(M_R^2)=-1+O(g^2).
+\]
+Solving \(F_{\rm II}(s_\ast)=0\) by one Newton step therefore gives
+\[
+  s_\ast-M_R^2
+  =
+  -\ii M_R\Gamma_{\rm cut}(M_R)+O(g^4).
+\]
+Thus the common symbol \(\Gamma_R\) is justified only after these hypotheses
+and approximations have been stated.  For a broad resonance, for an
+overlapping pair of poles, or near a threshold branch point,
+\(\Gamma_{\rm line}\), \(\Gamma_{\rm cut}\), \(\Gamma_{\rm pole}\), and
+\(\Gamma_s\) need not coincide.
+\end{controlledapproximation}
 
 \section{Elastic Phase Motion}
 
@@ -499,12 +665,12 @@ one obtains, near the resonance,
   S_0(s)
   \approx
   \frac{
-    M_R^2-s+\ii M_R\Gamma_R(s)
+    M_R^2-s+\ii W(s)
   }{
-    M_R^2-s-\ii M_R\Gamma_R(s)
+    M_R^2-s-\ii W(s)
   },
   \qquad
-  M_R\Gamma_R(s)
+  W(s)
   =
   \frac{g^2}{32\pi}\rho_1(s).
 \]
@@ -582,16 +748,25 @@ unitarity cut places the pole on the second sheet relative to that cut at
 \[
   s_\ast
   =
-  M_R^2-\ii M_R\Gamma_R+O(g^4),
+  M_R^2-\ii M_R\Gamma_{\rm cut}(M_R)+O(g^4),
 \]
-with \(\Gamma_R>0\). More invariantly, \(s_\ast\) is a zero of the
-second-sheet continuation of \(F(s)\):
+with \(\Gamma_{\rm cut}(M_R)>0\).  Equivalently, the pole width defined by
+\(E_\ast=\sqrt{s_\ast}=M_{\rm pole}-\ii\Gamma_{\rm pole}/2\) obeys
+\[
+  M_{\rm pole}\Gamma_{\rm pole}
+  =
+  M_R\Gamma_{\rm cut}(M_R)+O(g^4).
+\]
+More invariantly, \(s_\ast\) is a zero of the second-sheet continuation of
+\(F(s)\):
 \[
   F_{\mathrm{II}}(s_\ast)=0 .
 \]
 The number \(s_\ast\) is an analytic datum of the stable-particle scattering
-amplitude. Its real part sets the resonance location, and its imaginary part
-sets the lifetime scale in the narrow-width regime.
+amplitude. Its position sets the resonance location and the pole lifetime
+scale in the narrow-width regime; it is not the same kind of object as a
+physical-axis line-shape width unless the narrow-resonance hypotheses of the
+preceding section hold.
 
 The same distinction is visible in the spectral representation. A stable
 one-particle state gives an atom in the spectral measure and supplies a
@@ -611,7 +786,9 @@ Chapter~\ref{ch:lsz-reduction}, this means an orthogonal projection
 \]
 onto a Wigner one-particle subspace, a positive pole residue in a local-field
 two-point function, and Haag--Ruelle incoming and outgoing states built from
-that subspace.  A resonance pole \(s_\ast=M_R^2-\ii M_R\Gamma_R+\cdots\) has
+that subspace.  A resonance pole
+\(s_\ast=M_{\rm pole}^2-\ii M_{\rm pole}\Gamma_{\rm pole}
+-\Gamma_{\rm pole}^2/4\) has
 none of these properties.  It is a pole of an analytically continued stable
 scattering amplitude on a nonphysical sheet; the associated outgoing Gamow
 functional is not a normalizable vector in \(\Hilb\), and there is no
@@ -653,10 +830,23 @@ and replaces the resonant propagator near the pole by
 This is a pole-scheme parametrization of the stable-channel amplitude, not a
 new LSZ theorem.  Its usefulness requires a controlled narrow-resonance
 regime: the pole must be isolated from other nearby poles and branch points,
-the width scale \(M_R\Gamma_R\) must be small compared with the squared-mass
-distance to thresholds or singularities whose variation is being neglected,
-and the nonresonant background must be slowly varying on the same scale.  If
-the pole lies close to a threshold, or if several channels produce nearby
-singularities, the simple Breit--Wigner or complex-mass-shell description is
-replaced by the corresponding multi-channel analytic line shape.  The
-external states remain the stable states in all cases.
+the width scale \(M_{\rm pole}\Gamma_{\rm pole}\) must be small compared with
+the squared-mass distance to thresholds or singularities whose variation is
+being neglected, and the nonresonant background must be slowly varying on the
+same scale.  If the pole lies close to a threshold, or if several channels
+produce nearby singularities, the simple Breit--Wigner or complex-mass-shell
+description is replaced by the corresponding multi-channel analytic line
+shape.  The external states remain the stable states in all cases.
+
+\begin{openproblem}[External resonances]
+There is a further problem, distinct from ordinary LSZ reduction: formulate a
+theory of amplitudes whose external objects are unstable resonances.  Such a
+theory cannot use normalizable one-resonance vectors in the physical Hilbert
+space.  A satisfactory formulation would have to start from stable-channel
+unitarity and locality, continue amplitudes to the relevant sheets, identify
+field-redefinition-invariant pole data, and state factorization, covariance,
+gauge-invariance, and threshold conditions for the resulting resonance
+objects.  The complex-mass-shell prescription is a perturbative pole
+parametrization; it does not by itself solve this nonperturbative
+scattering-theoretic problem.
+\end{openproblem}
