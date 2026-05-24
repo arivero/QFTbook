@@ -165,9 +165,115 @@ For Yang--Mills gauge potentials alone this is the distributional operator
   \right|_{\zeta=0}.
   \label{eq:fp-operator-definition}
 \end{equation}
+
+\begin{proposition}[Orbit measure and the Faddeev--Popov density]
+\label{prop:fp-orbit-measure-construction}
+Let \(U\subset\mathcal F_\Lambda\) be a finite-regulator field-space region, or
+a Sobolev local Hilbert-manifold chart with determinant regularization
+specified, on which the gauge group \(\mathcal G_\Lambda\) acts freely and
+properly.  Let
+\[
+  q:U\longrightarrow B_U:=U/\mathcal G_\Lambda
+\]
+be the quotient map, and let \(F:U\to E\) be a gauge condition such that
+\[
+  \mathcal S_F=\{\phi\in U:F(\phi)=0\}
+\]
+is the image of a local section \(s_F:B_U\to U\) of \(q\).  Equivalently, the
+map
+\[
+  \Theta:\mathcal S_F\times\mathcal G_\Lambda\longrightarrow U,
+  \qquad
+  (\sigma,\xi)\longmapsto \sigma^\xi
+\]
+is a diffeomorphism onto \(U\).  Suppose \(\dd\mu_\Lambda\) is a
+\(\mathcal G_\Lambda\)-invariant density on \(U\), and let
+\(\dd\xi_{\rm H}\) be a right Haar density on \(\mathcal G_\Lambda\).  For each
+\(\phi\in U\), the orbit measure \(\dd\mu_{\mathcal O_\phi}\) is the pushforward
+of \(\dd\xi_{\rm H}\) by \(\xi\mapsto\phi^\xi\).  The restriction of \(F\) to
+the orbit has differential
+\[
+  \dd(F|_{\mathcal O_\phi})_\phi
+  =
+  \mathcal M_F[\phi]:
+  T_{\id}\mathcal G_\Lambda\longrightarrow E .
+\]
+If the orbit intersects \(\mathcal S_F\) once in the chart, then
+\begin{equation}
+  \int_{\mathcal O_\phi}\dd\mu_{\mathcal O_\phi}(\psi)\,
+  \delta_E(F(\psi))\,\bigl|\det\mathcal M_F[\psi]\bigr|
+  =
+  1 .
+  \label{eq:fp-orbit-delta-density}
+\end{equation}
+Consequently the quotient measure represented in the section \(\mathcal S_F\)
+is characterized by the pushed-forward density
+\begin{equation}
+  (s_F)_*\dd\nu_F
+  =
+  \delta_E(F(\phi))\,\bigl|\det\mathcal M_F[\phi]\bigr|\,
+  \dd\mu_\Lambda(\phi)
+  \label{eq:fp-quotient-density-section}
+\end{equation}
+on \(U\), as an identity of densities tested against functions supported in the
+coordinate chart.  Equivalently, for every gauge-invariant test function \(H\),
+\begin{equation}
+  \int_{B_U}\dd\nu_F([\,\phi\,])\,H([\,\phi\,])
+  =
+  \int_U\dd\mu_\Lambda(\phi)\,
+  \delta_E(F(\phi))\,\bigl|\det\mathcal M_F[\phi]\bigr|\,
+  H(q(\phi)).
+  \label{eq:fp-quotient-measure}
+\end{equation}
+The oriented perturbative Faddeev--Popov formula replaces the absolute value by
+\(\det\mathcal M_F\) after choosing an orientation of the determinant line on
+the chart.  The ghost path integral represents this oriented determinant.  If
+\(\det\mathcal M_F\) vanishes, or if an orbit intersects the section more than
+once, the single-chart quotient-measure formula has left its domain of
+validity.
+\end{proposition}
+
+\begin{proof}
+Fix an orbit in \(U\) and write \(\psi=\sigma^\xi\) with
+\(\sigma\in\mathcal S_F\).  The map
+\[
+  \chi_\sigma:\mathcal G_\Lambda\longrightarrow E,
+  \qquad
+  \chi_\sigma(\xi)=F(\sigma^\xi)
+\]
+has derivative \(\mathcal M_F[\sigma^\xi]\) in the orbit directions.  Since the
+slice is transverse and intersects the orbit once, \(\chi_\sigma\) is a local
+diffeomorphism from a neighborhood of the relevant group element to a
+neighborhood of \(0\in E\).  The ordinary change-of-variables formula gives
+\[
+  \dd\chi_\sigma
+  =
+  \bigl|\det\mathcal M_F[\sigma^\xi]\bigr|\,\dd\xi_{\rm H}
+\]
+in these coordinates, and therefore
+\[
+  \int_{\mathcal G_\Lambda}\dd\xi_{\rm H}\,
+  \delta_E(F(\sigma^\xi))\,
+  \bigl|\det\mathcal M_F[\sigma^\xi]\bigr|
+  =
+  \int_E\dd u\,\delta_E(u)
+  =
+  1 .
+\]
+This proves \eqref{eq:fp-orbit-delta-density}.  The action is free and proper
+on \(U\), so \(q:U\to B_U\) is a local principal bundle and the invariant
+density disintegrates in the product coordinates supplied by \(\Theta\) into a
+quotient density times the Haar density on the orbit.  Inserting
+\eqref{eq:fp-orbit-delta-density} into the orbit factor of this disintegration
+gives \eqref{eq:fp-quotient-measure}.  Multiple intersections replace the
+right-hand side of \eqref{eq:fp-orbit-delta-density} by the intersection
+number, and zero modes of \(\mathcal M_F\) are precisely the failure of the
+change of variables.
+\end{proof}
+
 In a field-space region where the slice is transverse to the orbit, and after
-separating zero modes associated with unfixed global transformations, the local
-Faddeev--Popov identity is
+separating zero modes associated with unfixed global transformations, the
+oriented perturbative Faddeev--Popov identity is
 \begin{equation}
   1
   =
