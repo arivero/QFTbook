@@ -72,18 +72,72 @@ derivatives in this chapter are first derivatives of the regulated source
 functional; continuum statements are obtained only after the chosen
 renormalization prescription gives a distributional limit.
 
+\begin{definition}[Status of \(\log Z\)]
+\label{def:source-functional-log-status}
+The symbol \(\log Z[J]\) has one of the following meanings, fixed by the
+regulator and limiting prescription.
+\begin{enumerate}
+  \item \emph{Formal perturbation theory.}  Let \(g\) denote the interaction
+  couplings and work in a formal power-series ring in \(g\), with coefficients
+  that are regulated source distributions.  If \(Z[0]\) is invertible, write
+  \[
+    Z[J]=Z[0]\bigl(1+A[J]\bigr),
+    \qquad
+    A[0]=0 .
+  \]
+  Then
+  \[
+    \log Z[J]
+    =
+    \log Z[0]
+    +
+    \sum_{n\geq1}\frac{(-1)^{n+1}}{n}A[J]^n
+  \]
+  is the algebraic logarithm in that completed ring.  The first term is a
+  vacuum functional; source derivatives of positive order depend only on the
+  second term.  This is the interpretation used by dimensional
+  regularization, minimal subtraction, and graph-by-graph perturbative
+  constructions unless an actual positive measure or oscillatory integral has
+  also been supplied.
+
+  \item \emph{Positive Euclidean construction.}  If \(Z_E[J]\) is defined by a
+  positive finite Euclidean measure on a real source domain and
+  \(0<Z_E[J]<\infty\), then \(\log Z_E[J]\) is the ordinary real logarithm.
+  Convexity and Legendre--Fenchel statements in the later Euclidean section
+  use this meaning and require the positivity and finiteness hypotheses stated
+  there.
+
+  \item \emph{Lorentzian oscillatory or phase construction.}  If a finite
+  Lorentzian regulator gives a complex-valued source functional \(Z_L[J]\),
+  then \(\log Z_L[J]\) is defined only on a source neighborhood on which
+  \(Z_L[J]\neq0\) and a branch has been chosen from a base source.  A principal
+  branch is a possible convention only when the image of that neighborhood
+  avoids its branch cut.  Changing the branch on a connected zero-free
+  neighborhood changes \(\log Z_L\) by an additive constant in
+  \(2\pi\ii\mathbb Z\), hence changes \(W_L=-\ii\log Z_L\) by a source-
+  independent constant and leaves connected correlators of positive order
+  unchanged.
+\end{enumerate}
+No statement in this chapter uses an unclassified logarithm.  Every later
+Legendre transform or connected-kernel formula is to be read in the
+corresponding one of these three senses.
+\end{definition}
+
 Define the Lorentzian connected functional \(W\) by
 \[
   Z[J]=\ee^{\ii W[J]},
   \qquad
   W[J]=-\ii\log Z[J],
 \]
-with a branch chosen in the perturbative neighborhood of the source
-configuration under consideration.  The constant \(W[0]\) is the vacuum
-functional; subtracting it removes vacuum bubbles and leaves all source
-derivatives of positive order unchanged.  The functional \(W[J]\), with this
-harmless constant suppressed, generates connected Green functions with the
-Lorentzian phase factor
+with the meaning of \(\log Z\) supplied by
+Definition~\ref{def:source-functional-log-status}.  In the Lorentzian
+complex-valued case this includes the choice of a zero-free source
+neighborhood and a logarithm branch on it; in the formal case it is the
+algebraic logarithm and no analytic branch is involved.  The constant \(W[0]\)
+is the vacuum functional; subtracting it removes vacuum bubbles and leaves all
+source derivatives of positive order unchanged.  The functional \(W[J]\), with
+this harmless constant suppressed, generates connected Green functions with
+the Lorentzian phase factor
 \[
   G^{(n)}_{\rm c}(x_1,\ldots,x_n)
   =
