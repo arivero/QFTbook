@@ -73,6 +73,11 @@
 - The physical boundary value is obtained from the Feynman prescription:
   Euclidean momenta are analytically continued to positive real energy from
   above.
+- After loop Wick rotation, no residual \(-i0\) is attached to the Euclidean
+  loop variable \(\ell_E\).  Any later \(-i0\) in
+  \(k^2x(1-x)+m_1^2-i0\) or
+  \(1-sx(1-x)/m_1^2-i0\) is the boundary-value prescription for the external
+  invariant \(k^2=-s\).
 - The partial-wave normalization for the \(\phi_1\phi_1\) resonance channel is
   the unordered identical-boson convention
   \[
@@ -196,3 +201,6 @@
   the positive-real-energy cut, while the second-sheet path starts only after
   a separate continuation through the cut and then runs on the lower lip to
   the resonance pole.
+- 2026-05-24 issue #388 pass: clarified that the Wick-rotated loop integral
+  has an ordinary Euclidean denominator and that any later \(-i0\) belongs to
+  the external invariant boundary value, not to the loop integration variable.
