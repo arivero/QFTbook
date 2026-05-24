@@ -388,7 +388,11 @@ spectral measure in the relevant channel has an isolated lowest one-particle
 atom, as in Definition~\ref{def:mass-data-and-mass-coordinates}; otherwise it
 is the lower edge of the spectrum in that channel.
 
-A spin-field renormalization factor \(Z_\sigma(L,T)>0\) is chosen so that the
+\begin{hypothesis}[Separated spin scaling limit]
+\label{hyp:ising-separated-spin-scaling-limit}
+For the temperature trajectory above, assume that there is a spin-field
+renormalization factor \(Z_\sigma(L,T)>0\) such that, for every \(n\) and every
+configuration of pairwise distinct continuum points \(x_1,\ldots,x_n\), the
 limit
 \[
   \lim_{\substack{T\to T_c,\ L\to\infty\\
@@ -398,15 +402,22 @@ limit
   =
   \vev{\sigma(x_1)\cdots\sigma(x_n)}_{\operatorname{Ising},\mathfrak m}
 \]
-exists for separated points.  At \(\mathfrak m=0\), equivalently at
-\(\xi_{\rm lat}(T)/L\to\infty\), the limiting theory is the critical Ising
-fixed point.  If this fixed point admits a local stress tensor that is
-conserved, symmetric, and improvable to a traceless tensor whose charges
-generate the conformal transformations of the separated-point Schwinger
-functions, then the fixed point is the Ising conformal field theory.  At
-criticality \(Z_\sigma(L,T_c)\) may be chosen proportional to
-\(L^{-2\Delta_\sigma}\), so the rescaled spin insertions have finite
-correlators.
+exists.  The convergence is meant after the thermodynamic limit specified for
+the lattice model, and with the boundary/pure-phase convention fixed when
+\(\mathfrak m<0\).
+\end{hypothesis}
+
+When Hypothesis~\ref{hyp:ising-separated-spin-scaling-limit} holds, its right
+side defines the separated-point spin Schwinger functions of the continuum
+Ising scaling theory at thermal scale \(\mathfrak m\).  At
+\(\mathfrak m=0\), equivalently at \(\xi_{\rm lat}(T)/L\to\infty\), the
+limiting fixed point is called the critical Ising fixed point.  If this fixed
+point admits a local stress tensor that is conserved, symmetric, and
+improvable to a traceless tensor whose charges generate the conformal
+transformations of the separated-point Schwinger functions, then the fixed
+point is the Ising conformal field theory.  At criticality
+\(Z_\sigma(L,T_c)\) may be chosen proportional to \(L^{-2\Delta_\sigma}\), so
+the rescaled spin insertions have finite correlators.
 The limiting objects in this display are Euclidean separated-point Schwinger
 functions.  Reflection positivity of these limiting distributions is not a
 consequence of the scaling formula alone.  It is a property that must either be
@@ -1143,9 +1154,9 @@ convergence rate of the generated integral.
 \end{proposition}
 
 \begin{proof}
-Apply the finite-coordinate cutoff-removal estimate to the RG trajectory
-whose relevant endpoint coordinate is fixed to be \(u_R\).  The irrelevant
-part of the bare coordinate contributes at order
+Apply Theorem~\ref{thm:conditional-finite-coordinate-wilsonian-continuum-limit}
+to the RG trajectory whose relevant endpoint coordinate is fixed to be
+\(u_R\).  The irrelevant part of the bare coordinate contributes at order
 \((\mu_R/\Lambda_0)^\omega\), where \(\omega\) is the smallest retained
 irrelevant exponent in the chart.  The generated integral has the assumed
 cutoff limit and a convergence rate, say \(\omega_F\).  Taking
@@ -1215,6 +1226,79 @@ in the limit, locality of the reconstructed fields, or uniqueness of the
 continuum state.  Each of these is an additional analytic assertion about the
 regulated models.  Hence scaling-limit existence is an independent hypothesis
 or theorem, not a conclusion of the coordinate estimate.
+\end{proof}
+
+\begin{theorem}[Conditional lattice-to-continuum universality]
+\label{thm:conditional-lattice-to-continuum-universality}
+Let \(X\) range over a class of reflection-positive microscopic lattice
+models with the same global symmetries as the Ising fixed point, and let
+\(p_X(a,u_R)\) be microscopic parameters tuned so that the relevant endpoint
+coordinate at the reference scale \(\mu_R\) is the same fixed value \(u_R\).
+Assume the following hypotheses.
+\begin{enumerate}[label=(\roman*)]
+  \item The finite-coordinate RG hypotheses of
+  Proposition~\ref{prop:local-universality-rg-coordinates} hold uniformly for
+  the class \(X\), so that the retained Wilsonian coordinates satisfy
+  \[
+    z_X(a,u_R)\longrightarrow z_\ast(u_R):=(u_R,V_{\mu_R}(u_R)).
+  \]
+  \item For the selected microscopic observables and sources, there are local
+  source renormalization maps \(\mathcal Z^X_a\) and source-local vacuum
+  counterterms \(P^X_a\) on a common test-source neighborhood such that the
+  renormalized source functionals have the representation
+  \[
+    W^X_a[\mathcal Z^X_a(\eta)]-W^X_a[0]-P^X_a(\eta)
+    =
+    \mathcal W_X(z_X(a,u_R),\eta)+r^X_a(\eta),
+  \]
+  where \(r^X_a(\eta)\to0\) as a distributional functional of \(\eta\).
+  \item The continuum source coordinate has been fixed by a common
+  normalization of the leading scaling fields, and the maps
+  \(\mathcal W_X(z,\eta)\) are sequentially continuous at
+  \(z=z_\ast(u_R)\) with the same limiting functional:
+  \[
+    \lim_{z\to z_\ast(u_R)}\mathcal W_X(z,\eta)=W_\ast(\eta;u_R)
+  \]
+  for every \(X\) in the class, modulo source-local polynomials.
+  \item The reflection-positive lattice quadratic forms for the renormalized
+  observables converge on the positive-time test-function domain, and the
+  limiting source functional has the Euclidean covariance, locality,
+  regularity, and clustering properties required for the intended
+  Osterwalder--Schrader reconstruction.
+\end{enumerate}
+Then the continuum separated-point Schwinger functions of the normalized
+scaling fields are independent of \(X\).  More precisely, functional
+derivatives of \(W_\ast(\eta;u_R)\) give a common distribution on the
+configuration space of distinct insertion points, while the source-local
+polynomials in (iii) can change only contact terms on collision diagonals.
+Under the positivity and regularity hypotheses in (iv), the common Schwinger
+functions reconstruct the same Euclidean-to-Lorentzian QFT data in the
+observable sector generated by these fields.  At \(u_R=0\), if the additional
+stress-tensor hypothesis stated after
+Hypothesis~\ref{hyp:ising-separated-spin-scaling-limit} holds, this common
+fixed point is the corresponding Ising CFT.
+\end{theorem}
+
+\begin{proof}
+By hypothesis (i), all tuned microscopic realizations approach the same
+retained-coordinate point \(z_\ast(u_R)\) at the reference scale.  Hypothesis
+(ii) separates the dependence of the renormalized source functional into a
+coordinate-dependent part, a vanishing remainder, and source-local vacuum
+terms.  Hypothesis (iii) then gives
+\[
+  W^X_a[\mathcal Z^X_a(\eta)]-W^X_a[0]-P^X_a(\eta)
+  \longrightarrow
+  W_\ast(\eta;u_R)
+\]
+for every \(X\), modulo source-local polynomials.  Taking functional
+derivatives at \(\eta=0\) gives the limiting distributions of inserted
+renormalized observables.  Source-local polynomial differences are supported
+on collision diagonals, so they vanish after restriction to pairwise distinct
+insertion points.  This proves equality of separated-point Schwinger
+functions.  Hypothesis (iv) is precisely the additional closedness and
+regularity input needed to pass from equality of separated kernels to a
+common reconstructed Euclidean/Lorentzian theory; it is not supplied by the
+finite-dimensional RG coordinate estimate.
 \end{proof}
 
 The same separation applies to observables.  Let \(A^X_{\rm spin}\) be a

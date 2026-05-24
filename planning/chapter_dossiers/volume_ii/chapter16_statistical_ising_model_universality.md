@@ -50,6 +50,9 @@ The chapter must define and derive:
   quoted \(D=2\) and \(D=3\) values from the local source;
 - the scaling limit in which lattice spin correlators become correlators of a
   continuum Ising field theory;
+- the separated spin scaling limit as an explicit hypothesis: renormalized
+  lattice spin correlators are assumed to converge for pairwise distinct
+  continuum insertion points along the chosen thermal scaling trajectory;
 - the dimension-dependent theorem-status table separating proved \(D=2\)
   Ising scaling limits, constructive \(P(\phi)_2/\phi^4_3\) scalar results,
   conditional/unproved \(D=3\) Ising continuum-limit/CFT claims, and
@@ -105,6 +108,11 @@ The chapter must define and derive:
   cutoff-removal estimate, nonuniversal microscopic coordinate maps, and the
   separate scaling-limit hypotheses needed before lattice observables become
   continuum operators;
+- a conditional lattice-to-continuum universality theorem whose hypotheses
+  include finite-coordinate RG convergence, source-renormalized generating
+  functional convergence, sequential continuity of the coordinate-to-source
+  map at the continuum graph, common field normalization, and convergence of
+  reflection-positive OS quadratic forms;
 - the correction-to-scaling structure obtained by differentiating the
   coordinate-to-correlator map in retained irrelevant coordinates.
 
@@ -121,7 +129,9 @@ The chapter must define and derive:
 4. Critical spin correlators define the spin scaling dimension
    \(\Delta_\sigma\).
 5. The scaling limit of near-critical lattice correlators produces Euclidean
-   correlators of a continuum Ising field theory.
+   correlators of a continuum Ising field theory only when the separated
+   spin scaling-limit hypothesis, or a stronger source-dependent scaling
+   limit, has been proved or imposed.
 6. At criticality the inverse correlation length vanishes; with the usual
    rotation, scale, and stress-tensor assumptions the limiting fixed point is
    the Ising CFT.
@@ -145,6 +155,11 @@ The chapter must define and derive:
 13. Normalized continuum correlator universality follows only after adding
     scaling-limit existence, positivity, locality, regularity, and continuity
     hypotheses for the coordinate-to-correlator map.
+13a. The conditional lattice-to-continuum universality theorem states that,
+     under those hypotheses plus finite-coordinate RG convergence, all
+     microscopic representatives have the same normalized separated-point
+     Schwinger functions, while source-local polynomial differences change
+     only contact terms.
 14. Reflection positivity is automatic for the ferromagnetic nearest-neighbor
     Ising model, and for the nearest-neighbor scalar model with positive
     one-site measure and nonnegative cross-reflection coupling, by an explicit
@@ -241,3 +256,10 @@ The chapter must define and derive:
   constructive results, separates them from the still-conditional
   three-dimensional Ising fixed point as a CFT, and records the
   Aizenman--Duminil-Copin/four-dimensional triviality boundary.
+- 2026-05-24 issue #326 pass: made the separated spin scaling limit an
+  explicit hypothesis and added a conditional lattice-to-continuum
+  universality theorem.  The theorem combines finite-coordinate RG
+  convergence, source-renormalized generating-functional convergence,
+  sequential continuity of the coordinate-to-source map, common field
+  normalization, and convergence of reflection-positive OS quadratic forms to
+  prove equality of normalized separated-point Schwinger functions.
