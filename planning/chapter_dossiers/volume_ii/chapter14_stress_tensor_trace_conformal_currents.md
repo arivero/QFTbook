@@ -59,6 +59,13 @@ The chapter must define and derive:
   \partial g_I^\epsilon/\partial\lambda_J\);
 - the renormalized trace identity
   \(T^\mu{}_\mu=\sum_J\beta_J(\lambda)[O_J]_\mu\);
+- the explicit finite-part step in which
+  \(\epsilon\delta_J^{(1)}\lambda_J\mathcal O^{\rm MS}_{J,\epsilon}\) kills no
+  separated insertion but converts pole residues on collision diagonals into
+  finite local contact distributions, with the pole equations ensuring the
+  finite part of
+  \(\sum_J\beta_J^\epsilon\mathcal O^{\rm MS}_{J,\epsilon}\) is defined in the
+  selected source scheme;
 - the extension of the trace identity from the flat-space separated-insertion
   statement to a source-functional contact distribution, with the local
   Weyl/RG source vector field, anomaly functional, Wess--Zumino consistency,
@@ -116,7 +123,11 @@ The chapter must define and derive:
    \(T^\mu{}_\mu=\sum_J\beta_J[O_J]_\mu\).  Its contact-distribution extension is
    obtained by differentiating the source-functional local RG identity; the
    Weyl-anomaly functional and derivatives of the local source vector field
-   supply the contact terms.
+   supply the contact terms.  In the MS derivation the finite part is taken
+   after multiplying
+   \(\beta_J^\epsilon\mathcal O^{\rm MS}_{J,\epsilon}\): away from collision
+   diagonals the \(\epsilon\delta_J^{(1)}\lambda_J\) term vanishes, while on
+   collision diagonals it produces finite local terms from pole residues.
 5a. The source Ward identity
     \(\nabla_\mu\langle T^{\mu\nu}\rangle=-\langle O_I\rangle\nabla^\nu\eta^I\)
     is conditional on a diffeomorphism-covariant regulator, subtraction
@@ -220,3 +231,7 @@ The chapter must define and derive:
   invariance clause to a labeled source-regulator assumption, with explicit
   caveats for fixed lattice/momentum cutoffs, curved-background dimensional
   regularization, and chiral gravitational anomalies.
+- 2026-05-24 issue #366 pass: expanded the proof of the flat-space MS trace
+  identity to display the Laurent finite-part operation and the role of
+  \(\epsilon\delta_J^{(1)}\lambda_J\) in converting contact pole residues into
+  finite local distributions.

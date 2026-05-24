@@ -454,14 +454,47 @@ the finite stress-tensor trace satisfies
 \end{proposition}
 
 \begin{proof}
-The finite \(\epsilon\to0\) limit of
-\(\mathcal O_{J,\epsilon}^{\rm MS}\) is \([O_J]_\mu\) by definition of the
-renormalized source chart.  The additional term
-\(\epsilon\delta_J^{(1)}\lambda_J\mathcal O_{J,\epsilon}^{\rm MS}\) vanishes
-in the separated-point limit because \(\mathcal O_{J,\epsilon}^{\rm MS}\) has
-a finite distributional limit there.  Taking the renormalized
-\(\epsilon\to0\) limit of the bare trace equation therefore gives
-\eqref{eq:renormalized-trace-identity}.
+Let \(f\) be a test density for the trace insertion whose support is separated
+from all other operator insertions.  In the MS source chart the regulated
+operator insertion has a Laurent expansion of the form
+\[
+  \mathcal O^{\rm MS}_{J,\epsilon}(f)
+  =
+  \sum_{r\ge1}\epsilon^{-r}C_{J,r}(f)
+  +
+  A_{J,0}(f)
+  +
+  O(\epsilon),
+\]
+where \(A_{J,0}(f)=[O_J]_\mu(f)\) and every \(C_{J,r}\) is supported on a
+collision diagonal.  For the separated test density under consideration
+\(C_{J,r}(f)=0\), hence
+\[
+  \operatorname*{FP}_{\epsilon=0}
+  \left[
+    \bigl(\beta_J+\epsilon\delta_J^{(1)}\lambda_J\bigr)
+    \mathcal O^{\rm MS}_{J,\epsilon}(f)
+  \right]
+  =
+  \beta_J[O_J]_\mu(f),
+\]
+where \(\operatorname*{FP}_{\epsilon=0}\) denotes the coefficient of
+\(\epsilon^0\) in the Laurent expansion.  Taking this finite part in the bare
+trace equation gives \eqref{eq:renormalized-trace-identity}.
+
+The order of operations in the preceding paragraph matters.  For an unrestricted
+test density, multiplication by
+\(\epsilon\delta_J^{(1)}\lambda_J\) sends the simple-pole contact residue
+\(\epsilon^{-1}C_{J,1}\) to the finite local distribution
+\(\delta_J^{(1)}\lambda_J C_{J,1}\), and it shifts the higher pole residues by
+one pole order.  The pole equations coming from
+\(\dd g_I^\epsilon/\dd\log\mu=0\) are precisely the algebraic cancellation
+conditions that make the finite part of
+\(\sum_J\beta_J^\epsilon\mathcal O^{\rm MS}_{J,\epsilon}\) well defined after
+the source counterterms have been included.  Thus the separated identity above
+is obtained by first forming the MS-renormalized finite part of the product and
+then restricting away from collision diagonals.  The local finite remnants for
+general test densities are the contact terms described after the proposition.
 \end{proof}
 
 At coincident insertion points the preceding proof has a narrower scope.  The
