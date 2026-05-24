@@ -401,6 +401,76 @@ graph-by-graph replacement theorem have different logical status, even though
 the latter is obtained by expanding the former.
 \end{remark}
 
+\begin{proposition}[Largest-time identity for a scalar graph]
+\label{prop:largest-time-identity}
+Consider a regularized scalar Feynman graph \(G\) with vertices
+\(x_1,\ldots,x_V\), local Hermitian interaction vertices, and internal lines
+of masses \(m_e\).  For each mass set
+\[
+  \Delta_m^+(x)
+  =
+  \int
+  \frac{\dd^D q}{(2\pi)^D}\,
+  (2\pi)\theta(q^0)\delta(q^2+m^2)\,\ee^{\ii q\cdot x},
+  \qquad
+  \Delta_m^-(x)=\Delta_m^+(-x),
+\]
+and decompose the Feynman boundary value as
+\[
+  \Delta_{F,m}(x)
+  =
+  \theta(x^0)\Delta_m^+(x)+\theta(-x^0)\Delta_m^-(x),
+  \qquad
+  \Delta_{F,m}(x)^*
+  =
+  \theta(x^0)\Delta_m^-(x)+\theta(-x^0)\Delta_m^+(x).
+\]
+For a circling \(\sigma:\{1,\ldots,V\}\to\{0,1\}\), define \(G_\sigma\) by
+using ordinary vertex factors and Feynman propagators inside the uncircled
+set, complex-conjugated vertex factors and anti-Feynman propagators inside the
+circled set, and Wightman propagators on mixed lines.  A mixed line oriented
+from the uncircled side to the circled side carries \(\Delta^+\); the reverse
+orientation carries \(\Delta^-\).  Circled vertices carry the minus sign
+associated with complex conjugating the perturbative \(i\)-weighted vertex.
+Then
+\begin{equation}
+  \sum_{\sigma\in\{0,1\}^V}G_\sigma(x_1,\ldots,x_V)=0 .
+  \label{eq:largest-time-equation}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+First assume no two vertices have equal time coordinate; the general
+distributional statement follows by smearing and partitioning the test
+function support away from equal-time hyperplanes, then taking the finite
+sum of limits.  Let \(x_k^0\) be the largest vertex time.  Pair the term
+\(G_\sigma\) with the term obtained by replacing \(\sigma(k)\) by
+\(1-\sigma(k)\) and leaving all other circling labels fixed.  For every line
+from \(x_k\) to an earlier vertex, the displayed decompositions give the same
+positive-frequency Wightman factor in the two paired terms.  The remaining
+factors in the graph are identical.  The two vertex factors at \(x_k\) differ
+by the circled-vertex minus sign.  The pair therefore cancels.  Summing over
+all circlings proves \eqref{eq:largest-time-equation}.
+\end{proof}
+
+Subtract from \eqref{eq:largest-time-equation} the all-uncircled and
+all-circled terms.  The former is the original Feynman graph.  The latter is
+the complex-conjugated graph with the opposite boundary prescription.  Every
+remaining term contains at least one mixed line, and each mixed line has the
+Fourier representation
+\[
+  \frac{\dd^D q}{(2\pi)^D}\,
+  (2\pi)\theta(q^0)\delta(q^2+m^2)
+\]
+after orienting \(q\) from the uncircled side to the circled side.  Thus the
+largest-time identity expresses the difference between the two boundary
+values of a graph as a sum of cut graphs.  A physical \(s\)-channel cut is the
+subsum of those circlings for which the mixed lines separate the external
+legs into the chosen left and right subprocesses and carry total momentum
+\(P_\alpha\) across the cut.  Circlings whose mixed-line energy support
+belongs to another channel contribute to the corresponding channel
+discontinuity instead.
+
 \begin{theorem}[Cutkosky cut rule for a perturbative physical cut]
 Consider a perturbative contribution to a connected amplitude whose
 \(s\)-channel discontinuity is produced by putting a set \(C\) of internal
@@ -419,8 +489,9 @@ phase space.  Equivalently, the graph contribution is the corresponding term in
 \end{theorem}
 
 \begin{proof}
-Expand \(T=\sum_r T^{(r)}\) in the chosen interaction order.  The order-\(N\)
-part of \(-\ii(T-T^\dagger)=T^\dagger T\) is
+There are two statements to match.  The first is the Hilbert-space
+discontinuity.  Expand \(T=\sum_r T^{(r)}\) in the chosen interaction order.
+The order-\(N\) part of \(-\ii(T-T^\dagger)=T^\dagger T\) is
 \[
   -\ii\bigl(T^{(N)}-T^{(N)\dagger}\bigr)
   =
@@ -440,9 +511,28 @@ masses \(m_i\), this resolution contains
 \]
 After the external LSZ residues and the overall momentum-conserving delta
 function are removed, this is precisely the phase-space integral in
-\eqref{eq:cutkosky-unitarity-discontinuity}.  In a Feynman-graph expansion the
-same insertion cuts the internal lines that carry the intermediate on-shell
-momenta and leaves the two lower-order amplitudes on the two sides of the cut.
+\eqref{eq:cutkosky-unitarity-discontinuity}.
+
+The second statement identifies the same term inside a fixed Feynman graph.
+Apply Proposition~\ref{prop:largest-time-identity} to the graph.  The
+difference between its two physical boundary values is the sum of mixed
+circlings.  For the chosen \(s\)-channel discontinuity, retain the circlings
+whose mixed lines separate the graph into the two subgraphs carrying the
+external labels \(\alpha\to X\) and \(X\to\beta\).  The mixed propagator on
+each separating line is exactly
+\[
+  \frac{\dd^D q_i}{(2\pi)^D}
+  (2\pi)\theta(q_i^0)\delta(q_i^2+m_i^2),
+\]
+with \(q_i\) oriented from the lower-order amplitude to its conjugate across
+the cut.  The uncircled side contains the ordinary Feynman rules for one
+lower-order amplitude, while the circled side contains the complex-conjugated
+rules for the lower-edge amplitude.  The product of the mixed-line
+distributions supplies the on-shell phase-space measure and the residual
+momentum delta function enforces \(P_X=P_\alpha\).  This is the graph-level
+line-replacement rule stated in the theorem, with the overall factor fixed by
+the \(S=\mathbf1+\ii T\) convention used in
+\eqref{eq:cutkosky-unitarity-discontinuity}.
 \end{proof}
 
 For the two-particle equal-mass cut, the phase-space factor appearing in

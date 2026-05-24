@@ -25,6 +25,9 @@
 - Volume I chapters on LSZ, partial waves, and unitarity.
 - Volume II Chapters 3--5 for bound-state poles, resonance poles, and
   four-point pole factorization.
+- Veltman's largest-time equation and the 't Hooft--Veltman Diagrammar
+  treatment are used as theorem-boundary controls for graph-level Cutkosky
+  line replacement.
 
 ## Definitions and Symbols
 
@@ -40,6 +43,9 @@
 | \(q_i(\ell,p)\) | internal momentum on line \(i\), affine in loop momenta and external momenta |
 | \(S_\ell(s)\) | angular-momentum-\(\ell\) partial-wave scattering eigenvalue in the two-particle sector |
 | \(M_{\mathrm{inel}}\) | invariant mass threshold of the lightest inelastic channel |
+| \(\Delta_m^\pm(x)\) | positive/negative-frequency on-shell Wightman distributions for mass \(m\) |
+| \(G_\sigma\) | circled graph associated to a vertex circling \(\sigma\) in the largest-time identity |
+| \(C\) | set of internal lines crossed by a perturbative physical cut |
 | Landau equations | on-shell and stationary conditions for a contour pinch |
 | anomalous threshold | first-sheet singularity from a compatible positive-parameter Landau pinch |
 
@@ -58,6 +64,11 @@
   unitarity identity, which sums exact on-shell intermediate states, and the
   perturbative Cutkosky line-replacement rule, which is obtained only after a
   regulator, graph expansion, and perturbative ordering have been chosen.
+- Graph-level Cutkosky replacement is derived from the largest-time identity:
+  the sum over all circlings of a scalar graph vanishes, mixed circlings carry
+  on-shell Wightman distributions, and the \(s\)-channel physical cut is the
+  subsum whose mixed lines separate the external labels into the chosen
+  subprocesses.
 - Analyticity and crossing are used as structural hypotheses supported by
   locality, spectral support, LSZ, and perturbation theory; existing rigorous
   theorem sets cover only parts of the desired physical domain.
@@ -93,6 +104,9 @@
   \]
   with \(|S_\ell(s)|\le1\) for \(s\ge4m^2\) and
   \(|S_\ell(s)|=1\) below the first inelastic threshold.
+- The Cutkosky theorem must contain both pieces: the Hilbert-space
+  discontinuity from \(S^\dagger S=1\) and the largest-time/circling argument
+  that identifies a graph cut with on-shell line replacements.
 - Feynman-parameter pinches obey
   \[
     \alpha_i(q_i^2+m_i^2)=0,\qquad
