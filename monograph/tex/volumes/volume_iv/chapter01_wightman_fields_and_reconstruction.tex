@@ -790,6 +790,179 @@ to noncoincident imaginary-time configurations.  The converse passage from
 Euclidean data to Lorentzian Wightman data requires reflection positivity and
 growth hypotheses.  That converse is the subject of the next chapter.
 
+\section{The PCT Theorem}
+\label{sec:wightman-pct-theorem}
+
+The theorem usually called CPT in particle language is most naturally a PCT
+theorem in the Wightman setting: it is an antiunitary implementation of the
+total spacetime inversion \(x\mapsto -x\), together with the corresponding
+conjugation of field labels.  Charge conjugation is not assumed as a separate
+unitary symmetry.  It appears because the field adjunction sends a charged
+field to the field carrying the conjugate charge.
+
+Let \(D=4\) in this section, and let the finite field-label space be closed
+under the adjoint operation fixed in
+\eqref{eq:wightman-field-adjoint-inclusion}.  For each covariant field
+multiplet, the finite-dimensional representation of
+\(\operatorname{Spin}^+(1,3)\) and the adjoint label map determine, after a
+choice of basis, an antilinear test-function operation
+\[
+  h\longmapsto h^\Theta,
+  \qquad
+  h^\Theta(x)=C_{\rm PCT}\,\overline{h(-x)} .
+\]
+Here \(C_{\rm PCT}\) is a finite matrix on field labels.  It contains the
+Lorentz spinor/tensor matrix required by the representation and the internal
+conjugation sending a field to its adjoint charged multiplet.  The displayed
+formula is a definition of notation: if the original field list is not closed
+under this operation, one first enlarges it by adjoining the conjugate fields.
+
+\begin{theorem}[Wightman PCT theorem]
+\label{thm:wightman-pct}
+\emph{Proof references.}\footnote{The theorem is due to Jost and to
+Pauli--Luders in the Wightman framework.  Standard mathematical proofs are
+given in R.~F.~Streater and A.~S.~Wightman, \emph{PCT, Spin and Statistics,
+and All That}, Benjamin, 1964, and in R.~Jost, \emph{The General Theory of
+Quantized Fields}, American Mathematical Society, 1965.}
+Let
+\[
+  (\Hilb,\vac,U,\mathcal D,\{\widehat\Phi_\alpha\})
+\]
+be a four-dimensional Wightman field presentation satisfying the hypotheses
+stated in this chapter: strongly continuous unitary covariance under the
+proper orthochronous Poincare group, a cyclic invariant vacuum, the spectrum
+condition, the adjoint-domain condition, tempered Wightman distributions, and
+graded local commutativity on the common invariant domain.  Assume also that
+the field-label family is stable under the PCT test-function operation
+\(h\mapsto h^\Theta\) just described.  Then there exists an antiunitary
+operator
+\[
+  \Theta_{\rm PCT}:\Hilb\to\Hilb
+\]
+with the following properties.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Vacuum invariance:
+\[
+  \Theta_{\rm PCT}\vac=\vac .
+\]
+\item Poincare covariance extended by spacetime inversion:
+\begin{equation}
+  \Theta_{\rm PCT}\,U(a,\Lambda)\,\Theta_{\rm PCT}^{-1}
+  =
+  U(-a,\Lambda),
+  \qquad
+  (a,\Lambda)\in \mathbb R^4\rtimes SO^+(1,3).
+  \label{eq:pct-poincare-implementation}
+\end{equation}
+Equivalently, \(\Theta_{\rm PCT}P_\mu\Theta_{\rm PCT}^{-1}=P_\mu\), while the
+antiunitarity of \(\Theta_{\rm PCT}\) sends \(U(a)=\exp(\ii a^\mu P_\mu)\) to
+\(U(-a)\).
+\item Distributional field covariance:
+\begin{equation}
+  \Theta_{\rm PCT}\,\widehat\Phi(h)\,\Theta_{\rm PCT}^{-1}
+  =
+  \widehat\Phi(h^\Theta)
+  \label{eq:pct-field-covariance}
+\end{equation}
+as an identity of operators on the transformed common domain.  In point-field
+notation this says, distributionally,
+\[
+  \Theta_{\rm PCT}\,\widehat\Phi_\alpha(x)\,\Theta_{\rm PCT}^{-1}
+  =
+  C_{\rm PCT,\alpha}{}^\beta
+  \widehat\Phi_\beta^\dagger(-x),
+\]
+with the finite spin and charge-conjugation matrix appropriate to the field
+multiplet.
+\item Vacuum correlation PCT identity.  For
+\[
+  W_n(h_1,\ldots,h_n)
+  =
+  \langle\vac,\widehat\Phi(h_1)\cdots\widehat\Phi(h_n)\vac\rangle,
+\]
+one has
+\begin{equation}
+  W_n(h_1,\ldots,h_n)
+  =
+  \overline{W_n(h_1^\Theta,\ldots,h_n^\Theta)}
+  =
+  W_n((h_n^\Theta)^\dagger,\ldots,(h_1^\Theta)^\dagger).
+  \label{eq:pct-wightman-identity}
+\end{equation}
+The second equality is the adjoint reversal already present in the Wightman
+Hermiticity condition.
+\end{enumerate}
+No mass gap is required for this theorem.  A mass gap is an additional
+hypothesis for particle sectors, Haag--Ruelle scattering, and many DHR
+superselection statements, but not for the PCT antiunitary itself.
+\end{theorem}
+
+\begin{proof}
+The proof has two logically distinct parts: first a distributional identity
+for the Wightman functions, and then the construction of the antiunitary
+operator from that identity.
+
+Write the \(n\)-point functions in translation-difference variables.  The
+spectrum condition makes them boundary values of holomorphic functions in the
+forward tube.  Proper Lorentz covariance extends these functions to the
+extended tube, obtained by acting with the complex Lorentz group.  In four
+dimensions the complex Lorentz group contains a path which implements the
+total spacetime inversion on Jost configurations, with the corresponding
+finite spin matrix acting on the field labels.  A Jost configuration is a real
+configuration for which all relevant convex linear combinations of differences
+are spacelike; in such a configuration the fields may be reordered by graded
+locality.  Applying locality to reverse the order at the Jost edge, and then
+using the edge-of-the-wedge theorem, gives the analytic identity whose
+boundary value is precisely \eqref{eq:pct-wightman-identity}.  This is the
+Jost form of the PCT theorem: weak local commutativity at Jost points and the
+PCT identity are equivalent under the remaining Wightman analyticity
+hypotheses.
+
+Now pass from the identity of distributions to Hilbert space.  On the dense
+finite-sequence domain used in the reconstruction proof, define an antilinear
+map by
+\[
+  \Theta_0\,
+  [h_1;\ldots;h_n]
+  =
+  [h_1^\Theta;\ldots;h_n^\Theta],
+  \qquad
+  \Theta_0[(1,0,0,\ldots)]=(1,0,0,\ldots),
+\]
+and extend by antilinearity to finite sums.  Equation
+\eqref{eq:pct-wightman-identity}, together with the Wightman inner product
+\eqref{eq:wightman-reconstruction-inner-product}, implies
+\[
+  \langle \Theta_0 F,\Theta_0 G\rangle_W
+  =
+  \overline{\langle F,G\rangle_W}.
+\]
+Thus \(\Theta_0\) maps null vectors to null vectors and descends to an
+anti-isometry of the quotient pre-Hilbert space.  Its range contains the same
+finite polynomial domain because \(h\mapsto h^\Theta\) is an involutive
+operation on the enlarged field-label space.  Hence it extends uniquely to an
+antiunitary \(\Theta_{\rm PCT}\) on \(\Hilb\).
+
+The vacuum vector is the class of the empty sequence, so it is fixed.  The
+field identity \eqref{eq:pct-field-covariance} follows from left insertion:
+\[
+  \Theta_0\,\widehat\Phi(h)[F]
+  =
+  \Theta_0[h;F]
+  =
+  [h^\Theta;\Theta_0F]
+  =
+  \widehat\Phi(h^\Theta)\Theta_0[F].
+\]
+The translation identity follows from
+\((U(a)h)^\Theta=U(-a)h^\Theta\) on test functions, with antiunitarity
+accounting for complex conjugation of the phase.  The proper Lorentz identity
+follows in the same way from the covariance of \(C_{\rm PCT}\) with the
+finite-dimensional spin representation.  These identities extend from the
+dense domain to the Hilbert-space operators wherever the latter are bounded,
+and as domain identities for the unbounded field operators.
+\end{proof}
+
 \section{Observable Subpresentations in Gauge Theories}
 
 A gauge construction enters the positive Hilbert-space Wightman framework

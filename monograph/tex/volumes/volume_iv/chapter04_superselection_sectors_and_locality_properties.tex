@@ -433,6 +433,71 @@ antiunitary operation includes the charge-conjugation action on charged field
 coordinates.
 \end{theorem}
 
+\begin{corollary}[PCT from wedge modular covariance]
+\label{cor:aqft-pct-from-modular-covariance}
+Let \(D=4\).  Let a vacuum representation of a local observable net satisfy
+isotony, locality, Poincare covariance, the spectrum condition, uniqueness of
+the invariant vacuum, wedge cyclicity and separatingness, wedge duality, and
+the Bisognano--Wichmann modular-covariance conclusion
+\[
+  \Delta_{W_R}^{\ii t}=U(\Lambda_R(-2\pi t)),
+  \qquad
+  J_{W_R}\mathcal R(\mathcal O)J_{W_R}=\mathcal R(j_R\mathcal O)
+\]
+for the standard right wedge.  Let \(R_\perp(\pi)\) be the spatial rotation by
+\(\pi\) in the \((x^2,x^3)\)-plane, so that
+\[
+  R_\perp(\pi)j_R x=-x .
+\]
+Then
+\[
+  \Theta_{\rm PCT}:=U(R_\perp(\pi))J_{W_R}
+  \label{eq:aqft-pct-modular-conjugation}
+\]
+is an antiunitary operator satisfying
+\[
+  \Theta_{\rm PCT}\vac=\vac,
+  \qquad
+  \Theta_{\rm PCT}U(a,\Lambda)\Theta_{\rm PCT}^{-1}=U(-a,\Lambda),
+\]
+and
+\begin{equation}
+  \Theta_{\rm PCT}\mathcal R(\mathcal O)\Theta_{\rm PCT}^{-1}
+  =
+  \mathcal R(-\mathcal O).
+  \label{eq:aqft-pct-net-action}
+\end{equation}
+For a Doplicher--Roberts charged field algebra reconstructed from the
+observable category, the induced antiunitary sends each charged field
+multiplet to the conjugate charged multiplet, in agreement with the Wightman
+PCT theorem of Theorem~\ref{thm:wightman-pct}.
+\end{corollary}
+
+\begin{proof}
+The antiunitarity of \(\Theta_{\rm PCT}\) follows from antiunitarity of the
+modular conjugation \(J_{W_R}\) and unitarity of \(U(R_\perp(\pi))\).  The
+Bisognano--Wichmann theorem identifies \(J_{W_R}\) with the geometric wedge
+reflection \(j_R\) on the net.  Conjugating afterward by the proper spatial
+rotation \(R_\perp(\pi)\) changes the geometric action from \(j_R\) to the
+total inversion \(x\mapsto -x\), proving
+\eqref{eq:aqft-pct-net-action}.  Both \(J_{W_R}\) and the rotation preserve
+the vacuum, so \(\Theta_{\rm PCT}\vac=\vac\).
+
+The covariance identity follows by applying the same geometric conjugation to
+translations and proper Lorentz transformations.  Since the total inversion
+commutes with every proper Lorentz transformation and sends \(a\) to \(-a\),
+the automorphism of the Poincare group is
+\[
+  (a,\Lambda)\longmapsto(-a,\Lambda).
+\]
+Antiunitarity then gives the same translation-generator convention as in
+\eqref{eq:pct-poincare-implementation}.  Finally, in the
+Doplicher--Roberts reconstruction the modular conjugation maps a localized
+endomorphism to its conjugate localized endomorphism; on the reconstructed
+field algebra this is exactly the passage from a charged multiplet to the
+conjugate charged multiplet.
+\end{proof}
+
 The cyclic and separating hypotheses needed for the modular data of wedge
 algebras are supplied in the Wightman setting by Reeh--Schlieder applied to
 wedge regions.  In a purely algebraic formulation not assumed to arise from
@@ -441,8 +506,9 @@ Theorem~\ref{thm:bisognano-wichmann-wedges} is not automatic; it is an explicit
 modular-covariance hypothesis on the vacuum net unless it has been proved from
 the chosen AQFT assumptions.  Under this theorem or hypothesis, modular flow is
 geometric Lorentz boost flow.  The result connects locality, positivity of
-energy, thermal KMS structure for accelerated observers, and CPT-type
-symmetries.
+energy, thermal KMS structure for accelerated observers, and the PCT
+antiunitary stated in
+Corollary~\ref{cor:aqft-pct-from-modular-covariance}.
 
 \begin{figure}[H]
   \centering
