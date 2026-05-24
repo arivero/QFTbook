@@ -23,6 +23,12 @@
 - `SRC-EXTERNAL`: Polchinski's 1984 effective-Lagrangian paper and Rosten's
   exact-RG review, used only to guard terminology and theorem boundaries.  The
   chapter follows the local logical order and conventions.
+- `SRC-EXTERNAL-BOUNDS`: Polchinski's smooth-cutoff perturbative
+  renormalizability argument, Salmhofer's rigorous RG framework, and
+  Brydges--Kennedy tree/Mayer expansion technology, together with
+  Glimm--Jaffe's constructive scalar-field framework, used to separate proved
+  perturbative or constructive estimates from assumptions in the local
+  finite-coordinate cutoff-removal proposition.
 - `SRC-AUDIT`: page-level source and figure audit completed on 2026-05-22 in
   `planning/build_audits/2026-05-22_wilsonian_effective_actions_source_figures.md`.
 
@@ -94,6 +100,17 @@ The chapter must define and derive:
       +O((\Lambda_R/\Lambda_0)^{\min(\omega,\omega_F)})\), where
     \(\omega_F\) is the convergence rate of the generated-integral
     remainder;
+  - an explicit status paragraph that the estimate is conditional: the
+    irrelevant semigroup bound and the uniform generated-integral convergence
+    must be proved in a chosen normed Wilsonian setting, and are not supplied
+    by the finite-coordinate algebra alone;
+  - a comparison with proved results: Polchinski gives order-by-order
+    perturbative cutoff-control after fixing relevant parts, Salmhofer gives
+    rigorous RG estimates in specified small-coupling settings, and
+    Brydges--Kennedy supplies iterative expansion technology for constructive
+    applications, and Glimm--Jaffe-type constructions give non-Gaussian
+    \(\phi^4_2/\phi^4_3\) examples under their own hypotheses, while
+    nonperturbative continuum existence remains model-dependent;
 - the role of finite dimensionless irrelevant bare couplings in lattice
   regularizations.
 - the bridge to BPHZ and 1PI coordinates: finite-regulator equality of
@@ -157,6 +174,11 @@ The chapter must define and derive:
      particular ways in which momentum-region integrations can create
      factorial perturbative growth and require nonperturbative/OPE/effective
      matching data.
+12b. The finite-coordinate cutoff-removal proposition is not an existence
+     theorem.  Its semigroup and generated-integral hypotheses are analytic
+     inputs.  At fixed perturbative order or in constructive models they must
+     be replaced by proved bounds in a specified Banach/normed setting; in the
+     displayed finite-coordinate discussion they are imposed assumptions.
 13. The Wilsonian action \(L_\Lambda\) is an action for remaining low modes,
     not the 1PI effective action; it must be followed by low-mode integration
     and a Legendre transform before comparison with 1PI coordinates.
@@ -232,3 +254,9 @@ The chapter must define and derive:
   perturbation theory.
 - 2026-05-24 issue pass: addressed #224 by inserting the scalar triviality
   theorem boundary into the perturbative Wilsonian continuum-limit discussion.
+- 2026-05-24 issue pass: addressed #229 by adding a status remark after the
+  finite-coordinate cutoff-removal proposition.  The remark states that
+  hypotheses (ii) and (iv) are imposed unless separately proved, identifies
+  what Polchinski, Salmhofer, and Brydges--Kennedy type estimates actually
+  provide, and separates constructive \(\phi^4_2/\phi^4_3\) existence from
+  four-dimensional scalar triviality.

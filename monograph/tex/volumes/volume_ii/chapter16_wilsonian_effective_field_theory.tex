@@ -903,16 +903,16 @@ This finite-coordinate estimate should not be mistaken for a constructive
 existence theorem for a non-Gaussian four-dimensional scalar continuum limit.
 Theorem~\ref{thm:standard-four-dimensional-scalar-triviality} states that,
 for the positive lattice \(\lambda\phi^4_4\) and nearest-neighbor
-ferromagnetic Ising-type scaling-limit problems covered by the known
-triviality theorems, the critical or near-critical continuum limits are
-Gaussian.  The Wilsonian estimate above is a local perturbative
+ferromagnetic Ising-type scaling-limit problems covered by the rigorous
+triviality results cited there, the critical or near-critical continuum limits
+are Gaussian.  The Wilsonian estimate above is a local perturbative
 mechanism: it explains how irrelevant coordinates lose memory of their
 finite-cutoff boundary values when a controlled trajectory with fixed
 renormalized coordinates is assumed.  It does not prove that such a controlled
 trajectory exists to arbitrarily high cutoff at nonzero renormalized quartic
-coupling.  The constructive theorem says that, for the specified standard
-families and covered critical regimes, the limiting connected correlations
-beyond the two-point function vanish.
+coupling.  For the specified standard families and covered critical regimes,
+the triviality result says that the limiting connected correlations beyond the
+two-point function vanish.
 
 \section{A Local Estimate for Cutoff Removal}
 
@@ -1090,6 +1090,50 @@ the implicit function theorem gives the local tuning functions at finite
 \(\Lambda_0\).  The remaining task is to prove estimates, uniform in
 \(\Lambda_0\), that keep the trajectory in the assumed coordinate
 neighborhood and make the generated integral converge.
+
+\begin{remark}[Status of the cutoff-removal hypotheses]
+The finite-coordinate cutoff-removal proposition is conditional.  It proves
+the displayed asymptotic estimate from the four listed hypotheses; it does not
+prove those hypotheses for an arbitrary quantum field theory, nor even for an
+arbitrary finite projection of a regulated action.  Hypothesis (ii) is a
+backward semigroup estimate for the irrelevant part of the linearized
+projected RG equation in a chosen norm.  It is immediate in a diagonal
+finite-dimensional toy model with strictly negative irrelevant exponents, but
+in an actual Wilsonian space it is an analytic estimate about the chosen
+Banach or Fr\'echet space of functionals and the linearized cutoff-flow
+operator.  Hypothesis (iv) is still stronger: it is the uniform convergence,
+after the retained coordinates are tuned, of the generated irrelevant
+coordinate.  This is one form of the cutoff-removal problem itself.
+
+Several rigorous results prove analogues of these estimates only after adding
+substantial structure.  Polchinski's smooth-cutoff argument proves
+perturbative renormalizability order by order for renormalizable Euclidean
+Lagrangians by deriving inductive bounds on cutoff-dependent vertices after
+the relevant parts are fixed; it is not a nonperturbative construction of an
+interacting continuum measure.\footnote{J.~Polchinski, \emph{Nucl. Phys. B}
+\textbf{231} (1984) 269--295.}  Salmhofer's rigorous RG framework proves
+perturbative flow estimates, especially for fermionic systems, in specified
+norms and small-coupling regimes.\footnote{M.~Salmhofer,
+\emph{Renormalization: An Introduction}, Springer, 1999.}  The
+Brydges--Kennedy tree and Mayer expansion technology supplies iterative bounds
+used in constructive RG, but every application still verifies its own
+covariance estimates, norms, tuning equations, and convergence
+criteria.\footnote{D.~C.~Brydges and T.~Kennedy, \emph{J. Stat. Phys.}
+\textbf{48} (1987) 19--49.}
+
+The nonperturbative status is model-dependent.  Constructive scalar field
+theory gives non-Gaussian \(\phi^4_2\) and \(\phi^4_3\) continuum theories
+under its own ultraviolet, infrared, and stability hypotheses.\footnote{See
+J.~Glimm and A.~Jaffe, \emph{Quantum Physics: A Functional Integral Point of
+View}, second edition, Springer, 1987, for the constructive scalar-field
+framework and references to the original constructions.}  By contrast, the
+standard positive four-dimensional scalar and nearest-neighbor Ising-type
+families covered by
+Theorem~\ref{thm:standard-four-dimensional-scalar-triviality} have Gaussian
+scaling limits.  Therefore later use of a Wilsonian continuum-limit estimate
+must say which semigroup, tuning, and convergence estimates have been proved
+in the chosen framework and which are being imposed as assumptions.
+\end{remark}
 
 \begin{remark}[Renormalons and Wilsonian data]
 Assumption (iv) is a continuum-limit hypothesis on the Wilsonian generated
