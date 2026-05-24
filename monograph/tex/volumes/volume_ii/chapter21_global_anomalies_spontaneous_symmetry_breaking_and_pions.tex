@@ -223,12 +223,16 @@ and is obstructed by \eqref{eq:axial-background-gauge-variation}.
 
 \section{Example: A Finite SU(2) Anomaly}
 
-Let \(M\) be a compact spin four-manifold and let \(G_{\mathrm f}=SU(2)\).
-Consider one left-handed Weyl fermion valued in the fundamental representation
-of \(SU(2)\).  For an \(SU(2)\) background connection \(B\), the Euclidean Weyl
-operator is
+Let \((M,\sigma_M)\) be a compact spin four-manifold and let
+\(G_{\mathrm f}=SU(2)\).  The spin structure \(\sigma_M\) is part of the
+background datum: a Weyl fermion is not defined on a merely oriented
+four-manifold.  A change of \(\sigma_M\), when several spin structures exist,
+is a change of the fermionic QFT background and may change the Pfaffian line
+and its anomaly.  Consider one left-handed Weyl fermion valued in the
+fundamental representation of \(SU(2)\).  For an \(SU(2)\) background
+connection \(B\), the Euclidean Weyl operator is
 \[
-  D_B^+:
+  D_{B,\sigma_M}^+:
   \Gamma(S_+\otimes E_B)
   \longrightarrow
   \Gamma(S_-\otimes E_B),
@@ -236,7 +240,8 @@ operator is
 where \(S_\pm\) are the positive and negative chirality spin bundles and
 \(E_B\) is the associated rank-two complex vector bundle.  The fundamental
 representation of \(SU(2)\) is pseudoreal, so the fermion functional integral
-defines a Pfaffian line over the space of backgrounds.
+defines a Pfaffian line over the space of structured backgrounds
+\((M,\sigma_M,B)\).
 
 Let \(g:M\to SU(2)\) be a background gauge transformation, and choose a smooth
 path of background connections \(B_t\), \(t\in[0,1]\), from \(B_0=B\) to
@@ -247,21 +252,44 @@ mapping torus
   =
   (M\times[0,1])/\bigl((x,1)\sim(x,0)\hbox{ by }g\bigr)
 \]
-with an induced \(SU(2)\) bundle \(E_g\).  Let
-\(\mathcal D_{X_g,E_g}\) be the five-dimensional real Dirac operator coupled
-to this bundle, and define its mod-two index by
+with an induced \(SU(2)\) bundle \(E_g\).  The spin structure on
+\(M\times[0,1]\) is the product one from \(\sigma_M\); gluing the two ends
+by the identity diffeomorphism of \(M\) and the internal gauge transformation
+\(g\) gives a spin structure \(\sigma_g\) on \(X_g\).  Thus the invariant
+below is a function of \((X_g,\sigma_g,E_g)\), not just of the oriented
+manifold and the vector bundle.  If the spin structure on \(M\) is changed, or
+if the mapping-torus spin structure is twisted by an allowed
+\(\mathbb Z_2\) flat line, the mod-two index may change.
+
+Let \(\mathcal D_{X_g,\sigma_g,E_g}\) be the five-dimensional real Dirac
+operator coupled to this bundle, and define its mod-two index by
 \[
-  \zeta(X_g,E_g)
+  \zeta(X_g,\sigma_g,E_g)
   =
-  \dim\ker\mathcal D_{X_g,E_g}
+  \dim\ker\mathcal D_{X_g,\sigma_g,E_g}
   \quad \operatorname{mod}2 .
 \]
-The Pfaffian transforms by
-\begin{equation}
-  \frac{\operatorname{Pf}(D_{B^g}^+)}
-       {\operatorname{Pf}(D_B^+)}
+The analytic framework behind this statement is the Dai--Freed formulation of
+fermion anomalies.  For a family of chiral Dirac operators, the determinant or
+Pfaffian is a section of a line over background-field space, and the holonomy
+of this line around a closed loop of backgrounds is computed by the
+Atiyah--Patodi--Singer eta-invariant of the Dirac operator on the associated
+mapping torus.  In the present pseudoreal \(SU(2)\) fundamental case the real
+structure refines the Dai--Freed holonomy to the mod-two-index sign
+\[
+  \operatorname{Hol}_{\mathrm{DF}}(X_g,\sigma_g,E_g)
   =
-  (-1)^{\zeta(X_g,E_g)} .
+  (-1)^{\zeta(X_g,\sigma_g,E_g)} .
+  \label{eq:su2-dai-freed-holonomy}
+\]
+Equivalently, cutting the mapping torus open gives the APS-boundary
+description of the same Pfaffian transport.  Therefore the Pfaffian transforms
+by
+\begin{equation}
+  \frac{\operatorname{Pf}(D_{B^g,\sigma_M}^+)}
+       {\operatorname{Pf}(D_{B,\sigma_M}^+)}
+  =
+  (-1)^{\zeta(X_g,\sigma_g,E_g)} .
   \label{eq:su2-global-anomaly-pfaffian}
 \end{equation}
 For \(M=S^4\) and \(g\) representing the nontrivial class in
@@ -285,25 +313,26 @@ five-dimensional invertible response.  Its holonomy on a mapping torus gives
 the finite transformation phase.  In the form needed here, an invertible
 anomaly theory assigns a phase
 \[
-  \mathcal I_5[Y,B_Y]\in U(1)
+  \mathcal I_5[Y,\sigma_Y,B_Y]\in U(1)
 \]
-to every closed five-manifold \(Y\) equipped with the relevant spin structure,
-global-symmetry background \(B_Y\), and any additional geometric structures
-required by the fermions.  If \(M=\partial Y\), the same theory assigns an
-anomaly line over the space of boundary backgrounds, and the four-dimensional
-partition function \(Z[B]\) is a vector in that line.  Choosing a filling
-\((Y,B_Y)\) trivializes the line by multiplying by the bulk phase.  Changing
-the filling changes the trivialization by the phase of the closed
-five-manifold obtained by gluing the two fillings.
+to every closed five-manifold \(Y\) equipped with a chosen spin structure
+\(\sigma_Y\), global-symmetry background \(B_Y\), and any additional
+geometric structures required by the fermions.  If
+\((M,\sigma_M)=\partial(Y,\sigma_Y)\), the same theory assigns an anomaly line
+over the space of boundary backgrounds, and the four-dimensional partition
+function \(Z[M,\sigma_M,B]\) is a vector in that line.  Choosing a filling
+\((Y,\sigma_Y,B_Y)\) trivializes the line by multiplying by the bulk phase.
+Changing the filling changes the trivialization by the phase of the closed
+structured five-manifold obtained by gluing the two fillings.
 
 For a finite background gauge transformation \(g\), choose a path \(B_t\) from
 \(B\) to \(B^g\) and identify the two ends by \(g\).  The resulting mapping
 torus \(X_g\) carries the induced background \(B_g\).  The inflow statement is
 the equality
 \begin{equation}
-  \frac{Z[B^g]}{Z[B]}
+  \frac{Z[M,\sigma_M,B^g]}{Z[M,\sigma_M,B]}
   =
-  \mathcal I_5[X_g,B_g],
+  \mathcal I_5[X_g,\sigma_g,B_g],
   \label{eq:mapping-torus-inflow-phase}
 \end{equation}
 after a choice of local counterterm convention.  On the identity component of
@@ -318,9 +347,9 @@ anomaly vanishes.
 The \(SU(2)\) example above is exactly of this finite type.  Its anomaly
 theory assigns
 \begin{equation}
-  \mathcal I^{SU(2)}_5[X_g,E_g]
+  \mathcal I^{SU(2)}_5[X_g,\sigma_g,E_g]
   =
-  (-1)^{\zeta(X_g,E_g)}
+  (-1)^{\zeta(X_g,\sigma_g,E_g)}
   \label{eq:su2-invertible-anomaly-theory}
 \end{equation}
 to the mapping torus with the induced rank-two bundle.  Equation

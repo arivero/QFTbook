@@ -30,7 +30,7 @@
   `references/sound_references/witten_fermion_path_integrals_topological_phases_1508.04715.pdf`
   and sidecar, especially Sections 2.1.2, 2.2.1, 3.2, and 4.2, for
   determinant/Pfaffian lines, mapping tori, global anomalies, eta invariants,
-  and mod-two indices.
+  mod-two indices, APS boundary conditions, and the Dai--Freed theorem.
 - `SRC-EXTERNAL`:
   `references/sound_references/leutwyler_foundations_chiral_perturbation_hep-ph_9311274.pdf`
   and sidecar, especially Sections 2, 4, 7, 9, and 10, for current
@@ -61,11 +61,13 @@
 | \(\mathcal G_{\mathrm f}\) | background gauge transformation group |
 | \(\mathcal A_g[B]\) | finite anomaly cocycle representative |
 | \(C[B]\) | local background counterterm |
+| \(\sigma_M,\sigma_g,\sigma_Y\) | chosen spin structures on the four-manifold, mapping torus, and five-dimensional inflow manifold |
 | \(X_g\) | mapping torus associated to a gauge transformation \(g\) |
 | \(Y,B_Y\) | closed or filling five-manifold and its extended background field |
-| \(\mathcal I_5[Y,B_Y]\) | five-dimensional invertible anomaly-theory phase |
+| \(\mathcal I_5[Y,\sigma_Y,B_Y]\) | five-dimensional invertible anomaly-theory phase on structured backgrounds |
 | \(B_g\) | induced background field on the mapping torus \(X_g\) |
-| \(\zeta(X_g,E_g)\) | mod-two index of the coupled real Dirac operator |
+| \(\zeta(X_g,\sigma_g,E_g)\) | mod-two index of the coupled real Dirac operator on the spin mapping torus |
+| \(\operatorname{Hol}_{\mathrm{DF}}\) | Dai--Freed holonomy of the determinant/Pfaffian line |
 | \(G,H\) | symmetry group and unbroken subgroup in a phase |
 | \(\xi(\pi)\) | coset representative for Goldstone coordinates |
 | \(e^a,\omega^i\) | broken vielbein and unbroken connection in the Maurer--Cartan form |
@@ -95,16 +97,29 @@
   \(-\epsilon^{\nu\rho\alpha\beta}\partial_\alpha\delta(x-z)
   \partial_\beta\delta(y-z)/(6\pi^2)\), and the corresponding finite
   background-field variation is \((48\pi^2)^{-1}\int \zeta\,\epsilon FF\).
-- A single four-dimensional left-handed \(SU(2)\) fundamental Weyl fermion has
-  a finite anomaly detected by a mod-two index on a mapping torus.
+- A single four-dimensional left-handed \(SU(2)\) fundamental Weyl fermion is
+  defined on a spin four-manifold \((M,\sigma_M)\); the spin structure is part
+  of the background datum and can affect the Pfaffian line and global anomaly.
+- The finite \(SU(2)\) anomaly is presented in the Dai--Freed/APS framework:
+  the Pfaffian-line holonomy around a loop of backgrounds is computed on the
+  spin mapping torus, and in the pseudoreal fundamental case reduces to
+  \[
+    \operatorname{Hol}_{\mathrm{DF}}(X_g,\sigma_g,E_g)
+    =
+    (-1)^{\zeta(X_g,\sigma_g,E_g)}.
+  \]
 - Finite anomaly inflow is stated through the mapping-torus phase
   \[
-    Z[B^g]/Z[B]=\mathcal I_5[X_g,B_g],
+    Z[M,\sigma_M,B^g]/Z[M,\sigma_M,B]
+    =
+    \mathcal I_5[X_g,\sigma_g,B_g],
   \]
   after a local counterterm convention is chosen.
 - The \(SU(2)\) global anomaly is identified with the invertible phase
   \[
-    \mathcal I_5^{SU(2)}[X_g,E_g]=(-1)^{\zeta(X_g,E_g)}.
+    \mathcal I_5^{SU(2)}[X_g,\sigma_g,E_g]
+    =
+    (-1)^{\zeta(X_g,\sigma_g,E_g)}.
   \]
 - The SPT/cobordism interpretation is stated with hypotheses: it is a
   framework for invertible, symmetry-protected, short-range-entangled
@@ -178,3 +193,8 @@
   mapping-torus identity, connected the \(SU(2)\) mod-two index to the
   five-dimensional invertible phase, and tied the gauged WZW functional to the
   same inflow class.
+- 2026-05-24 issue #255 pass: named the Dai--Freed/APS framework for finite
+  fermion anomalies, made the spin structures \(\sigma_M,\sigma_g,\sigma_Y\)
+  explicit in the SU(2) mapping-torus and inflow formulas, and stated that the
+  mod-two index is a function of the complete structured background rather
+  than of an oriented manifold alone.
