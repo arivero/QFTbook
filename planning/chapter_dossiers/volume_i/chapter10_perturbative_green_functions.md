@@ -88,7 +88,9 @@
   \(4\cdot3!/2(-g/4!)=-g/2\) and
   \(\frac1{2!}(2\cdot4^2\cdot3!)(-g/4!)^2=g^2/6\).
 - The two-point function admits a Dyson form once the self-energy is defined as
-  the sum of amputated 1PI two-point insertions.
+  the sum of amputated 1PI two-point insertions; the defining equation is
+  labelled as `eq:euclidean-self-energy` for comparison with the Lorentzian
+  analytic-continuation convention.
 - At order \(g\), the tadpole contribution is
   \[
     \Sigma_E^{(1)}(k)

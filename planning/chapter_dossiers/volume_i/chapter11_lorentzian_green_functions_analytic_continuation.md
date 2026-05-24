@@ -104,6 +104,14 @@
   contraction counting.
 - The one-loop tadpole contour rotation gives \(i\) times the Euclidean
   self-energy contribution with the sign convention of Chapter 10.
+- In the same regulator and local two-point subtraction convention,
+  \[
+    \Sigma(k^0=i k_E^D,\vec k_E)=\Sigma_E(k_E),
+    \qquad
+    \widetilde G(i k_E^D,\vec k_E)=-i\widetilde G_E(k_E),
+  \]
+  so the factor \(i\) in the Lorentzian insertion is not an additional sign in
+  the denominator self-energy.
 - The full perturbative two-point function has the form
   \[
     \widetilde G(k)=
@@ -141,3 +149,7 @@
   Fourier-Laplace transform, and \(\mathcal S'\) boundary-value limit
   explicitly, and adding the distributional edge-of-the-wedge theorem with
   growth and boundary-agreement hypotheses.
+- 2026-05-24 issue #372 pass: displayed the equality of Euclidean and
+  Lorentzian denominator self-energies under \(k^0=i k_E^D\), with the
+  corresponding \(\widetilde G(i k_E^D,\vec k_E)=-i\widetilde G_E(k_E)\)
+  identity.

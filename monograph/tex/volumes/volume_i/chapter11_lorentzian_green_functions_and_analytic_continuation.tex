@@ -454,6 +454,19 @@ Thus the Lorentzian two-point insertion is \(\ii\Sigma(k)\), where
 \(\Sigma(k)\) is the first-sheet analytic continuation of the Euclidean
 self-energy \(\Sigma_E(k_E)\) with the sign convention of
 Chapter~\ref{ch:perturbative-green-functions}.
+More explicitly, in the same regulator and the same local two-point
+subtraction convention, the denominator self-energy obeys
+\begin{equation}
+  \Sigma\bigl(k^0=\ii k_E^D,\vec k=\vec k_E\bigr)
+  =
+  \Sigma_E(k_E),
+  \label{eq:lorentzian-euclidean-self-energy-match}
+\end{equation}
+where \(\Sigma_E\) is defined by
+Eq.~\eqref{eq:euclidean-self-energy}.  The factor \(\ii\) displayed above
+belongs to the Lorentzian two-point insertion in the Dyson series; it is not an
+extra sign in the scalar function \(\Sigma\) appearing in the denominator of
+\(\widetilde G(k)\).
 
 The contour rotation just used is a special case with no external energy
 flowing through the loop.  The same direct rotation is also legitimate for
@@ -508,7 +521,14 @@ momenta, where loop integrals have Euclidean denominators. Using
   k^0=\ii k_E^D ,
 \]
 the Euclidean external energy lies on the imaginary \(k^0\)-axis. The
-Lorentzian value is the boundary value obtained by analytic continuation of
+matching identity \eqref{eq:lorentzian-euclidean-self-energy-match} gives
+\[
+  \widetilde G(\ii k_E^D,\vec k_E)
+  =
+  -\ii\,\widetilde G_E(k_E),
+\]
+because \(k^2=k_E^2\) at \(k^0=\ii k_E^D\) with the mostly-plus convention.
+The Lorentzian value is the boundary value obtained by analytic continuation of
 \(k^0\) from this axis to the prescribed side of the real axis without crossing
 the first-sheet cuts.
 
