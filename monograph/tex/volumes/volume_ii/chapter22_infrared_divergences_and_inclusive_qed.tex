@@ -206,6 +206,75 @@ Corrections from the non-eikonal parts of the propagators and vertices are
 less singular in the soft scaling.  The same combinatorics gives the product
 for any finite number of soft photons.
 
+\begin{remark}[Subleading soft photons]
+The preceding product formula uses only the leading eikonal term.  For a
+single additional photon, under the perturbative hypotheses of massive charged
+external particles, a smooth hard amplitude near \(k=0\), and a fixed
+infrared regulator, the Low soft expansion has the form
+\[
+  \mathcal M_{\beta;k,h|\alpha}
+  =
+  \left(S_h^{(0)}(k)+S_h^{(1)}(k)\right)
+  \mathcal M_{\beta|\alpha}
+  +O(\omega),
+\]
+where
+\[
+  S_h^{(0)}(k)
+  =
+  \sum_n
+  \frac{g_n\,p_n\cdot e_h^*(k)}
+       {\eta_n p_n\cdot k}
+\]
+is the leading factor used above, and the subleading operator is
+\[
+  S_h^{(1)}(k)
+  =
+  -\ii\sum_n
+  \frac{g_n\,e^*_{h,\mu}(k)k_\nu J_n^{\mu\nu}}
+       {\eta_n p_n\cdot k}.
+\]
+Here \(J_n^{\mu\nu}\) is the total Lorentz generator acting on the \(n\)-th
+hard external datum.  For a scalar external line its orbital part is
+\[
+  J_{n,\mathrm{orb}}^{\mu\nu}
+  =
+  -\ii\left(
+    p_n^\mu\frac{\partial}{\partial p_{n,\nu}}
+    -
+    p_n^\nu\frac{\partial}{\partial p_{n,\mu}}
+  \right),
+\]
+and for spinning particles one adds the spin matrix
+\(\Sigma_n^{\mu\nu}\).  The formula is a distributional statement on the
+mass shell and momentum-conservation surface: the differential operator acts
+on the hard amplitude together with its conservation delta function, or
+equivalently on a chosen smooth local representative before restricting to the
+physical surface.
+
+The subleading factor is homogeneous of degree \(\omega^0\), whereas
+\(S_h^{(0)}\) is homogeneous of degree \(\omega^{-1}\).  Consequently the
+real-emission integral built from \(S_h^{(0)}S_h^{(0)*}\) contains
+\(\dd\omega/\omega\), while the interference between \(S_h^{(0)}\) and
+\(S_h^{(1)}\) contains \(\dd\omega\) and is finite at the lower endpoint in
+the massive case.  This is why the Bloch--Nordsieck logarithm and its Poisson
+exponentiation are governed by \(S^{(0)}\).  At subleading order the soft
+insertion is a differential operator, and multiple soft emissions produce
+ordered products and contact terms.  The independent one-photon
+multiplication factors used in the leading-log proof are a property of the
+leading eikonal term.
+
+The same soft statements have an asymptotic-symmetry formulation.  In
+four-dimensional QED, the leading soft photon theorem is equivalent, under
+the assumptions on null-infinity limits and charged-state sectors, to a Ward
+identity for large \(U(1)\) gauge transformations; its classical counterpart
+is electromagnetic memory.  In gravity, the analogous leading and subleading
+soft-graviton statements are tied to BMS supertranslations and to the more
+delicate superrotation story.  These asymptotic-symmetry interpretations
+delimit the leading eikonal approximation used in this chapter; the inclusive
+cancellation above uses the exponentiation of \(S^{(0)}\).
+\end{remark}
+
 \begin{figure}[!ht]
   \centering
   \resizebox{0.96\textwidth}{!}{%

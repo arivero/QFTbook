@@ -19,11 +19,14 @@
 - `SRC-BEN-COMPARISON`: `references/253b transcribed lecture notes.tex`,
   lines around the infrared section, used only as a comparison layer.
 - `SRC-EXTERNAL`: Bloch--Nordsieck, Yennie--Frautschi--Suura,
-  Kinoshita--Lee--Nauenberg, Kulish--Faddeev, Buchholz's Gauss-law theorem,
-  Fröhlich--Morchio--Strocchi infraparticle analysis, and the
+  Kinoshita--Lee--Nauenberg, Low, Gell-Mann--Goldberger,
+  Burnett--Kroll, Kulish--Faddeev, Buchholz's Gauss-law theorem,
+  Fröhlich--Morchio--Strocchi infraparticle analysis, large-\(U(1)\)
+  asymptotic-symmetry and electromagnetic-memory analyses, and the
   Buchholz--Dybalski scattering review provide theorem and reference context
-  for inclusive probabilities, soft exponentiation, mass singularity
-  cancellation, infraparticle sectors, and dressed asymptotic states.
+  for inclusive probabilities, soft exponentiation, subleading soft
+  operators, mass singularity cancellation, infraparticle sectors, and dressed
+  asymptotic states.
 
 ## Construction Task
 
@@ -48,6 +51,9 @@ The chapter should state:
 - the soft upper scale \(M\);
 - the exponent \(A_{\beta\alpha}\) and the relative velocity \(\beta_{nm}\);
 - the role of LSZ wavefunction factors in the same-line virtual loops;
+- the Low subleading soft-photon operator \(S^{(1)}\), its hypotheses, and
+  the fact that leading-log Bloch--Nordsieck exponentiation uses only the
+  leading eikonal factor \(S^{(0)}\);
 - the distinction between soft and collinear degeneracies;
 - the Abelian-Higgs regulator as a gauge-invariant infrared deformation.
 - the ordered Bloch--Nordsieck limiting statement: at fixed regulator, form
@@ -94,30 +100,46 @@ Additional symbols introduced in the charged-sector discussion:
    The two-soft-photon identity on one external line should be displayed,
    since it explains how nested eikonal denominators become independent
    one-photon factors.
-5. After summing physical polarizations, charge conservation removes the
+5. The subleading Low soft-photon operator is
+   \[
+     S_h^{(1)}(k)
+     =
+     -i\sum_n
+     {g_ne^*_{h,\mu}(k)k_\nu J_n^{\mu\nu}\over
+     \eta_n p_n\cdot k},
+   \]
+   with \(J_n^{\mu\nu}\) the total Lorentz generator on the \(n\)-th hard
+   datum.  It is homogeneous of degree \(\omega^0\), so it gives finite
+   real-emission endpoint behavior in the massive case and does not enter the
+   leading logarithmic Bloch--Nordsieck exponent.
+6. In QED the asymptotic-symmetry interpretation of the leading soft photon
+   theorem is a large-\(U(1)\) Ward identity at null infinity with
+   electromagnetic memory as the classical counterpart; BMS belongs to the
+   gravitational soft theorem analogue.
+7. After summing physical polarizations, charge conservation removes the
    gauge-vector terms in the polarization sum.
-6. Real unresolved photons produce \((E_T/\mu)^{A_{\beta\alpha}}\) at leading
+8. Real unresolved photons produce \((E_T/\mu)^{A_{\beta\alpha}}\) at leading
    soft logarithmic order.
    The angular integral defining \(A_{\beta\alpha}\) should be derived with a
    Feynman parameter and the polar-axis integral, not merely quoted.
-7. Virtual soft photon exchange between distinct external lines exponentiates.
-8. Same-line virtual soft singularities are accounted for by the infrared part
+9. Virtual soft photon exchange between distinct external lines exponentiates.
+10. Same-line virtual soft singularities are accounted for by the infrared part
    of the LSZ factors \(Z_n^{1/2}\).
    The electromagnetic form-factor insertion should be used to identify this
    cancellation, including the scalar and spinor current decompositions and
    the finite \(G(0)=-g^2/(8\pi^2)+O(g^4)\), the relation between
    \(Z_{\rm IR}\), \(J_{12}\), and the formal \(J_{11}\), and the scalar
    self-energy derivative that produces the same logarithm in \(Z\).
-9. The virtual rate factor is \((\mu/M)^{A_{\beta\alpha}}\), up to a phase at
+11. The virtual rate factor is \((\mu/M)^{A_{\beta\alpha}}\), up to a phase at
    the amplitude level.
    The \(k^0\)-plane pole locations should be stated: photon poles determine
    the real logarithm, while matter poles contribute only to the phase.
-10. The inclusive product is finite as \(\mu\to0\):
+12. The inclusive product is finite as \(\mu\to0\):
    \[
      (\mu/M)^{A_{\beta\alpha}}(E_T/\mu)^{A_{\beta\alpha}}
      =(E_T/M)^{A_{\beta\alpha}}.
    \]
-11. The Bloch--Nordsieck cancellation is coefficientwise in perturbation
+13. The Bloch--Nordsieck cancellation is coefficientwise in perturbation
     theory only after the inclusive sum has been formed.  At order
     \(A_{\beta\alpha}^L\), the sum
     \[
@@ -128,7 +150,7 @@ Additional symbols introduced in the charged-sector discussion:
       \frac{[\log(E_T/M)]^L}{L!}
     \]
     is regulator independent, whereas an individual fixed-\(N\) term is not.
-12. For massless charged particles, collinear degeneracies require the KLN
+14. For massless charged particles, collinear degeneracies require the KLN
    sum and average over detector-degenerate sectors.  The abstract
    finite-degeneracy theorem assumes finite-dimensional degenerate subspaces
    \(P_A\mathcal H_0\), \(P_B\mathcal H_0\), a bounded perturbation, an
@@ -139,13 +161,13 @@ Additional symbols introduced in the charged-sector discussion:
      (S_{\rm fin}S_{\rm fin}^\dagger)
    \]
    is regulator independent.
-13. Dressed charged asymptotic states use the same eikonal data as coherent
+15. Dressed charged asymptotic states use the same eikonal data as coherent
    soft photon clouds, but the zero-cutoff Faddeev--Kulish profile is not an
    element of the photon one-particle Hilbert space, so the limiting dressing
    changes representation.
-14. A small photon mass introduced through an Abelian-Higgs deformation is a
+16. A small photon mass introduced through an Abelian-Higgs deformation is a
    consistent gauge-invariant infrared regulator.
-15. Buchholz's Gauss-law theorem gives the nonperturbative structural
+17. Buchholz's Gauss-law theorem gives the nonperturbative structural
     boundary: charged QED sectors are infraparticle sectors, not ordinary
     Wigner-particle Fock sectors; asymptotic electric flux labels
     superselection data.
@@ -186,3 +208,7 @@ Additional symbols introduced in the charged-sector discussion:
   with hypotheses and proof, and separated that abstract theorem from the
   additional regulator and detector-cell construction needed in relativistic
   field theory.
+- 2026-05-24 issue #259 pass: added a subleading soft photon remark with
+  Low's \(S^{(1)}\) operator, explained why it lies outside the leading-log
+  exponentiation, and stated the QED large-\(U(1)\)/memory interpretation
+  separately from the gravitational BMS analogue.
