@@ -55,6 +55,10 @@ The chapter must define:
   the positive coefficient of \(\phi^4/4!\) and matches the later MS
   coefficient convention;
 - the one-loop finite relation between \(g(\mu)\) and \(g_R=g(0)\);
+- the one-loop \(\phi^4_4\) tadpole self-energy
+  \(\Sigma^{(1)}_{\rm tad}(k)=-(g_R/2)\int^\Lambda
+  \dd^4\ell/[(2\pi)^4(\ell^2+m_R^2)]\), its independence of \(k^2\), and the
+  conclusion \(\delta Z^{(1)}=0\) in the momentum-subtraction field convention;
 - nearby-scale comparison \(g(\mu')\) versus \(g(\mu)\);
 - the beta function as a differential comparison of renormalized coordinates;
 - the one-loop solution and Landau scale in four-dimensional scalar quartic
@@ -128,7 +132,10 @@ The chapter must define:
     continuation; it differs by a sign only from the bare mostly-plus quadratic
     form \((p_1+p_2)^2_{\rm L}\).
 3. The corresponding one-loop two-point tadpole is independent of \(k^2\), so
-   it does not change the field normalization at this order.
+   \(\partial\Sigma^{(1)}_{\rm tad}/\partial k^2=0\).  The mass counterterm
+   absorbs the local constant, \(Z_{\rm MOM}(\mu)=1+O(g_R^2)\) at the same
+   order, and no field-strength contribution enters the one-loop quartic beta
+   function.
 4. The relation between \(g(\mu')\) and \(g(\mu)\) is finite after the UV
    regulator is removed when the counterterms of the previous chapters have
    been fixed.
@@ -286,3 +293,6 @@ The chapter must define:
 - 2026-05-24 issue #354 pass: expanded the symmetric Euclidean subtraction
   point into a displayed kinematic derivation of
   \(s+t+u=-\sum_i k_i^2=-4\mu^2\), hence \(s=t=u=-4\mu^2/3\).
+- 2026-05-24 issue #367 pass: added the explicit one-loop tadpole self-energy
+  and derivative check proving \(\delta Z^{(1)}=0\) for the quartic
+  momentum-subtraction beta-function derivation.

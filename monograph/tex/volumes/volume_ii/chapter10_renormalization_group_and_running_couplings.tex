@@ -340,7 +340,26 @@ when the coordinate is extracted from the 1PI vertex.
 \section{One-Loop Running in the Quartic Example}
 
 At one loop, the four-point bubbles change the quartic vertex, while the
-two-point tadpole is independent of \(k^2\).  Therefore
+two-point tadpole is independent of \(k^2\).  In the self-energy convention
+\[
+  G_R(k)=\frac{1}{k^2+m_R^2-\Sigma_R(k)},
+\]
+the amputated one-loop tadpole is
+\[
+  \Sigma^{(1)}_{\rm tad}(k)
+  =
+  -\,\frac{g_R}{2}
+  \int^\Lambda\frac{\dd^4\ell}{(2\pi)^4}\,
+  \frac{1}{\ell^2+m_R^2},
+\]
+before the mass counterterm is chosen.  The factor \(1/2\) is the tadpole
+symmetry factor.  The loop momentum \(\ell\) closes at the quartic vertex, so no
+external momentum flows through the loop and
+\[
+  \frac{\partial\Sigma^{(1)}_{\rm tad}}{\partial k^2}=0 .
+\]
+The one-loop subtraction needed in the two-point function is therefore a mass
+subtraction, not a kinetic subtraction.  Hence
 \[
   Z_R=1+O(g_R^2),
   \qquad
