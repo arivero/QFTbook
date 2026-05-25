@@ -14,6 +14,12 @@
 - `SRC-EXTERNAL-HOFMAN-MALDACENA`: conformal collider energy and charge
   correlations, used for the stress-tensor-state one-point energy flux normal
   form and the \(t_2,t_4\) positivity inequalities.
+- `SRC-EXTERNAL-ANEC-MODULAR`: Faulkner--Leigh--Parrikar--Wang's
+  deformed-half-space modular Hamiltonian proof of ANEC, used as the theorem
+  boundary for the relative-entropy monotonicity derivation.
+- `SRC-EXTERNAL-ANEC-CAUSALITY`: Hartman--Kundu--Tajdini's Lorentzian
+  causality proof of ANEC, used as the theorem boundary for the Regge
+  analyticity sign argument.
 - `SRC-EXTERNAL-LIGHT-RAY-OPE`: Kologlu--Kravchuk--Simmons-Duffin--Zhiboedov,
   used as theorem boundary for the convergent light-ray OPE under Lorentzian
   CFT hypotheses.
@@ -32,6 +38,10 @@ The chapter establishes:
   \(\mathcal A_n(x_\perp)\);
 - the relation between calorimeter detectors and null-integrated stress-tensor
   light transforms;
+- the smeared ANEC quadratic form \(\mathcal A_n(\varphi)\), its Lorentzian
+  CFT hypotheses, and the modular/causal proof mechanisms that fix the sign;
+- the reduction from ANEC positivity to positivity of the conformal-collider
+  angular energy distribution;
 - the four-dimensional stress-tensor one-point energy flux form with
   parameters \(t_2,t_4\);
 - the conformal-collider inequalities following from detector positivity;
@@ -50,6 +60,11 @@ The chapter establishes:
 | \(\mathcal E(f)\), \(\mathcal E(\mathbf n)\) | smeared and distributional energy detector |
 | \(\mathcal G_k\) | \(k\)-point energy correlator |
 | \(\mathcal A_n(x_\perp)\) | averaged null energy operator on a null line |
+| \(N_n=n^\perp/\mathbb R n\) | transverse quotient to the null direction \(n\) |
+| \(\varphi\) | compactly supported nonnegative test function on \(N_n\) |
+| \(\mathcal A_n(\varphi)\) | transversely smeared ANEC quadratic form |
+| \(x^\pm=x^0\pm x^1\), \(y\) | light-cone and transverse coordinates used in the modular proof mechanism |
+| \(R_f\), \(K_f\) | null-cut domain of dependence and its vacuum modular Hamiltonian |
 | \(t_2,t_4\) | parity-even four-dimensional stress-tensor three-point coordinates in conformal collider normalization |
 | \(\mathrm{EEC}_\Psi(\chi)\) | normalized energy-energy correlator in state \(\Psi\) |
 | \(\mathbb L_\alpha\) | light-ray operator appearing in the light-ray OPE |
@@ -62,12 +77,16 @@ The chapter establishes:
    contact terms that must be included or removed by an explicit convention.
 3. The averaged null energy operator is the null-line version of the
    calorimetric energy detector after conformal compactification.
-4. Positivity of the energy detector implies the displayed
+4. ANEC positivity is recorded as a theorem boundary with explicit
+   Lorentzian CFT hypotheses, a transversely smeared quadratic form, and the
+   modular/causal proof mechanisms stated at the level needed for collider
+   applications.
+5. Positivity of the energy detector implies the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
-5. The CFT EEC and the QCD EEC are the same detector construction with
+6. The CFT EEC and the QCD EEC are the same detector construction with
    different dynamical state spaces.
-6. The convergent light-ray OPE is used with explicit Lorentzian CFT
+7. The convergent light-ray OPE is used with explicit Lorentzian CFT
    hypotheses rather than treated as a general axiom of QFT.
 
 ## Figures
@@ -89,3 +108,5 @@ The chapter establishes:
 - Do not conflate contact terms in detector products with counterterms in a
   regulated action.
 - Keep theorem boundaries visible for ANEC positivity and the light-ray OPE.
+- The finite helicity reduction of the four-dimensional collider bounds is
+  checked by `calculation-checks/conformal_collider_checks.py`.
