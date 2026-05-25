@@ -38,6 +38,8 @@ The chapter establishes:
   and uniqueness of the OPE-normalized block;
 - the finite-level quotient Gram-matrix projector used in the radial block
   expansion, including null descendant removal before matrix inversion;
+- the connection between short-multiplet null descendants from Chapter 7 and
+  the levelwise null-submodule quotients used in conformal block construction;
 - conformal partial waves as shadow-projector/harmonic-analysis kernels,
   distinct from OPE-channel blocks and normalized together with their
   Plancherel density;
@@ -199,6 +201,11 @@ The chapter establishes:
   stated explicitly that the listed items are clauses of
   `hyp:radial-reconstruction-data`, not an independent duplicate set of
   assumptions.
+- 2026-05-24 issue #422 pass: expanded the local OPE-block existence theorem
+  to identify the null descendants supplied by saturated Chapter 7 unitarity
+  bounds and to quotient the raw descendant space
+  \(W_n\simeq\operatorname{Sym}^n(\mathbb C^D)\otimes V_{\Delta,\ell}\) by the
+  level-\(n\) null radical before inverting the Gram matrix.
 - 2026-05-24 follow-up pass: replaced literal product/equality language in
   the opening OPE formulation and reconstruction discussion by state-valued
   BPZ/radial-norm convergence of local-operator partial sums.

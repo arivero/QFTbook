@@ -46,6 +46,9 @@ The chapter establishes:
 - Theorem `thm:basic-unitarity-bounds-short-multiplets`, which collects the
   scalar, spinor, and symmetric-traceless bounds and their saturation
   equations in one labeled statement.
+- Section `sec:short-multiplets-operator-equations`, which records that
+  saturated bounds become null-descendant operator equations in the quotient
+  local-operator space.
 
 ## Claims To Verify
 
@@ -107,3 +110,6 @@ The chapter establishes:
   Hilbert-space derivation of \(P_\mu^\dagger=K_\mu\), so level-one descendant
   positivity rests on the reflection-positive radial completion rather than on
   an unexplained inversion slogan.
+- 2026-05-24 issue #422 pass: labeled the short-multiplet operator-equation
+  discussion so the conformal-block construction can reference the precise
+  source of the null descendants that must be subtracted level-by-level.

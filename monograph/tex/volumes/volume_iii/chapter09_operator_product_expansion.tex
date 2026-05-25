@@ -768,14 +768,33 @@ coefficient normalized as in
 \eqref{eq:block-ope-frobenius-branch} and with zero coefficient multiplying the
 shadow branch \eqref{eq:block-shadow-frobenius-branch}.
 
+Short multiplets require a levelwise quotient, not a single informal deletion
+of dependent vectors.  Section~\ref{sec:short-multiplets-operator-equations}
+explains how saturation of a unitarity bound produces a null descendant at a
+definite level: for example the scalar Laplace descendant
+\(\widehat P^2\ket\phi\) at level \(2\), the divergence of a conserved
+symmetric-traceless tensor at level \(1\), or the spinor gamma-trace descendant
+at level \(1\).  If \(N_{\alpha}\) denotes such a singular null descendant at
+level \(r_\alpha\), then every
+\[
+  \widehat P_{\mu_1}\cdots\widehat P_{\mu_k}N_{\alpha}
+  \qquad (k\ge0)
+\]
+is null at level \(r_\alpha+k\).  The descendant space used in the block at
+level \(n\) is therefore the raw level-\(n\) descendant space modulo the span of
+all null descendants whose total level is \(n\).  This is the same null
+submodule subtraction that produces the short-module characters in
+Chapter~\ref{ch:volume-iii-radial-quantization}; it is performed before any
+Gram matrix is inverted.
+
 \begin{theorem}[Local existence and uniqueness of the OPE block]
 \label{thm:casimir-block-local-existence-uniqueness}
 Assume the radial reconstruction hypotheses of
 Hypothesis~\ref{hyp:radial-reconstruction-data}, finite multiplicity of
-descendant states at each level, and passage to the quotient by null
-descendants when they occur.  For scalar external operators and one exchanged
-symmetric-traceless primary of dimension \(\Delta\) and spin \(\ell\), there is
-a unique \(12\)-channel block with the OPE normalization
+descendant states at each level, and the levelwise null-submodule quotient just
+described.  For scalar external operators and one exchanged symmetric-traceless
+primary of dimension \(\Delta\) and spin \(\ell\), there is a unique
+\(12\)-channel block with the OPE normalization
 \eqref{eq:block-ope-frobenius-branch}.  It is a convergent radial series for
 \(r<1\), satisfies the Casimir equation
 \eqref{eq:scalar-block-casimir-equation}, and contains no shadow branch.
@@ -783,12 +802,33 @@ a unique \(12\)-channel block with the OPE normalization
 
 \begin{proof}
 Let \(V_{\Delta,\ell}\) be the conformal multiplet generated from the exchanged
-primary.  At descendant level \(n\), choose a basis
-\(\{\ket{A,n}\}_A\) of the quotient by null states and let
+primary.  Let
+\[
+  W_n\simeq \operatorname{Sym}^n(\mathbb C^D)\otimes V_{\Delta,\ell}
+\]
+be the raw level-\(n\) descendant space before equations of motion,
+conservation laws, or other shortening relations are imposed.  Its null radical
+for the radial Gram form is
+\[
+  \mathcal N_n
+  =
+  \{v\in W_n:\langle v,w\rangle=0\text{ for all }w\in W_n\}.
+\]
+When the exchanged multiplet is short, \(\mathcal N_n\) is generated
+level-by-level by the singular null descendants fixed by the saturated
+unitarity bounds and by all of their translation descendants at total level
+\(n\).  Reflection positivity implies that every vector in \(\mathcal N_n\) has
+zero matrix element against every physical exterior state, so replacing
+\(W_n\) by
+\[
+  Q_n=W_n/\mathcal N_n
+\]
+does not change any physical four-point function.  Choose a basis
+\(\{\ket{A,n}\}_A\) of \(Q_n\) and let
 \[
   M^{(n)}_{AB}=\langle A,n|B,n\rangle
 \]
-be the Gram matrix.  The quotient basis is linearly independent, hence
+be the quotient Gram matrix.  The quotient has no null radical, hence
 \(M^{(n)}\) is invertible on this finite-dimensional space.  The contribution
 of this level to the four-point function is
 \begin{equation}
