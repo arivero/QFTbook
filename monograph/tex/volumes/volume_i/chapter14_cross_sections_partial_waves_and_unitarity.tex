@@ -66,6 +66,11 @@ after subtracting the identity contribution.  The connected contribution to
 \[
   \ii(2\pi)^D\delta^{(D)}(P_{\mathrm{out}}-P_{\mathrm{in}})\mathcal M .
 \]
+Throughout this chapter, \(\mathcal M(f|i)\) means the \(T\)-matrix element
+with ket label \(i\) and bra label \(f\), namely the transition \(i\to f\).
+The notation is ordered; \(\mathcal M(f|i)\) and \(\mathcal M(i|f)\) are
+different matrix elements unless an additional reciprocity symmetry is
+assumed.
 
 \section{Sharp-Momentum Limit and Delta-Squares}
 
@@ -424,6 +429,16 @@ overall momentum-conservation delta function, the sharp-kernel form is
 where \(X\) runs over all allowed multiparticle channels and
 \(\dd\Phi_X\) includes the corresponding phase-space measure and symmetry
 factors.
+The conjugated factor on the right is fixed by Hilbert-space adjunction:
+\[
+  \langle f|T^\dagger|X\rangle
+  =
+  \langle X|T|f\rangle^* .
+\]
+Thus it is \(\mathcal M(X|f)^*\), not in general
+\(\mathcal M(f|X)^*\).  Replacing one by the other would require an additional
+reciprocity statement, for example from a time-reversal or detailed-balance
+symmetry after its antiunitary phases have been fixed.
 
 For \(f=i\), this becomes the optical theorem
 \[
@@ -432,6 +447,10 @@ For \(f=i\), this becomes the optical theorem
   \sum_X
   \int\dd\Phi_X\,|\mathcal M(X|i)|^2 .
 \]
+No time-reversal invariance is used in this forward specialization:
+\(\langle i|T^\dagger|X\rangle=\langle X|T|i\rangle^*\) by the definition of
+the adjoint, so each term is the norm square of the outgoing transition
+amplitude from the fixed incoming state.
 For two incoming particles,
 \[
   \sigma_{\rm tot}

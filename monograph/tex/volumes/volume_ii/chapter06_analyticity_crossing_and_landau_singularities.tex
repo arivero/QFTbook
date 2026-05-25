@@ -384,13 +384,20 @@ delta function gives, on the \(s\)-channel physical cut,
   \sum_X
   \int \dd\Phi_X\,
   \mathcal M_{X\alpha}\,
-  \mathcal M_{\beta X}^{\,*}.
+  \mathcal M_{X\beta}^{\,*}.
   \label{eq:cutkosky-unitarity-discontinuity}
 \end{equation}
 Here \(X\) runs over on-shell intermediate states with total momentum
 \(P_\alpha\), and \(\dd\Phi_X\) is the Lorentz-invariant phase-space measure,
 including the factor \(1/N!\) for \(N\) identical particles when the state sum is
-over unordered particles.
+over unordered particles.  The subscript convention is
+\(\mathcal M_{\gamma\delta}=\mathcal M(\gamma|\delta)\), so the conjugated
+factor is the amplitude \(\beta\to X\), complex conjugated.  It is not, in a
+generic theory, the complex conjugate of the reversed process \(X\to\beta\).
+Writing \(\mathcal M_{\beta X}^{\,*}\) in this exact Hilbert-space identity
+would add a reciprocity assumption, such as time-reversal invariance with
+specified antiunitary phase conventions.  The forward case \(\beta=\alpha\)
+then reduces to the positive optical-theorem sum.
 
 \begin{remark}[Unitarity discontinuity and perturbative cut rules]
 \label{rem:unitarity-discontinuity-versus-cutkosky}
@@ -524,9 +531,9 @@ The second statement identifies the same term inside a fixed Feynman graph.
 Apply Proposition~\ref{prop:largest-time-identity} to the graph.  The
 difference between its two physical boundary values is the sum of mixed
 circlings.  For the chosen \(s\)-channel discontinuity, retain the circlings
-whose mixed lines separate the graph into the two subgraphs carrying the
-external labels \(\alpha\to X\) and \(X\to\beta\).  The mixed propagator on
-each separating line is exactly
+whose mixed lines separate the graph into the ordinary subamplitude
+\(\alpha\to X\) and the adjoint subamplitude whose unconjugated orientation is
+\(\beta\to X\).  The mixed propagator on each separating line is exactly
 \[
   \frac{\dd^D q_i}{(2\pi)^D}
   (2\pi)\theta(q_i^0)\delta(q_i^2+m_i^2),

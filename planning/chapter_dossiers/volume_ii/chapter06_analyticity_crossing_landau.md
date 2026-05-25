@@ -112,6 +112,12 @@
 - The Cutkosky theorem must contain both pieces: the Hilbert-space
   discontinuity from \(S^\dagger S=1\) and the largest-time/circling argument
   that identifies a graph cut with on-shell line replacements.
+- 2026-05-24 issue #391 pass: corrected the exact discontinuity identity to
+  use \(\mathcal M_{X\alpha}\mathcal M_{X\beta}^*\), where
+  \(\mathcal M_{\gamma\delta}\) denotes \(\delta\to\gamma\).  The conjugated
+  factor is the adjoint matrix element for \(\beta\to X\), not the reversed
+  amplitude \(X\to\beta\); replacing it by \(\mathcal M_{\beta X}^*\) would
+  assume a separate reciprocity or time-reversal statement.
 - Feynman-parameter pinches obey
   \[
     \alpha_i(q_i^2+m_i^2)=0,\qquad

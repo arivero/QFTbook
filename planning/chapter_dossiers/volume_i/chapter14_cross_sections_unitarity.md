@@ -64,6 +64,14 @@
   sectors.
 - Unitarity gives the amplitude-level cutting relation and the optical
   theorem.
+- 2026-05-24 issue #391 pass: the unitarity identity now explicitly
+  distinguishes Hilbert-space adjunction from reversed-process reciprocity.
+  The factor in the exact relation is
+  \(\mathcal M(X|f)^*\), because
+  \(\langle f|T^\dagger|X\rangle=\langle X|T|f\rangle^*\).  The forward
+  optical theorem therefore gives
+  \(\sum_X\int d\Phi_X |\mathcal M(X|i)|^2\) from unitarity alone; no
+  time-reversal invariance is being assumed.
 - The optical theorem is stated as a complete outgoing-state sum.  Finite
   detector resolution is represented by a positive outgoing effect
   \(E_{\mathcal C}\), with the full forward imaginary part corresponding to
