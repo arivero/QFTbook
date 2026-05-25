@@ -282,13 +282,155 @@ inverse square of \(S_{0x}\), which is exactly the displayed exponent.
 
 \section{Boundary Theory}
 
-If \(M\) has boundary, gauge variation of the Chern--Simons action produces a
-boundary term.  One way to restore a gauge-invariant variational problem is
-to add boundary degrees of freedom whose action is the chiral Wess--Zumino--
-Witten functional at level \(k\).  The boundary current algebra is the affine
-Lie algebra determined by \(G\) and the same invariant form.  This is a
-boundary reconstruction statement: the precise Hilbert space depends on the
-chosen polarization and boundary condition.
+If \(M\) has boundary, the boundary term in the variation is the first
+datum.  Let \(\partial M=\Sigma\), choose a complex coordinate \(z,\bar z\)
+on \(\Sigma\), and write
+\[
+  A_\Sigma=A_z\,\dd z+A_{\bar z}\,\dd\bar z,
+  \qquad
+  \dd^2z:=\dd z\wedge\dd\bar z .
+\]
+On solutions of \(F_A=0\), the variation of the bulk Chern--Simons action is
+\[
+  \delta S_{\rm CS}\big|_{F=0}
+  =
+  \frac{k}{4\pi}\int_\Sigma
+  \operatorname{tr}(A_\Sigma\wedge\delta A_\Sigma)
+  =
+  \frac{k}{4\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}
+  \left(A_z\delta A_{\bar z}-A_{\bar z}\delta A_z\right).
+\]
+The holomorphic polarization fixes \(A_{\bar z}\) as the source and adds
+\[
+  S_{\rm pol}
+  =
+  \frac{k}{4\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}(A_zA_{\bar z}).
+\]
+Then
+\begin{equation}
+  \delta(S_{\rm CS}+S_{\rm pol})\big|_{F=0}
+  =
+  \frac{k}{2\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}(A_z\,\delta A_{\bar z}).
+  \label{eq:cs-boundary-polarized-variation}
+\end{equation}
+Thus \(kA_z/(2\pi)\) is the current conjugate to \(A_{\bar z}\) in this
+polarization.
+
+The corresponding boundary field is a map \(g:\Sigma\to G\).  For an
+extension of \(g\) to a three-manifold \(B\) with \(\partial B=\Sigma\), set
+\begin{equation}
+  S_{{\rm WZW},k}(g)
+  =
+  \frac{k}{4\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}
+  \left(g^{-1}\partial_zg\,g^{-1}\partial_{\bar z}g\right)
+  +
+  \frac{k}{12\pi}\int_B
+  \operatorname{tr}(g^{-1}\dd g)^3 .
+  \label{eq:wzw-action-boundary-cs}
+\end{equation}
+The Wess--Zumino term is defined modulo \(2\pi\mathbb Z\) in
+\(\exp(\ii S)\) exactly when the same integral normalization that quantizes
+the Chern--Simons level is used.
+
+\begin{lemma}[Polyakov--Wiegmann identity]
+\label{lem:polyakov-wiegmann-boundary}
+With the convention \eqref{eq:wzw-action-boundary-cs},
+\[
+  S_{{\rm WZW},k}(gh)
+  =
+  S_{{\rm WZW},k}(g)+S_{{\rm WZW},k}(h)
+  +
+  \frac{k}{2\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}
+  \left(g^{-1}\partial_{\bar z}g\,
+  \partial_zh\,h^{-1}\right).
+\]
+\end{lemma}
+
+\begin{proof}
+The Maurer--Cartan form of the product is
+\[
+  (gh)^{-1}\dd(gh)
+  =
+  h^{-1}(g^{-1}\dd g)h+h^{-1}\dd h .
+\]
+Cyclicity and invariance of \(\operatorname{tr}\) give the three-form
+identity
+\[
+  \operatorname{tr}\!\left((gh)^{-1}\dd(gh)\right)^3
+  =
+  \operatorname{tr}(g^{-1}\dd g)^3
+  +
+  \operatorname{tr}(h^{-1}\dd h)^3
+  -
+  3\,\dd\operatorname{tr}
+  \left(g^{-1}\dd g\wedge \dd h\,h^{-1}\right).
+\]
+Stokes' theorem converts the final term to a boundary integral on
+\(\Sigma\).  Expanding the kinetic term in
+\eqref{eq:wzw-action-boundary-cs} for \(gh\) gives the two separate kinetic
+terms plus the two cross terms.  The boundary contribution from the Wess--
+Zumino term cancels one cross term and doubles the other, leaving precisely
+the displayed expression.
+\end{proof}
+
+The gauged chiral boundary action in the same polarization is
+\begin{equation}
+  S_{\partial,k}(g;A_{\bar z})
+  =
+  S_{{\rm WZW},k}(g)
+  +
+  \frac{k}{2\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}
+  \left(\partial_zg\,g^{-1}A_{\bar z}\right).
+  \label{eq:chiral-gauged-wzw-boundary-action}
+\end{equation}
+If a flat bulk connection is written near the boundary as
+\[
+  A_z=-\partial_zg\,g^{-1},
+\]
+then
+\[
+  \delta_{A_{\bar z}}S_{\partial,k}
+  =
+  -\frac{k}{2\pi}\int_\Sigma\dd^2z\,
+  \operatorname{tr}(A_z\,\delta A_{\bar z}),
+\]
+which cancels the polarized Chern--Simons variation
+\eqref{eq:cs-boundary-polarized-variation}.  This is the precise sense in
+which the chiral Wess--Zumino--Witten boundary degree of freedom supplies the
+boundary term needed by the Chern--Simons variational problem.
+
+The holomorphic current is
+\[
+  J(z)=-\frac{k}{2\pi}\,\partial_zg\,g^{-1}.
+\]
+Writing \(J=J^at_a\), with
+\(\operatorname{tr}(t_at_b)=\kappa_{ab}\) and
+\([t_a,t_b]=\ii f^c{}_{ab}t_c\), quantization gives the affine current
+algebra at level \(k\),
+\[
+  J^a(z)J^b(w)
+  \sim
+  \frac{k\,\kappa^{ab}}{(z-w)^2}
+  +
+  \frac{\ii f^{ab}{}_{c}J^c(w)}{z-w},
+\]
+equivalently
+\[
+  [J_m^a,J_n^b]
+  =
+  \ii f^{ab}{}_{c}J_{m+n}^c
+  +
+  k\,m\,\kappa^{ab}\delta_{m+n,0}.
+\]
+The precise Hilbert space still depends on the boundary polarization and
+global boundary condition, but the local current algebra and its level are
+fixed by the same integer \(k\) that quantizes the bulk Chern--Simons action.
 
 \begin{openproblem}[Chern--Simons path integral as a QFT object]
 \label{op:chern-simons-qft-object}

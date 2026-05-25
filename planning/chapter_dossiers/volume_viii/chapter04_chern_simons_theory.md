@@ -17,7 +17,9 @@
 - Explicit \(SU(2)_k\) modular \(S\)-matrix, quantum dimensions, normalized
   unknot and Hopf-link expectation values.
 - Verlinde fusion formula and closed-surface state-space dimensions.
-- Boundary relation to affine current algebra/WZW data.
+- Boundary polarization, chiral Wess--Zumino--Witten action, the
+  Polyakov--Wiegmann identity, cancellation of the Chern--Simons boundary
+  variation, and the level-\(k\) affine current algebra.
 
 ## Symbols
 
@@ -32,6 +34,8 @@
 | \(S_{ab}\) | \(SU(2)_k\) modular \(S\)-matrix |
 | \(d_a\) | quantum dimension of Wilson-line label \(a\) |
 | \(N_{ab}^{\phantom{ab}c}\) | Verlinde fusion coefficient |
+| \(S_{{\rm WZW},k}(g)\) | boundary Wess--Zumino--Witten functional |
+| \(J^a(z)\) | boundary affine current |
 
 ## Claim Ledger
 
@@ -46,6 +50,10 @@
    and \(S_{ab}/S_{00}\), respectively.
 7. Verlinde fusion gives the truncated \(SU(2)\) Clebsch--Gordan rule, and
    \(\dim\mathcal H(\Sigma_g)=\sum_x(S_{0x})^{2-2g}\).
+8. In holomorphic boundary polarization, the on-shell Chern--Simons variation
+   is \(k(2\pi)^{-1}\int A_z\,\delta A_{\bar z}\); the gauged chiral WZW
+   boundary action cancels it, and its Polyakov--Wiegmann identity gives the
+   level-\(k\) affine current algebra.
 
 ## Calculation Checks
 
