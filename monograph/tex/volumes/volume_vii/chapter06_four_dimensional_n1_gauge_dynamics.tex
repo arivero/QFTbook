@@ -1,0 +1,189 @@
+\chapter{Four-Dimensional N=1 Gauge Dynamics}
+\label{ch:susy-four-dimensional-n1-gauge-dynamics}
+
+\ConventionsLorentzian
+
+This chapter develops the first layer of four-dimensional \(\mathcal N=1\)
+gauge dynamics in Wilsonian coordinates.  The conclusions are conditional on
+the supersymmetric Wilsonian scheme and anomaly ledger fixed in
+Chapters~\ref{ch:susy-wilsonian-schemes-exact-dynamics} and
+\ref{ch:susy-nonrenormalization-holomorphy}.
+
+\section{SQCD Data}
+
+Let \(G=SU(N_c)\).  Supersymmetric QCD with \(N_f\) flavors has chiral
+superfields
+\[
+  Q^i\in \mathbf N_c,\qquad
+  \widetilde Q_j\in \overline{\mathbf N}_c,
+  \qquad i,j=1,\ldots,N_f .
+\]
+The vector multiplet has field strength \(W_\alpha\), and the Wilsonian gauge
+coordinate is
+\[
+  \frac{1}{16\pi\ii}\int d^4x\,d^2\theta\,
+  \tau\,\operatorname{tr}(W^\alpha W_\alpha)+\text{c.c.}
+\]
+with the trace convention inherited from Chapter~\ref{ch:susy-gauge-theory}.
+The holomorphic scale is the invariant coordinate
+\[
+  \Lambda_h^{b_0}
+  =
+  \mu^{b_0}\exp(2\pi\ii\tau(\mu)),
+  \qquad
+  b_0=3N_c-N_f .
+\]
+This equation defines \(\Lambda_h\) after a branch convention has been chosen;
+only \(\Lambda_h^{b_0}\) is invariant under the periodicity of \(\theta\).
+
+\section{Gauge-Invariant Chiral Coordinates}
+
+The meson matrix is the chiral operator
+\[
+  M^i{}_j=\widetilde Q_j Q^i .
+\]
+For \(N_f\geq N_c\) there are baryons
+\[
+  B^{i_1\cdots i_{N_c}}
+  =
+  \epsilon_{a_1\cdots a_{N_c}}
+  Q^{a_1 i_1}\cdots Q^{a_{N_c}i_{N_c}},
+\]
+and similarly antibaryons \(\widetilde B\).  The classical chiral coordinate
+ring is the quotient of the polynomial ring in \(M,B,\widetilde B\) by the
+relations obtained from the definitions above.  Quantum dynamics changes this
+ring only through Wilsonian chiral coordinates compatible with holomorphy,
+global symmetries, and anomalies.
+
+\section{Anomaly-Free R-Symmetry}
+
+Assign
+\[
+  R(Q)=R(\widetilde Q)=1-\frac{N_c}{N_f},
+  \qquad
+  R(W_\alpha)=1 .
+\]
+The \(SU(N_c)^2U(1)_R\) anomaly coefficient is
+\[
+  N_c+\frac12N_f(R(Q)-1)+\frac12N_f(R(\widetilde Q)-1)=0
+\]
+in the fundamental normalization where each fundamental contributes
+\(\frac12\).  This \(R\)-symmetry is part of the chiral-coordinate selection
+data when \(N_f>0\).  If a mass term
+\[
+  W_{\mathrm{tree}}=m_i{}^jM^i{}_j
+\]
+is included, then \(m_i{}^j\) is treated as a background chiral coordinate
+with the charge needed to make the superpotential have \(R\)-charge \(2\).
+
+\section{Gaugino Condensation}
+
+For pure \(SU(N_c)\) supersymmetric Yang--Mills, \(b_0=3N_c\).  Let
+\[
+  S=-\frac{1}{32\pi^2}\operatorname{tr}(W^\alpha W_\alpha)
+\]
+be the chiral glueball coordinate in the same trace convention.  The anomalous
+discrete chiral symmetry leaves a \(\mathbb Z_{2N_c}\) symmetry of the
+classical gaugino phase and permits \(N_c\) vacua after condensation:
+\[
+  \langle S\rangle_k
+  =
+  C\,\Lambda_h^3\,\exp\!\left(\frac{2\pi\ii k}{N_c}\right),
+  \qquad
+  k=0,\ldots,N_c-1 .
+\]
+The constant \(C\) depends on the normalization of \(S\) and on the definition
+of \(\Lambda_h\).  The statement with invariant content is the existence of a
+nonzero chiral condensate with these discrete phases in a scheme where the
+low-energy theory has a mass gap and isolated vacua.
+
+\section{ADS Superpotential}
+
+Assume \(N_f<N_c\) and consider the region where \(M\) has maximal rank.  The
+holomorphic superpotential compatible with flavor symmetry, the anomaly-free
+\(R\)-symmetry, and the scale coordinate has the form
+\[
+  W_{\mathrm{ADS}}
+  =
+  C_{N_c,N_f}
+  \left(
+  \frac{\Lambda_h^{3N_c-N_f}}{\det M}
+  \right)^{\frac{1}{N_c-N_f}} .
+\]
+Its mass dimension is \(3\), because
+\[
+  [\Lambda_h^{3N_c-N_f}]=3N_c-N_f,\qquad
+  [\det M]=2N_f,
+\]
+and
+\[
+  \frac{3N_c-N_f-2N_f}{N_c-N_f}=3 .
+\]
+Its \(R\)-charge is \(2\), since \(R(M)=2(1-N_c/N_f)\), hence
+\[
+  R(\det M)=2N_f-2N_c,
+  \qquad
+  R\!\left((\det M)^{-1/(N_c-N_f)}\right)=2 .
+\]
+The coefficient is fixed by matching to a semiclassical instanton
+calculation for \(N_f=N_c-1\) and by holomorphic decoupling for smaller
+\(N_f\), once the instanton measure and scale convention have been specified.
+
+\begin{proposition}[Holomorphic decoupling equation]
+\label{prop:susy-holomorphic-decoupling}
+Give the \(N_f\)-flavor theory a mass \(m\) for the last flavor.  If the
+low-energy \((N_f-1)\)-flavor Wilsonian theory is reached by integrating out
+that massive chiral pair, then the holomorphic scales obey
+\[
+  \Lambda_{N_f-1}^{3N_c-(N_f-1)}
+  =
+  m\,\Lambda_{N_f}^{3N_c-N_f}.
+\]
+\end{proposition}
+
+\begin{proof}
+Match the holomorphic gauge coordinate at the threshold \(\mu=m\).  Above the
+threshold the one-loop coefficient is \(3N_c-N_f\); below it is
+\(3N_c-(N_f-1)\).  The invariant combinations
+\[
+  \mu^{3N_c-N_f}e^{2\pi\ii\tau_{\mathrm{above}}(\mu)}
+  \quad\text{and}\quad
+  \mu^{3N_c-(N_f-1)}e^{2\pi\ii\tau_{\mathrm{below}}(\mu)}
+  \]
+are equal at \(\mu=m\) after the massive determinant is included in the
+Wilsonian chiral coordinate.  Eliminating the common value of \(\tau(m)\)
+gives the displayed equation.
+\end{proof}
+
+\section{Quantum Modified Constraint}
+
+For \(N_f=N_c\), the classical relation between mesons and baryons is
+\[
+  \det M-B\widetilde B=0 .
+\]
+The holomorphic scale has dimension \(2N_c\) and the same global quantum
+numbers as the left side.  The quantum chiral coordinate ring is therefore
+expected, under the Wilsonian and infrared hypotheses just stated, to obey
+\[
+  \det M-B\widetilde B=\Lambda_h^{2N_c}.
+\]
+This equation is a statement about the chiral ring and its vacuum space.  It
+does not by itself determine the full Hilbert space, massive spectrum, or
+metric on the moduli space.
+
+\section{Status Boundary}
+
+The arguments in this chapter determine holomorphic coordinates from symmetry,
+anomaly, decoupling, and semiclassical input.  Turning them into a theorem for
+a four-dimensional continuum QFT requires a nonperturbative construction of
+the regulated supersymmetric gauge theory, a proof of the required mass gaps
+or moduli-space descriptions, and a Wilsonian scheme in which the chiral
+coordinates above are defined as continuum limits.
+
+\begin{openproblem}[Nonperturbative \(\mathcal N=1\) Wilsonian scheme]
+\label{op:n1-nonperturbative-wilsonian-scheme}
+Construct a four-dimensional regulator and continuum limit for
+\(\mathcal N=1\) gauge theories that preserves enough supersymmetric and gauge
+Ward identities to make the holomorphic Wilsonian coordinate arguments above
+theorem-level statements.
+\end{openproblem}

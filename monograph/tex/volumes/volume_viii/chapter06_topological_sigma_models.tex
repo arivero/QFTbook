@@ -1,0 +1,136 @@
+\chapter{Topological Sigma Models}
+\label{ch:tqft-topological-sigma-models}
+
+\ConventionsEuclidean
+
+Topological sigma models are cohomological QFTs whose bosonic field is a map
+from a Riemann surface to a target manifold.  The A-model and B-model use
+different geometric data on the target and therefore produce different
+cohomological observables.
+
+\section{Sigma-Model Field Space}
+
+Let \(\Sigma\) be a closed oriented Riemann surface and \(X\) a compact
+Kahler manifold.  The bosonic configuration space is
+\[
+  \operatorname{Map}(\Sigma,X).
+\]
+At a map \(\phi:\Sigma\to X\), tangent vectors are sections of
+\[
+  \Gamma(\Sigma,\phi^\ast TX).
+\]
+Fermionic variables in the cohomological model are parity-shifted sections of
+bundles built from \(\phi^\ast TX\), \(\phi^\ast T^{1,0}X\), and
+\(\phi^\ast T^{0,1}X\).  The field space is therefore a locally super-ringed
+space over \(\operatorname{Map}(\Sigma,X)\), with fermionic directions encoded
+by its structure sheaf.
+
+\section{A-Model BRST Complex}
+
+For the A-model, the observables are built from de Rham classes on \(X\).
+Let \(\psi^i\) denote the fermionic variable corresponding to \(d\phi^i\) in
+local coordinates on \(X\).  The scalar cohomological differential acts by
+\[
+  Q\phi^i=\psi^i,\qquad Q\psi^i=0
+\]
+on zero-form observables.  If \(\alpha\in\Omega^p(X)\), define
+\[
+  \mathcal O_\alpha(x)
+  =
+  \frac{1}{p!}\alpha_{i_1\cdots i_p}(\phi(x))
+  \psi^{i_1}(x)\cdots\psi^{i_p}(x).
+\]
+Then
+\[
+  Q\mathcal O_\alpha=\mathcal O_{d\alpha}.
+\]
+Thus local A-model observables are represented by de Rham cohomology classes
+of \(X\), modulo the usual proviso that contact terms and descendants require
+a source convention.
+
+\section{Localization to Holomorphic Maps}
+
+Let \(J_\Sigma\) and \(J_X\) be the complex structures on \(\Sigma\) and
+\(X\).  The instanton equation is
+\[
+  \bar\partial_J\phi
+  =
+  \frac12(d\phi+J_X\circ d\phi\circ J_\Sigma)=0 .
+\]
+The bosonic action contains
+\[
+  \frac{1}{2e^2}\int_\Sigma |d\phi|^2\,d\operatorname{vol}
+  +\ii\int_\Sigma \phi^\ast(B+\ii\omega),
+\]
+where \(\omega\) is the Kahler form and \(B\) is a closed two-form background.
+After the topological twist, the positive term is \(Q\)-exact up to the
+topological area
+\[
+  \int_\Sigma\phi^\ast\omega .
+\]
+The localization locus is therefore the moduli space
+\[
+  \mathcal M_{\beta}(\Sigma,X)
+  =
+  \{\phi:\Sigma\to X\,:\,\bar\partial_J\phi=0,\ [\phi(\Sigma)]=\beta\}.
+\]
+For compact smooth moduli spaces without excess zero modes, a genus-\(g\)
+correlator of A-model observables is the finite-dimensional integral
+\[
+  \sum_{\beta}
+  q^\beta
+  \int_{\mathcal M_{\beta}(\Sigma,X)}
+  \bigwedge_a \operatorname{ev}_a^\ast\alpha_a ,
+\]
+where \(\operatorname{ev}_a\) evaluates a holomorphic map at the marked point
+supporting \(\alpha_a\).  Singular moduli spaces require a virtual
+fundamental class or an equivalent finite-dimensional replacement of the
+localized integral.
+
+\section{B-Model Observables}
+
+For the B-model, \(X\) must be Calabi-Yau for the usual anomaly cancellation
+on closed worldsheets.  Local observables are represented by
+\[
+  H^q(X,\wedge^p T^{1,0}X).
+\]
+In local coordinates, if \(\eta^{\bar i}\) is the fermionic coordinate for
+\(\Omega^{0,1}\) and \(\theta_i\) is the fermionic coordinate dual to
+\(\partial/\partial z^i\), a polyvector-valued \((0,q)\)-form
+\[
+  \mu
+  =
+  \mu^{i_1\cdots i_p}{}_{\bar j_1\cdots\bar j_q}
+  d\bar z^{\bar j_1}\cdots d\bar z^{\bar j_q}
+  \otimes
+  \partial_{i_1}\wedge\cdots\wedge\partial_{i_p}
+\]
+gives an observable
+\[
+  \mathcal O_\mu
+  =
+  \mu^{i_1\cdots i_p}{}_{\bar j_1\cdots\bar j_q}(\phi)
+  \eta^{\bar j_1}\cdots\eta^{\bar j_q}
+  \theta_{i_1}\cdots\theta_{i_p}.
+\]
+The cohomological differential acts as \(\bar\partial\) on this complex, so
+the local B-model state space is the corresponding Dolbeault cohomology.
+
+\section{Dependence on Target Geometry}
+
+The A-model correlation functions depend on the symplectic/Kahler class and
+on the \(B\)-field through \(q^\beta\).  Complex-structure deformations change
+the representative action by \(Q\)-exact terms when the anomaly conditions are
+satisfied.  The B-model reverses this pattern: its local observables and
+correlators depend on complex-structure data, while Kahler deformations are
+\(Q\)-exact.  This statement is a cohomological Ward identity; its use in a
+continuum QFT requires a regulator preserving the corresponding \(Q\)-symmetry
+and a compactification of zero-mode integrals.
+
+\begin{openproblem}[Topological sigma model as continuum QFT]
+\label{op:topological-sigma-model-continuum-qft}
+Formulate A- and B-models as continuum cohomological QFTs with explicit
+integration cycles, compactified zero-mode spaces, anomaly line, and
+gluing-compatible correlation functionals, rather than only as
+finite-dimensional enumerative prescriptions.
+\end{openproblem}

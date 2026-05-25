@@ -1,0 +1,142 @@
+\chapter{Monte Carlo Methods and Sign Problems}
+\label{ch:constructive-monte-carlo-sign-problems}
+
+\ConventionsEuclidean
+
+Monte Carlo methods evaluate finite-regulator Euclidean expectation values by
+sampling a probability distribution.  Their mathematical content is a
+finite-dimensional integration problem plus a convergence theorem for a
+Markov chain.  Their limitation in many QFTs is the absence of a positive
+sampling weight compatible with the target observable.
+
+\section{Finite-Regulator Expectation Values}
+
+Let \(\Omega_\Lambda\) be a finite-dimensional regulator space and let
+\[
+  d\nu_\Lambda(\Phi)=\frac{1}{Z_\Lambda}e^{-S_\Lambda(\Phi)}d\Phi
+\]
+be a probability measure on it.  For an observable \(O:\Omega_\Lambda\to\mathbb C\),
+\[
+  \langle O\rangle_\Lambda
+  =
+  \int_{\Omega_\Lambda}O(\Phi)\,d\nu_\Lambda(\Phi).
+\]
+On a compact gauge lattice, \(d\Phi\) is a product of Haar measures and
+finite-dimensional fermionic integrals have already been performed into a
+determinant or Pfaffian when a purely bosonic sampling problem is used.
+
+\section{Markov Chains and Detailed Balance}
+
+A Markov transition kernel \(P(\Phi,d\Phi')\) preserves \(d\nu_\Lambda\) if
+\[
+  \int_{\Omega_\Lambda}d\nu_\Lambda(\Phi)\,P(\Phi,A)
+  =
+  \nu_\Lambda(A)
+\]
+for every measurable set \(A\).  Detailed balance is the stronger condition
+\[
+  d\nu_\Lambda(\Phi)P(\Phi,d\Phi')
+  =
+  d\nu_\Lambda(\Phi')P(\Phi',d\Phi).
+\]
+If the chain is irreducible and aperiodic in the finite-state case, or
+satisfies the corresponding Harris recurrence hypotheses in a continuous
+state space, the estimator
+\[
+  \overline O_N=\frac1N\sum_{n=1}^N O(\Phi_n)
+\]
+converges almost surely to \(\langle O\rangle_\Lambda\).
+
+\section{Autocorrelation and Effective Sample Size}
+
+For a stationary chain, define the connected autocorrelation function
+\[
+  C_O(t)
+  =
+  \langle O(\Phi_t)O(\Phi_0)\rangle
+  -\langle O\rangle^2 .
+\]
+The integrated autocorrelation time is
+\[
+  \tau_{\mathrm{int}}(O)
+  =
+  \frac12+\sum_{t=1}^\infty\frac{C_O(t)}{C_O(0)}
+\]
+when the sum converges.  The variance of the sample mean is then
+\[
+  \operatorname{Var}(\overline O_N)
+  =
+  \frac{2\tau_{\mathrm{int}}(O)}{N}
+  \operatorname{Var}(O)
+  +o(N^{-1}).
+\]
+Critical slowing down is the growth of \(\tau_{\mathrm{int}}\) along a scaling
+trajectory toward a continuum limit.
+
+\section{Reweighting and the Sign Problem}
+
+Suppose the target finite-regulator integral has complex weight
+\[
+  e^{-S(\Phi)}=e^{-S_R(\Phi)}e^{\ii\Theta(\Phi)}
+\]
+with positive reference measure
+\[
+  d\nu_R=\frac{1}{Z_R}e^{-S_R(\Phi)}d\Phi .
+\]
+Then
+\[
+  \langle O\rangle
+  =
+  \frac{\langle Oe^{\ii\Theta}\rangle_R}
+  {\langle e^{\ii\Theta}\rangle_R}.
+\]
+The denominator is the average phase.  If the free-energy densities of the
+target and phase-quenched systems differ by \(\Delta f\) in volume \(V\), then
+\[
+  \left|\langle e^{\ii\Theta}\rangle_R\right|
+  =
+  \exp[-V\Delta f].
+\]
+Estimating a ratio with a denominator of this size requires a number of
+independent samples growing as \(\exp[2V\Delta f]\) for fixed relative error,
+unless the numerator and denominator are computed by a method that avoids
+phase reweighting.
+
+\section{Fermion Determinants}
+
+For lattice fermions with quadratic action
+\[
+  \bar\psi D[U]\psi ,
+\]
+Berezin integration gives
+\[
+  \int d\bar\psi\,d\psi\,e^{-\bar\psi D[U]\psi}
+  =
+  \det D[U].
+\]
+If \(D\) obeys a positivity relation, such as
+\[
+  \gamma_5D\gamma_5=D^\dagger
+\]
+together with flavor pairing, the determinant can be nonnegative.  At finite
+chemical potential or in chiral gauge theories this positivity may fail.  The
+Monte Carlo problem is then not merely inefficient sampling; the finite
+regulator has no declared positive probability measure whose expectations are
+the target correlators without reweighting or contour deformation.
+
+\section{Continuum Interpretation}
+
+Monte Carlo data become QFT data only after the regulator, source
+normalization, operator renormalization, scaling trajectory, and error limits
+are specified.  A numerical estimate at finite lattice spacing is a statement
+about \(d\nu_\Lambda\).  A continuum claim requires convergence of a family of
+finite-regulator expectations in the topology needed for OS reconstruction,
+Wightman reconstruction, or the intended observable sector.
+
+\begin{openproblem}[Sign-problem-preserving continuum construction]
+\label{op:sign-problem-continuum-construction}
+Classify QFTs with complex Euclidean weights for which a nonperturbative
+continuum limit can be constructed by a positive enlarged-variable measure,
+an exact contour deformation, or another finite-regulator method with
+controlled variance and locality.
+\end{openproblem}

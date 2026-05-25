@@ -1,0 +1,154 @@
+\chapter{Schwinger--Keldysh Hydrodynamic Effective Actions}
+\label{ch:thermal-sk-hydrodynamic-effective-actions}
+
+\ConventionsRealTime
+
+Hydrodynamic effective actions are real-time generating functionals for
+conserved densities in the Schwinger--Keldysh framework.  Their variables are
+doubled, their action is complex, and their coefficients are fixed by Ward
+identities, positivity, and the KMS condition.
+
+\section{Doubled Sources and Average-Difference Variables}
+
+For a conserved \(U(1)\) current, introduce two background gauge fields
+\[
+  A_{1\mu},\qquad A_{2\mu}
+\]
+on the forward and backward time contours.  Define
+\[
+  A_{r\mu}=\frac12(A_{1\mu}+A_{2\mu}),
+  \qquad
+  A_{a\mu}=A_{1\mu}-A_{2\mu}.
+\]
+The Schwinger--Keldysh generating functional is
+\[
+  Z[A_1,A_2]=\operatorname{Tr}\!\left(
+  U[A_1]\rho_0U[A_2]^\dagger
+  \right).
+\]
+Unitarity gives
+\[
+  Z[A,A]=1,
+\]
+and therefore the effective action \(I_{\mathrm{SK}}\) obeys
+\[
+  I_{\mathrm{SK}}[A_r,A_a=0]=0 .
+\]
+
+\section{Hydrodynamic Phase Field}
+
+A hydrodynamic effective action for a conserved charge contains phase fields
+\[
+  \varphi_1,\qquad \varphi_2
+\]
+with gauge-invariant combinations
+\[
+  B_{s\mu}=A_{s\mu}+\partial_\mu\varphi_s,
+  \qquad s=1,2 .
+\]
+In \(r/a\) variables,
+\[
+  B_{r\mu}=A_{r\mu}+\partial_\mu\varphi_r,
+  \qquad
+  B_{a\mu}=A_{a\mu}+\partial_\mu\varphi_a .
+\]
+Gauge invariance under
+\[
+  A_{s\mu}\mapsto A_{s\mu}+\partial_\mu\lambda_s,\qquad
+  \varphi_s\mapsto\varphi_s-\lambda_s
+\]
+implies conservation of the current obtained by varying with respect to
+\(A_{a\mu}\).
+
+\section{Diffusion Action}
+
+For a fluid at rest with susceptibility \(\chi>0\), conductivity
+\(\sigma\geq0\), and diffusion constant
+\[
+  D=\frac{\sigma}{\chi},
+\]
+the quadratic effective action for charge diffusion may be written
+\[
+  I_{\mathrm{diff}}
+  =
+  \int dt\,d^{d-1}x\,
+  \left[
+  \chi B_{a0}B_{r0}
+  -\sigma B_{ai}\partial_i B_{r0}
+  +\ii T\sigma B_{ai}B_{ai}
+  \right],
+\]
+up to terms with more derivatives or more powers of \(a\)-type fields.  The
+imaginary part is nonnegative:
+\[
+  \operatorname{Im} I_{\mathrm{diff}}
+  =
+  T\sigma\int dt\,d^{d-1}x\, B_{ai}B_{ai}\geq0 .
+\]
+This inequality is the finite-action expression of noise positivity.
+
+\section{Equation of Motion and Retarded Correlator}
+
+Set external sources to zero after variation.  Varying with respect to
+\(\varphi_a\) gives
+\[
+  \partial_t n-D\nabla^2 n=0,
+  \qquad
+  n=\chi\,\partial_t\varphi_r .
+\]
+To compute the retarded density correlator, keep \(A_{a0}\) as the source
+for \(n\) and solve the linear equation in Fourier variables
+\((\omega,\mathbf k)\).  The result is
+\[
+  G_R^{nn}(\omega,\mathbf k)
+  =
+  \frac{\chi D\mathbf k^2}{D\mathbf k^2-\ii\omega}.
+\]
+It has the hydrodynamic pole
+\[
+  \omega=-\ii D\mathbf k^2 .
+\]
+The symmetric correlator follows from the quadratic \(a\)-field term and
+satisfies the fluctuation--dissipation relation of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}.
+
+\section{Dynamical KMS Condition}
+
+For a thermal state at inverse temperature \(\beta\), the effective action
+must implement the KMS relation.  At the classical derivative level, this is
+encoded by the transformation
+\[
+  \widetilde B_{r\mu}(t,\mathbf x)=B_{r\mu}(-t,\mathbf x),
+  \qquad
+  \widetilde B_{a\mu}(t,\mathbf x)
+  =
+  B_{a\mu}(-t,\mathbf x)
+  +\ii\beta\,\partial_t B_{r\mu}(-t,\mathbf x),
+\]
+with time-reversal signs inserted according to tensor parity.  Requiring
+\[
+  I_{\mathrm{SK}}[\widetilde B_r,\widetilde B_a]
+  =
+  I_{\mathrm{SK}}[B_r,B_a]
+\]
+relates dissipative coefficients to noise coefficients.  In the diffusion
+action above it fixes the coefficient of \(\ii B_{ai}B_{ai}\) to
+\(T\sigma\).
+
+\section{Beyond Diffusion}
+
+For stress-tensor hydrodynamics the variables include maps from a fluid
+worldvolume into spacetime, a doubled metric, and possible charge phases.  The
+same principles apply: doubled diffeomorphism invariance gives Ward
+identities, \(I[A,A]=0\) encodes unitarity, the imaginary part gives
+positivity, and dynamical KMS relates transport and noise.  Classifying all
+higher-derivative terms is a local cohomology problem in the doubled
+hydrodynamic variables.
+
+\begin{openproblem}[Microscopic derivation of SK hydrodynamic action]
+\label{op:microscopic-sk-hydrodynamic-action}
+Starting from a continuum QFT with a KMS state, derive the hydrodynamic
+Schwinger--Keldysh effective action as a controlled long-wavelength limit of
+connected real-time correlators, including the topology in which the
+derivative expansion is asymptotic.
+\end{openproblem}

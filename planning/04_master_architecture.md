@@ -265,6 +265,7 @@ Current compiled material:
 3. Yang--Baxter Consistency And Internal Symmetry
 4. Form-Factor Bootstrap And Local Operators
 5. Thermodynamic Bethe Ansatz
+6. Integrable RG Flows And Perturbed Two-Dimensional CFT
 
 Further development targets:
 
@@ -300,6 +301,7 @@ Current compiled material:
 3. Supersymmetric Gauge Theory
 4. Supersymmetric Wilsonian Schemes And Exact Dynamics
 5. Nonrenormalization And Holomorphy
+6. Four-Dimensional \(\mathcal N=1\) Gauge Dynamics
 
 Further development targets:
 
@@ -381,6 +383,7 @@ Current compiled material:
 3. BF Theory
 4. Chern--Simons Theory
 5. Cohomological Field Theories
+6. Topological Sigma Models
 
 Further development targets:
 
@@ -425,6 +428,7 @@ Current compiled material:
 3. Line, Surface, And Domain-Wall Operators
 4. Confinement, Screening, And Oblique Confinement
 5. Discrete Theta Terms
+6. Anomaly Inflow And Invertible Field Theories
 
 Further development targets:
 
@@ -452,6 +456,7 @@ Current compiled material:
 3. Real-Time Schwinger--Keldysh Formalism
 4. Spectral Functions, Kubo Formulae, And Transport
 5. Hydrodynamics From Ward Identities
+6. Schwinger--Keldysh Hydrodynamic Effective Actions
 
 Further development targets:
 
@@ -477,6 +482,7 @@ Current compiled material:
 3. Lattice Reflection Positivity
 4. Continuum Limits And Scaling Windows
 5. Wilson Lattice Gauge Theory
+6. Monte Carlo Methods And Sign Problems
 
 Further development targets:
 
@@ -504,6 +510,7 @@ Current compiled material:
 3. Trace Anomalies And Background Variations
 4. The Unruh Effect And Wedge Modular Theory
 5. The Hawking Effect
+6. Background Gauge Fields And Index Theory
 
 Further development targets:
 

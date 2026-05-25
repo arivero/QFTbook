@@ -120,6 +120,34 @@ topological-sector, hydrodynamic, lattice-gauge, and horizon-radiation layer:
   near-horizon Bogoliubov analyticity, state distinctions, greybody factors,
   and interacting-QFT theorem boundary.
 
+## Current Sixth-Chapter Pass
+
+The sixth-chapter pass adds the first exact-flow, supersymmetric-dynamics,
+sigma-model, inflow, hydrodynamic-action, numerical, and index-theoretic
+layers after the basic examples and theorem boundaries:
+
+- Volume VI: integrable RG flows from relevant CFT perturbations, finite-size
+  scaling functions, TBA ultraviolet limits, massless-flow TBA, and
+  form-factor normalization obligations.
+- Volume VII: four-dimensional \(\mathcal N=1\) gauge dynamics with SQCD
+  chiral coordinates, holomorphic scale matching, gaugino condensation,
+  ADS superpotentials, and the quantum modified constraint.
+- Volume VIII: topological sigma models with A-model and B-model BRST
+  complexes, holomorphic-map localization, and continuum-QFT construction
+  boundary.
+- Volume IX: anomaly inflow as anomaly lines and invertible bulk theories,
+  including descent, one-form symmetry backgrounds, and the gauging
+  trivialization criterion.
+- Volume X: Schwinger--Keldysh hydrodynamic effective actions for diffusion,
+  including doubled sources, hydrodynamic phases, positivity, retarded poles,
+  and dynamical KMS.
+- Volume XI: Monte Carlo finite-regulator expectations, detailed balance,
+  autocorrelation, reweighting, fermion determinants, and sign-problem
+  continuum interpretation.
+- Volume XII: background gauge fields and index theory, including coupled
+  Dirac operators, Atiyah--Singer formulae, zero-mode insertion rules,
+  anomaly polynomials, and determinant-line global anomalies.
+
 ## Next Frontier After This Pass
 
 - Add proof appendices where current chapters state theorem boundaries.

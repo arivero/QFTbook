@@ -1,0 +1,37 @@
+# Chapter 06: Integrable RG Flows And Perturbed Two-Dimensional CFT
+
+## Source Position
+
+Volume VI now moves from exact finite-size thermodynamics to RG-flow
+interpretation.  The chapter uses the preceding factorized scattering,
+form-factor, and TBA chapters as local inputs and prepares later model
+chapters on sine-Gordon, affine Toda, sigma models, and bridges to CFT.
+
+## Notation Inventory
+
+- `C`: ultraviolet two-dimensional CFT.
+- `O`: relevant scalar primary of dimension `Delta_O < 2`.
+- `g_Lambda`, `O_Lambda`: regulator-dependent perturbing coordinate and
+  insertion.
+- `M`, `R`, `r=MR`: mass scale, circle circumference, dimensionless size.
+- `E_0(R)`, `c_eff(R)`: finite-size vacuum energy and scaling function.
+- `epsilon_a(theta;r)`, `varphi_ab`: TBA pseudoenergy and scattering kernel.
+- `Y_a`, `L(x)`: plateau \(Y\)-variable and Rogers dilogarithm.
+
+## Claim Ledger
+
+- Defines a regulated CFT perturbation by source-functional data.
+- Derives the finite-size scaling function used to compare UV and IR data.
+- States TBA finite-size energy as a construction from diagonal scattering
+  data plus mirror-channel hypothesis.
+- Proves the plateau dilogarithm formula under explicit constant-kernel
+  assumptions.
+- Records that scattering/TBA data require form-factor normalization before
+  they determine local operator limits.
+
+## Figure Ledger
+
+No figure is included in this pass.  Future render work should add a
+rapidity-cylinder diagram showing massive and massless TBA channels and a
+flow chart linking CFT perturbing data, factorized scattering, TBA, and form
+factors.

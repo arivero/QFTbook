@@ -1,0 +1,131 @@
+\chapter{Anomaly Inflow and Invertible Field Theories}
+\label{ch:global-anomaly-inflow-invertible-field-theories}
+
+\ConventionsMixed
+
+An anomaly of a \(D\)-dimensional QFT with background fields is an obstruction
+to making the background-field dependence an ordinary function on the
+background-field moduli stack.  Inflow records that obstruction as the
+boundary variation of a \((D+1)\)-dimensional invertible field theory.
+
+\section{Background Fields and Relative Partition Functions}
+
+Let \(M^D\) be a closed spacetime and let \(A\) denote a background field for a
+global symmetry, including possible higher-form components.  Write
+\[
+  \mathcal B(M)
+\]
+for the groupoid of such backgrounds on \(M\).  A nonanomalous partition
+function assigns a complex number \(Z_M(A)\) invariant under isomorphisms in
+\(\mathcal B(M)\).  An anomalous theory assigns instead an element
+\[
+  Z_M(A)\in \mathcal L_M(A)
+\]
+of a one-dimensional complex vector space.  The collection \(\mathcal L_M\)
+over \(\mathcal B(M)\) is the anomaly line.
+
+\section{Invertible Bulk Theory}
+
+A \((D+1)\)-dimensional invertible theory assigns a line
+\[
+  \mathcal Z_N(\widetilde A)
+\]
+to a closed \((D+1)\)-manifold \(N\) with background \(\widetilde A\), and a
+linear map to bordisms.  When the bulk is represented by a local action
+\[
+  \exp\!\left(2\pi\ii\int_N I_{D+1}(\widetilde A)\right),
+\]
+the integrand \(I_{D+1}\) is a cocycle or differential cocycle whose periods
+are integral in the normalization used.  If \(N\) has boundary \(M\), the same
+bulk theory assigns a boundary line to \(A=\widetilde A|_M\).  A relative
+\(D\)-dimensional QFT is a boundary condition for this invertible theory, and
+its partition function is a vector in the boundary line.
+
+\section{Descent for Connected Symmetries}
+
+For a continuous symmetry with connection \(A\), let \(P_{D+2}(F)\) be an
+invariant polynomial in the curvature \(F=dA+A^2\) with integral periods.
+Choose a Chern-Simons form \(I_{D+1}(A)\) satisfying
+\[
+  dI_{D+1}(A)=P_{D+2}(F).
+\]
+For an infinitesimal gauge parameter \(\alpha\),
+\[
+  \delta_\alpha I_{D+1}(A)=dI_D^{(1)}(\alpha,A).
+\]
+Therefore on a manifold \(N\) with boundary \(M\),
+\[
+  \delta_\alpha
+  2\pi\ii\int_N I_{D+1}
+  =
+  2\pi\ii\int_M I_D^{(1)}(\alpha,A).
+\]
+The boundary generating functional must vary by the negative of this term for
+the combined bulk-boundary partition function to be gauge invariant.
+
+\begin{proposition}[Cocycle ambiguity and local counterterms]
+\label{prop:inflow-cocycle-counterterm}
+Changing \(I_{D+1}\) by \(I_{D+1}+dK_D\) changes the boundary anomaly by the
+variation of the local \(D\)-dimensional functional
+\[
+  2\pi\ii\int_M K_D(A).
+\]
+Thus the anomaly invariant is the cohomology class of the bulk invertible
+theory, while a representative anomaly current depends on a boundary
+counterterm coordinate.
+\end{proposition}
+
+\begin{proof}
+On a manifold with boundary,
+\[
+  \int_N dK_D=\int_M K_D .
+\]
+Under a background gauge transformation, the additional boundary variation is
+exactly the variation of this \(D\)-dimensional local functional.  Hence two
+bulk cocycles differing by a coboundary define anomaly representatives that
+are related by a local counterterm.
+\end{proof}
+
+\section{One-Form Symmetry Example}
+
+Let a four-dimensional theory have a finite abelian one-form symmetry \(A\).
+A background is a two-cocycle
+\[
+  B\in Z^2(M,A).
+\]
+An anomaly involving this symmetry is represented by a five-dimensional
+cohomology class
+\[
+  \omega\in H^5(B^2A,U(1)).
+\]
+For \(A=\mathbb Z_N\), expressions built from cup products and the Pontryagin
+square give concrete representatives after the manifold orientation and spin
+structure have been specified.  The boundary theory then has line operators
+whose fusion and braiding with surface defects are acted on by the anomaly
+line; changing a four-dimensional discrete theta term shifts the
+representative but not the inflow class unless the bulk cohomology class
+changes.
+
+\section{Gauging Criterion}
+
+To gauge a global symmetry, one must sum or integrate over its backgrounds.
+For an anomalous theory this operation is possible only after the anomaly
+line is trivialized, or after the theory is coupled to another system whose
+anomaly line is the inverse.  In the invertible-language formulation the
+criterion is
+\[
+  \mathcal Z_{\mathrm{bulk}}\otimes
+  \mathcal Z_{\mathrm{counter}}
+  \simeq 1
+\]
+as an invertible theory over the background-field bordism category.  A local
+counterterm supplies such a trivialization exactly when the anomaly class is
+a coboundary in the chosen background-field cohomology theory.
+
+\begin{openproblem}[Operator-level inflow]
+\label{op:operator-level-inflow}
+Develop a reconstruction theorem that starts from an anomalous local QFT,
+constructs its anomaly line over background fields, and derives the action of
+the inflow theory on extended operators, defect junctions, and Hilbert spaces
+on manifolds with boundary.
+\end{openproblem}

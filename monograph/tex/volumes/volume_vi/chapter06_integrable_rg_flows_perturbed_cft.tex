@@ -1,0 +1,195 @@
+\chapter{Integrable RG Flows and Perturbed Two-Dimensional CFT}
+\label{ch:integrable-rg-flows-perturbed-cft}
+
+\ConventionsMixedCFT
+
+This chapter studies massive and massless two-dimensional flows that are
+specified in the ultraviolet by a conformal field theory and a relevant local
+operator, and whose infrared dynamics is constrained by factorized scattering.
+The comparison data along the flow are finite-size ground-state energies,
+local correlators, and scattering data, all expressed in declared
+normalization conventions.
+
+\section{Relevant Perturbations}
+
+Let \(\mathcal C\) be a unitary Euclidean two-dimensional CFT on the plane
+with local scalar primary operator \(\mathcal O(z,\bar z)\) of scaling
+dimension
+\[
+  \Delta_{\mathcal O}=h+\bar h<2 .
+\]
+A regulated perturbation of \(\mathcal C\) is a family of correlation
+functionals
+\[
+  \left\langle X\right\rangle_{g,\Lambda}
+  =
+  \frac{
+  \left\langle
+  X\exp\!\left[-g_\Lambda\int d^2x\,\mathcal O_\Lambda(x)\right]
+  \right\rangle_{\mathcal C,\Lambda}}
+  {\left\langle
+  \exp\!\left[-g_\Lambda\int d^2x\,\mathcal O_\Lambda(x)\right]
+  \right\rangle_{\mathcal C,\Lambda}},
+\]
+where \(\Lambda\) is a short-distance regulator, \(g_\Lambda\) is a
+cutoff-dependent coordinate, \(\mathcal O_\Lambda\) is the corresponding
+regularized insertion, and \(X\) is a product of separated local insertions.
+The renormalized coupling has engineering dimension \(2-\Delta_{\mathcal O}\).
+When the perturbation produces a massive theory with mass scale \(M\), the
+dimensionless ratio
+\[
+  r=MR
+\]
+is the natural variable for placing the theory on a spatial circle of
+circumference \(R\).
+
+\section{Finite-Size Scaling Function}
+
+Let \(E_0(R)\) be the ground-state energy on a circle.  Define the effective
+central-charge function
+\[
+  c_{\mathrm{eff}}(R)
+  =
+  -\frac{6R}{\pi}E_0(R).
+\]
+For a CFT with periodic boundary conditions,
+\[
+  E_0(R)=-\frac{\pi c}{6R},
+\]
+so \(c_{\mathrm{eff}}(0)\) equals the ultraviolet central charge when the
+scaling limit exists and no zero-mode obstruction changes the cylinder
+vacuum.  For a massive infrared theory with a unique vacuum, the large-\(R\)
+energy has the form
+\[
+  E_0(R)=\mathcal E_{\mathrm{bulk}}R+o(R^0),
+\]
+after the universal Casimir term disappears.  The bulk energy density
+\(\mathcal E_{\mathrm{bulk}}\) is a local counterterm coordinate; comparisons
+of \(c_{\mathrm{eff}}\) between ultraviolet and infrared theories must specify
+whether this extensive term has been subtracted.
+
+\section{TBA Scaling Function}
+
+For a diagonal factorized massive theory, Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}
+gives pseudoenergies \(\epsilon_a(\theta;r)\) satisfying
+\[
+  \epsilon_a(\theta;r)
+  =
+  r\,\mu_a\cosh\theta
+  -\sum_b\int_{\mathbb R}d\theta'\,
+  \varphi_{ab}(\theta-\theta')
+  \log\!\left(1+e^{-\epsilon_b(\theta';r)}\right),
+\]
+where \(m_a=\mu_a M\).  The finite-size ground-state energy in the
+mirror channel is
+\[
+  E_0(R)
+  =
+  -\frac{M}{2\pi}
+  \sum_a\mu_a\int_{\mathbb R}d\theta\,
+  \cosh\theta\,
+  \log\!\left(1+e^{-\epsilon_a(\theta;r)}\right)
+  +\mathcal E_{\mathrm{bulk}}R .
+\]
+Consequently the subtracted scaling function is
+\[
+  c_{\mathrm{TBA}}(r)
+  =
+  \frac{3r}{\pi^2}
+  \sum_a\mu_a\int_{\mathbb R}d\theta\,
+  \cosh\theta\,
+  \log\!\left(1+e^{-\epsilon_a(\theta;r)}\right).
+\]
+This formula is a construction from scattering data and an assumption that the
+mirror-channel TBA computes the finite-size vacuum energy.
+
+\begin{proposition}[Dilogarithm form of the constant-kernel ultraviolet limit]
+\label{prop:tba-dilogarithm-uv}
+Assume that as \(r\to0\) the functions \(\epsilon_a(\theta;r)\) have a plateau
+region in which the kernels may be replaced by their integrals
+\[
+  N_{ab}=\int_{\mathbb R}d\theta\,\varphi_{ab}(\theta),
+\]
+and that the plateau values \(Y_a=e^{\epsilon_a}\) solve
+\[
+  \log Y_a=-\sum_b N_{ab}\log(1+Y_b^{-1}) .
+\]
+Then the plateau contribution to the ultraviolet central charge is
+\[
+  c_{\mathrm{UV}}
+  =
+  \frac{6}{\pi^2}\sum_a
+  L\!\left(\frac{1}{1+Y_a}\right),
+\]
+where \(L(x)\) is the Rogers dilogarithm.
+\end{proposition}
+
+\begin{proof}
+In the plateau approximation, the derivative of the TBA equation with respect
+to \(\theta\) relates \(d\epsilon_a\) to the derivative of the driving term.
+After integrating by parts in the scaling function, the contribution from
+each species takes the form
+\[
+  \frac{6}{\pi^2}
+  \int_{\epsilon_a(-\infty)}^{\epsilon_a(+\infty)}
+  d\epsilon\,
+  \log(1+e^{-\epsilon})
+  \frac{d}{d\epsilon}\log(1+e^{\epsilon})^{-1}.
+\]
+With \(x=(1+e^\epsilon)^{-1}\), this integral is the Rogers dilogarithm
+\[
+  L(x)
+  =
+  -\frac12\int_0^x dt\,
+  \left(
+  \frac{\log(1-t)}{t}
+  +\frac{\log t}{1-t}
+  \right),
+\]
+evaluated at the plateau value.  The assumed algebraic equations determine
+those endpoint values.  The stated formula follows by summing over species.
+\end{proof}
+
+\section{Massless Flows}
+
+For an integrable flow between two CFTs, the infrared may contain massless
+right- and left-moving particles.  A right mover has
+\[
+  E=p=\frac{M}{2}e^\theta ,
+\]
+and a left mover has
+\[
+  E=-p=\frac{M}{2}e^{-\theta}.
+\]
+The TBA then uses pseudoenergies
+\(\epsilon_R(\theta)\) and \(\epsilon_L(\theta)\), together with
+right-right, left-left, and right-left kernels.  The mixed kernel records the
+interaction between the two chiral sectors along the flow.  The ultraviolet
+and infrared central charges are extracted from the small-\(r\) and large-\(r\)
+limits of the same finite-size functional after the bulk term is fixed.
+
+\section{Operator Data Along the Flow}
+
+Scattering data and TBA do not determine all local correlators by themselves.
+To compare the perturbing CFT with the massive theory, one must also specify
+form factors of local operators and their ultraviolet normalization.  For a
+local operator \(\widehat{\mathcal O}\), the short-distance scaling dimension
+is tested by the two-point function
+\[
+  \left\langle \widehat{\mathcal O}(x)\widehat{\mathcal O}(0)\right\rangle
+  \sim
+  \frac{C_{\mathcal O}}{|x|^{2\Delta_{\mathcal O}}}
+  \quad (M|x|\to0),
+\]
+with \(C_{\mathcal O}\) fixed by a source convention.  A factorized model
+therefore represents an integrable RG flow only after the scattering theory,
+TBA scaling function, and local form-factor normalization agree with a common
+ultraviolet operator chart.
+
+\begin{openproblem}[Rigorous integrable-flow reconstruction]
+\label{op:integrable-flow-reconstruction}
+Construct a theorem that starts from factorized scattering data, form-factor
+solutions satisfying locality and convergence estimates, and TBA finite-size
+data, and reconstructs a local two-dimensional QFT whose ultraviolet limit is
+a specified CFT perturbation.
+\end{openproblem}
