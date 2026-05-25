@@ -56,7 +56,7 @@
 | \(E\) | center-of-mass energy |
 | \(z=\cos\theta\) | scattering-angle variable |
 | \(\mathcal M(s,z)\) | connected invariant amplitude |
-| \(\mathcal M_\ell(s)\) | partial-wave amplitude |
+| \(a_\ell(s)\) | ordered \(16\pi\) partial-wave amplitude, same convention as Volume I Chapter 14 |
 | \(S_\ell(s)\) | elastic partial-wave scattering eigenvalue |
 | \(\beta(s)\) | two-body elastic kinematic factor \(\sqrt{1-4m^2/s}\), not a spectral measure |
 | \(M_B\) | bound-state mass below threshold |
@@ -75,7 +75,7 @@
   of the analytically continued scattering function at \(k=\ii\alpha\),
   \(\alpha>0\).
 - In relativistic partial waves, a stable spin-\(\ell\) state below threshold
-  gives a pole in \(\mathcal M_\ell(s)\) or \(S_\ell(s)\) at
+  gives a pole in \(a_\ell(s)\) or \(S_\ell(s)\) at
   \(s=M_B^2<4m^2\).
 - The partial-wave state normalization is explicitly recorded in the
   chapter: for identical scalar bosons
@@ -105,6 +105,10 @@
 - 2026-05-24 issue #425 pass: renamed the elastic kinematic factor to
   \(\beta(s)\) in the partial-wave \(S_\ell\) convention, reserving
   \(\rho\) for spectral measures.
+- 2026-05-24 issue #434 pass: renamed the bound-state chapter's ordered
+  partial-wave coefficient from \(\mathcal M_\ell(s)\) to \(a_\ell(s)\) and
+  added the explicit cross-reference to the Volume I ordered \(16\pi\)
+  convention.
 
 ## Figure Requirements
 

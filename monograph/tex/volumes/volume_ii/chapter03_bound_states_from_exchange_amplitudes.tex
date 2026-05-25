@@ -328,20 +328,23 @@ In the elastic region, define partial-wave amplitudes by
   \mathcal M(s,z)
   =
   16\pi\sum_{\ell=0}^{\infty}
-  (2\ell+1)\mathcal M_\ell(s)P_\ell(z),
+  (2\ell+1)a_\ell(s)P_\ell(z),
   \label{eq:exchange-partial-wave-expansion}
 \end{equation}
 equivalently
 \begin{equation}
-  \mathcal M_\ell(s)
+  a_\ell(s)
   =
   \frac{1}{32\pi}\int_{-1}^{1}\dd z\,
   P_\ell(z)\mathcal M(s,z).
   \label{eq:exchange-partial-wave-projection}
 \end{equation}
+This is the ordered \(16\pi\) convention fixed in
+Chapter~\ref{ch:cross-sections-unitarity}; the coefficient \(a_\ell(s)\) here
+is the same partial-wave amplitude used there.
 The elastic partial-wave \(S\)-matrix eigenvalue is written
 \[
-  S_\ell(s)=1+2\ii\,\beta(s)\mathcal M_\ell(s),
+  S_\ell(s)=1+2\ii\,\beta(s)a_\ell(s),
   \qquad
   \beta(s)=\sqrt{1-\frac{4m^2}{s}},
 \]
@@ -354,7 +357,7 @@ on the physical elastic interval.
 A stable spin-\(\ell\) state of mass \(M_B<2m\) coupled to the two-particle
 channel gives
 \[
-  \mathcal M_\ell(s)
+  a_\ell(s)
   =
   \frac{r_\ell}{M_B^2-s}
   +\text{regular terms},
@@ -372,7 +375,7 @@ state to the two-particle channel with angular momentum \(\ell\).
   \fill[blue!75!black] (2.55,0) circle (2.5pt);
   \node[blue!75!black,below] at (2.55,-0.16) {$M_B^2$};
   \node[blue!75!black,align=center] at (2.45,1.05)
-    {pole in\\\(\mathcal M_\ell\)};
+    {pole in\\\(a_\ell\)};
   \node[red!75!black,align=center] at (5.85,0.82)
     {elastic\\cut};
   \draw[blue!75!black,->,line width=0.8pt] (2.45,0.72)--(2.55,0.12);

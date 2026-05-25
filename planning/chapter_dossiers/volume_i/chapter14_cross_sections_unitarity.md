@@ -34,7 +34,7 @@
 | \(s\) | positive center-of-mass energy squared, \(-(p_1+p_2)^2\) |
 | \(\vec p_*\) | incoming COM three-momentum |
 | \(\vec q_*\) | outgoing COM three-momentum |
-| \(a_\ell(s)\) | partial-wave amplitude |
+| \(a_\ell(s)\) | ordered \(16\pi\) partial-wave amplitude |
 | \(S_\ell(s)\) | partial-wave S-matrix eigenvalue |
 | \(\beta(s)\) | two-body elastic phase-space factor \(2|\vec p_*|/\sqrt s\); \(\rho\) is reserved for spectral measures |
 | \(\mathcal N(E)\) | normalization of the COM partial-wave generalized state |
@@ -89,6 +89,9 @@
 - 2026-05-24 issue #425 pass: renamed the two-body kinematic factor from
   \(\rho(s)\) to \(\beta(s)\) so \(d\rho\) remains reserved for
   Kallen--Lehmann spectral measures.
+- 2026-05-24 issue #434 pass: recorded \(a_\ell(s)\) as the ordered
+  \(16\pi\) partial-wave amplitude and matched the later bound-state chapter
+  to this same symbol and normalization.
 
 ## Figure Requirements
 
