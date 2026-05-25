@@ -29,6 +29,9 @@ Current checks:
 - `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
   two-loop \(N=1\) Wilson-Fisher pole coefficients into
   \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).
+- `on_wilson_fisher_epsilon_checks.py`: exact rational arithmetic for the
+  singlet \(O(N)\) Wilson-Fisher family, including the \(N=1\) reduction and
+  the leading large-\(N\) scaling of \(u=Nx\).
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
   algebraic checks, adapted from the stringbook spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.

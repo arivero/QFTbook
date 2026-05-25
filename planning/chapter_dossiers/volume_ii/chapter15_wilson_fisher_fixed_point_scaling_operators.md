@@ -28,6 +28,11 @@
   Simmons-Duffin's spectrum paper, and the later mixed-correlator
   stress-tensor bootstrap; 2D entries from the Ising minimal model
   \(\mathcal M(3,4)\) / Onsager-BPZ solution.
+- `SRC-EXTERNAL-ON-LARGEN`: the \(O(N)\) large-\(N\) saddle and nonlinear
+  sigma-model relation are checked against Moshe--Zinn-Justin,
+  `Quantum Field Theory in the Large N Limit: a Review`, arXiv:hep-th/0306133,
+  but the chapter derives the finite-cutoff saddle, gap equation, critical
+  exponent, and sigma-model matching explicitly.
 
 ## Construction Task
 
@@ -93,6 +98,45 @@ The chapter must define and derive:
   \(y_t=2-\epsilon/3-19\epsilon^2/162+O(\epsilon^3)\),
   \(\nu=1/2+\epsilon/12+7\epsilon^2/162+O(\epsilon^3)\), and
   \(\omega=\epsilon-17\epsilon^2/27+O(\epsilon^3)\);
+- the \(O(N)\) vector generalization with
+  \(S_E=\int[\frac12(\partial\phi^i)^2+\frac12r_0\phi^i\phi^i
+  +\frac{g_0}{4!}(\phi^i\phi^i)^2]\), the quartic vertex tensor
+  \((g_0/3)(\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}
+  +\delta_{il}\delta_{jk})\), and the singlet source
+  \(S=\frac12\phi^i\phi^i\);
+- the two-loop \(O(N)\) MS pole map
+  \[
+    g_0/(16\pi^2)=\mu^\epsilon\left[
+    x+\frac{N+8}{3}\frac{x^2}{\epsilon}
+    +x^3\left(\frac{(N+8)^2}{9\epsilon^2}
+      -\frac{3N+14}{6\epsilon}\right)+O(x^4)\right],
+  \]
+  the source and field poles
+  \(\log Z_{S,\rm src}^{\rm MS}
+    =[-(N+2)x/3+5(N+2)x^2/18]/\epsilon+\cdots\),
+  \(\log Z_\phi^{\rm MS}=-(N+2)x^2/(36\epsilon)+\cdots\), and the derived
+  \(O(N)\) formulas for \(\beta_x^\epsilon\), \(\gamma_S\), \(\gamma_\phi\),
+  \(x_*\), \(\eta\), \(\Delta_\phi\), \(\Delta_S\), \(y_t\), \(\nu\), and
+  \(\omega\);
+- the large-\(N\) collective coordinate \(u=Nx\), with
+  \(\beta_u^\epsilon=-\epsilon u+u^2/3+O(1/N)\) and
+  \(u_*=3\epsilon+O(1/N)\);
+- the finite-cutoff Hubbard--Stratonovich/spherical-model saddle:
+  introduce \(\rho=\phi^2/N\) and an auxiliary \(\sigma\), derive
+  \(S_{\rm eff}/N=\int[U(\rho)-\sigma\rho/2]
+  +\frac12\operatorname{Tr}_\Lambda\log(-\partial^2+\sigma)\), the gap
+  equations \(U'(\rho)=m^2/2\), \(\rho=\Omega_D(m)\), and the critical
+  expansion
+  \(\Omega_D(m)-\Omega_D(0)=-K_Dm^{D-2}+O(m^2\Lambda^{D-4})\);
+- the \(N=\infty\) dimensions
+  \(\Delta_\phi=(D-2)/2\), \(\eta=0\), \(\Delta_\sigma=2\), and
+  \(\nu=1/(D-2)\), derived from the vector propagator and the
+  \(\sigma\)-bubble kernel \(B_D(p)\propto |p|^{D-4}\);
+- the relation to the \(O(N)\) nonlinear sigma model in \(D=2+\tilde\epsilon\),
+  including the constrained action, matching large-\(N\) saddle, and
+  \(\beta_{\mathfrak g}
+  =\tilde\epsilon\mathfrak g-(N-2)\mathfrak g^2/(2\pi)+O(\mathfrak g^3)\)
+  for \(N>2\), with \(N=2\) separated as the BKT case;
 - the formal status of \(\lambda_*(\epsilon)\): the perturbative calculation
   recursively determines coefficients of a formal small-\(\epsilon\) series
   for a zero of the beta vector field, not by itself an honest
@@ -217,6 +261,18 @@ The chapter must define and derive:
     \(\omega=\partial_x\beta_x^\epsilon(x_*)=
     \epsilon-17\epsilon^2/27+O(\epsilon^3)\), so the quartic-direction
     scaling dimension is \(D+\omega\).
+4d. For \(O(N)\), the one-component calculation is recovered by \(N=1\), while
+    the singlet exponents for finite \(N\) are obtained by tensor contractions
+    in the quartic vertex.  The displayed \(O(N)\) formulas concern the
+    singlet thermal block and the vector field; non-singlet operator sectors
+    require separate representation-block diagonalization.
+4e. In the \(N\to\infty\) sequence, \(x_*\to0\) but \(u_*=Nx_*\) stays finite.
+    The large-\(N\) saddle gives \(\eta=0\), \(\Delta_\sigma=2\), and
+    \(\nu=1/(D-2)\), and agrees with the large-\(N\) limit of the
+    \(4-\epsilon\) expansion.
+4f. The \(O(N)\) nonlinear sigma model provides a \(2+\epsilon\) chart of the
+    same critical family for \(N>2\); the \(N=2\) case is not described by the
+    perturbative fixed point because the one-loop coefficient vanishes.
 5. The mass parameter must be tuned separately; inside the
    \(\mathbb Z_2\)-even subspace the fixed point is reached by imposing the
    massless endpoint condition.  Calling the tuned set a codimension-one
@@ -390,3 +446,10 @@ The chapter must define and derive:
   comparison-table formulas.  Added
   `calculation-checks/wilson_fisher_epsilon_checks.py` as a rational
   arithmetic regression check for the displayed epsilon-expansion algebra.
+- 2026-05-25 issue #461 pass: added the \(O(N)\) Wilson-Fisher family, including
+  the quartic tensor normalization, the finite-\(N\) two-loop singlet
+  exponent algebra, the large-\(N\) collective coordinate \(u=Nx\), the
+  Hubbard--Stratonovich/spherical-model saddle, and the \(2+\epsilon\)
+  nonlinear sigma-model chart.  Added
+  `calculation-checks/on_wilson_fisher_epsilon_checks.py` to check the
+  rational \(O(N)\) epsilon-expansion formulas and the \(N=1\) reduction.

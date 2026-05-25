@@ -1446,6 +1446,475 @@ operator.  These exact statements are the conformal-field-theoretic form of the
 Onsager critical Ising solution, and follow from the minimal-model
 classification of Belavin, Polyakov, and Zamolodchikov.
 
+\section{\texorpdfstring{The \(O(N)\) Wilson--Fisher Family}{The O(N) Wilson-Fisher Family}}
+\label{sec:on-wilson-fisher-family}
+
+The one-component theory is the \(N=1\) member of a family.  For a positive
+integer \(N\), let
+\(\phi=(\phi^1,\ldots,\phi^N)\) be an \(O(N)\)-vector scalar and write
+\[
+  \phi^2:=\delta_{ij}\phi^i\phi^j .
+\]
+The \(O(N)\)-invariant quartic theory in \(D=4-\epsilon\) is
+\begin{equation}
+  S_E[\phi]
+  =
+  \int \dd^D x\,
+  \left[
+    \frac12\partial_\mu\phi^i\partial_\mu\phi^i
+    +\frac12 r_0\,\phi^i\phi^i
+    +\frac{g_0}{4!}\,(\phi^i\phi^i)^2
+  \right].
+  \label{eq:on-vector-phi-four-action}
+\end{equation}
+Repeated \(O(N)\) indices are contracted with \(\delta_{ij}\).  The quartic
+vertex tensor associated with the normalization in
+\eqref{eq:on-vector-phi-four-action} is
+\begin{equation}
+  V_{ij;kl}
+  =
+  \frac{g_0}{3}
+  \left(
+    \delta_{ij}\delta_{kl}
+    +\delta_{ik}\delta_{jl}
+    +\delta_{il}\delta_{jk}
+  \right).
+  \label{eq:on-quartic-vertex-tensor}
+\end{equation}
+For \(N=1\) the tensor in parentheses equals \(3\), so this is the same
+\(g_0\phi^4/4!\) normalization used above.  The singlet quadratic source is
+coupled to
+\[
+  S(x):=\frac12\phi^i(x)\phi^i(x).
+\]
+The factor \(1/2\) is a source convention; it does not affect the scaling
+dimension.
+
+Set again
+\[
+  x:=\frac{\lambda_{\rm MS}}{16\pi^2}.
+\]
+In the minimal-subtraction chart determined by the singlet quartic vertex
+\eqref{eq:on-quartic-vertex-tensor}, the two-loop local pole map is
+\begin{equation}
+  \frac{g_0}{16\pi^2}
+  =
+  \mu^\epsilon
+  \left[
+    x
+    +\frac{N+8}{3}\frac{x^2}{\epsilon}
+    +x^3\left\{
+      \frac{(N+8)^2}{9\epsilon^2}
+      -\frac{3N+14}{6\epsilon}
+    \right\}
+    +O(x^4)
+  \right].
+  \label{eq:on-two-loop-coupling-pole-map}
+\end{equation}
+The coefficient \(N+8\) has a concrete origin.  In a one-loop four-point
+graph, the closed internal index loop gives the \(N\) term, while the exchange
+contractions among the three tensor structures in
+\eqref{eq:on-quartic-vertex-tensor} give the \(8\) term.  The double pole in
+\eqref{eq:on-two-loop-coupling-pole-map} is fixed by this one-loop tensor
+contraction and the forest equations.  The new two-loop tensor datum is the
+simple-pole coefficient \(-(3N+14)/6\).
+
+The singlet source and field pole factors are
+\begin{align}
+  \log Z_{S,\rm src}^{\rm MS}
+  &=
+  \frac{
+    -\frac{N+2}{3}x+\frac{5(N+2)}{18}x^2
+  }{\epsilon}
+  +\hbox{double poles}
+  +O(x^3),
+  \label{eq:on-source-pole}
+  \\
+  \log Z_\phi^{\rm MS}
+  &=
+  -\frac{N+2}{36}\frac{x^2}{\epsilon}
+  +O(x^3).
+  \label{eq:on-field-pole}
+\end{align}
+The factor \(N+2\) is the index contraction of a singlet \(\phi^2\) insertion
+with the quartic tensor.  The same pole-equation argument used in the
+one-component calculation gives the finite anomalous dimensions.
+
+\begin{proposition}[\(O(N)\) Wilson--Fisher data through two loops]
+\label{prop:on-wilson-fisher-two-loop-data}
+In the MS coordinate \(x=\lambda_{\rm MS}/(16\pi^2)\), the singlet
+\(O(N)\)-invariant quartic chart has
+\begin{align}
+  \beta_x^\epsilon
+  &=
+  -\epsilon x
+  +\frac{N+8}{3}x^2
+  -\frac{3N+14}{3}x^3
+  +O(x^4),
+  \label{eq:on-beta-x}
+  \\
+  \gamma_S(x)
+  &=
+  \frac{N+2}{3}x
+  -\frac{5(N+2)}{18}x^2
+  +O(x^3),
+  \label{eq:on-gamma-S}
+  \\
+  \gamma_\phi(x)
+  &=
+  \frac{N+2}{36}x^2
+  +O(x^3).
+  \label{eq:on-gamma-phi}
+\end{align}
+The nonzero perturbative fixed-point coordinate is
+\begin{equation}
+  x_*
+  =
+  \frac{3}{N+8}\epsilon
+  +\frac{9(3N+14)}{(N+8)^3}\epsilon^2
+  +O(\epsilon^3).
+  \label{eq:on-x-star}
+\end{equation}
+The singlet thermal exponent, field anomalous dimension, and leading quartic
+irrelevant exponent are
+\begin{align}
+  \eta
+  &=
+  \frac{N+2}{2(N+8)^2}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:on-eta}
+  \\
+  \Delta_\phi
+  &=
+  1-\frac{\epsilon}{2}
+  +\frac{N+2}{4(N+8)^2}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:on-delta-phi}
+  \\
+  \Delta_S
+  &=
+  2-\frac{6}{N+8}\epsilon
+  +\frac{(N+2)(13N+44)}{2(N+8)^3}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:on-delta-S}
+  \\
+  y_t
+  &:=
+  D-\Delta_S
+  =
+  2-\frac{N+2}{N+8}\epsilon
+  -\frac{(N+2)(13N+44)}{2(N+8)^3}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:on-y-t}
+  \\
+  \nu
+  &:=
+  \frac1{y_t}
+  =
+  \frac12
+  +\frac{N+2}{4(N+8)}\epsilon
+  +\frac{(N+2)(N^2+23N+60)}{8(N+8)^3}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:on-nu}
+  \\
+  \omega
+  &:=
+  \left.\partial_x\beta_x^\epsilon\right|_{x=x_*}
+  =
+  \epsilon
+  -\frac{3(3N+14)}{(N+8)^2}\epsilon^2
+  +O(\epsilon^3).
+  \label{eq:on-omega}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  A=\frac{N+8}{3},
+  \qquad
+  C=-\frac{3N+14}{6}.
+\]
+Equation \eqref{eq:on-two-loop-coupling-pole-map} has the same algebraic form
+as the one-component pole map:
+\[
+  \frac{g_0}{16\pi^2}
+  =
+  \mu^\epsilon
+  \left[
+    x+\frac{A x^2}{\epsilon}
+    +x^3\left(\frac{A^2}{\epsilon^2}
+      +\frac{C}{\epsilon}\right)
+    +O(x^4)
+  \right].
+\]
+Differentiation at fixed \(g_0\) gives
+\(\beta_x^\epsilon=-\epsilon x+Ax^2+2Cx^3+O(x^4)\), which is
+\eqref{eq:on-beta-x}.  The simple-pole coefficient in
+\eqref{eq:on-source-pole} is
+\[
+  \ell_1^S(x)
+  =
+  -\frac{N+2}{3}x
+  +\frac{5(N+2)}{18}x^2 .
+\]
+The finite source anomalous dimension is \(-x(\ell_1^S)'(x)\), up to
+terms beyond two loops, giving \eqref{eq:on-gamma-S}.  Similarly the field
+simple-pole coefficient
+\(\ell_1^\phi(x)=-(N+2)x^2/36\) gives
+\(-\frac12x(\ell_1^\phi)'(x)\), namely \eqref{eq:on-gamma-phi}.
+
+Solving \(\beta_x^\epsilon(x_*)=0\) with
+\(x_*=a\epsilon+b\epsilon^2+O(\epsilon^3)\) gives
+\[
+  a=\frac1A=\frac{3}{N+8},
+  \qquad
+  b=-\frac{2C}{A^3}
+  =
+  \frac{9(3N+14)}{(N+8)^3},
+\]
+which proves \eqref{eq:on-x-star}.  Substituting
+\eqref{eq:on-x-star} into \eqref{eq:on-gamma-phi} gives
+\(\eta=2\gamma_\phi(x_*)\), hence \eqref{eq:on-eta} and
+\eqref{eq:on-delta-phi}.  Substitution into \eqref{eq:on-gamma-S} gives
+\[
+  \gamma_S(x_*)
+  =
+  \frac{N+2}{N+8}\epsilon
+  +\frac{(N+2)(13N+44)}{2(N+8)^3}\epsilon^2
+  +O(\epsilon^3).
+\]
+Since the singlet \(S\) has engineering dimension \(D-2=2-\epsilon\),
+\(\Delta_S=2-\epsilon+\gamma_S(x_*)\).  Equations
+\eqref{eq:on-delta-S}--\eqref{eq:on-nu} follow by expanding
+\(y_t=D-\Delta_S=2-\gamma_S(x_*)\) and then its reciprocal.  Finally,
+\[
+  \partial_x\beta_x^\epsilon
+  =
+  -\epsilon
+  +\frac{2(N+8)}{3}x
+  -(3N+14)x^2
+  +O(x^3),
+\]
+and substituting \eqref{eq:on-x-star} gives \eqref{eq:on-omega}.
+\end{proof}
+
+For \(N=1\), Proposition \ref{prop:on-wilson-fisher-two-loop-data} reduces
+to Proposition \ref{prop:wf-two-loop-nlo-exponents}.  For \(N>1\) there are
+additional non-singlet operator sectors.  The symmetric traceless tensor
+\[
+  T^{ij}:=\phi^i\phi^j-\frac{\delta^{ij}}{N}\phi^k\phi^k
+\]
+and the vector \(\phi^i\) have their own source-RG blocks.  The formulas above
+concern the singlet thermal direction and the elementary vector field.  A
+complete operator-spectrum analysis must diagonalize each \(O(N)\)
+representation sector separately.
+
+\subsection{\texorpdfstring{Large \(N\), the Spherical Model, and the Sigma-Model Chart}{Large N, the Spherical Model, and the Sigma-Model Chart}}
+\label{subsec:on-large-n-spherical-sigma}
+
+The limit \(N\to\infty\) is not obtained by holding \(x\) fixed.  The fixed
+point in \eqref{eq:on-x-star} has \(x_*=O(1/N)\), while the collective
+coordinate
+\[
+  u:=Nx
+\]
+has a finite limit.  Multiplying \eqref{eq:on-beta-x} by \(N\) and putting
+\(x=u/N\) gives
+\begin{equation}
+  \beta_u^\epsilon
+  =
+  -\epsilon u+\frac13u^2
+  +O\left(\frac1N\right),
+  \qquad
+  u_*=3\epsilon+O\left(\frac1N\right).
+  \label{eq:on-large-n-u-beta}
+\end{equation}
+Thus the quartic coordinate of each finite-\(N\) fixed point tends to zero,
+but the singlet collective interaction stays finite.
+
+The nonperturbative large-\(N\) limit is best derived before expanding around
+four dimensions.  Work with a finite ultraviolet cutoff and an \(O(N)\)-invariant
+potential of the form
+\[
+  S[\phi]
+  =
+  \int \dd^D x\,
+  \left[
+    \frac12\partial_\mu\phi^i\partial_\mu\phi^i
+    +N\,U\left(\rho\right)
+  \right],
+  \qquad
+  \rho:=\frac{\phi^i\phi^i}{N}.
+  \label{eq:on-large-n-potential-action}
+\]
+At finite cutoff, introduce fields \(\rho(x)\) and \(\sigma(x)\) by a
+Fourier representation of the constraint
+\(\rho(x)=\phi^i(x)\phi^i(x)/N\).  The contour of \(\sigma\) is chosen so
+that the finite-dimensional regulated integral is convergent and may be
+deformed to the steepest-descent contour.  After integrating over the
+\(N\) vector components, the effective action per component is
+\begin{equation}
+  \frac1N S_{\rm eff}[\rho,\sigma]
+  =
+  \int \dd^D x\,
+  \left[
+    U(\rho)-\frac12\sigma\rho
+  \right]
+  +\frac12\operatorname{Tr}_\Lambda
+    \log(-\partial^2+\sigma).
+  \label{eq:on-large-n-effective-action}
+\end{equation}
+For constant saddle fields, write \(\sigma=m^2\).  The saddle equations are
+\begin{equation}
+  U'(\rho)=\frac12m^2,
+  \qquad
+  \rho=\Omega_D(m),
+  \qquad
+  \Omega_D(m)
+  :=
+  \int^\Lambda\frac{\dd^D p}{(2\pi)^D}\frac1{p^2+m^2},
+  \label{eq:on-large-n-gap-equations}
+\end{equation}
+in the symmetric phase.  If an ordered component
+\(\langle\phi^1\rangle=M\) is allowed, the second equation becomes
+\[
+  \rho=\frac{M^2}{N}+\Omega_D(m),
+  \qquad
+  m^2M=0.
+\]
+The critical point is obtained by tuning the relevant parameter in \(U\) so
+that \(m=0\) is a saddle:
+\[
+  \rho_c=\Omega_D(0),
+  \qquad
+  U'(\rho_c)=0.
+\]
+For \(2<D<4\), the small-\(m\) expansion of the regulated integral has a
+universal nonanalytic term
+\begin{equation}
+  \Omega_D(m)-\Omega_D(0)
+  =
+  -K_D\,m^{D-2}
+  +O(m^2\Lambda^{D-4}),
+  \qquad
+  K_D:=
+  -\frac{\Gamma(1-D/2)}{(4\pi)^{D/2}}>0.
+  \label{eq:on-large-n-omega-expansion}
+\end{equation}
+The sign is fixed by the fact that \(\Omega_D(m)\) decreases with \(m\).
+If \(\tau\) is the linear thermal displacement from the critical saddle, then
+\[
+  \tau\propto m^{D-2},
+  \qquad
+  \xi=m^{-1},
+\]
+and therefore
+\begin{equation}
+  \nu_{N=\infty}=\frac1{D-2}.
+  \label{eq:on-large-n-nu}
+\end{equation}
+This agrees with the \(N\to\infty\) limit of
+\eqref{eq:on-nu} after setting \(D=4-\epsilon\):
+\[
+  \frac1{D-2}
+  =
+  \frac1{2-\epsilon}
+  =
+  \frac12+\frac{\epsilon}{4}+\frac{\epsilon^2}{8}+O(\epsilon^3).
+\]
+
+At the critical saddle the vector two-point function is \(1/p^2\), so
+\[
+  \Delta_\phi=\frac{D-2}{2},
+  \qquad
+  \eta_{N=\infty}=0.
+\]
+The singlet thermal operator is represented at large \(N\) by the auxiliary
+field \(\sigma\), not by an unrenormalized pointwise product.  Its quadratic
+kernel contains the bubble
+\begin{equation}
+  B_D(p)
+  :=
+  \int\frac{\dd^D q}{(2\pi)^D}
+  \frac1{q^2(q+p)^2}
+  =
+  b_D\,|p|^{D-4},
+  \qquad
+  b_D=
+  \frac{\Gamma(2-D/2)\Gamma(D/2-1)^2}
+       {(4\pi)^{D/2}\Gamma(D-2)} .
+  \label{eq:on-large-n-bubble}
+\end{equation}
+For \(2<D<4\), this term dominates over the local \(U''(\rho_c)\) term at
+small momentum.  Hence the \(\sigma\) propagator scales as
+\[
+  \langle\sigma(p)\sigma(-p)\rangle \propto |p|^{4-D}.
+\]
+A scalar operator of dimension \(\Delta\) has momentum-space two-point
+scaling \(|p|^{2\Delta-D}\).  Thus
+\begin{equation}
+  \Delta_\sigma=2,
+  \qquad
+  y_t=D-\Delta_\sigma=D-2,
+  \label{eq:on-large-n-sigma-dimension}
+\end{equation}
+which is the same content as \eqref{eq:on-large-n-nu}.  The first nonzero
+field anomalous dimension is an \(O(1/N)\) effect from exchange of the
+collective \(\sigma\) field; the present saddle calculation establishes the
+exact \(N=\infty\) dimensions and gives the expansion point for the systematic
+\(1/N\) diagrammatics.
+
+Equations \eqref{eq:on-large-n-gap-equations} are the continuum
+field-theory form of the spherical model: the fluctuating \(N\)-component spin
+length is replaced, at \(N=\infty\), by a saddle constraint on
+\(\rho=\phi^2/N\).  This is a statement about the regulated large-\(N\)
+limit and its continuum critical saddle, not an independent postulate about
+universality.
+
+There is also a lower-critical-dimension chart.  The \(O(N)\) nonlinear sigma
+model with field \(n^i(x)\) constrained by \(n^in^i=N\) has regulated action
+\begin{equation}
+  S_\sigma[n,\alpha]
+  =
+  \frac1{2T}
+  \int\dd^D x\,
+  \left[
+    \partial_\mu n^i\partial_\mu n^i
+    +\alpha(n^in^i-N)
+  \right].
+  \label{eq:on-nonlinear-sigma-action}
+\end{equation}
+At \(N=\infty\), integrating over \(N-1\) components gives the same saddle
+equations as above, with
+\[
+  T_c=\Omega_D(0)^{-1},
+  \qquad
+  \Omega_D(0)-\Omega_D(m)
+  =
+  K_Dm^{D-2}+\cdots .
+\]
+Consequently the sigma model has the same large-\(N\) critical exponent
+\(\nu=1/(D-2)\) for \(2<D<4\).  Near \(D=2+\widetilde\epsilon\), the usual
+dimensionless sigma-model coupling \(\mathfrak g\) obeys, for \(N>2\),
+\begin{equation}
+  \beta_{\mathfrak g}
+  =
+  \widetilde\epsilon\,\mathfrak g
+  -\frac{N-2}{2\pi}\mathfrak g^2
+  +O(\mathfrak g^3),
+  \qquad
+  \mathfrak g_*
+  =
+  \frac{2\pi}{N-2}\widetilde\epsilon
+  +O(\widetilde\epsilon^2).
+  \label{eq:on-nlsm-two-plus-epsilon-beta}
+\end{equation}
+This fixed point is the \(2+\widetilde\epsilon\) perturbative chart for the
+same \(O(N)\) critical family.  The \(N=2\) model is exceptional: the
+coefficient \(N-2\) vanishes, and the Berezinskii--Kosterlitz--Thouless
+mechanism is not captured by \eqref{eq:on-nlsm-two-plus-epsilon-beta}.
+
 More generally, the Wilson--Fisher epsilon expansion is an asymptotic
 small-\(\epsilon\) expansion unless an additional summability theorem is
 specified.  Large-order analyses of related perturbative \(\phi^4\) series
