@@ -27,7 +27,9 @@ state the relation among them.
   and weak distributional identities for plane-wave kernels.
 - Strongly continuous unitary representation of the connected Poincare group
   or its double cover.
-- Wigner one-particle representation for the massive spinless example.
+- Wigner one-particle representations: massive spin tower, massless helicity,
+  continuous-spin, and spacelike/tachyonic orbit classes in four dimensions,
+  with the massive spinless example used as the first explicit construction.
 - Bosonic or fermionic Fock-space construction.
 - Local observable assignment on Minkowski space.
 - Free scalar operator-valued distribution.
@@ -79,6 +81,8 @@ state the relation among them.
 - Poincare group law and its unitary implementation.
 - Spectrum condition.
 - Massive spinless one-particle Hilbert space.
+- Four-dimensional Wigner orbit classification table for the universal cover
+  of the connected Poincare group.
 - Bosonic and fermionic Fock spaces.
 - Bosonic decomposable tensor convention
   \(\psi_1\odot\cdots\odot\psi_n=\sqrt{n!}\Pi_{s,n}
@@ -99,6 +103,7 @@ state the relation among them.
 | Plane-wave kets and sharp energy/momentum eigenstates in continuous spectra are distributional vectors in \(\Phi^\times\), not normalizable Hilbert vectors. | Definition/construction | Established from rigged Hilbert space and spectral-measure definitions |
 | Delta-normalization is the weak kernel of the identity relative to a chosen spectral or mass-shell measure. | Definition/construction | Established by the Gelfand triple/direct-integral discussion |
 | Massive spinless one-particle states are realized as \(L^2\) functions on the positive mass shell with invariant measure. | Construction | Derived from representation choice; external Wigner reference needed |
+| The four-dimensional Wigner classification separates the vacuum orbit, massive positive-energy spin tower, massless finite-helicity and continuous-spin representations, and spacelike/tachyonic orbits. | Classification | Added as Table `tab:wigner-classification-four-dimensional`; spacelike orbits are excluded by the spectrum condition, while continuous-spin sectors are representation-theoretically admissible but outside the point-local helicity constructions used later |
 | Fock space is constructed from one-particle Hilbert space by symmetric or antisymmetric tensor powers. | Definition/construction | Defined in chapter |
 | The bosonic symbol \(\odot\) denotes the creation-operator normalization \(\sqrt{n!}\Pi_{s,n}(\otimes_j\psi_j)\), so decomposable symmetric tensors have the permutation-sum inner product. | Convention | Added to make the Haag--Ruelle Fock inner product normalization explicit |
 | The noncovariant creation/annihilation normalization with \(\delta^{D-1}(\vec p-\vec q)\) is equivalent to the covariant mass-shell normalization. | Calculation/convention | Added from handwritten pp. 3--4 and checked in the chapter |
@@ -124,6 +129,9 @@ state the relation among them.
   with the opening translation convention
   \(U(a)=\exp(i a_\mu P^\mu)=\exp(i a^\mu P_\mu)\), keeping the spectrum
   condition on contravariant \(P^\mu\).
+- 2026-05-25 issue #448 pass: added the complete four-dimensional Wigner
+  classification table, including the higher-spin massive tower,
+  massless continuous-spin representations, and spacelike/tachyonic orbits.
 
 ## Figure Ledger
 
