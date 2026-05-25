@@ -104,7 +104,8 @@ The chapter must define:
   \([\phi]=(d-\epsilon-2)/2\),
   \([O_I]=d-\epsilon+\delta_I(\epsilon)\), and
   \([g_I^\epsilon]=-\delta_I(\epsilon)\);
-- the MS coordinate definition
+- the MS coordinate definition as a relation between regulator-dependent
+  dimensionally regularized couplings and finite running coordinates,
   \(g_I^\epsilon=\mu^{-\delta_I(\epsilon)}
    [\lambda_I+\sum_{n\ge1}\epsilon^{-n}K_I^{(n)}]\);
 - the one-loop \(d=4\), \(\phi^4\) example that produces the

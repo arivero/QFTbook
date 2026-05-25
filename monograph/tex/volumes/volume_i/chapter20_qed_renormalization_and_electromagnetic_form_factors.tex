@@ -3,15 +3,17 @@
 \ConventionsLorentzian
 
 
-\section{Bare Variables and Ward Organization}
+\section{Regulated Variables and Ward Organization}
 
-Use the electron convention of Chapter~\ref{ch:qed-external-states}. The bare
-representative fields and
-parameters are
+Use the electron convention of Chapter~\ref{ch:qed-external-states}.  At a
+chosen perturbative regulator, use regulator-dependent representative fields
+and parameters
 \[
   A_\mu^B,\qquad \psi^B,\qquad \bar\psi^B,\qquad m^B,\qquad e^B,
 \]
-and the bare Lagrangian is
+where the superscript \(B\) labels this cutoff-dependent coordinate system.
+It does not denote a second Lagrangian separate from the regulated path
+integral.  The regulated QED Lagrangian in these coordinates is
 \[
   \mathcal L_B
   =
@@ -93,8 +95,9 @@ Thus
     \gamma^\mu(\partial_\mu+\ii e A_\mu)+m+\delta m
   \right]\psi .
 \]
-Split this into a renormalized quadratic and interaction part plus
-counterterms:
+Equivalently, write the same regulated Lagrangian in the finite field and
+charge coordinates as a finite reference part plus regulator-dependent local
+coordinates:
 \[
 \begin{aligned}
   \mathcal L_B
@@ -116,7 +119,10 @@ counterterms:
 \]
 The last line is the vertex counterterm tied to the spinor wavefunction
 counterterm by the Abelian Ward identity. The mass counterterm is independent
-because \(m\bar\psi\psi\) is gauge-invariant.
+because \(m\bar\psi\psi\) is gauge-invariant.  These counterterm vertices are
+not added to a separate bare theory; they are the regulator-dependent part of
+the single local Lagrangian \(\mathcal L_B\) after it has been expressed in
+the renormalized coordinates \(A_\mu,\psi,\bar\psi,m,e\).
 
 The current normalized by the renormalized field strength is obtained from
 the Euler--Lagrange equation for \(A_\mu\):

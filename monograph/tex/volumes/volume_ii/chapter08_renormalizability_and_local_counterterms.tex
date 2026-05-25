@@ -91,6 +91,41 @@ after inserting the corresponding map \(b_\Lambda\) or \(b_\varepsilon\), the
 chosen class of renormalized observables has a regulator-independent limit.
 \end{definition}
 
+\begin{definition}[Counterterm coordinates and insertion regularization]
+\label{def:counterterm-and-insertion-regularization}
+For a fixed regulator and a fixed renormalized coordinate chart
+\(\lambda\mapsto b_\Lambda(\lambda)\), there is one regulated action in the
+path integral,
+\[
+  S_\Lambda[\phi;\lambda]
+  =
+  \int\dd^Dx\,\mathcal L_{E,\Lambda}
+       \bigl(\phi;\{g_I(\lambda,\Lambda)\}\bigr).
+\]
+A \emph{counterterm} is not a second Lagrangian added to this action from
+outside.  It is the regulator-dependent part of the same local coordinate map
+\(b_\Lambda\), described relative to a chosen finite reference chart
+\(\lambda\).  Thus the split into finite reference terms and counterterm
+terms is a bookkeeping split of \(S_\Lambda[\phi;\lambda]\).
+
+An \emph{insertion regularization} is separate data.  Before operator mixing
+or continuum matching is discussed, an inserted operator is represented by a
+regulated functional
+\[
+  \mathcal O_{a,\Lambda}^{\rm ins}(x;\phi)
+\]
+or equivalently by a derivative with respect to a regulated local source.  A
+lattice representative, a smeared functional, a point-split expression, a
+heat-kernel expression, a dimensional-regularization graph rule, and a
+source-derivative prescription are different insertion regularizations.  A
+renormalized operator \([O_A]_\lambda\) is the finite source coordinate or
+finite linear combination obtained after the regulator-dependent insertion
+map and the action-coordinate map have been fixed and the chosen continuum
+limit exists.  Regularization supplies finite or meromorphic objects before
+the limit; renormalization is the coordinate choice that produces finite
+matched observables and operator insertions.
+\end{definition}
+
 Thus a perturbatively renormalizable family consists of a finite-dimensional
 family of coordinate maps into regulated Lagrangians.  Masses, residues, and
 specified 1PI vertex values at Euclidean subtraction momenta are common choices
@@ -178,8 +213,8 @@ for every local operator coefficient included in the finite-list
 renormalized description.  Nonlocal terms in the exact 1PI action, such as
 threshold logarithms, belong to the finite continuum correlation functions.
 
-The same structure appears directly in the bare action.  Suppose the bare
-quadratic term is
+The same structure appears directly in the regulated action.  Suppose the
+cutoff-dependent quadratic coordinate is represented by
 \[
   S_{\rm quad}[\phi]
   =
@@ -221,6 +256,9 @@ Thus perturbation theory is organized by writing
 where \(S_{\rm ct}\) is local and regulator dependent.  The finite parts of
 the counterterms are part of the renormalization prescription: changing them
 changes the coordinate system \(\lambda\) on the same perturbative family.
+The displayed split is a split of the single regulated action
+\(\widetilde S_\Lambda[\phi_R]\), not a division into a physical action and an
+external local functional.
 
 \section{Locality as Extension of Distributions}
 

@@ -118,6 +118,13 @@ Date: 2026-05-23
   It is not the foundation for asymptotically free gauge theories,
   constructive QFTs, lattice scaling limits, stochastic-quantization
   constructions, or effective presentations of the Standard Model.
+- Counterterms are regulator-dependent local coordinates in the single
+  regulated action used in the path integral, relative to a chosen finite
+  renormalized chart.  The monograph should not treat the legacy
+  two-Lagrangian split as conceptually primary.
+  Regularization of the action or measure, regularization of composite
+  insertions, and renormalization of finite action/source/operator coordinates
+  are distinct data and must be named separately.
 
 Date: 2026-05-24
 

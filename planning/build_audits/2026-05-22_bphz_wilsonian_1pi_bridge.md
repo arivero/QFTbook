@@ -26,7 +26,7 @@ construction.
   stated assumptions on locality, finite projectors, and derivative-expansion
   control.
 - Added a bridge figure mapping:
-  regulated bare action, BPHZ \(R\)-operation, Wilsonian pushforward,
+  ultraviolet-regulated action, BPHZ \(R\)-operation, Wilsonian pushforward,
   connected low-source functional, Legendre transform, Wilsonian coordinates,
   and 1PI projected coordinates.
 - Clarified that Wilsonian and 1PI beta-function components are comparable

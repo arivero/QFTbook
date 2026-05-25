@@ -309,8 +309,8 @@ The chapter must define and derive:
    of the attracting curve, not several trajectories merging into one finite
    point.
 9. Perturbative renormalizability is formulated by a limiting procedure:
-   remove the UV cutoff while tuning bare couplings so selected physical
-   couplings at a fixed reference scale remain fixed.
+   remove the UV cutoff while tuning regulator-dependent action coordinates
+   so selected physical couplings at a fixed reference scale remain fixed.
 10. The perturbative argument requires explicit hypotheses on small couplings,
    mild beta-function variation, and control of omitted irrelevant operators.
 10a. In four-dimensional scalar \(\lambda\phi^4\), these hypotheses must be

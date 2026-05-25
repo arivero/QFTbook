@@ -26,7 +26,8 @@
     distributions;
   - not used as the foundation or ordering principle of the chapter.
 - Rosten, "Fundamentals of the Exact Renormalization Group", arXiv:1003.1366:
-  - used only to check terminology around bare actions, cutoffs, Wilsonian
+  - used only to check terminology around ultraviolet-regulated actions,
+    cutoffs, Wilsonian
     effective actions, and scale dependence;
   - full Wilsonian RG is reserved for a later volume.
 
@@ -102,7 +103,9 @@
 - With a momentum cutoff \(\Lambda\), the tadpole integral diverges as
   \(\log(\Lambda/m)\) in \(D=2\) and as a power \(\Lambda^{D-2}\) in \(D\ge3\).
 - A mass counterterm reorganizes perturbation theory so that the pole mass can
-  be fixed order by order.
+  be fixed order by order; it is a cutoff-dependent coordinate of the same
+  regulated Lagrangian written in the finite mass coordinate, not an external
+  addition to a separate theory.
 - The leading connected four-point Green function is
   \[
     (2\pi)^D\delta^D\!\left(\sum_i k_i\right)

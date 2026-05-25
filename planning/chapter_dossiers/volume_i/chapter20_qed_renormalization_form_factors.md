@@ -34,7 +34,8 @@ Status: revised and source-audited on 2026-05-22.
 ## Framework
 
 - Four-dimensional QED in covariant gauge, with electron convention
-  \(g=-e\), \(e>0\).
+  \(g=-e\), \(e>0\), and regulator-dependent representative variables labelled
+  by the superscript \(B\).
 - Renormalized representative fields are fixed by pole-residue conditions for
   photon field strength and electron spinor fields.
 - Dimensional regularization is used for one-loop integrals, with
@@ -51,7 +52,7 @@ Status: revised and source-audited on 2026-05-22.
 
 | Symbol | Meaning |
 | --- | --- |
-| \(A_\mu^B,\psi^B,m^B,e^B\) | bare vector representative, spinor, mass, and charge |
+| \(A_\mu^B,\psi^B,m^B,e^B\) | regulator-dependent vector representative, spinor, mass, and charge |
 | \(A_\mu,\psi,m,e\) | renormalized representatives, physical mass parameter, charge parameter |
 | \(Z_A,Z_\psi,Z_1\) | photon, spinor, and vertex renormalization constants |
 | \(\delta m\) | mass counterterm |

@@ -20,4 +20,4 @@ Verification:
 - Rendered and visually inspected PDF pages 185--193 at 150 dpi, covering the chapter opening, source/Legendre figure, tadpole/1PI figure, connected-tree reconstruction figure, Euclidean convexity material, and the transition into local counterterms.
 
 Follow-up:
-- The next renormalization pass should use these conventions to sharpen the local-counterterm chapter, especially the exact meaning of finite 1PI coordinates and regulator-dependent bare parameters.
+- The next renormalization pass should use these conventions to sharpen the local-counterterm chapter, especially the exact meaning of finite 1PI coordinates and regulator-dependent action parameters.

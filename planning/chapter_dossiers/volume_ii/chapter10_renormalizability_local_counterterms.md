@@ -79,7 +79,13 @@ The chapter must define:
    the 1PI action; nonlocal finite terms such as threshold logarithms are part
    of the continuum 1PI kernels.
 5. Wavefunction, mass, and interaction counterterms are local terms in the
-   same operator basis used to define the regulated action.
+   same operator basis used to define the regulated action; they are
+   regulator-dependent coordinates of that action, not a second Lagrangian.
+5a. The chapter separates action regularization from insertion
+    regularization: a regulated insertion is a functional or source derivative
+    in the regulated path integral, while a renormalized operator is the
+    finite source coordinate or finite linear combination obtained after the
+    insertion map and the action-coordinate map are fixed.
 6. In \(D=4\), after vacuum-energy and tadpole bookkeeping, \(\phi^3\) and
    \(\phi^4\) illustrate finite counterterm closure, while \(\phi^6\)
    first renormalizes its own sextic coupling and then illustrates

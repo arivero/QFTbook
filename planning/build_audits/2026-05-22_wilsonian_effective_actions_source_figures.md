@@ -58,7 +58,7 @@
   relative minus sign and shell-line weight.
 - Figure 35.4: quartic-sextic flow shows IR attraction toward the slaved curve
   \(\lambda_6=-\frac b2\lambda_4^2+O(\lambda_4^3)\).
-- Figure 35.5: continuum-limit diagram now shows bare actions on
+- Figure 35.5: continuum-limit diagram now shows ultraviolet-regulated actions on
   \(\lambda_6(\Lambda_0)=0\), flow toward the fixed reference scale, increasing
   cutoff direction, the \(\lambda_4^R\) slice, and the limiting value as
   \(\Lambda_0\to\infty\).
@@ -70,4 +70,3 @@
 - Strict monograph text audit was clean.
 - Rendered PDF page check was performed on pages 243--252; no cropped equations
   or overlapping labels were found in the audited Wilsonian block.
-

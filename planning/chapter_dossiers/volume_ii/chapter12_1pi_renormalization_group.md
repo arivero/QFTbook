@@ -266,7 +266,7 @@ The chapter must define:
   `/tmp/qft_ch32_rg_audit-226.png`.
 - 2026-05-24 issue pass: addressed #221 by adding a labeled scheme-equivalence
   theorem for matched physical observables, using regulated path-integral
-  action parameters rather than a separate ``bare Lagrangian'' terminology.
+  action parameters rather than legacy separate-Lagrangian terminology.
 - 2026-05-24 issue pass: addressed #222 by adding an asymptotic-series,
   large-order, and Borel-summability discussion to the 1PI RG chapter.
 - 2026-05-24 issue pass: addressed #223 by adding a cautious renormalon

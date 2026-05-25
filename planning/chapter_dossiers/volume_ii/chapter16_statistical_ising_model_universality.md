@@ -273,6 +273,9 @@ The chapter must define and derive:
   a continuum measure/source functional.  The manuscript now states that
   normalized correlator universality requires additional scaling-limit,
   positivity, locality, regularity, clustering, and continuity hypotheses.
+- 2026-05-25 terminology pass: local universality hypotheses now refer to
+  ultraviolet-regulated microscopic actions and their local coordinates,
+  avoiding separate bare-action terminology.
 - 2026-05-24 issue #237 pass: added a reflection-positivity section defining
   the finite-lattice OS quadratic form, proving reflection positivity for
   ferromagnetic nearest-neighbor Ising and scalar lattice measures by explicit

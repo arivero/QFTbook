@@ -17,7 +17,7 @@
 
 ## Source Content Checked
 
-- Regulated Euclidean path integral, local bare action, and the two regulator
+- Regulated Euclidean path integral, local ultraviolet-regulated action, and the two regulator
   languages: momentum cutoff and dimensional regularization.
 - The finite-parameter renormalized-family criterion: bare local coordinates
   may diverge with the regulator, while finite physical/renormalized
