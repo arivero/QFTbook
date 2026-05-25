@@ -11,7 +11,7 @@
 
 - Right Rindler wedge and boost flow.
 - KMS statement for the vacuum restricted to a wedge algebra.
-- Bisognano--Wichmann theorem boundary with hypotheses.
+- Bisognano--Wichmann theorem, marked as a `quotedtheorem` with hypotheses.
 - Free scalar accelerated-worldline check.
 - Detector detailed-balance relation.
 
@@ -28,7 +28,7 @@
 
 ## Claim Ledger
 
-1. The wedge-restricted vacuum is KMS for boosts under the
+1. The wedge-restricted vacuum is KMS for boosts under the quoted
    Bisognano--Wichmann hypotheses.
 2. The proper-time Unruh temperature is \(a/(2\pi)\).
 3. The free scalar two-point function along an accelerated trajectory has the

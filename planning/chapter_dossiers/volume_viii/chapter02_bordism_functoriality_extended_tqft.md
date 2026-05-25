@@ -16,7 +16,8 @@
   \(D\)-manifolds.
 - Pairing from evaluation bordism and reflection-positive/unitary refinement.
 - Extended TQFT as a higher functor from an extended bordism category.
-- Cobordism-hypothesis theorem boundary through fully dualizable objects.
+- Cobordism hypothesis through fully dualizable objects, marked as a
+  `quotedtheorem` rather than a theorem proved in the monograph.
 - Extraction problem from local QFT protected sectors.
 - Witten--Donaldson theory as a four-dimensional cohomological gauge-theory
   test case.
@@ -44,8 +45,9 @@
 2. Reflection positivity/unitarity is extra structure on the functor.
 3. Extended theories assign data to lower-dimensional strata and require a
    higher-categorical target.
-4. The cobordism hypothesis is used only with its target-category and
-   dualizability hypotheses stated.
+4. The cobordism hypothesis is quoted only with its target-category and
+   dualizability hypotheses stated; the monograph does not present it as a
+   locally proved theorem.
 5. The Donaldson/Seiberg--Witten relation is an RG comparison problem whose
    current mathematical status must be separated into differential-geometric
    moduli-space theorems, finite-dimensional localization or gluing inputs, and
