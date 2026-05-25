@@ -481,8 +481,24 @@ convention by
   u(p).
 \]
 The second structure is the Gordon-identity form of the Pauli tensor
-structure; its matrix element vanishes at \(p'=p\).  Comparing coefficients
-with the displayed \((F,G)\) decomposition gives
+structure.  Indeed, with
+\[
+  S^{\mu\nu}=-\frac{\ii}{4}[\gamma^\mu,\gamma^\nu],
+  \qquad k=p-p',
+\]
+the on-shell identity displayed below gives
+\begin{equation}
+  \bar u(p')\frac1m S^{\mu\nu}k_\nu u(p)
+  =
+  \bar u(p')
+  \left(\gamma^\mu+\frac{\ii}{2m}(p+p')^\mu\right)
+  u(p).
+  \label{eq:qed-pauli-gordon-current-convention}
+\end{equation}
+Thus \(F_2^{\rm DP}\) is the coefficient of the Pauli tensor
+\(m^{-1}S^{\mu\nu}k_\nu\), not the coefficient of \((p+p')^\mu\) alone.
+Its matrix element vanishes at \(p'=p\).  Comparing coefficients with the
+displayed \((F,G)\) decomposition gives
 \[
   F_1^{\rm DP}=F+G,
   \qquad

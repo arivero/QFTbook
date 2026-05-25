@@ -61,6 +61,7 @@ Status: revised and source-audited on 2026-05-22.
 | \(M^{\mu\nu}(k)\) | noncontact current-current two-point coefficient |
 | \(M_x^2\) | \(m^2+x(1-x)k^2\) in the vacuum-polarization integral |
 | \(F(k^2),G(k^2)\) | electron electromagnetic form factors in the chapter's gamma convention |
+| \(F_1^{\rm DP}(k^2),F_2^{\rm DP}(k^2)\) | Dirac--Pauli form factors defined by \(m^{-1}S^{\mu\nu}k_\nu\), with \(F_1^{\rm DP}=F+G\) and \(F_2^{\rm DP}=-G\) |
 | \(g_{\mathrm{mag}}\) | electron magnetic \(g\)-factor |
 | \(\alpha\) | fine-structure parameter \(e^2/(4\pi)\) |
 | \(\mathcal W_\alpha\) | Abelian Ward--Takahashi generator acting as a fixed first-order differential operator on the QED 1PI functional |
@@ -90,7 +91,9 @@ Status: revised and source-audited on 2026-05-22.
   numerator, \(p_\mu p_\nu\mapsto D^{-1}\eta_{\mu\nu}p^2\), and the two scalar
   integrals analytically continued in \(D\).
 - The electron current matrix element has two form factors in the stated
-  parity-preserving theory, and charge normalization gives \(F(0)+G(0)=1\).
+  parity-preserving theory.  The chapter's \((F,G)\) basis is related to the
+  Dirac--Pauli basis by \(F_1^{\rm DP}=F+G\) and \(F_2^{\rm DP}=-G\);
+  charge normalization gives \(F(0)+G(0)=1\).
 - In a weak magnetic background, \(g_{\mathrm{mag}}=2F(0)\).
 - The tree current vertex plus photon self-energy chain contributes only to
   \(F(k^2)\); the order-\(e^2\) contribution to \(G(k^2)\) comes from the
@@ -121,3 +124,9 @@ Status: revised and source-audited on 2026-05-22.
 - 2026-05-24 issue #248 pass: added the linear Ward--Takahashi functional
   identity behind photon self-energy transversality and cross-referenced the
   BRST chapter's quadratic Slavnov--Taylor identity.
+- 2026-05-24 issue #398 pass: made the Gordon-identity comparison to the
+  Dirac--Pauli basis explicit in the mostly-plus convention.  The manuscript
+  now displays \(m^{-1}S^{\mu\nu}k_\nu=\gamma^\mu+\ii(p+p')^\mu/(2m)\) on
+  external spinors and records that \(F_2^{\rm DP}=-G\), so
+  \(G(0)=-\alpha/(2\pi)\) is equivalent to the standard positive
+  \(F_2^{\rm DP}(0)=+\alpha/(2\pi)\).
