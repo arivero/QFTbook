@@ -1,0 +1,123 @@
+\chapter{Higher-Group Symmetry And Symmetry TQFT}
+\label{ch:global-higher-group-symmetry-tft}
+
+\ConventionsMixed
+
+Higher-form symmetries and ordinary symmetries may combine into a single
+background-field structure.  The combined object is not merely a product of
+groups; its gauge transformations and anomalies may be linked by Postnikov
+classes.  This chapter defines higher-group backgrounds and then explains
+the symmetry-TQFT organization of boundary conditions and gauging operations.
+
+\section{Two-Group Backgrounds}
+
+Let \(G_0\) be an ordinary finite internal symmetry and let \(A\) be an
+abelian one-form symmetry.  A two-group is specified by an action of \(G_0\)
+on \(A\) and a Postnikov class
+\[
+  \beta\in H^3(BG_0,A).
+\]
+On a triangulated spacetime \(M\), a background consists of a \(G_0\)-valued
+one-cocycle \(g\) and an \(A\)-valued two-cochain \(B\) obeying
+\[
+  \delta_g B=\beta(g).
+\]
+Here \(\delta_g\) is the coboundary twisted by the \(G_0\)-action on \(A\).
+Thus \(B\) is not closed when the ordinary background \(g\) has nontrivial
+Postnikov obstruction.
+
+\section{Gauge Transformations}
+
+A \(G_0\) gauge transformation changes \(g\) by a coboundary.  The two-form
+background \(B\) must transform at the same time so that
+\(\delta_gB=\beta(g)\) remains valid.  A one-form gauge transformation with
+\(A\)-valued one-cochain \(\lambda\) acts by
+\[
+  B\mapsto B+\delta_g\lambda .
+\]
+If \(\beta\ne0\), the ordinary and one-form transformations do not commute as
+independent operations on the background fields.  The physical statement is
+that charged line operators and local operators transform in a single
+higher-group representation problem.
+
+\section{Anomaly Functionals}
+
+An anomaly of a two-group symmetry in \(D\) dimensions is an invertible
+\((D+1)\)-dimensional action for \((g,B)\).  A basic term is
+\[
+  S_{\mathrm{anom}}[g,B]
+  =
+  2\pi i\int_X
+  \langle B\smile \gamma(g)\rangle ,
+\]
+where \(\gamma(g)\) is a \(G_0\)-dependent cochain with values in the Pontryagin
+dual of \(A\).  Gauge invariance on closed \(X\) imposes a cocycle condition
+using \(\delta_gB=\beta(g)\).  If \(X\) has boundary, the boundary QFT
+partition function is a section of the anomaly line over background fields.
+
+\section{Symmetry TQFT}
+
+For a \(D\)-dimensional QFT with finite symmetry, one can package background
+fields, gauging, and duality defects in a \((D+1)\)-dimensional topological
+theory.  A physical QFT is then represented by a boundary condition
+\[
+  \mathfrak B_Q
+\]
+for the symmetry TQFT.  Coupling to a background corresponds to ending the
+topological theory on a background boundary.  Gauging corresponds to replacing
+that boundary condition by a summing boundary condition.
+
+For an ordinary finite group \(G\), the symmetry TQFT is finite \(G\)-gauge
+theory in one higher dimension.  For higher groups, the bulk field space is
+the groupoid of pairs \((g,B)\) satisfying the Postnikov constraint.  The
+fusion of topological defects in the QFT is inherited from the fusion of
+topological boundary-changing operators in the bulk.
+
+\section{Condensation And Gauging}
+
+Let \(\mathcal C\) be the category or higher category of topological defects
+describing a finite symmetry.  Gauging a sub-symmetry is condensation of a
+commutative algebra object
+\[
+  A_{\mathrm{cond}}\in\mathcal C .
+\]
+The gauged theory has boundary condition obtained by allowing endpoints of
+the condensed defects.  If the algebra object is obstructed by an anomaly,
+the condensation exists only after coupling to an appropriate bulk or after
+choosing a trivialization of the anomaly.
+
+\section{Example: Mixed Zero- And One-Form Data}
+
+Consider a four-dimensional gauge theory with gauge group \(SU(N)\) and a
+charge conjugation symmetry acting on the center one-form symmetry
+\[
+  A=\mathbb Z_N
+\]
+by inversion.  A background for the ordinary symmetry changes the local
+system in which the \(A\)-valued two-form background lives.  If a theta-angle
+or discrete theta term changes under charge conjugation, the anomaly is a
+five-dimensional functional of the combined background.  The line-operator
+lattice then transforms as a module over the two-group rather than as a
+separate representation of each symmetry.
+
+\section{Comparison Ledger}
+
+The symmetry-TQFT description is not a replacement for constructing the QFT.
+It records:
+\[
+\begin{gathered}
+  \text{allowed background fields},\qquad
+  \text{anomaly lines},\\
+  \text{gauging and condensation operations},\qquad
+  \text{topological defect fusion}.
+\end{gathered}
+\]
+Local correlators, Hilbert space, stress tensor, and dynamical phase
+structure must still be supplied by the QFT itself.
+
+\begin{openproblem}[Higher-group examples]
+\label{op:higher-group-examples}
+Construct interacting continuum QFT examples whose higher-group backgrounds,
+symmetry TQFT, defect fusion, anomaly inflow, and local-operator action are
+all derived from a single regulator or reconstruction framework.
+\end{openproblem}

@@ -1,0 +1,220 @@
+\chapter{Finite-Volume Form Factors And Spectral Expansions}
+\label{ch:integrable-finite-volume-form-factors}
+
+\ConventionsLorentzian
+
+Exact scattering data become QFT data only after they are connected to local
+operator matrix elements and to Hilbert-space traces or correlation
+functions.  This chapter develops the finite-volume bridge.  The finite
+circumference \(L\) is a regulator, not an infrared decoration: it turns
+rapidity states into discrete vectors, supplies a controlled normalization of
+matrix elements, and gives a testable route from bootstrap form factors to
+correlators.
+
+\section{Bethe--Yang States}
+
+Let a massive integrable two-dimensional QFT have particle species
+\(a=1,\ldots,N\), masses \(m_a\), and two-body scattering eigenvalues
+\[
+  S_{ab}(\theta)=\ee^{i\delta_{ab}(\theta)}
+\]
+in a diagonal sector.  On a circle of circumference \(L\), an \(n\)-particle
+state with rapidities \(\theta_1,\ldots,\theta_n\) satisfies the Bethe--Yang
+equations
+\[
+  Q_j(\theta)
+  =
+  m_{a_j}L\sinh\theta_j
+  +
+  \sum_{k\ne j}\delta_{a_j a_k}(\theta_j-\theta_k)
+  =
+  2\pi I_j ,
+  \qquad j=1,\ldots,n .
+\]
+The integers or half-integers \(I_j\) specify the state once a branch of
+\(\delta\) and an ordering convention are fixed.  The finite-volume energy
+and momentum at this order are
+\[
+  E_L(\theta)=\sum_{j=1}^n m_{a_j}\cosh\theta_j ,
+  \qquad
+  P_L(\theta)=\sum_{j=1}^n m_{a_j}\sinh\theta_j .
+\]
+Corrections are exponentially small in \(mL\) when no massless channel or
+nearby singularity invalidates the contour deformation used in the derivation.
+
+\section{Gaudin Density}
+
+The density of Bethe--Yang states is the Jacobian
+\[
+  \rho_n(\theta)
+  =
+  \det_{1\le i,j\le n}
+  \frac{\partial Q_i}{\partial\theta_j}.
+\]
+For one particle,
+\[
+  \rho_1(\theta)=m_aL\cosh\theta .
+\]
+For two particles in a diagonal channel,
+\[
+  \rho_2(\theta_1,\theta_2)
+  =
+  m_{a_1}m_{a_2}L^2\cosh\theta_1\cosh\theta_2
+  +
+  \varphi_{a_1a_2}(\theta_{12})
+  L\bigl(
+    m_{a_1}\cosh\theta_1+m_{a_2}\cosh\theta_2
+  \bigr),
+\]
+where \(\theta_{12}=\theta_1-\theta_2\) and
+\[
+  \varphi_{ab}(\theta)=\partial_\theta\delta_{ab}(\theta).
+\]
+The determinant is the finite-volume normalization factor that converts
+infinite-volume delta-normalized rapidity states into unit vectors.
+
+\section{Off-Diagonal Matrix Elements}
+
+Let \(\mathcal O\) be a local scalar operator and let
+\[
+  F^{\mathcal O}_{b_1\ldots b_m,a_1\ldots a_n}
+  (\theta'_1+i\pi,\ldots,\theta'_m+i\pi,\theta_1,\ldots,\theta_n)
+\]
+be the infinite-volume crossed form factor in the branch specified by the
+ordering of particles.  If the incoming and outgoing finite-volume states have
+no coincident rapidities after crossing, the leading finite-volume matrix
+element is
+\[
+  {}_L\langle J_1,\ldots,J_m|\mathcal O(0)|I_1,\ldots,I_n\rangle_L
+  =
+  \frac{
+    F^{\mathcal O}_{b_1\ldots b_m,a_1\ldots a_n}
+    (\theta'_1+i\pi,\ldots,\theta'_m+i\pi,\theta_1,\ldots,\theta_n)
+  }{
+    \sqrt{\rho_m(\theta')\rho_n(\theta)}
+  }
+  +
+  O(\ee^{-\mu L}) .
+\]
+The constant \(\mu\) is determined by the lightest particle and by the closest
+singularity crossed in moving virtual particles around the circle.  The
+formula is a theorem only after the analytic strip, residue prescriptions,
+and finite-volume Hilbert-space construction have been stated.
+
+\section{Diagonal Matrix Elements}
+
+Diagonal matrix elements require subtracting kinematic poles.  Let
+\[
+  F^{\mathcal O}_{2n,c}
+  (\theta_1,\ldots,\theta_n)
+\]
+denote the connected diagonal form factor obtained from the finite part of
+\[
+  F^{\mathcal O}_{\bar a_n\ldots\bar a_1a_1\ldots a_n}
+  (\theta_n+i\pi+\epsilon_n,\ldots,\theta_1+i\pi+\epsilon_1,
+  \theta_1,\ldots,\theta_n)
+\]
+after removing all pole terms as \(\epsilon_j\to0\).  The finite-volume
+expectation has the expansion
+\[
+  {}_L\langle I_1,\ldots,I_n|\mathcal O|I_1,\ldots,I_n\rangle_L
+  =
+  \frac{1}{\rho_n(\theta)}
+  \sum_{A\subset\{1,\ldots,n\}}
+  F^{\mathcal O}_{2|A|,c}(\theta_A)\,
+  \rho_{n-|A|}(\theta_{\bar A})
+  +
+  O(\ee^{-\mu L}) .
+\]
+Here \(\rho_0=1\), and \(\theta_A\) is the rapidity list indexed by \(A\).
+This identity is a precise statement of how contact terms from coincident
+crossed particles are replaced by connected diagonal form factors.
+
+\section{Spectral Expansion Of Correlators}
+
+For a zero-temperature two-point function in finite volume,
+\[
+  C_L(x,t)=
+  \langle\Omega_L|\mathcal O(x,t)\mathcal O(0,0)|\Omega_L\rangle ,
+\]
+inserting a complete orthonormal basis gives
+\[
+  C_L(x,t)
+  =
+  \sum_\alpha
+  \bigl|
+    \langle\Omega_L|\mathcal O(0)|\alpha,L\rangle
+  \bigr|^2
+  \ee^{-iE_\alpha t+iP_\alpha x}.
+\]
+The infinite-volume expansion is obtained by replacing sums over Bethe
+integers by rapidity integrals with the Gaudin density.  For a scalar operator
+in a diagonal theory,
+\[
+  C(x,t)
+  =
+  \sum_{n=0}^{\infty}
+  \frac{1}{n!}
+  \sum_{a_1,\ldots,a_n}
+  \int_{\mathbb R^n}
+  \prod_{j=1}^n\frac{d\theta_j}{2\pi}\,
+  \bigl|
+    F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n)
+  \bigr|^2
+  \ee^{-i\sum_j m_{a_j}t\cosh\theta_j
+      +i\sum_j m_{a_j}x\sinh\theta_j}.
+\]
+Convergence is part of the statement.  It requires bounds on form factors at
+large rapidity, control of particle-number growth, and a domain for
+\((x,t)\) or its Euclidean continuation.
+
+\section{Thermal Traces And Leclair--Mussardo Type Series}
+
+At finite temperature the Gibbs trace is not obtained by simply inserting the
+zero-temperature spectral sum with Boltzmann weights.  The thermodynamic
+limit must be taken at fixed rapidity density.  A thermal expectation of a
+local operator has the candidate series
+\[
+  \langle\mathcal O\rangle_R
+  =
+  \sum_{n=0}^{\infty}\frac{1}{n!}
+  \sum_{a_1,\ldots,a_n}
+  \int\prod_{j=1}^n\frac{d\theta_j}{2\pi}\,
+  \prod_{j=1}^n n_{a_j}(\theta_j)\,
+  F^{\mathcal O}_{2n,c}(\theta_1,\ldots,\theta_n),
+\]
+where \(R\) is inverse temperature and
+\[
+  n_a(\theta)=\frac{1}{1+\ee^{\varepsilon_a(\theta)}}
+\]
+for fermionic Bethe quantization conventions.  Other statistics conventions
+change the occupation factor and the definition of the pseudoenergy.  The
+series is tied to the TBA equations; it is meaningful only with the same
+scattering kernel, branch conventions, and connected-diagonal prescription.
+
+\section{Reconstruction Boundary}
+
+Finite-volume form-factor formulae are not a replacement for local QFT
+construction.  They provide a computable comparison system:
+\[
+  \text{bootstrap } S
+  \longrightarrow
+  \text{form factors}
+  \longrightarrow
+  \text{finite-volume matrix elements}
+  \longrightarrow
+  \text{correlators}.
+\]
+To obtain a local QFT, the correlators must satisfy positivity, covariance,
+locality, clustering, and reconstruction hypotheses in the intended
+framework.  The finite-volume regulator is valuable because every step before
+the infinite-volume limit has a declared Hilbert space and normalizable
+vectors.
+
+\begin{openproblem}[Form-factor construction]
+\label{op:form-factor-construction}
+Construct an interacting factorizing QFT from bootstrap scattering and
+form-factor data by proving convergence of the spectral expansions, locality
+of reconstructed fields or algebras, and agreement of finite-volume matrix
+elements with the Hilbert-space limit.
+\end{openproblem}

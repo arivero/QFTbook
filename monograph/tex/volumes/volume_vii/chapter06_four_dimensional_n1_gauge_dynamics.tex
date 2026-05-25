@@ -36,6 +36,45 @@ The holomorphic scale is the invariant coordinate
 This equation defines \(\Lambda_h\) after a branch convention has been chosen;
 only \(\Lambda_h^{b_0}\) is invariant under the periodicity of \(\theta\).
 
+\section{Canonical Coupling And NSVZ For SQCD}
+
+The holomorphic scale is not the same coordinate as the canonical gauge
+coupling used in particle normalizations.  Let \(g\) be the canonical
+coupling defined by the component kinetic term of
+Chapter~\ref{ch:susy-gauge-theory}, and let \(Z_Q=Z_{\widetilde Q}\) be the
+flavor-symmetric matter wave-function coordinate.  With
+\[
+  \gamma_Q(\mu)=\mu\frac{d}{d\mu}\log Z_Q(\mu),
+\]
+the NSVZ coordinate formula of
+Chapter~\ref{ch:susy-nonrenormalization-holomorphy} gives
+\[
+  \beta_g
+  =
+  -\frac{g^3}{16\pi^2}\,
+  \frac{
+    3C_2(SU(N_c))
+    -
+    N_f\bigl(T(\mathbf N_c)+T(\overline{\mathbf N}_c)\bigr)
+    (1-\gamma_Q)
+  }{
+    1-\frac{C_2(SU(N_c))g^2}{8\pi^2}
+  } .
+\]
+In the half-trace convention for this SQCD subsection,
+\[
+  C_2(SU(N_c))=N_c,\qquad
+  T(\mathbf N_c)=T(\overline{\mathbf N}_c)=\frac12,
+\]
+and the numerator becomes
+\[
+  3N_c-N_f(1-\gamma_Q).
+\]
+The formula follows from three inputs: one-loop running of the holomorphic
+Wilsonian coordinate, the rescaling anomaly of matter and vector variables,
+and the definition of \(Z_Q\).  A different canonical coupling coordinate
+changes the displayed rational form by a finite reparametrization of \(g\).
+
 \section{Gauge-Invariant Chiral Coordinates}
 
 The meson matrix is the chiral operator
@@ -96,6 +135,85 @@ The constant \(C\) depends on the normalization of \(S\) and on the definition
 of \(\Lambda_h\).  The statement with invariant content is the existence of a
 nonzero chiral condensate with these discrete phases in a scheme where the
 low-energy theory has a mass gap and isolated vacua.
+
+\section{Witten Index Of Pure Supersymmetric Yang--Mills}
+
+Put pure supersymmetric Yang--Mills on a spatial three-torus \(T^3_L\) with
+periodic spin structure for the gaugino.  The finite-volume index is
+\[
+  \mathcal I(\beta,L)
+  =
+  \operatorname{Tr}_{\mathcal H(T^3_L)}
+  (-1)^F\ee^{-\beta H}.
+\]
+If the Hamiltonian has discrete spectrum and supersymmetry is represented by
+closed supercharges with
+\[
+  H=\frac12\{Q,Q^\dagger\},
+\]
+then every positive-energy state belongs to a boson-fermion pair.  Indeed, if
+\(H|\psi\rangle=E|\psi\rangle\) with \(E>0\), at least one of
+\(Q|\psi\rangle\) and \(Q^\dagger|\psi\rangle\) is nonzero and has the same
+energy and opposite fermion parity.  Therefore
+\[
+  \mathcal I(\beta,L)
+  =
+  \dim\ker H|_{\mathrm{bosonic}}
+  -
+  \dim\ker H|_{\mathrm{fermionic}}
+\]
+and is independent of \(\beta\).  Its invariance under changes of \(L\) or
+coupling requires that zero-energy states do not disappear into or emerge
+from a continuum; this is an analytic hypothesis beyond the graded trace
+identity.
+
+For \(G=SU(N_c)\), a semiclassical computation can be organized on
+\(\mathbb R^3\times S^1\) at small circle size.  The Wilson line around
+\(S^1\) and the dual photon combine into periodic chiral coordinates
+\(Y_i\), with \(i=1,\ldots,N_c\) and \(\sum_iY_i=0\).  Monopole-instanton
+events associated with the simple roots and the affine root generate an
+affine-Toda superpotential of the form
+\[
+  W_{\mathrm{aff}}
+  =
+  \sum_{i=1}^{N_c-1}\exp(Y_i-Y_{i+1})
+  +
+  \eta\,\exp(Y_{N_c}-Y_1),
+\]
+where \(\eta\) is the four-dimensional holomorphic scale coordinate in the
+compactified normalization.  Define
+\[
+  x_i=\exp(Y_i-Y_{i+1}),\quad i=1,\ldots,N_c-1,
+  \qquad
+  x_{N_c}=\eta\,\exp(Y_{N_c}-Y_1).
+\]
+The constraint is
+\[
+  x_1x_2\cdots x_{N_c}=\eta .
+\]
+The critical equations of \(W_{\mathrm{aff}}\) set
+\[
+  x_1=x_2=\cdots=x_{N_c}.
+\]
+Hence
+\[
+  x_i^{N_c}=\eta ,
+\]
+and there are \(N_c\) isolated supersymmetric vacua.  This matches the
+discrete phases of the gaugino condensate above and gives
+\[
+  \mathcal I_{SU(N_c)}=N_c
+\]
+under the compactification and gap hypotheses just stated.  For a simple
+simply connected gauge group \(G\), the corresponding number is the dual
+Coxeter number \(h^\vee_G\).
+
+The delicate point is the route from this small-circle computation to the
+four-dimensional infinite-volume theory.  The index protects the count only
+if the family of Hamiltonians has no leakage through a continuum and if the
+boundary conditions preserve the same supersymmetry and global form.  The
+index is used here together with this finite-volume and compactification
+ledger.
 
 \section{ADS Superpotential}
 
@@ -185,5 +303,5 @@ coordinates above are defined as continuum limits.
 Construct a four-dimensional regulator and continuum limit for
 \(\mathcal N=1\) gauge theories that preserves enough supersymmetric and gauge
 Ward identities to make the holomorphic Wilsonian coordinate arguments above
-theorem-level statements.
+proved statements.
 \end{openproblem}

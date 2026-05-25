@@ -24,6 +24,19 @@ dimensional functional derivatives are therefore shorthand for the
 corresponding regulated or local-jet operation.  When an identity involves the
 BV Laplacian, the regulator and measure are part of the data.
 
+This chapter supplies the continuum gauge-theory framework for effective
+actions.  A Wilsonian or 1PI effective action for a gauge theory is a
+gauge-compatible object only after the gauge symmetry has been encoded in a
+BRST/BV complex, or after a lattice regulator has supplied a finite
+gauge-invariant integral over link variables.  In the BV route the finite
+cutoff data are the odd symplectic field-antifield space, a compatible
+half-density, the regulated BV Laplacian, the master action, and the
+coarse-graining cycle.  In the lattice route the finite cutoff data are the
+compact link-variable space, Haar measure, gauge action, gauge-invariant
+observables, and blocking or scaling map.  Later gauge-theory Wilsonian
+claims use one of these two data types and state the comparison map between
+them when both appear.
+
 \section{Fields, Antifields, and Gradings}
 
 Let \(\{\Phi^A\}\) denote the full set of fields in the gauge-theory complex.
@@ -74,6 +87,40 @@ Left and right variational derivatives are defined by
 \]
 and similarly for antifields.  The distinction is necessary because odd
 variables do not commute with the variation symbols.
+
+For a local functional
+\[
+  F[\Phi]=\int_M f(x,\Phi,\partial\Phi,\ldots,\partial^r\Phi)\,\dd^D x ,
+\]
+the left Euler--Lagrange derivative is the coefficient of
+\(\delta\Phi^A\) after moving derivatives off the variation:
+\[
+  \frac{\delta^L F}{\delta\Phi^A}
+  =
+  \sum_{|\alpha|\leq r}
+  (-\partial)_\alpha
+  \frac{\partial^L f}
+       {\partial(\partial_\alpha\Phi^A)} .
+  \label{eq:bv-euler-operator}
+\]
+Here \(\alpha\) is a multi-index and
+\((-\partial)_\alpha=(-1)^{|\alpha|}\partial_\alpha\).  Boundary conditions or
+compact support are part of the definition whenever the integration by parts
+is used.  In a finite regulator \(\partial_\alpha\Phi^A\) is replaced by the
+corresponding finite set of regulated coordinates, and
+\eqref{eq:bv-euler-operator} becomes the ordinary graded partial derivative.
+The ghost number and parity of the variational derivative are
+\[
+  \operatorname{gh}\!\left(\frac{\delta^L F}{\delta\Phi^A}\right)
+  =
+  \operatorname{gh}(F)-\operatorname{gh}(\Phi^A),
+  \qquad
+  \left|\frac{\delta^L F}{\delta\Phi^A}\right|
+  =
+  |F|+\epsilon_A .
+\]
+These bookkeeping rules are what make the BV bracket below homogeneous of
+parity one and ghost number one.
 
 \section{The Antibracket}
 
@@ -144,6 +191,57 @@ The elementary brackets are
 with the delta distribution understood in the same regulated or distributional
 sense as the fields themselves.
 
+\begin{proposition}[Odd symplectic origin of the antibracket]
+\label{prop:bv-antibracket-odd-symplectic-origin}
+At finite regulator, let
+\[
+  \omega=\delta\Phi^*_A\,\delta\Phi^A
+\]
+be the odd symplectic form on the graded vector space with coordinates
+\((\Phi^A,\Phi^*_A)\).  For a homogeneous function \(F\), define its
+Hamiltonian vector field \(X_F\) by
+\[
+  \iota_{X_F}\omega=\delta F .
+\]
+Then the bracket \((F,G):=X_FG\) is exactly
+\eqref{eq:bv-antibracket}.  It satisfies the elementary brackets,
+graded antisymmetry, the odd Jacobi identity, and the two biderivation
+identities displayed above.
+\end{proposition}
+
+\begin{proof}
+In Darboux coordinates the equation
+\(\iota_{X_F}\omega=\delta F\) gives
+\[
+  X_F
+  =
+  \frac{\delta^R F}{\delta\Phi^A}
+  \frac{\delta^L}{\delta\Phi^*_A}
+  -
+  \frac{\delta^R F}{\delta\Phi^*_A}
+  \frac{\delta^L}{\delta\Phi^A}.
+\]
+Applying this vector field to \(G\) gives
+\eqref{eq:bv-antibracket}.  The elementary brackets follow by applying the
+formula to the coordinate functions.  The biderivation identities follow
+because \(X_F\) is a graded derivation of parity \(|F|+1\).
+
+For the Jacobi identity, use the defining relation and the closedness of the
+constant Darboux form:
+\[
+  \iota_{[X_F,X_G]}\omega
+  =
+  \delta(X_FG)
+  =
+  \delta(F,G).
+\]
+Thus \([X_F,X_G]=X_{(F,G)}\), with the graded commutator of vector fields.
+The graded Jacobi identity for vector-field commutators gives the displayed
+odd Jacobi identity for \((\,\cdot\,,\,\cdot\,)\).  The continuum local
+formula is the same calculation applied after smearing or after choosing a
+finite regulator, followed by the declared local-functional limit.
+\end{proof}
+
 \section{The Classical Master Equation}
 
 \begin{definition}[Classical BV action]
@@ -187,6 +285,82 @@ for every functional \(H\).  The right hand side vanishes by
 This proposition is the algebraic reason the master equation is stronger than
 a compact rewriting of a Ward identity.  It constructs a differential on the
 space of fields, ghosts, antifields, and local functionals.
+
+\section{Noether Identities and the Minimal BV Complex}
+
+The master equation is constructed from the gauge identities of the classical
+action.  Let \(S_0[\phi]\) be a classical action for fields \(\phi^i\), and set
+\[
+  E_i(\phi):=\frac{\delta S_0}{\delta\phi^i}.
+\]
+An infinitesimal gauge transformation is a collection of local differential
+operators \(R^i{}_\alpha(\phi,\partial)\) acting on gauge parameters
+\(\epsilon^\alpha\):
+\[
+  \delta_\epsilon\phi^i=R^i{}_\alpha\epsilon^\alpha .
+\]
+Gauge invariance of \(S_0\) is the Noether identity
+\begin{equation}
+  E_iR^i{}_\alpha=0
+  \label{eq:bv-noether-identity}
+\end{equation}
+after moving derivatives off \(\epsilon^\alpha\).  Condensed notation includes
+the spacetime integration and the signs from integration by parts.
+
+The first BV variables are the ghosts \(c^\alpha\), the field antifields
+\(\phi^*_i\), and the ghost antifields \(c^*_\alpha\).  Their ghost numbers
+are
+\[
+  \operatorname{gh}(\phi^i)=0,\quad
+  \operatorname{gh}(c^\alpha)=1,\quad
+  \operatorname{gh}(\phi^*_i)=-1,\quad
+  \operatorname{gh}(c^*_\alpha)=-2.
+\]
+The Koszul--Tate part of the BV differential resolves the equations of
+motion:
+\[
+  \delta_{\rm KT}\phi^i=0,\qquad
+  \delta_{\rm KT}c^\alpha=0,\qquad
+  \delta_{\rm KT}\phi^*_i=E_i,\qquad
+  \delta_{\rm KT}c^*_\alpha=R^i{}_\alpha\phi^*_i .
+\]
+Its square on \(c^*_\alpha\) is
+\[
+  \delta_{\rm KT}^2 c^*_\alpha
+  =
+  R^i{}_\alpha E_i,
+\]
+which vanishes by \eqref{eq:bv-noether-identity}.  Thus the Noether identity
+is the first exactness condition in the antifield direction.
+
+For an irreducible off-shell closed gauge algebra,
+\[
+  [R_\alpha,R_\beta]^i
+  =
+  R^i{}_\gamma C^\gamma{}_{\alpha\beta},
+\]
+with the usual graded signs in the general case, the beginning of the minimal
+BV action is
+\begin{equation}
+  S_{\rm min}
+  =
+  S_0
+  +
+  \phi^*_iR^i{}_\alpha c^\alpha
+  -
+  \frac12 c^*_\gamma C^\gamma{}_{\alpha\beta}c^\alpha c^\beta
+  +\cdots .
+  \label{eq:bv-general-minimal-action}
+\end{equation}
+For field-independent structure constants and off-shell closure this displayed
+expression is complete.  Field-dependent, open, or reducible gauge systems
+require higher antifield-number terms.  Expanding
+\(\frac12(S_{\rm min},S_{\rm min})\) by antifield number gives, in order,
+the Noether identity \eqref{eq:bv-noether-identity}, the closure relation of
+the gauge generators, and the Jacobi relations or their higher homotopy
+replacements.  Solving the master equation is therefore the construction of a
+single nilpotent differential whose antifield expansion records the complete
+gauge identity complex.
 
 \section{Minimal Yang--Mills BV Action}
 
@@ -691,11 +865,108 @@ Equivalently,
 \]
 \end{definition}
 
+\begin{proposition}[Component form of the quantum master equation]
+\label{prop:qme-component-form}
+For a normal BV half-density datum and an even action \(S\),
+\[
+  \Delta_{\sigma_0}\exp(\ii S/\hbar)=0
+\]
+is equivalent to
+\[
+  \frac12(S,S)-\ii\hbar\,\Delta_{\sigma_0}S=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+In Darboux coordinates with normal reference half-density, the BV Laplacian
+is an odd second-order operator.  For homogeneous functions \(F,G\), its
+failure to be a derivation is the antibracket:
+\begin{equation}
+  \Delta_{\sigma_0}(FG)
+  =
+  (\Delta_{\sigma_0}F)G
+  +
+  (-1)^{|F|}F\Delta_{\sigma_0}G
+  +
+  (-1)^{|F|}(F,G).
+  \label{eq:bv-laplacian-second-order-identity}
+\end{equation}
+This identity follows by applying
+\eqref{eq:bv-laplacian} to the product \(FG\) and collecting the two
+terms in which one derivative hits each factor.  Since \(S\) is even,
+induction using \eqref{eq:bv-laplacian-second-order-identity} gives
+\[
+  \Delta_{\sigma_0}S^n
+  =
+  nS^{n-1}\Delta_{\sigma_0}S
+  +
+  \frac{n(n-1)}{2}S^{n-2}(S,S).
+  \label{eq:bv-laplacian-power-even-action}
+\]
+Expanding the exponential and summing the power series yields
+\[
+  \Delta_{\sigma_0}\ee^{\ii S/\hbar}
+  =
+  \left[
+    \frac{\ii}{\hbar}\Delta_{\sigma_0}S
+    -
+    \frac{1}{2\hbar^2}(S,S)
+  \right]\ee^{\ii S/\hbar}.
+\]
+The exponential factor is invertible as a formal power series, so the
+vanishing of the left hand side is equivalent to the displayed component
+equation.
+\end{proof}
+
 The half-density form is the coordinate-free statement.  Gauge independence is
 then a version of Proposition~\ref{prop:bv-half-density-restriction-stokes}:
 changing the gauge-fixing Lagrangian submanifold changes the integral by the
 integral of a \(\Delta_{1/2}\)-exact half-density, provided no boundary
 contribution is present.
+
+\begin{definition}[Gauge-fixed Wilsonian BV consistency]
+\label{def:gauge-fixed-wilsonian-bv-consistency}
+At cutoff \(\Lambda\), a gauge-fixed Wilsonian path integral is BV-consistent
+when it is obtained by restricting a BV half-density
+\[
+  \sigma_\Lambda
+  =
+  \exp(\ii S_\Lambda/\hbar)\sigma_{0,\Lambda}
+\]
+to a gauge-fixing Lagrangian submanifold
+\(\mathcal L_{\Psi,\Lambda}\subset\mathcal E_\Lambda\), with
+\[
+  \Delta_{1/2,\Lambda}\sigma_\Lambda=0 .
+\]
+Equivalently, for normal \(\sigma_{0,\Lambda}\), the cutoff action satisfies
+\[
+  \frac12(S_\Lambda,S_\Lambda)_\Lambda
+  -\ii\hbar\,\Delta_{\sigma_{0,\Lambda}}S_\Lambda=0 .
+\]
+The gauge-fixed source functional is the restriction
+\[
+  Z_{\Lambda,\Psi}[J]
+  =
+  \int_{\mathcal L_{\Psi,\Lambda}}
+  \iota_{\Psi,\Lambda}^*
+  \left[
+    \exp\left\{\frac{\ii}{\hbar}
+    \left(S_\Lambda+\langle J,\Phi\rangle\right)\right\}
+    \sigma_{0,\Lambda}
+  \right].
+\]
+\end{definition}
+
+The definition identifies the master equation as the gauge-consistency
+condition for the gauge-fixed Wilsonian integral.  The gauge condition
+\(\Psi\) selects a Lagrangian submanifold for computation; the equation lives
+on the field-antifield space before this restriction.  Differentiating the
+restricted integral and applying BV Stokes gives the cutoff
+Slavnov--Taylor identities.  Changing \(\Psi\) changes the representative of
+the same BV half-density integral when the boundary term in
+\eqref{eq:bv-stokes-half-density} vanishes.  A failure of the displayed
+master equation is a ghost-number-one anomaly functional, and
+\eqref{eq:qme-defect-consistency} is its Wess--Zumino consistency condition.
 
 If the regulated theory fails to satisfy \eqref{eq:quantum-master-equation},
 the failure has ghost number \(+1\).  To first order in \(\hbar\), write
@@ -817,6 +1088,23 @@ The Wilsonian effective action is obtained by integrating out degrees of
 freedom above a scale.  BV gives the condition under which this operation is
 compatible with gauge symmetry.
 
+The input is more than a momentum cutoff.  A gauge-compatible Wilsonian step
+contains a finite-dimensional or regularized BV phase space
+\((\mathcal E_\Lambda,\omega_\Lambda)\), a normal half-density
+\(\sigma_{0,\Lambda}\), a solution \(S_\Lambda\) of the quantum master
+equation, a split into low and high BV variables, and a Lagrangian cycle for
+the high variables.  Equivalently, in a lattice formulation it contains a
+finite lattice gauge integral and a gauge-invariant blocking map for
+observables or actions.  These data are what make the phrase "integrating out
+gauge-field modes" a defined operation.
+
+For a gauge-fixed Wilsonian path integral, the flow between cutoffs preserves
+Definition~\ref{def:gauge-fixed-wilsonian-bv-consistency}.  In BV terms this
+means that the high-variable integration is a BV pushforward of the cutoff
+half-density.  The resulting low-cutoff half-density again satisfies the
+quantum master equation, and every gauge-fixed representative obtained from
+it satisfies the corresponding cutoff Slavnov--Taylor identities.
+
 Consider first a finite-dimensional odd symplectic vector space split as
 \[
   \mathcal E=\mathcal E_{\rm low}\oplus\mathcal E_{\rm high},
@@ -904,6 +1192,16 @@ symmetry when it preserves this equation.  Changes of cutoff scheme are then
 BV canonical transformations together with possible local counterterm changes,
 with the gauge symmetry encoded by the transformed master action.
 
+The lattice route gives a second gauge-compatible Wilsonian construction.  A
+finite blocking map sends link variables on a fine lattice to link variables
+or gauge-invariant observables on a coarser lattice, and the pushforward of
+the compact Haar integral defines the coarse action or coarse observable
+law.  The continuum Wilsonian statement then concerns a scaling limit of these
+finite lattice pushforwards.  A comparison between the lattice and BV
+descriptions must identify the gauge-invariant observables, the local BV
+cohomology classes, and the limiting topology for correlation functions or
+effective-action coordinates.
+
 \section{Counterterms, Anomalies, and Physical Operators}
 
 Let \(S_{\rm BV}\) be a classical solution of the master equation and let
@@ -963,8 +1261,10 @@ The output of this chapter is the following framework.
   a gauge-fixing fermion.
   \item The quantum master equation is the regulated half-density statement of
   measure-compatible gauge symmetry.
-  \item The 1PI and Wilsonian effective actions in gauge theory must satisfy
-  the corresponding BV master identities.
+  \item The 1PI and Wilsonian effective actions in continuum gauge theory are
+  defined as BV objects satisfying the corresponding master identities; a
+  lattice gauge formulation supplies the alternative finite-cutoff route by
+  compact group integrals and gauge-invariant blocking maps.
   \item Counterterms, anomalies, and physical operators are local BV
   cohomology classes at the appropriate ghost numbers.
 \end{enumerate}

@@ -1,0 +1,152 @@
+\chapter{Lattice Fermions And Chiral Symmetry}
+\label{ch:constructive-lattice-fermions-chiral-symmetry}
+
+\ConventionsEuclidean
+
+Fermions on a lattice require more structure than scalar fields.  The
+variables in the path integral are Grassmann-valued algebraic variables, the
+operator entering the action is a finite matrix at finite lattice volume, and
+reflection positivity depends on how the lattice is cut.  This chapter
+records the core fermion constructions and the chiral-symmetry problem.
+
+\section{Finite Lattice Grassmann Integral}
+
+Let \(\Lambda\subset a\mathbb Z^D\) be finite.  A lattice fermion field is a
+collection of generators
+\[
+  \psi_\alpha(x),\qquad \bar\psi_\alpha(x),
+  \qquad x\in\Lambda ,
+\]
+of a finite Grassmann algebra.  For a matrix \(D_{xy}^{\alpha\beta}\), the
+Gaussian integral is the Berezin functional defined by
+\[
+  \int \prod_{x,\alpha}d\bar\psi_\alpha(x)d\psi_\alpha(x)\,
+  \exp\left(
+    -\sum_{x,y}\bar\psi_\alpha(x)D_{xy}^{\alpha\beta}\psi_\beta(y)
+  \right)
+  =
+  \det D .
+\]
+Correlation functions are algebraic coefficients of this finite Berezin
+integral.  No Borel measure on a set of fermion configurations is involved.
+
+\section{Naive Dirac Operator And Doublers}
+
+The naive lattice Dirac operator is
+\[
+  D_{\mathrm{naive}}(p)
+  =
+  \frac{i}{a}\sum_{\mu=1}^D\gamma_\mu\sin(ap_\mu).
+\]
+It vanishes not only at \(p=0\), but also at every corner
+\[
+  p_\mu\in\{0,\pi/a\}.
+\]
+Thus it describes \(2^D\) light fermion species in the continuum expansion.
+The doubling is a statement about the zeros and chiralities of the lattice
+symbol.  Removing it while keeping locality, translation invariance,
+reflection positivity, and exact chiral symmetry is the central obstruction.
+
+\section{Wilson Fermions}
+
+Wilson's operator adds a lattice Laplacian:
+\[
+  D_W(p)
+  =
+  \frac{i}{a}\sum_\mu\gamma_\mu\sin(ap_\mu)
+  +
+  m
+  +
+  \frac{r}{a}\sum_\mu(1-\cos(ap_\mu)).
+\]
+The Wilson term gives masses of order \(a^{-1}\) to the doubler modes.  It
+also breaks the naive chiral symmetry at nonzero lattice spacing.  The
+continuum chiral symmetry is recovered only after tuning the mass and taking
+the continuum limit in a regime where the target theory exists.
+
+With gauge fields \(U_\mu(x)\), the Wilson operator is obtained by replacing
+finite differences with covariant finite differences.  Gauge invariance is
+exact at finite lattice spacing, while chiral symmetry is not.
+
+\section{Reflection Positivity}
+
+Let the time reflection be \(\theta:x_0\mapsto -x_0+a\), so that the
+reflection plane lies between two time slices.  For Wilson fermions the
+action can be decomposed as
+\[
+  S=S_+ + \theta S_+ + S_{\mathrm{mid}},
+\]
+where \(S_{\mathrm{mid}}\) contains only hopping terms crossing the mid-link
+reflection plane.  Reflection positivity follows when the mid-link term can
+be written as a finite sum
+\[
+  S_{\mathrm{mid}}=-\sum_i \theta(F_i)F_i
+\]
+with the correct Grassmann reflection signs and with positive gauge-link
+weights.  The precise reflection operation includes complex conjugation,
+time reflection of links, and the spin matrix implementing Euclidean time
+reflection.
+
+\section{Ginsparg--Wilson Relation}
+
+A lattice Dirac operator \(D\) satisfies the Ginsparg--Wilson relation when
+\[
+  \gamma_5D+D\gamma_5=aD\gamma_5D .
+\]
+Then the action \(\bar\psi D\psi\) is invariant under the lattice chiral
+transformation
+\[
+  \delta\psi=\gamma_5(1-aD)\psi,\qquad
+  \delta\bar\psi=\bar\psi\gamma_5 .
+\]
+The fermion measure changes by a finite Berezinian whose logarithm gives the
+lattice index
+\[
+  \operatorname{index}(D)
+  =
+  \operatorname{Tr}\,\gamma_5\left(1-\frac{a}{2}D\right).
+\]
+This is the lattice version of the axial anomaly in a gauge background.
+
+\section{Overlap Operator}
+
+Let
+\[
+  H_W=\gamma_5(D_W-m_0)
+\]
+with \(m_0\) chosen in the physical range.  The overlap Dirac operator is
+\[
+  D_{\mathrm{ov}}
+  =
+  \frac{1}{a}\left(1+\gamma_5\operatorname{sign}(H_W)\right).
+\]
+It satisfies the Ginsparg--Wilson relation when \(H_W\) has no zero modes.
+Locality requires gauge fields to lie in an admissible region or to be
+controlled by estimates on the spectrum of \(H_W\).  Thus exact lattice
+chiral symmetry is obtained at the price of a non-ultralocal operator whose
+locality is conditional.
+
+\section{Continuum Ledger}
+
+A lattice fermion construction must state:
+\[
+\begin{gathered}
+  \text{finite Grassmann algebra and Berezin integral},\\
+  \text{Dirac operator, gauge covariance, and boundary conditions},\\
+  \text{reflection positivity or a replacement Hilbert-space construction},\\
+  \text{chiral symmetry, anomaly, and index convention},\\
+  \text{continuum scaling window and operator renormalization}.
+\end{gathered}
+\]
+For chiral gauge theories, the determinant or Pfaffian is a section of a
+determinant line over gauge fields.  A nonperturbative definition requires a
+gauge-invariant choice of phase compatible with locality and anomaly
+cancellation.
+
+\begin{openproblem}[Chiral gauge lattice]
+\label{op:chiral-gauge-lattice}
+Construct four-dimensional interacting chiral gauge theories on the lattice
+with locality, reflection positivity or an equivalent reconstruction route,
+exact gauge invariance, anomaly cancellation, and a continuum limit with the
+desired local operator algebra.
+\end{openproblem}

@@ -16,7 +16,8 @@ the regulator are separate requirements.
 \label{def:susy-wilsonian-datum}
 A supersymmetric Wilsonian datum at scale \(\Lambda\) consists of:
 a space \(\mathcal E_\Lambda\) of regulated superfield variables, a gauge
-group action or BV gauge complex, a projection
+group action together with either a BV gauge complex or a lattice
+gauge-field construction, a projection
 \(\pi_{\Lambda\Lambda'}:\mathcal E_{\Lambda}\to\mathcal E_{\Lambda'}\) for
 \(\Lambda>\Lambda'\), an integration cycle in the discarded variables, and a
 local action functional \(S_\Lambda\) satisfying the declared gauge and
@@ -32,6 +33,23 @@ statement.  Let \((\,\cdot\,,\,\cdot\,)_\Lambda\) be the odd BV bracket and
 \]
 This equation is meaningful only after the regulator and the functional
 measure entering \(\Delta_\Lambda\) have been specified.
+For a gauge-fixed supersymmetric Wilsonian path integral, gauge consistency is
+the same equation before restriction to the gauge-fixing Lagrangian
+submanifold.  The gauge-fixed Slavnov--Taylor identities and supersymmetry
+Ward identities are obtained by restricting the BV half-density and applying
+BV Stokes.  A Wilsonian coarse-graining step is gauge-consistent when it is a
+BV pushforward that sends a solution of the quantum master equation at
+\(\Lambda\) to a solution at \(\Lambda'\).
+
+A lattice supersymmetric gauge construction, when it exists, is the other
+finite-cutoff route: gauge fields are link variables, gauge invariance is
+exact at finite lattice spacing, and Wilsonian coarse graining is a blocking
+map for link variables or gauge-invariant observables.  The obstruction is
+then shifted to the realization of supersymmetry, fermions, auxiliary
+variables, reflection positivity, and the continuum limit.  The two routes are
+therefore complementary: BV is the continuum homological framework for
+gauge-compatible effective actions, while the lattice gives a compact
+gauge-invariant finite integral.
 
 \section{Coarse Graining as BV Pushforward}
 
@@ -49,6 +67,13 @@ When the split is compatible with the BV odd symplectic form, this is a BV
 pushforward.  The basic theorem is formal but precise: BV pushforward sends
 solutions of the quantum master equation to solutions, provided the boundary
 term on \(\mathcal L_{\Lambda\Lambda'}\) vanishes.
+
+For gauge theories, this BV compatibility or a lattice blocking construction
+is part of the definition of the Wilsonian step.  A projection of gauge
+potentials by itself does not define a gauge-theory coarse graining; the
+projection must be lifted to the full ghost-antifield complex with a
+compatible half-density and integration cycle, or replaced by a finite
+gauge-invariant lattice blocking map.
 
 \begin{proposition}[Semigroup property]
 \label{prop:susy-wilsonian-semigroup}
@@ -117,8 +142,8 @@ coordinates.  A superpotential coordinate
 \]
 can receive only those Wilsonian corrections that are holomorphic functions
 of the chiral coordinates, respect the exact symmetries including anomalous
-spurion transformations, and are local at scale \(\Lambda\).  The usual
-selection-rule arguments are consequences of these three conditions.
+spurion transformations, and are local at scale \(\Lambda\).  The
+selection-rule arguments are replaced here by these three stated conditions.
 
 \begin{proposition}[Selection rule for a Wilsonian \(F\)-term]
 \label{prop:susy-f-term-selection-rule}
@@ -153,6 +178,6 @@ and relevant deformations.
 Construct a Wilsonian scheme for four-dimensional gauge theories that
 preserves gauge invariance, realizes supersymmetry in BV form at finite
 cutoff, states the anomaly functionals, and proves the holomorphic hypotheses
-used in exact dynamics.  This is the infrastructure needed for theorem-level
-treatments of \(\mathcal N=1\) and \(\mathcal N=2\) gauge dynamics.
+used in exact dynamics.  This is the infrastructure needed for proofs of
+\(\mathcal N=1\) and \(\mathcal N=2\) gauge dynamics.
 \end{openproblem}

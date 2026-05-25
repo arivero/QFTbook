@@ -142,7 +142,8 @@ Further development targets:
   changes;
 - mark where these constructions are ordinary-field constructions and where
   gauge-theory 1PI/Wilsonian effective actions require the BV master
-  framework developed in the gauge-theory volume;
+  framework developed in the gauge-theory volume or a finite lattice
+  gauge-theory construction with gauge-invariant blocking maps;
 - deepen operator mixing and anomalous dimensions;
 - deepen the worked connection between finite-cutoff universality,
   renormalized composite operators, and observable correlation functions;
@@ -154,7 +155,9 @@ Purpose: develop gauge theory as local quantum physics with constraints,
 redundant representatives, BRST organization, infrared sectors, anomalies,
 and physical observables.  The BV formalism belongs to this volume as the
 homological framework for gauge-theory 1PI effective actions, Wilsonian
-effective actions, gauge fixing, and renormalization identities.
+effective actions, gauge fixing, and renormalization identities; the lattice
+gauge construction is the companion finite-cutoff framework with exact gauge
+invariance and compact group integrals.
 
 Current compiled material:
 
@@ -270,6 +273,7 @@ Current compiled material:
 8. Sine-Gordon, Massive Thirring, And Affine Toda Theories
 9. \(O(N)\), Gross--Neveu, And Integrable Sigma-Model Families
 10. Bridges To Nonintegrable Two-Dimensional QFT And CFT
+11. Finite-Volume Form Factors And Spectral Expansions
 
 Further development targets:
 
@@ -283,6 +287,7 @@ Further development targets:
 8. Sine-Gordon, Massive Thirring, And Affine Toda Theories
 9. \(O(N)\), Gross--Neveu, And Integrable Sigma-Model Families
 10. Bridges To Nonintegrable Two-Dimensional QFT And To Two-Dimensional CFT
+11. Finite-Volume Form Factors And Spectral Expansions
 
 Planar integrability is not a main topic of this volume.  It should be
 introduced here only to compare objects and conventions: relativistic
@@ -310,6 +315,7 @@ Current compiled material:
 8. Moduli Spaces In Supersymmetric Quantum Field Theory
 9. Two-Dimensional Landau--Ginzburg, Sigma-Model, And Calabi--Yau Theories
 10. Three-Dimensional Chern--Simons--Matter Theories
+11. Six-Dimensional Superconformal Theories
 
 Further development targets:
 
@@ -396,6 +402,7 @@ Current compiled material:
 8. Witten--Donaldson Theory And The Seiberg-Witten Comparison
 9. Boundaries, Defects, And Categories
 10. BV Integration And Finite-Dimensional Localization
+11. Finite Gauge Theory And State-Sum TQFT
 
 Further development targets:
 
@@ -408,6 +415,8 @@ Further development targets:
 7. Twists Of Supersymmetric Theories
 8. Witten--Donaldson Theory And The Donaldson/Seiberg-Witten Comparison
 9. Boundaries, Defects, And Categories
+10. BV Integration And Finite-Dimensional Localization
+11. Finite Gauge Theory And State-Sum TQFT
 
 Source protocol:
 
@@ -445,6 +454,7 @@ Current compiled material:
 8. Boundaries And Defects
 9. Categorical Symmetry And Defect Fusion
 10. Duality Defects, Gauging, And Orbifold Data
+11. Higher-Group Symmetry And Symmetry TQFT
 
 Further development targets:
 
@@ -458,6 +468,7 @@ Further development targets:
 8. Boundaries And Defects
 9. Categorical Symmetry And Defect Fusion
 10. Duality Defects, Gauging, And Orbifold Data
+11. Higher-Group Symmetry And Symmetry TQFT
 
 ## Volume X: Thermal Quantum Field Theory, Hydrodynamics, And Nonequilibrium Dynamics
 
@@ -479,6 +490,7 @@ Current compiled material:
 8. Kinetic Theory As A Controlled Limit
 9. Anomalous And Topological Transport
 10. Nonequilibrium Steady States And Open-System Limits
+11. Hydrodynamic Fluctuations And Long-Time Tails
 
 Further development targets:
 
@@ -492,6 +504,7 @@ Further development targets:
 8. Kinetic Theory As A Controlled Limit
 9. Anomalous And Topological Transport
 10. Nonequilibrium Steady States And Open-System Limits
+11. Hydrodynamic Fluctuations And Long-Time Tails
 
 ## Volume XI: Constructive, Lattice, And Numerical QFT
 
@@ -509,6 +522,7 @@ Current compiled material:
 8. Relation Between Lattice And Continuum Local QFT
 9. Stochastic Quantization And Singular SPDE
 10. Hamiltonian Truncation, DLCQ, And Benchmark Protocols
+11. Lattice Fermions And Chiral Symmetry
 
 Further development targets:
 
@@ -523,6 +537,7 @@ Further development targets:
 8. Relation Between Lattice And Continuum Local QFT
 9. Stochastic Quantization And Singular SPDE
 10. Numerical Hamiltonian Truncation, DLCQ, And Benchmark Scripts
+11. Lattice Fermions And Chiral Symmetry
 
 ## Volume XII: QFT In Curved Spacetime And Background Fields
 
@@ -541,6 +556,7 @@ Current compiled material:
 8. Cosmological Spacetimes And Particle Creation
 9. Microlocal Spectrum Condition And Hadamard Geometry
 10. Perturbative Algebraic QFT On Curved Backgrounds
+11. Semiclassical Backreaction And Stress-Tensor Fluctuations
 
 Further development targets:
 
@@ -555,6 +571,7 @@ Further development targets:
 9. Cosmological Spacetimes And Particle Creation
 10. Microlocal Spectrum Condition And Hadamard Geometry
 11. Perturbative Algebraic QFT On Curved Backgrounds
+12. Semiclassical Backreaction And Stress-Tensor Fluctuations
 
 ## Inclusion Rule
 

@@ -266,6 +266,41 @@ regulators, and perturbative algebraic QFT on curved backgrounds:
   microcausal functionals, Hadamard star products, time-ordered extensions,
   causal factorization, interacting fields, and local renormalization maps.
 
+## Current Eleventh-Chapter Pass
+
+The eleventh-chapter pass adds finite-volume spectral reconstruction,
+six-dimensional supersymmetric fixed-point data, finite state-sum TQFTs,
+higher-group and symmetry-TQFT organization, hydrodynamic fluctuation theory,
+lattice fermion/chiral-symmetry regulators, and semiclassical backreaction:
+
+- Volume VI: finite-volume form factors and spectral expansions through
+  Bethe--Yang states, Gaudin determinants, off-diagonal and diagonal matrix
+  elements, connected diagonal form factors, zero-temperature correlator
+  sums, and TBA-compatible thermal series.
+- Volume VII: six-dimensional superconformal theories through
+  superconformal representation data, tensor-branch EFTs, anomaly
+  polynomials, Green--Schwarz matching, BPS strings, and compactification
+  tests.  During this pass Chapters 5 and 6 were also deepened with the NSVZ
+  coordinate derivation and the finite-volume Witten-index logic for pure
+  four-dimensional \(\mathcal N=1\) Yang--Mills.
+- Volume VIII: finite gauge theory and state-sum TQFT through field
+  groupoids, Dijkgraaf--Witten twists, triangulated cocycle weights,
+  groupoid-sum state spaces, extended defects, and anomaly boundaries.
+- Volume IX: higher-group symmetry and symmetry TQFT through two-group
+  backgrounds, Postnikov constraints, combined gauge transformations,
+  anomaly functionals, condensation, and gauging.
+- Volume X: hydrodynamic fluctuations and long-time tails through stochastic
+  noise, Schwinger--Keldysh diffusion actions, mode-coupling integrals,
+  transport-coordinate renormalization, and microscopic theorem boundaries.
+- Volume XI: lattice fermions and chiral symmetry through finite Berezin
+  integrals, doubling, Wilson fermions, mid-link reflection positivity,
+  Ginsparg--Wilson symmetry, overlap fermions, and determinant-line
+  obligations for chiral gauge theories.
+- Volume XII: semiclassical backreaction and stress-tensor fluctuations
+  through renormalized stress tensors, curvature counterterm coordinates,
+  linear response, noise kernels, Einstein--Langevin equations, and validity
+  ledgers.
+
 ## Next Frontier After This Pass
 
 - Add proof appendices where current chapters state theorem boundaries.

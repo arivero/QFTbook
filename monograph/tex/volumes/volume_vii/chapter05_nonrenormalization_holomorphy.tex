@@ -3,12 +3,12 @@
 
 \ConventionsLorentzian
 
-Nonrenormalization theorems are statements about Wilsonian coordinates in a
+Nonrenormalization arguments are statements about Wilsonian coordinates in a
 scheme with declared supersymmetry, gauge symmetry, locality, and anomaly
-data.  They are not statements about arbitrary effective actions or about
-singular infrared limits.  This chapter formulates the perturbative
-superpotential theorem and the holomorphic gauge-coupling statement in the
-language of Chapter~\ref{ch:susy-wilsonian-schemes-exact-dynamics}.
+data.  This chapter formulates the perturbative superpotential argument, the
+holomorphic gauge-coupling coordinate, and the passage to the NSVZ
+beta-function coordinate in the language of
+Chapter~\ref{ch:susy-wilsonian-schemes-exact-dynamics}.
 
 \section{Chiral Local Coordinates}
 
@@ -33,16 +33,16 @@ The distinction is cohomological: an \(F\)-term is represented by a chiral
 integrand and the chiral measure, while a \(D\)-term is represented by the
 full superspace measure.
 
-\section{Perturbative Superpotential Theorem}
+\section{Perturbative Superpotential Argument}
 
-\begin{theorem}[Perturbative Wilsonian superpotential theorem]
-\label{thm:perturbative-wilsonian-superpotential}
+\begin{proposition}[Perturbative Wilsonian superpotential argument]
+\label{prop:perturbative-wilsonian-superpotential}
 Assume a massive or Wilsonian infrared-regulated \(\mathcal N=1\) theory in a
 holomorphic Wilsonian scheme.  Perturbative loop corrections do not generate
 new superpotential terms beyond those already present as holomorphic local
 coordinates, except through tree-level elimination of massive chiral fields
 and through explicitly declared anomaly-induced coordinate changes.
-\end{theorem}
+\end{proposition}
 
 \begin{proof}
 In supergraph perturbation theory each internal propagator carries spinor
@@ -127,9 +127,82 @@ with \(T(R)\) normalized by the same trace convention as the gauge kinetic
 term.  This anomaly explains why holomorphic Wilsonian couplings and
 canonically normalized couplings obey different coordinate beta functions.
 
+\section{NSVZ Coordinate Formula}
+
+Fix the bilinear form \(\operatorname{tr}\) of
+Chapter~\ref{ch:susy-gauge-theory}.  Define representation indices by
+\[
+  \operatorname{Tr}_{R_i}(XY)=T(R_i)\operatorname{tr}(XY),
+  \qquad
+  \operatorname{Tr}_{\mathrm{ad}}(XY)=C_2(G)\operatorname{tr}(XY).
+\]
+Let \(g_h\) be the holomorphic Wilsonian coupling and let \(g\) be the
+canonically normalized gauge coupling in the same momentum-subtraction
+scheme for the two-point function.  Let \(Z_i(\mu)\) be the matter
+wave-function coordinate and define the anomalous-dimension convention
+\[
+  \gamma_i(\mu)=\mu\frac{d}{d\mu}\log Z_i(\mu).
+\]
+The rescaling-anomaly relation between the holomorphic and canonical gauge
+coordinates has the form
+\[
+  \frac{8\pi^2}{g_h^2}
+  =
+  \frac{8\pi^2}{g^2}
+  +
+  C_2(G)\log g^2
+  -
+  \sum_i T(R_i)\log Z_i
+  +
+  \kappa ,
+\]
+where \(\kappa\) is a scheme-dependent constant independent of \(\mu\).  The
+holomorphic coordinate obeys
+\[
+  \mu\frac{d}{d\mu}\left(\frac{8\pi^2}{g_h^2}\right)
+  =
+  3C_2(G)-\sum_iT(R_i).
+\]
+Differentiate the coordinate relation.  Since
+\[
+  \mu\frac{d}{d\mu}\left(\frac{8\pi^2}{g^2}\right)
+  =
+  -\frac{16\pi^2}{g^3}\beta_g,
+  \qquad
+  \mu\frac{d}{d\mu}\log g^2=\frac{2\beta_g}{g},
+\]
+one obtains
+\[
+  \left(
+    -\frac{16\pi^2}{g^3}
+    +
+    \frac{2C_2(G)}{g}
+  \right)\beta_g
+  -
+  \sum_iT(R_i)\gamma_i
+  =
+  3C_2(G)-\sum_iT(R_i).
+\]
+Solving for \(\beta_g=\mu\,dg/d\mu\) gives
+\[
+  \boxed{
+  \beta_g
+  =
+  -\frac{g^3}{16\pi^2}\,
+  \frac{
+    3C_2(G)-\sum_iT(R_i)\bigl(1-\gamma_i\bigr)
+  }{
+    1-\frac{C_2(G)g^2}{8\pi^2}
+  }}
+  \tag{NSVZ}
+\]
+in this coupling coordinate and anomalous-dimension convention.  The formula
+is a coordinate statement derived from a holomorphic Wilsonian coupling, the
+rescaling anomaly, and a declared canonical normalization prescription.
+
 \section{Status Boundary}
 
-The perturbative theorem above is a Wilsonian theorem under explicit
+The perturbative proposition above is a Wilsonian statement under explicit
 regularity hypotheses.  Nonperturbative superpotentials, instanton effects,
 gaugino condensation, and strong-coupling moduli-space constraints are not
 contradictions: they are additional semiclassical or nonperturbative
@@ -142,5 +215,5 @@ matching, and infrared effective description.
 Construct a regulator and BV Wilsonian scheme in which the chiral local
 cohomology, supergraph measure, rescaling anomaly, and holomorphic gauge
 coordinate are all defined at finite cutoff, and prove the perturbative
-nonrenormalization statements as theorems in that scheme.
+nonrenormalization statements in that scheme.
 \end{openproblem}

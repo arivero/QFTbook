@@ -1,0 +1,169 @@
+\chapter{Six-Dimensional Superconformal Theories}
+\label{ch:susy-six-dimensional-scft}
+
+\ConventionsMixed
+
+Six-dimensional superconformal theories are QFTs whose central examples do
+not admit ordinary Lagrangian descriptions at the fixed point.  They therefore
+force a separation between the definition of a theory and the use of
+effective field variables on a branch of vacua.  This chapter records the
+objects that can be defined without assuming a microscopic Lagrangian:
+superconformal representation data, tensor-branch effective actions, anomaly
+polynomials, BPS strings, compactification tests, and extended operators.
+
+\section{Six-Dimensional Supersymmetry Data}
+
+Let the Lorentz group be \(\operatorname{Spin}(1,5)\).  A chiral spinor has four complex
+components before reality conditions.  Six-dimensional supersymmetry is
+labeled by \((\mathcal N_+,\mathcal N_-)\), the numbers of positive and
+negative chirality symplectic-Majorana-Weyl supercharges.  The cases most
+central for local interacting fixed points are \((1,0)\) and \((2,0)\).
+
+For \((1,0)\), the R-symmetry is \(SU(2)_R\).  For \((2,0)\), the
+R-symmetry is \(USp(4)_R\).  Superconformal symmetry enlarges the bosonic
+group to
+\[
+  SO(2,6)\times G_R ,
+\]
+with \(G_R=SU(2)_R\) or \(USp(4)_R\).  Local operators are organized as
+positive-energy representations of the corresponding superconformal algebra.
+This statement concerns Hilbert-space representation theory on the cylinder;
+it does not supply off-shell fields.
+
+\section{Multiplets And Branch Coordinates}
+
+A \((1,0)\) tensor multiplet contains a two-form gauge potential \(B\) with
+self-dual field strength, a real scalar \(\phi\), and fermions.  A
+hypermultiplet contains scalars in quaternionic representations and fermions.
+A vector multiplet can appear in gauge-theory descriptions on a tensor branch,
+but it is not a conformal gauge field at the origin of a six-dimensional
+interacting fixed point.
+
+On a tensor branch, expectation values of tensor-multiplet scalars define
+coordinates
+\[
+  \phi^I\in\mathcal C ,
+\]
+where \(\mathcal C\) is a cone modulo any discrete identifications.  The
+low-energy action contains
+\[
+  \frac12 G_{IJ}\,d\phi^I\wedge *d\phi^J
+  +
+  \frac12 G_{IJ}\,H^I\wedge *H^J
+  +
+  B^I\wedge X_I^{(4)}
+  +\cdots ,
+\]
+with self-duality imposed as a constraint on the equations of motion or by a
+chosen self-dual-field formalism.  The four-form \(X_I^{(4)}\) encodes gauge
+and gravitational couplings of the branch EFT.
+
+\section{Anomaly Polynomial}
+
+For a six-dimensional theory coupled to background metric and R-symmetry
+fields, the anomaly is encoded by an eight-form
+\[
+  I_8
+  \in
+  H^8(BG_{\mathrm{background}},\mathbb Q)
+\]
+whose descent gives anomalous variations of the generating functional.  For a
+\((1,0)\) theory one may write
+\[
+  I_8
+  =
+  \alpha\,c_2(R)^2
+  +
+  \beta\,c_2(R)p_1(T)
+  +
+  \gamma\,p_1(T)^2
+  +
+  \delta\,p_2(T)
+  +
+  I_8^{\mathrm{flavor}},
+\]
+where \(c_2(R)\) is the second Chern class of the \(SU(2)_R\) bundle and
+\(p_i(T)\) are Pontryagin classes of the tangent bundle.  The coefficients
+are part of the QFT datum.
+
+On a tensor branch, anomaly matching takes the form
+\[
+  I_8^{\mathrm{UV}}-I_8^{\mathrm{branch}}
+  =
+  \frac12\Omega^{IJ}X_I^{(4)}X_J^{(4)} ,
+\]
+where \(\Omega^{IJ}\) is the inverse tensor pairing.  The right-hand side is
+produced by Green--Schwarz couplings \(B^I\wedge X_I^{(4)}\).  This equation
+is a computable constraint on branch EFTs and on proposed fixed points.
+
+\section{BPS Strings}
+
+Tensor multiplets couple electrically to strings.  A string with charge
+\[
+  q\in\Lambda_{\mathrm{string}}
+\]
+has tension
+\[
+  T_q=q_I\phi^I
+\]
+on the tensor branch, in a chamber where this pairing is positive.  At the
+superconformal point some tensions vanish, and the corresponding string
+degrees of freedom are not particles in six dimensions.
+
+The worldsheet theory of a BPS string carries anomalies determined by inflow
+from the bulk Green--Schwarz term.  If the string worldsheet is \(\Sigma\),
+the anomaly polynomial has the form
+\[
+  I_4(\Sigma,q)
+  =
+  q_I X_I^{(4)}
+  +
+  \frac12 q_I\Omega^{IJ}q_J\,\chi(N_\Sigma)
+  +\cdots ,
+\]
+where \(N_\Sigma\) is the normal bundle.  The omitted terms must be fixed by
+the chosen R-symmetry and tangent-bundle conventions, not by analogy.
+
+\section{Compactification Tests}
+
+Compactification on a smooth compact manifold \(Y\) gives lower-dimensional
+QFTs whose protected data test the six-dimensional proposal.  For a circle
+of radius \(R\), a \((2,0)\) theory of type \(\mathfrak g\) yields five
+dimensional maximally supersymmetric Yang--Mills on its Coulomb branch with
+coupling scaling as
+\[
+  g_5^2\propto R .
+\]
+The proportionality depends on trace and instanton-charge conventions.  The
+Kaluza--Klein momentum along \(S^1\) is identified with instanton number in
+the five-dimensional description.
+
+For compactification on a Riemann surface \(C\), partial twists use an
+embedding of the spin connection of \(C\) into \(G_R\).  The resulting
+four-dimensional theory must have matching anomalies, flavor symmetries,
+defect descendants, and moduli-space dimensions.  These are tests of a
+six-dimensional construction, not definitions of the parent theory by
+themselves.
+
+\section{Status Ledger}
+
+A six-dimensional SCFT datum in this monograph consists of:
+\[
+\begin{gathered}
+  \text{superconformal representation category},\\
+  \text{tensor-branch EFT with self-dual fields and Green--Schwarz terms},\\
+  \text{anomaly polynomial and flavor-background data},\\
+  \text{BPS string charge lattice and inflow},\\
+  \text{compactification tests and extended-operator descendants}.
+\end{gathered}
+\]
+No item in this list is dispensable.  A proposed fixed point that supplies
+only a branch EFT is incomplete; a proposed non-Lagrangian object that
+supplies only protected indices is also incomplete.
+
+\begin{openproblem}[Six-dimensional construction]
+\label{op:six-dimensional-construction}
+Construct an interacting six-dimensional SCFT as a local QFT with Hilbert
+space, local operator algebra, stress tensor, anomaly polynomial, tensor
+branch, BPS strings, and compactification functoriality in one framework.
+\end{openproblem}

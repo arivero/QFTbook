@@ -335,6 +335,25 @@ misreading.
   relevant positive Hilbert space, or about explicitly stated indefinite
   gauge-fixed spaces.  Gauge-variant propagators must not be treated as
   physical spectral measures.
+- Gauge-theory Wilsonian or effective-action claims require one of two
+  finite-cutoff frameworks: a BV formulation with the regulated odd
+  symplectic space, master action, half-density, BV Laplacian, integration
+  cycle, and coarse-graining map stated; or a lattice formulation with compact
+  link-variable configuration space, Haar measure, gauge-invariant
+  observables, and blocking or scaling map stated.  Any claimed alternative
+  must be reduced explicitly to equivalent data before it is used.
+- Whenever BV is first introduced or used as a load-bearing framework, the
+  text must define the graded field-antifield space, ghost number, parity,
+  left/right variational derivatives, antibracket, classical master equation,
+  gauge-fixing Lagrangian submanifold, half-density or measure datum,
+  BV Laplacian, quantum master equation, and the relation between the master
+  equation and gauge-fixed Ward identities.  Later uses may cite this chapter,
+  but they must state the finite-cutoff BV data relevant to the calculation.
+- A gauge-fixed Wilsonian path integral is gauge-consistent only through the
+  quantum BV master equation for the cutoff half-density before gauge-fixing
+  restriction.  The Slavnov-Taylor identities are the gauge-fixed projection
+  of this equation, and a Wilsonian step in continuum gauge theory must be a
+  BV pushforward preserving it.
 - The 1PI renormalization group is a comparison of scale-dependent
   coordinates on the 1PI effective action.
 - The Wilsonian renormalization group is a cutoff-dependent action flow

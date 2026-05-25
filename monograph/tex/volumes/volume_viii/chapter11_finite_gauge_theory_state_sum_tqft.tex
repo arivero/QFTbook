@@ -1,0 +1,143 @@
+\chapter{Finite Gauge Theory And State-Sum TQFT}
+\label{ch:tqft-finite-gauge-state-sum}
+
+\ConventionsEuclidean
+
+Finite gauge theory is the cleanest laboratory for the relation between
+path-integral sums, extended functoriality, defects, and anomalies.  The
+fields form finite groupoids, the sums are literal finite sums, and the
+gluing identities can be checked without analytic regularization.  This
+chapter develops the untwisted and Dijkgraaf--Witten twisted theories as
+TQFTs.
+
+\section{Fields As A Groupoid}
+
+Let \(G\) be a finite group and let \(M\) be a compact \(D\)-manifold.  The
+field groupoid is
+\[
+  \operatorname{Bun}_G(M),
+\]
+whose objects are principal \(G\)-bundles \(P\to M\) and whose morphisms are
+bundle isomorphisms.  The untwisted partition function is the groupoid
+cardinality
+\[
+  Z_G(M)
+  =
+  \sum_{[P]\in\pi_0\operatorname{Bun}_G(M)}
+  \frac{1}{|\operatorname{Aut}(P)|}.
+\]
+If \(M\) is connected and \(P\) is represented by a homomorphism
+\(\rho:\pi_1(M)\to G\), then
+\[
+  \operatorname{Aut}(P)\cong C_G(\rho),
+\]
+the centralizer of the image of \(\rho\).  Hence
+\[
+  Z_G(M)
+  =
+  \frac{|\operatorname{Hom}(\pi_1(M),G)|}{|G|}
+\]
+for connected \(M\).
+
+\section{Twists By Cocycles}
+
+Let
+\[
+  \omega\in Z^D(BG,U(1))
+\]
+be a normalized group cocycle.  A bundle \(P\to M\) is classified by a map
+\[
+  f_P:M\to BG
+\]
+up to homotopy.  The twisted partition function is
+\[
+  Z_{G,\omega}(M)
+  =
+  \sum_{[P]}
+  \frac{1}{|\operatorname{Aut}(P)|}
+  \exp\left(2\pi i\int_M f_P^*\omega\right).
+\]
+Changing \(\omega\) by a coboundary changes the integrand by a boundary term;
+on closed \(M\) the partition function depends only on the cohomology class
+\[
+  [\omega]\in H^D(BG,U(1)).
+\]
+On manifolds with boundary, a choice of trivialization or boundary state is
+part of the datum.
+
+\section{Triangulated State Sum}
+
+Choose a triangulation \(K\) of \(M\).  A flat lattice gauge field assigns
+group elements \(g_{ij}\in G\) to oriented edges satisfying
+\[
+  g_{ij}g_{jk}=g_{ik}
+\]
+on each oriented triangle.  Gauge transformations assign \(h_i\in G\) to
+vertices and act by
+\[
+  g_{ij}\mapsto h_i g_{ij}h_j^{-1}.
+\]
+For a cocycle \(\omega\), the state-sum weight is a product over oriented
+\(D\)-simplices:
+\[
+  W(g)=\prod_{\sigma^D}
+  \omega(g_{\sigma})^{\operatorname{sgn}(\sigma)} .
+\]
+The cocycle condition \(\delta\omega=1\) is precisely the algebraic identity
+needed for invariance under Pachner moves.  Thus triangulation independence
+is a finite calculation in group cohomology.
+
+\section{State Spaces}
+
+For a closed \((D-1)\)-manifold \(\Sigma\), the Hilbert space is the vector
+space of functions on the boundary field groupoid twisted by the boundary
+line:
+\[
+  \mathcal H(\Sigma)
+  =
+  \Gamma\bigl(\operatorname{Bun}_G(\Sigma),\mathcal L_\omega(\Sigma)\bigr).
+\]
+In the untwisted theory this is the space of class functions on
+\(\operatorname{Bun}_G(\Sigma)\).  For a bordism \(M:\Sigma_0\to\Sigma_1\), the linear map
+\[
+  Z(M):\mathcal H(\Sigma_0)\to\mathcal H(\Sigma_1)
+\]
+is obtained by summing over bulk bundles restricting to the boundary bundles,
+with automorphism factors.  Gluing follows from Fubini's theorem for finite
+groupoid cardinality.
+
+\section{Extended Objects}
+
+Codimension-one defects between \(G\)- and \(H\)-gauge theories are described
+by finite correspondences of groupoids.  A simple class is a subgroup
+\[
+  K\subset G\times H
+\]
+with possible cocycle decoration.  Boundary conditions are module categories
+over the fusion category associated to \(G\) and \(\omega\).  In three
+dimensions, line operators form the Drinfeld center
+\[
+  Z(\mathrm{Vect}^{\omega}_G),
+\]
+the category of representations of the twisted quantum double.  Fusion and
+braiding are finite tensor-category operations.
+
+\section{Anomaly Boundary}
+
+A \(D\)-dimensional anomalous finite symmetry theory can be realized as a
+boundary of a \((D+1)\)-dimensional finite gauge theory whose cocycle is the
+anomaly.  If
+\[
+  \alpha\in Z^{D+1}(BG,U(1)),
+\]
+then a boundary theory with \(G\) symmetry has partition functions valued in
+the transgressed line over \(\operatorname{Bun}_G(M)\).  Gauging is possible only after this
+line is trivialized or after a bulk is kept as part of the system.
+
+\begin{openproblem}[Finite models]
+\label{op:extended-finite-models}
+Construct extended finite-gauge TQFTs with boundaries, defects, junctions,
+twists, and anomaly inflow as functors on a chosen bordism
+\((\infty,D)\)-category, including comparison with the state-sum formulas
+above.
+\end{openproblem}

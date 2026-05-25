@@ -11,11 +11,13 @@
 ## Definitions And Results
 
 - Chiral \(F\)-term coordinate and full-superspace \(D\)-term coordinate.
-- Perturbative Wilsonian superpotential theorem.
+- Perturbative Wilsonian superpotential argument.
 - Spurion symmetry selection rule.
 - Holomorphic gauge coupling and one-loop Wilsonian statement.
 - Konishi-type rescaling anomaly as coordinate change.
-- Boundary between perturbative Wilsonian theorem and nonperturbative
+- NSVZ coordinate formula from the holomorphic coupling, rescaling anomaly,
+  and canonical normalization.
+- Boundary between perturbative Wilsonian arguments and nonperturbative
   chiral dynamics.
 
 ## Symbols
@@ -28,6 +30,8 @@
 | \(\tau\) | holomorphic gauge coupling |
 | \(b_0\) | one-loop holomorphic gauge coefficient |
 | \(T(R)\) | representation index in the monograph trace convention |
+| \(C_2(G)\) | adjoint index in the same trace convention |
+| \(Z_i,\gamma_i\) | matter normalization coordinate and anomalous dimension convention |
 
 ## Claim Ledger
 
@@ -37,6 +41,8 @@
    coordinate class.
 3. Holomorphic gauge coupling is one-loop exact as a Wilsonian coordinate.
 4. Canonical gauge couplings differ by rescaling anomalies.
+5. The NSVZ beta-function formula is a coordinate identity in the declared
+   canonical coupling and anomalous-dimension convention.
 
 ## Figures
 

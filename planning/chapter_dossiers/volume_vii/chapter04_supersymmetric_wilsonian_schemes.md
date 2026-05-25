@@ -11,6 +11,8 @@
 ## Definitions And Results
 
 - Supersymmetric Wilsonian datum.
+- Gauge-compatible Wilsonian data: BV finite-cutoff data or finite lattice
+  gauge data with blocking maps.
 - BV quantum master equation at finite cutoff.
 - Coarse graining as BV pushforward.
 - Semigroup property of Wilsonian integration.
@@ -38,6 +40,13 @@
 3. The Wilsonian semigroup law follows from Fubini compatibility of cycles.
 4. Holomorphic exact-dynamics claims require a declared holomorphic Wilsonian
    scheme and anomaly ledger.
+5. Gauge-theory Wilsonian schemes must be formulated through BV finite-cutoff
+   data or finite lattice gauge data before holomorphic coordinates,
+   moduli-space statements, or exact-dynamics arguments are used.
+6. In a gauge-fixed supersymmetric Wilsonian path integral, gauge consistency
+   is the quantum BV master equation before restriction to the gauge-fixing
+   Lagrangian submanifold; the gauge-fixed Ward identities are obtained from
+   this equation by BV Stokes.
 
 ## Figures
 

@@ -1,0 +1,157 @@
+\chapter{Semiclassical Backreaction And Stress-Tensor Fluctuations}
+\label{ch:curved-semiclassical-backreaction}
+
+\ConventionsLorentzian
+
+QFT on a fixed curved background supplies a renormalized stress tensor.  Once
+that stress tensor is used as a source for geometry, the problem changes:
+the metric is no longer merely a background parameter.  This chapter records
+the semiclassical equation, its renormalization ambiguities, and the
+stress-tensor fluctuation data needed to state a controlled backreaction
+problem.
+
+\section{Renormalized Stress Tensor}
+
+Let \((M,g)\) be globally hyperbolic and let \(\omega\) be a Hadamard state
+of a QFT with locally covariant stress tensor
+\[
+  T_{\mu\nu}^{\mathrm{ren}}[g].
+\]
+The expectation value
+\[
+  \langle T_{\mu\nu}^{\mathrm{ren}}(x)\rangle_{\omega,g}
+\]
+is a distributional tensor that is smooth for Hadamard states after the
+point-splitting subtraction and local curvature counterterms have been fixed.
+Conservation is imposed as
+\[
+  \nabla^\mu \langle T_{\mu\nu}^{\mathrm{ren}}\rangle_{\omega,g}=0
+\]
+when background equations and anomalies permit it.
+
+\section{Semiclassical Einstein Equation}
+
+The semiclassical equation is
+\[
+  \frac{1}{8\pi G_N}
+  \left(
+    G_{\mu\nu}+\Lambda g_{\mu\nu}
+  \right)
+  +
+  \alpha\,H^{(1)}_{\mu\nu}
+  +
+  \beta\,H^{(2)}_{\mu\nu}
+  =
+  \langle T_{\mu\nu}^{\mathrm{ren}}\rangle_{\omega,g}.
+\]
+Here \(H^{(1)}_{\mu\nu}\) and \(H^{(2)}_{\mu\nu}\) are metric variations of
+local curvature actions such as
+\[
+  \int R^2\,d\mathrm{vol}_g,\qquad
+  \int R_{\rho\sigma}R^{\rho\sigma}\,d\mathrm{vol}_g .
+\]
+The constants \(G_N,\Lambda,\alpha,\beta\) are coordinates of the
+gravitational effective action.  Changing the stress-tensor renormalization
+scheme changes these coordinates.
+
+\section{Linear Response}
+
+Let \(g_{\mu\nu}\mapsto g_{\mu\nu}+h_{\mu\nu}\).  The variation of the
+stress-tensor expectation has the form
+\[
+  \delta\langle T_{\mu\nu}(x)\rangle
+  =
+  \frac12\int_M d\mathrm{vol}_g(y)\,
+  G^{\mathrm{ret}}_{\mu\nu,\rho\sigma}(x,y)h^{\rho\sigma}(y)
+  +
+  \delta T_{\mu\nu}^{\mathrm{loc}}(x).
+\]
+The retarded kernel is determined by the commutator distribution
+\[
+  G^{\mathrm{ret}}_{\mu\nu,\rho\sigma}(x,y)
+  =
+  -i\Theta(x\succ y)
+  \omega\bigl([T_{\mu\nu}(x),T_{\rho\sigma}(y)]\bigr),
+\]
+with contact terms fixed by the same local renormalization coordinates that
+define \(T_{\mu\nu}^{\mathrm{ren}}\).  The symbol \(x\succ y\) means that
+\(x\) lies in the causal future of \(y\).
+
+\section{Noise Kernel}
+
+Stress-tensor fluctuations are encoded by the symmetrized connected
+two-point distribution
+\[
+  N_{\mu\nu,\rho\sigma}(x,y)
+  =
+  \frac12\,
+  \omega\bigl(\{T_{\mu\nu}(x),T_{\rho\sigma}(y)\}\bigr)_{\mathrm{conn}} .
+\]
+This distribution is singular at \(x=y\).  It is defined by point splitting
+or by local Wick-product renormalization, with contact terms again fixed by
+local covariance and Ward identities.  Conservation away from the diagonal is
+\[
+  \nabla_x^\mu N_{\mu\nu,\rho\sigma}(x,y)=0,
+  \qquad
+  \nabla_y^\rho N_{\mu\nu,\rho\sigma}(x,y)=0 .
+\]
+
+\section{Einstein--Langevin Equation}
+
+A stochastic semiclassical approximation introduces a classical random tensor
+\(\xi_{\mu\nu}\) with
+\[
+  \mathbb E[\xi_{\mu\nu}(x)]=0,\qquad
+  \mathbb E[\xi_{\mu\nu}(x)\xi_{\rho\sigma}(y)]
+  =
+  N_{\mu\nu,\rho\sigma}(x,y).
+\]
+The metric perturbation then satisfies
+\[
+  \delta E_{\mu\nu}[h]
+  -
+  \frac12\int G^{\mathrm{ret}}_{\mu\nu,\rho\sigma}h^{\rho\sigma}
+  =
+  \xi_{\mu\nu},
+\]
+where \(\delta E_{\mu\nu}\) is the variation of the local gravitational side
+of the semiclassical equation.  This equation is meaningful only after the
+state, stress-tensor renormalization, contact terms, and stochastic
+distribution have been specified.
+
+\section{Validity Conditions}
+
+The semiclassical approximation requires more than small curvature.  A
+controlled statement includes:
+\[
+\begin{gathered}
+  \ell_{\mathrm{curv}}\gg \ell_{\mathrm{UV}},\\
+  \text{renormalized stress tensor small compared with gravitational cutoff
+  scales},\\
+  \text{stress-tensor fluctuations small in the observables being tested},\\
+  \text{state stability under the metric perturbations considered},\\
+  \text{hyperbolic well-posedness after higher-curvature terms are treated}.
+\end{gathered}
+\]
+Higher-derivative terms may introduce additional solutions if treated as
+exact equations beyond their effective-field-theory domain.  A reduction of
+order or an equivalent EFT prescription is part of the semiclassical datum.
+
+\section{Backreaction Ledger}
+
+A backreaction problem is specified by
+\[
+  (M,g,\omega,T_{\mu\nu}^{\mathrm{ren}},
+  G_N,\Lambda,\alpha,\beta,\mathcal B),
+\]
+where \(\mathcal B\) denotes boundary or initial data.  The output is not a
+single number but a solution space with stability, state-dependence, and
+renormalization-coordinate dependence.  Black-hole evaporation, cosmological
+particle creation, and Casimir backreaction are applications of this datum.
+
+\begin{openproblem}[Backreaction theorem]
+\label{op:backreaction-theorem}
+Formulate and prove a semiclassical backreaction theorem for an interacting
+Hadamard QFT with renormalized stress tensor, controlled stress-tensor
+fluctuations, local covariance, and a hyperbolic gravitational EFT evolution.
+\end{openproblem}

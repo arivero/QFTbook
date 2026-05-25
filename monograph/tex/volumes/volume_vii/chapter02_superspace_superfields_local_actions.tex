@@ -195,9 +195,10 @@ A supersymmetric Wilsonian scheme on a scale interval
 \item a regulated space of field variables \(\mathfrak F_\Lambda\), including
 ordinary fields, superfields, ghosts, antifields, and background sources when
 they are part of the construction;
-\item a regulated functional integral, perturbative BV integral, lattice
-construction, or other declared integration prescription with Lagrangian
-functional \(S_\Lambda\);
+\item an integration prescription with Lagrangian functional \(S_\Lambda\):
+for gauge theories this means either a BV finite-cutoff integral with
+bracket, Laplacian, half-density, and master action specified, or a lattice
+construction with gauge-invariant link-variable data and blocking maps;
 \item odd derivations or Ward operators representing the supersymmetry
 algebra on the regulated variables, with a stated closure relation: off shell,
 on shell, modulo gauge transformations, or modulo the BV differential;
@@ -237,6 +238,17 @@ additional data.  Thus an off-shell-superfield BV description is a natural
 language for supersymmetric Wilsonian integration, but it is not identical to
 a manifestly supersymmetric regulator.
 
+For supersymmetric gauge theories, the Wilsonian effective theory is therefore
+formulated through BV data unless a lattice construction is explicitly
+available.  The BV datum must include the regulated odd symplectic structure,
+normal half-density, BV Laplacian, integration cycle, master action, and
+coarse-graining map.  A lattice datum must include the finite gauge-field
+configuration space, fermion and auxiliary-field regulator, exact gauge
+symmetry, reflection or Hilbert-space positivity status when needed, and the
+blocking map for observables.  Holomorphic coordinates, moduli-space
+coordinates, and exact superpotential arguments are certified only relative to
+one of these gauge-compatible finite-cutoff frameworks.
+
 For four-dimensional supersymmetric gauge theories we shall not assume the
 existence of a completely satisfactory manifestly supersymmetric
 regularization scheme.  Dimensional reduction is a perturbative prescription:
@@ -250,7 +262,7 @@ heat-kernel regulators supplemented by Pauli--Villars-type fields are likewise
 candidate schemes, not axioms: one must state the regulator fields, statistics,
 masses, gauge and supersymmetry transformations, BV pairing, decoupling limit,
 local counterterm freedom, and anomaly class before using such a construction
-as a theorem-level input.
+as a proved input.
 
 \begin{openproblem}[Regulators preserving supersymmetry]
 \label{op:susy-regulators-preserving-supersymmetry}
@@ -262,8 +274,8 @@ scheme whose consistency is checked at the loop order being used, rather than
 as a mathematical definition of a supersymmetric continuum theory.
 Higher-derivative heat-kernel schemes, Pauli--Villars completions, lattice
 constructions, and BV-compatible exact-RG schemes must be compared at the
-level of their regulated master equations, Ward identities, locality of
-counterterms, decoupling limits, and anomaly cohomology before
+level of their regulated master equations or finite lattice Ward identities,
+locality of counterterms, decoupling limits, and anomaly cohomology before
 nonrenormalization or anomaly statements are used.
 \end{openproblem}
 

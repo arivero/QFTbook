@@ -104,7 +104,8 @@ effective actions, critical fixed points, and universality statements with
 specified convergence objects.  For ordinary scalar and matter systems these
 objects are developed directly; for gauge theories, the gauge-compatible 1PI
 and Wilsonian effective actions depend on the BV master formalism developed in
-Volume IV.
+Volume IV or on a lattice gauge construction with gauge-invariant blocking
+maps and continuum-scaling data.
 
 Do not promote further material before: every renormalization claim identifies
 the regulator, subtraction or flow scheme, locality statement, and equivalence
@@ -135,9 +136,10 @@ claims identify the compared cocycle class modulo local counterterms.
 
 Immediate target: deepen gauge-invariant operator construction and extend the
 new BV block toward reducible/open gauge algebras, explicit exact-RG
-realizations, and global BV integration-cycle issues.  Continue confinement
-diagnostics, global form, theta-angle, jet/final-state observables, and
-anomaly inflow without importing premature TQFT or supersymmetric machinery.
+realizations, global BV integration-cycle issues, and comparison with finite
+lattice gauge blocking.  Continue confinement diagnostics, global form,
+theta-angle, jet/final-state observables, and anomaly inflow without importing
+premature TQFT or supersymmetric machinery.
 
 ### Volume V: Conformal Field Theory
 

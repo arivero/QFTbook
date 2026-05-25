@@ -38,11 +38,24 @@
   Nakanishi--Lautrup variables, and matter fields.
 - Antifields \(\Phi^*_A\) have opposite parity and ghost number
   \(-1-\operatorname{gh}(\Phi^A)\).
+- Local functional derivatives are defined by the Euler operator after
+  integration by parts, with boundary or compact-support assumptions stated.
+- The antibracket is derived from the finite-regulator odd symplectic form
+  \(\omega=\delta\Phi_A^*\,\delta\Phi^A\), and the Jacobi identity is traced
+  to the graded Jacobi identity of Hamiltonian vector fields.
+- The minimal BV complex is developed from Noether identities through the
+  Koszul--Tate differential, ghosts, field antifields, and ghost antifields
+  before specializing to Yang--Mills.
 - Local functionals are understood modulo total derivatives when integrated.
 - BV Laplacian and quantum master equation require a chosen finite-regulator
   odd symplectic space and a normal reference half-density \(\sigma_0\);
   the induced function Laplacian \(\Delta_{\sigma_0}\) is a divergence
   operator only after this datum has been fixed.
+- Continuum Wilsonian effective actions for gauge theories are formulated as
+  BV pushforwards with regulated bracket, half-density, Laplacian,
+  integration cycle, and master action; the companion finite-cutoff route is a
+  lattice gauge integral with compact link variables and gauge-invariant
+  blocking maps.
 - Yang--Mills is treated as the off-shell closed model case.  Open algebras
   and reducible symmetries are described in condensed field-space notation to
   display the additional antifield-number terms required by the master
@@ -57,6 +70,9 @@
 | \(B^a\) | Nakanishi--Lautrup even auxiliary integration variable in the nonminimal sector |
 | \(\epsilon_A\) | Grassmann parity of \(\Phi^A\) |
 | \(\mathcal F_{\rm BV}\) | graded algebra of local BV functionals |
+| \(E_i\) | Euler--Lagrange derivative of a classical action |
+| \(R^i{}_\alpha\) | gauge generator in condensed field-space notation |
+| \(\delta_{\rm KT}\) | Koszul--Tate differential resolving the equations of motion |
 | \((F,G)\) | BV antibracket |
 | \(S_{\rm BV}\) | classical BV action |
 | \(s_{\rm BV}\) | BV differential \((S_{\rm BV},\cdot)\) |
@@ -70,8 +86,8 @@
 | \(\Delta_{\sigma_0}\) | divergence operator on functions induced by \(\sigma_0\) |
 | \(D_{\sigma_0,\Psi}\Phi\) | density on \(\mathcal L_\Psi\) obtained by restricting \(\sigma_0\) |
 | \(S_\Lambda\) | Wilsonian BV action at cutoff \(\Lambda\) |
-| \(R^i{}_\alpha\) | gauge generator in condensed field-space notation |
-| \(E_i\) | Euler--Lagrange derivative \(\delta S_0/\delta\Phi^i\) |
+| \(\mathcal L_{\Psi,\Lambda}\) | cutoff gauge-fixing Lagrangian submanifold |
+| \(Z_{\Lambda,\Psi}[J]\) | gauge-fixed Wilsonian source functional obtained by restricting the BV half-density |
 | \(C^\gamma{}_{\alpha\beta}\) | structure function for the gauge-generator commutator |
 | \(M^{ij}{}_{\alpha\beta}\) | coefficient of equation-of-motion closure in an open gauge algebra |
 | \(Z^\alpha{}_{a_1}\) | first-stage reducibility operator for gauge parameters |
@@ -80,10 +96,16 @@
 
 - The antibracket pairs each field with its antifield and has parity \(+1\)
   and ghost number \(+1\).
+- The antibracket is the Hamiltonian bracket of the finite-regulator odd
+  symplectic form; the biderivation and Jacobi identities are proved from
+  Hamiltonian vector fields.
 - A classical BV action is an even ghost-number-zero functional satisfying
   \(\frac12(S_{\rm BV},S_{\rm BV})=0\).
 - The BV differential \(s_{\rm BV}=(S_{\rm BV},\cdot)\) is nilpotent by the
   odd Jacobi identity.
+- Noether identities determine the first Koszul--Tate differential; closure
+  and Jacobi data appear as successive antifield-number components of the
+  classical master equation.
 - The Yang--Mills minimal BV action couples antifields to the BRST variations
   \(sA=Dc\) and \(sc=-\frac12[c,c]\).
 - Off-shell closure is stated as the field-space identity
@@ -111,6 +133,12 @@
 - The quantum master equation is the regulated half-density statement
   \(\Delta_{1/2}(\exp(\ii S/\hbar)\sigma_0)=0\), equivalently
   \(\frac12(S,S)-\ii\hbar\Delta_{\sigma_0}S=0\) for normal \(\sigma_0\).
+- The equivalence between the half-density QME and its component form is
+  derived using the second-order identity for the BV Laplacian.
+- Gauge-fixed Wilsonian path-integral consistency is defined by restricting a
+  cutoff BV half-density satisfying the quantum master equation to a
+  gauge-fixing Lagrangian submanifold; cutoff Slavnov-Taylor identities are
+  the gauge-fixed projection of this master equation.
 - The 1PI effective action satisfies \(\frac12(\Gamma,\Gamma)=0\) when the
   regularized half-density integrand and action obey the quantum master
   equation.
@@ -120,6 +148,11 @@
   restoration theorem under vanishing ghost-number-one local obstruction.
 - Finite-dimensional BV pushforward preserves the quantum master equation;
   this is the regulated core of the Wilsonian BV identity.
+- Continuum Wilsonian gauge-theory flow must preserve the gauge-fixed
+  BV-consistency datum by BV pushforward of the cutoff half-density.
+- Gauge-theory Wilsonian claims are routed through either BV finite-cutoff
+  data or finite lattice gauge data, with any comparison stated through
+  observables, BV cohomology classes, and a limiting topology.
 - Counterterms, anomalies, and physical operators are classified by local BV
   cohomology at ghost numbers \(0\), \(1\), and \(0\), respectively.
 

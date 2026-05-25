@@ -16,12 +16,19 @@ chiral-coordinate constraints.
 - `M`, `B`, `tilde B`: meson, baryon, and antibaryon chiral coordinates.
 - `S`: chiral glueball coordinate.
 - `W_ADS`: Affleck-Dine-Seiberg superpotential coordinate.
+- `I(beta,L)`: finite-volume Witten index on a spatial three-torus.
+- `Y_i`, `x_i`: small-circle affine-Toda coordinates for pure `SU(N_c)`
+  supersymmetric Yang-Mills.
 
 ## Claim Ledger
 
 - Defines SQCD Wilsonian data and holomorphic scale normalization.
 - Computes the anomaly-free \(R\)-charge assignment in the stated trace
   normalization.
+- Specializes the NSVZ coordinate beta function to SQCD with the chapter's
+  trace convention.
+- Defines the Witten index and explains the finite-volume pairing logic and
+  the small-circle affine-Toda count for pure \(SU(N_c)\) SYM.
 - Derives the allowed ADS superpotential form from dimension and \(R\)-charge
   constraints.
 - Proves the holomorphic decoupling equation by matching the invariant

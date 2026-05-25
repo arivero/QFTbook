@@ -1,0 +1,165 @@
+\chapter{Hydrodynamic Fluctuations And Long-Time Tails}
+\label{ch:thermal-hydrodynamic-fluctuations}
+
+\ConventionsLorentzian
+
+Hydrodynamics is an effective theory of conserved densities.  At nonzero
+temperature those densities fluctuate, and their nonlinear couplings produce
+universal late-time contributions to correlation functions.  This chapter
+derives the fluctuation framework and identifies the theorem boundary between
+hydrodynamic effective theory and a microscopic QFT.
+
+\section{Fluctuating Variables}
+
+Let
+\[
+  \varphi_A(t,\mathbf x)
+\]
+denote hydrodynamic fields: energy density, charge densities, momentum
+density, or equivalent variables such as temperature, chemical potentials,
+and velocity.  Equilibrium fixes static susceptibilities
+\[
+  \chi_{AB}
+  =
+  \int d^{d-1}x\,
+  \langle \delta q_A(0,\mathbf x)\delta q_B(0,\mathbf 0)\rangle_\beta .
+\]
+For a diffusive charge density \(n\), the linearized equation is
+\[
+  \partial_t n-D\nabla^2 n=\nabla_i\xi^i ,
+\]
+where the noise satisfies
+\[
+  \langle\xi^i(t,\mathbf x)\xi^j(t',\mathbf x')\rangle
+  =
+  2T\sigma\,\delta^{ij}\delta(t-t')\delta^{(d-1)}(\mathbf x-\mathbf x')
+\]
+and \(D=\sigma/\chi\).  The noise strength is fixed by the KMS condition,
+equivalently by the fluctuation--dissipation relation.
+
+\section{Schwinger--Keldysh Origin}
+
+In the \(r,a\) basis, a quadratic diffusive effective action is
+\[
+  I[n_r,n_a]
+  =
+  \int dt\,d^{d-1}x\,
+  \left[
+    n_a(\partial_t n_r-D\nabla^2 n_r)
+    +iT\sigma\,(\nabla_i n_a)(\nabla_i n_a)
+  \right].
+\]
+Integrating over \(n_a\) gives the Langevin equation above.  The imaginary
+part is positive because the microscopic density matrix defines positive
+norms for Schwinger--Keldysh correlation functions.  Nonlinear hydrodynamics
+adds interactions constrained by conservation laws, KMS symmetry, and
+positivity.
+
+\section{Mode-Coupling Integral}
+
+Consider a conserved current containing a quadratic convective term
+\[
+  J^i=\lambda\,\varphi\,\varphi+\cdots .
+\]
+The one-loop hydrodynamic contribution to the retarded current correlator
+contains an integral of the form
+\[
+  G_R^{JJ}(\omega)\supset
+  \lambda^2
+  \int\frac{d^{d-1}k}{(2\pi)^{d-1}}
+  \frac{T^2\,\chi^{-2}}
+       {-i\omega+2Dk^2}.
+\]
+At small \(\omega\), the nonanalytic part is
+\[
+  G_R^{JJ}(\omega)\sim
+  \begin{cases}
+    (-i\omega)^{(d-3)/2}, & d\ne3,\\
+    \log(-i\omega), & d=3,
+  \end{cases}
+\]
+up to coefficients fixed by the tensor structure and susceptibilities.  In
+time domain this produces a long-time tail
+\[
+  C_{JJ}(t)\sim t^{-(d-1)/2}.
+\]
+
+\section{Cutoff Dependence And Transport}
+
+The analytic part of the same loop integral depends on the hydrodynamic
+cutoff \(\Lambda_{\mathrm{hyd}}\).  This dependence is absorbed into the
+transport coefficient that appears in the constitutive relation at that
+cutoff:
+\[
+  \sigma_{\mathrm{phys}}
+  =
+  \sigma(\Lambda_{\mathrm{hyd}})
+  +
+  \Delta\sigma(\Lambda_{\mathrm{hyd}}).
+\]
+The nonanalytic late-time contribution cannot be removed by a local
+coefficient.  Therefore transport in finite-temperature QFT has two layers:
+local coefficients in the hydrodynamic action and fluctuation corrections
+computed within the effective theory.
+
+\section{Stochastic Stress Tensor}
+
+For a relativistic fluid, the stress tensor contains dissipative terms
+\[
+  T^{ij}
+  =
+  p\delta^{ij}
+  +
+  \rho v^iv^j
+  -
+  \eta
+  \left(
+    \partial^iv^j+\partial^jv^i
+    -\frac{2}{d-1}\delta^{ij}\partial_kv^k
+  \right)
+  -
+  \zeta\,\delta^{ij}\partial_kv^k
+  +
+  \Xi^{ij}.
+\]
+The noise satisfies
+\[
+\begin{aligned}
+  \langle\Xi^{ij}(x)\Xi^{kl}(0)\rangle
+  =
+  2T\Bigl[
+    \eta
+    \left(
+      \delta^{ik}\delta^{jl}+\delta^{il}\delta^{jk}
+      -\frac{2}{d-1}\delta^{ij}\delta^{kl}
+    \right)
+    +\zeta\,\delta^{ij}\delta^{kl}
+  \Bigr]\delta^{(d)}(x).
+\end{aligned}
+\]
+This is the local equilibrium limit of stress-tensor fluctuation relations.
+Its use requires a hydrodynamic cell scale larger than microscopic
+correlation lengths and smaller than the external wavelength.
+
+\section{Microscopic Theorem Boundary}
+
+A derivation from QFT requires:
+\[
+\begin{gathered}
+  \text{KMS state and conserved currents},\\
+  \text{clustering and local equilibration},\\
+  \text{existence of a hydrodynamic scaling limit},\\
+  \text{positivity and KMS constraints on the Schwinger--Keldysh action},\\
+  \text{control of the order of low-frequency and infinite-volume limits}.
+\end{gathered}
+\]
+Hydrodynamic fluctuation theory computes consequences of these assumptions.
+It does not by itself prove that a given microscopic QFT equilibrates.
+
+\begin{openproblem}[Hydrodynamic limit]
+\label{op:hydrodynamic-limit-qft}
+Derive fluctuating hydrodynamics and long-time tails directly from an
+interacting QFT with a KMS state, including the hydrodynamic scaling limit,
+noise kernel, nonlinear couplings, and renormalization of transport
+coefficients.
+\end{openproblem}
