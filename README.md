@@ -24,6 +24,8 @@ material are kept separate from the compiled monograph.
 - `tools/`: build, audit, OCR, and skeleton-generation utilities.
 - `calculation-checks/`: public-facing Python and Wolfram Language scripts
   that verify convention-sensitive algebra used in the manuscript.
+- `qft_scripts/`: reader-facing finite-regulator numerical demonstrations
+  such as Monte Carlo, Hamiltonian truncation, and DLCQ smoke examples.
 
 ## Active Volume Architecture
 
@@ -76,6 +78,16 @@ convention checks.  Set `QFT_SKIP_WOLFRAM=1` only for an explicitly
 Python-only pass, and set `WOLFRAMKERNEL=/absolute/path/to/WolframKernel` or
 `WOLFRAMSCRIPT=/absolute/path/to/wolframscript` to override executable paths.
 
+Reader-facing companion scripts can be smoke-tested with:
+
+```bash
+tools/run_qft_scripts_smoke.sh
+```
+
+These scripts illustrate finite regulators.  Their smoke tests do not certify
+continuum extrapolations or physical spectra unless the accompanying chapter
+states and proves the finite claim being checked.
+
 ## Quality Gates
 
 Before a manuscript change is considered ready:
@@ -87,6 +99,8 @@ Before a manuscript change is considered ready:
 5. For edits involving sign, spinor, group-theory, anomaly, conformal-block,
    or Feynman-integral conventions, run `tools/run_calculation_checks.sh` or
    the relevant script in `calculation-checks/`.
+6. For edits to public numerical companion scripts, run
+   `tools/run_qft_scripts_smoke.sh` or the edited script's smoke mode.
 
 The planning layer records additional writing standards and audit procedures.
 

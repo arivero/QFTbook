@@ -542,6 +542,15 @@ Further development targets:
 10. Numerical Hamiltonian Truncation, DLCQ, And Benchmark Scripts
 11. Lattice Fermions And Chiral Symmetry
 
+Code policy:
+
+- Calculation checks live in `calculation-checks/` and certify finite algebra
+  or convention-sensitive formulae used by the text.
+- Reader-facing numerical demonstrations live in `qft_scripts/`; they must
+  state their regulator, cutoff parameters, dependencies, and theorem status.
+  The smoke harness is `tools/run_qft_scripts_smoke.sh`, and the policy is
+  recorded in `planning/14_code_policy.md`.
+
 ## Volume XII: QFT In Curved Spacetime And Background Fields
 
 Purpose: QFT on fixed geometric backgrounds without treating quantum gravity

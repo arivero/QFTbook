@@ -47,6 +47,103 @@ state space, the estimator
 \]
 converges almost surely to \(\langle O\rangle_\Lambda\).
 
+\section{Metropolis Updates as a Finite-Regulator Theorem}
+
+The simplest exact check of the preceding definitions is a finite spin system.
+Let \(\Lambda_L=(\mathbb Z/L\mathbb Z)^2\) be the periodic square lattice and
+let a configuration be a map
+\[
+  s:\Lambda_L\to\{-1,+1\}.
+\]
+For real \(J,h\), define
+\[
+  H_L(s)
+  =
+  -J\sum_{\langle xy\rangle}s_xs_y-h\sum_xs_x ,
+  \qquad
+  \pi_\beta(s)=Z_{\beta,L}^{-1}e^{-\beta H_L(s)} .
+\]
+Here \(\langle xy\rangle\) denotes an unoriented nearest-neighbor bond and
+\(Z_{\beta,L}\) is the finite sum over all \(2^{L^2}\) configurations.
+
+The single-spin Metropolis chain chooses a site \(x\) uniformly, proposes
+\[
+  s\longmapsto s^x,\qquad
+  s^x_y=
+  \begin{cases}
+    -s_x,& y=x,\\
+    s_y,& y\neq x,
+  \end{cases}
+\]
+and accepts the proposal with probability
+\[
+  a(s,x)=\min\{1,e^{-\beta(H_L(s^x)-H_L(s))}\}.
+\]
+The energy difference is local:
+\[
+  H_L(s^x)-H_L(s)
+  =
+  2s_x\left(J\sum_{y:\langle xy\rangle}s_y+h\right).
+\]
+
+\begin{proposition}[Detailed balance for the finite Ising Metropolis chain]
+\label{prop:ising-metropolis-detailed-balance}
+The transition kernel \(P\) defined by the preceding update satisfies
+\[
+  \pi_\beta(s)P(s,s')=\pi_\beta(s')P(s',s)
+\]
+for all configurations \(s,s'\).  If \(0<\beta<\infty\), the chain is
+irreducible.  If additionally \((J,h)\neq(0,0)\), it is aperiodic on the
+finite set \(\{-1,+1\}^{\Lambda_L}\).  For the degenerate infinite-temperature
+Hamiltonian \(J=h=0\), adding a nonzero holding probability gives the usual
+lazy aperiodic variant without changing the stationary measure.
+\end{proposition}
+
+\begin{proof}
+If \(s'\) is not equal to \(s\) or to a one-spin flip of \(s\), both sides of
+the detailed-balance identity vanish.  For \(s'=s^x\), write
+\(\Delta H=H_L(s^x)-H_L(s)\).  The off-diagonal transition probabilities are
+\[
+  P(s,s^x)=\frac1{L^2}\min\{1,e^{-\beta\Delta H}\},
+  \qquad
+  P(s^x,s)=\frac1{L^2}\min\{1,e^{\beta\Delta H}\}.
+\]
+If \(\Delta H\geq0\), then
+\[
+  e^{-\beta H_L(s)}P(s,s^x)
+  =
+  \frac1{L^2}e^{-\beta H_L(s)}e^{-\beta\Delta H}
+  =
+  \frac1{L^2}e^{-\beta H_L(s^x)}
+  =
+  e^{-\beta H_L(s^x)}P(s^x,s).
+\]
+The case \(\Delta H<0\) is the same identity with \(s\) and \(s^x\)
+interchanged.  Dividing by the finite partition function gives detailed
+balance.
+
+Irreducibility follows because any configuration can be reached from any
+other by flipping the finite set of sites on which they differ, and every
+single spin flip has positive proposal probability and positive acceptance
+probability.  If \((J,h)\neq(0,0)\), there is a configuration \(s\) and a site
+\(x\) with \(H_L(s^x)>H_L(s)\), so the chain has a positive holding
+probability at \(s\).  In a finite irreducible Markov chain, one state with a
+self-loop forces every state to have period one.  When \(J=h=0\), every
+proposal is accepted and the one-spin-flip walk on the hypercube is bipartite;
+the standard lazy modification inserts a holding probability and restores
+aperiodicity.
+\end{proof}
+
+The companion script
+\[
+  \texttt{qft\_scripts/ising2d\_metropolis.py}
+\]
+implements exactly this finite chain and reports the acceptance rate, energy
+per site, absolute magnetization, and a windowed estimate of
+\(\tau_{\mathrm{int}}\).  Its smoke mode is a finite-regulator check of the
+algorithmic identities above.  It does not estimate critical exponents, prove
+the Onsager scaling limit, or construct the continuum Ising CFT.
+
 \section{Autocorrelation and Effective Sample Size}
 
 For a stationary chain, define the connected autocorrelation function

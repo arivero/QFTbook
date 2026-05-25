@@ -173,6 +173,12 @@ Date: 2026-05-25
   Kubo formulae, hydrodynamic constitutive relations, entropy-current and
   effective-action constraints, thermal gauge theory, kinetic theory, and
   anomalous transport.
+- Public numerical code has two roles.  `calculation-checks/` is for fast
+  deterministic checks of finite algebra and conventions used directly in
+  derivations.  `qft_scripts/` is for reader-facing finite-regulator
+  demonstrations such as Monte Carlo, Hamiltonian truncation, and DLCQ; these
+  scripts require smoke modes and manuscript text explaining exactly what the
+  finite computation certifies.
 
 ## Current Implementation Decisions
 

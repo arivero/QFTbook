@@ -77,6 +77,71 @@ High-energy states generate cutoff dependence.  The local Hamiltonian
 counterterms are determined by matching low-energy observables as
 \(E_{\mathrm{cut}}\) is varied.
 
+\section{Exactly Solvable TCSA Benchmark: Ising Energy Deformation}
+
+A useful benchmark must distinguish the finite Hamiltonian matrix from the
+continuum theory it approximates.  The thermal deformation of the two
+dimensional Ising CFT is special because the deformed theory is a free massive
+Majorana fermion.  On a circle of circumference \(L\), in the
+Neveu--Schwarz sector, positive modes are labelled by
+\[
+  r\in \mathbb Z_{\geq0}+\frac12,
+  \qquad
+  p_r=\frac{2\pi r}{L}.
+\]
+For each \(r\), the finite-mode Hamiltonian reduces to the real symmetric
+Bogoliubov block
+\[
+  H_r=
+  \begin{pmatrix}
+    -p_r&m\\
+    m&p_r
+  \end{pmatrix},
+\]
+where \(m\) is the Majorana mass induced by the energy-operator coupling in a
+fixed normalization.  The corresponding finite truncation with \(N\) modes is
+the direct sum
+\[
+  H_N=\bigoplus_{r=1/2}^{N-1/2} H_r .
+\]
+
+\begin{proposition}[Finite-mode Majorana benchmark]
+\label{prop:ising-energy-tcsa-benchmark}
+The eigenvalues of \(H_N\) are
+\[
+  \left\{
+    \pm\sqrt{p_r^2+m^2}\ :\
+    r=\frac12,\frac32,\ldots,N-\frac12
+  \right\}.
+\]
+\end{proposition}
+
+\begin{proof}
+For a fixed mode \(r\),
+\[
+  \det(H_r-\lambda I)
+  =
+  (-p_r-\lambda)(p_r-\lambda)-m^2
+  =
+  \lambda^2-(p_r^2+m^2).
+\]
+Thus the two eigenvalues of \(H_r\) are
+\(\lambda=\pm\sqrt{p_r^2+m^2}\).  The matrix \(H_N\) is a direct sum of the
+blocks \(H_r\), so its characteristic polynomial is the product of the block
+characteristic polynomials.
+\end{proof}
+
+The script
+\[
+  \texttt{qft\_scripts/tcsa\_ising\_energy\_benchmark.py}
+\]
+diagonalizes \(H_N\) and checks Proposition
+\ref{prop:ising-energy-tcsa-benchmark}.  This is not the full magnetic-field
+Ising TCSA problem and it is not the \(E_8\) mass-spectrum computation.  Its
+role is narrower and rigorous: it is a public finite-matrix benchmark for
+Hamiltonian-truncation conventions before nonintegrable perturbations,
+counterterm fitting, and cutoff extrapolation are introduced.
+
 \section{DLCQ Datum}
 
 Light-front coordinates are
@@ -100,6 +165,97 @@ fixed \(K\) consists of partitions of \(K\) among partons, with transverse and
 internal cutoffs added as needed.  Zero modes with \(n=0\) are constrained
 variables or additional degrees of freedom depending on the theory; their
 treatment is part of the regulator.
+
+\section{\texorpdfstring{Large-\(N\) Two-Dimensional QCD: A Finite DLCQ Matrix}{Large-N Two-Dimensional QCD: A Finite DLCQ Matrix}}
+
+The standard large-\(N\) two-dimensional QCD meson equation involves the
+principal-value operator
+\[
+  (\mathcal K\phi)(x)
+  =
+  \operatorname{PV}\int_0^1
+  \frac{\phi(x)-\phi(y)}{(x-y)^2}\,\dd y ,
+  \qquad 0<x<1,
+\]
+together with endpoint mass terms
+\[
+  \frac{m_1^2}{x}\phi(x)+\frac{m_2^2}{1-x}\phi(x).
+\]
+This section records a finite regulator, not a continuum theorem.  Fix a
+harmonic resolution \(K\geq3\) and grid points \(x_n=n/K\),
+\(n=1,\ldots,K-1\).  For \(\gamma>0\), define the real symmetric matrix
+\[
+  (M_K^2)_{nm}
+  =
+  \delta_{nm}
+  \left[
+    \frac{m_1^2}{x_n}
+    +
+    \frac{m_2^2}{1-x_n}
+    +
+    \gamma K\sum_{\substack{j=1\\ j\neq n}}^{K-1}
+      \frac1{(n-j)^2}
+  \right]
+  -
+  (1-\delta_{nm})\frac{\gamma K}{(n-m)^2}.
+\]
+The normalization of \(\gamma\) depends on the convention for
+\(g^2N/\pi\).  The finite object above is sufficient to illustrate harmonic
+resolution, positivity, and extrapolation obligations.
+
+\begin{proposition}[Positivity of the finite principal-value matrix]
+\label{prop:thooft-dlcq-finite-positivity}
+For \(m_1^2,m_2^2,\gamma>0\) and any
+\(v=(v_1,\ldots,v_{K-1})\in\mathbb R^{K-1}\),
+\[
+  v^T M_K^2 v
+  =
+  \sum_{n=1}^{K-1}
+  \left(
+    \frac{m_1^2}{x_n}
+    +
+    \frac{m_2^2}{1-x_n}
+  \right)v_n^2
+  +
+  \gamma K
+  \sum_{1\leq n<m\leq K-1}
+  \frac{(v_n-v_m)^2}{(n-m)^2}.
+\]
+In particular \(M_K^2\) is positive definite.
+\end{proposition}
+
+\begin{proof}
+Substitute the definition of \(M_K^2\) into \(v^TM_K^2v\).  The mass terms
+give the first displayed sum.  The off-diagonal kernel gives
+\[
+  \gamma K
+  \sum_{n=1}^{K-1}
+  \sum_{\substack{m=1\\m\neq n}}^{K-1}
+  \frac{v_n^2-v_nv_m}{(n-m)^2}.
+\]
+Pair the term \((n,m)\) with \((m,n)\).  For each unordered pair
+\(\{n,m\}\),
+\[
+  \frac{v_n^2-v_nv_m}{(n-m)^2}
+  +
+  \frac{v_m^2-v_mv_n}{(m-n)^2}
+  =
+  \frac{(v_n-v_m)^2}{(n-m)^2}.
+\]
+This gives the stated quadratic form.  Since \(0<x_n<1\), the mass
+coefficients are positive; hence \(v^TM_K^2v>0\) for \(v\neq0\).
+\end{proof}
+
+The script
+\[
+  \texttt{qft\_scripts/thooft\_dlcq.py}
+\]
+constructs this matrix and diagonalizes it at finite \(K\).  A continuum
+claim would require an analysis of the \(K\to\infty\) limit, endpoint
+behavior, zero modes, normalization of \(\gamma\), and comparison with a
+Lorentz-covariant reconstruction.  The script therefore prints finite
+eigenvalues and a quadratic-form positivity check rather than presenting the
+numbers as physical meson masses.
 
 \section{Light-Front Hamiltonian}
 
@@ -129,6 +285,15 @@ A benchmark for any truncation method should specify:
 Independent checks include Ward identities, known finite-volume limits,
 reflection positivity where applicable, spectral sum rules, and comparison
 with Euclidean lattice or exact integrable data in overlapping regimes.
+
+The public companion-script policy is recorded in
+\texttt{planning/14\_code\_policy.md}.  The script smoke harness
+\[
+  \texttt{tools/run\_qft\_scripts\_smoke.sh}
+\]
+runs the finite Ising Metropolis, Ising-energy Hamiltonian-truncation, and
+the large-\(N\) QCD DLCQ example.  Passing that harness certifies
+only the finite computations and internal consistency checks just described.
 
 \begin{openproblem}[Certified QFT truncation]
 \label{op:certified-qft-hamiltonian-truncation}

@@ -33,7 +33,11 @@ comment identifying the manuscript location and verification performed.
   bounds, \(\Phi^4_3\) power counting, and OS output data.  Closable after
   build and push verification.
 - #494: numerical methods, including lattice Monte Carlo, TCSA, and DLCQ.
-  Target: Volume XI numerical QFT chapter with calculation-check scripts.
+  Current progress: Volume XI now contains a finite Ising Metropolis theorem
+  and two Hamiltonian/DLCQ finite-matrix benchmarks, with public scripts in
+  `qft_scripts/` and a smoke harness in `tools/run_qft_scripts_smoke.sh`.
+  Full closure still requires deeper production-grade examples, continuum
+  extrapolation studies, and richer TCSA/DLCQ applications.
 - #505: nonperturbative Wilsonian fixed-point theory.  Target: Volume III and
   Volume XI bridge.
 - #517: radial OPE convergence discreteness hypotheses.  Target: Volume V OPE

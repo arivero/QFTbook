@@ -16,6 +16,10 @@ chapters.
 - `tau_int(O)`: integrated autocorrelation time.
 - `Theta`: phase of a complex Euclidean weight.
 - `D[U]`: lattice fermion operator in a background gauge field.
+- `Lambda_L`, `s`, `H_L`, `pi_beta`: finite periodic Ising lattice,
+  spin configuration, finite Hamiltonian, and Boltzmann probability.
+- `P(s,s')`, `a(s,x)`: single-spin Metropolis transition probability and
+  acceptance probability.
 
 ## Claim Ledger
 
@@ -23,12 +27,23 @@ chapters.
   probability integrals.
 - States the detailed-balance condition and convergence role of Markov-chain
   hypotheses.
+- Proves detailed balance, irreducibility, and aperiodicity for the finite
+  single-spin Metropolis chain in the two-dimensional periodic Ising model.
 - Derives the variance formula with integrated autocorrelation time.
 - Derives exponential degradation of phase reweighting from the average
   phase.
 - Separates finite-lattice numerical estimates from continuum QFT claims.
+- Adds the companion script `qft_scripts/ising2d_metropolis.py` as a
+  finite-regulator demonstration with a smoke-mode algorithm check.
 
 ## Figure Ledger
 
 No figure is included.  Future figures should show the reweighting ratio and
 the exponential decay of average phase with volume.
+
+## Companion Scripts
+
+- `qft_scripts/ising2d_metropolis.py --smoke`: finite periodic Ising
+  Metropolis sampler.  Certifies the implemented finite chain and reports
+  acceptance, energy, magnetization, and a windowed autocorrelation estimate.
+  It does not certify a continuum limit.

@@ -412,6 +412,28 @@ newline followed by a leading operator can be parsed by `wolframscript -file`
 as a new statement.  The calculation harness rejects committed `.wl` checks
 with such leading-operator continuations before execution.
 
+## Companion-Script Rule
+
+Numerical examples for lattice Monte Carlo, Hamiltonian truncation, DLCQ,
+TBA, period integrals, and similar finite-regulator computations belong in
+`qft_scripts/`, not in `calculation-checks/`.  A companion script is
+reader-facing infrastructure.  It must declare the finite object being
+computed, the regulator parameters, the limiting claim that remains to be
+proved or extrapolated, and a smoke mode that runs quickly.  The smoke harness
+is
+
+```bash
+tools/run_qft_scripts_smoke.sh
+```
+
+and the policy is recorded in `planning/14_code_policy.md`.
+
+A companion script never replaces a derivation in the manuscript.  The
+chapter that cites it must state the finite theorem or controlled
+approximation being illustrated.  Passing the smoke harness certifies only
+the finite computation and internal consistency checks named in the chapter,
+not a continuum limit, spectrum theorem, or physical QFT construction.
+
 ## Compilation Gate
 
 Only chapters that pass this harness may be included in the compiled
