@@ -70,6 +70,11 @@ Current checks:
   constants, \(C_A=2N\), \(T_F=1\), \(C_F=(N^2-1)/N\), the coupling-coordinate
   conversion from the common half-trace convention, and the Wilson-plaquette
   factor giving \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\).
+- `ising_defect_fusion_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for
+  the Ising/Kramers--Wannier noninvertible defect example, including fusion
+  associativity, Frobenius--Perron dimensions, modular \(S\)-matrix
+  orthogonality, the Verlinde formula, and the diagonal action of defects on
+  local primary sectors.
 - `large_n_topology_checks.py`: finite checks for the 't Hooft
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph

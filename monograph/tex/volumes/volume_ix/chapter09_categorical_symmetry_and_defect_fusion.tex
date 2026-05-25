@@ -81,6 +81,173 @@ placement.  This construction is a QFT operation only when the defect-network
 sum or condensation is defined as a regulated insertion in correlation
 functions.
 
+\section{The Ising/Kramers--Wannier Defect}
+
+The simplest noninvertible example is the topological-defect category of the
+critical two-dimensional Ising model.  We describe the categorical data
+abstractly, because these data are what survive as the symmetry object.  Let
+the simple codimension-one topological defects be
+\[
+  \mathbf 1,\qquad \eta,\qquad \mathcal N .
+\]
+Here \(\mathbf 1\) is the invisible defect, \(\eta\) is the invertible
+\(\mathbb Z_2\) spin-flip defect, and \(\mathcal N\) is the
+Kramers--Wannier duality defect.  Their fusion rules are
+\begin{equation}
+\begin{gathered}
+  \eta\otimes\eta\simeq\mathbf 1,\qquad
+  \eta\otimes\mathcal N\simeq
+  \mathcal N\otimes\eta\simeq\mathcal N,\\
+  \mathcal N\otimes\mathcal N\simeq\mathbf 1\oplus\eta .
+\end{gathered}
+  \label{eq:ising-kw-fusion-rules}
+\end{equation}
+The last line is the decisive one: \(\mathcal N\) has no inverse, because
+fusing it with itself gives two simple summands rather than the identity.
+
+\begin{proposition}[Quantum dimensions of the Ising defects]
+\label{prop:ising-defect-quantum-dimensions}
+The Frobenius--Perron dimensions of
+\(\mathbf 1,\eta,\mathcal N\) are
+\[
+  d_{\mathbf 1}=1,\qquad d_\eta=1,\qquad d_{\mathcal N}=\sqrt2 .
+\]
+\end{proposition}
+
+\begin{proof}
+Frobenius--Perron dimension is the positive homomorphism from the fusion
+semiring to \(\mathbb R_{>0}\).  Thus \(d_{\mathbf 1}=1\), and
+\(\eta^2=\mathbf 1\) with positivity gives \(d_\eta=1\).  The last fusion
+rule in \eqref{eq:ising-kw-fusion-rules} gives
+\[
+  d_{\mathcal N}^2=d_{\mathbf 1}+d_\eta=2,
+\]
+hence \(d_{\mathcal N}=\sqrt2\).
+\end{proof}
+
+The defect is therefore noninvertible in a quantitative sense: surrounding
+an insertion by \(\mathcal N\) is not an automorphism of the local-operator
+space.  At the critical point the diagonal rational CFT has three primary
+families, which we denote
+\[
+  \mathbf 1,\qquad \varepsilon,\qquad \sigma .
+\]
+The topological line action on these primary sectors is diagonalized by the
+Ising modular \(S\)-matrix
+\begin{equation}
+  S_{\rm Ising}
+  =
+  \frac12
+  \begin{pmatrix}
+    1&1&\sqrt2\\
+    1&1&-\sqrt2\\
+    \sqrt2&-\sqrt2&0
+  \end{pmatrix}_{\mathbf 1,\varepsilon,\sigma}.
+  \label{eq:ising-modular-s-matrix}
+\end{equation}
+Here the row label \(\varepsilon\) is the same invertible topological line
+as the spin-flip defect \(\eta\), and the row label \(\sigma\) is the same
+topological line as the Kramers--Wannier defect \(\mathcal N\).  We keep the
+notations distinct because \(\varepsilon,\sigma\) are also conventional
+names for primary sectors, whereas \(\eta,\mathcal N\) emphasize the defect
+interpretation.
+The line \(D_a\) acts on the primary sector \(i\) by the scalar
+\begin{equation}
+  \lambda_a(i)=\frac{S_{ai}}{S_{\mathbf 1 i}} .
+  \label{eq:ising-line-eigenvalues}
+\end{equation}
+For \(a=\mathcal N\), this gives
+\[
+  \lambda_{\mathcal N}(\mathbf 1)=\sqrt2,\qquad
+  \lambda_{\mathcal N}(\varepsilon)=-\sqrt2,\qquad
+  \lambda_{\mathcal N}(\sigma)=0 .
+\]
+The zero on the spin sector is not a paradox: a noninvertible defect need not
+act as a bijection on local fields.
+
+\begin{proposition}[Fusion action on Ising local sectors]
+\label{prop:ising-defect-action-fusion}
+The eigenvalues \eqref{eq:ising-line-eigenvalues} furnish a representation
+of the fusion algebra:
+\[
+  \lambda_a(i)\lambda_b(i)
+  =
+  \sum_c N_{ab}^{\ \ c}\lambda_c(i)
+\]
+for every defect label \(a,b\) and every primary sector \(i\).
+\end{proposition}
+
+\begin{proof}
+For \(\eta\) the eigenvalues are
+\[
+  \lambda_\eta(\mathbf 1)=1,\qquad
+  \lambda_\eta(\varepsilon)=1,\qquad
+  \lambda_\eta(\sigma)=-1,
+\]
+so \(\lambda_\eta^2=1\), matching
+\(\eta\otimes\eta\simeq\mathbf 1\).  Multiplication by \(\eta\) leaves the
+\(\mathcal N\)-eigenvalues unchanged, because
+\(\mathcal N\) has zero eigenvalue on \(\sigma\), where \(\eta\) differs from
+\(\mathbf 1\).  Finally,
+\[
+  \lambda_{\mathcal N}(i)^2
+  =
+  \begin{cases}
+  2,& i=\mathbf 1,\varepsilon,\\
+  0,& i=\sigma,
+  \end{cases}
+  =
+  1+\lambda_\eta(i),
+\]
+which is exactly the action of
+\(\mathbf 1\oplus\eta\).  These identities are the three fusion rules
+\eqref{eq:ising-kw-fusion-rules} evaluated on local sectors.
+\end{proof}
+
+\begin{remark}[Duality defect from gauging interface]
+Let \(\mathcal N_{\mathbb Z_2}\) be the interface that gauges the spin-flip
+\(\mathbb Z_2\) symmetry.  At the self-dual critical Ising point the gauged
+theory is equivalent to the original theory after choosing the duality
+identification.  Composing the gauging interface with this identification
+gives the Kramers--Wannier defect \(\mathcal N\).  The general interface
+identity of Chapter~\ref{ch:global-duality-defects-gauging-orbifold-data}
+then gives
+\[
+  \mathcal N^\dagger\otimes\mathcal N
+  \simeq
+  \mathbf 1\oplus\eta ,
+\]
+which is the noninvertible fusion rule above.  Thus the noninvertibility is
+not a slogan about duality; it is the algebraic memory of summing over
+\(\mathbb Z_2\)-bundles in the gauging interface.
+\end{remark}
+
+\section{SymTFT Interpretation In The Rational Example}
+
+For a rational two-dimensional CFT, the categorical symmetry can be packaged
+by a three-dimensional topological theory whose bulk line category contains
+the defect category and whose boundary condition is the CFT.  In the Ising
+case the relevant bulk topological line category has simple lines
+\(\mathbf 1,\eta,\mathcal N\) with the same fusion rules
+\eqref{eq:ising-kw-fusion-rules}.  A topological defect in the CFT is
+obtained by ending the corresponding bulk line on the boundary.  Fusion of
+defects is then inherited from fusion of bulk lines before they end.
+
+This statement is deliberately precise but limited.  It does not assert that
+an arbitrary continuum QFT with a categorical symmetry has already been
+constructed from a fully extended topological bulk and boundary condition.
+Rather, in rational examples it supplies a concrete comparison map:
+\[
+  \text{bulk topological lines}
+  \longrightarrow
+  \text{boundary topological defects}
+  \longrightarrow
+  \operatorname{End}(\mathcal V_{\rm loc}).
+\]
+The first arrow is the boundary endpoint operation, and the second is the
+surrounding action on local operators.  The Ising computation above verifies
+the last map explicitly on the three primary sectors.
+
 \section{Anomaly As Obstruction To Condensation}
 
 An anomaly of a categorical symmetry is an obstruction to defining the defect
@@ -95,23 +262,15 @@ network on the boundary is evaluated together with a bulk topological term.
 If the anomaly is trivialized by a local counterterm, the defect category can
 be modified by an equivalent associator or braiding datum.
 
-\section{Examples To Be Developed}
+\section{Further Examples Requiring Separate Construction}
 
-The following examples require full treatment later in this volume:
-\[
-  \text{Kramers--Wannier duality defects in }2D,
-\]
-\[
-  \text{duality walls in gauge theories},
-\]
-\[
-  \text{noninvertible defects from gauging finite normal subgroups},
-\]
-\[
-  \text{duality defects acting on line-operator lattices}.
-\]
-Each example must define the local QFT, the defect support, the junction
-operators, the fusion rules, and the anomaly or condensation data.
+The Ising example is a controlled rational model, not a substitute for the
+general interacting problem.  Further examples requiring separate
+construction include duality walls in four-dimensional gauge theories,
+noninvertible defects from gauging finite normal subgroups, and duality
+defects acting on electric-magnetic line-operator lattices.  Each example
+must define the local QFT, the defect support, the junction operators, the
+fusion rules, and the anomaly or condensation data.
 
 \begin{openproblem}[Interacting categorical symmetries]
 \label{op:interacting-categorical-symmetries}

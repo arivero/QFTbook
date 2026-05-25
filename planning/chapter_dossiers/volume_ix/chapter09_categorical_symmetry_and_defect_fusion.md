@@ -15,6 +15,14 @@ anomaly obstruction.
 - `Hom(D_a tensor D_b, D_c)`: junction spaces.
 - `A`, `m`, `eta`: algebra object and its multiplication/unit maps for
   condensation.
+- `eta`, `N`: in the Ising example, the invertible spin-flip defect and the
+  Kramers--Wannier noninvertible defect; the TeX uses `\eta` and
+  `\mathcal N`.
+- `S_Ising`: the \(3\times3\) Ising modular matrix in the
+  \((1,\varepsilon,\sigma)\) basis; the \(\varepsilon\) row is the spin-flip
+  line `eta`, and the \(\sigma\) row is the Kramers--Wannier line `N`.
+- `lambda_a(i)`: eigenvalue of the topological defect \(D_a\) acting on the
+  primary sector \(i\), \(S_{ai}/S_{1i}\).
 
 ## Claim Ledger
 
@@ -24,8 +32,26 @@ anomaly obstruction.
 - Relates associativity of defect fusion to junction spaces and pentagon
   identities.
 - Formulates gauging as condensation of an algebra object.
+- Develops the Ising/Kramers--Wannier example as a concrete noninvertible
+  categorical symmetry: \(N^2=1+\eta\), \(d_N=\sqrt2\), and the defect action
+  on the three primary sectors is diagonalized by the Ising modular matrix.
+- Proves directly that the defect eigenvalues furnish a representation of
+  the fusion algebra, so the vanishing action of \(N\) on the spin sector is
+  a consequence of the fusion rules and not a slogan about duality.
+- Explains the rational-example SymTFT comparison map
+  `bulk topological lines -> boundary topological defects -> End(V_loc)`
+  without claiming that arbitrary continuum QFTs have already been built
+  from such a fully extended bulk-boundary construction.
 - Identifies anomaly as obstruction to choice-independent defect-network
   evaluation.
+
+## Calculation Checks
+
+- `calculation-checks/ising_defect_fusion_checks.py` verifies, in exact
+  \(\mathbb Q(\sqrt2)\) arithmetic, the Ising defect fusion associativity,
+  Frobenius--Perron dimension homomorphism, modular \(S\)-matrix
+  orthogonality, Verlinde formula, and line-eigenvalue representation of the
+  fusion algebra.
 
 ## Figure Ledger
 
