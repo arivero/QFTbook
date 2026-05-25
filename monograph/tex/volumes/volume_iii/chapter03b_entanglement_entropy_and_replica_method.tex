@@ -1,0 +1,309 @@
+\chapter{Entanglement Entropy and the Replica Method}
+\label{ch:cft-entanglement-replica}
+\ConventionsEuclideanCFT
+
+\section{Reduced States and Regulator Dependence}
+
+Let a Lorentzian QFT be given on a Cauchy surface \(\Sigma\), and let
+\(A\subset\Sigma\) be an open spatial region with complement
+\(A^c=\Sigma\setminus\overline A\).  In a finite lattice regularization with
+Hilbert-space factorization
+\[
+  \mathcal H_\epsilon
+  =
+  \mathcal H_{A,\epsilon}\otimes\mathcal H_{A^c,\epsilon},
+\]
+a normalized state \(\rho_\epsilon\) has reduced density matrix
+\[
+  \rho_{A,\epsilon}
+  =
+  \operatorname{Tr}_{\mathcal H_{A^c,\epsilon}}\rho_\epsilon .
+\]
+The von Neumann and Renyi entropies are
+\begin{equation}
+  S_A(\epsilon)
+  =
+  -\operatorname{Tr}_{\mathcal H_{A,\epsilon}}
+  \rho_{A,\epsilon}\log\rho_{A,\epsilon},
+  \qquad
+  S_n(A;\epsilon)
+  =
+  \frac{1}{1-n}
+  \log\operatorname{Tr}\rho_{A,\epsilon}^n .
+  \label{eq:renyi-von-neumann-definitions}
+\end{equation}
+The continuum QFT supplies local von Neumann algebras associated to spacetime
+domains rather than a canonical tensor product factorization for sharply
+separated spatial regions; gauge constraints and edge modes require additional
+choices even at finite cutoff.  In this chapter
+\(S_A(\epsilon)\) denotes a regulated entropy in a specified regulator and
+source chart.  Its power divergences depend on that regulator and source
+chart.  The universal logarithmic or finite terms isolated below are
+regulator-independent after the allowed local geometric counterterms on the
+entangling surface have been fixed.
+
+The modular Hamiltonian of the regulated region is
+\[
+  K_{A,\epsilon}:=-\log\rho_{A,\epsilon}.
+\]
+It is defined up to the additive constant that enforces
+\(\operatorname{Tr}\rho_{A,\epsilon}=1\).  The first variation of the entropy
+around a reference state \(\rho_A\) is the entanglement first law
+\begin{equation}
+  \delta S_A
+  =
+  \operatorname{Tr}(\delta\rho_A K_A),
+  \qquad
+  \operatorname{Tr}\delta\rho_A=0.
+  \label{eq:entanglement-first-law}
+\end{equation}
+Indeed,
+\(\delta[-\operatorname{Tr}\rho\log\rho]
+=-\operatorname{Tr}\delta\rho(\log\rho+1)\), and the last term vanishes by
+normalization.  This identity is finite-dimensional at the regulator level and
+then can be used in continuum limits for which both sides have defined
+universal parts.
+
+\section{Replica Construction}
+
+Assume that the state is prepared by a Euclidean path integral on a manifold
+\(M_1\) cut open along \(A\) at Euclidean time \(0\).  The matrix elements of
+\(\rho_A\) are obtained by keeping the fields on the two sides of the cut in
+\(A\) open and gluing the fields across \(A^c\).  The trace
+\(\operatorname{Tr}\rho_A^n\) glues \(n\) copies cyclically along the cut.  The
+result is a manifold \(M_n(A)\), or equivalently a codimension-two replica
+defect on the entangling surface \(\partial A\).  With the normalization
+\(\operatorname{Tr}\rho_A=1\),
+\begin{equation}
+  \operatorname{Tr}\rho_A^n
+  =
+  \frac{Z[M_n(A)]}{Z[M_1]^n}.
+  \label{eq:replica-partition-function}
+\end{equation}
+Let \(W_n(A):=-\log Z[M_n(A)]\).  The von Neumann entropy is obtained by
+analytic continuation from positive integer \(n\):
+\begin{equation}
+  S_A
+  =
+  -\left.
+  \partial_n\log\operatorname{Tr}\rho_A^n
+  \right|_{n=1}
+  =
+  \left.
+  (n\partial_n-1)W_n(A)
+  \right|_{n=1}.
+  \label{eq:replica-entropy-from-effective-action}
+\end{equation}
+The analytic continuation in \(n\) is an additional assumption.  In examples
+it is fixed by locality near the conical defect, reflection positivity, and
+growth conditions in \(n\), together with the integer replica sequence.
+
+Near a smooth point of \(\partial A\), the replicated geometry has polar
+coordinates
+\[
+  \dd s^2
+  =
+  \dd r^2+r^2\dd\theta^2+\dd y^i\dd y^i+\cdots,
+  \qquad
+  \theta\sim\theta+2\pi n,
+\]
+where the \(y^i\) are tangent to the entangling surface.  Thus the replica
+construction is a precise way to compute the response of the QFT to a conical
+excess \(2\pi(n-1)\).  Local geometric counterterms supported on
+\(\partial A\) account for the scheme-dependent area-law terms.
+
+\section{One Interval in a Two-Dimensional CFT}
+
+Let the CFT live on the complex plane, and let
+\[
+  A=[u,v],\qquad L=|v-u|.
+\]
+The \(n\)-sheeted cover for a single interval is uniformized by
+\[
+  z
+  =
+  \left(\frac{w-u}{w-v}\right)^{1/n}.
+\]
+On the \(z\)-plane the vacuum stress-tensor expectation vanishes.  Under the
+map \(z=z(w)\), the stress tensor transforms as
+\[
+  T(w)
+  =
+  \left(\frac{\dd z}{\dd w}\right)^2 T(z)
+  +
+  \frac{c_{2d}}{12}\{z,w\},
+  \qquad
+  \{z,w\}
+  =
+  \frac{z'''(w)}{z'(w)}
+  -\frac32
+  \left(\frac{z''(w)}{z'(w)}\right)^2 .
+\]
+This gives the one-copy expectation value on the cover
+\begin{equation}
+  \langle T(w)\rangle_{\mathcal R_n}
+  =
+  \frac{c_{2d}}{24}
+  \left(1-\frac1{n^2}\right)
+  \frac{(u-v)^2}{(w-u)^2(w-v)^2}.
+  \label{eq:interval-cover-stress-expectation}
+\end{equation}
+The replicated theory has total stress tensor
+\(T_{\rm tot}=\sum_{k=1}^nT_k\).  Comparing
+\(n\langle T(w)\rangle_{\mathcal R_n}\) near \(w=u\) with the Ward identity
+for a primary twist field \(\sigma_n(u)\) gives
+\begin{equation}
+  h_n=\bar h_n
+  =
+  \frac{c_{2d}}{24}
+  \left(n-\frac1n\right).
+  \label{eq:twist-field-dimension}
+\end{equation}
+Therefore
+\begin{equation}
+  \operatorname{Tr}\rho_A^n
+  =
+  C_n
+  \left(\frac{L}{\epsilon}\right)^{
+  -\frac{c_{2d}}{6}(n-\frac1n)}
+  ,
+  \qquad
+  C_1=1,
+  \label{eq:interval-renyi-trace}
+\end{equation}
+where \(\epsilon\) is the short-distance cutoff and \(C_n\) is a
+cutoff-scheme dependent normalization of the twist fields.  Applying
+\eqref{eq:replica-entropy-from-effective-action}, or equivalently
+\(-\partial_n\log\operatorname{Tr}\rho_A^n|_{n=1}\), gives
+\begin{equation}
+  S_A
+  =
+  \frac{c_{2d}}{3}\log\frac{L}{\epsilon}
+  -
+  \left.\partial_n\log C_n\right|_{n=1}.
+  \label{eq:two-dimensional-interval-entanglement}
+\end{equation}
+The additive constant is regulator dependent.  The logarithmic coefficient is
+universal because it is fixed by the stress-tensor transformation law and the
+central charge.
+
+Conformal maps give other standard geometries.  On a circle of circumference
+\(L_{\rm cyl}\), an interval of length \(\ell\) has
+\[
+  S_A
+  =
+  \frac{c_{2d}}{3}
+  \log\left(
+    \frac{L_{\rm cyl}}{\pi\epsilon}
+    \sin\frac{\pi\ell}{L_{\rm cyl}}
+  \right)
+  +\hbox{constant},
+\]
+while at inverse temperature \(\beta\) on the infinite line,
+\[
+  S_A
+  =
+  \frac{c_{2d}}{3}
+  \log\left(
+    \frac{\beta}{\pi\epsilon}
+    \sinh\frac{\pi L}{\beta}
+  \right)
+  +\hbox{constant}.
+\]
+These formulas follow from the transformation law of the twist two-point
+function.
+
+\section{Ball Entanglement in Higher-Dimensional CFT}
+
+Let \(B_R\) be the ball \(r<R\) on the Lorentzian time slice \(t=0\) in the
+vacuum of a \(D\)-dimensional CFT.  The domain of dependence of the ball is
+conformally mapped to the hyperbolic cylinder by
+\begin{equation}
+  t
+  =
+  R\frac{\sinh(\tau/R)}{\cosh u+\cosh(\tau/R)},
+  \qquad
+  r
+  =
+  R\frac{\sinh u}{\cosh u+\cosh(\tau/R)},
+  \label{eq:causal-diamond-hyperbolic-map}
+\end{equation}
+where \(u\geq0\) is the radial coordinate on \(\mathbb H^{D-1}\).  After
+Euclidean continuation \(\tau=-\ii\tau_E\), smoothness at the entangling
+surface requires
+\[
+  \tau_E\sim\tau_E+2\pi R .
+\]
+Consequently the reduced vacuum state on the ball is unitarily equivalent,
+up to the conformal anomaly in even \(D\), to a thermal state on
+\(\mathbb R_\tau\times\mathbb H^{D-1}\) at temperature
+\[
+  T_{\rm hyp}=\frac{1}{2\pi R}.
+\]
+The modular Hamiltonian is local:
+\begin{equation}
+  K_{B_R}
+  =
+  2\pi
+  \int_{r<R}\dd^{D-1}x\,
+  \frac{R^2-r^2}{2R}\,
+  T_{00}(t=0,\vec x)
+  +\hbox{constant}.
+  \label{eq:ball-modular-hamiltonian}
+\end{equation}
+The constant is fixed by \(\operatorname{Tr}\ee^{-K_{B_R}}=1\).
+
+The replica partition function becomes a thermal partition function on the
+hyperbolic cylinder:
+\begin{equation}
+  \operatorname{Tr}\rho_{B_R}^n
+  =
+  \frac{
+    Z_{\mathbb S^1_{2\pi nR}\times\mathbb H^{D-1}}
+  }{
+    Z_{\mathbb S^1_{2\pi R}\times\mathbb H^{D-1}}^{\,n}
+  },
+  \label{eq:ball-replica-hyperbolic-thermal}
+\end{equation}
+and therefore
+\begin{equation}
+  S(B_R)
+  =
+  \left.
+  \left(1-\beta\frac{\partial}{\partial\beta}\right)
+  \log Z_{\mathbb S^1_\beta\times\mathbb H^{D-1}}
+  \right|_{\beta=2\pi R}.
+  \label{eq:ball-entanglement-thermal-entropy}
+\end{equation}
+The infinite volume of \(\mathbb H^{D-1}\) reproduces the ultraviolet
+divergences near the entangling surface.  The universal term is fixed by the
+CFT data:
+\begin{equation}
+  S_{\rm univ}(B_R)
+  =
+  \begin{cases}
+  (-1)^{D/2-1}\,4a_D\log(R/\epsilon), & D\ \hbox{even},\\[4pt]
+  (-1)^{(D-1)/2}\,F_D, & D\ \hbox{odd}.
+  \end{cases}
+  \label{eq:ball-entanglement-universal-term}
+\end{equation}
+Here \(a_D\) is the Euler-anomaly coefficient in the normalization for which
+\(a_2=c_{2d}/12\) and \(a_4=a_{\rm W}\), while
+\[
+  F_D=-\log|Z_{\mathcal C}(S^D)|
+\]
+is the finite sphere free energy after local counterterms have been fixed.
+For \(D=2\), \eqref{eq:ball-entanglement-universal-term} reproduces
+\((c_{2d}/3)\log(R/\epsilon)\) for an interval whose length is proportional to
+\(R\).  For \(D=4\), it gives the sphere-entanglement logarithm
+\(-4a_{\rm W}\log(R/\epsilon)\).  For \(D=3\), it gives the universal constant
+\(-F_3\), while the renormalized disk entropy used in
+\eqref{eq:renormalized-disk-entanglement-f} equals \(F_3\) at a conformal
+fixed point.
+
+Equations \eqref{eq:ball-modular-hamiltonian}--\eqref{eq:ball-entanglement-universal-term}
+are special to balls and half-spaces in the vacuum.  For a general region the
+modular Hamiltonian is a nonlocal operator, and the replica defect is the
+primary definition of the entropy.  Shape deformations of the defect couple to
+displacement operators and stress-tensor insertions; those structures are
+part of defect CFT rather than ordinary local-operator data on flat space.

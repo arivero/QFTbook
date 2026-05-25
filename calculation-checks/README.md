@@ -45,6 +45,11 @@ Current checks:
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
+- `entanglement_replica_checks.py`: finite checks for the CFT entanglement
+  chapter, including the derivative of the twist-field dimension that gives
+  \(S=(c/3)\log(L/\epsilon)\), the sign of
+  \(S=(n\partial_n-1)W_n|_{n=1}\), and the even/odd dimensional signs in the
+  universal ball-entanglement term.
 - `gamma_trace_checks.py`: mostly-plus gamma-matrix conventions, \(\gamma_5\),
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used
