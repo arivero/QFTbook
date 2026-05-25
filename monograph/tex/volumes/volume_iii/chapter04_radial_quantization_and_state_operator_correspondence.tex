@@ -1477,9 +1477,26 @@ Let \(\phi\) be a free massless scalar primary with
 \[
   \Delta_\phi=\frac{D-2}{2}.
 \]
-The flat action is equivalent, by the Weyl transformation already described
-in Chapter~\ref{ch:volume-iii-stress-tensor-weyl}, to the
-conformally coupled action on the cylinder.  If
+The flat action is the \(R=0\) representative of the Weyl-covariant scalar
+action
+\begin{equation}
+  S[\phi;g]
+  =
+  \frac12\int \dd^D x\,\sqrt g\,
+  \left(
+    g^{\mu\nu}\nabla_\mu\phi\nabla_\nu\phi
+    +\xi_\ast R[g]\phi^2
+  \right),
+  \qquad
+  \xi_\ast=\frac{D-2}{4(D-1)}.
+  \label{eq:conformal-scalar-action-radial-check}
+\end{equation}
+Thus ``massless in flat space'' means that the curvature scalar vanishes in
+the flat representative; it does not mean that the Weyl-covariant
+representative lacks the curvature coupling.  By the Weyl transformation
+already described in Chapter~\ref{ch:volume-iii-stress-tensor-weyl}, the same
+theory on the cylinder has \(R_{\rm cyl}>0\), so the
+\(\xi_\ast R\phi^2\) term is activated and becomes the cylinder mass term.  If
 \[
   \widetilde\phi(\tau,n)=\ee^{\Delta_\phi\tau}\phi(\ee^\tau n),
 \]
@@ -1498,7 +1515,7 @@ then
   \right].
   \label{eq:free-scalar-cylinder-action}
 \end{equation}
-Here \(\xi_\ast=(D-2)/(4(D-1))\).  The cylinder metric is
+The cylinder metric is
 \[
   \dd s_{\rm cyl}^2=\dd\tau^2+\dd\Omega_{D-1}^2,
 \]

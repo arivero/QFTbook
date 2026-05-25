@@ -238,3 +238,8 @@ The chapter establishes:
   chapter now displays the conjugate bra limit, the reflected finite
   transformation identity, and the differentiated domain relation
   \(\langle A,P_\mu B\rangle_{\rm rad}=\langle K_\mu A,B\rangle_{\rm rad}\).
+- 2026-05-24 issue #419 pass: added the Weyl-covariant conformal scalar action
+  before the free-scalar cylinder spectrum and explained that the flat
+  massless theory has \(R=0\), while the cylinder representative has
+  \(R_{\rm cyl}>0\), activating the \(\xi_\ast R\phi^2\) term as the cylinder
+  mass.
