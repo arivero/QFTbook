@@ -42,6 +42,9 @@ The chapter must define:
 - the source-extended finite-regulator Wilsonian pushforward
   \(L_\Lambda[\phi;\eta_\Lambda]\) with a local differential source map
   \(\eta_0=\mathcal Z_\Lambda\eta_\Lambda\);
+- the part-opening convention that \(\mathcal Z\) denotes operator/source
+  mixing distributions and local contact-term source jets, not a partition
+  functional and not the LSZ one-particle residue;
 - the chapter-level use of the opening definition of contact terms as
   distributions supported on collision diagonals and controlled by local source
   charts;
@@ -88,6 +91,10 @@ The chapter must define:
   convention;
 - operator running and its diagonal/scaling form;
 - the field operator as the special case governed by \(Z(\mu)\);
+- the convention that this field-operator \(Z(\mu)\) is the
+  Callan--Symanzik chart factor \(Z_\phi^{\rm chart}\), with
+  \(Z_\phi^{\rm MS}\) used for the MS pole factor when the minimal-subtraction
+  chart is active, and with both kept distinct from \(Z_\phi^{\rm pole}\);
 - the operator-insertion Callan--Symanzik equation derived from
   \(G_I^{(n)}=Z_\phi^{-n/2}N_{IJ}G_{0,J,\Lambda}^{(n)}\), with contact terms
   excluded from the noncoincident equation and described as local collision
@@ -291,3 +298,8 @@ The chapter must define:
   higher \(\epsilon\)-components of \(\beta_I^\epsilon\) vanish before the
   \(\epsilon^1\) coefficient fixes
   \(\beta_I^{(1)}=\delta_I^{(1)}\lambda_I\).
+- 2026-05-24 issue #433 pass: recorded the part-opening \(Z\)-factor
+  dictionary in the operator chapter.  The chapter now treats
+  \(Z(\mu)\) as \(Z_\phi^{\rm chart}\), \(Z_\phi^{\rm MS}\) as the MS pole
+  factor, and \(\mathcal Z\) as source/contact-term mixing data, all distinct
+  from \(Z[J]\) and \(Z_\phi^{\rm pole}\).

@@ -109,6 +109,11 @@
 - 2026-05-24 issue #393 pass: standardized the one-particle residue in the
   LSZ chapter as \(Z_\phi\).  The unsubscripted source-functional notation
   \(Z[J]\), \(Z_-[J]\), and \(Z_E[J_E]\) remains separate.
+- 2026-05-24 issue #433 pass: later renormalization chapters reserve the
+  explicit notation \(Z_\phi^{\rm pole}\) for this LSZ/Kallen--Lehmann
+  residue when several \(Z\)-factors are compared.  Within this chapter
+  \(Z_\phi\) remains the same object, not a Callan--Symanzik or MS
+  field-renormalization factor.
 
 ## Figure Requirements
 

@@ -2,6 +2,56 @@
 \label{ch:volume-ii-generating-functionals-1pi}
 \ConventionsMixed
 
+\section*{Notation for Z-Factors in This Part}
+\addcontentsline{toc}{section}{Notation for Z-Factors in This Part}
+
+Several unrelated objects traditionally use the letter \(Z\).  The
+renormalization part keeps them distinct as follows.
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.23\textwidth}|p{0.67\textwidth}}
+symbol & meaning \\
+\hline
+\(Z[J]\) &
+source or partition functional.  Its logarithm generates connected
+correlators after a regulator and a branch or formal logarithm have been
+specified.  This \(Z\) is not a field-strength factor. \\
+\(Z_\phi^{\rm pole}\) &
+one-particle K\"all\'en--Lehmann/LSZ residue of a chosen interpolating field:
+\(\dd\rho_\phi(s)=Z_\phi^{\rm pole}\delta_{m^2}(\dd s)+\cdots\).  Earlier
+scattering chapters often write this residue simply as \(Z_\phi\), or as
+\(Z\) when only one scalar field is present.  Once the field normalization is
+fixed, it is a physical pole coefficient for that interpolating field and has
+no renormalization-scale argument. \\
+\(Z_{\rm MOM}(\mu)\) &
+finite momentum-subtraction field rescaling at Euclidean subtraction scale
+\(\mu\), for example
+\([\phi]_\mu=Z_{\rm MOM}(\mu)^{-1/2}\phi_R^{\rm ref}\).  It is a coordinate
+choice in the renormalized 1PI chart, not the K\"all\'en--Lehmann pole
+residue.  Only after analytic continuation to an isolated physical pole and
+the imposition of an on-shell residue condition can a finite field factor be
+identified with the pole-residue normalization. \\
+\(Z_\phi^{\rm chart}(\lambda(\mu),\mu,\Lambda)\) &
+total cutoff-dependent bare-to-renormalized field factor in a chosen
+renormalization chart.  In the Callan--Symanzik equation this factor carries
+the anomalous dimension through
+\(\gamma_\phi=\frac12\,\dd\log Z_\phi^{\rm chart}/\dd\log\mu\) at fixed bare
+data. \\
+\(Z_\phi^{\rm MS}(\lambda_{\rm MS},\epsilon)\) &
+minimal-subtraction field renormalization constant.  It contains pole
+counterterms in \(\epsilon\) and no finite residue normalization; it is not the
+LSZ residue. \\
+\(\mathcal Z^I{}_{A_1\cdots A_r}\) &
+operator/source mixing distribution for composite insertions.  This is a
+local contact-term renormalization matrix and is unrelated to either the
+source functional \(Z[J]\) or a one-particle pole residue.
+\end{tabular}
+\end{center}
+When a later formula suppresses a superscript, the surrounding chart specifies
+which row of this table is meant.  In particular, the notation \(Z_\phi\) in
+LSZ statements means \(Z_\phi^{\rm pole}\), while \(Z_\phi\) inside a
+Callan--Symanzik derivation means the chart field factor
+\(Z_\phi^{\rm chart}\).
 
 \section{Sources and Connected Functionals}
 

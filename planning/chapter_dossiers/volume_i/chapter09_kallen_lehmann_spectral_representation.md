@@ -143,6 +143,11 @@ Figures to include:
 - 2026-05-24 issue #425 pass: kept \(d\rho\) as the Kallen--Lehmann spectral
   measure notation and moved the unrelated two-body kinematic factor in later
   scattering chapters to \(\beta(s)\).
+- 2026-05-24 issue #433 pass: later renormalization chapters denote this
+  isolated spectral atom by \(Z_\phi^{\rm pole}\) when it must be compared
+  with \(Z[J]\), \(Z_{\rm MOM}(\mu)\), \(Z_\phi^{\rm chart}\), and
+  \(Z_\phi^{\rm MS}\).  The Kallen--Lehmann object remains a field-overlap
+  datum after the interpolating field normalization is fixed.
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.

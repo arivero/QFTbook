@@ -30,6 +30,12 @@
 The chapter must define the following objects before using them:
 
 - the regulated functional integral \(Z[J]\);
+- the opening notation dictionary separating the source functional \(Z[J]\)
+  from the Kallen--Lehmann/LSZ pole residue \(Z_\phi^{\rm pole}\), the finite
+  momentum-subtraction field rescaling \(Z_{\rm MOM}(\mu)\), the total
+  chart field factor \(Z_\phi^{\rm chart}\), the minimal-subtraction pole
+  factor \(Z_\phi^{\rm MS}\), and the composite-source mixing distributions
+  \(\mathcal Z^I{}_{A_1\cdots A_r}\);
 - the convention that \(D_\Lambda^{\rm ref}\phi\) denotes the finite-regulator
   scalar reference density, while \(\dd\mu_{C_\Lambda}\) denotes a Gaussian
   reference measure with the quadratic kinetic term absorbed;
@@ -127,6 +133,13 @@ The chapter must define the following objects before using them:
     effective action agree only where both constructions are defined, the
     convex conjugate is differentiable, and the source-field map is locally
     invertible.
+16. The letter \(Z\) has no chapter-wide meaning by itself: in this part
+    \(Z[J]\) is a source functional, \(Z_\phi^{\rm pole}\) is the isolated
+    one-particle spectral atom used in LSZ, \(Z_{\rm MOM}(\mu)\) is a finite
+    subtraction-scale field coordinate, \(Z_\phi^{\rm chart}\) is the
+    Callan--Symanzik bare-to-renormalized field factor, \(Z_\phi^{\rm MS}\)
+    is the minimal-subtraction pole factor, and \(\mathcal Z\) denotes
+    composite-source mixing data.
 
 ## Figure Requirements
 
@@ -191,3 +204,8 @@ The chapter must define the following objects before using them:
   classifies the logarithm separately in formal perturbative, positive
   Euclidean constructive, and Lorentzian complex-branch settings before
   applying connected-kernel or Legendre-transform formulas.
+- 2026-05-24 issue #433 pass: added the opening \(Z\)-factor dictionary for
+  the renormalization part, explicitly separating \(Z[J]\) from
+  \(Z_\phi^{\rm pole}\), \(Z_{\rm MOM}(\mu)\), \(Z_\phi^{\rm chart}\),
+  \(Z_\phi^{\rm MS}\), and the composite-source mixing distributions
+  \(\mathcal Z\).

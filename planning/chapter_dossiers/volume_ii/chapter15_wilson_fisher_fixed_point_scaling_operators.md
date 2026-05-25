@@ -55,6 +55,10 @@ The chapter must define and derive:
   \((\lambda_{\rm MS},Z_\phi^{\rm MS})\), including why the displayed
   \(O(\epsilon^2)\) value of \(\eta\) is unchanged by finite analytic
   reparametrization at this order;
+- the part-opening \(Z\)-factor convention: \(Z_\phi^{\rm MS}\) is the
+  minimal-subtraction pole factor appearing in the formal
+  \(4-\epsilon\)-dimensional graph calculation, not the Kallen--Lehmann/LSZ
+  pole residue \(Z_\phi^{\rm pole}\);
 - the notation convention that \(\lambda(\mu)\), not \(\lambda_4(\mu)\), is the
   running dimensionless quartic coordinate when a single chart is under
   discussion; explicit subscripts such as \(\lambda_{\rm MOM}\) and
@@ -337,3 +341,7 @@ The chapter must define and derive:
   coefficient by adding \(\kappa_{\rm cl}=6/g_R(\mu)\) and the convention
   dependence
   \(\kappa_*(\mu)=6g_R(\mu)^{-1}(1+O(g_R(\mu)))=6/g_R(\mu)+O(1)\).
+- 2026-05-24 issue #433 pass: tied the Wilson--Fisher use of
+  \(Z_\phi^{\rm MS}\) to the part-opening dictionary, so the sunset
+  anomalous-dimension calculation is explicitly an MS pole-factor computation
+  and not an LSZ residue normalization.

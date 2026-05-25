@@ -80,6 +80,11 @@ The chapter must define:
   belongs to an initial cutoff-dependent reference convention,
   \(Z_{\rm MOM}(\mu)\) is finite after renormalization, and \(Z_\phi\) is the
   total bare-to-chart field factor used in the Callan--Symanzik equation;
+- the relation of that translation to the part-opening dictionary:
+  \(Z_{\rm MOM}(\mu)\) is a finite 1PI-coordinate normalization,
+  \(Z_\phi^{\rm chart}\) is the Callan--Symanzik field factor,
+  \(Z_\phi^{\rm pole}\) is the Kallen--Lehmann/LSZ atom, and \(Z[J]\) is the
+  source functional;
 - the Callan--Symanzik equation derived from \(\mu\)-independence of bare
   correlators, with the derivative conventions stated;
 - the separation between auxiliary-scale dependence and dimensional
@@ -296,3 +301,8 @@ The chapter must define:
 - 2026-05-24 issue #367 pass: added the explicit one-loop tadpole self-energy
   and derivative check proving \(\delta Z^{(1)}=0\) for the quartic
   momentum-subtraction beta-function derivation.
+- 2026-05-24 issue #433 pass: tied the chapter's \(Z_R\),
+  \(Z_{\rm MOM}(\mu)\), and Callan--Symanzik \(Z_\phi\) conventions to the
+  part-opening \(Z\)-factor dictionary, so none of them is identified with
+  the source functional \(Z[J]\) or the LSZ pole residue
+  \(Z_\phi^{\rm pole}\).
