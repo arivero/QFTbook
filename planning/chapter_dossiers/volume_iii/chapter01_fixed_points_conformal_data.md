@@ -195,3 +195,8 @@ The chapter establishes:
   `hyp:cft-fixed-point-source-chart-existence`, which states the distributional
   existence, regulated convergence, and regulator-independence-modulo-local
   counterterm requirements before \(W_\ast[g,J]\) is differentiated.
+- 2026-05-24 issue #409 pass: made the sign convention in
+  `eq:cft-source-derivative-conventions` explicit from \(W_\ast=-\log Z_\ast\)
+  and the metric variation
+  \(\delta_g S_\ast=-\frac12\int\sqrt g\,T^{\mu\nu}\delta g_{\mu\nu}\).
+  This aligns the opening CFT source chart with the stress-tensor chapter.

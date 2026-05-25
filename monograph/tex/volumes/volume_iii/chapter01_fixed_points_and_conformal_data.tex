@@ -673,6 +673,26 @@ The stress tensor and local operators are the source derivatives
 The stress-tensor derivative is written with respect to \(g_{\mu\nu}\).  The
 same convention may be written using \(g^{\mu\nu}\) by the chain-rule identity
 \eqref{eq:stress-tensor-covariant-contravariant-derivatives}.
+The sign in the first formula is the one induced by the Euclidean effective
+action convention.  With
+\[
+  \delta_g S_\ast[\Phi;g]
+  =
+  -\frac12
+  \int\dd^D x\,\sqrt g\,
+  T^{\mu\nu}(x)\delta g_{\mu\nu}(x),
+\]
+one has \(\delta_g W_\ast=\langle\delta_g S_\ast\rangle\), hence
+\[
+  \delta_g W_\ast
+  =
+  -\frac12
+  \int\dd^D x\,\sqrt g\,
+  \left\langle T^{\mu\nu}(x)\right\rangle_{g,J}\delta g_{\mu\nu}(x).
+\]
+The operator-source derivative has the same overall minus sign for a different
+reason: \(J^A\mathcal O_A\) appears with a plus sign in the exponent of
+\(Z_\ast\), while \(W_\ast=-\log Z_\ast\).
 Higher derivatives define Euclidean Schwinger distributions.  The source
 functional is defined up to local functionals of the background sources.  This
 is the continuum CFT version of the contact-term coordinate freedom described in
