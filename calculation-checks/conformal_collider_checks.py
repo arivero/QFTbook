@@ -6,9 +6,34 @@ from __future__ import annotations
 from fractions import Fraction
 
 
+Matrix = tuple[tuple[Fraction, Fraction, Fraction], tuple[Fraction, Fraction, Fraction], tuple[Fraction, Fraction, Fraction]]
+Vector = tuple[Fraction, Fraction, Fraction]
+
+
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def mat_norm_sq(eps: Matrix) -> Fraction:
+    return sum(eps[i][j] * eps[i][j] for i in range(3) for j in range(3))
+
+
+def mat_vec(eps: Matrix, n: Vector) -> Vector:
+    return tuple(sum(eps[i][j] * n[j] for j in range(3)) for i in range(3))  # type: ignore[return-value]
+
+
+def quad(eps: Matrix, n: Vector) -> Fraction:
+    return sum(n[i] * eps[i][j] * n[j] for i in range(3) for j in range(3))
+
+
+def first_ratio(eps: Matrix, n: Vector) -> Fraction:
+    v = mat_vec(eps, n)
+    return sum(x * x for x in v) / mat_norm_sq(eps)
+
+
+def second_ratio(eps: Matrix, n: Vector) -> Fraction:
+    return quad(eps, n) ** 2 / mat_norm_sq(eps)
 
 
 def energy_flux_polynomial(first_ratio: Fraction, second_ratio: Fraction) -> tuple[Fraction, Fraction, Fraction]:
@@ -29,16 +54,41 @@ def check_sphere_averages_for_traceless_tensor() -> None:
     #   (delta_ij delta_kl + delta_ik delta_jl + delta_il delta_jk)/15.
     # For a symmetric traceless polarization epsilon_ij, the first contraction
     # vanishes and the second and third contractions each give epsilon*epsilon.
-    traceless_fourth_moment = Fraction(2, 15)
-    assert_equal("traceless rank-four sphere average coefficient", traceless_fourth_moment, Fraction(2, 15))
+    eps: Matrix = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(2), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(-3)),
+    )
+    norm = mat_norm_sq(eps)
+    trace = sum(eps[i][i] for i in range(3))
+    fourth_moment_contraction = (trace * trace + 2 * norm) / 15
+    assert_equal("test tensor traceless", trace, Fraction(0))
+    assert_equal("traceless rank-four sphere average coefficient", fourth_moment_contraction / norm, Fraction(2, 15))
 
 
 def check_helicity_bounds() -> None:
     """Check the helicity 2, 1, 0 reductions of the stress-tensor flux."""
 
-    helicity_two = energy_flux_polynomial(Fraction(0, 1), Fraction(0, 1))
-    helicity_one = energy_flux_polynomial(Fraction(1, 2), Fraction(0, 1))
-    helicity_zero = energy_flux_polynomial(Fraction(2, 3), Fraction(2, 3))
+    n: Vector = (Fraction(0), Fraction(0), Fraction(1))
+    eps_h2: Matrix = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(-1), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+    eps_h1: Matrix = (
+        (Fraction(0), Fraction(0), Fraction(1)),
+        (Fraction(0), Fraction(0), Fraction(0)),
+        (Fraction(1), Fraction(0), Fraction(0)),
+    )
+    eps_h0: Matrix = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(-2)),
+    )
+
+    helicity_two = energy_flux_polynomial(first_ratio(eps_h2, n), second_ratio(eps_h2, n))
+    helicity_one = energy_flux_polynomial(first_ratio(eps_h1, n), second_ratio(eps_h1, n))
+    helicity_zero = energy_flux_polynomial(first_ratio(eps_h0, n), second_ratio(eps_h0, n))
 
     assert_equal("helicity-2 collider polynomial", helicity_two, (Fraction(1, 1), Fraction(-1, 3), Fraction(-2, 15)))
     assert_equal("helicity-1 collider polynomial", helicity_one, (Fraction(1, 1), Fraction(1, 6), Fraction(-2, 15)))

@@ -292,8 +292,85 @@ symmetric traceless spatial polarization, \(i,j=1,2,3\), and write
 \]
 with wavepacket regularization understood.  Rotational covariance around
 \(\mathbf q=\mathbf0\), stress-tensor conservation, and the Ward identity
-normalization of \(T_{\mu\nu}\) imply that the separated-angle one-detector
-expectation has the form
+normalization of \(T_{\mu\nu}\) constrain the separated-angle one-detector
+expectation to a two-parameter tensor structure.
+
+\begin{lemma}[Rotational tensor basis for a stress-tensor collider state]
+\label{lem:stress-tensor-collider-rotational-basis}
+Let \(E_\varepsilon(\mathbf n)\) be a real quadratic form in a complex
+symmetric traceless tensor \(\varepsilon_{ij}\), depending on
+\(\mathbf n\in S^2\), and covariant under simultaneous spatial rotations of
+\(\varepsilon\) and \(\mathbf n\).  Assume that its spherical-harmonic content
+is obtained from the tensor product of two spin-two polarizations, as happens
+for the separated-angle detector expectation in a stress-tensor state.  Then
+after fixing the total-energy normalization, \(E_\varepsilon(\mathbf n)\) is
+a linear combination of
+\[
+  1,\qquad
+  I_2(\varepsilon,\mathbf n)
+  =
+  \frac{\varepsilon^*_{ij}\varepsilon_{ik}n^jn^k}
+       {\varepsilon^*_{ij}\varepsilon_{ij}},
+  \qquad
+  I_4(\varepsilon,\mathbf n)
+  =
+  \frac{|\varepsilon_{ij}n^in^j|^2}
+       {\varepsilon^*_{ij}\varepsilon_{ij}} .
+\]
+Their angular averages are
+\[
+  \frac{1}{4\pi}\int_{S^2}\dd\Omega\, I_2=\frac13,
+  \qquad
+  \frac{1}{4\pi}\int_{S^2}\dd\Omega\, I_4=\frac{2}{15}.
+  \label{eq:stress-collider-angular-averages}
+\]
+\end{lemma}
+
+\begin{proof}
+The bilinear expression in the polarization transforms in
+\((2)\otimes(2)\) under \(SO(3)\), hence decomposes into angular momenta
+\(\ell=0,1,2,3,4\).  Parity-even detector one-point functions and the
+symmetry of the stress tensor keep only the even scalar structures.  The
+\(\ell=0\) structure is the norm
+\(\varepsilon^*_{ij}\varepsilon_{ij}\).  Contracting one pair of
+polarization indices with \(n^jn^k\) gives the independent \(\ell=2\)
+structure \(I_2\).  Contracting both pairs with \(n^in^j n^k n^\ell\) gives
+the \(\ell=4\) structure \(I_4\) together with lower harmonics.  Thus
+\(1,I_2,I_4\) span the parity-even rotational tensor basis.
+
+The averages follow from the unique rotationally invariant tensors
+\[
+  \frac{1}{4\pi}\int_{S^2}\dd\Omega\, n^i n^j=\frac{\delta^{ij}}{3},
+\]
+and
+\[
+  \frac{1}{4\pi}\int_{S^2}\dd\Omega\, n^i n^j n^k n^\ell
+  =
+  \frac{1}{15}
+  \left(
+    \delta^{ij}\delta^{k\ell}
+    +\delta^{ik}\delta^{j\ell}
+    +\delta^{i\ell}\delta^{jk}
+  \right).
+  \label{eq:s2-fourth-moment}
+\]
+The first identity gives
+\[
+  \langle I_2\rangle
+  =
+  \frac{\varepsilon^*_{ij}\varepsilon_{ik}\delta^{jk}}
+       {3\,\varepsilon^*_{ab}\varepsilon_{ab}}
+  =
+  \frac13 .
+\]
+For \(I_4\), the term
+\(\delta^{ij}\delta^{k\ell}\) in \eqref{eq:s2-fourth-moment} vanishes because
+\(\varepsilon_{ij}\delta^{ij}=0\), while the remaining two contractions each
+give \(\varepsilon^*_{ij}\varepsilon_{ij}\).  Hence
+\(\langle I_4\rangle=2/15\).
+\end{proof}
+
+Consequently the separated-angle one-detector expectation has the form
 \begin{equation}
   \frac{\bra{\Psi_{\varepsilon,q}}\mathcal E(\mathbf n)
   \ket{\Psi_{\varepsilon,q}}}
@@ -319,7 +396,9 @@ expectation has the form
 \end{equation}
 The real constants \(t_2,t_4\) are coordinates on the parity-even
 stress-tensor three-point function after \(C_T\) and Ward-identity contact
-terms have been fixed.
+terms have been fixed.  The subtractions \(1/3\) and \(2/15\) are precisely
+the averages in \eqref{eq:stress-collider-angular-averages}, so integration
+over \(S^2\) gives the total energy \(Q\) for every polarization.
 
 \begin{proposition}[Four-dimensional conformal-collider inequalities]
 \label{prop:hm-inequalities}
