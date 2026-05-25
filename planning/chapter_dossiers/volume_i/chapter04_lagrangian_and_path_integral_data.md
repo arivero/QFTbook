@@ -111,6 +111,7 @@ Working framework:
 | Source derivatives generate time-ordered insertions. | Construction | Derived from discrete source insertion |
 | The Euclidean trace of a bosonic quantum-mechanical system identifies the endpoints \(q_N=q_0\), hence produces periodic paths. | Construction | Derived by inserting the position resolution into \(\operatorname{Tr} e^{-\beta_{\mathrm T}\widehat H/\hbar}\) |
 | Under Feynman--Kac hypotheses, the Euclidean trace path integral is a Brownian-loop integral with the endpoint constraint \(q(\beta_{\mathrm T})=q(0)\). | Construction/theorem corollary | Brownian-bridge/endpoint disintegration plus trace insertion |
+| Infinite-volume thermal equilibrium is formulated as the KMS analytic boundary condition on the quasilocal algebra rather than as a literal full-Hilbert-space trace. | Framework statement | Cross-referenced to Definition `def:kms-state` in the modular/KMS chapter |
 | Euclidean long-time evolution projects onto the ground state under a spectral gap/overlap assumption. | Proposition | Derived from spectral decomposition |
 
 ## Audit Notes

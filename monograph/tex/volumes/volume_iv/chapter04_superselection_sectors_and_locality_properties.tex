@@ -372,6 +372,182 @@ where \(\mathcal R'\) denotes the commutant of \(\mathcal R\) in
 \(\mathcal B(\Hilb)\).
 \end{theorem}
 
+\section{KMS States and Modular Equilibrium}
+\label{sec:kms-states-modular-equilibrium}
+
+The modular group is not only an algebraic automorphism group.  It is the
+canonical source of the operator-algebraic equilibrium condition.  We first
+state the condition for an arbitrary time evolution, because this is the form
+used in finite-temperature QFT and in infinite-volume statistical mechanics.
+
+\begin{definition}[KMS state]
+\label{def:kms-state}
+Let \(\mathfrak A\) be a \(C^*\)-algebra or a von Neumann algebra, let
+\(\alpha:\mathbb R\to\operatorname{Aut}(\mathfrak A)\) be a strongly
+continuous one-parameter automorphism group, and let \(\omega\) be a state on
+\(\mathfrak A\).  For \(\beta>0\), \(\omega\) is a
+\(\beta\)-KMS state for \(\alpha\) when, for every pair
+\(A,B\in\mathfrak A\), there is a function
+\[
+  F_{A,B}:\{z\in\mathbb C:0\le \operatorname{Im}z\le\beta\}\to\mathbb C
+\]
+which is bounded and continuous on the closed strip, holomorphic in its
+interior, and satisfies the boundary conditions
+\begin{equation}
+  F_{A,B}(t)=\omega\!\left(A\,\alpha_t(B)\right),
+  \qquad
+  F_{A,B}(t+\ii\beta)=
+  \omega\!\left(\alpha_t(B)\,A\right),
+  \qquad t\in\mathbb R .
+  \label{eq:kms-boundary-condition}
+\end{equation}
+\end{definition}
+
+The order of the two boundary values is the content of the condition.  It is
+not periodicity of an ordinary function of real time; it is an analytic
+continuation statement whose upper boundary has the operators cyclically
+permuted.  This distinction is essential in infinite volume, where the trace
+of \(\ee^{-\beta H}\) usually does not exist but the local state may still
+satisfy \eqref{eq:kms-boundary-condition}.
+
+\begin{proposition}[Gibbs traces satisfy KMS]
+\label{prop:gibbs-trace-kms}
+Let \(H\) be self-adjoint and suppose that
+\(\ee^{-\beta H}\) is trace class.  On the algebra of bounded operators for
+which the following expressions are defined by trace-class products, set
+\[
+  \omega_\beta(A)
+  =
+  Z_\beta^{-1}\operatorname{Tr}\left(\ee^{-\beta H}A\right),
+  \qquad
+  Z_\beta=\operatorname{Tr}\ee^{-\beta H},
+  \qquad
+  \alpha_t(A)=\ee^{\ii tH}A\ee^{-\ii tH}.
+\]
+Then \(\omega_\beta\) is a \(\beta\)-KMS state for \(\alpha\).
+\end{proposition}
+
+\begin{proof}
+For bounded \(A,B\), define
+\[
+  F_{A,B}(z)
+  =
+  Z_\beta^{-1}
+  \operatorname{Tr}\left(
+    \ee^{-\beta H}A\ee^{\ii zH}B\ee^{-\ii zH}
+  \right).
+\]
+In finite dimension this is entire.  Under the stated trace-class hypothesis
+the same formula is holomorphic in the open strip and bounded on the closed
+strip by the standard trace-norm estimates for products with
+\(\ee^{-sH}\), \(0\le s\le\beta\); finite-dimensional spectral truncations
+give the same identity and converge in trace norm.  At the lower boundary,
+\[
+  F_{A,B}(t)=\omega_\beta(A\alpha_t(B)).
+\]
+At the upper boundary,
+\[
+\begin{aligned}
+  F_{A,B}(t+\ii\beta)
+  &=
+  Z_\beta^{-1}
+  \operatorname{Tr}\left(
+    \ee^{-\beta H}A\ee^{\ii tH}\ee^{-\beta H}
+    B\ee^{-\ii tH}\ee^{\beta H}
+  \right)  \\
+  &=
+  Z_\beta^{-1}
+  \operatorname{Tr}\left(
+    A\ee^{\ii tH}\ee^{-\beta H}B\ee^{-\ii tH}
+  \right)  \\
+  &=
+  Z_\beta^{-1}
+  \operatorname{Tr}\left(
+    \ee^{-\beta H}\ee^{\ii tH}B\ee^{-\ii tH}A
+  \right)
+  =
+  \omega_\beta(\alpha_t(B)A).
+\end{aligned}
+\]
+The first equality is the analytic continuation.  The second uses cyclicity of
+the trace to move the final \(\ee^{\beta H}\) to the front, where it cancels
+one \(\ee^{-\beta H}\).  The third uses cyclicity again and the commutation of
+\(\ee^{-\beta H}\) with \(\ee^{\ii tH}\).  These two trace-cyclicity moves are
+precisely what the KMS boundary condition retains after the literal Gibbs
+trace ceases to exist.
+\end{proof}
+
+\begin{theorem}[Modular KMS property]
+\label{thm:modular-kms-property}
+Let \(\mathcal R\) be a von Neumann algebra and let \(\vac\) be cyclic and
+separating for \(\mathcal R\).  Let
+\[
+  \omega(A)=\langle\vac,A\vac\rangle,
+  \qquad
+  \sigma_t(A)=\Delta^{\ii t}A\Delta^{-\ii t}
+\]
+be the vector state and the Tomita--Takesaki modular automorphism group.
+Then \(\omega\) satisfies the unit-width strip KMS condition for the modular
+flow.  Equivalently, for every \(A,B\in\mathcal R\) there is a bounded strip
+function \(G_{A,B}\), analytic for \(0<\operatorname{Im}z<1\), such that
+\begin{equation}
+  G_{A,B}(t)=\omega(\sigma_t(A)B),
+  \qquad
+  G_{A,B}(t+\ii)=\omega(B\sigma_t(A)).
+  \label{eq:modular-kms-boundary}
+\end{equation}
+In the convention of Definition~\ref{def:kms-state}, this says that
+\(\omega\) is a \(1\)-KMS state for the reversed modular dynamics
+\(\alpha_t=\sigma_{-t}\).
+\end{theorem}
+
+\begin{proof}
+The nontrivial input is Tomita--Takesaki theory: the closable antilinear
+operator \(S_0A\vac=A^*\vac\) has polar decomposition
+\(S=J\Delta^{1/2}\), the unitary group \(\Delta^{\ii t}\) implements
+automorphisms of \(\mathcal R\), and the analytic vectors for this unitary
+group form a strong-operator dense \(*\)-subalgebra of \(\mathcal R\).  For
+analytic \(A\), the vector-valued function
+\(z\mapsto\sigma_z(A)\vac\) is analytic in the strip.  Pairing it with
+\(B^*\vac\) gives the candidate \(G_{A,B}(z)\).  The lower boundary is the
+definition of \(\sigma_t\).  The upper boundary follows from
+\[
+  S\,\sigma_t(A)\vac=\sigma_t(A)^*\vac,
+  \qquad
+  S=J\Delta^{1/2},
+\]
+or, equivalently, from moving a vector through the closed graph of \(S\):
+the operation that is trace cyclicity in
+Proposition~\ref{prop:gibbs-trace-kms} is replaced by the Tomita relation
+between \(\mathcal R\) and \(\mathcal R'\).  Thus
+\[
+  \langle\vac,\sigma_{t+\ii}(A)B\vac\rangle
+  =
+  \langle\vac,B\sigma_t(A)\vac\rangle
+\]
+for analytic \(A\).  The general case follows by Gaussian smearing in modular
+time,
+\[
+  A_\epsilon
+  =
+  \frac1{\sqrt{\pi\epsilon}}
+  \int_{\mathbb R}\ee^{-s^2/\epsilon}\sigma_s(A)\,\dd s ,
+\]
+which produces entire analytic elements converging strongly to \(A\) and
+uniformly controls the strip functions by \(\|A\|\,\|B\|\).  Taking the limit
+gives \eqref{eq:modular-kms-boundary}.
+\end{proof}
+
+The theorem is the precise sense in which a cyclic separating vector is an
+equilibrium state for its own modular time.  The modular Hamiltonian
+\[
+  K_{\rm mod}:=-\log\Delta
+\]
+is generally not the physical Hamiltonian and need not be an integral of a
+local density.  When a geometric theorem identifies modular flow with a
+spacetime symmetry, the abstract KMS condition becomes a physical thermal
+statement for the corresponding observer or subregion.
+
 Let
 \[
   W_R=\{x\in\mathbb M^D:\ x^1>|x^0|\}
@@ -506,9 +682,29 @@ Theorem~\ref{thm:bisognano-wichmann-wedges} is not automatic; it is an explicit
 modular-covariance hypothesis on the vacuum net unless it has been proved from
 the chosen AQFT assumptions.  Under this theorem or hypothesis, modular flow is
 geometric Lorentz boost flow.  The result connects locality, positivity of
-energy, thermal KMS structure for accelerated observers, and the PCT
-antiunitary stated in
+energy, the KMS structure of Definition~\ref{def:kms-state} for accelerated
+observers, and the PCT antiunitary stated in
 Corollary~\ref{cor:aqft-pct-from-modular-covariance}.
+
+Indeed, define the boost automorphism of the standard wedge algebra by
+\[
+  \alpha_s^R(A)=
+  U(\Lambda_R(s))AU(\Lambda_R(s))^{-1},
+  \qquad A\in\mathcal R(W_R).
+\]
+Bisognano--Wichmann says \(\sigma_t=\alpha_{-2\pi t}^R\), so the modular KMS
+property implies that \(\omega(A)=\langle\vac,A\vac\rangle\), restricted to
+\(\mathcal R(W_R)\), is a \(2\pi\)-KMS state for the boost dynamics
+\(\alpha_s^R\):
+\[
+  F_{A,B}(s)=\omega(A\alpha_s^R(B)),
+  \qquad
+  F_{A,B}(s+2\pi\ii)=\omega(\alpha_s^R(B)A).
+\]
+Thus the vacuum is thermal with respect to the boost generator, even though it
+is a pure state on the global algebra.  Along a uniformly accelerated orbit
+whose proper time is related to boost parameter by \(s=a\tau\), this becomes
+the Unruh inverse temperature \(2\pi/a\) in units \(\hbar=c=k_B=1\).
 
 \begin{figure}[H]
   \centering
