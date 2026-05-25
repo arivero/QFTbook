@@ -1,0 +1,96 @@
+\chapter{Extended Operators and Topological Defects}
+\label{ch:extended-operators-topological-defects}
+
+\ConventionsMixed
+
+Local operators probe neighborhoods of points.  Extended operators probe the
+global and higher-codimensional structure of a QFT.  Their definition is part
+of the theory because it fixes allowed singularities, endpoints, and
+topological sectors.
+
+\section{Operators Supported on Submanifolds}
+
+\begin{definition}[Extended operator by correlation data]
+\label{def:extended-operator-correlation-data}
+Let \(M\) be spacetime and let \(\Sigma^p\subset M\) be an embedded
+\(p\)-dimensional submanifold with a specified framing or normal-bundle
+structure when required.  An extended operator \(W(\Sigma)\) is a correlation
+datum assigning distributions
+\[
+  \langle W(\Sigma)\,\mathcal O_1(x_1)\cdots \mathcal O_n(x_n)\rangle
+\]
+for insertions away from \(\Sigma\), together with a prescription for
+singularities as local operators approach \(\Sigma\).  The prescription may
+be given by boundary conditions on a tubular neighborhood, by a defect
+operator algebra, or by a regulated path integral with a specified limit.
+\end{definition}
+
+\begin{definition}[Topological defect]
+\label{def:topological-defect}
+A defect is topological when its correlation functions are invariant under
+isotopies of \(\Sigma\) that avoid other insertions and preserve the
+background structures.
+\end{definition}
+
+Topological defects can be moved through spacetime, and their nontrivial
+information appears when they cross charged operators, end on other defects,
+or fuse with one another.
+
+\section{Fusion and Defect Operators}
+
+For two parallel topological defects \(D_1,D_2\) of the same codimension,
+fusion is the limit in which their supports approach one another inside a
+tubular neighborhood:
+\[
+  D_1\otimes D_2
+  =
+  \lim_{\epsilon\downarrow0}D_1(\Sigma_\epsilon)D_2(\Sigma).
+\]
+The limit is defined through correlation functions with external insertions
+kept away from the tubular neighborhood.  The topology of this limit is part
+of the defect theory: it may be finite-dimensional, distributional, or
+operator-algebraic depending on the model.  In finite semisimple situations,
+fusion gives a category or higher category of defects.  In nonsemisimple or
+continuum situations, the target may be an analytic category of modules,
+von Neumann algebras, or distributional kernels.
+
+Endpoints and junctions are lower-dimensional defect operators.  If a line
+operator can end on a local field, then that local field carries the endpoint
+charge and the line is screened by the dynamical spectrum.  If no such
+endpoint is present, the line defines an autonomous charged object.  This is
+the operator-level distinction used in diagnosing confinement and screening.
+
+\section{Ward Operators for Higher-Form Symmetry}
+
+For a \(p\)-form symmetry, the topological symmetry operator
+\(U_g(M^{D-p-1})\) acts on \(p\)-dimensional charged operators by linking.
+The action defines a representation of the symmetry group on the space of
+charged defects:
+\[
+  U_g(M)W_q(\Sigma)U_g(M)^{-1}
+  =
+  \chi_q(g)^{\operatorname{Link}(M,\Sigma)}W_q(\Sigma).
+\]
+Here \(\chi_q\) is the character associated to charge \(q\).  In nonabelian
+or categorical generalizations, the phase is replaced by a linear functor or
+natural transformation on the defect category.
+
+\section{Defect Locality}
+
+Extended operators obey a locality condition relative to ordinary local
+operators and to one another.  If two defects have disjoint spacelike
+supports in Lorentzian signature, their order in a correlation function is
+fixed by a chosen braiding or commutation law.  For topological defects, this
+braiding becomes a topological operation.  In gauge theories, the braiding of
+Wilson and 't Hooft lines is controlled by the electric-magnetic charge
+pairing and by the global form chosen in
+Chapter~\ref{ch:global-forms-higher-form-symmetry}.
+
+\begin{openproblem}[Extended operators from local reconstruction]
+\label{op:extended-operators-from-local-reconstruction}
+Develop reconstruction theorems that recover allowed extended operators and
+their fusion categories from local observable data plus specified
+superselection sectors.  The result should clarify which data are invisible
+to ordinary local Wightman functions and which are forced by locality,
+duality, or completeness.
+\end{openproblem}

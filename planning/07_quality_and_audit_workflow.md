@@ -54,6 +54,9 @@ When a new external source is needed:
 - record in the chapter dossier which sections or theorem statements are used;
 - do not import the reference's order of presentation into the monograph unless
   the monograph's own logical spine independently requires it.
+- when the literature contains a genuine gap, record the gap as a precise
+  construction, comparison, or theorem problem rather than as a vague
+  bibliographic absence.
 
 ## Stage 2: Dossier
 
@@ -64,6 +67,8 @@ Create or update the chapter dossier:
 - definition ledger;
 - claim ledger;
 - derivation plan;
+- frontier-gap ledger when the chapter touches undeveloped or incomplete
+  mathematical physics;
 - figure ledger;
 - open questions;
 - planned remarks or footnotes.

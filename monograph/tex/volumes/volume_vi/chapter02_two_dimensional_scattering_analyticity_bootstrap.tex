@@ -1,0 +1,148 @@
+\chapter{Two-Dimensional Scattering Analyticity and Bootstrap Data}
+\label{ch:integrable-scattering-analyticity-bootstrap}
+
+\ConventionsLorentzian
+
+The factorized scattering chapter fixed the algebraic data of an integrable
+massive theory.  This chapter adds the analytic data in the rapidity plane.
+The object studied here is an on-shell two-body scattering function together
+with analytic hypotheses.  A local QFT realizing that function is a further
+object; its construction requires Hilbert-space, locality, and domain data.
+
+\section{Rapidity Plane and Physical Strip}
+
+For equal masses \(m\), the two-particle Mandelstam invariant is
+\[
+  s(\theta)=2m^2(1+\cosh\theta)
+  =4m^2\cosh^2\!\left(\frac{\theta}{2}\right).
+\]
+The physical two-particle scattering line is \(\theta\in\R\).  The crossed
+channel is reached by \(\theta\mapsto \ii\pi-\theta\).  Hence the natural
+analytic domain for a two-body amplitude is the physical strip
+\[
+  \mathcal S_{\rm phys}
+  =
+  \{\theta\in\C\mid 0<\operatorname{Im}\theta<\pi\}.
+\]
+For unequal masses \(m_a,m_b\),
+\[
+  s_{ab}(\theta)=m_a^2+m_b^2+2m_am_b\cosh\theta,
+\]
+and the same strip organizes the direct and crossed channels after the
+species labels are crossed.
+
+\begin{definition}[Factorized scattering bootstrap datum]
+\label{def:factorized-scattering-bootstrap-datum}
+A factorized scattering bootstrap datum is an elastic factorized scattering
+datum of Definition~\ref{def:elastic-factorized-scattering-datum} together
+with the following extra data and hypotheses:
+\begin{enumerate}[label=(\roman*)]
+\item meromorphic continuation of each component
+  \(S_{ab}^{cd}(\theta)\) to the physical strip
+  \(\mathcal S_{\rm phys}\);
+\item a specified finite or locally finite list of simple-pole locations
+  \(\theta=\ii u_{ab}^{e}\), \(0<u_{ab}^{e}<\pi\), labelled by proposed
+  direct-channel bound-state species \(e\);
+\item finite-dimensional multiplicity spaces for these bound-state channels
+  and intertwiners \(\Gamma_{ab}^{e,\alpha}\) specifying residues;
+\item horizontal-strip growth bounds sufficient for the contour shifts used
+  later in form-factor and thermodynamic-Bethe-ansatz constructions.
+\end{enumerate}
+\end{definition}
+
+The mass of a direct-channel bound state at \(\theta=\ii u_{ab}^{e}\) is
+fixed by the pole location:
+\[
+  m_e^2
+  =
+  m_a^2+m_b^2+2m_am_b\cos u_{ab}^{e}.
+\]
+This equation is a kinematic consequence of the rapidity parametrization.  A
+one-particle vector of mass \(m_e\) in a Hilbert-space QFT is additional data
+to be constructed or assumed.  The pole and residue record the on-shell
+criterion that such a vector would have to satisfy.
+
+\section{Residues and Fusion}
+
+Let \(S_{ab}^{cd}(\theta)\) have a simple pole at
+\(\theta=\ii u_{ab}^{e}\).  In a basis where the intermediate bound-state
+space is explicitly included, the residue has the factorized form
+\[
+  -\ii\,\operatorname*{Res}_{\theta=\ii u_{ab}^{e}}
+  S_{ab}^{cd}(\theta)
+  =
+  \sum_{\alpha}
+  \Gamma_{ab}^{e,\alpha}\Gamma_{e,\alpha}^{cd}.
+\]
+The index \(\alpha\) labels a basis of the multiplicity space of species \(e\)
+in the fusion of \(a\) and \(b\).  Positivity of the Hilbert-space norm fixes
+the sign of the residue after the one-particle normalization has been chosen.
+
+Fusion is the compatibility condition between a bound-state residue and
+scattering with an additional particle \(k\).  If the rapidities of \(a\) and
+\(b\) differ from the bound-state rapidity by imaginary fusing angles
+\(\ii\bar u_{ae}^{b}\) and \(-\ii\bar u_{be}^{a}\), then the bootstrap
+equation is the identity of meromorphic operator-valued functions
+\[
+  S_{ek}(\theta)
+  =
+  \Gamma_{ab}^{e}\,
+  S_{ak}(\theta+\ii\bar u_{ae}^{b})\,
+  S_{bk}(\theta-\ii\bar u_{be}^{a})\,
+  \Gamma_{e}^{ab}.
+\]
+The products act on the tensor product of species spaces and multiplicity
+spaces; the intertwiners \(\Gamma\) project onto the bound-state channel.  The
+Yang--Baxter equation guarantees compatibility of this fused scattering with
+three-particle factorization.
+
+\section{Minimal Solutions and CDD Factors}
+
+For diagonal scattering, where \(S_{ab}^{cd}(\theta)=
+\delta_a^c\delta_b^d S_{ab}(\theta)\), unitarity and crossing become
+\[
+  S_{ab}(\theta)S_{ab}(-\theta)=1,
+  \qquad
+  S_{ab}(\theta)=S_{\bar a b}(\ii\pi-\theta).
+\]
+A scalar meromorphic factor \(C(\theta)\) satisfying the same two equations
+and having no assigned particle pole is a CDD factor.  Thus the analytic
+constraints and the bound-state list determine the amplitude only after an
+additional growth or minimality condition is specified.
+
+\begin{definition}[Elementary scalar block]
+\label{def:integrable-elementary-scalar-block}
+For \(x\in\C\), the elementary scalar block is
+\[
+  [x]_\theta
+  =
+  \frac{\sinh\!\left((\theta+\ii\pi x)/2\right)}
+       {\sinh\!\left((\theta-\ii\pi x)/2\right)} ,
+\]
+as a meromorphic function of \(\theta\).
+\end{definition}
+
+It satisfies \([x]_\theta[x]_{-\theta}=1\).  Products of such blocks place
+zeros and poles at prescribed locations.  The bootstrap construction problem
+is to choose the product and possible CDD factors so that unitarity, crossing,
+physical-strip pole assignments, residue signs, and asymptotic bounds hold
+simultaneously.
+
+\section{Hilbert-Space Boundary}
+
+The bootstrap datum is on-shell information.  A local QFT realization also
+requires a Hilbert space, Wightman distributions, local operator domains, and
+cluster properties.  In constructive treatments of factorizing models, wedge-
+localized fields and modular localization provide one route from an
+admissible \(S\)-matrix to local algebras.  The theorem boundary is precise:
+analyticity and pole data enter as hypotheses for constructing wedge
+operators and then proving that double-cone intersections are nontrivial.
+
+\begin{openproblem}[Bootstrap completeness for local algebras]
+\label{op:bootstrap-completeness-local-algebras}
+Characterize the bootstrap data for which the resulting wedge-local
+construction has nontrivial local algebras, a unique vacuum, asymptotic
+completeness, and local fields whose form factors solve the equations of
+Chapter~\ref{ch:integrable-factorized-scattering}.  This problem is the
+operator-algebraic completion of the on-shell bootstrap.
+\end{openproblem}

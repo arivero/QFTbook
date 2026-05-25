@@ -50,11 +50,6 @@ Current checks:
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
-- `entanglement_replica_checks.py`: finite checks for the CFT entanglement
-  chapter, including the derivative of the twist-field dimension that gives
-  \(S=(c/3)\log(L/\epsilon)\), the sign of
-  \(S=(n\partial_n-1)W_n|_{n=1}\), and the even/odd dimensional signs in the
-  universal ball-entanglement term.
 - `free_cylinder_partition_checks.py`: finite character checks for the
   radial-cylinder free-field section, including the four-dimensional scalar
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion

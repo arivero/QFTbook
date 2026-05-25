@@ -38,9 +38,12 @@ Each item supplies data, constructions, or theorems used by later items.
     sectors, anomalies, symmetry breaking, and global form.
 12. Fixed-point local QFT and CFT operator data, built after the local,
     spectral, path-integral, and renormalization foundations are stable.
-13. Special QFT structures: integrability, supersymmetry, topology,
-    cohomological sectors, and extended operators, each promoted only after
-    its ordinary local-QFT prerequisites are in place.
+13. Special QFT structures: two-dimensional integrability, supersymmetry,
+    topology, cohomological sectors, extended operators, and planar
+    integrability, each promoted only after its ordinary local-QFT
+    prerequisites are in place.  Planar integrability is a large-\(N\)
+    gauge-theory/worldsheet spectral problem, not merely another chapter of
+    relativistic two-dimensional factorized scattering.
 14. Thermal, nonequilibrium, constructive, lattice, numerical, and curved
     background extensions.
 
@@ -185,12 +188,15 @@ renormalized operators, anomalies, moduli, and CFT.
 
 Supplies: supersymmetry algebras, multiplets, superspace, supersymmetric
 actions, gauge theories, nonrenormalization, holomorphy, moduli spaces,
+two-dimensional Landau--Ginzburg and Calabi--Yau models, three-dimensional
+Chern--Simons--matter theories, six-dimensional superconformal theories,
 superconformal theories, and protected sectors.
 
 Do not promote before: ordinary spinor, gauge, renormalization, anomaly, and
-CFT foundations are stable.  Localization, branes, holography, and
-supergravity remain out of scope until the supersymmetric QFT foundations are
-developed.
+CFT foundations are stable.  Examples in each spacetime dimension require
+their own supersymmetry algebra, regulator status, anomaly data, and
+observable definitions.  Localization, branes, holography, and supergravity
+remain out of scope until the supersymmetric QFT foundations are developed.
 
 Immediate target: collect source leads from the stringbook appendices and
 external references into dossiers without adapting their prose.

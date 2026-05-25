@@ -1,0 +1,122 @@
+\chapter{Constructive Scalar Models and OS Data}
+\label{ch:constructive-scalar-models-os-data}
+
+\ConventionsEuclidean
+
+Constructive scalar models provide interacting examples in which Euclidean
+correlation functions, positivity, growth estimates, and Lorentzian
+reconstruction are controlled by theorems in specified dimensions and
+parameter regimes.  This chapter records the output data of such a
+construction: Schwinger functions, reflection positivity, growth estimates,
+locality after reconstruction, and the reconstructed Hilbert-space fields.
+
+\section{Gaussian Reference Field and Wick Powers}
+
+Let \(C=(-\Delta+m^2)^{-1}\) on \(\R^d\) with \(m>0\).  The centered Gaussian
+field \(\phi\) is the generalized random field with covariance
+\[
+  \mathbb E[\phi(f)\phi(g)]
+  =
+  \int_{\R^d\times\R^d} f(x)C(x-y)g(y)\,d^dx\,d^dy .
+\]
+\begin{definition}[Wick powers by Gaussian regularization]
+\label{def:constructive-wick-powers-gaussian-regularization}
+Let \(\phi_\varepsilon=\rho_\varepsilon\ast\phi\) be a smoothed Gaussian
+field and let \(C_\varepsilon(0)=\mathbb E[\phi_\varepsilon(x)^2]\), which is
+translation independent.  The second and fourth Wick powers at regulator
+\(\varepsilon\) are
+\[
+  :\!\phi_\varepsilon^2\!:
+  =
+  \phi_\varepsilon^2-C_\varepsilon(0),
+\]
+\[
+  :\!\phi_\varepsilon^4\!:
+  =
+  \phi_\varepsilon^4
+  -6C_\varepsilon(0)\phi_\varepsilon^2
+  +3C_\varepsilon(0)^2 .
+\]
+After smearing against a test function, the Wick power is the \(L^2\)-limit
+of these expressions in the Gaussian probability space when the limit exists.
+\end{definition}
+
+\section[P(phi) in two dimensions]{\(P(\phi)_2\)}
+
+For a bounded-below polynomial \(P\), the finite-volume interaction in two
+Euclidean dimensions is
+\[
+  V_\Lambda(\phi)
+  =
+  \int_\Lambda :\!P(\phi(x))\!:\,d^2x .
+\]
+The finite-volume Schwinger functional is
+\[
+  S_\Lambda(f_1,\ldots,f_n)
+  =
+  \frac{1}{Z_\Lambda}
+  \mathbb E\!\left[
+  \phi(f_1)\cdots\phi(f_n)e^{-V_\Lambda(\phi)}
+  \right].
+\]
+The constructive \(P(\phi)_2\) theorems prove existence of infinite-volume
+limits for the Schwinger functions in their stated phase and parameter
+regimes, together with Euclidean invariance, symmetry, reflection positivity,
+clustering in massive regimes, and the OS growth estimates required for
+reconstruction.
+
+The interaction is a Wick-ordered distribution integrated against spacetime
+volume.  The infinite-volume and ultraviolet limits are part of the
+construction and are controlled before the Schwinger hierarchy is used.
+
+\section[phi-four in three dimensions]{\(\phi^4_3\)}
+
+In three Euclidean dimensions the quartic interaction is
+superrenormalizable but requires additional local renormalizations.  A
+regularized finite-volume action has the form
+\[
+  S_{\varepsilon,\Lambda}(\phi)
+  =
+  \frac{1}{2}\langle\phi,(-\Delta+m^2)\phi\rangle
+  +
+  \int_\Lambda
+  \left[
+  \lambda\phi_\varepsilon^4
+  +a_\varepsilon\phi_\varepsilon^2
+  +b_\varepsilon
+  \right]d^3x .
+\]
+The constants \(a_\varepsilon,b_\varepsilon\) are part of the regulated
+Lagrangian.  They are chosen so that Schwinger functions have finite limits
+and satisfy the constructive bounds.  The limiting measure is singular with
+respect to the original Gaussian reference measure, so the construction is a
+limit of regulated measures rather than a fixed-density formula.
+
+\section{OS Data Produced by a Construction}
+
+The output of a constructive scalar theorem is the hierarchy
+\[
+  S_n(f_1,\ldots,f_n)
+  =
+  \lim_{\Lambda\uparrow\R^d,\ \varepsilon\downarrow0}
+  S_{\varepsilon,\Lambda,n}(f_1,\ldots,f_n)
+\]
+on Schwartz test functions.  The hierarchy must satisfy:
+permutation symmetry; Euclidean covariance; reflection positivity; locality
+after reconstruction; cluster or phase-sector hypotheses when a unique
+vacuum is intended; and the OS-II regularity and linear-growth assumptions.
+Once these are verified, OS reconstruction gives Wightman fields and a
+Hilbert space.
+
+The constructive status table in
+Chapter~\ref{ch:constructive-status-routes} records examples.  This chapter
+supplies the local data format that later lattice, stochastic, and numerical
+chapters must match when they claim to approximate a continuum QFT.
+
+\begin{openproblem}[Explicit comparison of constructive routes]
+\label{op:constructive-route-comparison}
+For a model such as \(\phi^4_3\), compare the Schwinger functions produced by
+cluster expansions, stochastic quantization, and rigorous RG constructions in
+one common topology.  The comparison should identify the OS Hilbert space,
+the local fields, and the parameter map between the constructions.
+\end{openproblem}

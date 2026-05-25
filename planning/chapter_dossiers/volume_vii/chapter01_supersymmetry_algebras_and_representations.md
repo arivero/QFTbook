@@ -11,6 +11,10 @@
 ## Definitions And Results
 
 - Four-dimensional mostly-plus \(\mathcal N=1\) supertranslation algebra.
+- Particle supersymmetry representation as a Hilbert-space or one-particle
+  spectral-subspace representation.
+- Field-variable supersymmetry representation as an action on superfields,
+  component variables, antifields, or local functionals.
 - Rest-frame oscillator construction for massive representations.
 - Positivity of the supercharge anticommutator and equality of bosonic and
   fermionic state counts in a nonzero-energy multiplet.
@@ -38,6 +42,9 @@
 3. The equal boson/fermion count follows from a trace with \((-1)^F\), not
    from a Lagrangian counting argument.
 4. Multiplet shortening requires the central-charge inequality to be saturated.
+5. A particle supermultiplet is not the same object as an off-shell
+   superfield multiplet; relating them requires dynamics, constraints,
+   quotienting, and Hilbert-space or Euclidean reconstruction.
 
 ## Figures
 

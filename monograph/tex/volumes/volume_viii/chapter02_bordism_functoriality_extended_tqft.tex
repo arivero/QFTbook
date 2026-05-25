@@ -1,0 +1,142 @@
+\chapter{Bordism Functoriality and Extended Topological Field Theory}
+\label{ch:tqft-bordism-functoriality-extended}
+
+\ConventionsEuclidean
+
+The cohomological mechanism of the preceding chapter produces
+metric-independent correlation functions under explicit Ward-identity
+hypotheses.  A functorial topological field theory packages a stronger set of
+gluing laws.  This chapter states the target structure before examples such
+as BF theory and Chern--Simons theory are introduced.
+
+\section{Bordism Categories}
+
+Fix a dimension \(D\) and a tangential structure \(\xi\), such as orientation,
+spin, or framing.  The bordism category \(\operatorname{Bord}_D^\xi\) has
+closed \((D-1)\)-manifolds with \(\xi\)-structure as objects and compact
+\(D\)-dimensional bordisms with compatible \(\xi\)-structure as morphisms.
+Disjoint union makes it a symmetric monoidal category:
+\[
+  \Sigma_1\sqcup\Sigma_2,\qquad
+  M_1\sqcup M_2.
+\]
+Composition is gluing along the identified boundary component.
+
+\begin{definition}[Atiyah--Segal topological field theory]
+\label{def:atiyah-segal-tqft}
+A \(D\)-dimensional topological field theory with tangential structure
+\(\xi\) and linear target is a symmetric monoidal functor
+\[
+  Z:\operatorname{Bord}_D^\xi\longrightarrow {\bf Vect}_{\Bbbk}
+\]
+to vector spaces over a field \(\Bbbk\).  Thus
+\[
+  Z(\Sigma_1\sqcup\Sigma_2)\simeq Z(\Sigma_1)\otimes Z(\Sigma_2),
+  \qquad
+  Z(M_2\circ M_1)=Z(M_2)Z(M_1).
+\]
+\end{definition}
+
+The vector space \(Z(\Sigma)\) is the state space assigned to the spatial
+slice \(\Sigma\).  For a closed \(D\)-manifold \(M\), the value \(Z(M)\) is a
+linear map \(\Bbbk\to\Bbbk\), hence a number.  The cylinder
+\(\Sigma\times[0,1]\) maps to the identity on \(Z(\Sigma)\).
+
+\section{Pairing and Reflection}
+
+If \(\bar\Sigma\) denotes \(\Sigma\) with reversed tangential structure, a
+bordism from \(\varnothing\) to \(\bar\Sigma\sqcup\Sigma\) gives a bilinear
+pairing
+\[
+  Z(\bar\Sigma)\otimes Z(\Sigma)\to\Bbbk .
+\]
+In unitary theories the target is a category of Hilbert spaces or a
+reflection-positive variant of it.  The pairing is then compatible with the
+adjoint operation obtained by reflecting bordisms.  Positivity is additional
+structure on the functor, parallel to reflection positivity in Euclidean QFT.
+
+\section{Extended Theories}
+
+An extended TQFT assigns data to manifolds of all codimensions.  The target is
+then a symmetric monoidal higher category \(\mathcal C\), and the theory is a
+symmetric monoidal higher functor
+\[
+  Z:\operatorname{Bord}_{D}^{\xi,{\rm ext}}\to\mathcal C .
+\]
+For example, in a fully extended two-dimensional theory, a point is assigned
+an object \(A\), an interval a morphism built from \(A\), and a surface a
+linear map obtained by composing those lower-codimension data.  Locality is
+encoded by the ability to cut and reglue at every codimension.
+
+\begin{theorem}[Cobordism-hypothesis boundary]
+\label{thm:cobordism-hypothesis-boundary}
+Let \(\mathcal C\) be a symmetric monoidal \((\infty,D)\)-category satisfying
+the dualizability and adjointability hypotheses required in the cobordism
+hypothesis.  Fully extended framed \(D\)-dimensional topological field
+theories with target \(\mathcal C\) are classified by fully dualizable
+objects of \(\mathcal C\), with equivalence understood as equivalence of
+symmetric monoidal higher functors.
+\end{theorem}
+
+This theorem is used here as a boundary statement.  Whenever an example is
+claimed to define an extended theory, the target category, dualizability,
+anomaly, and boundary data must be supplied.
+
+\section{From Local QFT to Functorial Data}
+
+A local QFT with a gapped phase can produce a topological theory of its
+infrared protected sector.  The passage has several ingredients:
+identification of the protected observables; proof that correlation functions
+depend only on topology and background \(\xi\)-structure; finite-dimensional
+state spaces after imposing the topological sector; and gluing compatibility
+for cutting manifolds.  In gauge-theoretic examples this also includes gauge
+fixing, BV integration cycles, anomaly cancellation, and boundary conditions.
+
+\begin{openproblem}[Functorial extraction from QFT]
+\label{op:functorial-extraction-from-qft}
+Given a local QFT with a proposed topological sector, construct the associated
+bordism functor directly from its Hilbert spaces, local algebras, or
+Euclidean functional integrals.  The construction should identify the precise
+completion of state spaces, the gluing topology, anomaly line, and boundary
+category.
+\end{openproblem}
+
+\section{Four-Dimensional Cohomological Gauge Theory As A Test Case}
+
+Witten--Donaldson theory will be a principal test case for the relation
+between cohomological path integrals, functorial TQFT data, and ordinary
+four-dimensional gauge theory.  Its ultraviolet presentation is the
+topological twist of \(\mathcal N=2\) Yang--Mills theory.  The Donaldson side
+is organized by the moduli space of anti-self-dual connections, its
+compactification and orientation data, and the observables obtained from the
+descent of gauge-invariant polynomials.  These are not merely formal symbols:
+to define the invariant one must state the gauge group and global form, the
+four-manifold and its orientation data, the metric dependence and chamber
+structure, the compactification of the instanton moduli space, and the
+treatment of reducible connections.
+
+The Seiberg--Witten explanation compares this ultraviolet cohomological gauge
+theory to an Abelian monopole effective theory on the Coulomb branch.  The
+physical mechanism is an RG statement: after flowing from the non-Abelian
+\(\mathcal N=2\) theory to its low-energy Wilsonian effective action, the
+singular loci where monopoles or dyons become light supply the Abelian fields
+and monopole equations that enter the low-energy topological path integral.
+For the monograph this comparison is not certified by naming the flow.  A
+complete argument must construct the Wilsonian coordinate \(u\), the effective
+coupling \(\tau(u)\), the duality frame near each singular locus, the
+monopole or dyon hypermultiplet, the contact terms and gravitational
+couplings, the observable map from Donaldson classes to low-energy
+observables, and the wall-crossing or \(u\)-plane terms when they are present.
+
+\begin{openproblem}[Donaldson--SW RG comparison]
+\label{op:donaldson-seiberg-witten-rg-comparison}
+Develop the Donaldson/Seiberg--Witten relation as a theorem-level QFT
+comparison.  The target is to identify which parts follow from rigorous
+differential geometry of instanton and monopole moduli spaces, which parts
+follow from finite-dimensional localization or gluing, and which parts depend
+on a still-unproved RG theorem connecting the twisted non-Abelian
+\(\mathcal N=2\) Yang--Mills theory to the Abelian monopole effective theory.
+The desired output is an object-level map between correlation functions or
+cohomological observables, with stated metric, chamber, compactification,
+contact-term, and anomaly data.
+\end{openproblem}

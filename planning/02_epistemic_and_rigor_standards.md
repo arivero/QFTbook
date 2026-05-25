@@ -86,11 +86,13 @@ Every substantive statement must have one of the following statuses:
 - nonperturbative statement;
 - numerical or computational observation;
 - conjecture;
-- lore, explicitly labelled as such;
 - open problem.
 
-The manuscript must not allow lore, formal calculation, or pedagogical habit to
-carry a conclusion that requires a theorem or stated assumption.
+The manuscript must not allow community lore, formal calculation, or
+pedagogical habit to carry a conclusion that requires a theorem or stated
+assumption.  Community expectations may be discussed only as explicitly
+non-load-bearing remarks after the positive mathematical object has been
+formulated.
 
 The word "theorem" is reserved for a formulated mathematical statement in a
 specified framework, with stated hypotheses, conclusion, and proof status.  A

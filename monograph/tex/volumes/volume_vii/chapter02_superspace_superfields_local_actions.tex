@@ -1,0 +1,349 @@
+\chapter{Superspace, Superfields, and Local Actions}
+\label{ch:susy-superspace-superfields-local-actions}
+
+\ConventionsLorentzian
+
+Superspace is a supermanifold, understood as a locally super-ringed space.
+Its odd coordinates are algebraic generators of local structure sheaves, not
+points of an ordinary set.  This distinction is essential for a precise
+relation between fermionic path-integral variables, component fields, and
+operator-valued fermion fields.
+
+\section{Superfields as Field-Variable Data}
+
+\begin{definition}[Off-shell superfield multiplet]
+\label{def:off-shell-superfield-multiplet}
+An off-shell superfield multiplet is a finite collection of superfields and
+constraints on them such that the supertranslation derivations act without
+using Euler--Lagrange equations.  Its component fields are coordinates on a
+space of field variables.  They are not, by definition, particle states in a
+Hilbert space.
+\end{definition}
+
+If an action is supplied, the Euler--Lagrange equations may remove auxiliary
+fields or impose differential constraints.  If gauge symmetry is present, the
+physical field configurations are further quotients or cohomology classes.
+Only after these operations and a Hilbert-space or Euclidean reconstruction
+has been specified can one compare the resulting one-particle spectrum with
+the particle representations of
+Chapter~\ref{ch:susy-algebras-representations}.  This chapter therefore uses
+the word \emph{multiplet} only for field-variable packages unless explicitly
+stated otherwise.
+
+\section{Affine Superspace}
+
+Four-dimensional \(\mathcal N=1\) affine superspace has underlying ordinary
+manifold \(\mathbb M^4\) and structure sheaf
+\[
+  \mathcal O_{\mathbb M^{4|4}}(U)
+  =
+  C^\infty(U)\otimes
+  \Lambda(\theta^1,\theta^2,\bar\theta^{\dot1},\bar\theta^{\dot2})
+\]
+for open \(U\subset\mathbb M^4\).  A superfield is a section of this sheaf
+or of a vector bundle tensored with it.  In local coordinates,
+\[
+  F(x,\theta,\bar\theta)
+  =
+  f(x)+\theta^\alpha f_\alpha(x)
+  +\bar\theta_{\dot\alpha}\bar f^{\dot\alpha}(x)
+  +\cdots+\theta^2\bar\theta^2 f_{\rm top}(x),
+\]
+where the expansion terminates because the odd coordinate algebra is finite.
+
+The supertranslation generators act as derivations of the structure sheaf:
+\[
+  Q_\alpha
+  =
+  \frac{\partial}{\partial\theta^\alpha}
+  -\ii\sigma^\mu_{\alpha\dot\alpha}\bar\theta^{\dot\alpha}\partial_\mu,
+  \qquad
+  \bar Q_{\dot\alpha}
+  =
+  -\frac{\partial}{\partial\bar\theta^{\dot\alpha}}
+  +\ii\theta^\alpha\sigma^\mu_{\alpha\dot\alpha}\partial_\mu .
+\]
+The covariant derivatives are
+\[
+  D_\alpha
+  =
+  \frac{\partial}{\partial\theta^\alpha}
+  +\ii\sigma^\mu_{\alpha\dot\alpha}\bar\theta^{\dot\alpha}\partial_\mu,
+  \qquad
+  \bar D_{\dot\alpha}
+  =
+  -\frac{\partial}{\partial\bar\theta^{\dot\alpha}}
+  -\ii\theta^\alpha\sigma^\mu_{\alpha\dot\alpha}\partial_\mu .
+\]
+They anticommute with the supercharges and obey
+\[
+  \{D_\alpha,\bar D_{\dot\beta}\}
+  =
+  -2\ii\sigma^\mu_{\alpha\dot\beta}\partial_\mu .
+\]
+
+\section{Chiral Superfields}
+
+\begin{definition}[Chiral superfield]
+\label{def:chiral-superfield}
+A chiral superfield is a superfield \(\Phi\) satisfying
+\[
+  \bar D_{\dot\alpha}\Phi=0 .
+\]
+Equivalently, in chiral coordinates
+\[
+  y^\mu=x^\mu+\ii\theta\sigma^\mu\bar\theta,
+\]
+it has the component expansion
+\[
+  \Phi(y,\theta)
+  =
+  \phi(y)+\sqrt2\,\theta^\alpha\psi_\alpha(y)+\theta^2F(y).
+\]
+\end{definition}
+
+Here \(\phi\) is an even scalar field, \(\psi_\alpha\) an odd Weyl spinor
+field, and \(F\) an even auxiliary field.  The component supersymmetry
+transformations follow by acting with
+\(\epsilon^\alpha Q_\alpha+\bar\epsilon_{\dot\alpha}\bar Q^{\dot\alpha}\)
+and re-expanding in \(\theta\):
+\[
+  \delta\phi=\sqrt2\,\epsilon\psi,
+\]
+\[
+  \delta\psi_\alpha
+  =
+  \sqrt2\,\epsilon_\alpha F
+  +\ii\sqrt2\,\sigma^\mu_{\alpha\dot\alpha}\bar\epsilon^{\dot\alpha}
+  \partial_\mu\phi,
+\]
+\[
+  \delta F
+  =
+  \ii\sqrt2\,\bar\epsilon_{\dot\alpha}
+  \bar\sigma^{\mu\dot\alpha\alpha}\partial_\mu\psi_\alpha .
+\]
+The auxiliary field makes the algebra close on components before using
+Euler--Lagrange equations.
+
+\section{Berezin Integration and Local Superspace Actions}
+
+Berezin integration is the projection functional onto the top odd coefficient
+of the exterior algebra:
+\[
+  \int d^2\theta\,\theta^2=1,\qquad
+  \int d^2\bar\theta\,\bar\theta^2=1.
+\]
+As a linear functional on the odd coordinate algebra, it is the integration
+operation intrinsic to the locally super-ringed-space description.  A local
+superspace action for chiral fields has the form
+\[
+  S
+  =
+  \int d^4x\,d^4\theta\,K(\Phi^i,\bar\Phi^{\bar j})
+  +
+  \left[
+  \int d^4x\,d^2\theta\,W(\Phi^i)+{\rm h.c.}
+  \right],
+\]
+where \(K\) is a real function of superfields and \(W\) is holomorphic in the
+chiral superfields.  The \(d^4\theta\) term is a \(D\)-term; the
+\(d^2\theta\) term is an \(F\)-term.
+
+For one chiral field with \(K=\bar\Phi\Phi\), the component expansion gives
+\[
+  \mathcal L
+  =
+  -\partial_\mu\bar\phi\,\partial^\mu\phi
+  -\ii\bar\psi\bar\sigma^\mu\partial_\mu\psi
+  +\bar F F
+  +
+  \left[
+  F W'(\phi)
+  -\frac{1}{2}W''(\phi)\psi^\alpha\psi_\alpha
+  +{\rm h.c.}
+  \right]
+\]
+in the mostly-plus convention.  Eliminating \(F\) by its algebraic
+Euler--Lagrange equation gives \(F=-\overline{W'(\phi)}\) and potential
+\[
+  V(\phi,\bar\phi)=|W'(\phi)|^2 .
+\]
+
+\section{Operator Fields and Grassmann Variables}
+
+Fermionic component fields in a Hilbert-space QFT are operator-valued
+distributions satisfying graded locality.  Fermionic variables in a
+superspace or path-integral expression are elements of odd pieces of a
+Grassmann algebra.  The bridge between them is the correlation functional:
+Grassmann sources and Berezin integration encode antisymmetric multilinear
+forms that represent vacuum or Euclidean correlation functions of the
+operator-valued fermion fields after reconstruction or perturbative
+definition.
+
+\section{Supersymmetric Wilsonian Schemes}
+
+The later dynamics of four-dimensional \(\mathcal N=1\) and \(\mathcal N=2\)
+gauge theories will use Wilsonian effective actions.  Such statements require
+a scheme, not only a formal superspace expression.
+
+\begin{definition}[Supersymmetric Wilsonian scheme]
+\label{def:supersymmetric-wilsonian-scheme}
+A supersymmetric Wilsonian scheme on a scale interval
+\(\Lambda_{\rm IR}<\Lambda<\Lambda_{\rm UV}\) consists of the following data:
+\begin{enumerate}[label=(\roman*)]
+\item a regulated space of field variables \(\mathfrak F_\Lambda\), including
+ordinary fields, superfields, ghosts, antifields, and background sources when
+they are part of the construction;
+\item a regulated functional integral, perturbative BV integral, lattice
+construction, or other declared integration prescription with Lagrangian
+functional \(S_\Lambda\);
+\item odd derivations or Ward operators representing the supersymmetry
+algebra on the regulated variables, with a stated closure relation: off shell,
+on shell, modulo gauge transformations, or modulo the BV differential;
+\item a coarse-graining map from scale \(\Lambda_2\) to scale \(\Lambda_1\)
+for \(\Lambda_{\rm IR}<\Lambda_1<\Lambda_2<\Lambda_{\rm UV}\), satisfying a
+composition law up to finite local coordinate changes;
+\item a coordinate chart on local and quasilocal functionals, including the
+separation of \(D\)-terms, \(F\)-terms, gauge kinetic terms, theta terms,
+and local counterterms allowed by the regulator;
+\item a prescription for composite operator insertions and background-field
+variations, stated separately from the regularization of the functional
+integral itself.
+\end{enumerate}
+The scheme is called supersymmetric if the regulated Ward identity is exact
+at finite \(\Lambda\), or if the failure is a local breaking functional with a
+specified restoration prescription and anomaly class.
+\end{definition}
+
+Holomorphic or nonrenormalization statements are statements about coordinates
+in such a scheme.  They are not statements about an undefined path-integral
+symbol, nor are they automatically statements about the one-particle
+irreducible effective action.  A physical statement extracted from a
+Wilsonian action must be invariant under the finite coordinate changes allowed
+by the scheme, or the coordinate dependence must be part of the statement.
+This distinction is essential in the exact dynamics of four-dimensional
+supersymmetric gauge theories.
+
+There is a second distinction which will be used repeatedly.  The BV
+formalism can encode gauge symmetry and supersymmetry on a space of fields,
+ghosts, antifields, and background superfields, and it can express a
+symmetry-preserving coarse-graining step as a canonical or quantum-canonical
+operation once a regulator has been supplied.  This does not by itself produce
+an ultraviolet regularization.  A regulated BV Laplacian, a finite
+field-variable space, a cutoff propagator, an integration cycle, and a proof
+that the regulated quantum master equation and Ward identities hold are
+additional data.  Thus an off-shell-superfield BV description is a natural
+language for supersymmetric Wilsonian integration, but it is not identical to
+a manifestly supersymmetric regulator.
+
+For four-dimensional supersymmetric gauge theories we shall not assume the
+existence of a completely satisfactory manifestly supersymmetric
+regularization scheme.  Dimensional reduction is a perturbative prescription:
+loop momenta are analytically continued away from four dimensions while
+spinor and gauge algebra are partly kept four-dimensional.  A calculation
+performed with this prescription is therefore certified only after the
+algebraic rules used at the relevant loop order have been stated and checked,
+including identities involving \(\epsilon_{\mu\nu\rho\sigma}\), chiral
+matrices, and evanescent tensor structures.  Higher-covariant-derivative or
+heat-kernel regulators supplemented by Pauli--Villars-type fields are likewise
+candidate schemes, not axioms: one must state the regulator fields, statistics,
+masses, gauge and supersymmetry transformations, BV pairing, decoupling limit,
+local counterterm freedom, and anomaly class before using such a construction
+as a theorem-level input.
+
+\begin{openproblem}[Regulators preserving supersymmetry]
+\label{op:susy-regulators-preserving-supersymmetry}
+Classify regulator schemes for supersymmetric QFT by the exact symmetries
+they preserve, the Ward identities they realize before removing the
+regulator, and the local counterterms required to restore the remaining
+identities.  Dimensional reduction must be treated as a formal perturbative
+scheme whose consistency is checked at the loop order being used, rather than
+as a mathematical definition of a supersymmetric continuum theory.
+Higher-derivative heat-kernel schemes, Pauli--Villars completions, lattice
+constructions, and BV-compatible exact-RG schemes must be compared at the
+level of their regulated master equations, Ward identities, locality of
+counterterms, decoupling limits, and anomaly cohomology before
+nonrenormalization or anomaly statements are used.
+\end{openproblem}
+
+\begin{openproblem}[Wilsonian foundations for four-dimensional supersymmetric gauge dynamics]
+\label{op:susy-wilsonian-foundations-gauge-dynamics}
+Develop the exact dynamics of four-dimensional \(\mathcal N=1\) and
+\(\mathcal N=2\) gauge theories inside explicitly defined supersymmetric
+Wilsonian schemes.  The target is to formulate holomorphic couplings,
+effective superpotentials, quantum moduli spaces, Seiberg-Witten effective
+actions, anomaly matching, decoupling, and duality tests as statements about
+specified Wilsonian coordinates and scheme-invariant observables, with the
+relation to 1PI effective actions stated separately.
+\end{openproblem}
+
+\begin{openproblem}[Supersymmetric examples across dimensions]
+\label{op:susy-examples-across-dimensions}
+Develop the main classes of supersymmetric QFTs in dimensions other than four
+with the same separation of algebra, field-variable realization, regulator,
+Wilsonian coordinate, and observable.  In two dimensions this includes
+\(\mathcal N=(2,2)\) Landau--Ginzburg models, nonlinear sigma models with
+Calabi--Yau target, and gauged linear sigma models, where the relation among
+UV superpotential data, Kähler data, chiral rings, RG flow, and infrared CFT
+must be stated as a theorem, construction, controlled argument, or open
+problem rather than as a phase slogan.  In three dimensions this includes
+supersymmetric Chern--Simons--matter theories, where level quantization,
+framing, parity anomalies, boundary conditions, monopole operators, and the
+meaning of Wilsonian coordinates for topological terms must be part of the
+definition.  In six dimensions this includes superconformal theories for
+which a conventional Lagrangian may not be part of the data; the tensor-branch
+effective theory, anomaly polynomial, BPS strings, compactifications, and
+extended operators then become diagnostic objects rather than replacements
+for a nonperturbative definition.
+\end{openproblem}
+
+\begin{definition}[Localization datum]
+\label{def:susy-localization-datum}
+A localization datum for a supersymmetric functional integral consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a regulated integration space or integration cycle, including its
+orientation, boundary, singular strata, and gauge quotient if present;
+\item an odd symmetry \(Q\) acting on the regulated variables, together with
+the precise bosonic transformation represented by \(Q^2\);
+\item a \(Q\)-invariant action and \(Q\)-closed observables;
+\item a deformation \(t\,Q V\) whose convergence, boundary behavior, and
+large-\(t\) limit are controlled;
+\item the fixed locus of \(Q\), its normal complex, zero modes, and determinant
+or Euler-class prescription;
+\item a contour or residue prescription for remaining finite-dimensional
+integrals, including the rule used at singular hyperplane arrangements.
+\end{enumerate}
+\end{definition}
+
+Finite-dimensional equivariant localization is a theorem only after the
+geometric hypotheses of the theorem have been stated.  An infinite-dimensional
+supersymmetric path integral inherits no automatic theorem from this analogy.
+One must specify the regulator or finite-dimensional approximation, prove or
+assume the absence of boundary contributions, and describe singular loci.  In
+particular, Jeffrey--Kirwan residues are contour prescriptions tied to
+hyperplane arrangements and chamber choices; they are not a substitute for a
+definition of the original path integral.  Likewise, zero-size gauge
+instantons are points on a singular compactification or boundary of a moduli
+space; whether they are legitimate integration objects depends on the chosen
+compactification, measure, and local QFT interpretation.
+
+In finite-dimensional reductions of gauge theories, a Jeffrey--Kirwan residue
+typically appears after abelianization or gauge fixing has replaced part of
+the integral by a meromorphic form on the complexified Cartan algebra with
+hyperplane divisors from charged fluctuations.  The chamber vector encodes
+orientation data such as a stability parameter, Fayet--Iliopoulos parameter,
+or contour at infinity.  A QFT localization argument must therefore derive the
+meromorphic form and this chamber data from the regulated integration cycle;
+otherwise the residue is an additional prescription selecting one boundary
+value of a singular integral.
+
+\begin{openproblem}[Rigorous supersymmetric localization]
+\label{op:rigorous-supersymmetric-localization}
+Develop supersymmetric localization in QFT from regulated localization data.
+The target is to identify when the localized integral is well-defined, when
+the deformation argument has no boundary contribution, how singular instanton
+strata and noncompact Coulomb or Higgs directions are compactified or
+excluded, and how residue prescriptions such as Jeffrey--Kirwan arise from
+the declared integration cycle rather than from a formal rule.
+\end{openproblem}

@@ -1,0 +1,111 @@
+\chapter{Point Splitting and Stress Tensor Renormalization}
+\label{ch:point-splitting-stress-tensor-renormalization}
+
+\ConventionsMixed
+
+The previous chapter introduced Hadamard states as the admissible
+short-distance class for free fields on curved backgrounds.  Point splitting
+uses the state-independent singular part of a Hadamard two-point function to
+define composite local fields.
+
+\section{Wick Square}
+
+\begin{definition}[Wick square by point splitting]
+\label{def:wick-square-point-splitting}
+Let \(\omega\) be a Hadamard state of the real Klein--Gordon field.  Let
+\(H(x,y)\) denote the locally covariant Hadamard parametrix, containing the
+singular \(U/\sigma_\epsilon\) and \(V\log\sigma_\epsilon\) terms.  The
+point-split Wick square in state \(\omega\) is the distribution defined by
+\[
+  \omega\bigl(:\!\Phi^2\!:(f)\bigr)
+  =
+  \int_M f(x)
+  \lim_{y\to x}
+  \bigl(\omega_2(x,y)-H(x,y)\bigr)\,d{\rm vol}_g(x).
+\]
+\end{definition}
+
+For higher Wick powers, one subtracts the parametrix in every contraction.
+The result is an operator-valued distribution in perturbative algebraic QFT
+and a quadratic form in representations where the required domains are
+available.
+
+The subtraction has finite local freedom.  For the Wick square in four
+dimensions,
+\[
+  :\!\Phi^2\!:\ \mapsto\ :\!\Phi^2\!:+c_1R+c_2m^2
+\]
+with constants \(c_1,c_2\), subject to the chosen covariance and scaling
+conditions.
+
+\section{Stress Tensor by Bidifferential Operator}
+
+For the classical scalar action
+\[
+  S[\phi]
+  =
+  -\frac{1}{2}\int_M
+  \left(
+  \nabla_\mu\phi\nabla^\mu\phi
+  +m^2\phi^2+\xi R\phi^2
+  \right)d{\rm vol}_g
+\]
+in mostly-plus Lorentzian convention, the stress tensor is obtained by metric
+variation.  Quantum mechanically, define a bidifferential operator
+\(\mathcal D_{\mu\nu}(x,y)\) by polarizing the classical quadratic expression
+in two field arguments.  Then
+\[
+  \omega(T_{\mu\nu}(x))
+  =
+  \lim_{y\to x}
+  \mathcal D_{\mu\nu}(x,y)
+  \bigl(\omega_2(x,y)-H(x,y)\bigr)
+  +C_{\mu\nu}(x).
+\]
+The local tensor \(C_{\mu\nu}\) is the finite renormalization freedom.  It is
+chosen from locally covariant conserved curvature tensors, together with
+terms proportional to \(m^2\) and \(m^4\) as allowed by dimension.
+
+\section{Conservation and Trace}
+
+\begin{definition}[Conserved stress tensor]
+\label{def:conserved-renormalized-stress-tensor-curved}
+Within a locally covariant point-splitting scheme, a renormalized stress
+tensor is called conserved when its finite local curvature terms have been
+chosen so that
+\[
+  \nabla^\mu\omega(T_{\mu\nu})=0
+\]
+for all Hadamard states in the declared class.
+\end{definition}
+
+The trace has the form
+\[
+  \omega(T^\mu{}_\mu)
+  =
+  m^2\,\omega(:\!\Phi^2\!:)
+  +(\xi-\xi_c)\,\omega(\Box:\!\Phi^2\!:)
+  +\mathcal A[g,m,\xi],
+\]
+where \(\xi_c=(D-2)/(4D-4)\) and \(\mathcal A\) is a local curvature scalar
+determined up to the same finite renormalization freedom.  In the massless
+conformally coupled case, the state-dependent classical trace terms vanish
+and the remaining local term is the trace anomaly.
+
+\section{Relation to Flat-Space Composite Operators}
+
+Point splitting is an operator-definition scheme.  It differs from defining a
+regularized composite operator by inserting a classical functional into a
+regulated path integral and then renormalizing.  The two schemes can be
+compared by finite local counterterms when both are defined on the same
+background and state class.  This comparison is the curved-background version
+of the operator-coordinate changes developed in the renormalization volume.
+
+\begin{openproblem}[Interacting stress tensors beyond formal perturbation]
+\label{op:interacting-stress-tensors-beyond-formal-perturbation}
+Construct stress tensors for interacting curved-spacetime QFTs with
+nonperturbative control of domains, local covariance, conservation, trace
+anomalies, and state dependence.  A solution should identify the exact
+relation between locally covariant composite fields and flat-space
+renormalized operator schemes.
+\end{openproblem}

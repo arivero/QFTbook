@@ -1,0 +1,117 @@
+\chapter{Finite-Temperature Path Integrals}
+\label{ch:finite-temperature-path-integrals}
+
+\ConventionsEuclidean
+
+The KMS condition is the real-time equilibrium condition for a state and a
+time evolution.  A Euclidean finite-temperature path integral is a regulated
+coordinate representation of Gibbs-trace correlation functions when the trace
+or a controlled infinite-volume replacement exists.  The trace derivation
+explains the thermal circle and the boundary conditions; analytic
+continuation back to real time remains a separate reconstruction problem.
+
+\section{Trace to Euclidean Circle}
+
+Let a quantum system have Hamiltonian \(H\) with
+\(\operatorname{Tr}e^{-\beta H}<\infty\).  The thermal expectation is
+\[
+  \omega_\beta(A)
+  =
+  \frac{1}{Z(\beta)}\operatorname{Tr}(e^{-\beta H}A),
+  \qquad
+  Z(\beta)=\operatorname{Tr}e^{-\beta H}.
+\]
+Split \(\beta=N\epsilon\).  Inserting \(N\) resolutions of identity in a
+configuration basis gives the Euclidean time-sliced expression
+\[
+  Z(\beta)
+  =
+  \lim_{N\to\infty}
+  \int \prod_{j=1}^{N}dq_j\,
+  \prod_{j=1}^{N}
+  K_\epsilon(q_{j+1},q_j),
+  \qquad
+  q_{N+1}=q_1,
+\]
+where \(K_\epsilon(q',q)=\langle q'|e^{-\epsilon H}|q\rangle\).  The trace
+imposes periodicity around the Euclidean time circle \(S^1_\beta\).
+
+For a bosonic scalar field this becomes, after the spatial regulator and
+continuum limit are specified,
+\[
+  Z(\beta)
+  =
+  \int_{\phi(\tau+\beta,\mathbf x)=\phi(\tau,\mathbf x)}
+  [D\phi]_{\rm reg}\,
+  e^{-S_E[\phi]} .
+\]
+The symbol \([D\phi]_{\rm reg}\) denotes the chosen regulated Euclidean
+construction; the continuum meaning is supplied by the same constructive,
+lattice, or perturbative framework used at zero temperature.
+
+\section{Fermions and Spin Structure}
+
+For fermions, the trace over a fermionic Fock space has a coherent-state
+coordinate expression in Grassmann variables.  The cyclic trace produces
+antiperiodic boundary conditions for the ordinary thermal partition function:
+\[
+  \psi(\tau+\beta,\mathbf x)=-\psi(\tau,\mathbf x),
+  \qquad
+  \bar\psi(\tau+\beta,\mathbf x)=-\bar\psi(\tau,\mathbf x).
+\]
+Equivalently, the thermal circle carries the antiperiodic spin structure.
+The graded trace
+\[
+  \operatorname{Tr}\!\left((-1)^F e^{-\beta H}\cdots\right)
+\]
+uses the periodic spin structure.  This distinction is part of the definition
+of the thermal observable and is essential in supersymmetric indices.
+
+\section{Matsubara Frequencies}
+
+On \(S^1_\beta\times\R^{D-1}\), periodic bosons have frequencies
+\[
+  \omega_n^{\rm B}=\frac{2\pi n}{\beta},
+  \qquad n\in\mathbb Z,
+\]
+while antiperiodic fermions have
+\[
+  \omega_n^{\rm F}=\frac{(2n+1)\pi}{\beta}.
+\]
+For a free scalar,
+\[
+  G_E(\tau,\mathbf x)
+  =
+  \frac{1}{\beta}\sum_{n\in\mathbb Z}
+  \int \frac{d^{D-1}k}{(2\pi)^{D-1}}\,
+  \frac{e^{\ii\omega_n^{\rm B}\tau+\ii\mathbf k\cdot\mathbf x}}
+       {(\omega_n^{\rm B})^2+\mathbf k^2+m^2}.
+\]
+Analytic continuation from discrete Euclidean frequencies to retarded
+functions requires the spectral representation and the KMS condition.  The
+Euclidean values at Matsubara frequencies alone become real-time response
+data only after a growth condition or spectral ansatz fixes the continuation.
+
+\section{Chemical Potentials and Background Holonomy}
+
+For a conserved charge \(Q\), the grand-canonical trace is
+\[
+  Z(\beta,\mu)=\operatorname{Tr}e^{-\beta(H-\mu Q)} .
+\]
+In the Euclidean coordinate representation, \(\mu\) enters as an imaginary
+background gauge-field holonomy along \(S^1_\beta\):
+\[
+  D_\tau\mapsto D_\tau-\mu Q .
+\]
+For compact gauge symmetries, a thermal holonomy is a gauge-invariant
+variable modulo large gauge transformations, and the integration over gauge
+holonomies is part of the gauge-theory finite-temperature path integral.
+
+\begin{openproblem}[Euclidean thermal reconstruction]
+\label{op:euclidean-thermal-reconstruction}
+State constructive hypotheses under which Schwinger functions on
+\(S^1_\beta\times\R^{D-1}\), with the appropriate spin structure and
+background holonomies, reconstruct a KMS state with local real-time
+observables and transport correlators.  The solution must specify the
+analytic growth replacing the vacuum spectrum condition.
+\end{openproblem}

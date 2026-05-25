@@ -12,6 +12,10 @@ Deferred topics in this folder include:
 - conformal blocks, projective-lightcone machinery, and bootstrap methods;
 - surveys of CFT landscapes;
 - two-dimensional Virasoro and modular material;
+- entanglement-entropy and replica material, which should be reconsidered
+  only in a systematic AQFT/local-algebraic treatment with type-III,
+  split-property, modular-theory, regulator, and analytic-continuation issues
+  made explicit;
 - four-dimensional superconformal and \(\mathcal N=4\) material;
 - large-\(N\), spin-chain, duality, conformal-manifold, and holographic
   chapters;

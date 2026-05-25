@@ -22,6 +22,31 @@ fact. If a claim is used in the logical development, the chapter must carry
 its assumptions and argument, or else mark it as an external theorem with a
 precise statement and state that the proof is outside the present scope.
 
+## Ambition And Frontier Rule
+
+The monograph is not a textbook summary project.  Its target standard is the
+highest level of mathematical and physical precision currently feasible, with
+self-contained development of the essential physics and explicit theorem
+boundaries where present mathematics is incomplete.  A chapter passes this
+harness only if it does at least one of the following:
+
+- proves or derives a load-bearing result from stated data;
+- gives a rigorous formulation of a concept whose literature treatment is
+  often ambiguous;
+- constructs a substantial example that tests the definitions;
+- compares frameworks by an explicit object-level map;
+- identifies a genuine gap in present knowledge and formulates the problem in
+  terms precise enough for future work.
+
+External references should be downloaded into `references/` or
+`references/sound_references/` when detailed local analysis is needed.  Before
+using such a reference for drafting, create a readable text sidecar when
+possible, inspect the relevant theorem statements and conventions locally,
+and record the exact role of the reference in the chapter dossier.  The
+reference may guide proof infrastructure and convention checks; it must not
+replace the monograph's own definitions, assumptions, and derivations for
+central claims.
+
 ## No-Skip Source Coverage Rule
 
 The 253a and 253b source notes are a coverage obligation for the core
@@ -77,6 +102,29 @@ Forbidden in reader-facing definitions:
   definition;
 - S-matrix formulas before asymptotic states and wave operators;
 - slogan or analogy as definition.
+
+## Logical And Philosophical Accuracy Rule
+
+Every load-bearing passage must distinguish the following categories whenever
+they could otherwise be conflated:
+
+- object and representative;
+- primitive datum and constructed object;
+- definition, convention, assumption, theorem, criterion, conjecture, and open
+  problem;
+- physical observable and gauge-dependent coordinate;
+- operator, distribution, function, formal variable, regulator-dependent
+  coordinate, and integration functional;
+- finite-regulator statement, perturbative formal-power-series statement, and
+  nonperturbative continuum statement;
+- equality, equivalence, isomorphism, duality, approximation, and matching of
+  selected observables.
+
+The main text must not use rhetorical or philosophical shortcuts to hide a
+change of category.  If a construction uses a representative object, state the
+equivalence relation and the invariant object.  If a formal expression is used
+as a coordinate on a future construction, state what mathematical object the
+coordinate is intended to represent and what remains to be proved.
 
 ## Symbol Rule
 
@@ -143,6 +191,73 @@ relation.  Examples: equality of generating functionals, equality of cocycle
 classes modulo local counterterms, convergence of correlation functions in a
 stated limit, equivalence of local nets, or isomorphism of representation
 data.  A named principle without this object-level statement is not certified.
+
+In supersymmetric material, a particle supermultiplet is a Hilbert-space
+representation object, while an off-shell superfield multiplet is a
+field-variable object.  Do not infer particle content from auxiliary-field
+bookkeeping without specifying dynamics, constraints, gauge quotienting, and
+quantization or reconstruction.
+
+Supersymmetric Wilsonian claims require an explicit scheme.  Before using
+holomorphy, exact superpotentials, quantum moduli spaces, Seiberg-Witten data,
+duality tests, or nonrenormalization statements as physics, the text must
+state the regulated field-variable space, the Wilsonian functional, the Ward
+identity or controlled breaking, the coarse-graining map, the local coordinate
+chart, the operator-insertion prescription, and the relation to the 1PI
+effective action if a 1PI statement is being made.
+
+Do not conflate a BV/off-shell-superfield formulation of supersymmetric
+Wilsonian integration with a manifest supersymmetric ultraviolet
+regularization.  BV can state the symmetry, master equation, and canonical
+coarse-graining problem after a regulator has been supplied; it does not by
+itself define the regulated BV Laplacian, integration cycle, cutoff propagator,
+or decoupling limit.  Dimensional reduction is to be treated as a formal
+perturbative prescription whose algebraic consistency must be checked at the
+loop order being used, especially for epsilon tensors, chiral matrices, and
+evanescent tensor structures.  Higher-derivative heat-kernel and
+Pauli--Villars-type supersymmetric regulators are candidate constructions
+until their regulator fields, transformations, BV pairing, Ward identities,
+local counterterms, decoupling, and anomaly class have been explicitly
+verified.
+
+Supersymmetric examples in different dimensions must state their own ambient
+data.  A two-dimensional Landau--Ginzburg, sigma-model, GLSM, or Calabi--Yau
+claim must specify the supersymmetry algebra, target or superpotential data,
+regularization status, RG statement, chiral-ring object, and infrared CFT
+claim separately.  A three-dimensional Chern--Simons--matter claim must specify
+the level, gauge global form, spin or spin-c structure, framing convention,
+parity-anomaly counterterm, matter representation, monopole-operator
+definition, and boundary condition when relevant.  A six-dimensional SCFT
+claim must state whether it is using a nonperturbative definition, a
+tensor-branch effective theory, an anomaly polynomial, compactification data,
+or an extended-operator diagnostic; none of these is automatically a
+Lagrangian definition of the theory.
+
+Supersymmetric localization claims require a localization datum.  Before a
+localized integral, JK residue, saddle determinant, instanton contribution, or
+zero-size-instanton term is used, the text must state the integration cycle,
+odd symmetry, \(Q^2\), deformation, convergence and boundary conditions,
+fixed-locus normal complex, zero-mode treatment, singular strata, and contour
+or residue prescription.  Infinite-dimensional localization is not certified
+by citing finite-dimensional equivariant localization unless the regulator or
+limiting argument is part of the construction.
+
+Donaldson/Seiberg-Witten comparisons must be written as QFT comparison
+problems with a theorem-status ledger.  Before claiming an equality or
+explanation of Donaldson and monopole invariants, the text must state the
+twisted \(\mathcal N=2\) Yang--Mills theory, instanton moduli-space data,
+Donaldson observables, Coulomb-branch Wilsonian effective action, Abelian
+monopole/dyon EFT, singular loci, contact terms, wall-crossing or \(u\)-plane
+terms, observable map, and metric-dependence control.  It must also identify
+which pieces are established differential-geometric theorems, which are
+finite-dimensional localization/gluing statements, and which are still
+physical RG assumptions requiring further proof.
+
+Entanglement in QFT is an AQFT/local-algebraic topic before it is a CFT
+calculation topic.  Any use of entropy, replica constructions, or modular
+Hamiltonians must state the algebraic object, factorization or split-property
+assumption, type-III issue, regulator or relative-entropy prescription, and
+analytic-continuation hypothesis.
 
 Every example used in the main text must do at least one of the following:
 

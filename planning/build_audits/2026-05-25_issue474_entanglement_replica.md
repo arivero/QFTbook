@@ -1,5 +1,15 @@
 # Issue #474 Audit: Entanglement Entropy And Replica Method
 
+## 2026-05-25 Supersession Note
+
+This audit is historical.  The entanglement/replica chapter and its
+calculation check were later moved out of the compiled CFT volume to
+`deprecated/volume_iii_premature_topics/`.  The current architecture treats
+entanglement in QFT, if developed, as an AQFT/local-algebraic subject requiring
+von Neumann algebras, modular theory, split-property or regulator hypotheses,
+relative entropy, and type-III issues before replica or entropy formulae are
+used.
+
 ## Scope
 
 GitHub issue #474 reported that the CFT volume lacked a substantive treatment

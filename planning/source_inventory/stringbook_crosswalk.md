@@ -153,6 +153,45 @@ Special boundary:
   modular hypotheses as needed;
 - string worldsheet uses of CFT may suggest examples but cannot replace the
   QFT-side construction of chiral and full CFT data.
+- all relevant two-dimensional CFT content in the stringbook appendices is a
+  required source-coverage item for the QFT monograph; it must be rewritten
+  with the monograph's definitions, hypotheses, and proof boundaries, not
+  imported as string-theory background.
+
+### Planar Integrability
+
+Potential use:
+
+- planar single-trace spectral problem in \(\mathcal N=4\) SYM;
+- spin-chain realization of one-loop and asymptotic dilatation operators;
+- centrally extended \(su(2|2)\) magnon representation theory;
+- asymptotic Bethe ansatz, dressing phase, BES equation, cusp anomalous
+  dimension;
+- mirror TBA, wrapping corrections, Konishi, \(Y\)-system, and quantum spectral
+  curve.
+
+Required checks:
+
+- define the large-\(N\) limit, operator sector, coupling scheme, and spectral
+  problem before introducing spin-chain or worldsheet variables;
+- distinguish planar gauge-theory integrability from relativistic
+  two-dimensional factorized scattering in Volume VI;
+- state which integrability inputs are theorem-level, perturbatively checked,
+  symmetry-derived, or conjectural;
+- reproduce convention-sensitive calculations with public calculation-check
+  scripts, using the stringbook notebooks as source leads.
+
+Likely placement:
+
+- a later large-\(N\), gauge/string, or special-structure volume after the
+  gauge-theory, supersymmetric, and CFT foundations are mature.
+
+Special boundary:
+
+- the two planar-integrability chapters in the stringbook are the internal
+  source spine for the monograph's eventual planar-integrability treatment;
+  the QFT monograph must deepen and expand them into a self-contained
+  mathematical-physics development.
 
 ### Supersymmetry And Supergravity Appendices
 
@@ -176,6 +215,12 @@ Required checks:
   conventions;
 - state whether the discussion is off-shell, on-shell, perturbative, or
   nonperturbative;
+- distinguish particle supermultiplets as Hilbert-space representations from
+  off-shell field-variable multiplets as superfield or component-coordinate
+  packages;
+- for \(4D\) \(\mathcal N=1\) and \(\mathcal N=2\) gauge dynamics, define the
+  supersymmetric Wilsonian scheme before importing holomorphy, exact
+  superpotential, quantum-moduli-space, Seiberg-Witten, or duality arguments;
 - separate supersymmetric QFT from string compactification or worldsheet
   motivation.
 
