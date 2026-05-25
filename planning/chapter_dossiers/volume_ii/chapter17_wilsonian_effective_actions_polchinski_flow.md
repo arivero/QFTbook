@@ -26,10 +26,11 @@
   boundaries.  The chapter follows the local logical order and conventions.
 - `SRC-EXTERNAL-BOUNDS`: Polchinski's smooth-cutoff perturbative
   renormalizability argument, Salmhofer's rigorous RG framework, and
-  Brydges--Kennedy tree/Mayer expansion technology, together with
-  Glimm--Jaffe's constructive scalar-field framework, used to separate proved
-  perturbative or constructive estimates from assumptions in the local
-  finite-coordinate continuum-limit theorem.
+  Kopper--Muller-type perturbative cutoff estimates, together with
+  Brydges--Kennedy tree/Mayer expansion technology and Glimm--Jaffe's
+  constructive scalar-field framework, used to separate proved perturbative
+  or constructive estimates from assumptions in the local finite-coordinate
+  continuum-limit theorem.
 - `SRC-AUDIT`: page-level source and figure audit completed on 2026-05-22 in
   `planning/build_audits/2026-05-22_wilsonian_effective_actions_source_figures.md`.
 
@@ -38,13 +39,17 @@
 The chapter must define and derive:
 
 - Euclidean scalar Wilsonian action
-  \(S_\Lambda=S_{\mathrm{kin},\Lambda}+L_\Lambda\) with a smooth UV cutoff;
+  \(S_\Lambda=S_{\mathrm{kin},\Lambda}+L_\Lambda\) with a smooth
+  nonincreasing UV cutoff profile;
 - cutoff profile \(\chi(t)\), \(\chi_\Lambda(k)=\chi(k^2/\Lambda^2)\), and
-  regulated propagator \(C_\Lambda(k)\);
+  regulated propagator \(C_\Lambda(k)\), with the later plateau condition
+  separated from generic non-plateau smooth profiles;
 - the general momentum-space expansion of \(L_\Lambda[\phi]\);
 - the source-supported generating functional condition
-  \(Z_{\Lambda'}[J]=Z_\Lambda[J]\) for \(\widetilde J\) supported below
-  \(\Lambda'\);
+  \(Z_{\Lambda'}[J]=Z_\Lambda[J]\) only under the exact annihilator condition
+  \(\widehat C_{\Lambda,\Lambda'}J=0\), with plateau cutoffs as the
+  source-independent smooth-cutoff realization and source-dependent vertices
+  or leakage estimates required for non-plateau profiles;
 - the propagator decomposition
   \(C_\Lambda=C_{\Lambda'}+\widehat C_{\Lambda,\Lambda'}\);
 - the finite-regulator Gaussian pushforward proposition and its proof by
@@ -211,20 +216,38 @@ The chapter must define and derive:
 - the role of finite dimensionless irrelevant bare couplings in lattice
   regularizations.
 - the bridge to BPHZ and 1PI coordinates: finite-regulator equality of
-  low-source connected functionals, Legendre transform to 1PI kernels, finite
-  matching from Wilsonian local coordinates to 1PI subtraction coordinates,
-  and the distinction between a Wilsonian vertex and a 1PI vertex.
+  low-source connected functionals under an admissible plateau split,
+  Legendre transform of the restricted low-source functional to 1PI kernels,
+  finite matching from Wilsonian local coordinates to 1PI subtraction
+  coordinates, and the distinction between a Wilsonian vertex and a 1PI
+  vertex.
 - a finite-order BPHZ--Wilsonian matching theorem that:
   - fixes a BPHZ forest-formula scheme, a low source/classical-field test
-    space, finite 1PI projectors, and finite Wilsonian coordinate projectors;
+    space strictly inside the cutoff plateau, finite 1PI projectors, and
+    finite Wilsonian coordinate projectors;
   - defines the matching map
     \(M_I^{(\ell,N)}(u;\Lambda,\mu,\mathfrak b)
       =\Pi_I\Gamma^{<,(\le\ell)}_{\Lambda,N}[u]\);
-  - proves the finite-dimensional low-mode Legendre-transform step from
+  - defines \(\Gamma^<\) as the Legendre transform after restricting the
+    connected source functional to the finite low-source space, not as a
+    restriction of a full Legendre transform;
+  - proves the finite-dimensional low-source Legendre-transform step from
     equality of connected functionals and Hessian invertibility;
   - proves a Wilsonian Taylor-remainder lemma giving
     \(O((\mu/\Lambda)^{p_N})\) suppression from the chosen Banach norm and
     the first omitted excess scaling exponent;
+  - proves that the BPHZ forest operation is linear in vertex labels and
+    commutes with the additive split
+    \(L_\Lambda=L_\Lambda^{(N)}+v_{\perp,N}\), so subtracted graphs with a
+    \(v_{\perp,N}\)-insertion are still controlled by the Wilsonian remainder
+    norm;
+  - requires the \(\Lambda_0\to\infty\) limit to be taken along a tuned
+    Polchinski-flow counterterm trajectory, with UV-cutoff local coordinates
+    chosen as functions of \(\Lambda_0\) to hold fixed renormalized boundary
+    data;
+  - states that the bounded-chart hypothesis is perturbative order by order,
+    or nonperturbative only for trajectories for which the asserted norm
+    bounds are actually proved;
   - obtains the finite coordinate change by the finite-dimensional implicit
     function theorem when the selected Jacobian is invertible;
   - states the fixed-loop perturbative scope and separates massive BPHZ,
@@ -242,7 +265,11 @@ The chapter must define and derive:
 ## Claim Ledger
 
 1. A Wilsonian effective action at scale \(\Lambda\) is a cutoff-dependent
-   functional whose low-momentum generating functional is held fixed.
+   functional obtained by Gaussian pushforward.  A source-independent
+   low-source generating functional is held fixed only for source directions
+   annihilating the integrated covariance; for smooth non-plateau profiles the
+   exact comparison requires source-dependent Wilsonian vertices or a leakage
+   theorem.
 2. The smooth cutoff can be placed in the quadratic kernel, giving a regulated
    Gaussian covariance and a general local interaction functional.
 3. Lowering \(\Lambda\) is represented exactly, at the formal path-integral
@@ -260,8 +287,10 @@ The chapter must define and derive:
     displayed interaction equation is written modulo this constant.
 4. Before the shell source term is discarded, the split generating functional
    contains \(J(\phi'+\phi_{\mathrm{sh}})\); the
-   \(J\phi_{\mathrm{sh}}\) term vanishes only by the regulated support
-   assumption on the source.
+   \(J\phi_{\mathrm{sh}}\) term vanishes only when
+   \(\widehat C_{\Lambda,\Lambda'}J=0\).  For a smooth source-independent
+   theorem with nonzero open low-momentum support, this is enforced by an
+   admissible cutoff plateau.
 5. The infinitesimal shell-integration identity gives a functional differential
    equation for \(L_\Lambda\).
 5a. The Wilson-Polchinski equation has a stated topology only after choosing
@@ -338,8 +367,9 @@ The chapter must define and derive:
      by proved bounds in a specified Banach/normed setting; in the displayed
      finite-coordinate discussion they are imposed assumptions.
 13. The Wilsonian action \(L_\Lambda\) is an action for remaining low modes,
-    not the 1PI effective action; it must be followed by low-mode integration
-    and a Legendre transform before comparison with 1PI coordinates.
+    not the 1PI effective action; it must be followed by integration over the
+    remaining cutoff field and a Legendre transform on the chosen source
+    space before comparison with 1PI coordinates.
 14. BPHZ, Wilsonian, and 1PI descriptions are related by maps.  BPHZ supplies
     local Taylor subtractions, Wilsonian RG supplies Gaussian pushforward in
     cutoff space, and 1PI RG supplies finite projected coordinates at a
@@ -348,8 +378,10 @@ The chapter must define and derive:
      low-mode 1PI Legendre transform, BPHZ scheme, Wilsonian coordinate
      projection, matching map, Banach remainder estimate, and finite
      Jacobian-invertibility hypothesis are stated.  The matching map is
-     \(M_I=\Pi_I\Gamma^<_{\Lambda,N}\), computed from retained Wilsonian
-     coordinates and remaining low-mode integration.
+     \(M_I=\Pi_I\Gamma^<_{\Lambda,N}\), where \(\Gamma^<\) is the Legendre
+     transform of the connected functional restricted to the finite
+     low-source space; it is not the restriction of a previously formed full
+     Legendre transform.
 14b. BPHZ Taylor local parts are Wilsonian local-coordinate data: a prepared
      subgraph subtraction gives a finite external-momentum polynomial, whose
      Fourier transform is a local vertex.  Minimal BPHZ subtractions land in
@@ -360,6 +392,20 @@ The chapter must define and derive:
      expansion.  At each order the already computed lower-order coordinates
      determine an inhomogeneous term, and the selected tree-level Jacobian is
      inverted to solve for the next Wilsonian coordinate coefficient.
+14d. The exact source-independent matching theorem uses an admissible plateau
+     cutoff.  A non-plateau smooth cutoff is a different comparison datum:
+     source-dependent vertices must be retained, or a profile-dependent
+     leakage estimate must be proved and added to the theorem's remainder.
+14e. The \(\Lambda_0\to\infty\) step in the BPHZ--Wilsonian comparison is a
+     tuned Polchinski-flow counterterm trajectory, not a fixed UV-cutoff
+     coordinate limit.  The UV-cutoff local coordinates are functions of
+     \(\Lambda_0\) chosen to hold the selected renormalized boundary data
+     fixed.
+14f. The BPHZ forest operation commutes with the retained/omitted Wilsonian
+     vertex split because it is linear in vertex kernels and depends on graph
+     topology, subtraction points, and subtraction degrees.  The Wilsonian
+     norm hypothesis must include the finite family of Taylor-subtracted
+     kernels produced by graphs containing at least one omitted vertex.
 15. Beta-function components in Wilsonian and 1PI coordinates are comparable
     only after a matching map is chosen; under finite coordinate changes they
     transform by the chain rule.
@@ -387,9 +433,10 @@ The chapter must define and derive:
 - Finite-coordinate cutoff-removal estimate diagram showing the separation
   between direct irrelevant boundary memory and the generated integral along
   the tuned trajectory.
-- BPHZ--Wilsonian--1PI bridge diagram showing the bare regulated action,
+- BPHZ--Wilsonian--1PI bridge diagram showing the UV-regulated action,
   BPHZ \(R\)-operation, Wilsonian pushforward, low-source connected
-  functional, Legendre transform, and coordinate projections.
+  functional with source support inside the plateau, Legendre transform, and
+  coordinate projections.
 - One-loop quartic matching diagram showing the split of the full regulated
   bubble into high-high, low-low, and mixed contributions and their images in
   Wilsonian, low-field 1PI, and local matching data.
@@ -491,6 +538,17 @@ The chapter must define and derive:
   the separate nonperturbative problem is whether a Wilsonian or constructive
   continuum theory exists and has the BPHZ-renormalized series as its
   perturbative asymptotic expansion in the chosen coordinates.
+- 2026-05-25 issue #570 pass: closed the six proof gaps in the
+  BPHZ--Polchinski comparison theorem.  The chapter now distinguishes the
+  exact source-dependent smooth-cutoff pushforward from the
+  source-independent plateau theorem; proves the exact low-source identity
+  under \(C_>J=0\); defines low 1PI kernels as Legendre transforms of the
+  restricted source functional; requires the \(\Lambda_0\to\infty\) step to
+  follow a tuned Polchinski-flow counterterm trajectory; records the
+  perturbative/nonperturbative status of the bounded-chart hypothesis; and
+  proves that the BPHZ forest operation commutes with the
+  retained/omitted-vertex split before the Wilsonian Taylor-remainder bound is
+  applied.
 - 2026-05-24 issue #358 pass: added the vacuum-energy normalization note after
   the Wilson-Polchinski derivation, explaining why the
   \(\phi\)-independent shell normalization is absent from the displayed
