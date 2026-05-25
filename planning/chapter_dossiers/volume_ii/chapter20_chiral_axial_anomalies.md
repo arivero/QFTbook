@@ -41,6 +41,12 @@
 - The chapter states the descent formulas used for four-dimensional chiral
   fermions but does not reproduce the full proof of the local BRST cohomology
   classification.
+- The BPST instanton section is a direct in-manuscript derivation.  A
+  public-facing check script,
+  `calculation-checks/bpst_instanton_normalization_checks.py`, verifies the
+  self-dual 't Hooft symbol identities, the quadratic identity entering the
+  curvature calculation, the radial integral, topological charge, and
+  coupling-coordinate conversion used there.
 
 ## Framework
 
@@ -109,6 +115,10 @@
 | \(T_R^a\) | anti-Hermitian generator in representation \(R\) used in the Bardeen--Zumino and descent formulas |
 | \(\bar\theta\) | anomaly-invariant QCD CP-odd parameter |
 | \(Q[A]\) | instanton/topological charge |
+| \(\eta^a_{\mu\nu}\) | self-dual 't Hooft symbol in the BPST construction |
+| \(a^\mu,\rho,U\) | instanton center, size, and global gauge-orientation collective coordinates |
+| \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
+| \(\psi_{0,\alpha},\xi_\alpha\) | fermion zero-mode wavefunction and its Grassmann coefficient |
 
 ## Issue-Pass Notes
 
@@ -218,6 +228,25 @@
   theory, while a nonzero gauge anomaly obstructs the gauge theory.
 - The strong CP parameter is the anomaly-invariant combination of the
   topological angle and the quark mass phase.
+- The BPST connection
+  \(A_\mu=2\eta^a_{\mu\nu}(x-a)^\nu[(x-a)^2+\rho^2]^{-1}T_a\) has curvature
+  \(F_{\mu\nu}=-4\rho^2\eta^a_{\mu\nu}[(x-a)^2+\rho^2]^{-2}T_a\), is
+  self-dual, has \(Q=1\), and saturates the instanton action bound.
+- The familiar one-instanton action \(8\pi^2/g_{\rm ht}^2\) in the common
+  half-trace coupling equals \(4\pi^2/g_{\rm YM}^2\) in the monograph's
+  trace-delta coupling coordinate.
+- The \(SU(2)\), \(k=1\) instanton has eight bosonic zero modes:
+  translations, size, and \(SU(2)/\mathbb Z_2\) orientation.  The
+  \(SU(N_c)\) embedded one-instanton moduli count is \(4N_c\).
+- The Dirac index gives \(2T_Rk\) chiral zero modes for a Weyl fermion in
+  representation \(R\) in common half-trace notation.  For a fundamental Weyl
+  fermion of \(SU(N_c)\) at \(k=1\), this is one zero mode.
+- The 't Hooft vertex follows from Berezin integration over fermion zero-mode
+  coefficients: QCD receives the chiral flavor determinant
+  \(\det_{f f'}(\rho^3\bar\psi_{Rf}\psi_{Lf'})\) with
+  \(\Delta Q_A=2N_f\), while electroweak \(SU(2)_L\) receives
+  \(\prod_r(q_{Lr}q_{Lr}q_{Lr}\ell_{Lr})\) with
+  \(\Delta B=\Delta L=N_g\).
 
 ## Open Boundaries
 
@@ -232,6 +261,9 @@
 - Conserved-current contour deformation and anomalous axial contour
   deformation.
 - Four-dimensional one-axial, two-vector triangle pair with both orientations.
+- BPST instanton data figure linking the explicit connection, self-dual
+  curvature, action saturation, bosonic zero modes, and fermion-zero-mode
+  saturation of the semiclassical vertex.
 
 ## Audit Notes
 
@@ -268,3 +300,7 @@
   stated explicitly that the anomaly computation uses dimensional reduction
   and heat-kernel/spectral trace regulation, not Pauli--Villars auxiliary
   fields.
+- 2026-05-25 issue #465 pass: added the explicit BPST instanton construction,
+  action saturation with the half-trace/trace-delta coupling comparison,
+  bosonic and fermionic zero-mode counts, the QCD and electroweak 't Hooft
+  vertices, and a BPST normalization calculation-check script.

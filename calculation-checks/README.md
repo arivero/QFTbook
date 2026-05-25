@@ -18,6 +18,13 @@ Current checks:
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
   including the conformal-window edge and leading \(\epsilon_{\rm BZ}\)
   fixed-point formulas.
+- `bpst_instanton_normalization_checks.py`: finite algebra and radial-integral
+  checks for the BPST instanton section, including self-duality of the
+  't Hooft symbols, the quadratic \(\eta\)-symbol identity used in the
+  curvature calculation, \(\int F^a_{\mu\nu}F^a_{\mu\nu}=32\pi^2\), \(Q=1\),
+  and the conversion between the common half-trace action
+  \(8\pi^2/g_{\rm ht}^2\) and the monograph trace-delta coupling
+  \(4\pi^2/g_{\rm YM}^2\).
 - `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)

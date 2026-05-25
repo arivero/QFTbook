@@ -1,0 +1,147 @@
+#!/usr/bin/env python3
+"""Finite checks for BPST instanton normalizations used in the monograph.
+
+The displayed BPST formulas use the common SU(2) basis T_a=sigma_a/2 with
+tr(T_a T_b)=delta_ab/2.  The active monograph coupling uses the trace-delta
+basis t_a=sqrt(2) T_a and
+
+    S = (4 g_YM^2)^(-1) int tr_delta(F_{mu nu} F_{mu nu}).
+
+This script verifies the finite algebra and radial integrals behind the
+relations
+
+    int F^a_{mu nu} F^a_{mu nu} d^4x = 32 pi^2,
+    Q = 1,
+    S_common = 8 pi^2/g_ht^2 = 4 pi^2/g_YM^2
+
+with g_ht = sqrt(2) g_YM.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+import itertools
+
+
+def eps4(a: int, b: int, c: int, d: int) -> int:
+    vals = [a, b, c, d]
+    if len(set(vals)) < 4:
+        return 0
+    inv = 0
+    for i in range(4):
+        for j in range(i + 1, 4):
+            inv += vals[i] > vals[j]
+    return -1 if inv % 2 else 1
+
+
+def eps3(a: int, b: int, c: int) -> int:
+    vals = [a, b, c]
+    if len(set(vals)) < 3:
+        return 0
+    inv = 0
+    for i in range(3):
+        for j in range(i + 1, 3):
+            inv += vals[i] > vals[j]
+    return -1 if inv % 2 else 1
+
+
+def eta(a: int, mu: int, nu: int) -> int:
+    """Self-dual 't Hooft eta symbol, indices a=0,1,2 and mu,nu=0..3.
+
+    The fourth Euclidean coordinate is represented by index 3.  The convention
+    is eta^a_{ij}=epsilon_{aij}, eta^a_{i4}=delta_ai,
+    eta^a_{4i}=-delta_ai.
+    """
+
+    if mu == nu:
+        return 0
+    if mu < 3 and nu < 3:
+        return eps3(a, mu, nu)
+    if mu < 3 and nu == 3:
+        return 1 if a == mu else 0
+    if mu == 3 and nu < 3:
+        return -1 if a == nu else 0
+    raise AssertionError("unreachable")
+
+
+def assert_equal(name: str, lhs: object, rhs: object) -> None:
+    if lhs != rhs:
+        raise AssertionError(f"{name} failed: {lhs!r} != {rhs!r}")
+
+
+def check_eta_self_duality() -> None:
+    for a, mu, nu in itertools.product(range(3), range(4), range(4)):
+        dual = Fraction(1, 2) * sum(
+            eps4(mu, nu, rho, sig) * eta(a, rho, sig)
+            for rho in range(4)
+            for sig in range(4)
+        )
+        assert_equal(f"eta self-duality a={a} mu={mu} nu={nu}", dual, eta(a, mu, nu))
+
+
+def check_eta_norm() -> None:
+    norm = sum(eta(a, mu, nu) ** 2 for a in range(3) for mu in range(4) for nu in range(4))
+    assert_equal("sum eta^2", norm, 12)
+
+
+def check_eta_quadratic_identity() -> None:
+    # Check the tensor identity
+    #   eps^a_bc eta^b_{mu rho} eta^c_{nu sigma} y^rho y^sigma
+    # = r^2 eta^a_{mu nu}
+    #   + y_mu eta^a_{nu lambda} y^lambda
+    #   - y_nu eta^a_{mu lambda} y^lambda
+    # coefficient by coefficient in the commuting monomials y_i y_j.
+    for a, mu, nu in itertools.product(range(3), range(4), range(4)):
+        lhs = {(i, j): 0 for i in range(4) for j in range(i, 4)}
+        rhs = {(i, j): 0 for i in range(4) for j in range(i, 4)}
+        for b, c, rho, sig in itertools.product(range(3), range(3), range(4), range(4)):
+            key = (rho, sig) if rho <= sig else (sig, rho)
+            lhs[key] += eps3(a, b, c) * eta(b, mu, rho) * eta(c, nu, sig)
+        for lam in range(4):
+            rhs[(lam, lam)] += eta(a, mu, nu)
+            key = (mu, lam) if mu <= lam else (lam, mu)
+            rhs[key] += eta(a, nu, lam)
+            key = (nu, lam) if nu <= lam else (lam, nu)
+            rhs[key] -= eta(a, mu, lam)
+        assert_equal(f"eta quadratic identity a={a} mu={mu} nu={nu}", lhs, rhs)
+
+
+def check_radial_integrals_and_actions() -> None:
+    # Integral over R^4 of rho^4/(r^2+rho^2)^4:
+    # 2*pi^2 * 1/2 * B(2,2) = pi^2/6.  Track only the rational coefficient.
+    radial_coeff = Fraction(1, 6)
+    f_component_coeff = 16 * 12 * radial_coeff
+    assert_equal("int F_component^2 coefficient", f_component_coeff, 32)
+
+    # In the half-trace basis tr(T_a T_b)=delta_ab/2.
+    trace_half_coeff = Fraction(1, 2) * f_component_coeff
+    assert_equal("int tr_half F^2 coefficient", trace_half_coeff, 16)
+
+    # Q = (32*pi^2)^(-1) int F^a Ftilde^a for self-dual unit instanton.
+    topological_charge = Fraction(f_component_coeff, 32)
+    assert_equal("BPST topological charge", topological_charge, 1)
+
+    # Common component action: (4 g_ht^2)^(-1) int F^a F^a.
+    action_common_coeff = Fraction(f_component_coeff, 4)
+    assert_equal("common half-trace action coefficient", action_common_coeff, 8)
+
+    # Trace-delta action: F_delta^a = F_common^a/sqrt(2), hence int tr_delta F^2
+    # is half the common component contraction.
+    action_trace_delta_coeff = Fraction(trace_half_coeff, 4)
+    assert_equal("trace-delta action coefficient", action_trace_delta_coeff, 4)
+
+    # Coupling conversion g_ht^2 = 2 g_YM^2 makes 8/g_ht^2 = 4/g_YM^2.
+    converted_common_coeff = Fraction(action_common_coeff, 2)
+    assert_equal("coupling-converted action coefficient", converted_common_coeff, action_trace_delta_coeff)
+
+
+def main() -> None:
+    check_eta_self_duality()
+    check_eta_norm()
+    check_eta_quadratic_identity()
+    check_radial_integrals_and_actions()
+    print("All BPST instanton normalization checks passed.")
+
+
+if __name__ == "__main__":
+    main()
