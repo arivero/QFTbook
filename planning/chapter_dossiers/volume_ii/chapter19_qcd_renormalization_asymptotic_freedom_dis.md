@@ -109,6 +109,10 @@ The chapter must define and derive:
   terms, the Nambu--Goto reference expansion, and the controlled-approximation
   boundary separating universal effective-string terms from lattice-matched
   coefficients;
+- the excited flux-tube oscillator spectrum, including open-string oscillator
+  levels, closed-string left/right levels, longitudinal momentum, level
+  matching, Gaussian large-\(L\) level energies, and the Nambu--Goto reference
+  square-root spectra and \(1/L^3\) expansions;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
@@ -200,32 +204,37 @@ The chapter must define and derive:
     closed Luscher terms \(-\pi(D-2)/(24L)\) and
     \(-\pi(D-2)/(6L)\), while later coefficients require symmetry constraints
     and matching data.
-14. Colored quark and gluon fields are not physical asymptotic states in the
+14. Excited flux-tube levels are organized first by the oscillator Hilbert
+    space of the transverse worldsheet fields.  The open generating function
+    is \(\prod_{n\ge1}(1-q^n)^{-(D-2)}\), closed flux tubes carry left and
+    right levels satisfying \(N_L-N_R=q\), and the Nambu--Goto formulas are
+    reference spectra rather than definitions of the QCD string.
+15. Colored quark and gluon fields are not physical asymptotic states in the
    QCD confinement scenario; deriving this spectral property from the
    four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
    as a nonperturbative physical hypothesis when discussing phenomenology.
    Physical scattering statements must be formulated in terms of
    gauge-invariant states or controlled high-energy factorization data.
-15. Energy correlators are nonperturbative detector observables once the
+16. Energy correlators are nonperturbative detector observables once the
     stress-tensor flux limit is constructed on the physical Hilbert space.
-16. Smeared detector observables are continuous under soft emission and
+17. Smeared detector observables are continuous under soft emission and
     collinear recombination, and this supplies the measurement-function input
     for KLN/factorization finiteness at fixed perturbative order.
-17. The energy-energy correlator and energy-flow polynomials are formulated in
+18. The energy-energy correlator and energy-flow polynomials are formulated in
     terms of positive calorimetric measures rather than colored parton labels.
-18. DIS is controlled by an inclusive Wightman current-current tensor; the
+19. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
     continuation to the physical inclusive tensor.
-19. The leading-twist local operators and the gauge-invariant light-ray
+20. The leading-twist local operators and the gauge-invariant light-ray
     operators are two presentations of the same short-distance data; asymptotic
     freedom changes Bjorken scaling into logarithmic scaling violation governed
     by anomalous dimensions.
-20. In QCD, partonic initial-state collinear singularities are not removed by
+21. In QCD, partonic initial-state collinear singularities are not removed by
     an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
     renormalized Wilson-line light-ray operators defining PDFs, and the
     resulting factorization-scale dependence is governed by DGLAP evolution.
-21. Physical QCD asymptotic completeness remains an open large-time problem:
+22. Physical QCD asymptotic completeness remains an open large-time problem:
     one must construct wave operators from stable color-singlet asymptotic
     spaces, treat resonances through analytic scattering data, include
     massless Goldstone modes when chiral limits are taken, and prove that
@@ -336,3 +345,7 @@ The chapter must define and derive:
   determinant, adding the Nambu--Goto reference expansion only as a reference
   effective-string coordinate, and recording
   `calculation-checks/qcd_string_luscher_checks.py`.
+- 2026-05-25 issue #492 follow-up: added the excited flux-tube level
+  structure, including open oscillator degeneracies, closed level matching,
+  and Nambu--Goto reference spectra through \(1/L^3\), with the calculation
+  check extended accordingly.

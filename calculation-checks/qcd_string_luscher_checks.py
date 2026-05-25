@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact coefficient checks for the QCD-string Luscher-term section."""
+"""Exact coefficient checks for the QCD-string effective-spectrum section."""
 
 from __future__ import annotations
 
@@ -38,10 +38,54 @@ def check_nambu_goto_reference_expansion() -> None:
     assert_equal("closed NG 1/L^3 coefficient denominator", Fraction(-1, closed_l3_denominator), Fraction(-1, 72))
 
 
+def colored_partition_degeneracies(colors: int, max_level: int) -> list[int]:
+    coeffs = [0] * (max_level + 1)
+    coeffs[0] = 1
+    for mode in range(1, max_level + 1):
+        for _ in range(colors):
+            for level in range(mode, max_level + 1):
+                coeffs[level] += coeffs[level - mode]
+    return coeffs
+
+
+def check_open_oscillator_degeneracies() -> None:
+    # For D=4 there are two transverse colors.  The generating function is
+    # product_{n >= 1} (1 - q^n)^(-2), whose first coefficients are displayed
+    # in the monograph.
+    assert colored_partition_degeneracies(colors=2, max_level=3) == [1, 2, 5, 10]
+
+
+def check_excited_level_expansion_coefficients() -> None:
+    c_perp = Fraction(2, 1)
+
+    # Open NG:
+    # E = sigma L + pi A/L - pi^2 A^2/(2 sigma L^3) + ...
+    open_level = Fraction(3, 1)
+    open_a = open_level - c_perp / 24
+    assert_equal("open excited 1/L coefficient", open_a, Fraction(35, 12))
+    assert_equal("open excited 1/L^3 coefficient without pi^2/sigma", -open_a * open_a / 2, Fraction(-1225, 288))
+
+    # Closed NG:
+    # E = sigma L + 2 pi A/L + 2 pi^2(q^2 - A^2)/(sigma L^3) + ...
+    n_left = Fraction(3, 1)
+    n_right = Fraction(1, 1)
+    q_momentum = Fraction(2, 1)
+    closed_a = n_left + n_right - c_perp / 12
+    assert_equal("closed level matching", n_left - n_right, q_momentum)
+    assert_equal("closed excited 1/L coefficient without pi", 2 * closed_a, Fraction(23, 3))
+    assert_equal(
+        "closed excited 1/L^3 coefficient without pi^2/sigma",
+        2 * (q_momentum * q_momentum - closed_a * closed_a),
+        Fraction(-385, 18),
+    )
+
+
 def main() -> None:
     check_open_and_closed_casimir_coefficients()
     check_nambu_goto_reference_expansion()
-    print("All QCD-string Luscher-term checks passed.")
+    check_open_oscillator_degeneracies()
+    check_excited_level_expansion_coefficients()
+    print("All QCD-string effective-spectrum checks passed.")
 
 
 if __name__ == "__main__":

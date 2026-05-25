@@ -87,9 +87,10 @@ Current checks:
   versus Veneziano quark-boundary counting.
 - `qcd_string_luscher_checks.py`: exact rational checks for the QCD-string
   effective-string section, including the open and closed transverse-scalar
-  Casimir coefficients \(-1/24\) and \(-1/6\), and the displayed
+  Casimir coefficients \(-1/24\) and \(-1/6\), the displayed
   Nambu--Goto reference expansion coefficients at orders \(1/L\) and
-  \(1/L^3\).
+  \(1/L^3\), the first \(D=4\) open-oscillator degeneracies, and the
+  excited-level expansion coefficients with closed-string level matching.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the

@@ -1872,6 +1872,151 @@ from the microscopic gauge theory, for example from lattice static-potential
 or flux-tube spectrum data.
 \end{controlledapproximation}
 
+\subsection{Excited Flux-Tube Levels}
+
+The same quadratic worldsheet theory gives the first approximation to the
+excited flux-tube spectrum.  For an open string with fixed endpoints, the
+transverse oscillator modes are labelled by
+\[
+  n\in\mathbb Z_{>0},\qquad i=1,\ldots,c_\perp ,
+  \qquad c_\perp=D-2 .
+\]
+Let \(N_{n,i}\in\mathbb Z_{\ge0}\) be the occupation number of the oscillator
+of frequency \(\pi n/L\).  The total oscillator level is
+\begin{equation}
+  N=\sum_{i=1}^{c_\perp}\sum_{n\ge1}n\,N_{n,i}.
+  \label{eq:qcd-string-open-oscillator-level}
+\end{equation}
+The Gaussian effective string therefore predicts
+\begin{equation}
+  E_N^{\mathrm{open}}(L)
+  =
+  \sigma_RL+\mu_R
+  +
+  \frac{\pi}{L}
+  \left(
+    N-\frac{c_\perp}{24}
+  \right)
+  +O(L^{-3})
+  \label{eq:qcd-string-open-gaussian-levels}
+\end{equation}
+before the \(L^{-3}\) corrections from the nonlinear action and boundary
+operators are included.  The number of oscillator states at level \(N\), prior
+to resolving the finite symmetry group of the particular flux-tube channel, is
+the coefficient of \(q^N\) in
+\begin{equation}
+  Z_{\mathrm{open,osc}}(q)
+  =
+  \prod_{n=1}^{\infty}(1-q^n)^{-c_\perp}.
+  \label{eq:qcd-string-open-oscillator-generating}
+\end{equation}
+For \(D=4\), where \(c_\perp=2\), the first coefficients are
+\[
+  1,\ 2,\ 5,\ 10,\ldots .
+\]
+These are not yet a complete list of lattice quantum numbers.  A flux tube
+between static sources also carries parity, charge conjugation when defined,
+and angular momentum around the source axis; those labels are obtained by
+decomposing the oscillator states under the residual spacetime symmetries of
+the static-source sector.
+
+For a closed flux tube winding a spatial circle, the quadratic theory has
+left- and right-moving oscillators.  Define
+\[
+  N_L=\sum_{i=1}^{c_\perp}\sum_{n\ge1}n\,N^L_{n,i},
+  \qquad
+  N_R=\sum_{i=1}^{c_\perp}\sum_{n\ge1}n\,N^R_{n,i}.
+\]
+Translation along the winding circle gives a quantized longitudinal momentum
+\[
+  p_\parallel=\frac{2\pi q}{L},
+  \qquad q\in\mathbb Z,
+\]
+and the residual worldsheet translation constraint imposes the level-matching
+condition
+\begin{equation}
+  N_L-N_R=q .
+  \label{eq:qcd-string-closed-level-matching}
+\end{equation}
+At Gaussian order the closed-string energy is
+\begin{equation}
+  E_{N_L,N_R,q}^{\mathrm{closed}}(L)
+  =
+  \sigma_kL
+  +
+  \frac{2\pi}{L}
+  \left(
+    N_L+N_R-\frac{c_\perp}{12}
+  \right)
+  +O(L^{-3}),
+  \label{eq:qcd-string-closed-gaussian-levels}
+\end{equation}
+with the \(q\)-dependent kinetic contribution first entering at order
+\(L^{-3}\) in the large-\(L\) expansion.  The \(N_L=N_R=0\) case recovers
+\eqref{eq:qcd-string-closed-luscher}.
+
+In the Nambu--Goto reference theory these oscillator levels are packaged into
+the square-root formulas
+\begin{align}
+  E_N^{\mathrm{NG,open}}(L)
+  &=
+  \sigma_R L
+  \sqrt{
+    1+
+    \frac{2\pi}{\sigma_RL^2}
+    \left(N-\frac{c_\perp}{24}\right)
+  },
+  \label{eq:qcd-string-ng-open-levels}\\
+  E_{N_L,N_R,q}^{\mathrm{NG,closed}}(L)
+  &=
+  \sigma_k L
+  \sqrt{
+    1+
+    \frac{4\pi}{\sigma_kL^2}
+    \left(N_L+N_R-\frac{c_\perp}{12}\right)
+    +
+    \left(\frac{2\pi q}{\sigma_kL^2}\right)^2
+  },
+  \label{eq:qcd-string-ng-closed-levels}
+\end{align}
+with \eqref{eq:qcd-string-closed-level-matching} imposed in the closed case.
+Expanding these formulas gives
+\begin{align}
+  E_N^{\mathrm{NG,open}}(L)
+  &=
+  \sigma_RL
+  +
+  \frac{\pi}{L}
+  \left(N-\frac{c_\perp}{24}\right)
+  -
+  \frac{\pi^2}{2\sigma_RL^3}
+  \left(N-\frac{c_\perp}{24}\right)^2
+  +O(L^{-5}),
+  \label{eq:qcd-string-ng-open-level-expansion}\\
+  E_{N_L,N_R,q}^{\mathrm{NG,closed}}(L)
+  &=
+  \sigma_kL
+  +
+  \frac{2\pi}{L}
+  \left(N_L+N_R-\frac{c_\perp}{12}\right)
+  \notag\\
+  &\quad
+  +
+  \frac{2\pi^2}{\sigma_kL^3}
+  \left[
+    q^2-
+    \left(N_L+N_R-\frac{c_\perp}{12}\right)^2
+  \right]
+  +O(L^{-5}).
+  \label{eq:qcd-string-ng-closed-level-expansion}
+\end{align}
+The square-root formulas are useful because they organize a large set of
+levels with the same conventions, but the QCD statement is weaker and more
+precise: the Gaussian \(1/L\) structure follows from the assumed gapless
+transverse modes, while the \(1/L^3\) and later terms are effective-string
+matching data unless a universality theorem for the relevant order and
+boundary condition has been established.
+
 With dynamical fundamental quarks the fundamental one-form symmetry is
 explicitly broken.  The static-source Hilbert space then contains states made
 from two color-singlet static-light mesons, and the ground-state energy at very
