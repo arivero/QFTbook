@@ -149,7 +149,7 @@ With the convention of
 Chapter~\ref{ch:volume-ii-scattering-kernels}, the geometric bubble chain gives
 the connected \(S\)-kernel transition part
 \[
-  \ii\mathcal M_{\mathrm{chain}}(s)
+  \ii\mathcal M_{\mathrm{chain}}^{(s)}(s)
   =
   -\ii g
   \sum_{L=0}^{\infty}
@@ -160,12 +160,60 @@ the connected \(S\)-kernel transition part
 External wavefunction factors multiply the expression and do not move the
 zeros of the denominator.
 
+For a real scalar field the external particles are identical, so the physical
+amplitude is Bose symmetric.  The displayed chain is the contribution in the
+\((12)\)-channel.  The crossed chains obtained by applying the same truncated
+geometric construction in the \((13)\)- and \((14)\)-channels give functions
+\(\mathcal M_{\mathrm{chain}}^{(t)}(t)\) and
+\(\mathcal M_{\mathrm{chain}}^{(u)}(u)\), and the full identical-boson
+amplitude in this additive channel truncation is decomposed as
+\[
+  \mathcal M_{\mathrm{Bose}}(s,z)
+  =
+  \mathcal M_{\mathrm{chain}}^{(s)}(s)
+  +
+  \mathcal M_{\mathrm{chain}}^{(t)}(t(s,z))
+  +
+  \mathcal M_{\mathrm{chain}}^{(u)}(u(s,z))
+  +
+  \mathcal M_{\mathrm{rest}}(s,z),
+\]
+where \(\mathcal M_{\mathrm{rest}}\) denotes kernels not included in the
+single-channel bubble-chain truncation.  In a four-dimensional partial-wave
+normalization the identical-boson \(s\)-wave coordinate would be
+\[
+  a_0^{\mathrm{Bose}}(s)
+  =
+  \frac{1}{64\pi}\int_{-1}^{1}\dd z\,
+  \mathcal M_{\mathrm{Bose}}(s,z)
+  =
+  \frac{\mathcal M_{\mathrm{chain}}^{(s)}(s)}{32\pi}
+  +
+  a_{0,\mathrm{cross}}(s).
+\]
+Here, for center-of-mass momentum \(p_*^2=(s-4m^2)/4\),
+\[
+  t(s,z)=-2p_*^2(1-z),
+  \qquad
+  u(s,z)=-2p_*^2(1+z).
+\]
+As \(s\) approaches the \(s\)-channel threshold \(4m^2\), the crossed
+invariants \(t\) and \(u\) remain in a neighborhood of \(0\), whereas the
+\((12)\)-channel invariant approaches its two-particle threshold.  Therefore
+the crossed chains and \(\mathcal M_{\mathrm{rest}}\), insofar as they are
+regular in this local neighborhood, contribute to \(a_{0,\mathrm{cross}}\) as
+analytic background terms.  They do not contain the
+\(f(s)\sim\pi/(m\sqrt{4m^2-s})\) threshold enhancement that drives the
+denominator displayed above.  Including the crossed and omitted kernels in a
+more complete Bethe--Salpeter kernel can change the numerical pole position;
+the calculation below is the leading single-channel statement.
+
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.82,
   leg/.style={line width=0.8pt},
   dot/.style={fill=gray!25,draw,circle,inner sep=1.8pt}]
   \begin{scope}
-    \node at (-0.9,0) {\(\ii\mathcal M_{\mathrm{chain}}=\)};
+    \node at (-0.9,0) {\(\ii\mathcal M_{\mathrm{chain}}^{(s)}=\)};
     \node[dot] (c) at (0.35,0) {};
     \draw[leg] (-0.35,0.55)--(c)--(1.05,0.55);
     \draw[leg] (-0.35,-0.55)--(c)--(1.05,-0.55);

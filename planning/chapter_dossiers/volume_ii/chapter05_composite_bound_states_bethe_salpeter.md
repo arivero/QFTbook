@@ -43,7 +43,9 @@
 | \(\widehat V_P\) | integral operator with kernel \(\mathcal K_P(p,q)\mathcal G_P(q)\) acting on the amputated amplitude |
 | \(\mathcal X\) | chosen test-function, Sobolev, or Hilbert space on which the amputated Bethe--Salpeter operator is realized |
 | \(f(s)\) | \(D=2\) scalar bubble Feynman-parameter integral |
-| \(s,t\) | Mandelstam variables \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\) in the source convention |
+| \(s,t,u\) | Mandelstam variables \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\), \(u=-(k_1-k_4)^2\) |
+| \(\mathcal M_{\mathrm{chain}}^{(s)}\) | single-channel bubble-chain approximation in the \((12)\)-channel |
+| \(a_0^{\mathrm{Bose}}\) | identical-boson \(s\)-wave partial-wave coordinate in the \(32\pi\) convention |
 
 ## Assumptions
 
@@ -57,6 +59,11 @@
   existence from the Lagrangian.
 - The bubble-chain calculation is an approximation that isolates repeated
   two-particle propagation; it is used only in its domain of weak binding.
+- For identical real scalars, the displayed bubble chain is the \(s\)-channel
+  contribution.  Crossed \(t\)- and \(u\)-channel chains and omitted
+  two-particle-irreducible kernels are separate Bose-symmetric contributions;
+  near the \(s\)-channel threshold they are analytic background terms unless
+  an additional crossed-channel singularity is present.
 - A zero of the bubble-chain denominator is a pole of the approximate kernel;
   identifying it with an exact particle requires additional nonperturbative
   control.
@@ -99,7 +106,7 @@
   scattering amplitude.
 - In \(D=2\) \(\phi^4\) theory, the bubble-chain approximation gives
   \[
-    \ii\mathcal A_{\mathrm{chain}}
+    \ii\mathcal M_{\mathrm{chain}}^{(s)}
     =
     \frac{-\,\ii g}{1+g f(s)/(8\pi)}
   \]
@@ -147,6 +154,17 @@
 - A ladder approximation is a controlled approximation only after a norm or
   compact-operator topology is supplied and the omitted two-particle
   irreducible kernels are bounded in that topology.
+- In a Bose-symmetric partial-wave projection,
+  \[
+    a_0^{\mathrm{Bose}}(s)
+    =
+    \frac{\mathcal M_{\mathrm{chain}}^{(s)}(s)}{32\pi}
+    +
+    a_{0,\mathrm{cross}}(s),
+  \]
+  with \(a_{0,\mathrm{cross}}\) regular near \(s=4m^2\) under the local
+  no-crossed-threshold hypothesis, while the displayed \(s\)-channel chain has
+  the threshold enhancement \(f(s)\sim\pi/(m\sqrt{4m^2-s})\).
 
 ## Figures
 
@@ -181,3 +199,8 @@
   from an informal Fredholm converse to a labeled theorem with compactness,
   analyticity, invertibility-somewhere, channel-overlap, and spectral
   positivity hypotheses, including the simple-eigenvalue residue formula.
+- 2026-05-24 issue #389 pass: relabelled the bubble-chain amplitude as an
+  \(s\)-channel truncation, added the Bose-symmetric \(s\)-wave projection,
+  and recorded that crossed \(t,u\) chains are regular background near the
+  \(s\)-channel threshold unless an additional crossed-channel singularity is
+  present.
