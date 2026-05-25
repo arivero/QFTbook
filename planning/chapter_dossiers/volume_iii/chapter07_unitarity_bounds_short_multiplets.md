@@ -103,3 +103,7 @@ The chapter establishes:
   Lorentzian-to-radial generator map in Chapter 4 and stated that the
   positive sign in the radial \([K_\mu,P_\nu]\) commutator is not obtained by
   a naive deletion of Lorentzian factors of \(\ii\).
+- 2026-05-24 issue #417 pass: cross-referenced the Chapter 4 BPZ
+  Hilbert-space derivation of \(P_\mu^\dagger=K_\mu\), so level-one descendant
+  positivity rests on the reflection-positive radial completion rather than on
+  an unexplained inversion slogan.

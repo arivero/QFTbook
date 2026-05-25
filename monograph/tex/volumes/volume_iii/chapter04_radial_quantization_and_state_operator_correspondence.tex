@@ -1362,10 +1362,84 @@ two-point functions have been fixed.
 
 \section{Adjoints of the Conformal Generators}
 
-In radial quantization, Hermitian conjugation is reflection through the unit
-sphere followed by the internal adjunction of the operator.  This fixes the
-adjoints of the conformal generators.  Dilatations are translations in
-cylinder time, so
+In radial quantization, Hermitian conjugation is not merely a statement about
+which conformal Killing vector is carried to which vector field by inversion.
+It is a Hilbert-space statement in the reflection-positive completion of
+Hypothesis~\ref{hyp:radial-reconstruction-data}.  Let
+\(\mathcal D_{\rm loc}\subset\mathcal H_{S^{D-1}}\) be the dense domain of
+finite linear combinations of local finite-energy states.  For a scalar
+primary, the BPZ bra associated with the ket
+\[
+  \ket{\mathcal O}
+  =
+  \lim_{\tau\to-\infty}
+  \ee^{-\Delta\tau}\widetilde{\mathcal O}(\tau,n)\ket{\vac}
+\]
+is
+\begin{equation}
+  \langle\!\langle\mathcal O|
+  =
+  \lim_{\tau\to+\infty}
+  \ee^{\Delta\tau}
+  \bra{\vac}\widetilde{\mathcal O}^{\,\Theta_{\rm int}}(\tau,n),
+  \label{eq:bpz-bra-radial-quantization-ch4}
+\end{equation}
+where \(\Theta_{\rm int}\) denotes the ordinary internal adjunction; for a
+spinning primary one also includes the spin-frame rotation specified by the
+radial reflection map in Hypothesis~\ref{hyp:radial-reconstruction-data}.
+Equivalently, in flat coordinates the bra is represented by the insertion
+obtained from \(x\mapsto x/x^2\), together with the Weyl factor and spin
+transport.  Formula \eqref{eq:bpz-bra-radial-quantization-ch4} is the
+Hilbert-space version of the cylinder limit used later in
+\eqref{eq:bpz-bra-from-cylinder-limit}.
+
+The adjoint of an unbounded conformal generator is first defined on
+\(\mathcal D_{\rm loc}\).  Let \(T_a\) be the finite translation of inside
+insertions by a small vector \(a\), and let
+\begin{equation}
+  C_a:=\vartheta\circ T_a\circ\vartheta,
+  \qquad
+  \vartheta(x)=\frac{x}{|x|^2},
+  \label{eq:sct-as-reflected-translation}
+\end{equation}
+be the corresponding finite special conformal transformation of the reflected
+insertions.  The equality of Schwinger functions after applying the same
+conformal transformation to all separated insertions gives, for
+\(A,B\in\mathcal D_{\rm loc}\) and \(a\) small enough that no support crosses the
+reflection sphere,
+\begin{equation}
+  \langle A,T_a B\rangle_{\rm rad}
+  =
+  \langle C_a A,B\rangle_{\rm rad}.
+  \label{eq:bpz-translation-special-conformal-finite}
+\end{equation}
+This is the step supplied by the BPZ bra construction: the transformation of
+the ket insertion is moved to the bra by radial reflection, and inversion
+turns the translated reflected insertion into a special-conformal one.  With
+the radial generator convention in which translations create descendants,
+\[
+  \left.\frac{\partial}{\partial a^\mu}T_a B\right|_{a=0}
+  =
+  \widehat P_\mu B,
+  \qquad
+  \left.\frac{\partial}{\partial a^\mu}C_a A\right|_{a=0}
+  =
+  \widehat K_\mu A .
+\]
+Differentiating
+\eqref{eq:bpz-translation-special-conformal-finite} at \(a=0\) gives
+\begin{equation}
+  \langle A,\widehat P_\mu B\rangle_{\rm rad}
+  =
+  \langle \widehat K_\mu A,B\rangle_{\rm rad},
+  \qquad A,B\in\mathcal D_{\rm loc}.
+  \label{eq:bpz-p-adjoint-k-domain}
+\end{equation}
+Thus \(\widehat K_\mu\) is the Hilbert-space adjoint of \(\widehat P_\mu\) on
+the local finite-energy domain; after quotienting null states and taking the
+closure this is the adjoint relation used in the descendant Gram matrices.
+
+Dilatations are translations in cylinder time, so
 \[
   \widehat D^\dagger=\widehat D
 \]
@@ -1374,8 +1448,7 @@ of the spatial sphere:
 \[
   \widehat J_{\mu\nu}^\dagger=\widehat J_{\mu\nu}.
 \]
-Translations and special conformal transformations are exchanged by inversion,
-hence
+Equation \eqref{eq:bpz-p-adjoint-k-domain} is therefore summarized as
 \begin{equation}
   \widehat P_\mu^\dagger=\widehat K_\mu,
   \qquad

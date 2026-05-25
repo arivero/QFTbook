@@ -232,3 +232,9 @@ The chapter establishes:
   \(P_{\rm rad}=\ii P_{\rm L}\), and \(K_{\rm rad}=-\ii K_{\rm L}\).
   This derives the radial \([K_\mu,P_\nu]\) sign used by the unitarity
   bounds.
+- 2026-05-24 issue #417 pass: replaced the bare statement that inversion
+  exchanges translations and special conformal transformations by the BPZ
+  Hilbert-space construction on the dense local finite-energy domain.  The
+  chapter now displays the conjugate bra limit, the reflected finite
+  transformation identity, and the differentiated domain relation
+  \(\langle A,P_\mu B\rangle_{\rm rad}=\langle K_\mu A,B\rangle_{\rm rad}\).
