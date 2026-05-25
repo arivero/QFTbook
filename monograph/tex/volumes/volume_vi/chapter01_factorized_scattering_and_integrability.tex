@@ -72,34 +72,101 @@ analogue, for ordered asymptotic particles in \(1+1\) dimensions, of the
 ordinary associativity constraint on multiple OPE expansions in the CFT
 volume.
 
+\begin{definition}[Separating higher-spin family]
+\label{def:separating-higher-spin-family}
+Let \(\{Q_{s,\lambda}\}_{(s,\lambda)\in\mathcal A}\) be commuting conserved
+charges whose one-particle eigenvalues have the form
+\[
+  q_{s,\lambda,a}(\theta)=\kappa_{s,\lambda,a}\,\ee^{s\theta},
+  \qquad s>1.
+\]
+For fixed particle number \(N\), set \(z_i=\ee^{\theta_i}\).  The family is
+\(N\)-separating on a rapidity domain \(U_N\) if the moment map
+\[
+  \Phi_N\bigl(\{(a_i,z_i)\}_{i=1}^N\bigr)
+  =
+  \left(
+    \sum_{i=1}^N\kappa_{s,\lambda,a_i}z_i^s
+  \right)_{(s,\lambda)\in\mathcal A}
+\]
+is injective on \(U_N/\mathfrak S_N\), outside a specified closed exceptional
+set consisting of coincident rapidities and declared threshold or bound-state
+singular loci.  The quotient means that only the unordered multiset of
+species and rapidities is to be recovered.
+
+A concrete sufficient condition, for a finite species set, is the following.
+For each species \(a\) and for each \(r\) needed up to the maximal particle
+number under consideration, finite linear combinations of the charges produce
+the species-resolved power sums
+\[
+  p_{r,a}=\sum_{i:\,a_i=a}z_i^r .
+\]
+Then Newton identities recover the monic polynomial
+\[
+  \prod_{i:\,a_i=a}(t-z_i)
+\]
+for each species \(a\), and hence recover the unordered species-resolved
+rapidity multiset wherever the roots are distinct.  The definition above is
+the hypothesis used below; this sufficient condition is only a convenient
+checkable way to obtain it.
+\end{definition}
+
 \begin{proposition}[Factorization from conserved higher-spin charges]
 \label{prop:higher-spin-factorization-kinematic}
-Assume a massive \(1+1\)-dimensional QFT has asymptotic particle states and a
-commuting conserved charge \(Q_s\) of Lorentz spin \(s>1\) whose one-particle
-eigenvalue on species \(a\) is
+Assume a massive \(1+1\)-dimensional QFT has Haag--Ruelle asymptotic particle
+states, a family of conserved charges
+\(\{Q_{s,\lambda}\}_{(s,\lambda)\in\mathcal A}\) as in
+Definition~\ref{def:separating-higher-spin-family}, and scattering kernels
+which, after smearing by compactly supported wave packets in rapidity
+chambers, depend continuously on the wave packets away from threshold and
+bound-state singular loci.  Equivalently, the unsmeared kernels are
+distributional boundary values whose singular support in the rapidity
+variables is contained in those declared loci.
+
+If the scattering operator commutes with every \(Q_{s,\lambda}\), and if the
+charge family is \(N\)-separating on the incoming and outgoing \(N\)-particle
+domains under consideration, then the \(N\to N\) scattering kernel is
+supported, away from the declared singular loci, on the union of permutation
+graphs
 \[
-  q_{s,a}(\theta)=\kappa_{s,a}\,\ee^{s\theta}.
+  \{(\theta'_1,b_1;\ldots;\theta'_N,b_N)
+    =
+    (\theta_{\sigma(1)},a_{\sigma(1)};\ldots;
+     \theta_{\sigma(N)},a_{\sigma(N)})\}.
 \]
-If scattering preserves \(Q_s\), and if the functions \(q_{s,a}\) separate
-generic multisets of incoming rapidities and species up to permutation, then
-every scattering process preserves the rapidity multiset.  In particular,
-generic scattering is elastic and has no particle production.
+If the corresponding moment maps for \(M\neq N\) have disjoint generic
+images, then generic \(N\to M\) particle production is absent.
 \end{proposition}
 
 \begin{proof}
-For an incoming state with rapidities \(\theta_i\) and species \(a_i\), charge
-conservation gives
+Let \(K_{N\to M}\) be the distribution kernel of the scattering operator
+between ordered rapidity chambers, away from the declared singular loci.
+Commutation with \(Q_{s,\lambda}\) gives, in the sense of distributions,
 \[
-  \sum_i \kappa_{s,a_i}\ee^{s\theta_i}
-  =
-  \sum_j \kappa_{s,b_j}\ee^{s\theta'_j}
+  \left(
+    \sum_{i=1}^N\kappa_{s,\lambda,a_i}\ee^{s\theta_i}
+    -
+    \sum_{j=1}^M\kappa_{s,\lambda,b_j}\ee^{s\theta'_j}
+  \right)
+  K_{N\to M}=0
 \]
-for each conserved spin \(s\) in the separating family.  The hypotheses say
-that these power-sum type invariants determine the unordered outgoing multiset
-from the incoming one on a dense open set of kinematics.  Continuity of the
-scattering matrix then extends the conclusion away from that dense set except
-at threshold or bound-state singular loci, where the statement must be read
-after resolving the corresponding channels.
+for every \((s,\lambda)\).  A standard support property of distributions says
+that if a smooth function \(f\) is nonzero on an open set and \(fT=0\), then
+the distribution \(T\) vanishes on that open set.  Therefore the support of
+the kernel is contained in the common zero locus of all differences of charge
+eigenvalues.
+
+For \(M=N\), the \(N\)-separation hypothesis says that this common zero locus,
+outside the exceptional set, is precisely the union of permutation graphs
+displayed in the statement.  Thus, after smearing with wave packets supported
+in a connected component of the regular rapidity chamber, the scattering
+operator cannot have support away from elastic permutations.  For \(M\neq N\),
+the assumed disjointness of the generic moment-map images leaves no regular
+common zero locus, so the production kernel vanishes on the corresponding
+open domain.  Threshold and bound-state loci are excluded from the statement
+because the distribution kernels may have additional singular components
+there; those components must be described after the relevant channel is
+resolved.
 \end{proof}
 
 \section{Zamolodchikov--Faddeev Operators}
@@ -135,15 +202,21 @@ factor is
   Z_{a_1}^\dagger(\theta_1)\cdots Z_{a_n}^\dagger(\theta_n)\ket{\vac},
   \qquad \theta_1>\cdots>\theta_n .
 \]
-Locality with respect to the asymptotic particles gives Watson equations,
+Changing the ordered rapidity chamber changes the scattering basis by the
+two-body \(S\)-matrix.  Thus the form-factor boundary values obey Watson
+exchange equations,
 \[
   F^{\mathcal O}_{\ldots a_i a_{i+1}\ldots}(\ldots,\theta_i,\theta_{i+1},\ldots)
   =
   S_{a_i a_{i+1}}^{bc}(\theta_i-\theta_{i+1})\,
   F^{\mathcal O}_{\ldots c b\ldots}(\ldots,\theta_{i+1},\theta_i,\ldots),
 \]
-together with crossing and residue equations at bound-state poles.  The
-operator reconstruction problem is to determine which solutions of these
+together with crossing, cyclicity, and residue equations at bound-state
+poles.  The exchange equation is a statement about boundary values in
+neighboring rapidity chambers and the normalization of ordered scattering
+states; locality of \(\mathcal O\) enters the cyclicity and semi-locality
+conditions developed in Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}.
+The operator reconstruction problem is to determine which solutions of these
 functional equations come from genuine local operators in a Hilbert-space
 QFT.  The theorem-boundary data include the local operator domain,
 positivity, convergence of form-factor expansions, and clustering.

@@ -10,7 +10,9 @@
 ## Definitions And Results
 
 - Finite-particle form factors as vacuum-to-in-state matrix elements.
-- Watson exchange equation derived from factorized scattering.
+- Watson exchange equation derived from the two distributional rapidity
+  boundary values and the ordered-state basis relation supplied by
+  factorized scattering.
 - Cyclicity and semi-locality monodromy.
 - Kinematic annihilation pole and bound-state pole equations.
 - Free Majorana examples: the energy-density two-particle form factor and
@@ -33,8 +35,11 @@
 
 ## Claim Ledger
 
-1. Exchange of adjacent rapidities gives Watson's equation when ordered
-   finite-particle bases are related by the factorized \(S\)-matrix.
+1. Exchange of adjacent rapidities gives Watson's equation when the two
+   \(i0\)-boundary values of ordered finite-particle states are related by
+   the adjacent factorized \(S\)-matrix; locality enters upstream in
+   scattering-state construction and downstream in cyclicity, not as a
+   substitute for this boundary-value statement.
 2. Kinematic-pole residues are differences between direct annihilation and
    annihilation after scattering through spectator particles.
 3. Bound-state form-factor poles use the same residue tensors as scattering.

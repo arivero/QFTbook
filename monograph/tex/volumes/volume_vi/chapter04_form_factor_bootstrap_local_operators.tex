@@ -44,9 +44,39 @@ conditions on \(F^{\mathcal O}\).
 \section{Exchange Equation}
 
 Analytic continuation in rapidities extends the ordered form factor to
-domains in \(\C^n\).  When two adjacent rapidities are exchanged, the
-incoming state changes by the two-body scattering operator.  Therefore the
-covector-valued form factor satisfies Watson's exchange equation
+domains in \(\C^n\).  Fix an adjacent pair and write
+\[
+  \mathcal C_+=\{\theta_i>\theta_{i+1}\},
+  \qquad
+  \mathcal C_-=\{\theta_{i+1}>\theta_i\}.
+\]
+The form factor has two distributional boundary values at the wall
+\(\theta_i=\theta_{i+1}\), obtained by approaching the wall from the two
+ordered chambers, or equivalently by the two standard \(i0\)-prescriptions
+for the rapidity difference
+\[
+  F_+=\lim_{\epsilon\downarrow0}
+  F(\ldots,\theta_i+\ii\epsilon,\theta_{i+1}-\ii\epsilon,\ldots),
+  \qquad
+  F_-=\lim_{\epsilon\downarrow0}
+  F(\ldots,\theta_i-\ii\epsilon,\theta_{i+1}+\ii\epsilon,\ldots).
+\]
+The ordered scattering-state convention says that the corresponding
+finite-particle boundary vectors are related by the adjacent two-body
+scattering operator,
+\[
+  \ket{\ldots;\theta_i,a_i;\theta_{i+1},a_{i+1};\ldots}_{+}
+  =
+  S_{a_i a_{i+1}}^{bc}(\theta_i-\theta_{i+1})
+  \ket{\ldots;\theta_{i+1},c;\theta_i,b;\ldots}_{-}.
+  \label{eq:ordered-state-boundary-exchange}
+\]
+This relation is the rapidity-space form of the scattering theorem for
+ordered Haag--Ruelle states in a factorizing theory; locality is used
+upstream in constructing the asymptotic fields and their scattering
+relations, not as a one-line replacement for the boundary-value statement.
+Pairing \eqref{eq:ordered-state-boundary-exchange} with the local-operator
+covector gives Watson's exchange equation
 \[
   F^{\mathcal O}_{\ldots a_i a_{i+1}\ldots}
   (\ldots,\theta_i,\theta_{i+1},\ldots)
@@ -68,12 +98,25 @@ rapidity boundary values satisfies the exchange equation above.
 \end{proposition}
 
 \begin{proof}
-On a chamber \(\theta_i>\theta_{i+1}\), the displayed state is by definition
-ordered.  On the neighboring chamber, the same distributional vector is
-expressed in the opposite order.  Factorized scattering says that the change
-of ordered basis is exactly the adjacent two-body scattering map, with all
-other tensor factors unchanged.  Pairing the two expressions with
-\(\bra{\Omega}\widehat{\mathcal O}(0)\) gives the stated covector identity.
+Let \(g_+\) and \(g_-\) be compactly supported test functions in the two
+neighboring rapidity chambers whose supports approach the same compact set on
+the wall but do not meet any bound-state or threshold singularity.  Smearing
+\eqref{eq:ordered-state-boundary-exchange} with these test functions gives an
+identity of Hilbert-space vectors in the finite-particle scattering domain.
+The identity is first proved for separated velocity supports by the
+Haag--Ruelle construction of ordered in-states; analytic continuation in the
+rapidity difference then supplies the displayed boundary values.  The
+factorizing hypothesis identifies the change of ordered basis with the
+adjacent two-body \(S\)-matrix and leaves all other tensor factors unchanged.
+
+Applying the continuous distributional covector
+\(\bra{\Omega}\widehat{\mathcal O}(0)\) to both sides gives the equality of
+smeared form-factor boundary values.  Since this holds for all such test
+functions, the equality holds as a distributional boundary-value identity in
+the rapidity variables.  No off-shell Lagrangian is used.  The hypotheses are
+the existence of the finite-particle scattering states, their
+boundary-value analyticity in rapidity chambers, and the factorized
+two-body change of ordered basis.
 \end{proof}
 
 \section{Cyclicity, Locality, and Semi-Locality}
