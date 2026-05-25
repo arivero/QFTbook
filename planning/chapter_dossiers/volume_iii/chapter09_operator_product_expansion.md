@@ -15,10 +15,11 @@ The chapter establishes:
 
 - the radial Hilbert-space statement of OPE convergence for insertions inside
   a separating sphere;
-- Definition `def:radial-ope-convergence-hypotheses`, which expands the
-  cross-reference to Chapter 4's radial reconstruction hypothesis into the
-  exact Euclidean inputs used by the OPE theorem and the additional Lorentzian
-  analytic-continuation inputs used later;
+- Definition `def:radial-ope-convergence-hypotheses`, now titled as inputs
+  from radial reconstruction, which expands the cross-reference to Chapter 4's
+  radial reconstruction hypothesis into the exact Euclidean inputs used by the
+  OPE theorem and the additional Lorentzian analytic-continuation inputs used
+  later without introducing a second assumption package;
 - the use of the same nonnegative self-adjoint radial Hamiltonian
   \(D_{\rm rad}\) specified in Chapter 4's radial reconstruction hypothesis;
 - the separation between Euclidean radial Hilbert-space convergence and
@@ -194,6 +195,10 @@ The chapter establishes:
   `def:radial-ope-convergence-hypotheses`, making the scope of the
   reflection-positive radial OPE theorem a direct expansion of Chapter 4's
   radial reconstruction data, with Euclidean and Lorentzian inputs separated.
+- 2026-05-24 issue #418 pass: retitled the OPE convergence input block and
+  stated explicitly that the listed items are clauses of
+  `hyp:radial-reconstruction-data`, not an independent duplicate set of
+  assumptions.
 - 2026-05-24 follow-up pass: replaced literal product/equality language in
   the opening OPE formulation and reconstruction discussion by state-valued
   BPZ/radial-norm convergence of local-operator partial sums.
