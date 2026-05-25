@@ -1978,6 +1978,196 @@ an irrelevant coordinate decays toward the infrared at the linearized level.
 This is a statement about the endpoint map of the RG flow, not about a
 microscopic equality of actions.
 
+\subsection{Dangerously Irrelevant Coordinates}
+\label{sec:dangerously-irrelevant-coordinates}
+
+Irrelevance is a statement about the RG endpoint in a specified coordinate
+chart.  It is not, by itself, a license to set the corresponding coordinate
+to zero inside every observable before taking the physical limit.  The precise
+distinction is as follows.
+
+\begin{definition}[Dangerously irrelevant coordinate for an observable]
+Fix a finite RG chart near a fixed point, with relevant coordinates \(u^A\)
+and irrelevant coordinates \(v^\rho\) as in
+\eqref{eq:critical-scaling-coordinate-linear-flow}.  Let
+\({\mathcal O}\) be an observable whose scaling limit is represented in the
+same chart by an observable map
+\[
+  F_{\mathcal O}(u,v)
+\]
+after the required source normalization and subtraction conventions have been
+specified.  An irrelevant coordinate \(v^\rho\) is called dangerously
+irrelevant for \({\mathcal O}\), in a sector \(S\) of the relevant-coordinate
+space, if the following three conditions hold.
+
+First, \(v^\rho\) is RG-irrelevant at the fixed point:
+\(\omega_\rho=\Delta_\rho-D>0\).  Second, for flows approaching the fixed
+point through the sector \(S\), the reduced map obtained by first setting
+\(v^\rho=0\) is not asymptotic to the full observable map.  Equivalently,
+after choosing an infrared rescaling factor \(b\),
+\begin{equation}
+  F_{\mathcal O}(u,v)
+  =
+  b^{-\Delta_{\mathcal O}}\,
+  {\mathcal F}_{\mathcal O}
+  \bigl(b^{y_A}u^A,b^{-\omega_\rho}v^\rho,\ldots\bigr),
+  \label{eq:dangerously-irrelevant-scaling-form}
+\end{equation}
+and the scaling function in the sector under consideration has no finite
+limit, or has the wrong limiting branch, as
+\(w=b^{-\omega_\rho}v^\rho\to0\).  Third, this singular dependence changes
+an exponent or a leading amplitude of \({\mathcal O}\).
+\end{definition}
+
+Thus ``dangerous'' is a property of a coordinate together with an observable
+and a sector of its scaling variables.  The same coordinate remains irrelevant
+for the stability of the fixed point and for observables whose scaling
+functions have regular \(w\to0\) limits.
+
+The canonical example is the scalar/Ising equation of state above four
+Euclidean dimensions.  At the Gaussian fixed point in \(D>4\), the field has
+dimension
+\[
+  \Delta_\phi=\frac{D-2}{2}.
+\]
+Let \(M\) denote the uniform order parameter, \(t\) the thermal coordinate,
+\(h\) the magnetic source, and \(g>0\) the quartic coordinate in the Landau
+functional
+\begin{equation}
+  f_{\rm L}(M;t,h,g)
+  =
+  \frac12 tM^2+\frac{g}{4!}M^4-hM .
+  \label{eq:dangerous-landau-functional}
+\end{equation}
+The Gaussian engineering dimensions are
+\[
+  y_t=2,\qquad
+  y_h=D-\Delta_\phi=\frac{D+2}{2},\qquad
+  y_g=4-D<0 .
+\]
+The quartic coordinate is therefore irrelevant at the Gaussian fixed point.
+Nevertheless it is load-bearing in the ordered equation of state.  Stationarity
+of \eqref{eq:dangerous-landau-functional} gives
+\begin{equation}
+  h=tM+\frac{g}{6}M^3 .
+  \label{eq:dangerous-equation-of-state}
+\end{equation}
+For \(h=0\) and \(t<0\),
+\begin{equation}
+  M^2=-\frac{6t}{g}.
+  \label{eq:dangerous-ordered-magnetization}
+\end{equation}
+Setting \(g=0\) before minimizing removes the stabilizing term and destroys
+the ordered saddle.  The singular dependence on \(g\) is not a contradiction
+of RG irrelevance; it says that the ordered order-parameter observable uses a
+singular branch of the scaling function.
+
+To see the exponent directly, apply the Gaussian scaling form
+\begin{equation}
+  M(t,h,g)
+  =
+  b^{-(D-2)/2}
+  {\mathcal M}
+  \left(b^2t,\ b^{(D+2)/2}h,\ b^{4-D}g\right).
+  \label{eq:dangerous-magnetization-scaling}
+\end{equation}
+Choose \(b=|t|^{-1/2}\).  In the ordered sector \(t<0\), \(h=0\), the third
+argument is
+\[
+  w=b^{4-D}g=g\,|t|^{(D-4)/2}\to0^+ .
+\]
+Equation \eqref{eq:dangerous-ordered-magnetization} implies
+\[
+  {\mathcal M}(-1,0,w)\sim \left(\frac6w\right)^{1/2}
+  \qquad (w\to0^+).
+\]
+Substitution into \eqref{eq:dangerous-magnetization-scaling} gives
+\begin{equation}
+  M(t,0,g)
+  \sim
+  \sqrt{\frac6g}\,|t|^{1/2},
+  \qquad D>4,\quad t\to0^- .
+  \label{eq:dangerous-mean-field-beta}
+\end{equation}
+The magnetic critical exponent is therefore the mean-field value
+\(\beta_{\rm mag}=1/2\), not the value \((D-2)/4\) obtained by incorrectly
+assuming a regular \(w\to0\) limit of
+\({\mathcal M}(-1,0,w)\).  At the critical isotherm \(t=0\),
+\eqref{eq:dangerous-equation-of-state} gives
+\[
+  M(0,h,g)\sim\left(\frac{6h}{g}\right)^{1/3},
+\]
+so \(\delta=3\).  The minimized free-energy density in the ordered phase is
+\[
+  f_{\rm L,min}(t<0,h=0,g)
+  =
+  -\,\frac{3t^2}{2g}.
+\]
+Equivalently, the free-energy scaling function behaves as \(w^{-1}\).  This
+is the elementary mechanism behind the failure of naive hyperscaling above
+the upper critical dimension: the Gaussian value \(\nu=1/2\) and the
+free-energy exponent \(2-\alpha=2\) do not satisfy
+\(2-\alpha=D\nu\) when \(D>4\).
+
+At the upper critical dimension \(D=4\), the same coordinate is marginally
+irrelevant.  In the one-component normalization
+\(x=\lambda/(16\pi^2)\) used in
+\eqref{eq:wf-two-loop-beta-x}, put
+\[
+  L=\log\frac{\mu_0}{\mu}.
+\]
+The four-dimensional quartic flow satisfies
+\begin{equation}
+  \frac{\dd x}{\dd L}
+  =
+  -3x^2+O(x^3),
+  \qquad
+  x(L)
+  =
+  \frac{x_0}{1+3x_0L}
+  +O(L^{-2})
+  \sim\frac1{3L}.
+  \label{eq:dangerous-four-dimensional-running-x}
+\end{equation}
+The thermal coordinate obeys, to the leading logarithmic order needed here,
+\begin{equation}
+  \frac{\dd t}{\dd L}
+  =
+  \bigl(2-x(L)+O(x(L)^2)\bigr)t .
+  \label{eq:dangerous-four-dimensional-running-t}
+\end{equation}
+Therefore
+\[
+  t(L)
+  =
+  t_0 e^{2L}\bigl(1+3x_0L\bigr)^{-1/3}(1+o(1)).
+\]
+The correlation-length scale \(L_\xi\) is determined by \(|t(L_\xi)|=O(1)\),
+and hence
+\begin{equation}
+  \xi
+  \asymp
+  |t_0|^{-1/2}
+  \left(\log\frac1{|t_0|}\right)^{1/6}
+  \label{eq:dangerous-four-dimensional-xi-log}
+\end{equation}
+up to a nonuniversal multiplicative constant and lower logarithms.  At that
+scale the ordered saddle gives \(M_{\rm scaled}\asymp x(L_\xi)^{-1/2}\), while
+the field rescaling contributes \(e^{-L_\xi}\) at leading logarithmic order.
+Thus
+\begin{equation}
+  M(t_0,0,x_0)
+  \asymp
+  |t_0|^{1/2}
+  \left(\log\frac1{|t_0|}\right)^{1/3},
+  \qquad t_0\to0^- .
+  \label{eq:dangerous-four-dimensional-magnetization-log}
+\end{equation}
+The logarithm is the marginal version of the singular
+\(g^{-1/2}\) dependence in \eqref{eq:dangerous-mean-field-beta}.  The
+power exponents are mean-field exponents, while the leading logarithmic
+corrections remember the slow RG decay of the quartic coordinate.
+
 \begin{definition}[Critical surface in a finite RG chart]
 Let \(u=(u^1,\ldots,u^r)\) be the relevant coordinates in a finite local RG
 chart at a fixed point.  At a reference scale \(\mu_R\), the critical surface

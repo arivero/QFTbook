@@ -228,6 +228,20 @@ The chapter must define and derive:
   critical surface, with a cross-reference to the finite-reference
   critical-surface theorem that supplies smooth codimension only under an
   explicit endpoint-map submersion hypothesis.
+- dangerously irrelevant coordinates as properties of an irrelevant RG
+  coordinate together with a specified observable and scaling sector, including
+  the observable scaling form whose \(w\to0\) limit is singular;
+- the canonical scalar/Ising equation-of-state example above four dimensions:
+  the Gaussian dimensions \(y_t=2\), \(y_h=(D+2)/2\), \(y_g=4-D<0\), the
+  Landau equation \(h=tM+gM^3/6\), the ordered solution
+  \(M^2=-6t/g\), the singular scaling-function behavior
+  \({\mathcal M}(-1,0,w)\sim(6/w)^{1/2}\), and the resulting mean-field
+  exponents \(\beta_{\rm mag}=1/2\), \(\delta=3\), and hyperscaling failure;
+- the upper-critical-dimensional \(D=4\) leading-log derivation from
+  \(\dd x/\dd L=-3x^2+\cdots\) and
+  \(\dd t/\dd L=(2-x+\cdots)t\), giving
+  \(\xi\asymp |t|^{-1/2}(\log(1/|t|))^{1/6}\) and
+  \(M\asymp |t|^{1/2}(\log(1/|t|))^{1/3}\) in the ordered sector.
 
 ## Claim Ledger
 
@@ -306,6 +320,14 @@ The chapter must define and derive:
     local RG chart.  Its codimension is a theorem only when the endpoint map
     is \(C^k\) and submersive in the relevant coordinates; the linearized
     eigenvalue count alone is not that theorem.
+13a. An irrelevant coordinate can be dangerously irrelevant only relative to
+     a specified observable and scaling sector.  In the scalar/Ising
+     equation of state above four dimensions, the quartic coordinate flows to
+     zero at the Gaussian fixed point but the ordered magnetization and
+     free-energy scaling functions are singular as \(g b^{4-D}\to0\).  This
+     gives mean-field order-parameter exponents and invalidates naive
+     hyperscaling, while preserving the Gaussian endpoint of separated
+     critical correlators.
 14. The epsilon expansion is a small-\(\epsilon\) asymptotic expansion unless a
     stronger summability result is stated.  The \(d=3\) and \(d=2\) entries in
     the dimension table are not obtained by evaluating a convergent Taylor
@@ -453,3 +475,8 @@ The chapter must define and derive:
   nonlinear sigma-model chart.  Added
   `calculation-checks/on_wilson_fisher_epsilon_checks.py` to check the
   rational \(O(N)\) epsilon-expansion formulas and the \(N=1\) reduction.
+- 2026-05-25 issue #462 pass: added a chart-level definition of dangerously
+  irrelevant coordinates, the \(D>4\) scalar/Ising equation-of-state derivation
+  showing the singular quartic dependence of the ordered saddle, and the
+  \(D=4\) leading-log derivation for \(\xi\) and ordered magnetization from the
+  marginally irrelevant quartic flow.

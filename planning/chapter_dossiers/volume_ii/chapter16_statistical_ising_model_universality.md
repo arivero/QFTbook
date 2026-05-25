@@ -61,6 +61,10 @@ The chapter must define and derive:
   Ising scaling limits, constructive \(P(\phi)_2/\phi^4_3\) scalar results,
   conditional/unproved \(D=3\) Ising continuum-limit/CFT claims, and
   \(D\ge4\) scalar/Ising triviality theorems;
+- the distinction, for \(D\ge4\), between Gaussian separated critical scaling
+  limits and the dangerous irrelevance of the quartic coordinate in ordered
+  thermodynamic observables, with a cross-reference to the chapter where the
+  \(D>4\) equation-of-state and \(D=4\) leading-log derivations are given;
 - the signed thermal scaling parameter \(\mathfrak m\), whose absolute value
   is the continuum inverse correlation length and whose sign records the
   high- or low-temperature side;
@@ -194,6 +198,11 @@ The chapter must define and derive:
     three-dimensional Ising fixed point as a CFT remains conditional; and
     standard \(D\ge4\) critical Ising/\(\phi^4\) scaling limits in the known
     theorem classes are Gaussian.
+16a. The Gaussian endpoint of the \(D\ge4\) critical separated-point scaling
+     limit is compatible with singular dependence on the quartic coordinate in
+     ordered thermodynamic observables.  Above four dimensions this is
+     dangerous irrelevance of the quartic coordinate; at four dimensions it is
+     marginal dangerous irrelevance producing leading logarithms.
 
 ## Figure Requirements
 
@@ -292,3 +301,8 @@ The chapter must define and derive:
   derives monotone plus/minus infinite-volume and one-sided field limits, and
   states clustering as the condition under which a boundary-selected Gibbs
   state is pure.
+- 2026-05-25 issue #462 pass: inserted the \(D\ge4\) dangerous-irrelevance
+  caveat after the continuum-status table, separating Gaussian critical
+  separated-point scaling limits from the quartic-dependent ordered equation
+  of state and pointing to the explicit \(D>4\) and \(D=4\) derivations in the
+  Wilson-Fisher/scaling-coordinate chapter.
