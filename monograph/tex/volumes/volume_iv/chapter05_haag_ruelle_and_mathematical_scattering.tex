@@ -687,34 +687,165 @@ QED the asymptotic ray or Coulomb profile is tied to the charged velocity, and
 changing it changes the infrared representation rather than merely the
 interpolating coordinate.
 
-\subsection{Relation to Faddeev--Kulish Soft Data}
+\subsection{Asymptotic Wilson Lines, Flux, and Eikonal Data}
 
-For a charged particle of momentum \(p\), the straight asymptotic Wilson line
-has the same leading soft photon structure as the eikonal factor
+The preceding definitions identify a charged dressing as part of the
+asymptotic datum.  We now spell out the elementary calculation behind this
+statement.  Work in four spacetime dimensions with an abelian gauge field, and
+let a massive charged particle have charge \(q\), momentum \(p^\mu\), mass
+\(m>0\), and four-velocity
 \[
-  f_p^h(k)
+  u^\mu=\frac{p^\mu}{m},
+  \qquad u_\mu u^\mu=-1,
+  \qquad p^0>0 .
+\]
+The future-directed straight dressing from \(x\) is represented, before the
+infrared limit is taken, by the regulated current
+\begin{equation}
+  J_{q,u,\epsilon}^\mu(y;x)
   =
-  q\,\frac{p\cdot e_h^*(k)}{p\cdot k}\,\chi_{\rm IR}(k),
+  q\int_0^\infty \dd\tau\,
+  \ee^{-\epsilon\tau}u^\mu
+  \delta^{(4)}(y-x-u\tau),
+  \qquad \epsilon>0 .
+  \label{eq:regulated-asymptotic-worldline-current}
+\end{equation}
+The corresponding Wilson factor is the exponential of
+\(\ii\int A_\mu J^\mu\).  The factor \(\epsilon\) is not a physical photon
+mass; it is an adiabatic endpoint regulator used to define the half-line
+Fourier transform.  The endpoint at \(\tau=0\) is the charged field insertion,
+and the endpoint at \(\tau=\infty\) is the boundary charge recorded by
+\eqref{eq:charged-wilson-line-boundary-transformation}.
+
+\begin{proposition}[Worldline dressing gives the soft eikonal denominator]
+\label{prop:worldline-dressing-eikonal-denominator}
+With the Fourier convention
+\[
+  \widehat J^\mu(k)=\int\dd^4y\,\ee^{\ii k\cdot y}J^\mu(y),
+\]
+the regulated current \eqref{eq:regulated-asymptotic-worldline-current} has
+\[
+  \widehat J_{q,u,\epsilon}^\mu(k;x)
+  =
+  q\,u^\mu\,\ee^{\ii k\cdot x}
+  \frac{1}{\epsilon-\ii k\cdot u}.
+  \label{eq:worldline-current-fourier-transform}
+\]
+For an on-shell soft photon of momentum \(k\) and physical polarization
+\(e_h(k)\), the homogeneous soft factor carried by the dressing is therefore
+\begin{equation}
+  f_{p,\epsilon}^h(k)
+  =
+  q\,\frac{p\cdot e_h^*(k)}{\epsilon m-\ii p\cdot k}\,
+  \ee^{\ii k\cdot x}.
   \label{eq:charged-dressed-fk-profile}
-\]
-where \(e_h(k)\) is a physical polarization and \(\chi_{\rm IR}\) restricts to
-the soft region.  This follows by Fourier transforming the classical current
-of an asymptotic charged worldline,
+\end{equation}
+After the endpoint prescription is fixed, this is the same eikonal
+denominator that appears in the leading Faddeev--Kulish soft cloud and in
+the leading soft-photon theorem.
+\end{proposition}
+
+\begin{proof}
+Substituting \eqref{eq:regulated-asymptotic-worldline-current} gives
 \[
-  j_p^\mu(x)
+\begin{aligned}
+  \widehat J_{q,u,\epsilon}^\mu(k;x)
+  &=
+  q u^\mu
+  \int_0^\infty\dd\tau\,
+  \ee^{-\epsilon\tau}
+  \ee^{\ii k\cdot(x+u\tau)}
+  \\
+  &=
+  q u^\mu\ee^{\ii k\cdot x}
+  \int_0^\infty\dd\tau\,
+  \ee^{-(\epsilon-\ii k\cdot u)\tau}
   =
-  q\int_{\mathbb R}\dd\tau\,
-  \frac{p^\mu}{m}\,
-  \delta^{(4)}\!\left(x-x_0-\frac{p}{m}\tau\right),
+  q u^\mu\ee^{\ii k\cdot x}
+  \frac{1}{\epsilon-\ii k\cdot u}.
+\end{aligned}
 \]
-and contracting with the photon field.  The current is conserved in the
-interior of the line; its endpoint at infinity is exactly the boundary charge
-recorded in \eqref{eq:charged-wilson-line-boundary-transformation}.  The
-logarithmic norm divergence of
-\eqref{eq:charged-dressed-fk-profile}, derived in the infrared chapter, is
-therefore not an accident of perturbation theory.  It is the Hilbert-space
-signal that an unscreened charged sector is labelled by asymptotic
-electromagnetic flux, not by a vector in the vacuum photon Fock space.
+Since \(p^\mu=mu^\mu\), contraction with \(e_h^*(k)\) gives
+\eqref{eq:charged-dressed-fk-profile}.  The sign of the infinitesimal
+imaginary part depends on whether the half-line is future or past directed
+and on the incoming/outgoing convention.  The load-bearing structure is the
+homogeneous denominator \(p\cdot k\), not the regulator sign.
+\end{proof}
+
+The same charged sector can be described at spacelike infinity by its
+electric flux.  If \(\mathbf v=\mathbf p/p^0\) and
+\(\mathbf n\in S^2\), the boosted Coulomb radial flux density is
+\begin{equation}
+  \mathcal E_{q,\mathbf v}(\mathbf n)
+  =
+  \frac{q}{4\pi}
+  \frac{1-|\mathbf v|^2}{(1-\mathbf v\cdot\mathbf n)^2}.
+  \label{eq:charged-boosted-coulomb-flux-density-hr}
+\end{equation}
+It defines the value of the limiting flux functional
+\[
+  \Phi_\infty(f)=
+  \int_{S^2}\dd\Omega(\mathbf n)\,
+  f(\mathbf n)\mathcal E_{q,\mathbf v}(\mathbf n)
+\]
+on a one-particle charged asymptotic datum with velocity \(\mathbf v\).
+
+\begin{proposition}[Velocity-labelled flux sectors]
+\label{prop:velocity-labelled-flux-sectors}
+For \(|\mathbf v|<1\),
+\[
+  \int_{S^2}\dd\Omega(\mathbf n)\,
+  \mathcal E_{q,\mathbf v}(\mathbf n)
+  =
+  q .
+  \label{eq:boosted-coulomb-flux-integral}
+\]
+If \(q\ne0\), the function
+\(\mathcal E_{q,\mathbf v}(\mathbf n)\) determines \(\mathbf v\).  Thus
+different charged velocities carry different sharp angular flux data.
+\end{proposition}
+
+\begin{proof}
+Rotate coordinates so that \(\mathbf v=\beta\mathbf e_3\).  Then
+\[
+\begin{aligned}
+  \int_{S^2}\dd\Omega\,
+  \frac{1-\beta^2}{(1-\beta\cos\theta)^2}
+  &=
+  2\pi(1-\beta^2)
+  \int_{-1}^{1}\frac{\dd z}{(1-\beta z)^2}
+  \\
+  &=
+  2\pi(1-\beta^2)
+  \left[\frac{1}{\beta(1-\beta z)}\right]_{z=-1}^{z=1}
+  =
+  4\pi ,
+\end{aligned}
+\]
+which proves \eqref{eq:boosted-coulomb-flux-integral}.  For \(q\ne0\), the
+maximum of \(\mathcal E_{q,\mathbf v}\) occurs in the direction of
+\(\mathbf v\) when \(\mathbf v\ne0\), while the ratio of the maximum to the
+minimum is
+\[
+  \left(\frac{1+|\mathbf v|}{1-|\mathbf v|}\right)^2 .
+\]
+This ratio determines \(|\mathbf v|\), and the direction of the maximum
+determines the direction of \(\mathbf v\).  The case \(\mathbf v=0\) is the
+unique rotationally invariant density.
+\end{proof}
+
+The flux statement and the eikonal statement are two aspects of the same
+nonlocal charged datum.  The Wilson line fixes how the charged insertion
+transforms under boundary gauge transformations; the boosted Coulomb field
+records the corresponding Gauss-law flux at spacelike infinity; the
+half-line Fourier transform gives the soft denominator used by perturbative
+dressed-state constructions.  A local observable cannot change
+\(\Phi_\infty(f)\), so a local observable cannot replace this noncompact
+dressing in a Haag--Ruelle construction.  Conversely, specifying only the
+formal denominator \(p\cdot k\) is not yet a scattering theorem: a full
+charged-sector Haag--Ruelle theory must still construct large-time limits in
+the representation labelled by the flux density
+\eqref{eq:charged-boosted-coulomb-flux-density-hr}.
 
 \begin{openproblem}[Haag--Ruelle and LSZ for dressed charged sectors]
 \label{op:haag-ruelle-lsz-dressed-charged-sectors}

@@ -36,6 +36,11 @@ Current checks:
   phase cancellation, Polyakov-loop \(N\)-ality, neutral pair correlators,
   center averaging of charged loops, and the static-source free-energy
   relation.
+- `charged_flux_dressing_checks.py`: finite checks for the charged-sector
+  Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
+  extraction of the charged velocity from flux extrema, the half-line Fourier
+  transform of an asymptotic worldline current, and the equality between the
+  worldline-current denominator and the momentum-space eikonal denominator.
 - `chpt_nlo_checks.py`: finite arithmetic checks for the NLO chiral
   perturbation theory section, including the ten \(L_1,\ldots,L_{10}\)
   Gasser--Leutwyler labels, selected \(\Gamma_i\) entries, and the
