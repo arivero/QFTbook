@@ -18,7 +18,8 @@
   change, with the local \(W^\alpha W_\alpha\) coefficient derived from the
   chiral heat-kernel density and the chapter's gauge-coupling normalization.
 - NSVZ coordinate formula from the holomorphic coupling, rescaling anomaly,
-  and canonical normalization.
+  canonical normalization, matter Konishi Jacobians, and the gauge-multiplet
+  BV-complex rescaling Jacobian.
 - Boundary between perturbative Wilsonian arguments and nonperturbative
   chiral dynamics.
 
@@ -47,7 +48,11 @@
    chirality, locality, the component heat-kernel anomaly, and the
    \(1/(4g^2)\operatorname{tr}(F^2)\) normalization.
 5. Canonical gauge couplings differ by rescaling anomalies.
-6. The NSVZ beta-function formula is a coordinate identity in the declared
+6. The holomorphic-canonical coordinate relation is derived by combining the
+   classical canonical coordinate \(8\pi^2/g^2\), the matter shifts
+   \(-T(R_i)\log Z_i\), the adjoint gauge-complex shift
+   \(C_2(G)\log g^2\), and a finite \(\mu\)-independent scheme constant.
+7. The NSVZ beta-function formula is a coordinate identity in the declared
    canonical coupling and anomalous-dimension convention.
 
 ## Figures

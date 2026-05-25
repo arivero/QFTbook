@@ -266,8 +266,28 @@ wave-function coordinate and define the anomalous-dimension convention
 \[
   \gamma_i(\mu)=\mu\frac{d}{d\mu}\log Z_i(\mu).
 \]
-The rescaling-anomaly relation between the holomorphic and canonical gauge
-coordinates has the form
+
+\begin{proposition}[Holomorphic-canonical gauge-coordinate relation]
+\label{prop:nsvz-coordinate-relation-derived}
+Assume a perturbative supersymmetric Wilsonian scheme in which:
+\begin{enumerate}[label=(\roman*)]
+\item the holomorphic gauge coordinate
+\[
+  X_h(\mu):=\frac{8\pi^2}{g_h(\mu)^2}
+\]
+is defined by the chiral gauge kinetic term in the convention of
+Chapter~\ref{ch:susy-gauge-theory};
+\item the canonical coordinate \(g(\mu)\) is defined by normalizing the
+gauge-field two-point function so that the component kinetic term is
+\(-\frac{1}{4g(\mu)^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\);
+\item the chiral matter kinetic terms are normalized by positive
+wave-function coordinates \(Z_i(\mu)\);
+\item the matter rescaling Jacobian is
+Proposition~\ref{prop:konishi-rescaling-jacobian}, and the gauge-multiplet
+rescaling Jacobian is computed in the same background-gauge BV regulator.
+\end{enumerate}
+Then, through the perturbative order to which the regulator and local
+coordinates have been constructed,
 \[
   \frac{8\pi^2}{g_h^2}
   =
@@ -279,7 +299,118 @@ coordinates has the form
   +
   \kappa ,
 \]
-where \(\kappa\) is a scheme-dependent constant independent of \(\mu\).  The
+where \(\kappa\) is independent of \(\mu\) and records finite choices of
+reference normalization for the local coordinates.
+\end{proposition}
+
+\begin{proof}
+Write the chiral gauge-coordinate part of the Wilsonian action as
+\[
+  S_{\rm gauge}^{F}
+  =
+  \frac{X_h}{16\pi^2}
+  \int d^4x\,d^2\theta\,
+  \operatorname{tr}(W^\alpha W_\alpha)
+  +\text{theta-angle part}+\text{c.c.}
+\]
+This equation fixes what is meant by \(X_h=8\pi^2/g_h^2\).  With the same
+normalization, Proposition~\ref{prop:konishi-rescaling-jacobian} says that a
+holomorphic rescaling \(\Phi_i\mapsto e^{\alpha_i}\Phi_i\) shifts this real
+coordinate by
+\begin{equation}
+  \Delta_i X_h=2T(R_i)\alpha_i .
+  \label{eq:konishi-shift-Xh}
+\end{equation}
+Indeed the chiral action coefficient changes by
+\(\Delta_i X_h/(16\pi^2)\), while the Jacobian coefficient in
+Proposition~\ref{prop:konishi-rescaling-jacobian} is
+\(T(R_i)\alpha_i/(8\pi^2)\).
+
+To pass from the Wilsonian fields with matter kinetic coordinate \(Z_i\) to
+canonical matter fields, set
+\[
+  \Phi_i^{\rm hol}=Z_i^{-1/2}\Phi_i^{\rm can}.
+\]
+Thus \(\alpha_i=-\frac12\log Z_i\).  Substitution in
+\eqref{eq:konishi-shift-Xh} gives the matter contribution
+\begin{equation}
+  \Delta_{\rm matter}X_h
+  =
+  -\sum_iT(R_i)\log Z_i .
+  \label{eq:matter-rescaling-shift-Xh}
+\end{equation}
+This is the part of the relation that is often called the Konishi anomaly.
+It is a statement about the local Berezinian of the regulated change of
+variables, not about an unregulated functional measure.
+
+The vector multiplet must also be rescaled when passing from holomorphic
+normalization to the canonical gauge coordinate.  In a background-field BV
+gauge fixing, the rescaling is performed on the whole quantum gauge complex:
+the vector superfield, ghosts, antighosts, auxiliary fields, and antifields
+are rescaled so that the BV pairing and gauge-fixed quadratic form are kept
+in canonical dual normalization.  Let
+\[
+  V^{\rm hol}=g\,V^{\rm can},
+  \qquad
+  \rho:=\log g=\frac12\log g^2 .
+\]
+The regulated super-Berezinian of this adjoint BV complex has the chiral
+local part
+\[
+  \Delta_{\rm vec}S
+  =
+  \frac{C_2(G)\rho}{8\pi^2}
+  \int d^4x\,d^2\theta\,
+  \operatorname{tr}(W^\alpha W_\alpha)
+  +\text{c.c.}
+\]
+Equivalently,
+\begin{equation}
+  \Delta_{\rm vec}X_h
+  =
+  2C_2(G)\rho
+  =
+  C_2(G)\log g^2 .
+  \label{eq:gauge-multiplet-rescaling-shift-Xh}
+\end{equation}
+Here \(C_2(G)\) is defined by
+\(\operatorname{Tr}_{\rm ad}(XY)=C_2(G)\operatorname{tr}(XY)\).  The
+coefficient is obtained from the same heat-kernel coefficient as in the
+matter calculation, but with the supertrace over the gauge-fixed adjoint BV
+complex.  The longitudinal vector modes and chiral Faddeev--Popov/Nielsen--
+Kallosh ghost modes cancel except for the adjoint chiral index contribution
+shown above.  Performing the rescaling on only \(A_\mu\) and ignoring this
+complex would not define a gauge-consistent Jacobian.
+
+Classically, after the vector and matter variables have been brought to the
+canonical coordinate chart, the real gauge kinetic coordinate is
+\[
+  X_c:=\frac{8\pi^2}{g^2}.
+\]
+Adding the two anomalous local shifts
+\eqref{eq:matter-rescaling-shift-Xh} and
+\eqref{eq:gauge-multiplet-rescaling-shift-Xh}, and allowing a finite
+\(\mu\)-independent normalization difference between the two declared
+coordinate charts, gives
+\[
+  X_h
+  =
+  X_c
+  +
+  C_2(G)\log g^2
+  -
+  \sum_iT(R_i)\log Z_i
+  +
+  \kappa .
+  \]
+This is the displayed relation.  The constant \(\kappa\) changes under finite
+renormalizations such as \(Z_i\mapsto c_iZ_i\), \(g\mapsto g+O(g^3)\) at a
+chosen reference scale, or a finite local gauge kinetic counterterm; it has
+zero \(\mu\)-derivative in the fixed scheme and therefore drops out of the
+beta-function identity.
+\end{proof}
+
+The
 holomorphic coordinate obeys
 \[
   \mu\frac{d}{d\mu}\left(\frac{8\pi^2}{g_h^2}\right)
