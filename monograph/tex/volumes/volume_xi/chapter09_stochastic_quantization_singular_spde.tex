@@ -22,21 +22,21 @@ Let \(S:\R^n\to\R\) be smooth and confining enough that
   Z=\int_{\R^n}\ee^{-S(x)}\,\dd x<\infty .
 \]
 The overdamped Langevin equation
-\[
+\begin{equation}
   \dd X_t=-\nabla S(X_t)\,\dd t+\sqrt2\,\dd B_t
   \label{eq:finite-dimensional-langevin}
-\]
+\end{equation}
 has generator
 \[
   Lf=-\nabla S\cdot\nabla f+\Delta f .
 \]
 For smooth compactly supported \(f,g\),
-\[
+\begin{equation}
   \int (Lf)g\,\ee^{-S}\dd x
   =
   -\int \nabla f\cdot\nabla g\,\ee^{-S}\dd x .
   \label{eq:finite-dimensional-dirichlet-form}
-\]
+\end{equation}
 Therefore \(L\) is symmetric in \(L^2(\ee^{-S}\dd x)\), and the probability
 measure \(Z^{-1}\ee^{-S}\dd x\) is invariant.
 
@@ -67,7 +67,7 @@ smooth ultraviolet cutoff covariance on \(M\), and let \(\xi_\Lambda\) be
 white noise in stochastic time with spatial covariance chosen so that the
 linear equation has invariant Gaussian law \(\mu_{C_\Lambda}\).  A
 regularized scalar \(\Phi^4\) Langevin equation has the form
-\[
+\begin{equation}
   \partial_\tau\phi_\Lambda
   =
   -C_\Lambda^{-1}\phi_\Lambda
@@ -75,9 +75,9 @@ regularized scalar \(\Phi^4\) Langevin equation has the form
   +c_\Lambda\phi_\Lambda
   +\xi_\Lambda .
   \label{eq:regularized-spde-gradient-flow}
-\]
+\end{equation}
 The drift is the negative \(L^2\)-gradient of the regulated action
-\[
+\begin{equation}
   S_\Lambda(\phi)
   =
   \frac12(\phi,C_\Lambda^{-1}\phi)
@@ -88,7 +88,7 @@ The drift is the negative \(L^2\)-gradient of the regulated action
     -\frac{c_\Lambda}{2}\phi^2
   \right]\dd^dx .
   \label{eq:regularized-spde-action}
-\]
+\end{equation}
 At finite \(\Lambda\), the argument of the previous section applies on the
 finite-dimensional cutoff field space.  Thus
 \[
@@ -108,12 +108,12 @@ renormalized local functionals.  If
   C_\epsilon=\mathbb E[\phi_\epsilon(x)^2],
 \]
 then
-\[
+\begin{equation}
   :\!\phi_\epsilon^3\!:
   =
   \phi_\epsilon^3-3C_\epsilon\phi_\epsilon .
   \label{eq:spde-cubic-wick-product}
-\]
+\end{equation}
 The coefficient \(3\) is not conventional: it counts the possible
 contractions of two of the three fields.  The same convention gives
 \[
@@ -126,17 +126,17 @@ contractions of two of the three fields.  The same convention gives
 
 On a two-dimensional torus, consider the stochastic quantization equation
 for the Wick-ordered measure
-\[
+\begin{equation}
   \partial_\tau\Phi
   =
   \Delta\Phi-m^2\Phi-\lambda:\!\Phi^3\!:+\xi .
   \label{eq:dpd-phi-four-two}
-\]
+\end{equation}
 Let \(X\) solve the stationary linear equation
-\[
+\begin{equation}
   \partial_\tau X=(\Delta-m^2)X+\xi .
   \label{eq:ornstein-uhlenbeck-field}
-\]
+\end{equation}
 The field \(X(\tau,\cdot)\) has the massive Gaussian free-field law on the
 spatial torus and is almost surely a spatial distribution of regularity
 \(-\kappa\) for every \(\kappa>0\).  Write
@@ -144,7 +144,7 @@ spatial torus and is almost surely a spatial distribution of regularity
   \Phi=X+Y.
 \]
 Then the nonlinear equation for \(Y\) is
-\[
+\begin{equation}
   \partial_\tau Y
   =
   (\Delta-m^2)Y
@@ -152,13 +152,13 @@ Then the nonlinear equation for \(Y\) is
     Y^3+3Y^2X+3Y:\!X^2\!:+:\!X^3\!:
   \bigr).
   \label{eq:dpd-remainder-equation}
-\]
+\end{equation}
 In two dimensions the products in
 \eqref{eq:dpd-remainder-equation} are well-defined once
 \(:\!X^2\!:\) and \(:\!X^3\!:\) are constructed as Wick powers, because the
 unknown \(Y\) gains positive parabolic regularity from the heat operator.
 
-\begin{theorem}[Da Prato--Debussche solution mechanism]
+\begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
 \label{thm:dpd-solution-mechanism}
 Fix \(m^2>0\), \(\lambda>0\), and a finite spatial torus in dimension two.
 For almost every realization of the enhanced noise
@@ -170,9 +170,10 @@ pathwise solutions in a positive-regularity function space, and the positive
 quartic drift supplies a priori bounds that extend the Markov process
 globally.  The invariant law is the Wick-ordered \(\Phi^4_2\) Euclidean
 measure on the torus.
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}[Proof of the mechanism]
+This Da Prato--Debussche theorem is quoted here as a precise SPDE theorem
+boundary, not as a monograph-proved result.  The mechanism is as follows.
 The mild form of \eqref{eq:dpd-remainder-equation} is
 \[
   Y(\tau)
@@ -195,8 +196,10 @@ equation by \(Y\), integrating over space, and using the sign of
 \(\lambda Y^4\) gives an energy inequality with random lower-order forcing;
 that estimate prevents blowup and gives global solutions.  The invariant law
 is identified by applying the finite-cutoff Langevin identity and proving
-tightness plus convergence of the enhanced noise.
-\end{proof}
+tightness plus convergence of the enhanced noise.  In the final standard of
+this monograph, these Schauder, multiplication, energy, tightness, and
+invariant-law identification estimates are proof obligations, not facts
+accepted merely because they are standard in the SPDE literature.
 
 \section{\texorpdfstring{Regularity Structures and \(\Phi^4_3\)}{Regularity Structures and Phi-four-three}}
 
@@ -226,7 +229,7 @@ A model on spacetime assigns to every point \(z\) a linear map
 together with analytic bounds compatible with the homogeneities.
 \end{definition}
 
-\begin{theorem}[Reconstruction theorem, role in SPDE]
+\begin{quotedtheorem}[Reconstruction theorem, role in SPDE]
 \label{thm:regularity-reconstruction-role}
 For a model satisfying the analytic bounds of
 Definition~\ref{def:regularity-structure}, every modelled distribution
@@ -234,20 +237,22 @@ Definition~\ref{def:regularity-structure}, every modelled distribution
 such that, near each point \(z\), \(\mathcal R F\) is approximated by
 \(\Pi_zF(z)\) to order \(\gamma\).  In singular SPDE, this theorem converts
 the formal local expansion in \(T\) into an actual distributional solution.
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}[Why this is the needed theorem]
-The modelled-distribution bounds say that the coefficients \(F(z)\) and
-\(\Gamma_{zz'}F(z')\) agree up to errors of order \(|z-z'|^{\gamma-\alpha}\)
-in each homogeneity \(\alpha\).  Testing the candidate local distributions
-\(\Pi_zF(z)\) against wavelets at scale \(2^{-j}\), these consistency
-estimates make the wavelet coefficients Cauchy across neighboring base
-points.  Summing the coefficients over scales constructs a distribution.  If
-two distributions had the same local approximation bounds, their wavelet
-coefficients would decay faster than every scale allowed by the lowest
-homogeneity, forcing their difference to vanish.  This is the analytic bridge
-from algebraic expansions to distribution-valued fields.
-\end{proof}
+This is Hairer's reconstruction theorem, quoted here at theorem-boundary
+level.  Its role in the present chapter is the following.  The
+modelled-distribution bounds say that the coefficients \(F(z)\) and
+\(\Gamma_{zz'}F(z')\) agree up to errors of order
+\(|z-z'|^{\gamma-\alpha}\) in each homogeneity \(\alpha\).  Testing the
+candidate local distributions \(\Pi_zF(z)\) against wavelets at scale
+\(2^{-j}\), these consistency estimates make the wavelet coefficients
+Cauchy across neighboring base points.  Summing the coefficients over scales
+constructs a distribution.  If two distributions had the same local
+approximation bounds, their wavelet coefficients would decay faster than
+every scale allowed by the lowest homogeneity, forcing their difference to
+vanish.  A self-contained proof in this monograph must spell out the model
+norms, wavelet or test-function estimates, summability over scales, and the
+uniqueness argument rather than relying on this summary.
 
 For dynamic \(\Phi^4_3\), the symbols are generated by the noise \(\Xi\), the
 abstract integration map \(\mathcal I\), multiplication, and polynomials in
@@ -265,7 +270,7 @@ For the normalization
 \]
 the renormalized cutoff equation in the BPHZ regularity-structure convention
 has the form
-\[
+\begin{equation}
   \partial_\tau\Phi_\epsilon
   =
   \Delta\Phi_\epsilon-m^2\Phi_\epsilon
@@ -276,7 +281,7 @@ has the form
         +c_{\rm fin}\bigr)\Phi_\epsilon
   +\xi_\epsilon .
   \label{eq:phi-four-three-renormalized-spde}
-\]
+\end{equation}
 Here \(C_{1,\epsilon}\) is the one-loop contraction already visible in
 \(:\!\Phi^3\!:\), \(C_{2,\epsilon}\) is the two-loop local contraction
 arising from the negative tree with two cubic vertices, and \(c_{\rm fin}\)
@@ -285,7 +290,7 @@ schemes change \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and \(c_{\rm fin}\)
 separately, but not the statement that only the local linear drift and
 vacuum-energy coordinates are needed in this superrenormalizable model.
 
-\begin{theorem}[Renormalized \(\Phi^4_3\) SPDE datum]
+\begin{quotedtheorem}[Renormalized \(\Phi^4_3\) SPDE datum]
 \label{thm:renormalized-phi-four-three-spde-datum}
 After enhancing the mollified noise by its BPHZ-renormalized negative trees,
 the solutions of \eqref{eq:phi-four-three-renormalized-spde} converge in
@@ -294,10 +299,11 @@ Holder or Besov topologies, to a limit independent of the mollifier up to
 finite local coordinate changes.  On the torus the resulting Markov process
 has invariant measures that are the constructive \(\Phi^4_3\) Euclidean
 measures in the corresponding mass coordinate.
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}[Proof architecture]
-One first builds the canonical model from the mollified noise.  Its negative
+This renormalized \(\Phi^4_3\) SPDE theorem is a quoted theorem-boundary for
+the regularity-structures construction, not a proof completed here.  One
+first builds the canonical model from the mollified noise.  Its negative
 tree components diverge as \(\epsilon\downarrow0\).  The BPHZ character
 subtracts the expectations of all divergent negative subtrees, producing a
 renormalized model satisfying uniform analytic bounds.  Compactness and
@@ -311,8 +317,37 @@ point gives the distribution-valued solution.  The explicit local term in
 \eqref{eq:phi-four-three-renormalized-spde} is the image, in the concrete
 equation, of the BPHZ action on the negative trees.  Invariant measures are
 identified by finite-cutoff stationarity, tightness, and convergence of
-stationary solutions.
-\end{proof}
+stationary solutions.  Each sentence in this paragraph names a theorem-level
+estimate; none is to be treated as proved merely by being quoted.
+
+The theorem-boundary statements in this chapter correspond to the
+Da Prato--Debussche construction of two-dimensional stochastic
+quantization, Hairer's reconstruction theorem, and the regularity-structures
+renormalization of dynamic \(\Phi^4_3\).\footnote{See G.~Da Prato and
+A.~Debussche, ``Strong solutions to the stochastic quantization equations,''
+\emph{Ann. Probab.} 31 (2003); M.~Hairer, ``A theory of regularity
+structures,'' \emph{Invent. Math.} 198 (2014); and the
+Hairer--Mourrat--Weber regularity-structures treatment of
+\(\Phi^4_3\) renormalization.}  These references identify the analytic
+machinery to be reconstructed in this monograph; they do not by themselves
+settle the monograph's proof obligations.
+
+\begin{openproblem}[Self-contained singular-SPDE proof stack]
+\label{op:self-contained-singular-spde-proof-stack}
+Develop self-contained monograph proofs of the quoted SPDE results used
+above.  At minimum this requires: construction and convergence of Wick
+powers for the stochastic convolution; the parabolic Schauder and Besov or
+Holder multiplication estimates used in the Da Prato--Debussche fixed point;
+the global energy estimate and invariant-law identification for
+\(\Phi^4_2\); the reconstruction theorem for regularity structures with all
+model norms specified; construction of the BPHZ-renormalized model for
+dynamic \(\Phi^4_3\); convergence of the renormalized models; solution of
+the fixed-point problem in modelled distributions; identification of the
+local counterterms in the concrete cutoff equation; and the passage from
+stationary SPDE solutions to OS data.  Until these arguments are supplied,
+the quoted theorem blocks are documented proof boundaries, not authority
+claims.
+\end{openproblem}
 
 \section{Paracontrolled and RG Routes}
 
@@ -338,12 +373,12 @@ shows convergence of the renormalized limit.
 
 If the renormalized Markov process exists and is ergodic with invariant
 measure \(\mu\), the Euclidean Schwinger functions are
-\[
+\begin{equation}
   S_n(f_1,\ldots,f_n)
   =
   \int \Phi(f_1)\cdots\Phi(f_n)\,\dd\mu(\Phi).
   \label{eq:spde-invariant-measure-schwinger}
-\]
+\end{equation}
 This is not yet a complete QFT construction.  One must verify:
 \[
 \begin{gathered}
