@@ -61,7 +61,7 @@
 | \(E\) | center-of-mass energy |
 | \(z=\cos\theta\) | scattering-angle variable |
 | \(\mathcal M(s,z)\) | connected invariant amplitude |
-| \(a_\ell(s)\) | ordered \(16\pi\) partial-wave amplitude, same convention as Volume I Chapter 14 |
+| \(a_\ell(s)\) | ordered \(16\pi\) partial-wave amplitude, same convention as Volume I Chapter 14; deliberately distinct from the \(\delta^{(d)}\)-normalized sharp-momentum kernel \(M_\delta\) |
 | \(S_\ell(s)\) | elastic partial-wave scattering eigenvalue |
 | \(\beta(s)\) | two-body elastic kinematic factor \(\sqrt{1-4m^2/s}\), not a spectral measure |
 | first sheet | physical stable-channel analytic germ reached without crossing the relevant threshold cut |
@@ -126,6 +126,9 @@
 - 2026-05-25 issue #443 pass: introduced the stable-channel sheet convention
   before first use and redirected later references away from the later
   analyticity chapter.
+- 2026-05-25 issue #444 pass: reinforced the notation distinction between the
+  delta-normalized sharp-momentum kernel \(M_\delta\) and the partial-wave
+  coefficient \(a_\ell(s)\).
 
 ## Figure Requirements
 

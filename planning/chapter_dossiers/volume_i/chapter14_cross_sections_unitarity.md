@@ -28,13 +28,13 @@
 | \(T\) | transition operator defined by \(S=\mathbf 1+iT\) |
 | \(\mathcal M\) | invariant amplitude |
 | \(M_\delta\) | connected amplitude in the \(\delta^{(d)}\)-normalized sharp-momentum basis |
+| \(a_\ell(s)\) | partial-wave coefficient of the invariant amplitude; not the same object as \(M_\delta\) |
 | \(\dd\Phi_m\) | invariant \(m\)-body final-state phase space |
 | \(\mathcal F\) | invariant two-particle flux factor |
 | \(v_{\mathrm{rel}}\) | invariant relative speed |
 | \(s\) | positive center-of-mass energy squared, \(-(p_1+p_2)^2\) |
 | \(\vec p_*\) | incoming COM three-momentum |
 | \(\vec q_*\) | outgoing COM three-momentum |
-| \(a_\ell(s)\) | ordered \(16\pi\) partial-wave amplitude |
 | \(S_\ell(s)\) | partial-wave S-matrix eigenvalue |
 | \(\beta(s)\) | two-body elastic phase-space factor \(2|\vec p_*|/\sqrt s\); \(\rho\) is reserved for spectral measures |
 | \(\mathcal N(E)\) | normalization of the COM partial-wave generalized state |
@@ -46,6 +46,10 @@
 - The sharp-momentum delta-square derivation is included as a regulated check:
   \((2\pi)^D\delta^D(0)=V\mathcal T\) and
   \(\delta^{(d)}(0)=V/(2\pi)^d\).
+- The notation table now separates \(M_\delta\), the
+  \(\delta^{(d)}\)-normalized connected sharp-momentum kernel, from
+  \(\mathcal M\), the invariant amplitude, and \(a_\ell(s)\), the
+  partial-wave coefficient.
 - The \(m\)-body phase-space measure and flux factor are fixed in the chosen
   normalization.
 - Identical-particle factors are derived from the resolution of the identity
