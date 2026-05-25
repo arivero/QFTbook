@@ -53,6 +53,11 @@ The chapter must define and derive:
   leading tiled-surface mechanism for the strong-coupling area law;
 - the finite-lattice reflection-positivity theorem and its transfer-matrix
   consequence;
+- the finite-temperature lattice, exact thermal center symmetry of pure
+  \(SU(N)\), the Polyakov loop, its \(N\)-ality transformation, the
+  infinite-volume order-parameter limit, static-source free-energy
+  interpretation, and the distinction from the zero-temperature Wilson-loop
+  area law;
 - the asymptotic-scaling relation
   \(a\Lambda_L=\exp[-1/(2\beta_0g_0^2)]
   (\beta_0g_0^2)^{-\beta_1/(2\beta_0^2)}(1+O(g_0^2))\);
@@ -78,24 +83,35 @@ The chapter must define and derive:
 4. Osterwalder--Seiler reflection positivity for the Wilson action gives a
    positive finite-lattice transfer matrix and a Hilbert-space interpretation
    at finite cutoff.
-5. The strong-coupling character expansion yields a rigorous area-law bound
+5. Pure thermal \(SU(N)\) Wilson lattice gauge theory has an exact
+   \(\mathbb Z_N\) center symmetry acting on temporal links crossing one time
+   slice; the fundamental Polyakov loop carries the fundamental center
+   character and is a sharp order parameter only after the infinite spatial
+   volume and small source limits are taken in the correct order.
+6. The Polyakov loop computes the free energy of a static external source up
+   to its line self-energy renormalization, and the Polyakov-loop pair
+   correlator computes the static source-antisource free energy.
+7. Dynamical matter with nonzero \(N\)-ality explicitly breaks the
+   corresponding center subgroup, so the fundamental Polyakov loop ceases to
+   be an exact order parameter in QCD with fundamental quarks.
+8. The strong-coupling character expansion yields a rigorous area-law bound
    for sufficiently small \(\beta\) in the finite-cutoff lattice theory.
-6. The continuum confinement and mass-gap statements require control of the
+9. The continuum confinement and mass-gap statements require control of the
    \(\beta\to\infty\) scaling trajectory; the strong-coupling theorem alone is
    not a continuum proof.
-7. Pure CP-even \(SU(N)\) Yang--Mills on an isotropic Wilson lattice has one
+10. Pure CP-even \(SU(N)\) Yang--Mills on an isotropic Wilson lattice has one
    running parameter, \(g_0(a)\), after vacuum-energy normalization; \(\theta\)
    is a separate topological parameter when included.
-8. Different gauge-invariant lattice actions with the same symmetries differ
+11. Different gauge-invariant lattice actions with the same symmetries differ
    by irrelevant operators and by scale matching, with Symanzik improvement
    organizing the power of \(a\) at which artifacts enter.
-9. Lattice definitions of the \(\theta\)-term require regulator choices beyond
+12. Lattice definitions of the \(\theta\)-term require regulator choices beyond
    the plaquette action because naive topological charge is not integer-valued
    at finite cutoff.
-10. Chiral fermions require care on the lattice because locality,
+13. Chiral fermions require care on the lattice because locality,
     translational invariance, Hermiticity, and exact naive chiral symmetry
     imply species doubling.
-11. BRST and BV chapters are perturbative/cohomological frameworks whose
+14. BRST and BV chapters are perturbative/cohomological frameworks whose
     relation to the nonperturbative Yang--Mills theory is through
     gauge-invariant observable matching and the continuum-limit hypothesis.
 
@@ -103,6 +119,9 @@ The chapter must define and derive:
 
 - Plaquette covariance figure showing endpoint gauge transformations, the
   ordered plaquette product, and conjugation at the basepoint.
+- Thermal center-symmetry/Polyakov-loop figure showing a time-slice center
+  transformation, plaquette invariance, and the center phase of a winding
+  Polyakov loop.
 - Fermion-doubling figure showing Brillouin-zone zeros of the naive lattice
   derivative.
 - Future expansion target: scaling-trajectory figure relating strong coupling,
@@ -121,3 +140,8 @@ The chapter must define and derive:
 - The BRST and QCD chapters now cross-reference this chapter for the
   nonperturbative regulator-level formulation and for the strong-coupling
   Wilson-loop area-law result.
+- 2026-05-25 issue #467 pass: added the finite-temperature center-symmetry
+  and Polyakov-loop framework, including the finite-lattice symmetry proof,
+  infinite-volume order parameter, static-source free-energy interpretation,
+  center-breaking by nonzero \(N\)-ality matter, and a calculation check for
+  center phases.

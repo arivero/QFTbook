@@ -25,6 +25,11 @@ Current checks:
   and the conversion between the common half-trace action
   \(8\pi^2/g_{\rm ht}^2\) and the monograph trace-delta coupling
   \(4\pi^2/g_{\rm YM}^2\).
+- `center_polyakov_checks.py`: finite center-phase checks for the thermal
+  center-symmetry and Polyakov-loop section, including temporal-plaquette
+  phase cancellation, Polyakov-loop \(N\)-ality, neutral pair correlators,
+  center averaging of charged loops, and the static-source free-energy
+  relation.
 - `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)

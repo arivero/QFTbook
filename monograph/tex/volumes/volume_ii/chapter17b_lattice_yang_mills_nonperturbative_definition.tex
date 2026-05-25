@@ -329,6 +329,277 @@ family of such OS-positive finite-cutoff theories has a scaling limit whose
 Schwinger functions satisfy the continuum hypotheses of
 Chapter~\ref{ch:os-reconstruction}.
 
+\section{Thermal Center Symmetry and the Polyakov Loop}
+\label{sec:lattice-center-polyakov-loop}
+
+The Wilson lattice also gives a precise finite-cutoff formulation of the
+thermal center-symmetry order parameter.  This subsection is kinematic: it
+defines the symmetry, the charged operator, and the order of limits needed for
+spontaneous symmetry breaking.  It does not assume a continuum proof of
+confinement or of a deconfinement transition.
+
+Let the Euclidean lattice have the form
+\[
+  \Lambda_{a,N_s,N_t}
+  =
+  (a\mathbb Z/N_s a\mathbb Z)^3
+  \times
+  (a\mathbb Z/N_t a\mathbb Z),
+  \qquad
+  \beta_{\mathrm T}=aN_t .
+\]
+The last circle is the thermal circle of inverse temperature
+\(\beta_{\mathrm T}\).  To avoid confusion, the Wilson coupling parameter in
+\eqref{eq:lattice-wilson-action} will be denoted by
+\(\beta_{\rm lat}=N/g_0^2\) in this subsection.
+
+For \(G=SU(N)\), choose a center element
+\[
+  z_m=\ee^{2\pi\ii m/N}\mathbf 1_N,
+  \qquad m\in\mathbb Z_N .
+\]
+Fix one Euclidean-time slice \(\tau_0\).  The thermal center transformation
+acts on temporal links crossing that slice by
+\begin{equation}
+  U_4(\mathbf x,\tau_0)\longmapsto z_m\,U_4(\mathbf x,\tau_0),
+  \qquad
+  U_i(\mathbf x,\tau)\longmapsto U_i(\mathbf x,\tau),
+  \qquad
+  U_4(\mathbf x,\tau\neq\tau_0)\longmapsto U_4(\mathbf x,\tau).
+  \label{eq:lattice-center-slice-transformation}
+\end{equation}
+This is not an ordinary periodic gauge transformation.  It is the finite
+thermal-lattice representative of the electric center one-form symmetry of
+Section~\ref{sec:higher-form-symmetry-data-gauge-theory} after the Euclidean
+time direction has been compactified.
+
+\begin{proposition}[Exact center symmetry of pure thermal lattice Yang--Mills]
+\label{prop:lattice-center-symmetry}
+For pure \(SU(N)\) Wilson lattice gauge theory on
+\(\Lambda_{a,N_s,N_t}\), the transformation
+\eqref{eq:lattice-center-slice-transformation} preserves the Haar measure and
+the Wilson action.  If dynamical matter of \(N\)-ality \(k_\alpha\) is added,
+the unbroken subgroup is
+\[
+  \{m\in\mathbb Z_N:\exp(2\pi\ii m k_\alpha/N)=1
+  \hbox{ for every dynamical } \alpha\},
+\]
+the same subgroup as in \eqref{eq:center-one-form-unbroken-subgroup}.
+\end{proposition}
+
+\begin{proof}
+  Haar measure is invariant under left multiplication by the fixed group
+  element \(z_m\).  A spatial plaquette contains no transformed temporal link.
+  A temporal plaquette crossing the slice contains one transformed temporal
+  link \(U_4(\mathbf x,\tau_0)\) and one inverse transformed temporal link
+  \(U_4(\mathbf x+a\widehat i,\tau_0)^{-1}\).  Because \(z_m\) is central,
+  the phases cancel:
+  \[
+    z_m U_4(\mathbf x,\tau_0)\cdots
+    \bigl(z_m U_4(\mathbf x+a\widehat i,\tau_0)\bigr)^{-1}
+    =
+    z_m U_4(\mathbf x,\tau_0)\cdots
+    U_4(\mathbf x+a\widehat i,\tau_0)^{-1}z_m^{-1}.
+  \]
+  The center factors commute through the remaining links and disappear inside
+  \(\operatorname{Re}\operatorname{tr}\).  Thus every plaquette term and the
+  product Haar measure are invariant.
+
+  A dynamical matter hopping term in representation \(R_\alpha\) and
+  \(N\)-ality \(k_\alpha\) crossing the thermal slice acquires the phase
+  \(z_m^{k_\alpha}\).  Such a term is invariant for all dynamical fields
+  precisely when the displayed phase is one for every \(R_\alpha\).
+\end{proof}
+
+The Polyakov line at spatial position \(\mathbf x\) is the temporal holonomy
+around the thermal circle,
+\begin{equation}
+  \mathcal P(\mathbf x)
+  =
+  U_4(\mathbf x,0)
+  U_4(\mathbf x,a)\cdots
+  U_4(\mathbf x,(N_t-1)a).
+  \label{eq:lattice-polyakov-holonomy}
+\end{equation}
+For an irreducible representation \(R\), define the normalized Polyakov loop
+\begin{equation}
+  P_R(\mathbf x)
+  =
+  d_R^{-1}\chi_R(\mathcal P(\mathbf x)).
+  \label{eq:lattice-polyakov-loop-definition}
+\end{equation}
+Under a periodic lattice gauge transformation,
+\(\mathcal P(\mathbf x)\) is conjugated at the basepoint, so \(P_R(\mathbf x)\)
+is gauge invariant.  Under the center transformation
+\eqref{eq:lattice-center-slice-transformation},
+\begin{equation}
+  P_R(\mathbf x)
+  \longmapsto
+  \exp\left(\frac{2\pi\ii m k_R}{N}\right)P_R(\mathbf x),
+  \label{eq:lattice-polyakov-center-charge}
+\end{equation}
+where \(k_R\) is the \(N\)-ality of \(R\).  The fundamental Polyakov loop is
+therefore a charged local operator of the three-dimensional thermal theory.
+Equivalently, it is a line operator of the four-dimensional Euclidean theory
+wrapping the thermal circle.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.90\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,>=Stealth,every node/.style={font=\scriptsize}]
+    \begin{scope}
+      \node[font=\small] at (1.55,3.28) {thermal lattice};
+      \draw[step=0.72cm,gray!45] (0,0) grid (3.1,2.45);
+      \draw[very thick,red!70!black] (0,1.44)--(3.1,1.44);
+      \node[red!70!black,fill=white,inner sep=1pt] at (1.55,1.22)
+        {center slice};
+      \draw[very thick,blue!70!black,->]
+        (1.44,0.05)--(1.44,0.68)--(1.44,1.34)--(1.44,2.02)--(1.44,2.38);
+      \node[blue!70!black,align=center] at (0.48,2.90)
+        {Polyakov\\line};
+      \draw[->,blue!70!black] (0.88,2.68)--(1.34,2.34);
+      \node[below] at (1.55,-0.18) {spatial direction};
+      \node[rotate=90] at (-0.38,1.22) {thermal circle};
+    \end{scope}
+
+    \begin{scope}[shift={(5.55,0.15)}]
+      \node[draw,rounded corners=2pt,align=center,inner sep=5pt] (sym)
+        at (0,1.75)
+        {multiply \(U_4(\mathbf x,\tau_0)\)\\by \(z_m\in Z_N\)};
+      \node[draw,rounded corners=2pt,align=center,inner sep=5pt] (plaq)
+        at (3.35,2.45)
+        {plaquette terms\\unchanged};
+      \node[draw,rounded corners=2pt,align=center,inner sep=5pt] (poly)
+        at (3.35,1.05)
+        {\(P_R(\mathbf x)\mapsto z_m^{k_R}P_R(\mathbf x)\)};
+      \draw[->,thick] (sym.east)--(plaq.west);
+      \draw[->,thick] (sym.east)--(poly.west);
+      \node[align=center,text width=5.3cm] at (1.65,0.02)
+        {the symmetry is exact only when every dynamical\\field is neutral under this center element};
+    \end{scope}
+  \end{tikzpicture}
+  }
+  \caption{Thermal center symmetry on the lattice.  Multiplying all temporal
+  links crossing one time slice by a center element leaves plaquettes
+  invariant, while a Polyakov loop winding the thermal circle acquires the
+  center phase of its representation.}
+  \label{fig:lattice-center-polyakov-loop}
+\end{figure}
+
+At finite spatial volume and with no explicit center-breaking source,
+\[
+  \langle P_\square(\mathbf x)\rangle_{\Lambda,\beta_{\rm lat}}=0
+\]
+in pure \(SU(N)\) Yang--Mills.  Indeed, averaging the expectation value over
+the exact \(\mathbb Z_N\) transformations gives
+\(\langle P_\square\rangle=z_m\langle P_\square\rangle\) for every \(m\), and
+the only complex number with this property for a nontrivial center character
+is zero.  A nonzero order parameter is therefore an infinite-volume
+spontaneous-symmetry-breaking statement, not a finite-volume expectation at
+zero source.
+
+\begin{definition}[Polyakov-loop order parameter]
+\label{def:polyakov-loop-order-parameter}
+Let
+\[
+  \overline P_\square
+  =
+  N_s^{-3}\sum_{\mathbf x}P_\square(\mathbf x).
+\]
+Choose a small source \(h\) selecting one center sector, for example by
+adding
+\(-hN_s^3\operatorname{Re}\overline P_\square\) to the lattice action.  The
+fundamental Polyakov-loop order parameter is
+\begin{equation}
+  \ell
+  =
+  \lim_{h\downarrow0}
+  \lim_{N_s\to\infty}
+  \left\langle\overline P_\square\right\rangle_{h,N_s,N_t,\beta_{\rm lat}},
+  \label{eq:polyakov-loop-order-parameter}
+\end{equation}
+with the continuum thermal limit, if desired, taken afterward along a scaling
+trajectory with \(aN_t=\beta_{\mathrm T}\) fixed.  Center symmetry is
+unbroken when \(\ell=0\) and broken when \(\ell\neq0\).
+\end{definition}
+
+The order of limits in \eqref{eq:polyakov-loop-order-parameter} is part of
+the definition.  Reversing the limits gives zero in a finite volume because
+the exact finite-volume measure is center invariant.
+
+The same operator has a static-source interpretation.  After a center sector
+has been selected, or with the small source used in
+\eqref{eq:polyakov-loop-order-parameter}, insertion of \(P_R(\mathbf x)\) at
+finite lattice spacing computes the partition function in the presence of a
+static external source in representation \(R\), divided by the vacuum
+partition function:
+\begin{equation}
+  \langle P_R(\mathbf x)\rangle_{\rm bare}
+  =
+  \exp\{-\beta_{\mathrm T}
+  (F_R^{\rm bare}-F_0)\}.
+  \label{eq:polyakov-loop-static-source-free-energy}
+\end{equation}
+The adjective ``bare'' matters.  In the continuum limit a static line has a
+self-energy divergence, so a renormalized Polyakov loop is obtained by a
+multiplicative line renormalization,
+\[
+  P_R^{\rm ren}
+  =
+  Z_R(a)^{N_t}P_R^{\rm bare},
+\]
+or equivalently by subtracting the static-source self-energy from
+\(F_R^{\rm bare}\).  This renormalization changes the numerical value of
+\(\ell\), but it does not change the center charge
+\eqref{eq:lattice-polyakov-center-charge} or whether \(\ell\) vanishes.
+
+Similarly, the Polyakov-loop two-point function gives the free energy of a
+static source and antisource pair:
+\begin{equation}
+  \langle P_R(\mathbf x)P_{\overline R}(\mathbf y)\rangle
+  =
+  \exp\{-\beta_{\mathrm T}
+  (F_{R\overline R}(|\mathbf x-\mathbf y|)-F_0)\},
+  \label{eq:polyakov-loop-pair-free-energy}
+\end{equation}
+after the same line renormalization.  This correlator is center neutral even
+when each individual Polyakov loop is charged.  If the infinite-volume
+thermal state satisfies clustering, then a center-broken phase has
+\begin{equation}
+  \lim_{|\mathbf x-\mathbf y|\to\infty}
+  \langle P_\square(\mathbf x)P_{\overline{\square}}(\mathbf y)\rangle
+  =
+  |\ell|^2 ,
+  \label{eq:polyakov-clustering-broken-center}
+\end{equation}
+whereas a center-symmetric phase has \(\ell=0\).
+
+\begin{definition}[Deconfinement in the center-symmetry sense]
+\label{def:center-deconfinement}
+For pure \(SU(N)\) Yang--Mills, a thermal phase is center confined when the
+thermal center symmetry is unbroken, \(\ell=0\), and center deconfined when
+the thermal center symmetry is spontaneously broken, \(\ell\neq0\).  A
+deconfinement transition is a nonanalytic change, in the infinite-volume
+thermal free energy or its derivatives, across which this center order
+parameter changes its symmetry-realization pattern.
+\end{definition}
+
+This definition is sharp for pure Yang--Mills and for theories whose
+dynamical matter preserves a nontrivial center subgroup.  With dynamical
+fundamental quarks the fundamental center symmetry is explicitly broken, so
+the fundamental Polyakov loop is no longer a strict order parameter.  It
+remains a useful static-source observable, and rapid finite-temperature
+changes in it may diagnose a crossover, but the exact symmetry statement has
+been lost.
+
+The center-symmetry order parameter is logically distinct from the
+zero-temperature Wilson-loop area law.  The latter concerns large spacelike
+or spacetime Wilson loops and static-source potentials at \(T=0\); the former
+concerns the realization of the thermal center symmetry and the free energy
+of a single static source at \(T>0\).  In a theory where both are under
+control they are related by physical continuity, but neither finite-cutoff
+definition is a substitute for proving the other's continuum dynamics.
+
 \section{Wilson Loops and the Strong-Coupling Area Law}
 
 Let \(C\) be a closed oriented lattice path.  If \(C\) traverses the oriented
