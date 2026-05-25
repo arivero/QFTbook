@@ -52,6 +52,9 @@ frameworks as theorem sources, comparison lenses, and example-building tools,
 with their domains stated.  A framework discussion passes the harness only if
 it produces nontrivial information: a theorem with hypotheses, a construction,
 an example, a comparison map, a limitation, or a precise open problem.
+Do not include a framework as a badge of rigor or as a merely formal bridge:
+the treatment must either develop theory inside the framework, relate it
+substantively to another formulation, or analyze substantial examples.
 
 ## Definition Integrity Rule
 
