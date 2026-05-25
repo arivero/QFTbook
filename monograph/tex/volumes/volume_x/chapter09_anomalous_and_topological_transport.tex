@@ -63,6 +63,29 @@ The coefficients \(\xi_B,\xi_\omega\) are transport coefficients.  They must
 be defined either by Kubo formulae or by differentiating an equilibrium
 generating functional.
 
+For the explicit four-dimensional formulas below, let \(J_R\) and \(J_L\) be
+the source-normalized right- and left-handed number currents of one massless
+Dirac fermion, and set
+\[
+  J_V=J_R+J_L,\qquad J_A=J_R-J_L,\qquad
+  \mu_R=\mu_V+\mu_A,\qquad \mu_L=\mu_V-\mu_A .
+\]
+The vector source is \(A_V\).  In the convention of
+Chapter~\ref{ch:volume-ii-20}, preserving the vector Ward identity gives
+\[
+  \nabla_\mu J_A^\mu
+  =
+  \frac1{16\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  (F_V)_{\mu\nu}(F_V)_{\rho\sigma}
+  \qquad
+  \hbox{for a unit source charge.}
+\]
+If a physical electromagnetic source \(A_{\rm em}\) couples with charge
+\(Q=eq\), then \(A_V=Q A_{\rm em}\).  The current conjugate to
+\(A_{\rm em}\) is \(QJ_V\), and the magnetic response acquires the factor
+\(Q^2=e^2q^2\).
+
 \section{Kubo Definitions}
 
 In flat space at temperature \(T\), define retarded correlators
@@ -115,6 +138,134 @@ transformations.  Differentiating this functional with respect to
 \(\mathcal A_i\) and \(a_i\) gives the parity-odd equilibrium pieces of
 \(J^i\) and \(T^{0i}\).  The derivation is algebraic once the equilibrium
 functional and its gauge-variation convention are fixed.
+
+\section{Chiral Magnetic Coefficient}
+
+The anomaly fixes a Chern--Simons term in the three-dimensional equilibrium
+functional.  Hold the axial source constant in Euclidean time,
+\[
+  (A_A)_0=\mu_A,\qquad \partial_i\mu_A=0,
+\]
+and set the spatial axial field to zero.  The inflow functional for the
+vector-vector-axial anomaly contains the five-dimensional local term
+\[
+  W_5[A_A,A_V]
+  =
+  -\frac1{4\pi^2}
+  \int_{X_5} A_A\wedge F_V\wedge F_V ,
+\]
+whose axial gauge variation is
+\[
+  \delta_\beta W_5
+  =
+  -\frac1{4\pi^2}\int_{\partial X_5}\beta\,F_V\wedge F_V .
+\]
+Since
+\[
+  F_V\wedge F_V
+  =
+  \frac14\epsilon^{\mu\nu\rho\sigma}
+  (F_V)_{\mu\nu}(F_V)_{\rho\sigma}\,\dd^4x ,
+\]
+this is the inflow form of the axial anomaly displayed above, with the sign
+fixed by the convention that the combined bulk-boundary system is invariant.
+Reducing the same local term on the thermal circle gives the parity-odd
+equilibrium functional
+\[
+  W_{\rm CME}[A_V;\mu_A]
+  =
+  \frac{\mu_A}{4\pi^2}
+  \int_{\Sigma_3} A_V\wedge\dd A_V .
+\]
+In components,
+\[
+  \int_{\Sigma_3} A_V\wedge\dd A_V
+  =
+  \int\dd^3x\,
+  \epsilon^{ijk}(A_V)_i\partial_j(A_V)_k .
+\]
+Varying with respect to the spatial vector source gives
+\[
+  \frac{\delta W_{\rm CME}}{\delta (A_V)_i}
+  =
+  \frac{\mu_A}{2\pi^2}
+  \epsilon^{ijk}\partial_j(A_V)_k
+  =
+  \frac{\mu_A}{2\pi^2}B_V^i .
+\]
+Thus the covariant equilibrium chiral magnetic response of the
+source-normalized vector current is
+\begin{equation}
+  J_V^i
+  =
+  \frac{\mu_A}{2\pi^2}B_V^i .
+  \label{eq:cme-source-normalized}
+\end{equation}
+For the physical electromagnetic current of a Dirac fermion of charge
+\(Q=eq\), \(B_V=Q B_{\rm em}\) and \(J_{\rm em}=QJ_V\), hence
+\begin{equation}
+  J_{\rm em}^i
+  =
+  \frac{e^2q^2\mu_A}{2\pi^2}B_{\rm em}^i .
+  \label{eq:cme-electromagnetic-current}
+\end{equation}
+
+The same coefficient is obtained without invoking hydrodynamics by counting
+lowest Landau levels.  For \(B_V=B\hat z\), the degeneracy per unit transverse
+area is \(|B|/(2\pi)\).  The right-handed lowest Landau level has group
+velocity along \(B\), while the left-handed lowest Landau level has group
+velocity opposite to \(B\).  Filling momenta from \(0\) to \(\mu_R\) and
+\(0\) to \(\mu_L\) gives
+\[
+  J_R^z=\frac{\mu_R}{4\pi^2}B,\qquad
+  J_L^z=-\frac{\mu_L}{4\pi^2}B .
+\]
+Therefore
+\[
+  J_V^z=J_R^z+J_L^z
+  =
+  \frac{\mu_R-\mu_L}{4\pi^2}B
+  =
+  \frac{\mu_A}{2\pi^2}B,
+\]
+which agrees with \eqref{eq:cme-source-normalized}.  This derivation also
+shows why the order of limits in the Kubo formula is part of the observable:
+the current is an equilibrium response to a static magnetic source and a
+specified axial chemical potential.
+
+\section{Chiral Vortical Coefficients}
+
+For one massless Dirac fermion, the covariant first-derivative vortical
+currents in the same source-normalized convention are
+\begin{align}
+  J_V^\mu\big|_\omega
+  &=
+  \frac{\mu_V\mu_A}{\pi^2}\,\omega^\mu ,
+  \label{eq:vector-cve-dirac}\\
+  J_A^\mu\big|_\omega
+  &=
+  \left[
+    \frac{\mu_V^2+\mu_A^2}{2\pi^2}
+    +\frac{T^2}{6}
+  \right]\omega^\mu .
+  \label{eq:axial-cve-dirac}
+\end{align}
+These formulas follow by adding the two Weyl contributions
+\[
+  J_R^\mu\big|_\omega
+  =
+  \left(\frac{\mu_R^2}{4\pi^2}+\frac{T^2}{12}\right)\omega^\mu,
+  \qquad
+  J_L^\mu\big|_\omega
+  =
+  -\left(\frac{\mu_L^2}{4\pi^2}+\frac{T^2}{12}\right)\omega^\mu .
+\]
+The vector current is the sum \(J_R+J_L\), while the axial current is the
+difference \(J_R-J_L\).  Hence the \(T^2/12\) terms cancel in the vector
+current and add in the axial current.  There is therefore no universal
+source-normalized vector-current term proportional to \(\mu_A T\) in this
+Dirac example; the universal temperature-squared contribution belongs to the
+axial vortical current and is tied to the mixed axial-gravitational anomaly.
 
 \section{Entropy Constraint}
 
