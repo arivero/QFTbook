@@ -153,6 +153,91 @@ The Abelian Faddeev--Popov determinant for the condition
 \(\partial_\mu A^\mu=\varphi\) is \(\det\Box\), independent of \(A_\mu\);
 it is absorbed into the normalization of the generating functional.
 
+\begin{proposition}[QED as the Abelian Faddeev--Popov specialization]
+\label{prop:qed-abelian-faddeev-popov-specialization}
+Let
+\[
+  F_\varphi[A](x)=\partial_\mu A^\mu(x)-\varphi(x)
+\]
+be the covariant gauge condition, with \(\varphi\) an auxiliary scalar
+function in the same regulator and boundary-condition class as
+\(\partial_\mu A^\mu\).  Along the Abelian gauge orbit
+\[
+  A_\mu^\xi=A_\mu+\partial_\mu\xi,
+  \qquad
+  \psi^\xi=\ee^{\ii g\xi}\psi,
+  \qquad
+  \bar\psi^\xi=\bar\psi\,\ee^{-\ii g\xi},
+\]
+the linearized orbit-slice map is
+\begin{equation}
+  \mathcal M_{\rm QED}(x,y)
+  =
+  \left.
+  \frac{\delta F_\varphi[A^\xi](x)}{\delta\xi(y)}
+  \right|_{\xi=0}
+  =
+  \Box_x\delta^{(4)}(x-y).
+  \label{eq:qed-fp-operator-box}
+\end{equation}
+After residual zero modes have been removed or separately fixed,
+\[
+  \Delta_{\rm FP}^{U(1)}=\det{}'\Box .
+\]
+This determinant is independent of \(A_\mu,\psi,\bar\psi\).  Hence it cancels
+from normalized representative Green functions and may be absorbed into the
+normalization of \(Z\).  If it is represented by anticommuting ghosts, the
+ghost action is the free decoupled quadratic action
+\[
+  S_{\rm gh}^{U(1)}
+  =
+  \int\dd^4x\,\bar c\,\Box c ,
+\]
+so there is no QED ghost vertex in the perturbative rules below.
+\end{proposition}
+
+\begin{proof}
+The gauge condition depends only on the vector-potential representative, so
+the matter-field phases do not enter the Faddeev--Popov operator.  Directly,
+\[
+  F_\varphi[A^\xi](x)
+  =
+  \partial_\mu A^\mu(x)+\Box\xi(x)-\varphi(x).
+\]
+Taking the functional derivative with respect to \(\xi(y)\) gives
+\eqref{eq:qed-fp-operator-box}.  Since the result contains no field, the
+Jacobian is a constant determinant on the regular gauge-parameter subspace.
+The prime on \(\det{}'\Box\) records the same zero-mode separation already
+needed for the gauge slice itself: constant gauge parameters, or any residual
+modes allowed by the chosen boundary conditions, do not change
+\(\partial_\mu A^\mu\).  For normalized correlators the same determinant
+multiplies numerator and denominator.  The Grassmann representation follows
+from the finite-dimensional Berezin identity
+\(\int D\bar c\,Dc\,\exp(\ii\bar cMc)\propto\det M\), applied to
+\(M=\Box\).
+\end{proof}
+
+This proposition is the Abelian, linear-gauge specialization of the general
+local orbit-measure construction in
+Proposition~\ref{prop:fp-orbit-measure-construction} and
+\eqref{eq:fp-gauge-fixed-integral}.  In a nonabelian gauge theory the orbit
+map is instead
+\[
+  \delta_\zeta A_\mu^a=(D_\mu(A)\zeta)^a,
+  \qquad
+  \mathcal M^{ab}(A;x,y)
+  =
+  \partial_x^\mu D_\mu^{ab}(A;x)\,\delta^{(4)}(x-y)
+\]
+for Lorenz gauge.  The determinant then depends on the gauge representative
+and its ghost representation produces interacting ghost vertices.  Moreover,
+outside a sufficiently small regular chart the Faddeev--Popov operator can
+develop zero modes and a single gauge condition can meet an orbit more than
+once.  Those issues are not QED Feynman-rule details; they belong to the
+nonabelian local-coordinate and BRST analysis of
+Chapter~\ref{ch:volume-ii-18}, especially
+Theorem~\ref{thm:singer-gribov-obstruction}.
+
 Introduce an ordinary source \(J^\mu\) for \(A_\mu\), and Grassmann sources
 \(\eta_\alpha,\bar\eta^\alpha\) for \(\bar\psi^\alpha,\psi_\alpha\). The
 regulated Lorentzian generating functional, written in continuum shorthand, is

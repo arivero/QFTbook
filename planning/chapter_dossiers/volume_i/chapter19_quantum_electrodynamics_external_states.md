@@ -46,6 +46,9 @@ Status: revised and source-audited on 2026-05-22.
   \(\psi\mapsto\exp(\ii g\xi)\psi\).
 - Perturbative QED is treated as a formal expansion of gauge-fixed Green
   functions around the free Maxwell and free Dirac theories.
+- The covariant QED Faddeev--Popov determinant is treated as the Abelian
+  specialization of the general local orbit-slice construction, with the
+  nonabelian ghost and Gribov-local-chart issues deferred to the BRST chapter.
 - External electron, positron, and photon factors are LSZ pole residues, with
   infrared qualifications stated explicitly.
 
@@ -58,6 +61,8 @@ Status: revised and source-audited on 2026-05-22.
 | \(j^\mu\) | electromagnetic current represented, in these gamma conventions, by \(\ii g\bar\psi\gamma^\mu\psi\) |
 | \(\xi_{\mathrm g}\) | covariant gauge-fixing parameter |
 | \(J^\mu,\eta,\bar\eta\) | sources for \(A_\mu,\bar\psi,\psi\) in the generating functional |
+| \(F_\varphi[A]\) | covariant gauge condition \(\partial_\mu A^\mu-\varphi\) used to derive the QED Faddeev--Popov operator |
+| \(\Delta_{\rm FP}^{U(1)}\) | Abelian Faddeev--Popov determinant \(\det{}'\Box\) after residual zero modes are removed |
 | \(C_x,C_{y\to x}\) | dressing paths for charged Wilson-line insertions |
 | \(Z_\psi,Z_A\) | pole residues for spinor and photon representative fields |
 | \(u^\sigma,v^\sigma\) | massive spinor intertwiners fixed in Chapter 16 |
@@ -73,6 +78,12 @@ Status: revised and source-audited on 2026-05-22.
 - The gauge-fixed Abelian path integral has the photon and spinor propagators
   already derived in Chapters 18 and 16, together with a single cubic vertex
   \(-g\gamma^\mu\) in the present conventions.
+- The QED Faddeev--Popov operator for
+  \(F_\varphi[A]=\partial_\mu A^\mu-\varphi\) is
+  \(\Box_x\delta^{(4)}(x-y)\), hence the determinant is a field-independent
+  normalization constant after zero modes are separated; representing it by
+  ghosts gives only a free decoupled ghost action.  The dossier explicitly
+  cross-references the nonabelian construction in the BRST chapter.
 - Local gauge-invariant observables have zero net local charge; charged
   representative fields are used in gauge-fixed Green functions, and charged
   insertions require dressing data such as Wilson lines with specified paths.
