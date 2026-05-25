@@ -243,10 +243,22 @@ summations, conformal-block recursion, large symbolic reductions, and loop
 integral bookkeeping that may grow combinatorially should be implemented in
 Python, with Wolfram Language used only for compact reader-facing symbolic
 cross-checks.
-In `.wl` files run by `wolframscript -file`, continued arithmetic must keep a
-binary operator at the end of the preceding line, not as the first nonspace
-token of the next line, because a newline followed by a leading operator can
-be parsed as a new statement.
+
+Executable verification is mandatory.  If a commit introduces or edits a
+Wolfram Language check or the calculation-check harness, the verification note
+must name the actual backend used, for example
+`WolframKernel -script calculation-checks/gamma_trace_checks.wl`, and record
+the success marker printed by the script.  A missing `wolframscript` on `PATH`,
+a skipped Wolfram pass, or a Python-only pass is not a valid verification of a
+Wolfram Language file.  Each committed `.wl` check must print a line of the
+form `All Wolfram Language ... passed.`, and
+`tools/run_calculation_checks.sh` must fail if that marker is absent.
+
+In `.wl` files, continued arithmetic must keep a binary operator at the end of
+the preceding line, not as the first nonspace token of the next line.  A
+newline followed by a leading operator can be parsed by `wolframscript -file`
+as a new statement.  The calculation harness rejects committed `.wl` checks
+with such leading-operator continuations before execution.
 
 ## Compilation Gate
 

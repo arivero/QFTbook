@@ -128,10 +128,14 @@ The current machine-readable layer is therefore deliberately small:
 Calculation checks belong in `calculation-checks/`.  Prefer plain Python and
 Wolfram Language `.wl` files.  Do not treat a missing `wolframscript` on
 `PATH` as evidence that Mathematica is absent: on the author's macOS machine,
-the executable may be at
-`/Applications/Wolfram.app/Contents/MacOS/wolframscript`.  Heavy numerical or
-long symbolic computations should be implemented in Python; Wolfram Language
-checks are for finite, readable symbolic convention verifications.
+the reliable batch entrypoint may be
+`/Applications/Wolfram.app/Contents/MacOS/WolframKernel -script`.  When a
+commit introduces or edits a `.wl` check or the calculation-check runner,
+verify the actual Wolfram backend, not merely the Python sibling.  A valid
+verification names the backend path and records the emitted
+`All Wolfram Language ... passed.` marker.  Heavy numerical or long symbolic
+computations should be implemented in Python; Wolfram Language checks are for
+finite, readable symbolic convention verifications.
 
 Deferred until the chapter architecture is more stable:
 

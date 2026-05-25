@@ -63,15 +63,18 @@ Convention-sensitive calculation checks can be run with:
 tools/run_calculation_checks.sh
 ```
 
-The runner first executes the Python checks.  It then searches for
-`wolframscript` on `PATH` and at the macOS Wolfram app location
-`/Applications/Wolfram.app/Contents/MacOS/wolframscript`, which is the
-expected location on the author's machine when `which wolframscript` does not
-find it.  Computationally heavy or numerical checks should be implemented in
-Python.  Wolfram Language checks are reserved for lightweight, reader-readable
-symbolic convention checks.  Set `QFT_SKIP_WOLFRAM=1` to run only the Python
-checks, and set `WOLFRAMSCRIPT=/absolute/path/to/wolframscript` to override
-the executable path.
+The runner first executes the Python checks.  If `.wl` checks exist, it then
+requires a working Wolfram backend, preferring
+`/Applications/Wolfram.app/Contents/MacOS/WolframKernel -script` on the
+author's macOS installation and falling back to `wolframscript -file` only
+when the kernel entrypoint is unavailable.  The runner probes the selected
+backend, runs every `.wl` file, rejects known Wolfram line-continuation parse
+hazards, and fails unless each Wolfram script prints its success marker.
+Computationally heavy or numerical checks should be implemented in Python.
+Wolfram Language checks are reserved for lightweight, reader-readable symbolic
+convention checks.  Set `QFT_SKIP_WOLFRAM=1` only for an explicitly
+Python-only pass, and set `WOLFRAMKERNEL=/absolute/path/to/WolframKernel` or
+`WOLFRAMSCRIPT=/absolute/path/to/wolframscript` to override executable paths.
 
 ## Quality Gates
 

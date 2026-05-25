@@ -32,17 +32,21 @@ Run all available checks from the repository root with:
 tools/run_calculation_checks.sh
 ```
 
-For Wolfram Language checks, the runner first tries `wolframscript` on
-`PATH`.  On the author's macOS installation it also checks the app-bundled
-executable:
+For Wolfram Language checks, the runner requires a working batch backend when
+any `.wl` files are present.  On the author's macOS installation the preferred
+entrypoint is
 
 ```bash
-/Applications/Wolfram.app/Contents/MacOS/wolframscript
+/Applications/Wolfram.app/Contents/MacOS/WolframKernel -script calculation-checks/<file>.wl
 ```
 
-Set `QFT_SKIP_WOLFRAM=1` to run only the Python checks.  Set
-`WOLFRAMSCRIPT=/absolute/path/to/wolframscript` to override the executable
-path.
+The harness probes the selected backend before running checks, rejects `.wl`
+files with arithmetic continuations that begin a line with `+`, `-`, `*`, or
+`/`, and requires every Wolfram script to print a line of the form
+`All Wolfram Language ... passed.`.  Set `QFT_SKIP_WOLFRAM=1` only for an
+explicitly Python-only pass.  Set
+`WOLFRAMKERNEL=/absolute/path/to/WolframKernel` or
+`WOLFRAMSCRIPT=/absolute/path/to/wolframscript` to override executable paths.
 
 Planned checks:
 

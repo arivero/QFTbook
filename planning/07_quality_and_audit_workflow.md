@@ -125,16 +125,20 @@ default entry point is
 tools/run_calculation_checks.sh
 ```
 
-This script runs the Python checks and then the Wolfram Language checks when
-`wolframscript` is available.  On the author's macOS installation, agents
-should not rely only on `which wolframscript`: if it is not on `PATH`, use
-`/Applications/Wolfram.app/Contents/MacOS/wolframscript`.  Plain `.wl` files
+This script runs the Python checks and then, when `.wl` files exist, requires
+a working Wolfram batch backend.  On the author's macOS installation, agents
+should prefer
+`/Applications/Wolfram.app/Contents/MacOS/WolframKernel -script`; the runner
+falls back to `wolframscript -file` only when the kernel entrypoint is not
+available.  The runner probes the exact selected backend, rejects known
+Wolfram line-continuation parse hazards, runs every committed `.wl` check, and
+fails unless each check prints its Wolfram success marker.  Plain `.wl` files
 in `calculation-checks/` are preferred over `.nb` notebooks for committed
 checks, since `.wl` files are directly diffable and agent-readable.
 Computationally heavy or numerical checks should be written in Python; Wolfram
 Language is for lightweight symbolic convention checks and reader-facing
-algebra.  Use `QFT_SKIP_WOLFRAM=1 tools/run_calculation_checks.sh` when a pass
-only needs the Python checks.
+algebra.  Use `QFT_SKIP_WOLFRAM=1 tools/run_calculation_checks.sh` only for an
+explicitly Python-only pass, never as verification of a touched `.wl` file.
 
 ## Stage 6: Cross-Chapter Audit
 
