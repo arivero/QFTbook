@@ -441,6 +441,78 @@ reconstruction; it is a subscripted instance of the global vacuum notation
 \(\vac\).
 \end{theorem}
 
+\begin{proof}
+Let \(\mathcal E_+\) be the vector space of finite labelled Euclidean
+insertions whose time coordinates are strictly positive.  Reflection
+positivity makes
+\[
+  \langle F,G\rangle_{\rm OS}:=S_{m+n}(\Theta F,G)
+\]
+a positive semidefinite Hermitian form on \(\mathcal E_+\).  Quotienting by
+the null space
+\[
+  \mathcal N_{\rm OS}
+  =
+  \{F\in\mathcal E_+:\langle F,F\rangle_{\rm OS}=0\}
+\]
+and completing gives the Hilbert space
+\(\Hilb_{\rm OS}=\overline{\mathcal E_+/\mathcal N_{\rm OS}}\).  The class of
+the empty insertion is the vector \(\vac_{\rm OS}\), and finite positive-time
+insertions are dense by construction.
+
+For \(s\ge0\), Euclidean time translation by \(s\) maps
+\(\mathcal E_+\) to itself.  The OS-II semigroup assumptions
+\eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}
+therefore descend to a strongly continuous contraction semigroup
+\(T_E(s)\) on \(\Hilb_{\rm OS}\).  The Hille--Yosida theorem gives a closed
+maximal dissipative generator \(A\), and the symmetry obtained from Euclidean
+time reflection identifies this contraction semigroup with a self-adjoint
+positive generator
+\[
+  H:=-A,\qquad T_E(s)=e^{-sH},\qquad \sigma(H)\subset[0,\infty).
+\]
+Stone's theorem then gives Lorentzian time translations
+\(U(t,0)=e^{itH}\).  Spatial translations and rotations preserve the
+positive-time half-space after a common positive time shift; by Euclidean
+covariance and the same null-space argument they produce unitary
+representations on the reconstructed Hilbert space.  The OS-II
+linear-growth estimate \eqref{eq:os-linear-growth-condition} is the analytic
+input that permits the Euclidean rotation parameters mixing time and space to
+be continued to real Lorentzian boosts as tempered boundary values.  This
+gives a unitary representation \(U\) of the connected Poincare group whose
+joint translation spectrum is contained in the closed forward light cone.
+
+For a labelled test function \(f\) supported at positive Euclidean time,
+define the field insertion on the dense domain
+\(\mathcal D_{\rm OS}\subset\Hilb_{\rm OS}\) represented by finite
+positive-time insertions by concatenation:
+\[
+  \widehat\Phi_\alpha(f)\,[F]
+  :=
+  [(\alpha,f),F],
+\]
+after translating the supports, if necessary, so that the concatenated
+configuration remains strictly time ordered before taking the boundary value.
+The continuity estimates in the OS hypotheses make the resulting matrix
+elements distributions in \(f\).  Their Lorentzian boundary values are the
+Wightman distributions.  Permutation symmetry of the Euclidean hierarchy,
+together with analytic continuation and the edge-of-the-wedge theorem, gives
+local graded commutativity for spacelike separated Lorentzian test supports.
+Hermiticity of the Schwinger hierarchy gives the adjoint relation on
+\(\mathcal D_{\rm OS}\), and Euclidean covariance gives the Poincare
+covariance of the reconstructed fields.
+
+In the Euclidean time-ordered domain with noncoincident insertion points,
+continuing the Wightman distributions back to imaginary time recovers the
+original \(S_n\).  The assertion is restricted to noncoincident Euclidean
+points because contact extensions are part of the declared Schwinger
+hierarchy rather than a consequence of analytic continuation away from the
+diagonals.  Finally, every step above is functorial in the OS inner product
+and the insertion operations: two reconstructions from the same hierarchy
+identify the dense classes \([F]\), preserve all matrix elements, and hence
+extend uniquely to a unitary equivalence.
+\end{proof}
+
 \begin{corollary}[path-integral Schwinger limits as Wightman data]
 \label{cor:path-integral-schwinger-limit-to-wightman}
 Let \(\{\mathcal E_\Lambda,\langle\,\cdot\,\rangle_\Lambda\}\) be a regulated

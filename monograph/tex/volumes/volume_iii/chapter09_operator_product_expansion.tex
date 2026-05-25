@@ -96,31 +96,81 @@ Hilbert-space and spectral package.
 
 \begin{theorem}[Euclidean radial OPE convergence]
 \label{thm:euclidean-radial-ope-convergence}
-  Assume Hypothesis~\ref{hyp:radial-reconstruction-data}.  Let
+  Assume Hypothesis~\ref{hyp:radial-reconstruction-data}, including its
+  spectral clause that \(D_{\rm rad}\) is a nonnegative self-adjoint operator
+  with discrete point spectrum, finite-dimensional spectral subspaces
+  \(\mathbf 1_{[0,E]}(D_{\rm rad})\mathcal H_{\rm rad}\) for every
+  \(E<\infty\), and dense algebraic span by local scaling-operator states and
+  their descendants.  Let
   \(\mathcal O_i(x_E)\mathcal O_j(0)\vac\) be inserted at Euclidean points
   inside a sphere of radius \(r\) in \(\R^D_E\), and let all remaining
   Euclidean insertions lie outside radius \(R>r\).  Then the expansion of this
-  state in eigenspaces of the dilatation operator converges in Hilbert norm for
+  state in eigenspaces of \(D_{\rm rad}\) converges in Hilbert norm for
   \(r<R\), and the resulting OPE converges inside the corresponding Euclidean
-  correlation functions.  Truncating to states of scaling dimension at most
-  \(\Delta_*\) gives a remainder controlled by powers of \(r/R\) determined by
-  the omitted dimensions.
+  correlation functions.  If the expansion is truncated to states of scaling
+  dimension at most \(\Delta_*\), the remainder is bounded by the spectral
+  tail above \(\Delta_*\), with the damping factor determined by
+  \((r/R)^{D_{\rm rad}}\).
 \end{theorem}
 
+\begin{proof}
 The proof is the spectral theorem applied to Euclidean radial quantization.
 Radial time is \(\tau=\log |x_E|\), and the dilatation operator is the
 nonnegative self-adjoint radial Hamiltonian \(D_{\rm rad}\) of
-Hypothesis~\ref{hyp:radial-reconstruction-data}.  A separating sphere at radius
-\(R\) inserts the damping factor
+Hypothesis~\ref{hyp:radial-reconstruction-data}.  A separating sphere at
+radius \(R\) inserts the damping factor
 \[
   \exp[-(\log(R/r))D_{\rm rad}] .
 \]
-Since the spectrum is discrete with finite multiplicities below any fixed
-dimension, the spectral projection onto \(\Delta\le\Delta_*\) gives a finite
-partial OPE and the complement is suppressed by the corresponding power of
-\(r/R\) relative to the norm of the external state.  This is the mathematical
-reason the Euclidean OPE is an operator algebraic expansion in unitary CFTs
-satisfying the stated radial hypotheses.
+Set \(q=r/R\in(0,1)\), and write
+\(\Psi_{ij}(x_E)=\mathcal O_i(x_E)\mathcal O_j(0)\vac\) for the radial
+Hilbert-space vector defined by the inside insertions.  For a spectral cutoff
+\(\Delta_*\), let
+\[
+  P_{\le\Delta_*}
+  :=
+  \mathbf 1_{[0,\Delta_*]}(D_{\rm rad}),\qquad
+  P_{>\Delta_*}:=1-P_{\le\Delta_*}.
+\]
+The finite-dimensionality of
+\(\mathbf 1_{[0,\Delta_*]}(D_{\rm rad})\mathcal H_{\rm rad}\) gives an
+orthonormal basis \(\{|A\rangle\}\) of local scaling-operator states in this
+subspace, and hence
+\[
+  P_{\le\Delta_*}\Psi_{ij}(x_E)
+  =
+  \sum_{\Delta_A\le\Delta_*}
+  |A\rangle\,\langle A,\Psi_{ij}(x_E)\rangle_{\rm rad}.
+\]
+This is the finite radial OPE partial sum, with the coefficients read as the
+radial matrix elements of the product insertion.  Strong convergence of the
+spectral projections gives
+\[
+  \lim_{\Delta_*\to\infty}
+  \|P_{>\Delta_*}\Psi_{ij}(x_E)\|_{\rm rad}=0,
+\]
+so the partial sums converge in Hilbert norm.
+
+Pairing the inside vector with an outside vector \(\Xi\) whose support begins
+at radius \(R\) inserts \(q^{D_{\rm rad}}\).  Therefore
+\[
+  \left|
+  \langle \Xi,q^{D_{\rm rad}}P_{>\Delta_*}\Psi_{ij}(x_E)\rangle_{\rm rad}
+  \right|
+  \le
+  q^{\Delta_*}\,
+  \|\Xi\|_{\rm rad}\,
+  \|P_{>\Delta_*}\Psi_{ij}(x_E)\|_{\rm rad},
+\]
+and sharper bounds follow by replacing \(q^{\Delta_*}\) with the exact
+spectral tail of \(q^{D_{\rm rad}}\) on the omitted dimensions.  Since local
+operator states are dense in the finite-energy subspace, the Hilbert-space
+partial sums are precisely finite sums of local scaling operators and their
+descendants.  For a radial Hamiltonian with continuous spectrum, the same
+spectral theorem produces a spectral integral; the displayed discrete OPE
+requires the finite-multiplicity point-spectrum hypothesis stated in the
+theorem.
+\end{proof}
 
 The preceding theorem is a statement in the Euclidean radial Hilbert space.
 It does not by itself assert pointwise convergence at arbitrary real
