@@ -85,6 +85,11 @@ Current checks:
   monograph trace normalization, the planar-versus-one-handle theta-graph
   \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
   versus Veneziano quark-boundary counting.
+- `qcd_string_luscher_checks.py`: exact rational checks for the QCD-string
+  effective-string section, including the open and closed transverse-scalar
+  Casimir coefficients \(-1/24\) and \(-1/6\), and the displayed
+  Nambu--Goto reference expansion coefficients at orders \(1/L\) and
+  \(1/L^3\).
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the

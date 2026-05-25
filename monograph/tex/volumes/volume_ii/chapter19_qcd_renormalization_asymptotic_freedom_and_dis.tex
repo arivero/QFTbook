@@ -1705,9 +1705,92 @@ and possible boundary terms.  Expanding the square root gives
   \partial_aX^i\partial_aX^i
   +\cdots .
 \]
-Thus the first quantum correction to the ground-state energy is the Casimir
-energy of \(D-2\) massless scalar fields on an interval with endpoint boundary
-conditions fixed by the static sources:
+The first quantum correction to the flux-tube energy is therefore a
+worldsheet determinant.  The determinant must be renormalized as an effective
+field-theory determinant: local divergent terms are absorbed into the
+worldsheet area coefficient, endpoint energies, and higher local operators,
+while the nonlocal finite term is a prediction.
+
+\begin{proposition}[Free transverse determinant and the Luscher term]
+\label{prop:qcd-string-luscher-term}
+Assume that, at distances \(L\sqrt{\sigma_R}\gg1\), the only gapless
+worldsheet fields of the open static-source flux tube are the
+\(c_\perp=D-2\) transverse displacement fields \(X^i\), and that the static
+sources impose Dirichlet boundary conditions on these displacements at
+\(s=0,L\).  After subtracting local counterterms proportional to the
+worldsheet area and to the length of the two boundaries, the Gaussian
+fluctuation determinant contributes
+\[
+  \Delta E^{\mathrm{open}}_0(L)
+  =
+  -\frac{\pi c_\perp}{24L}
+\]
+to the long-time energy extracted from the rectangular Wilson loop.  For a
+closed flux tube winding a spatial circle of length \(L\), with periodic
+transverse fields and with the transverse zero mode treated as the
+center-of-mass coordinate rather than as an oscillator, the corresponding
+finite part is
+\[
+  \Delta E^{\mathrm{closed}}_0(L)
+  =
+  -\frac{\pi c_\perp}{6L}.
+\]
+\end{proposition}
+
+\begin{proof}
+The coefficient \(\sigma_R\) in the quadratic action is removed from the
+oscillator frequencies by the canonical rescaling
+\(Y^i=\sqrt{\sigma_R}X^i\).  For one open transverse scalar with Dirichlet
+boundary conditions,
+\[
+  Y(\tau,s)=\sum_{n\ge1}q_n(\tau)\sin\frac{\pi ns}{L},
+  \qquad
+  \omega_n=\frac{\pi n}{L}.
+\]
+The formal zero-point energy is
+\(\frac12\sum_{n\ge1}\omega_n\).  A spectral regulator gives
+\[
+  E^{\mathrm{open}}_{\alpha}(L)
+  =
+  \frac12\sum_{n\ge1}\frac{\pi n}{L}\,n^{-\alpha}
+  =
+  \frac{\pi}{2L}\zeta_{\mathrm R}(\alpha-1).
+\]
+The heat-kernel expansion of this regulated determinant contains local
+divergences proportional to \(L\) and to the endpoints.  These renormalize
+\(\sigma_R\) and \(\mu_R\) in
+\eqref{eq:qcd-string-effective-action}.  The nonlocal finite part is the
+analytic continuation at \(\alpha=0\):
+\[
+  E^{\mathrm{open}}_{\mathrm{fin}}(L)
+  =
+  \frac{\pi}{2L}\zeta_{\mathrm R}(-1)
+  =
+  -\frac{\pi}{24L}.
+\]
+Multiplication by \(c_\perp\) gives the open-string coefficient.
+
+For one periodic transverse scalar on a circle, the nonzero modes are labelled
+by \(n\in\mathbb Z\setminus\{0\}\) and have
+\(\omega_n=2\pi |n|/L\).  Equivalently, for each \(n\ge1\) there are sine and
+cosine oscillators of frequency \(2\pi n/L\).  The zero-point contribution is
+therefore
+\[
+  E^{\mathrm{closed}}_{\alpha}(L)
+  =
+  \sum_{n\ge1}\frac{2\pi n}{L}\,n^{-\alpha}
+  =
+  \frac{2\pi}{L}\zeta_{\mathrm R}(\alpha-1),
+\]
+whose finite part at \(\alpha=0\) is \(-\pi/(6L)\).  The omitted zero mode is
+the transverse center-of-mass coordinate of the closed string; it produces the
+ordinary volume normalization of the state rather than an \(L^{-1}\) Casimir
+energy.  This proves the closed coefficient.
+\end{proof}
+
+Consequently, under the hypotheses of
+Proposition~\ref{prop:qcd-string-luscher-term}, the open-string ground-state
+energy has the universal large-\(L\) form
 \begin{equation}
   E_0(L)
   =
@@ -1716,8 +1799,8 @@ conditions fixed by the static sources:
   +O(L^{-3})
   \label{eq:qcd-string-open-luscher}
 \end{equation}
-for a long open flux tube.  For a closed flux tube winding a spatial circle of
-length \(L\), the corresponding leading form is
+for a long open flux tube.  For a closed flux tube winding a spatial circle,
+the corresponding leading form is
 \begin{equation}
   E_0^{\mathrm{closed}}(L)
   =
@@ -1732,6 +1815,62 @@ terms are universal because they depend only on the central charge \(D-2\) of
 these free transverse modes.  The higher powers in \(1/L\), the spectrum of
 massive worldsheet excitations, and the validity range of the expansion are
 dynamical properties of the particular gauge theory.
+
+The Nambu--Goto square-root spectrum is a useful reference point, not the
+definition of the QCD string.  If all higher-derivative and boundary
+coefficients in \(S_{\mathrm{higher}}\) are set to their Nambu--Goto values,
+the open and closed ground-state energies expand as
+\begin{align}
+  E^{\mathrm{NG,open}}_0(L)
+  &=
+  \sigma_R L
+  \sqrt{1-\frac{\pi(D-2)}{12\sigma_RL^2}}
+  \notag\\
+  &=
+  \sigma_R L
+  -\frac{\pi(D-2)}{24L}
+  -\frac{\pi^2(D-2)^2}{1152\,\sigma_RL^3}
+  +O(L^{-5}),
+  \label{eq:qcd-string-ng-open-expansion}\\
+  E^{\mathrm{NG,closed}}_0(L)
+  &=
+  \sigma_R L
+  \sqrt{1-\frac{\pi(D-2)}{3\sigma_RL^2}}
+  \notag\\
+  &=
+  \sigma_R L
+  -\frac{\pi(D-2)}{6L}
+  -\frac{\pi^2(D-2)^2}{72\,\sigma_RL^3}
+  +O(L^{-5}).
+  \label{eq:qcd-string-ng-closed-expansion}
+\end{align}
+The equality of the \(1/L\) term with
+\eqref{eq:qcd-string-open-luscher} and
+\eqref{eq:qcd-string-closed-luscher} is forced by the free transverse
+massless fields.  Agreement at later orders is a statement about the
+effective-string matching coefficients and the nonlinearly realized
+target-space Lorentz symmetry, and must be checked or imposed in the
+particular effective theory being used.
+
+\begin{controlledapproximation}[Effective string expansion of a confining flux tube]
+\label{ca:qcd-effective-string-expansion}
+An effective-string prediction for a flux-tube level consists of a static
+source sector or closed-string winding sector, a renormalized string tension,
+boundary counterterms when endpoints are present, a list of gapless and
+massive worldsheet fields, a local derivative expansion for
+\(S_{\mathrm{higher}}\), and a declared large-distance regime
+\[
+  L\sqrt{\sigma_R}\gg1,
+  \qquad
+  E_{\mathrm{gap}}^{\mathrm{ws}}L\gg1
+\]
+for every massive worldsheet excitation not retained explicitly.  The
+universal Luscher term is the first finite prediction under these hypotheses.
+Every later coefficient is either fixed by the worldsheet symmetry constraints
+within the chosen effective theory or is a matching parameter to be determined
+from the microscopic gauge theory, for example from lattice static-potential
+or flux-tube spectrum data.
+\end{controlledapproximation}
 
 With dynamical fundamental quarks the fundamental one-form symmetry is
 explicitly broken.  The static-source Hilbert space then contains states made

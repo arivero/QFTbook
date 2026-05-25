@@ -102,6 +102,13 @@ The chapter must define and derive:
   theta-graph \(N_c^{-2}\) suppression, single-trace factorization,
   fixed-\(N_f\) and Veneziano quark-boundary counting, and the leading
   large-\(N_c\) scaling of meson, glueball, baryon, and vacuum amplitudes;
+- the QCD-string flux-tube sector from rectangular Wilson-loop spectral data,
+  including the static-source Hilbert-space expansion, the asymptotic string
+  tension, \(N\)-ality and screening, the static-gauge effective worldsheet
+  action, the Gaussian transverse determinant, the open and closed Luscher
+  terms, the Nambu--Goto reference expansion, and the controlled-approximation
+  boundary separating universal effective-string terms from lattice-matched
+  coefficients;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
@@ -186,32 +193,39 @@ The chapter must define and derive:
    scaling restores their leading order.  Meson, glueball, and baryon scaling
    statements depend on separate spectral assumptions about the existence of
    the corresponding color-singlet states.
-13. Colored quark and gluon fields are not physical asymptotic states in the
+13. The QCD string is defined through line-operator/static-source sectors, not
+    through perturbative colored fields.  Under the effective-string
+    hypotheses that the only gapless worldsheet modes are the transverse
+    displacements, the Gaussian determinant gives the universal open and
+    closed Luscher terms \(-\pi(D-2)/(24L)\) and
+    \(-\pi(D-2)/(6L)\), while later coefficients require symmetry constraints
+    and matching data.
+14. Colored quark and gluon fields are not physical asymptotic states in the
    QCD confinement scenario; deriving this spectral property from the
    four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
    as a nonperturbative physical hypothesis when discussing phenomenology.
    Physical scattering statements must be formulated in terms of
    gauge-invariant states or controlled high-energy factorization data.
-14. Energy correlators are nonperturbative detector observables once the
+15. Energy correlators are nonperturbative detector observables once the
     stress-tensor flux limit is constructed on the physical Hilbert space.
-15. Smeared detector observables are continuous under soft emission and
+16. Smeared detector observables are continuous under soft emission and
     collinear recombination, and this supplies the measurement-function input
     for KLN/factorization finiteness at fixed perturbative order.
-16. The energy-energy correlator and energy-flow polynomials are formulated in
+17. The energy-energy correlator and energy-flow polynomials are formulated in
     terms of positive calorimetric measures rather than colored parton labels.
-17. DIS is controlled by an inclusive Wightman current-current tensor; the
+18. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
     continuation to the physical inclusive tensor.
-18. The leading-twist local operators and the gauge-invariant light-ray
+19. The leading-twist local operators and the gauge-invariant light-ray
     operators are two presentations of the same short-distance data; asymptotic
     freedom changes Bjorken scaling into logarithmic scaling violation governed
     by anomalous dimensions.
-19. In QCD, partonic initial-state collinear singularities are not removed by
+20. In QCD, partonic initial-state collinear singularities are not removed by
     an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
     renormalized Wilson-line light-ray operators defining PDFs, and the
     resulting factorization-scale dependence is governed by DGLAP evolution.
-20. Physical QCD asymptotic completeness remains an open large-time problem:
+21. Physical QCD asymptotic completeness remains an open large-time problem:
     one must construct wave operators from stable color-singlet asymptotic
     spaces, treat resonances through analytic scattering data, include
     massless Goldstone modes when chiral limits are taken, and prove that
@@ -235,6 +249,8 @@ The chapter must define and derive:
 - Large-\(N_c\) double-line topology figure: leading adjoint color-flow
   propagator, planar theta graph, and one-handle theta graph with the
   \(F=3\) versus \(F=1\) face count and \(N_c^{-2}\) suppression marked.
+- QCD-string figure: static-source flux tube and the associated worldsheet
+  transverse fluctuations.
 - Energy-flow detector figure: stress-tensor flux through a large sphere,
   smeared angular test functions, and the induced calorimetric measure on
   \(S^2\).
@@ -315,3 +331,8 @@ The chapter must define and derive:
   power comparison, single-trace factorization, fixed-\(N_f\) versus
   Veneziano quark-boundary counting, and
   `calculation-checks/large_n_topology_checks.py`.
+- 2026-05-25 issue #492 pass: deepened the QCD-string section by deriving the
+  open and closed Luscher terms from the free transverse worldsheet
+  determinant, adding the Nambu--Goto reference expansion only as a reference
+  effective-string coordinate, and recording
+  `calculation-checks/qcd_string_luscher_checks.py`.
