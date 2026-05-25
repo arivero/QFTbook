@@ -134,6 +134,71 @@ Gaussian process after smearing.  The theorem is the existence and
 identification of the limits in which \(\varepsilon\downarrow0\) and
 \(\Lambda\uparrow\R^2\).
 
+\begin{definition}[Negative Sobolev control norm]
+\label{def:p-phi-two-negative-sobolev-norm}
+Fix a bounded open set \(\Lambda_1\) containing \(\Lambda\) and the supports
+reached by \(\rho_\varepsilon\ast f\) for all sufficiently small
+\(\varepsilon\).  For \(s>0\), define
+\begin{equation}
+  \|\phi\|_{H^{-s}(\Lambda_1)}^2
+  :=
+  \sum_{\nu}
+  (1+\lambda_\nu)^{-s}\,|\phi(e_\nu)|^2,
+  \label{eq:p-phi-two-negative-sobolev-norm}
+\end{equation}
+where \(\{e_\nu\}\) is any smooth orthonormal eigenbasis of a positive
+self-adjoint realization of \(-\Delta\) on \(\Lambda_1\) with eigenvalues
+\(\lambda_\nu\).  Different standard boundary conditions give equivalent
+norms on smaller compact subsets, so the estimate below is independent of
+that auxiliary choice after the constants are changed.
+\end{definition}
+
+\begin{quotedtheorem}[Nelson--Glimm--Jaffe--Spencer stability in \(P(\phi)_2\)]
+\label{qthm:p-phi-two-stability}
+Let \(\Lambda\subset\R^2\) be bounded, let \(P(q)\) be a real polynomial of
+even degree with positive leading coefficient and bounded below, and let
+\[
+  V_{\varepsilon,\Lambda}
+  =
+  \int_\Lambda :\!P(\phi_\varepsilon(x))\!:\,\dd^2x
+\]
+be Wick ordered with respect to the same massive covariance as the Gaussian
+measure.  There are \(s>0\), \(0<\alpha<2\), constants
+\(A_\Lambda,B_\Lambda<\infty\), and \(\varepsilon_0>0\), independent of
+\(\varepsilon\in(0,\varepsilon_0]\), such that for \(\mu_C\)-almost every
+field
+\begin{equation}
+  V_{\varepsilon,\Lambda}(\phi)
+  \geq
+  -A_\Lambda-B_\Lambda\|\phi\|_{H^{-s}(\Lambda_1)}^{\alpha}.
+  \label{eq:p-phi-two-stability-estimate}
+\end{equation}
+Consequently, for every finite \(p\geq1\),
+\begin{equation}
+  \sup_{0<\varepsilon\leq\varepsilon_0}
+  \mathbb E_{\mu_C}\!\left[
+    \exp(-pV_{\varepsilon,\Lambda})
+  \right]<\infty .
+  \label{eq:p-phi-two-uniform-exp-integrability}
+\end{equation}
+Together with the Gaussian-chaos convergence of the Wick monomials, this
+implies that \(\exp[-V_{\varepsilon,\Lambda}]\) converges in \(L^p(\mu_C)\),
+for every finite \(p\), to the finite-volume \(P(\phi)_2\) density.
+\end{quotedtheorem}
+
+The quoted theorem is a compact formulation of the stability and exponential
+integrability estimates used in the Nelson, Glimm--Jaffe--Spencer, and
+Guerra--Rosen--Simon constructions of \(P(\phi)_2\).  Its proof is not the
+pointwise observation that \(P\) is bounded below; pointwise lower bounds for
+\(:\!P(X)\!:\) contain covariance-dependent negative constants that diverge
+as \(\varepsilon\downarrow0\).  The constructive proof decomposes the
+covariance into scales, estimates the Wick-contraction combinatorics in each
+cell, absorbs lower-degree Wick terms into the positive leading part by
+large-field regulators, and uses the two-dimensional logarithmic covariance
+to obtain the subquadratic Sobolev exponent \(\alpha<2\).  The theorem is
+therefore imported here as a quoted constructive estimate, not hidden inside
+the formal proof below.
+
 \begin{theorem}[Finite-volume ultraviolet limit in \(P(\phi)_2\)]
 \label{thm:p-phi-two-finite-volume-uv-limit}
 For bounded \(\Lambda\), bounded-below polynomial \(P\), and Schwartz test
@@ -147,8 +212,8 @@ functions supported in the interior of \(\Lambda\), the limits
 exist after Wick ordering.  The limiting finite-volume measure is absolutely
 continuous with respect to the massive Gaussian free field restricted to
 \(\Lambda\), with density represented by
-\(\exp[-\int_\Lambda :\!P(\phi(x))\!:\dd^2x]\) as an \(L^p\)-limit for the
-finite \(p\)'s allowed by the stability estimate.
+\(\exp[-\int_\Lambda :\!P(\phi(x))\!:\dd^2x]\) as an \(L^p\)-limit for every
+finite \(p\).
 \end{theorem}
 
 \begin{proof}
@@ -167,22 +232,48 @@ integrable for each fixed \(k\).  Hypercontractivity of Gaussian chaoses
 upgrades \(L^2\)-convergence to \(L^p\)-convergence for finite \(p\).
 
 The nontrivial point is uniform integrability of the exponential density.
-The lower boundedness of \(P\), after Wick ordering and finite-volume
-localization, gives a stability estimate of the form
+This is exactly the content of
+Quoted Theorem~\ref{qthm:p-phi-two-stability}.  To see how it enters, choose
+the Sobolev index \(s>0\) in
+\eqref{eq:p-phi-two-negative-sobolev-norm}.  The massive Gaussian free field
+restricted to \(\Lambda_1\) belongs to \(H^{-s}(\Lambda_1)\) almost surely,
+because
 \[
-  V_{\varepsilon,\Lambda}(\phi)
-  \geq
-  -A_\Lambda-B_\Lambda\|\phi\|_{H^{-s}(\Lambda)}^{\alpha},
-  \qquad \alpha<2,
-  \label{eq:p-phi-two-stability-estimate}
+  \mathbb E_{\mu_C}\|\phi\|_{H^{-s}(\Lambda_1)}^2
+  =
+  \sum_\nu(1+\lambda_\nu)^{-s}
+  \langle e_\nu,Ce_\nu\rangle
+  <\infty
 \]
-for a Sobolev index \(s>0\) chosen so that the Gaussian field is almost
-surely in \(H^{-s}_{\mathrm{loc}}\).  Fernique's theorem then supplies an
-exponential moment for the right-hand side.  The convergence of the
-densities and of the polynomial insertions follows by dominated convergence
-in Gaussian chaos norms.  The argument is local in \(\Lambda\), so test
-functions supported away from the boundary are unaffected by the boundary
-condition used to define the finite covariance.
+for \(s>0\) in two dimensions; the last inequality uses the elliptic bound
+\(\langle e_\nu,Ce_\nu\rangle\leq C_0(1+\lambda_\nu)^{-1}\) and Weyl's law
+for \(-\Delta\) on a bounded planar region.  Fernique's theorem gives some
+\(\eta>0\) with
+\[
+  \mathbb E_{\mu_C}\exp\{
+    \eta\|\phi\|_{H^{-s}(\Lambda_1)}^2
+  \}<\infty .
+\]
+Since \(\alpha<2\), Young's inequality gives, for every \(p<\infty\),
+\[
+  pB_\Lambda \|\phi\|_{H^{-s}}^\alpha
+  \leq
+  \eta\|\phi\|_{H^{-s}}^2+C_{p,\eta,\alpha,B_\Lambda}.
+\]
+Combining this with \eqref{eq:p-phi-two-stability-estimate} proves
+\eqref{eq:p-phi-two-uniform-exp-integrability}.  The
+\(L^q\)-convergence of the Wick polynomial integrals gives convergence of
+\(V_{\varepsilon,\Lambda}\) in probability.  Applying
+\eqref{eq:p-phi-two-uniform-exp-integrability} with an exponent strictly
+larger than \(p\) gives uniform integrability of
+\(\exp[-pV_{\varepsilon,\Lambda}]\), hence \(L^p\)-convergence of the
+densities.  Finally, the smeared insertions
+\(\phi_\varepsilon(f_i)\) converge in every Gaussian \(L^q\) space, and
+Holder's inequality combines this convergence with the uniform exponential
+moments.  Therefore the normalized Schwinger functions have the stated
+finite-volume ultraviolet limits.  The argument is local in \(\Lambda\), so
+test functions supported away from the boundary are unaffected by the
+boundary condition used to define the finite covariance.
 \end{proof}
 
 \section{Cluster Expansion and Infinite Volume}
