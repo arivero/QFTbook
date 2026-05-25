@@ -158,3 +158,9 @@ hypotheses:
   \(x_*(s)=1+2t_*/(s-4m^2)\).  The proof spends an auxiliary Legendre margin
   \(\delta_0<\delta\) to obtain the displayed coefficient without hiding an
   \(\varepsilon\) loss in the logarithmic scale.
+- 2026-05-24 issue #390 pass: split the forward absorptive estimate into
+  the optical-theorem inequality
+  \(\operatorname{Im}\mathcal M(s,0)\ge
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s)\) and a separate equality chain for
+  \(\sigma_{\rm el}\), so the final \(L^2\) integral is explicitly a lower
+  bound, not an equality with the total absorptive part.

@@ -889,14 +889,16 @@ write
 \]
 Unitarity gives a positive estimate for the forward absorptive part:
 \[
-\begin{aligned}
   \operatorname{Im}\mathcal M(s,0)
-  &=
+  =
   \sqrt{s(s-4m^2)}\,\sigma_{\rm tot}(s)
-\\
-  &\ge
+  \ge
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s).
+\]
+The elastic term is then evaluated in the same partial-wave normalization:
+\[
+\begin{aligned}
   \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s)
-\\
   &=
   8\pi\sqrt{\frac{s}{s-4m^2}}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
@@ -913,7 +915,16 @@ Unitarity gives a positive estimate for the forward absorptive part:
   \dd t\,|\mathcal M(s,t)|^2 .
 \end{aligned}
 \]
-The last equality is the change of variables from \(x\) to \(t\).  If the
+Consequently,
+\[
+  \operatorname{Im}\mathcal M(s,0)
+  \ge
+  \frac{1}{32\pi\sqrt{s(s-4m^2)}}
+  \int_{-(s-4m^2)}^0
+  \dd t\,|\mathcal M(s,t)|^2 .
+\]
+The last equality in the elastic chain is the change of variables from
+\(x\) to \(t\).  If the
 nonzero polynomial coefficient \(C_{N'-1}(t)\) is bounded below on a fixed
 real \(t\)-interval inside \((-\infty,0)\), this estimate gives, along a
 high-energy sequence,
