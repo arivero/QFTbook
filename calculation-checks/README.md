@@ -13,6 +13,10 @@ this directory should stay lightweight and reader-readable.
 
 Current checks:
 
+- `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
+  issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
+  the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
+  stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
 - `gamma_trace_checks.py`: mostly-plus gamma-matrix conventions, \(\gamma_5\),
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used
