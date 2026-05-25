@@ -519,6 +519,7 @@ is therefore a linear combination of the local operators \(\phi^2\) and
 \section{Finiteness and Locality}
 
 \begin{theorem}[BPHZ finiteness for massive Euclidean scalar graphs]
+\label{thm:bphz-finiteness-massive-euclidean-scalar}
 Let \(\Gamma\) be a connected one-particle-irreducible Euclidean Feynman graph
 in a massive scalar theory.  Assume that all external momenta and subtraction
 points are chosen away from infrared singularities, that the numerator of
@@ -533,41 +534,139 @@ is ultraviolet finite.  The counterterm produced by each connected divergent
 subgraph is a polynomial in \(p_\gamma\) of degree at most \(\omega(\gamma)\).
 \end{theorem}
 
-The proof is a scaling argument organized by the forest decomposition of
-ultraviolet regions.  In each sector of large loop momenta, the set of
-subgraphs whose internal momenta become large in a common scale hierarchy is a
-forest.  For the innermost element \(\gamma\) in that forest, write the
-external variables of \(\gamma\) as \(p_\gamma=p_\gamma^\ast+a\).  Taylor's
-theorem gives
+\begin{proof}
+The proof is local on loop-momentum space.  Choose a smooth partition of unity
+subordinate to one compact region and to finitely many conic Hepp sectors.  In
+one such sector the large line momenta are ordered by magnitude.  For each
+large scale threshold, take the subgraph spanned by the lines above the
+threshold and then take the connected one-particle-irreducible components that
+have loops.  As the threshold is varied these components are nested or
+disjoint; after discarding components with negative superficial degree, one
+obtains a forest \(F_S\) of divergent subgraphs attached to the sector \(S\).
+It is enough to prove absolute convergence on each sector, since the partition
+has finitely many sectors and the compact region is harmless for massive
+Euclidean propagators.
+
+The elementary estimate is the following Taylor-remainder bound.  Let
+\(\gamma\) be a connected divergent subgraph, and let
+\(\rho\ge1\) scale loop momenta internal to \(\gamma\) while the external
+variables \(p_\gamma\) of \(\gamma\) are kept on a slower scale.  Write
+\(p_\gamma=p_\gamma^\ast+a\).  Taylor's formula with integral remainder gives
 \[
-  f(p_\gamma)
-  -
-  t_\gamma f(p_\gamma)
+  f(p_\gamma)-t_\gamma f(p_\gamma)
   =
   \sum_{|\alpha|=\omega(\gamma)+1}
-  a^\alpha
+  \frac{a^\alpha}{\alpha!}
   \int_0^1
-  \frac{(1-s)^{\omega(\gamma)}}{\omega(\gamma)!}
-  \left(\partial_a^\alpha f\right)(p_\gamma^\ast+s a)\,\dd s .
+    (1-u)^{\omega(\gamma)}
+    \bigl(\partial_a^\alpha f\bigr)(p_\gamma^\ast+u a)\,\dd u .
+  \label{eq:bphz-taylor-integral-remainder}
 \]
-Each derivative with respect to an external momentum of \(\gamma\) lowers the
-large internal-momentum degree by at least one.  Hence the differentiated
-integrand in the remainder has superficial degree at most
-\(\omega(\gamma)-(\omega(\gamma)+1)=-1\) for that subgraph.  In sector
-coordinates this gives a negative ultraviolet degree for the boundary in which
-\(\gamma\) shrinks.  Applying the same argument from the innermost subgraphs
-outward improves every boundary region in the sector.  The
-inclusion-exclusion signs in the forest formula assemble these sector
-subtractions into a single expression independent of the sector decomposition.
-Since all masses are positive and the subtraction points avoid infrared
-singularities, the remaining possible noncompact regions are these ultraviolet
-boundary regions, and the renormalized integral is finite.
+Here \(f\) denotes the prepared integrand of \(\gamma\), with all proper
+subdivergences already replaced by their renormalized expressions or local
+counterterm vertices.  A derivative with respect to an external momentum of
+\(\gamma\) differentiates either a polynomial numerator or a propagator whose
+momentum is affine in \(p_\gamma\).  For a propagator,
+\[
+  \partial_{p_\mu}
+  \frac{1}{q(\ell,p)^2+m^2}
+  =
+  -\,\frac{2q_\nu(\ell,p)\,\partial_{p_\mu}q_\nu(\ell,p)}
+  {(q(\ell,p)^2+m^2)^2},
+\]
+which has one less power under the large internal scaling than the original
+propagator.  Derivatives of the polynomial numerator are bounded by the same
+rule because differentiating a polynomial lowers its degree, and derivatives
+falling on counterterm vertices only differentiate polynomials in slower
+external variables.  Consequently, including the internal loop measure of
+\(\gamma\),
+\[
+  \dd^{D L(\gamma)}\ell_\gamma\,
+  \partial_a^\alpha f(\rho\ell_\gamma,p_\gamma)
+  =
+  O\!\left(\rho^{\omega(\gamma)-|\alpha|}\right)
+  \dd^{D L(\gamma)}\ell_\gamma .
+  \label{eq:bphz-derivative-lowers-degree}
+\]
+For \(|\alpha|=\omega(\gamma)+1\), the \(\gamma\)-scale exponent is at most
+\(-1\).  In radial sector coordinates this means that the corresponding
+boundary integral is bounded by
+\[
+  C\int_R^\infty \rho^{-1}\,\frac{\dd\rho}{\rho}<\infty .
+  \label{eq:bphz-one-boundary-integral}
+\]
+If \(\gamma\) has negative superficial degree, the same estimate holds without
+applying \(1-t_\gamma\), because then the exponent is already at most \(-1\).
 
-The locality statement follows before integration: every \(C_\gamma\) is a
-Taylor polynomial in \(p_\gamma\).  In a theory whose power-counting
-counterterms belong to a finite local operator space, the recursive operation
-therefore remains inside that same finite space.  This proves perturbative
-renormalizability in the finite-list sense used in the previous chapter.
+Now fix a Hepp sector \(S\).  Let
+\(\gamma_1,\ldots,\gamma_r\) be a chain in \(F_S\), ordered from smaller to
+larger subgraph; for a forest with disjoint branches the same argument is
+applied branch by branch.  Introduce scale ratios \(\rho_j\ge1\) so that the
+momenta internal to \(\gamma_j\) but not to the previous members of the chain
+are of order
+\(\rho_1\cdots\rho_j\), while the external momenta of \(\gamma_j\) are on the
+slower scale \(\rho_1\cdots\rho_{j-1}\).  The forest formula acts in precisely
+this order: smaller Taylor operators are applied before the larger ones, and
+the counterterm produced by a smaller member is viewed as a local vertex in
+the quotient graph.  Applying
+\eqref{eq:bphz-taylor-integral-remainder} successively from the innermost
+members outward gives, on the sector \(S\), a bound of the form
+\[
+  |R_\Gamma I_\Gamma(\ell,p)|\,\dd^{D L(\Gamma)}\ell
+  \le
+  C_S
+  \prod_{j=1}^r
+    \rho_j^{-1}\frac{\dd\rho_j}{\rho_j}
+  \prod_b
+    \sigma_b^{-1}\frac{\dd\sigma_b}{\sigma_b}
+  \dd\Omega_S .
+  \label{eq:bphz-sector-product-bound}
+\]
+The additional variables \(\sigma_b\) correspond to superficially convergent
+subgraphs or quotient subgraphs; their exponents are already negative by power
+counting.  The angular variables \(\Omega_S\) range over a compact part of the
+sector after the radial ratios have been extracted.  Thus the right hand side
+is integrable in every noncompact sector variable.
+
+It remains to explain why the estimate just obtained for a sector is the
+estimate of the actual forest formula, not of a sector-dependent subtraction
+prescription.  In the sector \(S\), the ultraviolet boundary strata are
+labelled by nested or disjoint components as above.  Expanding the product of
+the corresponding Taylor remainders gives the alternating sum over all
+subforests of \(F_S\).  Zimmermann's forest formula is the global
+inclusion-exclusion sum over all compatible forests of \(\Gamma\); restricted
+to the sector \(S\), the terms that meet the boundary strata of \(S\) are
+exactly the terms in this sector product, while terms corresponding to extra
+subtractions are Taylor polynomials of already integrable remainders and obey
+the same or better estimates.  Overlapping divergent subgraphs are handled by
+the sector decomposition: a single sector resolves the hierarchy into
+compatible nested or disjoint components, and the sum over sectors restores
+the sector-independent forest expression.
+
+The mass and nonexceptional-momentum assumptions remove the remaining
+noncompact possibilities.  In the compact part of loop-momentum space the
+integrand is smooth.  Away from compact sets, the only boundaries are the
+ultraviolet scaling boundaries estimated above; massive denominators are
+bounded away from zero on the real Euclidean integration contour.  Hence the
+renormalized integral is absolutely ultraviolet finite.
+
+The locality assertion is algebraic and occurs before integration.  By
+definition,
+\[
+  C_\gamma I_\gamma
+  =
+  -\,t_\gamma\,\overline R_\gamma I_\gamma ,
+\]
+and \(t_\gamma\) is a Taylor polynomial in the external variables \(p_\gamma\)
+of degree at most \(\omega(\gamma)\).  After integrating the internal
+variables of \(\gamma\), or after inserting the recursively defined prepared
+counterterm, this polynomial is a local vertex in \(\Gamma/\gamma\).  Thus
+every connected divergent subgraph produces a counterterm polynomial of degree
+at most \(\omega(\gamma)\).  In a theory whose power-counting counterterms
+belong to a finite local operator space, the recursive operation remains
+inside that finite space, giving perturbative renormalizability in the
+finite-list sense used in the preceding chapter.
+\end{proof}
 
 \begin{remark}[Massless graphs and the BPHZL extension]
 The theorem just stated is a massive, nonexceptional-momentum theorem.  Its
