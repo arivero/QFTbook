@@ -87,6 +87,13 @@ Current checks:
   =\dd\mathfrak s\,\dd\mathfrak t/4\) Jacobian, the
   \(\mathfrak s=\tau+2m\) pole-to-\(u^{\tau/2+m}\) exponent map, and the
   identical-scalar \(2\leftrightarrow4\) channel permutation.
+- `narain_lattice_cocycle_checks.py`: finite integer checks for the
+  two-dimensional toroidal CFT section, including the explicit lattice
+  cocycle associativity and exchange laws, even-unimodular sample Gram
+  matrices, cancellation of the antisymmetric \(B\)-field from the Narain
+  integral pairing, and the distinction between even-unimodular existence
+  and scalar modular-invariance in the presence of chiral gravitational
+  anomaly.
 - `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
   two-loop \(N=1\) Wilson-Fisher pole coefficients into
   \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).

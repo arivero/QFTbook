@@ -199,8 +199,12 @@ Current absorption:
   construction, Virasoro algebra proof, Schwarzian transformation, and
   plane-cylinder \(c/24\) shift.
 - Volume V, Chapter 11 now starts the QFT-side development of bosonic and
-  supersymmetric sigma-model CFTs, finite orbifolds, twist sectors, cyclic and
-  rotation twist weights, and twist-field deformations.
+  supersymmetric sigma-model CFTs, Narain lattice CFTs and toroidal sigma
+  models, finite orbifolds, twist sectors, cyclic and rotation twist weights,
+  and twist-field deformations.  The Narain pass rebuilds the stringbook
+  lattice vertex-operator material with explicit locality, spin, cocycle,
+  modular-anomaly, and \(O(d,d;\mathbb Z)\) moduli statements, together with
+  a public calculation check for the cocycle and pairing algebra.
 
 ### Planar Integrability
 

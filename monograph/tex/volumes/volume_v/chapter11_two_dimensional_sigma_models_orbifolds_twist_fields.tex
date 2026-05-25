@@ -242,6 +242,269 @@ cohomological labels \(H^{1,1}(M)\) and \(H^{d-1,1}(M)\) are the
 large-radius tangent-space labels; the corresponding QFT objects are the
 renormalized local operators together with their contact-term convention.
 
+\section{Toroidal Sigma Models and Narain Lattice CFTs}
+\label{sec:toroidal-narain-lattice-cfts}
+
+Flat torus sigma models are the first place where the target-space
+description and the exact operator description can both be written without
+an asymptotic expansion.  The exact description is a lattice CFT.  We record
+it before discussing orbifolds because most elementary orbifolds act on a
+specified lattice theory, and because locality, spin, and modular covariance
+are already visible in the parent theory.
+
+Let
+\[
+  \mathbb R^{n_L,n_R}
+  =
+  \mathbb R^{n_L}\oplus\mathbb R^{n_R}
+\]
+with bilinear form
+\[
+  k\circ \ell
+  =
+  k_L\cdot \ell_L-k_R\cdot \ell_R .
+\]
+For a lattice \(\Gamma\subset\mathbb R^{n_L,n_R}\), define the dual lattice
+\[
+  \Gamma^\vee
+  =
+  \{x\in\Gamma\otimes_{\mathbb Z}\mathbb R\mid
+    x\circ y\in\mathbb Z\ \text{for all }y\in\Gamma\}.
+\]
+The lattice is integral if \(\Gamma\subset\Gamma^\vee\), even if
+\(k\circ k\in2\mathbb Z\) for every \(k\in\Gamma\), and unimodular if
+\(\Gamma=\Gamma^\vee\).
+
+The chiral bosons are normalized by
+\[
+  X_L^i(z)X_L^j(0)\sim-\delta^{ij}\log z,
+  \qquad
+  X_R^{i'}(\bar z)X_R^{j'}(0)\sim-\delta^{i'j'}\log\bar z .
+\]
+For \(k=(k_L,k_R)\in\Gamma\), the exponential field is
+\begin{equation}
+  V_k(z,\bar z)
+  =
+  \varepsilon_k:
+  \exp\!\left(\ii k_L\cdot X_L(z)+\ii k_R\cdot X_R(\bar z)\right): ,
+  \label{eq:narain-vertex-operator}
+\end{equation}
+where the symbols \(\varepsilon_k\) are cocycle operators.  They multiply by
+\begin{equation}
+  \varepsilon_k\varepsilon_\ell
+  =
+  \epsilon(k,\ell)\varepsilon_{k+\ell},
+  \qquad
+  \epsilon(k,\ell)\in\{\pm1\},
+  \label{eq:narain-cocycle-multiplication}
+\end{equation}
+after a choice of basis and cocycle representative.  Oscillator descendants
+are obtained by applying \(\partial^rX_L^i\) and
+\(\bar\partial^sX_R^{i'}\).  The conformal weights of a descendant at
+oscillator levels \(N,\bar N\in\mathbb Z_{\ge0}\) are
+\begin{equation}
+  h=\frac12 k_L^2+N,
+  \qquad
+  \bar h=\frac12 k_R^2+\bar N .
+  \label{eq:narain-lattice-weights}
+\end{equation}
+
+\begin{proposition}[Locality, spin, and cocycles]
+\label{prop:narain-locality-spin-cocycle}
+The exponential fields \eqref{eq:narain-vertex-operator} are mutually local
+bosonic fields only if \(\Gamma\) is integral and even.  Given an even
+integral lattice, the cocycle can be chosen so that
+\begin{align}
+  \epsilon(k,\ell+m)\epsilon(\ell,m)
+  &=
+  \epsilon(k,\ell)\epsilon(k+\ell,m),
+  \label{eq:narain-cocycle-associativity}
+  \\
+  \epsilon(\ell,k)
+  &=
+  (-1)^{k\circ\ell}\epsilon(k,\ell).
+  \label{eq:narain-cocycle-exchange}
+\end{align}
+With such a choice the OPE algebra of the exponential fields is associative
+and has the required exchange law.
+\end{proposition}
+
+\begin{proof}
+The free-field contraction gives
+\begin{equation}
+  V_k(z,\bar z)V_\ell(0)
+  \sim
+  \epsilon(k,\ell)\,
+  z^{k_L\cdot\ell_L}\bar z^{k_R\cdot\ell_R}
+  V_{k+\ell}(0)+\cdots .
+  \label{eq:narain-vertex-ope-leading}
+\end{equation}
+Taking \(z\) once counterclockwise around the origin sends
+\(\bar z\) once clockwise around the origin and therefore multiplies the
+leading term by
+\[
+  \exp\!\left(2\pi\ii(k_L\cdot\ell_L-k_R\cdot\ell_R)\right)
+  =
+  \exp(2\pi\ii k\circ\ell).
+\]
+Single-valued separated-point correlators of the exponential fields require
+\(k\circ\ell\in\mathbb Z\) for all \(k,\ell\in\Gamma\), which is integrality.
+The spin of \(V_k\) is
+\[
+  h-\bar h=\frac12(k_L^2-k_R^2)=\frac12 k\circ k ,
+\]
+modulo integers from oscillators, so integer spin requires evenness.
+
+Associativity of the product of three cocycle operators is exactly
+\eqref{eq:narain-cocycle-associativity}.  The exchange of two radially
+ordered exponentials changes \(z-\zeta\) to \(\zeta-z\) and
+\(\bar z-\bar\zeta\) to \(\bar\zeta-\bar z\), producing the phase
+\((-1)^{k\circ\ell}\).  Hence the cocycle must obey
+\eqref{eq:narain-cocycle-exchange}.  To see existence concretely, choose an
+integral basis \(e_i\) of \(\Gamma\), write
+\(k=\sum_i m^ie_i\), \(\ell=\sum_i n^ie_i\), and put
+\begin{equation}
+  A_{ij}=e_i\circ e_j,
+  \qquad
+  \epsilon(k,\ell)
+  =
+  (-1)^{\sum_{i>j}A_{ij}m^in^j}.
+  \label{eq:narain-explicit-cocycle}
+\end{equation}
+The exponent is bilinear, so
+\eqref{eq:narain-cocycle-associativity} follows by expanding both sides.
+Since \(A_{ii}\) is even and \(A_{ij}=A_{ji}\),
+\[
+  \sum_{i>j}A_{ij}n^im^j-\sum_{i>j}A_{ij}m^in^j
+  \equiv
+  \sum_{i,j}A_{ij}m^in^j
+  =
+  k\circ\ell
+  \pmod 2,
+\]
+which gives \eqref{eq:narain-cocycle-exchange}.
+\end{proof}
+
+The torus amplitude of the oscillator Fock spaces and lattice zero modes is
+\begin{equation}
+  Z_\Gamma(\tau,\bar\tau)
+  =
+  \frac{1}{\eta(\tau)^{n_L}\overline{\eta(\tau)}^{\,n_R}}
+  \sum_{k\in\Gamma}
+  q^{k_L^2/2}\bar q^{k_R^2/2},
+  \qquad
+  q=\ee^{2\pi\ii\tau}.
+  \label{eq:narain-partition-function}
+\end{equation}
+This formula is a trace over the Hilbert space on the circle.  If
+\(n_L\ne n_R\), the theory has chiral gravitational anomaly
+\(c_L-c_R=n_L-n_R\); then the torus amplitude is naturally a section of the
+corresponding determinant line rather than an invariant scalar function.
+
+\begin{proposition}[Modular behavior of the lattice trace]
+\label{prop:narain-modular-behavior}
+For an even integral \(\Gamma\), the lattice sum in
+\eqref{eq:narain-partition-function} has trivial \(T:\tau\mapsto\tau+1\)
+phase before the oscillator determinant is included.  The full trace obeys
+\begin{equation}
+  Z_\Gamma(\tau+1,\bar\tau+1)
+  =
+  \exp\!\left(-\frac{2\pi\ii}{24}(n_L-n_R)\right)
+  Z_\Gamma(\tau,\bar\tau).
+  \label{eq:narain-t-phase}
+\end{equation}
+Under \(S:\tau\mapsto-1/\tau\), Poisson summation sends the lattice
+\(\Gamma\) to \(\Gamma^\vee\).  Therefore an ordinary scalar modular
+invariant lattice partition function requires unimodularity together with
+the cancellation of the gravitational-anomaly phase.  In particular, an
+even unimodular lattice of signature \((n_L,n_R)\) can exist only when
+\(n_L-n_R\equiv0\pmod8\), whereas a standalone scalar torus partition
+function further requires \(n_L-n_R\equiv0\pmod{24}\).  For an ordinary
+toroidal sigma model \(n_L=n_R\), the anomaly condition is automatic.
+\end{proposition}
+
+\begin{proof}
+For the \(T\)-transformation, each lattice term is multiplied by
+\[
+  \exp\!\left(\pi\ii(k_L^2-k_R^2)\right)
+  =
+  \exp(\pi\ii k\circ k),
+\]
+which is \(1\) precisely for an even lattice.  The Dedekind eta function
+obeys \(\eta(\tau+1)=\ee^{2\pi\ii/24}\eta(\tau)\), and its antiholomorphic
+factor carries the conjugate phase.  This gives
+\eqref{eq:narain-t-phase}.
+
+For \(S\), write the theta sum as a Gaussian sum over \(\Gamma\) with
+positive real part controlled by \(\operatorname{Im}\tau>0\).  Poisson
+summation replaces the sum over \(\Gamma\) by a sum over \(\Gamma^\vee\) and
+produces the Gaussian determinant factors
+\((-\,\ii\tau)^{n_L/2}(\ii\bar\tau)^{n_R/2}\).  These are exactly the factors
+by which \(\eta(\tau)^{n_L}\overline{\eta(\tau)}^{\,n_R}\) transforms, after
+the same branch convention is used for the determinant line.  Thus \(S\)
+closes on a single lattice trace only when \(\Gamma=\Gamma^\vee\); otherwise
+it mixes the trace with the discriminant-group components.  The
+classification theorem for even unimodular lattices gives the congruence
+\(n_L-n_R\equiv0\pmod8\).  The remaining scalar-invariance condition is the
+absence, or cancellation by another sector, of the chiral gravitational
+anomaly, which is the \(T\)-phase in \eqref{eq:narain-t-phase}.
+\end{proof}
+
+We now relate this exact operator construction to the Lagrangian torus
+sigma model.  Let the target be
+\[
+  T^d=\mathbb R^d/2\pi\mathbb Z^d
+\]
+with constant metric \(G\) and constant antisymmetric \(B\)-field.  Choose a
+vielbein \(E\) with \(G=E^T E\).  A circle state is labeled by momentum
+\(m\in(\mathbb Z^d)^\vee\) and winding \(w\in\mathbb Z^d\).  With the action
+normalization \eqref{eq:nlsm-euclidean-action-representative}, the left and
+right momenta are
+\begin{align}
+  k_L(m,w)
+  &=
+  \frac1{\sqrt{2\alpha'}}
+  \left(E^{-T}(\alpha' m-Bw)+Ew\right),
+  \label{eq:toroidal-left-momentum}
+  \\
+  k_R(m,w)
+  &=
+  \frac1{\sqrt{2\alpha'}}
+  \left(E^{-T}(\alpha' m-Bw)-Ew\right).
+  \label{eq:toroidal-right-momentum}
+\end{align}
+The set of all \((k_L(m,w),k_R(m,w))\) is a lattice
+\(\Gamma(G,B)\subset\mathbb R^{d,d}\), and
+\begin{equation}
+  k(m,w)\circ k(m',w')
+  =
+  m(w')+m'(w).
+  \label{eq:toroidal-narain-pairing}
+\end{equation}
+Thus \(k(m,w)\circ k(m,w)=2m(w)\).  The \(B\)-dependence cancels from the
+integral pairing; it changes the embedding of the fixed abstract lattice
+\((\mathbb Z^d)^\vee\oplus\mathbb Z^d\) into
+\(\mathbb R^{d,d}\), not its bilinear form.
+
+The moduli of such toroidal CFTs are consequently better described as
+positive \(d\)-planes in \(\mathbb R^{d,d}\) modulo automorphisms of the
+integral lattice:
+\begin{equation}
+  \mathcal M_{\mathrm{torus},d}
+  =
+  O(d,d;\mathbb Z)\backslash
+  O(d,d;\mathbb R)/(O(d)\times O(d)),
+  \label{eq:toroidal-narain-moduli-space}
+\end{equation}
+up to the separate constant-dilaton coupling to the Euler characteristic and
+the usual fixed-point qualifications of an orbifold quotient.  A
+\(T\)-duality is an isomorphism of the exact CFT data: it is an automorphism
+of the even unimodular lattice together with the induced map of cocycles,
+vertex operators, stress tensors, and correlation functions.  A Buscher
+path-integral derivation is a derivation of this equality in a Lagrangian
+coordinate patch; the exact statement is the lattice-theoretic isomorphism
+of the local QFT.
+
 \section{Finite Orbifolds as Gauging of Topological Lines}
 \label{sec:finite-orbifolds-topological-lines}
 
@@ -477,7 +740,7 @@ CFT development.  Subsequent passes must expand the following topics in the
 same formalism:
 \[
 \begin{gathered}
-  \text{Narain lattice CFTs and toroidal sigma models},\\
+  \text{higher-genus sewing of Narain and toroidal CFT correlators},\\
   \text{WZW and gauged WZW/coset sigma-model CFTs},\\
   \text{Buscher duality as an equality of regulated path integrals},\\
   \text{orbifold defects, discrete torsion, and anomaly obstructions},\\
@@ -487,5 +750,6 @@ same formalism:
 \]
 Each item requires explicit operator definitions, modular and sewing
 compatibility, and examples with computable correlators.  In particular,
-twist-field deformations must be treated as deformations of a fully specified
-QFT, not as informal resolutions of a quotient space.
+twist-field deformations are deformations of a fully specified QFT; geometric
+resolution language is secondary and must be backed by operator
+construction.
