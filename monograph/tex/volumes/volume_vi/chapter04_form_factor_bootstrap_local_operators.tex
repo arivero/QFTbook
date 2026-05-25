@@ -1,0 +1,186 @@
+\chapter{Form-Factor Bootstrap and Local Operators}
+\label{ch:integrable-form-factor-bootstrap-local-operators}
+
+\ConventionsLorentzian
+
+The scattering datum of Chapters~\ref{ch:integrable-scattering-analyticity-bootstrap}
+and~\ref{ch:integrable-yang-baxter-internal-symmetry} is on-shell.  Local QFT
+contains more data: local operator domains, Wightman distributions, and
+matrix elements of local fields between finite-particle states.  In a
+massive two-dimensional theory with factorized scattering, the first
+operator-level datum is the family of form factors.
+
+\section{Finite-Particle Matrix Elements}
+
+Let \(\mathcal I\) be the set of stable particle species, \(V_a\) their
+internal species spaces, and \(S_{ab}(\theta):V_a\otimes V_b\to V_b\otimes
+V_a\) the two-body scattering maps.  Ordered incoming states are denoted
+\[
+  \ket{\theta_1,a_1;\ldots;\theta_n,a_n}_{\rm in},
+  \qquad
+  \theta_1>\cdots>\theta_n .
+\]
+For a local scalar operator \(\widehat{\mathcal O}(x)\), the \(n\)-particle
+form factor is the distributional boundary value
+\[
+  F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n)
+  =
+  \bra{\Omega}\widehat{\mathcal O}(0)
+  \ket{\theta_1,a_1;\ldots;\theta_n,a_n}_{\rm in}.
+\]
+If the species spaces are not one-dimensional, this is a covector on
+\(V_{a_1}\otimes\cdots\otimes V_{a_n}\).  Translation covariance gives
+\[
+  \bra{\Omega}\widehat{\mathcal O}(x)
+  \ket{\theta_1,a_1;\ldots;\theta_n,a_n}_{\rm in}
+  =
+  \exp\!\left[-\ii x_\mu\sum_{j=1}^n p_{a_j}^\mu(\theta_j)\right]
+  F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n).
+\]
+Thus the nontrivial information is at \(x=0\), while the distributional
+character of \(\widehat{\mathcal O}\) enters through growth and boundary-value
+conditions on \(F^{\mathcal O}\).
+
+\section{Exchange Equation}
+
+Analytic continuation in rapidities extends the ordered form factor to
+domains in \(\C^n\).  When two adjacent rapidities are exchanged, the
+incoming state changes by the two-body scattering operator.  Therefore the
+covector-valued form factor satisfies Watson's exchange equation
+\[
+  F^{\mathcal O}_{\ldots a_i a_{i+1}\ldots}
+  (\ldots,\theta_i,\theta_{i+1},\ldots)
+  =
+  F^{\mathcal O}_{\ldots a_{i+1} a_i\ldots}
+  (\ldots,\theta_{i+1},\theta_i,\ldots)
+  S_{a_i a_{i+1}}(\theta_i-\theta_{i+1}),
+\]
+where the \(S\)-matrix acts on the two corresponding species factors before
+the covector is evaluated.
+
+\begin{proposition}[Exchange from factorized scattering]
+\label{prop:form-factor-exchange}
+Assume that the finite-particle scattering states satisfy asymptotic
+completeness in the massive sector and that the ordered in-state convention is
+related across adjacent rapidity chambers by the factorized \(S\)-matrix.
+Then every local operator whose finite-particle matrix elements admit
+rapidity boundary values satisfies the exchange equation above.
+\end{proposition}
+
+\begin{proof}
+On a chamber \(\theta_i>\theta_{i+1}\), the displayed state is by definition
+ordered.  On the neighboring chamber, the same distributional vector is
+expressed in the opposite order.  Factorized scattering says that the change
+of ordered basis is exactly the adjacent two-body scattering map, with all
+other tensor factors unchanged.  Pairing the two expressions with
+\(\bra{\Omega}\widehat{\mathcal O}(0)\) gives the stated covector identity.
+\end{proof}
+
+\section{Cyclicity, Locality, and Semi-Locality}
+
+Moving one rapidity by \(2\pi\ii\) crosses the particle from the ket side to
+the bra side and back through the local operator.  For a scalar operator
+local with respect to the particle fields, the monodromy equation is
+\[
+  F^{\mathcal O}_{a_1a_2\ldots a_n}
+  (\theta_1+2\pi\ii,\theta_2,\ldots,\theta_n)
+  =
+  F^{\mathcal O}_{a_2\ldots a_n a_1}
+  (\theta_2,\ldots,\theta_n,\theta_1).
+\]
+More generally, if \(\widehat{\mathcal O}\) is semi-local with respect to a
+particle of species \(a\), the right side is multiplied by a declared
+monodromy phase or endomorphism \(\omega_{\mathcal O,a}\).  This semi-local
+datum is part of the operator definition; it is not inferred from the
+two-body \(S\)-matrix alone.
+
+\section{Kinematic Pole Equation}
+
+Let \(\bar a\) denote the antiparticle species of \(a\).  The pair
+\((\bar a,a)\) at rapidity difference \(\ii\pi\) has total momentum zero and
+can annihilate into the vacuum.  Consequently a local form factor may have a
+kinematic pole at
+\[
+  \theta_{\bar a}=\theta_a+\ii\pi .
+\]
+For a scalar local operator the residue has the structural form
+\[
+  -\ii\,\operatorname*{Res}_{\theta'=\theta+\ii\pi}
+  F^{\mathcal O}_{\bar a\,a\,a_1\ldots a_n}
+  (\theta',\theta,\theta_1,\ldots,\theta_n)
+  =
+  \left(
+    1-\prod_{j=1}^n
+    S_{a a_j}(\theta-\theta_j)
+  \right)
+  F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n),
+\]
+with tensor contractions and charge-conjugation maps inserted according to
+the species spaces.  The product is ordered by moving the particle \(a\)
+through the \(n\) remaining particles before annihilation.
+
+\begin{proof}[Derivation of the residue structure]
+Insert a complete finite-particle resolution of the identity between
+\(\widehat{\mathcal O}(0)\) and the adjacent pair.  Near
+\(\theta'-\theta=\ii\pi\), the two-particle phase-space denominator develops
+the one-particle-vacuum annihilation singularity.  If the pair annihilates
+before crossing the spectator particles, the contribution is the first term.
+If the particle is first moved through all spectators using factorized
+scattering and then annihilates, the contribution is the second term.  Local
+commutativity fixes the relative sign.  The residue is therefore the
+difference of these two orderings.  A fully rigorous theorem requires a
+specified Hilbert-space construction of the meromorphic finite-particle
+matrix elements; the displayed equation is the form-factor axiom used after
+that construction has supplied the required domains and boundary values.
+\end{proof}
+
+\section{Bound-State Poles and Operator Couplings}
+
+Suppose species \(a\) and \(b\) have a bound state \(c\).  If the
+two-body \(S\)-matrix has a physical-strip pole at \(\theta=\ii u_{ab}^c\)
+with residue tensor \(\Gamma_{ab}^c:V_c\to V_a\otimes V_b\), then the form
+factor has the compatible pole
+\[
+  -\ii\,\operatorname*{Res}_{\theta_a-\theta_b=\ii u_{ab}^c}
+  F^{\mathcal O}_{a b a_1\ldots a_n}
+  =
+  F^{\mathcal O}_{c a_1\ldots a_n}\,\Gamma_{ab}^c ,
+\]
+again with the stated tensor-ordering convention.  This equation is the
+operator-level statement that a local field couples to the bound state through
+the same one-particle channel that appears in the scattering residue.
+
+\section{Form-Factor Reconstruction Boundary}
+
+\begin{definition}[Form-factor datum for a local operator]
+\label{def:form-factor-datum-local-operator}
+A form-factor datum for a scalar local operator consists of meromorphic
+covectors \(F_n^{\mathcal O}\) for all \(n\geq0\), species labels, and
+semi-locality monodromy data, satisfying exchange, cyclicity, kinematic-pole,
+bound-state-pole, Lorentz covariance, and specified growth conditions.
+\end{definition}
+
+The growth condition is essential.  It controls whether the spectral series
+for Wightman functions,
+\[
+  \langle\Omega|\widehat{\mathcal O}(x)\widehat{\mathcal O}(0)|\Omega\rangle
+  =
+  \sum_{n=0}^{\infty}\frac{1}{n!}
+  \sum_{a_1,\ldots,a_n}
+  \int d\mu_n\,
+  e^{-\ii x\cdot\sum_jp_j}
+  F^{\mathcal O}_{a_1\ldots a_n}(\theta)
+  \overline{F^{\mathcal O}_{a_1\ldots a_n}(\theta)}
+\]
+defines a distribution.  Here \(d\mu_n\) is the Lorentz-invariant
+\(n\)-particle rapidity measure with the normalization fixed by the
+one-particle Hilbert-space convention.
+
+\begin{openproblem}[Local reconstruction from form factors]
+\label{op:form-factor-local-reconstruction}
+Given a factorized \(S\)-matrix and a family of form-factor data satisfying
+the displayed equations and explicit growth bounds, construct the Wightman
+domain, prove convergence of the spectral series as distributions, verify
+local commutativity, and identify a dense set of local operators.  This is
+the operator-level completion of the scattering bootstrap.
+\end{openproblem}

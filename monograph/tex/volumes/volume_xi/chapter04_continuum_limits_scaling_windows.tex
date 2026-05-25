@@ -1,0 +1,112 @@
+\chapter{Continuum Limits and Scaling Windows}
+\label{ch:constructive-continuum-limits-scaling-windows}
+
+\ConventionsEuclidean
+
+A lattice or cutoff theory becomes a continuum QFT only after its correlation
+functions have limiting distributions with the desired locality, covariance,
+positivity, and clustering properties.  The continuum limit is therefore a
+statement about a family of regulated theories and a choice of coordinates in
+the space of local observables.
+
+\section{Scaling Trajectories}
+
+Let \(a>0\) be a lattice spacing and \(\Lambda_a=a\mathbb Z^D\) the lattice.
+For each \(a\), let \(S_a[\phi]\) be the regulated action and
+\(\langle\cdots\rangle_a\) the corresponding finite-volume expectation,
+with the infinite-volume limit taken before the continuum limit when it
+exists.  A scaling trajectory is a map
+\[
+  a\longmapsto c(a)
+\]
+from lattice spacing to the couplings and counterterms appearing in
+\(S_a\).  The word counterterm here means a local term in the regulated
+action chosen as part of the path integral definition.
+
+For a lattice observable \(O^I_a(n)\), choose a renormalization matrix
+\(Z^I{}_J(a)\) and define the smeared continuum-coordinate observable
+\[
+  O^I_a(f)
+  =
+  a^D\sum_{n\in\mathbb Z^D}
+  f(an)\,Z^I{}_J(a)\,O^J_a(n),
+  \qquad f\in C_c^\infty(\mathbb R^D).
+\]
+A continuum limit of the \(k\)-point functions is the distributional limit
+\[
+  \lim_{a\to0}
+  \langle O^{I_1}_a(f_1)\cdots O^{I_k}_a(f_k)\rangle_a
+  =
+  W^{I_1\ldots I_k}(f_1,\ldots,f_k).
+\]
+
+\section{OS Reconstruction Target}
+
+The limiting Euclidean distributions define a Wightman QFT only if they
+satisfy the Osterwalder--Schrader hypotheses with the growth assumptions
+needed for reconstruction.  Reflection positivity is inherited from the
+lattice when the reflection-positive structure is uniform in the limit.
+Euclidean invariance is obtained only after proving that lattice rotation
+breaking terms vanish in the scaling trajectory.
+
+\begin{definition}[Constructive continuum limit]
+\label{def:constructive-continuum-limit}
+A constructive continuum limit of a regulated family is a collection of
+limiting Schwinger distributions satisfying symmetry, Euclidean covariance,
+reflection positivity, permutation symmetry, clustering, and the required
+regularity and growth bounds, together with an OS reconstruction of the
+Hilbert space, vacuum, fields, and local operator domains.
+\end{definition}
+
+\section{Scaling Window and Correlation Length}
+
+Let \(\xi(a)\) be a correlation length measured in lattice units.  A
+continuum scaling window requires
+\[
+  \xi(a)\to\infty,\qquad a\,\xi(a)\to \ell_{\rm phys}
+\]
+with \(\ell_{\rm phys}\) finite or infinite according to whether the target
+continuum theory is massive or scale invariant.  Local lattice observables
+probe continuum physics at separations \(r\) satisfying
+\[
+  a\ll r\ll a\,\xi(a)
+\]
+in a massive scaling limit.  The lower inequality suppresses lattice
+artifacts; the upper inequality keeps the observable inside the universal
+scaling regime before exponential decay dominates.
+
+\section{Renormalization Coordinates}
+
+Let \(\mathcal B\) be a Banach space of local lattice interactions near a
+candidate fixed point \(S_*\), and let \(\mathcal R_b\) be a block-spin map
+with scale factor \(b>1\).  Linearization gives
+\[
+  D\mathcal R_b|_{S_*}\,v_i=b^{y_i}v_i .
+\]
+Coordinates with \(y_i>0\) are relevant, \(y_i=0\) marginal, and \(y_i<0\)
+irrelevant in this specified norm and blocking scheme.  A statement that a
+scaling trajectory reaches \(S_*\) is a theorem only after the nonlinear map
+\(\mathcal R_b\), its domain, and estimates controlling irrelevant directions
+are supplied.
+
+\section{Status of Scalar Examples}
+
+Superrenormalizable scalar theories such as \(P(\phi)_2\) and
+\(\phi^4_3\) have constructive continuum realizations with Wightman or OS
+reconstruction under their stated hypotheses.  This is different from proving
+that the three-dimensional Ising critical point is a conformal field theory
+with the full expected operator spectrum and OPE.  In four dimensions, the
+existence of a nonperturbative ultraviolet-complete QFT agreeing with
+\(\phi^4_4\) to all orders in perturbation theory is not known; perturbative
+renormalizability and nonperturbative continuum existence are distinct
+claims.
+
+\begin{openproblem}[Nonperturbative fixed points from Wilsonian maps]
+\label{op:nonperturbative-wilsonian-fixed-points}
+Develop a Wilsonian Banach-space framework for physically relevant
+four-dimensional and three-dimensional QFTs in which fixed points,
+renormalized operator coordinates, contact terms, and OS reconstruction can
+all be controlled in the same theorem.  The framework should make precise
+when a physicists' fixed-point argument is a proof and when it is a
+well-supported construction principle.
+\end{openproblem}

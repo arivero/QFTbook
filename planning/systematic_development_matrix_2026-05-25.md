@@ -67,9 +67,31 @@ worked structure in each launched special volume:
 - Volume X: Schwinger--Keldysh real-time generating functionals and retarded
   response.
 - Volume XI: lattice reflection positivity with a nearest-neighbor scalar
-  proof.
+  proof, now supplemented by Xi's lattice-fermion mid-link reflection
+  positivity note.
 - Volume XII: trace anomalies as Weyl variations of background generating
   functionals.
+
+## Current Fourth-Chapter Pass
+
+The fourth-chapter pass adds the first operator, response, or continuum
+completion layer after the initial consistency mechanisms:
+
+- Volume VI: form factors as local-operator matrix elements, including
+  exchange, cyclicity, kinematic-pole, and bound-state-pole equations.
+- Volume VII: supersymmetric Wilsonian schemes as finite-cutoff data with BV
+  pushforward, local \(F\)- and \(D\)-term coordinates, and holomorphic scheme
+  hypotheses.
+- Volume VIII: Chern--Simons theory, including level quantization, phase
+  space, Wilson lines, framing, and boundary data.
+- Volume IX: confinement, screening, and oblique confinement through
+  renormalized line operators and electric/magnetic charge lattices.
+- Volume X: spectral functions, fluctuation--dissipation, Kubo formulae, and
+  the theorem boundary from response to hydrodynamics.
+- Volume XI: continuum limits and scaling windows as distributional limits
+  satisfying reconstruction hypotheses.
+- Volume XII: the Unruh effect through wedge modular theory and the
+  Bisognano--Wichmann theorem boundary.
 
 ## Next Frontier After This Pass
 

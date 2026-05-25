@@ -1,0 +1,158 @@
+\chapter{Supersymmetric Wilsonian Schemes and Exact Dynamics}
+\label{ch:susy-wilsonian-schemes-exact-dynamics}
+
+\ConventionsLorentzian
+
+Exact statements in supersymmetric QFT require a declared Wilsonian scheme.
+The scheme is the data that define which modes are integrated out, which
+local coordinates are used for the resulting action, which Ward identities
+hold at finite cutoff, and which anomaly classes obstruct stronger
+statements.  Supersymmetry of the Wilsonian integration and supersymmetry of
+the regulator are separate requirements.
+
+\section{Wilsonian Data}
+
+\begin{definition}[Supersymmetric Wilsonian datum]
+\label{def:susy-wilsonian-datum}
+A supersymmetric Wilsonian datum at scale \(\Lambda\) consists of:
+a space \(\mathcal E_\Lambda\) of regulated superfield variables, a gauge
+group action or BV gauge complex, a projection
+\(\pi_{\Lambda\Lambda'}:\mathcal E_{\Lambda}\to\mathcal E_{\Lambda'}\) for
+\(\Lambda>\Lambda'\), an integration cycle in the discarded variables, and a
+local action functional \(S_\Lambda\) satisfying the declared gauge and
+supersymmetry Ward identities at finite cutoff.
+\end{definition}
+
+If the gauge symmetry is present, the natural finite-cutoff statement is a BV
+statement.  Let \((\,\cdot\,,\,\cdot\,)_\Lambda\) be the odd BV bracket and
+\(\Delta_\Lambda\) the regulated BV Laplacian.  The quantum master equation is
+\[
+  \frac12(S_\Lambda,S_\Lambda)_\Lambda
+  -\ii\hbar\,\Delta_\Lambda S_\Lambda=0 .
+\]
+This equation is meaningful only after the regulator and the functional
+measure entering \(\Delta_\Lambda\) have been specified.
+
+\section{Coarse Graining as BV Pushforward}
+
+For \(\Lambda>\Lambda'\), split the regulated variables into retained
+variables \(\phi'\in\mathcal E_{\Lambda'}\) and eliminated variables
+\(\chi\).  The Wilsonian action at \(\Lambda'\) is defined by
+\[
+  \exp\!\left(\frac{\ii}{\hbar}S_{\Lambda'}(\phi')\right)
+  =
+  \int_{\mathcal L_{\Lambda\Lambda'}}
+  \exp\!\left(\frac{\ii}{\hbar}S_{\Lambda}(\phi',\chi)\right)D\chi ,
+\]
+where \(\mathcal L_{\Lambda\Lambda'}\) is the declared integration cycle.
+When the split is compatible with the BV odd symplectic form, this is a BV
+pushforward.  The basic theorem is formal but precise: BV pushforward sends
+solutions of the quantum master equation to solutions, provided the boundary
+term on \(\mathcal L_{\Lambda\Lambda'}\) vanishes.
+
+\begin{proposition}[Semigroup property]
+\label{prop:susy-wilsonian-semigroup}
+Assume the integration cycles for
+\(\Lambda>\Lambda'>\Lambda''\) compose by Fubini's theorem and have no
+boundary contribution.  Then Wilsonian integration satisfies
+\[
+  S_{\Lambda''}
+  =
+  \mathcal R_{\Lambda'\Lambda''}
+  \bigl(\mathcal R_{\Lambda\Lambda'}(S_\Lambda)\bigr)
+  =
+  \mathcal R_{\Lambda\Lambda''}(S_\Lambda),
+\]
+where \(\mathcal R\) denotes the corresponding Wilsonian map.
+\end{proposition}
+
+\begin{proof}
+Insert the definition of \(S_{\Lambda'}\) into the definition of
+\(S_{\Lambda''}\).  The iterated integral is the integral over the product
+cycle of the two eliminated variable sets.  By the hypothesis on the cycles
+and measure, this product cycle is the cycle defining direct integration from
+\(\Lambda\) to \(\Lambda''\).  Taking the logarithm of the resulting
+exponential functional gives the stated identity.
+\end{proof}
+
+\section{Local Coordinates: F-Terms and D-Terms}
+
+For four-dimensional \(\mathcal N=1\) theories, local supersymmetric
+functionals split by superspace measure:
+\[
+  \int d^4x\,d^2\theta\,\mathcal F(\Phi,W_\alpha,\nabla)
+  +\int d^4x\,d^4\theta\,\mathcal K(\Phi,\bar\Phi,V,\nabla).
+\]
+The first class is called \(F\)-term coordinates and the second class
+\(D\)-term coordinates.  This coordinate decomposition becomes a statement
+about dynamics only after a Wilsonian scheme and its Ward identities have
+been specified.  The gauge kinetic coordinate is the chiral functional
+\[
+  \frac{1}{16\pi\ii}\int d^4x\,d^2\theta\,
+  \tau\,\operatorname{tr}(W^\alpha W_\alpha)+\text{c.c.},
+  \qquad
+  \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g^2},
+\]
+with the trace normalization fixed in
+Chapter~\ref{ch:susy-gauge-theory}.  If a different superspace normalization
+for \(W_\alpha\) is chosen, the displayed coefficient is changed by the
+component-matching factor; the physical convention is the component
+Yang--Mills term \(-\frac{1}{4g^2}\operatorname{tr}F^2\).
+
+\section{Holomorphic Wilsonian Claims}
+
+\begin{hypothesis}[Holomorphic Wilsonian scheme]
+\label{hyp:holomorphic-wilsonian-scheme}
+A Wilsonian scheme is holomorphic for a set of chiral couplings \(t^A\) if
+the regulated chiral action depends holomorphically on \(t^A\), the
+coarse-graining map preserves the chiral superspace cohomology class of local
+\(F\)-terms, and all violations of holomorphy are represented by declared
+local anomaly functionals.
+\end{hypothesis}
+
+Under this hypothesis, nonrenormalization statements become statements about
+coordinates.  A superpotential coordinate
+\[
+  \int d^4x\,d^2\theta\, W_{\rm tree}(\Phi;t)
+\]
+can receive only those Wilsonian corrections that are holomorphic functions
+of the chiral coordinates, respect the exact symmetries including anomalous
+spurion transformations, and are local at scale \(\Lambda\).  The usual
+selection-rule arguments are consequences of these three conditions.
+
+\begin{proposition}[Selection rule for a Wilsonian \(F\)-term]
+\label{prop:susy-f-term-selection-rule}
+Assume Hypothesis~\ref{hyp:holomorphic-wilsonian-scheme}.  Let
+\(\mathcal U(t,\Phi)\) be a candidate correction to a chiral \(F\)-term.  If
+\(\mathcal U\) is not a holomorphic section of the same symmetry line bundle
+as the original chiral measure and operator insertion, then it is absent from
+the Wilsonian \(F\)-term coordinate in that scheme.
+\end{proposition}
+
+\begin{proof}
+The Wilsonian \(F\)-term coordinate is, by hypothesis, a holomorphic element
+of the chiral local cohomology with specified transformation under exact and
+anomalous symmetries.  Local terms with different transformation law lie in a
+different line bundle over the coupling space.  They cannot be added to the
+coordinate without violating the Ward identity defining the scheme.  Thus
+only holomorphic sections with the same transformation law are admissible.
+\end{proof}
+
+\section{Exact Dynamics as a Scheme-Dependent Statement}
+
+The chiral ring at scale \(\Lambda\) is the cohomology of local chiral
+operators modulo \(\bar Q\)-exact operators and equations of motion in the
+Wilsonian scheme.  A moduli space statement is an assertion about expectation
+values of this ring in supersymmetric states together with the effective
+action governing fluctuations.  A duality statement is an isomorphism between
+two such Wilsonian data, including line operators, anomalies, contact terms,
+and relevant deformations.
+
+\begin{openproblem}[Wilsonian construction]
+\label{op:susy-wilsonian-construction}
+Construct a Wilsonian scheme for four-dimensional gauge theories that
+preserves gauge invariance, realizes supersymmetry in BV form at finite
+cutoff, states the anomaly functionals, and proves the holomorphic hypotheses
+used in exact dynamics.  This is the infrastructure needed for theorem-level
+treatments of \(\mathcal N=1\) and \(\mathcal N=2\) gauge dynamics.
+\end{openproblem}

@@ -1,0 +1,130 @@
+\chapter{Chern--Simons Theory}
+\label{ch:tqft-chern-simons-theory}
+
+\ChapterConventions{oriented smooth three-manifold \(M\)}
+{no metric is part of the classical action}
+{\(1\), unless explicitly displayed}
+{a vacuum vector appears only after choosing a Hamiltonian splitting or a
+boundary state space}
+{gauge transformations act on connections by pullback and conjugation}
+
+Let \(G\) be a compact Lie group with Lie algebra \(\mathfrak g\).  Fix an
+invariant symmetric bilinear form \(\operatorname{tr}\) on \(\mathfrak g\).
+For a connection \(A\) on a principal \(G\)-bundle over an oriented
+three-manifold \(M\), the Chern--Simons functional in a local trivialization is
+\[
+  S_{\rm CS}(A)
+  =
+  \frac{k}{4\pi}\int_M
+  \operatorname{tr}\!\left(A\wedge dA+\frac23 A\wedge A\wedge A\right).
+\]
+The level \(k\) is not a free real parameter once large gauge transformations
+are included.
+
+\section{Variation and Classical Equations}
+
+Let \(F_A=dA+A\wedge A\).  For a compactly supported variation \(\delta A\)
+on a closed manifold,
+\[
+  \delta S_{\rm CS}
+  =
+  \frac{k}{2\pi}\int_M \operatorname{tr}(\delta A\wedge F_A).
+\]
+Thus the Euler--Lagrange equation is
+\[
+  F_A=0 .
+\]
+On a manifold with boundary, the integration by parts also gives
+\[
+  \frac{k}{4\pi}\int_{\partial M}\operatorname{tr}(A\wedge\delta A),
+\]
+so a boundary condition, boundary action, or boundary phase space must be part
+of the definition.
+
+\section{Level Quantization}
+
+For simply connected compact simple \(G\), choose the bilinear form so that
+\[
+  \frac{1}{24\pi^2}\int_{S^3}
+  \operatorname{tr}\bigl(g^{-1}dg\bigr)^3\in\mathbb Z
+\]
+for maps \(g:S^3\to G\) representing the generator of \(\pi_3(G)\).  Under a
+gauge transformation \(g:M\to G\), the Chern--Simons functional changes by
+\[
+  S_{\rm CS}(A^g)-S_{\rm CS}(A)
+  =
+  2\pi k\, n(g)
+\]
+on closed \(M\), where \(n(g)\in\mathbb Z\) is the winding number with the
+chosen normalization.
+
+\begin{proposition}[Gauge invariance of the exponentiated action]
+\label{prop:cs-level-quantization}
+With the integral normalization above, \(\exp(\ii S_{\rm CS})\) is invariant
+under all gauge transformations on closed \(M\) if \(k\in\mathbb Z\).
+\end{proposition}
+
+\begin{proof}
+The transformation formula gives
+\(\exp(\ii S_{\rm CS}(A^g))=\exp(\ii S_{\rm CS}(A))\exp(2\pi\ii k n(g))\).
+This equals \(\exp(\ii S_{\rm CS}(A))\) for all \(n(g)\in\mathbb Z\) exactly
+when \(k\) is integral in the normalization used for the bilinear form.
+\end{proof}
+
+\section{Phase Space on a Surface}
+
+Let \(M=\mathbb R\times\Sigma\).  Write \(A=A_0dt+A_\Sigma\).  The term
+linear in time derivatives is
+\[
+  \frac{k}{4\pi}\int_{\mathbb R}dt
+  \int_\Sigma \operatorname{tr}(A_\Sigma\wedge \partial_t A_\Sigma).
+\]
+The field \(A_0\) is a Lagrange multiplier imposing \(F_{A_\Sigma}=0\).
+Therefore the classical phase space is the moduli space
+\[
+  \mathcal M_{\rm flat}(\Sigma,G)
+  =
+  \{A_\Sigma:F_{A_\Sigma}=0\}/\mathcal G_\Sigma
+\]
+with symplectic form
+\[
+  \omega_{\rm CS}
+  =
+  \frac{k}{4\pi}\int_\Sigma
+  \operatorname{tr}(\delta A_\Sigma\wedge \delta A_\Sigma).
+\]
+Quantization of Chern--Simons theory assigns a finite-dimensional state space
+to \(\Sigma\) in compact semisimple examples after the level and boundary
+data are fixed.
+
+\section{Wilson Lines and Framing}
+
+For an oriented knot or link component \(K\subset M\) and a representation
+\(R\) of \(G\), the Wilson line is
+\[
+  W_R(K)=\operatorname{Tr}_R\operatorname{Pexp}\int_K A .
+\]
+The quantum expectation value of Wilson links requires a framing: a
+nonvanishing normal vector field along each component, or equivalently a
+choice of point-splitting direction.  The framing dependence is a local
+counterterm effect for the self-linking singularity of the line operator.
+
+\section{Boundary Theory}
+
+If \(M\) has boundary, gauge variation of the Chern--Simons action produces a
+boundary term.  One way to restore a gauge-invariant variational problem is
+to add boundary degrees of freedom whose action is the chiral Wess--Zumino--
+Witten functional at level \(k\).  The boundary current algebra is the affine
+Lie algebra determined by \(G\) and the same invariant form.  This is a
+boundary reconstruction statement: the precise Hilbert space depends on the
+chosen polarization and boundary condition.
+
+\begin{openproblem}[Chern--Simons path integral as a QFT object]
+\label{op:chern-simons-qft-object}
+Give a regulator-level construction of Chern--Simons theory that simultaneously
+controls gauge fixing, framing, Wilson-line renormalization, boundary
+conditions, and functorial gluing.  Perturbative configuration-space
+integrals, geometric quantization, and modular tensor category constructions
+each capture part of this structure; a single local-QFT construction should
+state the comparison maps among them.
+\end{openproblem}

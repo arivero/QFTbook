@@ -263,6 +263,7 @@ Current compiled material:
 1. Factorized Scattering And Integrability
 2. Two-Dimensional Scattering Analyticity And Bootstrap Data
 3. Yang--Baxter Consistency And Internal Symmetry
+4. Form-Factor Bootstrap And Local Operators
 
 Further development targets:
 
@@ -296,6 +297,7 @@ Current compiled material:
 1. Supersymmetry Algebras And Representations
 2. Superspace, Superfields, And Local Actions
 3. Supersymmetric Gauge Theory
+4. Supersymmetric Wilsonian Schemes And Exact Dynamics
 
 Further development targets:
 
@@ -375,6 +377,7 @@ Current compiled material:
 1. Metric Independence And Cohomological Observables
 2. Bordism Functoriality And Extended Topological Field Theory
 3. BF Theory
+4. Chern--Simons Theory
 
 Further development targets:
 
@@ -417,6 +420,7 @@ Current compiled material:
 1. Global Forms And Higher-Form Symmetry
 2. Extended Operators And Topological Defects
 3. Line, Surface, And Domain-Wall Operators
+4. Confinement, Screening, And Oblique Confinement
 
 Further development targets:
 
@@ -442,6 +446,7 @@ Current compiled material:
 1. KMS States And Thermal Correlators
 2. Finite-Temperature Path Integrals
 3. Real-Time Schwinger--Keldysh Formalism
+4. Spectral Functions, Kubo Formulae, And Transport
 
 Further development targets:
 
@@ -465,12 +470,14 @@ Current compiled material:
 1. Constructive Status And Routes To Continuum QFT
 2. Constructive Scalar Models And OS Data
 3. Lattice Reflection Positivity
+4. Continuum Limits And Scaling Windows
 
 Further development targets:
 
 1. Constructive Examples
 2. Lattice Regularization
-3. Reflection Positivity On The Lattice
+3. Reflection Positivity On The Lattice, Including Fermionic Mid-Link
+   Reflection Positivity
 4. Continuum Limits
 5. Wilson Lattice Gauge Theory
 6. Monte Carlo And Sign Problems
@@ -489,6 +496,7 @@ Current compiled material:
 1. Locally Covariant QFT And Hadamard States
 2. Point Splitting And Stress Tensor Renormalization
 3. Trace Anomalies And Background Variations
+4. The Unruh Effect And Wedge Modular Theory
 
 Further development targets:
 

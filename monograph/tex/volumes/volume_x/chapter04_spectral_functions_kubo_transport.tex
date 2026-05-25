@@ -1,0 +1,150 @@
+\chapter{Spectral Functions, Kubo Formulae, and Transport}
+\label{ch:thermal-spectral-kubo-transport}
+
+\ConventionsRealTime
+
+Transport coefficients are low-frequency limits of real-time response
+functions.  The definitions use a thermal state, a conserved current or
+stress tensor, and a source coupled to the corresponding operator.  The
+derivation is linear response from the Schwinger--Keldysh generating
+functional of Chapter~\ref{ch:thermal-schwinger-keldysh}.
+
+\section{Retarded Functions and Spectral Densities}
+
+Let \(\rho_\beta\) be a KMS state at inverse temperature \(\beta\).  For
+bosonic Hermitian operators \(A(t,\mathbf x)\) and \(B(t,\mathbf x)\), define
+the retarded function
+\[
+  G^R_{AB}(t,\mathbf x)
+  =
+  -\ii\,\Theta(t)\,
+  \langle [A(t,\mathbf x),B(0,\mathbf 0)]\rangle_\beta
+\]
+and the spectral density
+\[
+  \rho_{AB}(t,\mathbf x)
+  =
+  \langle [A(t,\mathbf x),B(0,\mathbf 0)]\rangle_\beta .
+\]
+Fourier transforms are defined distributionally by
+\[
+  G^R_{AB}(\omega,\mathbf k)
+  =
+  \int dt\,d^{D-1}x\,
+  e^{\ii\omega t-\ii\mathbf k\cdot\mathbf x}
+  G^R_{AB}(t,\mathbf x).
+\]
+For Hermitian \(A=B\), the finite-volume spectral representation gives
+\[
+  \rho_{AA}(\omega,\mathbf k)
+  =
+  \frac{2\pi}{Z}\sum_{m,n}
+  e^{-\beta E_m}
+  \left(1-e^{-\beta\omega}\right)
+  |\langle m|A_{\mathbf k}|n\rangle|^2
+  \delta(\omega-E_n+E_m),
+\]
+so \(\omega\,\rho_{AA}(\omega,\mathbf k)\geq0\) as a distributional
+positivity statement after the thermodynamic limit is taken under the stated
+hypotheses.
+
+\section{KMS and Fluctuation--Dissipation}
+
+Define the Wightman functions
+\[
+  G^>_{AB}(t)=\langle A(t)B(0)\rangle_\beta,\qquad
+  G^<_{AB}(t)=\langle B(0)A(t)\rangle_\beta .
+\]
+The KMS condition gives
+\[
+  G^>_{AB}(t-\ii\beta)=G^<_{AB}(t).
+\]
+In frequency space this implies
+\[
+  G^>_{AB}(\omega)=e^{\beta\omega}G^<_{AB}(\omega),
+  \qquad
+  \rho_{AB}(\omega)=G^>_{AB}(\omega)-G^<_{AB}(\omega).
+\]
+Therefore the symmetrized correlator
+\[
+  G^{\rm sym}_{AB}(\omega)
+  =
+  \frac12\bigl(G^>_{AB}(\omega)+G^<_{AB}(\omega)\bigr)
+\]
+satisfies
+\[
+  G^{\rm sym}_{AB}(\omega)
+  =
+  \frac12\coth\!\left(\frac{\beta\omega}{2}\right)\rho_{AB}(\omega).
+\]
+
+\section{Linear Response}
+
+Perturb the Hamiltonian by a source \(h_B(t,\mathbf x)\) coupled to \(B\):
+\[
+  H(t)=H_0-\int d^{D-1}x\,h_B(t,\mathbf x)B(t,\mathbf x).
+\]
+To first order in \(h_B\), the change in the expectation value of \(A\) is
+\[
+  \delta\langle A(t,\mathbf x)\rangle
+  =
+  \int dt' d^{D-1}x'\,
+  G^R_{AB}(t-t',\mathbf x-\mathbf x')h_B(t',\mathbf x').
+\]
+This follows by expanding the time-evolution operator to first order on the
+Schwinger--Keldysh contour and subtracting the insertion on the backward
+branch.  The contour difference is exactly the commutator, and causality is
+the step function.
+
+\section{Conductivity and Viscosity}
+
+For a conserved current \(J^\mu\) coupled to a background gauge field
+\(A_\mu^{\rm ext}\), the electric field is
+\[
+  E_i(\omega,\mathbf k)=\ii\omega A_i^{\rm ext}(\omega,\mathbf k)
+  -\ii k_i A_0^{\rm ext}(\omega,\mathbf k).
+\]
+At zero spatial momentum and in a gauge with \(A_0^{\rm ext}=0\), linear
+response gives
+\[
+  \langle J_i(\omega)\rangle
+  =
+  G^R_{J_iJ_j}(\omega,\mathbf 0)A_j^{\rm ext}(\omega)
+  =
+  \sigma_{ij}(\omega)E_j(\omega),
+\]
+hence
+\[
+  \sigma_{ij}(\omega)
+  =
+  \frac{1}{\ii\omega}G^R_{J_iJ_j}(\omega,\mathbf 0)
+\]
+after subtracting possible contact terms dictated by gauge invariance.
+
+For the stress tensor, couple the theory to a spatial metric perturbation
+\(g_{ij}=\delta_{ij}+h_{ij}\).  In an isotropic state, the shear viscosity is
+the zero-frequency slope
+\[
+  \eta
+  =
+  \lim_{\omega\to0^+}
+  \frac{1}{\omega}\,
+  \operatorname{Im}G^R_{T_{xy}T_{xy}}(\omega,\mathbf 0).
+\]
+The bulk viscosity is obtained from the traceful spatial stress channel after
+projecting out pressure contact terms and conserved-density mixing.
+
+\section{Hydrodynamic Pole Boundary}
+
+Kubo formulae define transport coefficients when the indicated limits exist
+and commute with the thermodynamic and zero-momentum limits in the stated
+order.  Hydrodynamics begins after these coefficients are inserted into the
+long-wavelength Ward identities for conserved densities.
+
+\begin{openproblem}[Rigorous Kubo-to-hydrodynamics bridge]
+\label{op:kubo-hydrodynamics-bridge}
+Give sufficient QFT hypotheses under which retarded stress-tensor and current
+correlators have the analyticity, spectral positivity, clustering, and
+low-frequency limits required by the Kubo formulae, and prove that the same
+coefficients control the long-time hydrodynamic effective theory.
+\end{openproblem}

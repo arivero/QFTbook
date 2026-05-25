@@ -90,6 +90,171 @@ sum of absolute squares of half-lattice integrals weighted by
 \(a_{\mathbf n}\).  Every term is nonnegative, hence the sum is nonnegative.
 \end{proof}
 
+\section{Free Lattice Fermions}
+
+Reflection positivity for Grassmann variables is a positivity property of the
+Berezin functional together with an antilinear anti-automorphism.  Let
+\(\psi_A(x)\) and \(\bar\psi^A(x)\) be independent Grassmann-odd variables on
+\(\Lambda\subset\mathbb Z^D\), and let \(C_\mu\) be Euclidean Clifford
+matrices,
+\[
+  \{C_\mu,C_\nu\}_A{}^B=2\delta_{\mu\nu}\delta_A{}^B .
+\]
+The nearest-neighbor free lattice action is
+\[
+  -S
+  =
+  \sum_x\left[
+  m\,\bar\psi^A(x)\psi_A(x)
+  -\frac12\sum_{\mu=1}^D
+  \bar\psi^A(x)(C_\mu)_A{}^B
+  \bigl(\psi_B(x-e_\mu)-\psi_B(x+e_\mu)\bigr)
+  \right].
+\]
+The corresponding two-point function is
+\[
+  \langle \bar\psi^B(y)\psi_A(x)\rangle
+  =
+  \int_{[-\pi,\pi]^D}\frac{d^Dp}{(2\pi)^D}\,
+  e^{\ii p\cdot(x-y)}
+  \frac{
+  m\delta_A{}^B-\ii\sum_\mu(C_\mu)_A{}^B\sin p_\mu}
+  {m^2+\sum_\nu\sin^2p_\nu}.
+\]
+Adding a Wilson term changes the numerator by a chirality-matrix term and
+the denominator by the corresponding Wilson square; it removes doublers at
+the price of explicitly coupling the reflection-positivity question to the
+chosen Wilson operator and mass range.
+
+For the naive action above, the reflection compatible with the simple
+positivity proof is the reflection through the plane halfway between two
+time slices.  Take \(v=e_1\), \(c=1/2\), and
+\[
+  R(x)=x-2(x\cdot e_1-c)e_1 .
+\]
+Let \(H=\{x:x_1\geq1\}\).  Define the antilinear anti-automorphism
+\[
+  \Theta(AB)=\Theta(B)\Theta(A),
+\]
+\[
+  \Theta(\psi_A(x))=(C_1)_B{}^A\,\bar\psi^B(Rx),
+  \qquad
+  \Theta(\bar\psi^A(x))=(C_1)_A{}^B\,\psi_B(Rx).
+\]
+Reflection positivity means
+\[
+  \langle \Theta(\mathcal O)\mathcal O\rangle\geq0
+\]
+for every polynomial \(\mathcal O\) in the Grassmann variables supported in
+\(H\), where positivity is the coefficient positivity obtained after the
+Berezin integral is reduced to a sum of squares.
+
+The placement of the reflection plane is essential.  A two-point test with
+\(\mathcal O=\zeta^A\psi_A(x)\) gives, for the mid-link plane,
+\[
+  \int_{[-\pi,\pi]^D}\frac{d^Dp}{(2\pi)^D}\,
+  \frac{|\zeta|^2\sin p_1\,\sin\!\bigl(p_1(2x_1-1)\bigr)}
+  {m^2+\sum_\nu\sin^2p_\nu},
+  \qquad x_1\geq1,
+\]
+which has the positive one-dimensional transfer-kernel expansion in the
+normal direction.  For a site reflection \(c=0\), the same test contains the
+term
+\[
+  \int_{[-\pi,\pi]^D}\frac{d^Dp}{(2\pi)^D}\,
+  \frac{m\,(\zeta C_1\zeta^*)\cos(2p_1x_1)}
+  {m^2+\sum_\nu\sin^2p_\nu},
+\]
+whose sign is not fixed for arbitrary spinor \(\zeta\).  A diagonal
+reflection such as \(v=e_1+e_2\) similarly fails the same elementary
+two-point positivity test.  Thus the fermion reflection structure is not
+interchangeable among lattice hyperplanes.
+
+\begin{proposition}[Mid-link free-fermion reflection positivity]
+\label{prop:mid-link-free-fermion-reflection-positivity}
+For the nearest-neighbor free lattice fermion action above, reflection
+positivity holds for the mid-link reflection \(v=e_1,c=1/2\) with the
+Grassmann reflection \(\Theta\) displayed above.
+\end{proposition}
+
+\begin{proof}
+Write \(P_+=\{x:x_1=1\}\) and \(P_-=\{x:x_1=0\}\).  Split the action into
+positive-half, reflected-half, and cross-plane terms.  The cross-plane
+factor is a finite Grassmann polynomial over links crossing the plane:
+\[
+  \prod_{x\in P_+}
+  \exp\!\left[
+  -\frac12\bigl(
+  \bar\psi^A(x)(C_1)_A{}^B\psi_B(Rx)
+  -\bar\psi^A(Rx)(C_1)_A{}^B\psi_B(x)
+  \bigr)\right].
+\]
+Using the displayed definition of \(\Theta\), each cross factor can be
+written as a product of terms of the form
+\[
+  1+\frac12\left[
+  \Theta(\psi_A(x))\,\bar\psi^A(x)
+  +\Theta(\bar\psi^A(x))\,\psi_A(x)
+  \right].
+\]
+Integrating the variables strictly inside \(H\) against
+\(\mathcal O e^{-S_H}\) produces a boundary Grassmann polynomial
+\(\Psi\) in the variables on \(P_+\).  The reflected half gives
+\(\Theta(\Psi)\).  The remaining Berezin integral over \(P_+\cup P_-\) is a
+finite sum of products \(\Theta(c_I)c_I\) of the coefficients of \(\Psi\),
+with nonnegative numerical weights supplied by the cross factors.  This is
+the Grassmann analogue of the scalar sum-of-squares argument.
+\end{proof}
+
+\section{Staggered Fermions and a Thirring Interaction}
+
+In two dimensions with \(C_1=\sigma_3\) and \(C_2=\sigma_1\), a closed
+staggered subsector of the Dirac lattice fermion can be written in terms of
+one-component Grassmann variables \(\eta(x),\bar\eta(x)\).  In the convention
+of the staggered reduction,
+\[
+  -S
+  =
+  \sum_{\langle xy\rangle}M(x,y)\bar\eta(x)\eta(y)
+  +m\sum_x\bar\eta(x)\eta(x),
+\]
+with nearest-neighbor coefficients
+\[
+  M(x,x\pm e_1)=\pm\frac{(-1)^{x_2}}{2},
+  \qquad
+  M(x,x\pm e_2)=\pm1 .
+\]
+The mid-link reflection acts by
+\[
+  \Theta(\eta(x))=(-1)^{x_2}\bar\eta(Rx),
+  \qquad
+  \Theta(\bar\eta(x))=(-1)^{x_2}\eta(Rx).
+\]
+The same boundary-polynomial proof gives reflection positivity for the free
+staggered action.
+
+Add the nearest-neighbor Thirring interaction
+\[
+  -\Delta S
+  =
+  -U\sum_{x}\sum_{\mu=1,2}
+  \bar\eta(x)\eta(x+e_\mu)\bar\eta(x+e_\mu)\eta(x).
+\]
+It is invariant under the displayed reflection.  The cross-plane factor has
+the form
+\[
+  1+U\,\Theta(\eta(x)\bar\eta(x))\,\eta(x)\bar\eta(x)
+\]
+on each crossing link.  Therefore the same coefficient-square argument
+extends to the interacting lattice Thirring model for
+\[
+  U\geq0 .
+\]
+This is a finite-regulator reflection-positivity statement.  Continuum
+existence, scaling limits, and identification of the resulting QFT require
+the additional compactness and renormalization estimates discussed in
+Chapter~\ref{ch:constructive-continuum-limits-scaling-windows}.
+
 \section{Transfer Matrix Interpretation}
 
 When the lattice is periodic in Euclidean time, reflection positivity permits
