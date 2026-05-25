@@ -1,0 +1,578 @@
+\chapter{The Schwinger Model: Two-Dimensional Quantum Electrodynamics}
+\label{ch:schwinger-model}
+\ConventionsLorentzian
+
+\section{Definition, Gauge Group, and Observable Sector}
+
+The Schwinger model is quantum electrodynamics in \(1+1\) spacetime
+dimensions with one massless Dirac field.  We use coordinates
+\(x^\mu=(t,x)\),
+\[
+  \eta_{\mu\nu}=\operatorname{diag}(-,+),
+  \qquad
+  \epsilon^{01}=+1,
+  \qquad
+  \gamma=\gamma^0\gamma^1 .
+\]
+The two-dimensional spinor conventions are those of
+Appendix~\ref{app:spinor-conventions}.  Let \(a_\mu\) be a real Abelian
+gauge representative and let \(e>0\) be the charge of the dynamical Dirac
+field.  The compact \(U(1)\) connection is \(e\,a_\mu\); this convention is
+important because external probes will be allowed to have charge \(Q\) with
+respect to \(a_\mu\).  Thus
+\[
+  D_\mu\psi=\partial_\mu\psi-\ii e a_\mu\psi,
+  \qquad
+  F_{\mu\nu}=\partial_\mu a_\nu-\partial_\nu a_\mu,
+  \qquad
+  E=F_{01}.
+\]
+The local representative Lagrangian is
+\begin{equation}
+  \mathcal L_{\rm Sch}
+  =
+  -\frac14F_{\mu\nu}F^{\mu\nu}
+  -\bar\psi\gamma^\mu D_\mu\psi
+  =
+  \frac12E^2-\bar\psi\gamma^\mu\partial_\mu\psi
+  +e\,a_\mu J^\mu ,
+  \label{eq:schwinger-lagrangian}
+\end{equation}
+where
+\begin{equation}
+  J^\mu=\ii\bar\psi\gamma^\mu\psi,
+  \qquad
+  J_A^\mu=\ii\bar\psi\gamma^\mu\gamma\psi .
+  \label{eq:schwinger-vector-axial-currents}
+\end{equation}
+With these definitions \(eJ^\mu\) is the dynamical electric current.  Gauge
+representatives are related by
+\[
+  a_\mu\mapsto a_\mu+\partial_\mu\xi,
+  \qquad
+  \psi\mapsto \ee^{\ii e\xi}\psi,
+  \qquad
+  \bar\psi\mapsto\bar\psi\,\ee^{-\ii e\xi}.
+\]
+On a spatial circle of circumference \(L\), the gauge group includes large
+transformations with \(\xi(x+L)-\xi(x)=2\pi n/e\).  Equivalently, the
+holonomy \(\exp(\ii e\oint a_x\dd x)\) is the compact gauge-invariant
+zero-mode coordinate.  The local computations below may be performed on the
+line and then lifted to the circle by including the compact zero mode and
+the large-gauge identifications.
+
+A possible theta density is
+\begin{equation}
+  \mathcal L_\theta=\frac{e\theta}{2\pi}E .
+  \label{eq:schwinger-theta-density}
+\end{equation}
+On a closed Euclidean two-manifold the curvature of \(e\,a\) has integral
+periods, so \(\theta\sim\theta+2\pi\).  In the massless theory an anomalous
+axial rotation shifts \(\theta\), and the local spectrum is independent of
+\(\theta\).  In the massive deformation this shift is no longer a symmetry,
+and \(\theta\) becomes a physical parameter.
+
+\begin{definition}[Probe-charge convention]
+  A static external probe of charge \(Q\) is defined by the conserved
+  external current \(j^\mu_{\rm ext}\) coupled through
+  \[
+    S_{\rm probe}=\int a_\mu j^\mu_{\rm ext}\,\dd^2x .
+  \]
+  A straight worldline carries the phase
+  \(\exp(\ii Q\int a_\mu\dd x^\mu)\).  The dynamical Dirac field has
+  \(Q=e\).  A probe with \(Q/e\in\mathbb Z\) can be screened by dynamical
+  charged particles; a probe with nonintegral \(Q/e\) is a fractional probe
+  relative to the dynamical charge lattice.
+\end{definition}
+
+The canonical momentum conjugate to \(a_x\) is \(E\), while \(a_0\) is a
+Lagrange multiplier.  Including an external charge density
+\(\rho_{\rm ext}=j^0_{\rm ext}\), variation of \(a_0\) gives the operator
+Gauss law
+\begin{equation}
+  \partial_xE+eJ^0+\rho_{\rm ext}=0 .
+  \label{eq:schwinger-gauss-law}
+\end{equation}
+This equation is a constraint on states and on correlation functions with
+line insertions.  It is not optional data added after quantization; it is the
+local gauge-invariance condition of the theory.
+
+\begin{definition}[Local sector]
+  The local gauge-invariant sector of the massless Schwinger model is the
+  local operator algebra generated, after renormalization, by \(F_{\mu\nu}\),
+  by gauge-invariant currents such as \(J^\mu\), and by neutral composite
+  fields.  The bare fermion field \(\psi\) is not a gauge-invariant local
+  observable.  Charged sectors are described by line-dressed charged
+  insertions or by states on a spatial manifold with prescribed electric
+  flux at infinity.  The exact solution below is first a solution of the
+  local gauge-invariant sector and of specified external line probes.
+\end{definition}
+
+\section{Current Algebra, Anomaly, and the Electric-Field Equation}
+
+In two dimensions the vector and axial currents are Hodge dual.  With the
+gamma-matrix and orientation conventions fixed above,
+\begin{equation}
+  J_A^\mu=-\epsilon^{\mu\nu}J_\nu .
+  \label{eq:schwinger-current-duality}
+\end{equation}
+The vector current is exactly conserved as a consequence of gauge symmetry:
+\[
+  \partial_\mu J^\mu=0 .
+\]
+The axial current is not conserved.  The two-dimensional anomaly formula of
+Chapter~\ref{ch:volume-ii-20}, applied to the background connection
+\(A_\mu=e a_\mu\), gives the renormalized operator identity
+\begin{equation}
+  \partial_\mu J_A^\mu
+  =
+  \frac{e}{2\pi}\epsilon^{\mu\nu}F_{\mu\nu}
+  =
+  \frac{e}{\pi}E .
+  \label{eq:schwinger-axial-anomaly}
+\end{equation}
+The identity includes the finite contact term chosen in the definition of
+the axial-vector current correlator.  It is not the Euler-Lagrange equation
+of the classical massless Dirac action.
+
+\begin{proposition}[Anomaly-induced massive electric field]
+  In the absence of external line insertions, the gauge-invariant electric
+  field of the massless Schwinger model obeys
+  \begin{equation}
+    (\Box-m_{\rm Sch}^2)E=0,
+    \qquad
+    m_{\rm Sch}^2=\frac{e^2}{\pi},
+    \qquad
+    \Box=\partial_\mu\partial^\mu .
+    \label{eq:schwinger-electric-field-mass-equation}
+  \end{equation}
+\end{proposition}
+
+\begin{proof}
+  The Maxwell equation obtained from \eqref{eq:schwinger-lagrangian} is
+  \[
+    \partial_\nu F^{\nu\mu}+eJ^\mu=0 .
+  \]
+  Since \(F^{10}=E\) and \(F^{01}=-E\), its two components are
+  \[
+    \partial_xE+eJ^0=0,
+    \qquad
+    -\partial_tE+eJ^1=0 .
+  \]
+  Hence
+  \[
+    J^0=-\frac1e\partial_xE,
+    \qquad
+    J^1=\frac1e\partial_tE .
+  \]
+  Using \eqref{eq:schwinger-current-duality},
+  \(J_A^0=-J^1\) and \(J_A^1=-J^0\).  Therefore
+  \[
+    \partial_\mu J_A^\mu
+    =
+    -\partial_tJ^1-\partial_xJ^0
+    =
+    \frac1e(-\partial_t^2+\partial_x^2)E
+    =
+    \frac1e\Box E .
+  \]
+  Comparing this consequence of Maxwell's equation with the anomaly
+  \eqref{eq:schwinger-axial-anomaly} gives
+  \(\Box E/e=eE/\pi\), which is \eqref{eq:schwinger-electric-field-mass-equation}.
+\end{proof}
+
+This derivation uses only gauge invariance, the exact current anomaly, and
+the Maxwell equation.  It already proves that the local electric field
+creates a massive neutral particle.  Bosonization gives a stronger statement:
+it identifies the entire current-electric-field sector as a free massive
+scalar theory and gives exact formulas for line-probe response.
+
+\section{Bosonization of the Current Sector}
+
+The conservation law for \(J^\mu\) implies locally that \(J^\mu\) is the
+Hodge dual of a derivative.  The normalization is not arbitrary; it is fixed
+by the current algebra of one Dirac fermion.
+
+\begin{theorem}[Current-sector bosonization]
+  Let the free massless Dirac field be quantized in the vacuum sector with
+  the current normalization \eqref{eq:schwinger-vector-axial-currents}.  The
+  gauge-invariant Abelian current subalgebra is represented by a compact
+  scalar field \(\varphi\) of period \(\sqrt\pi\), normalized by
+  \[
+    \mathcal L_\varphi
+    =
+    -\frac12\partial_\mu\varphi\,\partial^\mu\varphi,
+    \qquad
+    [\widehat\varphi(t,x),\partial_0\widehat\varphi(t,y)]
+    =
+    \ii\delta(x-y),
+  \]
+  through
+  \begin{equation}
+    J^\mu=\frac1{\sqrt\pi}\epsilon^{\mu\nu}\partial_\nu\varphi,
+    \qquad
+    J_A^\mu=-\frac1{\sqrt\pi}\partial^\mu\varphi .
+    \label{eq:schwinger-bosonization-currents}
+  \end{equation}
+  Equivalently, after the same local contact-term convention is fixed on
+  both sides, the current-generating functional satisfies
+  \begin{equation}
+    Z_{\rm Dirac}[b]
+    =
+    \int\mathcal D\varphi\,
+    \exp\!\left\{
+      \ii\int\dd^2x
+      \left[
+        -\frac12\partial_\mu\varphi\partial^\mu\varphi
+        +\frac1{\sqrt\pi}b_\mu\epsilon^{\mu\nu}\partial_\nu\varphi
+      \right]
+    \right\}.
+    \label{eq:schwinger-current-generating-functional}
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  We give the proof for the current sector, which is the part used in the
+  gauge theory.  The equal-time commutator of the Dirac current, defined by
+  gauge-invariant point splitting and with the vector Ward identity
+  preserved, is
+  \begin{equation}
+    [\widehat J^0(t,x),\widehat J^1(t,y)]
+    =
+    -\frac{\ii}{\pi}\partial_x\delta(x-y).
+    \label{eq:schwinger-current-schwinger-term}
+  \end{equation}
+  This Schwinger term follows directly from the short-distance singularity
+  of the two chiral components of a free massless Dirac field.  If
+  \eqref{eq:schwinger-bosonization-currents} holds, then
+  \[
+    J^0=\frac1{\sqrt\pi}\partial_x\varphi,
+    \qquad
+    J^1=-\frac1{\sqrt\pi}\partial_t\varphi ,
+  \]
+  and the canonical scalar commutator gives exactly
+  \eqref{eq:schwinger-current-schwinger-term}.  Hence the coefficient in
+  \eqref{eq:schwinger-bosonization-currents} is forced.
+
+  It remains to see that this representation gives all current correlators,
+  not only their equal-time central term.  Work first in Euclidean signature
+  and couple a real background one-form \(b_\mu\) to the conserved vector
+  current.  Gauge invariance of the source problem implies that the
+  generating functional depends only on the transverse part of \(b\), up to
+  local contact terms already fixed by the Ward identity.  The free Dirac
+  determinant gives the transverse quadratic functional
+  \begin{equation}
+    W_E[b]
+    =
+    \frac1{2\pi}
+    \int\frac{\dd^2p}{(2\pi)^2}\,
+    b_\mu(-p)
+    \left(\delta^{\mu\nu}-\frac{p^\mu p^\nu}{p^2}\right)
+    b_\nu(p).
+    \label{eq:schwinger-euclidean-current-functional}
+  \end{equation}
+  The same expression is obtained by integrating out the Euclidean scalar in
+  the right side of \eqref{eq:schwinger-current-generating-functional},
+  because
+  \[
+    \epsilon^{\mu\alpha}p_\alpha
+    \epsilon^{\nu\beta}p_\beta
+    =
+    p^2\delta^{\mu\nu}-p^\mu p^\nu .
+  \]
+  The Abelian current algebra of a free Dirac fermion is Gaussian: after the
+  current-current short-distance singularity is fixed, higher connected
+  current correlators have no independent singular tensor structure
+  compatible with current conservation and chirality.  Thus
+  \eqref{eq:schwinger-euclidean-current-functional} determines the current
+  sector.  Analytic continuation gives
+  \eqref{eq:schwinger-current-generating-functional}.
+\end{proof}
+
+The scalar in this theorem is compact.  The derivative operators
+\(\partial_\mu\varphi\) describe the current algebra, while charged fermion
+operators require vertex operators.  With the present normalization the
+fermion mass operator is proportional to
+\(\cos(2\sqrt\pi\,\varphi)\); therefore
+\(\varphi\sim\varphi+\sqrt\pi\).  This compactness is invisible if one looks
+only at the local current \(\partial_\mu\varphi\), but it is essential for
+the charge lattice and for the massive deformation.
+
+\section{Exact Bosonized Gauge Theory}
+
+Setting \(b_\mu=e a_\mu\) in
+\eqref{eq:schwinger-current-generating-functional} and adding the Maxwell
+term and the theta term gives the exact bosonized representative
+\begin{equation}
+  \mathcal L_{\rm bos}
+  =
+  -\frac12\partial_\mu\varphi\,\partial^\mu\varphi
+  -\frac14F_{\mu\nu}F^{\mu\nu}
+  +\frac{e}{\sqrt\pi}a_\mu\epsilon^{\mu\nu}\partial_\nu\varphi
+  +\frac{e\theta}{2\pi}E .
+  \label{eq:schwinger-bosonized-action}
+\end{equation}
+This is an exact equality for the local current and electric-field sector of
+the massless theory.  It should not be read as a statement that a
+gauge-variant fermion field has become a gauge-invariant local scalar
+operator.  The charged sectors are encoded by the compact-boson vertex
+operators together with the gauge line required to make a charged insertion
+gauge invariant.
+
+Up to a boundary term,
+\[
+  a_\mu\epsilon^{\mu\nu}\partial_\nu\varphi=E\varphi .
+\]
+Therefore
+\begin{equation}
+  \mathcal L_{\rm bos}
+  =
+  -\frac12\partial_\mu\varphi\,\partial^\mu\varphi
+  +\frac12E^2
+  +E\left(\frac{e}{\sqrt\pi}\varphi+\frac{e\theta}{2\pi}\right).
+  \label{eq:schwinger-electric-field-form}
+\end{equation}
+The field \(E\) has no independent transverse wave degree of freedom in two
+spacetime dimensions.  The stationary equation for \(E\) on a fixed local
+branch is
+\[
+  E
+  =
+  -\frac{e}{\sqrt\pi}\varphi-\frac{e\theta}{2\pi}.
+\]
+Eliminating \(E\) gives
+\begin{equation}
+  \mathcal L_{\rm eff}
+  =
+  -\frac12\partial_\mu\varphi\,\partial^\mu\varphi
+  -\frac12\,\frac{e^2}{\pi}
+  \left(\varphi+\frac{\theta}{2\sqrt\pi}\right)^2 .
+  \label{eq:schwinger-effective-massive-scalar}
+\end{equation}
+The exact gauge-invariant local spectrum therefore contains one neutral
+scalar particle of mass
+\begin{equation}
+  m_{\rm Sch}^2=\frac{e^2}{\pi}.
+  \label{eq:schwinger-mass}
+\end{equation}
+The electric field is the corresponding massive field,
+\begin{equation}
+  E
+  =
+  -\frac{e}{\sqrt\pi}
+  \left(\varphi+\frac{\theta}{2\sqrt\pi}\right),
+  \qquad
+  (\Box-m_{\rm Sch}^2)E=0 .
+  \label{eq:schwinger-electric-field-scalar-relation}
+\end{equation}
+
+\begin{remark}[Theta periodicity and branches]
+  The local expression \eqref{eq:schwinger-effective-massive-scalar} is
+  written on one electric-flux branch.  In the compact theory, large gauge
+  transformations and the compactness
+  \(\varphi\sim\varphi+\sqrt\pi\) identify the branch obtained by
+  \(\theta\mapsto\theta+2\pi\) with the branch obtained by shifting
+  \(\varphi\).  A formulation on a spatial circle keeps the holonomy zero
+  mode and sums over the corresponding integer electric-flux sectors.  The
+  massless theory is independent of \(\theta\), because an axial rotation
+  shifts \(\theta\) and no fermion mass term obstructs this shift.
+\end{remark}
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[>=Stealth,
+    box/.style={draw,rounded corners=2pt,align=center,inner sep=5pt,
+      text width=3.35cm,minimum height=1.05cm},
+    arrowlabel/.style={font=\scriptsize,fill=white,inner sep=1pt}]
+    \node[box] (ferm) at (-5.2,0)
+      {massless Dirac field\\and Abelian gauge representative};
+    \node[box,text width=3.75cm] (curr) at (0,0)
+      {current algebra\\\(J^\mu=\pi^{-1/2}\epsilon^{\mu\nu}\partial_\nu\varphi\)};
+    \node[box] (mass) at (5.2,0)
+      {one massive scalar\\\(m_{\rm Sch}^2=e^2/\pi\)};
+    \draw[->,thick] (ferm.east) -- node[arrowlabel,above] {bosonization} (curr.west);
+    \draw[->,thick] (curr.east) -- node[arrowlabel,above] {integrate \(E\)} (mass.west);
+    \node[align=center] at (0,-1.15)
+      {\(\partial_\mu J_A^\mu=(e/\pi)E\) fixes the mass term};
+  \end{tikzpicture}
+  }
+  \caption{The exact solution of the local sector of the massless Schwinger
+  model.  The anomaly and current algebra convert the gauge-invariant
+  electric field into a free massive scalar field.}
+  \label{fig:schwinger-model-exact-solution}
+\end{figure}
+
+\section{Static Probes and Screening}
+
+The response to external static charges is a line-observable question, not a
+statement about the local particle spectrum alone.  For a neutral pair
+\[
+  \rho_{\rm ext}(x)
+  =
+  Q\delta(x-R/2)-Q\delta(x+R/2),
+\]
+pure Maxwell theory in one spatial dimension gives a constant electric field
+between the probes.  With the Gauss law \(\partial_xE+\rho_{\rm ext}=0\) in
+the interval between dynamical charges,
+\[
+  V_{\rm pure}(R)=\frac{Q^2}{2}R .
+\]
+
+The massless Schwinger model changes the static kernel.  Integrating out the
+massless Dirac current sector gives, for the static temporal representative
+in Coulomb gauge, the quadratic energy functional
+\begin{equation}
+  \mathcal E[a_0;\rho_{\rm ext}]
+  =
+  \frac12\int\dd x\,
+  a_0(x)\left(-\partial_x^2+m_{\rm Sch}^2\right)a_0(x)
+  -\int\dd x\,a_0(x)\rho_{\rm ext}(x).
+  \label{eq:schwinger-static-energy-functional}
+\end{equation}
+The Euler-Lagrange equation is
+\[
+  \left(-\partial_x^2+m_{\rm Sch}^2\right)a_0(x)
+  =
+  \rho_{\rm ext}(x).
+\]
+Let
+\[
+  \left(-\partial_x^2+m^2\right)G_m(x)=\delta(x),
+  \qquad
+  G_m(x)=\frac{\ee^{-m|x|}}{2m}.
+\]
+Solving for \(a_0\), substituting back into
+\eqref{eq:schwinger-static-energy-functional}, and subtracting the
+\(R\)-independent self-energies gives
+\begin{equation}
+  V_{\rm Sch}(R)
+  =
+  Q^2\left(G_{m_{\rm Sch}}(0)-G_{m_{\rm Sch}}(R)\right)
+  =
+  \frac{Q^2}{2m_{\rm Sch}}
+  \left(1-\ee^{-m_{\rm Sch}R}\right).
+  \label{eq:schwinger-screened-static-potential}
+\end{equation}
+Thus the force decays exponentially and the energy approaches a constant at
+large separation.  The constant is the energy needed to polarize the
+massless charged vacuum around the two probes.  There is no asymptotic
+linear electric string in the massless model.
+
+This screening statement is compatible with
+\eqref{eq:schwinger-electric-field-mass-equation}.  The local electric field
+creates a massive neutral particle, while external flux is screened because
+the induced charge density can rearrange over the length scale
+\(m_{\rm Sch}^{-1}\).  These are two different gauge-invariant observables
+whose common origin is the same anomaly-fixed current algebra.
+
+\section{Massive Fermion Variant and Fractional-Probe Confinement}
+
+Now add a Dirac mass \(M\bar\psi\psi\).  The axial rotation that removed
+\(\theta\) in the massless theory also rotates the mass phase, so the
+physical parameter is the relative phase between the mass and the theta
+term.  Choosing \(M>0\) real, bosonization gives the sine-Gordon perturbation
+\begin{equation}
+  \Delta\mathcal L_M
+  =
+  \kappa M\cos(2\sqrt\pi\,\varphi+\theta).
+  \label{eq:massive-schwinger-sine-gordon-perturbation}
+\end{equation}
+The constant \(\kappa>0\) has mass dimension one and is fixed by the
+normalization of the renormalized composite mass operator.  Equivalently,
+\(\kappa\) is the magnitude of the chiral condensate in the massless theory
+in the corresponding normal-ordering scheme.  The scheme dependence of
+\(\kappa\) is exactly compensated by the scheme dependence of the
+renormalized mass \(M\).
+
+After eliminating \(E\) on a local branch, the scalar potential is
+\begin{equation}
+  V_M(\varphi)
+  =
+  \frac12\,\frac{e^2}{\pi}
+  \left(\varphi+\frac{\theta}{2\sqrt\pi}\right)^2
+  -\kappa M\cos(2\sqrt\pi\,\varphi+\theta).
+  \label{eq:massive-schwinger-effective-potential}
+\end{equation}
+The quadratic term should again be understood together with the integer flux
+branches of the compact gauge theory.  The cosine is periodic under
+\(\varphi\mapsto\varphi+\sqrt\pi\); the electric term records which flux
+branch is being used.
+
+External charges shift the effective theta angle in the interval between
+them.  This is the cleanest derivation of the fractional-probe string
+tension.  A charge \(Q\) at one endpoint and \(-Q\) at the other force the
+electric flux in the interval to differ from the outside flux by \(Q\).  In
+the bosonized description this is equivalent to
+\begin{equation}
+  \theta_{\rm inside}
+  =
+  \theta+\frac{2\pi Q}{e}
+  \quad
+  \operatorname{mod} 2\pi .
+  \label{eq:schwinger-theta-shift-probe}
+\end{equation}
+For small \(M\), the leading vacuum energy density of the massive theory is
+computed by evaluating the mass perturbation in the massless vacuum:
+\[
+  \varepsilon(\theta)
+  =
+  -\kappa M\cos\theta+O(M^2).
+\]
+Therefore the fixed-branch large-\(R\) energy-density shift in the interval,
+relative to the outside vacuum, is
+\begin{equation}
+  \Delta\varepsilon_Q(\theta)
+  =
+  \varepsilon\!\left(\theta+\frac{2\pi Q}{e}\right)-\varepsilon(\theta)
+  =
+  \kappa M
+  \left[
+    \cos\theta-\cos\!\left(\theta+\frac{2\pi Q}{e}\right)
+  \right]
+  +O(M^2),
+  \label{eq:massive-schwinger-string-tension-theta}
+\end{equation}
+with the physical branch chosen by minimizing over the integer flux sectors.
+At \(\theta=0\) this fixed-branch shift is nonnegative and gives the leading
+fractional-probe string tension
+\begin{equation}
+  \sigma(Q)
+  =
+  \kappa M
+  \left(1-\cos\frac{2\pi Q}{e}\right)
+  +O(M^2).
+  \label{eq:massive-schwinger-string-tension}
+\end{equation}
+For \(Q/e\in\mathbb Z\), the string tension vanishes: an integer external
+charge lies in the dynamical charge lattice and can be screened.  For
+nonintegral \(Q/e\), the interval between the probes is forced into a
+different theta branch, and its energy grows linearly at large separation
+with leading coefficient \(\sigma(Q)\).  This is confinement of fractional
+test charges, not confinement of the dynamical unit-charged fermion.
+
+\section{Mechanisms Isolated by the Exact Solution}
+
+The model is useful because several mechanisms that are intertwined in
+higher-dimensional gauge theories become separately computable:
+\[
+\begin{array}{c|c}
+  \hbox{object} & \hbox{exact statement in the Schwinger model} \\ \hline
+  \hbox{local anomaly} &
+  \partial_\mu J_A^\mu=(e/\pi)E \\
+  \hbox{local electric-field spectrum} &
+  E\hbox{ creates a scalar of }m_{\rm Sch}^2=e^2/\pi \\
+  \hbox{massless probe response} &
+  V(R)=Q^2(1-\ee^{-m_{\rm Sch}R})/(2m_{\rm Sch}) \\
+  \hbox{mass perturbation} &
+  M\bar\psi\psi\leftrightarrow\kappa M\cos(2\sqrt\pi\varphi+\theta) \\
+  \hbox{fractional-probe confinement} &
+  \sigma(Q)=\kappa M(1-\cos(2\pi Q/e))+O(M^2)
+\end{array}
+\]
+Each line refers to a specified gauge-invariant local observable or to an
+explicit external line probe.  This separation is essential: a massive
+electric-field two-point function, a screened Wilson-line potential, and a
+linear potential for fractional probes in the massive deformation are
+different physical statements, even though in this exactly solvable theory
+they are controlled by the same current algebra and anomaly.

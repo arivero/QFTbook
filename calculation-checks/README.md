@@ -44,6 +44,12 @@ Current checks:
 - `on_wilson_fisher_epsilon_checks.py`: exact rational arithmetic for the
   singlet \(O(N)\) Wilson-Fisher family, including the \(N=1\) reduction and
   the leading large-\(N\) scaling of \(u=Nx\).
+- `schwinger_model_checks.py`: finite sign and normalization checks for the
+  Schwinger-model chapter, including the two-dimensional current-duality
+  convention, the algebraic elimination of the electric field, the
+  anomaly-induced mass \(m_{\rm Sch}^2=e^2/\pi\), the screened static
+  potential, and the periodicity of the massive-model string tension for
+  integer probe charge.
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
   algebraic checks, adapted from the stringbook spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.
