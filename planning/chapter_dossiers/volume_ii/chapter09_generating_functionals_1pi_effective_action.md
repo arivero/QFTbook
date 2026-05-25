@@ -64,6 +64,25 @@ The chapter must define the following objects before using them:
 - the kernels \(\Gamma^{(n)}\) and their relation to amputated 1PI diagrams;
 - the reconstruction of connected functions as trees built from exact
   propagators and exact 1PI vertices;
+- the finite-regulator hypotheses under which Schwinger--Dyson integration by
+  parts is legitimate, including the possible logarithmic derivative of the
+  reference density and the separate BRST/BV treatment required in gauge
+  theories;
+- the condensed DeWitt notation used in the Schwinger--Dyson hierarchy;
+- the insertion identity
+  \(\langle(S_i[\phi]+J_i)\mathcal O[\phi]\rangle_J
+  =i\langle\delta\mathcal O/\delta\phi^i\rangle_J\), the source-functional
+  form
+  \([S_i((1/i)\delta/\delta J)+J_i]Z[J]=0\), and the connected form obtained
+  by shifting source derivatives through \(Z[J]=e^{iW[J]}\);
+- the exact 1PI quantum equation of motion
+  \(\Gamma_i[\varphi]=\langle S_i[\phi]\rangle_{J_\varphi}\);
+- the first explicit members of the quartic scalar Schwinger--Dyson hierarchy:
+  the full propagator equation and the full four-point vertex equation,
+  including the connected four-point hierarchy equation, the Legendre
+  identities for the connected four- and six-point kernels, and the statement
+  that closing either equation is an additional approximation requiring its
+  own control;
 - the Euclidean convexity statement and its finite-dimensional toy model.
 
 ## Claim Ledger
@@ -112,6 +131,26 @@ The chapter must define the following objects before using them:
 11. The exact connected functional is recovered from \(\Gamma\) by solving the
    stationary equation \(\delta\Gamma/\delta\varphi=-J\); diagrammatically,
    connected functions are trees made from exact 1PI vertices.
+11a. At a translation-invariant finite scalar regulator, integration by parts
+    in field space gives the exact Schwinger--Dyson insertion identity.  If
+    the reference density is not translation invariant, its logarithmic
+    derivative is part of the identity; if the change of variables has a
+    nontrivial Jacobian, that Jacobian is an insertion.
+11b. The equation \(\Gamma_i[\varphi]=\langle S_i[\phi]\rangle_{J_\varphi}\)
+    is the exact 1PI equation of motion in the chosen source chart.  It is
+    equivalent to the connected functional identity
+    \(S_i(\varphi+(1/i)\delta/\delta J)1+J_i=0\).
+11c. For quartic scalar theory, differentiating the connected
+    Schwinger--Dyson identity gives an exact propagator equation involving the
+    exact connected four-point kernel.  Differentiating three more times gives
+    an exact connected four-point hierarchy member; substituting the Legendre
+    identities for \(W^{(4)}\) and \(W^{(6)}\) gives the full four-point 1PI
+    vertex equation involving the exact six-point vertex and the tree made
+    from two exact four-point vertices joined by one exact propagator.
+11d. A Schwinger--Dyson truncation is not part of the identity.  The act of
+    discarding higher connected kernels or higher 1PI vertices must be
+    justified by a stated small parameter, kinematic regime, renormalization
+    condition with an error estimate, or explicit nonperturbative ansatz.
 12. In the Euclidean convention
     \(Z_E[J]=e^{-W_E[J]}\), under the labeled positive finite Euclidean
     regulator assumption, \(W_E\) is concave and the corresponding
@@ -217,3 +256,9 @@ The chapter must define the following objects before using them:
   \(Z_\phi^{\rm pole}\), \(Z_{\rm MOM}(\mu)\), \(Z_\phi^{\rm chart}\),
   \(Z_\phi^{\rm MS}\), and the composite-source mixing distributions
   \(\mathcal Z\).
+- 2026-05-25 issue #452 pass: added the missing Schwinger--Dyson section next
+  to the Legendre construction.  The chapter now states the finite-regulator
+  integration-by-parts hypotheses, derives the insertion and source-functional
+  identities, converts them to connected and 1PI form, and works out the full
+  propagator and full four-point vertex members for quartic scalar theory with
+  explicit truncation caveats.
