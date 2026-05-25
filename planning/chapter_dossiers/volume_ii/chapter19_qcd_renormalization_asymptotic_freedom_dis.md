@@ -91,6 +91,17 @@ The chapter must define and derive:
 - Wilson lines, open gauge-invariant quark-antiquark operators, rectangular
   Wilson loops, static potentials, and the distinction between pure
   Yang--Mills area-law diagnostics and QCD with dynamical fundamental quarks;
+- the 't Hooft large-\(N_c\) limit in the monograph trace convention, including
+  \(\lambda=g^2N_c\), its conversion to the common half-trace convention,
+  the \(SU(N_c)\) completeness relation
+  \(\sum_a(t^a)^i{}_j(t^a)^k{}_\ell
+  =\delta^i{}_\ell\delta^k{}_j
+  -N_c^{-1}\delta^i{}_j\delta^k{}_\ell\), double-line notation, the
+  single-trace adjoint action normalization, the ribbon-graph power
+  \(N_c^{V-E+F}=N_c^{2-2h-b}\), the explicit planar-versus-one-handle
+  theta-graph \(N_c^{-2}\) suppression, single-trace factorization,
+  fixed-\(N_f\) and Veneziano quark-boundary counting, and the leading
+  large-\(N_c\) scaling of meson, glueball, baryon, and vacuum amplitudes;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
@@ -160,32 +171,47 @@ The chapter must define and derive:
 10. A rectangular Euclidean Wilson loop extracts the static potential between
    external color sources; an area law in pure Yang--Mills is a confinement
    diagnostic, while dynamical fundamental matter can break the flux tube.
-11. Colored quark and gluon fields are not physical asymptotic states in the
+11. In the trace convention
+   \(\operatorname{tr}_{\square}(t^at^b)=\delta^{ab}\), the large-\(N_c\)
+   coupling held fixed is \(\lambda=g^2N_c\), equal to twice the common
+   half-trace 't Hooft coupling.  The leading color-flow propagator and the
+   Euler characteristic of the associated ribbon surface give
+   \(N_c^{V-E+F}=N_c^{2-2h-b}\), while the \(SU(N_c)\) trace subtraction is
+   explicitly subleading.  The planar and one-handle theta graphs have the
+   same \(V,E\) and two different face counts, giving an \(N_c^{-2}\)
+   nonplanar suppression at fixed \(\lambda\).
+12. Normalized single-trace adjoint observables factorize at large \(N_c\)
+   with connected two-point fluctuations of order \(N_c^{-2}\).  Fixed-flavor
+   quark loops are suppressed as additional boundaries, while Veneziano
+   scaling restores their leading order.  Meson, glueball, and baryon scaling
+   statements depend on separate spectral assumptions about the existence of
+   the corresponding color-singlet states.
+13. Colored quark and gluon fields are not physical asymptotic states in the
    QCD confinement scenario; deriving this spectral property from the
    four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
    as a nonperturbative physical hypothesis when discussing phenomenology.
    Physical scattering statements must be formulated in terms of
    gauge-invariant states or controlled high-energy factorization data.
-12. Energy correlators are nonperturbative detector observables once the
+14. Energy correlators are nonperturbative detector observables once the
     stress-tensor flux limit is constructed on the physical Hilbert space.
-13. Smeared detector observables are continuous under soft emission and
+15. Smeared detector observables are continuous under soft emission and
     collinear recombination, and this supplies the measurement-function input
     for KLN/factorization finiteness at fixed perturbative order.
-14. The energy-energy correlator and energy-flow polynomials are formulated in
+16. The energy-energy correlator and energy-flow polynomials are formulated in
     terms of positive calorimetric measures rather than colored parton labels.
-15. DIS is controlled by an inclusive Wightman current-current tensor; the
+17. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
     continuation to the physical inclusive tensor.
-16. The leading-twist local operators and the gauge-invariant light-ray
+18. The leading-twist local operators and the gauge-invariant light-ray
     operators are two presentations of the same short-distance data; asymptotic
     freedom changes Bjorken scaling into logarithmic scaling violation governed
     by anomalous dimensions.
-17. In QCD, partonic initial-state collinear singularities are not removed by
+19. In QCD, partonic initial-state collinear singularities are not removed by
     an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
     renormalized Wilson-line light-ray operators defining PDFs, and the
     resulting factorization-scale dependence is governed by DGLAP evolution.
-18. Physical QCD asymptotic completeness remains an open large-time problem:
+20. Physical QCD asymptotic completeness remains an open large-time problem:
     one must construct wave operators from stable color-singlet asymptotic
     spaces, treat resonances through analytic scattering data, include
     massless Goldstone modes when chiral limits are taken, and prove that
@@ -206,6 +232,9 @@ The chapter must define and derive:
   continued strong-coupling flow.
 - Wilson-line/Wilson-loop figure distinguishing open flux-tube operators from
   rectangular loop extraction of \(V(L)\).
+- Large-\(N_c\) double-line topology figure: leading adjoint color-flow
+  propagator, planar theta graph, and one-handle theta graph with the
+  \(F=3\) versus \(F=1\) face count and \(N_c^{-2}\) suppression marked.
 - Energy-flow detector figure: stress-tensor flux through a large sphere,
   smeared angular test functions, and the induced calorimetric measure on
   \(S^2\).
@@ -279,3 +308,10 @@ The chapter must define and derive:
   fundamental-representation window, the \(\epsilon_{\rm BZ}\) fixed-point
   coordinate, the IR-attractive exponent, the integer-\(N_f\)/Veneziano
   caveat, and `calculation-checks/banks_zaks_two_loop_checks.py`.
+- 2026-05-25 issue #468 pass: added the 't Hooft large-\(N_c\) expansion as a
+  full QCD-chapter section before the QCD-string discussion, with
+  trace-normalization conversion, double-line completeness, ribbon-graph
+  Euler-characteristic derivation, explicit planar/nonplanar theta-graph
+  power comparison, single-trace factorization, fixed-\(N_f\) versus
+  Veneziano quark-boundary counting, and
+  `calculation-checks/large_n_topology_checks.py`.

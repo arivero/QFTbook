@@ -43,6 +43,11 @@ Current checks:
   constants, \(C_A=2N\), \(T_F=1\), \(C_F=(N^2-1)/N\), the coupling-coordinate
   conversion from the common half-trace convention, and the Wilson-plaquette
   factor giving \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\).
+- `large_n_topology_checks.py`: finite checks for the 't Hooft
+  large-\(N\) section, including the \(SU(N)\) completeness relation in the
+  monograph trace normalization, the planar-versus-one-handle theta-graph
+  \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
+  versus Veneziano quark-boundary counting.
 - `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
   two-loop \(N=1\) Wilson-Fisher pole coefficients into
   \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).
