@@ -72,6 +72,27 @@ The chapter must define and derive:
 - the fixed point
   \(\lambda_*=16\pi^2\epsilon/3+O(\epsilon^2)\) and its IR attractiveness
   for decreasing \(\mu\) after the massless endpoint condition is imposed;
+- the two-loop minimal-subtraction pole map for
+  \(x=\lambda_{\rm MS}/(16\pi^2)\),
+  \[
+    g_0/(16\pi^2)=\mu^\epsilon
+    [x+3x^2/\epsilon+x^3(9/\epsilon^2-17/(6\epsilon))+O(x^4)],
+  \]
+  together with the derivation of
+  \(\beta_x^\epsilon=-\epsilon x+3x^2-\frac{17}{3}x^3+O(x^4)\);
+- the two-loop \(\phi^2\) source pole
+  \(\log Z_{2,\rm src}^{\rm MS}
+    =(-x+\frac{5}{12}x^2)/\epsilon+\hbox{double poles}+O(x^3)\)
+  and the resulting
+  \(\gamma_2(x)=x-\frac56x^2+O(x^3)\);
+- the two-loop NLO Wilson-Fisher data for the one-component scalar:
+  \(x_*=\epsilon/3+17\epsilon^2/81+O(\epsilon^3)\),
+  \(\eta=\epsilon^2/54+O(\epsilon^3)\),
+  \(\Delta_\phi=1-\epsilon/2+\epsilon^2/108+O(\epsilon^3)\),
+  \(\Delta_{\phi^2}=2-2\epsilon/3+19\epsilon^2/162+O(\epsilon^3)\),
+  \(y_t=2-\epsilon/3-19\epsilon^2/162+O(\epsilon^3)\),
+  \(\nu=1/2+\epsilon/12+7\epsilon^2/162+O(\epsilon^3)\), and
+  \(\omega=\epsilon-17\epsilon^2/27+O(\epsilon^3)\);
 - the formal status of \(\lambda_*(\epsilon)\): the perturbative calculation
   recursively determines coefficients of a formal small-\(\epsilon\) series
   for a zero of the beta vector field, not by itself an honest
@@ -124,9 +145,10 @@ The chapter must define and derive:
   \(s_{\rm W}=\log(\Lambda_0/\Lambda)\) orientation after a finite coordinate
   matching has been specified;
 - the correlation-length exponent
-  \(\nu=1/y_t=1/2+\epsilon/12+O(\epsilon^2)\);
+  \(\nu=1/y_t=1/2+\epsilon/12+7\epsilon^2/162+O(\epsilon^3)\);
 - the odd source \(h[\phi]\) and its eigenvalue
-  \(y_h=D-\Delta_\phi=3-\epsilon/2+O(\epsilon^2)\), explaining that the
+  \(y_h=D-\Delta_\phi
+  =3-\epsilon/2-\epsilon^2/108+O(\epsilon^3)\), explaining that the
   one-tuning-condition statement is inside the \(\mathbb Z_2\)-even subspace,
   while a codimension-one submanifold statement requires the Banach-chart
   endpoint theorem from the Wilsonian chapter;
@@ -139,8 +161,9 @@ The chapter must define and derive:
   \([\phi^3]_\mu=\kappa_*(\mu)\Box\phi\), and the descendant dimension
   \(\Delta_{\phi^3}=\Delta_\phi+2\);
 - the quartic operator anomalous dimension
-  \(\gamma_{4*}=\beta'(\lambda_*)=\epsilon+O(\epsilon^2)\) and
-  \(\Delta_{\phi^4}=4+O(\epsilon^2)>D\);
+  \(\omega=\beta'(\lambda_*)=\epsilon-17\epsilon^2/27+O(\epsilon^3)\) and
+  \(\Delta_{\phi^4}=D+\omega
+  =4-17\epsilon^2/27+O(\epsilon^3)>D\);
 - the comparison table for \(d=4-\epsilon\), \(d=3\), and \(d=2\), with the
   last two rows explicitly not presented as consequences of the first-order
   epsilon expansion and with the third column labeled by a generic
@@ -180,6 +203,20 @@ The chapter must define and derive:
    \(\lambda=(16\pi^2/3)\epsilon\) as a formal branch; this is not a global
    classification of fixed points in scalar, gauge, or product theory spaces.
 4. The fixed point is attractive in the infrared along the quartic direction.
+4a. At two loops in the one-component scalar MS chart,
+    \(x_*=\epsilon/3+17\epsilon^2/81+O(\epsilon^3)\).  This follows from the
+    pole map and the fixed-regulator equation for \(g_0\), not from a separate
+    assumption about the fixed point.
+4b. The two-loop source and field pole coefficients give
+    \(\gamma_2=x-\frac56x^2+\cdots\) and
+    \(\gamma_\phi=x^2/12+\cdots\).  Substituting \(x_*\) yields
+    \(\nu=1/2+\epsilon/12+7\epsilon^2/162+\cdots\) and
+    \(\eta=\epsilon^2/54+\cdots\).  A next coefficient of \(\eta\) would require
+    the three-loop field pole.
+4c. The quartic irrelevant exponent is the linearized beta derivative
+    \(\omega=\partial_x\beta_x^\epsilon(x_*)=
+    \epsilon-17\epsilon^2/27+O(\epsilon^3)\), so the quartic-direction
+    scaling dimension is \(D+\omega\).
 5. The mass parameter must be tuned separately; inside the
    \(\mathbb Z_2\)-even subspace the fixed point is reached by imposing the
    massless endpoint condition.  Calling the tuned set a codimension-one
@@ -345,3 +382,11 @@ The chapter must define and derive:
   \(Z_\phi^{\rm MS}\) to the part-opening dictionary, so the sunset
   anomalous-dimension calculation is explicitly an MS pole-factor computation
   and not an LSZ residue normalization.
+- 2026-05-25 issue #460 pass: added the two-loop \(N=1\) MS pole map,
+  the \(\phi^2\) source pole, the algebra deriving
+  \(\beta_x^\epsilon\), \(\gamma_2\), \(\gamma_\phi\), \(x_*\), \(\eta\),
+  \(\Delta_\phi\), \(\Delta_{\phi^2}\), \(y_t\), \(\nu\), and \(\omega\), and
+  updated the critical-surface, magnetic-exponent, quartic-irrelevant, and
+  comparison-table formulas.  Added
+  `calculation-checks/wilson_fisher_epsilon_checks.py` as a rational
+  arithmetic regression check for the displayed epsilon-expansion algebra.

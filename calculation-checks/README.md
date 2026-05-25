@@ -26,6 +26,9 @@ Current checks:
   constants, \(C_A=2N\), \(T_F=1\), \(C_F=(N^2-1)/N\), the coupling-coordinate
   conversion from the common half-trace convention, and the Wilson-plaquette
   factor giving \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\).
+- `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
+  two-loop \(N=1\) Wilson-Fisher pole coefficients into
+  \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
   algebraic checks, adapted from the stringbook spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.

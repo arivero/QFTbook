@@ -681,6 +681,273 @@ At the Wilson-Fisher fixed point,
   2-\frac{2}{3}\epsilon+O(\epsilon^2).
 \]
 
+\section{Two-Loop Pole Data and NLO Epsilon Expansion}
+\label{sec:wilson-fisher-two-loop-nlo}
+
+The preceding calculation gives the fixed-point branch and the thermal
+exponent to leading order.  The next coefficient of \(\nu\), and the next
+coefficient of the quartic irrelevant exponent, require the two-loop
+minimal-subtraction pole data.  This section stays in the one-component
+\(\mathbb Z_2\)-even scalar theory.  The \(O(N)\) generalization is a
+different tensor combinatorics problem and is not folded into the notation
+here.
+
+Set
+\[
+  x:=\frac{\lambda_{\rm MS}}{16\pi^2}.
+\]
+With the action normalized by \(\lambda\phi^4/4!\), the local pole part of the
+two-loop four-point calculation is
+\begin{equation}
+  \frac{g_0}{16\pi^2}
+  =
+  \mu^\epsilon
+  \left[
+    x+\frac{3x^2}{\epsilon}
+    +x^3\left(\frac{9}{\epsilon^2}
+      -\frac{17}{6\epsilon}\right)
+    +O(x^4)
+  \right].
+  \label{eq:wf-two-loop-coupling-pole-map}
+\end{equation}
+The coefficient \(3\) is the sum of the \(s,t,u\) one-loop bubble channels in
+the \(1/4!\) vertex normalization.  The double pole \(9/\epsilon^2\) is not a
+new primitive datum: it is fixed by inserting the one-loop local counterterm
+into the one-loop four-point graph and by the forest consistency condition
+that the cutoff coupling be independent of \(\mu\).  The new two-loop
+four-point information is the simple pole
+\(-17x^3/(6\epsilon)\).  In a forest subtraction this number is the sum of the
+primitive two-loop four-point pole and the local remnants of its subgraph
+subtractions, evaluated at any nonexceptional Euclidean subtraction
+configuration; locality of the pole part makes it independent of the chosen
+configuration.
+
+For the momentum-carrying \(\phi^2\) source used above, let
+\(Z_{2,\rm src}^{\rm MS}\) denote the minimal-subtraction source factor
+\begin{equation}
+  Z_{2,\rm src}^{\rm MS}
+  :=
+  \frac{\delta\widetilde g_2(p;\mu)}
+       {\delta\widetilde g_2(p)} .
+  \label{eq:wf-two-loop-phi-two-source-factor}
+\end{equation}
+Its logarithm has the simple-pole coefficient
+\begin{equation}
+  \log Z_{2,\rm src}^{\rm MS}
+  =
+  \frac{-x+\frac{5}{12}x^2}{\epsilon}
+  +\hbox{double poles}
+  +O(x^3).
+  \label{eq:wf-two-loop-phi-two-source-pole}
+\end{equation}
+The \(-x/\epsilon\) term is the one-loop nonzero-momentum insertion computed
+above.  The \(5x^2/(12\epsilon)\) term is the forest-subtracted two-loop
+simple pole of the same insertion: the one-loop source counterterm removes
+the nested subdivergence, and the remaining local part is proportional to the
+same source operator.  The double poles in
+\eqref{eq:wf-two-loop-phi-two-source-pole} are determined by lower-order
+subdivergences and cancel out of the finite anomalous dimension after the
+pole equations are imposed.
+
+For the elementary field, the two-loop sunset computation already gave
+\begin{equation}
+  \log Z_\phi^{\rm MS}
+  =
+  -\frac{x^2}{12\epsilon}+O(x^3).
+  \label{eq:wf-two-loop-field-log-pole}
+\end{equation}
+Only this two-loop field pole is needed for \(\eta\) through order
+\(\epsilon^2\).  The next coefficient of \(\eta\) would require the three-loop
+simple pole in \(Z_\phi^{\rm MS}\), so it is not part of a two-loop
+calculation.
+
+\begin{proposition}[Two-loop \(N=1\) Wilson--Fisher epsilon data]
+\label{prop:wf-two-loop-nlo-exponents}
+In the minimal-subtraction chart with \(x=\lambda_{\rm MS}/(16\pi^2)\), the
+two-loop beta function and anomalous dimensions determined by
+\eqref{eq:wf-two-loop-coupling-pole-map}--\eqref{eq:wf-two-loop-field-log-pole}
+are
+\begin{align}
+  \beta_x^\epsilon(x)
+  &:=
+  \frac{\dd x}{\dd\log\mu}
+  =
+  -\epsilon x+3x^2-\frac{17}{3}x^3+O(x^4),
+  \label{eq:wf-two-loop-beta-x}
+  \\
+  \gamma_2(x)
+  &=
+  x-\frac56x^2+O(x^3),
+  \label{eq:wf-two-loop-gamma-two}
+  \\
+  \gamma_\phi(x)
+  &=
+  \frac{x^2}{12}+O(x^3).
+  \label{eq:wf-two-loop-gamma-phi-x}
+\end{align}
+The nonzero small-\(\epsilon\) zero is
+\begin{equation}
+  x_*
+  =
+  \frac{\epsilon}{3}
+  +\frac{17}{81}\epsilon^2
+  +O(\epsilon^3).
+  \label{eq:wf-two-loop-fixed-x}
+\end{equation}
+Consequently
+\begin{align}
+  \eta
+  &=
+  \frac{\epsilon^2}{54}+O(\epsilon^3),
+  \label{eq:wf-two-loop-eta}
+  \\
+  \Delta_\phi
+  &=
+  1-\frac{\epsilon}{2}
+  +\frac{\epsilon^2}{108}
+  +O(\epsilon^3),
+  \label{eq:wf-two-loop-delta-phi}
+  \\
+  \gamma_{2*}
+  &=
+  \frac{\epsilon}{3}
+  +\frac{19}{162}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:wf-two-loop-gamma-two-star}
+  \\
+  \Delta_{\phi^2}
+  &=
+  2-\frac{2}{3}\epsilon
+  +\frac{19}{162}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:wf-two-loop-delta-phi-two}
+  \\
+  y_t
+  &:=
+  D-\Delta_{\phi^2}
+  =
+  2-\frac{\epsilon}{3}
+  -\frac{19}{162}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:wf-two-loop-y-t}
+  \\
+  \nu
+  &:=
+  \frac1{y_t}
+  =
+  \frac12+\frac{\epsilon}{12}
+  +\frac{7}{162}\epsilon^2
+  +O(\epsilon^3),
+  \label{eq:wf-two-loop-nu}
+  \\
+  \omega
+  &:=
+  \left.\frac{\partial\beta_x^\epsilon}{\partial x}\right|_{x=x_*}
+  =
+  \epsilon-\frac{17}{27}\epsilon^2
+  +O(\epsilon^3).
+  \label{eq:wf-two-loop-omega}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+First derive the beta function from the pole map, rather than quoting it.  If
+\[
+  \frac{g_0}{16\pi^2}
+  =
+  \mu^\epsilon
+  \left[
+    x+\frac{A x^2}{\epsilon}
+    +x^3\left(\frac{A^2}{\epsilon^2}
+      +\frac{C}{\epsilon}\right)
+    +O(x^4)
+  \right],
+\]
+then differentiating at fixed \(g_0\) gives
+\[
+  0
+  =
+  \epsilon F(x,\epsilon)+\beta_x^\epsilon(x)\,\partial_xF(x,\epsilon),
+  \qquad
+  F(x,\epsilon)
+  =
+  x+\frac{A x^2}{\epsilon}
+  +x^3\left(\frac{A^2}{\epsilon^2}
+    +\frac{C}{\epsilon}\right).
+\]
+Writing
+\(\beta_x^\epsilon=-\epsilon x+\beta_1x^2+\beta_2x^3+O(x^4)\) and comparing
+powers of \(x\), the \(x^2\) term gives \(\beta_1=A\).  The \(1/\epsilon\)
+part of the \(x^3\) equation cancels because the double pole is \(A^2\), and
+the finite part gives \(\beta_2=2C\).  In
+\eqref{eq:wf-two-loop-coupling-pole-map}, \(A=3\) and \(C=-17/6\), proving
+\eqref{eq:wf-two-loop-beta-x}.
+
+For a source factor whose logarithm is
+\[
+  \log Z(x,\epsilon)=\frac{\ell_1(x)}{\epsilon}+\hbox{higher poles},
+\]
+the finite anomalous dimension is obtained from
+\(\beta_x^\epsilon\partial_x\log Z\).  The pole equations make the higher-pole
+contribution cancel the divergent pieces; the finite part is
+\[
+  -x\,\ell_1'(x)
+\]
+for a source renormalization and
+\[
+  -\frac12x\,\ell_1'(x)
+\]
+for the field factor, because
+\(\phi_0=(Z_\phi^{\rm MS})^{1/2}\phi_{\rm MS}\).  Applying this to
+\(\ell_1^{(2)}(x)=-x+5x^2/12\) gives
+\eqref{eq:wf-two-loop-gamma-two}, while
+\(\ell_1^\phi(x)=-x^2/12\) gives
+\eqref{eq:wf-two-loop-gamma-phi-x}.
+
+To solve for the fixed point, put
+\[
+  x_*=a\epsilon+b\epsilon^2+O(\epsilon^3).
+\]
+Substitution into
+\eqref{eq:wf-two-loop-beta-x} gives
+\[
+  0=(-a+3a^2)\epsilon^2
+   +\left(-b+6ab-\frac{17}{3}a^3\right)\epsilon^3
+   +O(\epsilon^4).
+\]
+The nonzero branch has \(a=1/3\), and then the \(\epsilon^3\) equation gives
+\(b=17/81\), proving \eqref{eq:wf-two-loop-fixed-x}.
+
+Equations \eqref{eq:wf-two-loop-eta}--\eqref{eq:wf-two-loop-delta-phi-two}
+are direct substitutions of \(x_*\) into
+\eqref{eq:wf-two-loop-gamma-phi-x} and
+\eqref{eq:wf-two-loop-gamma-two}.  The thermal exponent is
+\[
+  y_t=(4-\epsilon)-\Delta_{\phi^2},
+\]
+and the expansion of its reciprocal gives
+\[
+  \frac{1}{2-\epsilon/3-19\epsilon^2/162}
+  =
+  \frac12+\frac{\epsilon}{12}+\frac{7\epsilon^2}{162}
+  +O(\epsilon^3).
+\]
+Finally,
+\[
+  \partial_x\beta_x^\epsilon
+  =
+  -\epsilon+6x-17x^2+O(x^3),
+\]
+and substituting \(x_*\) gives
+\[
+  -\epsilon+6\left(\frac{\epsilon}{3}
+    +\frac{17}{81}\epsilon^2\right)
+  -17\left(\frac{\epsilon}{3}\right)^2
+  =
+  \epsilon-\frac{17}{27}\epsilon^2+O(\epsilon^3).
+\]
+\end{proof}
+
 \section{Critical Surface and the Mass Exponent}
 
 The mass perturbation is the deformation generated by the renormalized
@@ -703,11 +970,16 @@ Using the result above,
   =
   (4-\epsilon)
   -
-  \left(2-\frac{2}{3}\epsilon\right)
+  \left(
+    2-\frac{2}{3}\epsilon
+    +\frac{19}{162}\epsilon^2
+  \right)
   +
-  O(\epsilon^2)
+  O(\epsilon^3)
   =
-  2-\frac{\epsilon}{3}+O(\epsilon^2).
+  2-\frac{\epsilon}{3}
+  -\frac{19}{162}\epsilon^2
+  +O(\epsilon^3).
 \]
 This identification uses the fact that the thermal source is already a
 linearized scaling coordinate in the \(\mathbb Z_2\)-even scalar sector at the
@@ -725,9 +997,10 @@ diagonalizing possible operator mixing.  In the one-component scalar theory at
 this order, the even scalar sector containing the mass deformation has a single
 relevant nontrivial basis element, represented by \([O_2]_\mu=[\phi^2]_\mu\).
 The identity source is the vacuum-energy coordinate and \(\phi^4\) is the
-quartic direction, whose fixed-point eigenvalue is irrelevant at
-\(O(\epsilon)\).  Hence the thermal block is one-dimensional and its eigenvalue
-is \(D-\Delta_{\phi^2}\).  In a theory with another even scalar of the same
+quartic direction, whose fixed-point eigenvalue is the positive irrelevant
+exponent \(\omega=\epsilon-\frac{17}{27}\epsilon^2+O(\epsilon^3)\).  Hence the
+thermal block is one-dimensional and its eigenvalue is \(D-\Delta_{\phi^2}\).
+In a theory with another even scalar of the same
 quantum numbers and degenerate dimension, \(t\) would have to be replaced by
 the corresponding eigen-coordinate of \(M^A{}_B\), and the formula above would
 refer to that eigenvalue rather than to a chosen basis operator.
@@ -764,7 +1037,9 @@ is present.  Its fixed-point eigenvalue is
   =
   D-\Delta_\phi
   =
-  3-\frac{\epsilon}{2}+O(\epsilon^2),
+  3-\frac{\epsilon}{2}
+  -\frac{\epsilon^2}{108}
+  +O(\epsilon^3),
 \]
 so \(h\) is also relevant.  The statement that the massless critical surface
 has one relevant tuning condition is therefore a statement about the
@@ -791,7 +1066,9 @@ Therefore the correlation-length exponent in this perturbative calculation is
 \[
   \nu=\frac1{y_t}
   =
-  \frac12+\frac{\epsilon}{12}+O(\epsilon^2).
+  \frac12+\frac{\epsilon}{12}
+  +\frac{7}{162}\epsilon^2
+  +O(\epsilon^3).
 \]
 The proportionality constant in \(\xi^{-1}\) depends on the normalization of
 the thermal scaling field \(\tau\); the exponent does not.
@@ -1027,7 +1304,7 @@ A small source perturbation obeys the linearized RG equation
 \]
 Therefore
 \[
-  \gamma_{4*}
+  \omega
   =
   \left.
   \frac{\partial\beta^\epsilon(\lambda)}{\partial\lambda}
@@ -1035,11 +1312,15 @@ Therefore
   =
   \left.
   \left(
-    -\epsilon+\frac{3\lambda}{8\pi^2}+O(\lambda^2,\epsilon\lambda)
+    -\epsilon+\frac{3\lambda}{8\pi^2}
+    -\frac{17\lambda^2}{(16\pi^2)^2}
+    +O(\lambda^3)
   \right)
-  \right|_{\lambda=\frac{16\pi^2}{3}\epsilon+O(\epsilon^2)}
+  \right|_{\lambda=16\pi^2
+    \left(\frac{\epsilon}{3}+\frac{17}{81}\epsilon^2\right)
+    +O(\epsilon^3)}
   =
-  \epsilon+O(\epsilon^2),
+  \epsilon-\frac{17}{27}\epsilon^2+O(\epsilon^3),
 \]
 which is positive.  This positivity is the same statement as infrared
 attractiveness of the quartic direction when the flow is followed toward
@@ -1048,9 +1329,9 @@ The scaling dimension is therefore
 \[
   \Delta_{\phi^4}
   =
-  4-\epsilon+\gamma_{4*}
+  D+\omega
   =
-  4+O(\epsilon^2)
+  4-\frac{17}{27}\epsilon^2+O(\epsilon^3)
   >
   D.
 \]
@@ -1086,7 +1367,7 @@ that the quartic interaction was needed to produce that fixed point.
       \draw[red!75!black, thick] (0,1.58)--(0,1.2);
       \node[red!75!black, above] at (0,1.84) {\(\delta g_4\)};
       \node[blue!70!black, align=center] at (0,-0.55)
-        {\(\gamma_{4*}=(\beta^\epsilon)'(\lambda_*)=\epsilon+\cdots\)\\
+        {\(\omega=(\beta^\epsilon)'(\lambda_*)=\epsilon-\frac{17}{27}\epsilon^2+\cdots\)\\
          \(\Delta_{\phi^4}>D\)};
     \end{scope}
   \end{tikzpicture}
@@ -1110,9 +1391,11 @@ not to an unrenormalized fourth power of the spin field.
     & \Delta_\phi & \Delta_{\phi^2} & \Delta_{O_{\rm irr}} \\
     \hline
     d=4-\epsilon
-      & 1-\frac{\epsilon}{2}+O(\epsilon^2)
-      & 2-\frac{2}{3}\epsilon+O(\epsilon^2)
-      & 4+O(\epsilon^2) \\
+      & 1-\frac{\epsilon}{2}
+        +\frac{\epsilon^2}{108}+O(\epsilon^3)
+      & 2-\frac{2}{3}\epsilon
+        +\frac{19}{162}\epsilon^2+O(\epsilon^3)
+      & 4-\frac{17}{27}\epsilon^2+O(\epsilon^3) \\
     d=3
       & 0.518148806(24)
       & 1.41262528(29)
@@ -1125,8 +1408,9 @@ not to an unrenormalized fourth power of the spin field.
 \]
 The first row is the perturbative epsilon expansion.  The \(d=3\) and \(d=2\)
 rows are data about the corresponding fixed points themselves; they are not
-deduced by substituting \(\epsilon=1\) or \(\epsilon=2\) into the first-order
-series.  In the \(d=3\) row the fixed-point fields are conventionally denoted
+deduced by substituting \(\epsilon=1\) or \(\epsilon=2\) into the finite
+truncation displayed in the first row.  In the \(d=3\) row the fixed-point
+fields are conventionally denoted
 \(\sigma,\varepsilon,\varepsilon'\): \(\phi,\phi^2,\phi^4\) are the Landau
 representatives of the corresponding scaling directions, not definitions by
 unrenormalized powers at the fixed point.  The displayed numerical values are
