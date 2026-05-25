@@ -727,6 +727,486 @@ of the full form factor; the part of the cut above \(s_{\rm inel}\), zeros of
 input.  What Watson's theorem fixes without such additional input is precisely
 the elastic-cut phase relation \eqref{eq:watson-boundary-relation}.
 
+\section{Eikonal Small-Angle Scattering and Regge Singularities}
+\label{sec:eikonal-regge-small-angle}
+
+The Froissart--Martin argument uses partial waves to bound the total amount of
+probability that can be carried by large angular momenta.  There is a second,
+more differential high-energy limit of the same partial-wave representation.
+It keeps the momentum transfer fixed while \(s\to\infty\), so that the
+scattering angle tends to zero and the angular momentum becomes a transverse
+impact parameter.  This limit is the natural setting for eikonal
+exponentiation and for the Regge description of fixed-\(t\) high-energy
+scattering.
+
+We formulate the small-angle limit first for an ordered distinguishable
+amplitude.  The identical-particle amplitude in
+\eqref{eq:identical-partial-wave-conversion} is obtained by adding the crossed
+backward contribution; in the forward high-energy region the ordered direct
+amplitude is the local object whose partial waves become impact-parameter
+waves.  With the same \(S_\ell=1+2\ii\beta a_\ell\) convention as above,
+\[
+  \mathcal M_{\rm ord}(s,x)
+  =
+  -8\pi\ii\,\beta(s)^{-1}
+  \sum_{\ell=0}^{\infty}(2\ell+1)
+  \bigl(S_\ell(s)-1\bigr)P_\ell(x).
+\]
+Let
+\[
+  p=\frac12\sqrt{s-4m^2},
+  \qquad
+  q=\sqrt{-t}=2p\sin\frac{\theta}{2},
+  \qquad
+  b=\frac{\ell+\frac12}{p}.
+\]
+The high-energy small-angle scaling is
+\[
+  s\to\infty,\qquad q\ \hbox{fixed},\qquad \ell\to\infty,
+  \qquad b=\frac{\ell+\frac12}{p}\ \hbox{fixed}.
+\]
+In this scaling,
+\[
+  P_\ell(\cos\theta)
+  =
+  J_0(bq)+O(p^{-1})
+\]
+uniformly on compact \(bq\)-intervals; this is the Mehler--Heine limit of the
+Legendre polynomials.  If the elastic partial-wave matrix elements have a
+weak Riemann-sum limit
+\[
+  S_\ell(s)\longrightarrow S(s,b)
+\]
+against smooth compactly supported test functions of \(b\), then the
+partial-wave sum becomes
+\begin{equation}
+  \mathcal M_{\rm ord}(s,-q^2)
+  =
+  2\ii s\int_{\mathbb R^2}\dd^2b\,
+  \ee^{\ii q\cdot b}\,
+  \Gamma(s,b)
+  +o(s),
+  \qquad
+  \Gamma(s,b)=1-S(s,b).
+  \label{eq:eikonal-impact-parameter-amplitude}
+\end{equation}
+Indeed,
+\[
+  \sum_\ell(2\ell+1)F\!\left(\frac{\ell+\frac12}{p}\right)
+  =
+  2p^2\int_0^\infty b\,\dd b\,F(b)+o(p^2),
+\]
+and
+\[
+  2\pi\int_0^\infty b\,\dd b\,J_0(bq)F(b)
+  =
+  \int_{\mathbb R^2}\dd^2b\,\ee^{\ii q\cdot b}F(b).
+\]
+Since \(4p^2=s-4m^2\), the coefficient in
+\eqref{eq:eikonal-impact-parameter-amplitude} is \(2\ii s\) at leading
+order.  The formula is therefore not a new normalization of the \(S\)-matrix:
+it is the continuum large-\(\ell\) form of the partial-wave normalization
+already fixed above.
+
+At fixed \(b\), unitarity of the partial-wave channel gives
+\[
+  |S(s,b)|\le1
+\]
+in the same weak limiting sense.  Thus the profile
+\(\Gamma=1-S\) obeys
+\begin{equation}
+  2\operatorname{Re}\Gamma(s,b)
+  =
+  |\Gamma(s,b)|^2+\bigl(1-|S(s,b)|^2\bigr).
+  \label{eq:impact-parameter-unitarity}
+\end{equation}
+Consequently the high-energy limits of the total, elastic, and inelastic
+cross sections are
+\begin{equation}
+  \sigma_{\rm tot}(s)
+  =
+  2\int\dd^2b\,\operatorname{Re}\Gamma(s,b),
+  \qquad
+  \sigma_{\rm el}(s)
+  =
+  \int\dd^2b\,|\Gamma(s,b)|^2,
+  \label{eq:impact-parameter-total-elastic}
+\end{equation}
+and
+\[
+  \sigma_{\rm inel}(s)
+  =
+  \int\dd^2b\,\bigl(1-|S(s,b)|^2\bigr).
+\]
+The identity \eqref{eq:impact-parameter-unitarity} is the continuum version of
+partial-wave probability conservation.  The limiting profile is often
+parametrized by an eikonal phase
+\[
+  S(s,b)=\exp\{\ii\chi(s,b)\},
+  \qquad
+  \operatorname{Im}\chi(s,b)\ge0,
+\]
+so that
+\begin{equation}
+  \mathcal M_{\rm eik}(s,-q^2)
+  =
+  2\ii s\int\dd^2b\,
+  \ee^{\ii q\cdot b}
+  \left(1-\ee^{\ii\chi(s,b)}\right).
+  \label{eq:eikonal-phase-amplitude}
+\end{equation}
+The condition \(\operatorname{Im}\chi\ge0\) is precisely the statement
+\(|S|\le1\).  A purely real \(\chi\) describes elastic phase shift without
+absorption; a positive imaginary part describes loss of probability into
+inelastic channels at the same impact parameter.
+
+The first term in the eikonal phase is fixed by the Born amplitude.  Expanding
+\eqref{eq:eikonal-phase-amplitude} to first order gives
+\[
+  \mathcal M_{\rm Born}(s,-q^2)
+  =
+  2s\int\dd^2b\,\ee^{\ii q\cdot b}\chi_1(s,b),
+\]
+hence
+\begin{equation}
+  \chi_1(s,b)
+  =
+  \frac{1}{2s}
+  \int\frac{\dd^2Q}{(2\pi)^2}\,
+  \ee^{-\ii Q\cdot b}\,
+  \mathcal M_{\rm Born}(s,-Q^2).
+  \label{eq:first-eikonal-phase-born-transform}
+\end{equation}
+For example, if a massive exchanged field of mass \(\mu\) gives
+\[
+  \mathcal M_{\rm Born}(s,-Q^2)
+  =
+  \frac{g_1g_2}{Q^2+\mu^2}
+\]
+in the high-energy normalization used here, then
+\[
+  \chi_1(s,b)
+  =
+  \frac{g_1g_2}{4\pi s}K_0(\mu b).
+\]
+For exchange of spin \(J\), the Born numerator may grow as \(s^J\), so the
+same Fourier formula gives \(\chi_1=O(s^{J-1})\) at fixed \(b\).  The
+eikonal representation is then a unitarization of the repeated exchange at
+fixed impact parameter, not a proof that the Born approximation remains small.
+
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.9,every node/.style={font=\small}]
+    \begin{scope}
+      \draw[->,line width=0.9pt] (-3.1,1.05)--(3.1,1.05);
+      \draw[->,line width=0.9pt] (-3.1,-1.05)--(3.1,-1.05);
+      \draw[red!70!black,line width=0.9pt] (-2.0,1.05)--(-1.25,-1.05);
+      \draw[red!70!black,line width=0.9pt] (-0.65,1.05)--(-0.10,-1.05);
+      \draw[red!70!black,line width=0.9pt] (0.55,1.05)--(1.05,-1.05);
+      \draw[blue!65!black,<->,line width=0.85pt] (-2.65,-1.05)--(-2.65,1.05);
+      \node[blue!65!black,anchor=east] at (-2.72,0) {\(b\)};
+      \node at (0,1.48) {fast line 1};
+      \node at (0,-1.48) {fast line 2};
+      \node[red!70!black] at (0,0) {exchanged quanta};
+    \end{scope}
+    \begin{scope}[xshift=7.25cm]
+      \draw[->,line width=0.9pt] (-1.45,0)--(1.45,0)
+        node[below] {\(q\)};
+      \fill[blue!10] (0,0) circle (1.05);
+      \draw[blue!65!black,line width=1.1pt] (0,0) circle (1.05);
+      \draw[red!70!black,line width=0.9pt] (0,0)--(0.75,0.75);
+      \node[red!70!black,anchor=west] at (0.55,0.62) {\(b\)};
+      \node[align=center] at (0,-1.55)
+        {\(S(b)=\exp(\ii\chi(b))\)};
+    \end{scope}
+    \node at (3.55,0) {\(\Longrightarrow\)};
+  \end{tikzpicture}
+  \caption{In the high-energy small-angle limit, the large angular momentum
+  label becomes an impact parameter \(b=(\ell+\frac12)/p\).  The sum of
+  ladder and crossed-ladder exchanges is encoded by the eikonal phase
+  \(\chi(s,b)\), while unitarity is the pointwise condition \(|S(s,b)|\le1\).}
+  \label{fig:eikonal-impact-parameter-exponentiation}
+\end{figure}
+
+\begin{proposition}[Eikonal exponentiation of repeated exchange]
+\label{prop:eikonal-exponentiation-repeated-exchange}
+Fix a perturbative regularization and consider two heavy or high-energy
+external particles whose momentum transfer remains transverse and finite as
+\(s\to\infty\).  Assume that, at each fixed order \(n\), the hard external
+propagators in the ladder and crossed-ladder graphs may be replaced by their
+eikonal denominators with an integrable remainder.  Let
+\(\chi_1(s,b)\) be the Born phase defined by
+\eqref{eq:first-eikonal-phase-born-transform}.  Then the leading contribution
+of all \(n\)-exchange ladder and crossed-ladder graphs to the ordered
+amplitude is
+\begin{equation}
+  \mathcal M_{\rm ladd}^{(n)}(s,-q^2)
+  =
+  2\ii s\int\dd^2b\,\ee^{\ii q\cdot b}\,
+  \left[-\frac{(\ii\chi_1(s,b))^n}{n!}\right]
+  +o(s)
+  \label{eq:nth-eikonal-ladder-term}
+\end{equation}
+in the high-energy small-angle scaling.  Summing over \(n\ge1\) gives
+\eqref{eq:eikonal-phase-amplitude} with \(\chi=\chi_1\) at leading eikonal
+order.
+\end{proposition}
+
+\begin{proof}
+The eikonal approximation is a statement about the singular part of a hard
+line after it absorbs momenta \(k_r\) whose transverse components are fixed
+and whose longitudinal components are small compared with the hard energy.
+For an on-shell scalar line with momentum \(p\), the regulated propagator
+after a partial momentum \(K\) has flowed through the line is
+\[
+  \frac{\ii}{(p+K)^2+m^2-\ii0}
+  =
+  \frac{\ii}{2p\cdot K+K^2-\ii0}.
+\]
+In the eikonal scaling \(K^2/(p\cdot K)\to0\) on the leading pinch surface, so
+the propagator is replaced by
+\[
+  \frac{\ii}{2p\cdot K-\ii0}.
+\]
+The numerator of a spinor or vector external line reduces at the same order to
+the matrix element of the charge or color generator transported along the
+classical line; spin-dependent corrections carry at least one additional
+power of the small momentum transfer divided by the hard energy.
+
+The sum over all ladder and crossed-ladder orderings is exactly the
+perturbative expansion of two ordered exponentials along the two classical
+trajectories.  In an abelian scalar-exchange model this statement is literal:
+the hard-line factor is
+\[
+  \exp\!\left\{\ii g_1\int_{-\infty}^{\infty}\dd\tau\,
+  \varphi(b_1+v_1\tau)\right\}
+  \exp\!\left\{\ii g_2\int_{-\infty}^{\infty}\dd\tau\,
+  \varphi(b_2+v_2\tau)\right\}.
+\]
+Contracting the exchanged field between the two lines gives the connected
+two-line cumulant
+\[
+  \ii\chi_1(s,b)
+  =
+  -g_1g_2
+  \int\dd\tau_1\dd\tau_2\,
+  D_F(b+v_1\tau_1-v_2\tau_2),
+\]
+with the same Feynman prescription as the original graphs.  Fourier
+transforming the transverse separation gives
+\eqref{eq:first-eikonal-phase-born-transform}.  Since the exchanged field is
+Gaussian at this order, the exponential cumulant formula gives the coefficient
+\((\ii\chi_1)^n/n!\).  The connected amplitude is proportional to
+\(1-\exp(\ii\chi_1)\), which supplies the sign in
+\eqref{eq:nth-eikonal-ladder-term}.
+
+For nonabelian gauge exchange the ordered exponentials are Wilson lines, and
+the exponent contains color matrices ordered along the hard trajectories.
+Only in a color channel where the Wilson-line product is diagonal does the
+result reduce to a scalar phase \(\chi\).  In general the impact-parameter
+\(S(s,b)\) is a matrix on the finite-dimensional internal channel space, and
+\eqref{eq:impact-parameter-unitarity} is replaced by the positive operator
+identity
+\[
+  (1-S)+(1-S)^\dagger
+  =
+  (1-S)^\dagger(1-S)+(1-S^\dagger S).
+\]
+\end{proof}
+
+Regge theory is a different organization of the same high-energy fixed-\(t\)
+regime.  It analytically continues angular momentum rather than taking the
+large-\(\ell\) continuum limit at fixed \(b\).  The continuation is not a
+consequence of the partial-wave expansion alone; it is an additional
+analyticity and growth hypothesis in the complex angular-momentum plane.
+
+To state the construction, use the crossed \(t\)-channel scattering angle
+\[
+  z_t=1+\frac{2s}{t-4m^2}.
+\]
+At fixed physical \(t<0\) and \(s\to+\infty\), one has
+\(-z_t\sim 2s/(4m^2-t)>0\).  Let \(a_\ell(t)\) be the \(t\)-channel
+partial-wave coefficient, normalized so that
+\[
+  \mathcal M_t(t,z_t)
+  =
+  16\pi\sum_{\ell=0}^{\infty}(2\ell+1)a_\ell(t)P_\ell(z_t)
+\]
+in the \(t\)-channel physical region.  The signature components are
+\[
+  \mathcal M_\tau(s,t)
+  =
+  \frac{1}{2}\bigl(\mathcal M(s,t)+\tau\,\mathcal M(u,t)\bigr),
+  \qquad
+  \tau=\pm1,\qquad u=4m^2-s-t .
+\]
+Assume that, for fixed \(t\) in a domain of interest, the signature-projected
+partial waves admit an analytic continuation \(a_\tau(J,t)\) from
+nonnegative integer \(J\) to a meromorphic function in a right half-plane, with
+sufficient decrease in vertical strips to justify the contour deformation
+below.  Let \(C\) be a counterclockwise contour encircling the nonnegative
+integers and no other singularities.  Then the Sommerfeld--Watson
+representation is
+\begin{equation}
+  \mathcal M_\tau(s,t)
+  =
+  8\pi
+  \int_C\frac{\dd J}{2\ii}\,
+  \frac{(2J+1)\bigl(1+\tau\ee^{-\ii\pi J}\bigr)
+  a_\tau(J,t)P_J(-z_t)}{\sin\pi J}.
+  \label{eq:sommerfeld-watson-signature}
+\end{equation}
+The normalization is fixed by residues at \(J=\ell\): since
+\[
+  P_\ell(-z_t)=(-1)^\ell P_\ell(z_t),
+  \qquad
+  \sin\pi J=\pi(-1)^\ell(J-\ell)+O((J-\ell)^2),
+\]
+the residue of \eqref{eq:sommerfeld-watson-signature} at \(J=\ell\) is
+\[
+  16\pi\,\frac{1+\tau(-1)^\ell}{2}\,
+  (2\ell+1)a_\ell(t)P_\ell(z_t).
+\]
+Thus \(\tau=+1\) keeps the even-spin part and \(\tau=-1\) keeps the odd-spin
+part.
+
+Suppose that \(a_\tau(J,t)\) has a simple Regge pole
+\[
+  a_\tau(J,t)
+  =
+  \frac{r_\tau(t)}{J-\alpha(t)}
+  +a_\tau^{\rm reg}(J,t),
+  \label{eq:regge-pole-partial-wave}
+\]
+and that the contour in \eqref{eq:sommerfeld-watson-signature} may be moved
+past this pole, with the remaining background contour lying to the left of
+\(\operatorname{Re}\alpha(t)\).  The pole contribution is then
+\begin{equation}
+  \mathcal M_\tau^{\rm pole}(s,t)
+  =
+  \eta_\tau(\alpha(t))\,\mathfrak r_\tau(t)\,
+  \left(\frac{s}{s_0(t)}\right)^{\alpha(t)}
+  \bigl(1+O(s^{-1})\bigr),
+  \label{eq:regge-pole-high-energy-asymptotic}
+\end{equation}
+where
+\[
+  \eta_\tau(\alpha)
+  =
+  \frac{1+\tau\ee^{-\ii\pi\alpha}}{\sin\pi\alpha}
+\]
+is the signature factor, \(s_0(t)\) is a positive kinematic scale such as
+\((4m^2-t)/2\), and the Regge residue
+\(\mathfrak r_\tau(t)\) includes \(8\pi(2\alpha+1)r_\tau(t)\) together with
+the leading large-\((-z_t)\) coefficient of \(P_\alpha(-z_t)\).  Explicitly,
+for fixed complex \(\alpha\) away from negative integers,
+\[
+  P_\alpha(Z)
+  =
+  \frac{\Gamma(2\alpha+1)}{\Gamma(\alpha+1)^2}\,
+  \left(\frac{Z}{2}\right)^\alpha
+  \left(1+O(Z^{-2})\right),
+  \qquad |Z|\to\infty
+\]
+in any sector avoiding the negative real axis, and the branch used in
+\eqref{eq:regge-pole-high-energy-asymptotic} is inherited from the
+first-sheet continuation of \(z_t\).
+
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.92,every node/.style={font=\small}]
+    \draw[->,line width=0.8pt] (-3.6,0)--(3.8,0)
+      node[below] {\(\operatorname{Re}J\)};
+    \draw[->,line width=0.8pt] (0,-2.3)--(0,2.35)
+      node[left] {\(\operatorname{Im}J\)};
+    \foreach \x in {0,1,2,3} {
+      \fill[black] (\x,0) circle (1.6pt);
+    }
+    \node[below] at (0,-0.12) {\(0\)};
+    \node[below] at (1,-0.12) {\(1\)};
+    \node[below] at (2,-0.12) {\(2\)};
+    \node[below] at (3,-0.12) {\(3\)};
+    \draw[purple!75!black,line width=0.95pt,->]
+      (-0.35,-1.85)--(-0.35,1.85);
+    \draw[purple!75!black,line width=0.95pt]
+      (-0.35,1.85).. controls (1.2,2.05) and (2.8,2.05)..(3.35,1.2);
+    \draw[purple!75!black,line width=0.95pt]
+      (3.35,1.2).. controls (3.8,0.2) and (3.8,-0.2)..(3.35,-1.2);
+    \draw[purple!75!black,line width=0.95pt]
+      (3.35,-1.2).. controls (2.8,-2.05) and (1.2,-2.05)..(-0.35,-1.85);
+    \node[purple!75!black] at (2.65,1.72) {\(C\)};
+    \fill[red!75!black] (1.42,0.78) circle (2.1pt);
+    \node[red!75!black,anchor=west] at (1.52,0.78) {\(J=\alpha(t)\)};
+    \draw[blue!65!black,dashed,line width=1.0pt,->] (2.9,-1.65)--(0.55,-1.65);
+    \draw[blue!65!black,dashed,line width=1.0pt] (0.55,-1.65)--(0.55,1.65);
+    \node[blue!65!black,align=center] at (-1.65,1.55)
+      {deformed\\background contour};
+    \draw[red!75!black,->,line width=0.85pt] (1.25,0.55)..controls
+      (0.95,0.25)..(0.6,-0.15);
+    \node[red!75!black,align=center] at (1.82,-0.75)
+      {pole residue\\\(\sim s^{\alpha(t)}\)};
+  \end{tikzpicture}
+  \caption{The Sommerfeld--Watson contour converts the integer-spin
+  partial-wave sum into a complex-\(J\) integral.  Deforming the contour
+  past a Regge pole \(J=\alpha(t)\) produces the fixed-\(t\) high-energy
+  power \(s^{\alpha(t)}\), while the displaced contour gives the remaining
+  background.}
+  \label{fig:regge-pole-contour}
+\end{figure}
+
+The pole has a particle interpretation when its trajectory passes through an
+allowed integer spin.  If
+\[
+  \alpha(M_n^2)=n,\qquad \tau=(-1)^n,\qquad \alpha'(M_n^2)\ne0,
+\]
+then the signature factor in
+\eqref{eq:regge-pole-high-energy-asymptotic} has the same pole as
+\((\alpha(t)-n)^{-1}\), and the Regge contribution contains
+\[
+  \frac{{\rm const.}}{n-\alpha(t)}
+  =
+  \frac{{\rm const.}}{-\alpha'(M_n^2)(t-M_n^2)}
+  +\hbox{regular terms}.
+\]
+This is the usual spin-\(n\) exchanged-particle pole in the crossed channel.
+The Regge trajectory is therefore a statement about analytic organization of
+a family of exchanged singularities, not an independent replacement for the
+spectral condition or for LSZ.
+
+The leading even-signature vacuum singularity is called the Pomeron.  In a
+pure pole model with
+\[
+  \alpha_P(0)>1,
+\]
+the forward optical theorem would give
+\[
+  \sigma_{\rm tot}(s)\sim s^{\alpha_P(0)-1}
+\]
+up to phases and logarithms.  Such a single uncompensated pole cannot be the
+complete asymptotic answer in a massive theory satisfying the
+Froissart--Martin hypotheses.  Eikonalization gives the mechanism by which a
+growing exchange may be compatible with impact-parameter unitarity.  If the
+leading eikonal phase has large-\(b\) behavior
+\[
+  \chi_1(s,b)\sim C\,s^{\Delta}\ee^{-\mu b},
+  \qquad \Delta>0,\quad \mu>0,
+\]
+then the region where \(|\chi_1|\gtrsim1\) has radius
+\[
+  R(s)\sim\frac{\Delta}{\mu}\log s .
+\]
+After the eikonal exponential has saturated \(|S(b)|\le1\) inside this
+region, the total cross section grows like an area,
+\[
+  \sigma_{\rm tot}(s)\lesssim 2\pi R(s)^2
+  =
+  O(\log^2s).
+\]
+The precise coefficient requires the same analyticity and nearest-singularity
+input as the Froissart--Martin theorem; the eikonal estimate explains the
+impact-parameter dynamics behind saturation but does not replace the
+axiomatic bound.
+
 \section{The Froissart--Martin Mechanism}
 
 Define the positive total weight

@@ -17,7 +17,11 @@ power statement must be separated as a conditional Gegenbauer/angular-tube
 generalization, not inferred from the displayed \(D=4\) Lehmann ellipse.
 The chapter must also derive Watson's theorem for elastic form factors in the
 same partial-wave normalization before using phase information in dispersion
-relations.
+relations.  It must also include the high-energy small-angle development that
+uses the same partial-wave normalization: the impact-parameter limit, eikonal
+unitarity, exponentiation of leading ladder and crossed-ladder exchange under
+explicit eikonal hypotheses, and the Sommerfeld--Watson/Regge-pole
+organization of fixed-\(t\) high-energy amplitudes.
 
 The chapter must not present these statements as slogans. It must state the
 hypotheses:
@@ -82,6 +86,27 @@ hypotheses:
 - \(\delta_A(s)\): elastic phase shift defined by
   \(S_A(s)=e^{2i\delta_A(s)}\).
 - \(\Omega_A(s)\): Omnes function with boundary phase \(\delta_A(s)\).
+- \(q=\sqrt{-t}\): transverse momentum transfer in the small-angle
+  high-energy limit.
+- \(b=(\ell+\frac12)/p\): impact parameter associated with large angular
+  momentum \(\ell\), where \(p=\frac12\sqrt{s-4m^2}\).
+- \(S(s,b)\): impact-parameter elastic \(S\)-matrix envelope obtained as the
+  weak large-\(\ell\) limit of \(S_\ell(s)\).
+- \(\Gamma(s,b)=1-S(s,b)\): impact-parameter profile function.
+- \(\chi(s,b)\): eikonal phase, with \(\operatorname{Im}\chi\ge0\) encoding
+  \(|S|\le1\) when \(S=\exp(i\chi)\).
+- \(\chi_1(s,b)\): leading Born eikonal phase, the two-dimensional Fourier
+  transform of \(\mathcal M_{\rm Born}/(2s)\).
+- \(z_t=1+2s/(t-4m^2)\): crossed \(t\)-channel angular variable used in the
+  Sommerfeld--Watson representation.
+- \(\tau=\pm1\): Regge signature, projecting even or odd angular momentum.
+- \(a_\tau(J,t)\): signature-projected partial wave analytically continued to
+  complex angular momentum \(J\).
+- \(\alpha(t)\): Regge trajectory, the location of a complex-\(J\) pole.
+- \(r_\tau(t)\), \(\mathfrak r_\tau(t)\): partial-wave and high-energy Regge
+  residues.
+- \(\eta_\tau(\alpha)=(1+\tau e^{-i\pi\alpha})/\sin\pi\alpha\): Regge
+  signature factor.
 
 ## Claim Ledger
 
@@ -156,6 +181,50 @@ hypotheses:
 18. The Omnes representation requires additional analyticity, zero/pole, and
     growth hypotheses beyond Watson's theorem.  Watson fixes the elastic-cut
     boundary phase; it does not determine the full form factor by itself.
+19. In the high-energy small-angle limit, the ordered partial-wave expansion
+    has the impact-parameter form
+    \[
+      \mathcal M_{\rm ord}(s,-q^2)
+      =
+      2is\int d^2b\,e^{iq\cdot b}\Gamma(s,b)+o(s),
+      \qquad \Gamma=1-S,
+    \]
+    where \(S(s,b)\) is the weak large-\(\ell\) envelope of \(S_\ell(s)\).
+20. Impact-parameter unitarity is the pointwise identity
+    \(2\operatorname{Re}\Gamma=|\Gamma|^2+1-|S|^2\), giving
+    \(\sigma_{\rm tot}=2\int d^2b\,\operatorname{Re}\Gamma\),
+    \(\sigma_{\rm el}=\int d^2b\,|\Gamma|^2\), and
+    \(\sigma_{\rm inel}=\int d^2b(1-|S|^2)\) at leading high energy.
+21. If \(S=\exp(i\chi)\), the leading eikonal phase is fixed by the Born
+    amplitude:
+    \[
+      \chi_1(s,b)=\frac1{2s}\int\frac{d^2Q}{(2\pi)^2}
+      e^{-iQ\cdot b}\mathcal M_{\rm Born}(s,-Q^2).
+    \]
+22. Under the stated eikonal-propagator and integrable-remainder hypotheses,
+    the sum of \(n\)-rung ladder and crossed-ladder graphs gives
+    \(2is\int d^2b\,e^{iq\cdot b}[-(i\chi_1)^n/n!]\), hence the exponent
+    \(1-e^{i\chi_1}\).
+23. Regge theory requires an additional complex-angular-momentum hypothesis:
+    the signature partial waves \(a_\tau(J,t)\) must be meromorphic with
+    sufficient vertical-strip decrease.  The Sommerfeld--Watson contour then
+    reproduces the integer-spin partial-wave sum by residues.
+24. A simple Regge pole \(a_\tau(J,t)=r_\tau(t)/(J-\alpha(t))+\cdots\)
+    contributes
+    \[
+      \mathcal M_\tau^{\rm pole}(s,t)
+      =
+      \eta_\tau(\alpha(t))\mathfrak r_\tau(t)
+      (s/s_0(t))^{\alpha(t)}(1+O(s^{-1})).
+    \]
+    If \(\alpha(M_n^2)=n\) with the correct signature, the same pole gives
+    the usual spin-\(n\) exchanged-particle pole in the crossed channel.
+25. A single uncompensated Pomeron pole with \(\alpha_P(0)>1\) cannot be the
+    full asymptotic answer under the massive Froissart--Martin hypotheses.
+    Eikonal saturation of a phase behaving as \(s^\Delta e^{-\mu b}\) gives a
+    radius \(R(s)\sim(\Delta/\mu)\log s\), explaining how area growth becomes
+    compatible with a \(\log^2s\) bound once the analyticity hypotheses are
+    also imposed.
 
 ## Figure Requirements
 
@@ -168,6 +237,11 @@ hypotheses:
   \(\sigma_{\mathrm{tot}}\asymp R_{\mathrm{eff}}^{D-2}\), explicitly marked
   as a restatement of the conditional higher-dimensional bound rather than an
   additional assumption.
+- Eikonal impact-parameter schematic showing fast lines, exchanged quanta,
+  \(b=(\ell+\frac12)/p\), and \(S(b)=e^{i\chi(b)}\).
+- Complex-\(J\) Sommerfeld--Watson/Regge schematic showing integer-spin
+  poles, deformed contour, Regge pole \(J=\alpha(t)\), and the resulting
+  \(s^{\alpha(t)}\) contribution.
 
 ## Audit Notes
 
@@ -218,3 +292,11 @@ hypotheses:
   two-pion vector and scalar examples, gives the coupled-channel matrix
   replacement, and separates the Omnes construction from Watson's theorem by
   listing the extra analyticity, zero/pole, and growth inputs.
+- 2026-05-25 issue #457 pass: added the high-energy small-angle section.  It
+  derives the impact-parameter representation from the large-\(\ell\)
+  partial-wave limit, states the exact impact-parameter unitarity identities,
+  defines the eikonal phase and its Born transform, proves leading ladder plus
+  crossed-ladder exponentiation through eikonal propagators/Wilson-line
+  ordering, and develops the Sommerfeld--Watson Regge-pole representation with
+  signature factors, particle-pole recovery, and the relation between Pomeron
+  growth, eikonal saturation, and Froissart behavior.
