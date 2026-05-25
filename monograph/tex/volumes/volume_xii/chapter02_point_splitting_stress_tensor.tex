@@ -66,6 +66,195 @@ The local tensor \(C_{\mu\nu}\) is the finite renormalization freedom.  It is
 chosen from locally covariant conserved curvature tensors, together with
 terms proportional to \(m^2\) and \(m^4\) as allowed by dimension.
 
+\section{Worked Flat-Space Computation}
+
+We now compute a simple case explicitly.  Let
+\((M,\eta)\) be four-dimensional Minkowski spacetime with
+\(\eta={\rm diag}(-1,1,1,1)\), and take the massless minimally coupled free
+scalar.  The vacuum two-point distribution is
+\[
+  W_0(x,x')
+  =
+  \lim_{\epsilon\downarrow0}
+  \frac{1}{4\pi^2}
+  \frac{1}{
+  |\mathbf x-\mathbf x'|^2-(t-t'-\ii\epsilon)^2}.
+\]
+In flat space the local Hadamard parametrix with the same \(i\epsilon\)
+prescription is \(H_0=W_0\).  Therefore the renormalized vacuum stress
+tensor obtained by point splitting is zero:
+\[
+  \langle T_{\mu\nu}\rangle_{0,{\rm ren}}
+  =
+  \lim_{x'\to x}
+  \mathcal D_{\mu\nu}(x,x')\bigl(W_0(x,x')-H_0(x,x')\bigr)
+  =
+  0 ,
+\]
+if the finite flat-space cosmological-constant counterterm is set to zero.
+This is not an additional Lorentz-invariance argument; it is the explicit
+subtraction of the state-independent short-distance singularity.
+
+For the thermal KMS state at inverse temperature \(\beta\) with respect to
+the inertial time \(t\), the difference from the vacuum two-point function is
+smooth:
+\[
+  \Delta W_\beta(x,x')
+  =
+  W_\beta(x,x')-W_0(x,x')
+\]
+\[
+  =
+  \int \frac{d^3k}{(2\pi)^3}\,
+  \frac{n_\beta(\omega)}{2\omega}
+  \left(
+  e^{-\ii\omega(t-t')+\ii\mathbf k\cdot(\mathbf x-\mathbf x')}
+  +
+  e^{+\ii\omega(t-t')-\ii\mathbf k\cdot(\mathbf x-\mathbf x')}
+  \right),
+  \qquad
+  \omega=|\mathbf k|,
+\]
+where \(n_\beta(\omega)=(e^{\beta\omega}-1)^{-1}\).  Since
+\(\Delta W_\beta\) is smooth, the point-split stress tensor is obtained by
+applying the polarized classical expression directly to this remainder.
+For the massless minimal tensor
+\[
+  T_{00}
+  =
+  \frac{1}{2}\bigl((\partial_t\phi)^2+|\nabla\phi|^2\bigr),
+\]
+the bidifferential operator is
+\[
+  \mathcal D_{00}
+  =
+  \frac{1}{2}\left(
+  \partial_t\partial_{t'}
+  +\sum_{i=1}^3\partial_i\partial_{i'}
+  \right).
+\]
+On either plane wave in \(\Delta W_\beta\),
+\[
+  \mathcal D_{00}
+  e^{-\ii\omega(t-t')+\ii\mathbf k\cdot(\mathbf x-\mathbf x')}
+  =
+  \omega^2
+  e^{-\ii\omega(t-t')+\ii\mathbf k\cdot(\mathbf x-\mathbf x')}.
+\]
+Taking the diagonal limit gives
+\[
+  \rho_\beta
+  =
+  \langle T_{00}\rangle_{\beta,{\rm ren}}
+  =
+  \int \frac{d^3k}{(2\pi)^3}\,\omega\,n_\beta(\omega)
+  =
+  \frac{1}{2\pi^2}\int_0^\infty
+  \frac{k^3\,dk}{e^{\beta k}-1}.
+\]
+The change of variables \(x=\beta k\) and the expansion
+\((e^x-1)^{-1}=\sum_{n\geq1}e^{-nx}\) give
+\[
+  \int_0^\infty \frac{x^3\,dx}{e^x-1}
+  =
+  \sum_{n\geq1}\int_0^\infty x^3e^{-nx}\,dx
+  =
+  6\sum_{n\geq1}\frac{1}{n^4}
+  =
+  \frac{\pi^4}{15}.
+\]
+Thus
+\[
+  \rho_\beta=\frac{\pi^2}{30\beta^4}.
+\]
+For the spatial components,
+\[
+  T_{ij}
+  =
+  \partial_i\phi\,\partial_j\phi
+  +\frac{1}{2}\delta_{ij}
+  \bigl((\partial_t\phi)^2-|\nabla\phi|^2\bigr),
+\]
+so
+\[
+  \mathcal D_{ij}
+  =
+  \partial_i\partial_{j'}
+  +\frac{1}{2}\delta_{ij}
+  \left(
+  \partial_t\partial_{t'}
+  -\sum_{\ell=1}^3\partial_\ell\partial_{\ell'}
+  \right).
+\]
+For massless modes the second term vanishes on shell because
+\(\omega^2=|\mathbf k|^2\).  Rotational invariance of the momentum integral
+gives
+\[
+  \int d\Omega\, k_i k_j=\frac{4\pi}{3}\delta_{ij}k^2,
+\]
+and therefore
+\[
+  \langle T_{ij}\rangle_{\beta,{\rm ren}}
+  =
+  \frac{1}{3}\rho_\beta\,\delta_{ij}.
+\]
+The point-split computation thus yields
+\[
+  \langle T_{\mu\nu}\rangle_{\beta,{\rm ren}}
+  =
+  \frac{\pi^2}{90\beta^4}
+  \begin{pmatrix}
+  3&0&0&0\\
+  0&1&0&0\\
+  0&0&1&0\\
+  0&0&0&1
+  \end{pmatrix}_{\mu\nu},
+\]
+in the inertial frame.  Its trace is
+\(-\rho_\beta+3p_\beta=0\), as required for the massless conformal equation
+of state in flat spacetime.
+
+\section{Constant-Curvature Diagnostic}
+
+A de Sitter-invariant Hadamard state of a free scalar has a stress-tensor
+expectation value constrained by symmetry to the form
+\[
+  \langle T_{\mu\nu}\rangle_{\rm dS}=C\,g_{\mu\nu}.
+\]
+For the massless conformally coupled real scalar in four dimensions, the
+state-dependent classical trace vanishes.  With the trace-anomaly convention
+of Chapter~\ref{ch:curved-trace-anomalies}, the real scalar has
+\(a=1/360\), \(c=1/120\), and
+\[
+  \langle T^\mu{}_\mu\rangle
+  =
+  \frac{1}{16\pi^2}\left(cW_{\mu\nu\rho\sigma}W^{\mu\nu\rho\sigma}
+  -aE_4+b\Box R\right).
+\]
+On four-dimensional de Sitter with Hubble parameter \(H\),
+\[
+  W_{\mu\nu\rho\sigma}=0,\qquad
+  \Box R=0,\qquad
+  R=12H^2,
+\]
+\[
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=24H^4,\quad
+  R_{\mu\nu}R^{\mu\nu}=36H^4,\quad
+  E_4=24H^4 .
+\]
+Consequently
+\[
+  4C=\langle T^\mu{}_\mu\rangle
+  =
+  -\frac{H^4}{240\pi^2},
+  \qquad
+  C=-\frac{H^4}{960\pi^2}.
+\]
+This calculation isolates the part fixed by local covariance, de Sitter
+invariance, and the anomaly normalization.  Massive fields, and schemes that
+allow additional dimension-four metric counterterms, shift \(C\) by finite
+local terms; the point-splitting prescription must state that choice.
+
 \section{Conservation and Trace}
 
 \begin{definition}[Conserved stress tensor]

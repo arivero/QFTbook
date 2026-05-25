@@ -153,6 +153,12 @@ Current checks:
   weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the
   \(c_0=6\) length-two value \(h=3/8\), and the real
   \(\mathbb Z_2\) reflection twist value \(h=1/16\).
+- `point_splitting_stress_checks.py`: finite checks for the point-split
+  stress-tensor examples, including the Bose integral
+  \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat thermal scalar
+  energy density and traceless equation of state, the massless plane-wave
+  eigenvalues of the displayed bidifferential operators, and the de Sitter
+  constant-curvature anomaly specialization for a conformal real scalar.
 - `schwinger_model_checks.py`: finite sign and normalization checks for the
   Schwinger-model chapter, including the two-dimensional current-duality
   convention, the algebraic elimination of the electric field, the
