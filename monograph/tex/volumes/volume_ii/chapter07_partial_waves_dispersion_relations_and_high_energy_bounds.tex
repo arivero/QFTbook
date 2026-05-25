@@ -1821,17 +1821,67 @@ of \(s\) and \(\ell\).  The total cross section has the high-energy form
 where \(C_D'\) records the normalization convention and the
 \((1+O(m^2/s))\) phase-space factor.
 
-The angular-tube estimate gives exponential suppression
-\(\ee^{-\ell\eta_*(s)}\) of the partial-wave coefficients up to powers of
-\(\ell\).  Compatibility with the polynomial bound \(s^N\) at the
-nonphysical point therefore permits order-one partial waves only up to
+The angular-tube estimate gives exponential suppression of partial-wave
+coefficients up to powers of \(\ell\).  More explicitly, after changing the
+constants to match the optical-theorem normalization, the physical absorptive
+weights obey a bound of the form
 \[
-  L(s)=C\sqrt{s}\log s
+  w_\ell(s)
+  \le
+  B\min\{1,\,s^N(1+\ell)^q\ee^{-\ell\eta_*(s)}\},
+  \label{eq:higher-d-froissart-min-bound}
 \]
-for a sufficiently large constant \(C\).  The remaining tail is absorbed into
-the polynomial bound by the exponential decay.  Hence
+where the first entry is unitarity and the second entry is the Cauchy estimate
+in Hypothesis~\ref{hyp:higher-dimensional-angular-tube}.  Put
 \[
-  \sum_{\ell\le L(s)}g_\ell^{(D)}
+  \eta=\eta_*(s),\qquad
+  L(s)=\alpha\,\eta^{-1}\log s ,
+\]
+with \(\alpha\) larger than \(N+(D-2+q)/2\).  Since
+\(\eta_*(s)=2\sqrt{t_*/s}+O(s^{-3/2})\), this is the same scale as
+\(C\sqrt{s}\log s\).  The contribution below \(L\) is controlled only by
+unitarity:
+\[
+  \sum_{\ell\le L(s)}g_\ell^{(D)}w_\ell(s)
+  \le
+  C
+  \sum_{\ell\le L(s)}(1+\ell)^{D-3}
+  =
+  O(L(s)^{D-2}).
+\]
+For the tail, set \(r=D-3+q\).  The same two estimates give
+\[
+  \sum_{\ell>L(s)}g_\ell^{(D)}w_\ell(s)
+  \le
+  C\,s^N
+  \sum_{\ell>L(s)}(1+\ell)^r\ee^{-\ell\eta}.
+\]
+For large \(s\), \(L(s)\eta=\alpha\log s\) and
+\(\eta\to0\).  Splitting the sum into unit intervals, or equivalently using a
+geometric comparison after observing that
+\((1+\ell+1)^r\ee^{-(\ell+1)\eta}/((1+\ell)^r\ee^{-\ell\eta})
+\le \ee^{-\eta/2}\) for \(\ell\ge L(s)\), gives
+\[
+  \sum_{\ell>L(s)}(1+\ell)^r\ee^{-\ell\eta}
+  \le
+  C_r\,(1+L(s))^r\,\ee^{-L(s)\eta}\,(1-\ee^{-\eta})^{-1}.
+\]
+Thus
+\[
+  \sum_{\ell>L(s)}g_\ell^{(D)}w_\ell(s)
+  \le
+  C\,s^{N-\alpha}\,
+  \eta^{-(r+1)}(\log s)^r
+  =
+  O\!\left(
+    s^{N-\alpha+(D-2+q)/2}(\log s)^{D-3+q}
+  \right).
+\]
+The choice of \(\alpha\) makes this tail \(O(1)\), hence subordinate to the
+leading angular count.  Combining the low-angular-momentum estimate with the
+tail estimate gives
+\[
+  \sum_{\ell\ge0}g_\ell^{(D)}w_\ell(s)
   =
   O(L(s)^{D-2}),
 \]
