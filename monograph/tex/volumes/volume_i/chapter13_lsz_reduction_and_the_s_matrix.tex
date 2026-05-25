@@ -57,9 +57,9 @@ The corresponding positive-energy mass shell is
   \{p=(\omega_{\vec p},\vec p):\vec p\in\mathbb R^d\}.
 \]
 The field normalization on this shell is recorded by the positive number
-\(Z\) defined by
+\(Z_\phi\) defined by
 \[
-  \bra{\vac}\widehat\phi(0)|\vec p\rangle=Z^{1/2}.
+  \bra{\vac}\widehat\phi(0)|\vec p\rangle=Z_\phi^{1/2}.
 \]
 Kernel notation such as
 \[
@@ -127,7 +127,7 @@ define the amputated external-residue distribution
 &\quad =
   \left[
   \prod_{a=1}^{m+n}
-  Z^{-1/2}\,\ii(k_a^2+m^2)
+  Z_\phi^{-1/2}\,\ii(k_a^2+m^2)
   \right]
   \widetilde G_{m+n}^{\rm conn}(k_1,\ldots,k_{m+n}).
 \end{aligned}
@@ -174,31 +174,31 @@ incoming and outgoing wave packets.
 The theorem compares two already constructed objects.  The left side is the
 Haag--Ruelle scattering matrix element.  The right side is obtained from
 time-ordered boundary-value distributions by connected truncation and
-external pole extraction.  The residue factor \(Z^{-1/2}\) is attached to the
+external pole extraction.  The residue factor \(Z_\phi^{-1/2}\) is attached to the
 chosen interpolating field \(\widehat\phi\); the resulting scattering matrix
 element is a Hilbert-space matrix element of \(S\) on the asymptotic Fock
 space.
 
 \section{The One-Particle Pole}
 
-The matrix element defining \(Z\) says that \(\widehat\phi\) is an interpolating
+The matrix element defining \(Z_\phi\) says that \(\widehat\phi\) is an interpolating
 scalar field for the particle species under consideration. With the
 normalization above, the K\"all\'en--Lehmann measure of \(\widehat\phi\)
 contains the atom
 \[
-  \dd\rho(s)=Z\,\delta(s-m^2)\,\dd s+\dd\rho_{\mathrm{cont}}(s).
+  \dd\rho(s)=Z_\phi\,\delta(s-m^2)\,\dd s+\dd\rho_{\mathrm{cont}}(s).
 \]
 Consequently the Fourier transform of the time-ordered two-point function has
 the pole
 \[
   \widetilde G_2(k)
   =
-  \frac{-\ii Z}{k^2+m^2-\ii0}
+  \frac{-\ii Z_\phi}{k^2+m^2-\ii0}
   +
   \widetilde G_{2,\mathrm{less}}(k),
 \]
 where \(\widetilde G_{2,\mathrm{less}}\) has no pole at the isolated
-one-particle mass shell. The number \(Z\) depends on the chosen local field.
+one-particle mass shell. The number \(Z_\phi\) depends on the chosen local field.
 The particle state and the \(S\)-operator are invariant data; changing the
 interpolating field changes the residue factor appearing in the reduction
 formula.
@@ -214,9 +214,9 @@ denominator.  For fixed \(\vec k\), the actual meromorphic variable is
 \]
 Consequently
 \[
-  \frac{-\ii Z}{k^2+m^2-\ii0}
+  \frac{-\ii Z_\phi}{k^2+m^2-\ii0}
   =
-  \frac{\ii Z}{2\omega_{\vec k}}
+  \frac{\ii Z_\phi}{2\omega_{\vec k}}
   \left[
     \frac{1}{k^0-\omega_{\vec k}+\ii0}
     -
@@ -224,22 +224,22 @@ Consequently
   \right].
 \]
 Thus the complex residues at the two linear \(k^0\)-poles are
-\(\ii Z/(2\omega_{\vec k})\) and \(-\ii Z/(2\omega_{\vec k})\), whereas
-\(-\ii Z\) is the coefficient of the invariant denominator
+\(\ii Z_\phi/(2\omega_{\vec k})\) and \(-\ii Z_\phi/(2\omega_{\vec k})\), whereas
+\(-\ii Z_\phi\) is the coefficient of the invariant denominator
 \(k^2+m^2-\ii0\).  LSZ uses the latter coefficient, together with the
 mass-shell measure, to match the Haag--Ruelle one-particle normalization.
 
 The operation
 \[
-  Z^{-1/2}\,\ii(k^2+m^2)
+  Z_\phi^{-1/2}\,\ii(k^2+m^2)
 \]
 removes an external one-particle propagator with the conventions of the
 Lorentzian Green-function chapter:
 \[
-  Z^{-1/2}\,\ii(k^2+m^2)\,
-  \frac{-\ii Z}{k^2+m^2-\ii0}
+  Z_\phi^{-1/2}\,\ii(k^2+m^2)\,
+  \frac{-\ii Z_\phi}{k^2+m^2-\ii0}
   \longrightarrow
-  Z^{1/2}
+  Z_\phi^{1/2}
 \]
 as a mass-shell boundary-value coefficient. Applying one such operation to
 every external field is the analytic core of LSZ reduction.
@@ -267,14 +267,14 @@ element above gives
 \[
   P_1\widehat\phi(f)\vac
   =
-  Z^{1/2}\int \dd\mu_m(\vec p)\,
+  Z_\phi^{1/2}\int \dd\mu_m(\vec p)\,
   f_-(\vec p)|\vec p\rangle.
 \]
 Equivalently, for another test function \(g\),
 \[
   \bra{\vac}\widehat\phi(f)P_1\widehat\phi(g)\ket{\vac}
   =
-  Z\int \dd\mu_m(\vec p)\,
+  Z_\phi\int \dd\mu_m(\vec p)\,
   f_+(\vec p)g_-(\vec p).
 \]
 This identity is the Hilbert-space origin of the pole in the two-point
@@ -384,14 +384,14 @@ precisely,
     (k^2+m^2)\widetilde G_2(k)
   \right]
   =
-  -\ii Z .
+  -\ii Z_\phi .
 \]
 The symbol \(\operatorname*{bv}_{\Sigma_m}\) denotes the Feynman mass-shell
 boundary value: one first regards the two-point function, for fixed \(\vec k\),
 as a boundary value of a meromorphic function of \(k^0\), then multiplies by
 the invariant denominator and restricts to the appropriate positive- or
 negative-energy shell selected by the external wave packet.
-Multiplication by \(Z^{-1/2}\ii(k^2+m^2)\) is meaningful after smearing in a
+Multiplication by \(Z_\phi^{-1/2}\ii(k^2+m^2)\) is meaningful after smearing in a
 neighborhood of the mass shell and taking the boundary value.  It removes
 only the external pole associated with the chosen stable particle.  Internal
 propagators, threshold singularities, bound-state poles in other channels,
@@ -437,11 +437,12 @@ Second, the local field used in the reduction is an interpolating field.  Let
 \[
   \bra{\vac}\widehat\phi'(0)|\vec p\rangle
   =
-  a\,Z^{1/2},
+  a\,Z_\phi^{1/2},
   \qquad a\ne0,
 \]
 on the same isolated one-particle subspace.  Its two-point function has
-one-particle residue \(Z'=|a|^2Z\).  The LSZ factors \(Z'^{-1/2}\) remove the
+one-particle residue \(Z_{\phi'}=|a|^2Z_\phi\).  The LSZ factors
+\(Z_{\phi'}^{-1/2}\) remove the
 changed residue, and the resulting \(S\)-matrix element is the same.  Terms in
 \(\widehat\phi'\) whose vacuum-to-one-particle matrix elements vanish, such
 as equation-of-motion terms of the form \((\Box-m^2)\widehat\chi\) in these
@@ -510,22 +511,22 @@ For an outgoing external variable the conjugate calculation selects
   k^0=\omega_{\vec k}-\ii0 .
 \]
 If the full Feynman two-point singularity
-\(-\ii Z/(k^2+m^2-\ii0)\) is used instead of the bare denominator in the
-displayed integral, the extra factor \(-\ii Z\) combines with the residue above
-to give the mass-shell measure and the external factor \(Z^{1/2}\).  The LSZ
-operator \(Z^{-1/2}\ii(k^2+m^2)\) is the distributional way of extracting this
+\(-\ii Z_\phi/(k^2+m^2-\ii0)\) is used instead of the bare denominator in the
+displayed integral, the extra factor \(-\ii Z_\phi\) combines with the residue above
+to give the mass-shell measure and the external factor \(Z_\phi^{1/2}\).  The LSZ
+operator \(Z_\phi^{-1/2}\ii(k^2+m^2)\) is the distributional way of extracting this
 same residue from every external leg at once.
 
 This also explains the identity term in the \(S\)-matrix.  A disconnected
 two-point factor
 \[
   (2\pi)^D\delta^{(D)}(k+k')\,
-  \frac{-\ii Z}{k^2+m^2-\ii0}
+  \frac{-\ii Z_\phi}{k^2+m^2-\ii0}
 \]
 has a simultaneous one-particle pole and gives, after the same limiting
 procedure,
 \[
-  Z\int\dd\mu_m(\vec p)\,f(\vec p)^*g(\vec p),
+  Z_\phi\int\dd\mu_m(\vec p)\,f(\vec p)^*g(\vec p),
 \]
 which is the one-particle inner product created by the chosen field.  In a
 multi-particle matrix element these two-point factors reproduce the free
@@ -709,7 +710,7 @@ factors attached to a nonrelativistic delta-function basis.
     \node[right] at (2.75,1.0) {$q_1$};
     \node[right] at (2.75,-1.0) {$q_2$};
   \end{scope}
-  \node at (3.45,0) {$\xrightarrow{\;\prod Z^{-1/2}\ii(k^2+m^2)\;}$};
+  \node at (3.45,0) {$\xrightarrow{\;\prod Z_\phi^{-1/2}\ii(k^2+m^2)\;}$};
   \begin{scope}[xshift=7.0cm]
     \draw[purple!80!black,very thick,->] (-1.65,0.8)--(-0.55,0.28);
     \draw[purple!80!black,very thick,->] (-1.65,-0.8)--(-0.55,-0.28);
@@ -807,7 +808,7 @@ with
 \[
   k_1=q_1,\quad k_2=q_2,\quad k_3=-p_1,\quad k_4=-p_2,
   \qquad
-  Z=1+O(g^2).
+  Z_\phi=1+O(g^2).
 \]
 The four numerator factors in the external propagators are
 \[
@@ -849,7 +850,7 @@ Therefore
 \]
 with the amplitude convention above. Higher orders are obtained from the
 same Green-function expansion together with the external residue factors
-\(Z^{-1/2}\).
+\(Z_\phi^{-1/2}\).
 
 \section{Scope of the Formula}
 

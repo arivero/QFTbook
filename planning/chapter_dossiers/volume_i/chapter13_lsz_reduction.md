@@ -31,7 +31,7 @@
 - Scattering operator \(S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}}\) on
   the asymptotic Fock space when the incoming and outgoing ranges coincide.
 - Relativistically normalized generalized momentum states.
-- Scalar local field \(\widehat\phi\) with one-particle residue \(Z>0\).
+- Scalar local field \(\widehat\phi\) with one-particle residue \(Z_\phi>0\).
 - Time-ordered Green functions as Lorentzian distributions.
 - All momentum-space kernel statements are distributional after wave-packet
   smearing.
@@ -47,7 +47,7 @@
 | \(\omega_{\vec p}\) | \(\sqrt{\vec p^{\,2}+m^2}\) |
 | \(\dd\mu_m\) | Lorentz-invariant mass-shell measure |
 | \(\Sigma_m^+\) | positive-energy mass shell |
-| \(Z\) | one-particle pole residue for \(\widehat\phi\) |
+| \(Z_\phi\) | one-particle pole residue for \(\widehat\phi\) |
 | \(F_{\rm in/out}\) | incoming/outgoing asymptotic Fock wave-packet vectors |
 | \(G_N\) | Lorentzian time-ordered \(N\)-point function |
 | \(\widetilde G_N\) | Fourier transform of \(G_N\) |
@@ -71,16 +71,16 @@
   matrix element with the external one-particle residue of
   \(\widetilde G^{\mathrm{conn}}_{m+n}\), after distributional smearing and
   boundary-value restriction to \(\Sigma_m^+\).
-- The two-point pole coefficient \(Z\) supplies the external wavefunction
-  factor.  In the Feynman two-point function, \(-iZ\) is the coefficient of
+- The two-point pole coefficient \(Z_\phi\) supplies the external wavefunction
+  factor.  In the Feynman two-point function, \(-iZ_\phi\) is the coefficient of
   \(k^2+m^2-i0\), whereas the complex \(k^0\)-plane residues at fixed
-  \(\vec k\) are \(iZ/(2\omega_{\vec k})\) and
-  \(-iZ/(2\omega_{\vec k})\).
+  \(\vec k\) are \(iZ_\phi/(2\omega_{\vec k})\) and
+  \(-iZ_\phi/(2\omega_{\vec k})\).
 - LSZ is a distributional theorem for wave-packet matrix elements.
 - Incoming physical momenta enter the Green function as \(-p_j\) in the
   all-momenta-incoming Fourier convention.
 - Connected scattering kernels are obtained by applying
-  \(Z^{-1/2}i(k^2+m^2)\) to every external leg and taking the on-shell
+  \(Z_\phi^{-1/2}i(k^2+m^2)\) to every external leg and taking the on-shell
   boundary value.
 - With \(x^0=-i\tau\), the Lorentzian source term
   \(i\int dx^0\,J_L\phi\) becomes \(+\int d\tau\,J_E\phi_E\) for
@@ -106,6 +106,9 @@
   the four external scalar propagator numerators \((-\ii)^4\) and four LSZ
   multipliers \(\ii^4\) multiply to one before the vertex factor is converted
   to the invariant amplitude.
+- 2026-05-24 issue #393 pass: standardized the one-particle residue in the
+  LSZ chapter as \(Z_\phi\).  The unsubscripted source-functional notation
+  \(Z[J]\), \(Z_-[J]\), and \(Z_E[J_E]\) remains separate.
 
 ## Figure Requirements
 
