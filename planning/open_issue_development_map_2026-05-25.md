@@ -96,7 +96,11 @@ comment identifying the manuscript location and verification performed.
   coupling, and \(D=3\) testbed checks.  Later Volume IX work may revisit
   gauge-string duality, but the issue request is now addressed at the core
   QCD level.
-- #504: large-\(N\), flux strings, and baryons.  Target: Volumes IV and IX.
+- #504: large-\(N\), flux strings, and baryons.  Core QCD-chapter development
+  completed 2026-05-25: monograph trace-normalized 't Hooft limit,
+  double-line topology, factorization, fixed-\(N_f\)/Veneziano boundaries,
+  baryon operators and large-\(N_c\) baryon scaling, QCD-string sectors, and
+  baryonic junction networks.
 - #522: lattice plaquette expansion order.  Target: Volume IV lattice chapter.
 - #524: lattice Yang--Mills sign convention.  Target: Volume IV lattice
   chapter and convention checks.

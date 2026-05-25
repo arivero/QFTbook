@@ -101,7 +101,11 @@ The chapter must define and derive:
   \(N_c^{V-E+F}=N_c^{2-2h-b}\), the explicit planar-versus-one-handle
   theta-graph \(N_c^{-2}\) suppression, single-trace factorization,
   fixed-\(N_f\) and Veneziano quark-boundary counting, and the leading
-  large-\(N_c\) scaling of meson, glueball, baryon, and vacuum amplitudes;
+  large-\(N_c\) scaling of meson, glueball, baryon, and vacuum amplitudes,
+  including baryon operator normalization, fixed-\(N_f\) order of limits,
+  Hartree pair-counting, spin-flavor symmetry of the color-antisymmetric
+  baryon operator, rotor splittings, and the boundary of the contracted
+  \(SU(2N_f)\) large-\(N_c\) interpretation;
 - the QCD-string flux-tube sector from rectangular Wilson-loop spectral data,
   including the static-source Hilbert-space expansion, the asymptotic string
   tension, \(N\)-ality and screening, the static-gauge effective worldsheet
@@ -212,7 +216,12 @@ The chapter must define and derive:
    quark loops are suppressed as additional boundaries, while Veneziano
    scaling restores their leading order.  Meson, glueball, and baryon scaling
    statements depend on separate spectral assumptions about the existence of
-   the corresponding color-singlet states.
+   the corresponding color-singlet states.  Large-\(N_c\) baryons are treated
+   in the fixed-\(N_f\) limit with color-antisymmetric \(SU(N_c)\) operators;
+   the Hartree pair-counting gives \(M_B=O(N_c)\), collective rotor splittings
+   give \(\Delta M=O(N_c^{-1})\) at fixed spin, and contracted spin-flavor
+   symmetry is used only under the stated low-energy and confinement
+   hypotheses.
 13. The QCD string is defined through line-operator/static-source sectors, not
     through perturbative colored fields.  Under the effective-string
     hypotheses that the only gapless worldsheet modes are the transverse
@@ -368,6 +377,13 @@ The chapter must define and derive:
   power comparison, single-trace factorization, fixed-\(N_f\) versus
   Veneziano quark-boundary counting, and
   `calculation-checks/large_n_topology_checks.py`.
+- 2026-05-25 issue #504 completion pass: expanded the large-\(N_c\) baryon
+  material from mass scaling to the actual baryon operator, fixed-\(N_f\)
+  order of limits, Hartree pair-counting, spin-flavor symmetry of the
+  color-antisymmetric baryon wavefunction, collective rotor splittings,
+  chiral-soliton compatibility, contracted \(SU(2N_f)\) status, and the
+  distinct Veneziano-limit caveat; extended
+  `calculation-checks/large_n_topology_checks.py` accordingly.
 - 2026-05-25 issue #492 pass: deepened the QCD-string section by deriving the
   open and closed Luscher terms from the free transverse worldsheet
   determinant, adding the Nambu--Goto reference expansion only as a reference

@@ -1546,16 +1546,70 @@ when all insertions lie on one quark boundary.  The canonically normalized
 meson source is therefore \(N_c^{-1/2}M_{IJ}\), and connected \(m\)-meson
 amplitudes scale as \(N_c^{1-m/2}\).  Glueball operators normalized to have
 order-one connected two-point functions have connected \(m\)-point couplings
-of order \(N_c^{2-m}\).  A baryon in an \(SU(N_c)\) theory is created by an
-operator with \(N_c\) fundamental quark fields contracted with
-\(\epsilon_{i_1\cdots i_{N_c}}\); its mass is naturally of order \(N_c\) when
-the energy per constituent remains order one.  The same order follows from
-the pair-counting estimate in a Hartree description: there are \(O(N_c)\)
-quark kinetic and one-body contributions, while \(O(N_c^2)\) quark pairs
-interact through a coupling of order \(g^2=O(N_c^{-1})\).  These statements
-are not substitutes for constructing the hadron spectrum; they are
-consequences of the color-index expansion once the relevant color-singlet
-states exist.
+of order \(N_c^{2-m}\).
+
+Baryons require a separate order of limits and a separate normalization.  In
+an \(SU(N_c)\) theory with \(N_f\) fundamental quark flavors, a local baryon
+operator has the schematic form
+\begin{equation}
+  B_{\mathcal A}(x)
+  =
+  \epsilon_{i_1\cdots i_{N_c}}\,
+  \mathcal A^{I_1\alpha_1,\ldots,I_{N_c}\alpha_{N_c}}\,
+  q^{i_1}_{I_1\alpha_1}(x)\cdots
+  q^{i_{N_c}}_{I_{N_c}\alpha_{N_c}}(x),
+  \label{eq:qcd-large-n-baryon-operator}
+\end{equation}
+where \(i_r\) are color indices, \(I_r\) are flavor indices,
+\(\alpha_r\) are spinor indices, and \(\mathcal A\) is a tensor selecting the
+spin-flavor channel.  The color tensor is totally antisymmetric.  Therefore,
+for baryons built from quarks in the same spatial orbital, the remaining
+spin-flavor wavefunction is symmetric under exchange of the \(N_c\) quarks.
+This is a kinematic consequence of Fermi statistics and the
+\(\epsilon\)-contraction, not a dynamical theorem about the spectrum.
+
+Take the large-\(N_c\) limit with \(N_f\) fixed, quark masses fixed in
+\(N_c\)-independent units, and the spatial volume sent to infinity in the
+usual order needed to define particle states.  If a baryon state created by
+\eqref{eq:qcd-large-n-baryon-operator} exists and has a Hartree description in
+which each quark moves in an \(N_c\)-independent mean field, then its leading
+mass is \(O(N_c)\).  Indeed there are \(N_c\) one-body contributions, while
+the two-body estimate gives
+\[
+  \binom{N_c}{2}\,g^2
+  =
+  \frac{N_c(N_c-1)}2\,\frac{\lambda}{N_c}
+  =
+  \frac{\lambda}{2}(N_c-1),
+  \label{eq:qcd-large-n-baryon-pair-counting}
+\]
+which is also \(O(N_c)\) at fixed \(\lambda\).  The Hartree statement is a
+controlled large-\(N_c\) organization only after the existence of such
+color-singlet baryon states has been assumed or established in a regulator.
+It is not a derivation of baryons from the continuum Yang--Mills path integral.
+
+Spin and flavor splittings are subleading in the same limit.  If the baryon is
+described at low energy by a slowly rotating spin-flavor collective coordinate
+with moment of inertia \(I_{\rm rot}=O(N_c)\), then the rotor contribution has
+the form
+\[
+  \Delta M_J
+  =
+  \frac{J(J+1)}{2I_{\rm rot}},
+  \label{eq:qcd-large-n-baryon-rotor-splitting}
+\]
+so fixed-spin splittings are \(O(N_c^{-1})\).  In theories with chiral
+symmetry breaking, the same scaling is compatible with a soliton description
+in the mesonic effective theory: \(F_\pi^2=O(N_c)\), meson interactions are
+suppressed by powers of \(N_c^{-1/2}\), and a soliton mass built from the
+mesonic action is \(O(N_c)\).  The spin-flavor multiplet structure often
+called contracted \(SU(2N_f)\) is the algebraic form of the large-\(N_c\)
+consistency conditions on baryon matrix elements, for example on pion-baryon
+scattering.  In this monograph it is used only with the displayed hypotheses:
+fixed \(N_f\), a confining theory with baryon states, and a low-energy regime
+where the collective-coordinate description is valid.  In the Veneziano limit
+with \(N_f/N_c\) fixed, the spin-flavor representation theory and baryon
+entropy grow differently and must be analyzed as a distinct limit.
 
 The expansion also gives the perturbative origin of the string language used
 in the next section.  Ribbon graphs are organized by the genus of an oriented

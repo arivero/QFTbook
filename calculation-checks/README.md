@@ -89,7 +89,8 @@ Current checks:
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph
   \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
-  versus Veneziano quark-boundary counting.
+  versus Veneziano quark-boundary counting, plus the displayed baryon Hartree
+  pair-counting and fixed-spin rotor \(1/N_c\) scaling.
 - `qcd_string_luscher_checks.py`: exact rational checks for the QCD-string
   effective-string section, including the open and closed transverse-scalar
   Casimir coefficients \(-1/24\) and \(-1/6\), the displayed

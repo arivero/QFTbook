@@ -125,12 +125,46 @@ def check_single_trace_and_quark_boundary_scaling() -> None:
         )
 
 
+def check_baryon_large_n_scaling() -> None:
+    # In the Hartree estimate, N quarks give N one-body terms while
+    # N(N-1)/2 pairs interact through g^2 = lambda/N.  We check the exact
+    # coefficient multiplying lambda after division by N.
+    for n_colors in range(2, 15):
+        pair_coefficient = Fraction(n_colors * (n_colors - 1), 2 * n_colors)
+        assert_equal(
+            f"baryon pair coefficient N={n_colors}",
+            pair_coefficient,
+            Fraction(n_colors - 1, 2),
+        )
+
+        pair_per_color = pair_coefficient / n_colors
+        assert_equal(
+            f"baryon pair term per color N={n_colors}",
+            pair_per_color,
+            Fraction(n_colors - 1, 2 * n_colors),
+        )
+
+    # A collective rotor with I_rot proportional to N gives fixed-spin
+    # splittings proportional to 1/N.  The ratio between N and 2N is exactly 2
+    # at fixed J when I_rot doubles.
+    spin_factor = Fraction(3, 1) * Fraction(4, 1) / 2
+    for n_colors in range(2, 10):
+        splitting_n = spin_factor / n_colors
+        splitting_2n = spin_factor / (2 * n_colors)
+        assert_equal(
+            f"baryon rotor fixed-spin 1/N scaling N={n_colors}",
+            splitting_n / splitting_2n,
+            Fraction(2, 1),
+        )
+
+
 def main() -> None:
     for n in range(2, 7):
         check_trace_normalization(n)
         check_su_completeness(n)
     check_theta_graph_suppression()
     check_single_trace_and_quark_boundary_scaling()
+    check_baryon_large_n_scaling()
     print("All large-N color-topology checks passed.")
 
 
