@@ -67,6 +67,24 @@ The chapter must define and derive:
   \(t_R^a\), and the matter covariant derivative;
 - invariant Hermitian pairings on compact-group representations and the
   resulting gauge-invariant contractions for scalar and Dirac matter;
+- finite-energy gauge-Higgs sectors for adjoint scalar fields, including the
+  vacuum orbit \(\mathcal O_v\), stabilizer \(H\), and the boundary map
+  \(S^2_\infty\to G/H\);
+- the homotopy classification \(\pi_2(G/H)\simeq\pi_1(H)\) when \(G\) is
+  simply connected, with \(SU(2)\to U(1)\) as the basic monopole sector;
+- the trace-form Bogomolny completion, the magnetic central charge
+  \(\Gamma_{\mathrm m}=(4\pi)^{-1}\int_{S^2_\infty}\operatorname{tr}(\Phi B)\),
+  and the \(SU(2)\) BPS lower bound after fixing a primitive magnetic
+  cocharacter;
+- the hedgehog ansatz for the unit 't Hooft--Polyakov/Prasad--Sommerfield
+  monopole, the radial BPS ODEs, and the explicit
+  \(K(\rho)=\rho/\sinh\rho\), \(H(\rho)=\coth\rho-\rho^{-1}\) solution;
+- the distinction between topologically stable monopoles and vortices versus
+  unstable sphaleron saddle points;
+- the Abelian-Higgs Nielsen--Olesen vortex energy, BPS flux bound, and
+  first-order vortex equations;
+- the spatial Chern--Simons functional used to locate the electroweak
+  sphaleron between neighboring vacua;
 - fundamental, anti-fundamental, and complexified adjoint representations of
   \(SU(N)\);
 - QCD quark indices \(i,I,\alpha\), fermion kinetic term, Hermitian mass
@@ -97,12 +115,27 @@ The chapter must define and derive:
 9. In \(D=4\), the \(\theta\)-density is local and gauge invariant; as a total
    derivative it enters perturbatively only through global/topological sectors.
 10. Matter fields carry representations of \(G\), and their covariant
-   derivative transforms in the same representation.
-11. QCD uses the fundamental and anti-fundamental representations for quarks
+    derivative transforms in the same representation.
+11. Finite-energy gauge-Higgs boundary conditions turn spatial infinity into
+    a sphere mapped to the vacuum orbit \(G/H\); the resulting homotopy class
+    labels classical magnetic sectors before quantization.
+12. In the BPS limit of an adjoint \(SU(2)\) gauge-Higgs theory, completing the
+    square gives a trace-form energy bound by the surface charge
+    \(\Gamma_{\mathrm m}\); the integer formula requires fixing the primitive
+    magnetic cocharacter and is not a generator-normalization-free statement.
+13. The Prasad--Sommerfield profile solves the radial Bogomolny ODEs and
+    provides a smooth nonabelian core for the unit 't Hooft--Polyakov
+    monopole.
+14. Nielsen--Olesen vortices arise from the same finite-energy logic in
+    codimension two, with flux quantization and a first-order BPS system at
+    critical coupling.
+15. The sphaleron is an unstable finite-energy saddle classified by its
+    position relative to Chern--Simons number, not a stable particle.
+16. QCD uses the fundamental and anti-fundamental representations for quarks
     and antiquarks; the complexified adjoint representation describes
     adjoint-valued fields, with real adjoint fields selected by a reality
     condition.
-12. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
+17. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
    matrices into a complex flavor matrix.
 
 ## Figure Requirements
@@ -113,6 +146,11 @@ The chapter must define and derive:
   invariant trace, and the Yang-Mills action.
 - \(SU(N)\) representation diagram/table: fundamental, anti-fundamental,
   adjoint, and QCD quark indices.
+- Finite-energy boundary map diagram \(S^2_\infty\to G/H\), showing the
+  relation between asymptotic Higgs data, transition functions, and magnetic
+  sectors.
+- Bogomolny square-completion diagram showing the nonnegative square, surface
+  flux, and trace-form BPS energy bound.
 - Chiral mass decomposition diagram relating \(m,\widetilde m\) to \(M\).
 
 ## Audit Notes
@@ -150,3 +188,11 @@ The chapter must define and derive:
 - 2026-05-24 issue #263 pass: linked the status remark to the new lattice
   Yang--Mills chapter, where the finite-cutoff compact Haar formulation and
   continuum-limit hypothesis are developed before covariant gauge fixing.
+- 2026-05-25 issue #471 pass: added finite-energy gauge-Higgs solitons to the
+  classical Yang--Mills chapter rather than the current axiomatic Volume IV,
+  because the repository's volume map has moved since the issue was opened.
+  The new section treats the 't Hooft--Polyakov monopole through the
+  finite-energy boundary map, the \(\pi_2(G/H)\) classification, the
+  trace-form Bogomolny bound, the explicit Prasad--Sommerfield solution,
+  Nielsen--Olesen vortices, sphalerons, and the quantization caveat for
+  collective coordinates and semiclassical sectors.
