@@ -107,6 +107,14 @@ The chapter must define:
   field/source coordinate normalizations, and infrared safety.
 - the distinction between formal perturbative series, asymptotic expansions,
   convergent series, and Borel summability.
+- the definition of Gevrey-one formal series, directional Borel transform, and
+  Borel--Laplace sum, with Watson's lemma proved in the chapter.
+- the zero-dimensional stable quartic integral as a worked large-order
+  example, including its exact coefficients and hypergeometric Borel
+  transform.
+- the finite-dimensional holomorphic Lefschetz-thimble setup: cycle,
+  holomorphic Morse action, upward/downward thimbles, thimble decomposition,
+  saddle expansion, and Stokes jumps.
 - the renormalon diagnostic as an observable- and scheme-dependent
   Borel-plane obstruction tied to momentum regions and running couplings.
 
@@ -216,6 +224,14 @@ The chapter must define:
     over infrared or ultraviolet momentum regions can produce factorial growth
     and Borel singularities; positive-ray ambiguities require matching to
     nonperturbative or effective-field-theory data.
+19. Borel summation is a Borel--Laplace theorem with hypotheses: Gevrey-one
+    growth, analytic continuation of the Borel transform in a named direction,
+    exponential growth bounds, and absence of singularities on the integration
+    ray.  Watson's lemma supplies the asymptotic expansion of the resulting
+    directional sum.
+20. Lefschetz-thimble analysis is a finite-dimensional relative-homology
+    statement for holomorphic Morse integrals.  Its QFT use is regulator-level
+    unless an infinite-dimensional or continuum-limit theorem is supplied.
 
 ## Figure Requirements
 
@@ -272,6 +288,12 @@ The chapter must define:
 - 2026-05-24 issue pass: addressed #223 by adding a cautious renormalon
   discussion that avoids universal claims about all perturbative series and
   ties ambiguities to specified observables and matching data.
+- 2026-05-25 issue #503 pass: replaced the compressed Borel paragraph by
+  Definitions `def:gevrey-one-directional-borel-sum` and
+  `def:lefschetz-thimble-data`, Theorems `thm:watson-borel-laplace` and
+  `thm:finite-dimensional-thimble-decomposition`, Example
+  `ex:zero-dimensional-quartic-large-order`, and calculation check
+  `calculation-checks/borel_laplace_checks.py`.
 - 2026-05-24 issue pass: addressed #224 by stating the standard
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from

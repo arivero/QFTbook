@@ -31,6 +31,12 @@ Current checks:
   and the conversion between the common half-trace action
   \(8\pi^2/g_{\rm ht}^2\) and the monograph trace-delta coupling
   \(4\pi^2/g_{\rm YM}^2\).
+- `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
+  zero-dimensional quartic large-order section, including Gaussian moments,
+  perturbative coefficients, the ratio
+  \(a_{n+1}/((n+1)a_n)\to-2/3\), and the corresponding Borel-radius
+  normalization, together with the hypergeometric Borel-transform
+  coefficient identity.
 - `center_polyakov_checks.py`: finite center-phase checks for the thermal
   center-symmetry and Polyakov-loop section, including temporal-plaquette
   phase cancellation, Polyakov-loop \(N\)-ality, neutral pair correlators,

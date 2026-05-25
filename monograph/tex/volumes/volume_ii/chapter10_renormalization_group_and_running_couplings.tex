@@ -1537,32 +1537,316 @@ This argument is not a theorem about every renormalized quantity in every QFT;
 it is a reason not to identify perturbation theory with a convergent
 definition unless convergence or summability has actually been proved.
 
-One possible reconstruction mechanism is Borel summation.  Given
+One possible reconstruction mechanism is Borel--Laplace summation.  It is a
+theorem about a formal series together with analytic continuation and growth
+data for its Borel transform.  The hypotheses are part of the statement.
+
+\begin{definition}[Gevrey-one series and directional Borel sum]
+\label{def:gevrey-one-directional-borel-sum}
+Let
 \[
-  A_{\rm formal}(g)=\sum_{n\ge0}a_n g^n,
+  \widehat A(g)=\sum_{n\ge0}a_n g^n
 \]
-its Borel transform is
+be a formal power series.  It is \emph{Gevrey-one} if there are constants
+\(C,M>0\) such that
 \[
-  \mathcal B A(t)=\sum_{n\ge0}\frac{a_n}{n!}t^n.
+  |a_n|\le C\,M^n n!
+  \qquad(n\ge0).
 \]
-If this series has a nonzero convergence radius, admits analytic continuation
-along the positive real \(t\)-axis, has suitable growth bounds, and has no
-obstructing singularities on the integration ray, one may define
+Its formal Borel transform is
 \[
-  A_{\rm Borel}(g)
+  \mathcal B\widehat A(\xi)
   =
-  \frac1g\int_0^\infty \dd t\,
-  \ee^{-t/g}\,\mathcal B A(t),
-  \qquad \Re g>0 .
+  \sum_{n\ge0}\frac{a_n}{n!}\xi^n .
+  \label{eq:formal-borel-transform}
 \]
-Then \(A_{\rm Borel}\) has the original formal series as an asymptotic
-expansion.  Borel summability is therefore an additional analytic theorem, not
-a consequence of having Feynman rules.  For particular stable
-superrenormalizable Euclidean scalar models, Borel summability of suitable
-Schwinger functions has been proved by constructive methods.  In general
-renormalized four-dimensional theories, gauge theories, and massless problems,
-summability must be studied with the ultraviolet, infrared, and scheme data
-specified.
+Fix a direction \(\theta\in\mathbb R/2\pi\mathbb Z\).  The direction is
+admissible for \(\widehat A\) if the series
+\(\mathcal B\widehat A\) converges near \(\xi=0\), continues holomorphically
+to a sector
+\[
+  \Sigma_{\theta,\eta}
+  =
+  \{\xi\ne0:\ |\arg\xi-\theta|<\eta\}
+\]
+for some \(\eta>0\), and obeys an exponential bound
+\[
+  |\mathcal B\widehat A(\xi)|
+  \le C_\eta \exp(|\xi|/R_\eta)
+  \qquad(\xi\in\Sigma_{\theta,\eta})
+  \label{eq:borel-exponential-bound}
+\]
+for some \(C_\eta,R_\eta>0\).  For \(g\) satisfying
+\[
+  |\arg g-\theta|<\frac\pi2-\delta,
+  \qquad
+  |g|<R_\eta\cos\delta
+\]
+with \(0<\delta<\pi/2\), the directional Borel sum is
+\[
+  \mathcal S_\theta \widehat A(g)
+  =
+  \frac1g\int_0^{\ee^{i\theta}\infty}
+  \ee^{-\xi/g}\,\mathcal B\widehat A(\xi)\,\dd\xi ,
+  \label{eq:directional-borel-sum}
+\]
+where the ray is oriented from \(0\) to infinity.
+\end{definition}
+
+\begin{theorem}[Watson lemma for the Borel--Laplace transform]
+\label{thm:watson-borel-laplace}
+Under the hypotheses of Definition~\ref{def:gevrey-one-directional-borel-sum},
+\(\mathcal S_\theta\widehat A(g)\) is holomorphic in the indicated sector of
+the \(g\)-plane and has \(\widehat A(g)\) as its asymptotic expansion there:
+for every \(N\ge0\) and every closed subsector strictly inside the domain,
+\[
+  \mathcal S_\theta\widehat A(g)
+  -
+  \sum_{n=0}^N a_n g^n
+  =
+  O(g^{N+1}).
+  \label{eq:borel-watson-remainder}
+\]
+\end{theorem}
+
+\begin{proof}
+Rotate the integration variable so that the Borel ray is the positive real
+axis; the general case is the same after replacing \(g\) by
+\(\ee^{-i\theta}g\).  The exponential bound
+\eqref{eq:borel-exponential-bound} gives absolute convergence of
+\eqref{eq:directional-borel-sum} on each closed subsector with
+\(\Re(1/g)>1/R_\eta+\epsilon\).  Holomorphy follows by dominated convergence
+applied to compact subsets of that domain.
+
+Choose \(\rho>0\) inside the convergence disk of the Borel transform.  For
+\(|\xi|\le\rho\),
+\[
+  \mathcal B\widehat A(\xi)
+  =
+  \sum_{n=0}^N\frac{a_n}{n!}\xi^n+\xi^{N+1}R_N(\xi)
+\]
+with \(R_N\) bounded on \(|\xi|\le\rho\).  The polynomial terms give exactly
+\[
+  \frac1g\int_0^\infty \ee^{-\xi/g}\frac{\xi^n}{n!}\,\dd\xi
+  =
+  g^n
+\]
+when \(\Re g>0\), and by the same rotated-ray computation in a sector.  The
+small-\(\xi\) remainder is bounded by a constant times
+\[
+  \frac1{|g|}\int_0^\rho
+  \ee^{-c\xi/|g|}\xi^{N+1}\,\dd\xi
+  =
+  O(|g|^{N+1})
+\]
+on each closed subsector, where \(c>0\) is the lower bound for
+\(\Re(\xi/g)/(|\xi|/|g|)\).  The tail integral from \(\rho\) to infinity is
+bounded by \(C\exp(-c'\rho/|g|)\) for some \(c'>0\), hence is
+\(O(|g|^{N+1})\) for every fixed \(N\).  This proves
+\eqref{eq:borel-watson-remainder}.
+\end{proof}
+
+\begin{example}[Zero-dimensional stable quartic integral]
+\label{ex:zero-dimensional-quartic-large-order}
+The normalized integral
+\[
+  I(g)
+  =
+  \frac1{\sqrt{2\pi}}
+  \int_{\mathbb R}
+  \exp\left(-\frac{x^2}{2}-\frac{g x^4}{4!}\right)\,\dd x
+  \qquad(\Re g>0)
+  \label{eq:zero-dimensional-quartic-integral}
+\]
+is a finite-dimensional model of the distinction between coefficientwise
+perturbation theory and analytic reconstruction.  Termwise expansion at
+\(g=0\) gives
+\[
+  I(g)\sim\sum_{n\ge0}a_n g^n,
+  \qquad
+  a_n
+  =
+  (-1)^n\frac{(4n)!}{n!\,96^n(2n)!}.
+  \label{eq:zero-dimensional-quartic-coefficients}
+\]
+Indeed
+\[
+  \frac1{\sqrt{2\pi}}\int_{\mathbb R}x^{4n}\ee^{-x^2/2}\,\dd x
+  =
+  (4n-1)!!
+  =
+  \frac{(4n)!}{2^{2n}(2n)!},
+\]
+and the extra factor is \((-1)^n/(n!(4!)^n)\).  Stirling's formula gives
+\[
+  \frac{a_{n+1}}{(n+1)a_n}\longrightarrow -\frac23 ,
+  \label{eq:zero-dimensional-quartic-ratio}
+\]
+so the perturbative series has zero radius of convergence.  Dividing by
+\(n!\) gives the Borel series
+\[
+  \mathcal B I(\xi)
+  =
+  \sum_{n\ge0}\frac{a_n}{n!}\xi^n
+  =
+  {}_2F_1\left(\frac14,\frac34;1;-\frac{2\xi}{3}\right)
+  \label{eq:zero-dimensional-quartic-borel-hypergeometric}
+\]
+near the origin.  The hypergeometric function has its first finite singularity
+at argument \(1\), hence at \(\xi=-3/2\) in this normalization.  Along the
+positive \(g\)-axis the integral is nevertheless well-defined and its
+perturbative series is a candidate for ordinary Borel summation.  The
+opposite sign of \(g\) makes the integral unstable on the real contour; the
+same analytic formula must then be understood only after choosing a complex
+cycle.
+\end{example}
+
+The preceding example is the finite-dimensional form of Dyson's warning:
+analytic continuation in a coupling can change the convergence of the
+integration cycle and the physical stability of the problem.  The correct
+mathematical object is therefore not only a formal series but a pair consisting
+of a formal expansion and a choice of analytic sector or integration cycle.
+This is the point of the Lefschetz-thimble formulation.
+
+\begin{definition}[Holomorphic oscillatory integral and thimbles]
+\label{def:lefschetz-thimble-data}
+Let \(X\) be a complex \(n\)-manifold with holomorphic volume form \(\Omega\),
+let \(S:X\to\mathbb C\) be a holomorphic Morse function, and let
+\(\Gamma\) be a real \(n\)-cycle on which
+\[
+  I_\Gamma(g)=\int_\Gamma \ee^{-S(z)/g}a(z)\,\Omega
+  \label{eq:holomorphic-oscillatory-integral}
+\]
+converges for \(g=|g|\ee^{i\theta}\).  Here \(a\) is holomorphic, or more
+generally has controlled analytic growth compatible with the convergence of
+the integral.  Set
+\[
+  h_\theta(z)=\operatorname{Re}\bigl(\ee^{-i\theta}S(z)\bigr),
+  \qquad
+  \varphi_\theta(z)=\operatorname{Im}\bigl(\ee^{-i\theta}S(z)\bigr).
+\]
+For a critical point \(p_\sigma\), its upward thimble
+\(\mathcal J_\sigma^\theta\) is the real \(n\)-manifold obtained by flowing
+out of \(p_\sigma\) along the gradient flow of \(h_\theta\), so that
+\(h_\theta\to+\infty\) at the ends.  Its dual downward thimble
+\(\mathcal K_\sigma^\theta\) is defined with the opposite flow.  Along either
+flow,
+\[
+  \frac{\dd h_\theta}{\dd t}
+  =
+  \|\partial(\ee^{-i\theta}S)\|^2,
+  \qquad
+  \frac{\dd\varphi_\theta}{\dd t}=0
+  \label{eq:thimble-flow-monotonicity}
+\]
+for the upward convention.  Thus the phase of the exponential is constant on
+each thimble.
+\end{definition}
+
+\begin{theorem}[Finite-dimensional thimble decomposition]
+\label{thm:finite-dimensional-thimble-decomposition}
+Assume that \(h_\theta\) is proper on the relative cycle problem defined by
+\eqref{eq:holomorphic-oscillatory-integral}, that all critical values
+\(\ee^{-i\theta}S(p_\sigma)\) have distinct imaginary parts, and that the
+flows have no escape at finite flow time.  Then the relative homology class of
+\(\Gamma\) decomposes as
+\[
+  [\Gamma]
+  =
+  \sum_\sigma n_\sigma(\theta)
+  [\mathcal J_\sigma^\theta],
+  \qquad
+  n_\sigma(\theta)=\langle \Gamma,\mathcal K_\sigma^\theta\rangle\in\mathbb Z,
+  \label{eq:thimble-homology-decomposition}
+\]
+and
+\[
+  I_\Gamma(g)
+  =
+  \sum_\sigma n_\sigma(\theta)
+  I_\sigma(g),
+  \qquad
+  I_\sigma(g)=
+  \int_{\mathcal J_\sigma^\theta}
+  \ee^{-S(z)/g}a(z)\,\Omega .
+  \label{eq:thimble-integral-decomposition}
+\]
+Near \(g=0\), each \(I_\sigma(g)\) has a saddle expansion
+\[
+  I_\sigma(g)
+  \sim
+  \ee^{-S(p_\sigma)/g}
+  (2\pi g)^{n/2}
+  \frac{a(p_\sigma)}
+       {\sqrt{\det H_\sigma}}
+  \left(1+\sum_{m\ge1}c_{\sigma,m}g^m\right),
+  \label{eq:thimble-saddle-expansion}
+\]
+after choosing the square-root phase determined by the oriented thimble; here
+\(H_\sigma\) is the Hessian of \(S\) at \(p_\sigma\) in holomorphic local
+coordinates.  When two critical values have the same
+\(\varphi_\theta\), the integer basis
+\([\mathcal J_\sigma^\theta]\) can jump by a Stokes transformation.  The
+homology class \([\Gamma]\) and the integral \(I_\Gamma(g)\) are unchanged;
+only their expression in the thimble basis changes.
+\end{theorem}
+
+\begin{proof}
+The gradient equation in Definition~\ref{def:lefschetz-thimble-data} gives
+\[
+  \frac{\dd}{\dd t}h_\theta(z(t))
+  =
+  \sum_i\left|\frac{\partial}{\partial z^i}
+  \bigl(\ee^{-i\theta}S\bigr)\right|^2
+\]
+in local holomorphic coordinates, while the Cauchy--Riemann equations give
+\(\dd\varphi_\theta/\dd t=0\).  Thus each thimble is a constant-phase
+steepest-descent cycle and the exponential decays at its ends by properness of
+\(h_\theta\).  Standard finite-dimensional Morse theory for the pair
+\(\{h_\theta\le H\}\subset X\), followed by \(H\to+\infty\), identifies the
+middle-dimensional relative homology group with the free abelian group
+generated by the upward thimbles.  The dual downward thimbles intersect them
+with pairing \(\delta_{\sigma\tau}\), so the coefficient of
+\(\mathcal J_\sigma^\theta\) in any relative cycle is
+\(\langle\Gamma,\mathcal K_\sigma^\theta\rangle\).  This proves
+\eqref{eq:thimble-homology-decomposition}, and integration of the same
+holomorphic form over homologous relative cycles gives
+\eqref{eq:thimble-integral-decomposition}.
+
+For the expansion, apply the holomorphic Morse lemma near \(p_\sigma\):
+\[
+  S(z)=S(p_\sigma)+\frac12\sum_{i=1}^n \lambda_i w_i^2
+\]
+in local coordinates.  On the thimble the quadratic form has positive real
+part after multiplication by \(\ee^{-i\theta}\).  Rescale
+\(w_i=g^{1/2}y_i\), expand \(a(w)\) and the higher-coordinate corrections of
+the volume form, and integrate term by term against the convergent Gaussian.
+Odd monomials vanish in the diagonal Gaussian coordinates and even monomials
+produce the powers in \eqref{eq:thimble-saddle-expansion}.  The square-root of
+\(\det H_\sigma\) is the Gaussian determinant with the orientation and phase
+chosen by the thimble.
+
+A Stokes wall occurs precisely when two critical points can lie on a common
+gradient trajectory, which requires equality of the constant phase
+\(\varphi_\theta\).  Crossing such a wall changes the thimble basis by adding
+integer multiples of thimbles connected by the flow.  Since this is a change
+of basis in relative homology, the original cycle and integral are unchanged.
+\end{proof}
+
+\begin{remark}[Resurgence as a regulated statement]
+\label{rem:resurgence-regulated-statement}
+In finite dimensions the Borel singularities of the saddle expansion around
+\(p_\sigma\) are controlled, under the usual analyticity and nondegeneracy
+hypotheses, by action differences \(S(p_\tau)-S(p_\sigma)\).  Lateral Borel
+sums across a Stokes ray differ by the contribution of thimbles whose critical
+values become phase-aligned with \(p_\sigma\).  In a QFT path integral this
+sentence becomes a theorem only after a regulator has turned the functional
+integral into a finite-dimensional or otherwise rigorously controlled
+analytic object, and after the regulator-removal limit has been proved in the
+sector of interest.  Without those data, words such as ``instanton
+resurgence'' or ``renormalon resurgence'' name a proposed analytic mechanism,
+not a completed definition of the theory.
+\end{remark}
 
 \begin{remark}[Renormalons and Borel-plane obstructions]
 The term \emph{renormalon} refers to a class of large-order effects in
