@@ -111,5 +111,9 @@ reference text are ignored.  Compiled PDFs should be distributed through
 release artifacts rather than committed directly unless the author explicitly
 decides otherwise.
 
+The repository does not use a GitHub CI gate.  Manuscript verification is run
+locally with the tools listed above, and `.github/workflows/` should not be
+introduced unless the author explicitly requests GitHub Actions.
+
 No open-source license has been selected yet.  Until a license is added, all
 rights are reserved by default.

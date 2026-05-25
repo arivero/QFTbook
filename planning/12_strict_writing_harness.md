@@ -364,6 +364,11 @@ misreading.
 
 ## Calculation-Check Rule
 
+All verification gates for ordinary monograph development are local repository
+commands.  Do not introduce `.github/workflows/`, GitHub Actions jobs, or
+required GitHub status checks unless the author explicitly asks for a GitHub
+CI gate.
+
 When a passage depends on convention-sensitive finite algebra, the manuscript
 must be accompanied, when feasible, by a public check in
 `calculation-checks/`.  This applies especially to gamma-matrix and spinor

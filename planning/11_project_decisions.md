@@ -188,6 +188,8 @@ Date: 2026-05-25
 - Keep planning metadata out of reader-facing TeX.
 - Use `tools/audit_monograph_text.sh` and `tools/build_monograph.sh` as the
   first automated gate.
+- Keep automated gates local.  Do not add GitHub Actions workflows or required
+  GitHub status checks unless the author explicitly asks for a GitHub CI gate.
 - Add stricter audits as failure patterns become clear.
 
 ## Open Decisions
