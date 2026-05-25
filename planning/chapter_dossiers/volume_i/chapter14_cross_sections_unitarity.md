@@ -36,7 +36,7 @@
 | \(\vec q_*\) | outgoing COM three-momentum |
 | \(a_\ell(s)\) | partial-wave amplitude |
 | \(S_\ell(s)\) | partial-wave S-matrix eigenvalue |
-| \(\rho(s)\) | two-body elastic phase-space factor \(2|\vec p_*|/\sqrt s\) |
+| \(\beta(s)\) | two-body elastic phase-space factor \(2|\vec p_*|/\sqrt s\); \(\rho\) is reserved for spectral measures |
 | \(\mathcal N(E)\) | normalization of the COM partial-wave generalized state |
 | \(\delta_\ell(s)\) | elastic phase shift |
 
@@ -85,7 +85,10 @@
 - The sharp-momentum partial-wave kernel is reconstructed explicitly from
   \(S_\ell(E)-1\), before converting to the invariant amplitude convention.
 - Elastic unitarity gives \(S_\ell=e^{2i\delta_\ell}\) and
-  \(\operatorname{Im}a_\ell=\rho|a_\ell|^2\).
+  \(\operatorname{Im}a_\ell=\beta|a_\ell|^2\).
+- 2026-05-24 issue #425 pass: renamed the two-body kinematic factor from
+  \(\rho(s)\) to \(\beta(s)\) so \(d\rho\) remains reserved for
+  Kallen--Lehmann spectral measures.
 
 ## Figure Requirements
 

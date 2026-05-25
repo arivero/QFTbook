@@ -325,15 +325,15 @@ inserted later.
 
 Using
 \[
-  S_\ell(s)=1+2\ii\,\rho(s)a_\ell(s),
+  S_\ell(s)=1+2\ii\,\beta(s)a_\ell(s),
   \qquad
-  \rho(s)=\sqrt{1-\frac{4m^2}{s}},
+  \beta(s)=\sqrt{1-\frac{4m^2}{s}},
 \]
 this becomes the convention
 \[
   \mathcal M(s,x)
   =
-  -16\pi\ii\,\rho(s)^{-1}
+  -16\pi\ii\,\beta(s)^{-1}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)\bigl(S_\ell(s)-1\bigr)P_\ell(x).
 \]
@@ -350,7 +350,7 @@ physical upper-edge boundary value gives
 \[
   \operatorname{Im}\mathcal M(s,x)
   =
-  16\pi\,\rho(s)^{-1}
+  16\pi\,\beta(s)^{-1}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)P_\ell(x)\,w_\ell(s),
 \]
@@ -370,7 +370,7 @@ center-of-mass frame put
 \[
   p=|\vec p_*|=\frac12\sqrt{s-4m^2},
   \qquad
-  \rho(s)=\frac{2p}{\sqrt s}.
+  \beta(s)=\frac{2p}{\sqrt s}.
 \]
 The unordered identical-boson two-particle space contains only the even
 orbital partial waves in this scalar channel.  The same normalization that
@@ -435,15 +435,15 @@ Adding them gives
 \]
 On the other hand, the forward absorptive part follows directly from the
 symmetrized amplitude.  Setting \(x=1\), using \(P_\ell(1)=1\), and writing
-\(S_\ell=1+2\ii\rho a_\ell\), one obtains
+\(S_\ell=1+2\ii\beta a_\ell\), one obtains
 \[
   \mathcal M(s,1)
   =
   32\pi
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
-  (2\ell+1)\frac{S_\ell(s)-1}{2\ii\rho(s)}
+  (2\ell+1)\frac{S_\ell(s)-1}{2\ii\beta(s)}
   =
-  -16\pi\ii\,\rho(s)^{-1}
+  -16\pi\ii\,\beta(s)^{-1}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)\bigl(S_\ell(s)-1\bigr).
 \]
@@ -451,16 +451,16 @@ Therefore
 \[
   \operatorname{Im}\mathcal M(s,1)
   =
-  16\pi\,\rho(s)^{-1}
+  16\pi\,\beta(s)^{-1}
   \sum_{\substack{\ell=0\\ \ell\ {\rm even}}}^{\infty}
   (2\ell+1)w_\ell(s).
 \]
-Since \(\rho(s)=2p/\sqrt s=\sqrt{s-4m^2}/\sqrt s\), the preceding two
+Since \(\beta(s)=2p/\sqrt s=\sqrt{s-4m^2}/\sqrt s\), the preceding two
 displays imply
 \[
   \sigma_{\rm tot}
   =
-  \frac{\rho(s)}{s-4m^2}\,
+  \frac{\beta(s)}{s-4m^2}\,
   \operatorname{Im}\mathcal M(s,1)
   =
   \frac{1}{\sqrt{s(s-4m^2)}}\,
@@ -574,11 +574,11 @@ domain,
   \begin{equation}
   \operatorname{Im}\mathcal M(s,x)
   \ge
-  C\,\rho(s)^{-1}
+  C\,\beta(s)^{-1}
   \sum_{\substack{0\le\ell\le L\\ \ell\ {\rm even}}}
   (2\ell+1)y^\ell
   \ge
-  C'\,\rho(s)^{-1}L\,\frac{y^L}{y-1},
+  C'\,\beta(s)^{-1}L\,\frac{y^L}{y-1},
   \label{eq:froissart-box-lower-bound}
   \end{equation}
 whenever \(L(y-1)\ge1\).  If \(L(y-1)<1\), then
@@ -648,7 +648,7 @@ Assume the angular-tube polynomial bound at the chosen nonphysical point:
   \qquad(s\to\infty),
 \]
 for some fixed integer \(N\).  The lower bound contains the prefactor
-\(\rho^{-1}L/(y-1)\), which is of order \(s\sqrt{\sigma_{\rm tot}}\) up to
+\(\beta^{-1}L/(y-1)\), which is of order \(s\sqrt{\sigma_{\rm tot}}\) up to
 fixed constants.  Hence compatibility with the polynomial upper bound implies
 \[
   \sigma_{\rm tot}(s)

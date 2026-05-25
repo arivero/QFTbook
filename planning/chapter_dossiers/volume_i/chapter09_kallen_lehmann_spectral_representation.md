@@ -140,6 +140,9 @@ Figures to include:
   hypothesis \(\dd\rho_\phi\) has no massless atom, has an isolated atom at
   \(m^2\), and has continuum support beginning at \(4m^2\) under the stated
   two-particle-threshold assumptions.
+- 2026-05-24 issue #425 pass: kept \(d\rho\) as the Kallen--Lehmann spectral
+  measure notation and moved the unrelated two-body kinematic factor in later
+  scattering chapters to \(\beta(s)\).
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.

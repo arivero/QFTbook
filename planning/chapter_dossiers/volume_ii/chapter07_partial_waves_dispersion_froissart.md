@@ -54,6 +54,8 @@ hypotheses:
 - \(\gamma_s\): ellipse contour in the complex \(x\)-plane with foci \(\pm1\).
 - \(P_\ell,Q_\ell\): Legendre polynomial and Legendre function of the second kind.
 - \(S_\ell(s)\): identical-boson partial-wave \(S\)-matrix eigenvalue, even \(\ell\).
+- \(\beta(s)=\sqrt{1-4m^2/s}=2p/\sqrt s\): two-body elastic kinematic factor,
+  distinct from the Kallen--Lehmann spectral measure \(d\rho\).
 - \(w_\ell(s)=1-\operatorname{Re}S_\ell(s)\): positive unitarity weight, \(0\le w_\ell\le2\).
 - \(\sigma_{\mathrm{tot}}\): total cross section in this normalization.
 - \(N\): number of subtractions.
@@ -74,12 +76,12 @@ hypotheses:
    large-\(\ell\) decay.
 4. In the identical scalar convention used here,
    \[
-     \mathcal A(s,x)=-16\pi i\rho(s)^{-1}\sum_{\ell\ even}(2\ell+1)(S_\ell-1)P_\ell(x),
+     \mathcal A(s,x)=-16\pi i\beta(s)^{-1}\sum_{\ell\ even}(2\ell+1)(S_\ell-1)P_\ell(x),
    \]
-   where \(\rho(s)=\sqrt{1-4m^2/s}\).
+   where \(\beta(s)=\sqrt{1-4m^2/s}\).
 5. For real \(x\) inside the ellipse,
    \[
-     \operatorname{Im}\mathcal A(s,x)=16\pi\rho^{-1}\sum_{\ell\ even}(2\ell+1)P_\ell(x)(1-\operatorname{Re}S_\ell).
+     \operatorname{Im}\mathcal A(s,x)=16\pi\beta^{-1}\sum_{\ell\ even}(2\ell+1)P_\ell(x)(1-\operatorname{Re}S_\ell).
    \]
 6. Unitarity gives \(0\le1-\operatorname{Re}S_\ell\le2\).
 7. The optical theorem is
@@ -164,3 +166,6 @@ hypotheses:
   \sqrt{s(s-4m^2)}\,\sigma_{\rm el}(s)\) and a separate equality chain for
   \(\sigma_{\rm el}\), so the final \(L^2\) integral is explicitly a lower
   bound, not an equality with the total absorptive part.
+- 2026-05-24 issue #425 pass: renamed the partial-wave kinematic factor from
+  \(\rho(s)\) to \(\beta(s)\), keeping \(\rho\) exclusively for spectral
+  measures and densities.

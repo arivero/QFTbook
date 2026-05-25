@@ -58,6 +58,7 @@
 | \(\mathcal M(s,z)\) | connected invariant amplitude |
 | \(\mathcal M_\ell(s)\) | partial-wave amplitude |
 | \(S_\ell(s)\) | elastic partial-wave scattering eigenvalue |
+| \(\beta(s)\) | two-body elastic kinematic factor \(\sqrt{1-4m^2/s}\), not a spectral measure |
 | \(M_B\) | bound-state mass below threshold |
 | \(k\) | nonrelativistic relative momentum |
 | \(E_{\mathrm{nr}}\) | nonrelativistic energy |
@@ -101,6 +102,9 @@
   explicit that pole existence, operator compactness, channel overlap, and
   spectral positivity are separate assumptions or results, not consequences of
   the elementary exchange diagram.
+- 2026-05-24 issue #425 pass: renamed the elastic kinematic factor to
+  \(\beta(s)\) in the partial-wave \(S_\ell\) convention, reserving
+  \(\rho\) for spectral measures.
 
 ## Figure Requirements
 

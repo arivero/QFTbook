@@ -42,6 +42,7 @@
 | \(\alpha_i\) | Feynman parameters for internal lines |
 | \(q_i(\ell,p)\) | internal momentum on line \(i\), affine in loop momenta and external momenta |
 | \(S_\ell(s)\) | angular-momentum-\(\ell\) partial-wave scattering eigenvalue in the two-particle sector |
+| \(\beta(s)\) | local square-root variable for a two-particle threshold, whose sign changes on the adjacent sheet |
 | \(M_{\mathrm{inel}}\) | invariant mass threshold of the lightest inelastic channel |
 | \(\Delta_m^\pm(x)\) | positive/negative-frequency on-shell Wightman distributions for mass \(m\) |
 | \(G_\sigma\) | circled graph associated to a vertex circling \(\sigma\) in the largest-time identity |
@@ -151,3 +152,6 @@
 - 2026-05-24 issue #319 pass: added a chapter-opening status reminder
   separating exact Hilbert-space analytic boundary values from
   coefficientwise perturbative Landau/Feynman-parameter graph analysis.
+- 2026-05-24 issue #425 pass: renamed the threshold square-root variable from
+  \(\rho(s)\) to \(\beta(s)\) so it cannot be confused with the
+  Kallen--Lehmann spectral measure \(d\rho\).
