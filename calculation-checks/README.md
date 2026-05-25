@@ -13,6 +13,11 @@ this directory should stay lightweight and reader-readable.
 
 Current checks:
 
+- `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
+  two-loop beta-function conventions in the monograph's
+  \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
+  including the conformal-window edge and leading \(\epsilon_{\rm BZ}\)
+  fixed-point formulas.
 - `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)

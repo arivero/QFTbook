@@ -75,7 +75,19 @@ The chapter must define and derive:
   existence and positive mass-gap problem as an open Clay Millennium problem,
   with spectral/confinement uses marked as nonperturbative inputs;
 - the two-loop Banks--Zaks alternative as a perturbative infrared fixed-point
-  diagnostic, with its controlled domain stated;
+  diagnostic, with \(a=g^2/(16\pi^2)\),
+  \(\beta_a=-2B_0a^2-2B_1a^3+O(a^4)\), the universal two-loop coefficient
+  \(B_1=\frac{34}{3}C_A^2-(\frac{20}{3}C_AT_R+4C_RT_R)N_f\), the analytic
+  coupling-redefinition check preserving \(B_0\) and \(B_1\), and the
+  controlled domain stated;
+- for fundamental \(SU(N_c)\) quarks in the monograph trace convention, the
+  formulas
+  \(B_0=\frac{2}{3}(11N_c-2N_f)\),
+  \(B_1=\frac{136}{3}N_c^2-(\frac{52}{3}N_c-\frac4{N_c})N_f\), the window
+  \(\frac{34N_c^3}{13N_c^2-3}<N_f<\frac{11}{2}N_c\), the expansion
+  \(\epsilon_{\rm BZ}=(11N_c-2N_f)/3\),
+  \(a_*=\epsilon_{\rm BZ}/(25N_c^2-11)+O(\epsilon_{\rm BZ}^2)\), and
+  \(\omega_{\rm BZ}=4\epsilon_{\rm BZ}^2/(25N_c^2-11)+O(\epsilon_{\rm BZ}^3)\);
 - Wilson lines, open gauge-invariant quark-antiquark operators, rectangular
   Wilson loops, static potentials, and the distinction between pure
   Yang--Mills area-law diagnostics and QCD with dynamical fundamental quarks;
@@ -133,7 +145,13 @@ The chapter must define and derive:
    introduced.
 8. A perturbative two-loop zero near the upper edge of asymptotic freedom is a
    controlled Banks--Zaks fixed-point diagnostic, not a statement about
-   ordinary low-flavor QCD.
+   ordinary low-flavor QCD.  In the monograph's trace convention the leading
+   small-\(\epsilon_{\rm BZ}\) fixed-point coordinate is
+   \(a_*=\epsilon_{\rm BZ}/(25N_c^2-11)+O(\epsilon_{\rm BZ}^2)\), and the
+   coupling perturbation has
+   \(\omega_{\rm BZ}=4\epsilon_{\rm BZ}^2/(25N_c^2-11)+O(\epsilon_{\rm BZ}^3)\).
+   The \(O(\epsilon_{\rm BZ}^2)\) location is not fixed by the two-loop beta
+   function alone.
 9. The one-loop running coupling and dimensional transmutation do not prove
    four-dimensional continuum Yang--Mills existence, mass gap, or confinement.
    The pure Yang--Mills existence and mass-gap problem is the Clay Millennium
@@ -255,3 +273,9 @@ The chapter must define and derive:
   completeness of physical QCD, explicitly distinguishing the hadronic
   Hilbert-space wave-operator theorem from asymptotic freedom, factorization,
   mass gap, and spectral confinement inputs.
+- 2026-05-25 issue #463 pass: expanded the Banks--Zaks discussion from a
+  diagnostic paragraph into an explicit two-loop derivation in the monograph
+  gauge-generator convention, including scheme-invariance of \(B_0,B_1\), the
+  fundamental-representation window, the \(\epsilon_{\rm BZ}\) fixed-point
+  coordinate, the IR-attractive exponent, the integer-\(N_f\)/Veneziano
+  caveat, and `calculation-checks/banks_zaks_two_loop_checks.py`.
