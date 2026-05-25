@@ -64,6 +64,19 @@ The chapter must define the following objects before using them:
 - the kernels \(\Gamma^{(n)}\) and their relation to amputated 1PI diagrams;
 - the reconstruction of connected functions as trees built from exact
   propagators and exact 1PI vertices;
+- the effective potential as the zero-derivative part of the local formal 1PI
+  action, distinct from the exact convex Legendre--Fenchel effective action;
+- the one-loop determinant formula for a constant scalar background,
+  \(V_1=(2{\rm Vol})^{-1}\operatorname{Tr}\log(-\partial^2+V_0''(\varphi))\);
+- the \(\overline{\rm MS}\) one-loop result
+  \(V_1=M^4(\varphi)(\log(M^2(\varphi)/\mu^2)-3/2)/(64\pi^2)\);
+- the Coleman--Weinberg finite subtraction condition
+  \(V_{\rm eff}^{(4)}(M)=\lambda_{\rm CW}\), the resulting
+  \(-25/6\) constant, the formal stationary scale, and the perturbative
+  limitation of pure massless \(\lambda\phi^4\);
+- dimensional transmutation as the RG statement that a running dimensionless
+  coupling may be traded for the scale at which it reaches a specified
+  reference value;
 - the finite-regulator hypotheses under which Schwinger--Dyson integration by
   parts is legitimate, including the possible logarithmic derivative of the
   reference density and the separate BRST/BV treatment required in gauge
@@ -179,6 +192,54 @@ The chapter must define the following objects before using them:
     Callan--Symanzik bare-to-renormalized field factor, \(Z_\phi^{\rm MS}\)
     is the minimal-subtraction pole factor, and \(\mathcal Z\) denotes
     composite-source mixing data.
+17. For a constant background in massless \(\lambda\phi^4\),
+    \(M^2(\varphi)=V_0''(\varphi)=\lambda\varphi^2/2\), and
+    \[
+      V_{\rm eff}^{\overline{\rm MS}}
+      =
+      \frac{\lambda}{24}\varphi^4
+      +
+      \frac{\lambda^2\varphi^4}{256\pi^2}
+      \left(\log\frac{\lambda\varphi^2}{2\mu^2}-\frac32\right)
+      +O(\lambda^3).
+    \]
+18. The one-loop effective potential satisfies the RG equation through
+    \(O(\lambda^2)\) because
+    \(\mu\partial_\mu V_1=-\lambda^2\varphi^4/(128\pi^2)\) cancels
+    \(\beta_\lambda\partial_\lambda(\lambda\varphi^4/24)\) with
+    \(\beta_\lambda=3\lambda^2/(16\pi^2)+O(\lambda^3)\).
+19. In the Coleman--Weinberg finite subtraction chart
+    \(V_{\rm eff}^{(4)}(M)=\lambda_{\rm CW}\),
+    \[
+      V_{\rm CW}
+      =
+      \frac{\lambda_{\rm CW}}{24}\varphi^4
+      +
+      \frac{\lambda_{\rm CW}^2}{256\pi^2}\varphi^4
+      \left(\log\frac{\varphi^2}{M^2}-\frac{25}{6}\right)
+      +O(\lambda_{\rm CW}^3).
+    \]
+    The constant follows from
+    \(\partial_\varphi^4[\varphi^4\log(\varphi^2/M^2)]_{\varphi=M}=100\).
+20. The formal nonzero stationary point obeys
+    \[
+      v=M\exp\left(\frac{11}{6}
+        -\frac{16\pi^2}{3\lambda_{\rm CW}(M)}\right),
+      \qquad
+      V_{\rm CW}''(v)=\lambda_{\rm CW}^2v^2/(32\pi^2)+\cdots .
+    \]
+    This exhibits the scale-generating algebra, but in pure scalar theory it
+    is not a controlled weak-coupling minimum: at \(M=v\) one needs
+    \(\lambda_{\rm CW}=32\pi^2/11\), while small \(\lambda_{\rm CW}(M)\)
+    makes the logarithm \(O(1/\lambda)\).
+21. Dimensional transmutation is stated generally as
+    \[
+      \log(\Lambda_{g_*}/\mu)=\int_{g(\mu)}^{g_*}\dd g/\beta(g),
+    \]
+    so that a dimensionless coupling coordinate is replaced by a scale on the
+    RG trajectory.  The sign and physical interpretation depend on the beta
+    function; pure scalar \(\phi^4\) has a positive one-loop beta function,
+    unlike asymptotically free gauge theory.
 
 ## Figure Requirements
 
@@ -262,3 +323,11 @@ The chapter must define the following objects before using them:
   identities, converts them to connected and 1PI form, and works out the full
   propagator and full four-point vertex members for quartic scalar theory with
   explicit truncation caveats.
+- 2026-05-25 issue #458 pass: added the Coleman--Weinberg effective-potential
+  section.  The manuscript now derives the one-loop determinant from the
+  constant-background quadratic operator, evaluates the
+  \(\overline{\rm MS}\) log potential, checks RG-scale cancellation against
+  \(\beta_\lambda=3\lambda^2/(16\pi^2)\), derives the CW finite-subtraction
+  potential with the \(-25/6\) constant, solves for the formal generated
+  scale, states the pure-scalar perturbative-control limitation, and gives the
+  general RG definition of dimensional transmutation.

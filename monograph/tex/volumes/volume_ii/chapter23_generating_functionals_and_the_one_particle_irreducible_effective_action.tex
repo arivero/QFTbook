@@ -697,6 +697,307 @@ used with its analytic domain stated: loops of massless fields commonly
 produce terms such as logarithms and threshold branch points at small
 momentum, and these terms are part of the exact 1PI action.
 
+\section{One-Loop Effective Potential and Dimensional Transmutation}
+\label{sec:coleman-weinberg-effective-potential}
+
+The effective potential is the zero-derivative part of the local formal 1PI
+effective action.  It is not, by definition, the exact convex
+Legendre--Fenchel effective action of a positive Euclidean measure.  The latter
+is discussed later in this chapter.  In perturbation theory one chooses a
+background branch, computes the local 1PI functional around that branch, and
+only then asks whether the branch is stable and whether the logarithms are
+under perturbative control.
+
+Work in four dimensions with one real scalar field and Euclidean action
+\[
+  S_E[\phi]
+  =
+  \int \dd^4x\,
+  \left[
+    \frac12\partial_\mu\phi\,\partial_\mu\phi
+    +
+    V_0(\phi)
+  \right],
+  \qquad
+  V_0(\phi)=\frac{\lambda}{4!}\phi^4 .
+\]
+The regulated path-integral Lagrangian contains the counterterm part needed by
+the chosen subtraction prescription; those terms are part of the regulated
+Lagrangian, not a separate physical theory.  Let the background be constant,
+\(\phi(x)=\varphi+\xi(x)\).  The quadratic fluctuation operator is
+\[
+  \Delta_\varphi
+  =
+  -\partial^2+M^2(\varphi),
+  \qquad
+  M^2(\varphi)=V_0''(\varphi)=\frac{\lambda}{2}\varphi^2 .
+\]
+In a finite box of volume \({\rm Vol}\), the formal one-loop contribution to
+the 1PI effective action is
+\[
+  \Gamma_E^{(1)}[\varphi]
+  =
+  \frac12\operatorname{Tr}\log\Delta_\varphi ,
+  \qquad
+  V_1(\varphi)
+  =
+  \frac{1}{2\,{\rm Vol}}\operatorname{Tr}\log\Delta_\varphi .
+\]
+After passing to momentum space and subtracting the \(\varphi\)-independent
+vacuum term,
+\begin{equation}
+  V_1(\varphi)
+  =
+  \frac12\mu^\epsilon
+  \int\frac{\dd^{4-\epsilon}p}{(2\pi)^{4-\epsilon}}\,
+  \log\bigl(p^2+M^2(\varphi)\bigr)
+  +V_{\rm ct}^{(1)}(\varphi).
+  \label{eq:cw-one-loop-log-determinant}
+\end{equation}
+The scale \(\mu\) is the dimensional-regularization scale in the selected
+subtraction chart.  To evaluate the determinant without hiding constants,
+differentiate with respect to \(M^2\):
+\[
+  \frac{\partial V_1}{\partial M^2}
+  =
+  \frac12\mu^\epsilon
+  \int\frac{\dd^{4-\epsilon}p}{(2\pi)^{4-\epsilon}}\,
+  \frac1{p^2+M^2}
+  =
+  \frac12
+  \frac{\mu^\epsilon}{(4\pi)^{2-\epsilon/2}}
+  \Gamma\!\left(-1+\frac{\epsilon}{2}\right)
+  (M^2)^{1-\epsilon/2}.
+\]
+Integrating back in \(M^2\) and choosing the additive constant so that
+\(V_1(0)=0\) gives
+\[
+  V_1^{\rm reg}
+  =
+  -\frac12
+  \frac{\mu^\epsilon}{(4\pi)^{2-\epsilon/2}}
+  \Gamma\!\left(-2+\frac{\epsilon}{2}\right)
+  (M^2)^{2-\epsilon/2}
+  +V_{\rm ct}^{(1)} .
+\]
+In the \(\overline{\rm MS}\) chart, after subtracting the pole and the
+associated \(\log 4\pi-\gamma_E\) convention terms, this becomes
+\begin{equation}
+  V_1^{\overline{\rm MS}}(\varphi)
+  =
+  \frac{M^4(\varphi)}{64\pi^2}
+  \left[
+    \log\frac{M^2(\varphi)}{\mu^2}
+    -\frac32
+  \right].
+  \label{eq:cw-one-loop-msbar-general}
+\end{equation}
+Thus the one-loop formal 1PI effective potential in massless \(\lambda\phi^4\)
+theory is
+\begin{equation}
+  V_{\rm eff}^{\overline{\rm MS}}(\varphi)
+  =
+  \frac{\lambda(\mu)}{4!}\varphi^4
+  +
+  \frac{\lambda(\mu)^2\varphi^4}{256\pi^2}
+  \left[
+    \log\frac{\lambda(\mu)\varphi^2}{2\mu^2}
+    -\frac32
+  \right]
+  +O(\lambda^3).
+  \label{eq:cw-msbar-massless-phi4}
+\end{equation}
+The logarithm is the first explicit signal that the classical scale-invariant
+polynomial has become a renormalized family depending on a subtraction scale.
+The dependence on \(\mu\) is not physical by itself; it is compensated by the
+running coupling.  To this order the field anomalous dimension starts only at
+higher loop order, while
+\[
+  \beta_\lambda(\lambda)
+  =
+  \mu\frac{\dd\lambda}{\dd\mu}
+  =
+  \frac{3\lambda^2}{16\pi^2}+O(\lambda^3).
+\]
+Indeed,
+\[
+  \mu\frac{\partial}{\partial\mu}
+  \left[
+    \frac{\lambda^2\varphi^4}{256\pi^2}
+    \log\frac{\lambda\varphi^2}{2\mu^2}
+  \right]
+  =
+  -\frac{\lambda^2\varphi^4}{128\pi^2},
+\]
+whereas
+\[
+  \beta_\lambda\frac{\partial}{\partial\lambda}
+  \left(\frac{\lambda\varphi^4}{24}\right)
+  =
+  \frac{\lambda^2\varphi^4}{128\pi^2}.
+\]
+Thus
+\[
+  \left(
+    \mu\frac{\partial}{\partial\mu}
+    +
+    \beta_\lambda\frac{\partial}{\partial\lambda}
+    -
+    \gamma_\phi\varphi\frac{\partial}{\partial\varphi}
+  \right)
+  V_{\rm eff}=0
+\]
+holds through order \(\lambda^2\), with
+\(\gamma_\phi=O(\lambda^2)\) contributing only at the next order in this
+single-scalar example.
+
+Coleman--Weinberg often uses a finite subtraction condition at a nonzero field
+value \(M\), because the fourth derivative of \(\varphi^4\log\varphi^2\) is
+singular at \(\varphi=0\).  Define \(\lambda_{\rm CW}\) by
+\[
+  \left.
+  \frac{\dd^4 V_{\rm eff}}{\dd\varphi^4}
+  \right|_{\varphi=M}
+  =
+  \lambda_{\rm CW}.
+\]
+After the corresponding finite change of quartic coordinate, the one-loop
+potential is
+\begin{equation}
+  V_{\rm CW}(\varphi)
+  =
+  \frac{\lambda_{\rm CW}}{24}\varphi^4
+  +
+  \frac{\lambda_{\rm CW}^2}{256\pi^2}\varphi^4
+  \left[
+    \log\frac{\varphi^2}{M^2}
+    -\frac{25}{6}
+  \right]
+  +O(\lambda_{\rm CW}^3).
+  \label{eq:cw-renormalization-condition-potential}
+\end{equation}
+The constant \(-25/6\) is fixed by the displayed fourth-derivative condition:
+\[
+  \left.
+  \frac{\dd^4}{\dd\varphi^4}
+  \left[
+    \varphi^4\log\frac{\varphi^2}{M^2}
+  \right]
+  \right|_{\varphi=M}
+  =
+  100,
+  \qquad
+  \frac{\dd^4}{\dd\varphi^4}\varphi^4=24 .
+\]
+
+The nonzero stationary points of the one-loop branch satisfy
+\begin{equation}
+  0
+  =
+  \frac{1}{\varphi^3}\frac{\dd V_{\rm CW}}{\dd\varphi}
+  =
+  \frac{\lambda_{\rm CW}}{6}
+  +
+  \frac{\lambda_{\rm CW}^2}{64\pi^2}
+  \left[
+    \log\frac{\varphi^2}{M^2}
+    -\frac{11}{3}
+  \right]
+  +O(\lambda_{\rm CW}^3).
+  \label{eq:cw-stationary-condition}
+\end{equation}
+At the one-loop level this gives the formal scale
+\begin{equation}
+  v
+  =
+  M
+  \exp\!\left[
+    \frac{11}{6}
+    -
+    \frac{16\pi^2}{3\lambda_{\rm CW}(M)}
+  \right].
+  \label{eq:cw-formal-generated-scale}
+\end{equation}
+At such a stationary point,
+\[
+  \left.
+  \frac{\dd^2V_{\rm CW}}{\dd\varphi^2}
+  \right|_{\varphi=v}
+  =
+  \frac{\lambda_{\rm CW}^2}{32\pi^2}v^2+O(\lambda_{\rm CW}^3v^2).
+\]
+Equations \eqref{eq:cw-stationary-condition} and
+\eqref{eq:cw-formal-generated-scale} display the algebraic mechanism called
+dimensional transmutation: a dimensionless coupling specified at the
+subtraction point is exchanged for a dimensionful scale on a chosen
+renormalized trajectory.
+
+This statement has an important perturbative qualification.  In the single
+real scalar theory, taking \(M=v\) in
+\eqref{eq:cw-stationary-condition} gives
+\[
+  \lambda_{\rm CW}(v)=\frac{32\pi^2}{11},
+\]
+which is not a small coupling.  If instead \(\lambda_{\rm CW}(M)\) is small,
+then \(\log(v/M)=O(1/\lambda_{\rm CW})\), so higher leading logarithms are not
+parametrically smaller than the one-loop logarithm.  The one-loop
+massless-scalar potential therefore demonstrates the structure of the
+calculation and the scale-generating relation, but it does not by itself give
+a controlled weak-coupling proof of a radiatively generated vacuum in pure
+\(\lambda\phi^4\) theory.
+
+The renormalization-group form of dimensional transmutation is independent of
+this particular one-loop branch.  For a dimensionless coupling \(g\) with
+\(\beta(g)\neq0\), choosing \(g(\mu)\) at a subtraction scale is equivalent,
+on a one-dimensional RG trajectory, to choosing the scale \(\Lambda_{g_*}\)
+at which the running coupling reaches a reference value \(g_*\):
+\begin{equation}
+  \log\frac{\Lambda_{g_*}}{\mu}
+  =
+  \int_{g(\mu)}^{g_*}\frac{\dd g}{\beta(g)}.
+  \label{eq:dimensional-transmutation-rg-scale}
+\end{equation}
+For the one-loop scalar beta function \( \beta_\lambda=b\lambda^2\),
+\(b=3/(16\pi^2)\), this gives
+\[
+  \Lambda_{\lambda_*}
+  =
+  \mu
+  \exp\!\left[
+    \frac{1}{b\lambda(\mu)}
+    -
+    \frac{1}{b\lambda_*}
+  \right].
+\]
+Because \(b>0\), this scale is the scale of increasing coupling toward the
+ultraviolet rather than an asymptotically free strong scale.  In gauge theories
+with a negative one-loop beta function the same formula produces the familiar
+infrared strong scale.
+
+A controlled Coleman--Weinberg minimum can occur in a multi-coupling theory
+where the tree quartic coupling is of the same order as a one-loop effect.
+For example, in massless scalar electrodynamics on a chosen perturbative
+branch and in the conventional radial-field normalization, the gauge-boson
+one-loop term gives
+\[
+  V_{\rm eff}(\varphi)
+  =
+  \frac{\lambda}{24}\varphi^4
+  +
+  \frac{3e^4}{64\pi^2}\varphi^4
+  \left[
+    \log\frac{\varphi^2}{M^2}
+    -\frac{25}{6}
+  \right]
+  +\cdots ,
+\]
+after the same type of nonzero-field quartic subtraction.  Then a stationary
+point at \(M=v\) requires \(\lambda=33e^4/(8\pi^2)+O(e^6)\), which is
+compatible with weak coupling when \(e\) is small.  This is the controlled
+version of radiative breaking; the single-scalar computation above is the
+minimal determinant calculation and the clearest place to see how the
+subtraction scale enters the formal 1PI potential.
+
 \section{Connected Functions from Exact 1PI Vertices}
 
 The Legendre transform can be inverted.  Given \(\Gamma[\varphi]\), the
