@@ -363,6 +363,76 @@ The finite primary transformation law is the integrated form of
   \rho(R_f(x))_a{}^b\mathcal O_b(x).
   \label{eq:finite-primary-transform}
 \end{equation}
+The integration check is as follows.  Let \(f_s\) be the one-parameter flow of a
+conformal Killing vector,
+\[
+  \frac{\dd}{\dd s}f_s^\mu(x)=\epsilon^\mu(f_s(x)),
+  \qquad
+  f_0(x)=x,
+\]
+and write \(M_s=\partial f_s/\partial x=\Omega_s R_s\).  At \(s=0\),
+\begin{equation}
+  \left.\frac{\dd}{\dd s}\Omega_s(x)\right|_{s=0}
+  =
+  \sigma_\epsilon(x),
+  \qquad
+  \left.\frac{\dd}{\dd s}R_s(x)_\mu{}^\nu\right|_{s=0}
+  =
+  \omega_{\epsilon,\mu}{}^\nu(x),
+  \label{eq:primary-finite-infinitesimal-jacobian}
+\end{equation}
+because the conformal Killing equation decomposes
+\(\partial_\nu\epsilon_\mu\) into its trace
+\(\sigma_\epsilon\delta_{\mu\nu}\) and antisymmetric part
+\(\omega_{\epsilon,\mu\nu}\).  The transformed field at a fixed final point
+\(y\) is obtained from \(x=f_s^{-1}(y)\):
+\[
+  \mathcal O_{s,a}'(y)
+  =
+  \Omega_s(f_s^{-1}y)^{-\Delta}
+  \rho(R_s(f_s^{-1}y))_a{}^b
+  \mathcal O_b(f_s^{-1}y).
+\]
+Since \(\left.\frac{\dd}{\dd s}f_s^{-1}(y)\right|_{s=0}
+=-\epsilon(y)\) and
+\[
+  \left.\frac{\dd}{\dd s}\rho(R_s)_a{}^b\right|_{s=0}
+  =
+  -\frac{\ii}{2}\omega_\epsilon^{\mu\nu}
+  (S_{\mu\nu})_a{}^b ,
+\]
+differentiation at \(s=0\) gives exactly
+\eqref{eq:primary-infinitesimal-transform}.  Conversely, the vector fields
+close under the Lie bracket and the factors \(\Omega_f,R_f\) obey the cocycle
+identities above; hence the finite law is the integrated representation of the
+infinitesimal contact action on every connected patch where the conformal map
+is defined.
+
+The elementary generators make the signs transparent.  A translation
+\(f_a(x)=x+a\) has \(\Omega=1\), \(R=1\), and gives
+\(\delta_a\mathcal O=-a^\mu\partial_\mu\mathcal O\) at fixed final coordinate.
+A dilatation \(f_\lambda(x)=\ee^\lambda x\) has
+\(\Omega=\ee^\lambda\), \(R=1\), and therefore
+\[
+  \mathcal O'(\ee^\lambda x)=\ee^{-\Delta\lambda}\mathcal O(x),
+  \qquad
+  \mathcal O'(y)=\ee^{-\Delta\lambda}\mathcal O(\ee^{-\lambda}y),
+\]
+whose derivative is
+\(-\lambda(y^\mu\partial_\mu+\Delta)\mathcal O(y)\).  A rotation has
+\(\Omega=1\) and \(R\) equal to its orthogonal matrix, so exponentiating
+\(\rho(R)=\exp[-\frac{\ii}{2}\omega^{\mu\nu}S_{\mu\nu}]\) gives the spin term
+in \eqref{eq:primary-infinitesimal-transform}.  Finally the finite special
+conformal transformation is
+\[
+  f_c=I\circ T_c\circ I,
+  \qquad
+  f_c(x)=\frac{x+c\,x^2}{1+2c\cdot x+c^2x^2};
+\]
+expanding at \(c=0\) gives
+\(\epsilon_c^\mu=c^\mu x^2-2(c\cdot x)x^\mu\), so the differentiated finite law
+reproduces \eqref{eq:primary-sct-transform}.
+
 For tensor representations this formula is the tensor transformation law with
 the Jacobian decomposed into the scale factor \(\Omega_f(x)\) and the
 orthogonal rotation \(R_f(x)\).  At coincident points the corresponding

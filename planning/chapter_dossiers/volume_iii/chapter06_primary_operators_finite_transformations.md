@@ -33,8 +33,9 @@ The chapter establishes:
 - the spinful local conformal-current Ward identity;
 - infinitesimal transformations for translations, rotations, dilatations, and
   special conformal transformations;
-- finite transformation laws, tensor index conventions, and the restriction to
-  separated points;
+- finite transformation laws, including the one-parameter-flow verification
+  from the infinitesimal contact operator, tensor index conventions, and the
+  restriction to separated points;
 - inversion, including the extra representation choice needed for spin.
 
 ## Claims To Verify
@@ -76,3 +77,8 @@ The chapter establishes:
 - 2026-05-24 issue #285 pass: added the conformal generalized Verma module
   definition, PBW level decomposition, singular-vector/null-submodule quotient
   language, and the Kac-determinant/BGG framework pointer.
+- 2026-05-24 issue #420 pass: inserted the flow derivation of the finite
+  primary transformation law from \(\delta_\epsilon\mathcal O\), including the
+  \(M_s=\Omega_sR_s\) infinitesimal decomposition, the fixed-final-coordinate
+  differentiation, and explicit translation, dilatation, rotation, and special
+  conformal checks.
