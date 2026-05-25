@@ -47,42 +47,207 @@ Choose a basis \(T^a_R\) for each representation \(R\) such that
 \]
 With the same coupling \(g\) in the covariant derivative and in the kinetic
 term convention above, the one-loop static polarization gives
-\[
+\begin{equation}
   m_D^2
   =
   g^2T^2\left(
   \frac{C_A}{3}
   +\frac{1}{3}\sum_{\text{Dirac }f}T_{R_f}
-  +\frac{1}{6}\sum_{\text{complex }s}T_{R_s}
+  +\frac{1}{3}\sum_{\text{complex }s}T_{R_s}
+  +\frac{1}{6}\sum_{\text{real }r}T_{R_r}
   \right).
-\]
+\label{eq:one-loop-debye-mass-general}
+\end{equation}
 For \(SU(N)\) with the fundamental trace convention
 \(\operatorname{tr}_{\mathbf N}(T^aT^b)=\delta^{ab}\), this means
 \(C_A=2N\) and \(T_{\mathbf N}=1\).
 
-\begin{proposition}[Origin of the Debye mass term]
+\begin{lemma}[Thermal susceptibility integrals]
+\label{lem:thermal-susceptibility-integrals}
+For \(n_B(x)=(e^x-1)^{-1}\) and \(n_F(x)=(e^x+1)^{-1}\),
+\begin{align}
+  \frac1T\int\frac{\dd^3p}{(2\pi)^3}
+  n_B(|p|/T)(1+n_B(|p|/T))
+  &=
+  \frac{T^2}{6},
+  \label{eq:thermal-boson-susceptibility-integral}\\
+  \frac1T\int\frac{\dd^3p}{(2\pi)^3}
+  n_F(|p|/T)(1-n_F(|p|/T))
+  &=
+  \frac{T^2}{12}.
+  \label{eq:thermal-fermion-susceptibility-integral}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Set \(x=|p|/T\).  Then
+\[
+  \frac1T\int\frac{\dd^3p}{(2\pi)^3}
+  n(1\pm n)
+  =
+  \frac{T^2}{2\pi^2}
+  \int_0^\infty x^2 n(x)(1\pm n(x))\,\dd x .
+\]
+Since
+\[
+  n_B(1+n_B)=-\frac{\dd n_B}{\dd x},
+  \qquad
+  n_F(1-n_F)=-\frac{\dd n_F}{\dd x},
+\]
+integration by parts gives
+\[
+  \int_0^\infty x^2n_B(1+n_B)\,\dd x
+  =
+  2\int_0^\infty \frac{x}{e^x-1}\,\dd x
+  =
+  \frac{\pi^2}{3},
+\]
+and
+\[
+  \int_0^\infty x^2n_F(1-n_F)\,\dd x
+  =
+  2\int_0^\infty \frac{x}{e^x+1}\,\dd x
+  =
+  \frac{\pi^2}{6}.
+\]
+Substitution gives
+\eqref{eq:thermal-boson-susceptibility-integral} and
+\eqref{eq:thermal-fermion-susceptibility-integral}.
+\end{proof}
+
+\begin{proposition}[One-loop origin and coefficient of the Debye mass term]
 \label{prop:debye-mass-origin}
 At one loop, the static quadratic term for \(A_0\) in the dimensionally
 reduced action is the zero-frequency, zero-momentum limit of the Euclidean
-current-current correlator coupled to \(A_0\).
+current-current correlator coupled to \(A_0\), and its value is
+\eqref{eq:one-loop-debye-mass-general}.
 \end{proposition}
 
 \begin{proof}
 Introduce a background temporal field \(A_0^a\) that is independent of
 Euclidean time and space.  Expanding the finite-temperature generating
 functional to second order gives
-\[
+\begin{equation}
   \Delta W^{(2)}
   =
   \frac12 A_0^a A_0^b
   \int_0^\beta d\tau\int d^{d-1}x\,
   \left\langle J_0^a(\tau,\mathbf x)J_0^b(0,0)\right\rangle_c .
-\]
+\label{eq:debye-current-current-origin}
+\end{equation}
 Translation invariance identifies the integral with the static polarization
 \(\Pi_{00}^{ab}(0,\mathbf0)\).  Gauge symmetry in the unbroken thermal state
 sets this tensor proportional to \(\delta^{ab}\).  The coefficient is the
 mass matrix of the adjoint scalar \(A_0\) in the static effective action,
 which is \(m_D^2\delta^{ab}\).
+
+It remains to compute the coefficient.  A constant \(A_0=A_0^at^a\) shifts
+the Matsubara frequencies exactly as an imaginary color chemical potential.
+For a weight \(w\) of a representation \(R\), the quadratic operator depends
+on
+\[
+  \omega_n\longmapsto \omega_n+w(A_0),
+\]
+for bosons, with the analogous anti-periodic frequencies for fermions.  This
+statement can be checked directly from the covariant derivative
+\(D_0=\partial_\tau+\operatorname{ad}_{A_0}\), and then extended from a
+Cartan-valued \(A_0\) to arbitrary \(A_0\) by \(G\)-invariance of the
+quadratic form.
+
+For one complex bosonic oscillator of energy \(E=|p|\) and charge \(q\), the
+thermal part of the free-energy density is
+\[
+  T\log\left(1-e^{-\beta(E-\mu q)}\right)
+  +
+  T\log\left(1-e^{-\beta(E+\mu q)}\right).
+\]
+Putting \(\mu=i a\) and differentiating twice at \(a=0\) gives
+\[
+  \left.\frac{\partial^2 f_B(i a)}{\partial a^2}\right|_{a=0}
+  =
+  \frac{2q^2}{T}\,n_B(E/T)(1+n_B(E/T)).
+\]
+Thus a real bosonic Gaussian determinant, which is one half of the complex
+determinant in a real representation, contributes
+\[
+  \frac{q^2}{T}\,n_B(E/T)(1+n_B(E/T)).
+\]
+For one Dirac oscillator, the two spin polarizations and the
+particle-antiparticle pair give
+\[
+  \left.\frac{\partial^2 f_F(i a)}{\partial a^2}\right|_{a=0}
+  =
+  \frac{4q^2}{T}\,n_F(E/T)(1-n_F(E/T)).
+\]
+After summing over weights, \(q^2\) is replaced by
+\(w^aw^bA_0^aA_0^b\), and
+\(\sum_w w^aw^b=\operatorname{tr}_R(T^a_RT^b_R)=T_R\delta^{ab}\).
+
+A single real bosonic degree of freedom in a real representation therefore
+contributes
+\begin{equation}
+  \chi_{\rm real\ boson}^{ab}
+  =
+  T_R\delta^{ab}
+  \frac1T\int\frac{\dd^3p}{(2\pi)^3}
+  n_B(1+n_B)
+  =
+  \frac{T^2}{6}T_R\delta^{ab}.
+  \label{eq:debye-real-boson-contribution}
+\end{equation}
+A complex scalar has two real thermal degrees of freedom in \(R\), and hence
+contributes \(T^2T_R\delta^{ab}/3\).  A Dirac fermion has two spin
+polarizations and particle/antiparticle excitations.  The anti-periodic
+Matsubara sum gives the fermionic integral in
+Lemma~\ref{lem:thermal-susceptibility-integrals}, so
+\begin{equation}
+  \chi_{\rm Dirac}^{ab}
+  =
+  4T_R\delta^{ab}
+  \frac1T\int\frac{\dd^3p}{(2\pi)^3}
+  n_F(1-n_F)
+  =
+  \frac{T^2}{3}T_R\delta^{ab}.
+  \label{eq:debye-dirac-contribution}
+\end{equation}
+For gauge fields, use background-field gauge around the flat background
+\(A_0\).  Since the background field strength vanishes, the quadratic vector
+operator is \(-D^2\delta_{\mu\nu}\) and the ghost operator is \(-D^2\), both
+in the adjoint representation.  The one-loop contribution to the thermal
+free energy is therefore
+\[
+  \frac12\operatorname{Tr}_{\rm adj,\,vec}\log(-D^2)
+  -\operatorname{Tr}_{\rm adj,\,gh}\log(-D^2)
+  =
+  \left(\frac{4}{2}-1\right)\operatorname{Tr}_{\rm adj}\log(-D^2)
+\]
+in four spacetime dimensions.  The right side is the determinant of two real
+periodic bosonic thermal degrees of freedom in the adjoint representation:
+the temporal and longitudinal gauge-dependent pieces have cancelled against
+the periodic complex ghost pair.  Using \(T_{\rm adj}=C_A\), this gives
+\begin{equation}
+  \chi_{\rm gauge}^{ab}
+  =
+  2\frac{T^2}{6}C_A\delta^{ab}
+  =
+  \frac{T^2}{3}C_A\delta^{ab}.
+  \label{eq:debye-gauge-contribution}
+\end{equation}
+
+The four-dimensional one-loop free-energy density contains
+\(\frac12\chi^{ab}A_0^aA_0^b\).  Multiplying by the thermal circle length
+\(\beta=1/T\) gives the three-dimensional effective action.  Since the
+static action is written as
+\[
+  \int\dd^3x\,
+  \frac{m_D^2}{2g_3^2}\operatorname{tr}(A_0^2),
+  \qquad
+  g_3^2=g^2T,
+\]
+and \(\operatorname{tr}(A_0^2)=\delta^{ab}A_0^aA_0^b\) in the default trace
+convention, matching gives \(m_D^2=g^2\chi\).  Adding the gauge, Dirac,
+complex-scalar, and real-scalar susceptibilities gives
+\eqref{eq:one-loop-debye-mass-general}.
 \end{proof}
 
 \section{Magnetic Sector}
