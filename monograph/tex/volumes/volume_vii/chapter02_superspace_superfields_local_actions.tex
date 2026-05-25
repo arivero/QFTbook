@@ -9,6 +9,26 @@ points of an ordinary set.  This distinction is essential for a precise
 relation between fermionic path-integral variables, component fields, and
 operator-valued fermion fields.
 
+Two-component spinor conventions are those of
+Section~\ref{sec:spinor-conventions}.  In this chapter the supersymmetry
+variation is written with odd constant parameters
+\(\epsilon^\alpha,\bar\epsilon_{\dot\alpha}\).  Thus
+\(\delta_\epsilon=\epsilon^\alpha Q_\alpha+
+\bar\epsilon_{\dot\alpha}\bar Q^{\dot\alpha}\) is an even derivation of the
+supercommutative algebra of field variables.  This convention is convenient
+for component calculations because all signs are obtained from the same
+Koszul rule as for the odd coordinates.  If one instead uses commuting spinor
+parameters to label transformations of operator fields, the displayed
+component formulae are the same after the parameters are moved outside the
+graded algebra, but closure signs must be translated accordingly.
+We use
+\[
+  \theta^2=\frac12\theta^\alpha\theta_\alpha,\qquad
+  \bar\theta^2=\frac12\bar\theta_{\dot\alpha}\bar\theta^{\dot\alpha},
+  \qquad
+  \epsilon\psi=\epsilon^\alpha\psi_\alpha .
+\]
+
 \section{Superfields as Field-Variable Data}
 
 \begin{definition}[Off-shell superfield multiplet]
@@ -103,28 +123,110 @@ it has the component expansion
 \end{definition}
 
 Here \(\phi\) is an even scalar field, \(\psi_\alpha\) an odd Weyl spinor
-field, and \(F\) an even auxiliary field.  The component supersymmetry
-transformations follow by acting with
-\(\epsilon^\alpha Q_\alpha+\bar\epsilon_{\dot\alpha}\bar Q^{\dot\alpha}\)
-and re-expanding in \(\theta\):
-\[
-  \delta\phi=\sqrt2\,\epsilon\psi,
-\]
-\[
+field, and \(F\) an even auxiliary field.
+
+\begin{proposition}[Component transformations of a chiral multiplet]
+\label{prop:chiral-component-transformations-derived}
+With the supertranslation derivations displayed above and the odd-parameter
+convention fixed at the beginning of the chapter, the components of a chiral
+superfield transform as
+\begin{align}
+  \delta\phi&=\sqrt2\,\epsilon\psi,
+  \label{eq:chiral-delta-phi}\\
   \delta\psi_\alpha
-  =
+  &=
   \sqrt2\,\epsilon_\alpha F
-  +\ii\sqrt2\,\sigma^\mu_{\alpha\dot\alpha}\bar\epsilon^{\dot\alpha}
-  \partial_\mu\phi,
-\]
-\[
+  +\ii\sqrt2\,\sigma^\mu_{\alpha\dot\alpha}
+  \bar\epsilon^{\dot\alpha}\partial_\mu\phi,
+  \label{eq:chiral-delta-psi}\\
   \delta F
-  =
+  &=
   \ii\sqrt2\,\bar\epsilon_{\dot\alpha}
   \bar\sigma^{\mu\dot\alpha\alpha}\partial_\mu\psi_\alpha .
+  \label{eq:chiral-delta-F}
+\end{align}
+The commutator of two such even variations is the translation
+\[
+  [\delta_{\epsilon_1},\delta_{\epsilon_2}]
+  =
+  a^\mu\partial_\mu,
+  \qquad
+  a^\mu=
+  2\ii\left(
+  \epsilon_1\sigma^\mu\bar\epsilon_2
+  -\epsilon_2\sigma^\mu\bar\epsilon_1
+  \right),
 \]
-The auxiliary field makes the algebra close on components before using
-Euler--Lagrange equations.
+on each of \(\phi,\psi_\alpha,F\), without imposing equations of motion.
+\end{proposition}
+
+\begin{proof}
+Use left derivatives with respect to odd variables.  In the chiral coordinate
+system \((y^\mu,\theta,\bar\theta)\), the chiral condition removes the
+\(\bar\theta\)-dependence of \(\Phi\), while the supercharges restrict to
+\[
+  Q_\alpha=\frac{\partial^L}{\partial\theta^\alpha},
+  \qquad
+  \bar Q_{\dot\alpha}
+  =
+  2\ii\,\theta^\beta\sigma^\mu_{\beta\dot\alpha}\partial_\mu
+\]
+on chiral superfields.  Hence
+\[
+  \delta\Phi
+  =
+  \epsilon^\alpha
+  \frac{\partial^L}{\partial\theta^\alpha}
+  \bigl(\phi+\sqrt2\,\theta^\beta\psi_\beta+\theta^2F\bigr)
+  +
+  2\ii\,\bar\epsilon_{\dot\alpha}\theta^\beta
+  \sigma^\mu_{\beta}{}^{\dot\alpha}
+  \partial_\mu
+  \bigl(\phi+\sqrt2\,\theta^\gamma\psi_\gamma+\theta^2F\bigr).
+\]
+The coefficient of \(1\) is
+\(\sqrt2\,\epsilon^\alpha\psi_\alpha\), giving
+\eqref{eq:chiral-delta-phi}.  The coefficient of \(\theta^\alpha\) is
+\(\sqrt2\,\delta\psi_\alpha\).  Since
+\(\partial^L\theta^2/\partial\theta^\alpha=\theta_\alpha\), the
+\(\epsilon Q\) part contributes \(\sqrt2\,\epsilon_\alpha F\), and the
+\(\bar\epsilon\bar Q\) part contributes
+\(\ii\sqrt2\,\sigma^\mu_{\alpha\dot\alpha}\bar\epsilon^{\dot\alpha}
+\partial_\mu\phi\), giving \eqref{eq:chiral-delta-psi}.
+
+The coefficient of \(\theta^2\) gives \(\delta F\).  The
+\(\epsilon Q\) part has no \(\theta^2\) contribution because
+\(\partial^L(\theta^2F)/\partial\theta^\alpha\) is only linear in \(\theta\).
+The remaining term is
+\[
+  2\ii\sqrt2\,\bar\epsilon_{\dot\alpha}
+  \theta^\beta\theta^\gamma
+  \sigma^\mu_{\beta}{}^{\dot\alpha}
+  \partial_\mu\psi_\gamma .
+\]
+Using
+\(\theta^\beta\theta^\gamma
+=-\frac12\epsilon^{\beta\gamma}\theta^\rho\theta_\rho\)
+and the spinor-index conventions of
+Section~\ref{sec:spinor-conventions}, this coefficient is precisely
+\eqref{eq:chiral-delta-F}.
+
+For closure, it is shortest to return to the supertranslation algebra.  Since
+\(\delta_{\epsilon_i}\) are even derivations with odd coefficients,
+\[
+  [\delta_{\epsilon_1},\delta_{\epsilon_2}]
+  =
+  \epsilon_1^\alpha\bar\epsilon_{2\dot\beta}
+  \{Q_\alpha,\bar Q^{\dot\beta}\}
+  -
+  \epsilon_2^\alpha\bar\epsilon_{1\dot\beta}
+  \{Q_\alpha,\bar Q^{\dot\beta}\},
+\]
+and the anticommutator of the differential operators is
+\(2\ii\sigma^\mu_{\alpha}{}^{\dot\beta}\partial_\mu\).  This gives the
+displayed translation.  The computation used only the component expansion and
+the auxiliary field \(F\); no Euler--Lagrange equation was invoked.
+\end{proof}
 
 \section{Berezin Integration and Local Superspace Actions}
 
@@ -169,6 +271,205 @@ Euler--Lagrange equation gives \(F=-\overline{W'(\phi)}\) and potential
 \[
   V(\phi,\bar\phi)=|W'(\phi)|^2 .
 \]
+
+\begin{proposition}[Component form of the Wess--Zumino model]
+\label{prop:wess-zumino-component-action}
+Let \(\Phi^i\), \(i=1,\ldots,n\), be chiral superfields with canonical
+Kahler potential \(K=\sum_i\bar\Phi^{\bar i}\Phi^i\) and holomorphic
+superpotential \(W(\Phi)\).  Up to total derivatives, the superspace action
+\[
+  S_{\rm WZ}
+  =
+  \int d^4x\,d^4\theta\,\bar\Phi^{\bar i}\Phi^i
+  +
+  \left[
+    \int d^4x\,d^2\theta\,W(\Phi)+{\rm h.c.}
+  \right]
+\]
+has Lagrangian density
+\begin{align}
+  \mathcal L_{\rm WZ}
+  &=
+  -\partial_\mu\bar\phi^{\bar i}\partial^\mu\phi^i
+  -\ii\bar\psi^{\bar i}\bar\sigma^\mu\partial_\mu\psi^i
+  +\bar F^{\bar i}F^i                                      \notag\\
+  &\quad
+  +F^i\,\partial_i W(\phi)
+  +\bar F^{\bar i}\,\partial_{\bar i}\bar W(\bar\phi)
+  -\frac12\,\partial_i\partial_jW(\phi)\,\psi^i\psi^j
+  -\frac12\,\partial_{\bar i}\partial_{\bar j}\bar W(\bar\phi)\,
+  \bar\psi^{\bar i}\bar\psi^{\bar j}.
+  \label{eq:wess-zumino-component-lagrangian}
+\end{align}
+The auxiliary Euler--Lagrange equations are
+\[
+  F^i=-\partial_{\bar i}\bar W(\bar\phi),
+  \qquad
+  \bar F^{\bar i}=-\partial_i W(\phi),
+\]
+and the on-shell scalar potential is
+\[
+  V(\phi,\bar\phi)
+  =
+  \sum_i|\partial_iW(\phi)|^2 .
+\]
+\end{proposition}
+
+\begin{proof}
+For the \(D\)-term, expand \(\bar\Phi^{\bar i}\Phi^i\) in ordinary
+\((x,\theta,\bar\theta)\) coordinates and extract the
+\(\theta^2\bar\theta^2\) coefficient.  The \(y=x+\ii\theta\sigma\bar\theta\)
+dependence of \(\Phi\) and the conjugate
+\(\bar y=x-\ii\theta\sigma\bar\theta\) dependence of \(\bar\Phi\) give
+\[
+  [\bar\Phi^{\bar i}\Phi^i]_{\theta^2\bar\theta^2}
+  =
+  -\partial_\mu\bar\phi^{\bar i}\partial^\mu\phi^i
+  -\ii\bar\psi^{\bar i}\bar\sigma^\mu\partial_\mu\psi^i
+  +\bar F^{\bar i}F^i
+  +\partial_\mu(\cdots).
+\]
+The total derivative is discarded in the action.  For the \(F\)-term, use
+Taylor expansion of the holomorphic function in the nilpotent increment
+\(\sqrt2\,\theta\psi+\theta^2F\):
+\[
+  W(\Phi)
+  =
+  W(\phi)
+  +\partial_iW(\phi)
+  \bigl(\sqrt2\,\theta\psi^i+\theta^2F^i\bigr)
+  +\frac12\partial_i\partial_jW(\phi)
+  \bigl(\sqrt2\,\theta\psi^i\bigr)
+  \bigl(\sqrt2\,\theta\psi^j\bigr).
+\]
+Since \(\theta^\alpha\theta^\beta\psi^i_\alpha\psi^j_\beta
+=-\frac12\theta^\rho\theta_\rho\,\psi^{i\alpha}\psi^j_\alpha\), the
+\(\theta^2\) coefficient is
+\[
+  F^i\partial_iW(\phi)
+  -\frac12\partial_i\partial_jW(\phi)\psi^i\psi^j .
+\]
+Adding the conjugate gives \eqref{eq:wess-zumino-component-lagrangian}.
+The equations for \(F^i,\bar F^{\bar i}\) are algebraic because no
+derivatives of auxiliary fields occur.  Substitution gives
+\[
+  \bar F^{\bar i}F^i
+  +F^i W_i+\bar F^{\bar i}\bar W_{\bar i}
+  =
+  -\sum_i|W_i|^2,
+\]
+so the Lagrangian has the standard form kinetic minus potential, with
+\(V=\sum_i|W_i|^2\).
+\end{proof}
+
+For the elementary Wess--Zumino model one takes one chiral superfield and
+\[
+  W(\Phi)=\frac12m\Phi^2+\frac13 y\Phi^3 .
+\]
+The parameters \(m\) and \(y\) are coordinates in the chosen supersymmetric
+regularization scheme; later nonrenormalization arguments concern how these
+coordinates enter Wilsonian \(F\)-terms, not an undefined all-purpose
+``effective potential''.
+
+\section{Real Vector Superfields and Wess--Zumino Gauge}
+
+Gauge multiplets require a separate superfield because a connection is not a
+gauge-invariant local field variable.  A real vector superfield is a
+Lie-algebra-valued superfield \(V=V^\dagger\).  In a representation of the
+gauge group, a chiral gauge parameter \(\Lambda\) acts by
+\[
+  e^V\longmapsto e^{-\bar\Lambda}e^Ve^{-\Lambda},
+  \qquad
+  \bar D_{\dot\alpha}\Lambda=0 .
+\]
+For an Abelian gauge group this reduces to
+\[
+  V\longmapsto V-\Lambda-\bar\Lambda .
+\]
+The lowest scalar, spinor, and complex auxiliary components of a general real
+superfield are therefore gauge representatives, not physical fields.
+
+\begin{proposition}[Wess--Zumino gauge as a representative]
+\label{prop:wess-zumino-gauge-representative}
+Locally in field space and perturbatively in the non-Abelian case, the chiral
+gauge freedom can put a real vector superfield in the representative
+\[
+  V_{\rm WZ}
+  =
+  -\theta\sigma^\mu\bar\theta\,A_\mu
+  +\ii\theta^2\bar\theta_{\dot\alpha}\bar\lambda^{\dot\alpha}
+  -\ii\bar\theta^2\theta^\alpha\lambda_\alpha
+  +\frac12\theta^2\bar\theta^2D .
+  \label{eq:wess-zumino-gauge-vector-superfield}
+\]
+The remaining gauge freedom is the ordinary gauge transformation of
+\(A_\mu,\lambda,\bar\lambda,D\).  A supersymmetry transformation of
+\(V_{\rm WZ}\) does not preserve the representative
+\eqref{eq:wess-zumino-gauge-vector-superfield}; it must be followed by a
+field-dependent chiral gauge transformation.  Thus Wess--Zumino gauge is a
+gauge-fixed coordinate choice on field variables, not a gauge-invariant
+realization of the supersymmetry algebra.
+\end{proposition}
+
+\begin{proof}
+A general real superfield has the finite expansion
+\[
+  V=C+\theta\chi+\bar\theta\bar\chi+\theta^2M+\bar\theta^2\bar M
+  +\theta\sigma^\mu\bar\theta\,v_\mu
+  +\theta^2\bar\theta\bar\rho
+  +\bar\theta^2\theta\rho
+  +\theta^2\bar\theta^2E .
+\]
+The chiral parameter has the expansion
+\[
+  \Lambda(y,\theta)
+  =
+  a(y)+\sqrt2\,\theta\zeta(y)+\theta^2 f(y).
+\]
+In the Abelian transformation \(V\mapsto V-\Lambda-\bar\Lambda\), the real
+part of \(a\) removes \(C\), \(\zeta\) removes \(\chi\), and \(f\) removes
+\(M\).  The imaginary part of \(a\) remains and acts on \(v_\mu\) by the
+ordinary gauge transformation \(v_\mu\mapsto v_\mu+\partial_\mu\alpha\) after
+the \(y,\bar y\) expansion is written in \(x\)-coordinates.  Renaming the
+remaining components with the normalization in
+\eqref{eq:wess-zumino-gauge-vector-superfield} gives
+\((A_\mu,\lambda,\bar\lambda,D)\).
+
+For a non-Abelian group, the same elimination is performed order by order
+using the Baker--Campbell--Hausdorff expansion of
+\(e^{-\bar\Lambda}e^Ve^{-\Lambda}\).  Since the components removed by
+\(\Lambda\) are algebraic superfield coordinates and the identity
+transformation has invertible linearization on them, the formal implicit
+function theorem gives the local gauge representative.  Supersymmetry
+changes the removed components because \(Q\) and \(\bar Q\) do not commute
+with the gauge-slice condition; the compensating chiral gauge transformation
+is therefore necessary.
+\end{proof}
+
+In Abelian Wess--Zumino gauge the chiral field strength
+\[
+  W_\alpha=-\frac14\bar D^2D_\alpha V
+\]
+has component expansion
+\[
+  W_\alpha(y,\theta)
+  =
+  -\ii\lambda_\alpha
+  +\theta_\alpha D
+  -\ii(\sigma^{\mu\nu}\theta)_\alpha F_{\mu\nu}
+  +\theta^2\sigma^\mu_{\alpha\dot\alpha}
+  \partial_\mu\bar\lambda^{\dot\alpha}.
+\]
+The non-Abelian formula replaces \(D_\alpha V\) by
+\(e^{-V}D_\alpha e^V\) and ordinary derivatives by covariant derivatives, as
+in Chapter~\ref{ch:susy-gauge-theory}.  With the trace and gauge-coupling
+normalization fixed there, the superspace term
+\[
+  \frac{1}{4g^2}\int d^2\theta\,\operatorname{tr}(W^\alpha W_\alpha)
+  +{\rm h.c.}
+\]
+contains
+\(-\frac{1}{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\).
 
 \section{Operator Fields and Grassmann Variables}
 

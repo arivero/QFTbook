@@ -17,10 +17,19 @@
   data.
 - Supercharges and covariant derivatives as derivations.
 - Chiral superfields and component expansion.
-- Component supersymmetry transformations for a chiral multiplet.
+- Component supersymmetry transformations for a chiral multiplet, derived
+  explicitly from the chiral-coordinate supercharge action with odd
+  supersymmetry parameters.
+- Off-shell closure of the chiral-multiplet component transformations.
 - Berezin integration as top-coefficient projection on the odd coordinate
   algebra.
-- \(D\)-terms, \(F\)-terms, and component Lagrangian for a chiral field.
+- \(D\)-terms, \(F\)-terms, and component Lagrangian for chiral fields.
+- Wess--Zumino model component action, auxiliary-field elimination, and scalar
+  potential derivation for canonical Kahler potential and holomorphic
+  superpotential.
+- Real vector superfields, chiral gauge transformations, Wess--Zumino gauge as
+  a local gauge representative, and the component expansion of the Abelian
+  chiral field strength \(W_\alpha\).
 - Distinction between operator-valued fermion fields and Grassmann-valued
   path-integral variables by correlation functional.
 - Supersymmetric Wilsonian scheme as regulated field-variable data,
@@ -54,6 +63,10 @@
 | \(\Phi\) | chiral superfield |
 | \(\phi,\psi_\alpha,F\) | chiral multiplet component fields |
 | \(K\), \(W\) | Kähler potential and superpotential coordinates |
+| \(V\) | real vector superfield |
+| \(\Lambda\) | chiral gauge parameter for vector-superfield gauge transformations |
+| \(A_\mu,\lambda_\alpha,D\) | Wess--Zumino gauge vector-multiplet representative fields |
+| \(W_\alpha\) | chiral gauge field-strength superfield |
 | \(\mathfrak F_\Lambda\) | regulated field-variable space at Wilsonian scale \(\Lambda\) |
 | \(S_\Lambda\) | Lagrangian functional in a Wilsonian scheme |
 | \(Q\) | odd localization symmetry in a regulated localization datum |
@@ -66,25 +79,33 @@
 2. Off-shell superfield multiplets package field variables and auxiliary
    fields; they are not Hilbert-space particle multiplets by definition.
 3. Chiral superfields are the kernel of \(\bar D_{\dot\alpha}\).
-4. Auxiliary fields make component supersymmetry close off shell.
+4. The chiral-multiplet transformations follow from coefficient extraction in
+   the chiral-coordinate expansion; auxiliary fields make component
+   supersymmetry close off shell.
 5. Berezin integration is coefficient extraction in the odd algebra.
 6. Supersymmetric local actions are built from \(D\)-term and \(F\)-term
    integrals under the stated convention.
-7. Holomorphic and nonrenormalization statements require an explicitly
+7. The Wess--Zumino model component Lagrangian is obtained by a nilpotent
+   Taylor expansion of \(W(\Phi)\) and top-coefficient extraction; eliminating
+   auxiliary fields gives \(V=\sum_i|\partial_i W|^2\).
+8. Wess--Zumino gauge is a local representative of a vector superfield modulo
+   chiral gauge transformations; supersymmetry in this gauge requires a
+   compensating gauge transformation and is not a gauge-invariant realization.
+9. Holomorphic and nonrenormalization statements require an explicitly
    defined supersymmetric Wilsonian scheme before they can be used in exact
    gauge dynamics.
-8. BV/off-shell-superfield methods can organize the symmetry-preserving
+10. BV/off-shell-superfield methods can organize the symmetry-preserving
    Wilsonian integration problem after a regulator is supplied, but do not
    themselves prove the existence of a manifest supersymmetric regulator.
-9. Dimensional reduction and proposed higher-derivative or Pauli--Villars-type
+11. Dimensional reduction and proposed higher-derivative or Pauli--Villars-type
    supersymmetric regulators require explicit loop-order or scheme-level
    consistency checks before they certify nonrenormalization or anomaly
    statements.
-10. Supersymmetric examples in dimensions other than four must not be treated
+12. Supersymmetric examples in dimensions other than four must not be treated
    as analogies: \(2D\) LG/CY/GLSM, \(3D\) Chern--Simons--matter, and \(6D\)
    SCFT examples have distinct definitions, anomaly data, extended operators,
    and nonperturbative-status ledgers.
-11. Localization formulae require a regulated localization datum; residue
+13. Localization formulae require a regulated localization datum; residue
    prescriptions and singular instanton sectors are not automatic consequences
    of formal \(Q\)-exact deformation.
 
