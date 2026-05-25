@@ -15,6 +15,9 @@ how fixed-\(t\) dispersion relations with subtractions arise.
 The detailed angular derivation is four-dimensional.  Any \(D>4\) logarithmic
 power statement must be separated as a conditional Gegenbauer/angular-tube
 generalization, not inferred from the displayed \(D=4\) Lehmann ellipse.
+The chapter must also derive Watson's theorem for elastic form factors in the
+same partial-wave normalization before using phase information in dispersion
+relations.
 
 The chapter must not present these statements as slogans. It must state the
 hypotheses:
@@ -44,6 +47,10 @@ hypotheses:
   axiom systems;
 - possible pole terms are omitted only in the displayed clean formula and would
   be added as residues.
+- for Watson's theorem: a one-channel elastic interval, a Hermitian local
+  operator with the channel quantum numbers, real analyticity of the form
+  factor, and the same \(S_A=1+2i\beta a_A\) normalization as the scattering
+  partial waves.
 
 ## Symbol Inventory
 
@@ -68,6 +75,13 @@ hypotheses:
   \(D>4\).
 - \(g_\ell^{(D)}\): degree-\(\ell\) spherical-harmonic degeneracy on
   \(S^{D-2}\), growing as \(O(\ell^{D-3})\).
+- \(A\): collective channel label for Watson's theorem, including internal
+  quantum numbers and angular momentum.
+- \(\mathcal F_A^\pm(s)\): upper/lower boundary values of the
+  vacuum-to-two-particle partial-wave form factor.
+- \(\delta_A(s)\): elastic phase shift defined by
+  \(S_A(s)=e^{2i\delta_A(s)}\).
+- \(\Omega_A(s)\): Omnes function with boundary phase \(\delta_A(s)\).
 
 ## Claim Ledger
 
@@ -124,12 +138,32 @@ hypotheses:
     glueball asymptotic states.  Four-dimensional pure Yang--Mills requires a
     separately supplied positive mass gap and construction of the corresponding
     physical Hilbert space.
+16. In a one-channel elastic interval, unitarity gives the form-factor
+    discontinuity
+    \[
+      \mathcal F_A^+-\mathcal F_A^-
+      =
+      2i\beta a_A^*\mathcal F_A^+ .
+    \]
+    With \(a_A=e^{i\delta_A}\sin\delta_A/\beta\) and
+    \(\mathcal F_A^-=(\mathcal F_A^+)^*\), this gives
+    \(\mathcal F_A^+=e^{2i\delta_A}\mathcal F_A^-\), hence
+    \(e^{-i\delta_A}\mathcal F_A^+\in\mathbb R\).
+17. For the standard two-pion examples, the isovector vector form factor has
+    phase \(\delta^1_1\) and the isoscalar scalar form factor has phase
+    \(\delta^0_0\) below the first inelastic threshold in the corresponding
+    channel.
+18. The Omnes representation requires additional analyticity, zero/pole, and
+    growth hypotheses beyond Watson's theorem.  Watson fixes the elastic-cut
+    boundary phase; it does not determine the full form factor by itself.
 
 ## Figure Requirements
 
 - Complex \(x\)-plane with physical interval, crossed-channel cuts, possible bound-state poles, and Lehmann ellipse.
 - Partial-wave profile showing positive weights and the box comparison.
 - Fixed-\(t\) dispersion contour with right and left cuts and subtraction circles.
+- Elastic form-factor cut diagram showing upper/lower boundary values,
+  scattering phase \(S_A=e^{2i\delta_A}\), and the rotated real form factor.
 - Effective-radius schematic for the \(D\)-dimensional scaling
   \(\sigma_{\mathrm{tot}}\asymp R_{\mathrm{eff}}^{D-2}\), explicitly marked
   as a restatement of the conditional higher-dimensional bound rather than an
@@ -176,3 +210,11 @@ hypotheses:
   part-wide mostly-plus Mandelstam convention and made the physical
   \(s\)-channel sign \(t\le0\) distinct from positive crossed-channel
   singularities.
+- 2026-05-25 issue #453 pass: added Watson's theorem for elastic form factors
+  after the partial-wave normalization.  The manuscript now states the
+  one-channel elastic hypotheses, derives the form-factor discontinuity
+  \(\mathcal F_A^+-\mathcal F_A^-=2i\beta a_A^*\mathcal F_A^+\), obtains the
+  phase relation \(\mathcal F_A^+=e^{2i\delta_A}\mathcal F_A^-\), records the
+  two-pion vector and scalar examples, gives the coupled-channel matrix
+  replacement, and separates the Omnes construction from Watson's theorem by
+  listing the extra analyticity, zero/pole, and growth inputs.
