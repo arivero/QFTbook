@@ -1862,6 +1862,280 @@ limit.  A composite operator insertion requires its own source coordinate and
 contact-term prescription, even when the same dimensionally regularized graph
 integrals are used to compute its correlators.
 
+\section{Supersymmetric Ward Identities and Regulator Data}
+\label{sec:susy-regulator-data}
+
+Supersymmetric gauge theories require one more layer of bookkeeping beyond the
+BRST data above.  The additional symmetry generators are odd, their algebra
+contains translations and often gauge transformations, and in many multiplet
+descriptions their closure uses auxiliary fields or the equations of motion.
+For this reason the phrase that a regulator preserves supersymmetry has a
+precise meaning only after the fields, sources, evanescent variables, and
+operator insertions have been specified.
+
+\begin{definition}[Supersymmetry datum on a gauge-fixed local theory]
+\label{def:susy-datum-gauge-fixed}
+Let \(\Phi^A\) denote the complete list of fields in a gauge-fixed
+perturbative theory, including ghosts, antighosts, Nakanishi--Lautrup fields,
+matter fields, and any auxiliary fields used to close the transformation law
+off shell.  A supersymmetry datum consists of:
+\begin{enumerate}
+\item a finite-dimensional spinor space \(\mathsf S\) of constant
+supersymmetry parameters;
+\item for every \(\varepsilon\in\mathsf S\), an odd derivation
+\[
+  q_\varepsilon:
+  \mathcal F_{\mathrm{loc}}\longrightarrow\mathcal F_{\mathrm{loc}}
+\]
+of the local jet algebra;
+\item a local gauge-fixed action with external sources for the nonlinear
+BRST and supersymmetry variations;
+\item a closure formula of the form
+\[
+  \{q_\varepsilon,q_\eta\}
+  =
+  a^\mu(\varepsilon,\eta)\partial_\mu
+  +\delta_{\alpha(\varepsilon,\eta;\Phi)}
+  +s\,r(\varepsilon,\eta;\Phi)
+  +\mathcal E_i\,R^i_{\varepsilon,\eta},
+  \label{eq:susy-closure-general}
+\]
+where \(a^\mu(\varepsilon,\eta)\) is the translation parameter,
+\(\delta_{\alpha}\) is a gauge transformation with possibly field-dependent
+parameter, \(s\) is the BRST differential, \(\mathcal E_i\) are the
+Euler--Lagrange expressions, and \(R^i_{\varepsilon,\eta}\) are local
+differential operators.
+\end{enumerate}
+If the last term in \eqref{eq:susy-closure-general} is absent after auxiliary
+fields have been included, the supersymmetry datum is off-shell closed in the
+chosen field coordinates.  If it is present, the closure is on shell and the
+correct off-shell object is the corresponding BV extended action rather than
+the transformation law on fields alone.
+\end{definition}
+
+The BV formulation removes the ambiguity in the on-shell case.  The
+Euler--Lagrange term in \eqref{eq:susy-closure-general} is then encoded by
+antifield terms in the extended action, and the combined BRST/supersymmetry
+operator is a nilpotent vector field on the field-antifield space.  In
+algebraic renormalization this is expressed by adjoining constant ghosts:
+commuting spinor ghosts \(\epsilon\) for the odd supersymmetry generators and
+an anticommuting vector ghost \(v^\mu\) for translations.  In a flat
+four-dimensional \(\mathcal N=1\) example the algebraic form begins as
+\[
+  s_{\mathrm{ext}}
+  =
+  s_{\mathrm{BRST}}
+  +\epsilon^\alpha Q_\alpha
+  +\bar\epsilon_{\dot\alpha}\bar Q^{\dot\alpha}
+  +v^\mu\partial_\mu
+  -2\ii\,\epsilon\sigma^\mu\bar\epsilon\,
+    \frac{\partial}{\partial v^\mu}
+  +\cdots ,
+  \label{eq:extended-susy-brst-differential}
+\]
+where the omitted terms are the gauge and antifield contributions required by
+the closure formula.  The defining property is
+\[
+  s_{\mathrm{ext}}^2=0
+  \quad\text{on integrated local functionals modulo total derivatives.}
+\]
+This nilpotent differential, not the transformation of a single component
+field in isolation, is the object tested by renormalization.
+
+\begin{definition}[Separated regularization and scheme data]
+\label{def:susy-separated-regularization-data}
+A regularized supersymmetric gauge calculation contains four distinct kinds
+of data.
+\begin{enumerate}
+\item The \emph{path-integral regulator} \(\mathfrak R\): a finite cutoff,
+lattice, higher-derivative covariance, dimensional analytic continuation, or
+other rule that assigns regulated Green functions or regulated graph
+distributions to the field variables.
+\item The \emph{gauge-fixing and BV data}: the gauge-fixing fermion, ghosts,
+antifields or external sources for nonlinear variations, the extended
+differential \(s_{\mathrm{ext}}\), and the local action including all
+evanescent fields produced by the regulator.
+\item The \emph{operator-insertion regulator}: for every composite operator
+or source multiplet, a local source coordinate and contact-term prescription
+that define insertions before the regulator is removed.
+\item The \emph{renormalized coordinate scheme}: the finite choice of
+couplings, fields, gauge parameters, source coordinates, and evanescent
+coordinates after local subtractions have been made.
+\end{enumerate}
+The regulator is compatible with a chosen supersymmetry datum through order
+\(N\) in formal perturbation theory if the source-extended renormalized
+effective action \(\Gamma^R_{\le N}\) satisfies
+\[
+  \mathcal S_{\mathrm{ext}}(\Gamma^R_{\le N})
+  =
+  O(\hbar^{N+1}),
+  \label{eq:susy-compatible-regulator-condition}
+\]
+where \(\mathcal S_{\mathrm{ext}}\) is the Slavnov functional for the combined
+BRST, supersymmetry, and translation ghosts.  Exact compatibility means
+\eqref{eq:susy-compatible-regulator-condition} to all orders in the formal
+expansion under consideration.
+\end{definition}
+
+This definition separates several phenomena that otherwise get conflated.
+A regulator may preserve the BRST identity while breaking a supersymmetry Ward
+identity, because the gauge orbit and the supermultiplet structure are
+different parts of the field-space data.  Conversely, a regulator can preserve
+a nilpotent scalar supersymmetry of a twisted formulation while leaving the
+full Lorentzian supersymmetry algebra to be recovered only after taking a
+continuum limit and tuning the allowed local counterterms.
+
+\begin{proposition}[Cohomological restoration of supersymmetry Ward identities]
+\label{prop:susy-ward-restoration}
+Assume a power-counting renormalizable supersymmetric gauge theory has been
+written with the source and BV data of
+Definition~\ref{def:susy-separated-regularization-data}.  Suppose that:
+\begin{enumerate}
+\item the classical extended action \(S_{\mathrm{ext}}\) satisfies the
+combined identity
+\[
+  \mathcal S_{\mathrm{ext}}(S_{\mathrm{ext}})=0;
+\]
+\item the chosen regulator and subtraction procedure obey the quantum action
+principle for the combined identities: after lower-order subtractions, the
+order-\(N\) breaking of \(\mathcal S_{\mathrm{ext}}\) is an integrated local
+\(D\)-form of extended ghost number \(1\);
+\item the local field-coordinate list includes every evanescent coordinate
+generated by the regulator, including epsilon-scalars and their independent
+couplings in dimensional reduction;
+\item the class of the order-\(N\) breaking vanishes in
+\[
+  H^{1,D}(s_{\mathrm{ext}}\mid d)
+\]
+computed in the same local algebra of fields, antifields, sources, constant
+ghosts, and evanescent variables.
+\end{enumerate}
+Then there is a local counterterm at order \(N\) for which the renormalized
+effective action satisfies
+\[
+  \mathcal S_{\mathrm{ext}}(\Gamma^R_{\le N})
+  =
+  O(\hbar^{N+1}).
+\]
+If the cohomology class is nonzero, the breaking is an anomaly or a regulator
+obstruction in the specified symmetry problem; it cannot be removed by a local
+finite redefinition inside that coordinate system.
+\end{proposition}
+
+\begin{proof}
+The proof is the same inductive cohomological mechanism as
+Theorem~\ref{thm:all-order-slavnov-taylor-restoration}, applied to the
+extended functional \(\mathcal S_{\mathrm{ext}}\).  Suppose the identity has
+been restored through order \(N-1\).  The quantum action principle gives
+\[
+  \mathcal S_{\mathrm{ext}}
+  \bigl(\Gamma^R_{<N}+\hbar^N\Gamma_N^{\mathrm{reg}}\bigr)
+  =
+  \hbar^N\Delta_N+O(\hbar^{N+1}),
+  \qquad
+  \Delta_N=\int a_N ,
+\]
+with \(a_N\) local of extended ghost number \(1\).  Linearizing the extended
+Slavnov functional at the classical action gives the nilpotent operator
+\(\mathcal B_{S_{\mathrm{ext}}}\), whose action on local functionals is
+\(s_{\mathrm{ext}}\) modulo total derivatives.  The consistency identity
+\[
+  \mathcal B_X\mathcal S_{\mathrm{ext}}(X)=0
+\]
+therefore implies
+\[
+  s_{\mathrm{ext}}a_N+d r_N=0
+\]
+for a local \((D-1)\)-form \(r_N\).  The vanishing of the cohomology class
+means
+\[
+  a_N=s_{\mathrm{ext}}b_N+d c_N
+\]
+with \(b_N\) local of extended ghost number \(0\).  Adding the counterterm
+\(-\hbar^N\int b_N\) changes the order-\(N\) breaking by
+\(-\hbar^N\Delta_N\), while the total derivative integrates to zero in the
+local-functional quotient.  This restores the identity through order \(N\).
+The nonzero-class case follows because a local counterterm changes
+\(\Delta_N\) only by an \(s_{\mathrm{ext}}\)-exact term modulo \(d\).
+\end{proof}
+
+Several regulators used for supersymmetric theories can now be described by
+their data.
+
+\begin{enumerate}
+\item \textbf{Dimensional reduction.}  DRED keeps the four-dimensional spin
+and gauge index algebra used by the supersymmetry transformations while loop
+momenta are analytically continued in the \(\hat\eta\)-sector.  Its local
+coordinate list includes the \(\tilde\eta\)-sector epsilon-scalars and all
+couplings generated by their interactions.  Within perturbation theory the
+question is whether the extended Slavnov identity can be restored in the
+local algebra containing these variables.  Dropping the epsilon-scalar
+coordinates changes the regulator datum and invalidates the cohomology test.
+\item \textbf{Conventional dimensional regularization.}  CDR and HV provide
+BRST-compatible regulators for many vectorlike gauge calculations.
+For four-dimensional supersymmetry their continued tensor and spinor algebras
+do not carry the original component-field representation without extra
+evanescent data.  The supersymmetry Ward identity must therefore be tested
+through \(\mathcal S_{\mathrm{ext}}\); any local breaking is either removed by
+the restoration criterion above or recorded as an obstruction for that scheme.
+\item \textbf{Superspace and higher-derivative regulators.}  In a superspace
+formulation, a regulator is compatible with the manifest supersymmetry when
+it is written as a local functional of superfields and supercovariant
+derivatives, with the Berezin integration and source supermultiplets specified.
+Gauge theories additionally require a gauge-covariant or background-covariant
+higher-derivative kernel and a BRST/BV treatment of the remaining gauge
+fixing.  Residual divergences, when present, still require a local subtraction
+scheme whose Ward identities are checked by the same cohomological criterion.
+\item \textbf{Pauli--Villars-type auxiliary determinants.}  A
+Pauli--Villars-type regulator is specified by the auxiliary field content,
+statistics, mass matrix, gauge representation, and determinant prescription.
+Compatibility with supersymmetry requires regulator fields to be organized
+with the same supersymmetry datum and source identity, or else the resulting
+breaking must be local and cohomologically removable.  The presence of heavy
+auxiliary fields by itself supplies no symmetry statement.
+\item \textbf{Lattice and twisted regulators.}  A lattice regulator gives an
+ordinary finite-dimensional integral before the continuum limit, but it
+replaces continuous translations and rotations by lattice symmetries.  Full
+Poincare supersymmetry is therefore expressed, at finite lattice spacing, only
+through those subalgebras that survive the discretization.  Twisted
+formulations may preserve a nilpotent scalar charge \(Q\) with
+\[
+  Q^2=\delta_{\mathrm{gauge}}(\varphi)
+\]
+or a lattice translation plus gauge transformation.  The continuum claim is
+then a statement about the local counterterms allowed by the exact lattice
+symmetries and by the \(Q\)-Ward identity.
+\item \textbf{Localization-compatible regulators.}  A localization argument
+uses a chosen odd operator \(Q\) satisfying
+\[
+  Q^2=\mathcal L_v+\delta_{\mathrm{gauge}}+\delta_{\mathrm{flavor}}
+\]
+on the fields and sources of the regulated theory.  The deformation
+\(t\,Q V\) preserves a \(Q\)-closed expectation value only when the regulator,
+integration cycle, boundary conditions, and determinant phases are
+\(Q\)-compatible.  The derivative of a regulated expectation value is then
+\[
+  \frac{\dd}{\dd t}
+  \langle\mathcal O\rangle_t
+  =
+  -\langle Q(V\mathcal O)\rangle_t
+  +\text{local source/contact contributions},
+\]
+and it vanishes for \(Q\)-closed observables only after those contact terms
+and possible \(Q\)-anomalies have been controlled.
+\end{enumerate}
+
+Holomorphy and nonrenormalization arguments also belong to the same scheme
+language.  A Wilsonian superpotential statement is a statement in a
+renormalized superspace source chart: chiral couplings are represented by
+background chiral superfields, the Wilsonian action is expanded in local
+superspace integrals, and the allowed finite counterterms are constrained by
+chirality, locality, gauge invariance, global charges, and the chosen
+regularity domain in coupling space.  The conclusion concerns the F-term
+coordinate in that Wilsonian chart.  The Kahler potential, 1PI effective
+action, real D-terms, thresholds, and contact terms obey their own source
+identities and require separate definitions.
+
 \section{Slavnov--Taylor Identities and Counterterms}
 
 BRST symmetry gives functional identities for the generating functional and
