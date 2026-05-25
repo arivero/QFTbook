@@ -1,0 +1,491 @@
+\chapter{Two-Dimensional Sigma Models, Orbifolds, and Twist Fields}
+\label{ch:volume-v-sigma-models-orbifolds-twist-fields}
+\ConventionsEuclideanCFT
+
+\section{Sigma-Model Data as Two-Dimensional QFT Data}
+
+Let \(\Sigma\) be an oriented Euclidean surface with metric \(\gamma\), and
+let \(M\) be a smooth target manifold.  A bosonic nonlinear sigma-model
+regularized datum consists of:
+\[
+  X:\Sigma\longrightarrow M,\qquad
+  G\in\Gamma(S^2T^*M),\qquad
+  \mathcal B,\qquad
+  \Phi\in C^\infty(M),
+\]
+where \(G\) is a Riemannian metric, \(\mathcal B\) is a \(U(1)\)-gerbe
+connection with curvature \(H\in\Omega^3_{\mathrm{cl}}(M)\), and \(\Phi\) is
+the dilaton coupling to the worldsheet scalar curvature.  In a local
+trivialization of the gerbe, with two-form potential \(B\), the Euclidean
+action representative is
+\begin{equation}
+\begin{aligned}
+  S[X;\gamma]
+  &=
+  \frac1{4\pi\alpha'}
+  \int_\Sigma
+  \dd^2\sigma\sqrt\gamma\,
+  \gamma^{ab}G_{ij}(X)\partial_aX^i\partial_bX^j
+  \\
+  &\quad
+  +
+  \frac{\ii}{4\pi\alpha'}
+  \int_\Sigma
+  \dd^2\sigma\,
+  \epsilon^{ab}B_{ij}(X)\partial_aX^i\partial_bX^j
+  +
+  \frac1{4\pi}
+  \int_\Sigma
+  \dd^2\sigma\sqrt\gamma\,R_\gamma\Phi(X).
+\end{aligned}
+  \label{eq:nlsm-euclidean-action-representative}
+\end{equation}
+The invariant meaning of the \(B\)-term is the gerbe holonomy of
+\(X^*\mathcal B\).  When the gerbe is trivial this holonomy is represented by
+the integral of a globally defined two-form \(B\).  The consistency condition
+is that \([H/(2\pi\alpha')]\) has integral periods in the normalization of
+\eqref{eq:nlsm-euclidean-action-representative}.  On a surface with boundary
+one must also specify brane data that trivialize the pulled-back gerbe on the
+boundary; this chapter restricts to closed \(\Sigma\).
+
+\begin{definition}[Conformal sigma-model point]
+\label{def:conformal-sigma-model-point}
+A conformal sigma-model point is a continuum two-dimensional QFT obtained
+from a specified sigma-model regulator and coupling coordinates for which the
+renormalized stress tensor has vanishing trace on flat separated-point
+correlators and has only the stated Weyl-anomaly contact terms on curved
+worldsheets.  Equivalently, in a coordinate chart on the space of sigma-model
+couplings, the local Weyl-anomaly coefficients
+\[
+  \widehat\beta^G_{ij},\qquad
+  \widehat\beta^B_{ij},\qquad
+  \widehat\beta^\Phi
+\]
+vanish up to target-space diffeomorphisms and \(B\)-field gauge
+transformations, with \(\widehat\beta^\Phi\) allowing a constant term that
+records the central charge.  The exact QFT datum is the continuum hierarchy
+of local correlators and defect correlators.  A finite-order loop
+approximation to the tensors above is a controlled large-radius criterion
+inside a specified asymptotic expansion.
+\end{definition}
+
+The diffeomorphism ambiguity in
+Definition~\ref{def:conformal-sigma-model-point} is physical: if
+\(\xi\in\Gamma(TM)\), the field redefinition \(X^i\mapsto X^i+\xi^i(X)\)
+changes the metric and two-form couplings by
+\[
+  \delta_\xi G_{ij}=(\mathcal L_\xi G)_{ij},
+  \qquad
+  \delta_\xi B_{ij}=(\mathcal L_\xi B)_{ij},
+\]
+and therefore changes beta functions by a vector field on coupling space.
+Similarly \(B\mapsto B+\dd\Lambda\) leaves the closed-surface path integral
+unchanged except for the corresponding gerbe-gauge convention.  The
+scheme-independent trace identity is consequently formulated modulo these
+redundant coordinate directions.
+
+\section{The One-Loop Metric Beta Tensor}
+
+The first local test of conformality is the one-loop Weyl-anomaly coefficient.
+We record the derivation with its regulator and expansion hypotheses because
+the Ricci tensor is a statement about the local logarithmic divergence of the
+two-dimensional QFT.
+
+\begin{proposition}[One-loop metric divergence]
+\label{prop:nlsm-one-loop-ricci-divergence}
+Let \(M\) be Riemannian and set \(B=\Phi=0\).  Use dimensional
+regularization around \(2-\epsilon\) worldsheet dimensions and the
+background-field expansion
+\[
+  X(\sigma)=\exp_{x(\sigma)}\xi(\sigma),
+\]
+where \(\xi(\sigma)\in T_{x(\sigma)}M\).  With the action normalization
+\eqref{eq:nlsm-euclidean-action-representative}, the logarithmic one-loop
+divergence in the background effective action is
+\begin{equation}
+  \Gamma^{(1)}_{\mathrm{div}}[x]
+  =
+  -\frac1{4\pi\epsilon}
+  \int_\Sigma
+  \dd^2\sigma\sqrt\gamma\,
+  \gamma^{ab}
+  R_{ij}(x)\partial_ax^i\partial_bx^j .
+  \label{eq:nlsm-one-loop-divergent-effective-action}
+\end{equation}
+Consequently the metric beta tensor begins as
+\begin{equation}
+  \mu\frac{\dd G_{ij}}{\dd\mu}
+  =
+  \alpha'R_{ij}+O(\alpha'^2)
+  \label{eq:nlsm-one-loop-beta-ricci}
+\end{equation}
+in this coupling coordinate.
+\end{proposition}
+
+\begin{proof}
+Choose geodesic normal coordinates along the background map \(x\).  The
+quadratic action for \(\xi\) is
+\[
+  S_2
+  =
+  \frac1{4\pi\alpha'}
+  \int_\Sigma\dd^d\sigma\sqrt\gamma\,
+  \left[
+    \gamma^{ab}G_{ij}(x)D_a\xi^iD_b\xi^j
+    -
+    \gamma^{ab}R_{ikjl}(x)
+    \partial_ax^i\partial_bx^j\xi^k\xi^\ell
+  \right],
+  \qquad d=2-\epsilon .
+\]
+The covariant derivative \(D_a\xi^i=\partial_a\xi^i+
+\Gamma^i{}_{jk}(x)\partial_ax^j\xi^k\) makes target diffeomorphism covariance
+manifest.  The local divergent part of the one-loop determinant is obtained
+from the coincident Green kernel of the covariant Laplacian.  In dimensional
+regularization,
+\[
+  \langle \xi^k(\sigma)\xi^\ell(\sigma)\rangle_{\mathrm{div}}
+  =
+  \frac{\alpha'}{\epsilon}G^{k\ell}(x(\sigma))
+\]
+in the convention in which the scalar Laplacian Green function has pole
+\((2\pi/\epsilon)\) and the kinetic operator carries the prefactor
+\((2\pi\alpha')^{-1}\).  Contracting the curvature vertex gives
+\[
+  \frac1{4\pi\alpha'}
+  \int\sqrt\gamma\,\gamma^{ab}
+  R_{ikj\ell}\partial_ax^i\partial_bx^j
+  \langle\xi^k\xi^\ell\rangle_{\mathrm{div}}
+  =
+  \frac1{4\pi\epsilon}
+  \int\sqrt\gamma\,\gamma^{ab}
+  R_{ij}\partial_ax^i\partial_bx^j .
+\]
+It appears in \(-\log\int D\xi\,\ee^{-S_2}\), giving
+\eqref{eq:nlsm-one-loop-divergent-effective-action}.  Since a local metric
+term in the action is multiplied by \(1/(4\pi\alpha')\), cancelling
+\eqref{eq:nlsm-one-loop-divergent-effective-action} requires a local
+Lagrangian metric term proportional to \(\alpha'R_{ij}/\epsilon\).  Requiring
+the regularized coupling representative to be independent of \(\mu\) gives
+\eqref{eq:nlsm-one-loop-beta-ricci}.
+\end{proof}
+
+With \(H=\dd B\) and dilaton included, the one-loop Weyl-anomaly coefficients
+in the same normalization have the form
+\begin{align}
+  \widehat\beta^G_{ij}
+  &=
+  \alpha'
+  \left(
+    R_{ij}
+    -\frac14 H_i{}^{k\ell}H_{jk\ell}
+    +2\nabla_i\nabla_j\Phi
+  \right)
+  +O(\alpha'^2),
+  \label{eq:nlsm-one-loop-hatted-beta-g}
+  \\
+  \widehat\beta^B_{ij}
+  &=
+  \alpha'
+  \left(
+    -\frac12\nabla^kH_{kij}
+    +\nabla^k\Phi\,H_{kij}
+  \right)
+  +O(\alpha'^2).
+  \label{eq:nlsm-one-loop-hatted-beta-b}
+\end{align}
+The tensor \(\widehat\beta^\Phi\) fixes the scalar Weyl anomaly and the
+central charge.  Its nonconstant part is scheme dependent under dilaton and
+metric redefinitions, while its constant part is the physical \(c\)-number in
+the two-dimensional stress-tensor anomaly.
+
+\section{Supersymmetric Sigma-Model CFTs}
+
+The supersymmetric cases are not separate from CFT; they are additional
+structure on the same two-dimensional local QFT.  A
+\(\mathcal N=(1,1)\) sigma model is obtained by replacing \(X\) by a map of
+the worldsheet supermanifold into \(M\).  Its component fields include \(X^i\)
+and two worldsheet Majorana fermions valued in \(X^*TM\).  The target metric
+connection is replaced by the torsionful connections
+\[
+  \nabla^{(\pm)}=\nabla^G\pm\frac12G^{-1}H
+\]
+in the left- and right-moving fermion covariant derivatives.
+
+For \(\mathcal N=(2,2)\), the target must carry compatible complex structures.
+In the basic K\"ahler case, \(M\) is a complex manifold with K\"ahler metric
+\[
+  G_{I\bar J}=\partial_I\partial_{\bar J}K
+\]
+in local coordinates.  The classical \(U(1)_V\times U(1)_A\) currents are
+the candidates for the \(R\)-symmetry currents of the infrared
+superconformal algebra.  Their anomaly is controlled by \(c_1(TM)\) in the
+large-radius presentation.  Thus \(c_1(TM)=0\) is the first topological
+condition for an unbroken axial \(R\)-symmetry, and Ricci-flatness of a
+K\"ahler metric is the one-loop version of
+\eqref{eq:nlsm-one-loop-beta-ricci}.  In a compact K\"ahler class with
+\(c_1(TM)=0\), Yau's theorem supplies a Ricci-flat representative; the QFT
+statement that the corresponding sigma model is a conformal field theory is
+the existence of the continuum SCFT obtained after all higher-order local
+terms and nonperturbative worldsheet sectors are included.
+
+The local operators corresponding to K\"ahler and complex-structure
+deformations are represented at large radius by
+\[
+  \delta G_{I\bar J}(X)\psi^I\bar\psi^{\bar J},
+  \qquad
+  \delta J_{\bar I}{}^J(X)G_{J\bar K}\psi^{\bar I}\bar\psi^{\bar K},
+\]
+with the precise operator representatives depending on the regularization
+and on the choice of local coordinates on the conformal manifold.  The
+cohomological labels \(H^{1,1}(M)\) and \(H^{d-1,1}(M)\) are the
+large-radius tangent-space labels; the corresponding QFT objects are the
+renormalized local operators together with their contact-term convention.
+
+\section{Finite Orbifolds as Gauging of Topological Lines}
+\label{sec:finite-orbifolds-topological-lines}
+
+Let \(\mathcal C\) be a two-dimensional CFT with a finite internal symmetry
+group \(G\).  In the defect-line formulation this means that, for each
+\(g\in G\), there is an invertible topological line \(\mathcal L_g\), with
+fusion
+\[
+  \mathcal L_g\otimes\mathcal L_h\simeq\mathcal L_{gh}.
+\]
+The associativity of line junctions can carry an anomaly class
+\[
+  [\omega]\in H^3(G,U(1)).
+\]
+An orbifold \(\mathcal C/G\) requires a choice of trivialization of this
+class.  Inequivalent trivializations differing by a two-cocycle give the
+discrete torsion group \(H^2(G,U(1))\).
+
+For each \(g\in G\), let \(\Hilb_g\) be the Hilbert space on the circle with
+\(\mathcal L_g\) inserted along the spatial cycle.  Equivalently, in a
+Lagrangian representative this is the sector with boundary condition
+\[
+  \Phi(\sigma+2\pi)=g\cdot\Phi(\sigma)
+\]
+for every field \(\Phi\).  If \(hgh^{-1}=g'\), encircling the insertion by
+\(\mathcal L_h\) gives an isomorphism
+\[
+  \widehat h:\Hilb_g\longrightarrow\Hilb_{g'} .
+\]
+The orbifold Hilbert space is
+\begin{equation}
+  \Hilb_{\mathcal C/G}
+  =
+  \bigoplus_{[g]}
+  \Hilb_g^{C_g},
+  \label{eq:orbifold-hilbert-space-centralizer}
+\end{equation}
+where \([g]\) runs over conjugacy classes and \(C_g\) is the centralizer of
+\(g\).  Formula \eqref{eq:orbifold-hilbert-space-centralizer} is the operator
+form of gauging: the sum over \(g\) adds bundles on the spatial circle, and
+the \(C_g\)-invariants impose the residual gauge projection.
+
+\begin{proposition}[Torus partition function of a finite orbifold]
+\label{prop:finite-orbifold-torus-partition-function}
+For an anomaly-free finite symmetry, and for a fixed discrete-torsion
+two-cocycle \(\epsilon(g,h)\) defined on commuting pairs, the orbifold torus
+partition function is
+\begin{equation}
+  Z_{\mathcal C/G}(\tau,\bar\tau)
+  =
+  \frac1{|G|}
+  \sum_{\substack{g,h\in G\\ gh=hg}}
+  \epsilon(g,h)\,
+  Z_g^h(\tau,\bar\tau),
+  \qquad
+  Z_g^h
+  =
+  \operatorname{Tr}_{\Hilb_g}
+  \widehat h\,
+  q^{L_0-c/24}\bar q^{\bar L_0-\bar c/24}.
+  \label{eq:orbifold-torus-partition-function}
+\end{equation}
+The modular generators act on the labels by
+\[
+  S:(g,h)\mapsto(h^{-1},g),
+  \qquad
+  T:(g,h)\mapsto(g,gh),
+  \label{eq:orbifold-modular-label-action}
+\]
+with the cocycle \(\epsilon\) supplying the corresponding discrete-torsion
+phases.
+\end{proposition}
+
+\begin{proof}
+The trace over \(\Hilb_g\) is the path integral on a torus with \(g\)-holonomy
+around the spatial cycle and \(h\)-holonomy around the Euclidean-time cycle.
+A flat \(G\)-bundle on the torus is specified by a commuting pair
+\((g,h)\), modulo simultaneous conjugation.  Dividing by \(|G|\) is the
+finite gauge-volume factor.  Cutting the torus along the spatial cycle gives
+the trace in \eqref{eq:orbifold-torus-partition-function}.  The modular
+transformations change the homology basis of the torus; the standard
+generators send the pair of holonomies as in
+\eqref{eq:orbifold-modular-label-action}.  If the \(H^3(G,U(1))\) anomaly has
+been trivialized, the defect junctions are associative, so this change of
+cutting is an equality of amplitudes.  A nontrivial two-cocycle modifies the
+equality by the displayed \(\epsilon(g,h)\), and the cocycle equation is
+exactly the condition that the two generators obey the modular group
+relations on the summed expression.
+\end{proof}
+
+\section{Twist Fields and Their Weights}
+\label{sec:twist-fields-and-weights}
+
+A \(g\)-twist field is the endpoint, or small-circle state, of the
+topological line \(\mathcal L_g\).  In the parent theory it is not an ordinary
+local operator unless \(g=1\); a local field transported around it is acted on
+by \(g\).  In the orbifold theory, the \(C_g\)-invariant combinations of such
+defect endpoints are ordinary local operators.  The term ``twisted sector''
+therefore has an operator meaning: it is the radial Hilbert space generated
+by local endpoints of a fixed monodromy line.
+
+\begin{proposition}[Cyclic permutation twist weight]
+\label{prop:cyclic-permutation-twist-weight}
+Let \(\mathcal C\) have central charge \(c_0\), and consider the cyclic
+permutation of \(K\) copies in \(\mathcal C^{\otimes K}\).  The ground twist
+field for a \(K\)-cycle has
+\begin{equation}
+  h_K=\frac{c_0}{24}\left(K-\frac1K\right),
+  \qquad
+  \bar h_K=\frac{\bar c_0}{24}\left(K-\frac1K\right).
+  \label{eq:cyclic-permutation-twist-weight}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Near the twist insertion, the \(K\)-sheeted base coordinate \(z\) is covered
+by a single coordinate \(t\) with \(z=t^K\).  The total base stress tensor is
+the sum of the \(K\) copy stress tensors.  In the cover vacuum,
+\(\langle T(t)\rangle=0\), and the only contribution to the base one-point
+function is the Schwarzian term in the stress-tensor transformation.  For
+\(t=z^{1/K}\),
+\[
+  \{t,z\}=\frac{1-K^{-2}}{2z^2}.
+\]
+Multiplying by the \(K\) sheets and by \(c_0/12\) gives
+\[
+  \langle T_{\mathrm{base}}(z)\rangle_{\sigma_K}
+  =
+  \frac{c_0}{24}\left(K-\frac1K\right)\frac1{z^2}.
+\]
+The Ward identity
+\(\langle T(z)\sigma_K(0)\rangle/\langle\sigma_K(0)\rangle=h_K/z^2\)
+then gives \eqref{eq:cyclic-permutation-twist-weight}.
+\end{proof}
+
+For a single complex free boson \(Z\) with rotation
+\[
+  Z(\ee^{2\pi\ii}z,\ee^{-2\pi\ii}\bar z)
+  =
+  \ee^{2\pi\ii\alpha}Z(z,\bar z),
+  \qquad 0\le\alpha<1,
+\]
+the twisted oscillator frequencies are \(n+\alpha\) and \(n+1-\alpha\).
+Zeta-regularizing the normal-ordering shift relative to the untwisted sector
+gives
+\begin{equation}
+  h_\alpha
+  =
+  \frac12\alpha(1-\alpha).
+  \label{eq:complex-boson-rotation-twist-weight}
+\end{equation}
+For one real boson with \(\mathbb Z_2\) reflection, this is half of the
+complex-boson answer at \(\alpha=1/2\):
+\[
+  h=\bar h=\frac1{16}.
+\]
+The same number follows from the two-point function with two twist insertions
+and two \(\partial X\) insertions: the branch condition fixes the meromorphic
+differential up to a polynomial, and the \(T=-\frac12:\partial X\partial X:\)
+coincident limit reads off the coefficient of \(z^{-2}\) in the \(T\sigma\)
+OPE.
+
+\section{Twist-Field Deformations}
+
+Let \(\{\sigma_A\}\) be spinless orbifold local fields built from twisted
+sectors, with dimensions
+\[
+  \Delta_A=h_A+\bar h_A,\qquad s_A=h_A-\bar h_A\in\mathbb Z .
+\]
+A deformation by twist fields is specified by the conformal-perturbation
+series
+\begin{equation}
+  \left\langle X\right\rangle_\lambda
+  =
+  \left\langle
+    \exp\left(
+      -\sum_A\lambda^A\int_\Sigma\dd^2z\,\sigma_A(z,\bar z)
+    \right)X
+  \right\rangle_{\mathcal C/G}
+  \label{eq:twist-field-deformation-series}
+\end{equation}
+with a regulator for collision points and with local counterterms determined
+by the OPEs of the \(\sigma_A\).  The coupling dimension is
+\[
+  [\lambda^A]=2-\Delta_A .
+\]
+For \(\Delta_A<2\) the deformation is relevant.  For \(\Delta_A=2\), exact
+marginality is a condition on all beta functions, beginning with the
+quadratic OPE obstruction
+\[
+  \beta^C
+  =
+  \pi C_{AB}{}^C\lambda^A\lambda^B+O(\lambda^3)
+\]
+in a scheme where the integrated two-point logarithm has coefficient \(\pi\).
+The coefficient \(C_{AB}{}^C\) is the coefficient of \(\sigma_C\) in the
+short-distance OPE \(\sigma_A(z)\sigma_B(0)\), after projecting to spinless
+dimension-two fields and after specifying contact-term conventions.
+
+In a symmetric-product orbifold
+\[
+  \operatorname{Sym}^N(\mathcal C)
+  =
+  \mathcal C^{\otimes N}/S_N,
+\]
+twisted sectors are labeled by conjugacy classes of \(S_N\), equivalently by
+partitions of \(N\).  A \(K\)-cycle describes a single long string of length
+\(K\) in the radial Hilbert-space picture.  Twist-field deformations join
+and split cycles; they are the local operators that move the theory away
+from the singular orbifold point in its conformal or massive deformation
+space.
+
+In supersymmetric symmetric products the undressed twist-sector ground field
+is one ingredient in the physical marginal operator.  Fermion zero modes,
+R-symmetry spin fields, or supercurrent descendants supply the additional
+quantum numbers so that the final operator is invariant, spinless, and has
+\((h,\bar h)=(1,1)\).  For example, in an \(\mathcal N=(4,4)\) symmetric
+product with seed central charge \(c_0=\bar c_0=6\), the length-two
+undressed twist has
+\[
+  h_2=\bar h_2=\frac{3}{8},
+\]
+and the exactly marginal blow-up operator is a superconformal descendant of
+an appropriate dressed twist-sector chiral primary.  The deformation problem
+therefore belongs simultaneously to orbifold CFT, representation theory of
+the superconformal algebra, and the renormalized contact-term calculus of
+integrated local operators.
+
+\section{Development Tasks for the CFT Volume}
+
+The material in this chapter is the entry point for a larger two-dimensional
+CFT development.  Subsequent passes must expand the following topics in the
+same formalism:
+\[
+\begin{gathered}
+  \text{Narain lattice CFTs and toroidal sigma models},\\
+  \text{WZW and gauged WZW/coset sigma-model CFTs},\\
+  \text{Buscher duality as an equality of regulated path integrals},\\
+  \text{orbifold defects, discrete torsion, and anomaly obstructions},\\
+  \text{covering-space evaluation of twist correlators},\\
+  \text{supersymmetric twist fields and exactly marginal blow-up modes}.
+\end{gathered}
+\]
+Each item requires explicit operator definitions, modular and sewing
+compatibility, and examples with computable correlators.  In particular,
+twist-field deformations must be treated as deformations of a fully specified
+QFT, not as informal resolutions of a quotient space.

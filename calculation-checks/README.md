@@ -93,6 +93,11 @@ Current checks:
 - `on_wilson_fisher_epsilon_checks.py`: exact rational arithmetic for the
   singlet \(O(N)\) Wilson-Fisher family, including the \(N=1\) reduction and
   the leading large-\(N\) scaling of \(u=Nx\).
+- `orbifold_twist_weight_checks.py`: finite rational checks for the
+  two-dimensional orbifold chapter, including the cyclic permutation twist
+  weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the
+  \(c_0=6\) length-two value \(h=3/8\), and the real
+  \(\mathbb Z_2\) reflection twist value \(h=1/16\).
 - `schwinger_model_checks.py`: finite sign and normalization checks for the
   Schwinger-model chapter, including the two-dimensional current-duality
   convention, the algebraic elimination of the electric field, the

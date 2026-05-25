@@ -34,8 +34,8 @@ Current high-priority QFT blocks to absorb are:
   the monograph conventions;
 - two-dimensional CFT: chiral stress-tensor Ward identities, Virasoro
   symmetry, BPZ/radial pairing, OPE convergence, modular/Riemann-surface
-  structure, free fields, defects, orbifolds, boundary CFT, and
-  superconformal symmetry;
+  structure, free fields, nonlinear sigma models, defects, orbifolds,
+  twist-field deformations, boundary CFT, and superconformal symmetry;
 - supersymmetry: spinor conventions, super-Poincare representation theory,
   the distinction between particle multiplets and off-shell field-variable
   multiplets, superspace, nonrenormalization arguments, and Wilsonian/BV
@@ -166,6 +166,9 @@ Potential use:
 - state-operator correspondence;
 - OPE and conformal blocks;
 - modular considerations.
+- bosonic and supersymmetric nonlinear sigma-model CFTs;
+- finite orbifolds, discrete torsion, twist sectors, and twist-field
+  deformations.
 
 Required checks:
 
@@ -189,6 +192,15 @@ Special boundary:
   required source-coverage item for the QFT monograph; it must be rewritten
   with the monograph's definitions, hypotheses, and proof boundaries, not
   imported as string-theory background.
+
+Current absorption:
+
+- Volume III/Volume V, Chapter 5 now includes the chiral stress-tensor mode
+  construction, Virasoro algebra proof, Schwarzian transformation, and
+  plane-cylinder \(c/24\) shift.
+- Volume V, Chapter 11 now starts the QFT-side development of bosonic and
+  supersymmetric sigma-model CFTs, finite orbifolds, twist sectors, cyclic and
+  rotation twist weights, and twist-field deformations.
 
 ### Planar Integrability
 
