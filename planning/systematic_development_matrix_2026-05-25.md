@@ -36,7 +36,7 @@ proof infrastructure, and frontier-gap development.
 | IX Global Structure | line/surface operators, confinement and screening, discrete theta terms, anomaly inflow | charge-lattice calculations, defect fusion examples, gauge-group global form tables |
 | X Thermal/Hydrodynamic | Schwinger--Keldysh, Kubo formulae, hydrodynamic EFT, thermal gauge theory, kinetic limits | spectral/KMS derivations, transport formula checks, SK contour sign tables |
 | XI Constructive/Lattice/Numerical | Glimm--Jaffe scalar models, lattice reflection positivity, SPDE quantization, numerical methods | OS data tables, lattice positivity proofs, reproducible benchmark scripts |
-| XII Curved Backgrounds | stress tensors, trace anomalies, Unruh/Hawking effects, background gauge fields and index theory | point-splitting calculations, curvature counterterm tables, Hadamard wavefront appendices |
+| XII Curved Backgrounds | stress tensors, trace anomalies, Unruh/Hawking effects, background gauge fields, index theory, eta invariants, and global anomalies | point-splitting calculations, curvature counterterm tables, Hadamard wavefront appendices, determinant-line holonomy checks |
 
 ## Current Second-Chapter Pass
 
@@ -147,6 +147,34 @@ layers after the basic examples and theorem boundaries:
 - Volume XII: background gauge fields and index theory, including coupled
   Dirac operators, Atiyah--Singer formulae, zero-mode insertion rules,
   anomaly polynomials, and determinant-line global anomalies.
+
+## Current Seventh-Chapter Pass
+
+The seventh-chapter pass adds finite-size, exact-dynamics, twisting, phase,
+screening, rigorous-RG, and global-anomaly layers:
+
+- Volume VI: mirror-channel TBA from equality of torus Hamiltonian
+  decompositions, large-circumference expansion, excited-state finite-size
+  corrections, and relativistic wrapping effects.
+- Volume VII: four-dimensional \(\mathcal N=2\) gauge dynamics, including
+  Coulomb-branch coordinates, special geometry, Seiberg-Witten period data,
+  pure gauge-algebra \(\mathfrak{su}(2)\) monodromies, and local Abelian
+  dynamics near singular fibers.
+- Volume VIII: twists of supersymmetric theories as homomorphisms from
+  rotations to R-symmetry, scalar supercharge cohomology, metric-independence
+  proof, Donaldson twist data, and two-dimensional A/B twist placement.
+- Volume IX: phases of gauge theories defined by infinite-volume local and
+  extended-operator data, Wilson-loop potentials, higher-form symmetry
+  realization, gauge-Higgs analytic corridors, and topological sectors.
+- Volume X: thermal gauge theory screening, including static correlators,
+  Debye mass conventions, magnetic infrared scale, Polyakov loops, and
+  dimensionally reduced static effective theory.
+- Volume XI: rigorous RG maps on Banach spaces, covariance decomposition,
+  linearization, local stable manifolds, polymer estimates, and a precise
+  definition of universality class.
+- Volume XII: eta invariants and global anomalies, including APS boundary
+  formulae, determinant-line holonomy, Dai-Freed phases, and the interacting
+  anomaly-line problem.
 
 ## Next Frontier After This Pass
 

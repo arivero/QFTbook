@@ -1,0 +1,187 @@
+\chapter{Four-Dimensional N=2 Gauge Dynamics and Seiberg-Witten Theory}
+\label{ch:susy-four-dimensional-n2-seiberg-witten}
+
+\ConventionsLorentzian
+
+This chapter develops the first layer of four-dimensional \(\mathcal N=2\)
+gauge dynamics.  The emphasis is the Wilsonian low-energy description on the
+Coulomb branch, where the exact two-derivative Abelian action is encoded by a
+holomorphic prepotential and by periods of a family of curves.
+
+\section{Coulomb-Branch Coordinates}
+
+Let \(G\) be a compact connected gauge group with Lie algebra \(\mathfrak g\).
+An \(\mathcal N=2\) vector multiplet contains a gauge field, two gauginos, and
+a complex scalar \(\phi\in\mathfrak g_{\C}\).  A Coulomb-branch point is a
+vacuum for which \(\phi\) has expectation value in a Cartan subalgebra and
+the low-energy gauge group contains an Abelian factor \(U(1)^r\), where
+\(r=\operatorname{rank}G\).  Gauge-invariant holomorphic coordinates are
+polynomial functions of \(\phi\), for example
+\[
+  u_k=\left\langle \operatorname{tr}(\phi^k)\right\rangle .
+\]
+The trace convention is the convention fixed in the gauge chapters: the
+Yang--Mills kinetic term uses
+\[
+  \frac{1}{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+\]
+with the chosen invariant bilinear form.
+
+\section{Special Coordinates And Prepotential}
+
+On a smooth patch of the Coulomb branch, choose electric special coordinates
+\[
+  a^I,\qquad I=1,\ldots,r .
+\]
+The two-derivative Wilsonian action is determined by a holomorphic function
+\(\mathcal F(a)\), the prepotential, through
+\[
+  a_{D,I}=\frac{\partial\mathcal F}{\partial a^I},
+  \qquad
+  \tau_{IJ}(a)=\frac{\partial^2\mathcal F}{\partial a^I\partial a^J}.
+\]
+The imaginary part of \(\tau_{IJ}\) is the positive gauge-coupling matrix in
+the region where the Abelian Wilsonian description is valid.  Electric-magnetic
+duality acts on the column vector
+\[
+  \Pi=\begin{pmatrix} a_D \\ a \end{pmatrix}
+\]
+by integral symplectic matrices.  If \(\gamma=(n_m^I,n_{e,I})\) is an
+electromagnetic charge vector, its central charge is
+\[
+  Z_\gamma=n_{e,I}a^I+n_m^I a_{D,I}+\sum_\alpha s_\alpha m_\alpha ,
+\]
+where \(m_\alpha\) are background flavor masses and \(s_\alpha\) are flavor
+charges.  The BPS inequality has the convention
+\[
+  M_\gamma\geq \sqrt2\,|Z_\gamma|.
+\]
+States saturating this bound form shortened \(\mathcal N=2\) multiplets.
+
+\section{Seiberg-Witten Period Data}
+
+A Seiberg-Witten period datum consists of a family of compact Riemann surfaces
+\(\Sigma_u\), a meromorphic differential \(\lambda_{\mathrm{SW}}\), and a
+symplectic basis of one-cycles \((A_I,B^I)\) such that
+\[
+  a^I(u)=\frac{1}{2\pi}\oint_{A_I}\lambda_{\mathrm{SW}},
+  \qquad
+  a_{D,I}(u)=\frac{1}{2\pi}\oint_{B^I}\lambda_{\mathrm{SW}} .
+\]
+The differential is fixed up to exact terms by requiring that
+\(\partial\lambda_{\mathrm{SW}}/\partial u_k\) span holomorphic differentials
+on \(\Sigma_u\) and that the large-field asymptotics reproduce the
+one-loop Wilsonian coupling.
+
+\begin{proposition}[Integrability of the period coupling]
+\label{prop:sw-period-integrability}
+Assume that the period matrix \(\tau_{IJ}=\partial a_{D,I}/\partial a^J\)
+comes from a family of curves with symplectic intersection pairing and varies
+holomorphically on a simply connected patch where the \(a^I\) are coordinates.
+Then locally there is a holomorphic prepotential \(\mathcal F(a)\) satisfying
+\(a_{D,I}=\partial\mathcal F/\partial a^I\).
+\end{proposition}
+
+\begin{proof}
+The Riemann bilinear relation implies symmetry
+\(\partial a_{D,I}/\partial a^J=\partial a_{D,J}/\partial a^I\).  Therefore
+the holomorphic one-form \(\sum_I a_{D,I}\,da^I\) on the coordinate patch is
+closed.  On a simply connected patch every closed holomorphic one-form is
+exact, so there exists \(\mathcal F\) with
+\(d\mathcal F=\sum_I a_{D,I}\,da^I\).  This is the required prepotential.
+\end{proof}
+
+\section{Pure Gauge Theory With Gauge Algebra su two}
+
+For the pure theory with gauge algebra \(\mathfrak{su}(2)\), the Coulomb
+coordinate is
+\[
+  u=\left\langle \operatorname{tr}\phi^2\right\rangle .
+\]
+A convenient period datum is the genus-one curve
+\[
+  \Sigma_u:\qquad
+  y^2=(x^2-\Lambda^4)(x-u),
+\]
+together with a differential \(\lambda_{\mathrm{SW}}\) normalized by
+\[
+  a(u)\sim \sqrt{2u},\qquad
+  a_D(u)\sim \frac{\ii}{\pi}a(u)\log\!\frac{a(u)^2}{\Lambda^2}
+  \quad (|u|\to\infty)
+\]
+in the semiclassical region.  The branch points collide at
+\[
+  u=\Lambda^2,\qquad u=-\Lambda^2,
+\]
+and a one-cycle on \(\Sigma_u\) vanishes at each collision.  The corresponding
+BPS particle becomes massless because its central charge is the period over
+the vanishing cycle.
+
+\section{Monodromy And Light Charges}
+
+Use the column vector \(\Pi=(a_D,a)^T\).  With the conventional ordering of
+paths around the singularities, the monodromies may be chosen as
+\[
+  M_{\Lambda^2}=
+  \begin{pmatrix}
+  1&0\\
+  -2&1
+  \end{pmatrix},
+  \qquad
+  M_{-\Lambda^2}=
+  \begin{pmatrix}
+  -1&2\\
+  -2&3
+  \end{pmatrix},
+\]
+and their product gives the monodromy at infinity
+\[
+  M_\infty=
+  \begin{pmatrix}
+  -1&2\\
+  0&-1
+  \end{pmatrix}.
+\]
+The first singularity is described by a magnetic hypermultiplet of charge
+\((n_m,n_e)=(1,0)\).  The second is described by a dyonic hypermultiplet, with
+charge convention determined by the displayed monodromy matrices.  The
+Picard-Lefschetz formula explains these matrices: transporting a cycle
+\(\delta\) around a node sends a cycle \(\alpha\) to
+\[
+  \alpha\longmapsto \alpha+(\alpha\circ\delta)\delta ,
+\]
+where \(\circ\) is the oriented intersection pairing on \(H_1(\Sigma_u,\mathbb Z)\).
+
+\section{Low-Energy Abelian Theory Near A Singular Point}
+
+Near a point where the monopole period \(a_D\) vanishes, the correct
+low-energy variables are the dual \(U(1)\) vector multiplet with scalar
+\(a_D\) and the light monopole hypermultiplet.  A local Wilsonian
+superpotential has the form
+\[
+  W_{\mathrm{loc}}=\sqrt2\,A_D M\widetilde M ,
+\]
+where \(A_D\) is the dual chiral multiplet and \(M,\widetilde M\) are monopole
+chiral multiplets of opposite dual electric charge.  Adding a small
+\(\mathcal N=1\)-preserving deformation proportional to \(u\) gives an
+F-term equation that forces monopole condensation in the local theory.  This
+is the microscopic input behind the Abelian confinement mechanism used later
+in the Witten--Donaldson and Seiberg-Witten comparison.
+
+\section{Status Boundary}
+
+The period construction determines an Abelian Wilsonian effective action under
+explicit hypotheses: existence of the \(\mathcal N=2\) continuum theory,
+existence of the Coulomb-branch vacuum family, validity of the two-derivative
+Abelian description away from singular loci, and BPS saturation for the
+states assigned to vanishing cycles.  The missing nonperturbative regulator
+for four-dimensional supersymmetric gauge theory remains part of the
+Wilsonian-scheme problem recorded in Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.
+
+\begin{openproblem}[Theorem-level Seiberg-Witten construction]
+\label{op:theorem-level-seiberg-witten-construction}
+Construct the four-dimensional \(\mathcal N=2\) gauge theory with a regulator
+and continuum limit sufficient to derive the Coulomb-branch special geometry,
+period data, BPS spectrum near singular fibers, and low-energy Abelian
+Wilsonian action as theorems of QFT.
+\end{openproblem}

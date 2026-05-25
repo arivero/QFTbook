@@ -1,0 +1,156 @@
+\chapter{Rigorous Renormalization Group}
+\label{ch:constructive-rigorous-renormalization-group}
+
+\ConventionsEuclidean
+
+This chapter formulates renormalization group transformations as maps on
+normed spaces of interactions or probability measures.  The aim is to replace
+informal terminology about flows by explicit maps, estimates, fixed points,
+and coordinate decompositions.
+
+\section{Gaussian Block Integration}
+
+Let \(C\) be a positive covariance on a finite regulator space of fields and
+suppose it decomposes as
+\[
+  C=C_<+\Gamma .
+\]
+Let \(d\mu_C\), \(d\mu_{C_<}\), and \(d\mu_\Gamma\) be the corresponding
+Gaussian measures.  For an interaction \(V\), define the single-step
+effective interaction
+\[
+  e^{-V_<(\phi)}
+  =
+  \int d\mu_\Gamma(\zeta)\,e^{-V(\phi+\zeta)} .
+\]
+This identity is exact at finite regulator.  A scale transformation \(S_L\)
+then gives an RG map
+\[
+  \mathcal R_L(V)=S_L V_< .
+\]
+The definition contains three inputs: covariance decomposition, integration
+domain, and rescaling convention.
+
+\section{Banach Space Of Interactions}
+
+Let \(\mathcal B\) be a Banach space of local functionals with norm
+\(\|\cdot\|_{\mathcal B}\).  A typical constructive choice separates relevant
+local coordinates from a polymer remainder:
+\[
+  V(\phi)=\sum_i g_i\mathcal O_i(\phi)+K(\phi),
+\]
+where \(g_i\in\R\) or \(\C\) and \(K\) is measured by a norm that includes
+large-field weights and spatial decay.  The RG map is controlled on an open
+set \(U\subset\mathcal B\) if
+\[
+  \mathcal R_L:U\longrightarrow\mathcal B
+\]
+is differentiable and its derivative satisfies explicit bounds in the chosen
+norm.
+
+\section{Linearization And Coordinates}
+
+Let \(V_\ast\) be a fixed point:
+\[
+  \mathcal R_L(V_\ast)=V_\ast .
+\]
+The linearized map is
+\[
+  D\mathcal R_L|_{V_\ast}:\mathcal B\to\mathcal B .
+\]
+An eigenvector \(e_i\) with eigenvalue \(L^{y_i}\) is relevant, marginal, or
+irrelevant according as \(y_i>0\), \(y_i=0\), or \(y_i<0\).  These words refer
+to the declared linearized map and norm.  A coordinate \(g_i\) is a scaling
+coordinate only after nonlinear terms have been put into a normal form or
+controlled by a stable-manifold argument.
+
+\begin{theorem}[Local stable manifold for an RG map]
+\label{thm:rg-local-stable-manifold}
+Let \(\mathcal R\) be a \(C^1\) map on a Banach space \(\mathcal B\) with
+fixed point \(V_\ast\).  Suppose
+\[
+  \mathcal B=E_u\oplus E_s
+\]
+where \(E_u\) is finite dimensional, \(E_s\) is closed, and the derivative
+\(D\mathcal R|_{V_\ast}\) expands \(E_u\) and contracts \(E_s\) with a
+spectral gap.  If the nonlinear part is Lipschitz-small in a neighborhood of
+the fixed point, then there is a local stable manifold tangent to \(E_s\).
+Points on this manifold remain in the neighborhood under forward RG
+iteration and converge to \(V_\ast\).
+\end{theorem}
+
+\begin{proof}
+Translate \(V_\ast\) to the origin and write \(V=(u,s)\) according to
+\(E_u\oplus E_s\).  The RG map has the form
+\[
+  (u,s)\longmapsto (Au+F_u(u,s),Bs+F_s(u,s)),
+\]
+where \(A^{-1}\) and \(B\) are contractions and \(F=(F_u,F_s)\) has small
+Lipschitz constant on a ball.  For a candidate graph \(u=h(s)\), invariance
+requires
+\[
+  h(Bs+F_s(h(s),s))=Ah(s)+F_u(h(s),s).
+\]
+This equation defines a contraction on the complete metric space of Lipschitz
+graphs with \(h(0)=0\) and \(Dh(0)=0\), after the ball is chosen so that the
+nonlinear Lipschitz constant is dominated by the spectral gap.  The fixed
+graph is invariant.  Iterating the contraction estimates gives convergence
+to the fixed point for initial data on the graph.
+\end{proof}
+
+\section{Polymer Representation}
+
+On a lattice, a polymer is a finite union of blocks.  A polymer activity
+\[
+  K(X,\phi)
+\]
+assigns a functional to each polymer \(X\).  The partition function is written
+as
+\[
+  Z=\int d\mu_C(\phi)\,e^{-V_{\mathrm{loc}}(\phi)}
+  \sum_{\mathcal X}
+  \prod_{X\in\mathcal X}K(X,\phi),
+\]
+where \(\mathcal X\) ranges over compatible families of disjoint polymers.
+The RG step integrates fluctuation fields inside each block, extracts local
+Taylor coefficients into \(V_{\mathrm{loc}}\), and maps the remaining
+nonlocal dependence into a new activity \(K'\).  The proof obligation is an
+estimate of the form
+\[
+  \|K'\|_{\mathrm{polymer}}
+  \leq c L^{-\alpha}\|K\|_{\mathrm{polymer}}
+  +c'\|K\|_{\mathrm{polymer}}^2
+\]
+with declared constants and norm.  This is the mechanism by which irrelevant
+remainders are controlled in constructive RG.
+
+\section{Fixed Points And Continuum Limits}
+
+A continuum limit is obtained by tuning the unstable coordinates so that the
+RG trajectory remains near a fixed point for arbitrarily many steps and then
+converges, after reconstruction, to regulator-independent correlation
+functions.  The existence of a non-Gaussian fixed point as a Banach-space
+fixed point is a theorem only after the RG map, norm, domain, and estimates
+are supplied.  Perturbative beta functions and numerical fixed-point searches
+are evidence for a coordinate chart; they do not replace the fixed-point
+construction.
+
+\section{Relation To Universality Classes}
+
+In this monograph, a universality class is a triple
+\[
+  (\mathcal R,\mathcal N,V_\ast)
+\]
+together with an equivalence relation on microscopic regulators whose tuned
+RG trajectories converge to \(V_\ast\) in the normed neighborhood
+\(\mathcal N\) and whose reconstructed long-distance observables agree after
+declared normalizations.  The phrase therefore denotes a constructed
+attraction statement, not a label assigned solely by symmetry and dimension.
+
+\begin{openproblem}[Nonperturbative Wilsonian fixed points]
+\label{op:constructive-rg-nonperturbative-fixed-points}
+Construct non-Gaussian Wilsonian fixed points in three and four dimensions as
+fixed points of explicit RG maps on Banach spaces of interactions, with
+stable manifolds, operator spectra, and reconstruction of the associated
+local QFT data.
+\end{openproblem}

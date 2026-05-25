@@ -1,0 +1,146 @@
+\chapter{Thermal Gauge Theory And Screening}
+\label{ch:thermal-gauge-theory-screening}
+
+\ConventionsMixed
+
+This chapter studies gauge theories at nonzero temperature through static
+correlators and their long-distance screening behavior.  The coupling and
+trace conventions are those of the gauge chapters: the Yang--Mills action is
+written with
+\[
+  \frac{1}{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu}),
+\]
+and group invariants are computed using the same invariant bilinear form.
+
+\section{Static Correlators}
+
+Let the Euclidean time circle have length \(\beta=1/T\).  A bosonic field has
+Matsubara frequencies \(\omega_n=2\pi nT\).  Static screening is controlled by
+the \(n=0\) sector of gauge-invariant correlators.  For an operator
+\(\mathcal O(\tau,\mathbf x)\), define its static projection by
+\[
+  \mathcal O_0(\mathbf x)=T\int_0^\beta d\tau\,\mathcal O(\tau,\mathbf x).
+\]
+The screening masses are inverse correlation lengths extracted from
+\[
+  \left\langle \mathcal O_0(\mathbf x)\mathcal O_0(0)\right\rangle_c
+  \sim
+  \sum_\alpha C_\alpha
+  \frac{e^{-M_\alpha |\mathbf x|}}{|\mathbf x|^{(d-2)/2}}
+\]
+when the static transfer matrix has isolated lowest eigenvalues in the chosen
+channel.
+
+\section{Electric Screening}
+
+In a weakly coupled high-temperature regime, the temporal gauge field \(A_0\)
+behaves in the static sector as an adjoint scalar.  The electric screening
+mass is defined perturbatively by the pole of the static longitudinal
+propagator, or nonperturbatively by the lowest gauge-invariant state in the
+electric channel after the relevant operator has been specified.
+
+Choose a basis \(T^a_R\) for each representation \(R\) such that
+\[
+  \operatorname{tr}_R(T^a_RT^b_R)=T_R\delta^{ab},
+  \qquad
+  f^{acd}f^{bcd}=C_A\delta^{ab}.
+\]
+With the same coupling \(g\) in the covariant derivative and in the kinetic
+term convention above, the one-loop static polarization gives
+\[
+  m_D^2
+  =
+  g^2T^2\left(
+  \frac{C_A}{3}
+  +\frac{1}{3}\sum_{\text{Dirac }f}T_{R_f}
+  +\frac{1}{6}\sum_{\text{complex }s}T_{R_s}
+  \right).
+\]
+For \(SU(N)\) with the fundamental trace convention
+\(\operatorname{tr}_{\mathbf N}(T^aT^b)=\delta^{ab}\), this means
+\(C_A=2N\) and \(T_{\mathbf N}=1\).
+
+\begin{proposition}[Origin of the Debye mass term]
+\label{prop:debye-mass-origin}
+At one loop, the static quadratic term for \(A_0\) in the dimensionally
+reduced action is the zero-frequency, zero-momentum limit of the Euclidean
+current-current correlator coupled to \(A_0\).
+\end{proposition}
+
+\begin{proof}
+Introduce a background temporal field \(A_0^a\) that is independent of
+Euclidean time and space.  Expanding the finite-temperature generating
+functional to second order gives
+\[
+  \Delta W^{(2)}
+  =
+  \frac12 A_0^a A_0^b
+  \int_0^\beta d\tau\int d^{d-1}x\,
+  \left\langle J_0^a(\tau,\mathbf x)J_0^b(0,0)\right\rangle_c .
+\]
+Translation invariance identifies the integral with the static polarization
+\(\Pi_{00}^{ab}(0,\mathbf0)\).  Gauge symmetry in the unbroken thermal state
+sets this tensor proportional to \(\delta^{ab}\).  The coefficient is the
+mass matrix of the adjoint scalar \(A_0\) in the static effective action,
+which is \(m_D^2\delta^{ab}\).
+\end{proof}
+
+\section{Magnetic Sector}
+
+The spatial gauge fields \(A_i\) have no gauge-invariant local mass term in
+the dimensionally reduced action.  The high-temperature static magnetic
+sector is therefore a three-dimensional Yang--Mills theory with coupling
+\[
+  g_3^2=g^2T
+\]
+in four spacetime dimensions.  Its infrared scale is of order \(g_3^2\), and
+the corresponding magnetic screening lengths are nonperturbative objects of
+the three-dimensional gauge theory.  Perturbative expansions of static
+magnetic quantities encounter this scale because massless spatial gauge
+fields remain in the reduced action.
+
+\section{Polyakov Loop And Center Symmetry}
+
+The thermal Wilson line at spatial point \(\mathbf x\) is
+\[
+  P(\mathbf x)=
+  \mathcal P\exp\!\left(\ii\int_0^\beta d\tau\,A_0(\tau,\mathbf x)\right).
+\]
+In a pure gauge theory, its trace in a representation charged under the center
+transforms under the center one-form symmetry wrapped on the thermal circle.
+The free energy of an external static charge is defined by
+\[
+  e^{-\beta F_Q}=\left\langle \operatorname{tr}_R P(\mathbf x)\right\rangle
+\]
+after renormalizing the line.  Correlators of two Polyakov loops define
+static color-singlet free energies; their large-distance decay belongs to the
+screening spectrum rather than to a zero-temperature particle spectrum.
+
+\section{Dimensional Reduction}
+
+At distances much larger than \(\beta\), nonzero Matsubara modes can be
+integrated out into a three-dimensional effective theory.  In four spacetime
+dimensions the bosonic part begins as
+\[
+  S_{\mathrm{EQCD}}
+  =
+  \int d^3x\,
+  \left[
+  \frac{1}{4g_3^2}\operatorname{tr}(F_{ij}F_{ij})
+  +\frac{1}{2g_3^2}\operatorname{tr}(D_iA_0D_iA_0)
+  +\frac{m_E^2}{2g_3^2}\operatorname{tr}(A_0^2)
+  +\lambda_E\,\operatorname{tr}(A_0^4)+\cdots
+  \right].
+\]
+The ellipsis denotes higher local operators ordered by the static derivative
+and field expansion.  A quantitative use of this action requires matching
+the coefficients \(g_3^2,m_E^2,\lambda_E,\ldots\) in the same regulator and
+operator scheme as the original thermal theory.
+
+\begin{openproblem}[Gauge-invariant screening spectrum]
+\label{op:gauge-invariant-screening-spectrum}
+Give a continuum construction of the full static screening spectrum of
+thermal non-Abelian gauge theory from gauge-invariant operators, including
+the relation between perturbative electric matching, nonperturbative magnetic
+dynamics, and Polyakov-loop sectors.
+\end{openproblem}

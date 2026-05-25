@@ -1,0 +1,130 @@
+\chapter{Eta Invariants And Global Anomalies}
+\label{ch:curved-eta-invariants-global-anomalies}
+
+\ConventionsEuclidean
+
+This chapter continues the determinant-line construction of
+Chapter~\ref{ch:curved-background-gauge-fields-index-theory}.  The local
+anomaly polynomial controls infinitesimal background variations; eta
+invariants control phases under large diffeomorphisms, large gauge
+transformations, and loops in background-field space.
+
+\section{Eta Function}
+
+Let \(Y\) be a closed odd-dimensional Riemannian spin manifold with background
+gauge field \(A\), and let \(D_Y\) be a self-adjoint Dirac operator coupled to
+the chosen bundle.  Its nonzero eigenvalues are real and discrete.  The eta
+function is
+\[
+  \eta_{D_Y}(s)
+  =
+  \sum_{\lambda\neq0}
+  \operatorname{sign}(\lambda)|\lambda|^{-s},
+  \qquad \operatorname{Re}s\gg1 .
+\]
+For Dirac-type operators this function has a meromorphic continuation that is
+regular at \(s=0\).  Define
+\[
+  h(D_Y)=\dim\ker D_Y,
+  \qquad
+  \xi(D_Y)=\frac{\eta_{D_Y}(0)+h(D_Y)}{2}.
+\]
+The reduced invariant \(\xi(D_Y)\) is the phase datum that enters fermion
+determinants.
+
+\section{Atiyah-Patodi-Singer Boundary Formula}
+
+Let \(X\) be a compact even-dimensional spin manifold with boundary
+\(\partial X=Y\), and assume the metric and background fields have product
+form near \(Y\).  Let \(D_X^+\) be the chiral Dirac operator with
+Atiyah-Patodi-Singer boundary condition.  Then
+\[
+  \operatorname{ind}D_X^+
+  =
+  \int_X
+  \widehat A(R)\operatorname{ch}(F)\big|_{\dim X}
+  -
+  \xi(D_Y).
+\]
+The boundary condition is spectral: boundary spinors are projected onto the
+span of eigenvectors of \(D_Y\) with negative eigenvalue, with the kernel
+treated by the convention included in \(h(D_Y)\).
+
+\begin{proposition}[Metric variation of the reduced eta invariant]
+\label{prop:eta-variation-local}
+Along a smooth path of background fields on \(Y\) for which \(\dim\ker D_Y\)
+is constant, the variation of \(\xi(D_Y)\) is given modulo integers by the
+integral of the local descent form obtained from
+\(\widehat A(R)\operatorname{ch}(F)\).
+\end{proposition}
+
+\begin{proof}
+Let the path parameter be \(t\in[0,1]\), and form the cylinder
+\(X=[0,1]\times Y\) with the interpolating background.  Apply the
+Atiyah-Patodi-Singer formula to the cylinder.  The index is an integer.  The
+bulk integral is the transgression of the characteristic form along the path,
+and the two boundary contributions are the reduced eta invariants at the
+endpoints with opposite orientations.  Hence the change of \(\xi\) equals the
+bulk transgression modulo an integer.  Differentiating with respect to the
+path parameter gives the local descent variation.
+\end{proof}
+
+\section{Determinant-Line Holonomy}
+
+Let \(\mathcal B\) be a smooth space of background metrics and gauge fields
+modulo based gauge transformations.  A family of chiral Dirac operators over
+\(\mathcal B\) defines a determinant line bundle
+\[
+  \operatorname{Det}D\longrightarrow \mathcal B .
+\]
+For a loop \(\gamma:S^1\to\mathcal B\), form the mapping torus \(Y_\gamma\).
+The natural connection on the determinant line has holonomy
+\[
+  \operatorname{Hol}_\gamma(\operatorname{Det}D)
+  =
+  \exp\!\left(-2\pi\ii\,\xi(D_{Y_\gamma})\right)
+\]
+with the sign fixed by the orientation convention for the mapping torus and
+the chiral determinant.  This formula is the global anomaly diagnostic: a
+nontrivial holonomy means that the fermion partition function is a section of
+a nontrivial line bundle over background-field space.
+
+\section{Dai-Freed Phase}
+
+For an odd-dimensional boundary theory, the exponentiated eta invariant of an
+even-dimensional bulk supplies a canonical phase factor
+\[
+  \exp\!\left(2\pi\ii\,\xi(D_X)\right)
+\]
+whose variation cancels the determinant-line variation of the boundary
+fermion when the bulk and boundary bundles are paired correctly.  The combined
+bulk-boundary partition function is a number rather than a section, provided
+the background fields extend over the bulk and the relevant bordism
+ambiguity has trivial phase.  This is the eta-invariant form of anomaly
+inflow for global anomalies.
+
+\section{Relation To Local Anomaly Polynomials}
+
+If \(Y\) is the mapping torus of an infinitesimal loop in background space,
+Proposition~\ref{prop:eta-variation-local} reduces the eta phase to the
+integral of the descent form associated with the local anomaly polynomial.
+Large loops require the full reduced eta invariant.  Therefore local anomaly
+cancellation is the vanishing of the curvature of the determinant line, while
+global anomaly cancellation is the triviality of its holonomy on all loops in
+background-field space.
+
+\section{Interacting Theories}
+
+For free fermions, determinant lines and eta invariants are built from Dirac
+operators.  For an interacting QFT, the analogous object is the anomaly line
+over background-field space, defined by the phase ambiguity of the regulated
+partition function and by its response to background gluing.  A fully
+developed theory must construct this line without relying on a quadratic
+fermion determinant and must compare it with invertible bulk field theories.
+
+\begin{openproblem}[Global anomaly line for interacting QFT]
+\label{op:global-anomaly-line-interacting-qft}
+Construct the anomaly line of an interacting QFT over the space of background
+fields, prove its local curvature and global holonomy formulae, and identify
+the conditions under which it is represented by an invertible bulk theory.
+\end{openproblem}

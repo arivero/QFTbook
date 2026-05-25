@@ -1,0 +1,151 @@
+\chapter{Twists Of Supersymmetric Theories}
+\label{ch:tqft-twists-of-supersymmetric-theories}
+
+\ConventionsEuclidean
+
+A topological twist is a change of the rotation action on fields and
+operators using an \(R\)-symmetry of a supersymmetric QFT.  The goal is to
+produce a scalar odd symmetry whose cohomology defines metric-independent
+observables under stated Ward-identity hypotheses.
+
+\section{Twisting Datum}
+
+Let a Euclidean supersymmetric QFT in dimension \(d\) have rotation group
+\(\operatorname{Spin}(d)\) and compact \(R\)-symmetry group \(G_R\).  A
+twisting datum is a continuous homomorphism
+\[
+  \rho:\operatorname{Spin}(d)\longrightarrow G_R .
+\]
+The twisted rotation group is the diagonal subgroup
+\[
+  \operatorname{Spin}(d)_{\rho}
+  \subset
+  \operatorname{Spin}(d)\times G_R,
+  \qquad
+  g\longmapsto (g,\rho(g)).
+\]
+Every field representation is restricted to this diagonal subgroup.  A
+supercharge \(Q\) is a candidate cohomological differential when it is a
+scalar under \(\operatorname{Spin}(d)_\rho\) and obeys
+\[
+  Q^2=\delta_{\mathrm{gauge}}(\Lambda)+\delta_{\mathrm{flavor}}(\alpha)
+\]
+on gauge-invariant, flavor-invariant observables.  If translations appear on
+the right side, the resulting theory is cohomological only after the
+translation is trivial in the chosen observable sector.
+
+\section{Cohomological Observables}
+
+Let \(\mathcal A\) be the graded algebra of gauge-invariant local or extended
+observables in the twisted theory.  The odd derivation
+\[
+  d_Q\mathcal O=[Q,\mathcal O\}_{\mathrm{gr}}
+\]
+defines the cohomology
+\[
+  H_Q(\mathcal A)=\ker d_Q/\operatorname{im}d_Q .
+\]
+Correlation functions of \(Q\)-closed observables descend to \(H_Q(\mathcal A)\)
+provided the finite-regulator functional integral or Hilbert-space trace has
+no boundary contribution under the \(Q\)-variation.
+
+\begin{proposition}[Metric independence from a cohomological stress tensor]
+\label{prop:twist-metric-independence}
+Let \(Z_g(\mathcal O_1,\ldots,\mathcal O_n)\) be a regulated correlation
+functional on a compact manifold \(M\) for \(Q\)-closed insertions.  Assume
+that the regulator preserves \(Q\), that no boundary term arises in the
+space of fields, and that the metric variation of the action is
+\[
+  \frac{\delta S}{\delta g^{\mu\nu}(x)}
+  =
+  \{Q,G_{\mu\nu}(x)\}_{\mathrm{gr}}
+\]
+up to contact terms whose integrals vanish against the declared insertions.
+Then \(Z_g(\mathcal O_1,\ldots,\mathcal O_n)\) is locally constant as a
+function of the metric.
+\end{proposition}
+
+\begin{proof}
+For a variation \(\delta g^{\mu\nu}\),
+\[
+  \delta_g Z_g
+  =
+  -\int_M d^dx\,\delta g^{\mu\nu}(x)
+  \left\langle
+  \{Q,G_{\mu\nu}(x)\}_{\mathrm{gr}}
+  \prod_i\mathcal O_i
+  \right\rangle .
+\]
+Since \(d_Q\mathcal O_i=0\), the integrand is the \(Q\)-variation of the
+product \(G_{\mu\nu}(x)\prod_i\mathcal O_i\), up to the contact terms included
+in the hypothesis.  The \(Q\)-Ward identity for the regulator sets the
+expectation value of this variation to zero.  Hence every first metric
+variation vanishes.
+\end{proof}
+
+\section{Donaldson Twist}
+
+In four Euclidean dimensions,
+\[
+  \operatorname{Spin}(4)=SU(2)_+\times SU(2)_- .
+\]
+The \(\mathcal N=2\) vector multiplet has \(R\)-symmetry
+\[
+  G_R=SU(2)_R\times U(1)_r .
+\]
+The Donaldson twist uses the diagonal subgroup
+\[
+  SU(2)'_+=\operatorname{diag}(SU(2)_+\times SU(2)_R),
+  \qquad
+  \operatorname{Spin}(4)'=SU(2)'_+\times SU(2)_- .
+\]
+Under this twisted rotation group the supercharges decompose into a scalar,
+a one-form, and a self-dual two-form.  The scalar supercharge is the
+cohomological differential.  The twisted vector multiplet fields may be
+organized as
+\[
+  A_\mu,\qquad
+  \phi,\bar\phi,\qquad
+  \psi_\mu,\qquad
+  \chi_{\mu\nu}^+,\qquad
+  \eta ,
+\]
+with auxiliary fields added so that the \(Q\)-transformations close off shell
+up to gauge transformations.
+
+\section{Two-Dimensional A And B Twists}
+
+For a two-dimensional theory with \(\mathcal N=(2,2)\) supersymmetry, the
+rotation group is \(U(1)_{\mathrm{rot}}\) and the \(R\)-symmetry contains
+vector and axial \(U(1)\) factors when they are nonanomalous.  The A twist
+uses \(U(1)_V\); the B twist uses \(U(1)_A\).  The A-model cohomological
+observables depend on symplectic data and have instanton sectors given by
+holomorphic maps.  The B-model observables depend on complex-structure data
+and are represented perturbatively by polyvector-field cohomology.  These
+statements require the anomaly and compactness assumptions developed in
+Chapter~\ref{ch:tqft-topological-sigma-models}.
+
+\section{Regulator And Contact-Term Ledger}
+
+Twisting changes the representation of fields under rotations; it does not
+by itself construct a continuum QFT.  A complete cohomological QFT datum must
+include:
+\[
+\begin{array}{ll}
+  \text{field space or algebra} & \mathcal F,\\
+  \text{odd differential} & Q,\\
+  \text{closure relation} & Q^2,\\
+  \text{action or state} & S \text{ or } \omega,\\
+  \text{measure or trace} & D\Phi \text{ at finite regulator},\\
+  \text{contact terms} & \text{operator-collision prescriptions}.
+\end{array}
+\]
+Only after these entries are fixed can metric independence, localization, and
+descent equations be treated as mathematical consequences.
+
+\begin{openproblem}[Twisted continuum construction]
+\label{op:twisted-continuum-construction}
+Construct four-dimensional twisted supersymmetric gauge theories as
+continuum QFTs with a \(Q\)-preserving regulator, off-shell closure, contact
+term control, and a derivation of the cohomological stress-tensor relation.
+\end{openproblem}
