@@ -416,3 +416,8 @@
   proposition, and a classification of dimensional reduction, superspace,
   higher-derivative, Pauli--Villars-type, lattice/twisted, and localization
   regulators by their required data.
+- 2026-05-24 issue #396 pass: corrected the dimensional-regulator
+  \(\gamma_5\) definition to the monograph-wide mostly-plus convention
+  \(\gamma_5=-\ii\gamma^0\gamma^1\gamma^2\gamma^3\), stated the associated
+  trace identity with \(\epsilon^{0123}=+1\), and cross-referenced the spinor
+  convention appendix.
