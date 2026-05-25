@@ -672,6 +672,344 @@ then
 is independent of the representative choice. This is the form in which
 polarization sums will enter gauge-invariant scattering calculations.
 
+\section{Four-Dimensional Spinor-Helicity Variables}
+\label{sec:spinor-helicity-variables}
+
+The preceding sections described helicity as a line bundle over the massless
+orbit.  In four dimensions this bundle has a concrete spinorial
+trivialization.  The statements in this and the next two sections concern
+tree-level perturbative massless amplitudes after the scattering operator and
+LSZ extraction have already been defined; they are not a definition of the
+\(S\)-operator.
+
+For a real four-vector \(p^\mu\), define the Hermitian \(2\times2\) matrix
+\begin{equation}
+  p_{a\dot a}
+  =
+  p^0\delta_{a\dot a}+p^i(\sigma_i)_{a\dot a},
+  \qquad
+  a,\dot a=1,2.
+  \label{eq:spinor-helicity-momentum-matrix}
+\end{equation}
+With the mostly-plus metric used in this monograph,
+\[
+  \det(p_{a\dot a})=(p^0)^2-\vec p^{\,2}=-p^2 .
+\]
+Thus a complexified null momentum is equivalently a rank-one matrix, and may
+be written
+\begin{equation}
+  p_{a\dot a}
+  =
+  \lambda_a\widetilde\lambda_{\dot a}.
+  \label{eq:null-momentum-spinor-factorization}
+\end{equation}
+For a real future-directed null momentum one may choose
+\(\widetilde\lambda_{\dot a}=\overline{\lambda_a}\), up to a phase.  In
+analytic amplitude formulae \(\lambda\) and \(\widetilde\lambda\) are treated
+as independent complex spinors; the real physical region is a boundary value.
+The factorization \eqref{eq:null-momentum-spinor-factorization} is unchanged
+by the little-group scaling
+\begin{equation}
+  \lambda_a\longmapsto t\,\lambda_a,
+  \qquad
+  \widetilde\lambda_{\dot a}\longmapsto t^{-1}
+  \widetilde\lambda_{\dot a},
+  \qquad t\in\mathbb C^\times .
+  \label{eq:spinor-helicity-little-group-scaling}
+\end{equation}
+This is the complexified version of the helicity-frame freedom.
+
+Spinor contractions are
+\begin{equation}
+  \langle ij\rangle
+  =
+  \epsilon^{ab}\lambda_{i,a}\lambda_{j,b},
+  \qquad
+  [ij]
+  =
+  \epsilon^{\dot a\dot b}
+  \widetilde\lambda_{i,\dot a}
+  \widetilde\lambda_{j,\dot b},
+  \label{eq:spinor-helicity-brackets}
+\end{equation}
+with the same \(\epsilon^{12}=1\) convention as
+Appendix~\ref{app:spinor-conventions}.  They are antisymmetric:
+\(\langle ij\rangle=-\langle ji\rangle\) and \([ij]=-[ji]\).  A direct
+determinant calculation gives the mostly-plus invariant
+\begin{equation}
+  \langle ij\rangle[ji]
+  =
+  -2p_i\cdot p_j.
+  \label{eq:spinor-helicity-dot-product}
+\end{equation}
+For a sum \(P^\mu=\sum_{r\in I}p_r^\mu\), use the abbreviation
+\[
+  \langle i|P|j]
+  :=
+  \lambda_i^a P_{a\dot a}\widetilde\lambda_j^{\dot a}.
+\]
+Momentum conservation for an all-outgoing amplitude is
+\begin{equation}
+  \sum_{i=1}^n
+  \lambda_{i,a}\widetilde\lambda_{i,\dot a}=0 .
+  \label{eq:spinor-helicity-momentum-conservation}
+\end{equation}
+
+An \(n\)-point helicity amplitude with external helicities \(h_i\) is a
+section of the tensor product of the helicity lines.  In a spinor-helicity
+frame this means
+\begin{equation}
+  A_n(\ldots,t_i\lambda_i,t_i^{-1}\widetilde\lambda_i,\ldots)
+  =
+  t_i^{-2h_i}
+  A_n(\ldots,\lambda_i,\widetilde\lambda_i,\ldots).
+  \label{eq:spinor-helicity-amplitude-weight}
+\end{equation}
+This equation is not a mnemonic: it is the helicity character
+\(\chi_h\) of the little group, written in the coordinates
+\eqref{eq:null-momentum-spinor-factorization}.
+
+The vector polarization representatives can also be written spinorially.  Let
+\(r_a,\widetilde r_{\dot a}\) be reference spinors with
+\(\langle r\,\lambda\rangle\ne0\) and
+\([\widetilde\lambda\,\widetilde r]\ne0\).  Define
+\begin{equation}
+  \varepsilon^+_{a\dot a}(k;r)
+  =
+  \sqrt2\,\frac{r_a\widetilde\lambda_{\dot a}}
+  {\langle r\,\lambda\rangle},
+  \qquad
+  \varepsilon^-_{a\dot a}(k;r)
+  =
+  \sqrt2\,\frac{\lambda_a\widetilde r_{\dot a}}
+  {[\widetilde\lambda\,\widetilde r]} .
+  \label{eq:spinor-helicity-polarization-vectors}
+\end{equation}
+They obey \(k^{a\dot a}\varepsilon^\pm_{a\dot a}=0\).  Changing the reference
+spinors changes \(\varepsilon^\pm\) by a term proportional to
+\(k_{a\dot a}=\lambda_a\widetilde\lambda_{\dot a}\), hence by exactly the
+representative shift discussed above.  Gauge-invariant amplitudes are
+independent of this reference choice.
+
+\section{Color-Ordered Yang--Mills Tree Amplitudes}
+\label{sec:color-ordered-tree-amplitudes}
+
+Now specialize to the perturbative tree amplitudes of four-dimensional
+Yang--Mills theory, with all external momenta outgoing and the overall
+momentum-conservation delta function removed.  The complete color-dressed
+amplitude is a sum over trace structures and permutations.  The partial
+amplitude
+\[
+  A_n(1^{h_1},2^{h_2},\ldots,n^{h_n})
+\]
+denotes the coefficient of a fixed cyclic ordering after stripping the common
+coupling and color factor.  The cyclic ordering is part of the datum; poles of
+\(A_n\) occur only in sums of adjacent momenta in that cyclic order.
+
+At three points, real massless momenta with momentum conservation are
+collinear, but complexified on-shell kinematics has two branches.  On the
+holomorphic branch all square brackets vanish and angle brackets need not; on
+the antiholomorphic branch all angle brackets vanish and square brackets need
+not.  Locality, mass dimension, and the little-group weights
+\eqref{eq:spinor-helicity-amplitude-weight} fix the nonzero color-ordered
+three-gluon amplitudes, in the normalization used here, to be
+\begin{equation}
+  A_3(1^-,2^-,3^+)
+  =
+  \frac{\langle12\rangle^3}
+       {\langle23\rangle\langle31\rangle},
+  \qquad
+  A_3(1^+,2^+,3^-)
+  =
+  \frac{[12]^3}{[23][31]}.
+  \label{eq:three-gluon-spinor-helicity-amplitudes}
+\end{equation}
+For example, the first formula transforms as
+\[
+  A_3(1^-,2^-,3^+)
+  \longmapsto
+  t_1^2t_2^2t_3^{-2}\,
+  A_3(1^-,2^-,3^+),
+\]
+which is exactly the helicity weight for \((-1,-1,+1)\).  Its mass dimension is
+that of a tree-level three-gluon partial amplitude after the coupling has been
+stripped.
+
+The maximally helicity-violating, or MHV, tree amplitudes are the amplitudes
+with exactly two negative-helicity gluons.  With negative-helicity labels
+\(r\) and \(s\), the Parke--Taylor formula is
+\begin{equation}
+  A_n(1^+,\ldots,r^-,\ldots,s^-,\ldots,n^+)
+  =
+  \frac{\langle rs\rangle^4}
+  {\langle12\rangle\langle23\rangle\cdots
+   \langle n1\rangle}.
+  \label{eq:parke-taylor-mhv}
+\end{equation}
+The expression is cyclic, has the correct little-group weight on every leg,
+and has only adjacent collinear and multi-particle singularities.  The
+recursion theorem below turns these consistency checks into a construction
+from factorization and the three-point amplitudes.
+
+\section{BCFW Recursion}
+\label{sec:bcfw-recursion}
+
+Choose two external labels \(i\) and \(j\).  The BCFW deformation
+\begin{equation}
+  \widehat{\widetilde\lambda}_i(z)
+  =
+  \widetilde\lambda_i+z\widetilde\lambda_j,
+  \qquad
+  \widehat\lambda_j(z)
+  =
+  \lambda_j-z\lambda_i,
+  \label{eq:bcfw-shift}
+\end{equation}
+leaves all other spinors fixed.  It preserves
+\(\widehat p_i(z)^2=\widehat p_j(z)^2=0\) and total momentum:
+\[
+  \widehat p_i(z)+\widehat p_j(z)=p_i+p_j .
+\]
+Let \(q_{a\dot a}=\lambda_{i,a}\widetilde\lambda_{j,\dot a}\).  Then
+\(\widehat p_i=p_i+zq\), \(\widehat p_j=p_j-zq\), and
+\(q^2=q\cdot p_i=q\cdot p_j=0\).
+
+At tree level a color-ordered amplitude \(A_n(z)\) is a rational function of
+\(z\).  Its finite poles occur when a cyclically adjacent momentum sum
+\[
+  P_I=\sum_{\ell\in I}p_\ell
+\]
+contains exactly one of the shifted labels and becomes null:
+\begin{equation}
+  \widehat P_I(z_I)^2=0.
+  \label{eq:bcfw-factorization-pole}
+\end{equation}
+Near such a pole, tree-level unitarity and locality give the factorization
+\begin{equation}
+  A_n(z)
+  \sim
+  \sum_{h}
+  A_L(z_I)\,
+  \frac{1}{\widehat P_I(z)^2}\,
+  A_R(z_I),
+  \label{eq:tree-factorization-bcfw}
+\end{equation}
+where the two lower-point amplitudes have an internal on-shell gluon of
+helicity \(h\) and \(-h\), respectively.  Applying Cauchy's theorem to
+\(A_n(z)/z\) gives
+\begin{equation}
+  A_n(0)
+  =
+  \sum_{I,h}
+  A_L(z_I)\,
+  \frac{1}{P_I^2}\,
+  A_R(z_I)
+  +B_\infty .
+  \label{eq:bcfw-recursion-with-boundary}
+\end{equation}
+The boundary term \(B_\infty\) is the residue at \(z=\infty\).  For
+Yang--Mills tree amplitudes it vanishes for the standard good shifts used in
+the MHV construction, including the \((-,+)\) shift below.  When a shift has
+nonzero boundary term, equation \eqref{eq:bcfw-recursion-with-boundary} remains
+true but is not a closed recursion until \(B_\infty\) is determined by other
+input.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.94,
+    blob/.style={ellipse,draw=black,thick,minimum width=1.65cm,
+      minimum height=1.05cm,fill=blue!5}]
+    \node[blob] (L) at (-2.2,0) {\(A_L(z_I)\)};
+    \node[blob] (R) at (2.2,0) {\(A_R(z_I)\)};
+    \draw[thick] (L.east)--node[above] {\(\widehat P_I^2=0\)} (R.west);
+    \draw[thick,->] (-4.0,0.85)--(L.west);
+    \draw[thick,->] (-4.0,0.15)--(L.west);
+    \draw[thick,->] (-4.0,-0.65)--(L.west);
+    \draw[thick,->] (R.east)--(4.0,0.65);
+    \draw[thick,->] (R.east)--(4.0,-0.15);
+    \draw[thick,->] (R.east)--(4.0,-0.85);
+    \node[left] at (-4.0,0.85) {\(\hat i\)};
+    \node[right] at (4.0,0.65) {\(\hat j\)};
+    \node[align=center] at (0,-1.25)
+      {BCFW pole = ordinary tree factorization\\
+       with complex on-shell shifted momenta};
+  \end{tikzpicture}
+  \caption{A pole in the complex BCFW parameter occurs when an adjacent
+  momentum sum becomes null.  The residue is the product of two lower-point
+  on-shell amplitudes and the intermediate propagator.}
+  \label{fig:bcfw-factorization}
+\end{figure}
+
+\section{Parke--Taylor from Recursion}
+\label{sec:parke-taylor-from-bcfw}
+
+Consider
+\[
+  A_n(1^-,2^-,3^+,\ldots,n^+).
+\]
+Use the shift
+\[
+  \widehat{\widetilde\lambda}_1
+  =
+  \widetilde\lambda_1+z\widetilde\lambda_n,
+  \qquad
+  \widehat\lambda_n
+  =
+  \lambda_n-z\lambda_1 .
+  \label{eq:mhv-bcfw-shift}
+\]
+This is a good \((-,+)\) Yang--Mills shift, so \(B_\infty=0\).  The BCFW
+terms in which one side has fewer than two negative helicities vanish, except
+for the three-point anti-MHV factor allowed by complex kinematics.  Inductively
+one obtains a single nonzero channel, consisting of an \((n-1)\)-point MHV
+amplitude and a three-point amplitude.  Substitution of
+\eqref{eq:three-gluon-spinor-helicity-amplitudes} and the induction hypothesis
+gives
+\[
+  A_n(1^-,2^-,3^+,\ldots,n^+)
+  =
+  \frac{\langle12\rangle^4}
+  {\langle12\rangle\langle23\rangle\cdots\langle n1\rangle}.
+\]
+This proves \eqref{eq:parke-taylor-mhv} for this placement of the two negative
+helicities; cyclic relabeling and the same argument give the general
+\((r,s)\) formula.
+
+For the first genuinely five-leg case,
+\[
+  A_5(1^-,2^-,3^+,4^+,5^+),
+\]
+the shift \eqref{eq:mhv-bcfw-shift} gives one nonzero recursive contribution:
+\begin{equation}
+  A_5
+  =
+  A_4(\widehat{1}^-,2^-,3^+,-\widehat P^+)\,
+  \frac{1}{P_{123}^2}\,
+  A_3(\widehat P^-,4^+,\widehat{5}^+),
+  \label{eq:five-point-mhv-bcfw-channel}
+\end{equation}
+where \(P_{123}=p_1+p_2+p_3\) and
+\(\widehat P=\widehat p_1(z_*)+p_2+p_3\) is null.  The pole is determined by
+\[
+  \widehat P(z_*)^2=0.
+\]
+Using the four-point Parke--Taylor amplitude on the left and the
+three-point amplitude \eqref{eq:three-gluon-spinor-helicity-amplitudes} on the
+right, all dependence on the internal spinor representation of
+\(\widehat P\) cancels.  The result is
+\begin{equation}
+  A_5(1^-,2^-,3^+,4^+,5^+)
+  =
+  \frac{\langle12\rangle^4}
+  {\langle12\rangle\langle23\rangle\langle34\rangle
+   \langle45\rangle\langle51\rangle}.
+  \label{eq:five-point-parke-taylor}
+\end{equation}
+The calculation illustrates the conceptual point of BCFW recursion: tree
+amplitudes are determined by their on-shell factorization residues, helicity
+weights, and large-complex-momentum behavior, without introducing off-shell
+gauge-dependent subamplitudes.
+
 The next chapter supplies the dynamics whose one-particle sector realizes
 these helicity states: Maxwell theory, its constraints, and the controlled
 introduction of gauge fixing.

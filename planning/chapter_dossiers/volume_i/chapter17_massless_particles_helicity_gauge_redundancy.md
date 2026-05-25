@@ -5,6 +5,9 @@
 - Follows spinor fields and spinorial LSZ.
 - Begins the massless-particle and gauge-field sequence.
 - Precedes Maxwell constraints, gauge fixing, QED, and radiative corrections.
+- Includes a four-dimensional on-shell tree-amplitude interlude after the
+  helicity and representative construction; this interlude uses the already
+  defined scattering-kernel/LSZ status and does not redefine \(S\).
 - Source material used:
   - `transcription/tex/253a/foundations.tex`, roughly lines 8011--8365;
   - `references/sound_references/straumann_poincare_representations_0809.4942.pdf`
@@ -18,6 +21,11 @@
   translation subgroup.
 - Continuous-spin representations are recorded only as a separate
   representation-theoretic class; they are not developed.
+- Spinor-helicity, Parke--Taylor, and BCFW are included only at tree level for
+  complexified four-dimensional massless on-shell amplitudes.  They are
+  presented as consequences of helicity weights, locality, factorization, and
+  large-\(z\) behavior, not as nonperturbative definitions of gauge-theory
+  scattering.
 
 ## Framework
 
@@ -51,6 +59,11 @@
 | \(F_{\mu\nu}\) | gauge-invariant field strength |
 | \(n^\mu\) | auxiliary vector used to choose polarization representatives |
 | \(\Pi_{\mu\nu}(k;n)\) | transverse polarization projector |
+| \(\lambda_a,\widetilde\lambda_{\dot a}\) | spinor-helicity factors of a complex null momentum \(p_{a\dot a}=\lambda_a\widetilde\lambda_{\dot a}\) |
+| \(\langle ij\rangle,[ij]\) | holomorphic and antiholomorphic spinor contractions |
+| \(A_n(1^{h_1},\ldots,n^{h_n})\) | color-ordered tree partial amplitude with momentum delta function, coupling, and color factor stripped |
+| \(z\) | BCFW complex deformation parameter |
+| \(B_\infty\) | possible boundary contribution at \(z=\infty\) in BCFW recursion |
 
 ## Claims Established
 
@@ -82,17 +95,71 @@
 - Polarization sums require a representative choice, but representative
   dependence drops out after contraction with gauge-invariant or conserved
   data.
+- In four dimensions a complex null momentum is represented by
+  \(p_{a\dot a}=\lambda_a\widetilde\lambda_{\dot a}\), modulo
+  \((\lambda,\widetilde\lambda)\mapsto(t\lambda,t^{-1}\widetilde\lambda)\).
+  The mostly-plus invariant is
+  \(\langle ij\rangle[ji]=-2p_i\cdot p_j\).
+- A helicity amplitude has little-group weight
+  \(A_n(\ldots,t_i\lambda_i,t_i^{-1}\widetilde\lambda_i,\ldots)
+  =t_i^{-2h_i}A_n\).
+- Spinor-helicity polarization representatives are displayed with a reference
+  spinor; changing the reference spinor shifts the polarization by a multiple
+  of the null momentum.
+- The three-point color-ordered Yang--Mills amplitudes are fixed by locality,
+  mass dimension, and little-group weights:
+  \[
+    A_3(1^-,2^-,3^+)=
+    \frac{\langle12\rangle^3}{\langle23\rangle\langle31\rangle},
+    \qquad
+    A_3(1^+,2^+,3^-)=
+    \frac{[12]^3}{[23][31]}.
+  \]
+- The Parke--Taylor MHV formula is stated for tree amplitudes with two
+  negative-helicity gluons:
+  \[
+    A_n(1^+,\ldots,r^-,\ldots,s^-,\ldots,n^+)
+    =
+    \frac{\langle rs\rangle^4}
+    {\langle12\rangle\langle23\rangle\cdots\langle n1\rangle}.
+  \]
+- The BCFW shift
+  \(\widehat{\widetilde\lambda}_i=\widetilde\lambda_i+z\widetilde\lambda_j\),
+  \(\widehat\lambda_j=\lambda_j-z\lambda_i\) preserves on-shellness and total
+  momentum.  Cauchy's theorem gives the recursion with possible boundary term
+  \(B_\infty\), and tree-level Yang--Mills good shifts have \(B_\infty=0\).
+- The five-point MHV example is worked through a single nonzero BCFW
+  factorization channel and gives
+  \[
+    A_5(1^-,2^-,3^+,4^+,5^+)
+    =
+    \frac{\langle12\rangle^4}
+    {\langle12\rangle\langle23\rangle\langle34\rangle
+     \langle45\rangle\langle51\rangle}.
+  \]
 
 ## Figure Requirements
 
 - A figure showing the massless little-group action: \(SO(2)\) rotation gives
   helicity phase, while the translation subgroup shifts vector polarization
   representatives along the lightlike momentum direction.
+- A BCFW factorization figure showing a complex on-shell pole decomposing a
+  color-ordered tree amplitude into two lower-point amplitudes and an
+  intermediate propagator.
 
 ## Exclusions
 
 - No Maxwell action or constraint analysis.
 - No gauge fixing.
 - No photon propagator.
-- No QED coupling or Ward identity derivation beyond the representative-level
-  conservation statement needed for polarization sums.
+- No QED coupling, loop amplitude technology, or gauge-fixed propagator
+  derivation.  The only perturbative amplitudes included here are tree-level
+  on-shell Yang--Mills partial amplitudes used to connect helicity
+  representation theory to modern scattering-amplitude variables.
+
+## Audit Notes
+
+- 2026-05-25 issue #456 pass: added spinor-helicity variables, little-group
+  weights, spinorial polarization representatives, color-ordered three-gluon
+  amplitudes, the Parke--Taylor MHV formula, BCFW recursion with its boundary
+  term, a BCFW factorization figure, and the five-point MHV worked example.
