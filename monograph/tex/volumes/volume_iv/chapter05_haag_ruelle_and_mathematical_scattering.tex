@@ -328,6 +328,130 @@ integrable.  Consequently
 and the outgoing family is Cauchy.  The incoming limit is identical with
 \(t\to-\infty\).
 
+\section{Gauge Charges and Nonlocal Charged Creators}
+
+The ordinary theorem uses local creators \(B\in\Obs(\mathcal O)\) whose
+vacuum vector \(B\vac\) has nonzero projection to an isolated one-particle
+shell.  In a gauge theory with an unscreened Gauss-law charge, the existence
+of such a creator is a further dynamical and localization hypothesis.  It is
+false for charged particles if the available local algebra is the
+gauge-invariant observable algebra.
+
+\begin{theorem}[Gauss-law obstruction to local charged creators]
+\label{thm:gauss-law-obstruction-local-charged-creators}
+Let \(\Obs\) be a gauge-invariant local observable net in a vacuum
+representation.  Assume that an abelian charge \(Q\) is represented on a
+common invariant domain by the large-sphere Gauss-law limit
+\[
+  Q=\lim_{R\to\infty}Q_R,\qquad
+  Q_R=\int_{S_R} n_i E^i\,\dd S ,
+\]
+and that locality holds between \(\Obs(\mathcal O)\) and electric-field
+operators localized spacelike to \(\mathcal O\).  If the vacuum is neutral,
+\(Q\vac=0\), then every local gauge-invariant observable \(A\in\Obs(\mathcal O)\)
+creates a neutral vector:
+\[
+  Q\,A\vac=0 .
+\]
+Consequently a charged one-particle vector cannot be obtained by applying a
+bounded-region gauge-invariant observable to the vacuum.
+\end{theorem}
+
+\begin{proof}
+Choose \(R\) so large that the sphere \(S_R\) is spacelike separated from the
+bounded region \(\mathcal O\) at the time used to define \(Q_R\), after the
+usual smooth smearing of the surface integral.  Locality gives
+\[
+  [Q_R,A]=0
+\]
+on the common domain.  Taking the Gauss-law limit gives \([Q,A]=0\) on
+vectors for which the limit defining \(Q\) exists.  Therefore
+\[
+  Q A\vac=AQ\vac=0 .
+\]
+If \(\psi\) has charge \(q\ne0\), so that \(Q\psi=q\psi\), it cannot equal
+\(A\vac\) for such an \(A\).
+\end{proof}
+
+This obstruction concerns localization and Gauss-law charge.  It is distinct
+from the infraparticle obstruction in massless QED.  The latter states that a
+charged sector with long-range electromagnetic flux does not contain an
+ordinary sharp Wigner mass-shell vector.  The present theorem applies before
+asking whether the charged spectral distribution is an isolated shell or a
+soft-photon continuum: a bounded gauge-invariant observable cannot change the
+surface charge at infinity.
+
+Charged fields can be introduced in a larger field algebra, but they are not
+gauge-invariant local observables.  A gauge-invariant charged insertion must
+carry flux to infinity.  In an abelian convention
+\[
+  A\longmapsto A+\dd\alpha,\qquad
+  \psi_q(x)\longmapsto \ee^{\ii q\alpha(x)}\psi_q(x),
+\]
+a path \(\gamma\) from \(x\) to spatial infinity gives the formal dressing
+\[
+  \Psi_{q,\gamma}(x)
+  =
+  \psi_q(x)\,
+  \exp\!\left\{-\ii q\int_\gamma A\right\}.
+  \label{eq:charged-wilson-line-dressed-field}
+\]
+For gauge functions with \(\alpha(\infty)=0\), the exponential transforms by
+\(\ee^{-\ii q\alpha(x)}\), so \(\Psi_{q,\gamma}(x)\) is gauge invariant.  For
+a gauge function with nonzero boundary value, it transforms by the boundary
+phase and therefore carries the global charge.  The price is noncompact
+localization: the localization region includes the curve \(\gamma\) reaching
+infinity, or a Coulombic dressing with equivalent asymptotic flux.
+
+\begin{definition}[Dressed charged LSZ problem]
+\label{def:dressed-charged-lsz-problem}
+A dressed charged LSZ datum consists of:
+\begin{enumerate}
+\item a gauge-invariant observable net and a charged sector carrying a
+Gauss-law surface charge;
+\item a family of gauge-invariant noncompact charged creators
+\(\Psi_{q,\gamma}(x)\), or Coulombic variants with the same asymptotic flux;
+\item a specification of the dressing geometry \(\gamma\) in terms of the
+asymptotic velocity or momentum labels;
+\item a spectral statement for the vectors \(\Psi_{q,\gamma}(f)\vac\), either
+an isolated massive shell in an infrared-regulated or screened model, or the
+corresponding charged infraparticle threshold datum in massless QED;
+\item a reduction prescription for Fourier-transformed dressed correlators
+\[
+  \langle\vac|
+  T\{\Psi_{q_1,\gamma_1}(x_1)\cdots
+      \Psi^\dagger_{q_n,\gamma_n}(y_n)\,\mathcal O_1\cdots\mathcal O_k\}
+  |\vac\rangle
+\]
+which extracts the same matrix elements as the large-time dressed wave
+operators.
+\end{enumerate}
+\end{definition}
+
+This definition identifies the replacement for ordinary local-field LSZ in a
+charged gauge sector.  The external residue, when an isolated charged shell is
+available after a regulator or screening deformation, is the residue of the
+dressed two-point function.  It includes the short-distance renormalization of
+the matter field and the endpoint or cusp renormalization of the Wilson-line
+dressing.  Different dressing geometries define different charged operators;
+showing that a physical on-shell answer is independent of the unobserved
+geometric choices is part of the reduction theorem, not an assumption inside
+the scalar LSZ formula.
+
+\begin{openproblem}[Haag--Ruelle and LSZ for dressed charged sectors]
+\label{op:haag-ruelle-lsz-dressed-charged-sectors}
+Construct a large-time scattering theory for gauge-theory charged sectors
+using noncompact gauge-invariant charged creators.  The construction should
+prove the analogue of Haag--Ruelle limits for the chosen dressing class,
+identify the asymptotic flux labels, and prove a dressed-correlator reduction
+formula whose external factors are the residues or threshold coefficients of
+the corresponding dressed two-point functions.  In massless QED this problem
+must be combined with the infraparticle flux-sector analysis of
+Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}; in a confining gauge
+theory the ordinary massive theorem applies instead to gauge-invariant
+hadronic shells when such shells are isolated.
+\end{openproblem}
+
 \section{Wave Operators, Scattering Operator, and Completeness}
 
 Let

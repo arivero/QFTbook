@@ -61,7 +61,7 @@ An element \(\Omega\in\mathcal G_{\Lambda}\) acts by
 This convention matches the Hermitian continuum convention of
 Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  For a smooth field with
 \[
-  U_\mu(x)=\exp\bigl(\ii a A_\mu(x)+O(a^2)\bigr),
+  U_\mu(x)=\exp\bigl(-\ii a A_\mu(x)+O(a^2)\bigr),
 \]
 the endpoint rule \eqref{eq:lattice-link-gauge-transformation} gives
 \[
@@ -199,17 +199,19 @@ is a completely defined number.  No division by an infinite gauge-group volume
 and no Faddeev--Popov determinant enter this finite-cutoff definition.
 
 The relation to the continuum Yang--Mills action is obtained by evaluating the
-plaquette on a smooth continuum connection.  With
+plaquette on a smooth continuum connection.  Let
+\(x_c=x+\frac a2\widehat\mu+\frac a2\widehat\nu\) be the plaquette center.
+With
 \[
   U_\mu(x)
   =
-  \exp\bigl(\ii a A_\mu(x+\tfrac a2\widehat\mu)+O(a^3)\bigr),
+  \exp\bigl(-\ii a A_\mu(x+\tfrac a2\widehat\mu)+O(a^3)\bigr),
 \]
 the Baker--Campbell--Hausdorff expansion gives
 \begin{equation}
   U_{\mu\nu}(x)
   =
-  \exp\bigl(\ii a^2 F_{\mu\nu}(x)+O(a^3)\bigr),
+  \exp\bigl(-\ii a^2 F_{\mu\nu}(x_c)+O(a^4)\bigr),
   \label{eq:lattice-plaquette-continuum-expansion}
 \end{equation}
 where \(F_{\mu\nu}\) is the Hermitian-coordinate curvature of
@@ -218,7 +220,7 @@ Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  For \(SU(N)\),
 \[
   \operatorname{Re}\operatorname{tr}(\mathbf 1-U_{\mu\nu})
   =
-  \frac{a^4}{2}\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+  \frac{a^4}{2}\operatorname{tr}(F_{\mu\nu}(x_c)F_{\mu\nu}(x_c))
   +O(a^6).
 \]
 Substitution in \eqref{eq:lattice-wilson-action} gives

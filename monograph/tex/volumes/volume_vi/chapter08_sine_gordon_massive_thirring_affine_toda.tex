@@ -60,7 +60,9 @@ Introduce
 The attractive regime is \(0<\xi<1\).  In this regime the soliton-antisoliton
 S-matrix has bound-state poles corresponding to neutral breathers
 \[
-  B_n,\qquad n=1,\ldots,\left\lfloor \xi^{-1}\right\rfloor ,
+  B_n,\qquad
+  n=1,\ldots,N_B,\qquad
+  N_B=\max\{n\in\mathbb Z_{>0}\mid n\xi<1\},
 \]
 with masses
 \[
@@ -75,6 +77,89 @@ two-particle channel of equal masses \(M_s\) produces a bound state of mass
   4M_s^2\cos^2\!\left(\frac{u}{2}\right).
 \]
 For the breather poles \(u=\pi(1-n\xi)\), this gives the displayed value.
+
+\section{Lightest Breather Scattering}
+
+The lightest breather \(B_1\) is a neutral scalar particle in the attractive
+regime \(0<\xi<1\).  Its diagonal two-body amplitude is
+\begin{equation}
+  S_{11}(\theta)
+  =
+  \frac{\sinh\theta+\ii\sin(\pi\xi)}
+       {\sinh\theta-\ii\sin(\pi\xi)} .
+  \label{eq:sine-gordon-b1b1-smatrix}
+\end{equation}
+This formula is a useful test case because each analytic requirement can be
+checked directly.  Unitarity follows by multiplication:
+\[
+  S_{11}(\theta)S_{11}(-\theta)
+  =
+  \frac{\sinh\theta+\ii s_\xi}{\sinh\theta-\ii s_\xi}
+  \frac{-\sinh\theta+\ii s_\xi}{-\sinh\theta-\ii s_\xi}
+  =
+  1,
+  \qquad s_\xi=\sin(\pi\xi).
+\]
+Hermitian analyticity follows from
+\[
+  S_{11}(\theta)^\ast=S_{11}(-\theta^\ast)
+\]
+for the boundary values obtained from real rapidity.  Crossing for an
+self-conjugate scalar requires \(S_{11}(\theta)=S_{11}(\ii\pi-\theta)\).  Since
+\(\sinh(\ii\pi-\theta)=\sinh\theta\), the displayed amplitude satisfies this
+identity.
+
+The denominator vanishes when
+\[
+  \sinh\theta=\ii\sin(\pi\xi).
+\]
+Inside the physical strip \(0<\operatorname{Im}\theta<\pi\), this gives the
+pole
+\[
+  \theta=\ii\pi\xi .
+\]
+For two incoming particles of mass \(m_1\) and rapidities
+\(\theta/2\) and \(-\theta/2\), the squared center-of-mass energy is
+\[
+  s(\theta)=
+  \bigl(p(\theta/2)+p(-\theta/2)\bigr)^2
+  =
+  4m_1^2\cosh^2(\theta/2).
+\]
+At \(\theta=\ii\pi\xi\), this is
+\[
+  s_\ast
+  =
+  4m_1^2\cos^2\!\left(\frac{\pi\xi}{2}\right).
+\]
+Therefore the pole has the mass required for the second breather:
+\[
+  m_2=2m_1\cos\!\left(\frac{\pi\xi}{2}\right).
+\]
+Using the soliton-breather mass formula
+\[
+  m_n=2M_s\sin\!\left(\frac{\pi n\xi}{2}\right)
+\]
+for \(n=1,2\), the same relation becomes
+\[
+  2m_1\cos\!\left(\frac{\pi\xi}{2}\right)
+  =
+  4M_s\sin\!\left(\frac{\pi\xi}{2}\right)
+      \cos\!\left(\frac{\pi\xi}{2}\right)
+  =
+  2M_s\sin(\pi\xi)
+  =
+  m_2 .
+\]
+Thus the elementary analytic pole of
+\eqref{eq:sine-gordon-b1b1-smatrix} encodes the fusion process
+\[
+  B_1+B_1\longrightarrow B_2
+\]
+when \(B_2\) lies below the two-soliton threshold as a stable breather.  The
+condition is \(2\xi<1\).  At the endpoint \(2\xi=1\) the candidate sits at
+threshold, and for \(2\xi>1\) this pole does not define an additional stable
+breather in the Hilbert-space particle spectrum.
 
 \section{Massive Thirring Equivalence}
 

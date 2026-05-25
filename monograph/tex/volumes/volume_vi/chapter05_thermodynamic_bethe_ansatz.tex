@@ -174,6 +174,93 @@ The effective central charge extracted from the ultraviolet limit is
 provided the limit exists and the infrared bulk energy has been subtracted in
 the declared normalization.
 
+\section{Free Majorana Example and the Ultraviolet Central Charge}
+
+The massive Ising field theory in its fermionic phase gives the minimal
+diagonal example.  It has one neutral particle of mass \(m\).  The two-particle
+scattering phase is the constant
+\[
+  S(\theta)=-1 .
+\]
+The derivative kernel is therefore zero:
+\[
+  \varphi(\theta)
+  =
+  \frac{1}{2\pi\ii}\frac{\dd}{\dd\theta}\log S(\theta)=0,
+\]
+after the constant branch of \(\log(-1)=\ii\pi\) has been fixed.  The TBA
+equation reduces to
+\[
+  \epsilon(\theta)=r\cosh\theta,
+  \qquad r=mR .
+\]
+The finite-size ground-state energy in the normalization of the preceding
+section is
+\begin{equation}
+  E_0(R)
+  =
+  -\frac{m}{2\pi}
+  \int_{-\infty}^{\infty}\dd\theta\,
+  \cosh\theta\,
+  \log\!\left(1+\ee^{-r\cosh\theta}\right).
+  \label{eq:tba-free-majorana-ground-energy}
+\end{equation}
+The ultraviolet central charge follows from a direct scaling limit.  Put
+\[
+  x=\sinh\theta,\qquad \dd x=\cosh\theta\,\dd\theta .
+\]
+Then
+\[
+  I(r)
+  :=
+  \int_{-\infty}^{\infty}\dd\theta\,
+  \cosh\theta\,
+  \log(1+\ee^{-r\cosh\theta})
+  =
+  \int_{-\infty}^{\infty}\dd x\,
+  \log(1+\ee^{-r\sqrt{1+x^2}}).
+\]
+Rescale \(y=rx\).  This gives
+\[
+  rI(r)
+  =
+  \int_{-\infty}^{\infty}\dd y\,
+  \log(1+\ee^{-\sqrt{r^2+y^2}}).
+\]
+For \(0<r\leq1\) the integrand is bounded by
+\(\log(1+\ee^{-|y|})\), which is integrable on \(\mathbb R\), and it
+converges pointwise to \(\log(1+\ee^{-|y|})\).  Dominated convergence gives
+\[
+  \lim_{r\downarrow0}rI(r)
+  =
+  2\int_0^\infty\dd y\,\log(1+\ee^{-y}).
+\]
+Expanding \(\log(1+\ee^{-y})\) for \(y>0\) and integrating termwise gives
+\[
+  \sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k^2}
+  =
+  \int_0^\infty\dd y\,\log(1+\ee^{-y})
+  =
+  \frac{\pi^2}{12},
+\]
+Equation~\eqref{eq:tba-free-majorana-ground-energy} gives
+\[
+  E_0(R)
+  =
+  -\frac{\pi}{12R}+o(R^{-1}).
+\]
+Thus
+\[
+  c_{\rm eff}
+  =
+  \lim_{R\downarrow0}\left(-\frac{6R}{\pi}E_0(R)\right)
+  =
+  \frac12 .
+\]
+The result matches the central charge of the ultraviolet Majorana conformal
+field theory, but the computation above uses only the declared finite-size
+TBA datum and the normalization of \(E_0(R)\).
+
 \section{Theorem Boundary}
 
 The derivation above assumes existence of thermodynamic root densities,
