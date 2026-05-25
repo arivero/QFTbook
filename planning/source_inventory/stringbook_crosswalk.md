@@ -3,6 +3,7 @@
 Source:
 
 - `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`
+- `/Users/xiyin/ED3-orbifold/references/stringbook-main/texsource/string notes.tex`
 
 The string book is an adjacent high-value source. It may supply mature
 appendix material, examples, convention checks, and source leads for any
@@ -13,6 +14,37 @@ definitions, hypotheses, proofs, examples, and external reference boundaries.
 The stringbook may inspire what to include and may help detect convention
 conflicts. It must not determine the monograph's exposition, chapter sequence,
 or theorem status.
+
+Coverage directive: essentially all purely QFT content in the stringbook is
+source-coverage material for the QFT monograph.  The material is not to be
+copied or treated as authoritative prose; it must be rebuilt in the monograph
+with independent definitions, hypotheses, derivations, convention checks, and
+examples, and in most cases expanded far beyond its stringbook form.  When a
+stringbook calculation is convention-sensitive, the monograph should either
+include the calculation in full or supply a public calculation-check script
+that verifies the finite algebra used in the derivation.
+
+Current high-priority QFT blocks to absorb are:
+
+- bosonic and fermionic path-integral constructions, including coherent-state
+  Berezin integrals and the distinction between supergeometric field variables
+  and Hilbert-space fermion operators;
+- gauge fixing, BRST/BV, anomalies, and dimensional-reduction anomaly
+  calculations, with all trace and gamma-matrix conventions checked against
+  the monograph conventions;
+- two-dimensional CFT: chiral stress-tensor Ward identities, Virasoro
+  symmetry, BPZ/radial pairing, OPE convergence, modular/Riemann-surface
+  structure, free fields, defects, orbifolds, boundary CFT, and
+  superconformal symmetry;
+- supersymmetry: spinor conventions, super-Poincare representation theory,
+  the distinction between particle multiplets and off-shell field-variable
+  multiplets, superspace, nonrenormalization arguments, and Wilsonian/BV
+  scheme issues;
+- planar integrability and large-\(N\) gauge-theory spectral problems,
+  including the precise separation from relativistic factorized scattering;
+- QFT aspects of strings, Wilson lines, flux tubes, confinement, branes as
+  defects, and gauge/string large-\(N\) limits, only after their QFT
+  assumptions have been stated without relying on a string-theory framework.
 
 ## Import Rules
 

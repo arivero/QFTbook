@@ -108,6 +108,10 @@ Current checks:
   cohomology counts in \(D=2,4,6\), the engineering weights of the listed
   type-B densities, and the \(-12\) coefficient showing that the four-dimensional
   \(\nabla^2R\) term is shifted by an \(R^2\) counterterm.
+- `virasoro_mode_checks.py`: finite residue checks for the two-dimensional
+  stress-tensor OPE derivation of the Virasoro algebra, including the
+  \((n-m)L_{n+m}\) coefficient, the \(c(n^3-n)/12\) central term, and the
+  \(+c/24\) plane-cylinder stress-tensor shift for \(z=\exp(-iw)\).
 - `zeta_determinant_checks.py`: numerical and exact checks for the spectral
   zeta-determinant section, including the periodic resolvent identity for
   \(-\dd_\tau^2+\omega^2\), the derivative of

@@ -23,7 +23,11 @@ The chapter establishes:
   identities, including contact terms on collision diagonals;
 - the passage from local current Ward identities to global Ward identities;
 - the cylinder interpretation of conformal charges and the adjointness
-  \(P_\mu^\dagger=K_\mu\) under reflection positivity.
+  \(P_\mu^\dagger=K_\mu\) under reflection positivity;
+- in \(D=2\), separated-point holomorphy of \(T(z)\), contour charges for
+  holomorphic vector fields, Virasoro primary OPEs, the derivation of the
+  Virasoro algebra from the \(TT\) OPE, the Schwarzian finite transformation
+  law, and the \(c/24\) plane-cylinder vacuum shift.
 
 ## Claims To Verify
 
@@ -39,6 +43,14 @@ The chapter establishes:
 5. The global Ward identity is the integral of the local current identity when
    the outer boundary and anomaly contributions vanish in the chosen
    background.
+6. In \(D=2\), the Virasoro commutator follows from a contour-domain
+   calculation, not from formal mode manipulation.  The central coefficient is
+   the fourth-order-pole residue of the \(TT\) OPE, and the noncentral
+   coefficient uses integration by parts on the closed contour.
+7. The literal two-dimensional state--operator statement remains the radial
+   finite-energy statement from Chapter 4: local scaling fields span a dense
+   algebraic subspace after null quotient, and the Hilbert space is the
+   BPZ/radial completion of that subspace.
 
 ## Figures
 
@@ -58,3 +70,8 @@ The chapter establishes:
   source-derived local translation, trace, and conformal-current Ward
   identities and removed an unnecessary negative framing in the Lorentzian
   commutator paragraph.
+- 2026-05-25 stringbook absorption pass: added the two-dimensional
+  chiral-stress-tensor mode construction, Virasoro algebra proof,
+  Schwarzian/cylinder shift, and the state--operator density caveat; added
+  `calculation-checks/virasoro_mode_checks.py` for the finite residue
+  arithmetic.
