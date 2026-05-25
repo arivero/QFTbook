@@ -22,4 +22,11 @@ with review contributions from Opus 4.7}
 \input{volumes/volume_iv/volume_iv_current}
 \input{volumes/volume_v/volume_v_current}
 
+\appendix
+\renewcommand{\theHchapter}{app.\Alph{chapter}}
+\renewcommand{\theHsection}{app.\Alph{chapter}.\arabic{section}}
+\renewcommand{\theHsubsection}{app.\Alph{chapter}.\arabic{section}.\arabic{subsection}}
+\part{Appendices}
+\input{appendices/spinor_conventions}
+
 \end{document}

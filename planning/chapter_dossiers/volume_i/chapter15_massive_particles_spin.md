@@ -30,6 +30,10 @@
 - Massive little group \(SO(3)\) and its double cover \(SU(2)\).
 - Covariant local fields transforming in finite-dimensional Lorentz
   representations.
+- Gamma-matrix conventions are now centralized in
+  `monograph/tex/appendices/spinor_conventions.tex`; this chapter supplies the
+  spin-\(\frac12\) particle-intertwiner normalizations compatible with that
+  appendix.
 
 ## Symbols
 
@@ -89,6 +93,9 @@
   \(\exp(-\ii\theta\sigma_3/2)\), rest spinors, \(\gamma_5\), and
   \(\mathcal V_R^\sigma=\gamma_5\mathcal U_R^\sigma\) reproduce the
   handwritten spinor convention.
+- The displayed Clifford basis, \(\beta\)-pairing, spinor Lorentz generators,
+  and \(\gamma_5\) agree with Appendix A's global Weinberg-compatible
+  convention dictionary.
 - The \(\beta\)-pairing, delta-normalized spinor inner products, and spin
   sums are fixed with their signs and factors of \(p^0\); these identities
   supply the algebra for later spinorial LSZ.

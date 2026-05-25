@@ -52,6 +52,10 @@
   \(\mathsf A=-\ii A\), \(\mathsf F=\dd\mathsf A+\mathsf A^2=-\ii F\).
 - Fermion chirality signs are stated relative to the chapter's \(\gamma_5\)
   convention.
+- The \(\gamma_5\), trace, two-dimensional chirality, and
+  dimensional-continuation conventions are now centralized in
+  `monograph/tex/appendices/spinor_conventions.tex`, and the chapter links to
+  that appendix before starting the anomaly calculation.
 - Local anomalies are represented by local functionals modulo BRST-exact
   counterterm shifts and total derivatives.
 
