@@ -90,6 +90,11 @@ Current checks:
   constants, \(C_A=2N\), \(T_F=1\), \(C_F=(N^2-1)/N\), the coupling-coordinate
   conversion from the common half-trace convention, and the Wilson-plaquette
   factor giving \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\).
+- `hawking_bogoliubov_checks.py`: finite numerical checks for the Hawking
+  mode-tracing calculation, including the imaginary-axis Gamma-function norm,
+  the \(|\alpha|^2/|\beta|^2=e^{2\pi\omega/\kappa}\) ratio, the displayed
+  Planck factor in \(|\beta_{\omega\omega'}|^2\), the continuum
+  normalization-density identity, and the exponential precursor blueshift.
 - `ising_defect_fusion_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for
   the Ising/Kramers--Wannier noninvertible defect example, including fusion
   associativity, Frobenius--Perron dimensions, modular \(S\)-matrix
