@@ -124,6 +124,11 @@ Current checks:
   stress-tensor OPE derivation of the Virasoro algebra, including the
   \((n-m)L_{n+m}\) coefficient, the \(c(n^3-n)/12\) central term, and the
   \(+c/24\) plane-cylinder stress-tensor shift for \(z=\exp(-iw)\).
+- `wzw_sugawara_coset_checks.py`: exact arithmetic checks for the WZW and
+  coset section, including Sugawara central charges at selected level-one
+  simple groups, \(SU(2)_k\) affine-primary weights, the diagonal
+  \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge
+  identity, and the Ising/tricritical-Ising coset values.
 - `zeta_determinant_checks.py`: numerical and exact checks for the spectral
   zeta-determinant section, including the periodic resolvent identity for
   \(-\dd_\tau^2+\omega^2\), the derivative of

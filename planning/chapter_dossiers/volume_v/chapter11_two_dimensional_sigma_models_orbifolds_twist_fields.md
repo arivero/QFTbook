@@ -2,9 +2,10 @@
 
 ## Logical Role
 
-- Place nonlinear sigma-model CFTs, toroidal/Narain lattice CFTs, finite
-  orbifolds, twisted sectors, and twist-field deformations inside the CFT
-  volume rather than treating them as string-theory side material.
+- Place nonlinear sigma-model CFTs, toroidal/Narain lattice CFTs, WZW/coset
+  CFTs, finite orbifolds, twisted sectors, and twist-field deformations
+  inside the CFT volume rather than treating them as string-theory side
+  material.
 - Immediate predecessors: Virasoro/stress-tensor Ward identities, radial
   state--operator construction, conformal perturbation theory, and OPE
   convergence.
@@ -37,6 +38,16 @@
 - States toroidal CFT moduli as the \(O(d,d;\mathbb Z)\) quotient of
   positive \(d\)-planes and formulates \(T\)-duality as an isomorphism of
   exact CFT data.
+- Defines the compact simply connected WZW action using the integral
+  generator \([\Omega_G]\in H^3(G,\mathbb Z)\), proves level quantization,
+  and fixes the affine-current normalization.
+- States and proves the Sugawara stress-tensor formula, central charge
+  \(c=k\dim\mathfrak g/(k+h^\vee)\), and affine-primary conformal weights.
+- Defines integrable highest weights, the diagonal WZW Hilbert space, coset
+  stress tensors, embedding index, coset central charge, and the
+  \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge example.
+- Separates gauged WZW as a gauge-fixed/BRST local QFT from a pointwise
+  quotient of target manifolds.
 - Defines finite orbifolds using anomaly-free topological symmetry lines,
   twisted Hilbert spaces, centralizer projection, and discrete torsion.
 - Derives the finite-orbifold torus partition function and its modular label
@@ -67,14 +78,24 @@
 7. The toroidal sigma-model momenta
    \(k_{L,R}(m,w)\) give the integral pairing
    \(m(w')+m'(w)\), independent of the antisymmetric \(B\)-field.
-8. The orbifold Hilbert space is
+8. The WZW level is integral because changing the filling shifts the action
+   by \(2\pi i k\) times the pairing with \(H^3(G,\mathbb Z)\).
+9. The affine current OPE in the chapter convention gives the mode algebra
+   \([J_m^a,J_n^b]=f_{ab}{}^cJ_{m+n}^c+km\delta^{ab}\delta_{m+n,0}\).
+10. Sugawara's coefficient is fixed by the requirement that currents have
+    conformal weight \(1\), with the \(h^\vee\) shift coming from the adjoint
+    Casimir in the double contraction.
+11. Coset central charges and weights are differences of the \(G\) and
+    embedded \(H\) Sugawara data; gauge consistency is level matching for the
+    gauged subgroup.
+12. The orbifold Hilbert space is
    \(\bigoplus_{[g]}\mathcal H_g^{C_g}\) after an \(H^3(G,U(1))\) anomaly
    trivialization is chosen.
-9. The torus partition function is the finite gauge sum over commuting
+13. The torus partition function is the finite gauge sum over commuting
    holonomies and is modular invariant with the stated label action.
-10. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
+14. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
    reflection twist field has \(h=1/16\).
-11. Twist-field deformations are conformal perturbations by projected local
+15. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
 
@@ -93,5 +114,9 @@
   cocycle identities, sample even-unimodular Gram matrices, the
   \(B\)-independence of the Narain integral pairing, and the modular
   anomaly-condition logic.
+- `calculation-checks/wzw_sugawara_coset_checks.py` verifies the finite
+  arithmetic of the Sugawara central charges, \(SU(2)\) affine-primary
+  weights, diagonal coset minimal-model central charges, and Ising/tricritical
+  examples.
 - Later calculation checks should cover covering-space twist correlators and
   symmetric-product joining/splitting selection rules.

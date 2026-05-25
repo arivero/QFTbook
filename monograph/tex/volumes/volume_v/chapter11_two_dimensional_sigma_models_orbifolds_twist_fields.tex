@@ -505,6 +505,268 @@ path-integral derivation is a derivation of this equality in a Lagrangian
 coordinate patch; the exact statement is the lattice-theoretic isomorphism
 of the local QFT.
 
+\section{WZW Models, Affine Currents, and Cosets}
+\label{sec:wzw-affine-currents-cosets}
+
+Wess--Zumino--Witten models are sigma models whose exact conformal structure
+is fixed by an affine current algebra.  We give the construction in a
+normalization independent of the four-dimensional gauge-theory trace
+normalization used elsewhere in this monograph.
+
+Let \(G\) be a compact connected simply connected simple Lie group, let
+\(\mathfrak g\) be its Lie algebra, and let \((\,\cdot\,,\,\cdot\,)\) be the
+basic invariant inner product, normalized so that long roots have squared
+length \(2\).  Choose an orthonormal basis \(T_a\) of \(\mathfrak g\), with
+\[
+  [T_a,T_b]=f_{ab}{}^{c}T_c,
+  \qquad
+  f_{abc}=f_{ab}{}^d\delta_{dc}.
+\]
+The dual Coxeter number \(h^\vee\) is defined by
+\begin{equation}
+  f_{acd}f_{bcd}=2h^\vee\delta_{ab}.
+  \label{eq:wzw-dual-coxeter-normalization}
+\end{equation}
+This convention makes the adjoint quadratic Casimir equal to \(2h^\vee\).
+
+Let \(g:\Sigma\to G\).  The topological term is defined using the integral
+class
+\[
+  [\Omega_G]\in H^3(G,\mathbb Z),
+\]
+chosen as the generator compatible with the basic inner product.  If
+\(\Sigma=\partial B\) and \(\widetilde g:B\to G\) extends \(g\), the WZW
+action at level \(k\in\mathbb Z\) is
+\begin{equation}
+  S_k[g]
+  =
+  \frac{k}{4\pi}
+  \int_\Sigma
+  (g^{-1}\dd g)\wedge * (g^{-1}\dd g)
+  +
+  2\pi\ii k\int_B \widetilde g^{\,*}\Omega_G .
+  \label{eq:wzw-action-coordinate-free}
+\end{equation}
+The first term is the sigma-model kinetic term on \(G\) with bi-invariant
+metric \(k(\,\cdot\,,\,\cdot\,)\).  The second term is most naturally the
+holonomy of a gerbe with curvature \(2\pi k\,\Omega_G\); local two-form
+potentials represent it only after choosing a trivialization on coordinate
+patches.
+
+\begin{proposition}[Quantization of the WZW level]
+\label{prop:wzw-level-quantization}
+The exponent \(\exp(-S_k[g])\) is independent of the filling \(B\) for every
+closed worldsheet \(\Sigma\) if \(k\in\mathbb Z\).  Conversely, for simply
+connected simple \(G\), filling independence for all maps requires \(k\) to
+be integral in this normalization.
+\end{proposition}
+
+\begin{proof}
+Let \((B_1,\widetilde g_1)\) and \((B_2,\widetilde g_2)\) be two fillings of
+the same boundary map.  Gluing \(B_1\) to \(-B_2\) gives a closed oriented
+three-manifold \(C\) and a map \(\widehat g:C\to G\).  The change of the
+topological part of the action is
+\[
+  2\pi\ii k\int_C\widehat g^{\,*}\Omega_G .
+\]
+Since \(\Omega_G\) represents an integral cohomology class, the integral is
+an integer.  Thus the exponential is unchanged when \(k\in\mathbb Z\).  For
+compact simply connected simple \(G\), \(H_3(G,\mathbb Z)\simeq\mathbb Z\),
+and there is a map \(C\to G\) pairing to \(1\) with \([\Omega_G]\).  Applying
+filling independence to that map forces \(\exp(-2\pi\ii k)=1\), hence
+\(k\in\mathbb Z\).
+\end{proof}
+
+In a local complex coordinate \(z\), the equations of motion can be written
+as chiral conservation laws
+\[
+  \bar\partial J=0,
+  \qquad
+  \partial\bar J=0,
+\]
+where \(J=J^aT_a\) and \(\bar J=\bar J^aT_a\) are the left and right currents.
+Their separated-point OPEs are the exact affine current algebra
+\begin{equation}
+  J^a(z)J^b(0)
+  \sim
+  \frac{k\delta^{ab}}{z^2}
+  +
+  \frac{f_{ab}{}^{c}J^c(0)}{z},
+  \qquad
+  \bar J^a(\bar z)\bar J^b(0)
+  \sim
+  \frac{k\delta^{ab}}{\bar z^2}
+  +
+  \frac{f_{ab}{}^{c}\bar J^c(0)}{\bar z}.
+  \label{eq:wzw-current-ope}
+\end{equation}
+The mixed \(J\bar J\) OPE is regular at separated points.  Equivalently,
+with
+\[
+  J^a(z)=\sum_{n\in\mathbb Z}J_n^a z^{-n-1},
+\]
+the modes obey
+\begin{equation}
+  [J_m^a,J_n^b]
+  =
+  f_{ab}{}^{c}J_{m+n}^c
+  +
+  k\,m\,\delta^{ab}\delta_{m+n,0}.
+  \label{eq:affine-current-mode-algebra}
+\end{equation}
+The central term is the quantum remnant of the Wess--Zumino term.  The
+integer \(k\) is therefore simultaneously the gerbe level and the affine
+level.
+
+\begin{proposition}[Sugawara stress tensor]
+\label{prop:wzw-sugawara-stress-tensor}
+For \(k+h^\vee\ne0\), define
+\begin{equation}
+  T_G(z)
+  =
+  \frac{1}{2(k+h^\vee)}
+  \sum_a :J^aJ^a:(z).
+  \label{eq:wzw-sugawara-stress-tensor}
+\end{equation}
+Then \(J^a\) has conformal weight \(1\), and \(T_G\) has central charge
+\begin{equation}
+  c(G,k)
+  =
+  \frac{k\,\dim\mathfrak g}{k+h^\vee}.
+  \label{eq:wzw-central-charge}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The coefficient in \eqref{eq:wzw-sugawara-stress-tensor} is fixed by the
+requirement that the \(T_GJ^b\) OPE have leading singular terms
+\[
+  T_G(z)J^b(0)
+  \sim
+  \frac{J^b(0)}{z^2}+\frac{\partial J^b(0)}{z}.
+\]
+Contract one current in \(:J^aJ^a:\) with \(J^b\).  The central term in
+\eqref{eq:wzw-current-ope} gives \(2kJ^b/z^2\) before the overall
+coefficient.  The simple-pole contraction gives the adjoint action twice.
+Normal ordering the resulting single current past the remaining current
+adds the adjoint Casimir contribution \(2h^\vee J^b/z^2\), using
+\eqref{eq:wzw-dual-coxeter-normalization}.  Thus the numerator is
+\(2(k+h^\vee)J^b/z^2\), which fixes the factor
+\([2(k+h^\vee)]^{-1}\); the first-order pole is fixed by translation
+covariance of the normal-ordered product.
+
+For the \(T_GT_G\) OPE, the fourth-order pole comes from double contractions
+of the two quadratic normal-ordered products.  The central-central
+contractions give \(2k^2\dim\mathfrak g\).  The current-algebra
+contractions with two structure constants give the quantum correction
+\(2kh^\vee\dim\mathfrak g\).  Dividing by
+\([2(k+h^\vee)]^2\) and comparing with
+\[
+  T_G(z)T_G(0)
+  \sim
+  \frac{c/2}{z^4}+\frac{2T_G(0)}{z^2}+\frac{\partial T_G(0)}{z}
+\]
+gives \eqref{eq:wzw-central-charge}.  The remaining second- and first-order
+poles reproduce the Virasoro action because the same coefficient already
+makes each current a primary field of weight \(1\).
+\end{proof}
+
+The highest-weight representations that occur in the compact unitary WZW
+model at positive integral \(k\) are the integrable highest weights
+\begin{equation}
+  P_k^+
+  =
+  \{\lambda\in P^+\mid (\lambda,\theta)\le k\},
+  \label{eq:wzw-integrable-highest-weights}
+\end{equation}
+where \(P^+\) is the set of dominant integral weights and \(\theta\) is the
+highest root.  A primary field \(\Phi_\lambda\) has holomorphic conformal
+weight
+\begin{equation}
+  h_\lambda
+  =
+  \frac{(\lambda,\lambda+2\rho)}
+       {2(k+h^\vee)},
+  \label{eq:wzw-primary-conformal-weight}
+\end{equation}
+where \(\rho\) is the Weyl vector.  The full diagonal WZW model has Hilbert
+space
+\begin{equation}
+  \Hilb_{G,k}^{\mathrm{diag}}
+  =
+  \bigoplus_{\lambda\in P_k^+}
+  \mathcal H_\lambda\otimes\overline{\mathcal H_\lambda}.
+  \label{eq:wzw-diagonal-hilbert-space}
+\end{equation}
+Other modular invariants correspond to different pairings of left and right
+integrable modules and, in general, to additional global data of the full
+CFT rather than to a different local affine OPE.
+
+Now let \(H\subset G\) be a compact connected subgroup with Lie algebra
+\(\mathfrak h\).  Let the embedding index \(x_e\) be defined by
+\[
+  (X,Y)_{\mathfrak g}=x_e(X,Y)_{\mathfrak h}
+  \qquad X,Y\in\mathfrak h,
+\]
+where both inner products are basic.  The \(\mathfrak h\)-currents inside
+the \(G_k\) current algebra have level
+\[
+  k_H=kx_e .
+\]
+The coset stress tensor is
+\begin{equation}
+  T_{G/H}
+  =
+  T_G-T_H,
+  \label{eq:coset-stress-tensor}
+\end{equation}
+where \(T_H\) is the Sugawara tensor built from the embedded
+\(\mathfrak h\)-currents at level \(k_H\).  The corresponding central charge
+is
+\begin{equation}
+  c(G_k/H_{k_H})
+  =
+  \frac{k\dim\mathfrak g}{k+h^\vee_{\mathfrak g}}
+  -
+  \frac{k_H\dim\mathfrak h}{k_H+h^\vee_{\mathfrak h}} .
+  \label{eq:coset-central-charge}
+\end{equation}
+Since \(T_H\) is built from a subalgebra of the \(G\)-currents, the
+difference \eqref{eq:coset-stress-tensor} has regular OPE with every
+\(\mathfrak h\)-current.  Thus coset local fields are represented by
+\(\mathfrak h\)-invariant branching components of \(G_k\) affine modules,
+with conformal weights given by the \(G\) weight minus the \(H\) weight
+modulo integers from descendants.
+
+The same construction has a Lagrangian presentation as a gauged WZW model.
+The group \(H\) is gauged by coupling the \(H\)-current algebra to a
+worldsheet gauge field and adding the local terms forced by the
+Polyakov--Wiegmann identity.  Gauge consistency requires the left and right
+\(H\)-levels to match; otherwise the gauge variation is an anomaly.  After
+gauge fixing, the physical local operators are the BRST cohomology classes.
+The equality between the gauged WZW presentation and the coset vertex
+algebra is therefore a statement about a gauge-fixed local QFT with its
+ghost system and BRST differential.  A target-space quotient picture, when
+available, is a geometric shadow of this operator construction.
+
+For the diagonal embedding
+\[
+  SU(2)_k\times SU(2)_1\supset SU(2)_{k+1},
+\]
+the coset central charge is
+\begin{equation}
+  c_k
+  =
+  \frac{3k}{k+2}+1-\frac{3(k+1)}{k+3}
+  =
+  1-\frac{6}{(k+2)(k+3)}.
+  \label{eq:su2-minimal-coset-central-charge}
+\end{equation}
+This gives the unitary Virasoro minimal-model central charges.  The central
+charge is the first scalar invariant of the construction; the full CFT data
+are the coset Hilbert space, OPE coefficients, sewing constraints, and
+modular invariant built from the branching of affine representations.
+
 \section{Finite Orbifolds as Gauging of Topological Lines}
 \label{sec:finite-orbifolds-topological-lines}
 
