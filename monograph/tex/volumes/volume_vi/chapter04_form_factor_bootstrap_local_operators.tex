@@ -121,9 +121,29 @@ two-body change of ordered basis.
 
 \section{Cyclicity, Locality, and Semi-Locality}
 
-Moving one rapidity by \(2\pi\ii\) crosses the particle from the ket side to
-the bra side and back through the local operator.  For a scalar operator
-local with respect to the particle fields, the monodromy equation is
+The cyclicity equation is a crossing-locality statement.  It is not obtained
+from the two-body \(S\)-matrix alone.  The analytic input is the same as in
+the Wightman reconstruction chapters: the spectrum condition gives
+forward-tube analyticity of vacuum matrix elements, and locality identifies
+boundary values after permuting spacelike separated insertions.  In rapidity
+variables the complex Lorentz transformation
+\[
+  \theta\longmapsto\theta+\ii\pi
+\]
+changes \(p_a(\theta)\) to \(-p_a(\theta)\), and hence crosses an incoming
+particle to the outgoing antiparticle channel.  A second shift by \(\ii\pi\)
+crosses it back to the incoming side after it has passed through the local
+operator.
+
+\begin{proposition}[Cyclicity from crossing and locality]
+\label{prop:form-factor-cyclicity-crossing-locality}
+Assume that the finite-particle matrix elements of a scalar local operator
+\(\widehat{\mathcal O}\) are boundary values of Wightman functions satisfying
+the spectrum condition, locality, and the one-particle crossing relation
+obtained by analytic continuation through the physical rapidity strip.  Assume
+that the path
+\(\theta_1\mapsto\theta_1+2\pi\ii\) crosses no singularity other than the
+standard crossing boundary and no bound-state pole.  Then
 \[
   F^{\mathcal O}_{a_1a_2\ldots a_n}
   (\theta_1+2\pi\ii,\theta_2,\ldots,\theta_n)
@@ -131,11 +151,46 @@ local with respect to the particle fields, the monodromy equation is
   F^{\mathcal O}_{a_2\ldots a_n a_1}
   (\theta_2,\ldots,\theta_n,\theta_1).
 \]
-More generally, if \(\widehat{\mathcal O}\) is semi-local with respect to a
-particle of species \(a\), the right side is multiplied by a declared
-monodromy phase or endomorphism \(\omega_{\mathcal O,a}\).  This semi-local
-datum is part of the operator definition; it is not inferred from the
-two-body \(S\)-matrix alone.
+If \(\widehat{\mathcal O}\) is semi-local with respect to species \(a_1\),
+the right side is multiplied by the declared monodromy endomorphism
+\(\omega_{\mathcal O,a_1}\).
+\end{proposition}
+
+\begin{proof}
+For separated velocity supports, represent the incoming particle of species
+\(a_1\) by a Haag--Ruelle wave packet and write the matrix element as a
+boundary value of a Wightman distribution with one interpolating field for
+that particle.  The joint spectrum condition implies that this distribution
+extends holomorphically when the imaginary parts of successive spacetime
+differences lie in the future cone.  Fourier transforming the first wave
+packet and using \(p_a(\theta+\ii\pi)=-p_a(\theta)\), continuation
+\(\theta_1\mapsto\theta_1+\ii\pi\) converts the incoming \(a_1\)-particle
+into an outgoing \(\bar a_1\)-particle.  In bracket notation this is the
+crossing boundary value
+\[
+  F^{\mathcal O}_{a_1a_2\ldots a_n}
+  (\theta_1+\ii\pi,\theta_2,\ldots,\theta_n)
+  =
+  {}_{\rm out}\!\bra{\theta_1,\bar a_1}
+  \widehat{\mathcal O}(0)
+  \ket{\theta_2,a_2;\ldots;\theta_n,a_n}_{\rm in},
+\]
+with the charge-conjugation map suppressed in the notation.
+
+Continue once more by \(\ii\pi\).  At the boundary of the tube one may choose
+the spacetime supports of the crossed particle and of
+\(\widehat{\mathcal O}\) to be spacelike separated before the wave-packet
+limit is taken.  Local commutativity then permits the crossed particle
+interpolating field to be moved past \(\widehat{\mathcal O}\).  For a scalar
+local operator this gives no extra factor; for a semi-local operator it gives
+the declared monodromy \(\omega_{\mathcal O,a_1}\).  After the second crossing
+the particle is again incoming, and the ordered-state convention places its
+rapidity at the right end of the ordered list.  Thus the boundary value is
+the displayed cyclic form factor.  The equality is distributional because it
+was derived after smearing in rapidity and then unsmearing by uniqueness of
+boundary values.  The excluded pole crossings are precisely the cases where
+additional residue terms must be added.
+\end{proof}
 
 \section{Kinematic Pole Equation}
 
@@ -147,7 +202,7 @@ kinematic pole at
   \theta_{\bar a}=\theta_a+\ii\pi .
 \]
 For a scalar local operator the residue has the structural form
-\[
+\begin{equation}
   -\ii\,\operatorname*{Res}_{\theta'=\theta+\ii\pi}
   F^{\mathcal O}_{\bar a\,a\,a_1\ldots a_n}
   (\theta',\theta,\theta_1,\ldots,\theta_n)
@@ -157,24 +212,103 @@ For a scalar local operator the residue has the structural form
     S_{a a_j}(\theta-\theta_j)
   \right)
   F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n),
-\]
+\label{eq:form-factor-kinematic-pole}
+\end{equation}
 with tensor contractions and charge-conjugation maps inserted according to
 the species spaces.  The product is ordered by moving the particle \(a\)
 through the \(n\) remaining particles before annihilation.
 
-\begin{proof}[Derivation of the residue structure]
-Insert a complete finite-particle resolution of the identity between
-\(\widehat{\mathcal O}(0)\) and the adjacent pair.  Near
-\(\theta'-\theta=\ii\pi\), the two-particle phase-space denominator develops
-the one-particle-vacuum annihilation singularity.  If the pair annihilates
-before crossing the spectator particles, the contribution is the first term.
-If the particle is first moved through all spectators using factorized
-scattering and then annihilates, the contribution is the second term.  Local
-commutativity fixes the relative sign.  The residue is therefore the
-difference of these two orderings.  A fully rigorous theorem requires a
-specified Hilbert-space construction of the meromorphic finite-particle
-matrix elements; the displayed equation is the form-factor axiom used after
-that construction has supplied the required domains and boundary values.
+\begin{proposition}[Kinematic annihilation pole]
+\label{prop:form-factor-kinematic-pole-derived}
+Assume the hypotheses of
+Proposition~\ref{prop:form-factor-cyclicity-crossing-locality}, asymptotic
+completeness in the finite-particle sector under consideration, factorized
+scattering for ordered states, and the standard rapidity normalization of
+one-particle states.  Assume further that the only singularity encountered at
+\(\theta'=\theta+\ii\pi\) is the vacuum annihilation of the adjacent pair
+\((\bar a,a)\).  Then the singular part of the form factor is
+\[
+  F^{\mathcal O}_{\bar a\,a\,a_1\ldots a_n}
+  (\theta',\theta,\theta_1,\ldots,\theta_n)
+  =
+  \frac{\ii}{\theta'-\theta-\ii\pi}
+  \left(
+    1-\prod_{j=1}^nS_{a a_j}(\theta-\theta_j)
+  \right)
+  F^{\mathcal O}_{a_1\ldots a_n}
+  +\text{holomorphic},
+\]
+with the same tensor-ordering convention as in
+\eqref{eq:form-factor-kinematic-pole}.  Equivalently,
+\eqref{eq:form-factor-kinematic-pole} holds.
+\end{proposition}
+
+\begin{proof}
+Set \(z=\theta'-\theta-\ii\pi\).  With rapidity normalization
+\(\langle \theta',\bar a|\theta,\bar a\rangle=2\pi\delta(\theta'-\theta)\),
+the crossed one-particle contraction is represented, before taking the
+boundary value, by the Cauchy kernel
+\[
+  \frac{\ii}{z}.
+\]
+This is the rapidity form of the mass-shell phase-space pole: near
+\(z=0\), the continued total momentum
+\(p_{\bar a}(\theta+\ii\pi+z)+p_a(\theta)\) vanishes linearly in \(z\), and
+the positive-energy mass-shell orientation fixes the coefficient to be
+\(\ii\) in the convention above.  Thus direct annihilation of the adjacent
+\((\bar a,a)\)-pair into the vacuum contributes
+\[
+  \frac{\ii}{z}
+  F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n).
+  \tag{direct}
+\]
+
+There is a second boundary value of the same meromorphic matrix element.
+Use Watson exchange to move the particle \(a\) through the spectator
+particles \(a_1,\ldots,a_n\) before performing the annihilation.  This
+ordered-basis change contributes the ordered product
+\[
+  \prod_{j=1}^n S_{a a_j}(\theta-\theta_j).
+\]
+The annihilation contour now approaches the same Cauchy pole from the
+opposite side of the rapidity ordering.  Equivalently, after applying
+cyclicity, the crossed particle encircles the local operator and returns to
+the incoming side with the opposite orientation for the small circle around
+\(z=0\).  In local coordinates this is the statement that the reverse
+ordering uses
+\[
+  z_{\rm rev}
+  =
+  \theta-\theta'+\ii\pi
+  =
+  -z,
+\]
+so a positively oriented small circle in \(z_{\rm rev}\) is a negatively
+oriented small circle in \(z\).  Therefore the residue of the same
+annihilation pole enters with the opposite sign.  The second singular
+contribution is
+\[
+  -\frac{\ii}{z}
+  \left(\prod_{j=1}^n S_{a a_j}(\theta-\theta_j)\right)
+  F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n).
+  \tag{scattered}
+  \]
+For a scalar local operator there is no extra semi-locality phase; a
+semi-local operator would multiply this second contribution by its monodromy
+factor.  Adding the two boundary contributions gives the displayed singular
+part.  Taking the residue at \(z=0\) gives
+\[
+  -\ii\,\operatorname*{Res}_{z=0}
+  \frac{\ii}{z}
+  \left(1-\prod_{j=1}^nS_{a a_j}(\theta-\theta_j)\right)
+  F_n^{\mathcal O}
+  =
+  \left(1-\prod_{j=1}^nS_{a a_j}(\theta-\theta_j)\right)
+  F_n^{\mathcal O}.
+\]
+The proof is local in the rapidity variables; additional bound-state poles or
+threshold singularities on the deformation path would add further residue
+terms and are excluded by hypothesis.
 \end{proof}
 
 \section{Free Majorana Examples}

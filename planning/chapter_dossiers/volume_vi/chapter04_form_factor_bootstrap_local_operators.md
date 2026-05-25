@@ -13,8 +13,13 @@
 - Watson exchange equation derived from the two distributional rapidity
   boundary values and the ordered-state basis relation supplied by
   factorized scattering.
-- Cyclicity and semi-locality monodromy.
-- Kinematic annihilation pole and bound-state pole equations.
+- Cyclicity and semi-locality monodromy, derived from spectrum-condition
+  tube analyticity, one-particle crossing, and locality at the boundary of
+  the analytic continuation domain.
+- Kinematic annihilation pole equation with the direct and scattered Cauchy
+  kernels displayed; the relative minus sign is traced to the reversed local
+  coordinate \(z_{\rm rev}=-z\) around the annihilation pole.
+- Bound-state pole equations.
 - Free Majorana examples: the energy-density two-particle form factor and
   the odd Ising order/twist form-factor family.
 - Form-factor datum for a scalar local operator.
@@ -40,17 +45,20 @@
    the adjacent factorized \(S\)-matrix; locality enters upstream in
    scattering-state construction and downstream in cyclicity, not as a
    substitute for this boundary-value statement.
-2. Kinematic-pole residues are differences between direct annihilation and
-   annihilation after scattering through spectator particles.
-3. Bound-state form-factor poles use the same residue tensors as scattering.
-4. In the free Majorana example with \(S=-1\), the energy-density form factor
+2. Cyclicity is a crossing-locality theorem under explicit boundary-value
+   hypotheses; semi-locality is an additional monodromy datum.
+3. Kinematic-pole residues are differences between direct annihilation and
+   annihilation after scattering through spectator particles, with the minus
+   sign fixed by the reversed orientation of the annihilation-pole coordinate.
+4. Bound-state form-factor poles use the same residue tensors as scattering.
+5. In the free Majorana example with \(S=-1\), the energy-density form factor
    checks exchange and cyclicity with a finite two-particle local scalar
    datum.
-5. The odd Ising product formula
+6. The odd Ising product formula
    \(F_{2k+1}^{\Sigma}=v i^k\prod_{i<j}\tanh((\theta_i-\theta_j)/2)\)
    satisfies Watson exchange, cyclicity, and the kinematic annihilation
    recursion; the \(i^k\) factor is fixed by the residue equation.
-6. Form-factor axioms do not by themselves complete local reconstruction;
+7. Form-factor axioms do not by themselves complete local reconstruction;
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
 
