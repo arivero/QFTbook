@@ -1,11 +1,12 @@
-# Spinor Conventions Appendix Audit
+# Spinor Conventions Section Audit
 
 Date: 2026-05-24.
 
 Scope:
 
-- Added `monograph/tex/appendices/spinor_conventions.tex` and included it
-  after `\appendix` in `monograph/tex/main.tex`.
+- Added the spinor convention material and later moved it to
+  `monograph/tex/volumes/volume_i/chapter16a_spinor_conventions.tex`, included
+  immediately after the spinor field chapter.
 - Centralized the monograph's operative gamma convention:
   \(\eta=\operatorname{diag}(-,+,+,+)\),
   \(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\),

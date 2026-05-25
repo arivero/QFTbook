@@ -1,0 +1,123 @@
+\chapter{Lattice Reflection Positivity}
+\label{ch:lattice-reflection-positivity}
+
+\ConventionsEuclidean
+
+Reflection positivity is the lattice analogue of the positivity axiom used in
+Euclidean reconstruction.  It is a property of a regulated measure and a
+chosen reflection, not an automatic property of every discretization.  This
+chapter states the condition and verifies it for the basic nearest-neighbor
+scalar lattice action.
+
+\section{Reflection and Positive Algebra}
+
+Let \(\Lambda\subset a\mathbb Z^D\) be a finite reflection-invariant lattice
+with reflection \(\vartheta\) across the hyperplane \(x_0=0\).  Let
+\(\phi_x\) be a real scalar variable at \(x\in\Lambda\).  Let
+\(\mathcal A_+\) be the algebra of polynomial functions of the variables with
+\(x_0>0\).  The reflection acts antilinearly on functions by
+\[
+  (\Theta F)(\phi)=\overline{F(\phi_{\vartheta x})}.
+\]
+For a probability measure \(d\mu(\phi)\), define
+\[
+  \langle F\rangle=\int F(\phi)\,d\mu(\phi).
+\]
+
+\begin{definition}[Lattice reflection positivity]
+\label{def:lattice-reflection-positivity}
+The measure \(d\mu\) is reflection positive with respect to
+\(\vartheta\) if
+\[
+  \langle \Theta F\,F\rangle\ge 0
+\]
+for every \(F\in\mathcal A_+\).
+\end{definition}
+
+\section{Nearest-Neighbor Scalar Measure}
+
+Consider the finite-volume lattice measure
+\[
+  d\mu(\phi)=Z^{-1}e^{-S(\phi)}\prod_{x\in\Lambda}d\phi_x
+\]
+with
+\[
+  S(\phi)=
+  \frac12\sum_{\langle x y\rangle}c_{xy}(\phi_x-\phi_y)^2
+  +\sum_x V(\phi_x),
+  \qquad c_{xy}>0,
+\]
+where \(V\) is a real potential for which the finite-volume integral exists.
+Split the action as
+\[
+  S=S_+ + \Theta S_+ + S_0
+\]
+where \(S_+\) contains terms strictly in the positive half, \(\Theta S_+\)
+its reflected copy, and \(S_0\) the terms on or crossing the reflection
+plane.  The crossing terms have the form
+\[
+  \frac12 c(\phi_x-\phi_{\vartheta x})^2
+  =
+  \frac12c\phi_x^2+\frac12c\phi_{\vartheta x}^2
+  -c\phi_x\phi_{\vartheta x}.
+\]
+The first two terms can be assigned to \(S_+\) and \(\Theta S_+\).  The
+coupling across the plane contributes the positive kernel
+\[
+  \exp(c\phi_x\phi_{\vartheta x})
+  =
+  \sum_{n=0}^{\infty}\frac{c^n}{n!}\phi_x^n\phi_{\vartheta x}^n .
+\]
+
+\begin{proposition}[Scalar lattice reflection positivity]
+\label{prop:scalar-lattice-reflection-positivity}
+The nearest-neighbor scalar lattice measure above is reflection positive.
+\end{proposition}
+
+\begin{proof}
+After assigning all non-crossing and square terms to the two halves, the only
+factor coupling reflected variables is a product of kernels
+\(\exp(c_i\phi_i\phi_{\vartheta i})\) with \(c_i>0\).  Expanding each such
+kernel in its power series gives a sum of terms
+\[
+  a_{\mathbf n}\,
+  M_{\mathbf n}(\phi_+)\,
+  \overline{M_{\mathbf n}(\phi_+)}
+  \]
+after reflection, with coefficients \(a_{\mathbf n}\ge 0\).  For
+\(F\in\mathcal A_+\), the integral \(\langle \Theta F\,F\rangle\) becomes a
+sum of absolute squares of half-lattice integrals weighted by
+\(a_{\mathbf n}\).  Every term is nonnegative, hence the sum is nonnegative.
+\end{proof}
+
+\section{Transfer Matrix Interpretation}
+
+When the lattice is periodic in Euclidean time, reflection positivity permits
+the construction of a pre-Hilbert space from \(\mathcal A_+\) by quotienting
+the null space of the sesquilinear form
+\[
+  (F,G)=\langle \Theta F\,G\rangle .
+\]
+Time translation by one lattice spacing acts as a contraction on this
+pre-Hilbert space.  Under the additional hypotheses required for a transfer
+matrix, this contraction is \(e^{-aH}\) for a positive self-adjoint lattice
+Hamiltonian \(H\).  This is the finite-regulator version of the positivity
+step in OS reconstruction.
+
+\section{Gauge Fields}
+
+For lattice gauge theory the variables are group elements \(U_\ell\) on
+oriented links.  Reflection positivity of Wilson's plaquette action depends
+on assigning plaquettes to the two halves and expanding the cross-plane
+plaquette weights in positive characters.  The property is sensitive to the
+choice of lattice action; improved actions or gauge-fixing terms require a
+separate positivity check.
+
+\begin{openproblem}[Reflection-positive continuum limits]
+\label{op:reflection-positive-continuum-limits}
+Give verifiable criteria ensuring that a sequence of reflection-positive
+lattice measures converges to OS-positive continuum Schwinger functions with
+nontrivial local fields.  The criteria must include tightness or correlation
+bounds, control of counterterms, and compatibility of reflection with the
+continuum scaling limit.
+\end{openproblem}

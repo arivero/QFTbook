@@ -1,0 +1,122 @@
+\chapter{Real-Time Schwinger--Keldysh Formalism}
+\label{ch:thermal-schwinger-keldysh}
+
+\ConventionsRealTime
+
+Euclidean thermal correlators encode equilibrium data on the thermal circle.
+Transport and response require real-time correlation functions.  The
+Schwinger--Keldysh construction gives a generating functional for real-time
+ordered products in an initial state without assuming a vacuum.
+
+\section{Closed Time Path}
+
+Let a quantum system have Hilbert space \(\Hilb\), Hamiltonian \(H\), and
+initial density operator \(\rho_0\) with \(\operatorname{Tr}\rho_0=1\).  For
+an operator \(O(t)\) coupled to a source \(J(t)\), define two time-evolution
+operators
+\[
+  U_J(t_f,t_i)
+  =
+  \operatorname{T}\exp\!\left(
+  -\ii\int_{t_i}^{t_f}dt\,\bigl(H-J(t)O\bigr)\right),
+\]
+\[
+  U_J^\dagger(t_f,t_i)
+  =
+  \widetilde{\operatorname{T}}\exp\!\left(
+  \ii\int_{t_i}^{t_f}dt\,\bigl(H-J(t)O\bigr)\right),
+\]
+where \(\operatorname{T}\) and \(\widetilde{\operatorname{T}}\) denote time
+and anti-time ordering.  The closed-time-path generating functional is
+\[
+  Z[J_+,J_-]
+  =
+  \operatorname{Tr}\!\left(
+  U_{J_+}(t_f,t_i)\rho_0 U_{J_-}^{\dagger}(t_f,t_i)
+  \right).
+\]
+The \(+\) and \(-\) labels are contour labels, not independent physical
+systems.
+
+\section{Unitarity Constraint}
+
+Setting \(J_+=J_-=J\) gives
+\[
+  Z[J,J]
+  =
+  \operatorname{Tr}\!\left(U_J\rho_0U_J^\dagger\right)
+  =
+  \operatorname{Tr}\rho_0=1.
+\]
+This identity is the real-time normalization constraint.  Functional
+derivatives of \(Z\) with unequal sources generate contour-ordered
+correlators; the equality above imposes relations among them.  Any effective
+Schwinger--Keldysh action must preserve this identity, or must state the
+controlled approximation that violates it.
+
+\section{Retarded Functions}
+
+Introduce
+\[
+  J_r=\frac12(J_++J_-),\qquad
+  J_a=J_+-J_- .
+\]
+The expectation value of \(O\) in the presence of the physical source \(J_r\)
+is obtained by differentiating with respect to \(J_a\) and then setting
+\(J_a=0\).  Expanding to first order around \(J_r=0\) gives the retarded
+response
+\[
+  \delta\langle O(t)\rangle
+  =
+  \int dt'\,G_R(t,t')\,\delta J_r(t'),
+\]
+where
+\[
+  G_R(t,t')
+  =
+  -\ii\,\theta(t-t')\operatorname{Tr}\rho_0[O(t),O(t')].
+\]
+The step function is a consequence of the operator ordering in \(U_J\):
+varying the forward source at time \(t'\) changes later Heisenberg operators
+but cancels against the backward variation for earlier times.
+
+\section{KMS State on the Contour}
+
+For the thermal state \(\rho_\beta=Z(\beta)^{-1}e^{-\beta H}\), cyclicity of
+the trace gives the KMS relation
+\[
+  \operatorname{Tr}\rho_\beta A(t)B(0)
+  =
+  \operatorname{Tr}\rho_\beta B(0)A(t+\ii\beta)
+\]
+for operators whose analytic continuation is controlled in the stated strip.
+In Schwinger--Keldysh language this relation is not a contour identity alone;
+it uses the thermal density matrix and its analytic domain.  The fluctuation-
+dissipation relation follows by applying the KMS relation to the spectral
+decomposition of two-point functions.
+
+\section{Path-Integral Status}
+
+A Schwinger--Keldysh path integral is a coordinate representation of
+\(Z[J_+,J_-]\).  Its fields are doubled,
+\[
+  \phi_+,\phi_-,
+\]
+with a matching condition at the final time that implements the trace.  For a
+regulated bosonic theory, the phase is
+\[
+  \ii S[\phi_+]-\ii S[\phi_-]
+  +\ii\int J_+O[\phi_+]-\ii\int J_-O[\phi_-]
+\]
+plus the coordinate representation of \(\rho_0\).  Gauge theories require
+BRST or BV data on the doubled contour, including ghost, antifield, and
+boundary conditions compatible with \(Z[J,J]=1\).
+
+\begin{openproblem}[Real-time continuum construction]
+\label{op:real-time-sk-continuum-construction}
+Construct Schwinger--Keldysh generating functionals for interacting continuum
+QFTs in a topology strong enough to derive retarded correlators, KMS
+relations, and transport limits.  The construction must state the initial
+state, operator domains, regulator, contour matching, and the sense in which
+unitarity and positivity survive the continuum limit.
+\end{openproblem}

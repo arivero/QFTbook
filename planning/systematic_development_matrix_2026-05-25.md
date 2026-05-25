@@ -51,6 +51,26 @@ volume's opening chapter:
 - Volume XI: constructive scalar models and OS data.
 - Volume XII: point splitting and stress-tensor renormalization.
 
+## Current Third-Chapter Pass
+
+The third-chapter pass develops the first nontrivial consistency mechanism or
+worked structure in each launched special volume:
+
+- Volume VI: Yang--Baxter consistency from three-particle factorization and
+  internal-symmetry projectors.
+- Volume VII: supersymmetric gauge theory with trace, coupling, field-strength,
+  matter, moment-map, and anomaly conventions fixed.
+- Volume VIII: BF theory as an explicit cohomological gauge theory with
+  reducible gauge symmetry and BV obligations.
+- Volume IX: line, surface, and domain-wall operators as defect data with
+  global-form and fusion inputs.
+- Volume X: Schwinger--Keldysh real-time generating functionals and retarded
+  response.
+- Volume XI: lattice reflection positivity with a nearest-neighbor scalar
+  proof.
+- Volume XII: trace anomalies as Weyl variations of background generating
+  functionals.
+
 ## Next Frontier After This Pass
 
 - Add proof appendices where current chapters state theorem boundaries.

@@ -8,7 +8,7 @@ Issue:
   the \(\gamma_5\) convention was fixed in the preceding QCD chapter.
 - The QCD chapter is not the source of the gamma-matrix convention.  The
   convention is fixed in the spinor-field chapter and centralized in the
-  spinor-convention appendix.
+  chapter-local spinor-convention section.
 
 Audit:
 
@@ -23,7 +23,7 @@ Fix:
 
 - Strengthened the chapter opening so the convention is explicitly attributed
   to `chapter16_spinor_fields_fermionic_statistics_and_grassmann_path_integrals.tex`
-  and `appendices/spinor_conventions.tex`.
+  and `volumes/volume_i/chapter16a_spinor_conventions.tex`.
 - Updated the anomaly chapter dossier with the issue-pass note.
 
 Verification to run:

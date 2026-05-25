@@ -1,0 +1,121 @@
+\chapter{BF Theory}
+\label{ch:tqft-bf-theory}
+
+\ConventionsEuclidean
+
+BF theory is the first cohomological gauge theory developed in this volume.
+It is simple enough to display the fields, equations, gauge symmetries,
+observables, and BV reducibility explicitly, while still showing why
+topological gauge theory is more than a number assigned to a closed manifold.
+
+\section{Classical Fields and Action}
+
+Let \(M\) be an oriented smooth \(D\)-manifold, and let \(P\to M\) be a
+principal \(G\)-bundle for a compact Lie group \(G\).  Fix an invariant
+pairing \(\langle\cdot,\cdot\rangle\) between \(\mathfrak g^*\) and
+\(\mathfrak g\).  The classical fields of nonabelian BF theory are
+\[
+  A\in\Omega^1(M,\operatorname{ad}P),
+  \qquad
+  B\in\Omega^{D-2}(M,\operatorname{ad}P^*).
+\]
+The curvature is \(F_A=dA+\frac12[A,A]\).  The action is
+\[
+  S_{\rm BF}[A,B]
+  =
+  2\pi\ii\int_M \langle B\wedge F_A\rangle ,
+\]
+with the coefficient chosen so that integral-period constraints in abelian
+compact examples can be imposed without changing the local formula.
+
+Varying \(B\) gives
+\[
+  F_A=0.
+\]
+Varying \(A\) gives
+\[
+  d_A B=0.
+\]
+Thus the stationary points are flat connections equipped with covariantly
+closed \(B\)-fields, modulo the gauge symmetries described below.
+
+\section{Gauge Symmetries and Reducibility}
+
+Ordinary gauge transformations act by
+\[
+  A\mapsto gAg^{-1}-dg\,g^{-1},
+  \qquad
+  B\mapsto gBg^{-1}
+\]
+after identifying \(\mathfrak g^*\) with \(\mathfrak g\) by an invariant
+form.  Infinitesimally, with \(c\in\Omega^0(M,\operatorname{ad}P)\),
+\[
+  \delta_c A=d_Ac,
+  \qquad
+  \delta_c B=[B,c].
+\]
+There is also a shift symmetry
+\[
+  \delta_\eta A=0,
+  \qquad
+  \delta_\eta B=d_A\eta,
+  \qquad
+  \eta\in\Omega^{D-3}(M,\operatorname{ad}P^*).
+\]
+On the locus \(F_A=0\), this shift symmetry is reducible because
+\(\eta=d_A\eta_1\) gives \(\delta_\eta B=d_A^2\eta_1=0\).  The reducibility
+continues through a chain
+\[
+  \Omega^{D-4}\to\Omega^{D-3}\to\Omega^{D-2}.
+\]
+Therefore a BV description is not decoration; it is the natural field space
+for ghosts, ghosts-for-ghosts, antifields, and the master equation.
+
+\section{Metric Independence}
+
+The displayed action uses only the orientation of \(M\), the exterior
+derivative, wedge product, bundle data, and invariant pairing.  It contains no
+metric.  If the gauge fixing and regularization can be chosen so that their
+metric dependence is BV-exact and no anomaly remains, correlation functions
+of BV-closed observables are metric independent.  The verification has two
+parts: the classical action has no metric dependence, and the regulated
+quantum measure plus gauge fixing has vanishing metric anomaly in the sector
+being used.
+
+\section{Observables}
+
+For a closed loop \(\gamma\subset M\) and a representation \(R\) of \(G\), the
+Wilson loop
+\[
+  W_R(\gamma)=\operatorname{Tr}_R\,\operatorname{Hol}_\gamma(A)
+\]
+is gauge invariant.  In abelian BF theory, if \(G=U(1)\), the field \(B\) is a
+\((D-2)\)-form gauge field and a closed \((D-2)\)-cycle \(\Sigma\) defines
+\[
+  V_n(\Sigma)=\exp\!\left(2\pi\ii n\int_\Sigma B\right),
+  \qquad n\in\mathbb Z,
+\]
+when \(B\) has the corresponding compact-period normalization.  The path
+integral pairs electric Wilson loops and magnetic \(B\)-surface operators by
+intersection or linking data.  The precise formula depends on the global
+normalization of the compact fields and must be derived from the finite
+abelian gauge group or differential-cohomology model being used.
+
+\begin{example}[Finite abelian BF theory]
+\label{ex:finite-abelian-bf}
+For a finite abelian group \(A\), the fully finite theory can be defined by
+summing over flat \(A\)-bundles.  On a closed \(D\)-manifold \(M\), the
+partition function is a normalized count of maps from the fundamental
+groupoid of \(M\) to \(A\), with gauge automorphisms divided out.  This
+definition is a genuine finite sum and supplies a rigorous model for the
+topological sector that continuum \(U(1)\) BF theory approximates after
+choosing compact periods.
+\end{example}
+
+\begin{openproblem}[Continuum BF quantization with boundaries]
+\label{op:continuum-bf-boundaries}
+Construct nonabelian continuum BF theory on manifolds with boundary as a
+functorial BV theory.  The construction must specify the boundary phase
+space, residual fields, gauge fixing, anomaly line, gluing pairing, and the
+relationship between Wilson, surface, and boundary observables.
+\end{openproblem}

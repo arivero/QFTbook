@@ -69,7 +69,7 @@
   convention.
 - The \(\gamma_5\), trace, two-dimensional chirality, and
   dimensional-continuation conventions are now centralized in
-  `monograph/tex/appendices/spinor_conventions.tex`, and the chapter links to
+  `monograph/tex/volumes/volume_i/chapter16a_spinor_conventions.tex`, and the chapter links to
   the spinor-field chapter and that appendix before starting the anomaly
   calculation.
 - Local anomalies are represented by local functionals modulo BRST-exact
@@ -125,7 +125,7 @@
 - 2026-05-24 issue #397 pass: verified that no stale reference to a
   "preceding QCD chapter" remains for the \(\gamma_5\) convention.  The
   anomaly chapter now explicitly links the convention to the spinor-field
-  chapter and the spinor-convention appendix.
+  chapter and the chapter-local spinor-convention section.
 
 ## Claims Established
 

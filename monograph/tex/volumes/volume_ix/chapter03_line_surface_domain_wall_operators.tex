@@ -1,0 +1,114 @@
+\chapter{Line, Surface, and Domain-Wall Operators}
+\label{ch:global-line-surface-domain-wall-operators}
+
+\ConventionsMixed
+
+Extended operators are QFT data supported on submanifolds.  They are not
+determined by local operators alone.  This chapter defines the basic objects
+needed for later discussions of confinement, screening, duality, and anomaly
+inflow.
+
+\section{Defect Data}
+
+Let \(X\) be a spacetime manifold and let \(Y\subset X\) be an embedded
+submanifold.  A defect supported on \(Y\) is specified by:
+\begin{enumerate}[label=(\roman*)]
+\item a choice of fields or boundary conditions on the complement
+  \(X\setminus Y\);
+\item singular behavior or extra degrees of freedom along \(Y\);
+\item a coupling between bulk and defect variables;
+\item a renormalization prescription for correlation functions with the
+  defect inserted;
+\item an equivalence relation identifying defect representatives with the
+  same correlation functionals.
+\end{enumerate}
+The codimension of \(Y\) determines whether the object is a local operator,
+line, surface, domain wall, boundary condition, or higher defect.
+
+\section{Wilson Lines}
+
+Let \(G\) be a compact gauge group and \(R\) a finite-dimensional
+representation.  For an oriented curve \(\gamma\), the Wilson line is the
+parallel-transport functional
+\[
+  W_R(\gamma)=
+  \operatorname{Tr}_R\,\operatorname{Pexp}
+  \int_\gamma A .
+\]
+In a regulated quantum gauge theory this expression is a coordinate for a
+renormalized line operator.  Its definition requires the global form of
+\(G\), the representation \(R\), framing or endpoint data when needed, and a
+renormalization scheme for the short-distance singularity along the line.
+If \(\gamma\) is open, the endpoints must carry charged states or additional
+operators so that the full insertion is gauge invariant.
+
+\section{Magnetic and Dyonic Lines}
+
+A magnetic line in four-dimensional gauge theory is defined by a prescribed
+singularity of the gauge field near a curve.  Around a small sphere linking
+the line, the magnetic flux is labelled by a cocharacter
+\[
+  m:U(1)\longrightarrow G
+\]
+modulo conjugation, or equivalently by an element of the magnetic cocharacter
+lattice modulo the Weyl group.  A dyonic line carries both the magnetic label
+\(m\) and an electric representation of the stabilizer of \(m\).  The allowed
+electric and magnetic labels obey the Dirac pairing condition: the phase
+obtained by moving one line around another must be trivial for mutually local
+operators in the chosen theory.
+
+The global form of the gauge group changes the allowed labels.  For example,
+the electric lattice of \(SU(N)\) differs from that of \(PSU(N)\), and the
+dual magnetic lattice changes accordingly.  Therefore the line-operator
+spectrum is part of the definition of a gauge theory: it is fixed by the
+global gauge group, the allowed bundles, and the chosen mutually local
+electric-magnetic charge lattice.
+
+\section{Surface Operators}
+
+A surface operator supported on a two-dimensional submanifold \(\Sigma\) may
+be defined by singular behavior of the gauge field, by coupling a two-
+dimensional QFT on \(\Sigma\) to the bulk, or by inserting a higher-form
+charged object.  In four-dimensional gauge theory an abelianized surface
+singularity has local model
+\[
+  A\sim \alpha\, d\varphi
+\]
+near the normal plane to \(\Sigma\), where \(\alpha\) is valued in a Cartan
+subalgebra modulo the cocharacter lattice and Weyl group.  Additional
+parameters can couple to the magnetic flux through \(\Sigma\).  A complete
+definition must state the singularity, defect counterterms, gauge
+equivalence, and how local operators approaching the surface are
+renormalized.
+
+\section{Domain Walls and Interfaces}
+
+A domain wall between theories \(T_-\) and \(T_+\) is a codimension-one defect
+whose correlation functional takes bulk fields of \(T_-\) on one side and
+bulk fields of \(T_+\) on the other.  A topological wall is one whose
+correlators are invariant under deformations of the wall that avoid other
+insertions.  Such a wall acts on local and extended operators by bringing an
+operator to the wall and moving it through, provided the required limits
+exist.
+
+\begin{definition}[Fusion of topological defects]
+\label{def:fusion-topological-defects}
+Let \(D_1\) and \(D_2\) be parallel topological defects of the same
+codimension.  Their fusion \(D_1\otimes D_2\), when it exists, is the defect
+defined by the limit in which the separation between \(D_1\) and \(D_2\) goes
+to zero, after subtracting or renormalizing local defect counterterms.
+\end{definition}
+
+Fusion is an operation only after the limiting procedure and equivalence
+relation have been supplied.  In favorable topological sectors the resulting
+objects form a category or higher category; in a general QFT the short-distance
+limit can produce new defect degrees of freedom or fail to exist.
+
+\begin{openproblem}[Extended-operator reconstruction]
+\label{op:extended-operator-reconstruction}
+Given the local operator algebra and symmetry data of a QFT, determine what
+additional input is required to reconstruct its extended operators.  The
+answer must include global forms, higher-form symmetries, singular boundary
+conditions, defect renormalization, and the topology in which defect fusion
+limits are taken.
+\end{openproblem}

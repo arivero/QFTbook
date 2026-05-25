@@ -26,7 +26,7 @@ Audit:
 - `chapter20_chiral_axial_anomalies.tex` already used the monograph-wide
   sign at the chapter opening and in the dimensional-reduction triangle
   calculation.
-- `appendices/spinor_conventions.tex` records the same sign and trace
+- `volumes/volume_i/chapter16a_spinor_conventions.tex` records the same sign and trace
   identity as the global convention.
 - `chapter18_gauge_fixing_ghosts_and_brst_cohomology.tex` still had the
   opposite sign in the definition of the Breitenlohner--Maison/'t
@@ -37,7 +37,7 @@ Fix:
 - Corrected the chapter 18 dimensional-regulator definition to
   \(\gamma_5=-\ii\gamma^0\gamma^1\gamma^2\gamma^3\).
 - Added the associated trace identity in the same definition, with an explicit
-  cross-reference to the spinor-convention appendix, so that anomaly and
+  cross-reference to the chapter-local spinor-convention section, so that anomaly and
   regulator discussions use the same orientation and chirality data.
 - Updated the BRST chapter dossier.
 

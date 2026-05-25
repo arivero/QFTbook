@@ -49,7 +49,8 @@
   coefficient now includes the missing factor
   \(\frac12\operatorname{tr}(T^A\{t^a,t^b\})\), so the Abelian Dirac axial
   specialization returns \(1/(16\pi^2)\epsilon FF\).
-- Appendix A now states the two-dimensional trace identity in the exact
+- The chapter-local spinor-convention section now states the two-dimensional
+  trace identity in the exact
   momentum-index order used by the anomaly calculation:
   \(\operatorname{tr}(\gamma^\nu\gamma\gamma^\rho)=2\epsilon^{\rho\nu}\).
 - Chapter 21 was checked for the only active half-trace generator convention:

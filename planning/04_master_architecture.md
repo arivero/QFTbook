@@ -262,6 +262,7 @@ Current compiled material:
 
 1. Factorized Scattering And Integrability
 2. Two-Dimensional Scattering Analyticity And Bootstrap Data
+3. Yang--Baxter Consistency And Internal Symmetry
 
 Further development targets:
 
@@ -294,6 +295,7 @@ Current compiled material:
 
 1. Supersymmetry Algebras And Representations
 2. Superspace, Superfields, And Local Actions
+3. Supersymmetric Gauge Theory
 
 Further development targets:
 
@@ -372,6 +374,7 @@ Current compiled material:
 
 1. Metric Independence And Cohomological Observables
 2. Bordism Functoriality And Extended Topological Field Theory
+3. BF Theory
 
 Further development targets:
 
@@ -413,6 +416,7 @@ Current compiled material:
 
 1. Global Forms And Higher-Form Symmetry
 2. Extended Operators And Topological Defects
+3. Line, Surface, And Domain-Wall Operators
 
 Further development targets:
 
@@ -437,6 +441,7 @@ Current compiled material:
 
 1. KMS States And Thermal Correlators
 2. Finite-Temperature Path Integrals
+3. Real-Time Schwinger--Keldysh Formalism
 
 Further development targets:
 
@@ -459,6 +464,7 @@ Current compiled material:
 
 1. Constructive Status And Routes To Continuum QFT
 2. Constructive Scalar Models And OS Data
+3. Lattice Reflection Positivity
 
 Further development targets:
 
@@ -482,6 +488,7 @@ Current compiled material:
 
 1. Locally Covariant QFT And Hadamard States
 2. Point Splitting And Stress Tensor Renormalization
+3. Trace Anomalies And Background Variations
 
 Further development targets:
 

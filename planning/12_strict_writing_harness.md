@@ -156,6 +156,24 @@ domain, conclusion, and role in the local argument have been made explicit.
 If those hypotheses are not verified in the chapter, the conclusion must be
 phrased conditionally.
 
+## Section-Level Depth Rule
+
+Every reader-facing section must have a mathematical role.  A section passes
+only if it contains all of the following:
+
+- the primitive objects of that section, with ambient category or framework;
+- the symbols used in load-bearing formulae, with domains and codomains when
+  maps are involved;
+- the status of the main statements: definition, construction, proposition,
+  theorem with hypotheses, controlled approximation, example, or open problem;
+- an argument, derivation, or construction whenever the section changes the
+  reader's mathematical state.
+
+A section that only announces a topic, lists literature themes, or gestures
+toward later work is not acceptable in compiled TeX.  If a complete proof is
+too long for the main flow, the section must state the theorem precisely and
+point to a chapter appendix or a named later proof obligation.
+
 Proofs must not use structural prose as a substitute for construction.  When
 a statement asserts a coordinate change, a matching map, a quotient, a contact
 term, a limiting object, a topology, a measure, or an equivalence of

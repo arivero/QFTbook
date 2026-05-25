@@ -1,0 +1,162 @@
+\chapter{Supersymmetric Gauge Theory}
+\label{ch:susy-gauge-theory}
+
+\ConventionsLorentzian
+
+This chapter introduces supersymmetric gauge theory as field-variable data.
+The particle spectrum, vacuum structure, Wilsonian effective action, and
+nonperturbative dynamics are later constructions.  We keep the gauge
+representative, the gauge-invariant observables, and the regularization
+scheme separate.
+
+\section{Gauge and Trace Conventions}
+
+Let \(G\) be a compact Lie group with Lie algebra \(\mathfrak g\).  Fix an
+invariant nondegenerate symmetric bilinear form
+\(\operatorname{tr}:\mathfrak g\otimes\mathfrak g\to\R\).  For a connection
+\(A=A_\mu dx^\mu\) on a principal \(G\)-bundle, write
+\[
+  F_{\mu\nu}
+  =
+  \partial_\mu A_\nu-\partial_\nu A_\mu+[A_\mu,A_\nu].
+\]
+The Yang--Mills coupling convention in this monograph is
+\[
+  \mathcal L_{\rm YM}
+  =
+  -\frac{1}{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+  +\frac{\theta}{32\pi^2}
+  \operatorname{tr}(F_{\mu\nu}\widetilde F^{\mu\nu})
+  +\cdots ,
+\]
+where \(\widetilde F^{\mu\nu}=\frac12
+\epsilon^{\mu\nu\rho\sigma}F_{\rho\sigma}\) in the stated orientation
+convention.  This convention applies uniformly to \(U(1)\), \(U(N)\), and
+simple factors after the bilinear form has been fixed.
+
+\section{Vector Multiplet as Field Variables}
+
+\begin{definition}[Off-shell vector multiplet]
+\label{def:off-shell-vector-multiplet}
+An \(\mathcal N=1\) off-shell vector multiplet with gauge algebra
+\(\mathfrak g\) consists locally of a connection \(A_\mu\), a Weyl spinor
+\(\lambda_\alpha\) valued in \(\mathfrak g_\C\), its conjugate
+\(\bar\lambda_{\dot\alpha}\), and a real auxiliary field \(D\) valued in
+\(\mathfrak g\).  These are gauge-representative field variables.  The
+physical local observables are gauge-invariant cohomological or operator
+classes after quantization.
+\end{definition}
+
+In Wess--Zumino gauge, the supersymmetry transformations have the form
+\[
+  \delta A_\mu
+  =
+  \ii\epsilon\sigma_\mu\bar\lambda
+  -\ii\lambda\sigma_\mu\bar\epsilon ,
+\]
+\[
+  \delta\lambda_\alpha
+  =
+  (\sigma^{\mu\nu}\epsilon)_\alpha F_{\mu\nu}
+  +\ii\epsilon_\alpha D,
+  \qquad
+  \delta D
+  =
+  -\epsilon\sigma^\mu D_\mu\bar\lambda
+  -D_\mu\lambda\sigma^\mu\bar\epsilon .
+\]
+The commutator of two such transformations closes on a translation plus a
+gauge transformation.  Thus Wess--Zumino gauge is not a gauge-invariant
+description of supersymmetry; it is a convenient representative after
+ordinary gauge freedom has been partly fixed.
+
+\section{Superfield Strength}
+
+Let \(V\) be a real vector superfield.  For matrix notation in a
+representation of \(G\), a chiral gauge transformation acts by
+\[
+  e^V\longmapsto e^{-\bar\Lambda}e^V e^{-\Lambda},
+  \qquad \bar D_{\dot\alpha}\Lambda=0 .
+\]
+The chiral field strength is
+\[
+  W_\alpha
+  =
+  -\frac14\bar D^2\!\left(e^{-V}D_\alpha e^V\right),
+  \qquad
+  \bar D_{\dot\alpha}W_\beta=0.
+\]
+It transforms covariantly,
+\[
+  W_\alpha\longmapsto e^\Lambda W_\alpha e^{-\Lambda}.
+\]
+Consequently \(\operatorname{tr}(W^\alpha W_\alpha)\) is a chiral
+gauge-invariant local superfield.  With the trace convention fixed above, the
+gauge kinetic term is normalized so that its component expansion contains the
+Yang--Mills term
+\[
+  -\frac{1}{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu}).
+\]
+All later anomaly and beta-function formulae must refer back to this coupling
+normalization.
+
+\section{Matter Multiplets and the Moment Map}
+
+Let \(R\) be a finite-dimensional complex representation of \(G\).  A chiral
+matter multiplet is a chiral superfield \(\Phi\) valued in \(R\).  Gauge
+covariance of the kinetic term is expressed by
+\[
+  \int d^4\theta\, \bar\Phi e^V\Phi .
+\]
+In components this term contains the scalar kinetic term, fermion kinetic
+term, gauge couplings, and the auxiliary coupling
+\[
+  \operatorname{tr}(D\,\mu_R(\phi,\bar\phi)),
+\]
+where \(\mu_R\in\mathfrak g^*\) is the moment map determined by
+\[
+  \langle \mu_R(\phi,\bar\phi),X\rangle
+  =
+  \bar\phi\, X_R\, \phi,
+  \qquad X\in\mathfrak g .
+\]
+After using the bilinear form to identify \(\mathfrak g^*\) with
+\(\mathfrak g\), the algebraic equation of motion for \(D\) gives the
+\(D\)-term potential
+\[
+  V_D=\frac{g^2}{2}\operatorname{tr}(\mu_R\mu_R)
+\]
+in this convention, up to Fayet--Iliopoulos terms for abelian factors when
+they are allowed by the global form of the gauge group.
+
+\section{Gauge Anomalies as a Consistency Condition}
+
+The classical field-variable construction is not yet a quantum gauge theory.
+For a four-dimensional chiral gauge theory, gauge invariance of the quantum
+theory requires the perturbative gauge anomaly class to vanish.  In a
+representation \(R\), the cubic anomaly coefficient is the symmetric
+trilinear form
+\[
+  A_R(X,Y,Z)
+  =
+  \operatorname{Tr}_R\!\left(X_R\{Y_R,Z_R\}\right),
+  \qquad X,Y,Z\in\mathfrak g ,
+\]
+with the trace over chiral fermion variables.  The local anomaly cancellation
+condition is
+\[
+  \sum_{\text{chiral fermions }i} A_{R_i}=0
+\]
+as an invariant symmetric trilinear form.  Global anomalies and mixed
+anomalies require separate topological data and are not detected by this
+polynomial alone.
+
+\begin{openproblem}[Supersymmetric gauge theory with regulated Ward identities]
+\label{op:susy-gauge-regulated-ward-identities}
+Construct four-dimensional supersymmetric gauge theories with a regulator
+that states the gauge symmetry, supersymmetry transformations, BV master
+equation, local counterterm space, anomaly class, and decoupling limit at
+finite cutoff.  This is the regulator-level input needed before exact
+Wilsonian statements about holomorphy, moduli spaces, and duality can be
+treated as quantum statements rather than coordinate calculations.
+\end{openproblem}

@@ -1,0 +1,183 @@
+\chapter{Yang--Baxter Consistency and Internal Symmetry}
+\label{ch:integrable-yang-baxter-internal-symmetry}
+
+\ConventionsLorentzian
+
+The two-body bootstrap datum of
+Chapter~\ref{ch:integrable-scattering-analyticity-bootstrap} becomes a
+many-particle scattering theory only if different decompositions of the same
+multi-particle process agree.  This chapter formulates that requirement as an
+identity of meromorphic maps on species spaces and explains how internal
+symmetry reduces the identity to scalar functions on irreducible channels.
+
+\section{Species Spaces and Two-Body Operators}
+
+Let \(\mathcal I\) be a set of stable particle species.  To each
+\(a\in\mathcal I\) assign a finite-dimensional complex vector space \(V_a\),
+called the species space.  The one-particle momentum variable of a particle of
+mass \(m_a\) is the rapidity \(\theta\), with
+\[
+  p_a(\theta)=m_a(\cosh\theta,\sinh\theta).
+\]
+For ordered species \(a,b\), a two-body scattering operator is a meromorphic
+map
+\[
+  S_{ab}(\theta):V_a\otimes V_b\longrightarrow V_b\otimes V_a,
+  \qquad \theta=\theta_a-\theta_b .
+\]
+The codomain order is part of the definition: after scattering in one spatial
+dimension the outgoing ordered particles have exchanged their positions.
+
+It is often convenient to compose \(S_{ab}\) with the ordinary flip
+\(P_{ab}:V_b\otimes V_a\to V_a\otimes V_b\) and define
+\[
+  R_{ab}(\theta)=P_{ab}S_{ab}(\theta):
+  V_a\otimes V_b\longrightarrow V_a\otimes V_b .
+\]
+The \(S\)-operator records physical ordering, while \(R\) records an
+endomorphism on a fixed tensor product.  All equations below are stated in the
+\(R\)-matrix convention because the domains and codomains are then identical.
+
+\begin{definition}[Regular two-body \(R\)-datum]
+\label{def:regular-two-body-r-datum}
+A regular two-body \(R\)-datum consists of species spaces \(V_a\) and
+meromorphic endomorphisms \(R_{ab}(\theta)\in
+\operatorname{End}(V_a\otimes V_b)\) such that, on every common domain of
+holomorphy,
+\[
+  R_{ab}(\theta)R_{ab}(-\theta)=\id_{V_a\otimes V_b}
+\]
+and the crossing and residue data of
+Definition~\ref{def:factorized-scattering-bootstrap-datum} are satisfied
+after undoing the flip.
+\end{definition}
+
+\section{Derivation of the Yang--Baxter Equation}
+
+Consider three particles with rapidities
+\(\theta_1>\theta_2>\theta_3\) and species spaces
+\(V_{a_1},V_{a_2},V_{a_3}\).  Factorization asserts that the full
+three-particle scattering is a product of two-body scatterings.  There are two
+reduced decompositions of the permutation reversing the order of the three
+particles:
+\[
+  (12)(23)(12)=(23)(12)(23).
+\]
+The equality of the resulting linear maps on
+\[
+  V_{a_1}\otimes V_{a_2}\otimes V_{a_3}
+\]
+is therefore the condition that factorized scattering be independent of the
+chosen reduced decomposition.
+
+Write \(\theta_{ij}=\theta_i-\theta_j\).  Let \(R_{ij}\) denote the
+endomorphism \(R\) acting on the \(i\)-th and \(j\)-th tensor factors and as
+the identity on the remaining factor.  Equality of the two decompositions is
+\[
+  R_{12}(\theta_{12})R_{13}(\theta_{13})R_{23}(\theta_{23})
+  =
+  R_{23}(\theta_{23})R_{13}(\theta_{13})R_{12}(\theta_{12}).
+\]
+Since \(\theta_{13}=\theta_{12}+\theta_{23}\), this is the spectral-parameter
+Yang--Baxter equation
+\[
+  R_{12}(\theta)R_{13}(\theta+\phi)R_{23}(\phi)
+  =
+  R_{23}(\phi)R_{13}(\theta+\phi)R_{12}(\theta).
+\]
+
+\begin{proposition}[Three-particle consistency]
+\label{prop:yb-three-particle-consistency}
+For a regular two-body \(R\)-datum, the factorized three-particle scattering
+operator is independent of the reduced decomposition of the three-particle
+permutation if and only if the Yang--Baxter equation holds as a meromorphic
+identity on every triple species space.
+\end{proposition}
+
+\begin{proof}
+Each adjacent transposition is represented by the corresponding two-body
+operator with the rapidity difference of the two lines at the moment they
+cross.  In the \(R\)-matrix convention this representation acts on a fixed
+tensor product.  The two reduced decompositions of the longest element of the
+three-particle permutation group give exactly the two sides of the displayed
+Yang--Baxter equation.  Thus independence of the decomposition gives the
+equation.  Conversely, if the equation holds, the two possible three-particle
+factorizations define the same meromorphic map.  The remaining relations of
+the permutation group are the inverse relation, supplied by unitarity, and
+commutation of disjoint transpositions, which is automatic because the
+operators act on disjoint tensor factors.
+\end{proof}
+
+\section{Internal Symmetry and Projector Decomposition}
+
+Let \(G\) be a group or Lie algebra acting on the species spaces by
+representations \(\rho_a:G\to GL(V_a)\).  Internal-symmetry invariance of the
+two-body scattering datum means
+\[
+  R_{ab}(\theta)(\rho_a(g)\otimes\rho_b(g))
+  =
+  (\rho_a(g)\otimes\rho_b(g))R_{ab}(\theta),
+  \qquad g\in G .
+\]
+Equivalently, \(R_{ab}(\theta)\) is an element of
+\[
+  \operatorname{End}_G(V_a\otimes V_b),
+\]
+the algebra of \(G\)-intertwiners.  If
+\[
+  V_a\otimes V_b\simeq \bigoplus_{\lambda}
+  M_{ab}^{\lambda}\otimes W_\lambda
+\]
+is the decomposition into irreducible \(G\)-modules \(W_\lambda\) with
+multiplicity spaces \(M_{ab}^{\lambda}\), then Schur's lemma gives
+\[
+  \operatorname{End}_G(V_a\otimes V_b)
+  \simeq
+  \bigoplus_{\lambda}\operatorname{End}(M_{ab}^{\lambda}).
+\]
+If every multiplicity space is one-dimensional, the most general invariant
+\(R\)-matrix has the form
+\[
+  R_{ab}(\theta)=\sum_{\lambda} r_{ab}^{\lambda}(\theta)P_{\lambda},
+\]
+where \(P_\lambda\) is the projector onto the irreducible channel
+\(\lambda\), and \(r_{ab}^{\lambda}\) is a scalar meromorphic function.
+
+\begin{example}[Vector representation of \(O(N)\)]
+\label{ex:on-projector-channels}
+Let \(V=\C^N\) be the vector representation of \(O(N)\).  The tensor product
+decomposes as
+\[
+  V\otimes V
+  =
+  \mathbf 1\oplus \Lambda^2 V\oplus
+  \operatorname{Sym}^2_0 V .
+\]
+An \(O(N)\)-invariant two-body \(R\)-matrix without multiplicity mixing is
+therefore
+\[
+  R(\theta)=r_0(\theta)P_0+r_A(\theta)P_A+r_T(\theta)P_T,
+\]
+with projectors onto the singlet, antisymmetric, and traceless-symmetric
+channels.  The Yang--Baxter equation becomes a coupled system of functional
+equations for \(r_0,r_A,r_T\), together with the analytic constraints of the
+bootstrap datum.
+\end{example}
+
+\section{What the Equation Certifies}
+
+The Yang--Baxter equation certifies compatibility of factorized
+multi-particle on-shell scattering.  It does not by itself construct local
+operator algebras, form factors, or a Hilbert-space QFT.  The next chapter
+adds the form-factor problem, where local operators are represented by
+meromorphic functions satisfying exchange, crossing, residue, and growth
+conditions.
+
+\begin{openproblem}[From \(R\)-matrices to local fields]
+\label{op:r-matrix-to-local-fields}
+Given a meromorphic \(R\)-datum satisfying unitarity, crossing, the
+Yang--Baxter equation, residue positivity, and stated growth bounds, construct
+or obstruct a local QFT realization.  The construction must identify a Hilbert
+space, wedge-local or local algebras, form factors of a dense set of local
+operators, and the topology in which locality and clustering are verified.
+\end{openproblem}

@@ -1,0 +1,127 @@
+\chapter{Trace Anomalies and Background Variations}
+\label{ch:curved-trace-anomalies}
+
+\ConventionsEuclidean
+
+The stress tensor of Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}
+is defined by variation with respect to a background metric.  This chapter
+studies the trace obtained by Weyl variation.  The central object is the
+renormalized generating functional as a functional of background fields.
+
+\section{Generating Functional and Weyl Variation}
+
+Let \(W[g]\) be the renormalized connected Euclidean generating functional of
+a QFT on a smooth \(D\)-manifold with metric \(g_{\mu\nu}\).  The stress
+tensor expectation value is defined by
+\[
+  \delta W[g]
+  =
+  \frac12\int_M d^Dx\,\sqrt g\,
+  \langle T^{\mu\nu}(x)\rangle_g\,\delta g_{\mu\nu}(x)
+\]
+for metric variations in the chosen renormalization scheme.  A local Weyl
+variation is
+\[
+  \delta_\sigma g_{\mu\nu}=2\sigma g_{\mu\nu}.
+\]
+Therefore
+\[
+  \delta_\sigma W[g]
+  =
+  \int_M d^Dx\,\sqrt g\,
+  \sigma(x)\langle T^\mu{}_\mu(x)\rangle_g .
+\]
+If the classical theory is Weyl invariant, a nonzero local functional on the
+right side is a trace anomaly.
+
+\section{Locality and Wess--Zumino Consistency}
+
+Assume the regulator and renormalization prescription produce a local Weyl
+variation
+\[
+  \delta_\sigma W[g]=\int_M d^Dx\,\sqrt g\,\sigma\,\mathcal A[g].
+\]
+Since Weyl transformations commute,
+\[
+  [\delta_{\sigma_1},\delta_{\sigma_2}]W=0.
+\]
+This gives the Wess--Zumino consistency condition
+\[
+  \delta_{\sigma_1}\!\int\sqrt g\,\sigma_2\mathcal A
+  =
+  \delta_{\sigma_2}\!\int\sqrt g\,\sigma_1\mathcal A .
+\]
+An anomaly is therefore a cohomology class of local Weyl variations modulo
+Weyl variations of local counterterms.  If
+\[
+  W[g]\mapsto W[g]+\int_M\sqrt g\,L_{\rm ct}(g)
+\]
+is a finite local counterterm change, then \(\mathcal A\) changes by the Weyl
+variation of \(L_{\rm ct}\).
+
+\section{Two Dimensions}
+
+In two dimensions, for a unitary conformal theory on a curved background, the
+metric trace anomaly has the form
+\[
+  \langle T^\mu{}_\mu\rangle_g
+  =
+  -\frac{c}{24\pi}R
+\]
+with the sign tied to the convention for \(W[g]\) and the Euclidean action.
+The coefficient \(c\) is the same parameter that appears in the flat-space
+stress-tensor two-point function after the normalization of \(T_{\mu\nu}\) is
+fixed.  The integral of \(R\) is topological on a closed surface, but the
+local relation is stronger: it controls the response to a space-dependent
+Weyl factor.
+
+\section{Four Dimensions}
+
+In four dimensions, the parity-even trace anomaly of a conformal theory has
+the form
+\[
+  \langle T^\mu{}_\mu\rangle_g
+  =
+  \frac{1}{16\pi^2}
+  \left(c\,W_{\mu\nu\rho\sigma}W^{\mu\nu\rho\sigma}
+  -a\,E_4
+  +b\,\Box R\right)
+\]
+plus background gauge-field and parity-odd terms when such backgrounds are
+present.  Here
+\[
+  E_4=
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+  -4R_{\mu\nu}R^{\mu\nu}+R^2
+\]
+is the Euler density and \(W_{\mu\nu\rho\sigma}\) is the Weyl tensor.  The
+\(\Box R\) coefficient is scheme dependent because it can be shifted by a
+local \(R^2\) counterterm.  The coefficients \(a\) and \(c\) are invariant
+under such local metric counterterm changes in ordinary four-dimensional CFT
+settings.
+
+\section{What Must Be Proved in a QFT}
+
+The displayed classifications use locality of the renormalized background
+variation.  In a concrete QFT one must still prove or assume that:
+\begin{enumerate}[label=(\roman*)]
+\item \(W[g]\) exists in the stated class of backgrounds;
+\item metric variations define renormalized stress-tensor insertions;
+\item Weyl variation is local after the allowed counterterms are chosen;
+\item contact terms in multiple stress-tensor insertions are part of the same
+  renormalization scheme;
+\item anomalies in other background fields are compatible with Weyl
+  consistency.
+\end{enumerate}
+These conditions are automatic neither in an abstract local-net formulation
+nor in a symbolic path integral.  They are extra structure connecting the QFT
+to background geometry.
+
+\begin{openproblem}[Trace anomaly from nonperturbative QFT data]
+\label{op:trace-anomaly-nonperturbative-data}
+Formulate trace anomalies directly from nonperturbative local QFT data on
+curved backgrounds.  The construction should identify the algebraic or
+functorial object replacing \(W[g]\), define stress-tensor contact terms, and
+recover the local Weyl cohomology class without relying on a perturbative
+regulator.
+\end{openproblem}

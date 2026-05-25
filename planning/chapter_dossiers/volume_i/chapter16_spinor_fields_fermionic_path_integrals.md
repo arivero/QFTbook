@@ -48,7 +48,7 @@
 - Gamma matrices obey \(\{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu}\).
 - The Dirac adjoint, chirality matrix, Majorana conjugation matrix, and
   two-component sign conventions are fixed globally in
-  `monograph/tex/appendices/spinor_conventions.tex`.
+  `monograph/tex/volumes/volume_i/chapter16a_spinor_conventions.tex`.
 - Spinor fields are operator-valued distributions on a common dense domain,
   with a fermion-parity grading.
 - Fermionic path-integral variables are odd coordinates on finite-dimensional
@@ -99,7 +99,7 @@
 - The matrix \(B=\gamma_2\) in the displayed gamma basis implements charge
   conjugation, and the Majorana condition is checked directly against
   Lorentz covariance and chirality projection.
-- The chapter now explicitly points readers to Appendix A for the
+- The chapter now explicitly includes a local spinor-convention section for the
   Weinberg-compatible gamma basis and the same-signature comparison with the
   Wess-Bagger-type chiral basis.
 - Fermionic operator fields and fermionic path-integral variables are distinct
