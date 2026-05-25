@@ -143,6 +143,12 @@ per site, absolute magnetization, and a windowed estimate of
 \(\tau_{\mathrm{int}}\).  Its smoke mode is a finite-regulator check of the
 algorithmic identities above.  It does not estimate critical exponents, prove
 the Onsager scaling limit, or construct the continuum Ising CFT.
+The deterministic calculation check
+\[
+  \texttt{calculation-checks/ising\_metropolis\_finite\_checks.py}
+\]
+enumerates the \(2\times2\) periodic chain and verifies both the local energy
+difference and the detailed-balance identity used by the script.
 
 \section{Autocorrelation and Effective Sample Size}
 

@@ -47,3 +47,9 @@ the exponential decay of average phase with volume.
   Metropolis sampler.  Certifies the implemented finite chain and reports
   acceptance, energy, magnetization, and a windowed autocorrelation estimate.
   It does not certify a continuum limit.
+
+## Calculation Checks
+
+- `calculation-checks/ising_metropolis_finite_checks.py` enumerates the
+  \(2\times2\) periodic Ising chain and verifies the companion script's local
+  energy difference and detailed-balance identity exactly at finite volume.

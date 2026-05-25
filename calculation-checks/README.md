@@ -95,6 +95,10 @@ Current checks:
   associativity, Frobenius--Perron dimensions, modular \(S\)-matrix
   orthogonality, the Verlinde formula, and the diagonal action of defects on
   local primary sectors.
+- `ising_metropolis_finite_checks.py`: exact enumeration checks for the
+  `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
+  energy difference and detailed balance on the \(2\times2\) periodic Ising
+  chain.
 - `large_n_topology_checks.py`: finite checks for the 't Hooft
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph
