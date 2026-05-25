@@ -76,3 +76,7 @@ The chapter establishes:
   `lem:vacuum-k-invariance-from-radial-spectrum`, proving
   \(\widehat K_\mu\ket{\vac}=0\) from the radial spectrum condition and
   \([\widehat D_{\rm rad},\widehat K_\mu]=-\widehat K_\mu\).
+- 2026-05-24 issue #395 pass: the displayed \(D=3\) parity-even \(TTT\)
+  two-structure count now carries explicit references to Maldacena--Zhiboedov
+  and to the Costa--Penedones--Poland--Rychkov / Costa--Hansen--Penedones--
+  Trevisani spinning-correlator technology.
