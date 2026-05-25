@@ -1191,39 +1191,66 @@ Hermitian conformal charges are absorbed, and
 The eigenvalue of \(\widehat H_{\mathrm{cyl}}\) is the scaling dimension.
 
 The relation between the Hermitian Lorentzian convention and the radial
-Euclidean convention is as follows.  Let \(X\) be a real conformal generator and
-let \(\widehat X_{\rm L}\) be the corresponding Hermitian Lorentzian charge, so
-that a real Lorentzian group parameter \(a\) acts by
+Euclidean convention must be tracked at the level of the complexified
+conformal algebra.  Let \(\widehat X_{\rm L}\) denote the Hermitian
+Lorentzian charges in the convention of
+Chapter~\ref{ch:volume-iii-conformal-killing-vectors}, so for example
 \[
-  U_{\rm L}(\exp aX)=\exp(-\ii a\widehat X_{\rm L}).
-\]
-After analytic continuation of the group parameter, \(a=-\ii a_E\), the same
-complexified group element acts in radial Euclidean quantization by
-\[
-  \exp(-a_E\widehat X_{\rm rad})
-\]
-whenever the continuation maps the relevant surface to another Euclidean
-surface.  For dilatations this gives
-\[
-  \widehat D_{\rm rad}=\widehat H_{\rm cyl},
-  \qquad
-  \ee^{-a\widehat D_{\rm rad}}\ket{\mathcal O}
+  [\widehat D_{\rm L},\widehat P^{\rm L}_\mu]
   =
-  \ee^{-a\Delta}\ket{\mathcal O}.
+  \ii\widehat P^{\rm L}_\mu,
+  \qquad
+  [\widehat P^{\rm L}_\mu,\widehat K^{\rm L}_\nu]
+  =
+  2\ii
+  (\delta_{\mu\nu}\widehat D_{\rm L}-\widehat J^{\rm L}_{\mu\nu}).
 \]
-For commutator formulas, the radial chapters write the complexified conformal
-algebra without the explicit Lorentzian factor of \(\ii\).  Thus the
-Hermitian-convention relation
+The radial descendant algebra is the real form adapted to the cylinder
+Hamiltonian and to the inversion pairing.  With the subscript ``rad'' used
+only in this paragraph, the conversion is
+\begin{equation}
+  \widehat D_{\rm rad}=-\ii\widehat D_{\rm L},
+  \qquad
+  \widehat J^{\rm rad}_{\mu\nu}=-\ii\widehat J^{\rm L}_{\mu\nu},
+  \qquad
+  \widehat P^{\rm rad}_{\mu}=\ii\widehat P^{\rm L}_{\mu},
+  \qquad
+  \widehat K^{\rm rad}_{\mu}=-\ii\widehat K^{\rm L}_{\mu}.
+  \label{eq:lorentzian-to-radial-generator-map}
+\end{equation}
+The opposite signs for \(\widehat P_\mu\) and \(\widehat K_\mu\) reflect
+their radial roles: translations create descendants and raise cylinder
+energy, while special conformal transformations annihilate primaries and
+lower cylinder energy.  Applying \eqref{eq:lorentzian-to-radial-generator-map}
+gives
 \[
-  [\widehat D_{\rm L},\widehat P^{\rm L}_\mu]=\ii\widehat P^{\rm L}_\mu
+  [\widehat D_{\rm rad},\widehat P^{\rm rad}_\mu]
+  =
+  \widehat P^{\rm rad}_\mu,
+  \qquad
+  [\widehat D_{\rm rad},\widehat K^{\rm rad}_\mu]
+  =
+  -\widehat K^{\rm rad}_\mu,
 \]
-is recorded in radial notation as
-\[
-  [\widehat D_{\rm rad},\widehat P_\mu]=\widehat P_\mu.
-\]
-This is a convention for the complexified Lie-algebra action on local
-operators; positivity statements use the Hilbert-space adjoint
-\(\widehat P_\mu^\dagger=\widehat K_\mu\) in the radial Hilbert space.
+and
+\begin{equation}
+  [\widehat P^{\rm rad}_\mu,\widehat K^{\rm rad}_\nu]
+  =
+  -2(\delta_{\mu\nu}\widehat D_{\rm rad}
+      -\widehat J^{\rm rad}_{\mu\nu}),
+  \qquad
+  [\widehat K^{\rm rad}_\mu,\widehat P^{\rm rad}_\nu]
+  =
+  2\delta_{\mu\nu}\widehat D_{\rm rad}
+  -2\widehat J^{\rm rad}_{\nu\mu}.
+  \label{eq:radial-pk-sign-from-lorentzian}
+\end{equation}
+The radial chapters suppress the subscript after this point.  Thus the
+transition from Hermitian Lorentzian charges to the radial algebra is not a
+rule that deletes every visible factor of \(\ii\); it is the complex change of
+real form displayed in \eqref{eq:lorentzian-to-radial-generator-map}.
+Positivity statements then use the Hilbert-space adjoint
+\(\widehat P_\mu^\dagger=\widehat K_\mu\) supplied by radial reflection.
 
 If \(\mathcal O\) has scaling dimension \(\Delta\), then
 \[

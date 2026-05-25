@@ -226,3 +226,9 @@ The chapter establishes:
   state--operator theorem so the correspondence is
   \(\mathcal V_{\rm loc}^{(\Delta)}\simeq\ker(D_{\rm rad}-\Delta)\), with
   only the algebraic direct sum dense in the completed sphere Hilbert space.
+- 2026-05-24 issue #410 pass: replaced the informal Lorentzian-to-radial
+  "drop the \(i\)" statement by the explicit complexified real-form map
+  \(D_{\rm rad}=-\ii D_{\rm L}\), \(J_{\rm rad}=-\ii J_{\rm L}\),
+  \(P_{\rm rad}=\ii P_{\rm L}\), and \(K_{\rm rad}=-\ii K_{\rm L}\).
+  This derives the radial \([K_\mu,P_\nu]\) sign used by the unitarity
+  bounds.

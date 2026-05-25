@@ -99,3 +99,7 @@ The chapter establishes:
 - 2026-05-24 issue #294 pass: recorded that the scalar Laplace null descendant
   at the unitarity bound is the null submodule subtracted in the free-scalar
   single-letter character of Chapter 4.
+- 2026-05-24 issue #410 pass: cross-referenced the explicit
+  Lorentzian-to-radial generator map in Chapter 4 and stated that the
+  positive sign in the radial \([K_\mu,P_\nu]\) commutator is not obtained by
+  a naive deletion of Lorentzian factors of \(\ii\).
