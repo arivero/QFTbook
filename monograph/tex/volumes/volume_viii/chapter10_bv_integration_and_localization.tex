@@ -1,0 +1,147 @@
+\chapter{BV Integration And Finite-Dimensional Localization}
+\label{ch:tqft-bv-integration-localization}
+
+\ConventionsEuclidean
+
+Topological and cohomological QFTs often reduce protected quantities to
+finite-dimensional integrals.  This chapter records the precise finite
+dimensional BV and localization identities that such reductions rely on, so
+that later infinite-dimensional applications can state their additional
+analytic hypotheses.
+
+\section{Odd Symplectic Datum}
+
+Let \(\mathcal F\) be a finite-dimensional graded manifold with an odd
+symplectic form \(\omega\) of degree \(-1\).  A function \(S\) of degree zero
+defines a Hamiltonian vector field \(Q_S\) by
+\[
+  \iota_{Q_S}\omega=\delta S.
+\]
+The associated odd Poisson bracket is
+\[
+  \{F,G\}=\iota_{Q_F}\iota_{Q_G}\omega .
+\]
+The classical master equation is
+\[
+  \{S,S\}=0,
+\]
+which is equivalent to \(Q_S^2=0\).
+
+\section{Gauge Fixing As Lagrangian Choice}
+
+A BV integral is not an integral over all fields.  It is an integral over a
+Lagrangian submanifold
+\[
+  \mathcal L\subset\mathcal F
+\]
+chosen as a gauge-fixing cycle.  For a half-density \(\rho\) satisfying the
+quantum master equation, the expectation of an observable \(\mathcal O\) is
+\[
+  \langle\mathcal O\rangle_{\mathcal L}
+  =
+  \int_{\mathcal L}\mathcal O\,\rho .
+\]
+If \(\mathcal O\) is BV-closed and the deformation of \(\mathcal L\) has no
+boundary contribution, the integral is invariant under smooth changes of
+\(\mathcal L\).  The proof is Stokes' theorem applied to the odd symplectic
+divergence operator.
+
+\section{BV Laplacian Identity}
+
+In Darboux coordinates \((x^i,\xi_i)\) with \(|\xi_i|=1-|x^i|\), the BV
+Laplacian on functions relative to the coordinate Berezinian is
+\[
+  \Delta_{\mathrm{BV}}
+  =
+  \sum_i(-1)^{|x^i|}
+  \frac{\partial^2}{\partial x^i\partial \xi_i}.
+\]
+The quantum master equation for a density written as
+\[
+  \rho=\ee^{S/\hbar}
+\]
+is
+\[
+  \frac12\{S,S\}+\hbar\Delta_{\mathrm{BV}}S=0.
+\]
+For any \(F\),
+\[
+  \Delta_{\mathrm{BV}}(F\ee^{S/\hbar})
+  =
+  \left(
+    \Delta_{\mathrm{BV}}F
+    +
+    \hbar^{-1}\{S,F\}
+  \right)\ee^{S/\hbar}.
+\]
+Integrating a BV-exact term over a compact Lagrangian gives zero.  This is
+the algebraic identity behind Ward identities in finite-dimensional BV
+models.
+
+\section{Cohomological Localization Identity}
+
+Let \(M\) be an oriented finite-dimensional manifold with an odd vector field
+or differential \(Q\) acting on forms, and suppose
+\[
+  Q^2=0
+\]
+on the integrand.  If \(S\) and \(\mathcal O\) are \(Q\)-closed and \(V\) is
+an odd functional, define
+\[
+  I(t)=\int_M \mathcal O\,\ee^{-S-tQV}.
+\]
+Then
+\[
+  \frac{dI}{dt}
+  =
+  -\int_M Q\!\left(V\mathcal O\,\ee^{-S-tQV}\right).
+\]
+When the integral of a \(Q\)-exact form vanishes, \(I(t)\) is independent of
+\(t\).  If the real part of \(QV\) is nonnegative and its zero locus is a
+compact submanifold \(F\), the limit \(t\to\infty\) localizes the integral to
+\(F\).
+
+\section{One-Loop Normal Form}
+
+Suppose \(F\subset M\) is a smooth fixed locus and the normal quadratic form
+of \(QV\) is nondegenerate.  Locally write normal coordinates \(y\) and
+fermionic partners \(\chi\).  The quadratic contribution has the form
+\[
+  t\,y^TAy+t\,\chi^TB\chi .
+\]
+The Gaussian normal integral produces
+\[
+  \frac{\operatorname{Pf}(B)}{\sqrt{\det A}},
+\]
+with orientation and phase determined by the integration cycle.  Thus the
+localized integral is
+\[
+  I=\int_F
+  \frac{\iota_F^*(\mathcal O\,\ee^{-S})}
+  {e_Q(N_F)},
+\]
+where \(e_Q(N_F)\) is the equivariant Euler class of the normal complex.
+
+\section{Boundary And Noncompact Terms}
+
+If \(M\) is noncompact or has boundary, the derivative \(dI/dt\) equals a
+boundary contribution.  A localization formula must therefore declare one of:
+\[
+\begin{gathered}
+  \text{compact integration cycle},\qquad
+  \text{decay estimate at infinity},\\
+  \text{boundary condition cancelling the term},\qquad
+  \text{explicit residue prescription}.
+\end{gathered}
+\]
+In gauge-theoretic localization, noncompact Coulomb branches, reducible
+connections, small instantons, and singular monopole strata are precisely
+places where this boundary analysis enters.
+
+\begin{openproblem}[Infinite-dimensional BV localization]
+\label{op:infinite-dimensional-bv-localization}
+Give theorem-level localization statements for cohomological gauge theories
+from a regulated BV-BFV functional integral, including integration cycles,
+compactness or boundary estimates, zero modes, determinant lines, singular
+strata, and gluing compatibility.
+\end{openproblem}

@@ -1,0 +1,157 @@
+\chapter{Three-Dimensional Chern--Simons--Matter Theories}
+\label{ch:susy-three-dimensional-chern-simons-matter}
+
+\ConventionsMixed
+
+In three dimensions, supersymmetric gauge theories combine topological gauge
+terms, parity anomalies, monopole operators, and matter dynamics.  This chapter
+fixes the basic \(3D\) \(\mathcal N=2\) Chern--Simons--matter datum before
+later protected-sector and localization chapters use it.
+
+\section{Three-Dimensional Supersymmetry}
+
+Let \(\eta_{\mu\nu}=\operatorname{diag}(-,+,+)\).  A minimal Majorana spinor
+has two real components.  The \(\mathcal N=2\) algebra may be written with
+complex supercharges \(Q_\alpha,\bar Q_\alpha\):
+\[
+  \{Q_\alpha,\bar Q_\beta\}
+  =
+  2(\gamma^\mu)_{\alpha\beta}P_\mu
+  +2\ii\epsilon_{\alpha\beta}Z,
+\]
+where \(Z\) is a possible central charge.  Particle multiplets are
+representations of this Hilbert-space algebra.  Superfields are off-shell
+coordinate packages for local variables; the two notions are connected only
+after dynamics and quantization have been specified.
+
+\section{Chern--Simons Datum}
+
+Let \(G\) be compact and let \(P\to M_3\) be a principal \(G\)-bundle.  A
+Chern--Simons action is
+\[
+  S_{\mathrm{CS}}[A]
+  =
+  \frac{k}{4\pi}
+  \int_{M_3}\operatorname{Tr}
+  \left(A\wedge dA+\frac23A\wedge A\wedge A\right).
+\]
+The trace convention and the allowed levels \(k\) are tied to the lattice of
+large gauge transformations.  Gauge invariance of
+\(\exp(\ii S_{\mathrm{CS}})\) requires the change of \(S_{\mathrm{CS}}\) under
+a large gauge transformation to lie in \(2\pi\mathbb Z\).
+
+Varying the action gives
+\[
+  \delta S_{\mathrm{CS}}
+  =
+  \frac{k}{2\pi}\int_{M_3}\operatorname{Tr}(\delta A\wedge F_A)
+  +
+  \frac{k}{4\pi}\int_{\partial M_3}\operatorname{Tr}(A\wedge\delta A).
+\]
+On a closed manifold, the field equation of pure Chern--Simons theory is
+\[
+  F_A=0.
+\]
+On a manifold with boundary, a boundary condition or boundary degrees of
+freedom are part of the gauge-theory datum.
+
+\section{Supersymmetric Vector Multiplet}
+
+A \(3D\) \(\mathcal N=2\) vector multiplet contains
+\[
+  (A_\mu,\sigma,\lambda,\bar\lambda,D),
+\]
+where \(\sigma\) is a real adjoint scalar and \(D\) is an auxiliary field.
+The supersymmetric Chern--Simons action contains
+\[
+  S_{\mathrm{CS}}^{\mathcal N=2}
+  =
+  \frac{k}{4\pi}\int
+  \operatorname{Tr}
+  \left(
+    A\wedge dA+\frac23A^3
+    -\bar\lambda\lambda
+    +2D\sigma
+  \right),
+\]
+with the displayed signs defining the convention of this chapter.  The
+auxiliary equation couples \(D\) to matter moment maps and to \(\sigma\),
+thereby modifying the vacuum equations compared with pure Yang--Mills matter
+systems.
+
+\section{Matter And Moment Maps}
+
+Let chiral multiplets \(\Phi_i\) take values in a unitary representation
+\(R\) of \(G\).  Their scalar fields are \(\phi_i\).  With real mass
+parameters \(m_i\), the bosonic potential contains
+\[
+  \sum_i\left|(\sigma+m_i)\phi_i\right|^2
+  +
+  \frac12\left(\mu(\phi)+\frac{k}{2\pi}\sigma-\zeta\right)^2
+  +
+  |dW(\phi)|^2,
+\]
+in an abelian normalization where \(\mu\) is the matter moment map and
+\(\zeta\) is the FI coordinate.  Supersymmetric classical vacua solve
+\[
+  dW=0,\qquad
+  (\sigma+m_i)\phi_i=0,\qquad
+  \mu(\phi)+\frac{k}{2\pi}\sigma-\zeta=0,
+\]
+modulo gauge transformations.
+
+\section{Parity Anomaly}
+
+A massive three-dimensional Dirac fermion in representation \(R\) shifts the
+effective Chern--Simons level by
+\[
+  \Delta k=\frac12\,\operatorname{sign}(m)\,T(R),
+\]
+where
+\[
+  \operatorname{Tr}_R(t^at^b)=T(R)\delta^{ab}
+\]
+in the trace convention used for the gauge action.  Therefore a massless
+fermion coupled to a gauge field requires a choice of regulator that fixes the
+integer or half-integer effective level.  This choice is part of the
+definition of the continuum theory and of its time-reversal or parity
+properties.
+
+\section{Monopole Operators}
+
+Let \(G\) have maximal torus \(T\).  A monopole operator at the origin is
+defined by imposing a magnetic singularity on a small sphere:
+\[
+  \frac1{2\pi}\int_{S^2}F=m\in\operatorname{Hom}(U(1),T)/W_G .
+\]
+The local operator is gauge invariant only after its electric charges induced
+by Chern--Simons terms and fermion zero modes are accounted for.  In an
+abelian theory with level \(k\), Gauss law gives electric charge
+\[
+  q_{\mathrm{el}}=k\,m
+\]
+for a bare monopole of magnetic charge \(m\).  Gauge-invariant monopole
+operators may require dressing by charged matter fields.
+
+\section{Three-Dimensional Dynamics Ledger}
+
+A complete \(3D\) supersymmetric Chern--Simons--matter example must specify:
+\[
+\begin{gathered}
+  G,\quad k,\quad R,\quad W,\quad \zeta,\quad m_i,\\
+  \text{spin structure and framing data},\quad
+  \text{parity-anomaly regulator},\\
+  \text{monopole-operator dressing rules},\quad
+  \text{boundary and global-form choices}.
+\end{gathered}
+\]
+Duality proposals compare these full data, including contact terms and
+background Chern--Simons counterterms.
+
+\begin{openproblem}[Three-dimensional supersymmetric continuum schemes]
+\label{op:three-dimensional-susy-cs-matter-continuum}
+Construct \(3D\) supersymmetric Chern--Simons--matter theories with a
+regulator preserving the stated gauge and supersymmetry Ward identities,
+including parity-anomaly choices, monopole-operator definitions, boundary
+conditions, and contact-term coordinates.
+\end{openproblem}

@@ -1,0 +1,143 @@
+\chapter{Nonequilibrium Steady States And Open-System Limits}
+\label{ch:thermal-nonequilibrium-steady-states-open-systems}
+
+\ConventionsRealTime
+
+This chapter introduces nonequilibrium steady states and open-system limits as
+QFT objects.  The definitions are made through states, correlation functions,
+source protocols, and controlled scaling limits, rather than through
+thermodynamic intuition alone.
+
+\section{Steady-State Datum}
+
+Let \(\mathcal A\) be the observable algebra of a real-time QFT and let
+\(\tau_t\) be time evolution.  A steady state is a positive normalized
+functional
+\[
+  \omega_{\mathrm{ss}}:\mathcal A\to\C
+\]
+such that
+\[
+  \omega_{\mathrm{ss}}(\tau_t(A))=\omega_{\mathrm{ss}}(A)
+\]
+for all observables \(A\) in its domain.  A nonequilibrium steady state has
+nonzero currents or unequal reservoir parameters while remaining invariant
+under time translations.  Local stationarity means that time-translated local
+correlators are invariant as distributions.
+
+\section{Reservoir Construction}
+
+Consider a QFT on a line prepared at \(t=0\) by joining two half-systems with
+KMS states at \((\beta_L,\mu_L)\) and \((\beta_R,\mu_R)\).  A candidate
+steady state is the weak limit
+\[
+  \omega_{\mathrm{ss}}(A)
+  =
+  \lim_{t\to\infty}\omega_0(\tau_t(A))
+\]
+for local \(A\) near the junction.  Existence of the limit, independence of
+the microscopic joining protocol, and clustering are separate assertions.
+When conserved densities propagate ballistically, the steady state may be
+described by occupation functions depending on ray \(x/t\).  At \(x/t=0\) the
+state is the central nonequilibrium steady state.
+
+\section{Entropy Production}
+
+Let \(J_E\) be the energy current from left to right and \(J_Q\) a conserved
+charge current.  For reservoirs with inverse temperatures \(\beta_{L,R}\) and
+chemical potentials \(\mu_{L,R}\), the steady entropy production rate is
+\[
+  \dot S
+  =
+  (\beta_R-\beta_L)\omega_{\mathrm{ss}}(J_E)
+  -
+  (\beta_R\mu_R-\beta_L\mu_L)\omega_{\mathrm{ss}}(J_Q).
+\]
+This formula follows from the first law applied to the reservoirs: the right
+reservoir gains energy \(J_E\) and charge \(J_Q\), while the left reservoir
+loses the same amounts.  Positivity of \(\dot S\) is a dynamical property of
+the constructed state and its reservoirs.
+
+\section{Open-System Scaling Limit}
+
+Let a system algebra \(\mathcal A_S\) couple weakly to an environment
+\(\mathcal A_E\) by
+\[
+  H=H_S+H_E+\lambda\sum_a S_a\otimes E_a .
+\]
+Assume the environment is stationary and has rapidly decaying connected
+correlators.  In the weak-coupling scaling
+\[
+  \lambda\to0,\qquad t=\lambda^{-2}\tau,
+\]
+the reduced system state may converge to a Markovian semigroup
+\[
+  \rho_S(\tau)=\ee^{\tau\mathcal L}\rho_S(0).
+\]
+Complete positivity and trace preservation give the GKSL form
+\[
+  \mathcal L(\rho)
+  =
+  -\ii[H_{\mathrm{eff}},\rho]
+  +
+  \sum_\alpha
+  \left(
+    L_\alpha\rho L_\alpha^\dagger
+    -\frac12\{L_\alpha^\dagger L_\alpha,\rho\}
+  \right).
+\]
+The operators \(L_\alpha\) are determined by Fourier transforms of
+environment correlators at Bohr frequencies of \(H_S\).
+
+\section{Schwinger--Keldysh Influence Functional}
+
+In field theory the environment can be integrated out on a closed time path,
+producing an influence functional
+\[
+  \ee^{\ii S_{\mathrm{IF}}[\phi_+,\phi_-]}.
+\]
+Unitarity imposes
+\[
+  S_{\mathrm{IF}}[\phi,\phi]=0,
+\]
+and positivity of the reduced density matrix imposes constraints on the
+imaginary part of \(S_{\mathrm{IF}}\).  Expanding in
+\[
+  \phi_r=\frac12(\phi_++\phi_-),\qquad
+  \phi_a=\phi_+-\phi_-,
+\]
+the quadratic open-system action has the form
+\[
+  S_{\mathrm{eff}}
+  =
+  \int\phi_a D_R\phi_r
+  +
+  \frac{\ii}{2}\int\phi_a N\phi_a+\cdots,
+\]
+where \(D_R\) is a retarded kernel and \(N\) is a noise kernel.  KMS
+environments relate \(N\) to the anti-Hermitian part of \(D_R\).
+
+\section{Hydrodynamic Open Systems}
+
+If the system has conserved densities broken only by weak coupling to an
+environment, the hydrodynamic equations acquire relaxation and noise terms:
+\[
+  \partial_t n+\nabla\cdot j=-\gamma(n-n_{\mathrm{eq}})+\xi.
+\]
+The noise satisfies
+\[
+  \langle\xi(t,\mathbf x)\xi(0,\mathbf 0)\rangle
+  =
+  2\gamma\chi T\,\delta(t)\delta(\mathbf x)
+\]
+for a KMS bath with susceptibility \(\chi\), in the Markovian limit.  This
+relation follows from requiring the stationary solution of the Fokker-Planck
+equation to have the equilibrium Gaussian weight for \(n\).
+
+\begin{openproblem}[Continuum nonequilibrium states]
+\label{op:continuum-nonequilibrium-steady-states}
+Construct nonequilibrium steady states and open-system limits in interacting
+continuum QFT with local algebras, KMS reservoirs, real-time correlators,
+entropy production, hydrodynamic scaling limits, and complete-positivity
+constraints derived from the microscopic dynamics.
+\end{openproblem}

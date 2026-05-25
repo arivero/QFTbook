@@ -1,0 +1,135 @@
+\chapter{Duality Defects, Gauging, And Orbifold Data}
+\label{ch:global-duality-defects-gauging-orbifold-data}
+
+\ConventionsMixed
+
+Gauging a finite symmetry and placing duality defects are operations on QFT
+data.  This chapter treats them as manipulations of topological defects,
+background fields, and sums over sectors, with anomaly and boundary choices
+made explicit.
+
+\section{Finite Symmetry Backgrounds}
+
+Let \(G\) be a finite internal symmetry of a \(D\)-dimensional QFT
+\(\mathcal Q\).  A background \(G\)-field on spacetime \(M\) is a principal
+\(G\)-bundle
+\[
+  P\to M,
+\]
+or equivalently a Cech one-cocycle \(g_{ij}\) on a good cover, modulo
+coboundaries.  The partition function in the background is
+\[
+  Z_{\mathcal Q}[P].
+\]
+The anomaly-free gauged theory is defined by the finite sum
+\[
+  Z_{\mathcal Q/G}(M)
+  =
+  \frac1{|G|}
+  \sum_{[P]\in\operatorname{Bun}_G(M)}
+  \frac{Z_{\mathcal Q}[P]}{|\operatorname{Aut}(P)|/|G|},
+\]
+with the normalization chosen by the convention for the empty gauge field on
+connected \(M\).  Equivalent groupoid-sum conventions differ by invertible
+topological factors.
+
+\section{Dijkgraaf--Witten Twist}
+
+A class
+\[
+  \omega\in H^D(BG,U(1))
+\]
+defines an invertible topological action for the background \(P\).  The
+twisted gauging is
+\[
+  Z_{\mathcal Q/G,\omega}(M)
+  =
+  \sum_{[P]}\frac1{|\operatorname{Aut}(P)|}
+  Z_{\mathcal Q}[P]\,\ee^{\ii S_\omega(P)}.
+\]
+If \(\mathcal Q\) has anomaly \(\alpha\in H^{D+1}(BG,U(1))\), gauging \(G\)
+requires a trivialization of \(\alpha\) or a bulk theory whose boundary is
+\(\mathcal Q\).  A Dijkgraaf--Witten twist changes the gauged theory but does
+not by itself cancel a nontrivial anomaly one degree higher.
+
+\section{Gauging Interface}
+
+There is a codimension-one interface
+\[
+  \mathcal N_G:\mathcal Q\longrightarrow \mathcal Q/G
+\]
+that implements the sum over \(G\)-bundles on one side.  The reverse
+interface \(\mathcal N_G^\dagger\) satisfies the fusion relation
+\[
+  \mathcal N_G^\dagger\circ\mathcal N_G
+  =
+  \bigoplus_{g\in G}D_g,
+\]
+where \(D_g\) is the invertible symmetry defect of \(\mathcal Q\).  This
+follows by cutting spacetime along two nearby interfaces: the gauge field in
+the thin slab is flat, so its holonomy label is an element \(g\in G\), and
+each holonomy sector inserts \(D_g\).
+
+The opposite fusion,
+\[
+  \mathcal N_G\circ\mathcal N_G^\dagger,
+\]
+is an algebra object in the defect category of the gauged theory.  It
+contains the quantum symmetry defects acting on twisted sectors.
+
+\section{Orbifold Local Operators In Two Dimensions}
+
+For a two-dimensional QFT with finite symmetry \(G\), gauging produces local
+operators from sectors with monodromy
+\[
+  g\in G
+\]
+around the insertion.  If \(hgh^{-1}=g'\), the sectors labelled by \(g\) and
+\(g'\) are identified.  The local operator space of the gauged theory has the
+form
+\[
+  \mathcal V_{\mathcal Q/G}
+  =
+  \bigoplus_{[g]}
+  \mathcal V_g^{C_G(g)},
+\]
+where \(\mathcal V_g\) is the \(g\)-twisted local space and \(C_G(g)\) is the
+centralizer.  The operator product is defined by bringing together punctures
+with compatible flat \(G\)-bundles on the pair of pants.
+
+\section{Duality Defects}
+
+A duality defect is a topological defect \(D\) such that fusing it with its
+orientation reverse produces a sum of symmetry defects rather than the vacuum
+defect alone:
+\[
+  D^\dagger\otimes D\simeq \bigoplus_{g\in G}D_g.
+\]
+The defect is therefore noninvertible unless \(G\) is trivial.  Its action on
+local operators maps untwisted operators into the \(G\)-invariant part of
+twisted or gauged sectors, depending on which side of the interface the
+operator lies.
+
+\section{Gauge-Theory Duality Walls}
+
+In gauge theories, duality walls can act on line-operator lattices.  Let
+\(\Gamma\) be the electric-magnetic charge lattice with antisymmetric pairing
+\[
+  \langle\ ,\ \rangle:\Gamma\times\Gamma\to\mathbb Z.
+\]
+A duality wall induces an automorphism
+\[
+  \gamma:\Gamma\to\Gamma,\qquad
+  \langle\gamma x,\gamma y\rangle=\langle x,y\rangle .
+\]
+If the wall is topological, it maps genuine line operators to genuine line
+operators after global form and discrete theta data are transformed.  If
+additional degrees of freedom live on the wall, their anomaly inflow must
+cancel the mismatch between the two sides.
+
+\begin{openproblem}[Continuum gauging interfaces]
+\label{op:continuum-gauging-interfaces}
+Construct gauging interfaces and duality defects in interacting continuum QFTs
+from background-field sums, local operator sectors, defect junctions, anomaly
+trivializations, and reflection-positive state spaces.
+\end{openproblem}

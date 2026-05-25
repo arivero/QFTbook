@@ -269,6 +269,7 @@ Current compiled material:
 7. Mirror-Channel TBA And Finite-Size Effects
 8. Sine-Gordon, Massive Thirring, And Affine Toda Theories
 9. \(O(N)\), Gross--Neveu, And Integrable Sigma-Model Families
+10. Bridges To Nonintegrable Two-Dimensional QFT And CFT
 
 Further development targets:
 
@@ -308,6 +309,7 @@ Current compiled material:
 7. Four-Dimensional \(\mathcal N=2\) Gauge Dynamics And Seiberg-Witten Theory
 8. Moduli Spaces In Supersymmetric Quantum Field Theory
 9. Two-Dimensional Landau--Ginzburg, Sigma-Model, And Calabi--Yau Theories
+10. Three-Dimensional Chern--Simons--Matter Theories
 
 Further development targets:
 
@@ -393,6 +395,7 @@ Current compiled material:
 7. Twists Of Supersymmetric Theories
 8. Witten--Donaldson Theory And The Seiberg-Witten Comparison
 9. Boundaries, Defects, And Categories
+10. BV Integration And Finite-Dimensional Localization
 
 Further development targets:
 
@@ -441,6 +444,7 @@ Current compiled material:
 7. Phases Of Gauge Theories
 8. Boundaries And Defects
 9. Categorical Symmetry And Defect Fusion
+10. Duality Defects, Gauging, And Orbifold Data
 
 Further development targets:
 
@@ -453,6 +457,7 @@ Further development targets:
 7. Phases Of Gauge Theories
 8. Boundaries And Defects
 9. Categorical Symmetry And Defect Fusion
+10. Duality Defects, Gauging, And Orbifold Data
 
 ## Volume X: Thermal Quantum Field Theory, Hydrodynamics, And Nonequilibrium Dynamics
 
@@ -473,6 +478,7 @@ Current compiled material:
 7. Thermal Gauge Theory And Screening
 8. Kinetic Theory As A Controlled Limit
 9. Anomalous And Topological Transport
+10. Nonequilibrium Steady States And Open-System Limits
 
 Further development targets:
 
@@ -502,6 +508,7 @@ Current compiled material:
 7. Rigorous Renormalization Group
 8. Relation Between Lattice And Continuum Local QFT
 9. Stochastic Quantization And Singular SPDE
+10. Hamiltonian Truncation, DLCQ, And Benchmark Protocols
 
 Further development targets:
 
@@ -533,6 +540,7 @@ Current compiled material:
 7. Eta Invariants And Global Anomalies
 8. Cosmological Spacetimes And Particle Creation
 9. Microlocal Spectrum Condition And Hadamard Geometry
+10. Perturbative Algebraic QFT On Curved Backgrounds
 
 Further development targets:
 
@@ -546,6 +554,7 @@ Further development targets:
 8. Eta Invariants And Global Anomalies
 9. Cosmological Spacetimes And Particle Creation
 10. Microlocal Spectrum Condition And Hadamard Geometry
+11. Perturbative Algebraic QFT On Curved Backgrounds
 
 ## Inclusion Rule
 

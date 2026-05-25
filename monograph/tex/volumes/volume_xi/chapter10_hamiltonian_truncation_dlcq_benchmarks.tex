@@ -1,0 +1,139 @@
+\chapter{Hamiltonian Truncation, DLCQ, And Benchmark Protocols}
+\label{ch:constructive-hamiltonian-truncation-dlcq-benchmarks}
+
+\ConventionsLorentzian
+
+Hamiltonian numerical methods are regulator frameworks for QFT.  This
+chapter formulates Hamiltonian truncation, light-front discretization, and
+benchmark scripts as controlled approximations with explicitly declared
+Hilbert spaces, cutoffs, counterterms, and convergence tests.
+
+\section{Projected Hamiltonian Datum}
+
+Let \(H\) be a self-adjoint Hamiltonian on a Hilbert space \(\Hilb\), bounded
+below.  Choose finite-dimensional subspaces
+\[
+  \Hilb_\Lambda\subset\Hilb,\qquad P_\Lambda:\Hilb\to\Hilb_\Lambda,
+\]
+with \(P_\Lambda\to I\) strongly.  The projected Hamiltonian is
+\[
+  H_\Lambda=P_\Lambda H P_\Lambda
+  \]
+on \(\Hilb_\Lambda\).  If \(H\) is defined by a QFT regulator, \(H_\Lambda\)
+must be supplemented by local counterterms:
+\[
+  H_\Lambda^{\mathrm{ren}}
+  =
+  P_\Lambda H P_\Lambda
+  +
+  \sum_a c_a(\Lambda)P_\Lambda\mathcal O_aP_\Lambda.
+\]
+The pair \((\Hilb_\Lambda,H_\Lambda^{\mathrm{ren}})\) is the numerical
+regulator datum.
+
+\section{Rayleigh--Ritz Bound}
+
+Assume \(H\) is self-adjoint and has discrete eigenvalues
+\[
+  E_0\le E_1\le\cdots
+\]
+below an essential spectral threshold.  The \(n\)-th variational eigenvalue
+in a finite subspace is
+\[
+  E_n(\Lambda)
+  =
+  \min_{\dim W=n+1,\ W\subset\Hilb_\Lambda}
+  \max_{\psi\in W,\ \|\psi\|=1}\langle\psi,H\psi\rangle.
+\]
+Since the minimization is over fewer subspaces than in the full Hilbert
+space,
+\[
+  E_n(\Lambda)\ge E_n.
+\]
+If \(\Hilb_\Lambda\) is nested and dense in the form domain, these variational
+eigenvalues decrease to \(E_n\).  In QFT, counterterms and continuum limits
+can destroy this monotonicity unless the comparison is made at fixed
+regulated Hamiltonian.
+
+\section{Truncated Conformal Space}
+
+For a two-dimensional QFT built as a relevant deformation of a CFT, choose the
+CFT Hilbert space on a circle and keep states satisfying
+\[
+  L_0+\bar L_0-\frac{c}{12}\le E_{\mathrm{cut}}\,\frac{L}{2\pi}.
+\]
+The Hamiltonian matrix elements are
+\[
+  \langle i|H|j\rangle
+  =
+  \frac{2\pi}{L}
+  \left(\Delta_i-\frac{c}{12}\right)\delta_{ij}
+  +
+  \sum_a\lambda_a
+  \left(\frac{L}{2\pi}\right)^{1-\Delta_a}
+  \langle i|\mathcal O_a(1)|j\rangle.
+\]
+High-energy states generate cutoff dependence.  The local Hamiltonian
+counterterms are determined by matching low-energy observables as
+\(E_{\mathrm{cut}}\) is varied.
+
+\section{DLCQ Datum}
+
+Light-front coordinates are
+\[
+  x^\pm=\frac1{\sqrt2}(x^0\pm x^1).
+\]
+DLCQ compactifies
+\[
+  x^-\sim x^-+2\pi R
+\]
+so that
+\[
+  p^+=\frac{n}{R},\qquad n\in\mathbb Z_{\ge0}.
+\]
+The total longitudinal momentum is
+\[
+  P^+=\frac{K}{R},
+\]
+where \(K\) is the harmonic resolution.  The finite DLCQ Hilbert space at
+fixed \(K\) consists of partitions of \(K\) among partons, with transverse and
+internal cutoffs added as needed.  Zero modes with \(n=0\) are constrained
+variables or additional degrees of freedom depending on the theory; their
+treatment is part of the regulator.
+
+\section{Light-Front Hamiltonian}
+
+The invariant mass operator is
+\[
+  M^2=2P^+P^- -P_\perp^2.
+\]
+At fixed \(P^+\) and \(P_\perp\), diagonalizing \(P^-\) is equivalent to
+diagonalizing \(M^2\).  Gauge theories require solving constraint equations
+for nondynamical fields and preserving residual gauge constraints.  A
+light-front truncation without the constraint algebra and zero-mode sector is
+not a definition of the gauge theory.
+
+\section{Benchmark Protocol}
+
+A benchmark for any truncation method should specify:
+\[
+\begin{gathered}
+  \text{regulated Hilbert space},\qquad
+  \text{operator basis},\qquad
+  \text{counterterm coordinates},\\
+  \text{observables used for matching},\qquad
+  \text{extrapolation model},\qquad
+  \text{independent checks}.
+\end{gathered}
+\]
+Independent checks include Ward identities, known finite-volume limits,
+reflection positivity where applicable, spectral sum rules, and comparison
+with Euclidean lattice or exact integrable data in overlapping regimes.
+
+\begin{openproblem}[Certified QFT truncation]
+\label{op:certified-qft-hamiltonian-truncation}
+Develop Hamiltonian truncation and DLCQ schemes with computable error bounds
+for interacting QFT observables, including counterterm determination,
+constraint preservation, zero-mode treatment, continuum extrapolation, and
+public benchmark scripts.
+\end{openproblem}

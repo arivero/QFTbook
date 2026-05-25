@@ -1,0 +1,150 @@
+\chapter{Perturbative Algebraic QFT On Curved Backgrounds}
+\label{ch:curved-perturbative-algebraic-qft}
+
+\ConventionsMixed
+
+This chapter develops perturbative algebraic QFT on curved backgrounds as a
+local construction of interacting fields from Hadamard two-point functions,
+microcausal functionals, time-ordered products, and causal factorization.
+The framework is perturbative, but its locality and covariance conditions are
+nonperturbative constraints on the allowed coefficients.
+
+\section{Microcausal Functionals}
+
+Let \(M\) be globally hyperbolic and let \(\mathcal E=C^\infty(M)\) be the
+space of scalar field configurations.  A functional \(F:\mathcal E\to\C\) is
+microcausal when its functional derivatives
+\[
+  F^{(n)}(\phi)\in\mathcal E'(M^n)
+\]
+have wavefront sets avoiding products of closed future or past light cones:
+\[
+  \operatorname{WF}(F^{(n)}(\phi))
+  \cap
+  \left(\overline V_+^{\,n}\cup\overline V_-^{\,n}\right)
+  =
+  \varnothing .
+\]
+This condition makes the contractions with Hadamard distributions defined by
+the wavefront-set product criterion.
+
+\section{Star Product}
+
+Choose a Hadamard two-point function \(H\).  The star product of microcausal
+functionals is
+\[
+  F\star_H G
+  =
+  \sum_{n=0}^{\infty}
+  \frac{\hbar^n}{n!}
+  \left\langle
+    F^{(n)},H^{\otimes n}G^{(n)}
+  \right\rangle .
+\]
+For polynomial functionals the sum is finite.  Associativity follows from the
+fact that the bidifferential contraction operator
+\[
+  \Gamma_H=\left\langle H,\frac{\delta}{\delta\phi}\otimes
+  \frac{\delta}{\delta\phi}\right\rangle
+\]
+has commuting copies on tensor products, so
+\[
+  \exp(\hbar\Gamma_H)
+\]
+defines an associative deformation of pointwise multiplication.
+
+\section{Change Of Hadamard Function}
+
+If \(H'\) is another Hadamard two-point function, then
+\[
+  w=H'-H
+\]
+is smooth.  Define
+\[
+  \alpha_w
+  =
+  \exp\!\left(
+    \frac{\hbar}{2}
+    \left\langle w,\frac{\delta^2}{\delta\phi^2}\right\rangle
+  \right).
+\]
+Then
+\[
+  \alpha_w(F\star_H G)=\alpha_w(F)\star_{H'}\alpha_w(G).
+\]
+Thus the abstract algebra is independent of the particular Hadamard
+parametrix up to a canonical isomorphism determined by the smooth difference.
+
+\section{Time-Ordered Products}
+
+Let \(T_n\) assign distributions on \(M^n\) to \(n\) local functionals.  Away
+from coincident diagonals, \(T_n\) is determined by causal ordering and the
+Feynman propagator.  The construction problem is to extend \(T_n\) to the
+diagonals while preserving:
+\[
+\begin{gathered}
+  \text{local covariance},\qquad
+  \text{causal factorization},\\
+  \text{field independence},\\
+  \text{scaling degree bounds},\qquad
+  \text{unitarity and Ward identities}.
+\end{gathered}
+\]
+The extension freedom is a finite sum of local curvature and coupling
+polynomials multiplying derivatives of delta distributions on diagonals.
+
+\section{Causal Factorization}
+
+If the supports of \(F_1,\ldots,F_k\) lie nowhere in the past of the supports
+of \(F_{k+1},\ldots,F_n\), causal factorization states
+\[
+  T_n(F_1,\ldots,F_n)
+  =
+  T_k(F_1,\ldots,F_k)\star
+  T_{n-k}(F_{k+1},\ldots,F_n).
+\]
+This identity determines \(T_n\) outside the total diagonal from lower orders.
+Renormalization is precisely the choice of extension to the total and partial
+diagonals compatible with the listed constraints.
+
+\section{Interacting Fields}
+
+Let \(V\) be an interaction functional with compact time support.  The
+relative S-matrix is
+\[
+  S_V(F)=S(V)^{-1}\star S(V+F),
+\]
+where
+\[
+  S(F)=T\exp\!\left(\frac{\ii}{\hbar}F\right).
+\]
+The interacting field associated to a local functional \(F\) is the
+Bogoliubov derivative
+\[
+  R_V(F)
+  =
+  \left.\frac{\hbar}{\ii}\frac{d}{d\lambda}
+  S_V(\lambda F)\right|_{\lambda=0}.
+\]
+Changing the time cutoff of \(V\) outside the causal domain of \(F\) gives
+isomorphic interacting algebras by causal factorization.
+
+\section{Renormalization Group}
+
+Two choices of time-ordered products \(T\) and \(\widetilde T\) are related
+by maps \(Z\) on local functionals:
+\[
+  \widetilde S(F)=S(Z(F)).
+\]
+The map \(Z\) is local, begins with \(Z(F)=F+O(F^2)\), preserves the constant
+term, and has coefficients supported on coincident points.  In curved
+backgrounds these coefficients include curvature terms.  This is the
+perturbative algebraic form of local counterterm freedom.
+
+\begin{openproblem}[Nonperturbative curved-background comparison]
+\label{op:nonperturbative-paqft-comparison}
+Relate perturbative algebraic QFT on curved backgrounds to nonperturbative
+constructions by comparing local algebras, Hadamard states, stress tensors,
+renormalized composite fields, anomaly terms, and scaling limits in examples
+where both sides are available.
+\end{openproblem}

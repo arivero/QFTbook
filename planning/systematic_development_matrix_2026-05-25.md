@@ -234,6 +234,38 @@ and microlocal curved-background analysis:
   wavefront sets, Hadamard parametrices, propagation of singularities, Wick
   products, and time-ordered extension freedom.
 
+## Current Tenth-Chapter Pass
+
+The tenth-chapter pass adds integrability-breaking bridges, lower-dimensional
+supersymmetric gauge dynamics, finite-dimensional BV localization, duality
+and gauging operations, nonequilibrium states, Hamiltonian numerical
+regulators, and perturbative algebraic QFT on curved backgrounds:
+
+- Volume VI: bridges to nonintegrable two-dimensional QFT and CFT through
+  regulated Hamiltonian deformations, broken higher-charge conservation,
+  form-factor perturbation, finite-volume widths, and truncated conformal
+  space.
+- Volume VII: three-dimensional supersymmetric Chern--Simons--matter theories
+  through \(3D\) \(\mathcal N=2\) algebras, level quantization, vector
+  multiplets, matter moment maps, parity anomaly, and monopole operators.
+- Volume VIII: BV integration and finite-dimensional localization through odd
+  symplectic data, Lagrangian gauge fixing, BV Laplacian identities,
+  \(Q\)-exact deformation invariance, one-loop normal forms, and boundary
+  terms.
+- Volume IX: duality defects, gauging, and orbifold data through finite
+  background fields, Dijkgraaf--Witten twists, gauging interfaces, twisted
+  sectors, and charge-lattice duality walls.
+- Volume X: nonequilibrium steady states and open-system limits through
+  invariant positive functionals, reservoir limits, entropy production,
+  weak-coupling Markovian limits, influence functionals, and hydrodynamic
+  relaxation.
+- Volume XI: Hamiltonian truncation, DLCQ, and benchmark protocols through
+  projected Hamiltonians, Rayleigh--Ritz bounds, TCSA, light-front
+  discretization, zero-mode obligations, and certified benchmark ledgers.
+- Volume XII: perturbative algebraic QFT on curved backgrounds through
+  microcausal functionals, Hadamard star products, time-ordered extensions,
+  causal factorization, interacting fields, and local renormalization maps.
+
 ## Next Frontier After This Pass
 
 - Add proof appendices where current chapters state theorem boundaries.
