@@ -71,6 +71,11 @@ Current checks:
   anomaly-induced mass \(m_{\rm Sch}^2=e^2/\pi\), the screened static
   potential, and the periodicity of the massive-model string tension for
   integer probe charge.
+- `trace_anomaly_classification_checks.py`: finite checks for the
+  type-A/type-B trace-anomaly classification, including the parity-even bulk
+  cohomology counts in \(D=2,4,6\), the engineering weights of the listed
+  type-B densities, and the \(-12\) coefficient showing that the four-dimensional
+  \(\nabla^2R\) term is shifted by an \(R^2\) counterterm.
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
   algebraic checks, adapted from the stringbook spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.

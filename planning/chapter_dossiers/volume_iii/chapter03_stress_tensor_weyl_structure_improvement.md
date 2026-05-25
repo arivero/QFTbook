@@ -33,6 +33,9 @@ The chapter establishes:
 - the trace-anomaly density \(\mathcal A[g]\), its sign convention relative to
   the metric-source stress tensor, and the fact that functional derivatives of
   \(\mathcal A[g]\) give contact terms in traced stress-tensor Ward identities;
+- the Wess--Zumino consistency condition for Weyl anomalies and the
+  parity-even local cohomological classification into type-A Euler-density
+  terms, type-B Weyl-invariant densities, and type-D counterterm variations;
 - the two-dimensional normalization
   \(\mathcal A_2[g]=-c_{2d}R/(24\pi)\), tied to
   \(\langle T(z)T(0)\rangle=c_{2d}/(2z^4)\);
@@ -41,6 +44,11 @@ The chapter establishes:
   \(\mathcal A_4=(16\pi^2)^{-1}(c_{\rm W}W^2-a_{\rm W}E_4+
   b_{\rm D}\nabla^2R)\), with \(b_{\rm D}\) identified as scheme-dependent
   and \(a_{\rm W},c_{\rm W}\) as fixed-point data;
+- the six-dimensional parity-even bulk classification
+  \(\mathcal A_6=(4\pi)^{-3}(-a_6E_6+c_1I_1+c_2I_2+c_3I_3+
+  \nabla_\mu J^\mu)\), where \(I_1,I_2\) are the independent cubic Weyl
+  contractions and \(I_3\) is the two-Weyl-tensor/two-derivative class modulo
+  type-D terms;
 - the relation \(C_T=40c_{\rm W}/\pi^4\) in the chapter's stress-tensor
   two-point normalization;
 - the link between the three separated four-dimensional \(TTT\) structures of
@@ -71,6 +79,9 @@ The chapter establishes:
    basis for parity-even \(TTT\) data; the anomaly map in that basis uses
    Dirac-fermion normalization, so a Weyl fermion contributes one half of the
    fermion entry.
+8. The type-A/type-B/type-D classification is local to the parity-even bulk
+   metric sector on closed manifolds; boundary, defect, global, and
+   parity-odd orientation-dependent anomalies require separate data.
 
 ## Figures
 
@@ -89,3 +100,8 @@ The chapter establishes:
 - 2026-05-24 issue #423 pass: tied the derivative contact term in the local
   stress-tensor Ward identity to the Chapter 6 primary spin contact operator,
   making clear that the scalar Ward identity is only the spinless special case.
+- 2026-05-25 issue #473 pass: split the anomaly-density/contact-Ward material
+  from the conformal-anomaly classification, added the Wess--Zumino consistency
+  condition, type-A/type-B/type-D definitions, and explicit \(D=2,4,6\)
+  parity-even bulk lists, with a calculation check for the finite
+  dimension-counting and \(R^2\)-counterterm arithmetic.
