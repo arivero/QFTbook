@@ -183,6 +183,14 @@ The chapter must define the following objects before using them:
   \(J_E=-J_L^{\rm W}\) sign map for the chapter's Euclidean source convention,
   and the instruction that Lorentz/spin/time-derivative indices require their
   own Wick-rotation matrices.
+- 2026-05-25 issue #442 pass: moved the Wick-rotation sign chain to the first
+  Lorentzian source definition as well:
+  \(iS_L+i\langle J_L,\phi\rangle_L\mapsto
+  -S_E+\langle J_L^{\rm W},\phi_E\rangle_E
+  =-S_E-\langle J_E,\phi_E\rangle_E\) with
+  \(J_E=-J_L^{\rm W}\).  This prevents the opening \(+\ii\langle J,\phi\rangle\)
+  convention from appearing inconsistent with the later Euclidean
+  positive-measure convention.
 - 2026-05-24 issue #240 pass: added an explicit distinction between the local
   differentiable/formal 1PI Legendre transform used in perturbation theory
   and the convex Legendre--Fenchel transform that requires a positive finite

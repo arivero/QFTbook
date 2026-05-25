@@ -200,3 +200,10 @@ The chapter establishes:
   and the metric variation
   \(\delta_g S_\ast=-\frac12\int\sqrt g\,T^{\mu\nu}\delta g_{\mu\nu}\).
   This aligns the opening CFT source chart with the stress-tensor chapter.
+- 2026-05-25 issue #442 pass: reconciled the CFT plus-source Euclidean
+  coordinate with the Volume II positive-measure convention and the Volume I
+  lower-half-plane Wick-rotation convention.  In this chapter
+  \(J^A=J_L^{{\rm W},A}\) for scalar insertions in the Lorentzian
+  \(+\ii\langle J_L,\mathcal O\rangle\) convention, while
+  \(J^A=-J_E^A\) relative to a Euclidean source written with
+  \(-\langle J_E,\mathcal O\rangle\) in the exponent.

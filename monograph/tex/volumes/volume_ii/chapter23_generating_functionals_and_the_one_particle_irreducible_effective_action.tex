@@ -83,6 +83,30 @@ source functional is
     +\ii\langle J,\phi\rangle
   \right\}.
 \]
+The sign in the Lorentzian source exponent must not be compared directly with
+a Euclidean positive-measure convention until the source coordinate has been
+continued.  With the lower-half-plane convention of
+Chapter~\ref{ch:lorentzian-green-functions}, \(x^0=-\ii\tau\) and
+\(\dd x^0=-\ii\dd\tau\), the formal chain for scalar insertions is
+\[
+  \ii S_L[\phi]+\ii\langle J_L,\phi\rangle_L
+  \longmapsto
+  -S_E[\phi_E]
+  +\langle J_L^{\rm W},\phi_E\rangle_E,
+  \qquad
+  J_L^{\rm W}(\tau,\vec x):=J_L(-\ii\tau,\vec x).
+\]
+Thus a Euclidean source functional written with a plus source term uses
+\(J_E^{+}=J_L^{\rm W}\), while the positive-measure/free-energy convention
+used later in this chapter,
+\[
+  Z_E[J_E]=\int[D\phi]\,
+  \exp\{-S_E[\phi]-\langle J_E,\phi\rangle_E\},
+\]
+uses \(J_E=-J_L^{\rm W}\).  This is a change of source coordinate, not a new
+Green function.  The derivative normalizations and the corresponding
+connected-log conventions are collected in
+Definition~\ref{def:lorentzian-euclidean-source-bridge}.
 With the Fourier convention
 \[
   \phi(x)=\int\frac{\dd^Dk}{(2\pi)^D}\,
