@@ -393,7 +393,7 @@ a path \(\gamma\) from \(x\) to spatial infinity gives the formal dressing
   \Psi_{q,\gamma}(x)
   =
   \psi_q(x)\,
-  \exp\!\left\{-\ii q\int_\gamma A\right\}.
+  \exp\!\left\{\ii q\int_\gamma A\right\}.
   \label{eq:charged-wilson-line-dressed-field}
 \]
 For gauge functions with \(\alpha(\infty)=0\), the exponential transforms by
@@ -437,6 +437,284 @@ dressing.  Different dressing geometries define different charged operators;
 showing that a physical on-shell answer is independent of the unobserved
 geometric choices is part of the reduction theorem, not an assumption inside
 the scalar LSZ formula.
+
+\subsection{Wilson-Line Covariance and Boundary Charge}
+
+The sign and orientation in
+\eqref{eq:charged-wilson-line-dressed-field} are fixed by gauge covariance.
+Let \(\gamma_{x,\infty}:[0,\infty)\to M\) be a regulated curve with
+\(\gamma(0)=x\) and endpoint tending to spatial infinity.  With
+\[
+  A\mapsto A+\dd\alpha,\qquad
+  \psi_q(x)\mapsto \ee^{\ii q\alpha(x)}\psi_q(x),
+\]
+the abelian Wilson factor
+\[
+  W_{q,\gamma}(x)
+  =
+  \exp\!\left\{\ii q\int_{\gamma_{x,\infty}} A\right\}
+\]
+transforms as
+\[
+  W_{q,\gamma}(x)
+  \longmapsto
+  \ee^{\ii q(\alpha(\infty)-\alpha(x))}W_{q,\gamma}(x).
+\]
+Therefore
+\begin{equation}
+  \Psi_{q,\gamma}(x)=\psi_q(x)W_{q,\gamma}(x)
+  \longmapsto
+  \ee^{\ii q\alpha(\infty)}\Psi_{q,\gamma}(x).
+  \label{eq:charged-wilson-line-boundary-transformation}
+\end{equation}
+Equation~\eqref{eq:charged-wilson-line-boundary-transformation} is the
+precise sense in which the operator is invariant under gauge transformations
+trivial at infinity and carries charge \(q\) under the boundary gauge
+transformation.  The boundary phase is not a gauge redundancy; it is the
+global charge action in the charged sector.
+
+For a nonabelian gauge field \(A=A_\mu^a t^a_R\dd x^\mu\) and a matter field
+\(\psi_R(x)\) in representation \(R\), choose the parallel transporter
+\[
+  U_R(\infty,x;\gamma)
+  =
+  P\exp\!\left\{\ii\int_{\gamma_{x,\infty}} A_\mu^a t^a_R\,\dd x^\mu\right\}.
+\]
+Under a gauge transformation \(g\),
+\[
+  U_R(\infty,x;\gamma)
+  \longmapsto
+  g(\infty)U_R(\infty,x;\gamma)g(x)^{-1}.
+\]
+Thus \(U_R(\infty,x;\gamma)\psi_R(x)\) transforms only by \(g(\infty)\).  In
+a sector where the boundary gauge group is treated as a global symmetry, this
+is a charged operator; in a confining theory with no colored asymptotic
+sectors, it is a noncompact string-like excitation rather than an external
+particle creator.  This distinction is dynamical and cannot be read off from
+the formal gauge covariance alone.
+
+\subsection{The Missing Haag--Ruelle Estimate}
+
+Ordinary Haag--Ruelle theory uses two facts at large time: the one-particle
+part of \(B_t(h)\vac\) is time independent, and commutators of creators with
+disjoint velocity supports are rapidly decreasing because the creators are
+almost local.  A Wilson-line charged creator has noncompact localization, so
+the second fact must be replaced rather than reused.
+
+A charged dressing class \(\mathcal D_{\rm dress}\) suitable for a
+Haag--Ruelle-type
+construction would have to provide, for each charged momentum packet \(h\),
+operators \(\Psi_{\Gamma,t}(h)\) with dressing datum
+\(\Gamma=(q,\gamma,\text{asymptotic flux})\) such that:
+\begin{enumerate}
+\item the vectors \(\Psi_{\Gamma,t}(h)\vac\) have a controlled one-particle
+or threshold spectral component with the desired charge and velocity support;
+\item the commutator of two velocity-separated dressed creators has an
+explicit large-time form
+\[
+  [\Psi_{\Gamma_i,t}(h_i),\Psi_{\Gamma_j,t}(h_j)]
+  =
+  \ii\,\Theta_{ij}(t)\,
+  \Psi_{\Gamma_j,t}(h_j)\Psi_{\Gamma_i,t}(h_i)
+  +R_{ij}(t),
+  \qquad
+  \int^\infty \|R_{ij}(t)\|\,\dd t<\infty ,
+  \label{eq:dressed-hr-commutator-template}
+\]
+or a mathematically equivalent Dollard/Faddeev--Kulish modification of the
+large-time dynamics;
+\item the phase \(\Theta_{ij}(t)\), when present, is determined by the
+asymptotic flux data and is included in the comparison dynamics, not left as
+an error term;
+\item changes of dressing that preserve the asymptotic flux act as changes of
+interpolating coordinates, whereas changes of asymptotic flux change the
+charged superselection sector.
+\end{enumerate}
+Condition~\eqref{eq:dressed-hr-commutator-template} is deliberately written
+as a requirement, not as a theorem.  It is the point at which the proof of
+ordinary Haag--Ruelle theory uses almost locality, and it is the point that a
+charged-sector replacement must supply.  If the gauge field is screened or
+massive, the long-range phase may be absent and ordinary massive scattering
+estimates can be recovered for gauge-invariant composite charged operators.
+For an unscreened Gauss-law charge, the flux tail is part of the asymptotic
+datum.
+
+\subsection{Finite-Regulator Dressed LSZ}
+
+There is nevertheless a precise finite-regulator statement.  It is not the
+full massless charged scattering theorem; it is the part of the desired theory
+that follows from the usual LSZ argument once a dressed charged creator and an
+isolated charged shell have been supplied.
+
+\begin{theorem}[Finite-regulator dressed LSZ]
+\label{thm:finite-regulator-dressed-charged-lsz}
+Fix a gauge theory with a regulator or screening deformation for which:
+\begin{enumerate}
+\item the physical Hilbert space contains an isolated massive charged
+one-particle shell \(\Sigma_m^+\) in a charged sector;
+\item for each external species there is a translation-covariant
+gauge-invariant dressed operator \(\Psi_a(x)\) of the form
+\eqref{eq:charged-wilson-line-dressed-field}, or a Coulombic variant, whose
+smearing is defined on a common dense domain;
+\item the dressed two-point distribution has, in a neighborhood of
+\(\Sigma_m^+\), the pole decomposition
+\[
+  \widehat G_{ab}(p)
+  =
+  \int \dd^D x\,\ee^{\ii p\cdot x}
+  \langle\vac|T\{\Psi_a(x)\Psi_b^\dagger(0)\}|\vac\rangle
+  =
+  \frac{\ii Z_{ab}}{p^2+m^2-\ii0}
+  +\widehat G^{\rm reg}_{ab}(p),
+  \label{eq:dressed-two-point-pole}
+\]
+where \(Z=(Z_{ab})\) is a positive matrix on the one-particle multiplicity
+space and \(\widehat G^{\rm reg}\) is less singular at the shell;
+\item the large-time wave operators built from these dressed creators exist,
+and time-ordered dressed correlators have the usual boundary-value and
+wave-packet regularity needed for the LSZ integration by parts.
+\end{enumerate}
+Let \(Z^{-1/2}\) be the positive inverse square root on
+\(\operatorname{Ran}Z\).  Then the simultaneous external residue of the dressed
+time-ordered \((m+n)\)-point function equals the matrix element of the
+scattering operator between the dressed asymptotic charged states:
+\[
+\begin{aligned}
+&\prod_{r=1}^m
+  \bigl[(Z^{-1/2})_{a'_r b'_r}(p'_r{}^2+m_r^2)\bigr]
+ \prod_{s=1}^n
+  \bigl[(p_s^2+m_s^2)(Z^{-1/2})_{b_s a_s}\bigr]
+  \,\widehat G^{\,b'_1\cdots b'_m}{}_{b_1\cdots b_n}
+     (p'_1,\ldots;p_1,\ldots)
+\\
+&\qquad\longrightarrow
+  \langle
+    p'_1,a'_1;\ldots;p'_m,a'_m,{\rm out}
+  |S|
+    p_1,a_1;\ldots;p_n,a_n,{\rm in}
+  \rangle_{\rm conn},
+  \label{eq:finite-regulator-dressed-lsz-formula}
+\end{aligned}
+\]
+after wave-packet smearing and removal of the total momentum-conservation
+delta distribution, with the same connected/disconnected convention as in the
+ordinary LSZ chapter.
+\end{theorem}
+
+\begin{proof}
+The proof is the LSZ proof with \(\Psi_a\) as the interpolating operator.
+The pole decomposition \eqref{eq:dressed-two-point-pole} identifies the
+one-particle projection:
+\[
+  P_1\Psi_a(f)\vac
+  =
+  \sum_b (Z^{1/2})_a{}^b\,|f,b\rangle
+\]
+in the mass-shell spectral representation, after restricting the Fourier
+support of \(f\) to the isolating neighborhood.  Multiplication by
+\((p^2+m^2)\) in momentum space is the Fourier transform of applying the
+Klein--Gordon operator to the external coordinate.  In position space,
+integrating this differential operator against a positive-frequency
+wave-packet converts the time-ordered derivative into boundary terms at
+large positive or negative times; interior terms either cancel against the
+equation of motion away from contact supports or are regular at the external
+mass shell and vanish after multiplication by \((p^2+m^2)\).  The assumed
+large-time limits identify the boundary terms with the incoming and outgoing
+dressed wave operators.  Finally \(Z^{-1/2}\) changes from the dressed
+interpolating coordinates to orthonormal one-particle coordinates.  This gives
+\eqref{eq:finite-regulator-dressed-lsz-formula}.  Locality of bounded-region
+observables is not used to turn \(\Psi_a\) into an ordinary local observable;
+all nonlocal dressing information is carried by the hypotheses on the dressed
+wave operators and correlators.
+\end{proof}
+
+The theorem is useful because it isolates what is known from what remains
+open.  At finite infrared regulator or in a screened phase, the formal
+dressed-correlator residue has a precise Hilbert-space meaning if the listed
+hypotheses hold.  Removing the regulator in four-dimensional QED is a
+different operation: the pole in \eqref{eq:dressed-two-point-pole} is expected
+to be replaced by charged threshold behavior, and the asymptotic Hilbert space
+must remember the angular electric-flux sector.
+
+\subsection{Dressing Dependence as Coordinate Dependence}
+
+Path dependence has two different meanings.  A deformation that changes the
+field at infinity changes the charged sector.  A compact deformation, or a
+replacement of one short-distance dressing by another with the same
+asymptotic flux, changes the interpolating coordinate used to reach the same
+charged state.
+
+\begin{proposition}[Compact dressing changes and LSZ coordinates]
+\label{prop:compact-dressing-change-lsz-coordinate}
+In the finite-regulator setting of
+Theorem~\ref{thm:finite-regulator-dressed-charged-lsz}, let
+\(\Psi_a\) and \(\Psi'_a\) be two families of dressed charged interpolating
+operators with the same charge, spin, mass, and asymptotic flux.  Suppose
+their one-particle matrix elements are related by an invertible matrix \(M\),
+\[
+  P_1\Psi'_a(f)\vac
+  =
+  M_a{}^b\,P_1\Psi_b(f)\vac
+  +\text{terms orthogonal to }\Hilb_1
+\]
+for all wave packets \(f\) supported near the shell.  Then the LSZ residues
+computed with \(\Psi'\) give the same scattering matrix after the external
+normalization matrix \(Z'^{-1/2}\) is used.
+\end{proposition}
+
+\begin{proof}
+The singular part of the two-point function transforms as
+\[
+  Z' = M Z M^\dagger .
+\]
+The amputated external coordinates obtained from \(\Psi'\) are therefore
+related to those obtained from \(\Psi\) by the unitary polar part of
+\(MZ^{1/2}\) acting inside the one-particle multiplicity space.  LSZ computes
+matrix elements between orthonormal one-particle vectors, not between the raw
+operator labels.  After multiplying by \(Z'^{-1/2}\), this coordinate change
+is removed on every external leg.  Contributions orthogonal to \(\Hilb_1\)
+are regular at the isolated shell and vanish in the external residue.
+\end{proof}
+
+For Wilson lines, a compact path deformation with fixed endpoints multiplies
+the operator by a neutral Wilson loop spanning the narrow surface between the
+two paths, up to regulator choices.  Proposition
+\ref{prop:compact-dressing-change-lsz-coordinate} explains the limited sense
+in which such a deformation can leave a finite-regulator \(S\)-matrix
+unchanged.  It does not prove independence under changes of the asymptotic
+ray, because those changes modify the electric flux at infinity.  In massless
+QED the asymptotic ray or Coulomb profile is tied to the charged velocity, and
+changing it changes the infrared representation rather than merely the
+interpolating coordinate.
+
+\subsection{Relation to Faddeev--Kulish Soft Data}
+
+For a charged particle of momentum \(p\), the straight asymptotic Wilson line
+has the same leading soft photon structure as the eikonal factor
+\[
+  f_p^h(k)
+  =
+  q\,\frac{p\cdot e_h^*(k)}{p\cdot k}\,\chi_{\rm IR}(k),
+  \label{eq:charged-dressed-fk-profile}
+\]
+where \(e_h(k)\) is a physical polarization and \(\chi_{\rm IR}\) restricts to
+the soft region.  This follows by Fourier transforming the classical current
+of an asymptotic charged worldline,
+\[
+  j_p^\mu(x)
+  =
+  q\int_{\mathbb R}\dd\tau\,
+  \frac{p^\mu}{m}\,
+  \delta^{(4)}\!\left(x-x_0-\frac{p}{m}\tau\right),
+\]
+and contracting with the photon field.  The current is conserved in the
+interior of the line; its endpoint at infinity is exactly the boundary charge
+recorded in \eqref{eq:charged-wilson-line-boundary-transformation}.  The
+logarithmic norm divergence of
+\eqref{eq:charged-dressed-fk-profile}, derived in the infrared chapter, is
+therefore not an accident of perturbation theory.  It is the Hilbert-space
+signal that an unscreened charged sector is labelled by asymptotic
+electromagnetic flux, not by a vector in the vacuum photon Fock space.
 
 \begin{openproblem}[Haag--Ruelle and LSZ for dressed charged sectors]
 \label{op:haag-ruelle-lsz-dressed-charged-sectors}
