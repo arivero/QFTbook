@@ -19,6 +19,17 @@ one-particle mass shell. These hypotheses are stated explicitly because the
 large-time limit is a theorem under hypotheses, not an algebraic manipulation
 of Green functions.
 
+This chapter is the introductory construction layer.  It works with scalar
+local fields and displays the velocity-support geometry, spectral filtering,
+and Cook estimates that make the large-time limits plausible and usable in
+physics applications.  The theorem-level algebraic statement, formulated for
+vacuum local nets and almost-local operators, is
+Theorem~\ref{thm:algebraic-haag-ruelle-scattering} in
+Chapter~\ref{ch:volume-iv-haag-ruelle-mathematical-scattering}.  The present
+chapter should therefore be read as the point-field model and estimate layer
+feeding the later theorem, not as a second independent foundation of
+scattering theory.
+
 Let spacetime have dimension \(D\), and write \(d=D-1\). The mostly-plus
 metric is
 \[
@@ -453,8 +464,8 @@ supports. Define the time-dependent vector
   B_{1,t}(h_1)\cdots B_{n,t}(h_n)\vac .
 \]
 
-\begin{theorem}[Haag--Ruelle limits]
-\label{thm:haag-ruelle-limits}
+\begin{proposition}[Cook estimate form of the Haag--Ruelle limits]
+\label{prop:haag-ruelle-cook-limits}
 Under the assumptions stated above, the limits
 \[
   \Psi^{\mathrm{out}}(h_1,\ldots,h_n)
@@ -473,7 +484,7 @@ one-particle vectors
   \qquad j=1,\ldots,n,
 \]
 and not on the auxiliary operators \(B_j\) used to interpolate them.
-\end{theorem}
+\end{proposition}
 
 The proof has two analytic inputs. First, disjoint velocity supports imply
 that the effective localization regions of \(B_{j,t}(h_j)\) separate
@@ -649,7 +660,8 @@ asymptotic Fock domain.  Choose, for a dense algebraic subspace
 Haag--Ruelle creators and velocity-separated wave packets representing each
 decomposable vector \(F\).  The time-dependent identification map
 \(\Omega_{{\rm out},t}^{\rm HR}\) is defined on that vector by the corresponding
-product of Haag--Ruelle operators applied to the vacuum.  The theorem says
+product of Haag--Ruelle operators applied to the vacuum.  The Cook-limit
+statement says
 \[
   \lim_{t\to+\infty}
   \left\|
@@ -686,12 +698,12 @@ For wave packets with disjoint velocity supports, define
   \Psi^{\mathrm{out}}(h_1,\ldots,h_n),
 \]
 \[
-  \Omega_{\mathrm{in}}
+\Omega_{\mathrm{in}}
   (\psi_1\odot\cdots\odot\psi_n)
   =
   \Psi^{\mathrm{in}}(h_1,\ldots,h_n),
 \]
-where \(\psi_j=P_1B_{j,t}(h_j)\vac\). The theorem above makes these
+where \(\psi_j=P_1B_{j,t}(h_j)\vac\).  The Cook-limit statement above makes these
 definitions independent of the choice of interpolating operators. By
 linearity and continuity they extend from such vectors to all of
 \(\mathcal F_s(\Hilb_1)\).

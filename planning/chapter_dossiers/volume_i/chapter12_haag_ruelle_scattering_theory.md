@@ -14,8 +14,9 @@
 
 - Buchholz--Dybalski, "Scattering in relativistic quantum field theory: basic
   concepts, tools, and results":
-  - used for the theorem boundary of Haag--Ruelle scattering in the
-    Haag--Kastler/local-operator formulation;
+  - used to separate this chapter's scalar point-field Cook-estimate layer
+    from the theorem-level Haag--Kastler/local-operator formulation in Volume
+    IV;
   - records standing assumptions: locality, spectrum condition, vacuum,
     one-particle subspace, stability/mass gap or Herbst-type condition,
     Poincare covariance;
@@ -26,8 +27,9 @@
 - Mostly-plus Minkowski signature in \(D\) spacetime dimensions.
 - Physical Hilbert space \(\Hilb\) with strongly continuous Poincare
   representation \(U(a,\Lambda)\), vacuum \(\Omega\), and spectrum condition.
-- Local or almost-local bounded operators are used to state the theorem
-  without domain distractions from unbounded point fields.
+- Local fields are used in the introductory point-field model, while
+  almost-local bounded operators and the full theorem-level statement are
+  deferred to Volume IV.
 - A massive one-particle subspace \(\Hilb_1\) of mass \(m>0\) is assumed to be
   nonzero and isolated from the remaining spectrum.
 - The isolated-shell condition is treated as a model-specific spectral theorem
@@ -89,8 +91,9 @@
   spacetime support with group velocity \(\vec p/\omega_{\vec p}\).
 - Disjoint velocity supports imply asymptotic spacelike separation of the
   corresponding wave packets.
-- Haag--Ruelle limits exist in norm under the stated hypotheses and depend
-  only on the one-particle vectors.
+- The chapter records the Cook-estimate form of the Haag--Ruelle limits in
+  the scalar point-field model; the theorem-level algebraic-net statement is
+  Theorem~\ref{thm:algebraic-haag-ruelle-scattering}.
 - The topology of these limits is separated carefully: individual
   Haag--Ruelle vector limits are Hilbert-norm limits; when packaged as maps
   from the algebraic asymptotic Fock domain, the wave operators are obtained by
@@ -167,5 +170,11 @@
   identification maps on the Fock domain, weak matrix-element convergence, and
   the absent operator-norm assertion.
 - 2026-05-24 issue #368 pass: cross-recorded that the Haag--Ruelle Fock inner
+  product convention uses \(\sqrt{n!}\Pi_{s,n}\) for decomposable symmetric
+  tensors.
+- 2026-05-25 issue #446 pass: demoted this chapter to the introductory
+  point-field and Cook-estimate layer, renamed the internal limit statement as
+  a proposition, and directed theorem-level references to the Volume IV
+  algebraic Haag--Ruelle theorem.
   product uses the \(\odot\) normalization fixed at the first Fock-space
   construction.

@@ -81,8 +81,9 @@ operators was given in Chapters~\ref{ch:haag-ruelle} and
 redefined here.
 
 Work in one massive Haag--Ruelle scattering sector satisfying the hypotheses of
-Theorem~\ref{thm:haag-ruelle-limits} and
-Theorem~\ref{thm:algebraic-haag-ruelle-scattering}.  Fix a stable scalar
+Theorem~\ref{thm:algebraic-haag-ruelle-scattering}, with the scalar
+point-field construction and Cook estimates reviewed in
+Proposition~\ref{prop:haag-ruelle-cook-limits}.  Fix a stable scalar
 species of mass \(m>0\).  Its positive mass shell is
 \[
   \Sigma_m^+
@@ -237,100 +238,18 @@ all such products.
 
 \section{LSZ as Pole Extraction}
 
-Let \(\widehat\phi\) be a scalar local field with nonzero one-particle matrix
-element
-\[
-  \bra{\vac}\widehat\phi(0)|\vec p\rangle=Z_\phi^{1/2},
-  \qquad Z_\phi>0 .
-\]
-Let \(G_N^{\mathrm c}\) be the connected time-ordered \(N\)-point
-distribution,
-\[
-  G_N^{\mathrm c}(x_1,\ldots,x_N)
-  =
-  \bra{\vac}
-  \operatorname T\{\widehat\phi(x_1)\cdots\widehat\phi(x_N)\}
-  \ket{\vac}_{\mathrm c}.
-\]
-Its Fourier transform is defined by
-\[
-  G_N^{\mathrm c}(x_1,\ldots,x_N)
-  =
-  \int
-  \prod_{a=1}^N\frac{\dd^D k_a}{(2\pi)^D}\,
-  \ee^{\ii\sum_a k_a\cdot x_a}\,
-  \widetilde G_N^{\mathrm c}(k_1,\ldots,k_N).
-\]
-For \(m\) outgoing and \(n\) incoming particles, set \(N=m+n\) and
-\[
-  k_i=q_i\quad (1\le i\le m),
-  \qquad
-  k_{m+j}=-p_j\quad (1\le j\le n).
-\]
-Incoming momenta enter the Green function with a minus sign because all
-momenta \(k_a\) are taken to flow into the time-ordered distribution.
-
-The LSZ formula for the connected kernel is the kernel specialization of
-Theorem~\ref{thm:lsz-wave-packet}:
-\[
-\boxed{
-\begin{aligned}
-&S^{\mathrm c}(q_1,\ldots,q_m|p_1,\ldots,p_n)
-\\
-&\quad =
-  \left[
-  \prod_{a=1}^{m+n}
-  Z_\phi^{-1/2}\,\ii(k_a^2+m^2)
-  \right]
-  \widetilde G_N^{\mathrm c}(k_1,\ldots,k_N)
-  \bigg|_{\Sigma_m^+}.
-\end{aligned}
-}
-\]
-The vertical bar denotes the distributional boundary value obtained after
-smearing with wave packets and then restricting every physical external
-momentum to \(\Sigma_m^+\).
-With delta-normalized one-particle vectors the same statement contains the
-external factors
-\[
-  \prod_a
-  \left(Z_\phi(2\pi)^d2\omega_{\vec k_a}\right)^{-1/2}
-\]
-in addition to the amputating factors \(\ii(k_a^2+m^2)\). In the covariant
-kernel convention used here, those factors are absorbed into the invariant
-mass-shell measures and state normalization.
-
-\begin{center}
-\begin{tikzpicture}[>=Stealth,scale=0.91]
-  \begin{scope}
-    \draw[purple!80!black,very thick,->] (-2.0,1.0)--(-0.72,0.42);
-    \draw[purple!80!black,very thick,->] (-2.0,-1.0)--(-0.72,-0.42);
-    \draw[purple!80!black,very thick,->] (0.72,0.42)--(2.0,1.0);
-    \draw[purple!80!black,very thick,->] (0.72,-0.42)--(2.0,-1.0);
-    \node[circle,draw=black,thick,minimum size=1.28cm,
-      fill=blue!6] at (0,0) {\(\widetilde G_N^{\mathrm c}\)};
-    \node[left] at (-2.04,1.0) {$-p_1$};
-    \node[left] at (-2.04,-1.0) {$-p_2$};
-    \node[right] at (2.04,1.0) {$q_1$};
-    \node[right] at (2.04,-1.0) {$q_2$};
-  \end{scope}
-  \node[align=center] at (3.45,0)
-    {\(\prod_a Z_\phi^{-1/2}\ii(k_a^2+m^2)\)\\[-0.1em]
-     \(\longrightarrow\ \Sigma_m^+\)};
-  \begin{scope}[xshift=6.25cm]
-    \draw[purple!80!black,very thick,->] (-1.35,0.78)--(-0.52,0.28);
-    \draw[purple!80!black,very thick,->] (-1.35,-0.78)--(-0.52,-0.28);
-    \draw[purple!80!black,very thick,->] (0.52,0.28)--(1.35,0.78);
-    \draw[purple!80!black,very thick,->] (0.52,-0.28)--(1.35,-0.78);
-    \node[circle,draw=black,thick,minimum size=1.1cm,
-      fill=green!7] at (0,0) {\(\mathcal M\)};
-  \end{scope}
-\end{tikzpicture}
-\end{center}
-
-The formula applies to the stable massive sector used in the Haag--Ruelle
-construction. It converts pole data of time-ordered Green functions into
-matrix elements of the already defined scattering operator.
+The pole-extraction theorem is Theorem~\ref{thm:lsz-wave-packet} of
+Chapter~\ref{ch:lsz-reduction}; it is not restated here.  In this chapter we
+use only its kernel consequence: after wave-packet smearing, a connected
+time-ordered distribution whose external variables have isolated
+one-particle poles of residue \(Z_\phi\) gives the connected scattering kernel
+by multiplying each external leg by \(Z_\phi^{-1/2}\ii(k_a^2+m^2)\), taking
+the simultaneous external pole boundary value, and then setting outgoing
+variables \(k_i=q_i\) and incoming variables \(k_{m+j}=-p_j\) on
+\(\Sigma_m^+\).  The resulting distribution is a matrix element of the
+already-defined Haag--Ruelle operator
+\(S=\Omega_{\rm out}^*\Omega_{\rm in}\); in perturbative sections the same
+operation is applied coefficientwise to regulated time-ordered kernels.
 
 \section{Cluster Decomposition}
 

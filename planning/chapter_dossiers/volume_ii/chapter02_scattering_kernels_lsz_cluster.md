@@ -38,6 +38,10 @@
 - Massive scalar particle species with isolated one-particle mass shell
   \(\Sigma_m^+\), Haag--Ruelle in/out wave operators, and a unitary scattering
   operator on the corresponding scattering sector.
+- The theorem-level Haag--Ruelle input is
+  Theorem~\ref{thm:algebraic-haag-ruelle-scattering}; the scalar point-field
+  Cook-estimate material in Volume I is referenced only as the construction
+  model.
 - Momentum kernels are distributional kernels to be tested against smooth
   compactly supported wave packets on mass shells.
 - Connected kernels are defined by cluster decomposition of scattering
@@ -85,8 +89,9 @@
   \widehat\phi_{f_n^{(T)}}\Omega\), with Fourier support near the isolated
   one-particle shell.
 - Kernel notation is shorthand for wave-packet distributions on mass shells.
-- LSZ gives connected scattering kernels by extracting one-particle pole
-  residues from connected time-ordered Green functions.
+- LSZ input is not reboxed here: the chapter references
+  Theorem~\ref{thm:lsz-wave-packet} and uses only its kernel consequence,
+  namely simultaneous external pole extraction after wave-packet smearing.
 - The path-integral language used later for Feynman graphs and
   Feynman-parameter integrals is coefficientwise perturbative input for
   time-ordered kernels, not a nonperturbative definition of the scattering
@@ -109,6 +114,10 @@
 - The physical equal-mass \(s\)-channel has \(s\ge4m^2\) and \(t,u\le0\);
   positive \(t\) or \(u\) in crossing and fixed-\(t\) arguments denotes a
   crossed-channel timelike invariant.
+- 2026-05-25 issue #446 pass: removed the boxed LSZ restatement from the
+  chapter, retained only the kernel-use paragraph pointing to
+  Theorem~\ref{thm:lsz-wave-packet}, and changed the Haag--Ruelle input to the
+  Volume IV theorem layer plus the Volume I Cook-estimate model.
 
 ## Figure Requirements
 

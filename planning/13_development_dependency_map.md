@@ -68,8 +68,10 @@ maps use one consistent vocabulary.
 
 ### Volume II: Particles, Scattering, and Analyticity
 
-Status: compiled mature subset with known duplication around Haag--Ruelle and
-LSZ.
+Status: compiled mature subset; the issue #446 pass split the
+Haag--Ruelle/LSZ material into theorem, construction, and application layers,
+but the surrounding scattering chapters still require periodic duplication
+audits as the volume expands.
 
 Depends on: Volume I spectral theory, local fields, time-ordered Green
 functions, analytic continuation, and perturbative Green-function calculus.
@@ -82,9 +84,8 @@ Do not promote further material before: S-matrix language is always downstream
 of wave operators, perturbative amplitudes are downstream of LSZ, and massless
 or infrared claims state their limiting observable.
 
-Immediate target: merge the duplicated Haag--Ruelle and LSZ treatments into a
-layered treatment that separates theorem, examples, and perturbative
-applications.
+Immediate target: continue deepening the layered treatment without reboxing
+the Haag--Ruelle or LSZ theorems in application chapters.
 
 ### Volume III: Renormalization, Effective Field Theory, and Critical Phenomena
 
@@ -285,8 +286,9 @@ spacetime QFT prematurely.
    vocabulary mutually consistent.
 3. Volume I, Chapters 7--13: align regulated path integrals, Green functions,
    Kallen--Lehmann spectral measures, and early perturbation theory.
-4. Volume II, Chapters 1--2 and 6--8: remove duplication in Haag--Ruelle,
-   S-matrix, and LSZ material by making theorem/example/application layers.
+4. Volume II, Chapters 1--2 and 6--8: maintain the Haag--Ruelle and LSZ
+   theorem/example/application split while deepening the analytic and
+   dispersion-theoretic applications.
 5. Volume III, Chapters 1--8: connect 1PI, BPHZ, Wilsonian, operator-mixing,
    and critical phenomena treatments.
 6. Volume IV, Chapters 2--10: deepen gauge observables, BRST cohomology, add
