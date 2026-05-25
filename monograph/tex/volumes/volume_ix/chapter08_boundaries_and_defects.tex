@@ -1,0 +1,105 @@
+\chapter{Boundaries And Defects}
+\label{ch:global-boundaries-and-defects}
+
+\ConventionsMixed
+
+Boundaries and defects are QFT data supported on submanifolds.  They modify
+operator algebras, symmetry realization, anomaly inflow, and phase structure.
+This chapter formulates them as local data rather than as afterthoughts added
+to a bulk theory.
+
+\section{Boundary QFT Datum}
+
+Let \(M\) be a spacetime manifold with boundary \(\partial M\).  A boundary
+condition for a local QFT assigns:
+\[
+\begin{array}{ll}
+\text{bulk observables} & \mathcal A(U),\quad U\subset M^\circ,\\
+\text{boundary observables} & \mathcal B(V),\quad V\subset\partial M,\\
+\text{bulk-to-boundary maps} & \mathcal A(U)\to\mathcal B(V)
+\text{ for }U\to V,\\
+\text{state or functional} & \omega_{\partial}
+\text{ on the combined algebra}.
+\end{array}
+\]
+Locality requires that observables with spacelike separated supports commute
+or graded-commute after their supports are interpreted in the manifold with
+boundary.
+
+\section{Boundary Operator Expansion}
+
+For a scalar bulk local operator \(\mathcal O(x_\perp,y)\), with
+\(x_\perp\geq0\) the distance to the boundary and \(y\in\partial M\), the
+boundary expansion has the form
+\[
+  \mathcal O(x_\perp,y)
+  \sim
+  \sum_\alpha
+  c_{\mathcal O}^{\ \alpha}(x_\perp)\,\widehat{\mathcal O}_\alpha(y),
+\]
+where \(\widehat{\mathcal O}_\alpha\) are boundary local operators.  The
+symbol means convergence inside the declared correlation-function topology
+after smearing away from coincident boundary insertions.  Boundary critical
+exponents and boundary anomalies are properties of this expansion and of the
+boundary stress tensor.
+
+\section{Interfaces And Domain Walls}
+
+An interface between two QFTs \(\mathcal T_-\) and \(\mathcal T_+\) is a
+codimension-one defect whose local neighborhoods have \(\mathcal T_-\) on one
+side and \(\mathcal T_+\) on the other.  A domain wall is an interface between
+two phases or vacua of the same microscopic theory.  Topological interfaces
+can be moved without changing separated correlation functions, up to contact
+terms specified on the wall.  Non-topological interfaces carry ordinary
+localized excitations and have their own stress-tensor Ward identities.
+
+\section{Fusion}
+
+Let \(D_1\) and \(D_2\) be parallel defects separated by distance \(\ell\).
+Fusion asks for the limit
+\[
+  D_2\circ_\ell D_1\quad \text{as}\quad \ell\to0 .
+\]
+The limit is a defect \(D_2\star D_1\) only if correlation functions with
+separated external insertions converge after renormalizing defect-local
+operators.  In a topological sector, fusion gives a monoidal category of
+defects.  In a general QFT, fusion is a renormalization problem for
+codimension-one local data.
+
+\section{Anomalies And Inflow}
+
+A boundary or defect can carry an anomaly line for background fields
+restricted to its support.  A bulk invertible theory cancels this anomaly
+when the combined bulk-defect partition function is a number rather than a
+section of a nontrivial line over background-field space.  If a boundary
+condition preserves a global symmetry, its boundary anomaly must match the
+restriction of the bulk inflow.  If it breaks the symmetry, the broken
+background fields are not part of the boundary datum.
+
+\section{Gauge-Theory Boundaries}
+
+For gauge theories, a boundary condition must specify which gauge
+transformations are redundancies at the boundary and which become global
+symmetries acting on boundary operators.  Electric boundary conditions fix
+the tangential connection or electric flux according to the chosen
+Hamiltonian polarization.  Magnetic boundary conditions fix the dual data.
+Line operators may end on the boundary precisely when boundary degrees of
+freedom carry the corresponding charge and cancel the endpoint gauge
+variation.
+
+\section{Defects And Phase Data}
+
+Boundary and defect categories refine the phase invariant of
+Chapter~\ref{ch:global-phases-of-gauge-theories}.  A gapped phase includes
+the fusion category of topological line defects, higher-codimension defect
+operators, boundary conditions, and their anomaly responses.  Two theories
+with the same local massive spectrum can be distinguished by these extended
+data.
+
+\begin{openproblem}[Defect-complete phase classification]
+\label{op:defect-complete-phase-classification}
+Construct a phase invariant that includes boundary conditions, defect fusion,
+endpoint maps for line and surface operators, anomaly inflow, and local
+operator data, and prove stability of this invariant under finite gapped
+deformations.
+\end{openproblem}

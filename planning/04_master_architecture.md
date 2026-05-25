@@ -267,6 +267,7 @@ Current compiled material:
 5. Thermodynamic Bethe Ansatz
 6. Integrable RG Flows And Perturbed Two-Dimensional CFT
 7. Mirror-Channel TBA And Finite-Size Effects
+8. Sine-Gordon, Massive Thirring, And Affine Toda Theories
 
 Further development targets:
 
@@ -304,6 +305,7 @@ Current compiled material:
 5. Nonrenormalization And Holomorphy
 6. Four-Dimensional \(\mathcal N=1\) Gauge Dynamics
 7. Four-Dimensional \(\mathcal N=2\) Gauge Dynamics And Seiberg-Witten Theory
+8. Moduli Spaces In Supersymmetric Quantum Field Theory
 
 Further development targets:
 
@@ -387,6 +389,7 @@ Current compiled material:
 5. Cohomological Field Theories
 6. Topological Sigma Models
 7. Twists Of Supersymmetric Theories
+8. Witten--Donaldson Theory And The Seiberg-Witten Comparison
 
 Further development targets:
 
@@ -433,6 +436,7 @@ Current compiled material:
 5. Discrete Theta Terms
 6. Anomaly Inflow And Invertible Field Theories
 7. Phases Of Gauge Theories
+8. Boundaries And Defects
 
 Further development targets:
 
@@ -462,6 +466,7 @@ Current compiled material:
 5. Hydrodynamics From Ward Identities
 6. Schwinger--Keldysh Hydrodynamic Effective Actions
 7. Thermal Gauge Theory And Screening
+8. Kinetic Theory As A Controlled Limit
 
 Further development targets:
 
@@ -489,6 +494,7 @@ Current compiled material:
 5. Wilson Lattice Gauge Theory
 6. Monte Carlo Methods And Sign Problems
 7. Rigorous Renormalization Group
+8. Relation Between Lattice And Continuum Local QFT
 
 Further development targets:
 
@@ -518,6 +524,7 @@ Current compiled material:
 5. The Hawking Effect
 6. Background Gauge Fields And Index Theory
 7. Eta Invariants And Global Anomalies
+8. Cosmological Spacetimes And Particle Creation
 
 Further development targets:
 

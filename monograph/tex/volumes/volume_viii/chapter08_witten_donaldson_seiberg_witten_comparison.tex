@@ -1,0 +1,135 @@
+\chapter{Witten-Donaldson Theory And The Seiberg-Witten Comparison}
+\label{ch:tqft-witten-donaldson-seiberg-witten-comparison}
+
+\ConventionsEuclidean
+
+This chapter begins the four-dimensional cohomological gauge theory that
+connects Donaldson invariants to the low-energy Seiberg-Witten description.
+The comparison is treated as an RG statement about a twisted
+\(\mathcal N=2\) gauge theory and its Abelian Coulomb-branch effective theory.
+
+\section{Twisted Yang-Mills Datum}
+
+Let \(X\) be a compact oriented smooth four-manifold and let \(P\to X\) be a
+principal \(SU(2)\) bundle.  The Donaldson twist of pure
+\(\mathcal N=2\) Yang--Mills theory uses the scalar supercharge \(Q\) of
+Chapter~\ref{ch:tqft-twists-of-supersymmetric-theories}.  The bosonic gauge
+field is a connection \(A\) on \(P\), and the localization equation in the
+ultraviolet weak-coupling chart is
+\[
+  F_A^+=0 .
+\]
+The instanton number is
+\[
+  k=-\frac{1}{8\pi^2}\int_X\operatorname{tr}(F_A\wedge F_A)
+\]
+in the trace convention used for the gauge theory.
+
+\section{Instanton Moduli Space}
+
+The anti-self-dual moduli space is
+\[
+  \mathcal M_k(P)
+  =
+  \{A\mid F_A^+=0\}/\mathcal G_P ,
+\]
+where \(\mathcal G_P\) is the gauge transformation group.  At an irreducible
+smooth point, its tangent and obstruction spaces are the cohomology of
+\[
+  0\longrightarrow \Omega^0(X,\operatorname{ad}P)
+  \overset{d_A}{\longrightarrow}
+  \Omega^1(X,\operatorname{ad}P)
+  \overset{d_A^+}{\longrightarrow}
+  \Omega^{2,+}(X,\operatorname{ad}P)
+  \longrightarrow0 .
+\]
+For \(SU(2)\), the virtual dimension is
+\[
+  \dim_{\mathrm{vir}}\mathcal M_k
+  =
+  8k-3(1-b_1(X)+b_2^+(X)).
+\]
+Compactification, reducible connections, orientations, and chamber structure
+are part of the definition of the invariant.
+
+\section{Donaldson Observables}
+
+Let
+\[
+  \mathcal O_0=\operatorname{tr}\phi^2
+\]
+be the scalar observable in the twisted vector multiplet.  Descent gives
+operators \(\mathcal O_j\) obeying
+\[
+  d\mathcal O_j=\{Q,\mathcal O_{j+1}\}_{\mathrm{gr}} .
+\]
+For a homology cycle \(\gamma_j\in H_j(X)\), define
+\[
+  I(\gamma_j)=\int_{\gamma_j}\mathcal O_j .
+\]
+The correlation functions of these insertions localize, in the ultraviolet
+Donaldson chamber, to intersection pairings on the compactified instanton
+moduli space when the degree of the insertion matches
+\(\dim_{\mathrm{vir}}\mathcal M_k\).
+
+\section{Coulomb-Branch RG Picture}
+
+The same twisted theory has a low-energy description on the Coulomb branch.
+For gauge algebra \(\mathfrak{su}(2)\), the coordinate \(u\) and periods
+\((a_D,a)\) are those of
+Chapter~\ref{ch:susy-four-dimensional-n2-seiberg-witten}.  Away from
+singular values of \(u\), the low-energy theory is an Abelian twisted
+\(\mathcal N=2\) gauge theory with coupling \(\tau(u)\).  At singular values,
+monopole or dyon hypermultiplets become light and must be included.  The
+topologically twisted path integral is therefore decomposed into a Coulomb
+branch integral and local contributions from the singular fibers.
+
+\section{Seiberg-Witten Monopole Equations}
+
+Choose a \(\operatorname{Spin}^c\) structure on \(X\) with spinor bundles
+\(S^\pm\) and determinant line \(L\).  Let \(A\) be a connection on \(L\) and
+let \(q\in\Gamma(S^+\otimes L)\).  The Seiberg-Witten equations are
+\[
+  \not D_A q=0,
+  \qquad
+  F_A^+=\sigma(q),
+\]
+where \(\sigma(q)\in\Omega^{2,+}(X)\) is the quadratic map obtained from
+Clifford multiplication.  These equations are the localization equations of
+the twisted Abelian monopole effective theory near a singular Coulomb-branch
+point.
+
+\section{Comparison Mechanism}
+
+The Donaldson and Seiberg-Witten descriptions are compared by the following
+chain of objects:
+\[
+\begin{aligned}
+  &\text{twisted non-Abelian UV theory}\\
+  &\qquad\longrightarrow \text{Coulomb-branch Wilsonian theory}\\
+  &\qquad\longrightarrow \text{twisted Abelian monopole theory}.
+\end{aligned}
+\]
+The first arrow is an RG statement.  The second arrow is the local
+Seiberg-Witten effective description near a singular fiber.  Contact terms,
+metric dependence, \(u\)-plane contributions, wall crossing, and the map from
+Donaldson insertions to Abelian observables must be included in the same
+coordinate convention.
+
+\section{Gap Ledger}
+
+The finite-dimensional geometry of the instanton and monopole moduli spaces
+can be developed with rigorous differential geometry once compactifications
+and orientations are fixed.  The QFT comparison additionally requires a
+construction of the twisted four-dimensional \(\mathcal N=2\) gauge theory,
+a derivation of its Coulomb-branch Wilsonian action, control of singular
+fiber contributions, and a proof that the cohomological correlation functions
+are invariant along the RG comparison path.
+
+\begin{openproblem}[Donaldson and Seiberg-Witten comparison as QFT]
+\label{op:donaldson-seiberg-witten-qft-comparison}
+Turn the physical RG comparison between Donaldson and Seiberg-Witten
+invariants into a theorem-level statement of four-dimensional QFT, including
+the ultraviolet twisted gauge theory, low-energy Abelian monopole theory,
+observable map, contact terms, wall crossing, and compactification data.
+\end{openproblem}

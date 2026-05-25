@@ -176,6 +176,35 @@ screening, rigorous-RG, and global-anomaly layers:
   formulae, determinant-line holonomy, Dai-Freed phases, and the interacting
   anomaly-line problem.
 
+## Current Eighth-Chapter Pass
+
+The eighth-chapter pass adds the first concrete model, moduli-space,
+cohomological-gauge, defect, kinetic, lattice-continuum, and cosmological
+development layers:
+
+- Volume VI: sine-Gordon, massive Thirring, and affine Toda theories with
+  declared normalizations, soliton sectors, breather kinematics, Coleman
+  coupling convention, affine-root potentials, and model-comparison tests.
+- Volume VII: supersymmetric moduli spaces as vacuum families with chiral
+  rings, quotient coordinates, branch metrics, singular strata, and low-energy
+  QFT data.
+- Volume VIII: Witten-Donaldson theory and the Seiberg-Witten comparison,
+  including the ASD deformation complex, descent observables, Coulomb-branch
+  RG mechanism, monopole equations, and a QFT gap ledger.
+- Volume IX: boundaries and defects as local submanifold-supported QFT data,
+  including boundary expansions, interfaces, fusion, anomaly inflow, gauge
+  boundary choices, and defect-refined phase invariants.
+- Volume X: kinetic theory as a controlled limit from quasiparticle Wigner
+  data, Boltzmann collision terms, entropy production, hydrodynamic moments,
+  linearized collision operators, and gauge-theory soft-scale ledgers.
+- Volume XI: lattice-to-continuum local QFT through scaling maps,
+  distributional Schwinger limits, reflection positivity, local-algebra
+  approximation, gauge-invariant operator mixing, and reconstruction data.
+- Volume XII: cosmological spacetimes and particle creation through
+  Robertson-Walker modes, complex structures, Bogoliubov transformations,
+  adiabatic states, detector response, de Sitter states, and backreaction
+  boundaries.
+
 ## Next Frontier After This Pass
 
 - Add proof appendices where current chapters state theorem boundaries.

@@ -1,0 +1,155 @@
+\chapter{Cosmological Spacetimes And Particle Creation}
+\label{ch:curved-cosmological-spacetimes-particle-creation}
+
+\ConventionsLorentzian
+
+This chapter studies QFT on time-dependent globally hyperbolic backgrounds.
+Particle creation is formulated through the relation between two choices of
+positive-frequency decomposition or through detector response, with the state
+and asymptotic conditions stated explicitly.
+
+\section{Robertson-Walker Backgrounds}
+
+Let
+\[
+  ds^2=-dt^2+a(t)^2 d\mathbf x^2
+\]
+be a spatially flat Robertson-Walker metric in \(d\) spacetime dimensions.
+In conformal time \(d\eta=dt/a(t)\),
+\[
+  ds^2=a(\eta)^2(-d\eta^2+d\mathbf x^2).
+\]
+For a real scalar field,
+\[
+  (\Box_g-m^2-\xi R)\phi=0 .
+\]
+After Fourier transformation and the rescaling
+\[
+  \chi_{\mathbf k}(\eta)=a(\eta)^{(d-2)/2}\phi_{\mathbf k}(\eta),
+\]
+the mode equation has the form
+\[
+  \chi_{\mathbf k}''+\Omega_k(\eta)^2\chi_{\mathbf k}=0,
+\]
+where \(\Omega_k(\eta)^2\) is determined by \(k^2\), \(m^2a^2\), curvature
+coupling, and derivatives of \(a\).
+
+\section{Symplectic Space And Complex Structures}
+
+Let \(\mathcal S\) be the real vector space of smooth solutions with compact
+Cauchy data.  The conserved symplectic form is
+\[
+  \sigma(\phi_1,\phi_2)
+  =
+  \int_{\Sigma} d\Sigma^\mu\,
+  (\phi_1\nabla_\mu\phi_2-\phi_2\nabla_\mu\phi_1).
+\]
+A quasifree Fock representation is specified by a complex structure
+\[
+  J:\mathcal S\to\mathcal S,\qquad J^2=-1,\qquad
+  \sigma(Ju,Jv)=\sigma(u,v),
+\]
+such that \(\sigma(u,Ju)\) is positive for nonzero \(u\).  The corresponding
+one-particle inner product is
+\[
+  \langle u,v\rangle_J=\sigma(u,Jv)+\ii\sigma(u,v).
+\]
+
+\section{Bogoliubov Coefficients}
+
+Suppose the scale factor approaches static limits in the far past and far
+future so that positive-frequency modes \(u_k^{\mathrm{in}}\) and
+\(u_k^{\mathrm{out}}\) are defined.  They are related by
+\[
+  u_k^{\mathrm{in}}
+  =
+  \alpha_k u_k^{\mathrm{out}}
+  +
+  \beta_k \overline{u_k^{\mathrm{out}}},
+\]
+with
+\[
+  |\alpha_k|^2-|\beta_k|^2=1
+\]
+for each real scalar mode.  If the state is the in-vacuum, the expected
+number of out-particles in mode \(k\) is
+\[
+  N_k^{\mathrm{out}}=|\beta_k|^2 .
+\]
+This number is tied to the two asymptotic complex structures; it is not an
+additional local observable independent of that choice.
+
+\section{Adiabatic States}
+
+When no static asymptotic regions are available, adiabatic states provide a
+local high-momentum condition.  Choose functions \(W_k(\eta)\) and write
+\[
+  \chi_k(\eta)=\frac{1}{\sqrt{2W_k(\eta)}}
+  \exp\!\left(-\ii\int^\eta W_k(\eta')\,d\eta'\right).
+\]
+Substitution into the mode equation gives
+\[
+  W_k^2
+  =
+  \Omega_k^2
+  -\frac12\frac{W_k''}{W_k}
+  +\frac34\left(\frac{W_k'}{W_k}\right)^2 .
+\]
+Iterating this equation defines adiabatic order.  The ultraviolet subtraction
+of the stress tensor in Robertson-Walker backgrounds is fixed by the same
+large-\(k\) expansion as the Hadamard point-splitting prescription.
+
+\section{Detector Response}
+
+An Unruh-DeWitt detector on a timelike worldline \(x(\tau)\) with energy gap
+\(E\) has transition probability, to leading order in the detector coupling,
+\[
+  P(E)
+  =
+  \int d\tau\,d\tau'\,
+  e^{-\ii E(\tau-\tau')}
+  \chi(\tau)\chi(\tau')
+  W(x(\tau),x(\tau')),
+\]
+where \(\chi\) is a switching function and \(W\) is the two-point function of
+the state.  Detector response is a local operational probe of the state along
+the worldline and remains meaningful when a global particle decomposition is
+not selected.
+
+\section{de Sitter Example}
+
+In \(d\)-dimensional de Sitter space with conformal time \(\eta<0\),
+\[
+  ds^2=\frac{1}{H^2\eta^2}(-d\eta^2+d\mathbf x^2).
+\]
+The Bunch-Davies quasifree state is selected by requiring that high-frequency
+modes behave as positive-frequency Minkowski modes as \(\eta\to-\infty\):
+\[
+  \chi_k(\eta)\sim \frac{e^{-\ii k\eta}}{\sqrt{2k}} .
+\]
+For massive scalar fields this state is Hadamard and invariant under the
+connected de Sitter group.  Other de Sitter-invariant two-point functions
+must be checked against the Hadamard condition before they are accepted as
+states of the local QFT.
+
+\section{Backreaction Boundary}
+
+The expectation value \(\langle T_{\mu\nu}\rangle\) in a time-dependent state
+is defined by the renormalized stress-tensor prescription of
+Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}.  Semiclassical
+Einstein equations,
+\[
+  G_{\mu\nu}+\Lambda g_{\mu\nu}
+  =
+  8\pi G\,\langle T_{\mu\nu}\rangle_{\mathrm{ren}},
+\]
+are equations for a classical metric coupled to a quantum state.  Solving
+them requires state selection, renormalization constants, and control of the
+validity of the fixed-background QFT approximation.
+
+\begin{openproblem}[Interacting cosmological QFT]
+\label{op:interacting-cosmological-qft}
+Construct interacting QFT on cosmological spacetimes with Hadamard states,
+renormalized stress tensor, detector response, particle-production diagnostics
+where asymptotic regions exist, and controlled semiclassical backreaction.
+\end{openproblem}

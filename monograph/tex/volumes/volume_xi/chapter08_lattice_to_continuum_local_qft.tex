@@ -1,0 +1,127 @@
+\chapter{Relation Between Lattice And Continuum Local QFT}
+\label{ch:constructive-lattice-continuum-local-qft}
+
+\ConventionsEuclidean
+
+This chapter explains how finite-lattice data become continuum local QFT
+data.  The passage requires scaling maps for observables, convergence of
+correlation functions as distributions, reflection positivity, and
+reconstruction or local-net comparison.
+
+\section{Scaling Maps}
+
+Let \(a>0\) be the lattice spacing and let \(\Lambda_a=a\mathbb Z^d\cap V\)
+inside a finite region \(V\).  A lattice field \(\phi_a(x)\) becomes a
+continuum distribution only after a scaling map is specified:
+\[
+  \Phi_a(f)
+  =
+  Z_a^{1/2}a^d\sum_{x\in\Lambda_a} f(x)\phi_a(x),
+\]
+where \(f\in C_c^\infty(V)\) and \(Z_a\) is the field normalization.  Composite
+operators require a mixing matrix
+\[
+  \mathcal O_{A,a}^{\mathrm{ren}}
+  =
+  \sum_B Z_{AB}(a)\mathcal O_{B,a}.
+\]
+The operator basis and normalization are part of the continuum-limit datum.
+
+\section{Distributional Convergence}
+
+The \(n\)-point Schwinger distributions are
+\[
+  S_{n,a}(f_1,\ldots,f_n)
+  =
+  \left\langle
+  \Phi_a(f_1)\cdots \Phi_a(f_n)
+  \right\rangle_a .
+\]
+A continuum Schwinger function \(S_n\) is obtained when
+\[
+  \lim_{a\to0}S_{n,a}(f_1,\ldots,f_n)
+  =
+  S_n(f_1,\ldots,f_n)
+\]
+for all test functions in the chosen class, with compatible infinite-volume
+and continuum limits.  Pointwise lattice correlators are auxiliary data; the
+continuum field is distributional.
+
+\section{Reflection Positivity And OS Reconstruction}
+
+Assume the lattice measures are reflection positive with respect to a
+hyperplane and that the scaling limit preserves reflection positivity:
+\[
+  \sum_{i,j}\overline c_i c_j\,S(F_i^\Theta F_j)\geq0
+\]
+for all finite linear combinations of positive-time test functionals.  If the
+limit Schwinger functions also satisfy Euclidean covariance, symmetry,
+regularity, and the OS growth hypotheses, OS reconstruction produces a
+Hilbert space, vacuum, Hamiltonian, and Wightman distributions.  Thus the
+lattice-to-continuum bridge is a theorem only after these hypotheses are
+verified for the limiting distributions.
+
+\section{Local Algebras From Lattice Algebras}
+
+For a bounded continuum region \(O\), let \(O_a\subset\Lambda_a\) be the set
+of lattice sites or links whose cells lie in \(O\).  The lattice observable
+algebra \(\mathcal A_a(O_a)\) is finite dimensional in spin systems and
+finite-regulator gauge systems after gauge constraints are imposed.  A
+continuum local algebra is approached by embeddings or correlation-function
+limits
+\[
+  \mathcal A_a(O_a)\longrightarrow \mathcal A(O)
+\]
+that preserve inclusion, locality, and the state in the scaling limit.  The
+construction is delicate for gauge theories because Gauss-law constraints and
+center degrees of freedom affect the algebra assigned to a region with
+boundary.
+
+\section{Gauge-Invariant Operators}
+
+In lattice gauge theory, link variables are regulator coordinates.  Continuum
+local gauge-invariant operators arise from small Wilson loops, covariant
+lattice differences, and matter bilinears after subtracting and mixing all
+operators with the same symmetries.  For example, the continuum action
+density is represented by a plaquette combination
+\[
+  \mathcal P_a(x)
+  =
+  \frac{1}{a^4}\left(1-\frac{1}{\dim R}\operatorname{Re}\operatorname{Tr}_R
+  U_{\square_x}\right)
+  +\text{local mixings}.
+\]
+The mixings include identity and lower-dimensional terms allowed by the
+regulator symmetries.
+
+\section{Universality As A Convergence Statement}
+
+Two lattice regulator families define the same continuum QFT when there are
+scaling maps for their observables such that all reconstructed local QFT data
+agree: Schwinger distributions, Wightman distributions or local nets,
+symmetry actions, stress tensor normalization, line or defect sectors when
+included, and background responses.  Equality of critical exponents is a
+useful diagnostic but is not the full equivalence relation.
+
+\section{Continuum Limit Checklist}
+
+A lattice construction intended to define a continuum QFT must record:
+\[
+\begin{array}{ll}
+\text{regulator family} & \text{lattice actions, measures, boundary
+conditions},\\
+\text{scaling trajectory} & \text{couplings as functions of }a,\\
+\text{operator maps} & \text{normalization and mixing},\\
+\text{limit topology} & \text{distributional, OS, Wightman, or local-net},\\
+\text{positivity} & \text{reflection positivity or replacement structure},\\
+\text{symmetries} & \text{continuum symmetry recovery and anomalies}.
+\end{array}
+\]
+
+\begin{openproblem}[Local nets from interacting lattice gauge limits]
+\label{op:local-nets-from-lattice-gauge-limits}
+Construct continuum local algebras for interacting lattice gauge theory
+scaling limits, including Gauss-law center choices, charged sectors,
+extended operators, reflection positivity, and comparison with Wightman or OS
+reconstruction.
+\end{openproblem}

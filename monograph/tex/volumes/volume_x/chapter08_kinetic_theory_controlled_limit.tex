@@ -1,0 +1,162 @@
+\chapter{Kinetic Theory As A Controlled Limit}
+\label{ch:thermal-kinetic-theory-controlled-limit}
+
+\ConventionsMixed
+
+Kinetic theory is an effective description of weakly disturbed many-particle
+states in terms of phase-space densities.  Its QFT content lies in deriving
+the quasiparticle variables, collision terms, and hydrodynamic moments from
+real-time correlation functions under explicit scale assumptions.
+
+\section{Quasiparticle Distribution}
+
+Let \(a\) label a particle species with on-shell energy
+\[
+  E_a(\mathbf p)=\sqrt{\mathbf p^2+m_a^2}.
+\]
+A one-particle distribution function
+\[
+  f_a(t,\mathbf x,\mathbf p)
+\]
+is defined by a Wigner transform of a two-point function, projected onto a
+quasiparticle pole and averaged over spacetime scales long compared with the
+microscopic correlation length.  The projection is justified when the
+spectral function has a narrow peak:
+\[
+  \Gamma_a(\mathbf p)\ll E_a(\mathbf p),
+\]
+where \(\Gamma_a\) is the damping width.
+
+\section{Boltzmann Equation}
+
+In the absence of external forces, the kinetic equation is
+\[
+  \left(\partial_t+\mathbf v_a(\mathbf p)\cdot\nabla_{\mathbf x}\right)
+  f_a(t,\mathbf x,\mathbf p)
+  =
+  C_a[f](t,\mathbf x,\mathbf p),
+\]
+where
+\[
+  \mathbf v_a(\mathbf p)=\nabla_{\mathbf p}E_a(\mathbf p).
+\]
+For \(2\to2\) scattering, the collision term has the form
+\[
+\begin{aligned}
+  C_a[f](p_1)
+  &=
+  \frac{1}{2E_1}
+  \sum_{bcd}
+  \int d\Pi_2\,d\Pi_3\,d\Pi_4\,
+  (2\pi)^d\delta^{(d)}(p_1+p_2-p_3-p_4)
+  |\mathcal M_{ab\to cd}|^2
+\\
+  &\quad\times
+  \Big[
+  f_c(p_3)f_d(p_4)(1\pm f_a(p_1))(1\pm f_b(p_2))
+  -
+  f_a(p_1)f_b(p_2)(1\pm f_c(p_3))(1\pm f_d(p_4))
+  \Big],
+\end{aligned}
+\]
+with invariant measure
+\[
+  d\Pi_i=\frac{d^{d-1}\mathbf p_i}{(2\pi)^{d-1}2E_i}.
+\]
+The sign is plus for bosons and minus for fermions.  The matrix element is
+the on-shell scattering amplitude in the normalization of the scattering
+chapters.
+
+\section{Detailed Balance And Entropy}
+
+The Bose-Einstein and Fermi-Dirac distributions
+\[
+  f_a^{\mathrm{eq}}(\mathbf p)
+  =
+  \frac{1}{\exp[\beta(E_a(\mathbf p)-\mu_a)]\mp1}
+\]
+annihilate the collision term when the chemical potentials obey the conserved
+charge constraints for each reaction.  Define the kinetic entropy density
+\[
+  s_{\mathrm{kin}}
+  =
+  -\sum_a\int\frac{d^{d-1}\mathbf p}{(2\pi)^{d-1}}
+  \left[
+  f_a\log f_a
+  \mp(1\pm f_a)\log(1\pm f_a)
+  \right].
+\]
+Using the positivity of
+\[
+  (x-y)\log(x/y)\geq0
+\]
+for positive \(x,y\), the \(2\to2\) collision term gives nonnegative entropy
+production.  Equality holds precisely when the gain and loss products agree
+for every allowed collision.
+
+\section{Hydrodynamic Moments}
+
+The kinetic stress tensor and conserved current are
+\[
+  T^{\mu\nu}(x)
+  =
+  \sum_a\int d\Pi_p\,p^\mu p^\nu f_a(x,p),
+  \qquad
+  J^\mu_A(x)
+  =
+  \sum_a q_{A,a}\int d\Pi_p\,p^\mu f_a(x,p).
+\]
+Multiplying the Boltzmann equation by \(1\), \(p^\nu\), or a conserved charge
+and integrating over momentum gives the hydrodynamic Ward identities when the
+collision term conserves those quantities.  Constitutive relations are
+obtained by solving the kinetic equation in a gradient expansion around local
+equilibrium.
+
+\section{Linearized Collision Operator}
+
+Write
+\[
+  f_a=f_a^{\mathrm{eq}}+f_a^{\mathrm{eq}}(1\pm f_a^{\mathrm{eq}})\chi_a .
+\]
+To first order in \(\chi\), the collision term is a linear operator
+\[
+  C_a[f]=-\sum_b \mathcal L_{ab}\chi_b+O(\chi^2).
+\]
+The null space of \(\mathcal L\) is spanned by conserved quantities.  On the
+orthogonal complement, positivity of entropy production makes
+\(\mathcal L\) positive.  Transport coefficients are quadratic forms involving
+\(\mathcal L^{-1}\) on this complement.
+
+\section{Gauge Theories And Soft Scales}
+
+In weakly coupled gauge theories, long-range gauge exchange produces soft
+momentum transfers and collective plasma effects.  The kinetic description
+must include screening, soft gauge fields, and collinear splitting processes
+when they occur at the same order as \(2\to2\) scattering.  The separation of
+hard quasiparticles, soft fields, and ultrasoft hydrodynamic modes is a
+scale-by-scale effective theory construction, not a single Boltzmann equation
+with arbitrary collision data.
+
+\section{Controlled-Limit Ledger}
+
+A kinetic derivation from QFT requires:
+\[
+\begin{array}{ll}
+\text{spectral input} & \text{narrow quasiparticle peaks},\\
+\text{scale separation} & \ell_{\mathrm{micro}}\ll \ell_{\mathrm{variation}},\\
+\text{collision input} & \text{on-shell amplitudes with regulator and
+medium corrections},\\
+\text{conservation laws} & \text{collision invariants matching QFT Ward
+identities},\\
+\text{error estimate} & \text{bounds on neglected gradients and off-shell
+terms}.
+\end{array}
+\]
+
+\begin{openproblem}[QFT derivation of kinetic theory with errors]
+\label{op:qft-kinetic-theory-error-derivation}
+Derive relativistic kinetic theory from Schwinger-Keldysh QFT with explicit
+error bounds, including quasiparticle projection, collision kernels,
+screening, collinear processes in gauge theory, and the passage from kinetic
+theory to hydrodynamic transport.
+\end{openproblem}

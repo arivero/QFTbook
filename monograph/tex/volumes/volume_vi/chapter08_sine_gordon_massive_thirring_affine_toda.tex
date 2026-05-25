@@ -1,0 +1,180 @@
+\chapter{Sine-Gordon, Massive Thirring, And Affine Toda Theories}
+\label{ch:integrable-sine-gordon-thirring-affine-toda}
+
+\ConventionsMixedCFT
+
+This chapter introduces exact relativistic model families in which the
+factorized-scattering, form-factor, and TBA structures of the preceding
+chapters can be tested against Lagrangian and ultraviolet data.  Every
+normalization below is part of the definition of the model being discussed.
+
+\section{Model-Family Datum}
+
+An integrable model family is specified by:
+\[
+  (\mathcal A_{\mathrm{UV}},\mathcal O_{\mathrm{pert}},
+  \lambda,\mathcal Q,\mathcal S,\mathcal F),
+\]
+where \(\mathcal A_{\mathrm{UV}}\) is a short-distance operator algebra or
+regulated Lagrangian chart, \(\mathcal O_{\mathrm{pert}}\) is the relevant
+perturbing coordinate, \(\lambda\) is its coupling, \(\mathcal Q\) is the
+commutative algebra of conserved charges, \(\mathcal S\) is the factorized
+scattering datum, and \(\mathcal F\) is the form-factor datum for local
+operators.  The model family is under control only when these entries are
+matched in common conventions.
+
+\section{Sine-Gordon Normalization}
+
+Let \(\varphi\) be a real scalar field with Lorentzian action
+\[
+  S_{\mathrm{SG}}
+  =
+  \int d^2x\,
+  \left[
+  -\frac12 \partial_\mu\varphi\,\partial^\mu\varphi
+  +\frac{\mu}{\beta^2}\bigl(\cos(\beta\varphi)-1\bigr)
+  \right],
+\]
+where \(0<\beta^2<8\pi\) in the short-distance free-boson normalization used
+for the displayed formula.  The potential is periodic under
+\[
+  \varphi\longmapsto \varphi+\frac{2\pi}{\beta}.
+\]
+Finite-energy configurations on the line therefore have topological charge
+\[
+  Q_{\mathrm{top}}
+  =
+  \frac{\beta}{2\pi}
+  \int_{-\infty}^{\infty}dx\,\partial_x\varphi
+  \in\mathbb Z .
+\]
+The charge \(Q_{\mathrm{top}}=1\) particle is the soliton, and
+\(Q_{\mathrm{top}}=-1\) is the antisoliton.
+
+\section{Sine-Gordon Spectrum}
+
+Introduce
+\[
+  \xi=\frac{\beta^2}{8\pi-\beta^2}.
+\]
+The attractive regime is \(0<\xi<1\).  In this regime the soliton-antisoliton
+S-matrix has bound-state poles corresponding to neutral breathers
+\[
+  B_n,\qquad n=1,\ldots,\left\lfloor \xi^{-1}\right\rfloor ,
+\]
+with masses
+\[
+  m_n=2M_s\sin\!\left(\frac{\pi n\xi}{2}\right),
+\]
+where \(M_s\) is the soliton mass.  The formula follows from relativistic
+two-body kinematics: a pole at rapidity difference \(\theta=\ii u\) in a
+two-particle channel of equal masses \(M_s\) produces a bound state of mass
+\[
+  m^2=2M_s^2(1+\cos u)
+  =
+  4M_s^2\cos^2\!\left(\frac{u}{2}\right).
+\]
+For the breather poles \(u=\pi(1-n\xi)\), this gives the displayed value.
+
+\section{Massive Thirring Equivalence}
+
+The massive Thirring model has Dirac field \(\psi\) and action
+\[
+  S_{\mathrm{MT}}
+  =
+  \int d^2x\,
+  \left[
+  \ii\bar\psi\gamma^\mu\partial_\mu\psi
+  -m\bar\psi\psi
+  -\frac{g_{\mathrm{T}}}{2}
+  (\bar\psi\gamma^\mu\psi)(\bar\psi\gamma_\mu\psi)
+  \right].
+\]
+In Coleman's normalization, the sine-Gordon and massive Thirring couplings
+are related by
+\[
+  \frac{4\pi}{\beta^2}=1+\frac{g_{\mathrm{T}}}{\pi}.
+\]
+The equivalence identifies the Thirring fermion number with the sine-Gordon
+topological charge:
+\[
+  \bar\psi\gamma^\mu\psi
+  =
+  \frac{\beta}{2\pi}\epsilon^{\mu\nu}\partial_\nu\varphi .
+\]
+At the free-fermion point \(\beta^2=4\pi\), hence \(g_{\mathrm{T}}=0\), the
+soliton and antisoliton form the massive Dirac particle and antiparticle.
+Away from this point the equivalence is a statement about renormalized local
+operator algebras and scattering data in the declared convention.
+
+\section{Affine Toda Data}
+
+Let \(\mathfrak g\) be a simple Lie algebra of rank \(r\), with simple roots
+\(\alpha_i\) and highest root
+\[
+  \theta=\sum_{i=1}^r n_i\alpha_i .
+\]
+Set \(\alpha_0=-\theta\) and \(n_0=1\).  The affine Toda action for a real
+Cartan-valued field \(\phi\in\mathfrak h_\mathbb R\) is
+\[
+  S_{\mathrm{AT}}
+  =
+  \int d^2x\,
+  \left[
+  -\frac12(\partial_\mu\phi,\partial^\mu\phi)
+  -\frac{m^2}{\beta^2}\sum_{i=0}^r n_i
+  \left(e^{\beta(\alpha_i,\phi)}-1\right)
+  \right].
+\]
+The classical equations admit a Lax representation with spectral parameter.
+Consequently the classical theory has commuting local conserved charges.  In
+the quantum theory, the factorized S-matrix is organized by the root system,
+particle species are labelled by nodes of the Dynkin diagram in the
+simply-laced cases, and the pole structure encodes fusing rules compatible
+with the affine root data.
+
+\section{Mass Matrix In Affine Toda Theory}
+
+Expanding the potential at \(\phi=0\) gives
+\[
+  V(\phi)
+  =
+  \frac{m^2}{2}
+  \sum_{i=0}^r n_i(\alpha_i,\phi)^2+O(\phi^3).
+\]
+Thus the classical mass matrix is
+\[
+  M_{\mathrm{cl}}^2
+  =
+  m^2\sum_{i=0}^r n_i\,\alpha_i\otimes\alpha_i .
+\]
+For simply-laced algebras its eigenvectors are related to the Perron-Frobenius
+eigenvector of the Cartan matrix, and the mass ratios match the Coxeter data
+entering the exact scattering blocks.  A quantum statement about mass ratios
+requires fixing the coupling normalization and the renormalized mass
+coordinate.
+
+\section{Model-Comparison Ledger}
+
+The exact-solution claim for each model has three independent tests:
+\[
+\begin{array}{ll}
+\text{UV test} & \text{operator dimensions and perturbing-coordinate
+normalization},\\
+\text{IR test} & \text{particle masses, charges, and factorized S-matrix
+poles},\\
+\text{finite-size test} & \text{TBA ground-state energy and local operator
+finite-volume data}.
+\end{array}
+\]
+Agreement of one row does not determine the other rows.  The model becomes a
+QFT example for this monograph only after all rows are expressed in the same
+regularization and source convention.
+
+\begin{openproblem}[Constructive integrable model comparison]
+\label{op:constructive-integrable-model-comparison}
+Construct sine-Gordon and affine Toda theories as continuum local QFTs with
+operators, soliton sectors, factorized scattering, TBA finite-size energies,
+and form factors derived from one regulated framework rather than matched
+only through separate exact-solution data.
+\end{openproblem}
