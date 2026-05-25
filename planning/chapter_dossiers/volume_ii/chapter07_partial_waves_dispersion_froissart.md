@@ -47,7 +47,10 @@ hypotheses:
 
 ## Symbol Inventory
 
-- \(s,t,u\): Mandelstam invariants with \(s+t+u=4m^2\) for equal masses.
+- \(s,t,u\): mostly-plus Mandelstam invariants with \(s+t+u=4m^2\) for equal
+  masses; physical \(s\)-channel scattering has \(t,u\le0\), while positive
+  \(t\) in the Lehmann-ellipse discussion is a crossed-channel timelike
+  invariant.
 - \(x=\cos\theta=1+2t/(s-4m^2)\): angular variable.
 - \(x_t(s)=(s+4m^2)/(s-4m^2)\): location of the two-particle \(t\)-channel threshold in the \(x\)-plane.
 - \(t_0\): nearest positive-\(t\) singularity controlling the Lehmann ellipse at high energy.
@@ -169,3 +172,7 @@ hypotheses:
 - 2026-05-24 issue #425 pass: renamed the partial-wave kinematic factor from
   \(\rho(s)\) to \(\beta(s)\), keeping \(\rho\) exclusively for spectral
   measures and densities.
+- 2026-05-24 issue #435 pass: linked the chapter's \(s,t,u\) variables to the
+  part-wide mostly-plus Mandelstam convention and made the physical
+  \(s\)-channel sign \(t\le0\) distinct from positive crossed-channel
+  singularities.

@@ -47,7 +47,7 @@
 | Symbol | Meaning |
 | --- | --- |
 | \(K\) | total momentum carried by the \(s\)-channel line, \(K=k_1+k_2\) |
-| \(s\) | invariant energy, \(s=-K^2\) |
+| \(s\) | mostly-plus invariant energy, \(s=-K^2\) |
 | \(D_2(k)\) | exact time-ordered two-point function of \(\phi_2\) in momentum space |
 | \(\Sigma(k)\) | amputated one-particle-irreducible two-point insertion for \(\phi_2\) |
 | \(\Sigma^R(k)\) | renormalized self-energy after subtracting the mass counterterm |
@@ -67,6 +67,9 @@
 
 - Mostly-plus Lorentzian signature and scalar propagator
   \(-\ii/(k^2+m^2-\ii0)\).
+- The resonance chapter inherits the part-wide mostly-plus Mandelstam
+  convention; in particular \(s=-(k_1+k_2)^2\) is positive in the physical
+  two-\(\phi_1\) scattering region.
 - The external scattering states are stable \(\phi_1\) particles.
 - The coupling \(g\) is weak enough that one-loop self-energy and narrow-width
   approximations are meaningful when explicitly invoked.
@@ -222,3 +225,6 @@
 - 2026-05-24 issue #388 pass: clarified that the Wick-rotated loop integral
   has an ordinary Euclidean denominator and that any later \(-i0\) belongs to
   the external invariant boundary value, not to the loop integration variable.
+- 2026-05-24 issue #435 pass: recorded that the resonance invariant
+  \(s=-K^2\) is the mostly-plus Mandelstam variable inherited from the
+  part-wide scattering convention.

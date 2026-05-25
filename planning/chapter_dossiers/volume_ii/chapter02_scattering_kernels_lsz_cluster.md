@@ -42,6 +42,11 @@
   compactly supported wave packets on mass shells.
 - Connected kernels are defined by cluster decomposition of scattering
   matrix elements, matching connected time-ordered Green functions under LSZ.
+- The part-wide mostly-plus Mandelstam convention is fixed at the opening of
+  the scattering-kernel chapter: for incoming \(p_1,p_2\) and outgoing
+  \(p_3,p_4\),
+  \(s=-(p_1+p_2)^2\), \(t=-(p_1-p_3)^2\), and
+  \(u=-(p_1-p_4)^2\), with \(s+t+u=\sum_i m_i^2\).
 - Time-ordered correlators used in the scattering chapters carry an explicit
   status: exact Hilbert-space distributions with one-particle pole data,
   Euclidean reconstructed distributions after OS/analytic-continuation
@@ -66,6 +71,7 @@
 | \(S^{\mathrm c}\) | connected scattering kernel |
 | \(G_N^{\mathrm c}\) | connected time-ordered \(N\)-point distribution |
 | \(\mathcal M\) | invariant amplitude after extracting the momentum-conservation delta function |
+| \(s,t,u\) | mostly-plus Mandelstam variables \(s=-(p_1+p_2)^2\), \(t=-(p_1-p_3)^2\), \(u=-(p_1-p_4)^2\) |
 | \(\Pi\) | partition of external labels into connected clusters |
 | \(\rho(a,T)\) | spacelike separation of the two Haag--Ruelle localization tubes after relative translation \(a\) at finite time parameter \(T\) |
 
@@ -100,6 +106,9 @@
   products.
 - The connected amplitude is the object whose poles, cuts, and analytic
   continuation will be studied in subsequent chapters.
+- The physical equal-mass \(s\)-channel has \(s\ge4m^2\) and \(t,u\le0\);
+  positive \(t\) or \(u\) in crossing and fixed-\(t\) arguments denotes a
+  crossed-channel timelike invariant.
 
 ## Figure Requirements
 
@@ -129,3 +138,6 @@
   or formal/regulator-dependent perturbative coefficients.  The definition
   also states explicitly that the path integral does not define the
   Haag--Ruelle scattering operator.
+- 2026-05-24 issue #435 pass: added the part-wide mostly-plus Mandelstam
+  convention and physical-region sign statement before the analytic chapters
+  use \(s,t,u\).

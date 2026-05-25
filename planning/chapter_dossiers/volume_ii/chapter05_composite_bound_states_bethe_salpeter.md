@@ -43,13 +43,16 @@
 | \(\widehat V_P\) | integral operator with kernel \(\mathcal K_P(p,q)\mathcal G_P(q)\) acting on the amputated amplitude |
 | \(\mathcal X\) | chosen test-function, Sobolev, or Hilbert space on which the amputated Bethe--Salpeter operator is realized |
 | \(f(s)\) | \(D=2\) scalar bubble Feynman-parameter integral |
-| \(s,t,u\) | Mandelstam variables \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\), \(u=-(k_1-k_4)^2\) |
+| \(s,t,u\) | mostly-plus Mandelstam variables \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\), \(u=-(k_1-k_4)^2\) for incoming \(k_1,k_2\) and outgoing \(k_3,k_4\) |
 | \(\mathcal M_{\mathrm{chain}}^{(s)}\) | single-channel bubble-chain approximation in the \((12)\)-channel |
 | \(a_0^{\mathrm{Bose}}\) | identical-boson \(s\)-wave partial-wave coordinate in the \(32\pi\) convention |
 
 ## Assumptions
 
 - Mostly-plus metric and scalar propagator \(-\ii/(k^2+m^2-\ii0)\).
+- The chapter uses the part-wide mostly-plus Mandelstam convention; for
+  equal-mass physical \(s\)-channel scattering, \(s\ge4m^2\) and
+  \(t,u\le0\).
 - External particles in scattering amplitudes are stable single-\(\phi\)
   states of mass \(m\).
 - A composite bound state is a stable spectral state below the relevant
@@ -204,3 +207,6 @@
   and recorded that crossed \(t,u\) chains are regular background near the
   \(s\)-channel threshold unless an additional crossed-channel singularity is
   present.
+- 2026-05-24 issue #435 pass: recorded that the chapter's \(s,t,u\) variables
+  use the part-wide mostly-plus Mandelstam convention, with physical
+  equal-mass \(s\)-channel signs \(t,u\le0\).

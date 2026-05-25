@@ -52,7 +52,7 @@
 | \(\phi_1,\phi_2\) | scalar fields in the exchange model |
 | \(m_1,m_2\) | corresponding mass parameters |
 | \(g\) | cubic coupling in \(-g\phi_1^2\phi_2/2\) |
-| \(s,t,u\) | Mandelstam invariants |
+| \(s,t,u\) | mostly-plus Mandelstam invariants \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\), \(u=-(k_1-k_4)^2\) for incoming \(k_1,k_2\) and outgoing \(k_3,k_4\) |
 | \(E\) | center-of-mass energy |
 | \(z=\cos\theta\) | scattering-angle variable |
 | \(\mathcal M(s,z)\) | connected invariant amplitude |
@@ -68,6 +68,10 @@
 
 - The tree-level exchange model has \(s\)-, \(t\)-, and \(u\)-channel poles
   with positions fixed by \(m_2\).
+- The equal-mass physical \(s\)-channel kinematics are
+  \(s=E^2\), \(t=-(E^2-4m_1^2)(1-z)/2\), and
+  \(u=-(E^2-4m_1^2)(1+z)/2\), so \(t,u\le0\) on the physical angular
+  interval.
 - For \(m_2<2m_1\), the \(s\)-channel pole lies below the
   \(\phi_1\phi_1\) threshold and has the scattering signature of a stable
   state coupled to the two-\(\phi_1\) channel.
@@ -109,6 +113,9 @@
   partial-wave coefficient from \(\mathcal M_\ell(s)\) to \(a_\ell(s)\) and
   added the explicit cross-reference to the Volume I ordered \(16\pi\)
   convention.
+- 2026-05-24 issue #435 pass: matched the chapter's \(s,t,u\) notation to the
+  part-wide mostly-plus Mandelstam convention and recorded the physical
+  \(s\)-channel signs \(t,u\le0\).
 
 ## Figure Requirements
 

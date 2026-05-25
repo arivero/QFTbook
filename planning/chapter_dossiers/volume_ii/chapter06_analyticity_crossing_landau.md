@@ -33,7 +33,7 @@
 
 | Symbol | Meaning |
 | --- | --- |
-| \(s,t,u\) | Mandelstam invariants for identical scalar \(2\to2\) scattering |
+| \(s,t,u\) | mostly-plus Mandelstam invariants \(s=-(k_1+k_2)^2\), \(t=-(k_1-k_3)^2\), \(u=-(k_1-k_4)^2\) for incoming \(k_1,k_2\) and outgoing \(k_3,k_4\) |
 | \(\mathcal M(s,t)\) | connected invariant amplitude, analytically continued where defined |
 | \(\mathfrak S_m\) | complexified on-shell invariant surface \(s+t+u=4m^2\) |
 | \(\mathcal O_{\mathrm{poly}}(\mathcal D)\) | holomorphic functions on a complex kinematic domain with local polynomial-growth boundary estimates |
@@ -92,6 +92,9 @@
     t=-2k^2(1-\cos\theta),\qquad
     s\ge4m^2-t,\quad t\le0.
   \]
+- The positive \(t\)-channel thresholds used in crossing and angular
+  analyticity are crossed-channel timelike invariants, not physical
+  \(s\)-channel scattering angles.
 - For fixed \(t<0\), the first sheet has a right-hand \(s\)-channel cut
   starting at \(4m^2\), a left-hand crossed-channel cut starting at \(-t\),
   and possible bound-state poles.
@@ -155,3 +158,7 @@
 - 2026-05-24 issue #425 pass: renamed the threshold square-root variable from
   \(\rho(s)\) to \(\beta(s)\) so it cannot be confused with the
   Kallen--Lehmann spectral measure \(d\rho\).
+- 2026-05-24 issue #435 pass: linked the chapter's physical-region formulas
+  to the part-wide mostly-plus Mandelstam convention and explicitly separated
+  physical \(s\)-channel \(t\le0\) from positive crossed-channel timelike
+  thresholds.
