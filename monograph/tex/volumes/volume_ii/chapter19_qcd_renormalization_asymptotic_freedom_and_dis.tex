@@ -1830,9 +1830,10 @@ observable is built from the renormalized, gauge-invariant stress tensor
 on the common domain of finite-energy states where the integral is defined as
 a quadratic form.
 
-\begin{hypothesis}[Energy-flow detector]
-\label{hyp:qcd-energy-flow-detector}
-For every real \(f\in C^\infty(S^2)\), the weak limit of quadratic forms
+\begin{construction}[Energy-flow detector from the stress tensor]
+\label{cons:qcd-energy-flow-detector}
+For a real test function \(f\in C^\infty(S^2)\), define the formal
+null-infinity flux quadratic form by
 \begin{equation}
   \widehat{\mathcal E}(f)
   =
@@ -1844,15 +1845,99 @@ For every real \(f\in C^\infty(S^2)\), the weak limit of quadratic forms
   n_i\,\widehat T^{0i}(t,R\mathbf n).
   \label{eq:energy-flow-operator-smeared}
 \end{equation}
-exists on a dense scattering domain of finite-energy physical states and gives
-an essentially self-adjoint operator after closure.  If \(f\geq0\), its closure
-is positive.  The constant test function satisfies
+The notation means that the limit is first tested between finite-energy
+physical states.  The operation is part of the detector definition only after
+the domain and closure properties below have been supplied.
+\end{construction}
+
+\begin{hypothesis}[Detector existence and self-adjointness]
+\label{hyp:qcd-energy-flow-detector}
+There is a dense scattering domain
+\(\mathcal D_{\rm det}\subset\Hilb_{\rm phys}\), stable under finite products
+of the smeared detector forms used below, such that for every real
+\(f\in C^\infty(S^2)\) the weak limit
+\eqref{eq:energy-flow-operator-smeared} exists on
+\(\mathcal D_{\rm det}\), is symmetric there, and has a unique self-adjoint
+closure.  For each pair \(\Psi,\Phi\in\mathcal D_{\rm det}\), the map
+\[
+  f\longmapsto
+  \bra{\Psi}\widehat{\mathcal E}(f)\ket{\Phi}
+\]
+is a distribution of finite order on \(S^2\).  The constant test function
+satisfies
 \[
   \widehat{\mathcal E}(1)=H_{\mathrm{out}}
 \]
 on outgoing scattering states, where \(H_{\mathrm{out}}\) is the outgoing
 Hamiltonian restricted to the physical scattering Hilbert space.
 \end{hypothesis}
+
+\begin{theorem}[Detector positivity from ANEC]
+\label{thm:qcd-energy-detector-positivity-from-anec}
+Assume Hypothesis~\ref{hyp:qcd-energy-flow-detector}.  Assume in addition
+that the stress tensor satisfies the averaged null energy condition as a
+quadratic-form statement on the same scattering domain: for every future null
+direction \(n^\mu\), every nonnegative transverse smearing
+\(\varphi\), and every \(\Psi\in\mathcal D_{\rm det}\),
+\[
+  \int\dd^2x_\perp\,\varphi(x_\perp)
+  \int_{-\infty}^{\infty}\dd\lambda\,
+  \bra{\Psi}T_{\mu\nu}(x_\perp+\lambda n)n^\mu n^\nu\ket{\Psi}
+  \geq0 .
+\]
+Then the self-adjoint closure of \(\widehat{\mathcal E}(f)\) is positive for
+every \(f\geq0\).
+\end{theorem}
+
+\begin{proof}
+Write a nonnegative smooth angular test function as a finite sum of functions
+supported in coordinate patches on \(S^2\), using a partition of unity.  In
+each patch, the large-\(R\) detector limit is the conformal or asymptotic
+image of a null-energy integral along the complete generator labelled by
+\(\mathbf n\), with transverse smearing determined by the angular support of
+\(f\).  The Jacobian relating the angular measure to transverse measure is
+positive.  The ANEC inequality therefore gives nonnegative quadratic form
+values for each patch.  Summing the patch contributions gives
+\[
+  \bra{\Psi}\widehat{\mathcal E}(f)\ket{\Psi}\geq0
+  \qquad (\Psi\in\mathcal D_{\rm det},\ f\geq0).
+\]
+Since the operator has a unique self-adjoint closure by
+Hypothesis~\ref{hyp:qcd-energy-flow-detector}, positivity of the quadratic
+form on a core implies positivity of the closure by the spectral theorem.
+\end{proof}
+
+\begin{remark}[Status in QCD and in conformal theories]
+\label{rem:qcd-energy-flow-status}
+For free massless fields, the limit in
+\eqref{eq:energy-flow-operator-smeared} is obtained by inserting the mode
+expansion and applying stationary phase at null infinity.  For conformal
+field theories satisfying the light-transform hypotheses of
+Chapter~\ref{ch:cft-light-ray-energy-correlators}, the detector is the
+stress-tensor light-ray operator and positivity is supplied by the ANEC
+theorem stated there.  In four-dimensional QCD, the detector is the expected
+physical calorimeter observable, but its nonperturbative construction depends
+on the existence of the continuum theory, the physical scattering space, and
+the hadronic asymptotic completeness problem stated in
+Open Problem~\ref{op:qcd-asymptotic-completeness}.  Perturbative KLN
+cancellation proves finiteness of regulator-expanded coefficients for
+IRC-continuous measurements after the relevant sums over degenerate states
+and the required factorization steps have been made; it does not construct
+the self-adjoint detector operator on the exact physical Hilbert space.
+\end{remark}
+
+\begin{openproblem}[Energy-flow operators in four-dimensional QCD]
+\label{op:qcd-energy-flow-operator-construction}
+Construct the operators \(\widehat{\mathcal E}(f)\) of
+Construction~\ref{cons:qcd-energy-flow-detector} in continuum
+four-dimensional QCD.  The construction should start from a nonperturbative
+definition of the physical Hilbert space, identify a dense finite-energy
+scattering domain, prove the null-infinity weak limits, prove essential
+self-adjointness or specify the self-adjoint extension selected by detector
+physics, prove positivity from an ANEC theorem in the same framework, and
+show that \(\widehat{\mathcal E}(1)\) agrees with the outgoing Hamiltonian on
+the hadronic scattering subspace.
+\end{openproblem}
 
 Here \(\mathbf n\in S^2\) is a unit spatial direction and \(\dd\Omega\) is the
 rotation-invariant measure on \(S^2\).  The distribution
@@ -2027,6 +2112,81 @@ transverse momentum conservation; the small-angle limit is controlled by a
 collinear operator product of energy-flow insertions.  Both limits require
 resummation because the separated-angle distribution contains large logarithms
 of \(1+\cos\chi\) or \(1-\cos\chi\), respectively.
+
+\subsection{Light-Ray Interpretation and Endpoint Regimes}
+
+The detector density \(\widehat{\mathcal E}(\mathbf n)\) is the QCD analogue
+of the stress-tensor light transform developed in
+Chapter~\ref{ch:cft-light-ray-energy-correlators}.  In a conformal theory the
+light transform is an operator-valued distribution controlled by Lorentzian
+conformal representation theory.  In QCD the coupling runs, so the same
+formula is not a conformal operator identity.  It remains an asymptotic
+detector definition in the physical Hilbert space, and the short-distance
+limits are computed by matching the detector product onto operators whose
+renormalization group evolution is controlled by QCD anomalous dimensions.
+
+For \(0<\chi<\pi\), the EEC is a separated-angle distribution.  Two endpoint
+regions have different expansions.  In the small-angle region set
+\[
+  \theta^2:=2(1-\cos\chi)\ll1 .
+\]
+The product of two nearby detector insertions is matched onto a sum of
+collinear light-ray operators:
+\begin{equation}
+  \widehat{\mathcal E}(\mathbf n_1)\widehat{\mathcal E}(\mathbf n_2)
+  \sim
+  \sum_A C_A(\theta,Q,\mu)\,
+  \mathbb O_A(\mathbf n,\mu),
+  \qquad
+  \mathbf n_1,\mathbf n_2\to\mathbf n .
+  \label{eq:qcd-eec-light-ray-ope-form}
+\end{equation}
+Here \(\mathbb O_A\) are light-ray operators in the collinear direction,
+including twist-two energy-flow moments and their descendants in the
+appropriate channel.  The symbol \(\sim\) denotes an asymptotic expansion
+after smearing against angular test functions supported at
+\(\theta\ll1\).  The coefficient functions \(C_A\) are perturbatively
+computable at large transverse scale \(Q\theta\), and the evolution of
+\(\mathbb O_A\) resums logarithms of \(\theta\).
+
+In the back-to-back region set
+\[
+  q_T^2:=Q^2(1+\cos\chi)\ll Q^2 .
+\]
+Momentum conservation forces the two measured energy deposits to recoil
+against soft and collinear radiation of small total transverse momentum.  The
+factorized form is the transverse-momentum resummation analogue
+\begin{equation}
+  \frac{\dd\sigma}{\dd q_T^2}
+  =
+  H(Q,\mu)
+  \int \frac{\dd^2 b}{(2\pi)^2}\,
+  \ee^{\ii b\cdot q_T}\,
+  J_n(b,\mu,\nu)\,
+  J_{\bar n}(b,\mu,\nu)\,
+  S(b,\mu,\nu)
+  +
+  O(q_T/Q),
+  \label{eq:qcd-eec-back-to-back-factorization}
+\end{equation}
+for a color-singlet source and in a rapidity-renormalization scheme with
+rapidity scale \(\nu\).  The hard, jet, and soft functions have coupled
+\(\mu\)- and \(\nu\)-evolution equations; solving them resums Sudakov
+logarithms of \(q_T/Q\).  The power remainder and the absence or treatment of
+Glauber exchanges are part of the factorization datum.
+
+\begin{controlledapproximation}[Perturbative EEC endpoint calculations]
+\label{ca:qcd-eec-endpoint-calculations}
+A perturbative endpoint calculation of the EEC consists of a declared
+endpoint variable, a factorization or light-ray OPE formula such as
+\eqref{eq:qcd-eec-light-ray-ope-form} or
+\eqref{eq:qcd-eec-back-to-back-factorization}, anomalous dimensions and
+matching coefficients through specified orders, a prescription for matching
+the endpoint expansion to the separated-angle fixed-order distribution, and a
+power correction estimate in \(\theta\) or \(q_T/Q\).  The exact observable
+remains the hadronic detector distribution
+\eqref{eq:qcd-eec-definition}.
+\end{controlledapproximation}
 
 \subsection{Multipoint Correlators and Energy-Flow Polynomials}
 
