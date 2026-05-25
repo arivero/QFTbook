@@ -130,6 +130,11 @@ Current checks:
 - `on_wilson_fisher_epsilon_checks.py`: exact rational arithmetic for the
   singlet \(O(N)\) Wilson-Fisher family, including the \(N=1\) reduction and
   the leading large-\(N\) scaling of \(u=Nx\).
+- `on_sigma_gn_checks.py`: numerical finite checks for the Volume VI
+  \(O(N)\) sigma-model and Gross-Neveu chapter, including the exact
+  gamma-function S-matrix scalar identity, channel unitarity, crossing,
+  finite-dimensional Yang-Baxter component identity, and large-\(N\) cutoff
+  gap and beta-function algebra.
 - `orbifold_twist_weight_checks.py`: finite rational checks for the
   two-dimensional orbifold chapter, including the cyclic permutation twist
   weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the

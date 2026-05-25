@@ -80,6 +80,180 @@ after diagonalization in these channels.  Crossing identifies the particle
 with its conjugate and relates \(S_{ij}^{kl}(\theta)\) to the amplitude at
 \(\ii\pi-\theta\) with one external index crossed.
 
+\section{Exact O(N) Sigma-Model Vector S-Matrix}
+
+For \(N>2\), set
+\[
+  \Delta=\frac1{N-2},
+  \qquad
+  z=-\frac{\ii\theta}{2\pi}.
+\]
+The minimal \(O(N)\)-invariant vector S-matrix of the massive nonlinear
+sigma-model family is
+\begin{equation}
+  S_{ij}^{kl}(\theta)
+  =
+  \sigma_1(\theta)\delta_{ij}\delta^{kl}
+  +\sigma_2(\theta)\delta_i^{\,k}\delta_j^{\,l}
+  +\sigma_3(\theta)\delta_i^{\,l}\delta_j^{\,k},
+  \label{eq:on-sigma-exact-smatrix-index}
+\end{equation}
+with
+\begin{equation}
+  \sigma_2(\theta)
+  =
+  \frac{
+    \Gamma(\Delta+z)\Gamma(\frac12+z)
+    \Gamma(\frac12+\Delta-z)\Gamma(1-z)}
+  {
+    \Gamma(\frac12+\Delta+z)\Gamma(z)
+    \Gamma(1+\Delta-z)\Gamma(\frac12-z)}
+  ,
+  \label{eq:on-sigma-sigma2}
+\end{equation}
+and
+\begin{equation}
+  \sigma_1(\theta)
+  =
+  -\frac{2\pi\ii}{N-2}
+  \frac{\sigma_2(\theta)}{\ii\pi-\theta},
+  \qquad
+  \sigma_3(\theta)=\sigma_1(\ii\pi-\theta)
+  =
+  -\frac{2\pi\ii}{N-2}
+  \frac{\sigma_2(\theta)}{\theta}.
+  \label{eq:on-sigma-sigma1-sigma3}
+\end{equation}
+The word minimal means that no CDD factor, unitary and crossing-symmetric and
+analytic without zeros or poles in the physical strip, has been multiplied
+into the displayed solution.  The formula is a scattering datum.  Identifying
+it with a continuum local sigma-model QFT additionally requires the
+nonperturbative construction and matching problem stated at the end of the
+chapter.
+
+The tensor in \eqref{eq:on-sigma-exact-smatrix-index} is written in the
+Zamolodchikov--Faddeev component convention: it obeys
+\[
+  S_{12}(\theta)S_{13}(\theta+\phi)S_{23}(\phi)
+  =
+  S_{23}(\phi)S_{13}(\theta+\phi)S_{12}(\theta)
+\]
+as a meromorphic identity on \(V^{\otimes3}\).  The common scalar factor
+\(\sigma_2(\theta)\sigma_2(\theta+\phi)\sigma_2(\phi)\) cancels from this
+identity, leaving the rational \(O(N)\)-invariant tensor
+\[
+  I-\frac{\ii a}{\theta}P-\frac{\ii a}{\ii\pi-\theta}K,\qquad
+  a=\frac{2\pi}{N-2},
+\]
+where \(P_{ij}^{kl}=\delta_i^{\,l}\delta_j^{\,k}\) and
+\(K_{ij}^{kl}=\delta_{ij}\delta^{kl}\).  Direct expansion on the basis
+\(e_i\otimes e_j\otimes e_k\) reduces the component equality to rational
+identities in \(\theta,\phi\) and the contraction relation \(K^2=NK\);
+the accompanying calculation check enumerates finite-dimensional instances of
+this tensor identity together with the scalar unitarity and crossing checks.
+
+\begin{proposition}[Channel unitarity and crossing]
+\label{prop:on-sigma-smatrix-unitarity-crossing}
+Let
+\[
+  S_0=N\sigma_1+\sigma_2+\sigma_3,\qquad
+  S_S=\sigma_2+\sigma_3,\qquad
+  S_A=\sigma_2-\sigma_3
+\]
+be the singlet, symmetric-traceless, and antisymmetric channel eigenvalues of
+\eqref{eq:on-sigma-exact-smatrix-index}.  For real rapidity \(\theta\neq0\),
+\[
+  S_R(\theta)S_R(-\theta)=1,\qquad R\in\{0,S,A\}.
+\]
+The coefficient functions satisfy the crossing relations
+\[
+  \sigma_2(\theta)=\sigma_2(\ii\pi-\theta),
+  \qquad
+  \sigma_1(\theta)=\sigma_3(\ii\pi-\theta),
+  \qquad
+  \sigma_3(\theta)=\sigma_1(\ii\pi-\theta).
+\]
+\end{proposition}
+
+\begin{proof}
+The projector decomposition gives the displayed channel eigenvalues because
+\[
+  Q_{ij}^{kl}=\delta_{ij}\delta^{kl},\qquad
+  I_{ij}^{kl}=\delta_i^{\,k}\delta_j^{\,l},\qquad
+  F_{ij}^{kl}=\delta_i^{\,l}\delta_j^{\,k}
+\]
+act on \(V\otimes V\) as \(Q=NP_0\), \(I=P_0+P_S+P_A\), and
+\(F=P_0+P_S-P_A\).  Thus
+\[
+  \sigma_1Q+\sigma_2I+\sigma_3F
+  =
+  S_0P_0+S_SP_S+S_AP_A .
+\]
+
+For real \(\theta\), the gamma-function expression obeys
+\begin{equation}
+  \sigma_2(\theta)\sigma_2(-\theta)
+  =
+  \frac{\theta^2}
+       {\theta^2+\left(\frac{2\pi}{N-2}\right)^2}.
+  \label{eq:on-sigma-sigma2-unitarity-factor}
+\end{equation}
+This follows by multiplying \eqref{eq:on-sigma-sigma2} at \(z\) and \(-z\)
+and cancelling adjacent gamma factors with \(\Gamma(1+z)=z\Gamma(z)\) and
+\(\Gamma(1-z)=(-z)\Gamma(-z)\).  Set
+\[
+  a=\frac{2\pi}{N-2}.
+\]
+The symmetric-traceless and antisymmetric rational factors are
+\[
+  \frac{S_S(\theta)}{\sigma_2(\theta)}
+  =
+  1-\frac{\ii a}{\theta},
+  \qquad
+  \frac{S_A(\theta)}{\sigma_2(\theta)}
+  =
+  1+\frac{\ii a}{\theta}.
+\]
+Multiplying these factors at \(\theta\) and \(-\theta\) gives
+\[
+  1+\frac{a^2}{\theta^2},
+\]
+which cancels the denominator in
+\eqref{eq:on-sigma-sigma2-unitarity-factor}.  For the singlet channel,
+\[
+  \frac{S_0(\theta)}{\sigma_2(\theta)}
+  =
+  1-\frac{\ii a}{\theta}
+  -\frac{\ii Na}{\ii\pi-\theta}.
+\]
+The elementary identity
+\[
+  \left(
+    1-\frac{\ii a}{\theta}
+    -\frac{\ii Na}{\ii\pi-\theta}
+  \right)
+  \left(
+    1+\frac{\ii a}{\theta}
+    -\frac{\ii Na}{\ii\pi+\theta}
+  \right)
+  =
+  1+\frac{a^2}{\theta^2}
+\]
+again cancels \eqref{eq:on-sigma-sigma2-unitarity-factor}.  This proves
+channel unitarity.
+
+Crossing for \(\sigma_2\) is immediate from
+\[
+  -\frac{\ii(\ii\pi-\theta)}{2\pi}
+  =
+  \frac12-z,
+\]
+which interchanges the two numerator gamma factors with the two denominator
+gamma factors in \eqref{eq:on-sigma-sigma2} exactly as displayed.  The
+relations between \(\sigma_1\) and \(\sigma_3\) then follow from their
+definitions in \eqref{eq:on-sigma-sigma1-sigma3}.
+\end{proof}
+
 \section{Sigma-Model Ultraviolet Datum}
 
 The Euclidean \(O(N)\) nonlinear sigma model is defined with field
@@ -114,6 +288,48 @@ and \(h_{ab}=g^{-2}h^{\mathrm{round}}_{ab}\) yields the displayed scalar
 beta function.  A nonperturbative massive QFT construction must then provide
 the Hilbert space, local fields or local algebras, and scattering states whose
 two-particle data match the factorized \(O(N)\)-invariant amplitude.
+
+\section{Large-N Sigma-Model Gap Equation}
+
+The large-\(N\) saddle gives a direct derivation of dimensional transmutation.
+Write the constraint with a Lagrange multiplier \(M^2\) and integrate the
+\(N\) components of \(n\) at a translation-invariant saddle.  With Euclidean
+momentum cutoff \(\Lambda\), and with the 't Hooft coupling
+\[
+  \lambda=N g^2
+\]
+held fixed, the saddle equation is
+\[
+  \frac1{\lambda}
+  =
+  \int^\Lambda\frac{\dd^2p}{(2\pi)^2}\frac1{p^2+M^2}
+  =
+  \frac1{4\pi}\log\!\left(\frac{\Lambda^2+M^2}{M^2}\right).
+\]
+Solving gives
+\[
+  M
+  =
+  \frac{\Lambda}{\sqrt{\exp(4\pi/\lambda)-1}}
+  =
+  \Lambda\exp\!\left(-\frac{2\pi}{\lambda}\right)
+  \left(1+O(e^{-4\pi/\lambda})\right)
+\]
+in the weak-coupling scaling regime.  If the physical mass \(M\) is held
+fixed while the subtraction scale \(\mu\) is changed, the running coupling
+\[
+  \lambda(\mu)=\frac{2\pi}{\log(\mu/M)}
+\]
+satisfies
+\[
+  \mu\frac{\dd\lambda}{\dd\mu}
+  =
+  -\frac{\lambda^2}{2\pi}
+  +O(1/N).
+\]
+This is the large-\(N\) form of asymptotic freedom.  The finite-\(N\)
+one-loop coefficient replaces \(N\) by \(N-2\) in the beta function for the
+unscaled coupling, as in the Ricci-tensor calculation above.
 
 \section{Gross--Neveu Ultraviolet Datum}
 
@@ -150,18 +366,25 @@ the large-\(N\) mass gap equation explicit: for a constant saddle
 \[
   \frac{m}{g^2}
   =
-  m\int^\Lambda\frac{\dd^2p_E}{(2\pi)^2}\frac1{p_E^2+m^2}.
+  Nm\int^\Lambda\frac{\dd^2p_E}{(2\pi)^2}\frac1{p_E^2+m^2}.
 \]
 For \(m\ne0\),
 \[
-  \frac1{g^2}
+  \frac1{Ng^2}
   =
   \frac1{4\pi}\log\!\left(\frac{\Lambda^2+m^2}{m^2}\right).
 \]
 Thus a fixed physical mass \(m\) requires logarithmic dependence of \(g\) on
-the regulator scale.  This derivation is a saddle calculation in a specified
-regularized functional integral; the exact finite-\(N\) factorized QFT is a
-separate construction.
+the regulator scale.  Equivalently, with \(\lambda_{\mathrm{GN}}=Ng^2\),
+\[
+  m
+  =
+  \frac{\Lambda}{\sqrt{\exp(4\pi/\lambda_{\mathrm{GN}})-1}}
+  \sim
+  \Lambda\exp\!\left(-\frac{2\pi}{\lambda_{\mathrm{GN}}}\right).
+\]
+This derivation is a saddle calculation in a specified regularized functional
+integral; the exact finite-\(N\) factorized QFT is a separate construction.
 
 \section{Bootstrap Matching Conditions}
 
