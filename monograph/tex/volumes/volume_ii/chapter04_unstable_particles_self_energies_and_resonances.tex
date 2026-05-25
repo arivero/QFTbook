@@ -669,9 +669,20 @@ overlapping pair of poles, or near a threshold branch point,
 
 \section{Elastic Phase Motion}
 
-In the same approximation, only the \(\ell=0\) partial wave carries the
-resonant scalar exchange.  Since the resonant \(s\)-channel term is independent
-of \(z\), Equation~\eqref{eq:resonance-partial-wave-expansion} gives
+The preceding weak-coupling discussion defines a single-channel elastic
+resonance model after three choices have been made: retain the resonant
+\(s\)-channel exchange, discard smooth background and crossed-channel pieces,
+and replace the absorptive part by the width function
+\[
+  W(s)=\frac{g^2}{32\pi}\rho_1(s)
+\]
+on the elastic real interval.  These choices are the approximation.  Once they
+have been made, the corresponding Breit--Wigner elastic \(S\)-matrix element is
+a definite rational function and its elastic unitarity is exact in the model.
+
+Only the \(\ell=0\) partial wave carries the retained scalar exchange.  Since
+the resonant \(s\)-channel term is independent of \(z\),
+Equation~\eqref{eq:resonance-partial-wave-expansion} gives
 \[
   a_0^{(s)}(s)=\frac{\mathcal M_s(s)}{32\pi},
   \qquad
@@ -682,14 +693,19 @@ of \(z\), Equation~\eqref{eq:resonance-partial-wave-expansion} gives
 Equivalently,
 \[
   \mathcal M_s(s)
-  \approx
+  =
   -16\pi\ii\sqrt{\frac{s}{s-4m_1^2}}\,
   \bigl(S_0(s)-1\bigr),
 \]
-one obtains, near the resonance,
+for the angle-independent elastic partial wave in this normalization.  The
+Breit--Wigner elastic approximant is therefore
 \[
-  S_0(s)
-  \approx
+  S_0^{\rm BW}(s)
+  :=
+  1+
+  \frac{\ii\rho_1(s)}{16\pi}
+  \frac{g^2}{M_R^2-s-\ii W(s)}
+  =
   \frac{
     M_R^2-s+\ii W(s)
   }{
@@ -700,29 +716,36 @@ one obtains, near the resonance,
   =
   \frac{g^2}{32\pi}\rho_1(s).
 \]
-For real \(s\) in the elastic interval, the numerator is the complex
-conjugate of the denominator, so \(|S_0(s)|=1\). The resonance is expressed
-as rapid phase motion. If
+For real \(s\) in the elastic interval, \(W(s)\) is real and the numerator is
+the complex conjugate of the denominator.  Hence
 \[
-  S_0(s)=\ee^{2\ii\delta_0(s)},
+  |S_0^{\rm BW}(s)|=1
 \]
-then the phase shift \(\delta_0\) changes rapidly through the point where
-\(\operatorname{Re}F(s)\) vanishes.
+exactly in this elastic model.  The physical partial wave differs from
+\(S_0^{\rm BW}\) by the omitted background, crossed-channel, inelastic, and
+higher-order corrections; these are corrections to the model, not violations
+of the algebraic unitarity of the Breit--Wigner factor itself.  The resonance
+is expressed as rapid phase motion. If
+\[
+  S_0^{\rm BW}(s)=\ee^{2\ii\delta_0^{\rm BW}(s)},
+\]
+then the phase shift \(\delta_0^{\rm BW}\) changes rapidly through the point
+where \(\operatorname{Re}F(s)\) vanishes.
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95]
   \begin{scope}
     \draw[->,line width=0.75pt] (-2.0,0)--(2.15,0)
-      node[right] {\(\operatorname{Re}S_0\)};
+      node[right] {\(\operatorname{Re}S_0^{\rm BW}\)};
     \draw[->,line width=0.75pt] (0,-2.0)--(0,2.15)
-      node[above] {\(\operatorname{Im}S_0\)};
+      node[above] {\(\operatorname{Im}S_0^{\rm BW}\)};
     \draw[green!55!black,dashed,line width=0.9pt] (0,0) circle (1.42);
     \draw[blue!70!black,line width=1.25pt]
       (1.38,-0.08) arc[start angle=-3,end angle=345,radius=1.42];
     \draw[blue!70!black,->,line width=1.0pt]
       (0.2,-1.4) arc[start angle=-82,end angle=-20,radius=1.42];
     \node[green!55!black,anchor=west,font=\small] at (1.78,1.0)
-      {\(|S_0|=1\)};
+      {\(|S_0^{\rm BW}|=1\)};
   \end{scope}
   \begin{scope}[xshift=6.4cm]
     \draw[->,line width=0.75pt] (-0.25,0)--(5.2,0) node[right] {\(s\)};

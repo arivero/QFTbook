@@ -138,6 +138,15 @@
   up to the stated normalization convention for the cubic interaction.
 - Elastic partial-wave unitarity is represented by phase motion of \(S_0(s)\),
   not by a physical-axis divergence.
+- 2026-05-24 issue #392 pass: the Breit--Wigner elastic factor is now defined
+  as \(S_0^{\rm BW}\).  The approximation lies in the single-channel resonant
+  truncation and the chosen width function \(W(s)\); after this truncation,
+  \[
+    S_0^{\rm BW}(s)=
+    {M_R^2-s+iW(s)\over M_R^2-s-iW(s)}
+  \]
+  is exactly elastic-unitary on the real elastic interval because the numerator
+  is the complex conjugate of the denominator.
 - For the angle-independent resonant \(s\)-channel exchange,
   \(a_0^{(s)}=\mathcal M_s/(32\pi)\), hence
   \[
