@@ -1,0 +1,128 @@
+\chapter{Microlocal Spectrum Condition And Hadamard Geometry}
+\label{ch:curved-microlocal-spectrum-condition}
+
+\ConventionsMixed
+
+This chapter develops the microlocal form of the positive-frequency condition
+on curved spacetimes.  The replacement for translation-invariant spectral
+support is a wavefront-set condition on distributions, and the local
+geometric form of the two-point function is the Hadamard parametrix.
+
+\section{Wavefront Set}
+
+Let \(u\in\mathcal D'(X)\) be a distribution on a smooth manifold \(X\).  A
+point \((x,k)\in T^*X\setminus\{0\}\) is absent from the wavefront set
+\(\operatorname{WF}(u)\) if there is a cutoff \(\chi\in C_c^\infty(X)\) with
+\(\chi(x)\ne0\) and a conic neighborhood \(\Gamma\) of \(k\) such that the
+Fourier transform of \(\chi u\) decays faster than every power in \(\Gamma\).
+The wavefront set records both the singular support and the covector
+directions of oscillation.
+
+For distributions \(u,v\), the product \(uv\) is defined if there is no
+\((x,k)\in\operatorname{WF}(u)\) and \((x,-k)\in\operatorname{WF}(v)\).  This
+criterion is the local analytic reason that Wick products and time-ordered
+products require subtraction before coincident points are taken.
+
+\section{Hadamard Two-Point Condition}
+
+Let \(M\) be a globally hyperbolic Lorentzian spacetime and let \(\phi\) be a
+real scalar field satisfying
+\[
+  P\phi=0,\qquad P=\Box_g+m^2+\xi R .
+\]
+A quasifree state is determined by its two-point function
+\[
+  \omega_2(x,y)=\omega(\phi(x)\phi(y)).
+\]
+The microlocal Hadamard condition is
+\[
+  \operatorname{WF}(\omega_2)
+  =
+  \{(x,k_x;y,-k_y): (x,k_x)\sim(y,k_y),\ k_x\in\overline V_+^*\}.
+\]
+Here \((x,k_x)\sim(y,k_y)\) means that \(x\) and \(y\) are joined by a null
+geodesic and that \(k_y\) is the parallel transport of \(k_x\) along that
+geodesic.  The cone \(\overline V_+^*\) is the closed future causal cone in
+the cotangent space.
+
+\section{Hadamard Parametrix}
+
+In a geodesically convex neighborhood, the singular part of a four-dimensional
+Hadamard two-point function has the form
+\[
+  H_\epsilon(x,y)
+  =
+  \frac1{8\pi^2}
+  \left[
+    \frac{U(x,y)}{\sigma_\epsilon(x,y)}
+    +
+    V(x,y)\log\!\left(\frac{\sigma_\epsilon(x,y)}{\ell^2}\right)
+  \right],
+\]
+where \(\sigma(x,y)\) is one half the squared geodesic distance,
+\[
+  \sigma_\epsilon(x,y)=\sigma(x,y)+\ii\epsilon(t(x)-t(y))+\epsilon^2,
+\]
+\(U=\Delta^{1/2}\) is the square root of the van Vleck determinant, \(V\) is
+determined recursively by the wave operator \(P\), and \(\ell\) is a length
+scale.  A Hadamard state has
+\[
+  \omega_2(x,y)-H_\epsilon(x,y)
+\]
+smooth in the neighborhood, after the distributional boundary value is taken.
+
+\section{Propagation Of Singularities}
+
+For a real principal type operator \(P\), singularities of solutions to
+\(Pu=0\) propagate along the Hamiltonian flow of the principal symbol.  For
+the Klein--Gordon operator the principal symbol is
+\[
+  p(x,k)=g^{\mu\nu}(x)k_\mu k_\nu .
+\]
+The Hamiltonian flow on \(p=0\) is the null geodesic flow lifted to
+cotangent space.  Hence once the two-point function has positive-frequency
+wavefront directions on one Cauchy surface, the equation of motion propagates
+those directions along null geodesics.  This is the geometric content of the
+microlocal spectrum condition.
+
+\section{Wick Products}
+
+For a Hadamard state, define the Wick square by point splitting:
+\[
+  :\!\phi^2\!:_H(f)
+  =
+  \int_M f(x)
+  \lim_{y\to x}
+  \bigl(\phi(x)\phi(y)-H(x,y)\mathbf 1\bigr)\,\dd\operatorname{vol}_g(x).
+\]
+Changing the parametrix scale or adding a smooth local bisolution changes the
+Wick square by a local curvature polynomial:
+\[
+  :\!\phi^2\!:'_H
+  =
+  :\!\phi^2\!:_H
+  +
+  c_1R+c_2m^2 .
+\]
+Thus the local covariant field is defined only after the finite local
+renormalization coordinates are specified.
+
+\section{Time-Ordered Products}
+
+The time-ordered two-point distribution has a wavefront set with both
+future and past directions arranged according to time ordering.  Products of
+time-ordered distributions at coincident points violate the wavefront-set
+product criterion.  Perturbative algebraic renormalization extends these
+distributions from configuration space with diagonals removed to the full
+configuration space.  The extension freedom is local and covariant, with
+degree bounded by scaling.  Contact terms in curved spacetime are precisely
+the local distributions supported on these diagonals, with covariance and
+Ward identities imposed as constraints.
+
+\begin{openproblem}[Interacting microlocal spectrum condition]
+\label{op:interacting-microlocal-spectrum-condition}
+Construct interacting locally covariant QFTs on curved backgrounds with
+Hadamard states, local Wick and time-ordered products, stress tensor,
+background gauge fields, and anomaly lines, and prove the microlocal spectrum
+condition for the resulting nonperturbative Wightman-type distributions.
+\end{openproblem}

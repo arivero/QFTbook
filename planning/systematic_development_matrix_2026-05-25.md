@@ -205,6 +205,35 @@ development layers:
   adiabatic states, detector response, de Sitter states, and backreaction
   boundaries.
 
+## Current Ninth-Chapter Pass
+
+The ninth-chapter pass adds nonabelian integrable examples,
+lower-dimensional supersymmetric models, categorical topological data,
+categorical symmetry, anomalous transport, stochastic constructive machinery,
+and microlocal curved-background analysis:
+
+- Volume VI: \(O(N)\), Gross--Neveu, and sigma-model families through
+  internal-symmetry scattering channels, projectors, asymptotic freedom,
+  auxiliary-field mass-gap analysis, and bootstrap matching conditions.
+- Volume VII: two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg,
+  sigma-model, and GLSM data, including chiral rings, residue pairings,
+  B-type sectors, quotient phases, and infrared comparison problems.
+- Volume VIII: boundaries, defects, and categories in topological QFT,
+  including interval composition, defect fusion, braided line categories,
+  Chern--Simons boundary data, and the BV-BFV boundary mechanism.
+- Volume IX: categorical symmetry and defect fusion, including defect action
+  on local operators, junction spaces, algebra-object condensation, and
+  anomaly obstructions.
+- Volume X: anomalous and topological transport through source variations,
+  anomaly equations, Kubo definitions, equilibrium Chern--Simons terms,
+  entropy constraints, and contact-term dependence.
+- Volume XI: stochastic quantization and singular SPDE through Langevin
+  invariant-measure identities, regularized field equations, Wick
+  subtractions, \(\Phi^4_3\) dynamics, and OS-data obligations.
+- Volume XII: microlocal spectrum condition and Hadamard geometry through
+  wavefront sets, Hadamard parametrices, propagation of singularities, Wick
+  products, and time-ordered extension freedom.
+
 ## Next Frontier After This Pass
 
 - Add proof appendices where current chapters state theorem boundaries.

@@ -1,0 +1,206 @@
+\chapter{O(N), Gross--Neveu, And Sigma-Model Families}
+\label{ch:integrable-on-gross-neveu-sigma-model-families}
+
+\ConventionsMixedCFT
+
+This chapter introduces asymptotically free two-dimensional model families
+whose exact scattering data carry nonabelian internal symmetry.  The aim is to
+make explicit which pieces of the exact description are consequences of
+symmetry, analyticity, and factorization, and which pieces require a
+nonperturbative construction of the underlying local QFT.
+
+\section{Internal-Symmetry Scattering Data}
+
+Let \(G\) be a compact Lie group and let \(V\) be a finite-dimensional
+unitary representation.  A massive particle multiplet with rapidity
+\(\theta\) has one-particle space
+\[
+  \Hilb_1=L^2(\R,\dd\theta)\otimes V .
+\]
+A factorized two-particle scattering operator is a meromorphic family
+\[
+  S_{VV}(\theta):V\otimes V\longrightarrow V\otimes V,
+\]
+where \(\theta=\theta_1-\theta_2\).  \(G\)-invariance means
+\[
+  S_{VV}(\theta)\,(\rho(g)\otimes\rho(g))
+  =
+  (\rho(g)\otimes\rho(g))\,S_{VV}(\theta)
+\]
+for every \(g\in G\).  If
+\[
+  V\otimes V\simeq \bigoplus_\lambda m_\lambda V_\lambda ,
+\]
+then Schur decomposition gives
+\[
+  S_{VV}(\theta)
+  =
+  \bigoplus_\lambda S_\lambda(\theta)\otimes I_{V_\lambda}
+\]
+whenever the multiplicities \(m_\lambda\) are one.  With multiplicities, the
+coefficient \(S_\lambda(\theta)\) is an endomorphism of the multiplicity
+space.  Thus symmetry reduces the scattering problem to scalar or finite
+matrix meromorphic functions, but unitarity, crossing, pole residues, and the
+Yang--Baxter equation still constrain them.
+
+\section{O(N)-Invariant Two-Particle Form}
+
+For the vector representation \(V=\R^N\) of \(O(N)\), an invariant
+two-particle amplitude has the index form
+\[
+  S_{ij}^{kl}(\theta)
+  =
+  \sigma_1(\theta)\delta_{ij}\delta^{kl}
+  +\sigma_2(\theta)\delta_i^{\,k}\delta_j^{\,l}
+  +\sigma_3(\theta)\delta_i^{\,l}\delta_j^{\,k}.
+\]
+Equivalently, decompose
+\[
+  V\otimes V
+  =
+  \mathbf 1\oplus \operatorname{Sym}^2_0(V)\oplus \wedge^2V .
+\]
+Let \(P_0,P_S,P_A\) be the corresponding projectors.  Then
+\[
+  S(\theta)=S_0(\theta)P_0+S_S(\theta)P_S+S_A(\theta)P_A .
+\]
+The two descriptions are related by applying the projectors to the index
+formula.  For example,
+\[
+  P_0{}_{ij}^{kl}=\frac1N\delta_{ij}\delta^{kl},\qquad
+  P_A{}_{ij}^{kl}=\frac12(\delta_i^{\,k}\delta_j^{\,l}
+  -\delta_i^{\,l}\delta_j^{\,k}).
+\]
+The amplitude is unitary on the real rapidity axis when
+\[
+  S_R(\theta)S_R(-\theta)=1,\qquad
+  R\in\{0,S,A\},
+\]
+after diagonalization in these channels.  Crossing identifies the particle
+with its conjugate and relates \(S_{ij}^{kl}(\theta)\) to the amplitude at
+\(\ii\pi-\theta\) with one external index crossed.
+
+\section{Sigma-Model Ultraviolet Datum}
+
+The Euclidean \(O(N)\) nonlinear sigma model is defined with field
+\[
+  n:\Sigma\longrightarrow S^{N-1}\subset\R^N,\qquad n\cdot n=1,
+\]
+and action
+\[
+  S_{\sigma}[n]
+  =
+  \frac1{2g^2}\int_\Sigma \dd^2x\,\partial_\mu n\cdot\partial_\mu n .
+\]
+The parameter \(g\) is the coefficient of the kinetic term in the displayed
+regularized path integral.  Perturbation theory around a local coordinate
+chart on \(S^{N-1}\) gives the one-loop running
+\[
+  \mu\frac{\dd g}{\dd\mu}
+  =
+  -\frac{N-2}{2\pi}g^3+O(g^5).
+\]
+The sign follows from the Ricci tensor of the round target:
+\[
+  R_{ab}=(N-2)h_{ab}.
+\]
+The corresponding sigma-model beta tensor has leading term
+\[
+  \mu\frac{\dd h_{ab}}{\dd\mu}
+  =
+  \frac1{2\pi}R_{ab}+O(R^2),
+\]
+and \(h_{ab}=g^{-2}h^{\mathrm{round}}_{ab}\) yields the displayed scalar
+beta function.  A nonperturbative massive QFT construction must then provide
+the Hilbert space, local fields or local algebras, and scattering states whose
+two-particle data match the factorized \(O(N)\)-invariant amplitude.
+
+\section{Gross--Neveu Ultraviolet Datum}
+
+Let \(\psi^i\), \(i=1,\ldots,N\), be Majorana fermions in two Lorentzian
+dimensions.  The \(O(N)\) Gross--Neveu action is
+\[
+  S_{\mathrm{GN}}
+  =
+  \int\dd^2x\,
+  \left[
+    \frac{\ii}{2}\psi^i\gamma^\mu\partial_\mu\psi^i
+    +\frac{g^2}{8}(\bar\psi^i\psi^i)^2
+  \right].
+\]
+Introducing an auxiliary scalar \(\sigma\) gives the equivalent finite-cutoff
+functional
+\[
+  S_{\mathrm{GN}}[\psi,\sigma]
+  =
+  \int\dd^2x\,
+  \left[
+    \frac{\ii}{2}\psi^i\gamma^\mu\partial_\mu\psi^i
+    -\frac12\sigma\,\bar\psi^i\psi^i
+    -\frac1{2g^2}\sigma^2
+  \right],
+\]
+because the Gaussian equation of motion is
+\[
+  \sigma=-\frac{g^2}{2}\bar\psi^i\psi^i .
+\]
+Substitution returns the quartic interaction.  The auxiliary-field form makes
+the large-\(N\) mass gap equation explicit: for a constant saddle
+\(\sigma=m\),
+\[
+  \frac{m}{g^2}
+  =
+  m\int^\Lambda\frac{\dd^2p_E}{(2\pi)^2}\frac1{p_E^2+m^2}.
+\]
+For \(m\ne0\),
+\[
+  \frac1{g^2}
+  =
+  \frac1{4\pi}\log\!\left(\frac{\Lambda^2+m^2}{m^2}\right).
+\]
+Thus a fixed physical mass \(m\) requires logarithmic dependence of \(g\) on
+the regulator scale.  This derivation is a saddle calculation in a specified
+regularized functional integral; the exact finite-\(N\) factorized QFT is a
+separate construction.
+
+\section{Bootstrap Matching Conditions}
+
+For an asymptotically free model family, exact scattering data must match at
+least four layers:
+\[
+  (G,V)\quad
+  \longleftrightarrow\quad
+  \text{particle multiplets},
+\]
+\[
+  \beta(g)<0\quad
+  \longleftrightarrow\quad
+  \text{dynamically generated mass scale},
+\]
+\[
+  \text{local currents and stress tensor}\quad
+  \longleftrightarrow\quad
+  \text{form-factor residues},
+\]
+\[
+  \text{finite-volume spectrum}\quad
+  \longleftrightarrow\quad
+  \text{TBA kernels from }-\ii\partial_\theta\log S_R(\theta).
+\]
+The last line is checked by inserting the channel eigenvalues into the TBA
+kernel
+\[
+  K_R(\theta)=\frac1{2\pi\ii}\partial_\theta\log S_R(\theta).
+\]
+The ultraviolet central charge extracted from the small-volume TBA must agree
+with the short-distance fields that define the regulated model.  This is an
+equality of two constructed objects only after the regulator-to-continuum map
+and the scattering construction have been specified.
+
+\begin{openproblem}[Constructive factorizing examples]
+\label{op:constructive-factorizing-on-gn}
+Construct the \(O(N)\) sigma model and Gross--Neveu factorizing QFTs as local
+QFTs with Hilbert space, local algebras, conserved currents, mass gap,
+Haag--Ruelle scattering states, and exact S-matrix, in one framework where the
+ultraviolet regulator data and the bootstrap data are proved to match.
+\end{openproblem}

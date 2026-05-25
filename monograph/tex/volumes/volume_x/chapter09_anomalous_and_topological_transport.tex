@@ -1,0 +1,163 @@
+\chapter{Anomalous And Topological Transport}
+\label{ch:thermal-anomalous-topological-transport}
+
+\ConventionsMixed
+
+This chapter studies transport terms fixed by anomalies and topology.  The
+logic is real-time response first: a transport coefficient is defined by a
+correlator or by the response of a generating functional to background
+sources, and anomaly equations constrain the allowed terms.
+
+\section{Hydrodynamic Source Datum}
+
+Let \(W[g,A]\) be the equilibrium generating functional for a QFT with
+stress tensor \(T^{\mu\nu}\) and current \(J^\mu\).  Variations define
+\[
+  \delta W
+  =
+  \frac12\int\dd^Dx\,\sqrt{-g}\,
+  \langle T^{\mu\nu}\rangle\,\delta g_{\mu\nu}
+  +
+  \int\dd^Dx\,\sqrt{-g}\,
+  \langle J^\mu\rangle\,\delta A_\mu .
+\]
+Hydrodynamic variables are a temperature \(T\), velocity \(u^\mu\), and
+chemical potential \(\mu\), with
+\[
+  u^\mu u_\mu=-1.
+\]
+The ideal constitutive relations are
+\[
+  T^{\mu\nu}_{(0)}=\epsilon u^\mu u^\nu+p\Delta^{\mu\nu},\qquad
+  J^\mu_{(0)}=n u^\mu,
+\]
+where
+\[
+  \Delta^{\mu\nu}=g^{\mu\nu}+u^\mu u^\nu .
+\]
+
+\section{Anomaly Equation}
+
+In four dimensions, a \(U(1)^3\) anomaly has the local equation
+\[
+  \nabla_\mu J^\mu
+  =
+  \frac{C}{32\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}.
+\]
+The coefficient \(C\) is part of the current normalization.  The magnetic
+field and vorticity in the local rest frame are
+\[
+  B^\mu=\frac12\epsilon^{\mu\nu\rho\sigma}u_\nu F_{\rho\sigma},
+  \qquad
+  \omega^\mu=\frac12\epsilon^{\mu\nu\rho\sigma}
+  u_\nu\nabla_\rho u_\sigma .
+\]
+The first-derivative parity-odd current terms have the form
+\[
+  J^\mu_{\mathrm{odd}}
+  =
+  \xi_B B^\mu+\xi_\omega\omega^\mu .
+\]
+The coefficients \(\xi_B,\xi_\omega\) are transport coefficients.  They must
+be defined either by Kubo formulae or by differentiating an equilibrium
+generating functional.
+
+\section{Kubo Definitions}
+
+In flat space at temperature \(T\), define retarded correlators
+\[
+  G^{R}_{AB}(t,\mathbf x)
+  =
+  -\ii\theta(t)\langle[A(t,\mathbf x),B(0)]\rangle_\beta .
+\]
+For a current response to a weak magnetic field, the chiral magnetic
+coefficient is
+\[
+  \xi_B
+  =
+  \lim_{k\to0}
+  \frac{\ii}{2k}
+  \epsilon_{ijn}\,
+  G^R_{J^iJ^j}(\omega=0,\mathbf k=k\hat e_n).
+\]
+This formula is a definition of the transport coefficient in the declared
+static, homogeneous limit.  If the limits \(\omega\to0\) and \(k\to0\) fail
+to commute, the chosen order is part of the observable.
+
+\section{Equilibrium Derivation}
+
+Place the system on a stationary background
+\[
+  \dd s^2= -\ee^{2\sigma}(dt+a_i dx^i)^2+h_{ij}dx^i dx^j,
+  \qquad
+  A=A_0(dt+a_i dx^i)+A_i dx^i .
+\]
+Gauge and Kaluza--Klein invariant three-dimensional fields are
+\[
+  \mathcal A_i=A_i-A_0a_i,\qquad A_0 .
+\]
+An anomalous equilibrium functional contains Chern--Simons-type terms
+\[
+  W_{\mathrm{odd}}
+  =
+  \int_{\Sigma_3}
+  \left[
+    c_1 A_0\,\mathcal A\wedge\dd\mathcal A
+    +
+    c_2 A_0^2\,\mathcal A\wedge\dd a
+    +
+    c_3 A_0^3\,a\wedge\dd a
+  \right],
+\]
+with coefficients constrained by the anomaly and by large gauge
+transformations.  Differentiating this functional with respect to
+\(\mathcal A_i\) and \(a_i\) gives the parity-odd equilibrium pieces of
+\(J^i\) and \(T^{0i}\).  The derivation is algebraic once the equilibrium
+functional and its gauge-variation convention are fixed.
+
+\section{Entropy Constraint}
+
+Let
+\[
+  \nabla_\mu T^{\mu\nu}=F^{\nu\lambda}J_\lambda,\qquad
+  \nabla_\mu J^\mu=\mathcal A
+\]
+with anomaly density \(\mathcal A\).  The canonical entropy current is
+\[
+  S^\mu_{\mathrm{can}}
+  =
+  p\beta^\mu-\beta_\nu T^{\mu\nu}-\alpha J^\mu,
+  \qquad
+  \beta^\mu=\frac{u^\mu}{T},\quad \alpha=\frac{\mu}{T}.
+\]
+Using the thermodynamic identity
+\[
+  \dd p=s\,\dd T+n\,\dd\mu
+\]
+and the conservation equations, the divergence of \(S^\mu_{\mathrm{can}}\)
+contains the dissipative products plus the anomaly term
+\[
+  -\alpha\,\mathcal A .
+\]
+Parity-odd additions to \(S^\mu\) can cancel nondissipative anomaly-induced
+terms, leaving nonnegative entropy production from dissipative tensors.  This
+calculation fixes relations among \(\xi_B,\xi_\omega\) and anomaly
+coefficients, up to terms not seen by the entropy analysis.
+
+\section{Topological Terms And Contact Terms}
+
+Equilibrium Chern--Simons terms may change local current correlators by
+contact terms.  A transport coefficient must therefore state whether the
+current is covariant or consistent, which background functional is used, and
+which contact terms are included in the retarded correlator.  The physically
+measured response is attached to the source protocol, not merely to a local
+operator symbol.
+
+\begin{openproblem}[Nonperturbative anomalous transport]
+\label{op:nonperturbative-anomalous-transport}
+Derive anomaly-induced transport coefficients in interacting QFT directly
+from nonperturbative KMS states, local current algebras, Ward identities,
+contact terms, and hydrodynamic scaling limits, with the order of limits and
+source protocol stated as part of the theorem.
+\end{openproblem}

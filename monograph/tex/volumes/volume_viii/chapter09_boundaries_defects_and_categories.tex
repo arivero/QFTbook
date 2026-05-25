@@ -1,0 +1,132 @@
+\chapter{Boundaries, Defects, And Categories In Topological QFT}
+\label{ch:tqft-boundaries-defects-categories}
+
+\ConventionsEuclidean
+
+This chapter develops boundary and defect data in topological QFT.  The
+central idea is that a topological theory assigns algebraic objects not only
+to closed manifolds, but also to strata, interfaces, and corners, and that
+composition of bordisms becomes composition of the corresponding objects.
+
+\section{Boundary Condition Datum}
+
+Let \(Z\) be an \(n\)-dimensional topological theory.  A boundary condition
+\(B\) is an assignment of a state space or category to a boundary component
+together with compatible amplitudes for bordisms with that boundary label.
+For an interval \(I\) with endpoints labelled by \(B_0,B_1\), the theory
+assigns a space
+\[
+  \mathcal H(B_0,B_1).
+\]
+Gluing two intervals gives a composition map
+\[
+  \mathcal H(B_0,B_1)\otimes \mathcal H(B_1,B_2)
+  \longrightarrow
+  \mathcal H(B_0,B_2).
+\]
+Associativity is the equality of amplitudes for the two decompositions of a
+three-segment interval.  Thus boundary conditions in a one-dimensional
+topological theory form a category.
+
+\section{Defect Fusion}
+
+A codimension-one defect \(D_{12}\) from a theory \(Z_1\) to a theory \(Z_2\)
+is placed on a separating hypersurface.  Fusion is defined by bringing two
+parallel defects together:
+\[
+  D_{12}\circ D_{23}=D_{13}.
+\]
+For a topological defect, correlation functions are unchanged under
+deformations that keep the ordering of defects and avoid operator insertions.
+The fusion product is associative when the three-defect collision limit is
+independent of the relative distances used to take the limit.  This
+associativity is an analytic statement in a QFT realization and an axiom in a
+pure bordism-functor presentation.
+
+\section{Line Defects In Three-Dimensional TQFT}
+
+In a three-dimensional oriented TQFT, line defects form a monoidal category
+\(\mathcal C\).  The tensor product is parallel fusion:
+\[
+  X\otimes Y=\lim_{\epsilon\to0}X(\epsilon)Y(0).
+\]
+Braiding is obtained by exchanging two topological lines in \(\R^3\):
+\[
+  c_{X,Y}:X\otimes Y\longrightarrow Y\otimes X.
+\]
+The hexagon identities are equalities of isotopies of three braided lines.
+If every line has a dual line and the vacuum line has endomorphism ring
+\(\C\), then \(\mathcal C\) is rigid and has a distinguished unit object.
+Additional finiteness, semisimplicity, and nondegenerate braiding hypotheses
+give a modular tensor category; these hypotheses are part of the claimed
+three-dimensional theory, not consequences of topology alone.
+
+\section{Boundary Categories For Chern--Simons Theory}
+
+For compact \(G\) Chern--Simons theory at level \(k\), a Wilson line labelled
+by a representation \(R\) is
+\[
+  W_R(\gamma)=\operatorname{tr}_R\,\mathcal P
+  \exp\!\left(\int_\gamma A\right).
+\]
+Quantum gauge invariance restricts the admissible line labels.  For simply
+connected compact simple \(G\), the expected finite label set is the set of
+integrable highest weights at level \(k\).  Fusion of line defects is then
+encoded by the corresponding representation category of the affine algebra or
+quantum group at a root of unity, depending on the construction chosen.
+
+The boundary chiral algebra is not an extra decoration.  It is the algebraic
+object that describes states on a surface with boundary and line endpoints.
+The equality between bulk Chern--Simons amplitudes and boundary conformal
+blocks is a gluing statement relating two constructions of the same
+surface-state spaces.
+
+\section{BV-BFV Boundary Mechanism}
+
+For a gauge theory on a manifold \(M\) with boundary, the BV variation has the
+form
+\[
+  \delta S_{\mathrm{BV}}
+  =
+  \iota_{Q_{\mathrm{BV}}}\omega_{\mathrm{BV}}
+  +
+  \pi_{\partial M}^*\alpha_{\partial}.
+\]
+The boundary one-form \(\alpha_{\partial}\) has differential
+\[
+  \omega_{\partial}=\delta\alpha_{\partial}.
+\]
+The pair \((\mathcal F_{\partial},\omega_{\partial})\) is the BFV phase
+space, and the bulk BV vector field induces a boundary cohomological vector
+field when the master equation is compatible with the boundary term.  A
+boundary condition is a Lagrangian subspace or derived Lagrangian object
+\[
+  \mathcal L_{\partial}\subset\mathcal F_{\partial}
+\]
+on which the boundary variation vanishes.  This is the local mechanism behind
+boundary categories in gauge-theoretic TQFTs.
+
+\section{Extended Assignment}
+
+An extended \(n\)-dimensional TQFT assigns:
+\[
+  Z(M^n)\in\C,\qquad
+  Z(\Sigma^{n-1})\in\mathrm{Vect},
+\]
+\[
+  Z(Y^{n-2})\in\mathrm{Cat},
+\]
+and higher categorical objects to lower-dimensional strata, in a target
+\((\infty,n)\)-category chosen before the assignment is made.  Dualizability
+conditions ensure that gluing along all strata is represented by composition
+and evaluation maps.  In a QFT realization, the target objects must be
+constructed from regulated state spaces, boundary operator algebras, and
+defect junction spaces.
+
+\begin{openproblem}[Gauge-theoretic extended construction]
+\label{op:gauge-theoretic-extended-tqft-construction}
+Construct the extended boundary and defect categories of four-dimensional
+cohomological gauge theories directly from regulated BV-BFV data, including
+instanton and monopole boundary strata, line and surface defects, gluing
+maps, orientations, and anomaly lines.
+\end{openproblem}

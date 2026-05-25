@@ -1,0 +1,165 @@
+\chapter{Two-Dimensional Supersymmetric Models}
+\label{ch:susy-two-dimensional-lg_sigma_glsm}
+
+\ConventionsMixed
+
+This chapter begins the lower-dimensional supersymmetric examples.  The main
+objects are \(2D\) \(\mathcal N=(2,2)\) Landau--Ginzburg models, sigma
+models, and gauged linear sigma models.  Each is treated as a QFT datum with
+declared fields, symmetries, operator coordinates, and infrared questions.
+
+\section{The N=(2,2) Algebra}
+
+In Lorentzian signature let \(P_\pm=P_0\pm P_1\).  The supercharges
+\[
+  Q_\pm,\quad \bar Q_\pm
+\]
+obey
+\[
+  \{Q_+,\bar Q_+\}=2P_+,\qquad
+  \{Q_-,\bar Q_-\}=2P_-,
+\]
+with all other anticommutators vanishing in the absence of central charges.
+An \(R\)-symmetry assignment consists of vector and axial charges
+\[
+  F_V,\qquad F_A,
+\]
+whose action on supercharges is part of the model datum.  A BPS state with
+central charge \(Z\) obeys an inequality obtained by positivity of
+\((Q+\ee^{\ii\alpha}\bar Q)^\dagger(Q+\ee^{\ii\alpha}\bar Q)\); the saturated
+states are kernels of a corresponding linear combination of supercharges.
+
+\section{Landau--Ginzburg Datum}
+
+A Landau--Ginzburg model with chiral superfields \(\Phi^i\) is specified by
+a target \(X=\C^n\) or a complex manifold chart, a Kahler potential \(K\), and
+a holomorphic superpotential
+\[
+  W:X\longrightarrow\C .
+\]
+In components, after eliminating auxiliary fields, the bosonic potential is
+\[
+  V(\phi)=g^{i\bar j}\partial_iW(\phi)\,
+  \overline{\partial_jW(\phi)}.
+\]
+Supersymmetric classical vacua are critical points
+\[
+  \partial_iW(\phi)=0.
+\]
+When the critical points are isolated and nondegenerate, the chiral ring is
+\[
+  \mathcal R_W
+  =
+  \C[\phi^1,\ldots,\phi^n]\big/
+  \bigl(\partial_1W,\ldots,\partial_nW\bigr).
+\]
+The multiplication is ordinary polynomial multiplication followed by quotient.
+The residue pairing is
+\[
+  \langle f,g\rangle_{\mathrm{res}}
+  =
+  \sum_{\partial W=0}
+  \frac{f(\phi)g(\phi)}
+  {\det(\partial_i\partial_jW)(\phi)} ,
+\]
+provided all critical points are nondegenerate.  If degeneracies occur, the
+Jacobian algebra remains the algebraic chiral ring, while the analytic
+definition of the pairing requires a contour or local-duality prescription.
+
+\section{B-Type Topological Sector}
+
+The B-twist uses a scalar supercharge \(Q_B\).  The \(Q_B\)-closed local
+operators in a Landau--Ginzburg model are represented by holomorphic
+functions modulo \(Q_B\)-exact terms.  The auxiliary-field equations imply
+\[
+  \partial_iW(\phi)=Q_B(\cdots)_i ,
+\]
+inside \(Q_B\)-cohomology, hence the local operator algebra is \(\mathcal R_W\).
+On a compact Riemann surface the finite-dimensional localization formula
+takes the form
+\[
+  \langle f_1\cdots f_m\rangle_{g}
+  =
+  \sum_{\partial W=0}
+  \frac{f_1(\phi)\cdots f_m(\phi)}
+  {\det(\partial_i\partial_jW)(\phi)^{1-g}},
+\]
+after a normalization of zero modes and determinants is fixed.  This formula
+is a theorem of the finite-dimensional localized model; the QFT statement
+requires a regulator preserving the chosen \(Q_B\) and a proof that no
+boundary terms are produced in the localization deformation.
+
+\section{Sigma-Model Datum}
+
+A \(2D\) \(\mathcal N=(2,2)\) nonlinear sigma model is specified by a Kahler
+target \(X\), metric \(g_{i\bar j}\), \(B\)-field \(B\), and possibly a
+superpotential \(W\).  The bosonic Euclidean action is
+\[
+  S_{\mathrm{bos}}
+  =
+  \frac1{4\pi\alpha'}
+  \int_\Sigma
+  \dd^2x\,
+  g_{i\bar j}(\phi)\partial_\mu\phi^i\partial_\mu\bar\phi^{\bar j}
+  +
+  \frac{\ii}{2\pi\alpha'}
+  \int_\Sigma \phi^*B .
+\]
+The large-volume perturbative beta tensor begins with the Ricci form:
+\[
+  \mu\frac{\dd g_{i\bar j}}{\dd\mu}
+  =
+  \frac1{2\pi}R_{i\bar j}+\cdots .
+\]
+Thus Ricci-flatness is the first condition for a conformal infrared candidate
+in a large-volume chart.  The full QFT claim includes instanton corrections,
+operator renormalization, and a continuum limit; these are additional data,
+not consequences of the local tensor equation alone.
+
+\section{Gauged Linear Sigma-Model Datum}
+
+A GLSM is specified by a compact gauge group \(G\), chiral multiplets in a
+complex representation \(V\), a superpotential \(W\in\mathcal O(V)^G\), and
+Fayet--Iliopoulos-theta parameters for abelian factors.  For
+\[
+  G=U(1),\qquad \Phi_i\text{ of charge }Q_i,
+\]
+the classical D-term equation is
+\[
+  \sum_i Q_i|\phi_i|^2=r .
+\]
+The quotient by \(U(1)\) gives a Kahler quotient phase when \(r\) lies in a
+chamber with stable points.  The axial \(R\)-symmetry anomaly coefficient is
+\[
+  \sum_i Q_i .
+\]
+When this coefficient vanishes, the FI parameter is not shifted by the axial
+rotation at one loop, and the GLSM is a candidate ultraviolet presentation of
+a Calabi--Yau sigma model.  The precise infrared statement is a comparison
+between two QFTs: a gauge-theory continuum limit and a sigma-model continuum
+limit in the chamber under consideration.
+
+\section{Infrared Comparison Problem}
+
+For each two-dimensional supersymmetric model one must distinguish:
+\[
+\begin{gathered}
+  \text{UV regulator datum},\qquad
+  \text{supersymmetric Wilsonian flow},\\
+  \text{protected operator algebra},\qquad
+  \text{full infrared QFT}.
+\end{gathered}
+\]
+Protected rings and indices can match before the full Hilbert space,
+correlators, and stress tensor are identified.  A complete infrared
+equivalence therefore requires a map of local algebras, states, stress
+tensors, supercharges, and extended operators, with convergence or scaling
+limits stated.
+
+\begin{openproblem}[Two-dimensional supersymmetric RG construction]
+\label{op:two-dimensional-susy-rg-construction}
+Construct \(2D\) \(\mathcal N=(2,2)\) GLSM flows to Landau--Ginzburg and
+Calabi--Yau sigma-model fixed points with a regulator, supersymmetric
+Wilsonian maps, protected-ring comparison, stress-tensor convergence, and
+Hilbert-space reconstruction in one declared framework.
+\end{openproblem}

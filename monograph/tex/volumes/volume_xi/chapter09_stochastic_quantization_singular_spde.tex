@@ -1,0 +1,158 @@
+\chapter{Stochastic Quantization And Singular SPDE}
+\label{ch:constructive-stochastic-quantization-singular-spde}
+
+\ConventionsEuclidean
+
+This chapter introduces stochastic quantization as a construction and analysis
+tool for Euclidean QFT.  The core object is a Markov process on fields whose
+invariant distribution is the desired Euclidean measure or Schwinger
+functional.  In dimensions where the equation is singular, renormalization is
+part of the definition of the stochastic equation.
+
+\section{Finite-Dimensional Langevin Identity}
+
+Let \(S:\R^n\to\R\) be smooth and such that
+\[
+  Z=\int_{\R^n}\ee^{-S(x)}\dd x<\infty .
+\]
+The Langevin equation
+\[
+  \dd X_t=-\nabla S(X_t)\dd t+\sqrt2\,\dd B_t
+\]
+has generator
+\[
+  Lf=-\nabla S\cdot\nabla f+\Delta f .
+\]
+For smooth compactly supported \(f,g\),
+\[
+  \int (Lf)g\,\ee^{-S}\dd x
+  =
+  -\int \nabla f\cdot\nabla g\,\ee^{-S}\dd x .
+\]
+Therefore \(L\) is symmetric in \(L^2(\ee^{-S}\dd x)\), and the probability
+measure \(Z^{-1}\ee^{-S}\dd x\) is invariant.  This identity is the finite
+dimensional model for stochastic quantization.
+
+\section{Regularized Field Equation}
+
+Let \(C_\Lambda\) be a smooth ultraviolet cutoff covariance on a compact
+Euclidean domain and let \(\xi\) be spacetime white noise in stochastic time
+\(\tau\).  A regularized scalar \(\Phi^4\) Langevin equation has the form
+\[
+  \partial_\tau\phi_\Lambda
+  =
+  -C_\Lambda^{-1}\phi_\Lambda
+  -\lambda_\Lambda \phi_\Lambda^3
+  +c_\Lambda\phi_\Lambda
+  +\xi_\Lambda .
+\]
+The noise covariance is chosen so that the linear part has invariant Gaussian
+measure with covariance \(C_\Lambda\).  The drift is the \(L^2\)-gradient of
+the regularized action
+\[
+  S_\Lambda(\phi)
+  =
+  \frac12(\phi,C_\Lambda^{-1}\phi)
+  +
+  \int\dd^dx\,
+  \left[
+    \frac{\lambda_\Lambda}{4}\phi^4
+    -\frac{c_\Lambda}{2}\phi^2
+  \right].
+\]
+The constants \(\lambda_\Lambda,c_\Lambda\) are coordinates of the
+regularized theory.  They are tuned with \(\Lambda\) to produce a continuum
+limit.
+
+\section{Why Renormalized Products Enter}
+
+For the Gaussian free field in dimension \(d\ge2\), \(\phi(x)\) is a
+distribution rather than a pointwise random variable.  The square
+\(\phi(x)^2\) is defined by a limiting procedure.  With mollifier
+\(\rho_\epsilon\), set
+\[
+  \phi_\epsilon=\rho_\epsilon*\phi,\qquad
+  :\!\phi_\epsilon^2\!:
+  =
+  \phi_\epsilon^2-\mathbb E[\phi_\epsilon^2].
+\]
+If the limit exists in a distribution space, it defines
+\[
+  :\!\phi^2\!: .
+\]
+Similarly,
+\[
+  :\!\phi_\epsilon^3\!:
+  =
+  \phi_\epsilon^3
+  -3\mathbb E[\phi_\epsilon^2]\phi_\epsilon .
+\]
+Thus the renormalized stochastic equation for \(\Phi^4_3\) contains
+counterterms because the nonlinear drift requires Wick powers, not pointwise
+ordinary powers of the limiting field.
+
+\section{Three-Dimensional Phi-Four Dynamic Equation}
+
+On a three-dimensional torus, the renormalized dynamic equation is written
+formally as
+\[
+  \partial_\tau\phi
+  =
+  \Delta\phi-m^2\phi-\lambda:\!\phi^3\!:+\xi .
+\]
+At cutoff \(\epsilon\), this is represented by
+\[
+  \partial_\tau\phi_\epsilon
+  =
+  \Delta\phi_\epsilon-m^2\phi_\epsilon
+  -\lambda\phi_\epsilon^3
+  +3\lambda C_\epsilon\phi_\epsilon
+  +\xi_\epsilon
+  +\text{finite coordinate terms},
+\]
+where
+\[
+  C_\epsilon=\mathbb E[\phi_\epsilon(x)^2]
+\]
+in the stationary Gaussian reference process.  The factor \(3\) is the number
+of contractions in \(\phi^3\).  Additional finite coordinate terms depend on
+the chosen renormalization scheme and on the desired mass coordinate.
+
+\section{Invariant Measure And OS Data}
+
+If the renormalized Markov process exists and is ergodic with invariant
+measure \(\mu\), then Euclidean Schwinger functions are
+\[
+  S_n(f_1,\ldots,f_n)
+  =
+  \int \Phi(f_1)\cdots\Phi(f_n)\,\dd\mu(\Phi).
+\]
+To use these as QFT data one must verify:
+\[
+\begin{gathered}
+  \text{Euclidean covariance},\qquad
+  \text{reflection positivity},\\
+  \text{regularity and growth bounds},\qquad
+  \text{clustering or phase decomposition}.
+\end{gathered}
+\]
+Stochastic construction alone gives a candidate invariant measure.  OS
+reconstruction requires these additional properties.
+
+\section{Relation To Constructive RG}
+
+Stochastic quantization and constructive RG organize different maps.  The
+stochastic equation gives a Markov semigroup in an auxiliary time
+\(\tau\).  Constructive RG decomposes the covariance into scales and controls
+effective interactions.  They meet when the stochastic dynamics is used to
+construct the measure whose scale decomposition is then analyzed, or when RG
+estimates prove convergence of the renormalized stochastic equation.
+
+\begin{openproblem}[SPDE-to-Wightman construction]
+\label{op:spde-to-wightman-construction}
+Starting from a renormalized singular SPDE construction of an interacting
+Euclidean field, prove the OS hypotheses, the linear growth condition needed
+for reconstruction where applicable, the resulting Wightman distributions,
+and the relation between stochastic counterterms and Wilsonian local
+coordinates.
+\end{openproblem}

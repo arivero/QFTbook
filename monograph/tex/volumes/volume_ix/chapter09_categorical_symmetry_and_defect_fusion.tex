@@ -1,0 +1,122 @@
+\chapter{Categorical Symmetry And Defect Fusion}
+\label{ch:global-categorical-symmetry-defect-fusion}
+
+\ConventionsMixed
+
+This chapter formulates categorical symmetry through topological defects and
+their fusion.  The object replacing a group is a category or higher category
+of topological operators, and the action on local or extended observables is
+defined by surrounding, ending, or fusing defects.
+
+\section{Topological Defect Category}
+
+Let \(\mathcal Q\) be a \(D\)-dimensional local QFT.  A codimension-one
+topological defect \(D\) is an operator supported on a hypersurface such that
+correlation functions are invariant under compactly supported deformations of
+the hypersurface avoiding insertions.  Defects form a category
+\(\mathcal D_{\mathcal Q}\) whose objects are boundary labels on small
+transverse intervals and whose morphisms are junction operators.  Fusion is a
+monoidal product
+\[
+  \otimes:\mathcal D_{\mathcal Q}\times\mathcal D_{\mathcal Q}
+  \longrightarrow \mathcal D_{\mathcal Q}.
+\]
+If \(D_g\otimes D_h\simeq D_{gh}\) and every \(D_g\) is invertible, the data
+reduce to an ordinary group symmetry.  Categorical symmetry keeps the same
+fusion operation but allows noninvertible simple objects and nontrivial
+junction spaces.
+
+\section{Action On Local Operators}
+
+Let \(D\) be a topological codimension-one defect in Euclidean space.  Place a
+small sphere \(S^{D-1}\) carrying \(D\) around a local operator
+\(\mathcal O(0)\).  Shrinking the sphere defines a linear map
+\[
+  \rho_D:\mathcal V_{\mathrm{loc}}\longrightarrow\mathcal V_{\mathrm{loc}},
+\]
+where \(\mathcal V_{\mathrm{loc}}\) is the vector space of local operators at
+the point, completed in the topology appropriate to the QFT.  Fusion implies
+\[
+  \rho_{D_1\otimes D_2}=\rho_{D_1}\rho_{D_2}.
+\]
+When \(D\) is not invertible, \(\rho_D\) may be a projection, a sum of
+endomorphisms, or a map with a nontrivial kernel.  Selection rules follow from
+eigenvectors and images of these maps, not from characters of a group alone.
+
+\section{Fusion Coefficients And Junctions}
+
+Assume the defect category is semisimple with simple objects \(D_a\).  Fusion
+has coefficients
+\[
+  D_a\otimes D_b\simeq \bigoplus_c N_{ab}^{\ \ c}D_c,
+  \qquad N_{ab}^{\ \ c}\in\mathbb Z_{\ge0}.
+\]
+A choice of basis in the junction spaces
+\[
+  \operatorname{Hom}(D_a\otimes D_b,D_c)
+\]
+gives associator matrices \(F\).  The equality of the two ways of fusing four
+defects is the pentagon equation.  This equation is obtained by comparing two
+isotopic networks of topological junctions in a ball.  Reflection positivity
+and unitarity impose a \(*\)-structure and positivity conditions on the
+junction pairings.
+
+\section{Gauging A Categorical Symmetry}
+
+For a finite group symmetry, gauging sums over flat bundles.  For a finite
+categorical symmetry, the analogous operation is a condensation of a
+commutative separable algebra object
+\[
+  A\in\mathcal D_{\mathcal Q}.
+\]
+The algebra maps are
+\[
+  m:A\otimes A\to A,\qquad
+  \eta:\mathbf 1\to A,
+\]
+and the Frobenius and separability identities encode the local moves of the
+defect network.  The gauged theory has topological defects given by
+\(A\)-modules or \(A\)-bimodules, depending on the codimension and the
+placement.  This construction is a QFT operation only when the defect-network
+sum or condensation is defined as a regulated insertion in correlation
+functions.
+
+\section{Anomaly As Obstruction To Condensation}
+
+An anomaly of a categorical symmetry is an obstruction to defining the defect
+networks independently of choices of triangulation, ordering, framing, or
+extension to one higher dimension.  Algebraically it appears as failure of
+the pentagon, braiding, or trace identities in the proposed physical
+category.  Geometrically it is encoded by an invertible theory in one higher
+dimension whose boundary is the original QFT with its defect category.
+
+If the anomaly is cancelled by coupling to an invertible bulk, a defect
+network on the boundary is evaluated together with a bulk topological term.
+If the anomaly is trivialized by a local counterterm, the defect category can
+be modified by an equivalent associator or braiding datum.
+
+\section{Examples To Be Developed}
+
+The following examples require full treatment later in this volume:
+\[
+  \text{Kramers--Wannier duality defects in }2D,
+\]
+\[
+  \text{duality walls in gauge theories},
+\]
+\[
+  \text{noninvertible defects from gauging finite normal subgroups},
+\]
+\[
+  \text{duality defects acting on line-operator lattices}.
+\]
+Each example must define the local QFT, the defect support, the junction
+operators, the fusion rules, and the anomaly or condensation data.
+
+\begin{openproblem}[Interacting categorical symmetries]
+\label{op:interacting-categorical-symmetries}
+Construct categorical-symmetry defect categories in interacting continuum QFTs
+with local algebras, reflection-positive state spaces, fusion of extended
+operators, and anomaly inflow, beyond finite topological models and rational
+two-dimensional examples.
+\end{openproblem}
