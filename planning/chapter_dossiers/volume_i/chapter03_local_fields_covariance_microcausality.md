@@ -97,6 +97,8 @@ Working framework:
 - Do not treat Wightman or AQFT as the universal foundation.
 - Do not use local field notation before defining test functions and smearing.
 - Define every representation, domain, support condition, and index set.
+- 2026-05-24 issue #424 pass: restated field-covariance translations using
+  \(U(a)=\exp(i a_\mu P^\mu)=\exp(i a^\mu P_\mu)\), matching Chapters 1--2.
 
 ## Figure Ledger
 

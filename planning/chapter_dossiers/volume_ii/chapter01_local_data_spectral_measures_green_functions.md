@@ -91,6 +91,9 @@
 - The Poincare generators, field covariance law, stress-tensor charge
   formulas, and invariant-vacuum assumptions are stated explicitly with
   regulator/domain caveats.
+- The translation convention is inherited with
+  \(U(a)=\exp(i a_\mu P^\mu)=\exp(i a^\mu P_\mu)\); the spectrum condition is
+  a statement about contravariant \(P^\mu\).
 - A local scalar field applied to the vacuum decomposes into an isolated
   one-particle contribution with residue \(Z_\phi\) and a continuum
   contribution.
@@ -147,3 +150,5 @@
   finite-coordinate continuum-limit theorem from the scalar-model status
   paragraph so that cutoff removal is tied to explicit tuning, semigroup, and
   generated-integral hypotheses.
+- 2026-05-24 issue #424 pass: aligned the chapter's recalled Poincare
+  convention with the explicit opening sign/index convention.

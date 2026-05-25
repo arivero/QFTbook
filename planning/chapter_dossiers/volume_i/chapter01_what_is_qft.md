@@ -57,7 +57,7 @@ Use these only for theorem boundaries and later comparisons.
 | \(\eta_{\mu\nu}\) | Lorentzian metric components | convention |
 | \(\Hilb\) | complex Hilbert space | quantum state space |
 | \(U(a,\Lambda)\) | strongly continuous unitary representation | Poincare symmetry |
-| \(P_\mu\) | self-adjoint translation generators | spectral calculus |
+| \(P^\mu\), \(P_\mu=\eta_{\mu\nu}P^\nu\) | self-adjoint energy-momentum generators; \(U(a,1)=\exp(i a_\mu P^\mu)=\exp(i a^\mu P_\mu)\) | spectral calculus |
 | \(\vac\) | invariant unit vector | vacuum sector |
 | \(\mathcal O\) | bounded open spacetime region | localization |
 | \(\Obs(\mathcal O)\) | local algebra assigned to \(\mathcal O\) | observable net |
@@ -129,6 +129,10 @@ Definitions must specify domains and support conditions.
   constructive examples, scalar triviality regimes, finite regulators,
   perturbative expansions, and open four-dimensional gauge/scalar
   construction problems.
+- Completed: issue #424 pass made the translation-generator sign and index
+  convention explicit: the spectrum condition is imposed on contravariant
+  \(P^\mu\), while \(a^\mu P_\mu=a_\mu P^\mu\) appears in the unitary
+  translation exponent with the common \(+i\) convention.
 
 ## Figure Ledger
 

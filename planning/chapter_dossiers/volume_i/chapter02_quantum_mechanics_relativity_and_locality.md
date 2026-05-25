@@ -59,7 +59,7 @@ state the relation among them.
 | \(\ket{p,\sigma}\) | distributional one-particle momentum ket in \(\Phi_1^\times\) | mass-shell kernel |
 | \(SO^+(1,D-1)\) | connected Lorentz group | spacetime symmetry |
 | \(U(a,\Lambda)\) | strongly continuous unitary representation | Poincare symmetry |
-| \(P_\mu,J^{\mu\nu}\) | self-adjoint generators on common invariant domains | Lie algebra |
+| \(P^\mu,J^{\mu\nu}\) | self-adjoint generators on common invariant domains, with \(P_\mu=\eta_{\mu\nu}P^\nu\) in the translation exponent | Lie algebra |
 | \(\Hilb_1\) | one-particle Hilbert space | Wigner representation |
 | \(E_{\vec p}\) | positive energy \((\vec p^{\,2}+m^2)^{1/2}\) | mass shell |
 | \(a(\vec p),a^\dagger(\vec p)\) | operator-valued distributions in momentum | free Fock space |
@@ -120,6 +120,10 @@ state the relation among them.
   structures.
 - 2026-05-24 issue #368 pass: declared the \(\odot\) normalization for bosonic
   decomposable Fock tensors and displayed the corresponding inner product.
+- 2026-05-24 issue #424 pass: aligned the infinitesimal Poincare expansion
+  with the opening translation convention
+  \(U(a)=\exp(i a_\mu P^\mu)=\exp(i a^\mu P_\mu)\), keeping the spectrum
+  condition on contravariant \(P^\mu\).
 
 ## Figure Ledger
 

@@ -211,10 +211,15 @@ In the opening framework, a vacuum Minkowski local quantum theory consists of:
   \]
   as a left representation, \(U(g_1g_2)=U(g_1)U(g_2)\), where
   \(\mathcal U(\Hilb)\) is the unitary group of \(\Hilb\);
-  \item self-adjoint translation generators \(P_\mu\), defined by
-  \(U(a,1)=\exp(\ii a^\mu P_\mu)\).  Let \(E_P\) be the joint
-  projection-valued spectral measure of \(P=(P_0,\ldots,P_{D-1})\).  The
-  spectrum condition is
+  \item self-adjoint translation generators \(P^\mu\), equivalently
+  \(P_\mu=\eta_{\mu\nu}P^\nu\), defined by
+  \[
+    U(a,1)=\exp(\ii a_\mu P^\mu)=\exp(\ii a^\mu P_\mu).
+  \]
+  Thus a positive time translation gives
+  \(\exp(-\ii a^0P^0)\), with \(P^0\) the Hamiltonian.  Let \(E_P\) be the
+  joint projection-valued spectral measure of the contravariant
+  energy-momentum \(P=(P^0,\ldots,P^{D-1})\).  The spectrum condition is
   \[
     \operatorname{supp}E_P\subset
     \overline V_+
@@ -314,7 +319,8 @@ else keep the additional \(p=0\) spectral summands explicitly; they sit at
 whose momenta lie on the nonzero light cone.
 
 The covariance convention has the following infinitesimal form.  With
-\(U(a,1)=\exp(\ii a^\mu P_\mu)\), a coordinate-labelled scalar field obeys
+\(U(a,1)=\exp(\ii a^\mu P_\mu)=\exp(\ii a_\mu P^\mu)\), a
+coordinate-labelled scalar field obeys
 \[
   U(a,1)^{-1}\widehat\phi(x)U(a,1)
   =
@@ -943,8 +949,8 @@ asymptotic states and LSZ reduction have been established.
 \section{The First Spectral Question}
 
 Translation invariance permits simultaneous spectral analysis of the
-generators \(P_\mu\).  Let \(E_P(\Delta)\) denote the joint spectral projection
-of \(P=(P_0,\ldots,P_{D-1})\) associated with a Borel set
+energy-momentum generators \(P^\mu\).  Let \(E_P(\Delta)\) denote the joint
+spectral projection of \(P=(P^0,\ldots,P^{D-1})\) associated with a Borel set
 \(\Delta\subset\mathbb R^D\).  The joint spectrum
 \(\operatorname{Spec}(P)\) is the support of this projection-valued measure.
 The spectrum condition is
