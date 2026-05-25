@@ -1,0 +1,146 @@
+\chapter{Nonrenormalization and Holomorphy}
+\label{ch:susy-nonrenormalization-holomorphy}
+
+\ConventionsLorentzian
+
+Nonrenormalization theorems are statements about Wilsonian coordinates in a
+scheme with declared supersymmetry, gauge symmetry, locality, and anomaly
+data.  They are not statements about arbitrary effective actions or about
+singular infrared limits.  This chapter formulates the perturbative
+superpotential theorem and the holomorphic gauge-coupling statement in the
+language of Chapter~\ref{ch:susy-wilsonian-schemes-exact-dynamics}.
+
+\section{Chiral Local Coordinates}
+
+Let \(\Phi^i\) be chiral superfields and \(t^A\) chiral coupling coordinates.
+A Wilsonian chiral coordinate is a local functional of the form
+\[
+  I_F[\Phi;t]
+  =
+  \int d^4x\,d^2\theta\,
+  \mathcal W(\Phi;t)+\text{c.c.}
+\]
+defined modulo \(\bar D_{\dot\alpha}\)-exact full-superspace terms and
+equations of motion appropriate to the chosen Wilsonian action.  A full
+superspace coordinate is
+\[
+  I_D[\Phi,\bar\Phi;t,\bar t]
+  =
+  \int d^4x\,d^4\theta\,
+  \mathcal K(\Phi,\bar\Phi;t,\bar t).
+\]
+The distinction is cohomological: an \(F\)-term is represented by a chiral
+integrand and the chiral measure, while a \(D\)-term is represented by the
+full superspace measure.
+
+\section{Perturbative Superpotential Theorem}
+
+\begin{theorem}[Perturbative Wilsonian superpotential theorem]
+\label{thm:perturbative-wilsonian-superpotential}
+Assume a massive or Wilsonian infrared-regulated \(\mathcal N=1\) theory in a
+holomorphic Wilsonian scheme.  Perturbative loop corrections do not generate
+new superpotential terms beyond those already present as holomorphic local
+coordinates, except through tree-level elimination of massive chiral fields
+and through explicitly declared anomaly-induced coordinate changes.
+\end{theorem}
+
+\begin{proof}
+In supergraph perturbation theory each internal propagator carries spinor
+derivatives and each interaction vertex is integrated over either \(d^4\theta\)
+or over a chiral measure that may be represented inside full superspace by
+spinor derivatives acting on delta functions.  For a loop correction to
+produce an \(F\)-term, all but one pair of Grassmann integrations would have
+to be saturated while leaving only \(d^2\theta\) for the external local
+functional.  The spinor-derivative algebra in a loop supplies the full
+superspace measure unless an infrared singularity converts a nonlocal
+full-superspace expression into a local chiral expression.  A Wilsonian
+effective action at scale \(\Lambda\) excludes such singularities by
+integrating out only modes above \(\Lambda\).  Therefore loop corrections are
+full-superspace local coordinates.  Tree-level elimination of massive chiral
+fields is different: it substitutes the solution of a chiral equation of
+motion into the existing superpotential and hence stays within the chiral
+coordinate class.  Anomaly-induced coordinate changes are precisely the
+declared exceptions in the scheme data.
+\end{proof}
+
+\section{Spurion Symmetries}
+
+Treat a coupling \(t^A\) as a background chiral superfield.  If an exact
+symmetry acts by
+\[
+  \Phi^i\mapsto e^{\ii q^i\alpha}\Phi^i,\qquad
+  t^A\mapsto e^{\ii q^A\alpha}t^A,
+\]
+then a Wilsonian \(F\)-term must be a holomorphic section with the same total
+charge as the chiral measure.  This turns dimensional analysis and
+symmetries into a finite problem: list holomorphic monomials in fields and
+couplings with the required charges and locality degree.  The conclusion is
+only as strong as the declared symmetry and anomaly ledger.
+
+\section{Holomorphic Gauge Coupling}
+
+For a gauge theory with chiral matter, the holomorphic gauge coordinate is
+\[
+  \frac{1}{16\pi\ii}\int d^4x\,d^2\theta\,
+  \tau(\Lambda)\operatorname{tr}(W^\alpha W_\alpha)+\text{c.c.}
+\]
+In a holomorphic Wilsonian scheme, perturbative corrections to
+\(\tau\) are one-loop exact:
+\[
+  \tau(\Lambda)
+  =
+  \tau(\Lambda_0)
+  +\frac{b_0}{2\pi\ii}\log\frac{\Lambda}{\Lambda_0},
+\]
+where, in the trace convention of Chapter~\ref{ch:susy-gauge-theory},
+\(b_0\) is computed from the adjoint and matter representation indices in
+that same bilinear form.
+
+\begin{proof}[Reason for one-loop exactness]
+The coordinate \(\tau\) is chiral and dimensionless.  Higher-loop
+perturbative corrections would be holomorphic functions of \(\tau\) and the
+chiral matter couplings with the same anomalous symmetry transformation as
+\(\tau\).  The anomalous rescaling of the charged fields fixes the logarithmic
+one-loop shift.  Additional perturbative terms would either violate the
+spurion transformation law or be removable by a holomorphic redefinition of
+the Wilsonian coordinate.  Physical gauge couplings obtained after canonical
+normalization are different coordinates; their beta functions include the
+Jacobian of field rescalings and therefore need not be one-loop exact.
+\end{proof}
+
+\section{Konishi-Type Rescaling Anomaly}
+
+A chiral field redefinition
+\[
+  \Phi\mapsto e^{\alpha}\Phi
+\]
+changes the functional measure by a local chiral anomaly.  In a regulated
+scheme this is the statement that the Jacobian contributes
+\[
+  \Delta S
+  =
+  \frac{T(R)\alpha}{8\pi^2}
+  \int d^4x\,d^2\theta\,\operatorname{tr}(W^\alpha W_\alpha)
+  +\text{c.c.}
+\]
+with \(T(R)\) normalized by the same trace convention as the gauge kinetic
+term.  This anomaly explains why holomorphic Wilsonian couplings and
+canonically normalized couplings obey different coordinate beta functions.
+
+\section{Status Boundary}
+
+The perturbative theorem above is a Wilsonian theorem under explicit
+regularity hypotheses.  Nonperturbative superpotentials, instanton effects,
+gaugino condensation, and strong-coupling moduli-space constraints are not
+contradictions: they are additional semiclassical or nonperturbative
+contributions to Wilsonian chiral coordinates.  Each such contribution must
+be derived from a declared integration cycle, zero-mode measure, anomaly
+matching, and infrared effective description.
+
+\begin{openproblem}[Rigorous supersymmetric Wilsonian holomorphy]
+\label{op:rigorous-susy-holomorphy}
+Construct a regulator and BV Wilsonian scheme in which the chiral local
+cohomology, supergraph measure, rescaling anomaly, and holomorphic gauge
+coordinate are all defined at finite cutoff, and prove the perturbative
+nonrenormalization statements as theorems in that scheme.
+\end{openproblem}

@@ -93,6 +93,33 @@ completion layer after the initial consistency mechanisms:
 - Volume XII: the Unruh effect through wedge modular theory and the
   Bisognano--Wichmann theorem boundary.
 
+## Current Fifth-Chapter Pass
+
+The fifth-chapter pass adds the first thermodynamic, cohomological,
+topological-sector, hydrodynamic, lattice-gauge, and horizon-radiation layer:
+
+- Volume VI: thermodynamic Bethe ansatz from Bethe--Yang quantization,
+  rapidity densities, constrained entropy, pseudoenergies, and finite-size
+  ground-state energy.
+- Volume VII: nonrenormalization and holomorphy as Wilsonian chiral-coordinate
+  statements, including the perturbative superpotential theorem, spurion
+  selection rules, holomorphic gauge coupling, and rescaling anomaly.
+- Volume VIII: cohomological field theories from a regulated \(Q\)-complex,
+  metric-independence proof, \(Q\)-exact deformation invariance, and
+  finite-dimensional localization boundary.
+- Volume IX: discrete theta terms as cohomology-valued topological actions,
+  including one-form backgrounds, Pontryagin-square terms, and line-lattice
+  effects.
+- Volume X: hydrodynamics from stress-tensor and current Ward identities,
+  thermodynamic closure, entropy-current algebra, first-order transport, and
+  linearized shear/sound poles.
+- Volume XI: Wilson lattice gauge theory with link variables, plaquettes,
+  Wilson action, continuum expansion, Wilson loops, transfer matrix, and
+  fermion/chiral-regulator boundary.
+- Volume XII: Hawking radiation from Euclidean horizon regularity,
+  near-horizon Bogoliubov analyticity, state distinctions, greybody factors,
+  and interacting-QFT theorem boundary.
+
 ## Next Frontier After This Pass
 
 - Add proof appendices where current chapters state theorem boundaries.

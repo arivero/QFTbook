@@ -264,6 +264,7 @@ Current compiled material:
 2. Two-Dimensional Scattering Analyticity And Bootstrap Data
 3. Yang--Baxter Consistency And Internal Symmetry
 4. Form-Factor Bootstrap And Local Operators
+5. Thermodynamic Bethe Ansatz
 
 Further development targets:
 
@@ -298,6 +299,7 @@ Current compiled material:
 2. Superspace, Superfields, And Local Actions
 3. Supersymmetric Gauge Theory
 4. Supersymmetric Wilsonian Schemes And Exact Dynamics
+5. Nonrenormalization And Holomorphy
 
 Further development targets:
 
@@ -378,6 +380,7 @@ Current compiled material:
 2. Bordism Functoriality And Extended Topological Field Theory
 3. BF Theory
 4. Chern--Simons Theory
+5. Cohomological Field Theories
 
 Further development targets:
 
@@ -421,6 +424,7 @@ Current compiled material:
 2. Extended Operators And Topological Defects
 3. Line, Surface, And Domain-Wall Operators
 4. Confinement, Screening, And Oblique Confinement
+5. Discrete Theta Terms
 
 Further development targets:
 
@@ -447,6 +451,7 @@ Current compiled material:
 2. Finite-Temperature Path Integrals
 3. Real-Time Schwinger--Keldysh Formalism
 4. Spectral Functions, Kubo Formulae, And Transport
+5. Hydrodynamics From Ward Identities
 
 Further development targets:
 
@@ -471,6 +476,7 @@ Current compiled material:
 2. Constructive Scalar Models And OS Data
 3. Lattice Reflection Positivity
 4. Continuum Limits And Scaling Windows
+5. Wilson Lattice Gauge Theory
 
 Further development targets:
 
@@ -497,6 +503,7 @@ Current compiled material:
 2. Point Splitting And Stress Tensor Renormalization
 3. Trace Anomalies And Background Variations
 4. The Unruh Effect And Wedge Modular Theory
+5. The Hawking Effect
 
 Further development targets:
 

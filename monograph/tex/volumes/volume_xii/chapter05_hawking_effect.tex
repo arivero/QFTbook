@@ -1,0 +1,114 @@
+\chapter{The Hawking Effect}
+\label{ch:curved-hawking-effect}
+
+\ConventionsLorentzian
+
+The Hawking effect is a statement about QFT on a fixed spacetime containing a
+black-hole horizon.  It relates regularity of a state at the future horizon
+to a thermal flux at future null infinity.  The temperature is determined by
+the surface gravity of the horizon.
+
+\section{Stationary Horizon and Surface Gravity}
+
+Let \((M,g)\) be a stationary black-hole spacetime with Killing vector
+\(\chi^\mu\) generating the horizon.  On the horizon,
+\[
+  \chi^\nu\nabla_\nu\chi^\mu=\kappa\chi^\mu ,
+\]
+where \(\kappa\) is the surface gravity.  Near a nonextremal horizon, the
+metric in the two-dimensional normal directions has Rindler form
+\[
+  ds^2\simeq -\kappa^2\rho^2dt^2+d\rho^2+\cdots .
+\]
+Thus the local horizon problem is the Rindler problem of
+Chapter~\ref{ch:curved-unruh-effect-modular-theory}, with acceleration scale
+replaced by \(\kappa\).
+
+\section{Euclidean Regularity}
+
+Analytically continue \(t=-\ii\tau\).  The normal metric becomes
+\[
+  ds_E^2\simeq \kappa^2\rho^2d\tau^2+d\rho^2+\cdots .
+\]
+This is smooth at \(\rho=0\) only if the angular variable
+\(\kappa\tau\) has period \(2\pi\).  Therefore the Euclidean state regular at
+the horizon is periodic in imaginary Killing time with inverse temperature
+\[
+  \beta_H=\frac{2\pi}{\kappa},
+  \qquad
+  T_H=\frac{\kappa}{2\pi}.
+\]
+This derivation establishes the KMS periodicity of correlation functions that
+admit the Euclidean regular continuation; it does not by itself prove
+existence of the interacting Lorentzian state.
+
+\section{Bogoliubov Mechanism}
+
+For a free scalar field, compare positive-frequency modes at past null
+infinity with modes at future null infinity.  Let \(u\) be retarded time near
+future null infinity and \(U\) an affine null coordinate regular across the
+future horizon.  Near the horizon,
+\[
+  U=-e^{-\kappa u}.
+\]
+A mode \(e^{-\ii\omega u}\) therefore behaves as
+\[
+  (-U)^{\ii\omega/\kappa}
+\]
+near \(U=0\).  Analytic continuation across the lower half \(U\)-plane fixes
+the relative positive- and negative-frequency Bogoliubov coefficients and
+gives
+\[
+  |\beta_\omega|^2
+  =
+  \frac{1}{e^{2\pi\omega/\kappa}-1}
+  |\alpha_\omega|^2 .
+\]
+After normalization, the occupation number is thermal:
+\[
+  n_\omega=\frac{1}{e^{\beta_H\omega}-1}.
+\]
+
+\section{States: Boulware, Hartle--Hawking, and Unruh}
+
+The Boulware state is empty with respect to static time at infinity but is
+singular at the horizon.  The Hartle--Hawking state is regular on both future
+and past horizons and is thermal on both exterior regions.  The Unruh state
+is regular on the future horizon and empty on past null infinity; it describes
+an evaporating black hole in the fixed-background approximation and produces
+outgoing thermal flux at future null infinity.
+
+\section{Flux and Greybody Factors}
+
+In an asymptotically flat black-hole spacetime, propagation from the near
+horizon region to infinity includes scattering by the curvature potential.
+The number flux for angular momentum channel \(\ell\) has the form
+\[
+  \frac{dN_{\ell}}{dt\,d\omega}
+  =
+  \frac{\Gamma_\ell(\omega)}
+  {2\pi\bigl(e^{\beta_H\omega}-1\bigr)},
+\]
+where \(\Gamma_\ell(\omega)\) is the greybody factor determined by the
+classical wave equation in the exterior geometry.  The thermal factor is
+horizon kinematics; the greybody factor is propagation through the exterior
+potential.
+
+\section{QFT Boundary}
+
+For interacting QFT, a theorem-level Hawking effect requires existence of a
+Hadamard state with the required horizon regularity, control of stress-tensor
+renormalization, and propagation estimates from the horizon to infinity.  In
+semiclassical gravity one must also solve the backreaction equation
+\[
+  G_{\mu\nu}=8\pi G\,\langle T_{\mu\nu}\rangle_{\rm ren},
+\]
+which is beyond fixed-background QFT.
+
+\begin{openproblem}[Interacting Hawking theorem]
+\label{op:interacting-hawking-theorem}
+Prove a Hawking radiation theorem for an interacting local QFT on a class of
+black-hole backgrounds, including Hadamard state construction, KMS or
+near-horizon analyticity, renormalized stress tensor, greybody propagation,
+and the precise limits in which the emitted flux is thermal.
+\end{openproblem}

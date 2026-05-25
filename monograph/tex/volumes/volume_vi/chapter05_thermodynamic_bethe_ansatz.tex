@@ -1,0 +1,192 @@
+\chapter{Thermodynamic Bethe Ansatz}
+\label{ch:integrable-thermodynamic-bethe-ansatz}
+
+\ConventionsLorentzian
+
+The thermodynamic Bethe ansatz turns the exact two-body scattering data of a
+massive integrable theory into finite-temperature or finite-size
+thermodynamics.  The construction in this chapter is stated first for a
+diagonal elastic \(S\)-matrix.  Matrix-valued scattering, bound-state strings,
+and nested Bethe ansatz data require additional species and auxiliary-root
+bookkeeping but obey the same variational logic once the allowed densities
+are specified.
+
+\section{Bethe--Yang Quantization}
+
+Place the theory on a spatial circle of circumference \(L\).  For \(n\)
+particles of masses \(m_a\), rapidities \(\theta_j\), and diagonal scattering
+phases
+\[
+  S_{ab}(\theta)=\exp\!\bigl(\ii\delta_{ab}(\theta)\bigr),
+\]
+periodicity of the wavefunction of particle \(j\) gives the Bethe--Yang
+equation
+\[
+  m_{a_j}L\sinh\theta_j
+  +\sum_{k\neq j}\delta_{a_ja_k}(\theta_j-\theta_k)
+  =
+  2\pi I_j,
+  \qquad I_j\in\mathbb Z+\nu_j .
+\]
+The shift \(\nu_j\) depends on statistics and boundary convention.  The
+one-particle energy and momentum are
+\[
+  E_a(\theta)=m_a\cosh\theta,\qquad
+  p_a(\theta)=m_a\sinh\theta .
+\]
+
+\section{Density Equations}
+
+In the thermodynamic limit \(L\to\infty\), introduce particle and hole
+densities \(\rho_a(\theta)\) and \(\rho_a^h(\theta)\), normalized so that
+\[
+  L\rho_a(\theta)d\theta
+\]
+is the number of occupied rapidities of species \(a\) in \(d\theta\).  Define
+the scattering kernel
+\[
+  \varphi_{ab}(\theta)
+  =
+  \frac{1}{2\pi}\frac{d}{d\theta}\delta_{ab}(\theta)
+  =
+  \frac{1}{2\pi\ii}\frac{d}{d\theta}\log S_{ab}(\theta).
+\]
+Differentiating the Bethe--Yang equations gives the density constraint
+\[
+  \rho_a(\theta)+\rho_a^h(\theta)
+  =
+  \frac{m_a}{2\pi}\cosh\theta
+  +\sum_b\int_{\mathbb R}d\theta'\,
+  \varphi_{ab}(\theta-\theta')\rho_b(\theta').
+\]
+This equation is purely kinematic: it counts available rapidity levels after
+the scattering phase shifts have shifted the quantization conditions.
+
+\section{Entropy and Free Energy}
+
+For fixed total density \(\rho_a^t=\rho_a+\rho_a^h\), the number of
+microscopic occupancy choices in an interval is
+\[
+  \binom{L\rho_a^t\,d\theta}{L\rho_a\,d\theta}.
+\]
+Stirling's formula gives the entropy density functional
+\[
+  s[\rho,\rho^h]
+  =
+  \sum_a\int d\theta\,
+  \left[
+  \rho_a^t\log\rho_a^t
+  -\rho_a\log\rho_a
+  -\rho_a^h\log\rho_a^h
+  \right].
+\]
+At inverse temperature \(R\), the free energy per length is
+\[
+  f[\rho,\rho^h]
+  =
+  \sum_a\int d\theta\,m_a\cosh\theta\,\rho_a(\theta)
+  -\frac1R s[\rho,\rho^h],
+\]
+subject to the density constraint.
+
+\section{Pseudoenergy Equation}
+
+Define the pseudoenergy by
+\[
+  \epsilon_a(\theta)=\log\frac{\rho_a^h(\theta)}{\rho_a(\theta)} .
+\]
+Varying the constrained free energy with respect to \(\rho_a\) gives
+\[
+  \epsilon_a(\theta)
+  =
+  Rm_a\cosh\theta
+  -\sum_b\int_{\mathbb R}d\theta'\,
+  \varphi_{ab}(\theta-\theta')
+  \log\!\left(1+e^{-\epsilon_b(\theta')}\right).
+\]
+This is the thermodynamic Bethe ansatz equation.  The equilibrium free energy
+is
+\[
+  f(R)
+  =
+  -\frac{1}{2\pi R}
+  \sum_a m_a\int_{\mathbb R}d\theta\,
+  \cosh\theta\,
+  \log\!\left(1+e^{-\epsilon_a(\theta)}\right).
+\]
+
+\begin{proposition}[Variational derivation of TBA]
+\label{prop:tba-variational-derivation}
+For diagonal elastic scattering with smooth phase kernels and a thermodynamic
+limit in which the Bethe--Yang root densities exist, the stationary point of
+the constrained free-energy functional is exactly the pseudoenergy equation
+above.
+\end{proposition}
+
+\begin{proof}
+Let \(\rho_a^t=\rho_a+\rho_a^h\).  A variation of \(\rho_a\) changes
+\(\rho_c^t\) through the density constraint by
+\[
+  \delta\rho_c^t(\theta)
+  =
+  \sum_a\int d\theta'\,
+  \varphi_{ca}(\theta-\theta')\delta\rho_a(\theta').
+\]
+The entropy variation is
+\[
+  \delta s
+  =
+  \sum_a\int d\theta\,
+  \left[
+  \log\frac{\rho_a^h}{\rho_a}\,\delta\rho_a
+  +
+  \log\frac{\rho_a^t}{\rho_a^h}\,\delta\rho_a^t
+  \right].
+\]
+Using \(\log(\rho_a^t/\rho_a^h)=\log(1+e^{-\epsilon_a})\), substituting the
+constraint variation, and setting \(\delta f=0\) for arbitrary
+\(\delta\rho_a\) gives the displayed integral equation.  Inserting the
+stationary relation back into \(f\) gives the stated free energy.
+\end{proof}
+
+\section{Finite-Size Ground-State Energy}
+
+Interchanging space and Euclidean time maps the thermal free energy on an
+infinite line at inverse temperature \(R\) to the ground-state energy on a
+circle of circumference \(R\), after the mirror-channel scattering data have
+been identified.  In a relativistic theory the mirror dispersion is obtained
+by a rapidity shift by \(\ii\pi/2\), so the same TBA equation gives
+\[
+  E_0(R)
+  =
+  -\frac{1}{2\pi}
+  \sum_a m_a\int_{\mathbb R}d\theta\,
+  \cosh\theta\,
+  \log\!\left(1+e^{-\epsilon_a(\theta)}\right).
+\]
+The effective central charge extracted from the ultraviolet limit is
+\[
+  c_{\rm eff}(R)
+  =
+  -\frac{6R}{\pi}E_0(R),
+  \qquad R\to0,
+\]
+provided the limit exists and the infrared bulk energy has been subtracted in
+the declared normalization.
+
+\section{Theorem Boundary}
+
+The derivation above assumes existence of thermodynamic root densities,
+validity of Bethe--Yang quantization up to errors negligible at large \(L\),
+and uniqueness of the free-energy minimizer.  In concrete models these are
+mathematical hypotheses to be proved or checked.  Bound states, non-diagonal
+scattering, zero modes, and massless flows change the density system and must
+be included explicitly.
+
+\begin{openproblem}[TBA from local QFT]
+\label{op:tba-from-local-qft}
+Derive the TBA equations directly from a constructed local QFT with
+factorized scattering: prove Bethe--Yang quantization with controlled
+finite-volume errors, establish thermodynamic root-density convergence, and
+identify the finite-size ground-state energy with the mirror free energy.
+\end{openproblem}

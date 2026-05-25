@@ -1,0 +1,154 @@
+\chapter{Hydrodynamics from Ward Identities}
+\label{ch:thermal-hydrodynamics-from-ward-identities}
+
+\ConventionsLorentzian
+
+Hydrodynamics is the long-wavelength effective theory of conserved densities.
+It is not obtained by assuming microscopic quasiparticles.  The input is a
+thermal or locally thermal state, Ward identities for conserved currents, and
+a derivative expansion of expectation values in terms of slowly varying
+intensive variables.
+
+\section{Conserved Densities}
+
+Let \(T^{\mu\nu}\) be the stress tensor and \(J^\mu_A\) conserved currents.
+In flat space without external sources,
+\[
+  \partial_\mu T^{\mu\nu}=0,\qquad
+  \partial_\mu J^\mu_A=0 .
+\]
+In a state near local equilibrium, introduce a velocity field \(u^\mu(x)\)
+with
+\[
+  u^\mu u_\mu=-1,
+\]
+temperature \(T(x)\), and chemical potentials \(\mu_A(x)\).  The ideal
+constitutive relations are
+\[
+  T^{\mu\nu}_{(0)}
+  =
+  \varepsilon u^\mu u^\nu
+  +p\,\Delta^{\mu\nu},
+  \qquad
+  J^\mu_{A(0)}=n_A u^\mu,
+\]
+where
+\[
+  \Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu
+\]
+projects orthogonally to the velocity.
+
+\section{Thermodynamic Closure}
+
+The functions \(\varepsilon(T,\mu)\), \(p(T,\mu)\), and \(n_A(T,\mu)\) are
+related by the local first law
+\[
+  d\varepsilon=T\,ds+\mu_A\,dn_A,
+  \qquad
+  dp=s\,dT+n_A\,d\mu_A,
+\]
+and
+\[
+  \varepsilon+p=Ts+\mu_A n_A .
+\]
+These equations close the ideal hydrodynamic system after an equation of
+state is specified by the underlying QFT.
+
+\section{Entropy Current at Ideal Order}
+
+Define
+\[
+  S^\mu_{(0)}=s u^\mu .
+\]
+Using the Ward identities and the thermodynamic relations, one finds
+\[
+  \partial_\mu S^\mu_{(0)}=0
+\]
+for ideal nondissipative flow.  Indeed,
+\[
+  u_\nu\partial_\mu T^{\mu\nu}=0
+\]
+gives
+\[
+  u^\mu\partial_\mu\varepsilon
+  +(\varepsilon+p)\partial_\mu u^\mu=0,
+\]
+while current conservation gives
+\[
+  u^\mu\partial_\mu n_A+n_A\partial_\mu u^\mu=0 .
+\]
+Substituting the first law cancels all terms in
+\(\partial_\mu(su^\mu)\).
+
+\section{First-Order Dissipation}
+
+At first derivative order in a parity-even relativistic fluid,
+\[
+  T^{\mu\nu}
+  =
+  T^{\mu\nu}_{(0)}
+  -\eta\,\sigma^{\mu\nu}
+  -\zeta\,\Delta^{\mu\nu}\partial_\lambda u^\lambda+\cdots ,
+\]
+where
+\[
+  \sigma^{\mu\nu}
+  =
+  2\Delta^{\mu\alpha}\Delta^{\nu\beta}
+  \left(
+  \partial_{(\alpha}u_{\beta)}
+  -\frac{1}{D-1}\eta_{\alpha\beta}\partial_\lambda u^\lambda
+  \right).
+\]
+Charge diffusion is represented at first derivative order by
+\[
+  J^\mu_A=n_Au^\mu-\Sigma_{AB}\Delta^{\mu\nu}
+  \partial_\nu\!\left(\frac{\mu_B}{T}\right)+\cdots .
+\]
+The local second law requires
+\[
+  \eta\geq0,\qquad \zeta\geq0,\qquad
+  \Sigma_{AB}\ \text{positive semidefinite}.
+\]
+
+\section{Linearized Modes}
+
+Linearize a neutral fluid around rest:
+\[
+  u^\mu=(1,\mathbf v),\qquad
+  T=T_0+\delta T .
+\]
+The transverse velocity obeys
+\[
+  \partial_t v_\perp-\frac{\eta}{\varepsilon+p}\nabla^2v_\perp=0,
+\]
+so the shear pole is
+\[
+  \omega=-\ii\,\frac{\eta}{\varepsilon+p}k^2+\cdots .
+\]
+Longitudinal fluctuations give sound poles
+\[
+  \omega=\pm c_s k-\frac{\ii}{2}\Gamma_s k^2+\cdots ,
+  \qquad
+  c_s^2=\left(\frac{\partial p}{\partial\varepsilon}\right)_{s/n},
+\]
+with attenuation \(\Gamma_s\) determined by viscosities and charge diffusion
+data.  These poles are the analytic continuation of the retarded correlators
+whose zero-frequency slopes define transport in
+Chapter~\ref{ch:thermal-spectral-kubo-transport}.
+
+\section{Hydrodynamic Limit as a QFT Claim}
+
+A QFT derivation of hydrodynamics requires more than conservation laws.  One
+must prove that nonconserved excitations decay on microscopic time scales,
+that the derivative expansion is asymptotic in a controlled regime, and that
+the Kubo coefficients are the same coefficients appearing in the constitutive
+relations.
+
+\begin{openproblem}[Hydrodynamic emergence theorem]
+\label{op:hydrodynamic-emergence-theorem}
+Find physically useful QFT hypotheses under which local thermalization,
+clustering, analyticity of retarded functions, positivity of entropy
+production, and the hydrodynamic pole expansion can be proved from the
+microscopic theory.
+\end{openproblem}

@@ -1,0 +1,121 @@
+\chapter{Wilson Lattice Gauge Theory}
+\label{ch:constructive-wilson-lattice-gauge-theory}
+
+\ConventionsEuclidean
+
+Wilson lattice gauge theory gives a gauge-invariant finite-regulator
+definition of compact gauge fields.  Its continuum use requires a scaling
+trajectory, reflection positivity, locality, and a reconstruction or
+continuum-limit argument.  The lattice theory is not merely a discretized
+notation for continuum perturbation theory; it is a nonperturbative
+regulated path integral.
+
+\section{Link Variables and Gauge Transformations}
+
+Let \(\Lambda\subset a\mathbb Z^D\) be a finite hypercubic lattice and \(G\)
+a compact Lie group.  To each oriented link \(\ell=(x,x+a\hat\mu)\), assign
+\[
+  U_\mu(x)\in G,
+\]
+with \(U_{-\mu}(x+a\hat\mu)=U_\mu(x)^{-1}\).  A lattice gauge transformation
+is a function \(g:\Lambda^0\to G\) acting by
+\[
+  U_\mu(x)\mapsto g(x)U_\mu(x)g(x+a\hat\mu)^{-1}.
+\]
+The plaquette holonomy is
+\[
+  U_{\mu\nu}(x)
+  =
+  U_\mu(x)U_\nu(x+a\hat\mu)
+  U_\mu(x+a\hat\nu)^{-1}U_\nu(x)^{-1}.
+\]
+
+\section{Wilson Action}
+
+Fix a faithful unitary representation \(R\) and normalize the trace in the
+continuum convention of the gauge-theory volume.  A Wilson plaquette action
+has the form
+\[
+  S_W[U]
+  =
+  \beta\sum_{p}
+  \left(
+  1-\frac{1}{\dim R}\operatorname{Re}\operatorname{Tr}_R U_p
+  \right).
+\]
+The finite-volume partition function is the compact group integral
+\[
+  Z=\int\prod_{\ell}dU_\ell\,e^{-S_W[U]},
+\]
+where \(dU\) is Haar measure.
+
+\section{Continuum Expansion}
+
+For a smooth continuum connection \(A_\mu(x)\), set
+\[
+  U_\mu(x)=\exp(a A_\mu(x)).
+\]
+The plaquette has expansion
+\[
+  U_{\mu\nu}(x)
+  =
+  \exp\!\left(a^2F_{\mu\nu}(x)+O(a^3)\right).
+\]
+If the representation trace obeys
+\[
+  \operatorname{Tr}_R(XY)=\kappa_R\,\operatorname{tr}(XY),
+\]
+then
+\[
+  1-\frac{1}{\dim R}\operatorname{Re}\operatorname{Tr}_R U_{\mu\nu}
+  =
+  -\frac{a^4\kappa_R}{2\dim R}
+  \operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+  +O(a^6)
+\]
+for anti-Hermitian \(A_\mu\).  Matching to
+\[
+  \frac{1}{4g^2}\int d^Dx\,\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+\]
+fixes the relation between \(\beta\), \(g\), and the trace normalization.
+
+\section{Wilson Loops}
+
+For a closed oriented lattice contour \(C\),
+\[
+  W_R(C)=\operatorname{Tr}_R\prod_{\ell\in C}U_\ell
+\]
+is gauge invariant.  Wilson loops are the basic gauge-invariant probes of
+line charges.  Their strong-coupling character expansion gives the area-law
+mechanism described in Chapter~\ref{ch:global-confinement-screening-oblique}.
+Their continuum limit requires line renormalization and an operator scheme.
+
+\section{Reflection Positivity and Transfer Matrix}
+
+For the Wilson plaquette action, reflection positivity follows by assigning
+plaquettes to the two halves of the lattice and expanding cross-plane
+plaquette Boltzmann weights in positive characters.  The reflection-positive
+inner product on positive-time functions gives a transfer matrix
+\[
+  T=e^{-aH}
+\]
+with \(H\geq0\) after quotienting null vectors.  Gauge constraints are
+implemented by the gauge-invariant subspace or by a gauge-covariant transfer
+matrix followed by projection.
+
+\section{Fermions and Chiral Difficulties}
+
+Adding lattice fermions requires a fermion action whose reflection
+positivity, locality, spectrum, and continuum chiral properties are checked
+separately.  The mid-link fermion reflection structure of
+Chapter~\ref{ch:lattice-reflection-positivity} is one such finite-regulator
+positivity mechanism.  Chiral gauge theories require more: gauge invariance,
+locality, anomaly cancellation, and a definition of the fermion determinant
+phase compatible with the target continuum theory.
+
+\begin{openproblem}[Lattice continuum QCD construction]
+\label{op:lattice-continuum-qcd-construction}
+Construct four-dimensional continuum Yang--Mills or QCD from Wilson-type
+lattice gauge theory with a mass gap, OS reconstruction, local gauge-invariant
+operator limits, and controlled line-operator and theta-angle sectors.
+\end{openproblem}

@@ -1,0 +1,113 @@
+\chapter{Discrete Theta Terms}
+\label{ch:global-discrete-theta-terms}
+
+\ConventionsEuclidean
+
+Discrete theta terms are topological phases in the path integral depending
+on global bundle data rather than on local curvature polynomials alone.  They
+are part of the definition of a gauge theory with a specified global form of
+the gauge group.  Their correct formulation requires cohomology classes,
+quadratic refinements, and compatibility with line-operator spectra.
+
+\section{Finite Gauge Fields}
+
+For a finite abelian group \(A\), a background \(A\)-gauge field on a
+triangulated \(D\)-manifold \(M\) is represented by a cocycle
+\[
+  a\in Z^1(M,A)
+\]
+modulo coboundaries.  A discrete theta term is a \(U(1)\)-valued topological
+action
+\[
+  \exp(2\pi\ii\int_M \omega(a)),
+\]
+where \(\omega\) is a cocycle representative of a class in
+\[
+  H^D(BA,U(1)).
+\]
+Changing \(\omega\) by a coboundary changes the action by a boundary term.
+Thus on a closed manifold the phase depends only on the cohomology class and
+the gauge-field isomorphism class.
+
+\section{One-Form Backgrounds}
+
+For an \(SU(N)/\mathbb Z_N\) gauge theory, the obstruction to lifting a
+bundle to an \(SU(N)\)-bundle is a two-form cocycle
+\[
+  B\in Z^2(M,\mathbb Z_N).
+\]
+In four dimensions a discrete theta term is built from a quadratic refinement
+of the cup square of \(B\).  On manifolds where the Pontryagin square
+\(\mathcal P(B)\in H^4(M,\mathbb Z_{2N})\) is defined, the phase has the
+form
+\[
+  \exp\!\left(
+  \frac{2\pi\ii p}{2N}\int_M \mathcal P(B)
+  \right),
+  \qquad p\in\mathbb Z_{2N},
+\]
+with further identifications depending on spin structure and the precise
+global form.  The integer \(p\) labels the discrete theta angle.
+
+\section{Line Operators and Mutual Locality}
+
+The choice of discrete theta term changes which electric and magnetic line
+operators are mutually local.  Let a line charge be
+\[
+  \gamma=(e,m)\in \mathbb Z_N\oplus\mathbb Z_N .
+\]
+A discrete theta parameter \(p\) shifts the electric charge carried by a
+magnetic line by a Witten-effect-type relation
+\[
+  e\sim p\,m\quad \text{mod }N
+\]
+in the minimal mutually local lattice.  Thus changing \(p\) is not a
+decorative addition to the action; it changes the spectrum of admissible
+genuine line operators.
+
+\section{Coupling to Background Fields}
+
+Let \(B\) be a background two-form field for a one-form symmetry.  The
+generating functional \(Z[B]\) may transform under a one-form gauge
+transformation \(B\mapsto B+d\lambda\) by a local phase.  If the phase cannot
+be removed by a local counterterm in \(D\) dimensions, it is an anomaly
+represented by an invertible theory in \(D+1\) dimensions.  Discrete theta
+terms in \(D\) dimensions are therefore intertwined with anomaly inflow
+terms in one higher dimension.
+
+\begin{proposition}[Coboundary invariance on closed manifolds]
+\label{prop:discrete-theta-coboundary-invariance}
+If two discrete topological Lagrangians differ by a cocycle coboundary, their
+exponentiated actions agree on closed manifolds for every flat finite
+background field.
+\end{proposition}
+
+\begin{proof}
+Let \(\omega'=\omega+d\alpha\).  For a closed \(D\)-manifold,
+\[
+  \int_M(\omega'-\omega)=\int_M d\alpha=\int_{\partial M}\alpha=0
+  \quad \text{mod }1 .
+\]
+Therefore the exponentials of the two actions are equal.  On a manifold with
+boundary the same calculation leaves the boundary phase, which must be
+cancelled by boundary data or interpreted as the boundary variation of an
+anomaly theory.
+\end{proof}
+
+\section{Continuum Gauge-Theory Status}
+
+In continuum Yang--Mills theory with nontrivial global form, discrete theta
+terms are defined by summing over bundles with specified characteristic
+classes and weighting each topological sector by the corresponding phase.
+A lattice regulator can implement the same data through plaquette variables
+and higher-form background cochains.  The comparison between continuum and
+lattice definitions requires matching characteristic classes and line
+operator spectra.
+
+\begin{openproblem}[Discrete theta terms in interacting continuum QFT]
+\label{op:discrete-theta-continuum-qft}
+Give a nonperturbative construction of four-dimensional gauge theories with
+all global forms and discrete theta terms in which bundles, one-form
+backgrounds, line operators, anomalies, and continuum limits are treated in a
+single framework.
+\end{openproblem}
