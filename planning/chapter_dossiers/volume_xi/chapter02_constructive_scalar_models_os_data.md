@@ -20,8 +20,9 @@
   \(V_{\varepsilon,\Lambda}\ge
   -A_\Lambda-B_\Lambda\|\phi\|_{H^{-s}}^\alpha\) with \(\alpha<2\), plus
   uniform exponential integrability of the finite-volume density.
-- Polymer activity norm, Kotecky--Preiss convergence criterion, and
-  exponential clustering estimate.
+- Polymer activity norm, hard-core Ursell coefficients, Penrose tree-graph
+  inequality, Kotecky--Preiss/Brydges--Kennedy rooted-tree convergence
+  criterion, and exponential clustering estimate.
 - Hamiltonian number-operator bound role in the original \(\phi^4_2\)
   construction.
 - \(\phi^4_d\) superficial-degree formula and explicit tadpole cutoff
@@ -44,7 +45,10 @@
 | \(\alpha\) | subquadratic exponent in the \(P(\phi)_2\) stability bound |
 | \(a_\varepsilon,b_\varepsilon\) | regulator-dependent local coefficients |
 | \(K(X,\phi)\) | polymer activity on the polymer \(X\) |
+| \(\kappa(X)\) | numerical majorant for the polymer activity after large-field weighting |
 | \(\|K\|_{a,b}\) | schematic cluster norm with large-field weight |
+| \(\varphi_{\mathrm c}(X_1,\ldots,X_n)\) | hard-core Ursell coefficient for the incompatibility graph |
+| \(B_{R_0}\) | finite-range cell-neighbourhood constant for incompatible polymers |
 | \(\omega_d\) | superficial degree of divergence |
 | \(S_n\) | limiting Schwinger hierarchy |
 
@@ -57,8 +61,10 @@
    stability theorem.  The proof now displays how the subquadratic Sobolev
    bound combines with Fernique and Holder estimates to give uniform
    integrability and convergence of normalized Schwinger functions.
-3. Cluster expansion convergence follows from a polymer smallness criterion
-   and produces exponential clustering.
+3. Cluster expansion convergence follows from a polymer smallness criterion:
+   the proof now displays the Penrose tree-graph inequality, the rooted-tree
+   recursion \(F_{N+1}(X)\le\exp(\sum_{Y\nsim X}\kappa(Y)F_N(Y))\), and the
+   leftover exponential-weight argument producing clustering.
 4. Hamiltonian \(\phi^4_2\) construction rests on number-operator and
    relative-bound estimates, not on a formal interaction.
 5. \(\Phi^4_3\) needs regulator-dependent local terms as part of the
@@ -85,3 +91,10 @@
   proof, and displays the Fernique/Young/Holder argument that turns the
   stability bound into \(L^p\)-convergence of the finite-volume density and
   Schwinger functions.
+- 2026-05-25 issue #572 pass: the Kotecky--Preiss cluster theorem no longer
+  cites the tree-graph estimate as a black box.  The chapter defines the
+  incompatibility majorants, states and proves the Penrose tree-graph bound,
+  proves the rooted-tree recursion under an explicit
+  \(B_{R_0}\epsilon\le a'\) smallness condition, and derives exponential
+  clustering from the unused \(a-a'\) weight along paths connecting the two
+  observable supports.

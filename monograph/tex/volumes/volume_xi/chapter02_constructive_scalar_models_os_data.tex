@@ -286,86 +286,236 @@ estimate that turns local finite-volume data into global Schwinger functions.
 \begin{definition}[Polymer activity and cluster norm]
 \label{def:constructive-polymer-activity}
 Partition \(\R^2\) into unit cells \(\Delta\).  A polymer \(X\) is a finite
-connected union of cells.  A polymer activity assigns to \(X\) a functional
+connected union of cells.  Fix a finite-range symmetric incompatibility
+relation \(X\nsim Y\); in the cell decompositions used below this means that
+the \(R_0\)-cell neighbourhoods of \(X\) and \(Y\) intersect, for a fixed
+integer \(R_0\).  Write \(X\sim Y\) for compatibility.  A polymer activity
+assigns to \(X\) a functional
 \[
   K(X,\phi)
 \]
 depending only on the field near \(X\).  For constants \(a,b>0\), define the
+numerical majorant
+\begin{equation}
+  \kappa(X)
+  :=
+  \sup_{\phi}
+  \left(
+    |K(X,\phi)|e^{-b\|\phi\|_{X}^{2r}}
+  \right)
+  \label{eq:constructive-polymer-majorant}
+\end{equation}
+and the
 weighted cluster norm
-\[
+\begin{equation}
   \|K\|_{a,b}
   =
   \sup_{\Delta_0}
   \sum_{X\ni\Delta_0}
   e^{a|X|}
-  \sup_{\phi}
-  \left(
-    |K(X,\phi)|e^{-b\|\phi\|_{X}^{2r}}
-  \right),
+  \kappa(X),
   \label{eq:constructive-polymer-norm}
-\]
+\end{equation}
 where \(\|\phi\|_X\) is the chosen local large-field norm.  The exact
 constructive proof fixes the Sobolev regularity and large-field regulator;
 \eqref{eq:constructive-polymer-norm} records the structural requirement.
 \end{definition}
 
-\begin{theorem}[Kotecky--Preiss type convergence criterion]
-\label{thm:constructive-kp-cluster-convergence}
-Suppose a polymer gas has activities satisfying, for some \(a>0\),
+\begin{lemma}[Penrose tree-graph bound]
+\label{lem:constructive-penrose-tree-graph-bound}
+Let \(X_1,\ldots,X_n\) be polymers and set
 \[
+  u_{ij}:=
+  \begin{cases}
+    1,& X_i\nsim X_j,\\
+    0,& X_i\sim X_j .
+  \end{cases}
+\]
+For \(n\geq2\), define the hard-core Ursell coefficient
+\begin{equation}
+  \varphi_{\mathrm c}(X_1,\ldots,X_n)
+  :=
+  \sum_{G\in\mathcal C_n}
+  \prod_{\{i,j\}\in E(G)}(-u_{ij}),
+  \label{eq:constructive-ursell-coefficient}
+\end{equation}
+where \(\mathcal C_n\) is the set of connected simple graphs on
+\(\{1,\ldots,n\}\).  For \(n=1\), set \(\varphi_{\mathrm c}(X_1)=1\).
+Then
+\begin{equation}
+  |\varphi_{\mathrm c}(X_1,\ldots,X_n)|
+  \leq
+  \sum_{T\in\mathcal T_n}
+  \prod_{\{i,j\}\in E(T)}u_{ij},
+  \label{eq:constructive-tree-graph-inequality}
+\end{equation}
+where \(\mathcal T_n\) is the set of spanning trees on
+\(\{1,\ldots,n\}\).
+\end{lemma}
+
+\begin{proof}
+Fix an ordering of the edges of the complete graph on \(\{1,\ldots,n\}\).
+For a connected graph \(G\), let \(T(G)\) be its lexicographically first
+spanning tree.  Penrose's partition scheme assigns to every tree \(T\) a
+graph \(R(T)\), containing \(T\), such that the connected graphs are the
+disjoint union of intervals
+\[
+  \{G:\ T\subseteq G\subseteq R(T)\}.
+\]
+Explicitly, an edge \(e\notin T\) is put in \(R(T)\) precisely when adding
+\(e\) to \(T\) does not change the lexicographically first spanning tree.
+Therefore
+\[
+  \sum_{\substack{G\in\mathcal C_n\\T(G)=T}}
+  \prod_{e\in E(G)}(-u_e)
+  =
+  (-1)^{|T|}
+  \prod_{e\in E(T)}u_e
+  \prod_{e\in E(R(T))\setminus E(T)}(1-u_e).
+\]
+Since each \(u_e\) is \(0\) or \(1\), the absolute value of the right-hand
+side is at most \(\prod_{e\in E(T)}u_e\).  Summing over \(T\) proves
+\eqref{eq:constructive-tree-graph-inequality}.
+\end{proof}
+
+\begin{theorem}[Kotecky--Preiss/Brydges--Kennedy convergence criterion]
+\label{thm:constructive-kp-cluster-convergence}
+Let \(\mathcal P_\Lambda\) be the finite set of polymers contained in a
+finite cell region \(\Lambda\).  Let
+\[
+  Z_\Lambda(K)
+  =
+  \sum_{\mathcal X\subset\mathcal P_\Lambda\ {\rm pairwise\ compatible}}
+  \prod_{X\in\mathcal X}K(X)
+\]
+be the abstract hard-core polymer partition function.  Suppose there are
+numbers \(a>a'>0\) and \(\epsilon>0\) such that
+\begin{equation}
   \sup_{\Delta_0}
   \sum_{X\ni\Delta_0}
-  |K(X)|e^{a|X|}
+  \kappa(X)e^{a|X|}
   \leq
   \epsilon
   \label{eq:constructive-kp-smallness}
-\]
-with \(\epsilon\) smaller than a universal constant determined by the cell
-connectivity.  Then the logarithm of the polymer partition function has an
-absolutely convergent connected-cluster expansion.  Moreover connected
-correlations of observables supported in separated regions \(A\) and \(B\)
-are bounded by
+\end{equation}
+and \(B_{R_0}\epsilon\leq a'\), where \(B_{R_0}\) is the cell-neighbourhood
+constant defined by
 \[
+  |\{\Delta:\operatorname{dist}_{\rm cell}(\Delta,X)\leq R_0\}|
+  \leq B_{R_0}|X|.
+\]
+Then
+\begin{equation}
+  \log Z_\Lambda(K)
+  =
+  \sum_{n\geq1}\frac1{n!}
+  \sum_{X_1,\ldots,X_n\in\mathcal P_\Lambda}
+  \varphi_{\mathrm c}(X_1,\ldots,X_n)
+  \prod_{i=1}^nK(X_i)
+  \label{eq:constructive-cluster-expansion}
+\end{equation}
+is absolutely convergent uniformly in \(\Lambda\).  More precisely, for each
+root polymer \(X_0\),
+\begin{equation}
+  \sum_{n\geq1}\frac1{(n-1)!}
+  \sum_{X_2,\ldots,X_n\in\mathcal P_\Lambda}
+  |\varphi_{\mathrm c}(X_0,X_2,\ldots,X_n)|
+  \prod_{i=2}^n\kappa(X_i)
+  \leq
+  e^{a'|X_0|}.
+  \label{eq:constructive-rooted-tree-bound}
+\end{equation}
+Consequently connected correlations of observables supported in separated
+regions \(A\) and \(B\), whose source activities obey the same local
+majorant, satisfy
+\begin{equation}
   |\langle F_A G_B\rangle-\langle F_A\rangle\langle G_B\rangle|
   \leq
   C_{F,G}e^{-m_{\mathrm{cl}}\,\operatorname{dist}(A,B)}
   \label{eq:constructive-exponential-clustering-bound}
-\]
+\end{equation}
 for a positive cluster mass \(m_{\mathrm{cl}}\) fixed by the exponential
 weight in the norm and by the covariance decay.
 \end{theorem}
 
 \begin{proof}
-Write the partition function as a sum over compatible polymer families:
-\[
-  Z
-  =
-  \sum_{\mathcal X\ {\rm compatible}}
-  \prod_{X\in\mathcal X}K(X).
-\]
-The logarithm is the sum over connected incompatibility graphs.  For a
-specified polymer \(X_0\), the tree-graph inequality bounds the sum over
-connected graphs touching \(X_0\) by a sum over rooted trees.  The root has
-total weight bounded by \eqref{eq:constructive-kp-smallness}, and the same
-bound applies recursively to every descendant.  Choosing \(\epsilon\) below
-the inverse branching constant makes the rooted-tree sum absolutely
-convergent.
+For finite \(\Lambda\), the Mayer identity is a finite algebraic identity.
+It expands the logarithm of the hard-core gas in connected incompatibility
+graphs and gives \eqref{eq:constructive-cluster-expansion}, with the
+coefficient \(\varphi_{\mathrm c}\) defined in
+\eqref{eq:constructive-ursell-coefficient}.  Equivalently, it is the formal
+Taylor expansion of the analytic branch of \(\log Z_\Lambda\) satisfying
+\(\log Z_\Lambda(0)=0\); the absolute convergence proved below is what makes
+this formal expansion a uniformly convergent function in the stated
+polydisc of activities.
+
+Apply Lemma~\ref{lem:constructive-penrose-tree-graph-bound}.  Root each tree
+at the vertex carrying \(X_0\) and orient its edges away from the root.  Let
+\(F_N(X)\) be the total majorant of rooted incompatibility trees of depth at
+most \(N\), with root polymer \(X\), excluding the activity of the root
+itself.  The tree bound gives the recursive domination
+\begin{equation}
+  F_{N+1}(X)
+  \leq
+  \exp\!\left(
+    \sum_{Y\nsim X}\kappa(Y)F_N(Y)
+  \right),
+  \qquad F_0(X)=1 .
+  \label{eq:constructive-rooted-tree-recursion}
+\end{equation}
+Assume inductively that \(F_N(Y)\leq e^{a'|Y|}\).  Since \(a>a'\),
+\begin{equation}
+  \sum_{Y\nsim X}\kappa(Y)e^{a'|Y|}
+  \leq
+  \sum_{\Delta\in N_{R_0}(X)}
+  \sum_{Y\ni\Delta}\kappa(Y)e^{a|Y|}
+  \leq
+  B_{R_0}\epsilon |X|
+  \leq
+  a'|X|.
+  \label{eq:constructive-kp-recursive-bound}
+\end{equation}
+Thus \(F_{N+1}(X)\leq e^{a'|X|}\).  Letting \(N\to\infty\) proves
+\eqref{eq:constructive-rooted-tree-bound}.  Multiplying by the root
+majorant \(\kappa(X_0)\) and summing over \(X_0\) with
+\eqref{eq:constructive-kp-smallness} proves absolute convergence of
+\eqref{eq:constructive-cluster-expansion}.
 
 For two separated observables, the connected part can only be produced by a
 connected cluster intersecting both supports.  Every such cluster contains a
-chain of cells joining \(A\) to \(B\).  The factor \(e^{-a|X|}\) left after
-using the norm therefore gives the exponential decay in
-\eqref{eq:constructive-exponential-clustering-bound}.  The Gaussian
-covariance decay contributes to the same exponent, and local observable
-norms supply the constant \(C_{F,G}\).
+path of incompatible polymers joining the source near \(A\) to the source
+near \(B\).  Along such a path,
+\begin{equation}
+  \sum_{X\ {\rm on\ the\ path}} |X|
+  \geq
+  c_{R_0}\operatorname{dist}(A,B)
+  \label{eq:constructive-path-size-distance}
+\end{equation}
+for a positive cell-metric constant \(c_{R_0}\).  In the rooted-tree
+estimate one may use the \(a'\)-weighted recursion while retaining the
+unused factor \(e^{-(a-a')|X|}\) from the \(a\)-weighted smallness norm.
+Equation \eqref{eq:constructive-path-size-distance} then gives
+\[
+  m_{\mathrm{cl}}\geq c_{R_0}(a-a')
+\]
+up to the additional exponential-decay rate supplied by the massive
+Gaussian covariance.  The source activity norms for \(F_A\) and \(G_B\)
+supply \(C_{F,G}\).  This proves
+\eqref{eq:constructive-exponential-clustering-bound}.
 \end{proof}
 
 In the Glimm--Jaffe--Spencer \(P(\phi)_2\) construction, the activities
 \(K(X,\phi)\) arise by expanding around cell-local interaction pieces while
-retaining large-field regulators.  The theorem above is not an optional
-heuristic: it is the analytic step that justifies taking
-\(\Lambda\uparrow\R^2\), proves exponential clustering in the massive phase,
-and gives uniform bounds on the Schwinger functions.
+retaining large-field regulators.  The theorem above is the abstract
+polymer estimate of Kotecky--Preiss and Brydges--Kennedy,\footnote{See
+R.~Kotecky and D.~Preiss, ``Cluster expansion for abstract polymer models,''
+\emph{Commun. Math. Phys.} 103 (1986), and D.~C. Brydges and T.~Kennedy,
+``Mayer expansions and the Hamilton-Jacobi equation,'' \emph{J. Stat. Phys.}
+48 (1987).} written here in the hard-core finite-range form needed for the
+constructive scalar models.  It is not an optional heuristic: it is the
+analytic step that justifies taking \(\Lambda\uparrow\R^2\), proves
+exponential clustering in the massive phase, and gives uniform bounds on
+the Schwinger functions.
 
 \section{Hamiltonian Viewpoint and Number-Operator Bounds}
 
