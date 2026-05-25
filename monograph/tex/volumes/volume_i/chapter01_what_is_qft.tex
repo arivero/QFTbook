@@ -767,6 +767,94 @@ calculation may use fields, path integrals, local algebras, or Euclidean
 correlators; the framework in which the calculation lives and the comparison
 maps needed to interpret it must be stated.
 
+\section{Status of Axiom Systems and Constructive Examples}
+\label{sec:status-axiom-systems-constructive-examples}
+
+The presentations above have a precise logical role.  They are theorem-bearing
+frameworks for local quantum field theory: each one specifies objects,
+topologies, positivity conditions, covariance conditions, and reconstruction
+or comparison theorems.  A result proved in one framework has the hypotheses
+of that framework as part of its statement.  Thus a theorem proved for
+Wightman fields is a theorem for theories admitting the declared Wightman
+presentation; a theorem proved for a represented local net is a theorem under
+the local-net hypotheses and any additional phase-space or modular hypotheses
+used in the proof; and a theorem proved from OS data is a theorem after the
+OS-II regularity and analytic-continuation input has been verified.
+
+The physical expectation is broader and more constructive.  A
+Poincare-invariant ultraviolet-complete local QFT in a vacuum sector is
+expected, when it has point-field coordinates of the appropriate regularity,
+to produce Wightman distributions; when it has Euclidean reflection-positive
+correlators with the required growth, to produce OS data; and when it is
+organized by bounded localized observables, to produce a Haag--Kastler type
+net.  These are expected properties of a completed local quantum theory in the
+corresponding sector.  Comparisons among the frameworks require explicit
+hypotheses: charged superselection sectors, gauge-invariant observable
+algebras, fermionic field variables in path integrals, curved-background
+formulations, and functorial or extended geometric structures may be primary
+in one presentation and derived or hidden in another.
+
+The path-integral aspiration can be stated as a gluing problem.  One seeks an
+assignment of amplitudes and correlation distributions to a declared category
+of backgrounds with sources,
+\[
+  (M,g,\text{bundles},J,\ldots)
+  \longmapsto
+  Z[M,g,\text{bundles},J,\ldots],
+\]
+compatible with cutting and gluing, locality of source variation, reflection
+or unitarity, and covariance under background isomorphisms.  A
+Kontsevich--Segal type formulation packages this aspiration as a functorial
+or multilinear assignment on a category of allowed real or complexified
+Riemannian bordisms, with reflection positivity/unitarity represented by
+additional structure on the target spaces.  This functorial language is a
+valuable target for the geometric and path-integral side of the subject.  In
+the opening volumes we use Wightman, OS, and local-net frameworks first
+because they give the spectral theory, K\"all\'en--Lehmann representation,
+Haag--Ruelle scattering theory, LSZ comparison, and analytic continuation
+theorems in the form needed for the later construction.
+
+Constructive results calibrate these frameworks.  Table
+\ref{tab:constructive-master-status} in
+Chapter~\ref{ch:constructive-status-routes} records representative examples
+and open problems.  The completed non-Gaussian constructions are concentrated
+in special low-dimensional regimes, such as \(P(\phi)_2\), massive
+\(\phi^4_3\), selected two-dimensional scalar--fermion models, massive
+Gross--Neveu type models, and two-dimensional Yang--Mills in holonomy or
+heat-kernel formulations.  The standard reflection-positive
+Ising/\(\lambda\phi^4\) route in \(D\ge4\) is constrained by triviality
+theorems, with the four-dimensional marginal case requiring the precise
+qualification stated in Table~\ref{tab:constructive-master-status}.  A
+four-dimensional UV-complete interacting QFT agreeing with formal
+\(\phi^4_4\) perturbation theory to all orders is not ruled out by the
+standard positive-lattice triviality theorem as a purely logical matter; it is
+a distinct open construction problem.  Four-dimensional Yang--Mills with mass
+gap remains the central constructive gauge-theory problem.
+
+\begin{openproblem}[Axiomatic comparison and physical examples]
+\label{op:axiomatic-comparison-physical-examples}
+Give sharp hypotheses, and prove the resulting comparison theorems, relating
+the principal nonperturbative frameworks for local QFT:
+\[
+\begin{gathered}
+  \text{Wightman fields},\qquad
+  \text{Osterwalder--Schrader data},\\
+  \text{Haag--Kastler local nets},\qquad
+  \text{functorial/path-integral data}.
+\end{gathered}
+\]
+Some directions are established under substantial hypotheses: OS-II
+reconstruction gives Wightman boundary values from OS-admissible Schwinger
+data; Wightman fields give local nets after the relevant self-adjointness,
+bounded-functional-calculus, and strong-locality conditions are imposed; and
+positive states on local algebras give Hilbert-space representations by GNS.
+The converse directions, the precise functorial completion, and the
+verification of all required hypotheses in physically central interacting
+four-dimensional theories remain open.  The problem has two parts: prove the
+comparison maps with minimal usable assumptions, and construct substantial
+examples for which the assumptions are actually verified.
+\end{openproblem}
+
 \section{Analytic Status of the Basic Objects}
 
 The opening framework deliberately separates several levels of mathematical

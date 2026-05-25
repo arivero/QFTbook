@@ -101,6 +101,9 @@ Definitions must specify domains and support conditions.
 | Contact terms are coincident-point/source-response data supported on collision diagonals, not determined by separated-point correlators alone. | Framework definition | Added as Definition `contact-terms-source-chart` |
 | Wightman/OS data for selected fields do not by themselves fix composite products, time-ordered products, nonlinear source couplings, or repeated source derivatives on diagonals. | Boundary statement | Stated in opening analytic-status section |
 | Wightman, AQFT, OS, and path-integral presentations are connected by explicit comparison maps, each with its own hypotheses. | Theorem register | Added comparison-map register pointing to Wightman reconstruction, Wightman-to-net, net-to-Wightman, OS-II reconstruction, and path-integral-to-OS composition |
+| Wightman, OS, AQFT/local-net, constructive, perturbative, and functorial/path-integral frameworks are theorem-bearing comparison frameworks whose hypotheses must be retained in theorem statements. | Framework-status statement | Added Section `sec:status-axiom-systems-constructive-examples` for issue #483 |
+| Constructive examples calibrate expected properties: completed non-Gaussian constructions are concentrated in low-dimensional regimes, standard `D >= 4` positive `phi^4` routes are constrained by triviality, and four-dimensional gauge-theory construction remains open. | Constructive status statement | Cross-references Table `tab:constructive-master-status` and OS Remark `rem:os-constructive-status-inputs` for issues #480/#482 |
+| The relationship among Wightman fields, OS data, local nets, and functorial/path-integral data is itself an open comparison problem. | Open problem | Added Open Problem `op:axiomatic-comparison-physical-examples` |
 | OS Euclidean data for reconstruction are zero-diagonal Schwinger distributions with OS-II semigroup and linear-growth input, not merely Euclidean moments plus reflection positivity. | Historical/analytic correction | Aligned with OS II and the OSReconstruction formalization interface |
 | Constructive existence of physically interacting four-dimensional local QFT is an open problem except for free/generalized-free examples and model-specific conditional or trivial regimes. | Status/open problem | Added as Open Problem `op:four-dimensional-constructive-qft`; cross-checks the path-integral status catalog |
 | Particles, S-matrix, LSZ, and perturbative scattering require further hypotheses. | Structural claim | Stated as dependency plan; derived later |
@@ -133,6 +136,10 @@ Definitions must specify domains and support conditions.
   convention explicit: the spectrum condition is imposed on contravariant
   \(P^\mu\), while \(a^\mu P_\mu=a_\mu P^\mu\) appears in the unitary
   translation exponent with the common \(+i\) convention.
+- Completed: issues #480/#482/#483 pass added the framework-status section,
+  constructive-status cross-reference to the Volume XI table, OS
+  constructive-input remark, and open problem on axiomatic comparison and
+  verification in physically central examples.
 
 ## Figure Ledger
 
