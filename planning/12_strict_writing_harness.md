@@ -229,16 +229,24 @@ tools/run_calculation_checks.sh
 or directly with
 
 ```bash
-/Applications/Wolfram.app/Contents/MacOS/wolframscript -file calculation-checks/<file>.wl
+/Applications/Wolfram.app/Contents/MacOS/WolframKernel -script calculation-checks/<file>.wl
 ```
 
-when `wolframscript` is not visible on `PATH`.  A calculation check does not
+when Wolfram executables are not visible on `PATH`.  The repository harness
+prefers `WolframKernel -script` over `wolframscript -file` when both are
+available, because the kernel entrypoint is the direct local batch runner and
+avoids `wolframscript` startup/pathologies on some macOS installations.  A
+calculation check does not
 replace a derivation in the text; it certifies sign, normalization, and finite
 algebra used by that derivation.  Computationally heavy checks, numerical
 summations, conformal-block recursion, large symbolic reductions, and loop
 integral bookkeeping that may grow combinatorially should be implemented in
 Python, with Wolfram Language used only for compact reader-facing symbolic
 cross-checks.
+In `.wl` files run by `wolframscript -file`, continued arithmetic must keep a
+binary operator at the end of the preceding line, not as the first nonspace
+token of the next line, because a newline followed by a leading operator can
+be parsed as a new statement.
 
 ## Compilation Gate
 

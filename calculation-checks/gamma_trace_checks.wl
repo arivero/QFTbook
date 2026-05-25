@@ -104,8 +104,8 @@ one = {{1}};
 axialLeft = one;
 axialRight = -one;
 vector = one;
-coeffWithoutHalf = Tr[axialLeft.(vector.vector + vector.vector)]
-  - Tr[axialRight.(vector.vector + vector.vector)];
+coeffWithoutHalf = Tr[axialLeft.(vector.vector + vector.vector)] -
+  Tr[axialRight.(vector.vector + vector.vector)];
 coeffWithHalf = coeffWithoutHalf/2;
 assert["raw anticommutator gives four", coeffWithoutHalf == 4];
 assert["mixed-anomaly coefficient gives two", coeffWithHalf == 2];

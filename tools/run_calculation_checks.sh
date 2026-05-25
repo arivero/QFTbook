@@ -38,8 +38,55 @@ find_wolframscript() {
   return 1
 }
 
+find_wolframkernel() {
+  if [[ -n "${WOLFRAMKERNEL:-}" && -x "${WOLFRAMKERNEL:-}" ]]; then
+    printf '%s\n' "$WOLFRAMKERNEL"
+    return 0
+  fi
+
+  if command -v WolframKernel >/dev/null 2>&1; then
+    command -v WolframKernel
+    return 0
+  fi
+
+  local mac_app="/Applications/Wolfram.app/Contents/MacOS/WolframKernel"
+  if [[ -x "$mac_app" ]]; then
+    printf '%s\n' "$mac_app"
+    return 0
+  fi
+
+  local mathematica_app
+  for mathematica_app in /Applications/Mathematica.app/Contents/MacOS/WolframKernel \
+    /Applications/Wolfram\ Mathematica.app/Contents/MacOS/WolframKernel; do
+    if [[ -x "$mathematica_app" ]]; then
+      printf '%s\n' "$mathematica_app"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+run_wolfram_check() {
+  if command -v timeout >/dev/null 2>&1; then
+    timeout -k 5s "$WOLFRAM_TIMEOUT" "$@"
+  else
+    "$@"
+  fi
+}
+
 if [[ "${QFT_SKIP_WOLFRAM:-0}" == "1" ]]; then
   echo "[calculation-checks] QFT_SKIP_WOLFRAM=1; skipped Wolfram Language checks"
+elif WOLFRAMKERNEL="$(find_wolframkernel)"; then
+  echo "[calculation-checks] wolfram checks via $WOLFRAMKERNEL -script"
+  # Prefer WolframKernel -script when it is available.  On some macOS
+  # installations wolframscript -file can stall before evaluating even
+  # elementary local code, while the kernel script entrypoint runs directly.
+  WOLFRAM_TIMEOUT="${QFT_WOLFRAM_TIMEOUT:-90s}"
+  for check in calculation-checks/*_checks.wl; do
+    echo "[calculation-checks] wolfram ${check}"
+    run_wolfram_check "$WOLFRAMKERNEL" -script "$check"
+  done
 elif WOLFRAMSCRIPT="$(find_wolframscript)"; then
   echo "[calculation-checks] wolfram checks via $WOLFRAMSCRIPT"
   # Wolfram Language checks in this repository should be lightweight symbolic
@@ -48,11 +95,7 @@ elif WOLFRAMSCRIPT="$(find_wolframscript)"; then
   WOLFRAM_TIMEOUT="${QFT_WOLFRAM_TIMEOUT:-90s}"
   for check in calculation-checks/*_checks.wl; do
     echo "[calculation-checks] wolfram ${check}"
-    if command -v timeout >/dev/null 2>&1; then
-      timeout -k 5s "$WOLFRAM_TIMEOUT" "$WOLFRAMSCRIPT" -file "$check"
-    else
-      "$WOLFRAMSCRIPT" -file "$check"
-    fi
+    run_wolfram_check "$WOLFRAMSCRIPT" -file "$check"
   done
 else
   echo "[calculation-checks] wolframscript not found; skipped Wolfram Language checks" >&2
