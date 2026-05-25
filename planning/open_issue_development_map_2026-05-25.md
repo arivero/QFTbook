@@ -97,8 +97,8 @@ comment identifying the manuscript location and verification performed.
 
 ## Special-Structure Volumes
 
-- #481: forward pointers to deferred Volumes VI--XII.  Target: architecture,
-  volume openings, and selected core-volume forward references.
+- #481: forward pointers to deferred Volumes VI--XII.  Frontmatter dependency
+  guide added 2026-05-25; issue is closable after build and push verification.
 - #493: planar \(N=4\) SYM spin chains and integrability.  Target: Volumes VI
   and VII after both integrable and supersymmetric foundations are developed.
 

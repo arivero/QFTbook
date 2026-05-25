@@ -135,6 +135,9 @@ Date: 2026-05-23
   bounds.  Critical lattice scaling limits that satisfy reconstruction
   hypotheses are separated from finite-cutoff condensed-matter EFTs that only
   borrow relativistic QFT technology after a validation map is supplied.
+- A reader-facing volume dependency guide is part of the frontmatter.  Its
+  role is only navigational: it locates where deferred machinery is developed
+  and requires local chapters to state theorem status at the point of use.
 
 Date: 2026-05-24
 
