@@ -90,6 +90,7 @@
 | \(Q\) | electromagnetic flavor-charge matrix embedded as a vector flavor background |
 | \(\Gamma_{\mathrm{WZ}}\) | ungauged Wess--Zumino functional |
 | \(\Gamma_{\mathrm{WZW}}\) | gauged Wess--Zumino--Witten functional |
+| \(n\) | integer WZW level; QCD anomaly matching forces \(n=N_c\) |
 | \(\dd\nu_{m,\Lambda}(A)\) | finite-regulator Euclidean vectorlike gauge-field measure with positive quark mass \(m\), used only under the Vafa--Witten positivity hypotheses |
 | \(\dd\nu_m(A)\) | continuum limiting functional or measure for the same vectorlike theory, assumed only when a continuum Vafa--Witten conclusion is claimed |
 
@@ -136,6 +137,12 @@
   substitute for defining the QFT determinant or Pfaffian line.
 - Anomaly matching is equality of the background anomaly cocycle class between
   UV and IR descriptions.
+- Anomaly matching is developed as an infrared constraint: after the symmetry,
+  background fields, and counterterm convention are fixed, one computes the UV
+  cocycle, writes the possible IR responses from massless fields, Goldstone
+  WZW terms, and topological/invertible sectors, and compares cocycle classes.
+  A unique trivial gapped symmetric IR phase has zero class and is excluded
+  whenever the UV class is nonzero.
 - Infinite-volume vacuum sectors are separated from finite-dimensional
   tunneling by the scaling of the instanton action with spatial volume; local
   operators act diagonally on pure homogeneous phases by locality and cluster
@@ -199,6 +206,16 @@
 - The Wess--Zumino--Witten coefficient is quantized and equals \(N_c\) for QCD
   with fundamental quarks, so the pion functional reproduces the microscopic
   flavor anomaly.
+- The same equality is used as a worked 't Hooft anomaly-matching test:
+  the UV left-flavor anomaly
+  \(N_c(48\pi^2)^{-1}\int\operatorname{Tr}(\alpha\,\dd A\,\dd A)+O(A^3)\)
+  is matched by a level-\(n\) WZW term only when \(n=N_c\).  A pion sigma model
+  without WZW response fails the test.
+- The vector subgroup is anomaly-free in the local flavor anomaly coefficient
+  because the left and right components of a Dirac quark contribute equally and
+  with opposite signs.  The Vafa--Witten positivity argument is recorded as a
+  separate input selecting the vector-aligned condensate under its hypotheses;
+  anomaly matching then fixes the broken-axial WZW response.
 - The electromagnetic specialization includes the microscopic quark triangle,
   the anticommutator factor
   \(\operatorname{Tr}(T^3\{q,q\})=2\operatorname{Tr}(T^3q^2)=1/3\), and the
@@ -276,3 +293,9 @@
   decomposition, hard-pion LSZ reduction, Adler-zero theorem for purely pionic
   amplitudes, the four-pion Adler-point check, and the corresponding schematic
   figure.
+- 2026-05-25 issue #469 pass: expanded 't Hooft anomaly matching from a
+  structural statement into a calculational IR constraint with the QCD
+  UV-to-IR WZW level match as a worked example, explicit exclusion of a
+  trivial symmetric gapped candidate absent an additional anomaly-carrying
+  sector, vector-subgroup anomaly cancellation, and
+  `calculation-checks/anomaly_matching_wzw_checks.py`.

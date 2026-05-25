@@ -1750,6 +1750,117 @@ same inflow class: its five-dimensional extension transgresses the microscopic
 anomaly polynomial, and its four-dimensional gauge variation is the boundary
 term that matches the quark anomaly.
 
+\section{'t Hooft Anomaly Matching as an Infrared Constraint}
+\label{sec:t-hooft-anomaly-matching-tool}
+
+Anomaly matching becomes a calculational constraint only after the symmetry,
+backgrounds, and counterterm convention have been fixed.  The procedure is:
+\begin{enumerate}[label=\roman*.]
+\item choose the exact global symmetry that is being tested and the class of
+allowed background fields;
+\item compute the ultraviolet background-gauge cocycle, or equivalently its
+infinitesimal Wess--Zumino representative on the identity component;
+\item write the most general proposed infrared response from massless
+fermions, Goldstone fields, and possible topological or invertible sectors;
+\item compare cocycle classes modulo local counterterms.
+\end{enumerate}
+The comparison is not a comparison of Lagrangian terms or of a particular
+representative of a current.  It is a comparison of the background response
+class \([\mathcal A]\) defined in \eqref{eq:background-anomaly-cocycle}.  A
+candidate infrared phase with a unique gapped vacuum and no topological
+response has the zero class.  Such a phase is ruled out when the ultraviolet
+class is nonzero.  A candidate phase with Goldstone fields is allowed only if
+its Wess--Zumino--Witten term supplies the missing cocycle.
+
+For massless QCD, restrict first to the connected nonabelian chiral symmetry
+\[
+  SU(N_f)_L\times SU(N_f)_R ,
+  \qquad N_f\ge3,
+\]
+and use the flavor generators \(T^a\) normalized by
+\(\operatorname{Tr}(T^aT^b)=\frac12\delta^{ab}\), as in the pion
+normalization above.  Couple only a left background \(A\) and set the right
+background to zero.  The ultraviolet theory contains \(N_c\) color copies of a
+left-handed Weyl fermion in the fundamental representation of
+\(SU(N_f)_L\).  The consistent anomaly representative is therefore
+\begin{equation}
+  \delta_\alpha W_{\rm UV}[A]
+  =
+  \frac{N_c}{48\pi^2}
+  \int_{M_4}
+  \operatorname{Tr}\bigl(\alpha\,\dd A\,\dd A\bigr)
+  +O(A^3),
+  \label{eq:qcd-left-flavor-uv-anomaly-repeat}
+\end{equation}
+where the \(O(A^3)\) terms are fixed by the same descent class.  A
+two-derivative pion sigma model without a Wess--Zumino--Witten term is
+invariant under background gauge transformations and would give zero on the
+right hand side of \eqref{eq:qcd-left-flavor-uv-anomaly-repeat}; it therefore
+cannot be the complete infrared response to the chiral backgrounds.  A
+Goldstone theory with WZW level \(n\) gives
+\[
+  \delta_\alpha\bigl(n\Gamma_{\mathrm{WZW}}[U;A,0]\bigr)
+  =
+  \frac{n}{48\pi^2}
+  \int_{M_4}
+  \operatorname{Tr}\bigl(\alpha\,\dd A\,\dd A\bigr)
+  +O(A^3).
+\]
+Matching \eqref{eq:qcd-left-flavor-uv-anomaly-repeat} for arbitrary
+\(\alpha\) and \(A\) forces
+\begin{equation}
+  n=N_c .
+  \label{eq:wzw-level-forced-by-matching}
+\end{equation}
+This is the same equality obtained above from the Wess--Zumino functional, now
+read as a test of infrared phases.  If the chiral symmetry were unbroken and
+the theory confined to a unique trivial gapped vacuum, there would be no
+massless determinant line, no Goldstone WZW term, and no topological response;
+that candidate would fail \eqref{eq:qcd-left-flavor-uv-anomaly-repeat}.  An
+unbroken phase is not excluded by this argument if it contains massless
+composite fermions or a topological/invertible sector carrying exactly the same
+background cocycle.  The matching condition constrains the infrared
+possibilities; it is not a proof of which dynamical phase QCD chooses.
+
+The vector subgroup illustrates the same logic in a form that is often hidden
+by notation.  Set \(L=R=V\) and couple a single vector background \(v\) to both
+chiralities.  In the anomaly coefficient
+\eqref{eq:flavor-anomaly-coefficient}, the left-handed and right-handed
+Dirac components have the same vector generator.  Their contributions to the
+vector current anomaly cancel:
+\begin{equation}
+  \mathcal A^{abc}_{V}
+  =
+  \frac{N_c}{2}
+  \left[
+    \operatorname{Tr}\bigl(T^a\{T^b,T^c\}\bigr)
+    -
+    \operatorname{Tr}\bigl(T^a\{T^b,T^c\}\bigr)
+  \right]
+  =
+  0 .
+  \label{eq:vector-flavor-anomaly-cancels}
+\end{equation}
+Thus \(SU(N_f)_V\) is an anomaly-free symmetry that can act on a purely
+massive color-singlet sector without requiring additional massless fields or a
+topological response.  By contrast, a purely left chiral subgroup has the
+nonzero coefficient in \eqref{eq:qcd-left-flavor-uv-anomaly-repeat}; if it
+remained unbroken in a gapped infrared theory, its anomaly would have to be
+carried by some nontrivial infrared sector.
+
+The positivity statement used earlier is logically separate but compatible
+with this anomaly test.  Under Hypothesis~\ref{hyp:vafa-witten-measure-data},
+equal positive quark masses select a vacuum preserving the vector flavor
+group; taking the small-mass limit then aligns the chiral condensate with
+\(SU(N_f)_V\) whenever the required limits exist.  Anomaly matching then
+determines the response of the broken axial directions: the Goldstone target
+\(SU(N_f)\) together with \(N_c\Gamma_{\mathrm{WZW}}\) reproduces the
+ultraviolet chiral anomaly, while the unbroken vector subgroup remains
+nonanomalous.  The two inputs have different status.  The vector-alignment
+argument depends on Euclidean positivity and limiting assumptions; the anomaly
+matching equation is an exact background-response constraint once the
+ultraviolet symmetry and regulator convention are fixed.
+
 For the electromagnetic specialization use the dual tensor defined at the start
 of the chapter and the flavor-generator normalization just stated, and fix
 \[
