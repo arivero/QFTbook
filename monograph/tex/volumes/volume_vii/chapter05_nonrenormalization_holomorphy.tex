@@ -110,12 +110,28 @@ Jacobian of field rescalings and therefore need not be one-loop exact.
 
 \section{Konishi-Type Rescaling Anomaly}
 
-A chiral field redefinition
+Let \(\Phi\) be a chiral superfield valued in a unitary representation \(R\)
+of the gauge group.  The representation index used in this section is fixed
+by
+\[
+  \operatorname{Tr}_{R}(XY)=T(R)\operatorname{tr}(XY),
+  \qquad X,Y\in\mathfrak g,
+\]
+where \(\operatorname{tr}\) is the same invariant form used in the
+Yang--Mills term
+\(-\frac1{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\).
+
+\begin{proposition}[Konishi rescaling Jacobian]
+\label{prop:konishi-rescaling-jacobian}
+Assume a gauge-covariant supersymmetric finite-mode regulator, or a
+perturbative spectral regulator whose local heat-kernel coefficient agrees
+with the finite-mode Berezinian limit, for the chiral superfield
+\(\Phi\in R\).  Under the constant holomorphic field redefinition
 \[
   \Phi\mapsto e^{\alpha}\Phi
 \]
-changes the functional measure by a local chiral anomaly.  In a regulated
-scheme this is the statement that the Jacobian contributes
+the gauge-field-dependent local part of the regulated super-Berezinian is
+equivalent to adding the chiral local functional
 \[
   \Delta S
   =
@@ -123,9 +139,116 @@ scheme this is the statement that the Jacobian contributes
   \int d^4x\,d^2\theta\,\operatorname{tr}(W^\alpha W_\alpha)
   +\text{c.c.}
 \]
-with \(T(R)\) normalized by the same trace convention as the gauge kinetic
-term.  This anomaly explains why holomorphic Wilsonian couplings and
-canonically normalized couplings obey different coordinate beta functions.
+to the Wilsonian action, up to gauge-independent constants and local
+\(D\)-terms removable by the coordinate choice.  For several chiral
+superfields the right hand side is summed over their representations and
+rescaling parameters.
+\end{proposition}
+
+\begin{proof}
+The statement is a local Jacobian statement inside a specified regulator, not
+a property of a formal infinite-dimensional measure.  First impose an
+infrared auxiliary regulator so that the kinetic operator has a discrete
+orthonormal basis.  The odd component field \(\psi_\alpha\) of \(\Phi\) is a
+left Weyl fermion in \(R\).  Expanding it in a gauge-covariant finite set of
+modes gives odd coordinates \(c_n\), and the ordered Berezinian density
+\(\prod_n dc_n\) transforms by the inverse determinant of the finite matrix
+representing the change of variables.  The scalar and auxiliary components
+produce ordinary determinants.  Their gauge-dependent local contribution is
+a \(D\)-term or a gauge-independent normalization in a supersymmetric
+regulator; the chiral gauge-field-dependent term is fixed by the Weyl-fermion
+Berezinian.
+
+The finite-mode calculation is the chiral half of the Berezinian trace in
+Chapter~\ref{ch:volume-ii-20}.  Replacing the sharp finite-mode projector by
+the equivalent smooth gauge-covariant spectral regulator for the local
+coefficient gives
+\[
+  \log J_{\alpha,M}^{\rm loc}
+  =
+  \alpha\,
+  \operatorname{Tr}_{R,S_+}
+  \left[
+    \Pi_+\,\exp(-\mathcal D_A^2/M^2)
+  \right]_{\rm loc}
+  +\text{anti-chiral part}+O(M^{-1}),
+\]
+where \(S_+\) is the left Weyl spinor bundle and \(\mathcal D_A\) is the
+Dirac operator coupled to the same connection.  The symbol
+\([\cdots]_{\rm loc}\) means the part depending locally on the background
+curvature after gauge-independent power divergences have been subtracted.
+The chiral asymmetry of the heat kernel is
+\[
+  \lim_{M\to\infty}
+  \operatorname{tr}_{S}
+  \left[
+    \gamma_5\exp(-\mathcal D_A^2/M^2)
+  \right](x,x)
+  =
+  \frac{1}{32\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{Tr}_{R}(F_{\mu\nu}F_{\rho\sigma}),
+\]
+as in
+\eqref{eq:heat-kernel-anomaly-density}.  Therefore the imaginary part of the
+Jacobian for the phase subcase \(\alpha=\ii\beta\) is the regulated
+Konishi-current anomaly of the left Weyl fermion in \(R\).  Using
+\(\operatorname{Tr}_{R}(XY)=T(R)\operatorname{tr}(XY)\), its nontrivial
+curvature dependence is proportional to \(T(R)\operatorname{tr}(F\wedge F)\).
+
+It remains to identify the superspace representative of this local
+functional.  The holomorphic part of the Jacobian must be a chiral,
+gauge-invariant, local functional, linear in \(\alpha\), quadratic in the
+background gauge field at leading order, and of engineering dimension three
+in the chiral integrand.  In an \(\mathcal N=1\) gauge background the unique
+such representative, modulo chiral total derivatives and \(D\)-terms, is
+\[
+  c\,\alpha\int d^4x\,d^2\theta\,
+  \operatorname{tr}(W^\alpha W_\alpha).
+\]
+The coefficient \(c\) is determined by the component anomaly just computed.
+With the superspace normalization of
+Chapter~\ref{ch:susy-gauge-theory},
+\[
+  \frac{1}{16\pi\ii}\tau
+  \int d^4x\,d^2\theta\,\operatorname{tr}(W^\alpha W_\alpha)
+  +\text{c.c.}
+\]
+has component theta term
+\(\frac{\theta}{32\pi^2}
+\operatorname{tr}(F_{\mu\nu}\widetilde F^{\mu\nu})\) when
+\(\operatorname{Re}\tau=\theta/(2\pi)\).  This fixes
+\[
+  c=\frac{T(R)}{8\pi^2}
+\]
+in the action-shift convention of the proposition.  The conjugate
+anti-chiral Berezinian gives the displayed c.c. term.  Gauge-independent
+power-divergent constants and local full-superspace terms change the
+normalization of fields or the \(D\)-term coordinate and are not part of the
+Konishi chiral anomaly.
+\end{proof}
+
+\begin{remark}[Meaning of the action-shift convention]
+The sign of a Jacobian may be moved between the transformed density and the
+action depending on whether one writes the change of variables as
+\(\mathcal D\Phi=J\,\mathcal D\Phi'\) or
+\(\mathcal D\Phi'=J^{-1}\mathcal D\Phi\), and on Lorentzian versus Euclidean
+weight conventions.  Proposition~\ref{prop:konishi-rescaling-jacobian} fixes
+\(\Delta S\) by the convention used in the Wilsonian coordinate relation
+below: a holomorphic rescaling of matter fields shifts the holomorphic gauge
+coordinate by the amount encoded in the displayed
+\(\frac{T(R)\alpha}{8\pi^2}\int W^2\) term.  Ward identities obtained by
+varying the same change of variables carry the corresponding term on the
+opposite side if the Jacobian is kept in the measure instead of exponentiated
+into the action.
+\end{remark}
+
+This anomaly explains why holomorphic Wilsonian couplings and canonically
+normalized couplings obey different coordinate beta functions.  It is not a
+claim that a manifestly supersymmetric nonperturbative regulator has been
+constructed for every four-dimensional supersymmetric gauge theory; it is a
+perturbative local Jacobian statement in schemes where the above regulated
+Berezinian calculation is valid.
 
 \section{NSVZ Coordinate Formula}
 
