@@ -22,10 +22,16 @@ comment identifying the manuscript location and verification performed.
   plus Volume I reconstruction chapters.
 - #483: Volume I axiom-status language.  Target: Volume I opening framework
   chapters.
-- #484: stochastic PDE and Hairer regularity structures.  Target: Volume XI
-  stochastic quantization chapter.
-- #485: Glimm--Jaffe construction revisit.  Target: Volume XI constructive
-  examples chapter.
+- #484: stochastic PDE and Hairer regularity structures.  Volume XI
+  stochastic quantization chapter deepened 2026-05-25 with the finite
+  Langevin identity, Da Prato--Debussche mechanism, regularity structures,
+  BPHZ-renormalized \(\Phi^4_3\) SPDE datum, and gauge/BV boundary.  Closable
+  after build and push verification.
+- #485: Glimm--Jaffe construction revisit.  Volume XI constructive examples
+  chapter deepened 2026-05-25 with Wick-power estimates, finite-volume
+  \(P(\phi)_2\), polymer cluster convergence, Hamiltonian number-operator
+  bounds, \(\Phi^4_3\) power counting, and OS output data.  Closable after
+  build and push verification.
 - #494: numerical methods, including lattice Monte Carlo, TCSA, and DLCQ.
   Target: Volume XI numerical QFT chapter with calculation-check scripts.
 - #505: nonperturbative Wilsonian fixed-point theory.  Target: Volume III and

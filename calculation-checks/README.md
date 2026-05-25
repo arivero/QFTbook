@@ -51,6 +51,11 @@ Current checks:
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions
   to the Hofman--Maldacena inequalities, and the vanishing of the integrated
   \(t_2,t_4\) deformations.
+- `constructive_scalar_spde_checks.py`: finite checks for the constructive
+  scalar and singular-SPDE chapters, including Hermite/Wick coefficients for
+  \(:\phi^2:\), \(:\phi^3:\), \(:\phi^4:\), the sharp-cutoff tadpole
+  coefficients in two and three Euclidean dimensions, and the displayed
+  \(\phi^4_d\) superficial-degree formula.
 - `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)

@@ -3,120 +3,546 @@
 
 \ConventionsEuclidean
 
-Constructive scalar models provide interacting examples in which Euclidean
-correlation functions, positivity, growth estimates, and Lorentzian
-reconstruction are controlled by theorems in specified dimensions and
-parameter regimes.  This chapter records the output data of such a
-construction: Schwinger functions, reflection positivity, growth estimates,
-locality after reconstruction, and the reconstructed Hilbert-space fields.
+Constructive scalar models are the basic interacting examples in which the
+objects used throughout this monograph are produced by estimates rather than
+postulated: Schwinger functions, reflection positivity, Euclidean covariance,
+growth bounds, and the Hilbert-space fields reconstructed from them.  The
+word ``constructive'' will always mean a theorem about a limiting object in a
+specified topology.  A finite cutoff integral, by itself, is only an input.
+
+This chapter focuses on the scalar line beginning with \(P(\phi)_2\) and
+\(\Phi^4_3\).  It does not treat these theories as formal path integrals
+with unspecified counterterms.  It records the regulated variables, the Wick
+and local counterterm coordinates appearing in the single regulated action,
+the estimates that control the infinite-volume and ultraviolet limits, and
+the OS data produced at the end.
 
 \section{Gaussian Reference Field and Wick Powers}
 
-Let \(C=(-\Delta+m^2)^{-1}\) on \(\R^d\) with \(m>0\).  The centered Gaussian
-field \(\phi\) is the generalized random field with covariance
+Let \(m>0\), let
 \[
-  \mathbb E[\phi(f)\phi(g)]
-  =
-  \int_{\R^d\times\R^d} f(x)C(x-y)g(y)\,d^dx\,d^dy .
+  C=(-\Delta+m^2)^{-1}
 \]
+be the massive Euclidean covariance on \(\R^d\), and let \(\mu_C\) be the
+centered Gaussian generalized field with covariance
+\[
+  \mathbb E_{\mu_C}[\phi(f)\phi(g)]
+  =
+  \int_{\R^d\times\R^d} f(x)C(x-y)g(y)\,\dd^dx\,\dd^dy .
+  \label{eq:constructive-gaussian-covariance}
+\]
+The field \(\phi\) is not a pointwise function.  The expression
+\(\phi(x)^k\) is therefore not defined until a regularization and a limiting
+procedure have been supplied.
+
 \begin{definition}[Wick powers by Gaussian regularization]
 \label{def:constructive-wick-powers-gaussian-regularization}
-Let \(\phi_\varepsilon=\rho_\varepsilon\ast\phi\) be a smoothed Gaussian
-field and let \(C_\varepsilon(0)=\mathbb E[\phi_\varepsilon(x)^2]\), which is
-translation independent.  The second and fourth Wick powers at regulator
-\(\varepsilon\) are
+Let \(\rho_\varepsilon\) be a smooth approximate identity and set
+\(\phi_\varepsilon=\rho_\varepsilon\ast\phi\).  Write
 \[
+  C_\varepsilon(0)
+  =
+  \mathbb E_{\mu_C}[\phi_\varepsilon(x)^2],
+\]
+which is translation independent.  The Wick powers used below are the
+Hermite polynomials with variance \(C_\varepsilon(0)\):
+\begin{align}
   :\!\phi_\varepsilon^2\!:
-  =
-  \phi_\varepsilon^2-C_\varepsilon(0),
-\]
-\[
+    &= \phi_\varepsilon^2-C_\varepsilon(0),\\
+  :\!\phi_\varepsilon^3\!:
+    &= \phi_\varepsilon^3-3C_\varepsilon(0)\phi_\varepsilon,\\
   :\!\phi_\varepsilon^4\!:
-  =
-  \phi_\varepsilon^4
-  -6C_\varepsilon(0)\phi_\varepsilon^2
-  +3C_\varepsilon(0)^2 .
-\]
-After smearing against a test function, the Wick power is the \(L^2\)-limit
-of these expressions in the Gaussian probability space when the limit exists.
+    &= \phi_\varepsilon^4
+       -6C_\varepsilon(0)\phi_\varepsilon^2
+       +3C_\varepsilon(0)^2 .
+       \label{eq:constructive-wick-four}
+\end{align}
+After smearing against a test function, the Wick power
+\(:\!\phi^k\!:(f)\) is the \(L^p(\mu_C)\)-limit of
+\(\int f(x):\!\phi_\varepsilon(x)^k\!:\,\dd^dx\) when that limit exists.
 \end{definition}
 
-\section[P(phi) in two dimensions]{\(P(\phi)_2\)}
-
-For a bounded-below polynomial \(P\), the finite-volume interaction in two
-Euclidean dimensions is
+\begin{lemma}[Origin of the Wick coefficients]
+\label{lem:constructive-wick-coefficients}
+For a centered Gaussian variable \(X\) with variance \(c\),
 \[
-  V_\Lambda(\phi)
+  :\!X^n\!:
   =
-  \int_\Lambda :\!P(\phi(x))\!:\,d^2x .
+  c^{n/2}H_n(X/\sqrt c),
+\]
+where \(H_n\) is the probabilists' Hermite polynomial.  In particular,
+\[
+  :\!X^2\!:=X^2-c,\qquad
+  :\!X^3\!:=X^3-3cX,\qquad
+  :\!X^4\!:=X^4-6cX^2+3c^2.
+\]
+\end{lemma}
+
+\begin{proof}
+The generating function
+\[
+  \exp(tX-\tfrac12ct^2)
+  =
+  \sum_{n\geq0} \frac{t^n}{n!}:\!X^n\!:
+\]
+is characterized by the property that its expectation against
+\(\exp(sX)\) equals
+\[
+  \mathbb E\!\left[
+    \exp(tX-\tfrac12ct^2)\exp(sX)
+  \right]
+  =
+  \exp(cst+\tfrac12cs^2).
+\]
+Thus the coefficient of \(t^n\) is orthogonal to all polynomials of degree
+less than \(n\) and has leading term \(X^n\), which is the defining
+orthogonality property of the Hermite polynomial.  Expanding the generating
+function through order four gives the displayed coefficients.
+\end{proof}
+
+The calculation-check companion
+\texttt{calculation-checks/constructive\_scalar\_spde\_checks.py} verifies
+these coefficients and the cutoff-asymptotic coefficients used below.
+
+\section{\texorpdfstring{Finite-Volume \(P(\phi)_2\)}{Finite-Volume P(phi)2}}
+
+Let \(\Lambda\subset\R^2\) be a square or torus, and let
+\[
+  P(q)=\sum_{j=0}^{2r} p_j q^j,
+  \qquad p_{2r}>0,
+\]
+be bounded below.  Wick ordering is always relative to the Gaussian
+covariance used in the finite regulator.  The regulated interaction is
+\[
+  V_{\varepsilon,\Lambda}(\phi)
+  =
+  \int_\Lambda :\!P(\phi_\varepsilon(x))\!:\,\dd^2x .
+  \label{eq:p-phi-two-regulated-interaction}
 \]
 The finite-volume Schwinger functional is
 \[
-  S_\Lambda(f_1,\ldots,f_n)
+  S_{\varepsilon,\Lambda,n}(f_1,\ldots,f_n)
   =
-  \frac{1}{Z_\Lambda}
-  \mathbb E\!\left[
-  \phi(f_1)\cdots\phi(f_n)e^{-V_\Lambda(\phi)}
-  \right].
+  \frac{1}{Z_{\varepsilon,\Lambda}}
+  \int
+  \prod_{i=1}^n\phi_\varepsilon(f_i)\,
+  \exp[-V_{\varepsilon,\Lambda}(\phi)]\,\dd\mu_C(\phi).
+  \label{eq:p-phi-two-schwinger-regulated}
 \]
-The constructive \(P(\phi)_2\) theorems prove existence of infinite-volume
-limits for the Schwinger functions in their stated phase and parameter
-regimes, together with Euclidean invariance, symmetry, reflection positivity,
-clustering in massive regimes, and the OS growth estimates required for
-reconstruction.
+This formula is meaningful because the cutoff field is a finite-variance
+Gaussian process after smearing.  The theorem is the existence and
+identification of the limits in which \(\varepsilon\downarrow0\) and
+\(\Lambda\uparrow\R^2\).
 
-The interaction is a Wick-ordered distribution integrated against spacetime
-volume.  The infinite-volume and ultraviolet limits are part of the
-construction and are controlled before the Schwinger hierarchy is used.
+\begin{theorem}[Finite-volume ultraviolet limit in \(P(\phi)_2\)]
+\label{thm:p-phi-two-finite-volume-uv-limit}
+For bounded \(\Lambda\), bounded-below polynomial \(P\), and Schwartz test
+functions supported in the interior of \(\Lambda\), the limits
+\[
+  S_{\Lambda,n}(f_1,\ldots,f_n)
+  =
+  \lim_{\varepsilon\downarrow0}
+  S_{\varepsilon,\Lambda,n}(f_1,\ldots,f_n)
+\]
+exist after Wick ordering.  The limiting finite-volume measure is absolutely
+continuous with respect to the massive Gaussian free field restricted to
+\(\Lambda\), with density represented by
+\(\exp[-\int_\Lambda :\!P(\phi(x))\!:\dd^2x]\) as an \(L^p\)-limit for the
+finite \(p\)'s allowed by the stability estimate.
+\end{theorem}
 
-\section[phi-four in three dimensions]{\(\phi^4_3\)}
+\begin{proof}
+The \(L^p\)-convergence of the smeared Wick monomials follows from the
+covariance estimate
+\[
+  \mathbb E[
+    :\!\phi_\varepsilon^k\!:(f)
+    :\!\phi_{\varepsilon'}^k\!:(f)]
+  =
+  k!\int f(x)C_{\varepsilon,\varepsilon'}(x-y)^k f(y)\,\dd^2x\,\dd^2y ,
+\]
+where the right-hand side converges because \(C(x)\) has only logarithmic
+short-distance singularity in two dimensions and \(C(x)^k\) is locally
+integrable for each fixed \(k\).  Hypercontractivity of Gaussian chaoses
+upgrades \(L^2\)-convergence to \(L^p\)-convergence for finite \(p\).
 
-In three Euclidean dimensions the quartic interaction is
-superrenormalizable but requires additional local renormalizations.  A
-regularized finite-volume action has the form
+The nontrivial point is uniform integrability of the exponential density.
+The lower boundedness of \(P\), after Wick ordering and finite-volume
+localization, gives a stability estimate of the form
+\[
+  V_{\varepsilon,\Lambda}(\phi)
+  \geq
+  -A_\Lambda-B_\Lambda\|\phi\|_{H^{-s}(\Lambda)}^{\alpha},
+  \qquad \alpha<2,
+  \label{eq:p-phi-two-stability-estimate}
+\]
+for a Sobolev index \(s>0\) chosen so that the Gaussian field is almost
+surely in \(H^{-s}_{\mathrm{loc}}\).  Fernique's theorem then supplies an
+exponential moment for the right-hand side.  The convergence of the
+densities and of the polynomial insertions follows by dominated convergence
+in Gaussian chaos norms.  The argument is local in \(\Lambda\), so test
+functions supported away from the boundary are unaffected by the boundary
+condition used to define the finite covariance.
+\end{proof}
+
+\section{Cluster Expansion and Infinite Volume}
+
+The ultraviolet limit at fixed \(\Lambda\) does not yet construct the
+infinite-volume QFT.  For massive \(P(\phi)_2\) the large-volume limit is
+controlled by a cluster expansion.  The following formulation isolates the
+estimate that turns local finite-volume data into global Schwinger functions.
+
+\begin{definition}[Polymer activity and cluster norm]
+\label{def:constructive-polymer-activity}
+Partition \(\R^2\) into unit cells \(\Delta\).  A polymer \(X\) is a finite
+connected union of cells.  A polymer activity assigns to \(X\) a functional
+\[
+  K(X,\phi)
+\]
+depending only on the field near \(X\).  For constants \(a,b>0\), define a
+schematic cluster norm by
+\[
+  \|K\|_{a,b}
+  =
+  \sup_{\Delta_0}
+  \sum_{X\ni\Delta_0}
+  e^{a|X|}
+  \sup_{\phi}
+  \left(
+    |K(X,\phi)|e^{-b\|\phi\|_{X}^{2r}}
+  \right),
+  \label{eq:constructive-polymer-norm}
+\]
+where \(\|\phi\|_X\) is the chosen local large-field norm.  The exact
+constructive proof fixes the Sobolev regularity and large-field regulator;
+\eqref{eq:constructive-polymer-norm} records the structural requirement.
+\end{definition}
+
+\begin{theorem}[Kotecky--Preiss type convergence criterion]
+\label{thm:constructive-kp-cluster-convergence}
+Suppose a polymer gas has activities satisfying, for some \(a>0\),
+\[
+  \sup_{\Delta_0}
+  \sum_{X\ni\Delta_0}
+  |K(X)|e^{a|X|}
+  \leq
+  \epsilon
+  \label{eq:constructive-kp-smallness}
+\]
+with \(\epsilon\) smaller than a universal constant determined by the cell
+connectivity.  Then the logarithm of the polymer partition function has an
+absolutely convergent connected-cluster expansion.  Moreover connected
+correlations of observables supported in separated regions \(A\) and \(B\)
+are bounded by
+\[
+  |\langle F_A G_B\rangle-\langle F_A\rangle\langle G_B\rangle|
+  \leq
+  C_{F,G}e^{-m_{\mathrm{cl}}\,\operatorname{dist}(A,B)}
+  \label{eq:constructive-exponential-clustering-bound}
+\]
+for a positive cluster mass \(m_{\mathrm{cl}}\) fixed by the exponential
+weight in the norm and by the covariance decay.
+\end{theorem}
+
+\begin{proof}
+Write the partition function as a sum over compatible polymer families:
+\[
+  Z
+  =
+  \sum_{\mathcal X\ {\rm compatible}}
+  \prod_{X\in\mathcal X}K(X).
+\]
+The logarithm is the sum over connected incompatibility graphs.  For a
+specified polymer \(X_0\), the tree-graph inequality bounds the sum over
+connected graphs touching \(X_0\) by a sum over rooted trees.  The root has
+total weight bounded by \eqref{eq:constructive-kp-smallness}, and the same
+bound applies recursively to every descendant.  Choosing \(\epsilon\) below
+the inverse branching constant makes the rooted-tree sum absolutely
+convergent.
+
+For two separated observables, the connected part can only be produced by a
+connected cluster intersecting both supports.  Every such cluster contains a
+chain of cells joining \(A\) to \(B\).  The factor \(e^{-a|X|}\) left after
+using the norm therefore gives the exponential decay in
+\eqref{eq:constructive-exponential-clustering-bound}.  The Gaussian
+covariance decay contributes to the same exponent, and local observable
+norms supply the constant \(C_{F,G}\).
+\end{proof}
+
+In the Glimm--Jaffe--Spencer \(P(\phi)_2\) construction, the activities
+\(K(X,\phi)\) arise by expanding around cell-local interaction pieces while
+retaining large-field regulators.  The theorem above is not an optional
+heuristic: it is the analytic step that justifies taking
+\(\Lambda\uparrow\R^2\), proves exponential clustering in the massive phase,
+and gives uniform bounds on the Schwinger functions.
+
+\section{Hamiltonian Viewpoint and Number-Operator Bounds}
+
+The original construction of \(\phi^4_2\) can also be formulated in the
+Hamiltonian representation.  Let \(\mathcal F\) be the massive one-particle
+Fock space on a spatial line or circle, \(H_0\) the free Hamiltonian, and
+\(N\) the number operator.  With spatial cutoff \(g\geq0\), the interaction
+is
+\[
+  V(g)=\lambda\int g(x):\!\phi(x)^4\!:\,\dd x .
+\]
+The decisive estimates are number-operator bounds of the form
+\[
+  \|(N+1)^{-2}V(g)(N+1)^{-2}\|
+  \leq C_g|\lambda|,
+  \qquad
+  \|V(g)\psi\|
+  \leq
+  \alpha\|H_0\psi\|+\beta\|\psi\|
+  \label{eq:constructive-number-operator-bound}
+\]
+with \(\alpha<1\) after localization and choice of constants.  These
+estimates imply self-adjointness and lower boundedness of
+\[
+  H(g)=H_0+V(g)+E(g),
+\]
+where \(E(g)\) is the vacuum-energy coordinate in the regulated Hamiltonian.
+The removal of the spatial cutoff is not a formal limit of operators on a
+fixed dense domain; it is controlled by spatial cluster estimates and by
+convergence of local vacuum expectations.
+
+\begin{remark}[Relation between Hamiltonian and Euclidean constructions]
+\label{rem:hamiltonian-euclidean-constructive-equivalence}
+The Hamiltonian and Euclidean \(P(\phi)_2\) constructions produce the same
+local QFT only after a comparison theorem identifies the Schwinger functions
+generated by \(e^{-tH(g)}\) with the Euclidean measure construction and then
+passes to the infinite-volume limit.  The common notation \(\phi^4_2\) is not
+itself such an identification.
+\end{remark}
+
+\section{\texorpdfstring{\(\Phi^4_3\), Phase Cells, and Local Coordinates}{Phi-four-three, Phase Cells, and Local Coordinates}}
+
+In three Euclidean dimensions the quartic scalar theory is
+superrenormalizable, but Wick ordering alone does not remove every local
+divergence.  A regulator may be given by a momentum cutoff, lattice spacing,
+or mollifier.  A typical finite-volume action is
 \[
   S_{\varepsilon,\Lambda}(\phi)
   =
-  \frac{1}{2}\langle\phi,(-\Delta+m^2)\phi\rangle
+  \frac12\langle\phi,(-\Delta+m^2)\phi\rangle
   +
   \int_\Lambda
   \left[
-  \lambda\phi_\varepsilon^4
-  +a_\varepsilon\phi_\varepsilon^2
-  +b_\varepsilon
-  \right]d^3x .
+    \lambda\phi_\varepsilon^4
+    +a_\varepsilon\phi_\varepsilon^2
+    +b_\varepsilon
+  \right]\dd^3x .
+  \label{eq:phi-four-three-regulated-action}
 \]
-The constants \(a_\varepsilon,b_\varepsilon\) are part of the regulated
-Lagrangian.  They are chosen so that Schwinger functions have finite limits
-and satisfy the constructive bounds.  The limiting measure is singular with
-respect to the original Gaussian reference measure, so the construction is a
-limit of regulated measures rather than a fixed-density formula.
+The coefficients \(a_\varepsilon\) and \(b_\varepsilon\) are local
+coordinates of the regulated action.  They are not a second Lagrangian and
+are not optional decorations.  Their values are fixed by the renormalization
+conditions or by the constructive normalization scheme.
+
+\begin{lemma}[Power counting for \(\Phi^4_d\)]
+\label{lem:phi-four-power-counting}
+For connected scalar \(\phi^4\) graphs in \(d\) Euclidean dimensions with
+\(E\) external legs, \(V\) quartic vertices, and \(L\) loops, the superficial
+degree of divergence is
+\[
+  \omega_d
+  =
+  dL-2I
+  =
+  d-\frac{d-2}{2}E+(d-4)V .
+  \label{eq:phi-four-superficial-degree}
+\]
+In \(d=3\), only finitely many local divergences occur: vacuum-energy and
+two-point local counterterms.  The four-point and higher connected kernels
+are superficially convergent after subdivergences are removed.
+\end{lemma}
+
+\begin{proof}
+The graph identities are
+\[
+  4V=2I+E,\qquad L=I-V+1 .
+\]
+Substituting \(I=2V-E/2\) into \(dL-2I\) gives
+\[
+  d(I-V+1)-2I
+  =
+  (d-2)I-dV+d
+  =
+  d-\frac{d-2}{2}E+(d-4)V .
+\]
+For \(d=3\), this is \(3-E/2-V\).  At fixed \(E\), only finitely many \(V\)
+can satisfy \(\omega_3\geq0\), and \(E\geq4\) is convergent except for
+subdivergences.  Thus all primitive local divergences are proportional to
+the identity or to \(\phi^2\).
+\end{proof}
+
+\begin{lemma}[Cutoff behavior of the tadpole]
+\label{lem:constructive-tadpole-cutoff-asymptotics}
+With sharp momentum cutoff \(|p|\leq\Lambda\),
+\[
+  I_d(\Lambda,m)
+  =
+  \int_{|p|\leq\Lambda}
+  \frac{\dd^dp}{(2\pi)^d}\frac{1}{p^2+m^2}
+\]
+satisfies
+\[
+  I_2(\Lambda,m)
+  =
+  \frac{1}{2\pi}\log\Lambda+O(1),
+  \qquad
+  I_3(\Lambda,m)
+  =
+  \frac{\Lambda}{2\pi^2}+O(1).
+  \label{eq:tadpole-cutoff-asymptotics}
+\]
+\end{lemma}
+
+\begin{proof}
+In polar coordinates,
+\[
+  I_d(\Lambda,m)
+  =
+  \frac{|S^{d-1}|}{(2\pi)^d}
+  \int_0^\Lambda \frac{r^{d-1}}{r^2+m^2}\,\dd r .
+\]
+For \(d=2\), \(|S^1|=2\pi\) and the radial integral is
+\(\frac12\log(\Lambda^2+m^2)-\frac12\log m^2\), giving the coefficient
+\((2\pi)^{-1}\).  For \(d=3\), \(|S^2|=4\pi\) and the radial integral is
+\(\Lambda-m\arctan(\Lambda/m)\), giving the coefficient \((2\pi^2)^{-1}\).
+\end{proof}
+
+In the normalization \(\lambda\phi^4\), Wick ordering the quartic interaction
+produces
+\[
+  \lambda:\!\phi_\varepsilon^4\!:
+  =
+  \lambda\phi_\varepsilon^4
+  -6\lambda C_\varepsilon(0)\phi_\varepsilon^2
+  +3\lambda C_\varepsilon(0)^2.
+  \label{eq:phi-four-three-wick-coordinate-shift}
+\]
+Thus the leading mass-coordinate divergence is fixed by the six single
+contractions in \(\phi^4\).  In three dimensions a logarithmic two-loop
+local two-point divergence also appears.  In a BPHZ or phase-cell scheme it
+is encoded in the finite-regulator coordinate \(a_\varepsilon\), while the
+vacuum diagrams are encoded in \(b_\varepsilon\).
+
+\begin{theorem}[Constructive \(\Phi^4_3\) output datum]
+\label{thm:phi-four-three-constructive-output}
+In the massive small-coupling regimes covered by the constructive
+\(\Phi^4_3\) theorems, there are choices of local coordinates
+\[
+  a_\varepsilon=a_{\rm div}(\varepsilon)+a_{\rm fin},\qquad
+  b_\varepsilon=b_{\rm div}(\varepsilon)+b_{\rm fin},
+\]
+such that the regulated Schwinger functions associated with
+\eqref{eq:phi-four-three-regulated-action} converge, as
+\(\varepsilon\downarrow0\) and \(\Lambda\uparrow\R^3\), to Euclidean
+Schwinger distributions satisfying symmetry, Euclidean covariance,
+reflection positivity, regularity, clustering in the massive phase, and the
+growth hypotheses needed for OS reconstruction.
+\end{theorem}
+
+\begin{proof}[Proof architecture]
+The proof is not the formal perturbative cancellation of the diagrams in
+\eqref{eq:phi-four-three-wick-coordinate-shift}.  It has four analytic
+components.
+
+First, the covariance is decomposed into phase cells or scales.  Field
+configurations are separated into small-field regions, where perturbative
+Taylor expansion is controlled, and large-field regions, where the positive
+quartic term and local regulators give stability.
+
+Second, all local divergent pieces allowed by
+Lemma~\ref{lem:phi-four-power-counting} are extracted into the two
+coordinates \(a_\varepsilon\) and \(b_\varepsilon\).  The remaining polymer
+activities satisfy bounds of the type
+\[
+  \|K_j\|_{a,b}
+  \leq
+  C|\lambda|^{1+\delta}L^{-j\alpha}
+  \label{eq:phi-four-three-polymer-bound}
+\]
+on scale \(j\), for positive \(\delta,\alpha\) in the constructed regime.
+
+Third, the cluster or phase-cell expansion is summed uniformly in the volume
+and cutoff.  The convergence criterion is the scale-dependent version of
+Theorem~\ref{thm:constructive-kp-cluster-convergence}.  It gives limits of
+connected Schwinger functions and exponential clustering.
+
+Fourth, reflection positivity and Euclidean covariance are maintained by the
+choice of regulator or recovered in the limiting Schwinger functions.  The
+OS growth conditions are checked from uniform moment bounds.  OS
+reconstruction then gives the Lorentzian Wightman theory.  Each step is a
+theorem with hypotheses on the regulator, mass coordinate, coupling size, and
+volume sequence; the Lagrangian label \(\Phi^4_3\) abbreviates this entire
+construction.
+\end{proof}
 
 \section{OS Data Produced by a Construction}
 
-The output of a constructive scalar theorem is the hierarchy
+The output of a constructive scalar theorem is a hierarchy
 \[
   S_n(f_1,\ldots,f_n)
   =
   \lim_{\Lambda\uparrow\R^d,\ \varepsilon\downarrow0}
   S_{\varepsilon,\Lambda,n}(f_1,\ldots,f_n)
+  \label{eq:constructive-schwinger-output}
 \]
-on Schwartz test functions.  The hierarchy must satisfy:
-permutation symmetry; Euclidean covariance; reflection positivity; locality
-after reconstruction; cluster or phase-sector hypotheses when a unique
-vacuum is intended; and the OS-II regularity and linear-growth assumptions.
-Once these are verified, OS reconstruction gives Wightman fields and a
-Hilbert space.
+on Schwartz test functions or on a declared nuclear test space.  The data
+must include the following.
 
-The constructive status table in
-Chapter~\ref{ch:constructive-status-routes} records examples.  This chapter
-supplies the local data format that later lattice, stochastic, and numerical
-chapters must match when they claim to approximate a continuum QFT.
+\begin{enumerate}
+  \item \textbf{Distributional regularity.}  Each \(S_n\) is a continuous
+  multilinear functional in the chosen topology.
+  \item \textbf{Euclidean covariance and symmetry.}  The Schwinger functions
+  are invariant under the Euclidean group and symmetric under permutation of
+  scalar insertions.
+  \item \textbf{Reflection positivity.}  For the time reflection
+  \(\theta(\tau,\mathbf x)=(-\tau,\mathbf x)\) and test polynomials
+  supported at positive Euclidean time,
+  \[
+    \sum_{\alpha,\beta}
+    \overline{c_\alpha}c_\beta
+    S_{\alpha+\theta\beta}
+    \geq0 .
+  \]
+  \item \textbf{Growth.}  The OS-II regularity and linear-growth hypotheses
+  needed for analytic continuation and Hilbert-space reconstruction are
+  verified, not assumed from formal manipulations.
+  \item \textbf{Clustering or phase decomposition.}  A unique massive vacuum
+  requires exponential clustering; a phase coexistence construction must
+  specify the phase sector.
+\end{enumerate}
+
+Once these statements are proved, OS reconstruction gives a Hilbert space,
+a cyclic vacuum, Wightman fields, and local commutativity.  The constructive
+status table in Chapter~\ref{ch:constructive-status-routes} records
+representative examples.  The lattice, stochastic, and numerical chapters
+below must match the same data format when they claim to approximate or
+construct a continuum QFT.
+
+\section{Comparison of Constructive Routes}
+
+The same theory label can arise from cluster expansions, lattice scaling
+limits, rigorous RG, and singular SPDE.  Equality of the resulting QFTs is a
+statement about Schwinger functions or local observable algebras.  A
+comparison theorem must provide a parameter map
+\[
+  (m,\lambda,a_{\rm fin},b_{\rm fin})_{\rm cluster}
+  \longleftrightarrow
+  (m,\lambda,c_1,c_2)_{\rm SPDE}
+  \longleftrightarrow
+  (m_0^2,\lambda_0,a)_{\rm lattice}
+\]
+and prove convergence to the same \(S_n\)'s in a common topology.
 
 \begin{openproblem}[Explicit comparison of constructive routes]
 \label{op:constructive-route-comparison}
-For a model such as \(\phi^4_3\), compare the Schwinger functions produced by
-cluster expansions, stochastic quantization, and rigorous RG constructions in
-one common topology.  The comparison should identify the OS Hilbert space,
-the local fields, and the parameter map between the constructions.
+For a model such as \(\Phi^4_3\), compare the Schwinger functions produced by
+cluster/phase-cell expansions, stochastic quantization, rigorous RG, and
+lattice scaling limits in one common topology.  The comparison should
+identify the OS Hilbert space, the local fields, and the finite coordinate
+map between the constructions.
 \end{openproblem}

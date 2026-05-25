@@ -12,8 +12,16 @@
 
 - Gaussian reference field with covariance \((-\Delta+m^2)^{-1}\).
 - Wick powers as limits of smoothed Gaussian fields.
-- \(P(\phi)_2\) finite-volume Schwinger functions.
-- \(\phi^4_3\) regulated action with local mass and vacuum-energy
+- Hermite-polynomial derivation of Wick coefficients.
+- \(P(\phi)_2\) finite-volume Schwinger functions and finite-volume UV
+  theorem.
+- Polymer activity norm, Kotecky--Preiss convergence criterion, and
+  exponential clustering estimate.
+- Hamiltonian number-operator bound role in the original \(\phi^4_2\)
+  construction.
+- \(\phi^4_d\) superficial-degree formula and explicit tadpole cutoff
+  asymptotics.
+- \(\Phi^4_3\) regulated action with local mass and vacuum-energy
   renormalizations.
 - OS data output from constructive theorems.
 - Comparison problem for cluster, stochastic, and rigorous-RG constructions.
@@ -28,17 +36,27 @@
 | \(V_\Lambda\) | finite-volume interaction |
 | \(S_{\varepsilon,\Lambda}\) | regulated finite-volume action |
 | \(a_\varepsilon,b_\varepsilon\) | regulator-dependent local coefficients |
+| \(K(X,\phi)\) | polymer activity on the polymer \(X\) |
+| \(\|K\|_{a,b}\) | schematic cluster norm with large-field weight |
+| \(\omega_d\) | superficial degree of divergence |
 | \(S_n\) | limiting Schwinger hierarchy |
 
 ## Claim Ledger
 
-1. Wick powers are Gaussian \(L^2\) limits after smearing.
-2. \(P(\phi)_2\) constructions produce Schwinger functions satisfying the OS
+1. Wick powers are Gaussian \(L^p\) limits after smearing, and their
+   coefficients are Hermite coefficients.
+2. \(P(\phi)_2\) finite-volume UV limits follow from local integrability of
+   logarithmic covariance powers, hypercontractivity, and stability.
+3. Cluster expansion convergence follows from a polymer smallness criterion
+   and produces exponential clustering.
+4. Hamiltonian \(\phi^4_2\) construction rests on number-operator and
+   relative-bound estimates, not on a formal interaction.
+5. \(\Phi^4_3\) needs regulator-dependent local terms as part of the
+   regulated action; the allowed terms follow from power counting.
+6. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+   the OS
    properties in the constructed regimes.
-3. \(\phi^4_3\) needs regulator-dependent local terms as part of the
-   regulated action.
-4. The limiting \(\phi^4_3\) measure is reached as a regulated limit.
-5. Constructive route comparison requires equality of Schwinger functions in
+7. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Figures
