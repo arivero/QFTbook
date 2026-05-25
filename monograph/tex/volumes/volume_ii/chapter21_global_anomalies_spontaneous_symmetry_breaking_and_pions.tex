@@ -1646,6 +1646,213 @@ backgrounds as \(O(p)\), and \(M\) as \(O(p^2)\).  The functional obtained from
 generating functional for current Green functions at momenta small compared
 with the chiral-symmetry-breaking scale.
 
+\section{Chiral Perturbation Theory at NLO}
+\label{sec:chiral-perturbation-theory-nlo}
+
+Chiral perturbation theory is the effective expansion of the QCD current
+generating functional in powers of derivatives, external flavor fields, and
+quark masses around the chiral limit.  Pion fields enter as local coordinates
+on the Goldstone manifold; the invariant expansion is organized by the orders
+of the functional's derivatives, sources, and spurion insertions.  The
+expansion variables are assigned the orders
+\[
+  D_\mu U=O(p),\qquad
+  \ell_\mu,r_\mu=O(p),\qquad
+  F^L_{\mu\nu},F^R_{\mu\nu}=O(p^2),\qquad
+  \chi=2B_0M=O(p^2),
+\]
+where the left and right field strengths in the conventions of
+\eqref{eq:pion-external-covariant-derivative} are
+\[
+  F^L_{\mu\nu}
+  =
+  \partial_\mu\ell_\nu-\partial_\nu\ell_\mu
+  -\ii[\ell_\mu,\ell_\nu],
+  \qquad
+  F^R_{\mu\nu}
+  =
+  \partial_\mu r_\nu-\partial_\nu r_\mu
+  -\ii[r_\mu,r_\nu].
+\]
+A connected graph built from vertices of chiral order \(d_i\) and with \(L\)
+loops has total chiral order
+\begin{equation}
+  \nu
+  =
+  2+2L+\sum_i V_i(d_i-2).
+  \label{eq:weinberg-chiral-power-counting}
+\end{equation}
+Indeed, each loop integration contributes \(p^4\), each internal pion
+propagator contributes \(p^{-2}\), and each vertex contributes \(p^{d_i}\).
+For a connected graph, \(L=I-\sum_iV_i+1\), hence
+\[
+  4L-2I+\sum_i V_id_i
+  =
+  2+2L+\sum_iV_i(d_i-2).
+\]
+Thus one-loop graphs made only from \(\mathcal L_2\) and tree graphs from the
+order-\(p^4\) Lagrangian both contribute at next-to-leading order.
+
+For \(N_f=3\), the even-intrinsic-parity order-\(p^4\) local functional is the
+Gasser--Leutwyler basis.\footnote{The notation \(L_1,\ldots,L_{10}\) is the
+three-flavor basis introduced by Gasser and Leutwyler in the original chiral
+perturbation theory papers, translated here to the left/right convention
+\(U\mapsto LUR^{-1}\).}  Write \(\langle X\rangle_{\rm f}\) for the flavor
+trace \(\operatorname{Tr}X\), and define
+\[
+  X_+ := \chi U^\dagger+U\chi^\dagger,
+  \qquad
+  X_- := \chi U^\dagger-U\chi^\dagger .
+\]
+With the left/right convention \(U\mapsto LUR^{-1}\), the local NLO
+Lagrangian is
+\begin{align}
+  \mathcal L_4^{\rm GL}
+  &=
+  L_1\langle D_\mu U^\dagger D^\mu U\rangle_{\rm f}^2
+  +
+  L_2\langle D_\mu U^\dagger D_\nu U\rangle_{\rm f}
+      \langle D^\mu U^\dagger D^\nu U\rangle_{\rm f}
+  \notag\\
+  &\quad
+  +
+  L_3\langle
+    D_\mu U^\dagger D^\mu U
+    D_\nu U^\dagger D^\nu U
+  \rangle_{\rm f}
+  +
+  L_4\langle D_\mu U^\dagger D^\mu U\rangle_{\rm f}
+      \langle X_+\rangle_{\rm f}
+  \notag\\
+  &\quad
+  +
+  L_5\langle D_\mu U D^\mu U^\dagger X_+\rangle_{\rm f}
+  +
+  L_6\langle X_+\rangle_{\rm f}^2
+  +
+  L_7\langle X_-\rangle_{\rm f}^2
+  \notag\\
+  &\quad
+  +
+  L_8\langle
+    \chi U^\dagger\chi U^\dagger
+    +U\chi^\dagger U\chi^\dagger
+  \rangle_{\rm f}
+  \notag\\
+  &\quad
+  -\ii L_9
+  \langle
+    F_L^{\mu\nu}D_\mu U D_\nu U^\dagger
+    +F_R^{\mu\nu}D_\mu U^\dagger D_\nu U
+  \rangle_{\rm f}
+  \notag\\
+  &\quad
+  +
+  L_{10}
+  \langle U^\dagger F_L^{\mu\nu}U F^R_{\mu\nu}\rangle_{\rm f}
+  \notag\\
+  &\quad
+  +
+  H_1\langle F_L^{\mu\nu}F^L_{\mu\nu}
+      +F_R^{\mu\nu}F^R_{\mu\nu}\rangle_{\rm f}
+  +
+  H_2\langle \chi^\dagger\chi\rangle_{\rm f}.
+  \label{eq:gasser-leutwyler-l1-l10-basis}
+\end{align}
+The constants \(L_1,\ldots,L_{10}\) multiply operators containing the pion
+field or its covariant derivatives.  The contact constants \(H_1,H_2\) affect
+only correlators of external sources and are required for renormalizing the
+source generating functional.  The odd-intrinsic-parity anomaly sector is not
+part of \(\mathcal L_4^{\rm GL}\); it is the Wess--Zumino--Witten functional
+constructed in the next section.  For \(N_f=2\), Cayley--Hamilton identities
+reduce the number of independent even-parity \(p^4\) invariants.  The
+stereographic constants \(C_4,C'_4\) above are two-coordinate representatives
+of that reduced two-flavor sector; the \(L_i\) above are the standard
+three-flavor coordinates.
+
+The \(L_i\) are renormalized coordinates on the space of local order-\(p^4\)
+counterterms.  In dimensional regularization one writes
+\[
+  L_i=L_i^r(\mu)+\Gamma_i\Lambda_{\rm div},
+  \qquad
+  \mu\frac{\dd L_i^r}{\dd\mu}
+  =
+  -\frac{\Gamma_i}{16\pi^2},
+\]
+where the three-flavor coefficients are
+\[
+\begin{array}{c|cccccccccc}
+i&1&2&3&4&5&6&7&8&9&10\\ \hline
+\Gamma_i&
+\frac{3}{32}&\frac{3}{16}&0&\frac18&\frac38&
+\frac{11}{144}&0&\frac{5}{48}&\frac14&-\frac14 .
+\end{array}
+\]
+The \(\mu\)-dependence of \(L_i^r(\mu)\) cancels the logarithmic dependence
+from one-loop graphs built from \(\mathcal L_2\).  This cancellation is a
+low-energy theorem; the finite values of \(L_i^r(\mu)\) encode microscopic
+QCD dynamics.
+
+The simplest chiral logarithm appears in the two-flavor pion mass.  Set
+\(m_u=m_d=m_q\) and
+\[
+  M^2:=2B_0m_q .
+\]
+The one-loop tadpole integral generated by the \(\mathcal L_2\) four-pion
+vertices has renormalized logarithmic part
+\[
+  A^r(M^2)
+  =
+  \frac{M^2}{16\pi^2}\log\frac{M^2}{\mu^2}.
+\]
+Expanding \(\mathcal L_2\) in normal pion coordinates gives the logarithmic
+on-shell self-energy contribution
+\[
+  \Sigma_{\log}(M^2)
+  =
+  \frac{M^2}{2f^2}A^r(M^2)
+  =
+  \frac{M^4}{32\pi^2f^2}
+  \log\frac{M^2}{\mu^2},
+\]
+where \(f\) is the chiral-limit value of \(f_\pi\).  The local two-flavor NLO
+constant usually denoted \(l_3^r(\mu)\) contributes \(2l_3^r(\mu)M^4/f^2\) to
+the mass.  Hence
+\begin{equation}
+  M_{\pi,\rm phys}^2
+  =
+  M^2
+  \left[
+    1
+    +
+    \frac{M^2}{32\pi^2f^2}\log\frac{M^2}{\mu^2}
+    +
+    \frac{2l_3^r(\mu)M^2}{f^2}
+  \right]
+  +O(M^6).
+  \label{eq:su2-pion-mass-nlo-chiral-log}
+\end{equation}
+This is nonanalytic in the quark mass because \(M^2\propto m_q\).  The
+renormalization-group coefficient of the two-flavor constant is
+\[
+  \mu\frac{\dd l_3^r}{\dd\mu}
+  =
+  \frac{1}{32\pi^2},
+\]
+so differentiating the bracket in
+\eqref{eq:su2-pion-mass-nlo-chiral-log} with respect to \(\log\mu\) gives
+\[
+  -\frac{M^2}{16\pi^2f^2}
+  +
+  \frac{2M^2}{f^2}\frac{1}{32\pi^2}
+  =
+  0.
+\]
+Thus the scale dependence of the logarithm is exactly canceled by the running
+of the local NLO coordinate.  The logarithm itself cannot be removed by a
+local counterterm because it is the long-distance contribution of pion
+propagation.
+
 \section{The Wess--Zumino--Witten Functional}
 
 The pion effective action must reproduce the global anomalies of the

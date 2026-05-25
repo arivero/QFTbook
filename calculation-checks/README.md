@@ -36,6 +36,11 @@ Current checks:
   phase cancellation, Polyakov-loop \(N\)-ality, neutral pair correlators,
   center averaging of charged loops, and the static-source free-energy
   relation.
+- `chpt_nlo_checks.py`: finite arithmetic checks for the NLO chiral
+  perturbation theory section, including the ten \(L_1,\ldots,L_{10}\)
+  Gasser--Leutwyler labels, selected \(\Gamma_i\) entries, and the
+  cancellation of the \(\mu\)-dependence in the two-flavor
+  \(M_\pi^2\) chiral logarithm by the running of \(l_3^r(\mu)\).
 - `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)

@@ -87,6 +87,11 @@
 | \(C_4(\mu),C'_4(\mu)\) | local four-derivative low-energy constants in the \(N_f=2\) pion EFT |
 | \(\Phi^I{}_{J}=\bar q_L^I q_{R,J}\) | microscopic chiral order-parameter field used to match the two-flavor mass deformation |
 | \(M,\chi,B_0\) | quark mass spurion, chiral spurion, and low-energy constant |
+| \(F^L_{\mu\nu},F^R_{\mu\nu}\) | left and right external flavor field strengths in the chiral generating functional |
+| \(L_1,\ldots,L_{10}\) | Gasser--Leutwyler three-flavor even-parity \(O(p^4)\) low-energy constants |
+| \(H_1,H_2\) | source-contact \(O(p^4)\) constants in the Gasser--Leutwyler functional |
+| \(\Gamma_i\) | one-loop divergence/running coefficients of the \(L_i^r(\mu)\) |
+| \(l_3^r(\mu)\) | two-flavor NLO low-energy constant governing the local contribution to \(M_\pi^2\) |
 | \(Q\) | electromagnetic flavor-charge matrix embedded as a vector flavor background |
 | \(\Gamma_{\mathrm{WZ}}\) | ungauged Wess--Zumino functional |
 | \(\Gamma_{\mathrm{WZW}}\) | gauged Wess--Zumino--Witten functional |
@@ -203,6 +208,30 @@
   \(m_{ab}^2=\delta_{ab}\,4(m_u+m_d)\langle-\bar q q/2\rangle_0/F_{\rm st}^2\)
   in the stereographic normalization, with the observed pion masses recorded
   as a normalization check.
+- Chiral perturbation theory is named as the derivative/source/quark-mass
+  expansion of the QCD current generating functional, with power counting
+  \(D_\mu U,\ell_\mu,r_\mu=O(p)\), \(F_{\mu\nu}^{L,R},\chi=O(p^2)\), and
+  graph order
+  \(\nu=2+2L+\sum_iV_i(d_i-2)\).
+- The three-flavor Gasser--Leutwyler even-parity NLO basis
+  \(L_1,\ldots,L_{10}\), together with source-contact \(H_1,H_2\), is displayed
+  in the chapter's left/right convention
+  \(U\mapsto LUR^{-1}\) and
+  \(D_\mu U=\partial_\mu U-i\ell_\mu U+iUr_\mu\).
+- The \(L_i^r(\mu)\) are identified as renormalized coordinates for local
+  \(O(p^4)\) counterterms, with the displayed \(\Gamma_i\) table governing
+  \(\mu\,dL_i^r/d\mu=-\Gamma_i/(16\pi^2)\).
+- The two-flavor pion mass chiral logarithm is computed:
+  \[
+    M_{\pi,\rm phys}^2
+    =
+    M^2\left[
+      1+\frac{M^2}{32\pi^2f^2}\log\frac{M^2}{\mu^2}
+      +\frac{2l_3^r(\mu)M^2}{f^2}
+    \right]+O(M^6),
+  \]
+  and the scale dependence of the logarithm is shown to cancel against
+  \(\mu\,dl_3^r/d\mu=1/(32\pi^2)\).
 - The Wess--Zumino--Witten coefficient is quantized and equals \(N_c\) for QCD
   with fundamental quarks, so the pion functional reproduces the microscopic
   flavor anomaly.
@@ -299,3 +328,8 @@
   trivial symmetric gapped candidate absent an additional anomaly-carrying
   sector, vector-subgroup anomaly cancellation, and
   `calculation-checks/anomaly_matching_wzw_checks.py`.
+- 2026-05-25 issue #472 pass: added a named chiral perturbation theory section
+  with Weinberg power counting, the full three-flavor Gasser--Leutwyler
+  \(L_1,\ldots,L_{10}\) even-parity \(O(p^4)\) basis plus \(H_1,H_2\), the
+  \(\Gamma_i\) running table, a worked two-flavor \(M_\pi^2\) chiral logarithm
+  with scale cancellation, and `calculation-checks/chpt_nlo_checks.py`.
