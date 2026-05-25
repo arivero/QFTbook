@@ -834,6 +834,184 @@ determines the direction of \(\mathbf v\).  The case \(\mathbf v=0\) is the
 unique rotationally invariant density.
 \end{proof}
 
+\subsection{Soft Coherent Norm and Velocity Superselection}
+
+The preceding flux density is visible already in the finite-cutoff soft
+photon Fock calculation.  The calculation is not a construction of massless
+QED scattering; it is a precise diagnostic of why a single ordinary photon
+Fock representation cannot contain sharp charged particles of all velocities
+as normal vectors after the infrared cutoff is removed.
+
+Fix \(0<\lambda<\Lambda<\infty\).  The finite soft-photon one-particle space
+is
+\[
+  \mathfrak h_{\lambda,\Lambda}
+  =
+  L^2\!\left(
+    [\lambda,\Lambda]\times S^2,
+    \frac{r\,\dd r\,\dd\Omega(\mathbf n)}{2(2\pi)^3};
+    \mathbb C^2
+  \right),
+\]
+where \(k=(r,r\mathbf n)\) is null and the two complex components label a
+measurable orthonormal transverse polarization frame
+\(\epsilon_h(\mathbf n)\), \(h=1,2\), satisfying
+\(\mathbf n\cdot\epsilon_h(\mathbf n)=0\).  The polarization frame is a
+coordinate choice; the sum over \(h\) below is the transverse projector
+\[
+  P_{\mathbf n}^{ij}=\delta^{ij}-n^in^j .
+\]
+For a massive charge \(q\) with velocity \(\mathbf v\), \(|\mathbf v|<1\), the
+homogeneous soft part of the worldline dressing
+\eqref{eq:charged-dressed-fk-profile} is represented by
+\begin{equation}
+  F_{q,\mathbf v,\lambda,\Lambda}^{h}(r,\mathbf n)
+  =
+  -q\,\frac{\mathbf v\cdot\epsilon_h(\mathbf n)}
+           {r(1-\mathbf v\cdot\mathbf n)}
+  \mathbf 1_{\lambda<r<\Lambda}.
+  \label{eq:charged-soft-coherent-profile-velocity}
+\end{equation}
+The mass and Lorentz factor cancel because
+\[
+  \frac{p\cdot e_h(k)}{p\cdot k}
+  =
+  -\frac{\mathbf v\cdot\epsilon_h(\mathbf n)}
+          {r(1-\mathbf v\cdot\mathbf n)}
+\]
+for \(e_h^0=0\), \(p^\mu=m\gamma(1,\mathbf v)\), and the mostly-plus
+Minkowski product.
+
+\begin{proposition}[Velocity separation in the soft coherent norm]
+\label{prop:soft-coherent-velocity-separation}
+For two velocities \(\mathbf v,\mathbf w\in B_1(0)\subset\mathbb R^3\) and the
+same nonzero charge \(q\),
+\[
+  \left\|
+    F_{q,\mathbf v,\lambda,\Lambda}
+    -
+    F_{q,\mathbf w,\lambda,\Lambda}
+  \right\|_{\mathfrak h_{\lambda,\Lambda}}^2
+  =
+  \frac{q^2}{2(2\pi)^3}
+  \log\frac{\Lambda}{\lambda}\,
+  \mathcal A(\mathbf v,\mathbf w),
+  \label{eq:soft-coherent-velocity-log-norm}
+\]
+where
+\[
+  \mathcal A(\mathbf v,\mathbf w)
+  =
+  \int_{S^2}\dd\Omega(\mathbf n)\,
+  \left|
+    P_{\mathbf n}
+    \left(
+      \frac{\mathbf v}{1-\mathbf v\cdot\mathbf n}
+      -
+      \frac{\mathbf w}{1-\mathbf w\cdot\mathbf n}
+    \right)
+  \right|^2 .
+  \label{eq:soft-coherent-angular-coefficient}
+\]
+The coefficient obeys \(\mathcal A(\mathbf v,\mathbf w)\ge0\), and
+\(\mathcal A(\mathbf v,\mathbf w)=0\) if and only if
+\(\mathbf v=\mathbf w\).
+\end{proposition}
+
+\begin{proof}
+The radial dependence of
+\eqref{eq:charged-soft-coherent-profile-velocity} is \(r^{-1}\).  Therefore
+the measure \(r\,\dd r\,\dd\Omega/(2(2\pi)^3)\) gives the logarithm
+\[
+  \int_\lambda^\Lambda \frac{\dd r}{r}=\log\frac{\Lambda}{\lambda}.
+\]
+After summing over the two physical polarizations,
+\[
+  \sum_{h=1}^2
+  \left|
+    \left(
+      \frac{\mathbf v}{1-\mathbf v\cdot\mathbf n}
+      -
+      \frac{\mathbf w}{1-\mathbf w\cdot\mathbf n}
+    \right)
+    \cdot\epsilon_h(\mathbf n)
+  \right|^2
+  =
+  \left|
+    P_{\mathbf n}
+    \left(
+      \frac{\mathbf v}{1-\mathbf v\cdot\mathbf n}
+      -
+      \frac{\mathbf w}{1-\mathbf w\cdot\mathbf n}
+    \right)
+  \right|^2 ,
+\]
+which proves \eqref{eq:soft-coherent-velocity-log-norm}.  Nonnegativity is
+immediate from the displayed square.
+
+It remains to characterize the zero set.  If
+\(\mathcal A(\mathbf v,\mathbf w)=0\), continuity implies that the displayed
+transverse projection vanishes for every \(\mathbf n\).  Suppose first that
+\(\mathbf v\ne0\).  Put
+\(\mathbf n=\mathbf v/|\mathbf v|\).  The projection of \(\mathbf v\) onto
+the plane orthogonal to \(\mathbf n\) is zero, hence the projection of
+\(\mathbf w\) onto that plane must also vanish; \(\mathbf w\) is parallel to
+\(\mathbf v\).  Writing
+\(\mathbf v=\beta\mathbf e_3\) and
+\(\mathbf w=\alpha\mathbf e_3\), and choosing any
+\(\mathbf n\) not parallel to \(\mathbf e_3\), the vanishing condition becomes
+\[
+  \frac{\beta}{1-\beta n_3}
+  =
+  \frac{\alpha}{1-\alpha n_3}.
+\]
+Thus \(\beta=\alpha\).  If \(\mathbf v=0\), the same condition says that the
+transverse projection of \(\mathbf w\) vanishes for every \(\mathbf n\); this
+forces \(\mathbf w=0\).  Hence the coefficient vanishes exactly on the
+diagonal \(\mathbf v=\mathbf w\).
+\end{proof}
+
+Let \(\mathcal E(F)\) denote the normalized bosonic coherent vector in the
+finite-cutoff photon Fock space,
+\[
+  \mathcal E(F)
+  =
+  \ee^{-\|F\|^2/2}
+  \bigoplus_{n\ge0}\frac{F^{\otimes_s n}}{\sqrt{n!}} .
+\]
+Summing the Fock inner products gives
+\[
+  \left|
+    \langle \mathcal E(F),\mathcal E(G)\rangle
+  \right|
+  =
+  \exp\!\left\{-\frac12\|F-G\|^2\right\}.
+\]
+Therefore Proposition~\ref{prop:soft-coherent-velocity-separation} implies
+that, for \(\mathbf v\ne\mathbf w\),
+\[
+  \left|
+    \left\langle
+      \mathcal E(F_{q,\mathbf v,\lambda,\Lambda}),
+      \mathcal E(F_{q,\mathbf w,\lambda,\Lambda})
+    \right\rangle
+  \right|
+  =
+  \exp\!\left\{
+    -\frac{q^2}{4(2\pi)^3}
+    \log\frac{\Lambda}{\lambda}\,
+    \mathcal A(\mathbf v,\mathbf w)
+  \right\}
+  \longrightarrow0
+  \qquad(\lambda\downarrow0).
+\]
+This is the finite-Fock-space calculation behind velocity-labelled charged
+sectors.  It is stronger than saying that a bare electron emits many soft
+photons: different charged velocities determine different infrared coherent
+directions.  A Haag--Ruelle replacement for massless charged sectors must
+therefore build its asymptotic representation with the charged velocity and
+flux label included from the start.
+
 The flux statement and the eikonal statement are two aspects of the same
 nonlocal charged datum.  The Wilson line fixes how the charged insertion
 transforms under boundary gauge transformations; the boosted Coulomb field

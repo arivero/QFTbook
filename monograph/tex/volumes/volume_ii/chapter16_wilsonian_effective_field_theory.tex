@@ -2440,10 +2440,15 @@ the forest-formula scheme of
 Chapter~\ref{ch:volume-ii-subdivergences-forest-formulas}.  Massless theories require
 BPHZL or another infrared-safe subtraction scheme, and dimensional
 regularization with minimal subtraction is a different coordinate system whose
-relation to the present one is another finite matching map.  A
-nonperturbative equivalence between BPHZ and Wilsonian constructions would
-require nonperturbative existence of the relevant measures, Legendre
-transforms, and cutoff-uniform Banach estimates.
+relation to the present one is another finite matching map.  Since BPHZ is a
+perturbative forest-formula construction, there is no separate
+``nonperturbative BPHZ construction'' being compared here.  The
+nonperturbative question is instead whether a Wilsonian or constructive
+continuum theory exists and whether its correlation functions have, in the
+chosen local coordinates, the BPHZ-renormalized series as their perturbative
+asymptotic expansion.  That question requires existence of the relevant
+measures or functionals, Legendre transforms, and cutoff-uniform Banach
+estimates for the model under study.
 \end{remark}
 
 \begin{remark}[Status of the comparison]
@@ -2456,9 +2461,9 @@ for massless exceptional regions.  The Wilsonian input is an estimate in the
 chosen normed RG chart, such as the smooth-cutoff estimates behind
 Polchinski's perturbative proof.  Minimal subtraction, momentum subtraction,
 and Wilsonian coordinates are different coordinate systems; their comparison
-is the finite matching problem just constructed.  A nonperturbative
-identification requires additional existence and uniform-estimate theorems for
-the model under study.
+is the finite matching problem just constructed.  A theorem connecting this
+perturbative comparison to an actual continuum QFT requires additional
+existence and uniform-estimate theorems for the model under study.
 \end{remark}
 
 \begin{corollary}[Fixed-loop comparison of renormalizability criteria]
@@ -2538,6 +2543,30 @@ Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} is invertible, this
 finite change is a local coordinate transformation by the implicit function
 theorem.
 \end{proof}
+
+\begin{remark}[What is, and is not, proved]
+Corollary~\ref{cor:fixed-loop-bphz-polchinski-renormalizability} proves a
+two-way implication only after the finite-loop, massive, nonexceptional, and
+finite-projector hypotheses of
+Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} have been imposed.  In
+that setting, BPHZ forest-formula local Taylor parts construct the Wilsonian
+local coordinates, and controlled Wilsonian local coordinates construct BPHZ
+subtraction coordinates by projecting the low-mode 1PI functional.  This is
+an equivalence of finite coordinate descriptions of selected perturbative
+1PI data, with the omitted irrelevant coordinates contributing the stated
+\((\mu/\Lambda)^{p_N}\) remainder.
+
+The corollary is not a theorem that a nonperturbatively constructed
+Wilsonian or constructive continuum theory exists, nor that such a theory has
+the above perturbative series as its asymptotic expansion.  BPHZ itself is
+already a perturbative construction.  The additional nonperturbative problem
+would require, for the model in question, a construction of the regulated and
+limiting functionals, a topology on the full Wilsonian coordinate space,
+cutoff-uniform estimates in that topology, and a well-defined Legendre
+transform on the required source domain.  The fixed-loop result is the part
+that can be proved from the perturbative forest formula and the Wilsonian
+cutoff estimates displayed in this chapter.
+\end{remark}
 
 \section{One-Loop Matching in the Quartic Scalar Theory}
 

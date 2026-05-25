@@ -484,7 +484,13 @@ The chapter must define and derive:
   proof runs in both directions, constructs the coordinate assignment through
   local Taylor parts and low-mode 1PI projectors, and states the
   \((\mu/\Lambda)^{p_N}\) irrelevant-coordinate error rather than claiming a
-  nonperturbative equivalence.
+  theorem about existence of a nonperturbative continuum QFT.
+- 2026-05-25 clarification pass: added an explicit status remark after the
+  corollary spelling out that the two-way implication is a fixed-loop
+  finite-coordinate perturbative theorem.  BPHZ is perturbative by definition;
+  the separate nonperturbative problem is whether a Wilsonian or constructive
+  continuum theory exists and has the BPHZ-renormalized series as its
+  perturbative asymptotic expansion in the chosen coordinates.
 - 2026-05-24 issue #358 pass: added the vacuum-energy normalization note after
   the Wilson-Polchinski derivation, explaining why the
   \(\phi\)-independent shell normalization is absent from the displayed

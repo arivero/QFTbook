@@ -26,13 +26,22 @@ comparison:
 - The proof goes in both directions and constructs the coordinate assignment
   from BPHZ local Taylor parts to Wilsonian local vertices, and from Wilsonian
   low-mode 1PI projectors back to BPHZ subtraction coordinates.
+- A later clarification pass added an explicit "What is, and is not, proved"
+  remark immediately after the proof, so the reader cannot confuse the
+  fixed-loop finite-coordinate theorem with a theorem about existence of a
+  nonperturbative continuum QFT whose perturbative expansion is the BPHZ
+  series.
 
 ## Boundary
 
-The corollary explicitly does not assert nonperturbative equivalence of BPHZ
-and Wilsonian constructions.  Such a statement would require model-specific
-existence of the measures or functionals, cutoff-uniform Banach estimates,
-and the relevant Legendre transforms.
+BPHZ is perturbative by definition.  The corollary therefore does not assert
+a nonperturbative equivalence involving a nonexistent nonperturbative BPHZ
+construction.  The separate nonperturbative question is whether a Wilsonian
+or constructive continuum theory exists and has the BPHZ-renormalized series
+as its perturbative asymptotic expansion in the chosen local coordinates;
+that question requires model-specific existence of the measures or
+functionals, cutoff-uniform Banach estimates, and the relevant Legendre
+transforms.
 
 ## Verification
 

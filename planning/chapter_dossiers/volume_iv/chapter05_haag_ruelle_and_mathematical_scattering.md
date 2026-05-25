@@ -24,6 +24,10 @@ resonances.
 - `J_{q,u,epsilon}`: regulated asymptotic worldline current for velocity
   `u=p/m`.
 - `E_{q,v}(n)`: boosted Coulomb angular flux density on the celestial sphere.
+- `F_{q,v,lambda,Lambda}`: finite-cutoff soft coherent profile determined by
+  the charged velocity.
+- `A(v,w)`: positive angular coefficient controlling the infrared logarithm
+  in the norm difference between two charged soft profiles.
 
 ## Claim Ledger
 
@@ -50,6 +54,11 @@ resonances.
   denominator \(p\cdot k\) in the Faddeev--Kulish soft profile.
 - Proves that the boosted Coulomb flux integrates to the charge and that, for
   nonzero charge, the angular flux density determines the charged velocity.
+- Proves that finite-cutoff soft coherent profiles with distinct charged
+  velocities have a norm difference proportional to
+  \(\log(\Lambda/\lambda)\mathcal A(v,w)\), with
+  \(\mathcal A(v,w)>0\) off the diagonal; this gives the explicit
+  finite-Fock calculation behind velocity-labelled charged sectors.
 
 ## Figure Ledger
 
@@ -62,8 +71,9 @@ resonances.
 
 - `calculation-checks/charged_flux_dressing_checks.py` verifies the boosted
   Coulomb flux integral, the velocity read from flux extrema, the regulated
-  half-line Fourier transform, and the equality of worldline-current and
-  momentum-space eikonal denominators.
+  half-line Fourier transform, the equality of worldline-current and
+  momentum-space eikonal denominators, and sample positivity plus logarithmic
+  normalization for the soft coherent velocity-separation coefficient.
 
 ## Open Problems
 

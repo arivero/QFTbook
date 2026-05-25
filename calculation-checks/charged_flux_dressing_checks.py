@@ -80,11 +80,83 @@ def check_half_line_fourier_transform() -> None:
     assert_close("regulated half-line transform", cutoff_integral, analytic, tol=1.0e-15)
 
 
+def dot3(a: tuple[float, float, float], b: tuple[float, float, float]) -> float:
+    return sum(x * y for x, y in zip(a, b))
+
+
+def transverse_projection(a: tuple[float, float, float], n: tuple[float, float, float]) -> tuple[float, float, float]:
+    an = dot3(a, n)
+    return tuple(a_i - an * n_i for a_i, n_i in zip(a, n))
+
+
+def soft_velocity_vector(
+    velocity: tuple[float, float, float],
+    n: tuple[float, float, float],
+) -> tuple[float, float, float]:
+    denominator = 1.0 - dot3(velocity, n)
+    return tuple(component / denominator for component in transverse_projection(velocity, n))
+
+
+def soft_angular_integrand(
+    velocity_a: tuple[float, float, float],
+    velocity_b: tuple[float, float, float],
+    n: tuple[float, float, float],
+) -> float:
+    soft_a = soft_velocity_vector(velocity_a, n)
+    soft_b = soft_velocity_vector(velocity_b, n)
+    difference = tuple(a - b for a, b in zip(soft_a, soft_b))
+    return dot3(difference, difference)
+
+
+def angular_soft_coefficient(
+    velocity_a: tuple[float, float, float],
+    velocity_b: tuple[float, float, float],
+    n_theta: int = 40,
+    n_phi: int = 80,
+) -> float:
+    total = 0.0
+    dz = 2.0 / n_theta
+    dphi = 2.0 * math.pi / n_phi
+    for i in range(n_theta):
+        z = -1.0 + (i + 0.5) * dz
+        radius = math.sqrt(max(0.0, 1.0 - z * z))
+        for j in range(n_phi):
+            phi = (j + 0.5) * dphi
+            n = (radius * math.cos(phi), radius * math.sin(phi), z)
+            total += soft_angular_integrand(velocity_a, velocity_b, n) * dz * dphi
+    return total
+
+
+def check_soft_profile_velocity_separation() -> None:
+    samples = [
+        ((0.2, 0.0, 0.0), (0.2, 0.0, 0.0), 0.0),
+        ((0.2, 0.0, 0.0), (0.4, 0.0, 0.0), None),
+        ((0.1, -0.2, 0.0), (0.1, -0.2, 0.0), 0.0),
+        ((0.1, -0.2, 0.0), (-0.15, 0.05, 0.25), None),
+    ]
+    for velocity_a, velocity_b, expected in samples:
+        coefficient = angular_soft_coefficient(velocity_a, velocity_b)
+        label = f"soft angular coefficient {velocity_a} {velocity_b}"
+        if expected is not None:
+            assert_close(label, coefficient, expected, tol=1.0e-12)
+        elif coefficient <= 1.0e-4:
+            raise AssertionError(f"{label} failed: coefficient should be positive, got {coefficient!r}")
+
+    charge = 0.7
+    ir_cutoff = 1.0e-3
+    uv_cutoff = 0.8
+    coefficient = angular_soft_coefficient((0.2, 0.0, 0.0), (0.4, 0.0, 0.0))
+    norm_difference = charge * charge * coefficient * math.log(uv_cutoff / ir_cutoff) / (2.0 * (2.0 * math.pi) ** 3)
+    expected = charge * charge * coefficient * math.log(uv_cutoff / ir_cutoff) / (16.0 * math.pi**3)
+    assert_close("soft coherent norm log prefactor", norm_difference, expected)
+
+
 def main() -> None:
     check_boosted_flux_integral()
     check_velocity_read_from_flux_extrema()
     check_worldline_current_denominator()
     check_half_line_fourier_transform()
+    check_soft_profile_velocity_separation()
     print("All charged flux and Wilson-line dressing checks passed.")
 
 
