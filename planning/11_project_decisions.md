@@ -111,6 +111,13 @@ Date: 2026-05-23
   citation-support checks, and visual PDF audits are deferred until the chapter
   architecture stabilizes enough for those artifacts to reduce errors rather
   than create bookkeeping churn.
+- The common literature framing "QFT is defined by perturbing a UV CFT" is
+  rejected as a general definition.  Conformal perturbation theory is a
+  controlled method for deformations of an already supplied fixed point, with
+  explicit operator, contact-term, regulator, and reconstruction hypotheses.
+  It is not the foundation for asymptotically free gauge theories,
+  constructive QFTs, lattice scaling limits, stochastic-quantization
+  constructions, or effective presentations of the Standard Model.
 
 Date: 2026-05-24
 

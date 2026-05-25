@@ -304,7 +304,10 @@ The chapter must define and derive:
 8. In the quartic-sextic toy truncation, the irrelevant coupling approaches a
    cutoff-dependent function of the marginal coupling along IR flow; the
    transverse memory of the ultraviolet boundary condition is suppressed by
-   the canonical irrelevant power.
+   the canonical irrelevant power.  Figure `fig:quartic-sextic-ir-flow` must
+   therefore show distinct characteristics approaching distinct neighborhoods
+   of the attracting curve, not several trajectories merging into one finite
+   point.
 9. Perturbative renormalizability is formulated by a limiting procedure:
    remove the UV cutoff while tuning bare couplings so selected physical
    couplings at a fixed reference scale remain fixed.

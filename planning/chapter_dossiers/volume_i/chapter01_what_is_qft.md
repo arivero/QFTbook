@@ -75,6 +75,10 @@ Use these only for theorem boundaries and later comparisons.
   a UV regulator in a declared topology and framework.
 - Effective field theory presentation: regulated or renormalized local
   prescription for a specified scale window, expansion, and observable class.
+- Conformal perturbation as a controlled construction method: deformation of
+  an already supplied CFT by declared local operators, contact-term
+  conventions, and regulator/subtraction data, not a general definition of
+  QFT.
 - Local observable assignment: region-to-algebra assignment with covariance,
   isotony, and locality.
 - Smeared field: operator-valued distribution evaluated on a test function.
@@ -97,6 +101,7 @@ Definitions must specify domains and support conditions.
 | --- | --- | --- |
 | The opening framework consists of Hilbert space, symmetry, spectrum, vacuum, and local observables. | Working definition | Defined in chapter |
 | Continuum local QFT and EFT presentations share locality but make different mathematical-status claims. | Source-certified framework distinction | Added from handwritten pp. 1--2 with caveats about regulator removal, scale windows, and power counting |
+| CFT perturbation theory is a local construction method with explicit fixed-point/operator/contact/regulator hypotheses, not a universal definition of QFT. | Methodological boundary statement | Added Remark `rem:opening-cft-perturbation-scope` for issue #488 |
 | Fields in this framework are distributional coordinates on local data. | Framework statement | Defined and compared with Wightman language |
 | Contact terms are coincident-point/source-response data supported on collision diagonals, not determined by separated-point correlators alone. | Framework definition | Added as Definition `contact-terms-source-chart` |
 | Wightman/OS data for selected fields do not by themselves fix composite products, time-ordered products, nonlinear source couplings, or repeated source derivatives on diagonals. | Boundary statement | Stated in opening analytic-status section |

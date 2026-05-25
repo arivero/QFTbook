@@ -17,6 +17,11 @@ constructive RG developments.
 - `V_*`, `D R|_{V_*}`: fixed point and linearized RG.
 - `E_u`, `E_s`: unstable and stable subspaces.
 - `K(X,phi)`: polymer activity.
+- `F(V)=R(V)-V`: fixed-point residual.
+- `A`: bounded injective approximate inverse used in Newton--Kantorovich
+  validation.
+- `eta`, `rho`, `L`: residual, linear inverse-error, and derivative-Lipschitz
+  constants in the validated fixed-point theorem.
 
 ## Claim Ledger
 
@@ -26,6 +31,16 @@ constructive RG developments.
 - Proves a local stable-manifold theorem for a hyperbolic RG fixed point.
 - Defines polymer activities and the estimate needed to control irrelevant
   remainders.
+- Defines the full data of a theorem-level nonperturbative Wilsonian fixed
+  point: regulator class, map/domain/norm, fixed point, linearized spectrum,
+  and reconstruction estimates.
+- Proves a Newton--Kantorovich validation theorem for an RG fixed point in a
+  Banach space, isolating the final fixed-point step from the model-specific
+  cluster/tree/tensor estimates.
+- Records current rigorous benchmarks: constructive long-range fermionic
+  \(\psi^4_d\) fixed points with irrelevant kernels included, and
+  infinite-dimensional tensor-RG fixed points with explicit contraction
+  neighborhoods.
 - Gives a precise monograph definition of universality class as an RG
   attraction statement plus reconstruction data.
 

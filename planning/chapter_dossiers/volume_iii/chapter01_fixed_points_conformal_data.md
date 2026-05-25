@@ -17,6 +17,10 @@ The chapter establishes:
 - Lorentzian local QFT data used in fixed-point analysis: Hilbert space,
   Poincare representation, vacuum, local operator-valued distributions, and
   stress tensor;
+- fixed-point data as supplied local QFT input rather than a universal
+  ultraviolet origin; conformal perturbation theory is used only after a CFT,
+  deformation operators, contact-term conventions, and regulator/source-chart
+  hypotheses have been supplied;
 - renormalized deformation operators and the trace equation
   \(T^\mu{}_\mu=\beta_I[O_I]+\partial_\mu V^\mu\), including the role of
   contact terms and improvements;

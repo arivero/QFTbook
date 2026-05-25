@@ -135,6 +135,163 @@ are supplied.  Perturbative beta functions and numerical fixed-point searches
 are evidence for a coordinate chart; they do not replace the fixed-point
 construction.
 
+\begin{definition}[Theorem-level nonperturbative RG fixed point]
+\label{def:theorem-level-nonperturbative-rg-fixed-point}
+A nonperturbative Wilsonian fixed-point theorem consists of the following
+declared data.
+\begin{enumerate}
+  \item A regulator class and a concrete RG map
+  \(\mathcal R:\mathcal U\to\mathcal B\) on an open subset
+  \(\mathcal U\) of a Banach space \((\mathcal B,\|\cdot\|)\) of
+  interactions, measures, tensors, or polymer activities.
+  \item A proof that the map is defined on the claimed domain and is
+  differentiable to the order used in the argument.
+  \item A point \(V_\ast\in\mathcal U\) satisfying
+  \(\mathcal R(V_\ast)=V_\ast\), or a periodic orbit when the intended RG
+  structure is not a fixed point.
+  \item A spectral or graph-transform analysis of
+  \(D\mathcal R|_{V_\ast}\), including the relevant, marginal, irrelevant, and
+  redundant subspaces in the chosen norm.
+  \item A reconstruction map from the tuned sequence of finite-cutoff
+  theories to correlation functions, local algebras, or Euclidean
+  Schwinger functions, with convergence estimates sufficient for the claimed
+  QFT framework.
+\end{enumerate}
+The word ``fixed point'' in a theorem of this kind refers to the specified
+map \(\mathcal R\) and norm.  A zero of a truncated beta function, a solution
+of a finite-dimensional functional-RG truncation, or a numerical tensor-RG
+fixed point is evidence for such a theorem only after an embedding into this
+list has been supplied.
+\end{definition}
+
+\begin{theorem}[Validated fixed point by a Newton--Kantorovich estimate]
+\label{thm:newton-kantorovich-rg-fixed-point}
+Let \(\mathcal B\) be a Banach space, let \(F:\mathcal U\to\mathcal B\) be a
+\(C^1\) map on an open ball \(B_R(V_0)\subset\mathcal U\), and let
+\[
+  F(V)=\mathcal R(V)-V .
+\]
+Assume that \(A:\mathcal B\to\mathcal B\) is bounded and injective, and that
+there are constants \(\eta,\rho,L\geq0\) with
+\begin{align}
+  \|A F(V_0)\|&\leq \eta, \label{eq:nk-residual-bound}\\
+  \|1-A\,DF(V_0)\|_{\mathcal B\to\mathcal B}&\leq \rho,\\
+  \|A(DF(V)-DF(W))\|_{\mathcal B\to\mathcal B}
+     &\leq L\|V-W\|
+       \qquad (V,W\in B_R(V_0)).
+       \label{eq:nk-lipschitz-bound}
+\end{align}
+If there is \(r\leq R\) such that
+\[
+  \eta+\rho r+\frac{L}{2}r^2\leq r,
+  \qquad
+  \rho+Lr<1,
+  \label{eq:nk-ball-condition}
+\]
+then \(F(V)=0\) has a unique solution \(V_\ast\) in the closed ball
+\(\overline B_r(V_0)\).  Equivalently, \(\mathcal R(V_\ast)=V_\ast\).
+\end{theorem}
+
+\begin{proof}
+Define the Newton-like map
+\[
+  \mathcal N(V)=V-AF(V).
+\]
+For \(V\in\overline B_r(V_0)\), the fundamental theorem of calculus gives
+\[
+  \mathcal N(V)-V_0
+  =
+  -AF(V_0)
+  +
+  \int_0^1
+  \bigl(1-A\,DF(V_0+s(V-V_0))\bigr)(V-V_0)\,\dd s .
+\]
+Using \eqref{eq:nk-residual-bound} and
+\eqref{eq:nk-lipschitz-bound}, the norm of the right-hand side is bounded by
+\[
+  \eta+\rho r+\frac{L}{2}r^2,
+\]
+which is at most \(r\) by \eqref{eq:nk-ball-condition}.  Thus
+\(\mathcal N\) maps \(\overline B_r(V_0)\) into itself.  For
+\(V,W\in\overline B_r(V_0)\),
+\[
+  \mathcal N(V)-\mathcal N(W)
+  =
+  \int_0^1
+  \bigl(1-A\,DF(W+s(V-W))\bigr)(V-W)\,\dd s ,
+\]
+and the same estimates give
+\[
+  \|\mathcal N(V)-\mathcal N(W)\|
+  \leq (\rho+Lr)\|V-W\|.
+\]
+The coefficient is strictly less than one, so Banach's fixed-point theorem
+gives a unique fixed point of \(\mathcal N\) in the ball.  If
+\(\mathcal N(V_\ast)=V_\ast\), then \(AF(V_\ast)=0\).  Since \(A\) is
+injective, \(F(V_\ast)=0\).  Conversely any zero of \(F\) is a fixed point of
+\(\mathcal N\), so uniqueness follows.
+\end{proof}
+
+This theorem is not a substitute for RG estimates; it isolates the final
+functional-analytic step.  The difficult part in constructive RG is to choose
+\(\mathcal B\), \(V_0\), and \(A\), and then prove
+\eqref{eq:nk-residual-bound}--\eqref{eq:nk-lipschitz-bound} with constants
+small enough that \eqref{eq:nk-ball-condition} holds.  In polymer RG this
+means summing tree or cluster expansions with large-field regulators; in
+tensor RG it means proving that the disentangled coarse-graining map is a
+contraction on a neighborhood that is stable under the infinite-dimensional
+map.
+
+\section{Current Rigorous Fixed-Point Benchmarks}
+
+The preceding definition deliberately separates what has been proved from
+what is inferred from formal or numerical RG.  Recent rigorous work supplies
+benchmarks for both the constructive-field-theory and tensor-network
+versions of the problem.
+
+In the long-range fermionic \(\psi^4_d\) models analyzed by
+Giuliani, Mastropietro, Rychkov, and collaborators,\footnote{See
+A.~Giuliani, V.~Mastropietro, and S.~Rychkov, ``Gentle introduction to
+rigorous Renormalization Group: a worked fermionic example,''
+JHEP \textbf{01} (2021) 026, arXiv:2008.04361; and
+A.~Giuliani, V.~Mastropietro, S.~Rychkov, and G.~Scola,
+``Non-trivial fixed point of a \(\psi^4_d\) fermionic theory, II. Anomalous
+exponent and scaling operators,'' arXiv:2404.14904.}
+the Banach space contains all short-ranged irrelevant kernels, not only a
+finite list of couplings.  The fixed interaction is constructed by a
+convergent RG scheme with a small parameter controlling the relevance of the
+quartic interaction.  The important lesson for this monograph is structural:
+the fixed point is an element of an infinite-dimensional space, the irrelevant
+tail is part of the theorem rather than a truncation error, and scaling
+operators are constructed as response functions with stated remainder
+estimates.
+
+In the rigorous tensor-RG work of Kennedy and Rychkov,\footnote{See
+T.~Kennedy and S.~Rychkov, ``Tensor RG approach to high-temperature fixed
+point,'' J. Stat. Phys. \textbf{187} (2022) 33, arXiv:2107.11464; and
+``Tensor Renormalization Group at Low Temperatures: Discontinuity Fixed
+Point,'' arXiv:2210.06669.}
+the map acts on infinite-dimensional tensors.  The theorem is not a statement
+about the naive contraction of four tensors, which fails to be contractive
+near the high-temperature fixed point; it is a statement about a modified RG
+map with a disentangling step and a Hilbert--Schmidt neighborhood on which
+contraction estimates are proved.  The low-temperature analysis gives stable
+ordered fixed points and a discontinuity fixed point for first-order
+transition behavior.  These examples illustrate why the RG map itself is part
+of the theorem: changing the coarse-graining prescription changes the
+mathematical assertion being made.
+
+Functional RG equations such as the Wetterich equation are exact identities
+at finite regulator, as derived in
+Chapter~\ref{ch:vol2-wilsonian-effective-actions}.  A finite-dimensional
+truncation of such an equation can be an excellent computational scheme, but
+the theorem-level fixed-point claim requires an error estimate comparing the
+truncated subspace with the full Banach space.  The same distinction applies
+to perturbative epsilon expansions: the formal fixed point organizes local
+coordinates and critical exponents order by order, while a nonperturbative
+fixed-point theorem additionally proves existence, stability, and
+reconstruction.
+
 \section{Relation To Universality Classes}
 
 In this monograph, a universality class is a triple
