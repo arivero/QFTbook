@@ -79,6 +79,27 @@ The chapter must define and derive:
   \(t_R^a\), and the matter covariant derivative;
 - invariant Hermitian pairings on compact-group representations and the
   resulting gauge-invariant contractions for scalar and Dirac matter;
+- the Brout--Englert--Higgs mechanism as a local gauge-theory construction,
+  not as literal breaking of a local gauge redundancy: Abelian Higgs quadratic
+  expansion, unitary-gauge gauge-invariant vector coordinate,
+  \(R_\xi\) gauge fixing, ghost/Goldstone gauge-dependent masses, and physical
+  BRST/gauge-invariant mode counting;
+- the nonabelian BEH mass matrix
+  \(K_{ab}=\operatorname{Re}(t_R^a v,t_R^b v)_R\), its kernel
+  \(\mathfrak h=\{X:t_R(X)v=0\}\), the count \(\dim G-\dim H\) of massive
+  gauge bosons, and the \(SU(2)\to U(1)\) adjoint pattern;
+- the orbit differential \(q_v(X)=i\,t_R(X)v\), the identity
+  \(D_\mu(v+\eta)=\partial_\mu\eta-q_v(A_\mu)+O(A_\mu\eta)\), and the local
+  BEH mode-count proposition relating \(\operatorname{rank}q_v\), scalar
+  gauge-orbit coordinates, and massive vector polarizations;
+- the nonabelian \(R_\xi\) gauge-fixing functional
+  \(\mathcal F_\xi=\partial^\mu A_\mu+\xi g_{\rm YM}^2q_v^\dagger\eta\) in a
+  local linear chart, with \(q_v^\dagger q_v\) controlling the broken-sector
+  unphysical scalar and ghost masses;
+- the perturbative renormalizability role of \(R_\xi\) gauges: local
+  dimension-four shifted action, \(p^{-2}\) vector propagators, and BRST
+  identities controlling counterterms, while unitary gauge is kept as a
+  classical spectrum coordinate chart rather than the manifest proof gauge;
 - finite-energy gauge-Higgs sectors for adjoint scalar fields, including the
   vacuum orbit \(\mathcal O_v\), stabilizer \(H\), and the boundary map
   \(S^2_\infty\to G/H\);
@@ -138,27 +159,39 @@ The chapter must define and derive:
     and background-coupling data deferred to the global-structure volume, while
     the gauge-theory volume uses the one-form definition needed for Wilson
     loops, screening, and confinement diagnostics.
-14. Finite-energy gauge-Higgs boundary conditions turn spatial infinity into
+14. The BEH mechanism is a statement about the spectrum and local coordinates
+    of gauge theories with scalar matter.  Gauge-orbit scalar coordinates are
+    would-be Goldstone fields; in \(R_\xi\) gauges they are unphysical
+    gauge-dependent fields paired with ghosts by BRST, while the physical
+    spectrum contains massive vector particles and gauge-invariant scalar
+    excitations.
+15. In a nonabelian scalar vacuum \(v\), the gauge-boson mass matrix is
+    determined by \(K_{ab}=\operatorname{Re}(t_R^a v,t_R^b v)_R\); its kernel
+    is the stabilizer Lie algebra \(\mathfrak h\), so the massive-vector count
+    is \(\dim G-\dim H\).  Equivalently, \(K=q_v^\dagger q_v\) for the orbit
+    differential \(q_v(X)=i\,t_R(X)v\), which also constructs the local
+    nonabelian \(R_\xi\) gauge-fixing term.
+16. Finite-energy gauge-Higgs boundary conditions turn spatial infinity into
     a sphere mapped to the vacuum orbit \(G/H\); the resulting homotopy class
     labels classical magnetic sectors before quantization.
-15. In the BPS limit of an adjoint \(SU(2)\) gauge-Higgs theory, completing the
+17. In the BPS limit of an adjoint \(SU(2)\) gauge-Higgs theory, completing the
     square gives a trace-form energy bound by the surface charge
     \(\Gamma_{\mathrm m}\); the integer formula requires fixing the primitive
     magnetic cocharacter and is not a generator-normalization-free statement.
-16. The Prasad--Sommerfield profile solves the radial Bogomolny ODEs and
+18. The Prasad--Sommerfield profile solves the radial Bogomolny ODEs and
     provides a smooth nonabelian core for the unit 't Hooft--Polyakov
     monopole.
-17. Nielsen--Olesen vortices arise from the same finite-energy logic in
+19. Nielsen--Olesen vortices arise from the same finite-energy logic in
     codimension two, with flux quantization and a first-order BPS system at
     critical coupling.
-18. The sphaleron is an unstable finite-energy saddle classified by its
+20. The sphaleron is an unstable finite-energy saddle classified by its
     position relative to Chern--Simons number and by its negative fluctuation
     mode.
-19. QCD uses the fundamental and anti-fundamental representations for quarks
+21. QCD uses the fundamental and anti-fundamental representations for quarks
     and antiquarks; the complexified adjoint representation describes
     adjoint-valued fields, with real adjoint fields selected by a reality
     condition.
-20. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
+22. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
    matrices into a complex flavor matrix.
 
 ## Figure Requirements
@@ -169,6 +202,9 @@ The chapter must define and derive:
   invariant trace, and the Yang-Mills action.
 - \(SU(N)\) representation diagram/table: fundamental, anti-fundamental,
   adjoint, and QCD quark indices.
+- BEH mode-accounting figure for the Abelian model, showing scalar radial and
+  gauge-orbit coordinates, the massive vector, and the \(R_\xi\)/BRST
+  treatment of unphysical fields.
 - Finite-energy boundary map diagram \(S^2_\infty\to G/H\), showing the
   relation between asymptotic Higgs data, transition functions, and magnetic
   sectors.
@@ -225,3 +261,10 @@ The chapter must define and derive:
   specializes to the electric center one-form symmetry of pure \(SU(N)\)
   Yang--Mills and its breaking by dynamical matter.  The full higher-group and
   noninvertible/categorical framework remains assigned to Volume IX.
+- 2026-05-25 issue #464 pass: added a dedicated BEH mechanism section after
+  matter representations and before finite-energy solitons.  The section
+  derives the Abelian Higgs quadratic mixing, unitary-gauge
+  gauge-invariant vector coordinate, \(R_\xi\) gauge fixing and propagator,
+  ghost/Goldstone gauge-dependent masses, the nonabelian mass matrix and
+  \(SU(2)\to U(1)\) pattern, and the BRST/power-counting role of \(R_\xi\)
+  gauges.  The Goldstone-theorem chapter now cross-references this section.

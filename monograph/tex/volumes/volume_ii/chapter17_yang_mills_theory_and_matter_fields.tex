@@ -757,6 +757,345 @@ intertwiners from the tensor product of fields to the trivial representation.
   \label{fig:ym-matter-representation-covariance}
 \end{figure}
 
+\section{The Brout--Englert--Higgs Mechanism}
+\label{sec:beh-mechanism}
+
+Gauge redundancy is not a physical global symmetry acting faithfully on the
+Hilbert space.  A gauge-theory phase with a scalar expectation value is
+therefore not defined by a gauge-variant order parameter.  Its perturbative
+description is defined by choosing a coordinate chart on field space near a
+minimum of the gauge-invariant potential, then fixing the gauge or passing to
+gauge-invariant variables.  The Brout--Englert--Higgs mechanism is the local
+quadratic statement that scalar fluctuations tangent to the gauge orbit supply
+the longitudinal polarizations of gauge bosons whose generators do not
+stabilize the chosen vacuum.  The physical formulation is spectral: the
+BRST-invariant or gauge-invariant Hilbert space contains massive vector
+particles and scalar excitations, while the would-be Goldstone coordinates are
+not independent physical massless particles.
+
+\subsection{Abelian Higgs Model}
+
+Use the coupling-absorbed Abelian convention inherited from
+\eqref{eq:ym-qed-curvature-rescaling}.  Thus
+\[
+  D_\mu\phi=\partial_\mu\phi-\ii A_\mu\phi,
+  \qquad
+\]
+\begin{equation}
+  \mathcal L
+  =
+  -\frac1{4e^2}F_{\mu\nu}F^{\mu\nu}
+  +(D_\mu\phi)^*D^\mu\phi
+  -\lambda\left(|\phi|^2-\frac{v^2}{2}\right)^2 .
+  \label{eq:abelian-higgs-lagrangian-beh}
+\end{equation}
+The finite gauge transformation is
+\[
+  A_\mu\mapsto A_\mu+\partial_\mu\alpha,
+  \qquad
+  \phi\mapsto e^{\ii\alpha}\phi .
+\]
+Choose a local Cartesian coordinate chart near the minimum
+\[
+  \phi(x)=\frac1{\sqrt2}\bigl(v+h(x)+\ii\pi(x)\bigr).
+\]
+The scalar kinetic term gives, to quadratic order,
+\begin{equation}
+  (D_\mu\phi)^*D^\mu\phi
+  =
+  \frac12\partial_\mu h\,\partial^\mu h
+  +
+  \frac12(\partial_\mu\pi-vA_\mu)(\partial^\mu\pi-vA^\mu)
+  +O(\text{cubic}).
+  \label{eq:abelian-higgs-beh-quadratic}
+\end{equation}
+The potential gives
+\[
+  \lambda\left(|\phi|^2-\frac{v^2}{2}\right)^2
+  =
+  \lambda v^2h^2+O(\text{cubic}),
+  \qquad
+  m_h^2=2\lambda v^2 .
+\]
+The gauge field \(A_\mu\) is not canonically normalized; the canonical vector
+is \(\mathcal A_\mu=A_\mu/e\).  Therefore the vector mass is
+\[
+  m_A=ev .
+\]
+Equation \eqref{eq:abelian-higgs-beh-quadratic} displays the mechanism:
+the derivative of the orbit coordinate \(\pi\) appears only through the
+combination \(\partial_\mu\pi-vA_\mu\) at quadratic order.
+
+On the open set where \(v+h\neq0\), write polar coordinates
+\[
+  \phi(x)=\frac{v+H(x)}{\sqrt2}\exp\!\left(\frac{\ii\theta(x)}{v}\right).
+\]
+The gauge-invariant local vector coordinate
+\begin{equation}
+  B_\mu
+  :=
+  A_\mu-\frac1v\partial_\mu\theta
+  \label{eq:abelian-higgs-gauge-invariant-vector}
+\end{equation}
+is invariant under \(A_\mu\mapsto A_\mu+\partial_\mu\alpha\),
+\(\theta\mapsto\theta+v\alpha\).  In these coordinates
+\[
+  (D_\mu\phi)^*D^\mu\phi
+  =
+  \frac12\partial_\mu H\,\partial^\mu H
+  +
+  \frac12(v+H)^2B_\mu B^\mu .
+\]
+This is the unitary-gauge description: the orbit coordinate has been removed
+from the local chart and the vector has a mass term.  It is useful for
+classical mode counting, but its vector propagator has poor ultraviolet
+power-counting behavior.  Perturbative renormalizability is most transparent
+in \(R_\xi\) gauges.
+
+The \(R_\xi\) gauge-fixing functional in the coupling-absorbed convention is
+\begin{equation}
+  \mathcal F_\xi
+  =
+  \partial_\mu A^\mu+\xi e^2v\pi .
+  \label{eq:abelian-higgs-rxi-functional}
+\end{equation}
+Adding
+\[
+  \mathcal L_{\rm gf}
+  =
+  -\frac1{2e^2\xi}\mathcal F_\xi^2
+\]
+cancels the quadratic mixing term \(v(\partial_\mu A^\mu)\pi\) obtained from
+\eqref{eq:abelian-higgs-beh-quadratic} after integrating by parts.  The
+quadratic Lagrangian becomes
+\[
+  \mathcal L_2
+  =
+  -\frac1{4e^2}F_{\mu\nu}F^{\mu\nu}
+  -\frac1{2e^2\xi}(\partial_\mu A^\mu)^2
+  +\frac12v^2A_\mu A^\mu
+  +\frac12(\partial h)^2-\frac12m_h^2h^2
+  +\frac12(\partial\pi)^2-\frac12\xi m_A^2\pi^2 .
+\]
+In terms of the canonical vector \(\mathcal A_\mu=A_\mu/e\), the propagator is
+\begin{equation}
+  D_{\mu\nu}(p)
+  =
+  \frac{-\ii}{p^2-m_A^2+\ii0}
+  \left[
+    \eta_{\mu\nu}
+    -
+    \frac{(1-\xi)p_\mu p_\nu}
+         {p^2-\xi m_A^2+\ii0}
+  \right].
+  \label{eq:abelian-higgs-rxi-vector-propagator}
+\end{equation}
+It decays as \(p^{-2}\) at large momentum for fixed \(\xi\).  The field
+\(\pi\) and the ghosts have gauge-dependent mass \(\sqrt{\xi}\,m_A\); they are
+not physical particles.  The Faddeev--Popov operator follows by varying
+\eqref{eq:abelian-higgs-rxi-functional} under the infinitesimal gauge
+transformation.  Since
+\[
+  \delta_\alpha A_\mu=\partial_\mu\alpha,
+  \qquad
+  \delta_\alpha\pi=(v+h)\alpha+O(\pi\alpha),
+\]
+one obtains
+\[
+  \delta_\alpha\mathcal F_\xi
+  =
+  \left(\Box+\xi e^2v(v+h)\right)\alpha+O(\pi\alpha).
+\]
+Thus the ghost action contains the quadratic mass \(\xi m_A^2\) and a local
+ghost--ghost--\(h\) vertex.  In an Abelian unbroken gauge theory ghosts
+decouple; in the \(R_\xi\) chart of the Abelian Higgs model this field
+dependence of the gauge condition makes their BRST role visible.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.96\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \node[font=\small] at (0,2.55) {BEH mode accounting in the Abelian model};
+    \draw[rounded corners=4pt,thick] (-5.7,0.35) rectangle (-2.3,1.85);
+    \node[align=center] at (-4.0,1.45) {scalar chart};
+    \node[align=center] at (-4.0,0.92)
+      {\(h\): radial\\\(\pi\): gauge-orbit};
+    \draw[-{Latex[length=2mm]},thick] (-2.05,1.10)--(-0.35,1.10);
+    \node[align=center] at (-1.20,1.52) {quadratic\\mixing};
+    \draw[rounded corners=4pt,thick] (-0.1,0.35) rectangle (3.3,1.85);
+    \node[align=center] at (1.6,1.45) {massive vector};
+    \node[align=center] at (1.6,0.92)
+      {\(A_\mu-\partial_\mu\theta/v\)\\three polarizations};
+    \draw[-{Latex[length=2mm]},thick] (3.55,1.10)--(5.25,1.10);
+    \node[align=center] at (4.40,1.52) {BRST\\quotient};
+    \draw[rounded corners=4pt,thick] (5.5,0.35) rectangle (8.9,1.85);
+    \node[align=center] at (7.2,1.45) {physical modes};
+    \node[align=center] at (7.2,0.92)
+      {massive vector\\radial scalar \(h\)};
+    \node[align=center,blue!65!black] at (1.6,-0.15)
+      {\(R_\xi\) gauges keep \(\pi,c,\bar c\) with gauge-dependent masses;\\
+       unitary gauge removes \(\pi\) locally but hides power counting.};
+  \end{tikzpicture}
+  }
+  \caption{The would-be Goldstone coordinate is a coordinate along the gauge
+  orbit.  It supplies the longitudinal polarization in a massive vector
+  description, while \(R_\xi\) gauges keep it as an unphysical field paired
+  with ghosts by BRST.}
+  \label{fig:abelian-beh-mode-accounting}
+\end{figure}
+
+\subsection{Nonabelian Mass Matrix and the \texorpdfstring{\(SU(2)\to U(1)\)}{SU(2) to U(1)} Pattern}
+
+Let a scalar field \(\Phi\) take values in a unitary representation \(V_R\) of
+a compact gauge group \(G\), and let \(v\in V_R\) be a minimum of a
+gauge-invariant potential.  The stabilizer subgroup is
+\[
+  H=\{g\in G:\rho_R(g)v=v\},
+  \qquad
+  \mathfrak h=\{X\in\mathfrak g:t_R(X)v=0\}.
+\]
+The tangent space to the gauge orbit at \(v\) is
+\[
+  T_v(G\cdot v)
+  =
+  \{\,\ii t_R(X)v:X\in\mathfrak g\,\}
+  \simeq \mathfrak g/\mathfrak h .
+\]
+It is useful to isolate the finite-dimensional linear map
+\begin{equation}
+  q_v:\mathfrak g\longrightarrow T_vV_R,
+  \qquad
+  q_v(X)=\ii t_R(X)v .
+  \label{eq:beh-orbit-differential}
+\end{equation}
+The kernel of \(q_v\) is \(\mathfrak h\).  Thus \(q_v\) is the differential
+of the gauge-orbit map at the chosen vacuum, and all local mode counting in
+the Brout--Englert--Higgs mechanism is the mode counting of this linear map.
+Expanding the scalar kinetic term around \(\Phi=v+\eta\) gives the gauge-boson
+mass bilinear
+\begin{equation}
+  (D_\mu v,D^\mu v)_R
+  =
+  A_\mu^aA^{b\mu}\,
+  (t_R^a v,t_R^b v)_R .
+  \label{eq:nonabelian-beh-mass-bilinear}
+\end{equation}
+The Hermitian matrix
+\begin{equation}
+  K_{ab}:=\operatorname{Re}(t_R^a v,t_R^b v)_R
+  \label{eq:nonabelian-beh-K-matrix}
+\end{equation}
+is positive semidefinite, and its kernel is exactly the unbroken Lie algebra:
+\[
+  K_{ab}X^b=0
+  \quad\Longleftrightarrow\quad
+  t_R(X)v=0
+  \quad\Longleftrightarrow\quad
+  X\in\mathfrak h .
+\]
+Equivalently, \(K=q_v^\dagger q_v\), where the adjoint is taken with respect
+to the invariant inner product on \(V_R\) and the invariant trace form on
+\(\mathfrak g\).
+
+\begin{proposition}[Local BEH mode count]
+\label{prop:local-beh-mode-count}
+At a smooth vacuum \(v\) with compact stabilizer \(H\), the scalar kinetic
+term gives nonzero masses to exactly \(\dim G-\dim H\) gauge bosons.  In
+four-dimensional Minkowski space these massive vector particles carry
+\(3(\dim G-\dim H)\) physical polarizations.  The scalar coordinates removed
+from a local unitary-gauge slice are exactly the tangent coordinates to the
+orbit \(G/H\).  The remaining scalar coordinates are coordinates normal to the
+gauge orbit, subject to the Hessian of the gauge-invariant potential on a
+local slice.
+\end{proposition}
+
+\begin{proof}
+Choose an \(H\)-invariant orthogonal decomposition of scalar fluctuations
+near \(v\),
+\[
+  T_vV_R
+  =
+  \operatorname{im} q_v\oplus N_v,
+\]
+where \(N_v\) is the orthogonal complement of the orbit tangent space.  The
+existence of such a complement follows by averaging the Hermitian inner
+product over the compact group \(H\).  To quadratic order in fields,
+\[
+  D_\mu(v+\eta)
+  =
+  \partial_\mu\eta-q_v(A_\mu)+O(A_\mu\eta),
+  \qquad A_\mu=A_\mu^a t^a .
+\]
+If the orbit component of \(\eta\) is written as \(q_v(\chi)\), then the
+quadratic expression depends on \(A_\mu\) and \(\chi\) through
+\[
+  \partial_\mu q_v(\chi)-q_v(A_\mu)
+  =
+  q_v(\partial_\mu\chi-A_\mu).
+\]
+This identity is the precise local statement behind the phrase that the
+would-be Goldstone coordinate supplies the longitudinal vector polarization:
+the scalar orbit coordinate and the gauge potential appear in the same
+gauge-orbit differential.  Since \(\operatorname{rank}q_v=\dim\mathfrak g-
+\dim\mathfrak h\), exactly that many vector fields have nonzero mass
+eigenvalues.  A massive vector particle in four spacetime dimensions has three
+physical polarizations after the BRST or gauge-invariant quotient.  The
+normal scalar coordinates in \(N_v\) are not gauge-orbit coordinates; their
+quadratic masses are the eigenvalues of the potential Hessian restricted to a
+local slice transverse to the orbit.
+\end{proof}
+
+After canonical normalization of the gauge kinetic term, the vector
+mass-squared matrix is \(2g_{\rm YM}^2K\), with the invariant trace form used
+to identify gauge-algebra indices.  Hence precisely
+\(\dim G-\dim H\) gauge bosons acquire mass.  The same number of scalar
+coordinates tangent to \(G/H\) are gauge-orbit coordinates.  A covariant
+\(R_\xi\) gauge keeps these coordinates in the field algebra but gives them
+gauge-dependent masses; a unitary-gauge chart removes them locally.
+
+The nonabelian \(R_\xi\) construction is the adjoint of the same orbit
+differential.  In a local linear chart, let \(q_v^\dagger\eta\in\mathfrak g\)
+be the adjoint projection of the scalar fluctuation onto the broken gauge
+directions.  The gauge-fixing functional
+\begin{equation}
+  \mathcal F_\xi
+  =
+  \partial^\mu A_\mu+\xi g_{\rm YM}^2 q_v^\dagger\eta
+  \label{eq:nonabelian-beh-rxi-functional}
+\end{equation}
+is the nonabelian analogue of
+\eqref{eq:abelian-higgs-rxi-functional}.  Its quadratic cross term cancels
+the integration-by-parts mixing from
+\(\|\partial_\mu\eta-q_v(A_\mu)\|^2\).  In a basis of broken generators
+diagonalizing \(K\), \eqref{eq:nonabelian-beh-rxi-functional} becomes a direct
+sum of Abelian \(R_\xi\) gauges, with unphysical scalar and ghost masses
+\(\sqrt{\xi}\) times the corresponding vector masses.  The unbroken
+\(\mathfrak h\) directions have no \(q_v^\dagger\eta\) term and remain
+ordinary massless gauge directions at this stage.
+
+For the adjoint \(SU(2)\) model, take an adjoint scalar
+\(\Phi=\Phi^a t^a\) and a vacuum \(\Phi_0=v t^3\).  The stabilizer of
+\(\Phi_0\) is the \(U(1)\) generated by \(t^3\).  The directions \(t^1,t^2\)
+do not stabilize the vacuum, so the corresponding two gauge bosons are
+massive and the \(t^3\) gauge boson remains massless.  In electroweak
+\(SU(2)\times U(1)\) with a fundamental scalar doublet, the same mass-matrix
+logic leaves the diagonal electromagnetic \(U(1)\) unbroken and gives masses
+to the orthogonal charged and neutral vector combinations.  The detailed
+electroweak parameter conventions belong to the Standard Model chapter; the
+structural statement is already contained in
+\eqref{eq:nonabelian-beh-mass-bilinear}.
+
+The perturbative renormalizability statement is also local in field space.
+An \(R_\xi\) gauge-fixed action for the shifted fields contains only local
+operators of power-counting dimension at most four when the original
+Yang--Mills--scalar action is renormalizable.  The propagators have the
+large-momentum behavior required for power counting, and the BRST identities
+restrict counterterms to gauge-invariant deformations together with
+BRST-exact gauge-fixing and field-coordinate terms, as in
+Chapter~\ref{ch:volume-ii-18}.  Unitary gauge is a useful reduced coordinate
+description of the classical spectrum, but it is not the gauge in which the
+renormalizability proof is manifest.
+
 \section{Finite-Energy Gauge-Higgs Solitons}
 \label{sec:gauge-higgs-classical-solitons}
 
