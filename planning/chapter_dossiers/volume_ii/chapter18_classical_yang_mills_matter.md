@@ -63,6 +63,18 @@ The chapter must define and derive:
   normalization \(\operatorname{tr}(t^a t^b)=\delta^{ab}\), while recording
   how the common half-trace convention changes component formulas;
 - the four-dimensional \(\theta\)-term and its perturbative/topological roles;
+- invertible \(p\)-form global symmetry in operational topological-operator
+  form, including codimension-\(p+1\) symmetry operators, charged
+  \(p\)-dimensional operators, and linking-number actions;
+- the electric center one-form symmetry of pure \(SU(N)\) Yang--Mills,
+  Wilson-line \(N\)-ality, and the surface-operator action
+  \(U_m(\Sigma)W_R(C)U_m(\Sigma)^{-1}\);
+- the subgroup of center one-form symmetry preserved by dynamical matter
+  representations, including adjoint matter preserving and fundamental matter
+  breaking the \(SU(N)\) center symmetry;
+- the placement of higher groups and noninvertible/categorical symmetries in
+  the later global-structure volume, with only the definitions needed for
+  gauge-theory Wilson lines and confinement diagnostics used here;
 - matter representations \(\rho_R:G\to GL(V_R)\), Lie-algebra generators
   \(t_R^a\), and the matter covariant derivative;
 - invariant Hermitian pairings on compact-group representations and the
@@ -116,26 +128,37 @@ The chapter must define and derive:
    derivative it enters perturbatively only through global/topological sectors.
 10. Matter fields carry representations of \(G\), and their covariant
     derivative transforms in the same representation.
-11. Finite-energy gauge-Higgs boundary conditions turn spatial infinity into
+11. Pure \(SU(N)\) Yang--Mills has an electric \(\mathbb Z_N\) one-form
+    symmetry acting on Wilson lines by their \(N\)-ality and by the linking
+    number with the symmetry surface.
+12. Dynamical matter preserves exactly the subgroup of the center that acts
+    trivially on every dynamical representation; fundamental quarks break the
+    pure Yang--Mills center one-form symmetry completely.
+13. Higher groups and noninvertible/categorical symmetries are extended-operator
+    and background-coupling data deferred to the global-structure volume, while
+    the gauge-theory volume uses the one-form definition needed for Wilson
+    loops, screening, and confinement diagnostics.
+14. Finite-energy gauge-Higgs boundary conditions turn spatial infinity into
     a sphere mapped to the vacuum orbit \(G/H\); the resulting homotopy class
     labels classical magnetic sectors before quantization.
-12. In the BPS limit of an adjoint \(SU(2)\) gauge-Higgs theory, completing the
+15. In the BPS limit of an adjoint \(SU(2)\) gauge-Higgs theory, completing the
     square gives a trace-form energy bound by the surface charge
     \(\Gamma_{\mathrm m}\); the integer formula requires fixing the primitive
     magnetic cocharacter and is not a generator-normalization-free statement.
-13. The Prasad--Sommerfield profile solves the radial Bogomolny ODEs and
+16. The Prasad--Sommerfield profile solves the radial Bogomolny ODEs and
     provides a smooth nonabelian core for the unit 't Hooft--Polyakov
     monopole.
-14. Nielsen--Olesen vortices arise from the same finite-energy logic in
+17. Nielsen--Olesen vortices arise from the same finite-energy logic in
     codimension two, with flux quantization and a first-order BPS system at
     critical coupling.
-15. The sphaleron is an unstable finite-energy saddle classified by its
-    position relative to Chern--Simons number, not a stable particle.
-16. QCD uses the fundamental and anti-fundamental representations for quarks
+18. The sphaleron is an unstable finite-energy saddle classified by its
+    position relative to Chern--Simons number and by its negative fluctuation
+    mode.
+19. QCD uses the fundamental and anti-fundamental representations for quarks
     and antiquarks; the complexified adjoint representation describes
     adjoint-valued fields, with real adjoint fields selected by a reality
     condition.
-17. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
+20. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
    matrices into a complex flavor matrix.
 
 ## Figure Requirements
@@ -196,3 +219,9 @@ The chapter must define and derive:
   trace-form Bogomolny bound, the explicit Prasad--Sommerfield solution,
   Nielsen--Olesen vortices, sphalerons, and the quantization caveat for
   collective coordinates and semiclassical sectors.
+- 2026-05-25 issue #470 pass: added a higher-form symmetry section before
+  matter representations.  The section defines invertible \(p\)-form symmetry
+  by topological codimension-\(p+1\) operators and linking action, then
+  specializes to the electric center one-form symmetry of pure \(SU(N)\)
+  Yang--Mills and its breaking by dynamical matter.  The full higher-group and
+  noninvertible/categorical framework remains assigned to Volume IX.

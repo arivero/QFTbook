@@ -442,6 +442,141 @@ integral of \eqref{eq:ym-theta-density} equals \(\theta Q(P,A)\).  Thus
 the Lorentzian path-integral phase is invariant under
 \(\theta\mapsto\theta+2\pi\).
 
+\section{Higher-Form Symmetry Data in Gauge Theory}
+\label{sec:higher-form-symmetry-data-gauge-theory}
+
+Ordinary internal global symmetries act on local operators.  Gauge theories
+also contain symmetries whose charged objects are extended operators.  The
+basic example needed later is the center one-form symmetry of pure
+Yang--Mills theory.  We record the definition here because it fixes the
+meaning of phrases such as center charge, screening, string breaking, and
+Wilson-loop order parameter in the QCD chapters.
+
+\begin{definition}[Invertible \(p\)-form symmetry, operational form]
+\label{def:invertible-p-form-symmetry}
+Let the spacetime dimension be \(D\), and let \(A\) be an abelian group.  An
+invertible \(p\)-form global symmetry with group \(A\), in the sector of the
+theory under discussion, consists of topological operators
+\[
+  U_a(\Sigma^{D-p-1}),
+  \qquad a\in A,
+\]
+assigned to closed oriented submanifolds \(\Sigma^{D-p-1}\) of codimension
+\(p+1\), together with \(p\)-dimensional charged operators
+\(\mathcal W_q(C^p)\).  The operators satisfy
+\[
+  U_a(\Sigma)U_b(\Sigma)=U_{a+b}(\Sigma),
+  \qquad
+  U_0(\Sigma)=1,
+\]
+and are invariant under smooth deformations of \(\Sigma\) that do not cross
+charged insertions.  If \(\Sigma\) links \(C\), the symmetry action is
+\begin{equation}
+  U_a(\Sigma)\,\mathcal W_q(C)\,U_a(\Sigma)^{-1}
+  =
+  \chi_q(a)^{\operatorname{Lk}(\Sigma,C)}
+  \mathcal W_q(C),
+  \label{eq:p-form-symmetry-linking-action}
+\end{equation}
+where \(\chi_q:A\to U(1)\) is the character carried by
+\(\mathcal W_q\), and \(\operatorname{Lk}(\Sigma,C)\) is the oriented linking
+number when the dimensions are complementary as above.
+\end{definition}
+
+For \(p=0\), the topological operator is codimension one and separates space
+into two regions; moving it past a local operator implements the ordinary
+global symmetry action on that local operator.  For \(p=1\) in four
+dimensions, \(U_a(\Sigma)\) is a surface operator, and the charged objects are
+line operators.  Invertibility means that the symmetry operators have
+inverses.  More general topological defects may have non-group-like fusion;
+those categorical and noninvertible structures are part of the later global
+structure volume, after line and surface operators have been developed as
+QFT observables.
+
+Consider pure \(SU(N)\) Yang--Mills theory with no dynamical matter in
+representations of nonzero \(N\)-ality.  The center is
+\[
+  Z(SU(N))=\{ \ee^{2\pi\ii m/N}\mathbf 1_N:m\in\mathbb Z_N\}.
+\]
+All local gauge-invariant operators built from \(F_{\mu\nu}\), covariant
+derivatives, and adjoint fields are neutral under this center, because the
+adjoint representation has zero \(N\)-ality.  A Wilson line in a representation
+\(R\),
+\[
+  W_R(C)=\operatorname{tr}_R P
+  \exp\left\{\ii\int_C A_\mu\,\dd x^\mu\right\},
+\]
+has center charge \(k_R\in\mathbb Z_N\), defined by
+\[
+  z\,\mathbf 1_N\hbox{ acts on }R\hbox{ as }z^{k_R}.
+\]
+The electric center one-form symmetry is the \(\mathbb Z_N\) one-form
+symmetry whose charged operators are precisely these Wilson lines.
+
+One concrete construction of the symmetry surface is as follows.  Let
+\(\Sigma\) be a closed oriented two-surface in four-dimensional spacetime, and
+choose a three-chain \(V\) with \(\partial V=\Sigma\) locally.  Across \(V\),
+perform a gauge transformation which is single-valued up to the center element
+\(z_m=\ee^{2\pi\ii m/N}\mathbf 1_N\).  Adjoint fields and the connection in
+the adjoint bundle are unchanged as local gauge-invariant data; a Wilson line
+crossing \(V\) acquires the center phase seen by its representation.  The
+resulting topological surface operator \(U_m(\Sigma)\) obeys
+\begin{equation}
+  U_m(\Sigma)W_R(C)U_m(\Sigma)^{-1}
+  =
+  \exp\left\{
+    \frac{2\pi\ii\,m k_R}{N}\operatorname{Lk}(\Sigma,C)
+  \right\}
+  W_R(C).
+  \label{eq:center-one-form-action-wilson-loop}
+\end{equation}
+This equation is the definition of the center charge used later.  The
+topological character of \(U_m(\Sigma)\) says that deforming \(\Sigma\) while
+keeping it away from \(C\) leaves the correlation function unchanged; crossing
+\(C\) changes the linking number and produces exactly the displayed phase.
+
+Dynamical matter determines the unbroken subgroup.  Suppose the theory
+contains matter fields in representations \(R_\alpha\) of \(SU(N)\), with
+\(N\)-alities \(k_\alpha\).  A Wilson line in \(R_\alpha\) can end on a
+dynamical local field only when that field is present in the operator algebra.
+Then a center surface linked with the line endpoint fails to define a
+topological operation on the full set of insertions unless its phase on every
+dynamical endpoint is trivial.  The surviving electric one-form symmetry is
+\begin{equation}
+  A_{\mathrm{el}}
+  =
+  \{m\in\mathbb Z_N:
+    \exp(2\pi\ii m k_\alpha/N)=1
+    \hbox{ for every dynamical }R_\alpha\}.
+  \label{eq:center-one-form-unbroken-subgroup}
+\end{equation}
+Thus pure Yang--Mills has \(A_{\mathrm{el}}=\mathbb Z_N\), adjoint matter
+preserves the same electric center one-form symmetry, and dynamical
+fundamental quarks break it completely.
+
+The behavior of large Wilson loops is a dynamical question, but the symmetry
+data determine what can serve as a sharp diagnostic.  In a massive pure
+Yang--Mills theory, a Wilson loop with nonzero \(N\)-ality is charged under
+\(A_{\mathrm{el}}\), so its area or perimeter behavior distinguishes phases of
+the one-form symmetry.  With dynamical fundamental quarks the same loop can be
+screened by pair creation; the QCD chapter therefore treats the Wilson loop as
+a static-source observable, while the one-form-symmetry order-parameter
+interpretation applies to the unbroken center subgroup.
+
+\begin{remark}[Higher groups, noninvertible symmetries, and placement]
+\label{rem:categorical-symmetry-forward-pointer}
+The definition above covers the invertible higher-form symmetry needed for the
+center symmetry of pure Yang--Mills.  More refined global structures include
+mixed ordinary/higher-form symmetries organized by higher groups, background
+\(p+1\)-form gauge fields and their Postnikov constraints, and noninvertible
+topological defects with categorical fusion.  Those structures are QFT data
+about extended operators and background couplings, and they are conceptually
+distinct from the local gauge redundancy used to coordinatize the field space.
+They belong to the later volume on global structure, phases, and extended
+operators.  The present gauge-theory volume uses only the definitions required
+for Wilson lines, screening, confinement diagnostics, and anomaly statements.
+\end{remark}
+
 \section{Matter Representations}
 
 Let \(R\) be a finite-dimensional representation of \(G\) on a vector space
@@ -788,7 +923,7 @@ the equator by a \(U(1)\)-valued transition function of the same winding.
 \end{figure}
 
 The Bogomolny bound is the simplest place where the topology enters the
-energy, rather than merely labeling boundary data.  Set \(U=0\).  This is the
+energy in addition to labeling boundary data.  Set \(U=0\).  This is the
 Prasad--Sommerfield or BPS limit of the adjoint Higgs model.  Completing the
 square gives
 \begin{align}
@@ -975,8 +1110,8 @@ fields remain smooth at the origin.
   \end{tikzpicture}
   }
   \caption{In the BPS limit the energy is a nonnegative square plus a surface
-  term fixed by the magnetic sector.  This is a derivation of the monopole
-  mass bound, not an independent assumption about soliton particles.}
+  term fixed by the magnetic sector.  The displayed square completion derives
+  the monopole mass bound from the finite-energy sector.}
   \label{fig:bogomolny-bound-structure}
 \end{figure}
 
