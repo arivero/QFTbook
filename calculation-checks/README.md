@@ -142,9 +142,10 @@ Current checks:
   potential, and the periodicity of the massive-model string tension for
   integer probe charge.
 - `sine_gordon_smatrix_checks.py`: numerical finite checks for the Volume VI
-  sine-Gordon exact scattering datum, including soliton-matrix unitarity,
-  the free-fermion point, breather pole locations, breather mass kinematics,
-  and lightest-breather unitarity and crossing.
+  sine-Gordon exact scattering datum, including soliton-matrix unitarity and
+  Yang-Baxter, the free-fermion point, breather pole locations, breather mass
+  kinematics, soliton-breather unitarity/crossing/pole kinematics, and
+  lightest-breather unitarity and crossing.
 - `trace_anomaly_classification_checks.py`: finite checks for the
   type-A/type-B trace-anomaly classification, including the parity-even bulk
   cohomology counts in \(D=2,4,6\), the engineering weights of the listed

@@ -79,6 +79,64 @@ two-particle channel of equal masses \(M_s\) produces a bound state of mass
 \]
 For the breather poles \(u=\pi(1-n\xi)\), this gives the displayed value.
 
+\section{Mass Scale And The UV Perturbing Coordinate}
+
+The symbol \(M_s\) denotes the physical soliton mass, defined by the isolated
+mass hyperboloid in the soliton superselection sector.  The coefficient
+\(\mu\) in a Lagrangian expression is not itself an invariant until the
+short-distance normal-ordering convention for the vertex operator has been
+specified.  To make the comparison unambiguous, introduce the Euclidean
+free-boson normalization
+\[
+  A_0[\phi]=\frac{1}{16\pi}\int_{\mathbb R^2} \dd^2x\,
+  \partial_\alpha\phi\,\partial_\alpha\phi,
+  \qquad
+  \langle \phi(x)\phi(0)\rangle_0=-2\log |x|+O(1),
+\]
+and define the perturbation by
+\begin{equation}
+  A_{\mathrm{SG}}^{\mathrm{UV}}
+  =
+  A_0[\phi]
+  -2\mu_{\mathrm{UV}}\int_{\mathbb R^2}\dd^2x\,
+  :\!\cos(\beta_{\mathrm{UV}}\phi(x))\!:_{0}.
+  \label{eq:sine-gordon-uv-normalized-action}
+\end{equation}
+Then the scaling dimension of
+\(:\!\exp(\ii\beta_{\mathrm{UV}}\phi)\!:_0\) is
+\(2\beta_{\mathrm{UV}}^2\), the coupling
+\(\mu_{\mathrm{UV}}\) has mass dimension \(2-2\beta_{\mathrm{UV}}^2\), and
+\[
+  \xi=\frac{\beta_{\mathrm{UV}}^2}{1-\beta_{\mathrm{UV}}^2}.
+\]
+Equivalently, in the canonical kinetic normalization of the preceding section,
+\(\phi=\sqrt{8\pi}\,\varphi\) and
+\(\beta_{\mathrm{UV}}=\beta/\sqrt{8\pi}\).  The exact mass-coupling relation,
+in the UV convention \eqref{eq:sine-gordon-uv-normalized-action}, is
+\begin{equation}
+  M_s
+  =
+  \frac{2\Gamma(\xi/2)}
+       {\sqrt{\pi}\,\Gamma((1+\xi)/2)}
+  \left[
+    \frac{\pi\mu_{\mathrm{UV}}\Gamma(1-\beta_{\mathrm{UV}}^2)}
+         {\Gamma(\beta_{\mathrm{UV}}^2)}
+  \right]^{(1+\xi)/2}.
+  \label{eq:sine-gordon-mass-coupling-relation}
+\end{equation}
+The power is forced by dimensions because
+\[
+  \frac{1+\xi}{2}
+  =
+  \frac{1}{2(1-\beta_{\mathrm{UV}}^2)}.
+\]
+The nontrivial content of
+\eqref{eq:sine-gordon-mass-coupling-relation} is therefore the dimensionless
+gamma-function coefficient.  In this chapter the formula is used as a
+coordinate change between the UV perturbing coordinate and the physical mass
+coordinate; the derivation from finite-size thermodynamic Bethe ansatz data and
+the vacuum energy normalization belongs to the later chapter on exact RG flows.
+
 \section{Exact Soliton-Antisoliton Scattering Datum}
 
 The one-soliton internal space is
@@ -206,6 +264,58 @@ Substituting \(u_n=\pi(1-n\xi)\) into the equal-mass bound-state formula gives
 as claimed.
 \end{proof}
 
+\begin{proposition}[Yang-Baxter equation for the soliton matrix part]
+\label{prop:sine-gordon-soliton-yang-baxter}
+Let \(R_\lambda(\theta)\) be the \(4\times4\) matrix factor in
+\eqref{eq:sine-gordon-soliton-matrix}, without the scalar multiplier
+\(S_{\mathrm{min}}\).  On \(V^{\otimes3}\) it obeys
+\[
+  R_{12}(\theta_{12})R_{13}(\theta_{13})R_{23}(\theta_{23})
+  =
+  R_{23}(\theta_{23})R_{13}(\theta_{13})R_{12}(\theta_{12}),
+  \qquad
+  \theta_{ij}=\theta_i-\theta_j .
+\]
+\end{proposition}
+
+\begin{proof}
+Only the charge-one and charge-two subspaces of \(V^{\otimes3}\) are
+nontrivial; charge zero and charge three are scalar.  Write
+\[
+  B(u)=\frac{\sinh(\lambda u)}
+            {\sinh(\ii\pi\lambda-\lambda u)},
+  \qquad
+  C(u)=\frac{\ii\sin(\pi\lambda)}
+            {\sinh(\ii\pi\lambda-\lambda u)},
+  \qquad
+  A=\ii\pi\lambda .
+\]
+Direct multiplication of the two \(8\times8\) products reduces all component
+equalities to the following three scalar identities, with \(w=u+v\):
+\[
+\begin{aligned}
+  -B(u)C(v)+B(w)C(v)-B(v)C(u)C(w)&=0,\\
+  -B(u)B(v)C(w)-C(u)C(v)+C(w)&=0,\\
+  -B(u)C(w)C(v)+B(w)C(u)-B(v)C(u)&=0 .
+\end{aligned}
+\]
+After clearing denominators these identities are consequences of
+\[
+  \sinh(A-u)\sinh(A-v)-\sinh u\,\sinh v
+  =
+  \sinh A\,\sinh(A-u-v),
+\]
+and the two identities obtained from it by replacing one of the factors with
+the addition formula
+\[
+  \sinh(u+v)=\sinh u\cosh v+\cosh u\sinh v .
+\]
+Since \(\sinh A=\ii\sin(\pi\lambda)\), these are exactly the three displayed
+component identities.  The scalar factor \(S_{\mathrm{min}}\) cancels from the
+Yang-Baxter equation, because it contributes the same product of three scalar
+functions on both sides.
+\end{proof}
+
 \begin{remark}[Free-fermion point]
 At \(\beta^2=4\pi\), one has \(\xi=1\) and \(\lambda=1\).  Then
 \(\sin(\pi\lambda)=0\), so the reflection amplitude \(c(\theta)\) vanishes,
@@ -215,6 +325,141 @@ Thirring field at \(g_{\mathrm T}=0\).  This is a useful convention check:
 the soliton and antisoliton then form the free massive Dirac particle and
 antiparticle.
 \end{remark}
+
+\section{Soliton-Breather Scattering}
+
+The neutral breather \(B_n\) is obtained from the residue of the
+soliton-antisoliton amplitude at
+\[
+  \theta=\ii\pi(1-n\xi).
+\]
+Applying the fusion identity of
+Proposition~\ref{prop:fusion-identity-residue-derivation} to the soliton
+matrix \eqref{eq:sine-gordon-soliton-matrix} gives a diagonal scalar amplitude
+for a soliton or antisoliton scattering through \(B_n\):
+\begin{equation}
+  S_{sB_n}(\theta)
+  =
+  \frac{\sinh\theta+\ii\cos(\pi n\xi/2)}
+       {\sinh\theta-\ii\cos(\pi n\xi/2)}
+  \prod_{\ell=1}^{n-1}
+  \frac{
+    \sin^2\!\left(
+      \frac{\pi\xi}{4}(n-2\ell)-\frac{\pi}{4}
+      +\frac{\ii\theta}{2}
+    \right)}
+   {\sin^2\!\left(
+      \frac{\pi\xi}{4}(n-2\ell)-\frac{\pi}{4}
+      -\frac{\ii\theta}{2}
+    \right)} .
+  \label{eq:sine-gordon-soliton-breather-smatrix}
+\end{equation}
+The same scalar function appears for \(s=+\) and \(s=-\), because \(B_n\) is
+neutral and the fused residue is a one-dimensional charge-preserving channel.
+The formula is minimal in the same sense as before: it contains no additional
+CDD factor that is analytic, nonzero, and unitary in the physical strip.
+
+\begin{proposition}[Checks on \(S_{sB_n}\)]
+\label{prop:sine-gordon-soliton-breather-checks}
+For \(n\xi<1\), the amplitude
+\eqref{eq:sine-gordon-soliton-breather-smatrix} obeys
+\[
+  S_{sB_n}(\theta)S_{sB_n}(-\theta)=1,
+  \qquad
+  S_{sB_n}(\ii\pi-\theta)=S_{sB_n}(\theta).
+\]
+Its first scalar factor has physical-strip poles at
+\[
+  \theta=\ii\left(\frac{\pi}{2}+\frac{\pi n\xi}{2}\right),
+  \qquad
+  \theta=\ii\left(\frac{\pi}{2}-\frac{\pi n\xi}{2}\right).
+\]
+The first is the direct-channel soliton pole in
+\[
+  s+B_n\longrightarrow s,
+\]
+and the second is its crossed-channel partner.  The product factors have
+additional double poles at
+\[
+  \theta_\ell
+  =
+  \ii\left(\frac{\pi}{2}
+  +\frac{\pi\xi}{2}(2\ell-n)\right),
+  \qquad
+  \ell=1,\ldots,n-1,
+\]
+which are internal Coleman-Thun-type singularities of the fused scattering
+datum rather than new one-particle states.
+\end{proposition}
+
+\begin{proof}
+Unitarity follows factor by factor, because replacing \(\theta\) by
+\(-\theta\) in every displayed numerator gives the corresponding denominator.
+For crossing, use
+\[
+  \sinh(\ii\pi-\theta)=\sinh\theta
+\]
+for the first factor, and
+\[
+  a_\ell=\frac{\pi\xi}{4}(n-2\ell)-\frac{\pi}{4}
+\]
+for the product factors.  Under \(\theta\mapsto\ii\pi-\theta\), the
+\(\ell\)-th numerator becomes
+\[
+  \sin^2\!\left(a_\ell-\frac{\pi}{2}
+  -\frac{\ii\theta}{2}\right)
+  =
+  \cos^2\!\left(a_\ell-\frac{\ii\theta}{2}\right).
+\]
+Because
+\[
+  a_{n-\ell}
+  =
+  -\frac{\pi\xi}{4}(n-2\ell)-\frac{\pi}{4},
+  \qquad
+  \cos\!\left(a_\ell-\frac{\ii\theta}{2}\right)
+  =
+  \sin\!\left(a_{n-\ell}
+  +\frac{\ii\theta}{2}+\pi\right),
+\]
+the crossed numerator of the \(\ell\)-th factor equals the uncrossed numerator
+of the \((n-\ell)\)-th factor after squaring.  The denominators are permuted in
+the same way.  Hence the full product, not each individually labelled factor,
+is crossing invariant.
+
+The first denominator vanishes when
+\[
+  \sinh\theta=\ii\cos(\pi n\xi/2).
+\]
+Inside the physical strip this gives the two displayed locations.  Let
+\[
+  \alpha=\frac{\pi n\xi}{2},
+  \qquad
+  m_n=2M_s\sin\alpha .
+\]
+At the direct pole \(u=\pi/2+\alpha\), the invariant mass in the
+soliton-breather channel is
+\[
+  M_s^2+m_n^2+2M_s m_n\cos u
+  =
+  M_s^2+4M_s^2\sin^2\alpha
+  -4M_s^2\sin^2\alpha
+  =
+  M_s^2 .
+\]
+Thus the direct pole has precisely the mass of the external soliton.  The
+second pole is obtained by crossing.  Finally, the denominator of the
+\(\ell\)-th product factor vanishes when
+\[
+  \frac{\pi\xi}{4}(n-2\ell)-\frac{\pi}{4}
+  -\frac{\ii\theta}{2}\in\pi\mathbb Z,
+\]
+which gives the displayed \(\theta_\ell\) in the physical strip.  The square
+on the sine gives a double pole.  These singularities arise because the
+breather was represented as a fused soliton-antisoliton pair and the external
+soliton can scatter through either constituent; their invariant masses do not
+match a new stable particle below threshold.
+\end{proof}
 
 \section{Lightest Breather Scattering}
 
@@ -472,6 +717,40 @@ topological charge:
   \bar\psi\gamma^\mu\psi
   =
   \frac{\beta}{2\pi}\epsilon^{\mu\nu}\partial_\nu\varphi .
+\]
+The fermion field itself is a semi-local soliton vertex operator.  In the
+equal-time canonical chart
+\[
+  [\varphi(t,x),\Pi(t,y)]=\ii\delta(x-y),
+  \qquad
+  \Pi=\partial_t\varphi ,
+\]
+Mandelstam's soliton-creating fields have the normal-ordered form
+\begin{equation}
+  \psi_{\pm}(t,x)
+  =
+  Z_\psi^{1/2}\,
+  \mathcal K_\pm\,
+  :\!\exp\left[
+    -\frac{2\pi\ii}{\beta}
+    \int_{-\infty}^{x}\dd y\,\Pi(t,y)
+    \mp\frac{\ii\beta}{2}\varphi(t,x)
+  \right]\!: ,
+  \label{eq:sine-gordon-mandelstam-fermion}
+\end{equation}
+where \(Z_\psi\) is a finite field normalization fixed by the one-particle
+residue, \(\mathcal K_\pm\) are Klein factors implementing the two chiral
+Clifford generators, and the displayed vertex is understood in the same UV
+normal-ordering scheme as the sine-Gordon perturbation.  The line integral
+makes \(\psi_\pm\) carry topological charge and gives the semi-local exchange
+phase with \(\varphi\).  Computing equal-time commutators from the displayed
+canonical relation gives the current relation above, while the short-distance
+exchange phase of the two Mandelstam exponentials fixes the Coleman relation
+between \(g_{\mathrm T}\) and \(\beta\).  In particular,
+\[
+  \bar\psi\psi
+  \quad\text{is proportional, after the same finite normalization choice, to}\quad
+  :\!\cos(\beta\varphi)\!: .
 \]
 At the free-fermion point \(\beta^2=4\pi\), hence \(g_{\mathrm{T}}=0\), the
 soliton and antisoliton form the massive Dirac particle and antiparticle.

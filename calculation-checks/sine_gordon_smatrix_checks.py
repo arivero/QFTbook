@@ -17,8 +17,8 @@ def assert_close(name: str, got: complex | float, expected: complex | float, tol
 
 def matmul(a: ComplexMatrix, b: ComplexMatrix) -> ComplexMatrix:
     return [
-        [sum(a[i][k] * b[k][j] for k in range(4)) for j in range(4)]
-        for i in range(4)
+        [sum(a[i][k] * b[k][j] for k in range(len(b))) for j in range(len(b[0]))]
+        for i in range(len(a))
     ]
 
 
@@ -58,6 +58,39 @@ def breather_breather_amplitude(theta: complex, m: int, n: int, xi: float) -> co
     return result
 
 
+def soliton_breather_amplitude(theta: complex, n: int, xi: float) -> complex:
+    result = (cmath.sinh(theta) + 1j * math.cos(math.pi * n * xi / 2.0)) / (
+        cmath.sinh(theta) - 1j * math.cos(math.pi * n * xi / 2.0)
+    )
+    for ell in range(1, n):
+        angle = math.pi * xi * (n - 2 * ell) / 4.0 - math.pi / 4.0
+        result *= (cmath.sin(angle + 0.5j * theta) ** 2) / (
+            cmath.sin(angle - 0.5j * theta) ** 2
+        )
+    return result
+
+
+def pair_operator(pair: tuple[int, int], matrix: ComplexMatrix) -> ComplexMatrix:
+    op = [[0j for _ in range(8)] for _ in range(8)]
+    for a in range(2):
+        for b in range(2):
+            for c in range(2):
+                incoming = (a, b, c)
+                incoming_index = 4 * a + 2 * b + c
+                first, second = pair
+                pair_index = 2 * incoming[first] + incoming[second]
+                for outgoing_pair_index in range(4):
+                    coefficient = matrix[outgoing_pair_index][pair_index]
+                    if abs(coefficient) == 0:
+                        continue
+                    outgoing = list(incoming)
+                    outgoing[first] = outgoing_pair_index // 2
+                    outgoing[second] = outgoing_pair_index % 2
+                    outgoing_index = 4 * outgoing[0] + 2 * outgoing[1] + outgoing[2]
+                    op[outgoing_index][incoming_index] += coefficient
+    return op
+
+
 def check_matrix_unitarity() -> None:
     for xi in (0.37, 0.72, 1.35):
         for theta in (0.21, 0.93, -0.47):
@@ -66,6 +99,19 @@ def check_matrix_unitarity() -> None:
                 for j in range(4):
                     expected = 1.0 if i == j else 0.0
                     assert_close(f"matrix unitarity xi={xi} theta={theta} ({i},{j})", product[i][j], expected)
+
+
+def check_yang_baxter_matrix_part() -> None:
+    for xi in (0.37, 0.72):
+        theta_1, theta_2, theta_3 = 0.83, 0.12, -0.41
+        r12 = pair_operator((0, 1), matrix_part(theta_1 - theta_2, xi))
+        r13 = pair_operator((0, 2), matrix_part(theta_1 - theta_3, xi))
+        r23 = pair_operator((1, 2), matrix_part(theta_2 - theta_3, xi))
+        lhs = matmul(matmul(r12, r13), r23)
+        rhs = matmul(matmul(r23, r13), r12)
+        for i in range(8):
+            for j in range(8):
+                assert_close(f"Yang-Baxter xi={xi} ({i},{j})", lhs[i][j], rhs[i][j])
 
 
 def check_free_fermion_point() -> None:
@@ -107,6 +153,47 @@ def check_lightest_breather_amplitude() -> None:
         ):
             denominator = cmath.sinh(pole) - 1j * math.sin(math.pi * xi)
             assert_close(f"B1B1 {pole_name} pole denominator xi={xi}", denominator, 0.0)
+
+
+def check_soliton_breather_amplitude() -> None:
+    for xi in (0.17, 0.23):
+        soliton_mass = 2.4
+        for n in (1, 2, 3, 4):
+            for theta in (0.23, 0.91, -0.44):
+                amp = soliton_breather_amplitude(theta, n, xi)
+                assert_close(
+                    f"soliton-B{n} unitarity xi={xi} theta={theta}",
+                    amp * soliton_breather_amplitude(-theta, n, xi),
+                    1.0,
+                )
+                assert_close(
+                    f"soliton-B{n} crossing xi={xi} theta={theta}",
+                    amp,
+                    soliton_breather_amplitude(1j * math.pi - theta, n, xi),
+                )
+
+            direct_u = math.pi / 2.0 + math.pi * n * xi / 2.0
+            crossed_u = math.pi / 2.0 - math.pi * n * xi / 2.0
+            for pole_name, u in (("direct soliton", direct_u), ("crossed soliton", crossed_u)):
+                denominator = cmath.sinh(1j * u) - 1j * math.cos(math.pi * n * xi / 2.0)
+                assert_close(f"soliton-B{n} {pole_name} denominator xi={xi}", denominator, 0.0)
+
+            direct_mass_squared = (
+                soliton_mass**2
+                + breather_mass(n, xi, soliton_mass) ** 2
+                + 2.0 * soliton_mass * breather_mass(n, xi, soliton_mass) * math.cos(direct_u)
+            )
+            assert_close(
+                f"soliton-B{n}->soliton mass xi={xi}",
+                math.sqrt(direct_mass_squared),
+                soliton_mass,
+            )
+
+            for ell in range(1, n):
+                redundant_u = math.pi / 2.0 + math.pi * xi * (2 * ell - n) / 2.0
+                angle = math.pi * xi * (n - 2 * ell) / 4.0 - math.pi / 4.0
+                denominator = cmath.sin(angle - 0.5j * (1j * redundant_u))
+                assert_close(f"soliton-B{n} redundant denominator ell={ell}", denominator, 0.0)
 
 
 def check_neutral_block_residues() -> None:
@@ -165,9 +252,11 @@ def check_breather_breather_direct_fusion_masses() -> None:
 
 def main() -> None:
     check_matrix_unitarity()
+    check_yang_baxter_matrix_part()
     check_free_fermion_point()
     check_breather_pole_locations_and_masses()
     check_lightest_breather_amplitude()
+    check_soliton_breather_amplitude()
     check_neutral_block_residues()
     check_breather_breather_direct_fusion_masses()
     print("All sine-Gordon S-matrix checks passed.")
