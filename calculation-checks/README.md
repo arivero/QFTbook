@@ -60,6 +60,12 @@ Current checks:
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion
   degeneracies, and the Maxwell identity
   \(q^2(6-8q+2q^2)/(1-q)^4=(6q^2-2q^3)/(1-q)^3\).
+- `free_scalar_four_point_checks.py`: finite checks for the generalized-free
+  scalar OPE/crossing example, including the monomial form of
+  \(v^{\Delta_\phi}\mathcal G(u,v)=
+  u^{\Delta_\phi}\mathcal G(v,u)\), Wick-pairing counts, the normalized
+  \(:\phi^2:/\sqrt2\) OPE coefficient \(a_{0,0}=2\), and the even-spin
+  bilinear dimensions.
 - `gamma_trace_checks.py`: mostly-plus gamma-matrix conventions, \(\gamma_5\),
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used

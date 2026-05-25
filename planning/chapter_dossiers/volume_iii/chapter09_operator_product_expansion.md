@@ -82,6 +82,15 @@ The chapter establishes:
 - the \(s\)- and \(t\)-channel radial convergence domains
   \(\mathcal D_s,\mathcal D_t\), their radial variables, and the derivation of
   identical-scalar crossing from permutation symmetry plus prefactor algebra;
+- the generalized-free scalar four-point function as a worked crossing
+  example, including the Wick-pairing formula
+  \(\mathcal G_{\rm GFF}(u,v)=
+  1+u^{\Delta_\phi}+(u/v)^{\Delta_\phi}\), the explicit crossing identity,
+  the bilinear primary tower
+  \(\Delta_{n,\ell}=2\Delta_\phi+2n+\ell\) with even \(\ell\), the finite
+  primary projection in the two-particle radial Hilbert space, the leading
+  normalized scalar coefficient \(a^{\rm GFF}_{0,0}=2\), and the matching of
+  the \(s\)- and \(t\)-channel block expansions;
 - the boundary between core OPE machinery and later specialized bootstrap
   methods.
 
@@ -145,6 +154,14 @@ The chapter establishes:
     \(u^{\mathfrak s/2}v^{(\mathfrak t-\Delta_2-\Delta_3)/2}\); the
     calculation check verifies this convention and the
     \(\mathfrak s=\tau+2m\) pole-to-OPE-exponent map.
+16. For the generalized-free scalar example,
+    \(v^{\Delta_\phi}\mathcal G_{\rm GFF}(u,v)\) and
+    \(u^{\Delta_\phi}\mathcal G_{\rm GFF}(v,u)\) both reduce to the same three
+    monomials
+    \(v^{\Delta_\phi},(uv)^{\Delta_\phi},u^{\Delta_\phi}\).  The
+    \(12\to34\) OPE identity block gives \(1\), the bilinear tower sums to
+    \(u^{\Delta_\phi}+(u/v)^{\Delta_\phi}\), and the crossed channel has the
+    same tower with the prefactor \((u/v)^{\Delta_\phi}\).
 
 ## Figures
 
@@ -218,6 +235,11 @@ The chapter establishes:
   `def:radial-ope-convergence-hypotheses`, making the scope of the
   reflection-positive radial OPE theorem a direct expansion of Chapter 4's
   radial reconstruction data, with Euclidean and Lorentzian inputs separated.
+- 2026-05-25 issue #479 pass: added the generalized-free scalar four-point
+  worked example with Wick-pairing definition, explicit reduced correlator,
+  algebraic crossing check, bilinear primary tower, leading
+  \(:\phi^2:/\sqrt2\) OPE coefficient, and \(s\)-/\(t\)-channel block
+  expansions.
 - 2026-05-24 issue #418 pass: retitled the OPE convergence input block and
   stated explicitly that the listed items are clauses of
   `hyp:radial-reconstruction-data`, not an independent duplicate set of
