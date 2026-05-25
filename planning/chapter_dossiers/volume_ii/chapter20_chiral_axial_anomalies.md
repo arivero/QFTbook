@@ -55,7 +55,8 @@
 - The \(\gamma_5\), trace, two-dimensional chirality, and
   dimensional-continuation conventions are now centralized in
   `monograph/tex/appendices/spinor_conventions.tex`, and the chapter links to
-  that appendix before starting the anomaly calculation.
+  the spinor-field chapter and that appendix before starting the anomaly
+  calculation.
 - Local anomalies are represented by local functionals modulo BRST-exact
   counterterm shifts and total derivatives.
 
@@ -99,6 +100,13 @@
 | \(T_R^a\) | anti-Hermitian generator in representation \(R\) used in the Bardeen--Zumino and descent formulas |
 | \(\bar\theta\) | anomaly-invariant QCD CP-odd parameter |
 | \(Q[A]\) | instanton/topological charge |
+
+## Issue-Pass Notes
+
+- 2026-05-24 issue #397 pass: verified that no stale reference to a
+  "preceding QCD chapter" remains for the \(\gamma_5\) convention.  The
+  anomaly chapter now explicitly links the convention to the spinor-field
+  chapter and the spinor-convention appendix.
 
 ## Claims Established
 
