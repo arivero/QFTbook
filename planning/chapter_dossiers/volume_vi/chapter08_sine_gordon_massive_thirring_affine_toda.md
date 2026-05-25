@@ -15,6 +15,10 @@ families.  This chapter supplies the first exact examples before the later
 - `Q_top`: sine-Gordon topological charge.
 - `xi`, `M_s`, `B_n`, `m_n`: sine-Gordon coupling parameter, soliton mass,
   breather label, and breather mass.
+- `lambda`, `V`, `S_min`, `b(theta)`, `c(theta)`: inverse sine-Gordon
+  coupling parameter, soliton/antisoliton charge doublet, minimal scalar
+  factor, and transmission/reflection amplitudes in the exact soliton
+  S-matrix.
 - `psi`, `g_T`: massive Thirring fermion and current-current coupling.
 - `g`, `alpha_i`, `theta`, `n_i`: Lie algebra, roots, highest root, and
   affine Dynkin labels in affine Toda theory.
@@ -26,6 +30,9 @@ families.  This chapter supplies the first exact examples before the later
 - Fixes sine-Gordon normalization, topological charge, and the attractive
   regime spectrum.
 - Derives the breather mass formula from relativistic bound-state kinematics.
+- Displays the exact soliton/antisoliton two-state S-matrix datum, separates
+  the matrix part from the minimal scalar factor, proves matrix unitarity, and
+  derives the physical-strip pole locations that give the breather masses.
 - States the massive Thirring equivalence in Coleman's coupling convention.
 - Defines affine Toda action data and derives the classical mass matrix from
   the affine-root potential.

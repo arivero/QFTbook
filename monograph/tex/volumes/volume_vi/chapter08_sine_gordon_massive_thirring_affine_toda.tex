@@ -57,7 +57,8 @@ Introduce
 \[
   \xi=\frac{\beta^2}{8\pi-\beta^2}.
 \]
-The attractive regime is \(0<\xi<1\).  In this regime the soliton-antisoliton
+Equivalently \(\lambda=\xi^{-1}=8\pi/\beta^2-1\).  The attractive regime is
+\(0<\xi<1\), or \(\lambda>1\).  In this regime the soliton-antisoliton
 S-matrix has bound-state poles corresponding to neutral breathers
 \[
   B_n,\qquad
@@ -77,6 +78,143 @@ two-particle channel of equal masses \(M_s\) produces a bound state of mass
   4M_s^2\cos^2\!\left(\frac{u}{2}\right).
 \]
 For the breather poles \(u=\pi(1-n\xi)\), this gives the displayed value.
+
+\section{Exact Soliton-Antisoliton Scattering Datum}
+
+The one-soliton internal space is
+\[
+  V=\C\ket{+}\oplus\C\ket{-},
+  \qquad
+  Q_{\mathrm{top}}\ket{\pm}=\pm\ket{\pm}.
+\]
+Charge conservation forces the two-particle scattering operator on
+\(V\otimes V\) to have the block form
+\begin{equation}
+  \mathsf S_{\mathrm{sol}}(\theta)
+  =
+  S_{\mathrm{min}}(\theta)
+  \begin{pmatrix}
+    1&0&0&0\\
+    0&b(\theta)&c(\theta)&0\\
+    0&c(\theta)&b(\theta)&0\\
+    0&0&0&1
+  \end{pmatrix}_{\ket{++},\ket{+-},\ket{-+},\ket{--}},
+  \label{eq:sine-gordon-soliton-matrix}
+\end{equation}
+where
+\[
+  b(\theta)
+  =
+  \frac{\sinh(\lambda\theta)}
+       {\sinh(\lambda(\ii\pi-\theta))},
+  \qquad
+  c(\theta)
+  =
+  \frac{\ii\sin(\pi\lambda)}
+       {\sinh(\lambda(\ii\pi-\theta))},
+  \qquad
+  \lambda=\xi^{-1}.
+\]
+One standard minimal scalar normalization is the boundary value, for real
+\(\theta\), of
+\begin{equation}
+  S_{\mathrm{min}}(\theta)
+  =
+  -\exp\left[
+    -\ii\int_0^\infty\frac{\dd t}{t}\,
+    \frac{\sinh\!\left((1-\xi)t/2\right)}
+         {\sinh(\xi t/2)\cosh(t/2)}
+    \sin\!\left(\frac{\theta t}{\pi}\right)
+  \right],
+  \label{eq:sine-gordon-minimal-scalar-factor}
+\end{equation}
+continued meromorphically from the physical line with the prescribed
+physical-strip pole data.  The displayed datum is an on-shell bootstrap
+datum: the construction of a local Hilbert-space QFT whose soliton sectors
+realize it is a separate existence problem, recorded at the end of the
+chapter.
+
+\begin{proposition}[Matrix unitarity and the breather pole locations]
+\label{prop:sine-gordon-soliton-matrix-unitarity}
+For real \(\lambda>0\), the matrix factor in
+\eqref{eq:sine-gordon-soliton-matrix} obeys
+\[
+  R_\lambda(\theta)R_\lambda(-\theta)=\mathbf 1
+\]
+as a meromorphic \(4\times4\) matrix.  In the attractive regime
+\(\lambda>1\), the denominators of \(b(\theta)\) and \(c(\theta)\) have
+physical-strip zeros at
+\begin{equation}
+  \theta=\ii u_n,\qquad
+  u_n=\pi(1-n\xi),
+  \qquad n\in\mathbb Z_{>0},\quad n\xi<1,
+  \label{eq:sine-gordon-breather-pole-locations}
+\end{equation}
+and these are precisely the rapidity locations that give the breather masses
+\[
+  m_n=2M_s\sin\!\left(\frac{\pi n\xi}{2}\right).
+\]
+\end{proposition}
+
+\begin{proof}
+Only the charge-zero block is nontrivial.  Set
+\[
+  X=\sinh(\lambda\theta),
+  \qquad
+  s=\sin(\pi\lambda),
+  \qquad
+  D_\pm=\sinh(\lambda(\ii\pi\mp\theta)).
+\]
+Using
+\[
+  D_+D_-
+  =
+  \sinh(\ii\pi\lambda-\lambda\theta)
+  \sinh(\ii\pi\lambda+\lambda\theta)
+  =
+  -\bigl(X^2+s^2\bigr),
+\]
+one obtains
+\[
+  b(\theta)b(-\theta)+c(\theta)c(-\theta)
+  =
+  \frac{-X^2-s^2}{D_+D_-}=1,
+\]
+and
+\[
+  b(\theta)c(-\theta)+c(\theta)b(-\theta)
+  =
+  \frac{X\,\ii s+\ii s(-X)}{D_+D_-}=0.
+\]
+The same calculation applies to the second off-diagonal entry, while the
+\(\ket{++}\) and \(\ket{--}\) channels are immediate.
+
+The denominator vanishes exactly when
+\[
+  \lambda(\ii\pi-\theta)=\ii\pi n,\qquad n\in\mathbb Z,
+\]
+so \(\theta=\ii\pi(1-n/\lambda)=\ii\pi(1-n\xi)\).  This point lies in the
+physical strip \(0<\operatorname{Im}\theta<\pi\) exactly when \(n\xi<1\).
+Substituting \(u_n=\pi(1-n\xi)\) into the equal-mass bound-state formula gives
+\[
+  m_n
+  =
+  2M_s\cos\!\left(\frac{u_n}{2}\right)
+  =
+  2M_s\sin\!\left(\frac{\pi n\xi}{2}\right),
+\]
+as claimed.
+\end{proof}
+
+\begin{remark}[Free-fermion point]
+At \(\beta^2=4\pi\), one has \(\xi=1\) and \(\lambda=1\).  Then
+\(\sin(\pi\lambda)=0\), so the reflection amplitude \(c(\theta)\) vanishes,
+while \(b(\theta)=1\).  The remaining scalar factor is
+\(S_{\mathrm{min}}(\theta)=-1\), the fermionic exchange phase of the massive
+Thirring field at \(g_{\mathrm T}=0\).  This is a useful convention check:
+the soliton and antisoliton then form the free massive Dirac particle and
+antiparticle.
+\end{remark}
 
 \section{Lightest Breather Scattering}
 
