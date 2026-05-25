@@ -766,17 +766,43 @@ where \(\operatorname{Re}F(s)\) vanishes.
 
 \section{The Second Sheet}
 
-The physical amplitude is the boundary value reached from the upper half of
-the first sheet. Across the threshold cut the square-root branch changes
-sign. Equivalently, the logarithm in \(F(s)\) has the discontinuity
+The sheet terminology applies to connected stable-channel scattering
+kernels.  After the identity term and the overall momentum-conservation delta
+function have been removed, let
+\[
+  \mathcal M_{ab}^{\rm I}(s)
+\]
+denote a connected invariant amplitude or partial-wave coordinate between
+stable channels \(a\) and \(b\) on the first sheet.  Its physical value on the
+real two-particle interval is the upper-edge boundary value
+\(\mathcal M_{ab}^{\rm I}(s+\ii0)\).  A resonance is not a pole of this
+physical boundary value and is not an additional normalizable asymptotic state.
+It is a pole of an analytically continued connected \(S\)-matrix element.
+
+For the scalar model above the first-sheet exchange amplitude is
+\(\mathcal M_s^{\rm I}(s)=g^2/F_{\rm I}(s)\), with \(F_{\rm I}\) given by the
+Feynman boundary prescription in the preceding section.  The second sheet
+relative to the \(\phi_1\phi_1\) channel is the adjacent analytic germ obtained
+by continuing \(F_{\rm I}\), or equivalently \(\mathcal M_s^{\rm I}\), through
+the threshold cut.  Across this cut the square-root branch changes sign.
+Equivalently, the logarithm in \(F_{\rm I}(s)\) has the discontinuity
 \[
   \log(-|a|-\ii0)-\log(-|a|+\ii0)=-2\pi\ii .
 \]
 The first sheet contains the physical branch cut beginning at \(4m_1^2\).
 The resonance pole is reached by continuing through this cut to the adjacent
-sheet.
+sheet; the notation \(F_{\rm II}\) below denotes precisely this continued
+denominator.  Near \(s=M_R^2\), the branch inherited by \(F_{\rm II}\) has
+\[
+  F_{\rm II}(s)
+  =
+  M_R^2-s-\ii W(s)+O(g^4,g^2(s-M_R^2)),
+\]
+where \(W(s)=g^2\rho_1(s)/(32\pi)\).  This is the local analytic reason a pole
+can occur below the real axis on the adjacent sheet while no first-sheet pole
+appears at the same point.
 
-The first-sheet denominator has a useful sign property. Continue \(F(s)\)
+The first-sheet denominator has a useful sign property. Continue \(F_{\rm I}(s)\)
 from the real interval \(s<4m_1^2\) into the upper half-plane. For
 \(\operatorname{Im}s>0\),
 \[
@@ -786,8 +812,8 @@ from the real interval \(s<4m_1^2\) into the upper half-plane. For
   \qquad
   \operatorname{Im}(-s)<0,
 \]
-for \(0<x<1\). Hence \(\operatorname{Im}F(s)<0\) on the upper half of the
-first sheet, so \(F(s)\) has no zero there. The lower half-plane gives the
+for \(0<x<1\). Hence \(\operatorname{Im}F_{\rm I}(s)<0\) on the upper half of the
+first sheet, so \(F_{\rm I}(s)\) has no zero there. The lower half-plane gives the
 conjugate sign statement. Thus the resonance associated with the dressed
 \(\phi_2\) exchange is not a pole of either half of the first sheet; its pole
 appears only after passing through the cut.

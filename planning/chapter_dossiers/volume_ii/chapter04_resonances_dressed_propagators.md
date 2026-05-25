@@ -160,6 +160,15 @@
   on the first sheet.
 - The first-sheet amplitude has the threshold cut; the resonance pole is on
   the continuation through that cut.
+- 2026-05-24 second-sheet reinforcement pass: the chapter now explicitly
+  identifies the sheet statement as a statement about connected stable-channel
+  scattering kernels after the identity term and momentum delta function have
+  been removed.  The physical amplitude is
+  \(\mathcal M_{ab}^{\rm I}(s+\ii0)\) on the upper edge of the first sheet,
+  while the resonance is a pole of the adjacent germ
+  \(\mathcal M_{ab}^{\rm II}\) reached through the unitarity cut.  In the scalar
+  model this is represented locally by
+  \(F_{\rm II}(s)=M_R^2-s-iW(s)+O(g^4,g^2(s-M_R^2))\).
 - A pole-factorized resonance object is defined as the residue kernel of a
   stable-channel amplitude in a local pole neighborhood, with rank-one
   factorization recorded only after the sheet, channel variables, and
