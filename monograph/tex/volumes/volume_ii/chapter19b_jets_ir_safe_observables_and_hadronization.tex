@@ -496,6 +496,183 @@ alternative.  They depend only on the positive calorimetric measure and
 angular kernels, whereas \(N\)-subjettiness also depends on an axis-finding
 map.  Both are useful, but their mathematical inputs differ.
 
+\section{Energy Correlators as Calorimetric Coordinates}
+\label{sec:energy-correlators-calorimetric-coordinates}
+
+The cleanest way to formulate jet substructure without assigning physical
+status to partons is to regard an event as a positive energy measure on the
+celestial sphere or on a jet patch.  For a final state \(X\), write
+\[
+  \mu_X=\sum_{r\in X}E_r\,\delta_{\mathbf n_r},
+  \qquad
+  \mathbf n_r=\frac{\mathbf p_r}{|\mathbf p_r|},
+\]
+or, inside a jet of reference energy \(E_{\rm ref}\),
+\[
+  \bar\mu_X=\frac{1}{E_{\rm ref}}\mu_X .
+\]
+The total mass of \(\bar\mu_X\) is one for a fully normalized jet and is at
+most one if acceptance cuts or grooming remove energy.  A calorimetric
+observable is a function, distribution, or positive functional of this
+measure.  The energy-flow detector of
+Chapter~\ref{ch:volume-ii-19} is the operator whose spectral value on a
+hadronic out-state is precisely \(\mu_X\).
+
+\begin{definition}[Smeared energy-correlator functional]
+\label{def:smeared-energy-correlator-functional}
+Let \(K\in C((S^2)^k)\).  The \(K\)-smeared \(k\)-point energy-correlator
+functional of a finite positive Borel measure \(\mu\) on \(S^2\) is
+\begin{equation}
+  \mathcal C_K^{(k)}(\mu)
+  =
+  \int_{(S^2)^k}
+  K(\mathbf n_1,\ldots,\mathbf n_k)\,
+  \dd\mu(\mathbf n_1)\cdots\dd\mu(\mathbf n_k).
+  \label{eq:smeared-energy-correlator-functional}
+\end{equation}
+If \(K\) is supported away from coincidence diagonals, this is a
+separated-angle detector product.  If \(K\) meets a diagonal, the functional
+includes the contact part in which two detector insertions act on the same
+hadron.  Both are part of the detector observable; removing a contact term is
+a different distributional convention.
+\end{definition}
+
+The usual EEC is obtained by choosing a sequence of kernels
+\[
+  K_\Delta(\mathbf n_1,\mathbf n_2;\chi)
+  \longrightarrow
+  \delta(\cos\chi-\mathbf n_1\cdot\mathbf n_2)
+\]
+as angular distributions.  Energy-correlation functions used for
+substructure, such as \eqref{eq:qcd-energy-correlation-function-jet}, are
+special cases with kernels built from powers of pairwise angular distances
+and with diagonal terms omitted or killed by positive powers of the
+distance.
+
+\begin{lemma}[Continuity of smeared energy correlators]
+\label{lem:smeared-energy-correlator-continuity}
+Let \(K\) be Lipschitz on \((S^2)^k\), and restrict to measures with total
+mass at most \(E\).  Then \(\mathcal C_K^{(k)}\) is continuous in the
+weak topology of finite measures.  Moreover, if a final state is changed by
+adding a soft particle of energy \(\varepsilon\), then
+\[
+  |\Delta\mathcal C_K^{(k)}|
+  \le
+  k\,\|K\|_\infty\,E^{k-1}\varepsilon
+  +O(\varepsilon^2).
+  \label{eq:energy-correlator-soft-bound}
+\]
+If two particles with total energy \(E_{ab}\) and angular separation
+\(\theta_{ab}\) are replaced by their energy-weighted parent direction, then
+\[
+  |\Delta\mathcal C_K^{(k)}|
+  \le
+  k\,\operatorname{Lip}(K)\,E^{k-1}E_{ab}\,O(\theta_{ab})
+  \label{eq:energy-correlator-collinear-bound}
+\]
+on compact regions where the parent direction is defined.
+\end{lemma}
+
+\begin{proof}
+Weak continuity follows because \(K\) is continuous on the compact space
+\((S^2)^k\), and product measures \(\mu_j^{\otimes k}\) converge weakly to
+\(\mu^{\otimes k}\) when \(\mu_j\to\mu\) weakly with uniformly bounded total
+mass.  This can be checked first on factorized kernels
+\(K=f_1\otimes\cdots\otimes f_k\), where the statement is the product of
+\(\int f_i\,\dd\mu_j\to\int f_i\,\dd\mu\), and then extended to all
+continuous \(K\) by the Stone--Weierstrass theorem on \((S^2)^k\).
+
+For a soft addition, write
+\(\mu'=\mu+\varepsilon\delta_{\mathbf m}\).  Expanding
+\((\mu+\varepsilon\delta_{\mathbf m})^{\otimes k}-\mu^{\otimes k}\), the
+terms linear in \(\varepsilon\) insert the new point in one of \(k\) slots
+and integrate the other \(k-1\) slots against \(\mu\).  Their absolute value
+is bounded by \(k\|K\|_\infty E^{k-1}\varepsilon\); the remaining terms have
+at least two factors of \(\varepsilon\).
+
+For a collinear recombination, the signed measure difference is
+\[
+  \delta\mu
+  =
+  E_a\delta_{\mathbf n_a}
+  +E_b\delta_{\mathbf n_b}
+  -E_{ab}\delta_{\mathbf n_{ab}},
+  \qquad E_{ab}=E_a+E_b .
+\]
+It has total mass zero.  In each tensor slot, pairing \(\delta\mu\) with the
+Lipschitz function obtained by fixing the other \(k-1\) angles gives a bound
+by \(\operatorname{Lip}(K)E_{ab}O(\theta_{ab})\).  Summing over the \(k\)
+possible slots and bounding the other integrations by \(E^{k-1}\) gives
+\eqref{eq:energy-correlator-collinear-bound}.  In terms with two or more
+insertions of \(\delta\mu\), choose one insertion and use its zero total mass
+against the Lipschitz dependence on that slot; the remaining
+\(\delta\mu\)-insertions are bounded by their total variation, at most
+\(2E_{ab}\).  Thus every such term still carries the same
+\(O(\theta_{ab})\) factor, with a constant depending on \(k\), \(E\),
+\(E_{ab}\), and \(\|K\|_\infty+\operatorname{Lip}(K)\).  This proves the
+displayed IRC-continuity estimates.
+\end{proof}
+
+\begin{theorem}[Energy-correlator polynomials separate calorimetric observables]
+\label{thm:energy-correlator-polynomial-density}
+Let
+\[
+  \mathcal M_E(S^2)=\{\mu\ge0:\mu(S^2)\le E\}
+\]
+be the compact space of finite positive Borel measures on \(S^2\), equipped
+with the weak topology.  Let \(\mathcal A_E\) be the real algebra generated
+by the linear energy moments
+\[
+  \mu\longmapsto \int_{S^2}f(\mathbf n)\,\dd\mu(\mathbf n),
+  \qquad f\in C(S^2).
+\]
+Equivalently, \(\mathcal A_E\) is the algebra of finite linear combinations
+of smeared energy correlators
+\(\mathcal C_K^{(k)}\) with factorized kernels
+\(K=f_1\otimes\cdots\otimes f_k\).  Then \(\mathcal A_E\) is uniformly dense
+in \(C(\mathcal M_E(S^2))\).
+\end{theorem}
+
+\begin{proof}
+The space \(\mathcal M_E(S^2)\) is compact in the weak topology because
+\(S^2\) is compact and the total mass is uniformly bounded.  The algebra
+\(\mathcal A_E\) contains constants.  It separates points: if
+\(\mu\ne\nu\), the Riesz representation theorem gives a continuous function
+\(f\in C(S^2)\) such that
+\[
+  \int f\,\dd\mu\ne\int f\,\dd\nu .
+\]
+Thus the linear moment \(M_f(\mu)=\int f\,\dd\mu\) distinguishes \(\mu\) and
+\(\nu\).  Since \(\mathcal A_E\) is a real subalgebra of
+\(C(\mathcal M_E(S^2))\), contains constants, and separates points, the real
+Stone--Weierstrass theorem gives uniform density.
+
+A monomial
+\[
+  M_{f_1}(\mu)\cdots M_{f_k}(\mu)
+  =
+  \int_{(S^2)^k}
+  f_1(\mathbf n_1)\cdots f_k(\mathbf n_k)\,
+  \dd\mu(\mathbf n_1)\cdots\dd\mu(\mathbf n_k)
+\]
+is exactly \(\mathcal C_K^{(k)}(\mu)\) for the factorized kernel
+\(K=f_1\otimes\cdots\otimes f_k\).  Hence the approximating algebra is an
+energy-correlator algebra.
+\end{proof}
+
+The theorem is a finite-resolution statement.  It applies to continuous
+functions of the calorimetric measure on the compact energy ball
+\(\mathcal M_E(S^2)\).  Sharp step-function cuts, exact jet-counting
+boundaries, and distributional angular kernels are obtained as limits of
+continuous observables, and their boundary terms must be analyzed separately.
+Graph-indexed energy-flow polynomials used in jet physics choose a concrete
+family of angular kernels built from pairwise distances.  Treating that
+smaller family as a practical basis requires an additional approximation
+statement for angular kernels on the detector resolution and symmetry class
+being used.  The object-level reason for their robustness is the theorem
+above: energy correlators are coordinates on the positive energy measure
+itself, not on a partonic history.
+
 \section{Shape Functions and Track Functions}
 
 When a measured event shape is of order \(\Lambda_{\rm QCD}/Q\), the soft
@@ -659,8 +836,12 @@ small radii introduce large logarithms.
 
 \item[Energy correlators.]
 The required input is the stress-tensor energy-flow operators on the physical
-Hilbert space, with partonic perturbation theory used only after the detector
-observable is defined.
+Hilbert space, together with angular test kernels defining continuous
+functionals of the calorimetric measure.  The density theorem
+\ref{thm:energy-correlator-polynomial-density} explains why smeared
+energy-correlator polynomials form a natural coordinate system for
+finite-resolution calorimetric observables.  Partonic perturbation theory is
+used only after the detector observable has been defined.
 
 \item[Identified hadron spectra.]
 The required input is fragmentation functions or fracture functions, their
