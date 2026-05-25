@@ -20,9 +20,10 @@
   `monograph/tex/build/source_visual_trace/`.
 - `SRC-BEN-COMPARISON`: `references/253b transcribed lecture notes.tex`,
   corresponding Wilsonian/Polchinski section, used only as a comparison layer.
-- `SRC-EXTERNAL`: Polchinski's 1984 effective-Lagrangian paper and Rosten's
-  exact-RG review, used only to guard terminology and theorem boundaries.  The
-  chapter follows the local logical order and conventions.
+- `SRC-EXTERNAL`: Polchinski's 1984 effective-Lagrangian paper, Wetterich's
+  effective-average-action paper, Morris' continuous-RG treatment, and
+  Rosten's exact-RG review, used only to guard terminology and theorem
+  boundaries.  The chapter follows the local logical order and conventions.
 - `SRC-EXTERNAL-BOUNDS`: Polchinski's smooth-cutoff perturbative
   renormalizability argument, Salmhofer's rigorous RG framework, and
   Brydges--Kennedy tree/Mayer expansion technology, together with
@@ -62,6 +63,60 @@ The chapter must define and derive:
   coordinate: it may be fixed separately, and the displayed Polchinski
   equation is the interaction flow modulo that constant because functional
   derivatives annihilate it;
+- the effective average action as a separate finite-regulator construction:
+  a full regulated Euclidean action \(S_N\), an infrared quadratic regulator
+  \(R_{\kappa,N}\), the source coordinate
+  \(\mathcal J=-J\), the connected functional \(W_{\kappa,N}[\mathcal J]\),
+  the average field
+  \(\varphi=\delta W_{\kappa,N}/\delta\mathcal J\), and the modified Legendre
+  transform
+  \(\Gamma_{\kappa,N}=\langle\mathcal J,\varphi\rangle
+    -W_{\kappa,N}[\mathcal J]-\Delta S_{\kappa,N}[\varphi]\);
+- the distinction between the Wilsonian ultraviolet cutoff \(\Lambda\) and
+  the effective-average-action infrared scale \(\kappa\);
+- the Legendre Hessian identity
+  \(\Gamma_{\kappa,N}^{(2)}+R_{\kappa,N}
+    =(W_{\kappa,N}^{(2)})^{-1}\), including the derivative cancellation in the
+  modified Legendre transform;
+- the finite-regulator Wetterich equation
+  \[
+    \partial_t\Gamma_{\kappa,N}[\varphi]
+    =
+    \frac12\operatorname{Tr}_{E_N}
+    [(\Gamma_{\kappa,N}^{(2)}+R_{\kappa,N})^{-1}
+      \partial_tR_{\kappa,N}],
+    \qquad t=\log\kappa,
+  \]
+  with proof from differentiating \(W_{\kappa,N}\), decomposing the full
+  second moment into mean and connected parts, and using the Hessian identity;
+- the continuum status of the Wetterich equation: after the finite regulator
+  is suppressed, the trace formula requires a specified topology and uniform
+  convergence of the regulated traces, not just the formal observation that
+  \(\partial_tR_\kappa\) is shell-supported;
+- the constant-field/local-potential projection
+  \[
+    \partial_tU_\kappa(v)
+    =
+    \frac12\int_p
+      \frac{\partial_tR_\kappa(p)}
+      {Z_\kappa p^2+R_\kappa(p)+U_\kappa''(v)}
+  \]
+  and the status of this equation as a projection of the exact flow rather
+  than a theorem for the full effective average action;
+- the illustrative optimized-regulator result
+  \( \partial_t U_\kappa(v)=
+    v_D\kappa^D/[1+U_\kappa''(v)/(Z_\kappa\kappa^2)]\)
+  with
+  \(v_D=[D2^{D-1}\pi^{D/2}\Gamma(D/2)]^{-1}\), accompanied by the warning that
+  a nonsmooth step-function regulator must be justified as a smooth limit or
+  in an appropriate function space;
+- the comparison between Wilson-Polchinski and Wetterich flows: they are exact
+  identities for different cutoff-dependent objects, and a Legendre-type
+  relation requires compatible cutoff kernels, invertibility, and a specified
+  continuum or perturbative limit;
+- the gauge-theory caveat for effective-average-action flows: an infrared
+  regulator must be part of a background-field or BV/BRST construction with
+  the corresponding modified Ward or Slavnov--Taylor identity;
 - the analytic status of the Wilson-Polchinski equation in three nested
   settings:
   finite-regulator \(C^2\) functions on a finite-dimensional mode space, the
@@ -215,6 +270,22 @@ The chapter must define and derive:
     coefficientwise in the Fr\'echet topology of smooth vertex kernels; in a
     theorem-level RG argument it is a Banach-space vector-field equation in a
     specified weighted norm.
+5b. The effective average action is a modified Legendre transform of an
+    infrared-regulated connected functional, not another name for the
+    Wilsonian action.  Its finite-regulator Hessian satisfies
+    \(\Gamma_\kappa^{(2)}+R_\kappa=(W_\kappa^{(2)})^{-1}\).
+5c. The Wetterich equation follows exactly at finite regulator by
+    differentiating the modified Legendre transform at fixed average field,
+    decomposing the source-dependent second moment into connected and mean
+    parts, and applying the Hessian identity.  Its continuum use requires
+    separate trace-convergence and regulator-removal estimates.
+5d. The local-potential flow is a projection of the exact Wetterich equation:
+    it becomes a closed scalar equation only after the derivative-expansion
+    ansatz is imposed, and omitted operators are then an approximation error
+    to be estimated rather than absent from the exact theory.
+5e. Wilson-Polchinski and Wetterich flows are related only after compatible
+    cutoff kernels and a Legendre matching map have been chosen; arbitrary
+    truncations of the two equations need not be equivalent.
 6. Locality of the Wilsonian action is a derivative expansion assumption tied
    to smooth cutoffs and scales below the cutoff, not a finite-operator
    ansatz.
@@ -301,6 +372,10 @@ The chapter must define and derive:
 - Propagator split into low field and shell field.
 - Shell integration as a graphical replacement of old propagators.
 - Wilson-Polchinski equation with its two diagrammatic terms.
+- Wilsonian-versus-effective-average-action diagram showing that shell
+  integration leaves a remaining-field action \(L_\Lambda\), whereas the
+  effective average action integrates all modes with an IR regulator and then
+  performs a modified Legendre transform.
 - Quartic-sextic toy flow, including IR attraction of \(\lambda_6\) to the
   slaved curve and the sign-convention dependence of the vertical coordinate.
 - Continuum-limit flow diagram with UV cutoff \(\Lambda_0\), physical scale
@@ -406,3 +481,11 @@ The chapter must define and derive:
 - 2026-05-24 issue #359 pass: made the shell/Fourier notation unambiguous:
   the shell field is \(\phi_{\mathrm{sh}}\), while hats are reserved for
   covariance differences such as \(\widehat C_{\Lambda,\Lambda'}\).
+- 2026-05-25 issue #459 pass: added the effective-average-action construction
+  and finite-regulator Wetterich theorem.  The manuscript now defines
+  \(R_{\kappa,N}\), \(W_{\kappa,N}\), \(\varphi\), and
+  \(\Gamma_{\kappa,N}\), proves the Legendre Hessian identity, derives the
+  Wetterich equation at finite regulator, states the continuum trace status,
+  gives the constant-field local-potential projection, and separates this
+  infrared-regulated 1PI flow from the Wilson-Polchinski Wilsonian action
+  flow.

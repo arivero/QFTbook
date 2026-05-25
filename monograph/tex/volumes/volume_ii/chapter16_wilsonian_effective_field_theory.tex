@@ -628,6 +628,396 @@ displayed equation is therefore the Wilsonian interaction flow modulo this
 field-independent normalization, whose value may be fixed separately without
 changing any non-vacuum vertex or connected normalized correlator.
 
+\section{Effective Average Action and the Wetterich Equation}
+\label{sec:effective-average-action-wetterich}
+
+The Wilsonian interaction \(L_\Lambda\) is obtained by integrating a momentum
+shell and leaving an action for the remaining field variable.  There is a
+second exact cutoff construction, logically different but derived from the
+same regulated integral, in which all modes are integrated at once while an
+infrared quadratic term suppresses low-momentum fluctuations.  The resulting
+object is a cutoff-dependent 1PI functional.  This section uses the name
+\emph{effective average action} for that modified Legendre transform.
+
+Because the earlier source convention in
+\eqref{eq:wilsonian-z-lambda} used \(-\langle J,\phi\rangle\), introduce in
+this section the source coordinate
+\[
+  \mathcal J:=-J,
+  \qquad
+  \langle \mathcal J,\phi\rangle
+  :=
+  \int\dd^Dx\,\mathcal J(x)\phi(x)
+  =
+  \int_p \widetilde{\mathcal J}(-p)\widetilde\phi(p),
+\]
+where \(\int_p\) has the same Fourier normalization as \(\int_k\).  This is a
+change of source coordinate only; no physics is attached to the sign.
+
+\begin{definition}[Infrared regulator and effective average action]
+\label{def:effective-average-action}
+Work first at finite volume and with a finite ultraviolet mode cutoff, so the
+real field space is a finite-dimensional vector space \(E_N\).  Let
+\(S_N[\phi]\) be the full regulated Euclidean action on \(E_N\), including the
+quadratic part and all interaction terms allowed by the chosen regulator, and
+let \(D_N\phi\) denote the chosen finite-dimensional reference density.  An
+infrared regulator at scale \(\kappa>0\) is a \(C^1\) family of symmetric
+nonnegative bilinear forms \(R_{\kappa,N}:E_N\to E_N^*\).  In a
+translation-invariant scalar regulator one writes
+\begin{equation}
+  \Delta S_{\kappa,N}[\phi]
+  =
+  \frac12\int_p
+  \widetilde\phi(-p) R_\kappa(p)\widetilde\phi(p),
+  \qquad
+  R_\kappa(p)=Z_\kappa\kappa^2 r(p^2/\kappa^2),
+  \label{eq:eaa-ir-regulator}
+\end{equation}
+with \(r(s)>0\) for \(s\) near \(0\) and \(r(s)\to0\) rapidly as
+\(s\to\infty\).  The displayed profile is a standard scalar model of the
+definition; the finite-regulator derivation below only needs a symmetric
+\(C^1\) nonnegative family \(R_{\kappa,N}\).
+
+Define
+\begin{align}
+  Z_{\kappa,N}[\mathcal J]
+  &:=
+  \int_{E_N}D_N\phi\,
+  \exp\{-S_N[\phi]-\Delta S_{\kappa,N}[\phi]
+       +\langle \mathcal J,\phi\rangle\},
+  \notag\\
+  W_{\kappa,N}[\mathcal J]&:=\log Z_{\kappa,N}[\mathcal J],
+  \qquad
+  \varphi_{\mathcal J}
+  :=
+  \frac{\delta W_{\kappa,N}}{\delta\mathcal J}.
+  \label{eq:eaa-z-w-average-field}
+\end{align}
+On a source neighborhood where
+\(\mathcal J\mapsto\varphi_{\mathcal J}\) is locally invertible, let
+\(\mathcal J_{\kappa,N}[\varphi]\) denote the inverse map.  The effective
+average action is the modified Legendre transform
+\begin{equation}
+  \Gamma_{\kappa,N}[\varphi]
+  =
+  \langle \mathcal J_{\kappa,N}[\varphi],\varphi\rangle
+  -W_{\kappa,N}[\mathcal J_{\kappa,N}[\varphi]]
+  -\Delta S_{\kappa,N}[\varphi].
+  \label{eq:effective-average-action-definition}
+\end{equation}
+Equivalently, \(\Gamma_{\kappa,N}+\Delta S_{\kappa,N}\) is the ordinary
+Legendre transform of \(W_{\kappa,N}\).  If the integral is defined by a
+positive measure, \(W_{\kappa,N}\) is convex in \(\mathcal J\), and
+\(\Gamma_{\kappa,N}+\Delta S_{\kappa,N}\) is convex in \(\varphi\).  The
+subtracted functional \(\Gamma_{\kappa,N}\) need not itself be convex at
+positive \(\kappa\).
+\end{definition}
+
+The cutoff \(\kappa\) in this section is an infrared scale.  It should not be
+identified with the Wilsonian ultraviolet cutoff \(\Lambda\) unless a
+separate matching map has been specified.  At large \(\kappa\), the extra
+quadratic term suppresses fluctuations with \(p^2\lesssim \kappa^2\).  At
+\(\kappa=0\), if \(R_\kappa\to0\) and the limit exists, the modified Legendre
+transform becomes the ordinary 1PI effective action of the regulated theory.
+
+\begin{lemma}[Legendre Hessian identity]
+\label{lem:eaa-hessian-identity}
+In the finite-regulator setting of
+Definition~\ref{def:effective-average-action}, assume that the source-field
+map is locally invertible at \(\mathcal J\).  Then
+\begin{equation}
+  \frac{\delta\Gamma_{\kappa,N}}{\delta\varphi}
+  =
+  \mathcal J_{\kappa,N}[\varphi]-R_{\kappa,N}\varphi,
+  \qquad
+  \Gamma_{\kappa,N}^{(2)}[\varphi]+R_{\kappa,N}
+  =
+  \bigl(W_{\kappa,N}^{(2)}[\mathcal J]\bigr)^{-1},
+  \label{eq:eaa-hessian-identity}
+\end{equation}
+where \(W_{\kappa,N}^{(2)}\) is the connected two-point covariance in the
+presence of the source and the inverse is the inverse linear map
+\(E_N^*\to E_N\) on the chosen source neighborhood.
+\end{lemma}
+
+\begin{proof}
+Differentiate
+\[
+  \Gamma_{\kappa,N}[\varphi]+\Delta S_{\kappa,N}[\varphi]
+  =
+  \langle \mathcal J,\varphi\rangle-W_{\kappa,N}[\mathcal J],
+  \qquad
+  \varphi=\frac{\delta W_{\kappa,N}}{\delta\mathcal J}.
+\]
+The terms containing \(\delta\mathcal J\) cancel because
+\(\delta W_{\kappa,N}=\langle\varphi,\delta\mathcal J\rangle\).  Hence
+\(\delta(\Gamma_{\kappa,N}+\Delta S_{\kappa,N})/\delta\varphi=\mathcal J\),
+which gives the first identity after subtracting
+\(\delta\Delta S_{\kappa,N}/\delta\varphi=R_{\kappa,N}\varphi\).  A second
+variation gives
+\[
+  \Gamma_{\kappa,N}^{(2)}+R_{\kappa,N}
+  =
+  \frac{\delta\mathcal J}{\delta\varphi}.
+\]
+On the other hand
+\(\delta\varphi/\delta\mathcal J=W_{\kappa,N}^{(2)}\).  Local invertibility
+of the source-field map says precisely that these two derivatives are inverse
+finite-dimensional matrices.
+\end{proof}
+
+\begin{theorem}[Finite-regulator Wetterich equation]
+\label{thm:finite-regulator-wetterich-equation}
+Let \(t=\log\kappa\).  Suppose that \(R_{\kappa,N}\) is \(C^1\) in \(t\), the
+regulated integral in \eqref{eq:eaa-z-w-average-field} is differentiable in
+\(t\), and the source-field map is locally invertible along the curve under
+consideration.  Then, at fixed average field \(\varphi\),
+\begin{equation}
+  \partial_t\Gamma_{\kappa,N}[\varphi]
+  =
+  \frac12\,\operatorname{Tr}_{E_N}
+  \left[
+    \bigl(\Gamma_{\kappa,N}^{(2)}[\varphi]+R_{\kappa,N}\bigr)^{-1}
+    \partial_t R_{\kappa,N}
+  \right].
+  \label{eq:wetterich-equation-finite-regulator}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Differentiate the modified Legendre transform
+\eqref{eq:effective-average-action-definition} with respect to \(t\) while
+holding \(\varphi\) fixed.  As in the preceding lemma, the terms containing
+\(\partial_t\mathcal J_{\kappa,N}[\varphi]\) cancel.  Thus
+\begin{equation}
+  \partial_t\Gamma_{\kappa,N}[\varphi]
+  =
+  -\partial_t W_{\kappa,N}[\mathcal J]\big|_{\mathcal J}
+  -\partial_t\Delta S_{\kappa,N}[\varphi].
+  \label{eq:eaa-flow-legendre-cancellation}
+\end{equation}
+The only explicit \(t\)-dependence in
+\(Z_{\kappa,N}[\mathcal J]\) is the regulator, so
+\[
+  \partial_t W_{\kappa,N}[\mathcal J]\big|_{\mathcal J}
+  =
+  -\frac12
+  \left\langle
+    \phi\,(\partial_t R_{\kappa,N})\,\phi
+  \right\rangle_{\mathcal J,\kappa}^{\rm full}.
+\]
+Here the bracket denotes the full source-dependent expectation in the
+regulated integral.  Decomposing the full second moment into its connected and
+mean parts gives
+\[
+  \left\langle
+    \phi\,(\partial_t R_{\kappa,N})\,\phi
+  \right\rangle_{\mathcal J,\kappa}^{\rm full}
+  =
+  \langle\varphi,(\partial_tR_{\kappa,N})\varphi\rangle
+  +
+  \operatorname{Tr}_{E_N}\!
+  \left[
+    W_{\kappa,N}^{(2)}[\mathcal J]\,\partial_tR_{\kappa,N}
+  \right].
+\]
+Since
+\[
+  \partial_t\Delta S_{\kappa,N}[\varphi]
+  =
+  \frac12
+  \langle\varphi,(\partial_tR_{\kappa,N})\varphi\rangle,
+\]
+the mean-field terms cancel in
+\eqref{eq:eaa-flow-legendre-cancellation}.  The result is
+\[
+  \partial_t\Gamma_{\kappa,N}[\varphi]
+  =
+  \frac12\operatorname{Tr}_{E_N}
+  \left[
+    W_{\kappa,N}^{(2)}[\mathcal J]\,\partial_tR_{\kappa,N}
+  \right].
+\]
+Substituting the Hessian identity
+\eqref{eq:eaa-hessian-identity} proves
+\eqref{eq:wetterich-equation-finite-regulator}.
+\end{proof}
+
+After suppressing the finite regulator from the notation, the formal
+continuum version is
+\begin{equation}
+  \partial_t\Gamma_{\kappa}[\varphi]
+  =
+  \frac12\,\operatorname{Tr}
+  \left[
+    \bigl(\Gamma_{\kappa}^{(2)}[\varphi]+R_{\kappa}\bigr)^{-1}
+    \partial_t R_{\kappa}
+  \right],
+  \qquad t=\log\kappa .
+  \label{eq:wetterich-equation}
+\end{equation}
+The trace in \eqref{eq:wetterich-equation} means the trace over spacetime,
+internal indices, and statistics, with a minus sign for fermionic variables
+when the derivation is repeated in the superalgebraic setting.  For the scalar
+translation-invariant regulator \eqref{eq:eaa-ir-regulator}, the factor
+\(\partial_t R_\kappa(p)\) is concentrated at momenta \(p^2\simeq\kappa^2\)
+for a smooth profile.  This makes the right-hand side formally both infrared
+and ultraviolet regulated.  A theorem-level continuum use still requires
+more than this formal observation: one must specify the regulator-removal
+topology, prove convergence of \(W_{\kappa,N}\) or \(\Gamma_{\kappa,N}\), and
+prove that the finite-regulator traces converge uniformly on the field
+neighborhood being used.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{0.98\textwidth}{!}{%
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \tikzset{
+      box/.style={draw,rounded corners=3pt,line width=0.8pt,
+        align=center,text width=2.45cm,minimum height=0.78cm},
+      widebox/.style={draw,rounded corners=3pt,line width=0.8pt,
+        align=center,text width=3.25cm,minimum height=0.88cm},
+      arr/.style={-{Latex[length=2mm]},line width=0.85pt}
+    }
+
+    \node[font=\small] at (2.8,3.15) {Wilsonian cutoff action};
+    \node[box] (suv) at (0,2.25) {\(S_{\Lambda_0}\)};
+    \node[widebox] (shells) at (2.95,2.25)
+      {integrate shells\\\(\Lambda_0\downarrow\Lambda\)};
+    \node[widebox] (lw) at (6.15,2.25)
+      {remaining-field action\\\(L_\Lambda[\phi_<]\)};
+    \node[widebox] (wlow) at (9.35,2.25)
+      {low-source\\connected functional};
+    \draw[arr] (suv)--(shells);
+    \draw[arr] (shells)--(lw);
+    \draw[arr] (lw)--(wlow);
+
+    \node[font=\small] at (2.8,0.80) {effective average action};
+    \node[box] (sn) at (0,-0.10) {\(S_N+\Delta S_\kappa\)};
+    \node[widebox] (allmodes) at (2.95,-0.10)
+      {integrate all modes\\with IR suppression};
+    \node[widebox] (wk) at (6.15,-0.10)
+      {\(W_{\kappa,N}[\mathcal J]\)};
+    \node[widebox] (gk) at (9.35,-0.10)
+      {modified Legendre\\\(\Gamma_{\kappa,N}[\varphi]\)};
+    \draw[arr] (sn)--(allmodes);
+    \draw[arr] (allmodes)--(wk);
+    \draw[arr] (wk)--(gk);
+
+    \draw[arr,dashed,blue!70!black] (lw.south)
+      .. controls (5.9,1.25) and (6.2,0.95) .. (wk.north);
+    \node[blue!70!black,align=center,fill=white,inner sep=2pt] at (6.35,1.08)
+      {comparison needs\\compatible cutoffs};
+  \end{tikzpicture}
+  }
+  \caption{The Wilsonian action and the effective average action are distinct
+  cutoff-dependent objects.  The Wilsonian construction integrates shells and
+  leaves an action for remaining fields.  The effective average action
+  integrates all modes with an infrared regulator and then performs a
+  modified Legendre transform.  A relation between the two descriptions
+  requires a compatible choice of cutoff kernels and a matching map.}
+  \label{fig:wilsonian-vs-effective-average-action}
+\end{figure}
+
+\begin{example}[Constant-field projection and the local potential flow]
+\label{ex:eaa-local-potential-flow}
+Assume a single scalar field and project the effective average action to the
+derivative expansion
+\begin{equation}
+  \Gamma_\kappa[\varphi]
+  =
+  \int\dd^Dx\,
+  \left\{
+    \frac12 Z_\kappa\,\partial_\mu\varphi\,\partial_\mu\varphi
+    +U_\kappa(\varphi)
+  \right\}
+  +\text{terms with more derivatives or more fields}.
+  \label{eq:eaa-derivative-expansion-ansatz}
+\end{equation}
+For a constant field \(\varphi(x)=v\), the Hessian in momentum space is
+\[
+  \Gamma_\kappa^{(2)}(p,q;v)
+  =
+  (2\pi)^D\delta^{(D)}(p+q)
+  \bigl(Z_\kappa p^2+U_\kappa''(v)\bigr)
+\]
+inside this projection.  Dividing \eqref{eq:wetterich-equation} by the
+spacetime volume gives
+\begin{equation}
+  \partial_t U_\kappa(v)
+  =
+  \frac12\int_p
+  \frac{\partial_t R_\kappa(p)}
+       {Z_\kappa p^2+R_\kappa(p)+U_\kappa''(v)}
+  \label{eq:eaa-local-potential-flow}
+\end{equation}
+before any expansion in powers of \(U_\kappa''\).  This is an exact identity
+only after projection to the ansatz
+\eqref{eq:eaa-derivative-expansion-ansatz}; the omitted derivative and field
+operators feed back into the exact flow through
+\(\Gamma_\kappa^{(2)}[\varphi]\).
+
+For the illustrative limiting profile
+\[
+  R_\kappa(p)=Z_\kappa(\kappa^2-p^2)\theta(\kappa^2-p^2)
+\]
+and with \(\eta_\kappa:=-\partial_t\log Z_\kappa\) set to zero, one obtains
+\begin{equation}
+  \partial_t U_\kappa(v)
+  =
+  \frac{v_D\,\kappa^D}
+       {1+U_\kappa''(v)/(Z_\kappa\kappa^2)},
+  \qquad
+  v_D:=
+  \frac{1}{D\,2^{D-1}\pi^{D/2}\Gamma(D/2)} .
+  \label{eq:eaa-litim-local-potential-flow}
+\end{equation}
+The step-function regulator is not smooth.  In a proof-oriented treatment it
+should be replaced by a smooth family approaching it, or else treated in a
+function space where the distributional boundary term is controlled.  Formula
+\eqref{eq:eaa-litim-local-potential-flow} is therefore best read as an
+efficient projection formula, not as a substitute for the smooth-regulator
+finite-dimensional derivation.
+\end{example}
+
+\begin{remark}[Relation to the Wilson-Polchinski equation]
+\label{rem:eaa-polchinski-relation}
+Both \eqref{eq:wilson-polchinski-flow} and
+\eqref{eq:wetterich-equation} are exact cutoff identities at finite regulator,
+but they differentiate different objects.  The Wilson-Polchinski equation
+acts on a Wilsonian interaction before the remaining low fields have been
+integrated.  The Wetterich equation acts on an infrared-regulated Legendre
+transform after the regulated integral has been performed.  Therefore the
+vertices \(L_\Lambda^{(n)}\) and \(\Gamma_\kappa^{(n)}\) are not the same
+coordinate functions, and equality of beta functions is meaningful only after
+a finite matching map has been chosen.
+
+For compatible cutoff kernels, the formal exact-RG literature constructs a
+Legendre-type relation between Polchinski and effective-average-action flows;
+one convenient account is in Rosten's review, following the earlier work of
+Morris and Wetterich.\footnote{C.~Wetterich, \emph{Phys. Lett. B}
+\textbf{301} (1993) 90--94; T.~R.~Morris, \emph{Int. J. Mod. Phys. A}
+\textbf{9} (1994) 2411--2450; O.~J.~Rosten, arXiv:1003.1366.}  In this
+monograph that relation is used only with its hypotheses displayed: a fixed
+finite regulator, compatible quadratic kernels, invertible Legendre map, and
+specified continuum or perturbative limit.  It is not a license to identify
+arbitrary Wilsonian truncations with arbitrary effective-average-action
+truncations.
+\end{remark}
+
+\begin{remark}[Gauge theories]
+The scalar derivation uses an ordinary positive quadratic infrared regulator.
+For gauge theories, such a regulator generally breaks the gauge symmetry of
+the gauge-fixed functional integral unless it is embedded into a background
+field construction or a BV/BRST formulation with the corresponding modified
+Ward or Slavnov--Taylor identity.  Thus a gauge-theory use of
+\eqref{eq:wetterich-equation} requires extra data: the gauge fixing, ghost and
+antifield conventions, the regulator's transformation law, and the identity
+that replaces gauge invariance along the flow.  These conditions are part of
+the definition of the regulated gauge-theory problem, not optional checks
+after a scalar-like flow has been written down.
+\end{remark}
+
 \section{Linearized Flow and Scaling Coordinates}
 
 A fixed point of the Wilsonian flow is a scale-invariant interaction
