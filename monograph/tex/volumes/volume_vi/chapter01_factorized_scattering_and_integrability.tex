@@ -1,0 +1,159 @@
+\chapter{Factorized Scattering and Integrability}
+\label{ch:integrable-factorized-scattering}
+
+\ConventionsLorentzian
+
+This volume begins with massive two-dimensional QFT because that is the place
+where integrability has a sharp scattering-theoretic meaning.  Let the theory
+have a vacuum representation on \(\mathbb M^2\), a mass gap above the vacuum,
+and isolated one-particle species labelled by \(a,b,\ldots\), with masses
+\(m_a>0\).  A one-particle momentum is parametrized by rapidity
+\[
+  p_a^\mu(\theta)
+  =
+  (m_a\cosh\theta,\ m_a\sinh\theta),
+  \qquad \theta\in\R .
+\]
+The Lorentz group acts by translating \(\theta\).  Hence a two-particle
+invariant depends on the rapidity difference \(\theta_{12}=\theta_1-\theta_2\).
+
+\section{Factorized Scattering Datum}
+
+\begin{definition}[Elastic factorized scattering datum]
+\label{def:elastic-factorized-scattering-datum}
+An elastic factorized scattering datum consists of a finite or countable set
+of massive species, a positive mass \(m_a\) for each species, and meromorphic
+functions
+\[
+  S_{ab}^{cd}(\theta),
+  \qquad a,b,c,d\in I,
+\]
+defined on a common rapidity-domain cover, satisfying the following algebraic
+and analytic conditions.
+
+First, two-particle unitarity is
+\[
+  \sum_{e,f}
+  S_{ab}^{ef}(\theta)\,
+  S_{ef}^{cd}(-\theta)
+  =
+  \delta_a^{c}\delta_b^{d}.
+\]
+Second, Hermitian analyticity is
+\[
+  S_{ab}^{cd}(\theta)^\ast
+  =
+  S_{cd}^{ab}(-\theta^\ast)
+\]
+on the boundary where both sides are defined.  Third, if
+\(\bar a\) denotes the charge-conjugate species, crossing has the form
+\[
+  S_{ab}^{cd}(\theta)
+  =
+  C_{a\bar a'}C^{c\bar c'}\,
+  S_{\bar c' b}^{\bar a' d}(\ii\pi-\theta),
+\]
+with the charge-conjugation matrix \(C\) fixed as part of the particle-state
+normalization.  Fourth, three-particle consistency is the Yang--Baxter
+equation
+\[
+  S_{12}(\theta_{12})S_{13}(\theta_{13})S_{23}(\theta_{23})
+  =
+  S_{23}(\theta_{23})S_{13}(\theta_{13})S_{12}(\theta_{12})
+\]
+as an identity on the tensor product of three one-particle internal spaces.
+\end{definition}
+
+The notation \(S_{ij}\) means that the two-particle matrix \(S\) acts on the
+\(i\)-th and \(j\)-th tensor factors and as the identity on the remaining
+factor.  The Yang--Baxter equation is the associativity condition for
+reordering three rapidities by adjacent transpositions.  It is the exact
+analogue, for ordered asymptotic particles in \(1+1\) dimensions, of the
+ordinary associativity constraint on multiple OPE expansions in the CFT
+volume.
+
+\begin{proposition}[Factorization from conserved higher-spin charges]
+\label{prop:higher-spin-factorization-kinematic}
+Assume a massive \(1+1\)-dimensional QFT has asymptotic particle states and a
+commuting conserved charge \(Q_s\) of Lorentz spin \(s>1\) whose one-particle
+eigenvalue on species \(a\) is
+\[
+  q_{s,a}(\theta)=\kappa_{s,a}\,\ee^{s\theta}.
+\]
+If scattering preserves \(Q_s\), and if the functions \(q_{s,a}\) separate
+generic multisets of incoming rapidities and species up to permutation, then
+every scattering process preserves the rapidity multiset.  In particular,
+generic scattering is elastic and has no particle production.
+\end{proposition}
+
+\begin{proof}
+For an incoming state with rapidities \(\theta_i\) and species \(a_i\), charge
+conservation gives
+\[
+  \sum_i \kappa_{s,a_i}\ee^{s\theta_i}
+  =
+  \sum_j \kappa_{s,b_j}\ee^{s\theta'_j}
+\]
+for each conserved spin \(s\) in the separating family.  The hypotheses say
+that these power-sum type invariants determine the unordered outgoing multiset
+from the incoming one on a dense open set of kinematics.  Continuity of the
+scattering matrix then extends the conclusion away from that dense set except
+at threshold or bound-state singular loci, where the statement must be read
+after resolving the corresponding channels.
+\end{proof}
+
+\section{Zamolodchikov--Faddeev Operators}
+
+The factorized datum becomes an operator algebra on asymptotic wavefunctions.
+For each species \(a\) introduce distributional creation operators
+\(Z_a^\dagger(\theta)\) obeying
+\begin{equation}
+  Z_a^\dagger(\theta_1)Z_b^\dagger(\theta_2)
+  =
+  S_{ab}^{cd}(\theta_1-\theta_2)\,
+  Z_d^\dagger(\theta_2)Z_c^\dagger(\theta_1),
+  \qquad \theta_1>\theta_2 .
+  \label{eq:zf-creation-exchange}
+\end{equation}
+Repeated species labels are summed.  Associativity of the product of three
+creation operators is equivalent to the Yang--Baxter equation in
+Definition~\ref{def:elastic-factorized-scattering-datum}; applying
+\eqref{eq:zf-creation-exchange} to reorder
+\(\theta_1>\theta_2>\theta_3\) along the two reduced words
+\((12)(13)(23)\) and \((23)(13)(12)\) gives precisely the two sides of that
+equation.
+
+\section{Local Operators and Form Factors}
+
+Let \(\mathcal O(x)\) be a local operator whose matrix elements between the
+vacuum and ordered out-states exist as distributions.  Its \(n\)-particle form
+factor is
+\[
+  F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n)
+  =
+  \bra{\vac}\mathcal O(0)
+  Z_{a_1}^\dagger(\theta_1)\cdots Z_{a_n}^\dagger(\theta_n)\ket{\vac},
+  \qquad \theta_1>\cdots>\theta_n .
+\]
+Locality with respect to the asymptotic particles gives Watson equations,
+\[
+  F^{\mathcal O}_{\ldots a_i a_{i+1}\ldots}(\ldots,\theta_i,\theta_{i+1},\ldots)
+  =
+  S_{a_i a_{i+1}}^{bc}(\theta_i-\theta_{i+1})\,
+  F^{\mathcal O}_{\ldots c b\ldots}(\ldots,\theta_{i+1},\theta_i,\ldots),
+\]
+together with crossing and residue equations at bound-state poles.  The
+operator reconstruction problem is to determine which solutions of these
+functional equations come from genuine local operators in a Hilbert-space
+QFT.  The theorem-boundary data include the local operator domain,
+positivity, convergence of form-factor expansions, and clustering.
+
+\begin{openproblem}[Completeness of form-factor reconstruction]
+\label{op:form-factor-reconstruction-completeness}
+Give intrinsic hypotheses on a factorized scattering datum and a family of
+form-factor solutions that imply the existence of a local QFT with those
+asymptotic particles, those local operators, and Wightman functions obtained
+by convergent form-factor sums.  Existing constructive approaches prove this
+for important classes of two-dimensional models; the monograph will develop
+the exact hypotheses and examples in later chapters of this volume.
+\end{openproblem}

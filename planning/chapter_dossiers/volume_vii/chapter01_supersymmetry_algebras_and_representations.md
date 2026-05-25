@@ -1,0 +1,46 @@
+# Volume VII, Chapter 1 Dossier: Supersymmetry Algebras And Representations
+
+## Logical Role
+
+- Role in the monograph: begin supersymmetric QFT from the Hilbert-space
+  algebra and positivity constraints before superspace or Lagrangians.
+- Immediate predecessor: spinor conventions and ordinary spin-statistics
+  material from Volumes I and IV.
+- Immediate successor: multiplets, superspace, and supersymmetric dynamics.
+
+## Definitions And Results
+
+- Four-dimensional mostly-plus \(\mathcal N=1\) supertranslation algebra.
+- Rest-frame oscillator construction for massive representations.
+- Positivity of the supercharge anticommutator and equality of bosonic and
+  fermionic state counts in a nonzero-energy multiplet.
+- Massless helicity multiplets.
+- Central charges and the BPS inequality for extended supersymmetry.
+- Frontier boundary between algebraic representation theory and
+  nonperturbative supersymmetric QFT realization.
+
+## Symbols
+
+| Symbol | Meaning |
+| --- | --- |
+| \(Q_\alpha\), \(\bar Q_{\dot\alpha}\) | Weyl supercharges |
+| \(P_\mu\) | translation generator |
+| \(\sigma^\mu_{\alpha\dot\beta}\) | mostly-plus Pauli matrices in the monograph convention |
+| \((-1)^F\) | fermion-parity operator |
+| \(Z^{IJ}\) | antisymmetric central-charge matrix |
+| \(M\) | invariant mass of an irreducible representation |
+
+## Claim Ledger
+
+1. Supersymmetry is represented by odd operators on a graded Hilbert space.
+2. Positivity of \(\sum_\alpha Q_\alpha Q_\alpha^\dagger\) constrains masses
+   and central charges.
+3. The equal boson/fermion count follows from a trace with \((-1)^F\), not
+   from a Lagrangian counting argument.
+4. Multiplet shortening requires the central-charge inequality to be saturated.
+
+## Figures
+
+- Massive rest-frame Clifford module diagram.
+- Massless helicity multiplet ladder.
+- BPS bound plane showing long and shortened representations.

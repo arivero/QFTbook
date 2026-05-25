@@ -1,0 +1,171 @@
+\chapter{Constructive Status and Routes to Continuum QFT}
+\label{ch:constructive-status-routes}
+
+\ConventionsEuclidean
+
+Constructive QFT asks for existence theorems for the objects used elsewhere in
+the monograph: Schwinger functions, Wightman functions, Hilbert spaces, local
+fields or local observable algebras, symmetry actions, positivity, and
+continuum limits.  A regulator is part of a construction only after a limit is
+specified and the limiting object is shown to satisfy the required axioms or
+replacement framework.
+
+\section{Three Constructive Routes}
+
+\begin{definition}[Constructive realization]
+\label{def:constructive-realization}
+A constructive realization of a QFT in a specified framework consists of:
+correlation functions or an observable net; positivity or reflection
+positivity; covariance or the declared background-functorial replacement;
+locality; a reconstruction theorem or direct Hilbert-space construction; and
+control of the limiting procedure in a topology strong enough to verify those
+properties.
+\end{definition}
+
+The main routes developed in this volume are cluster and phase-cell
+expansions, which construct measures and Schwinger functions by estimates;
+lattice constructions, which define finite systems exactly and study scaling
+limits; and stochastic quantization or singular SPDE, which construct
+invariant Euclidean measures through dynamics.
+These routes overlap in low-dimensional scalar examples.  Their comparison is
+part of the content: agreement of independent constructions requires a
+separate identification theorem in the framework where the limiting objects
+are compared.
+
+\section{Status Catalog}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{0.98}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}
+  >{\raggedright\arraybackslash}p{0.34\textwidth}
+  >{\raggedright\arraybackslash}p{0.37\textwidth}@{}}
+\hline
+Theory or regime & Constructive status & Framework boundary \\
+\hline
+Free scalar, spinor, and generalized-free fields &
+Constructed Wightman and Euclidean examples with explicit correlation
+functions and positive Hilbert-space reconstruction. &
+They calibrate the frameworks; interacting local dynamics require additional
+construction. \\
+\(P(\phi)_2\), including \(\phi^4_2\) &
+Constructed non-Gaussian Euclidean and Wightman models for bounded-below
+polynomial interactions after Wick ordering and local renormalization. &
+Cluster expansion and Euclidean measure methods verify OS/Wightman
+properties in two spacetime dimensions. \\
+\(\phi^4_3\), massive regime &
+Constructed non-Gaussian scalar models with mass, coupling, and vacuum-energy
+renormalization. &
+This is the fundamental three-dimensional scalar constructive example; the
+continuum measure is singular with respect to the Gaussian reference. \\
+Sine--Gordon in two dimensions &
+Constructed in parameter ranges where the vertex interaction is
+renormalizable and the infrared setup is controlled. &
+The bosonization relation to massive Thirring-type descriptions requires its
+own operator and Hilbert-space identifications. \\
+Yukawa\(_2\) and related scalar--fermion models &
+Constructive results exist for specific two-dimensional models after fixing
+fermionic determinants or Pfaffians, Wick ordering, and ultraviolet
+renormalization. &
+Each theorem has model-dependent hypotheses; the Lagrangian label alone does
+not define a completed construction. \\
+Gross--Neveu\(_2\), massive asymptotically free regime &
+Constructive renormalization-group constructions exist for massive
+two-dimensional fermionic models. &
+They are important tests of rigorous asymptotic freedom in a non-gauge
+setting. \\
+Two-dimensional Yang--Mills &
+Constructed by heat-kernel, holonomy, and projective-limit methods for compact
+gauge group. &
+This is a gauge-theory construction with no local propagating gluons; it does
+not settle four-dimensional Yang--Mills. \\
+Stochastic quantization of \(\phi^4_2\) and \(\phi^4_3\) &
+Constructed through Da Prato--Debussche, regularity structures,
+paracontrolled distributions, and related singular-SPDE methods, with
+renormalized invariant measures. &
+The SPDE route gives a dynamic construction of Euclidean measures and a
+precise algebraic meaning to the counterterms in the stochastic equation. \\
+Three-dimensional Ising scaling limit as a CFT &
+Open as a constructive conformal field theory with full operator algebra and
+OS/Wightman reconstruction. &
+Numerical and bootstrap data are extremely constraining, but a continuum CFT
+construction remains a separate theorem. \\
+\(\phi^4_D\), \(D\ge5\), standard positive lattice route &
+Triviality theorems force Gaussian scaling limits in the standard critical
+Ising/\(\lambda\phi^4\) family. &
+This rules out that constructive route to an interacting scalar continuum
+limit above four dimensions. \\
+\(\phi^4_4\), standard critical Ising/\(\lambda\phi^4\) route &
+Marginal triviality theorems give Gaussian scaling limits for the standard
+reflection-positive critical problem. &
+The logically different possibility of another four-dimensional UV-complete
+QFT agreeing with formal \(\phi^4_4\) perturbation theory to all orders
+remains a separate open question. \\
+Four-dimensional pure Yang--Mills &
+Finite Wilson lattices are rigorous compact-group integrals; continuum
+existence with a mass gap is the Clay Millennium problem. &
+The desired limit must construct gauge-invariant Schwinger functions or an
+equivalent local observable theory satisfying positivity, locality, and
+spectral properties. \\
+QCD and the Standard Model &
+Available nonperturbative definitions are hybrid: lattice gauge theory for
+QCD-like sectors, perturbative and effective descriptions for electroweak and
+heavy-scale observables, and experimentally fixed parameters. &
+A single complete constructive continuum theorem for the full Standard Model
+is presently an open construction. \\
+\hline
+\end{tabular}
+\caption{Constructive status of representative QFT regimes.  The entries
+separate completed constructions, triviality theorems, finite-regulator
+definitions, and open continuum-limit problems.}
+\label{tab:constructive-master-status}
+\end{table}
+
+\emph{Reference anchors for Table~\ref{tab:constructive-master-status}.}
+The scalar constructive line runs through Nelson, Glimm--Jaffe,
+Glimm--Jaffe--Spencer, Simon, Feldman--Osterwalder, Magnen--Seneor, Brydges,
+Fr\"ohlich, and Sokal.  The two-dimensional fermionic and asymptotically free
+examples include work of Feldman, Magnen, Rivasseau, and Seneor.  Rigorous
+two-dimensional Yang--Mills may be approached through Driver, Sengupta, Levy,
+and related heat-kernel/holonomy constructions.  The stochastic route uses
+Da Prato--Debussche, Hairer, Gubinelli--Imkeller--Perkowski,
+Kupiainen, Mourrat--Weber, and later singular-SPDE developments.  Scalar
+triviality above and at four dimensions is represented by Aizenman,
+Fr\"ohlich, and Aizenman--Duminil-Copin.
+
+\section{Stochastic Quantization as a Constructive Route}
+
+For Euclidean scalar \(\phi^4\), stochastic quantization starts from the
+formal Langevin equation
+\[
+  \partial_t\Phi
+  =
+  \Delta\Phi-m^2\Phi-\lambda\Phi^3+\xi,
+\]
+where \(t\) is an auxiliary stochastic time and \(\xi\) is spacetime-time
+white noise in the stochastic variables.  In \(D=2,3\), \(\Phi\) is a
+distribution, so \(\Phi^3\) is defined only after renormalization.  The
+renormalized equation has the form
+\[
+  \partial_t\Phi
+  =
+  \Delta\Phi-m^2\Phi-\lambda\Phi^3
+  +c_1(\varepsilon)\Phi+c_0(\varepsilon)+\xi_\varepsilon
+\]
+before the cutoff \(\varepsilon\downarrow0\) is removed, with the precise
+counterterms determined by the chosen model and symmetry.  Regularity
+structures, paracontrolled distributions, and rigorous RG methods provide
+the local expansion and reconstruction technology that make this limit a
+theorem in the constructed cases.
+
+\begin{openproblem}[Four-dimensional constructive gauge theory]
+\label{op:constructive-four-dimensional-gauge}
+Construct four-dimensional pure Yang--Mills, or QCD in a stated parameter
+regime, as a continuum local QFT with gauge-invariant observables, reflection
+positivity or Hilbert-space positivity, Euclidean and Lorentzian covariance,
+locality, and the spectral properties needed for particle and flux-tube
+questions.  Lattice finite-volume integrals, perturbative asymptotic freedom,
+and numerical evidence are indispensable inputs, but the continuum existence
+and mass-gap theorem remains open.
+\end{openproblem}

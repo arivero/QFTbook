@@ -1,0 +1,78 @@
+\chapter{Global Forms and Higher-Form Symmetry}
+\label{ch:global-forms-higher-form-symmetry}
+
+\ConventionsMixed
+
+The local Lie algebra of currents is one layer of the symmetry data of a QFT.
+The global form of an internal symmetry group, the allowed line and surface
+operators, and the spectrum of charged extended objects are also part of the
+quantum data.
+
+\section{Global Form of a Gauge Group}
+
+Let \(\mathfrak g\) be a compact semisimple Lie algebra with simply connected
+group \(G_{\rm sc}\) and center \(Z(G_{\rm sc})\).  A connected compact group
+with Lie algebra \(\mathfrak g\) is
+\[
+  G=G_{\rm sc}/\Gamma,
+  \qquad
+  \Gamma\subset Z(G_{\rm sc}).
+\]
+The choice of \(\Gamma\) changes which Wilson lines are genuine line
+operators.  A representation of \(G_{\rm sc}\) descends to a representation
+of \(G\) exactly when \(\Gamma\) acts trivially.  Thus the global form is
+measured by the lattice of line charges together with the local curvature
+term in the Lagrangian.
+
+\begin{definition}[Genuine line operator]
+\label{def:genuine-line-operator}
+A line operator \(L(C)\) supported on an embedded curve \(C\) is genuine if it
+is defined without choosing an auxiliary surface ending on \(C\).  If a
+surface \(S\) with \(\partial S=C\) is part of the definition, the operator is
+a boundary of a higher-dimensional defect rather than an autonomous line
+operator.
+\end{definition}
+
+\section{Higher-Form Symmetry}
+
+\begin{definition}[\(p\)-form global symmetry]
+\label{def:p-form-global-symmetry}
+A \(p\)-form global symmetry in a \(D\)-dimensional QFT is represented by
+topological operators \(U_g(M^{D-p-1})\), labelled by group elements \(g\) and
+supported on closed codimension-\((p+1)\) manifolds, acting on charged
+\(p\)-dimensional operators.  Topological means that correlation functions
+are invariant under smooth deformations of \(M\) that avoid charged
+insertions and do not cross singularities or boundaries.
+\end{definition}
+
+For an abelian \(p\)-form symmetry, a charged \(p\)-operator \(W_q(\Sigma^p)\)
+satisfies
+\[
+  U_\alpha(M^{D-p-1})W_q(\Sigma^p)
+  =
+  \exp\!\left(\ii\alpha q\,{\rm Link}(M,\Sigma)\right)
+  W_q(\Sigma^p)
+\]
+inside correlation functions, where the linking number is defined after
+choosing orientations and a homology class.  This formula is the global
+operator statement behind selection rules for extended objects.
+
+\section{Center Symmetry in Yang--Mills}
+
+For pure \(SU(N)\) Yang--Mills, the center \(Z_N\) acts as a one-form symmetry
+on Wilson lines.  If \(W_R(C)=\operatorname{tr}_R{\rm P}\exp\int_C A\), then
+the charge is the \(N\)-ality of \(R\).  Dynamical matter in a representation
+of nonzero \(N\)-ality explicitly breaks this one-form symmetry because a
+Wilson line can end on a dynamical charged field.  Thus confinement,
+screening, and the global form of the gauge group are statements about the
+category of allowed extended operators and endpoints.
+
+\begin{openproblem}[Global structure from continuum local data]
+\label{op:global-structure-from-local-data}
+Determine, for a given continuum QFT specified by local fields and local
+correlators, what additional data recover the full lattice of genuine line,
+surface, and defect operators.  Local Wightman fields determine local
+correlators; global form and extended-operator completeness require further
+information about charged sectors, boundary conditions, and topological
+defect fusion.
+\end{openproblem}

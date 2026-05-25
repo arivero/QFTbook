@@ -129,6 +129,24 @@ Date: 2026-05-24
   their operator definitions, controlled-approximation status, or
   nonperturbative-input status explicitly stated.
 
+Date: 2026-05-25
+
+- Open GitHub issues should now be reviewed as a global development map rather
+  than as a strict old-to-new queue.  Issue closure still requires a compiled
+  manuscript change, local verification, a pushed commit, and a GitHub comment
+  explaining what was addressed.
+- Volumes VI--XII are launched as compiled subject volumes.  Their first
+  chapters establish the local mathematical objects for integrable QFT,
+  supersymmetric QFT, topological/cohomological QFT, global structure and
+  higher-form symmetry, thermal QFT and hydrodynamics, constructive/lattice/
+  numerical QFT, and QFT on curved backgrounds.
+- Thermal field theory and the bridge from QFT to hydrodynamics form their own
+  subject volume.  The volume begins from KMS states and retarded correlators,
+  then develops finite-temperature path integrals, Schwinger--Keldysh theory,
+  Kubo formulae, hydrodynamic constitutive relations, entropy-current and
+  effective-action constraints, thermal gauge theory, kinetic theory, and
+  anomalous transport.
+
 ## Current Implementation Decisions
 
 - Keep `transcription/` as the faithful source layer.

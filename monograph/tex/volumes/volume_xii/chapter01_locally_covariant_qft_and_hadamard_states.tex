@@ -1,0 +1,118 @@
+\chapter{Locally Covariant QFT and Hadamard States}
+\label{ch:locally-covariant-qft-hadamard}
+
+\ConventionsMixed
+
+QFT on curved spacetime treats the metric as a fixed background field and asks
+for local observables that vary functorially with the background.  The basic
+replacement for a preferred vacuum is a class of states whose short-distance
+singularities match those of positive-frequency Minkowski two-point
+functions in local inertial coordinates.
+
+\section{Locally Covariant Assignment}
+
+\begin{definition}[Background category]
+\label{def:background-category-loc}
+Let \({\bf Loc}\) be the category whose objects are oriented and
+time-oriented globally hyperbolic Lorentzian manifolds \((M,g)\), possibly
+with specified background bundles and sources.  A morphism
+\(\chi:(M,g)\to(M',g')\) is an isometric embedding preserving orientations
+and causal structure, with causally convex image.
+\end{definition}
+
+\begin{definition}[Locally covariant QFT]
+\label{def:locally-covariant-qft}
+A locally covariant QFT is a covariant functor
+\[
+  \mathfrak A:{\bf Loc}\to{\bf Alg}
+\]
+from the background category to a category of \(\ast\)-algebras, satisfying
+isotony, Einstein causality for causally disjoint subregions, and the
+time-slice axiom: if \(\chi(M)\) contains a Cauchy surface of \(M'\), then
+\(\mathfrak A(\chi)\) is an isomorphism.
+\end{definition}
+
+A locally covariant field of tensor type \(E\) is a natural transformation
+from compactly supported test sections of \(E\) to the algebra functor:
+\[
+  \Phi_M(f)\in\mathfrak A(M),
+  \qquad
+  \mathfrak A(\chi)\Phi_M(f)=\Phi_{M'}(\chi_\ast f).
+\]
+This naturality condition is the curved-spacetime replacement for global
+translation covariance.
+
+\section{Hadamard Singular Structure}
+
+For a real Klein--Gordon field
+\[
+  P_g=-\nabla^\mu\nabla_\mu+m^2+\xi R[g],
+\]
+a quasifree state is determined by its two-point distribution
+\(\omega_2(x,y)\).  In four dimensions the Hadamard condition says that, in a
+convex normal neighborhood,
+\[
+  \omega_2(x,y)
+  =
+  \lim_{\epsilon\downarrow0}
+  \frac{1}{8\pi^2}
+  \left[
+    \frac{U(x,y)}{\sigma_\epsilon(x,y)}
+    +V(x,y)\log\!\bigl(\mu^2\sigma_\epsilon(x,y)\bigr)
+    +W(x,y)
+  \right].
+\]
+Here \(\sigma(x,y)\) is Synge's signed squared geodesic distance divided by
+two, \(\sigma_\epsilon\) is the usual causal boundary prescription,
+\(U\) and \(V\) are locally and covariantly determined by \(g,m,\xi\), and
+\(W\) is the smooth state-dependent part.  The wavefront-set formulation is
+equivalent and is stable under the operations used to build Wick polynomials.
+
+\begin{proposition}[State-independent short-distance subtraction]
+\label{prop:hadamard-state-independent-subtraction}
+Let \(\omega\) and \(\omega'\) be two Hadamard quasifree states for the same
+Klein--Gordon operator on the same globally hyperbolic spacetime.  Then
+\(\omega_2-\omega'_2\) is smooth.
+\end{proposition}
+
+\begin{proof}
+Both two-point functions have the same distributions
+\[
+  \frac{U}{\sigma_\epsilon}
+  +
+  V\log(\mu^2\sigma_\epsilon)
+\]
+in each convex normal neighborhood because \(U\) and \(V\) are determined by
+the operator \(P_g\) and the local geometry through transport equations.  The
+only remaining terms are \(W\) and \(W'\), which are smooth by the Hadamard
+definition.  Hence the difference is locally smooth.  A partition of unity on
+the globally hyperbolic manifold gives smoothness globally.
+\end{proof}
+
+\section{Stress Tensor and Renormalization Freedom}
+
+The composite stress tensor is defined by point splitting: subtract the
+Hadamard parametrix, apply a bidifferential operator determined by the
+classical stress tensor, and take the coincident limit.  The locally
+covariant subtraction has finite local freedom.  In four dimensions the
+remaining renormalization freedom is a linear combination of conserved local
+curvature tensors obtained by varying
+\[
+  \int\sqrt{|g|},\qquad
+  \int\sqrt{|g|}R,\qquad
+  \int\sqrt{|g|}R^2,\qquad
+  \int\sqrt{|g|}R_{\mu\nu}R^{\mu\nu},\qquad
+  \int\sqrt{|g|}R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}.
+\]
+Thus stress-tensor renormalization in curved spacetime is a local
+background-field coordinate choice subject to covariance and conservation.
+
+\begin{openproblem}[Interacting curved-spacetime QFT]
+\label{op:interacting-curved-spacetime-qft}
+Construct interacting locally covariant QFTs with nonperturbative control of
+states, composite operators, stress tensors, and background dependence beyond
+the perturbative algebraic framework.  Perturbative AQFT gives a precise
+formal-power-series construction under microlocal hypotheses; convergent or
+constructive interacting examples on general curved backgrounds remain a
+frontier problem.
+\end{openproblem}

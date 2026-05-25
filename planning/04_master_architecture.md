@@ -236,7 +236,11 @@ Purpose: exact QFTs with infinitely many conserved quantities, factorized
 scattering, form factors, Yang--Baxter structures, and thermodynamic Bethe
 ansatz.
 
-Potential chapters:
+Current compiled material:
+
+1. Factorized Scattering And Integrability
+
+Further development targets:
 
 1. Conservation Laws And Factorization
 2. Two-Dimensional Scattering And Analyticity
@@ -244,13 +248,18 @@ Potential chapters:
 4. Form Factors And Local Operators
 5. Thermodynamic Bethe Ansatz
 6. Integrable Perturbations Of CFT
+7. Integrable Gauge/String Examples And Planar Spin Chains
 
 ## Volume VII: Supersymmetric Quantum Field Theory
 
 Purpose: QFTs with supersymmetry developed after gauge theory and CFT
 foundations.
 
-Potential chapters:
+Current compiled material:
+
+1. Supersymmetry Algebras And Representations
+
+Further development targets:
 
 1. Supersymmetry Algebras And Representations
 2. Multiplets And Superspace
@@ -259,6 +268,7 @@ Potential chapters:
 5. Moduli Spaces
 6. Superconformal Field Theories
 7. Protected Sectors
+8. Supersymmetric Regularization And Anomalies
 
 Source protocol:
 
@@ -276,7 +286,11 @@ Source protocol:
 Purpose: metric-independent and cohomological QFTs, developed from local QFT,
 gauge theory, anomalies, and later supersymmetric twists.
 
-Potential chapters:
+Current compiled material:
+
+1. Metric Independence And Cohomological Observables
+
+Further development targets:
 
 1. Topological Invariance In Local QFT
 2. Atiyah--Segal And Extended TQFT Frameworks
@@ -291,7 +305,11 @@ Potential chapters:
 
 Purpose: symmetry and phase structure beyond local order parameters.
 
-Potential chapters:
+Current compiled material:
+
+1. Global Forms And Higher-Form Symmetry
+
+Further development targets:
 
 1. Global Forms Of Symmetry Groups
 2. Higher-Form And Categorical Symmetries
@@ -302,26 +320,40 @@ Potential chapters:
 7. Phases Of Gauge Theories
 8. Boundaries And Defects
 
-## Volume X: Thermal, Statistical, And Nonequilibrium QFT
+## Volume X: Thermal Quantum Field Theory, Hydrodynamics, And Nonequilibrium Dynamics
 
-Purpose: QFT at nonzero temperature, in real time, and in hydrodynamic or
-nonequilibrium limits.
+Purpose: QFT at nonzero temperature, real-time response, transport, and
+hydrodynamics as the long-distance effective theory of conserved densities.
+This volume develops equilibrium from the KMS condition, then derives the
+correlator input for transport before introducing hydrodynamic effective
+actions and nonequilibrium limits.
 
-Potential chapters:
+Current compiled material:
 
-1. KMS States
+1. KMS States And Thermal Correlators
+
+Further development targets:
+
+1. KMS States And Thermal Correlators
 2. Finite-Temperature Path Integrals
 3. Real-Time Schwinger--Keldysh Formalism
-4. Spectral Functions And Transport
-5. Hydrodynamic Effective Theory
-6. Thermal Gauge Theory
-7. Nonequilibrium Effective Actions
+4. Spectral Functions, Kubo Formulae, And Transport
+5. Hydrodynamics From Ward Identities And Local Equilibrium
+6. Schwinger--Keldysh Hydrodynamic Effective Actions
+7. Thermal Gauge Theory And Screening
+8. Kinetic Theory As A Controlled Limit
+9. Anomalous And Topological Transport
+10. Nonequilibrium Steady States And Open-System Limits
 
 ## Volume XI: Constructive, Lattice, And Numerical QFT
 
 Purpose: nonperturbative constructions and computable regulator frameworks.
 
-Potential chapters:
+Current compiled material:
+
+1. Constructive Status And Routes To Continuum QFT
+
+Further development targets:
 
 1. Constructive Examples
 2. Lattice Regularization
@@ -331,13 +363,19 @@ Potential chapters:
 6. Monte Carlo And Sign Problems
 7. Rigorous Renormalization Group
 8. Relation Between Lattice And Continuum Local QFT
+9. Stochastic Quantization And Singular SPDE
+10. Numerical Hamiltonian Truncation, DLCQ, And Benchmark Scripts
 
 ## Volume XII: QFT In Curved Spacetime And Background Fields
 
 Purpose: QFT on fixed geometric backgrounds without treating quantum gravity
 as part of the core construction.
 
-Potential chapters:
+Current compiled material:
+
+1. Locally Covariant QFT And Hadamard States
+
+Further development targets:
 
 1. Locally Covariant QFT
 2. Hadamard States

@@ -1,0 +1,86 @@
+\chapter{Metric Independence and Cohomological Observables}
+\label{ch:tqft-metric-independence}
+
+\ConventionsEuclidean
+
+A topological QFT assigns quantities to manifolds and bordisms in a way that
+is insensitive to continuous changes of geometric representatives after the
+allowed background structures are fixed.  A cohomological QFT realizes this
+insensitivity by an odd differential \(Q\) acting on fields, states, and
+operators.
+
+\section{Metric Variation}
+
+Let \(M\) be a closed oriented \(D\)-manifold and let \(g\) be a Riemannian
+metric.  Suppose the theory has correlation functions
+\(\langle\mathcal O_1\cdots\mathcal O_n\rangle_g\) for metric-dependent
+representatives of local or extended observables.  The stress tensor is
+defined by metric variation of the generating functional:
+\[
+  \delta_g\langle X\rangle_g
+  =
+  -\frac12
+  \int_M\dd^Dx\,\sqrt g\,\delta g^{\mu\nu}(x)\,
+  \langle T_{\mu\nu}(x)X\rangle_g
+  +\hbox{contact terms from metric-dependent insertions}.
+\]
+This formula is a definition of the response to background geometry.  The
+contact terms are part of the operator definition and must be retained when
+insertions collide with the support of \(\delta g\).
+
+\begin{definition}[Cohomological topological sector]
+\label{def:cohomological-topological-sector}
+A cohomological topological sector consists of a graded vector space of
+states or observables, an odd differential \(Q\) with \(Q^2=0\), a class of
+\(Q\)-closed observables, and tensors \(G_{\mu\nu}\) such that
+\[
+  T_{\mu\nu}=\{Q,G_{\mu\nu}\}
+\]
+inside correlation functions, including the contact-term prescription for
+metric variation.
+\end{definition}
+
+\begin{proposition}[Metric independence in \(Q\)-cohomology]
+\label{prop:q-cohomology-metric-independence}
+Assume the hypotheses of Definition~\ref{def:cohomological-topological-sector}
+and suppose \(X=\mathcal O_1\cdots\mathcal O_n\) is a product of
+\(Q\)-closed observables whose metric-dependence is itself \(Q\)-exact.  If
+the functional expectation satisfies the Ward identity
+\(\langle \{Q,Y\}\rangle_g=0\) for all insertions \(Y\) produced by the metric
+variation, then \(\delta_g\langle X\rangle_g=0\).
+\end{proposition}
+
+\begin{proof}
+Substituting \(T_{\mu\nu}=\{Q,G_{\mu\nu}\}\) into the metric variation gives
+an integral of \(\langle\{Q,G_{\mu\nu}\}X\rangle_g\), plus the declared
+metric-variation contact terms.  Since \(QX=0\) and \(Q\) is an odd
+derivation, this is \(\langle\{Q,G_{\mu\nu}X\}\rangle_g\) up to the signs
+fixed by the grading.  The contact terms are \(Q\)-exact by hypothesis.  The
+Ward identity therefore makes every term vanish.
+\end{proof}
+
+\section{Functorial Target}
+
+The Atiyah--Segal form of a topological field theory assigns a vector space
+\(Z(\Sigma)\) to a closed \((D-1)\)-manifold \(\Sigma\) and a linear map
+\[
+  Z(M):Z(\Sigma_{\rm in})\to Z(\Sigma_{\rm out})
+\]
+to a bordism \(M:\Sigma_{\rm in}\to\Sigma_{\rm out}\), with compatibility
+under gluing:
+\[
+  Z(M_2\circ M_1)=Z(M_2)Z(M_1).
+\]
+Extended versions refine this assignment to manifolds with corners and
+higher-categorical targets.  The cohomological construction above is one
+source of such functors after gauge fixing, anomaly cancellation, boundary
+conditions, and finite-dimensionality hypotheses have been supplied.
+
+\begin{openproblem}[From cohomological path integrals to extended functors]
+\label{op:cohomological-to-extended-functor}
+Given a cohomological gauge theory with \(T_{\mu\nu}=QG_{\mu\nu}\), determine
+the exact hypotheses under which its correlation functions define an
+extended topological functor: compactness or properness of the moduli
+problem, anomaly cancellation, boundary conditions, gluing analysis,
+orientation data, and compatibility with local operator insertions.
+\end{openproblem}

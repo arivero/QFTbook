@@ -10,6 +10,13 @@ do not infer compiled placement from a dossier path alone.
 | `volume_i/` | `monograph/tex/volumes/volume_i/` | Chapters drawn into compiled Volumes I, II, and IV |
 | `volume_ii/` | `monograph/tex/volumes/volume_ii/` | Chapters drawn into compiled Volumes II, III, and IV |
 | `volume_iii/` | `monograph/tex/volumes/volume_iii/` | Chapters drawn into compiled Volume V, the CFT volume |
+| `volume_vi/` | `monograph/tex/volumes/volume_vi/` | Compiled Volume VI, integrable QFT |
+| `volume_vii/` | `monograph/tex/volumes/volume_vii/` | Compiled Volume VII, supersymmetric QFT |
+| `volume_viii/` | `monograph/tex/volumes/volume_viii/` | Compiled Volume VIII, topological and cohomological QFT |
+| `volume_ix/` | `monograph/tex/volumes/volume_ix/` | Compiled Volume IX, global structure and extended operators |
+| `volume_x/` | `monograph/tex/volumes/volume_x/` | Compiled Volume X, thermal QFT, hydrodynamics, and nonequilibrium dynamics |
+| `volume_xi/` | `monograph/tex/volumes/volume_xi/` | Compiled Volume XI, constructive, lattice, and numerical QFT |
+| `volume_xii/` | `monograph/tex/volumes/volume_xii/` | Compiled Volume XII, curved spacetime and background fields |
 
 Thus the dossiers for compiled Volume V currently live under
 `planning/chapter_dossiers/volume_iii/`, because the CFT source chapters live
