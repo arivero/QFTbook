@@ -74,6 +74,13 @@ Current checks:
   monograph trace normalization, the planar-versus-one-handle theta-graph
   \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
   versus Veneziano quark-boundary counting.
+- `mellin_four_point_checks.py`: finite algebra checks for the CFT
+  four-point Mellin-representation section, including the constrained
+  \(\delta_{ij}\) equations, compatibility with the chapter's scalar
+  four-point prefactor, the \(\dd\delta_{12}\dd\delta_{14}
+  =\dd\mathfrak s\,\dd\mathfrak t/4\) Jacobian, the
+  \(\mathfrak s=\tau+2m\) pole-to-\(u^{\tau/2+m}\) exponent map, and the
+  identical-scalar \(2\leftrightarrow4\) channel permutation.
 - `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
   two-loop \(N=1\) Wilson-Fisher pole coefficients into
   \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).

@@ -43,6 +43,14 @@ The chapter establishes:
 - conformal partial waves as shadow-projector/harmonic-analysis kernels,
   distinct from OPE-channel blocks and normalized together with their
   Plancherel density;
+- the scalar Mellin representation as a constrained Mellin-Barnes transform
+  on the affine space
+  \(\delta_{ij}=\delta_{ji},\ \delta_{ii}=0,\ \sum_{j\ne i}\delta_{ij}
+  =\Delta_i\), including the four-point variables
+  \(\mathfrak s,\mathfrak t,\mathfrak u\), the gamma kernel, the exact
+  compatibility with the chapter's reduced correlator
+  \(\mathcal G(u,v)\), and the contour-shift derivation of OPE twist poles
+  at \(\mathfrak s=\Delta-\ell+2m\);
 - the Lorentzian inversion formula as a boundary theorem extracting a
   spin-analytic meromorphic OPE coefficient from the crossed-channel double
   discontinuity, subject to stated Euclidean OPE convergence, tube
@@ -127,6 +135,16 @@ The chapter establishes:
     generator/completeness hypotheses, but a single four-point crossing
     equation is underdetermined and does not even determine its correlator
     without extra data.
+14. The Mellin amplitude is a gamma-normalized transform representation of a
+    scalar correlator under stated analyticity and vertical-growth
+    hypotheses.  OPE pole statements are residue statements for the full
+    Mellin integrand, and gamma-kernel pole collisions must be separated from
+    poles of the gamma-stripped amplitude \(M\).
+15. In the chapter's four-point prefactor convention, the reduced correlator
+    has Mellin powers
+    \(u^{\mathfrak s/2}v^{(\mathfrak t-\Delta_2-\Delta_3)/2}\); the
+    calculation check verifies this convention and the
+    \(\mathfrak s=\tau+2m\) pole-to-OPE-exponent map.
 
 ## Figures
 
@@ -156,6 +174,9 @@ The chapter establishes:
   continuation step.
 - Do not describe radial block construction as an inverse of one infinite Gram
   matrix; use levelwise quotient projectors.
+- Do not describe Mellin amplitudes as universally existing functions for all
+  CFT correlators.  State the Mellin-representability, meromorphy, contour,
+  and growth hypotheses before using contour shifts or OPE-pole language.
 
 ## Audit Notes
 
@@ -209,3 +230,8 @@ The chapter establishes:
 - 2026-05-24 follow-up pass: replaced literal product/equality language in
   the opening OPE formulation and reconstruction discussion by state-valued
   BPZ/radial-norm convergence of local-operator partial sums.
+- 2026-05-25 issue #477 pass: added a Mellin-representation subsection for
+  scalar correlators, including the constrained \(n\)-point definition, the
+  four-point \((\mathfrak s,\mathfrak t,\mathfrak u)\) formula compatible with
+  the existing prefactor, contour-shift pole extraction, Mack-polynomial
+  residue interpretation, and the crossing action on Mellin variables.

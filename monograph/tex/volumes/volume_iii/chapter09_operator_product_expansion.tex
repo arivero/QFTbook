@@ -95,6 +95,7 @@ Hilbert-space and spectral package.
 \end{definition}
 
 \begin{theorem}[Euclidean radial OPE convergence]
+\label{thm:euclidean-radial-ope-convergence}
   Assume Hypothesis~\ref{hyp:radial-reconstruction-data}.  Let
   \(\mathcal O_i(x_E)\mathcal O_j(0)\vac\) be inserted at Euclidean points
   inside a sphere of radius \(r\) in \(\R^D_E\), and let all remaining
@@ -966,6 +967,291 @@ hold, by moving the \(\nu\)-contour and taking residues at poles in
 blocks organize the discrete OPE in a channel, whereas conformal partial
 waves provide the representation-theoretic resolution of identity used in
 integral inversion formulae.
+
+\subsection{Mellin Representation and OPE Poles}
+
+Mellin space is a transform representation of scalar separated-point
+correlators.  Its use requires an existence and growth hypothesis parallel to
+the partial-wave transform above: a meromorphic Mellin amplitude belongs to a
+specific Mellin-Barnes representation of the correlator.  When the
+representation exists with suitable vertical-contour decay, it turns the
+\(12\)-channel OPE expansion into a residue expansion in a complex variable
+conjugate to the cross-ratio \(u\).
+
+Let \(X_{ij}=x_{ij}^2\) for Euclidean separated points and let
+\(\mathcal O_i\) be scalar primaries of dimensions \(\Delta_i\).  Define the
+affine Mellin constraint space
+\begin{equation}
+  \mathfrak A_{\Delta}
+  =
+  \left\{
+    \delta_{ij}=\delta_{ji}\in\mathbb C,\quad
+    \delta_{ii}=0,\quad
+    \sum_{j\ne i}\delta_{ij}=\Delta_i
+    \text{ for }i=1,\ldots,n
+  \right\}.
+  \label{eq:mellin-affine-constraint-space}
+\end{equation}
+The constraints are exactly the conditions that make
+\(\prod_{i<j}X_{ij}^{-\delta_{ij}}\) transform like an \(n\)-point function
+of scalar primaries under independent local scale factors at the insertion
+points.
+
+\begin{definition}[Scalar Mellin representation]
+\label{def:scalar-mellin-representation}
+An \(n\)-point scalar Euclidean correlator is Mellin representable on a
+configuration-space domain \(U\) if there are vertical cycles
+\(\mathcal C\subset\mathfrak A_\Delta\), a meromorphic or distributional
+function \(M(\delta_{ij})\), and a choice of logarithm for each \(X_{ij}\) on
+\(U\), such that
+\begin{equation}
+  \left\langle
+    \mathcal O_1(x_1)\cdots\mathcal O_n(x_n)
+  \right\rangle
+  =
+  \int_{\mathcal C}[\dd\delta]\,
+  M(\delta_{ij})
+  \prod_{1\le i<j\le n}
+  \Gamma(\delta_{ij})\,X_{ij}^{-\delta_{ij}} .
+  \label{eq:mellin-representation-n-point-core}
+\end{equation}
+The measure \([\dd\delta]\) is the product of \(\dd\delta/(2\pi\ii)\) over a
+basis of independent affine coordinates on
+\(\mathfrak A_\Delta\).  The contour is chosen so that the pole families whose
+residues give the desired OPE expansions lie on the side prescribed by the
+corresponding radial domain.  The gamma factors in
+\eqref{eq:mellin-representation-n-point-core} are part of the normalization
+of \(M\); moving any universal gamma factor between \(M\) and the kernel gives
+a different Mellin amplitude representing the same correlator.
+\end{definition}
+
+For four points it is useful to replace the constrained variables by three
+Mellin-channel variables
+\[
+  \mathfrak s+\mathfrak t+\mathfrak u
+  =
+  \Delta_\Sigma,
+  \qquad
+  \Delta_\Sigma=\Delta_1+\Delta_2+\Delta_3+\Delta_4,
+\]
+where
+\begin{align}
+  \delta_{12}&=\frac{\Delta_1+\Delta_2-\mathfrak s}{2},
+  &
+  \delta_{34}&=\frac{\Delta_3+\Delta_4-\mathfrak s}{2},
+  \notag\\
+  \delta_{14}&=\frac{\Delta_1+\Delta_4-\mathfrak t}{2},
+  &
+  \delta_{23}&=\frac{\Delta_2+\Delta_3-\mathfrak t}{2},
+  \label{eq:mellin-four-point-delta-variables}\\
+  \delta_{13}&=\frac{\Delta_1+\Delta_3-\mathfrak u}{2},
+  &
+  \delta_{24}&=\frac{\Delta_2+\Delta_4-\mathfrak u}{2}.
+  \notag
+\end{align}
+The letters \(\mathfrak s,\mathfrak t,\mathfrak u\) are Mellin variables;
+they are not scattering Mandelstam invariants.  They are named by the OPE
+channel whose twist poles they expose.
+
+With the four-point prefactor of
+\eqref{eq:scalar-four-point-general}, Definition
+\ref{def:scalar-mellin-representation} becomes
+\begin{equation}
+  \mathcal G(u,v)
+  =
+  \int_{\mathcal C_{\mathfrak s,\mathfrak t}}
+  \frac{\dd\mathfrak s\,\dd\mathfrak t}{(4\pi\ii)^2}\,
+  u^{\mathfrak s/2}
+  v^{(\mathfrak t-\Delta_2-\Delta_3)/2}
+  \Gamma_\Delta(\mathfrak s,\mathfrak t)\,
+  M(\mathfrak s,\mathfrak t),
+  \label{eq:four-point-mellin-representation-core}
+\end{equation}
+where \(\mathfrak u=\Delta_\Sigma-\mathfrak s-\mathfrak t\) and
+\begin{align}
+  \Gamma_\Delta(\mathfrak s,\mathfrak t)
+  &=
+  \Gamma\!\left(\frac{\Delta_1+\Delta_2-\mathfrak s}{2}\right)
+  \Gamma\!\left(\frac{\Delta_3+\Delta_4-\mathfrak s}{2}\right)
+  \Gamma\!\left(\frac{\Delta_1+\Delta_4-\mathfrak t}{2}\right)
+  \Gamma\!\left(\frac{\Delta_2+\Delta_3-\mathfrak t}{2}\right)
+  \notag\\
+  &\quad\times
+  \Gamma\!\left(\frac{\Delta_1+\Delta_3-\mathfrak u}{2}\right)
+  \Gamma\!\left(\frac{\Delta_2+\Delta_4-\mathfrak u}{2}\right).
+  \label{eq:four-point-mellin-gamma-kernel}
+\end{align}
+The normalization \((4\pi\ii)^{-2}\) comes from
+\(\dd\delta_{12}\dd\delta_{14}=\dd\mathfrak s\,\dd\mathfrak t/4\).
+
+\begin{lemma}[Compatibility with the four-point prefactor]
+\label{lem:mellin-four-point-prefactor-compatibility}
+The representation \eqref{eq:four-point-mellin-representation-core} is exactly
+the \(n=4\) constrained Mellin representation
+\eqref{eq:mellin-representation-n-point-core} after factoring out the
+kinematic prefactor in \eqref{eq:scalar-four-point-general}.
+\end{lemma}
+
+\begin{proof}
+The Mellin product has exponent \(-\delta_{ij}\) on \(X_{ij}\).  Subtract the
+exponents of the prefactor in \eqref{eq:scalar-four-point-general}.  For
+\(X_{12}\) and \(X_{34}\) the remaining exponent is
+\[
+  -\delta_{12}+\frac{\Delta_1+\Delta_2}{2}
+  =
+  -\delta_{34}+\frac{\Delta_3+\Delta_4}{2}
+  =
+  \frac{\mathfrak s}{2}.
+\]
+For \(X_{14}\) and \(X_{23}\) the remaining exponent is
+\[
+  \frac{\mathfrak t-\Delta_2-\Delta_3}{2}.
+\]
+For \(X_{13}\) and \(X_{24}\) the remaining exponent is the negative of the
+sum of these two numbers, because
+\(\mathfrak u=\Delta_\Sigma-\mathfrak s-\mathfrak t\).  These are precisely
+the exponents of
+\[
+  u^{\mathfrak s/2}v^{(\mathfrak t-\Delta_2-\Delta_3)/2}
+  =
+  \left(\frac{X_{12}X_{34}}{X_{13}X_{24}}\right)^{\mathfrak s/2}
+  \left(\frac{X_{14}X_{23}}{X_{13}X_{24}}\right)^{
+        (\mathfrak t-\Delta_2-\Delta_3)/2}.
+ \]
+The six gamma factors are those in
+\eqref{eq:mellin-representation-n-point-core} with
+\eqref{eq:mellin-four-point-delta-variables} substituted.
+\end{proof}
+
+The pole interpretation is a contour-shift statement.  Write
+\[
+  \mathcal I(\mathfrak s,\mathfrak t)
+  =
+  \Gamma_\Delta(\mathfrak s,\mathfrak t)M(\mathfrak s,\mathfrak t)
+\]
+for the full Mellin integrand without the cross-ratio powers.  Suppose the
+\(\mathfrak s\)-contour is a vertical line, \(0<u<1\), the integrand is
+meromorphic in the strip swept by moving the contour to the right, and the
+horizontal contour arcs vanish in that strip.  If
+\(\mathcal I\) has a simple pole at \(\mathfrak s=\sigma\) with residue
+\(R_\sigma(\mathfrak t)\), then that pole contributes
+\begin{equation}
+  u^{\sigma/2}
+  \int_{\mathcal C_{\mathfrak t}}
+  \frac{\dd\mathfrak t}{2\pi\ii}\,
+  v^{(\mathfrak t-\Delta_2-\Delta_3)/2}
+  R_\sigma(\mathfrak t)
+  \label{eq:mellin-simple-pole-u-exponent}
+\end{equation}
+to \(\mathcal G(u,v)\).  A pole of order \(r+1\) gives a polynomial of degree
+\(r\) in \(\log u\) multiplying \(u^{\sigma/2}\).  Conversely, under the same
+vertical-growth hypothesis, a term \(u^\alpha H(v)\) in the asymptotic
+expansion at fixed \(v\) is represented in the Mellin transform by a pole at
+\(\mathfrak s=2\alpha\), with residue equal to the one-dimensional Mellin
+transform of \(H(v)\) in the \(\mathfrak t\) variable.
+
+Now apply this to the radial OPE.  An exchanged primary of dimension
+\(\Delta\) and spin \(\ell\) has twist
+\[
+  \tau=\Delta-\ell .
+\]
+In the \(12\to34\) OPE channel, the corresponding conformal block has a
+radial expansion of the form
+\begin{equation}
+  G_{\Delta,\ell}^{(12|34)}(u,v)
+  =
+  u^{\tau/2}
+  \sum_{m=0}^{\infty}u^m\,H_m^{(\Delta,\ell)}(v),
+  \label{eq:block-small-u-twist-expansion}
+\end{equation}
+inside the radial convergence domain, after the spin-dependent angular
+dependence is expressed through \(v\) in the chosen conformal frame.  Therefore
+the full Mellin integrand has poles at
+\begin{equation}
+  \mathfrak s=\tau+2m,\qquad m=0,1,2,\ldots .
+  \label{eq:mellin-ope-twist-pole-family-core}
+\end{equation}
+If the gamma-stripped amplitude \(M\) is meromorphic and the pole does not
+coincide with a gamma-kernel pole, the same family appears in \(M\).  With the
+OPE normalization of the block fixed in
+\eqref{eq:block-ope-frobenius-branch}, its local form is
+\begin{equation}
+  M(\mathfrak s,\mathfrak t)
+  =
+  \sum_{m=0}^{\infty}
+  \frac{
+    \lambda_{12\mathcal O}\lambda_{34\mathcal O}\,
+    Q_{m,\ell}^{(12|34)}(\mathfrak t)
+  }{\mathfrak s-\tau-2m}
+  +
+  M_{\rm hol}(\mathfrak s,\mathfrak t),
+  \label{eq:mellin-mack-pole-family}
+\end{equation}
+in a neighborhood of the displayed pole family.  The residue
+\(Q_{m,\ell}^{(12|34)}\) is the Mack polynomial in this normalization.  It is
+characterized intrinsically as the unique polynomial residue which, after
+substitution in \eqref{eq:four-point-mellin-representation-core}, produces
+the level-\(m\) term of the Casimir eigenfunction with OPE boundary condition
+\eqref{eq:block-ope-frobenius-branch}.  Its degree in \(\mathfrak t\) is
+\(\ell\); the descendant label \(m\) changes the coefficients and the gamma
+kernel, not the spin degree.
+
+\begin{proposition}[OPE poles in Mellin space]
+\label{prop:mellin-ope-pole-family}
+Assume the radial OPE theorem of
+Theorem~\ref{thm:euclidean-radial-ope-convergence}, the four-point Mellin
+representation \eqref{eq:four-point-mellin-representation-core}, meromorphic
+continuation of \(M\) in the relevant \(\mathfrak s\)-strip, and the vertical
+growth needed for the contour shift above.  Then every exchanged
+symmetric-traceless primary \(\mathcal O\) in the \(12\to34\) scalar OPE whose
+twist-pole family does not coincide with a gamma-kernel pole contributes the
+pole family \eqref{eq:mellin-mack-pole-family}.  The residue is
+proportional to the product
+\(\lambda_{12\mathcal O}\lambda_{34\mathcal O}\), and the proportionality
+function is fixed by conformal representation theory.
+\end{proposition}
+
+\begin{proof}
+The radial OPE theorem gives an absolutely convergent sum of conformal
+families in the channel domain.  Project to a single exchanged conformal
+multiplet and use the block construction in
+Theorem~\ref{thm:casimir-block-local-existence-uniqueness}.  Its radial
+series has the form
+\eqref{eq:block-small-u-twist-expansion}: the primary supplies the exponent
+\(\tau/2\), and the descendant contribution can be grouped into integer powers
+of \(u\) after the remaining angular dependence is kept in the functions
+\(H_m(v)\).  The coefficient multiplying the block in the four-point function
+is
+\(\lambda_{12\mathcal O}\lambda_{34\mathcal O}\) in the orthonormal
+single-structure case, or the corresponding contraction with the inverse
+two-point pairing in the notation of
+\eqref{eq:general-scalar-conformal-block-expansion}.
+
+The contour-shift identity
+\eqref{eq:mellin-simple-pole-u-exponent} identifies every term
+\(u^{\tau/2+m}H_m(v)\) with a pole at
+\(\mathfrak s=\tau+2m\) in the full Mellin integrand.  When this pole is not a
+pole already forced by \(\Gamma_\Delta\), it is represented by a pole of
+\(M\).  The \(v\)-dependence of the residue is converted to a polynomial in
+\(\mathfrak t\) by the one-dimensional Mellin transform with the fixed gamma
+kernel in \eqref{eq:four-point-mellin-gamma-kernel}.  The Casimir equation
+\eqref{eq:scalar-block-casimir-equation} and the OPE boundary condition
+\eqref{eq:block-ope-frobenius-branch} fix this residue uniquely.  The highest
+power of \(\mathfrak t\) is fixed by the spin-\(\ell\) leading angular
+structure of the primary three-point functions, hence the residue has degree
+\(\ell\).  This proves the stated pole family and normalization.
+\end{proof}
+
+Crossing acts linearly on Mellin space.  A permutation \(\sigma\in S_4\) sends
+\(\delta_{ij}\) to \(\delta_{\sigma(i)\sigma(j)}\), and the induced action on
+\((\mathfrak s,\mathfrak t,\mathfrak u)\) permutes the channel variables with
+\(\mathfrak s+\mathfrak t+\mathfrak u=\Delta_\Sigma\) preserved.  For
+identical scalar primaries, crossing of the separated-point correlator is
+equivalent, in a common Mellin domain, to the corresponding invariance of the
+Mellin integrand up to contour deformation across the pole families.  Thus the
+Mellin form expresses the same OPE-associativity constraints as the block
+expansion, but in a language where exchanged twists are pole locations and
+spins are polynomial degrees of residues.
 
 \subsection{Lorentzian Inversion as a Boundary Theorem}
 
