@@ -2017,6 +2017,360 @@ transverse modes, while the \(1/L^3\) and later terms are effective-string
 matching data unless a universality theorem for the relevant order and
 boundary condition has been established.
 
+\subsection{Static Observables, Lattice Extraction, and the Meaning of
+String Tension}
+
+The static potential and the effective string are nonperturbative objects.
+Their definition does not use perturbative gluon states.  It uses the Hilbert
+space obtained from the gauge theory with external static sources, or
+equivalently the transfer matrix acting on gauge-invariant line-operator
+states.  On a Euclidean lattice with spacing \(a_{\rm lat}\), a rectangular
+Wilson loop is the trace of the ordered product of link variables around the
+rectangle.  In the continuum notation used in this chapter it is written
+\[
+  W_R(C)=\operatorname{tr}_R\,
+  \mathcal P\exp\left(i\oint_C A_\mu\,\dd x^\mu\right),
+\]
+where \(R\) is a representation of the gauge group and
+\(\mathcal P\) denotes ordering along the contour.  The continuum expression
+is a compact notation for the renormalized line operator obtained from a
+chosen regulator; a Wilson loop with cusps or corners has additional local
+renormalizations at those singular points.
+
+The area-law statement relevant for the static flux tube is therefore a
+statement after local perimeter and corner terms have been separated.  For
+large rectangles \(C_{L,T}\), a pure gauge theory in a confining center sector
+has
+\begin{equation}
+  -\log \langle W_R(C_{L,T})\rangle
+  =
+  \sigma_k LT+\rho_R(L+T)+\kappa_R
+  +o(LT)
+  \label{eq:qcd-string-rectangular-area-law}
+\end{equation}
+when both \(L\) and \(T\) are large in a regime where the lowest flux-tube
+channel of \(N\)-ality \(k=k_R\) dominates.  The perimeter coefficient
+\(\rho_R\) and the corner coefficient \(\kappa_R\) are not the string tension.
+They depend on the definition of the line operator and on its ultraviolet
+renormalization.  The coefficient \(\sigma_k\) is the asymptotic energy per
+unit length of the lowest flux tube in the corresponding center-charge sector.
+
+\begin{proposition}[Equivalence of rectangular area coefficient and static
+potential slope]
+\label{prop:qcd-string-area-static-equivalence}
+Assume the static-source spectral expansion
+\eqref{eq:qcd-string-static-source-spectral-expansion}, assume a nonzero
+overlap with the lowest state for all sufficiently large \(L\), and assume
+that the gap above \(E_0(L)\) is bounded below by a positive function whose
+large-\(T\) suppression is uniform in the large-\(L\) window under
+consideration.  If
+\[
+  E_0(L)=\sigma_k L+\mu_R+o(L)
+  \qquad (L\to\infty),
+\]
+then the coefficient of \(LT\) in
+\(-\log\langle W_R(C_{L,T})\rangle\), with \(T\to\infty\) taken before the
+large-\(L\) slope, is \(\sigma_k\).  Conversely, if the rectangular Wilson
+loop has the form \eqref{eq:qcd-string-rectangular-area-law} with a
+controlled transfer-matrix limit at each fixed \(L\), then
+\[
+  \lim_{L\to\infty}\frac{E_0(L)}{L}=\sigma_k .
+\]
+\end{proposition}
+
+\begin{proof}
+Write the spectral expansion in the form
+\[
+  \langle W_R(C_{L,T})\rangle
+  =
+  c_0(L)\ee^{-E_0(L)T}
+  \left[
+    1+
+    \sum_{\alpha>0}\frac{c_\alpha(L)}{c_0(L)}
+    \ee^{-(E_\alpha(L)-E_0(L))T}
+  \right],
+\]
+where \(c_0(L)\ne0\) by hypothesis.  The uniform gap assumption implies that
+the logarithm of the bracket divided by \(T\) vanishes as \(T\to\infty\), so
+\[
+  -\lim_{T\to\infty}\frac1T
+  \log \langle W_R(C_{L,T})\rangle
+  =
+  E_0(L).
+\]
+If \(E_0(L)=\sigma_kL+\mu_R+o(L)\), the coefficient multiplying \(LT\) in the
+large-rectangle logarithm is \(\sigma_k\); the \(L\)-independent endpoint
+energy \(\mu_R\), the overlap \(c_0(L)\), perimeter terms, and corner terms
+do not contribute to the double slope
+\(\lim_{L\to\infty}L^{-1}\lim_{T\to\infty}T^{-1}(-\log\langle W\rangle)\).
+The converse is the same identity read in the opposite direction: the
+transfer-matrix limit extracts \(E_0(L)\), and the assumed rectangular area
+coefficient fixes the large-\(L\) slope of this extracted energy.
+\end{proof}
+
+On a Euclidean time circle of circumference \(\beta\), the corresponding
+static observable is the Polyakov loop
+\[
+  P_R(\mathbf x)=
+  \operatorname{tr}_R\,
+  \mathcal P\exp\left(i\int_0^\beta A_0(\tau,\mathbf x)\,\dd\tau\right).
+\]
+The two-source free energy is defined by
+\[
+  F_R(L;\beta)
+  =
+  -\frac1\beta
+  \log
+  \langle P_R(\mathbf 0)^\dagger P_R(\mathbf L)\rangle_\beta .
+\]
+When the zero-temperature transfer-matrix limit is taken by sending
+\(\beta\to\infty\), \(F_R(L;\beta)\) approaches the same static energy
+extracted from a long rectangular Wilson loop, up to the vacuum-energy and
+line-renormalization conventions used in defining the loop.  At finite
+temperature in pure Yang--Mills theory, the expectation value of a single
+fundamental Polyakov loop is charged under the temporal center symmetry and is
+therefore an order parameter for that finite-temperature symmetry after the
+infinite-volume limit is specified.  This is related to, but not identical
+with, the zero-temperature string tension \(\sigma_k\).  The latter is a
+property of the large-distance static-source spectrum.
+
+In practical lattice calculations one does not measure
+\(\sigma_k\) by fitting a bare Wilson loop alone.  One constructs a family of
+gauge-invariant operators in the same static-source sector, computes their
+Euclidean correlation matrix, and uses a variational transfer-matrix problem
+to isolate the lowest and excited energies.  The effective string expansion
+then describes the large-\(L\) behavior of these extracted energies.  This is
+the operational reason that the QCD string is a nonperturbative observable:
+it is a statement about the spectrum selected by gauge-invariant line
+operators, not about perturbative gluons propagating between color charges.
+
+\subsection{Baryonic Flux Networks}
+
+Baryonic confinement is not a copy of the mesonic static potential with one
+more endpoint.  In an \(SU(N_c)\) gauge theory a gauge-invariant static baryon
+operator is made by joining \(N_c\) fundamental Wilson lines to a common color
+junction and contracting their color indices with
+\(\epsilon_{i_1\cdots i_{N_c}}\).  Schematically, for paths
+\(\Gamma_r\) running from a junction point \(y\) to source positions
+\(\mathbf x_r\),
+\[
+  \mathcal B_{\Gamma_1,\ldots,\Gamma_{N_c}}
+  =
+  \epsilon_{i_1\cdots i_{N_c}}
+  U(\Gamma_1)^{i_1}{}_{j_1}\cdots
+  U(\Gamma_{N_c})^{i_{N_c}}{}_{j_{N_c}}
+  Q^{j_1}(\mathbf x_1)\cdots Q^{j_{N_c}}(\mathbf x_{N_c}) .
+\]
+Here \(Q^j(\mathbf x_r)\) denotes a static fundamental source insertion; it
+is not a dynamical asymptotic quark state.
+The determinant-one property of \(SU(N_c)\) makes the contraction at the
+junction gauge invariant.  For \(N_c=3\), and for source separations large
+compared with the inverse mass gap, the leading string model predicts an
+energy proportional to the length of the minimal three-pronged network, not
+to a unique pairwise potential.  Endpoint and junction energies are local
+terms and must be separated from the coefficient of the large lengths:
+\begin{equation}
+  V_{3Q}(\mathbf x_1,\mathbf x_2,\mathbf x_3)
+  =
+  \sigma\,L_Y(\mathbf x_1,\mathbf x_2,\mathbf x_3)
+  +\mu_1+\mu_2+\mu_3+\mu_J+o(L_Y).
+  \label{eq:qcd-string-baryon-y-potential}
+\end{equation}
+
+\begin{proposition}[Steiner length for a three-source baryonic string]
+\label{prop:qcd-string-steiner-y-length}
+Let \(a=|\mathbf x_2-\mathbf x_3|\),
+\(b=|\mathbf x_3-\mathbf x_1|\), and
+\(c=|\mathbf x_1-\mathbf x_2|\) be the side lengths of a Euclidean triangle,
+and let \(\Delta\) be its area.  If every angle of the triangle is less than
+\(2\pi/3\), the length minimizing
+\(\sum_{r=1}^3|\mathbf y-\mathbf x_r|\) is realized by a point
+\(\mathbf y_F\) from which the three segments meet at angles \(2\pi/3\), and
+\begin{equation}
+  L_Y^2
+  =
+  \frac12
+  \left(
+    a^2+b^2+c^2+4\sqrt3\,\Delta
+  \right).
+  \label{eq:qcd-string-steiner-length-formula}
+\end{equation}
+If one angle is at least \(2\pi/3\), the minimizing network collapses to the
+two sides adjacent to that angle.
+\end{proposition}
+
+\begin{proof}
+For an interior minimizer \(\mathbf y_F\), vary
+\(\mathbf y\mapsto \mathbf y+\delta\mathbf y\).  The first variation of
+\(\sum_r|\mathbf y-\mathbf x_r|\) is
+\[
+  \delta\mathbf y\cdot
+  \sum_{r=1}^3
+  \frac{\mathbf y_F-\mathbf x_r}
+       {|\mathbf y_F-\mathbf x_r|}.
+\]
+It vanishes for all \(\delta\mathbf y\) precisely when the three unit vectors
+from the sources to the junction sum to zero.  Three unit vectors sum to zero
+only when their pairwise angles are \(2\pi/3\).
+
+Set \(r_i=|\mathbf y_F-\mathbf x_i|\).  Because the angles at the junction are
+\(2\pi/3\),
+\[
+  a^2=r_2^2+r_3^2+r_2r_3,\qquad
+  b^2=r_3^2+r_1^2+r_3r_1,\qquad
+  c^2=r_1^2+r_2^2+r_1r_2 .
+\]
+Also the total area is the sum of the three triangles with common vertex
+\(\mathbf y_F\):
+\[
+  \Delta
+  =
+  \frac{\sqrt3}{4}
+  (r_1r_2+r_2r_3+r_3r_1).
+\]
+Therefore
+\[
+  \frac12(a^2+b^2+c^2+4\sqrt3\,\Delta)
+  =
+  r_1^2+r_2^2+r_3^2
+  +2(r_1r_2+r_2r_3+r_3r_1)
+  =
+  (r_1+r_2+r_3)^2 ,
+\]
+which proves \eqref{eq:qcd-string-steiner-length-formula}.  If an angle is
+at least \(2\pi/3\), the stationarity condition cannot be realized by a point
+inside the triangle with all three meeting angles \(2\pi/3\).  The convexity
+of the sum of distances then places the minimum on the boundary; reducing the
+same one-dimensional problem along the boundary gives the vertex at the large
+angle, and the network is the union of the two adjacent sides.
+\end{proof}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[x=1cm,y=1cm,every node/.style={font=\scriptsize}]
+    \coordinate (A) at (-2.2,-1.0);
+    \coordinate (B) at (2.2,-1.0);
+    \coordinate (C) at (0.35,1.65);
+    \coordinate (F) at (0.05,-0.05);
+    \draw[gray!70,thick] (A)--(B)--(C)--cycle;
+    \draw[purple!75!black,very thick] (F)--(A);
+    \draw[purple!75!black,very thick] (F)--(B);
+    \draw[purple!75!black,very thick] (F)--(C);
+    \fill[blue!75!black] (A) circle (2.6pt);
+    \fill[blue!75!black] (B) circle (2.6pt);
+    \fill[blue!75!black] (C) circle (2.6pt);
+    \fill[purple!80!black] (F) circle (2.4pt);
+    \node[below left] at (A) {\(\mathbf x_1\)};
+    \node[below right] at (B) {\(\mathbf x_2\)};
+    \node[above] at (C) {\(\mathbf x_3\)};
+    \node[right,purple!80!black] at (F) {\(\mathbf y_F\)};
+    \draw[->,gray!70] ($(F)+(0.45,-0.15)$) arc[start angle=-18,end angle=-138,radius=0.47];
+    \draw[->,gray!70] ($(F)+(-0.25,0.39)$) arc[start angle=122,end angle=2,radius=0.47];
+    \node[gray!80!black] at (-0.55,-0.48) {\(2\pi/3\)};
+    \node[gray!80!black] at (0.58,0.42) {\(2\pi/3\)};
+    \node[purple!75!black,align=center] at (0,-1.65)
+      {\(L_Y=|\mathbf y_F-\mathbf x_1|+
+      |\mathbf y_F-\mathbf x_2|+|\mathbf y_F-\mathbf x_3|\)};
+  \end{tikzpicture}
+  \caption{For three static fundamental sources in pure \(SU(3)\) Yang--Mills
+  theory, the long-distance baryonic string model uses a gauge-invariant
+  color junction.  When all triangle angles are below \(2\pi/3\), the leading
+  network is the Steiner tree whose three segments meet at \(2\pi/3\).}
+  \label{fig:qcd-string-baryonic-y-network}
+\end{figure}
+
+For an equilateral triangle of side \(a\),
+\eqref{eq:qcd-string-steiner-length-formula} gives
+\[
+  L_Y=\sqrt3\,a .
+\]
+The frequently used pairwise comparison length
+\[
+  L_\Delta=\frac12(a+b+c)
+\]
+would give \(L_\Delta=3a/2\) in the same equilateral geometry.  These are
+different large-distance hypotheses for the static baryon sector, not two
+forms of the same formula.  The gauge-invariant object in the baryonic
+Wilson-line construction contains a junction, and the effective string
+description must decide, by matching to the gauge theory, whether the
+long-distance energy is governed by a junction network, by an approximately
+pairwise regime over the available distances, or by a crossover between the
+two.
+
+\subsection{Closed Flux Tubes, Glueball Channels, and Large-N String Coupling}
+
+A closed flux tube is cleanly defined on a spatial torus by a spatial
+Polyakov loop winding a noncontractible cycle,
+\[
+  \mathcal P_R(\tau)
+  =
+  \operatorname{tr}_R\,
+  \mathcal P\exp\left(i\oint_{S^1_L}A_i(\tau,\mathbf x)\,\dd x^i\right).
+\]
+Its Euclidean time correlator has a transfer-matrix expansion
+\[
+  \langle \mathcal P_R(\tau)^\dagger\mathcal P_R(0)\rangle
+  =
+  \sum_n
+  |\langle n;k,L|\mathcal P_R(0)\vac\rangle|^2
+  \ee^{-E_n^{(k)}(L)\tau},
+\]
+where \(k\) is the center charge of \(R\).  The closed-string formulas
+\eqref{eq:qcd-string-closed-luscher},
+\eqref{eq:qcd-string-closed-gaussian-levels}, and
+\eqref{eq:qcd-string-ng-closed-levels} apply to this winding sector under the
+large-\(L\) effective-string hypotheses stated above.
+
+This winding-sector statement is sharper than the phrase ``glueballs are
+closed strings.''  A glueball is a state in the vacuum sector created by local
+gauge-invariant operators such as
+\(\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\) and
+\(\operatorname{tr}(F_{\mu\nu}\widetilde F^{\mu\nu})\).  A noncontractible
+winding flux tube belongs to a different finite-volume sector.  A
+contractible closed flux loop, by contrast, can shrink to a size of order
+\(\sigma^{-1/2}\), where the long-string derivative expansion is no longer
+controlled.  Thus the closed-string picture of glueball spectra and Regge
+trajectories is a dynamical large-\(N_c\) and effective-string hypothesis, not
+a consequence of the Gaussian Luscher calculation.  What is nonperturbatively
+well defined are the gauge-invariant correlators and their spectral
+decomposition; the string interpretation is an additional infrared
+organization whose range must be tested or derived.
+
+Large \(N_c\) supplies the natural weak-coupling parameter for such a string
+interpretation once a confining flux-tube spectrum exists.  The ribbon-graph
+counting in the preceding section gives a connected contribution of order
+\[
+  N_c^{2-2h-b}
+\]
+for a surface of genus \(h\) with \(b\) color-trace boundaries before any
+chosen normalization of the external loop operators.  A handle is therefore
+suppressed by \(N_c^{-2}\).  Identifying the closed-string genus expansion as
+\(g_s^{2h-2}\) gives the parametric relation
+\[
+  g_s\sim \frac1{N_c}.
+\]
+The same counting implies that splitting and joining processes of normalized
+closed-string states are suppressed by powers of \(1/N_c\).  This statement
+is a consequence of color topology; it is not a derivation of the worldsheet
+action.  The microscopic input still required is the existence of a
+confining large-\(N_c\) gauge theory with isolated flux-tube and glueball
+states in the relevant channels.
+
+Three-dimensional confining gauge theories are especially clean testbeds for
+the same logic.  In \(D=3\) there is a single transverse displacement field,
+so the universal terms become
+\[
+  \Delta E_0^{\mathrm{open}}(L)=-\frac{\pi}{24L},
+  \qquad
+  \Delta E_0^{\mathrm{closed}}(L)=-\frac{\pi}{6L}.
+\]
+The reduced transverse symmetry makes the lattice spectral assignments less
+crowded than in four dimensions, while the effective-string expansion has the
+same conceptual structure: line operators define the sector, the transfer
+matrix extracts energies, the free transverse field gives the universal
+Casimir term, and later coefficients encode symmetry constraints and
+microscopic matching.
+
 With dynamical fundamental quarks the fundamental one-form symmetry is
 explicitly broken.  The static-source Hilbert space then contains states made
 from two color-singlet static-light mesons, and the ground-state energy at very

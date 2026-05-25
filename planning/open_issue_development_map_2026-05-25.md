@@ -89,7 +89,13 @@ comment identifying the manuscript location and verification performed.
 - #486: Standard Model as a rigorous hybrid object.  Compiled Volume IV
   chapter added 2026-05-25; issue is closable after build and push
   verification.
-- #492: QCD string and confining flux tube.  Target: Volume IV and Volume IX.
+- #492: QCD string and confining flux tube.  Volume II/QCD-chapter completion
+  pass landed 2026-05-25: line-operator definition, static-source spectral
+  extraction, Luscher terms, excited spectra, baryonic \(Y\)-junctions,
+  closed winding sectors, glueball-boundary caveats, large-\(N_c\) string
+  coupling, and \(D=3\) testbed checks.  Later Volume IX work may revisit
+  gauge-string duality, but the issue request is now addressed at the core
+  QCD level.
 - #504: large-\(N\), flux strings, and baryons.  Target: Volumes IV and IX.
 - #522: lattice plaquette expansion order.  Target: Volume IV lattice chapter.
 - #524: lattice Yang--Mills sign convention.  Target: Volume IV lattice

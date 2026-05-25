@@ -95,7 +95,9 @@ Current checks:
   Casimir coefficients \(-1/24\) and \(-1/6\), the displayed
   Nambu--Goto reference expansion coefficients at orders \(1/L\) and
   \(1/L^3\), the first \(D=4\) open-oscillator degeneracies, and the
-  excited-level expansion coefficients with closed-string level matching.
+  excited-level expansion coefficients with closed-string level matching, and
+  the displayed baryonic \(Y\)-string Steiner lengths in the equilateral and
+  \(120^\circ\)-threshold cases.
 - `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
   Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
   unitarity and crossing, the sign and total integral of the TBA kernel, the

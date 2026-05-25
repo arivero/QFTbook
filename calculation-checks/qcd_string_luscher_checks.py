@@ -11,6 +11,11 @@ def assert_equal(name: str, got: Fraction, expected: Fraction) -> None:
         raise AssertionError(f"{name} failed: got {got}, expected {expected}")
 
 
+def assert_less(name: str, left: Fraction, right: Fraction) -> None:
+    if not left < right:
+        raise AssertionError(f"{name} failed: expected {left} < {right}")
+
+
 def check_open_and_closed_casimir_coefficients() -> None:
     zeta_minus_one = Fraction(-1, 12)
 
@@ -80,11 +85,60 @@ def check_excited_level_expansion_coefficients() -> None:
     )
 
 
+def steiner_length_squared_from_sides(
+    sum_squares: Fraction,
+    four_sqrt_three_area: Fraction,
+) -> Fraction:
+    """Return L_Y^2 = (a^2+b^2+c^2+4 sqrt(3) Delta)/2."""
+
+    return (sum_squares + four_sqrt_three_area) / 2
+
+
+def check_baryonic_y_string_geometry() -> None:
+    # Equilateral side length a=1:
+    # Delta = sqrt(3)/4, so 4 sqrt(3) Delta = 3.
+    equilateral_sum_squares = Fraction(3, 1)
+    equilateral_four_sqrt_three_area = Fraction(3, 1)
+    equilateral_y_squared = steiner_length_squared_from_sides(
+        equilateral_sum_squares,
+        equilateral_four_sqrt_three_area,
+    )
+    assert_equal(
+        "equilateral Y-string length squared",
+        equilateral_y_squared,
+        Fraction(3, 1),
+    )
+
+    # The pairwise Delta comparison length is (a+b+c)/2 = 3/2 for a=1.
+    delta_squared = Fraction(9, 4)
+    assert_less(
+        "equilateral Delta comparison shorter than Y length",
+        delta_squared,
+        equilateral_y_squared,
+    )
+
+    # At the 120-degree boundary with adjacent sides 1,1 and opposite side
+    # sqrt(3), the Steiner formula gives L_Y^2 = 4, matching the collapsed
+    # two-side network of length 2.
+    threshold_sum_squares = Fraction(1, 1) + Fraction(1, 1) + Fraction(3, 1)
+    threshold_four_sqrt_three_area = Fraction(3, 1)
+    threshold_y_squared = steiner_length_squared_from_sides(
+        threshold_sum_squares,
+        threshold_four_sqrt_three_area,
+    )
+    assert_equal(
+        "120-degree collapsed Y-string length squared",
+        threshold_y_squared,
+        Fraction(4, 1),
+    )
+
+
 def main() -> None:
     check_open_and_closed_casimir_coefficients()
     check_nambu_goto_reference_expansion()
     check_open_oscillator_degeneracies()
     check_excited_level_expansion_coefficients()
+    check_baryonic_y_string_geometry()
     print("All QCD-string effective-spectrum checks passed.")
 
 

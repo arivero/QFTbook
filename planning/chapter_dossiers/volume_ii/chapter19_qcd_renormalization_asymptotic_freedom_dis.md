@@ -113,6 +113,22 @@ The chapter must define and derive:
   levels, closed-string left/right levels, longitudinal momentum, level
   matching, Gaussian large-\(L\) level energies, and the Nambu--Goto reference
   square-root spectra and \(1/L^3\) expansions;
+- the operational extraction of the string tension from Wilson loops,
+  Polyakov-loop correlators, and transfer-matrix spectral data, with local
+  perimeter/corner renormalizations separated from the area coefficient and
+  the zero-temperature string tension distinguished from the finite-temperature
+  center-symmetry order parameter;
+- baryonic static-source sectors built from \(SU(N_c)\) junction operators,
+  including the \(SU(3)\) \(Y\)-string potential, the Steiner/Fermat
+  \(2\pi/3\) condition, the formula
+  \(L_Y^2=(a^2+b^2+c^2+4\sqrt3\,\Delta)/2\), its collapsed
+  \(120^\circ\) boundary case, and the distinction from pairwise
+  \(\Delta\)-ansatz fits;
+- closed winding flux tubes as finite-volume sectors created by spatial
+  Polyakov loops, the boundary between these sectors and local glueball
+  channels, the large-\(N_c\) relation \(g_s\sim 1/N_c\) as color-topology
+  counting rather than a derivation of confinement, and the special simplicity
+  of \(D=3\) effective-string tests;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
@@ -209,32 +225,42 @@ The chapter must define and derive:
     is \(\prod_{n\ge1}(1-q^n)^{-(D-2)}\), closed flux tubes carry left and
     right levels satisfying \(N_L-N_R=q\), and the Nambu--Goto formulas are
     reference spectra rather than definitions of the QCD string.
-15. Colored quark and gluon fields are not physical asymptotic states in the
+15. The string tension is the coefficient of the large-rectangle area term
+    after local line renormalizations are separated, equivalently the
+    large-\(L\) slope of the transfer-matrix ground-state energy in the
+    static-source sector under the stated spectral assumptions.  Baryonic
+    string sectors require junction line operators; for three sources with
+    all angles below \(120^\circ\), the leading \(Y\)-network length obeys
+    \(L_Y^2=(a^2+b^2+c^2+4\sqrt3\,\Delta)/2\).  Closed winding flux tubes are
+    clean finite-volume sectors, while identifying local glueballs with
+    closed strings is an additional large-\(N_c\)/effective-string
+    organization, not a theorem following from the Luscher determinant.
+16. Colored quark and gluon fields are not physical asymptotic states in the
    QCD confinement scenario; deriving this spectral property from the
    four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
    as a nonperturbative physical hypothesis when discussing phenomenology.
    Physical scattering statements must be formulated in terms of
    gauge-invariant states or controlled high-energy factorization data.
-16. Energy correlators are nonperturbative detector observables once the
+17. Energy correlators are nonperturbative detector observables once the
     stress-tensor flux limit is constructed on the physical Hilbert space.
-17. Smeared detector observables are continuous under soft emission and
+18. Smeared detector observables are continuous under soft emission and
     collinear recombination, and this supplies the measurement-function input
     for KLN/factorization finiteness at fixed perturbative order.
-18. The energy-energy correlator and energy-flow polynomials are formulated in
+19. The energy-energy correlator and energy-flow polynomials are formulated in
     terms of positive calorimetric measures rather than colored parton labels.
-19. DIS is controlled by an inclusive Wightman current-current tensor; the
+20. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
     continuation to the physical inclusive tensor.
-20. The leading-twist local operators and the gauge-invariant light-ray
+21. The leading-twist local operators and the gauge-invariant light-ray
     operators are two presentations of the same short-distance data; asymptotic
     freedom changes Bjorken scaling into logarithmic scaling violation governed
     by anomalous dimensions.
-21. In QCD, partonic initial-state collinear singularities are not removed by
+22. In QCD, partonic initial-state collinear singularities are not removed by
     an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
     renormalized Wilson-line light-ray operators defining PDFs, and the
     resulting factorization-scale dependence is governed by DGLAP evolution.
-22. Physical QCD asymptotic completeness remains an open large-time problem:
+23. Physical QCD asymptotic completeness remains an open large-time problem:
     one must construct wave operators from stable color-singlet asymptotic
     spaces, treat resonances through analytic scattering data, include
     massless Goldstone modes when chiral limits are taken, and prove that
@@ -260,6 +286,8 @@ The chapter must define and derive:
   \(F=3\) versus \(F=1\) face count and \(N_c^{-2}\) suppression marked.
 - QCD-string figure: static-source flux tube and the associated worldsheet
   transverse fluctuations.
+- Baryonic \(Y\)-string figure: three static sources, a color junction, and
+  \(2\pi/3\) Fermat/Steiner meeting angles.
 - Energy-flow detector figure: stress-tensor flux through a large sphere,
   smeared angular test functions, and the induced calorimetric measure on
   \(S^2\).
@@ -349,3 +377,11 @@ The chapter must define and derive:
   structure, including open oscillator degeneracies, closed level matching,
   and Nambu--Goto reference spectra through \(1/L^3\), with the calculation
   check extended accordingly.
+- 2026-05-25 issue #492 completion pass: added static-observable and lattice
+  extraction logic for the string tension, a transfer-matrix proposition
+  equating the area coefficient with the static-potential slope, baryonic
+  junction operators and the \(Y\)-string Steiner-length derivation with a new
+  figure, closed winding flux tubes versus local glueball channels,
+  large-\(N_c\) string-coupling counting, and the \(D=3\) effective-string
+  testbed; extended `calculation-checks/qcd_string_luscher_checks.py` to
+  verify the displayed baryonic geometry.
