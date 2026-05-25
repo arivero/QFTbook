@@ -26,6 +26,14 @@ state the hypotheses and conclusion in the manuscript, state the local role
 of the theorem immediately after it, and do not attach a `proof` environment
 unless the proof is actually reproduced.
 
+For theorem-level claims specifically about QFT, `quotedtheorem` is an
+interim honesty boundary, not the final monograph standard.  Such a theorem
+must either receive a self-contained proof somewhere in the monograph
+proper, be downgraded to a clearly marked status statement, or be recorded as
+an explicit proof obligation/open problem with the missing analytic steps
+named.  Literature proofs in physics are starting material for scrutiny; they
+are never authority by themselves.
+
 ## Ambition And Frontier Rule
 
 The monograph is not a textbook summary project.  Its target standard is the

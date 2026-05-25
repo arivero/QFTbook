@@ -28,7 +28,10 @@
 - \(\phi^4_d\) superficial-degree formula and explicit tadpole cutoff
   asymptotics.
 - \(\Phi^4_3\) regulated action with local mass and vacuum-energy
-  renormalizations.
+  renormalizations, plus a quoted constructive output theorem for the
+  massive small-coupling phase-cell regimes.
+- Open proof obligation for a self-contained monograph proof of the quoted
+  \(\Phi^4_3\) constructive output theorem.
 - OS data output from constructive theorems.
 - Comparison problem for cluster, stochastic, and rigorous-RG constructions.
 
@@ -70,8 +73,10 @@
 5. \(\Phi^4_3\) needs regulator-dependent local terms as part of the
    regulated action; the allowed terms follow from power counting.
 6. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
-   the OS
-   properties in the constructed regimes.
+   the OS properties in the constructed regimes; the chapter now marks this
+   as a `quotedtheorem` rather than a locally proved theorem, and explicitly
+   records the missing self-contained constructive proof as an open proof
+   obligation.
 7. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
@@ -98,3 +103,11 @@
   \(B_{R_0}\epsilon\le a'\) smallness condition, and derives exponential
   clustering from the unused \(a-a'\) weight along paths connecting the two
   observable supports.
+- 2026-05-25 issue #573 pass: the \(\Phi^4_3\) constructive output result is
+  no longer presented with a `proof[Proof architecture]` block.  It is now a
+  `quotedtheorem` with the four phase-cell proof components kept as status
+  text, and the nearby labelled formulas were converted to numbered equation
+  environments so references point to equation counters rather than ambient
+  theorem counters.  After the later strictness clarification, the chapter
+  also says explicitly that this theorem is a monograph-internal proof
+  obligation, not something accepted on the authority of physics literature.

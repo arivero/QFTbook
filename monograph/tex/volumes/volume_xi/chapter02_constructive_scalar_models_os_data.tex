@@ -562,7 +562,7 @@ In three Euclidean dimensions the quartic scalar theory is
 superrenormalizable, but Wick ordering alone does not remove every local
 divergence.  A regulator may be given by a momentum cutoff, lattice spacing,
 or mollifier.  A typical finite-volume action is
-\[
+\begin{equation}
   S_{\varepsilon,\Lambda}(\phi)
   =
   \frac12\langle\phi,(-\Delta+m^2)\phi\rangle
@@ -574,7 +574,7 @@ or mollifier.  A typical finite-volume action is
     +b_\varepsilon
   \right]\dd^3x .
   \label{eq:phi-four-three-regulated-action}
-\]
+\end{equation}
 The coefficients \(a_\varepsilon\) and \(b_\varepsilon\) are local
 coordinates of the regulated action.  They are not a second Lagrangian and
 are not optional decorations.  Their values are fixed by the renormalization
@@ -585,14 +585,14 @@ conditions or by the constructive normalization scheme.
 For connected scalar \(\phi^4\) graphs in \(d\) Euclidean dimensions with
 \(E\) external legs, \(V\) quartic vertices, and \(L\) loops, the superficial
 degree of divergence is
-\[
+\begin{equation}
   \omega_d
   =
   dL-2I
   =
   d-\frac{d-2}{2}E+(d-4)V .
   \label{eq:phi-four-superficial-degree}
-\]
+\end{equation}
 In \(d=3\), only finitely many local divergences occur: vacuum-energy and
 two-point local counterterms.  The four-point and higher connected kernels
 are superficially convergent after subdivergences are removed.
@@ -627,7 +627,7 @@ With sharp momentum cutoff \(|p|\leq\Lambda\),
   \frac{\dd^dp}{(2\pi)^d}\frac{1}{p^2+m^2}
 \]
 satisfies
-\[
+\begin{equation}
   I_2(\Lambda,m)
   =
   \frac{1}{2\pi}\log\Lambda+O(1),
@@ -636,7 +636,7 @@ satisfies
   =
   \frac{\Lambda}{2\pi^2}+O(1).
   \label{eq:tadpole-cutoff-asymptotics}
-\]
+\end{equation}
 \end{lemma}
 
 \begin{proof}
@@ -655,24 +655,26 @@ For \(d=2\), \(|S^1|=2\pi\) and the radial integral is
 
 In the normalization \(\lambda\phi^4\), Wick ordering the quartic interaction
 produces
-\[
+\begin{equation}
   \lambda:\!\phi_\varepsilon^4\!:
   =
   \lambda\phi_\varepsilon^4
   -6\lambda C_\varepsilon(0)\phi_\varepsilon^2
   +3\lambda C_\varepsilon(0)^2.
   \label{eq:phi-four-three-wick-coordinate-shift}
-\]
+\end{equation}
 Thus the leading mass-coordinate divergence is fixed by the six single
 contractions in \(\phi^4\).  In three dimensions a logarithmic two-loop
 local two-point divergence also appears.  In a BPHZ or phase-cell scheme it
 is encoded in the finite-regulator coordinate \(a_\varepsilon\), while the
 vacuum diagrams are encoded in \(b_\varepsilon\).
 
-\begin{theorem}[Constructive \(\Phi^4_3\) output datum]
+\begin{quotedtheorem}[Constructive \(\Phi^4_3\) output datum]
 \label{thm:phi-four-three-constructive-output}
-In the massive small-coupling regimes covered by the constructive
-\(\Phi^4_3\) theorems, there are choices of local coordinates
+Let the ultraviolet regulator, finite-volume boundary condition, and mass
+coordinate be chosen in one of the massive small-coupling regimes covered by
+the constructive \(\Phi^4_3\) phase-cell theorems.  Then there are choices
+of local coordinates
 \[
   a_\varepsilon=a_{\rm div}(\varepsilon)+a_{\rm fin},\qquad
   b_\varepsilon=b_{\rm div}(\varepsilon)+b_{\rm fin},
@@ -683,12 +685,30 @@ such that the regulated Schwinger functions associated with
 Schwinger distributions satisfying symmetry, Euclidean covariance,
 reflection positivity, regularity, clustering in the massive phase, and the
 growth hypotheses needed for OS reconstruction.
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}[Proof architecture]
-The proof is not the formal perturbative cancellation of the diagrams in
-\eqref{eq:phi-four-three-wick-coordinate-shift}.  It has four analytic
-components.
+This is a quoted constructive theorem, not a theorem proved in this
+paragraph.  Foundational sources include the Glimm--Jaffe--Spencer
+constructive program, Magnen--Seneor's infinite-volume construction of
+\(\Phi^4_3\), the Brydges--Federbush phase-cell expansion, and the
+presentation in Glimm--Jaffe's \emph{Quantum Physics: A Functional Integral
+Point of View}.\footnote{For the constructive lineage relevant here, see
+J.~Glimm and A.~Jaffe's constructive-field-theory papers and book,
+J.~Magnen and R.~Seneor on the infinite-volume \(\Phi^4_3\) model, and
+D.~Brydges and P.~Federbush on phase-cell expansions.  The statement above
+is intentionally quoted at theorem-boundary level because reproducing those
+multi-scale estimates would require a separate chapter-length proof.}  The
+proof is not the formal perturbative cancellation of the diagrams in
+\eqref{eq:phi-four-three-wick-coordinate-shift}; the constructive proof has
+four analytic components.
+
+In the final standard of this monograph, the quoted theorem is a proof
+obligation rather than an authority claim.  The cited constructive literature
+identifies the estimates to be checked, but a theorem about the existence of
+an interacting QFT should ultimately be accompanied here by a self-contained
+derivation of the regulator choice, stability bounds, phase-cell estimates,
+uniform infinite-volume convergence, reflection positivity, and OS growth
+conditions.
 
 First, the covariance is decomposed into phase cells or scales.  Field
 configurations are separated into small-field regions, where perturbative
@@ -699,12 +719,12 @@ Second, all local divergent pieces allowed by
 Lemma~\ref{lem:phi-four-power-counting} are extracted into the two
 coordinates \(a_\varepsilon\) and \(b_\varepsilon\).  The remaining polymer
 activities satisfy bounds of the type
-\[
+\begin{equation}
   \|K_j\|_{a,b}
   \leq
   C|\lambda|^{1+\delta}L^{-j\alpha}
   \label{eq:phi-four-three-polymer-bound}
-\]
+\end{equation}
 on scale \(j\), for positive \(\delta,\alpha\) in the constructed regime.
 
 Third, the cluster or phase-cell expansion is summed uniformly in the volume
@@ -719,7 +739,20 @@ reconstruction then gives the Lorentzian Wightman theory.  Each step is a
 theorem with hypotheses on the regulator, mass coordinate, coupling size, and
 volume sequence; the Lagrangian label \(\Phi^4_3\) abbreviates this entire
 construction.
-\end{proof}
+
+\begin{openproblem}[Self-contained constructive proof of \(\Phi^4_3\)]
+\label{op:self-contained-phi-four-three-proof}
+Give a complete monograph-internal proof of
+Quoted Theorem~\ref{thm:phi-four-three-constructive-output}.  The proof must
+construct the phase-cell decomposition, state the small-field and large-field
+norms, prove the stability estimates, identify the local coordinates
+\(a_\varepsilon\) and \(b_\varepsilon\) including the logarithmic mass
+coordinate, prove the scale-dependent polymer bounds such as
+\eqref{eq:phi-four-three-polymer-bound}, sum the expansion uniformly in the
+volume and cutoff, and verify the OS reconstruction hypotheses.  Until this
+is supplied, the theorem is a documented constructive-QFT input rather than
+a self-contained theorem of this monograph.
+\end{openproblem}
 
 \section{OS Data Produced by a Construction}
 
