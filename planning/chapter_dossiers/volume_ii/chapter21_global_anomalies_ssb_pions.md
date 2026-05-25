@@ -170,8 +170,10 @@
   with fundamental quarks, so the pion functional reproduces the microscopic
   flavor anomaly.
 - The electromagnetic specialization includes the microscopic quark triangle,
-  \(\operatorname{Tr}(\sigma_3Q^2/2)=e^2/6\), and the local
-  \(\pi^0\gamma\gamma\) vertex in the gauged WZW functional.
+  the anticommutator factor
+  \(\operatorname{Tr}(T^3\{q,q\})=2\operatorname{Tr}(T^3q^2)=1/3\), and the
+  local \(\pi^0\gamma\gamma\) vertex in the gauged WZW functional with
+  coefficient \(e^2/(16\pi^2f_\pi)\) for \(N_c=3\).
 - The Vafa--Witten positivity argument is conditional on a well-defined
   finite-regulator gauge-invariant Euclidean vectorlike measure, a continuum
   scaling limit when a continuum conclusion is claimed, reflection positivity of
