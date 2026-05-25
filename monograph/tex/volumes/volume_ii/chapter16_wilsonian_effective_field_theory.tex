@@ -2461,6 +2461,84 @@ identification requires additional existence and uniform-estimate theorems for
 the model under study.
 \end{remark}
 
+\begin{corollary}[Fixed-loop comparison of renormalizability criteria]
+\label{cor:fixed-loop-bphz-polchinski-renormalizability}
+In the massive, nonexceptional, finite-projector setting of
+Theorem~\ref{thm:finite-order-bphz-wilsonian-matching}, the following two
+renormalizability criteria are equivalent through the fixed loop order
+\(\ell\), up to the displayed
+\((\mu/\Lambda)^{p_N}\) error from omitted irrelevant Wilsonian coordinates.
+\begin{enumerate}[label=(\roman*)]
+  \item BPHZ renormalizability: after applying the forest formula in the
+  chosen scheme \(\mathfrak b\), all projected 1PI coordinates
+  \(g_I^{\mathfrak b,(\leq\ell)}(\mu)\) have finite
+  \(\Lambda_0\to\infty\) limits, and the required subtraction freedom is a
+  finite list of local Taylor coefficients.
+  \item Polchinski-Wilsonian renormalizability: the Wilsonian trajectory is
+  specified at scale \(\Lambda\) by a finite list of relevant or marginal local
+  coordinates \(u_A\), together with an irrelevant remainder whose norm obeys
+  Lemma~\ref{lem:low-momentum-taylor-remainder-wilsonian}; the selected low
+  1PI coordinates are then finite functions of \(u_A\) after low-mode
+  integration.
+\end{enumerate}
+First, BPHZ subtraction data determine Wilsonian local coordinates by
+Proposition~\ref{prop:bphz-local-parts-wilsonian-coordinates}.  The selected
+1PI coordinates are then obtained by the finite matching map
+\(M_I^{(\ell,N)}\).  Conversely, a Wilsonian datum satisfying the stated norm
+bound determines finite BPHZ projected coordinates: apply the same projectors
+\(\Pi_I\) to the low-mode 1PI functional, and assign the resulting local Taylor
+parts to the BPHZ subtraction coordinates.  A change of BPHZ subtraction point,
+oversubtraction degree, or finite Taylor part changes the Wilsonian description
+by a finite local coordinate transformation in the retained chart.
+\end{corollary}
+
+\begin{proof}
+Assume first the BPHZ criterion.  Proposition
+\ref{prop:bphz-local-parts-wilsonian-coordinates} identifies every forest
+Taylor subtraction through the selected loop order with a local vertex in the
+Wilsonian chart.  Minimal subtractions occupy relevant and marginal
+coordinates, while oversubtractions occupy the explicitly retained
+higher-derivative local coordinates.  After these local coordinates are fixed,
+Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} gives
+\[
+  g_I^{\mathfrak b,(\leq\ell)}(\mu)
+  =
+  M_I^{(\ell,N)}(u(\Lambda);\Lambda,\mu,\mathfrak b)
+  +
+  R_I^{(\ell,N)}
+\]
+with the stated bound on \(R_I^{(\ell,N)}\).  Thus the BPHZ finite local
+subtraction freedom is represented by the finite Wilsonian coordinate list,
+and the omitted Wilsonian coordinates affect the selected projectors only by
+the Taylor-remainder estimate.
+
+Conversely, assume the Wilsonian criterion.  The finite-regulator Gaussian
+identity constructs the same low-source connected functional as the original
+regulated theory, and the Hessian hypothesis in
+Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} constructs the low-mode
+Legendre transform.  Applying the projectors \(\Pi_I\) to this low-mode 1PI
+functional gives finite numbers through loop order \(\ell\).  For every
+superficially divergent graph contributing to these projectors, its local
+Taylor part is one of the finitely many local monomials in the retained
+Wilsonian chart, again by Proposition
+\ref{prop:bphz-local-parts-wilsonian-coordinates}.  Assigning those Taylor
+coefficients as BPHZ subtraction coordinates gives a BPHZ scheme whose
+projected coordinates agree with the Wilsonian values up to the same
+remainder estimate.  The construction is recursive in loop order because the
+forest formula subtracts proper divergent subgraphs before the overall graph,
+whereas the Wilsonian matching recursion displayed above solves the local
+coordinate map at order \(r\) using only lower-order coordinate data and the
+explicit \(r\)-loop low-mode graphs.
+
+Finally, the difference between two BPHZ subtraction choices is a finite sum
+of Taylor polynomials in external momenta.  Fourier transforming these
+polynomials gives a finite sum of local vertices, hence a finite change of
+the retained Wilsonian coordinates.  Where the Jacobian in
+Theorem~\ref{thm:finite-order-bphz-wilsonian-matching} is invertible, this
+finite change is a local coordinate transformation by the implicit function
+theorem.
+\end{proof}
+
 \section{One-Loop Matching in the Quartic Scalar Theory}
 
 The theorem's matching map can be displayed directly in the four-point

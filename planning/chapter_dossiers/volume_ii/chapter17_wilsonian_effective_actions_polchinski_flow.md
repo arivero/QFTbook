@@ -477,6 +477,14 @@ The chapter must define and derive:
   coordinates, and the recursive loop-order construction of the matching map;
   cross-links were added back to the BPHZ finite-parts and normal-product
   discussions.
+- 2026-05-25 issue #497 closure pass: added a fixed-loop comparison corollary
+  proving the equivalence of the BPHZ and Polchinski-Wilsonian
+  renormalizability criteria in the massive, nonexceptional,
+  finite-projector setting already established in the matching theorem.  The
+  proof runs in both directions, constructs the coordinate assignment through
+  local Taylor parts and low-mode 1PI projectors, and states the
+  \((\mu/\Lambda)^{p_N}\) irrelevant-coordinate error rather than claiming a
+  nonperturbative equivalence.
 - 2026-05-24 issue #358 pass: added the vacuum-energy normalization note after
   the Wilson-Polchinski derivation, explaining why the
   \(\phi\)-independent shell normalization is absent from the displayed
