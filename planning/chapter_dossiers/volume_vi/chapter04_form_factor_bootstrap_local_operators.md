@@ -13,6 +13,8 @@
 - Watson exchange equation derived from factorized scattering.
 - Cyclicity and semi-locality monodromy.
 - Kinematic annihilation pole and bound-state pole equations.
+- Free Majorana examples: the energy-density two-particle form factor and
+  the odd Ising order/twist form-factor family.
 - Form-factor datum for a scalar local operator.
 - Reconstruction boundary for Wightman distributions from spectral series.
 
@@ -26,6 +28,8 @@
 | \(S_{ab}(\theta)\) | two-body scattering map |
 | \(\omega_{\mathcal O,a}\) | semi-locality monodromy datum |
 | \(\Gamma_{ab}^c\) | bound-state residue tensor |
+| \(F_n^\varepsilon\) | free-Majorana energy-density form factor |
+| \(F_n^\Sigma\) | odd Ising order/twist form-factor family |
 
 ## Claim Ledger
 
@@ -34,9 +38,22 @@
 2. Kinematic-pole residues are differences between direct annihilation and
    annihilation after scattering through spectator particles.
 3. Bound-state form-factor poles use the same residue tensors as scattering.
-4. Form-factor axioms do not by themselves complete local reconstruction;
+4. In the free Majorana example with \(S=-1\), the energy-density form factor
+   checks exchange and cyclicity with a finite two-particle local scalar
+   datum.
+5. The odd Ising product formula
+   \(F_{2k+1}^{\Sigma}=v i^k\prod_{i<j}\tanh((\theta_i-\theta_j)/2)\)
+   satisfies Watson exchange, cyclicity, and the kinematic annihilation
+   recursion; the \(i^k\) factor is fixed by the residue equation.
+6. Form-factor axioms do not by themselves complete local reconstruction;
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
+
+## Calculation Checks
+
+- `calculation-checks/ising_form_factor_checks.py` verifies the free-Majorana
+  energy-density exchange/cyclicity identities and the Ising odd-family
+  Watson, cyclicity, and kinematic-pole residue signs.
 
 ## Figures
 

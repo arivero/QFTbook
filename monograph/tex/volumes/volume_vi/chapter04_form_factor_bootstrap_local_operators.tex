@@ -134,6 +134,158 @@ matrix elements; the displayed equation is the form-factor axiom used after
 that construction has supplied the required domains and boundary values.
 \end{proof}
 
+\section{Free Majorana Examples}
+
+The form-factor axioms become concrete already in the massive Ising field
+theory.  In the fermionic particle basis there is one self-conjugate particle
+of mass \(m\), and the diagonal two-body scattering function is the constant
+\[
+  S(\theta)=-1 .
+\]
+The constant phase is physically important: the ordered rapidity variables
+are still bosonic coordinates on asymptotic particle states, but exchanging
+two particles multiplies the finite-particle basis by \(-1\).  Thus a scalar
+form factor must be antisymmetric in rapidity variables when it has an even
+number of Majorana particles.
+
+\begin{example}[Energy-density form factor]
+\label{ex:free-majorana-energy-form-factor}
+Fix a scalar normalization constant \(\kappa_{\varepsilon}\).  The massive
+Majorana energy-density operator \(\varepsilon\) may be normalized by
+\[
+  F_0^\varepsilon=0,\qquad
+  F_2^\varepsilon(\theta_1,\theta_2)
+  =
+  \kappa_{\varepsilon}
+  \sinh\!\left(\frac{\theta_1-\theta_2}{2}\right),
+  \qquad
+  F_n^\varepsilon=0\quad(n\neq2).
+\]
+The exchange equation follows because
+\[
+  \sinh\!\left(\frac{\theta_2-\theta_1}{2}\right)(-1)
+  =
+  \sinh\!\left(\frac{\theta_1-\theta_2}{2}\right).
+\]
+Cyclicity follows from
+\[
+  \sinh\!\left(\frac{\theta_1+2\pi\ii-\theta_2}{2}\right)
+  =
+  -\sinh\!\left(\frac{\theta_1-\theta_2}{2}\right)
+  =
+  \sinh\!\left(\frac{\theta_2-\theta_1}{2}\right).
+\]
+The kinematic-pole equation is also satisfied: the displayed form factors
+are entire, and the right side vanishes because \(F_0^\varepsilon=0\) for no
+spectators and because \(1-S^2=0\) for two spectators.  This example is
+finite rather than recursive; it checks that the sign conventions of Watson
+exchange and \(2\pi\ii\) cyclicity are compatible with a familiar local
+quadratic field.
+\end{example}
+
+The order/disorder fields of the Ising theory are more instructive because
+their form factors form an infinite family.  We record the odd family in a
+normalization \(v\in\C\):
+\begin{equation}
+  F_{2k+1}^{\Sigma}(\theta_1,\ldots,\theta_{2k+1})
+  =
+  v\,\ii^k
+  \prod_{1\le i<j\le 2k+1}
+  \tanh\!\left(\frac{\theta_i-\theta_j}{2}\right),
+  \qquad
+  F_{2k}^{\Sigma}=0 .
+  \label{eq:ising-order-form-factors}
+\end{equation}
+The constant \(v=F_1^\Sigma\) is the one-particle normalization in this
+sector.  The complementary even family is obtained by exchanging the order
+and disorder sectors; which of the two is called \(\sigma\) or \(\mu\)
+depends on the sign convention for the massive Ising perturbation.  The
+mathematical point here is independent of that naming convention.
+
+\begin{proposition}[Ising odd form-factor family]
+\label{prop:ising-odd-form-factor-family}
+The family \eqref{eq:ising-order-form-factors} satisfies Watson exchange,
+the local cyclicity equation for odd particle number, and the kinematic-pole
+equation with \(S=-1\):
+\[
+  -\ii\,\operatorname*{Res}_{\theta'=\theta+\ii\pi}
+  F_{n+2}^{\Sigma}(\theta',\theta,\eta_1,\ldots,\eta_n)
+  =
+  \left(1-(-1)^n\right)F_n^\Sigma(\eta_1,\ldots,\eta_n)
+\]
+for every odd \(n\).  For even \(n\), both sides vanish because
+\(F_n^\Sigma=F_{n+2}^\Sigma=0\).
+\end{proposition}
+
+\begin{proof}
+Set
+\[
+  P_N(\theta_1,\ldots,\theta_N)
+  =
+  \prod_{1\le i<j\le N}
+  \tanh\!\left(\frac{\theta_i-\theta_j}{2}\right).
+\]
+Interchanging adjacent variables changes exactly one factor by a sign and
+permutes the rest, so \(P_N\) is antisymmetric.  Since \(S=-1\), this is
+precisely Watson's equation.
+
+For \(N\) odd,
+\[
+  P_N(\theta_1+2\pi\ii,\theta_2,\ldots,\theta_N)
+  =
+  P_N(\theta_1,\theta_2,\ldots,\theta_N),
+\]
+because \(\tanh(z+\pi\ii)=\tanh z\).  Moving \(\theta_1\) from the first
+slot to the last reverses its order relative to \(N-1\) variables and hence
+multiplies the antisymmetric product by \((-1)^{N-1}=1\).  This proves
+cyclicity for the odd family.
+
+It remains to compute the annihilation residue.  Put
+\[
+  \theta'=\theta+\ii\pi+\epsilon .
+\]
+The pair factor is
+\[
+  \tanh\!\left(\frac{\theta'-\theta}{2}\right)
+  =
+  \tanh\!\left(\frac{\ii\pi+\epsilon}{2}\right)
+  =
+  \coth\!\left(\frac{\epsilon}{2}\right)
+  =
+  \frac{2}{\epsilon}+O(\epsilon).
+\]
+For each spectator rapidity \(\eta_j\),
+\[
+  \tanh\!\left(\frac{\theta'-\eta_j}{2}\right)
+  \tanh\!\left(\frac{\theta-\eta_j}{2}\right)
+  \longrightarrow
+  \coth\!\left(\frac{\theta-\eta_j}{2}\right)
+  \tanh\!\left(\frac{\theta-\eta_j}{2}\right)
+  =
+  1 .
+\]
+Therefore
+\[
+  \operatorname*{Res}_{\theta'=\theta+\ii\pi}
+  P_{n+2}(\theta',\theta,\eta_1,\ldots,\eta_n)
+  =
+  2P_n(\eta_1,\ldots,\eta_n).
+\]
+If \(n=2k+1\), then \(F_n^\Sigma=v\ii^kP_n\), while
+\(F_{n+2}^\Sigma=v\ii^{k+1}P_{n+2}\).  Hence
+\[
+  -\ii\,\operatorname*{Res} F_{n+2}^\Sigma
+  =
+  -\ii\,2v\ii^{k+1}P_n
+  =
+  2v\ii^kP_n
+  =
+  2F_n^\Sigma .
+\]
+Since \(n\) is odd, \(1-(-1)^n=2\), giving the claimed kinematic-pole
+equation.
+\end{proof}
+
 \section{Bound-State Poles and Operator Couplings}
 
 Suppose species \(a\) and \(b\) have a bound state \(c\).  If the
