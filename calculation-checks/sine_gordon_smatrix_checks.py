@@ -40,6 +40,24 @@ def breather_amplitude_b1b1(theta: complex, xi: float) -> complex:
     return (cmath.sinh(theta) + 1j * s) / (cmath.sinh(theta) - 1j * s)
 
 
+def neutral_block(theta: complex, a: float) -> complex:
+    s = math.sin(math.pi * a)
+    return (cmath.sinh(theta) + 1j * s) / (cmath.sinh(theta) - 1j * s)
+
+
+def breather_mass(n: int, xi: float, soliton_mass: float) -> float:
+    return 2.0 * soliton_mass * math.sin(math.pi * n * xi / 2.0)
+
+
+def breather_breather_amplitude(theta: complex, m: int, n: int, xi: float) -> complex:
+    low = min(m, n)
+    gap = abs(m - n)
+    result = neutral_block(theta, (m + n) * xi / 2.0) * neutral_block(theta, gap * xi / 2.0)
+    for ell in range(1, low):
+        result *= neutral_block(theta, (gap + 2 * ell) * xi / 2.0) ** 2
+    return result
+
+
 def check_matrix_unitarity() -> None:
     for xi in (0.37, 0.72, 1.35):
         for theta in (0.21, 0.93, -0.47):
@@ -83,9 +101,66 @@ def check_lightest_breather_amplitude() -> None:
                 breather_amplitude_b1b1(1j * math.pi - theta, xi),
             )
 
-        pole = 1j * math.pi * xi
-        denominator = cmath.sinh(pole) - 1j * math.sin(math.pi * xi)
-        assert_close(f"B1B1 pole denominator xi={xi}", denominator, 0.0)
+        for pole_name, pole in (
+            ("direct", 1j * math.pi * xi),
+            ("crossed", 1j * math.pi * (1.0 - xi)),
+        ):
+            denominator = cmath.sinh(pole) - 1j * math.sin(math.pi * xi)
+            assert_close(f"B1B1 {pole_name} pole denominator xi={xi}", denominator, 0.0)
+
+
+def check_neutral_block_residues() -> None:
+    for a in (0.18, 0.31, 0.43):
+        direct_residue = 2j * math.tan(math.pi * a)
+        crossed_residue = -2j * math.tan(math.pi * a)
+        assert_close(f"neutral block direct -i residue a={a}", -1j * direct_residue, 2.0 * math.tan(math.pi * a))
+        assert_close(f"neutral block crossed -i residue a={a}", -1j * crossed_residue, -2.0 * math.tan(math.pi * a))
+        for theta in (0.11, 0.75, -1.1):
+            amp = neutral_block(theta, a)
+            assert_close(f"neutral block unitarity a={a} theta={theta}", amp * neutral_block(-theta, a), 1.0)
+            assert_close(
+                f"neutral block crossing a={a} theta={theta}",
+                amp,
+                neutral_block(1j * math.pi - theta, a),
+            )
+
+
+def check_breather_breather_direct_fusion_masses() -> None:
+    xi = 0.17
+    soliton_mass = 3.2
+    for m, n in ((1, 1), (1, 2), (2, 2), (1, 3)):
+        u = math.pi * (m + n) * xi / 2.0
+        mass_from_pole_squared = (
+            breather_mass(m, xi, soliton_mass) ** 2
+            + breather_mass(n, xi, soliton_mass) ** 2
+            + 2.0
+            * breather_mass(m, xi, soliton_mass)
+            * breather_mass(n, xi, soliton_mass)
+            * math.cos(u)
+        )
+        assert_close(
+            f"B{m}B{n}->B{m+n} mass",
+            math.sqrt(mass_from_pole_squared),
+            breather_mass(m + n, xi, soliton_mass),
+        )
+
+        pole = 1j * u
+        parameter = (m + n) * xi / 2.0
+        denominator = cmath.sinh(pole) - 1j * math.sin(math.pi * parameter)
+        assert_close(f"B{m}B{n} direct-pole denominator", denominator, 0.0)
+
+        for theta in (0.23, 0.9):
+            amp = breather_breather_amplitude(theta, m, n, xi)
+            assert_close(
+                f"B{m}B{n} unitarity theta={theta}",
+                amp * breather_breather_amplitude(-theta, m, n, xi),
+                1.0,
+            )
+            assert_close(
+                f"B{m}B{n} crossing theta={theta}",
+                amp,
+                breather_breather_amplitude(1j * math.pi - theta, m, n, xi),
+            )
 
 
 def main() -> None:
@@ -93,6 +168,8 @@ def main() -> None:
     check_free_fermion_point()
     check_breather_pole_locations_and_masses()
     check_lightest_breather_amplitude()
+    check_neutral_block_residues()
+    check_breather_breather_direct_fusion_masses()
     print("All sine-Gordon S-matrix checks passed.")
 
 

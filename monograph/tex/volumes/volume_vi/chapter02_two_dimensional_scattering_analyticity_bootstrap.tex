@@ -45,8 +45,21 @@ with the following extra data and hypotheses:
   direct-channel bound-state species \(e\);
 \item finite-dimensional multiplicity spaces for these bound-state channels
   and intertwiners \(\Gamma_{ab}^{e,\alpha}\) specifying residues;
-\item horizontal-strip growth bounds sufficient for the contour shifts used
-  later in form-factor and thermodynamic-Bethe-ansatz constructions.
+\item horizontal-strip growth bounds stated as follows: for every closed
+  substrip \(K\subset\mathcal S_{\rm phys}\) whose distance from the declared
+  pole set is positive, there are constants \(C_K,N_K\) such that
+  \[
+    \|S_{ab}^{cd}(\theta)\|
+    \le C_K(1+|\operatorname{Re}\theta|)^{N_K},
+    \qquad \theta\in K.
+  \]
+  Near each declared simple pole the corresponding principal part is
+  subtracted before applying this estimate.  When a thermodynamic
+  Bethe-ansatz kernel
+  \(\phi_{ab}(\theta)=-\ii\partial_\theta\log S_{ab}(\theta)\) is used later,
+  the datum must also specify the branch and the additional integrability
+  hypothesis on \(\phi_{ab}\), usually \(L^1(\mathbb R)\) after removal of
+  explicitly treated CDD or bound-state factors.
 \end{enumerate}
 \end{definition}
 
@@ -57,10 +70,28 @@ fixed by the pole location:
   =
   m_a^2+m_b^2+2m_am_b\cos u_{ab}^{e}.
 \]
-This equation is a kinematic consequence of the rapidity parametrization.  A
+Indeed, write the incoming momenta as
+\[
+  p_a(\theta_a)=m_a(\cosh\theta_a,\sinh\theta_a),
+  \qquad
+  p_b(\theta_b)=m_b(\cosh\theta_b,\sinh\theta_b),
+\]
+with \(\theta=\theta_a-\theta_b\).  Then
+\[
+  (p_a+p_b)^2
+  =
+  m_a^2+m_b^2+2m_am_b\cosh(\theta_a-\theta_b)
+  =
+  m_a^2+m_b^2+2m_am_b\cosh\theta .
+\]
+Analytic continuation to the pole \(\theta=\ii u_{ab}^{e}\) gives
+\(\cosh(\ii u_{ab}^{e})=\cos u_{ab}^{e}\), hence the displayed formula.  A
 one-particle vector of mass \(m_e\) in a Hilbert-space QFT is additional data
 to be constructed or assumed.  The pole and residue record the on-shell
-criterion that such a vector would have to satisfy.
+criterion that such a vector would have to satisfy; a physical-strip pole
+with the wrong residue sign, or a pole related by crossing rather than the
+direct-channel residue, is not by itself a new stable direct-channel
+particle.
 
 \section{Residues and Fusion}
 
@@ -96,6 +127,58 @@ spaces; the intertwiners \(\Gamma\) project onto the bound-state channel.  The
 Yang--Baxter equation guarantees compatibility of this fused scattering with
 three-particle factorization.
 
+\begin{proposition}[Fusion identity as a residue identity]
+\label{prop:fusion-identity-residue-derivation}
+Assume that the three-particle scattering amplitude has meromorphic
+factorization on the rapidity chamber under consideration and that the pair
+\((a,b)\) has a simple direct-channel pole at
+\(\theta_a-\theta_b=\ii u_{ab}^e\) with residue
+\[
+  -\ii\,\operatorname*{Res}_{\theta_a-\theta_b=\ii u_{ab}^{e}}
+  S_{ab}(\theta_a-\theta_b)
+  =
+  \Gamma_{ab}^{e}\Gamma_{e}^{ab}.
+\]
+Choose the bound-state rapidity \(\theta\) so that the two constituent
+rapidities are
+\[
+  \theta_a=\theta+\ii\bar u_{ae}^{b},
+  \qquad
+  \theta_b=\theta-\ii\bar u_{be}^{a},
+  \qquad
+  \bar u_{ae}^{b}+\bar u_{be}^{a}=u_{ab}^{e}.
+\]
+Then the residue of the factorized three-particle amplitude at the
+\((a,b)\)-pole gives
+\[
+  S_{ek}(\theta-\theta_k)
+  =
+  \Gamma_{ab}^{e}\,
+  S_{ak}(\theta-\theta_k+\ii\bar u_{ae}^{b})\,
+  S_{bk}(\theta-\theta_k-\ii\bar u_{be}^{a})\,
+  \Gamma_{e}^{ab}
+\]
+as an identity on the bound-state multiplicity space, after the
+one-particle normalization used in the residue has been fixed.
+\end{proposition}
+
+\begin{proof}
+Factorization writes the ordered three-particle scattering of
+\((a,b,k)\) as a product in which the singular dependence on
+\(\theta_a-\theta_b\) is carried by the two-body factor \(S_{ab}\), while
+scattering with \(k\) is carried by \(S_{ak}\) and \(S_{bk}\) evaluated at the
+displayed shifted rapidity differences.  Taking the residue at the
+\((a,b)\)-pole therefore replaces the incoming pair by
+\(\Gamma_{ab}^{e}\), the outgoing pair by \(\Gamma_e^{ab}\), and leaves the
+two constituent scatterings with \(k\) between them.  The same residue, read
+in the channel in which the pole has already been resolved as a one-particle
+intermediate state \(e\), is by definition the scattering of \(e\) with
+\(k\).  Equality of the two residues gives the formula.  The proof uses no
+off-shell Lagrangian; all assumptions are meromorphic factorization, the
+simple-pole residue normalization, and the existence of a one-particle
+bound-state channel represented by the intertwiner \(\Gamma_{ab}^e\).
+\end{proof}
+
 \section{Minimal Solutions and CDD Factors}
 
 For diagonal scattering, where \(S_{ab}^{cd}(\theta)=
@@ -127,6 +210,44 @@ zeros and poles at prescribed locations.  The bootstrap construction problem
 is to choose the product and possible CDD factors so that unitarity, crossing,
 physical-strip pole assignments, residue signs, and asymptotic bounds hold
 simultaneously.
+
+\begin{proposition}[Elementary block algebra]
+\label{prop:elementary-scalar-block-algebra}
+The elementary scalar block satisfies
+\[
+  [x]_{\theta}[x]_{-\theta}=1.
+\]
+Its poles are
+\[
+  \theta=\ii\pi x+2\pi\ii n,\qquad n\in\mathbb Z,
+\]
+and its zeros are
+\[
+  \theta=-\ii\pi x+2\pi\ii n,\qquad n\in\mathbb Z .
+\]
+For real \(0<x<1\), the pole at \(\theta=\ii\pi x\) lies in the physical
+strip.
+\end{proposition}
+
+\begin{proof}
+The unitarity identity is the cancellation
+\[
+  \frac{\sinh((\theta+\ii\pi x)/2)}
+       {\sinh((\theta-\ii\pi x)/2)}
+  \frac{\sinh((-\theta+\ii\pi x)/2)}
+       {\sinh((-\theta-\ii\pi x)/2)}
+  =
+  \frac{\sinh((\theta+\ii\pi x)/2)}
+       {\sinh((\theta-\ii\pi x)/2)}
+  \frac{-\sinh((\theta-\ii\pi x)/2)}
+       {-\sinh((\theta+\ii\pi x)/2)}
+  =
+  1.
+\]
+The denominator vanishes exactly when
+\((\theta-\ii\pi x)/2=\pi\ii n\), and the numerator vanishes exactly when
+\((\theta+\ii\pi x)/2=\pi\ii n\).  This gives the stated pole and zero sets.
+\end{proof}
 
 \section{Hilbert-Space Boundary}
 

@@ -13,12 +13,18 @@
 
 - Physical rapidity strip \(0<\operatorname{Im}\theta<\pi\).
 - Bootstrap datum consisting of meromorphic continuation, pole locations,
-  residue/fusion couplings, and horizontal-strip growth bounds.
-- Bound-state mass formula from a direct-channel pole.
+  residue/fusion couplings, and explicit horizontal-strip polynomial growth
+  bounds away from the declared pole set; TBA use also requires a branch and
+  kernel integrability hypothesis.
+- Bound-state mass formula from a direct-channel pole, derived by analytic
+  continuation of two-body rapidity kinematics.
 - Residue factorization through bound-state multiplicity space.
-- Fusion equation for scattering of a bound state with a third particle.
+- Fusion equation for scattering of a bound state with a third particle,
+  derived as equality of residues of the factorized three-particle amplitude.
 - CDD factor as a meromorphic scalar ambiguity satisfying unitarity and
   crossing.
+- Elementary scalar block algebra: unitarity identity, pole lattice, and zero
+  lattice.
 - Operator-algebraic theorem boundary for wedge-local and local-algebra
   reconstruction.
 
@@ -39,12 +45,16 @@
 1. The physical strip is the analytic domain relating direct and crossed
    two-particle channels in rapidity variables.
 2. A simple pole in the physical strip gives a kinematic mass relation for a
-   possible bound state.
+   possible bound state only after the direct-channel residue and positivity
+   normalization have been specified.
 3. A Hilbert-space bound-state interpretation requires residue factorization
    with the correct positivity normalization.
-4. CDD factors show that unitarity and crossing do not alone determine a
+4. The fusion equation is a residue identity, not an independent slogan.
+5. Elementary scalar blocks supply controlled meromorphic zero-pole pairs and
+   obey \([x]_\theta[x]_{-\theta}=1\).
+6. CDD factors show that unitarity and crossing do not alone determine a
    unique amplitude.
-5. Local QFT realization requires local algebras or Wightman fields in
+7. Local QFT realization requires local algebras or Wightman fields in
    addition to on-shell bootstrap data.
 
 ## Figures

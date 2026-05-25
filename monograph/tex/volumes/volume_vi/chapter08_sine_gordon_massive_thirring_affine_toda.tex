@@ -251,11 +251,16 @@ The denominator vanishes when
 \[
   \sinh\theta=\ii\sin(\pi\xi).
 \]
-Inside the physical strip \(0<\operatorname{Im}\theta<\pi\), this gives the
-pole
+Inside the physical strip \(0<\operatorname{Im}\theta<\pi\), this equation has
+two solutions,
 \[
-  \theta=\ii\pi\xi .
+  \theta=\ii\pi\xi,
+  \qquad
+  \theta=\ii\pi(1-\xi).
 \]
+They are exchanged by crossing.  Only the first one is the direct
+\(B_1B_1\to B_2\) pole when \(2\xi<1\); the second is its crossed-channel
+image and must not be counted as a separate direct-channel particle.
 For two incoming particles of mass \(m_1\) and rapidities
 \(\theta/2\) and \(-\theta/2\), the squared center-of-mass energy is
 \[
@@ -298,6 +303,149 @@ when \(B_2\) lies below the two-soliton threshold as a stable breather.  The
 condition is \(2\xi<1\).  At the endpoint \(2\xi=1\) the candidate sits at
 threshold, and for \(2\xi>1\) this pole does not define an additional stable
 breather in the Hilbert-space particle spectrum.
+
+\section{Neutral Breather Blocks and Minimal Fusion}
+
+It is useful to isolate the scalar factor
+\begin{equation}
+  F_a(\theta)
+  =
+  \frac{\sinh\theta+\ii\sin(\pi a)}
+       {\sinh\theta-\ii\sin(\pi a)} ,
+  \qquad a\in\mathbb R .
+  \label{eq:sine-gordon-neutral-block}
+\end{equation}
+Then \(S_{11}(\theta)=F_\xi(\theta)\).  This is not merely notation: the
+block records both the direct pole and its crossed image in a way that makes
+the residue sign visible.
+
+\begin{proposition}[Neutral scalar block]
+\label{prop:sine-gordon-neutral-block}
+For real \(0<a<1\),
+\[
+  F_a(\theta)F_a(-\theta)=1,
+  \qquad
+  F_a(\ii\pi-\theta)=F_a(\theta).
+\]
+The physical strip contains the two simple poles
+\[
+  \theta=\ii\pi a,
+  \qquad
+  \theta=\ii\pi(1-a).
+\]
+The corresponding residues obey
+\[
+  -\ii\,\operatorname*{Res}_{\theta=\ii\pi a}F_a(\theta)
+  =
+  2\tan(\pi a),
+  \qquad
+  -\ii\,\operatorname*{Res}_{\theta=\ii\pi(1-a)}F_a(\theta)
+  =
+  -2\tan(\pi a).
+\]
+Thus, for \(0<a<1/2\), the pole at \(\theta=\ii\pi a\) has the positive
+direct-channel residue sign, while the pole at \(\theta=\ii\pi(1-a)\) is its
+crossed-channel partner.
+\end{proposition}
+
+\begin{proof}
+Unitarity follows by replacing \(\sinh\theta\) by \(-\sinh\theta\), and
+crossing follows from \(\sinh(\ii\pi-\theta)=\sinh\theta\).  The denominator
+vanishes at \(\theta=\ii\pi a\) and \(\theta=\ii\pi(1-a)\).  At
+\(\theta_0=\ii\pi a\), the numerator is \(2\ii\sin(\pi a)\), while the
+derivative of the denominator is \(\cosh\theta_0=\cos(\pi a)\).  Therefore
+\[
+  \operatorname*{Res}_{\theta=\ii\pi a}F_a(\theta)
+  =
+  2\ii\tan(\pi a).
+\]
+At \(\theta_1=\ii\pi(1-a)\), the numerator is again
+\(2\ii\sin(\pi a)\), but the derivative is
+\(\cos(\pi(1-a))=-\cos(\pi a)\), giving the second residue formula.
+\end{proof}
+
+The minimal diagonal scattering amplitude of breathers \(B_m\) and \(B_n\),
+when both labels and every displayed fused label lie in the stable range
+\(k\xi<1\), is
+\begin{equation}
+  S_{mn}(\theta)
+  =
+  F_{\frac{(m+n)\xi}{2}}(\theta)\,
+  F_{\frac{|m-n|\xi}{2}}(\theta)\,
+  \prod_{\ell=1}^{\min(m,n)-1}
+  F_{\frac{(|m-n|+2\ell)\xi}{2}}(\theta)^2 ,
+  \label{eq:sine-gordon-breather-breather-smatrix}
+\end{equation}
+with the convention \(F_0(\theta)=1\).  The formula is the minimal solution
+of the diagonal bootstrap equations with the breather spectrum fixed above:
+each \(F_a\) supplies one direct pole and its crossing partner, and the
+double factors are exactly the poles encountered twice when the two fused
+constituent rapidity strings scatter through each other.  More explicitly,
+start from \(S_{11}=F_\xi\).  The residue identity of Proposition
+\ref{prop:fusion-identity-residue-derivation} constructs \(B_{r+s}\) from
+the direct pole of \(B_rB_s\); because the neutral breather amplitudes are
+diagonal scalar functions, the fused scattering with a third breather is the
+ordinary product of the constituent scalar factors evaluated at the shifted
+rapidities.  Iterating this statement produces the two endpoint factors
+\((m+n)\xi/2\) and \(|m-n|\xi/2\), while every intermediate constituent
+difference \((|m-n|+2\ell)\xi/2\) occurs once from each side of the fused
+rapidity string and therefore appears squared.  The word minimal means that
+no further CDD factor, analytic and pole-free in the physical strip, has been
+multiplied into the result.
+
+\begin{proposition}[Direct fusion pole in the breather amplitudes]
+\label{prop:sine-gordon-breather-direct-fusion}
+Assume \(m,n\ge1\) and \((m+n)\xi<1\), so that \(B_{m+n}\) is a stable
+breather.  The amplitude \(S_{mn}(\theta)\) in
+\eqref{eq:sine-gordon-breather-breather-smatrix} has a direct-channel pole at
+\[
+  \theta=\ii u_{mn}^{m+n},
+  \qquad
+  u_{mn}^{m+n}=\frac{\pi(m+n)\xi}{2},
+\]
+and the bound-state kinematics at this pole gives the mass \(m_{m+n}\).
+\end{proposition}
+
+\begin{proof}
+The pole is supplied by the first factor
+\(F_{(m+n)\xi/2}(\theta)\).  Since \((m+n)\xi<1\), its parameter
+\((m+n)\xi/2\) lies in \((0,1/2)\), so Proposition
+\ref{prop:sine-gordon-neutral-block} gives the positive direct-channel
+residue sign at the displayed rapidity.  Let
+\[
+  \alpha=\frac{\pi\xi}{2},
+  \qquad
+  m_k=2M_s\sin(k\alpha).
+\]
+The pole angle is \(u=(m+n)\alpha\).  The rapidity kinematics gives
+\[
+  m_m^2+m_n^2+2m_m m_n\cos u
+  =
+  4M_s^2\left[
+  \sin^2(m\alpha)+\sin^2(n\alpha)
+  +2\sin(m\alpha)\sin(n\alpha)\cos((m+n)\alpha)
+  \right].
+\]
+Using
+\[
+  \sin((m+n)\alpha)
+  =
+  \sin(m\alpha)\cos(n\alpha)+\cos(m\alpha)\sin(n\alpha),
+\]
+one obtains the elementary identity
+\[
+  \sin^2((m+n)\alpha)
+  =
+  \sin^2(m\alpha)+\sin^2(n\alpha)
+  +2\sin(m\alpha)\sin(n\alpha)\cos((m+n)\alpha).
+\]
+Thus the bracket in the preceding display is \(\sin^2((m+n)\alpha)\), and
+the invariant mass at the pole is
+\[
+  2M_s\sin((m+n)\alpha)=m_{m+n},
+\]
+which proves the claim.
+\end{proof}
 
 \section{Massive Thirring Equivalence}
 
