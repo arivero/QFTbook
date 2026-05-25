@@ -64,38 +64,143 @@ to the declared linearized map and norm.  A coordinate \(g_i\) is a scaling
 coordinate only after nonlinear terms have been put into a normal form or
 controlled by a stable-manifold argument.
 
-\begin{theorem}[Local stable manifold for an RG map]
+\begin{theorem}[Local stable graph for an RG map]
 \label{thm:rg-local-stable-manifold}
 Let \(\mathcal R\) be a \(C^1\) map on a Banach space \(\mathcal B\) with
-fixed point \(V_\ast\).  Suppose
+fixed point \(V_\ast\).  Translate \(V_\ast\) to the origin and suppose
 \[
   \mathcal B=E_u\oplus E_s
 \]
-where \(E_u\) is finite dimensional, \(E_s\) is closed, and the derivative
-\(D\mathcal R|_{V_\ast}\) expands \(E_u\) and contracts \(E_s\) with a
-spectral gap.  If the nonlinear part is Lipschitz-small in a neighborhood of
-the fixed point, then there is a local stable manifold tangent to \(E_s\).
-Points on this manifold remain in the neighborhood under forward RG
-iteration and converge to \(V_\ast\).
+where \(E_u\) is finite dimensional and \(E_s\) is closed.  In product norm
+write
+\[
+  \mathcal R(u,s)
+  =
+  (Au+F_u(u,s),\,Bs+F_s(u,s)),
+  \label{eq:rg-stable-map-splitting}
+\]
+where \(A:E_u\to E_u\) is invertible, \(B:E_s\to E_s\), \(F(0)=0\),
+and \(DF(0)=0\).  Assume that, on a closed ball of radius \(r\),
+\[
+  \|A^{-1}\|\leq a<1,\qquad
+  \|B\|\leq b<1,\qquad
+  \|F(x)-F(y)\|\leq \kappa\|x-y\|.
+  \label{eq:rg-stable-spectral-gap-constants}
+\]
+Choose \(\gamma\) with \(\max(a,b)<\gamma<1\) and suppose
+\[
+  q_u:=\frac{\kappa a}{1-a\gamma}<1,
+  \qquad
+  q_s:=\frac{b+\kappa}{\gamma}<1,
+  \qquad
+  q:=\max(q_u,q_s)<1 .
+  \label{eq:rg-stable-contraction-constants}
+\]
+Then, after possibly decreasing \(r\), for every sufficiently small
+\(s_0\in E_s\) there is a unique forward orbit
+\((u_n,s_n)_{n\geq0}\) satisfying \(s_0\) as its stable coordinate,
+\[
+  (u_{n+1},s_{n+1})=\mathcal R(u_n,s_n),
+  \qquad
+  \sup_{n\geq0}\gamma^{-n}\|(u_n,s_n)\|<\infty .
+\]
+The initial unstable coordinate \(u_0\) is a Lipschitz function \(h(s_0)\).
+The graph \(u=h(s)\) is forward invariant, consists exactly of the points
+whose forward orbit stays in the chosen \(\gamma\)-decay neighborhood, and
+is tangent to \(E_s\) at the fixed point in the sense
+\(\|h(s)\|/\|s\|\to0\) as \(s\to0\).
 \end{theorem}
 
 \begin{proof}
-Translate \(V_\ast\) to the origin and write \(V=(u,s)\) according to
-\(E_u\oplus E_s\).  The RG map has the form
+Fix \(\rho\leq r\) and \(\|s_0\|\leq \rho\).  Let
 \[
-  (u,s)\longmapsto (Au+F_u(u,s),Bs+F_s(u,s)),
+  \mathcal X_{\gamma,\rho}(s_0)
+  =
+  \left\{
+    x=(u_n,s_n)_{n\geq0}:
+    s_0\ {\rm is\ fixed},\
+    \|x\|_\gamma:=\sup_{n\geq0}\gamma^{-n}\|(u_n,s_n)\|\leq\rho
+  \right\}.
 \]
-where \(A^{-1}\) and \(B\) are contractions and \(F=(F_u,F_s)\) has small
-Lipschitz constant on a ball.  For a candidate graph \(u=h(s)\), invariance
-requires
+With the metric induced by \(\|\cdot\|_\gamma\), this is a closed subset of
+the Banach space of \(\gamma\)-weighted sequences, hence is complete.  Define
+the Lyapunov--Perron map \(\mathcal T_{s_0}\) by
+\begin{align}
+  (\mathcal T_{s_0}x)^s_0&=s_0,\\
+  (\mathcal T_{s_0}x)^s_{n+1}
+    &=B s_n+F_s(u_n,s_n), \label{eq:rg-stable-lp-s-part}\\
+  (\mathcal T_{s_0}x)^u_n
+    &=
+    -\sum_{j=0}^{\infty}
+      A^{-(j+1)}F_u(u_{n+j},s_{n+j}).
+      \label{eq:rg-stable-lp-u-part}
+\end{align}
+The series in \eqref{eq:rg-stable-lp-u-part} converges absolutely because
 \[
-  h(Bs+F_s(h(s),s))=Ah(s)+F_u(h(s),s).
+  \gamma^{-n}
+  \sum_{j\geq0}
+  \|A^{-(j+1)}\|\,\|F_u(u_{n+j},s_{n+j})\|
+  \leq
+  \frac{\kappa a}{1-a\gamma}\|x\|_\gamma .
+  \label{eq:rg-stable-u-series-bound}
 \]
-This equation defines a contraction on the complete metric space of Lipschitz
-graphs with \(h(0)=0\) and \(Dh(0)=0\), after the ball is chosen so that the
-nonlinear Lipschitz constant is dominated by the spectral gap.  The fixed
-graph is invariant.  Iterating the contraction estimates gives convergence
-to the fixed point for initial data on the graph.
+Here \(F(0)=0\) was used.  Similarly,
+\[
+  \gamma^{-(n+1)}
+  \|B s_n+F_s(u_n,s_n)\|
+  \leq
+  \frac{b+\kappa}{\gamma}\|x\|_\gamma .
+  \label{eq:rg-stable-s-recursion-bound}
+\]
+Equations \eqref{eq:rg-stable-contraction-constants},
+\eqref{eq:rg-stable-u-series-bound}, and
+\eqref{eq:rg-stable-s-recursion-bound} show that
+\(\mathcal T_{s_0}\) maps \(\mathcal X_{\gamma,\rho}(s_0)\) into itself
+for every \(\rho\leq r\) with \(\|s_0\|\leq\rho\).
+
+For two sequences \(x,y\in\mathcal X_{\gamma,\rho}(s_0)\), the same
+estimates applied to differences give
+\[
+  \|\mathcal T_{s_0}x-\mathcal T_{s_0}y\|_\gamma
+  \leq
+  q\|x-y\|_\gamma ,
+  \label{eq:rg-stable-lp-contraction}
+\]
+with \(q<1\).  Banach's fixed-point theorem gives a unique fixed sequence
+\(x(s_0)\).  The \(s\)-part of the fixed-point equation is exactly the
+stable coordinate recurrence.  The \(u\)-part is equivalent to the unstable
+coordinate recurrence because multiplying
+\eqref{eq:rg-stable-lp-u-part} by \(A\) and shifting the summation gives
+\[
+  A u_n+F_u(u_n,s_n)=u_{n+1}.
+\]
+Thus the fixed sequence is precisely a forward orbit of \(\mathcal R\) with
+\(\gamma\)-decay.  Conversely, any forward orbit with this decay must satisfy
+\eqref{eq:rg-stable-lp-u-part}; otherwise the growing homogeneous solution
+of \(u_{n+1}=Au_n+F_u(u_n,s_n)\) would violate
+\(\sup_n\gamma^{-n}\|u_n\|<\infty\).
+
+Define \(h(s_0)=u_0(s_0)\).  If \(s_0,t_0\) are two stable initial
+coordinates, the fixed-point equations give
+\[
+  \|x(s_0)-x(t_0)\|_\gamma
+  \leq
+  \|s_0-t_0\|+q\|x(s_0)-x(t_0)\|_\gamma ,
+\]
+and hence
+\[
+  \|x(s_0)-x(t_0)\|_\gamma
+  \leq
+  \frac{1}{1-q}\|s_0-t_0\|.
+  \label{eq:rg-stable-graph-lipschitz-bound}
+\]
+Therefore \(h\) is Lipschitz.  Since \(DF(0)=0\), the Lipschitz constant
+\(\kappa\) for \(F\) on a ball of radius \(\rho\) tends to zero as
+\(\rho\downarrow0\).  The bound
+\eqref{eq:rg-stable-u-series-bound} then implies
+\(\|h(s)\|/\|s\|\to0\), so the graph is tangent to \(E_s\) at the fixed
+point.  Forward invariance is built into the recurrence, and the
+\(\gamma\)-weighted bound gives convergence to the fixed point.
 \end{proof}
 
 \section{Polymer Representation}

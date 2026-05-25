@@ -16,6 +16,14 @@ constructive RG developments.
 - `B`, `U`: Banach space of interactions and RG domain.
 - `V_*`, `D R|_{V_*}`: fixed point and linearized RG.
 - `E_u`, `E_s`: unstable and stable subspaces.
+- `A`, `B`: unstable and stable linear blocks of the RG linearization in a
+  local product coordinate.
+- `a`, `b`, `gamma`: contraction constants for \(A^{-1}\), \(B\), and the
+  weighted sequence norm in the local stable-graph theorem.
+- `kappa`, `q_u`, `q_s`, `q`: nonlinear Lipschitz and Lyapunov-Perron
+  contraction constants in the stable-graph proof.
+- `X_{gamma,rho}(s_0)`: complete weighted sequence space used to construct
+  the stable graph.
 - `K(X,phi)`: polymer activity.
 - `F(V)=R(V)-V`: fixed-point residual.
 - `A`: bounded injective approximate inverse used in Newton--Kantorovich
@@ -28,7 +36,9 @@ constructive RG developments.
 - Defines Gaussian block integration as an exact finite-regulator identity.
 - Defines controlled RG maps on Banach spaces and scaling coordinates through
   linearization.
-- Proves a local stable-manifold theorem for a hyperbolic RG fixed point.
+- Proves a local stable-graph theorem for a hyperbolic RG fixed point using
+  an explicit Lyapunov-Perron contraction on a complete weighted sequence
+  space, with the contraction constant displayed.
 - Defines polymer activities and the estimate needed to control irrelevant
   remainders.
 - Defines the full data of a theorem-level nonperturbative Wilsonian fixed
