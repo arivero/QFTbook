@@ -58,8 +58,9 @@ comment identifying the manuscript location and verification performed.
 
 ## Renormalization, EFT, And Asymptotic Analysis
 
-- #487: EFTs without local Poincare-invariant UV completions.  Target:
-  Volume III EFT chapter.
+- #487: EFTs without local Poincare-invariant UV completions.  Compiled
+  Volume III chapter added 2026-05-25; issue is closable after build and
+  push verification.
 - #488: reject the claim that QFT is defined by perturbing a UV CFT.  Target:
   Volume III and Volume V boundary language.
 - #489: RG-flow figure issue.  Target: Volume III Wilsonian chapter figures.
@@ -79,8 +80,9 @@ comment identifying the manuscript location and verification performed.
 
 ## Gauge Theory, Global Structure, And Conventions
 
-- #486: Standard Model as a rigorous hybrid object.  Target: Volume IV and
-  Volume XI bridge.
+- #486: Standard Model as a rigorous hybrid object.  Compiled Volume IV
+  chapter added 2026-05-25; issue is closable after build and push
+  verification.
 - #492: QCD string and confining flux tube.  Target: Volume IV and Volume IX.
 - #504: large-\(N\), flux strings, and baryons.  Target: Volumes IV and IX.
 - #522: lattice plaquette expansion order.  Target: Volume IV lattice chapter.

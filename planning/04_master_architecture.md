@@ -130,6 +130,7 @@ Current compiled material:
 7. Wilsonian Effective Field Theory
 8. The Wilson--Fisher Fixed Point And Scaling Operators
 9. The Statistical Ising Model And Universality
+10. Effective Field Theories Without Poincare-Invariant UV Completion
 
 Further development targets:
 
@@ -173,7 +174,9 @@ Current compiled material:
 10. QCD Renormalization, Asymptotic Freedom, And Deep Inelastic Scattering
 11. Jets, Infrared-Safe Observables, And Hadronization
 12. Chiral And Axial Anomalies
-13. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
+13. Schwinger Model And Two-Dimensional QED
+14. The Standard Model As A Hybrid Quantum Field Theory
+15. Global Anomalies, Spontaneous Symmetry Breaking, And Pions
 
 Further development targets:
 

@@ -125,6 +125,16 @@ Date: 2026-05-23
   Regularization of the action or measure, regularization of composite
   insertions, and renormalization of finite action/source/operator coordinates
   are distinct data and must be named separately.
+- The Standard Model is treated as a hybrid object: a lattice/nonperturbative
+  QCD sector, an electroweak finite-cutoff EFT, low-energy weak EFTs, and
+  matching maps.  The compiled Standard Model chapter derives the electroweak
+  mass coordinates, verifies local and finite anomaly cancellation, and states
+  the constructive Standard Model problem.
+- Effective field theories without Poincare-invariant UV completion are
+  treated by their regulator, observable class, matching map, and error
+  bounds.  Critical lattice scaling limits that satisfy reconstruction
+  hypotheses are separated from finite-cutoff condensed-matter EFTs that only
+  borrow relativistic QFT technology after a validation map is supplied.
 
 Date: 2026-05-24
 

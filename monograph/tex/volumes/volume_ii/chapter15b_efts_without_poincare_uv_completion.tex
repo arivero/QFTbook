@@ -1,0 +1,244 @@
+\chapter{Effective Field Theories Without Poincare-Invariant UV Completion}
+\label{ch:efts-without-poincare-uv-completion}
+\ConventionsEuclidean
+
+\section{Scaling Limits and Finite-Cutoff Effective Theories}
+
+This chapter separates two constructions that are often conflated.  A
+lattice or many-body system may have a critical scaling limit which is a
+continuum QFT, or it may have only a finite-cutoff long-distance effective
+description.  The first case can produce a UV-complete relativistic theory.
+The second case is an effective theory whose validity is tied to the
+microscopic cutoff and to a specified range of observables.
+
+\begin{definition}[Critical scaling limit]
+\label{def:critical-scaling-limit}
+Let \(a>0\) be a lattice spacing, let
+\(\mu_{a,\kappa}\) be a finite- or infinite-volume Euclidean lattice
+probability measure with couplings \(\kappa\), and let
+\(\mathcal O_{a,i}(x)\) be lattice observables.  A critical scaling limit
+consists of:
+\begin{enumerate}
+\item a tuning \(\kappa(a)\) for which the correlation length in lattice
+      units diverges;
+\item normalization factors \(Z_i(a)\) and continuum coordinates
+      \(x=a n\);
+\item limits of separated Euclidean correlators
+      \[
+        \lim_{a\downarrow0}
+        \left\langle
+          \prod_{j=1}^k Z_{i_j}(a)\mathcal O_{a,i_j}(n_j)
+        \right\rangle_{\mu_{a,\kappa(a)}} ;
+      \]
+\item Euclidean covariance, locality, reflection positivity, clustering, and
+      regularity estimates sufficient for OS or another stated
+      reconstruction theorem.
+\end{enumerate}
+When these data are supplied, the limiting continuum QFT is not merely an
+approximation to the lattice system.  It is the scaling-limit object.
+\end{definition}
+
+\begin{definition}[Finite-cutoff effective theory]
+\label{def:finite-cutoff-effective-theory}
+A finite-cutoff effective theory is a tuple
+\[
+  (\Lambda_{\rm UV},\mathcal A_\Lambda,S_\Lambda,\mathcal O_\Lambda,
+   \mathcal R,E_{\rm max})
+\]
+where \(\Lambda_{\rm UV}\) is a physical ultraviolet scale,
+\(\mathcal A_\Lambda\) is the algebra or field-variable space retained below
+that scale, \(S_\Lambda\) is the regulated action or Hamiltonian,
+\(\mathcal O_\Lambda\) is the declared operator-insertion prescription,
+\(\mathcal R\) is the set of observables to be matched, and
+\(E_{\rm max}\ll\Lambda_{\rm UV}\) is the energy or momentum domain in which
+the error estimate is claimed.  It is a QFT technique only after the
+regulator, matching observables, and error class have been stated.
+\end{definition}
+
+The two definitions have different logical content.  A critical scaling limit
+aims to remove the microscopic cutoff.  A finite-cutoff effective theory keeps
+the cutoff as part of its meaning, even when its formulas resemble a
+relativistic continuum Lagrangian.
+
+\begin{proposition}[Scaling limit as continuum QFT]
+\label{prop:scaling-limit-continuum-qft}
+Suppose the limits in Definition~\ref{def:critical-scaling-limit} exist for a
+set of local lattice observables closed under the operator products needed to
+generate the limiting Schwinger functions, and suppose the limiting
+Schwinger functions satisfy the OS hypotheses with Euclidean covariance.
+Then the reconstructed theory is a continuum local QFT.  If the limiting
+Euclidean group enhances to the full Euclidean rotation group and the OS
+linear-growth hypothesis needed for continuation is verified, the Lorentzian
+reconstruction is a Poincare-covariant Wightman theory.
+\end{proposition}
+
+\begin{proof}
+The OS reconstruction theorem applies to the limiting Schwinger functions,
+not to the finite lattice variables themselves.  Reflection positivity gives a
+positive Hilbert-space inner product after quotienting null vectors;
+Euclidean time translations give a positive Hamiltonian; Euclidean covariance
+and the required analytic-growth bound give the Lorentzian representation of
+the Poincare group; and locality follows from Euclidean symmetry and the OS
+permutation/reflection structure after analytic continuation.  The
+microscopic lattice remains a regulator for the construction, while the
+Hilbert space, fields, and correlation functions are those of the limiting
+object.
+\end{proof}
+
+Thus the two-dimensional Ising scaling limit and, conjecturally, the
+three-dimensional Ising critical point belong to the first category.  Away
+from criticality, a gapped lattice system may still be described at long
+distances by a continuum effective action, but the continuum action is then a
+finite-cutoff description of selected observables, not a removed-cutoff
+definition of a Poincare-invariant QFT.
+
+\section{What Must Be Revalidated}
+
+Let \(\mathcal T_{\rm rel}\) be a theorem whose proof in earlier volumes used
+Poincare covariance, the spectral condition, local commutativity, and the
+existence of asymptotic particle states.  Applying the same theorem to a
+condensed-matter EFT with microscopic cutoff \(a^{-1}\) requires a replacement
+proof or a matching argument.
+
+\begin{definition}[Validation map for borrowed QFT technology]
+\label{def:validation-map-borrowed-qft}
+A validation map from a relativistic theorem or construction
+\(\mathcal T_{\rm rel}\) to a finite-cutoff effective theory consists of:
+\begin{enumerate}
+\item the precise hypotheses \(H_1,\ldots,H_n\) used in the relativistic
+      proof;
+\item finite-cutoff replacements \(H_i^\Lambda\) or a proof that \(H_i\) is
+      emergent with a stated error bound;
+\item the observable class \(\mathcal R\) on which the conclusion is claimed;
+\item an estimate comparing the microscopic observable and the effective
+      observable in that class;
+\item a statement of which parts of the relativistic conclusion are retained,
+      modified, or unavailable.
+\end{enumerate}
+\end{definition}
+
+The following table records typical outcomes.
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.31\textwidth}p{0.58\textwidth}@{}}
+\hline
+Relativistic tool & Finite-cutoff status\\
+\hline
+Wilsonian integration &
+Available after the cutoff, fields, and blocking map are stated.\\
+Power counting &
+Available with the correct dynamical exponent and symmetries.\\
+OS/Wightman analyticity &
+Requires an independent Euclidean-to-real-time argument.\\
+LSZ scattering &
+Requires stable quasiparticles and an asymptotic dynamics.\\
+Spin-statistics and CPT &
+Do not transfer without Lorentz/locality hypotheses.\\
+Bisognano--Wichmann modular flow &
+Requires a relativistic wedge or a replacement modular theorem.\\
+Anomaly matching &
+Transfers only for the specified symmetry and regulator response.\\
+\hline
+\end{tabular}
+\end{center}
+The entries are not restrictions on using effective field theory.  They are
+the data needed to know what the calculation proves.
+
+\section{Examples}
+
+\subsection{Fermi Liquid}
+
+A Fermi liquid is organized around a codimension-one Fermi surface
+\(\Sigma_F\) in momentum space, not around the Lorentz-invariant point
+\(p_\mu p^\mu=m^2\).  A local patch with outward normal \(\hat n\) has
+linearized dispersion
+\[
+  \epsilon(k_F\hat n+\ell\hat n+q_\parallel)
+  =
+  v_F\ell+O(\ell^2,q_\parallel^2),
+\]
+where \(q_\parallel\) is tangent to \(\Sigma_F\).  The scaling that keeps the
+kinetic term fixed scales \(\ell\) and frequency differently from tangential
+momenta.  Hence relativistic spin-statistics, crossing, and LSZ are not the
+primitive logic.  The primitive data are the microscopic Hamiltonian, the
+Fermi surface, quasiparticle lifetime estimates, Landau parameters, and the
+range of frequencies and momenta for which quasiparticles are sharp.
+
+\subsection{Lifshitz Fixed Points}
+
+A Lifshitz scalar with dynamical exponent \(z\) has a quadratic action of the
+form
+\[
+  S=\frac12\int\dd\tau\,\dd^d x\,
+  \left[
+    (\partial_\tau\phi)^2+\kappa^2(\Delta^{z/2}\phi)^2
+  \right]
+\]
+when \(z\) is even, with the obvious Fourier-symbol replacement for general
+integer \(z\).  The scaling is
+\[
+  x\mapsto b x,\qquad \tau\mapsto b^z\tau .
+\]
+Power counting is meaningful, but it is not relativistic power counting.
+If a Lorentz-invariant relativistic action appears in the infrared, the
+Lorentz-violating operators must be shown to be irrelevant or tuned small in
+the stated scaling regime.
+
+\subsection{Quantum Hall Effective Theory}
+
+The integer or fractional quantum Hall response at long distances may be
+encoded by a Chern--Simons effective action
+\[
+  S_{\rm CS}[a,A]
+  =
+  \frac{K_{IJ}}{4\pi}\int a^I\dd a^J
+  +\frac{q_I}{2\pi}\int A\dd a^I+\cdots .
+\]
+This is a topological response theory for a gapped many-body phase with a
+microscopic nonrelativistic Hamiltonian and background electromagnetic field.
+Its gauge invariance, boundary anomaly, and line-operator data are real
+low-energy statements, but they do not imply a local Poincare-invariant UV
+completion.  The correct validation map matches ground-state response,
+edge anomaly, quasiparticle braiding, and finite-size gaps, not an
+asymptotic-particle S-matrix.
+
+\section{Controlled Use of Emergent Relativistic Language}
+
+\begin{controlledapproximation}[Emergent relativistic EFT]
+\label{ca:emergent-relativistic-eft}
+Let a microscopic system with cutoff \(\Lambda_{\rm UV}\) have low-energy
+observables \(\mathcal R\).  A relativistic EFT with action \(S_{\rm rel}\)
+is a controlled emergent description on \(\mathcal R\) if there exists a
+matching map \(M_\Lambda\) and constants \(C,\Delta>0\) such that for every
+observable \(O\in\mathcal R\) with characteristic scale \(E\le E_{\rm max}\),
+\[
+  \left|
+    \langle O\rangle_{\rm micro}
+    -
+    \langle M_\Lambda O\rangle_{S_{\rm rel}}
+  \right|
+  \le
+  C_O\left(\frac{E}{\Lambda_{\rm UV}}\right)^{\Delta}
+\]
+after the stated renormalizations.  The exponent \(\Delta\) is the smallest
+scaling dimension gap between retained operators and omitted symmetry-allowed
+Lorentz-violating operators in the chosen RG chart.
+\end{controlledapproximation}
+
+This formulation is deliberately observable-based.  It does not require that
+the microscopic system possess a Lorentzian spacetime symmetry.  It requires
+only that the selected observables are approximated by a relativistic
+continuum theory with a quantitative error bound.  In contrast, a critical
+scaling limit satisfying Proposition~\ref{prop:scaling-limit-continuum-qft}
+does not merely approximate the continuum QFT; it constructs it.
+
+\begin{openproblem}[Validated condensed-matter EFT atlas]
+\label{op:validated-condensed-matter-eft-atlas}
+For each major class of condensed-matter effective theory, construct an
+atlas of validation maps in the sense of
+Definition~\ref{def:validation-map-borrowed-qft}: Fermi liquids, non-Fermi
+liquids, superconductors, deconfined critical points, fractional quantum Hall
+states, spin liquids, fracton phases, and systems with emergent gauge fields.
+The goal is not to force these systems into Poincare-invariant axioms, but to
+state exactly which QFT techniques are justified for which observables.
+\end{openproblem}
