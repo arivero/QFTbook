@@ -123,17 +123,62 @@ the invariant measure on each shell has been fixed.
 \end{proposition}
 
 \begin{proof}
-Let \(\pi(p)=-p^2\).  The space \(\overline V_+\) is a closed subspace of
-\(\mathbb R^D\), hence locally compact, second countable, Polish, and
-\(\sigma\)-compact; \([0,\infty)\) is the same.  A locally finite Borel measure
-on \(\overline V_+\) is therefore \(\sigma\)-finite.  We use the standard
-orbit-disintegration theorem for a continuous action of the locally compact
-second countable group \(SO^+(1,D-1)\) on a standard Borel space with a
-\(\sigma\)-finite invariant Radon measure: after choosing a measurable
-normalization of invariant Radon measures on the orbits, every invariant measure
-disintegrates uniquely into those orbit measures against a measure on the orbit
-space.  Applied to the orbit map \(\pi\), this gives conditional measures
-\(\nu_s\), supported on \(\pi^{-1}(s)\), such that
+Let
+\[
+  G=SO^+(1,D-1),\qquad X=\overline V_+\setminus\{0\}.
+\]
+The excluded point has zero \(\nu\)-measure by hypothesis, so it may be
+removed throughout the proof.  The space \(X\) is locally compact, second
+countable, \(\sigma\)-compact, and standard Borel.  The group \(G\) is a
+locally compact second countable Lie group, and its action on \(X\) is
+continuous.
+
+We first verify the regular-orbit hypotheses in the Mackey--Effros
+decomposition theorem.  The \(G\)-orbits in \(X\) are
+\[
+  \Sigma_s^+
+  =
+  \{p\in\overline V_+: -p^2=s\},
+  \qquad s>0,
+\]
+together with the punctured future light cone
+\[
+  \Sigma_0^{+\times}
+  =
+  \{p\in\overline V_+:p^2=0,\ p\ne0\}.
+\]
+For \(s>0\), a representative is \(k_s=(\sqrt s,0,\ldots,0)\), and the
+stabilizer is the compact group \(SO(D-1)\).  For the null orbit, a
+representative is \(\ell=(1,1,0,\ldots,0)\), and the stabilizer is the
+Euclidean group
+\[
+  ISO(D-2)=\mathbb R^{D-2}\rtimes SO(D-2)
+\]
+embedded as the usual massless little group.  These stabilizers are closed
+subgroups of \(G\), and the orbit maps identify the orbits with the
+homogeneous spaces
+\[
+  \Sigma_s^+\simeq G/SO(D-1),
+  \qquad
+  \Sigma_0^{+\times}\simeq G/ISO(D-2).
+\]
+The orbit space is the standard Borel space \([0,\infty)\), with orbit map
+\(\pi(p)=-p^2\), after the origin has been removed from the fiber over
+\(0\).  A Borel cross-section is
+\[
+  c(0)=\ell,\qquad c(s)=k_s\quad(s>0).
+\]
+Thus the action is smooth in Mackey's sense: the orbit equivalence relation is
+regularly embedded, the quotient is standard Borel, and a Borel section
+exists.  Since \(G\), \(SO(D-1)\), and \(ISO(D-2)\) are unimodular, each
+homogeneous orbit carries a nonzero \(G\)-invariant Radon measure, unique up
+to a positive scalar.  The Mackey--Effros disintegration theorem for smooth
+Borel actions of locally compact second countable groups therefore applies to
+the \(\sigma\)-finite invariant Radon measure \(\nu|_X\).
+
+Consequently there are conditional invariant Radon measures \(\nu_s\),
+supported on the orbit \(\pi^{-1}(s)\cap X\), and a positive Borel measure
+\(\lambda\) on \([0,\infty)\) such that
 \[
   \int F(p)\,\dd\nu(p)
   =
@@ -141,28 +186,58 @@ space.  Applied to the orbit map \(\pi\), this gives conditional measures
   \left(\int_{\pi^{-1}(s)}F(p)\,\dd\nu_s(p)\right)
   \dd\lambda(s)
 \]
-for a positive Borel measure \(\lambda\) on \([0,\infty)\).  This \(\lambda\)
-is an orbit-space measure, not the raw pushforward of \(\nu\).
-For \(s>0\), the set \(\pi^{-1}(s)\cap\{p^0>0\}\) is the positive mass shell
-of mass \(\sqrt{s}\), and \(SO^+(1,D-1)\) acts transitively on it.  The
-stabilizer of a point is \(SO(D-1)\); therefore an invariant Radon measure on
-the shell is unique up to an overall positive scalar.  The standard choice is
+for all \(F\in C_c(X)\).  This \(\lambda\) is an orbit-space measure; it is
+determined by the chosen normalization of conditional orbit measures.  A
+single massive orbit has infinite invariant volume, so this normalization is
+part of the data entering the quotient measure.
+
+It remains to identify the orbit measures and fix their normalization.  For
+\(s>0\), the standard invariant measure on the positive mass shell is
 \[
   \dd\sigma_s(p)
   =
   \frac{\dd^Dp}{(2\pi)^{D-1}}\,
   \theta(p^0)\delta(p^2+s).
 \]
-For \(s=0\), the same argument applies to the nonzero future light cone, whose
-orbit is \(SO^+(1,D-1)/ISO(D-2)\); an atom at \(p=0\) would be a separate
-vacuum contribution and is excluded by hypothesis.  Thus
-\(\nu_s=c(s)\sigma_s\) for a nonnegative measurable function \(c\).  The
-measurability of \(c\) is part of the uniqueness clause in the disintegration
-theorem after the family \(s\mapsto\sigma_s\) has been chosen measurably, which
-is immediate from the displayed formula for \(\sigma_s\) when paired with
-compactly supported continuous test functions.  Absorbing \(c(s)\) into
-\(\dd\lambda(s)\) defines the measure \(\dd\rho(s)\), which gives the displayed
-formula.
+Indeed, the distribution \(\theta(p^0)\delta(p^2+s)\dd^Dp\) is Lorentz
+invariant, and in coordinates \(p=(\omega_{\vec p},\vec p)\),
+\(\omega_{\vec p}=(\vec p^{\,2}+s)^{1/2}\), it is
+\[
+  \dd\sigma_s(p)
+  =
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2\omega_{\vec p}} .
+\]
+For \(s=0\) the same formula gives the invariant measure on the punctured
+future light cone,
+\[
+  \dd\sigma_0(p)
+  =
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}2|\vec p|},
+  \qquad \vec p\ne0,
+\]
+which is locally finite on \(X\).  The origin would give a separate orbit and
+a possible atom; it was removed by hypothesis.
+
+The uniqueness of invariant Radon measure on each homogeneous orbit gives
+\[
+  \nu_s=c(s)\sigma_s
+\]
+for \(\lambda\)-almost every \(s\), with \(c(s)\ge0\).  The family
+\(s\mapsto\sigma_s\) is measurable: for \(F\in C_c(X)\),
+\[
+  s\longmapsto \int_{\pi^{-1}(s)}F(p)\,\dd\sigma_s(p)
+\]
+is Borel, and it is continuous on \((0,\infty)\) by the displayed
+\(\vec p\)-coordinate formula and dominated convergence on compact supports;
+the \(s=0\) value is the corresponding null-shell limit whenever the support
+stays away from the origin.  The measurable scalar \(c(s)\) is then fixed
+\(\lambda\)-almost everywhere by testing \(\nu_s\) against any countable
+measure-determining family of compactly supported continuous functions on
+\(X\).  Absorbing \(c(s)\) into \(\dd\lambda(s)\) defines the positive Borel
+measure \(\dd\rho(s):=c(s)\dd\lambda(s)\).  Substituting
+\(\nu_s=c(s)\sigma_s\) gives the stated formula for every
+\(F\in C_c(X)\), and hence for every \(F\in C_c(\overline V_+)\) because the
+removed origin has zero \(\nu\)-measure.
 \end{proof}
 
 Applying Proposition~\ref{prop:kallen-lehmann-mass-shell-disintegration} to

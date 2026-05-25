@@ -56,6 +56,10 @@ Working framework:
 | \(\Delta_F(x;\mu^2)\) | distribution | Feynman propagator of mass \(\mu\) |
 | \(d\rho(\mu^2)\) | positive measure | Kallen-Lehmann spectral measure |
 | \(\delta_{a}\) | unit point measure | Borel measure on \([0,\infty)\) with total mass one at \(s=a\) |
+| \(\Sigma_s^+\) | homogeneous orbit | positive mass shell \(\{p\in\overline V_+:-p^2=s\}\), \(s>0\) |
+| \(\Sigma_0^{+\times}\) | homogeneous orbit | punctured future light cone |
+| \(\sigma_s\) | invariant Radon measure | normalized Lorentz-invariant measure on \(\Sigma_s^+\) or on \(\Sigma_0^{+\times}\) |
+| \(\lambda\) | positive measure | intermediate Mackey--Effros orbit-space measure before absorbing shell normalizations |
 | \(Z\) | nonnegative number | atom of \(d\rho\) at an isolated one-particle mass \(m^2\) |
 | \(d\rho_{\mathrm c}\) | positive measure | continuum part of the spectral measure |
 | \(L(\vec k)\) | Lorentz transformation | standard boost from rest momentum to \(k^\mu=(\omega_{\vec k},\vec k)\) |
@@ -65,6 +69,9 @@ Working framework:
 ## Definition Ledger
 
 - spectral measure associated to a local scalar field acting on the vacuum;
+- Lorentz orbit map \(\pi(p)=-p^2\), orbit representatives \(k_s\) and
+  \(\ell\), stabilizers \(SO(D-1)\) and \(ISO(D-2)\), and the normalized
+  invariant shell measures \(\sigma_s\);
 - positive-frequency scalar two-point function \(\Delta_+\);
 - Kallen-Lehmann spectral measure \(d\rho\);
 - canonical equal-time normalization and the commutator-antisymmetry sign
@@ -85,7 +92,7 @@ Working framework:
 | --- | --- | --- |
 | The two-point Wightman function is the Fourier transform of a positive measure supported in the forward cone. | Theorem/construction | Joint spectral theorem and spectrum condition |
 | Scalar covariance makes the spectral measure a positive measure over invariant masses. | Derived | Lorentz invariance of the vacuum and scalar field |
-| \(W_2(x)=\int d\rho(\mu^2)\Delta_+(x;\mu^2)\). | Derived | Disintegration of the positive spectral measure |
+| \(W_2(x)=\int d\rho(\mu^2)\Delta_+(x;\mu^2)\). | Derived | Mackey--Effros disintegration after explicit verification of the Lorentz-orbit hypotheses |
 | \(\Delta_+(x;\mu^2)=\Delta_+(-x;\mu^2)\) for spacelike \(x\). | Derived | Lorentz frame with \(x^0=0\) and \(\vec p\mapsto-\vec p\) |
 | \(G_T(x)=\int d\rho(\mu^2)\Delta_F(x;\mu^2)\). | Derived | Definition of time ordering and linearity |
 | The \(i\epsilon\) prescription places the positive-energy pole below and the negative-energy pole above the real \(k^0\)-axis. | Derived | Explicit contour closure for \(x^0>0\) and \(x^0<0\) |
@@ -148,6 +155,14 @@ Figures to include:
   with \(Z[J]\), \(Z_{\rm MOM}(\mu)\), \(Z_\phi^{\rm chart}\), and
   \(Z_\phi^{\rm MS}\).  The Kallen--Lehmann object remains a field-overlap
   datum after the interpolating field normalization is fixed.
+- 2026-05-25 issue #507 pass: replaced the black-box "standard
+  orbit-disintegration theorem" proof with a Mackey--Effros proof that verifies
+  the hypotheses for \(SO^+(1,D-1)\) acting on the forward cone: standard
+  Borel orbit space \([0,\infty)\), Borel section \(c(0)=\ell\),
+  \(c(s)=k_s\), closed unimodular stabilizers \(SO(D-1)\) and \(ISO(D-2)\),
+  measurable normalized shell measures \(\sigma_s\), and absorption of the
+  conditional-measure scalar \(c(s)\) into the Kallen--Lehmann measure
+  \(d\rho(s)\).
 - Rendered manuscript pages `kallen_render-090.png` through
   `kallen_render-098.png`; figures are legible and do not use handwritten
   inclusions.
