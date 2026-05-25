@@ -15,6 +15,10 @@
 - Entropy functional and constrained free energy.
 - TBA pseudoenergy equation from variational stationarity.
 - Finite-size ground-state energy by mirror-channel interpretation.
+- Free Majorana ultraviolet computation giving \(c=1/2\).
+- Scaling Lee--Yang interacting one-particle TBA computation giving
+  \(c_{\rm eff}=2/5\) from the kernel integral, golden-ratio plateau, and
+  Rogers dilogarithm.
 
 ## Symbols
 
@@ -27,6 +31,8 @@
 | \(\rho_a,\rho_a^h\) | particle and hole rapidity densities |
 | \(\epsilon_a\) | pseudoenergy |
 | \(\varphi_{ab}\) | scattering kernel |
+| \(S_{\rm LY},\varphi_{\rm LY}\) | Lee--Yang scalar amplitude and TBA kernel |
+| \(Y_0,\phi_{\rm g},L(x)\) | Lee--Yang plateau value, golden ratio, and Rogers dilogarithm |
 
 ## Claim Ledger
 
@@ -37,6 +43,11 @@
    energy.
 4. The finite-size ground-state energy uses mirror-channel interpretation and
    requires model-specific finite-volume control.
+5. The free Majorana example computes its ultraviolet central charge directly
+   from a dominated-convergence limit.
+6. The scaling Lee--Yang example computes the interacting ultraviolet
+   effective central charge from an explicit kernel integral and the
+   Rogers-dilogarithm value \(L(\phi_{\rm g}^{-2})=\pi^2/15\).
 
 ## Figures
 

@@ -261,6 +261,154 @@ The result matches the central charge of the ultraviolet Majorana conformal
 field theory, but the computation above uses only the declared finite-size
 TBA datum and the normalization of \(E_0(R)\).
 
+\section{Scaling Lee--Yang Example and the Effective Central Charge}
+
+The first interacting one-particle TBA example is the massive scaling
+Lee--Yang theory.  It is not a unitary Hilbert-space example; it is included
+here because it is the minimal nontrivial diagonal bootstrap datum for which
+the TBA ultraviolet limit can be carried to an exact number.  The ultraviolet
+conformal theory is the nonunitary minimal model \(M(2,5)\), whose central
+charge is \(c=-22/5\).  Its lowest conformal weight is \(-1/5\), so the
+cylinder ground-state energy is governed by the effective central charge
+\[
+  c_{\mathrm{eff}}=c-24h_{\min}=\frac25 .
+\]
+The TBA computation below derives the same number from the scattering datum.
+
+The diagonal one-particle amplitude is
+\[
+  S_{\mathrm{LY}}(\theta)
+  =
+  \frac{\sinh\theta+\ii\sin(\pi/3)}
+       {\sinh\theta-\ii\sin(\pi/3)} .
+\]
+With the kernel convention of this chapter,
+\begin{equation}
+  \varphi_{\mathrm{LY}}(\theta)
+  =
+  \frac{1}{2\pi\ii}\frac{\dd}{\dd\theta}\log S_{\mathrm{LY}}(\theta)
+  =
+  -\frac{\sin(\pi/3)\cosh\theta}
+        {\pi\left(\sinh^2\theta+\sin^2(\pi/3)\right)}
+  =
+  -\frac{2\sqrt3\cosh\theta}{\pi(2\cosh 2\theta+1)} .
+  \label{eq:lee-yang-tba-kernel}
+\end{equation}
+It has total integral
+\begin{equation}
+  N_{\mathrm{LY}}
+  =
+  \int_{\mathbb R}\dd\theta\,\varphi_{\mathrm{LY}}(\theta)
+  =
+  -1.
+  \label{eq:lee-yang-kernel-integral}
+\end{equation}
+Indeed, putting \(x=\sinh\theta\) and \(s=\sin(\pi/3)\) gives
+\[
+  N_{\mathrm{LY}}
+  =
+  -\frac{s}{\pi}
+  \int_{-\infty}^{\infty}\frac{\dd x}{x^2+s^2}
+  =
+  -1.
+\]
+The TBA equation is therefore
+\begin{equation}
+  \epsilon(\theta)
+  =
+  r\cosh\theta
+  -\int_{\mathbb R}\dd\theta'\,
+  \varphi_{\mathrm{LY}}(\theta-\theta')
+  \log(1+\ee^{-\epsilon(\theta')}).
+  \label{eq:lee-yang-tba-equation}
+\end{equation}
+
+\begin{proposition}[Lee--Yang ultraviolet plateau]
+\label{prop:lee-yang-tba-effective-central-charge}
+Assume the standard one-plateau ultraviolet limit of
+\eqref{eq:lee-yang-tba-equation}: as \(r\downarrow0\), there is a rapidity
+region whose width tends to infinity in which
+\(\epsilon(\theta)\) approaches a constant \(\epsilon_0\), while the kernel is
+replaced by its integral \(N_{\mathrm{LY}}\).  Then
+\[
+  Y_0:=\ee^{\epsilon_0}=\phi_{\mathrm g}
+  =
+  \frac{1+\sqrt5}{2},
+  \qquad
+  c_{\mathrm{eff}}=\frac25 .
+\]
+\end{proposition}
+
+\begin{proof}
+The plateau equation is obtained from
+\eqref{eq:lee-yang-tba-equation} by dropping the vanishing driving term and
+replacing the convolution by \(N_{\mathrm{LY}}\):
+\[
+  \epsilon_0
+  =
+  -N_{\mathrm{LY}}\log(1+\ee^{-\epsilon_0})
+  =
+  \log(1+\ee^{-\epsilon_0}).
+\]
+Writing \(Y_0=\ee^{\epsilon_0}\) gives
+\[
+  Y_0=1+Y_0^{-1},
+  \qquad
+  Y_0^2=Y_0+1.
+\]
+The positive solution is the golden ratio \(\phi_{\mathrm g}\).
+
+The ultraviolet TBA central charge is the one-species Rogers-dilogarithm
+value
+\[
+  c_{\mathrm{eff}}
+  =
+  \frac{6}{\pi^2}
+  L\!\left(\frac{1}{1+Y_0}\right)
+  =
+  \frac{6}{\pi^2}L(\phi_{\mathrm g}^{-2}).
+\]
+For \(0<x<1\), use
+\[
+  L(x)=\operatorname{Li}_2(x)+\frac12\log x\log(1-x).
+\]
+The two identities needed here are
+\[
+  L(x)+L(1-x)=\frac{\pi^2}{6},
+  \qquad
+  L(x^2)=2L(x)-2L\!\left(\frac{x}{1+x}\right).
+  \label{eq:rogers-euler-abel-identities}
+\]
+The first follows from Euler's dilogarithm identity.  The second follows by
+differentiating the difference of the two sides, using
+\(\operatorname{Li}_2'(x)=-\log(1-x)/x\), and evaluating at \(x=0\).
+Set \(x=\phi_{\mathrm g}^{-1}\).  Then
+\[
+  1-x=x^2,\qquad
+  \frac{x}{1+x}=x^2.
+\]
+The identities become
+\[
+  L(x)+L(x^2)=\frac{\pi^2}{6},
+  \qquad
+  L(x^2)=2L(x)-2L(x^2).
+\]
+Thus \(3L(x^2)=2L(x)\).  Solving the two linear equations gives
+\[
+  L(\phi_{\mathrm g}^{-2})=L(x^2)=\frac{\pi^2}{15}.
+\]
+Therefore \(c_{\mathrm{eff}}=6/15=2/5\).
+\end{proof}
+
+\begin{remark}[What the example proves]
+The calculation proves an internal consistency statement for the declared TBA
+datum and its ultraviolet plateau asymptotics.  It is not by itself a
+construction of the Lee--Yang local QFT, nor a derivation that the
+finite-volume Hamiltonian spectrum of such a QFT is governed by
+\eqref{eq:lee-yang-tba-equation}.  Those statements require the Hilbert-space
+and locality input separated in the theorem boundary below.
+\end{remark}
+
 \section{Theorem Boundary}
 
 The derivation above assumes existence of thermodynamic root densities,

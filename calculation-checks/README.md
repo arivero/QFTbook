@@ -75,6 +75,11 @@ Current checks:
   monograph trace normalization, the planar-versus-one-handle theta-graph
   \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
   versus Veneziano quark-boundary counting.
+- `lee_yang_tba_checks.py`: finite checks for the Volume VI scaling
+  Lee--Yang thermodynamic Bethe ansatz example, including scalar-amplitude
+  unitarity and crossing, the sign and total integral of the TBA kernel, the
+  golden-ratio plateau equation, and the Rogers-dilogarithm value
+  \(L(\phi^{-2})=\pi^2/15\) giving \(c_{\rm eff}=2/5\).
 - `mellin_four_point_checks.py`: finite algebra checks for the CFT
   four-point Mellin-representation section, including the constrained
   \(\delta_{ij}\) equations, compatibility with the chapter's scalar
