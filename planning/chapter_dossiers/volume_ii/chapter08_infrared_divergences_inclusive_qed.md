@@ -19,7 +19,8 @@
 - `SRC-BEN-COMPARISON`: `references/253b transcribed lecture notes.tex`,
   lines around the infrared section, used only as a comparison layer.
 - `SRC-EXTERNAL`: Bloch--Nordsieck, Yennie--Frautschi--Suura,
-  Kinoshita--Lee--Nauenberg, Low, Gell-Mann--Goldberger,
+  Kinoshita--Lee--Nauenberg, Weinberg's leading soft photon and graviton
+  theorem, Low, Gell-Mann--Goldberger,
   Burnett--Kroll, Kulish--Faddeev, Buchholz's Gauss-law theorem,
   Fröhlich--Morchio--Strocchi infraparticle analysis, large-\(U(1)\)
   asymptotic-symmetry and electromagnetic-memory analyses, and the
@@ -54,6 +55,15 @@ The chapter should state:
 - the Low subleading soft-photon operator \(S^{(1)}\), its hypotheses, and
   the fact that leading-log Bloch--Nordsieck exponentiation uses only the
   leading eikonal factor \(S^{(0)}\);
+- the Weinberg leading soft photon theorem as a theorem in the same hard-kernel
+  convention, with the Ward-identity check
+  \(e_\mu\mapsto e_\mu+ck_\mu\) and hard charge conservation
+  \(\sum_n\eta_n g_n=0\);
+- the leading soft graviton analogue, with
+  \(g_{\mu\nu}=\eta_{\mu\nu}+\kappa h_{\mu\nu}\),
+  \(\mathcal L_{\rm int}=-(\kappa/2)h_{\mu\nu}T^{\mu\nu}\), and the
+  linearized-diffeomorphism check that gives momentum conservation and
+  universal spin-two coupling;
 - the distinction between soft and collinear degeneracies;
 - the Abelian-Higgs regulator as a gauge-invariant infrared deformation.
 - the ordered Bloch--Nordsieck limiting statement: at fixed regulator, form
@@ -91,6 +101,10 @@ Additional symbols introduced in the charged-sector discussion:
 | \(\Phi_R(f),\Phi_\infty(f)\) | large-radius smeared electric flux and its limiting asymptotic flux functional |
 | \(\mathcal E_{g,\mathbf v}(\mathbf n)\) | boosted Coulomb radial flux density for charge \(g\) with velocity \(\mathbf v\) |
 | \(\mathcal H_{1,\gamma}\) | physical one-photon Hilbert space |
+| \(S_\gamma^{(0)}(k,h)\) | Weinberg leading soft photon factor |
+| \(S_{\rm grav}^{(0)}(k,\lambda)\) | leading soft graviton factor |
+| \(\kappa\) | spin-two coupling in \(g_{\mu\nu}=\eta_{\mu\nu}+\kappa h_{\mu\nu}\) |
+| \(\varepsilon_{\mu\nu}^{(\lambda)}(k)\) | physical graviton polarization tensor |
 
 ## Claim Ledger
 
@@ -103,6 +117,34 @@ Additional symbols introduced in the charged-sector discussion:
    \[
      \sum_n {g_n p_n\cdot e_h^*(k)\over \eta_np_n\cdot k-\ii\epsilon}.
    \]
+3a. Equivalently, the Weinberg leading soft photon theorem is
+    \[
+      \mathcal M_{\beta;k,h|\alpha}
+      =
+      \left[\sum_n\eta_n g_n
+      {p_n\cdot e_h^*(k)\over p_n\cdot k}\right]
+      \mathcal M_{\beta|\alpha}+O(\omega^0).
+    \]
+    Replacing \(e_h^\mu\) by \(e_h^\mu+ck^\mu\) shifts the bracket by
+    \(c^*\sum_n\eta_n g_n\), so physical gauge invariance is hard charge
+    conservation.
+3b. With \(g_{\mu\nu}=\eta_{\mu\nu}+\kappa h_{\mu\nu}\) and universal
+    coupling \(-(\kappa/2)h_{\mu\nu}T^{\mu\nu}\), the leading soft graviton
+    theorem is
+    \[
+      \mathcal M_{\beta;k,\lambda|\alpha}^{\rm grav}
+      =
+      {\kappa\over2}
+      \left[
+      \sum_n\eta_n
+      {p_n^\mu p_n^\nu\varepsilon_{\mu\nu}^{(\lambda)*}(k)
+      \over p_n\cdot k}
+      \right]\mathcal M_{\beta|\alpha}+O(\omega^0).
+    \]
+    The linearized-diffeomorphism shift of
+    \(\varepsilon_{\mu\nu}\) gives \(\kappa\xi_\nu^*\sum_n\eta_np_n^\nu\),
+    which vanishes by hard momentum conservation; species-dependent spin-two
+    couplings would violate this identity for generic hard processes.
 4. Multiple real soft photons factorize into the product of the one-photon
    factors at leading order.
    The two-soft-photon identity on one external line should be displayed,
@@ -195,6 +237,9 @@ Additional symbols introduced in the charged-sector discussion:
 
 - External-line soft photon factorization, including the multiplication of
   factors for two photons emitted from the same line.
+- Leading soft theorem schematic showing gauge replacement \(e\to e+ck\) and
+  the corresponding charge-conservation Ward identity; the spin-two analogue
+  may be a compact formula box rather than a separate diagram.
 - Same-line virtual soft loops and their absorption into the infrared part of
   external LSZ factors.
 - Real-versus-virtual soft factor cancellation at the level of rates.
@@ -238,3 +283,11 @@ Additional symbols introduced in the charged-sector discussion:
   asymptotic completeness in massless QED, including the required
   flux-labelled asymptotic space, dressed charged creators, wave operators,
   and matching to inclusive detector probabilities.
+- 2026-05-25 issue #454 pass: promoted the leading eikonal formula to the
+  Weinberg leading soft photon theorem, with a Ward-identity derivation and a
+  schematic showing \(e\mapsto e+ck\) gives \(\sum_n\eta_ng_n=0\).  The same
+  section now records the spin-two leading soft theorem with
+  \(S_{\rm grav}^{(0)}=(\kappa/2)\sum_n\eta_n
+  p_n^\mu p_n^\nu\varepsilon_{\mu\nu}^*/(p_n\cdot k)\), derives the
+  linearized-diffeomorphism check, and states the universal-coupling
+  consequence.

@@ -171,6 +171,190 @@ Thus the leading soft limit is
 \]
 the same eikonal factor multiplying the original spinor amplitude.
 
+\begin{theorem}[Weinberg leading soft photon theorem]
+\label{thm:weinberg-leading-soft-photon}
+Fix an infrared regulator and hard external data for which the hard kernel
+\(\mathcal M_{\beta|\alpha}\) is defined and smooth under the addition of one
+photon of momentum \(k^\mu=\omega(1,\widehat k)\) with \(\omega\to0^+\), away
+from nonsoft singular surfaces.  Then the hard kernel with one additional
+outgoing physical photon of helicity \(h\) satisfies
+\begin{equation}
+  \mathcal M_{\beta;k,h|\alpha}
+  =
+  S_\gamma^{(0)}(k,h)\,
+  \mathcal M_{\beta|\alpha}
+  +O(\omega^0),
+  \qquad
+  S_\gamma^{(0)}(k,h)
+  =
+  \sum_n
+  \eta_n g_n\,
+  \frac{p_n\cdot e_h^*(k)}{p_n\cdot k}.
+  \label{eq:weinberg-leading-soft-photon}
+\end{equation}
+The sum runs over all hard charged external lines, with \(\eta_n=+1\) for
+outgoing and \(\eta_n=-1\) for incoming hard lines.  The \(i\epsilon\)
+prescription in the preceding external-line formula specifies the boundary
+value of the regulated kernel; the theorem displays the homogeneous leading
+soft factor.
+\end{theorem}
+
+\begin{proof}
+The scalar and spinor calculations above show that attaching the soft photon
+to an external hard line produces the pole
+\[
+  \eta_n g_n\,
+  \frac{p_n\cdot e_h^*(k)}{p_n\cdot k}\,
+  \mathcal M_{\beta|\alpha}.
+\]
+The sign \(\eta_n\) is the crossing sign: an incoming charged line is
+equivalently an outgoing line with momentum and charge flow reversed in the
+all-outgoing Ward identity.  Attachments to internal lines are less singular
+in the uniform soft limit at fixed nonexceptional hard kinematics, because no
+internal propagator is forced onto a new mass shell by adding a momentum
+\(k\) of order \(\omega\).  Summing the external-line poles gives
+\eqref{eq:weinberg-leading-soft-photon}.
+
+Gauge invariance fixes the allowed leading pole.  A physical photon
+polarization representative is defined modulo
+\[
+  e^\mu_h(k)\sim e^\mu_h(k)+c\,k^\mu .
+\]
+Under this replacement, the leading factor shifts by
+\[
+  \delta S_\gamma^{(0)}
+  =
+  c^*
+  \sum_n\eta_n g_n .
+\]
+Thus the unphysical longitudinal polarization decouples precisely when the
+hard process obeys charge conservation,
+\[
+  \sum_n\eta_n g_n=0.
+\]
+This is the Ward identity for the global \(U(1)\) charge written in the
+external hard basis.  Conversely, a nonzero coefficient of the longitudinal
+soft pole would mean that the regulated hard kernel had not descended to a
+physical photon helicity amplitude.
+\end{proof}
+
+\begin{figure}[!ht]
+  \centering
+  \begin{tikzpicture}[>=Stealth,scale=0.92,every node/.style={font=\small}]
+    \node[draw,rounded corners=2pt,minimum width=2.4cm,minimum height=1.15cm,
+      align=center,fill=blue!4] (hard) at (0,0) {hard kernel\\
+      \(\mathcal M_{\beta|\alpha}\)};
+    \draw[line width=0.75pt,-{Latex[length=2mm]}] (-2.13,0.99)--(hard);
+    \draw[line width=0.75pt,-{Latex[length=2mm]}] (-2.13,-0.99)--(hard);
+    \draw[line width=0.75pt,-{Latex[length=2mm]}] (2.13,0.99)--(hard);
+    \draw[line width=0.75pt,-{Latex[length=2mm]}] (2.13,-0.99)--(hard);
+    \node[align=center] at (-3.18,1.45) {\(p_1,g_1,\eta_1\)};
+    \node[align=center] at (-3.18,-1.45) {\(p_2,g_2,\eta_2\)};
+    \node[align=center] at (3.18,1.45) {\(p_3,g_3,\eta_3\)};
+    \node[align=center] at (3.18,-1.45) {\(p_4,g_4,\eta_4\)};
+    \draw[decorate,decoration={snake,amplitude=0.75mm,segment length=3.4mm},
+      line width=0.8pt,-{Latex[length=2mm]},red!70!black]
+      (hard) -- (0,2.15)
+      node[above,red!70!black] {\(k,e_h\)};
+    \node[align=center,anchor=west] at (3.65,0.58)
+      {soft factor\\[-0.2em]
+      \(S_\gamma^{(0)}
+      =\sum_n\eta_ng_n\frac{p_n\cdot e_h^*}{p_n\cdot k}\)};
+    \node[align=center,anchor=west] at (3.65,-0.72)
+      {gauge shift \(e_h\mapsto e_h+ck\)\\[-0.2em]
+      \(\delta S_\gamma^{(0)}=c^*\sum_n\eta_ng_n=0\)};
+  \end{tikzpicture}
+  \caption{The leading soft photon factor is the sum of external-line poles.
+  Replacing the polarization by a pure gauge vector tests the Ward identity;
+  the pole descends to the physical photon helicity space exactly when the hard
+  charges are conserved.}
+  \label{fig:weinberg-leading-soft-ward-identity}
+\end{figure}
+
+\begin{theorem}[Weinberg leading soft graviton theorem]
+\label{thm:weinberg-leading-soft-graviton}
+Consider an infrared-regulated theory with a massless spin-two gauge field
+whose representative is normalized by
+\[
+  g_{\mu\nu}=\eta_{\mu\nu}+\kappa h_{\mu\nu},
+  \qquad
+  \mathcal L_{\rm int}
+  =
+  -\frac{\kappa}{2}h_{\mu\nu}T^{\mu\nu}.
+\]
+For one additional outgoing graviton of momentum \(k\) and physical
+polarization tensor \(\varepsilon_{\mu\nu}^{(\lambda)}(k)\), the leading soft
+limit is
+\begin{equation}
+  \mathcal M_{\beta;k,\lambda|\alpha}^{\rm grav}
+  =
+  S_{\rm grav}^{(0)}(k,\lambda)\,
+  \mathcal M_{\beta|\alpha}
+  +O(\omega^0),
+  \qquad
+  S_{\rm grav}^{(0)}
+  =
+  \frac{\kappa}{2}
+  \sum_n
+  \eta_n\,
+  \frac{p_n^\mu p_n^\nu
+  \varepsilon_{\mu\nu}^{(\lambda)*}(k)}{p_n\cdot k}.
+  \label{eq:weinberg-leading-soft-graviton}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The stress-tensor vertex on an external massive line contains, at leading
+order in the soft momentum, the matrix element of the hard momentum carried by
+that line.  For a scalar line, the one-graviton vertex contracted with a
+transverse traceless polarization gives
+\[
+  \kappa\,
+  p^\mu p^\nu\varepsilon_{\mu\nu}^*(k)
+\]
+up to terms less singular in \(k\), while the adjacent nearly on-shell
+propagator gives \((2\eta_n p_n\cdot k)^{-1}\).  Their product is the
+\((\kappa/2)\eta_n p_n^\mu p_n^\nu\varepsilon_{\mu\nu}^*/(p_n\cdot k)\)
+term in \eqref{eq:weinberg-leading-soft-graviton}.  Spin-dependent terms in
+the stress tensor contain an additional power of the soft momentum or the
+Lorentz generator and therefore begin at subleading order.  Summing over the
+hard external lines gives \eqref{eq:weinberg-leading-soft-graviton}.
+
+The physical spin-two polarization is defined modulo the linearized
+diffeomorphism shift
+\[
+  \varepsilon_{\mu\nu}\sim
+  \varepsilon_{\mu\nu}
+  +k_\mu\xi_\nu+k_\nu\xi_\mu ,
+  \qquad
+  k\cdot\xi=0
+\]
+on the null momentum \(k\).  The leading soft factor changes by
+\[
+  \delta S_{\rm grav}^{(0)}
+  =
+  \kappa
+  \xi_\nu^*
+  \sum_n\eta_n p_n^\nu .
+\]
+This vanishes by hard momentum conservation.  If the coefficient of
+\(h_{\mu\nu}T^{\mu\nu}\) depended on the species, the same gauge variation
+would contain
+\[
+  \sum_n\eta_n\kappa_n p_n^\nu ,
+\]
+which does not vanish for arbitrary allowed hard reactions unless all
+\(\kappa_n\) are the same constant.  The leading soft spin-two theorem
+therefore packages both the external-line pole and the universality of the
+gravitational coupling.
+\end{proof}
+
+The photon theorem is the input used in the rest of this chapter.  The
+graviton theorem is recorded here because it is the same infrared consequence
+of a massless gauge particle and gauge-invariant factorization.  A complete
+quantum theory containing the spin-two field requires additional ultraviolet
+and nonperturbative input not used in the soft argument.
+
 For \(N\) real soft photons the leading factors multiply:
 \[
   \mathcal M_{\beta;\{k_r,h_r\}|\alpha}
