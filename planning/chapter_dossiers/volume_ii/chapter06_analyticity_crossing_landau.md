@@ -4,8 +4,9 @@
 
 - Begins the general analytic-structure portion after bound states and
   resonances.
-- Defines the physical \(s\)-channel region for identical massive scalar
-  \(2\to2\) scattering and the first-sheet boundary value.
+- Develops the physical \(s\)-channel region for identical massive scalar
+  \(2\to2\) scattering and the first-sheet boundary value using the sheet
+  convention introduced earlier in Chapter 3.
 - States real analyticity and crossing as analytic properties of the
   continued amplitude under the standard massive-local-QFT hypotheses.
 - Records the partial-wave unitarity boundary condition on the physical

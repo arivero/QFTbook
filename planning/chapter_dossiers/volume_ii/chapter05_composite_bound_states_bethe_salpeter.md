@@ -23,6 +23,9 @@
 - Volume I spectral representation and LSZ chapters.
 - Volume II Chapter 3 for first-sheet pole criteria and Chapter 4 for the
   resonance/second-sheet contrast.
+- The phrase "first sheet" uses `def:stable-channel-sheet-convention` from
+  Chapter 3, so this chapter no longer depends on the later analyticity
+  chapter for the sheet definition.
 
 ## Definitions and Symbols
 

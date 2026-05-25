@@ -42,6 +42,11 @@
   later analytic Fredholm theorem supplies the precise operator hypotheses;
   this chapter's below-threshold pole criterion is not a hidden proof that a
   truncated kernel eigenvalue produces an exact Hilbert-space particle.
+- The first/second sheet convention is introduced here before first use:
+  first sheet means the analytic germ reached from the Feynman physical
+  upper-edge boundary value, a below-threshold first-sheet point is reached
+  without crossing the threshold cut, and the second sheet relative to a
+  channel is the adjacent germ obtained by continuing through that channel cut.
 - A short-range one-dimensional Schrödinger problem is used as a controlled
   mathematical model for the pole criterion.
 
@@ -59,6 +64,8 @@
 | \(a_\ell(s)\) | ordered \(16\pi\) partial-wave amplitude, same convention as Volume I Chapter 14 |
 | \(S_\ell(s)\) | elastic partial-wave scattering eigenvalue |
 | \(\beta(s)\) | two-body elastic kinematic factor \(\sqrt{1-4m^2/s}\), not a spectral measure |
+| first sheet | physical stable-channel analytic germ reached without crossing the relevant threshold cut |
+| second sheet | adjacent germ obtained by crossing a specified channel cut; in multichannel problems the crossed cuts must be named |
 | \(M_B\) | bound-state mass below threshold |
 | \(k\) | nonrelativistic relative momentum |
 | \(E_{\mathrm{nr}}\) | nonrelativistic energy |
@@ -116,6 +123,9 @@
 - 2026-05-24 issue #435 pass: matched the chapter's \(s,t,u\) notation to the
   part-wide mostly-plus Mandelstam convention and recorded the physical
   \(s\)-channel signs \(t,u\le0\).
+- 2026-05-25 issue #443 pass: introduced the stable-channel sheet convention
+  before first use and redirected later references away from the later
+  analyticity chapter.
 
 ## Figure Requirements
 

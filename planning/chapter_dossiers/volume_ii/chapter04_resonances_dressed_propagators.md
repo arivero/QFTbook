@@ -76,6 +76,10 @@
 - The physical boundary value is obtained from the Feynman prescription:
   Euclidean momenta are analytically continued to positive real energy from
   above.
+- The sheet convention is inherited from
+  `def:stable-channel-sheet-convention` in the preceding bound-state chapter;
+  this chapter unpacks the adjacent second sheet explicitly for the
+  \(\phi_1\phi_1\) threshold cut.
 - After loop Wick rotation, no residual \(-i0\) is attached to the Euclidean
   loop variable \(\ell_E\).  Any later \(-i0\) in
   \(k^2x(1-x)+m_1^2-i0\) or
@@ -172,6 +176,10 @@
   \(\mathcal M_{ab}^{\rm II}\) reached through the unitarity cut.  In the scalar
   model this is represented locally by
   \(F_{\rm II}(s)=M_R^2-s-iW(s)+O(g^4,g^2(s-M_R^2))\).
+- 2026-05-25 issue #443 pass: moved the sheet convention to the preceding
+  bound-state chapter before first use, changed early resonance uses to
+  reference that definition, and recast the later "Second Sheet" section as the
+  model-specific development of the already-defined convention.
 - A pole-factorized resonance object is defined as the residue kernel of a
   stable-channel amplitude in a local pole neighborhood, with rank-one
   factorization recorded only after the sheet, channel variables, and

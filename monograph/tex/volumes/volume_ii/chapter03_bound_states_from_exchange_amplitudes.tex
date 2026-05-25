@@ -148,6 +148,38 @@ elementary field for that state is introduced, the same below-threshold pole
 is the scattering signature of a stable bound state. The pole criterion and
 the microscopic origin of the state are separate statements.
 
+\begin{definition}[Stable-channel sheets]
+\label{def:stable-channel-sheet-convention}
+Fix a connected stable-channel scattering amplitude, with the identity term
+and the overall momentum-conservation delta function removed, and let \(s\)
+be the invariant energy variable for a two-particle channel whose threshold is
+\(s_{\rm th}\).  The \emph{first sheet}, or physical sheet, is the analytic
+germ reached from the Feynman boundary prescription whose physical value on
+the open two-particle interval is the upper-edge boundary value
+\(\mathcal M^{\rm I}(s+\ii0)\), \(s>s_{\rm th}\).  A real point below that
+threshold is on the first sheet when it is reached inside this same germ
+without crossing the threshold cut.  Near an ordinary square-root threshold,
+one may use a local variable such as
+\[
+  \beta(s)=\sqrt{1-\frac{s_{\rm th}}{s}},
+\]
+with the branch fixed by \(\beta(s+\ii0)>0\) on the physical interval.
+Continuing through the threshold cut to the adjacent germ changes the sign of
+this local square root.  That adjacent germ is called the \emph{second sheet}
+relative to the specified channel.  With several open channels, a sheet is not
+specified by the word ``second'' alone: one must say which channel cuts have
+been crossed, or equivalently which local threshold variables have had their
+branches changed.
+
+In this terminology, a stable bound state coupled to the channel appears as an
+isolated pole on the first sheet below the corresponding threshold.  A
+resonance is instead a pole of an analytically continued stable-channel
+amplitude on an adjacent nonphysical sheet, not a pole of the physical
+real-axis boundary value.  The resonance chapter constructs this second-sheet
+continuation explicitly in an exchange model, and the analyticity chapter
+later develops the same terminology for general \(2\to2\) amplitudes.
+\end{definition}
+
 \begin{remark}[Existence is dynamical input]
 The exchange model above contains the state at \(s=m_2^2\) because the
 Lagrangian already contains the stable field \(\phi_2\) and the chosen masses
@@ -265,7 +297,7 @@ or equivalently a pole of \(S(k)\) at \(k=\ii\alpha\) on the positive imaginary
 \(k\)-axis.  In the relativistic amplitude this statement becomes: a stable
 bound state below a two-particle threshold appears as a first-sheet pole below
 the corresponding branch cut, with the sheet convention of
-Section~\ref{sec:physical-region-and-first-sheet}.
+Definition~\ref{def:stable-channel-sheet-convention}.
 
 \section{Partial Waves}
 
