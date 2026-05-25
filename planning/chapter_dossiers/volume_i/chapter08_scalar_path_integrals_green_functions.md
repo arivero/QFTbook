@@ -19,6 +19,9 @@ dimensional regularization explicitly classified as formal perturbative
 meromorphic graph assignment rather than a path-integral measure.
 Issue #314 added the Pauli--Villars auxiliary-field/determinant status row and
 states that it is not used as a default path-integral construction.
+Issue #478 added a self-contained spectral zeta determinant section with the
+one-loop quadratic-fluctuation formula, the thermal harmonic-oscillator
+determinant, and the circle Casimir finite part.
 
 ## Logical Role
 
@@ -111,6 +114,10 @@ Working framework:
 | \(\dd\rho_{\Lambda,S}\) | Euclidean density | unnormalized full density \(\exp(-L_\Lambda)\dd\mu_{C_\Lambda}\) |
 | Table `tab:regulator-integration-status-catalog` | regulator-status catalog | classification of finite lattice, finite Fourier, smooth covariance/Wilsonian, spectral/point-splitting, Pauli--Villars auxiliary-field/determinant, dimensional, and subtraction schemes |
 | Table `tab:constructive-qft-status-catalog` | status catalog | constructive and triviality regimes |
+| \(\zeta_A(s)\) | spectral zeta function | analytic continuation of \(\sum_j\lambda_j^{-s}\) for a positive elliptic operator \(A\) |
+| \(\det_\zeta(A/\mu^r)\) | regularized determinant | zeta-regularized determinant of an order-\(r\) positive operator relative to scale \(\mu\) |
+| \(A_\omega=-\dd_\tau^2+\omega^2\) | periodic operator | thermal oscillator fluctuation operator on \(S^1_\beta\) |
+| \(\zeta_{\rm R}\) | Riemann zeta function | analytic continuation used in the circle Casimir finite part |
 
 ## Definition Ledger
 
@@ -130,6 +137,9 @@ Working framework:
   regulated covariance assignments, operator-insertion regulators,
   Pauli--Villars auxiliary-field or determinant prescriptions, dimensional
   regularization, and subtraction prescriptions;
+- spectral zeta function and determinant for positive self-adjoint elliptic
+  operators with compact resolvent, zero-mode exclusion, heat-trace
+  continuation, and reference scale \(\mu\);
 - field wave functional and field-configuration generalized eigenstate;
 - Euclidean scalar action and Euclidean correlation function;
 - uniform Wick rotation preserving imaginary-time ordering;
@@ -151,6 +161,10 @@ Working framework:
 | Dimensional regularization is not a measure on field configurations; it is a formal perturbative meromorphic assignment to graph distributions and their tensor/spinor algebra. | Framework distinction | Table `tab:regulator-integration-status-catalog` |
 | A Lorentzian finite-regulator path-integral expression is classified as an oscillatory integral/distribution; the continuum Lorentzian symbol is an oscillatory pseudo-integral specified by compatible finite-regulator boundary values or stationary-phase expansions. | Definition/framework statement | Definition `def:lorentzian-oscillatory-path-integral`; Fresnel formula with signature phase, Maslov-index note, and references to Hörmander and Albeverio--Høegh-Krohn frameworks |
 | \(P(\phi)_2\), \(\phi^4_3\), selected low-dimensional superrenormalizable scalar--fermion models, and two-dimensional Yang--Mills are named rigorous construction regimes, while standard scalar \(\phi^4_D\) scaling limits in \(D\ge4\) are constrained by triviality theorems and broad four-dimensional interacting scalar/gauge construction remains open. | Status catalog | Table `tab:constructive-qft-status-catalog` with references paragraph and Open Problem `op:four-dimensional-constructive-qft` |
+| Spectral zeta regularization defines a determinant of suitable positive elliptic operators by \(-\zeta_A'(0)-\zeta_A(0)\log\mu^r\), after zero modes are separated. | Definition | Definition `def:spectral-zeta-determinant` |
+| A positive quadratic bosonic fluctuation operator contributes \(\frac12\log\det_\zeta(A/\mu^r)\) to the one-loop effective action, modulo zero modes and vacuum normalization. | Proposition | Proposition `prop:zeta-one-loop-quadratic-fluctuation` |
+| For \(A_\omega=-\dd_\tau^2+\omega^2\) on the thermal circle, \(\det_\zeta A_\omega=4\sinh^2(\beta\omega/2)\), giving the canonical oscillator partition function. | Worked example | Example `ex:zeta-thermal-harmonic-oscillator`; calculation check `zeta_determinant_checks.py` |
+| The zeta finite part of the massless real scalar circle vacuum energy is \(-\pi/(6L)\) after zero-mode separation. | Worked example | Example `ex:zeta-circle-casimir-energy`; calculation check `zeta_determinant_checks.py` |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
@@ -218,5 +232,9 @@ Rendered check:
   regularization from the class of path-integral measures.
 - 2026-05-24, issue #314: added Pauli--Villars to the regulator catalog as an
   auxiliary-field/determinant prescription, not a measure on the original
-  field space and not a default path-integral construction used in the
-  monograph.
+  field space.
+- 2026-05-25, issue #478: added spectral zeta determinants as a regulated
+  determinant prescription for suitable positive elliptic operators, including
+  the one-loop quadratic-fluctuation formula, the thermal oscillator
+  determinant, and the circle Casimir finite part; added
+  `calculation-checks/zeta_determinant_checks.py`.

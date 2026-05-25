@@ -820,6 +820,219 @@ the free two-point function is written
 for the free theory.  This equation is precisely the continuum form of the
 finite-dimensional covariance identity above.
 
+\section{Spectral Zeta Determinants}
+\label{sec:spectral-zeta-determinants}
+
+The finite-dimensional Gaussian normalization contains the determinant of the
+quadratic operator:
+\[
+  \int_{\mathbb R^N}\dd^N\phi\,
+  \exp\left[-\frac12\phi^iA_{ij}\phi^j\right]
+  =
+  (2\pi)^{N/2}(\det A)^{-1/2}
+\]
+for a positive-definite symmetric matrix \(A\).  In field theory the analogous
+quantity is a determinant of a differential operator and requires its own
+regularized definition.  A spectral zeta determinant is one such definition
+for operators with discrete positive spectrum.  It regulates the determinant;
+it does not by itself choose the continuum theory or the subtraction
+coordinates of an interacting path integral.
+
+\begin{definition}[Spectral zeta determinant]
+\label{def:spectral-zeta-determinant}
+Let \(A\) be a positive self-adjoint elliptic operator of order \(r>0\) on a
+compact \(d\)-dimensional Euclidean manifold, with boundary condition chosen so
+that \(A\) has compact resolvent.  Let
+\[
+  0<\lambda_1\le\lambda_2\le\cdots
+\]
+be the positive eigenvalues of \(A\), repeated with multiplicity.  Zero modes,
+if present, are omitted from this list and must be integrated or treated as
+collective coordinates separately.  For \(\operatorname{Re}s>d/r\), set
+\begin{equation}
+  \zeta_A(s)=\sum_j \lambda_j^{-s}.
+  \label{eq:spectral-zeta-definition}
+\end{equation}
+Equivalently, in the same half-plane,
+\begin{equation}
+  \zeta_A(s)
+  =
+  \frac{1}{\Gamma(s)}
+  \int_0^\infty \dd t\,t^{s-1}
+  \operatorname{Tr}\ee^{-tA}.
+  \label{eq:spectral-zeta-heat-kernel-mellin}
+\end{equation}
+Assume that the heat trace has the usual small-\(t\) asymptotic expansion and
+that the meromorphic continuation of \(\zeta_A(s)\) is regular at \(s=0\).
+For a reference scale \(\mu\) of mass dimension \(1\), define
+\begin{equation}
+  \log\det\nolimits_{\zeta}\left(\frac{A}{\mu^r}\right)
+  =
+  -
+  \left.\frac{\dd}{\dd s}\right|_{s=0}
+  \sum_j\left(\frac{\lambda_j}{\mu^r}\right)^{-s}
+  =
+  -\zeta_A'(0)-\zeta_A(0)\log\mu^r .
+  \label{eq:zeta-determinant-definition}
+\end{equation}
+\end{definition}
+
+The scale dependence in \eqref{eq:zeta-determinant-definition} is local in
+the following sense.  The value \(\zeta_A(0)\) is determined by the coefficient
+of \(t^0\) in the heat-trace expansion, up to the explicit removal of zero
+modes.  Therefore changing \(\mu\) changes a one-loop effective action by the
+same local heat-kernel coefficient that is later represented by local
+renormalized coordinates.  This is the determinant counterpart of the
+regulator/subtraction distinction recorded in
+Table~\ref{tab:regulator-integration-status-catalog}.
+
+\begin{proposition}[One-loop determinant from a quadratic fluctuation]
+\label{prop:zeta-one-loop-quadratic-fluctuation}
+Let \(\phi=\phi_{\rm cl}+\eta\) be a background split for a bosonic Euclidean
+path integral, and suppose that the quadratic fluctuation operator
+\[
+  A_{\phi_{\rm cl}}
+  =
+  S_E''[\phi_{\rm cl}]
+\]
+is positive and satisfies the hypotheses of
+Definition~\ref{def:spectral-zeta-determinant}.  With the Gaussian
+normalization chosen by spectral zeta regularization, the one-loop
+contribution of the nonzero modes to the effective action is
+\begin{equation}
+  \Gamma_{1}[\phi_{\rm cl}]
+  =
+  \frac12
+  \log\det\nolimits_{\zeta}\left(\frac{A_{\phi_{\rm cl}}}{\mu^r}\right).
+  \label{eq:zeta-one-loop-effective-action}
+\end{equation}
+For fermionic Gaussian variables the corresponding Pfaffian or determinant
+appears with the opposite statistics sign and with the spinor and reality
+structure stated as part of the regulator.
+\end{proposition}
+
+\begin{proof}
+At finite regulator,
+\[
+  S_E[\phi_{\rm cl}+\eta]
+  =
+  S_E[\phi_{\rm cl}]
+  +
+  \frac12\langle\eta,A_{\phi_{\rm cl},\Lambda}\eta\rangle_\Lambda
+  +
+  O(\eta^3)
+\]
+when \(\phi_{\rm cl}\) obeys the regulated equation of motion.  The Gaussian
+integral over the nonzero fluctuation modes gives
+\[
+  Z_{\Lambda}^{\rm 1-loop}[\phi_{\rm cl}]
+  =
+  \exp[-S_E[\phi_{\rm cl}]]
+  (2\pi)^{N_\Lambda/2}
+  \bigl(\det A_{\phi_{\rm cl},\Lambda}\bigr)^{-1/2}
+\]
+up to the finite-dimensional zero-mode and collective-coordinate factors that
+were excluded.  The factor \((2\pi)^{N_\Lambda/2}\) is independent of the
+background in a fixed bosonic coordinate density and is part of the vacuum
+normalization.  Replacing the divergent determinant by
+\(\det_\zeta(A_{\phi_{\rm cl}}/\mu^r)\) gives the logarithm
+\eqref{eq:zeta-one-loop-effective-action}.  The argument uses only the
+quadratic Gaussian identity; interactions beyond quadratic order are
+additional vertices in perturbation theory.
+\end{proof}
+
+\begin{example}[Thermal harmonic oscillator determinant]
+\label{ex:zeta-thermal-harmonic-oscillator}
+Let \(S^1_\beta=\mathbb R/\beta\mathbb Z\) and
+\[
+  A_\omega=-\frac{\dd^2}{\dd\tau^2}+\omega^2,
+  \qquad
+  \omega>0,
+\]
+acting on periodic functions.  The eigenvalues are
+\[
+  \lambda_n=\left(\frac{2\pi n}{\beta}\right)^2+\omega^2,
+  \qquad n\in\mathbb Z.
+\]
+For this one-dimensional second-order operator \(\zeta_{A_\omega}(0)=0\), so
+the determinant is independent of \(\mu\).  Differentiate the logarithm before
+integrating it:
+\[
+  \frac{\dd}{\dd\omega}
+  \log\det\nolimits_{\zeta}A_\omega
+  =
+  2\omega
+  \sum_{n\in\mathbb Z}
+  \frac{1}{(2\pi n/\beta)^2+\omega^2}.
+\]
+The partial-fraction identity
+\[
+  \sum_{n\in\mathbb Z}\frac{1}{n^2+a^2}
+  =
+  \frac{\pi}{a}\coth(\pi a),
+  \qquad a>0,
+\]
+with \(a=\beta\omega/(2\pi)\) gives
+\[
+  \frac{\dd}{\dd\omega}
+  \log\det\nolimits_{\zeta}A_\omega
+  =
+  \beta\coth\frac{\beta\omega}{2}.
+\]
+Therefore
+\[
+  \log\det\nolimits_{\zeta}A_\omega
+  =
+  2\log\left(2\sinh\frac{\beta\omega}{2}\right)+C .
+\]
+The constant is fixed by the small-\(\omega\) behavior:
+\(\det_\zeta A_\omega\sim \omega^2\det_\zeta'(-\dd^2/\dd\tau^2)\) and
+\(\det_\zeta'(-\dd^2/\dd\tau^2)=\beta^2\).  Hence
+\begin{equation}
+  \det\nolimits_{\zeta}A_\omega
+  =
+  4\sinh^2\frac{\beta\omega}{2},
+  \qquad
+  Z_{\rm osc}(\beta,\omega)
+  =
+  \left(\det\nolimits_{\zeta}A_\omega\right)^{-1/2}
+  =
+  \frac{1}{2\sinh(\beta\omega/2)} .
+  \label{eq:zeta-oscillator-determinant}
+\end{equation}
+The last expression is the canonical thermal partition function of the
+oscillator,
+\[
+  \operatorname{Tr}\ee^{-\beta\omega(a^\dagger a+1/2)}
+  =
+  \frac{\ee^{-\beta\omega/2}}{1-\ee^{-\beta\omega}}.
+\]
+\end{example}
+
+\begin{example}[Circle Casimir finite part]
+\label{ex:zeta-circle-casimir-energy}
+For a massless real scalar on a spatial circle of circumference \(L\), remove
+the constant zero mode and write the oscillator frequencies as
+\[
+  \omega_n=\frac{2\pi |n|}{L},\qquad n\in\mathbb Z\setminus\{0\}.
+\]
+The zeta-regularized finite part of the vacuum energy is
+\begin{equation}
+  E_0^{\zeta}(L)
+  =
+  \frac12\sum_{n\ne0}\omega_n
+  =
+  \frac{2\pi}{L}\zeta_{\rm R}(-1)
+  =
+  -\frac{\pi}{6L},
+  \label{eq:zeta-circle-casimir}
+\end{equation}
+where \(\zeta_{\rm R}(-1)=-1/12\) is the analytic continuation of the Riemann
+zeta function.  The zero mode and any additive local vacuum-energy
+normalization are separate data.  In two-dimensional CFT language the result
+is the \(c=1\) case of \(E_0=-\pi c/(6L)\) on the cylinder.
+\end{example}
+
 \section{The Feynman Prescription}
 
 Let

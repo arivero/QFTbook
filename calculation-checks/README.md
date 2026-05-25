@@ -98,6 +98,13 @@ Current checks:
   cohomology counts in \(D=2,4,6\), the engineering weights of the listed
   type-B densities, and the \(-12\) coefficient showing that the four-dimensional
   \(\nabla^2R\) term is shifted by an \(R^2\) counterterm.
+- `zeta_determinant_checks.py`: numerical and exact checks for the spectral
+  zeta-determinant section, including the periodic resolvent identity for
+  \(-\dd_\tau^2+\omega^2\), the derivative of
+  \(\log\det_\zeta A_\omega\), equality with the canonical oscillator
+  partition function, the circle Casimir coefficient
+  \(\zeta_{\rm R}(-1)=-1/12\), and the sign of the determinant's scale
+  dependence.
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
   algebraic checks, adapted from the stringbook spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.
