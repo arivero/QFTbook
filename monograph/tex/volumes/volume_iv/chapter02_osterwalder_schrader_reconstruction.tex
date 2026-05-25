@@ -306,12 +306,43 @@ the algebraic preservation of positive-time support and to Euclidean covariance
 of the Schwinger functions.  This is the point at which the Klein--Landau
 regularity gap in the original reconstruction argument is closed.
 
+\begin{remark}[Failure mode of the first OS reconstruction theorem]
+\label{rem:klein-landau-gap}
+The OS-I axioms do not by themselves imply that \(R_s\) is bounded on the
+reflection-positive quotient.  The obstruction is concrete: even when the
+Euclidean hierarchy is reflection positive and Euclidean covariant, the
+seminorm of \(R_sF\) may fail to be controlled by the seminorm of \(F\), so a
+zero-norm vector can be moved to a nonzero class or a Cauchy sequence can be
+moved to a non-Cauchy sequence.  In that situation the formula
+\([F]\mapsto[R_sF]\) does not define a contraction on \(\Hilb_{\rm OS}\), and
+there is no self-adjoint Hamiltonian obtained from positive Euclidean time
+translations.  The added OS-II contractivity and continuity assumptions
+\eqref{eq:os-time-contractivity}--\eqref{eq:os-time-strong-continuity} are
+exactly the hypotheses that remove this failure mode.
+\end{remark}
+
 Contractivity implies \(R_s\mathcal N\subset\mathcal N\), so \(R_s\) descends to
 a bounded operator \(T_E(s)\) on the quotient and then to \(\Hilb_{\rm OS}\).
 Equations
 \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity} say
 precisely that \(\{T_E(s)\}_{s\ge0}\) is a strongly continuous semigroup of
 self-adjoint contractions.
+Indeed, \eqref{eq:os-time-symmetry} gives, on the dense quotient,
+\[
+  \langle [F],T_E(s)[G]\rangle_{\rm OS}
+  =
+  \langle [F],[R_sG]\rangle_{\rm OS}
+  =
+  \langle [R_sF],[G]\rangle_{\rm OS}
+  =
+  \langle T_E(s)[F],[G]\rangle_{\rm OS}.
+\]
+The equality descends to the quotient because \(R_s\mathcal N\subset
+\mathcal N\), and it extends to \(\Hilb_{\rm OS}\) because \(T_E(s)\) is
+bounded by \eqref{eq:os-time-contractivity}.  Thus the self-adjointness of
+the Euclidean time semigroup is not inferred from a formal reflection
+manipulation outside positive time; it is precisely the OS-II symmetry
+condition on the reflection-positive quotient.
 
 Let \(A\) be its infinitesimal generator,
 \[
@@ -387,6 +418,45 @@ operator-domain hypotheses included in the reconstruction theorem, limits of
 ordered supports give closable Euclidean field operators on
 \(\mathcal D_{\rm OS}\).
 
+\begin{proposition}[Closability of ordered Euclidean insertions]
+\label{prop:os-ordered-field-closability}
+Assume the operator-domain part of the OS data supplies the following
+adjoint-insertion identity.  For every ordered positive-time test insertion
+\(h\) there is an ordered test insertion \(h^\sharp\), with adjoint label and
+with supports arranged by a common positive time translation, such that for
+all \(F,G\in\mathcal E_+\)
+\begin{equation}
+  \langle [G],\Phi_E(h)[F]\rangle_{\rm OS}
+  =
+  \langle \Phi_E(h^\sharp)[G],[F]\rangle_{\rm OS}.
+  \label{eq:os-ordered-insertion-adjoint-identity}
+\end{equation}
+Then \(\Phi_E(h)\) is closable on the dense domain
+\(\mathcal D_{\rm OS}\).
+\end{proposition}
+
+\begin{proof}
+Let \(\psi_k\in\mathcal D_{\rm OS}\) satisfy
+\(\psi_k\to0\) and \(\Phi_E(h)\psi_k\to\eta\) in \(\Hilb_{\rm OS}\).  To
+prove closability it suffices to show \(\eta=0\).  For a dense test vector
+\([G]\in\mathcal D_{\rm OS}\), the adjoint-insertion identity gives
+\[
+  \langle [G],\eta\rangle_{\rm OS}
+  =
+  \lim_k\langle [G],\Phi_E(h)\psi_k\rangle_{\rm OS}
+  =
+  \lim_k\langle \Phi_E(h^\sharp)[G],\psi_k\rangle_{\rm OS}
+  =
+  0,
+\]
+because \(\Phi_E(h^\sharp)[G]\) is a fixed vector in
+\(\mathcal D_{\rm OS}\) and \(\psi_k\to0\).  Since \(\mathcal D_{\rm OS}\) is
+dense, \(\eta\) is orthogonal to all of \(\Hilb_{\rm OS}\), hence
+\(\eta=0\).  This is the standard closability criterion, with the
+QFT-specific content isolated in the matrix-element identity
+\eqref{eq:os-ordered-insertion-adjoint-identity}.
+\end{proof}
+
 Lorentzian fields are obtained by continuing these matrix elements on the
 reconstructed Hilbert space.  For ordered imaginary parts
 \[
@@ -418,6 +488,92 @@ The OS theorem reconstructs a Lorentzian Wightman field
 presentation; comparison with AQFT local observable content is a further
 construction with its own hypotheses.
 
+\section{Analytic Continuation Input}
+
+The OS-II regularity assumptions are used through the following
+boundary-value package.  It is stated separately because this is the part of
+the reconstruction theorem where the first OS paper needed correction.
+
+\begin{definition}[OS Lorentzian boundary-value package]
+\label{def:os-lorentzian-boundary-value-package}
+For each \(n\), the Schwinger distribution \(S_n\) is said to satisfy the OS
+Lorentzian boundary-value package if the following data and estimates are
+available.
+
+\begin{enumerate}[label=(\roman*)]
+\item For every Euclidean time ordering there is a holomorphic function
+\[
+  \mathcal W_n(z_1,\ldots,z_n)
+\]
+on the corresponding forward tube in the difference variables
+\(\operatorname{Im}(z_j-z_{j+1})\in V_+^\circ\), where \(V_+^\circ\) is the
+open Lorentzian forward cone, whose restriction to ordered imaginary times
+agrees with \(S_n\) away from coincident points.
+\item The holomorphic functions obey tempered tube bounds: for every compact
+subcone \(K\subset (V_+^\circ)^{n-1}\) and every positive lower bound on the
+distance of the imaginary parts from the boundary of the cone, the boundary
+pairings with Schwartz tests are bounded by finitely many Schwartz seminorms
+with polynomial dependence on the reciprocal distance to the cone boundary.
+\item The permuted Euclidean orderings give holomorphic functions on the
+corresponding permuted tubes that agree on their common Euclidean real
+submanifolds.  For spacelike separated adjacent insertions, the two
+permuted tubes have a connected edge-of-the-wedge continuation through the
+corresponding Jost domain, with the Koszul sign included for graded fields.
+\end{enumerate}
+\end{definition}
+
+The linear-growth estimate \eqref{eq:os-linear-growth-condition} is one
+standard route to this package in the OS-II theorem: the controlled growth of
+distributional seminorm order is what keeps the Fourier--Laplace continuation
+inside the tempered distribution class as the imaginary parts approach the
+Lorentzian boundary.  In a concrete constructive model, this route is a
+separate analytic estimate to be proved, not a formal consequence of
+reflection positivity alone.
+
+\begin{proposition}[Consequences of the OS boundary-value package]
+\label{prop:os-boundary-package-consequences}
+Assume Definition~\ref{def:os-lorentzian-boundary-value-package}.  Then:
+\begin{enumerate}[label=(\alph*)]
+\item The limits of \(\mathcal W_n(x+\ii y)\) as
+\(y\to0\) within the ordered tube exist in
+\(\mathcal S'((\mathbb M^D)^n)\) and define tempered Wightman distributions.
+\item Permutation symmetry of the Schwinger hierarchy gives graded
+commutativity of the boundary-value fields at spacelike separation.
+\item Continuing the Wightman distributions back to ordered imaginary time
+recovers the original \(S_n\) away from the partial diagonals.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For (a), the tempered tube bounds are exactly the hypotheses of the standard
+boundary-value theorem for holomorphic functions of polynomial growth in a
+tube.  Explicitly, for a Schwartz test \(f\), the pairings
+\(\langle \mathcal W_n(\cdot+\ii y),f\rangle\) are Cauchy as
+\(y\to0\) inside every smaller cone because Cauchy's integral formula bounds
+the change in \(y\) by the same finite set of Schwartz seminorms.  The
+resulting limit is continuous in \(f\), hence a tempered distribution.
+
+For (b), take two adjacent insertions whose Lorentzian test supports are
+spacelike separated.  The two Euclidean orderings determine two holomorphic
+functions, one for each order.  By permutation symmetry they agree on the
+common Euclidean set, with the graded Koszul sign.  The Jost-domain
+connectivity in Definition~\ref{def:os-lorentzian-boundary-value-package}
+places the two functions on opposite sides of a common real edge.  The
+edge-of-the-wedge theorem identifies their analytic continuations in the
+envelope, and therefore identifies their Lorentzian boundary values.  This
+boundary-value identity is precisely graded commutativity of the smeared
+fields for spacelike separated supports.
+
+For (c), both the original Schwinger function on the ordered Euclidean domain
+and the function obtained by first taking the Lorentzian boundary value and
+then substituting ordered imaginary times are restrictions of the same
+holomorphic function \(\mathcal W_n\) on a connected tube domain.  The
+identity theorem for holomorphic functions gives equality away from the
+partial diagonals.  Contact-term extensions on the diagonals are additional
+Euclidean data and are not recovered from this off-diagonal continuation
+alone.
+\end{proof}
+
 \section{Reconstruction Theorem}
 
 \begin{theorem}[Osterwalder--Schrader reconstruction]
@@ -427,7 +583,8 @@ covariance, permutation symmetry, reflection positivity, Hermiticity,
 normalization, the OS-II positive-time semigroup conditions
 \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}, and a
 linear-growth estimate such as \eqref{eq:os-linear-growth-condition} strong
-enough to produce tempered Lorentzian boundary values.  Then there exists
+enough to prove the Lorentzian boundary-value package of
+Definition~\ref{def:os-lorentzian-boundary-value-package}.  Then there exists
 Wightman field data
 \[
   (\Hilb_{\rm OS},\vac_{\rm OS},U,\mathcal D_{\rm OS},
@@ -464,21 +621,21 @@ For \(s\ge0\), Euclidean time translation by \(s\) maps
 \(\mathcal E_+\) to itself.  The OS-II semigroup assumptions
 \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}
 therefore descend to a strongly continuous contraction semigroup
-\(T_E(s)\) on \(\Hilb_{\rm OS}\).  The Hille--Yosida theorem gives a closed
-maximal dissipative generator \(A\), and the symmetry obtained from Euclidean
-time reflection identifies this contraction semigroup with a self-adjoint
-positive generator
+\(T_E(s)\) on \(\Hilb_{\rm OS}\).  The symmetry
+\eqref{eq:os-time-symmetry}, as verified in the positive-time quotient above,
+makes each \(T_E(s)\) self-adjoint.  The self-adjoint
+contraction-semigroup theorem gives a nonnegative self-adjoint generator
 \[
-  H:=-A,\qquad T_E(s)=e^{-sH},\qquad \sigma(H)\subset[0,\infty).
+  H,\qquad T_E(s)=e^{-sH},\qquad \sigma(H)\subset[0,\infty).
 \]
 Stone's theorem then gives Lorentzian time translations
 \(U(t,0)=e^{itH}\).  Spatial translations and rotations preserve the
 positive-time half-space after a common positive time shift; by Euclidean
 covariance and the same null-space argument they produce unitary
 representations on the reconstructed Hilbert space.  The OS-II
-linear-growth estimate \eqref{eq:os-linear-growth-condition} is the analytic
-input that permits the Euclidean rotation parameters mixing time and space to
-be continued to real Lorentzian boosts as tempered boundary values.  This
+boundary-value package, supplied by the declared growth estimate, gives the
+tempered Lorentzian boundary values and the analytic continuation of
+Euclidean rotations mixing time and space to real Lorentzian boosts.  This
 gives a unitary representation \(U\) of the connected Poincare group whose
 joint translation spectrum is contained in the closed forward light cone.
 
@@ -495,22 +652,74 @@ after translating the supports, if necessary, so that the concatenated
 configuration remains strictly time ordered before taking the boundary value.
 The continuity estimates in the OS hypotheses make the resulting matrix
 elements distributions in \(f\).  Their Lorentzian boundary values are the
-Wightman distributions.  Permutation symmetry of the Euclidean hierarchy,
-together with analytic continuation and the edge-of-the-wedge theorem, gives
-local graded commutativity for spacelike separated Lorentzian test supports.
+Wightman distributions.  Proposition~\ref{prop:os-boundary-package-consequences}
+then gives local graded commutativity for spacelike separated Lorentzian test
+supports.
 Hermiticity of the Schwinger hierarchy gives the adjoint relation on
 \(\mathcal D_{\rm OS}\), and Euclidean covariance gives the Poincare
 covariance of the reconstructed fields.
 
 In the Euclidean time-ordered domain with noncoincident insertion points,
 continuing the Wightman distributions back to imaginary time recovers the
-original \(S_n\).  The assertion is restricted to noncoincident Euclidean
-points because contact extensions are part of the declared Schwinger
-hierarchy rather than a consequence of analytic continuation away from the
-diagonals.  Finally, every step above is functorial in the OS inner product
-and the insertion operations: two reconstructions from the same hierarchy
-identify the dense classes \([F]\), preserve all matrix elements, and hence
-extend uniquely to a unitary equivalence.
+original \(S_n\) by Proposition~\ref{prop:os-boundary-package-consequences}.
+The assertion is restricted to noncoincident Euclidean points because contact
+extensions are part of the declared Schwinger hierarchy rather than a
+consequence of analytic continuation away from the diagonals.  The uniqueness
+statement is the GNS-type argument in
+Proposition~\ref{prop:os-reconstruction-uniqueness}.
+\end{proof}
+
+\begin{proposition}[Uniqueness of OS reconstruction]
+\label{prop:os-reconstruction-uniqueness}
+Two OS reconstructions from the same Schwinger hierarchy are unitarily
+equivalent on the reconstructed Wightman field presentation.
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  (\Hilb_1,\vac_1,U_1,\mathcal D_1,\widehat\Phi^{(1)}_\alpha),
+  \qquad
+  (\Hilb_2,\vac_2,U_2,\mathcal D_2,\widehat\Phi^{(2)}_\alpha)
+\]
+be two reconstructions from the same hierarchy.  Both start from the same
+positive-time vector space \(\mathcal E_+\) and the same OS sesquilinear
+form, hence from the same null space \(\mathcal N\).  On the dense quotient
+define
+\[
+  V_0[F]_1=[F]_2 .
+\]
+This is well defined because \([F]_1=0\) iff
+\(\langle F,F\rangle_{\rm OS}=0\) iff \([F]_2=0\).  It is isometric because
+both inner products are the same OS form:
+\[
+  \langle V_0[F]_1,V_0[G]_1\rangle_{\Hilb_2}
+  =
+  \langle F,G\rangle_{\rm OS}
+  =
+  \langle [F]_1,[G]_1\rangle_{\Hilb_1}.
+\]
+Since the quotient is dense in both completions, \(V_0\) extends uniquely to a
+unitary \(V:\Hilb_1\to\Hilb_2\).  The empty insertion is mapped to the empty
+insertion, so \(V\vac_1=\vac_2\).  Euclidean translations, rotations, and the
+continued Poincare transformations are all defined on the dense quotient by
+the same operations on test sequences, hence
+\[
+  VU_1(g)=U_2(g)V
+\]
+on a dense domain and therefore on the Hilbert spaces.  The same argument
+applies to field insertions:
+\[
+  V\widehat\Phi^{(1)}_\alpha(f)[F]_1
+  =
+  V[(\alpha,f),F]_1
+  =
+  [(\alpha,f),F]_2
+  =
+  \widehat\Phi^{(2)}_\alpha(f)V[F]_1,
+\]
+with equality on the common invariant domain.  Thus the two reconstructions
+are unitarily equivalent as Wightman field presentations.
 \end{proof}
 
 \begin{corollary}[path-integral Schwinger limits as Wightman data]
