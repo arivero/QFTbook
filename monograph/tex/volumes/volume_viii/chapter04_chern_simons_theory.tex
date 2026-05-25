@@ -109,6 +109,177 @@ nonvanishing normal vector field along each component, or equivalently a
 choice of point-splitting direction.  The framing dependence is a local
 counterterm effect for the self-linking singularity of the line operator.
 
+\section{\texorpdfstring{\(SU(2)_k\)}{SU(2)k} Modular Data and Link Invariants}
+
+The first fully explicit compact simple example is \(G=SU(2)\) at positive
+integer level \(k\).  In the Hamiltonian/modular-functor normalization, the
+simple Wilson-line labels are
+\[
+  a=0,1,\ldots,k,
+  \qquad
+  \text{spin}(a)=\frac a2 .
+\]
+These are the integrable highest weights of the affine algebra
+\(\widehat{\mathfrak{su}}(2)_k\).  Define
+\[
+  K=k+2,
+  \qquad
+  S_{ab}
+  =
+  \sqrt{\frac{2}{K}}\,
+  \sin\!\left(\frac{(a+1)(b+1)\pi}{K}\right),
+  \qquad 0\le a,b\le k .
+  \label{eq:su2k-modular-s-matrix}
+\]
+The matrix \(S\) is the modular \(S\)-transformation on the torus state
+space in the basis determined by core Wilson lines in a solid torus.
+
+\begin{proposition}[Orthogonality of the \(SU(2)_k\) modular \(S\)-matrix]
+\label{prop:su2k-s-matrix-orthogonality}
+The matrix \eqref{eq:su2k-modular-s-matrix} is real, symmetric, and
+orthogonal:
+\[
+  \sum_{b=0}^k S_{ab}S_{cb}=\delta_{ac}.
+\]
+\end{proposition}
+
+\begin{proof}
+Put \(r=a+1\), \(s=c+1\), and \(K=k+2\).  The required identity is
+\[
+  \frac{2}{K}\sum_{m=1}^{K-1}
+  \sin\!\left(\frac{rm\pi}{K}\right)
+  \sin\!\left(\frac{sm\pi}{K}\right)
+  =
+  \delta_{rs},
+  \qquad 1\le r,s\le K-1 .
+\]
+Using \(2\sin x\sin y=\cos(x-y)-\cos(x+y)\), the sum reduces to finite
+geometric sums of \(K\)-th roots of unity.  For \(r=s\), it gives
+\(\sum_{m=1}^{K-1}\sin^2(rm\pi/K)=K/2\).  For \(r\ne s\), the two cosine
+sums cancel.  This proves the orthogonality relation.
+\end{proof}
+
+The quantum dimension of the label \(a\) is
+\begin{equation}
+  d_a=\frac{S_{0a}}{S_{00}}
+  =
+  \frac{\sin((a+1)\pi/K)}{\sin(\pi/K)} .
+  \label{eq:su2k-quantum-dimension}
+\end{equation}
+This number is the normalized expectation value of a \(0\)-framed unknot in
+\(S^3\) colored by \(a\), in the convention in which the empty normalized
+expectation value on \(S^3\) is \(1\):
+\begin{equation}
+  \langle W_a(\text{unknot})\rangle_{S^3}
+  =
+  d_a .
+  \label{eq:su2k-unknot-quantum-dimension}
+\end{equation}
+The corresponding \(0\)-framed Hopf link with components colored by \(a\) and
+\(b\) is
+\begin{equation}
+  \langle W_a(K_1)W_b(K_2)\rangle_{S^3,\operatorname{Hopf}}
+  =
+  \frac{S_{ab}}{S_{00}} .
+  \label{eq:su2k-hopf-link}
+\end{equation}
+Equation~\eqref{eq:su2k-hopf-link} is the basic bridge between the path
+integral and the modular category: the two linked Wilson loops compute the
+matrix element of the modular \(S\)-transformation, normalized by the vacuum
+amplitude.
+
+\begin{example}[\(SU(2)_1\)]
+\label{ex:su2-level-one-cs}
+At \(k=1\), there are two labels \(0,1\) and
+\[
+  S=\frac{1}{\sqrt2}
+  \begin{pmatrix}
+  1&1\\
+  1&-1
+  \end{pmatrix}.
+\]
+The nontrivial line has quantum dimension \(d_1=1\), and the Hopf link with
+both components colored by \(1\) has normalized value
+\[
+  \frac{S_{11}}{S_{00}}=-1 .
+\]
+Thus \(SU(2)_1\) is an abelian topological order in this line basis: the
+nontrivial line is invertible and has nontrivial mutual braiding with itself
+as measured by the Hopf link.
+\end{example}
+
+\begin{example}[\(SU(2)_2\)]
+\label{ex:su2-level-two-cs}
+At \(k=2\), the labels \(0,1,2\) have quantum dimensions
+\[
+  d_0=1,\qquad d_1=\sqrt2,\qquad d_2=1 .
+\]
+The label \(1\), the spin-\(\frac12\) Wilson line, is non-invertible.  This
+is the Chern--Simons modular tensor category underlying the Ising fusion
+rules after the conventional identification of labels.
+\end{example}
+
+\section{Verlinde Formula}
+
+The same modular data determine the fusion coefficients.  For \(SU(2)_k\),
+the Verlinde formula reads
+\begin{equation}
+  N_{ab}^{\phantom{ab}c}
+  =
+  \sum_{x=0}^{k}
+  \frac{S_{ax}S_{bx}S_{cx}}{S_{0x}},
+  \label{eq:su2k-verlinde-formula}
+\end{equation}
+where all labels are self-dual.  The result is the truncated \(SU(2)\)
+Clebsch--Gordan rule:
+\[
+  N_{ab}^{\phantom{ab}c}=1
+\]
+exactly when
+\[
+  |a-b|\le c\le \min(a+b,\,2k-a-b),
+  \qquad
+  a+b+c\in2\mathbb Z,
+\]
+and \(N_{ab}^{\phantom{ab}c}=0\) otherwise.  The truncation
+\(c\le2k-a-b\) is the finite-level effect: tensor products that would exceed
+the affine alcove are reflected back by the quantum Weyl symmetry.
+
+\begin{proposition}[Verlinde dimensions]
+\label{prop:su2k-verlinde-dimensions}
+Let \(\Sigma_g\) be a closed oriented genus-\(g\) surface.  The
+\(SU(2)_k\) Chern--Simons state-space dimension assigned by the modular
+functor is
+\[
+  \dim\mathcal H_{SU(2)_k}(\Sigma_g)
+  =
+  \sum_{x=0}^k (S_{0x})^{2-2g}.
+  \label{eq:su2k-verlinde-dimension}
+\]
+In particular,
+\[
+  \dim\mathcal H(S^2)=1,
+  \qquad
+  \dim\mathcal H(T^2)=k+1 .
+\]
+\end{proposition}
+
+\begin{proof}
+The dimension formula is the zero-puncture specialization of the Verlinde
+formula for conformal blocks,
+\[
+  \dim\mathcal H(\Sigma_g;a_1,\ldots,a_n)
+  =
+  \sum_{x=0}^{k}
+  (S_{0x})^{2-2g-n}\prod_{j=1}^n S_{a_jx}.
+\]
+For \(g=0,n=0\), orthogonality of the first row of \(S\) gives
+\(\sum_x S_{0x}^2=1\).  For \(g=1,n=0\), the exponent vanishes, so the sum
+has \(k+1\) terms.  Higher genus follows from pair-of-pants gluing: each
+handle contraction inserts a sum over an intermediate label weighted by the
+inverse square of \(S_{0x}\), which is exactly the displayed exponent.
+\end{proof}
+
 \section{Boundary Theory}
 
 If \(M\) has boundary, gauge variation of the Chern--Simons action produces a

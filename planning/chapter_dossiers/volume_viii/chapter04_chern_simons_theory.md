@@ -14,6 +14,9 @@
 - Level quantization from large gauge transformations.
 - Phase space on a spatial surface and its symplectic form.
 - Wilson lines and framing dependence.
+- Explicit \(SU(2)_k\) modular \(S\)-matrix, quantum dimensions, normalized
+  unknot and Hopf-link expectation values.
+- Verlinde fusion formula and closed-surface state-space dimensions.
 - Boundary relation to affine current algebra/WZW data.
 
 ## Symbols
@@ -26,6 +29,9 @@
 | \(S_{\rm CS}\) | Chern--Simons action |
 | \(k\) | level |
 | \(\mathcal M_{\rm flat}(\Sigma,G)\) | moduli space of flat \(G\)-connections |
+| \(S_{ab}\) | \(SU(2)_k\) modular \(S\)-matrix |
+| \(d_a\) | quantum dimension of Wilson-line label \(a\) |
+| \(N_{ab}^{\phantom{ab}c}\) | Verlinde fusion coefficient |
 
 ## Claim Ledger
 
@@ -34,6 +40,19 @@
    manifolds for the stated trace normalization.
 3. Boundary conditions or boundary degrees of freedom are part of the theory.
 4. Framing is part of the quantum Wilson-line definition.
+5. For \(SU(2)_k\), the modular \(S\)-matrix is a finite sine transform and
+   is orthogonal.
+6. Normalized \(S^3\) unknot and Hopf-link amplitudes are \(S_{0a}/S_{00}\)
+   and \(S_{ab}/S_{00}\), respectively.
+7. Verlinde fusion gives the truncated \(SU(2)\) Clebsch--Gordan rule, and
+   \(\dim\mathcal H(\Sigma_g)=\sum_x(S_{0x})^{2-2g}\).
+
+## Calculation Checks
+
+- `calculation-checks/chern_simons_su2_modular_checks.py` verifies the
+  \(SU(2)_k\) sine-transform orthogonality, quantum dimensions, Hopf-link
+  normalizations, Verlinde fusion coefficients, and sphere/torus state-space
+  dimensions for finite ranges of \(k\).
 
 ## Figures
 
