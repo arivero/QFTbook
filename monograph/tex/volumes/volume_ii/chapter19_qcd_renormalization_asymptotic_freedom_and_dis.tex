@@ -14,15 +14,16 @@ representation.  Write the quark fields as
   i=1,\ldots,N_c,\quad I=1,\ldots,N_f,
 \]
 where \(i\) is color, \(I\) is flavor, and \(\alpha\) is a spinor index.  We
-use the fundamental normalization
+use the Hermitian-generator normalization fixed in
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}, specifically
+\eqref{eq:ym-lie-algebra-conventions}, \eqref{eq:ym-trace-kappa}, and
+\eqref{eq:ym-lagrangian-density},
 \[
-  \operatorname{tr}_{\square}(t^a t^b)=T_F\delta^{ab},
-  \qquad
-  T_F=\frac12 .
+  \operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}.
 \]
 The group-theoretic constants used in renormalization are defined by
 \begin{equation}
-  f^{acd}f^{bcd}=C_A\delta^{ab},
+  f^a{}_{cd}f^b{}_{cd}=C_A\delta^{ab},
   \qquad
   \operatorname{tr}_{R}(t_R^a t_R^b)=T_R\delta^{ab},
   \qquad
@@ -31,10 +32,15 @@ The group-theoretic constants used in renormalization are defined by
 \end{equation}
 For \(SU(N_c)\),
 \[
-  C_A=N_c,\qquad
-  T_F=\frac12,\qquad
-  C_F=\frac{N_c^2-1}{2N_c}.
+  C_A=2N_c,\qquad
+  T_F=1,\qquad
+  C_F=\frac{N_c^2-1}{N_c}.
 \]
+These are twice the values often quoted with generators \(T^a\) normalized by
+\(\operatorname{tr}_{\square}(T^aT^b)=\frac12\delta^{ab}\).  The physical
+matrix-valued connection is unchanged; only the component coordinates and the
+coupling coordinate are rescaled.  In the present convention the gauge action is
+\(-\frac1{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\).
 
 The renormalized coupling \(g(\mu)\) depends on a scale \(\mu\) and on the
 renormalization scheme.  The beta function is
@@ -42,13 +48,14 @@ renormalization scheme.  The beta function is
   \beta(g):=\mu\frac{\dd g}{\dd\mu}.
 \]
 The first coefficient is obtained below from the background-field 1PI
-effective action.  In a mass-independent scheme the result is
+effective action.  For \(N_f\) Dirac fermions in a representation \(R\), in a
+mass-independent scheme the result is
 \begin{equation}
   \beta(g)
   =
   -\frac{g^3}{16\pi^2}
   \left(
-  \frac{11}{3}C_A-\frac{4}{3}T_F N_f
+  \frac{11}{3}C_A-\frac{4}{3}T_R N_f
   \right)
   +O(g^5).
   \label{eq:qcd-one-loop-beta-general}
@@ -57,14 +64,14 @@ Equivalently,
 \begin{equation}
   \beta(g)
   =
-  -\frac{g^3}{16\pi^2}
+  -\frac{g^3}{24\pi^2}
   \left(
-  \frac{11}{3}N_c-\frac{2}{3}N_f
+  11N_c-2N_f
   \right)
   +O(g^5)
   \label{eq:qcd-one-loop-beta-fundamental}
 \end{equation}
-for fundamental quarks.
+for fundamental quarks in this trace normalization.
 
 \section{Ordinary Covariant-Gauge Green-Function Rules}
 
@@ -75,6 +82,7 @@ by the BRST cohomology and by gauge-invariant operators, but the local rules
 themselves are needed for renormalization and for comparing different gauges.
 
 In this section write \(g\) for \(g_{\mathrm{YM}}\), and use the normalization
+\eqref{eq:ym-lagrangian-density},
 \[
   \mathcal L_{\mathrm{YM}}
   =
@@ -83,7 +91,7 @@ In this section write \(g\) for \(g_{\mathrm{YM}}\), and use the normalization
   F^a_{\mu\nu}
   =
   \partial_\mu A^a_\nu-\partial_\nu A^a_\mu
-  +f^{bc}{}_{a}A^b_\mu A^c_\nu .
+  +f^a{}_{bc}A^b_\mu A^c_\nu .
 \]
 This is the coupling-absorbed normalization of
 Chapter~\ref{ch:vol2-classical-yang-mills-matter}:
@@ -102,25 +110,25 @@ The Lorenz gauge condition is
 \]
 Under the infinitesimal gauge transformation
 \[
-  \delta_\zeta A_a^\mu
+  \delta_\zeta A^{a\mu}
   =
-  \partial^\mu\zeta_a+f^{bc}{}_{a}A_b^\mu\zeta_c ,
+  \partial^\mu\zeta^a+f^a{}_{bc}A^{b\mu}\zeta^c ,
 \]
 the variation of \(F^a(A)\) is
 \[
   \delta_\zeta F^a(A)
   =
   \partial_\mu
-  \left(\partial^\mu\zeta_a+f^{bc}{}_{a}A_b^\mu\zeta_c\right).
+  \left(\partial^\mu\zeta^a+f^a{}_{bc}A^{b\mu}\zeta^c\right).
 \]
-Replacing the gauge parameter by the ghost \(c_a\), and pairing the gauge
+Replacing the gauge parameter by the ghost \(c^a\), and pairing the gauge
 condition with the antighost \(\bar c^a\), gives the Faddeev--Popov action
 \begin{equation}
   S_{\mathrm{gh}}
   =
   -\int\dd^4x\,
   \bar c^a\partial_\mu
-  \left(\partial^\mu c_a+f^{bc}{}_{a}A_b^\mu c_c\right).
+  \left(\partial^\mu c^a+f^a{}_{bc}A^{b\mu}c^c\right).
   \label{eq:qcd-ordinary-ghost-action}
 \end{equation}
 Equivalently, after integrating by parts and discarding the boundary term,
@@ -129,7 +137,7 @@ Equivalently, after integrating by parts and discarding the boundary term,
   =
   \int\dd^4x\,
   \partial_\mu\bar c^a
-  \left(\partial^\mu c_a+f^{bc}{}_{a}A_b^\mu c_c\right).
+  \left(\partial^\mu c^a+f^a{}_{bc}A^{b\mu}c^c\right).
 \]
 The operator is the massless scalar kinetic operator, while the fields are
 Grassmann odd.  With the momentum convention displayed in the figure below,
@@ -178,15 +186,15 @@ Feynman rules below implement this determinant sign by assigning a factor
 The ghost-gluon vertex is read from the term
 \[
   \int\dd^4x\,
-  \partial_\mu\bar c^a\,f^{bc}{}_{a}A_b^\mu c_c .
+  \partial_\mu\bar c^a\,f^a{}_{bc}A^{b\mu}c^c .
 \]
 If the momentum \(k\) is assigned to the antighost line as in
 figure~\ref{fig:qcd-ordinary-covariant-gauge-rules}, the displayed local
 vertex factor is
 \begin{equation}
-  V_{\bar c^a c_c A_b^\mu}(k)
+  V_{\bar c^a c^c A^{b\mu}}(k)
   =
-  -k_\mu f^{bc}{}_{a}.
+  -k_\mu f^a{}_{bc}.
   \label{eq:qcd-ordinary-ghost-gluon-vertex}
 \end{equation}
 Changing the direction of the ghost arrow or the sign convention for incoming
@@ -237,16 +245,16 @@ self-interactions:
   &=
   -\frac1{2g^2}
   \int\dd^4x\,
-  f^{bc}{}_{a}
+  f^a{}_{bc}
   \bigl(\partial_\mu A^a_\nu-\partial_\nu A^a_\mu\bigr)
-  A_b^\mu A_c^\nu ,
+  A^{b\mu} A^{c\nu} ,
   \notag\\
   S_{AAAA}
   &=
   -\frac1{4g^2}
   \int\dd^4x\,
-  f^{bc}{}_{a}f^{de}{}_{a}
-  A_b^\mu A_c^\nu A_{d\mu}A_{e\nu}.
+  f^a{}_{bc}f^a{}_{de}
+  A^{b\mu}A^{c\nu}A^d_{\mu}A^e_{\nu}.
   \label{eq:qcd-ordinary-gluon-self-interactions}
 \end{align}
 These displayed action terms specify the convention before any momentum-flow
@@ -279,11 +287,11 @@ choice is made for a vertex tensor.
       \draw[gluon] (v)--(0,1.28);
       \fill (v) circle (2pt);
       \node[left] at (-1.55,0) {\(\bar c^a\)};
-      \node[right] at (1.55,0) {\(c_c\)};
-      \node[above] at (0,1.30) {\(A_b^\mu\)};
+      \node[right] at (1.55,0) {\(c^c\)};
+      \node[above] at (0,1.30) {\(A^{b\mu}\)};
       \node[blue!70!black] at (-0.82,0.34) {\(k\)};
       \node[align=center] at (0,-0.75)
-        {\(\displaystyle -k_\mu f^{bc}{}_{a}\)};
+        {\(\displaystyle -k_\mu f^a{}_{bc}\)};
       \node[blue!70!black,align=center] at (1.35,0.83)
         {ghost-gluon\\vertex};
     \end{scope}
@@ -362,7 +370,13 @@ In the adjoint representation,
 \[
   (\widetilde D_\mu X)^a
   =
-  \partial_\mu X^a+f^{a}{}_{bc}\widetilde A_\mu^bX^c .
+  \partial_\mu X^a+f^a{}_{bc}\widetilde A_\mu^bX^c .
+\]
+The structure constants and trace invariants in this calculation are those of
+\eqref{eq:qcd-casimir-definitions}; in particular, for fundamental quarks of
+\(SU(N_c)\) in the monograph's trace normalization,
+\[
+  C_A=2N_c,\qquad T_F=1,\qquad C_F=\frac{N_c^2-1}{N_c}.
 \]
 Choose the background-field gauge condition
 \[
@@ -607,7 +621,7 @@ The pole in dimensional regularization is the same pole as
 Let \(t_{\rm ad}^a\) denote the Hermitian adjoint-representation generators,
 defined by
 \[
-  (t_{\rm ad}^a)^b{}_{c}=-\ii f^{ab}{}_{c},
+  (t_{\rm ad}^a)^b{}_{c}=\ii f^b{}_{ac},
   \qquad
   \operatorname{tr}_{\rm ad}(t_{\rm ad}^a t_{\rm ad}^b)
   =
@@ -875,20 +889,20 @@ dimensionless coupling,
   \right),
 \]
 which is \eqref{eq:qcd-one-loop-beta-general}.  For fundamental quarks of
-\(SU(N_c)\), \(T_R=T_F=1/2\) and \(C_A=N_c\), giving
+\(SU(N_c)\), \(T_R=T_F=1\) and \(C_A=2N_c\), giving
 \eqref{eq:qcd-one-loop-beta-fundamental}.
 
 \section{Dimensional Transmutation}
 
 Assume
 \[
-  b_0:=\frac{11}{3}N_c-\frac{2}{3}N_f>0 .
+  b_0:=11N_c-2N_f>0 .
 \]
 At one loop,
 \[
   \mu\frac{\dd g}{\dd\mu}
   =
-  -\frac{b_0}{16\pi^2}g^3 .
+  -\frac{b_0}{24\pi^2}g^3 .
 \]
 Integrating between \(\mu_0\) and \(\mu\) gives
 \begin{equation}
@@ -896,7 +910,7 @@ Integrating between \(\mu_0\) and \(\mu\) gives
   =
   \frac1{g^2(\mu_0)}
   +
-  \frac{b_0}{8\pi^2}\log\frac{\mu}{\mu_0}.
+  \frac{b_0}{12\pi^2}\log\frac{\mu}{\mu_0}.
   \label{eq:qcd-one-loop-running}
 \end{equation}
 Thus \(g(\mu)\) decreases at large \(\mu\).  This property is asymptotic
@@ -908,7 +922,7 @@ The integration constant may be traded for a scale.  At one-loop accuracy,
   =
   \mu\,
   \exp\left\{
-  -\frac{8\pi^2}{b_0 g^2(\mu)}
+  -\frac{12\pi^2}{b_0 g^2(\mu)}
   \right\}.
   \label{eq:qcd-lambda-one-loop}
 \end{equation}
@@ -1948,12 +1962,16 @@ At leading order, in the same convention as \eqref{eq:dglap-evolution},
 \]
 For unpolarized distributions in the \(\overline{\mathrm{MS}}\) scheme,
 \[
-  C_F=\frac{N_c^2-1}{2N_c},
+  C_F=\frac{N_c^2-1}{N_c},
   \qquad
-  C_A=N_c,
+  C_A=2N_c,
   \qquad
-  T_R=\frac12,
+  T_R=1,
 \]
+in the trace normalization of \eqref{eq:qcd-casimir-definitions}.  These are
+twice the standard half-trace numbers, while the overall perturbative
+coefficient in \eqref{eq:dglap-evolution} is written in the corresponding
+coupling coordinate.
 and the nonzero leading kernels are
 \begin{align}
   P_{q_iq_j}^{(0)}(x)

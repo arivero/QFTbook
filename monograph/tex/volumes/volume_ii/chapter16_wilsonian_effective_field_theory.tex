@@ -1226,18 +1226,18 @@ The matrix \(A\) is the linear irrelevant block.  In the convention
 \(t=\log\Lambda\), an irrelevant coordinate has a positive eigenvalue in
 \(A\); the flow is therefore contracting in that coordinate when the cutoff
 is lowered from \(t_0\) to \(t_R<t_0\).  We assume a norm on \(V\) and
-constants \(C_A,\omega>0\) such that
+constants \(K_A,\omega>0\) such that
 \begin{equation}
   \|e^{A\tau}\|
   \leq
-  C_A e^{\omega\tau},
+  K_A e^{\omega\tau},
   \qquad
   \tau\leq0 .
   \label{eq:irrelevant-backward-semigroup-bound}
 \end{equation}
 Thus \(e^{A(t_R-t_0)}\) is bounded by
 \[
-  C_A\left(\frac{\Lambda_R}{\Lambda_0}\right)^\omega .
+  K_A\left(\frac{\Lambda_R}{\Lambda_0}\right)^\omega .
 \]
 
 For a solution of \eqref{eq:finite-coordinate-wilsonian-flow-split} on
@@ -1265,7 +1265,7 @@ boundary contribution to \(v(t_R)\) obeys
 \[
   \|e^{A(t_R-t_0)}v(t_0)\|
   \leq
-  C_A M
+  K_A M
   \left(\frac{\Lambda_R}{\Lambda_0}\right)^\omega .
 \]
 If the first omitted irrelevant coordinate has exponent \(\omega_{\rm min}\),
@@ -1333,9 +1333,9 @@ retained bare coordinates can be tuned so that \(u(t_R)=u_R\).  Assume:
   \[
     \|R_F(t_0;u_R)\|
     \leq
-    C_F\left(\frac{\Lambda_R}{\Lambda_0}\right)^{\omega_F}
+    K_F\left(\frac{\Lambda_R}{\Lambda_0}\right)^{\omega_F}
   \]
-  for some \(C_F,\omega_F>0\).
+  for some \(K_F,\omega_F>0\).
 \end{enumerate}
 For the tuned finite-cutoff trajectory, write
 \[

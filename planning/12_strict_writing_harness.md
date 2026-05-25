@@ -210,6 +210,36 @@ misreading.
   operator dimensions, spectra, or other specified observables.  These three
   RG notions may be related only after the map between their data is stated.
 
+## Calculation-Check Rule
+
+When a passage depends on convention-sensitive finite algebra, the manuscript
+must be accompanied, when feasible, by a public check in
+`calculation-checks/`.  This applies especially to gamma-matrix and spinor
+conventions, anomaly coefficients, color-factor normalizations,
+Feynman-parameter reductions, conformal blocks, superfield identities, and
+supersymmetry transformations.
+
+Committed Mathematica checks should be plain Wolfram Language `.wl` files,
+not notebook-only `.nb` files.  Run them through
+
+```bash
+tools/run_calculation_checks.sh
+```
+
+or directly with
+
+```bash
+/Applications/Wolfram.app/Contents/MacOS/wolframscript -file calculation-checks/<file>.wl
+```
+
+when `wolframscript` is not visible on `PATH`.  A calculation check does not
+replace a derivation in the text; it certifies sign, normalization, and finite
+algebra used by that derivation.  Computationally heavy checks, numerical
+summations, conformal-block recursion, large symbolic reductions, and loop
+integral bookkeeping that may grow combinatorially should be implemented in
+Python, with Wolfram Language used only for compact reader-facing symbolic
+cross-checks.
+
 ## Compilation Gate
 
 Only chapters that pass this harness may be included in the compiled

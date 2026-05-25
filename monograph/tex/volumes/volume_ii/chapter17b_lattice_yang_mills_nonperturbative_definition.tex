@@ -15,7 +15,9 @@ Osterwalder--Schrader reconstruction.
 
 Fix a compact Lie group \(G\).  For most formulas below \(G=SU(N)\), and
 \(\operatorname{tr}\) denotes the trace in the fundamental representation with
-\(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\).  Let
+\(\operatorname{tr}(t^a t^b)=\delta^{ab}\), matching the continuum
+Yang--Mills convention of
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  Let
 \[
   \Lambda_{a,L}
   =
@@ -146,13 +148,24 @@ For \(G=SU(N)\) the Wilson action is
   \frac{\beta}{N}
   \sum_{x\in\Lambda_{a,L}}
   \sum_{1\leq\mu<\nu\leq 4}
-  \operatorname{Re}\operatorname{tr}
-  \bigl(\mathbf 1-U_{\mu\nu}(x)\bigr),
-  \qquad
-  \beta=\frac{2N}{g_0^2}.
-  \label{eq:lattice-wilson-action}
+	  \operatorname{Re}\operatorname{tr}
+	  \bigl(\mathbf 1-U_{\mu\nu}(x)\bigr),
+	  \qquad
+	  \beta=\frac{N}{g_0^2}.
+	  \label{eq:lattice-wilson-action}
 \end{equation}
-Here \(g_0\) is the lattice coupling parameter.  The integrand
+Here \(g_0\) is the lattice coupling parameter in the trace-form continuum
+normalization
+\[
+  S_{\mathrm{cont}}[A]
+  =
+  \frac1{4g_0^2}\int\operatorname{tr}(F_{\mu\nu}F_{\mu\nu}) .
+\]
+With the more common generator normalization
+\(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\), the same Wilson action is
+often written with \(\beta=2N/g_0^2\).  The difference is a coordinate change in
+the generator and coupling normalization, not a different lattice integral.
+The integrand
 \(\operatorname{Re}\operatorname{tr}(\mathbf 1-U_{\mu\nu})\) is nonnegative,
 because each eigenvalue of \(U_{\mu\nu}\) lies on the unit circle and hence
 \(\operatorname{Re}\operatorname{tr}U_{\mu\nu}\leq N\).  Gauge invariance of
@@ -209,10 +222,17 @@ Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  For \(SU(N)\),
   +O(a^6).
 \]
 Substitution in \eqref{eq:lattice-wilson-action} gives
+\[
+  \sum_{\mu<\nu}\frac{a^4}{2}\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
+  =
+  \frac{a^4}{4}
+  \sum_{\mu,\nu}\operatorname{tr}(F_{\mu\nu}F_{\mu\nu}),
+\]
+because \(F_{\nu\mu}=-F_{\mu\nu}\).  Therefore
 \begin{equation}
   S_{W,\Lambda}[U(A)]
   =
-  \frac{1}{2g_0^2}
+  \frac{1}{4g_0^2}
   \int_{\mathbb T_L^4}
   \operatorname{tr}(F_{\mu\nu}F_{\mu\nu})\,\dd^4x
   +O(a^2),
@@ -408,7 +428,8 @@ control along a scaling trajectory with \(\beta\to\infty\).
 
 The continuum limit is not obtained by fixing \(\beta\) and sending
 \(a\downarrow0\).  One must choose a trajectory \(g_0(a)\), equivalently
-\(\beta(a)=2N/g_0(a)^2\), so that dimensionless lattice observables scale in
+\(\beta(a)=N/g_0(a)^2\) in the trace normalization of this chapter, so that
+dimensionless lattice observables scale in
 a way compatible with finite physical observables.  For example, if the
 continuum theory has a string tension \(\sigma_{\rm phys}\), a scaling
 trajectory would satisfy
@@ -472,11 +493,11 @@ the Symanzik form of a local long-distance effective action:
   \left[
     \mathcal E_0(a)
     +
-    \frac{1}{2g_R(a)^2}
+    \frac{1}{4g_R(a)^2}
     \operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
     +
     \sum_i a^{d_i-4}c_i(a)\mathcal O_i(x)
-  \right].
+  \right]
   +
   \ii\theta\,\frac{1}{8\pi^2}\int\operatorname{tr}(F\wedge F).
   \label{eq:lattice-symanzik-effective-action}

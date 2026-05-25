@@ -122,6 +122,16 @@ The current machine-readable layer is therefore deliberately small:
 - dependency control in `planning/13_development_dependency_map.md`;
 - reader-facing TeX phrase audit through `tools/audit_monograph_text.sh`;
 - build and log audit through `tools/build_monograph.sh`.
+- convention-sensitive calculation checks through
+  `tools/run_calculation_checks.sh`.
+
+Calculation checks belong in `calculation-checks/`.  Prefer plain Python and
+Wolfram Language `.wl` files.  Do not treat a missing `wolframscript` on
+`PATH` as evidence that Mathematica is absent: on the author's macOS machine,
+the executable may be at
+`/Applications/Wolfram.app/Contents/MacOS/wolframscript`.  Heavy numerical or
+long symbolic computations should be implemented in Python; Wolfram Language
+checks are for finite, readable symbolic convention verifications.
 
 Deferred until the chapter architecture is more stable:
 

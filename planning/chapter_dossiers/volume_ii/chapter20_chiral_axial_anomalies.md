@@ -18,6 +18,11 @@
 
 - `SRC-QFT-PDF`: second-sequence handwritten material around QCD, anomalies,
   theta angle, and pions.
+- `SRC-STRINGBOOK-APP-O`: local stringbook Appendix O is the primary source
+  for anomaly calculations and conventions, especially the dimensional
+  reduction treatment of the two-dimensional axial anomaly, the
+  four-dimensional axial triangle, chiral gauge anomalies, counterterm/contact
+  ambiguity, descent, and anomaly polynomials.
 - `SRC-EXTERNAL`:
   `references/sound_references/barnich_brandt_henneaux_local_brst_cohomology_hep-th_0002245.pdf`
   and sidecar, especially Sections 2.3 and 12, for the \(H^{1,n}(s\mid d)\)
@@ -48,6 +53,10 @@
   spectral regulator for the Berezinian trace, not a Pauli--Villars regulator
   field or determinant-ratio prescription.
 - Gauge potentials use the Hermitian convention of the Yang--Mills chapters.
+- Generator and coupling conventions are repeatedly cross-referenced to
+  \(\operatorname{tr}(t^a t^b)=\delta^{ab}\),
+  \([t^a,t^b]=i f^c{}_{ab}t^c\), and
+  \(-\frac1{4g_{\mathrm{YM}}^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\).
 - Characteristic classes are written using the anti-Hermitian connection
   \(\mathsf A=-\ii A\), \(\mathsf F=\dd\mathsf A+\mathsf A^2=-\ii F\).
 - Fermion chirality signs are stated relative to the chapter's \(\gamma_5\)

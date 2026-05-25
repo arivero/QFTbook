@@ -42,9 +42,9 @@ This group must be distinguished from the finite-dimensional internal group
 \(G\).  In local coordinates near the identity, a gauge transformation can be
 written as
 \[
-  g(x)=\exp\bigl(\ii\zeta_a(x)t^a\bigr),
+  g(x)=\exp\bigl(\ii\zeta^a(x)t^a\bigr),
   \qquad
-  \xi^\alpha\equiv \zeta_a(x),\qquad
+  \xi^\alpha\equiv \zeta^a(x),\qquad
   \alpha=(a,x).
 \]
 Repeated condensed indices include sums over Lie algebra labels and integrals
@@ -71,7 +71,7 @@ The infinitesimal action associated with
   \qquad
   (D_\mu(A)\zeta)^a
   =
-  \partial_\mu\zeta^a+f^{a}{}_{bc}A_\mu^b\zeta^c .
+  \partial_\mu\zeta^a+f^a{}_{bc}A_\mu^b\zeta^c .
 \]
 Let \(\phi\) denote the complete list of fields: gauge potentials and, when
 present, matter fields.  At a fixed ultraviolet and infrared regulator, before
@@ -684,7 +684,7 @@ For this choice,
   \qquad
   (D_\mu c)^a
   =
-  \partial_\mu c^a+f^{a}{}_{bc}A_\mu^b c^c .
+  \partial_\mu c^a+f^a{}_{bc}A_\mu^b c^c .
   \label{eq:covariant-fp-operator}
 \end{equation}
 For this local gauge condition the condensed labels are
@@ -703,7 +703,7 @@ nonabelian group,
   =
   \delta^{ab}\partial^2
   +
-  f^{a}{}_{cb}\,\partial^\mu(A_\mu^c\,\cdot),
+  f^a{}_{cb}\,\partial^\mu(A_\mu^c\,\cdot),
 \]
 so \(\det\mathcal M(A)\) is a functional of \(A\).  The ghost fields below are
 therefore dynamical scalar fermions in perturbation theory; their interactions
@@ -813,7 +813,7 @@ The BRST differential \(s\) is an odd derivation of ghost number \(+1\).  On
 the Yang--Mills sector it is defined by
 \begin{equation}
   sA_\mu^a=(D_\mu c)^a,\qquad
-  sc^a=-\frac12 f^{a}{}_{bc}c^b c^c,\qquad
+  sc^a=-\frac12 f^a{}_{bc}c^b c^c,\qquad
   s\bar c^a=B^a,\qquad
   sB^a=0 .
   \label{eq:brst-transformations}
@@ -852,7 +852,17 @@ where
   \qquad
   [S_\beta,S_\gamma]=f^\alpha{}_{\beta\gamma}S_\alpha .
 \]
-The two notations agree because \(b_A=\bar c_A\).  If \(\epsilon\) is a
+For the gauge-transformation group of maps \(M\to G\), the condensed structure
+constants are the distributional kernel
+\[
+  f^{(a,x)}{}_{(b,y)(c,z)}
+  =
+  f^a{}_{bc}\,\delta^{(D)}(x-y)\delta^{(D)}(x-z),
+\]
+with the same output-first finite-dimensional convention as in
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  Thus the Greek-index
+formula is condensed notation, not a second convention for raising Lie-algebra
+indices.  The two notations agree because \(b_A=\bar c_A\).  If \(\epsilon\) is a
 constant Grassmann-odd parameter, the finite-parity infinitesimal variation is
 \(\delta_B X=\epsilon\,sX\); in particular \(\epsilon c^\alpha\) is even, as a
 gauge parameter must be.
@@ -927,7 +937,7 @@ For the gauge field, the matrix form of the same computation is
 \]
 because \(D_\mu[c,c]_{\mathrm H}=2[D_\mu c,c]_{\mathrm H}\) for odd \(c\).
 For a matter field, the representation identity
-\([t_R^a,t_R^b]=\ii f^{c}{}_{ab}t_R^c\) gives
+\([t_R^a,t_R^b]=\ii f^c{}_{ab}t_R^c\) gives
 \[
   s^2\psi
   =

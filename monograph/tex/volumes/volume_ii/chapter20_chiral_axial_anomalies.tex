@@ -34,6 +34,23 @@ chirality convention is
   =
   4\ii\,\epsilon^{\mu\nu\rho\sigma}.
 \]
+Gauge generators in this chapter use the same Hermitian convention as
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}: if
+\(A_\mu=A_\mu^a t^a\), then
+\[
+  [t^a,t^b]=\ii f^c{}_{ab}t^c,
+  \qquad
+  \operatorname{tr}(t^a t^b)=\delta^{ab}
+\]
+unless a different trace is explicitly declared.  The trace-form anomaly
+expressions are written in terms of the matrix-valued curvature
+\[
+  F_{\mu\nu}
+  =
+  \partial_\mu A_\nu-\partial_\nu A_\mu-\ii[A_\mu,A_\nu],
+\]
+so a change of generator normalization rescales the component fields and
+coupling coordinates but not the matrix trace formula itself.
 With this adjoint the Hermitian bilinear current associated with a real
 phase rotation contains an explicit factor of \(\ii\).  Couple \(\psi\) to a
 background or dynamical gauge field through
@@ -933,15 +950,22 @@ before this spectral correction is imposed.
 For several Weyl fermions, anomalies are encoded by traces over their
 representations.  Let \(T^A\) be a generator of a global symmetry current and
 let \(t^a,t^b\) be generators of gauge or background gauge fields.  The
-coefficient of the mixed anomaly is
+Hermitian generator and curvature conventions are those stated in
+\eqref{eq:ym-lie-algebra-conventions}, \eqref{eq:ym-trace-kappa}, and
+\eqref{eq:ym-lagrangian-density}; in particular the default basis has
+\(\operatorname{tr}(t^a t^b)=\delta^{ab}\).  The coefficient of the mixed
+anomaly is
 \begin{equation}
   \mathcal A^{Aab}
   =
+  \frac12
+  \left[
   \operatorname{tr}_{\mathrm{left}}
   \bigl(T^A\{t^a,t^b\}\bigr)
   -
   \operatorname{tr}_{\mathrm{right}}
-  \bigl(T^A\{t^a,t^b\}\bigr).
+  \bigl(T^A\{t^a,t^b\}\bigr)
+  \right].
   \label{eq:flavor-anomaly-coefficient}
 \end{equation}
 With background field strengths \(F^a_{\mu\nu}\), the corresponding current
@@ -957,6 +981,13 @@ identity has the form
   \text{explicit breaking terms}.
   \label{eq:nonabelian-flavor-anomaly}
 \end{equation}
+The factor \(1/2\) in \eqref{eq:flavor-anomaly-coefficient} is part of the
+definition of \(\mathcal A^{Aab}\); it compensates for the two identical vector
+insertions in the anticommutator.  For a single Dirac fermion with an axial
+generator acting by \(+1\) on the left-handed component and \(-1\) on the
+right-handed component, and with a unit Abelian vector charge, this definition
+gives \(\mathcal A=2\), so \eqref{eq:nonabelian-flavor-anomaly} reduces to the
+coefficient \(1/(16\pi^2)\) in \eqref{eq:abelian-axial-anomaly}.
 
 If the anomalous current is the current of a gauge symmetry, the theory is
 inconsistent unless the anomaly cancels.  For left-handed Weyl fermions in
@@ -995,7 +1026,7 @@ Here the infinitesimal action on a functional \(F[A]\) is the derivation
   \frac{\delta F}{\delta A_\mu^a(x)}
   \,(D_\mu\zeta)^a(x),
   \qquad
-  D_\mu\zeta=\partial_\mu\zeta+[A_\mu,\zeta],
+  D_\mu\zeta=\partial_\mu\zeta+[A_\mu,\zeta]_{\mathrm H},
   \label{eq:gauge-variation-functional-derivation}
 \end{equation}
 understood either after introducing a regulator that makes the functional
@@ -1006,7 +1037,7 @@ variations close on the connection:
 \begin{equation}
   [\delta_{\zeta_1},\delta_{\zeta_2}]A_\mu
   =
-  D_\mu[\zeta_1,\zeta_2].
+  D_\mu[\zeta_1,\zeta_2]_{\mathrm H}.
   \label{eq:gauge-variation-closure-on-connection}
 \end{equation}
 Indeed,
@@ -1015,28 +1046,29 @@ Indeed,
   -
   \delta_{\zeta_2}\delta_{\zeta_1}A_\mu
   =
-  [D_\mu\zeta_1,\zeta_2]
+  [D_\mu\zeta_1,\zeta_2]_{\mathrm H}
   -
-  [D_\mu\zeta_2,\zeta_1],
+  [D_\mu\zeta_2,\zeta_1]_{\mathrm H},
 \]
 and expanding \(D_\mu\) gives
 \[
-  [\partial_\mu\zeta_1,\zeta_2]
+  [\partial_\mu\zeta_1,\zeta_2]_{\mathrm H}
   +
-  [\zeta_1,\partial_\mu\zeta_2]
+  [\zeta_1,\partial_\mu\zeta_2]_{\mathrm H}
   +
-  [[A_\mu,\zeta_1],\zeta_2]
+  [[A_\mu,\zeta_1]_{\mathrm H},\zeta_2]_{\mathrm H}
   +
-  [\zeta_1,[A_\mu,\zeta_2]]
+  [\zeta_1,[A_\mu,\zeta_2]_{\mathrm H}]_{\mathrm H}
   =
-  \partial_\mu[\zeta_1,\zeta_2]+[A_\mu,[\zeta_1,\zeta_2]],
+  \partial_\mu[\zeta_1,\zeta_2]_{\mathrm H}
+  +[A_\mu,[\zeta_1,\zeta_2]_{\mathrm H}]_{\mathrm H},
 \]
 where the last equality is the Jacobi identity.  Equation
 \eqref{eq:gauge-variation-closure-on-connection} implies, by the chain rule,
 \[
   [\delta_{\zeta_1},\delta_{\zeta_2}]F[A]
   =
-  \delta_{[\zeta_1,\zeta_2]}F[A]
+  \delta_{[\zeta_1,\zeta_2]_{\mathrm H}}F[A]
 \]
 for every functional \(F\) in the same differentiability class.
 Applying this identity to \(W[A]\), and using
@@ -1046,7 +1078,7 @@ Applying this identity to \(W[A]\), and using
   -
   \delta_{\zeta_2}\mathcal A(\zeta_1,A)
   =
-  \mathcal A([\zeta_1,\zeta_2],A).
+  \mathcal A([\zeta_1,\zeta_2]_{\mathrm H},A).
   \label{eq:wess-zumino-consistency}
 \end{equation}
 This is the Wess--Zumino consistency condition.  It is an integrability
@@ -1562,9 +1594,13 @@ extends to a bundle over \(S^4\), the topological charge is
   \epsilon^{\mu\nu\rho\sigma}
   \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma})\,\dd^4x .
 \]
-With the fundamental trace convention, \(Q[A]\in\mathbb Z\).  The Euclidean
-functional integral decomposes formally into connected components of fixed
-topological charge:
+With \(F\) regarded as the matrix-valued curvature of the fundamental
+connection and with the matrix trace convention fixed in
+Chapter~\ref{ch:vol2-classical-yang-mills-matter}, \(Q[A]\in\mathbb Z\).
+This integer statement is a Chern--Weil statement about the curvature form;
+rewriting it in components must use the same generator normalization as the
+one used to define \(F=A^a t^a\).  The Euclidean functional integral
+decomposes formally into connected components of fixed topological charge:
 \[
   Z(\theta)
   =

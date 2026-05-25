@@ -15,12 +15,14 @@
 
 - Lorenz gauge functional \(F^a(A)=\partial_\mu A^{a\mu}\).
 - Gauge variation
-  \(\delta_\zeta A_a^\mu=\partial^\mu\zeta_a+f^{bc}{}_{a}A_b^\mu\zeta_c\).
+  \(\delta_\zeta A^{a\mu}=\partial^\mu\zeta^a+f^a{}_{bc}A^{b\mu}\zeta^c\),
+  after translating the source-note notation into the monograph's
+  output-first structure constants.
 - Faddeev--Popov ghost action and its integration-by-parts form.
 - Ghost propagator with scalar kinetic operator and Grassmann statistics.
 - Extra factor \(-1\) for a closed ghost loop.
 - Ghost-gluon vertex with the source momentum convention
-  \(-k_\mu f^{bc}{}_{a}\).
+  \(-k_\mu f^a{}_{bc}\).
 - Absence of a local two-gluon/two-ghost vertex in Lorenz gauge.
 - \(B\)-field Gaussian with \(g^2\xi B^2/2\), giving
   \(-(\partial\cdot A)^2/(2g^2\xi)\) after eliminating \(B\).

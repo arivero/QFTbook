@@ -30,16 +30,22 @@ Hermitian coordinates is
 \]
 With this convention,
 \begin{equation}
-  [t^a,t^b]=\ii f^{ab}{}_{c}t^c .
+  [t^a,t^b]=\ii f^c{}_{ab}t^c .
   \label{eq:ym-lie-algebra-conventions}
 \end{equation}
-The real constants \(f^{ab}{}_{c}\) are the structure constants of
-\([\ ,\ ]_{\mathrm H}\) in this basis.  Formulas below include explicit factors
-of \(\ii\) so that \(A_\mu\), \(\zeta\), and \(F_{\mu\nu}\) remain Hermitian
-matrix fields.
+The real constants \(f^c{}_{ab}\) are the structure constants of
+\([\ ,\ ]_{\mathrm H}\) in this basis, with the output Lie-algebra label written
+first.  Thus \(f^c{}_{ab}=-f^c{}_{ba}\) and the Jacobi identity is
+\[
+  f^e{}_{ab}f^d{}_{ec}
+  +f^e{}_{bc}f^d{}_{ea}
+  +f^e{}_{ca}f^d{}_{eb}=0 .
+\]
+Formulas below include explicit factors of \(\ii\) so that \(A_\mu\),
+\(\zeta\), and \(F_{\mu\nu}\) remain Hermitian matrix fields.
 
 The infinitesimal local transformation with parameter
-\(\zeta(x)=\zeta_a(x)t^a\) is
+\(\zeta(x)=\zeta^a(x)t^a\) is
 \begin{equation}
   \delta_\zeta A_\mu
   =
@@ -50,13 +56,12 @@ In components,
 \begin{equation}
   \delta_\zeta A^a_\mu
   =
-  \partial_\mu\zeta^a+f^{bc}{}_{a}A^b_\mu\zeta^c,
+  \partial_\mu\zeta^a+f^a{}_{bc}A^b_\mu\zeta^c,
   \label{eq:ym-infinitesimal-component-transformation}
 \end{equation}
-with indices raised or lowered by the invariant quadratic form introduced
-below.  The derivative term records the freedom to change local trivialization
-from point to point, while the commutator term records the adjoint action of
-the Lie algebra on itself.
+The derivative term records the freedom to change local trivialization from
+point to point, while the commutator term records the adjoint action of the Lie
+algebra on itself.
 
 \begin{figure}[H]
   \centering
@@ -94,9 +99,9 @@ the Lie algebra on itself.
       \node[font=\small] at (1.45,2.35) {Lie closure};
       \draw[rounded corners=4pt,thick] (0.0,0.50) rectangle (2.90,1.75);
       \node at (1.45,1.33)
-        {\(\displaystyle [t^a,t^b]=\ii f^{ab}{}_{c}t^c\)};
+        {\(\displaystyle [t^a,t^b]=\ii f^c{}_{ab}t^c\)};
       \node[align=center] at (1.45,0.88)
-        {the constants \(f^{ab}{}_{c}\)\\encode the bracket};
+        {the constants \(f^c{}_{ab}\)\\encode the bracket};
     \end{scope}
   \end{tikzpicture}
   }
@@ -109,7 +114,7 @@ the Lie algebra on itself.
 The finite transformation is most cleanly stated using a smooth
 \(G\)-valued function \(g(x)\).  With
 \[
-  g(x)=\exp\{\ii\zeta_a(x)t^a\},
+  g(x)=\exp\{\ii\zeta^a(x)t^a\},
 \]
 define
 \begin{equation}
@@ -226,7 +231,7 @@ It follows from \eqref{eq:ym-covariant-operator-transformation} that
     \node[font=\small] at (9.05,2.55) {action density};
     \draw[rounded corners=4pt,thick] (7.55,0.65) rectangle (10.55,1.75);
     \node at (9.05,1.20)
-      {\(\displaystyle -\frac1{2g_{\mathrm{YM}}^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\)};
+      {\(\displaystyle -\frac1{4g_{\mathrm{YM}}^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\)};
 
     \draw[purple!75!black,thick,-{Latex[length=2mm]}]
       (0,0.45) .. controls (1.6,-0.55) and (3.2,-0.55) .. (4.55,0.45);
@@ -263,27 +268,54 @@ and, equivalently,
 \]
 for Lie-algebra-valued \(X,Y\).  It also gives the invariant tensor
 \begin{equation}
-  f^{abc}:=f^{ab}{}_{e}\kappa^{ec}
+  f_{abc}:=\kappa^{ad}f^d{}_{bc}
   =
-  -\ii\,\operatorname{tr}([t^a,t^b]t^c),
+  -\ii\,\operatorname{tr}\bigl(t^a[t^b,t^c]\bigr),
   \label{eq:ym-fabc-lowered}
 \end{equation}
-which is completely antisymmetric in \(a,b,c\).
+which is completely antisymmetric in \(a,b,c\).  Here
+\(\kappa^{ab}:=\operatorname{tr}(t^a t^b)\), while \(\kappa_{ab}\) denotes the
+inverse matrix:
+\begin{equation}
+  \kappa_{ac}\kappa^{cb}=\delta_a{}^b .
+  \label{eq:ym-kappa-inverse}
+\end{equation}
+Consequently the output-first structure constants are recovered from the
+trace-lowered constants by
+\begin{equation}
+  f^a{}_{bc}=\kappa_{ad}f_{dbc}.
+  \label{eq:ym-structure-constant-raising}
+\end{equation}
+The trace normalization used for the Yang--Mills coupling below is
+\(\kappa^{ab}=\delta^{ab}\) unless another normalization is explicitly
+declared.  In that convention \(f_{abc}=f^a{}_{bc}\) after the obvious
+identification of labels.  If instead one uses the common fundamental-matrix
+normalization \(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\), then
+\(\kappa_{ab}=2\delta_{ab}\) and
+\[
+  f^a{}_{bc}=2\delta_{ad}f_{dbc}.
+\]
+This factor of \(2\) is a normalization consequence of the chosen trace pairing,
+not a separate convention for the Lie bracket.
 
 The Lorentzian Yang-Mills Lagrangian density is
 \begin{equation}
   \mathcal L_{\mathrm{YM}}
   =
-  -\frac1{2g_{\mathrm{YM}}^2}
+  -\frac1{4g_{\mathrm{YM}}^2}
   \operatorname{tr}(F_{\mu\nu}F^{\mu\nu}).
   \label{eq:ym-lagrangian-density}
 \end{equation}
-If \(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\), this is
+With the default normalization \(\operatorname{tr}(t^a t^b)=\delta^{ab}\), this
+is
 \[
   \mathcal L_{\mathrm{YM}}
   =
   -\frac1{4g_{\mathrm{YM}}^2}F^a_{\mu\nu}F^{a\mu\nu}.
 \]
+Changing the invariant bilinear rescales the component expression and hence the
+coordinate called \(g_{\mathrm{YM}}\); the trace-form equation above is the
+definition of the coupling convention used in this monograph.
 For a unitary Lorentzian quantum theory built from these fields, the invariant
 quadratic form on the gauge algebra is chosen positive definite.  Equivalently,
 the local gauge algebra is a compact reductive Lie algebra: a direct sum of
@@ -294,7 +326,7 @@ factors are the simple Lie algebras of Cartan type
 \]
 For these algebras one may choose a linear basis in which
 \[
-  \kappa^{ab}=\operatorname{tr}(t^a t^b)=\frac12\delta^{ab},
+  \kappa^{ab}=\operatorname{tr}(t^a t^b)=\delta^{ab},
 \]
 which is the normalization used unless another normalization is explicitly
 declared.
@@ -326,11 +358,20 @@ continuum-limit hypothesis and its relation to covariant perturbation theory
 are stated separately.
 \end{remark}
 
-The basic example \(SU(2)\) has
+The basic example \(SU(2)\) can be written in the default trace convention as
 \[
-  t^a=\frac12\sigma^a,\qquad a=1,2,3,
+  t^a=\frac{\sigma^a}{\sqrt2},\qquad a=1,2,3,
 \]
-where \(\sigma^a\) are the Pauli matrices.  More generally,
+where \(\sigma^a\) are the Pauli matrices.  Then
+\(\operatorname{tr}(t^at^b)=\delta^{ab}\) and
+\[
+  [t^a,t^b]=\ii\sqrt2\,\epsilon^{c}{}_{ab}t^c,
+  \qquad
+  f^c{}_{ab}=\sqrt2\,\epsilon^{c}{}_{ab}.
+\]
+The frequently used basis \(\sigma^a/2\) is the alternate half-trace
+coordinate system discussed above; it is not the default normalization of this
+monograph.  More generally,
 the Hermitian coordinate space \(i\,\mathfrak{su}(N)\) is represented by
 traceless Hermitian \(N\times N\) matrices, and
 \[
@@ -339,12 +380,17 @@ traceless Hermitian \(N\times N\) matrices, and
 
 In four spacetime dimensions there is another local gauge-invariant Lorentz
 scalar of power-counting dimension four, written in the trace convention just
-fixed.\footnote{With \(F_{\mu\nu}=F^a_{\mu\nu}t^a\) and
-\(\operatorname{tr}(t^at^b)=\frac12\delta^{ab}\),
+fixed.\footnote{With \(F_{\mu\nu}=F^a_{\mu\nu}t^a\) and the default
+\(\operatorname{tr}(t^at^b)=\delta^{ab}\),
 \(\operatorname{tr}(F_{\mu\nu}F_{\rho\sigma})
-=\frac12F^a_{\mu\nu}F^a_{\rho\sigma}\).  Component formulas written with
-\(\operatorname{tr}(t^at^b)=\delta^{ab}\) therefore differ by this factor
-of \(2\).}
+=F^a_{\mu\nu}F^a_{\rho\sigma}\).  If one instead uses generators normalized by
+\(\operatorname{tr}(t^at^b)=\frac12\delta^{ab}\), the components of the same
+matrix-valued curvature and the component form of the coupling must be rescaled
+accordingly.  The trace-form equations are the convention-independent
+statements.  Here and below the trace is the actual matrix trace in the chosen
+representation applied to the matrix-valued curvature \(F\); it is not an
+independent component contraction that may be rescaled while \(F\) is held
+fixed.}
 \begin{equation}
   \Delta\mathcal L_\theta
   =
@@ -353,15 +399,15 @@ of \(2\).}
   \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma}).
   \label{eq:ym-theta-density}
 \end{equation}
-With \(\operatorname{tr}(t^at^b)=\frac12\delta^{ab}\), this equals
+With \(\operatorname{tr}(t^at^b)=\delta^{ab}\), this equals
 \[
-  \frac{\theta}{64\pi^2}
+  \frac{\theta}{32\pi^2}
   \epsilon^{\mu\nu\rho\sigma}F^a_{\mu\nu}F^a_{\rho\sigma}.
 \]
-Authors who write the component density with coefficient
-\(\theta/(32\pi^2)\) are using a trace convention without the factor
-\(\frac12\), or are absorbing that factor into the definition of the component
-curvature.
+Authors using a basis with
+\(\operatorname{tr}(t^at^b)=\frac12\delta^{ab}\) write the same trace-form
+density with half this component coefficient, because their components of
+\(F_{\mu\nu}\) are rescaled relative to the basis used here.
 The normalization is fixed by the Chern--Weil integer.  For an \(SU(N)\)
 bundle over an oriented compact four-manifold \(M\), with
 \[
@@ -412,16 +458,16 @@ homomorphism
 Its derived Lie-algebra representation is the linear map
 \(\widetilde\rho_R:\mathfrak g\to\operatorname{End}(V_R)\) determined by
 \begin{equation}
-  \rho_R(\ee^{\ii\zeta_a t^a})
+  \rho_R(\ee^{\ii\zeta^a t^a})
   =
-  \ee^{\ii\zeta_a t_R^a},
+  \ee^{\ii\zeta^a t_R^a},
   \qquad
   t_R^a:=\widetilde\rho_R(t^a).
   \label{eq:ym-lie-algebra-representation}
 \end{equation}
 The matrices \(t_R^a\) obey
 \begin{equation}
-  [t_R^a,t_R^b]=\ii f^{ab}{}_{c}t_R^c.
+  [t_R^a,t_R^b]=\ii f^c{}_{ab}t_R^c.
   \label{eq:ym-representation-commutator}
 \end{equation}
 For compact \(G\), every finite-dimensional complex representation used in a
@@ -437,7 +483,7 @@ For \(G=SU(N)\), three representations recur throughout gauge theory:
 \text{anti-fundamental } \overline{\square} & \mathbb C^N &
   t_{\overline{\square}}^a=-(t^a)^* \\
 \text{adjoint} & \mathfrak g_{\mathbb C} &
-  t_{\mathrm{adj}}^a(t^b)=\ii f^{ab}{}_{c}t^c
+  t_{\mathrm{adj}}^a(t^b)=\ii f^c{}_{ab}t^c
 \end{array}
 \]
 In the fundamental representation,
@@ -448,8 +494,8 @@ anti-fundamental representation,
   \qquad\hbox{complex conjugation, without transposition,}
 \]
 so differentiating
-\(\rho_{\overline{\square}}(\ee^{\ii\zeta_a t^a})
-=\ee^{\ii\zeta_a t_{\overline{\square}}^a}\) gives
+\(\rho_{\overline{\square}}(\ee^{\ii\zeta^a t^a})
+=\ee^{\ii\zeta^a t_{\overline{\square}}^a}\) gives
 \(t_{\overline{\square}}^a=-(t^a)^*\).
 Here \(\mathfrak g_{\mathbb C}\) denotes the complexification of the real
 Hermitian coordinate space.  A real adjoint-valued field is obtained by
@@ -461,13 +507,13 @@ adjoint representation is conjugation on the algebra:
   \rho_{\mathrm{adj}}(g)v=gvg^{-1}.
 \]
 Its infinitesimal form is consistent with the convention
-differentiating \(v\mapsto \ee^{\ii\zeta_a t^a}v\ee^{-\ii\zeta_a t^a}\):
+differentiating \(v\mapsto \ee^{\ii\zeta^a t^a}v\ee^{-\ii\zeta^a t^a}\):
 \[
   \delta v
   =
-  \ii\zeta_a[t^a,v]
+  \ii\zeta^a[t^a,v]
   =
-  \ii\zeta_a t_{\mathrm{adj}}^a v .
+  \ii\zeta^a t_{\mathrm{adj}}^a v .
 \]
 
 \begin{figure}[H]
@@ -493,7 +539,7 @@ differentiating \(v\mapsto \ee^{\ii\zeta_a t^a}v\ee^{-\ii\zeta_a t^a}\):
     \node[font=\bfseries] at (4.00,2.17) {adjoint};
     \node at (4.00,1.67) {\(V=\mathfrak g\) or \(\mathfrak g_{\mathbb C}\)};
     \node at (4.00,1.25) {\(\rho_{\mathrm{adj}}(g)v=gvg^{-1}\)};
-    \node at (4.00,0.83) {\((t_{\mathrm{adj}}^a)^b{}_{c}=\ii f^{ab}{}_{c}\)};
+    \node at (4.00,0.83) {\((t_{\mathrm{adj}}^a)^b{}_{c}=\ii f^b{}_{ac}\)};
 
     \node[font=\small] at (0,-0.10) {QCD quark indices};
     \draw[rounded corners=4pt,thick] (-3.60,-1.95) rectangle (3.60,-0.45);
@@ -594,7 +640,7 @@ For these quarks, the local four-dimensional terms that are Poincare
 invariant, gauge invariant, and power-counting renormalizable have the gauge
 part
 \[
-  -\frac1{2g_{\mathrm{YM}}^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+  -\frac1{4g_{\mathrm{YM}}^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
   +
   \frac{\theta}{32\pi^2}
   \epsilon^{\mu\nu\rho\sigma}

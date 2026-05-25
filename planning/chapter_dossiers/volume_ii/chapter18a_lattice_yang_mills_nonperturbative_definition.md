@@ -43,11 +43,12 @@ The chapter must define and derive:
   covariance under lattice gauge transformations;
 - the Wilson action
   \(S_W=(\beta/N)\sum_P\operatorname{Re}\operatorname{tr}(1-U_P)\) with
-  \(\beta=2N/g_0^2\);
+  \(\beta=N/g_0^2\) in the monograph/stringbook trace normalization
+  \(\operatorname{tr}(t^a t^b)=\delta^{ab}\);
 - the finite compact Haar integral for \(Z_\Lambda(\beta)\) and expectation
   values of gauge-invariant observables;
 - the smooth-field expansion of the plaquette and the recovery of
-  \((2g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\);
+  \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\);
 - Wilson-loop observables, character expansion, Haar orthogonality, and the
   leading tiled-surface mechanism for the strong-coupling area law;
 - the finite-lattice reflection-positivity theorem and its transfer-matrix

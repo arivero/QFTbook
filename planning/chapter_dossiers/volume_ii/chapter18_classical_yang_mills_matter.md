@@ -36,8 +36,8 @@ The chapter must define and derive:
 - the Hermitian-coordinate bracket
   \([X,Y]_{\mathrm H}=-i[X,Y]_{\mathrm{mat}}\), so explicit factors of \(i\)
   in transformation laws keep \(A_\mu,\zeta,F_{\mu\nu}\) Hermitian;
-- Hermitian Lie-algebra generators \(t^a\) with
-  \([t^a,t^b]=i f^{ab}{}_c t^c\);
+- Hermitian Lie-algebra generators \(t^a\) with output-first structure
+  constants \([t^a,t^b]=i f^c{}_{ab} t^c\);
 - infinitesimal gauge transformation
   \(\delta A_\mu=\partial_\mu\zeta-i[A_\mu,\zeta]\);
 - finite gauge transformation
@@ -49,16 +49,19 @@ The chapter must define and derive:
 - covariant derivative \(\nabla_\mu=\partial_\mu-iA_\mu\);
 - field strength \(F_{\mu\nu}=i[\nabla_\mu,\nabla_\nu]\);
 - covariant transformation \(F'_{\mu\nu}=gF_{\mu\nu}g^{-1}\);
-- invariant trace \(\operatorname{tr}(t^a t^b)=\kappa^{ab}\), cyclicity, and
-  complete antisymmetry of \(f^{abc}=f^{ab}{}_e\kappa^{ec}\);
+- invariant trace \(\operatorname{tr}(t^a t^b)=\kappa^{ab}\), cyclicity,
+  trace-lowered structure constants
+  \(f_{abc}=\kappa^{ad}f^d{}_{bc}\), and the raising relation
+  \(f^a{}_{bc}=\kappa_{ad}f_{dbc}\);
 - Yang-Mills Lagrangian
-  \(-\frac1{2g_{\mathrm{YM}}^2}\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\);
+  \(-\frac1{4g_{\mathrm{YM}}^2}\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\);
 - positive definite invariant form and compact reductive Lie algebras;
 - the status distinction between the classical local Yang--Mills action and
   the open four-dimensional continuum quantum Yang--Mills existence/mass-gap
   problem;
-- \(SU(2)\) and \(SU(N)\) examples with
-  \(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\);
+- \(SU(2)\) and \(SU(N)\) examples with the default monograph/stringbook
+  normalization \(\operatorname{tr}(t^a t^b)=\delta^{ab}\), while recording
+  how the common half-trace convention changes component formulas;
 - the four-dimensional \(\theta\)-term and its perturbative/topological roles;
 - matter representations \(\rho_R:G\to GL(V_R)\), Lie-algebra generators
   \(t_R^a\), and the matter covariant derivative;
@@ -122,8 +125,9 @@ The chapter must define and derive:
   \(\operatorname{tr}([t^a,t^b]t^c)=\operatorname{tr}(t^a[t^b,t^c])\).
 - Made explicit the positive-form classification as abelian \(\mathbb R\)
   factors plus compact simple Cartan types \(A,B,C,D,E,F,G\), with
-  \(\operatorname{tr}(t^a t^b)=\frac12\delta^{ab}\) as the default
-  normalization.
+  \(\operatorname{tr}(t^a t^b)=\delta^{ab}\) as the default
+  normalization, matching the stringbook convention and the trace-form
+  coupling \(-\frac1{4g_{\mathrm{YM}}^2}\operatorname{tr}F^2\).
 - Added a rendered \(SU(N)\) representation/QCD-index figure, including the
   source convention
   \(\rho_{\overline{\square}}(g)=g^*\) without transposition and

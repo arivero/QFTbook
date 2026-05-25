@@ -6,6 +6,7 @@ a comprehensive multi-volume monograph on quantum field theory.
 Author line for the monograph:
 
 > GPT 5.5 under the supervision of Xi Yin
+> with review contributions from Opus 4.7
 
 The manuscript is an active draft.  The reader-facing text is in
 `monograph/tex/`; planning notes, source transcriptions, and local reference
@@ -21,6 +22,8 @@ material are kept separate from the compiled monograph.
 - `references/`: local source and reference shelf.  PDFs, extracted text, and
   private source files are intentionally excluded from git by `.gitignore`.
 - `tools/`: build, audit, OCR, and skeleton-generation utilities.
+- `calculation-checks/`: public-facing Python and Wolfram Language scripts
+  that verify convention-sensitive algebra used in the manuscript.
 
 ## Active Volume Architecture
 
@@ -54,6 +57,22 @@ The script runs the reader-facing text audit, builds
 `monograph/tex/main.tex`, scans the final LaTeX logs for serious issues, and
 writes the compiled PDF to `monograph/tex/main.pdf`.
 
+Convention-sensitive calculation checks can be run with:
+
+```bash
+tools/run_calculation_checks.sh
+```
+
+The runner first executes the Python checks.  It then searches for
+`wolframscript` on `PATH` and at the macOS Wolfram app location
+`/Applications/Wolfram.app/Contents/MacOS/wolframscript`, which is the
+expected location on the author's machine when `which wolframscript` does not
+find it.  Computationally heavy or numerical checks should be implemented in
+Python.  Wolfram Language checks are reserved for lightweight, reader-readable
+symbolic convention checks.  Set `QFT_SKIP_WOLFRAM=1` to run only the Python
+checks, and set `WOLFRAMSCRIPT=/absolute/path/to/wolframscript` to override
+the executable path.
+
 ## Quality Gates
 
 Before a manuscript change is considered ready:
@@ -62,6 +81,9 @@ Before a manuscript change is considered ready:
 2. Check that the strict monograph text audit is clean.
 3. Check that the LaTeX log scan is clean.
 4. For figure-heavy edits, render and inspect the affected PDF pages.
+5. For edits involving sign, spinor, group-theory, anomaly, conformal-block,
+   or Feynman-integral conventions, run `tools/run_calculation_checks.sh` or
+   the relevant script in `calculation-checks/`.
 
 The planning layer records additional writing standards and audit procedures.
 

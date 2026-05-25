@@ -118,6 +118,24 @@ Every paragraph should be classifiable as one of:
 Run the audit and build scripts. Inspect the log and the rendered PDF. Figures
 must be checked visually against their mathematical intent.
 
+For convention-sensitive derivations, run the public calculation checks.  The
+default entry point is
+
+```bash
+tools/run_calculation_checks.sh
+```
+
+This script runs the Python checks and then the Wolfram Language checks when
+`wolframscript` is available.  On the author's macOS installation, agents
+should not rely only on `which wolframscript`: if it is not on `PATH`, use
+`/Applications/Wolfram.app/Contents/MacOS/wolframscript`.  Plain `.wl` files
+in `calculation-checks/` are preferred over `.nb` notebooks for committed
+checks, since `.wl` files are directly diffable and agent-readable.
+Computationally heavy or numerical checks should be written in Python; Wolfram
+Language is for lightweight symbolic convention checks and reader-facing
+algebra.  Use `QFT_SKIP_WOLFRAM=1 tools/run_calculation_checks.sh` when a pass
+only needs the Python checks.
+
 ## Stage 6: Cross-Chapter Audit
 
 Check:

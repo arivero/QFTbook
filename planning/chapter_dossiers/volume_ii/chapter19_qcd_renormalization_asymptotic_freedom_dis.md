@@ -37,7 +37,10 @@
 The chapter must define and derive:
 
 - QCD fields \(q^i_{I\alpha}\), color/flavor/spinor indices, and the
-  \(SU(N_c)\) group constants \(C_A,T_R,C_R,T_F,C_F\);
+  \(SU(N_c)\) group constants \(C_A,T_R,C_R,T_F,C_F\) in the
+  monograph/stringbook trace normalization
+  \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\), so
+  \(C_A=2N_c\), \(T_F=1\), and \(C_F=(N_c^2-1)/N_c\);
 - the renormalized coupling and beta function;
 - the ordinary Lorenz-gauge Faddeev--Popov operator, ghost action, ghost
   propagator, ghost-loop sign, ghost-gluon vertex, absence of a local
@@ -63,7 +66,9 @@ The chapter must define and derive:
 - the coefficient
   \(b=\frac{11}{12}C_A-\frac{N_f}{3}T_R\);
 - the conversion from bare-coupling independence to
-  \(\beta(g)=-g^3(11C_A/3-4T_RN_f/3)/(16\pi^2)+O(g^5)\);
+  \(\beta(g)=-g^3(11C_A/3-4T_RN_f/3)/(16\pi^2)+O(g^5)\), and hence
+  \(\beta(g)=-(11N_c-2N_f)g^3/(24\pi^2)+O(g^5)\) for fundamental
+  quarks in this trace normalization;
 - dimensional transmutation and the perturbative domain of the one-loop
   running coupling;
 - the explicit status of the four-dimensional pure Yang--Mills continuum

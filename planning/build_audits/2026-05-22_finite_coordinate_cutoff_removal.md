@@ -22,7 +22,7 @@ claiming control of the full infinite-dimensional Wilsonian space.
   \]
 - Stated the backward semigroup estimate
   \[
-    \|e^{A\tau}\|\le C_A e^{\omega\tau},\qquad \tau\le0 ,
+    \|e^{A\tau}\|\le K_A e^{\omega\tau},\qquad \tau\le0 ,
   \]
   for irrelevant coordinates.
 - Derived the variation-of-constants formula that separates direct irrelevant

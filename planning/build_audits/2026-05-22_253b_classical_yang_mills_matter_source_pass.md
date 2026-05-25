@@ -12,10 +12,11 @@
 ## Source Items Checked
 
 - Local gauge potential \(A_{a\mu}\), Hermitian generators \(t^a\), and
-  \([t^a,t^b]=i f^{ab}{}_{c}t^c\).
+  \([t^a,t^b]=i f^c{}_{ab}t^c\), after translating the source-note
+  index-placement convention into the monograph's output-first convention.
 - Infinitesimal law
   \(\delta A_\mu=\partial_\mu\zeta-i[A_\mu,\zeta]\) and component law
-  \(\delta A^a_\mu=\partial_\mu\zeta^a+f^{bc}{}_{a}A^b_\mu\zeta^c\).
+  \(\delta A^a_\mu=\partial_\mu\zeta^a+f^a{}_{bc}A^b_\mu\zeta^c\).
 - Finite law
   \(A_\mu'=gA_\mu g^{-1}+i g\partial_\mu g^{-1}\) with
   \(g=\exp(i\zeta_a t^a)\), plus the BCH and adjoint-action closure
@@ -25,7 +26,8 @@
   \(F'_{\mu\nu}=gF_{\mu\nu}g^{-1}\).
 - Invariant trace, including the source cyclicity identity
   \(\operatorname{tr}([t^a,t^b]t^c)=\operatorname{tr}(t^a[t^b,t^c])\),
-  \(f^{abc}=f^{ab}{}_{e}\kappa^{ec}\), and complete antisymmetry.
+  \(f_{abc}:=-i\operatorname{tr}(t^a[t^b,t^c])\), and complete
+  antisymmetry.
 - Yang--Mills action normalization, positive invariant quadratic form, compact
   reductive gauge algebra, \(SU(2)\) and \(SU(N)\) examples.
 - \(D=4\) \(\theta\)-term: parity/time-reversal odd, locally a total

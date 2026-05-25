@@ -123,7 +123,7 @@ The chapter must define and derive:
     \(\dd u/\dd t=B(u,v)\),
     \(\dd v/\dd t=Av+F(u,v)\);
   - the backward semigroup bound
-    \(\|e^{A\tau}\|\le C_A e^{\omega\tau}\) for \(\tau\le0\);
+    \(\|e^{A\tau}\|\le K_A e^{\omega\tau}\) for \(\tau\le0\);
   - the variation-of-constants formula separating direct irrelevant
     boundary memory from the generated integral;
   - the finite-coordinate continuum graph
