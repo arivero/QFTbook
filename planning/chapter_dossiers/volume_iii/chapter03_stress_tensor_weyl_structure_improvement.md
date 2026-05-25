@@ -15,6 +15,11 @@ The chapter establishes:
   \(W_\ast[g,\eta]\);
 - local diffeomorphism and Weyl Ward identities as distributional identities
   with contact terms;
+- the spinful stress-tensor Ward identity without an ellipsis: scalar
+  insertions are the \(\mathsf R^{\mu\nu}=0\) special case, while spinning
+  primaries produce the local rotation contact term
+  \(-\frac i2\omega_\epsilon^{\mu\nu}S_{\mu\nu}\) in the conformal-current
+  Ward identity;
 - improvement transformations of \(T_{\mu\nu}\) and their effect on the trace;
 - the assumptions under which scale invariance plus a removable virial current
   yields conformal current conservation;
@@ -81,3 +86,6 @@ The chapter establishes:
   including the \(2D\) \(c_{2d}\) normalization, the \(4D\)
   \(a_{\rm W},c_{\rm W}\) definitions, the \(C_T\)-\(c_{\rm W}\) relation, and
   the connection to the Chapter 8 \(TTT\) structures.
+- 2026-05-24 issue #423 pass: tied the derivative contact term in the local
+  stress-tensor Ward identity to the Chapter 6 primary spin contact operator,
+  making clear that the scalar Ward identity is only the spinless special case.

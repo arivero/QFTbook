@@ -82,3 +82,7 @@ The chapter establishes:
   \(M_s=\Omega_sR_s\) infinitesimal decomposition, the fixed-final-coordinate
   differentiation, and explicit translation, dilatation, rotation, and special
   conformal checks.
+- 2026-05-24 issue #423 pass: Chapter 3 now back-references
+  `eq:primary-spin-current-ward` and identifies the stress-tensor derivative
+  contact term that becomes the spin rotation term in this chapter's primary
+  Ward identity.

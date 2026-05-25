@@ -692,6 +692,58 @@ Equivalently, as an identity of distributions in \(x\),
   \right].
   \label{eq:stress-ward-spinning-local}
 \end{equation}
+There is no omitted spin term in
+\eqref{eq:stress-ward-spinning-local}.  For scalar insertions
+\(\mathsf R^{\mu\nu}_{(i)}=0\), and the familiar translation Ward identity is
+obtained by deleting the second line.  For spinning insertions that second
+line is part of the identity.  To see its relation to the conformal Ward
+identities used later, let the \(i\)-th operator be a primary in an
+orthonormal-frame spin representation \(\rho_i\), with infinitesimal spin
+matrices \(S^{(i)}_{\mu\nu}\) in the convention of
+Chapter~\ref{ch:volume-iii-primary-operators-finite-transformations}.  If
+\(\epsilon^\mu\) is a conformal Killing vector and
+\[
+  J^\mu_\epsilon=T^\mu{}_\nu\epsilon^\nu,
+  \qquad
+  \sigma_\epsilon=\frac1D\partial_\rho\epsilon^\rho,
+  \qquad
+  \omega_{\epsilon,\mu\nu}
+  =\frac12(\partial_\nu\epsilon_\mu-\partial_\mu\epsilon_\nu),
+\]
+then smearing \eqref{eq:stress-ward-spinning-smeared} with
+\(\xi=\epsilon\) and adding the trace Ward identity gives
+\begin{equation}
+  \partial_\mu
+  \left\langle J^\mu_\epsilon(x)X\right\rangle
+  =
+  \sum_{i=1}^n
+  \delta^{(D)}(x-x_i)
+  \left\langle
+    X_i[\mathcal D^{(i)}_\epsilon\mathcal O_{A_i}]
+  \right\rangle
+  +
+  \sigma_\epsilon(x)\mathcal A(x;X),
+  \label{eq:stress-ward-primary-spin-current}
+\end{equation}
+where
+\begin{equation}
+  \mathcal D^{(i)}_\epsilon\mathcal O_{i,a_i}(x_i)
+  =
+  -\epsilon^\rho(x_i)\partial_{x_i^\rho}\mathcal O_{i,a_i}(x_i)
+  -\Delta_i\sigma_\epsilon(x_i)\mathcal O_{i,a_i}(x_i)
+  -\frac{\ii}{2}\omega_\epsilon^{\mu\nu}(x_i)
+  (S^{(i)}_{\mu\nu})_{a_i}{}^{b_i}
+  \mathcal O_{i,b_i}(x_i).
+  \label{eq:stress-ward-primary-spin-contact-operator}
+\end{equation}
+Equations \eqref{eq:stress-ward-primary-spin-current} and
+\eqref{eq:stress-ward-primary-spin-contact-operator} are the same source
+Ward identity as \eqref{eq:primary-spin-current-ward}; the derivative
+contact term in \eqref{eq:stress-ward-spinning-local} is precisely what
+becomes the local rotation term proportional to
+\(\omega_\epsilon^{\mu\nu}S^{(i)}_{\mu\nu}\).  Thus one may use the scalar
+translation formula only after verifying that all insertions are scalars, or
+after the spin contact term has been carried along separately.
 For a basis of composite operators that mixes under the linearized
 diffeomorphism, the displayed representation matrix is replaced by the
 corresponding source-chart representation matrix.  The trace Ward identity
