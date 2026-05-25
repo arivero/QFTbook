@@ -55,6 +55,11 @@ Current checks:
   \(S=(c/3)\log(L/\epsilon)\), the sign of
   \(S=(n\partial_n-1)W_n|_{n=1}\), and the even/odd dimensional signs in the
   universal ball-entanglement term.
+- `free_cylinder_partition_checks.py`: finite character checks for the
+  radial-cylinder free-field section, including the four-dimensional scalar
+  reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion
+  degeneracies, and the Maxwell identity
+  \(q^2(6-8q+2q^2)/(1-q)^4=(6q^2-2q^3)/(1-q)^3\).
 - `gamma_trace_checks.py`: mostly-plus gamma-matrix conventions, \(\gamma_5\),
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used
