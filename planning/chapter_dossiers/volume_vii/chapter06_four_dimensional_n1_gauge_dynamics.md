@@ -19,6 +19,10 @@ status-boundary style.
 - `W_alpha`, `tau`: gauge field strength and holomorphic gauge coordinate.
 - `Lambda_h^{b_0}`: invariant holomorphic scale.
 - `M`, `B`, `tilde B`: meson, baryon, and antibaryon chiral coordinates.
+- `hat M`: light \(N_c\times N_c\) meson block used when a last massive
+  flavor is decoupled from the `N_f=N_c+1` confining chiral description.
+- `Lambda_+`, `Lambda_-`: holomorphic scales above and below the
+  `N_f=N_c+1` to `N_f=N_c` mass threshold.
 - `S`: chiral glueball coordinate.
 - `W_ADS`: Affleck-Dine-Seiberg superpotential coordinate.
 - `k`: instanton number, normalized as in the BPST section of Volume II.
@@ -32,6 +36,11 @@ status-boundary style.
   Yukawa-lifting ledger for the ADS instanton calculation.
 - `kappa_Nc`: scheme-dependent nonzero one-instanton coefficient in the
   `N_f=N_c-1` ADS normalization.
+- `hyp:sqcd-quantum-modified-confining-input`: assumptions for comparing
+  the `N_f=N_c` quantum-modified chiral ring with the `N_f=N_c+1`
+  confining chiral-sector description.
+- `W_{N_c+1}`: confining `N_f=N_c+1` superpotential
+  `(B M tilde B - det M)/Lambda_+^(2N_c-1)`.
 - `I(beta,L)`: finite-volume Witten index on a spatial three-torus.
 - `Y_i`, `x_i`: small-circle affine-Toda coordinates for pure `SU(N_c)`
   supersymmetric Yang-Mills.
@@ -100,8 +109,17 @@ status-boundary style.
   dimension, and \(R\)-charge.
 - Proves the holomorphic decoupling equation by matching the invariant
   holomorphic scale at a massive threshold.
-- States the quantum modified constraint for \(N_f=N_c\) with explicit
-  Wilsonian and infrared hypotheses.
+- States and sharpens the quantum modified constraint for \(N_f=N_c\) with
+  explicit Wilsonian and infrared hypotheses.
+- Proves uniqueness of a field-independent quantum modification from
+  engineering dimension, flavor symmetry, baryon charge, anomaly-free
+  \(R\)-charge, and holomorphic-scale data.
+- Adds the `N_f=N_c+1` confining chiral-sector input and checks its
+  superpotential dimension and \(R\)-charge.
+- Derives the \(N_f=N_c\) quantum-modified constraint by adding
+  `m M^L_L` to the `N_f=N_c+1` confining superpotential, integrating out
+  the heavy block on the light branch, and using holomorphic scale matching
+  `Lambda_-^(2N_c)=m Lambda_+^(2N_c-1)`.
 - Adds superconformal SQCD bookkeeping: the chiral-primary relation
   `Delta=3R/2`, the chapter convention for `gamma`, the conversion to the
   stringbook `mathcal C` convention, NSVZ numerator cancellation at the
@@ -174,8 +192,8 @@ status-boundary style.
   dual-rank involution, baryon-charge map, electric/magnetic NSVZ numerator
   cancellation, magnetic gauge-`R` anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, full global anomaly matching,
-  `N_f=N_c+1` confining-superpotential checks, and phase-window
-  inequalities.
+  `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
+  `N_f=N_c` quantum-modified constraint, and phase-window inequalities.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch

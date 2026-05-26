@@ -357,7 +357,8 @@ Current checks:
   convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, full electric-magnetic
   't Hooft anomaly matching, \(N_f=N_c+1\) confining-superpotential
-  dimension/\(R\)-charge checks, and the conformal-window/free-phase
+  dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
+  quantum-modified constraint, and the conformal-window/free-phase
   inequalities.
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,

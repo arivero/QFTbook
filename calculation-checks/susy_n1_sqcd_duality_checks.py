@@ -139,6 +139,47 @@ def check_sconfining_superpotential():
         assert_equal(term_dim - (2 * nc - 1), 3, "s-confining W dimension")
 
 
+def check_quantum_modified_constraint_and_decoupling():
+    for nc in range(2, 16):
+        # Nf=Nc quantum-modified constraint:
+        # det(M) and B tilde B have dimension 2 Nc and zero anomaly-free R.
+        nf = nc
+        r_quark = Fraction(nf - nc, nf)
+        r_meson = 2 * r_quark
+        r_baryon = nc * r_quark
+        assert_equal(r_meson, 0, "Nf=Nc meson R-charge")
+        assert_equal(r_baryon, 0, "Nf=Nc baryon R-charge")
+
+        det_m_dimension = 2 * nc
+        baryon_pair_dimension = nc + nc
+        quantum_scale_exponent = 3 * nc - nf
+        assert_equal(det_m_dimension, baryon_pair_dimension, "Nf=Nc constraint dimensions")
+        assert_equal(quantum_scale_exponent, 2 * nc, "Nf=Nc quantum scale exponent")
+
+        # Decoupling from the Nf=Nc+1 confining superpotential with mass m:
+        # Lambda_-^(2Nc) = m Lambda_+^(2Nc-1).
+        high_exponent = 3 * nc - (nc + 1)
+        low_exponent = 3 * nc - nc
+        assert_equal(high_exponent, 2 * nc - 1, "Nf=Nc+1 scale exponent")
+        assert_equal(low_exponent, high_exponent + 1, "quantum-modified decoupling exponent")
+
+        samples = [
+            (Fraction(2), Fraction(3), Fraction(5)),
+            (Fraction(7), Fraction(11), Fraction(13)),
+            (Fraction(-3), Fraction(5), Fraction(17)),
+        ]
+        for det_hat_m, baryon_pair, lambda_high_power in samples:
+            mass = (det_hat_m - baryon_pair) / lambda_high_power
+            f_x = (baryon_pair - det_hat_m) / lambda_high_power + mass
+            assert_equal(f_x, 0, "F_X gives quantum-modified constraint")
+            lambda_low_power = mass * lambda_high_power
+            assert_equal(
+                det_hat_m - baryon_pair,
+                lambda_low_power,
+                "det M - B tilde B equals low holomorphic scale",
+            )
+
+
 def classify_phase(nc, nf):
     if nf < nc:
         return "ADS runaway"
@@ -190,6 +231,7 @@ def main():
     check_r_charges_superpotential_and_nsvz()
     check_anomaly_matching()
     check_sconfining_superpotential()
+    check_quantum_modified_constraint_and_decoupling()
     check_phase_inequalities()
     print("All N=1 SQCD duality and phase checks passed.")
 
