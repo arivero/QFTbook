@@ -31,6 +31,12 @@ three-point functions.
   `P_a`, antisymmetric `mu_ab`, fixed `chi`, tilde continuation, regularity,
   large-`u` charge asymptotics, gluing data, and cyclic single-trace
   constraints.
+- Adds a T-hook-to-`Pmu` charge-bridge assumption for the fermionic nodes
+  `Y_{1,1} Y_{2,2}`, including the mirror-TBA large-`u` energy
+  normalization.
+- Proves from the `Pmu` discontinuity and pseudo-periodicity that
+  `Y_{1,1}Y_{2,2}=mu_12(u+i)/mu_12(u)`, and derives
+  `mu_12(u) ~ u^(Delta-J)` when the large-`u` behavior is power-like.
 - Adds the Pfaffian normalization and proves its preservation under the
   rank-two Pmu discontinuity update.
 - Proves the one-step `mu(u+i)` monodromy recursion from pseudo-periodicity,
@@ -82,6 +88,8 @@ structure and the pair-of-pants-to-hexagons cut.
   `calculation-checks/planar_n4_integrability_checks.py`.
 - The same script now checks the explicit Konishi Baxter polynomial and the
   Pmu Pfaffian rank-two update.
+- The same script checks the algebraic `Y_{1,1}Y_{2,2}` bridge ratio and the
+  large-`u` exponent extraction for `mu_12(u+i)/mu_12(u)`.
 - The same script checks the sign convention in the `mu(u+i)` monodromy
   recursion against the rank-two discontinuity update and verifies
   antisymmetry of the shifted matrix.

@@ -66,9 +66,81 @@ functions on one copy of the plane.  The data above tell the reader both what
 is evaluated on the defining sheet and how the functions are continued to
 the neighboring sheets.
 
-State quantum numbers enter through large-\(u\) asymptotics of \(P_a\) and
-\(\mu_{ab}\).  In the \(SL(2)\) sector with twist \(J\), spin \(S\), and
-dimension \(\Delta\), these asymptotics encode the charges
+\begin{assumption}[T-hook to \(P\mu\) charge bridge]
+\label{ass:qsc-t-hook-charge-bridge}
+Work in the analytic T-hook gauge of
+Chapter~\ref{ch:planar-n4-mirror-tba-y-system}, and consider an \(SL(2)\)
+single-trace state of twist \(J\), Lorentz spin \(S\), and total physical
+momentum zero.  Let \(Y_{1,1}\) and \(Y_{2,2}\) denote the two fermionic
+T-hook nodes adjacent to the central strip in this gauge.  The QSC
+reconstruction of the T-system is assumed to identify
+\[
+  Y_{1,1}(u)Y_{2,2}(u)
+  =
+  1+
+  \frac{P_1(u)\widetilde P_2(u)-P_2(u)\widetilde P_1(u)}
+       {\mu_{12}(u)} .
+  \label{eq:qsc-y11-y22-pmu-bridge}
+\]
+The energy normalization inherited from the excited-state mirror TBA is
+\[
+  \log\bigl(Y_{1,1}(u)Y_{2,2}(u)\bigr)
+  =
+  \frac{\ii(\Delta-J)}{u}+O(u^{-2}),
+  \qquad u\to\infty
+\]
+in the upper-half-plane sector used for the \(SL(2)\) large-\(u\)
+asymptotics.
+\end{assumption}
+
+\begin{lemma}[Dimension exponent of \(\mu_{12}\)]
+\label{lem:qsc-mu12-dimension-exponent}
+Under Assumption~\ref{ass:qsc-t-hook-charge-bridge} and the \(P\mu\)
+equations,
+\[
+  Y_{1,1}(u)Y_{2,2}(u)
+  =
+  \frac{\mu_{12}(u+\ii)}{\mu_{12}(u)}.
+  \label{eq:qsc-y11-y22-mu-ratio}
+\]
+If \(\mu_{12}\) has power-law large-\(u\) behavior on this sheet, then
+\[
+  \mu_{12}(u)\sim u^{\Delta-J}.
+\]
+\end{lemma}
+
+\begin{proof}
+The \((1,2)\) component of the \(P\mu\) discontinuity equation gives
+\[
+  \widetilde\mu_{12}(u)-\mu_{12}(u)
+  =
+  P_1(u)\widetilde P_2(u)-P_2(u)\widetilde P_1(u).
+\]
+Dividing by \(\mu_{12}(u)\) and using the bridge formula
+\eqref{eq:qsc-y11-y22-pmu-bridge} gives
+\[
+  Y_{1,1}(u)Y_{2,2}(u)
+  =
+  \frac{\widetilde\mu_{12}(u)}{\mu_{12}(u)}.
+\]
+Pseudo-periodicity \eqref{eq:planar-n4-pmu-period} then gives
+\eqref{eq:qsc-y11-y22-mu-ratio}.  Now suppose
+\(\mu_{12}(u)=C u^\alpha(1+O(u^{-1}))\) with \(C\neq0\).  Then
+\[
+  \log\frac{\mu_{12}(u+\ii)}{\mu_{12}(u)}
+  =
+  \alpha\log\left(1+\frac{\ii}{u}\right)+O(u^{-2})
+  =
+  \frac{\ii\alpha}{u}+O(u^{-2}).
+\]
+Comparison with the large-\(u\) energy normalization in
+Assumption~\ref{ass:qsc-t-hook-charge-bridge} gives
+\(\alpha=\Delta-J\).
+\end{proof}
+
+State quantum numbers also enter through large-\(u\) asymptotics of \(P_a\)
+and the remaining \(\mu_{ab}\).  In the \(SL(2)\) sector with twist \(J\),
+spin \(S\), and dimension \(\Delta\), these asymptotics encode the charges
 \[
   (J,S,\Delta)
 \]

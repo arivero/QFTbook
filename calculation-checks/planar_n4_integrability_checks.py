@@ -679,6 +679,9 @@ def check_pmu_pfaffian_rank_two_update() -> None:
     ]
     assert_close("Pmu Pfaffian rank-two update", pfaffian_4(updated), pfaffian_4(mu))
 
+    y_bridge = 1 + (p[0] * tilde_p[1] - p[1] * tilde_p[0]) / mu[0][1]
+    assert_close("Pmu Y11Y22 bridge algebra", y_bridge, updated[0][1] / mu[0][1])
+
     shifted_by_recursion = [
         [
             mu[row][col]
@@ -700,6 +703,16 @@ def check_pmu_pfaffian_rank_two_update() -> None:
                 shifted_by_recursion[row][col],
                 -shifted_by_recursion[col][row],
             )
+
+    large_u = 1.0e6
+    for exponent in (0.5, 3.7, -1.2):
+        logarithmic_ratio = cmath.log((large_u + 1j) ** exponent / large_u**exponent)
+        assert_close(
+            "mu12 charge exponent asymptotic",
+            large_u * logarithmic_ratio,
+            1j * exponent,
+            tol=2.0e-6,
+        )
 
 
 def main() -> None:

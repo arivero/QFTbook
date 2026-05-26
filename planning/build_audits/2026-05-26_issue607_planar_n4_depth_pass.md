@@ -154,6 +154,21 @@
   single-short-cut functions, the normalized discontinuity coefficient,
   physical gluing, and equivalence to the exact planar gauge-theory spectrum.
 
+## Comprehensive Development Continuation V
+
+- Added the T-hook-to-`Pmu` charge bridge in Chapter 15.  The text now states
+  the framework input identifying the fermionic-node product
+  `Y_{1,1}Y_{2,2}` with
+  `1+(P_1 tilde P_2-P_2 tilde P_1)/mu_12`, together with the mirror-TBA
+  large-`u` energy normalization.
+- Proved the local algebraic part of the bridge:
+  `Y_{1,1}Y_{2,2}=tilde mu_12/mu_12=mu_12(u+i)/mu_12(u)` follows from the
+  `Pmu` discontinuity and pseudo-periodicity equations.
+- Derived the exponent `mu_12(u) ~ u^(Delta-J)` by comparing
+  `log(mu_12(u+i)/mu_12(u))` with the energy normalization.  This makes the
+  dimension-carrying asymptotic of `mu_12` a checked consequence of the
+  bridge assumptions rather than an unexplained proclamation.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -185,6 +200,8 @@
   displayed orders;
 - local Hirota-to-Y-system algebra.
 - QSC `Pmu` Pfaffian preservation under the rank-two discontinuity update.
+- QSC `Y_{1,1}Y_{2,2}` bridge algebra and large-`u` exponent extraction for
+  `mu_12(u+i)/mu_12(u)`.
 - QSC `Pmu` monodromy-recursion signs and antisymmetry of the shifted
   `mu` matrix.
 
