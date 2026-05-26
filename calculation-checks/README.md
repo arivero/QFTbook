@@ -113,7 +113,7 @@ Current checks:
   \(\Phi^4_3\) prototype, the negative cubic drift ledger, and the sharp
   Fourier-cutoff shell counts for the one-loop coordinate \(C_1\), plus the
   dyadic block arithmetic proving logarithmic growth of the two-loop
-  coordinate \(C_2\).
+  coordinate \(C_2\) and the bounded dyadic shell increment for \(C_2\).
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

@@ -380,6 +380,16 @@ def check_phi4_three_spde_bphz_counterterm_combinatorics():
     lower_block_factor = Fraction(positive_pair_count, 2 ** (6 * lower_scale))
     assert_equal(lower_block_factor, Fraction(1, 4096), "two-loop lower block factor")
 
+    shell_center = 6
+    c2_shell_factor = sum(
+        Fraction(1, 2) ** abs(ell - scale)
+        for ell in range(shell_center + 2)
+        for scale in range(shell_center + 2)
+        if max(ell, scale) >= shell_center - 1
+    )
+    if not c2_shell_factor <= 9:
+        raise AssertionError("two-loop dyadic shell bound failed")
+
     # One-loop cubic Wick contraction: choose the contracted pair in three
     # fields.  Two-loop non-nested sunset: choose the corrected outer factor,
     # then the local linear part of X(z)^2 K X(w)^3 gives 3*C2 with the
@@ -661,7 +671,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, C2-log-growth, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, C2-log-growth, C2-shell, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

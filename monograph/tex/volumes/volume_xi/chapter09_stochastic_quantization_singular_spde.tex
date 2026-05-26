@@ -2613,6 +2613,69 @@ there is an absolute constant \(c_0>0\) with
 the lower bound follows after decreasing \(c_m\).
 \end{proof}
 
+\begin{proposition}[Dyadic shell bound for the two-loop coordinate]
+\label{prop:spde-phi-four-three-c2-dyadic-shell-bound}
+Let \(C_2(M)\) be the sharp spatial Fourier-cutoff two-loop coordinate in
+Proposition~\ref{prop:spde-phi-four-three-c2-fourier-log-growth}, and set
+\[
+  M_N=2^N,\qquad N\in\mathbb N .
+\]
+There is a constant \(C_m^{\rm shell}<\infty\), depending on \(m\) but not
+on \(N\), such that, for all \(N\geq2\),
+\[
+  0\leq C_2(M_{N+1})-C_2(M_N)\leq C_m^{\rm shell}.
+\]
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  D_N=\{(p,q)\in\mathbb Z^3\times\mathbb Z^3:
+       |p|_\infty,|q|_\infty,|p+q|_\infty\leq2^N\}.
+\]
+The summand in \eqref{eq:spde-c2-fourier-cutoff-sum} is non-negative, and
+\(D_N\subset D_{N+1}\), so the increment is non-negative.
+
+Use the dyadic annuli \(B_\ell\) from the proof of
+Proposition~\ref{prop:spde-phi-four-three-c2-fourier-log-growth}.  The same
+block estimate gives a constant \(A_m<\infty\) such that, for every
+\(\ell,s\geq0\), the contribution of
+\[
+  (B_\ell\times B_s)\cap D_{N+1}
+\]
+to \(C_2(M_{N+1})\) is bounded by
+\[
+  A_m2^{-|\ell-s|}.
+\]
+If \((p,q)\in D_{N+1}\setminus D_N\) and
+\[
+  p\in B_\ell,\qquad q\in B_s,
+\]
+then \(\ell,s\leq N+1\).  Moreover, \(\max(\ell,s)\geq N-1\).  Indeed, if
+\(\ell,s\leq N-2\), then
+\[
+  |p|_\infty<2^{N-1},\qquad |q|_\infty<2^{N-1},
+\]
+hence \(|p+q|_\infty<2^N\), so \((p,q)\in D_N\), a contradiction.
+Therefore
+\[
+\begin{aligned}
+  C_2(M_{N+1})-C_2(M_N)
+  &\leq
+  A_m
+  \sum_{\substack{0\leq\ell,s\leq N+1\\
+                  \max(\ell,s)\geq N-1}}
+  2^{-|\ell-s|}                                      \\
+  &\leq
+  A_m\sum_{t=N-1}^{N+1}
+  \left(1+2\sum_{r=0}^{t-1}2^{-(t-r)}\right)          \\
+  &\leq
+  9A_m .
+\end{aligned}
+\]
+Thus \(C_m^{\rm shell}=9A_m\) is admissible.
+\end{proof}
+
 \begin{proposition}[Finite-cutoff local counterterm calculation]
 \label{prop:spde-phi-four-three-local-counterterm-calculation}
 Let \(X_\epsilon\) be the smooth stationary Gaussian solution of the
