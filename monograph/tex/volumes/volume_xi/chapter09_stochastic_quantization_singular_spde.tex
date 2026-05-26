@@ -744,6 +744,168 @@ and the same two product estimates.  This gives
 \eqref{eq:spde-dpd-nonlinearity-lipschitz}.
 \end{proof}
 
+\begin{proposition}[Besov--Holder product continuity for the DPD nonlinearity]
+\label{prop:spde-dpd-besov-product-continuity}
+Let \(0<\kappa<\alpha\), and let
+\[
+  \mathcal C^\gamma(\mathbb T^2)=B^\gamma_{\infty,\infty}(\mathbb T^2),
+  \qquad
+  \|u\|_{\mathcal C^\gamma}
+  =
+  \sup_{j\geq -1}2^{j\gamma}\|\Delta_j u\|_{L^\infty}.
+\]
+Here \((\Delta_j)_{j\geq -1}\) is a fixed smooth dyadic partition of unity
+on the torus, with \(\Delta_{-1}\) the low-frequency block.  Then Bony's
+formula defines canonical continuous bilinear maps extending ordinary
+multiplication of smooth functions,
+\[
+  \mathcal C^\alpha\times\mathcal C^{-\kappa}
+  \longrightarrow
+  \mathcal C^{-\kappa},
+  \qquad
+  \mathcal C^\alpha\times\mathcal C^\alpha
+  \longrightarrow
+  \mathcal C^\alpha .
+\]
+Consequently, for
+\[
+  \mathbb X=(X_1,X_2,X_3)\in C([0,T];\mathcal C^{-\kappa})^3
+  \quad\text{and}\quad
+  Y\in C([0,T];\mathcal C^\alpha),
+\]
+the expression
+\[
+  \mathcal N_{\mathcal C}(Y,\mathbb X)
+  =
+  Y^3+3Y^2X_1+3YX_2+X_3
+\]
+is a well-defined element of
+\(C([0,T];\mathcal C^{-\kappa})\).  More precisely, for every \(R>0\)
+there is \(C_{\alpha,\kappa,R}\) such that, whenever
+\[
+  \|Y\|_{C_T\mathcal C^\alpha}
+  +\|Z\|_{C_T\mathcal C^\alpha}
+  +\|\mathbb X\|_{C_T\mathcal C^{-\kappa}}
+  +\|\mathbb Z\|_{C_T\mathcal C^{-\kappa}}
+  \leq R ,
+\]
+one has
+\begin{align}
+  &\|\mathcal N_{\mathcal C}(Y,\mathbb X)
+      -\mathcal N_{\mathcal C}(Z,\mathbb Z)\|_{C_T\mathcal C^{-\kappa}}
+  \notag\\
+  &\qquad\leq
+  C_{\alpha,\kappa,R}
+  \left(
+    \|Y-Z\|_{C_T\mathcal C^\alpha}
+    +
+    \max_{1\leq i\leq3}
+    \|X_i-Z_i\|_{C_T\mathcal C^{-\kappa}}
+  \right).
+  \label{eq:spde-dpd-besov-nonlinearity-continuity}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+It is enough to prove the two multiplication statements, since the
+continuity of \(\mathcal N_{\mathcal C}\) then follows by expanding
+differences:
+\[
+  Y^3-Z^3=(Y-Z)(Y^2+YZ+Z^2),
+  \qquad
+  Y^2X_1-Z^2Z_1=(Y^2-Z^2)X_1+Z^2(X_1-Z_1),
+\]
+and similarly for \(YX_2-ZZ_2\).
+
+Use Bony's decomposition
+\[
+  fg=f\prec g+f\circ g+f\succ g,
+  \qquad
+  f\prec g=\sum_j S_{j-1}f\,\Delta_jg ,
+\]
+where \(S_j=\sum_{i<j}\Delta_i\) and
+\[
+  f\circ g=\sum_{|i-j|\leq1}\Delta_if\,\Delta_jg .
+\]
+The frequency supports imply that \(\Delta_\ell(f\prec g)\) receives only
+\(|j-\ell|\leq C_0\).  Hence, for any \(\beta\in\mathbb R\),
+\[
+  2^{\ell\beta}\|\Delta_\ell(f\prec g)\|_{L^\infty}
+  \leq
+  C\|f\|_{L^\infty}
+  \sup_{|j-\ell|\leq C_0}
+  2^{j\beta}\|\Delta_jg\|_{L^\infty},
+\]
+and therefore
+\begin{equation}
+  \|f\prec g\|_{\mathcal C^\beta}
+  \leq
+  C\|f\|_{L^\infty}\|g\|_{\mathcal C^\beta}.
+  \label{eq:spde-besov-left-paraproduct}
+\end{equation}
+If \(\beta<0\), then the low-frequency sum satisfies
+\[
+  \|S_{j-1}g\|_{L^\infty}
+  \leq
+  C2^{-j\beta}\|g\|_{\mathcal C^\beta},
+\]
+because \(\sum_{i<j}2^{-i\beta}\leq C2^{-j\beta}\).  Thus, for
+\(\alpha>0\) and \(\beta<0\),
+\[
+  \|g\prec f\|_{\mathcal C^{\alpha+\beta}}
+  \leq
+  C\|g\|_{\mathcal C^\beta}\|f\|_{\mathcal C^\alpha}.
+  \label{eq:spde-besov-right-paraproduct}
+\]
+For the resonant term, the block \(\Delta_\ell(f\circ g)\) receives only
+indices \(i,j\geq \ell-C_1\) with \(|i-j|\leq1\).  Therefore
+\[
+\begin{aligned}
+  2^{\ell(\alpha+\beta)}
+  \|\Delta_\ell(f\circ g)\|_{L^\infty}
+  &\leq
+  C\|f\|_{\mathcal C^\alpha}\|g\|_{\mathcal C^\beta}
+  \sum_{i\geq \ell-C_1}2^{(\ell-i)(\alpha+\beta)} .
+\end{aligned}
+\]
+The final geometric sum is bounded exactly when \(\alpha+\beta>0\), and
+then
+\begin{equation}
+  \|f\circ g\|_{\mathcal C^{\alpha+\beta}}
+  \leq
+  C\|f\|_{\mathcal C^\alpha}\|g\|_{\mathcal C^\beta}.
+  \label{eq:spde-besov-resonant-product}
+\end{equation}
+
+Now take \(\beta=-\kappa\).  Since \(\alpha-\kappa>0\),
+\eqref{eq:spde-besov-left-paraproduct},
+\eqref{eq:spde-besov-right-paraproduct}, and
+\eqref{eq:spde-besov-resonant-product} give
+\[
+  \|fg\|_{\mathcal C^{-\kappa}}
+  \leq
+  C_{\alpha,\kappa}
+  \|f\|_{\mathcal C^\alpha}\|g\|_{\mathcal C^{-\kappa}},
+\]
+using the continuous embedding
+\(\mathcal C^{\alpha-\kappa}\hookrightarrow\mathcal C^{-\kappa}\).
+Taking instead \(f,g\in\mathcal C^\alpha\), the paraproduct terms are
+controlled by \(\mathcal C^\alpha\hookrightarrow L^\infty\), and the
+resonant term belongs to \(\mathcal C^{2\alpha}\), hence to
+\(\mathcal C^\alpha\).  This proves that
+\(\mathcal C^\alpha\) is an algebra.  The bilinear maps are therefore
+well-defined by the displayed paraproduct and resonant sums.  On smooth
+inputs the dyadic partition is a partition of unity, so Bony's formula
+equals the ordinary pointwise product; on rough inputs the formula is the
+canonical product used in this Besov scale.  If a sequence of smooth inputs
+converges in a slightly stronger Besov norm, the bilinear estimates show
+that its ordinary products converge to the same paraproduct value.
+
+Applying these two bilinear estimates at each time \(t\), taking suprema in
+time, and expanding the displayed differences gives
+\eqref{eq:spde-dpd-besov-nonlinearity-continuity}.
+\end{proof}
+
 \begin{theorem}[Deterministic DPD local fixed point in Sobolev coordinates]
 \label{thm:spde-dpd-deterministic-local-fixed-point}
 Let \(0<\kappa<1/4\), \(\beta=1+2\kappa\), \(m^2>0\), \(\lambda>0\), and
@@ -1378,10 +1540,12 @@ then identifies the compactness limit as a distributional solution whenever
 the products are represented in these strong \(L^p\) spaces.  In the full
 rough stochastic application, where the enhanced noise is controlled in
 Besov or paracontrolled coordinates rather than in ordinary Lebesgue spaces,
-the same role is played by the corresponding product-continuity theorem.
-The quartic term supplies the coercive bound, compactness extracts a weak
-energy limit, the product-continuity theorem identifies the equation, and
-the closedness proposition passes the energy inequality to that rough limit.
+the same role is played, at the elementary Besov level, by
+Proposition~\ref{prop:spde-dpd-besov-product-continuity}.  The quartic
+term supplies the coercive bound, compactness extracts a weak energy limit,
+product continuity identifies the equation in the topology where the
+enhanced noise is built, and the closedness proposition passes the energy
+inequality to that rough limit.
 
 \begin{proposition}[Passing invariance through a cutoff limit]
 \label{prop:spde-invariant-measure-limit}

@@ -682,6 +682,40 @@ def check_dpd_distributional_limit_exponents():
     assert_equal(holder_exponent, Fraction(1, 4), "finite-mode time Holder exponent")
 
 
+def check_dpd_besov_product_continuity_arithmetic():
+    # Sample Besov-Holder parameters for the DPD product theorem.
+    # Multiplication C^alpha x C^(-kappa) is defined by Bony's formula when
+    # the resonant regularity alpha-kappa is positive.
+    alpha = Fraction(1, 3)
+    kappa = Fraction(1, 20)
+    if not 0 < kappa < alpha:
+        raise AssertionError("Besov DPD sample must satisfy 0 < kappa < alpha")
+    resonant_regular = alpha - kappa
+    assert_equal(resonant_regular, Fraction(17, 60), "Besov DPD resonant regularity")
+    if not resonant_regular > 0:
+        raise AssertionError("Besov resonant product requires alpha-kappa > 0")
+
+    # The resonant and right-paraproduct outputs are in C^(alpha-kappa),
+    # which embeds into C^(-kappa) because alpha > 0.
+    if not resonant_regular > -kappa:
+        raise AssertionError("positive Besov remainder must embed into C^-kappa")
+
+    # The algebra estimate C^alpha * C^alpha -> C^alpha uses the resonant
+    # gain 2 alpha and the embedding C^(2 alpha) -> C^alpha.
+    two_alpha = 2 * alpha
+    assert_equal(two_alpha, Fraction(2, 3), "Besov algebra resonant regularity")
+    if not two_alpha > alpha:
+        raise AssertionError("Besov algebra resonant term must be smoother than C^alpha")
+
+    # The DPD nonlinear terms have target regularities at least -kappa:
+    # Y^3 in C^alpha, Y^2 X1 in C^-kappa, Y X2 in C^-kappa, X3 in C^-kappa.
+    target = -kappa
+    term_regularities = [alpha, target, target, target]
+    for regularity in term_regularities:
+        if not regularity >= target:
+            raise AssertionError("DPD Besov nonlinearity term misses target C^-kappa")
+
+
 def check_invariant_measure_limit_identity():
     # A finite Markov-chain analogue of the cutoff invariance passage:
     # if mu P = mu and P_n=P exactly, then the invariant identity is the
@@ -1341,6 +1375,7 @@ def main():
     check_dpd_energy_closedness_lp_power_arithmetic()
     check_dpd_energy_compactness_derivative_arithmetic()
     check_dpd_distributional_limit_exponents()
+    check_dpd_besov_product_continuity_arithmetic()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
@@ -1360,7 +1395,7 @@ def main():
     check_gaussian_negative_sobolev_summability_arithmetic()
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

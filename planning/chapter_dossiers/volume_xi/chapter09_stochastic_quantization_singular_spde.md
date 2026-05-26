@@ -67,6 +67,10 @@ data.
   theorem.
 - `E_M`: finite-dimensional Fourier subspace used in the self-contained
   torus Aubin-Lions compactness lemma for DPD remainders.
+- `mathcal C^gamma`, `Delta_j`, `S_j`, `prec`, `circ`, `succ`: Besov-Holder
+  space \(B^\gamma_{\infty,\infty}\), dyadic Littlewood-Paley blocks,
+  low-frequency cutoff, and Bony paraproduct/resonant operations in the DPD
+  rough-product theorem.
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
@@ -212,6 +216,15 @@ data.
   \(H^\beta H^\beta\subset H^\beta\) and
   \(H^\beta H^{-\kappa}\subset H^{-\kappa}\), using a dyadic
   Littlewood--Paley/Bony decomposition.
+- Proves the Besov-Holder product-continuity theorem for the DPD
+  nonlinearity.  With \(0<\kappa<\alpha\), Bony's formula defines canonical
+  products
+  \(\mathcal C^\alpha\mathcal C^{-\kappa}\to\mathcal C^{-\kappa}\) and
+  \(\mathcal C^\alpha\mathcal C^\alpha\to\mathcal C^\alpha\).  The proof
+  derives the left paraproduct, right paraproduct, and resonant bounds
+  directly from dyadic support geometry and the condition
+  \(\alpha-\kappa>0\), then obtains local Lipschitz continuity of
+  \(Y^3+3Y^2X_1+3YX_2+X_3\) in \(C_T\mathcal C^{-\kappa}\).
 - Proves a deterministic local mild fixed-point theorem for the DPD
   remainder equation with enhanced noise in
   \(C([0,T];H^{-\kappa})^3\), including the heat-smoothing time gain
@@ -793,3 +806,8 @@ data maps.
   compactness limit as a distributional DPD solution under strong Lebesgue
   convergence of the enhanced-noise approximants.  The calculation-check
   companion verifies the interpolation and product exponents.
+- 2026-05-26 DPD Besov-product pass: added the self-contained
+  Besov-Holder product-continuity theorem for the rough DPD nonlinearity,
+  replacing a named placeholder in the smooth-to-rough roadmap by an actual
+  paraproduct proof.  The calculation-check companion verifies the sample
+  resonance, embedding, and algebra exponents.
