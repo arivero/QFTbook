@@ -77,6 +77,9 @@ data.
 - `Q`, `K_i`, `L_i`, `M_k`: homogeneous dimension, dyadic input kernels, and
   output convolution scale in the parabolic convolution estimate.
 - `a`, `b`: kernel orders in the dyadic parabolic convolution bound.
+- `psi_x^varphi`, `theta`, `C(u,v)`: rescaled physical test kernel, Holder
+  edge exponent, and stochastic-convolution covariance in the Gaussian
+  negative-coordinate scale theorem.
 - `F`, `P`, `H`, `r`: local factor, subtracted polynomial, remainder
   coefficient, and parabolic remainder order in the Taylor-subtraction gain.
 - `mathcal X_l`, `pi_l`, `mathcal E_l`: finite dyadic nets, projections to
@@ -234,6 +237,11 @@ data.
   estimates for order-\(a\) and order-\(b\) kernels imply order-\((a+b)\)
   output bounds, including \(L^\infty\) and \(L^1\) estimates with explicit
   geometric factors.
+- Proves Gaussian scale estimates for the primitive strict negative-sector
+  coordinates: white-noise scaling gives \(\sigma_\Xi=\kappa\), and a
+  parabolic covariance singularity \(C(u,v)=O(\|u-v\|_{\mathfrak s}^{-1})\)
+  gives \(\sigma_{X^k}=k\kappa\) for \(k=1,2,3\), with Holder edge control
+  on same-scale parameter increments.
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -484,3 +492,9 @@ data maps.
   decomposition separating Hilbert-kernel increments from movement of the
   test-function evaluation functional.  The calculation-check companion
   verifies the discrete base and edge arithmetic.
+- 2026-05-26 issue #582 Gaussian-coordinate continuation: the chapter now
+  proves the scalar Gaussian scale estimates for \(\Xi,X,X^2,X^3\).  The
+  proof derives the white-noise \(L^2\) scaling, the Wick covariance identity,
+  local integrability of \(\|u-v\|_{\mathfrak s}^{-k}\) for \(k\leq3<5\), and
+  Holder edge estimates for same-scale parameter increments.  The
+  calculation-check companion verifies the resulting scale slack exponents.

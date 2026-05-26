@@ -154,6 +154,40 @@ def check_projective_kernel_dual_norm_criterion_arithmetic():
     assert_equal(increment_bound, Fraction(9, 8), "evaluation difference projective increment")
 
 
+def check_gaussian_wick_coordinate_scale_arithmetic():
+    # In parabolic dimension Q=5, white noise has L2 scale delta^{-Q/2}.
+    # The normalized Xi coordinate multiplies by delta^{Q/2+kappa}, leaving
+    # the slack delta^kappa.
+    qdim = Fraction(5)
+    kappa = Fraction(1, 20)
+    white_noise_l2_exponent = -qdim / 2
+    xi_normalization = qdim / 2 + kappa
+    xi_slack = white_noise_l2_exponent + xi_normalization
+    assert_equal(xi_slack, kappa, "Xi Gaussian coordinate slack")
+
+    # The stochastic convolution has covariance singularity |z|^{-1}.
+    # For :X^k:, the variance of a scale-delta test is delta^{-k}; the
+    # L2 norm is delta^{-k/2}; normalization by delta^{k/2+k kappa}
+    # leaves slack k kappa for k=1,2,3.
+    for k in [1, 2, 3]:
+        variance_exponent = -Fraction(k)
+        l2_exponent = variance_exponent / 2
+        normalization = Fraction(k, 2) + k * kappa
+        slack = l2_exponent + normalization
+        assert_equal(slack, k * kappa, f"Wick X^{k} coordinate slack")
+        if not k < qdim:
+            raise AssertionError("Wick covariance singularity is not locally integrable")
+
+    # Edge increments in the theorem carry eta^theta in Lp.  At theta=1/2
+    # and dyadic edge level ell=6, the edge factor is 2^{-3}.
+    theta = Fraction(1, 2)
+    ell = 6
+    edge_exponent = theta * ell
+    assert_equal(edge_exponent, 3, "Gaussian Wick edge exponent")
+    edge_factor = Fraction(1, 2) ** edge_exponent
+    assert_equal(edge_factor, Fraction(1, 8), "Gaussian Wick edge Holder factor")
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -879,6 +913,7 @@ def main():
     check_wiener_chaos_isometry_and_moments()
     check_dual_norm_finite_chaos_estimate_arithmetic()
     check_projective_kernel_dual_norm_criterion_arithmetic()
+    check_gaussian_wick_coordinate_scale_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -902,7 +937,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":
