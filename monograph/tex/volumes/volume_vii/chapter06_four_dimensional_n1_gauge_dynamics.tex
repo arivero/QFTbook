@@ -450,6 +450,123 @@ label by one.  The same shift is produced by the generator
 \(S\) has gaugino-phase charge \(2\).
 \end{proof}
 
+\begin{proposition}[Pure-SYM one-instanton zero-mode test]
+\label{prop:pure-sym-one-instanton-zero-mode-test}
+Work in the charge-one \(SU(N_c)\) instanton sector in the BPST
+normalization of Section~\ref{sec:bpst-instanton-thooft-vertex}.  Assume a
+semiclassical collective-coordinate separation in which the exact adjoint
+fermion zero modes are represented by Grassmann variables and must be
+saturated by separated operator insertions.  Then
+\[
+  \left\langle S(x_1)\cdots S(x_m)\right\rangle_{k=1}^{\mathrm{sep}}=0,
+  \qquad m<N_c,
+  \label{eq:pure-sym-instanton-too-few-s-insertions}
+\]
+before contact terms or boundary contributions are considered.  The first
+separated chiral correlator whose fermion degree can saturate the
+charge-one instanton measure is the \(N_c\)-point correlator
+\[
+  \left\langle S(x_1)\cdots S(x_{N_c})\right\rangle_{k=1}^{\mathrm{sep}}.
+  \label{eq:pure-sym-instanton-first-saturated-correlator}
+\]
+Its protected charge and dimension ledger is the same ledger as the VY
+equation \(S^{N_c}\sim \Lambda_h^{3N_c}\).
+\end{proposition}
+
+\begin{proof}
+The Dirac index in the adjoint representation gives
+\[
+  n_\lambda=2T(\operatorname{adj})\,k=2N_c
+\]
+left-handed gaugino zero modes for a charge-one instanton.  Let
+\(\eta_1,\ldots,\eta_{2N_c}\) denote their Grassmann coefficients.  The
+zero-mode part of the collective-coordinate measure contains
+\[
+  d\eta_{2N_c}\cdots d\eta_1 .
+\]
+The lowest component of \(S\) is quadratic in the gaugino field.  Hence a
+separated insertion of \(S\) is a polynomial of Grassmann degree at most
+two in the \(\eta_a\)'s, and a product of \(m\) such insertions has degree at
+most \(2m\).  A Berezin integral over \(2N_c\) variables extracts only the
+coefficient of \(\eta_1\cdots\eta_{2N_c}\).  If \(m<N_c\), that coefficient
+is absent, proving \eqref{eq:pure-sym-instanton-too-few-s-insertions}.
+
+For \(m=N_c\), the Grassmann degree can be \(2N_c\).  This is a necessary
+zero-mode condition, not yet a proof of a nonzero coefficient; the
+spacetime dependence, nonzero-mode determinant, instanton-size integration,
+and possible boundary terms still have to be controlled.  The holomorphic
+scale factor of a charge-one pure-SYM instanton is
+\(\Lambda_h^{3N_c}\), while \(S^{N_c}\) has engineering dimension \(3N_c\)
+and gaugino-phase charge \(2N_c\).  Thus the first zero-mode-saturated
+chiral correlator has precisely the dimension and anomalous-charge ledger
+of the VY critical equation.
+\end{proof}
+
+\begin{hypothesis}[Zero-mode-saturated pure-SYM instanton correlator]
+\label{hyp:pure-sym-zero-mode-saturated-instanton-correlator}
+The following is the additional analytic input required if one wants to use
+the original instanton logic as evidence for the pure-SYM condensate.  In a
+supersymmetric holomorphic regulator, assume that the separated
+\(N_c\)-point chiral correlator
+\eqref{eq:pure-sym-instanton-first-saturated-correlator} receives a
+well-defined charge-one instanton contribution
+\begin{equation}
+  \left\langle S(x_1)\cdots S(x_{N_c})\right\rangle_{k=1}^{\mathrm{sep}}
+  =
+  \kappa_{\mathrm{inst}}\Lambda_h^{3N_c},
+  \qquad \kappa_{\mathrm{inst}}\neq0 ,
+  \label{eq:pure-sym-zero-mode-saturated-correlator-input}
+\end{equation}
+for separated points in the chiral sector, in the same finite normalization
+of \(S\) and \(\Lambda_h\) used above.  This hypothesis includes control of
+the instanton-size integral, the nonzero-mode determinant, collision
+singularities, and boundary strata.  In un-Higgsed pure SYM these analytic
+controls are not supplied by the elementary zero-mode count alone.
+\end{hypothesis}
+
+\begin{proposition}[Cluster extraction is a separate assumption]
+\label{prop:pure-sym-instanton-cluster-extraction}
+Assume Hypothesis~\ref{hyp:pure-sym-zero-mode-saturated-instanton-correlator}
+and assume the infinite-volume theory has a massive pure phase
+\(\omega_\ell\) with cluster decomposition and one-point value
+\[
+  \omega_\ell(S)=s_\ell .
+\]
+If the separated chiral \(N_c\)-point function is identified with the
+large-separation limit in that pure phase, then
+\[
+  s_\ell^{N_c}
+  =
+  \kappa_{\mathrm{inst}}\Lambda_h^{3N_c}.
+  \label{eq:pure-sym-cluster-root-equation}
+\]
+Consequently the instanton \(N_c\)-point calculation can at most supply the
+root equation for the condensate.  The choice of a particular root and the
+existence of the massive pure phases require the anomaly, index, and
+massive-branch inputs stated in this section.
+\end{proposition}
+
+\begin{proof}
+Choose separated points \(x_1,\ldots,x_{N_c}\), and translate them so that
+their mutual distances go to infinity.  Cluster decomposition in the pure
+phase gives
+\[
+  \lim_{\min_{a\neq b}|x_a-x_b|\to\infty}
+  \omega_\ell\!\left(S(x_1)\cdots S(x_{N_c})\right)
+  =
+  \prod_{a=1}^{N_c}\omega_\ell(S)
+  =
+  s_\ell^{N_c}.
+\]
+If this large-separation limit is the protected chiral correlator
+\eqref{eq:pure-sym-zero-mode-saturated-correlator-input}, then
+\eqref{eq:pure-sym-cluster-root-equation} follows.  The equation determines
+only the \(N_c\)-th power.  Its \(N_c\) roots are then organized by the
+\(\mathbb Z_{2N_c}\) anomaly and the \(\theta\)-monodromy described in
+Proposition~\ref{prop:pure-sym-condensate-branches-source}; no
+single-instanton Berezin integral selects one branch by itself.
+\end{proof}
+
 The component condensate \(\langle\operatorname{tr}\lambda\lambda\rangle_k\)
 is obtained from \(\langle S\rangle_k\) by the fixed component convention in
 the definition of \(S\).  The phase information above is convention

@@ -102,6 +102,60 @@ def check_condensate_source_and_branch_monodromy():
             )
 
 
+def check_pure_sym_instanton_zero_mode_saturation():
+    for nc in range(2, 30):
+        instanton_number = 1
+        adjoint_index = nc
+        adjoint_gaugino_zero_modes = 2 * adjoint_index * instanton_number
+        s_insertion_fermion_degree = 2
+
+        assert_equal(
+            adjoint_gaugino_zero_modes,
+            2 * nc,
+            "pure SYM one-instanton adjoint zero modes",
+        )
+
+        first_saturated_insertions = adjoint_gaugino_zero_modes // s_insertion_fermion_degree
+        assert_equal(
+            first_saturated_insertions,
+            nc,
+            "pure SYM first zero-mode-saturated S correlator",
+        )
+
+        for insertions in range(0, nc):
+            insertion_degree = s_insertion_fermion_degree * insertions
+            assert_equal(
+                insertion_degree < adjoint_gaugino_zero_modes,
+                True,
+                "pure SYM too-few S insertions leave unsaturated modes",
+            )
+
+        saturated_dimension = 3 * first_saturated_insertions
+        instanton_scale_dimension = 3 * nc
+        assert_equal(
+            saturated_dimension,
+            instanton_scale_dimension,
+            "pure SYM S^Nc instanton-scale dimension match",
+        )
+
+        saturated_gaugino_phase_charge = 2 * first_saturated_insertions
+        assert_equal(
+            saturated_gaugino_phase_charge,
+            adjoint_gaugino_zero_modes,
+            "pure SYM S^Nc anomalous charge matches zero modes",
+        )
+
+        for branch in range(nc):
+            # The VY phases are exp(2 pi i branch/Nc).  Raising to Nc removes
+            # the branch label, matching the one-instanton Nc-point ledger.
+            phase_after_nc_power = (nc * branch) % nc
+            assert_equal(
+                phase_after_nc_power,
+                0,
+                "pure SYM clustered Nc-point branch independence",
+            )
+
+
 def check_affine_toda_index_match():
     for nc in range(2, 30):
         simple_root_terms = nc - 1
@@ -156,6 +210,7 @@ def main():
     check_discrete_chiral_anomaly_and_condensate_phases()
     check_vy_superpotential_arithmetic()
     check_condensate_source_and_branch_monodromy()
+    check_pure_sym_instanton_zero_mode_saturation()
     check_affine_toda_index_match()
     print("All pure N=1 SYM glueball and index checks passed.")
 

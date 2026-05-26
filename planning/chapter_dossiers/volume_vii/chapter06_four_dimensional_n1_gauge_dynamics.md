@@ -39,6 +39,18 @@ status-boundary style.
   the critical equation `S^N_c=Lambda_h^(3N_c)`.
 - `prop:pure-sym-condensate-branches-source`: branch/source-normalization
   ledger for the pure-SYM condensate values and theta-angle monodromy.
+- `prop:pure-sym-one-instanton-zero-mode-test`: pure-SYM charge-one
+  instanton zero-mode saturation ledger, showing that separated
+  \(S\)-correlators vanish for fewer than \(N_c\) insertions and that the
+  first possible instanton test is the \(S^{N_c}\) correlator.
+- `hyp:pure-sym-zero-mode-saturated-instanton-correlator`: analytic
+  assumptions required before promoting the zero-mode-saturated
+  \(N_c\)-point instanton ledger to a chiral correlator with nonzero
+  coefficient.
+- `prop:pure-sym-instanton-cluster-extraction`: conditional cluster
+  extraction showing that an \(N_c\)-point instanton correlator can imply
+  only the root equation \(s_\ell^{N_c}\propto\Lambda_h^{3N_c}\), not a
+  branch-selected one-point condensate by itself.
 - `hyp:pure-sym-finite-volume-index-problem`: finite-volume Hamiltonian,
   Gauss-law, spin-structure, global-form, and trace-class assumptions for the
   `SU(N_c)` Witten index.
@@ -162,6 +174,21 @@ status-boundary style.
   point `W_k=N_c S_k`, the source identity gives
   `L dW_k/dL=<S>_k`, and a loop of `L=Lambda_h^(3N_c)` around the origin
   shifts the branch label by one.
+- Adds a pure-SYM charge-one instanton zero-mode test tied to the BPST
+  normalization: \(2N_c\) adjoint gaugino zero modes force separated
+  correlators with fewer than \(N_c\) \(S\)-insertions to vanish at the
+  Berezin-integral level, while the first possible saturated chiral test is
+  the \(N_c\)-point correlator with the same dimension and anomalous-charge
+  ledger as \(S^{N_c}\sim\Lambda_h^{3N_c}\).
+- States the additional analytic assumptions needed before using the
+  zero-mode-saturated \(N_c\)-point instanton calculation in pure SYM:
+  regulator, instanton-size integral, nonzero-mode determinant, collision
+  singularities, and boundary strata must be controlled; the elementary
+  zero-mode count is not a direct proof of the one-point condensate.
+- Proves the conditional cluster-extraction step: if a massive pure phase
+  exists and the separated \(N_c\)-point chiral correlator clusters, then
+  the instanton input gives only \(s_\ell^{N_c}=\kappa\Lambda_h^{3N_c}\);
+  root selection requires the anomaly, index, and massive-branch data.
 - Defines the Witten index with explicit finite-volume assumptions:
   simply connected `SU(N_c)`, spatial `T^3_L`, periodic gaugino spin
   structure, trivial flux sector, Gauss-law projection, exact regulated
@@ -318,9 +345,11 @@ status-boundary style.
 - `calculation-checks/susy_n1_pure_sym_checks.py` verifies exact finite
   arithmetic for pure `N=1` SYM: adjoint anomaly coefficient, residual
   discrete chiral group, condensate orbit count, VY dimension/source/F-term
-  checks, condensate branch monodromy, affine-Toda product-constraint
-  telescoping, constrained Hessian nondegeneracy, local critical-point index
-  contribution, and affine-Toda/Witten-index count matching.
+  checks, condensate branch monodromy, one-instanton adjoint zero-mode
+  saturation for \(S^{N_c}\), branch independence of the clustered
+  \(N_c\)-point power, affine-Toda product-constraint telescoping,
+  constrained Hessian nondegeneracy, local critical-point index contribution,
+  and affine-Toda/Witten-index count matching.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:
   dual-rank involution, baryon-charge map, SQCD holomorphic-canonical NSVZ
