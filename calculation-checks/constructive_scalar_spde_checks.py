@@ -276,6 +276,43 @@ def check_reconstruction_wavelet_scale_powers():
     assert_equal(fine_delta_power, gamma, "reconstruction fine delta power")
 
 
+def check_phi4_three_spde_bphz_counterterm_combinatorics():
+    # Parabolic dimension for dynamic Phi^4_3 is |s|=5.  With
+    # |Xi|=-5/2-kappa and integration degree 2, X=I Xi has homogeneity
+    # -1/2-kappa.  The two-loop symbol X^2 I(X^3) must remain negative for
+    # the small kappa used in the chapter.
+    kappa = Fraction(1, 20)
+    xi = Fraction(-5, 2) - kappa
+    x = xi + 2
+    x2 = 2 * x
+    x3 = 3 * x
+    ix3 = x3 + 2
+    two_loop_tree = x2 + ix3
+    assert_equal(x, Fraction(-11, 20), "Phi4_3 X homogeneity")
+    assert_equal(x3, Fraction(-33, 20), "Phi4_3 X^3 homogeneity")
+    assert_equal(ix3, Fraction(7, 20), "Phi4_3 I(X^3) homogeneity")
+    assert_equal(two_loop_tree, Fraction(-3, 4), "Phi4_3 two-loop tree homogeneity")
+    if not two_loop_tree < 0:
+        raise AssertionError("Phi4_3 two-loop tree is not negative")
+
+    # One-loop cubic Wick contraction: choose the contracted pair in three
+    # fields.  Two-loop non-nested sunset: choose the corrected outer factor,
+    # then the local linear part of X(z)^2 K X(w)^3 gives 3*C2 with the
+    # chapter normalization C2=2*I.
+    one_loop_pairings = 3
+    outer_response_choices = 3
+    raw_sunset_pairings = 6
+    c2_normalization = 2
+    local_sunset_factor = Fraction(raw_sunset_pairings, c2_normalization)
+    assert_equal(local_sunset_factor, 3, "Phi4_3 local sunset factor")
+    assert_equal(outer_response_choices * local_sunset_factor, 9, "Phi4_3 two-loop coefficient")
+
+    # Divergent local part of the drift is -3 lambda C1 + 9 lambda^2 C2;
+    # the counterterm inserted in the equation has the opposite signs.
+    assert_equal(-one_loop_pairings, -3, "Phi4_3 one-loop drift sign")
+    assert_equal(-(outer_response_choices * local_sunset_factor), -9, "Phi4_3 two-loop counterterm sign")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
@@ -288,7 +325,8 @@ def main():
     check_dpd_energy_young_exponents()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
-    print("All constructive scalar/SPDE Wick, power-counting, and DPD/reconstruction exponent checks passed.")
+    check_phi4_three_spde_bphz_counterterm_combinatorics()
+    print("All constructive scalar/SPDE Wick, power-counting, DPD, reconstruction, and BPHZ local checks passed.")
 
 
 if __name__ == "__main__":

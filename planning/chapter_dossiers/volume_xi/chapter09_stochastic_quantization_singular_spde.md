@@ -24,6 +24,12 @@ data.
   reexpansion maps.
 - `C_{1,epsilon}`, `C_{2,epsilon}`: one-loop and two-loop local SPDE
   counterterm constants in the displayed BPHZ convention.
+- `Xi`, `X`, `mathcal I`: noise symbol, stochastic convolution symbol, and
+  heat-integration map in the dynamic \(\Phi^4_3\) homogeneity ledger.
+- `K_epsilon`, `G_epsilon`: cutoff retarded heat kernel and covariance used
+  in the finite-cutoff local counterterm calculation.
+- `mathcal L`: projection to the local linear part of a finite-cutoff Wick
+  contraction after removing nested one-loop subdivergences.
 - `c_fin`: finite mass coordinate in the renormalized dynamic
   \(\Phi^4_3\) equation.
 - `mu`: invariant Euclidean measure of the Markov process.
@@ -88,6 +94,12 @@ data.
   invariant-law construction, and identification with the constructive
   Euclidean \(\Phi^4_3\) measure after matching regulator and local
   coordinates.
+- Proves the finite-cutoff algebraic local-counterterm calculation for
+  dynamic \(\Phi^4_3\): the one-loop Wick contraction gives
+  \(-3\lambda C_{1,\epsilon}X_\epsilon\), the non-nested two-loop local
+  contraction gives \(+9\lambda^2C_{2,\epsilon}X_\epsilon\), and the drift
+  counterterm has the opposite signs.  The proof also separates the nested
+  one-loop subdivergence from the new two-loop local coordinate.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -147,3 +159,9 @@ data maps.
   coefficients; and derives the \(\delta^\gamma\) reconstruction bound by
   separate coarse-scale and fine-scale sums.  The calculation-check companion
   now verifies the exponent arithmetic in those two sums.
+- 2026-05-26 issue #582 BPHZ local-coordinate continuation: the dynamic
+  \(\Phi^4_3\) section now proves the finite-cutoff homogeneity ledger and
+  the local Wick-contraction calculation that fixes the displayed
+  \(3\lambda C_{1,\epsilon}-9\lambda^2C_{2,\epsilon}\) drift counterterm.
+  The calculation-check companion verifies the homogeneity, sign, and
+  combinatorial arithmetic.

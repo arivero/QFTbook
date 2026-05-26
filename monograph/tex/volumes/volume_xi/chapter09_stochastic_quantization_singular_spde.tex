@@ -1193,7 +1193,37 @@ For the normalization
   =
   \Delta\Phi-m^2\Phi-\lambda\Phi^3+\xi ,
 \]
-the renormalized cutoff equation in the BPHZ regularity-structure convention
+the parabolic dimension is \(|\mathfrak s|=5\).  A mollified white noise
+\(\xi_\epsilon\) is assigned homogeneity
+\[
+  |\Xi|=-\frac52-\kappa ,
+\]
+where \(\kappa>0\) is chosen small.  The heat integration map raises
+homogeneity by \(2\).  Thus the stochastic convolution symbol
+\(X=\mathcal I(\Xi)\) has
+\[
+  |X|=-\frac12-\kappa ,
+  \qquad
+  |X^2|=-1-2\kappa ,
+  \qquad
+  |X^3|=-\frac32-3\kappa .
+\]
+The one-loop subtraction is already forced by \(X^3\).  The first nonlinear
+response \(\mathcal I(X^3)\) has homogeneity
+\[
+  |\mathcal I(X^3)|=\frac12-3\kappa ,
+\]
+and the product \(X^2\mathcal I(X^3)\) has
+\[
+  |X^2\mathcal I(X^3)|=-\frac12-5\kappa .
+\]
+For \(0<\kappa<1/10\), this is negative and therefore belongs to the finite
+list of local divergent symbols of the \(\Phi^4_3\) equation.  This
+homogeneity count identifies why a second local linear counterterm is needed
+before one proves convergence of the renormalized model.
+
+With these conventions, the renormalized cutoff equation in the BPHZ
+regularity-structure convention
 has the form
 \begin{equation}
   \partial_\tau\Phi_\epsilon
@@ -1214,6 +1244,130 @@ is the finite mass coordinate.  Different smooth mollifiers or subtraction
 schemes change \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and \(c_{\rm fin}\)
 separately, but not the statement that only the local linear drift and
 vacuum-energy coordinates are needed in this superrenormalizable model.
+
+\begin{proposition}[Finite-cutoff local counterterm calculation]
+\label{prop:spde-phi-four-three-local-counterterm-calculation}
+Let \(X_\epsilon\) be the smooth stationary Gaussian solution of the
+linearized cutoff equation and write
+\[
+  G_\epsilon(z,w)
+  =
+  \mathbb E\bigl[X_\epsilon(z)X_\epsilon(w)\bigr].
+\]
+Let \(K_\epsilon\) denote the retarded heat kernel with the same ultraviolet
+mollification and define the local constants
+\[
+  C_{1,\epsilon}=G_\epsilon(z,z),
+  \qquad
+  C_{2,\epsilon}
+  =
+  2\int K_\epsilon(z,w)G_\epsilon(z,w)^2\,\dd w ,
+  \label{eq:spde-c1-c2-local-definitions}
+\]
+where translation invariance on the spacetime torus makes the right-hand
+sides independent of \(z\).  Consider the perturbative fixed-point expansion
+\[
+  \Phi_\epsilon
+  =
+  X_\epsilon
+  -
+  \lambda K_\epsilon(X_\epsilon^3)
+  +O(\lambda^2),
+\]
+and let \(\mathcal L\) denote the projection that retains only the local
+linear part produced by Wick contractions and the zeroth Taylor coefficient
+of the remaining field at \(w=z\).  Then
+\[
+  \mathcal L\!\left[-\lambda X_\epsilon^3
+  +3\lambda^2X_\epsilon^2K_\epsilon(X_\epsilon^3)\right]
+  =
+  \bigl(-3\lambda C_{1,\epsilon}
+        +9\lambda^2C_{2,\epsilon}\bigr)X_\epsilon .
+\]
+Consequently the counterterm inserted in the cutoff drift is the negative of
+this local singular part, namely
+\[
+  \bigl(3\lambda C_{1,\epsilon}
+        -9\lambda^2C_{2,\epsilon}\bigr)\Phi_\epsilon ,
+\]
+up to the independent finite mass coordinate \(c_{\rm fin}\Phi_\epsilon\).
+\end{proposition}
+
+\begin{proof}
+The one-loop term is the Wick contraction of two of the three fields in
+\(X_\epsilon^3\):
+\[
+  X_\epsilon(z)^3
+  =
+  :\!X_\epsilon(z)^3\!:
+  +3G_\epsilon(z,z)X_\epsilon(z).
+\]
+Thus
+\[
+  \mathcal L[-\lambda X_\epsilon^3]
+  =
+  -3\lambda C_{1,\epsilon}X_\epsilon .
+\]
+
+For the two-loop term, expand the nonlinearity to first order in the
+nonlinear response:
+\[
+  -\lambda\Phi_\epsilon^3
+  =
+  -\lambda X_\epsilon^3
+  +3\lambda^2X_\epsilon^2K_\epsilon(X_\epsilon^3)
+  +O(\lambda^3).
+\]
+The coefficient \(3\) is the number of choices for the factor of
+\(\Phi_\epsilon\) in \(\Phi_\epsilon^3\) that is replaced by
+\(-\lambda K_\epsilon(X_\epsilon^3)\); the two minus signs give the positive
+sign in the displayed term.  At a spacetime point \(z\),
+\[
+  X_\epsilon(z)^2K_\epsilon(X_\epsilon^3)(z)
+  =
+  \int K_\epsilon(z,w)
+  X_\epsilon(z)^2X_\epsilon(w)^3\,\dd w .
+\]
+Its local linear part is obtained by contracting four of the five Gaussian
+fields and replacing the remaining field at \(w\) by its zeroth Taylor term
+at \(z\).  There are two possible forms of such contractions.
+
+First leave one of the three \(X_\epsilon(w)\) factors uncontracted and
+contract the two \(X_\epsilon(z)\) factors with the two remaining
+\(X_\epsilon(w)\) factors.  This gives \(3\cdot2=6\) pairings and contributes
+\[
+  6
+  \int K_\epsilon(z,w)G_\epsilon(z,w)^2\,\dd w\;X_\epsilon(z)
+  =
+  3C_{2,\epsilon}X_\epsilon(z).
+\]
+Second leave one of the two \(X_\epsilon(z)\) factors uncontracted, contract
+the other \(X_\epsilon(z)\) with one of the three \(X_\epsilon(w)\) factors,
+and contract the remaining two \(X_\epsilon(w)\) factors with each other.
+This produces
+\[
+  6
+  \int K_\epsilon(z,w)G_\epsilon(z,w)G_\epsilon(w,w)\,\dd w\;X_\epsilon(z).
+\]
+This is the one-loop tadpole inserted into the inner cubic vertex.  The
+finite-cutoff forest subtraction used here is the following recursive local
+operation: before extracting the new local part of a graph, replace every
+proper divergent subgraph by its already computed local counterterm.  For the
+present tree this means replacing the inner \(X_\epsilon(w)^3\) by its
+one-loop Wick-ordered cubic, so the displayed nested tadpole is removed
+before the two-loop coordinate is defined.  Therefore the new two-loop local
+coordinate is the first contribution only, with the normalization in
+\eqref{eq:spde-c1-c2-local-definitions}.  Multiplying by the outer factor
+\(3\lambda^2\) gives
+\[
+  \mathcal L[3\lambda^2X_\epsilon^2K_\epsilon(X_\epsilon^3)]
+  =
+  9\lambda^2C_{2,\epsilon}X_\epsilon .
+\]
+Combining the one-loop and two-loop local parts proves the displayed
+formula.  The finite coordinate \(c_{\rm fin}\) is not fixed by singular
+subtraction; it labels the chosen renormalized mass coordinate.
+\end{proof}
 
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
@@ -1302,8 +1456,9 @@ Holder multiplication estimates used in the Da Prato--Debussche fixed point;
 the global energy estimate and invariant-law identification for
 \(\Phi^4_2\); construction of the BPHZ-renormalized model for dynamic
 \(\Phi^4_3\); convergence of the renormalized models; solution of the
-fixed-point problem in modelled distributions; identification of the local
-counterterms in the concrete cutoff equation; and the passage from stationary
+fixed-point problem in modelled distributions; analytic derivation that the
+finite-cutoff local coordinates calculated above are exactly the local
+counterterms of the convergent BPHZ model; and the passage from stationary
 SPDE solutions to OS data.  Until these arguments are supplied, the quoted
 theorem blocks are documented proof boundaries, not authority claims.
 \end{openproblem}
