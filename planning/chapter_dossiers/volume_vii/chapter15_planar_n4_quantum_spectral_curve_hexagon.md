@@ -12,6 +12,9 @@ three-point functions.
 - `mu_ab`: antisymmetric QSC matrix.
 - `tilde`: analytic continuation through the short cut.
 - `chi^{ab}`: fixed antisymmetric tensor used to raise P-indices.
+- `G, bar G, rho`: one-row T-gauge Cauchy transforms and discontinuity
+  density used before passing to the magic-sheet T-hook gauge.
+- `hat G, hat T`: magic-sheet continuations through the Zhukovsky cut.
 - `Q_i`, `omega_ij`: dual QSC variables in the `Qomega` system.
 - `Q(u)`: weak-coupling Baxter polynomial.
 - `T(u)`: transfer polynomial in the Baxter limit.
@@ -27,6 +30,15 @@ three-point functions.
 ## Claim Ledger
 
 - Defines the Pmu system, periodicity, cuts, and charge-carrying asymptotics.
+- Adds the analytic one-row T-gauge before the `Pmu` system: strip
+  analyticity, `T_{0,m}=1`, large-`u` normalization `T_{1,m}->m`, Cauchy
+  transforms `G,bar G`, and the one-row ansatz
+  `T_{1,m}=m+G^[m]+bar G^[-m]`.
+- Proves the Hirota factorization
+  `T_{2,m}=(1+G^[m+1]-G^[m-1])(1+bar G^[-m-1]-bar G^[-m+1])`
+  and records the magic-sheet continuation
+  `hat T_{1,m}=m+hat G^[m]-hat G^[-m]`,
+  `hat T_{2,m}=hat T_{1,1}^[m] hat T_{1,1}^[-m]`.
 - Adds a QSC Riemann-Hilbert datum definition: spectral plane, single-cut
   `P_a`, antisymmetric `mu_ab`, fixed `chi`, tilde continuation, regularity,
   large-`u` charge asymptotics, gluing data, and cyclic single-trace
@@ -118,6 +130,8 @@ structure and the pair-of-pants-to-hexagons cut.
   Pmu Pfaffian rank-two update.
 - The same script checks the algebraic `Y_{1,1}Y_{2,2}` bridge ratio and the
   large-`u` exponent extraction for `mu_12(u+i)/mu_12(u)`.
+- The same script checks the one-row T-gauge Hirota factorization and the
+  magic-sheet Cauchy-continuation sign behind the two-row Wronskian gauge.
 - The same script checks the two-row T-hook Wronskian Pluecker identity,
   central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
   `T_{1,0}=mu_12 tilde mu_12`.

@@ -9,6 +9,124 @@ functions.  This chapter states the \(P\mu\)-system, explains its weak-coupling
 reduction to Baxter equations, and records the separate hexagon framework for
 three-point functions.
 
+\section{Analytic T-Hook Gauge}
+
+Before introducing the \(P\mu\)-system it is useful to isolate the analytic
+T-hook step that makes the later two-row Wronskians plausible.  The input is
+not the full QSC; it is the analytic Y-system data of
+Chapter~\ref{ch:planar-n4-mirror-tba-y-system} together with a gauge choice for
+Hirota \(T\)-functions.
+
+\begin{assumption}[One-row analytic T-gauge]
+\label{ass:qsc-one-row-t-gauge}
+Use the Hirota equation
+\[
+  T_{a,s}^+T_{a,s}^-
+  =
+  T_{a+1,s}T_{a-1,s}+T_{a,s+1}T_{a,s-1},
+  \qquad f^\pm(u)=f(u\pm\ii/2).
+\]
+In a horizontal wing of the planar \(\mathcal N=4\) T-hook, choose a gauge
+with
+\[
+  \mathcal T_{0,m}=1,\qquad
+  \mathcal T_{1,m}\in\mathcal A_m,\qquad
+  \mathcal T_{1,m}(u)\to m\quad (u\to\infty),
+  \qquad m\geq1,
+\]
+where \(\mathcal A_m=\{|\operatorname{Im}u|<m/2\}\) with the prescribed
+Zhukovsky cuts removed.  Assume that the discontinuity data of the two
+fermionic nodes can be represented by a real density \(\rho\) through Cauchy
+transforms
+\[
+  G(u)=-\int\frac{\dd v}{2\pi\ii}\frac{\rho(v)}{u-v},
+  \qquad \operatorname{Im}u>0,
+  \qquad
+  \overline G(u)=+\int\frac{\dd v}{2\pi\ii}\frac{\rho(v)}{u-v},
+  \qquad \operatorname{Im}u<0.
+\]
+The gauge is normalized so that
+\begin{equation}
+  \mathcal T_{1,m}
+  =
+  m+G^{[m]}+\overline G^{[-m]},
+  \qquad m\geq1.
+  \label{eq:qsc-t-gauge-one-row}
+\end{equation}
+\end{assumption}
+
+This assumption is deliberately stated as an analytic reconstruction datum.  It
+summarizes the information normally hidden in the phrase ``choose the
+\(\mathcal T\)-gauge'': asymptotics, analyticity strips, and the branch on which
+the Cauchy transforms are evaluated.
+
+\begin{proposition}[Hirota factorization in the one-row T-gauge]
+\label{prop:qsc-t-gauge-hirota-factorization}
+Under Assumption~\ref{ass:qsc-one-row-t-gauge}, the Hirota equation at
+\((1,m)\), \(m\geq2\), gives
+\begin{equation}
+  \mathcal T_{2,m}
+  =
+  \left(1+G^{[m+1]}-G^{[m-1]}\right)
+  \left(1+\overline G^{[-m-1]}-\overline G^{[-m+1]}\right).
+  \label{eq:qsc-t-gauge-two-row-factorization}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Since \(\mathcal T_{0,m}=1\), Hirota gives
+\[
+  \mathcal T_{2,m}
+  =
+  \mathcal T_{1,m}^+\mathcal T_{1,m}^-
+  -
+  \mathcal T_{1,m+1}\mathcal T_{1,m-1}.
+\]
+Put
+\[
+  a=G^{[m+1]},\quad b=G^{[m-1]},\quad
+  c=\overline G^{[-m-1]},\quad d=\overline G^{[-m+1]}.
+\]
+Then the right-hand side is
+\[
+  (m+a+d)(m+b+c)-(m+1+a+c)(m-1+b+d).
+\]
+Expanding and collecting terms gives
+\[
+  1+a-b+c-d+(a-b)(c-d)=(1+a-b)(1+c-d),
+\]
+which is \eqref{eq:qsc-t-gauge-two-row-factorization}.
+\end{proof}
+
+The analytic Y-system condition
+\(Y_{2,\pm2}(u+\ii0)=1/Y_{1,\pm1}(u-\ii0)\) across the mirror cut forces the
+upper and lower Cauchy transforms to be opposite boundary values on that cut:
+\[
+  G(u+\ii0)=-\overline G(u-\ii0).
+\]
+Consequently the density is supported on the short cut in the magic-sheet
+presentation.  Let \(\widehat G\) denote the single-cut continuation which
+equals \(G\) in the upper half-plane and \(-\overline G\) in the lower
+half-plane.  Then
+\begin{equation}
+  \widehat{\mathcal T}_{1,m}
+  =
+  m+\widehat G^{[m]}-\widehat G^{[-m]},
+  \qquad
+  \widehat{\mathcal T}_{2,m}
+  =
+  \widehat{\mathcal T}_{1,1}^{[m]}
+  \widehat{\mathcal T}_{1,1}^{[-m]},
+  \qquad m\geq2.
+  \label{eq:qsc-magic-sheet-t-gauge}
+\end{equation}
+The hats emphasize that these are not new functions on the same sheet but
+analytic continuations through the Zhukovsky cut.  In the strip
+\(|\operatorname{Im}u|<m/2\), \(\widehat{\mathcal T}_{1,m}\) agrees with the
+original \(\mathcal T_{1,m}\).  Outside that strip, the equality is a statement
+about a chosen continuation path.  The \(P\mu\)-system below is a finite
+Riemann--Hilbert compression of this analytically continued T-hook data.
+
 \section{Pmu System}
 
 Let \(u\in\C\) be the spectral parameter.  The quantum spectral curve uses four

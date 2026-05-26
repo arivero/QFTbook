@@ -1470,6 +1470,58 @@ def check_t_system_to_y_system_identity() -> None:
     assert_close("1+1/Y from Hirota", one_plus_inverse_y, 1 + 1 / y)
 
 
+def check_t_gauge_resolvent_hirota_factorization() -> None:
+    """Check the one-row T-gauge Hirota and magic-sheet factorizations."""
+
+    samples = (
+        (2, 0.3 + 0.8j, -0.4 + 0.2j, 0.7 - 0.5j, -0.1 + 0.6j),
+        (3, -0.2 + 1.1j, 0.6 - 0.3j, -0.5 + 0.4j, 0.9 + 0.1j),
+        (5, 0.8 - 0.7j, -0.9 + 0.5j, 0.2 + 0.3j, -0.6 - 0.2j),
+    )
+    for m_value, g_plus, g_minus, gbar_minus, gbar_plus in samples:
+        t_m_plus = m_value + g_plus + gbar_plus
+        t_m_minus = m_value + g_minus + gbar_minus
+        t_next = m_value + 1 + g_plus + gbar_minus
+        t_previous = m_value - 1 + g_minus + gbar_plus
+        hirota_t2 = t_m_plus * t_m_minus - t_next * t_previous
+        factorized_t2 = (1 + g_plus - g_minus) * (1 + gbar_minus - gbar_plus)
+        assert_close("T-gauge one-row Hirota factorization", hirota_t2, factorized_t2)
+
+        hat_g_plus = g_plus
+        hat_g_minus = -gbar_minus
+        hat_g_inner_plus = g_minus
+        hat_g_inner_minus = -gbar_plus
+        magic_t2_from_original_factorization = factorized_t2
+        magic_row_product = (
+            1 + hat_g_plus - hat_g_inner_plus
+        ) * (
+            1 + hat_g_inner_minus - hat_g_minus
+        )
+        assert_close(
+            "magic-sheet T2 equals shifted T11 product",
+            magic_t2_from_original_factorization,
+            magic_row_product,
+        )
+
+    for pole in (-0.7, 0.0, 0.9):
+        point = pole + 0.4j
+        density = 1.3
+        upper_g = -density / (2j * math.pi * (point - pole))
+        lower_gbar = density / (2j * math.pi * (point.conjugate() - pole))
+        hat_upper = upper_g
+        hat_lower = -lower_gbar
+        lower_without_continuation = lower_gbar
+        assert_close(
+            "T-gauge magic-sheet Cauchy continuation sign",
+            hat_lower,
+            -lower_gbar,
+        )
+        if abs(hat_lower - lower_without_continuation) < 1.0e-14:
+            raise AssertionError("Cauchy sample should detect the sheet-continuation sign")
+        if abs(hat_upper + lower_gbar) < 1.0e-14:
+            raise AssertionError("Cauchy sample should not accidentally erase the sheet sign")
+
+
 def check_t_hook_wronskian_pmu_bridge() -> None:
     """Check the local T-hook Wronskian algebra leading to the Pmu bridge."""
 
@@ -1833,6 +1885,7 @@ def main() -> None:
     check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()
     check_t_system_to_y_system_identity()
+    check_t_gauge_resolvent_hirota_factorization()
     check_t_hook_wronskian_pmu_bridge()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()

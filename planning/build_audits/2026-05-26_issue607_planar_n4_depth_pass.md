@@ -490,3 +490,31 @@ Calculation checks added:
   verifies the `A^{-1}K_mn` and `A^{-1}K_n` identities, checks the
   `s^{-1}` shift symbol, and checks the boundary-source algebra in the
   auxiliary-wing Y-system.
+
+## Continuation XIX: Analytic T-Hook Gauge Before the `Pmu` System
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Content added:
+
+- Added the missing analytic T-hook gauge layer from the stringbook QSC
+  derivation before the `Pmu` system is introduced.
+- Stated the one-row `T`-gauge assumptions explicitly: strip analyticity,
+  `T_{0,m}=1`, large-`u` normalization `T_{1,m}->m`, Cauchy transforms
+  `G,bar G`, and the ansatz `T_{1,m}=m+G^[m]+bar G^[-m]`.
+- Proved directly from Hirota that
+  `T_{2,m}=(1+G^[m+1]-G^[m-1])(1+bar G^[-m-1]-bar G^[-m+1])`.
+- Recorded the magic-sheet continuation forced by the fermionic-node
+  discontinuity: `hat G` equals `G` in the upper half-plane and `-bar G` in
+  the lower half-plane, giving
+  `hat T_{1,m}=m+hat G^[m]-hat G^[-m]` and
+  `hat T_{2,m}=hat T_{1,1}^[m] hat T_{1,1}^[-m]`.
+
+Calculation checks added:
+
+- `check_t_gauge_resolvent_hirota_factorization()` verifies the one-row Hirota
+  factorization algebra and the magic-sheet Cauchy-continuation sign.
