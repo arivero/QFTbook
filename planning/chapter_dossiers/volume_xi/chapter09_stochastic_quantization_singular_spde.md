@@ -94,6 +94,8 @@ data.
   to a Gaussian cutoff law, its uniform \(L^q\) bound, and the conjugate
   Holder exponent in the density criterion for interacting
   negative-Sobolev moments.
+- `V_N`, `Z_N`: cutoff Wick quartic interaction and its finite-dimensional
+  partition function in the Nelson-stability-to-density proposition.
 - `H_N`, `A_N`, `L_N`, `e_{N,alpha}`, `lambda_{N,alpha}`, `nu_N`:
   finite-dimensional Hilbert space, Hessian lower-bound operator, reference
   nonnegative operator, spectral basis, eigenvalues, and convex cutoff
@@ -329,6 +331,17 @@ data.
   density route to \(\Phi^4_2\) stationary-law tightness: a uniform
   Nelson-type \(L^q\) bound for the normalized Wick-ordered density implies
   tightness in \(H^{-\kappa}\).
+- Proves that Nelson exponential stability of the cutoff Wick quartic
+  implies the normalized \(L^q\) density bound with no hidden normalization
+  loss.  The proof uses Wick centering to show
+  \(\mathbb E_{\mu_{0,N}}V_N=0\), Jensen's inequality to obtain the uniform
+  lower bound \(Z_N\ge1\), and then the Nelson exponential estimate at
+  exponent \(q\) to bound
+  \(\|\rho_N\|_{L^q(\mu_{0,N})}^q=Z_N^{-q}\mathbb E e^{-qV_N}\).  The text
+  distinguishes smooth-regulator stability covered by the quoted
+  \(P(\phi)_2\) theorem from the still regulator-specific task of proving or
+  comparing the same stability for a sharp Fourier-Galerkin stochastic
+  regulator.
 - Proves a finite-dimensional Brascamp-Lieb covariance domination theorem
   for convex scalar cutoffs.  The proof uses the symmetric generator
   \(\mathcal L=\Delta-\nabla S\cdot\nabla\), its Friedrichs resolvent, and

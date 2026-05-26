@@ -2418,12 +2418,90 @@ Proposition~\ref{prop:spde-sobolev-compactness-tightness} turns that moment
 bound into tightness in \(H^{-\kappa}\).
 \end{proof}
 
-The corollary identifies the precise constructive estimate that is missing
-from the abstract assembly theorem below.  For \(\Phi^4_2\), the
-Wick-ordered quartic density is not pointwise dominated by an ordinary
-positive quartic potential uniformly in the cutoff.  The needed input is an
-\(L^q\)-bound for the normalized Wick density, or an equivalent Nelson-type
-stability estimate, strong enough to survive the continuum limit.
+\begin{proposition}[Nelson stability implies normalized \(L^q\) density bounds]
+\label{prop:spde-nelson-stability-implies-lq-density}
+Let \(\mu_{0,N}\) be a finite-dimensional massive Gaussian cutoff law on
+\(\mathbb T^2\), and set
+\[
+  V_N(\phi)=
+  \frac{\lambda}{4}
+  \int_{\mathbb T^2}:\!(P_N\phi)^4\!:\,\dd^2x ,
+  \qquad \lambda>0,
+\]
+where Wick ordering is taken with respect to \(\mu_{0,N}\).  Suppose that
+the cutoff family satisfies the Nelson stability exponential estimate
+\begin{equation}
+  \sup_N
+  \int \exp[-pV_N(\phi)]\,\dd\mu_{0,N}(\phi)<\infty
+  \qquad\hbox{for every finite }p\geq1 .
+  \label{eq:spde-nelson-stability-exponential-input}
+\end{equation}
+Let
+\[
+  Z_N=\int e^{-V_N(\phi)}\,\dd\mu_{0,N}(\phi),
+  \qquad
+  \rho_N=Z_N^{-1}e^{-V_N}.
+\]
+Then, for every finite \(q\geq1\),
+\[
+  \sup_N\|\rho_N\|_{L^q(\mu_{0,N})}<\infty .
+\]
+Consequently, for every \(0<\eta<\kappa\), the interacting cutoff measures
+\(\mu_N=\rho_N\mu_{0,N}\) are tight in \(H^{-\kappa}(\mathbb T^2)\), provided
+the Gaussian reference laws have the uniform \(H^{-\eta}\) second-moment
+bound of Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.
+\end{proposition}
+
+\begin{proof}
+The normalization cannot be allowed to hide a cutoff-dependent loss.  Wick
+ordering gives
+\[
+  \int :\!(P_N\phi(x))^4\!:\,\dd\mu_{0,N}(\phi)=0
+  \qquad\hbox{for every }x,
+\]
+and hence, by Fubini in the finite-dimensional cutoff space,
+\[
+  \int V_N(\phi)\,\dd\mu_{0,N}(\phi)=0 .
+\]
+Jensen's inequality for the convex function \(u\mapsto e^{-u}\) gives
+\[
+  Z_N
+  =
+  \int e^{-V_N}\,\dd\mu_{0,N}
+  \geq
+  \exp\!\left[-\int V_N\,\dd\mu_{0,N}\right]
+  =1 .
+  \label{eq:spde-wick-quartic-partition-lower-bound}
+\]
+Therefore, for \(q\geq1\),
+\[
+  \|\rho_N\|_{L^q(\mu_{0,N})}^q
+  =
+  Z_N^{-q}
+  \int e^{-qV_N}\,\dd\mu_{0,N}
+  \leq
+  \int e^{-qV_N}\,\dd\mu_{0,N}.
+\]
+The right-hand side is bounded uniformly in \(N\) by
+\eqref{eq:spde-nelson-stability-exponential-input} with \(p=q\).  This
+proves the normalized \(L^q\) density bound.  The tightness conclusion is
+then exactly
+Corollary~\ref{cor:spde-phi-four-two-density-tightness-route}, or,
+equivalently, Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}
+followed by Proposition~\ref{prop:spde-sobolev-compactness-tightness}.
+\end{proof}
+
+The preceding proposition proves the probabilistic consequence of Nelson
+stability without losing constants in the normalization.  For cutoff
+families covered by
+Quoted Theorem~\ref{qthm:p-phi-two-stability}, the hypothesis
+\eqref{eq:spde-nelson-stability-exponential-input} is exactly the
+\(P(\phi)_2\) stability and exponential-integrability estimate.  For a
+sharp Fourier-Galerkin stochastic regulator, the same conclusion requires
+either a direct Nelson stability proof for that regulator or a comparison
+with a smooth ultraviolet regulator for which the stability theorem has
+already been established.  This is a regulator-specific constructive
+estimate, not a formal property of Wick ordering alone.
 
 \begin{proposition}[Brascamp--Lieb covariance domination for convex cutoffs]
 \label{prop:spde-brascamp-lieb-convex-cutoff-moment}
@@ -3133,7 +3211,11 @@ Assume the following three further analytic facts.
   Corollary~\ref{cor:spde-phi-four-two-density-tightness-route} give one
   precise route: a cutoff-uniform \(L^q\) bound for the normalized
   Wick-ordered density with respect to the massive Gaussian reference law
-  implies the required interacting negative-Sobolev moments.
+  implies the required interacting negative-Sobolev moments.  If the cutoff
+  Wick quartic satisfies the Nelson stability estimate
+  \eqref{eq:spde-nelson-stability-exponential-input}, then
+  Proposition~\ref{prop:spde-nelson-stability-implies-lq-density} proves
+  this \(L^q\) density bound.
   \item Reflection positivity of the cutoff measures \(\mu_N\) holds for
   bounded cylinder observables depending on positive Euclidean time, and
   the polynomial Wick observables used to identify Schwinger functions obey
@@ -3230,9 +3312,11 @@ negative-Sobolev moment strong enough to imply tightness by
 Proposition~\ref{prop:spde-sobolev-compactness-tightness}; for Wick
 \(\Phi^4_2\) this moment follows from the density criterion
 Corollary~\ref{cor:spde-phi-four-two-density-tightness-route} once the
-uniform Nelson-type \(L^q\) density bound is proved; uniform integrability;
-and either finite-cutoff OS positivity for the stochastic regulator itself
-or a regulator-comparison theorem relating it to the
+uniform Nelson-type \(L^q\) density bound is proved, and
+Proposition~\ref{prop:spde-nelson-stability-implies-lq-density} proves that
+bound from the Nelson exponential stability estimate; uniform integrability;
+and either finite-cutoff OS positivity for the stochastic regulator itself or
+a regulator-comparison theorem relating it to the
 OS-positive lattice regulator of
 Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
 abstract form of the latter implication is
