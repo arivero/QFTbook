@@ -71,6 +71,9 @@ data.
   space \(B^\gamma_{\infty,\infty}\), dyadic Littlewood-Paley blocks,
   low-frequency cutoff, and Bony paraproduct/resonant operations in the DPD
   rough-product theorem.
+- `theta=(alpha+kappa)/2`: Duhamel heat-smoothing exponent in the Besov DPD
+  fixed-point theorem; the condition \(\alpha<2-\kappa\) is exactly
+  \(\theta<1\).
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
@@ -225,6 +228,15 @@ data.
   directly from dyadic support geometry and the condition
   \(\alpha-\kappa>0\), then obtains local Lipschitz continuity of
   \(Y^3+3Y^2X_1+3YX_2+X_3\) in \(C_T\mathcal C^{-\kappa}\).
+- Proves the Besov-Holder deterministic DPD local fixed-point theorem.
+  For \(0<\kappa<\alpha<2-\kappa\), enhanced noise in
+  \(C_T\mathcal C^{-\kappa}\) and initial data in \(\mathcal C^\alpha\)
+  produce a unique mild solution in \(C_T\mathcal C^\alpha\) on a time
+  interval controlled by the data norm.  The proof first proves a dyadic
+  heat-smoothing estimate
+  \(\mathcal C^\rho\to\mathcal C^{\rho+2\theta}\), then combines it with the
+  Besov product theorem and Banach contraction; local Lipschitz dependence on
+  the enhanced noise is included.
 - Proves a deterministic local mild fixed-point theorem for the DPD
   remainder equation with enhanced noise in
   \(C([0,T];H^{-\kappa})^3\), including the heat-smoothing time gain
@@ -811,3 +823,9 @@ data maps.
   replacing a named placeholder in the smooth-to-rough roadmap by an actual
   paraproduct proof.  The calculation-check companion verifies the sample
   resonance, embedding, and algebra exponents.
+- 2026-05-26 DPD Besov fixed-point pass: added the heat-smoothing estimate
+  in Besov-Holder spaces and the corresponding deterministic local mild
+  fixed-point theorem for rough enhanced noise, including local Lipschitz
+  dependence.  The calculation-check companion verifies the Duhamel
+  exponent \(\theta=(\alpha+\kappa)/2<1\) and the target regularity
+  arithmetic.

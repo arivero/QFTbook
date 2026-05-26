@@ -716,6 +716,24 @@ def check_dpd_besov_product_continuity_arithmetic():
             raise AssertionError("DPD Besov nonlinearity term misses target C^-kappa")
 
 
+def check_dpd_besov_fixed_point_exponents():
+    # The Besov DPD fixed point takes forcing in C^(-kappa) and seeks Y in
+    # C^alpha.  Heat smoothing needs 2 theta = alpha+kappa with theta < 1.
+    alpha = Fraction(1, 3)
+    kappa = Fraction(1, 20)
+    theta = (alpha + kappa) / 2
+    assert_equal(theta, Fraction(23, 120), "Besov DPD Duhamel smoothing exponent")
+    assert_equal(1 - theta, Fraction(97, 120), "Besov DPD Duhamel time gain")
+    if not 0 < kappa < alpha < 2 - kappa:
+        raise AssertionError("Besov DPD parameter window failed")
+    if not theta < 1:
+        raise AssertionError("Besov DPD Duhamel kernel must be integrable")
+
+    # The heat map raises C^(-kappa) by alpha+kappa, landing exactly in
+    # C^alpha.
+    assert_equal(-kappa + 2 * theta, alpha, "Besov DPD heat smoothing target")
+
+
 def check_invariant_measure_limit_identity():
     # A finite Markov-chain analogue of the cutoff invariance passage:
     # if mu P = mu and P_n=P exactly, then the invariant identity is the
@@ -1376,6 +1394,7 @@ def main():
     check_dpd_energy_compactness_derivative_arithmetic()
     check_dpd_distributional_limit_exponents()
     check_dpd_besov_product_continuity_arithmetic()
+    check_dpd_besov_fixed_point_exponents()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
@@ -1395,7 +1414,7 @@ def main():
     check_gaussian_negative_sobolev_summability_arithmetic()
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

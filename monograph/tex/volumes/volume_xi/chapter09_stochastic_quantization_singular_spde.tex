@@ -780,8 +780,18 @@ the expression
   Y^3+3Y^2X_1+3YX_2+X_3
 \]
 is a well-defined element of
-\(C([0,T];\mathcal C^{-\kappa})\).  More precisely, for every \(R>0\)
+\(C([0,T];\mathcal C^{-\kappa})\).  Here
+\[
+  \|\mathbb X\|_{C_T\mathcal C^{-\kappa}}
+  =
+  \max_{1\leq i\leq3}
+  \|X_i\|_{C([0,T];\mathcal C^{-\kappa})}.
+\]
+The same convention is used for any other triple
+\(\mathbb Z=(Z_1,Z_2,Z_3)\).
+More precisely, for every \(R>0\)
 there is \(C_{\alpha,\kappa,R}\) such that, whenever
+\(\mathbb Z=(Z_1,Z_2,Z_3)\) and
 \[
   \|Y\|_{C_T\mathcal C^\alpha}
   +\|Z\|_{C_T\mathcal C^\alpha}
@@ -904,6 +914,254 @@ that its ordinary products converge to the same paraproduct value.
 Applying these two bilinear estimates at each time \(t\), taking suprema in
 time, and expanding the displayed differences gives
 \eqref{eq:spde-dpd-besov-nonlinearity-continuity}.
+\end{proof}
+
+\begin{proposition}[Besov heat smoothing on the torus]
+\label{prop:spde-besov-heat-smoothing}
+Let \(m^2>0\), \(0<\theta<1\), and
+\(A=\Delta-m^2\) on \(\mathbb T^2\).  For every \(\rho\in\mathbb R\)
+there is \(C_{\rho,\theta,m}<\infty\) such that
+\begin{equation}
+  \|e^{tA}f\|_{\mathcal C^{\rho+2\theta}}
+  \leq
+  C_{\rho,\theta,m}\,
+  t^{-\theta}\,
+  \|f\|_{\mathcal C^\rho},
+  \qquad 0<t\leq1.
+  \label{eq:spde-besov-heat-smoothing}
+\end{equation}
+Consequently, if \(F\in C([0,T];\mathcal C^\rho)\) and \(T\leq1\), then
+\[
+  \left\|
+    \int_0^t e^{(t-s)A}F(s)\,\dd s
+  \right\|_{C([0,T];\mathcal C^{\rho+2\theta})}
+  \leq
+  C_{\rho,\theta,m}\,
+  T^{1-\theta}
+  \|F\|_{C([0,T];\mathcal C^\rho)} .
+\]
+\end{proposition}
+
+\begin{proof}
+Let \((\Delta_j)_{j\geq-1}\) be the dyadic partition used in
+Proposition~\ref{prop:spde-dpd-besov-product-continuity}.  For
+\(j\geq0\), let \(K_{j,t}\) be the convolution kernel on \(\mathbb T^2\)
+of the multiplier
+\[
+  k\longmapsto
+  \varphi(2^{-j}k)\exp(-t(|k|^2+m^2)),
+\]
+where \(\varphi\) is the annular cutoff defining \(\Delta_j\).  The
+rescaled multiplier
+\[
+  \xi\longmapsto
+  \varphi(\xi)\exp(-t(2^{2j}|\xi|^2+m^2))
+\]
+has derivatives of every fixed order bounded by
+\[
+  C_N(1+t2^{2j})^N\exp(-c\,t2^{2j}),
+\]
+hence by \(C_N\exp(-c_Nt2^{2j})\).  The standard
+integration-by-parts estimate for Fourier kernels with compactly supported
+smooth multipliers, applied after this rescaling and then periodized to
+\(\mathbb T^2\), gives
+\[
+  \|K_{j,t}\|_{L^1(\mathbb T^2)}
+  \leq
+  C_N(1+t2^{2j})^{-N}
+  \leq
+  C_\theta t^{-\theta}2^{-2\theta j},
+  \qquad j\geq0,\quad 0<t\leq1,
+\]
+after choosing \(N>\theta\).  The low block \(\Delta_{-1}\) has a smooth
+compactly supported multiplier, so its kernel has uniformly bounded
+\(L^1\)-norm and is absorbed by increasing the constant.  Since
+\(\Delta_j\) commutes with \(e^{tA}\), Young's inequality gives
+\[
+\begin{aligned}
+  2^{j(\rho+2\theta)}
+  \|\Delta_j e^{tA}f\|_{L^\infty}
+  &\leq
+  C_{\theta,m}t^{-\theta}
+  2^{j\rho}\|\Delta_jf\|_{L^\infty}.
+\end{aligned}
+\]
+Taking the supremum over \(j\geq-1\) proves
+\eqref{eq:spde-besov-heat-smoothing}.
+
+For the Duhamel term, apply
+\eqref{eq:spde-besov-heat-smoothing} to \(e^{(t-s)A}F(s)\) and integrate:
+\[
+  \left\|
+    \int_0^t e^{(t-s)A}F(s)\,\dd s
+  \right\|_{\mathcal C^{\rho+2\theta}}
+  \leq
+  C_{\rho,\theta,m}
+  \|F\|_{C_T\mathcal C^\rho}
+  \int_0^t(t-s)^{-\theta}\,\dd s .
+\]
+Since \(\theta<1\), the last integral is
+\(t^{1-\theta}/(1-\theta)\), uniformly bounded by a constant times
+\(T^{1-\theta}\).
+\end{proof}
+
+\begin{theorem}[Deterministic DPD local fixed point in Besov--Holder coordinates]
+\label{thm:spde-dpd-besov-local-fixed-point}
+Let \(m^2>0\), \(\lambda>0\), and choose exponents
+\[
+  0<\kappa<\alpha<2-\kappa .
+\]
+Let
+\[
+  \mathbb X=(X_1,X_2,X_3)
+  \in C([0,T_0];\mathcal C^{-\kappa}(\mathbb T^2))^3 ,
+  \qquad
+  Y_0\in\mathcal C^\alpha(\mathbb T^2).
+\]
+Set
+\[
+  M_{\mathbb X}
+  =
+  \max_{1\leq i\leq3}\|X_i\|_{C([0,T_0];\mathcal C^{-\kappa})}.
+\]
+For another enhanced noise
+\(\mathbb Z=(Z_1,Z_2,Z_3)\), the notation
+\(\|\mathbb Z\|_{C_T\mathcal C^{-\kappa}}\) below always means the same
+maximum over the three components restricted to \([0,T]\).
+Then there is \(T\in(0,T_0]\), depending only on
+\[
+  \alpha,\kappa,m,\lambda,\|Y_0\|_{\mathcal C^\alpha},
+  \quad\text{and}\quad M_{\mathbb X},
+\]
+such that the mild equation
+\begin{equation}
+  Y(t)
+  =
+  e^{t(\Delta-m^2)}Y_0
+  -
+  \lambda
+  \int_0^t
+  e^{(t-s)(\Delta-m^2)}
+  \mathcal N_{\mathcal C}(Y(s),\mathbb X(s))\,\dd s
+  \label{eq:spde-dpd-besov-mild-equation}
+\end{equation}
+has a unique solution \(Y\in C([0,T];\mathcal C^\alpha)\).  On every ball
+where
+\[
+  \|Y_0\|_{\mathcal C^\alpha}
+  +\|Z_0\|_{\mathcal C^\alpha}
+  +\|\mathbb X\|_{C_T\mathcal C^{-\kappa}}
+  +\|\mathbb Z\|_{C_T\mathcal C^{-\kappa}}
+  \leq R ,
+\]
+and for \(T\) chosen depending only on
+\(\alpha,\kappa,m,\lambda,R\), the solution map
+\[
+  (Y_0,\mathbb X)\longmapsto Y
+\]
+is Lipschitz from
+\[
+  \mathcal C^\alpha\times
+  \bigl(C_T\mathcal C^{-\kappa}\bigr)^3
+\]
+to
+\(C_T\mathcal C^\alpha\).
+\end{theorem}
+
+\begin{proof}
+Put
+\[
+  \theta=\frac{\alpha+\kappa}{2}.
+\]
+The hypothesis \(\alpha<2-\kappa\) is exactly \(\theta<1\), which is the
+integrability condition for the Duhamel kernel.  Let \(A=\Delta-m^2\) and
+define, for \(Y\in C_T\mathcal C^\alpha\),
+\[
+  (\Psi Y)(t)
+  =
+  e^{tA}Y_0
+  -
+  \lambda
+  \int_0^t
+  e^{(t-s)A}\mathcal N_{\mathcal C}(Y(s),\mathbb X(s))\,\dd s .
+\]
+By Proposition~\ref{prop:spde-dpd-besov-product-continuity},
+\(\mathcal N_{\mathcal C}(Y,\mathbb X)\in C_T\mathcal C^{-\kappa}\).
+Applying Proposition~\ref{prop:spde-besov-heat-smoothing} with
+\(\rho=-\kappa\) and \(2\theta=\alpha+\kappa\) gives
+\begin{equation}
+  \left\|
+    \int_0^t
+    e^{(t-s)A}
+    \mathcal N_{\mathcal C}(Y(s),\mathbb X(s))\,\dd s
+  \right\|_{C_T\mathcal C^\alpha}
+  \leq
+  C T^{1-\theta}
+  \|\mathcal N_{\mathcal C}(Y,\mathbb X)\|_{C_T\mathcal C^{-\kappa}} .
+  \label{eq:spde-dpd-besov-duhamel-gain}
+\end{equation}
+The heat semigroup is bounded on \(\mathcal C^\alpha\).  Choose
+\[
+  R_0=2C\|Y_0\|_{\mathcal C^\alpha}+1 .
+\]
+For \(\|Y\|_{C_T\mathcal C^\alpha}\leq R_0\), the product-continuity
+proposition gives
+\[
+  \|\mathcal N_{\mathcal C}(Y,\mathbb X)\|_{C_T\mathcal C^{-\kappa}}
+  \leq
+  C_{\alpha,\kappa,R_0+M_{\mathbb X}} .
+\]
+Taking \(T\leq T_0\) so that the right side of
+\eqref{eq:spde-dpd-besov-duhamel-gain}, multiplied by \(\lambda\), is at
+most \(R_0/2\), the map \(\Psi\) sends the closed ball
+\[
+  B_{R_0}=\{Y\in C_T\mathcal C^\alpha:
+    \|Y\|_{C_T\mathcal C^\alpha}\leq R_0\}
+\]
+to itself.
+
+For \(Y,Z\in B_{R_0}\), equations
+\eqref{eq:spde-dpd-besov-nonlinearity-continuity} and
+\eqref{eq:spde-dpd-besov-duhamel-gain} give
+\[
+  \|\Psi Y-\Psi Z\|_{C_T\mathcal C^\alpha}
+  \leq
+  \lambda C_{\alpha,\kappa,m,R_0+M_{\mathbb X}}
+  T^{1-\theta}
+  \|Y-Z\|_{C_T\mathcal C^\alpha}.
+\]
+Decreasing \(T\) if necessary makes the coefficient strictly smaller than
+one.  Since \(C_T\mathcal C^\alpha\) is complete, Banach's fixed-point
+theorem gives a unique fixed point in \(B_{R_0}\).  If another solution
+exists on the same interval with finite \(C_T\mathcal C^\alpha\) norm, the
+same contraction argument on a smaller ball containing both solutions,
+possibly after partitioning the time interval into finitely many subintervals,
+forces equality.
+
+For Lipschitz dependence, let \(Y\) and \(Z\) solve
+\eqref{eq:spde-dpd-besov-mild-equation} with data
+\((Y_0,\mathbb X)\) and \((Z_0,\mathbb Z)\), all bounded by \(R\).  The
+semigroup bound, the Duhamel estimate, and
+\eqref{eq:spde-dpd-besov-nonlinearity-continuity} give
+\[
+\begin{aligned}
+  \|Y-Z\|_{C_T\mathcal C^\alpha}
+  &\leq
+  C\|Y_0-Z_0\|_{\mathcal C^\alpha}
+\\
+  &\quad+
+  \lambda C_{\alpha,\kappa,m,R}
+  T^{1-\theta}
+  \left(
+    \|Y-Z\|_{C_T\mathcal C^\alpha}
+    +
+    \max_i\|X_i-Z_i\|_{C_T\mathcal C^{-\kappa}}
+  \right).
+\end{aligned}
+\]
+Choose \(T\) so the coefficient of
+\(\|Y-Z\|_{C_T\mathcal C^\alpha}\) on the right is at most \(1/2\), and
+absorb it to the left.  This proves the stated Lipschitz bound.
 \end{proof}
 
 \begin{theorem}[Deterministic DPD local fixed point in Sobolev coordinates]
