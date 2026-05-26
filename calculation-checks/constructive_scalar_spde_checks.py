@@ -623,6 +623,22 @@ def check_dpd_energy_young_exponents():
             assert_equal(x_power * q, 4 if label == "Y^3 X1" else 2, f"{label} X exponent")
 
 
+def check_dpd_energy_closedness_lp_power_arithmetic():
+    # The closedness pass uses
+    #   || |a|^p - |b|^p ||_1 <= p ||a-b||_p || |a|+|b| ||_p^{p-1}
+    # with Holder exponents p and p/(p-1).  The three enhanced-noise powers
+    # are p=4, p=2, and p=4/3.
+    powers = [
+        (Fraction(4), "X1 L4 power"),
+        (Fraction(2), "X2 L2 power"),
+        (Fraction(4, 3), "X3 L4/3 power"),
+    ]
+    for p, label in powers:
+        holder_conjugate = p / (p - 1)
+        assert_equal(Fraction(1, 1) / p + Fraction(1, 1) / holder_conjugate, 1, label)
+        assert_equal((p - 1) * holder_conjugate, p, f"{label} power continuity")
+
+
 def check_invariant_measure_limit_identity():
     # A finite Markov-chain analogue of the cutoff invariance passage:
     # if mu P = mu and P_n=P exactly, then the invariant identity is the
@@ -1279,6 +1295,7 @@ def main():
     check_dpd_sobolev_fixed_point_exponents()
     check_phi4_three_sobolev_dpd_obstruction_arithmetic()
     check_dpd_energy_young_exponents()
+    check_dpd_energy_closedness_lp_power_arithmetic()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
@@ -1298,7 +1315,7 @@ def main():
     check_gaussian_negative_sobolev_summability_arithmetic()
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

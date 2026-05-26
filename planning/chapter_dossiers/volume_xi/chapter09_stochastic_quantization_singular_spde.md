@@ -59,6 +59,9 @@ data.
 - `Psi`: mild fixed-point map for the DPD remainder equation.
 - `X_1,X_2,X_3`: smooth enhanced-noise placeholders in the DPD energy
   estimate.
+- `X_{i,n}`, `Y_n`, `Y`: smooth enhanced-noise approximants, smooth DPD
+  remainders, and weak energy limit in the closedness theorem for the DPD
+  energy inequality.
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
@@ -213,6 +216,14 @@ data.
   equation.  The proof multiplies by \(Y\), integrates by parts, and uses
   Young inequalities to absorb \(Y^3X_1\), \(Y^2X_2\), and \(YX_3\) into the
   positive quartic drift plus enhanced-noise norms.
+- Proves closedness of the integrated DPD energy inequality under smooth
+  enhanced-noise approximation.  If \(X_{1,n}\to X_1\) in \(L^4\),
+  \(X_{2,n}\to X_2\) in \(L^2\), \(X_{3,n}\to X_3\) in \(L^{4/3}\), the
+  initial data converge strongly in \(L^2\), and the remainders converge
+  weakly in \(L^2_tH^1_x\), \(L^4_{t,x}\), and at the terminal time in
+  \(L^2_x\), then the limiting remainder satisfies the integrated energy
+  inequality.  The proof uses the \(L^p\)-continuity of power integrals and
+  weak lower semicontinuity of the quadratic and quartic energy terms.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
@@ -745,3 +756,8 @@ data maps.
   corresponding interacting negative-Sobolev moment bound.  The
   calculation-check companion verifies the weighted spectral-trace arithmetic
   and the inverse-monotonicity sample used in the proof.
+- 2026-05-26 rough-energy closedness pass: added a theorem passing the DPD
+  integrated energy inequality from smooth enhanced-noise approximants to a
+  weak energy limit.  The calculation-check companion verifies the Holder
+  conjugacy arithmetic behind the \(L^p\)-power continuity step for the
+  \(L^4\), \(L^2\), and \(L^{4/3}\) enhanced-noise norms.

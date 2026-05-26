@@ -924,13 +924,128 @@ finite-dimensional norm is finite; the displayed bound prevents blowup on
 intervals where the right-hand side is integrable.
 \end{proof}
 
-The rough Da Prato--Debussche global argument replaces the smooth norms in
-Proposition~\ref{prop:spde-dpd-smooth-energy-estimate} by Besov or
-paracontrolled norms of the enhanced noise.  The algebra is the same: the
-quartic term absorbs powers of \(Y\), and all remaining terms are functions
-only of the enhanced stochastic convolution on the time interval under
-consideration.  The analytic work is to justify this calculation by
-approximation and to prove integrability of the rough enhanced-noise norms.
+\begin{proposition}[Closedness of the DPD energy inequality under approximation]
+\label{prop:spde-dpd-energy-closed-under-approximation}
+Let \(m^2>0\), \(\lambda>0\), and \(T>0\).  For \(n\geq1\), let
+\((X_{1,n},X_{2,n},X_{3,n})\) be smooth real functions on
+\([0,T]\times\mathbb T^2\), and let \(Y_n\) be a smooth solution of
+\eqref{eq:spde-dpd-smooth-energy-equation} with \(X_i\) replaced by
+\(X_{i,n}\).  Assume
+\[
+\begin{aligned}
+  X_{1,n}&\to X_1
+    &&\text{in }L^4([0,T]\times\mathbb T^2),\\
+  X_{2,n}&\to X_2
+    &&\text{in }L^2([0,T]\times\mathbb T^2),\\
+  X_{3,n}&\to X_3
+    &&\text{in }L^{4/3}([0,T]\times\mathbb T^2),
+\end{aligned}
+\]
+and suppose that \(Y_n(0)\to Y_0\) strongly in \(L^2(\mathbb T^2)\).  Let
+\(Y\) be a function such that, after passing to a subsequence,
+\[
+\begin{aligned}
+  Y_n&\rightharpoonup Y
+    &&\text{weakly in }L^2([0,T];H^1(\mathbb T^2)),\\
+  Y_n&\rightharpoonup Y
+    &&\text{weakly in }L^4([0,T]\times\mathbb T^2),\\
+  Y_n(T)&\rightharpoonup Y(T)
+    &&\text{weakly in }L^2(\mathbb T^2).
+\end{aligned}
+\]
+Then \(Y\) satisfies the integrated energy inequality
+\begin{align}
+  \frac12\|Y(T)\|_{L^2}^2
+  &+
+  \int_0^T
+  \left[
+    \|\nabla Y(t)\|_{L^2}^2
+    +m^2\|Y(t)\|_{L^2}^2
+    +\frac{\lambda}{4}\|Y(t)\|_{L^4}^4
+  \right]\dd t
+  \notag\\
+  &\leq
+  \frac12\|Y_0\|_{L^2}^2
+  +
+  C\lambda
+  \int_0^T
+  \left[
+    \|X_1(t)\|_{L^4}^4
+    +\|X_2(t)\|_{L^2}^2
+    +\|X_3(t)\|_{L^{4/3}}^{4/3}
+  \right]\dd t .
+  \label{eq:spde-dpd-closed-energy-inequality}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Integrating
+\eqref{eq:spde-dpd-smooth-energy-estimate} for the \(n\)-th smooth solution
+gives
+\begin{align}
+  \frac12\|Y_n(T)\|_{L^2}^2
+  &+
+  \int_0^T
+  \left[
+    \|\nabla Y_n(t)\|_{L^2}^2
+    +m^2\|Y_n(t)\|_{L^2}^2
+    +\frac{\lambda}{4}\|Y_n(t)\|_{L^4}^4
+  \right]\dd t
+  \notag\\
+  &\leq
+  \frac12\|Y_n(0)\|_{L^2}^2
+  +
+  C\lambda
+  \int_0^T
+  \left[
+    \|X_{1,n}(t)\|_{L^4}^4
+    +\|X_{2,n}(t)\|_{L^2}^2
+    +\|X_{3,n}(t)\|_{L^{4/3}}^{4/3}
+  \right]\dd t .
+  \label{eq:spde-dpd-smooth-integrated-energy-n}
+\end{align}
+The right hand side converges to the right hand side of
+\eqref{eq:spde-dpd-closed-energy-inequality}: the initial data converge
+strongly in \(L^2\), and convergence in \(L^p\) implies convergence of
+\(\|X_{1,n}\|_{L^4}^4\), \(\|X_{2,n}\|_{L^2}^2\), and
+\(\|X_{3,n}\|_{L^{4/3}}^{4/3}\) by the elementary inequality
+\[
+  \bigl||a|^p-|b|^p\bigr|
+  \leq
+  p\,|a-b|(|a|+|b|)^{p-1},
+  \qquad p\geq1,
+\]
+followed by Hölder's inequality.
+
+The left hand side is lower semicontinuous under the assumed weak
+convergences.  For the quadratic terms this is the lower semicontinuity of
+the norm in Hilbert space, applied in
+\[
+  L^2([0,T];H^1(\mathbb T^2)),
+  \qquad
+  L^2([0,T];L^2(\mathbb T^2)),
+\]
+and also at the endpoint \(T\).  For the quartic term,
+the map
+\[
+  u\longmapsto
+  \|u\|_{L^4([0,T]\times\mathbb T^2)}^4
+\]
+is convex and norm-continuous on \(L^4\), hence weakly lower
+semicontinuous.  Taking the liminf of the left hand side of
+\eqref{eq:spde-dpd-smooth-integrated-energy-n} and the limit of its right
+hand side proves \eqref{eq:spde-dpd-closed-energy-inequality}.
+\end{proof}
+
+The rough Da Prato--Debussche global argument is therefore reduced to two
+precise analytic tasks.  First, construct smooth approximations whose
+enhanced noises converge in the integrability spaces appearing in
+Proposition~\ref{prop:spde-dpd-energy-closed-under-approximation}, or in
+Besov/paracontrolled spaces that imply those bounds after pairing with the
+energy solution.  Second, prove compactness of the corresponding remainders
+in the weak energy topologies listed in the same proposition.  The quartic
+term then supplies the coercive bound, and the closedness proposition passes
+the estimate to the rough limit.
 
 \begin{proposition}[Passing invariance through a cutoff limit]
 \label{prop:spde-invariant-measure-limit}
