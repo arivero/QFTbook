@@ -3,140 +3,488 @@
 
 \ConventionsEuclidean
 
-Topological and cohomological QFTs often reduce protected quantities to
-finite-dimensional integrals.  This chapter records the precise finite
-dimensional BV and localization identities that such reductions rely on, so
-that later infinite-dimensional applications can state their additional
-analytic hypotheses.
+Topological and cohomological field theories use two related operations.  The
+first is BV integration: a semidensity on an odd symplectic space is restricted
+to a Lagrangian cycle and integrated.  The second is cohomological
+localization: an integral of a closed density is deformed by an exact term and
+evaluated from the zero locus of the deformation.  This chapter proves the
+finite-dimensional identities with all cycle, boundary, and determinant data
+visible.  Infinite-dimensional gauge-theoretic applications in later chapters
+must supply a regulator, a replacement for compactness, determinant-line
+orientations, and control of singular strata.
 
-\section{Odd Symplectic Datum}
+\section{Odd Symplectic BV Data}
 
-Let \(\mathcal F\) be a finite-dimensional graded manifold with an odd
-symplectic form \(\omega\) of degree \(-1\).  A function \(S\) of degree zero
-defines a Hamiltonian vector field \(Q_S\) by
+Let \(\mathcal F\) be a finite-dimensional smooth graded manifold.  Its
+fermionic coordinates are coordinates of the structure sheaf; they are not
+points of an underlying ordinary set.  An odd symplectic form of cohomological
+degree \(-1\) is a closed nondegenerate two-form
 \[
-  \iota_{Q_S}\omega=\delta S.
+  \omega\in\Omega^2(\mathcal F),
+  \qquad
+  |\omega|=-1 .
 \]
-The associated odd Poisson bracket is
+For a homogeneous function \(F\in C^\infty(\mathcal F)\), the Hamiltonian
+vector field \(X_F\) is defined by
 \[
-  \{F,G\}=\iota_{Q_F}\iota_{Q_G}\omega .
+  \iota_{X_F}\omega=\delta F .
 \]
-The classical master equation is
+The BV bracket is the odd Poisson bracket
 \[
-  \{S,S\}=0,
+  \{F,G\}=X_F(G).
 \]
-which is equivalent to \(Q_S^2=0\).
+It has cohomological degree \(1\), satisfies the graded Jacobi identity, and
+obeys the graded Leibniz rule in each argument.  If \(S\) is an even function
+of degree zero, the vector field
+\[
+  Q_S=\{S,-\}
+\]
+has degree \(1\).  The classical master equation is
+\begin{equation}
+  \{S,S\}=0 .
+  \label{eq:bv-cme-finite-dimensional}
+\end{equation}
+The Jacobi identity gives
+\[
+  Q_S^2F=\frac12\{\{S,S\},F\},
+\]
+so \eqref{eq:bv-cme-finite-dimensional} is equivalent to \(Q_S^2=0\) on
+functions.
 
-\section{Gauge Fixing As Lagrangian Choice}
-
-A BV integral is not an integral over all fields.  It is an integral over a
-Lagrangian submanifold
+In local Darboux coordinates \((x^i,\xi_i)\), where
 \[
-  \mathcal L\subset\mathcal F
+  |x^i|+|\xi_i|=1,\qquad
+  \omega=\sum_i \delta x^i\,\delta\xi_i,
 \]
-chosen as a gauge-fixing cycle.  For a half-density \(\rho\) satisfying the
-quantum master equation, the expectation of an observable \(\mathcal O\) is
+the bracket is the coordinate expression determined by the preceding
+Hamiltonian convention.  A choice of Berezinian density \(\mu\) compatible
+with these coordinates gives a BV Laplacian on functions,
+\begin{equation}
+  \Delta_\mu
+  =
+  \sum_i(-1)^{|x^i|}
+  \frac{\partial^2}{\partial x^i\,\partial\xi_i}.
+  \label{eq:bv-laplacian-darboux}
+\end{equation}
+Intrinsic BV integration is most cleanly stated for semidensities.  In a
+coordinate chart a semidensity is written \(f\,\mu^{1/2}\); the canonical
+odd-symplectic operator on semidensities is denoted \(\Delta\).  After the
+choice of \(\mu\), it is represented by \(\Delta_\mu\) on the coefficient
+function \(f\).  The price of working with functions is that a change of
+\(\mu\) changes the displayed operator.
+
+\section{Quantum Master Equation And Observables}
+
+Let \(\rho\) be a semidensity on \(\mathcal F\).  The finite-dimensional
+quantum master equation is
+\begin{equation}
+  \Delta\rho=0 .
+  \label{eq:finite-bv-qme-semidensity}
+\end{equation}
+If \(\rho=\exp(S/\hbar)\mu^{1/2}\) in a chosen compatible Berezinian
+trivialization, then \eqref{eq:finite-bv-qme-semidensity} becomes
+\begin{equation}
+  \frac12\{S,S\}+\hbar\Delta_\mu S=0 .
+  \label{eq:finite-bv-qme-action}
+\end{equation}
+Indeed, applying the second-order operator \(\Delta_\mu\) to
+\(\exp(S/\hbar)\) gives
+\[
+  \Delta_\mu\!\left(\ee^{S/\hbar}\right)
+  =
+  \hbar^{-1}
+  \left(\Delta_\mu S+\frac{1}{2\hbar}\{S,S\}\right)\ee^{S/\hbar},
+\]
+which is equivalent to \eqref{eq:finite-bv-qme-action}.
+
+An observable is a function \(\mathcal O\) for which
+\[
+  \Delta(\mathcal O\rho)=0 .
+\]
+In the same trivialization, if \(S\) obeys
+\eqref{eq:finite-bv-qme-action}, this condition reads
+\begin{equation}
+  \Delta_\mu\mathcal O+\hbar^{-1}\{S,\mathcal O\}=0 .
+  \label{eq:bv-quantum-observable}
+\end{equation}
+The classical limit of \eqref{eq:bv-quantum-observable} is
+\(\{S,\mathcal O\}=0\), the \(Q_S\)-closedness condition.
+
+\begin{proposition}[BV product identity]
+\label{prop:bv-product-identity}
+For a homogeneous function \(F\) and an action \(S\) satisfying
+\eqref{eq:finite-bv-qme-action},
+\[
+  \Delta_\mu(F\ee^{S/\hbar})
+  =
+  \left(\Delta_\mu F+\hbar^{-1}\{S,F\}\right)\ee^{S/\hbar}.
+\]
+\end{proposition}
+
+\begin{proof}
+The defining second-order identity for \(\Delta_\mu\) is
+\[
+  \Delta_\mu(FG)
+  =
+  (\Delta_\mu F)G
+  +(-1)^{|F|}F\Delta_\mu G
+  +(-1)^{|F|}\{F,G\}.
+\]
+Take \(G=\ee^{S/\hbar}\).  Since \(S\) is even,
+\[
+  \{F,\ee^{S/\hbar}\}
+  =
+  \hbar^{-1}\{F,S\}\ee^{S/\hbar}.
+\]
+The graded antisymmetry of the odd bracket converts the last term to
+\(\hbar^{-1}\{S,F\}\ee^{S/\hbar}\) with the displayed convention.  The term
+containing \(\Delta_\mu G\) vanishes by the quantum master equation for
+\(\ee^{S/\hbar}\mu^{1/2}\).  This proves the identity.
+\end{proof}
+
+\section{Lagrangian Cycles And BV Stokes}
+
+A Lagrangian submanifold \(\mathcal L\subset\mathcal F\) is a graded
+submanifold for which the pullback of \(\omega\) vanishes and whose dimension
+is half the dimension of \(\mathcal F\) in the graded sense.  The restriction
+of a semidensity \(\rho\) to \(\mathcal L\) is an ordinary Berezinian density
+on \(\mathcal L\), denoted \(\rho|_{\mathcal L}\).  The BV expectation of an
+observable is
 \[
   \langle\mathcal O\rangle_{\mathcal L}
   =
-  \int_{\mathcal L}\mathcal O\,\rho .
+  \int_{\mathcal L}(\mathcal O\rho)|_{\mathcal L}.
 \]
-If \(\mathcal O\) is BV-closed and the deformation of \(\mathcal L\) has no
-boundary contribution, the integral is invariant under smooth changes of
-\(\mathcal L\).  The proof is Stokes' theorem applied to the odd symplectic
-divergence operator.
+The Lagrangian \(\mathcal L\) is the gauge-fixing cycle.
 
-\section{BV Laplacian Identity}
-
-In Darboux coordinates \((x^i,\xi_i)\) with \(|\xi_i|=1-|x^i|\), the BV
-Laplacian on functions relative to the coordinate Berezinian is
+\begin{theorem}[Finite-dimensional BV Stokes theorem]
+\label{thm:finite-bv-stokes}
+Let \(\sigma\) be a compactly supported semidensity on an odd symplectic
+finite-dimensional graded manifold \(\mathcal F\), and let
+\(\mathcal L\subset\mathcal F\) be an oriented Lagrangian submanifold without
+boundary.  Then
 \[
-  \Delta_{\mathrm{BV}}
-  =
+  \int_{\mathcal L}(\Delta\sigma)|_{\mathcal L}=0 .
+\]
+If \(\mathcal L\) has boundary, the same calculation gives the induced
+boundary integral on \(\partial\mathcal L\).
+\end{theorem}
+
+\begin{proof}
+Work in Darboux coordinates for which
+\(\mathcal L=\{\xi_i=0\}\) on a coordinate patch.  Write
+\[
+  \sigma=f(x,\xi)\,\mu^{1/2}.
+\]
+The restriction of \(\Delta\sigma\) to \(\mathcal L\) is represented by
+\[
+  \left.
   \sum_i(-1)^{|x^i|}
-  \frac{\partial^2}{\partial x^i\partial \xi_i}.
+  \frac{\partial^2 f}{\partial x^i\,\partial\xi_i}
+  \right|_{\xi=0}
+  \dd x .
 \]
-The quantum master equation for a density written as
+This is the ordinary divergence on \(\mathcal L\) of the vector density with
+components
 \[
-  \rho=\ee^{S/\hbar}
+  (-1)^{|x^i|}
+  \left.\frac{\partial f}{\partial\xi_i}\right|_{\xi=0}.
 \]
-is
+Its integral over a boundaryless compact patch is zero by Stokes' theorem,
+and the patchwise statements glue because the canonical operator on
+semidensities is coordinate invariant.  For a Lagrangian with boundary the
+ordinary Stokes theorem gives exactly the boundary term.
+\end{proof}
+
+\begin{corollary}[Gauge-fixing independence]
+\label{cor:bv-gauge-fixing-independence}
+Let \(\rho\) satisfy \(\Delta\rho=0\), and let
+\(\mathcal O\) satisfy \(\Delta(\mathcal O\rho)=0\).  Let
+\(\mathcal L_s\), \(s\in[0,1]\), be a smooth family of compact Lagrangian
+cycles such that the swept chain has no boundary except
+\(\mathcal L_1-\mathcal L_0\).  Then
 \[
-  \frac12\{S,S\}+\hbar\Delta_{\mathrm{BV}}S=0.
-\]
-For any \(F\),
-\[
-  \Delta_{\mathrm{BV}}(F\ee^{S/\hbar})
+  \int_{\mathcal L_1}(\mathcal O\rho)|_{\mathcal L_1}
   =
-  \left(
-    \Delta_{\mathrm{BV}}F
-    +
-    \hbar^{-1}\{S,F\}
-  \right)\ee^{S/\hbar}.
+  \int_{\mathcal L_0}(\mathcal O\rho)|_{\mathcal L_0}.
 \]
-Integrating a BV-exact term over a compact Lagrangian gives zero.  This is
-the algebraic identity behind Ward identities in finite-dimensional BV
-models.
+\end{corollary}
 
-\section{Cohomological Localization Identity}
+\begin{proof}
+The family \(\mathcal L_s\) sweeps a Lagrangian cobordism in the sense used
+by the BV Stokes theorem.  Applying
+Theorem~\ref{thm:finite-bv-stokes} to the closed semidensity
+\(\mathcal O\rho\) on this cobordism gives the difference of the two endpoint
+integrals.  Since the remaining boundary is absent by hypothesis, that
+difference is zero.
+\end{proof}
 
-Let \(M\) be an oriented finite-dimensional manifold with an odd vector field
-or differential \(Q\) acting on forms, and suppose
+\section{BV Pushforward}
+
+Let the odd symplectic space split as
 \[
-  Q^2=0
+  \mathcal F=\mathcal F_{\rm res}\times\mathcal F_{\rm fluc},
+  \qquad
+  \omega=\omega_{\rm res}+\omega_{\rm fluc}.
 \]
-on the integrand.  If \(S\) and \(\mathcal O\) are \(Q\)-closed and \(V\) is
-an odd functional, define
+The first factor contains residual fields and the second factor contains
+fluctuation fields to be integrated out.  Let
+\(\mathcal L_{\rm fluc}\subset\mathcal F_{\rm fluc}\) be a Lagrangian cycle.
+For a semidensity \(\rho\) on \(\mathcal F\), define the BV pushforward
+\[
+  (\pi_*\rho)(\phi_{\rm res})
+  =
+  \int_{\mathcal L_{\rm fluc}}
+  \rho(\phi_{\rm res},\phi_{\rm fluc})\big|_{\mathcal L_{\rm fluc}} .
+\]
+The result is a semidensity on \(\mathcal F_{\rm res}\).
+
+\begin{theorem}[QME preservation by BV pushforward]
+\label{thm:bv-pushforward-qme-preservation}
+Assume that \(\rho\) has compact support in the fluctuation directions, or
+that the chosen fluctuation cycle has decay strong enough to eliminate the
+boundary term in Theorem~\ref{thm:finite-bv-stokes}.  If
+\[
+  \Delta_{\mathcal F}\rho=0,
+\]
+then
+\[
+  \Delta_{\rm res}(\pi_*\rho)=0 .
+\]
+The same statement holds for observables:
+\[
+  \Delta_{\mathcal F}(\mathcal O\rho)=0
+  \quad\Longrightarrow\quad
+  \Delta_{\rm res}\pi_*(\mathcal O\rho)=0 .
+\]
+\end{theorem}
+
+\begin{proof}
+For the product odd symplectic form,
+\[
+  \Delta_{\mathcal F}=\Delta_{\rm res}+\Delta_{\rm fluc}.
+\]
+Therefore
+\[
+  \Delta_{\rm res}\pi_*\rho
+  =
+  \int_{\mathcal L_{\rm fluc}}
+  (\Delta_{\rm res}\rho)|_{\mathcal L_{\rm fluc}}
+  =
+  -\int_{\mathcal L_{\rm fluc}}
+  (\Delta_{\rm fluc}\rho)|_{\mathcal L_{\rm fluc}} .
+\]
+The last integral is zero by Theorem~\ref{thm:finite-bv-stokes} applied in
+the fluctuation variables.  The observable statement is the same calculation
+with \(\rho\) replaced by \(\mathcal O\rho\).
+\end{proof}
+
+In field theory this theorem is the finite-dimensional model for Wilsonian
+integration of BV fields.  A regulator must provide a finite-dimensional
+replacement or a trace-class analogue of the split above.  If
+\(\Delta\rho=\mathcal A\rho\), the semidensity \(\mathcal A\rho\) is the
+finite-dimensional anomaly insertion; the pushforward preserves the anomaly
+class rather than producing a solution of the quantum master equation.
+
+\section{Cohomological Localization}
+
+Let \(M\) be an oriented finite-dimensional manifold and let
+\(\mathcal A\) be a finite-dimensional graded-commutative algebra.  An
+integration functional
+\[
+  \int_M:\Omega^\bullet(M)\otimes\mathcal A\longrightarrow\mathbb C
+\]
+is obtained by taking the top ordinary form degree and the chosen Berezin
+coefficient in \(\mathcal A\).  Let \(Q\) be an odd derivation of
+\(\Omega^\bullet(M)\otimes\mathcal A\) such that \(Q^2=0\).  Assume that the
+cycle and boundary conditions give
+\begin{equation}
+  \int_M Q\beta=0
+  \label{eq:localization-q-stokes}
+\end{equation}
+for every integrand \(\beta\) in the class being integrated.
+
+Let \(S\) and \(\mathcal O\) be even \(Q\)-closed elements and let \(V\) be
+odd.  Define
 \[
   I(t)=\int_M \mathcal O\,\ee^{-S-tQV}.
 \]
-Then
+
+\begin{theorem}[\(Q\)-exact deformation invariance]
+\label{thm:q-exact-localization-invariance}
+Under the hypotheses above,
+\[
+  \frac{dI}{dt}=0 .
+\]
+\end{theorem}
+
+\begin{proof}
+Differentiate under the integral:
 \[
   \frac{dI}{dt}
   =
-  -\int_M Q\!\left(V\mathcal O\,\ee^{-S-tQV}\right).
+  -\int_M \mathcal O\,(QV)\,\ee^{-S-tQV}.
 \]
-When the integral of a \(Q\)-exact form vanishes, \(I(t)\) is independent of
-\(t\).  If the real part of \(QV\) is nonnegative and its zero locus is a
-compact submanifold \(F\), the limit \(t\to\infty\) localizes the integral to
-\(F\).
+Since \(Q\mathcal O=QS=Q^2V=0\), the graded Leibniz rule gives
+\[
+  Q\!\left(V\mathcal O\,\ee^{-S-tQV}\right)
+  =
+  (QV)\mathcal O\,\ee^{-S-tQV}.
+\]
+Thus \(dI/dt\) is minus the integral of a \(Q\)-exact term, and
+\eqref{eq:localization-q-stokes} gives the result.
+\end{proof}
+
+The theorem has content only after \eqref{eq:localization-q-stokes} has been
+verified.  For compact \(M\) and \(Q=\dd\), it is Stokes' theorem.  For
+noncompact cycles it is a decay estimate.  For contour prescriptions it is a
+statement about the chosen relative homology class.
 
 \section{One-Loop Normal Form}
 
-Suppose \(F\subset M\) is a smooth fixed locus and the normal quadratic form
-of \(QV\) is nondegenerate.  Locally write normal coordinates \(y\) and
-fermionic partners \(\chi\).  The quadratic contribution has the form
+Assume the real part of \(QV\) is nonnegative and its zero locus is a compact
+submanifold \(F\subset M\).  Let \(N_F\) be the normal bundle of \(F\).  In a
+tubular neighborhood write \(y\) for even normal coordinates and
+\(\chi\) for their odd partners.  Suppose the quadratic normal part is
+\begin{equation}
+  QV
+  =
+  \frac12\,y^T A y+\frac12\,\chi^T B\chi+O(3),
+  \label{eq:localization-normal-quadratic}
+\end{equation}
+where \(A\) is a positive definite symmetric operator on the even normal
+bundle and \(B\) is a nondegenerate antisymmetric operator on the odd normal
+bundle.  The orientation of the normal integration cycle fixes the branch of
+\(\sqrt{\det A}\) and the sign of \(\operatorname{Pf}(B)\).
+
+\begin{proposition}[Normal Gaussian factor]
+\label{prop:normal-gaussian-localization-factor}
+If the limit \(t\to\infty\) may be exchanged with the integral after the
+standard rescaling \(y=t^{-1/2}u\), then the normal variables contribute
 \[
-  t\,y^TAy+t\,\chi^TB\chi .
+  \frac{\operatorname{Pf}(B)}{\sqrt{\det A}} .
 \]
-The Gaussian normal integral produces
+Consequently the localized integral has the finite-dimensional form
 \[
-  \frac{\operatorname{Pf}(B)}{\sqrt{\det A}},
-\]
-with orientation and phase determined by the integration cycle.  Thus the
-localized integral is
-\[
-  I=\int_F
+  I
+  =
+  \int_F
   \frac{\iota_F^*(\mathcal O\,\ee^{-S})}
   {e_Q(N_F)},
 \]
-where \(e_Q(N_F)\) is the equivariant Euler class of the normal complex.
+where \(e_Q(N_F)\) is the equivariant Euler class represented by the normal
+complex.
+\end{proposition}
+
+\begin{proof}
+The even normal integral is
+\[
+  \int_{\mathbb R^r}
+  \exp\!\left(-\frac{t}{2}y^TAy\right)\dd^r y
+  =
+  (2\pi)^{r/2}t^{-r/2}(\det A)^{-1/2}.
+\]
+The odd normal integral is
+\[
+  \int \dd\chi_1\cdots\dd\chi_{2s}\,
+  \exp\!\left(-\frac{t}{2}\chi^TB\chi\right)
+  =
+  t^s\operatorname{Pf}(B)
+\]
+with the Berezin orientation fixed by the ordering of the \(\chi\)'s.  In a
+cohomological normal complex the odd rank equals the even rank after pairing
+by \(Q\), so the powers of \(t\) cancel once the ordinary normalization of
+the Thom density is included.  The remaining determinant is
+\(\operatorname{Pf}(B)/\sqrt{\det A}\).  The higher-order terms in
+\eqref{eq:localization-normal-quadratic} vanish in the rescaled limit under
+the stated dominated-convergence hypothesis.  Gluing these local normal
+factors over \(F\) gives the inverse equivariant Euler class of \(N_F\).
+\end{proof}
+
+\section{Mathai--Quillen Rank-One Model}
+
+The following model fixes the normalization used in localization.  Let
+\[
+  s_a:\mathbb R\longrightarrow\mathbb R,\qquad s_a(x)=a x,
+  \qquad a\ne0 ,
+\]
+be a section of the oriented trivial real line bundle over \(\mathbb R\).
+For \(t>0\), define the one-form
+\[
+  \Theta_{t,a}
+  =
+  \left(\frac{t}{2\pi}\right)^{1/2}
+  a\,\exp\!\left(-\frac{t a^2x^2}{2}\right)\dd x .
+\]
+It is the rank-one Mathai--Quillen Thom density pulled back by \(s_a\).  Its
+integral is
+\begin{equation}
+  \int_{\mathbb R}\Theta_{t,a}
+  =
+  \operatorname{sign}(a).
+  \label{eq:rank-one-mq-integral}
+\end{equation}
+
+\begin{proof}
+Set \(u=\sqrt t\,|a|x\).  Then
+\[
+  \left(\frac{t}{2\pi}\right)^{1/2}
+  a\,\dd x
+  =
+  \operatorname{sign}(a)\frac{\dd u}{\sqrt{2\pi}},
+\]
+and
+\[
+  \int_{\mathbb R}\frac{1}{\sqrt{2\pi}}\ee^{-u^2/2}\dd u=1.
+\]
+This proves \eqref{eq:rank-one-mq-integral}.  The sign is the local degree of
+the section at its zero \(x=0\), namely the orientation sign of the derivative
+\(\dd s_a=a\,\dd x\).
+\end{proof}
+
+For a rank-\(r\) oriented Euclidean vector bundle \(E\to M\) with connection
+\(\nabla\), section \(s\), and curvature \(R_\nabla\), the Mathai--Quillen
+representative is obtained by replacing the single odd variable above by odd
+fiber variables \(\chi^a\) and using the exponent
+\[
+  -\frac{t}{2}\|s\|^2
+  +\ii\sqrt t\,\chi_a(\nabla s)^a
+  +\frac12\,\chi_a(R_\nabla)^{ab}\chi_b .
+\]
+The Berezin integral over the \(\chi\)'s gives a closed differential form
+whose cohomology class is independent of \(t\).  When the zero locus of \(s\)
+is transverse, the \(t\to\infty\) limit is the signed integration current on
+\(s^{-1}(0)\).  The rank-one calculation above is the local normal
+calculation at a transverse zero.
 
 \section{Boundary And Noncompact Terms}
 
-If \(M\) is noncompact or has boundary, the derivative \(dI/dt\) equals a
-boundary contribution.  A localization formula must therefore declare one of:
+If the integration cycle has boundary or noncompact ends, the derivative in
+Theorem~\ref{thm:q-exact-localization-invariance} is the corresponding
+boundary integral:
+\[
+  \frac{dI}{dt}
+  =
+  -\int_{\partial M_{\rm eff}}
+  \text{the boundary value of }V\mathcal O\,\ee^{-S-tQV}.
+\]
+A localization statement must therefore state one of the following pieces of
+data:
 \[
 \begin{gathered}
-  \text{compact integration cycle},\qquad
-  \text{decay estimate at infinity},\\
-  \text{boundary condition cancelling the term},\qquad
-  \text{explicit residue prescription}.
+  \text{a compact integration cycle},\qquad
+  \text{a decay estimate at every noncompact end},\\
+  \text{a boundary condition cancelling the term},\qquad
+  \text{a specified relative cycle or residue prescription}.
 \end{gathered}
 \]
-In gauge-theoretic localization, noncompact Coulomb branches, reducible
-connections, small instantons, and singular monopole strata are precisely
-places where this boundary analysis enters.
+In gauge-theoretic localization, Coulomb-branch ends, reducible connections,
+small instantons, singular monopole strata, and boundaries of moduli spaces
+are exactly the loci where this analysis enters.  A residue prescription such
+as a Jeffrey--Kirwan rule is part of the integration-cycle data; it is a
+finite-dimensional replacement for a boundary analysis, and its validity in a
+field-theoretic construction must be proved from the chosen regulator and
+cycle.
 
 \begin{openproblem}[Infinite-dimensional BV localization]
 \label{op:infinite-dimensional-bv-localization}
