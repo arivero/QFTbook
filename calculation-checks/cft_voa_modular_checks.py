@@ -111,6 +111,16 @@ def check_quantum_dimensions() -> None:
     assert_equal("epsilon quantum dimension", dimensions[2], ONE)
     global_dimension_squared = sum((d * d for d in dimensions), ZERO)
     assert_equal("Ising global dimension squared", global_dimension_squared, Qsqrt2(Fraction(4)))
+    assert_equal(
+        "Ising conformal-net mu-index from sectors",
+        global_dimension_squared,
+        Qsqrt2(Fraction(4)),
+    )
+    assert_equal(
+        "Ising global dimension from S00",
+        ONE / (S[0][0] * S[0][0]),
+        global_dimension_squared,
+    )
 
 
 def check_character_exponents() -> None:
@@ -134,7 +144,7 @@ def main() -> None:
     check_verlinde_fusion()
     check_quantum_dimensions()
     check_character_exponents()
-    print("All CFT VOA/modular-data checks passed.")
+    print("All CFT VOA/modular-data and conformal-net index checks passed.")
 
 
 if __name__ == "__main__":
