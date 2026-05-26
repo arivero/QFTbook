@@ -1910,8 +1910,86 @@ The scalar dimension of each \(A_i\) and \(B_j\) is therefore
 \]
 \end{proof}
 
-The preceding proof fixes the symmetric point.  To see that the same value
-is selected by \(a\)-maximization, allow mixing with the baryonic current:
+\begin{proposition}[KW beta-function rank count]
+\label{prop:kw-beta-function-rank-count}
+Work in the \(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving source chart
+near the Klebanov--Witten point, and assume the NSVZ coordinate convention of
+this chapter with finite denominators for both gauge couplings.  Let
+\(\gamma_A\) and \(\gamma_B\) be the anomalous dimensions of the \(A\)- and
+\(B\)-doublets in the monograph convention.  Then the two gauge beta-function
+numerators and the quartic-superpotential marginality defect are all
+proportional to the same expression:
+\[
+  \mathcal B_1=\mathcal B_2=N(1+\gamma_A+\gamma_B),
+  \qquad
+  \mathcal B_h=1+\gamma_A+\gamma_B.
+  \label{eq:kw-beta-rank-common-defect}
+\]
+Consequently the three local vanishing conditions have rank one in this
+symmetry-preserving chart.  At the exchange-symmetric point
+\(\gamma_A=\gamma_B=\gamma\), the common condition is
+\(\gamma=-\frac12\).
+\end{proposition}
+
+\begin{proof}
+For the first gauge group, each of the two \(A\)-fields is a fundamental with
+\(N\) copies from the second gauge index, and each of the two \(B\)-fields is
+an antifundamental with the same multiplicity.  Hence
+\[
+  \sum_iT_1(R_i)(1-\gamma_i)
+  =
+  2\cdot\frac N2(1-\gamma_A)
+  +
+  2\cdot\frac N2(1-\gamma_B)
+  =
+  N(2-\gamma_A-\gamma_B).
+\]
+The NSVZ numerator of the first gauge factor is therefore
+\[
+  \mathcal B_1
+  =
+  3N-N(2-\gamma_A-\gamma_B)
+  =
+  N(1+\gamma_A+\gamma_B).
+\]
+The same count holds for the second gauge factor, with fundamentals and
+antifundamentals interchanged, so \(\mathcal B_2=\mathcal B_1\).
+
+For the superpotential term, nonrenormalization means that the local
+condition for a quartic chiral coordinate to be marginal is the dimension
+condition on the chiral operator.  The operator
+\(\operatorname{tr}(A_iB_kA_jB_l)\) has dimension
+\[
+  2\left(1+\frac{\gamma_A}{2}\right)
+  +
+  2\left(1+\frac{\gamma_B}{2}\right)
+  =
+  4+\gamma_A+\gamma_B .
+\]
+Since a four-dimensional superpotential integrand must have dimension \(3\),
+the marginality defect is
+\[
+  \mathcal B_h
+  =
+  (4+\gamma_A+\gamma_B)-3
+  =
+  1+\gamma_A+\gamma_B .
+\]
+Equivalently, the beta function of a dimensionless quartic coupling is
+proportional to this defect, up to the sign convention for whether the flow
+parameter is an energy scale or a length scale.  Only the zero locus is used
+here.
+
+Thus \(\mathcal B_1\), \(\mathcal B_2\), and \(\mathcal B_h\) impose a single
+scalar condition in the symmetric chart.  This is a necessary local
+beta-function count.  It does not prove that the continuum SCFT exists, that
+the common zero is reached by an RG trajectory, or that the local zero locus
+is a nonsingular conformal manifold.
+\end{proof}
+
+The anomaly and NSVZ calculations above fix the exchange-symmetric point.  To
+see that the same value is selected by \(a\)-maximization, allow mixing with
+the baryonic current:
 \[
   R_s(A_i)=\frac12+s,\qquad
   R_s(B_j)=\frac12-s .
@@ -2076,8 +2154,10 @@ marginal coordinates.
 \end{quotedtheorem}
 
 The theorem is quoted because exact marginality is an infrared statement
-about the continuum SCFT.  The chapter supplies the anomaly, NSVZ, and
-\(a\)-maximization arithmetic that any such statement must satisfy.
+about the continuum SCFT.  Proposition~\ref{prop:kw-beta-function-rank-count}
+supplies only the necessary beta-function rank count.  The chapter also
+supplies the anomaly, NSVZ, and \(a\)-maximization arithmetic that any such
+statement must satisfy.
 
 \section{Klebanov--Strassler Cascade}
 \label{sec:n1-klebanov-strassler-cascade}

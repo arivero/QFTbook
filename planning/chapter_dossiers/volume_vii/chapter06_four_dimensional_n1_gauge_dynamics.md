@@ -96,6 +96,9 @@ status-boundary style.
   `q_B(A)=+1`, `q_B(B)=-1`.
 - `W_ij=A_i B_j`: mesonic conifold coordinates.
 - `a_KW`, `c_KW`: KW central charges from Weyl-fermion R traces.
+- `prop:kw-beta-function-rank-count`: KW necessary beta-function rank-count
+  check showing the two gauge NSVZ numerators and quartic-superpotential
+  marginality defect are proportional to `1+gamma_A+gamma_B`.
 - `M`: fractional-rank difference in the Klebanov-Strassler cascade.
 - `B_1`, `B_2` or `mathcal B_1`, `mathcal B_2`: NSVZ numerators for
   the two KS gauge factors.
@@ -217,6 +220,11 @@ status-boundary style.
   superpotential has R-charge 2.
 - Proves the KW NSVZ numerator cancellation at
   `R(A)=R(B)=1/2`, using `gamma_A=gamma_B=-1/2` in the monograph convention.
+- Proves the KW beta-function rank count in the
+  `SU(2)_A x SU(2)_B x U(1)_B` source chart:
+  `B_1=B_2=N(1+gamma_A+gamma_B)` and the quartic-superpotential marginality
+  defect is `1+gamma_A+gamma_B`; the chapter explicitly records this as a
+  necessary local count, not as a proof of the conformal manifold.
 - Performs the KW `a`-maximization calculation for baryonic mixing and
   derives the exact finite-N central charges
   `a=27N^2/64-3/8`, `c=27N^2/64-1/4`.
@@ -242,10 +250,11 @@ status-boundary style.
 - `calculation-checks/susy_n1_conifold_checks.py` verifies exact rational
   arithmetic for the new conifold material: KW R-anomaly cancellation,
   `gamma=2 mathcal C` conversion, superpotential R-charge, NSVZ numerator,
-  `a`-maximization sign, central charges, conifold determinant relation,
-  KS numerator signs, unequal-rank R-anomaly coefficients, Seiberg-dual
-  magnetic rank, magnetic meson quadratic-form integration, cascade step
-  count, and the `Z_{2M}->Z_2` vacuum count.
+  KW beta-function rank count for gauge numerators and quartic marginality,
+  `a`-maximization sign, central charges, conifold determinant relation, KS
+  numerator signs, unequal-rank R-anomaly coefficients, Seiberg-dual magnetic
+  rank, magnetic meson quadratic-form integration, cascade step count, and
+  the `Z_{2M}->Z_2` vacuum count.
 - `calculation-checks/susy_n1_pure_sym_checks.py` verifies exact finite
   arithmetic for pure `N=1` SYM: adjoint anomaly coefficient, residual
   discrete chiral group, condensate orbit count, VY dimension/source/F-term

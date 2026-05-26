@@ -30,6 +30,48 @@ def check_kw_r_anomaly_and_nsvz():
         assert_equal(nsvz_numerator, 0, f"KW SU({n}) NSVZ numerator")
 
 
+def check_kw_beta_rank_count():
+    gamma_samples = [
+        (Fraction(0), Fraction(0)),
+        (Fraction(-1, 2), Fraction(-1, 2)),
+        (Fraction(-2, 3), Fraction(-1, 3)),
+        (Fraction(1, 5), Fraction(-6, 5)),
+    ]
+    for n in range(2, 13):
+        for gamma_a, gamma_b in gamma_samples:
+            first_gauge_numerator = (
+                3 * n
+                - 2 * Fraction(n, 2) * (1 - gamma_a)
+                - 2 * Fraction(n, 2) * (1 - gamma_b)
+            )
+            second_gauge_numerator = first_gauge_numerator
+            superpotential_defect = 1 + gamma_a + gamma_b
+
+            assert_equal(
+                first_gauge_numerator,
+                n * superpotential_defect,
+                "KW first gauge numerator vs quartic defect",
+            )
+            assert_equal(
+                second_gauge_numerator,
+                n * superpotential_defect,
+                "KW second gauge numerator vs quartic defect",
+            )
+
+            operator_dimension = (
+                2 * (1 + gamma_a / 2)
+                + 2 * (1 + gamma_b / 2)
+            )
+            assert_equal(
+                operator_dimension - 3,
+                superpotential_defect,
+                "KW quartic marginality defect",
+            )
+
+    gamma_symmetric = Fraction(-1, 2)
+    assert_equal(1 + 2 * gamma_symmetric, 0, "KW exchange-symmetric fixed defect")
+
+
 def check_kw_a_maximization_and_central_charges():
     # The trial baryonic mixing parameter is s.  The exact trace is
     # Tr R_s^3 = 3 N^2/2 - 2 - 6 N^2 s^2, so the quadratic coefficient in
@@ -174,6 +216,7 @@ def check_endpoint_discrete_r_symmetry():
 
 def main():
     check_kw_r_anomaly_and_nsvz()
+    check_kw_beta_rank_count()
     check_kw_a_maximization_and_central_charges()
     check_conifold_rank_one_relation()
     check_ks_nsvz_and_rank_steps()
