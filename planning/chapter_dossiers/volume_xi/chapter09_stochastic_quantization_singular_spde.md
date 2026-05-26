@@ -65,6 +65,11 @@ data.
   time reflection, lattice Euclidean measure, lattice scalar action, and
   reflection-invariant on-site potential used in the OS-positive lattice
   regulator proposition.
+- `ell_j`, `V(phi)`: finite list of cylinder coordinates and exponential
+  moment weight used to turn exponential tails into uniform integrability of
+  polynomial OS observables.
+- `a_x`, `b_x`, `d_x`: finite-lattice quartic coercivity constants in the
+  cutoff tail estimate.
 - `R F`: reconstruction of a modelled distribution.
 - `N_n`, `D_n`, `d_{K;gamma}`: random model seminorm, dyadic increment, and
   model distance used in the random-model Cauchy criterion.
@@ -210,6 +215,16 @@ data.
   squares.  The chapter then states precisely that this settles finite-cutoff
   positivity for the lattice regulator but not the comparison between lattice
   Schwinger functions and the Fourier-Galerkin stochastic family.
+- Proves a de la Vallee Poussin-type criterion: exponential moment bounds for
+  a finite list of cylinder coordinates imply uniform integrability of every
+  polynomial cylinder observable built from those coordinates.  This supplies
+  the exact condition needed to pass unbounded OS polynomial quadratic forms
+  through weak limits.
+- Proves finite-cutoff quartic exponential tails for finite lattice scalar
+  regulators whose local potentials satisfy a quartic coercivity lower bound,
+  while explicitly separating this finite-cutoff integrability statement from
+  the uniform continuum estimates still required for tightness and OS
+  polynomial limits.
 - Adds a \(\Phi^4_2\) stochastic-quantization assembly theorem on the torus.
   The theorem now proves the path-space enhanced-noise input and makes
   explicit the remaining three analytic inputs needed to pass from
@@ -660,3 +675,10 @@ data maps.
   two-dimensional DPD pieces were present but not assembled into a theorem,
   while keeping the still-required rough Besov/Holder estimates as visible
   hypotheses rather than hidden folklore.
+- 2026-05-26 issue #608 integrability pass: added the exponential-moment
+  criterion for uniform integrability of polynomial OS cylinder observables
+  and the finite-lattice quartic-tail proposition.  The calculation-check
+  companion now verifies the one-site quartic moment scaling, the coercivity
+  Young inequality, and the polynomial-by-exponential tail domination used in
+  the proof.  The pass deliberately does not claim continuum tightness or
+  uniform moment bounds; those remain constructive estimates.

@@ -10,6 +10,11 @@ def assert_equal(got, expected, label):
         raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
 
 
+def assert_close_float(got, expected, label, tol=1.0e-12):
+    if abs(got - expected) > tol:
+        raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
+
+
 def hermite_probabilists(n):
     """Return coefficients of H_n(x), low degree first."""
     h0 = [Fraction(1)]
@@ -1158,6 +1163,42 @@ def check_one_loop_relative_scale_gap_arithmetic():
     assert_equal(off_gap_sum, Fraction(1, 3), "one-loop off gap sum")
 
 
+def check_quartic_tail_integrability_arithmetic():
+    # One-dimensional quartic reference density exp(-a x^4).  The exact
+    # even moment is
+    #   int x^(2m) exp(-a x^4) dx / int exp(-a x^4) dx
+    # = a^(-m/2) Gamma((2m+1)/4) / Gamma(1/4).
+    a = 1.7
+    second_moment = a ** (-0.5) * math.gamma(3.0 / 4.0) / math.gamma(1.0 / 4.0)
+    fourth_moment = a ** (-1.0) * math.gamma(5.0 / 4.0) / math.gamma(1.0 / 4.0)
+    # Gamma(5/4)=(1/4) Gamma(1/4), so the fourth moment is exactly 1/(4a).
+    assert_close_float(fourth_moment, 1.0 / (4.0 * a), "quartic fourth moment scaling")
+    if not 0.0 < second_moment < 1.0:
+        raise AssertionError("quartic second moment should be finite and positive in the sample")
+
+    # Coercivity estimate used in the finite-lattice tail proposition:
+    # b t <= (A/2) t^2 + b^2/(2A), t=u^2.
+    A = Fraction(3, 5)
+    b = Fraction(7, 4)
+    for numerator in range(-6, 7):
+        t = Fraction(numerator * numerator, 9)
+        lhs = b * t
+        rhs = A * t * t / 2 + b * b / (2 * A)
+        if lhs > rhs:
+            raise AssertionError("quartic coercivity Young inequality failed")
+
+    # Uniform-integrability tail bound:
+    # C A 1_{A>R/C} <= C^2 A^2/R.
+    C = Fraction(5)
+    R = Fraction(20)
+    for exponent_num in range(0, 8):
+        A_value = Fraction(2) ** exponent_num
+        left = C * A_value if A_value > R / C else Fraction(0)
+        right = C * C * A_value * A_value / R
+        if left > right:
+            raise AssertionError("polynomial-by-exponential tail domination failed")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -1194,7 +1235,8 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    check_quartic_tail_integrability_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

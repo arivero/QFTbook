@@ -1167,6 +1167,146 @@ functions, or construct a single regulator whose Langevin estimates and OS
 positivity are both available.  This is a regulator-comparison theorem, not a
 formal consequence of either weak convergence or stochastic stationarity.
 
+\begin{proposition}[Polynomial OS observables from exponential moments]
+\label{prop:spde-polynomial-os-uniform-integrability}
+Let \(E\) be a Hausdorff locally convex real vector space, and let
+\(\mu_N\Rightarrow\mu\) be Borel probability measures on \(E\).  Let
+\(\ell_1,\ldots,\ell_r\) be continuous real linear functionals on \(E\), and
+fix \(q>0\), \(\alpha>0\).  Put
+\[
+  V(\phi)=1+\sum_{j=1}^r|\ell_j(\phi)|^q .
+\]
+Assume
+\begin{equation}
+  \sup_N\int_E e^{\alpha V(\phi)}\,\dd\mu_N(\phi)<\infty,
+  \qquad
+  \int_E e^{\alpha V(\phi)}\,\dd\mu(\phi)<\infty .
+  \label{eq:spde-exponential-cylinder-moment-bound}
+\end{equation}
+Then for every polynomial \(P\in\C[u_1,\ldots,u_r]\), the random variables
+\[
+  |P(\ell_1(\phi),\ldots,\ell_r(\phi))|^2
+\]
+are uniformly integrable with respect to \(\{\mu_N\}\) and integrable with
+respect to \(\mu\).  Hence the unbounded polynomial-cylinder step in
+Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}
+follows for such \(P\) whenever the bounded-cylinder reflection-positivity
+inequality is available.
+\end{proposition}
+
+\begin{proof}
+There is a constant \(C_P<\infty\) such that, for all \(u\in\R^r\),
+\[
+  |P(u)|^2\leq C_P
+  \exp\!\left(\frac{\alpha}{2}
+    \left[1+\sum_{j=1}^r|u_j|^q\right]\right).
+  \label{eq:spde-polynomial-by-exponential-bound}
+\]
+This is the elementary domination of polynomial growth by exponential
+growth: each monomial is bounded by a constant times
+\(\exp[(\alpha/4r)|u_j|^q]\) in each variable appearing in it, and the
+finite sum of monomials is absorbed into \(C_P\).  Let
+\[
+  A(\phi)=
+  \exp\!\left(\frac{\alpha}{2}V(\phi)\right).
+\]
+If \(|P(\ell(\phi))|^2>R\), then
+\(C_PA(\phi)>R\).  Therefore
+\[
+  |P(\ell(\phi))|^2
+  {\bf 1}_{\{|P(\ell(\phi))|^2>R\}}
+  \leq
+  C_P A(\phi)\,{\bf 1}_{\{A(\phi)>R/C_P\}}
+  \leq
+  \frac{C_P^2}{R}A(\phi)^2 .
+\]
+Integrating and using
+\(A^2=e^{\alpha V}\) gives
+\[
+  \sup_N
+  \int |P(\ell(\phi))|^2
+  {\bf 1}_{\{|P(\ell(\phi))|^2>R\}}\,\dd\mu_N(\phi)
+  \leq
+  \frac{C_P^2}{R}
+  \sup_N\int e^{\alpha V}\,\dd\mu_N
+  \longrightarrow0 .
+\]
+This is uniform integrability.  The same estimate with \(\mu\) instead of
+\(\mu_N\) gives integrability under the limiting measure.  Applying
+Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence} to
+bounded truncations of \(P(\ell_1,\ldots,\ell_r)\) proves the final claim.
+\end{proof}
+
+\begin{proposition}[Finite lattice quartic tails]
+\label{prop:spde-finite-lattice-quartic-tails}
+Let \(\Lambda\) be a finite set and let \(\mu\) be a finite-dimensional
+scalar lattice measure
+\[
+  \dd\mu(\phi)=Z^{-1}e^{-S(\phi)}\prod_{x\in\Lambda}\dd\phi_x ,
+  \qquad
+  S(\phi)=K(\phi)+\sum_{x\in\Lambda}V_x(\phi_x),
+\]
+where \(K(\phi)\geq0\).  Suppose that, for constants \(a_x>0\),
+\(b_x\geq0\), and \(d_x\in\R\),
+\[
+  V_x(u)\geq a_xu^4-b_xu^2-d_x .
+  \label{eq:spde-finite-lattice-quartic-coercivity}
+\]
+Then \(Z<\infty\), and for every \(0<\varepsilon<1\),
+\begin{equation}
+  \int
+  \exp\!\left(\varepsilon\sum_{x\in\Lambda}a_x\phi_x^4\right)
+  \dd\mu(\phi)
+  <\infty .
+  \label{eq:spde-finite-lattice-quartic-exponential-tail}
+\end{equation}
+Consequently every polynomial cylinder observable has finite moments at this
+finite cutoff.  A uniform version of
+\eqref{eq:spde-finite-lattice-quartic-exponential-tail} along a continuum
+cutoff family is a separate estimate; if it is available for the smeared
+coordinates entering an OS polynomial cylinder observable, then
+Proposition~\ref{prop:spde-polynomial-os-uniform-integrability} supplies the
+uniform integrability needed to pass that observable to the limit.
+\end{proposition}
+
+\begin{proof}
+Since \(K\geq0\), the density is bounded above by
+\[
+  \exp\!\left[
+    -\sum_x a_x\phi_x^4+\sum_x b_x\phi_x^2+\sum_x d_x
+  \right].
+\]
+For \(A_x=(1-\varepsilon)a_x\), the elementary inequality
+\[
+  b_xu^2\leq\frac{A_x}{2}u^4+\frac{b_x^2}{2A_x}
+\]
+gives
+\[
+  -A_xu^4+b_xu^2
+  \leq
+  -\frac{A_x}{2}u^4+\frac{b_x^2}{2A_x}.
+\]
+Therefore
+\[
+  e^{\varepsilon\sum_x a_x\phi_x^4}e^{-S(\phi)}
+  \leq
+  \exp\!\left[
+    \sum_x d_x+\sum_x\frac{b_x^2}{2(1-\varepsilon)a_x}
+  \right]
+  \prod_x
+  \exp\!\left[-\frac{(1-\varepsilon)a_x}{2}\phi_x^4\right].
+\]
+The product on the right is integrable over \(\R^\Lambda\).  Taking
+\(\varepsilon=0\) in the same estimate proves \(Z<\infty\), while \(Z>0\)
+because the density is positive on a set of positive Lebesgue measure.
+Dividing by \(Z\) proves
+\eqref{eq:spde-finite-lattice-quartic-exponential-tail}.  Polynomial
+moments follow because every power of \(|u|\) is bounded by a constant times
+\(e^{\delta u^4}\) for any fixed \(\delta>0\).  The final sentence is
+exactly Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}
+applied to the finite list of smeared cylinder coordinates.
+\end{proof}
+
 \begin{theorem}[\(\Phi^4_2\) stochastic-quantization assembly on the torus]
 \label{thm:phi-four-two-spde-main-theorem}
 Fix \(m^2>0\), \(\lambda>0\), \(0<\kappa<1/4\), and
@@ -1212,9 +1352,14 @@ Assume the following three further analytic facts.
   consequence of the Fourier-Galerkin cutoff.  For the lattice scalar
   regulator of
   Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}, the
-  bounded-observable positivity statement is proved at finite cutoff; using
-  that positivity in the present Fourier-Galerkin stochastic assembly still
-  requires the regulator-comparison theorem isolated after
+  bounded-observable positivity statement is proved at finite cutoff, and
+  Proposition~\ref{prop:spde-finite-lattice-quartic-tails} proves
+  finite-cutoff polynomial integrability.  Passing polynomial observables
+  uniformly through the continuum limit requires the exponential moment
+  criterion of
+  Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}.  Using
+  lattice positivity in the present Fourier-Galerkin stochastic assembly
+  still requires the regulator-comparison theorem isolated after
   Remark~\ref{rem:spde-fourier-cutoff-os-regulator-separation}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
@@ -1287,7 +1432,13 @@ two-dimensional theorem still requires four further inputs: rough
 Besov--Hölder energy continuity, tightness, uniform integrability, and either
 finite-cutoff OS positivity for the stochastic regulator itself or a
 regulator-comparison theorem relating it to the OS-positive lattice regulator
-of Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  These
+of Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
+uniform-integrability input can be supplied by the exponential cylinder-moment
+criterion in
+Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite
+quartic tails at each lattice cutoff are proved by
+Proposition~\ref{prop:spde-finite-lattice-quartic-tails}, while uniformity
+as the cutoff is removed remains part of the constructive estimate.  These
 inputs are listed explicitly in
 Theorem~\ref{thm:phi-four-two-spde-main-theorem}.
 
