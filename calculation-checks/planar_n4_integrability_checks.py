@@ -1352,6 +1352,88 @@ def check_one_species_tba_variation() -> None:
         )
 
 
+def check_excited_tba_contour_deformation_residues() -> None:
+    """Check the source and energy signs from excited-state contour residues."""
+
+    spectator = 1.1 + 0.3j
+    width = 0.7
+    crossed_roots = [0.2 + 0.18j, -0.35 + 0.22j]
+
+    def scattering_factor(u_value: complex, v_value: complex) -> complex:
+        return (u_value - v_value + 1j * width) / (u_value - v_value - 1j * width)
+
+    def logarithmic_zero_derivative(v_value: complex) -> complex:
+        return sum(1 / (v_value - root) for root in crossed_roots)
+
+    def mirror_momentum(v_value: complex) -> complex:
+        return 0.5 * v_value * v_value + (0.2 - 0.1j) * v_value
+
+    def contour_integral(
+        integrand, center: complex, radius: float, samples: int = 4096
+    ) -> complex:
+        total = 0j
+        step = 2 * math.pi / samples
+        for index in range(samples):
+            angle = (index + 0.5) * step
+            tangent = cmath.exp(1j * angle)
+            point = center + radius * tangent
+            total += integrand(point) * 1j * radius * tangent * step
+        return total
+
+    source_loop = 0j
+    energy_loop = 0j
+    for root in crossed_roots:
+        source_loop += contour_integral(
+            lambda value: -cmath.log(scattering_factor(spectator, value))
+            * logarithmic_zero_derivative(value)
+            / (2j * math.pi),
+            root,
+            1.0e-3,
+        )
+        energy_loop += contour_integral(
+            lambda value: mirror_momentum(value)
+            * logarithmic_zero_derivative(value)
+            / (2 * math.pi),
+            root,
+            1.0e-3,
+        )
+
+    source_residue = -sum(
+        cmath.log(scattering_factor(spectator, root)) for root in crossed_roots
+    )
+    assert_close(
+        "excited TBA source residue sign",
+        source_loop,
+        source_residue,
+        tol=1.0e-10,
+    )
+    product_source = 1
+    for root in crossed_roots:
+        product_source /= scattering_factor(spectator, root)
+    assert_close(
+        "excited TBA product source orientation",
+        cmath.exp(source_residue),
+        product_source,
+        tol=1.0e-12,
+    )
+
+    energy_residue = sum(1j * mirror_momentum(root) for root in crossed_roots)
+    assert_close(
+        "excited TBA energy residue sign",
+        energy_loop,
+        energy_residue,
+        tol=1.0e-10,
+    )
+
+    for physical_energy in (0.6, 1.4, 2.2):
+        continued_mirror_momentum = -1j * physical_energy
+        assert_close(
+            "inverse mirror energy residue",
+            1j * continued_mirror_momentum,
+            physical_energy,
+        )
+
+
 def check_mirror_wing_kernel_inverse() -> None:
     """Check the A-infinity auxiliary-string kernel inverse used for the Y-system."""
 
@@ -2351,6 +2433,7 @@ def main() -> None:
     check_mirror_zhukovsky_sheet_parametrization()
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
+    check_excited_tba_contour_deformation_residues()
     check_mirror_wing_kernel_inverse()
     check_y_system_shift_source_factor()
     check_konishi_four_loop_wrapping_arithmetic()

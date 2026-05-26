@@ -74,6 +74,10 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - Records the one-species excited-state defect source and the zero condition
   `zeta(u_j)=-2 pi i(n_j+1/2)` before specializing to exact physical Bethe
   roots in planar N=4.
+- Proves the one-species excited-state contour-deformation signs by residues:
+  a crossed zero of `1+Y` contributes `-log S(u,u_j)` to the TBA driving
+  term and `+ i tilde p(u_j)` to the energy; inverse mirror continuation
+  gives the physical root contribution `E(u_j)`.
 - States the general mirror TBA equation with contours, kernels, chemical
   potentials, and signs as part of the data.
 - Gives the excited-state energy formula with wrapping integral.
@@ -123,6 +127,9 @@ node domain.
   finite grid: constrained entropy variation, stationarity of the grand
   functional, free-energy identity, source-kernel sign conversion, and the
   excited-state zero condition.
+- The same script checks the excited-state contour-deformation residue signs:
+  source orientation `-log S`, product orientation, energy residue
+  `+i tilde p`, and inverse mirror continuation to physical energy.
 - The same script checks the auxiliary-wing TBA-to-Y-system kernel algebra:
   the fused `A_mn` Fourier symbol, tridiagonal inverse, `A^{-1}K` identities,
   `s^{-1}` shift symbol, and boundary-source algebra for the `n|w` Y-system.

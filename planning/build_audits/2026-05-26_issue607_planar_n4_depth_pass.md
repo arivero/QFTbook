@@ -771,3 +771,41 @@ Calculation checks added:
   placement, mirror energy logarithm, mirror momentum convention, shortening
   relation, ratio constant term, `u^-1` coefficient, numerical large-`u`
   expansion, and inverse mirror continuation.
+
+## Continuation XXVIII: Excited-State TBA Contour Residue Signs
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Source/standard motivation:
+
+- The stringbook states the excited-state mirror-TBA contour deformation as
+  the mechanism producing physical-root sources and energy residues.  The
+  monograph had recorded the formula, but the sign of the `-log S` driving
+  term and the `+i tilde p` energy residue were still implicit.  These signs
+  are convention-sensitive and feed directly into the TBA-to-QSC energy
+  bridge.
+
+Content added:
+
+- Added a one-species contour-deformation proposition with explicit
+  hypotheses on the scattering factor, zero set of `1+Y`, crossed
+  singularities, and boundary terms at infinity.
+- Proved by integration by parts and residues that a crossed simple zero of
+  `1+Y` contributes `-log S(u,u_j)` to the pseudoenergy source.
+- Proved, with the same orientation, that the deformed mirror free-energy
+  integral contributes `+i tilde p(u_j)` to the energy.
+- Derived the exact-root quantization
+  `zeta(u_j)=-2 pi i(n_j+1/2)` from `1+exp(-zeta(u_j))=0`.
+- Tied the residue result to planar N=4 by using the inverse mirror
+  continuation `i tilde p(u_j)=E(u_j)`.
+
+Calculation checks added:
+
+- `check_excited_tba_contour_deformation_residues()` numerically evaluates
+  the local residue loops for a rational test scattering factor and verifies
+  the source orientation, product orientation, energy residue sign, and
+  inverse mirror continuation to physical energy.

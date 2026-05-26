@@ -591,6 +591,96 @@ Equivalently \(1+\ee^{-\zeta}\) has a zero at each defect.  In the planar
 \(\mathcal N=4\) problem this condition becomes the exact Bethe-root
 regularity condition after analytic continuation to the physical sheet.
 
+\begin{proposition}[Excited-state contour deformation in one species]
+\label{prop:one-species-excited-contour-deformation}
+Let \(S(u,v)\) be a meromorphic two-particle mirror scattering factor with
+no zero or pole on the undeformed real \(v\)-contour, and let
+\[
+  K^{\rm dens}(u,v)=\frac{1}{2\pi\ii}\partial_v\log S(u,v).
+\]
+Let \(Y(v)=\ee^{-\zeta(v)}\), and suppose that
+\[
+  F(v)=1+Y(v)
+\]
+has simple zeros \(u_1,\ldots,u_K\) crossed by the excited-state contour
+deformation and no other singularities are crossed.  Assume also that the
+boundary terms at infinity vanish in the integrations by parts below.  With
+the contour orientation for which the crossed zeros are enclosed
+counterclockwise, the deformed TBA source is
+\begin{equation}
+  \int_{\mathcal C_{\rm exc}}\dd v\,
+  K^{\rm dens}(u,v)\log F(v)
+  =
+  \int_{\mathbb R}\dd v\,
+  K^{\rm dens}(u,v)\log F(v)
+  -
+  \sum_{j=1}^K \log S(u,u_j).
+  \label{eq:one-species-excited-source-residue}
+\end{equation}
+Moreover, the mirror energy integral obeys
+\begin{equation}
+  -\int_{\mathcal C_{\rm exc}}\frac{\dd v}{2\pi}\,
+  \frac{\dd\widetilde p(v)}{\dd v}\log F(v)
+  =
+  \sum_{j=1}^K \ii\,\widetilde p(u_j)
+  -
+  \int_{\mathbb R}\frac{\dd v}{2\pi}\,
+  \frac{\dd\widetilde p(v)}{\dd v}\log F(v).
+  \label{eq:one-species-excited-energy-residue}
+\end{equation}
+The root condition is
+\begin{equation}
+  F(u_j)=0
+  \quad\Longleftrightarrow\quad
+  \zeta(u_j)=-2\pi\ii\left(n_j+\frac12\right),
+  \qquad n_j\in\mathbb Z.
+  \label{eq:one-species-excited-root-quantization}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For the source term, write the contour difference as the sum of small
+positively oriented loops around the crossed zeros and integrate by parts:
+\[
+  \oint
+  \frac{\dd v}{2\pi\ii}\,
+  \partial_v\log S(u,v)\log F(v)
+  =
+  -
+  \oint
+  \frac{\dd v}{2\pi\ii}\,
+  \log S(u,v)\partial_v\log F(v).
+\]
+Since each \(u_j\) is a simple zero of \(F\),
+\(\partial_v\log F(v)\) has residue \(1\) at \(v=u_j\).  The residue theorem
+therefore gives the contribution
+\(-\sum_j\log S(u,u_j)\), proving
+\eqref{eq:one-species-excited-source-residue}.  The energy term is the same
+calculation with \(\log S(u,v)\) replaced by \(\ii\widetilde p(v)\):
+\[
+  -\oint\frac{\dd v}{2\pi}\,
+  \widetilde p'(v)\log F(v)
+  =
+  \oint\frac{\dd v}{2\pi}\,
+  \widetilde p(v)\partial_v\log F(v)
+  =
+  \sum_j \ii\,\widetilde p(u_j).
+\]
+Finally, \(F(u_j)=0\) means \(\ee^{-\zeta(u_j)}=-1\).  Choosing a logarithm
+branch gives \(-\zeta(u_j)=\ii\pi(2n_j+1)\), which is
+\eqref{eq:one-species-excited-root-quantization}.
+\end{proof}
+
+This proposition fixes the signs in the one-species formula above.  The
+minus sign in the driving term is not an optional convention: it is the
+integration-by-parts sign in the residue calculation.  The plus sign in the
+discrete energy contribution is equally fixed.  After the inverse mirror
+continuation of a crossed level-I root, the planar convention is
+\(\ii\widetilde p(u_j)=E(u_j)\).  Thus the deformed mirror free-energy
+formula produces the physical-magnon energy term in
+\eqref{eq:planar-n4-excited-tba-energy}, while the zero condition becomes
+the exact Bethe equation on the physical sheet.
+
 Let \(A,B\) range over the mirror Bethe-string species: physical
 \(Q\)-particle bound states, auxiliary \(y\)-roots, and auxiliary \(w\)-string
 families for the two \(\mathfrak{su}(2|2)\) wings.  Denote the mirror
