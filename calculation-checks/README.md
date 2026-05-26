@@ -98,7 +98,8 @@ Current checks:
   homogeneity/sign/combinatorial checks for the dynamic \(\Phi^4_3\) BPHZ
   local counterterm calculation, together with exact arithmetic for the
   abstract modelled-distribution fixed-point ball, contraction, and Picard
-  tail estimates.
+  tail estimates, plus the dyadic geometric-tail arithmetic in the random
+  model convergence criterion.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

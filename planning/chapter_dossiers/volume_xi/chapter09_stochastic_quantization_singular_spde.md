@@ -49,6 +49,10 @@ data.
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
 - `R F`: reconstruction of a modelled distribution.
+- `N_n`, `D_n`, `d_{K;gamma}`: random model seminorm, dyadic increment, and
+  model distance used in the random-model Cauchy criterion.
+- `Z_n`, `Z_infty`: cutoff random models and their limiting model on a finite
+  regularity sector.
 
 ## Claim Ledger
 
@@ -110,6 +114,12 @@ data.
   a closed ball to itself, is a contraction there, and has a unique solution
   with Lipschitz dependence on the lifted initial data plus stochastic
   convolution.
+- Proves a dyadic random-model convergence criterion: uniform \(L^p\) model
+  bounds and exponentially decaying \(L^p\) increments imply existence of a
+  limiting random model, \(L^p\) convergence with an explicit geometric tail,
+  almost-sure convergence with every weaker dyadic exponent, passage of the
+  model identities to the limit, and the limiting analytic bound by Fatou's
+  lemma.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -180,3 +190,10 @@ data maps.
   hypotheses rather than quoting the contraction argument.  The
   calculation-check companion verifies the ball condition, contraction
   constant, and Picard tail arithmetic.
+- 2026-05-26 issue #582 random-model convergence continuation: the chapter now
+  proves an abstract dyadic Cauchy criterion for random models.  The theorem
+  constructs the limiting model from the model-distance Cauchy property,
+  passes algebraic identities and analytic bounds to the limit, proves
+  \(L^p\) convergence with an explicit tail, and derives the almost-sure
+  dyadic rate by Markov and Borel-Cantelli.  The calculation-check companion
+  verifies the geometric-series arithmetic used in the tail bound.

@@ -1188,6 +1188,183 @@ BPHZ-renormalized random model with uniform analytic bounds, the convergence
 of those models as the mollifier is removed, and the nonlinear fixed-point
 argument in the corresponding modelled-distribution spaces.
 
+\begin{theorem}[Dyadic Cauchy criterion for random models]
+\label{thm:spde-random-model-cauchy-criterion}
+Fix a compact parabolic set \(K\), a regularity threshold \(\gamma>0\), and a
+finite homogeneity set \(A_{<\gamma}\).  Choose the test regularity
+\[
+  r>-\min A_{<\gamma}.
+\]
+Let \(Z_n=(\Pi^{(n)},\Gamma^{(n)})\), \(n\geq1\), be random models on this
+finite sector.  Define
+\[
+  N_n=
+  1+\|\Pi^{(n)}\|_{K;\gamma}+\|\Gamma^{(n)}\|_{K;\gamma},
+\]
+where the seminorms are those of
+Definition~\ref{def:spde-parabolic-modelled-distribution-norms}.  Let
+\(d_{K;\gamma}(Z,Z')\) denote the corresponding model distance, obtained by
+replacing \(\Pi\) and \(\Gamma\) in those seminorms by
+\(\Pi-\Pi'\) and \(\Gamma-\Gamma'\).  Suppose that, for some
+\(p\geq1\), \(\rho>0\), and constants \(C_N,C_D<\infty\),
+\begin{equation}
+  \sup_{n\geq1}\mathbb E N_n^p\leq C_N,
+  \qquad
+  \mathbb E\,d_{K;\gamma}(Z_{n+1},Z_n)^p\leq C_D2^{-p\rho n}.
+  \label{eq:spde-random-model-cauchy-hypotheses}
+\end{equation}
+Then there exists a random model
+\[
+  Z_\infty=(\Pi^{(\infty)},\Gamma^{(\infty)})
+\]
+on the same finite sector such that
+\[
+  d_{K;\gamma}(Z_n,Z_\infty)\longrightarrow0
+  \quad\hbox{in }L^p(\Omega)\hbox{ and almost surely}.
+\]
+More precisely,
+\begin{equation}
+  \left(
+    \mathbb E\,d_{K;\gamma}(Z_n,Z_\infty)^p
+  \right)^{1/p}
+  \leq
+  \frac{C_D^{1/p}}{1-2^{-\rho}}\,2^{-\rho n}.
+  \label{eq:spde-random-model-lp-tail}
+\end{equation}
+For every \(0<\rho'<\rho\), there is an almost surely finite random constant
+\(C_{\rho'}(\omega)\) such that
+\begin{equation}
+  d_{K;\gamma}(Z_n(\omega),Z_\infty(\omega))
+  \leq
+  C_{\rho'}(\omega)2^{-\rho'n}
+  \label{eq:spde-random-model-almost-sure-tail}
+\end{equation}
+for all \(n\).  The limiting model satisfies
+\[
+  \mathbb E
+  \bigl(
+    1+\|\Pi^{(\infty)}\|_{K;\gamma}
+     +\|\Gamma^{(\infty)}\|_{K;\gamma}
+  \bigr)^p
+  \leq C_N .
+\]
+\end{theorem}
+
+\begin{proof}
+Put
+\[
+  D_n=d_{K;\gamma}(Z_{n+1},Z_n).
+\]
+Minkowski's inequality and
+\eqref{eq:spde-random-model-cauchy-hypotheses} give, for \(m>n\),
+\[
+  \left(
+    \mathbb E\,d_{K;\gamma}(Z_m,Z_n)^p
+  \right)^{1/p}
+  \leq
+  \sum_{j=n}^{m-1}(\mathbb E D_j^p)^{1/p}
+  \leq
+  C_D^{1/p}\sum_{j=n}^{m-1}2^{-\rho j}.
+\]
+The geometric series is Cauchy, so \(Z_n\) is Cauchy in \(L^p\) for the
+model distance.  Letting \(m\to\infty\) after constructing the limit below
+will give \eqref{eq:spde-random-model-lp-tail}.
+
+We now construct the pointwise limiting model on the event where
+\(\sum_{n\geq1}D_n<\infty\).  This event has probability one, because
+\[
+  \mathbb E\sum_{n\geq1}D_n
+  \leq
+  C_D^{1/p}\sum_{n\geq1}2^{-\rho n}<\infty .
+\]
+Fix \(\omega\) in this event.  For each \(z\in K\),
+\(\alpha<\gamma\), and \(\tau\in T_\alpha\), the numbers
+\[
+  \left\langle
+    \Pi_z^{(n)}\tau,\varphi_z^\delta
+  \right\rangle
+\]
+are Cauchy uniformly over \(\varphi\in\mathcal B_r\) and
+\(\delta\in(0,1]\) after multiplication by \(\delta^{-\alpha}\).  Since
+\(r>-\min A_{<\gamma}\), the dyadic wavelet expansion used in the proof of
+Theorem~\ref{thm:spde-compact-reconstruction} implies that this Cauchy
+property determines a unique distribution, denoted
+\(\Pi_z^{(\infty)}\tau\), on the interior of \(K\).  The same distance
+bound gives Cauchy convergence of each finite-dimensional component
+\((\Gamma_{zz'}^{(n)}\tau)_\beta\); define its limit to be
+\((\Gamma_{zz'}^{(\infty)}\tau)_\beta\).
+
+The algebraic model identities pass to the limit.  For instance, at every
+finite cutoff,
+\[
+  \Pi_{z'}^{(n)}\tau
+  =
+  \Pi_z^{(n)}\Gamma_{zz'}^{(n)}\tau .
+\]
+Pair this identity with an arbitrary \(C^r\) test function supported in the
+interior of \(K\), expand the right-hand side into the finitely many
+homogeneous components of \(\Gamma_{zz'}^{(n)}\tau\), and take
+\(n\to\infty\).  The distributional convergence of the \(\Pi\)-components
+and the finite-dimensional convergence of the \(\Gamma\)-components give
+\[
+  \Pi_{z'}^{(\infty)}\tau
+  =
+  \Pi_z^{(\infty)}\Gamma_{zz'}^{(\infty)}\tau .
+\]
+The identities
+\(\Gamma_{zz}^{(n)}=\mathbf 1\) and
+\(\Gamma_{zz'}^{(n)}\Gamma_{z'z''}^{(n)}=\Gamma_{zz''}^{(n)}\) are
+polynomial identities among finitely many matrix entries on
+\(\bigoplus_{\alpha<\gamma}T_\alpha\), so their limits satisfy the same
+identities.
+
+The analytic bounds also pass to the limit.  For every fixed normalized test
+configuration and every fixed reexpansion component, the limiting value is
+the limit of the finite-cutoff values.  Taking the supremum gives
+\[
+  1+\|\Pi^{(\infty)}\|_{K;\gamma}
+   +\|\Gamma^{(\infty)}\|_{K;\gamma}
+  \leq
+  \liminf_{n\to\infty} N_n .
+\]
+Fatou's lemma therefore gives the displayed \(L^p\) bound on the limiting
+model.  The same telescoping estimate gives, on the probability-one event,
+\[
+  d_{K;\gamma}(Z_n,Z_\infty)
+  \leq
+  \sum_{j=n}^{\infty}D_j .
+\]
+Taking the \(L^p\) norm of this inequality proves
+\eqref{eq:spde-random-model-lp-tail}.
+
+It remains to prove the almost-sure rate.  Let \(0<\rho'<\rho\).  Markov's
+inequality gives
+\[
+  \mathbb P(D_n>2^{-\rho'n})
+  \leq
+  C_D\,2^{-p(\rho-\rho')n}.
+\]
+The right-hand side is summable in \(n\).  Borel--Cantelli implies that
+\(D_n\leq2^{-\rho'n}\) for all sufficiently large \(n\), almost surely.
+The finitely many earlier terms are absorbed into \(C_{\rho'}(\omega)\), and
+the tail bound
+\[
+  \sum_{j=n}^{\infty}2^{-\rho'j}
+  =
+  \frac{2^{-\rho'n}}{1-2^{-\rho'}}
+\]
+proves \eqref{eq:spde-random-model-almost-sure-tail}.
+\end{proof}
+
+Theorem~\ref{thm:spde-random-model-cauchy-criterion} reduces the convergence
+of a renormalized random model to two explicit analytic estimates: a uniform
+moment bound for the model seminorm and a dyadic Cauchy moment estimate for
+successive cutoff scales.  In a BPHZ construction these estimates are proved
+tree by tree, after the forest character has removed every divergent local
+subtree and after the remaining kernels have been bounded in the parabolic
+model norm.  The theorem above proves what those estimates imply; it does
+not prove the estimates for the concrete dynamic \(\Phi^4_3\) trees.
+
 For dynamic \(\Phi^4_3\), the symbols are generated by the noise \(\Xi\), the
 abstract integration map \(\mathcal I\), multiplication, and polynomials in
 the spacetime coordinates.  Negative-homogeneity trees encode precisely the
@@ -1633,7 +1810,9 @@ powers for the stochastic convolution; the parabolic Schauder and Besov or
 Holder multiplication estimates used in the Da Prato--Debussche fixed point;
 the global energy estimate and invariant-law identification for
 \(\Phi^4_2\); construction of the BPHZ-renormalized model for dynamic
-\(\Phi^4_3\); convergence of the renormalized models; verification that the
+\(\Phi^4_3\); proof of the uniform model moment bounds and dyadic Cauchy
+estimates needed in
+Theorem~\ref{thm:spde-random-model-cauchy-criterion}; verification that the
 concrete BPHZ model satisfies the Schauder and product estimates required by
 Theorem~\ref{thm:spde-abstract-modelled-fixed-point}; analytic derivation
 that the finite-cutoff local coordinates calculated above are exactly the

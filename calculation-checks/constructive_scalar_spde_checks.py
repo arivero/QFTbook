@@ -344,6 +344,28 @@ def check_modelled_fixed_point_contraction_arithmetic():
     assert_equal(tail, expected, "modelled fixed-point Picard tail")
 
 
+def check_random_model_cauchy_criterion_arithmetic():
+    # The random-model convergence theorem uses dyadic Cauchy estimates
+    # E D_n^p <= C 2^(-p rho n).  With rho=2, rho'=1, p=3, the
+    # Borel-Cantelli exponent p(rho-rho') is positive and the dyadic tail is
+    # exactly geometric.
+    p = 3
+    rho = Fraction(2)
+    rho_prime = Fraction(1)
+    markov_exponent = p * (rho - rho_prime)
+    assert_equal(markov_exponent, Fraction(3), "random-model Markov exponent")
+    if not markov_exponent > 0:
+        raise AssertionError("random-model Markov series is not summable")
+
+    n = 5
+    assert_equal(rho_prime, 1, "random-model sample rho prime")
+    dyadic_tail = sum(Fraction(1, 2) ** j for j in range(n, 40))
+    closed_tail = (Fraction(1, 2) ** n) / (1 - Fraction(1, 2))
+    finite_remainder = (Fraction(1, 2) ** 40) / (1 - Fraction(1, 2))
+    assert_equal(dyadic_tail + finite_remainder, closed_tail, "random-model geometric tail")
+    assert_equal(closed_tail, Fraction(1, 16), "random-model tail at n=5")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
@@ -358,7 +380,8 @@ def main():
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
     check_modelled_fixed_point_contraction_arithmetic()
-    print("All constructive scalar/SPDE Wick, power-counting, DPD, reconstruction, BPHZ, and fixed-point checks passed.")
+    check_random_model_cauchy_criterion_arithmetic()
+    print("All constructive scalar/SPDE Wick, power-counting, DPD, reconstruction, BPHZ, fixed-point, and random-model convergence checks passed.")
 
 
 if __name__ == "__main__":
