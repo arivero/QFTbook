@@ -29,6 +29,20 @@ of backgrounds, anomalies, gauging, and condensation.
   two-cochains on `Y`.
 - `(e,m)`: finite electric/magnetic one-form line charge label in
   `Z_N plus Z_N`.
+- `j_5`: axial current normalized as in Chapter 50.
+- `j_m`: magnetic one-form symmetry current in compact QED.
+- `A_{N,p}`: minimal abelian three-dimensional TQFT with `Z_N` one-form
+  symmetry anomaly `p`; spin refinement included when required.
+- `B_A`: reduction of `[F/2 pi]` modulo `N` on the defect worldvolume.
+- `D_{N,p}(M)`: dressed rational chiral defect on a closed oriented
+  three-manifold `M`.
+- `a`: compact `U(1)` gauge field living only on the `U(1)_N` defect for
+  `p=1`.
+- `b`, `c` in the QED half-space construction: compact two-form and one-form
+  gauge fields on `X_+` used to gauge the `Z_N` subgroup of the magnetic
+  one-form symmetry.
+- `H(gamma)`: minimal renormalized `U(1)` 't Hooft line, as defined in
+  Volume IX Chapter 3.
 
 ## Claim Ledger
 
@@ -53,9 +67,20 @@ of backgrounds, anomalies, gauging, and condensation.
   noninvertible condensation defects in four-dimensional QFT: the finite
   cochain mechanism is proved here, while the continuum surface-operator
   construction remains a separate QFT input.
-- Records the source-lineage theorem boundary for noninvertible chiral defects
-  in abelian gauge theory and explicitly states the missing regulator-level
-  construction needed before the result can be used as a monograph theorem.
+- Defines the compact-QED noninvertible chiral defect `D_{N,p}` by dressing a
+  rational axial wall with the minimal abelian TQFT `A_{N,p}` coupled to the
+  magnetic background `B_A`.
+- Proves the local topological cancellation for `D_{N,1}`: the axial anomaly
+  phase is cancelled by the fractional Hall response of the compact defect
+  Chern-Simons theory.
+- Gives the half-space gauging construction of `D_{N,p}` by gauging the
+  `Z_N` subgroup of the magnetic one-form symmetry with compact fields `b,c`,
+  including the discrete-torsion choice and the compensating rational axial
+  change of variables.
+- States the compact path-integral theorem for QED noninvertible chiral
+  defects, including their action on local fermions, Wilson lines, and
+  minimal 't Hooft lines, while separating this from a future fully axiomatic
+  reconstruction of compact QED and its defect Hilbert spaces.
 - Clarifies that four-dimensional generalized symmetry generally requires a
   higher-categorical defect object, while fusion two-categories arise from
   controlled truncations or wall theories.

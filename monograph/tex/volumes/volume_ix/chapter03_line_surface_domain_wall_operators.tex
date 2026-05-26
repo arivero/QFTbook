@@ -64,6 +64,60 @@ spectrum is part of the definition of a gauge theory: it is fixed by the
 global gauge group, the allowed bundles, and the chosen mutually local
 electric-magnetic charge lattice.
 
+\begin{definition}[Renormalized 't Hooft line]
+\label{def:renormalized-thooft-line}
+Let \(X\) be an oriented four-manifold, let \(\gamma\subset X\) be an oriented
+embedded curve, and let \(G\) be a compact connected gauge group with maximal
+torus \(T\) and Weyl group \(W\).  A bare magnetic line of magnetic charge
+\[
+  m\in\operatorname{Hom}(U(1),T)/W
+\]
+is defined by removing a tubular neighborhood \(N_\epsilon(\gamma)\) and
+integrating over \(G\)-connections on \(X\setminus N_\epsilon(\gamma)\) whose
+restriction to each small linking sphere \(S^2_p\) lies in the topological
+class determined by \(m\).  In a local trivialization over
+\(\gamma\times(S^2_p\setminus\{\text{Dirac ray}\})\), this means that the
+connection is gauge-equivalent near the boundary to the embedded Dirac
+monopole
+\[
+  F\sim \frac{m_*}{2}\sin\theta\,\dd\theta\wedge\dd\varphi ,
+  \qquad
+  \int_{S^2_p}\frac{F}{2\pi}=m_* ,
+\]
+where \(m_*\in\mathfrak t\) is the differential of the cocharacter in the
+chosen normalization.  Gauge transformations are required to preserve the
+cocharacter class on the boundary.  Let \(\mathcal A_m\) denote the resulting
+space of regulated connections and let \(\mathcal G_m\) denote the
+corresponding boundary-preserving gauge group.  The renormalized 't Hooft line
+\(H_m(\gamma)\) is the limit
+\[
+  H_m(\gamma)
+  =
+  \lim_{\epsilon\to0}
+  Z_{\rm line}(\epsilon)\,
+  \int_{\mathcal A_m(X\setminus N_\epsilon(\gamma))/\mathcal G_m}
+  \mathcal D A\,\exp(-S[A])
+\]
+as a correlation functional with the same additional insertions, after
+multiplication by local line counterterms \(Z_{\rm line}(\epsilon)\).  The
+definition exists only in a specified regulator or constructive framework in
+which the limit and the allowed counterterms are part of the line-operator
+data.
+\end{definition}
+
+For \(G=U(1)\), the cocharacter lattice is \(\mathbb Z\).  The minimal
+'t Hooft line \(H(\gamma)\) has magnetic charge \(1\), so the boundary
+condition is
+\[
+  \int_{S^2_p}\frac{F}{2\pi}=1
+\]
+for every small linking sphere.  If the line also carries electric charge
+\(q\), one multiplies the magnetic boundary condition by a Wilson factor for
+the unbroken gauge group along \(\gamma\); this gives a dyonic line.  A
+dynamical monopole operator is an endpoint for such a magnetic line.  Hence a
+theory containing dynamical monopoles does not have the magnetic one-form
+symmetry under which closed 't Hooft lines are charged.
+
 \section{Surface Operators}
 
 A surface operator supported on a two-dimensional submanifold \(\Sigma\) may

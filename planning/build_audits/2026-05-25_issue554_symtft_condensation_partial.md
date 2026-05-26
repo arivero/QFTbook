@@ -2,14 +2,15 @@
 
 ## Scope
 
-This pass addresses the finite and theorem-level parts of GitHub issue #554:
+This audit covers the finite SymTFT, condensation-defect, and abelian
+noninvertible chiral-defect work for GitHub issue #554:
 
 - finite five-dimensional `Z_N` one-form symmetry TQFT;
 - boundary fixed/summed interpretation of one-form gauging;
 - finite higher-gauging condensation defect and its fusion calculation;
 - relationship to four-dimensional noninvertible condensation defects;
-- source-lineage boundary for noninvertible chiral defects in abelian gauge
-  theory;
+- explicit compact-QED noninvertible chiral defects, including fractional Hall
+  dressing, half-space magnetic gauging, fusion, and action on 't Hooft lines;
 - categorical-level warning for fusion two-category truncations.
 
 ## Edits
@@ -27,9 +28,21 @@ This pass addresses the finite and theorem-level parts of GitHub issue #554:
 - Added a quoted theorem boundary for four-dimensional condensation defects:
   the finite cochain mechanism is proved in the chapter, while the continuum
   construction of surface operators and junctions remains a separate QFT input.
-- Added a quoted theorem boundary for noninvertible chiral defects in abelian
-  gauge theory, explicitly stating that the regulator-level construction is not
-  yet supplied in the monograph.
+- Replaced the previous quoted theorem boundary for noninvertible chiral
+  defects with an explicit compact-QED construction: the rational axial wall is
+  dressed by the three-dimensional \(\mathcal A_{N,p}\) Hall theory, with
+  compact \(B_A=[F/(2\pi)]\bmod N\) coupling.
+- Proved the topological cancellation for \(D_{N,1}\), described the general
+  \(p/N\) cancellation by the Pontryagin-square one-form anomaly, and added the
+  half-space magnetic gauging construction with compact fields \(b,c\).
+- Added the action on local fermions, Wilson lines, and renormalized 't Hooft
+  lines, and proved noninvertibility through orientation-reverse fusion into a
+  magnetic condensation defect.
+- Added a rigorous renormalized 't Hooft-line definition in
+  `monograph/tex/volumes/volume_ix/chapter03_line_surface_domain_wall_operators.tex`
+  as a tubular-neighborhood boundary condition with cocharacter magnetic
+  charge, boundary-preserving gauge transformations, and local line
+  counterterms in a specified regulator or constructive framework.
 - Added a higher-categorical truncation section distinguishing the full
   four-dimensional defect object from fusion two-category truncations.
 - Added a cross-reference in
@@ -47,12 +60,15 @@ This pass addresses the finite and theorem-level parts of GitHub issue #554:
   fractions with `\frac`, shortening an overfull quoted-theorem title, and
   making the local comparison ledger unnumbered so the table of contents does
   not create an overfull section number.
+- Follow-up build after the QED defect and 't Hooft-line additions:
+  `tools/build_monograph.sh` clean; `pdfinfo monograph/tex/main.pdf` reports
+  1305 pages.
 
 ## Issue Status
 
-Issue #554 should remain open after this pass.  The finite SymTFT and
-condensation-defect mechanism have been developed and proved at the cochain
-level, but the issue also asks for an explicit noninvertible chiral-defect
-operator construction in QED.  The chapter now records the known theorem
-boundary and the missing regulator-level construction; it does not yet provide
-that construction as a self-contained monograph proof.
+Issue #554 can now be closed.  The finite cochain SymTFT mechanism is proved,
+the compact-QED noninvertible chiral defect is constructed explicitly as a
+path-integral defect, and the text states the remaining theorem boundary
+honestly: a fully axiomatic version would still require a nonperturbative
+reconstruction of compact QED, its charged line sectors, and the associated
+defect Hilbert spaces.

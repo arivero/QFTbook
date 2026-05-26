@@ -278,9 +278,276 @@ junctions in the particular interacting QFT under discussion.
 \section{Chiral Defects In Abelian Gauge Theory}
 \label{sec:chiral-defects-abelian-gauge-theory}
 
-Let a four-dimensional abelian gauge theory contain massless fermions with a
-classical chiral transformation \(R_\alpha\).  Suppose the ABJ anomaly changes
-the action by
+We now give the explicit abelian construction.  Work on an oriented spin
+four-manifold and take compact unit-charge massless QED with gauge field
+\(A\), curvature \(F=\dd A\), and flux normalization
+\[
+  \int_\Sigma \frac{F}{2\pi}\in\mathbb Z
+\]
+for every closed two-cycle \(\Sigma\).  Let \(j_5\) be the axial current in the
+normalization of Chapter~\ref{ch:volume-ii-20}: the axial rotation
+by angle \(\alpha\) acts on the Dirac field by
+\[
+  \psi\mapsto \exp(\ii\alpha\gamma_5/2)\psi ,
+\]
+and, in the massless theory,
+\begin{equation}
+  \dd\star j_5=\frac{1}{4\pi^2}F\wedge F .
+  \label{eq:qed-form-axial-anomaly-for-chiral-defect}
+\end{equation}
+This is the differential-form version of
+\eqref{eq:abelian-axial-anomaly} with \(e=q=1\).  The magnetic one-form
+symmetry has current
+\[
+  j_m=\frac{1}{2\pi}\star F,
+  \qquad
+  \dd\star j_m=\frac{1}{2\pi}\dd F=0 .
+\]
+It is part of the QFT datum only when no dynamical monopole operator has been
+included; an inserted or dynamical monopole is an endpoint for the charged
+'t Hooft line and explicitly breaks this symmetry.
+
+For a closed oriented three-manifold \(M\) supporting a defect, the naive axial
+wall
+\[
+  U_\alpha(M)
+  =
+  \exp\left(\frac{\ii\alpha}{2}\int_M\star j_5\right)
+\]
+is not topological.  If \(M\) is moved across a four-chain \(W\),
+\eqref{eq:qed-form-axial-anomaly-for-chiral-defect} changes it by
+\[
+  \exp\left(\frac{\ii\alpha}{8\pi^2}\int_W F\wedge F\right).
+\]
+It is also not a well-defined compact-gauge-field operator after replacing
+\(\star j_5\) by the formally conserved Chern--Simons-improved current,
+because the required fractional Chern--Simons level is not invariant under
+large gauge transformations on a general compact \(M\).
+
+\subsection{The Fractional Hall Dressing}
+
+Let \(N>0\), let \(p\in\mathbb Z\) with \(\gcd(p,N)=1\), and put
+\[
+  \alpha=\frac{2\pi p}{N}.
+\]
+Let \(\mathcal A_{N,p}\) denote the minimal abelian three-dimensional TQFT with
+a \(\mathbb Z_N\) one-form symmetry whose generating line \(\ell\) has spins
+\[
+  h(\ell^s)=\frac{p s^2}{2N}\quad \bmod 1 .
+\]
+The spin refinement of \(\mathcal A_{N,p}\) is included when the pair
+\((N,p)\) requires it; the spin structure on \(M\) is inherited from the
+ambient spin four-manifold.  Equivalently, coupling this one-form symmetry to
+a \(\mathbb Z_N\)-valued two-cocycle \(B\) has four-dimensional inflow
+\[
+  \exp\left(
+  -\frac{2\pi\ii p}{2N}\int_Y P(B)
+  \right),
+\]
+on a four-manifold \(Y\) extending the background; \(P\) is the
+Pontryagin-square cohomology operation.  When the integral curvature class of
+\(A|_M\) is reduced modulo \(N\), it defines
+\[
+  B_A=\left[\frac{F}{2\pi}\right]\bmod N
+  \in H^2(M,\mathbb Z_N).
+\]
+The dressed chiral defect is
+\begin{equation}
+  D_{N,p}(M)
+  =
+  \exp\left(\frac{\pi\ii p}{N}\int_M\star j_5\right)
+  Z_{\mathcal A_{N,p}}(M;B_A).
+  \label{eq:qed-noninvertible-chiral-defect-general}
+\end{equation}
+For \(p=1\), the minimal theory is the \(U(1)_N\) Chern--Simons theory, and
+\eqref{eq:qed-noninvertible-chiral-defect-general} becomes the more concrete
+path integral
+\begin{equation}
+  D_{N,1}(M)
+  =
+  \int\mathcal D a\,
+  \exp\left[
+  \frac{\pi\ii}{N}\int_M\star j_5
+  +
+  \ii\int_M
+  \left(
+    \frac{N}{4\pi}a\wedge\dd a
+    +\frac{1}{2\pi}a\wedge\dd A
+  \right)
+  \right],
+  \label{eq:qed-noninvertible-chiral-defect-u1n}
+\end{equation}
+where \(a\) is a compact \(U(1)\) gauge field living only on the defect
+worldvolume.  The field \(a\) is not a new bulk particle; it is part of the
+operator insertion.
+
+\begin{proposition}[Topological cancellation for \(D_{N,1}\)]
+\label{prop:qed-dn1-topological-cancellation}
+In the massless compact QED path integral without dynamical monopoles, the
+operator \eqref{eq:qed-noninvertible-chiral-defect-u1n} is invariant under
+smooth deformations of \(M\) that avoid charged insertions.
+\end{proposition}
+
+\begin{proof}
+Let \(M_0\) and \(M_1\) be two homologous placements of the defect and let
+\(W\) be the oriented four-chain swept out by the deformation.  The axial
+factor in \eqref{eq:qed-noninvertible-chiral-defect-u1n} changes by
+  \[
+  \exp\left(\frac{\pi\ii}{N}\int_W\dd\star j_5\right)
+  =
+  \exp\left(\frac{\ii}{4\pi N}\int_W F\wedge F\right).
+\]
+The \(U(1)_N\) defect theory is gauge invariant as a compact
+Chern--Simons theory.  To compute its local dependence on the ambient field
+\(A\), one may integrate out \(a\) at the level of the response action:
+the equation of motion is \(N\dd a+\dd A=0\), so locally
+\[
+  \frac{N}{4\pi}a\wedge\dd a+\frac{1}{2\pi}a\wedge\dd A
+  \quad\leadsto\quad
+  -\frac{1}{4\pi N}A\wedge\dd A .
+\]
+Therefore the change of the Hall response under the same deformation is
+\[
+  \exp\left(
+  -\frac{\ii}{4\pi N}\int_W F\wedge F
+  \right),
+\]
+which cancels the axial-anomaly phase.  The argument uses only the local
+response to a deformation; the compact \(a\)-path integral in
+\eqref{eq:qed-noninvertible-chiral-defect-u1n} is what makes the operator
+globally well-defined under large gauge transformations.
+\end{proof}
+
+For general \(p/N\), the same cancellation is expressed by the one-form anomaly
+of \(\mathcal A_{N,p}\).  The Pontryagin-square response of
+\(\mathcal A_{N,p}(B_A)\) is the compact, gauge-invariant replacement for the
+fractional Chern--Simons counterterm whose differential-form shadow is
+\[
+  -\frac{\ii p}{4\pi N}\int A\wedge\dd A .
+\]
+Its deformation phase cancels the axial phase from
+\eqref{eq:qed-form-axial-anomaly-for-chiral-defect}.  Thus
+\eqref{eq:qed-noninvertible-chiral-defect-general} is the compact
+topological defect associated with the rational axial angle \(2\pi p/N\).
+
+\subsection{Half-Space Gauging Proof}
+
+There is a second construction that explains why the defect is tied to the
+magnetic one-form symmetry.  Let \(X_+=\{x\ge0\}\) and let \(M=\partial X_+\).
+To gauge the \(\mathbb Z_N\) subgroup of the magnetic \(U(1)^{(1)}\) symmetry
+in \(X_+\), introduce a compact two-form gauge field \(b\) and a compact
+one-form gauge field \(c\) on \(X_+\).  For \(k\in\mathbb Z\) satisfying
+\[
+  pk\equiv1\pmod N,
+\]
+add
+\begin{equation}
+  S_{\mathrm{mag},N,k}
+  =
+  \ii\int_{X_+}
+  \left(
+    \frac{1}{2\pi}b\wedge F
+    +\frac{N}{2\pi}b\wedge\dd c
+    +\frac{Nk}{4\pi}b\wedge b
+  \right).
+  \label{eq:qed-half-space-magnetic-gauging}
+\end{equation}
+The \(c\)-equation imposes the flatness condition that makes \(b\) a
+\(\mathbb Z_N\) two-form gauge field after the finite gauge quotient.  The
+last term is the discrete-torsion choice.  In the smooth sector, completing
+the square gives the theta-angle shift
+\[
+  \Delta S_\theta
+  =
+  -\frac{\ii p}{4\pi N}\int_{X_+}F\wedge F,
+\]
+with the integral quantization fixed by the compact \(b,c\) path integral.
+The massless axial change of variables with
+\[
+  \alpha(x)=\frac{2\pi p}{N}\Theta(x)
+\]
+contributes the inverse phase and a boundary insertion
+\[
+  \exp\left(\frac{\pi\ii p}{N}\int_M\star j_5\right).
+\]
+After imposing the topological boundary condition \(b|_M=0\), the remaining
+boundary theory produced by the \(b,c\) path integral is precisely
+\(\mathcal A_{N,p}(B_A)\).  The interface between the ungauged side and the
+half-space-gauged side is therefore
+\eqref{eq:qed-noninvertible-chiral-defect-general}.  Since the operation is
+gauging on a half-space followed by a change of variables, the interface is
+topological as long as the magnetic one-form symmetry is unbroken.
+
+\subsection{Fusion And Action On Operators}
+
+The defect acts on local fermion operators by the axial rotation
+\[
+  \psi\mapsto \exp(\pi\ii p\gamma_5/N)\psi .
+\]
+Wilson lines are not charged under the magnetic one-form symmetry, so the
+half-space gauging part leaves them unchanged.  A minimal 't Hooft line
+\(H(\gamma)\), in the sense of
+Definition~\ref{def:renormalized-thooft-line}, is charged.  If
+\(\gamma=\partial\Sigma\) while the defect is swept past the line, gauge
+invariance attaches the surface factor
+\begin{equation}
+  H(\gamma)\longmapsto
+  H(\gamma)\,
+  \exp\left(\frac{\ii p}{N}\int_\Sigma F\right),
+  \label{eq:qed-chiral-defect-action-on-thooft-line}
+\end{equation}
+with \(\Sigma\) stretching between the line and the displaced defect.  This is
+the operational reason the defect is not an ordinary axial symmetry operator:
+its action on extended operators remembers the magnetic one-form symmetry.
+
+The orientation-reverse fusion already shows noninvertibility.  For \(p=1\),
+\[
+  D_{N,1}(M)D_{N,1}^\dagger(M)
+  =
+  \int\mathcal D a\,\mathcal D\bar a\,
+  \exp\left[
+  \ii\int_M
+  \left(
+    \frac{N}{4\pi}a\wedge\dd a
+    -\frac{N}{4\pi}\bar a\wedge\dd\bar a
+    +\frac{1}{2\pi}(a-\bar a)\wedge\dd A
+  \right)
+  \right].
+  \label{eq:qed-dn1-orientation-reverse-fusion}
+\]
+The axial factors cancel, but the Hall theories do not cancel to the trivial
+three-dimensional theory.  Equation
+\eqref{eq:qed-dn1-orientation-reverse-fusion} is the magnetic
+\(\mathbb Z_N\) condensation operator.  In the finite cochain language used
+above, its general \(p\) analogue is a sum over \(\mathbb Z_N\)-valued
+two-cocycles on \(M\), weighted by the Pontryagin-square phase and by the
+corresponding magnetic one-form symmetry surface network.  Thus the fusion
+coefficient is a three-dimensional TQFT or finite state sum, not a number.
+
+\begin{theorem}[QED noninvertible chiral defects]
+\label{thm:qed-noninvertible-chiral-defects}
+In compact unit-charge massless QED on oriented spin four-manifolds, with no
+dynamical monopoles and with the magnetic one-form symmetry retained as part
+of the QFT datum, every rational axial angle \(2\pi p/N\) with
+\(\gcd(p,N)=1\) defines the topological defect
+\(D_{N,p}\) in \eqref{eq:qed-noninvertible-chiral-defect-general}.  The defect
+acts on local fermions by the corresponding axial rotation, acts on 't Hooft
+lines by \eqref{eq:qed-chiral-defect-action-on-thooft-line}, and is
+noninvertible because
+\(D_{N,p}D_{N,p}^{\dagger}\) is a magnetic condensation defect rather than the
+invisible defect.
+\end{theorem}
+
+This theorem is a theorem of the compact path-integral construction just
+given.  A fully axiomatic version would still require constructing compact
+QED, its charged line sectors, and the defect Hilbert spaces in a
+nonperturbative reconstruction framework.  If dynamical monopoles are added,
+the magnetic one-form symmetry has endpoints and the half-space gauging step
+is no longer topological; the defect then fails to define an exact symmetry.
+
+Let a more general four-dimensional abelian gauge theory contain massless
+fermions with a classical chiral transformation \(R_\alpha\).  Suppose the ABJ
+anomaly changes the action by
 \[
   \Delta S_\alpha
   =
@@ -296,26 +563,6 @@ three-dimensional topological theory whose anyons attach to magnetic
 background flux sectors.  The resulting dressed defect is generally
 noninvertible: fusing it with its orientation reverse leaves a sum or a
 three-dimensional topological factor rather than the invisible defect alone.
-
-\begin{quotedtheorem}[Noninvertible chiral defects, source-lineage form]
-\label{qt:noninvertible-chiral-defects-source-lineage}
-In massless abelian gauge theories with no dynamical monopoles and with the
-magnetic one-form symmetry kept as part of the QFT datum, certain rational
-chiral rotations whose ABJ anomaly is not an ordinary symmetry can be dressed
-by lower-dimensional topological degrees of freedom to define topological
-noninvertible chiral defects.  If dynamical monopoles are added so that the
-magnetic one-form symmetry is explicitly broken, the dressed defect is no
-longer topological and the associated selection rule can be violated by
-monopole operators.
-\end{quotedtheorem}
-
-We will not use this quoted theorem as a black-box axiom in later arguments.
-For the standard of this monograph, the still-missing part is a
-regulator-level construction that simultaneously defines the massless fermion
-measure, the magnetic one-form symmetry backgrounds, the three-dimensional
-defect theory, and reflection-positive defect Hilbert spaces.  The statement is
-therefore recorded as a precise target for later development rather than as a
-completed derivation.
 
 \section{Higher Fusion Categories And Truncations}
 \label{sec:higher-fusion-categories-truncations}
