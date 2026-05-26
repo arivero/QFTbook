@@ -3,133 +3,666 @@
 
 \ConventionsEuclidean
 
-This chapter begins the four-dimensional cohomological gauge theory that
-connects Donaldson invariants to the low-energy Seiberg-Witten description.
-The comparison is treated as an RG statement about a twisted
-\(\mathcal N=2\) gauge theory and its Abelian Coulomb-branch effective theory.
+This chapter develops the four-dimensional cohomological gauge theory whose
+correlation functions are Donaldson invariants and explains the precise
+mathematical content of the comparison with Seiberg-Witten monopole theory.
+There are three logically distinct layers.  The first layer is finite
+dimensional differential geometry: anti-self-dual connections, monopole
+equations, deformation complexes, orientations, compactifications, and
+intersection pairings.  The second layer is cohomological field theory:
+twisted supersymmetry, descent, \(Q\)-exact metric variation, and contact
+terms.  The third layer is the four-dimensional RG statement: the twisted
+non-Abelian ultraviolet theory has a Coulomb-branch Wilsonian description
+whose singular fibers are Abelian monopole theories.  The chapter keeps these
+layers separate because they have different hypotheses and different
+mathematical status.
 
-\section{Twisted Yang-Mills Datum}
+\section{Four-Manifold And Gauge Conventions}
 
-Let \(X\) be a compact oriented smooth four-manifold and let \(P\to X\) be a
-principal \(SU(2)\) bundle.  The Donaldson twist of pure
-\(\mathcal N=2\) Yang--Mills theory uses the scalar supercharge \(Q\) of
-Chapter~\ref{ch:tqft-twists-of-supersymmetric-theories}.  The bosonic gauge
-field is a connection \(A\) on \(P\), and the localization equation in the
-ultraviolet weak-coupling chart is
+Let \(X\) be a closed connected oriented smooth four-manifold equipped with a
+Riemannian metric \(g\).  The Hodge star operator satisfies
 \[
-  F_A^+=0 .
+  *_g^2=1\quad\text{on }\Omega^2(X),
+\]
+and the bundle of two-forms decomposes as
+\[
+  \Lambda^2T^*X=\Lambda^{2,+}T^*X\oplus\Lambda^{2,-}T^*X .
+\]
+For a two-form \(\omega\), write
+\[
+  \omega^\pm=\frac{1}{2}(\omega\pm *_g\omega).
+\]
+The integer \(b_2^+(X)\) is the dimension of a maximal positive subspace of
+the intersection form on \(H^2(X;\mathbb R)\), equivalently the dimension of
+the space of harmonic self-dual two-forms for any metric \(g\).  The Euler
+characteristic and signature are
+\[
+  \chi(X)=2-2b_1(X)+b_2^+(X)+b_2^-(X),
+  \qquad
+  \sigma(X)=b_2^+(X)-b_2^-(X).
+\]
+
+Let \(P\to X\) be a principal \(SU(2)\) bundle and let
+\(\operatorname{ad}P=P\times_{\operatorname{Ad}}\mathfrak{su}(2)\).  The
+gauge group is
+\[
+  \mathcal G_P=\Gamma(X,P\times_{\operatorname{Ad}}SU(2)).
+\]
+The monograph uses the gauge trace convention fixed in the gauge-theory
+volumes:
+\[
+  \operatorname{tr}(t^at^b)=\delta^{ab}
+\]
+for the fundamental \(SU(N)\) generators.  With this convention the Euclidean
+Yang--Mills action is written
+\[
+  S_{\mathrm{YM}}(A)
+  =
+  \frac{1}{4g_{\mathrm{YM}}^2}
+  \int_X d\operatorname{vol}_g\,
+  \operatorname{tr}(F_{A,\mu\nu}F_A^{\mu\nu})
+  -\frac{i\theta}{8\pi^2}\int_X\operatorname{tr}(F_A\wedge F_A).
+\]
+Equivalently,
+\[
+  S_{\mathrm{YM}}(A)
+  =
+  \frac{1}{2g_{\mathrm{YM}}^2}
+  \int_X\operatorname{tr}(F_A\wedge *_gF_A)
+  -\frac{i\theta}{8\pi^2}\int_X\operatorname{tr}(F_A\wedge F_A).
 \]
 The instanton number is
 \[
-  k=-\frac{1}{8\pi^2}\int_X\operatorname{tr}(F_A\wedge F_A)
-\]
-in the trace convention used for the gauge theory.
-
-\section{Instanton Moduli Space}
-
-The anti-self-dual moduli space is
-\[
-  \mathcal M_k(P)
+  k(P)
   =
-  \{A\mid F_A^+=0\}/\mathcal G_P ,
+  -\frac{1}{8\pi^2}\int_X\operatorname{tr}(F_A\wedge F_A).
 \]
-where \(\mathcal G_P\) is the gauge transformation group.  At an irreducible
-smooth point, its tangent and obstruction spaces are the cohomology of
+It is independent of the connection \(A\).  For \(SU(2)\), this integer is
+the second Chern number \(c_2(P)\) in the present trace convention.
+
+The curvature decomposes as \(F_A=F_A^+ + F_A^-\).  Define
 \[
-  0\longrightarrow \Omega^0(X,\operatorname{ad}P)
-  \overset{d_A}{\longrightarrow}
+  \|F_A^\pm\|^2=\int_X\operatorname{tr}(F_A^\pm\wedge *_gF_A^\pm).
+\]
+Then
+\[
+  \int_X\operatorname{tr}(F_A\wedge *_gF_A)
+  =
+  \|F_A^+\|^2+\|F_A^-\|^2,
+  \qquad
+  \int_X\operatorname{tr}(F_A\wedge F_A)
+  =
+  \|F_A^+\|^2-\|F_A^-\|^2.
+\]
+Hence
+\[
+  \frac{1}{2g_{\mathrm{YM}}^2}
+  \int_X\operatorname{tr}(F_A\wedge *_gF_A)
+  =
+  \frac{1}{g_{\mathrm{YM}}^2}\|F_A^+\|^2
+  +\frac{4\pi^2}{g_{\mathrm{YM}}^2}k(P).
+\]
+The anti-self-dual equation
+\[
+  F_A^+=0
+\]
+therefore saturates the topological bound in the sector \(k(P)\ge 0\).  The
+normalization \(4\pi^2 k/g_{\mathrm{YM}}^2\) is the trace-delta version of
+the common half-trace expression \(8\pi^2 k/g_{\mathrm{ht}}^2\), with
+\(g_{\mathrm{ht}}^2=2g_{\mathrm{YM}}^2\).
+
+\section{Donaldson-Witten Cohomological Fields}
+
+The Donaldson twist of the pure four-dimensional \(\mathcal N=2\) vector
+multiplet was defined in
+Chapter~\ref{ch:tqft-twists-of-supersymmetric-theories}.  After twisting,
+the fields are organized as differential forms on \(X\):
+\[
+  A\in\mathcal A(P),\qquad
+  \phi,\bar\phi\in\Omega^0(X,\operatorname{ad}P),\qquad
+  \psi\in\Omega^1(X,\operatorname{ad}P),
+\]
+\[
+  \chi^+\in\Omega^{2,+}(X,\operatorname{ad}P),\qquad
+  \eta\in\Omega^0(X,\operatorname{ad}P),
+\]
+together with an auxiliary self-dual field
+\[
+  H^+\in\Omega^{2,+}(X,\operatorname{ad}P).
+\]
+The scalar odd symmetry \(Q\) acts by
+\[
+\begin{aligned}
+  &QA=\psi,\qquad &&Q\psi=-d_A\phi,\qquad &&Q\phi=0,\\
+  &Q\bar\phi=\eta,\qquad &&Q\eta=[\phi,\bar\phi],\qquad
+  &&Q\chi^+=H^+,\qquad QH^+=[\phi,\chi^+] .
+\end{aligned}
+\]
+Thus \(Q^2\) is the infinitesimal gauge transformation with parameter
+\(-\phi\) on \(A\) and with the corresponding adjoint action on all adjoint
+fields.  On gauge-invariant observables, \(Q^2=0\).
+
+The bosonic localization term may be chosen so that its \(H^+\)-dependent part
+has the form
+\[
+  \int_X\operatorname{tr}\left(
+  \frac{1}{2}H^+\wedge *_gH^+
+  +H^+\wedge *_gF_A^+
+  \right).
+\]
+The algebraic equation of motion for \(H^+\) gives \(H^+=-F_A^+\), and the
+corresponding bosonic square is proportional to
+\[
+  \|F_A^+\|^2 .
+\]
+Hence the weak-coupling localization locus in a fixed instanton sector is the
+anti-self-dual equation \(F_A^+=0\).  Metric independence of \(Q\)-closed
+correlators follows from the Ward identity of
+Proposition~\ref{prop:twist-metric-independence} once a regulator, contact
+prescription, and compactification boundary prescription preserving the
+required \(Q\)-relations have been fixed.
+
+\section{The Anti-Self-Dual Moduli Space}
+
+The anti-self-dual moduli space in the sector \(P\) is
+\[
+  \mathcal M(P,g)
+  =
+  \{A\in\mathcal A(P)\mid F_A^+=0\}/\mathcal G_P .
+\]
+A connection \(A\) is irreducible when its stabilizer in \(\mathcal G_P\) is
+the center of \(SU(2)\).  At an irreducible anti-self-dual connection, the
+linearized equation and infinitesimal gauge transformations form the elliptic
+complex
+\[
+  0\longrightarrow
+  \Omega^0(X,\operatorname{ad}P)
+  \xrightarrow{\,d_A\,}
   \Omega^1(X,\operatorname{ad}P)
-  \overset{d_A^+}{\longrightarrow}
+  \xrightarrow{\,d_A^+\,}
   \Omega^{2,+}(X,\operatorname{ad}P)
   \longrightarrow0 .
 \]
-For \(SU(2)\), the virtual dimension is
+Its cohomology groups are denoted
 \[
-  \dim_{\mathrm{vir}}\mathcal M_k
+  H_A^0,\qquad H_A^1,\qquad H_A^2 .
+\]
+Irreducibility gives \(H_A^0=0\).  The Zariski tangent space is \(H_A^1\), and
+\(H_A^2\) is the obstruction space.  When \(H_A^2=0\), the moduli space is a
+smooth manifold near \([A]\) of dimension \(\dim H_A^1\).
+
+The gauge-fixed elliptic operator is
+\[
+  D_A=d_A^*\oplus d_A^+:
+  \Omega^1(X,\operatorname{ad}P)
+  \longrightarrow
+  \Omega^0(X,\operatorname{ad}P)\oplus
+  \Omega^{2,+}(X,\operatorname{ad}P).
+\]
+Its index equals the virtual dimension
+\[
+  \dim_{\mathrm{vir}}\mathcal M(P,g)
+  =
+  \dim H_A^1-\dim H_A^0-\dim H_A^2 .
+\]
+
+\begin{proposition}[Index of the anti-self-dual complex]
+\label{prop:asd-index}
+For \(P\to X\) a principal \(SU(2)\) bundle with instanton number \(k\), the
+virtual dimension of the anti-self-dual moduli space is
+\[
+  \dim_{\mathrm{vir}}\mathcal M(P,g)
   =
   8k-3(1-b_1(X)+b_2^+(X)).
 \]
-Compactification, reducible connections, orientations, and chamber structure
-are part of the definition of the invariant.
+\end{proposition}
 
-\section{Donaldson Observables}
-
-Let
+\begin{proof}
+The Atiyah--Singer index theorem applied to
 \[
-  \mathcal O_0=\operatorname{tr}\phi^2
+  D_A=d_A^*\oplus d_A^+
 \]
-be the scalar observable in the twisted vector multiplet.  Descent gives
-operators \(\mathcal O_j\) obeying
+gives
 \[
-  d\mathcal O_j=\{Q,\mathcal O_{j+1}\}_{\mathrm{gr}} .
+  \operatorname{ind}D_A
+  =
+  -2p_1(\operatorname{ad}P)
+  -\frac{\dim SU(2)}{2}\bigl(\chi(X)+\sigma(X)\bigr).
 \]
-For a homology cycle \(\gamma_j\in H_j(X)\), define
+For a principal \(SU(2)\) bundle,
 \[
-  I(\gamma_j)=\int_{\gamma_j}\mathcal O_j .
+  p_1(\operatorname{ad}P)=-4c_2(P)=-4k .
 \]
-The correlation functions of these insertions localize, in the ultraviolet
-Donaldson chamber, to intersection pairings on the compactified instanton
-moduli space when the degree of the insertion matches
-\(\dim_{\mathrm{vir}}\mathcal M_k\).
-
-\section{Coulomb-Branch RG Picture}
-
-The same twisted theory has a low-energy description on the Coulomb branch.
-For gauge algebra \(\mathfrak{su}(2)\), the coordinate \(u\) and periods
-\((a_D,a)\) are those of
-Chapter~\ref{ch:susy-four-dimensional-n2-seiberg-witten}.  Away from
-singular values of \(u\), the low-energy theory is an Abelian twisted
-\(\mathcal N=2\) gauge theory with coupling \(\tau(u)\).  At singular values,
-monopole or dyon hypermultiplets become light and must be included.  The
-topologically twisted path integral is therefore decomposed into a Coulomb
-branch integral and local contributions from the singular fibers.
-
-\section{Seiberg-Witten Monopole Equations}
-
-Choose a \(\operatorname{Spin}^c\) structure on \(X\) with spinor bundles
-\(S^\pm\) and determinant line \(L\).  Let \(A\) be a connection on \(L\) and
-let \(q\in\Gamma(S^+\otimes L)\).  The Seiberg-Witten equations are
+Also
 \[
-  \not D_A q=0,
+  \frac{\chi(X)+\sigma(X)}{2}
+  =
+  1-b_1(X)+b_2^+(X).
+\]
+Since \(\dim SU(2)=3\), substitution gives
+\[
+  \operatorname{ind}D_A
+  =
+  8k-3(1-b_1(X)+b_2^+(X)).
+\]
+This index is \(\dim H_A^1-\dim H_A^0-\dim H_A^2\), the virtual dimension of
+the elliptic complex.
+\end{proof}
+
+The determinant line of the complex is
+\[
+  \mathcal L_A
+  =
+  \det H_A^1\otimes(\det H_A^0)^{-1}\otimes(\det H_A^2)^{-1}.
+\]
+An orientation of the instanton moduli problem is an orientation of this line
+over the irreducible moduli space.  For simply connected \(X\), such an
+orientation is fixed by an orientation of \(H^2_+(X;\mathbb R)\).  For general
+\(X\), the homology orientation is an orientation of
+\[
+  H^1(X;\mathbb R)\oplus H^2_+(X;\mathbb R).
+\]
+
+The Uhlenbeck compactification \(\overline{\mathcal M}(P,g)\) adds ideal
+instantons:
+\[
+  ([A'],x_1,\ldots,x_\ell),
   \qquad
-  F_A^+=\sigma(q),
+  k(P')+\ell=k(P).
 \]
-where \(\sigma(q)\in\Omega^{2,+}(X)\) is the quadratic map obtained from
-Clifford multiplication.  These equations are the localization equations of
-the twisted Abelian monopole effective theory near a singular Coulomb-branch
-point.
+Geometrically, curvature concentration at finitely many points carries the
+missing second Chern number.  Donaldson invariants are defined by extending
+the relevant cohomology classes to this compactification or to an equivalent
+smooth compactified model, with reducible strata and wall crossing treated
+separately when they occur.
 
-\section{Comparison Mechanism}
+\section{Donaldson Observables And The \texorpdfstring{\(\mu\)}{mu}-Map}
 
-The Donaldson and Seiberg-Witten descriptions are compared by the following
-chain of objects:
+The basic degree-four gauge-invariant polynomial in the twisted scalar is
 \[
-\begin{aligned}
-  &\text{twisted non-Abelian UV theory}\\
-  &\qquad\longrightarrow \text{Coulomb-branch Wilsonian theory}\\
-  &\qquad\longrightarrow \text{twisted Abelian monopole theory}.
-\end{aligned}
+  \mathcal O^{(0)}
+  =
+  \frac{1}{8\pi^2}\operatorname{tr}\phi^2 .
 \]
-The first arrow is an RG statement.  The second arrow is the local
-Seiberg-Witten effective description near a singular fiber.  Contact terms,
-metric dependence, \(u\)-plane contributions, wall crossing, and the map from
-Donaldson insertions to Abelian observables must be included in the same
-coordinate convention.
+With the \(Q\)-rules above, the first descendants may be chosen as
+\[
+  \mathcal O^{(1)}
+  =
+  \frac{1}{4\pi^2}\operatorname{tr}(\phi\psi),
+\]
+\[
+  \mathcal O^{(2)}
+  =
+  \frac{1}{4\pi^2}\operatorname{tr}
+  \left(\phi F_A+\frac{1}{2}\psi\wedge\psi\right),
+\]
+and the sequence continues to four-forms.  They obey the descent equations
+\[
+  d\mathcal O^{(j)}
+  =
+  \{Q,\mathcal O^{(j+1)}\}_{\mathrm{gr}},
+  \qquad j=0,1,2,3 .
+\]
+For a cycle \(\gamma_j\in H_j(X;\mathbb Z)\), define
+\[
+  I(\gamma_j)=\int_{\gamma_j}\mathcal O^{(j)} .
+\]
+The \(Q\)-cohomological degree of \(I(\gamma_j)\) is \(4-j\).  In the finite
+dimensional instanton description this insertion represents the Donaldson
+\(\mu\)-class
+\[
+  \mu(\gamma_j)\in
+  H^{4-j}(\mathcal M(P,g);\mathbb Q).
+\]
+If \(\mathbb P\to X\times\mathcal M(P,g)\) denotes a universal bundle over a
+smooth irreducible locus, then the class can be written as
+\[
+  \mu(\gamma_j)
+  =
+  -\frac{1}{4}
+  p_1(\operatorname{ad}\mathbb P)/\gamma_j ,
+\]
+where the slash denotes slant product with \(\gamma_j\).  This formula is a
+differential-geometric version of the descent construction.  In particular,
+for a point \(x\in X\), \(\mu(x)\) has degree four, and for a surface
+\(\Sigma\subset X\), \(\mu(\Sigma)\) has degree two.
 
-\section{Gap Ledger}
+Given homology classes \(\gamma_{j_1},\ldots,\gamma_{j_r}\), the Donaldson
+correlator in the smooth compact case is the pairing
+\[
+  \left\langle
+    I(\gamma_{j_1})\cdots I(\gamma_{j_r})
+  \right\rangle_{P,g}
+  =
+  \int_{\overline{\mathcal M}(P,g)}
+  \mu(\gamma_{j_1})\smile\cdots\smile\mu(\gamma_{j_r})
+\]
+when
+\[
+  \sum_{\alpha=1}^r(4-j_\alpha)
+  =
+  \dim_{\mathrm{vir}}\mathcal M(P,g).
+\]
+If the total degree differs, the correlator vanishes after the usual
+degree-selection rule, apart from contact-term and reducible-wall phenomena
+specified by the compactified theory.
 
-The finite-dimensional geometry of the instanton and monopole moduli spaces
-can be developed with rigorous differential geometry once compactifications
-and orientations are fixed.  The QFT comparison additionally requires a
-construction of the twisted four-dimensional \(\mathcal N=2\) gauge theory,
-a derivation of its Coulomb-branch Wilsonian action, control of singular
-fiber contributions, and a proof that the cohomological correlation functions
-are invariant along the RG comparison path.
+\section{Spin\texorpdfstring{\(^c\)}{c} Structures And Monopole Equations}
 
-\begin{openproblem}[Donaldson and Seiberg-Witten comparison as QFT]
+A \(\operatorname{Spin}^c\) structure \(\mathfrak s\) on \(X\) consists of
+rank-two Hermitian bundles \(S^\pm_{\mathfrak s}\), a determinant line
+\[
+  L_{\mathfrak s}=\det S^+_{\mathfrak s}=\det S^-_{\mathfrak s},
+\]
+and Clifford multiplication
+\[
+  \rho:T^*X\longrightarrow
+  \operatorname{Hom}(S^+_{\mathfrak s},S^-_{\mathfrak s})
+\]
+compatible with the metric.  The characteristic class
+\[
+  c_1(\mathfrak s)=c_1(L_{\mathfrak s})\in H^2(X;\mathbb Z)
+\]
+is characteristic:
+\[
+  c_1(\mathfrak s)\equiv w_2(TX)\pmod2 .
+\]
+For a unitary connection \(B\) on \(L_{\mathfrak s}\), the Dirac operator is
+\[
+  \not D_B:\Gamma(S^+_{\mathfrak s})\longrightarrow
+  \Gamma(S^-_{\mathfrak s}).
+\]
+Let \(q\in\Gamma(S^+_{\mathfrak s})\).  The quadratic map
+\[
+  \sigma:S^+_{\mathfrak s}\longrightarrow\Lambda^{2,+}T^*X\otimes i\mathbb R
+\]
+is defined by
+\[
+  \rho(\sigma(q))=(q q^\dagger)_0 ,
+\]
+where \((q q^\dagger)_0\) is the traceless Hermitian endomorphism of
+\(S^+_{\mathfrak s}\) obtained from the rank-one endomorphism
+\(v\mapsto q\,\langle q,v\rangle\).  This equation fixes the normalization of
+\(\sigma\) used below.
+
+The unperturbed Seiberg-Witten equations are
+\[
+  \not D_B q=0,
+  \qquad
+  F_B^+=\sigma(q).
+\]
+A perturbation by a self-dual imaginary two-form \(\eta^+\) gives
+\[
+  \not D_B q=0,
+  \qquad
+  F_B^+=\sigma(q)+\eta^+ .
+\]
+The gauge group is
+\[
+  \mathcal G_L=C^\infty(X,U(1)),
+\]
+acting by
+\[
+  u\cdot(B,q)=(B-u^{-1}du,\,uq).
+\]
+The moduli space is
+\[
+  \mathcal M_{\mathrm{SW}}(\mathfrak s,g,\eta^+)
+  =
+  \{(B,q)\mid \not D_Bq=0,\ F_B^+=\sigma(q)+\eta^+\}/\mathcal G_L .
+\]
+
+The linearized, gauge-fixed elliptic operator at a solution is
+\[
+  \mathcal D_{(B,q)}:
+  \Omega^1(X;i\mathbb R)\oplus\Gamma(S^+_{\mathfrak s})
+  \longrightarrow
+  \Omega^0(X;i\mathbb R)\oplus
+  \Omega^{2,+}(X;i\mathbb R)\oplus\Gamma(S^-_{\mathfrak s}) .
+\]
+Its index is the expected dimension of the monopole moduli space.
+
+\begin{proposition}[Index of the monopole deformation problem]
+\label{prop:sw-index}
+For a \(\operatorname{Spin}^c\) structure \(\mathfrak s\), the expected
+dimension of the Seiberg-Witten moduli space is
+\[
+  d_{\mathrm{SW}}(\mathfrak s)
+  =
+  \frac{c_1(\mathfrak s)^2-\bigl(2\chi(X)+3\sigma(X)\bigr)}{4}.
+\]
+\end{proposition}
+
+\begin{proof}
+The real index of the Dirac part is twice the complex index:
+\[
+  2\,\operatorname{ind}_{\mathbb C}\not D_B
+  =
+  2\int_X \widehat A(TX)e^{c_1(\mathfrak s)/2}
+  =
+  \frac{c_1(\mathfrak s)^2-\sigma(X)}{4}.
+\]
+The Abelian gauge-fixing and self-dual curvature operator
+\[
+  d^*\oplus d^+:\Omega^1(X;i\mathbb R)
+  \longrightarrow
+  \Omega^0(X;i\mathbb R)\oplus\Omega^{2,+}(X;i\mathbb R)
+\]
+has index
+\[
+  -(1-b_1(X)+b_2^+(X)).
+\]
+Adding the two real indices gives
+\[
+  \frac{c_1(\mathfrak s)^2-\sigma(X)}{4}
+  -(1-b_1(X)+b_2^+(X)).
+\]
+The identity
+\[
+  2\chi(X)+3\sigma(X)
+  =
+  4(1-b_1(X)+b_2^+(X))+\sigma(X)
+\]
+converts this expression to
+\[
+  \frac{c_1(\mathfrak s)^2-\bigl(2\chi(X)+3\sigma(X)\bigr)}{4}.
+\]
+\end{proof}
+
+\section{Compactness Input From The Weitzenbock Identity}
+
+The monopole equations have compactness properties stronger than the
+instanton equations because the spinor obeys a nonlinear elliptic equation
+with a quartic term.  The Dirac Weitzenbock identity is
+\[
+  \not D_B^*\not D_B q
+  =
+  \nabla_B^*\nabla_B q
+  +\frac{s_g}{4}q
+  +\frac{1}{2}\rho(F_B^+)q ,
+\]
+where \(s_g\) is the scalar curvature.  Pairing with \(q\), integrating over
+\(X\), and using \(\not D_Bq=0\) gives
+\[
+  0=
+  \int_X\left(
+    |\nabla_Bq|^2
+    +\frac{s_g}{4}|q|^2
+    +\frac{1}{2}\langle\rho(F_B^+)q,q\rangle
+  \right)d\operatorname{vol}_g .
+\]
+With the normalization
+\(\rho(\sigma(q))=(q q^\dagger)_0\), the unperturbed curvature equation gives
+\[
+  \frac{1}{2}\langle\rho(F_B^+)q,q\rangle
+  =
+  \frac{1}{4}|q|^4 .
+\]
+Thus solutions obey
+\[
+  \int_X\left(
+    |\nabla_Bq|^2
+    +\frac{s_g}{4}|q|^2
+    +\frac{1}{4}|q|^4
+  \right)d\operatorname{vol}_g
+  =
+  0
+\]
+in the unperturbed case.  With perturbation \(\eta^+\), the right side is
+controlled by the \(L^2\)-norm of \(\eta^+\) and the negative part of scalar
+curvature.  Elliptic bootstrapping then bounds \(q\) and \(F_B^+\), while the
+topological identity fixing \(c_1(L_{\mathfrak s})\) controls the anti-self-dual
+component modulo gauge.  This is the analytic source of compactness for the
+monopole moduli space after excluding reducible solutions by a generic
+perturbation when the usual chamber hypotheses allow it.
+
+\section{The Coulomb-Branch Description}
+
+The Donaldson-Witten theory is the twist of pure \(\mathcal N=2\) Yang--Mills
+theory.  Its local supersymmetric Coulomb-branch data for gauge algebra
+\(\mathfrak{su}(2)\) were developed in
+Chapter~\ref{ch:susy-four-dimensional-n2-seiberg-witten}.  The gauge-invariant
+coordinate is
+\[
+  u=\langle\operatorname{tr}\phi^2\rangle ,
+\]
+and the special coordinates \((a_D(u),a(u))\) determine the Abelian coupling
+\[
+  \tau(u)=\frac{da_D/du}{da/du}.
+\]
+The Coulomb branch has singular fibers where a BPS monopole or dyon becomes
+massless.  Near such a fiber, the Wilsonian effective theory contains an
+Abelian vector multiplet together with the light charged hypermultiplet.  The
+topological twist of this local Abelian theory has localization equations of
+Seiberg-Witten monopole type.
+
+The cohomological path integral on a four-manifold receives three kinds of
+terms:
+\[
+\begin{array}{ll}
+  \text{instanton description} &
+  \text{intersection pairing on ASD moduli spaces},\\[2mm]
+  \text{Coulomb branch} &
+  \text{integral over }u\text{ with Abelian zero modes and contact terms},\\[2mm]
+  \text{singular fibers} &
+  \text{monopole or dyon Seiberg-Witten invariants}.
+\end{array}
+\]
+For \(b_2^+(X)>1\), the Coulomb-branch integral has no chamber-wall
+contribution in the generic situation used for the simple-type comparison.
+For \(b_2^+(X)=1\), the \(u\)-plane contribution and wall crossing are part of
+the invariant.  The comparison requires the contact terms of the Abelian
+effective action because products of descent observables collide in the
+low-energy description.
+
+\section{Observable Map And Contact Terms}
+
+The Donaldson generating function is organized by a point variable \(p\) and
+a two-cycle source \(S\in H_2(X;\mathbb R)\):
+\[
+  Z_D(p,S)
+  =
+  \left\langle
+    \exp\bigl(p\,I(x)+I(S)\bigr)
+  \right\rangle .
+\]
+Here \(I(x)\) has degree four and \(I(S)\) has degree two.  In the Abelian
+Coulomb-branch description, the point observable maps to a function of the
+Coulomb coordinate,
+\[
+  I(x)\longmapsto u ,
+\]
+whereas the surface observable has a linear term in the Abelian field strength
+and a quadratic contact term:
+\[
+  I(S)\longmapsto
+  \int_S \Omega_u
+  +\frac{1}{2}(S,S)\,T(u).
+\]
+The two-form \(\Omega_u\) is the appropriate descent two-form in the Abelian
+effective theory, and \(T(u)\) is fixed by compatibility of the low-energy
+Ward identities, duality transformations, and short-distance collision of two
+surface descendants.  The symbol \((S,S)\) denotes the intersection pairing
+on \(H_2(X;\mathbb R)\).
+
+At a monopole singularity, the Abelian surface insertion evaluates on the
+monopole line bundle and gives an exponential weight
+\[
+  \exp\bigl((S,\lambda)\bigr)
+\]
+for a characteristic class \(\lambda=c_1(\mathfrak s)\) associated with the
+corresponding \(\operatorname{Spin}^c\) structure, multiplied by the contact
+factor coming from \(T(u)\).  The final comparison formula in simple-type
+chambers has the general form
+\[
+  Z_D(p,S)
+  =
+  e^{Q(S)/2}
+  \sum_{\mathfrak s}
+  C_{\mathfrak s}\,
+  \operatorname{SW}(\mathfrak s)\,
+  \exp\bigl(p\,u_{\mathfrak s}+(S,\lambda_{\mathfrak s})\bigr),
+\]
+where \(Q(S)=(S,S)\).  The constants \(C_{\mathfrak s}\), the phases, and the
+choice of chamber depend on the global form of the gauge group, the
+orientation convention, and the contact-term normalization.  In this
+monograph the displayed expression is treated as a target comparison datum:
+the rigorous QFT problem is to derive every term from a constructed twisted
+continuum theory and its Wilsonian flow, rather than to declare the formula
+from moduli-space geometry alone.
+
+\section{Comparison As A QFT Statement}
+
+The comparison can be formulated as a precise datum.  Fix:
+\[
+\begin{array}{ll}
+  \text{UV theory} &
+  \text{twisted pure }\mathcal N=2\text{ }SU(2)\text{ gauge theory on }X,\\[1mm]
+  \text{observable algebra} &
+  Q\text{-cohomology generated by Donaldson descent classes},\\[1mm]
+  \text{metric chamber} &
+  \text{a chamber for }b_2^+(X)=1\text{ or the }b_2^+>1\text{ regime},\\[1mm]
+  \text{Wilsonian coordinate} &
+  u\text{ and the Abelian special geometry near each singular fiber},\\[1mm]
+  \text{contact prescription} &
+  T(u)\text{ and all collision counterterms for descent insertions},\\[1mm]
+  \text{IR localization} &
+  \operatorname{Spin}^c\text{ monopole moduli spaces with orientations}.
+\end{array}
+\]
+The QFT comparison asserts equality between the ultraviolet cohomological
+correlators and the sum of the Coulomb-branch integral plus monopole
+contributions computed from this datum.  A theorem-level derivation would
+therefore contain the following ingredients:
+\[
+\begin{array}{ll}
+  \text{construction} &
+  \text{a four-dimensional twisted continuum gauge theory},\\[1mm]
+  \text{Ward identities} &
+  Q\text{-invariance, descent, and metric variation including contacts},\\[1mm]
+  \text{RG control} &
+  \text{flow from the UV description to the Abelian Coulomb chart},\\[1mm]
+  \text{singular fiber analysis} &
+  \text{derivation of the monopole effective theory and its measure},\\[1mm]
+  \text{compactness} &
+  \text{finite-dimensional compactified moduli spaces and boundary terms},\\[1mm]
+  \text{orientation and phases} &
+  \text{matching of determinant lines and electromagnetic duality phases}.
+\end{array}
+\]
+The finite-dimensional Donaldson and Seiberg-Witten invariants are rigorous
+objects once their compactifications, orientations, perturbations, and wall
+crossing conventions are fixed.  The physical comparison supplies a deep
+explanation by RG, and the present formulation isolates the additional
+analytic QFT construction needed to turn that explanation into a theorem
+inside four-dimensional quantum field theory.
+
+\begin{openproblem}[Donaldson-SW QFT comparison]
 \label{op:donaldson-seiberg-witten-qft-comparison}
-Turn the physical RG comparison between Donaldson and Seiberg-Witten
-invariants into a theorem-level statement of four-dimensional QFT, including
-the ultraviolet twisted gauge theory, low-energy Abelian monopole theory,
-observable map, contact terms, wall crossing, and compactification data.
+Construct the Donaldson-Witten theory and its Coulomb-branch Wilsonian flow
+with enough analytic control to derive the Seiberg-Witten comparison formula,
+including the ultraviolet twisted gauge theory, the Abelian monopole
+effective theories at singular fibers, the \(u\)-plane contribution, descent
+contact terms, determinant-line phases, chamber dependence, wall crossing,
+and compactification boundary contributions.
 \end{openproblem}

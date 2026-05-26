@@ -173,6 +173,12 @@ Current checks:
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
   term on the unit square, and vanishing of a \(Q\)-exact deformation when the
   boundary contribution is zero.
+- `donaldson_sw_comparison_checks.py`: exact arithmetic checks for the
+  Witten-Donaldson and Seiberg-Witten comparison chapter, including the
+  anti-self-dual deformation-complex index, the monopole expected-dimension
+  formula from Dirac plus Abelian gauge indices, the
+  \(2\chi+3\sigma\) identity, Donaldson descent degrees, and the
+  trace-delta instanton-action coefficient.
 - `free_cylinder_partition_checks.py`: finite character checks for the
   radial-cylinder free-field section, including the four-dimensional scalar
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion
