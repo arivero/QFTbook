@@ -18,6 +18,74 @@ ordinary charge labels \(A,B\) are summed.  All formulas in this chapter are
 written for parity-even fluids without anomalies; anomalous transport is
 developed separately in Chapter~\ref{ch:thermal-anomalous-topological-transport}.
 
+\section{Background Sources and Ward Identities}
+
+The conserved operators that enter hydrodynamics are defined by their
+response to background sources.  Let \(g_{\mu\nu}\) be a Lorentzian metric
+and let \(A^A_\mu\) be background gauge fields for ordinary Abelian internal
+symmetries.  For the regulated Schwinger--Keldysh generating functional
+\[
+  W[g_+,A_+;g_-,A_-],
+\]
+the physical one-point functions are obtained by differentiating with
+respect to the difference sources and then setting the two branches equal,
+as in Chapter~\ref{ch:thermal-schwinger-keldysh}.  On the diagonal source
+\(g_+=g_-=g\), \(A_+=A_-=A\), we use the convention
+\begin{equation}
+  \delta W_{\rm phys}
+  =
+  \frac12\int d^Dx\,\sqrt{-g}\,
+  \langle T^{\mu\nu}\rangle\,\delta g_{\mu\nu}
+  +\int d^Dx\,\sqrt{-g}\,
+  \langle J_A^\mu\rangle\,\delta A^A_\mu .
+  \label{eq:hydro-source-variation}
+\end{equation}
+Equation \eqref{eq:hydro-source-variation} is a definition of the
+stress-tensor and current normalization in this chapter.  Local contact
+terms may change the local polynomial part of the response kernels, but they
+do not change the operator Ward identities derived from gauge and
+diffeomorphism invariance.
+
+Gauge invariance under \(\delta_\lambda A^A_\mu=\partial_\mu\lambda^A\)
+gives
+\begin{equation}
+  \nabla_\mu J_A^\mu=0
+  \label{eq:hydro-source-current-ward}
+\end{equation}
+when the corresponding symmetry is not anomalous.  Diffeomorphism invariance
+under the infinitesimal vector field \(\xi^\mu\) gives
+\[
+  \delta_\xi g_{\mu\nu}=\nabla_\mu\xi_\nu+\nabla_\nu\xi_\mu,
+  \qquad
+  \delta_\xi A^A_\mu
+  =
+  \xi^\lambda F^A_{\lambda\mu}
+  +\partial_\mu(\xi^\lambda A^A_\lambda),
+\]
+where \(F^A_{\mu\nu}=\partial_\mu A^A_\nu-\partial_\nu A^A_\mu\).  Combining
+this variation with \eqref{eq:hydro-source-current-ward} and integrating by
+parts gives
+\begin{equation}
+  \nabla_\mu T^\mu{}_\nu
+  =
+  F^A_{\nu\lambda}J_A^\lambda .
+  \label{eq:hydro-source-stress-ward}
+\end{equation}
+Thus the flat, source-free conservation laws are the specialization of the
+QFT Ward identities to
+\(g_{\mu\nu}=\eta_{\mu\nu}\) and \(A^A_\mu=0\).
+
+The same source formulation fixes the thermodynamic forces used below.  For
+a fluid velocity \(u^\mu\), define the electric covector measured in the
+local rest frame by
+\[
+  \mathcal E^A_\mu=F^A_{\mu\nu}u^\nu,
+  \qquad
+  u^\mu \mathcal E^A_\mu=0 .
+\]
+The source-free formulas in most of this chapter are recovered by setting
+\(\mathcal E^A_\mu=0\).
+
 \section{Conserved Densities and Local State Variables}
 
 Let \(T^{\mu\nu}\) be the stress tensor and let \(J^\mu_A\) be conserved
@@ -63,9 +131,103 @@ so the nonideal stress tensor carries no energy flux in the local rest
 frame.  Charge diffusion is allowed to have components orthogonal to
 \(u^\mu\).
 
+\section{Hydrodynamic Frames}
+
+Hydrodynamic variables are local coordinates on the manifold of equilibrium
+states and its derivative expansion.  They are not uniquely defined away
+from strict equilibrium.  For any chosen \(u^\mu\), decompose the one-point
+functions as
+\begin{align}
+  T^{\mu\nu}
+  &=
+  \varepsilon u^\mu u^\nu
+  +p\Delta^{\mu\nu}
+  +u^\mu q^\nu+u^\nu q^\mu
+  +\pi^{\mu\nu},
+  \label{eq:hydro-general-frame-stress}\\
+  J_A^\mu&=n_Au^\mu+\nu_A^\mu ,
+  \label{eq:hydro-general-frame-current}
+\end{align}
+with
+\[
+  u_\mu q^\mu=u_\mu\nu_A^\mu=0,
+  \qquad
+  u_\mu\pi^{\mu\nu}=0 .
+\]
+The scalar quantities \(\varepsilon,p,n_A\), the velocity \(u^\mu\), and the
+transverse tensors \(q^\mu,\nu_A^\mu,\pi^{\mu\nu}\) depend on the chosen
+frame.  Under a first-derivative redefinition
+\[
+  u^\mu\mapsto u^\mu+\delta u^\mu,\qquad
+  u_\mu\delta u^\mu=0,
+\]
+while the physical one-point functions are held fixed, the transverse
+vectors change at first derivative order as
+\begin{equation}
+  q^\mu\mapsto q^\mu-(\varepsilon+p)\delta u^\mu,
+  \qquad
+  \nu_A^\mu\mapsto\nu_A^\mu-n_A\delta u^\mu .
+  \label{eq:hydro-frame-transformation}
+\end{equation}
+To derive \eqref{eq:hydro-frame-transformation}, keep
+\(T^{\mu\nu}\) and \(J_A^\mu\) fixed and vary only the ideal pieces.  Since
+\(\delta\Delta^{\mu\nu}=u^\mu\delta u^\nu+\delta u^\mu u^\nu\), the ideal
+stress changes by
+\[
+  \delta T^{\mu\nu}_{(0)}
+  =
+  (\varepsilon+p)(u^\mu\delta u^\nu+\delta u^\mu u^\nu)
+  +\text{scalar variations}.
+\]
+Its transverse energy-flux part is therefore
+\((\varepsilon+p)\delta u^\mu\).  The ideal current changes by
+\(\delta J^\mu_{A(0)}=n_A\delta u^\mu\) in the transverse sector.  The
+nonideal vectors must shift by the negatives of these transverse changes.
+The Landau frame condition \eqref{eq:hydro-landau-frame} is the choice
+\(q^\mu=0\).  If \(\varepsilon+p\ne0\), it is reached by
+\(\delta u^\mu=q^\mu/(\varepsilon+p)\) to the order considered here.  This
+coordinate choice changes the displayed form of charge diffusion but cannot
+change pole locations, Kubo coefficients, or source-response functions.
+
 \section{Thermodynamic Closure}
 
-The equation of state supplies a function \(p=p(T,\mu_A)\).  Define
+The equation of state supplies a function \(p=p(T,\mu_A)\).  In a finite
+spatial volume, before the thermodynamic limit, it is obtained from the
+grand-canonical partition function
+\[
+  Z_{\beta,\mu}
+  =
+  \operatorname{Tr}\exp[-\beta(H-\mu_AQ_A)],
+  \qquad
+  p_{\beta,\mu,V}
+  =
+  \frac{T}{V}\log Z_{\beta,\mu}.
+\]
+The pressure \(p(T,\mu)\) used in hydrodynamics is the thermodynamic limit
+of \(p_{\beta,\mu,V}\), assuming this limit exists and is differentiable in
+the state under consideration.  Differentiating the finite-volume expression
+gives
+\[
+  \left(\frac{\partial p}{\partial\mu_A}\right)_T
+  =
+  \frac{\langle Q_A\rangle}{V}
+  \equiv n_A,
+\]
+and
+\[
+  \left(\frac{\partial p}{\partial T}\right)_{\mu}
+  =
+  \frac{p+\varepsilon-\mu_A n_A}{T}
+  \equiv s,
+\]
+where \(\varepsilon=\langle H\rangle/V\).  Thus
+\[
+  p=p(T,\mu_A),\qquad
+  s=\left(\frac{\partial p}{\partial T}\right)_\mu,\qquad
+  n_A=\left(\frac{\partial p}{\partial\mu_A}\right)_T
+\]
+are not independent definitions: they are the differentiability data of the
+equilibrium KMS state.  Consequently,
 \[
   s=\left(\frac{\partial p}{\partial T}\right)_{\mu},
   \qquad
@@ -83,6 +245,21 @@ Then
   d\varepsilon=T\,ds+\mu_A\,dn_A .
   \label{eq:hydro-thermodynamic-relations}
 \end{equation}
+In the rest frame of a homogeneous equilibrium state, spatial rotations give
+\[
+  \langle T^{00}\rangle=\varepsilon,\qquad
+  \langle T^{0i}\rangle=0,\qquad
+  \langle T^{ij}\rangle=p\,\delta^{ij},
+  \qquad
+  \langle J_A^0\rangle=n_A,\qquad
+  \langle J_A^i\rangle=0.
+\]
+Lorentz covariance then gives the ideal tensors
+\eqref{eq:hydro-ideal-constitutive-relations} in a state whose local rest
+frame velocity is \(u^\mu\).  This derivation is local in the sense of the
+gradient expansion: it assumes that, on each hydrodynamic cell, the state is
+approximated by a homogeneous KMS state with the displayed values of
+\(T,\mu_A,u^\mu\).
 These identities are the local thermodynamic closure of the ideal Ward
 system.  They are imposed pointwise on the slowly varying local state
 variables; the microscopic QFT input is the equilibrium equation of state and
@@ -208,18 +385,45 @@ In Landau frame, the parity-even first-order constitutive relations are
   J_A^\mu
   &=
   n_Au^\mu
-  -T\,\Sigma_{AB}\Delta^{\mu\nu}
-  \partial_\nu\!\left(\frac{\mu_B}{T}\right)
+  +\nu_A^\mu
   +O(\partial^2).
   \label{eq:hydro-first-order-current}
 \end{align}
+In the absence of external electric fields,
+\begin{equation}
+  \nu_A^\mu
+  =
+  -T\,\Sigma_{AB}\Delta^{\mu\nu}
+  \partial_\nu\!\left(\frac{\mu_B}{T}\right).
+  \label{eq:hydro-first-order-current-sourcefree}
+\end{equation}
+With background gauge fields, the same convention is
+\begin{equation}
+  \nu_A^\mu
+  =
+  T\,\Sigma_{AB}\Delta^{\mu\nu}
+  \left[
+    \frac{\mathcal E^B_\nu}{T}
+    -\partial_\nu\!\left(\frac{\mu_B}{T}\right)
+  \right].
+  \label{eq:hydro-first-order-current-sourceful}
+\end{equation}
 The matrix \(\Sigma_{AB}\) is the conductivity matrix in the normalization
-where, at constant \(T\), Fick diffusion has diffusion matrix
+where, at constant \(T\) and zero background electric field, Fick diffusion
+has diffusion matrix
 \[
   D_{AB}=\Sigma_{AC}(\chi^{-1})_{CB},
   \qquad
   \chi_{AB}=\left(\frac{\partial n_A}{\partial\mu_B}\right)_T .
 \]
+The entropy analysis below constrains the symmetric part of \(\Sigma_{AB}\).
+In a parity-even state with no time-reversal-breaking background, the KMS
+condition together with microscopic time reversal gives the Onsager
+reciprocity \(\Sigma_{AB}=\Sigma_{BA}\).  If time reversal or parity is
+broken, an antisymmetric part may appear; it is nondissipative because
+\(\Sigma_{[AB]}X_A X_B=0\) for any real thermodynamic force \(X_A\), and it
+belongs with Hall-type transport rather than with the dissipative
+parity-even sector treated in this chapter.
 
 \section{Entropy Production at First Order}
 
@@ -232,7 +436,8 @@ The first-order entropy current in Landau frame is
   \nu_A^\mu
   =
   -T\Sigma_{AB}\Delta^{\mu\nu}
-  \partial_\nu\!\left(\frac{\mu_B}{T}\right).
+  \partial_\nu\!\left(\frac{\mu_B}{T}\right)
+  \quad(A^A_\mu=0).
   \label{eq:hydro-first-order-entropy-current}
 \end{equation}
 
@@ -280,6 +485,18 @@ Using the Ward identities, the thermodynamic identities, and
   -\nu_A^\mu\partial_\mu\!\left(\frac{\mu_A}{T}\right)
   +O(\partial^3).
 \]
+With background gauge fields, the second term is replaced by
+\[
+  \nu_A^\mu
+  \left[
+    \frac{\mathcal E^A_\mu}{T}
+    -\partial_\mu\!\left(\frac{\mu_A}{T}\right)
+  \right],
+\]
+which follows from the force term
+\eqref{eq:hydro-source-stress-ward} in the energy equation.  The
+source-free formula used in \eqref{eq:hydro-entropy-production} is the
+special case \(\mathcal E^A_\mu=0\).
 The decomposition of \(\partial_\mu u_\nu\) into shear, trace, vorticity,
 and acceleration gives
 \[
@@ -293,11 +510,11 @@ Substituting \(\tau^{\mu\nu}\) and \(\nu_A^\mu\) gives
 \eqref{eq:hydro-entropy-production}.
 \end{proof}
 
-\section{Charge Diffusion}
+\section{Charge Diffusion and Susceptibility Geometry}
 
 Consider a state with \(u^\mu=(1,\mathbf0)\), constant \(T\), and vanishing
-background flow.  Linearize a single conserved charge around equilibrium.
-The constitutive relation gives
+background flow.  Linearize first a single conserved charge around
+equilibrium.  The constitutive relation gives
 \[
   J^0=n_0+\delta n,\qquad
   J^i=-\Sigma\,\partial_i\delta\mu,
@@ -319,6 +536,79 @@ the pole is
 \end{equation}
 The Einstein relation \(D=\Sigma/\chi\) is the hydrodynamic form of the same
 coefficient matching that appears in the Kubo conductivity formula.
+
+For several charges, the susceptibility matrix is the Hessian of the
+equilibrium pressure with respect to chemical potentials,
+\[
+  \chi_{AB}
+  =
+  \left(\frac{\partial n_A}{\partial\mu_B}\right)_T
+  =
+  \frac{\partial^2p}{\partial\mu_A\partial\mu_B}.
+\]
+Thermodynamic stability of the homogeneous KMS state means that \(\chi\) is
+positive definite on the subspace of charges under consideration.  In a
+parity-even time-reversal-invariant fluid, \(\Sigma\) is symmetric positive
+semidefinite.  The linearized equations at constant temperature are
+\begin{equation}
+  \partial_t\delta n_A
+  -D_{AB}\nabla^2\delta n_B=0,
+  \qquad
+  D=\Sigma\chi^{-1}.
+  \label{eq:hydro-multicharge-diffusion}
+\end{equation}
+Although \(D\) need not be symmetric in the ordinary Euclidean inner product,
+its spectrum is nonnegative.  Indeed \(D\) is similar to
+\[
+  \chi^{-1/2}\Sigma\chi^{-1/2},
+\]
+because
+\[
+  D
+  =
+  \chi^{1/2}
+  \left(\chi^{-1/2}\Sigma\chi^{-1/2}\right)
+  \chi^{-1/2}.
+\]
+The middle matrix is symmetric positive semidefinite.  Hence the diffusive
+normal modes have
+\[
+  \omega_i(\mathbf k)=-\ii \lambda_i k^2+O(k^4),
+  \qquad
+  \lambda_i\ge0,
+\]
+where \(\lambda_i\) are the eigenvalues of \(D\).  Strictly positive
+\(\lambda_i\) require that no linear combination of the charges has zero
+conductivity.
+
+The density source-response matrix also fixes the order of matrix
+multiplication in diffusion formulae.  Couple a source \(h_A\) to the
+density with the Hamiltonian convention \(H=H_0-\int h_A n_A\), so that the
+electrochemical force is proportional to \(\nabla(\delta\mu_A-h_A)\).  In
+Fourier space the linearized equation is
+\[
+  \left(Dk^2-\ii\omega\,\mathbf 1\right)_{AB}\delta n_B
+  =
+  k^2\Sigma_{AB}h_B .
+\]
+Therefore the nonlocal hydrodynamic part of the retarded density
+source-response kernel is
+\begin{equation}
+  K^R_{n_An_B}(\omega,\mathbf k)
+  =
+  k^2
+  \left(Dk^2-\ii\omega\,\mathbf 1\right)^{-1}_{AC}
+  \Sigma_{CB}
+  +\text{analytic contact terms}.
+  \label{eq:hydro-multicharge-density-response}
+\end{equation}
+At \(\omega=0\) and then \(k\to0\), the nonlocal term gives
+\[
+  D^{-1}\Sigma=\chi,
+\]
+assuming \(\Sigma\) is invertible on the diffusive subspace.  This is the
+matrix version of the static susceptibility matching in
+\eqref{eq:hydro-density-retarded-diffusion}.
 
 \section{Neutral Linearized Modes}
 
@@ -419,22 +709,25 @@ Solving perturbatively at small \(k\) gives
 \eqref{eq:hydro-sound-poles}.
 \end{proof}
 
-\section{Retarded Correlator Pole Matching}
+\section{Retarded Source-Response Pole Matching}
 
-Hydrodynamic poles are singularities of retarded correlators after the
-thermodynamic limit and the hydrodynamic scaling limit have been taken in the
-specified order.  For a single diffusive charge with susceptibility \(\chi\),
-the density response to a source for the chemical potential has the universal
-long-wavelength form
+Hydrodynamic poles are singularities of retarded source-response kernels
+after the thermodynamic limit and the hydrodynamic scaling limit have been
+taken in the specified order.  For the source convention
+\(H=H_0-\int h\,n\), the density source-response kernel is the negative of
+the commutator-retarded function of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}.  For a single diffusive
+charge with susceptibility \(\chi\), it has the universal long-wavelength
+form
 \begin{equation}
-  G^R_{nn}(\omega,\mathbf k)
+  K^R_{nn}(\omega,\mathbf k)
   =
   \chi\,
   \frac{Dk^2}{Dk^2-\ii\omega}
   +\text{terms analytic at }\omega,k=0 .
   \label{eq:hydro-density-retarded-diffusion}
 \end{equation}
-in the source convention where \(G^R_{nn}(0,\mathbf k\to0)=\chi\).  The pole
+so that \(K^R_{nn}(0,\mathbf k\to0)=\chi\).  The pole
 is \(\omega=-\ii Dk^2\).  Taking \(\mathbf k\to0\) before
 \(\omega\to0\) removes the diffusive denominator; taking the hydrodynamic
 scaling limit \(\omega\sim k^2\) keeps it.  This is the same order-of-limits
