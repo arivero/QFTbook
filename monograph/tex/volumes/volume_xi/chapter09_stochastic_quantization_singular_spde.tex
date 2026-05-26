@@ -1037,15 +1037,158 @@ semicontinuous.  Taking the liminf of the left hand side of
 hand side proves \eqref{eq:spde-dpd-closed-energy-inequality}.
 \end{proof}
 
+\begin{proposition}[Energy compactness for smooth DPD remainders]
+\label{prop:spde-dpd-energy-compactness}
+Let \(m^2>0\), \(\lambda>0\), \(T>0\), and set
+\(Q_T=[0,T]\times\mathbb T^2\).  For \(n\geq1\), let
+\((X_{1,n},X_{2,n},X_{3,n})\) be smooth real functions on \(Q_T\), and let
+\(Y_n\) be a smooth solution of
+\eqref{eq:spde-dpd-smooth-energy-equation} with \(X_i\) replaced by
+\(X_{i,n}\).  Assume that
+\[
+  M_T:=
+  \sup_n
+  \left[
+    \|Y_n(0)\|_{L^2(\mathbb T^2)}
+    +\|X_{1,n}\|_{L^4(Q_T)}
+    +\|X_{2,n}\|_{L^2(Q_T)}
+    +\|X_{3,n}\|_{L^{4/3}(Q_T)}
+  \right]
+  <\infty .
+\]
+Then there is a constant \(C_T\), depending on
+\(T,m^2,\lambda\), and \(M_T\), but not on \(n\), such that
+\begin{align}
+  \sup_n
+  \Big[
+    &\|Y_n\|_{L^\infty([0,T];L^2)}
+     +\|Y_n\|_{L^2([0,T];H^1)}
+     +\|Y_n\|_{L^4(Q_T)}
+  \notag\\
+    &\hspace{2.5cm}
+     +\|\partial_tY_n\|_{L^{4/3}([0,T];H^{-1})}
+  \Big]
+  \leq C_T .
+  \label{eq:spde-dpd-energy-compactness-bound}
+\end{align}
+Consequently, after passing to a subsequence, there is a function \(Y\) such
+that
+\[
+\begin{aligned}
+  Y_n&\rightharpoonup^\ast Y
+    &&\text{weakly-* in }L^\infty([0,T];L^2(\mathbb T^2)),\\
+  Y_n&\rightharpoonup Y
+    &&\text{weakly in }L^2([0,T];H^1(\mathbb T^2)),\\
+  Y_n&\rightharpoonup Y
+    &&\text{weakly in }L^4(Q_T),
+\end{aligned}
+\]
+and, after a further subsequence if necessary,
+\[
+  Y_n(T)\rightharpoonup Y(T)
+  \qquad\text{weakly in }L^2(\mathbb T^2),
+\]
+where \(Y\) is represented by its weakly \(L^2\)-continuous time
+representative.
+\end{proposition}
+
+\begin{proof}
+Apply
+\eqref{eq:spde-dpd-smooth-energy-estimate} on every interval \([0,t]\),
+\(0\leq t\leq T\).  Since the right hand side is bounded uniformly by the
+definition of \(M_T\), the \(L^\infty_tL^2_x\), \(L^2_tH^1_x\), and
+\(L^4_{t,x}\) parts of
+\eqref{eq:spde-dpd-energy-compactness-bound} follow.
+
+It remains to prove the time-derivative bound.  Let
+\(\|v\|_{H^1(\mathbb T^2)}\leq1\).  In two dimensions the Sobolev embedding
+\(H^1(\mathbb T^2)\hookrightarrow L^4(\mathbb T^2)\) gives
+\[
+  \|f\|_{H^{-1}}
+  \leq C\|f\|_{L^{4/3}}
+  \qquad
+  \text{for }f\in L^{4/3}(\mathbb T^2).
+\]
+Testing the smooth equation against \(v\) therefore gives, in the dual
+space \(H^{-1}\),
+\[
+\begin{aligned}
+  \|\partial_tY_n\|_{H^{-1}}
+  \leq C\Big(
+    &\|Y_n\|_{H^1}
+     +\|Y_n\|_{L^2}
+     +\|Y_n\|_{L^4}^3
+     +\|Y_n\|_{L^4}^2\|X_{1,n}\|_{L^4}
+\\
+    &+\|Y_n\|_{L^4}\|X_{2,n}\|_{L^2}
+     +\|X_{3,n}\|_{L^{4/3}}
+  \Big).
+  \label{eq:spde-dpd-time-derivative-pointwise-bound}
+\end{aligned}
+\]
+Here and below the spatial norms are taken on \(\mathbb T^2\) at the fixed
+time under consideration.  Taking the \(L^{4/3}\)-norm in time and using
+Hölder's inequality on \(Q_T\) gives
+\[
+\begin{aligned}
+  \|Y_n^3\|_{L^{4/3}(Q_T)}
+     &=\|Y_n\|_{L^4(Q_T)}^3,\\
+  \|Y_n^2X_{1,n}\|_{L^{4/3}(Q_T)}
+     &\leq
+       \|Y_n\|_{L^4(Q_T)}^2
+       \|X_{1,n}\|_{L^4(Q_T)},\\
+  \|Y_nX_{2,n}\|_{L^{4/3}(Q_T)}
+     &\leq
+       \|Y_n\|_{L^4(Q_T)}
+       \|X_{2,n}\|_{L^2(Q_T)} .
+\end{aligned}
+\]
+The already established energy bounds and the definition of \(M_T\) now
+prove the \(L^{4/3}_tH^{-1}_x\) estimate for \(\partial_tY_n\).
+
+The compactness assertions are consequences of standard weak compactness,
+but we spell out the endpoint identification because it is the point needed
+in Proposition~\ref{prop:spde-dpd-energy-closed-under-approximation}.
+The spaces \(L^2([0,T];H^1)\) and \(L^4(Q_T)\) are reflexive, while
+\(L^\infty([0,T];L^2)\) is the dual of \(L^1([0,T];L^2)\) because
+\(L^2(\mathbb T^2)\) is separable.  Banach--Alaoglu and a diagonal
+subsequence therefore give the displayed weak and weak-* convergences.
+The derivative bound passes to the same limit in
+\(\mathcal D'((0,T);H^{-1})\), so the limit has an
+\(H^{-1}\)-valued absolutely continuous representative.
+
+Let \(D\subset H^1(\mathbb T^2)\) be countable and dense in \(L^2\).  For
+each \(v\in D\), the scalar functions
+\[
+  a_{n,v}(t):=\langle Y_n(t),v\rangle_{L^2}
+\]
+are bounded in \(W^{1,4/3}([0,T])\): the \(L^\infty_tL^2_x\) bound controls
+\(a_{n,v}\), and the \(L^{4/3}_tH^{-1}_x\) bound controls its derivative.
+The compact embedding
+\(W^{1,4/3}([0,T])\hookrightarrow C([0,T])\), together with the
+distributional convergence already obtained, implies
+\[
+  \langle Y_n(T),v\rangle_{L^2}
+  \longrightarrow
+  \langle Y(T),v\rangle
+  \qquad(v\in D)
+\]
+after a diagonal extraction.  The sequence \(Y_n(T)\) is bounded in
+\(L^2\), so a further subsequence has a weak \(L^2\) limit; the preceding
+identity on the dense set \(D\) identifies that limit with \(Y(T)\).  Hence
+\(Y_n(T)\rightharpoonup Y(T)\) weakly in \(L^2(\mathbb T^2)\).
+\end{proof}
+
 The rough Da Prato--Debussche global argument is therefore reduced to two
 precise analytic tasks.  First, construct smooth approximations whose
 enhanced noises converge in the integrability spaces appearing in
 Proposition~\ref{prop:spde-dpd-energy-closed-under-approximation}, or in
 Besov/paracontrolled spaces that imply those bounds after pairing with the
-energy solution.  Second, prove compactness of the corresponding remainders
-in the weak energy topologies listed in the same proposition.  The quartic
-term then supplies the coercive bound, and the closedness proposition passes
-the estimate to the rough limit.
+energy solution.  Second, identify the weak limit produced by
+Proposition~\ref{prop:spde-dpd-energy-compactness} as a solution of the
+rough equation.  The quartic term supplies the coercive bound, compactness
+extracts a weak energy limit, and the closedness proposition passes the
+energy inequality to that rough limit.
 
 \begin{proposition}[Passing invariance through a cutoff limit]
 \label{prop:spde-invariant-measure-limit}

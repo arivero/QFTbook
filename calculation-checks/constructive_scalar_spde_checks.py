@@ -639,6 +639,26 @@ def check_dpd_energy_closedness_lp_power_arithmetic():
         assert_equal((p - 1) * holder_conjugate, p, f"{label} power continuity")
 
 
+def check_dpd_energy_compactness_derivative_arithmetic():
+    # The time-derivative compactness estimate places every nonlinear drift
+    # contribution in L^(4/3)([0,T] x T^2), using Y in L^4, X1 in L^4,
+    # X2 in L^2, and X3 in L^(4/3).
+    target_inverse = Fraction(3, 4)
+    terms = [
+        ([Fraction(1, 4), Fraction(1, 4), Fraction(1, 4)], "Y^3"),
+        ([Fraction(1, 4), Fraction(1, 4), Fraction(1, 4)], "Y^2 X1"),
+        ([Fraction(1, 4), Fraction(1, 2)], "Y X2"),
+        ([Fraction(3, 4)], "X3"),
+    ]
+    for inverse_exponents, label in terms:
+        assert_equal(sum(inverse_exponents), target_inverse, f"{label} L4/3 drift exponent")
+
+    # On a finite time interval, L^2_t H^1_x is continuously included in
+    # L^(4/3)_t H^1_x, so the Laplacian term also fits the derivative space.
+    if not Fraction(4, 3) < Fraction(2):
+        raise AssertionError("finite-interval L2 to L4/3 inclusion failed")
+
+
 def check_invariant_measure_limit_identity():
     # A finite Markov-chain analogue of the cutoff invariance passage:
     # if mu P = mu and P_n=P exactly, then the invariant identity is the
@@ -1296,6 +1316,7 @@ def main():
     check_phi4_three_sobolev_dpd_obstruction_arithmetic()
     check_dpd_energy_young_exponents()
     check_dpd_energy_closedness_lp_power_arithmetic()
+    check_dpd_energy_compactness_derivative_arithmetic()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
@@ -1315,7 +1336,7 @@ def main():
     check_gaussian_negative_sobolev_summability_arithmetic()
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

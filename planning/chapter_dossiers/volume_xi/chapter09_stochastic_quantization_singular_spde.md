@@ -62,6 +62,9 @@ data.
 - `X_{i,n}`, `Y_n`, `Y`: smooth enhanced-noise approximants, smooth DPD
   remainders, and weak energy limit in the closedness theorem for the DPD
   energy inequality.
+- `M_T`, `Q_T`: uniform smooth DPD energy-input bound and the stochastic
+  time-space slab \([0,T]\times\mathbb T^2\) in the DPD energy-compactness
+  theorem.
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
@@ -224,6 +227,13 @@ data.
   \(L^2_x\), then the limiting remainder satisfies the integrated energy
   inequality.  The proof uses the \(L^p\)-continuity of power integrals and
   weak lower semicontinuity of the quadratic and quartic energy terms.
+- Proves the compactness step that supplies those weak limits for smooth DPD
+  remainders under a cutoff-uniform bound on the initial \(L^2\) norm and the
+  three enhanced-noise norms.  The proof derives a uniform
+  \(L^{4/3}_tH^{-1}_x\) bound on \(\partial_tY_n\) from the equation, using
+  the exponent identities \(Y^3,Y^2X_1,YX_2,X_3\in L^{4/3}_{t,x}\), then
+  applies Banach--Alaoglu and a scalar \(W^{1,4/3}\)-compactness argument to
+  identify terminal weak \(L^2\) limits.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
@@ -761,3 +771,8 @@ data maps.
   weak energy limit.  The calculation-check companion verifies the Holder
   conjugacy arithmetic behind the \(L^p\)-power continuity step for the
   \(L^4\), \(L^2\), and \(L^{4/3}\) enhanced-noise norms.
+- 2026-05-26 rough-energy compactness pass: added the theorem deriving
+  weak compactness, a time-derivative bound, and terminal weak \(L^2\)
+  convergence for smooth DPD remainders from the same energy inputs.  The
+  calculation-check companion verifies the \(L^{4/3}\) drift exponents
+  behind the \(\partial_tY_n\) estimate.
