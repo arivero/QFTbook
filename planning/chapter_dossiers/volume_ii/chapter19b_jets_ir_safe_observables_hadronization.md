@@ -37,6 +37,9 @@ The chapter establishes:
   with SCET identified as the operator framework for such factorizations;
 - controlled-approximation statements for perturbative jet predictions and
   parton-shower logarithmic accuracy;
+- the soft-drop grooming definition and an IRC classification that separates
+  \(\beta_{\rm SD}>0\) groomed four-momentum safety from the
+  \(\beta_{\rm SD}=0\) collinear counterexample for the groomed four-vector;
 - a measure-theoretic formulation of energy correlators as continuous
   functionals of the calorimetric energy measure;
 - Lemma `lem:smeared-energy-correlator-continuity`, proving soft and
@@ -79,6 +82,10 @@ The chapter establishes:
    with hierarchical measured scales.
 9. Parton showers are controlled approximations whose logarithmic accuracy is
    observable- and scheme-dependent.
+9a. Soft drop with \(\beta_{\rm SD}>0\) has a collinear-safe groomed
+    four-vector, while for \(\beta_{\rm SD}=0\) the groomed four-vector itself
+    is not collinear safe; mMDT safety statements must name the measured
+    groomed functional.
 10. Smeared energy correlators are continuous functionals of the positive
     calorimetric energy measure; their polynomial algebra separates
     finite-energy calorimetric measures and is dense in continuous
@@ -119,3 +126,7 @@ The chapter establishes:
   polynomials on the compact finite-energy measure space.  This supplies a
   rigorous reason energy correlators are natural jet-substructure
   coordinates, without treating partonic histories as observables.
+- 2026-05-26 issue #526 pass: corrected the soft-drop IRC classification by
+  separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
+  \(\beta_{\rm SD}=0\) collinear counterexample, and added
+  `calculation-checks/soft_drop_irc_checks.py`.

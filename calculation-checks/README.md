@@ -498,6 +498,10 @@ Current checks:
   Chern--Simons Fresnel completion of the square, and the round-\(S^3\)
   conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
+- `soft_drop_irc_checks.py`: exact rational checks for the soft-drop
+  IRC-classification section, including the \(\beta_{\rm SD}=0\) collinear
+  counterexample for the groomed four-vector and the \(\beta_{\rm SD}>0\)
+  threshold behavior.
 - `susy_qm_index_checks.py`: exact rational checks for the Volume I
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian

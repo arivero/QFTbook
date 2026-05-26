@@ -436,12 +436,21 @@ constituents define the groomed jet.  The case \(\beta_{\rm SD}=0\) is the
 modified mass-drop tagger.
 \end{definition}
 
-\begin{proposition}[IRC behavior of soft drop for \(\beta_{\rm SD}\geq0\)]
+\begin{proposition}[IRC classification of soft-drop outputs]
 \label{prop:soft-drop-irc-safety}
 With an IRC-safe input jet algorithm and a finite transverse-momentum
-threshold for the final groomed jet, soft drop with
-\(\beta_{\rm SD}\geq0\) gives IRC-safe groomed four-momentum and IRC-safe
-groomed jet mass away from the boundary hypersurfaces of the measurement.
+threshold for the original jet, the following statements hold away from the
+boundary hypersurfaces of the measurement.
+\begin{enumerate}
+  \item If \(\beta_{\rm SD}>0\), the soft-drop groomed four-momentum is IRC
+  safe.
+  \item If \(\beta_{\rm SD}=0\), the groomed four-momentum is not collinear safe
+  as a standalone observable.
+  \item For \(\beta_{\rm SD}=0\), any claimed IRC safety statement must name
+  the measured functional of the groomed constituents, for example a groomed
+  jet mass or an energy-correlation shape, and must check the collinear limit
+  of that functional rather than the groomed four-vector itself.
+\end{enumerate}
 \end{proposition}
 
 \begin{proof}
@@ -457,19 +466,29 @@ small \(\theta\), and its contribution to the branch momentum vanishes with
 \(\lambda\).
 
 For a collinear splitting of a hard particle, the two branches have
-\(\theta_{ij}\downarrow0\).  When \(\beta_{\rm SD}\geq0\), the right side
-\(z_{\rm cut}\theta_{ij}^{\beta_{\rm SD}}\) tends to \(0\) for
-\(\beta_{\rm SD}>0\) and remains \(z_{\rm cut}\) for
-\(\beta_{\rm SD}=0\).  In the first case, any fixed energy fraction passes the
-condition for sufficiently small angle and the four-momentum recombines to
-the parent.  In the second case, a sufficiently asymmetric collinear split may
-remove the soft-collinear branch, but the removed momentum is collinear and
-has vanishing contribution to the groomed mass in the collinear limit; the
-groomed four-momentum changes by the removed energy fraction only on the
-measurement boundary relevant to flavor-sensitive or track-sensitive
-variants.  For the stated groomed mass and four-momentum observables, the
-measurement has the IRC limits of
-Definition~\ref{def:irc-safe-measurement}.
+\(\theta_{ij}\downarrow0\).  If \(\beta_{\rm SD}>0\), then
+\[
+  z_{\rm cut}\theta_{ij}^{\beta_{\rm SD}}\longrightarrow0.
+\]
+For every fixed splitting fraction \(0<z<1\), the soft-drop condition is
+therefore eventually satisfied, and the collinear pair is retained as the
+parent four-momentum.  This gives the collinear limit of the groomed
+four-vector.
+
+If \(\beta_{\rm SD}=0\), the right-hand side of the soft-drop condition is the
+fixed number \(z_{\rm cut}\).  Consider a massless one-particle jet of
+four-momentum \(p\), and replace it by a collinear pair \(zp\) and
+\((1-z)p\) with \(0<z<z_{\rm cut}<1/2\).  Cambridge--Aachen declustering sees
+the two branches, the soft-drop condition fails, and the softer branch is
+removed.  The groomed four-vector is \((1-z)p\), not \(p\), even in the exact
+collinear limit.  Hence the groomed four-vector is not collinear safe for
+\(\beta_{\rm SD}=0\).
+
+This counterexample does not by itself classify every functional of the
+groomed constituents.  A groomed mass, energy-correlation ratio, or tagged
+substructure variable can still be IRC safe, but its safety is a statement
+about that functional and its normalization.  The check must be made at the
+level of Definition~\ref{def:irc-safe-measurement}.
 \end{proof}
 
 \begin{definition}[\(N\)-subjettiness]
