@@ -73,6 +73,105 @@ the groupoid of pairs \((g,B)\) satisfying the Postnikov constraint.  The
 fusion of topological defects in the QFT is inherited from the fusion of
 topological boundary-changing operators in the bulk.
 
+\section{\texorpdfstring{\(\mathbb Z_N\)}{ZN} One-Form Symmetry TQFT}
+\label{sec:zn-one-form-symtft}
+
+We now write the finite cochain model that will be used as the local model for
+one-form gauging and condensation defects.  Let \(X\) be an oriented
+triangulated five-manifold.  Let
+\[
+  b,c\in C^2(X,\mathbb Z_N)
+\]
+be two \(\mathbb Z_N\)-valued two-cochains.  Their gauge transformations are
+\[
+  b\mapsto b+\delta\lambda,\qquad
+  c\mapsto c+\delta\kappa,
+  \qquad
+  \lambda,\kappa\in C^1(X,\mathbb Z_N).
+\]
+The finite Heisenberg, or \(BF\), symmetry TQFT has exponentiated action
+\begin{equation}
+  Z_H(X;b,c)
+  =
+  \exp\left(\frac{2\pi i}{N}\int_X b\smile\delta c\right).
+  \label{eq:zn-one-form-symtft-action}
+\end{equation}
+The integral means evaluation of the resulting \(\mathbb Z_N\)-valued
+five-cochain on the fundamental class and then embedding
+\(\mathbb Z_N\hookrightarrow \mathbb R/\mathbb Z\).  Equivalently one chooses
+integer lifts and keeps the result modulo \(N\); changing the lift changes the
+exponent by an integral multiple of \(2\pi i\).
+
+\begin{proposition}[Closed-manifold gauge invariance]
+\label{prop:zn-one-form-symtft-gauge-invariance}
+If \(X\) is closed, \eqref{eq:zn-one-form-symtft-action} is invariant under
+the gauge transformations above.
+\end{proposition}
+
+\begin{proof}
+The transformation \(c\mapsto c+\delta\kappa\) does not change \(\delta c\),
+because \(\delta^2=0\).  Under \(b\mapsto b+\delta\lambda\), the exponent
+changes by
+\[
+  \frac{2\pi i}{N}\int_X \delta\lambda\smile\delta c .
+\]
+Since \(\deg\lambda=1\),
+\[
+  \delta(\lambda\smile\delta c)
+  =
+  \delta\lambda\smile\delta c
+  -\lambda\smile\delta^2c
+  =
+  \delta\lambda\smile\delta c .
+\]
+Thus the change is the integral of a coboundary.  Evaluation of a coboundary on
+the fundamental cycle of a closed triangulated manifold is zero modulo \(N\).
+The exponent is therefore unchanged.
+\end{proof}
+
+If \(X\) has boundary \(M=\partial X\), the last computation leaves the
+boundary term
+\[
+  \frac{2\pi i}{N}\int_M \lambda\smile\delta c .
+\]
+A boundary condition must therefore specify which combination of \(b\) and
+\(c\) is fixed as a background and which is summed as a dynamical higher gauge
+field.  A four-dimensional QFT \(\mathcal Q\) with a \(\mathbb Z_N\) one-form
+symmetry is a boundary condition for this five-dimensional theory after the
+choice of background boundary has been made.  Gauging the one-form symmetry is
+the operation of replacing the boundary condition that fixes \(b\) by the
+boundary condition that sums over \(b\) and fixes the dual background \(c\).
+
+\begin{example}[Four-dimensional \(\mathbb Z_N\) line data]
+\label{ex:zn-four-dimensional-line-data}
+In a four-dimensional theory whose electric and magnetic one-form backgrounds
+are both finite \(\mathbb Z_N\) backgrounds, a line charge may be labelled
+abstractly by
+\[
+  (e,m)\in \mathbb Z_N\oplus\mathbb Z_N .
+\]
+The pairing controlling mutual locality is the finite Dirac pairing
+\[
+  \langle(e,m),(e',m')\rangle
+  =
+  em'-me'
+  \quad\in\mathbb Z_N .
+\]
+A set of simultaneously genuine line operators is a subgroup on which this
+pairing vanishes.  The five-dimensional action
+\eqref{eq:zn-one-form-symtft-action} packages the two one-form backgrounds and
+their finite symplectic pairing.  The wall that exchanges \(b\) and \(c\) acts
+on line charges by
+\[
+  (e,m)\mapsto (m,-e),
+\]
+the finite analogue of the \(S\)-wall discussed in
+Chapter~\ref{ch:global-duality-defects-gauging-orbifold-data}.  This statement
+is about the line-charge lattice and its mutual-locality pairing; it is not an
+assertion that arbitrary closed loops in four Euclidean dimensions have a
+topological pairwise braiding invariant.
+\end{example}
+
 \section{Condensation And Gauging}
 
 Let \(\mathcal C\) be the category or higher category of topological defects
@@ -85,6 +184,161 @@ The gauged theory has boundary condition obtained by allowing endpoints of
 the condensed defects.  If the algebra object is obstructed by an anomaly,
 the condensation exists only after coupling to an appropriate bulk or after
 choosing a trivialization of the anomaly.
+
+\begin{definition}[Triangulated higher-gauging defect]
+\label{def:triangulated-higher-gauging-defect}
+Let \(\mathcal Q\) be a four-dimensional QFT with an anomaly-free finite
+\(\mathbb Z_N\) one-form symmetry.  Assume that for every closed oriented
+surface \(\Sigma\) there are topological symmetry surfaces
+\[
+  U_n(\Sigma),\qquad n\in\mathbb Z_N,
+\]
+with junctions implementing \(U_nU_m\simeq U_{n+m}\), and assume these
+surface networks are invariant under triangulation moves.  For a triangulated
+oriented three-manifold \(Y\) supporting a codimension-one defect, define the
+formal condensation insertion
+\begin{equation}
+  \mathfrak C(Y)
+  =
+  \frac{1}{|C^1(Y,\mathbb Z_N)|}
+  \sum_{b\in Z^2(Y,\mathbb Z_N)}
+  \mathsf U_b(Y).
+  \label{eq:triangulated-one-form-condensation-defect}
+\end{equation}
+Here \(b\) is a closed two-cochain on \(Y\).  The symbol
+\(\mathsf U_b(Y)\) denotes the topological wall network obtained from the
+Poincare-dual one-cycle of \(b\): locally one thickens each dual edge in a
+small normal collar of \(Y\) and inserts the corresponding one-form symmetry
+surface segment.  The condition \(\delta b=0\) is the conservation law at the
+vertices of the dual one-cycle, equivalently the absence of an uncancelled
+endpoint for the wall network.  The normalization is a chosen cellular
+normalization for the one-form gauge transformations acting on cochains;
+changing the groupoid normalization changes the defect by an invertible
+three-dimensional topological factor.
+\end{definition}
+
+\begin{proposition}[Fusion of the finite condensation defect]
+\label{prop:finite-condensation-defect-fusion}
+Under the hypotheses of Definition~\ref{def:triangulated-higher-gauging-defect},
+the fusion of two parallel condensation defects is the original condensation
+defect tensored with the finite three-dimensional \(\mathbb Z_N\) two-form
+gauge theory state sum on \(Y\).  In particular the defect is noninvertible
+whenever this three-dimensional topological factor is nontrivial.
+\end{proposition}
+
+\begin{proof}
+Place two copies of the defect on nearby parallel copies of \(Y\).  Their
+product is
+\[
+  \frac{1}{|C^1(Y,\mathbb Z_N)|^2}
+  \sum_{b,b'\in Z^2(Y,\mathbb Z_N)}
+  \mathsf U_b(Y)\,\mathsf U_{b'}(Y).
+\]
+Using the junction isomorphism \(U_nU_m\simeq U_{n+m}\), change variables to
+\[
+  s=b+b',\qquad t=b .
+\]
+For each closed \(s\), the sum over \(t\in Z^2(Y,\mathbb Z_N)\) with the same
+cellular normalization is, by definition, the partition function of the finite
+three-dimensional two-form gauge theory on \(Y\) in this normalization.  The
+remaining sum over \(s\) is exactly the condensation insertion
+\(\mathfrak C(Y)\), because
+\(\mathsf U_b(Y)\mathsf U_{b'}(Y)\simeq\mathsf U_{b+b'}(Y)\).  Thus fusion has
+the stated form.  If the additional three-dimensional factor is not the
+trivial invertible theory, no inverse defect can cancel it to the invisible
+defect.
+\end{proof}
+
+For Yang--Mills theories this construction is not a substitute for a
+continuum definition of the surface operators.  It becomes a QFT statement only
+after the \(\mathbb Z_N\) one-form symmetry surfaces, their junctions, their
+correlation topology, and their anomaly trivialization have been constructed
+inside the theory or by a regulator such as the lattice.  Once that input is
+available, the cochain calculation above is the local algebraic mechanism
+behind higher gauging and the resulting noninvertible condensation defects.
+
+\begin{quotedtheorem}[Finite higher gauging]
+\label{qt:finite-higher-gauging-condensation-defects}
+Let \(\mathcal Q\) be a four-dimensional QFT with a suitable anomaly-free
+finite one-form symmetry.  Gauging that symmetry on a hypersurface produces a
+topological condensation defect.  If \(\mathcal Q\) is equivalent to the theory
+obtained by gauging, after all discrete theta and background choices are
+fixed, the half-space gauging interface becomes a noninvertible duality
+defect.  Its fusion coefficients are generally three-dimensional topological
+theories, not only nonnegative integers.
+\end{quotedtheorem}
+
+This theorem is quoted as a finite topological and defect-network theorem in
+the source lineage of higher gauging and noninvertible condensation defects.
+The proof in this monograph is complete only for the finite cochain mechanism
+in Proposition~\ref{prop:finite-condensation-defect-fusion}.  The remaining
+continuum work is to construct the required surface operators and their
+junctions in the particular interacting QFT under discussion.
+
+\section{Chiral Defects In Abelian Gauge Theory}
+\label{sec:chiral-defects-abelian-gauge-theory}
+
+Let a four-dimensional abelian gauge theory contain massless fermions with a
+classical chiral transformation \(R_\alpha\).  Suppose the ABJ anomaly changes
+the action by
+\[
+  \Delta S_\alpha
+  =
+  \frac{i\alpha q}{8\pi^2}\int_M F\wedge F ,
+\]
+where \(F\) is the \(U(1)\) field strength and \(q\in\mathbb Z\) is the anomaly
+coefficient in the chosen charge normalization.  The codimension-one defect
+implementing \(R_\alpha\) is topological only if this phase is cancelled or
+trivialized as the defect crosses insertions.  In the absence of dynamical
+monopoles, the theory also has a magnetic one-form symmetry, and the anomaly
+phase can be represented by coupling the defect worldvolume to a
+three-dimensional topological theory whose anyons attach to magnetic
+background flux sectors.  The resulting dressed defect is generally
+noninvertible: fusing it with its orientation reverse leaves a sum or a
+three-dimensional topological factor rather than the invisible defect alone.
+
+\begin{quotedtheorem}[Noninvertible chiral defects, source-lineage form]
+\label{qt:noninvertible-chiral-defects-source-lineage}
+In massless abelian gauge theories with no dynamical monopoles and with the
+magnetic one-form symmetry kept as part of the QFT datum, certain rational
+chiral rotations whose ABJ anomaly is not an ordinary symmetry can be dressed
+by lower-dimensional topological degrees of freedom to define topological
+noninvertible chiral defects.  If dynamical monopoles are added so that the
+magnetic one-form symmetry is explicitly broken, the dressed defect is no
+longer topological and the associated selection rule can be violated by
+monopole operators.
+\end{quotedtheorem}
+
+We will not use this quoted theorem as a black-box axiom in later arguments.
+For the standard of this monograph, the still-missing part is a
+regulator-level construction that simultaneously defines the massless fermion
+measure, the magnetic one-form symmetry backgrounds, the three-dimensional
+defect theory, and reflection-positive defect Hilbert spaces.  The statement is
+therefore recorded as a precise target for later development rather than as a
+completed derivation.
+
+\section{Higher Fusion Categories And Truncations}
+\label{sec:higher-fusion-categories-truncations}
+
+The categorical level depends on which defects are retained.  In a
+four-dimensional QFT, the full wall-junction system includes walls, junction
+surfaces, junction lines, and point junctions.  It is therefore at least a
+three-categorical defect object.  A fusion two-category appears only after a
+controlled truncation, for example by focusing on topological surfaces and
+their line and point junctions, or by studying the three-dimensional theory
+living on a wall.  A finite semisimple fusion two-category has objects,
+one-morphisms, and two-morphisms, a monoidal product, duals, and finite
+semisimple Hom categories.  Condensation is then formulated by separable
+algebra objects and their module two-categories.
+
+This distinction matters in four-dimensional generalized symmetry.  A
+one-form symmetry generated by topological surfaces is not fully described by
+a one-category of simple surfaces if its line junctions carry nontrivial
+operator spaces.  The symmetry TQFT keeps this extra information because bulk
+boundary-changing defects, their junctions, and their endpoint operators live
+one categorical level higher than the ordinary group law.  When a chapter later
+uses only a fusion ring of surfaces, the omission is a truncation and not a
+definition of the full symmetry object.
 
 \section{Example: Mixed Zero- And One-Form Data}
 
@@ -100,7 +354,7 @@ five-dimensional functional of the combined background.  The line-operator
 lattice then transforms as a module over the two-group rather than as a
 separate representation of each symmetry.
 
-\section{Comparison Ledger}
+\section*{Comparison Ledger}
 
 The symmetry-TQFT description is not a replacement for constructing the QFT.
 It records:

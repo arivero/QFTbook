@@ -47,6 +47,11 @@ anomaly obstruction.
 - Hands off explicitly to Chapter 10 for the finite normal-subgroup gauging
   and electric-magnetic line-lattice examples, while keeping the unresolved
   interacting-continuum construction as the open problem.
+- Hands off explicitly to Chapter 11 for the finite `Z_N` one-form SymTFT and
+  higher-gauging condensation-defect cochain construction, so the categorical
+  framework is connected to the modern four-dimensional condensation mechanism
+  without treating the continuum surface-operator construction as already
+  solved.
 
 ## Calculation Checks
 
