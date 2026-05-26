@@ -88,6 +88,16 @@
   \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge example.
 - Separates gauged WZW as a gauge-fixed/BRST local QFT from a pointwise
   quotient of target manifolds.
+- Defines the rank-one solvable cosets \(SU(2)_k/U(1)\) and
+  \(SL(2,\mathbb R)_k/U(1)\) from current algebra first: parafermion
+  branching labels, selection rules, field identification, central charge,
+  conformal weights, and the noncompact cigar's representation,
+  momentum/winding, reflection, normalizability, and modular-data
+  requirements.
+- Derives the bell and cigar gauged-WZW metrics and dilatons from local
+  gauge fixing, algebraic gauge-field equations, and the Gaussian
+  determinant, then records them as controlled large-level sigma-model
+  representatives rather than replacements for the exact coset CFT data.
 - Defines finite orbifolds using anomaly-free topological symmetry lines,
   twisted Hilbert spaces, centralizer projection, and discrete torsion.
 - Derives the finite-orbifold torus partition function and its modular label
@@ -161,26 +171,37 @@
 21. Coset central charges and weights are differences of the \(G\) and
     embedded \(H\) Sugawara data; gauge consistency is level matching for the
     gauged subgroup.
-22. The orbifold Hilbert space is
+22. The \(SU(2)_k/U(1)\) parafermion labels satisfy the selection rule
+    \(\ell+m\in2\mathbb Z\), and the field identification
+    \((\ell,m)\sim(k-\ell,m+k)\) preserves conformal weights modulo
+    integers.
+23. The \(SL(2,\mathbb R)_k/U(1)\) cigar central charge and weights use the
+    noncompact dual-Coxeter shift \(k-2\), and the stated
+    momentum/winding labels give integer spin \(h-\bar h=nw\).
+24. The bell and cigar metrics and dilatons follow from gauged-WZW gauge
+    fixing, algebraic gauge-field elimination, and Gaussian determinants
+    only as controlled large-level representatives; the exact CFTs also
+    require branching or noncompact representation data.
+25. The orbifold Hilbert space is
    \(\bigoplus_{[g]}\mathcal H_g^{C_g}\) after an \(H^3(G,U(1))\) anomaly
    trivialization is chosen.
-23. The torus partition function is the finite gauge sum over commuting
+26. The torus partition function is the finite gauge sum over commuting
    holonomies and is modular invariant with the stated label action.
-24. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
+27. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
    reflection twist field has \(h=1/16\).
-25. For a cycle type
+28. For a cycle type
    \(\lambda=(1^{m_1}\cdots N^{m_N})\), the symmetric-product centralizer has
    order \(\prod_K K^{m_K}m_K!\), and the sector Hilbert space is the
    \(C_\lambda\)-invariant subspace of the tensor product of long-string
    Hilbert spaces.
-26. The symmetric-product partition-function generating series is the
+29. The symmetric-product partition-function generating series is the
    exponential of nonholomorphic Hecke transforms of the seed partition
    function, obtained by decomposing commuting \(S_N\)-bundle holonomies into
    connected torus covers.
-27. Twist OPEs multiply monodromies before conjugacy-class averaging; a
+30. Twist OPEs multiply monodromies before conjugacy-class averaging; a
    transposition joins two disjoint cycles or splits one cycle, with the
    leading bare-twist exponent fixed by the cycle-weight difference.
-28. Twist-field deformations are conformal perturbations by projected local
+31. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
 
@@ -213,8 +234,9 @@
   `beta' = beta + [beta,F]` in a finite polynomial two-coupling model.
 - `calculation-checks/wzw_sugawara_coset_checks.py` verifies the finite
   arithmetic of the Sugawara central charges, \(SU(2)\) affine-primary
-  weights, diagonal coset minimal-model central charges, and Ising/tricritical
-  examples.
+  weights, diagonal coset minimal-model central charges, parafermion
+  selection-rule and field-identification weights, cigar central charges and
+  integer-spin momentum/winding labels, and Ising/tricritical examples.
 - `calculation-checks/symmetric_product_orbifold_checks.py` verifies
   \(S_N\) centralizer orders, conjugacy-class counting, central-charge
   additivity, cycle-type twist weights, joining weight shifts, and the
@@ -230,3 +252,11 @@
   structure.  The monograph derives the displayed variational and redundant
   direction formulas locally; the reference does not settle nonperturbative
   existence of sigma-model CFTs.
+- Local stringbook source consulted:
+  `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
+  especially the WZW/coset and supersymmetric coset discussions around
+  `sec:wzwcoset`, `sec:coset`, `sec:sutwocos`, and the \(N=2\)
+  \(SL(2,\mathbb R)/U(1)\) subsection.  The monograph import keeps the
+  stringbook's conceptual order but expands the bosonic derivations and
+  defers the supersymmetric \(N=2\) refinements to the supersymmetric field
+  theory development.
