@@ -2592,14 +2592,133 @@ tends to zero.  The same argument applies to \(\sigma=A\) and \(\sigma=B\),
 and the normalized limits follow from \(Z_N^\sigma\to Z>0\).
 \end{proof}
 
+\begin{corollary}[Bounded-cylinder comparison from a common potential]
+\label{cor:spde-bounded-cylinder-common-potential}
+In the setting of
+Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}, replace
+the \(L^1\)-convergence assumption on the densities by the following
+potential-level assumptions.  Let
+\[
+  V_N^\sigma:\Omega\to\R,\qquad V:\Omega\to\R,
+  \qquad \sigma\in\{A,B\},
+\]
+be measurable real-valued interaction functionals, put
+\[
+  W_N^\sigma=e^{-V_N^\sigma},\qquad W=e^{-V},
+\]
+and assume
+\[
+  X_N^\sigma\longrightarrow X,
+  \qquad
+  V_N^\sigma\longrightarrow V
+  \quad\hbox{in }\gamma\hbox{-probability}
+  \label{eq:spde-common-potential-convergence}
+\]
+for \(\sigma=A,B\).  Assume further that, for some \(p>1\),
+\[
+  \sup_{N,\sigma}\|e^{-V_N^\sigma}\|_{L^p(\gamma)}<\infty,
+  \qquad
+  Z:=\int e^{-V}\,\dd\gamma>0 .
+  \label{eq:spde-common-potential-lp-stability}
+\]
+Then the normalized bounded cylinder expectations of the two regulators
+have the common limit
+\[
+  \lim_{N\to\infty}
+  \frac{\int F(X_N^\sigma)e^{-V_N^\sigma}\,\dd\gamma}
+       {\int e^{-V_N^\sigma}\,\dd\gamma}
+  =
+  \frac{\int F(X)e^{-V}\,\dd\gamma}
+       {\int e^{-V}\,\dd\gamma},
+  \qquad
+  \sigma=A,B,
+  \label{eq:spde-common-potential-cylinder-limit}
+\]
+for every bounded continuous \(F:\R^r\to\C\).
+\end{corollary}
+
+\begin{proof}
+It is enough to verify the density hypotheses of
+Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}.  Since
+the exponential map is continuous,
+\[
+  e^{-V_N^\sigma}\longrightarrow e^{-V}
+  \quad\hbox{in }\gamma\hbox{-probability}.
+\]
+We first record explicitly that the limiting weight belongs to \(L^p\).
+From any subsequence of \(e^{-V_N^\sigma}\) one may choose a further
+subsequence converging to \(e^{-V}\) almost surely.  Fatou's lemma gives
+\[
+  \|e^{-V}\|_{L^p(\gamma)}^p
+  \leq
+  \liminf_{k\to\infty}
+  \|e^{-V_{N_k}^\sigma}\|_{L^p(\gamma)}^p
+  \leq
+  \sup_{N,\sigma}\|e^{-V_N^\sigma}\|_{L^p(\gamma)}^p .
+\]
+Thus the family
+\[
+  \{e^{-V}\}\cup
+  \{e^{-V_N^\sigma}:N\geq1,\ \sigma=A,B\}
+\]
+is uniformly integrable.  Indeed, for every measurable \(E\subset\Omega\),
+Holder's inequality gives
+\[
+  \int_E e^{-V_N^\sigma}\,\dd\gamma
+  \leq
+  \|e^{-V_N^\sigma}\|_{L^p(\gamma)}
+  \gamma(E)^{1-1/p},
+  \qquad
+  \int_E e^{-V}\,\dd\gamma
+  \leq
+  \|e^{-V}\|_{L^p(\gamma)}
+  \gamma(E)^{1-1/p}.
+\]
+We now prove the \(L^1\)-convergence rather than citing Vitali's theorem.
+Fix \(\varepsilon>0\).  By the preceding uniform-integrability estimate,
+choose \(\delta>0\) so that the integral of any member of the displayed
+family over a set of \(\gamma\)-measure less than \(\delta\) is at most
+\(\varepsilon\).  Let
+\[
+  E_N^\sigma=\{|e^{-V_N^\sigma}-e^{-V}|>\varepsilon\}.
+\]
+Convergence in probability gives \(\gamma(E_N^\sigma)<\delta\) for all
+sufficiently large \(N\).  Then
+\[
+\begin{aligned}
+  \int |e^{-V_N^\sigma}-e^{-V}|\,\dd\gamma
+  &\leq
+  \varepsilon
+  +\int_{E_N^\sigma} e^{-V_N^\sigma}\,\dd\gamma
+  +\int_{E_N^\sigma} e^{-V}\,\dd\gamma  \\
+  &\leq 3\varepsilon
+\end{aligned}
+\]
+for all sufficiently large \(N\).  Hence
+\[
+  e^{-V_N^\sigma}\longrightarrow e^{-V}
+  \quad\hbox{in }L^1(\gamma),
+  \qquad \sigma=A,B .
+\]
+The hypotheses of
+Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit} are now
+satisfied, and its conclusion is exactly
+\eqref{eq:spde-common-potential-cylinder-limit}.
+\end{proof}
+
 In the regulator-comparison problem, \(X_N^\sigma\) is the finite list of
 smeared field or Wick-polynomial coordinates entering a bounded positive-time
 cylinder observable, and \(W_N^\sigma\) is the finite-cutoff interaction
 density.  Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}
 therefore proves the bounded-observable comparison once both regulators are
 constructed on a common Gaussian probability space and their Wick densities
-are shown to have the same \(L^1\) limit.  Unbounded polynomial observables
-still require the separate uniform-integrability argument stated in
+are shown to have the same \(L^1\) limit.
+Corollary~\ref{cor:spde-bounded-cylinder-common-potential}
+gives the common route used in cutoff constructions: it is enough to prove
+that the renormalized interaction functionals converge in probability to the
+same limiting potential and that their exponential weights obey a uniform
+\(L^p\) stability estimate.  Unbounded polynomial observables still require
+the separate uniform-integrability argument stated in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}.
 
 \begin{proposition}[Brascamp--Lieb covariance domination for convex cutoffs]
@@ -3336,7 +3455,11 @@ Assume the following three further analytic facts.
   Proposition~\ref{prop:spde-regulator-comparison-os-criterion}.  A
   sufficient condition for the bounded-cylinder comparison part is the
   common \(L^1\) density-limit criterion of
-  Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}.
+  Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}; a
+  still more primitive sufficient condition, stated in terms of convergence
+  of the renormalized interaction potentials and a uniform \(L^p\) stability
+  estimate for their exponential weights, is
+  Corollary~\ref{cor:spde-bounded-cylinder-common-potential}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -3426,7 +3549,11 @@ Proposition~\ref{prop:spde-regulator-comparison-os-criterion}; the bounded
 cylinder comparison follows from
 Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit} if the two
 regulators have a common \(L^1\) interaction-density limit and identical
-limiting cylinder coordinates.  The
+limiting cylinder coordinates; by
+Corollary~\ref{cor:spde-bounded-cylinder-common-potential}, the common
+\(L^1\) density limit follows from convergence in probability of the
+renormalized interaction potentials plus a uniform \(L^p\) stability bound
+on the exponential weights.  The
 uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite

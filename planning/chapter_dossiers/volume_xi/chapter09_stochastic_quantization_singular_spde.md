@@ -99,6 +99,9 @@ data.
 - `X_N^A`, `X_N^B`, `W_N^A`, `W_N^B`: regulator-dependent finite lists of
   cylinder coordinates and interaction densities in the bounded-cylinder
   common-density comparison theorem.
+- `V_N^A`, `V_N^B`, `V`: regulator-dependent renormalized interaction
+  potentials and their common limiting potential in the common-potential
+  comparison corollary.
 - `H_N`, `A_N`, `L_N`, `e_{N,alpha}`, `lambda_{N,alpha}`, `nu_N`:
   finite-dimensional Hilbert space, Hessian lower-bound operator, reference
   nonnegative operator, spectral basis, eigenvalues, and convex cutoff
@@ -357,6 +360,16 @@ data.
   uniform integrability from Holder.  This supplies a precise sufficient
   condition for the bounded-observable comparison required before transferring
   finite-cutoff OS positivity between regulators.
+- Proves the common-potential corollary underneath the density comparison.
+  If the two renormalized interaction functionals converge in probability to
+  the same limiting potential and the exponential weights are uniformly
+  \(L^p\)-bounded for some \(p>1\), then the weights converge in \(L^1\).
+  The proof spells out the Vitali step: subsequential Fatou gives the
+  limiting weight in \(L^p\), Holder gives uniform integrability of the
+  cutoff weights plus the limit weight, and convergence in probability
+  upgrades to \(L^1\).  This moves regulator comparison from an
+  assumed-density statement to the potential-level stability estimate that
+  constructive cutoff arguments can actually target.
 - Proves a finite-dimensional Brascamp-Lieb covariance domination theorem
   for convex scalar cutoffs.  The proof uses the symmetric generator
   \(\mathcal L=\Delta-\nabla S\cdot\nabla\), its Friedrichs resolvent, and
