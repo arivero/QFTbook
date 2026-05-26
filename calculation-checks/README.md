@@ -43,6 +43,12 @@ Current checks:
   theory chapter, including finite Fourier projection onto flat cochains,
   the groupoid-cardinality partition function, cellular Wilson gauge
   invariance, and the Wilson/surface linking phase sign.
+- `finite_gauge_state_sum_checks.py`: exact finite checks for the Volume VIII
+  finite-gauge state-sum chapter, including action-groupoid cardinality,
+  connected-manifold homomorphism counts, closed-surface character formulas
+  for cyclic groups and \(S_3\), class-function convolution on the circle,
+  the standard \(\mathbb Z_n\) Dijkgraaf--Witten \(3\)-cocycle condition, and
+  spanning-tree gauge-fixing counts.
 - `bpst_instanton_normalization_checks.py`: finite algebra and radial-integral
   checks for the BPST instanton section, including self-duality of the
   't Hooft symbols, the quadratic \(\eta\)-symbol identity used in the

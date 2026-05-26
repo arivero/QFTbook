@@ -1,143 +1,712 @@
-\chapter{Finite Gauge Theory And State-Sum TQFT}
+\chapter{Finite Gauge Theory and State-Sum TQFT}
 \label{ch:tqft-finite-gauge-state-sum}
 
 \ConventionsEuclidean
 
-Finite gauge theory is the cleanest laboratory for the relation between
-path-integral sums, extended functoriality, defects, and anomalies.  The
-fields form finite groupoids, the sums are literal finite sums, and the
-gluing identities can be checked without analytic regularization.  This
-chapter develops the untwisted and Dijkgraaf--Witten twisted theories as
-TQFTs.
+Finite gauge theory is the cleanest nonperturbative laboratory for
+topological path integrals.  The field spaces are finite groupoids, the
+``measure'' is groupoid cardinality, the state spaces are finite-dimensional
+vector spaces of functions or sections over boundary groupoids, and gluing is
+Fubini's theorem for finite homotopy fibers.  This chapter develops the
+untwisted theory and its Dijkgraaf--Witten cocycle twists with enough detail
+that later references to finite topological gauge theory have a precise
+meaning.
 
-\section{Fields As A Groupoid}
+Throughout this chapter \(G\) is a finite group.  A principal \(G\)-bundle
+means a right principal bundle.  All manifolds are compact, smooth,
+oriented when orientation is needed, and equipped with collars at boundary
+components.  If \(X\) is a finite groupoid, \(\pi_0X\) denotes the set of
+isomorphism classes of objects and \(\operatorname{Aut}_X(x)\) denotes the
+automorphism group of an object \(x\).
 
-Let \(G\) be a finite group and let \(M\) be a compact \(D\)-manifold.  The
-field groupoid is
+\section{Finite Groupoids and the Gauge Volume}
+
+\begin{definition}[Finite groupoid cardinality]
+\label{def:finite-groupoid-cardinality}
+A finite groupoid is a groupoid with finitely many isomorphism classes and
+finite automorphism groups.  Its cardinality is
 \[
-  \operatorname{Bun}_G(M),
+  |X|
+  =
+  \sum_{[x]\in\pi_0X}
+  \frac{1}{|\operatorname{Aut}_X(x)|}.
+  \label{eq:finite-groupoid-cardinality}
 \]
-whose objects are principal \(G\)-bundles \(P\to M\) and whose morphisms are
-bundle isomorphisms.  The untwisted partition function is the groupoid
-cardinality
+If \(F:X\to\C\) is a function constant on isomorphism classes, its integral
+over \(X\) is
+\[
+  \int_X F
+  =
+  \sum_{[x]\in\pi_0X}
+  \frac{F(x)}{|\operatorname{Aut}_X(x)|}.
+  \label{eq:finite-groupoid-integral}
+\]
+\end{definition}
+
+The factor \(1/|\operatorname{Aut}(x)|\) is the finite gauge-volume factor.
+It is forced by gluing.  Omitting it gives the wrong cylinder and the wrong
+answer for a quotient with stabilizers.
+
+\begin{lemma}[Action groupoid cardinality]
+\label{lem:action-groupoid-cardinality}
+Let a finite group \(H\) act on a finite set \(X\).  The action groupoid
+\(X//H\) has objects \(X\) and morphisms \(x\to h x\) labeled by
+\(h\in H\).  Its groupoid cardinality is
+\[
+  |X//H|=\frac{|X|}{|H|}.
+  \label{eq:action-groupoid-cardinality}
+\]
+\end{lemma}
+
+\begin{proof}
+The isomorphism classes are the orbits \(\mathcal O\subset X\).  For
+\(x\in\mathcal O\), the automorphism group is the stabilizer \(H_x\).  Thus
+\[
+  |X//H|
+  =
+  \sum_{\mathcal O}
+  \frac{1}{|H_x|}
+  =
+  \sum_{\mathcal O}
+  \frac{|\mathcal O|}{|H|}
+  =
+  \frac{|X|}{|H|},
+\]
+where the orbit-stabilizer theorem was used in the second equality.
+\end{proof}
+
+\section{Fields as Principal-Bundle Groupoids}
+
+For a compact manifold \(M\), define
+\[
+  \operatorname{Bun}_G(M)
+\]
+to be the groupoid of principal \(G\)-bundles \(P\to M\) and bundle
+isomorphisms.  Equivalently,
+\(\operatorname{Bun}_G(M)\) is the mapping groupoid from \(M\) to the
+classifying stack \(BG\).  In this chapter this phrase has the concrete
+meaning supplied by principal bundles and their isomorphisms; no analytic
+mapping-space structure is being assumed.
+
+\begin{definition}[Untwisted finite gauge partition function]
+\label{def:untwisted-finite-gauge-partition}
+For a closed \(D\)-manifold \(M\), the untwisted finite \(G\)-gauge theory
+partition function is
 \[
   Z_G(M)
+  =
+  |\operatorname{Bun}_G(M)|
   =
   \sum_{[P]\in\pi_0\operatorname{Bun}_G(M)}
   \frac{1}{|\operatorname{Aut}(P)|}.
+  \label{eq:untwisted-finite-gauge-partition}
 \]
-If \(M\) is connected and \(P\) is represented by a homomorphism
-\(\rho:\pi_1(M)\to G\), then
+\end{definition}
+
+If \(M\) is connected and \(m\in M\) is a basepoint, a principal
+\(G\)-bundle is classified by a monodromy homomorphism
 \[
-  \operatorname{Aut}(P)\cong C_G(\rho),
+  \rho:\pi_1(M,m)\to G
 \]
-the centralizer of the image of \(\rho\).  Hence
+up to conjugation by \(G\).  The automorphism group of the corresponding
+bundle is
+\[
+  C_G(\rho)
+  =
+  \{h\in G: h\rho(\gamma)h^{-1}=\rho(\gamma)
+  \ \hbox{for all }\gamma\in\pi_1(M,m)\}.
+\]
+
+\begin{proposition}[Connected-manifold formula]
+\label{prop:finite-gauge-connected-formula}
+For connected closed \(M\),
 \[
   Z_G(M)
   =
-  \frac{|\operatorname{Hom}(\pi_1(M),G)|}{|G|}
+  \frac{|\operatorname{Hom}(\pi_1(M),G)|}{|G|}.
+  \label{eq:finite-gauge-connected-formula}
 \]
-for connected \(M\).
+\end{proposition}
 
-\section{Twists By Cocycles}
+\begin{proof}
+The groupoid \(\operatorname{Bun}_G(M)\) is equivalent to the action groupoid
+\[
+  \operatorname{Hom}(\pi_1(M),G)//G,
+\]
+where \(G\) acts by conjugation.  The stabilizer of \(\rho\) is
+\(C_G(\rho)\), which is the automorphism group of the corresponding bundle.
+Lemma~\ref{lem:action-groupoid-cardinality} gives
+\eqref{eq:finite-gauge-connected-formula}.
+\end{proof}
+
+For a disconnected \(M=\bigsqcup_{\alpha=1}^c M_\alpha\), groupoid
+cardinality is multiplicative under disjoint union:
+\[
+  Z_G(M)
+  =
+  \prod_{\alpha=1}^c Z_G(M_\alpha).
+\]
+The empty manifold has value \(1\), as required for a symmetric monoidal
+field theory.
+
+\section{State Spaces and Push-Pull Along Spans}
+
+Let \(\Sigma\) be a closed \((D-1)\)-manifold.  The boundary field groupoid is
+\[
+  \mathcal B_\Sigma=\operatorname{Bun}_G(\Sigma).
+\]
+In the untwisted theory the state space is
+\[
+  \mathcal H_G(\Sigma)
+  =
+  \operatorname{Fun}(\pi_0\mathcal B_\Sigma,\C),
+  \label{eq:finite-gauge-state-space}
+\]
+the vector space of complex-valued functions on isomorphism classes of
+boundary bundles.  Its canonical bilinear pairing is the groupoid integral
+\[
+  \langle f_1,f_2\rangle_\Sigma
+  =
+  \int_{\mathcal B_\Sigma} f_1(Q)f_2(Q)
+  =
+  \sum_{[Q]}
+  \frac{f_1(Q)f_2(Q)}{|\operatorname{Aut}(Q)|}.
+  \label{eq:finite-gauge-boundary-pairing}
+\]
+The pairing identifies \(\mathcal H_G(\bar\Sigma)\) with the dual of
+\(\mathcal H_G(\Sigma)\), in agreement with
+Proposition~\ref{prop:tqft-state-space-duality}.
+
+If
+\[
+  M:\Sigma_0\to\Sigma_1
+\]
+is a collared bordism, restriction to the boundary gives a span of finite
+groupoids
+\[
+  \mathcal B_{\Sigma_0}
+  \xleftarrow{\ r_0\ }
+  \operatorname{Bun}_G(M)
+  \xrightarrow{\ r_1\ }
+  \mathcal B_{\Sigma_1}.
+  \label{eq:finite-gauge-bordism-span}
+\]
+The bordism operator is the push-pull map
+\[
+  Z_G(M)
+  =
+  (r_1)_!\,r_0^*
+  :
+  \mathcal H_G(\Sigma_0)\to\mathcal H_G(\Sigma_1).
+  \label{eq:finite-gauge-push-pull}
+\]
+Here \(r_0^*\) is pullback of functions, and \((r_1)_!\) is integration over
+the finite homotopy fiber of \(r_1\).
+
+Concretely, if \(Q_1\in\mathcal B_{\Sigma_1}\), then
+\[
+  \bigl(Z_G(M)f\bigr)(Q_1)
+  =
+  \int_{P\in\operatorname{Bun}_G(M)_{Q_1}}
+  f(r_0P),
+  \label{eq:finite-gauge-pushforward-concrete}
+\]
+where \(\operatorname{Bun}_G(M)_{Q_1}\) is the groupoid of pairs
+\((P,\alpha)\) with \(P\in\operatorname{Bun}_G(M)\) and an isomorphism
+\(\alpha:r_1P\simeq Q_1\).
+
+\begin{theorem}[Finite groupoid gluing]
+\label{thm:finite-groupoid-gluing}
+Let \(M_{01}:\Sigma_0\to\Sigma_1\) and
+\(M_{12}:\Sigma_1\to\Sigma_2\) be collared bordisms.  The natural
+restriction functor gives an equivalence of finite groupoids
+\[
+  \operatorname{Bun}_G(M_{12}\circ M_{01})
+  \simeq
+  \operatorname{Bun}_G(M_{01})
+  \times_{\operatorname{Bun}_G(\Sigma_1)}
+  \operatorname{Bun}_G(M_{12}),
+  \label{eq:bun-gluing-homotopy-pullback}
+\]
+where the fiber product is the homotopy fiber product of groupoids.  With
+the push-pull definition \eqref{eq:finite-gauge-push-pull},
+\[
+  Z_G(M_{12}\circ M_{01})
+  =
+  Z_G(M_{12})\,Z_G(M_{01}).
+  \label{eq:finite-gauge-gluing}
+\]
+\end{theorem}
+
+\begin{proof}
+The equivalence \eqref{eq:bun-gluing-homotopy-pullback} is descent for
+principal bundles over the collar cover
+\[
+  M_{12}\circ M_{01}=M_{01}\cup_{\Sigma_1}M_{12}.
+\]
+An object on the right is a bundle \(P_{01}\to M_{01}\), a bundle
+\(P_{12}\to M_{12}\), and an isomorphism
+\[
+  P_{01}|_{\Sigma_1}\simeq P_{12}|_{\Sigma_1}.
+\]
+Gluing the total spaces along this isomorphism gives a principal bundle on
+the glued manifold.  Conversely, restricting a bundle on the glued manifold
+gives such data.  The same argument on bundle isomorphisms gives equivalence
+of groupoids, not merely a bijection of isomorphism classes.
+
+For the linear maps, composition of spans is represented by the homotopy
+fiber product in \eqref{eq:bun-gluing-homotopy-pullback}.  It remains only
+to check the measure factors.  Let \(X\xrightarrow{f}Y\xrightarrow{g}Z\) be
+finite groupoids and \(F\) a function on \(X\).  By definition,
+\[
+  (g_!f_!F)(z)
+  =
+  \int_{y\in Y_z}\int_{x\in X_y}F(x).
+\]
+An object counted by the iterated integral is an object \(x\in X\), an
+isomorphism \(g(fx)\simeq z\), and the compatible automorphism data.  This is
+exactly an object of the homotopy fiber \(X_z\) of \(g\circ f\).  The
+automorphism group is the same stabilizer in the two descriptions, so the
+weights \(1/|\operatorname{Aut}|\) agree term by term.  Hence
+\[
+  (g\circ f)_!F=g_!f_!F.
+\]
+Applying this Fubini identity to the two restriction spans proves
+\eqref{eq:finite-gauge-gluing}.
+\end{proof}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \node (B0) at (0,0) {\(\operatorname{Bun}_G(\Sigma_0)\)};
+  \node (X) at (3.2,1.15) {\(\operatorname{Bun}_G(M_{01})\)};
+  \node (B1) at (6.4,0) {\(\operatorname{Bun}_G(\Sigma_1)\)};
+  \node (Y) at (9.6,1.15) {\(\operatorname{Bun}_G(M_{12})\)};
+  \node (B2) at (12.8,0) {\(\operatorname{Bun}_G(\Sigma_2)\)};
+  \draw[<-] (B0) -- (X);
+  \draw[->] (X) -- (B1);
+  \draw[<-] (B1) -- (Y);
+  \draw[->] (Y) -- (B2);
+  \node at (6.4,2.25)
+    {\(\operatorname{Bun}_G(M_{01})\times_{\operatorname{Bun}_G(\Sigma_1)}
+      \operatorname{Bun}_G(M_{12})\)};
+  \draw[dashed,->] (6.4,2.0) -- (4.2,1.35);
+  \draw[dashed,->] (6.4,2.0) -- (8.6,1.35);
+\end{tikzpicture}
+\caption{Gluing finite gauge theory is composition of spans of finite
+groupoids.  The middle groupoid is retained as a homotopy fiber product, so
+automorphisms of the intermediate boundary bundle are divided out exactly
+once.}
+\label{fig:finite-gauge-gluing-span}
+\end{figure}
+
+\section{Triangulated State Sums}
+
+Let \(K\) be a finite triangulation of a closed oriented \(D\)-manifold
+\(M\), equipped with a branching, meaning an ordering of vertices on every
+simplex compatible on faces.  A lattice \(G\)-connection assigns an element
+\[
+  g_{ij}\in G
+\]
+to every oriented edge \(i\to j\), with \(g_{ji}=g_{ij}^{-1}\).  It is flat
+when
+\[
+  g_{ij}g_{jk}=g_{ik}
+  \label{eq:finite-gauge-flatness}
+\]
+on every oriented triangle.  Gauge transformations are vertex labels
+\[
+  h_i\in G,
+\]
+acting by
+\[
+  g_{ij}\longmapsto h_i g_{ij}h_j^{-1}.
+  \label{eq:finite-gauge-lattice-gauge-transformation}
+\]
+Let \(\operatorname{Flat}_G(K)\) be the finite set of flat edge labelings.
+The action groupoid
+\[
+  \operatorname{Flat}_G(K)//G^{K_0}
+\]
+is equivalent to \(\operatorname{Bun}_G(M)\).  Therefore
+\[
+  Z_G(M)
+  =
+  \frac{|\operatorname{Flat}_G(K)|}{|G|^{|K_0|}}.
+  \label{eq:finite-gauge-lattice-state-sum}
+\]
+
+For connected \(K\), choose a spanning tree \(T\) in the one-skeleton.  Every
+flat connection is gauge equivalent to a unique flat connection with
+\[
+  g_{ij}=1
+  \qquad\hbox{for every edge }(ij)\in T,
+\]
+up to the remaining constant conjugation by \(G\).  This gauge fixing gives
+the equality between \eqref{eq:finite-gauge-lattice-state-sum} and
+\eqref{eq:finite-gauge-connected-formula}.
+
+\section{Dijkgraaf--Witten Twists}
 
 Let
 \[
   \omega\in Z^D(BG,U(1))
 \]
-be a normalized group cocycle.  A bundle \(P\to M\) is classified by a map
+be a normalized group cocycle.  In an inhomogeneous cochain convention this
+means a function
 \[
-  f_P:M\to BG
+  \omega:G^D\to U(1)
 \]
-up to homotopy.  The twisted partition function is
+which is \(1\) when any argument is the identity and satisfies
 \[
-  Z_{G,\omega}(M)
+  (\delta\omega)(g_1,\ldots,g_{D+1})=1.
+  \label{eq:dw-cocycle-condition}
+\]
+For example, for \(D=2\),
+\[
+  \omega(g_2,g_3)\,
+  \omega(g_1g_2,g_3)^{-1}\,
+  \omega(g_1,g_2g_3)\,
+  \omega(g_1,g_2)^{-1}
   =
-  \sum_{[P]}
-  \frac{1}{|\operatorname{Aut}(P)|}
-  \exp\left(2\pi i\int_M f_P^*\omega\right).
+  1.
+  \label{eq:dw-2-cocycle-condition}
 \]
-Changing \(\omega\) by a coboundary changes the integrand by a boundary term;
-on closed \(M\) the partition function depends only on the cohomology class
+
+For a branched oriented \(D\)-simplex
+\(\sigma=[i_0\cdots i_D]\), define
+\[
+  \omega_\sigma(g)
+  =
+  \omega(g_{i_0i_1},g_{i_1i_2},\ldots,g_{i_{D-1}i_D})^{\varepsilon(\sigma)},
+  \label{eq:dw-simplex-weight}
+\]
+where \(\varepsilon(\sigma)=+1\) if the branching order agrees with the
+orientation of \(M\) on \(\sigma\), and \(-1\) otherwise.  The twisted
+state-sum is
+\[
+  Z_{G,\omega}(M;K)
+  =
+  \frac{1}{|G|^{|K_0|}}
+  \sum_{g\in\operatorname{Flat}_G(K)}
+  \prod_{\sigma^D\in K_D}\omega_\sigma(g).
+  \label{eq:dw-triangulated-state-sum}
+\]
+
+\begin{proposition}[Triangulation independence of the cocycle weight]
+\label{prop:dw-triangulation-independence}
+For closed \(M\), the quantity
+\eqref{eq:dw-triangulated-state-sum} is invariant under branching-preserving
+Pachner moves and changes by the expected boundary coboundary factor if
+\(\omega\) is replaced by \(\omega\,\delta\lambda\).  Hence on closed
+manifolds it depends only on the cohomology class
 \[
   [\omega]\in H^D(BG,U(1)).
 \]
-On manifolds with boundary, a choice of trivialization or boundary state is
-part of the datum.
+\end{proposition}
 
-\section{Triangulated State Sum}
+\begin{proof}
+A Pachner move replaces one triangulation of the boundary of a
+\((D+1)\)-simplex by the complementary triangulation.  For a flat labeling,
+the ratio of the two products of \(D\)-simplex weights is exactly
+\((\delta\omega)(g_1,\ldots,g_{D+1})\), with the signs determined by whether
+the \(D\)-face is incoming or outgoing in the boundary orientation.  The
+cocycle condition \eqref{eq:dw-cocycle-condition} makes the ratio \(1\).
+The same calculation with \(\omega\delta\lambda\) leaves only the product of
+\(\lambda\)-weights on the boundary of \(M\).  If \(M\) is closed, every
+\((D-1)\)-face is counted twice with opposite signs, so the coboundary
+factor cancels.
+\end{proof}
 
-Choose a triangulation \(K\) of \(M\).  A flat lattice gauge field assigns
-group elements \(g_{ij}\in G\) to oriented edges satisfying
+The intrinsic form of the same definition is the following.  A bundle
+\(P\to M\) has a classifying map
 \[
-  g_{ij}g_{jk}=g_{ik}
+  f_P:M\to BG
 \]
-on each oriented triangle.  Gauge transformations assign \(h_i\in G\) to
-vertices and act by
+well-defined up to homotopy.  The cocycle supplies a phase
 \[
-  g_{ij}\mapsto h_i g_{ij}h_j^{-1}.
+  \exp\!\left(2\pi\ii\int_M f_P^*\omega\right).
 \]
-For a cocycle \(\omega\), the state-sum weight is a product over oriented
-\(D\)-simplices:
+Then
 \[
-  W(g)=\prod_{\sigma^D}
-  \omega(g_{\sigma})^{\operatorname{sgn}(\sigma)} .
+  Z_{G,\omega}(M)
+  =
+  \sum_{[P]\in\pi_0\operatorname{Bun}_G(M)}
+  \frac{1}{|\operatorname{Aut}(P)|}
+  \exp\!\left(2\pi\ii\int_M f_P^*\omega\right).
+  \label{eq:dw-intrinsic-partition}
 \]
-The cocycle condition \(\delta\omega=1\) is precisely the algebraic identity
-needed for invariance under Pachner moves.  Thus triangulation independence
-is a finite calculation in group cohomology.
+Equation~\eqref{eq:dw-triangulated-state-sum} is the simplicial
+representative of \eqref{eq:dw-intrinsic-partition}.
 
-\section{State Spaces}
-
-For a closed \((D-1)\)-manifold \(\Sigma\), the Hilbert space is the vector
-space of functions on the boundary field groupoid twisted by the boundary
-line:
+On a manifold with boundary, the same transgression produces a line over
+\(\operatorname{Bun}_G(\partial M)\).  The state space is therefore not
+ordinary functions but sections of that line:
 \[
-  \mathcal H(\Sigma)
+  \mathcal H_{G,\omega}(\Sigma)
   =
   \Gamma\bigl(\operatorname{Bun}_G(\Sigma),\mathcal L_\omega(\Sigma)\bigr).
+  \label{eq:dw-twisted-state-space}
 \]
-In the untwisted theory this is the space of class functions on
-\(\operatorname{Bun}_G(\Sigma)\).  For a bordism \(M:\Sigma_0\to\Sigma_1\), the linear map
+The gluing theorem continues to hold because the two transgressed boundary
+lines on a cut hypersurface are dual and contract under gluing.
+
+\section{Explicit Closed-Surface Partition Functions}
+
+Let \(\Sigma_g\) be a closed connected oriented surface of genus \(g\).  Its
+fundamental group has presentation
 \[
-  Z(M):\mathcal H(\Sigma_0)\to\mathcal H(\Sigma_1)
+  \pi_1(\Sigma_g)
+  =
+  \left\langle
+    a_1,b_1,\ldots,a_g,b_g
+    \ \middle|\
+    \prod_{r=1}^g[a_r,b_r]=1
+  \right\rangle .
 \]
-is obtained by summing over bulk bundles restricting to the boundary bundles,
-with automorphism factors.  Gluing follows from Fubini's theorem for finite
-groupoid cardinality.
-
-\section{Extended Objects}
-
-Codimension-one defects between \(G\)- and \(H\)-gauge theories are described
-by finite correspondences of groupoids.  A simple class is a subgroup
+Thus
 \[
-  K\subset G\times H
+  Z_G(\Sigma_g)
+  =
+  \frac{1}{|G|}
+  \#\left\{
+    (A_r,B_r)_{r=1}^g\in G^{2g}:
+    \prod_{r=1}^g[A_r,B_r]=1
+  \right\}.
+  \label{eq:finite-gauge-surface-hom-count}
 \]
-with possible cocycle decoration.  Boundary conditions are module categories
-over the fusion category associated to \(G\) and \(\omega\).  In three
-dimensions, line operators form the Drinfeld center
+
+\begin{proposition}[Character formula for the \(2D\) untwisted theory]
+\label{prop:finite-gauge-surface-character-formula}
+Let \(\operatorname{Irr}(G)\) be the set of irreducible complex
+representations of \(G\), and let \(d_R=\dim R\).  Then
 \[
-  Z(\mathrm{Vect}^{\omega}_G),
+  Z_G(\Sigma_g)
+  =
+  |G|^{2g-2}
+  \sum_{R\in\operatorname{Irr}(G)}
+  d_R^{\,2-2g}
+  =
+  \sum_{R\in\operatorname{Irr}(G)}
+  \left(\frac{d_R}{|G|}\right)^{2-2g}.
+  \label{eq:finite-gauge-surface-character-formula}
 \]
-the category of representations of the twisted quantum double.  Fusion and
-braiding are finite tensor-category operations.
+\end{proposition}
 
-\section{Anomaly Boundary}
-
-A \(D\)-dimensional anomalous finite symmetry theory can be realized as a
-boundary of a \((D+1)\)-dimensional finite gauge theory whose cocycle is the
-anomaly.  If
+\begin{proof}
+Let
 \[
-  \alpha\in Z^{D+1}(BG,U(1)),
+  \delta_e(x)=
+  \begin{cases}
+  1,&x=e,\\
+  0,&x\ne e
+  \end{cases}
 \]
-then a boundary theory with \(G\) symmetry has partition functions valued in
-the transgressed line over \(\operatorname{Bun}_G(M)\).  Gauging is possible only after this
-line is trivialized or after a bulk is kept as part of the system.
+be the delta function at the identity.  The character expansion of the
+central delta function is
+\[
+  \delta_e(x)
+  =
+  \frac{1}{|G|}
+  \sum_{R\in\operatorname{Irr}(G)}d_R\,\chi_R(x),
+  \label{eq:finite-group-delta-character-expansion}
+\]
+which follows from the orthogonality of irreducible characters.  Define the
+commutator-sum operator on class functions by
+\[
+  (Tf)(x)
+  =
+  \sum_{a,b\in G} f(x[a,b]).
+\]
+Since \(T\) commutes with conjugation and convolution by central functions,
+Schur orthogonality gives
+\[
+  T\chi_R
+  =
+  \frac{|G|^2}{d_R^2}\,\chi_R.
+  \label{eq:commutator-sum-character-eigenvalue}
+\]
+To see this, write the representation matrix also as \(R(\cdot)\).  Schur
+averaging says that for every endomorphism \(A\) of \(R\),
+\[
+  \sum_{b\in G} R(b)A R(b)^{-1}
+  =
+  \frac{|G|\,\operatorname{tr}_R A}{d_R}\,{\bf 1}_R.
+  \label{eq:finite-schur-averaging}
+\]
+With \(A=R(a)^{-1}\),
+\[
+  \sum_{b\in G} R([a,b])
+  =
+  R(a)\sum_{b\in G}R(b)R(a)^{-1}R(b)^{-1}
+  =
+  \frac{|G|\chi_R(a^{-1})}{d_R}R(a).
+\]
+The central-idempotent form of character orthogonality gives
+\[
+  \sum_{a\in G}\chi_R(a^{-1})R(a)
+  =
+  \frac{|G|}{d_R}\,{\bf 1}_R.
+\]
+Therefore
+\[
+  \sum_{a,b\in G}R([a,b])
+  =
+  \frac{|G|^2}{d_R^2}\,{\bf 1}_R,
+\]
+and multiplying by \(R(x)\) and taking the trace proves
+\eqref{eq:commutator-sum-character-eigenvalue}.
 
-\begin{openproblem}[Finite models]
+The number of solutions of
+\(\prod_{r=1}^g[A_r,B_r]=1\) is \(T^g\delta_e(e)\).  Applying
+\eqref{eq:finite-group-delta-character-expansion} and
+\eqref{eq:commutator-sum-character-eigenvalue} gives
+\[
+  \#\operatorname{Hom}(\pi_1(\Sigma_g),G)
+  =
+  |G|^{2g-1}
+  \sum_R d_R^{\,2-2g}.
+\]
+Dividing by the residual global gauge volume \(|G|\) gives
+\eqref{eq:finite-gauge-surface-character-formula}.
+\end{proof}
+
+For \(g=0\), the formula gives
+\[
+  Z_G(S^2)=\frac{1}{|G|}
+\]
+because \(\sum_Rd_R^2=|G|\).  For \(g=1\),
+\[
+  Z_G(T^2)=|\operatorname{Irr}(G)|,
+\]
+which is also the number of conjugacy classes of \(G\).  If \(G=A\) is
+finite abelian, all irreducible representations are one-dimensional, so
+\[
+  Z_A(\Sigma_g)=|A|^{2g-1}.
+  \label{eq:finite-abelian-surface-partition}
+\]
+
+\section{Circle State Space and the Two-Dimensional Algebra}
+
+For the circle,
+\[
+  \operatorname{Bun}_G(S^1)\simeq G//G,
+\]
+where \(G\) acts on itself by conjugation.  Therefore
+\[
+  \mathcal H_G(S^1)
+  =
+  \{\hbox{class functions }G\to\C\}.
+  \label{eq:finite-gauge-circle-class-functions}
+\]
+The pairing \eqref{eq:finite-gauge-boundary-pairing} becomes
+\[
+  \langle f_1,f_2\rangle_{S^1}
+  =
+  \frac{1}{|G|}\sum_{g\in G} f_1(g)f_2(g).
+  \label{eq:finite-gauge-circle-pairing}
+\]
+The pair of pants defines a commutative Frobenius algebra on class
+functions.  In the orientation convention where the outgoing holonomy is the
+product of the incoming holonomies, the product is convolution
+\[
+  (f_1*f_2)(k)
+  =
+  \sum_{\substack{a,b\in G\\ab=k}}
+  f_1(a)f_2(b).
+  \label{eq:finite-gauge-class-function-convolution}
+\]
+Associativity is associativity of group multiplication plus finite Fubini.
+Commutativity on class functions follows by the change of variables
+\[
+  (a,b)\mapsto (aba^{-1},a),
+\]
+which preserves the product \(ab\) up to conjugacy; class functions cannot
+distinguish conjugate outgoing holonomies.  The counit is the disk amplitude,
+and the nondegenerate pairing is \eqref{eq:finite-gauge-circle-pairing}.
+This identifies the ordinary \(2D\) finite gauge theory with the Frobenius
+algebra construction of
+Theorem~\ref{thm:2d-oriented-tqft-frobenius}.
+
+\section{Three-Dimensional Finite Gauge Theory}
+
+For a closed connected \(3\)-manifold \(M\), the untwisted partition function
+is again
+\[
+  Z_G(M)=\frac{|\operatorname{Hom}(\pi_1(M),G)|}{|G|}.
+\]
+In particular,
+\[
+  Z_G(T^3)
+  =
+  \frac{1}{|G|}
+  \#\{(a,b,c)\in G^3:
+  ab=ba,\ ac=ca,\ bc=cb\}.
+  \label{eq:finite-gauge-t3-partition}
+\]
+The state space on \(T^2\) is the vector space of functions on commuting
+pairs \((a,b)\) modulo simultaneous conjugation.  The extended
+three-dimensional theory assigns to the circle a category.  In the untwisted
+case this category is equivalent to representations of the Drinfeld double
+\[
+  D(G),
+\]
+and in the \(\omega\)-twisted case to representations of the twisted quantum
+double.  Equivalently, the line operators form the Drinfeld center
+\[
+  Z(\operatorname{Vect}^{\omega}_G).
+\]
+The simple objects are labeled by a conjugacy class \(\mathcal C\subset G\)
+and an irreducible projective representation of the centralizer \(C_G(c)\),
+with the projective \(2\)-cocycle obtained by transgressing \(\omega\) to the
+flux \(c\in\mathcal C\).  Fusion and braiding are finite tensor-category
+operations.  This is a theorem of finite tensor categories, but the
+path-integral origin is already visible: a line insertion fixes magnetic
+monodromy around a small linking circle, while electric labels are
+representations of the residual stabilizer of that monodromy.
+
+\section{Defects, Boundaries, and Anomaly Inflow}
+
+Finite gauge theories also provide exact models of defects.  A
+codimension-one defect between \(G\)- and \(H\)-gauge theories is described,
+in the finite path-integral language, by a finite correspondence of boundary
+field groupoids
+\[
+  \operatorname{Bun}_G(\Sigma)
+  \xleftarrow{\ }
+  \mathcal D(\Sigma)
+  \xrightarrow{\ }
+  \operatorname{Bun}_H(\Sigma),
+  \label{eq:finite-gauge-defect-correspondence}
+\]
+possibly decorated by a cocycle line.  A concrete subgroup defect is obtained
+from
+\[
+  K\subset G\times H,
+\]
+by requiring the two gauge fields to reduce on the wall to a common
+principal \(K\)-bundle.  Composition of such defects is again a homotopy
+fiber product of finite groupoids.
+
+In a \(D\)-dimensional theory with finite global symmetry \(G\), an anomaly
+is represented by a class
+\[
+  [\alpha]\in H^{D+1}(BG,U(1)).
+\]
+For a background \(G\)-bundle \(A\) on a closed \(D\)-manifold \(M\), the
+would-be anomalous partition function is not a number canonically attached
+to \(A\).  It is a vector in the transgressed line determined by \(\alpha\).
+Keeping a \((D+1)\)-dimensional bulk with action \(\alpha\) makes the
+combined bulk-boundary amplitude gauge invariant.  Gauging the boundary
+symmetry alone requires a trivialization of this anomaly line.  This is the
+finite model of the relative field theory language in
+Definition~\ref{def:anomalous-relative-tqft}.
+
+\begin{openproblem}[Extended finite models]
 \label{op:extended-finite-models}
 Construct extended finite-gauge TQFTs with boundaries, defects, junctions,
 twists, and anomaly inflow as functors on a chosen bordism
-\((\infty,D)\)-category, including comparison with the state-sum formulas
-above.
+\((\infty,D)\)-category, including a direct comparison between the
+higher-categorical functor and the finite groupoid state-sum formulas in
+this chapter.
 \end{openproblem}
