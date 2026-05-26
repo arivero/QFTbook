@@ -190,13 +190,18 @@ data.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
+- Proves closedness of OS reflection positivity under weak convergence for
+  bounded positive-time cylinder observables, and isolates the additional
+  uniform-integrability hypothesis needed to pass unbounded polynomial
+  cylinder observables by truncation.
 - Adds a \(\Phi^4_2\) stochastic-quantization assembly theorem on the torus.
   The theorem now proves the path-space enhanced-noise input and makes
   explicit the remaining three analytic inputs needed to pass from
   finite-cutoff invariant Wick-ordered measures to a limiting invariant
   Markov law and OS-positive Euclidean measure: global compact-continuity of
-  the DPD solution map, tightness of stationary cutoff laws, and closure of
-  reflection positivity.
+  the DPD solution map, tightness of stationary cutoff laws, and
+  finite-cutoff reflection positivity plus the uniform-integrability needed
+  for unbounded Wick-polynomial observables.
 - Proves the Sobolev DPD obstruction in three dimensions: the minimal
   multiplier threshold \(\beta>1/2+\kappa\) for \(YX\), combined with
   forcing regularity \(:X^3:\in H^{-3/2-3\kappa-\varepsilon}\), forces a

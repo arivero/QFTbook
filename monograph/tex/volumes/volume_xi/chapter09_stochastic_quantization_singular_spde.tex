@@ -989,6 +989,73 @@ limiting Markov semigroup on the same topology.  This is the exact
 invariant-law step that sits between cutoff Langevin stationarity and a
 Euclidean measure for QFT.
 
+\begin{proposition}[Closedness of OS reflection positivity under weak convergence]
+\label{prop:spde-os-positivity-closed-under-weak-convergence}
+Let \(E\) be a Hausdorff locally convex real vector space of Euclidean
+fields, let \(\Theta:E\to E\) be a continuous involution, and let
+\(\mu_N\Rightarrow\mu\) be weak convergence of Borel probability measures
+on \(E\).  Let \(\mathcal A_+\) be an algebra of bounded continuous
+cylinder functions on \(E\) such that
+\[
+  \Theta F(\phi)=F(\Theta\phi)
+\]
+is again a bounded continuous cylinder function whenever
+\(F\in\mathcal A_+\).  If
+\begin{equation}
+  \int_E \overline{F(\Theta\phi)}\,F(\phi)\,\dd\mu_N(\phi)\geq0
+  \qquad
+  (F\in\mathcal A_+,\; N\geq1),
+  \label{eq:spde-finite-cutoff-os-positivity}
+\end{equation}
+then
+\begin{equation}
+  \int_E \overline{F(\Theta\phi)}\,F(\phi)\,\dd\mu(\phi)\geq0
+  \qquad(F\in\mathcal A_+).
+  \label{eq:spde-limit-os-positivity}
+\end{equation}
+If \(F\) is an unbounded polynomial cylinder observable, the same conclusion
+holds provided the random variables
+\[
+  \overline{F(\Theta\phi)}\,F(\phi)
+\]
+are uniformly integrable under \(\{\mu_N\}\) and integrable under \(\mu\),
+and \(F\) is approximated by bounded continuous cylinder cutoffs in
+\(\mathcal A_+\).
+\end{proposition}
+
+\begin{proof}
+For \(F\in\mathcal A_+\), define
+\[
+  Q_F(\phi)=\overline{F(\Theta\phi)}\,F(\phi).
+\]
+Continuity of \(\Theta\) and bounded continuity of \(F\) imply that \(Q_F\)
+is a bounded continuous function on \(E\).  Weak convergence therefore gives
+\[
+  \int_E Q_F\,\dd\mu
+  =
+  \lim_{N\to\infty}\int_E Q_F\,\dd\mu_N .
+\]
+Each term in the sequence on the right is nonnegative by
+\eqref{eq:spde-finite-cutoff-os-positivity}; the limit is therefore
+nonnegative, proving \eqref{eq:spde-limit-os-positivity}.
+
+For an unbounded polynomial cylinder observable, choose bounded continuous
+functions \(\chi_R\) on the finite-dimensional cylinder coordinate space
+such that \(\chi_R=1\) on the radius-\(R\) ball, \(\chi_R=0\) outside the
+radius-\(2R\) ball, and \(0\leq\chi_R\leq1\).  Set \(F_R=\chi_R F\).
+The bounded part of the proposition gives
+\[
+  \int_E \overline{F_R(\Theta\phi)}\,F_R(\phi)\,\dd\mu\geq0 .
+\]
+Uniform integrability of
+\(\overline{F(\Theta\phi)}F(\phi)\) under \(\{\mu_N\}\), together with
+integrability under \(\mu\), permits \(R\to\infty\) in the cutoff
+quadratic form.  Hence the unbounded polynomial cylinder inequality follows
+whenever the stated moment hypothesis is available.  This final step is
+not formal: in constructive field theory it is exactly where uniform moment
+or exponential-integrability estimates for the cutoff measures enter.
+\end{proof}
+
 \begin{theorem}[\(\Phi^4_2\) stochastic-quantization assembly on the torus]
 \label{thm:phi-four-two-spde-main-theorem}
 Fix \(m^2>0\), \(\lambda>0\), \(0<\kappa<1/4\), and
@@ -1026,9 +1093,10 @@ Assume the following three further analytic facts.
   every weak limit \(\mu\) is carried by fields admitting the decomposition
   \(\Phi=X+Y\) with \(Y\) given by the global DPD solution map.
   \item Reflection positivity of the cutoff measures \(\mu_N\) holds for
-  cylinder observables depending on positive Euclidean time, and this
-  positivity is closed under the weak convergence in (c) for those cylinder
-  observables.
+  bounded cylinder observables depending on positive Euclidean time, and
+  the polynomial Wick observables used to identify Schwinger functions obey
+  the uniform-integrability bounds needed for the truncation step in
+  Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -1081,7 +1149,8 @@ finite-cutoff reflection-positivity assumption gives
 \[
   \int \overline{\Theta F}\,F\,\dd\mu_N\geq0 .
 \]
-By (c), passing to the weak limit preserves the displayed inequality, so
+Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}
+passes this inequality to the weak limit, so
 \[
   \int \overline{\Theta F}\,F\,\dd\mu\geq0 .
 \]
@@ -1096,7 +1165,8 @@ Sobolev Wick-power construction, the path-space enhanced-noise convergence,
 the Sobolev DPD local solution map, the smooth enhanced-noise energy
 inequality, and the abstract invariant-law passage.  The sharp global
 two-dimensional theorem additionally requires the rough Besov/Hölder
-energy-continuity, tightness, and OS-closure estimates listed explicitly in
+energy-continuity, tightness, finite-cutoff OS positivity, and
+uniform-integrability estimates listed explicitly in
 Theorem~\ref{thm:phi-four-two-spde-main-theorem}.
 
 \begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
