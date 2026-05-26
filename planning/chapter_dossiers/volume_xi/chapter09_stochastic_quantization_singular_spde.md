@@ -1018,3 +1018,12 @@ data maps.
   concrete BPHZ coordinate moment/cutoff-Cauchy estimates, extension from the
   strict negative sector to the full fixed-point sector, counterterm
   identification, invariant-law comparison, and SPDE-to-OS passage.
+- 2026-05-26 Gaussian negative-sector input pass: promoted the Gaussian
+  \(\Xi,X,X^2,X^3\) \(\Pi\)-coordinate assembly from prose to a theorem-level
+  proposition.  The new result constructs the scale-summed coordinate fields
+  on \(K\times[1/2,1]\), proves the explicit base and edge moment bounds with
+  \(\sigma_\Xi=\kappa\), \(\sigma_{X^k}=k\kappa\), and
+  \(\varepsilon=p\theta-6\), and records the exact moment conditions
+  \(p\kappa>5\), \(p\theta>6\) needed to feed the negative-sector model
+  convergence theorem.  The calculation-check companion verifies this
+  entropy/slack arithmetic.

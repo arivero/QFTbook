@@ -7504,39 +7504,250 @@ The parabolic norm is homogeneous under \(\mathsf D_\lambda\), hence
 \(\Gamma\)-coordinate decomposition.
 \end{proof}
 
-Combining
-Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy} with
-Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} gives the precise
-form of the remaining stochastic estimates for the \(\Pi\)-coordinates.  For
-each \(\tau\in\mathfrak C_\Pi\), each dyadic physical scale \(m\), and each
-point \((z,a)\in K\times[1/2,1]\), the BPHZ construction must produce an
-\(E_r'\)-valued finite chaos expansion of
+\begin{proposition}[Gaussian \(\Pi\)-coordinate input for scale-summed model convergence]
+\label{prop:spde-gaussian-negative-pi-coordinate-input}
+Let \(K\subset\R^{1+3}\) be compact, let
 \[
-  \varphi\longmapsto
-  2^{m|\tau|}a^{-|\tau|}
-  \left\langle
-    \Pi_z^{(n)}\tau,\varphi_z^{2^{-m}a}
-  \right\rangle .
+  Q=5,\qquad 0<\kappa<\frac1{14},
 \]
-The projective tensor norm of each chaos kernel must carry a factor
-\(2^{-\sigma_\tau m}\), and the projective norm of its increment along an
-edge of the \(d_{\Pi,m}\)-net at level \(\ell\) must carry the additional
-factor \(2^{-(6+\varepsilon_\tau)\ell/(2m_0)}\) when the final moment is
-\(p=2m_0\).  The same statements, with an extra factor \(2^{-\rho n}\), are
-required for the cutoff difference \(Z_{n+1}-Z_n\).  These bounds feed
-directly into
+and choose \(r,\theta\) with
+\[
+  0<\theta<r-\frac Q2 .
+\]
+Let \(\xi\) be a centered Gaussian space-time white noise and
+\[
+  X=G*\xi
+\]
+be the massive heat-convolution field used in
+Proposition~\ref{prop:spde-gaussian-wick-coordinate-scale-estimates}.  For
+\[
+  \mathfrak C_{\rm G}=\{\Xi,X,X^2,X^3\}
+\]
+interpret \(X^k\) as the Wick power \(:X^k:\), \(k=1,2,3\), and assign
+\[
+  |\Xi|=-\frac Q2-\kappa,\qquad
+  |X^k|=-\frac k2-k\kappa .
+\]
+For \(m\geq0\) and \(a\in[1/2,1]\) set
+\[
+  x=(z,2^{-m}a)
+\]
+and define the random fields on
+\(\mathcal X_{\Pi,m}=K\times[1/2,1]\) by
+\[
+  U_{\Xi,m}(z,a)=\|\mathcal W_x\|_{E_r'},
+  \qquad
+  U_{X^k,m}(z,a)=\|\mathcal X_{k,x}\|_{E_r'},
+  \quad k=1,2,3,
+  \label{eq:spde-gaussian-pi-coordinate-fields}
+\]
+where \(\mathcal W_x\) and \(\mathcal X_{k,x}\) are the \(E_r'\)-valued
+functionals of
+Proposition~\ref{prop:spde-gaussian-wick-dual-norm-coordinate-estimates}.
+Equivalently,
+\[
+  U_{\Xi,m}(z,a)
+  =
+  \sup_{\varphi\in\mathcal B_r}
+  (2^{-m}a)^{Q/2+\kappa}
+  |\xi(\varphi_z^{2^{-m}a})|,
+\]
+and
+\[
+  U_{X^k,m}(z,a)
+  =
+  \sup_{\varphi\in\mathcal B_r}
+  (2^{-m}a)^{k/2+k\kappa}
+  |\langle :X^k:,\varphi_z^{2^{-m}a}\rangle|.
+\]
+Let \(p=2m_0\) be an even integer satisfying
+\begin{equation}
+  p\kappa>Q,
+  \qquad
+  p\theta>Q+1 .
+  \label{eq:spde-gaussian-negative-input-moment-condition}
+\end{equation}
+Then, after choosing the net system of
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}, the
+fields \(U_{\tau,m}\), \(\tau\in\mathfrak C_{\rm G}\), have continuous
+modifications on each \(\mathcal X_{\Pi,m}\) and satisfy the
+\(\Pi\)-coordinate hypotheses of
 Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
-\(D_\tau=5\) and \(d_\tau=6\).
+\[
+  D_\tau=Q,\qquad d_\tau=Q+1,
+\]
+\[
+  \sigma_\Xi=\kappa,
+  \qquad
+  \sigma_{X^k}=k\kappa,
+  \qquad
+  \varepsilon_\tau=p\theta-(Q+1)>0 .
+  \label{eq:spde-gaussian-negative-input-slacks}
+\]
+More explicitly, there are constants \(B_{\tau,0},B_\tau<\infty\) such that,
+for every \(m,\ell\geq0\),
+\[
+  \mathbb E|U_{\tau,m}(u)|^p
+  \leq
+  B_{\tau,0}^{\,p}2^{-p\sigma_\tau m}
+  \qquad
+  (u\in\mathcal X_{\Pi,m,0})
+  \label{eq:spde-gaussian-negative-input-base}
+\]
+and
+\[
+  \mathbb E|U_{\tau,m}(v)-U_{\tau,m}(u)|^p
+  \leq
+  B_\tau^{\,p}2^{-p\sigma_\tau m}
+  2^{-(Q+1+\varepsilon_\tau)\ell}
+  \qquad
+  ((u,v)\in\mathcal E_{\Pi,m,\ell}).
+  \label{eq:spde-gaussian-negative-input-edge}
+\]
+Consequently the Gaussian coordinate labels \(\Xi,X,X^2,X^3\) already feed
+into the scale-summed negative-sector model theorem without an additional
+stochastic supremum argument.
 
-For the \(\Gamma\)-coordinate \(c_n(z,z')\), there is no test-function dual
-norm.  The remaining estimate is a scalar finite-chaos estimate on the
-physical space \(\mathcal X_{\Gamma,m}\), with projective tensor bounds in
-\(\mathbb R\) and edge exponent \(d_{\mathfrak g}=10\).  The analytic
-substance is therefore concentrated in the concrete BPHZ kernel estimates for
-\(\Xi,X,X^2,X^3,XY,X^2Y\) and for the reexpansion coefficient of
-\(Y=\mathcal I(X^3)\); once those estimates are written with the displayed
-projective norms, the stochastic and entropy parts of the negative-sector
-model convergence proof have already been proved in this chapter.
+If a cutoff or mollifier sequence
+\((\xi_n,X_n,:X_n^2:,:X_n^3:)\) satisfies the same dual-norm bounds for the
+increments of the corresponding fields \(U_{\tau,m}^{(n+1)}-U_{\tau,m}^{(n)}\),
+with an additional factor \(2^{-\rho n}\) in \(L^p\) for some \(\rho>0\),
+then the associated cutoff-difference variables satisfy the \(V\)-hypotheses
+of
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+the same \(D_\tau,d_\tau,\sigma_\tau,\varepsilon_\tau\) and with that
+convergence rate \(\rho\).
+\end{proposition}
+
+\begin{proof}
+We first identify the scale-normalized physical coordinates with the
+dual-norm fields.  For \(\tau=\Xi\),
+\[
+  \delta^{-|\Xi|}
+  |\langle\Pi_z\Xi,\varphi_z^\delta\rangle|
+  =
+  \delta^{Q/2+\kappa}|\xi(\varphi_z^\delta)|,
+\]
+and this is \(|\mathcal W_{(z,\delta)}(\varphi)|\).  For
+\(\tau=X^k\),
+\[
+  \delta^{-|X^k|}
+  |\langle\Pi_z X^k,\varphi_z^\delta\rangle|
+  =
+  \delta^{k/2+k\kappa}
+  |\langle :X^k:,\varphi_z^\delta\rangle|,
+\]
+which is \(|\mathcal X_{k,(z,\delta)}(\varphi)|\).  Taking the supremum over
+\(\mathcal B_r\), which is the unit ball of the same test space \(E_r\) with
+the support convention used in the dual-norm proposition, gives
+\eqref{eq:spde-gaussian-pi-coordinate-fields}.  This is the promised map from
+physical \(\Pi\)-coordinates to the abstract coordinate fields of
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+
+Set \(\delta=2^{-m}a\) with \(a\in[1/2,1]\).  The factor \(a\) is bounded
+above and below by numerical constants, hence
+\[
+  \delta^{\sigma_\tau}\asymp 2^{-\sigma_\tau m}
+\]
+for \(\sigma_\Xi=\kappa\) and \(\sigma_{X^k}=k\kappa\).  Applying
+\eqref{eq:spde-gaussian-dual-norm-uniform} and raising the \(L^p\)-bound to a
+\(p\)-th moment proves
+\eqref{eq:spde-gaussian-negative-input-base}.
+
+Let \((u,v)\in\mathcal E_{\Pi,m,\ell}\), say
+\[
+  u=(z,a),\qquad v=(z',a').
+\]
+The nearest-net construction in
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy} gives
+\[
+  2^m\|z-z'\|_{\mathfrak s}+|a-a'|
+  \leq
+  C_{\Pi}2^{-\ell}.
+  \label{eq:spde-gaussian-negative-input-edge-distance}
+\]
+With \(x=(z,2^{-m}a)\) and \(y=(z',2^{-m}a')\), the parameter
+\(\eta\) of
+Proposition~\ref{prop:spde-gaussian-wick-dual-norm-coordinate-estimates}
+satisfies
+\[
+  \eta\leq C2^{-\ell}.
+\]
+The edge estimates
+\eqref{eq:spde-gaussian-dual-norm-white-edge} and
+\eqref{eq:spde-gaussian-dual-norm-wick-edge}, together with
+\[
+  \bigl|\|A\|_{E_r'}-\|B\|_{E_r'}\bigr|
+  \leq
+  \|A-B\|_{E_r'},
+\]
+therefore give
+\[
+  \|U_{\tau,m}(v)-U_{\tau,m}(u)\|_{L^p}
+  \leq
+  C_\tau 2^{-\sigma_\tau m}2^{-\theta\ell}.
+\]
+Raising to the \(p\)-th power yields
+\[
+  \mathbb E|U_{\tau,m}(v)-U_{\tau,m}(u)|^p
+  \leq
+  C_\tau^p2^{-p\sigma_\tau m}2^{-p\theta\ell}.
+\]
+Since \(\varepsilon_\tau=p\theta-(Q+1)\), this is exactly
+\eqref{eq:spde-gaussian-negative-input-edge}.
+
+The entropy dimensions are
+\[
+  D_\tau=Q,\qquad d_\tau=Q+1
+\]
+by Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}.
+The moment condition \eqref{eq:spde-gaussian-negative-input-moment-condition}
+implies
+\[
+  \sigma_\Xi=\kappa>\frac Qp,
+  \qquad
+  \sigma_{X^k}=k\kappa\geq\kappa>\frac Qp,
+\]
+and it also implies \(\varepsilon_\tau>0\).  These are precisely the
+scale-slack and edge-slack inequalities required in
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+
+It remains only to justify the continuity hypothesis.  The same edge estimate,
+before restriction to the dyadic edge set, holds for arbitrary
+\((z,a),(z',a')\in\mathcal X_{\Pi,m}\) with
+\[
+  d_{\Pi,m}((z,a),(z',a'))\leq1,
+\]
+with \(2^{-\ell}\) replaced by that metric distance.  Since
+\(\mathcal X_{\Pi,m}\) has metric covering dimension \(Q+1\) uniformly in
+\(m\), the Kolmogorov--Chentsov dyadic-net proof gives, for every
+\[
+  0<\alpha<\theta-\frac{Q+1}{p},
+\]
+a modification that is \(\alpha\)-Holder continuous on
+\(\mathcal X_{\Pi,m}\).  This proves the required sample-path continuity.
+
+For a cutoff sequence, repeat the same argument with
+\[
+  U_{\tau,m}^{(n+1)}-U_{\tau,m}^{(n)}
+\]
+in place of \(U_{\tau,m}\).  The assumed extra factor \(2^{-\rho n}\) is
+carried unchanged through the base estimate, the edge estimate, and the
+dyadic-net continuity argument, and hence gives the \(V\)-hypotheses of the
+scale-summed theorem.
+\end{proof}
+
+For the nonlinear \(\Pi\)-coordinates \(XY\) and \(X^2Y\), and for the
+\(\Gamma\)-coordinate \(c_n(z,z')\), the same assembly theorem applies but
+the analytic inputs are different.  The \(XY\) and \(X^2Y\) coordinates require
+the concrete BPHZ kernel estimates for products involving
+\(Y=\mathcal I(X^3)\).  The \(\Gamma\)-coordinate has no test-function dual
+norm; it is a scalar finite-chaos estimate on
+\(\mathcal X_{\Gamma,m}\), with entropy exponent \(d_{\mathfrak g}=10\) by
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}.  Thus
+the stochastic and entropy mechanism is now completely explicit, while the
+remaining \(\Phi^4_3\) work is the model-specific BPHZ kernel analysis for
+\(XY\), \(X^2Y\), and the reexpansion coefficient of \(Y\).
 
 \begin{proposition}[Heat-integration reexpansion estimate]
 \label{prop:spde-heat-integration-reexpansion-coefficient-estimate}
