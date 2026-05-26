@@ -3,115 +3,467 @@
 
 \ConventionsEuclidean
 
-The KMS condition is the real-time equilibrium condition for a state and a
-time evolution.  A Euclidean finite-temperature path integral is a regulated
-coordinate representation of Gibbs-trace correlation functions when the trace
-or a controlled infinite-volume replacement exists.  The trace derivation
-explains the thermal circle and the boundary conditions; analytic
-continuation back to real time remains a separate reconstruction problem.
+This chapter derives the Euclidean thermal path integral from the operator
+definition of equilibrium correlation functions.  The derivation is first a
+finite-dimensional statement about a trace-class Gibbs operator.  A field
+theory path integral on \(S^1_\beta\times\mathbb R^{D-1}\) is obtained only
+after a spatial regulator, an operator-domain convention, and a limiting
+procedure have been specified.  The circle, spin structure, Matsubara
+frequencies, and chemical-potential twists all follow from the trace formula.
 
-\section{Trace to Euclidean Circle}
+\section{Gibbs Traces and Euclidean Correlators}
 
-Let a quantum system have Hamiltonian \(H\) with
-\(\operatorname{Tr}e^{-\beta H}<\infty\).  The thermal expectation is
+Let \(\Hilb\) be a Hilbert space and let \(H\) be a self-adjoint Hamiltonian
+bounded below.  Fix \(\beta>0\) and assume, in this finite-volume discussion,
+that
+\[
+  Z(\beta)=\operatorname{Tr}_{\Hilb}\ee^{-\beta H}<\infty .
+\]
+The Gibbs state is the positive normalized functional
 \[
   \omega_\beta(A)
   =
-  \frac{1}{Z(\beta)}\operatorname{Tr}(e^{-\beta H}A),
-  \qquad
-  Z(\beta)=\operatorname{Tr}e^{-\beta H}.
+  Z(\beta)^{-1}\operatorname{Tr}_{\Hilb}(\ee^{-\beta H}A)
 \]
-Split \(\beta=N\epsilon\).  Inserting \(N\) resolutions of identity in a
-configuration basis gives the Euclidean time-sliced expression
+on bounded operators \(A\), and on suitable unbounded operators after a
+common trace-class domain has been declared.  For Heisenberg operators
 \[
+  A(t)=\ee^{\ii Ht}A\ee^{-\ii Ht},
+\]
+their Euclidean-time translates are
+\[
+  A_E(\tau)=\ee^{\tau H}A\ee^{-\tau H},
+  \qquad 0\leq \tau\leq\beta,
+\]
+whenever the displayed expression is defined as a quadratic form or as a
+trace insertion.  If
+\[
+  0<\tau_1<\tau_2<\cdots<\tau_n<\beta ,
+\]
+the Euclidean thermal correlator is
+\begin{equation}
+  G_E(\tau_1,\ldots,\tau_n)
+  =
+  Z(\beta)^{-1}
+  \operatorname{Tr}\!\left(
+    \ee^{-\beta H}
+    A_{n,E}(\tau_n)\cdots A_{1,E}(\tau_1)
+  \right).
+  \label{eq:thermal-euclidean-correlator-trace}
+\end{equation}
+Moving the factor \(\ee^{-\beta H}\) cyclically through the trace shifts one
+operator by \(\beta\) in imaginary time.  This is the finite-volume operator
+origin of the KMS boundary condition in
+Chapter~\ref{ch:kms-states-thermal-correlators}.
+
+\begin{proposition}[Trace cyclicity gives the thermal circle]
+\label{prop:trace-cyclicity-thermal-circle}
+Let \(A\) and \(B\) be bounded operators such that the traces below exist.
+For \(0<\tau<\beta\),
+\[
+  \omega_\beta(A_E(\tau)B)
+  =
+  \omega_\beta(B A_E(\tau-\beta)).
+\]
+Equivalently, after analytic continuation \(t=-\ii\tau\), the two boundary
+values of the strip correlator differ by a cyclic permutation of the
+operators.
+\end{proposition}
+
+\begin{proof}
+Using \(A_E(\tau)=\ee^{\tau H}A\ee^{-\tau H}\),
+\[
+\begin{aligned}
+  \operatorname{Tr}(\ee^{-\beta H}A_E(\tau)B)
+  &=
+  \operatorname{Tr}(\ee^{-(\beta-\tau)H}A\ee^{-\tau H}B)\\
+  &=
+  \operatorname{Tr}(B\ee^{-(\beta-\tau)H}A\ee^{-\tau H})\\
+  &=
+  \operatorname{Tr}(\ee^{-\beta H}B\,\ee^{(\tau-\beta)H}
+  A\ee^{-(\tau-\beta)H}).
+\end{aligned}
+\]
+Dividing by \(Z(\beta)\) gives the stated identity.
+\end{proof}
+
+\section{Time Slicing and Bosonic Boundary Conditions}
+
+Let \(q=(q^1,\ldots,q^r)\) be a configuration coordinate for a regulated
+bosonic quantum system.  Let \(\{|q\rangle\}\) be a generalized coordinate
+resolution of the identity.  For
+\[
+  \beta=N\epsilon ,
+\]
+the partition function is
+\begin{equation}
   Z(\beta)
   =
-  \lim_{N\to\infty}
   \int \prod_{j=1}^{N}dq_j\,
   \prod_{j=1}^{N}
   K_\epsilon(q_{j+1},q_j),
   \qquad
   q_{N+1}=q_1,
+  \label{eq:thermal-bosonic-time-slicing}
+\end{equation}
+where
+\[
+  K_\epsilon(q',q)=\langle q'|\ee^{-\epsilon H}|q\rangle .
 \]
-where \(K_\epsilon(q',q)=\langle q'|e^{-\epsilon H}|q\rangle\).  The trace
-imposes periodicity around the Euclidean time circle \(S^1_\beta\).
+The equality is the trace written as
+\[
+  \int dq_1\,\langle q_1|(\ee^{-\epsilon H})^N|q_1\rangle
+\]
+with \(N-1\) intermediate identity insertions.  The condition
+\(q_{N+1}=q_1\) is therefore exact at finite \(N\).
 
-For a bosonic scalar field this becomes, after the spatial regulator and
-continuum limit are specified,
+For a local bosonic field with a spatial regulator, the same formula has one
+coordinate \(q_j\) for every spatial lattice degree of freedom at Euclidean
+time slice \(j\).  A formal continuum notation for the result is
 \[
   Z(\beta)
   =
   \int_{\phi(\tau+\beta,\mathbf x)=\phi(\tau,\mathbf x)}
-  [D\phi]_{\rm reg}\,
-  e^{-S_E[\phi]} .
+  [D\phi]_{\mathrm{reg}}\,
+  \ee^{-S_E[\phi]} .
 \]
-The symbol \([D\phi]_{\rm reg}\) denotes the chosen regulated Euclidean
-construction; the continuum meaning is supplied by the same constructive,
-lattice, or perturbative framework used at zero temperature.
+The subscript \(\mathrm{reg}\) is part of the formula: it denotes the
+particular lattice, constructive, Hamiltonian, or perturbative regulator from
+which the expression is obtained.  The Euclidean time direction is a circle
+because the trace identifies the final and initial bosonic coordinates.
 
-\section{Fermions and Spin Structure}
+\section{Fermionic Coherent States and Spin Structure}
 
-For fermions, the trace over a fermionic Fock space has a coherent-state
-coordinate expression in Grassmann variables.  The cyclic trace produces
-antiperiodic boundary conditions for the ordinary thermal partition function:
+Let \(c_i,c_i^\dagger\), \(i=1,\ldots,r\), be fermionic annihilation and
+creation operators with
+\[
+  \{c_i,c_j^\dagger\}=\delta_{ij},
+  \qquad
+  \{c_i,c_j\}=\{c_i^\dagger,c_j^\dagger\}=0.
+\]
+Let \(\eta_i,\bar\eta_i\) be independent Grassmann variables.  The coherent
+state
+\[
+  |\eta\rangle=\ee^{-\sum_i \eta_i c_i^\dagger}|0\rangle
+\]
+satisfies
+\[
+  c_i|\eta\rangle=\eta_i|\eta\rangle ,
+\]
+where the sign comes from moving the odd operator \(c_i\) through the odd
+coefficient \(\eta_i\).  The resolution of identity has the form
+\[
+  \mathbf 1
+  =
+  \int \prod_i d\bar\eta_i\,d\eta_i\,
+  \ee^{-\bar\eta\eta}\,
+  |\eta\rangle\langle\eta| ,
+  \qquad
+  \bar\eta\eta=\sum_i\bar\eta_i\eta_i .
+\]
+
+\begin{lemma}[Fermionic trace identity]
+\label{lem:fermionic-coherent-state-trace}
+For every operator \(O\) on the finite fermionic Fock space,
+\[
+  \operatorname{Tr}O
+  =
+  \int d\bar\eta\,d\eta\,
+  \ee^{-\bar\eta\eta}\,
+  \langle-\eta|O|\eta\rangle ,
+\]
+whereas
+\[
+  \operatorname{Tr}((-1)^F O)
+  =
+  \int d\bar\eta\,d\eta\,
+  \ee^{-\bar\eta\eta}\,
+  \langle\eta|O|\eta\rangle .
+\]
+\end{lemma}
+
+\begin{proof}
+It is enough to check one fermionic mode, since the general formula is the
+ordered tensor product of one-mode identities.  In the basis
+\(|0\rangle,|1\rangle=c^\dagger|0\rangle\), expand \(O\) as a \(2\times2\)
+matrix and use
+\[
+  |\eta\rangle=|0\rangle-\eta|1\rangle,
+  \qquad
+  \langle\eta|=\langle0|-\langle1|\bar\eta .
+\]
+Berezin integration extracts the coefficient of \(\bar\eta\eta\).  The
+integral of \(\ee^{-\bar\eta\eta}\langle-\eta|O|\eta\rangle\) gives the sum
+of the diagonal matrix elements of \(O\), while replacing
+\(\langle-\eta|\) by \(\langle\eta|\) inserts the relative sign between the
+even and odd states.  This is precisely the action of \((-1)^F\).
+\end{proof}
+
+Applying Lemma~\ref{lem:fermionic-coherent-state-trace} to
+\((\ee^{-\epsilon H})^N\) gives the thermal Grassmann time-sliced integral.
+The first and last coherent-state labels obey
+\[
+  \eta_{N+1}=-\eta_1,\qquad
+  \bar\eta_{N+1}=-\bar\eta_1
+\]
+for the ordinary thermal partition function.  Thus fermionic variables in
+the thermal trace are antiperiodic on \(S^1_\beta\):
 \[
   \psi(\tau+\beta,\mathbf x)=-\psi(\tau,\mathbf x),
   \qquad
   \bar\psi(\tau+\beta,\mathbf x)=-\bar\psi(\tau,\mathbf x).
 \]
-Equivalently, the thermal circle carries the antiperiodic spin structure.
-The graded trace
+The graded trace \(\operatorname{Tr}((-1)^F\ee^{-\beta H}\cdots)\) uses the
+periodic spin structure.  This is the operator origin of the distinction
+between a thermal partition function and a supersymmetric index.
+
+\section{Matsubara Modes as Circle Eigenfunctions}
+
+Let \(f(\tau)\) be a field component on the Euclidean thermal circle obeying
 \[
-  \operatorname{Tr}\!\left((-1)^F e^{-\beta H}\cdots\right)
+  f(\tau+\beta)=s f(\tau),\qquad s=\pm1.
 \]
-uses the periodic spin structure.  This distinction is part of the definition
-of the thermal observable and is essential in supersymmetric indices.
-
-\section{Matsubara Frequencies}
-
-On \(S^1_\beta\times\R^{D-1}\), periodic bosons have frequencies
+An eigenfunction of \(-\ii\partial_\tau\) has the form
+\(\ee^{\ii\omega\tau}\).  The boundary condition requires
+\[
+  \ee^{\ii\omega\beta}=s .
+\]
+Hence
 \[
   \omega_n^{\rm B}=\frac{2\pi n}{\beta},
   \qquad n\in\mathbb Z,
 \]
-while antiperiodic fermions have
+for periodic bosonic variables, and
 \[
-  \omega_n^{\rm F}=\frac{(2n+1)\pi}{\beta}.
+  \omega_n^{\rm F}=\frac{(2n+1)\pi}{\beta},
+  \qquad n\in\mathbb Z,
 \]
-For a free scalar,
+for antiperiodic fermionic variables.
+
+\begin{proposition}[Free scalar thermal Green function]
+\label{prop:free-scalar-thermal-green-function}
+Let
+\[
+  K=-\partial_\tau^2-\Delta_{\mathbf x}+m^2
+\]
+on periodic functions on \(S^1_\beta\times\mathbb R^{D-1}\).  The translation
+invariant inverse of \(K\), as a distribution, is
 \[
   G_E(\tau,\mathbf x)
   =
   \frac{1}{\beta}\sum_{n\in\mathbb Z}
   \int \frac{d^{D-1}k}{(2\pi)^{D-1}}\,
-  \frac{e^{\ii\omega_n^{\rm B}\tau+\ii\mathbf k\cdot\mathbf x}}
+  \frac{\ee^{\ii\omega_n^{\rm B}\tau+\ii\mathbf k\cdot\mathbf x}}
        {(\omega_n^{\rm B})^2+\mathbf k^2+m^2}.
 \]
-Analytic continuation from discrete Euclidean frequencies to retarded
-functions requires the spectral representation and the KMS condition.  The
-Euclidean values at Matsubara frequencies alone become real-time response
-data only after a growth condition or spectral ansatz fixes the continuation.
+\end{proposition}
 
-\section{Chemical Potentials and Background Holonomy}
+\begin{proof}
+The functions
+\[
+  \beta^{-1/2}\ee^{\ii\omega_n^{\rm B}\tau}
+  \]
+form the Fourier basis of \(L^2(S^1_\beta)\), and plane waves form the
+Fourier basis in the spatial directions.  Acting with \(K\) on one mode
+multiplies it by
+\[
+  (\omega_n^{\rm B})^2+\mathbf k^2+m^2 .
+\]
+The displayed kernel is therefore the spectral inverse of \(K\) on each
+Fourier mode.  Applying \(K\) to it gives the periodic delta distribution
+on \(S^1_\beta\) times \(\delta^{D-1}(\mathbf x)\).
+\end{proof}
 
-For a conserved charge \(Q\), the grand-canonical trace is
+For fermions, the same diagonalization applies to the chosen Euclidean Dirac
+operator, but the frequency set is shifted to
+\(\omega_n^{\rm F}\).  The shift is a spin-structure effect, not a
+perturbative convention.
+
+\section{Thermal Spectral Representation and Analytic Continuation}
+
+The Euclidean circle values determine real-time response only after the
+analytic continuation problem has been specified.  The finite-volume spectral
+formula makes the required data explicit.  Let \(A\) and \(B\) be bosonic
+operators, and let \(|n\rangle\) be an eigenbasis of \(H\) with
 \[
-  Z(\beta,\mu)=\operatorname{Tr}e^{-\beta(H-\mu Q)} .
+  H|n\rangle=E_n|n\rangle .
 \]
-In the Euclidean coordinate representation, \(\mu\) enters as an imaginary
-background gauge-field holonomy along \(S^1_\beta\):
+For \(0<\tau<\beta\),
 \[
-  D_\tau\mapsto D_\tau-\mu Q .
+  G_E^{AB}(\tau)
+  =
+  Z(\beta)^{-1}
+  \sum_{m,n}
+  \ee^{-\beta E_n}
+  \ee^{-\tau(E_m-E_n)}
+  A_{nm}B_{mn}.
 \]
-For compact gauge symmetries, a thermal holonomy is a gauge-invariant
-variable modulo large gauge transformations, and the integration over gauge
-holonomies is part of the gauge-theory finite-temperature path integral.
+The terms with \(E_m=E_n\) are independent of \(\tau\).  Denote this
+zero-frequency contribution by
+\[
+  G^{AB}_0
+  =
+  Z(\beta)^{-1}
+  \sum_{m,n:E_m=E_n}
+  \ee^{-\beta E_n}A_{nm}B_{mn}.
+\]
+For the remaining transitions define the thermal spectral distribution
+\begin{equation}
+  \rho_{AB}(\omega)
+  =
+  Z(\beta)^{-1}
+  \sum_{m,n:E_m\neq E_n}
+  \bigl(\ee^{-\beta E_n}-\ee^{-\beta E_m}\bigr)
+  A_{nm}B_{mn}\,
+  \delta(\omega-(E_m-E_n)).
+  \label{eq:thermal-spectral-distribution-finite-volume}
+\end{equation}
+Then
+\begin{equation}
+  G_E^{AB}(\tau)
+  =
+  G^{AB}_0+
+  \int_{\mathbb R}
+  \frac{\ee^{-\omega\tau}}{1-\ee^{-\beta\omega}}\,
+  \rho_{AB}(\omega)\,d\omega ,
+  \qquad 0<\tau<\beta .
+  \label{eq:thermal-euclidean-spectral-representation}
+\end{equation}
+Indeed, on the support \(\omega=E_m-E_n\),
+\[
+  \frac{\ee^{-\beta E_n}-\ee^{-\beta E_m}}
+       {1-\ee^{-\beta\omega}}
+  =
+  \ee^{-\beta E_n}.
+\]
+The explicit \(G^{AB}_0\) term is necessary: it is invisible in the
+commutator spectral density because the numerator in
+\eqref{eq:thermal-spectral-distribution-finite-volume} vanishes at
+\(\omega=0\).
+
+The bosonic Matsubara transform is
+\[
+  G_E^{AB}(\ii\omega_\ell^{\rm B})
+  =
+  \int_0^\beta d\tau\,
+  \ee^{\ii\omega_\ell^{\rm B}\tau}
+  G_E^{AB}(\tau).
+\]
+Using \(\ee^{\ii\omega_\ell^{\rm B}\beta}=1\) in
+\eqref{eq:thermal-euclidean-spectral-representation} gives
+\begin{equation}
+  G_E^{AB}(\ii\omega_\ell^{\rm B})
+  =
+  \beta G^{AB}_0\delta_{\ell 0}
+  +
+  \int_{\mathbb R}
+  \frac{\rho_{AB}(\omega)}{\omega-\ii\omega_\ell^{\rm B}}\,d\omega .
+  \label{eq:matsubara-spectral-transform}
+\end{equation}
+For fermionic operators the graded spectral density and the denominator
+\(1+\ee^{-\beta\omega}\) replace the bosonic ones; the antiperiodic identity
+\(\ee^{\ii\omega_\ell^{\rm F}\beta}=-1\) gives the same Cauchy-transform
+form with \(\omega_\ell^{\rm F}\).
+
+The retarded correlator is the boundary value of a function obtained from
+the same spectral density,
+\[
+  G_R^{AB}(z)
+  =
+  \int_{\mathbb R}
+  \frac{\rho_{AB}(\omega)}{\omega-z}\,d\omega,
+  \qquad \operatorname{Im}z>0,
+\]
+under the growth and distributional hypotheses required for the integral.
+Thus the rule
+\[
+  \ii\omega_n\mapsto \omega+\ii0
+\]
+is a shorthand for a spectral reconstruction problem.  It is justified when
+the Euclidean data determine a spectral distribution with the stated
+analytic control; the discrete Matsubara values alone do not constitute such
+a proof.
+
+\section{Chemical Potentials, Twists, and Holonomies}
+
+Let \(Q\) be the self-adjoint generator of a global \(U(1)\) symmetry and
+assume \([H,Q]=0\).  The grand-canonical Gibbs operator is
+\[
+  \ee^{-\beta(H-\mu Q)} .
+\]
+If an operator \(\Phi_q\) has charge \(q\),
+\[
+  [Q,\Phi_q]=q\Phi_q,
+\]
+then moving \(\ee^{\beta\mu Q}\) through \(\Phi_q\) gives
+\[
+  \ee^{\beta\mu Q}\Phi_q\ee^{-\beta\mu Q}
+  =
+  \ee^{\beta\mu q}\Phi_q .
+\]
+Consequently the Euclidean coordinate representation may be written in two
+equivalent ways:
+\[
+  D_\tau\longmapsto D_\tau-\mu q
+\]
+with the original thermal boundary condition, or as a twisted boundary
+condition
+\[
+  \Phi_q(\tau+\beta,\mathbf x)
+  =
+  s\,\ee^{\beta\mu q}\Phi_q(\tau,\mathbf x),
+  \qquad s=+1\ \hbox{for bosons},\quad s=-1\ \hbox{for fermions}.
+\]
+For imaginary chemical potential \(\mu=\ii\nu\), the twist is a unitary
+background holonomy
+\[
+  \exp(\ii\beta\nu q)
+\]
+around \(S^1_\beta\).  If the \(U(1)\) is compact and the charges are
+integers in the chosen normalization, large background gauge transformations
+identify
+\[
+  \nu\sim \nu+\frac{2\pi}{\beta}.
+\]
+For real \(\mu\), the Euclidean action of a relativistic theory is generally
+complex in common field coordinates; this is the operator origin of the
+finite-density sign problem discussed later in this volume.
+
+\section{Gauge Fields on the Thermal Circle}
+
+For a gauge theory, the Euclidean thermal path integral integrates over
+connections on \(S^1_\beta\times\Sigma\) modulo gauge transformations whose
+periodicity is compatible with the chosen bundle and matter boundary
+conditions.  The component \(A_\tau\) has a gauge-invariant zero-mode datum:
+the thermal holonomy
+\[
+  \mathcal P(\mathbf x)
+  =
+  \operatorname{Pexp}
+  \left(\int_0^\beta A_\tau(\tau,\mathbf x)\,d\tau\right),
+\]
+defined up to conjugation.  In a compact lattice regulator this holonomy is
+the Polyakov loop variable developed in
+Chapter~\ref{ch:lattice-yang-mills-nonperturbative-definition}.  In a
+continuum gauge-fixed coordinate chart it should not be discarded as a
+pure-gauge variable: a gauge transformation that removes a constant
+\(A_\tau\) may fail to be periodic around the thermal circle.
+
+The gauge-theory thermal trace is over the physical Hilbert space, or
+equivalently over gauge-invariant states after imposing Gauss constraints.
+In the Euclidean path integral this appears as integration over gauge
+holonomies rather than fixing a chemical potential for a local gauge charge.
+External background holonomies may be fixed for global symmetries.  Dynamical
+gauge holonomies are integrated, and their center transformations encode the
+thermal one-form symmetry data discussed in the gauge-theory volumes.
 
 \begin{openproblem}[Euclidean thermal reconstruction]
 \label{op:euclidean-thermal-reconstruction}
-State constructive hypotheses under which Schwinger functions on
-\(S^1_\beta\times\R^{D-1}\), with the appropriate spin structure and
-background holonomies, reconstruct a KMS state with local real-time
-observables and transport correlators.  The solution must specify the
-analytic growth replacing the vacuum spectrum condition.
+Give constructive hypotheses under which Schwinger functions on
+\(S^1_\beta\times\mathbb R^{D-1}\), with the appropriate spin structure and
+background holonomies, reconstruct a real-time KMS state with local
+observables, spectral functions, and transport correlators.  The hypotheses
+must replace the vacuum spectrum condition by precise thermal analyticity and
+growth bounds and must specify the operator topology in which the
+infinite-volume limit is taken.
 \end{openproblem}

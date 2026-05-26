@@ -70,6 +70,12 @@ Current checks:
   phase cancellation, Polyakov-loop \(N\)-ality, neutral pair correlators,
   center averaging of charged loops, and the static-source free-energy
   relation.
+- `finite_temperature_path_integral_checks.py`: finite convention checks for
+  the thermal path-integral chapter, including bosonic and fermionic
+  Matsubara boundary phases, the finite-volume spectral representation of
+  Euclidean correlators, the separate zero-frequency degenerate term, the
+  Matsubara Cauchy transform, and chemical-potential twist and
+  imaginary-holonomy periodicity.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
   extraction of the charged velocity from flux extrema, the half-line Fourier
