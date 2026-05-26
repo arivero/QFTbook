@@ -19,8 +19,12 @@ boundaries rather than importing the appendix exposition.
 - `mu`: positive cosmological constant multiplying the exponential
   interaction.
 - `V_alpha`: normal-ordered exponential `:exp(2 alpha phi):`.
+- `P`: nonnegative Liouville scattering momentum, with
+  `alpha=Q/2+iP`.
+- `S(P)`: reflection phase in the cylinder scattering normalization.
 - `h_alpha`: Liouville conformal weight `alpha(Q-alpha)`.
 - `Upsilon_b`: entire special function entering the DOZZ constant.
+- `F_P`: Virasoro conformal block with internal Liouville momentum `P`.
 - `M_{gamma,g}`: Gaussian multiplicative-chaos measure in probabilistic
   normalization.
 
@@ -40,10 +44,20 @@ boundaries rather than importing the appendix exposition.
   the GKRV probabilistic construction as a `quotedtheorem`.
 - Defines the reflection relation as a meromorphic identification of
   correlation functions.
+- Adds the canonical asymptotic scattering basis on the cylinder and the
+  delta-normalized primary `V_P`.
+- States the continuous Liouville four-point conformal-block decomposition as
+  a direct integral over `P in [0,infty)`.
 - Defines `Upsilon_b`, states the DOZZ formula as a `quotedtheorem`, and names
   the proof boundary.
+- Derives the scattering-normalized `P`-basis DOZZ representative from the
+  conventional `alpha`-basis formula and records the external-leg phase
+  convention.
 - Proves the level-two null-vector coefficient for `alpha=-b/2` and derives
   the corresponding BPZ differential equation.
+- Reduces the four-point function with one `V_{-b/2}` insertion to
+  hypergeometric blocks, identifies the two local fusion exponents, and
+  explains the origin of the degenerate shift equation.
 - Records an open problem for functorial/sewing closure and cross-links the
   Kontsevich-Segal ledger.
 
@@ -77,3 +91,6 @@ boundaries rather than importing the appendix exposition.
   chapter with classical action, central-charge derivation, Seiberg/GMC
   construction status, DOZZ theorem boundary, BPZ null-vector derivation, and
   a calculation check.
+- 2026-05-26 stringbook-spine expansion: added the asymptotic scattering
+  basis, continuous conformal-block decomposition, `P`-basis DOZZ
+  representative, and degenerate hypergeometric BPZ block derivation.

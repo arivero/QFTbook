@@ -208,16 +208,18 @@ normalization.
 
 \begin{quotedtheorem}[Probabilistic Liouville correlation functions]
 \label{qthm:gkrv-liouville-correlators}
-Guillarmou--Kupiainen--Rhodes--Vargas construct Liouville correlation
-functions on compact Riemann surfaces in the subcritical GMC regime by
-integrating the constant mode against the Gaussian multiplicative-chaos
-functional, with insertions in the Seiberg domain
-\eqref{eq:liouville-seiberg-bound}.  The construction gives finite
-correlation functions, conformal covariance with central charge
-\(1+6Q^2\), and meromorphic continuation in the insertion momenta after the
-initial probabilistic domain is established.  This chapter uses the theorem
-as the measure-theoretic construction of the Liouville path integral and then
-derives the Virasoro consequences needed below.
+The probabilistic Liouville constructions of
+David--Kupiainen--Rhodes--Vargas and Guillarmou--Kupiainen--Rhodes--Vargas
+define Liouville correlation functions by integrating the constant mode
+against the Gaussian multiplicative-chaos functional, with insertions in the
+Seiberg domain \eqref{eq:liouville-seiberg-bound}.  In the regimes covered by
+these theorems the construction gives finite correlation functions,
+conformal covariance with central charge \(1+6Q^2\), and meromorphic
+continuation in the insertion momenta after the initial probabilistic domain
+is established.  These theorems supply the measure-theoretic construction of
+the closed-surface Liouville path integral; the full Segal sewing theory for
+higher-genus boundary operations is recorded below as a separate boundary
+problem.
 \end{quotedtheorem}
 
 \begin{definition}[Reflection relation]
@@ -236,6 +238,71 @@ where \(R_b(\alpha)\) is the meromorphic reflection amplitude fixed by the
 two-point normalization and equivalently by the DOZZ three-point function.
 Thus a single bulk primary label is represented by the reflection orbit
 \(\{\alpha,Q-\alpha\}\), with the normalization encoded in \(R_b(\alpha)\).
+\end{definition}
+
+\begin{definition}[Asymptotic scattering basis]
+\label{def:liouville-scattering-basis}
+Let \(\phi_0\) be the constant mode of \(\phi\) on a long cylinder.  In the
+weak-coupling end \(\phi_0\to-\infty\), the Liouville potential is negligible
+and the Hilbert space is described by the background-charge free field with
+oscillators.  A momentum-\(P\) incoming state has asymptotic wavefunction
+\begin{equation}
+  \Psi_P^{\mathrm{in}}(\phi_0,\{\phi_n\})
+  \sim
+  \left(
+    e^{2\ii P\phi_0}
+    +S(P)e^{-2\ii P\phi_0}
+  \right)
+  \exp\!\left(-\sum_{n\ge1}n\phi_n\phi_{-n}\right),
+  \qquad P\ge0,
+  \label{eq:liouville-asymptotic-wavefunction}
+\end{equation}
+where \(S(P)\) is the unitary reflection phase in the scattering
+normalization.  The corresponding incoming primary is represented
+asymptotically by
+\begin{equation}
+  V_P^{\mathrm{in}}
+  \sim
+  e^{(Q+2\ii P)\phi}
+  +S(P)e^{(Q-2\ii P)\phi},
+  \qquad
+  h_P=\frac{Q^2}{4}+P^2.
+  \label{eq:liouville-incoming-primary}
+\end{equation}
+The delta-normalized primary used in the continuous spectrum is
+\(V_P=S(P)^{-1/2}V_P^{\mathrm{in}}\), with
+\[
+  \langle V_P(1)V_{P'}(0)\rangle=\pi\delta(P-P')
+\]
+after fixing the conventional measure.  This is the canonical-quantization
+version of the reflection orbit \(\alpha=Q/2+\ii P\sim Q/2-\ii P\).
+\end{definition}
+
+\begin{definition}[Continuous conformal-block decomposition]
+\label{def:liouville-continuous-blocks}
+For four normalizable external Liouville primaries
+\(\alpha_j=Q/2+\ii P_j\), the bootstrap ansatz on the sphere is a direct
+integral over the same spectrum:
+\begin{equation}
+  \left\langle
+    V_{P_1}(\infty)V_{P_2}(1)V_{P_3}(z)V_{P_4}(0)
+  \right\rangle
+  =
+  \int_0^\infty
+  C(P_1,P_2,P)C(P_3,P_4,P)
+  \left|
+    \mathcal F_{P}\!\left[
+      \begin{matrix}P_1&P_2\\ P_4&P_3\end{matrix}
+    \right](z)
+  \right|^2\,dP .
+  \label{eq:liouville-continuous-block-decomposition}
+\end{equation}
+Here \(\mathcal F_P\) is the Virasoro conformal block with internal weight
+\(Q^2/4+P^2\).  Equation
+\eqref{eq:liouville-continuous-block-decomposition} is a direct-integral
+decomposition.  Its analytic content includes the choice of Plancherel
+measure, the location of possible discrete residues after analytic
+continuation, and the crossing kernel for the Virasoro blocks.
 \end{definition}
 
 \section{The DOZZ Formula and Shift Checks}
@@ -312,8 +379,9 @@ with \(h_i=\alpha_i(Q-\alpha_i)\) and
   \label{eq:dozz-structure-constant}
 \end{equation}
 The formula was proposed by Dorn--Otto and by the Zamolodchikovs and was
-proved in the probabilistic construction by Kupiainen--Rhodes--Vargas.  This
-chapter quotes the theorem rather than reproducing the GMC proof.
+proved in the probabilistic construction by Kupiainen--Rhodes--Vargas.  Its
+role here is to fix the normalization whose reflection and shift consequences
+are checked in the representation-theoretic calculations below.
 \end{quotedtheorem}
 
 The shift relations \eqref{eq:upsilon-b-shift-b}--\eqref{eq:upsilon-b-shift-binverse}
@@ -321,8 +389,59 @@ are the convention-sensitive part of \eqref{eq:dozz-structure-constant}.  They
 are what make the degenerate-field shift equations compatible with the
 normalization of the exponential interaction.  The companion script
 \texttt{calculation-checks/liouville\_bpz\_checks.py} verifies the level-two
-null-vector arithmetic used below; a later check should expand this to
-symbolic DOZZ shift-ratio simplifications.
+null-vector arithmetic used below.
+
+\begin{proposition}[Scattering-normalized DOZZ representative]
+\label{prop:liouville-p-basis-dozz}
+Set \(\alpha_j=Q/2+\ii P_j\).  After absorbing the cosmological-constant
+power and the two-point reflection factors into the delta-normalized fields
+of Definition~\ref{def:liouville-scattering-basis}, a standard
+scattering-normalized three-point representative is
+\begin{equation}
+\begin{aligned}
+  C(P_1,P_2,P_3)
+  &=
+  \frac{\Upsilon'_b(0)}
+       {\Upsilon_b\!\left(Q/2+\ii(P_1+P_2+P_3)\right)}
+  \\
+  &\quad\times
+  \prod_{j=1}^3
+  \frac{
+    \left(\Upsilon_b(2\ii P_j)\Upsilon_b(-2\ii P_j)\right)^{1/2}
+  }{
+    \Upsilon_b\!\left(
+      Q/2+\ii(P_1+P_2+P_3)-2\ii P_j
+    \right)
+  } .
+\end{aligned}
+  \label{eq:liouville-p-basis-dozz}
+\end{equation}
+Different square-root and reflection-amplitude conventions multiply
+\eqref{eq:liouville-p-basis-dozz} by phase factors depending separately on
+the external legs; the four-point integrand
+\eqref{eq:liouville-continuous-block-decomposition} is invariant after the
+same convention is used for both three-point constants and two-point
+normalization.
+\end{proposition}
+
+\begin{proof}
+Substitute \(\alpha_j=Q/2+\ii P_j\) into
+\eqref{eq:dozz-structure-constant}.  The four denominator arguments become
+\[
+  \frac Q2+\ii(P_1+P_2+P_3),\qquad
+  \frac Q2+\ii(P_1+P_2+P_3)-2\ii P_j,\quad j=1,2,3.
+\]
+The numerator factors are
+\(\Upsilon_b(Q+2\ii P_j)=\Upsilon_b(-2\ii P_j)\) by the reflection identity
+\(\Upsilon_b(x)=\Upsilon_b(Q-x)\).  Passing from \(V_{\alpha_j}\) to the
+delta-normalized scattering fields contributes one square root of the
+two-point reflection normalization per external leg, replacing the numerator
+by
+\(\left(\Upsilon_b(2\ii P_j)\Upsilon_b(-2\ii P_j)\right)^{1/2}\) up to the
+leg phases just mentioned.  The remaining \(\mu\)-dependent power is a
+zero-mode convention for the origin of \(\phi_0\), so it is absent from this
+representative.
+\end{proof}
 
 \section{Degenerate Insertions and BPZ Equations}
 
@@ -438,6 +557,80 @@ Solving \eqref{eq:liouville-bpz-equation} near one puncture and matching it
 to the same equation near another puncture gives shift equations for the
 three-point structure constants.  The DOZZ constant is the meromorphic
 solution with the reflection, shift, and analyticity properties stated above.
+
+\begin{proposition}[Degenerate BPZ blocks]
+\label{prop:liouville-degenerate-hypergeometric-solutions}
+Fix three generic momenta \(\alpha_1,\alpha_2,\alpha_3\), put the degenerate
+field \(V_{-b/2}\) at \(z\), and use global conformal covariance to set the
+other insertions at \(0,1,\infty\).  After extracting the elementary powers
+fixed by the OPE with \(V_{\alpha_1}(0)\), the two local solutions of
+\eqref{eq:liouville-bpz-equation} near \(z=0\) are Gauss hypergeometric
+functions.  In a normalization where the two fusion channels are
+\(\alpha_1-b/2\) and \(\alpha_1+b/2\), one may write
+\begin{align}
+  \mathcal F_-(z)
+  &=
+  z^{b\alpha_1}(1-z)^{b\alpha_2}
+  {}_2F_1(A,B;C;z),\\
+  \mathcal F_+(z)
+  &=
+  z^{1+b^2-b\alpha_1}(1-z)^{b\alpha_2}
+  {}_2F_1(A-C+1,B-C+1;2-C;z),
+\end{align}
+with
+\[
+  A=b(\alpha_1+\alpha_2+\alpha_3-Q-b/2),\quad
+  B=b(\alpha_1+\alpha_2-\alpha_3-b/2),\quad
+  C=1+b(2\alpha_1-Q).
+\]
+Analytic continuation from the \(z=0\) channel to the \(z=1\) channel gives
+the corresponding gamma-function connection coefficients, hence the
+degenerate shift equation
+\begin{equation}
+  \frac{
+    C_b(\alpha_1+b/2,\alpha_2,\alpha_3)
+  }{
+    C_b(\alpha_1-b/2,\alpha_2,\alpha_3)
+  }
+  =
+  \mathcal R_b(\alpha_1;\alpha_2,\alpha_3),
+  \label{eq:liouville-degenerate-shift-ratio}
+\end{equation}
+where \(\mathcal R_b\) is the explicit product of gamma functions obtained
+from the connection matrix and the OPE normalization
+\[
+  V_{-b/2}V_{\alpha_1}
+  \sim
+  C_+(\alpha_1)V_{\alpha_1-b/2}
+  +C_-(\alpha_1)V_{\alpha_1+b/2}.
+\]
+The exact expression is equivalent to the \(b\)-shift of
+\eqref{eq:dozz-structure-constant} under the \(\Upsilon_b\) relation
+\eqref{eq:upsilon-b-shift-b}.
+\end{proposition}
+
+\begin{proof}
+With insertions fixed at \(0,1,\infty\), equation
+\eqref{eq:liouville-bpz-equation} has only regular singular points
+\(\{0,1,\infty\}\).  The indicial equation at \(0\) has exponents equal to
+the OPE weight differences
+\[
+  h_{\alpha_1-b/2}-h_{\alpha_1}-h_{-b/2}=b\alpha_1,
+  \qquad
+  h_{\alpha_1+b/2}-h_{\alpha_1}-h_{-b/2}=1+b^2-b\alpha_1 .
+\]
+After factoring these powers and the analogous elementary factor at \(1\),
+the remaining second-order Fuchsian equation is the hypergeometric equation
+with parameters \(A,B,C\) above.  The standard connection formula for
+Gauss hypergeometric functions expresses the same two-dimensional solution
+space in the \(z=1\) fusion basis.  Crossing symmetry of the four-point
+function with one degenerate insertion identifies the products of OPE
+coefficients in the two bases, giving
+\eqref{eq:liouville-degenerate-shift-ratio}.  Substituting the
+\(\Upsilon_b\) shift relation into the ratio of the two DOZZ constants gives
+the same gamma-function product, which is the convention-sensitive check
+recorded here.
+\end{proof}
 
 \section{Sewing Status and Open Boundary}
 
