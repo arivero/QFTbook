@@ -34,6 +34,17 @@ status-boundary style.
   `d log Z_Phi / d log mu`.
 - `mathcal C_Phi`: half-normalized convention used in the stringbook
   appendices, related by `gamma_Phi = 2 mathcal C_Phi`.
+- `tilde N_c=N_f-N_c`: magnetic gauge rank in the SQCD duality section.
+- `q_i`, `tilde q^j`: magnetic quark and antiquark chiral multiplets in
+  Seiberg's SQCD dual variables.
+- `mu_*`: dimension-one matching scale used when the magnetic singlet
+  `M` is normalized as the electric composite `tilde Q Q`.
+- `W_mag=(1/mu_*) M q tilde q`: magnetic SQCD superpotential.
+- `hyp:sqcd-ir-comparison-hypotheses`: explicit continuum, current,
+  superconformal-R, chiral-coordinate, and deformation-matching assumptions
+  needed before comparing electric and magnetic SQCD infrared limits.
+- `qt:sqcd-seiberg-duality-input`: quoted nonperturbative status boundary
+  for SQCD Seiberg duality.
 - `G_KW=SU(N)_1 x SU(N)_2`: Klebanov-Witten gauge group.
 - `A_i`, `B_j`: KW bifundamental chiral multiplets, transforming as
   `(N,bar N)` and `(bar N,N)`.
@@ -88,6 +99,25 @@ status-boundary style.
   `Delta=3R/2`: existence of a unitary `N=1` SCFT, chiral-primary status,
   correct superconformal R-current after mixing, and no accidental symmetry
   changing the operator charge.
+- Adds the general SQCD Seiberg-duality ledger as a status-bounded
+  nonperturbative input rather than a citation-as-proof: electric/magnetic
+  field content, magnetic rank `N_f-N_c`, baryon normalization, magnetic
+  meson normalization, and the `M q tilde q / mu_*` superpotential.
+- States `hyp:sqcd-ir-comparison-hypotheses`, separating continuum-limit,
+  current-identification, R-current, chiral-sector, and deformation-matching
+  assumptions before any electric/magnetic equivalence is used.
+- Proves the magnetic gauge-`R` anomaly cancellation, magnetic
+  superpotential \(R=2\), and magnetic NSVZ numerator cancellation in the
+  monograph `gamma=d log Z/d log mu` convention.
+- Proves electric/magnetic matching for the displayed global anomalies:
+  `SU(N_f)_L^3`, `SU(N_f)_R^3`, mixed flavor-`R`, mixed flavor-baryon,
+  `U(1)_B^2 U(1)_R`, `Tr R`, and `Tr R^3`.
+- Records the SQCD phase ledger with explicit logical status: ADS runaway
+  from the direct `N_f=N_c-1` instanton calculation plus holomorphic
+  decoupling, quantum-modified `N_f=N_c`, confining `N_f=N_c+1`, free
+  magnetic range, interacting conformal window, and free electric range.
+- Checks the `N_f=N_c+1` confining superpotential
+  `(B M tilde B - det M)/Lambda_h^(2N_c-1)` by dimension and \(R\)-charge.
 - Defines the KW gauge theory field content, global symmetries, baryon-charge
   normalization, and quartic superpotential.
 - States the KW Lagrangian and branch assumptions before deriving F-terms,
@@ -127,6 +157,13 @@ status-boundary style.
   KS numerator signs, unequal-rank R-anomaly coefficients, Seiberg-dual
   magnetic rank, magnetic meson quadratic-form integration, cascade step
   count, and the `Z_{2M}->Z_2` vacuum count.
+- `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
+  rational arithmetic for the general SQCD duality and phase ledger:
+  dual-rank involution, baryon-charge map, electric/magnetic NSVZ numerator
+  cancellation, magnetic gauge-`R` anomaly cancellation, magnetic
+  superpotential dimension and \(R\)-charge, full global anomaly matching,
+  `N_f=N_c+1` confining-superpotential checks, and phase-window
+  inequalities.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, and holomorphic decoupling

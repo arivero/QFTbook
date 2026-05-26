@@ -466,6 +466,421 @@ anomaly and NSVZ calculations below test these assumptions; they do not by
 themselves construct the fixed point.
 \end{hypothesis}
 
+\section{Seiberg Duality And The SQCD Phase Ledger}
+\label{sec:n1-seiberg-duality-sqcd}
+
+The preceding superconformal bookkeeping used only the electric SQCD
+variables.  We now isolate the nonperturbative duality input that is needed
+whenever the chapter talks about the full SQCD phase diagram.  This is a
+field-theoretic statement about four-dimensional \(\mathcal N=1\) gauge
+dynamics; no string construction is part of the definition or the argument.
+
+Write the flavor symmetry as
+\[
+  SU(N_f)_L\times SU(N_f)_R\times U(1)_B\times U(1)_R .
+\]
+The electric fields transform as
+\[
+\begin{array}{c|c|c|c|c|c}
+  & SU(N_c) & SU(N_f)_L & SU(N_f)_R & U(1)_B & U(1)_R \\ \hline
+  Q^i & \mathbf N_c & \mathbf N_f & \mathbf 1
+      & +1 & 1-\frac{N_c}{N_f} \\
+  \widetilde Q_j & \overline{\mathbf N}_c & \mathbf 1
+      & \overline{\mathbf N}_f
+      & -1 & 1-\frac{N_c}{N_f}
+\end{array}
+\]
+and the meson \(M^i{}_j=\widetilde Q_jQ^i\) transforms as
+\((\mathbf N_f,\overline{\mathbf N}_f)\).  The normalization of
+\(U(1)_B\) is chosen so that an electric baryon \(Q^{N_c}\) has charge
+\(N_c\).  This differs by a harmless overall factor from conventions in
+which \(Q\) has baryon charge \(1/N_c\).
+
+For \(N_f\geq N_c+2\), set
+\[
+  \widetilde N_c=N_f-N_c .
+\]
+The magnetic SQCD variables consist of an \(SU(\widetilde N_c)\) vector
+multiplet, magnetic quarks \(q_i,\widetilde q^j\), and a gauge-singlet meson
+coordinate \(M^i{}_j\) with the global charges
+\[
+\begin{array}{c|c|c|c|c|c}
+  & SU(\widetilde N_c) & SU(N_f)_L & SU(N_f)_R
+  & U(1)_B & U(1)_R \\ \hline
+  q_i & \mathrm{fund} & \overline{\mathbf N}_f & \mathbf 1
+      & \frac{N_c}{\widetilde N_c} & \frac{N_c}{N_f} \\
+  \widetilde q^j & \overline{\mathrm{fund}} & \mathbf 1 & \mathbf N_f
+      & -\frac{N_c}{\widetilde N_c} & \frac{N_c}{N_f} \\
+  M^i{}_j & \mathbf 1 & \mathbf N_f & \overline{\mathbf N}_f
+      & 0 & 2\left(1-\frac{N_c}{N_f}\right).
+\end{array}
+\]
+The magnetic superpotential is
+\[
+  W_{\mathrm{mag}}
+  =
+  \frac1{\mu_*}M^i{}_j q_i\widetilde q^j .
+  \label{eq:sqcd-magnetic-superpotential}
+\]
+Here \(M^i{}_j\) is normalized as the electric composite
+\(\widetilde Q_jQ^i\), so it has engineering dimension two in the
+microscopic matching convention; \(\mu_*\) is a nonzero matching scale of
+dimension one.  Equivalently one may use the canonically normalized magnetic
+singlet \(M_{\mathrm{can}}=M/\mu_*\) and absorb \(\mu_*\) into the Yukawa
+coupling.  The displayed form keeps the operator map visible.
+
+\begin{hypothesis}[SQCD infrared-comparison hypotheses]
+\label{hyp:sqcd-ir-comparison-hypotheses}
+Whenever this section compares the electric and magnetic SQCD descriptions,
+the following hypotheses are part of the statement.
+\begin{enumerate}
+\item The electric and magnetic Lagrangians have continuum infrared limits in
+  a regulator preserving the gauge Ward identities, the listed flavor
+  symmetries, and enough supersymmetry for the Wilsonian chiral-coordinate
+  arguments of Chapters~\ref{ch:susy-wilsonian-schemes-exact-dynamics} and
+  \ref{ch:susy-nonrenormalization-holomorphy}.
+\item The unbroken global currents are represented by the same operators in
+  the two infrared limits.  Consequently their 't Hooft anomalies are
+  invariant data of the infrared theory and must match.
+\item The displayed \(U(1)_R\) current is the superconformal current in the
+  interacting range after all allowed flavor-current mixing has been fixed.
+  At free endpoints one must include the accidental symmetries of the free
+  fields before interpreting \(\Delta=\frac32R\).
+\item The chiral coordinates \(M,B,\widetilde B\) and their magnetic images
+  generate the protected chiral sector being compared, after imposing
+  \(F\)-term equations and after excluding extra accidental chiral generators
+  not present in the stated phase.
+\item Relevant deformations by holomorphic quark masses and by generic
+  Higgs-branch expectation values commute with the comparison: after
+  integrating out massive fields and matching holomorphic scales, the
+  lower-rank theories satisfy the same comparison hypotheses.
+\end{enumerate}
+\end{hypothesis}
+
+These assumptions are not justified by historical authority.  Their role is
+visible in the calculations below.  The magnetic rank and baryon charges are
+forced by the baryon map \(Q^{N_c}\leftrightarrow q^{\widetilde N_c}\);
+the meson singlet is forced because \(Q\widetilde Q\) is an independent
+electric chiral coordinate; the superpotential is the unique cubic chiral
+coupling with the displayed flavor charges and \(R\)-charge \(2\); the
+magnetic gauge anomaly cancellation is a necessary consistency test; and the
+global anomaly matching below is a regulator-independent test of the common
+infrared current algebra.  These checks do not construct the continuum
+infrared fixed point, but they make every algebraic burden of the duality
+statement explicit.
+
+\begin{quotedtheorem}[Seiberg-duality input for SQCD]
+\label{qt:sqcd-seiberg-duality-input}
+For four-dimensional \(\mathcal N=1\) SQCD with gauge group \(SU(N_c)\),
+\(N_f\geq N_c+2\) flavors, zero tree superpotential, and the Wilsonian
+coordinate conventions of this chapter, and under
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}, the infrared theory at
+the origin of the quantum moduli space has an equivalent magnetic description
+with gauge group \(SU(N_f-N_c)\), fields and charges as displayed above, and
+superpotential \eqref{eq:sqcd-magnetic-superpotential}.  The equivalence
+identifies the common global currents, chiral ring after imposing
+superpotential equations, deformations by masses and Higgs expectation
+values, and all 't Hooft anomalies.  In the interval
+\(\frac32N_c<N_f<3N_c\) this is an equivalence of interacting infrared
+SCFTs; in the free electric and free magnetic ranges it is understood after
+including the appropriate free variables and accidental symmetries at the
+endpoint.
+\end{quotedtheorem}
+
+This quoted theorem is not a theorem proved from the preceding Wilsonian
+holomorphy alone.  The monograph uses it as an exact nonperturbative input
+and then exposes the checks that make the statement sharp: charge
+assignments, anomaly matching, deformation matching, and consistency with
+NSVZ fixed-point arithmetic.
+
+\begin{proposition}[Magnetic \(R\)-charge, superpotential, and NSVZ checks]
+\label{prop:sqcd-magnetic-r-nsvz-checks}
+With the magnetic charges displayed above, \(U(1)_R\) is free of
+\(SU(\widetilde N_c)^2U(1)_R\) gauge anomaly, the magnetic superpotential
+has \(R\)-charge \(2\), and the magnetic NSVZ numerator vanishes at the same
+candidate superconformal point as the electric numerator.
+\end{proposition}
+
+\begin{proof}
+The \(SU(\widetilde N_c)^2U(1)_R\) anomaly receives \(+\widetilde N_c\)
+from the magnetic gaugino.  The two magnetic quark families have fermion
+\(R\)-charge
+\[
+  R(q)-1=R(\widetilde q)-1
+  =
+  \frac{N_c}{N_f}-1
+  =
+  -\frac{\widetilde N_c}{N_f}.
+\]
+Using \(T(\mathbf{fund})=T(\overline{\mathbf{fund}})=\frac12\),
+\[
+  \widetilde N_c
+  +\frac12N_f\left(-\frac{\widetilde N_c}{N_f}\right)
+  +\frac12N_f\left(-\frac{\widetilde N_c}{N_f}\right)
+  =
+  0 .
+\]
+The superpotential charge is
+\[
+  R(M)+R(q)+R(\widetilde q)
+  =
+  2\left(1-\frac{N_c}{N_f}\right)
+  +2\frac{N_c}{N_f}
+  =
+  2 .
+\]
+At a superconformal fixed point the chapter convention gives
+\[
+  \gamma_q=3R(q)-2=\frac{3N_c}{N_f}-2 .
+\]
+The magnetic NSVZ numerator is therefore
+\[
+  3\widetilde N_c-N_f(1-\gamma_q)
+  =
+  3(N_f-N_c)
+  -N_f\left(3-\frac{3N_c}{N_f}\right)
+  =
+  0 .
+\]
+The electric numerator was checked in
+Section~\ref{sec:n1-superconformal-sqcd-bookkeeping}; both descriptions
+therefore pass the same fixed-point arithmetic.
+\end{proof}
+
+\begin{proposition}[Electric-magnetic anomaly matching]
+\label{prop:sqcd-seiberg-anomaly-matching}
+Normalize cubic nonabelian anomalies so that a left-handed Weyl fermion in
+the fundamental of \(SU(N_f)\) contributes \(+1\) and an antifundamental
+contributes \(-1\).  Normalize mixed \(SU(N_f)^2U(1)\) anomalies so that a
+fundamental or antifundamental contributes the same quadratic index.  Then
+the electric and magnetic descriptions have the common anomaly coefficients
+\[
+\begin{array}{c|c}
+  \text{anomaly} & \text{coefficient} \\ \hline
+  SU(N_f)_L^3 & N_c \\
+  SU(N_f)_R^3 & -N_c \\
+  SU(N_f)_L^2U(1)_R & -\frac{N_c^2}{N_f} \\
+  SU(N_f)_R^2U(1)_R & -\frac{N_c^2}{N_f} \\
+  SU(N_f)_L^2U(1)_B & N_c \\
+  SU(N_f)_R^2U(1)_B & -N_c \\
+  U(1)_B^2U(1)_R & -2N_c^2 \\
+  U(1)_R & -N_c^2-1 \\
+  U(1)_R^3 & N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\end{array}
+\]
+\end{proposition}
+
+\begin{proof}
+All traces are over left-handed Weyl fermions.  In the electric theory the
+quark and antiquark fermions have \(R\)-charge \(-N_c/N_f\), while the
+gaugino has \(R\)-charge \(1\).  Thus, for example,
+\[
+  SU(N_f)_L^3:\quad N_c,
+  \qquad
+  SU(N_f)_R^3:\quad -N_c,
+\]
+and
+\[
+  SU(N_f)_L^2U(1)_R:
+  \quad
+  N_c\left(-\frac{N_c}{N_f}\right)
+  =
+  -\frac{N_c^2}{N_f}.
+\]
+The right-flavor mixed \(R\)-anomaly is the same, while the baryonic mixed
+anomalies are \(N_c\) and \(-N_c\) because \(Q\) and \(\widetilde Q\) have
+baryon charges \(+1\) and \(-1\).  The purely abelian traces are
+\[
+  U(1)_B^2U(1)_R:
+  \quad
+  2N_cN_f\left(-\frac{N_c}{N_f}\right)
+  =
+  -2N_c^2,
+\]
+\[
+  \operatorname{Tr}R
+  =
+  (N_c^2-1)+2N_cN_f\left(-\frac{N_c}{N_f}\right)
+  =
+  -N_c^2-1,
+\]
+and
+\[
+  \operatorname{Tr}R^3
+  =
+  (N_c^2-1)
+  +2N_cN_f\left(-\frac{N_c}{N_f}\right)^3
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\]
+
+For the magnetic theory set \(t=\widetilde N_c=N_f-N_c\).  The \(q\) and
+\(\widetilde q\) fermions have \(R\)-charge \(-t/N_f\), baryon charges
+\(\pm N_c/t\), and \(tN_f\) components each.  The mesino in \(M^i{}_j\) has
+\[
+  R(M)-1
+  =
+  2\left(1-\frac{N_c}{N_f}\right)-1
+  =
+  \frac{N_f-2N_c}{N_f}.
+\]
+For the left cubic flavor anomaly, \(q\) gives \(-t\) and the \(N_f\) right
+flavor copies of the mesino give \(+N_f\), hence \(-t+N_f=N_c\).  For the
+right cubic anomaly, \(\widetilde q\) gives \(+t\) and the mesino gives
+\(-N_f\), hence \(t-N_f=-N_c\).  The left mixed \(R\)-anomaly is
+\[
+  t\left(-\frac{t}{N_f}\right)
+  +
+  N_f\left(\frac{N_f-2N_c}{N_f}\right)
+  =
+  -\frac{(N_f-N_c)^2}{N_f}+N_f-2N_c
+  =
+  -\frac{N_c^2}{N_f},
+\]
+and the right mixed \(R\)-anomaly is identical.  The mixed baryonic flavor
+anomalies are
+\[
+  SU(N_f)_L^2U(1)_B:\quad
+  t\frac{N_c}{t}=N_c,
+  \qquad
+  SU(N_f)_R^2U(1)_B:\quad
+  -t\frac{N_c}{t}=-N_c .
+\]
+The \(U(1)_B^2U(1)_R\) trace is
+\[
+  2tN_f\left(\frac{N_c}{t}\right)^2
+  \left(-\frac{t}{N_f}\right)
+  =
+  -2N_c^2 .
+\]
+Finally,
+\[
+  \operatorname{Tr}R
+  =
+  (t^2-1)+2tN_f\left(-\frac{t}{N_f}\right)
+  +N_f^2\left(\frac{N_f-2N_c}{N_f}\right)
+  =
+  -N_c^2-1,
+\]
+and
+\[
+  \operatorname{Tr}R^3
+  =
+  (t^2-1)
+  -\frac{2t^4}{N_f^2}
+  +
+  \frac{(N_f-2N_c)^3}{N_f}
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\]
+This proves the displayed anomaly matching.
+\end{proof}
+
+The \(N_f<N_c\) entries in the phase ledger below have a different logical
+status from the duality entries.  The \(N_f=N_c-1\) ADS term was derived
+above from an explicit one-instanton zero-mode and symmetry calculation under
+Hypothesis~\ref{hyp:sqcd-one-instanton-calculus}.  The cases
+\(N_f<N_c-1\) are then reached by holomorphic decoupling using
+Proposition~\ref{prop:susy-holomorphic-decoupling}.  Thus the nonzero
+superpotential in the runaway range is not inferred from Seiberg duality; it
+is a chiral \(F\)-term result whose direct semiclassical anchor and
+decoupling assumptions are displayed separately.
+
+\begin{quotedtheorem}[SQCD phase ledger]
+\label{qt:sqcd-phase-ledger}
+Combining the instanton, holomorphy, and quantum-moduli-space results above
+with the Seiberg-duality input of
+Quoted Theorem~\ref{qt:sqcd-seiberg-duality-input} in the range where that
+input is invoked, massless \(SU(N_c)\) SQCD with \(N_f\) flavors has the
+following infrared ledger.
+\begin{description}
+\item[\(N_f<N_c\).]
+The ADS superpotential is generated.  With no tree-level mass terms there is
+no supersymmetric vacuum at finite meson expectation value; the potential has
+a runaway direction on the maximal-rank meson patch.
+\item[\(N_f=N_c\).]
+There is no generated superpotential, but the chiral coordinate ring is
+quantum modified:
+\[
+  \det M-B\widetilde B=\Lambda_h^{2N_c}.
+\]
+\item[\(N_f=N_c+1\).]
+The infrared chiral description is confining in terms of mesons and baryons.
+If \(B_i\) and \(\widetilde B^j\) denote the baryons with one flavor index
+left over, the exact superpotential is
+\[
+  W_{\mathrm{conf}}
+  =
+  \frac{1}{\Lambda_h^{2N_c-1}}
+  \left(B_iM^i{}_j\widetilde B^j-\det M\right).
+  \label{eq:sqcd-sconfining-superpotential}
+\]
+\item[\(N_c+2\leq N_f<\frac32N_c\).]
+The magnetic gauge group \(SU(N_f-N_c)\) is infrared free, since its
+one-loop coefficient is
+\[
+  b_{0,\mathrm{mag}}
+  =
+  3(N_f-N_c)-N_f
+  =
+  2N_f-3N_c<0 .
+\]
+The appropriate low-energy variables are the magnetic quarks, magnetic
+gluons, and meson singlets.
+\item[\(\frac32N_c<N_f<3N_c\).]
+Both electric and magnetic variables are asymptotically free and flow, under
+the quoted duality input, to the same interacting nonabelian Coulomb-phase
+SCFT.  The lower endpoint is detected by the electric meson unitarity bound,
+and the upper endpoint by the electric loss of asymptotic freedom.
+\item[\(N_f\geq3N_c\).]
+The electric variables are in the free electric phase.  For
+\(N_f>3N_c\) the electric gauge coupling is infrared free in the usual
+perturbative sense; at \(N_f=3N_c\) the interacting Banks--Zaks fixed point
+has collided with the Gaussian endpoint in this ledger.
+\end{description}
+\end{quotedtheorem}
+
+\begin{proposition}[Checks on the \(N_f=N_c+1\) confining superpotential]
+\label{prop:sqcd-sconfining-superpotential-checks}
+For \(N_f=N_c+1\), the two terms in
+\eqref{eq:sqcd-sconfining-superpotential} have the same engineering
+dimension and \(R\)-charge, and the prefactor makes
+\(W_{\mathrm{conf}}\) a dimension-three, \(R\)-charge-two chiral
+superpotential.
+\end{proposition}
+
+\begin{proof}
+At \(N_f=N_c+1\),
+\[
+  R(Q)=R(\widetilde Q)=\frac1{N_c+1}.
+\]
+Thus
+\[
+  R(M)=\frac2{N_c+1},\qquad
+  R(B_i)=R(\widetilde B^j)=\frac{N_c}{N_c+1}.
+\]
+The product \(B_iM^i{}_j\widetilde B^j\) has \(R\)-charge
+\[
+  \frac{N_c}{N_c+1}+\frac2{N_c+1}
+  +\frac{N_c}{N_c+1}
+  =
+  2 ,
+\]
+and \(\det M\), where the determinant is over the \(N_f=N_c+1\) flavor
+indices, has \(R\)-charge
+\[
+  (N_c+1)\frac2{N_c+1}=2 .
+\]
+Classically, \(\dim M=2\) and \(\dim B_i=\dim\widetilde B^j=N_c\).
+Both \(B_iM^i{}_j\widetilde B^j\) and \(\det M\) therefore have dimension
+\[
+  2N_c+2=2(N_c+1).
+\]
+Since \(\Lambda_h^{2N_c-1}\) has dimension \(2N_c-1\) and zero
+\(R\)-charge in the anomaly-free spurion convention, the quotient has
+dimension \(3\) and \(R\)-charge \(2\), as required.
+\end{proof}
+
 \section{Klebanov--Witten Conifold SCFT}
 \label{sec:n1-klebanov-witten-conifold}
 

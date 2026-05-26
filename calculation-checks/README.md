@@ -350,6 +350,15 @@ Current checks:
   coefficients, Seiberg-dual magnetic rank, magnetic meson quadratic-form
   integration, Euclidean cascade step count, and
   \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
+- `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
+  four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
+  including Seiberg-dual rank involution, baryon-charge matching, electric
+  and magnetic NSVZ numerator cancellation in the monograph \(\gamma\)
+  convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
+  superpotential dimension and \(R\)-charge, full electric-magnetic
+  't Hooft anomaly matching, \(N_f=N_c+1\) confining-superpotential
+  dimension/\(R\)-charge checks, and the conformal-window/free-phase
+  inequalities.
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
