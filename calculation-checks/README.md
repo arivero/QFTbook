@@ -134,6 +134,11 @@ Current checks:
   Dirac pairing, bilinearity and nondegeneracy, \(SU(N)/\mathbb Z_k\)
   Wilson-charge descent, magnetic cocharacter enlargement, and maximal
   isotropy of \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\).
+- `sw_su2_periods.py`: numerical and exact checks for the pure \(SU(2)\)
+  Seiberg--Witten period section, including Picard--Lefschetz monodromy
+  matrices, the Picard--Fuchs equation, the electric large-\(u\) asymptotic,
+  logarithmic dual-period growth, and linear monopole-period vanishing at
+  \(u=\Lambda^2\).
 - `thooft_line_local_model_checks.py`: finite checks for the Volume IX
   't Hooft-line local model, including the northern/southern Dirac-monopole
   patch difference, flux normalization, integer Dirac phase, finite linking

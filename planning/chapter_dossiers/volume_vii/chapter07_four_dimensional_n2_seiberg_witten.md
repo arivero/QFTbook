@@ -21,6 +21,11 @@ Wilsonian dynamics are available for later use.
   and symplectic cycle basis.
 - `M_{Lambda^2}`, `M_{-Lambda^2}`, `M_infty`: monodromy matrices in the
   pure gauge-algebra `su(2)` example.
+- `M_gamma`: Picard-Lefschetz monodromy associated to a massless
+  hypermultiplet of charge `gamma=(n_m,n_e)`.
+- `a_D^(m)`: local dual period branch that vanishes at the monopole point.
+- `c_-`: nonzero local slope of the dyonic vanishing period at
+  `u=-Lambda^2`.
 
 ## Claim Ledger
 
@@ -30,10 +35,33 @@ Wilsonian dynamics are available for later use.
   and the BPS central charge.
 - Proves local existence of the prepotential from symmetry of the period
   coupling.
-- Presents the pure `su(2)` curve, period asymptotics, singular fibers, and
-  Picard-Lefschetz monodromy interpretation.
+- Derives the weak-coupling monodromy at infinity from the one-loop
+  prepotential and the Weyl action `a -> -a`.
+- Derives the finite monodromies from Picard-Lefschetz transformations for
+  charges `(1,0)` and `(1,-1)`, and checks their product gives
+  `M_infty`.
+- Derives the pure `su(2)` curve
+  `y^2=(x^2-Lambda^4)(x-u)` from the two finite singularities, the residual
+  `u -> -u` action, nodal-fiber monodromy, and the weak-coupling cusp.
+- Displays hypergeometric representatives for the electric period and the
+  monopole-vanishing dual period, and states the Picard-Fuchs equation
+  `(u^2-Lambda^4) Pi'' + Pi/4 = 0`.
+- Computes the monopole mass near `u=Lambda^2`:
+  `M_(1,0)=|u-Lambda^2|/(sqrt(2)|Lambda|)+O(|u-Lambda^2|^2)`.
+- Identifies the dyonic vanishing central charge `a_D-a` at `u=-Lambda^2`
+  and records its linear mass behavior.
+- States the weak-coupling BPS tower `(1,n)`, the vector multiplet `(0,1)`,
+  the strong-coupling chamber with only `(1,0)` and `(1,-1)` hypermultiplets,
+  and the marginal-stability wall condition.
 - Records the theorem boundary for turning Seiberg-Witten dynamics into a
   nonperturbative construction of four-dimensional supersymmetric QFT.
+
+## Calculation Checks
+
+- `calculation-checks/sw_su2_periods.py` verifies the monodromy matrices, the
+  finite-monodromy product, the Picard-Fuchs equation for the displayed
+  hypergeometric periods, the large-\(u\) asymptotic of \(a(u)\), logarithmic
+  growth of \(a_D(u)\), and linear vanishing of \(a_D\) at the monopole point.
 
 ## Figure Ledger
 

@@ -98,59 +98,248 @@ coordinate is
 \[
   u=\left\langle \operatorname{tr}\phi^2\right\rangle .
 \]
-A convenient period datum is the genus-one curve
+The Weyl group identifies \(a\sim -a\), and the large-field relation is
 \[
-  \Sigma_u:\qquad
-  y^2=(x^2-\Lambda^4)(x-u),
-\]
-together with a differential \(\lambda_{\mathrm{SW}}\) normalized by
-\[
-  a(u)\sim \sqrt{2u},\qquad
-  a_D(u)\sim \frac{\ii}{\pi}a(u)\log\!\frac{a(u)^2}{\Lambda^2}
-  \quad (|u|\to\infty)
-\]
-in the semiclassical region.  The branch points collide at
-\[
-  u=\Lambda^2,\qquad u=-\Lambda^2,
-\]
-and a one-cycle on \(\Sigma_u\) vanishes at each collision.  The corresponding
-BPS particle becomes massless because its central charge is the period over
-the vanishing cycle.
-
-\section{Monodromy And Light Charges}
-
-Use the column vector \(\Pi=(a_D,a)^T\).  With the conventional ordering of
-paths around the singularities, the monodromies may be chosen as
-\[
-  M_{\Lambda^2}=
-  \begin{pmatrix}
-  1&0\\
-  -2&1
-  \end{pmatrix},
+  u=\frac12a^2+O(\Lambda^4/a^2),
   \qquad
-  M_{-\Lambda^2}=
-  \begin{pmatrix}
-  -1&2\\
-  -2&3
-  \end{pmatrix},
+  a(u)\sim\sqrt{2u}.
+  \label{eq:sw-large-u-a-u}
 \]
-and their product gives the monodromy at infinity
+The perturbative Wilsonian prepotential in the pure theory has the one-loop
+form
+\begin{equation}
+  \mathcal F_{\rm pert}(a)
+  =
+  \frac{\ii}{2\pi}a^2
+  \log\frac{a^2}{\Lambda^2}
+  +
+  \hbox{terms polynomial in }a .
+  \label{eq:sw-perturbative-prepotential}
+\end{equation}
+The polynomial terms change \(a_D\) by an integral affine electric
+redefinition and do not change the monodromy class.  Thus
 \[
-  M_\infty=
+  a_D=\frac{\partial\mathcal F}{\partial a}
+  =
+  \frac{\ii}{\pi}a
+  \log\frac{a^2}{\Lambda^2}
+  +O(a).
+  \label{eq:sw-large-u-ad}
+\]
+When \(u\) circles infinity once counterclockwise, the square root in
+\eqref{eq:sw-large-u-a-u} gives \(a\mapsto -a\), while the logarithm in
+\eqref{eq:sw-large-u-ad} shifts by \(2\pi\ii\).  Therefore the period vector
+\(\Pi=(a_D,a)^T\) has monodromy
+\begin{equation}
+  M_\infty
+  =
   \begin{pmatrix}
   -1&2\\
   0&-1
   \end{pmatrix}.
-\]
-The first singularity is described by a magnetic hypermultiplet of charge
-\((n_m,n_e)=(1,0)\).  The second is described by a dyonic hypermultiplet, with
-charge convention determined by the displayed monodromy matrices.  The
-Picard-Lefschetz formula explains these matrices: transporting a cycle
-\(\delta\) around a node sends a cycle \(\alpha\) to
+  \label{eq:sw-infinity-monodromy-derived}
+\end{equation}
+
+The anomalous \(U(1)_R\) symmetry of the microscopic theory is reduced to
+\(\mathbb Z_8\).  A point on the Coulomb branch with coordinate \(u\) further
+breaks it to \(\mathbb Z_4\), leaving the quotient action \(u\mapsto -u\).
+Consequently finite singularities, if there are only two in the minimal
+period problem, occur at opposite values.  The scale \(\Lambda\) fixes their
+locations to \(u=\pm\Lambda^2\).  At a nodal singular fiber, a primitive
+charge \(\gamma=(n_m,n_e)\) becomes massless and the Picard-Lefschetz
+transformation of the period vector is
+\begin{equation}
+  M_\gamma
+  =
+  \begin{pmatrix}
+  1+2n_m n_e&2n_e^2\\
+  -2n_m^2&1-2n_m n_e
+  \end{pmatrix}.
+  \label{eq:sw-picard-lefschetz-charge-monodromy}
+\end{equation}
+The factor \(2\) is the hypermultiplet contribution in the charge convention
+where the central charge is \(Z_\gamma=n_ea+n_m a_D\).  Choosing the
+singularity at \(u=\Lambda^2\) to be a monopole point, \(\gamma_m=(1,0)\),
+gives
 \[
-  \alpha\longmapsto \alpha+(\alpha\circ\delta)\delta ,
+  M_{\Lambda^2}=M_{(1,0)}
+  =
+  \begin{pmatrix}
+  1&0\\
+  -2&1
+  \end{pmatrix}.
 \]
-where \(\circ\) is the oriented intersection pairing on \(H_1(\Sigma_u,\mathbb Z)\).
+The second finite monodromy is fixed by
+\[
+  M_{\Lambda^2}M_{-\Lambda^2}=M_\infty,
+\]
+hence
+\begin{equation}
+  M_{-\Lambda^2}
+  =
+  \begin{pmatrix}
+  -1&2\\
+  -2&3
+  \end{pmatrix}
+  =
+  M_{(1,-1)} .
+  \label{eq:sw-dyon-monodromy-derived}
+\end{equation}
+Thus the second singularity carries a massless dyon of charge
+\(\gamma_d=(1,-1)\) in this period basis.
+
+The elliptic curve must have a discriminant with precisely these two finite
+zeros and must reproduce the weak-coupling cusp at \(u=\infty\).  In a
+hyperelliptic genus-one coordinate \(x\), after rescaling \(x\) and \(u\), the
+minimal such family is
+\begin{equation}
+  \Sigma_u:\qquad
+  y^2=(x^2-\Lambda^4)(x-u).
+  \label{eq:sw-su2-curve-derived}
+\end{equation}
+Its branch points are
+\[
+  x=\Lambda^2,\qquad x=-\Lambda^2,\qquad x=u,\qquad x=\infty,
+\]
+and the finite discriminant is proportional to
+\[
+  \Delta(u)=u^2-\Lambda^4 .
+\]
+At \(u=\Lambda^2\) the branch points \(x=u\) and \(x=\Lambda^2\) collide; at
+\(u=-\Lambda^2\) the branch points \(x=u\) and \(x=-\Lambda^2\) collide.  The
+monodromies of the corresponding vanishing cycles are exactly
+\eqref{eq:sw-picard-lefschetz-charge-monodromy} with the charges above.  This
+derivation uses the following hypotheses: the rank-one Coulomb branch has
+only the two finite singularities required by the residual \(R\)-symmetry, the
+singular fibers are nodal hypermultiplet singularities, and the weak-coupling
+monodromy is exhausted by the perturbative vector multiplet.
+
+\section{Periods, Picard-Fuchs Equation, and BPS Masses}
+
+Choose the branch of the periods in the weak-coupling region
+\(|u|\gg|\Lambda|^2\) by
+\[
+  a(u)\sim\sqrt{2u}.
+\]
+With the curve \eqref{eq:sw-su2-curve-derived}, the periods obey the
+Picard-Fuchs equation
+\begin{equation}
+  (u^2-\Lambda^4)\frac{d^2\Pi}{du^2}
+  +
+  \frac14\Pi=0,
+  \qquad
+  \Pi\in\{a_D,a\}.
+  \label{eq:sw-picard-fuchs-equation}
+\end{equation}
+The solution normalized as the electric period at infinity can be written as
+\begin{equation}
+  a(u)
+  =
+  \sqrt{2(u+\Lambda^2)}\,
+  {}_2F_1
+  \left(
+    -\frac12,\frac12;1;
+    \frac{2\Lambda^2}{u+\Lambda^2}
+  \right),
+  \label{eq:sw-electric-period-hypergeometric}
+\end{equation}
+with the branch chosen by \eqref{eq:sw-large-u-a-u}.  A dual period that
+vanishes at the monopole point is
+\begin{equation}
+  a_D^{(m)}(u)
+  =
+  \frac{\ii}{2\Lambda}(u-\Lambda^2)
+  {}_2F_1
+  \left(
+    \frac12,\frac12;2;
+    \frac{\Lambda^2-u}{2\Lambda^2}
+  \right).
+  \label{eq:sw-monopole-period-hypergeometric}
+\end{equation}
+The superscript records the local branch near \(u=\Lambda^2\).  Analytic
+continuation of the pair
+\((a_D^{(m)},a)\) around the singularities gives the monodromy matrices above.
+Near the monopole point,
+\begin{equation}
+  a_D^{(m)}(u)
+  =
+  \frac{\ii}{2\Lambda}(u-\Lambda^2)
+  +O((u-\Lambda^2)^2).
+  \label{eq:sw-monopole-period-linear}
+\end{equation}
+The monopole central charge is \(Z_{(1,0)}=a_D\), hence
+\begin{equation}
+  M_{(1,0)}(u)
+  =
+  \sqrt2\,|a_D(u)|
+  =
+  \frac{|u-\Lambda^2|}{\sqrt2|\Lambda|}
+  +O(|u-\Lambda^2|^2).
+  \label{eq:sw-monopole-mass-near-singularity}
+\end{equation}
+At \(u=-\Lambda^2\), use the local period basis obtained by transporting to
+that singularity.  The vanishing central charge is
+\[
+  Z_{(1,-1)}=a_D-a,
+\]
+and the same nodal-fiber analysis gives
+\begin{equation}
+  a_D(u)-a(u)
+  =
+  c_-\,(u+\Lambda^2)
+  +
+  O((u+\Lambda^2)^2),
+  \qquad
+  c_-\neq0,
+  \label{eq:sw-dyon-period-linear}
+\end{equation}
+on the dyon branch.  Therefore
+\begin{equation}
+  M_{(1,-1)}(u)
+  =
+  \sqrt2\,|a_D(u)-a(u)|
+  =
+  \sqrt2\,|c_-|\,|u+\Lambda^2|
+  +O(|u+\Lambda^2|^2).
+  \label{eq:sw-dyon-mass-near-singularity}
+\end{equation}
+The phase and magnitude of \(c_-\) depend on the branch and symplectic basis;
+the linear vanishing and the charge \((1,-1)\) are invariant data of the
+singular fiber.
+
+\section{Monodromy And Light Charges}
+
+The weak-coupling region is the exterior of the curve of marginal stability
+on which \(a_D/a\) is real.  In the charge convention fixed above, the
+semiclassical BPS spectrum contains the vector multiplet with charge
+\((0,1)\) and a tower of hypermultiplets with charges
+\begin{equation}
+  (n_m,n_e)=(1,n),
+  \qquad
+  n\in\mathbb Z,
+  \label{eq:sw-weak-coupling-bps-tower}
+\end{equation}
+together with antiparticles.  The tower is generated by monodromy at infinity
+from either finite singular charge.  The central charges are
+\[
+  Z_{(0,1)}=a,
+  \qquad
+  Z_{(1,n)}=a_D+na .
+\]
+Inside the strong-coupling chamber bounded by the marginal-stability curve,
+the stable hypermultiplets are the two light states associated with the two
+singularities, with charges
+\[
+  (1,0),\qquad (1,-1),
+\]
+and their antiparticles.  The change in the BPS index occurs when
+\[
+  \arg Z_{\gamma_1}=\arg Z_{\gamma_2}
+\]
+for charges that can form or decay as a BPS bound state.  This is the
+wall-crossing mechanism in its rank-one Seiberg-Witten form: the central
+charge function is continuous, while the protected index of one-particle BPS
+states is locally constant only away from marginal-stability walls.
 
 \section{Low-Energy Abelian Theory Near A Singular Point}
 
