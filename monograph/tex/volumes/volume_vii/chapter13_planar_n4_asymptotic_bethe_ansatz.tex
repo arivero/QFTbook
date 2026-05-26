@@ -11,6 +11,55 @@ effects become important.  Its inputs are the residual centrally extended
 \(\mathfrak{su}(2|2)\oplus\mathfrak{su}(2|2)\) symmetry of the BMN vacuum,
 factorized magnon scattering, crossing, and analyticity.
 
+\section{Convention Ledger}
+
+The integrability literature uses several mutually inverse scalar-factor and
+Zhukovsky conventions.  This chapter follows the convention used in the
+stringbook integrability chapters, with the notational replacement
+\[
+  h_{\rm stringbook}=g_{\rm monograph}=\frac{\sqrt\lambda}{4\pi}.
+\]
+Thus
+\[
+  x^\pm+\frac1{x^\pm}
+  =
+  \frac{u\pm\ii/2}{g},
+  \qquad
+  \ee^{\ii p}=\frac{x^+}{x^-},
+\]
+and the physical weak-coupling branch has
+\[
+  x^\pm
+  =
+  \frac{\ee^{\pm\ii p/2}}{2g\sin(p/2)}+O(g).
+\]
+The one-magnon energy is written in the stringbook-compatible form
+\[
+  H
+  =
+  -1-2\ii g(x^+-x^-)
+  =
+  1+2\ii g\left(\frac1{x^+}-\frac1{x^-}\right).
+\]
+The equality of the two expressions is not an additional assumption: it is
+obtained by multiplying the defining \(x^\pm\) relation by \(2\ii g\).
+
+The scalar factor convention is also fixed here.  We write
+\(\sigma=\ee^{\ii\theta}\) and use the crossing equation in the same
+orientation as the stringbook:
+\[
+  \sigma_{12}\sigma_{\bar1 2}
+  =
+  \frac{x_2^+}{x_2^-}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}.
+\]
+Authors who put the rational scalar factor into the opposite part of the
+S-matrix, or define the two-body operator as \(S_{21}\) rather than \(S_{12}\),
+write the reciprocal of this expression.  The companion check script enforces
+the \(x^\pm\)-energy and sheet conventions used here; crossing itself remains
+a monodromy input rather than a finite algebraic identity.
+
 \section{BMN Vacuum and Central Extension}
 
 The vacuum spin-chain state is
@@ -117,7 +166,39 @@ elementary magnon.
 
 \section{Zhukovsky Variables}
 
-Introduce spectral parameters \(x^\pm\) by
+Introduce the Zhukovsky map \(x(u)\) by
+\begin{equation}
+  x(u)+\frac1{x(u)}=\frac ug .
+  \label{eq:planar-n4-zhukovsky-map}
+\end{equation}
+The physical branch is the solution satisfying \(x(u)\sim u/g\) as
+\(|u|\to\infty\).  Equivalently,
+\[
+  x_{\rm ph}(u)
+  =
+  \frac12\left(
+    \frac ug+\sqrt{\frac ug-2}\sqrt{\frac ug+2}
+  \right),
+\]
+with the square-root cuts chosen so that the only short cut on the physical
+sheet is \([-2g,2g]\).  Crossing this cut replaces \(x\) by \(1/x\).  More
+precisely, the two boundary values on the cut satisfy
+\[
+  x_{\rm above}(u)x_{\rm below}(u)=1,
+  \qquad -2g<u<2g .
+\]
+The large-\(u\) expansion on the physical sheet is
+\[
+  x_{\rm ph}(u)
+  =
+  \frac ug-\frac gu-\frac{g^3}{u^3}
+  -\frac{2g^5}{u^5}+O(u^{-7}).
+\]
+For a one-magnon state set
+\[
+  x^\pm=x(u\pm\ii/2).
+\]
+Then
 \begin{equation}
   \ee^{\ii p}=\frac{x^+}{x^-},
   \qquad
@@ -126,15 +207,17 @@ Introduce spectral parameters \(x^\pm\) by
 \end{equation}
 The physical region for real magnons is chosen so that
 \((x^+)^*=x^-\) and \(|x^\pm|>1\) at weak coupling.  The magnon energy is
-\[
+the sheet-dependent but single-valued physical-branch expression
+\begin{equation}
   H
   =
-  1+\ii g\left(
+  -1-2\ii g(x^+-x^-)
+  =
+  1+2\ii g\left(
     \frac1{x^+}-\frac1{x^-}
-  \right)
-  -
-  \ii g(x^+-x^-),
-\]
+  \right),
+  \label{eq:planar-n4-energy-xpm}
+\end{equation}
 with the same branch as \eqref{eq:planar-n4-magnon-dispersion}.  Conserved
 charges used in the dressing phase are
 \[
@@ -146,6 +229,54 @@ charges used in the dressing phase are
   \right],
   \qquad r\geq2 .
 \]
+
+\begin{lemma}[Zhukovsky form of the dispersion]
+\label{lem:planar-n4-zhukovsky-dispersion}
+Let \(x^\pm\) obey \eqref{eq:planar-n4-xpm-definition} on the physical sheet.
+Then \eqref{eq:planar-n4-energy-xpm} is equal to
+\[
+  \sqrt{1+16g^2\sin^2\frac p2}.
+\]
+\end{lemma}
+
+\begin{proof}
+For a physical real magnon write
+\[
+  x^\pm
+  =
+  \ee^{\pm\ii p/2}
+  \frac{1+\sqrt{1+16g^2\sin^2(p/2)}}
+       {4g\sin(p/2)} .
+\]
+This parametrization gives \(x^+/x^-=\ee^{\ii p}\).  Substituting it into the
+difference \(x^++1/x^+-x^- -1/x^-\) gives \(\ii/g\), so it is the physical
+solution of \eqref{eq:planar-n4-xpm-definition}.  The inverse difference is
+\[
+  \frac1{x^+}-\frac1{x^-}
+  =
+  \frac{\sqrt{1+16g^2\sin^2(p/2)}-1}{2\ii g}.
+\]
+Equation~\eqref{eq:planar-n4-energy-xpm} therefore reproduces
+\eqref{eq:planar-n4-magnon-dispersion}.  The equality extends to the
+physical sheet by analytic continuation away from the branch points.
+\end{proof}
+
+\begin{warning}[Sheet data in crossing]
+\label{warn:planar-n4-crossing-sheet-data}
+The formal replacement \(x^\pm\mapsto1/x^\pm\) is not a harmless algebraic
+substitution.  It records a path on the Zhukovsky surface.  Poles crossed by
+that path alter the scalar factor through the crossing equation, and the
+answer depends on whether the continuation crosses the short cut of \(x^+\),
+the short cut of \(x^-\), or the composed path used in the mirror theory.
+In the \(u\)-plane, the cuts of \(x^\pm=x(u\pm\ii/2)\) have endpoints
+\[
+  u=\pm2g-\ii/2,\qquad u=\pm2g+\ii/2 .
+\]
+The physical crossing path for one magnon winds around the appropriate pair
+of these branch points so that both \(x^+\) and \(x^-\) reach the crossed
+sheet.  Applying the path twice generally lands on a different sheet of the
+scalar factor even though the projected \(x^\pm\)-values have returned.
+\end{warning}
 
 \section{Two-Body S-Matrix}
 
@@ -204,14 +335,143 @@ the matrix part.  The dressing phase has the antisymmetric charge expansion
 \[
   \theta(x_1^\pm,x_2^\pm)
   =
+  -
   \sum_{r=2}^\infty\sum_{\substack{s>r\\ r+s\ {\rm odd}}}
   c_{r,s}(g)\,
   \bigl(q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm)\bigr).
 \]
+Equivalently, the BES phase may be packaged as
+\begin{equation}
+\begin{aligned}
+  \theta(x_1^\pm,x_2^\pm)
+  &=
+  \chi(x_1^+,x_2^+)-\chi(x_1^+,x_2^-)
+  -\chi(x_1^-,x_2^+)+\chi(x_1^-,x_2^-),\\
+  \chi(x,y)
+  &=
+  -\ii
+  \oint\frac{\dd z}{2\pi\ii}
+  \oint\frac{\dd w}{2\pi\ii}
+  \frac{1}{x-z}\frac{1}{y-w}
+  \log
+  \frac{\Gamma\!\left(1+\ii g(z+z^{-1}-w-w^{-1})\right)}
+       {\Gamma\!\left(1-\ii g(z+z^{-1}-w-w^{-1})\right)} .
+\end{aligned}
+  \label{eq:planar-n4-bes-chi-integral}
+\end{equation}
+The contours encircle the unit circle singularities of \(z\) and \(w\) in the
+domain where \(|x|>1\), \(|y|>1\).  Formula
+\eqref{eq:planar-n4-bes-chi-integral} is therefore not a global formula on
+all sheets by itself; outside that domain it is continued with the crossing
+prescription.
+
+Inside this domain the weak-coupling coefficients can be extracted without
+any sheet continuation.  Expand
+\begin{equation}
+  \chi(x,y)
+  =
+  \sum_{r=2}^{\infty}
+  \sum_{\substack{s>r\\ r+s\ {\rm odd}}}
+  \frac{c_{r,s}(g)}{(r-1)(s-1)}
+  \left(
+    \frac{1}{x^{r-1}y^{s-1}}
+    -
+    \frac{1}{x^{s-1}y^{r-1}}
+  \right).
+  \label{eq:planar-n4-chi-coefficient-expansion}
+\end{equation}
+The charge-expansion convention above uses the same \(c_{r,s}\); the two
+forms agree because \(q_r=\ii A_r/(r-1)\), where
+\(A_r=(x^+)^{1-r}-(x^-)^{1-r}\).
+
+\begin{proposition}[Weak coefficients from the DHM contour]
+\label{prop:planar-n4-dhm-weak-coefficients}
+For \(N=2m+1\geq3\), let \(R^{(N)}_{r,s}\) be the Laurent coefficient
+\[
+  R^{(N)}_{r,s}
+  =
+  [z^{-(r-1)}w^{-(s-1)}]
+  \bigl(z+z^{-1}-w-w^{-1}\bigr)^N .
+\]
+Then the contribution of order \(g^N\) to the coefficient \(c_{r,s}(g)\) in
+\eqref{eq:planar-n4-chi-coefficient-expansion} is
+\begin{equation}
+  c_{r,s}(g)\big|_{g^N}
+  =
+  \frac{2(-1)^{m+1}}{N}\,
+  (r-1)(s-1)R^{(N)}_{r,s}\,
+  \zeta(N)g^N .
+  \label{eq:planar-n4-dhm-residue-coefficient}
+\end{equation}
+In particular,
+\[
+  c_{2,3}(g)=4\zeta(3)g^3-40\zeta(5)g^5+O(g^7).
+\]
+The first dressing contribution to a weak-coupling anomalous dimension is
+nevertheless order \(g^6\), since \(q_2=O(g)\) and \(q_3=O(g^2)\) on the
+physical weak-coupling branch.
+\end{proposition}
+
+\begin{proof}
+For \(|x|,|y|>1\),
+\[
+  \frac{1}{x-z}\frac{1}{y-w}
+  =
+  \sum_{a,b\geq0}\frac{z^aw^b}{x^{a+1}y^{b+1}} .
+\]
+The logarithm in \eqref{eq:planar-n4-bes-chi-integral} has the Taylor
+expansion at small \(g\)
+\[
+  \log\frac{\Gamma(1+\eta)}{\Gamma(1-\eta)}
+  =
+  -2\gamma\eta
+  -
+  2\sum_{m=1}^{\infty}
+  \frac{\zeta(2m+1)}{2m+1}\eta^{2m+1},
+  \qquad
+  \eta=\ii g(z+z^{-1}-w-w^{-1}).
+\]
+The linear Euler-constant term is symmetric data that drops out of the
+antisymmetric coefficient family \(s>r\).  For \(N=2m+1\geq3\), multiplying by
+the outside factor \(-\ii\) gives
+\[
+  \frac{2(-1)^{m+1}\zeta(N)}{N}
+  g^N
+  \bigl(z+z^{-1}-w-w^{-1}\bigr)^N .
+\]
+The two contour integrals pick the coefficient of \(z^{-1}w^{-1}\).  Thus the
+coefficient of \(x^{1-r}y^{1-s}\) is the displayed constant times
+\(R^{(N)}_{r,s}\).  Comparing with
+\eqref{eq:planar-n4-chi-coefficient-expansion} proves
+\eqref{eq:planar-n4-dhm-residue-coefficient}.  For \(r=2,s=3\),
+\[
+  R^{(3)}_{2,3}=3,\qquad R^{(5)}_{2,3}=50,
+\]
+which gives \(4\zeta(3)g^3-40\zeta(5)g^5\).
+\end{proof}
+
+A saddle expansion of the same contour representation gives the AFS and
+Hernandez--Lopez strong-coupling terms.
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
+In the normalization where the rational matrix part is separated as above,
+Janik crossing has the convention-fixed form
+\begin{equation}
+  \sigma(\bar x_1^\pm,x_2^\pm)\sigma(x_1^\pm,x_2^\pm)
+  =
+  \frac{x_2^+}{x_2^-}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-} ,
+  \label{eq:planar-n4-crossing-scalar-factor}
+\end{equation}
+where \(\bar x_1^\pm\) denotes the crossed-sheet continuation of the first
+magnon, not merely a new independent pair of complex numbers.  The equation
+is best read as a monodromy statement for the scalar factor on the
+Zhukovsky rapidity surface.  The BES solution selects the minimal solution
+compatible with \eqref{eq:planar-n4-crossing-scalar-factor}, unitarity
+\(\sigma_{12}\sigma_{21}=1\), and the prescribed weak/strong asymptotics.
 
 \begin{definition}[Dressing-phase data and status]
 \label{def:planar-n4-dressing-phase-data}
@@ -222,12 +482,13 @@ correction, Janik crossing on the Zhukovsky surface, and the BES integral
 representation selecting the minimal crossing-symmetric solution.  Its weak
 series begins with
 \[
-  c_{2,3}(g)=4\zeta(3)g^6+O(g^8),
+  c_{2,3}(g)=4\zeta(3)g^3+O(g^5),
 \]
-so the first dressing contribution to Konishi enters at four loops.  This is
-an exact datum of the planar-integrability framework and a highly tested
-claim about gauge theory, not a theorem here derived from a constructive
-definition of four-dimensional \(\mathcal N=4\) SYM.
+and, because the weak charges contribute \(q_2q_3-q_3q_2=O(g^3)\), the first
+dressing contribution to Konishi enters at four loops.  This is an exact
+datum of the planar-integrability framework and a highly tested claim about
+gauge theory, not a theorem here derived from a constructive definition of
+four-dimensional \(\mathcal N=4\) SYM.
 \end{definition}
 
 \begin{quotedtheorem}[Asymptotic planar magnon S-matrix]
@@ -248,6 +509,26 @@ identification with the planar gauge-theory dilatation operator has extensive
 checks and strong structural constraints.
 
 \section{Asymptotic Bethe Equations}
+
+\begin{assumption}[Asymptotic Bethe--Yang regime]
+\label{ass:planar-n4-aba-regime}
+The all-loop asymptotic Bethe ansatz is used as a long-chain
+Bethe--Yang quantization rule for planar single traces.  More precisely, for
+a sequence of operators of length \(L\), with either fixed magnon number or a
+controlled large-\(L\) distribution of Bethe roots, one assumes:
+\[
+  L\to\infty,\qquad
+  \text{virtual propagation around the trace is suppressed,}
+\]
+and the many-magnon quantization is obtained by factorizing scattering into
+the two-body S-matrix of the preceding section.  This intended domain includes
+high-density configurations of roots in the \(L\to\infty\) limit.  The
+additional assumption is not thermodynamic Bethe ansatz; it is the
+asymptotic finite-volume quantization of the physical spin-chain problem.
+At finite \(L\), or at a loop order where the long-range dilatation operator
+can wrap around the trace, the omitted mirror-winding effects are no longer
+parametrically absent.
+\end{assumption}
 
 In the \(SU(2)\) scalar subsector, the all-loop asymptotic Bethe equations can
 be written
@@ -279,37 +560,369 @@ Chapter~\ref{ch:integrable-nested-bethe-ansatz-matrix-bethe-yang}; their
 physical meaning is different because these auxiliary roots organize
 polarizations of magnons on a gauge-theory trace.
 
-The first nesting step can be displayed without the full
+The first nesting step can be derived without the full
 \(\mathfrak{psu}(2,2|4)\) bookkeeping.  Start with \(M\) level-I magnons
 \(\phi_1(p_k)\).  A single level-II fermionic excitation with spectral
-parameter \(y\) has coefficients
+parameter \(y\) is a wave packet
+\[
+  \ket{\Psi_{\rm II}(y)}
+  =
+  \sum_{k=1}^M
+  C_k(y;\{p_j\})\,
+  \ket{\phi_1(p_1)\cdots\psi(p_k)\cdots\phi_1(p_M)} ,
+\]
+where the omitted flavour index of \(\psi\) is a spectator.  Write
+\(x_i^\pm=x^\pm(p_i)\) and let \(\mathsf a_i=\mathsf a(p_i)\) be the
+nonzero representation coefficient which converts a bosonic vacuum magnon
+to the chosen fermionic excitation in the spin-chain basis.  Normalize the
+two-body matrix part by the boson-boson amplitude \(A_{12}\).  In the
+stringbook orientation of the \(\mathfrak{su}(2|2)_{\rm c}\) intertwiner,
+the four mixed amplitudes needed for one fermionic defect obey
+\begin{equation}
+\begin{aligned}
+  \frac{G_{12}}{A_{12}}
+  &=
+  \frac{x_2^+-x_1^+}{x_2^+-x_1^-},
+  &
+  \frac{K_{12}}{A_{12}}
+  &=
+  \frac{\mathsf a_2}{\mathsf a_1}
+  \frac{x_1^+-x_1^-}{x_2^+-x_1^-},\\
+  \frac{L_{12}}{A_{12}}
+  &=
+  \frac{x_2^--x_1^-}{x_2^+-x_1^-},
+  &
+  \frac{H_{12}}{A_{12}}
+  &=
+  \frac{\mathsf a_1}{\mathsf a_2}
+  \frac{x_2^+-x_2^-}{x_2^+-x_1^-}.
+\end{aligned}
+  \label{eq:planar-n4-mixed-amplitude-ratios-for-nesting}
+\end{equation}
+These are ratios of matrix amplitudes, so the scalar dressing factor and
+reciprocal scalar-factor conventions cancel.
+
+\begin{proposition}[Single level-II nesting step]
+\label{prop:planar-n4-single-level-ii-nesting-step}
+Assume \(x_i^\pm\), \(\mathsf a_i\), and the denominators in
+\eqref{eq:planar-n4-mixed-amplitude-ratios-for-nesting} are nonzero.  The
+one-defect ansatz
 \[
   C_k(y;\{p_j\})
   =
-  f(y,p_k)\prod_{\ell<k}S^{{\rm II},{\rm I}}(y,p_\ell),
+  f(y,p_k)\prod_{\ell<k}S^{{\rm II},{\rm I}}(y,p_\ell)
+\]
+is compatible with every adjacent transposition of level-I magnons if
+\begin{equation}
+  f(y,p)=\frac{\mathsf a(p)}{y-x^+(p)},
   \qquad
   S^{{\rm II},{\rm I}}(y,p)
   =
-  \frac{y-x^-(p)}{y-x^+(p)}
+  \frac{y-x^-(p)}{y-x^+(p)} .
+  \label{eq:planar-n4-single-level-ii-data}
+\end{equation}
+The normalization of \(f\) may be multiplied by a function of \(y\) alone;
+this rescales the one-defect state and has no Bethe-equation content.
+\end{proposition}
+
+\begin{proof}
+It is enough to check a two-site exchange, because the many-site statement is
+then obtained by multiplying the same local move along the chain.  Let
+\[
+  f_i=f(y,p_i),
+  \qquad
+  S_i=S^{{\rm II},{\rm I}}(y,p_i).
 \]
-up to the square-root braiding factor of the string basis.  A level-III root
-\(w\) diagonalizes the remaining \(SU(2)\) matrix problem and scatters by
+Before exchanging magnons \(1\) and \(2\), the defect can sit on the first
+or second site with coefficients \(f_1\) and \(f_2S_1\).  After applying the
+matrix S-matrix to this two-site block, equality with the ansatz in the
+exchanged order gives the two coefficient equations
+\begin{equation}
+\begin{aligned}
+  f_1L_{12}+f_2S_1H_{12}
+  &=
+  S_2f_1A_{12},\\
+  f_1K_{12}+f_2S_1G_{12}
+  &=
+  f_2A_{12}.
+\end{aligned}
+  \label{eq:planar-n4-single-level-ii-local-equations}
+\end{equation}
+These equations are the algebraic content of moving a single auxiliary
+fermion through two neighbouring physical magnons.
+
+Substitute \eqref{eq:planar-n4-mixed-amplitude-ratios-for-nesting} and
+\eqref{eq:planar-n4-single-level-ii-data}.  The second equation in
+\eqref{eq:planar-n4-single-level-ii-local-equations} reduces, after
+clearing the common factor
+\(A_{12}\mathsf a_2/((y-x_1^+)(x_2^+-x_1^-))\), to
+\[
+  (x_1^+-x_1^-)(y-x_2^+)
+  +(x_2^+-x_1^+)(y-x_1^-)
+  =
+  (x_2^+-x_1^-)(y-x_1^+).
+\]
+The first equation reduces in the same way to
+\[
+  (x_2^--x_1^-)(y-x_2^+)
+  +(x_2^+-x_2^-)(y-x_1^-)
+  =
+  (x_2^+-x_1^-)(y-x_2^-).
+\]
+Both are polynomial identities in \(y\).  Therefore the local exchange is
+consistent, and repeated adjacent exchanges give the displayed coefficient
+formula for an arbitrary ordering of the level-I magnons.
+\end{proof}
+
+The square-root braiding factors of the string basis multiply
+\eqref{eq:planar-n4-single-level-ii-data} by convention-dependent one-body
+factors; they cancel from the local identities above after the corresponding
+basis change is applied to the mixed amplitudes.
+
+With two level-II fermions there is a genuine contact term: when the two
+auxiliary fermions occupy the same level-I site, the local state can turn
+into the boson \(\phi_2\) accompanied by the length-changing marker \(Z^+\).
+Let
+\[
+  v(y)=y+y^{-1}.
+\]
+In the spin-chain basis, the local two-defect calculation fixes the
+\(SU(2)\)-invariant level-II matrix
+\begin{equation}
+  (S^{{\rm II}})_{\alpha\beta}^{\delta\gamma}(y_1,y_2)
+  =
+  \delta_\alpha^\delta\delta_\beta^\gamma\,M(y_1,y_2)
+  +
+  \delta_\alpha^\gamma\delta_\beta^\delta\,N(y_1,y_2),
+  \label{eq:planar-n4-level-ii-mn-definition}
+\end{equation}
+with
+\begin{equation}
+  M+N=-1,
+  \qquad
+  M-N=
+  \frac{v(y_1)-v(y_2)-\ii/g}{v(y_1)-v(y_2)+\ii/g}.
+  \label{eq:planar-n4-level-ii-mn-eigenvalues}
+\end{equation}
+Equivalently,
+\[
+  M(y_1,y_2)=
+  -\,\frac{\ii/g}{v(y_1)-v(y_2)+\ii/g},
+  \qquad
+  N(y_1,y_2)=
+  -\,\frac{v(y_1)-v(y_2)}{v(y_1)-v(y_2)+\ii/g}.
+\]
+The accompanying same-site coefficient is
+\begin{equation}
+  \mathsf f^{(2)}(y_1,y_2;p)
+  =
+  \frac{g}{\mathsf a(p)^2}
+  \left(\frac{x^-(p)}{x^+(p)}-1\right)
+  \frac{y_1y_2-x^+(p)x^-(p)}{y_1y_2}
+  \frac{y_1-y_2}{v(y_1)-v(y_2)+\ii/g}.
+  \label{eq:planar-n4-level-ii-contact-coefficient}
+\end{equation}
+The sign \(M+N=-1\) is not a scalar scattering phase to be inserted into
+the level-III vacuum Bethe equation.  It is the ungraded matrix eigenvalue
+on the state with two identical level-II fermions; after the fermionic
+exchange sign is accounted for, the level-III vacuum scattering is trivial.
+This is the local sign convention behind the sentence that the
+\(\psi_1\)-vacuum has \(S^{{\rm II},{\rm II}}=1\).
+
+\begin{proposition}[Single level-III nesting step]
+\label{prop:planar-n4-single-level-iii-nesting-step}
+Assume \(g\neq0\), \(v(y_1)-v(y_2)+\ii/g\neq0\), and the denominators below
+are nonzero.  In the graded convention just described, a single level-III
+excitation with spectral parameter \(w\) has one-body coefficient
+\[
+  \gamma(w,y)=
+  \frac{w+\ii/(2g)}{w-v(y)+\ii/(2g)}
+\]
+and level-III/level-II scattering factor
+\begin{equation}
+  S^{{\rm III},{\rm II}}(w,y)
+  =
+  \frac{w-v(y)-\ii/(2g)}
+       {w-v(y)+\ii/(2g)}.
+  \label{eq:planar-n4-level-iii-level-ii-factor}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Put \(\eta=\ii/(2g)\), \(v_i=v(y_i)\), \(D=v_1-v_2\), and
+\(a_i=w-v_i\).  Then \(a_2=a_1+D\), and
+\eqref{eq:planar-n4-level-ii-mn-eigenvalues} is equivalent to
+\[
+  M=-\frac{2\eta}{D+2\eta},
+  \qquad
+  N=-\frac{D}{D+2\eta}.
+\]
+For an adjacent exchange of two level-II sites, the two independent
+coefficients must obey
+\begin{equation}
+\begin{aligned}
+  \gamma(w,y_1)M
+  +\gamma(w,y_2)S^{{\rm III},{\rm II}}(w,y_1)N
+  &=
+  -\gamma(w,y_2),\\
+  \gamma(w,y_1)N
+  +\gamma(w,y_2)S^{{\rm III},{\rm II}}(w,y_1)M
+  &=
+  -\gamma(w,y_1)S^{{\rm III},{\rm II}}(w,y_2).
+\end{aligned}
+  \label{eq:planar-n4-level-iii-local-equations}
+\end{equation}
+The minus signs are precisely the fermionic exchange signs which convert the
+ungraded \(M+N=-1\) vacuum eigenvalue into trivial graded vacuum scattering.
+
+Substituting \(\gamma(w,y_i)=(w+\eta)/(a_i+\eta)\) and
+\(S^{{\rm III},{\rm II}}(w,y_i)=(a_i-\eta)/(a_i+\eta)\), the first equation
+in \eqref{eq:planar-n4-level-iii-local-equations} reduces to
+\[
+  -2\eta(a_2+\eta)-D(a_1-\eta)
+  =
+  -(D+2\eta)(a_1+\eta).
+\]
+The second reduces to
+\[
+  -D(a_2+\eta)-2\eta(a_1-\eta)
+  =
+  -(D+2\eta)(a_2-\eta).
+\]
+Both identities follow immediately from \(a_2=a_1+D\).  Therefore the
+one-level-III ansatz is compatible with every adjacent level-II exchange.
+\end{proof}
+
+A pair of level-III roots scatters by
 \[
   S^{{\rm III},{\rm III}}(w_1,w_2)
   =
   \frac{w_1-w_2+\ii/g}{w_1-w_2-\ii/g}.
 \]
-Thus the nested Bethe equations are the diagonalization of a matrix-valued
-factorized scattering problem, not additional dynamical assumptions.
+
+\begin{proposition}[Single-copy nested Bethe--Yang equations]
+\label{prop:planar-n4-single-copy-nested-bethe-yang}
+In the spin-chain basis for one \(\mathfrak{su}(2|2)_{\rm c}\) copy, let
+\(K^{\rm I}\), \(K^{\rm II}\), and \(K^{\rm III}\) be the numbers of
+level-I momenta \(p_k\), level-II roots \(y_a\), and level-III roots \(w_b\).
+Assume the asymptotic long-chain regime and the absence of singular
+coincidences among the displayed factors.  The closed-chain periodicity
+conditions are
+\begin{equation}
+\begin{aligned}
+  \ee^{\ii p_kL}
+  &=
+  \prod_{\substack{j=1\\j\neq k}}^{K^{\rm I}}
+  S^{{\rm I},{\rm I}}(p_j,p_k)
+  \prod_{a=1}^{K^{\rm II}}
+  S^{{\rm II},{\rm I}}(y_a,p_k),
+  \qquad
+  k=1,\ldots,K^{\rm I},\\
+  1
+  &=
+  \prod_{j=1}^{K^{\rm I}}
+  S^{{\rm II},{\rm I}}(y_a,p_j)^{-1}
+  \prod_{b=1}^{K^{\rm III}}
+  S^{{\rm III},{\rm II}}(w_b,y_a),
+  \qquad
+  a=1,\ldots,K^{\rm II},\\
+  1
+  &=
+  \prod_{a=1}^{K^{\rm II}}
+  S^{{\rm III},{\rm II}}(w_b,y_a)^{-1}
+  \prod_{\substack{c=1\\c\neq b}}^{K^{\rm III}}
+  S^{{\rm III},{\rm III}}(w_c,w_b),
+  \qquad
+  b=1,\ldots,K^{\rm III}.
+\end{aligned}
+  \label{eq:planar-n4-single-copy-nested-bethe-yang}
+\end{equation}
+For a state with \(N_1,N_2,N_3,N_4\) excitations of types
+\(\phi_1,\phi_2,\psi_1,\psi_2\), the nesting numbers are
+\[
+  K^{\rm I}=N_1+N_2+N_3+N_4,\qquad
+  K^{\rm II}=2N_2+N_3+N_4,\qquad
+  K^{\rm III}=N_2+N_4.
+\]
+\end{proposition}
+
+\begin{proof}
+The first equation is obtained by transporting the \(k\)-th level-I magnon
+once around the trace.  It crosses every other physical magnon and every
+level-II defect, hence the two products in the first line.  The second
+equation transports the \(a\)-th level-II defect around the level-II chain.
+Crossing a physical magnon in the reverse direction contributes
+\(S^{{\rm II},{\rm I}}(y_a,p_j)^{-1}\), while crossing a level-III defect
+contributes \(S^{{\rm III},{\rm II}}(w_b,y_a)\).  The third equation is the
+same argument one nesting level higher.  The three equations are therefore
+the Bethe--Yang periodicity conditions for the three Zamolodchikov--Faddeev
+chains, not thermodynamic Bethe ansatz.  The formulas for
+\(K^{\rm I},K^{\rm II},K^{\rm III}\) follow from the nesting content of each
+letter: \(\phi_1\) contributes only level I, \(\psi_1\) contributes one
+level-II root, \(\psi_2\) contributes one level-II and one level-III root,
+and \(\phi_2\) is the two-level-II contact state carrying one level-III root.
+\end{proof}
+
+The dynamic spin-chain basis contains explicit \(Z^\pm\) markers.  In the
+string basis one absorbs half of this marker into each boson:
+\[
+  \ket{\phi_A(p)}_{\rm str}=\ket{\phi_A(p)(Z^+)^{1/2}},
+  \qquad
+  \ket{\psi_\alpha(p)}_{\rm str}=\ket{\psi_\alpha(p)} .
+\]
+The scattering factors which enter
+\eqref{eq:planar-n4-single-copy-nested-bethe-yang} are then replaced by
+\begin{equation}
+\begin{aligned}
+  S^{{\rm I},{\rm I}}_{\rm str}(p_1,p_2)
+  &=
+  S^{{\rm I},{\rm I}}(p_1,p_2)
+  \sqrt{\frac{x_1^+x_2^-}{x_1^-x_2^+}},\\
+  S^{{\rm II},{\rm I}}_{\rm str}(y,p)
+  &=
+  \frac{y-x^-(p)}{y-x^+(p)}
+  \sqrt{\frac{x^+(p)}{x^-(p)}},\\
+  S^{{\rm III},{\rm II}}_{\rm str}(w,y)
+  &=
+  S^{{\rm III},{\rm II}}(w,y),
+  \qquad
+  S^{{\rm III},{\rm III}}_{\rm str}(w_1,w_2)
+  =
+  S^{{\rm III},{\rm III}}(w_1,w_2).
+\end{aligned}
+  \label{eq:planar-n4-string-basis-nesting-factors}
+\end{equation}
+For the full \(\mathfrak{su}(2|2)_{\rm c}\otimes
+\mathfrak{su}(2|2)_{\rm c}\) magnon, the left and right copies have
+independent roots \(y_a^{(\varsigma)},w_b^{(\varsigma)}\),
+\(\varsigma=L,R\).  The physical level-I Bethe equation is obtained by
+multiplying the left and right auxiliary factors and by using the chosen
+physical vacuum scalar factor.  In the \(SU(2)\)-vacuum nesting, the
+auxiliary insertion on the \(k\)-th physical magnon is
+\[
+  \prod_{\varsigma=L,R}\prod_{a=1}^{K^{\rm II}_{(\varsigma)}}
+  \frac{y_a^{(\varsigma)}-x_k^-}{y_a^{(\varsigma)}-x_k^+}
+  \sqrt{\frac{x_k^+}{x_k^-}}.
+\]
+In the alternative \(SL(2)\)-vacuum nesting this factor is inverted:
+\[
+  \prod_{\varsigma=L,R}\prod_{a=1}^{K^{\rm II}_{(\varsigma)}}
+  \frac{y_a^{(\varsigma)}-x_k^+}{y_a^{(\varsigma)}-x_k^-}
+  \sqrt{\frac{x_k^-}{x_k^+}}.
+\]
+This reciprocal relation is a nesting-frame statement, not a change of the
+BES dressing phase.  Thus the nested Bethe equations are the
+diagonalization of a matrix-valued factorized scattering problem, not
+additional dynamical assumptions.
 
 \begin{controlledapproximation}[Asymptotic long-chain regime]
 \label{ca:planar-n4-asymptotic-regime}
-Equation~\eqref{eq:planar-n4-su2-aba} applies to the planar single-trace
-spectrum in the regime where the interaction range is shorter than the trace
-length \(L\).  At weak coupling, wrapping effects begin at the loop order at
-which planar interactions can close around the trace.  At finite coupling,
-the distinction is between the asymptotic Bethe-Yang problem and the
-finite-size problem solved by mirror TBA or the quantum spectral curve.
+Equation~\eqref{eq:planar-n4-su2-aba} is an instance of
+Assumption~\ref{ass:planar-n4-aba-regime}.  At weak coupling, wrapping
+effects begin at the loop order at which planar interactions can close around
+the trace.  At finite coupling, the distinction is between the asymptotic
+Bethe--Yang problem and the finite-size problem solved by mirror TBA or the
+quantum spectral curve.
 \end{controlledapproximation}
 
 \section{Weak-Coupling Reduction}
@@ -366,11 +979,90 @@ In the \(SL(2)\) sector, twist-\(L\) spin-\(S\) operators are
   \operatorname{tr}(D_+^{s_1}Z\cdots D_+^{s_L}Z),
   \qquad \sum_{j=1}^Ls_j=S .
 \]
-At one loop the large-\(S\) Bethe roots form a continuum density, and the
-resolvent computation gives
+The one-loop Bethe equations in this noncompact sector are
+\begin{equation}
+  \left(\frac{u_k+\ii/2}{u_k-\ii/2}\right)^L
+  =
+  \prod_{\substack{j=1\\j\neq k}}^S
+  \frac{u_k-u_j-\ii}{u_k-u_j+\ii},
+  \qquad k=1,\ldots,S,
+  \label{eq:planar-n4-sl2-one-loop-bethe}
+\end{equation}
+with cyclicity selecting zero total spin-chain momentum.  For the minimal
+large-spin trajectory the roots are real, symmetric under \(u\mapsto -u\),
+and have mode numbers \(\pm1\) in the logarithmic equation.  Write
 \[
-  \Delta-S-L=8g^2\log S+O(S^0,g^4).
+  u_k=S\bar u_k,
+  \qquad
+  \int_{-a}^a\bar\rho_0(\bar u)\,\dd\bar u=1,
 \]
+where \(\bar\rho_0\) is the continuum density of the scaled roots.  In the
+limit \(S\gg L\), the derivative of the continuum logarithmic equation is
+encoded by the resolvent
+\[
+  G_0(z)=\int_{-a}^a\frac{\bar\rho_0(v)}{z-v}\,\dd v,
+  \qquad
+  G_0(z)=\frac1z+O(z^{-2}).
+\]
+The discontinuity convention is
+\[
+  G_0(y+\ii0)-G_0(y-\ii0)=-2\pi\ii\,\bar\rho_0(y).
+\]
+After differentiating the continuum Bethe equation, the boundary values obey
+\[
+  G_0'(y+\ii0)+G_0'(y-\ii0)=4\pi\delta(y)
+  \qquad (-a<y<a).
+\]
+The unique solution with one symmetric cut and the displayed normalization is
+\begin{equation}
+  G_0(z)
+  =
+  -\ii
+  \log\frac{\sqrt{4z^2-1}+\ii}{\sqrt{4z^2-1}-\ii},
+  \qquad a=\frac12,
+  \label{eq:planar-n4-sl2-cusp-resolvent}
+\end{equation}
+where the square root is chosen so that \(\sqrt{4z^2-1}\sim2z\) at infinity.
+Its density is
+\begin{equation}
+  \bar\rho_0(y)
+  =
+  \frac1\pi
+  \log
+  \frac{1+\sqrt{1-4y^2}}{1-\sqrt{1-4y^2}},
+  \qquad |y|<\frac12 .
+  \label{eq:planar-n4-sl2-cusp-density}
+\end{equation}
+The one-loop anomalous dimension is
+\[
+  \gamma^{(1)}
+  =
+  2g^2\sum_{k=1}^S\frac{1}{u_k^2+1/4}.
+\]
+The singular region near \(u=0\) is resolved by evaluating the resolvent at
+\(z=\ii/(2S)\):
+\[
+  \gamma^{(1)}
+  =
+  -4g^2\,\operatorname{Im}G_0\!\left(\frac{\ii}{2S}\right)+O(S^0g^2).
+\]
+Using the continuation
+\[
+  G_0\!\left(\frac{\ii}{2S}\right)
+  =
+  -\ii
+  \log
+  \frac{\sqrt{1+S^{-2}}+1}{\sqrt{1+S^{-2}}-1},
+\]
+one obtains
+\begin{equation}
+  \Delta-S-L
+  =
+  \gamma^{(1)}
+  =
+  8g^2\log S+O(S^0g^2,g^4).
+  \label{eq:planar-n4-sl2-one-loop-cusp-log}
+\end{equation}
 With the all-loop ABA and the BES dressing phase, the density fluctuation
 satisfies the BES integral equation.  The resulting scaling function begins
 \[

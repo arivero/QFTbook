@@ -31,6 +31,7 @@ replacement for the QFT.
 - `tau`: cyclic shift on spin-chain sites.
 - `X,Z`: two complex scalars defining the `SU(2)` scalar sector.
 - `P_{j,j+1}`: adjacent spin permutation.
+- `I,P,K`: identity, permutation, and trace maps in the `SO(6)` scalar chain.
 - `H_XXX`: one-loop Heisenberg Hamiltonian.
 - `u_j,p_j`: Bethe rapidities and momenta.
 - `D_+`: lightlike covariant derivative in the `SL(2)` sector.
@@ -62,11 +63,20 @@ replacement for the QFT.
   representatives.
 - Adds a two-site scalar mixing proposition with color-locality and BPS
   protection fixing the identity term.
+- Adds the full one-loop `SO(6)` scalar density
+  `K+2I-2P` and proves its holomorphic `SU(2)` reduction.
 - States and derives the one-loop `SU(2)` Hamiltonian from nearest-neighbor
   planar mixing, BPS protection of the identity term, and the adjacent
   exchange coefficient.
-- Derives the coordinate Bethe ansatz, cyclicity condition, and energy formula
-  for the rational chain.
+- Derives the coordinate Bethe ansatz with the explicit two-magnon contact
+  equation, the chamber exchange coefficient
+  `(u_1-u_2-i)/(u_1-u_2+i)`, and the inverse Bethe-Yang phase entering the
+  closed-chain equations.  This fixes a convention-sensitive sign/inverse
+  distinction relative to the ordered wavefunction.
+- Derives the cyclic closed-chain quantization by comparing
+  `Psi(n_1,n_2)` with `Psi(n_2,n_1+L)` and then states the factorized
+  `M`-magnon equation using the finite XXX transfer-matrix theorem from the
+  integrability background chapter.
 - Carries the one-loop Konishi descendant calculation to
   `gamma_K^(1)=3 lambda/(4 pi^2)`.
 - Separates the asymptotic long-chain problem from finite-length wrapping.
@@ -88,6 +98,12 @@ single-trace word and the adjacent exchange interaction.
 - `calculation-checks/planar_n4_integrability_checks.py` verifies the
   one-magnon finite-difference spectrum and the displayed cyclic Konishi
   Bethe roots.
+- The same script verifies the two-magnon contact equation, the rapidity form
+  of the chamber exchange coefficient, the inverse relation between that
+  coefficient and the Bethe-Yang phase, and the finite length-four Konishi
+  two-magnon eigenvector/cyclicity condition.
+- The same script checks that the `SO(6)` trace operator vanishes on the
+  holomorphic `X,Z` subsector.
 - Same script now also checks BMN scaling and bound-state dispersion
   normalizations that depend on the chapter's coupling convention.
 

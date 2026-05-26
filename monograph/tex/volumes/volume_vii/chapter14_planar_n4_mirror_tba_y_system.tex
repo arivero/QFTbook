@@ -26,6 +26,46 @@ Since
 the mirror dispersion is not the same function of \(\widetilde p\) as the
 physical dispersion.  This is the first major difference from relativistic
 two-dimensional QFT, where the mirror transformation is a rapidity shift.
+
+\begin{proposition}[Mirror dispersion from double Wick rotation]
+\label{prop:planar-n4-mirror-dispersion}
+For a \(Q\)-magnon bound state with physical dispersion
+\[
+  E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2},
+\]
+the mirror dispersion obtained from
+\(\widetilde E=\ii p\), \(\widetilde p=\ii E_Q\) is
+\begin{equation}
+  \widetilde E_Q(\widetilde p)
+  =
+  2\,\operatorname{arsinh}
+  \left(
+    \frac{\sqrt{Q^2+\widetilde p^{\,2}}}{4g}
+  \right).
+  \label{eq:planar-n4-mirror-dispersion}
+\end{equation}
+The positive branch is chosen for real mirror momentum.
+\end{proposition}
+
+\begin{proof}
+Set \(p=-\ii\widetilde E\) and \(E_Q=-\ii\widetilde p\) in the physical
+dispersion relation.  Since
+\(\sin(-\ii\widetilde E/2)=-\ii\sinh(\widetilde E/2)\), one obtains
+\[
+  -\widetilde p^{\,2}
+  =
+  Q^2-16g^2\sinh^2\frac{\widetilde E}{2}.
+\]
+Thus
+\[
+  \sinh^2\frac{\widetilde E}{2}
+  =
+  \frac{Q^2+\widetilde p^{\,2}}{16g^2}.
+\]
+The mirror energy is positive on the real mirror line, which selects
+\eqref{eq:planar-n4-mirror-dispersion}.
+\end{proof}
+
 Equivalently one continues the Zhukovsky variables through a specified
 sequence of cuts.  On the physical sheet a real magnon has
 \((x^+)^*=x^-\) and \(|x^\pm|>1\).  A mirror particle of real mirror rapidity
@@ -34,6 +74,16 @@ choice of path is part of the definition of the mirror S-matrix: crossing a
 different cut changes the scalar dressing factor by the crossing equation.
 For this reason the mirror TBA below always includes the contour and sheet
 data together with the functional formulae.
+
+It is useful to keep the following sheet ledger explicit.  Let
+\(x^{[\pm Q]}(u)=x(u\pm\ii Q/2)\), with \(x(u)\) the physical Zhukovsky
+branch of Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.  Physical
+bound-state kinematics keeps both \(x^{[+Q]}\) and \(x^{[-Q]}\) on the
+outside sheet for real momentum.  Mirror kinematics continues one of the two
+variables through the short cut, so the pair has opposite inside/outside
+status.  The transfer matrix and the dressing factor must be continued along
+the same path.  A formula copied from the physical sheet but evaluated with
+the wrong inside/outside assignment gives the wrong wrapping sign.
 
 Bound states of \(Q\) physical magnons are described by pairs
 \[
@@ -48,7 +98,409 @@ obeying the bound-state shortening relation
 In the mirror region the branch is chosen so that the mirror energy
 \(\widetilde E_Q(u)\) is positive for real mirror rapidity \(u\).
 
+\begin{definition}[Mirror-kernel datum]
+\label{def:planar-n4-mirror-kernel-datum}
+A mirror kernel in this chapter means the triple
+\[
+  (S^{\rm mirror}_{BA}(v,u),\mathcal C_B,\mathcal C_A),
+\]
+where \(S^{\rm mirror}_{BA}\) is the analytically continued two-body
+scattering factor and \(\mathcal C_B,\mathcal C_A\) are the source and target
+rapidity contours on the chosen sheets.  The derivative kernel is then
+\[
+  K_{BA}(v,u)
+  =
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm mirror}_{BA}(v,u).
+  \]
+This convention packages the branch choice with the formula and prevents
+the common mistake of treating mirror TBA kernels as functions on a single
+unbranched \(u\)-plane.
+\end{definition}
+
+\section{Mirror Bethe-String Species}
+
+The mirror TBA is nested because a physical magnon carries two
+\(\mathfrak{su}(2|2)\) wings of polarization data.  The canonical node
+families are as follows.
+\[
+\begin{array}{c|c|c}
+\text{symbol} & \text{range} & \text{role}\\
+\hline
+\bullet_Q & Q=1,2,\ldots & \text{mirror bound states carrying energy}\\
+y_\pm & \text{two sheets} & \text{fermionic auxiliary roots}\\
+(v|M) & M=1,2,\ldots & \text{auxiliary strings in each wing}\\
+(w|M) & M=1,2,\ldots & \text{isotopic auxiliary strings in each wing}
+\end{array}
+\]
+Each wing has its own copy of the \(v\)- and \(w\)-string nodes.  The
+\(\bullet_Q\) nodes are the only nodes that enter the energy formula with the
+measure \(\dd\widetilde p_Q/\dd u\).  The auxiliary nodes enter through
+kernels and chemical potentials and enforce the nested Bethe constraints.
+
+The string hypothesis used here is a thermodynamic statement on the mirror
+Bethe roots: in a large mirror volume, complex roots organize into regular
+arrays whose centers become real variables \(u\).  In a relativistic model
+this statement is already subtle; in planar \(\mathcal N=4\) it is further
+entangled with the Zhukovsky cuts.  Consequently, the node table is part of
+the integrability construction, not a theorem about the original
+four-dimensional path integral.
+
+The node table above abbreviates arrays selected by the Bethe-Yang
+equations.  We now derive the auxiliary arrays from the large-volume
+pole-cancellation mechanism in one
+\(\mathfrak{su}(2|2)_{\rm c}\) wing.  Put
+\[
+  \eta=\frac{\ii}{2g},
+  \qquad
+  v(y)=y+\frac1y .
+\]
+Let \(x_j^\pm\), \(j=1,\ldots,K^{\rm I}\), be mirror level-I rapidity data
+on the real mirror line, so that
+\[
+  x_j^+=r_j\xi_j,\qquad x_j^-=r_j^{-1}\xi_j,
+  \qquad 0<r_j<1,\quad \lvert\xi_j\rvert=1 .
+\]
+The one-wing auxiliary Bethe-Yang subsystem in the stringbook mirror
+orientation has the form
+\begin{equation}
+\begin{aligned}
+  -1
+  &=
+  F(y_a)
+  \prod_{b=1}^{K^{\rm III}}
+  \frac{w_b-v(y_a)-\eta}{w_b-v(y_a)+\eta},
+  \qquad
+  F(y)=
+  \prod_{j=1}^{K^{\rm I}}
+  \frac{y-x_j^+}{y-x_j^-}
+  \sqrt{\frac{x_j^-}{x_j^+}},
+  \\
+  1
+  &=
+  \prod_{a=1}^{K^{\rm II}}
+  \frac{w_b-v(y_a)+\eta}{w_b-v(y_a)-\eta}
+  \prod_{\substack{c=1\\c\neq b}}^{K^{\rm III}}
+  \frac{w_c-w_b+2\eta}{w_c-w_b-2\eta}.
+\end{aligned}
+  \label{eq:planar-n4-mirror-auxiliary-bethe-yang}
+\end{equation}
+The sign in the first equation is the mirror fermion boundary-condition sign.
+It is not the graded sign in the physical nested ABA of
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.
+
+\begin{proposition}[Mirror auxiliary support and Bethe strings]
+\label{prop:planar-n4-mirror-auxiliary-strings}
+Assume the mirror Bethe-Yang equations
+\eqref{eq:planar-n4-mirror-auxiliary-bethe-yang}, the mirror sheet data
+above, and a thermodynamic limit in which the logarithmic averages of
+\(\log\lvert F(y)\rvert\) have the signs determined by the one-particle
+factor below.  Then elementary \(y\)-roots have finite density only on
+\(\lvert y\rvert=1\), elementary \(w\)-roots have finite density only on the
+real \(w\)-axis, and the non-elementary auxiliary complexes have the
+following pole-cancellation arrays:
+\[
+\begin{aligned}
+  v(y_{j,{\rm in}})&=v_0+(M+2-2j)\eta,
+  &
+  \lvert y_{j,{\rm in}}\rvert&<1,
+  \\
+  v(y_{j,{\rm out}})&=v_0-(M+2-2j)\eta,
+  &
+  \lvert y_{j,{\rm out}}\rvert&>1,
+  \\
+  w_j&=v_0+(M+1-2j)\eta,
+  &&
+  j=1,\ldots,M,
+\end{aligned}
+\]
+with real thermodynamic center \(v_0\).  These are the \((v|M)\), or
+\(M|yw\), strings.  The pure \((w|M)\) strings are
+\[
+  w_j=w_0+(M+1-2j)\eta,
+  \qquad j=1,\ldots,M,
+\]
+with real center \(w_0\).  The assertion is a statement about the mirror
+string hypothesis and the displayed large-volume equations; it is not a
+theorem of four-dimensional \(\mathcal N=4\) SYM.
+\end{proposition}
+
+\begin{proof}
+First isolate the source of exponential growth and decay.  For a single
+mirror level-I root write \(x^+=r\xi\), \(x^-=r^{-1}\xi\), with
+\(0<r<1\) and \(\lvert\xi\rvert=1\).  The magnitude of the one-particle
+factor
+\[
+  s(y;x^\pm)=\frac{y-x^+}{y-x^-}\sqrt{\frac{x^-}{x^+}}
+\]
+obeys
+\[
+  \lvert s(y;x^\pm)\rvert^2
+  =
+  \frac{\lvert y-r\xi\rvert^2}{\lvert ry-\xi\rvert^2},
+  \qquad
+  \lvert ry-\xi\rvert^2-\lvert y-r\xi\rvert^2
+  =
+  (1-r^2)(1-\lvert y\rvert^2).
+\]
+Thus \(\lvert s\rvert<1\) for \(\lvert y\rvert<1\), \(\lvert s\rvert=1\)
+for \(\lvert y\rvert=1\), and \(\lvert s\rvert>1\) for
+\(\lvert y\rvert>1\).  Multiplying over \(K^{\rm I}\) level-I roots gives
+the stated support of elementary \(y\)-roots in the thermodynamic limit,
+provided the level-I density has a nonzero logarithmic average.
+
+Now take a \(y\)-root with \(\lvert y_1\rvert<1\).  The factor \(F(y_1)\)
+then tends to zero exponentially, so the first equation in
+\eqref{eq:planar-n4-mirror-auxiliary-bethe-yang} can remain finite only if
+one of the \(w\)-factors has a pole:
+\[
+  w_1-v(y_1)+\eta=0,
+  \qquad\text{that is}\qquad
+  w_1=v(y_1)-\eta .
+\]
+The corresponding \(w_1\)-equation has a zero from the same \(y_1\).  The
+local cancellation recursion remains finite by acquiring a pole from a second
+\(y\)-root,
+\[
+  w_1-v(y_2)-\eta=0,
+  \qquad
+  v(y_2)=v(y_1)-2\eta.
+\]
+If this second root lies outside the unit circle, the divergence of
+\(F(y_2)\) is canceled by the zero of the same \(w_1\)-factor and the string
+closes.  If it lies inside, the same argument continues and creates the next
+\(w\)-root.  Iteration fixes the displayed imaginary spacings.  The real
+center is the thermodynamic string-hypothesis input: the mirror densities are
+assigned to real centers, while the roots in the complex plane are the
+regular arrays above those centers.
+
+The \(w\)-only strings are obtained by applying the same valuation argument to
+the second line of \eqref{eq:planar-n4-mirror-auxiliary-bethe-yang} when the
+background \(y\)-roots are on \(\lvert y\rvert=1\).  A finite elementary
+density is supported on real \(w\).  A complex \(w\)-root must be accompanied
+by neighbouring \(w\)-roots separated by \(2\eta=\ii/g\), which gives the
+array \(w_j=w_0+(M+1-2j)\eta\).
+\end{proof}
+
 \section{Thermodynamic Bethe Ansatz}
+
+The mirror TBA is a thermodynamic limit of Bethe-Yang quantization, not an
+independent postulate.  We first derive the one-species formula because it is
+the place where the signs, statistics, and kernel orientation are least
+forgiving.  The derivation is also the convention bridge to the stringbook:
+the continuum density equation naturally differentiates the scattering phase in
+the target rapidity, while the multi-species formula below is written with the
+source-derivative kernels of
+Definition~\ref{def:planar-n4-mirror-kernel-datum}.
+
+\begin{proposition}[One-species mirror TBA from Bethe-Yang quantization]
+\label{prop:one-species-mirror-tba-derivation}
+Consider a diagonal integrable mirror model with one particle species,
+real mirror rapidity \(u\), mirror momentum \(\widetilde p(u)\), mirror
+energy \(\widetilde\epsilon(u)\), and two-body scattering factor
+\(S(v,u)\).  Assume:
+\begin{enumerate}
+\item a logarithm of \(S(v,u)\) has been chosen with no self-scattering jump at
+  \(v=u\);
+\item the thermodynamic mode number \(n(u)\) is smooth and monotone on the
+  rapidity interval under consideration;
+\item the finite-volume Bethe levels have Fermi level statistics, so a level is
+  either occupied or empty;
+\item no additional Bethe-string species or bound-state poles cross the
+  integration contour in the ground-state calculation.
+\end{enumerate}
+Let \(\rho_{\rm p}\), \(\rho_{\rm L}\), and
+\(\rho_{\rm h}=\rho_{\rm L}-\rho_{\rm p}\) denote the particle, level, and hole
+densities with respect to \(u\).  Define the density kernel
+\begin{equation}
+  K^{\rm dens}(v,u)
+  =
+  \frac{1}{2\pi\ii}\partial_u\log S(v,u).
+  \label{eq:one-species-density-kernel}
+\end{equation}
+Then the thermodynamic limit of the Bethe-Yang equation gives
+\begin{equation}
+  \rho_{\rm L}(u)
+  =
+  \frac{\widetilde L}{2\pi}
+  \frac{\dd \widetilde p(u)}{\dd u}
+  -
+  \int\dd v\,\rho_{\rm p}(v)K^{\rm dens}(v,u).
+  \label{eq:one-species-density-equation}
+\end{equation}
+At inverse mirror temperature \(\widetilde\beta\) and mirror chemical potential
+\(\widetilde\mu\), extremizing
+\[
+  \mathfrak s
+  -
+  \widetilde\beta\int\dd u\,\rho_{\rm p}(u)\widetilde\epsilon(u)
+  -
+  \widetilde\mu\int\dd u\,\rho_{\rm p}(u)
+\]
+subject to \eqref{eq:one-species-density-equation}, where
+\[
+  \mathfrak s
+  =
+  \int\dd u\,
+  \left[
+    \rho_{\rm L}\log\rho_{\rm L}
+    -
+    \rho_{\rm p}\log\rho_{\rm p}
+    -
+    \rho_{\rm h}\log\rho_{\rm h}
+  \right],
+\]
+gives the pseudoenergy equation
+\begin{equation}
+  \zeta(u)
+  =
+  \widetilde\beta\,\widetilde\epsilon(u)
+  +
+  \widetilde\mu
+  +
+  \int\dd v\,K^{\rm dens}(u,v)\log(1+\ee^{-\zeta(v)}),
+  \qquad
+  \frac{\rho_{\rm p}(u)}{\rho_{\rm L}(u)}
+  =
+  \frac{1}{1+\ee^{\zeta(u)}} .
+  \label{eq:one-species-tba}
+\end{equation}
+At the stationary point,
+\begin{equation}
+  \log Z
+  =
+  \widetilde L
+  \int\frac{\dd u}{2\pi}\,
+  \frac{\dd \widetilde p(u)}{\dd u}
+  \log(1+\ee^{-\zeta(u)}).
+  \label{eq:one-species-log-z}
+\end{equation}
+After exchanging mirror space and Euclidean time, with
+\(\widetilde\beta=L\) and no chemical potential, this gives
+\begin{equation}
+  E_0(L)
+  =
+  -
+  \int\frac{\dd u}{2\pi}\,
+  \frac{\dd \widetilde p(u)}{\dd u}
+  \log(1+\ee^{-\zeta(u)}).
+  \label{eq:one-species-ground-state-energy}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For occupied rapidities \(u_k\), choose the logarithmic Bethe-Yang equation in
+the stringbook orientation
+\[
+  \widetilde p(u_k)\widetilde L
+  =
+  2\pi n_k
+  -
+  \ii\sum_{j\neq k}\log S(u_j,u_k).
+\]
+Replacing the sum by
+\(\int\dd v\,\rho_{\rm p}(v)\) and differentiating with respect to the target
+rapidity \(u\) gives
+\[
+  \widetilde L\,\widetilde p'(u)
+  =
+  2\pi\rho_{\rm L}(u)
+  +
+  2\pi\int\dd v\,\rho_{\rm p}(v)K^{\rm dens}(v,u),
+\]
+which is \eqref{eq:one-species-density-equation}.
+
+Now vary the entropy while preserving the density equation.  Since
+\(\rho_{\rm h}=\rho_{\rm L}-\rho_{\rm p}\),
+\[
+  \delta\mathfrak s
+  =
+  \int\dd u\,
+  \left[
+    \log\frac{\rho_{\rm L}}{\rho_{\rm h}}\delta\rho_{\rm L}
+    -
+    \log\frac{\rho_{\rm p}}{\rho_{\rm h}}\delta\rho_{\rm p}
+  \right].
+\]
+The constraint implies
+\[
+  \delta\rho_{\rm L}(u)
+  =
+  -
+  \int\dd v\,K^{\rm dens}(v,u)\delta\rho_{\rm p}(v).
+\]
+Collecting the coefficient of an arbitrary
+\(\delta\rho_{\rm p}(u)\) gives
+\[
+  \log\frac{\rho_{\rm h}(u)}{\rho_{\rm p}(u)}
+  =
+  \widetilde\beta\,\widetilde\epsilon(u)+\widetilde\mu
+  +
+  \int\dd v\,K^{\rm dens}(u,v)
+    \log\frac{\rho_{\rm L}(v)}{\rho_{\rm h}(v)} .
+\]
+With
+\(\zeta=\log(\rho_{\rm h}/\rho_{\rm p})\), one has
+\(\rho_{\rm p}/\rho_{\rm L}=1/(1+\ee^\zeta)\) and
+\(\rho_{\rm L}/\rho_{\rm h}=1+\ee^{-\zeta}\), proving
+\eqref{eq:one-species-tba}.
+
+It remains to evaluate the extremized functional.  Substitute the stationary
+equation into the expression for
+\(\mathfrak s-\widetilde\beta\widetilde E-\widetilde\mu\widetilde N\).  The
+terms proportional to \(\rho_{\rm p}\) cancel against the convolution term in
+the entropy variation, and the remaining density equation leaves
+\[
+  \log Z
+  =
+  \int\dd u\,\rho_{\rm L}(u)\log(1+\ee^{-\zeta(u)})
+  +
+  \int\dd u\dd v\,\rho_{\rm p}(v)K^{\rm dens}(v,u)
+       \log(1+\ee^{-\zeta(u)}),
+\]
+which reduces by \eqref{eq:one-species-density-equation} to
+\eqref{eq:one-species-log-z}.  The ground-state formula
+\eqref{eq:one-species-ground-state-energy} is the usual mirror
+space-time reinterpretation of \(\log Z=-\widetilde L E_0(L)\).
+\end{proof}
+
+The kernel sign in \eqref{eq:one-species-tba} is the stringbook convention.
+If the scattering factor obeys the diagonal unitarity relation
+\(S(v,u)S(u,v)=1\), then
+\[
+  K^{\rm dens}(u,v)
+  =
+  \frac{1}{2\pi\ii}\partial_v\log S(u,v)
+  =
+  -
+  \frac{1}{2\pi\ii}\partial_v\log S(v,u).
+\]
+Thus the source-derivative kernel \(K(v,u)\) of
+Definition~\ref{def:planar-n4-mirror-kernel-datum} enters the same TBA equation
+with a minus sign.  This is the convention used in
+\eqref{eq:planar-n4-mirror-tba-general}; the displayed chemical potential
+\(\mu_A\) there is the negative of \(\widetilde\mu_A\) in the one-species
+statistical-mechanical derivation.
+
+Excited states add one more honest hypothesis: the contour deformation must be
+specified.  In the one-species model, inserting moving defects at rapidities
+\(u_j\) changes the pseudoenergy to
+\[
+  \zeta(u)
+  =
+  \widetilde\beta\,\widetilde\epsilon(u)+\widetilde\mu
+  -
+  \sum_j\log S(u,u_j)
+  +
+  \int\dd v\,K^{\rm dens}(u,v)\log(1+\ee^{-\zeta(v)}),
+\]
+and the defect rapidities are fixed by
+\[
+  \zeta(u_j)=-2\pi\ii\left(n_j+\frac12\right),
+  \qquad n_j\in\mathbb Z.
+\]
+Equivalently \(1+\ee^{-\zeta}\) has a zero at each defect.  In the planar
+\(\mathcal N=4\) problem this condition becomes the exact Bethe-root
+regularity condition after analytic continuation to the physical sheet.
 
 Let \(A,B\) range over the mirror Bethe-string species: physical
 \(Q\)-particle bound states, auxiliary \(y\)-roots, and auxiliary \(w\)-string
@@ -102,6 +554,157 @@ finite-size wrapping correction from the thermal mirror bath.
 
 \section{Y-System}
 
+The passage from TBA integral equations to local Y-system relations is not a
+formal cancellation of symbols.  It uses a special inverse for the fused
+Bethe-string kernels and an analyticity strip in which
+\(\mathsf s^{-1}\) may be represented by shifts.  We spell out the
+auxiliary-wing case because it is the cleanest part of the planar
+\(\mathcal N=4\) construction and fixes the normalization used later by the
+T-hook notation.
+
+\begin{proposition}[Auxiliary-string kernel inverse]
+\label{prop:planar-n4-auxiliary-kernel-inverse}
+Let
+\[
+  (K*f)(u)=\int_{\mathbb R}\dd v\,K(u-v)f(v)
+\]
+and, for \(n\geq 1\),
+\begin{equation}
+  K_n(u-v)
+  =
+  \frac{1}{2\pi\ii}\partial_v
+  \log\frac{u-v+\ii n/2}{u-v-\ii n/2}
+  =
+  \frac{n/2}{\pi((u-v)^2+n^2/4)} .
+  \label{eq:planar-n4-rational-string-kernel}
+\end{equation}
+Set \(K_0=0\), and define the fused \(A_\infty\)-string kernel
+\[
+  K_{mn}
+  =
+  K_{m+n}+K_{\lvert m-n\rvert}
+  +
+  2\sum_{j=1}^{\min(m,n)-1}K_{\lvert m-n\rvert+2j},
+  \qquad m,n\geq 1,
+\]
+with \(A_{mn}=\delta_{mn}\delta+K_{mn}\).  Finally put
+\[
+  \mathsf s(u-v)=\frac{1}{2\cosh\pi(u-v)} .
+\]
+On the Fourier side, with
+\(\widehat f(\omega)=\int_{\mathbb R}\ee^{\ii\omega u}f(u)\,\dd u\) and
+\(q=\ee^{-|\omega|/2}\),
+\begin{equation}
+  \widehat K_n=q^n,\qquad
+  \widehat{\mathsf s}=\frac{q}{1+q^2},\qquad
+  \widehat A_{mn}
+  =
+  \frac{1+q^2}{1-q^2}\left(q^{|m-n|}-q^{m+n}\right).
+  \label{eq:planar-n4-a-kernel-fourier-symbol}
+\end{equation}
+Consequently
+\begin{equation}
+  (A^{-1})_{mn}
+  =
+  \delta_{mn}\delta
+  -
+  (\delta_{m+1,n}+\delta_{m-1,n})\mathsf s,
+  \qquad \delta_{0n}=0.
+  \label{eq:planar-n4-a-kernel-inverse}
+\end{equation}
+Equivalently,
+\begin{align}
+  \sum_{\ell\geq 1}(A^{-1})_{m\ell}*K_{\ell n}
+  &=
+  (\delta_{m+1,n}+\delta_{m-1,n})\mathsf s,
+  \label{eq:planar-n4-a-inverse-kmn}\\
+  \sum_{\ell\geq 1}(A^{-1})_{m\ell}*K_\ell
+  &=
+  \delta_{m1}\mathsf s .
+  \label{eq:planar-n4-a-inverse-kn}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The transform of \eqref{eq:planar-n4-rational-string-kernel} is the elementary
+Poisson-kernel identity \(\widehat K_n(\omega)=\ee^{-n|\omega|/2}\).  The
+displayed expression for \(\widehat A_{mn}\) follows by summing the finite
+geometric progression in the fused kernel.  In Fourier variables the asserted
+inverse is the tridiagonal matrix
+\[
+  \delta_{mn}
+  -
+  \frac{q}{1+q^2}(\delta_{m+1,n}+\delta_{m-1,n}).
+\]
+Multiplying it by the last expression in
+\eqref{eq:planar-n4-a-kernel-fourier-symbol} gives
+\[
+  \widehat A_{mn}
+  -
+  \widehat{\mathsf s}\,
+  (\widehat A_{m+1,n}+\widehat A_{m-1,n})
+  =
+  \delta_{mn},
+  \qquad \widehat A_{0n}=0.
+\]
+For \(m\neq n\) the two geometric tails cancel.  For \(m=n\) the remaining
+jump is one.  Equations \eqref{eq:planar-n4-a-inverse-kmn} and
+\eqref{eq:planar-n4-a-inverse-kn} follow by subtracting the identity kernel
+from \(A\) and by applying the same calculation to the one-index kernel
+\(\widehat K_n=q^n\).
+\end{proof}
+
+\begin{proposition}[One auxiliary wing of the Y-system]
+\label{prop:planar-n4-auxiliary-wing-y-system}
+Fix one \(\mathfrak{su}(2|2)\) wing.  Let \(Y_n^\circ\) denote the \(n|w\)
+string Y-functions, and let \(Y^\oplus,Y^\ominus\) denote the two \(y\)-sheet
+Y-functions in the stringbook orientation.  Suppose the \(n|w\) part of the
+mirror TBA can be written as
+\begin{equation}
+  \sum_{m\geq 1}A_{nm}*\log Y_m^\circ
+  =
+  \sum_{m\geq 1}K_{nm}*\log(1+Y_m^\circ)
+  +
+  K_n*\log\frac{1+1/Y^\oplus}{1+1/Y^\ominus},
+  \label{eq:planar-n4-wing-tba-a-form}
+\end{equation}
+with \(Y_0^\circ=0\).  Assume all functions appearing after convolution by
+\(\mathsf s\) are analytic in the strip \(|\operatorname{Im}u|<1/2\), decay
+enough at infinity, and have no pole crossed by the shifts
+\(u\mapsto u\pm\ii/2\).  Then
+\begin{equation}
+  \frac{(Y_n^\circ)^+(Y_n^\circ)^-}
+       {(1+Y_{n+1}^\circ)(1+Y_{n-1}^\circ)}
+  =
+  \left(
+    \frac{1+1/Y^\oplus}{1+1/Y^\ominus}
+  \right)^{\delta_{n1}},
+  \qquad n\geq 1.
+  \label{eq:planar-n4-wing-y-system}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Apply \(A^{-1}\) to \eqref{eq:planar-n4-wing-tba-a-form}.  Using
+\eqref{eq:planar-n4-a-inverse-kmn} and \eqref{eq:planar-n4-a-inverse-kn}
+gives
+\[
+  \log Y_n^\circ
+  =
+  \mathsf s*\log(1+Y_{n+1}^\circ)
+  +
+  \mathsf s*\log(1+Y_{n-1}^\circ)
+  +
+  \delta_{n1}\mathsf s*
+  \log\frac{1+1/Y^\oplus}{1+1/Y^\ominus}.
+\]
+For functions analytic in the stated strip,
+\(\mathsf s^{-1}*f=f^+ + f^-\).  Applying this inverse and exponentiating gives
+\eqref{eq:planar-n4-wing-y-system}.  If a pole or branch cut crosses during
+the shift, the right-hand side acquires extra source terms; this is precisely
+why the analytic data below are part of the finite-volume spectral problem.
+\end{proof}
+
 The TBA equations imply functional relations among Y-functions after applying
 kernel identities and shifting the spectral parameter.  On the interior of
 the planar \(\mathcal N=4\) T-hook, the relation has the form
@@ -150,6 +753,40 @@ definition of the theory discards the information that distinguishes physical
 states.
 \end{warning}
 
+\section{Analytic Y-System Data}
+
+The analytic Y-system supplements \eqref{eq:planar-n4-y-system} by specifying
+where each shifted function is meromorphic and which discontinuities occur
+when a shift crosses a cut.  A compact way to state the data is to introduce
+the shifted notation
+\[
+  f^{[n]}(u)=f(u+\ii n/2)
+\]
+and to assign to every T-hook node \((a,s)\) a strip
+\[
+  \mathcal A_{a,s}
+  =
+  \{u\in\C:\ |\operatorname{Im}u|<\alpha_{a,s}/2\}
+  \setminus\{\text{short Zhukovsky cuts and state poles}\}.
+\]
+The integers \(\alpha_{a,s}\) are fixed by the T-hook position and by the
+chosen analytic gauge for \(T_{a,s}\).  Inside \(\mathcal A_{a,s}\), the
+functions \(Y_{a,s}\) are meromorphic; on the boundary of the strip the
+discontinuity is inherited from the mirror dressing phase and from Bethe-root
+zeros.  The exact Bethe equations are then regularity conditions:
+\[
+  1+Y_{\bullet_1}^{\rm phys}(u_j)=0
+\]
+removes would-be singularities at the physical roots after the contour
+deformation.
+
+This formulation is deliberately more verbose than the symbolic Y-system.
+The shifts \(u\mapsto u\pm\ii/2\) can move a point from the physical sheet to
+the mirror sheet, and the operations ``shift'' and ``continue through a cut''
+do not commute without recording the path.  In practical TBA calculations
+this information is encoded in the integration contours, source terms, and
+driving terms for the excited state.
+
 \section{Konishi as the First Wrapping Test}
 
 The Konishi multiplet contains an \(SL(2)\) descendant represented by a
@@ -177,8 +814,8 @@ construction of the finite-size correction: every input is an S-matrix kernel,
 a contour, a chemical potential, or a Bethe-root condition.
 
 At weak coupling the leading finite-size effect is the Luescher or first
-wrapping correction.  For the \(SL(2)\) Konishi descendant one has \(K=2\)
-physical roots \(u_1=-u_2\) with
+wrapping correction.  The \(SL(2)\) Konishi descendant has \(K=2\) physical
+roots \(u_1=-u_2\) with
 \[
   u_1=\frac{1}{2\sqrt3}
   \bigl(1+8g^2-20g^4+(112+48\zeta(3))g^6+O(g^8)\bigr)
@@ -189,21 +826,224 @@ in the asymptotic equation.  The asymptotic energy gives
   =
   4+12g^2-48g^4+336g^6-(2820+288\zeta(3))g^8+O(g^{10}).
 \]
-The mirror correction at order \(g^8\) is
+
+\begin{assumption}[Leading Konishi mirror input]
+\label{ass:konishi-leading-mirror-input}
+The leading weak-coupling wrapping computation uses the following mirror-TBA
+data.
+First, the physical roots in all factors contributing at order \(g^8\) are
+the one-loop values
+\[
+  u_\ast=\frac{1}{2\sqrt3},\qquad u_1=u_\ast,\qquad u_2=-u_\ast .
+\]
+Second, the virtual particles are the mirror \(Q\)-particle bound states,
+\(Q\in\mathbb Z_{>0}\), in the antisymmetric \(SL(2)\)-type mirror sector.
+Third, for real mirror rapidity \(u\) the weak mirror branch is
+\[
+  x^{[Q]}(u)=\frac{g}{u+\ii Q/2}+O(g^3),\qquad
+  x^{[\ell]}(u)=\frac{u+\ii\ell/2}{g}+O(g),
+  \qquad -Q\leq \ell\leq Q-1.
+\]
+Fourth, the leading contribution of the dressing phase to the asymptotic
+mirror \(Y_Q\)-function starts beyond the displayed \(g^8\) coefficient.
+Finally, the excited-state contour deformation is the one for which
+\eqref{eq:planar-n4-excited-tba-energy} has no additional weak-coupling
+\(\mu\)-term for Konishi.
+\end{assumption}
+
+Under this assumption the asymptotic mirror density has the stringbook form
+\begin{equation}
+  Y_{\bullet_Q}(u)
+  =
+  g^8\,Y_Q^{(0)}(u)+O(g^{10}),
+  \label{eq:konishi-leading-yq}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+  Y_Q^{(0)}(u)
+  &=
+  \frac{
+    4Q^2\left(u^2-u_\ast^2+(Q^2-1)/4\right)^2
+  }{
+    \left(u^2+Q^2/4\right)^4
+  }
+\\
+  &\quad\times
+  \prod_{\varepsilon=\pm1}
+  \frac{1}{
+    \left((u-\varepsilon u_\ast)^2+(Q+1)^2/4\right)
+    \left((u-\varepsilon u_\ast)^2+(Q-1)^2/4\right)
+  } .
+\end{aligned}
+\label{eq:konishi-yq0}
+\end{equation}
+All symbols in \eqref{eq:konishi-yq0} are now fixed: \(Q\) is the positive
+integer mirror bound-state charge, \(u\in\mathbb R\) is the mirror rapidity,
+and \(g=\sqrt\lambda/(4\pi)\) is the coupling of
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.
+
+The mirror momentum measure is also a branch-sensitive datum.  In the same
+convention as the stringbook, the mirror \(Q\)-particle satisfies
+\[
+  \ii\widetilde p_Q(u)
+  =
+  -Q-2\ii g\bigl(x^{[Q]}(u)-x^{[-Q]}(u)\bigr).
+\]
+Substituting the weak mirror branch of
+Assumption~\ref{ass:konishi-leading-mirror-input} gives
+\[
+  \ii\widetilde p_Q(u)
+  =
+  -Q-2\ii g\left(
+    \frac{g}{u+\ii Q/2}
+    -\frac{u-\ii Q/2}{g}
+  \right)+O(g^2)
+  =
+  2\ii u+O(g^2),
+\]
+and therefore
+\begin{equation}
+  \frac{\dd\widetilde p_Q}{\dd u}=2+O(g^2).
+  \label{eq:konishi-leading-mirror-measure}
+\end{equation}
+This is the sign check that fixes the convention in the energy correction.
+
+\begin{proposition}[Leading Konishi wrapping integral]
+\label{prop:konishi-leading-wrapping-integral}
+Assume the mirror input of
+Assumption~\ref{ass:konishi-leading-mirror-input}.  Then the order \(g^8\)
+finite-size correction to the Konishi dimension is
 \[
   \Delta_{\rm K}^{\rm wrap}
   =
-  (324+864\zeta(3)-1440\zeta(5))g^8+O(g^{10}),
+  (324+864\zeta(3)-1440\zeta(5))g^8+O(g^{10}).
 \]
-so the physical four-loop coefficient is
+\end{proposition}
+
+\begin{proof}
+Since \(Y_{\bullet_Q}=O(g^8)\),
+\[
+  \log(1+Y_{\bullet_Q})=Y_{\bullet_Q}+O(g^{16}).
+\]
+The \(O(g^{10})\) uncertainty in
+\eqref{eq:konishi-leading-yq}, rather than the logarithm square, controls the
+next uncomputed term.  Combining \eqref{eq:planar-n4-excited-tba-energy},
+\eqref{eq:konishi-leading-yq}, and
+\eqref{eq:konishi-leading-mirror-measure} gives
+\[
+  \Delta_{\rm K}^{\rm wrap}
+  =
+  -g^8\sum_{Q=1}^\infty
+  \int_{\mathbb R}\frac{\dd u}{\pi}\,Y_Q^{(0)}(u)+O(g^{10}).
+\]
+Set \(q=2u\).  The coefficient of \(g^8\) becomes
+\[
+  \sum_{Q=1}^\infty I_Q,
+\]
+with
+\begin{equation}
+  I_Q
+  =
+  -\int_{-\infty}^{\infty}\frac{\dd q}{2\pi}\,
+  \frac{147456Q^2(3q^2+3Q^2-4)^2}
+       {(q^2+Q^2)^4 B_Q^-(q)B_Q^+(q)},
+  \label{eq:konishi-iq-integral}
+\end{equation}
+where
+\[
+\begin{aligned}
+  B_Q^-(q)
+  &=
+  9q^4+6(3(Q-2)Q+2)q^2+(3(Q-2)Q+4)^2,
+\\
+  B_Q^+(q)
+  &=
+  9q^4+6(3Q(Q+2)+2)q^2+(3Q(Q+2)+4)^2 .
+\end{aligned}
+\]
+For \(Q=1\) the apparent real zeros in \(B_1^-\) are removable because the
+same factor appears in the numerator.  After this cancellation the integrand
+has no pole on the real contour and decays as \(q^{-12}\).  Closing the
+contour in the upper half-plane therefore gives a finite residue
+calculation.  The poles are the fourth-order pole at \(q=\ii Q\), together
+with the simple poles at
+\[
+  q=\pm\frac1{\sqrt3}+\ii(Q-1),
+  \qquad
+  q=\pm\frac1{\sqrt3}+\ii(Q+1),
+\]
+omitting the removable \(Q=1\) real points.
+
+The residue sum gives
+\begin{equation}
+  I_Q=R_Q+\frac{864}{Q^3}-\frac{1440}{Q^5},
+  \label{eq:konishi-iq-summand}
+\end{equation}
+where
+\[
+  R_Q
+  =
+  -\frac{7776Q\,N(Q)}
+  {(9Q^4-3Q^2+1)^4(27Q^6-27Q^4+36Q^2+16)}
+\]
+and
+\[
+\begin{aligned}
+  N(Q)
+  &=
+  19683Q^{18}-78732Q^{16}+150903Q^{14}-134865Q^{12}
+  +1458Q^{10}
+\\
+  &\quad
+  +48357Q^8-13311Q^6-1053Q^4+369Q^2-10 .
+\end{aligned}
+\]
+The non-zeta part is not left as a numerical experiment: it telescopes.  Define
+\[
+  F_Q
+  =
+  -\frac{648P(Q)}
+  {(3Q^2+1)(3Q^2-6Q+4)(3Q^2-3Q+1)^4},
+\]
+with
+\[
+\begin{aligned}
+  P(Q)
+  &=
+  486Q^{10}-2430Q^9+5184Q^8-6156Q^7+4752Q^6
+  -2916Q^5
+\\
+  &\quad
+  +1521Q^4-504Q^3+51Q^2+12Q-2 .
+\end{aligned}
+\]
+A direct common-denominator calculation verifies
+\[
+  R_Q=F_Q-F_{Q+1}.
+\]
+Moreover \(F_1=324\) and \(F_Q\to0\) as \(Q\to\infty\).  Hence
+\[
+  \sum_{Q=1}^\infty R_Q=324.
+\]
+The remaining two sums in \eqref{eq:konishi-iq-summand} are absolutely
+convergent and give \(864\zeta(3)-1440\zeta(5)\).  This proves the displayed
+coefficient.
+\end{proof}
+
+Combining the asymptotic and wrapping pieces gives the physical four-loop
+coefficient
 \[
   -2496+576\zeta(3)-1440\zeta(5).
 \]
-The calculation depends on the mirror branch of the dressing factor and on
-the transfer matrix for mirror bound states.  The companion script
-\path{calculation-checks/planar_n4_integrability_checks.py} verifies the
-displayed coefficient arithmetic; it does not certify the analytic
-continuation of the full mirror integral.
+The companion script
+\path{calculation-checks/planar_n4_integrability_checks.py} now checks the
+stringbook \(u\)-integrand against the \(q=2u\) rational form, numerically
+integrates the first four real-line rational integrals, and verifies the
+exact telescoping identity for the rational tail.  The conceptual assumptions
+remain those isolated in
+Assumption~\ref{ass:konishi-leading-mirror-input}; the finite residue and
+summation algebra is not conjectural.
 
 \section{Relation to Relativistic Integrable QFT}
 
