@@ -134,6 +134,12 @@ Current checks:
   \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
   versus Veneziano quark-boundary counting, plus the displayed baryon Hartree
   pair-counting and fixed-spin rotor \(1/N_c\) scaling.
+- `lattice_reflection_positivity_checks.py`: finite character-expansion
+  checks for the Osterwalder-Seiler lattice reflection-positivity proof,
+  including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
+  plaquette coefficient formula
+  \(a_\ell=I_\ell-I_{\ell+2}=2(\ell+1)I_{\ell+1}/\beta\), and finite
+  \(SU(2)\) tensor-product character multiplicities.
 - `qcd_string_luscher_checks.py`: exact rational checks for the QCD-string
   effective-string section, including the open and closed transverse-scalar
   Casimir coefficients \(-1/24\) and \(-1/6\), the displayed

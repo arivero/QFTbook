@@ -423,6 +423,93 @@ For \(G=U(1)\), the same statement is the elementary Fourier expansion
 \]
 This formula is the abelian form of the same positive-type condition.
 
+\begin{proposition}[\(SU(2)\) Wilson character coefficients]
+\label{prop:su2-wilson-positive-character-coefficients}
+Let \(G=SU(2)\), and write every conjugacy class as
+\[
+  g(\theta)\sim
+  \begin{pmatrix}e^{\ii\theta}&0\\0&e^{-\ii\theta}\end{pmatrix},
+  \qquad 0\leq\theta\leq\pi .
+\]
+For the Wilson weight
+\[
+  w_W(\theta)=\exp(\beta\cos\theta),
+\]
+the character expansion
+\[
+  w_W(\theta)=\sum_{\ell=0}^{\infty}a_\ell(\beta)\,
+  \chi_\ell(\theta),
+  \qquad
+  \chi_\ell(\theta)=\frac{\sin((\ell+1)\theta)}{\sin\theta},
+\]
+has coefficients
+\begin{equation}
+  a_\ell(\beta)
+  =
+  I_\ell(\beta)-I_{\ell+2}(\beta)
+  =
+  \frac{2(\ell+1)}{\beta}I_{\ell+1}(\beta)>0
+  \qquad(\beta>0),
+  \label{eq:su2-wilson-positive-character-coefficient}
+\end{equation}
+with the limiting value at \(\beta=0\) understood as
+\(a_0(0)=1\), \(a_{\ell>0}(0)=0\).
+\end{proposition}
+
+\begin{proof}
+The irreducible \(SU(2)\) characters are indexed here by
+\(\ell=2j\in\mathbb Z_{\geq0}\), where \(j\) is the spin.  The class-function
+form of normalized Haar measure is
+\[
+  \dd\mu_{\rm class}(\theta)
+  =
+  \frac{2}{\pi}\sin^2\theta\,\dd\theta .
+\]
+Orthogonality gives
+\[
+  a_\ell(\beta)
+  =
+  \frac{2}{\pi}
+  \int_0^\pi
+  e^{\beta\cos\theta}
+  \sin\theta\,\sin((\ell+1)\theta)\,\dd\theta .
+  \label{eq:su2-character-coefficient-integral}
+\]
+Using
+\[
+  \sin\theta\,\sin((\ell+1)\theta)
+  =
+  \frac12\left(\cos(\ell\theta)-\cos((\ell+2)\theta)\right)
+\]
+and
+\[
+  I_n(\beta)=\frac1\pi\int_0^\pi e^{\beta\cos\theta}\cos(n\theta)\,\dd\theta
+  \qquad(n\geq0),
+\]
+we obtain \(a_\ell=I_\ell-I_{\ell+2}\).  The Bessel recurrence
+\[
+  I_\ell(\beta)-I_{\ell+2}(\beta)
+  =
+  \frac{2(\ell+1)}{\beta}I_{\ell+1}(\beta)
+\]
+follows by differentiating the Fourier series for \(e^{\beta\cos\theta}\)
+or, equivalently, from integration by parts in the defining integral.  Since
+\[
+  I_{\ell+1}(\beta)
+  =
+  \sum_{r=0}^{\infty}
+  \frac{(\beta/2)^{2r+\ell+1}}{r!(r+\ell+1)!}
+\]
+has strictly positive terms when \(\beta>0\), the coefficient
+\eqref{eq:su2-wilson-positive-character-coefficient} is strictly positive.
+\end{proof}
+
+\path{calculation-checks/lattice_reflection_positivity_checks.py} verifies
+the \(U(1)\) Bessel coefficients, the \(SU(2)\) coefficient identity
+\eqref{eq:su2-wilson-positive-character-coefficient}, and finite
+\(SU(2)\) tensor-product character multiplicities used in the proof of
+Corollary~\ref{cor:wilson-plaquette-reflection-positivity}.
+
 The proof also explains why reflection positivity is not an automatic
 consequence of gauge invariance.  Gauge fixing may destroy the product-Haar
 factorization used above.  Improved gauge actions must be tested loop by

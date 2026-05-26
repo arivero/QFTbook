@@ -24,6 +24,9 @@
   gauge fields.
 - Wilson plaquette reflection positivity for \(SU(N)\), \(U(N)\), and the
   \(U(1)\) Bessel/Fourier expansion.
+- Explicit \(SU(2)\) Wilson character coefficients
+  \(a_\ell=I_\ell-I_{\ell+2}=2(\ell+1)I_{\ell+1}/\beta>0\), derived from
+  Haar class-function orthogonality.
 - Improved-action caveat: negative rectangle coefficients fall outside the
   positive-character proof and require a separate positivity theorem.
 
@@ -46,6 +49,8 @@
 | \(w(g)\) | one-plaquette class-function weight |
 | \(\chi_\lambda\) | irreducible character of the compact gauge group |
 | \(c_\lambda\) | character-expansion coefficient of \(w\) |
+| \(I_n(\beta)\) | modified Bessel coefficient in the \(U(1)\) and \(SU(2)\) Wilson-weight expansions |
+| \(a_\ell(\beta)\) | \(SU(2)\) Wilson character coefficient for spin \(\ell/2\) |
 
 ## Claim Ledger
 
@@ -66,10 +71,21 @@
 7. The Wilson plaquette weight has nonnegative character coefficients
    because its exponential expansion decomposes tensor products of defining
    and conjugate defining representations with nonnegative multiplicities.
-8. Improved actions with negative crossing-loop coefficients, including
+8. In \(SU(2)\), the coefficient positivity is checked explicitly by Haar
+   orthogonality and the Bessel recurrence
+   \(I_\ell-I_{\ell+2}=2(\ell+1)I_{\ell+1}/\beta\).
+9. Improved actions with negative crossing-loop coefficients, including
    standard tree-level Symanzik/Luscher-Weisz and Iwasaki rectangle terms,
    are not covered by the Wilson proof and require separate positivity
    control.
+
+## Calculation Checks
+
+- `calculation-checks/lattice_reflection_positivity_checks.py` verifies the
+  \(U(1)\) Fourier/Bessel positivity, the \(SU(2)\) Wilson coefficient
+  identity, reconstruction of sample Wilson weights from truncated positive
+  character expansions, and finite \(SU(2)\) tensor-product character
+  identities.
 
 ## Figures
 
