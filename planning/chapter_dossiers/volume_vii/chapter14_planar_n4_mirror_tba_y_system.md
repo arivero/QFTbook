@@ -18,6 +18,13 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   a level-II root lies inside, outside, or on the unit `y`-circle.
 - `epsilon_A`, `Y_A`: mirror pseudoenergies and Y-functions.
 - `K_BA`: mirror scattering kernel.
+- `rho_p,rho_L,rho_h`: one-species mirror particle, level, and hole
+  densities used in the statistical-mechanical derivation of TBA.
+- `K^dens(v,u)`: target-derivative density kernel
+  `(2 pi i)^{-1} partial_u log S(v,u)` before conversion to the chapter's
+  source-derivative kernel convention.
+- `zeta`: one-species pseudoenergy satisfying
+  `rho_p/rho_L=(1+exp zeta)^{-1}`.
 - `Y_{a,s}`: T-hook Y-system variables.
 - `u_j`: exact physical Bethe roots in excited-state TBA.
 - `T_{a,s}`: Hirota T-functions.
@@ -39,6 +46,17 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - Derives the pole-cancellation arrays for `(v|M)`/`M|yw` strings and pure
   `(w|M)` strings, with the real-center condition labeled as string-
   hypothesis input rather than a four-dimensional QFT theorem.
+- Adds a self-contained one-species mirror-TBA derivation from the logarithmic
+  Bethe-Yang equation, including the density equation, Fermi level-statistics
+  entropy, constrained free-energy variation, pseudoenergy equation, and
+  ground-state energy formula.
+- Makes explicit the convention bridge to the stringbook: the density
+  derivation uses a target-derivative kernel, while the chapter's multi-species
+  equation uses source-derivative kernels; diagonal unitarity accounts for the
+  resulting minus sign.
+- Records the one-species excited-state defect source and the zero condition
+  `zeta(u_j)=-2 pi i(n_j+1/2)` before specializing to exact physical Bethe
+  roots in planar N=4.
 - States the general mirror TBA equation with contours, kernels, chemical
   potentials, and signs as part of the data.
 - Gives the excited-state energy formula with wrapping integral.
@@ -73,6 +91,10 @@ node domain.
 - The same script checks the mirror auxiliary-string derivation: the
   one-particle modulus identity, inside/outside support signs, `M|yw`
   pole/zero positions, and pure `w`-string spacings.
+- The same script checks the one-species mirror-TBA variational algebra on a
+  finite grid: constrained entropy variation, stationarity of the grand
+  functional, free-energy identity, source-kernel sign conversion, and the
+  excited-state zero condition.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic,
   the stringbook `u`-integrand to `q=2u` rational-integrand conversion,
   numerical real-line integrals for the first four mirror charges, and the

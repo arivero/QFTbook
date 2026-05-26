@@ -427,3 +427,36 @@ Calculation checks added:
   branch of the one-loop cusp resolvent, the derivative formula, the
   discontinuity/density sign, and the large-spin extraction of the
   `8g^2 log S` term including the constant `4g^2 log 4`.
+
+## Continuation XVII: One-Species Mirror-TBA Variational Derivation
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Content added:
+
+- Returned to the pure mirror-QFT/statistical-mechanical foundation of the
+  stringbook mirror TBA before further Y-system/QSC development.
+- Added a self-contained one-species derivation of mirror TBA from logarithmic
+  Bethe-Yang quantization: density equation, Fermi level-statistics entropy,
+  constrained free-energy variation, pseudoenergy equation, log-partition
+  function, and ground-state energy after the mirror space-time exchange.
+- Made the convention bridge explicit.  The density equation differentiates
+  `log S(v,u)` in the target rapidity, whereas the chapter's multi-species
+  formula uses source-derivative kernels.  Diagonal unitarity gives the minus
+  sign in the displayed source-kernel TBA equation, so the monograph convention
+  remains aligned with the stringbook rather than silently switching signs.
+- Added the one-species excited-state defect source and zero condition
+  `zeta(u_j)=-2 pi i(n_j+1/2)`, identifying this as the one-species ancestor of
+  the exact Bethe-root regularity condition.
+
+Calculation checks added:
+
+- `check_one_species_tba_variation()` now verifies the finite-dimensional
+  constrained-entropy variation, stationarity of the grand functional, the
+  free-energy identity after using the density equation, the source-kernel
+  sign convention implied by unitarity, and the excited-state zero
+  quantization condition.

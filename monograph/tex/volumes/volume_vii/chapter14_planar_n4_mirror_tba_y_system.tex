@@ -283,6 +283,225 @@ array \(w_j=w_0+(M+1-2j)\eta\).
 
 \section{Thermodynamic Bethe Ansatz}
 
+The mirror TBA is a thermodynamic limit of Bethe-Yang quantization, not an
+independent postulate.  We first derive the one-species formula because it is
+the place where the signs, statistics, and kernel orientation are least
+forgiving.  The derivation is also the convention bridge to the stringbook:
+the continuum density equation naturally differentiates the scattering phase in
+the target rapidity, while the multi-species formula below is written with the
+source-derivative kernels of
+Definition~\ref{def:planar-n4-mirror-kernel-datum}.
+
+\begin{proposition}[One-species mirror TBA from Bethe-Yang quantization]
+\label{prop:one-species-mirror-tba-derivation}
+Consider a diagonal integrable mirror model with one particle species,
+real mirror rapidity \(u\), mirror momentum \(\widetilde p(u)\), mirror
+energy \(\widetilde\epsilon(u)\), and two-body scattering factor
+\(S(v,u)\).  Assume:
+\begin{enumerate}
+\item a logarithm of \(S(v,u)\) has been chosen with no self-scattering jump at
+  \(v=u\);
+\item the thermodynamic mode number \(n(u)\) is smooth and monotone on the
+  rapidity interval under consideration;
+\item the finite-volume Bethe levels have Fermi level statistics, so a level is
+  either occupied or empty;
+\item no additional Bethe-string species or bound-state poles cross the
+  integration contour in the ground-state calculation.
+\end{enumerate}
+Let \(\rho_{\rm p}\), \(\rho_{\rm L}\), and
+\(\rho_{\rm h}=\rho_{\rm L}-\rho_{\rm p}\) denote the particle, level, and hole
+densities with respect to \(u\).  Define the density kernel
+\begin{equation}
+  K^{\rm dens}(v,u)
+  =
+  \frac{1}{2\pi\ii}\partial_u\log S(v,u).
+  \label{eq:one-species-density-kernel}
+\end{equation}
+Then the thermodynamic limit of the Bethe-Yang equation gives
+\begin{equation}
+  \rho_{\rm L}(u)
+  =
+  \frac{\widetilde L}{2\pi}
+  \frac{\dd \widetilde p(u)}{\dd u}
+  -
+  \int\dd v\,\rho_{\rm p}(v)K^{\rm dens}(v,u).
+  \label{eq:one-species-density-equation}
+\end{equation}
+At inverse mirror temperature \(\widetilde\beta\) and mirror chemical potential
+\(\widetilde\mu\), extremizing
+\[
+  \mathfrak s
+  -
+  \widetilde\beta\int\dd u\,\rho_{\rm p}(u)\widetilde\epsilon(u)
+  -
+  \widetilde\mu\int\dd u\,\rho_{\rm p}(u)
+\]
+subject to \eqref{eq:one-species-density-equation}, where
+\[
+  \mathfrak s
+  =
+  \int\dd u\,
+  \left[
+    \rho_{\rm L}\log\rho_{\rm L}
+    -
+    \rho_{\rm p}\log\rho_{\rm p}
+    -
+    \rho_{\rm h}\log\rho_{\rm h}
+  \right],
+\]
+gives the pseudoenergy equation
+\begin{equation}
+  \zeta(u)
+  =
+  \widetilde\beta\,\widetilde\epsilon(u)
+  +
+  \widetilde\mu
+  +
+  \int\dd v\,K^{\rm dens}(u,v)\log(1+\ee^{-\zeta(v)}),
+  \qquad
+  \frac{\rho_{\rm p}(u)}{\rho_{\rm L}(u)}
+  =
+  \frac{1}{1+\ee^{\zeta(u)}} .
+  \label{eq:one-species-tba}
+\end{equation}
+At the stationary point,
+\begin{equation}
+  \log Z
+  =
+  \widetilde L
+  \int\frac{\dd u}{2\pi}\,
+  \frac{\dd \widetilde p(u)}{\dd u}
+  \log(1+\ee^{-\zeta(u)}).
+  \label{eq:one-species-log-z}
+\end{equation}
+After exchanging mirror space and Euclidean time, with
+\(\widetilde\beta=L\) and no chemical potential, this gives
+\begin{equation}
+  E_0(L)
+  =
+  -
+  \int\frac{\dd u}{2\pi}\,
+  \frac{\dd \widetilde p(u)}{\dd u}
+  \log(1+\ee^{-\zeta(u)}).
+  \label{eq:one-species-ground-state-energy}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For occupied rapidities \(u_k\), choose the logarithmic Bethe-Yang equation in
+the stringbook orientation
+\[
+  \widetilde p(u_k)\widetilde L
+  =
+  2\pi n_k
+  -
+  \ii\sum_{j\neq k}\log S(u_j,u_k).
+\]
+Replacing the sum by
+\(\int\dd v\,\rho_{\rm p}(v)\) and differentiating with respect to the target
+rapidity \(u\) gives
+\[
+  \widetilde L\,\widetilde p'(u)
+  =
+  2\pi\rho_{\rm L}(u)
+  +
+  2\pi\int\dd v\,\rho_{\rm p}(v)K^{\rm dens}(v,u),
+\]
+which is \eqref{eq:one-species-density-equation}.
+
+Now vary the entropy while preserving the density equation.  Since
+\(\rho_{\rm h}=\rho_{\rm L}-\rho_{\rm p}\),
+\[
+  \delta\mathfrak s
+  =
+  \int\dd u\,
+  \left[
+    \log\frac{\rho_{\rm L}}{\rho_{\rm h}}\delta\rho_{\rm L}
+    -
+    \log\frac{\rho_{\rm p}}{\rho_{\rm h}}\delta\rho_{\rm p}
+  \right].
+\]
+The constraint implies
+\[
+  \delta\rho_{\rm L}(u)
+  =
+  -
+  \int\dd v\,K^{\rm dens}(v,u)\delta\rho_{\rm p}(v).
+\]
+Collecting the coefficient of an arbitrary
+\(\delta\rho_{\rm p}(u)\) gives
+\[
+  \log\frac{\rho_{\rm h}(u)}{\rho_{\rm p}(u)}
+  =
+  \widetilde\beta\,\widetilde\epsilon(u)+\widetilde\mu
+  +
+  \int\dd v\,K^{\rm dens}(u,v)
+    \log\frac{\rho_{\rm L}(v)}{\rho_{\rm h}(v)} .
+\]
+With
+\(\zeta=\log(\rho_{\rm h}/\rho_{\rm p})\), one has
+\(\rho_{\rm p}/\rho_{\rm L}=1/(1+\ee^\zeta)\) and
+\(\rho_{\rm L}/\rho_{\rm h}=1+\ee^{-\zeta}\), proving
+\eqref{eq:one-species-tba}.
+
+It remains to evaluate the extremized functional.  Substitute the stationary
+equation into the expression for
+\(\mathfrak s-\widetilde\beta\widetilde E-\widetilde\mu\widetilde N\).  The
+terms proportional to \(\rho_{\rm p}\) cancel against the convolution term in
+the entropy variation, and the remaining density equation leaves
+\[
+  \log Z
+  =
+  \int\dd u\,\rho_{\rm L}(u)\log(1+\ee^{-\zeta(u)})
+  +
+  \int\dd u\dd v\,\rho_{\rm p}(v)K^{\rm dens}(v,u)
+       \log(1+\ee^{-\zeta(u)}),
+\]
+which reduces by \eqref{eq:one-species-density-equation} to
+\eqref{eq:one-species-log-z}.  The ground-state formula
+\eqref{eq:one-species-ground-state-energy} is the usual mirror
+space-time reinterpretation of \(\log Z=-\widetilde L E_0(L)\).
+\end{proof}
+
+The kernel sign in \eqref{eq:one-species-tba} is the stringbook convention.
+If the scattering factor obeys the diagonal unitarity relation
+\(S(v,u)S(u,v)=1\), then
+\[
+  K^{\rm dens}(u,v)
+  =
+  \frac{1}{2\pi\ii}\partial_v\log S(u,v)
+  =
+  -
+  \frac{1}{2\pi\ii}\partial_v\log S(v,u).
+\]
+Thus the source-derivative kernel \(K(v,u)\) of
+Definition~\ref{def:planar-n4-mirror-kernel-datum} enters the same TBA equation
+with a minus sign.  This is the convention used in
+\eqref{eq:planar-n4-mirror-tba-general}; the displayed chemical potential
+\(\mu_A\) there is the negative of \(\widetilde\mu_A\) in the one-species
+statistical-mechanical derivation.
+
+Excited states add one more honest hypothesis: the contour deformation must be
+specified.  In the one-species model, inserting moving defects at rapidities
+\(u_j\) changes the pseudoenergy to
+\[
+  \zeta(u)
+  =
+  \widetilde\beta\,\widetilde\epsilon(u)+\widetilde\mu
+  -
+  \sum_j\log S(u,u_j)
+  +
+  \int\dd v\,K^{\rm dens}(u,v)\log(1+\ee^{-\zeta(v)}),
+\]
+and the defect rapidities are fixed by
+\[
+  \zeta(u_j)=-2\pi\ii\left(n_j+\frac12\right),
+  \qquad n_j\in\mathbb Z.
+\]
+Equivalently \(1+\ee^{-\zeta}\) has a zero at each defect.  In the planar
+\(\mathcal N=4\) problem this condition becomes the exact Bethe-root
+regularity condition after analytic continuation to the physical sheet.
+
 Let \(A,B\) range over the mirror Bethe-string species: physical
 \(Q\)-particle bound states, auxiliary \(y\)-roots, and auxiliary \(w\)-string
 families for the two \(\mathfrak{su}(2|2)\) wings.  Denote the mirror

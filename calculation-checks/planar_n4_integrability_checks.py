@@ -956,6 +956,174 @@ def check_mirror_auxiliary_string_arrays() -> None:
             assert_close("pure w-string real center", sum(w_string) / length, center)
 
 
+def solve_linear_system(matrix: list[list[float]], rhs: list[float]) -> list[float]:
+    size = len(rhs)
+    augmented = [row[:] + [rhs[index]] for index, row in enumerate(matrix)]
+    for column in range(size):
+        pivot = max(range(column, size), key=lambda row: abs(augmented[row][column]))
+        if abs(augmented[pivot][column]) < 1.0e-14:
+            raise AssertionError("singular linear system in TBA variation check")
+        augmented[column], augmented[pivot] = augmented[pivot], augmented[column]
+        pivot_value = augmented[column][column]
+        for entry in range(column, size + 1):
+            augmented[column][entry] /= pivot_value
+        for row in range(size):
+            if row == column:
+                continue
+            factor = augmented[row][column]
+            for entry in range(column, size + 1):
+                augmented[row][entry] -= factor * augmented[column][entry]
+    return [augmented[row][size] for row in range(size)]
+
+
+def check_one_species_tba_variation() -> None:
+    """Check the one-species mirror-TBA variational algebra on a grid."""
+
+    weights = [0.4, 0.3, 0.5]
+    density_kernel = [
+        [0.04, -0.03, 0.02],
+        [0.01, 0.05, -0.02],
+        [-0.02, 0.01, 0.03],
+    ]
+    zeta = [0.35, -0.2, 0.75]
+    driving_density = [3.7, 4.1, 3.9]
+    size = len(weights)
+
+    matrix = []
+    for target in range(size):
+        row = []
+        for source in range(size):
+            diagonal = 1 + math.exp(zeta[target]) if source == target else 0.0
+            row.append(diagonal + weights[source] * density_kernel[source][target])
+        matrix.append(row)
+    particle_density = solve_linear_system(matrix, driving_density)
+    level_density = [
+        driving_density[target]
+        - sum(
+            weights[source] * density_kernel[source][target] * particle_density[source]
+            for source in range(size)
+        )
+        for target in range(size)
+    ]
+    hole_density = [
+        level_density[index] - particle_density[index] for index in range(size)
+    ]
+    if any(value <= 0 for value in particle_density + level_density + hole_density):
+        raise AssertionError("TBA density check produced nonpositive densities")
+
+    for index in range(size):
+        assert_close(
+            "one-species TBA pseudoenergy density ratio",
+            math.log(hole_density[index] / particle_density[index]),
+            zeta[index],
+            tol=2.0e-12,
+        )
+
+    log_one_plus_y = [math.log(1 + math.exp(-value)) for value in zeta]
+    driving = [
+        zeta[target]
+        - sum(
+            weights[source] * density_kernel[target][source] * log_one_plus_y[source]
+            for source in range(size)
+        )
+        for target in range(size)
+    ]
+
+    def entropy(particle: list[float]) -> float:
+        level = [
+            driving_density[target]
+            - sum(
+                weights[source] * density_kernel[source][target] * particle[source]
+                for source in range(size)
+            )
+            for target in range(size)
+        ]
+        hole = [level[index] - particle[index] for index in range(size)]
+        return sum(
+            weights[index]
+            * (
+                level[index] * math.log(level[index])
+                - particle[index] * math.log(particle[index])
+                - hole[index] * math.log(hole[index])
+            )
+            for index in range(size)
+        )
+
+    def grand_functional(particle: list[float]) -> float:
+        return entropy(particle) - sum(
+            weights[index] * driving[index] * particle[index] for index in range(size)
+        )
+
+    tangent = [0.2, -0.1, 0.15]
+    expected_entropy_derivative = sum(
+        weights[source]
+        * (
+            zeta[source]
+            - sum(
+                weights[target] * density_kernel[source][target] * log_one_plus_y[target]
+                for target in range(size)
+            )
+        )
+        * tangent[source]
+        for source in range(size)
+    )
+    step = 1.0e-7
+    forward = [particle_density[index] + step * tangent[index] for index in range(size)]
+    backward = [particle_density[index] - step * tangent[index] for index in range(size)]
+    numerical_entropy_derivative = (entropy(forward) - entropy(backward)) / (2 * step)
+    assert_close(
+        "one-species TBA constrained entropy variation",
+        numerical_entropy_derivative,
+        expected_entropy_derivative,
+        tol=2.0e-8,
+    )
+    numerical_grand_derivative = (grand_functional(forward) - grand_functional(backward)) / (
+        2 * step
+    )
+    assert_close(
+        "one-species TBA stationary grand functional",
+        numerical_grand_derivative,
+        0,
+        tol=2.0e-8,
+    )
+
+    log_z = grand_functional(particle_density)
+    log_z_from_density_equation = sum(
+        weights[index] * driving_density[index] * log_one_plus_y[index]
+        for index in range(size)
+    )
+    assert_close(
+        "one-species TBA free-energy identity",
+        log_z,
+        log_z_from_density_equation,
+        tol=2.0e-12,
+    )
+
+    source_kernel = [
+        [-density_kernel[target][source] for target in range(size)]
+        for source in range(size)
+    ]
+    for target in range(size):
+        source_convention_rhs = driving[target] - sum(
+            weights[source] * source_kernel[source][target] * log_one_plus_y[source]
+            for source in range(size)
+        )
+        assert_close(
+            "one-species TBA source-kernel sign convention",
+            source_convention_rhs,
+            zeta[target],
+            tol=2.0e-12,
+        )
+
+    for mode in (-2, -1, 0, 3):
+        defect_zeta = -2j * math.pi * (mode + 0.5)
+        assert_close(
+            "excited-state TBA zero quantization",
+            1 + cmath.exp(-defect_zeta),
+            0,
+        )
+
+
 def check_konishi_four_loop_wrapping_arithmetic() -> None:
     # ABA coefficient: -(2820 + 288 zeta_3).
     # Wrapping coefficient: 324 + 864 zeta_3 - 1440 zeta_5.
@@ -1567,6 +1735,7 @@ def main() -> None:
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()
     check_mirror_auxiliary_string_arrays()
+    check_one_species_tba_variation()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()
