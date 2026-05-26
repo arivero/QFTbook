@@ -381,9 +381,10 @@ Current checks:
   simple groups, \(SU(2)_k\) affine-primary weights, the diagonal
   \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge
   identity, \(SU(2)_k/U(1)\) parafermion selection and field-identification
-  weights, \(SL(2,\mathbb R)_k/U(1)\) cigar central charges and
-  momentum/winding spin checks, and the Ising/tricritical-Ising coset
-  values.
+  weights, compact parafermion orbit counts and fusion rules,
+  \(SL(2,\mathbb R)_k/U(1)\) cigar central charges, reflection weight
+  invariance, momentum/winding spin checks, and the Ising/tricritical-Ising
+  coset values.
 - `zeta_determinant_checks.py`: numerical and exact checks for the spectral
   zeta-determinant section, including the periodic resolvent identity for
   \(-\dd_\tau^2+\omega^2\), the derivative of

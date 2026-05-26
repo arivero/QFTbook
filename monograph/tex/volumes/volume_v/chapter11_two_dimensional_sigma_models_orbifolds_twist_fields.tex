@@ -1685,6 +1685,94 @@ can be represented by \((0,2)\); using
   h_{0,2}^{\operatorname{PF}}=1-\frac1k .
 \]
 
+\begin{proposition}[Parafermion fusion, modular data, and diagonal invariant]
+\label{prop:parafermion-fusion-modular-data}
+Let \(\mathcal L_k\) be the set of selected labels
+\[
+  \mathcal L_k
+  =
+  \{(\ell,m)\mid 0\le \ell\le k,\ m\in\mathbb Z/2k\mathbb Z,
+  \ell+m\in2\mathbb Z\},
+\]
+and let \(\mathcal I_k=\mathcal L_k/\!\sim\), where
+\((\ell,m)\sim(k-\ell,m+k)\).  The simple-current action is free, so
+\[
+  |\mathcal I_k|=\frac{k(k+1)}2 .
+\]
+For orbit labels \([\ell,m]\in\mathcal I_k\), the fusion rule is
+\begin{equation}
+  [\ell_1,m_1]\boxtimes[\ell_2,m_2]
+  =
+  \bigoplus_{\substack{
+      |\ell_1-\ell_2|\le \ell_3\le
+      \min(\ell_1+\ell_2,\,2k-\ell_1-\ell_2)\\
+      \ell_1+\ell_2+\ell_3\in2\mathbb Z}}
+  [\ell_3,m_1+m_2],
+  \label{eq:parafermion-fusion-rule}
+\end{equation}
+where the charge is reduced modulo \(2k\) and the result is again read as
+an orbit.  With the theta-function convention used in
+\eqref{eq:parafermion-branching}, the modular \(S\)-matrix on these orbits
+is
+\begin{equation}
+  S^{\operatorname{PF}}_{[\ell,m],[\ell',m']}
+  =
+  \frac{2}{\sqrt{k(k+2)}}\,
+  \sin\!\left(\frac{\pi(\ell+1)(\ell'+1)}{k+2}\right)
+  \exp\!\left(-\frac{\pi\ii mm'}{k}\right).
+  \label{eq:parafermion-modular-s}
+\end{equation}
+The diagonal compact parafermion torus partition function is
+\begin{equation}
+  Z_{\operatorname{PF}_k}^{\operatorname{diag}}(\tau,\bar\tau)
+  =
+  \sum_{[\ell,m]\in\mathcal I_k}
+  b^{(k)}_{\ell,m}(\tau)\,
+  \overline{b^{(k)}_{\ell,m}(\tau)} .
+  \label{eq:parafermion-diagonal-partition-function}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The action \((\ell,m)\mapsto(k-\ell,m+k)\) has no fixed point: a fixed
+point would require \(m\equiv m+k\pmod {2k}\), impossible for
+\(k>0\).  Since \(|\mathcal L_k|=k(k+1)\), the orbit count follows.
+
+Fusion in the parent \(SU(2)_k\) WZW model is the truncated tensor-product
+rule
+\[
+  \ell_3=|\ell_1-\ell_2|,\ |\ell_1-\ell_2|+2,\ldots,
+  \min(\ell_1+\ell_2,2k-\ell_1-\ell_2).
+\]
+The abelian factor conserves \(U(1)\) charge modulo \(2k\).  Taking the
+coset branching component therefore gives
+\eqref{eq:parafermion-fusion-rule}.  The parity condition is automatic
+from the \(SU(2)\) fusion parity and the two input selection rules.
+
+The modular matrix is the product of the \(SU(2)_k\) modular matrix and the
+complex conjugate of the \(U(1)_k\) theta modular matrix, multiplied by the
+order \(2\) of the free simple-current identification.  This gives
+\eqref{eq:parafermion-modular-s}.  The displayed expression is
+well-defined on orbits because replacing \((\ell,m)\) by
+\((k-\ell,m+k)\) multiplies the sine factor by \((-1)^{\ell'}\) and the
+exponential by \((-1)^{m'}\), whose product is \(1\) on selected labels
+\(\ell'+m'\in2\mathbb Z\).  The diagonal invariant is the branchwise
+diagonal invariant after quotienting by this free identification; it is
+equivalently one half of the selected-label diagonal sum before quotient.
+\end{proof}
+
+For \(k=2\), the three orbits may be represented by
+\((0,0)\), \((1,1)\), and \((2,0)\).  The fusion rule gives
+\[
+  (1,1)\boxtimes(1,1)=(0,0)\oplus(2,0),
+  \qquad
+  (2,0)\boxtimes(2,0)=(0,0),
+\]
+which is the Ising fusion algebra under the identifications
+\((1,1)=\sigma\) and \((2,0)=\varepsilon\).  For general \(k\), the field
+\((0,2)\) is a simple current of order \(k\) and shifts
+\([\ell,m]\) to \([\ell,m+2]\).
+
 \begin{controlledapproximation}[The bell as a gauged-WZW representative]
 \label{capprox:compact-coset-bell}
 Choose Euler-angle coordinates on \(SU(2)\) and gauge the Cartan circle
@@ -1830,6 +1918,54 @@ which gives \eqref{eq:cigar-weight}.  Finally,
 \]
 using \eqref{eq:cigar-momentum-winding-labels}.
 \end{proof}
+
+\begin{quotedtheorem}[Bosonic cigar spectrum status]
+\label{qthm:bosonic-cigar-spectrum-status}
+For the standard axial \(SL(2,\mathbb R)_k/U(1)\) cigar CFT with \(k>2\),
+the continuous normalizable spectrum contains
+\[
+  j=\frac12+\ii s,\qquad s\in\mathbb R_{\ge0},
+  \qquad
+  n,w\in\mathbb Z,
+\]
+with \(m,\bar m\) as in \eqref{eq:cigar-momentum-winding-labels}.  Its
+weights are therefore
+\[
+  h_{s,n,w}
+  =
+  \frac{s^2+\frac14}{k-2}
+  +
+  \frac{(n+kw)^2}{4k},
+  \qquad
+  \bar h_{s,n,w}
+  =
+  \frac{s^2+\frac14}{k-2}
+  +
+  \frac{(-n+kw)^2}{4k}.
+\]
+The analytic continuation in \(j\) obeys a reflection relation
+\[
+  \mathcal V_{j,m,\bar m}
+  \simeq
+  \mathcal R(j;m,\bar m)\,\mathcal V_{1-j,m,\bar m},
+  \qquad
+  \mathcal R(j;m,\bar m)\mathcal R(1-j;m,\bar m)=1,
+\]
+and the normalizable discrete states are obtained from the corresponding
+pole and residue prescription.  The exact discrete ranges and multiplicity
+choices are part of the noncompact CFT and modular-invariant datum; they do
+not follow from the local stress tensor and metric formulas alone.
+\end{quotedtheorem}
+
+The equality \(h^{\operatorname{Cig}}_{j,m}
+=h^{\operatorname{Cig}}_{1-j,m}\) is immediate from
+\eqref{eq:cigar-weight}.  Thus the reflection relation is compatible with
+Virasoro weights, but its coefficient and the allowed discrete residues are
+global analytic data of the noncompact theory.  This is one of the points
+where the cigar differs sharply from the compact parafermion coset: the
+compact model has finitely many ordinary characters and a finite modular
+matrix, while the cigar has delta-normalized continuum states and a
+scattering/reflection problem at infinity.
 
 \begin{controlledapproximation}[The cigar as a large-level background]
 \label{capprox:cigar-large-level-background}

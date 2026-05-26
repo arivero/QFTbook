@@ -238,10 +238,11 @@ Current absorption:
   stress tensors, the diagonal \(SU(2)\) minimal-model example, and the
   rank-one solvable cosets \(SU(2)_k/U(1)\) and
   \(SL(2,\mathbb R)_k/U(1)\), with the parafermion branching/field
-  identification and cigar momentum/winding conventions stated before the
-  gauged sigma-model geometries.  The public arithmetic check now covers the
-  central-charge, conformal-weight, field-identification, and integer-spin
-  formulas.
+  identification, fusion/modular data, and cigar momentum/winding and
+  spectrum-status conventions stated before the gauged sigma-model
+  geometries.  The public arithmetic check now covers the central-charge,
+  conformal-weight, field-identification, compact fusion, reflection-weight,
+  and integer-spin formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
   operator algebras, ordinary modules, characters, Zhu algebras and top-level
   module classification, conformal blocks as Ward identity functionals,

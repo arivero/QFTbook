@@ -38,6 +38,48 @@ def parafermion_weight(level, ell, charge_m):
     )
 
 
+def reduce_parafermion_charge(level, charge_m):
+    return charge_m % (2 * level)
+
+
+def is_parafermion_label(level, ell, charge_m):
+    return 0 <= ell <= level and (ell + reduce_parafermion_charge(level, charge_m)) % 2 == 0
+
+
+def parafermion_identified_label(level, ell, charge_m):
+    return (level - ell, reduce_parafermion_charge(level, charge_m + level))
+
+
+def parafermion_canonical_label(level, ell, charge_m):
+    charge_m = reduce_parafermion_charge(level, charge_m)
+    require(
+        is_parafermion_label(level, ell, charge_m),
+        f"invalid parafermion label k={level}, ell={ell}, m={charge_m}",
+    )
+    return min((ell, charge_m), parafermion_identified_label(level, ell, charge_m))
+
+
+def su2_fusion_targets(level, ell_left, ell_right):
+    lower = abs(ell_left - ell_right)
+    upper = min(ell_left + ell_right, 2 * level - ell_left - ell_right)
+    return list(range(lower, upper + 1, 2))
+
+
+def parafermion_fusion_targets(level, left, right):
+    ell_left, charge_left = left
+    ell_right, charge_right = right
+    targets = set()
+    for ell_target in su2_fusion_targets(level, ell_left, ell_right):
+        targets.add(
+            parafermion_canonical_label(
+                level,
+                ell_target,
+                charge_left + charge_right,
+            )
+        )
+    return targets
+
+
 def same_mod_integer(left, right):
     return (left - right).denominator == 1
 
@@ -101,6 +143,51 @@ for level in range(1, 25):
                     f"parafermion field identification weight mismatch at k={level}, l={l}, m={m}",
                 )
 
+    selected_labels = [
+        (l, m)
+        for l in range(level + 1)
+        for m in range(2 * level)
+        if is_parafermion_label(level, l, m)
+    ]
+    primary_orbits = {parafermion_canonical_label(level, l, m) for l, m in selected_labels}
+    require(
+        len(selected_labels) == level * (level + 1),
+        f"parafermion selected-label count mismatch at k={level}",
+    )
+    require(
+        len(primary_orbits) == level * (level + 1) // 2,
+        f"parafermion primary-orbit count mismatch at k={level}",
+    )
+    for l, m in selected_labels:
+        require(
+            parafermion_canonical_label(level, l, m)
+            == parafermion_canonical_label(level, *parafermion_identified_label(level, l, m)),
+            f"parafermion canonicalization mismatch at k={level}, l={l}, m={m}",
+        )
+
+    simple_current = parafermion_canonical_label(level, 0, 2)
+    vacuum = parafermion_canonical_label(level, 0, 0)
+    current_power = vacuum
+    for power in range(1, level + 1):
+        current_power = next(
+            iter(parafermion_fusion_targets(level, current_power, simple_current))
+        )
+        expected = (
+            vacuum
+            if power == level
+            else parafermion_canonical_label(level, 0, 2 * power)
+        )
+        require(
+            current_power == expected,
+            f"parafermion simple-current power mismatch at k={level}, power={power}",
+        )
+    for label in primary_orbits:
+        require(
+            parafermion_fusion_targets(level, simple_current, label)
+            == {parafermion_canonical_label(level, label[0], label[1] + 2)},
+            f"parafermion simple-current charge shift mismatch at k={level}, label={label}",
+        )
+
 require(su2_central_charge(1) == Fraction(1, 1), "SU(2)_1 should have c=1")
 require(su2_central_charge(2) == Fraction(3, 2), "SU(2)_2 should have c=3/2")
 require(su2_primary_weight(1, 1) == Fraction(1, 4), "SU(2)_1 spin-half primary should have h=1/4")
@@ -150,6 +237,23 @@ require(
     "SU(2)_3/U(1) parafermion current weight mismatch",
 )
 
+ising_vacuum = parafermion_canonical_label(2, 0, 0)
+ising_spin = parafermion_canonical_label(2, 1, 1)
+ising_energy = parafermion_canonical_label(2, 2, 0)
+require(
+    parafermion_fusion_targets(2, ising_spin, ising_spin)
+    == {ising_vacuum, ising_energy},
+    "SU(2)_2/U(1) Ising spin fusion mismatch",
+)
+require(
+    parafermion_fusion_targets(2, ising_energy, ising_energy) == {ising_vacuum},
+    "SU(2)_2/U(1) Ising energy fusion mismatch",
+)
+require(
+    parafermion_fusion_targets(2, ising_energy, ising_spin) == {ising_spin},
+    "SU(2)_2/U(1) Ising energy-spin fusion mismatch",
+)
+
 for level in range(3, 21):
     require(
         cigar_central_charge(level) == Fraction(2, 1) + Fraction(6, level - 2),
@@ -159,6 +263,18 @@ for level in range(3, 21):
         cigar_weight(level, Fraction(1, 2), Fraction(0, 1)) == Fraction(1, 4 * (level - 2)),
         f"SL(2,R)/U(1) j=1/2 threshold weight mismatch at k={level}",
     )
+    for spin_j in [
+        Fraction(-1, 2),
+        Fraction(0, 1),
+        Fraction(1, 3),
+        Fraction(3, 2),
+        Fraction(5, 2),
+    ]:
+        require(
+            cigar_weight(level, spin_j, Fraction(1, 1))
+            == cigar_weight(level, 1 - spin_j, Fraction(1, 1)),
+            f"SL(2,R)/U(1) reflection weight mismatch at k={level}, j={spin_j}",
+        )
     for n in range(-3, 4):
         for winding in range(-3, 4):
             m = Fraction(n + level * winding, 2)
@@ -170,4 +286,4 @@ for level in range(3, 21):
                 f"SL(2,R)/U(1) integer-spin mismatch at k={level}, n={n}, w={winding}",
             )
 
-print("All WZW Sugawara and rank-one coset arithmetic checks passed.")
+print("All WZW Sugawara and rank-one coset arithmetic/fusion checks passed.")
