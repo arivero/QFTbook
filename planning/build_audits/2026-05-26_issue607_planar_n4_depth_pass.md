@@ -32,6 +32,22 @@
   - `/Users/xiyin/ResearchIdeas/stringbook/codes/BES equation.nb`
   - `/Users/xiyin/ResearchIdeas/stringbook/codes/mirror TBA and wrapping corrections.nb`
 
+## Full-Draft Orientation
+
+- Reviewed the compiled monograph table of contents and volume include map
+  after the forced build.
+- Reviewed `frontmatter_volume_dependency_guide.tex` to keep the lane aligned
+  with the monograph's dependency order.
+- Reviewed the relevant cross-volume support chapters:
+  - Vol VI algebraic Bethe ansatz and nested Bethe-Yang chapters, used here
+    only as algebraic background;
+  - Vol VI mirror-channel TBA chapter, used to keep the mirror/TBA language
+    distinct from planar N=4 mirror kinematics;
+  - Vol VII supersymmetric localization chapter, used for the status boundary
+    of the Bremsstrahlung/localization formula;
+  - Vol IX line-operator chapter, used for the general defect/Wilson-line
+    definition discipline.
+
 ## Mathematical Additions
 
 - Added planar single-trace inner product and spectral-datum definition.
