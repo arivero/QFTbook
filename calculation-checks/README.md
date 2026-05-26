@@ -120,6 +120,11 @@ Current checks:
   associativity, Frobenius--Perron dimensions, modular \(S\)-matrix
   orthogonality, the Verlinde formula, and the diagonal action of defects on
   local primary sectors.
+- `ising_form_factor_checks.py`: finite checks for the Volume VI
+  free-Majorana and Ising form-factor examples, including Watson exchange,
+  cyclicity, the kinematic-pole residue sign, the two-particle invariant-mass
+  identity, the energy-density spectral threshold factor, and the Euclidean
+  Bessel-kernel prefactor.
 - `ising_metropolis_finite_checks.py`: exact enumeration checks for the
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising

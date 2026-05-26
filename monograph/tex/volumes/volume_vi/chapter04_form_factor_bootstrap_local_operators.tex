@@ -360,6 +360,176 @@ exchange and \(2\pi\ii\) cyclicity are compatible with a familiar local
 quadratic field.
 \end{example}
 
+\begin{proposition}[Two-particle reconstruction for the Majorana energy operator]
+\label{prop:majorana-energy-two-particle-reconstruction}
+Use the one-particle normalization
+\[
+  \braket{\theta'}{\theta}=2\pi\delta(\theta'-\theta),
+  \qquad
+  p^\mu(\theta)=m(\cosh\theta,\sinh\theta),
+  \qquad
+  p(\theta)^2=-m^2 .
+\]
+Let \(W_\varepsilon(x)=\langle\Omega|\varepsilon(x)\varepsilon(0)|\Omega\rangle\)
+at noncoincident points, and define the Fourier transform by
+\[
+  \widetilde W_\varepsilon(P)
+  =
+  \int_{\R^{1,1}}\dd^2x\,e^{\ii P\cdot x}W_\varepsilon(x),
+  \qquad
+  W_\varepsilon(x)
+  =
+  \int\frac{\dd^2P}{(2\pi)^2}\,
+  e^{-\ii P\cdot x}\widetilde W_\varepsilon(P).
+\]
+With \(s=-P^2\), the two-particle form factor in
+Example~\ref{ex:free-majorana-energy-form-factor} gives
+\begin{equation}
+  \widetilde W_\varepsilon(P)
+  =
+  \theta(P^0)\theta(s-4m^2)\,
+  \frac{|\kappa_\varepsilon|^2}{2m^2}
+  \sqrt{1-\frac{4m^2}{s}}
+  \label{eq:majorana-energy-two-particle-spectral-density}
+\end{equation}
+in this Fourier convention.  Equivalently, for Euclidean time separation
+\(r>0\),
+\begin{equation}
+  G_\varepsilon(r)
+  =
+  \langle\varepsilon(r)\varepsilon(0)\rangle_E
+  =
+  \frac{|\kappa_\varepsilon|^2}{2\pi^2}
+  \int_0^\infty \dd\alpha\,
+  \sinh^2\!\left(\frac{\alpha}{2}\right)
+  K_0\!\left(2mr\cosh\!\left(\frac{\alpha}{2}\right)\right),
+  \label{eq:majorana-energy-euclidean-bessel-reconstruction}
+\end{equation}
+where, for \(z>0\),
+\[
+  K_0(z)=\int_0^\infty e^{-z\cosh u}\,\dd u .
+\]
+\end{proposition}
+
+\begin{proof}
+The finite-particle resolution of the identity in the one-species sector is
+\[
+  \mathbf 1_{\rm fin}
+  =
+  \sum_{n\ge0}\frac{1}{n!}
+  \int_{\R^n}\prod_{j=1}^n\frac{\dd\theta_j}{2\pi}\,
+  \ket{\theta_1,\ldots,\theta_n}_{\rm in}
+  {}_{\rm in}\!\bra{\theta_1,\ldots,\theta_n}.
+\]
+For the free Majorana energy operator only the two-particle term is present.
+Therefore, at noncoincident Lorentzian separation,
+\[
+  W_\varepsilon(x)
+  =
+  \frac12
+  \int\frac{\dd\theta_1}{2\pi}\frac{\dd\theta_2}{2\pi}\,
+  \left|F_2^\varepsilon(\theta_1,\theta_2)\right|^2
+  e^{-\ii x\cdot(p(\theta_1)+p(\theta_2))}.
+\]
+The factor \(1/2\) is not optional: the rapidity integration is over all
+ordered labels, while the two Majorana particles are identical.  Fourier
+transformation gives
+\[
+  \widetilde W_\varepsilon(P)
+  =
+  \frac12
+  \int\frac{\dd\theta_1}{2\pi}\frac{\dd\theta_2}{2\pi}\,
+  (2\pi)^2\delta^{(2)}(P-p(\theta_1)-p(\theta_2))
+  \left|F_2^\varepsilon(\theta_1,\theta_2)\right|^2 .
+\]
+The support condition is already visible: \(P\) must be future directed and
+\(s=-P^2\ge4m^2\).
+
+Because the integrand is Lorentz invariant except for the explicit vector
+\(P\), evaluate it in the frame \(P=(M,0)\), \(M=\sqrt s\).  Put
+\[
+  \Theta=\frac{\theta_1+\theta_2}{2},
+  \qquad
+  \alpha=\theta_1-\theta_2 .
+\]
+Then
+\[
+  p(\theta_1)+p(\theta_2)
+  =
+  2m\cosh\!\left(\frac{\alpha}{2}\right)
+  (\cosh\Theta,\sinh\Theta),
+\]
+and the equations imposed by the delta function have the two roots
+\[
+  \Theta=0,\qquad
+  \alpha=\pm\alpha_s,\qquad
+  \cosh\!\left(\frac{\alpha_s}{2}\right)=\frac{\sqrt s}{2m}.
+\]
+The absolute value of the Jacobian of
+\((\Theta,\alpha)\mapsto(p^0_1+p^0_2,p^1_1+p^1_2)\) at either root is
+\[
+  \left|
+  \det
+  \begin{pmatrix}
+  \partial_\Theta P^0 & \partial_\alpha P^0\\
+  \partial_\Theta P^1 & \partial_\alpha P^1
+  \end{pmatrix}
+  \right|
+  =
+  \sqrt s\,m\,\sinh\!\left(\frac{\alpha_s}{2}\right).
+\]
+The two roots in \(\alpha\) cancel the identical-particle factor \(1/2\).
+Using
+\[
+  \left|F_2^\varepsilon\right|^2
+  =
+  |\kappa_\varepsilon|^2
+  \sinh^2\!\left(\frac{\alpha_s}{2}\right),
+  \qquad
+  \sinh^2\!\left(\frac{\alpha_s}{2}\right)
+  =
+  \frac{s-4m^2}{4m^2},
+\]
+one obtains \eqref{eq:majorana-energy-two-particle-spectral-density}.
+The threshold behavior is therefore \(\sqrt{s-4m^2}\), not a pole: the
+two-body phase-space square-root singularity is softened by the antisymmetric
+energy-density form factor, which vanishes at equal rapidities.
+
+For the Euclidean formula, take a positive Euclidean time separation \(r\).
+The positive-energy spectral term is the analytic continuation of the same
+finite-particle contribution:
+\[
+  G_\varepsilon(r)
+  =
+  \frac12
+  \int\frac{\dd\theta_1}{2\pi}\frac{\dd\theta_2}{2\pi}\,
+  |\kappa_\varepsilon|^2
+  \sinh^2\!\left(\frac{\theta_1-\theta_2}{2}\right)
+  e^{-mr(\cosh\theta_1+\cosh\theta_2)} .
+\]
+Changing variables to \((\Theta,\alpha)\) has unit Jacobian and gives
+\[
+  G_\varepsilon(r)
+  =
+  \frac{|\kappa_\varepsilon|^2}{8\pi^2}
+  \int_{\R}\dd\Theta\int_{\R}\dd\alpha\,
+  \sinh^2\!\left(\frac{\alpha}{2}\right)
+  e^{-2mr\cosh(\alpha/2)\cosh\Theta}.
+\]
+By the integral definition of \(K_0\),
+\[
+  \int_{-\infty}^{\infty}
+  e^{-2mr\cosh(\alpha/2)\cosh\Theta}\,\dd\Theta
+  =
+  2K_0\!\left(2mr\cosh\!\left(\frac{\alpha}{2}\right)\right).
+\]
+The remaining integrand is even in \(\alpha\), giving
+\eqref{eq:majorana-energy-euclidean-bessel-reconstruction}.
+All equalities in this proof are separated-point equalities.  Possible
+contact terms at \(x=0\) are not part of the finite-particle spectral
+calculation.
+\end{proof}
+
 The order/disorder fields of the Ising theory are more instructive because
 their form factors form an infinite family.  We record the odd family in a
 normalization \(v\in\C\):

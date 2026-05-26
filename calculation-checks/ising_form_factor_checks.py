@@ -53,6 +53,52 @@ def check_energy_density_form_factor() -> None:
     )
 
 
+def check_energy_two_particle_reconstruction() -> None:
+    mass = 1.7
+    kappa = 2.3
+    theta_1 = 0.94
+    theta_2 = -0.38
+    alpha = theta_1 - theta_2
+
+    def momentum(theta: float) -> tuple[float, float]:
+        return (mass * math.cosh(theta), mass * math.sinh(theta))
+
+    p_1 = momentum(theta_1)
+    p_2 = momentum(theta_2)
+    total = (p_1[0] + p_2[0], p_1[1] + p_2[1])
+    invariant_s = total[0] ** 2 - total[1] ** 2
+    assert_close(
+        "two-particle invariant mass",
+        invariant_s,
+        4.0 * mass**2 * math.cosh(alpha / 2.0) ** 2,
+    )
+
+    ff_squared = abs(energy_form_factor(theta_1, theta_2, kappa)) ** 2
+    assert_close(
+        "energy form factor as invariant numerator",
+        ff_squared,
+        kappa**2 * (invariant_s - 4.0 * mass**2) / (4.0 * mass**2),
+    )
+
+    jacobian = math.sqrt(invariant_s) * mass * abs(math.sinh(alpha / 2.0))
+    delta_integral_after_identical_particle_cancellation = ff_squared / jacobian
+    spectral_density = kappa**2 / (2.0 * mass**2) * math.sqrt(1.0 - 4.0 * mass**2 / invariant_s)
+    assert_close(
+        "two-particle spectral density normalization",
+        delta_integral_after_identical_particle_cancellation,
+        spectral_density,
+    )
+
+    starting_euclidean_prefactor = 1.0 / (2.0 * (2.0 * math.pi) ** 2)
+    after_bessel_reduction_full_alpha = 2.0 * starting_euclidean_prefactor
+    after_even_alpha_reduction = 2.0 * after_bessel_reduction_full_alpha
+    assert_close(
+        "Euclidean Bessel prefactor",
+        after_even_alpha_reduction,
+        1.0 / (2.0 * math.pi**2),
+    )
+
+
 def check_sigma_exchange_and_cyclicity() -> None:
     thetas = [1.31, 0.62, -0.17, -0.84, -1.55]
     for i in range(len(thetas) - 1):
@@ -85,6 +131,7 @@ def check_sigma_kinematic_residue() -> None:
 
 def main() -> None:
     check_energy_density_form_factor()
+    check_energy_two_particle_reconstruction()
     check_sigma_exchange_and_cyclicity()
     check_sigma_kinematic_residue()
     print("All Ising form-factor checks passed.")
