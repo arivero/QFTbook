@@ -273,19 +273,71 @@ spin \(S\), and dimension \(\Delta\), these asymptotics encode the charges
 through powers and leading coefficients constrained by the algebraic
 relations of the QSC.
 With the \(SL(2)\) conventions used in the previous chapter, the large-\(u\)
-powers are
+powers of the \(P\)-functions are
 \[
-\begin{aligned}
   (P_1,P_2,P_3,P_4)
-  &\sim
-  (A_1u^{-J/2},A_2u^{-J/2-1},A_3u^{J/2},A_4u^{J/2-1}),\\
-  (\mu_{12},\mu_{13},\mu_{14},\mu_{24},\mu_{34})
-  &\sim
-  (u^{\Delta-J},u^{\Delta+1},u^\Delta,u^{\Delta-1},u^{\Delta+J}).
-\end{aligned}
+  \sim
+  (A_1u^{-J/2},A_2u^{-J/2-1},A_3u^{J/2},A_4u^{J/2-1}).
 \]
-The leading coefficients are not arbitrary.  The QSC gluing and Pfaffian
-constraint imply, for a state with \(S\) Lorentz-spin magnons,
+Together with Lemma~\ref{lem:qsc-mu12-dimension-exponent}, the leading
+terms in
+\[
+  \widetilde P_a=\mu_{ab}P^b,\qquad
+  (P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)
+\]
+then force the remaining \(\mu\)-powers
+\[
+  (\mu_{12},\mu_{13},\mu_{14},\mu_{24},\mu_{34})
+  \sim
+  (u^{\Delta-J},u^{\Delta+1},u^\Delta,u^{\Delta-1},u^{\Delta+J}),
+\]
+provided the leading terms do not undergo accidental cancellations.  For
+example, the three contributions
+\[
+  \mu_{14}P_1,\qquad \mu_{13}P_2,\qquad \mu_{12}P_3
+\]
+to \(\widetilde P_1\) all scale as \(u^{\Delta-J/2}\); this fixes the
+relative powers of \(\mu_{13}\) and \(\mu_{14}\) once the powers of \(P_a\)
+and \(\mu_{12}\) are known.  The same balance applied to
+\(\widetilde P_2,\widetilde P_3,\widetilde P_4\) gives the displayed list.
+
+\begin{assumption}[Large-\(u\) QSC characteristic roots]
+\label{ass:qsc-large-u-characteristic-roots}
+Let
+\[
+  X=A_1A_4,\qquad Y=A_2A_3 .
+\]
+After inserting the \(SL(2)\) large-\(u\) powers into the one-step
+monodromy recursion for \(\mu\), the leading system for the five independent
+\(\mu_{ab}\) components has the characteristic equation
+\[
+  \Phi(\alpha)
+  =
+  (J+1)^2\alpha^2
+  -4\ii J(J+1)Y
+  -
+  \Bigl(
+    \alpha^2+J-\ii(J+1)Y+\ii(J-1)X
+  \Bigr)^2
+  =
+  0 .
+  \label{eq:qsc-large-u-characteristic-polynomial}
+\]
+The physical dimension root is \(\alpha=\Delta\).  The representation-theory
+input fixing the second nonzero root is
+\(\alpha=S-1\), where \(S\) is the Lorentz spin of the \(SL(2)\) state.
+\end{assumption}
+
+This assumption is not a path-integral theorem.  It is the large-\(u\)
+characteristic form of the QSC gluing/asymptotic data in this gauge.  The
+local algebra below is included because it is a common source of sign errors:
+the products \(A_1A_4\) and \(A_2A_3\) carry the sign convention for
+\(\chi\), for \(f^{[\pm1]}(u)=f(u\pm\ii/2)\), and for the short-cut sheet.
+
+\begin{proposition}[Large-\(u\) coefficient products]
+\label{prop:qsc-large-u-coefficient-products}
+Under Assumption~\ref{ass:qsc-large-u-characteristic-roots}, the leading
+coefficient products are
 \[
 \begin{aligned}
   A_1A_4
@@ -300,9 +352,50 @@ constraint imply, for a state with \(S\) Lorentz-spin magnons,
        {16J(J+1)}.
 \end{aligned}
 \]
-These formulae are convention-sensitive because they depend on the shift
-normalization \(f^{[\pm1]}(u)=f(u\pm\ii/2)\), the short cut
-\([-2g,2g]\), and the choice of \(P\)-basis.
+\end{proposition}
+
+\begin{proof}
+Put \(\beta=S-1\).  Since \(\Phi(\Delta)=\Phi(\beta)=0\), subtracting the
+two equations cancels the term proportional to \(Y\) and gives
+\[
+  \Delta^2+\beta^2+2J+2U=(J+1)^2,
+  \qquad
+  U=-\ii(J+1)Y+\ii(J-1)X,
+\]
+as long as \(\Delta^2\neq\beta^2\); the degenerate cases are obtained by
+continuity.  Thus
+\[
+  U=\frac{J^2+1-\Delta^2-\beta^2}{2}.
+\]
+Substituting this value in \(\Phi(\Delta)=0\) gives
+\[
+  4\ii J(J+1)Y
+  =
+  (J+1)^2\Delta^2
+  -
+  \frac14\left(\Delta^2+(J+1)^2-\beta^2\right)^2 .
+\]
+Now
+\[
+  (J+1)^2-\beta^2=(J-S+2)(J+S),
+\]
+and the elementary factorization
+\[
+  4(J+1)^2\Delta^2
+  -
+  \left(\Delta^2+(J-S+2)(J+S)\right)^2
+  =
+  -\bigl(\Delta^2-(J-S+2)^2\bigr)
+   \bigl(\Delta^2-(J+S)^2\bigr)
+\]
+gives the displayed formula for \(A_2A_3=Y\).  The formula for
+\(A_1A_4=X\) follows from
+\[
+  \ii(J-1)X=U+\ii(J+1)Y
+\]
+and the same factorization with
+\((J-S+2,J+S)\) replaced by \((J-S,J+S-2)\).
+\end{proof}
 
 \begin{lemma}[Consistency of the \(P\mu\) discontinuity]
 \label{lem:planar-n4-pmu-pfaffian-consistency}

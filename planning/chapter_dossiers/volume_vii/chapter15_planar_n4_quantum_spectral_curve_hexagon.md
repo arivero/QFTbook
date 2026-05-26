@@ -46,6 +46,14 @@ three-point functions.
 - Proves from the `Pmu` discontinuity and pseudo-periodicity that
   `Y_{1,1}Y_{2,2}=mu_12(u+i)/mu_12(u)`, and derives
   `mu_12(u) ~ u^(Delta-J)` when the large-`u` behavior is power-like.
+- Derives the remaining `mu_ab` large-`u` powers from the `Pmu` sheet
+  equation and the `SL(2)` `P_a` powers, under an explicit no-accidental-
+  cancellation assumption.
+- Adds the large-`u` QSC characteristic-root input for the five independent
+  `mu_ab` components, then proves the displayed coefficient products
+  `A_1A_4` and `A_2A_3` by solving the two root equations
+  `Phi(Delta)=Phi(S-1)=0`.  This records the representation-theory status of
+  the spin-shadow root instead of hiding it in the formula.
 - Adds the Pfaffian normalization and proves its preservation under the
   rank-two Pmu discontinuity update.
 - Proves the one-step `mu(u+i)` monodromy recursion from pseudo-periodicity,
@@ -102,6 +110,10 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the two-row T-hook Wronskian Pluecker identity,
   central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
   `T_{1,0}=mu_12 tilde mu_12`.
+- The same script checks the QSC large-`u` characteristic equation for the
+  displayed `A_1A_4` and `A_2A_3` products, including the dimension root,
+  the spin-shadow root `S-1`, the intermediate linear relation, and
+  sensitivity to an overall sign flip.
 - The same script checks the sign convention in the `mu(u+i)` monodromy
   recursion against the rank-two discontinuity update and verifies
   antisymmetry of the shifted matrix.

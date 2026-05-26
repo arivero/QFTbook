@@ -186,6 +186,23 @@
   the monograph closer to the stringbook convention while making the local
   algebra self-contained.
 
+## Comprehensive Development Continuation VII
+
+- Expanded the Chapter 15 large-`u` QSC asymptotics.  The text now derives
+  the remaining `mu_ab` powers from the `Pmu` sheet equation and the
+  `SL(2)` `P_a` powers, with an explicit no-accidental-cancellation
+  qualification.
+- Added the large-`u` characteristic-root input for the five independent
+  `mu_ab` components:
+  `Phi(alpha)=0` with physical root `alpha=Delta` and spin-shadow root
+  `alpha=S-1`.  The representation-theory status of this second root is now
+  stated instead of being hidden inside the final coefficient products.
+- Proved the displayed `A_1A_4` and `A_2A_3` formulae by solving
+  `Phi(Delta)=Phi(S-1)=0`.  The derivation exposes the intermediate linear
+  combination
+  `U=-i(J+1)A_2A_3+i(J-1)A_1A_4` and the elementary factorization that fixes
+  the convention-sensitive signs.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -222,6 +239,9 @@
 - QSC two-row T-hook Wronskian bridge algebra: the Pluecker factorization,
   central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
   `T_{1,0}=mu_12 tilde mu_12`.
+- QSC large-`u` characteristic-root coefficient products: the dimension root,
+  the spin-shadow root `S-1`, the intermediate linear relation, and failure
+  of an overall sign flip.
 - QSC `Pmu` monodromy-recursion signs and antisymmetry of the shifted
   `mu` matrix.
 

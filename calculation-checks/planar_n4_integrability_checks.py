@@ -724,6 +724,87 @@ def check_t_hook_wronskian_pmu_bridge() -> None:
         )
 
 
+def check_qsc_large_u_coefficient_constraints() -> None:
+    """Check the large-u characteristic equation for the QSC coefficient products."""
+
+    def coefficient_products(
+        twist: float,
+        spin: float,
+        delta: float,
+    ) -> tuple[complex, complex]:
+        a14 = (
+            1j
+            * (
+                ((twist + spin - 2) ** 2 - delta * delta)
+                * ((twist - spin) ** 2 - delta * delta)
+            )
+            / (16 * twist * (twist - 1))
+        )
+        a23 = (
+            1j
+            * (
+                ((twist - spin + 2) ** 2 - delta * delta)
+                * ((twist + spin) ** 2 - delta * delta)
+            )
+            / (16 * twist * (twist + 1))
+        )
+        return a14, a23
+
+    def characteristic(
+        alpha: float,
+        twist: float,
+        a14: complex,
+        a23: complex,
+    ) -> complex:
+        return (
+            (twist + 1) ** 2 * alpha * alpha
+            - 4j * twist * (twist + 1) * a23
+            - (
+                alpha * alpha
+                + twist
+                - 1j * (twist + 1) * a23
+                + 1j * (twist - 1) * a14
+            )
+            ** 2
+        )
+
+    for twist, spin, delta in (
+        (2.0, 2.0, 4.15),
+        (3.0, 4.0, 7.2),
+        (5.0, 1.0, 6.4),
+    ):
+        a14, a23 = coefficient_products(twist, spin, delta)
+        assert_close(
+            "QSC large-u characteristic dimension root",
+            characteristic(delta, twist, a14, a23),
+            tol=2.0e-9,
+        )
+        assert_close(
+            "QSC large-u characteristic spin-shadow root",
+            characteristic(spin - 1, twist, a14, a23),
+            tol=2.0e-9,
+        )
+        intermediate = -1j * (twist + 1) * a23 + 1j * (twist - 1) * a14
+        expected_intermediate = (
+            twist * twist + 1 - delta * delta - (spin - 1) ** 2
+        ) / 2
+        assert_close(
+            "QSC large-u coefficient intermediate relation",
+            intermediate,
+            expected_intermediate,
+            tol=2.0e-10,
+        )
+
+        wrong_sign_a14, wrong_sign_a23 = -a14, -a23
+        if (
+            abs(characteristic(delta, twist, wrong_sign_a14, wrong_sign_a23))
+            < 1.0e-6
+        ):
+            raise AssertionError(
+                "QSC coefficient products are insensitive to an overall sign flip"
+            )
+
+
 def check_pmu_pfaffian_rank_two_update() -> None:
     def pfaffian_4(matrix: list[list[complex]]) -> complex:
         return (
@@ -814,6 +895,7 @@ def main() -> None:
     check_bremsstrahlung_weak_series()
     check_t_system_to_y_system_identity()
     check_t_hook_wronskian_pmu_bridge()
+    check_qsc_large_u_coefficient_constraints()
     check_pmu_pfaffian_rank_two_update()
     print("All planar N=4 integrability checks passed.")
 
