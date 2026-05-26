@@ -453,7 +453,8 @@ Current checks:
   background-field source convention, including the mean-zero condition
   \(J=L\), the Gaussian square-completion sign used in the one-loop
   effective-action determinant, and the pure-metric second-variation
-  normalization and curvature-vertex sign.
+  normalization, curvature-vertex sign, heat-kernel pole normalization, and
+  Ricci-counterterm sign.
 - `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
   NLSM Buscher and pure-metric beta-function sections, including Buscher
   \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift

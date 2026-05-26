@@ -233,8 +233,10 @@ Current absorption:
   NLSM renormalization pass now gives the covariant exponential background
   split, the source-coupled mean-zero 1PI effective-action convention, the
   pure-metric second variation and curvature vertex, the background-field
-  one-loop Ricci divergence, the \(G,B,\Phi\) Weyl-anomaly package,
-  scheme-redefinition geometry, torsionful one-loop packaging, the
+  one-loop Ricci divergence with the local heat-kernel pole and
+  Ricci-counterterm normalization derived explicitly, the \(G,B,\Phi\)
+  Weyl-anomaly package, scheme-redefinition geometry, torsionful one-loop
+  packaging, the
   pure-metric two-loop representative, the precise RG-time conversion to
   Hamilton Ricci flow, and constant-curvature sphere/hyperbolic radius-flow
   checks.  The Narain pass

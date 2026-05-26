@@ -32,7 +32,10 @@
   density, \(D_a\xi\) kinetic term, and the curvature vertex with the chapter
   curvature convention.
 - Derives the one-loop Ricci divergence in background-field dimensional
-  regularization.
+  regularization, including the local heat-kernel pole
+  \((-\partial^2)^{-1}(\sigma,\sigma)_{\mathrm{div}}=(2\pi\epsilon)^{-1}\),
+  the \(\alpha'/\epsilon\) fluctuation contraction, and the minimal-subtraction
+  Ricci counterterm sign.
 - Records the one-loop \(G\) and \(B\) hatted Weyl-anomaly coefficients with
   \(H\)-flux and dilaton terms.
 - States the hypotheses under which one-loop Weyl-anomaly coefficients are
@@ -258,6 +261,14 @@
    first-variation coefficient \(-(2\pi\alpha')^{-1}G_{ij}\nabla^a
    \partial_ax^j\) and quadratic coefficient \((4\pi\alpha')^{-1}
    (|D\xi|^2-\langle R(\xi,\partial x)\partial x,\xi\rangle)\).
+40. The one-loop local heat-kernel pole
+   \((-\partial^2)^{-1}(\sigma,\sigma)_{\mathrm{div}}=(2\pi\epsilon)^{-1}\)
+   combines with the kinetic prefactor \((2\pi\alpha')^{-1}\) to give
+   \(\langle\xi^k\xi^\ell\rangle_{\mathrm{div}}=
+   \alpha'G^{k\ell}/\epsilon\), hence
+   \(\Gamma^{(1)}_{\mathrm{div}}=-(4\pi\epsilon)^{-1}
+   \int R_{ij}\partial x^i\partial x^j\) and
+   \(\delta G_{ij}=(\alpha'/\epsilon)R_{ij}\).
 
 ## Figures
 
@@ -277,7 +288,8 @@
 - `calculation-checks/nlsm_background_field_checks.py` verifies the
   source-coupled background-field Gaussian algebra: the mean-zero condition
   \(J=L\), the sign in completing the square, and the pure-metric
-  second-variation normalization and curvature-vertex sign.
+  second-variation normalization, curvature-vertex sign, heat-kernel pole
+  normalization, and Ricci-counterterm sign.
 - `calculation-checks/nlsm_buscher_checks.py` verifies the finite Buscher
   algebra, the component \(G,B\) rules, the involutive dilaton shift, and the
   constant-curvature specialization of the two-loop metric coefficient and

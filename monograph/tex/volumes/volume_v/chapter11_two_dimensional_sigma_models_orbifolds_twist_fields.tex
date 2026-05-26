@@ -347,9 +347,9 @@ which is \eqref{eq:nlsm-pure-metric-second-variation} in components.
 
 \begin{proposition}[One-loop metric divergence]
 \label{prop:nlsm-one-loop-ricci-divergence}
-Let \(M\) be Riemannian and set \(B=\Phi=0\).  Use dimensional
-regularization around \(2-\epsilon\) worldsheet dimensions and the
-background-field expansion
+Let \(M\) be Riemannian, assume \(\Sigma\) is closed, and set
+\(B=\Phi=0\).  Use dimensional regularization around \(d=2-\epsilon\)
+worldsheet dimensions and the covariant background-field expansion
 \[
   X(\sigma)=\exp_{x(\sigma)}\xi(\sigma),
 \]
@@ -377,7 +377,7 @@ in this coupling coordinate.
 \end{proposition}
 
 \begin{proof}
-Choose geodesic normal coordinates along the background map \(x\).  The
+By Proposition~\ref{prop:nlsm-second-variation-curvature-vertex}, the
 quadratic action for \(\xi\) is
 \[
   S_2
@@ -394,33 +394,93 @@ quadratic action for \(\xi\) is
 \]
 The covariant derivative \(D_a\xi^i=\partial_a\xi^i+
 \Gamma^i{}_{jk}(x)\partial_ax^j\xi^k\) makes target diffeomorphism covariance
-manifest.  The local divergent part of the one-loop determinant is obtained
-from the coincident Green kernel of the covariant Laplacian.  In dimensional
-regularization,
+manifest.  To extract a local pole, freeze the background at a point
+\(\sigma_0\), choose geodesic normal coordinates on \(\Sigma\) at
+\(\sigma_0\) and an orthonormal frame of \(x^*TM\) parallel at
+\(\sigma_0\), and keep only terms with two derivatives of the slowly varying
+background map \(x\).  Derivatives of the connection and worldsheet
+curvature either contribute higher-derivative terms or the universal
+worldsheet-gravity anomaly, not the metric counterterm being computed here.
+
+The free kinetic action in this frame is
 \[
+  S_{\mathrm{kin}}
+  =
+  \frac1{4\pi\alpha'}
+  \int\dd^d\sigma\,\delta_{ij}\partial_a\xi^i\partial^a\xi^j
+  =
+  \frac12
+  \int\dd^d\sigma\,\xi^i
+  \left(\frac{-\partial^2}{2\pi\alpha'}\right)\xi^i .
+\]
+Thus the free covariance is \(2\pi\alpha'(-\partial^2)^{-1}\).  Introduce an
+auxiliary mass \(m\) only to separate the ultraviolet pole from the infrared
+zero mode.  The coincident scalar Green kernel has the local heat-kernel
+representation
+\[
+\begin{aligned}
+  (-\partial^2+m^2)^{-1}(\sigma_0,\sigma_0)
+  &=
+  \int_0^\infty\dd s\,
+  (4\pi s)^{-d/2}\ee^{-m^2s}
+  \\
+  &=
+  (4\pi)^{-d/2}\Gamma(1-d/2)(m^2)^{d/2-1}
+  =
+  \frac1{2\pi\epsilon}+O(\epsilon^0).
+\end{aligned}
+  \label{eq:nlsm-local-heat-kernel-pole}
+\]
+Restoring covariance gives the singular part
+\begin{equation}
   \langle \xi^k(\sigma)\xi^\ell(\sigma)\rangle_{\mathrm{div}}
   =
-  \frac{\alpha'}{\epsilon}G^{k\ell}(x(\sigma))
-\]
-in the convention in which the scalar Laplacian Green function has pole
-\((2\pi/\epsilon)\) and the kinetic operator carries the prefactor
-\((2\pi\alpha')^{-1}\).  Contracting the curvature vertex gives
+  2\pi\alpha'\,
+  \frac1{2\pi\epsilon}\,
+  G^{k\ell}(x(\sigma))
+  =
+  \frac{\alpha'}{\epsilon}G^{k\ell}(x(\sigma)).
+  \label{eq:nlsm-free-fluctuation-coincident-pole}
+\end{equation}
+The curvature interaction in \(S_2\) is
 \[
-  \frac1{4\pi\alpha'}
+  S_{\mathrm{curv}}
+  =
+  -\frac1{4\pi\alpha'}
+  \int\sqrt\gamma\,\gamma^{ab}
+  R_{ikj\ell}(x)\partial_ax^i\partial_bx^j\xi^k\xi^\ell .
+\]
+Since
+\[
+  \Gamma[x]
+  =
+  S[x]-\log\langle \ee^{-S_{\mathrm{curv}}}\rangle_{\mathrm{kin}}
+  =
+  S[x]+\langle S_{\mathrm{curv}}\rangle_{\mathrm{kin}}
+  +O((\partial x)^4),
+\]
+the logarithmic pole is
+\[
+\begin{aligned}
+  \Gamma^{(1)}_{\mathrm{div}}[x]
+  &=
+  -\frac1{4\pi\alpha'}
   \int\sqrt\gamma\,\gamma^{ab}
   R_{ikj\ell}\partial_ax^i\partial_bx^j
   \langle\xi^k\xi^\ell\rangle_{\mathrm{div}}
-  =
-  \frac1{4\pi\epsilon}
+  \\
+  &=
+  -\frac1{4\pi\epsilon}
   \int\sqrt\gamma\,\gamma^{ab}
-  R_{ij}\partial_ax^i\partial_bx^j .
+  R_{ij}\partial_ax^i\partial_bx^j ,
+\end{aligned}
 \]
-It appears in \(-\log\int D\xi\,\ee^{-S_2}\), giving
-\eqref{eq:nlsm-one-loop-divergent-effective-action}.  Since a local metric
-term in the action is multiplied by \(1/(4\pi\alpha')\), cancelling
-\eqref{eq:nlsm-one-loop-divergent-effective-action} requires a local
-Lagrangian metric term proportional to \(\alpha'R_{ij}/\epsilon\).  Requiring
-the regularized coupling representative to be independent of \(\mu\) gives
+where \(R_{ikj\ell}G^{k\ell}=R_{ij}\) in the component ordering fixed in
+Proposition~\ref{prop:nlsm-second-variation-curvature-vertex}.  Since a
+local metric term in the action is multiplied by \(1/(4\pi\alpha')\),
+cancelling \eqref{eq:nlsm-one-loop-divergent-effective-action} requires
+\(\delta G_{ij}=(\alpha'/\epsilon)R_{ij}\) in minimal subtraction.  Requiring
+the bare coupling representative to be independent of \(\mu\) then gives
 \eqref{eq:nlsm-one-loop-beta-ricci}.
 \end{proof}
 
