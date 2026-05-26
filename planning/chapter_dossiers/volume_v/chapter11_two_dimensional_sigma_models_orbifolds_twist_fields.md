@@ -56,6 +56,11 @@
   permutation twist weights by the Schwarzian covering map.
 - Records complex-boson rotation twist weights and the real
   \(\mathbb Z_2\) value \(h=\bar h=1/16\).
+- Defines the symmetric-product orbifold
+  \(\operatorname{Sym}^N(\mathcal C)=\mathcal C^{\otimes N}/S_N\),
+  cycle-type sectors, centralizer projection, long-string weights,
+  Hecke-transform partition-function generating series, twist OPE
+  monodromy multiplication, and normalized two-cycle deformation operators.
 - Defines twist-field deformations as regulated integrated local-operator
   perturbations with OPE/contact-term beta functions.
 
@@ -95,7 +100,19 @@
    holonomies and is modular invariant with the stated label action.
 14. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
    reflection twist field has \(h=1/16\).
-15. Twist-field deformations are conformal perturbations by projected local
+15. For a cycle type
+   \(\lambda=(1^{m_1}\cdots N^{m_N})\), the symmetric-product centralizer has
+   order \(\prod_K K^{m_K}m_K!\), and the sector Hilbert space is the
+   \(C_\lambda\)-invariant subspace of the tensor product of long-string
+   Hilbert spaces.
+16. The symmetric-product partition-function generating series is the
+   exponential of nonholomorphic Hecke transforms of the seed partition
+   function, obtained by decomposing commuting \(S_N\)-bundle holonomies into
+   connected torus covers.
+17. Twist OPEs multiply monodromies before conjugacy-class averaging; a
+   transposition joins two disjoint cycles or splits one cycle, with the
+   leading bare-twist exponent fixed by the cycle-weight difference.
+18. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
 
@@ -118,5 +135,8 @@
   arithmetic of the Sugawara central charges, \(SU(2)\) affine-primary
   weights, diagonal coset minimal-model central charges, and Ising/tricritical
   examples.
-- Later calculation checks should cover covering-space twist correlators and
-  symmetric-product joining/splitting selection rules.
+- `calculation-checks/symmetric_product_orbifold_checks.py` verifies
+  \(S_N\) centralizer orders, conjugacy-class counting, central-charge
+  additivity, cycle-type twist weights, joining weight shifts, and the
+  two-cycle normalization count.
+- Later calculation checks should cover covering-space twist correlators.

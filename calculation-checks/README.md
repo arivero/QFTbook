@@ -255,6 +255,11 @@ Current checks:
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
   extraction, and the \(\widehat A\)-series coefficients through degree six.
+- `symmetric_product_orbifold_checks.py`: exact finite group-theory and
+  rational-weight checks for the Volume V symmetric-product orbifold section,
+  including \(S_N\) centralizer orders, conjugacy-class counting, central
+  charge additivity, cycle-type twist weights, join/split weight shifts, and
+  the two-cycle normalization count.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign
