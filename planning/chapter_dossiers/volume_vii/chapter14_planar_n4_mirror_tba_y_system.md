@@ -11,6 +11,11 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - `tilde E, tilde p`: mirror energy and momentum.
 - `x_Q^pm`: bound-state Zhukovsky variables.
 - `bullet_Q,y_pm,(v|M),(w|M)`: mirror node families.
+- `eta=i/(2g)`: auxiliary mirror-string half-spacing.
+- `v(y)=y+1/y`: auxiliary rapidity in the one-wing mirror Bethe-Yang
+  subsystem.
+- `F(y)`: product of level-I mirror scattering factors controlling whether
+  a level-II root lies inside, outside, or on the unit `y`-circle.
 - `epsilon_A`, `Y_A`: mirror pseudoenergies and Y-functions.
 - `K_BA`: mirror scattering kernel.
 - `Y_{a,s}`: T-hook Y-system variables.
@@ -27,6 +32,13 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - Adds the sheet/branch status of physical versus mirror Zhukovsky variables.
 - Defines a mirror-kernel datum as the scattering factor together with source
   and target contours, and adds the mirror Bethe-string node inventory.
+- Adds the one-wing mirror auxiliary Bethe-Yang subsystem in the stringbook
+  mirror orientation, including the mirror fermion boundary-condition sign.
+- Proves the mirror-sheet modulus lemma for the level-II/level-I factor:
+  elementary `y` roots are supported on `|y|=1` in the thermodynamic limit.
+- Derives the pole-cancellation arrays for `(v|M)`/`M|yw` strings and pure
+  `(w|M)` strings, with the real-center condition labeled as string-
+  hypothesis input rather than a four-dimensional QFT theorem.
 - States the general mirror TBA equation with contours, kernels, chemical
   potentials, and signs as part of the data.
 - Gives the excited-state energy formula with wrapping integral.
@@ -58,6 +70,9 @@ node domain.
 - `calculation-checks/planar_n4_integrability_checks.py` verifies a local
   Hirota-to-Y-system algebra identity.
 - The same script verifies the mirror double-Wick dispersion identity.
+- The same script checks the mirror auxiliary-string derivation: the
+  one-particle modulus identity, inside/outside support signs, `M|yw`
+  pole/zero positions, and pure `w`-string spacings.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic,
   the stringbook `u`-integrand to `q=2u` rational-integrand conversion,
   numerical real-line integrals for the first four mirror charges, and the
@@ -67,8 +82,8 @@ node domain.
 
 - Stringbook anchors:
   `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
-  especially the mirror TBA/Konishi block around the weak `Y_{n,0}` formula
-  and wrapping integral.
+  especially the mirror Bethe-string derivation, mirror TBA/Konishi block
+  around the weak `Y_{n,0}` formula, and wrapping integral.
 - Stringbook notebook anchor:
   `/Users/xiyin/ResearchIdeas/stringbook/codes/mirror TBA and wrapping corrections.nb`.
 - Downloaded local study copies under

@@ -285,6 +285,22 @@
   vacuum nesting while keeping the BES dressing phase separate from the
   nesting-frame choice.
 
+## Comprehensive Development Continuation XIV
+
+- Expanded Chapter 14's mirror Bethe-string section from a node inventory
+  into a pole-cancellation derivation in the stringbook mirror orientation.
+  The text now displays the one-wing auxiliary mirror Bethe-Yang subsystem,
+  including the mirror fermion boundary-condition sign.
+- Proved the mirror-sheet modulus lemma for the level-II/level-I factor:
+  for `x^+=r xi`, `x^-=r^{-1} xi`, the factor has modulus below, equal to,
+  or above one according as `|y|<1`, `|y|=1`, or `|y|>1`.  This explains why
+  elementary `y` roots live on the unit circle in the thermodynamic mirror
+  string hypothesis.
+- Derived the `M|yw` and pure `w|M` auxiliary string arrays from the
+  nearest pole/zero cancellations, while labeling the real-center condition
+  as thermodynamic string-hypothesis input rather than a theorem of the
+  four-dimensional gauge theory.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -320,6 +336,9 @@
 - BMN scaling limit;
 - bound-state shortening dispersion;
 - mirror double-Wick dispersion;
+- mirror auxiliary Bethe-string derivation: level-II/level-I modulus
+  identity and support signs, `M|yw` pole/zero positions, and pure `w|M`
+  spacings;
 - Konishi four-loop wrapping arithmetic;
 - Konishi leading wrapping rational-integral checks: stringbook `u`-integrand
   versus `q=2u` rational integrand, numerical real-line integrals for

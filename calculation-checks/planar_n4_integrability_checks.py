@@ -716,6 +716,72 @@ def check_mirror_double_wick_dispersion() -> None:
                 )
 
 
+def check_mirror_auxiliary_string_arrays() -> None:
+    """Check mirror-sheet y-root support and auxiliary string spacings."""
+
+    for radius in (0.2, 0.65, 0.9):
+        for phase in (0.1, 1.7, -2.2):
+            xi = cmath.exp(1j * phase)
+            x_plus = radius * xi
+            x_minus = xi / radius
+            for y in (
+                0.4 * cmath.exp(0.8j),
+                cmath.exp(-0.3j),
+                1.8 * cmath.exp(1.1j),
+            ):
+                factor = ((y - x_plus) / (y - x_minus)) * cmath.sqrt(x_minus / x_plus)
+                reduced = abs(y - radius * xi) ** 2 / abs(radius * y - xi) ** 2
+                assert_close("mirror y-support modulus identity", abs(factor) ** 2, reduced)
+                sign = abs(factor) - 1
+                if abs(abs(y) - 1) < 1.0e-12:
+                    assert_close("mirror y-support unit circle", sign)
+                elif (abs(y) < 1 and sign >= 0) or (abs(y) > 1 and sign <= 0):
+                    raise AssertionError("mirror y-support modulus sign")
+
+    for coupling in (0.4, 1.3):
+        eta = 0.5j / coupling
+        for length in range(1, 6):
+            center = 0.37
+            v_inside = [center + (length + 2 - 2 * j) * eta for j in range(1, length + 1)]
+            v_outside = [center - (length + 2 - 2 * j) * eta for j in range(1, length + 1)]
+            w_roots = [center + (length + 1 - 2 * j) * eta for j in range(1, length + 1)]
+
+            for index in range(length):
+                assert_close(
+                    "M|yw inside root pole position",
+                    w_roots[index],
+                    v_inside[index] - eta,
+                )
+                assert_close(
+                    "M|yw outside root zero position",
+                    w_roots[length - 1 - index],
+                    v_outside[index] + eta,
+                )
+
+            for index in range(length - 1):
+                assert_close(
+                    "M|yw adjacent inside recursion",
+                    v_inside[index + 1],
+                    v_inside[index] - 2 * eta,
+                )
+                assert_close(
+                    "M|yw w-root spacing",
+                    w_roots[index + 1],
+                    w_roots[index] - 2 * eta,
+                )
+
+        for length in range(1, 6):
+            center = -0.21
+            w_string = [center + (length + 1 - 2 * j) * eta for j in range(1, length + 1)]
+            for index in range(length - 1):
+                assert_close(
+                    "pure w-string adjacent spacing",
+                    w_string[index + 1],
+                    w_string[index] - 2 * eta,
+                )
+            assert_close("pure w-string real center", sum(w_string) / length, center)
+
+
 def check_konishi_four_loop_wrapping_arithmetic() -> None:
     # ABA coefficient: -(2820 + 288 zeta_3).
     # Wrapping coefficient: 324 + 864 zeta_3 - 1440 zeta_5.
@@ -1324,6 +1390,7 @@ def main() -> None:
     check_bmn_scaling_limit()
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()
+    check_mirror_auxiliary_string_arrays()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()

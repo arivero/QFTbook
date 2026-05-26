@@ -145,6 +145,142 @@ entangled with the Zhukovsky cuts.  Consequently, the node table is part of
 the integrability construction, not a theorem about the original
 four-dimensional path integral.
 
+The node table above abbreviates arrays selected by the Bethe-Yang
+equations.  We now derive the auxiliary arrays from the large-volume
+pole-cancellation mechanism in one
+\(\mathfrak{su}(2|2)_{\rm c}\) wing.  Put
+\[
+  \eta=\frac{\ii}{2g},
+  \qquad
+  v(y)=y+\frac1y .
+\]
+Let \(x_j^\pm\), \(j=1,\ldots,K^{\rm I}\), be mirror level-I rapidity data
+on the real mirror line, so that
+\[
+  x_j^+=r_j\xi_j,\qquad x_j^-=r_j^{-1}\xi_j,
+  \qquad 0<r_j<1,\quad \lvert\xi_j\rvert=1 .
+\]
+The one-wing auxiliary Bethe-Yang subsystem in the stringbook mirror
+orientation has the form
+\begin{equation}
+\begin{aligned}
+  -1
+  &=
+  F(y_a)
+  \prod_{b=1}^{K^{\rm III}}
+  \frac{w_b-v(y_a)-\eta}{w_b-v(y_a)+\eta},
+  \qquad
+  F(y)=
+  \prod_{j=1}^{K^{\rm I}}
+  \frac{y-x_j^+}{y-x_j^-}
+  \sqrt{\frac{x_j^-}{x_j^+}},
+  \\
+  1
+  &=
+  \prod_{a=1}^{K^{\rm II}}
+  \frac{w_b-v(y_a)+\eta}{w_b-v(y_a)-\eta}
+  \prod_{\substack{c=1\\c\neq b}}^{K^{\rm III}}
+  \frac{w_c-w_b+2\eta}{w_c-w_b-2\eta}.
+\end{aligned}
+  \label{eq:planar-n4-mirror-auxiliary-bethe-yang}
+\end{equation}
+The sign in the first equation is the mirror fermion boundary-condition sign.
+It is not the graded sign in the physical nested ABA of
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.
+
+\begin{proposition}[Mirror auxiliary support and Bethe strings]
+\label{prop:planar-n4-mirror-auxiliary-strings}
+Assume the mirror Bethe-Yang equations
+\eqref{eq:planar-n4-mirror-auxiliary-bethe-yang}, the mirror sheet data
+above, and a thermodynamic limit in which the logarithmic averages of
+\(\log\lvert F(y)\rvert\) have the signs determined by the one-particle
+factor below.  Then elementary \(y\)-roots have finite density only on
+\(\lvert y\rvert=1\), elementary \(w\)-roots have finite density only on the
+real \(w\)-axis, and the non-elementary auxiliary complexes have the
+following pole-cancellation arrays:
+\[
+\begin{aligned}
+  v(y_{j,{\rm in}})&=v_0+(M+2-2j)\eta,
+  &
+  \lvert y_{j,{\rm in}}\rvert&<1,
+  \\
+  v(y_{j,{\rm out}})&=v_0-(M+2-2j)\eta,
+  &
+  \lvert y_{j,{\rm out}}\rvert&>1,
+  \\
+  w_j&=v_0+(M+1-2j)\eta,
+  &&
+  j=1,\ldots,M,
+\end{aligned}
+\]
+with real thermodynamic center \(v_0\).  These are the \((v|M)\), or
+\(M|yw\), strings.  The pure \((w|M)\) strings are
+\[
+  w_j=w_0+(M+1-2j)\eta,
+  \qquad j=1,\ldots,M,
+\]
+with real center \(w_0\).  The assertion is a statement about the mirror
+string hypothesis and the displayed large-volume equations; it is not a
+theorem of four-dimensional \(\mathcal N=4\) SYM.
+\end{proposition}
+
+\begin{proof}
+First isolate the source of exponential growth and decay.  For a single
+mirror level-I root write \(x^+=r\xi\), \(x^-=r^{-1}\xi\), with
+\(0<r<1\) and \(\lvert\xi\rvert=1\).  The magnitude of the one-particle
+factor
+\[
+  s(y;x^\pm)=\frac{y-x^+}{y-x^-}\sqrt{\frac{x^-}{x^+}}
+\]
+obeys
+\[
+  \lvert s(y;x^\pm)\rvert^2
+  =
+  \frac{\lvert y-r\xi\rvert^2}{\lvert ry-\xi\rvert^2},
+  \qquad
+  \lvert ry-\xi\rvert^2-\lvert y-r\xi\rvert^2
+  =
+  (1-r^2)(1-\lvert y\rvert^2).
+\]
+Thus \(\lvert s\rvert<1\) for \(\lvert y\rvert<1\), \(\lvert s\rvert=1\)
+for \(\lvert y\rvert=1\), and \(\lvert s\rvert>1\) for
+\(\lvert y\rvert>1\).  Multiplying over \(K^{\rm I}\) level-I roots gives
+the stated support of elementary \(y\)-roots in the thermodynamic limit,
+provided the level-I density has a nonzero logarithmic average.
+
+Now take a \(y\)-root with \(\lvert y_1\rvert<1\).  The factor \(F(y_1)\)
+then tends to zero exponentially, so the first equation in
+\eqref{eq:planar-n4-mirror-auxiliary-bethe-yang} can remain finite only if
+one of the \(w\)-factors has a pole:
+\[
+  w_1-v(y_1)+\eta=0,
+  \qquad\text{that is}\qquad
+  w_1=v(y_1)-\eta .
+\]
+The corresponding \(w_1\)-equation has a zero from the same \(y_1\).  The
+local cancellation recursion remains finite by acquiring a pole from a second
+\(y\)-root,
+\[
+  w_1-v(y_2)-\eta=0,
+  \qquad
+  v(y_2)=v(y_1)-2\eta.
+\]
+If this second root lies outside the unit circle, the divergence of
+\(F(y_2)\) is canceled by the zero of the same \(w_1\)-factor and the string
+closes.  If it lies inside, the same argument continues and creates the next
+\(w\)-root.  Iteration fixes the displayed imaginary spacings.  The real
+center is the thermodynamic string-hypothesis input: the mirror densities are
+assigned to real centers, while the roots in the complex plane are the
+regular arrays above those centers.
+
+The \(w\)-only strings are obtained by applying the same valuation argument to
+the second line of \eqref{eq:planar-n4-mirror-auxiliary-bethe-yang} when the
+background \(y\)-roots are on \(\lvert y\rvert=1\).  A finite elementary
+density is supported on real \(w\).  A complex \(w\)-root must be accompanied
+by neighbouring \(w\)-roots separated by \(2\eta=\ii/g\), which gives the
+array \(w_j=w_0+(M+1-2j)\eta\).
+\end{proof}
+
 \section{Thermodynamic Bethe Ansatz}
 
 Let \(A,B\) range over the mirror Bethe-string species: physical
