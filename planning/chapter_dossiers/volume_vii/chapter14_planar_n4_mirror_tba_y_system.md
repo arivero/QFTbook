@@ -10,6 +10,9 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - `E,p`: physical magnon energy and momentum.
 - `tilde E, tilde p`: mirror energy and momentum.
 - `x_Q^pm`: bound-state Zhukovsky variables.
+- `R_Q,r_Q,xi_Q`: real mirror-momentum parameters used to put
+  `x_Q^+` inside and `x_Q^-` outside the unit circle in the stringbook mirror
+  sheet convention.
 - `bullet_Q,y_pm,(v|M),(w|M)`: mirror node families.
 - `eta=i/(2g)`: auxiliary mirror-string half-spacing.
 - `v(y)=y+1/y`: auxiliary rapidity in the one-wing mirror Bethe-Yang
@@ -40,9 +43,15 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 ## Claim Ledger
 
 - Defines the mirror transformation and emphasizes the non-relativistic
-  difference from two-dimensional relativistic integrable QFT.
+  difference from two-dimensional relativistic integrable QFT, using the
+  stringbook sign convention `E=i tilde p`, `p=i tilde E`.
 - Derives the mirror bound-state dispersion from double Wick rotation.
 - Adds the sheet/branch status of physical versus mirror Zhukovsky variables.
+- Adds and proves an explicit mirror Zhukovsky parametrization for real mirror
+  momentum: `x_Q^+=r_Q xi_Q`, `x_Q^-=r_Q^{-1} xi_Q`,
+  `xi_Q=(tilde p-i Q)/sqrt(Q^2+tilde p^2)`, including shortening,
+  `log(x_Q^-/x_Q^+)=tilde E_Q`, the stringbook mirror momentum equation, and
+  weak Boltzmann scaling `exp(-L tilde E_Q)=O(g^{2L})`.
 - Defines a mirror-kernel datum as the scattering factor together with source
   and target contours, and adds the mirror Bethe-string node inventory.
 - Adds the one-wing mirror auxiliary Bethe-Yang subsystem in the stringbook
@@ -99,6 +108,9 @@ node domain.
 - `calculation-checks/planar_n4_integrability_checks.py` verifies a local
   Hirota-to-Y-system algebra identity.
 - The same script verifies the mirror double-Wick dispersion identity.
+- The same script verifies the mirror Zhukovsky sheet parametrization, including
+  inside/outside status, shortening, stringbook mirror-momentum sign, and weak
+  Boltzmann scaling.
 - The same script checks the mirror auxiliary-string derivation: the
   one-particle modulus identity, inside/outside support signs, `M|yw`
   pole/zero positions, and pure `w`-string spacings.
@@ -117,11 +129,11 @@ node domain.
 ## External References Used In Current Pass
 
 - Stringbook anchors:
-  `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
+  `/Users/xiyin/PhysicsLogic/references/stringbook/string notes.tex`,
   especially the mirror Bethe-string derivation, mirror TBA/Konishi block
   around the weak `Y_{n,0}` formula, and wrapping integral.
 - Stringbook notebook anchor:
-  `/Users/xiyin/ResearchIdeas/stringbook/codes/mirror TBA and wrapping corrections.nb`.
+  `/Users/xiyin/PhysicsLogic/references/stringbook/Code repository/mirror TBA and wrapping corrections.nb`.
 - Downloaded local study copies under
   `references/planar_n4_integrability/`: Bajnok--Janik `0807.0399` for the
   displayed post-residue per-`Q` summand and telescoping target,

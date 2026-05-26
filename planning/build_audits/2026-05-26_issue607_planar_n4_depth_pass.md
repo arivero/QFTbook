@@ -548,3 +548,29 @@ Calculation checks added:
   `P-Q` bridge over exact rational samples: antisymmetric null contractions,
   plus/minus shift independence for both contraction formulae, and determinant
   preservation under the rank-one update.
+
+## Continuation XXI: Stringbook Mirror-Sheet Sign Convention
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Content added:
+
+- Corrected the mirror double-Wick sign convention in Chapter 14 to match the
+  stringbook convention `E=i tilde p`, `p=i tilde E`.
+- Added an explicit real-mirror-momentum Zhukovsky parametrization
+  `x_Q^+=r_Q xi_Q`, `x_Q^-=r_Q^{-1} xi_Q`, with
+  `xi_Q=(tilde p-i Q)/sqrt(Q^2+tilde p^2)`.
+- Proved the bound-state shortening relation, the mirror energy relation
+  `log(x_Q^-/x_Q^+)=tilde E_Q`, the stringbook mirror-momentum relation
+  `i tilde p=-Q-2 i g(x_Q^+-x_Q^-)`, and the weak wrapping scaling
+  `exp(-L tilde E_Q)=O(g^{2L})`.
+
+Calculation checks added:
+
+- `check_mirror_zhukovsky_sheet_parametrization()` verifies the inside/outside
+  sheet assignment, shortening, mirror momentum sign, and weak Boltzmann
+  leading order for several charges, momenta, and couplings.

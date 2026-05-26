@@ -14,10 +14,13 @@ constructive QFT.
 \section{Mirror Transformation}
 
 For a physical magnon with energy \(E(p)\) and momentum \(p\), the mirror
-variables are defined by analytic continuation
+variables are defined by the stringbook analytic continuation
 \[
-  \widetilde E=\ii p,\qquad
-  \widetilde p=\ii E .
+  E=\ii\widetilde p,\qquad
+  p=\ii\widetilde E ,
+  \qquad\text{equivalently}\qquad
+  \widetilde E=-\ii p,\quad
+  \widetilde p=-\ii E .
 \]
 Since
 \[
@@ -34,7 +37,7 @@ For a \(Q\)-magnon bound state with physical dispersion
   E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2},
 \]
 the mirror dispersion obtained from
-\(\widetilde E=\ii p\), \(\widetilde p=\ii E_Q\) is
+\(p=\ii\widetilde E\), \(E_Q=\ii\widetilde p\) is
 \begin{equation}
   \widetilde E_Q(\widetilde p)
   =
@@ -48,9 +51,9 @@ The positive branch is chosen for real mirror momentum.
 \end{proposition}
 
 \begin{proof}
-Set \(p=-\ii\widetilde E\) and \(E_Q=-\ii\widetilde p\) in the physical
+Set \(p=\ii\widetilde E\) and \(E_Q=\ii\widetilde p\) in the physical
 dispersion relation.  Since
-\(\sin(-\ii\widetilde E/2)=-\ii\sinh(\widetilde E/2)\), one obtains
+\(\sin(\ii\widetilde E/2)=\ii\sinh(\widetilde E/2)\), one obtains
 \[
   -\widetilde p^{\,2}
   =
@@ -97,6 +100,92 @@ obeying the bound-state shortening relation
 \]
 In the mirror region the branch is chosen so that the mirror energy
 \(\widetilde E_Q(u)\) is positive for real mirror rapidity \(u\).
+
+The preceding paragraph is often the place where sign mistakes enter.  The
+following elementary parametrization fixes the sheet convention used in the
+rest of the chapter and in the stringbook mirror Bethe--Yang equations.
+
+\begin{proposition}[Mirror Zhukovsky sheet parametrization]
+\label{prop:planar-n4-mirror-zhukovsky-sheet-parametrization}
+Fix \(g>0\), \(Q\in\mathbb Z_{>0}\), and real mirror momentum
+\(\widetilde p\).  Put
+\[
+  R_Q=\sqrt{Q^2+\widetilde p^{\,2}},
+  \qquad
+  \widetilde E_Q
+  =
+  2\,\operatorname{arsinh}\frac{R_Q}{4g},
+  \qquad
+  r_Q=\ee^{-\widetilde E_Q/2},
+  \qquad
+  \xi_Q=\frac{\widetilde p-\ii Q}{R_Q}.
+\]
+Then
+\begin{equation}
+  x_Q^+=r_Q\xi_Q,\qquad
+  x_Q^-=r_Q^{-1}\xi_Q
+  \label{eq:planar-n4-mirror-zhukovsky-parametrization}
+\end{equation}
+satisfy
+\begin{align}
+  x_Q^++\frac1{x_Q^+}-x_Q^- -\frac1{x_Q^-}
+  &=
+  \frac{\ii Q}{g},
+  \label{eq:planar-n4-mirror-shortening-check}\\
+  \log\frac{x_Q^-}{x_Q^+}
+  &=
+  \widetilde E_Q,
+  \label{eq:planar-n4-mirror-energy-log-check}\\
+  \ii\widetilde p
+  &=
+  -Q-2\ii g(x_Q^+-x_Q^-).
+  \label{eq:planar-n4-mirror-momentum-check}
+\end{align}
+Moreover \(|x_Q^+|<1<|x_Q^-|\).  At weak coupling with \(Q,\widetilde p\)
+fixed,
+\begin{equation}
+  \ee^{-L\widetilde E_Q}
+  =
+  \left(\frac{4g^2}{Q^2+\widetilde p^{\,2}}\right)^L
+  \bigl(1+O(g^2)\bigr),
+  \label{eq:planar-n4-mirror-weak-boltzmann}
+\end{equation}
+so one mirror wrapping around a length-\(L\) trace first appears at order
+\(g^{2L}\) before transfer-matrix and dressing factors are included.
+\end{proposition}
+
+\begin{proof}
+The number \(\xi_Q\) has unit modulus and \(0<r_Q<1\).  Hence
+\(|x_Q^+|<1<|x_Q^-|\), and
+\(\log(x_Q^-/x_Q^+)=-2\log r_Q=\widetilde E_Q\) on the real mirror branch.
+Since
+\[
+  \sinh\frac{\widetilde E_Q}{2}=\frac{R_Q}{4g},
+  \qquad
+  \xi_Q^{-1}-\xi_Q=\frac{2\ii Q}{R_Q},
+\]
+we get
+\[
+  x_Q^++\frac1{x_Q^+}-x_Q^- -\frac1{x_Q^-}
+  =
+  2\sinh\frac{\widetilde E_Q}{2}\,(\xi_Q^{-1}-\xi_Q)
+  =
+  \frac{\ii Q}{g}.
+  \]
+Similarly,
+\[
+  -Q-2\ii g(x_Q^+-x_Q^-)
+  =
+  -Q+4\ii g\sinh\frac{\widetilde E_Q}{2}\,\xi_Q
+  =
+  -Q+\ii R_Q\xi_Q
+  =
+  \ii\widetilde p.
+\]
+Finally,
+\(\ee^{-\widetilde E_Q}=(\sqrt{1+R_Q^2/(16g^2)}-R_Q/(4g))^2\), whose
+small-\(g\) expansion gives \eqref{eq:planar-n4-mirror-weak-boltzmann}.
+\end{proof}
 
 \begin{definition}[Mirror-kernel datum]
 \label{def:planar-n4-mirror-kernel-datum}

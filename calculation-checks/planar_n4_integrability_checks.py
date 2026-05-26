@@ -878,7 +878,7 @@ def check_mirror_double_wick_dispersion() -> None:
                     charge * charge + mirror_momentum * mirror_momentum,
                 )
 
-                physical_momentum = -1j * mirror_energy
+                physical_momentum = 1j * mirror_energy
                 squared_physical_energy = (
                     charge * charge
                     + 16 * coupling * coupling * cmath.sin(physical_momentum / 2) ** 2
@@ -888,6 +888,51 @@ def check_mirror_double_wick_dispersion() -> None:
                     squared_physical_energy,
                     -mirror_momentum * mirror_momentum,
                 )
+
+
+def check_mirror_zhukovsky_sheet_parametrization() -> None:
+    """Check the stringbook mirror sheet and momentum sign convention."""
+
+    for coupling in (0.08, 0.3, 0.9):
+        for charge in (1, 2, 5):
+            for mirror_momentum in (-1.4, 0.0, 2.3):
+                radius = math.sqrt(charge * charge + mirror_momentum * mirror_momentum)
+                mirror_energy = 2 * math.asinh(radius / (4 * coupling))
+                sheet_radius = math.exp(-mirror_energy / 2)
+                sheet_phase = (mirror_momentum - 1j * charge) / radius
+                x_plus = sheet_radius * sheet_phase
+                x_minus = sheet_phase / sheet_radius
+
+                if not abs(x_plus) < 1 < abs(x_minus):
+                    raise AssertionError("mirror x^+ must be inside and x^- outside")
+                assert_close(
+                    "mirror x-/x+ energy",
+                    cmath.log(x_minus / x_plus),
+                    mirror_energy,
+                )
+                assert_close(
+                    "mirror bound-state shortening",
+                    x_plus + 1 / x_plus - x_minus - 1 / x_minus,
+                    1j * charge / coupling,
+                )
+                assert_close(
+                    "stringbook mirror momentum sign",
+                    -charge - 2j * coupling * (x_plus - x_minus),
+                    1j * mirror_momentum,
+                )
+
+    weak_coupling = 1.0e-4
+    for charge in (1, 3):
+        for mirror_momentum in (0.5, 1.7):
+            radius_squared = charge * charge + mirror_momentum * mirror_momentum
+            mirror_energy = 2 * math.asinh(math.sqrt(radius_squared) / (4 * weak_coupling))
+            leading_boltzmann = 4 * weak_coupling * weak_coupling / radius_squared
+            assert_close(
+                "weak mirror Boltzmann leading order",
+                math.exp(-mirror_energy) / leading_boltzmann,
+                1.0,
+                tol=1.0e-7,
+            )
 
 
 def check_mirror_auxiliary_string_arrays() -> None:
@@ -2005,6 +2050,7 @@ def main() -> None:
     check_sl2_large_spin_cusp_resolvent()
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()
+    check_mirror_zhukovsky_sheet_parametrization()
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
     check_mirror_wing_kernel_inverse()
