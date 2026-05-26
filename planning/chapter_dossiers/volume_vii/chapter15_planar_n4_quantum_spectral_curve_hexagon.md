@@ -104,6 +104,10 @@ three-point functions.
   the rank-one update preserves `det Q_{a|i}`.  This records the local
   algebraic reason for the unimodular `Q_{a|i}` gauge while keeping global
   cut/gluing existence as a QSC framework input.
+- Derives the weak-QSC `mu_12` pre-Baxter finite-difference equation by
+  eliminating `mu_24` from the leading `(1,2)` and `(2,4)` components of the
+  Pmu monodromy recursion, explicitly using `P^1=-P_4`, `P^4=P_1`, and the
+  suppression of `P_2 P_3` terms.
 - Derives the one-loop Baxter equation from the weak-coupling QSC
   degeneration under explicit assumptions.
 - Adds a weak-coupling `SL(2)` QSC regularity assumption specifying the
@@ -147,7 +151,9 @@ structure and the pair-of-pants-to-hexagons cut.
 ## Calculation Checks
 
 - The Baxter-limit algebra is paired with the finite Bethe-root checks in
-  `calculation-checks/planar_n4_integrability_checks.py`.
+  `calculation-checks/planar_n4_integrability_checks.py`, including the
+  Konishi Baxter-polynomial orientation that gives the one-loop `SL(2)`
+  Bethe phase `(u_j-u_k-i)/(u_j-u_k+i)`.
 - The same script now checks the explicit Konishi Baxter polynomial and the
   Pmu Pfaffian rank-two update.
 - The same script checks the algebraic `Y_{1,1}Y_{2,2}` bridge ratio and the
@@ -179,6 +185,9 @@ structure and the pair-of-pants-to-hexagons cut.
   plus/minus shift independence of the `P` and `Q` contractions, null
   contractions from antisymmetric raising, and determinant preservation under
   the rank-one update.
+- The same script checks the weak-QSC `mu_12`/`mu_24` elimination algebra:
+  the reconstructed `mu_24` recursion, the pre-Baxter difference equation,
+  and finiteness of the weak transfer coefficient in sample twists.
 - The same script checks the twist-two QSC Baxter-polynomial family for
   spins `S=1,...,8`: finite-difference equation, endpoint sign/cyclicity
   pattern, and the logarithmic-derivative energy identity `4 H_S`.

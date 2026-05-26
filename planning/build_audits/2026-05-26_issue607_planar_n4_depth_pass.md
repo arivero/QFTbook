@@ -809,3 +809,44 @@ Calculation checks added:
   the local residue loops for a rational test scattering factor and verifies
   the source orientation, product orientation, energy residue sign, and
   inverse mirror continuation to physical energy.
+
+## Continuation XXIX: Weak-QSC Pre-Baxter Elimination
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- The stringbook gives an explicit weak-coupling step from the `Pmu` system
+  to the Baxter equation by eliminating `mu_24` from the leading `mu_12` and
+  `mu_24` recursions.  The monograph previously stated the Baxter
+  degeneration but did not expose this intermediate algebra.  The missing
+  step is convention-sensitive because it uses the signs in
+  `P^1=-P_4`, `P^4=P_1` and the shift convention for `f^[n]`.
+
+Content added:
+
+- Added a weak-QSC proposition deriving
+  `mu_24=(mu_12^[+2]-mu_12)/P_1^2-mu_12 P_4/P_1` from the leading `(1,2)`
+  component of the Pmu monodromy recursion.
+- Used the leading `(2,4)` component to eliminate `mu_24` and derive the
+  pre-Baxter equation for `mu_12^[+1]` with coefficients
+  `P_4^[+1]/P_1^[+1]-P_4^[-1]/P_1^[-1]+1/(P_1^[+1])^2+1/(P_1^[-1])^2`.
+- Rewrote the Baxter-degeneration proposition so the Baxter equation follows
+  from this pre-Baxter relation plus the weak asymptotics of `P_1` and the
+  regular transfer-polynomial assumption, rather than being assumed directly.
+- Corrected the Chapter 15 Baxter-root specialization to the one-loop
+  `SL(2)` orientation already used in Chapter 13, without the spurious
+  overall minus sign.
+
+Calculation checks added:
+
+- `check_qsc_weak_mu12_mu24_elimination()` verifies the `mu_24`
+  reconstruction, the eliminated pre-Baxter difference equation, and sample
+  transfer-coefficient finiteness for several twists.
+- `check_konishi_baxter_polynomial()` now also verifies that the Konishi
+  Baxter polynomial gives the `SL(2)` phase
+  `(u_j-u_k-i)/(u_j-u_k+i)` at its roots.

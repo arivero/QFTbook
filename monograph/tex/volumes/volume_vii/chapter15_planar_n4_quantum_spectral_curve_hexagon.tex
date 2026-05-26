@@ -863,7 +863,7 @@ then evaluating \eqref{eq:planar-n4-qsc-baxter-limit} at \(u=u_j\) gives
 \[
   \left(\frac{u_j+\ii/2}{u_j-\ii/2}\right)^J
   =
-  -\prod_{\substack{k=1\\k\neq j}}^S
+  \prod_{\substack{k=1\\k\neq j}}^S
   \frac{u_j-u_k-\ii}{u_j-u_k+\ii},
 \]
 which is the one-loop \(SL(2)\) Bethe equation in this convention.  Thus the
@@ -888,29 +888,118 @@ produced only by the short cuts \([-2g,2g]+\ii n\) collapsing to the points
 \(\ii n\).  The defining sheet has no additional poles.
 \end{assumption}
 
-\begin{proposition}[Baxter equation from QSC degeneration]
-\label{prop:qsc-baxter-degeneration}
-Assume that in the weak-coupling limit the QSC functions in the \(SL(2)\)
-sector reduce so that the ratio of two independent \(P\)-functions is a
-degree-\(S\) polynomial \(Q(u)\), and that \(\mu\)-periodicity becomes a
-finite-difference relation with shifts \(\pm\ii\).  Then regularity at the
-zeros of \(Q\) gives the one-loop \(SL(2)\) Bethe equations.
+\begin{proposition}[Weak \(P\mu\) elimination before the Baxter equation]
+\label{prop:qsc-weak-mu12-mu24-elimination}
+Work in the weak-coupling regularity class of
+Assumption~\ref{ass:qsc-weak-coupling-regularity}.  To leading order in
+\(g\), neglect the \(P_2P_3\) terms in the \((1,2)\) and \((2,4)\)
+components of the monodromy recursion
+\eqref{eq:planar-n4-pmu-monodromy-recursion}.  Then
+\begin{equation}
+  \mu_{24}
+  =
+  \frac{\mu_{12}^{[+2]}-\mu_{12}}{P_1^2}
+  -
+  \mu_{12}\frac{P_4}{P_1},
+  \label{eq:qsc-weak-mu24-from-mu12}
+\end{equation}
+and eliminating \(\mu_{24}\) gives
+\begin{equation}
+\begin{aligned}
+  &\left(
+    \frac{P_4^{[+1]}}{P_1^{[+1]}}
+    -
+    \frac{P_4^{[-1]}}{P_1^{[-1]}}
+    +
+    \frac{1}{(P_1^{[+1]})^2}
+    +
+    \frac{1}{(P_1^{[-1]})^2}
+  \right)\mu_{12}^{[+1]}  \\
+  &\hspace{3em}
+  =
+  \frac{\mu_{12}^{[+3]}}{(P_1^{[+1]})^2}
+  +
+  \frac{\mu_{12}^{[-1]}}{(P_1^{[-1]})^2}.
+\end{aligned}
+  \label{eq:qsc-weak-mu12-pre-baxter}
+\end{equation}
 \end{proposition}
 
 \begin{proof}
-Under the stated degeneration, the finite-difference relation is
-\eqref{eq:planar-n4-qsc-baxter-limit}.  The right side is regular at every
-zero \(u_j\) of \(Q\), so the left side must vanish there:
+Use \(P^1=-P_4\), \(P^4=P_1\), and discard terms proportional to \(P_2\)
+or \(P_3\).  The \((1,2)\) component of
+\eqref{eq:planar-n4-pmu-monodromy-recursion} gives
+\[
+  \mu_{12}^{[+2]}-\mu_{12}
+  =
+  P_1(\mu_{21}P^1+\mu_{24}P^4)
+  =
+  P_1(\mu_{12}P_4+\mu_{24}P_1),
+\]
+which is \eqref{eq:qsc-weak-mu24-from-mu12}.  The \((2,4)\) component gives
+\begin{equation}
+  \mu_{24}^{[+2]}-\mu_{24}
+  =
+  -P_4(\mu_{21}P^1+\mu_{24}P^4)
+  =
+  -\frac{P_4}{P_1}(\mu_{12}^{[+2]}-\mu_{12}),
+  \label{eq:qsc-weak-mu24-recursion}
+\end{equation}
+where the last equality uses the preceding \((1,2)\) equation.  Now write
+\eqref{eq:qsc-weak-mu24-from-mu12} once at \(u\) and once at \(u+\ii\), and
+substitute both expressions into
+\eqref{eq:qsc-weak-mu24-recursion}.  After shifting the resulting equation by
+\(u\mapsto u-\ii/2\), the terms proportional to
+\(\mu_{12}^{[+1]}\) collect exactly into the coefficient displayed in
+\eqref{eq:qsc-weak-mu12-pre-baxter}.  This proves the claim.
+\end{proof}
+
+\begin{proposition}[Baxter equation from QSC degeneration]
+\label{prop:qsc-baxter-degeneration}
+Assume the hypotheses of
+Proposition~\ref{prop:qsc-weak-mu12-mu24-elimination}.  Normalize \(P_1\) so
+that, at \(g=0\),
+\[
+  \frac{1}{(P_1^{[\pm1]}(u))^2}=(u\pm\ii/2)^J,
+\]
+and assume the regular ratio \(P_4/P_1\) is such that
+\[
+  T(u)=
+    \frac{P_4^{[+1]}}{P_1^{[+1]}}
+    -
+    \frac{P_4^{[-1]}}{P_1^{[-1]}}
+    +(u+\ii/2)^J+(u-\ii/2)^J
+\]
+is a degree-\(J\) transfer polynomial.  With
+\[
+  Q(u)=\mu_{12}^{[+1]}(u)\big|_{g=0},
+\]
+the leading weak equation is the Baxter equation
+\[
+  (u+\ii/2)^JQ(u+\ii)
+  +(u-\ii/2)^JQ(u-\ii)
+  =
+  T(u)Q(u).
+\]
+If \(Q(u)=\prod_{k=1}^S(u-u_k)\), regularity at the zeros of \(Q\) gives the
+one-loop \(SL(2)\) Bethe equations.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:qsc-weak-mu12-pre-baxter}, with the stated leading
+asymptotics of \(P_1\), is exactly the displayed Baxter equation.  The right
+side is regular at every zero \(u_j\) of \(Q\), so the left side must vanish
+there:
 \[
   (u_j+\ii/2)^JQ(u_j+\ii)
   +(u_j-\ii/2)^JQ(u_j-\ii)=0.
 \]
 Dividing by \((u_j-\ii/2)^JQ(u_j-\ii)\) and using
 \[
-  \frac{Q(u_j+\ii)}{Q(u_j-\ii)}
+  \frac{Q(u_j-\ii)}{Q(u_j+\ii)}
   =
   -\prod_{\substack{k=1\\k\neq j}}^S
-  \frac{u_j-u_k+\ii}{u_j-u_k-\ii}
+  \frac{u_j-u_k-\ii}{u_j-u_k+\ii}
 \]
 gives the displayed Bethe equation.
 \end{proof}

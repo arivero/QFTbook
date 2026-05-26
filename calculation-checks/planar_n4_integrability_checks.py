@@ -173,6 +173,15 @@ def check_konishi_baxter_polynomial() -> None:
         rhs = (2 * u * u - Fraction(13, 2)) * q_polynomial(u)
         assert_close("Konishi Baxter polynomial identity", lhs, rhs)
 
+    roots = [1 / (2 * math.sqrt(3)), -1 / (2 * math.sqrt(3))]
+    for index, root in enumerate(roots):
+        lhs = ((root + 0.5j) / (root - 0.5j)) ** 2
+        rhs = 1 + 0j
+        for other_index, other in enumerate(roots):
+            if index != other_index:
+                rhs *= (root - other - 1j) / (root - other + 1j)
+        assert_close("Konishi Baxter-to-SL2 Bethe orientation", lhs, rhs)
+
 
 def polynomial_add(left: list[complex], right: list[complex]) -> list[complex]:
     size = max(len(left), len(right))
@@ -2151,6 +2160,76 @@ def check_qsc_pq_bridge_unimodular_rank_one_update() -> None:
             raise AssertionError("P-Q bridge determinant gauge changed")
 
 
+def check_qsc_weak_mu12_mu24_elimination() -> None:
+    """Check the weak-QSC elimination of mu_24 into the Baxter difference equation."""
+
+    samples = (
+        (
+            0.9 + 0.4j,
+            -0.7 + 0.2j,
+            1.3 - 0.5j,
+            0.6 + 0.8j,
+            -0.2 + 0.3j,
+            1.1 - 0.4j,
+        ),
+        (
+            -1.2 + 0.6j,
+            0.5 - 0.9j,
+            0.8 + 0.7j,
+            -0.4 + 1.1j,
+            0.7 - 0.2j,
+            -1.0 + 0.5j,
+        ),
+    )
+
+    for p1_minus, p1_plus, p4_minus, p4_plus, mu_minus, mu_center in samples:
+        pre_baxter_coefficient = (
+            p4_plus / p1_plus
+            - p4_minus / p1_minus
+            + 1 / (p1_plus * p1_plus)
+            + 1 / (p1_minus * p1_minus)
+        )
+        mu_plus = (p1_plus * p1_plus) * (
+            pre_baxter_coefficient * mu_center
+            - mu_minus / (p1_minus * p1_minus)
+        )
+
+        mu24_minus = (
+            (mu_center - mu_minus) / (p1_minus * p1_minus)
+            - mu_minus * p4_minus / p1_minus
+        )
+        mu24_plus = (
+            (mu_plus - mu_center) / (p1_plus * p1_plus)
+            - mu_center * p4_plus / p1_plus
+        )
+        assert_close(
+            "weak QSC mu24 recursion after elimination",
+            mu24_plus - mu24_minus,
+            -p4_minus / p1_minus * (mu_center - mu_minus),
+        )
+
+        reconstructed_left = pre_baxter_coefficient * mu_center
+        reconstructed_right = (
+            mu_plus / (p1_plus * p1_plus)
+            + mu_minus / (p1_minus * p1_minus)
+        )
+        assert_close(
+            "weak QSC pre-Baxter equation",
+            reconstructed_left,
+            reconstructed_right,
+        )
+
+    for twist in (2, 3, 4):
+        for point in (0.2, -0.6 + 0.1j):
+            inv_minus = (point - 0.5j) ** twist
+            inv_plus = (point + 0.5j) ** twist
+            ratio_minus = 0.3 * (point - 0.5j) ** (twist - 1)
+            ratio_plus = 0.3 * (point + 0.5j) ** (twist - 1)
+            transfer = ratio_plus - ratio_minus + inv_plus + inv_minus
+            if not math.isfinite(abs(transfer)):
+                raise AssertionError("weak QSC transfer coefficient is not finite")
+
+
 def check_qsc_large_u_coefficient_constraints() -> None:
     """Check the large-u characteristic equation for the QSC coefficient products."""
 
@@ -2444,6 +2523,7 @@ def main() -> None:
     check_t_hook_wronskian_pmu_bridge()
     check_qsc_fermionic_node_ratio_large_u()
     check_qsc_pq_bridge_unimodular_rank_one_update()
+    check_qsc_weak_mu12_mu24_elimination()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()
     check_qsc_collapsed_cut_shift_primitive()
