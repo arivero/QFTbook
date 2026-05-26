@@ -273,6 +273,10 @@ def check_nonlinear_negative_coordinate_wick_arithmetic():
     ]
     assert_equal(xy_coefficients, [1, 3], "XY Wick contraction coefficients")
     assert_equal(x2y_coefficients, [1, 6, 6], "X2Y Wick contraction coefficients")
+    xy_arities = [1 + 3 - 2 * r for r in range(0, 2)]
+    x2y_arities = [2 + 3 - 2 * r for r in range(0, 3)]
+    assert_equal(xy_arities, [4, 2], "XY tested chaos arities")
+    assert_equal(x2y_arities, [5, 3, 1], "X2Y tested chaos arities")
 
     # The monograph defines C_2 = 2 int K G^2.  The r=2 contraction in
     # :X(a)^2: I(:X(b)^3:) has coefficient 6 int K G^2 X(b), hence the local

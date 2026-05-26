@@ -57,6 +57,15 @@
   - The local subtraction rewrites the first-chaos term as
     \(6\int K_\epsilon G_\epsilon^2(X_\epsilon(b)-X_\epsilon(a))\,db\),
     identifying the exact Taylor-gain input for the next multiscale estimate.
+- Added Proposition
+  `prop:spde-nonlinear-negative-coordinate-chaos-kernels`.
+- This proposition converts the finite-cutoff Wick identities into tested
+  Hilbert-space finite-chaos kernels:
+  - \(XY\) gives chaos arities \(4\) and \(2\).
+  - locally subtracted \(X^2Y\) gives chaos arities \(5\), \(3\), and \(1\).
+  - the first-chaos kernel is explicitly
+    \(6\int\chi K_\epsilon G_\epsilon^2
+      (p_\epsilon(b)-p_\epsilon(a))\,da\,db\).
 
 ## Calculation Check
 
@@ -72,15 +81,17 @@
     \(X^3\) slack to the \(c_n\) coefficient.
   - the nonlinear-coordinate Wick contraction coefficients, \(3C_2\) local
     subtraction normalization, and the target \(XY\), \(X^2Y\) scale slacks.
+  - the tested finite-chaos arities \(4,2\) and \(5,3,1\) for the nonlinear
+    negative coordinates.
 
 ## Remaining Issue #582 Obligations
 
 - Extend the dual-norm strategy from primitive Gaussian coordinates to the
   concrete finite-cutoff chaos kernels in the displayed \(XY\) and \(X^2Y\)
   decompositions.
-- Prove the genuinely nonlinear BPHZ coordinate estimates for the fourth-,
-  second-, fifth-, third-, and locally subtracted first-chaos kernels now
-  identified explicitly.
+- Prove the genuinely nonlinear BPHZ coordinate estimates for the explicit
+  tested fourth-, second-, fifth-, third-, and locally subtracted first-chaos
+  kernels now identified.
 - Supply the remaining \(X^3\) cutoff-difference and base-increment estimates
   needed to feed the deterministic \(c_n\) transfer into the full
   scale-summed \(\Gamma\)-coordinate theorem.

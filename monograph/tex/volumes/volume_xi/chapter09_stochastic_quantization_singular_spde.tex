@@ -4334,6 +4334,153 @@ the dual-norm finite-chaos estimate, physical-parameter entropy theorem, and
 negative-sector model convergence theorem above apply without further
 stochastic input.
 
+\begin{proposition}[Finite-chaos kernels for tested nonlinear coordinates]
+\label{prop:spde-nonlinear-negative-coordinate-chaos-kernels}
+Let \(\mathcal H\) be a real Hilbert space and let
+\(\xi:\mathcal H\to L^2(\Omega)\) be an isonormal Gaussian process.  Let
+\[
+  p_\epsilon(a)\in\mathcal H
+\]
+be a smooth cutoff noise-to-field kernel and set
+\[
+  X_\epsilon(a)=I_1(p_\epsilon(a)),\qquad
+  G_\epsilon(a,b)=\langle p_\epsilon(a),p_\epsilon(b)\rangle_{\mathcal H}.
+\]
+Let \(K_\epsilon(a,b)\) be the cutoff retarded heat kernel and let
+\(\chi\) be a smooth compactly supported test density in the \(a\)-variable.
+Define
+\[
+  Y_\epsilon(a)
+  =
+  \int K_\epsilon(a,b):X_\epsilon(b)^3:\,\dd b .
+\]
+Write \(\operatorname{Sym}_q\) for orthogonal symmetrization in
+\(\mathcal H^{\otimes q}\).  Assume that the Hilbert-valued integrands
+displayed below are Bochner integrable; for the smooth compactly supported
+cutoffs used here this follows from the \(L^1\)-integrability of
+\(|K_\epsilon(a,b)|\), \(|K_\epsilon(a,b)G_\epsilon(a,b)|\), and
+\(|K_\epsilon(a,b)G_\epsilon(a,b)^2|\) against the relevant products of
+\(\|p_\epsilon(a)\|_{\mathcal H}\), \(\|p_\epsilon(b)\|_{\mathcal H}\), and
+\(\|p_\epsilon(b)-p_\epsilon(a)\|_{\mathcal H}\).  Define
+\begin{equation}
+\begin{aligned}
+  F_{XY,4}^{\chi}
+  &=
+  \operatorname{Sym}_4
+  \int\chi(a)K_\epsilon(a,b)\,
+  p_\epsilon(a)\otimes p_\epsilon(b)^{\otimes3}\,\dd a\,\dd b,\\
+  F_{XY,2}^{\chi}
+  &=
+  3\,\operatorname{Sym}_2
+  \int\chi(a)K_\epsilon(a,b)G_\epsilon(a,b)\,
+  p_\epsilon(b)^{\otimes2}\,\dd a\,\dd b .
+\end{aligned}
+  \label{eq:spde-xy-tested-chaos-kernels}
+\end{equation}
+Then
+\begin{equation}
+  \int\chi(a)X_\epsilon(a)Y_\epsilon(a)\,\dd a
+  =
+  I_4(F_{XY,4}^{\chi})+I_2(F_{XY,2}^{\chi}).
+  \label{eq:spde-xy-tested-chaos-expansion}
+\end{equation}
+
+For the locally subtracted \(X^2Y\) coordinate, set
+\begin{equation}
+\begin{aligned}
+  F_{X^2Y,5}^{\chi}
+  &=
+  \operatorname{Sym}_5
+  \int\chi(a)K_\epsilon(a,b)\,
+  p_\epsilon(a)^{\otimes2}\otimes p_\epsilon(b)^{\otimes3}
+  \,\dd a\,\dd b,\\
+  F_{X^2Y,3}^{\chi}
+  &=
+  6\,\operatorname{Sym}_3
+  \int\chi(a)K_\epsilon(a,b)G_\epsilon(a,b)\,
+  p_\epsilon(a)\otimes p_\epsilon(b)^{\otimes2}\,\dd a\,\dd b,\\
+  F_{X^2Y,1}^{\chi}
+  &=
+  6\int\chi(a)K_\epsilon(a,b)G_\epsilon(a,b)^2
+  \bigl(p_\epsilon(b)-p_\epsilon(a)\bigr)\,\dd a\,\dd b .
+\end{aligned}
+  \label{eq:spde-x2y-tested-chaos-kernels}
+\end{equation}
+Then
+\begin{equation}
+\begin{aligned}
+  &\int\chi(a)
+  \bigl(:\!X_\epsilon(a)^2\!:Y_\epsilon(a)
+        -3C_{2,\epsilon}(a)X_\epsilon(a)\bigr)\,\dd a\\
+  &\qquad =
+  I_5(F_{X^2Y,5}^{\chi})
+  +I_3(F_{X^2Y,3}^{\chi})
+  +I_1(F_{X^2Y,1}^{\chi}) .
+\end{aligned}
+  \label{eq:spde-x2y-tested-chaos-expansion}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The identity
+\[
+  :X_\epsilon(a)X_\epsilon(b)^3:
+  =
+  I_4\!\left(
+    \operatorname{Sym}_4
+    \bigl(p_\epsilon(a)\otimes p_\epsilon(b)^{\otimes3}\bigr)
+  \right)
+\]
+is the definition of the fourth Wick chaos associated to the vector family
+\(p_\epsilon(\cdot)\).  Likewise
+\[
+  :X_\epsilon(b)^2:
+  =
+  I_2(p_\epsilon(b)^{\otimes2}).
+\]
+Multiplying the pointwise identity
+\eqref{eq:spde-xy-finite-cutoff-wick-decomposition} by \(\chi(a)\),
+integrating in \(a\), and using the linearity and continuity of finite
+multiple Wiener integrals gives
+\eqref{eq:spde-xy-tested-chaos-expansion} with the kernels in
+\eqref{eq:spde-xy-tested-chaos-kernels}.  The stated Bochner integrability
+assumption permits approximation of the Hilbert-valued integrals by simple
+functions.  Passing to the Hilbert-space limit and using
+\(\mathbb E[I_q(f)I_q(g)]=q!\langle f,g\rangle_{\mathcal H^{\otimes q}}\)
+justifies the interchange with \(I_q\).
+
+For \(X^2Y\), the three Wick monomials in
+\eqref{eq:spde-x2y-finite-cutoff-wick-decomposition} are
+\[
+  :X_\epsilon(a)^2X_\epsilon(b)^3:
+  =
+  I_5\!\left(
+    \operatorname{Sym}_5
+    (p_\epsilon(a)^{\otimes2}\otimes p_\epsilon(b)^{\otimes3})
+  \right),
+\]
+\[
+  :X_\epsilon(a)X_\epsilon(b)^2:
+  =
+  I_3\!\left(
+    \operatorname{Sym}_3
+    (p_\epsilon(a)\otimes p_\epsilon(b)^{\otimes2})
+  \right),
+\]
+and
+\[
+  X_\epsilon(b)-X_\epsilon(a)
+  =
+  I_1(p_\epsilon(b)-p_\epsilon(a)).
+\]
+Multiplying by \(\chi(a)\), integrating, and again using linearity of
+\(I_q\) gives
+\eqref{eq:spde-x2y-tested-chaos-expansion}.  The coefficient of the
+first-chaos kernel is precisely the local subtraction from
+\eqref{eq:spde-c2-local-coordinate-for-x2y}; no additional contraction is
+hidden in \(F_{X^2Y,1}^{\chi}\).
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization

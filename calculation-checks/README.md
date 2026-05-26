@@ -126,7 +126,7 @@ Current checks:
   with the heat-integration reexpansion arithmetic that transfers the
   \(X^3\) slack to the \(c_n\) coordinate, and the finite-cutoff Wick
   contraction arithmetic for the nonlinear negative coordinates \(XY\) and
-  \(X^2Y\).
+  \(X^2Y\), including the tested finite-chaos arities \(4,2\) and \(5,3,1\).
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

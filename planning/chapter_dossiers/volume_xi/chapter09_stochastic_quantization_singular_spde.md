@@ -138,6 +138,9 @@ data.
 - `C_{2,epsilon}(a)`, `G_epsilon(a,b)`, `K_epsilon(a,b)`: finite-cutoff
   covariance, retarded kernel, and local two-loop coordinate used in the
   Wick decompositions of the nonlinear negative symbols \(XY\) and \(X^2Y\).
+- `p_epsilon(a)`, `F_{XY,q}^{chi}`, `F_{X^2Y,q}^{chi}`: cutoff
+  noise-to-field Hilbert kernel and the tested finite-chaos kernels of the
+  nonlinear negative coordinates.
 
 ## Claim Ledger
 
@@ -271,6 +274,14 @@ data.
   first-chaos pieces, with coefficients \(1,6,6\) and local subtraction
   \(3C_{2,\epsilon}X_\epsilon\).  This identifies the exact kernels whose
   analytic estimates must produce slacks \(4\kappa\) and \(5\kappa\).
+- Proves the tested finite-chaos kernel formulas for the nonlinear negative
+  coordinates: after pairing with a test density \(\chi\), \(XY\) is
+  \(I_4(F_{XY,4}^{\chi})+I_2(F_{XY,2}^{\chi})\), while locally subtracted
+  \(X^2Y\) is
+  \(I_5(F_{X^2Y,5}^{\chi})+I_3(F_{X^2Y,3}^{\chi})+
+  I_1(F_{X^2Y,1}^{\chi})\), with
+  \(F_{X^2Y,1}^{\chi}\) containing the precise difference
+  \(p_\epsilon(b)-p_\epsilon(a)\).
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -547,4 +558,10 @@ data maps.
   locally subtracted \(X^2Y\) coordinate.  The calculation-check companion
   verifies the Wick contraction coefficients, the \(3C_2\) local subtraction
   normalization, the resulting \(9C_2\) mass-coordinate coefficient before
-  coupling signs, and the target scale slacks \(4\kappa\) and \(5\kappa\).
+  coupling signs, the tested finite-chaos arities, and the target scale
+  slacks \(4\kappa\) and \(5\kappa\).
+- 2026-05-26 issue #582 nonlinear-kernel continuation: the chapter now
+  converts the finite-cutoff Wick identities into explicit Hilbert-space
+  finite-chaos kernels for tested \(XY\) and \(X^2Y\) coordinates.  This
+  pins the analytic target to projective/Hilbert kernel estimates for the
+  displayed kernels rather than informal products of distributions.
