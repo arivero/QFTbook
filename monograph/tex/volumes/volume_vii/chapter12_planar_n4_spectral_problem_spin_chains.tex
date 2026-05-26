@@ -111,21 +111,136 @@ The two calculations use different coupling coordinates, but both make the
 same elementary field-content cancellation explicit.
 \end{proof}
 
-\begin{quotedtheorem}[Finiteness and exact marginality of N=4 Yang-Mills]
-\label{qthm:n4-finiteness-exact-marginality}
-Assume a regulator and renormalization scheme in which the gauge Ward
-identity, locality, and the full \(\mathcal N=4\) supersymmetry Ward
-identities are implemented without anomaly.  Then the \(\mathcal N=4\)
-Yang--Mills coupling \(\tau\) is exactly marginal: the beta function vanishes
-to all orders, the stress tensor belongs to the conserved
-\(\mathfrak{psu}(2,2|4)\) current multiplet, and the quantum theory is a
-four-dimensional superconformal field theory.
-\end{quotedtheorem}
+\begin{hypothesis}[Finite \(\mathcal N=4\) conformal-family input]
+\label{hyp:n4-finite-conformal-family}
+Fix the field datum of Definition~\ref{def:n4-yang-mills-field-datum}.  Assume
+there is a local regulator and renormalization prescription with the following
+properties.
+\begin{enumerate}
+\item Gauge Ward identities, locality, Poincare covariance, all sixteen
+  supercharges, and \(SU(4)_R\) Ward identities are implemented without an
+  anomaly.
+\item The renormalized stress tensor and the \(SU(4)_R\) currents belong to a
+  conserved \(\mathfrak{psu}(2,2|4)\) current multiplet, and the operator
+  sourced by the complex coupling \(\tau\) is the corresponding
+  dimension-four top component.
+\item After the gauge-field normalization and possible background contact
+  terms are fixed, no additional \(\mathcal N=4\)-preserving marginal source
+  or current-moment-map obstruction is generated in the \(\tau\) direction.
+\item In this source coordinate the beta function of \(\tau\) vanishes.
+\end{enumerate}
+\end{hypothesis}
 
-The theorem is quoted rather than reproved because its complete proof is a
-renormalization theorem with regulator-level hypotheses.  The point needed
-for this chapter is more modest: the spin-chain spectral problem below is the
-planar, single-trace part of the dilatation operator of this SCFT.
+This hypothesis is the precise status boundary.  The one-loop calculation in
+Proposition~\ref{prop:n4-beta-one-loop-cancellation} is an elementary check on
+the required cancellation; the all-order assertion is a renormalization
+theorem with regulator-level input, independent of the spin-chain
+construction.
+
+\begin{definition}[Coupling chart and theta periodicity]
+\label{def:n4-coupling-chart}
+The local Yang--Mills coupling chart is the upper half-plane
+\[
+  \mathfrak H=\{\tau\in\mathbb C\mid \operatorname{Im}\tau>0\},
+  \qquad
+  \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g_{\rm YM}^2}.
+\]
+When the trace form and global gauge datum are chosen so that
+\[
+  k[A]=\frac{1}{32\pi^2}\int\operatorname{tr}(F_{\mu\nu}\widetilde F^{\mu\nu})
+  \in\mathbb Z
+\]
+on closed spin four-manifolds in the allowed bundle sectors, the path-integral
+phase \(\exp(\ii\theta k[A])\) is unchanged by
+\[
+  T:\tau\longmapsto\tau+1 .
+\]
+Thus \(q=\exp(2\pi\ii\tau)\) is the natural weak-coupling coordinate near the
+cusp \(\operatorname{Im}\tau=\infty\).
+\end{definition}
+
+\begin{proposition}[Local \(\mathcal N=4\) conformal manifold]
+\label{prop:n4-local-conformal-manifold}
+Assume Hypothesis~\ref{hyp:n4-finite-conformal-family}.  Before imposing any
+duality identifications, the \(\mathcal N=4\) Yang--Mills coupling chart
+\(\mathfrak H\) is a one-complex-dimensional local conformal manifold.  The
+tangent vector represented by \(\partial/\partial\tau\) is the exactly
+marginal deformation obtained by integrating the protected dimension-four
+top component of the stress-tensor multiplet.
+\end{proposition}
+
+\begin{proof}
+The source chart has one complex coordinate, namely \(\tau\).  By
+Hypothesis~\ref{hyp:n4-finite-conformal-family}, the beta map in this chart
+is identically zero after the declared normalization and contact-term choices
+are fixed, and no redundant source direction remains to be quotiented.  The
+zero locus of the beta map is therefore all of \(\mathfrak H\).  Its complex
+dimension is
+\[
+  1-0=1 .
+\]
+The inserted operator \(\partial S/\partial\tau\) is exactly marginal because
+it has protected dimension \(4\) and its source has zero beta function in the
+same chart.  This proves the local statement.  Global electric-magnetic
+identifications between different values of \(\tau\) are additional data.
+\end{proof}
+
+\begin{hypothesis}[Duality-group input]
+\label{hyp:n4-duality-group-input}
+For a fixed global form of the gauge group and a fixed line-operator lattice,
+let \(\Gamma\subset PSL(2,\mathbb Z)\) be the subgroup of genuine
+four-dimensional \(\mathcal N=4\) QFT equivalences acting on the same
+extended theory datum.  Its elements act on the coupling by
+\[
+  \tau\longmapsto\frac{a\tau+b}{c\tau+d},
+  \qquad
+  \begin{pmatrix}a&b\\ c&d\end{pmatrix}\in SL(2,\mathbb Z).
+\]
+For the standard local-operator sector of \(SU(N)\) Yang--Mills one often
+uses the full \(PSL(2,\mathbb Z)\) generated by
+\[
+  T:\tau\mapsto\tau+1,\qquad S:\tau\mapsto-\frac1{\tau},
+\]
+but the precise global quotient depends on the line-operator and global-form
+datum.  This hypothesis is an input about nonperturbative QFT equivalences,
+with no string-theory construction entering the argument.
+\end{hypothesis}
+
+\begin{proposition}[Global quotient, conditional on duality]
+\label{prop:n4-duality-quotient}
+Assume Hypotheses~\ref{hyp:n4-finite-conformal-family} and
+\ref{hyp:n4-duality-group-input}.  The local conformal family
+\(\mathfrak H\) descends, for the chosen extended theory datum, to the
+orbifold conformal parameter space
+\[
+  \mathfrak H/\Gamma .
+\]
+The generator \(T\) is the theta-periodicity of
+Definition~\ref{def:n4-coupling-chart}; the generator \(S\), when it belongs
+to \(\Gamma\), exchanges the weak-coupling cusp with a strong-coupling region.
+\end{proposition}
+
+\begin{proof}
+The action of \(SL(2,\mathbb Z)\) on \(\mathfrak H\) preserves
+\(\operatorname{Im}\tau>0\) because
+\[
+  \operatorname{Im}\frac{a\tau+b}{c\tau+d}
+  =
+  \frac{\operatorname{Im}\tau}{|c\tau+d|^2}.
+\]
+Matrices differing by an overall sign have the same fractional-linear action,
+so the effective group is a subgroup of \(PSL(2,\mathbb Z)\).  If
+\(\gamma\in\Gamma\) is a genuine QFT equivalence for the fixed extended datum,
+then \(\tau\) and \(\gamma\cdot\tau\) label the same point of the global
+conformal parameter space.  Quotienting \(\mathfrak H\) by these
+identifications gives \(\mathfrak H/\Gamma\).  The statement is conditional
+on the duality hypothesis; local exact marginality alone gives only
+\(\mathfrak H\).
+\end{proof}
+
+The spin-chain spectral problem below uses the local SCFT family and the
+planar single-trace dilatation operator, with the global duality quotient
+kept as separate input.
 
 \begin{proposition}[Conformal anomaly coefficients]
 \label{prop:n4-central-charges}

@@ -368,9 +368,11 @@ Current checks:
   Hirota-to-Y-system algebra identity.
 - `susy_n4_scft_checks.py`: exact arithmetic checks for the Volume VII
   \(\mathcal N=4\) SYM SCFT foundation material, including one-loop and
-  holomorphic beta-function cancellation, \(a=c=\dim\mathfrak g/4\), the
-  \(SO(6)\) symmetric-traceless projector, stress-tensor-multiplet
-  two-point normalization, and planar half-BPS chiral OPE coefficients.
+  holomorphic beta-function cancellation, the one-complex-dimensional
+  exact-marginal coupling chart, theta-periodicity and \(SL(2,\mathbb Z)\)
+  generator arithmetic, \(a=c=\dim\mathfrak g/4\), the \(SO(6)\)
+  symmetric-traceless projector, stress-tensor-multiplet two-point
+  normalization, and planar half-BPS chiral OPE coefficients.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
