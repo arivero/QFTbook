@@ -1962,6 +1962,115 @@ product continuity identifies the equation in the topology where the
 enhanced noise is built, and the closedness proposition passes the energy
 inequality to that rough limit.
 
+\begin{proposition}[Global compact-continuity criterion for DPD solution maps]
+\label{prop:spde-dpd-global-compact-continuity-criterion}
+Fix \(T>0\), \(0<\kappa<1\), and an exponent
+\(\alpha\in(0,2-\kappa)\) for which the local Besov fixed-point theorem
+applies.  Let
+\[
+  \mathfrak D_T
+  :=(\mathcal C^\alpha(\mathbb T^2)\cap L^2(\mathbb T^2))
+    \times C([0,T];\mathcal C^{-\kappa}(\mathbb T^2))^3
+\]
+with its product topology, and write a datum as
+\[
+  D=(Y_0,\mathbb X_1,\mathbb X_2,\mathbb X_3).
+\]
+For each \(D\) let \(Y_D\) be the maximal local DPD solution produced by
+Theorem~\ref{thm:spde-dpd-besov-local-fixed-point}, and denote its maximal
+existence time in \([0,T]\) by \(\tau(D)\).
+
+Let \(K\subset\mathfrak D_T\) be compact.  Assume the following two
+statements hold for every \(D\in K\).
+\begin{enumerate}
+\item \emph{Blow-up alternative.}  If \(\tau(D)<T\), then
+\[
+  \limsup_{t\uparrow\tau(D)}
+  \|Y_D\|_{C([0,t];\mathcal C^\alpha)}=\infty .
+\]
+\item \emph{Rough energy-to-Besov bound.}  There is a finite constant
+\(B_{K,T}\), depending on \(K\) and \(T\) but not on \(D\), such that
+\[
+  \sup_{0<s<\tau(D)}
+  \|Y_D\|_{C([0,s];\mathcal C^\alpha)}
+  \leq B_{K,T}.
+\]
+\end{enumerate}
+Then every \(D\in K\) has a solution on the full interval \([0,T]\), and
+the solution map
+\[
+  \mathcal S_T:K\longrightarrow C([0,T];\mathcal C^\alpha),
+  \qquad D\longmapsto Y_D,
+\]
+is uniformly continuous.  Consequently, if \(D_N\to D\) in
+\(\mathfrak D_T\), and if \(\{D\}\cup\{D_N:N\geq N_0\}\) is contained in a
+compact set on which the two hypotheses above hold with a common constant,
+then
+\[
+  Y_{D_N}\longrightarrow Y_D
+  \quad\hbox{in }C([0,T];\mathcal C^\alpha).
+\]
+\end{proposition}
+
+\begin{proof}
+The full-time existence statement is the contradiction between the two
+assumptions.  If \(\tau(D)<T\), the rough energy-to-Besov estimate gives a
+finite bound for
+\(\|Y_D\|_{C([0,s];\mathcal C^\alpha)}\) as \(s\uparrow\tau(D)\), whereas
+the blow-up alternative requires this quantity to be unbounded.  Hence
+\(\tau(D)=T\).
+
+It remains to prove continuity with constants that are uniform on \(K\).
+Compactness of \(K\) gives a finite noise bound
+\[
+  M_{K,T}:=
+  \sup_{D\in K}\sum_{j=1}^3
+  \|\mathbb X_j\|_{C([0,T];\mathcal C^{-\kappa})}
+  <\infty .
+\]
+Inspecting the contraction estimate in
+Theorem~\ref{thm:spde-dpd-besov-local-fixed-point}, one obtains a time
+\(\delta>0\) and a constant \(L<\infty\), depending only on
+\(B_{K,T}\), \(M_{K,T}\), \(T\), and the fixed exponents, with the following
+property.  If two solutions are known on a time interval beginning at
+\(t_0\) and both remainders have \(\mathcal C^\alpha\)-norm at most
+\(B_{K,T}\), then on
+\([t_0,t_0+\delta]\cap[0,T]\)
+\[
+  \|Y_D-Y_{\widetilde D}\|_
+  {C([t_0,t_0+\delta]\cap[0,T];\mathcal C^\alpha)}
+  \leq
+  L\Big(
+    \|Y_D(t_0)-Y_{\widetilde D}(t_0)\|_{\mathcal C^\alpha}
+    + d_{\mathfrak D_T}(D,\widetilde D)
+  \Big),
+\]
+where \(d_{\mathfrak D_T}\) is any metric inducing the product topology on
+bounded subsets of \(\mathfrak D_T\).  The same \(\delta\) works at every
+\(t_0\) because the heat-kernel estimates depend only on the length of the
+interval, while the nonlinear estimates depend only on the preceding
+uniform bounds.
+
+Choose an integer \(m\) with \(m\delta\geq T\).  Iterating the last estimate
+over the grid \(0,\delta,2\delta,\ldots,m\delta\) gives, for \(D\) and
+\(\widetilde D\) sufficiently close in \(K\),
+\[
+  \|Y_D-Y_{\widetilde D}\|_{C([0,T];\mathcal C^\alpha)}
+  \leq C_{K,T}\,d_{\mathfrak D_T}(D,\widetilde D)
+\]
+with finite \(C_{K,T}\).  Thus \(\mathcal S_T\) is continuous at each point
+of \(K\), and compactness of \(K\) upgrades pointwise continuity to uniform
+continuity.  The convergence statement is the preceding uniform-continuity
+claim applied to the compact set containing the tail of the sequence and
+its limit.
+\end{proof}
+
+This criterion separates a soft continuation argument from the genuinely
+hard stochastic estimate.  Once the local Besov theory is known, global
+cutoff convergence on compact enhanced-noise sets is reduced to proving a
+rough energy-to-Besov a priori bound.  The latter is precisely where the
+Wick-renormalized coercivity of the two-dimensional equation must enter.
+
 \begin{proposition}[Passing invariance through a cutoff limit]
 \label{prop:spde-invariant-measure-limit}
 Let \(E\) be a Polish space, let \(P_t^{(n)}\) and \(P_t\) be Markov
@@ -2883,6 +2992,10 @@ Assume the following three further analytic facts.
   Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} extends
   globally in stochastic time, and the cutoff solution maps converge to it
   uniformly on compact subsets of the enhanced-noise/initial-data space.
+  Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}
+  reduces this assertion, in the Besov formulation, to a blow-up
+  alternative plus a rough energy-to-Besov a priori bound on compact
+  enhanced-noise sets.
   \item The stationary laws \(\{\mu_N\}\) are tight in \(H^{-\kappa}\), and
   every weak limit \(\mu\) is carried by fields admitting the decomposition
   \(\Phi=X+Y\) with \(Y\) given by the global DPD solution map.  By
@@ -2941,10 +3054,12 @@ Lemma~\ref{lem:spde-dpd-sobolev-products}, and
 Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} gives the local
 solution map.  Hypothesis (a) is precisely the global rough-energy and
 compact-continuity upgrade of the smooth estimate
-Proposition~\ref{prop:spde-dpd-smooth-energy-estimate}.  Thus the limiting
-Markov semigroup \(P_t\) is well-defined on the support of every weak
-stationary limit in (b), and \(P_t^{(N)}F\to P_tF\) uniformly on the
-high-probability compact sets supplied by (a) and (b).
+Proposition~\ref{prop:spde-dpd-smooth-energy-estimate}; in the Besov
+topology this upgrade is organized by
+Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}.  Thus
+the limiting Markov semigroup \(P_t\) is well-defined on the support of
+every weak stationary limit in (b), and \(P_t^{(N)}F\to P_tF\) uniformly on
+the high-probability compact sets supplied by (a) and (b).
 
 Proposition~\ref{prop:spde-invariant-measure-limit} now applies with
 \(E=H^{-\kappa}\).  Therefore
@@ -2979,9 +3094,11 @@ the chapter we have proved the finite-dimensional Langevin identity, the
 Sobolev Wick-power construction, the path-space enhanced-noise convergence,
 the Sobolev DPD local solution map, the smooth enhanced-noise energy
 inequality, and the abstract invariant-law passage.  The sharp global
-two-dimensional theorem still requires four further inputs: rough
-Besov--Hölder energy continuity, a cutoff-uniform negative-Sobolev moment
-strong enough to imply tightness by
+two-dimensional theorem still requires four further inputs: a rough
+energy-to-Besov bound strong enough, by
+Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}, to
+give global compact-continuity of the DPD solution map; a cutoff-uniform
+negative-Sobolev moment strong enough to imply tightness by
 Proposition~\ref{prop:spde-sobolev-compactness-tightness}, uniform
 integrability, and either finite-cutoff OS positivity for the stochastic
 regulator itself or a regulator-comparison theorem relating it to the

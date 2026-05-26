@@ -62,6 +62,9 @@ data.
 - `X_{i,n}`, `Y_n`, `Y`: smooth enhanced-noise approximants, smooth DPD
   remainders, and weak energy limit in the closedness theorem for the DPD
   energy inequality.
+- `mathfrak D_T`, `K`, `B_{K,T}`, `tau(D)`: DPD enhanced-noise/initial-data
+  space, compact data set, uniform rough energy-to-Besov bound, and maximal
+  local existence time in the global compact-continuity criterion.
 - `M_T`, `Q_T`: uniform smooth DPD energy-input bound and the stochastic
   time-space slab \([0,T]\times\mathbb T^2\) in the DPD energy-compactness
   theorem.
@@ -283,6 +286,16 @@ data.
   energy inequality, compactness identifies the energy limit with this
   Besov solution and passes the integrated energy inequality to every
   terminal time on the common local interval.
+- Proves a global compact-continuity criterion for the DPD solution map.
+  Given the local Besov fixed point, a blow-up alternative, and a uniform
+  rough energy-to-Besov bound on a compact enhanced-noise/initial-data set,
+  every maximal solution extends to the full time interval and the solution
+  map is uniformly continuous on that compact set.  The proof iterates the
+  local contraction estimate with a single time step controlled only by the
+  compact noise bound and the uniform Besov bound.  This reduces the global
+  cutoff-convergence input in the \(\Phi^4_2\) assembly theorem to a precise
+  rough a priori estimate rather than treating global DPD convergence as a
+  black box.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
@@ -351,12 +364,13 @@ data.
   polynomial limits.
 - Adds a \(\Phi^4_2\) stochastic-quantization assembly theorem on the torus.
   The theorem now proves the path-space enhanced-noise input and makes
-  explicit the remaining three analytic inputs needed to pass from
-  finite-cutoff invariant Wick-ordered measures to a limiting invariant
-  Markov law and OS-positive Euclidean measure: global compact-continuity of
-  the DPD solution map, tightness of stationary cutoff laws, and
-  finite-cutoff reflection positivity plus the uniform-integrability needed
-  for unbounded Wick-polynomial observables.
+  explicit the remaining analytic inputs needed to pass from finite-cutoff
+  invariant Wick-ordered measures to a limiting invariant Markov law and
+  OS-positive Euclidean measure: the rough energy-to-Besov estimate that
+  yields global compact-continuity of the DPD solution map, tightness of
+  stationary cutoff laws, uniform integrability of the polynomial
+  Wick-observable limits, and finite-cutoff reflection positivity or a
+  regulator-comparison theorem.
 - Proves the Sobolev DPD obstruction in three dimensions: the minimal
   multiplier threshold \(\beta>1/2+\kappa\) for \(YX\), combined with
   forcing regularity \(:X^3:\in H^{-3/2-3\kappa-\varepsilon}\), forces a
