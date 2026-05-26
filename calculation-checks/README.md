@@ -179,6 +179,11 @@ Current checks:
   formula from Dirac plus Abelian gauge indices, the
   \(2\chi+3\sigma\) identity, Donaldson descent degrees, and the
   trace-delta instanton-action coefficient.
+- `extended_defect_ward_checks.py`: finite arithmetic checks for the extended
+  operators and topological defects chapter, including group-like
+  \(\mathbb Z_N\) fusion, higher-form Ward phase multiplicativity, orientation
+  and charge reversal, linking/intersection dimension bookkeeping, and
+  junction charge conservation.
 - `free_cylinder_partition_checks.py`: finite character checks for the
   radial-cylinder free-field section, including the four-dimensional scalar
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion
