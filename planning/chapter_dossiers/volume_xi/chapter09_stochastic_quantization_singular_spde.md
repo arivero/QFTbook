@@ -34,6 +34,10 @@ data.
 - `mathcal N(Y,X_mathbb)`: DPD renormalized cubic nonlinearity
   \(Y^3+3Y^2X+3YX^{(2)}+X^{(3)}\).
 - `Psi`: mild fixed-point map for the DPD remainder equation.
+- `X_1,X_2,X_3`: smooth enhanced-noise placeholders in the DPD energy
+  estimate.
+- `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
+  passage lemma.
 - `R F`: reconstruction of a modelled distribution.
 
 ## Claim Ledger
@@ -63,6 +67,13 @@ data.
   \(C([0,T];H^{-\kappa})^3\), including the heat-smoothing time gain
   \(T^{1-\theta}\), \(\theta=(1+3\kappa)/2<1\), and local Lipschitz
   dependence on initial data and enhanced noise.
+- Proves a smooth enhanced-noise energy estimate for the DPD remainder
+  equation.  The proof multiplies by \(Y\), integrates by parts, and uses
+  Young inequalities to absorb \(Y^3X_1\), \(Y^2X_2\), and \(YX_3\) into the
+  positive quartic drift plus enhanced-noise norms.
+- Proves an invariant-measure passage lemma: weak convergence of invariant
+  cutoff measures plus compact-uniform semigroup convergence on
+  high-probability compact sets implies invariance of the limiting measure.
 - Develops the Da Prato--Debussche decomposition for `Phi^4_2`, identifies
   the role of the enhanced noise, proves a Sobolev local fixed-point version,
   and marks the sharper global Besov/Holder solution mechanism as a
@@ -122,3 +133,9 @@ data maps.
   Littlewood--Paley product bounds, constructs the mild map, proves the
   contraction from the Duhamel time gain, and adds a calculation-check gate
   for the exponent inequalities.
+- 2026-05-26 issue #582 continuation: the chapter now proves two additional
+  components of the singular-SPDE proof stack internally: a smooth
+  enhanced-noise energy estimate for the DPD global step and an abstract
+  invariant-measure passage lemma for cutoff limits.  The calculation-check
+  companion now verifies the Young-exponent arithmetic and a finite
+  invariant-measure identity.

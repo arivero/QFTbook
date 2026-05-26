@@ -645,6 +645,149 @@ then heat smoothing supplies a positive time power, and the local solution
 is obtained by contraction.  The remaining global and invariant-measure
 steps require estimates beyond this local theorem.
 
+\begin{proposition}[Smooth enhanced-noise energy estimate]
+\label{prop:spde-dpd-smooth-energy-estimate}
+Let \(X_1,X_2,X_3\) be smooth real functions on
+\([0,T]\times\mathbb T^2\), let \(m^2>0\), \(\lambda>0\), and let \(Y\) be
+a smooth solution of
+\begin{equation}
+  \partial_tY
+  =
+  (\Delta-m^2)Y
+  -\lambda\bigl(Y^3+3Y^2X_1+3YX_2+X_3\bigr).
+  \label{eq:spde-dpd-smooth-energy-equation}
+\end{equation}
+Then, for a numerical constant \(C\),
+\begin{align}
+  \frac12\frac{d}{dt}\|Y(t)\|_{L^2}^2
+  &+
+  \|\nabla Y(t)\|_{L^2}^2
+  +m^2\|Y(t)\|_{L^2}^2
+  +\frac{\lambda}{4}\|Y(t)\|_{L^4}^4
+  \notag\\
+  &\leq
+  C\lambda
+  \left(
+    \|X_1(t)\|_{L^4}^4
+    +\|X_2(t)\|_{L^2}^2
+    +\|X_3(t)\|_{L^{4/3}}^{4/3}
+  \right).
+  \label{eq:spde-dpd-smooth-energy-estimate}
+\end{align}
+Consequently no finite-time blowup can occur in a smooth Galerkin
+approximation whose enhanced noise norms on the right-hand side stay
+integrable on compact stochastic-time intervals.
+\end{proposition}
+
+\begin{proof}
+Multiply \eqref{eq:spde-dpd-smooth-energy-equation} by \(Y\) and integrate
+over the torus.  Periodicity gives
+\[
+  \int_{\mathbb T^2}Y\Delta Y\,\dd^2x
+  =
+  -\|\nabla Y\|_{L^2}^2 .
+\]
+Thus
+\[
+\begin{aligned}
+  \frac12\frac{d}{dt}\|Y\|_{L^2}^2
+  &+
+  \|\nabla Y\|_{L^2}^2
+  +m^2\|Y\|_{L^2}^2
+  +\lambda\|Y\|_{L^4}^4 \\
+  &=
+  -3\lambda\int Y^3X_1
+  -3\lambda\int Y^2X_2
+  -\lambda\int YX_3 .
+\end{aligned}
+\]
+Young's inequality with conjugate exponents \((4/3,4)\), \((2,2)\), and
+\((4,4/3)\) gives pointwise bounds
+\[
+\begin{aligned}
+  3|Y|^3|X_1|
+  &\leq \frac14 |Y|^4+C|X_1|^4,\\
+  3|Y|^2|X_2|
+  &\leq \frac14 |Y|^4+C|X_2|^2,\\
+  |Y||X_3|
+  &\leq \frac14 |Y|^4+C|X_3|^{4/3}.
+\end{aligned}
+\]
+Substituting these three estimates into the energy identity and retaining
+the remaining positive \(\lambda\|Y\|_{L^4}^4/4\) proves
+\eqref{eq:spde-dpd-smooth-energy-estimate}.  Integrating the inequality in
+time bounds \(\|Y(t)\|_{L^2}^2\), the accumulated \(H^1\) norm, and the
+accumulated \(L^4\) norm by the initial \(L^2\) norm and the three enhanced
+noise norms.  A smooth Galerkin solution can be continued as long as its
+finite-dimensional norm is finite; the displayed bound prevents blowup on
+intervals where the right-hand side is integrable.
+\end{proof}
+
+The rough Da Prato--Debussche global argument replaces the smooth norms in
+Proposition~\ref{prop:spde-dpd-smooth-energy-estimate} by Besov or
+paracontrolled norms of the enhanced noise.  The algebra is the same: the
+quartic term absorbs powers of \(Y\), and all remaining terms are functions
+only of the enhanced stochastic convolution on the time interval under
+consideration.  The analytic work is to justify this calculation by
+approximation and to prove integrability of the rough enhanced-noise norms.
+
+\begin{proposition}[Passing invariance through a cutoff limit]
+\label{prop:spde-invariant-measure-limit}
+Let \(E\) be a Polish space, let \(P_t^{(n)}\) and \(P_t\) be Markov
+semigroups on bounded continuous functions on \(E\), and let
+\(\mu_n\) be an invariant probability measure for \(P_t^{(n)}\).  Suppose
+\(\mu_n\Rightarrow\mu\) weakly and that, for every bounded continuous
+function \(f\) and every fixed \(t\geq0\),
+\[
+  P_t^{(n)}f\longrightarrow P_tf
+  \quad\hbox{uniformly on compact subsets of }E .
+\]
+Assume also that \(\{\mu_n\}\) is tight and that the convergence above is
+uniform on a compact set whose \(\mu_n\)-mass is arbitrarily close to one,
+uniformly in \(n\).  Then \(\mu\) is invariant for \(P_t\):
+\[
+  \int_E P_tf\,\dd\mu=\int_E f\,\dd\mu .
+\]
+\end{proposition}
+
+\begin{proof}
+Fix \(f\in C_b(E)\), \(t\geq0\), and \(\eta>0\).  By tightness, choose a
+compact set \(K\subset E\) with \(\mu_n(K)\geq1-\eta\) for all sufficiently
+large \(n\).  Then
+\[
+  \left|
+    \int P_t^{(n)}f\,\dd\mu_n
+    -
+    \int P_tf\,\dd\mu_n
+  \right|
+  \leq
+  \sup_{x\in K}|P_t^{(n)}f(x)-P_tf(x)|
+  +2\|f\|_\infty\eta ,
+\]
+which tends to at most \(2\|f\|_\infty\eta\).  Letting \(\eta\downarrow0\)
+gives
+\[
+  \int P_t^{(n)}f\,\dd\mu_n
+  -
+  \int P_tf\,\dd\mu_n
+  \longrightarrow0 .
+\]
+Since \(P_tf\) is bounded and continuous, weak convergence of \(\mu_n\)
+gives \(\int P_tf\,\dd\mu_n\to\int P_tf\,\dd\mu\).  Invariance of
+\(\mu_n\) gives \(\int P_t^{(n)}f\,\dd\mu_n=\int f\,\dd\mu_n\), and weak
+convergence also gives \(\int f\,\dd\mu_n\to\int f\,\dd\mu\).  Combining
+these limits proves the assertion.
+\end{proof}
+
+For singular SPDE, the hypotheses of
+Proposition~\ref{prop:spde-invariant-measure-limit} are not automatic.
+They require tightness of the stationary cutoff laws in the chosen field
+topology, convergence of the renormalized solution maps on high-probability
+compact sets of enhanced noises and initial data, and continuity of the
+limiting Markov semigroup on the same topology.  This is the exact
+invariant-law step that sits between cutoff Langevin stationarity and a
+Euclidean measure for QFT.
+
 \begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
 \label{thm:dpd-solution-mechanism}
 Fix \(m^2>0\), \(\lambda>0\), and a finite spatial torus in dimension two.

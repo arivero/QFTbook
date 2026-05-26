@@ -219,6 +219,40 @@ def check_dpd_sobolev_fixed_point_exponents():
         raise AssertionError("DPD Duhamel exponent is not integrable")
 
 
+def check_dpd_energy_young_exponents():
+    # The smooth DPD energy estimate uses Young pairs:
+    # |Y|^3 |X_1| with (4/3,4), |Y|^2 |X_2| with (2,2),
+    # and |Y| |X_3| with (4,4/3).  The Y-powers must all become |Y|^4.
+    pairs = [
+        (Fraction(3), Fraction(4, 3), Fraction(1), Fraction(4), "Y^3 X1"),
+        (Fraction(2), Fraction(2), Fraction(1), Fraction(2), "Y^2 X2"),
+        (Fraction(1), Fraction(4), Fraction(1), Fraction(4, 3), "Y X3"),
+    ]
+    for y_power, p, x_power, q, label in pairs:
+        assert_equal(Fraction(1, 1) / p + Fraction(1, 1) / q, 1, f"{label} Young conjugacy")
+        assert_equal(y_power * p, 4, f"{label} Y exponent")
+        if label == "Y X3":
+            assert_equal(x_power * q, Fraction(4, 3), f"{label} X exponent")
+        else:
+            assert_equal(x_power * q, 4 if label == "Y^3 X1" else 2, f"{label} X exponent")
+
+
+def check_invariant_measure_limit_identity():
+    # A finite Markov-chain analogue of the cutoff invariance passage:
+    # if mu P = mu and P_n=P exactly, then the invariant identity is the
+    # row-vector equality sum_i mu_i (P f)_i = sum_i mu_i f_i.
+    p = [
+        [Fraction(3, 4), Fraction(1, 4)],
+        [Fraction(1, 2), Fraction(1, 2)],
+    ]
+    mu = [Fraction(2, 3), Fraction(1, 3)]
+    f = [Fraction(5), Fraction(-1)]
+    pf = [sum(p[i][j] * f[j] for j in range(2)) for i in range(2)]
+    lhs = sum(mu[i] * pf[i] for i in range(2))
+    rhs = sum(mu[i] * f[i] for i in range(2))
+    assert_equal(lhs, rhs, "finite invariant-measure identity")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
@@ -228,6 +262,8 @@ def main():
     check_phi4_three_multiscale_geometric_bound()
     check_spde_ou_and_smoothing_normalizations()
     check_dpd_sobolev_fixed_point_exponents()
+    check_dpd_energy_young_exponents()
+    check_invariant_measure_limit_identity()
     print("All constructive scalar/SPDE Wick, power-counting, and DPD exponent checks passed.")
 
 
