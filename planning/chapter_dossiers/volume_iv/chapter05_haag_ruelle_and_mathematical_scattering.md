@@ -40,6 +40,16 @@ resonances.
 - States the vacuum-net Haag--Ruelle theorem under locality, covariance,
   spectrum condition, isolated massive shell, and sufficiently many regular
   creators.
+- Defines the Haag--Ruelle estimate package and proves that the Cook estimate,
+  recursive contraction estimate, and one-particle contraction estimate imply
+  existence of incoming/outgoing limits, independence of interpolating
+  creators, and the bosonic Fock inner-product permanent.
+- Proves the stationary-phase velocity-localization lemma and the derivation
+  of the almost-local commutator estimate from spacelike separation of
+  velocity tubes.
+- States the Cook derivative estimates as strong finite-energy estimates
+  for smooth spectrally smeared Haag--Ruelle creators, avoiding any hidden
+  assumption that unsmeared bounded local operators are norm differentiable.
 - Separates the existence of an isolated shell from perturbative pole
   language and from global asymptotic completeness.
 - Proves the Gauss-law obstruction: bounded local gauge-invariant observables
@@ -110,6 +120,9 @@ resonances.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
+- `calculation-checks/haag_ruelle_fock_inner_product_checks.py` verifies the
+  bosonic Fock inner-product recursion using exact rational permanent
+  computations and particle-number orthogonality.
 
 ## Open Problems
 

@@ -234,6 +234,10 @@ Current checks:
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
   Dirac-pairing confinement criterion, tropical spectral extraction of static
   potentials, and exponent bookkeeping for Fredenhagen--Marcu type ratios.
+- `haag_ruelle_fock_inner_product_checks.py`: exact rational checks for the
+  Haag--Ruelle Fock inner-product recursion, comparing the recursive
+  contraction formula with the direct bosonic permanent and particle-number
+  orthogonality.
 - `global_form_line_lattice_checks.py`: exact finite checks for the
   \(\mathfrak{su}(N)\) global-form and Wilson--'t Hooft line-lattice
   section, including the \(\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}\)

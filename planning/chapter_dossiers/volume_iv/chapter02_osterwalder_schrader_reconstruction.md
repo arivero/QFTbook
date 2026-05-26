@@ -47,8 +47,11 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   quotient symmetry, without using negative-time formal manipulations.
 - Proves one-gap holomorphic continuation from the OS semigroup by the
   spectral theorem for the nonnegative Hamiltonian.
-- Proves closability of ordered Euclidean insertions from an explicit
-  adjoint-insertion identity on the dense OS domain.
+- Proves that ordered Euclidean insertions descend through the OS null
+  quotient, then proves closability from the same explicit adjoint-insertion
+  identity on the dense OS domain.
+- Makes the ordered-insertion adjoint identity an explicit hypothesis of the
+  reconstruction theorem for the field labels being reconstructed.
 - Adds Proposition `prop:os-ii-analytic-route-to-boundary-package`, isolating
   the corrected OS-II `A_N/P_N` analytic route, Hilbert Taylor remainder
   identity, domain exhaustion, polynomial tube estimate, and covariance inputs
@@ -70,6 +73,11 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   Schwinger functions at noncoincident Euclidean points.
 - Proves uniqueness of OS reconstruction by the intrinsic quotient/GNS
   argument.
+- Rewrites the main reconstruction theorem proof as an explicit dependency
+  chain: reflection-positive Hilbert quotient, contractive Euclidean
+  semigroup and positive Hamiltonian, corrected OS-II analytic continuation,
+  quotient-well-defined field insertions, and Wightman locality/recovery of
+  noncoincident Schwinger functions.
 - Records the mathematical inputs used as such: Malgrange--Zerner
   continuation, envelope-of-holomorphy/maximum-principle theorems for tube
   domains, Vladimirov's polynomial-growth boundary-value theorem, and the
@@ -101,3 +109,8 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   positive-time contraction iteration, and proved the corrected OS-II
   many-variable analytic theorem in the chapter rather than treating it as an
   external black box.
+- 2026-05-26 OS/Haag--Ruelle proof pass: added the null-quotient
+  well-definedness proof for ordered insertions and rewrote the main OS
+  reconstruction proof with explicit dependencies on the semigroup theorem,
+  corrected OS-II growth input, boundary-value package, and edge-of-the-wedge
+  locality argument.

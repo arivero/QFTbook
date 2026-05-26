@@ -579,14 +579,12 @@ before the supports appearing in \(F\in\mathcal E_+\), define
   [h\otimes F],
 \]
 where \(h\otimes F\) denotes the sequence obtained by inserting one additional
-Euclidean field smeared with \(h\).  Permutation symmetry of the Schwinger
-functions and reflection positivity make this definition compatible with the
-null quotient whenever the supports obey the stated ordering.  Under the
-operator-domain hypotheses included in the reconstruction theorem, limits of
-ordered supports give closable Euclidean field operators on
-\(\mathcal D_{\rm OS}\).
+Euclidean field smeared with \(h\).  This formula is only meaningful after
+one checks that it descends through the null quotient.  The check is a
+reflection-positive adjointness argument, not a formal manipulation with
+point fields.
 
-\begin{proposition}[Closability of ordered Euclidean insertions]
+\begin{proposition}[Well-definedness and closability of ordered insertions]
 \label{prop:os-ordered-field-closability}
 Assume the operator-domain part of the OS data supplies the following
 adjoint-insertion identity.  For every ordered positive-time test insertion
@@ -594,16 +592,36 @@ adjoint-insertion identity.  For every ordered positive-time test insertion
 with supports arranged by a common positive time translation, such that for
 all \(F,G\in\mathcal E_+\)
 \begin{equation}
-  \langle [G],\Phi_E(h)[F]\rangle_{\rm OS}
+  \langle [G],[h\otimes F]\rangle_{\rm OS}
   =
-  \langle \Phi_E(h^\sharp)[G],[F]\rangle_{\rm OS}.
+  \langle [h^\sharp\otimes G],[F]\rangle_{\rm OS}.
   \label{eq:os-ordered-insertion-adjoint-identity}
 \end{equation}
-Then \(\Phi_E(h)\) is closable on the dense domain
-\(\mathcal D_{\rm OS}\).
+Then \(F\in\mathcal N_{\rm OS}\) implies
+\(h\otimes F\in\mathcal N_{\rm OS}\).  Hence
+\(\Phi_E(h)[F]=[h\otimes F]\) is a well-defined operator on the quotient
+domain \(\mathcal D_{\rm OS}\).  This operator is closable.
 \end{proposition}
 
 \begin{proof}
+Let \(F\in\mathcal N_{\rm OS}\).  In a positive semidefinite Hermitian form,
+Cauchy--Schwarz gives, for every \(K\in\mathcal E_+\),
+\[
+  \langle K,F\rangle_{\rm OS}=0 .
+\]
+Therefore, for every \(G\in\mathcal E_+\),
+\[
+  \langle [G],[h\otimes F]\rangle_{\rm OS}
+  =
+  \langle [h^\sharp\otimes G],[F]\rangle_{\rm OS}
+  =
+  0 .
+\]
+Taking \(G=h\otimes F\), with the common positive time translation already
+included in the ordered-support hypothesis, gives
+\(\|h\otimes F\|_{\rm OS}^2=0\).  Thus \(h\otimes F\in\mathcal N_{\rm OS}\),
+and the quotient operator is well defined.
+
 Let \(\psi_k\in\mathcal D_{\rm OS}\) satisfy
 \(\psi_k\to0\) and \(\Phi_E(h)\psi_k\to\eta\) in \(\Hilb_{\rm OS}\).  To
 prove closability it suffices to show \(\eta=0\).  For a dense test vector
@@ -613,11 +631,11 @@ prove closability it suffices to show \(\eta=0\).  For a dense test vector
   =
   \lim_k\langle [G],\Phi_E(h)\psi_k\rangle_{\rm OS}
   =
-  \lim_k\langle \Phi_E(h^\sharp)[G],\psi_k\rangle_{\rm OS}
+  \lim_k\langle [h^\sharp\otimes G],\psi_k\rangle_{\rm OS}
   =
   0,
 \]
-because \(\Phi_E(h^\sharp)[G]\) is a fixed vector in
+because \([h^\sharp\otimes G]\) is a fixed vector in
 \(\mathcal D_{\rm OS}\) and \(\psi_k\to0\).  Since \(\mathcal D_{\rm OS}\) is
 dense, \(\eta\) is orthogonal to all of \(\Hilb_{\rm OS}\), hence
 \(\eta=0\).  This is the standard closability criterion, with the
@@ -1389,7 +1407,10 @@ Let \(\{S_n\}_{n\ge0}\) be Euclidean distributions satisfying Euclidean
 covariance, permutation symmetry, reflection positivity, Hermiticity,
 normalization, the OS-II positive-time semigroup conditions
 \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}, and
-the linear-growth condition \eqref{eq:os-linear-growth-condition}.  By the
+the linear-growth condition \eqref{eq:os-linear-growth-condition}.  Assume
+also the ordered-insertion adjoint identity
+\eqref{eq:os-ordered-insertion-adjoint-identity} for the field labels to be
+reconstructed.  By the
 corrected OS-II analytic theorem,
 Theorem~\ref{thm:corrected-os-ii-analytic-theorem}, these hypotheses supply
 the analytic route of
@@ -1408,74 +1429,87 @@ reconstruction; it is a subscripted instance of the global vacuum notation
 \end{theorem}
 
 \begin{proof}
-Let \(\mathcal E_+\) be the vector space of finite labelled Euclidean
-insertions whose time coordinates are strictly positive.  Reflection
-positivity makes
+Step 1 constructs the Hilbert space.  Let \(\mathcal E_+\) be the vector
+space of finite labelled Euclidean insertions whose time coordinates are
+strictly positive.  Reflection positivity makes
 \[
   \langle F,G\rangle_{\rm OS}:=S_{m+n}(\Theta F,G)
 \]
-a positive semidefinite Hermitian form on \(\mathcal E_+\).  Quotienting by
-the null space
+a positive semidefinite Hermitian form on \(\mathcal E_+\).  Its null space is
 \[
   \mathcal N_{\rm OS}
   =
-  \{F\in\mathcal E_+:\langle F,F\rangle_{\rm OS}=0\}
+  \{F\in\mathcal E_+:\langle F,F\rangle_{\rm OS}=0\}.
 \]
-and completing gives the Hilbert space
+The Cauchy--Schwarz inequality for positive semidefinite forms implies that
+\(\langle F,G\rangle_{\rm OS}=0\) whenever \(F\in\mathcal N_{\rm OS}\);
+therefore the form descends to \(\mathcal E_+/\mathcal N_{\rm OS}\).
+Completing gives
 \(\Hilb_{\rm OS}=\overline{\mathcal E_+/\mathcal N_{\rm OS}}\).  The class of
-the empty insertion is the vector \(\vac_{\rm OS}\), and finite positive-time
-insertions are dense by construction.
+the empty insertion is \(\vac_{\rm OS}\), and finite positive-time insertions
+are dense by construction.
 
-For \(s\ge0\), Euclidean time translation by \(s\) maps
-\(\mathcal E_+\) to itself.  The OS-II semigroup assumptions
-\eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}
-therefore descend to a strongly continuous contraction semigroup
-\(T_E(s)\) on \(\Hilb_{\rm OS}\).  The symmetry
-\eqref{eq:os-time-symmetry}, as verified in the positive-time quotient above,
-makes each \(T_E(s)\) self-adjoint.  The self-adjoint
-contraction-semigroup theorem gives a nonnegative self-adjoint generator
+Step 2 constructs the positive-energy time evolution.  For \(s\ge0\),
+Euclidean time translation by \(s\) maps \(\mathcal E_+\) to itself.  The
+semigroup law, OS symmetry, and polynomial matrix-element growth imply
+contractivity by Proposition~\ref{prop:os-semigroup-contraction-iteration};
+strong continuity is the hypothesis
+\eqref{eq:os-time-strong-continuity}.  Hence the descended operators
+\(T_E(s)\) form a strongly continuous semigroup of self-adjoint contractions
+on \(\Hilb_{\rm OS}\).  The self-adjoint contraction-semigroup theorem gives
+a nonnegative self-adjoint generator
 \[
   H,\qquad T_E(s)=e^{-sH},\qquad \sigma(H)\subset[0,\infty).
 \]
-Stone's theorem then gives Lorentzian time translations
-\(U(t,0)=\ee^{-\ii tH}\).  Spatial translations and rotations preserve the
-positive-time half-space after a common positive time shift; by Euclidean
-covariance and the same null-space argument they produce unitary
-representations on the reconstructed Hilbert space.
-Proposition~\ref{prop:os-ii-analytic-route-to-boundary-package} gives the
-tempered Lorentzian boundary values and the analytic continuation of
-Euclidean rotations mixing time and space to real Lorentzian boosts.  This
-gives a unitary representation \(U\) of the connected Poincare group whose
-joint translation spectrum is contained in the closed forward light cone.
-
-For a labelled test function \(f\) supported at positive Euclidean time,
-define the field insertion on the dense domain
-\(\mathcal D_{\rm OS}\subset\Hilb_{\rm OS}\) represented by finite
-positive-time insertions by concatenation:
+Stone's theorem gives Lorentzian time translations
 \[
-  \widehat\Phi_\alpha(f)\,[F]
-  :=
-  [(\alpha,f),F],
+  U_{\rm time}(t)=\ee^{-\ii tH}.
 \]
-after translating the supports, if necessary, so that the concatenated
-configuration remains strictly time ordered before taking the boundary value.
-The continuity estimates in the OS hypotheses make the resulting matrix
-elements distributions in \(f\).  Their Lorentzian boundary values are the
-Wightman distributions.  Proposition~\ref{prop:os-boundary-package-consequences}
-then gives local graded commutativity for spacelike separated Lorentzian test
-supports.
-Hermiticity of the Schwinger hierarchy gives the adjoint relation on
-\(\mathcal D_{\rm OS}\), and Euclidean covariance gives the Poincare
-covariance of the reconstructed fields.
+This is the part of the reconstruction theorem that uses reflection
+positivity directly; it does not use the flawed separate-Laplace step of the
+first OS paper.
 
-In the Euclidean time-ordered domain with noncoincident insertion points,
-continuing the Wightman distributions back to imaginary time recovers the
-original \(S_n\) by Proposition~\ref{prop:os-boundary-package-consequences}.
-The assertion is restricted to noncoincident Euclidean points because contact
-extensions are part of the declared Schwinger hierarchy rather than a
-consequence of analytic continuation away from the diagonals.  The uniqueness
-statement is the GNS-type argument in
-Proposition~\ref{prop:os-reconstruction-uniqueness}.
+Step 3 constructs the spacetime symmetry representation.  Spatial
+translations and rotations preserve the positive-time half-space after a
+common positive time shift.  Euclidean covariance and the same null-space
+argument used in Step 1 therefore give unitary operators on
+\(\Hilb_{\rm OS}\).  Proposition~\ref{prop:os-ii-analytic-route-to-boundary-package}
+and Theorem~\ref{thm:corrected-os-ii-analytic-theorem} supply the missing
+many-variable analytic continuation: Euclidean rotations mixing time and
+space continue to real Lorentzian boosts, and the continued matrix elements
+obey the polynomial tube estimates required for tempered boundary values.
+The resulting unitary representation \(U\) of the connected Poincare group
+has joint translation spectrum in the closed forward light cone.  The forward
+spectral support follows from \(H\ge0\), spatial covariance, and the
+Lorentzian boost covariance just obtained.
+
+Step 4 constructs the field-valued distributions on the common dense domain.
+For a labelled test function \(f\) supported at positive Euclidean time,
+define, before taking Lorentzian boundary values,
+\[
+  \Phi_E(\alpha,f)[F]=[(\alpha,f)\otimes F],
+\]
+after translating all supports by a common positive Euclidean time if
+necessary so that the concatenated configuration is strictly ordered.
+Proposition~\ref{prop:os-ordered-field-closability} proves that this
+operation descends through the OS null quotient and gives closable operators
+on the dense domain \(\mathcal D_{\rm OS}\).  The continuity estimates in the
+OS data make all vacuum and finite-domain matrix elements distributions in
+the test function.  Their Lorentzian boundary values define the Wightman
+distributions and the corresponding operator-valued distributions
+\(\widehat\Phi_\alpha\) on \(\mathcal D_{\rm OS}\).
+
+Step 5 verifies the Wightman properties.  Hermiticity of the Schwinger
+hierarchy gives the adjoint relation on \(\mathcal D_{\rm OS}\), and
+Euclidean covariance gives the Poincare covariance of the reconstructed
+fields.  Proposition~\ref{prop:os-boundary-package-consequences} gives
+temperedness, the edge-of-the-wedge/Jost-domain proof of local graded
+commutativity at spacelike separation, and the reverse continuation back to
+the original ordered Euclidean Schwinger functions away from the partial
+diagonals.  The restriction to noncoincident Euclidean points is essential:
+contact extensions on the diagonals are part of the declared Schwinger
+hierarchy and are not recovered from off-diagonal analytic continuation
+alone.
 \end{proof}
 
 \begin{proposition}[Uniqueness of OS reconstruction]

@@ -313,20 +313,317 @@ as Open Problems~\ref{op:qed-charged-asymptotic-completeness}
 and~\ref{op:qcd-asymptotic-completeness}.
 \end{remark}
 
-The proof is governed by Cook's criterion.  Differentiating \(\Psi_t\)
-produces terms in which either a one-particle remainder is off the isolated
-mass shell, or two time-dependent creators must be commuted past one another.
-The isolated shell makes the first type integrable in \(t\); the commutator
-estimate \eqref{eq:algebraic-haag-ruelle-commutator} makes the second type
-integrable.  Consequently
+\subsection{The Cook Estimate and the Fock Inner Product}
+
+We now spell out the proof in a form that separates the analytic estimates
+from the algebraic conclusion.  The estimates below are precisely the
+Haag--Ruelle estimates supplied by almost locality, spectral isolation, and
+stationary phase.  Once they are known, the construction of scattering states
+and the Fock inner product is an elementary Hilbert-space argument.
+
+\begin{definition}[Haag--Ruelle estimate package]
+\label{def:haag-ruelle-estimate-package}
+For a finite family of regular creators \(B_j\) and smooth compactly
+supported packets \(h_j\), write
 \[
-  \int_T^\infty
-  \left\|\frac{\dd}{\dd t}\Psi_t\right\|\,\dd t
-  \longrightarrow 0
-  \qquad (T\to\infty),
+  B_{j,t}=B_{j,t}(h_j),
+  \qquad
+  \psi_j=B_{j,t}\vac\in\Hilb_1 .
 \]
-and the outgoing family is Cauchy.  The incoming limit is identical with
+The family is said to satisfy the Haag--Ruelle estimate package on
+\(|t|\ge T_0\) if the following hold.
+\begin{enumerate}
+  \item The vectors \(B_{j,t}\vac=\psi_j\) are independent of \(t\), and
+  \(B_{j,t}^*\vac=0\).
+  \item For every \(N\ge1\) and every pair with disjoint velocity supports,
+  \[
+    \|[B_{i,t}^{\#},B_{j,t}^{\#}]\|
+    \le C_N(1+|t|)^{-N},
+    \qquad B^\#\in\{B,B^*\}.
+    \label{eq:hr-estimate-package-commutator}
+  \]
+  The same estimate holds on the finite-energy vectors obtained from the
+  family when one entry is replaced by its strong time derivative.  This
+  derivative is the derivative of the smooth translation-smearing parameter;
+  no norm differentiability of an unsmeared local operator is assumed.
+  \item For every pair of regular creators \(B,C\) with packets \(h,g\),
+  \[
+    B_t(h)^*C_t(g)\vac
+    =
+    \langle B_t(h)\vac,C_t(g)\vac\rangle\,\vac
+    +
+    r_t(B,h;C,g),
+    \label{eq:hr-estimate-package-contraction}
+  \]
+  where for every \(N\ge1\),
+  \(\|r_t(B,h;C,g)\|\le C_N(1+|t|)^{-N}\).
+  \item For two velocity-separated lists
+  \(B_1,\ldots,B_n\) and \(C_1,\ldots,C_m\), the scalar products obey the
+  recursive contraction estimate
+  \[
+  \begin{aligned}
+  &
+  \left\langle
+    B_{1,t}\cdots B_{n,t}\vac,
+    C_{1,t}\cdots C_{m,t}\vac
+  \right\rangle
+  \\
+  &\quad =
+  \sum_{\ell=1}^{m}
+  \langle\psi_1,\varphi_\ell\rangle
+  \left\langle
+    B_{2,t}\cdots B_{n,t}\vac,
+    C_{1,t}\cdots \widehat{C_{\ell,t}}\cdots C_{m,t}\vac
+  \right\rangle
+  +O_N((1+|t|)^{-N})
+  \end{aligned}
+  \label{eq:hr-estimate-package-recursive-contraction}
+  \]
+  for every \(N\ge1\), with the convention that the sum is empty when
+  \(m=0\).
+  \item For each velocity-separated product
+  \(\Psi_t=B_{1,t}\cdots B_{n,t}\vac\), there is an integrable nonnegative
+  function \(R(t)\) on \([T_0,\infty)\) and on
+  \((-\infty,-T_0]\) such that
+  \[
+    \left\|\frac{\dd}{\dd t}\Psi_t\right\|\le R(t)
+    \label{eq:hr-estimate-package-cook}
+  \]
+  on the finite vector domain under discussion.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Estimate package implies Haag--Ruelle limits]
+\label{prop:estimate-package-implies-haag-ruelle}
+Assume the estimate package
+Definition~\ref{def:haag-ruelle-estimate-package} for every finite
+velocity-separated family of regular creators.  Then the limits in
+Theorem~\ref{thm:algebraic-haag-ruelle-scattering} exist, depend only on the
+one-particle vectors, and satisfy the bosonic Fock inner product formula
+\[
+\begin{aligned}
+&
+\left\langle
+  \Psi^{\rm out}(\psi_1,\ldots,\psi_n),
+  \Phi^{\rm out}(\varphi_1,\ldots,\varphi_m)
+\right\rangle
+\\
+&\qquad
+=
+\delta_{nm}
+\sum_{\sigma\in S_n}
+\prod_{j=1}^{n}
+\langle\psi_j,\varphi_{\sigma(j)}\rangle_{\Hilb_1}.
+\end{aligned}
+\label{eq:hr-fock-inner-product-from-estimates}
+\]
+The same statement holds for incoming limits.  Hence the wave operators are
+isometries from \(\mathcal F_s(\Hilb_1)\) into \(\Hilb\).
+\end{proposition}
+
+\begin{proof}
+We give the outgoing proof.  The incoming proof is the same with
 \(t\to-\infty\).
+
+First, Cook's criterion gives existence.  For \(t'>t\ge T_0\),
+\[
+  \|\Psi_{t'}-\Psi_t\|
+  \le
+  \int_t^{t'}\left\|\frac{\dd}{\dd s}\Psi_s\right\|\,\dd s
+  \le
+  \int_t^{t'}R(s)\,\dd s .
+\]
+Since \(R\in L^1([T_0,\infty))\), the right side tends to zero as
+\(t,t'\to+\infty\).  Thus \(\Psi_t\) is Cauchy in the Hilbert norm and has an
+outgoing limit.
+
+Second, compute the limiting scalar products.  Let
+\[
+  \Psi_t=B_{1,t}\cdots B_{n,t}\vac,
+  \qquad
+  \Phi_t=C_{1,t}\cdots C_{m,t}\vac ,
+\]
+with both lists velocity-separated.  Then
+\[
+  \langle\Psi_t,\Phi_t\rangle
+  =
+  \langle\vac,
+  B_{n,t}^*\cdots B_{1,t}^*
+  C_{1,t}\cdots C_{m,t}\vac\rangle .
+\]
+The recursive contraction estimate
+\eqref{eq:hr-estimate-package-recursive-contraction} gives
+\[
+  \langle\Psi_t,\Phi_t\rangle
+  =
+  \sum_{\ell=1}^{m}
+  \langle\psi_1,\varphi_\ell\rangle\,
+  \langle
+    B_{2,t}\cdots B_{n,t}\vac,
+    C_{1,t}\cdots \widehat{C_{\ell,t}}\cdots C_{m,t}\vac
+  \rangle
+  +O_N(t^{-N}).
+\]
+Induction on \(n+m\), with the base cases following from
+\(\langle\vac,\vac\rangle=1\) and \(B_t^*\vac=0\), gives
+\eqref{eq:hr-fock-inner-product-from-estimates}.  If \(n\ne m\), the
+induction eventually leaves an annihilator acting on the vacuum, and the
+limit is zero.
+
+The scalar product formula shows at once that changing an interpolating
+creator while keeping the one-particle vector fixed changes the limiting
+state by a vector of zero norm.  It also identifies the norm of every finite
+linear combination of outgoing limits with the norm of the corresponding
+finite symmetric tensor in \(\mathcal F_s(\Hilb_1)\).  Therefore the map from
+the algebraic velocity-separated Fock domain to \(\Hilb\) is isometric and
+extends uniquely to the Fock completion.  Density of regular creators in
+\(\Hilb_1\) gives the stated domain of the wave operator.
+\end{proof}
+
+\begin{lemma}[Stationary-phase velocity localization]
+\label{lem:hr-stationary-phase-velocity-localization}
+Let \(h\in C_c^\infty(\mathbb R^{D-1})\) and let
+\[
+  h_t(\vec x)
+  =
+  \int\frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}\,
+  h(\vec p)\,
+  \ee^{\ii\omega_{\vec p}t-\ii\vec p\cdot\vec x}.
+\]
+Let \(V(h)=\{\vec p/\omega_{\vec p}:\vec p\in\operatorname{supp}h\}\).  If
+\(U\subset\mathbb R^{D-1}\) is an open neighborhood of \(V(h)\), then for
+every \(N\ge1\) there is \(C_N\) such that
+\[
+  |h_t(\vec x)|\le C_N(1+|t|+|\vec x|)^{-N}
+  \qquad
+  \text{whenever }\vec x/t\notin U,\quad |t|\ge1 .
+\]
+\end{lemma}
+
+\begin{proof}
+On the compact support of \(h\), the phase is
+\[
+  \Phi_t(\vec p;\vec x)
+  =
+  \omega_{\vec p}t-\vec p\cdot\vec x .
+\]
+Its gradient is
+\[
+  \nabla_{\vec p}\Phi_t
+  =
+  t\,\frac{\vec p}{\omega_{\vec p}}-\vec x .
+\]
+If \(\vec x/t\notin U\), compactness gives
+\(|\nabla_{\vec p}\Phi_t|\ge c|t|\) on \(\operatorname{supp}h\) for some
+\(c>0\).  Apply repeatedly the integration-by-parts operator
+\[
+  L
+  =
+  \frac{1}{\ii|\nabla_{\vec p}\Phi_t|^2}
+  \nabla_{\vec p}\Phi_t\cdot\nabla_{\vec p},
+  \qquad
+  L\ee^{\ii\Phi_t}=\ee^{\ii\Phi_t}.
+\]
+Each integration by parts gains a factor \(O(|t|^{-1})\), while derivatives
+of \(h\) and of the coefficients of \(L\) are bounded on the compact support.
+This gives \(O(|t|^{-N})\).  In the region \(|\vec x|\gg |t|\), the same
+lower bound is \(c(|t|+|\vec x|)\), giving the displayed estimate.
+\end{proof}
+
+\begin{proposition}[Almost locality gives the commutator estimate]
+\label{prop:almost-locality-gives-hr-commutator}
+Let \(B_i\) and \(B_j\) be almost-local regular creators and let
+\(h_i,h_j\) have disjoint velocity supports.  Then
+\[
+  \|[B_{i,t}(h_i),B_{j,t}(h_j)]\|
+  \le C_N(1+|t|)^{-N}
+  \qquad (N\ge1),
+\]
+and the same estimate holds with either operator replaced by its adjoint.
+\end{proposition}
+
+\begin{proof}
+Choose disjoint open neighborhoods \(U_i,U_j\) of the velocity supports.
+By Lemma~\ref{lem:hr-stationary-phase-velocity-localization}, the parts of
+the wave packets outside the tubes \(\vec x\in tU_i\) and \(\vec y\in tU_j\)
+give \(O_N(|t|^{-N})\) contributions in operator norm after integration
+against the bounded translates of \(B_i\) and \(B_j\).
+
+Inside the two tubes, the equal-time points \((t,\vec x)\) and
+\((t,\vec y)\) have spatial separation at least \(c|t|\).  Let
+\(B_{i,R}\) and \(B_{j,R}\) be local approximants with
+\(\|B_\ell-B_{\ell,R}\|\le C_N R^{-N}\), and choose
+\(R=c|t|/4\).  The translated local approximants are localized in double
+cones whose radii are \(R\) around the two tube points; for large \(|t|\)
+these double cones are spacelike separated.  Locality gives zero commutator
+for the approximants.  The difference between the original operators and the
+approximants contributes at most \(O_N(|t|^{-N})\).  Combining this with the
+rapidly decreasing tube-tail contributions proves the estimate.  The adjoint
+case follows because almost locality and localization are preserved by
+adjoints.
+\end{proof}
+
+\begin{proposition}[Origin of the remaining Haag--Ruelle estimates]
+\label{prop:origin-of-remaining-haag-ruelle-estimates}
+For regular creators obtained by smooth spectral transfer inside the
+isolating neighborhood \(N\), the one-particle contraction estimate
+\eqref{eq:hr-estimate-package-contraction}, the recursive contraction
+estimate \eqref{eq:hr-estimate-package-recursive-contraction}, and the Cook
+derivative estimate \eqref{eq:hr-estimate-package-cook} follow from spectral
+isolation of \(\Sigma_m^+\), the transfer relation
+\eqref{eq:haag-ruelle-spectral-transfer}, and the commutator estimate of
+Proposition~\ref{prop:almost-locality-gives-hr-commutator}.
+\end{proposition}
+
+\begin{proof}
+The support of the spectral transfer of a regular creator meets the spectrum,
+when acting on the vacuum, only on \(\Sigma_m^+\).  Therefore
+\(B_t(h)\vac\) is exactly the one-particle vector determined by the mass-shell
+packet and is independent of \(t\), while \(B_t(h)^*\vac=0\) because the
+reflected transfer support is disjoint from \(\overline V_+\).  Acting with
+\(B_t(h)^*C_t(g)\) on the vacuum, spectral transfer permits a vacuum component
+and separates all nonvacuum components from the isolated shell by a positive
+spectral distance fixed by the supports.  Choose a smooth cutoff \(\rho(P)\)
+that is \(0\) on a neighbourhood of the vacuum point and \(1\) on the
+separated nonvacuum spectral support.  The oscillatory factors left after
+subtracting the vacuum component then have no stationary point on the relevant
+compact spectral support.  Repeated integration by parts in the spectral
+variables, written equivalently as commuting powers of smooth functions of
+\(P\) through the translated smearing, gives the rapidly decreasing remainder
+in \eqref{eq:hr-estimate-package-contraction}.  The estimate is a strong
+finite-energy estimate; it is not a statement about an operator norm
+derivative of a pointlike field.
+Iterating this contraction after decomposing packet supports into finitely
+many small velocity cells gives
+\eqref{eq:hr-estimate-package-recursive-contraction}; terms in which two
+uncontracted cells have separated velocity supports are estimated by
+Proposition~\ref{prop:almost-locality-gives-hr-commutator}, and the finite
+partition is removed by summing the finitely many cells.
+
+For the Cook estimate, differentiate the product on the finite vector domain
+spanned by the vectors obtained by applying finitely many translated,
+spectrally smeared creators to the vacuum.
+The derivative of the \(k\)-th factor, after commuting it to the far right,
+annihilates the vacuum because the one-particle packet has been chosen to
+solve the free mass-shell evolution.  Every commutation needed to move this
+derivative through later factors is controlled by the derivative version of
+Proposition~\ref{prop:almost-locality-gives-hr-commutator}; the derivative
+version is obtained by applying
+Lemma~\ref{lem:hr-stationary-phase-velocity-localization} to the differentiated
+packet.  The differentiated packet only multiplies the compact momentum
+amplitude by a smooth polynomial expression in \(p\), so it has the same
+velocity localization and rapid tube-tail estimates.
+The resulting bound is \(C_N(1+|t|)^{-N}\) for arbitrary \(N\), hence
+integrable.  This is \eqref{eq:hr-estimate-package-cook}.
+\end{proof}
+
+Together,
+Propositions~\ref{prop:estimate-package-implies-haag-ruelle},
+\ref{prop:almost-locality-gives-hr-commutator}, and
+\ref{prop:origin-of-remaining-haag-ruelle-estimates} give the ordinary
+massive Haag--Ruelle theorem under the displayed vacuum-net, isolated-shell,
+and regular-creator hypotheses.  No perturbative pole expansion or
+Lagrangian formalism enters this construction.
 
 \section{Gauge Charges and Nonlocal Charged Creators}
 
