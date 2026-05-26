@@ -3920,6 +3920,284 @@ substance is therefore concentrated in the concrete BPHZ kernel estimates for
 projective norms, the stochastic and entropy parts of the negative-sector
 model convergence proof have already been proved in this chapter.
 
+\begin{proposition}[Heat-integration reexpansion estimate]
+\label{prop:spde-heat-integration-reexpansion-coefficient-estimate}
+Let \(\mathfrak s=(2,1,1,1)\) and \(Q=5\).  Let
+\[
+  -2<\alpha<0,\qquad
+  0<\sigma,\qquad
+  \beta=\alpha+2,\qquad
+  \gamma=\beta+\sigma ,
+\]
+and assume
+\[
+  0<\beta<1,\qquad 0<\gamma<1 .
+\]
+Fix \(r>-\alpha-\sigma\).  Let \(K=\sum_{j\geq0}K_j\) be a dyadic
+decomposition of a parabolic heat kernel, with the following properties.
+There are constants \(A,C_K\) and a number \(\vartheta\in(\gamma,1]\) such
+that, after enlarging \(A\) if necessary, \(A\geq1\) and
+\begin{equation}
+  \operatorname{supp}K_j\subset B_{\mathfrak s}(0,A2^{-j}),
+  \qquad
+  |K_j(u)|\leq C_K2^{(Q-2)j},
+  \qquad j\geq0,
+  \label{eq:spde-reexpansion-kernel-size}
+\end{equation}
+and, for every \(a,b\) with
+\(\|a-b\|_{\mathfrak s}\leq A2^{-j}\), the translated kernel difference
+admits the test-function representation
+\begin{equation}
+  K_j(a-\cdot)-K_j(b-\cdot)
+  =
+  C_K2^{-2j}
+  (2^j\|a-b\|_{\mathfrak s})^\vartheta
+  \psi_{a,b,j}^{\,2^{-j}},
+  \label{eq:spde-reexpansion-kernel-difference-test}
+\end{equation}
+where \(\psi_{a,b,j}\in C_c^r\) is supported in a fixed
+\(\mathfrak s\)-ball and \(\|\psi_{a,b,j}\|_{C^r}\leq1\).  The translated
+kernel itself has the analogous representation
+\begin{equation}
+  K_j(a-\cdot)=C_K2^{-2j}\psi_{a,j}^{\,2^{-j}},
+  \qquad
+  \|\psi_{a,j}\|_{C^r}\leq1 .
+  \label{eq:spde-reexpansion-kernel-test}
+\end{equation}
+
+Let \(T\) be a distribution on a fixed compact neighborhood \(U\) such that
+\begin{equation}
+  \|T\|_{\alpha+\sigma;U,r}
+  :=
+  \sup_{\substack{x\in U,\ 0<\lambda\leq1\\ \varphi\in\mathcal B_r}}
+  \lambda^{-(\alpha+\sigma)}
+  |\langle T,\varphi_x^\lambda\rangle|
+  <\infty .
+  \label{eq:spde-reexpansion-negative-distribution-norm}
+\end{equation}
+For \(a\in U\) whose unit parabolic neighborhood lies in \(U\), define
+\begin{equation}
+  (\mathcal KT)(a)
+  =
+  \sum_{j\geq0}\langle T,K_j(a-\cdot)\rangle .
+  \label{eq:spde-reexpansion-integrated-distribution}
+\end{equation}
+Then the increment series is absolutely convergent and is given by
+\begin{equation}
+  \mathfrak c_T(a,b)
+  =
+  (\mathcal KT)(b)-(\mathcal KT)(a)
+  =
+  \sum_{j\geq0}
+  \langle T,K_j(b-\cdot)-K_j(a-\cdot)\rangle .
+  \label{eq:spde-reexpansion-coefficient-definition}
+\end{equation}
+Moreover, whenever \(0<\|a-b\|_{\mathfrak s}\leq1\),
+\begin{equation}
+  |\mathfrak c_T(a,b)|
+  \leq
+  C\|T\|_{\alpha+\sigma;U,r}
+  \|a-b\|_{\mathfrak s}^{\,\beta+\sigma}.
+  \label{eq:spde-reexpansion-coefficient-holder}
+\end{equation}
+Consequently the coefficient normalized with the model homogeneity \(\beta\)
+has scale slack \(\sigma\):
+\begin{equation}
+  \frac{|\mathfrak c_T(a,b)|}
+       {\|a-b\|_{\mathfrak s}^{\,\beta}}
+  \leq
+  C\|T\|_{\alpha+\sigma;U,r}
+  \|a-b\|_{\mathfrak s}^{\,\sigma}.
+  \label{eq:spde-reexpansion-normalized-scale-slack}
+\end{equation}
+
+If \((a,b)\) and \((a',b')\) satisfy
+\[
+  h=\|a-b\|_{\mathfrak s},\qquad
+  h'=\|a'-b'\|_{\mathfrak s},\qquad
+  h,h'\in[2^{-m-1},2^{-m}],
+\]
+and
+\[
+  \eta=
+  2^m\bigl(\|a-a'\|_{\mathfrak s}+\|b-b'\|_{\mathfrak s}\bigr)
+  \leq1,
+\]
+then, for every \(0<\theta\leq\gamma\),
+\begin{equation}
+\begin{aligned}
+  &\left|
+    \frac{\mathfrak c_T(a,b)}{\|a-b\|_{\mathfrak s}^{\,\beta}}
+    -
+    \frac{\mathfrak c_T(a',b')}{\|a'-b'\|_{\mathfrak s}^{\,\beta}}
+  \right|                                                   \\
+  &\qquad\leq
+  C_\theta
+  \|T\|_{\alpha+\sigma;U,r}
+  2^{-\sigma m}\eta^\theta .
+\end{aligned}
+  \label{eq:spde-reexpansion-normalized-edge-bound}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+First prove the Schauder increment estimate for
+\(\mathcal KT\).  Set
+\[
+  M=\|T\|_{\alpha+\sigma;U,r}.
+\]
+The representation \eqref{eq:spde-reexpansion-kernel-test} and the
+definition of \(M\) give
+\begin{equation}
+  |\langle T,K_j(a-\cdot)\rangle|
+  \leq
+  C_K2^{-2j}M(2^{-j})^{\alpha+\sigma}
+  =
+  C_KM2^{-\gamma j}.
+  \label{eq:spde-reexpansion-single-kernel-bound}
+\end{equation}
+This bound is summable for \(j\to\infty\), since \(\gamma>0\).  The possible
+large-scale additive ambiguity is the usual harmless constant in the
+parabolic Schauder estimate; it cancels in increments.  Hence
+\(\mathfrak c_T(a,b)\) is given by the absolutely convergent difference
+series in
+\eqref{eq:spde-reexpansion-coefficient-definition}.
+
+Let
+\[
+  h=\|a-b\|_{\mathfrak s}
+\]
+and choose \(J\geq0\) so that
+\[
+  2^{-J-1}<h\leq2^{-J}.
+\]
+For the fine scales \(j>J\), use
+\eqref{eq:spde-reexpansion-single-kernel-bound} separately at \(a\) and
+\(b\):
+\begin{equation}
+  \sum_{j>J}
+  |\langle T,K_j(b-\cdot)-K_j(a-\cdot)\rangle|
+  \leq
+  CM\sum_{j>J}2^{-\gamma j}
+  \leq
+  CMh^\gamma .
+  \label{eq:spde-reexpansion-fine-scale-bound}
+\end{equation}
+For the coarse scales \(j\leq J\), the kernel-difference representation
+\eqref{eq:spde-reexpansion-kernel-difference-test} gives
+\[
+\begin{aligned}
+  |\langle T,K_j(b-\cdot)-K_j(a-\cdot)\rangle|
+  &\leq
+  C_K2^{-2j}(2^jh)^\vartheta M(2^{-j})^{\alpha+\sigma}     \\
+  &=
+  CMh^\vartheta 2^{(\vartheta-\gamma)j}.
+\end{aligned}
+\]
+Since \(\vartheta>\gamma\),
+\begin{equation}
+  \sum_{j\leq J}
+  h^\vartheta 2^{(\vartheta-\gamma)j}
+  \leq
+  Ch^\vartheta 2^{(\vartheta-\gamma)J}
+  \leq
+  Ch^\gamma .
+  \label{eq:spde-reexpansion-coarse-scale-bound}
+\end{equation}
+Combining \eqref{eq:spde-reexpansion-fine-scale-bound} and
+\eqref{eq:spde-reexpansion-coarse-scale-bound} proves
+\eqref{eq:spde-reexpansion-coefficient-holder}; dividing by \(h^\beta\)
+proves \eqref{eq:spde-reexpansion-normalized-scale-slack}.
+
+For the normalized edge estimate, write
+\[
+  F(a)=(\mathcal KT)(a).
+\]
+The estimate just proved says
+\begin{equation}
+  |F(x)-F(y)|\leq CM\|x-y\|_{\mathfrak s}^{\gamma}
+  \label{eq:spde-reexpansion-F-holder}
+\end{equation}
+on the compact region under consideration.  The assumptions on
+\((a,b)\) and \((a',b')\) imply \(h'\simeq h\simeq2^{-m}\) and
+\begin{equation}
+  \|a-a'\|_{\mathfrak s}+\|b-b'\|_{\mathfrak s}
+  \leq
+  C\eta h .
+  \label{eq:spde-reexpansion-edge-geometry}
+\end{equation}
+Therefore
+\[
+\begin{aligned}
+  |(F(b)-F(a))-(F(b')-F(a'))|
+  &\leq
+  CM\bigl(\|b-b'\|_{\mathfrak s}^{\gamma}
+          +\|a-a'\|_{\mathfrak s}^{\gamma}\bigr)       \\
+  &\leq
+  CMh^\gamma\eta^\gamma .
+\end{aligned}
+\]
+Dividing by \(h^\beta\) gives \(CMh^\sigma\eta^\gamma\).  The remaining
+effect is the change of denominator:
+\[
+  |h^{-\beta}-{h'}^{-\beta}|
+  \leq
+  C_\beta h^{-\beta}\frac{|h-h'|}{h}
+  \leq
+  C_\beta h^{-\beta}\eta ,
+\]
+while \(|F(b')-F(a')|\leq CMh^\gamma\).  This contribution is bounded by
+\(CMh^\sigma\eta\).  Since \(0<\eta\leq1\), \(h\simeq2^{-m}\), and
+\(\theta\leq\gamma<1\), the sum of the two contributions is bounded by the
+right-hand side of
+\eqref{eq:spde-reexpansion-normalized-edge-bound}.
+\end{proof}
+
+Apply
+Proposition~\ref{prop:spde-heat-integration-reexpansion-coefficient-estimate}
+to the symbol \(Y=\mathcal I(X^3)\) in dynamic \(\Phi^4_3\).  Here
+\[
+  \alpha=|X^3|=-\frac32-3\kappa,\qquad
+  \beta=|Y|=\alpha+2=\frac12-3\kappa .
+\]
+The primitive Gaussian estimate for \(X^3\) proved above gives the additional
+regularity slack
+\[
+  \sigma=3\kappa,
+  \qquad
+  \alpha+\sigma=-\frac32,
+  \qquad
+  \beta+\sigma=\frac12 .
+\]
+Thus the constant reexpansion coefficient
+\begin{equation}
+  c_n(z,z')
+  =
+  \bigl(\mathcal K\Pi_z^{(n)}X^3\bigr)(z')
+  -
+  \bigl(\mathcal K\Pi_z^{(n)}X^3\bigr)(z)
+  \label{eq:spde-cn-from-x3-coordinate}
+\end{equation}
+has the deterministic normalization
+\begin{equation}
+  \frac{|c_n(z,z')|}
+       {\|z-z'\|_{\mathfrak s}^{\,|Y|}}
+  \leq
+  C\,\|\Pi_z^{(n)}X^3\|_{-3/2;U,r}
+  \|z-z'\|_{\mathfrak s}^{\,3\kappa}.
+  \label{eq:spde-cn-scale-slack-from-x3}
+\end{equation}
+The same implication holds for cutoff differences after replacing
+\(\Pi_z^{(n)}X^3\) by
+\((\Pi_z^{(n+1)}-\Pi_z^{(n)})X^3\).  Hence the \(c_n\)-coordinate does not
+require an independent singular stochastic contraction: its scale slack, and
+its dyadic edge estimates once the corresponding \(X^3\) base-increment
+estimates are available, are heat-integration consequences of the \(X^3\)
+coordinate estimates.  What remains genuinely new in the strict negative
+sector is the BPHZ analysis of the nonlinear products \(XY\) and \(X^2Y\),
+where multiplication with the integrated field introduces additional
+contraction sectors.
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization

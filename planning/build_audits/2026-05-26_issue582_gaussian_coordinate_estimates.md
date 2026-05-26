@@ -35,6 +35,16 @@
   sum as \(\sum_j2^{(Q-2s)j}\), while Wick-power coefficients sum as
   \(\sum_j2^{(k-2s)j}\), and that same-scale edge estimates gain
   \(\eta^\theta\) after splitting the wavelet scale at \(2^{-j}\simeq\eta\).
+- Added Proposition
+  `prop:spde-heat-integration-reexpansion-coefficient-estimate`.
+- This proposition proves the deterministic Schauder/reexpansion transfer:
+  if a negative distribution of assigned homogeneity \(\alpha\) has true
+  regularity \(\alpha+\sigma\), then heat integration produces an increment
+  of regularity \(\beta+\sigma\), where \(\beta=\alpha+2\), and the
+  coefficient normalized by \(\|z-z'\|_{\mathfrak s}^{\beta}\) carries scale
+  slack \(\sigma\).  For \(Y=\mathcal I(X^3)\), this gives
+  \(\alpha=-3/2-3\kappa\), \(\beta=1/2-3\kappa\), and
+  \(\sigma=3\kappa\).
 
 ## Calculation Check
 
@@ -46,6 +56,8 @@
   - a sample Holder edge factor.
   - the wavelet summability and edge-tail inequalities in the dual-norm
     Gaussian-coordinate upgrade.
+  - the heat-integration coarse/fine scale arithmetic that transfers the
+    \(X^3\) slack to the \(c_n\) coefficient.
 
 ## Remaining Issue #582 Obligations
 
@@ -54,6 +66,8 @@
   Wick powers.
 - Prove the genuinely nonlinear BPHZ coordinate estimates for \(XY\) and
   \(X^2Y\).
-- Prove the scalar \(c_n\) reexpansion coordinate estimates.
+- Supply the remaining \(X^3\) cutoff-difference and base-increment estimates
+  needed to feed the deterministic \(c_n\) transfer into the full
+  scale-summed \(\Gamma\)-coordinate theorem.
 - Extend from the strict negative sector to the solution sector and complete
   the invariant-law/OS comparison.

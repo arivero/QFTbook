@@ -223,6 +223,42 @@ def check_gaussian_dual_norm_wavelet_arithmetic():
     )
 
 
+def check_heat_integration_reexpansion_arithmetic():
+    # For Y=I(X^3) in dynamic Phi^4_3 with kappa=1/20:
+    # |X^3|=-3/2-3kappa, |Y|=|X^3|+2=1/2-3kappa.
+    # The Gaussian X^3 estimate supplies slack sigma=3kappa, so the
+    # integrated Holder exponent is |Y|+sigma=1/2.
+    kappa = Fraction(1, 20)
+    alpha = -Fraction(3, 2) - 3 * kappa
+    beta = alpha + 2
+    sigma = 3 * kappa
+    gamma = beta + sigma
+    assert_equal(alpha, -Fraction(33, 20), "reexpansion X^3 homogeneity")
+    assert_equal(beta, Fraction(7, 20), "reexpansion Y homogeneity")
+    assert_equal(sigma, Fraction(3, 20), "reexpansion c_n scale slack")
+    assert_equal(gamma, Fraction(1, 2), "reexpansion integrated Holder exponent")
+
+    # Fine scales j>J sum like 2^{-gamma J}; after normalizing by h^beta,
+    # this leaves h^sigma.
+    j_cut = 6
+    fine_power = gamma * j_cut
+    normalized_fine_power = fine_power - beta * j_cut
+    assert_equal(normalized_fine_power, sigma * j_cut, "reexpansion fine normalized slack")
+
+    # Coarse scales use a kernel translation exponent vartheta>gamma.
+    # With vartheta=1, h^vartheta 2^{(vartheta-gamma)J}=h^gamma.
+    vartheta = Fraction(1)
+    coarse_power = vartheta * j_cut - (vartheta - gamma) * j_cut
+    assert_equal(coarse_power, gamma * j_cut, "reexpansion coarse Holder power")
+
+    # A normalized edge at physical separation h~2^{-m} has size
+    # 2^{-sigma m} eta^theta.  Choose theta=1/4 and ell=8.
+    theta = Fraction(1, 4)
+    ell = 8
+    edge_eta_power = theta * ell
+    assert_equal(edge_eta_power, 2, "reexpansion normalized edge eta power")
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -950,6 +986,7 @@ def main():
     check_projective_kernel_dual_norm_criterion_arithmetic()
     check_gaussian_wick_coordinate_scale_arithmetic()
     check_gaussian_dual_norm_wavelet_arithmetic()
+    check_heat_integration_reexpansion_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -973,7 +1010,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

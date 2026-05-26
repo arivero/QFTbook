@@ -131,6 +131,10 @@ data.
   `d_Gamma`:
   test-function-dualized \(\Pi\)-coordinates, physical scale-ratio parameter
   spaces, normalized-separation parameter spaces, and their entropy exponents.
+- `alpha`, `beta`, `sigma`, `gamma`, `mathfrak c_T(a,b)`: assigned
+  negative homogeneity, integrated homogeneity, regularity slack, true
+  integrated Holder exponent, and heat-integration reexpansion coefficient in
+  the deterministic \(c_n\)-transfer estimate.
 
 ## Claim Ledger
 
@@ -251,6 +255,12 @@ data.
   \(H^{-s}\) majorant controls the supremum over the \(C^r\) test-function
   ball, white-noise coefficients sum when \(s>Q/2\), and Wick-power
   coefficients sum using the variance exponent \(2^{(k-Q)j}\).
+- Proves a heat-integration reexpansion estimate: if a negative distribution
+  of assigned homogeneity \(\alpha\) has true regularity \(\alpha+\sigma\),
+  then the constant coefficient in \(\mathcal I\tau\) has assigned
+  homogeneity \(\beta=\alpha+2\) and normalized scale slack \(\sigma\).
+  Applied to \(Y=\mathcal I(X^3)\), this transfers the \(X^3\) slack
+  \(3\kappa\) to the \(c_n\)-coordinate.
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -514,3 +524,11 @@ data maps.
   summability exponents, and proves same-scale dual-norm edge estimates under
   \(0<\theta<r-Q/2\).  The calculation-check companion verifies the
   wavelet-summability and edge-tail arithmetic.
+- 2026-05-26 issue #582 reexpansion continuation: the chapter now proves the
+  deterministic heat-integration estimate that turns an \(X^3\)-type
+  distribution with true regularity \(-3/2\) into the constant reexpansion
+  coefficient of \(Y=\mathcal I(X^3)\), normalized by
+  \(|Y|=1/2-3\kappa\), with slack \(3\kappa\).  The proof splits heat-kernel
+  scales at the physical separation and proves both the fine-scale tail and
+  the coarse translation-gain bound.  The calculation-check companion verifies
+  the homogeneity and coarse/fine exponent arithmetic.

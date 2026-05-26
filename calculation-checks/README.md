@@ -122,7 +122,9 @@ Current checks:
   the projective-tensor arithmetic in the dual-norm finite-chaos estimate and
   the kernel-to-projective-norm criterion, plus the Gaussian-coordinate scale
   slack for \(\Xi,X,X^2,X^3\) and the wavelet \(H^{-s}\)-summability
-  arithmetic used in the dual-norm Gaussian-coordinate upgrade.
+  arithmetic used in the dual-norm Gaussian-coordinate upgrade, together
+  with the heat-integration reexpansion arithmetic that transfers the
+  \(X^3\) slack to the \(c_n\) coordinate.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian
