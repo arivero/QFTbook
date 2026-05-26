@@ -22,6 +22,11 @@ the monograph's proof-boundary language.
 - `y,w`: level-II and level-III nested Bethe roots.
 - `f(y,p)`, `S^{II,I}(y,p)`: one-defect nesting coefficient and the
   level-II/level-I scattering factor in the stringbook spin-chain basis.
+- `v(y)=y+1/y`: rational rapidity entering level-II and level-III nested
+  scattering.
+- `M(y_1,y_2), N(y_1,y_2)`: `SU(2)`-invariant level-II matrix amplitudes.
+- `gamma(w,y)`, `S^{III,II}(w,y)`: one-defect level-III coefficient and
+  level-III/level-II scattering factor.
 - `E_Q,p`: bound-state energy and momentum.
 - `f(g)`: large-spin cusp scaling function.
 
@@ -59,8 +64,14 @@ the monograph's proof-boundary language.
   `f(y,p)=a(p)/(y-x^+(p))` and
   `S^{II,I}(y,p)=(y-x^-(p))/(y-x^+(p))` by the two adjacent-transposition
   coefficient equations.
-- Displays the level-III rational scattering factors following this nesting
-  step.
+- Adds the two-defect level-II scattering datum: the `M,N` amplitudes, the
+  `M+N=-1` ungraded fermion sign, the rational `M-N` eigenvalue, and the
+  same-site `phi_2 Z^+` contact coefficient.
+- Proves the single level-III nesting step from the `M,N` amplitudes after
+  accounting for the fermionic exchange sign, deriving
+  `S^{III,II}(w,y)=(w-v(y)-i/(2g))/(w-v(y)+i/(2g))`.
+- Displays the level-III rational self-scattering factor following this
+  nesting step.
 - Proves weak-coupling reduction to the one-loop Bethe equation and dispersion
   normalization.
 - Adds bound-state dispersion and the large-spin cusp-scaling function with
@@ -83,6 +94,10 @@ crossed Zhukovsky sheets.
 - It checks the single level-II nesting step by evaluating the two local
   coefficient equations and their cleared polynomial identities for
   non-singular complex samples.
+- It checks the two-defect level-II matrix eigenvalues and unitarity, the
+  graded conversion of `M+N=-1` to trivial level-III vacuum scattering, the
+  two level-III local coefficient equations, and their cleared rational
+  identities.
 - The same script now checks BMN scaling, bound-state dispersion, and weak
   coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
 

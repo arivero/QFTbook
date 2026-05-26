@@ -258,6 +258,19 @@
   level-III rational self-scattering factor, with the convention-dependent
   string-basis square-root factors isolated from the matrix-ratio algebra.
 
+## Comprehensive Development Continuation XII
+
+- Extended the Chapter 13 nesting discussion from the one-defect problem to
+  the two-defect level-II datum.  The text now records the `SU(2)`-invariant
+  `M,N` matrix amplitudes, the ungraded `M+N=-1` identical-fermion sign, the
+  rational `M-N` eigenvalue, and the same-site `phi_2 Z^+` contact
+  coefficient in the stringbook spin-chain convention.
+- Added a proved single level-III nesting proposition.  The proof keeps the
+  graded sign explicit, showing that the fermionic exchange sign converts the
+  ungraded level-II vacuum eigenvalue into trivial vacuum scattering, and
+  derives the displayed `S^{III,II}` factor by two cleared polynomial
+  identities.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -282,6 +295,10 @@
   sheet-free `x -> 1/x` substitution;
 - single level-II nesting in the stringbook spin-chain orientation: the two
   adjacent-transposition equations and their cleared polynomial identities;
+- two-defect level-II scattering and level-III nesting: `M,N` eigenvalues,
+  matrix unitarity, graded vacuum-sign conversion, the two level-III local
+  equations, their cleared polynomial identities, and level-III self-scattering
+  unitarity;
 - weak-coupling dispersion expansion;
 - BMN scaling limit;
 - bound-state shortening dispersion;

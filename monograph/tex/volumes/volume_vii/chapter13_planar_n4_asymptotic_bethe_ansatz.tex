@@ -589,14 +589,124 @@ formula for an arbitrary ordering of the level-I magnons.
 The square-root braiding factors of the string basis multiply
 \eqref{eq:planar-n4-single-level-ii-data} by convention-dependent one-body
 factors; they cancel from the local identities above after the corresponding
-basis change is applied to the mixed amplitudes.  A level-III root \(w\)
-diagonalizes the remaining \(SU(2)\) matrix problem and scatters by
+basis change is applied to the mixed amplitudes.
+
+With two level-II fermions there is a genuine contact term: when the two
+auxiliary fermions occupy the same level-I site, the local state can turn
+into the boson \(\phi_2\) accompanied by the length-changing marker \(Z^+\).
+Let
 \[
+  v(y)=y+y^{-1}.
+\]
+In the spin-chain basis, the local two-defect calculation fixes the
+\(SU(2)\)-invariant level-II matrix
+\begin{equation}
+  (S^{{\rm II}})_{\alpha\beta}^{\delta\gamma}(y_1,y_2)
+  =
+  \delta_\alpha^\delta\delta_\beta^\gamma\,M(y_1,y_2)
+  +
+  \delta_\alpha^\gamma\delta_\beta^\delta\,N(y_1,y_2),
+  \label{eq:planar-n4-level-ii-mn-definition}
+\end{equation}
+with
+\begin{equation}
+  M+N=-1,
+  \qquad
+  M-N=
+  \frac{v(y_1)-v(y_2)-\ii/g}{v(y_1)-v(y_2)+\ii/g}.
+  \label{eq:planar-n4-level-ii-mn-eigenvalues}
+\end{equation}
+Equivalently,
+\[
+  M(y_1,y_2)=
+  -\,\frac{\ii/g}{v(y_1)-v(y_2)+\ii/g},
+  \qquad
+  N(y_1,y_2)=
+  -\,\frac{v(y_1)-v(y_2)}{v(y_1)-v(y_2)+\ii/g}.
+\]
+The accompanying same-site coefficient is
+\begin{equation}
+  \mathsf f^{(2)}(y_1,y_2;p)
+  =
+  \frac{g}{\mathsf a(p)^2}
+  \left(\frac{x^-(p)}{x^+(p)}-1\right)
+  \frac{y_1y_2-x^+(p)x^-(p)}{y_1y_2}
+  \frac{y_1-y_2}{v(y_1)-v(y_2)+\ii/g}.
+  \label{eq:planar-n4-level-ii-contact-coefficient}
+\end{equation}
+The sign \(M+N=-1\) is not a scalar scattering phase to be inserted into
+the level-III vacuum Bethe equation.  It is the ungraded matrix eigenvalue
+on the state with two identical level-II fermions; after the fermionic
+exchange sign is accounted for, the level-III vacuum scattering is trivial.
+This is the local sign convention behind the sentence that the
+\(\psi_1\)-vacuum has \(S^{{\rm II},{\rm II}}=1\).
+
+\begin{proposition}[Single level-III nesting step]
+\label{prop:planar-n4-single-level-iii-nesting-step}
+Assume \(g\neq0\), \(v(y_1)-v(y_2)+\ii/g\neq0\), and the denominators below
+are nonzero.  In the graded convention just described, a single level-III
+excitation with spectral parameter \(w\) has one-body coefficient
+\[
+  \gamma(w,y)=
+  \frac{w+\ii/(2g)}{w-v(y)+\ii/(2g)}
+\]
+and level-III/level-II scattering factor
+\begin{equation}
   S^{{\rm III},{\rm II}}(w,y)
   =
-  \frac{w-y-y^{-1}-\ii/(2g)}
-       {w-y-y^{-1}+\ii/(2g)},
+  \frac{w-v(y)-\ii/(2g)}
+       {w-v(y)+\ii/(2g)}.
+  \label{eq:planar-n4-level-iii-level-ii-factor}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Put \(\eta=\ii/(2g)\), \(v_i=v(y_i)\), \(D=v_1-v_2\), and
+\(a_i=w-v_i\).  Then \(a_2=a_1+D\), and
+\eqref{eq:planar-n4-level-ii-mn-eigenvalues} is equivalent to
+\[
+  M=-\frac{2\eta}{D+2\eta},
   \qquad
+  N=-\frac{D}{D+2\eta}.
+\]
+For an adjacent exchange of two level-II sites, the two independent
+coefficients must obey
+\begin{equation}
+\begin{aligned}
+  \gamma(w,y_1)M
+  +\gamma(w,y_2)S^{{\rm III},{\rm II}}(w,y_1)N
+  &=
+  -\gamma(w,y_2),\\
+  \gamma(w,y_1)N
+  +\gamma(w,y_2)S^{{\rm III},{\rm II}}(w,y_1)M
+  &=
+  -\gamma(w,y_1)S^{{\rm III},{\rm II}}(w,y_2).
+\end{aligned}
+  \label{eq:planar-n4-level-iii-local-equations}
+\end{equation}
+The minus signs are precisely the fermionic exchange signs which convert the
+ungraded \(M+N=-1\) vacuum eigenvalue into trivial graded vacuum scattering.
+
+Substituting \(\gamma(w,y_i)=(w+\eta)/(a_i+\eta)\) and
+\(S^{{\rm III},{\rm II}}(w,y_i)=(a_i-\eta)/(a_i+\eta)\), the first equation
+in \eqref{eq:planar-n4-level-iii-local-equations} reduces to
+\[
+  -2\eta(a_2+\eta)-D(a_1-\eta)
+  =
+  -(D+2\eta)(a_1+\eta).
+\]
+The second reduces to
+\[
+  -D(a_2+\eta)-2\eta(a_1-\eta)
+  =
+  -(D+2\eta)(a_2-\eta).
+\]
+Both identities follow immediately from \(a_2=a_1+D\).  Therefore the
+one-level-III ansatz is compatible with every adjacent level-II exchange.
+\end{proof}
+
+A pair of level-III roots scatters by
+\[
   S^{{\rm III},{\rm III}}(w_1,w_2)
   =
   \frac{w_1-w_2+\ii/g}{w_1-w_2-\ii/g}.

@@ -494,6 +494,82 @@ def check_su2c_single_level_ii_nesting_step() -> None:
             )
 
 
+def check_su2c_level_ii_and_iii_nested_scattering() -> None:
+    def auxiliary_rapidity(y: complex) -> complex:
+        return y + 1 / y
+
+    samples = (
+        (0.7, 0.8 + 0.4j, -1.3 + 0.6j, 0.2 - 1.1j),
+        (1.1, -0.5 + 1.7j, 1.6 - 0.3j, -1.4 + 0.8j),
+    )
+
+    for coupling, y1, y2, w in samples:
+        eta = 0.5j / coupling
+        v1 = auxiliary_rapidity(y1)
+        v2 = auxiliary_rapidity(y2)
+        difference = v1 - v2
+
+        def level_ii_amplitudes(left: complex, right: complex) -> tuple[complex, complex]:
+            delta = auxiliary_rapidity(left) - auxiliary_rapidity(right)
+            m_amp = -(2 * eta) / (delta + 2 * eta)
+            n_amp = -delta / (delta + 2 * eta)
+            return m_amp, n_amp
+
+        m12, n12 = level_ii_amplitudes(y1, y2)
+        m21, n21 = level_ii_amplitudes(y2, y1)
+        rational_eigenvalue = (difference - 2 * eta) / (difference + 2 * eta)
+
+        assert_close("level-II M+N ungraded fermion sign", m12 + n12, -1)
+        assert_close("level-II M-N rational eigenvalue", m12 - n12, rational_eigenvalue)
+        assert_close("level-II rational eigenvalue unitarity", rational_eigenvalue * (m21 - n21), 1)
+        assert_close("level-II matrix unitarity identity coefficient", m12 * m21 + n12 * n21, 1)
+        assert_close("level-II matrix unitarity permutation coefficient", m12 * n21 + n12 * m21, 0)
+        assert_close("graded level-III vacuum scattering", -(m12 + n12), 1)
+
+        def gamma(root: complex) -> complex:
+            return (w + eta) / (w - auxiliary_rapidity(root) + eta)
+
+        def s_iii_ii(root: complex) -> complex:
+            shifted = w - auxiliary_rapidity(root)
+            return (shifted - eta) / (shifted + eta)
+
+        g1 = gamma(y1)
+        g2 = gamma(y2)
+        s1 = s_iii_ii(y1)
+        s2 = s_iii_ii(y2)
+
+        assert_close(
+            "level-III nesting first graded equation",
+            g1 * m12 + g2 * s1 * n12,
+            -g2,
+        )
+        assert_close(
+            "level-III nesting second graded equation",
+            g1 * n12 + g2 * s1 * m12,
+            -g1 * s2,
+        )
+
+        a1 = w - v1
+        a2 = w - v2
+        assert_close("level-III rapidity difference relation", a2, a1 + difference)
+        assert_close(
+            "level-III first cleared polynomial identity",
+            -2 * eta * (a2 + eta) - difference * (a1 - eta),
+            -(difference + 2 * eta) * (a1 + eta),
+        )
+        assert_close(
+            "level-III second cleared polynomial identity",
+            -difference * (a2 + eta) - 2 * eta * (a1 - eta),
+            -(difference + 2 * eta) * (a2 - eta),
+        )
+
+    for coupling, w1, w2 in ((0.7, 0.4 + 1.2j, -1.1 + 0.3j), (1.1, -0.8 + 0.6j, 1.4 - 0.5j)):
+        shift = 1j / coupling
+        s12 = (w1 - w2 + shift) / (w1 - w2 - shift)
+        s21 = (w2 - w1 + shift) / (w2 - w1 - shift)
+        assert_close("level-III self-scattering unitarity", s12 * s21, 1)
+
+
 def check_weak_dispersion_expansion() -> None:
     g = 1.0e-4
     for momentum in (0.4, 1.2, 2.7):
@@ -1164,6 +1240,7 @@ def main() -> None:
     check_zhukovsky_map_and_energy()
     check_crossing_rhs_is_sheet_sensitive()
     check_su2c_single_level_ii_nesting_step()
+    check_su2c_level_ii_and_iii_nested_scattering()
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_bound_state_dispersion()
