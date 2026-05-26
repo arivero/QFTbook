@@ -350,6 +350,12 @@ Current checks:
   coefficients, Seiberg-dual magnetic rank, magnetic meson quadratic-form
   integration, Euclidean cascade step count, and
   \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
+- `susy_n1_pure_sym_checks.py`: exact finite checks for pure
+  four-dimensional \(\mathcal N=1\) supersymmetric Yang--Mills, including
+  the adjoint-fermion discrete chiral anomaly, the
+  \(\mathbb Z_{2N_c}\to\mathbb Z_2\) condensate orbit, VY glueball
+  dimension/source/\(F\)-term arithmetic, and the affine-Toda/Witten-index
+  vacuum count match.
 - `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
   including Seiberg-dual rank involution, baryon-charge matching, SQCD

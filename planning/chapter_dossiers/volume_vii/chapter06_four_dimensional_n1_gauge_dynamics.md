@@ -26,6 +26,17 @@ status-boundary style.
 - `Lambda_+`, `Lambda_-`: holomorphic scales above and below the
   `N_f=N_c+1` to `N_f=N_c` mass threshold.
 - `S`: chiral glueball coordinate.
+- `W_VY`: pure-SYM Veneziano-Yankielowicz glueball superpotential
+  `S(log(Lambda_h^(3N_c)/S^N_c)+N_c)` in the standard finite
+  normalization.
+- `prop:pure-sym-discrete-chiral-anomaly`: derivation of the pure-SYM
+  anomalous `Z_{2N_c}` gaugino phase symmetry and its breaking to `Z_2` by a
+  nonzero glueball condensate.
+- `hyp:pure-sym-glueball-f-term-description`: Wilsonian chiral-sector
+  assumptions under which a one-coordinate glueball \(F\)-term description is
+  used.
+- `prop:pure-sym-vy-superpotential`: derivation of the VY representative and
+  the critical equation `S^N_c=Lambda_h^(3N_c)`.
 - `W_ADS`: Affleck-Dine-Seiberg superpotential coordinate.
 - `k`: instanton number, normalized as in the BPST section of Volume II.
 - `hyp:sqcd-one-instanton-calculus`: assumptions needed for using the
@@ -97,6 +108,18 @@ status-boundary style.
   trace convention, including the holomorphic-canonical coordinate relation,
   matter Konishi-rescaling coefficients, vector-multiplet denominator, and
   the status of the denominator pole as a coordinate-chart feature.
+- Derives the pure-SYM discrete chiral anomaly in the chapter's adjoint-index
+  convention, showing `Z_{2N_c}` and the `Z_{2N_c}->Z_2` condensate-phase
+  quotient.
+- States the pure-SYM glueball \(F\)-term assumptions explicitly:
+  Wilsonian holomorphic scheme, one glueball coordinate on massive chiral
+  branches, source normalization
+  `Lambda_h^(3N_c) dW/dLambda_h^(3N_c)=S`, and finite-normalization
+  dependence of the condensate constant.
+- Derives the VY superpotential representative
+  `S(log(Lambda_h^(3N_c)/S^N_c)+N_c)` from the dimensionless ratio
+  `S^N_c/Lambda_h^(3N_c)` and the source identity, then derives
+  `S^N_c=Lambda_h^(3N_c)` and the `N_c` isolated glueball critical points.
 - Defines the Witten index and explains the finite-volume pairing logic and
   the small-circle affine-Toda count for pure \(SU(N_c)\) SYM.
 - Derives the allowed ADS superpotential form from dimension and \(R\)-charge
@@ -204,6 +227,10 @@ status-boundary style.
   KS numerator signs, unequal-rank R-anomaly coefficients, Seiberg-dual
   magnetic rank, magnetic meson quadratic-form integration, cascade step
   count, and the `Z_{2M}->Z_2` vacuum count.
+- `calculation-checks/susy_n1_pure_sym_checks.py` verifies exact finite
+  arithmetic for pure `N=1` SYM: adjoint anomaly coefficient, residual
+  discrete chiral group, condensate orbit count, VY dimension/source/F-term
+  checks, and affine-Toda/Witten-index count matching.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:
   dual-rank involution, baryon-charge map, SQCD holomorphic-canonical NSVZ
