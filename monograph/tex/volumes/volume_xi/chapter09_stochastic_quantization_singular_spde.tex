@@ -2278,10 +2278,66 @@ and the product \(X^2\mathcal I(X^3)\) has
 \[
   |X^2\mathcal I(X^3)|=-\frac12-5\kappa .
 \]
-For \(0<\kappa<1/10\), this is negative and therefore belongs to the finite
-list of local divergent symbols of the \(\Phi^4_3\) equation.  This
-homogeneity count identifies why a second local linear counterterm is needed
-before one proves convergence of the renormalized model.
+The next proposition records exactly which cubic drift monomials have
+negative homogeneity in the first nonlinear expansion.  This finite
+drift-level ledger determines the one-loop and two-loop local mass
+coordinates in the equation displayed below; the full
+regularity-structure construction then adds the model, reexpansion, and
+analytic-coordinate estimates for these symbols.
+
+\begin{proposition}[Drift-level negative homogeneity ledger]
+\label{prop:spde-phi-four-three-negative-drift-ledger}
+Let \(0<\kappa<1/14\).  Put
+\[
+  \alpha=-\frac12-\kappa,\qquad
+  \beta=\frac12-3\kappa .
+\]
+Here \(\alpha\) is the homogeneity of \(X=\mathcal I(\Xi)\) and \(\beta\) is
+the homogeneity of the first nonlinear response
+\(Y=\mathcal I(X^3)\).  Among the four cubic monomials
+\[
+  X^3,\qquad X^2Y,\qquad XY^2,\qquad Y^3 ,
+\]
+the monomials of negative homogeneity are exactly \(X^3\) and \(X^2Y\).
+Their homogeneities are
+\[
+  |X^3|=-\frac32-3\kappa,\qquad
+  |X^2Y|=-\frac12-5\kappa .
+\]
+The remaining two have positive homogeneity:
+\[
+  |XY^2|=\frac12-7\kappa>0,\qquad
+  |Y^3|=\frac32-9\kappa>0 .
+\]
+\end{proposition}
+
+\begin{proof}
+Homogeneity is additive under multiplication and is raised by \(2\) under
+\(\mathcal I\).  Therefore
+\[
+  |Y|=|\mathcal I(X^3)|=3\alpha+2=\frac12-3\kappa .
+\]
+The four cubic monomials in the first nonlinear expansion have homogeneities
+\[
+\begin{array}{c|c}
+  \text{monomial} & \text{homogeneity} \\
+  \hline
+  X^3 & 3\alpha=-\frac32-3\kappa \\
+  X^2Y & 2\alpha+\beta=-\frac12-5\kappa \\
+  XY^2 & \alpha+2\beta=\frac12-7\kappa \\
+  Y^3 & 3\beta=\frac32-9\kappa .
+\end{array}
+\]
+The first two numbers are negative for every \(\kappa>0\).  The inequality
+\(\kappa<1/14\) gives \(1/2-7\kappa>0\), and the weaker inequality
+\(\kappa<1/6\) gives \(3/2-9\kappa>0\).  Hence the displayed list contains
+all and only the negative cubic drift monomials at this stage.
+\end{proof}
+
+The coordinate attached to \(X^3\) is the one-loop Wick contraction
+\(C_{1,\epsilon}\).  The coordinate attached to \(X^2\mathcal I(X^3)\) is
+the two-loop local contraction \(C_{2,\epsilon}\) after the nested
+one-loop subgraph has already been subtracted.
 
 With these conventions, the renormalized cutoff equation in the BPHZ
 regularity-structure convention
@@ -2305,6 +2361,103 @@ is the finite mass coordinate.  Different smooth mollifiers or subtraction
 schemes change \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and \(c_{\rm fin}\)
 separately, but not the statement that only the local linear drift and
 vacuum-energy coordinates are needed in this superrenormalizable model.
+
+\begin{proposition}[Sharp spatial cutoff one-loop coordinate]
+\label{prop:spde-phi-four-three-c1-fourier-growth}
+Work on \(\mathbb T^3=(\mathbb R/2\pi\mathbb Z)^3\) with Fourier basis
+\[
+  e_n(x)=(2\pi)^{-3/2}e^{in\cdot x},\qquad n\in\mathbb Z^3 .
+\]
+Let \(m>0\), and let \(X_M\) be the stationary solution of the linear
+equation
+\[
+  \partial_\tau X_M=(\Delta-m^2)X_M+\xi_M
+\]
+obtained by projecting the noise to modes \(|n|_\infty\leq M\), with
+normalization
+\[
+  \mathbb E\,\xi(\tau,x)\xi(\tau',x')
+  =
+  2\delta(\tau-\tau')\delta(x-x').
+\]
+Then the one-loop local coordinate is
+\[
+  C_1(M)
+  =
+  \mathbb E X_M(\tau,x)^2
+  =
+  (2\pi)^{-3}
+  \sum_{\substack{n\in\mathbb Z^3\\ |n|_\infty\leq M}}
+  \frac{1}{|n|^2+m^2},
+  \label{eq:spde-c1-sharp-fourier-cutoff}
+\]
+independent of \((\tau,x)\).  There are constants \(0<c_m<C_m<\infty\)
+such that, for all \(M\geq1\),
+\[
+  C_1(M)\leq C_m(1+M),
+\]
+and, for all \(M\geq \max(1,\lceil m\rceil)\),
+\[
+  C_1(M)\geq c_m M .
+\]
+Consequently, for dyadic cutoffs \(M_N=2^N\),
+\[
+  0\leq C_1(M_{N+1})-C_1(M_N)\leq C_m'2^N
+\]
+with \(C_m'<\infty\).
+\end{proposition}
+
+\begin{proof}
+For a fixed Fourier mode \(n\), the linear equation is the
+Ornstein--Uhlenbeck equation
+\[
+  dX_n=-(|n|^2+m^2)X_n\,d\tau+\sqrt2\,dB_n(\tau),
+\]
+with the real-field constraint \(X_{-n}=\overline{X_n}\).  The stationary
+variance is the ratio between the noise variance \(2\) and twice the damping
+rate:
+\[
+  \mathbb E|X_n|^2=\frac{1}{|n|^2+m^2}.
+\]
+Since \(|e_n(x)|^2=(2\pi)^{-3}\), summing the retained modes gives
+\eqref{eq:spde-c1-sharp-fourier-cutoff}.
+
+Let
+\[
+  S_r=\{n\in\mathbb Z^3:|n|_\infty=r\}.
+\]
+For \(r\geq1\),
+\[
+  |S_r|=(2r+1)^3-(2r-1)^3=24r^2+2 .
+\]
+If \(n\in S_r\), then \(r^2\leq |n|^2\leq3r^2\).  Hence
+\[
+  \sum_{n\in S_r}\frac{1}{|n|^2+m^2}
+  \leq
+  \frac{24r^2+2}{r^2}
+  \leq 26 .
+\]
+Adding the zero mode gives the upper bound \(C_1(M)\leq C_m(1+M)\).
+
+For \(r\geq\max(1,\lceil m\rceil)\), the same shell satisfies
+\[
+  |n|^2+m^2\leq 3r^2+r^2=4r^2 .
+\]
+Therefore
+\[
+  \sum_{n\in S_r}\frac{1}{|n|^2+m^2}
+  \geq
+  \frac{24r^2}{4r^2}
+  =
+  6 .
+\]
+Summing these shell lower bounds from
+\(\max(1,\lceil m\rceil)\) to \(M\) gives \(C_1(M)\geq c_mM\) after
+adjusting \(c_m\) to cover the finite initial range.  The dyadic increment
+bound follows from the upper shell estimate applied to
+\(M_N<|n|_\infty\leq M_{N+1}\), whose shell radii are
+\(M_N+1,\ldots,M_{N+1}\).
+\end{proof}
 
 \begin{proposition}[Finite-cutoff local counterterm calculation]
 \label{prop:spde-phi-four-three-local-counterterm-calculation}

@@ -26,6 +26,11 @@ data.
   counterterm constants in the displayed BPHZ convention.
 - `Xi`, `X`, `mathcal I`: noise symbol, stochastic convolution symbol, and
   heat-integration map in the dynamic \(\Phi^4_3\) homogeneity ledger.
+- `Y`: first nonlinear response \(\mathcal I(X^3)\) in the drift-level
+  negative homogeneity ledger for dynamic \(\Phi^4_3\).
+- `e_n`, `M`, `C_1(M)`, `S_r`: Fourier mode, sharp spatial cutoff, one-loop
+  local coordinate, and \(\ell^\infty\)-shell used in the explicit
+  one-loop growth calculation.
 - `K_epsilon`, `G_epsilon`: cutoff retarded heat kernel and covariance used
   in the finite-cutoff local counterterm calculation.
 - `mathcal L`: projection to the local linear part of a finite-cutoff Wick
@@ -142,6 +147,15 @@ data.
   contraction gives \(+9\lambda^2C_{2,\epsilon}X_\epsilon\), and the drift
   counterterm has the opposite signs.  The proof also separates the nested
   one-loop subdivergence from the new two-loop local coordinate.
+- Proves the drift-level negative homogeneity ledger for the first nonlinear
+  dynamic \(\Phi^4_3\) expansion: for \(0<\kappa<1/14\), the negative cubic
+  drift monomials are exactly \(X^3\) and \(X^2\mathcal I(X^3)\), while
+  \(X\mathcal I(X^3)^2\) and \(\mathcal I(X^3)^3\) have positive
+  homogeneity.
+- Proves the sharp spatial Fourier-cutoff calculation for the one-loop
+  coordinate \(C_1(M)\), including the stationary OU variance, the
+  \(\ell^\infty\)-shell count \((2r+1)^3-(2r-1)^3=24r^2+2\), linear upper
+  and lower growth, and dyadic shell increment bound.
 - Proves an abstract local fixed-point theorem for modelled distributions:
   given a small-time Schauder estimate, cubic product Lipschitz estimate,
   and linear forcing estimate, the dynamic \(\Phi^4_3\) fixed-point map sends
@@ -311,3 +325,9 @@ data maps.
   decay.  The calculation-check companion verifies the dynamic
   \(\Phi^4_3\) exponents \(Q=5\), \(a=b=2\), and a sample Holder exponent
   \(\theta=1\).
+- 2026-05-26 issue #582 negative-ledger continuation: the BPHZ dynamic
+  \(\Phi^4_3\) section now proves the finite drift-level negative
+  homogeneity list and the explicit Fourier-cutoff growth of the one-loop
+  local coordinate \(C_1\).  The calculation-check companion verifies the
+  four cubic homogeneities, the \(\kappa<1/14\) positivity boundary, the
+  \(\mathbb Z^3\) shell count, and a dyadic shell increment bound.

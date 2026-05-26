@@ -326,12 +326,39 @@ def check_phi4_three_spde_bphz_counterterm_combinatorics():
     x3 = 3 * x
     ix3 = x3 + 2
     two_loop_tree = x2 + ix3
+    xy2 = x + 2 * ix3
+    y3 = 3 * ix3
     assert_equal(x, Fraction(-11, 20), "Phi4_3 X homogeneity")
     assert_equal(x3, Fraction(-33, 20), "Phi4_3 X^3 homogeneity")
     assert_equal(ix3, Fraction(7, 20), "Phi4_3 I(X^3) homogeneity")
     assert_equal(two_loop_tree, Fraction(-3, 4), "Phi4_3 two-loop tree homogeneity")
+    assert_equal(xy2, Fraction(3, 20), "Phi4_3 X I(X^3)^2 homogeneity")
+    assert_equal(y3, Fraction(21, 20), "Phi4_3 I(X^3)^3 homogeneity")
+    if not kappa < Fraction(1, 14):
+        raise AssertionError("Phi4_3 drift-ledger kappa range failed")
     if not two_loop_tree < 0:
         raise AssertionError("Phi4_3 two-loop tree is not negative")
+    if not xy2 > 0:
+        raise AssertionError("Phi4_3 X I(X^3)^2 should be positive in the drift ledger")
+    if not y3 > 0:
+        raise AssertionError("Phi4_3 I(X^3)^3 should be positive in the drift ledger")
+
+    # In the sharp spatial cutoff chart for the one-loop local coordinate,
+    # the l-infinity shell |n|_infty=r contains (2r+1)^3-(2r-1)^3 modes.
+    r = 5
+    shell_count = (2 * r + 1) ** 3 - (2 * r - 1) ** 3
+    assert_equal(shell_count, 24 * r * r + 2, "Z^3 l-infinity shell count")
+    shell_upper = Fraction(shell_count, r * r)
+    if not shell_upper <= 26:
+        raise AssertionError("one-loop shell upper bound failed")
+    shell_lower = Fraction(shell_count, 4 * r * r)
+    if not shell_lower >= 6:
+        raise AssertionError("one-loop shell lower bound failed")
+    dyadic_shell_count = sum((2 * s + 1) ** 3 - (2 * s - 1) ** 3 for s in range(9, 17))
+    dyadic_shell_bound = sum(Fraction((2 * s + 1) ** 3 - (2 * s - 1) ** 3, s * s) for s in range(9, 17))
+    assert_equal(dyadic_shell_count, 31024, "dyadic Z^3 shell count")
+    if not dyadic_shell_bound <= 26 * 8:
+        raise AssertionError("dyadic one-loop shell increment bound failed")
 
     # One-loop cubic Wick contraction: choose the contracted pair in three
     # fields.  Two-loop non-nested sunset: choose the corrected outer factor,
@@ -614,7 +641,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":
