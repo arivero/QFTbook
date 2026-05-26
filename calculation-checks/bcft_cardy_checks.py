@@ -196,6 +196,62 @@ def check_chan_paton_direct_sums() -> None:
                     )
 
 
+def check_ising_boundary_changing_constants() -> None:
+    f_sigma_sigma_sigma = [
+        [INV_SQRT2, INV_SQRT2],
+        [INV_SQRT2, -INV_SQRT2],
+    ]
+    identity = [
+        [ONE, ZERO],
+        [ZERO, ONE],
+    ]
+    assert_equal(
+        "Ising sigma-sigma-sigma F matrix squares to identity",
+        matrix_multiply(f_sigma_sigma_sigma, f_sigma_sigma_sigma),
+        identity,
+    )
+
+    for row, fixed_boundary in enumerate(("+", "-")):
+        identity_coeff = f_sigma_sigma_sigma[row][0]
+        epsilon_coeff = f_sigma_sigma_sigma[row][1]
+        probability_sum = identity_coeff * identity_coeff + epsilon_coeff * epsilon_coeff
+        assert_equal(
+            f"free-fixed-free row normalization through {fixed_boundary}",
+            probability_sum,
+            ONE,
+        )
+
+    assert_equal(
+        "fixed-plus energy-channel coefficient",
+        f_sigma_sigma_sigma[0][1],
+        INV_SQRT2,
+    )
+    assert_equal(
+        "fixed-minus energy-channel coefficient",
+        f_sigma_sigma_sigma[1][1],
+        -INV_SQRT2,
+    )
+
+    h_sigma = Fraction(1, 16)
+    h_epsilon = Fraction(1, 2)
+    assert_equal("sigma sigma to identity OPE power", -2 * h_sigma, Fraction(-1, 8))
+    assert_equal(
+        "sigma sigma to epsilon OPE power",
+        h_epsilon - 2 * h_sigma,
+        Fraction(3, 8),
+    )
+    assert_equal(
+        "epsilon epsilon to identity OPE power",
+        -2 * h_epsilon,
+        Fraction(-1, 1),
+    )
+    assert_equal(
+        "epsilon sigma to sigma OPE power",
+        h_sigma - h_epsilon - h_sigma,
+        Fraction(-1, 2),
+    )
+
+
 def check_compact_boson_zero_mode_duality() -> None:
     samples = [
         (0, winding)
@@ -223,8 +279,12 @@ def main() -> None:
     check_cardy_fusion_ring_characters()
     check_boundary_entropy()
     check_chan_paton_direct_sums()
+    check_ising_boundary_changing_constants()
     check_compact_boson_zero_mode_duality()
-    print("All BCFT Cardy, sewing, Chan-Paton, and compact-boson checks passed.")
+    print(
+        "All BCFT Cardy, sewing, Ising boundary-changing, "
+        "Chan-Paton, and compact-boson checks passed."
+    )
 
 
 if __name__ == "__main__":

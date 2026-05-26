@@ -690,6 +690,94 @@ parity sectors, while \(\sigma\) is the Ramond spin field.  A spin CFT keeps
 the spin-structure dependence explicitly; the bosonic Ising CFT is obtained
 after the corresponding fermion-parity gauging.
 
+\begin{proposition}[Ising boundary-changing OPE constants]
+\label{prop:ising-boundary-changing-constants}
+Identify the Cardy labels
+\[
+  +=\mathbf 1,\qquad -=\epsilon,\qquad f=\sigma .
+\]
+Let \(\psi_i^{ab}\) denote the boundary primary of chiral type \(i\) between
+boundary labels \(a\) and \(b\), when the fusion multiplicity
+\(N_{ia}{}^b\) is one.  Use the Cardy boundary-field basis determined by the
+Ising fusing symbols, and fix the residual scalar normalizations of
+one-dimensional boundary-field spaces so that the one-channel products
+displayed below have coefficient \(1\).  The only products below with two
+allowed final channels are the products in which two \(\sigma\)-type
+boundary-changing fields leave and return to the free boundary through a
+fixed boundary.  For \(x>0\),
+\begin{align}
+  \psi_\sigma^{f+}(x)\psi_\sigma^{+f}(0)
+  &\sim
+  2^{-1/2}x^{-1/8}\mathbf 1_f
+  +
+  2^{-1/2}x^{3/8}\psi_\epsilon^{ff}(0)+\cdots ,
+  \label{eq:ising-bcc-plus-through-free}\\
+  \psi_\sigma^{f-}(x)\psi_\sigma^{-f}(0)
+  &\sim
+  2^{-1/2}x^{-1/8}\mathbf 1_f
+  -
+  2^{-1/2}x^{3/8}\psi_\epsilon^{ff}(0)+\cdots .
+  \label{eq:ising-bcc-minus-through-free}
+\end{align}
+The opposite orientation has no channel multiplicity:
+\begin{align}
+  \psi_\sigma^{+f}(x)\psi_\sigma^{f+}(0)
+  &\sim x^{-1/8}\mathbf 1_+ +\cdots,\\
+  \psi_\sigma^{-f}(x)\psi_\sigma^{f-}(0)
+  &\sim x^{-1/8}\mathbf 1_- +\cdots,\\
+  \psi_\sigma^{+f}(x)\psi_\sigma^{f-}(0)
+  &\sim x^{3/8}\psi_\epsilon^{+-}(0)+\cdots,\\
+  \psi_\sigma^{-f}(x)\psi_\sigma^{f+}(0)
+  &\sim x^{3/8}\psi_\epsilon^{-+}(0)+\cdots .
+\end{align}
+Rescaling the fields \(\psi_i^{ab}\) changes the displayed constants by the
+corresponding two-point normalization factors.  The invariant content is the
+Ising fusing matrix and, in particular, the relative sign of the
+\(\psi_\epsilon^{ff}\) coefficient for the two fixed boundaries.
+\end{proposition}
+
+\begin{proof}
+The multiplicities follow from
+\eqref{eq:cardy-boundary-field-multiplicity} and the Ising fusion rules.
+Thus the nontrivial boundary-changing fields are
+\[
+  \psi_\epsilon^{+-},\quad \psi_\epsilon^{-+},\quad
+  \psi_\epsilon^{ff},\quad
+  \psi_\sigma^{+f},\quad \psi_\sigma^{f+},\quad
+  \psi_\sigma^{-f},\quad \psi_\sigma^{f-}.
+\]
+In the diagonal Cardy case the boundary OPE constants are the fusing
+coefficients of the chiral theory in the chosen basis.  The only
+nontrivial Ising fusing matrix needed here is the recoupling of three
+\(\sigma\) lines with total charge \(\sigma\):
+\begin{equation}
+  F^{\sigma\sigma\sigma}_{\sigma}
+  =
+  \frac1{\sqrt2}
+  \begin{pmatrix}
+    1&1\\
+    1&-1
+  \end{pmatrix},
+  \label{eq:ising-f-symbol-sigma-sigma-sigma}
+\end{equation}
+where the row records the intermediate fixed boundary
+\(\mathbf 1\) or \(\epsilon\), and the column records the final channel
+\(\mathbf 1_f\) or \(\psi_\epsilon^{ff}\) on the free boundary.  Equations
+\eqref{eq:ising-bcc-plus-through-free}--\eqref{eq:ising-bcc-minus-through-free}
+are precisely the two rows of
+\eqref{eq:ising-f-symbol-sigma-sigma-sigma}.  The powers of \(x\) are the
+boundary OPE powers \(h_k-h_i-h_j\):
+\[
+  0-\frac1{16}-\frac1{16}=-\frac18,\qquad
+  \frac12-\frac1{16}-\frac1{16}=\frac38 .
+\]
+All remaining displayed OPEs have one-dimensional fusion spaces.  Their
+coefficients have been fixed to be \(1\) by the residual scalar
+normalizations specified in the statement; changing those normalizations
+rescales the corresponding raw three-point constants but not the sewing
+class represented by \eqref{eq:ising-f-symbol-sigma-sigma-sigma}.
+\end{proof}
+
 \section{Sewing, Boundary Entropy, and Defect Interfaces}
 
 Section~\ref{sec:bcft-boundary-ope-sewing} displayed the boundary

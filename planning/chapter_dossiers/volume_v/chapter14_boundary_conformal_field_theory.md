@@ -53,6 +53,10 @@
   phases, and T-duality exchange.
 - Works out the Majorana/Ising example: fermion NS/R gluing, Ising modular
   `S` matrix, fixed/free Cardy states, and annulus spectra.
+- Derives the Ising boundary-condition-changing OPE constants in the
+  Cardy/F-symbol basis, including the nontrivial
+  `F^{sigma sigma sigma}_sigma` matrix, the free-boundary identity/energy
+  channels, and the normalization-dependence of raw constants.
 - States Cardy-Lewellen sewing status as a `quotedtheorem`, records the
   boundary `g`-theorem as a quoted monotonicity theorem, and adds an
   `openproblem` for nonrational/continuous-spectrum BCFT sewing.
@@ -86,7 +90,11 @@
    `w=0`; T-duality exchanges these constraints.
 11. The Ising Cardy states reproduce the open spectra of fixed/free boundary
    conditions.
-12. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
+12. The Ising boundary-changing OPE constants are the chiral fusing symbols
+   in the Cardy basis; raw constants rescale with boundary two-point
+   normalizations, while the `sigma sigma sigma` fusing matrix and relative
+   fixed-boundary sign are invariant sewing data.
+13. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
    rederived in full here.
 
 ## Figures
@@ -99,13 +107,13 @@
 
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
   `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
-  fusion-ring characters, boundary entropy squares, Chan--Paton direct-sum
+  fusion-ring characters, boundary entropy squares, Ising
+  boundary-changing fusing constants and OPE powers, Chan--Paton direct-sum
   multiplicities and matrix-unit multiplication, and compact-boson zero-mode
   exchange under T-duality.
 
 ## Remaining Obligations
 
-- Add boundary-condition-changing three-point constants in the Ising model.
 - Develop Liouville boundary states only in a later pass coordinated with the
   nonrational Liouville sewing open problem.
 
@@ -120,3 +128,10 @@
   OPE, fusion-character, and pentagon-reduction arguments locally; it quotes
   the full all-surface Frobenius-algebra construction rather than treating it
   as folklore.
+
+## Audit Notes
+
+- 2026-05-26 Ising boundary-changing pass: added the
+  boundary-condition-changing OPE constants for fixed/free Ising boundaries
+  in the Cardy/F-symbol basis, with calculation checks for the
+  `F^{sigma sigma sigma}_sigma` matrix, relative signs, and OPE exponents.
