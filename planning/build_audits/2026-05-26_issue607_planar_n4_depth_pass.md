@@ -369,3 +369,35 @@ This is a substantive partial depth pass.  It does not close #607 because the
 handoff asks for all four chapters to be expanded beyond stringbook depth with
 more complete self-contained derivations, including more comprehensive
 analytic-continuation checks.  The issue should remain open.
+
+## Continuation XV: DHM/BES Weak Dressing Coefficients
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Content added:
+
+- Returned upstream from the hexagon material to the crossing/dressing phase
+  part of the planar integrability chain, in accordance with the required
+  order: crossing/dressing phase, ABA, Bethe-Yang, mirror TBA, Y-system, QSC,
+  and only then hexagon form factors.
+- Expanded the DHM/BES weak-coupling derivation in Chapter 13.  The text now
+  derives the coefficient extraction directly from the contour integral by
+  expanding the gamma-function logarithm and taking the Laurent coefficient of
+  `(z+z^{-1}-w-w^{-1})^N`.
+- Corrected the convention-sensitive order statement: in the stringbook/DHM
+  convention the coefficient begins as
+  `c_{2,3}(g)=4 zeta(3) g^3-40 zeta(5) g^5+O(g^7)`, while the first weak
+  dressing contribution to anomalous dimensions is order `g^6` because the
+  physical charges contribute `q_2 q_3=O(g^3)`.
+
+Calculation checks added:
+
+- `check_dhm_weak_dressing_coefficients()` in
+  `calculation-checks/planar_n4_integrability_checks.py` now checks the
+  Laurent-residue prefactors for several DHM weak coefficients, compares them
+  against the closed weak formula, verifies parity and minimal-order
+  selection, and confirms that the first charge-dressed term scales as `g^6`.

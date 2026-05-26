@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from collections import Counter
 import cmath
 from fractions import Fraction
 import itertools
@@ -431,6 +432,130 @@ def check_crossing_rhs_is_sheet_sensitive() -> None:
     naively_crossed_rhs = stringbook_crossing_rhs(1 / x1_plus, 1 / x1_minus)
     if abs(physical_rhs - naively_crossed_rhs) < 1.0e-6:
         raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
+
+
+def check_dhm_weak_dressing_coefficients() -> None:
+    """Check DHM contour residues for the first weak dressing coefficients."""
+
+    delta_terms = Counter({(1, 0): 1, (-1, 0): 1, (0, 1): -1, (0, -1): -1})
+
+    def multiply(
+        left: Counter[tuple[int, int]],
+        right: Counter[tuple[int, int]],
+    ) -> Counter[tuple[int, int]]:
+        result: Counter[tuple[int, int]] = Counter()
+        for (left_z, left_w), left_coefficient in left.items():
+            for (right_z, right_w), right_coefficient in right.items():
+                result[(left_z + right_z, left_w + right_w)] += (
+                    left_coefficient * right_coefficient
+                )
+        return result
+
+    def delta_power(power: int) -> Counter[tuple[int, int]]:
+        result: Counter[tuple[int, int]] = Counter({(0, 0): 1})
+        for _ in range(power):
+            result = multiply(result, delta_terms)
+        return result
+
+    def residue(power: int, r_value: int, s_value: int) -> int:
+        return delta_power(power)[(-(r_value - 1), -(s_value - 1))]
+
+    def residue_prefactor(power: int, r_value: int, s_value: int) -> Fraction:
+        if power % 2 == 0 or power < 3:
+            return Fraction(0)
+        m_value = (power - 1) // 2
+        return Fraction(
+            2
+            * (-1) ** (m_value + 1)
+            * (r_value - 1)
+            * (s_value - 1)
+            * residue(power, r_value, s_value),
+            power,
+        )
+
+    def gamma_positive_integer(argument: int) -> int:
+        if argument <= 0:
+            return 0
+        return math.factorial(argument - 1)
+
+    def closed_weak_prefactor(n_value: int, r_value: int, s_value: int) -> Fraction:
+        doubled_arguments = (
+            n_value - r_value - s_value + 5,
+            n_value + r_value - s_value + 3,
+            n_value - r_value + s_value + 3,
+            n_value + r_value + s_value + 1,
+        )
+        if any(argument <= 0 or argument % 2 for argument in doubled_arguments):
+            return Fraction(0)
+        arguments = tuple(argument // 2 for argument in doubled_arguments)
+        denominator = 1
+        for argument in arguments:
+            gamma_value = gamma_positive_integer(argument)
+            if gamma_value == 0:
+                return Fraction(0)
+            denominator *= gamma_value
+        sign = (-1) ** (n_value // 2) * (-1) ** (n_value + s_value)
+        numerator = (
+            2
+            * sign
+            * math.factorial(n_value + 1)
+            * math.factorial(n_value)
+            * (r_value - 1)
+            * (s_value - 1)
+        )
+        return Fraction(numerator, denominator)
+
+    expected_prefactors = {
+        (3, 2, 3): Fraction(4),
+        (5, 2, 3): Fraction(-40),
+        (5, 2, 5): Fraction(-8),
+        (5, 3, 4): Fraction(24),
+        (7, 2, 7): Fraction(12),
+        (7, 4, 5): Fraction(120),
+    }
+    for (power, r_value, s_value), expected in expected_prefactors.items():
+        prefactor = residue_prefactor(power, r_value, s_value)
+        if prefactor != expected:
+            raise AssertionError(
+                f"DHM residue prefactor N={power}, r={r_value}, s={s_value}: {prefactor}"
+            )
+        closed = closed_weak_prefactor(power - 1, r_value, s_value)
+        if prefactor != closed:
+            raise AssertionError(
+                f"DHM residue formula disagrees with closed weak formula: {prefactor} != {closed}"
+            )
+
+    for r_value, s_value in ((2, 4), (3, 5), (4, 6)):
+        for power in (3, 5, 7, 9):
+            if residue_prefactor(power, r_value, s_value) != 0:
+                raise AssertionError("DHM parity selection failed")
+
+    if residue_prefactor(3, 2, 5) != 0:
+        raise AssertionError("DHM minimal weak order failed")
+
+    def magnon_charge(r_value: int, momentum: float, coupling: float) -> complex:
+        x_plus, x_minus = xpm_from_momentum(momentum, coupling)
+        return 1j * ((1 / x_plus) ** (r_value - 1) - (1 / x_minus) ** (r_value - 1)) / (
+            r_value - 1
+        )
+
+    def charge_pair_seed(coupling: float) -> complex:
+        p1, p2 = 0.8, 1.9
+        return (
+            magnon_charge(2, p1, coupling) * magnon_charge(3, p2, coupling)
+            - magnon_charge(3, p1, coupling) * magnon_charge(2, p2, coupling)
+        )
+
+    g1 = 1.0e-4
+    g2 = 2.0e-4
+    dressing_seed_1 = g1**3 * charge_pair_seed(g1)
+    dressing_seed_2 = g2**3 * charge_pair_seed(g2)
+    assert_close(
+        "DHM first weak dressing term scales as g^6",
+        dressing_seed_2 / dressing_seed_1,
+        64,
+        tol=5.0e-5,
+    )
 
 
 def check_su2c_single_level_ii_nesting_step() -> None:
@@ -1383,6 +1508,7 @@ def main() -> None:
     check_central_extension_dispersion()
     check_zhukovsky_map_and_energy()
     check_crossing_rhs_is_sheet_sensitive()
+    check_dhm_weak_dressing_coefficients()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()
     check_su2c_nested_bethe_yang_frame_factors()

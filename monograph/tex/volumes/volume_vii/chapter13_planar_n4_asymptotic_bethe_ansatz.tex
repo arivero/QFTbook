@@ -335,6 +335,7 @@ the matrix part.  The dressing phase has the antisymmetric charge expansion
 \[
   \theta(x_1^\pm,x_2^\pm)
   =
+  -
   \sum_{r=2}^\infty\sum_{\substack{s>r\\ r+s\ {\rm odd}}}
   c_{r,s}(g)\,
   \bigl(q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm)\bigr).
@@ -362,8 +363,94 @@ The contours encircle the unit circle singularities of \(z\) and \(w\) in the
 domain where \(|x|>1\), \(|y|>1\).  Formula
 \eqref{eq:planar-n4-bes-chi-integral} is therefore not a global formula on
 all sheets by itself; outside that domain it is continued with the crossing
-prescription.  Expanding the logarithm by polygamma values gives the weak
-zeta-valued coefficients, while a saddle expansion gives the AFS and
+prescription.
+
+Inside this domain the weak-coupling coefficients can be extracted without
+any sheet continuation.  Expand
+\begin{equation}
+  \chi(x,y)
+  =
+  \sum_{r=2}^{\infty}
+  \sum_{\substack{s>r\\ r+s\ {\rm odd}}}
+  \frac{c_{r,s}(g)}{(r-1)(s-1)}
+  \left(
+    \frac{1}{x^{r-1}y^{s-1}}
+    -
+    \frac{1}{x^{s-1}y^{r-1}}
+  \right).
+  \label{eq:planar-n4-chi-coefficient-expansion}
+\end{equation}
+The charge-expansion convention above uses the same \(c_{r,s}\); the two
+forms agree because \(q_r=\ii A_r/(r-1)\), where
+\(A_r=(x^+)^{1-r}-(x^-)^{1-r}\).
+
+\begin{proposition}[Weak coefficients from the DHM contour]
+\label{prop:planar-n4-dhm-weak-coefficients}
+For \(N=2m+1\geq3\), let \(R^{(N)}_{r,s}\) be the Laurent coefficient
+\[
+  R^{(N)}_{r,s}
+  =
+  [z^{-(r-1)}w^{-(s-1)}]
+  \bigl(z+z^{-1}-w-w^{-1}\bigr)^N .
+\]
+Then the contribution of order \(g^N\) to the coefficient \(c_{r,s}(g)\) in
+\eqref{eq:planar-n4-chi-coefficient-expansion} is
+\begin{equation}
+  c_{r,s}(g)\big|_{g^N}
+  =
+  \frac{2(-1)^{m+1}}{N}\,
+  (r-1)(s-1)R^{(N)}_{r,s}\,
+  \zeta(N)g^N .
+  \label{eq:planar-n4-dhm-residue-coefficient}
+\end{equation}
+In particular,
+\[
+  c_{2,3}(g)=4\zeta(3)g^3-40\zeta(5)g^5+O(g^7).
+\]
+The first dressing contribution to a weak-coupling anomalous dimension is
+nevertheless order \(g^6\), since \(q_2=O(g)\) and \(q_3=O(g^2)\) on the
+physical weak-coupling branch.
+\end{proposition}
+
+\begin{proof}
+For \(|x|,|y|>1\),
+\[
+  \frac{1}{x-z}\frac{1}{y-w}
+  =
+  \sum_{a,b\geq0}\frac{z^aw^b}{x^{a+1}y^{b+1}} .
+\]
+The logarithm in \eqref{eq:planar-n4-bes-chi-integral} has the Taylor
+expansion at small \(g\)
+\[
+  \log\frac{\Gamma(1+\eta)}{\Gamma(1-\eta)}
+  =
+  -2\gamma\eta
+  -
+  2\sum_{m=1}^{\infty}
+  \frac{\zeta(2m+1)}{2m+1}\eta^{2m+1},
+  \qquad
+  \eta=\ii g(z+z^{-1}-w-w^{-1}).
+\]
+The linear Euler-constant term is symmetric data that drops out of the
+antisymmetric coefficient family \(s>r\).  For \(N=2m+1\geq3\), multiplying by
+the outside factor \(-\ii\) gives
+\[
+  \frac{2(-1)^{m+1}\zeta(N)}{N}
+  g^N
+  \bigl(z+z^{-1}-w-w^{-1}\bigr)^N .
+\]
+The two contour integrals pick the coefficient of \(z^{-1}w^{-1}\).  Thus the
+coefficient of \(x^{1-r}y^{1-s}\) is the displayed constant times
+\(R^{(N)}_{r,s}\).  Comparing with
+\eqref{eq:planar-n4-chi-coefficient-expansion} proves
+\eqref{eq:planar-n4-dhm-residue-coefficient}.  For \(r=2,s=3\),
+\[
+  R^{(3)}_{2,3}=3,\qquad R^{(5)}_{2,3}=50,
+\]
+which gives \(4\zeta(3)g^3-40\zeta(5)g^5\).
+\end{proof}
+
+A saddle expansion of the same contour representation gives the AFS and
 Hernandez--Lopez strong-coupling terms.
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
@@ -395,12 +482,13 @@ correction, Janik crossing on the Zhukovsky surface, and the BES integral
 representation selecting the minimal crossing-symmetric solution.  Its weak
 series begins with
 \[
-  c_{2,3}(g)=4\zeta(3)g^6+O(g^8),
+  c_{2,3}(g)=4\zeta(3)g^3+O(g^5),
 \]
-so the first dressing contribution to Konishi enters at four loops.  This is
-an exact datum of the planar-integrability framework and a highly tested
-claim about gauge theory, not a theorem here derived from a constructive
-definition of four-dimensional \(\mathcal N=4\) SYM.
+and, because the weak charges contribute \(q_2q_3-q_3q_2=O(g^3)\), the first
+dressing contribution to Konishi enters at four loops.  This is an exact
+datum of the planar-integrability framework and a highly tested claim about
+gauge theory, not a theorem here derived from a constructive definition of
+four-dimensional \(\mathcal N=4\) SYM.
 \end{definition}
 
 \begin{quotedtheorem}[Asymptotic planar magnon S-matrix]

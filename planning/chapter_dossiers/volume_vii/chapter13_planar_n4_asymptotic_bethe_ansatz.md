@@ -50,6 +50,15 @@ the monograph's proof-boundary language.
   dressing factor, including the ten-amplitude intertwiner form.
 - Adds the BES `chi(x,y)` contour-integral representation with its
   sheet-domain caveat.
+- Derives the weak-coupling DHM/BES coefficient extraction directly from the
+  contour integral: expand the gamma-function logarithm, take the Laurent
+  coefficient of `(z+z^{-1}-w-w^{-1})^N`, and obtain the residue formula for
+  the order-`g^N` contribution to `c_{r,s}(g)`.
+- Corrects the convention-sensitive distinction between the coefficient order
+  and the physical perturbative order: in the stringbook/DHM convention
+  `c_{2,3}(g)=4 zeta(3) g^3-40 zeta(5) g^5+O(g^7)`, while the first weak
+  dressing contribution to anomalous dimensions is order `g^6` because the
+  charges contribute `q_2 q_3=O(g^3)`.
 - Adds a dressing-phase status ledger: AFS, Hernandez-Lopez, crossing, BES,
   and the weak `c_{2,3}` onset.
 - Adds the explicit crossing scalar-factor equation and warns that the
@@ -102,6 +111,11 @@ crossed Zhukovsky sheets.
   corrected energy formula.
 - It also checks that the stringbook-orientation crossing RHS is not
   invariant under a naive sheet-free `x -> 1/x` substitution.
+- It checks the DHM weak dressing coefficients by Laurent-expanding the
+  contour-integrand monomial `(z+z^{-1}-w-w^{-1})^N`, comparing the residue
+  prefactors against the closed weak formula for several `c_{r,s}` values,
+  verifying parity/minimal-order selection, and confirming that the first
+  charge-dressed weak term scales as `g^6`.
 - It checks the single level-II nesting step by evaluating the two local
   coefficient equations and their cleared polynomial identities for
   non-singular complex samples.
