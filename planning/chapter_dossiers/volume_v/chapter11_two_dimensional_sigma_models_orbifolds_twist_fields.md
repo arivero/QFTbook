@@ -99,6 +99,10 @@
   gauge fixing, algebraic gauge-field equations, and the Gaussian
   determinant, then records them as controlled large-level sigma-model
   representatives rather than replacements for the exact coset CFT data.
+- Verifies the bell and cigar one-loop metric Weyl-anomaly equations from
+  the rotational curvature formulas and computes the constant scalar
+  dilaton-anomaly terms, matching the leading large-\(k\) central-charge
+  shifts.
 - Defines finite orbifolds using anomaly-free topological symmetry lines,
   twisted Hilbert spaces, centralizer projection, and discrete torsion.
 - Derives the finite-orbifold torus partition function and its modular label
@@ -193,26 +197,30 @@
     fixing, algebraic gauge-field elimination, and Gaussian determinants
     only as controlled large-level representatives; the exact CFTs also
     require branching or noncompact representation data.
-28. The orbifold Hilbert space is
+28. For \(ds^2=K(du^2+f(u)^2d\varphi^2)\), the bell and cigar choices of
+    \(f\) and \(\Phi\) satisfy \(R_{ij}+2\nabla_i\nabla_j\Phi=0\), and
+    \(|\nabla\Phi|^2-\nabla^2\Phi/2=\pm K^{-1}\), giving the leading
+    central-charge shifts \(2\pm6/k\) before the exact affine shifts.
+29. The orbifold Hilbert space is
    \(\bigoplus_{[g]}\mathcal H_g^{C_g}\) after an \(H^3(G,U(1))\) anomaly
    trivialization is chosen.
-29. The torus partition function is the finite gauge sum over commuting
+30. The torus partition function is the finite gauge sum over commuting
    holonomies and is modular invariant with the stated label action.
-30. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
+31. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
    reflection twist field has \(h=1/16\).
-31. For a cycle type
+32. For a cycle type
    \(\lambda=(1^{m_1}\cdots N^{m_N})\), the symmetric-product centralizer has
    order \(\prod_K K^{m_K}m_K!\), and the sector Hilbert space is the
    \(C_\lambda\)-invariant subspace of the tensor product of long-string
    Hilbert spaces.
-32. The symmetric-product partition-function generating series is the
+33. The symmetric-product partition-function generating series is the
    exponential of nonholomorphic Hecke transforms of the seed partition
    function, obtained by decomposing commuting \(S_N\)-bundle holonomies into
    connected torus covers.
-33. Twist OPEs multiply monodromies before conjugacy-class averaging; a
+34. Twist OPEs multiply monodromies before conjugacy-class averaging; a
    transposition joins two disjoint cycles or splits one cycle, with the
    leading bare-twist exponent fixed by the cycle-weight difference.
-34. Twist-field deformations are conformal perturbations by projected local
+35. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
 
@@ -248,7 +256,9 @@
   weights, diagonal coset minimal-model central charges, parafermion
   selection-rule and field-identification weights, parafermion orbit counts
   and fusion rules, cigar central charges, reflection weight invariance and
-  integer-spin momentum/winding labels, and Ising/tricritical examples.
+  integer-spin momentum/winding labels, bell/cigar one-loop geometry
+  residuals, leading-versus-exact central-charge shifts, and
+  Ising/tricritical examples.
 - `calculation-checks/symmetric_product_orbifold_checks.py` verifies
   \(S_N\) centralizer orders, conjugacy-class counting, central-charge
   additivity, cycle-type twist weights, joining weight shifts, and the

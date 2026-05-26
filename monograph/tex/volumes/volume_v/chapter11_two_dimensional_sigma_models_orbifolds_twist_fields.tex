@@ -2028,6 +2028,150 @@ reflection, normalizability, and modular data; the metric and dilaton alone
 do not determine those analytic choices.
 \end{controlledapproximation}
 
+\begin{proposition}[One-loop geometry check for the bell and cigar]
+\label{prop:rank-one-coset-geometry-weyl-check}
+Let
+\[
+  ds^2=K\bigl(du^2+f(u)^2d\varphi^2\bigr),
+  \qquad
+  \Phi=\Phi(u),
+  \qquad K>0,
+\]
+and set \(H=0\).  The only nonzero Christoffel symbols are
+\[
+  \Gamma^u_{\varphi\varphi}=-ff',
+  \qquad
+  \Gamma^\varphi_{u\varphi}=\Gamma^\varphi_{\varphi u}=\frac{f'}{f},
+\]
+and the Ricci tensor and dilaton Hessian are
+\[
+  R_{uu}=-\frac{f''}{f},
+  \qquad
+  R_{\varphi\varphi}=-ff'',
+  \qquad
+  \nabla_u\nabla_u\Phi=\Phi'',
+  \qquad
+  \nabla_\varphi\nabla_\varphi\Phi=ff'\Phi'.
+\]
+For the cigar,
+\[
+  f(\rho)=\tanh\rho,
+  \qquad
+  \Phi(\rho)=\Phi_0-\log\cosh\rho,
+\]
+and for the bell,
+\[
+  f(\theta)=\tan\theta,
+  \qquad
+  \Phi(\theta)=\Phi_0-\log\cos\theta .
+\]
+In both cases the one-loop metric Weyl-anomaly equation
+\[
+  R_{ij}+2\nabla_i\nabla_j\Phi=0
+\]
+holds identically on the coordinate patch.  The scalar combination entering
+\eqref{eq:nlsm-dilaton-weyl-anomaly-one-loop} is constant:
+\[
+  |\nabla\Phi|^2-\frac12\nabla^2\Phi
+  =
+  \begin{cases}
+    \phantom{-}K^{-1}, & \text{cigar},\\
+    -K^{-1}, & \text{bell}.
+  \end{cases}
+  \label{eq:bell-cigar-scalar-anomaly-constant}
+\]
+\end{proposition}
+
+\begin{proof}
+For a rotational metric with constant overall scale \(K\), the connection is
+independent of \(K\).  The displayed Christoffel symbols follow by direct
+substitution in
+\[
+  \Gamma^a_{bc}
+  =
+  \frac12g^{ad}
+  \bigl(\partial_bg_{cd}+\partial_cg_{bd}-\partial_dg_{bc}\bigr).
+\]
+The Ricci components reduce to
+\[
+  R_{uu}=-\frac{f''}{f},
+  \qquad
+  R_{\varphi\varphi}=-ff'',
+\]
+and the Hessian formulas follow from
+\(\nabla_i\nabla_j\Phi=\partial_i\partial_j\Phi-\Gamma^a_{ij}\partial_a\Phi\).
+
+For the cigar one has
+\[
+  f' = 1-f^2,
+  \qquad
+  f''=-2f(1-f^2),
+  \qquad
+  \Phi'=-f,
+  \qquad
+  \Phi''=-(1-f^2).
+\]
+Therefore
+\[
+  R_{uu}+2\Phi''
+  =
+  2(1-f^2)-2(1-f^2)=0
+\]
+and
+\[
+  R_{\varphi\varphi}+2\nabla_\varphi\nabla_\varphi\Phi
+  =
+  2f^2(1-f^2)-2f^2(1-f^2)=0.
+\]
+Also
+\[
+  K\left(|\nabla\Phi|^2-\frac12\nabla^2\Phi\right)
+  =
+  f^2-\frac12\left(\Phi''+\frac{f'}{f}\Phi'\right)
+  =
+  f^2+(1-f^2)=1 .
+\]
+
+For the bell one has
+\[
+  f'=1+f^2,
+  \qquad
+  f''=2f(1+f^2),
+  \qquad
+  \Phi'=f,
+  \qquad
+  \Phi''=1+f^2.
+\]
+The same substitutions give
+\[
+  R_{uu}+2\Phi''
+  =
+  -2(1+f^2)+2(1+f^2)=0
+\]
+and
+\[
+  R_{\varphi\varphi}+2\nabla_\varphi\nabla_\varphi\Phi
+  =
+  -2f^2(1+f^2)+2f^2(1+f^2)=0.
+\]
+Finally
+\[
+  K\left(|\nabla\Phi|^2-\frac12\nabla^2\Phi\right)
+  =
+  f^2-\frac12\left(\Phi''+\frac{f'}{f}\Phi'\right)
+  =
+  f^2-(1+f^2)=-1 .
+\]
+\end{proof}
+
+Taking \(K=k\alpha'\), the scalar constants in
+\eqref{eq:bell-cigar-scalar-anomaly-constant} give the leading large-\(k\)
+central-charge shifts \(2+6/k\) for the cigar and \(2-6/k\) for the bell in
+the convention of \eqref{eq:nlsm-dilaton-weyl-anomaly-one-loop}.  The exact
+finite-level current-algebra formulas replace these leading denominators by
+\(k-2\) and \(k+2\), respectively.  This is precisely why the geometry check
+is useful but not a definition of the exact CFT.
+
 The \(\mathcal N=2\) supersymmetric versions of these rank-one cosets add
 fermions, an \(R\)-current, spectral flow, chiral primaries, and mirror
 relations to \(\mathcal N=2\) Liouville theory.  Those structures should be

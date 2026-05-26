@@ -240,9 +240,11 @@ Current absorption:
   \(SL(2,\mathbb R)_k/U(1)\), with the parafermion branching/field
   identification, fusion/modular data, and cigar momentum/winding and
   spectrum-status conventions stated before the gauged sigma-model
-  geometries.  The public arithmetic check now covers the central-charge,
+  geometries.  The monograph now also checks the bell and cigar
+  one-loop Weyl-anomaly equations directly from the rotational curvature
+  formulas.  The public arithmetic check covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
-  and integer-spin formulas.
+  integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
   operator algebras, ordinary modules, characters, Zhu algebras and top-level
   module classification, conformal blocks as Ward identity functionals,

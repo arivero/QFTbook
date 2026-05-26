@@ -92,6 +92,37 @@ def cigar_weight(level, spin_j, charge_m):
     return -spin_j * (spin_j - 1) / (level - 2) + charge_m * charge_m / level
 
 
+def rank_one_rotational_geometry(kind, f_squared):
+    """Return metric equation residuals and scalar anomaly constant times K.
+
+    The angular metric equation is divided by f^2, so tests avoid f=0.
+    """
+    if kind == "cigar":
+        f_prime_over_f_times_phi_prime = -(1 - f_squared)
+        f_second_over_f = -2 * (1 - f_squared)
+        phi_second = -(1 - f_squared)
+    elif kind == "bell":
+        f_prime_over_f_times_phi_prime = 1 + f_squared
+        f_second_over_f = 2 * (1 + f_squared)
+        phi_second = 1 + f_squared
+    else:
+        raise ValueError(f"unknown rank-one geometry kind: {kind}")
+
+    radial_metric_residual = -f_second_over_f + 2 * phi_second
+    angular_metric_residual_over_f_squared = (
+        -f_second_over_f + 2 * f_prime_over_f_times_phi_prime
+    )
+    scalar_anomaly_times_scale = f_squared - Fraction(
+        phi_second + f_prime_over_f_times_phi_prime,
+        2,
+    )
+    return (
+        radial_metric_residual,
+        angular_metric_residual_over_f_squared,
+        scalar_anomaly_times_scale,
+    )
+
+
 def diagonal_su2_minimal_central_charge(level):
     return su2_central_charge(level) + su2_central_charge(1) - su2_central_charge(level + 1)
 
@@ -286,4 +317,32 @@ for level in range(3, 21):
                 f"SL(2,R)/U(1) integer-spin mismatch at k={level}, n={n}, w={winding}",
             )
 
-print("All WZW Sugawara and rank-one coset arithmetic/fusion checks passed.")
+for sample in [Fraction(1, 9), Fraction(1, 4), Fraction(1, 2), Fraction(3, 4)]:
+    require(
+        rank_one_rotational_geometry("cigar", sample) == (0, 0, 1),
+        f"cigar one-loop geometry residual mismatch at tanh^2 rho={sample}",
+    )
+
+for sample in [Fraction(1, 9), Fraction(1, 2), Fraction(2, 1), Fraction(5, 1)]:
+    require(
+        rank_one_rotational_geometry("bell", sample) == (0, 0, -1),
+        f"bell one-loop geometry residual mismatch at tan^2 theta={sample}",
+    )
+
+for level in range(3, 21):
+    require(
+        cigar_central_charge(level)
+        - (Fraction(2, 1) + Fraction(6, level))
+        == Fraction(12, level * (level - 2)),
+        f"cigar exact-versus-large-level central charge mismatch at k={level}",
+    )
+
+for level in range(1, 21):
+    require(
+        su2_u1_parafermion_central_charge(level)
+        - (Fraction(2, 1) - Fraction(6, level))
+        == Fraction(12, level * (level + 2)),
+        f"bell exact-versus-large-level central charge mismatch at k={level}",
+    )
+
+print("All WZW Sugawara and rank-one coset arithmetic/fusion/geometry checks passed.")

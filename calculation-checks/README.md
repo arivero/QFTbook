@@ -383,8 +383,9 @@ Current checks:
   identity, \(SU(2)_k/U(1)\) parafermion selection and field-identification
   weights, compact parafermion orbit counts and fusion rules,
   \(SL(2,\mathbb R)_k/U(1)\) cigar central charges, reflection weight
-  invariance, momentum/winding spin checks, and the Ising/tricritical-Ising
-  coset values.
+  invariance, momentum/winding spin checks, bell/cigar one-loop geometry
+  residuals and leading-versus-exact central-charge shifts, and the
+  Ising/tricritical-Ising coset values.
 - `zeta_determinant_checks.py`: numerical and exact checks for the spectral
   zeta-determinant section, including the periodic resolvent identity for
   \(-\dd_\tau^2+\omega^2\), the derivative of
