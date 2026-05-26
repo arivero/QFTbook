@@ -119,6 +119,14 @@ status-boundary style.
 - `prop:kw-beta-function-rank-count`: KW necessary beta-function rank-count
   check showing the two gauge NSVZ numerators and quartic-superpotential
   marginality defect are proportional to `1+gamma_A+gamma_B`.
+- `hyp:n1-local-exact-marginality-chart`: finite-dimensional
+  marginal-source chart hypotheses for turning beta-map rank into a local
+  conformal-manifold dimension statement.
+- `hyp:kw-exact-marginality-input`: KW continuum, source-chart,
+  beta-completeness, contact-term, and nondegeneracy assumptions for the
+  local exact-marginality statement.
+- `prop:kw-local-conformal-manifold-rank-one`: conditional derivation of the
+  two-complex-dimensional KW local conformal locus from the rank-one beta map.
 - `M`: fractional-rank difference in the Klebanov-Strassler cascade.
 - `B_1`, `B_2` or `mathcal B_1`, `mathcal B_2`: NSVZ numerators for
   the two KS gauge factors.
@@ -270,8 +278,14 @@ status-boundary style.
 - Proves the KW beta-function rank count in the
   `SU(2)_A x SU(2)_B x U(1)_B` source chart:
   `B_1=B_2=N(1+gamma_A+gamma_B)` and the quartic-superpotential marginality
-  defect is `1+gamma_A+gamma_B`; the chapter explicitly records this as a
-  necessary local count, not as a proof of the conformal manifold.
+  defect is `1+gamma_A+gamma_B`.
+- Replaces the previous quoted KW conformal-manifold statement with an
+  explicit conditional exact-marginality chart: a holomorphic beta map,
+  quotient/fixing of redundant source directions, current/contact-term
+  completeness, and nonzero differential of the common defect.  Under these
+  assumptions the holomorphic implicit-function theorem gives the
+  two-complex-dimensional KW local conformal locus from the three sources
+  `(tau_1,tau_2,h)` and one equation `E=0`.
 - Performs the KW `a`-maximization calculation for baryonic mixing and
   derives the exact finite-N central charges
   `a=27N^2/64-3/8`, `c=27N^2/64-1/4`.
@@ -280,8 +294,6 @@ status-boundary style.
   mesonic branch as `Sym^N(conifold)`.
 - Lists protected meson and baryon dimensions from the superconformal
   R-charge, with the monograph's baryon-charge normalization.
-- Quotes the local KW conformal-manifold theorem as an honest continuum SCFT
-  input, after deriving the anomaly and marginality arithmetic.
 - Defines the KS `SU(N+M) x SU(N)` cascade, derives the two NSVZ numerator
   signs near the KW anomalous dimension, proves the Seiberg-dual rank step,
   records the Euclidean division step count, derives the unequal-rank
@@ -298,6 +310,7 @@ status-boundary style.
   arithmetic for the new conifold material: KW R-anomaly cancellation,
   `gamma=2 mathcal C` conversion, superpotential R-charge, NSVZ numerator,
   KW beta-function rank count for gauge numerators and quartic marginality,
+  the KW exact-marginality dimension count and tangent-kernel arithmetic,
   `a`-maximization sign, central charges, conifold determinant relation, KS
   numerator signs, unequal-rank R-anomaly coefficients, Seiberg-dual magnetic
   rank, magnetic meson quadratic-form integration, cascade step count, and

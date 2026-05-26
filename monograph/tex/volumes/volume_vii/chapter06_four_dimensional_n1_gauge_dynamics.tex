@@ -2094,7 +2094,8 @@ bifundamental matrices can be simultaneously reduced to diagonal regular
 brane data.  Statements about protected dimensions use
 Hypothesis~\ref{hyp:n1-scft-bookkeeping-input}.  Claims about the full
 continuum conformal manifold are isolated in
-Quoted Theorem~\ref{qt:kw-conformal-manifold}.
+Hypothesis~\ref{hyp:kw-exact-marginality-input} and
+Proposition~\ref{prop:kw-local-conformal-manifold-rank-one}.
 \end{hypothesis}
 
 \begin{proposition}[KW \(F\)-term equations]
@@ -2435,24 +2436,97 @@ Symmetric products
 have \(R=\ell\) and \(\Delta=\frac32\ell\) when they represent nonzero
 chiral-primary classes.
 
-\begin{quotedtheorem}[KW local conformal manifold]
-\label{qt:kw-conformal-manifold}
-In the continuum \(\mathcal N=1\) SCFT defined by the Klebanov--Witten
-fixed point, the \(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving exactly
-marginal deformations form a local complex two-dimensional conformal
-manifold near the symmetric point.  One may use the two gauge couplings
-\(\tau_1,\tau_2\) and the superpotential coupling \(h\) as microscopic
-coordinates.  The local quotient by the complexified field redefinition
-acting on \((A_i,B_j)\) leaves one independent complex beta-function
-constraint among these three coordinates, and hence two local exactly
-marginal coordinates.
-\end{quotedtheorem}
+\begin{hypothesis}[Local \(\mathcal N=1\) exact-marginality chart]
+\label{hyp:n1-local-exact-marginality-chart}
+Let \(\mathcal T_0\) be a four-dimensional \(\mathcal N=1\) SCFT with a
+chosen global-symmetry subalgebra \(\mathfrak f\) to be preserved.  A local
+holomorphic marginal-source chart consists of complex coordinates
+\[
+  u=(u^1,\ldots,u^m)
+\]
+for gauge and superpotential sources coupled to \(\mathfrak f\)-invariant
+chiral operators of superpotential dimension \(3\), together with a
+holomorphic beta map
+\[
+  \mathcal B:U\subset\mathbb C^m\longrightarrow\mathbb C^r
+\]
+whose zero set is exactly the set of conformal theories in this source
+chart.  Redundant directions from holomorphic field-coordinate changes have
+either been quotient out or fixed by a declared source normalization.  The
+map \(\mathcal B\) includes the gauge beta functions, superpotential beta
+functions, and any current-moment-map obstruction for a broken conserved
+current.  If \(d\mathcal B\) has constant rank \(r\) along the zero set, the
+local conformal manifold in this chart is the complex manifold
+\(\mathcal B^{-1}(0)\) of dimension \(m-r\).
+\end{hypothesis}
 
-The theorem is quoted because exact marginality is an infrared statement
-about the continuum SCFT.  Proposition~\ref{prop:kw-beta-function-rank-count}
-supplies only the necessary beta-function rank count.  The chapter also
-supplies the anomaly, NSVZ, and \(a\)-maximization arithmetic that any such
-statement must satisfy.
+Under this hypothesis, the dimension statement is the holomorphic
+implicit-function theorem applied to the finite-dimensional source chart.
+The QFT content is not the theorem of complex analysis; it is the hypothesis
+that the beta map and the quotient by redundant coordinates faithfully
+describe the continuum SCFT family.
+
+\begin{hypothesis}[KW exact-marginality input]
+\label{hyp:kw-exact-marginality-input}
+Near the Klebanov--Witten point, use local holomorphic sources
+\[
+  u=(\tau_1,\tau_2,h)
+\]
+for the two \(SU(N)\) gauge couplings and the quartic superpotential in
+\eqref{eq:kw-superpotential}, restricted to the
+\(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving chart.  Assume the
+continuum SCFT exists in this neighborhood, the NSVZ Wilsonian coordinate
+ledger of this chapter computes the vanishing conditions for these sources,
+and no additional exactly marginal obstruction is present after the
+background contact-term and source-normalization data are fixed.  Finally
+assume the common defect
+\[
+  E(u)=1+\gamma_A(u)+\gamma_B(u)
+\]
+has nonzero differential at the symmetric point in the chosen source chart.
+\end{hypothesis}
+
+\begin{proposition}[KW local conformal manifold from rank one]
+\label{prop:kw-local-conformal-manifold-rank-one}
+Assume Hypothesis~\ref{hyp:kw-exact-marginality-input}.  In the
+\(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving source chart, the
+Klebanov--Witten conformal locus is locally a complex two-dimensional
+submanifold of the three-dimensional source space with coordinates
+\((\tau_1,\tau_2,h)\).
+\end{proposition}
+
+\begin{proof}
+Proposition~\ref{prop:kw-beta-function-rank-count} gives, in this chart,
+\[
+  \mathcal B_1=N E,\qquad
+  \mathcal B_2=N E,\qquad
+  \mathcal B_h=E,
+  \qquad
+  E=1+\gamma_A+\gamma_B .
+\]
+Thus the zero set of the three beta functions is the single equation
+\[
+  E(u)=0 .
+\]
+By Hypothesis~\ref{hyp:kw-exact-marginality-input}, \(dE\neq0\) at the
+Klebanov--Witten point.  The holomorphic implicit-function theorem therefore
+identifies the local zero set with a smooth complex hypersurface in the
+three-dimensional source chart.  Its local complex dimension is
+\[
+  3-1=2 .
+\]
+The proof uses no holographic construction.  Its nontrivial QFT assumptions
+are exactly those isolated in
+Hypothesis~\ref{hyp:kw-exact-marginality-input}: existence of the continuum
+SCFT chart, completeness of the beta-function ledger, and absence of hidden
+current or contact-term obstructions in the preserved-symmetry sector.
+\end{proof}
+
+The result is a conditional field-theoretic reconstruction of the
+Leigh--Strassler rank count for this example.  The chapter has proved the
+anomaly, NSVZ, \(a\)-maximization, chiral-ring, and rank-one beta-function
+arithmetic.  It has not constructed the nonperturbative continuum SCFT from
+a regulator.
 
 \section{Klebanov--Strassler Cascade}
 \label{sec:n1-klebanov-strassler-cascade}
