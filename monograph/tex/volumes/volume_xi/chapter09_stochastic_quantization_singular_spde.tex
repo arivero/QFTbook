@@ -1163,6 +1163,198 @@ Proposition~\ref{prop:spde-sobolev-compactness-tightness} with \(p=2\) now
 gives tightness in \(H^{-\kappa}\).
 \end{proof}
 
+\begin{proposition}[Brascamp--Lieb covariance domination for convex cutoffs]
+\label{prop:spde-brascamp-lieb-convex-cutoff-moment}
+Let \(H_N\) be a finite-dimensional real Hilbert space, let \(A_N\) be a
+positive self-adjoint operator on \(H_N\), and let \(S_N\in C^2(H_N)\)
+satisfy
+\begin{equation}
+  \nabla^2S_N(\phi)\geq A_N
+  \label{eq:spde-brascamp-lieb-hessian-lower-bound}
+\end{equation}
+as quadratic forms on \(H_N\), for every \(\phi\in H_N\).  Define
+\[
+  \dd\nu_N(\phi)=Z_N^{-1}e^{-S_N(\phi)}\,\dd\phi
+\]
+where \(\dd\phi\) is Lebesgue measure in an orthonormal coordinate system
+and \(Z_N=\int e^{-S_N(\phi)}\dd\phi\).  Then \(Z_N<\infty\), the
+integration-by-parts identities used below hold for smooth functions of
+polynomial growth, and every linear functional
+\(\ell_v(\phi)=(v,\phi)_{H_N}\) satisfies
+\begin{equation}
+  \operatorname{Var}_{\nu_N}(\ell_v)
+  \leq
+  (v,A_N^{-1}v)_{H_N}.
+  \label{eq:spde-brascamp-lieb-linear-covariance}
+\end{equation}
+
+Suppose in addition that \(L_N\) is a nonnegative self-adjoint operator with
+orthonormal eigenvectors \(e_{N,\alpha}\) and eigenvalues
+\(\lambda_{N,\alpha}\), that \(A_N\geq L_N+m^2{\bf 1}\) for some \(m^2>0\),
+and that \(\nu_N\) is invariant under \(\phi\mapsto-\phi\).  Define
+\[
+  \|\phi\|_{H_N^{-\eta}}^2
+  =
+  \sum_\alpha
+  (1+\lambda_{N,\alpha})^{-\eta}
+  |(\phi,e_{N,\alpha})_{H_N}|^2 .
+  \label{eq:spde-discrete-negative-sobolev-norm}
+\]
+Then, for every \(\eta>0\),
+\begin{equation}
+  \int\|\phi\|_{H_N^{-\eta}}^2\,\dd\nu_N(\phi)
+  \leq
+  \sum_\alpha
+  (1+\lambda_{N,\alpha})^{-\eta}
+  (\lambda_{N,\alpha}+m^2)^{-1}.
+  \label{eq:spde-convex-cutoff-hminus-moment-bound}
+\end{equation}
+Consequently, any cutoff family for which the right hand side of
+\eqref{eq:spde-convex-cutoff-hminus-moment-bound} is uniformly bounded and
+whose \(H_N^{-\eta}\) spaces embed into a common \(H^{-\eta}\) approximation
+scheme satisfies the moment hypothesis in
+Proposition~\ref{prop:spde-sobolev-compactness-tightness}.
+\end{proposition}
+
+\begin{proof}
+Let \(a_N>0\) be the smallest eigenvalue of \(A_N\).  Taylor's formula gives
+\[
+  S_N(\phi)
+  \geq
+  S_N(0)+(\nabla S_N(0),\phi)_{H_N}
+  +\frac{a_N}{2}\|\phi\|_{H_N}^2
+  \geq
+  \frac{a_N}{4}\|\phi\|_{H_N}^2-C_N
+\]
+for a finite constant \(C_N\).  Hence \(e^{-S_N}\) has Gaussian decay.
+This proves \(Z_N<\infty\) and justifies the integration by parts below
+after inserting radial cutoffs and sending their radii to infinity.
+
+We first prove the covariance estimate.  Write
+\[
+  \mathcal L=\Delta-\nabla S_N\cdot\nabla .
+\]
+This operator is symmetric in \(L^2(\nu_N)\) on smooth compactly supported
+functions, and
+\[
+  -\int f\,\mathcal Lg\,\dd\nu_N
+  =
+  \int(\nabla f,\nabla g)_{H_N}\,\dd\nu_N .
+  \label{eq:spde-finite-log-concave-dirichlet-form}
+\]
+Let \(f\) be a smooth centered test function.  On the centered subspace of
+\(L^2(\nu_N)\), let \(u_\varepsilon=(\varepsilon-\mathcal L)^{-1}f\),
+\(\varepsilon>0\), where the inverse is the Friedrichs resolvent of the
+closed Dirichlet form in
+\eqref{eq:spde-finite-log-concave-dirichlet-form}.  The resolvent satisfies
+\[
+  \varepsilon u_\varepsilon-\mathcal L u_\varepsilon=f .
+  \label{eq:spde-bl-resolvent-equation}
+\]
+Pairing \eqref{eq:spde-bl-resolvent-equation} with \(f\) and using
+\eqref{eq:spde-finite-log-concave-dirichlet-form} gives
+\[
+  \int f^2\,\dd\nu_N
+  =
+  \varepsilon\int fu_\varepsilon\,\dd\nu_N
+  +
+  \int(\nabla f,\nabla u_\varepsilon)_{H_N}\,\dd\nu_N .
+  \label{eq:spde-bl-resolvent-pairing}
+\]
+The spectral calculus of the nonnegative operator
+\(-\mathcal L\) on centered \(L^2(\nu_N)\) gives
+\(\varepsilon u_\varepsilon\to0\) and
+\(-\mathcal L u_\varepsilon\to f\) in \(L^2(\nu_N)\).  Hence the first term
+on the right of \eqref{eq:spde-bl-resolvent-pairing} vanishes as
+\(\varepsilon\downarrow0\).
+
+For smooth compactly supported \(u\), differentiating \(\mathcal L u\) and
+integrating by parts gives the finite-dimensional Bochner identity
+\[
+  \int(\mathcal L u)^2\,\dd\nu_N
+  =
+  \int\|\nabla^2u\|_{\mathrm{HS}}^2\,\dd\nu_N
+  +
+  \int(\nabla u,\nabla^2S_N\,\nabla u)_{H_N}\,\dd\nu_N .
+  \label{eq:spde-finite-bochner-identity}
+\]
+Indeed, expanding
+\(\int(\Delta u-\nabla S_N\cdot\nabla u)^2e^{-S_N}\dd\phi\), moving one
+derivative from each second-derivative term, and collecting the mixed terms
+leaves precisely the Hessian term displayed above.  Applying
+\eqref{eq:spde-finite-bochner-identity} to resolvent approximants and using
+\eqref{eq:spde-brascamp-lieb-hessian-lower-bound} yields
+\[
+  \int(\nabla u_\varepsilon,A_N\nabla u_\varepsilon)_{H_N}\,\dd\nu_N
+  \leq
+  \int(\mathcal L u_\varepsilon)^2\,\dd\nu_N .
+  \label{eq:spde-bl-gradient-resolvent-bound}
+\]
+Taking \(\varepsilon\downarrow0\) gives
+\[
+  \limsup_{\varepsilon\downarrow0}
+  \int(\nabla u_\varepsilon,A_N\nabla u_\varepsilon)_{H_N}\,\dd\nu_N
+  \leq
+  \int f^2\,\dd\nu_N .
+  \label{eq:spde-bl-gradient-limsup}
+\]
+Therefore
+\[
+\begin{aligned}
+  \int f^2\,\dd\nu_N
+  &=
+  \lim_{\varepsilon\downarrow0}
+  \int(\nabla f,\nabla u_\varepsilon)_{H_N}\,\dd\nu_N
+\\
+  &\leq
+  \left[
+    \int(\nabla f,A_N^{-1}\nabla f)_{H_N}\,\dd\nu_N
+  \right]^{1/2}
+  \left[
+    \limsup_{\varepsilon\downarrow0}
+    \int(\nabla u_\varepsilon,A_N\nabla u_\varepsilon)_{H_N}\,\dd\nu_N
+  \right]^{1/2}
+\\
+  &\leq
+  \left[
+    \int(\nabla f,A_N^{-1}\nabla f)_{H_N}\,\dd\nu_N
+  \right]^{1/2}
+  \left[
+    \int f^2\,\dd\nu_N
+  \right]^{1/2}.
+\end{aligned}
+\]
+Dividing by \((\int f^2\,\dd\nu_N)^{1/2}\), and then applying this estimate
+to \(f-\int f\,\dd\nu_N\), gives
+\[
+  \operatorname{Var}_{\nu_N}(f)
+  \leq
+  \int(\nabla f,A_N^{-1}\nabla f)_{H_N}\,\dd\nu_N .
+  \label{eq:spde-brascamp-lieb-general-bound}
+\]
+Linear functions are obtained by multiplying \(\ell_v\) by smooth radial
+cutoffs and sending the cutoff radius to infinity; the quadratic lower bound
+following from \eqref{eq:spde-brascamp-lieb-hessian-lower-bound} supplies the
+needed dominated-convergence bounds.  Since
+\(\nabla\ell_v=v\), \eqref{eq:spde-brascamp-lieb-linear-covariance} follows.
+
+For the negative-Sobolev moment, the symmetry
+\(\phi\mapsto-\phi\) gives
+\(\int(\phi,e_{N,\alpha})_{H_N}\dd\nu_N=0\).  Applying
+\eqref{eq:spde-brascamp-lieb-linear-covariance} with
+\(v=e_{N,\alpha}\) and using \(A_N\geq L_N+m^2{\bf 1}\) gives
+\[
+  \int |(\phi,e_{N,\alpha})_{H_N}|^2\,\dd\nu_N(\phi)
+  \leq
+  (e_{N,\alpha},A_N^{-1}e_{N,\alpha})_{H_N}
+  \leq
+  (\lambda_{N,\alpha}+m^2)^{-1}.
+\]
+Multiplying by \((1+\lambda_{N,\alpha})^{-\eta}\) and summing over
+\(\alpha\) proves
+\eqref{eq:spde-convex-cutoff-hminus-moment-bound}.
+\end{proof}
+
 \begin{proposition}[Closedness of OS reflection positivity under weak convergence]
 \label{prop:spde-os-positivity-closed-under-weak-convergence}
 Let \(E\) be a Hausdorff locally convex real vector space of Euclidean

@@ -1203,6 +1203,25 @@ def check_gaussian_negative_sobolev_summability_arithmetic():
     assert_equal(dyadic_sum, Fraction(2), "Gaussian H-minus dyadic sum")
 
 
+def check_brascamp_lieb_hminus_bound_arithmetic():
+    # In the convex cutoff criterion, covariance in an L_N-eigenmode is
+    # bounded by (lambda + m^2)^(-1), and the H^{-eta} second moment is the
+    # weighted spectral trace.  Use eta=1 for an exact rational sample.
+    lambdas = [Fraction(0), Fraction(3), Fraction(8)]
+    mass_squared = Fraction(2)
+    trace_bound = sum(
+        Fraction(1, 1) / ((1 + lam) * (lam + mass_squared))
+        for lam in lambdas
+    )
+    assert_equal(trace_bound, Fraction(101, 180), "Brascamp-Lieb H-minus trace bound")
+
+    # If A >= L + m^2 in the same eigenbasis, then A^{-1} <= (L+m^2)^{-1}.
+    stronger_hessian_eigenvalues = [Fraction(3), Fraction(7), Fraction(12)]
+    for lam, a_eigenvalue in zip(lambdas, stronger_hessian_eigenvalues):
+        if Fraction(1, a_eigenvalue) > Fraction(1, lam + mass_squared):
+            raise AssertionError("operator-monotone inverse sample failed")
+
+
 def check_quartic_tail_integrability_arithmetic():
     # One-dimensional quartic reference density exp(-a x^4).  The exact
     # even moment is
@@ -1277,8 +1296,9 @@ def main():
     check_one_loop_relative_scale_gap_arithmetic()
     check_hilbert_scale_tightness_arithmetic()
     check_gaussian_negative_sobolev_summability_arithmetic()
+    check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

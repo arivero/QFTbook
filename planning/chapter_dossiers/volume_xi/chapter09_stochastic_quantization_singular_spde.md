@@ -72,6 +72,12 @@ data.
   orthonormal eigenbasis, eigenvalues, spectral cutoff index set, and
   massive free Gaussian cutoff law in the reference negative-Sobolev
   tightness estimate.
+- `H_N`, `A_N`, `L_N`, `e_{N,alpha}`, `lambda_{N,alpha}`, `nu_N`:
+  finite-dimensional Hilbert space, Hessian lower-bound operator, reference
+  nonnegative operator, spectral basis, eigenvalues, and convex cutoff
+  measure in the Brascamp-Lieb negative-Sobolev moment criterion.
+- `mathcal L`, `u_epsilon`: finite-dimensional diffusion generator and
+  resolvent solution used in the Brascamp-Lieb proof.
 - `Lambda_{a,L}`, `vartheta`, `mu_{a,L}`, `S_{a,L}`, `V_x`: finite lattice,
   time reflection, lattice Euclidean measure, lattice scalar action, and
   reflection-invariant on-site potential used in the OS-positive lattice
@@ -224,6 +230,20 @@ data.
   \(\sum_{k\in\mathbb Z^2}(1+|k|^2)^{-1-\eta}\) and proves convergence by
   dyadic annuli, thereby giving free cutoff tightness in \(H^{-\kappa}\)
   whenever \(0<\eta<\kappa\).
+- Proves a finite-dimensional Brascamp-Lieb covariance domination theorem
+  for convex scalar cutoffs.  The proof uses the symmetric generator
+  \(\mathcal L=\Delta-\nabla S\cdot\nabla\), its Friedrichs resolvent, and
+  the finite-dimensional Bochner identity to derive
+  \(\operatorname{Var}_{\nu_N}(\ell_v)\le (v,A_N^{-1}v)\).  Applied to the
+  spectral coordinates of a cutoff operator \(L_N\), this gives the
+  interacting negative-Sobolev bound
+  \[
+    \int\|\phi\|_{H_N^{-\eta}}^2d\nu_N
+    \le
+    \sum_\alpha(1+\lambda_{N,\alpha})^{-\eta}
+      (\lambda_{N,\alpha}+m^2)^{-1}
+  \]
+  whenever \(\nabla^2S_N\ge L_N+m^2{\bf 1}\) and the cutoff law is even.
 - Proves closedness of OS reflection positivity under weak convergence for
   bounded positive-time cylinder observables, and isolates the additional
   uniform-integrability hypothesis needed to pass unbounded polynomial
@@ -719,3 +739,9 @@ data maps.
   \(\sum_k\langle k\rangle^{-2-2\eta}\).  The calculation-check companion
   verifies the two-dimensional shell exponent and the sample dyadic
   geometric sum.
+- 2026-05-26 issue #608 convex-interacting pass: added a self-contained
+  Brascamp-Lieb/Bochner-resolvent covariance domination theorem for
+  uniformly convex finite-dimensional scalar cutoffs and derived the
+  corresponding interacting negative-Sobolev moment bound.  The
+  calculation-check companion verifies the weighted spectral-trace arithmetic
+  and the inverse-monotonicity sample used in the proof.
