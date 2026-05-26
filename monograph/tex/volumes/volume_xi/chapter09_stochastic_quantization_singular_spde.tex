@@ -8662,6 +8662,280 @@ orthogonality of distinct homogeneous Wiener chaoses and the isometry
 =q!\langle f,g\rangle_{\mathcal H^{\otimes q}}\).
 \end{proof}
 
+\begin{proposition}[Nonlinear \(\Pi\)-coordinate input from projective kernel bounds]
+\label{prop:spde-nonlinear-pi-coordinate-input-from-kernels}
+Let \(K\subset\R^{1+3}\) be compact and let
+\[
+  \mathcal X_{\Pi,m}=K\times[1/2,1],
+  \qquad
+  d_{\Pi,m}((z,a),(z',a'))=2^m\|z-z'\|_{\mathfrak s}+|a-a'|
+\]
+be the physical \(\Pi\)-coordinate spaces of
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}.  Let
+\[
+  E_r=
+  \{\varphi\in C^r(\R^{1+3}):
+    \operatorname{supp}\varphi\subset B_{\mathfrak s}(0,1)\},
+  \qquad
+  \|\varphi\|_{E_r}=\|\varphi\|_{C^r}.
+\]
+Fix
+\[
+  0<\kappa<\frac1{14},
+  \qquad
+  0<\zeta<5\kappa,
+\]
+and set
+\[
+  |\!XY\!|=-4\kappa,\qquad
+  |X^2Y|=-\frac12-5\kappa,
+\]
+\[
+  \sigma_{XY}=4\kappa,
+  \qquad
+  \sigma_{X^2Y}=5\kappa-\zeta .
+  \label{eq:spde-nonlinear-pi-coordinate-slacks}
+\]
+The loss \(\zeta\) is reserved for logarithmic factors in the locally
+subtracted first-chaos component of \(X^2Y\).
+
+For
+\[
+  \mathfrak C_{\rm nl}=\{XY,X^2Y\},
+  \qquad
+  \mathcal Q_{XY}=\{4,2\},
+  \qquad
+  \mathcal Q_{X^2Y}=\{5,3,1\},
+\]
+let \(F_{n,\tau,q,m}(u)\in\mathcal H^{\odot q}\widehat\otimes_\pi E_r'\),
+where
+\[
+  n\geq1,\qquad
+  \tau\in\mathfrak C_{\rm nl},\qquad
+  q\in\mathcal Q_\tau,\qquad
+  m\geq0,\qquad
+  u=(z,a)\in\mathcal X_{\Pi,m}.
+\]
+Assume that the \(E_r'\)-valued chaos expansion
+\begin{equation}
+  Y_{n,\tau,m}(u)
+  =
+  \sum_{q\in\mathcal Q_\tau}I_q(F_{n,\tau,q,m}(u))
+  \label{eq:spde-nonlinear-pi-coordinate-er-chaos}
+\end{equation}
+is the scale-normalized tested \(\Pi\)-coordinate:
+\begin{equation}
+  Y_{n,\tau,m}(z,a)(\varphi)
+  =
+  (2^{-m}a)^{-|\tau|}
+  \left\langle
+    \Pi_z^{(n)}\tau,\varphi_z^{\,2^{-m}a}
+  \right\rangle .
+  \label{eq:spde-nonlinear-pi-coordinate-er-identification}
+\end{equation}
+For \(X^2Y\), the kernels are those of the locally subtracted coordinate
+\eqref{eq:spde-x2y-finite-cutoff-wick-decomposition}; equivalently, after
+pairing with a test density, they reduce to
+\eqref{eq:spde-x2y-tested-chaos-kernels}.  For \(XY\), they reduce to
+\eqref{eq:spde-xy-tested-chaos-kernels}.
+
+Choose \(0<\theta\leq1\), an even integer \(p=2m_0\), and \(\rho>0\) such
+that
+\begin{equation}
+  p\sigma_\tau>5
+  \quad(\tau\in\mathfrak C_{\rm nl}),
+  \qquad
+  p\theta>6 .
+  \label{eq:spde-nonlinear-pi-coordinate-moment-condition}
+\end{equation}
+Suppose that there are constants
+\[
+  B_{\tau,q,0},\ B_{\tau,q,1},\
+  \widetilde B_{\tau,q,0},\ \widetilde B_{\tau,q,1}<\infty
+\]
+such that, for every \(n,m,\tau,q\) and \(u,v\in\mathcal X_{\Pi,m}\) with
+\(d_{\Pi,m}(u,v)\leq1\),
+\begin{equation}
+  \|F_{n,\tau,q,m}(u)\|_\pi
+  \leq
+  B_{\tau,q,0}2^{-\sigma_\tau m},
+  \label{eq:spde-nonlinear-pi-coordinate-projective-base}
+\end{equation}
+\begin{equation}
+  \|F_{n,\tau,q,m}(v)-F_{n,\tau,q,m}(u)\|_\pi
+  \leq
+  B_{\tau,q,1}2^{-\sigma_\tau m}d_{\Pi,m}(u,v)^\theta,
+  \label{eq:spde-nonlinear-pi-coordinate-projective-edge}
+\end{equation}
+and the cutoff increments obey
+\begin{equation}
+  \|F_{n+1,\tau,q,m}(u)-F_{n,\tau,q,m}(u)\|_\pi
+  \leq
+  \widetilde B_{\tau,q,0}2^{-\rho n}2^{-\sigma_\tau m},
+  \label{eq:spde-nonlinear-pi-coordinate-projective-cutoff-base}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+  &\|
+    (F_{n+1,\tau,q,m}(v)-F_{n,\tau,q,m}(v))
+    -(F_{n+1,\tau,q,m}(u)-F_{n,\tau,q,m}(u))
+  \|_\pi                                             \\
+  &\qquad\leq
+  \widetilde B_{\tau,q,1}2^{-\rho n}
+  2^{-\sigma_\tau m}d_{\Pi,m}(u,v)^\theta .
+\end{aligned}
+  \label{eq:spde-nonlinear-pi-coordinate-projective-cutoff-edge}
+\end{equation}
+Then the nonlinear coordinates \(XY\) and \(X^2Y\) satisfy the
+\(\Pi\)-coordinate hypotheses of
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+\[
+  D_\tau=5,\qquad d_\tau=6,\qquad
+  \varepsilon_\tau=p\theta-6 .
+  \label{eq:spde-nonlinear-pi-coordinate-entropy-data}
+\]
+In particular, if
+\[
+  U_{n,\tau,m}(u)=\|Y_{n,\tau,m}(u)\|_{E_r'}
+\]
+and \(V_{n,\tau,m}\) is defined by replacing \(Y_{n,\tau,m}\) with
+\(Y_{n+1,\tau,m}-Y_{n,\tau,m}\), then, on the nets of
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy},
+\[
+  \mathbb E|U_{n,\tau,m}(u)|^p
+  \leq
+  A_{\tau,0}^{\,p}2^{-p\sigma_\tau m},
+  \qquad
+  \mathbb E|V_{n,\tau,m}(u)|^p
+  \leq
+  \widetilde A_{\tau,0}^{\,p}2^{-p\rho n}2^{-p\sigma_\tau m},
+\]
+and
+\[
+  \mathbb E|U_{n,\tau,m}(v)-U_{n,\tau,m}(u)|^p
+  \leq
+  A_{\tau,1}^{\,p}2^{-p\sigma_\tau m}2^{-(6+\varepsilon_\tau)\ell},
+\]
+\[
+  \mathbb E|V_{n,\tau,m}(v)-V_{n,\tau,m}(u)|^p
+  \leq
+  \widetilde A_{\tau,1}^{\,p}2^{-p\rho n}2^{-p\sigma_\tau m}
+  2^{-(6+\varepsilon_\tau)\ell}
+\]
+for all \((u,v)\in\mathcal E_{\Pi,m,\ell}\).  The constants are
+\[
+  A_{\tau,i}=
+  \sum_{q\in\mathcal Q_\tau}C_{q,m_0}B_{\tau,q,i},
+  \qquad
+  \widetilde A_{\tau,i}=
+  \sum_{q\in\mathcal Q_\tau}C_{q,m_0}\widetilde B_{\tau,q,i},
+  \qquad i=0,1,
+  \label{eq:spde-nonlinear-pi-coordinate-moment-constants}
+\]
+where \(C_{q,m_0}\) is the finite-chaos constant in
+Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate}.
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:spde-nonlinear-pi-coordinate-er-identification},
+\[
+  \|Y_{n,\tau,m}(z,a)\|_{E_r'}
+  =
+  \sup_{\varphi\in\mathcal B_r}
+  (2^{-m}a)^{-|\tau|}
+  \left|
+    \left\langle
+      \Pi_z^{(n)}\tau,\varphi_z^{\,2^{-m}a}
+    \right\rangle
+  \right| .
+\]
+Thus \(U_{n,\tau,m}\) is exactly the physical
+\(\Pi\)-coordinate \(Q_{n,\tau}^\#\) restricted to dyadic scale \(m\), and
+the analogous statement holds for cutoff differences.
+
+Apply Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} to
+\eqref{eq:spde-nonlinear-pi-coordinate-er-chaos}.  The projective base bound
+\eqref{eq:spde-nonlinear-pi-coordinate-projective-base} gives
+\[
+  \|U_{n,\tau,m}(u)\|_{L^p(\Omega)}
+  \leq
+  \sum_{q\in\mathcal Q_\tau}
+  C_{q,m_0}B_{\tau,q,0}2^{-\sigma_\tau m}
+  =
+  A_{\tau,0}2^{-\sigma_\tau m}.
+  \label{eq:spde-nonlinear-pi-coordinate-lp-base-proof}
+\]
+The cutoff base estimate follows in the same way from
+\eqref{eq:spde-nonlinear-pi-coordinate-projective-cutoff-base}.  For
+increments, use
+\[
+  \bigl|\|A\|_{E_r'}-\|B\|_{E_r'}\bigr|\leq\|A-B\|_{E_r'}
+\]
+and then apply the finite-chaos estimate to
+\[
+  Y_{n,\tau,m}(v)-Y_{n,\tau,m}(u)
+  =
+  \sum_{q\in\mathcal Q_\tau}
+  I_q(F_{n,\tau,q,m}(v)-F_{n,\tau,q,m}(u)).
+\]
+This proves
+\[
+  \|U_{n,\tau,m}(v)-U_{n,\tau,m}(u)\|_{L^p}
+  \leq
+  A_{\tau,1}2^{-\sigma_\tau m}d_{\Pi,m}(u,v)^\theta,
+  \label{eq:spde-nonlinear-pi-coordinate-lp-edge-proof}
+\]
+and the cutoff edge estimate follows from
+\eqref{eq:spde-nonlinear-pi-coordinate-projective-cutoff-edge}.
+
+For an edge \((u,v)\in\mathcal E_{\Pi,m,\ell}\), the construction in
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy} gives
+\[
+  d_{\Pi,m}(u,v)\leq C2^{-\ell}.
+\]
+Absorbing the fixed constant \(C^\theta\) into \(A_{\tau,1}\) and
+\(\widetilde A_{\tau,1}\), and then raising the \(L^p\)-bounds to the
+\(p\)-th power, gives the displayed edge moments because
+\[
+  p\theta=6+\varepsilon_\tau .
+\]
+The same entropy proposition gives \(D_\tau=5\) and \(d_\tau=6\).  The
+conditions
+\eqref{eq:spde-nonlinear-pi-coordinate-moment-condition} are precisely
+\[
+  \sigma_\tau>\frac{D_\tau}{p},
+  \qquad
+  \varepsilon_\tau>0 .
+\]
+The required sample continuity follows from the same finite-net estimate and
+does not require an additional stochastic input.  For fixed \(n,\tau,m\),
+choose nested \(2^{-\ell}\)-nets in \(\mathcal X_{\Pi,m}\) as in
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}.  The
+edge family at level \(\ell\) has cardinality at most
+\[
+  C2^{5m}2^{6\ell}.
+\]
+By \eqref{eq:spde-nonlinear-pi-coordinate-lp-edge-proof},
+\[
+  \sum_{\ell\geq0}
+  \mathbb E
+  \sum_{(u,v)\in\mathcal E_{\Pi,m,\ell}}
+  |U_{n,\tau,m}(v)-U_{n,\tau,m}(u)|^p
+  \leq
+  C_{n,\tau,m}
+  \sum_{\ell\geq0}2^{-(p\theta-6)\ell}<\infty .
+\]
+Fubini therefore gives almost sure summability of the \(p\)-th powers of the
+dyadic edge increments.  Since a summable nonnegative sequence tends to zero
+along the levels, the usual nearest-net telescoping sequence is almost surely
+Cauchy uniformly along every chain of nested approximants.  This defines a
+continuous modification on the compact metric space
+\(\mathcal X_{\Pi,m}\).  The same argument applies to \(V_{n,\tau,m}\).
+Hence all hypotheses needed for
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} are
+satisfied for the nonlinear \(\Pi\)-coordinates.
+\end{proof}
+
 \begin{proposition}[Scale bound for the locally subtracted first-chaos kernel]
 \label{prop:spde-x2y-first-chaos-logarithmic-scale-bound}
 Let \(Q=5\), \(\mathfrak s=(2,1,1,1)\), and
