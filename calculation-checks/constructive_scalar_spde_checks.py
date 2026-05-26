@@ -1244,25 +1244,26 @@ def check_gamma_coordinate_heat_input_arithmetic():
 
 def check_nonlinear_pi_coordinate_kernel_input_arithmetic():
     # Nonlinear Pi coordinates have physical parameter entropy D=5 and
-    # edge entropy d=6.  XY has scale slack 4 kappa.  X2Y has nominal slack
-    # 5 kappa, but the locally subtracted first-chaos logarithm is recorded
-    # as a small zeta loss.  With zeta=kappa and p=64, both coordinates have
-    # the same positive scale excess.
+    # edge entropy d=6.  The XY graph ledger is marginal at the scalar
+    # second-moment level, so this sample reserves a small zeta_XY loss.
+    # X2Y has nominal slack 5 kappa, with a separate zeta_X2Y loss for the
+    # locally subtracted first-chaos logarithm.
     qdim = 5
     pi_edge_entropy = qdim + 1
     kappa = Fraction(1, 20)
-    zeta = kappa
-    sigma_xy = 4 * kappa
-    sigma_x2y = 5 * kappa - zeta
+    zeta_xy = kappa
+    zeta_x2y = kappa
+    sigma_xy = 4 * kappa - zeta_xy
+    sigma_x2y = 5 * kappa - zeta_x2y
     theta = Fraction(1, 2)
     p = 64
 
-    assert_equal(sigma_xy, Fraction(1, 5), "nonlinear XY scale slack")
+    assert_equal(sigma_xy, Fraction(3, 20), "nonlinear XY scale slack after zeta loss")
     assert_equal(sigma_x2y, Fraction(1, 5), "nonlinear X2Y scale slack after zeta loss")
     xy_scale_excess = p * sigma_xy - qdim
     x2y_scale_excess = p * sigma_x2y - qdim
     edge_excess = p * theta - pi_edge_entropy
-    assert_equal(xy_scale_excess, Fraction(39, 5), "nonlinear XY scale excess")
+    assert_equal(xy_scale_excess, Fraction(23, 5), "nonlinear XY scale excess")
     assert_equal(x2y_scale_excess, Fraction(39, 5), "nonlinear X2Y scale excess")
     assert_equal(edge_excess, 26, "nonlinear Pi edge excess")
     if not xy_scale_excess > 0:
@@ -1271,6 +1272,73 @@ def check_nonlinear_pi_coordinate_kernel_input_arithmetic():
         raise AssertionError("nonlinear X2Y scale-summed condition failed")
     if not edge_excess > 0:
         raise AssertionError("nonlinear Pi edge condition failed")
+
+
+def check_xy_tested_graph_power_counting_arithmetic():
+    # Q=5 dynamic Phi4_3 power counting for the scalar second-moment graphs
+    # associated with the tested XY coordinate.  Edge exponents are Q-2=3
+    # for heat edges and Q-4=1 for covariance edges.  The total degree is
+    # marginal, while every proper subgraph has a positive deficit.
+    qdim = 5
+    graphs = {
+        "XY fourth chaos A": (
+            [
+                ("a", "b", 3),
+                ("ap", "bp", 3),
+                ("a", "ap", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+            ],
+            2,
+        ),
+        "XY fourth chaos B": (
+            [
+                ("a", "b", 3),
+                ("ap", "bp", 3),
+                ("a", "bp", 1),
+                ("b", "ap", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+            ],
+            2,
+        ),
+        "XY second chaos": (
+            [
+                ("a", "b", 3),
+                ("a", "b", 1),
+                ("ap", "bp", 3),
+                ("ap", "bp", 1),
+                ("b", "bp", 1),
+                ("b", "bp", 1),
+            ],
+            1,
+        ),
+    }
+    vertices = ["a", "b", "ap", "bp"]
+
+    def subset_deficit(edges, subset):
+        subset = set(subset)
+        internal = sum(weight for u, v, weight in edges if u in subset and v in subset)
+        return qdim * (len(subset) - 1) - internal
+
+    from itertools import combinations
+
+    for name, (edges, expected_min_deficit) in graphs.items():
+        total_degree = sum(weight for _, _, weight in edges)
+        assert_equal(total_degree, qdim * (len(vertices) - 2), f"{name} total degree")
+        deficits = []
+        for size in range(2, len(vertices)):
+            for subset in combinations(vertices, size):
+                deficit = subset_deficit(edges, subset)
+                deficits.append(deficit)
+                if not deficit > 0:
+                    raise AssertionError(f"{name} has nonpositive proper-subgraph deficit {subset}")
+        assert_equal(
+            min(deficits),
+            expected_min_deficit,
+            f"{name} minimum proper-subgraph deficit",
+        )
 
 
 def check_coordinate_to_model_convergence_arithmetic():
@@ -1600,6 +1668,7 @@ def main():
     check_gaussian_negative_pi_coordinate_input_arithmetic()
     check_gamma_coordinate_heat_input_arithmetic()
     check_nonlinear_pi_coordinate_kernel_input_arithmetic()
+    check_xy_tested_graph_power_counting_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
@@ -1610,7 +1679,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

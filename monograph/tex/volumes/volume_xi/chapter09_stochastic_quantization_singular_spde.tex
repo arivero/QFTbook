@@ -8662,6 +8662,128 @@ orthogonality of distinct homogeneous Wiener chaoses and the isometry
 =q!\langle f,g\rangle_{\mathcal H^{\otimes q}}\).
 \end{proof}
 
+\begin{proposition}[Power-counting ledger for the tested \(XY\) covariance graphs]
+\label{prop:spde-xy-tested-graph-power-counting-ledger}
+Let \(Q=5\).  Assign to a heat edge the singular exponent \(3=Q-2\) and to
+one covariance edge the singular exponent \(1=Q-4\).  Consider the three
+four-vertex multigraphs on
+\[
+  V=\{a,b,a',b'\}
+\]
+which occur in the two \(XY\) covariance expressions
+\eqref{eq:spde-xy-kernel-norm-integrals}:
+\[
+\begin{array}{ll}
+  \mathcal G_{4,A}:&
+  (a,b)_3,\ (a',b')_3,\ (a,a')_1,\ 3(b,b')_1,\\[0.25em]
+  \mathcal G_{4,B}:&
+  (a,b)_3,\ (a',b')_3,\ (a,b')_1,\ (b,a')_1,\ 2(b,b')_1,\\[0.25em]
+  \mathcal G_{2}:&
+  (a,b)_3,\ (a,b)_1,\ (a',b')_3,\ (a',b')_1,\ 2(b,b')_1 .
+\end{array}
+\]
+The subscript is the singular exponent of the corresponding dyadic kernel;
+parallel covariance edges are listed with multiplicity.  Let
+\[
+  s_{\mathcal G}(W)
+  =
+  \sum_{\substack{e=(u,v)\in E(\mathcal G)\\ u,v\in W}}s_e
+\]
+for \(W\subset V\), where \(s_e\) is the edge singular exponent.  Then,
+for every graph \(\mathcal G\in\{\mathcal G_{4,A},\mathcal G_{4,B},
+\mathcal G_2\}\),
+\begin{equation}
+  \sum_{e\in E(\mathcal G)}s_e
+  =
+  Q(|V|-2)=10 ,
+  \label{eq:spde-xy-graph-total-degree}
+\end{equation}
+and every proper subset \(W\subsetneq V\) with \(|W|\geq2\) obeys the strict
+subgraph inequality
+\begin{equation}
+  s_{\mathcal G}(W)<Q(|W|-1).
+  \label{eq:spde-xy-graph-proper-subgraph-degree}
+\end{equation}
+More precisely, the smallest deficit
+\[
+  \Delta_{\mathcal G}(W)
+  =
+  Q(|W|-1)-s_{\mathcal G}(W)
+\]
+over proper \(W\) is \(2\) for \(\mathcal G_{4,A}\), \(2\) for
+\(\mathcal G_{4,B}\), and \(1\) for \(\mathcal G_2\).
+
+Consequently the only possible scale loss in the scalar second-moment power
+counting for the tested \(XY\) kernels is an overall logarithm.  After
+dyadic decomposition, all relative-scale sums are geometrically summable;
+if \(2^{-M-1}<\delta\leq2^{-M}\), the remaining overall-scale sum is bounded
+by \(C(1+M)\).  Hence any scalar covariance integral associated with the
+three graphs above and tested by two \(L^1\)-normalized functions supported
+in parabolic balls of radius \(O(\delta)\) satisfies a power bound
+\begin{equation}
+  |I_\delta|
+  \leq C_\eta \delta^{-\eta}
+  \qquad(\eta>0),
+  \label{eq:spde-xy-graph-log-loss-bound}
+\end{equation}
+provided the dyadic heat and covariance blocks satisfy the support and size
+bounds used in Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound}.
+\end{proposition}
+
+\begin{proof}
+The total singular exponent is \(3+3+1+3=10\) for
+\(\mathcal G_{4,A}\), \(3+3+1+1+2=10\) for \(\mathcal G_{4,B}\), and
+\((3+1)+(3+1)+2=10\) for \(\mathcal G_2\).  This proves
+\eqref{eq:spde-xy-graph-total-degree}.
+
+It remains to check proper subgraphs.  For two-vertex subsets, the largest
+internal singular exponents are
+\[
+  \max_{|W|=2}s_{\mathcal G_{4,A}}(W)=3,\qquad
+  \max_{|W|=2}s_{\mathcal G_{4,B}}(W)=3,\qquad
+  \max_{|W|=2}s_{\mathcal G_2}(W)=4 .
+\]
+The two fourth-chaos graphs therefore have two-vertex deficit at least \(2\),
+while the second-chaos graph has the smaller deficit \(1\), coming from the
+parallel heat-covariance pairs \(\{a,b\}\) and \(\{a',b'\}\).  For three
+vertices, inspection of the three displayed edge lists gives the following
+maximal internal singular exponents:
+\[
+  \max_{|W|=3}s_{\mathcal G_{4,A}}(W)=6,\qquad
+  \max_{|W|=3}s_{\mathcal G_{4,B}}(W)=6,\qquad
+  \max_{|W|=3}s_{\mathcal G_2}(W)=6 .
+\]
+Because \(Q(|W|-1)=10\) when \(|W|=3\), these deficits are at least \(4\).
+Thus \eqref{eq:spde-xy-graph-proper-subgraph-degree} holds, with the stated
+minimum deficits \(2,2,1\).
+
+Now decompose every heat and covariance factor into dyadic blocks.  A
+relative-scale sector is obtained by choosing one overall scale \(n\) for a
+spanning cluster of all four vertices and non-negative gap variables
+recording how much smaller each proper connected subcluster is.  The support
+and size assumptions give, in that sector, a factor
+\[
+  2^{-\sum_W \Delta_{\mathcal G}(W)r_W}
+\]
+up to a constant depending only on the dyadic partition and on the finite
+graph.  The strict inequalities just proved imply
+\(\Delta_{\mathcal G}(W)\geq1\) for every proper cluster which can occur in
+the sector decomposition, so Theorem~\ref{thm:spde-multiscale-sector-kernel-summability}
+applies to the relative gap variables.
+
+After those relative sums have been performed, the exponent of the remaining
+overall scale is zero, precisely because of
+\eqref{eq:spde-xy-graph-total-degree} and because the two external test
+functions are \(L^1\)-normalized.  Thus the contribution of all overall
+scales \(0\leq n\leq M+O(1)\) is \(O(1+M)\); larger scales are killed by the
+test-function support and the same proper-cluster estimates.  Finally, for
+every \(\eta>0\),
+\[
+  1+M\leq C_\eta 2^{\eta M}\leq C_\eta\delta^{-\eta}.
+\]
+This proves \eqref{eq:spde-xy-graph-log-loss-bound}.
+\end{proof}
+
 \begin{proposition}[Nonlinear \(\Pi\)-coordinate input from projective kernel bounds]
 \label{prop:spde-nonlinear-pi-coordinate-input-from-kernels}
 Let \(K\subset\R^{1+3}\) be compact and let
@@ -8683,7 +8805,9 @@ Fix
 \[
   0<\kappa<\frac1{14},
   \qquad
-  0<\zeta<5\kappa,
+  0\leq\zeta_{XY}<4\kappa,
+  \qquad
+  0<\zeta_{X^2Y}<5\kappa,
 \]
 and set
 \[
@@ -8691,13 +8815,18 @@ and set
   |X^2Y|=-\frac12-5\kappa,
 \]
 \[
-  \sigma_{XY}=4\kappa,
+  \sigma_{XY}=4\kappa-\zeta_{XY},
   \qquad
-  \sigma_{X^2Y}=5\kappa-\zeta .
+  \sigma_{X^2Y}=5\kappa-\zeta_{X^2Y} .
   \label{eq:spde-nonlinear-pi-coordinate-slacks}
 \]
-The loss \(\zeta\) is reserved for logarithmic factors in the locally
-subtracted first-chaos component of \(X^2Y\).
+The loss \(\zeta_{XY}\) is optional: it may be set to zero only after the
+concrete \(XY\) projective kernel estimate proves that the marginal
+overall-scale logarithm in
+Proposition~\ref{prop:spde-xy-tested-graph-power-counting-ledger} is absent
+or harmless in the chosen norm.  The loss \(\zeta_{X^2Y}\) is reserved for
+logarithmic factors in the locally subtracted first-chaos component of
+\(X^2Y\).
 
 For
 \[

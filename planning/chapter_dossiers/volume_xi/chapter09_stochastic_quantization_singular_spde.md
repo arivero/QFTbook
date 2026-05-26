@@ -1040,7 +1040,11 @@ data maps.
   converting projective \(E_r'\)-valued kernel bounds for \(XY\) and the
   locally subtracted \(X^2Y\) into the \(\Pi\)-coordinate hypotheses of the
   strict negative-sector model theorem.  The criterion records
-  \(\sigma_{XY}=4\kappa\), \(\sigma_{X^2Y}=5\kappa-\zeta\), the entropy data
-  \(D=5,d=6\), and the exact high-moment conditions
-  \(p\sigma_\tau>5\), \(p\theta>6\).  The calculation-check companion
-  verifies the sample nonlinear entropy/slack arithmetic.
+  \(\sigma_{XY}=4\kappa-\zeta_{XY}\),
+  \(\sigma_{X^2Y}=5\kappa-\zeta_{X^2Y}\), the entropy data \(D=5,d=6\),
+  and the exact high-moment conditions \(p\sigma_\tau>5\), \(p\theta>6\).
+  A companion \(XY\) graph power-counting ledger records the marginal total
+  degree and positive proper-subgraph deficits of the fourth- and
+  second-chaos covariance graphs; the calculation-check companion verifies
+  both that graph arithmetic and the sample nonlinear entropy/slack
+  arithmetic.
