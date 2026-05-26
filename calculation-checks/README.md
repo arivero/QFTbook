@@ -169,6 +169,10 @@ Current checks:
   anomaly-induced mass \(m_{\rm Sch}^2=e^2/\pi\), the screened static
   potential, and the periodicity of the massive-model string tension for
   integer probe charge.
+- `sk_diffusion_action_checks.py`: finite algebra checks for the Volume X
+  Schwinger--Keldysh hydrodynamic diffusion action, including the sourced
+  density saddle, diffusive response kernel, transverse Ohm response, KMS
+  noise coefficient, and Hubbard--Stratonovich noise normalization.
 - `sine_gordon_smatrix_checks.py`: numerical finite checks for the Volume VI
   sine-Gordon exact scattering datum, including soliton-matrix unitarity and
   Yang-Baxter, the free-fermion point, breather pole locations, breather mass

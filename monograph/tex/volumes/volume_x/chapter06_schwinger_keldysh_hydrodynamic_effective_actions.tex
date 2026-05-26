@@ -3,152 +3,377 @@
 
 \ConventionsRealTime
 
-Hydrodynamic effective actions are real-time generating functionals for
-conserved densities in the Schwinger--Keldysh framework.  Their variables are
-doubled, their action is complex, and their coefficients are fixed by Ward
-identities, positivity, and the KMS condition.
+Hydrodynamic Schwinger--Keldysh effective actions are real-time doubled
+generating functionals for conserved densities in a long-wavelength state.
+Their defining constraints are inherited from the closed time path:
+normalization at coincident sources, a reality relation, positivity of the
+imaginary part, gauge or diffeomorphism Ward identities, and the KMS condition
+when the initial state is thermal.  This chapter develops the
+quadratic charge-diffusion action explicitly, because it is the simplest
+place where all of these constraints can be seen without hiding the
+source-response signs.
 
-\section{Doubled Sources and Average-Difference Variables}
+Let spacetime be \(\mathbb R_t\times\mathbb R^d\).  Spatial indices
+\(i,j\) are raised with \(\delta^{ij}\), and
+\(\nabla^2=\partial_i\partial_i\).  Fourier modes are written as
+\(\exp(-\ii\omega t+\ii\mathbf k\cdot\mathbf x)\) in the derivations below.
+The microscopic retarded commutator convention is the one fixed in
+Chapter~\ref{ch:thermal-spectral-kubo-transport}.  In this chapter
+\(K^R\) denotes the source-response kernel obtained by differentiating the
+Schwinger--Keldysh functional with respect to the \(a\)-type source.  The
+conversion between \(K^R\) and the commutator retarded function includes the
+sign convention of the microscopic source coupling and possible local contact
+terms.
 
-For a conserved \(U(1)\) current, introduce two background gauge fields
-\[
-  A_{1\mu},\qquad A_{2\mu}
-\]
-on the forward and backward time contours.  Define
-\[
+\section{Closed-Time-Path Constraints}
+
+Let \(A_{1\mu}\) and \(A_{2\mu}\) be background gauge fields on the two
+branches of the Schwinger--Keldysh contour.  For an initial density operator
+\(\rho_0\), define
+\begin{equation}
+  Z[A_1,A_2]
+  =
+  \operatorname{Tr}\!\left(
+  U[A_1]\rho_0U[A_2]^\dagger
+  \right).
+  \label{eq:sk-hydro-generating-functional}
+\end{equation}
+Introduce average and difference variables
+\begin{equation}
   A_{r\mu}=\frac12(A_{1\mu}+A_{2\mu}),
   \qquad
   A_{a\mu}=A_{1\mu}-A_{2\mu}.
-\]
-The Schwinger--Keldysh generating functional is
-\[
-  Z[A_1,A_2]=\operatorname{Tr}\!\left(
-  U[A_1]\rho_0U[A_2]^\dagger
-  \right).
-\]
-Unitarity gives
-\[
-  Z[A,A]=1,
-\]
-and therefore the effective action \(I_{\mathrm{SK}}\) obeys
-\[
-  I_{\mathrm{SK}}[A_r,A_a=0]=0 .
-\]
+  \label{eq:sk-hydro-ra-sources}
+\end{equation}
+If \(Z=\exp(\ii I_{\rm SK})\), unitarity and Hermiticity imply
+\begin{align}
+  I_{\rm SK}[A_r,A_a=0]&=0,
+  \label{eq:sk-hydro-unitarity-zero}\\
+  I_{\rm SK}[A_r,A_a]^*
+  &=
+  -I_{\rm SK}[A_r,-A_a],
+  \label{eq:sk-hydro-reality}\\
+  \operatorname{Im} I_{\rm SK}[A_r,A_a]&\ge0
+  \label{eq:sk-hydro-positivity}
+\end{align}
+for source configurations in the domain of the effective description.
+Equation \eqref{eq:sk-hydro-unitarity-zero} says that every term in the
+effective action contains at least one \(a\)-type field.  The positivity
+condition is the damping condition in the path-integral weight
+\(\exp(\ii I_{\rm SK})\).
 
-\section{Hydrodynamic Phase Field}
+\section{Hydrodynamic Phase Field and Gauge Invariance}
 
-A hydrodynamic effective action for a conserved charge contains phase fields
+For a conserved \(U(1)\) charge, the hydrodynamic mode is represented by
+phase fields
 \[
-  \varphi_1,\qquad \varphi_2
+  \varphi_1,\qquad \varphi_2 .
 \]
-with gauge-invariant combinations
+The branchwise gauge transformations are
 \[
-  B_{s\mu}=A_{s\mu}+\partial_\mu\varphi_s,
-  \qquad s=1,2 .
+  A_{s\mu}\mapsto A_{s\mu}+\partial_\mu\lambda_s,
+  \qquad
+  \varphi_s\mapsto\varphi_s-\lambda_s,
+  \qquad s=1,2.
 \]
+Thus the gauge-invariant combinations are
+\begin{equation}
+  B_{s\mu}=A_{s\mu}+\partial_\mu\varphi_s .
+  \label{eq:sk-hydro-branch-b-fields}
+\end{equation}
 In \(r/a\) variables,
-\[
+\begin{equation}
   B_{r\mu}=A_{r\mu}+\partial_\mu\varphi_r,
   \qquad
   B_{a\mu}=A_{a\mu}+\partial_\mu\varphi_a .
-\]
-Gauge invariance under
-\[
-  A_{s\mu}\mapsto A_{s\mu}+\partial_\mu\lambda_s,\qquad
-  \varphi_s\mapsto\varphi_s-\lambda_s
-\]
-implies conservation of the current obtained by varying with respect to
-\(A_{a\mu}\).
+  \label{eq:sk-hydro-ra-b-fields}
+\end{equation}
+The field \(\varphi_a\) is the Lagrange-multiplier partner of the
+conservation law.  Varying the action with respect to \(\varphi_a\) is
+equivalent to the Ward identity because \(\delta B_{a\mu}=\partial_\mu
+\delta\varphi_a\).
 
-\section{Diffusion Action}
+\section{Quadratic Diffusion Action}
 
-For a fluid at rest with susceptibility \(\chi>0\), conductivity
-\(\sigma\geq0\), and diffusion constant
+Consider a homogeneous thermal state at temperature \(T>0\), with charge
+susceptibility \(\chi>0\) and conductivity \(\sigma\ge0\).  Define
 \[
-  D=\frac{\sigma}{\chi},
+  D=\frac{\sigma}{\chi}.
 \]
-the quadratic effective action for charge diffusion may be written
-\[
-  I_{\mathrm{diff}}
+The leading quadratic local action for the diffusive mode is
+\begin{equation}
+  I_{\rm diff}
   =
-  \int dt\,d^{d-1}x\,
+  \int dt\,d^dx\,
   \left[
   \chi B_{a0}B_{r0}
-  -\sigma B_{ai}\partial_i B_{r0}
+  -\sigma B_{ai}\partial_t B_{ri}
   +\ii T\sigma B_{ai}B_{ai}
   \right],
-\]
-up to terms with more derivatives or more powers of \(a\)-type fields.  The
-imaginary part is nonnegative:
-\[
-  \operatorname{Im} I_{\mathrm{diff}}
-  =
-  T\sigma\int dt\,d^{d-1}x\, B_{ai}B_{ai}\geq0 .
-\]
-This inequality is the finite-action expression of noise positivity.
-
-\section{Equation of Motion and Retarded Correlator}
-
-Set external sources to zero after variation.  Varying with respect to
-\(\varphi_a\) gives
-\[
-  \partial_t n-D\nabla^2 n=0,
+  \label{eq:sk-hydro-diffusion-action}
+\end{equation}
+up to terms with more derivatives or more powers of \(a\)-fields.  The
+current obtained by varying with respect to the \(a\)-type source at
+\(A_a=\varphi_a=0\) is
+\begin{equation}
+  n=\frac{\delta I_{\rm diff}}{\delta A_{a0}}
+  =\chi B_{r0},
   \qquad
-  n=\chi\,\partial_t\varphi_r .
-\]
-To compute the retarded density correlator, keep \(A_{a0}\) as the source
-for \(n\) and solve the linear equation in Fourier variables
-\((\omega,\mathbf k)\).  The result is
-\[
-  G_R^{nn}(\omega,\mathbf k)
+  j^i=\frac{\delta I_{\rm diff}}{\delta A_{ai}}
+  =-\sigma\partial_t B_{ri}.
+  \label{eq:sk-hydro-density-current-from-action}
+\end{equation}
+Using \(B_{r0}=A_{r0}+\partial_t\varphi_r\) and
+\(B_{ri}=A_{ri}+\partial_i\varphi_r\), this current may be written as
+\begin{equation}
+  j^i
   =
-  \frac{\chi D\mathbf k^2}{D\mathbf k^2-\ii\omega}.
-\]
-It has the hydrodynamic pole
+  -D\partial_i n+\sigma E_i,
+  \qquad
+  E_i=\partial_i A_{r0}-\partial_t A_{ri}.
+  \label{eq:sk-hydro-constitutive-current-with-source}
+\end{equation}
+The sign of \(E_i\) is fixed by the source convention in which a static
+positive \(A_{r0}\) increases the charge density by \(\chi A_{r0}\).
+
+\begin{proposition}[Diffusion equation from the \(a\)-phase]
+\label{prop:sk-hydro-diffusion-equation}
+At \(A_a=\varphi_a=0\), varying
+\eqref{eq:sk-hydro-diffusion-action} with respect to \(\varphi_a\) gives
+\begin{equation}
+  \partial_t n+\partial_i j^i=0,
+  \label{eq:sk-hydro-continuity-from-phase}
+\end{equation}
+with \(n\) and \(j^i\) as in
+\eqref{eq:sk-hydro-density-current-from-action}.  With external sources set
+to zero this becomes
+\begin{equation}
+  \partial_t n-D\nabla^2 n=0 .
+  \label{eq:sk-hydro-diffusion-equation}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Under \(\varphi_a\mapsto\varphi_a+\delta\varphi_a\),
 \[
-  \omega=-\ii D\mathbf k^2 .
+  \delta B_{a0}=\partial_t\delta\varphi_a,
+  \qquad
+  \delta B_{ai}=\partial_i\delta\varphi_a .
 \]
-The symmetric correlator follows from the quadratic \(a\)-field term and
-satisfies the fluctuation--dissipation relation of
+The terms linear in \(a\)-fields therefore vary as
+\[
+  \delta I_{\rm diff}
+  =
+  \int dt\,d^dx\,
+  \left[
+  \chi(\partial_t\delta\varphi_a)B_{r0}
+  -\sigma(\partial_i\delta\varphi_a)\partial_tB_{ri}
+  \right],
+\]
+because the quadratic \(B_aB_a\) term does not contribute at
+\(A_a=\varphi_a=0\).  After integrating by parts and discarding boundary
+terms compatible with the closed-time-path variational problem,
+\[
+  \delta I_{\rm diff}
+  =
+  -\int dt\,d^dx\,\delta\varphi_a
+  \left[
+  \partial_t(\chi B_{r0})
+  -\partial_i(\sigma\partial_tB_{ri})
+  \right].
+\]
+Using \eqref{eq:sk-hydro-density-current-from-action}, the Euler-Lagrange
+equation is exactly \eqref{eq:sk-hydro-continuity-from-phase}.  If
+\(A_{r\mu}=0\), then \(n=\chi\partial_t\varphi_r\) and
+\[
+  j^i=-\sigma\partial_i\partial_t\varphi_r
+  =-D\partial_i n,
+\]
+which gives \eqref{eq:sk-hydro-diffusion-equation}.
+\end{proof}
+
+\section{Density Response Kernel}
+
+The density response to a scalar source follows from the same saddle
+equation.  Set \(A_{ri}=0\) and use a Fourier mode
+\(\exp(-\ii\omega t+\ii\mathbf k\cdot\mathbf x)\).  The equation of motion
+from Proposition~\ref{prop:sk-hydro-diffusion-equation} gives
+\[
+  \chi(A_{r0}-\ii\omega\varphi_r)+\sigma k^2\varphi_r=0,
+\]
+because \(n=\chi(A_{r0}-\ii\omega\varphi_r)\) and
+\(\partial_i j^i=\sigma k^2(-\ii\omega)\varphi_r\).  Hence
+\[
+  \varphi_r
+  =
+  -\frac{\chi}{\sigma k^2-\ii\chi\omega}A_{r0}.
+\]
+Substituting into \(n=\chi(A_{r0}-\ii\omega\varphi_r)\) gives the
+source-response kernel
+\begin{equation}
+  K^R_{nn}(\omega,\mathbf k)
+  =
+  \frac{\delta n}{\delta A_{r0}}
+  =
+  \chi\,\frac{Dk^2}{Dk^2-\ii\omega}.
+  \label{eq:sk-hydro-density-response-kernel}
+\end{equation}
+It has the diffusive pole
+\begin{equation}
+  \omega=-\ii Dk^2 .
+  \label{eq:sk-hydro-density-response-pole}
+\end{equation}
+At fixed nonzero \(k\), the static limit is
+\[
+  K^R_{nn}(0,\mathbf k)=\chi.
+\]
+At \(k=0\) and nonzero \(\omega\), the kernel vanishes, expressing
+conservation of the total charge.  These two limits are distinct; the
+hydrodynamic pole is the interpolation between them.
+
+For a transverse vector source, \(k_iA_{ri}=0\) and \(A_{r0}=0\), the phase
+decouples at quadratic order and
+\[
+  j^i=-\sigma\partial_tA_{ri}.
+\]
+With the electric-field convention
+\eqref{eq:sk-hydro-constitutive-current-with-source}, this is Ohm response
+\(j^i=\sigma E_i\).  The same \(\sigma\) therefore appears in the diffusion
+constant, the vector-source response, and the noise coefficient below.
+
+\section{Noise Positivity and Langevin Form}
+
+The imaginary part of \eqref{eq:sk-hydro-diffusion-action} is
+\begin{equation}
+  \operatorname{Im} I_{\rm diff}
+  =
+  T\sigma\int dt\,d^dx\,B_{ai}B_{ai}.
+  \label{eq:sk-hydro-imaginary-action}
+\end{equation}
+It is nonnegative precisely when \(\sigma\ge0\).  The same term has a
+stochastic representation.  For each spatial component,
+\begin{equation}
+  \exp\!\left[
+    -T\sigma\int B_{ai}B_{ai}
+  \right]
+  =
+  \int D\xi\,
+  \exp\!\left[
+    -\int\frac{\xi_i\xi_i}{4T\sigma}
+    +\ii\int B_{ai}\xi_i
+  \right],
+  \label{eq:sk-hydro-hubbard-stratonovich}
+\end{equation}
+with normalization independent of \(B_a\).  Thus the noise satisfies
+\begin{equation}
+  \langle \xi_i(t,\mathbf x)\xi_j(t',\mathbf x')\rangle
+  =
+  2T\sigma\,\delta_{ij}
+  \delta(t-t')\delta^{(d)}(\mathbf x-\mathbf x').
+  \label{eq:sk-hydro-noise-correlator}
+\end{equation}
+After the Hubbard--Stratonovich transformation, varying \(\varphi_a\) gives
+the Langevin equation
+\begin{equation}
+  \partial_t n+\partial_i\bigl(-D\partial_i n+\sigma E_i+\xi_i\bigr)=0 .
+  \label{eq:sk-hydro-langevin-diffusion}
+\end{equation}
+This derivation fixes the factor of \(2T\sigma\) in the noise correlator
+from the same coefficient that governs the dissipative current.
+
+\section{Dynamical KMS at Quadratic Order}
+
+Assume the initial state is thermal with inverse temperature
+\(\beta=1/T\) and that the long-wavelength effective action has the
+classical dynamical KMS symmetry appropriate to the derivative order under
+consideration.  In the diffusion sector, the transformation needed at this
+order is
+\begin{equation}
+  B_{ai}(t,\mathbf x)
+  \mapsto
+  B_{ai}(-t,\mathbf x)
+  +\ii\beta\,\partial_tB_{ri}(-t,\mathbf x),
+  \label{eq:sk-hydro-classical-kms-ba}
+\end{equation}
+with the time-reversal parity of the spatial vector field included in
+\(\partial_tB_{ri}(-t,\mathbf x)\).  To see the coefficient constraint, keep
+one spatial component and write the dissipative-noise part as
+\[
+  L=-\sigma a x+\ii c a^2,
+  \qquad
+  a=B_{ai},
+  \qquad
+  x=\partial_tB_{ri}.
+\]
+Time reversal sends \(x\mapsto -x\), while the KMS shift sends
+\(a\mapsto a+\ii\beta x\).  The transformed expression is
+\[
+  L'
+  =
+  \sigma ax+\ii\sigma\beta x^2
+  +\ii c a^2-2c\beta ax-\ii c\beta^2x^2.
+\]
+Equality with \(L\), up to total derivatives and terms beyond the retained
+order, requires the coefficient of \(ax\) to match:
+\[
+  \sigma-2c\beta=-\sigma.
+\]
+The \(x^2\) terms then cancel by the same condition.  Therefore
+\begin{equation}
+  c=\frac{\sigma}{\beta}=T\sigma,
+  \label{eq:sk-hydro-kms-noise-coefficient}
+\end{equation}
+which is the coefficient in \eqref{eq:sk-hydro-diffusion-action}.  This is
+the local effective-action form of the fluctuation--dissipation relation of
 Chapter~\ref{ch:thermal-spectral-kubo-transport}.
 
-\section{Dynamical KMS Condition}
+\section{Relation to Stress-Tensor Hydrodynamics}
 
-For a thermal state at inverse temperature \(\beta\), the effective action
-must implement the KMS relation.  At the classical derivative level, this is
-encoded by the transformation
+For stress-tensor hydrodynamics, the charge phase fields are replaced by
+doubled maps from a fluid worldvolume into spacetime, together with doubled
+metrics and, when charges are present, the phases above.  The structural
+logic is the same:
 \[
-  \widetilde B_{r\mu}(t,\mathbf x)=B_{r\mu}(-t,\mathbf x),
-  \qquad
-  \widetilde B_{a\mu}(t,\mathbf x)
-  =
-  B_{a\mu}(-t,\mathbf x)
-  +\ii\beta\,\partial_t B_{r\mu}(-t,\mathbf x),
+\begin{aligned}
+  \text{gauge/diffeomorphism invariance}
+  &\Longrightarrow
+  \text{Ward identities},\\[2mm]
+  I[A,A]=0
+  &\Longrightarrow
+  \text{closed-time-path normalization},\\[2mm]
+  \operatorname{Im}I\ge0
+  &\Longrightarrow
+  \text{positive noise kernel},\\[2mm]
+  \text{dynamical KMS}
+  &\Longrightarrow
+  \text{dissipation--fluctuation relations}.
+\end{aligned}
 \]
-with time-reversal signs inserted according to tensor parity.  Requiring
-\[
-  I_{\mathrm{SK}}[\widetilde B_r,\widetilde B_a]
-  =
-  I_{\mathrm{SK}}[B_r,B_a]
-\]
-relates dissipative coefficients to noise coefficients.  In the diffusion
-action above it fixes the coefficient of \(\ii B_{ai}B_{ai}\) to
-\(T\sigma\).
+At first derivative order this reproduces the viscous stress tensor and
+noise kernel used in Chapter~\ref{ch:thermal-hydrodynamic-fluctuations}.
+At higher derivative order the classification becomes a local invariant
+problem for doubled fields subject to the constraints above.  A term belongs
+to the hydrodynamic effective action only after its frame dependence,
+contact-term ambiguity, KMS transformation, and positivity properties have
+been specified.
 
-\section{Beyond Diffusion}
+\section{The Microscopic Theorem Boundary}
 
-For stress-tensor hydrodynamics the variables include maps from a fluid
-worldvolume into spacetime, a doubled metric, and possible charge phases.  The
-same principles apply: doubled diffeomorphism invariance gives Ward
-identities, \(I[A,A]=0\) encodes unitarity, the imaginary part gives
-positivity, and dynamical KMS relates transport and noise.  Classifying all
-higher-derivative terms is a local cohomology problem in the doubled
-hydrodynamic variables.
+The construction in this chapter is an effective-field-theory statement.  A
+microscopic derivation from QFT would have to construct the real-time
+generating functional in a thermal state, take the thermodynamic limit,
+identify the hydrodynamic scaling limit, prove that the only nonanalytic
+long-wavelength modes are the conserved densities, and show that the local
+functional above is the asymptotic expansion of connected
+Schwinger--Keldysh correlators in a controlled topology.  The local
+positivity and KMS constraints are necessary consequences of the microscopic
+closed time path; they are not by themselves a proof of thermalization.
 
 \begin{openproblem}[Microscopic derivation of SK hydrodynamic action]
 \label{op:microscopic-sk-hydrodynamic-action}
 Starting from a continuum QFT with a KMS state, derive the hydrodynamic
 Schwinger--Keldysh effective action as a controlled long-wavelength limit of
 connected real-time correlators, including the topology in which the
-derivative expansion is asymptotic.
+derivative expansion is asymptotic, the treatment of contact terms, and the
+relation between source-response kernels and commutator spectral functions.
 \end{openproblem}
