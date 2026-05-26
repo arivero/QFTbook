@@ -10,6 +10,331 @@ as a maximally supersymmetric conformal gauge theory.  Here it is treated as a
 spectral problem: diagonalize the dilatation operator on the vector space of
 renormalized local operators.
 
+\section{SCFT Data Before Planarity}
+\label{sec:n4-scft-data-before-planarity}
+
+The planar spin chain is not the definition of the theory.  It is a useful
+coordinate system on a particular large-\(N\) sector of a four-dimensional
+superconformal gauge theory.  We first record the intrinsic quantum-field
+theory data that will remain meaningful at finite \(N\), away from any
+spin-chain limit.
+
+\begin{definition}[N=4 Yang-Mills field datum]
+\label{def:n4-yang-mills-field-datum}
+Fix a compact gauge group \(G\), Lie algebra \(\mathfrak g\), and invariant
+trace form \(\operatorname{tr}\) as in
+Chapter~\ref{ch:susy-gauge-theory}.  The four-dimensional \(\mathcal N=4\)
+Yang--Mills field variables consist of
+\[
+  A_\mu,\qquad
+  \Phi^I\ (I=1,\ldots,6),\qquad
+  \lambda^A_\alpha,\ \bar\lambda_{A\dot\alpha}\ (A=1,\ldots,4),
+\]
+all valued in \(\mathfrak g\).  The six real scalars transform in the vector
+representation of \(SO(6)_R\), equivalently in the antisymmetric
+representation of \(SU(4)_R\); the four Weyl fermions transform in the
+fundamental of \(SU(4)_R\).  In the monograph coupling convention the bosonic
+part of the Lorentzian action is
+\[
+\begin{aligned}
+  S_{\rm bos}
+  &=
+  \frac{1}{g_{\rm YM}^2}
+  \int d^4x\,\operatorname{tr}\!\left(
+  -\frac14 F_{\mu\nu}F^{\mu\nu}
+  -\frac12 D_\mu\Phi^I D^\mu\Phi^I
+  +\frac14[\Phi^I,\Phi^J][\Phi^I,\Phi^J]
+  \right)
+  \\
+  &\quad+
+  \frac{\theta}{32\pi^2}
+  \int d^4x\,
+  \operatorname{tr}(F_{\mu\nu}\widetilde F^{\mu\nu}) .
+\end{aligned}
+\]
+together with the unique Yukawa couplings compatible with the same
+\(\mathcal N=4\) supersymmetry and \(SU(4)_R\) action.  The complexified
+gauge coupling is
+\[
+  \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g_{\rm YM}^2}
+\]
+in the present trace convention.
+\end{definition}
+
+Equivalently, after choosing an \(\mathcal N=1\) subalgebra, the same field
+datum is an \(\mathcal N=1\) vector multiplet plus three adjoint chiral
+multiplets \(\Phi_1,\Phi_2,\Phi_3\), with cubic superpotential
+\[
+  W_{\mathcal N=4}
+  =
+  \sqrt2\,\operatorname{tr}\bigl(\Phi_1[\Phi_2,\Phi_3]\bigr),
+\]
+after the superpotential coupling has been tied to \(g_{\rm YM}\) by the
+enhanced supersymmetry.  This \(\mathcal N=1\) presentation is a bookkeeping
+device; the full theory has \(SU(4)_R\), not merely \(SU(3)\times U(1)\).
+
+\begin{proposition}[One-loop and holomorphic beta-function cancellation]
+\label{prop:n4-beta-one-loop-cancellation}
+Let \(C_2(\mathfrak g)\) denote the adjoint quadratic Casimir in the chosen
+trace convention.  The one-loop gauge beta-function coefficient of the
+\(\mathcal N=4\) field content vanishes.  In the \(\mathcal N=1\) Wilsonian
+coordinate, the one-loop holomorphic coefficient vanishes as well.
+\end{proposition}
+
+\begin{proof}
+In an ordinary four-dimensional gauge-theory convention, one vector, four
+adjoint Weyl fermions, and six adjoint real scalars contribute
+\[
+  b_0
+  =
+  C_2(\mathfrak g)
+  \left(
+  \frac{11}{3}
+  -4\frac{2}{3}
+  -6\frac{1}{6}
+  \right)
+  =
+  0 .
+\]
+In the \(\mathcal N=1\) presentation, the holomorphic Wilsonian coefficient
+is
+\[
+  b_0^{\rm hol}
+  =
+  3\,C_2(\mathfrak g)-\sum_{a=1}^3 T({\rm adj})
+  =
+  3\,C_2(\mathfrak g)-3\,C_2(\mathfrak g)
+  =
+  0 .
+\]
+The two calculations use different coupling coordinates, but both make the
+same elementary field-content cancellation explicit.
+\end{proof}
+
+\begin{quotedtheorem}[Finiteness and exact marginality of N=4 Yang-Mills]
+\label{qthm:n4-finiteness-exact-marginality}
+Assume a regulator and renormalization scheme in which the gauge Ward
+identity, locality, and the full \(\mathcal N=4\) supersymmetry Ward
+identities are implemented without anomaly.  Then the \(\mathcal N=4\)
+Yang--Mills coupling \(\tau\) is exactly marginal: the beta function vanishes
+to all orders, the stress tensor belongs to the conserved
+\(\mathfrak{psu}(2,2|4)\) current multiplet, and the quantum theory is a
+four-dimensional superconformal field theory.
+\end{quotedtheorem}
+
+The theorem is quoted rather than reproved because its complete proof is a
+renormalization theorem with regulator-level hypotheses.  The point needed
+for this chapter is more modest: the spin-chain spectral problem below is the
+planar, single-trace part of the dilatation operator of this SCFT.
+
+\begin{proposition}[Conformal anomaly coefficients]
+\label{prop:n4-central-charges}
+For \(G=SU(N)\),
+\[
+  a=c=\frac{\dim\mathfrak{su}(N)}{4}
+      =\frac{N^2-1}{4}.
+\]
+For \(G=U(N)\), including the free abelian multiplet,
+\[
+  a=c=\frac{N^2}{4}.
+\]
+\end{proposition}
+
+\begin{proof}
+The trace-anomaly coefficients of free conformal fields in four dimensions
+are
+\[
+  a_{\rm scalar}=\frac{1}{360},\quad
+  a_{\rm Weyl}=\frac{11}{720},\quad
+  a_{\rm vector}=\frac{31}{180},
+\]
+and
+\[
+  c_{\rm scalar}=\frac{1}{120},\quad
+  c_{\rm Weyl}=\frac{1}{40},\quad
+  c_{\rm vector}=\frac{1}{10}.
+\]
+One \(\mathcal N=4\) vector multiplet per generator of \(\mathfrak g\)
+contains six real scalars, four Weyl fermions, and one gauge vector.  Hence
+\[
+  a_{\rm multiplet}
+  =
+  6\frac{1}{360}
+  +4\frac{11}{720}
+  +\frac{31}{180}
+  =
+  \frac14,
+\]
+and
+\[
+  c_{\rm multiplet}
+  =
+  6\frac{1}{120}
+  +4\frac{1}{40}
+  +\frac{1}{10}
+  =
+  \frac14 .
+\]
+Multiplying by \(\dim\mathfrak g\) gives the displayed formulae.  The use of
+the free-field coefficients is justified because \(a\) and \(c\) sit in the
+same protected stress-tensor multiplet data along the exactly marginal
+\(\mathcal N=4\) conformal manifold.
+\end{proof}
+
+\section{Protected Operators and Elementary OPE Data}
+\label{sec:n4-protected-operators-ope-data}
+
+Let \(C_{I_1\cdots I_k}\) be a symmetric traceless tensor of \(SO(6)_R\):
+\[
+  C_{I_{\sigma(1)}\cdots I_{\sigma(k)}}=C_{I_1\cdots I_k},
+  \qquad
+  \delta^{I_aI_b}C_{I_1\cdots I_k}=0 .
+\]
+The corresponding single-trace half-BPS representative is
+\[
+  \mathcal O_C^{(k)}
+  =
+  C_{I_1\cdots I_k}\,
+  \operatorname{tr}\!\bigl(
+  \Phi^{I_1}\cdots\Phi^{I_k}
+  \bigr),
+\]
+with normal ordering and operator mixing understood in the renormalized
+local-operator space.  It transforms in the \(SU(4)_R\) representation
+\([0,k,0]\).
+
+\begin{quotedtheorem}[Half-BPS protection]
+\label{qthm:n4-half-bps-protection}
+In unitary four-dimensional \(\mathcal N=4\) superconformal Yang--Mills
+theory, a scalar superconformal primary in the half-BPS multiplet
+\([0,k,0]\) has exact scaling dimension
+\[
+  \Delta=k.
+\]
+The two- and three-point functions of half-BPS primaries, after fixing their
+normalization, are independent of the exactly marginal coupling.
+\end{quotedtheorem}
+
+This is a representation-theoretic and nonrenormalization statement.  It does
+not say that every gauge-invariant word with classical dimension \(k\) is
+protected.  The singlet
+\[
+  \mathcal K=\operatorname{tr}(\Phi^I\Phi^I)
+\]
+is the Konishi primary; it belongs to a long multiplet and acquires an
+anomalous dimension.  The traceless tensor
+\[
+  \mathcal O^{IJ}
+  =
+  \operatorname{tr}(\Phi^I\Phi^J)
+  -\frac16\delta^{IJ}\operatorname{tr}(\Phi^K\Phi^K)
+\]
+is the bottom component of the stress-tensor multiplet and has
+\(\Delta=2\).
+
+\begin{proposition}[Stress-tensor-multiplet normalization]
+\label{prop:n4-stress-tensor-multiplet-normalization}
+Choose an orthonormal basis \(T^a\) of \(\mathfrak g\) with
+\(\operatorname{tr}(T^aT^b)=\delta^{ab}\), and write
+\[
+  \langle\Phi^{I,a}(x)\Phi^{J,b}(0)\rangle_{\rm free}
+  =
+  \frac{g_{\rm YM}^2\,\delta^{IJ}\delta^{ab}}{4\pi^2 x^2}.
+\]
+Define
+\[
+  B^{IJ}=g_{\rm YM}^{-2}:\operatorname{tr}(\Phi^I\Phi^J):,
+  \qquad
+  O^{IJ}=B^{IJ}-\frac16\delta^{IJ}B^{KK},
+\]
+and let
+\[
+  P^{IJ,KL}
+  =
+  \frac12(\delta^{IK}\delta^{JL}+\delta^{IL}\delta^{JK})
+  -\frac16\delta^{IJ}\delta^{KL}
+\]
+be the projector onto symmetric traceless \(SO(6)\) tensors.  Then
+\[
+  \langle O^{IJ}(x)O^{KL}(0)\rangle_{\rm free}
+  =
+  \frac{\dim\mathfrak g}{8\pi^4 x^4}\,P^{IJ,KL}.
+\]
+Consequently
+\[
+  \mathbb O^{IJ}
+  =
+  \frac{2\sqrt2\,\pi^2}{\sqrt{\dim\mathfrak g}}\,O^{IJ}
+\]
+has the canonical two-point function
+\[
+  \langle\mathbb O^{IJ}(x)\mathbb O^{KL}(0)\rangle
+  =
+  \frac{P^{IJ,KL}}{x^4}.
+\]
+\end{proposition}
+
+\begin{proof}
+Wick contraction gives
+\[
+  \langle B^{IJ}(x)B^{KL}(0)\rangle_{\rm free}
+  =
+  \frac{\dim\mathfrak g}{16\pi^4x^4}
+  \bigl(\delta^{IK}\delta^{JL}+\delta^{IL}\delta^{JK}\bigr).
+\]
+Subtracting the trace in each pair projects both index pairs with \(P\).  The
+result is
+\[
+  \frac{\dim\mathfrak g}{16\pi^4x^4}
+  \left(
+  \delta^{IK}\delta^{JL}
+  +\delta^{IL}\delta^{JK}
+  -\frac13\delta^{IJ}\delta^{KL}
+  \right)
+  =
+  \frac{\dim\mathfrak g}{8\pi^4x^4}P^{IJ,KL}.
+\]
+Multiplication by \((2\sqrt2\pi^2)^2/\dim\mathfrak g\) gives the normalized
+two-point function.
+\end{proof}
+
+There is also a useful planar chiral-ring convention.  For \(G=SU(N)\), let
+\[
+  Z=\frac{1}{\sqrt2}(\Phi^5+\ii\Phi^6),
+  \qquad
+  \mathcal Z_J
+  =
+  \frac{(2\pi)^J}{g_{\rm YM}^J\sqrt{J\,N^J}}\,
+  :\operatorname{tr}(Z^J):
+\]
+in the leading large-\(N\) single-trace normalization.  Then
+\[
+  \langle \mathcal Z_J(x)\,\overline{\mathcal Z}_J(0)\rangle_{\rm pl}
+  =
+  \frac{1}{x^{2J}},
+\]
+and, for \(J=J_1+J_2\),
+\[
+  \bigl\langle
+  \mathcal Z_{J_1}(x_1)\mathcal Z_{J_2}(x_2)
+  \overline{\mathcal Z}_{J}(x_3)
+  \bigr\rangle_{\rm pl}
+  =
+  \frac{\sqrt{J_1J_2J}}{N}\,
+  \frac{1}{x_{13}^{2J_1}x_{23}^{2J_2}} .
+\]
+Equivalently, in the protected chiral OPE,
+\[
+  \mathcal Z_{J_1}(x)\mathcal Z_{J_2}(0)
+  =
+  \frac{\sqrt{J_1J_2(J_1+J_2)}}{N}\,
+  \mathcal Z_{J_1+J_2}(0)
+  +\text{descendants and multi-traces}
+\]
+at leading planar order.  Finite-\(N\) trace relations and multi-trace
+mixing are not suppressed in this formula; they are part of the exact
+protected-operator problem rather than the single-trace spin-chain problem.
+
 \section{Planar Limit and Operator Hilbert Space}
 
 Let the gauge group be \(SU(N)\) or \(U(N)\), with gauge coupling defined by
