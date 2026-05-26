@@ -8016,16 +8016,230 @@ has the deterministic normalization
   \|z-z'\|_{\mathfrak s}^{\,3\kappa}.
   \label{eq:spde-cn-scale-slack-from-x3}
 \end{equation}
-The same implication holds for cutoff differences after replacing
-\(\Pi_z^{(n)}X^3\) by
-\((\Pi_z^{(n+1)}-\Pi_z^{(n)})X^3\).  Hence the \(c_n\)-coordinate does not
-require an independent singular stochastic contraction: its scale slack, and
-its dyadic edge estimates once the corresponding \(X^3\) base-increment
-estimates are available, are heat-integration consequences of the \(X^3\)
-coordinate estimates.  What remains genuinely new in the strict negative
-sector is the BPHZ analysis of the nonlinear products \(XY\) and \(X^2Y\),
-where multiplication with the integrated field introduces additional
-contraction sectors.
+
+\begin{proposition}[\(\Gamma\)-coordinate input from heat integration of \(X^3\)]
+\label{prop:spde-gamma-coordinate-input-from-x3-heat-integration}
+Let \(K\subset\R^{1+3}\) be compact and let \(U\) be a compact neighborhood
+containing the unit parabolic neighborhoods of the points of \(K\).  Fix
+\[
+  0<\kappa<\frac1{14},
+  \qquad
+  \beta=\frac12-3\kappa,
+  \qquad
+  \sigma_{\mathfrak g}=3\kappa .
+\]
+Let \(T_n\), \(n\geq1\), be random distributions on \(U\).  Assume that the
+heat-kernel decomposition satisfies the hypotheses of
+Proposition~\ref{prop:spde-heat-integration-reexpansion-coefficient-estimate}
+with
+\[
+  \alpha=-\frac32-3\kappa,
+  \qquad
+  \sigma=3\kappa,
+  \qquad
+  \gamma=\beta+\sigma=\frac12 .
+\]
+For \(z,z'\in K\), define
+\[
+  c_n(z,z')=(\mathcal KT_n)(z')-(\mathcal KT_n)(z).
+\]
+Choose \(0<\theta\leq1/2\) and an even integer \(p\) such that
+\begin{equation}
+  3p\kappa>5,
+  \qquad
+  p\theta>10 .
+  \label{eq:spde-gamma-coordinate-input-moment-condition}
+\end{equation}
+Suppose that, for some constants \(B_{\mathfrak g}\),
+\(\widetilde B_{\mathfrak g}\), and \(\rho>0\),
+\begin{equation}
+  \sup_{n\geq1}
+  \bigl\|\|T_n\|_{-3/2;U,r}\bigr\|_{L^p(\Omega)}
+  \leq
+  B_{\mathfrak g},
+  \label{eq:spde-gamma-coordinate-input-x3-uniform}
+\end{equation}
+and
+\begin{equation}
+  \bigl\|\|T_{n+1}-T_n\|_{-3/2;U,r}\bigr\|_{L^p(\Omega)}
+  \leq
+  \widetilde B_{\mathfrak g}2^{-\rho n}.
+  \label{eq:spde-gamma-coordinate-input-x3-cauchy}
+\end{equation}
+Here \(\|\cdot\|_{-3/2;U,r}\) is the norm
+\eqref{eq:spde-reexpansion-negative-distribution-norm} with exponent
+\(-3/2\).
+
+For \(m\geq0\), let \(\mathcal X_{\Gamma,m}\) be the physical
+\(\Gamma\)-coordinate parameter space of
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}.  For
+\((z,h)\in\mathcal X_{\Gamma,m}\), set
+\[
+  z_h=z+\mathsf D_{2^{-m}}h,
+  \qquad
+  U_{n,\mathfrak g,m}(z,h)
+  =
+  \frac{|c_n(z,z_h)|}
+       {\|z-z_h\|_{\mathfrak s}^{\,\beta}},
+\]
+and
+\[
+  V_{n,\mathfrak g,m}(z,h)
+  =
+  \frac{|(c_{n+1}-c_n)(z,z_h)|}
+       {\|z-z_h\|_{\mathfrak s}^{\,\beta}} .
+  \label{eq:spde-gamma-coordinate-input-fields}
+\]
+Then the \(\mathfrak g\)-coordinate hypotheses of
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold
+with
+\[
+  D_{\mathfrak g}=5,
+  \qquad
+  d_{\mathfrak g}=10,
+  \qquad
+  \sigma_{\mathfrak g}=3\kappa,
+  \qquad
+  \varepsilon_{\mathfrak g}=p\theta-10>0 .
+  \label{eq:spde-gamma-coordinate-input-slacks}
+\]
+More explicitly, after choosing the nets of
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}, there
+are constants \(C_0,C_1\), independent of \(n,m,\ell\), such that
+\[
+  \mathbb E|U_{n,\mathfrak g,m}(u)|^p
+  \leq
+  C_0^pB_{\mathfrak g}^{\,p}2^{-3p\kappa m}
+  \qquad
+  (u\in\mathcal X_{\Gamma,m,0}),
+  \label{eq:spde-gamma-coordinate-input-base}
+\]
+\[
+  \mathbb E|U_{n,\mathfrak g,m}(v)-U_{n,\mathfrak g,m}(u)|^p
+  \leq
+  C_1^pB_{\mathfrak g}^{\,p}2^{-3p\kappa m}
+  2^{-(10+\varepsilon_{\mathfrak g})\ell}
+  \qquad
+  ((u,v)\in\mathcal E_{\Gamma,m,\ell}),
+  \label{eq:spde-gamma-coordinate-input-edge}
+\]
+and the same two estimates hold for \(V_{n,\mathfrak g,m}\) with
+\(B_{\mathfrak g}^{\,p}\) replaced by
+\(\widetilde B_{\mathfrak g}^{\,p}2^{-p\rho n}\).
+
+For the primitive dynamic \(\Phi^4_3\) reexpansion coefficient, one takes
+\[
+  T_n=\Pi_z^{(n)}X^3 ,
+\]
+which is independent of the base point \(z\) for this primitive Wick-cubic
+symbol.  When \(T_n\) is the cutoff Wick cubic \(:X_n^3:\), the uniform bound
+\eqref{eq:spde-gamma-coordinate-input-x3-uniform} is the scale-summed
+\(X^3\) consequence of
+Proposition~\ref{prop:spde-gaussian-negative-pi-coordinate-input} applied on
+the enlarged compact region \(U\).  The cutoff-Cauchy input
+\eqref{eq:spde-gamma-coordinate-input-x3-cauchy} is the corresponding
+cutoff-increment estimate for the Wick cubic.
+\end{proposition}
+
+\begin{proof}
+Let \((z,h)\in\mathcal X_{\Gamma,m}\) and put
+\[
+  z_h=z+\mathsf D_{2^{-m}}h,
+  \qquad
+  h_m=\|z-z_h\|_{\mathfrak s}.
+\]
+Since \(h\in A_{\mathfrak s}\), one has
+\[
+  2^{-m-1}\leq h_m\leq 2^{-m}.
+  \label{eq:spde-gamma-coordinate-input-annular-scale}
+\]
+Apply
+\eqref{eq:spde-reexpansion-normalized-scale-slack} with
+\(T=T_n\), \(\beta=1/2-3\kappa\), and \(\sigma=3\kappa\).  This gives
+\[
+  U_{n,\mathfrak g,m}(z,h)
+  \leq
+  C\|T_n\|_{-3/2;U,r}h_m^{3\kappa}
+  \leq
+  C\|T_n\|_{-3/2;U,r}2^{-3\kappa m}.
+  \label{eq:spde-gamma-coordinate-input-pointwise-base}
+\]
+Taking \(L^p\)-norms and using
+\eqref{eq:spde-gamma-coordinate-input-x3-uniform} proves
+\eqref{eq:spde-gamma-coordinate-input-base}.
+
+Let \(u=(z,h)\) and \(v=(z',h')\) be an edge in
+\(\mathcal E_{\Gamma,m,\ell}\).  The net construction gives
+\[
+  2^m\|z-z'\|_{\mathfrak s}+\|h-h'\|_{\mathfrak s}
+  \leq
+  C2^{-\ell}.
+  \label{eq:spde-gamma-coordinate-input-edge-distance}
+\]
+Set
+\[
+  a=z,\quad b=z+\mathsf D_{2^{-m}}h,\qquad
+  a'=z',\quad b'=z'+\mathsf D_{2^{-m}}h' .
+\]
+Then \(a,b,a',b'\in U\), their separations are in
+\([2^{-m-1},2^{-m}]\), and the edge parameter
+\[
+  \eta=
+  2^m(\|a-a'\|_{\mathfrak s}+\|b-b'\|_{\mathfrak s})
+\]
+is bounded by \(C2^{-\ell}\).  The normalized edge estimate
+\eqref{eq:spde-reexpansion-normalized-edge-bound} therefore gives
+\[
+  \left|
+    \frac{c_n(a,b)}{\|a-b\|_{\mathfrak s}^{\,\beta}}
+    -
+    \frac{c_n(a',b')}{\|a'-b'\|_{\mathfrak s}^{\,\beta}}
+  \right|
+  \leq
+  C_\theta\|T_n\|_{-3/2;U,r}2^{-3\kappa m}2^{-\theta\ell}.
+\]
+Since \(\bigl||A|-|B|\bigr|\leq |A-B|\), this implies
+\[
+  |U_{n,\mathfrak g,m}(v)-U_{n,\mathfrak g,m}(u)|
+  \leq
+  C_\theta\|T_n\|_{-3/2;U,r}2^{-3\kappa m}2^{-\theta\ell}.
+  \label{eq:spde-gamma-coordinate-input-pointwise-edge}
+\]
+After taking the \(p\)-th moment, this is exactly
+\eqref{eq:spde-gamma-coordinate-input-edge}, because
+\[
+  10+\varepsilon_{\mathfrak g}=p\theta .
+\]
+
+The same deterministic inequalities apply to \(T_{n+1}-T_n\), and
+\eqref{eq:spde-gamma-coordinate-input-x3-cauchy} supplies the additional
+factor \(2^{-\rho n}\) in \(L^p\).  The entropy exponents
+\[
+  D_{\mathfrak g}=5,\qquad d_{\mathfrak g}=10
+\]
+are those of
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy}.  The
+conditions \eqref{eq:spde-gamma-coordinate-input-moment-condition} say
+precisely that
+\[
+  \sigma_{\mathfrak g}=3\kappa>\frac{D_{\mathfrak g}}p,
+  \qquad
+  \varepsilon_{\mathfrak g}=p\theta-d_{\mathfrak g}>0 .
+\]
+Thus the scale-slack and edge-slack hypotheses in
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} hold.
+The deterministic Holder estimate
+\eqref{eq:spde-gamma-coordinate-input-pointwise-edge} also gives continuous
+sample paths whenever the norm \(\|T_n\|_{-3/2;U,r}\) is finite, which proves
+the required continuity on each compact coordinate space.
+\end{proof}
+
+Hence the \(c_n\)-coordinate does not require an independent singular
+stochastic contraction: its model-convergence input is a heat-integration
+consequence of the \(X^3\) coordinate estimates.  What remains genuinely new
+in the strict negative sector is the BPHZ analysis of the nonlinear products
+\(XY\) and \(X^2Y\), where multiplication with the integrated field
+introduces additional contraction sectors.
 
 \begin{proposition}[Finite-cutoff nonlinear coordinate decomposition]
 \label{prop:spde-nonlinear-negative-coordinate-wick-decomposition}

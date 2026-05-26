@@ -1215,6 +1215,33 @@ def check_gaussian_negative_pi_coordinate_input_arithmetic():
             raise AssertionError(f"Gaussian X^{k} scale-summed condition failed")
 
 
+def check_gamma_coordinate_heat_input_arithmetic():
+    # The reexpansion coefficient c_n is a Gamma-coordinate with base entropy
+    # D=Q=5 and edge entropy d=2Q=10.  Heat integration of X^3 leaves scale
+    # slack sigma_g=3 kappa.  With kappa=1/20, theta=1/2, and p=64, both
+    # scale and edge summability have positive excess.
+    qdim = 5
+    gamma_edge_entropy = 2 * qdim
+    kappa = Fraction(1, 20)
+    sigma_g = 3 * kappa
+    beta = Fraction(1, 2) - 3 * kappa
+    gamma = beta + sigma_g
+    theta = Fraction(1, 2)
+    p = 64
+
+    assert_equal(beta, Fraction(7, 20), "Gamma coordinate beta")
+    assert_equal(sigma_g, Fraction(3, 20), "Gamma coordinate scale slack")
+    assert_equal(gamma, Fraction(1, 2), "Gamma coordinate Holder exponent")
+    scale_excess = p * sigma_g - qdim
+    edge_excess = p * theta - gamma_edge_entropy
+    assert_equal(scale_excess, Fraction(23, 5), "Gamma coordinate scale excess")
+    assert_equal(edge_excess, 22, "Gamma coordinate edge excess")
+    if not scale_excess > 0:
+        raise AssertionError("Gamma coordinate scale-summed condition failed")
+    if not edge_excess > 0:
+        raise AssertionError("Gamma coordinate edge condition failed")
+
+
 def check_coordinate_to_model_convergence_arithmetic():
     # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
     # epsilon=2, every coordinate has geometric ratio 1/2.  The first
@@ -1540,6 +1567,7 @@ def main():
     check_negative_sector_scale_summed_model_convergence_arithmetic()
     check_negative_sector_physical_parameter_entropy_arithmetic()
     check_gaussian_negative_pi_coordinate_input_arithmetic()
+    check_gamma_coordinate_heat_input_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
@@ -1550,7 +1578,7 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

@@ -1027,3 +1027,12 @@ data maps.
   \(p\kappa>5\), \(p\theta>6\) needed to feed the negative-sector model
   convergence theorem.  The calculation-check companion verifies this
   entropy/slack arithmetic.
+- 2026-05-26 Gamma heat-coordinate input pass: promoted the \(c_n\)
+  reexpansion coefficient from a deterministic Schauder observation to a
+  theorem-level \(\Gamma\)-coordinate input.  The new proposition proves the
+  base and edge moment estimates from the \(X^3\) distribution norm, records
+  \(D_{\mathfrak g}=5\), \(d_{\mathfrak g}=10\),
+  \(\sigma_{\mathfrak g}=3\kappa\), and
+  \(\varepsilon_{\mathfrak g}=p\theta-10\), and states the cutoff-Cauchy
+  transfer separately.  The calculation-check companion verifies the
+  heat-coordinate entropy/slack arithmetic.
