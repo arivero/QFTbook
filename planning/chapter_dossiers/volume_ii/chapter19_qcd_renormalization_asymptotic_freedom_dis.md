@@ -147,6 +147,8 @@ The chapter must define and derive:
 - the soft and collinear continuity estimate for smeared detector observables;
 - the normalized \(e^+e^-\) energy-energy correlator and its contact term at
   zero opening angle;
+- the eventwise EEC zeroth and first moment sum rules in the center-of-mass
+  frame, including the exact coincident-detector contact weight;
 - multipoint jet energy correlators and energy-flow polynomials as polynomial
   functionals of calorimetric data;
 - DIS kinematics, inclusive final-state sums, the leading electromagnetic
@@ -257,6 +259,11 @@ The chapter must define and derive:
     for KLN/factorization finiteness at fixed perturbative order.
 19. The energy-energy correlator and energy-flow polynomials are formulated in
     terms of positive calorimetric measures rather than colored parton labels.
+19a. Including the coincident-detector contact term, the eventwise EEC
+     distribution has unit zeroth moment and vanishing first \(\cos\chi\)
+     moment in a color-singlet center-of-mass frame; removing the contact term
+     removes the weight \(\sum_r z_r^2\) from the separated-angle
+     distribution.
 20. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
@@ -340,6 +347,9 @@ The chapter must define and derive:
   calorimetric measures, smeared correlators, contact terms, soft/collinear
   continuity estimates, \(e^+e^-\) EEC normalization, and energy-flow
   polynomial definitions.
+- 2026-05-26 issue #519 pass: added the eventwise EEC sum-rule proposition
+  and exact finite-event calculation check for zeroth moment, first moment,
+  and contact weight.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable

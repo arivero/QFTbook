@@ -2808,6 +2808,87 @@ collinear operator product of energy-flow insertions.  Both limits require
 resummation because the separated-angle distribution contains large logarithms
 of \(1+\cos\chi\) or \(1-\cos\chi\), respectively.
 
+\begin{proposition}[EEC sum rules and the contact term]
+\label{prop:qcd-eec-sum-rules}
+Let \(X\) be a physical final state in the center-of-mass frame of a
+color-singlet source, with total energy \(Q\) and total spatial momentum zero.
+Set
+\[
+  z_r=\frac{p_r^0}{Q},
+  \qquad
+  \mathbf n_r=\frac{\mathbf p_r}{|\mathbf p_r|},
+  \qquad
+  \zeta_{rs}=\mathbf n_r\cdot\mathbf n_s .
+\]
+Define the eventwise two-point calorimetric distribution in
+\(\zeta=\cos\chi\) by
+\[
+  E_{2,X}(\zeta)
+  =
+  \sum_{r,s\in X}z_r z_s\,\delta(\zeta-\zeta_{rs}) .
+  \label{eq:eventwise-eec-zeta-distribution}
+\]
+Then, as distributional moments on \([-1,1]\),
+\[
+  \int_{-1}^{1} E_{2,X}(\zeta)\,\dd\zeta=1,
+  \qquad
+  \int_{-1}^{1}\zeta\,E_{2,X}(\zeta)\,\dd\zeta=0 .
+  \label{eq:eventwise-eec-first-sum-rules}
+\]
+The coincident-detector contact part at \(\zeta=1\) has weight
+\[
+  E_{2,X}^{\rm contact}(\zeta)
+  =
+  \left(\sum_{r\in X}z_r^2\right)\delta(\zeta-1).
+  \label{eq:eventwise-eec-contact-weight}
+\]
+Consequently the cross-section averaged EEC of
+\eqref{eq:qcd-eec-definition}, including the \(r=s\) terms, satisfies the same
+zeroth and first moment sum rules after division by \(\sigma_{\rm tot}\).
+\end{proposition}
+
+\begin{proof}
+The total-energy condition gives
+\[
+  \sum_{r\in X}z_r=1.
+\]
+Testing \eqref{eq:eventwise-eec-zeta-distribution} against the constant
+function \(1\) gives
+\[
+  \sum_{r,s}z_rz_s
+  =
+  \left(\sum_r z_r\right)^2
+  =
+  1.
+\]
+Testing against \(\zeta\) gives
+\[
+  \sum_{r,s}z_rz_s\,\mathbf n_r\cdot\mathbf n_s
+  =
+  \left|\sum_r z_r\mathbf n_r\right|^2.
+\]
+Since the source is in its center-of-mass frame,
+\[
+  \sum_r p_r^0\mathbf n_r=\sum_r\mathbf p_r=0,
+\]
+and the first moment vanishes.  The contact contribution is exactly the
+subsum with \(r=s\), for which \(\zeta_{rr}=1\).  Averaging the eventwise
+identities with the positive cross-section measure and dividing by
+\(\sigma_{\rm tot}\) preserves the two moment identities.
+\end{proof}
+
+\begin{remark}[Use of the sum rules]
+\label{rem:eec-sum-rules-use}
+The sum rules in Proposition~\ref{prop:qcd-eec-sum-rules} are statements about
+the nonperturbative detector observable, not about partons.  A fixed-order
+calculation, a resummed endpoint formula, a lattice-inspired approximation, or
+a parton shower that claims to represent the normalized EEC must specify how
+the \(\zeta=1\) contact term is treated and must satisfy the moment identities
+after the same convention is applied.  If the contact term is removed, the
+remaining separated-angle distribution no longer has unit integral by itself;
+the missing weight is \(\langle\sum_r z_r^2\rangle\).
+\end{remark}
+
 \subsection{Light-Ray Interpretation and Endpoint Regimes}
 
 The detector density \(\widehat{\mathcal E}(\mathbf n)\) is the QCD analogue

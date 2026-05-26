@@ -94,6 +94,9 @@ Current checks:
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions
   to the Hofman--Maldacena inequalities, and the vanishing of the integrated
   \(t_2,t_4\) deformations.
+- `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
+  energy-energy-correlator zeroth and first moment sum rules and the
+  coincident-detector contact weight in the QCD detector-observable chapter.
 - `constructive_scalar_spde_checks.py`: finite checks for the constructive
   scalar and singular-SPDE chapters, including Hermite/Wick coefficients for
   \(:\phi^2:\), \(:\phi^3:\), \(:\phi^4:\), finite Wiener-chaos isometry and
