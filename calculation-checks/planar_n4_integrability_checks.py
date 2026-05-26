@@ -433,6 +433,67 @@ def check_crossing_rhs_is_sheet_sensitive() -> None:
         raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
 
 
+def check_su2c_single_level_ii_nesting_step() -> None:
+    samples = (
+        (
+            2.0 + 0.7j,
+            1.3 - 0.2j,
+            -1.1 + 1.8j,
+            -0.4 + 0.9j,
+            0.8 - 0.3j,
+            -1.2 + 0.5j,
+            1.7 - 0.4j,
+            (0.2 + 1.5j, -2.0 + 0.4j),
+        ),
+        (
+            -0.6 + 2.4j,
+            -1.7 + 1.1j,
+            2.2 - 0.8j,
+            0.5 - 1.3j,
+            -0.7 + 0.6j,
+            1.4 + 0.2j,
+            -0.9 - 1.1j,
+            (3.1 + 0.7j, -1.6 - 0.9j),
+        ),
+    )
+
+    for x1_plus, x1_minus, x2_plus, x2_minus, a1, a2, a12, y_values in samples:
+        denominator = x2_plus - x1_minus
+        g12 = a12 * (x2_plus - x1_plus) / denominator
+        k12 = a12 * (a2 / a1) * (x1_plus - x1_minus) / denominator
+        l12 = a12 * (x2_minus - x1_minus) / denominator
+        h12 = a12 * (a1 / a2) * (x2_plus - x2_minus) / denominator
+
+        for y in y_values:
+            f1 = a1 / (y - x1_plus)
+            f2 = a2 / (y - x2_plus)
+            s1 = (y - x1_minus) / (y - x1_plus)
+            s2 = (y - x2_minus) / (y - x2_plus)
+
+            assert_close(
+                "single level-II nesting: first local equation",
+                f1 * l12 + f2 * s1 * h12,
+                s2 * f1 * a12,
+            )
+            assert_close(
+                "single level-II nesting: second local equation",
+                f1 * k12 + f2 * s1 * g12,
+                f2 * a12,
+            )
+            assert_close(
+                "single level-II nesting: K/G polynomial identity",
+                (x1_plus - x1_minus) * (y - x2_plus)
+                + (x2_plus - x1_plus) * (y - x1_minus),
+                (x2_plus - x1_minus) * (y - x1_plus),
+            )
+            assert_close(
+                "single level-II nesting: L/H polynomial identity",
+                (x2_minus - x1_minus) * (y - x2_plus)
+                + (x2_plus - x2_minus) * (y - x1_minus),
+                (x2_plus - x1_minus) * (y - x2_minus),
+            )
+
+
 def check_weak_dispersion_expansion() -> None:
     g = 1.0e-4
     for momentum in (0.4, 1.2, 2.7):
@@ -1102,6 +1163,7 @@ def main() -> None:
     check_central_extension_dispersion()
     check_zhukovsky_map_and_energy()
     check_crossing_rhs_is_sheet_sensitive()
+    check_su2c_single_level_ii_nesting_step()
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_bound_state_dispersion()

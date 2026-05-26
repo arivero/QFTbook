@@ -246,6 +246,18 @@
   audited exactly over rational arithmetic: endpoint values, endpoint
   derivatives, and the telescoping certificate behind the Baxter equation.
 
+## Comprehensive Development Continuation XI
+
+- Strengthened the Chapter 13 nested-ABA discussion by replacing the displayed
+  single level-II factor with a proved local nesting proposition.  In the
+  stringbook spin-chain orientation, the proof records the four mixed
+  `su(2|2)_c` amplitude ratios needed for one fermionic defect, writes the
+  two adjacent-transposition coefficient equations, and reduces them to
+  explicit polynomial identities in the auxiliary spectral parameter `y`.
+- Added the corresponding level-III/level-II scattering factor next to the
+  level-III rational self-scattering factor, with the convention-dependent
+  string-basis square-root factors isolated from the matrix-ratio algebra.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -268,6 +280,8 @@
   values, `x^pm` relation, and corrected energy formula;
 - non-invariance of the stringbook-orientation crossing RHS under a naive
   sheet-free `x -> 1/x` substitution;
+- single level-II nesting in the stringbook spin-chain orientation: the two
+  adjacent-transposition equations and their cleared polynomial identities;
 - weak-coupling dispersion expansion;
 - BMN scaling limit;
 - bound-state shortening dispersion;

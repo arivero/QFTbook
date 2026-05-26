@@ -472,22 +472,131 @@ Chapter~\ref{ch:integrable-nested-bethe-ansatz-matrix-bethe-yang}; their
 physical meaning is different because these auxiliary roots organize
 polarizations of magnons on a gauge-theory trace.
 
-The first nesting step can be displayed without the full
+The first nesting step can be derived without the full
 \(\mathfrak{psu}(2,2|4)\) bookkeeping.  Start with \(M\) level-I magnons
 \(\phi_1(p_k)\).  A single level-II fermionic excitation with spectral
-parameter \(y\) has coefficients
+parameter \(y\) is a wave packet
+\[
+  \ket{\Psi_{\rm II}(y)}
+  =
+  \sum_{k=1}^M
+  C_k(y;\{p_j\})\,
+  \ket{\phi_1(p_1)\cdots\psi(p_k)\cdots\phi_1(p_M)} ,
+\]
+where the omitted flavour index of \(\psi\) is a spectator.  Write
+\(x_i^\pm=x^\pm(p_i)\) and let \(\mathsf a_i=\mathsf a(p_i)\) be the
+nonzero representation coefficient which converts a bosonic vacuum magnon
+to the chosen fermionic excitation in the spin-chain basis.  Normalize the
+two-body matrix part by the boson-boson amplitude \(A_{12}\).  In the
+stringbook orientation of the \(\mathfrak{su}(2|2)_{\rm c}\) intertwiner,
+the four mixed amplitudes needed for one fermionic defect obey
+\begin{equation}
+\begin{aligned}
+  \frac{G_{12}}{A_{12}}
+  &=
+  \frac{x_2^+-x_1^+}{x_2^+-x_1^-},
+  &
+  \frac{K_{12}}{A_{12}}
+  &=
+  \frac{\mathsf a_2}{\mathsf a_1}
+  \frac{x_1^+-x_1^-}{x_2^+-x_1^-},\\
+  \frac{L_{12}}{A_{12}}
+  &=
+  \frac{x_2^--x_1^-}{x_2^+-x_1^-},
+  &
+  \frac{H_{12}}{A_{12}}
+  &=
+  \frac{\mathsf a_1}{\mathsf a_2}
+  \frac{x_2^+-x_2^-}{x_2^+-x_1^-}.
+\end{aligned}
+  \label{eq:planar-n4-mixed-amplitude-ratios-for-nesting}
+\end{equation}
+These are ratios of matrix amplitudes, so the scalar dressing factor and
+reciprocal scalar-factor conventions cancel.
+
+\begin{proposition}[Single level-II nesting step]
+\label{prop:planar-n4-single-level-ii-nesting-step}
+Assume \(x_i^\pm\), \(\mathsf a_i\), and the denominators in
+\eqref{eq:planar-n4-mixed-amplitude-ratios-for-nesting} are nonzero.  The
+one-defect ansatz
 \[
   C_k(y;\{p_j\})
   =
-  f(y,p_k)\prod_{\ell<k}S^{{\rm II},{\rm I}}(y,p_\ell),
+  f(y,p_k)\prod_{\ell<k}S^{{\rm II},{\rm I}}(y,p_\ell)
+\]
+is compatible with every adjacent transposition of level-I magnons if
+\begin{equation}
+  f(y,p)=\frac{\mathsf a(p)}{y-x^+(p)},
   \qquad
   S^{{\rm II},{\rm I}}(y,p)
   =
-  \frac{y-x^-(p)}{y-x^+(p)}
-\]
-up to the square-root braiding factor of the string basis.  A level-III root
-\(w\) diagonalizes the remaining \(SU(2)\) matrix problem and scatters by
+  \frac{y-x^-(p)}{y-x^+(p)} .
+  \label{eq:planar-n4-single-level-ii-data}
+\end{equation}
+The normalization of \(f\) may be multiplied by a function of \(y\) alone;
+this rescales the one-defect state and has no Bethe-equation content.
+\end{proposition}
+
+\begin{proof}
+It is enough to check a two-site exchange, because the many-site statement is
+then obtained by multiplying the same local move along the chain.  Let
 \[
+  f_i=f(y,p_i),
+  \qquad
+  S_i=S^{{\rm II},{\rm I}}(y,p_i).
+\]
+Before exchanging magnons \(1\) and \(2\), the defect can sit on the first
+or second site with coefficients \(f_1\) and \(f_2S_1\).  After applying the
+matrix S-matrix to this two-site block, equality with the ansatz in the
+exchanged order gives the two coefficient equations
+\begin{equation}
+\begin{aligned}
+  f_1L_{12}+f_2S_1H_{12}
+  &=
+  S_2f_1A_{12},\\
+  f_1K_{12}+f_2S_1G_{12}
+  &=
+  f_2A_{12}.
+\end{aligned}
+  \label{eq:planar-n4-single-level-ii-local-equations}
+\end{equation}
+These equations are the algebraic content of moving a single auxiliary
+fermion through two neighbouring physical magnons.
+
+Substitute \eqref{eq:planar-n4-mixed-amplitude-ratios-for-nesting} and
+\eqref{eq:planar-n4-single-level-ii-data}.  The second equation in
+\eqref{eq:planar-n4-single-level-ii-local-equations} reduces, after
+clearing the common factor
+\(A_{12}\mathsf a_2/((y-x_1^+)(x_2^+-x_1^-))\), to
+\[
+  (x_1^+-x_1^-)(y-x_2^+)
+  +(x_2^+-x_1^+)(y-x_1^-)
+  =
+  (x_2^+-x_1^-)(y-x_1^+).
+\]
+The first equation reduces in the same way to
+\[
+  (x_2^--x_1^-)(y-x_2^+)
+  +(x_2^+-x_2^-)(y-x_1^-)
+  =
+  (x_2^+-x_1^-)(y-x_2^-).
+\]
+Both are polynomial identities in \(y\).  Therefore the local exchange is
+consistent, and repeated adjacent exchanges give the displayed coefficient
+formula for an arbitrary ordering of the level-I magnons.
+\end{proof}
+
+The square-root braiding factors of the string basis multiply
+\eqref{eq:planar-n4-single-level-ii-data} by convention-dependent one-body
+factors; they cancel from the local identities above after the corresponding
+basis change is applied to the mixed amplitudes.  A level-III root \(w\)
+diagonalizes the remaining \(SU(2)\) matrix problem and scatters by
+\[
+  S^{{\rm III},{\rm II}}(w,y)
+  =
+  \frac{w-y-y^{-1}-\ii/(2g)}
+       {w-y-y^{-1}+\ii/(2g)},
+  \qquad
   S^{{\rm III},{\rm III}}(w_1,w_2)
   =
   \frac{w_1-w_2+\ii/g}{w_1-w_2-\ii/g}.

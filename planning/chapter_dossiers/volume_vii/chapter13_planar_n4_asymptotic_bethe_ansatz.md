@@ -20,6 +20,8 @@ the monograph's proof-boundary language.
 - `S_mat`, `S_0`: matrix and scalar parts of the two-body magnon S-matrix.
 - `A_{12},...,L_{12}`: `su(2|2)_c` matrix S-matrix amplitudes.
 - `y,w`: level-II and level-III nested Bethe roots.
+- `f(y,p)`, `S^{II,I}(y,p)`: one-defect nesting coefficient and the
+  level-II/level-I scattering factor in the stringbook spin-chain basis.
 - `E_Q,p`: bound-state energy and momentum.
 - `f(g)`: large-spin cusp scaling function.
 
@@ -52,7 +54,13 @@ the monograph's proof-boundary language.
   suppressed.  This is deliberately distinguished from thermodynamic Bethe
   ansatz.
 - Gives the `SU(2)` all-loop asymptotic Bethe equations and cyclicity.
-- Displays the first nested Bethe step and level-III rational scattering.
+- Proves the first single-defect nested Bethe step in the stringbook
+  orientation: the mixed `su(2|2)_c` amplitude ratios imply
+  `f(y,p)=a(p)/(y-x^+(p))` and
+  `S^{II,I}(y,p)=(y-x^-(p))/(y-x^+(p))` by the two adjacent-transposition
+  coefficient equations.
+- Displays the level-III rational scattering factors following this nesting
+  step.
 - Proves weak-coupling reduction to the one-loop Bethe equation and dispersion
   normalization.
 - Adds bound-state dispersion and the large-spin cusp-scaling function with
@@ -72,6 +80,9 @@ crossed Zhukovsky sheets.
   corrected energy formula.
 - It also checks that the stringbook-orientation crossing RHS is not
   invariant under a naive sheet-free `x -> 1/x` substitution.
+- It checks the single level-II nesting step by evaluating the two local
+  coefficient equations and their cleared polynomial identities for
+  non-singular complex samples.
 - The same script now checks BMN scaling, bound-state dispersion, and weak
   coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
 
