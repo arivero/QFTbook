@@ -1712,6 +1712,111 @@ formula does not double count overlapping local parts, and combine the gain
 with the dyadic convolution bound in
 Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound}.
 
+\begin{proposition}[One-loop relative-scale gap for a local subtraction]
+\label{prop:spde-one-loop-relative-scale-gap}
+Let \((\mathbb R^D,\mathfrak s)\) be a parabolically scaled space with
+homogeneous dimension \(Q=|\mathfrak s|\).  Let \(a,b,\theta>0\).  Suppose
+that dyadic kernels \(K_i,L_j\), \(i,j\geq0\), obey
+\[
+  \operatorname{supp}K_i\subset B_{\mathfrak s}(0,A2^{-i}),\qquad
+  |K_i(h)|\leq C_K2^{(Q-a)i},\qquad
+  \|K_i\|_{L^1}\leq C_K'2^{-ai},
+\]
+and
+\[
+  \operatorname{supp}L_j\subset B_{\mathfrak s}(0,A2^{-j}),\qquad
+  |L_j(h)|\leq C_L2^{(Q-b)j}.
+\]
+Assume also that, whenever \(j\leq i\) and
+\(\|h\|_{\mathfrak s}\leq A2^{-i}\),
+\begin{equation}
+  |L_j(h)-L_j(0)|
+  \leq
+  C_L'2^{(Q-b)j}2^{-\theta(i-j)} .
+  \label{eq:spde-one-loop-holder-scale-bound}
+\end{equation}
+Define
+\[
+  T_{i,j}^{\rm loc}
+  =
+  \int K_i(h)\bigl(L_j(h)-L_j(0)\bigr)\,\dd h
+  \quad(j\leq i),
+\]
+and
+\[
+  T_{i,j}^{\rm off}
+  =
+  \int K_i(h)L_j(h)\,\dd h
+  \quad(j>i).
+\]
+Then
+\begin{equation}
+  |T_{i,j}^{\rm loc}|
+  \leq
+  C_K'C_L'\,
+  2^{(Q-a-b)j}2^{-(a+\theta)(i-j)}
+  \quad(j\leq i),
+  \label{eq:spde-one-loop-local-sector-gap}
+\end{equation}
+and
+\begin{equation}
+  |T_{i,j}^{\rm off}|
+  \leq
+  C_KC_L V_A\,
+  2^{(Q-a-b)i}2^{-b(j-i)}
+  \quad(j>i),
+  \label{eq:spde-one-loop-off-sector-gap}
+\end{equation}
+where
+\[
+  V_A=\sup_{0<\rho\leq A}|B_{\mathfrak s}(0,\rho)|\,\rho^{-Q}.
+\]
+\end{proposition}
+
+\begin{proof}
+Assume first that \(j\leq i\).  On the support of \(K_i\), the Holder-scale
+bound \eqref{eq:spde-one-loop-holder-scale-bound} applies.  Therefore
+\[
+\begin{aligned}
+  |T_{i,j}^{\rm loc}|
+  &\leq
+  \|K_i\|_{L^1}C_L'2^{(Q-b)j}2^{-\theta(i-j)}        \\
+  &\leq
+  C_K'C_L'
+  2^{-ai}2^{(Q-b)j}2^{-\theta(i-j)}                  \\
+  &=
+  C_K'C_L'2^{(Q-a-b)j}2^{-(a+\theta)(i-j)} .
+\end{aligned}
+\]
+This is \eqref{eq:spde-one-loop-local-sector-gap}.
+
+Assume next that \(j>i\).  The integrand is supported where \(L_j\) is
+supported.  Hence
+\[
+\begin{aligned}
+  |T_{i,j}^{\rm off}|
+  &\leq
+  C_KC_L2^{(Q-a)i+(Q-b)j}
+  |B_{\mathfrak s}(0,A2^{-j})|                       \\
+  &\leq
+  C_KC_LV_A
+  2^{(Q-a)i+(Q-b)j-Qj}                               \\
+  &=
+  C_KC_LV_A2^{(Q-a-b)i}2^{-b(j-i)} .
+\end{aligned}
+\]
+This proves \eqref{eq:spde-one-loop-off-sector-gap}.
+\end{proof}
+
+For the one-loop dynamic \(\Phi^4_3\) contraction, \(Q=5\) and the heat and
+covariance kernels both have order \(2\), so \(a=b=2\).  The base factor
+\(2^{(Q-a-b)k}=2^k\), where \(k=\min(i,j)\), is the local mass-coordinate
+divergence.  Proposition~\ref{prop:spde-one-loop-relative-scale-gap} proves
+that the two relative-scale sectors have strictly positive gap exponents:
+\(2+\theta\) in the subtracted sector \(j\leq i\) and \(2\) in the
+off-diagonal sector \(j>i\).  Thus the relative scales are summable once the
+local coordinate has been separated.
+
 \begin{theorem}[Multiscale sector summability for coordinate kernels]
 \label{thm:spde-multiscale-sector-kernel-summability}
 Let \(R\geq1\) and let \(\eta_1,\ldots,\eta_R\) be positive real numbers.

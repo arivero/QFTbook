@@ -82,6 +82,11 @@ data.
   geometric factor in the multiscale sector summability theorem.
 - `f_{r,a,q}`, `f_{n,a,q}`: sector kernel contribution and finite-cutoff
   kernel entering the chaos expansion of a model coordinate.
+- `T_{i,j}^{loc}`, `T_{i,j}^{off}`: one-loop local-subtraction and
+  off-diagonal scale-sector integrals used as the first concrete BPHZ
+  relative-scale estimate.
+- `a`, `b`, `theta`, `V_A`: kernel orders, Holder exponent, and parabolic
+  ball-volume constant in the one-loop relative-scale proposition.
 
 ## Claim Ledger
 
@@ -177,6 +182,11 @@ data.
   \(G=\prod_h(1-2^{-\eta_h})^{-1}\) and cutoff-increment bounds with shell
   factor \(\tilde G\), hence the deterministic kernel hypotheses of the
   finite-chaos moment corollary.
+- Proves a one-loop relative-scale gap estimate for local subtraction:
+  after subtracting the local value in the \(j\leq i\) sector the scale gap
+  is \(a+\theta\), while the off-diagonal \(j>i\) sector has gap \(b\).
+  For the dynamic \(\Phi^4_3\) one-loop contraction this leaves the expected
+  mass-coordinate divergence \(2^k\) and makes the relative scales summable.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -294,3 +304,10 @@ data maps.
   bounds a cutoff shell by a union over the active maximal gap.  The
   calculation-check companion verifies \(G\), \(\tilde G\), the sharp and
   relaxed increment bounds, and the shell union bound in an exact sample.
+- 2026-05-26 issue #582 one-loop sector continuation: the chapter now proves
+  the first concrete relative-scale estimate used by the BPHZ tree analysis:
+  the one-loop local subtraction gains a positive scale gap in the
+  \(j\leq i\) sector and the \(j>i\) sector is summable by support-volume
+  decay.  The calculation-check companion verifies the dynamic
+  \(\Phi^4_3\) exponents \(Q=5\), \(a=b=2\), and a sample Holder exponent
+  \(\theta=1\).

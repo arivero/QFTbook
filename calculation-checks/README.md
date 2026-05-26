@@ -108,7 +108,9 @@ Current checks:
   plus the finite-coordinate arithmetic that converts those compact
   suprema into the random-model Cauchy constants, and the multiscale-sector
   geometric factors used to pass from positive gap exponents to uniform and
-  cutoff-increment kernel bounds.
+  cutoff-increment kernel bounds, together with the one-loop relative-scale
+  gap arithmetic for the local and off-diagonal sectors of the dynamic
+  \(\Phi^4_3\) prototype.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

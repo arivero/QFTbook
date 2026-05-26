@@ -563,6 +563,35 @@ def check_multiscale_sector_kernel_summability_arithmetic():
         raise AssertionError("sector shell union bound failed")
 
 
+def check_one_loop_relative_scale_gap_arithmetic():
+    # Dynamic Phi^4_3 one-loop prototype: Q=5 and both heat/covariance
+    # kernels have order 2.  With Holder exponent theta=1, the subtracted
+    # j <= i sector has gap a+theta=3 and the j > i sector has gap b=2.
+    qdim = Fraction(5)
+    a = Fraction(2)
+    b = Fraction(2)
+    theta = Fraction(1)
+    base_exponent = qdim - a - b
+    assert_equal(base_exponent, Fraction(1), "one-loop base divergence exponent")
+
+    i = 7
+    j = 4
+    local_exponent = base_exponent * j - (a + theta) * (i - j)
+    assert_equal(local_exponent, Fraction(-5), "one-loop local-sector exponent")
+    assert_equal(Fraction(2) ** local_exponent, Fraction(1, 32), "one-loop local-sector bound")
+
+    i_off = 4
+    j_off = 7
+    off_exponent = base_exponent * i_off - b * (j_off - i_off)
+    assert_equal(off_exponent, Fraction(-2), "one-loop off-sector exponent")
+    assert_equal(Fraction(2) ** off_exponent, Fraction(1, 4), "one-loop off-sector bound")
+
+    local_gap_sum = Fraction(1, 1) / (1 - Fraction(1, 2) ** (a + theta))
+    off_gap_sum = (Fraction(1, 2) ** b) / (1 - Fraction(1, 2) ** b)
+    assert_equal(local_gap_sum, Fraction(8, 7), "one-loop local gap sum")
+    assert_equal(off_gap_sum, Fraction(1, 3), "one-loop off gap sum")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -584,7 +613,8 @@ def main():
     check_dyadic_net_supremum_upgrade_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, and multiscale-sector checks passed.")
+    check_one_loop_relative_scale_gap_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":
