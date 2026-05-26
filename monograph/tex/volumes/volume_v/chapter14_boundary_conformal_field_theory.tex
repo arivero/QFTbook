@@ -411,6 +411,106 @@ replaced by the classifying algebra associated to the chosen Frobenius
 algebra object; in a nonrational theory there need not be a
 finite-dimensional classifying algebra at all.
 
+\section{Bulk-Boundary Normalization and Direct Sums}
+\label{sec:bcft-bulk-boundary-normalization-direct-sums}
+
+The boundary state coefficient, the disk one-point function, and the
+identity term in the bulk-boundary OPE are often denoted by the same symbol.
+That is harmless only after the two-point metric and the identity
+normalization have been fixed.  We record the convention because otherwise
+Cardy formulas can appear to disagree by factors of \(S_{0i}\).
+
+Assume that bulk spinless primaries \(\phi_i\) are normalized on the plane by
+\begin{equation}
+  \langle \phi_i(z,\bar z)\phi_j(0,0)\rangle
+  =
+  \frac{D_{ij}}{|z|^{4h_i}},
+  \qquad
+  D_{ij}=0\ \text{unless}\ h_i=h_j,
+  \label{eq:bcft-bulk-two-point-metric}
+\end{equation}
+with inverse matrix \(D^{ij}\).  For a boundary condition \(a\), write the
+upper-half-plane one-point function as
+\begin{equation}
+  \langle \phi_i(x+\ii y,x-\ii y)\rangle_a
+  =
+  \frac{U^a_i}{(2y)^{2h_i}},
+  \qquad y>0 .
+  \label{eq:bcft-disk-one-point-lowered}
+\end{equation}
+If the boundary identity \(\mathbf 1_a\) has expectation value \(1\), the
+identity term in the bulk-boundary OPE is
+\begin{equation}
+  \phi_i(x+\ii y,x-\ii y)
+  =
+  R^a_{i0}(2y)^{-2h_i}\mathbf 1_a+\cdots ,
+  \qquad
+  R^a_{i0}=U^a_i .
+  \label{eq:bcft-bulk-boundary-identity-coefficient}
+\end{equation}
+Equivalently, if one raises the bulk label by defining
+\[
+  U_a{}^j=D^{ji}U^a_i ,
+\]
+then the same coefficient is
+\begin{equation}
+  R^a_{i0}=D_{ij}U_a{}^j .
+  \label{eq:bcft-r-u-one-point-relation}
+\end{equation}
+Thus \eqref{eq:cardy-state-diagonal} determines a physical one-point
+function only after the Ishibashi overlap normalization and the bulk
+two-point metric have both been declared.
+
+\begin{proposition}[Direct sums and Chan--Paton matrix units]
+\label{prop:bcft-direct-sum-chan-paton}
+Let \(a,b\) be boundary conditions in a unitary BCFT, and suppose finite
+direct sums of boundary conditions are allowed.  For
+\[
+  A=a^{\oplus n},\qquad B=b^{\oplus m},
+\]
+with no additional boundary fields beyond the direct-sum completion, the
+open Hilbert space and boundary fields are
+\begin{equation}
+  \Hilb_{AB}
+  \simeq
+  \Hilb_{ab}\otimes \operatorname{Mat}_{n\times m}(\mathbb C).
+  \label{eq:bcft-chan-paton-hilbert-space}
+\end{equation}
+If \(E_{rs}\) denotes the standard matrix unit, boundary OPEs obey
+\begin{equation}
+  (\psi_\alpha\otimes E_{rs})(x)
+  (\psi_\beta\otimes E_{tu})(0)
+  =
+  \delta_{st}
+  \bigl(\psi_\alpha(x)\psi_\beta(0)\bigr)\otimes E_{ru}.
+  \label{eq:bcft-chan-paton-ope}
+\end{equation}
+Consequently
+\begin{equation}
+  Z_{A B}^{\mathrm{open}}(q)=nm\,Z_{ab}^{\mathrm{open}}(q),
+  \qquad
+  g_{a^{\oplus n}}=n\,g_a .
+  \label{eq:bcft-chan-paton-annulus-g}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+A direct sum boundary condition is a finite biproduct in the boundary
+category.  An interval with left boundary \(a^{\oplus n}\) and right
+boundary \(b^{\oplus m}\) therefore has one copy of \(\Hilb_{ab}\) for each
+ordered pair of summands.  Choosing the standard bases of the multiplicity
+spaces identifies this direct sum with
+\eqref{eq:bcft-chan-paton-hilbert-space}.  Locality on the boundary forces
+composition to match endpoint labels: an operator carrying the right endpoint
+index \(s\) can compose with a second operator whose left endpoint is \(t\)
+only when \(s=t\).  This is precisely the multiplication rule for matrix
+units, giving \eqref{eq:bcft-chan-paton-ope}.  Taking the graded trace over
+\(\Hilb_{ab}\otimes\operatorname{Mat}_{n\times m}(\mathbb C)\) gives the
+factor \(nm\) in the open annulus.  In the closed channel, the boundary state
+of \(a^{\oplus n}\) is the sum of \(n\) identical boundary states, so its
+vacuum overlap is \(n g_a\).
+\end{proof}
+
 \section{Compact Free Boson Boundaries}
 
 Let \(X\sim X+2\pi R\) be a compact free boson with

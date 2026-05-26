@@ -419,6 +419,71 @@ are related by local target diffeomorphisms, \(B\)-field gauge
 transformations, and finite local tensor redefinitions.
 \end{definition}
 
+\begin{proposition}[Finite redefinitions and beta-vector fields]
+\label{prop:nlsm-finite-redefinition-beta-bracket}
+Use condensed notation \(g^A\) for the collection of local couplings
+\((G_{ij},B_{ij},\Phi)\), including the target point and tensor indices in
+the label \(A\).  Let a finite local scheme change be
+\begin{equation}
+  g'^A
+  =
+  g^A+F^A(g),
+  \qquad
+  F^A=O((\alpha')^r),
+  \label{eq:nlsm-finite-redefinition}
+\end{equation}
+where \(F\) is a covariant local tensor functional modulo the redundant
+diffeomorphism and \(B\)-gauge directions.  If
+\(\beta=\beta^A(g)\partial_A\) is the beta-vector field in the original
+coordinates, then, to first order in \(F\),
+\begin{equation}
+  \beta'^A(g')
+  =
+  \beta^A(g')
+  +
+  [\beta,F]^A(g')
+  +
+  O(F^2),
+  \qquad
+  [\beta,F]^A
+  =
+  \beta^B\partial_BF^A
+  -
+  F^B\partial_B\beta^A .
+  \label{eq:nlsm-beta-finite-redefinition-bracket}
+\end{equation}
+Since the leading sigma-model beta field starts at order \(\alpha'\), a
+finite counterterm of order \((\alpha')^r\) first affects the displayed
+representative one order later, at order \((\alpha')^{r+1}\).
+\end{proposition}
+
+\begin{proof}
+Differentiate \eqref{eq:nlsm-finite-redefinition} with respect to
+\(\log\mu\) at fixed bare fields:
+\[
+  \beta'^A(g')
+  =
+  \frac{\dd g'^A}{\dd\log\mu}
+  =
+  \beta^A(g)+\partial_BF^A(g)\,\beta^B(g)+O(F^2).
+\]
+To express the result in the new coordinate \(g'\), invert
+\eqref{eq:nlsm-finite-redefinition} to first order,
+\[
+  g^A=g'^A-F^A(g')+O(F^2),
+\]
+and expand
+\[
+  \beta^A(g)
+  =
+  \beta^A(g')-F^B(g')\partial_B\beta^A(g')+O(F^2).
+\]
+Combining the two displayed equations gives
+\eqref{eq:nlsm-beta-finite-redefinition-bracket}.  The same computation is
+valid for local tensor fields once the index \(A\) is interpreted as a
+DeWitt index and \(\partial_A\) as the corresponding functional derivative.
+\end{proof}
+
 \begin{proposition}[Hatted beta functions and redundant directions]
 \label{prop:nlsm-hatted-beta-redundant-directions}
 Let \(\beta^G,\beta^B\) be coordinate beta functions in a chosen local

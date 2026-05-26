@@ -162,6 +162,40 @@ def check_boundary_entropy() -> None:
     assert_equal("free g squared", entropy_squares[2], ONE)
 
 
+def check_chan_paton_direct_sums() -> None:
+    for n in range(1, 5):
+        for m in range(1, 5):
+            dimension = n * m
+            annulus_multiplier = sum(1 for _r in range(n) for _s in range(m))
+            assert_equal(
+                f"Chan-Paton annulus multiplicity {n}x{m}",
+                annulus_multiplier,
+                dimension,
+            )
+
+    for n in range(1, 5):
+        free_g_squared = S[2][0] * S[2][0] / S[0][0]
+        direct_sum_g_squared = Qsqrt2(Fraction(n * n)) * free_g_squared
+        assert_equal(
+            f"direct-sum boundary entropy square for {n} free Ising branes",
+            direct_sum_g_squared,
+            Qsqrt2(Fraction(n * n)),
+        )
+
+    for r in range(3):
+        for s in range(3):
+            for t in range(3):
+                for u in range(3):
+                    product_nonzero = s == t
+                    expected_target = (r, u) if product_nonzero else None
+                    actual_target = (r, u) if s == t else None
+                    assert_equal(
+                        f"matrix-unit product E_{r}{s} E_{t}{u}",
+                        actual_target,
+                        expected_target,
+                    )
+
+
 def check_compact_boson_zero_mode_duality() -> None:
     samples = [
         (0, winding)
@@ -188,8 +222,9 @@ def main() -> None:
     check_fusion_associativity()
     check_cardy_fusion_ring_characters()
     check_boundary_entropy()
+    check_chan_paton_direct_sums()
     check_compact_boson_zero_mode_duality()
-    print("All BCFT Cardy, sewing, and compact-boson boundary checks passed.")
+    print("All BCFT Cardy, sewing, Chan-Paton, and compact-boson checks passed.")
 
 
 if __name__ == "__main__":

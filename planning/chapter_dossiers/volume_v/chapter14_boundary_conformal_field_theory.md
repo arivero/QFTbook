@@ -39,6 +39,15 @@
 - Corrects the disk one-point/fusion-character normalization: the fusion
   character is `lambda_a(i)=S_ia/S_0a`, while the Cardy disk coefficient is
   `B_a^i = S_0a lambda_a(i)/sqrt(S_0i)`.
+- Fixes the relation among boundary-state coefficients, disk one-point
+  coefficients, and the identity term in the bulk-boundary OPE:
+  `R^a_{i0}=U^a_i=D_{ij}U_a^j` after the bulk two-point metric and identity
+  normalization are declared.
+- Develops finite direct sums of boundary conditions as Chan--Paton
+  multiplicity spaces, with
+  `H_{a^n b^m}=H_ab tensor Mat_{n x m}(C)`, matrix-unit OPE
+  multiplication, annulus multiplicity `nm`, and boundary entropy
+  `g_{a^n}=n g_a`.
 - Works out compact free-boson Neumann and Dirichlet boundary states,
   including oscillator gluing, zero-mode restrictions, Wilson-line/position
   phases, and T-duality exchange.
@@ -67,11 +76,17 @@
 7. The Verlinde eigenvalue `S_ia/S_0a` is the fusion-ring character; the
    Cardy disk one-point coefficient differs by the two-point normalization
    factor `S_0a/sqrt(S_0i)`.
-8. Compact-boson Neumann gluing forces `m=0`, while Dirichlet gluing forces
+8. The coefficient `R^a_{i0}` in the bulk-boundary OPE equals the lowered
+   disk one-point coefficient; raising the bulk label inserts the two-point
+   metric `D_{ij}`.
+9. Direct-sum boundary conditions compose by matrix units, so annulus
+   multiplicities scale by `nm` and boundary entropy is additive under finite
+   sums.
+10. Compact-boson Neumann gluing forces `m=0`, while Dirichlet gluing forces
    `w=0`; T-duality exchanges these constraints.
-9. The Ising Cardy states reproduce the open spectra of fixed/free boundary
+11. The Ising Cardy states reproduce the open spectra of fixed/free boundary
    conditions.
-10. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
+12. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
    rederived in full here.
 
 ## Figures
@@ -84,8 +99,9 @@
 
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
   `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
-  fusion-ring characters, boundary entropy squares, and compact-boson
-  zero-mode exchange under T-duality.
+  fusion-ring characters, boundary entropy squares, Chan--Paton direct-sum
+  multiplicities and matrix-unit multiplication, and compact-boson zero-mode
+  exchange under T-duality.
 
 ## Remaining Obligations
 

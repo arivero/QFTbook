@@ -626,6 +626,25 @@ the OPE normalization
   C_+(\alpha_1)V_{\alpha_1-b/2}
   +C_-(\alpha_1)V_{\alpha_1+b/2}.
 \]
+The connection matrix used here is the standard one for the Gauss equation:
+\begin{align}
+  {}_2F_1(A,B;C;z)
+  &=
+  \frac{\Gamma(C)\Gamma(C-A-B)}
+       {\Gamma(C-A)\Gamma(C-B)}
+  {}_2F_1(A,B;A+B-C+1;1-z)
+  \notag\\
+  &\quad+
+  (1-z)^{C-A-B}
+  \frac{\Gamma(C)\Gamma(A+B-C)}
+       {\Gamma(A)\Gamma(B)}
+  {}_2F_1(C-A,C-B;C-A-B+1;1-z).
+  \label{eq:liouville-hypergeometric-connection-formula}
+\end{align}
+For generic momenta, none of the denominator gamma functions in
+\eqref{eq:liouville-hypergeometric-connection-formula} is at a pole.  When a
+parameter hits a pole, the equation is understood by meromorphic
+continuation, and logarithmic resonances must be treated separately.
 \end{proposition}
 
 \begin{proof}
@@ -641,10 +660,19 @@ the OPE weight differences
 After factoring these powers and the analogous elementary factor at \(1\),
 the remaining second-order Fuchsian equation is the hypergeometric equation
 with parameters \(A,B,C\) above.  The standard connection formula for
-Gauss hypergeometric functions expresses the same two-dimensional solution
-space in the \(z=1\) fusion basis.  Crossing symmetry of the four-point
-function with one degenerate insertion identifies the products of OPE
-coefficients in the two bases, giving
+Gauss hypergeometric functions,
+\eqref{eq:liouville-hypergeometric-connection-formula}, expresses the same
+two-dimensional solution space in the \(z=1\) fusion basis.  The exponents
+at \(z=1\) are
+\[
+  b\alpha_2,
+  \qquad
+  b\alpha_2+C-A-B=1+b^2-b\alpha_2,
+\]
+which are the two OPE exponents for fusing \(V_{-b/2}\) with
+\(V_{\alpha_2}(1)\).  Crossing symmetry of the four-point function with one
+degenerate insertion identifies the products of OPE coefficients in the two
+bases, giving
 \eqref{eq:liouville-degenerate-shift-ratio}.
 
 It remains to compute the right hand side in the DOZZ normalization.  Let

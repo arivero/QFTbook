@@ -59,6 +59,9 @@ boundaries rather than importing the appendix exposition.
   hypergeometric blocks, identifies the two local fusion exponents, and
   derives the explicit gamma-product DOZZ `b`-shift ratio from the
   `Upsilon_b` shift relation.
+- Displays the Gauss hypergeometric connection formula used in the BPZ
+  crossing argument, verifies the `z=1` fusion exponents, and states the
+  genericity/meromorphic-continuation boundary for resonant parameters.
 - Records an open problem for functorial/sewing closure and cross-links the
   Kontsevich-Segal ledger.
 
@@ -77,13 +80,17 @@ boundaries rather than importing the appendix exposition.
 - The same script checks the formal `b`-power bookkeeping in the explicit
   DOZZ `b`-shift ratio, including the cancellation of all external-momentum
   powers and the final `b^{-4}` factor.
+- The same script now also checks the affine parameter algebra in the
+  hypergeometric connection matrix: the `z=1` exponent gap and the gamma
+  arguments `C-A`, `C-B`, and `A+B-C`.
 
 ## Remaining Obligations
 
-- Add an independent check of the hypergeometric connection matrix and the
-  degenerate OPE normalization entering the same shift equation.
 - Add detailed conformal-block recursion examples beyond the first BPZ
   equation.
+- Further refine the degenerate OPE normalization by deriving the
+  screening-integral coefficient \(C_-(\alpha)\) directly in the chapter
+  convention.
 - Develop Liouville boundary states only after the BCFT chapter is added; do
   not fold black-hole entropy or HKS/SSS material into this chapter.
 - Complete the full functorial sewing comparison with the Volume IV
@@ -99,3 +106,6 @@ boundaries rather than importing the appendix exposition.
   basis, continuous conformal-block decomposition, `P`-basis DOZZ
   representative, degenerate hypergeometric BPZ block derivation, and explicit
   gamma-product DOZZ `b`-shift ratio.
+- 2026-05-26 assumption-ledger pass: displayed the hypergeometric connection
+  formula and added a calculation check for the connection-matrix exponent and
+  gamma-argument algebra.

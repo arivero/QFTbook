@@ -141,6 +141,37 @@ ba1 = AffineExponent.symbol("ba1")
 ba2 = AffineExponent.symbol("ba2")
 ba3 = AffineExponent.symbol("ba3")
 
+# BPZ hypergeometric parameters after substituting bQ=t+1.
+A = ba1 + ba2 + ba3 - one_exp - t_exp.scale(Fraction(3, 2))
+B = ba1 + ba2 - ba3 - t_exp.scale(Fraction(1, 2))
+C = ba1.scale(2) - t_exp
+
+require_affine_equal(
+    "hypergeometric z=1 exponent gap",
+    C - A - B,
+    one_exp + t_exp - ba2.scale(2),
+)
+require_affine_equal(
+    "second z=1 BPZ exponent",
+    ba2 + C - A - B,
+    one_exp + t_exp - ba2,
+)
+require_affine_equal(
+    "connection gamma argument C-A",
+    C - A,
+    ba1 - ba2 - ba3 + one_exp + t_exp.scale(Fraction(1, 2)),
+)
+require_affine_equal(
+    "connection gamma argument C-B",
+    C - B,
+    ba1 - ba2 + ba3 - t_exp.scale(Fraction(1, 2)),
+)
+require_affine_equal(
+    "connection gamma argument A+B-C",
+    A + B - C,
+    ba2.scale(2) - one_exp - t_exp,
+)
+
 numerator_shift = (
     one_exp.scale(2)
     + t_exp.scale(2)
@@ -183,4 +214,4 @@ require_affine_equal(
     -one_exp.scale(4),
 )
 
-print("All Liouville BPZ and DOZZ-shift bookkeeping checks passed.")
+print("All Liouville BPZ, connection-matrix, and DOZZ-shift checks passed.")
