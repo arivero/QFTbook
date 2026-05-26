@@ -108,6 +108,10 @@ Current checks:
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising
   chain.
+- `kinetic_theory_checks.py`: finite algebra checks for the Volume X kinetic
+  theory chapter, including Bose/Fermi detailed balance, the H-theorem
+  integrand, linearized collision-operator positivity and null vectors, and
+  the relaxation-time shear-viscosity integral.
 - `large_n_topology_checks.py`: finite checks for the 't Hooft
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph

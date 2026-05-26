@@ -2,34 +2,65 @@
 
 ## Source Position
 
-Volume X now develops the controlled quasiparticle limit between thermal QFT
-and hydrodynamics.  The chapter prepares later anomalous transport and
-nonequilibrium chapters by defining the Boltzmann and collision data from
-QFT inputs.
+Volume X develops kinetic theory as the controlled quasiparticle bridge
+between real-time thermal QFT and hydrodynamics.  This chapter now defines
+the on-shell measure and collision kernel precisely, derives detailed
+balance and the entropy inequality, identifies hydrodynamic Ward identities
+as collision-invariant moments, and explains how transport coefficients
+arise from the inverse linearized collision operator.
 
 ## Notation Inventory
 
-- `f_a(t,x,p)`, `E_a(p)`, `v_a(p)`: species distribution, on-shell energy,
-  and velocity.
-- `Gamma_a`: quasiparticle damping width.
-- `C_a[f]`: collision term.
-- `d Pi_i`, `M_ab_to_cd`: invariant phase-space measure and on-shell
-  scattering amplitude.
-- `s_kin`: kinetic entropy density.
+- `D=d+1`: spacetime and spatial dimensions.
+- `p^mu=(E_a,p)`, `E_a(p)`: on-shell momentum and energy.
+- `dPi_a`: Lorentz-invariant on-shell measure
+  \(d^d p/((2\pi)^d2E_a)\).
+- `f_a(X,p)`: species distribution function from a quasiparticle pole.
+- `Gamma_a`: damping width controlling the quasiparticle approximation.
+- `eta_a`: statistics sign, `+1` for bosons and `-1` for fermions.
+- `C_a`, `C_a^(t)`: covariant and coordinate-time collision terms.
+- `M_ab_to_cd`: on-shell scattering amplitude in the scattering-volume
+  normalization.
+- `S_kin^mu`: kinetic entropy current.
 - `T^{mu nu}`, `J_A^mu`: kinetic stress tensor and conserved current.
 - `L_ab`: linearized collision operator.
+- `tau_R`: relaxation time in the explicitly marked controlled
+  approximation.
 
 ## Claim Ledger
 
-- Defines quasiparticle distributions by Wigner projection onto narrow
-  spectral peaks.
-- States the relativistic Boltzmann equation and the `2 to 2` collision
-  integral with Bose/Fermi factors.
-- Derives entropy production positivity from the elementary logarithmic
-  inequality.
-- Derives hydrodynamic Ward identities as collision-invariant moments.
-- Defines the linearized collision operator and records the gauge-theory soft
-  scale obligations.
+1. A phase-space density is the coefficient of a positive-energy
+   quasiparticle pole in a Wigner-transformed two-point function, under the
+   narrow-width and slow-variation hypotheses.
+2. The covariant Boltzmann equation is \(p^\mu\partial_\mu f_a=C_a[f]\);
+   the coordinate-time collision term is \(C_a^{(t)}=C_a/E_a\).
+3. The \(2\to2\) collision kernel carries the invariant measure and
+   Bose/Fermi factors displayed in the chapter.
+4. The identity \(1+\eta f=e^{\beta(-u_\mu p^\mu-\mu q)}f\), together with
+   energy-momentum and charge conservation, proves detailed balance.
+5. The kinetic entropy current has nonnegative divergence because the
+   symmetrized \(2\to2\) integrand is
+   \((X-Y)\log(X/Y)\ge0\).
+6. Stress-tensor and current Ward identities are the collision-invariant
+   moments of the Boltzmann equation.
+7. The linearized collision operator is positive on the inner product
+   weighted by \(f^{(0)}(1+\eta f^{(0)})\), with quadratic form
+   \((\chi_1+\chi_2-\chi_3-\chi_4)^2\).
+8. The null space of the linearized operator is spanned by conserved
+   collision invariants under the stated connectivity hypothesis.
+9. The relaxation-time worked example gives
+   \(\eta_{\rm RTA}=4p_{\rm therm}\tau_R/5\) for one massless classical
+   species in three spatial dimensions, as a controlled model on the shear
+   subspace.
+10. Gauge-theory kinetic theory requires matching hard quasiparticles,
+    soft collective gauge fields, and ultrasoft hydrodynamic modes in a
+    common regulator and source convention.
+
+## Calculation Checks
+
+- `calculation-checks/kinetic_theory_checks.py` verifies detailed balance,
+  the H-theorem integrand, linearized collision positivity and null vectors,
+  and the relaxation-time shear-viscosity integral.
 
 ## Figure Ledger
 

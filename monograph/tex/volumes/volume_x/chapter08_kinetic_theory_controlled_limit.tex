@@ -3,159 +3,424 @@
 
 \ConventionsMixed
 
-Kinetic theory is an effective description of weakly disturbed many-particle
-states in terms of phase-space densities.  Its QFT content lies in deriving
-the quasiparticle variables, collision terms, and hydrodynamic moments from
-real-time correlation functions under explicit scale assumptions.
+Kinetic theory is the long-wavelength, weakly off-equilibrium description in
+which selected real-time QFT correlators are represented by on-shell
+phase-space densities.  The construction has three inputs: a quasiparticle
+spectral regime, an on-shell collision kernel extracted from microscopic
+scattering or finite-temperature amplitudes, and a hierarchy separating the
+microscopic correlation scale from the spacetime scale of variation.  This
+chapter develops the relativistic Boltzmann framework with the assumptions
+kept explicit, derives detailed balance and the entropy inequality, and
+records the precise point at which kinetic theory becomes hydrodynamics.
 
-\section{Quasiparticle Distribution}
-
-Let \(a\) label a particle species with on-shell energy
+Let spacetime dimension be \(D=d+1\), with spatial momentum
+\(\mathbf p\in\mathbb R^d\).  For species \(a\),
 \[
+  p^\mu=(E_a(\mathbf p),\mathbf p),
+  \qquad
   E_a(\mathbf p)=\sqrt{\mathbf p^2+m_a^2}.
 \]
-A one-particle distribution function
-\[
-  f_a(t,\mathbf x,\mathbf p)
-\]
-is defined by a Wigner transform of a two-point function, projected onto a
-quasiparticle pole and averaged over spacetime scales long compared with the
-microscopic correlation length.  The projection is justified when the
-spectral function has a narrow peak:
-\[
-  \Gamma_a(\mathbf p)\ll E_a(\mathbf p),
-\]
-where \(\Gamma_a\) is the damping width.
-
-\section{Boltzmann Equation}
-
-In the absence of external forces, the kinetic equation is
-\[
-  \left(\partial_t+\mathbf v_a(\mathbf p)\cdot\nabla_{\mathbf x}\right)
-  f_a(t,\mathbf x,\mathbf p)
+The Lorentz-invariant on-shell measure used below is
+\begin{equation}
+  d\Pi_a(p)
   =
-  C_a[f](t,\mathbf x,\mathbf p),
-\]
-where
+  \frac{d^d\mathbf p}{(2\pi)^d\,2E_a(\mathbf p)}.
+  \label{eq:kinetic-onshell-measure}
+\end{equation}
+The factor \(2p^\mu d\Pi_a\) has the standard equal-time interpretation:
 \[
-  \mathbf v_a(\mathbf p)=\nabla_{\mathbf p}E_a(\mathbf p).
+  2E_a\,d\Pi_a=\frac{d^d\mathbf p}{(2\pi)^d}.
 \]
-For \(2\to2\) scattering, the collision term has the form
+Internal degeneracies may be included by replacing the species label \(a\)
+with a refined label, or by inserting an explicit degeneracy \(g_a\).
+
+\section{Quasiparticle Distribution From Spectral Data}
+
+Let \(G^<_a(x,y)\) be a Wightman two-point function for a microscopic field
+or for a gauge-invariant quasiparticle interpolating operator in a regulated
+theory.  Introduce center and relative coordinates
 \[
-\begin{aligned}
-  C_a[f](p_1)
+  X=\frac{x+y}{2},\qquad s=x-y,
+\]
+and define the Wigner transform
+\[
+  G^<_a(X,p)=\int d^Ds\,e^{\ii p\cdot s}G^<_a(X+s/2,X-s/2).
+\]
+The quasiparticle distribution \(f_a(X,\mathbf p)\) is the coefficient of
+the positive-energy pole contribution when the spectral density has the form
+\begin{equation}
+  \rho_a(X,p)
+  =
+  2\pi Z_a(X,\mathbf p)\operatorname{sgn}(p^0)
+  \delta\!\left((p^0)^2-E_a(\mathbf p)^2\right)
+  +\rho^{\rm off}_a(X,p),
+  \label{eq:kinetic-narrow-spectral-form}
+\end{equation}
+with the off-shell remainder small in the topology used for the gradient
+expansion.  Equivalently, near \(p^0=E_a(\mathbf p)\),
+\[
+  G^<_a(X,p)
+  =
+  2\pi Z_a(X,\mathbf p)
+  f_a(X,\mathbf p)
+  \delta(p^0-E_a(\mathbf p))
+  +\text{controlled off-shell remainder}.
+\]
+The pole approximation requires
+\begin{equation}
+  \Gamma_a(\mathbf p)\ll E_a(\mathbf p),
+  \qquad
+  \Gamma_a(\mathbf p)\,\ell_{\rm variation}\ll1,
+  \label{eq:kinetic-quasiparticle-scale-assumptions}
+\end{equation}
+where \(\Gamma_a\) is the damping width and
+\(\ell_{\rm variation}\) is the spacetime scale over which \(f_a\) changes.
+These inequalities are hypotheses on the state and on the coupling regime;
+they are not consequences of conservation laws alone.
+
+\section{Boltzmann Equation and Collision Kernel}
+
+The covariant Boltzmann equation is
+\begin{equation}
+  p^\mu\partial_\mu f_a(X,\mathbf p)=\mathcal C_a[f](X,\mathbf p).
+  \label{eq:kinetic-covariant-boltzmann}
+\end{equation}
+In coordinate time this is
+\[
+  \left(\partial_t+\mathbf v_a\cdot\nabla_{\mathbf x}\right)f_a
+  =
+  C^{(t)}_a[f],
+  \qquad
+  \mathbf v_a=\nabla_{\mathbf p}E_a,
+  \qquad
+  C^{(t)}_a=\frac{\mathcal C_a}{E_a}.
+\]
+
+For \(a(p_1)b(p_2)\to c(p_3)d(p_4)\), define
+\[
+  \eta_a=
+  \begin{cases}
+    +1,& a\ \text{bosonic},\\
+    -1,& a\ \text{fermionic}.
+  \end{cases}
+\]
+The \(2\to2\) contribution to \(\mathcal C_a\) is
+\begin{align}
+  \mathcal C_a(p_1)
   &=
-  \frac{1}{2E_1}
-  \sum_{bcd}
-  \int d\Pi_2\,d\Pi_3\,d\Pi_4\,
-  (2\pi)^d\delta^{(d)}(p_1+p_2-p_3-p_4)
+  \frac12
+  \sum_{bcd}\int d\Pi_b(p_2)d\Pi_c(p_3)d\Pi_d(p_4)\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
   |\mathcal M_{ab\to cd}|^2
-\\
+  \nonumber\\
   &\quad\times
   \Big[
-  f_c(p_3)f_d(p_4)(1\pm f_a(p_1))(1\pm f_b(p_2))
+  f_c(p_3)f_d(p_4)
+  (1+\eta_a f_a(p_1))(1+\eta_b f_b(p_2))
+  \nonumber\\
+  &\qquad\qquad
   -
-  f_a(p_1)f_b(p_2)(1\pm f_c(p_3))(1\pm f_d(p_4))
-  \Big],
-\end{aligned}
-\]
-with invariant measure
-\[
-  d\Pi_i=\frac{d^{d-1}\mathbf p_i}{(2\pi)^{d-1}2E_i}.
-\]
-The sign is plus for bosons and minus for fermions.  The matrix element is
-the on-shell scattering amplitude in the normalization of the scattering
-chapters.
+  f_a(p_1)f_b(p_2)
+  (1+\eta_c f_c(p_3))(1+\eta_d f_d(p_4))
+  \Big].
+  \label{eq:kinetic-2to2-collision}
+\end{align}
+The factor \(1/2\) converts the coordinate-time normalization to the
+covariant equation \eqref{eq:kinetic-covariant-boltzmann}; equivalently,
+\(C^{(t)}_a\) carries the familiar prefactor \(1/(2E_1)\).  Symmetry factors
+for identical particles are included in the definition of
+\(|\mathcal M|^2\) and in the channel sum.
 
-\section{Detailed Balance And Entropy}
+The matrix element in \eqref{eq:kinetic-2to2-collision} is the on-shell
+scattering amplitude in the normalization of the scattering chapters, after
+the regulator and medium corrections relevant at the kinetic scale have been
+specified.  In gauge theories this last clause is essential because soft
+exchange and collinear splitting can contribute at the same parametric order
+as \(2\to2\) hard scattering.
 
-The Bose-Einstein and Fermi-Dirac distributions
-\[
-  f_a^{\mathrm{eq}}(\mathbf p)
+\section{Detailed Balance}
+
+The local equilibrium distribution is
+\begin{equation}
+  f_a^{(0)}(X,\mathbf p)
   =
-  \frac{1}{\exp[\beta(E_a(\mathbf p)-\mu_a)]\mp1}
+  \frac{1}{\exp[\beta(X)(-u_\mu(X)p^\mu-\mu_A(X)q^A_a)]-\eta_a}.
+  \label{eq:kinetic-local-equilibrium-distribution}
+\end{equation}
+At a fixed point \(X\), the identity
+\begin{equation}
+  1+\eta_a f_a^{(0)}
+  =
+  e^{\beta(-u_\mu p^\mu-\mu_Aq^A_a)}f_a^{(0)}
+  \label{eq:kinetic-one-plus-eta-f}
+\end{equation}
+implies detailed balance.  Indeed, for an allowed reaction satisfying
+\[
+  p_1+p_2=p_3+p_4,
+  \qquad
+  q_a^A+q_b^A=q_c^A+q_d^A,
 \]
-annihilate the collision term when the chemical potentials obey the conserved
-charge constraints for each reaction.  Define the kinetic entropy density
+the loss product
 \[
-  s_{\mathrm{kin}}
+  X_{12\to34}
   =
-  -\sum_a\int\frac{d^{d-1}\mathbf p}{(2\pi)^{d-1}}
+  f_a^{(0)}(p_1)f_b^{(0)}(p_2)
+  (1+\eta_c f_c^{(0)}(p_3))(1+\eta_d f_d^{(0)}(p_4))
+\]
+equals the gain product
+\[
+  Y_{34\to12}
+  =
+  f_c^{(0)}(p_3)f_d^{(0)}(p_4)
+  (1+\eta_a f_a^{(0)}(p_1))(1+\eta_b f_b^{(0)}(p_2)).
+\]
+This is an algebraic consequence of
+\eqref{eq:kinetic-one-plus-eta-f}: the exponential multiplying
+\(f_1f_2f_3f_4\) is the same on the two sides by energy-momentum and charge
+conservation.  Therefore the collision term vanishes on global equilibrium,
+and on local equilibrium it vanishes up to gradients of \(\beta u^\mu\) and
+\(\beta\mu_A\).
+
+\section{Kinetic Entropy and the H Theorem}
+
+Define the entropy current
+\begin{equation}
+  S^\mu_{\rm kin}
+  =
+  -\sum_a\int 2d\Pi_a\,p^\mu
   \left[
-  f_a\log f_a
-  \mp(1\pm f_a)\log(1\pm f_a)
+    f_a\log f_a
+    -\eta_a(1+\eta_af_a)\log(1+\eta_af_a)
   \right].
-\]
-Using the positivity of
+  \label{eq:kinetic-entropy-current}
+\end{equation}
+Using the Boltzmann equation,
+\begin{equation}
+  \partial_\mu S^\mu_{\rm kin}
+  =
+  -\sum_a\int 2d\Pi_a\,\mathcal C_a[f]\,
+  \log\!\left(\frac{f_a}{1+\eta_af_a}\right).
+  \label{eq:kinetic-entropy-divergence-before-sym}
+\end{equation}
+For the \(2\to2\) kernel, symmetrizing over the four external legs gives
+\begin{align}
+  \partial_\mu S^\mu_{\rm kin}
+  &=
+  \frac14
+  \sum_{abcd}\int
+  d\Pi_1d\Pi_2d\Pi_3d\Pi_4\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
+  |\mathcal M_{ab\to cd}|^2
+  \nonumber\\
+  &\quad\times
+  (X_{12\to34}-Y_{34\to12})
+  \log\!\left(\frac{X_{12\to34}}{Y_{34\to12}}\right)\ge0.
+  \label{eq:kinetic-h-theorem}
+\end{align}
+The inequality follows from
 \[
-  (x-y)\log(x/y)\geq0
+  (x-y)\log(x/y)\ge0
+  \qquad
+  (x>0,\ y>0).
 \]
-for positive \(x,y\), the \(2\to2\) collision term gives nonnegative entropy
-production.  Equality holds precisely when the gain and loss products agree
-for every allowed collision.
+Equality holds, within the set of reactions included in the kernel, exactly
+when each allowed gain product equals the corresponding loss product.  When
+the reactions connect the species space sufficiently, this condition forces
+\(\log[f_a/(1+\eta_af_a)]\) to be a linear combination of the conserved
+collision invariants \(1\), \(p^\mu\), and \(q_a^A\), giving
+\eqref{eq:kinetic-local-equilibrium-distribution}.
 
 \section{Hydrodynamic Moments}
 
-The kinetic stress tensor and conserved current are
+The kinetic stress tensor and conserved currents are
+\begin{align}
+  T^{\mu\nu}(X)
+  &=
+  \sum_a\int 2d\Pi_a\,p^\mu p^\nu f_a(X,\mathbf p),
+  \label{eq:kinetic-stress-tensor}\\
+  J^\mu_A(X)
+  &=
+  \sum_a q_{A,a}\int 2d\Pi_a\,p^\mu f_a(X,\mathbf p).
+  \label{eq:kinetic-current}
+\end{align}
+Multiplying \eqref{eq:kinetic-covariant-boltzmann} by \(2p^\nu\) and
+integrating gives
 \[
-  T^{\mu\nu}(x)
+  \partial_\mu T^{\mu\nu}
   =
-  \sum_a\int d\Pi_p\,p^\mu p^\nu f_a(x,p),
-  \qquad
-  J^\mu_A(x)
-  =
-  \sum_a q_{A,a}\int d\Pi_p\,p^\mu f_a(x,p).
+  \sum_a\int 2d\Pi_a\,p^\nu\mathcal C_a[f].
 \]
-Multiplying the Boltzmann equation by \(1\), \(p^\nu\), or a conserved charge
-and integrating over momentum gives the hydrodynamic Ward identities when the
-collision term conserves those quantities.  Constitutive relations are
-obtained by solving the kinetic equation in a gradient expansion around local
-equilibrium.
+The right side vanishes because each collision conserves total
+four-momentum.  Similarly,
+\[
+  \partial_\mu J^\mu_A
+  =
+  \sum_a q_{A,a}\int 2d\Pi_a\,\mathcal C_a[f]=0
+\]
+when the collision channels conserve charge \(q_A\).  Thus the hydrodynamic
+Ward identities are the collision-invariant moments of the kinetic equation.
+
+At local equilibrium \eqref{eq:kinetic-local-equilibrium-distribution}, the
+moments have the ideal-fluid form
+\[
+  T^{\mu\nu}_{(0)}=\varepsilon u^\mu u^\nu+p\Delta^{\mu\nu},
+  \qquad
+  J^\mu_{A(0)}=n_Au^\mu,
+\]
+with \(p\), \(\varepsilon\), and \(n_A\) obtained from the phase-space
+integrals.  First-order transport arises from the first gradient correction
+to \(f_a\).
 
 \section{Linearized Collision Operator}
 
 Write
+\begin{equation}
+  f_a=f_a^{(0)}+f_a^{(0)}(1+\eta_af_a^{(0)})\chi_a .
+  \label{eq:kinetic-linearized-ansatz}
+\end{equation}
+To first order,
 \[
-  f_a=f_a^{\mathrm{eq}}+f_a^{\mathrm{eq}}(1\pm f_a^{\mathrm{eq}})\chi_a .
+  \mathcal C_a[f]=-\sum_b\mathcal L_{ab}\chi_b+O(\chi^2).
 \]
-To first order in \(\chi\), the collision term is a linear operator
+The natural inner product on perturbations is
+\begin{equation}
+  \langle \phi,\psi\rangle
+  =
+  \sum_a\int 2d\Pi_a\,
+  f_a^{(0)}(1+\eta_af_a^{(0)})\,\phi_a(p)\psi_a(p).
+  \label{eq:kinetic-linearized-inner-product}
+\end{equation}
+For the \(2\to2\) collision kernel,
+\begin{align}
+  \langle \chi,\mathcal L\chi\rangle
+  &=
+  \frac14
+  \sum_{abcd}\int
+  d\Pi_1d\Pi_2d\Pi_3d\Pi_4\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
+  |\mathcal M_{ab\to cd}|^2
+  \nonumber\\
+  &\quad\times
+  f_1^{(0)}f_2^{(0)}
+  (1+\eta_c f_3^{(0)})(1+\eta_d f_4^{(0)})
+  \bigl(\chi_1+\chi_2-\chi_3-\chi_4\bigr)^2\ge0.
+  \label{eq:kinetic-linearized-positive-form}
+\end{align}
+The null space consists of perturbations for which
+\(\chi_1+\chi_2-\chi_3-\chi_4=0\) for every included reaction.  Under the
+same connectivity assumption used in the entropy argument, this null space
+is spanned by conserved collision invariants.  Transport coefficients are
+quadratic forms involving the inverse of \(\mathcal L\) on the orthogonal
+complement of this null space.
+
+\section{Worked Example: Relaxation-Time Shear Viscosity}
+
+\begin{controlledapproximation}[Constant relaxation time]
+\label{ca:kinetic-constant-relaxation-time}
+Consider a single massless classical species in \(d=3\), with
+\(f^{(0)}=e^{-p/T}\), no conserved charge, and a collision operator replaced
+on the shear channel by
 \[
-  C_a[f]=-\sum_b \mathcal L_{ab}\chi_b+O(\chi^2).
+  C^{(t)}_{\rm RTA}[\delta f]=-\frac{\delta f}{\tau_R},
 \]
-The null space of \(\mathcal L\) is spanned by conserved quantities.  On the
-orthogonal complement, positivity of entropy production makes
-\(\mathcal L\) positive.  Transport coefficients are quadratic forms involving
-\(\mathcal L^{-1}\) on this complement.
+where \(\tau_R\) is a constant.  This replacement preserves the shear
+tensor structure and gives a closed worked example.  It is a model for the
+positive inverse collision operator on the shear subspace, not a derivation
+of a microscopic collision kernel.
+\end{controlledapproximation}
 
-\section{Gauge Theories And Soft Scales}
+Let
+\[
+  \delta f
+  =
+  -\tau_R
+  f^{(0)}
+  \frac{p^ip^j}{2TE}
+  \sigma_{ij},
+  \qquad
+  \sigma_{ij}
+  =
+  \partial_i v_j+\partial_j v_i
+  -\frac23\delta_{ij}\partial_kv_k .
+\]
+Substitution in the kinetic stress tensor gives
+\[
+  \delta T^{ij}
+  =
+  -\eta\,\sigma^{ij},
+\]
+where angular averaging in three dimensions uses
+\[
+  \int d\Omega\,\hat p_i\hat p_j\hat p_k\hat p_l
+  =
+  \frac{4\pi}{15}
+  (\delta_{ij}\delta_{kl}+\delta_{ik}\delta_{jl}
+  +\delta_{il}\delta_{jk}).
+\]
+Since \(\sigma^i{}_i=0\), the coefficient is
+\begin{equation}
+  \eta_{\rm RTA}
+  =
+  \frac{\tau_R}{15T}
+  \int\frac{d^3\mathbf p}{(2\pi)^3}
+  p^2e^{-p/T}
+  =
+  \frac{4}{5}p_{\rm therm}\tau_R,
+  \label{eq:kinetic-rta-shear-viscosity}
+\end{equation}
+with
+\[
+  p_{\rm therm}
+  =
+  \frac13\int\frac{d^3\mathbf p}{(2\pi)^3}p\,e^{-p/T}
+  =
+  \frac{T^4}{\pi^2}.
+\]
+This example displays the general structure of kinetic transport: a source
+term from gradients, inversion of the collision operator on a nonconserved
+subspace, and a positive quadratic form for the coefficient.
 
-In weakly coupled gauge theories, long-range gauge exchange produces soft
-momentum transfers and collective plasma effects.  The kinetic description
-must include screening, soft gauge fields, and collinear splitting processes
-when they occur at the same order as \(2\to2\) scattering.  The separation of
-hard quasiparticles, soft fields, and ultrasoft hydrodynamic modes is a
-scale-by-scale effective theory construction, not a single Boltzmann equation
-with arbitrary collision data.
+\section{Gauge Theories and Soft Scales}
+
+In weakly coupled gauge theories, hard particles with momentum of order \(T\)
+interact through soft gauge exchange of order \(gT\).  Electric fields are
+screened by the Debye scale of Chapter~\ref{ch:thermal-gauge-theory-screening};
+magnetic fields at scale \(g^2T\) remain nonperturbative in the static
+sector.  Kinetic theory for gauge plasmas therefore contains several
+coupled effective descriptions:
+\[
+  \text{hard quasiparticles}
+  \quad\leftrightarrow\quad
+  \text{soft collective gauge fields}
+  \quad\leftrightarrow\quad
+  \text{ultrasoft hydrodynamic modes}.
+\]
+Small-angle scattering, Landau damping, and collinear splitting processes
+must be matched in the same source and regulator convention before a
+transport coefficient is a well-defined weak-coupling prediction.
 
 \section{Controlled-Limit Ledger}
 
 A kinetic derivation from QFT requires:
 \[
 \begin{array}{ll}
-\text{spectral input} & \text{narrow quasiparticle peaks},\\
-\text{scale separation} & \ell_{\mathrm{micro}}\ll \ell_{\mathrm{variation}},\\
-\text{collision input} & \text{on-shell amplitudes with regulator and
-medium corrections},\\
-\text{conservation laws} & \text{collision invariants matching QFT Ward
-identities},\\
-\text{error estimate} & \text{bounds on neglected gradients and off-shell
-terms}.
+\text{spectral input} &
+  \text{narrow quasiparticle peaks with a controlled off-shell remainder},\\
+\text{scale separation} &
+  \ell_{\rm micro}\ll \ell_{\rm variation}
+  \ \text{and}\ \Gamma\ell_{\rm variation}\ll1,\\
+\text{collision input} &
+  \text{on-shell amplitudes with regulator and medium corrections},\\
+\text{conservation laws} &
+  \text{collision invariants matching QFT Ward identities},\\
+\text{error estimate} &
+  \text{bounds on neglected gradients, memory terms, and off-shell terms}.
 \end{array}
 \]
 
 \begin{openproblem}[QFT derivation of kinetic theory with errors]
 \label{op:qft-kinetic-theory-error-derivation}
-Derive relativistic kinetic theory from Schwinger-Keldysh QFT with explicit
+Derive relativistic kinetic theory from Schwinger--Keldysh QFT with explicit
 error bounds, including quasiparticle projection, collision kernels,
 screening, collinear processes in gauge theory, and the passage from kinetic
 theory to hydrodynamic transport.
