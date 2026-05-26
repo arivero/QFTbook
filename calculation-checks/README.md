@@ -234,6 +234,11 @@ Current checks:
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
   Dirac-pairing confinement criterion, tropical spectral extraction of static
   potentials, and exponent bookkeeping for Fredenhagen--Marcu type ratios.
+- `oblique_confinement_checks.py`: exact finite checks for the confinement
+  chapter, including screened-pairing descent to \(S^\perp/S\), maximal
+  isotropy of dyonic condensates \(\langle(p,1)\rangle\), the oblique
+  unconfined condition \(e\equiv pm\pmod N\), and confinement of nonzero
+  electric \(N\)-ality under magnetic condensation.
 - `haag_ruelle_fock_inner_product_checks.py`: exact rational checks for the
   Haag--Ruelle Fock inner-product recursion, comparing the recursive
   contraction formula with the direct bosonic permanent and particle-number
