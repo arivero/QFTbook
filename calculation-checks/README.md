@@ -134,9 +134,10 @@ Current checks:
   and the symmetrized kernel-norm weights used in the covariance-integral
   formulas, together with the physical-scale arithmetic for the logarithmic
   first-chaos \(X^2Y\) bound and the dyadic covariance double-increment
-  scale gains entering that bound, and the OS-II reconstruction-growth
+  scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
-  seminorm order.
+  seminorm order, and the interval-recursion arithmetic in the
+  rough-forcing energy-to-Besov bootstrap.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

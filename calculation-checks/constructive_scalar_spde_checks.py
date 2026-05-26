@@ -1440,6 +1440,34 @@ def check_spde_os_reconstruction_growth_arithmetic():
             raise AssertionError("OS growth class polynomial absorption failed")
 
 
+def check_rough_forcing_bootstrap_arithmetic():
+    # Proposition spde-dpd-rough-forcing-bootstrap uses the absorption
+    # condition |lambda| C1 delta^(1-theta) epsilon <= 1/2 to turn
+    #   R_l <= C0 y_l + a (A_l + epsilon R_l)
+    # into
+    #   R_l <= 2 C0 y_l + 2 a A_l.
+    C0 = Fraction(3, 2)
+    a = Fraction(1, 5)
+    epsilon = Fraction(2)
+    assert a * epsilon <= Fraction(1, 2), "rough forcing absorption"
+
+    A = [Fraction(1), Fraction(3, 2), Fraction(2), Fraction(5, 2)]
+    y0 = Fraction(4, 3)
+    D = []
+    for ell, A_ell in enumerate(A):
+        if ell == 0:
+            value = 2 * C0 * y0 + 2 * a * A_ell
+        else:
+            value = 2 * C0 * D[-1] + 2 * a * A_ell
+        D.append(value)
+
+    for ell in range(len(A)):
+        explicit = (2 * C0) ** (ell + 1) * y0
+        for j in range(ell + 1):
+            explicit += 2 * a * ((2 * C0) ** (ell - j)) * A[j]
+        assert_equal(D[ell], explicit, "rough forcing recursion closed form")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -1488,7 +1516,8 @@ def main():
     check_quartic_tail_integrability_arithmetic()
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, and SPDE-to-OS growth checks passed.")
+    check_rough_forcing_bootstrap_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

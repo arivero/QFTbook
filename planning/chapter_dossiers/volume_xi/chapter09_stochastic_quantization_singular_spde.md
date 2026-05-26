@@ -1002,3 +1002,11 @@ data maps.
   saying only that "usual growth hypotheses" remain.  The calculation-check
   companion verifies the linear seminorm-order bookkeeping for reflected
   positive-time tests.
+- 2026-05-26 rough-forcing bootstrap pass: added a deterministic proposition
+  converting a localized rough forcing estimate into the global
+  energy-to-Besov bound required by the compact-continuity criterion.  This
+  no longer leaves the phrase "rough energy-to-Besov" as an undefined slogan:
+  the remaining stochastic/coercive task is the concrete interval estimate
+  with no unabsorbed positive power of the Besov continuation norm.  The
+  calculation-check companion verifies the absorption and recursion
+  arithmetic.

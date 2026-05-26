@@ -2469,6 +2469,137 @@ cutoff convergence on compact enhanced-noise sets is reduced to proving a
 rough energy-to-Besov a priori bound.  The latter is precisely where the
 Wick-renormalized coercivity of the two-dimensional equation must enter.
 
+\begin{proposition}[Local rough-forcing bootstrap for the energy-to-Besov step]
+\label{prop:spde-dpd-rough-forcing-bootstrap}
+Keep the notation and exponents of
+Theorem~\ref{thm:spde-dpd-besov-local-fixed-point}, and put
+\[
+  \theta=\frac{\alpha+\kappa}{2}\in(0,1),
+  \qquad A=\Delta-m^2 .
+\]
+Let \(C_0\) and \(C_1\) be constants such that, for all
+\(0\leq t\leq1\) and all intervals \(I\) of length at most \(1\),
+\[
+  \|e^{tA}f\|_{\mathcal C^\alpha}
+  \leq C_0\|f\|_{\mathcal C^\alpha},
+  \qquad
+  \left\|\int_{t_0}^t e^{(t-s)A}F(s)\,\dd s
+  \right\|_{C(I;\mathcal C^\alpha)}
+  \leq
+  C_1 |I|^{1-\theta}\|F\|_{C(I;\mathcal C^{-\kappa})}.
+  \label{eq:spde-rough-forcing-bootstrap-semigroup}
+\]
+Let \(Y\in C([0,T];\mathcal C^\alpha)\) solve the Besov mild equation
+\eqref{eq:spde-dpd-besov-mild-equation} on \([0,T]\).  Choose a partition
+\[
+  0=t_0<t_1<\cdots<t_M=T,
+  \qquad I_\ell=[t_\ell,t_{\ell+1}],
+  \qquad |I_\ell|\leq\delta\leq1 .
+\]
+Assume that on every \(I_\ell\) the renormalized DPD nonlinearity satisfies
+a local rough-forcing estimate
+\begin{equation}
+  \|\mathcal N_{\mathcal C}(Y,\mathbb X)\|_{C(I_\ell;\mathcal C^{-\kappa})}
+  \leq A_\ell+\varepsilon
+  \|Y\|_{C(I_\ell;\mathcal C^\alpha)}
+  \label{eq:spde-local-rough-forcing-estimate}
+\end{equation}
+with \(A_\ell\geq0\) and
+\[
+  |\lambda|C_1\delta^{1-\theta}\varepsilon\leq \frac12 .
+  \label{eq:spde-rough-forcing-absorption-condition}
+\]
+Then, writing
+\[
+  D_0=
+  2C_0\|Y(0)\|_{\mathcal C^\alpha}
+  +2|\lambda|C_1\delta^{1-\theta}A_0,
+\]
+and recursively
+\[
+  D_\ell=
+  2C_0D_{\ell-1}
+  +2|\lambda|C_1\delta^{1-\theta}A_\ell,
+  \qquad 1\leq \ell\leq M-1,
+\]
+one has
+\[
+  \|Y\|_{C(I_\ell;\mathcal C^\alpha)}\leq D_\ell,
+  \qquad 0\leq\ell\leq M-1.
+  \label{eq:spde-rough-forcing-bootstrap-recursive-bound}
+\]
+Equivalently,
+\[
+  \|Y\|_{C([0,T];\mathcal C^\alpha)}
+  \leq
+  (2C_0)^M\|Y(0)\|_{\mathcal C^\alpha}
+  +
+  2|\lambda|C_1\delta^{1-\theta}
+  \sum_{j=0}^{M-1}(2C_0)^{M-1-j}A_j .
+  \label{eq:spde-rough-forcing-bootstrap-explicit-bound}
+\]
+In particular, if the numbers \(A_\ell\) are bounded uniformly on a compact
+set of enhanced noises and initial conditions, and if the same
+\(\delta,\varepsilon\) satisfy
+\eqref{eq:spde-rough-forcing-absorption-condition} throughout that compact
+set, then the rough energy-to-Besov hypothesis in
+Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion} follows.
+\end{proposition}
+
+\begin{proof}
+For \(t\in I_\ell\), the mild equation restarted at time \(t_\ell\) is
+\[
+  Y(t)
+  =
+  e^{(t-t_\ell)A}Y(t_\ell)
+  -
+  \lambda
+  \int_{t_\ell}^t
+  e^{(t-s)A}
+  \mathcal N_{\mathcal C}(Y(s),\mathbb X(s))\,\dd s .
+  \label{eq:spde-rough-forcing-restarted-mild}
+\]
+Taking the \(C(I_\ell;\mathcal C^\alpha)\) norm and using
+\eqref{eq:spde-rough-forcing-bootstrap-semigroup} gives
+\[
+  R_\ell
+  \leq
+  C_0\|Y(t_\ell)\|_{\mathcal C^\alpha}
+  +|\lambda|C_1\delta^{1-\theta}
+  \|\mathcal N_{\mathcal C}(Y,\mathbb X)\|_
+    {C(I_\ell;\mathcal C^{-\kappa})},
+  \qquad
+  R_\ell:=\|Y\|_{C(I_\ell;\mathcal C^\alpha)} .
+\]
+Insert the rough-forcing estimate
+\eqref{eq:spde-local-rough-forcing-estimate}.  The absorption condition
+\eqref{eq:spde-rough-forcing-absorption-condition} implies
+\[
+  R_\ell
+  \leq
+  2C_0\|Y(t_\ell)\|_{\mathcal C^\alpha}
+  +2|\lambda|C_1\delta^{1-\theta}A_\ell .
+  \label{eq:spde-rough-forcing-single-step}
+\]
+For \(\ell=0\) this is exactly \(R_0\leq D_0\).  If \(\ell\geq1\), then
+\(\|Y(t_\ell)\|_{\mathcal C^\alpha}\leq R_{\ell-1}\).  Induction using
+\eqref{eq:spde-rough-forcing-single-step} proves
+\eqref{eq:spde-rough-forcing-bootstrap-recursive-bound}.  Iterating the
+recursion for \(D_\ell\) gives the explicit bound
+\eqref{eq:spde-rough-forcing-bootstrap-explicit-bound}.  The compact-set
+consequence follows by taking the supremum of the right hand side over the
+compact family.
+\end{proof}
+
+The preceding proposition makes the remaining analytic obligation precise.
+The phrase ``rough energy-to-Besov bound'' means a proof of
+\eqref{eq:spde-local-rough-forcing-estimate} with \(A_\ell\) controlled by
+the coercive energy estimates, by the enhanced-noise norms, and by no
+unabsorbed positive power of
+\(\|Y\|_{C(I_\ell;\mathcal C^\alpha)}\).  Once such a local estimate is
+proved, the conversion to the global Besov bound is the elementary
+parabolic bootstrap above.
+
 \begin{proposition}[Passing invariance through a cutoff limit]
 \label{prop:spde-invariant-measure-limit}
 Let \(E\) be a Polish space, let \(P_t^{(n)}\) and \(P_t\) be Markov
