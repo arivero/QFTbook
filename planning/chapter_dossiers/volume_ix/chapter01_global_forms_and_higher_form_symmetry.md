@@ -3,7 +3,8 @@
 ## Logical Role
 
 - Role in the monograph: launch the global-structure volume with gauge-group
-  global form, line operators, and higher-form symmetry.
+  global form, character/cocharacter lattices, finite Wilson--'t Hooft line
+  spectra, and higher-form symmetry.
 - Immediate predecessor: nonabelian gauge theory, lattice gauge theory,
   anomalies, and confinement material.
 - Immediate successor: extended operators, phase structure, and anomaly
@@ -11,12 +12,26 @@
 
 ## Definitions And Results
 
-- Global form \(G_{\rm sc}/\Gamma\) of a compact gauge group.
-- Genuine line operators and screening equivalence.
-- \(p\)-form symmetry as an action on codimension-\(p+1\) topological
-  operators and \(p\)-dimensional charged operators.
-- Linking pairing between symmetry defects and charged extended operators.
-- Electric center symmetry in pure Yang--Mills.
+- Character and cocharacter lattices
+  \(X^*(T)=\operatorname{Hom}(T,U(1))\) and
+  \(X_*(T)=\operatorname{Hom}(U(1),T)\), with weight, root, coweight, and
+  coroot specializations for \(G_{\rm sc}\).
+- Global form \(G_{\rm sc}/\Gamma\) of a compact gauge group and the induced
+  character/cocharacter lattices of \(T_G=T_{\rm sc}/\Gamma\).
+- Descent criterion for Wilson charges: an irreducible \(G_{\rm sc}\)
+  representation descends to \(G_{\rm sc}/\Gamma\) exactly when its central
+  character is trivial on \(\Gamma\).
+- \(SU(N)/\mathbb Z_k\) descent: Wilson \(N\)-alities are multiples of \(k\);
+  magnetic cocharacter classes are multiples of \(N/k\).
+- Genuine line operators and the finite Dirac pairing on center-sensitive
+  Wilson--'t Hooft charges.
+- Maximal isotropic finite line lattices
+  \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\subset
+  \mathbb Z_N\oplus\mathbb Z_N\).
+- Abelian group-like \(p\)-form symmetry as an action of codimension-\(p+1\)
+  topological operators on \(p\)-dimensional charged operators.
+- Electric one-form symmetry \(Z(G)\) and magnetic one-form symmetry
+  \(\pi_1(G)^\vee\) of pure gauge theory.
 
 ## Symbols
 
@@ -24,23 +39,47 @@
 | --- | --- |
 | \(G_{\rm sc}\) | simply connected compact gauge group with a fixed Lie algebra |
 | \(\Gamma\) | subgroup of the center divided out to form the gauge group |
+| \(T_{\rm sc},T_G\) | maximal tori of \(G_{\rm sc}\) and \(G=G_{\rm sc}/\Gamma\) |
+| \(X^*(T),X_*(T)\) | character and cocharacter lattices of a torus |
+| \(\Lambda_{\rm wt},\Lambda_{\rm rt}\) | weight and root lattices |
+| \(\Lambda_{\rm cwt},\Lambda_{\rm crt}\) | coweight and coroot lattices |
+| \(\lambda,m\) | electric weight and magnetic cocharacter |
+| \(B(\gamma,\gamma')\) | electric-magnetic Dirac pairing |
+| \(L_{N,k,p}\) | finite line lattice for \(SU(N)/\mathbb Z_k\) with discrete theta \(p\) |
 | \(W_R(C)\) | Wilson line in representation \(R\) along curve \(C\) |
 | \(U_\alpha(\Sigma)\) | higher-form symmetry operator on \(\Sigma\) |
 | \(L(C,\Sigma)\) | integer linking number |
 | \(Z(G)\) | center of \(G\) |
+| \(\pi_1(G)^\vee\) | Pontryagin-dual group of magnetic one-form symmetry defects |
 
 ## Claim Ledger
 
 1. The Lie algebra does not determine the line-operator spectrum.
-2. Genuine line operators are classified only after the global form and
-   allowed attached surfaces are fixed.
-3. Higher-form symmetry acts by a linking phase on charged extended
+2. Wilson charges descend through \(G_{\rm sc}\to G_{\rm sc}/\Gamma\) exactly
+   when their central character is trivial on \(\Gamma\).
+3. For \(SU(N)/\mathbb Z_k\), allowed Wilson \(N\)-alities are \(k\mathbb Z_N\)
+   and allowed finite magnetic cocharacter classes are \((N/k)\mathbb Z_N\).
+4. The finite \(\mathfrak{su}(N)\) Dirac pairing is
+   \((em'-e'm)/N\) modulo \(\mathbb Z\).
+5. \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\) is maximal isotropic; the proof
+   explicitly computes its orthogonal complement.
+6. Genuine line operators are classified only after the global form, discrete
+   theta coordinate, and allowed attached surfaces are fixed.
+7. Higher-form symmetry acts by a linking phase on charged extended
    operators.
-4. Center symmetry gives a precise operator formulation of confinement
-   diagnostics in pure Yang--Mills.
+8. Center symmetry and magnetic one-form symmetry give precise operator
+   formulations of confinement and screening diagnostics in pure Yang--Mills.
 
 ## Figures
 
-- Weight-lattice/global-form quotient diagram.
-- Line operator linked by a codimension-two symmetry defect.
-- Wilson and 't Hooft line charge lattice.
+- Wilson and 't Hooft finite line-charge lattice for the
+  \(\mathfrak{su}(5)\) example.
+- Future: weight-lattice/global-form quotient diagram.
+- Future: line operator linked by a codimension-two symmetry defect.
+
+## Calculation Checks
+
+- `calculation-checks/global_form_line_lattice_checks.py` verifies the
+  finite \(\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}\) Dirac
+  pairing, \(SU(N)/\mathbb Z_k\) descent arithmetic, and maximal isotropy of
+  \(L_{N,k,p}\) for \(2\leq N\leq 9\).
