@@ -230,10 +230,15 @@ Current absorption:
   supersymmetric sigma-model CFTs, Narain lattice CFTs and toroidal sigma
   models, WZW/current-algebra/coset CFTs, finite orbifolds, twist sectors,
   cyclic and rotation twist weights, and twist-field deformations.  The
-  Narain pass rebuilds the stringbook lattice vertex-operator material with
-  explicit locality, spin, cocycle, modular-anomaly, and \(O(d,d;\mathbb Z)\)
-  moduli statements, together with a public calculation check for the cocycle
-  and pairing algebra.  The WZW pass adds integral level quantization, affine
+  NLSM renormalization pass now gives the background-field one-loop Ricci
+  divergence, the \(G,B,\Phi\) Weyl-anomaly package, scheme-redefinition
+  geometry, torsionful one-loop packaging, the pure-metric two-loop
+  representative, the precise RG-time conversion to Hamilton Ricci flow, and
+  constant-curvature sphere/hyperbolic radius-flow checks.  The Narain pass
+  rebuilds the stringbook lattice vertex-operator material with explicit
+  locality, spin, cocycle, modular-anomaly, and \(O(d,d;\mathbb Z)\) moduli
+  statements, together with a public calculation check for the cocycle and
+  pairing algebra.  The WZW pass adds integral level quantization, affine
   current algebra, Sugawara stress tensors, integrable highest weights, coset
   stress tensors, the diagonal \(SU(2)\) minimal-model example, and the
   rank-one solvable cosets \(SU(2)_k/U(1)\) and

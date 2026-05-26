@@ -295,6 +295,21 @@ Current checks:
   integral pairing, and the distinction between even-unimodular existence
   and scalar modular-invariance in the presence of chiral gravitational
   anomaly.
+- `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
+  NLSM Buscher and pure-metric beta-function sections, including Buscher
+  \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift
+  involution, the constant-curvature two-loop \(R_{ik\ell m}R_j{}^{k\ell m}\)
+  coefficient, and the spherical/hyperbolic radius-flow beta functions.
+- `nlsm_scheme_redefinition_checks.py`: finite polynomial checks for the
+  NLSM finite-scheme-redefinition law
+  \(\beta'=\beta+[\beta,F]+O(F^2)\), including the sign of the beta-vector
+  Lie bracket in a two-coupling model.
+- `nlsm_weyl_anomaly_checks.py`: exact rational checks for one-loop NLSM
+  Weyl-anomaly bookkeeping, including the \(H^2\) metric and \(B\)-field
+  variation coefficients, linear-dilaton central-charge condition,
+  heterotic Green--Schwarz coefficient, heterotic gauge/dilaton redundant
+  direction, torsionful Ricci package, and local \(\dd^2=0\) preservation of
+  the \(H\)-beta Bianchi identity.
 - `nonequilibrium_open_system_checks.py`: finite checks for the Volume X
   nonequilibrium steady-state and open-system chapter, including reservoir
   entropy production, GKSL trace preservation, KMS detailed balance for a

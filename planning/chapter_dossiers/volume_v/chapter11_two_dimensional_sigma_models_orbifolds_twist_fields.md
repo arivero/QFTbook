@@ -50,6 +50,12 @@
 - Records the two-loop pure-metric beta tensor as a controlled
   large-radius/minimal-subtraction approximation and states its scheme
   dependence.
+- Proves the one-loop identification with Hamilton Ricci flow after the
+  precise RG-time reparametrization \(t=-\alpha'\log\mu/2\), with the
+  ultraviolet/infrared orientation and QFT-existence limitations stated.
+- Computes the constant-curvature sphere/hyperbolic radius flow from the
+  one- and two-loop pure-metric beta tensor, including the dimensionless
+  coupling sign convention \(\lambda=\alpha'/r^2\).
 - Separates the flat linear-dilaton central-charge condition from the
   nonconstant tensor beta functions.
 - Adds heterotic \(\mathcal N=(0,1)\) assumptions: bundle metric, spin
@@ -153,74 +159,84 @@
    `nabla^k Phi H_{kij}` coefficients in the stated convention.
 12. The pure-metric two-loop representative has coefficient
    \((\alpha')^2R_{ik\ell m}R_j{}^{k\ell m}/2\) in the stated MS scheme.
-13. The Buscher \(E\)-rules imply the displayed \(G,B\) component rules and
+13. The one-loop sigma-model RG equation
+   `partial_{log mu} G = alpha' Ric(G)` becomes Hamilton's Ricci flow
+   `partial_t G = -2 Ric(G)` only after the time change
+   \(t=-\alpha'\log\mu/2\); increasing Ricci-flow time is therefore the
+   infrared orientation of the one-loop RG convention.
+14. For \(G=r^2\gamma\) with constant sectional curvature
+   \(\sigma=\pm1\), the two-loop representative gives
+   `d r^2/d log mu = (n-1) alpha' (sigma + alpha'/r^2)` and
+   `d lambda/d log mu = -(n-1) lambda^2 (sigma + lambda)`, modulo the stated
+   higher-loop remainder.
+15. The Buscher \(E\)-rules imply the displayed \(G,B\) component rules and
    are involutive with the dilaton shift.
-14. The Narain vertex OPE monodromy gives \(e^{2\pi i k\circ\ell}\), and
+16. The Narain vertex OPE monodromy gives \(e^{2\pi i k\circ\ell}\), and
    integer spin gives \(k\circ k\in2\mathbb Z\).
-15. The explicit cocycle
+17. The explicit cocycle
    \((-1)^{\sum_{i>j}A_{ij}m^in^j}\) satisfies associativity and the exchange
    law when \(A\) is an even integral Gram matrix.
-16. The lattice theta function's \(T\)-phase from the zero modes is cancelled
+18. The lattice theta function's \(T\)-phase from the zero modes is cancelled
    by evenness, while the eta determinants leave the gravitational-anomaly
    phase \(\exp[-2\pi i(n_L-n_R)/24]\).
-17. The toroidal sigma-model momenta
+19. The toroidal sigma-model momenta
    \(k_{L,R}(m,w)\) give the integral pairing
    \(m(w')+m'(w)\), independent of the antisymmetric \(B\)-field.
-18. The WZW level is integral because changing the filling shifts the action
+20. The WZW level is integral because changing the filling shifts the action
    by \(2\pi i k\) times the pairing with \(H^3(G,\mathbb Z)\).
-19. The affine current OPE in the chapter convention gives the mode algebra
+21. The affine current OPE in the chapter convention gives the mode algebra
    \([J_m^a,J_n^b]=f_{ab}{}^cJ_{m+n}^c+km\delta^{ab}\delta_{m+n,0}\).
-20. Sugawara's coefficient is fixed by the requirement that currents have
+22. Sugawara's coefficient is fixed by the requirement that currents have
     conformal weight \(1\), with the \(h^\vee\) shift coming from the adjoint
     Casimir in the double contraction.
-21. Coset central charges and weights are differences of the \(G\) and
+23. Coset central charges and weights are differences of the \(G\) and
     embedded \(H\) Sugawara data; gauge consistency is level matching for the
     gauged subgroup.
-22. The \(SU(2)_k/U(1)\) parafermion labels satisfy the selection rule
+24. The \(SU(2)_k/U(1)\) parafermion labels satisfy the selection rule
     \(\ell+m\in2\mathbb Z\), and the field identification
     \((\ell,m)\sim(k-\ell,m+k)\) preserves conformal weights modulo
     integers.
-23. The compact parafermion simple-current action is free, giving
+25. The compact parafermion simple-current action is free, giving
     \(k(k+1)/2\) primary orbits; fusion is the \(SU(2)_k\) truncated fusion
     rule together with \(U(1)\) charge conservation modulo \(2k\).
-24. The displayed parafermion modular \(S\)-matrix is well-defined on
+26. The displayed parafermion modular \(S\)-matrix is well-defined on
     field-identification orbits because the sine and charge phases cancel by
     the selection rule.
-25. The \(SL(2,\mathbb R)_k/U(1)\) cigar central charge and weights use the
+27. The \(SL(2,\mathbb R)_k/U(1)\) cigar central charge and weights use the
     noncompact dual-Coxeter shift \(k-2\), and the stated
     momentum/winding labels give integer spin \(h-\bar h=nw\).
-26. The cigar continuous spectrum has \(j=1/2+\ii s\), and the reflection
+28. The cigar continuous spectrum has \(j=1/2+\ii s\), and the reflection
     relation \(j\leftrightarrow1-j\) is compatible with conformal weights;
     the reflection coefficient and discrete residues are nonlocal analytic
     CFT data.
-27. The bell and cigar metrics and dilatons follow from gauged-WZW gauge
+29. The bell and cigar metrics and dilatons follow from gauged-WZW gauge
     fixing, algebraic gauge-field elimination, and Gaussian determinants
     only as controlled large-level representatives; the exact CFTs also
     require branching or noncompact representation data.
-28. For \(ds^2=K(du^2+f(u)^2d\varphi^2)\), the bell and cigar choices of
+30. For \(ds^2=K(du^2+f(u)^2d\varphi^2)\), the bell and cigar choices of
     \(f\) and \(\Phi\) satisfy \(R_{ij}+2\nabla_i\nabla_j\Phi=0\), and
     \(|\nabla\Phi|^2-\nabla^2\Phi/2=\pm K^{-1}\), giving the leading
     central-charge shifts \(2\pm6/k\) before the exact affine shifts.
-29. The orbifold Hilbert space is
+31. The orbifold Hilbert space is
    \(\bigoplus_{[g]}\mathcal H_g^{C_g}\) after an \(H^3(G,U(1))\) anomaly
    trivialization is chosen.
-30. The torus partition function is the finite gauge sum over commuting
+32. The torus partition function is the finite gauge sum over commuting
    holonomies and is modular invariant with the stated label action.
-31. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
+33. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
    reflection twist field has \(h=1/16\).
-32. For a cycle type
+34. For a cycle type
    \(\lambda=(1^{m_1}\cdots N^{m_N})\), the symmetric-product centralizer has
    order \(\prod_K K^{m_K}m_K!\), and the sector Hilbert space is the
    \(C_\lambda\)-invariant subspace of the tensor product of long-string
    Hilbert spaces.
-33. The symmetric-product partition-function generating series is the
+35. The symmetric-product partition-function generating series is the
    exponential of nonholomorphic Hecke transforms of the seed partition
    function, obtained by decomposing commuting \(S_N\)-bundle holonomies into
    connected torus covers.
-34. Twist OPEs multiply monodromies before conjugacy-class averaging; a
+36. Twist OPEs multiply monodromies before conjugacy-class averaging; a
    transposition joins two disjoint cycles or splits one cycle, with the
    leading bare-twist exponent fixed by the cycle-weight difference.
-35. Twist-field deformations are conformal perturbations by projected local
+37. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
 
@@ -241,7 +257,8 @@
   anomaly-condition logic.
 - `calculation-checks/nlsm_buscher_checks.py` verifies the finite Buscher
   algebra, the component \(G,B\) rules, the involutive dilaton shift, and the
-  constant-curvature specialization of the two-loop metric coefficient.
+  constant-curvature specialization of the two-loop metric coefficient and
+  radius/coupling beta functions for spherical and hyperbolic signs.
 - `calculation-checks/nlsm_weyl_anomaly_checks.py` verifies the rational
   coefficient bookkeeping for the one-loop \(H^2\) metric variation,
   \(B\)-field integration by parts, linear-dilaton central charge, heterotic

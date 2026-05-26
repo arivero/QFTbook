@@ -92,6 +92,65 @@ def check_constant_curvature_two_loop_coefficient() -> None:
         )
 
 
+def constant_curvature_radius_beta(
+    dimension: int,
+    curvature_sign: int,
+    lambda_value: Fraction,
+) -> tuple[Fraction, Fraction]:
+    """Return (d r^2/d log mu)/alpha' and d lambda/d log mu.
+
+    The dimensionless coupling is lambda=alpha'/r^2.  The first component is
+    divided by alpha' so the check stays in rational arithmetic.
+    """
+
+    radius_beta_over_alpha_prime = (
+        (dimension - 1) * (curvature_sign + lambda_value)
+    )
+    lambda_beta = (
+        -(dimension - 1)
+        * lambda_value
+        * lambda_value
+        * (curvature_sign + lambda_value)
+    )
+    return radius_beta_over_alpha_prime, lambda_beta
+
+
+def check_constant_curvature_radius_flow() -> None:
+    for dimension in range(2, 9):
+        for lambda_value in [Fraction(1, 11), Fraction(2, 7), Fraction(3, 5)]:
+            sphere_radius, sphere_lambda = constant_curvature_radius_beta(
+                dimension,
+                1,
+                lambda_value,
+            )
+            assert_equal(
+                f"sphere radius beta dimension {dimension} lambda {lambda_value}",
+                sphere_radius,
+                (dimension - 1) * (1 + lambda_value),
+            )
+            assert_equal(
+                f"sphere asymptotic-freedom sign dimension {dimension} lambda {lambda_value}",
+                sphere_lambda,
+                -(dimension - 1) * lambda_value**2 * (1 + lambda_value),
+            )
+
+            hyperbolic_radius, hyperbolic_lambda = constant_curvature_radius_beta(
+                dimension,
+                -1,
+                lambda_value,
+            )
+            assert_equal(
+                f"hyperbolic radius beta dimension {dimension} lambda {lambda_value}",
+                hyperbolic_radius,
+                (dimension - 1) * (-1 + lambda_value),
+            )
+            assert_equal(
+                f"hyperbolic coupling beta dimension {dimension} lambda {lambda_value}",
+                hyperbolic_lambda,
+                (dimension - 1) * lambda_value**2 * (1 - lambda_value),
+            )
+
+
 def check_dilaton_shift_involutive() -> None:
     # Logarithms are represented by formal exponents of log(G00).
     first_shift = Fraction(-1, 2)
@@ -103,8 +162,9 @@ def main() -> None:
     check_buscher_involutive()
     check_g_b_component_rules()
     check_constant_curvature_two_loop_coefficient()
+    check_constant_curvature_radius_flow()
     check_dilaton_shift_involutive()
-    print("All NLSM Buscher and beta-coefficient checks passed.")
+    print("All NLSM Buscher and beta-coefficient/radius-flow checks passed.")
 
 
 if __name__ == "__main__":

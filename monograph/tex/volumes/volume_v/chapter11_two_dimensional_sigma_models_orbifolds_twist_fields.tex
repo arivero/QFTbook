@@ -640,6 +640,161 @@ vanishing of the Weyl anomaly modulo redundant directions is the invariant
 statement.
 \end{controlledapproximation}
 
+\begin{proposition}[RG time versus Hamilton Ricci flow]
+\label{prop:nlsm-rg-time-ricci-flow}
+Let \(B=\Phi=0\), and restrict to the one-loop metric flow
+\[
+  \frac{\partial G_{ij}}{\partial \tau}
+  =
+  \alpha'R_{ij}(G),
+  \qquad
+  \tau=\log\mu .
+  \label{eq:nlsm-one-loop-rg-time}
+\]
+If
+\[
+  t=-\frac{\alpha'}2\tau ,
+  \label{eq:nlsm-ricci-flow-time}
+\]
+then \(G(t)\) satisfies Hamilton's Ricci-flow equation
+\[
+  \frac{\partial G_{ij}}{\partial t}
+  =
+  -2R_{ij}(G).
+  \label{eq:nlsm-hamilton-ricci-flow}
+\]
+Thus the ultraviolet sigma-model flow, in the convention
+\(\tau=\log\mu\), is backward relative to the usual increasing Ricci-flow
+time \(t\).  This is a statement about the one-loop local beta-vector field
+on the space of target metrics.  It does not assert that the nonlinear
+sigma model has been constructed nonperturbatively at every point of the
+flow, nor that a finite-time singularity of Ricci flow is by itself a
+theorem about the continuum QFT.
+\end{proposition}
+
+\begin{proof}
+By the chain rule,
+\[
+  \frac{\partial G_{ij}}{\partial t}
+  =
+  \frac{\partial \tau}{\partial t}
+  \frac{\partial G_{ij}}{\partial \tau}
+  =
+  \left(-\frac2{\alpha'}\right)\alpha'R_{ij}
+  =
+  -2R_{ij}.
+\]
+The remaining assertions are hypotheses bookkeeping.  Equation
+\eqref{eq:nlsm-one-loop-rg-time} is a perturbative beta-function equation in
+a specified coupling coordinate and regulator scheme, while Ricci flow is a
+geometric partial differential equation for smooth metrics.  The two
+equations agree at the displayed order after the time reparametrization
+\eqref{eq:nlsm-ricci-flow-time}; this agreement does not supply the
+operator algebra, Hilbert space, stress tensor, or sewing data of a
+continuum CFT.
+\end{proof}
+
+\begin{proposition}[Constant-curvature radius flow]
+\label{prop:nlsm-constant-curvature-radius-flow}
+Let \(M\) have dimension \(n\ge2\), and let \(\gamma\) be a metric of
+constant sectional curvature \(\sigma\), where
+\(\sigma=+1\) for the unit sphere and \(\sigma=-1\) for the unit hyperbolic
+metric.  Put
+\[
+  G_{ij}=r^2\gamma_{ij},
+  \qquad
+  \lambda=\frac{\alpha'}{r^2},
+  \qquad
+  B=\Phi=0 .
+  \label{eq:nlsm-constant-curvature-ansatz}
+\]
+In the pure-metric minimal-subtraction representative
+\eqref{eq:nlsm-two-loop-metric-beta}, the radius parameter obeys
+\begin{equation}
+  \frac{\dd r^2}{\dd\log\mu}
+  =
+  (n-1)\alpha'
+  \left(
+    \sigma+\frac{\alpha'}{r^2}
+  \right)
+  +
+  O\!\left(\frac{(\alpha')^3}{r^4}\right),
+  \label{eq:nlsm-radius-squared-beta}
+\end{equation}
+and the dimensionless large-radius coupling obeys
+\begin{equation}
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  -(n-1)\lambda^2(\sigma+\lambda)+O(\lambda^4).
+  \label{eq:nlsm-constant-curvature-lambda-beta}
+\end{equation}
+In particular, for the sphere,
+\[
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  -(n-1)\lambda^2-(n-1)\lambda^3+O(\lambda^4),
+  \label{eq:nlsm-sphere-coupling-beta}
+\]
+which is the asymptotic-freedom sign in the convention
+\(\lambda=\alpha'/r^2\).  For the hyperbolic sign,
+\[
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  (n-1)\lambda^2-(n-1)\lambda^3+O(\lambda^4).
+  \label{eq:nlsm-hyperbolic-coupling-beta}
+\]
+The hyperbolic formula is a local curvature check of signs and scaling; it
+is not a claim that an arbitrary noncompact hyperbolic target, without
+additional infrared and spectral data, defines a full CFT.
+\end{proposition}
+
+\begin{proof}
+For the scaled constant-curvature metric \(G=r^2\gamma\), the sectional
+curvature is \(K=\sigma/r^2\).  Hence
+\[
+  R_{ij}
+  =
+  (n-1)K\,G_{ij}
+  =
+  (n-1)\sigma\,\gamma_{ij},
+  \label{eq:nlsm-constant-curvature-ricci}
+\]
+and the standard constant-curvature contraction gives
+\[
+  R_{ik\ell m}R_j{}^{k\ell m}
+  =
+  2(n-1)K^2G_{ij}
+  =
+  \frac{2(n-1)}{r^2}\gamma_{ij}.
+  \label{eq:nlsm-constant-curvature-riemann-square}
+\]
+Substituting these identities into
+\eqref{eq:nlsm-two-loop-metric-beta} gives
+\[
+  \frac{\partial G_{ij}}{\partial\log\mu}
+  =
+  \left[
+    (n-1)\sigma\alpha'
+    +
+    (n-1)\frac{(\alpha')^2}{r^2}
+  \right]\gamma_{ij}
+  +
+  O\!\left(\frac{(\alpha')^3}{r^4}\right)\gamma_{ij}.
+\]
+Because \(G_{ij}=r^2\gamma_{ij}\), this is exactly
+\eqref{eq:nlsm-radius-squared-beta}.  Finally,
+\(\lambda=\alpha'/r^2\) and \(\alpha'\) is held fixed, so
+\[
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  -\frac{\alpha'}{r^4}
+  \frac{\dd r^2}{\dd\log\mu}
+  =
+  -(n-1)\lambda^2(\sigma+\lambda)+O(\lambda^4),
+\]
+which proves \eqref{eq:nlsm-constant-curvature-lambda-beta}.
+\end{proof}
+
 \begin{remark}[Flat target, linear dilaton, and the critical constant]
 \label{rem:nlsm-linear-dilaton-criticality}
 For flat \(D\)-dimensional target and linear dilaton
