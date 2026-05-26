@@ -28,6 +28,10 @@ analysis before invoking the identities here.
   \(\operatorname{Pf}(B)/\sqrt{\det A}\) normal Gaussian factor.
 - Rank-one Mathai--Quillen model with integral
   \(\int_{\mathbb R}\Theta_{t,a}=\operatorname{sign}(a)\).
+- Compact \(S^2\) Atiyah--Bott fixed-point model with
+  \(\int_{S^2}\exp(\omega+\lambda H)
+  =2\pi(\ee^\lambda-\ee^{-\lambda})/\lambda\), derived both by direct
+  integration and by the two fixed-point weights.
 - Boundary and noncompact-cycle obligations for gauge-theoretic localization.
 
 ## Symbols
@@ -50,6 +54,7 @@ analysis before invoking the identities here.
 | \(F,N_F,e_Q(N_F)\) | localization fixed locus, normal bundle, and equivariant Euler class |
 | \(A,B\) | even symmetric and odd antisymmetric normal quadratic operators |
 | \(\Theta_{t,a}\) | rank-one Mathai--Quillen Thom density |
+| \(V,\lambda,H,\Omega_\lambda\) | circle generator, equivariant parameter, moment map, and equivariantly closed form in the \(S^2\) model |
 
 ## Claim Ledger
 
@@ -72,7 +77,9 @@ analysis before invoking the identities here.
    determinant-line orientation choices.
 9. The rank-one Mathai--Quillen density integrates to the local degree of the
    section at its transverse zero.
-10. Noncompact ends, boundaries, reducible connections, small instantons, and
+10. The \(S^2\) equivariant integral equals the sum of the north and south
+    fixed-point contributions with weights \(w_N=1\) and \(w_S=-1\).
+11. Noncompact ends, boundaries, reducible connections, small instantons, and
     residue prescriptions are part of the data required for any
     infinite-dimensional localization statement.
 
@@ -80,7 +87,8 @@ analysis before invoking the identities here.
 
 - `calculation-checks/bv_localization_checks.py` verifies the one-pair BV
   Laplacian product identity, BV Stokes endpoint formula, normal
-  Pfaffian/determinant factor, and rank-one Mathai--Quillen normalization.
+  Pfaffian/determinant factor, rank-one Mathai--Quillen normalization, and
+  the \(S^2\) fixed-point coefficient identity.
 
 ## Figure Ledger
 

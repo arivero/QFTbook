@@ -48,7 +48,12 @@ Current checks:
 - `bv_localization_checks.py`: exact finite checks for the Volume VIII BV
   integration and localization chapter, including the one-pair BV Laplacian
   product identity, BV Stokes endpoint term, normal Gaussian
-  Pfaffian/determinant factor, and rank-one Mathai--Quillen normalization.
+  Pfaffian/determinant factor, rank-one Mathai--Quillen normalization, and
+  the \(S^2\) Atiyah--Bott fixed-point coefficient identity.
+- `bv_master_algebra_checks.py`: finite sign and grading checks for the BV
+  master-formalism chapter, including antibracket ghost-number bookkeeping,
+  Yang--Mills ghost nilpotency in an \(\mathfrak{su}(2)\) test algebra, and
+  the BRST-doublet contracting homotopy.
 - `center_polyakov_checks.py`: finite center-phase checks for the thermal
   center-symmetry and Polyakov-loop section, including temporal-plaquette
   phase cancellation, Polyakov-loop \(N\)-ality, neutral pair correlators,

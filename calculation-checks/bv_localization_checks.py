@@ -11,7 +11,7 @@ functional integral.
 from __future__ import annotations
 
 from fractions import Fraction
-from math import prod
+from math import factorial, prod
 
 
 Poly = list[Fraction]
@@ -173,11 +173,28 @@ def check_mathai_quillen_rank_one() -> None:
         assert_equal(f"rank-one MQ sign a={a}", jacobian_sign, sign)
 
 
+def check_s2_fixed_point_series() -> None:
+    # Divide the S^2 integral and the fixed-point formula by the common 2*pi.
+    # Direct integration gives int_{-1}^{1} exp(lambda x) dx.  Its coefficient
+    # of lambda^(2k) is 2/((2k)! (2k+1)) = 2/(2k+1)!; odd coefficients vanish.
+    # The fixed-point formula gives (exp(lambda)-exp(-lambda))/lambda, with
+    # the same coefficient sequence.
+    for n in range(12):
+        if n % 2 == 1:
+            direct = Fraction(0)
+            fixed_point = Fraction(0)
+        else:
+            direct = Fraction(2, factorial(n) * (n + 1))
+            fixed_point = Fraction(2, factorial(n + 1))
+        assert_equal(f"S^2 fixed-point coefficient n={n}", direct, fixed_point)
+
+
 def main() -> None:
     check_bv_product_identity()
     check_bv_stokes_endpoint_term()
     check_gaussian_normal_factor()
     check_mathai_quillen_rank_one()
+    check_s2_fixed_point_series()
     print("All BV localization checks passed.")
 
 

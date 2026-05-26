@@ -133,6 +133,21 @@ Likely placement:
   antibrackets, master equations, and the BV forms of the 1PI and Wilsonian
   effective actions are developed systematically.
 
+Current absorption:
+
+- The issue #583 BV deepening pass expands the gauge-theory BV chapter with
+  a finite-regulator infinitesimal exact-RG theorem, a local BV--BRST
+  comparison theorem for Yang--Mills with matter, ghost-number-zero
+  counterterm representatives, the ghost-number-one anomaly ledger, and the
+  regulated local-observable/factorization-algebra boundary.
+- The finite-dimensional BV/localization chapter now includes the compact
+  \(S^2\) Atiyah--Bott fixed-point model in addition to BV Stokes,
+  pushforward, normal Gaussian factors, and the Mathai--Quillen rank-one
+  calculation.
+- Companion checks now cover BV master-algebra signs, Yang--Mills ghost
+  nilpotency, doublet contraction, BV localization algebra, and the
+  \(S^2\) fixed-point coefficient identity.
+
 ### Local Quantum Field Theories
 
 Potential use:

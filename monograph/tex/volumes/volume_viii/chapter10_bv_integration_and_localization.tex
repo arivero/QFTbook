@@ -457,6 +457,96 @@ is transverse, the \(t\to\infty\) limit is the signed integration current on
 \(s^{-1}(0)\).  The rank-one calculation above is the local normal
 calculation at a transverse zero.
 
+\section{Atiyah--Bott Fixed-Point Model on the Two-Sphere}
+\label{sec:atiyah-bott-s2-model}
+
+The preceding normal determinant has a visible fixed-point form in the
+two-sphere model.  Write \(S^2\) with coordinates
+\[
+  x\in[-1,1],\qquad \varphi\in\mathbb R/2\pi\mathbb Z
+\]
+away from the two poles, and orient it by
+\[
+  \omega=\dd\varphi\wedge\dd x .
+\]
+Then \(\int_{S^2}\omega=4\pi\).  Let the circle act by
+\(\varphi\mapsto\varphi+\alpha\), and let \(V=\partial_\varphi\) be its
+generating vector field.  With equivariant parameter \(\lambda\), define
+\[
+  \dd_\lambda:=\dd-\lambda\,\iota_V,
+  \qquad
+  H=x .
+\]
+Since \(\iota_V\omega=\dd x\), the equivariant two-form
+\[
+  \Omega_\lambda:=\omega+\lambda H
+\]
+is closed:
+\[
+  \dd_\lambda\Omega_\lambda
+  =
+  \lambda\,\dd x-\lambda\,\iota_V\omega=0 .
+\]
+
+\begin{proposition}[Fixed-point formula in the \(S^2\) model]
+\label{prop:atiyah-bott-s2-model}
+For \(\lambda\ne0\),
+\begin{equation}
+  \int_{S^2}\ee^{\Omega_\lambda}
+  =
+  2\pi\,\frac{\ee^\lambda-\ee^{-\lambda}}{\lambda}.
+  \label{eq:s2-fixed-point-integral}
+\end{equation}
+The same value is obtained from the two fixed points of the circle action:
+\[
+  2\pi
+  \left(
+    \frac{\ee^{\lambda H(N)}}{\lambda w_N}
+    +
+    \frac{\ee^{\lambda H(S)}}{\lambda w_S}
+  \right),
+  \qquad
+  H(N)=1,\quad H(S)=-1,\quad w_N=1,\quad w_S=-1 .
+\]
+\end{proposition}
+
+\begin{proof}
+Only the top ordinary form degree contributes to the integral:
+\[
+  \ee^{\Omega_\lambda}
+  =
+  \ee^{\lambda x}(1+\omega),
+  \qquad
+  [\ee^{\Omega_\lambda}]_{\rm top}
+  =
+  \ee^{\lambda x}\omega .
+\]
+Therefore
+\[
+  \int_{S^2}\ee^{\Omega_\lambda}
+  =
+  \int_0^{2\pi}\dd\varphi
+  \int_{-1}^{1}\ee^{\lambda x}\dd x
+  =
+  2\pi\,\frac{\ee^\lambda-\ee^{-\lambda}}{\lambda}.
+\]
+
+Near the north pole, use a complex coordinate \(z\) in which the circle acts
+by \(z\mapsto\ee^{\ii\alpha}z\).  The tangent weight is \(w_N=1\), and
+\(H(N)=1\).  Near the south pole the coordinate \(z^{-1}\) has tangent weight
+\(w_S=-1\), and \(H(S)=-1\).  The one-dimensional normal Gaussian factor is
+the inverse equivariant Euler factor \((\lambda w_p)^{-1}\) at each fixed
+point \(p\), multiplied by the angular normalization \(2\pi\).  Summing the
+two contributions gives exactly \eqref{eq:s2-fixed-point-integral}.
+\end{proof}
+
+This model is finite-dimensional and compact, so no boundary term is hidden.
+In gauge-theory localization the fixed set is replaced by a moduli space of
+solutions to field equations, the weights become determinant lines of
+elliptic complexes, and compactness or a relative-cycle prescription must be
+proved before the fixed-point formula has the status of a field-theoretic
+identity.
+
 \section{Boundary And Noncompact Terms}
 
 If the integration cycle has boundary or noncompact ends, the derivative in
