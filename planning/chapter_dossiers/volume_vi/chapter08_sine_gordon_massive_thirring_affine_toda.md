@@ -26,7 +26,12 @@ families.  This chapter supplies the first exact examples before the later
   breather-breather scattering amplitude.
 - `psi_pm`, `K_pm`: Mandelstam soliton-creating fermion fields and Klein
   factors in the massive Thirring equivalence.
-- `psi`, `g_T`: massive Thirring fermion and current-current coupling.
+- `psi`, `g_T`, `K`, `phi_0`: massive Thirring fermion, current-current
+  coupling, massless Thirring current-sector kinetic coefficient
+  \(K=1+g_T/\pi\), and the free-Dirac bosonization scalar before the canonical
+  sine-Gordon rescaling.
+- `V_alpha`, `Delta_alpha`: canonical free-boson vertex operator and its
+  scaling dimension \(\alpha^2/(4\pi)\).
 - `g`, `alpha_i`, `theta`, `n_i`: Lie algebra, roots, highest root, and
   affine Dynkin labels in affine Toda theory.
 
@@ -55,10 +60,25 @@ families.  This chapter supplies the first exact examples before the later
   breather-breather amplitudes.
 - Proves that the direct pole of \(S_{mn}\) gives the mass of \(B_{m+n}\)
   whenever \((m+n)\xi<1\).
-- States the massive Thirring equivalence in Coleman's coupling convention.
-- Adds the Mandelstam semi-local fermion operator with the line integral of the
-  canonical momentum and states how it realizes topological charge and the
-  mass perturbation map.
+- Derives the canonical free-boson vertex OPE, separating the
+  \(V_\alpha V_{-\alpha}\) short-distance exponent
+  \(\alpha^2/(2\pi)\) from the scaling dimension \(\alpha^2/(4\pi)\).
+- Derives Coleman's coupling relation by representing the massless Thirring
+  current sector as a Gaussian scalar with kinetic coefficient
+  \(K=1+g_T/\pi\), then rescaling the free-Dirac bosonization mass operator.
+- Derives the sine-Gordon/Thirring current dictionary and shows that fermion
+  number equals sine-Gordon topological charge.
+- Proves the Mandelstam semi-local exchange phase directly from the
+  equal-time commutator of \(\varphi\) and the integrated canonical momentum,
+  including the anticommutation of identical Mandelstam fields.
+- Gives the operator dictionary for currents, the mass operator, the
+  Euclidean current square, and chiral higher-spin bilinears, with a
+  generating identity for the latter.
+- Checks the free-fermion point, the marginal sine-Gordon endpoint, and the
+  relevance threshold in the same coupling convention.
+- Places chiral bosonization, \(SU(N)_1\) nonabelian bosonization, and compact
+  radius defect formulations as convention-dependent extensions rather than
+  as undeclared generic statements.
 - Defines affine Toda action data and derives the classical mass matrix from
   the affine-root potential.
 
@@ -69,6 +89,10 @@ families.  This chapter supplies the first exact examples before the later
   soliton-breather unitarity/crossing/pole kinematics, lightest-breather
   direct and crossed poles, neutral-block residue signs, and breather-breather
   fusion mass formulae.
+- `calculation-checks/sg_thirring_bosonization_checks.py` verifies the
+  vertex-OPE exponent versus scaling dimension, Coleman's coupling map,
+  current-dictionary coefficient, Mandelstam exchange phase, free-fermion
+  point, and relevance threshold using exact rational arithmetic.
 
 ## Figure Ledger
 

@@ -10,8 +10,8 @@ BUILD_LOG="$TEX_DIR/build/latexmk.out"
 "$ROOT/tools/audit_monograph_text.sh"
 latexmk -xelatex -interaction=nonstopmode main.tex 2>&1 | tee "$BUILD_LOG"
 
-FINAL_LOG_ISSUE_PATTERN="(^!|LaTeX Error|Package [A-Za-z]+ Error|Package amsmath Warning: Foreign command|Package hyperref Warning: Token not allowed|Emergency stop|Fatal error|Undefined control sequence|Reference .* undefined|Citation .* undefined|Missing .* inserted|Overfull|Underfull|already defined|multiply defined|xdvipdfmx:warning)"
-BUILD_LOG_FATAL_PATTERN="(^!|LaTeX Error|Package [A-Za-z]+ Error|Package amsmath Warning: Foreign command|Package hyperref Warning: Token not allowed|Emergency stop|Fatal error|Undefined control sequence|Missing .* inserted|xdvipdfmx:warning)"
+FINAL_LOG_ISSUE_PATTERN="(^!|LaTeX Error|Package [A-Za-z]+ Error|Package amsmath Warning: Foreign command|Package hyperref Warning: Token not allowed|Emergency stop|Fatal error|Undefined control sequence|LaTeX Warning: Reference .* undefined|LaTeX Warning: Citation .* undefined|Reference .* undefined|Citation .* undefined|Missing .* inserted|Overfull|Underfull|already defined|multiply defined|xdvipdfmx:warning)"
+BUILD_LOG_FATAL_PATTERN="(^!|LaTeX Error|Package [A-Za-z]+ Error|Package amsmath Warning: Foreign command|Package hyperref Warning: Token not allowed|Emergency stop|Fatal error|Undefined control sequence|LaTeX Warning: Reference .* undefined|LaTeX Warning: Citation .* undefined|Latex failed to resolve|Missing .* inserted|xdvipdfmx:warning)"
 
 if command -v rg >/dev/null 2>&1; then
   if rg -n "$FINAL_LOG_ISSUE_PATTERN" main.log; then

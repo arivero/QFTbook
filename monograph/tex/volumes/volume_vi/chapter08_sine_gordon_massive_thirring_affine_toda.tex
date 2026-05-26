@@ -693,7 +693,13 @@ which proves the claim.
 \end{proof}
 
 \section{Massive Thirring Equivalence}
+\label{sec:sine-gordon-massive-thirring-equivalence}
 
+We use the Lorentzian mostly-plus metric in this section, set
+\(\epsilon^{01}=+1\), and write
+\[
+  j^\mu=\bar\psi\gamma^\mu\psi .
+\]
 The massive Thirring model has Dirac field \(\psi\) and action
 \[
   S_{\mathrm{MT}}
@@ -706,20 +712,199 @@ The massive Thirring model has Dirac field \(\psi\) and action
   (\bar\psi\gamma^\mu\psi)(\bar\psi\gamma_\mu\psi)
   \right].
 \]
-In Coleman's normalization, the sine-Gordon and massive Thirring couplings
-are related by
+The parameter \(g_{\mathrm T}\) is the coefficient of the displayed
+renormalized current square in the vector-current point-splitting scheme used
+below.  Changing the current contact term changes this coordinate; the
+relation to the sine-Gordon coupling is therefore a relation between declared
+renormalization charts with specified current contact terms and vertex
+normal-ordering schemes.
+
+\subsection{Free-Boson Vertex Chart}
+
+Let \(\varphi\) be a Euclidean free scalar with canonical action
 \[
-  \frac{4\pi}{\beta^2}=1+\frac{g_{\mathrm{T}}}{\pi}.
+  A_{\mathrm{can}}[\varphi]
+  =
+  \frac12\int_{\mathbb R^2}\dd^2x\,
+  \partial_\alpha\varphi\,\partial_\alpha\varphi ,
+  \qquad
+  \langle\varphi(x)\varphi(0)\rangle_{\mathrm{can}}
+  =
+  -\frac{1}{2\pi}\log(\mu_{\mathrm R}|x|)+C ,
 \]
-The equivalence identifies the Thirring fermion number with the sine-Gordon
-topological charge:
+where \(\mu_{\mathrm R}\) is the normal-ordering scale and \(C\) is removed
+by normal ordering.  Define
 \[
-  \bar\psi\gamma^\mu\psi
+  V_\alpha(x)=:\!\exp(\ii\alpha\varphi(x))\!: .
+\]
+
+\begin{proposition}[Vertex OPE and scaling dimension]
+\label{prop:sg-thirring-vertex-ope}
+In the above canonical scalar chart,
+\begin{equation}
+  V_\alpha(x)V_{-\alpha}(y)
+  =
+  (\mu_{\mathrm R}|x-y|)^{-\alpha^2/(2\pi)}
+  :\!\exp(\ii\alpha(\varphi(x)-\varphi(y)))\!:
+  \label{eq:sg-thirring-vertex-ope}
+\end{equation}
+for \(x\ne y\), with the right side understood as an asymptotic expansion in
+local derivatives at \(y\).  The scaling dimension of \(V_\alpha\) is
+\begin{equation}
+  \Delta_\alpha=\frac{\alpha^2}{4\pi},
+  \qquad
+  h_\alpha=\bar h_\alpha=\frac{\alpha^2}{8\pi}.
+  \label{eq:sg-thirring-vertex-dimension}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Normal ordering removes all self-contractions, so Wick's theorem gives the
+single cross-contraction factor
+\[
+  \exp\!\left[
+    (\ii\alpha)(-\ii\alpha)
+    \langle\varphi(x)\varphi(y)\rangle_{\mathrm{can}}
+  \right]
+  =
+  (\mu_{\mathrm R}|x-y|)^{-\alpha^2/(2\pi)} .
+\]
+The remaining normal-ordered exponential is the displayed operator.  A scalar
+primary of dimension \(\Delta\) has two-point singularity
+\(|x-y|^{-2\Delta}\), hence
+\(2\Delta_\alpha=\alpha^2/(2\pi)\).  Rotational invariance gives
+\(h_\alpha=\bar h_\alpha=\Delta_\alpha/2\).
+\end{proof}
+
+In this canonical chart the sine-Gordon perturbation
+\[
+  \int\dd^2x\,:\!\cos(\beta\varphi)\!:
+\]
+has scaling dimension
+\[
+  \Delta_{\cos}=\frac{\beta^2}{4\pi}.
+\]
+It is relevant in the ultraviolet Gaussian theory exactly for
+\(\beta^2<8\pi\), marginal at \(\beta^2=8\pi\), and irrelevant for
+\(\beta^2>8\pi\).
+
+\subsection{Current Algebra and the Coleman Coupling Map}
+
+Let \(\phi_0\) denote the canonical scalar that bosonizes the current sector
+of a free massless Dirac fermion.  With the vector-current point-splitting
+contact term fixed by the Schwinger term, the current map is
+\begin{equation}
+  j^\mu
+  =
+  \frac{1}{\sqrt\pi}\epsilon^{\mu\nu}\partial_\nu\phi_0 .
+  \label{eq:sg-thirring-free-current-map}
+\end{equation}
+Equivalently, in Euclidean signature the source functional for the free
+Dirac vector current is the Gaussian scalar functional obtained from
+\[
+  A_E[\phi_0,b]
+  =
+  \frac12\int\dd^2x\,(\partial\phi_0)^2
+  -\frac{\ii}{\sqrt\pi}
+  \int\dd^2x\,b_\mu\epsilon^{\mu\nu}\partial_\nu\phi_0 ,
+\]
+up to the local contact term fixed by current conservation.  This is the
+same normalization used in the Schwinger-model derivation in
+Chapter~\ref{ch:schwinger-model}.
+
+\begin{proposition}[Coleman relation from the current-sector Gaussian]
+\label{prop:sg-thirring-coleman-relation}
+In the Euclidean massless Thirring current sector with \(K>0\),
+\[
+  K=1+\frac{g_{\mathrm T}}{\pi},
+\]
+the scalar kinetic term is
+\[
+  A_{\mathrm{MT},m=0}^{E}
+  =
+  \frac{K}{2}\int\dd^2x\,(\partial\phi_0)^2 .
+\]
+After the canonical rescaling
+\[
+  \varphi=\sqrt K\,\phi_0 ,
+\]
+the fermion mass operator is represented by
+\[
+  \bar\psi\psi
+  \longleftrightarrow
+  C_m:\!\cos(\beta\varphi)\!: ,
+  \qquad
+  \beta^2=\frac{4\pi}{K},
+\]
+where \(C_m\) is the finite normalization of the renormalized mass operator.
+Therefore
+\begin{equation}
+  \frac{4\pi}{\beta^2}=1+\frac{g_{\mathrm T}}{\pi}.
+  \label{eq:sg-thirring-coleman-relation}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For one free Dirac fermion, the current map
+\eqref{eq:sg-thirring-free-current-map} gives in Euclidean signature
+\[
+  j_\mu j_\mu=\frac1\pi\,\partial_\mu\phi_0\,\partial_\mu\phi_0 .
+\]
+The Euclidean Thirring weight corresponding to the Lorentzian interaction
+displayed at the beginning of this section therefore contributes
+\[
+  \frac{g_{\mathrm T}}{2}
+  \int\dd^2x\,j_\mu j_\mu
+  =
+  \frac{g_{\mathrm T}}{2\pi}
+  \int\dd^2x\,(\partial\phi_0)^2 .
+\]
+Adding the free scalar action gives the kinetic coefficient \(K\).  The
+condition \(K>0\) is the positivity condition for the Euclidean Gaussian
+current functional in this chart.
+
+At \(g_{\mathrm T}=0\), chiral bosonization gives
+\[
+  \bar\psi_L\psi_R+\bar\psi_R\psi_L
+  \longleftrightarrow
+  C_m:\!\cos(\sqrt{4\pi}\,\phi_0)\!: .
+\]
+The current-current deformation changes only the kinetic coefficient of the
+current scalar.  Rewriting the same operator in the canonical field
+\(\varphi=\sqrt K\,\phi_0\) gives
+\[
+  \sqrt{4\pi}\,\phi_0
+  =
+  \frac{\sqrt{4\pi}}{\sqrt K}\,\varphi .
+\]
+Thus the sine-Gordon vertex charge is
+\(\beta=\sqrt{4\pi/K}\), which is equivalent to
+\eqref{eq:sg-thirring-coleman-relation}.
+\end{proof}
+
+Combining \eqref{eq:sg-thirring-free-current-map} with the same rescaling
+gives the current dictionary in the sine-Gordon canonical field,
+\begin{equation}
+  j^\mu
   =
   \frac{\beta}{2\pi}\epsilon^{\mu\nu}\partial_\nu\varphi .
+  \label{eq:sg-thirring-current-dictionary}
+\end{equation}
+The integrated charge is
+\[
+  \int dx\,j^0
+  =
+  \frac{\beta}{2\pi}
+  \int dx\,\partial_x\varphi
+  =
+  Q_{\mathrm{top}},
 \]
-The fermion field itself is a semi-local soliton vertex operator.  In the
-equal-time canonical chart
+so fermion number equals the sine-Gordon topological charge.
+
+\subsection{Mandelstam Operator and Exchange Phase}
+
+The fermion field is a semi-local soliton vertex operator.  In the equal-time
+canonical chart
 \[
   [\varphi(t,x),\Pi(t,y)]=\ii\delta(x-y),
   \qquad
@@ -740,18 +925,199 @@ Mandelstam's soliton-creating fields have the normal-ordered form
 \end{equation}
 where \(Z_\psi\) is a finite field normalization fixed by the one-particle
 residue, \(\mathcal K_\pm\) are Klein factors implementing the two chiral
-Clifford generators, and the displayed vertex is understood in the same UV
-normal-ordering scheme as the sine-Gordon perturbation.  The line integral
-makes \(\psi_\pm\) carry topological charge and gives the semi-local exchange
-phase with \(\varphi\).  Computing equal-time commutators from the displayed
-canonical relation gives the current relation above, while the short-distance
-exchange phase of the two Mandelstam exponentials fixes the Coleman relation
-between \(g_{\mathrm T}\) and \(\beta\).  In particular,
+Clifford generators, and the displayed vertex is normal ordered in the same
+UV scheme as the sine-Gordon perturbation.
+
+\begin{proposition}[Fermi exchange from the Mandelstam line]
+\label{prop:sg-thirring-mandelstam-exchange}
+For
 \[
-  \bar\psi\psi
-  \quad\text{is proportional, after the same finite normalization choice, to}\quad
-  :\!\cos(\beta\varphi)\!: .
+  I(t,x)=\int_{-\infty}^{x}\dd y\,\Pi(t,y),
+  \qquad
+  M_{a,b}(t,x)=:\!\exp(\ii a\varphi(t,x)+\ii bI(t,x))\!: ,
 \]
+the equal-time product at \(x\ne y\) obeys
+\[
+  M_{a,b}(t,x)M_{a,b}(t,y)
+  =
+  \exp\!\bigl(\ii ab\,\operatorname{sgn}(x-y)\bigr)
+  M_{a,b}(t,y)M_{a,b}(t,x).
+\]
+The exponential part of \(\psi_\pm\) in
+\eqref{eq:sine-gordon-mandelstam-fermion} has \(ab=\pm\pi\).  Hence two
+identical Mandelstam fields anticommute at separated equal-time points; the
+Klein factors supply the anticommutation between the two chiral labels.
+\end{proposition}
+
+\begin{proof}
+The canonical commutator gives
+\[
+  [\varphi(t,x),I(t,y)]=\ii\Theta(y-x),
+  \qquad
+  [I(t,x),\varphi(t,y)]=-\ii\Theta(x-y),
+\]
+where \(\Theta\) is the step function.  Thus the exponent
+\[
+  A(x)=\ii a\varphi(t,x)+\ii bI(t,x)
+\]
+satisfies
+\[
+  [A(x),A(y)]
+  =
+  \ii ab\bigl(\Theta(x-y)-\Theta(y-x)\bigr)
+  =
+  \ii ab\,\operatorname{sgn}(x-y).
+\]
+This commutator is a scalar, so the Baker-Campbell-Hausdorff identity gives
+the product formula.  In
+\eqref{eq:sine-gordon-mandelstam-fermion},
+\[
+  b=-\frac{2\pi}{\beta},
+  \qquad
+  a=\mp\frac{\beta}{2},
+\]
+and therefore \(ab=\pm\pi\).  Since
+\(\exp(\pm\ii\pi\,\operatorname{sgn}(x-y))=-1\), the separated equal-time
+exchange is fermionic.
+\end{proof}
+
+The scaling dimension of the Mandelstam exponential follows from the local
+field and dual-field two-point functions:
+\begin{equation}
+  \Delta_\psi(\beta)
+  =
+  \frac1{4\pi}
+  \left(\frac{\beta^2}{4}+\frac{4\pi^2}{\beta^2}\right)
+  =
+  \frac{\beta^2}{16\pi}+\frac{\pi}{\beta^2}.
+  \label{eq:sg-thirring-fermion-dimension}
+\end{equation}
+At \(\beta^2=4\pi\) this gives \(\Delta_\psi=1/2\), the free Dirac value.
+
+\subsection{Operator Dictionary and Correlation Checks}
+
+With the conventions fixed above, the local operator dictionary begins as
+\begin{equation}
+\begin{array}{ccl}
+  j^\mu=\bar\psi\gamma^\mu\psi
+  &\longleftrightarrow&
+  \dfrac{\beta}{2\pi}\epsilon^{\mu\nu}\partial_\nu\varphi,
+  \\[1.1em]
+  \bar\psi\psi=\bar\psi_L\psi_R+\bar\psi_R\psi_L
+  &\longleftrightarrow&
+  C_m:\!\cos(\beta\varphi)\!:,
+  \\[1.1em]
+  j_\mu j_\mu\ \text{in Euclidean signature}
+  &\longleftrightarrow&
+  \left(\dfrac{\beta}{2\pi}\right)^2
+  \partial_\mu\varphi\,\partial_\mu\varphi,
+  \\[1.1em]
+  :\!\psi_R^\dagger\partial_-^s\psi_R\!:
+  &\longleftrightarrow&
+  \mathcal P_{s+1}^{(R)}[\varphi_R] .
+\end{array}
+\label{eq:sg-thirring-operator-dictionary}
+\end{equation}
+The last line is fixed by the chiral generating identity
+\begin{equation}
+  :\!\psi_R^\dagger(x+\ell)\psi_R(x-\ell)\!:
+  =
+  \frac{1}{2\pi\ii\,\ell}
+  \left[
+    :\!\exp\!\left(
+      -\ii\sqrt{4\pi}\,
+      \bigl(\varphi_R(x+\ell)-\varphi_R(x-\ell)\bigr)
+    \right)\!:
+    -1
+  \right],
+  \label{eq:sg-thirring-higher-spin-generating}
+\end{equation}
+expanded in \(\ell\) after subtracting the singular free-fermion contraction.
+The left side generates chiral bilinear currents; the right side generates
+the normal-ordered differential polynomials
+\(\mathcal P_{s+1}^{(R)}[\varphi_R]\) in
+\(\partial_-\varphi_R,\ldots,\partial_-^{s+1}\varphi_R\).
+
+At the free-fermion point \(\beta^2=4\pi\), hence \(K=1\) and
+\(g_{\mathrm T}=0\), the chiral vertex
+\[
+  \psi_R(z)=\frac{\mathcal K_R}{\sqrt{2\pi a}}\,
+  :\!\exp(\ii\sqrt{4\pi}\,\varphi_R(z))\!:
+\]
+has
+\[
+  \langle\psi_R(z)\psi_R^\dagger(0)\rangle
+  =
+  \frac{1}{2\pi z}
+\]
+after the short-distance length \(a\) is identified with the chosen
+normal-ordering scale.  This follows from the chiral version of
+Proposition~\ref{prop:sg-thirring-vertex-ope}, whose exponent is
+\(\alpha^2/(4\pi)=1\) for \(\alpha=\sqrt{4\pi}\).  The full mass operator
+\(\bar\psi\psi\) has dimension \(1\), matching
+\(:\!\cos(\sqrt{4\pi}\,\varphi)\!:\).  At the marginal sine-Gordon endpoint
+\(\beta^2=8\pi\), the mass operator has dimension \(2\), while
+\eqref{eq:sg-thirring-coleman-relation} gives
+\[
+  g_{\mathrm T}=-\frac{\pi}{2}.
+\]
+Thus the cosine perturbation is relevant precisely for
+\[
+  \beta^2<8\pi
+  \quad\Longleftrightarrow\quad
+  1+\frac{g_{\mathrm T}}{\pi}>\frac12
+  \quad\Longleftrightarrow\quad
+  g_{\mathrm T}>-\frac{\pi}{2}.
+\]
+The current-current coordinate \(g_{\mathrm T}\) itself is an exactly
+marginal current-algebra coordinate in the massless Abelian theory; it changes
+the compact-boson radius and thereby changes the dimension of the mass
+operator.
+
+\subsection{Chiral, Nonabelian, and Defect Extensions}
+
+The Abelian discussion has a chiral refinement.  A right-moving complex
+fermion current
+\[
+  J_R=:\!\psi_R^\dagger\psi_R\!:
+\]
+is represented by a chiral scalar \(\varphi_R\) through
+\[
+  J_R=\frac{1}{\sqrt\pi}\partial_-\varphi_R,
+  \qquad
+  \psi_R\propto \mathcal K_R:\!\exp(\ii\sqrt{4\pi}\,\varphi_R)\!: .
+\]
+The chiral current OPE fixes the coefficient exactly as in the nonchiral
+current-sector proof: both sides have the same Schwinger term.
+
+For \(N\) massless complex fermions, decompose the currents into the total
+Abelian current and the traceless \(\mathfrak{su}(N)\) currents
+\[
+  J^a_R=:\!\psi_R^\dagger t^a\psi_R\!: .
+\]
+The nonabelian current OPE is the affine \(\widehat{\mathfrak{su}}(N)_1\)
+current algebra in the generator normalization used in the volume containing
+nonabelian gauge theory.  The nonabelian bosonic presentation is the
+\(SU(N)_1\) WZW model, with the Sugawara stress tensor and primary field
+normalizations reviewed in
+Section~\ref{sec:wzw-affine-currents-cosets}.  The Abelian sine-Gordon
+equivalence is the \(U(1)\) factor of this broader bosonization mechanism;
+interactions that preserve only a subgroup require a separate operator
+dictionary in the corresponding current algebra.
+
+There is also a defect formulation at compact-boson radii where the
+topological defect category is defined.  A duality defect is an object \(D\)
+whose fusion with its orientation reverse decomposes into a sum of symmetry
+defects rather than the identity alone.  At rational compactification radii
+and after specifying spin structure, charge lattice, and boundary-condition
+sector, the bosonization map can be represented by such defects between the
+fermionic and bosonic descriptions.  For the generic massive sine-Gordon and
+massive Thirring continuum theories, the primary statement used in this
+chapter remains the operator and scattering-data equivalence fixed by
+\eqref{eq:sg-thirring-coleman-relation}--\eqref{eq:sg-thirring-operator-dictionary}.
+The categorical defect formulation supplies an additional finite-symmetry
+organization only after those extra compactification data have been declared.
+
 At the free-fermion point \(\beta^2=4\pi\), hence \(g_{\mathrm{T}}=0\), the
 soliton and antisoliton form the massive Dirac particle and antiparticle.
 Away from this point the equivalence is a statement about renormalized local

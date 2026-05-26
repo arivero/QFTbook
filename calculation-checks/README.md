@@ -246,6 +246,11 @@ Current checks:
   Yang-Baxter, the free-fermion point, breather pole locations, breather mass
   kinematics, soliton-breather unitarity/crossing/pole kinematics, and
   lightest-breather unitarity and crossing.
+- `sg_thirring_bosonization_checks.py`: exact rational checks for the
+  sine-Gordon/massive-Thirring bosonization section, including the distinction
+  between vertex-OPE exponent and scaling dimension, Coleman's coupling map,
+  the current-dictionary coefficient, the Mandelstam exchange phase, the
+  free-fermion point, and the sine-Gordon relevance threshold.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign
