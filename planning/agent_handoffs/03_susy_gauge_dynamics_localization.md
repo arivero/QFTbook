@@ -2,7 +2,14 @@
 
 ## Primary Scope
 
-Issues: #588, #603, #605, #590, #592 where overlapping.
+Issues: #588, #603, #605, #592 where overlapping.
+
+Explicitly excluded: #590.  Four-dimensional theories obtained from
+Calabi--Yau compactification, heterotic/type-II gauge-bundle data, or any
+other superstring compactification are not part of this QFT monograph.  When
+this handoff says "compactification" below, it means field-theoretic
+finite-volume limits, boundary conditions, or compactifications of moduli
+spaces such as instanton moduli spaces, not string compactification.
 Main files:
 
 - `monograph/tex/volumes/volume_vii/chapter01_supersymmetry_algebras_and_representations.tex`
