@@ -1163,6 +1163,31 @@ def check_one_loop_relative_scale_gap_arithmetic():
     assert_equal(off_gap_sum, Fraction(1, 3), "one-loop off gap sum")
 
 
+def check_hilbert_scale_tightness_arithmetic():
+    # Compactness of the H^{-eta} ball in H^{-kappa} follows from the
+    # high-mode estimate
+    #   ||(1-P_M) phi||_{H^{-kappa}}^2
+    #     <= <M>^{-2(kappa-eta)} ||phi||_{H^{-eta}}^2.
+    kappa = Fraction(1, 4)
+    eta = Fraction(1, 8)
+    tail_exponent = 2 * (kappa - eta)
+    assert_equal(tail_exponent, Fraction(1, 4), "Hilbert-scale tail exponent")
+    norm_tail_exponent = kappa - eta
+    assert_equal(norm_tail_exponent, Fraction(1, 8), "Hilbert-scale norm-tail exponent")
+
+    # For dyadic M=2^m the algebraic decay is 2^{-m/4} in the squared norm.
+    m = 8
+    assert_equal(m * tail_exponent, Fraction(2), "dyadic Hilbert-scale tail power")
+    assert_equal(m * norm_tail_exponent, Fraction(1), "dyadic Hilbert-scale norm-tail power")
+
+    # Markov's inequality in the tightness criterion:
+    # nu(||phi||_{H^{-eta}}>R) <= C R^{-p}.
+    C = Fraction(3)
+    R = Fraction(6)
+    p = 3
+    assert_equal(C * R ** (-p), Fraction(1, 72), "Hilbert-scale Markov tail")
+
+
 def check_quartic_tail_integrability_arithmetic():
     # One-dimensional quartic reference density exp(-a x^4).  The exact
     # even moment is
@@ -1235,8 +1260,9 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
+    check_hilbert_scale_tightness_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

@@ -989,6 +989,97 @@ limiting Markov semigroup on the same topology.  This is the exact
 invariant-law step that sits between cutoff Langevin stationarity and a
 Euclidean measure for QFT.
 
+\begin{proposition}[Sobolev compactness criterion for cutoff-field tightness]
+\label{prop:spde-sobolev-compactness-tightness}
+Let \(0<\eta<\kappa\), \(p>0\), and let \(\{\nu_N\}\) be Borel probability
+measures on \(H^{-\kappa}(\mathbb T^2)\).  Suppose that each \(\nu_N\) is
+carried by \(H^{-\eta}(\mathbb T^2)\) and that
+\begin{equation}
+  \sup_N
+  \int
+  \|\phi\|_{H^{-\eta}}^p\,\dd\nu_N(\phi)
+  \leq C
+  <\infty .
+  \label{eq:spde-tightness-h-minus-eta-moment}
+\end{equation}
+Then \(\{\nu_N\}\) is tight as a family of probability measures on
+\(H^{-\kappa}(\mathbb T^2)\).  More explicitly, for every \(R>0\) the set
+\[
+  K_R=\{\phi\in H^{-\eta}(\mathbb T^2):
+          \|\phi\|_{H^{-\eta}}\leq R\}
+\]
+is compact in \(H^{-\kappa}(\mathbb T^2)\), and
+\[
+  \nu_N(K_R^c)\leq C R^{-p}.
+\]
+\end{proposition}
+
+\begin{proof}
+Write the Fourier coefficients of \(\phi\) as \(\widehat\phi(k)\),
+\(k\in\mathbb Z^2\), and set
+\(\langle k\rangle=(1+|k|^2)^{1/2}\).  The Sobolev norms are
+\[
+  \|\phi\|_{H^{-\rho}}^2
+  =
+  \sum_{k\in\mathbb Z^2}
+  \langle k\rangle^{-2\rho}|\widehat\phi(k)|^2 ,
+  \qquad \rho\geq0 .
+  \label{eq:spde-negative-sobolev-fourier-norm}
+\]
+Let \(P_M\) be the projection to Fourier modes \(|k|\leq M\), and write
+\(\langle M\rangle=(1+M^2)^{1/2}\).  If \(\phi\in K_R\), then
+\[
+\begin{aligned}
+  \|(1-P_M)\phi\|_{H^{-\kappa}}^2
+  &=
+  \sum_{|k|>M}
+  \langle k\rangle^{-2(\kappa-\eta)}
+  \langle k\rangle^{-2\eta}|\widehat\phi(k)|^2
+\\
+  &\leq
+  \langle M\rangle^{-2(\kappa-\eta)}
+  \|\phi\|_{H^{-\eta}}^2
+  \leq
+  \langle M\rangle^{-2(\kappa-\eta)}R^2 .
+\end{aligned}
+\]
+Thus the high-frequency tail of \(K_R\) is uniformly small in
+\(H^{-\kappa}\).  The set \(P_MK_R\) is bounded in a finite-dimensional
+space and is therefore totally bounded.  Given \(\varepsilon>0\), choose
+\(M\) so that
+\(\langle M\rangle^{-(\kappa-\eta)}R<\varepsilon/3\), cover \(P_MK_R\) by
+finitely many \(H^{-\kappa}\)-balls of radius \(\varepsilon/3\), and add the
+tail estimate.  This proves that \(K_R\) is totally bounded in
+\(H^{-\kappa}\).
+
+It remains only to see that \(K_R\) is closed in \(H^{-\kappa}\).  If
+\(\phi_n\in K_R\) and \(\phi_n\to\phi\) in \(H^{-\kappa}\), then each
+Fourier coefficient converges.  Fatou's lemma gives
+\[
+  \|\phi\|_{H^{-\eta}}^2
+  =
+  \sum_k
+  \langle k\rangle^{-2\eta}|\widehat\phi(k)|^2
+  \leq
+  \liminf_{n\to\infty}
+  \sum_k
+  \langle k\rangle^{-2\eta}|\widehat\phi_n(k)|^2
+  \leq R^2 .
+\]
+Therefore \(\phi\in K_R\), so \(K_R\) is compact in \(H^{-\kappa}\).
+Finally, Markov's inequality applied to
+\eqref{eq:spde-tightness-h-minus-eta-moment} gives
+\[
+  \nu_N(K_R^c)
+  =
+  \nu_N\{\|\phi\|_{H^{-\eta}}>R\}
+  \leq
+  R^{-p}\int\|\phi\|_{H^{-\eta}}^p\,\dd\nu_N
+  \leq C R^{-p}.
+\]
+Choosing \(R\) large proves tightness.
+\end{proof}
+
 \begin{proposition}[Closedness of OS reflection positivity under weak convergence]
 \label{prop:spde-os-positivity-closed-under-weak-convergence}
 Let \(E\) be a Hausdorff locally convex real vector space of Euclidean
@@ -1342,7 +1433,12 @@ Assume the following three further analytic facts.
   uniformly on compact subsets of the enhanced-noise/initial-data space.
   \item The stationary laws \(\{\mu_N\}\) are tight in \(H^{-\kappa}\), and
   every weak limit \(\mu\) is carried by fields admitting the decomposition
-  \(\Phi=X+Y\) with \(Y\) given by the global DPD solution map.
+  \(\Phi=X+Y\) with \(Y\) given by the global DPD solution map.  By
+  Proposition~\ref{prop:spde-sobolev-compactness-tightness}, this tightness
+  follows from a cutoff-uniform moment bound in \(H^{-\eta}\) for some
+  \(0<\eta<\kappa\); the interacting stationary cutoff family therefore
+  requires an independent constructive estimate establishing that moment
+  bound before the weak-convergence passage is invoked.
   \item Reflection positivity of the cutoff measures \(\mu_N\) holds for
   bounded cylinder observables depending on positive Euclidean time, and
   the polynomial Wick observables used to identify Schwinger functions obey
@@ -1429,10 +1525,13 @@ Sobolev Wick-power construction, the path-space enhanced-noise convergence,
 the Sobolev DPD local solution map, the smooth enhanced-noise energy
 inequality, and the abstract invariant-law passage.  The sharp global
 two-dimensional theorem still requires four further inputs: rough
-Besov--Hölder energy continuity, tightness, uniform integrability, and either
-finite-cutoff OS positivity for the stochastic regulator itself or a
-regulator-comparison theorem relating it to the OS-positive lattice regulator
-of Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
+Besov--Hölder energy continuity, a cutoff-uniform negative-Sobolev moment
+strong enough to imply tightness by
+Proposition~\ref{prop:spde-sobolev-compactness-tightness}, uniform
+integrability, and either finite-cutoff OS positivity for the stochastic
+regulator itself or a regulator-comparison theorem relating it to the
+OS-positive lattice regulator of
+Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
 uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite

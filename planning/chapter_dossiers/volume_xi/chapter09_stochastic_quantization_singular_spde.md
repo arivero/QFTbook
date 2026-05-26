@@ -61,6 +61,13 @@ data.
   estimate.
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
+- `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
+  cutoff-field compactness criterion; \(0<\eta<\kappa\), the moment order is
+  \(p\), and \(K_R\) is the \(H^{-\eta}\)-ball viewed inside
+  \(H^{-\kappa}\).
+- `P_M`: Fourier projection to modes \(|k|\le M\) used locally in the
+  compactness proof for \(K_R\).  This is distinct from the ultraviolet
+  regulator \(P_N\) used in the stochastic cutoff family.
 - `Lambda_{a,L}`, `vartheta`, `mu_{a,L}`, `S_{a,L}`, `V_x`: finite lattice,
   time reflection, lattice Euclidean measure, lattice scalar action, and
   reflection-invariant on-site potential used in the OS-positive lattice
@@ -199,6 +206,13 @@ data.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
+- Proves the Sobolev compactness criterion used to turn a cutoff-uniform
+  \(H^{-\eta}\) moment, with \(0<\eta<\kappa\), into tightness of cutoff
+  laws in \(H^{-\kappa}\).  The proof is explicit in Fourier modes: the
+  \(H^{-\kappa}\) high-frequency tail of the \(H^{-\eta}\)-ball is bounded
+  by \(\langle M\rangle^{-2(\kappa-\eta)}R^2\), finite-dimensional
+  projections give total boundedness, Fatou gives closedness, and Markov's
+  inequality gives the probability tail.
 - Proves closedness of OS reflection positivity under weak convergence for
   bounded positive-time cylinder observables, and isolates the additional
   uniform-integrability hypothesis needed to pass unbounded polynomial
@@ -682,3 +696,9 @@ data maps.
   Young inequality, and the polynomial-by-exponential tail domination used in
   the proof.  The pass deliberately does not claim continuum tightness or
   uniform moment bounds; those remain constructive estimates.
+- 2026-05-26 issue #608 tightness pass: added the Sobolev compactness
+  criterion proving that a cutoff-uniform \(H^{-\eta}\) moment with
+  \(0<\eta<\kappa\) implies tightness in \(H^{-\kappa}\).  The proof spells
+  out the compact embedding by Fourier projection and records the exact
+  Markov-tail estimate; the calculation-check companion verifies the
+  Hilbert-scale exponent and sample Markov arithmetic.
