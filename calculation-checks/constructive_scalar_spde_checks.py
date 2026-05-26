@@ -480,6 +480,43 @@ def check_dyadic_net_supremum_upgrade_arithmetic():
     assert_equal(cutoff_total, Fraction(27, 16), "dyadic-net cutoff tail")
 
 
+def check_coordinate_to_model_convergence_arithmetic():
+    # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
+    # epsilon=2, every coordinate has geometric ratio 1/2.  The first
+    # uniform coordinate has S_1=3*5+2*3/(1-1/2)=27.  The second has
+    # S_2=4*2+3*1/(1-1/2)=14.
+    p = 2
+    epsilon = 2
+    if epsilon % p != 0:
+        raise AssertionError("coordinate-to-model sample must use integral epsilon/p")
+    ratio = Fraction(1, 2) ** (epsilon // p)
+    s1 = 3 * 5 + 2 * 3 / (1 - ratio)
+    s2 = 4 * 2 + 3 * 1 / (1 - ratio)
+    a_ctrl = 2
+    uniform_lp_bound = a_ctrl * (1 + s1 + s2)
+    assert_equal(s1, 27, "coordinate-to-model S1")
+    assert_equal(s2, 14, "coordinate-to-model S2")
+    assert_equal(uniform_lp_bound, 84, "coordinate-to-model uniform Lp bound")
+    assert_equal(uniform_lp_bound**p, 7056, "coordinate-to-model C_N")
+
+    # Increment constants: S~_1=2*3+1*2/(1-1/2)=10 and
+    # S~_2=1*5+2*1/(1-1/2)=9.
+    stilde1 = 2 * 3 + 1 * 2 / (1 - ratio)
+    stilde2 = 1 * 5 + 2 * 1 / (1 - ratio)
+    distance_prefactor = a_ctrl * (stilde1 + stilde2)
+    assert_equal(stilde1, 10, "coordinate-to-model S-tilde1")
+    assert_equal(stilde2, 9, "coordinate-to-model S-tilde2")
+    assert_equal(distance_prefactor, 38, "coordinate-to-model distance prefactor")
+    assert_equal(distance_prefactor**p, 1444, "coordinate-to-model C_D")
+
+    rho = 1
+    n = 3
+    distance_lp_bound = distance_prefactor * Fraction(1, 2) ** (rho * n)
+    distance_p_moment = distance_lp_bound**p
+    assert_equal(distance_lp_bound, Fraction(19, 4), "coordinate-to-model dyadic distance")
+    assert_equal(distance_p_moment, Fraction(361, 16), "coordinate-to-model dyadic p-moment")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -499,7 +536,8 @@ def main():
     check_dyadic_parabolic_convolution_bound_arithmetic()
     check_parabolic_taylor_subtraction_gain_arithmetic()
     check_dyadic_net_supremum_upgrade_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, and dyadic-net supremum checks passed.")
+    check_coordinate_to_model_convergence_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, and coordinate-to-model convergence checks passed.")
 
 
 if __name__ == "__main__":

@@ -104,7 +104,9 @@ Current checks:
   the dyadic parabolic convolution bound, and the exponent arithmetic in the
   parabolic Taylor-subtraction gain, together with the finite-net entropy
   cancellation and geometric-series arithmetic in the dyadic-net supremum
-  upgrade from pointwise coordinate moments to compact model-seminorm bounds.
+  upgrade from pointwise coordinate moments to compact model-seminorm bounds,
+  plus the finite-coordinate arithmetic that converts those compact
+  suprema into the random-model Cauchy constants.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

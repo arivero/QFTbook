@@ -1827,6 +1827,178 @@ therefore include not only a moment bound for each fixed coordinate, but also
 the increment bound \eqref{eq:spde-dyadic-net-increment-bound} in the
 parameters that enter the model seminorm.
 
+\begin{theorem}[Coordinate estimates imply finite-sector model convergence]
+\label{thm:spde-coordinate-estimates-model-convergence}
+Fix \(K\), \(\gamma\), \(A_{<\gamma}\), and \(r\) as in
+Theorem~\ref{thm:spde-random-model-cauchy-criterion}.  Let
+\[
+  Z_n=(\Pi^{(n)},\Gamma^{(n)}),\qquad n\geq1,
+\]
+be random models on the finite sector, and define
+\[
+  N_n=
+  1+\|\Pi^{(n)}\|_{K;\gamma}+\|\Gamma^{(n)}\|_{K;\gamma}.
+\]
+Let \(d_{K;\gamma}\) be the corresponding model distance.  Let
+\[
+  I=\{1,\ldots,M\}
+\]
+be a finite coordinate index set.  For every \(i\in I\), let
+\((\mathcal X_i,d_{\mathcal X_i})\) be a compact metric space with finite nets
+\(\mathcal X_{i,\ell}\), projections
+\[
+  \pi_{i,\ell}:\mathcal X_i\to\mathcal X_{i,\ell},
+\]
+with \(\pi_{i,\ell}x\to x\) for every \(x\in\mathcal X_i\), and edge sets
+\[
+  \mathcal E_{i,\ell}
+  =
+  \{(\pi_{i,\ell}x,\pi_{i,\ell+1}x):x\in\mathcal X_i\}
+\]
+such that
+\[
+  |\mathcal X_{i,0}|\leq C_{i,0},\qquad
+  |\mathcal E_{i,\ell}|\leq C_{i,1}2^{D_i\ell}
+\]
+for constants \(C_{i,0},C_{i,1},D_i>0\).
+Fix \(p\geq1\), \(\rho>0\), and \(\varepsilon_i>0\) for \(i\in I\).
+Suppose there are real random fields
+\[
+  U_{n,i},V_{n,i}:\mathcal X_i\to L^p(\Omega),
+  \qquad n\geq1,\quad i\in I,
+\]
+with almost surely continuous sample paths, and a deterministic constant
+\(A_{\rm ctrl}<\infty\), such that, almost surely,
+\begin{equation}
+  N_n
+  \leq
+  A_{\rm ctrl}
+  \left(1+\sum_{i\in I}\sup_{x\in\mathcal X_i}|U_{n,i}(x)|\right),
+  \label{eq:spde-coordinate-controls-model-norm}
+\end{equation}
+and
+\begin{equation}
+  d_{K;\gamma}(Z_{n+1},Z_n)
+  \leq
+  A_{\rm ctrl}
+  \sum_{i\in I}\sup_{x\in\mathcal X_i}|V_{n,i}(x)|.
+  \label{eq:spde-coordinate-controls-model-distance}
+\end{equation}
+For the uniform bound, assume
+\[
+  \mathbb E|U_{n,i}(u)|^p\leq B_{i,0}^p
+  \quad(n\geq1,\ u\in\mathcal X_{i,0}),
+\]
+and
+\[
+  \mathbb E|U_{n,i}(v)-U_{n,i}(u)|^p
+  \leq
+  B_i^p2^{-(D_i+\varepsilon_i)\ell}
+  \quad(n\geq1,\ (u,v)\in\mathcal E_{i,\ell}).
+\]
+For the cutoff increment, assume
+\[
+  \mathbb E|V_{n,i}(u)|^p
+  \leq
+  \widetilde B_{i,0}^{\,p}2^{-p\rho n}
+  \quad(u\in\mathcal X_{i,0}),
+\]
+and
+\[
+  \mathbb E|V_{n,i}(v)-V_{n,i}(u)|^p
+  \leq
+  \widetilde B_i^{\,p}
+  2^{-p\rho n}2^{-(D_i+\varepsilon_i)\ell}
+  \quad((u,v)\in\mathcal E_{i,\ell}).
+\]
+Define
+\[
+  S_i=
+  C_{i,0}^{1/p}B_{i,0}
+  +
+  \frac{C_{i,1}^{1/p}B_i}{1-2^{-\varepsilon_i/p}},
+  \qquad
+  \widetilde S_i=
+  C_{i,0}^{1/p}\widetilde B_{i,0}
+  +
+  \frac{C_{i,1}^{1/p}\widetilde B_i}{1-2^{-\varepsilon_i/p}} .
+\]
+Then
+\[
+  \sup_{n\geq1}
+  \|N_n\|_{L^p(\Omega)}
+  \leq
+  A_{\rm ctrl}\left(1+\sum_{i\in I}S_i\right),
+\]
+and
+\begin{equation}
+  \|d_{K;\gamma}(Z_{n+1},Z_n)\|_{L^p(\Omega)}
+  \leq
+  A_{\rm ctrl}
+  \left(\sum_{i\in I}\widetilde S_i\right)2^{-\rho n}.
+  \label{eq:spde-coordinate-model-distance-bound}
+\end{equation}
+Consequently, \(Z_n\) satisfies
+\eqref{eq:spde-random-model-cauchy-hypotheses} with
+\[
+  C_N=
+  A_{\rm ctrl}^p\left(1+\sum_{i\in I}S_i\right)^p,
+  \qquad
+  C_D=
+  A_{\rm ctrl}^p\left(\sum_{i\in I}\widetilde S_i\right)^p .
+\]
+Thus the limiting random model and the convergence estimates of
+Theorem~\ref{thm:spde-random-model-cauchy-criterion} follow.
+\end{theorem}
+
+\begin{proof}
+Apply Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to each
+\(U_{n,i}\).  The hypotheses for \(U_{n,i}\) give
+\[
+  \left\|
+    \sup_{x\in\mathcal X_i}|U_{n,i}(x)|
+  \right\|_{L^p}
+  \leq S_i
+  \quad(n\geq1).
+\]
+The \(L^p\) triangle inequality and
+\eqref{eq:spde-coordinate-controls-model-norm} therefore give
+\[
+  \|N_n\|_{L^p}
+  \leq
+  A_{\rm ctrl}
+  \left(1+\sum_{i\in I}S_i\right).
+\]
+Taking the supremum over \(n\) gives the uniform model-seminorm moment
+bound.
+
+Apply the cutoff-dependent part of
+Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to \(V_{n,i}\).  The
+base and edge bounds for \(V_{n,i}\) give
+\[
+  \left\|
+    \sup_{x\in\mathcal X_i}|V_{n,i}(x)|
+  \right\|_{L^p}
+  \leq
+  \widetilde S_i2^{-\rho n}.
+\]
+Together with \eqref{eq:spde-coordinate-controls-model-distance}, this gives
+\eqref{eq:spde-coordinate-model-distance-bound}.  Raising the two displayed
+\(L^p\) bounds to the \(p\)-th power gives the constants \(C_N\) and \(C_D\)
+in \eqref{eq:spde-random-model-cauchy-hypotheses}.  The final assertion is
+exactly Theorem~\ref{thm:spde-random-model-cauchy-criterion}.
+\end{proof}
+
+Theorem~\ref{thm:spde-coordinate-estimates-model-convergence} fixes the
+logical boundary of the remaining BPHZ task.  A finite-dimensional
+reexpansion component or a finite basis component of \(T_\alpha\) is included
+by enlarging the finite index set \(I\).  The model construction for
+dynamic \(\Phi^4_3\) must therefore provide, for each negative tree and each
+coordinate chart entering the model seminorm, the two estimates appearing in
+the theorem: the uniform coordinate moment estimate and the dyadic cutoff
+increment estimate with enough excess exponent \(\varepsilon_i\) to dominate
+the metric entropy of the coordinate parameters.
+
 For dynamic \(\Phi^4_3\), the symbols are generated by the noise \(\Xi\), the
 abstract integration map \(\mathcal I\), multiplication, and polynomials in
 the spacetime coordinates.  Negative-homogeneity trees encode precisely the

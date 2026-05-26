@@ -68,6 +68,15 @@ data.
 - `C_0`, `C_1`, `d`, `epsilon`: base-net size, edge entropy constant,
   entropy exponent, and excess moment-decay exponent in the dyadic-net
   supremum theorem.
+- `I`, `U_{n,i}`, `V_{n,i}`, `A_ctrl`: finite coordinate index set,
+  uniform coordinate fields, cutoff-increment coordinate fields, and the
+  deterministic constant controlling model seminorms and distances by
+  coordinate suprema.
+- `S_i`, `tilde S_i`: explicit dyadic-net constants for uniform coordinate
+  bounds and cutoff-increment coordinate bounds in the coordinate-to-model
+  convergence theorem.
+- `D_i`, `epsilon_i`: coordinate-wise entropy exponent and excess
+  increment-decay exponent in the coordinate-to-model theorem.
 
 ## Claim Ledger
 
@@ -153,6 +162,11 @@ data.
   \(L^p\) bound for the compact supremum with the explicit constant
   \(C_0^{1/p}B_0+C_1^{1/p}B/(1-2^{-\epsilon/p})\), and cutoff decay factors
   pass through unchanged.
+- Proves a coordinate-to-model convergence criterion: if finitely many
+  compact coordinate suprema dominate the finite-sector model seminorm and
+  model distance, and if each coordinate satisfies the dyadic-net moment and
+  increment estimates, then the random-model Cauchy hypotheses follow with
+  explicit constants \(C_N\) and \(C_D\).
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -256,3 +270,10 @@ data maps.
   estimates, the metric-entropy cancellation, and the exact geometric-series
   constant.  The calculation-check companion verifies the entropy
   cancellation and cutoff-factor arithmetic.
+- 2026-05-26 issue #582 coordinate-to-model continuation: the chapter now
+  proves the finite-coordinate criterion that packages coordinate supremum
+  bounds into the random-model Cauchy hypotheses.  The proof applies the
+  dyadic-net theorem coordinate by coordinate and then uses the explicit
+  domination of the model seminorm and model distance.  The calculation-check
+  companion verifies the resulting \(C_N\), \(C_D\), and dyadic distance
+  arithmetic in an exact finite sample.
