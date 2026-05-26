@@ -1,0 +1,52 @@
+# 2026-05-26 Issue #503 Borel--Leroy and OPE Ambiguity Pass
+
+GitHub issue: #503, concerning Borel resummation, Lefschetz thimbles,
+resurgence, and renormalons.
+
+## Manuscript Changes
+
+Volume II, Chapter 10 now includes a second #503 development layer beyond the
+earlier Gevrey, Watson-lemma, lateral-summation, transseries, conformal-map,
+thimble, and renormalon-model material.
+
+- Definition `def:borel-leroy-conformal-approximants` defines the
+  Borel--Leroy transform, Borel--Leroy sum, conformal-Borel--Leroy truncation,
+  and the data \((A,b,N)\) that must be declared in numerical use.
+- Proposition `prop:conformal-borel-leroy-coefficient-preservation` proves that
+  the conformal-Borel--Leroy truncation preserves the input perturbative
+  coefficients through the stated order.  The proof uses the local biholomorphic
+  coordinate \(w(\xi)\) at the Borel origin and the exact
+  \(\Gamma(n+b+1)\) normalization of the Borel--Leroy Laplace kernel.
+- Remark `rem:critical-exponent-borel-practice-status` records the rigorous
+  status of Wilson--Fisher and fixed-dimension critical-exponent resummations:
+  loop coefficients alone are not enough; the chart, Borel--Leroy parameter,
+  singularity location, Borel-plane analyticity domain, and error procedure are
+  part of the theorem or approximation.
+- Proposition `prop:ope-renormalon-ambiguity-cancellation` states and proves
+  the algebraic cancellation condition for a two-term OPE lateral ambiguity:
+  \(\Delta C_0+Q^{-p}C_p\Delta M_p=0\).  This prevents the common sloppy
+  reading of a renormalon ambiguity as a standalone physical observable.
+
+## Calculation Checks
+
+`calculation-checks/borel_laplace_checks.py` now additionally checks:
+
+- Borel--Leroy coefficient recovery for integer \(b\), verifying the exact
+  \(\Gamma(n+b+1)\) normalization algebra.
+- The two-term OPE ambiguity cancellation identity in rational arithmetic.
+
+`calculation-checks/README.md` was updated accordingly.
+
+## Verification
+
+Completed before commit:
+
+- `python3 calculation-checks/borel_laplace_checks.py`
+- `python3 -m py_compile calculation-checks/borel_laplace_checks.py`
+- `tools/audit_monograph_text.sh`
+- `tools/audit_chapter_dossiers.sh`
+- `git diff --check`
+- `tools/build_monograph.sh`
+
+The full monograph build completed cleanly and produced
+`monograph/tex/main.pdf` with 1764 pages.

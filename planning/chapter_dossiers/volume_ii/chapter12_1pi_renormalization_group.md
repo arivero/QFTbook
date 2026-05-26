@@ -119,6 +119,9 @@ The chapter must define:
   holomorphic on a plane cut from the first negative singularity; the chapter
   states explicitly that numerical conformal-Borel use is conditional on the
   singularity-domain hypothesis.
+- the Borel--Leroy transform, conformal-Borel--Leroy approximants, and the
+  proof that the truncated conformal map preserves the input coefficients
+  through the truncation order.
 - the finite-dimensional holomorphic Lefschetz-thimble setup: cycle,
   holomorphic Morse action, upward/downward thimbles, thimble decomposition,
   saddle expansion, and Stokes jumps.
@@ -126,6 +129,9 @@ The chapter must define:
   Borel-plane obstruction tied to momentum regions and running couplings,
   with the factorial moment model
   \(\int_0^1 x^{p-1}(-\log x)^n dx=n!/p^{n+1}\) proved in the chapter.
+- the algebraic OPE cancellation condition for a lateral renormalon ambiguity
+  between a coefficient function and the corresponding operator matrix
+  element.
 
 ## Claim Ledger
 
@@ -252,11 +258,21 @@ The chapter must define:
     the cut-plane analyticity domain has been established; numerical
     conformal-Borel resummation is therefore conditional, not a substitute for
     a nonperturbative QFT definition.
+22a. For \(b>-1\), the Borel--Leroy transform divides the \(n\)-th
+     coefficient by \(\Gamma(n+b+1)\).  The conformal-Borel--Leroy
+     approximant built from the first \(N\) coefficients preserves exactly the
+     input coefficients \(a_0,\ldots,a_N\); its predictive content beyond
+     order \(N\) requires the declared Borel-plane analyticity assumptions.
 23. The running-coupling renormalon model has a precise algebraic core:
     \(\int_0^1 x^{p-1}(-\log x)^n dx=n!/p^{n+1}\), hence the geometric
     one-loop model has Borel transform \(1/(p-\beta_0 u)\).  Applying this
     conclusion to a QFT requires naming the observable, scheme, factorization
     prescription, and approximation.
+23a. In a two-term OPE model, lateral ambiguity cancellation is the explicit
+     condition
+     \(\Delta C_0+Q^{-p}C_p\Delta M_p=0\).  Thus a renormalon ambiguity in a
+     coefficient function is not physical by itself; it is a statement about a
+     specified factorization scheme and operator definition.
 24. Lefschetz-thimble analysis is a finite-dimensional relative-homology
     statement for holomorphic Morse integrals.  Its QFT use is regulator-level
     unless an infinite-dimensional or continuum-limit theorem is supplied.
@@ -327,6 +343,10 @@ The chapter must define:
   Borel cut-plane map, and a theorem-level factorial moment model for
   renormalons; expanded `calculation-checks/borel_laplace_checks.py`
   accordingly.
+- 2026-05-26 issue #503 second pass: added Borel--Leroy and
+  conformal-Borel--Leroy approximants, the coefficient-preservation proof, the
+  critical-exponent practice status remark, and the algebraic two-term OPE
+  ambiguity-cancellation proposition with calculation checks.
 - 2026-05-24 issue pass: addressed #224 by stating the standard
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from

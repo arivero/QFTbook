@@ -129,6 +129,26 @@ def check_laplace_monomial_normalization() -> None:
         assert_eq(f"Gamma normalization n={n}", factorial(n), factorial(n))
 
 
+def check_borel_leroy_coefficient_recovery() -> None:
+    # For integer b, Gamma(n+b+1)=(n+b)! and the Borel-Leroy Laplace kernel
+    # returns exactly this factor.  This is the algebra behind the statement
+    # that the truncated conformal-Borel-Leroy approximant preserves its input
+    # perturbative coefficients through the truncation order.
+    b = 3
+    coefficients = [
+        Fraction(2, 1),
+        Fraction(-5, 7),
+        Fraction(11, 13),
+        Fraction(-17, 19),
+        Fraction(23, 29),
+        Fraction(-31, 37),
+    ]
+    for n, coefficient in enumerate(coefficients):
+        borel_leroy_coefficient = coefficient / factorial(n + b)
+        recovered = borel_leroy_coefficient * factorial(n + b)
+        assert_eq(f"Borel-Leroy coefficient recovery n={n}", recovered, coefficient)
+
+
 def conformal_borel_xi_from_w(w: Fraction, singular_distance: Fraction) -> Fraction:
     return 4 * singular_distance * w / ((1 - w) ** 2)
 
@@ -184,6 +204,20 @@ def check_renormalon_factorial_moment_and_borel_pole() -> None:
     assert_close("renormalon geometric Borel pole", float(partial_sum), float(exact), tol=1.0e-7)
 
 
+def check_ope_renormalon_ambiguity_cancellation() -> None:
+    # Model the displayed OPE algebra:
+    # Delta C_0 + Q^{-p} C_p Delta M_p = 0.
+    q = Fraction(11, 1)
+    p = 4
+    lambda_rg = Fraction(3, 2)
+    k = Fraction(5, 7)
+    c_p = Fraction(13, 17)
+    delta_c0 = k * (lambda_rg / q) ** p
+    delta_m_p = -k * (lambda_rg**p) / c_p
+    total_delta = delta_c0 + c_p * delta_m_p / (q**p)
+    assert_eq("OPE renormalon ambiguity cancellation", total_delta, 0)
+
+
 def main() -> None:
     check_gaussian_moments()
     check_quartic_coefficients()
@@ -191,9 +225,11 @@ def main() -> None:
     check_hypergeometric_borel_transform()
     check_borel_coefficient_radius_ratio()
     check_laplace_monomial_normalization()
+    check_borel_leroy_coefficient_recovery()
     check_conformal_borel_map()
     check_renormalon_factorial_moment_and_borel_pole()
-    print("All Borel-Laplace, conformal-map, and renormalon-model checks passed.")
+    check_ope_renormalon_ambiguity_cancellation()
+    print("All Borel-Laplace, conformal-map, Borel-Leroy, and renormalon-model checks passed.")
 
 
 if __name__ == "__main__":

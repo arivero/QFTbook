@@ -56,8 +56,9 @@ Current checks:
   \(a_{n+1}/((n+1)a_n)\to-2/3\), and the corresponding Borel-radius
   normalization, together with the hypergeometric Borel-transform
   coefficient identity, the conformal-Borel map for a single negative cut,
-  and the factorial moment/Borel-pole algebra in the running-coupling
-  renormalon model.
+  Borel--Leroy coefficient recovery, the factorial moment/Borel-pole algebra
+  in the running-coupling renormalon model, and the algebraic cancellation of
+  a two-term OPE renormalon ambiguity.
 - `bv_localization_checks.py`: exact finite checks for the Volume VIII BV
   integration and localization chapter, including the one-pair BV Laplacian
   product identity, BV Stokes endpoint term, normal Gaussian

@@ -1892,6 +1892,136 @@ not a proof that the regulated QFT exists or that the perturbative expansion
 by itself defines it.
 \end{remark}
 
+\begin{definition}[Borel--Leroy and conformal-Borel approximants]
+\label{def:borel-leroy-conformal-approximants}
+Let
+\(\widehat A(g)=\sum_{n\ge0}a_n g^n\) be a formal series and let \(b>-1\).
+The Borel--Leroy transform with parameter \(b\) is
+\[
+  \mathcal B_b\widehat A(\xi)
+  =
+  \sum_{n\ge0}\frac{a_n}{\Gamma(n+b+1)}\xi^n .
+  \label{eq:borel-leroy-transform}
+\]
+If \(\mathcal B_b\widehat A\) satisfies the same analytic-continuation and
+growth hypotheses as in Definition~\ref{def:gevrey-one-directional-borel-sum},
+with the branch of \(\xi^b\) fixed on the chosen ray, the corresponding
+Borel--Leroy sum is
+\[
+  \mathcal S_{\theta,b}\widehat A(g)
+  =
+  \frac1{g^{b+1}}
+  \int_0^{\ee^{i\theta}\infty}
+  \ee^{-\xi/g}\xi^b
+  \mathcal B_b\widehat A(\xi)\,\dd\xi .
+  \label{eq:borel-leroy-sum}
+\]
+For the one-cut hypothesis of
+Proposition~\ref{prop:conformal-borel-negative-cut-map}, write
+\[
+  \mathcal B_b\widehat A(\xi(w))
+  =
+  \sum_{m\ge0}c_m w^m
+\]
+near \(w=0\), and let
+\[
+  \mathcal B_{b,N}^{\rm conf}(\xi)
+  =
+  \sum_{m=0}^N c_m w(\xi)^m .
+  \label{eq:truncated-conformal-borel-transform}
+\]
+The \(N\)-th conformal-Borel--Leroy approximant on the positive ray is
+\[
+  \mathcal S_{N}^{(A,b)}\widehat A(g)
+  =
+  \frac1{g^{b+1}}
+  \int_0^\infty
+  \ee^{-\xi/g}\xi^b
+  \mathcal B_{b,N}^{\rm conf}(\xi)\,\dd\xi ,
+  \qquad g>0,
+  \label{eq:conformal-borel-leroy-approximant}
+\]
+when the integral converges.  The data \((A,b,N)\) are part of the
+approximation, not hidden conventions.
+\end{definition}
+
+\begin{proposition}[Coefficient preservation by the truncated conformal map]
+\label{prop:conformal-borel-leroy-coefficient-preservation}
+Assume the notation of
+Definition~\ref{def:borel-leroy-conformal-approximants}.  Suppose
+\(\mathcal B_b\widehat A\) is holomorphic at the origin, and \(w(\xi)\) is the
+map of Proposition~\ref{prop:conformal-borel-negative-cut-map}.  Then
+\[
+  \mathcal B_{b,N}^{\rm conf}(\xi)
+  -
+  \mathcal B_b\widehat A(\xi)
+  =
+  O(\xi^{N+1})
+  \qquad(\xi\to0).
+  \label{eq:conformal-borel-truncation-order}
+\]
+Consequently the formal small-\(g\) expansion of
+\(\mathcal S_N^{(A,b)}\widehat A(g)\) reproduces the coefficients
+\(a_0,\ldots,a_N\):
+\[
+  \mathcal S_N^{(A,b)}\widehat A(g)
+  \sim
+  \sum_{n=0}^N a_n g^n
+  +
+  O(g^{N+1})
+  \label{eq:conformal-borel-leroy-reproduces-input}
+\]
+in the same Watson-lemma sense as
+Theorem~\ref{thm:watson-borel-laplace}, provided the positive-ray integral has
+a uniform exponential-growth bound.
+\end{proposition}
+
+\begin{proof}
+The map \(w(\xi)\) is holomorphic near \(\xi=0\), satisfies \(w(0)=0\), and
+has nonzero derivative there:
+\[
+  w(\xi)=\frac{\xi}{4A}+O(\xi^2).
+\]
+It therefore defines an invertible holomorphic coordinate near the origin.
+Truncating the Taylor expansion of
+\(\mathcal B_b\widehat A(\xi(w))\) at order \(N\) in \(w\) changes the function
+by \(O(w^{N+1})\), hence by \(O(\xi^{N+1})\).  This proves
+\eqref{eq:conformal-borel-truncation-order}.
+
+For each \(0\le n\le N\), the coefficient of \(\xi^n\) in
+\(\mathcal B_{b,N}^{\rm conf}\) is therefore
+\(a_n/\Gamma(n+b+1)\).  Termwise integration of the polynomial part gives
+\[
+  \frac1{g^{b+1}}
+  \int_0^\infty
+  \ee^{-\xi/g}\xi^{n+b}\,\dd\xi
+  =
+  g^n\Gamma(n+b+1),
+  \qquad b>-1,
+  \label{eq:borel-leroy-gamma-normalization}
+\]
+and hence recovers \(a_n g^n\).  The remainder estimate is the same small-ray
+and tail estimate used in
+Theorem~\ref{thm:watson-borel-laplace}, with \(\xi^{N+1+b}\) replacing
+\(\xi^{N+1}\).  The hypothesis \(b>-1\) is exactly the integrability condition
+at \(\xi=0\).
+\end{proof}
+
+\begin{remark}[How this applies to critical exponents]
+\label{rem:critical-exponent-borel-practice-status}
+In the Wilson--Fisher \(\varepsilon\)-expansion and in fixed-dimension
+renormalized perturbation theory, one often applies
+\eqref{eq:conformal-borel-leroy-approximant} to a critical exponent, an
+anomalous dimension, or a fixed-point coordinate.  The theorem-level input is
+not merely the list of loop coefficients.  One must also specify the
+renormalized chart, the Borel--Leroy parameter \(b\), the assumed first
+singularity distance \(A\), the analytic domain in the Borel plane, and a rule
+for estimating the truncation and parameter sensitivity.  When these analytic
+data are not proved, the resulting number is a controlled extrapolation under
+declared hypotheses; it is not a proof of the existence or uniqueness of the
+critical QFT.
+\end{remark}
+
 The preceding example is the finite-dimensional form of Dyson's warning:
 analytic continuation in a coupling can change the convergence of the
 integration cycle and the physical stability of the problem.  The correct
@@ -2147,6 +2277,73 @@ renormalon analysis is tied to the operator product expansion: perturbation
 theory for a Wilson coefficient and the definition of the corresponding
 long-distance matrix element are not separately physical, and their
 scheme/factorization ambiguities must cancel in the full observable.
+
+\begin{proposition}[Algebraic form of OPE ambiguity cancellation]
+\label{prop:ope-renormalon-ambiguity-cancellation}
+Let \(Q\gg\mu\), and suppose a dimensionless Euclidean observable is represented
+in a specified factorization scheme by the truncated operator product expansion
+\[
+  \mathcal X_\pm(Q)
+  =
+  C_{0,\pm}(Q,\mu)
+  +
+  \frac{1}{Q^p} C_p(Q,\mu) M_{p,\pm}(\mu)
+  +
+  O(Q^{-p-\delta})
+  \label{eq:renormalon-ope-two-term-model}
+\]
+with \(p,\delta>0\).  Here \(C_{0,\pm}\) are the two lateral Borel sums of the
+perturbative coefficient function for the identity operator, \(M_{p,\pm}\) are
+the correspondingly defined matrix elements of an operator of mass dimension
+\(p\), and \(C_p\) is assumed to have no lateral ambiguity at this order.  If
+\[
+  C_{0,+}(Q,\mu)-C_{0,-}(Q,\mu)
+  =
+  -
+  \frac{1}{Q^p} C_p(Q,\mu)
+  \bigl(M_{p,+}(\mu)-M_{p,-}(\mu)\bigr),
+  \label{eq:ope-ambiguity-cancellation-condition}
+\]
+then
+\[
+  \mathcal X_+(Q)-\mathcal X_-(Q)=O(Q^{-p-\delta}).
+  \label{eq:ope-ambiguity-cancellation-result}
+\]
+If the identity-coefficient ambiguity has the form
+\[
+  C_{0,+}-C_{0,-}
+  =
+  K(\mu)\left(\frac{\Lambda_{\rm RG}}{Q}\right)^p ,
+  \label{eq:identity-coefficient-power-ambiguity}
+\]
+then cancellation at this order requires
+\[
+  M_{p,+}-M_{p,-}
+  =
+  -
+  \frac{K(\mu)\Lambda_{\rm RG}^p}{C_p(Q,\mu)}
+  \label{eq:operator-matrix-element-required-ambiguity}
+\]
+in the normalization used in \eqref{eq:renormalon-ope-two-term-model}.
+\end{proposition}
+
+\begin{proof}
+Subtract the two lateral definitions of \(\mathcal X\) in
+\eqref{eq:renormalon-ope-two-term-model}.  The remainder contributes only
+\(O(Q^{-p-\delta})\), and the displayed leading difference is
+\[
+  C_{0,+}-C_{0,-}
+  +
+  \frac{1}{Q^p} C_p(M_{p,+}-M_{p,-}).
+\]
+This vanishes by \eqref{eq:ope-ambiguity-cancellation-condition}, proving
+\eqref{eq:ope-ambiguity-cancellation-result}.  Substituting
+\eqref{eq:identity-coefficient-power-ambiguity} into
+\eqref{eq:ope-ambiguity-cancellation-condition} gives
+\eqref{eq:operator-matrix-element-required-ambiguity}.  The proposition is
+algebraic; a QFT application still has to construct the factorization scheme,
+the operator \(M_p\), and the lateral sums.
+\end{proof}
 
 An ultraviolet renormalon is associated with the large-\(k\) region of the
 corresponding expansion.  In theories whose perturbative coordinate grows
