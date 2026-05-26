@@ -1074,6 +1074,99 @@ positivity remains a separate regulator property until such a comparison is
 proved.
 \end{remark}
 
+\begin{proposition}[Lattice scalar cutoffs as OS-positive Euclidean regulators]
+\label{prop:spde-lattice-cutoff-os-positive-regulator}
+Let \(\Lambda_{a,L}\) be a finite two-dimensional periodic lattice with
+spacing \(a>0\), side length \(L\), and an involutive time reflection
+\(\vartheta\) whose reflection plane is either a set of sites or a set of
+mid-links.  Let
+\[
+  \dd\mu_{a,L}(\phi)
+  =
+  Z_{a,L}^{-1}e^{-S_{a,L}(\phi)}
+  \prod_{x\in\Lambda_{a,L}}\dd\phi_x
+\]
+where
+\[
+  S_{a,L}(\phi)
+  =
+  \frac12\sum_{\langle x y\rangle}
+  c_{xy}\,(\phi_x-\phi_y)^2
+  +
+  \sum_{x\in\Lambda_{a,L}}V_x(\phi_x).
+\]
+Assume \(c_{xy}=c_{\vartheta x,\vartheta y}>0\), the nearest-neighbor graph
+is invariant under \(\vartheta\), \(V_{\vartheta x}=V_x\), and the finite
+integral defining \(Z_{a,L}\) exists.  Let the reflected field be
+\((\vartheta\phi)_x=\phi_{\vartheta x}\).  Then \(\mu_{a,L}\) is OS
+reflection positive on bounded observables depending only on the chosen
+nonnegative-time half-lattice, including the reflection plane when present:
+\[
+  \int \overline{F(\vartheta\phi)}\,F(\phi)\,\dd\mu_{a,L}(\phi)\geq0 .
+\]
+In particular, a lattice \(\Phi^4_2\) cutoff with reflection-invariant local
+coordinates,
+\[
+  V_x(u)
+  =
+  a^2\left[
+    \frac{m_{a,L}^2}{2}u^2
+    +\frac{\lambda}{4}u^4
+    +E_{a,L}
+  \right],
+  \qquad \lambda>0,
+\]
+and positive nearest-neighbor kinetic coefficients is reflection positive at
+each finite cutoff whenever the displayed finite-dimensional integral is
+finite.
+\end{proposition}
+
+\begin{proof}
+This is the scalar lattice reflection-positivity mechanism of
+Proposition~\ref{prop:scalar-lattice-reflection-positivity}, specialized to
+the regulators used in the constructive scalar theory.  We spell out the
+assignment because it is the point at which the sign of the regulator is
+used.  Split the lattice into the positive half, the reflected negative half,
+and the reflection plane if the plane contains sites.  Terms contained
+strictly in one half are assigned to \(S_+\) and \(\vartheta S_+\).
+Reflection-plane on-site terms, and one half of every square term adjacent to
+the plane, are split symmetrically.  A link crossing a mid-plane contributes
+\[
+  \frac12 c_{x,\vartheta x}(\phi_x-\phi_{\vartheta x})^2
+  =
+  \frac12 c_{x,\vartheta x}\phi_x^2
+  +\frac12 c_{x,\vartheta x}\phi_{\vartheta x}^2
+  -c_{x,\vartheta x}\phi_x\phi_{\vartheta x}.
+\]
+The first two summands have already been assigned to the two halves.  In
+the Boltzmann weight the remaining cross-plane factor is therefore
+\[
+  \exp(c_{x,\vartheta x}\phi_x\phi_{\vartheta x})
+  =
+  \sum_{n=0}^{\infty}
+  \frac{c_{x,\vartheta x}^{\,n}}{n!}\,
+  \phi_x^n\phi_{\vartheta x}^{\,n},
+\]
+with nonnegative coefficients.  Multiplying these expansions for all
+crossing links expresses the reflection quadratic form
+\(\int\overline{F(\vartheta\phi)}F(\phi)\dd\mu_{a,L}\) as a sum of
+nonnegative coefficients times absolute squares of half-lattice integrals.
+Hence the quadratic form is nonnegative.  The local potential and local
+counterterm coordinates do not enter this sign argument except through
+reflection invariance, reality, and integrability, because they are assigned
+to the two halves before the cross-plane kernel is expanded.
+\end{proof}
+
+Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator} proves the
+finite-cutoff OS-positivity input for a concrete lattice Euclidean regulator.
+It does not identify that lattice family with the Fourier-Galerkin family
+used in the stochastic convolution estimates above.  The missing comparison
+theorem is therefore precise: after matching the relevant local coordinates,
+one must prove convergence of the lattice and Fourier-Galerkin Schwinger
+functions, or construct a single regulator whose Langevin estimates and OS
+positivity are both available.  This is a regulator-comparison theorem, not a
+formal consequence of either weak convergence or stochastic stationarity.
+
 \begin{theorem}[\(\Phi^4_2\) stochastic-quantization assembly on the torus]
 \label{thm:phi-four-two-spde-main-theorem}
 Fix \(m^2>0\), \(\lambda>0\), \(0<\kappa<1/4\), and
@@ -1116,7 +1209,12 @@ Assume the following three further analytic facts.
   the uniform-integrability bounds needed for the truncation step in
   Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}.
   This is a property of the chosen Euclidean regulator, not an automatic
-  consequence of the Fourier-Galerkin cutoff; see
+  consequence of the Fourier-Galerkin cutoff.  For the lattice scalar
+  regulator of
+  Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}, the
+  bounded-observable positivity statement is proved at finite cutoff; using
+  that positivity in the present Fourier-Galerkin stochastic assembly still
+  requires the regulator-comparison theorem isolated after
   Remark~\ref{rem:spde-fourier-cutoff-os-regulator-separation}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
@@ -1185,9 +1283,12 @@ the chapter we have proved the finite-dimensional Langevin identity, the
 Sobolev Wick-power construction, the path-space enhanced-noise convergence,
 the Sobolev DPD local solution map, the smooth enhanced-noise energy
 inequality, and the abstract invariant-law passage.  The sharp global
-two-dimensional theorem additionally requires the rough Besov/Hölder
-energy-continuity, tightness, finite-cutoff OS positivity, and
-uniform-integrability estimates listed explicitly in
+two-dimensional theorem still requires four further inputs: rough
+Besov--Hölder energy continuity, tightness, uniform integrability, and either
+finite-cutoff OS positivity for the stochastic regulator itself or a
+regulator-comparison theorem relating it to the OS-positive lattice regulator
+of Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  These
+inputs are listed explicitly in
 Theorem~\ref{thm:phi-four-two-spde-main-theorem}.
 
 \begin{quotedtheorem}[Da Prato--Debussche solution mechanism]

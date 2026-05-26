@@ -61,6 +61,10 @@ data.
   estimate.
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
+- `Lambda_{a,L}`, `vartheta`, `mu_{a,L}`, `S_{a,L}`, `V_x`: finite lattice,
+  time reflection, lattice Euclidean measure, lattice scalar action, and
+  reflection-invariant on-site potential used in the OS-positive lattice
+  regulator proposition.
 - `R F`: reconstruction of a modelled distribution.
 - `N_n`, `D_n`, `d_{K;gamma}`: random model seminorm, dyadic increment, and
   model distance used in the random-model Cauchy criterion.
@@ -198,6 +202,14 @@ data.
   used for stochastic estimates, while OS reflection positivity is a separate
   property of the Euclidean regulator and must either be assumed for that
   regulator or obtained by a regulator-comparison theorem.
+- Proves that nearest-neighbor finite lattice scalar cutoffs with positive
+  kinetic coefficients and reflection-invariant real on-site potential are
+  OS reflection positive.  The proof expands each cross-plane factor
+  \(\exp(c\phi_x\phi_{\vartheta x})\) into a nonnegative power series and
+  writes the reflection quadratic form as a sum of half-lattice absolute
+  squares.  The chapter then states precisely that this settles finite-cutoff
+  positivity for the lattice regulator but not the comparison between lattice
+  Schwinger functions and the Fourier-Galerkin stochastic family.
 - Adds a \(\Phi^4_2\) stochastic-quantization assembly theorem on the torus.
   The theorem now proves the path-space enhanced-noise input and makes
   explicit the remaining three analytic inputs needed to pass from
