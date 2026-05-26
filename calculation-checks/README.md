@@ -94,6 +94,9 @@ Current checks:
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
+- `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
+  Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
+  coefficients, quantum dimensions, and shifted character exponents.
 - `cohomological_metric_descent_checks.py`: exact polynomial differential-form
   checks for the Volume VIII metric-independence chapter, including
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary

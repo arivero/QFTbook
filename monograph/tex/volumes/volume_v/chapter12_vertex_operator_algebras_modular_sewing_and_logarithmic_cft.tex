@@ -1,0 +1,446 @@
+\chapter{Vertex Operator Algebras, Modular Sewing, and Logarithmic CFT}
+\label{ch:voa-modular-sewing-logarithmic-cft}
+
+\ConventionsEuclidean
+
+\section{Chiral Algebra Data}
+
+Two-dimensional conformal field theory has an additional algebraic structure:
+local holomorphic fields may be multiplied by operator products that depend
+only on one complex coordinate.  A vertex operator algebra is the precise
+algebraic encoding of this chiral operator product.
+
+\begin{definition}[Vertex operator algebra]
+\label{def:vertex-operator-algebra}
+A vertex operator algebra consists of the following data.
+\begin{enumerate}
+\item A complex vector space
+\[
+  V=\bigoplus_{n\in\mathbb Z}V_n
+\]
+with finite-dimensional graded pieces and \(V_n=0\) for \(n\) sufficiently
+negative.
+\item A vacuum vector \(\mathbf 1\in V_0\).
+\item A state-field map
+\[
+  Y(\,\cdot\,,z):V\longrightarrow \operatorname{End}(V)[[z,z^{-1}]],
+  \qquad
+  a\longmapsto Y(a,z)=\sum_{m\in\mathbb Z}a_m z^{-m-1}.
+\]
+\item A conformal vector \(\omega\in V_2\), whose modes
+\[
+  Y(\omega,z)=\sum_{n\in\mathbb Z}L_n z^{-n-2}
+\]
+obey the Virasoro algebra
+\[
+  [L_m,L_n]=(m-n)L_{m+n}
+  +\frac{c}{12}(m^3-m)\delta_{m+n,0}.
+\]
+\end{enumerate}
+These data satisfy:
+\[
+  Y(\mathbf 1,z)=\operatorname{id}_V,\qquad
+  Y(a,z)\mathbf 1\in a+zV[[z]],
+\]
+\[
+  [L_{-1},Y(a,z)]=\partial_zY(a,z),
+  \qquad
+  L_0a=na\quad\text{for }a\in V_n,
+\]
+and locality:
+for every \(a,b\in V\), there is \(N\ge0\) such that
+\[
+  (z-w)^N [Y(a,z),Y(b,w)]=0
+\]
+as a formal distribution on \(V\).
+\end{definition}
+
+The modes \(a_m\) are operators on \(V\).  If \(a\) has conformal weight
+\(\Delta_a\), then \(a_m\) has degree \(\Delta_a-m-1\).  The vacuum axiom says
+that \(a\) is recovered from the field \(Y(a,z)\) by acting on the vacuum and
+then taking the value at \(z=0\):
+\[
+  a=\left. Y(a,z)\mathbf 1\right|_{z=0}.
+\]
+The locality axiom is the algebraic form of the chiral OPE.  It implies the
+Jacobi identity for modes, and conversely the Jacobi identity packages
+locality, associativity, and commutativity of OPE expansions.
+
+\begin{proposition}[OPE from VOA locality]
+\label{prop:voa-ope-from-locality}
+For \(a,b\in V\), the product \(Y(a,z)Y(b,w)\) has an expansion in the region
+\(|z|>|w|\) of the form
+\[
+  Y(a,z)Y(b,w)
+  =
+  \sum_{m\in\mathbb Z}Y(a_m b,w)(z-w)^{-m-1},
+\]
+where for each matrix element only finitely many positive powers of
+\((z-w)^{-1}\) occur.
+\end{proposition}
+
+\begin{proof}
+By lower truncation, \(a_m b=0\) for all sufficiently large \(m\).  Locality
+gives \(N\) such that
+\[
+  (z-w)^N Y(a,z)Y(b,w)=(z-w)^N Y(b,w)Y(a,z).
+\]
+Taking the formal residue
+\[
+  a_m b=\operatorname{Res}_{z-w}(z-w)^mY(a,z)b
+\]
+defines the coefficient of \((z-w)^{-m-1}\).  Multiplying the proposed OPE by
+\((z-w)^N\), both sides become the same formal Laurent series because the
+residues of all principal parts agree and the remaining part is regular at
+\(z=w\).  The truncation of \(a_m b\) gives the stated finiteness.
+\end{proof}
+
+\section{Modules, Characters, and Chiral Blocks}
+
+A \(V\)-module \(M\) is a graded vector space with fields
+\[
+  Y_M(a,z)=\sum_{m\in\mathbb Z}a^M_m z^{-m-1}
+\]
+obeying the same vacuum, translation, and locality identities with one entry
+acting on \(M\).  The conformal vector gives an operator \(L_0\) on \(M\).
+For an ordinary positive-energy module,
+\[
+  M=\bigoplus_{\lambda\in\mathbb C}M_\lambda,\qquad
+  \dim M_\lambda<\infty,
+\]
+and the set of \(\lambda\)'s is bounded below in every coset modulo
+\(\mathbb Z\).  The character is
+\begin{equation}
+  \chi_M(\tau)
+  =
+  \operatorname{Tr}_M q^{L_0-c/24},
+  \qquad
+  q=\ee^{2\pi\ii\tau},
+  \qquad
+  \operatorname{Im}\tau>0 .
+  \label{eq:voa-character}
+\end{equation}
+The shift by \(c/24\) is the cylinder vacuum energy fixed by the conformal map
+from the plane to the circle.
+
+Let \(C\) be a compact Riemann surface with marked points \(p_i\), local
+coordinates \(z_i\) at the marked points, and \(V\)-modules \(M_i\).  A chiral
+conformal block is a linear functional
+\[
+  \mathcal F:\bigotimes_i M_i\longrightarrow\mathbb C
+\]
+that obeys the Ward identities for meromorphic chiral fields on \(C\).  For
+the stress tensor, the identity says that inserting a meromorphic vector field
+regular away from the \(p_i\)'s acts by the sum of the corresponding Virasoro
+modes at the marked points and gives zero.  For a general chiral state
+\(a\in V\), the meromorphic one-form valued in the field \(a\) gives the same
+condition with modes of \(Y_{M_i}(a,z_i)\).
+
+On the sphere with three marked points, conformal blocks are intertwiners.
+If \(M_i,M_j,M_k\) are simple modules, the fusion coefficient is
+\[
+  N_{ij}{}^k
+  :=
+  \dim \operatorname{CB}_{0,3}(M_i,M_j,M_k^\vee),
+\]
+where \(M_k^\vee\) is the contragredient module.  This definition is intrinsic:
+it counts chiral three-point structures, not a particular coordinate
+presentation of a three-point function.
+
+\section{Sewing and Higher-Genus Blocks}
+
+Sewing is the operation that constructs higher-genus surfaces and higher-point
+blocks from lower-genus pieces.  Let \(C_1\) and \(C_2\) have marked points
+with coordinates \(z\) and \(w\).  Removing disks and imposing
+\[
+  zw=q,\qquad |q|<1,
+\]
+glues the two punctures into an annulus.  If the two glued punctures carry a
+module \(M_a\) and its dual \(M_a^\vee\), a sewn chiral block has the form
+\begin{equation}
+  \mathcal F_{\rm sewn}(q)
+  =
+  \sum_{\alpha}
+  q^{h_a+n_\alpha-c/24}
+  \mathcal F_1(\cdots,e_\alpha)
+  \mathcal F_2(e^\alpha,\cdots).
+  \label{eq:chiral-block-sewing}
+\end{equation}
+Here \(\{e_\alpha\}\) is a homogeneous basis of \(M_a\), \(e^\alpha\) is the
+dual basis with respect to the invariant pairing, and
+\(L_0 e_\alpha=(h_a+n_\alpha)e_\alpha\).  The exponent records propagation
+along the sewn annulus.
+
+\begin{definition}[Sewing-compatible rational chiral theory]
+\label{def:sewing-compatible-rational-chiral-theory}
+For this chapter, a rational chiral theory is a VOA \(V\) with finitely many
+simple ordinary modules \(\{M_i\}_{i\in I}\), semisimple module category,
+finite-dimensional conformal-block spaces, nondegenerate two-point pairings,
+and convergent sewing expansions \eqref{eq:chiral-block-sewing} in a
+neighborhood of \(q=0\).  The analytic continuations of these blocks along the
+moduli space of pointed curves give a projectively flat vector bundle of
+conformal blocks.
+\end{definition}
+
+The mapping class group acts on this bundle.  In genus zero the elementary
+moves are associativity and braiding of OPE channels.  In genus one the
+generators are
+\[
+  S:\tau\mapsto -1/\tau,\qquad
+  T:\tau\mapsto\tau+1.
+\]
+The compatibility of sewing with these moves is the Moore--Seiberg system:
+pentagon, hexagon, and modular identities for associativity, braiding, and
+twist data.  The modern algebraic home of this system is a modular tensor
+category when the module category is semisimple.
+
+\section{Modular Tensor Category and Verlinde Formula}
+
+Let \(\mathcal C\) be the semisimple ribbon category of modules of a rational
+chiral theory.  Its simple objects are \(M_i\), with tensor product
+\[
+  M_i\boxtimes M_j\cong \bigoplus_k N_{ij}{}^k M_k .
+\]
+The matrices \((N_i)_j{}^k=N_{ij}{}^k\) are the fusion matrices.  The category
+has a braiding, duals, and twists \(\theta_i=\ee^{2\pi\ii h_i}\).  Its
+modular \(S\)-matrix is the Hopf-link pairing normalized so that the vacuum
+label \(0\) corresponds to \(V\).  In a unitary theory \(S\) is unitary and
+\[
+  d_i:=\frac{S_{i0}}{S_{00}}
+\]
+is the quantum dimension of \(M_i\).
+
+\begin{quotedtheorem}[Modularity of rational chiral characters]
+\label{qthm:voa-character-modularity}
+For a rational, \(C_2\)-cofinite, positive-energy VOA satisfying the analytic
+finiteness hypotheses needed for sewing, the characters
+\(\chi_i(\tau)\) of simple modules span a finite-dimensional representation
+of \(SL(2,\mathbb Z)\):
+\[
+  \chi_i(-1/\tau)=\sum_j S_{ij}\chi_j(\tau),
+  \qquad
+  \chi_i(\tau+1)=\sum_j T_{ij}\chi_j(\tau).
+\]
+The representation agrees with the modular data of the semisimple module
+category.
+\end{quotedtheorem}
+
+\begin{theorem}[Verlinde formula from modular diagonalization]
+\label{thm:verlinde-from-modular-diagonalization}
+Assume the fusion matrices are simultaneously diagonalized by a unitary
+matrix \(S\) with \(S_{0m}\ne0\):
+\[
+  (N_i S)_{jm}
+  =
+  \frac{S_{im}}{S_{0m}}S_{jm}.
+  \label{eq:fusion-diagonalization-by-s}
+\]
+Then
+\begin{equation}
+  N_{ij}{}^k
+  =
+  \sum_m
+  \frac{S_{im}S_{jm}\overline{S_{km}}}{S_{0m}} .
+  \label{eq:verlinde-formula}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The coefficient \(N_{ij}{}^k\) is the \(j,k\) matrix element of \(N_i\):
+\[
+  N_{ij}{}^k=(N_i)_j{}^k.
+\]
+Equation~\eqref{eq:fusion-diagonalization-by-s} says
+\[
+  N_i
+  =
+  S D_i S^{-1},
+  \qquad
+  (D_i)_{mm}=\frac{S_{im}}{S_{0m}}.
+\]
+Since \(S\) is unitary, \(S^{-1}_{mk}=\overline{S_{km}}\).  Therefore
+\[
+  (N_i)_j{}^k
+  =
+  \sum_m S_{jm}\frac{S_{im}}{S_{0m}}\overline{S_{km}},
+\]
+which is \eqref{eq:verlinde-formula}.
+\end{proof}
+
+The theorem separates the deep input from the algebra.  The deep input is
+that the same \(S\)-matrix obtained by the modular transformation of torus
+characters diagonalizes the fusion ring.  Once this is granted, the formula is
+linear algebra.
+
+\section{The Ising Chiral Theory}
+
+The Ising minimal model has central charge
+\[
+  c=\frac12
+\]
+and three simple modules:
+\[
+  \mathbf 1,\qquad \sigma,\qquad \varepsilon ,
+\]
+with conformal weights
+\[
+  h_{\mathbf 1}=0,\qquad h_\sigma=\frac1{16},\qquad
+  h_\varepsilon=\frac12 .
+\]
+In the ordered basis \((\mathbf 1,\sigma,\varepsilon)\), the modular
+\(S\)-matrix is
+\begin{equation}
+  S_{\rm Ising}
+  =
+  \frac12
+  \begin{pmatrix}
+    1 & \sqrt2 & 1\\
+    \sqrt2 & 0 & -\sqrt2\\
+    1 & -\sqrt2 & 1
+  \end{pmatrix}.
+  \label{eq:ising-modular-s}
+\end{equation}
+It is real, unitary, and obeys \(S^2=1\), because every simple object is
+self-dual.  The quantum dimensions are
+\[
+  d_{\mathbf 1}=1,\qquad d_\sigma=\sqrt2,\qquad d_\varepsilon=1,
+  \qquad
+  \mathcal D^2=\sum_i d_i^2=4.
+\]
+Applying Theorem~\ref{thm:verlinde-from-modular-diagonalization} gives the
+fusion rules
+\[
+  \varepsilon\boxtimes\varepsilon=\mathbf 1,\qquad
+  \varepsilon\boxtimes\sigma=\sigma,\qquad
+  \sigma\boxtimes\sigma=\mathbf 1\oplus\varepsilon .
+\]
+
+\begin{proof}
+The identity \(S^2=1\) is a direct matrix multiplication using
+\((\sqrt2)^2=2\).  The vacuum row gives the quantum dimensions by
+\(d_i=S_{i0}/S_{00}\).  For example,
+\[
+  N_{\sigma\sigma}{}^{\mathbf 1}
+  =
+  \sum_m\frac{S_{\sigma m}S_{\sigma m}S_{\mathbf 1m}}{S_{\mathbf 1m}}
+  =
+  S_{\sigma\mathbf 1}^2+S_{\sigma\sigma}^2+S_{\sigma\varepsilon}^2
+  =
+  \frac12+0+\frac12=1,
+\]
+and
+\[
+  N_{\sigma\sigma}{}^\sigma
+  =
+  \sum_m\frac{S_{\sigma m}S_{\sigma m}S_{\sigma m}}{S_{\mathbf 1m}}
+  =
+  \frac{\sqrt2}{2}-\frac{\sqrt2}{2}=0.
+\]
+The same substitution gives
+\(N_{\sigma\sigma}{}^\varepsilon=1\),
+\(N_{\varepsilon\varepsilon}{}^{\mathbf 1}=1\), and
+\(N_{\varepsilon\sigma}{}^\sigma=1\), with all other coefficients fixed by
+commutativity and the unit object.
+\end{proof}
+
+\section{Full CFT and the Modular Bootstrap}
+
+A full local CFT is not a chiral theory alone.  In a rational diagonal case,
+one constructs a torus partition function from left and right characters:
+\begin{equation}
+  Z(\tau,\bar\tau)
+  =
+  \sum_{i,j}M_{ij}\chi_i(\tau)\overline{\chi_j(\tau)} .
+  \label{eq:rational-torus-partition-function}
+\end{equation}
+The matrix \(M\) must have nonnegative integer entries, \(M_{00}=1\), and must
+commute with the modular representation:
+\[
+  MS=SM,\qquad MT=TM .
+  \label{eq:modular-invariant-matrix}
+\]
+These are genus-one sewing constraints.  Higher-genus sewing imposes further
+compatibility between \(M\), chiral blocks, duality moves, and the pairing of
+left and right chiral sectors.
+
+For a unitary compact two-dimensional CFT with discrete spectrum on the
+circle, the rectangular torus partition function
+\[
+  Z(\beta)=\operatorname{Tr}_{\mathcal H(S^1)}
+  \exp\{-\beta(H-c_{\rm tot}/24)\},
+  \qquad c_{\rm tot}=c+\bar c,
+\]
+obeys modular invariance
+\[
+  Z(\beta)=Z(4\pi^2/\beta)
+\]
+when the spatial circle has circumference \(2\pi\).  If the low-temperature
+trace is dominated by a unique vacuum, then as \(\beta\to0^+\),
+\begin{equation}
+  \log Z(\beta)
+  =
+  \frac{\pi^2 c_{\rm tot}}{6\beta}+o(\beta^{-1}).
+  \label{eq:cardy-partition-leading}
+\end{equation}
+The derivation is only the modular transformation:
+low temperature at \(4\pi^2/\beta\) gives
+\[
+  Z(4\pi^2/\beta)
+  =
+  \exp\left\{\frac{4\pi^2}{\beta}\frac{c_{\rm tot}}{24}\right\}
+  (1+o(1)),
+\]
+which is \eqref{eq:cardy-partition-leading}.  Tauberian hypotheses convert
+this high-temperature partition-function statement into an asymptotic density
+of states.  Those hypotheses are analytic input; modular invariance alone is
+not a pointwise formula for individual degeneracies.
+
+The modular bootstrap is the study of the constraints
+\eqref{eq:modular-invariant-matrix}, reflection positivity, spin integrality,
+and higher-genus sewing on the spectrum and OPE data.  In rational theories it
+is finite-dimensional algebra.  In nonrational compact theories it is an
+infinite-dimensional positivity and growth problem for torus and higher-genus
+partition functions.
+
+\section{Logarithmic Theories}
+
+A logarithmic CFT is a conformal field theory in which the chiral module
+category is not semisimple and \(L_0\) may have Jordan blocks.  If
+\[
+  L_0 v=hv+w,\qquad L_0w=hw,
+\]
+then cylinder evolution gives
+\[
+  q^{L_0-c/24}v
+  =
+  q^{h-c/24}(v+2\pi\ii\tau\,w).
+\]
+Correlation functions may therefore contain logarithms after mapping between
+the plane and the cylinder.  Ordinary characters do not separate all modules;
+one must include pseudo-traces and projective objects.  The category replacing
+the semisimple modular tensor category is a finite tensor category with
+braiding and twist, and the modular group acts on a larger space of
+generalized characters and pseudo-trace functions.
+
+The semisimple Verlinde formula
+\eqref{eq:verlinde-formula} is then replaced by categorical statements about
+the Grothendieck ring, projective modules, and modified traces.  The right
+question is not whether the same matrix formula survives unchanged, but which
+categorical pairing diagonalizes which quotient of the tensor product.  This
+is one of the places where the algebraic formulation is essential: it names
+the objects whose semisimplicity has failed and identifies the extra data
+needed to recover modular sewing.
+
+\section{Output}
+
+The output of this chapter is a hierarchy of definitions and hypotheses:
+The construction has the following order.  A VOA defines modules and chiral
+blocks.  Chiral blocks sew over the moduli space of pointed curves.  In the
+semisimple finite case, sewing data assemble into a modular tensor category.
+The full CFT is then obtained by choosing a compatible pairing of left and
+right chiral theories, equivalently by imposing the modular-invariance and
+factorization constraints on torus and higher-genus amplitudes.
+The Ising model gives the finite rational example.  Logarithmic theories show
+which parts of the rational construction depend on semisimplicity and which
+parts persist after replacing simple-module linear algebra by finite tensor
+category data.

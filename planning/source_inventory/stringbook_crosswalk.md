@@ -238,6 +238,13 @@ Current absorption:
   stress tensors, and the diagonal \(SU(2)\) minimal-model example, with a
   public arithmetic check for the central-charge and conformal-weight
   formulas.
+- Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
+  operator algebras, ordinary modules, characters, conformal blocks as Ward
+  identity functionals, higher-genus sewing, modular tensor category data,
+  the Verlinde formula, rational full-CFT modular invariants, a leading
+  Cardy high-temperature derivation, and logarithmic CFT boundaries.  The
+  Ising modular data are checked by
+  `calculation-checks/cft_voa_modular_checks.py`.
 
 ### Planar Integrability
 
