@@ -76,6 +76,18 @@
   - \(1/3,2/3\) for the third-chaos \(X^2Y\) kernel.
   - the first-chaos \(X^2Y\) kernel contains the covariance increment
     \(G_{bb'}-G_{ba'}-G_{ab'}+G_{aa'}\).
+- Added Proposition
+  `prop:spde-x2y-first-chaos-logarithmic-scale-bound`.
+- This proposition proves the first deterministic analytic estimate for the
+  locally subtracted \(X^2Y\) first-chaos sector:
+  - local \(KG^2\) packets are assumed shell \(L^1\)-bounded, matching the
+    already proved two-loop shell estimate.
+  - covariance blocks satisfy an explicit dyadic double-increment bound.
+  - the resulting first-chaos variance is
+    \(O(\delta^{-1}(1+|\log\delta|)^2)\).
+  - after normalizing by the assigned homogeneity
+    \(-1/2-5\kappa\), the logarithm is absorbed as an arbitrary small loss
+    from the \(5\kappa\) slack.
 
 ## Calculation Check
 
@@ -95,15 +107,20 @@
     negative coordinates.
   - the symmetrized kernel-norm weights and the first-chaos increment signs
     used in the covariance-integral formulas.
+  - the first-chaos logarithmic physical-scale arithmetic
+    \(\delta^{-1}(1+|\log\delta|)^2\) and the resulting normalized slack
+    after a sample logarithmic loss.
 
 ## Remaining Issue #582 Obligations
 
 - Extend the dual-norm strategy from primitive Gaussian coordinates to the
   concrete finite-cutoff chaos kernels in the displayed \(XY\) and \(X^2Y\)
   decompositions.
-- Prove the genuinely nonlinear BPHZ coordinate estimates for the explicit
-  scalar covariance kernels for the fourth-, second-, fifth-, third-, and
-  locally subtracted first-chaos sectors now identified.
+- Verify the regulator-specific shell and covariance-increment hypotheses
+  entering the first-chaos bound directly from the chosen cutoff kernels.
+- Prove the genuinely nonlinear BPHZ coordinate estimates for the remaining
+  explicit scalar covariance kernels: \(XY\)'s fourth and second chaos and
+  \(X^2Y\)'s fifth and third chaos.
 - Supply the remaining \(X^3\) cutoff-difference and base-increment estimates
   needed to feed the deterministic \(c_n\) transfer into the full
   scale-summed \(\Gamma\)-coordinate theorem.

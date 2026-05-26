@@ -4619,6 +4619,191 @@ orthogonality of distinct homogeneous Wiener chaoses and the isometry
 =q!\langle f,g\rangle_{\mathcal H^{\otimes q}}\).
 \end{proof}
 
+\begin{proposition}[Scale bound for the locally subtracted first-chaos kernel]
+\label{prop:spde-x2y-first-chaos-logarithmic-scale-bound}
+Let \(Q=5\), \(\mathfrak s=(2,1,1,1)\), and
+\[
+  \mathsf D_\delta(t,x)=(\delta^2t,\delta x).
+\]
+Fix \(0<\theta\leq1\).  Let
+\[
+  \chi_z^\delta(a)
+  =
+  \delta^{-Q}\chi(\mathsf D_\delta^{-1}(a-z)),
+  \qquad
+  0<\delta\leq1,
+\]
+where \(\chi\) is supported in a fixed unit parabolic ball and
+\(\|\chi\|_{L^\infty}\leq1\).  For \(n\geq0\), let \(A_n(a,h)\) be the
+shell packet of the local two-loop factor \(K(a,a+h)G(a,a+h)^2\).  Assume
+there are constants \(R,A_0\) such that
+\begin{equation}
+  A_n(a,h)=0\quad\text{unless }\|h\|_{\mathfrak s}\leq R2^{-n},
+  \qquad
+  \sup_a\int |A_n(a,h)|\,\dd h\leq A_0 .
+  \label{eq:spde-local-two-loop-shell-lone-bound}
+\end{equation}
+Let \(C_s\), \(s\geq0\), be dyadic covariance blocks of order \(4\).  Assume
+that, whenever \(h\) and \(h'\) lie in the supports of \(A_n\) and
+\(A_{n'}\), the double increment
+\[
+\begin{aligned}
+  \Delta_{h,h'}C_s(a,a')
+  &=
+  C_s(a+h,a'+h')-C_s(a+h,a')\\
+  &\qquad
+  -C_s(a,a'+h')+C_s(a,a')
+\end{aligned}
+\]
+satisfies
+\begin{equation}
+\begin{aligned}
+  |\Delta_{h,h'}C_s(a,a')|
+  &\leq
+  A_0\,2^s\,
+  2^{-\theta(n-s)_+}
+  2^{-\theta(n'-s)_+}                                   \\
+  &\quad\times
+  \sum_{\rho\in\{0,h\}}\sum_{\rho'\in\{0,h'\}}
+  \mathbf 1_{\{\|a+\rho-a'-\rho'\|_{\mathfrak s}\leq R2^{-s}\}} .
+\end{aligned}
+  \label{eq:spde-covariance-block-double-increment-bound}
+\end{equation}
+For a finite ultraviolet cutoff \(N\), define the scalar sector sum
+\begin{equation}
+\begin{aligned}
+  V_{\delta,N}^{(1)}
+  &=
+  \sum_{0\leq n,n',s\leq N}
+  \int
+  \chi_z^\delta(a)\chi_z^\delta(a')A_n(a,h)A_{n'}(a',h')\\
+  &\hspace{8.0em}\times
+  \Delta_{h,h'}C_s(a,a')\,
+  \dd h\,\dd h'\,\dd a\,\dd a' .
+\end{aligned}
+  \label{eq:spde-first-chaos-sector-sum}
+\end{equation}
+Then there is a constant \(C\), independent of \(z\), \(\delta\), and \(N\),
+such that
+\begin{equation}
+  |V_{\delta,N}^{(1)}|
+  \leq
+  C\,\delta^{-1}
+  \bigl(1+|\log_2\delta|\bigr)^2 .
+  \label{eq:spde-first-chaos-logarithmic-variance-bound}
+\end{equation}
+Consequently, if \(Z_{\delta,N}^{(1)}\) is the first-chaos part of the
+tested locally subtracted \(X^2Y\) coordinate whose second moment is bounded
+by a finite sum of terms of the form
+\eqref{eq:spde-first-chaos-sector-sum}, then, for every
+\(\eta>0\),
+\begin{equation}
+  \left\|
+    \delta^{1/2+5\kappa} Z_{\delta,N}^{(1)}
+  \right\|_{L^2(\Omega)}
+  \leq
+  C_\eta\,\delta^{5\kappa-\eta}.
+  \label{eq:spde-first-chaos-normalized-log-loss}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For a fixed shift \(r\), the test-function overlap obeys
+\begin{equation}
+  \int
+  |\chi_z^\delta(a)\chi_z^\delta(a')|
+  \mathbf 1_{\{\|a-a'-r\|_{\mathfrak s}\leq R2^{-s}\}}
+  \,\dd a\,\dd a'
+  \leq
+  C_\chi\min\{1,\delta^{-Q}2^{-Qs}\}.
+  \label{eq:spde-test-overlap-with-shift}
+\end{equation}
+Indeed, if \(2^{-s}\geq c\delta\), the left side is at most
+\(\|\chi_z^\delta\|_{L^1}^2\).  If \(2^{-s}<c\delta\), then for each \(a\)
+the allowed \(a'\)-set has volume \(O(2^{-Qs})\), while
+\(\|\chi_z^\delta\|_{L^\infty}\leq C\delta^{-Q}\) and
+\(\|\chi_z^\delta\|_{L^1}\leq C\).
+
+Insert \eqref{eq:spde-covariance-block-double-increment-bound} into
+\eqref{eq:spde-first-chaos-sector-sum}, use
+\eqref{eq:spde-local-two-loop-shell-lone-bound} for the \(h\) and \(h'\)
+integrals, and then use \eqref{eq:spde-test-overlap-with-shift}.  This gives
+\[
+  |V_{\delta,N}^{(1)}|
+  \leq
+  C
+  \sum_{s=0}^N
+  B_s(\delta)
+  \left(
+    \sum_{n=0}^N2^{-\theta(n-s)_+}
+  \right)^2 ,
+\]
+where
+\[
+  B_s(\delta)
+  =
+  2^s\min\{1,\delta^{-Q}2^{-Qs}\}.
+\]
+The local two-loop packets are shell-summable but not summable over all
+shells; this is exactly why the square of the shell count remains.  Since
+\[
+  \sum_{n=0}^N2^{-\theta(n-s)_+}
+  \leq
+  (s+1)+\frac{1}{1-2^{-\theta}}
+  \leq
+  C_\theta(1+s),
+\]
+we have
+\[
+  |V_{\delta,N}^{(1)}|
+  \leq
+  C
+  \sum_{s\geq0}
+  B_s(\delta)(1+s)^2 .
+\]
+Choose \(m\geq0\) such that \(2^{-m-1}<\delta\leq2^{-m}\).  For
+\(s\leq m\), \(B_s(\delta)\leq2^s\), hence
+\[
+  \sum_{s\leq m}B_s(\delta)(1+s)^2
+  \leq
+  C2^m(1+m)^2
+  \leq
+  C\delta^{-1}(1+|\log_2\delta|)^2 .
+\]
+For \(s>m\),
+\[
+  B_s(\delta)
+  \leq
+  C2^{Qm}2^{-(Q-1)s}.
+\]
+Because \(Q-1=4>0\),
+\[
+  \sum_{s>m}B_s(\delta)(1+s)^2
+  \leq
+  C2^{Qm}2^{-(Q-1)m}(1+m)^2
+  \leq
+  C\delta^{-1}(1+|\log_2\delta|)^2 .
+\]
+This proves \eqref{eq:spde-first-chaos-logarithmic-variance-bound}.
+
+The first-chaos sector is a centered Gaussian variable, so its \(L^2\)-norm
+is the square root of its variance.  Multiplying by
+\(\delta^{1/2+5\kappa}\) gives
+\[
+  \left\|
+    \delta^{1/2+5\kappa}Z_{\delta,N}^{(1)}
+  \right\|_{L^2}
+  \leq
+  C\delta^{5\kappa}(1+|\log_2\delta|).
+\]
+For every \(\eta>0\),
+\[
+  \sup_{0<\delta\leq1}
+  \delta^\eta(1+|\log_2\delta|)<\infty ,
+\]
+which gives \eqref{eq:spde-first-chaos-normalized-log-loss}.
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization

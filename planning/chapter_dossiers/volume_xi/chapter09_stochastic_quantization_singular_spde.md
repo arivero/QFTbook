@@ -143,6 +143,10 @@ data.
   nonlinear negative coordinates.
 - `G_{uv}`, `K_{ab}`: shorthand in the nonlinear kernel-norm proposition for
   \(G_\epsilon(u,v)\) and \(K_\epsilon(a,b)\).
+- `A_n(a,h)`, `C_s`, `V_{\delta,N}^{(1)}`: shell packets of the local
+  two-loop factor \(KG^2\), dyadic order-four covariance blocks, and the
+  scalar first-chaos sector sum used to bound the locally subtracted
+  \(X^2Y\) first-chaos coordinate.
 
 ## Claim Ledger
 
@@ -291,6 +295,14 @@ data.
   The first-chaos formula contains the increment covariance
   \(G_{bb'}-G_{ba'}-G_{ab'}+G_{aa'}\), making the Taylor-subtraction gain
   visible in scalar-kernel form.
+- Proves a deterministic scale bound for the locally subtracted
+  \(X^2Y\) first-chaos kernel: under shell \(L^1\) bounds for the local
+  \(KG^2\) packets and dyadic double-increment bounds for the order-four
+  covariance blocks, the first-chaos variance is
+  \(O(\delta^{-1}(1+|\log\delta|)^2)\).  Consequently the normalized
+  \(X^2Y\) first-chaos coordinate has every slack strictly below
+  \(5\kappa\), with the logarithm explicitly accounted for rather than
+  hidden.
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -579,3 +591,8 @@ data maps.
   exact symmetrization coefficients and the first-chaos increment covariance.
   The next analytic pass can estimate explicit scalar kernels rather than
   infer the cancellation from notation.
+- 2026-05-26 issue #582 first-chaos analytic continuation: the chapter now
+  proves the first deterministic parabolic-scale estimate for the locally
+  subtracted \(X^2Y\) first-chaos kernel.  The proof keeps the two local
+  logarithmic shell factors and absorbs them only as an arbitrarily small
+  loss of the available \(5\kappa\) slack.

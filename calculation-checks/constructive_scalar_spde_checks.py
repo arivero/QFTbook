@@ -340,6 +340,44 @@ def check_nonlinear_negative_coordinate_wick_arithmetic():
     assert_equal(x2y_true_target - x2y_assigned, 5 * kappa, "X2Y target scale slack")
 
 
+def check_x2y_first_chaos_logarithmic_scale_arithmetic():
+    qdim = Fraction(5)
+    kappa = Fraction(1, 20)
+    physical_scale = 7
+
+    # For an order-four covariance block in parabolic dimension Q=5, the
+    # block size is 2^{(Q-4)s}=2^s.  Pairing two scale-delta tests at
+    # delta ~ 2^{-m} contributes min(1, delta^{-Q}2^{-Qs}).
+    low_cross_exponent = physical_scale
+    high_cross_exponent = qdim * physical_scale - (qdim - 1) * (physical_scale + 1)
+    assert_equal(low_cross_exponent, 7, "first-chaos low-cross covariance exponent")
+    assert_equal(high_cross_exponent, 3, "first-chaos high-cross covariance exponent")
+    if not high_cross_exponent < low_cross_exponent:
+        raise AssertionError("high cross scales must decay after the physical scale")
+
+    # The local K G^2 packets are shell-summable, producing at worst two
+    # factors of the number of local shells below the cross scale.
+    shell_count_power = 2
+    assert_equal(shell_count_power, 2, "first-chaos two local logarithmic shell factors")
+
+    variance_exponent = -Fraction(1)
+    l2_exponent = variance_exponent / 2
+    normalization = Fraction(1, 2) + 5 * kappa
+    normalized_l2_slack_before_log_loss = l2_exponent + normalization
+    assert_equal(
+        normalized_l2_slack_before_log_loss,
+        5 * kappa,
+        "first-chaos normalized L2 slack before logarithmic loss",
+    )
+
+    eta_loss = kappa
+    assert_equal(
+        normalized_l2_slack_before_log_loss - eta_loss,
+        4 * kappa,
+        "first-chaos normalized L2 slack after sample logarithmic loss",
+    )
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -1069,6 +1107,7 @@ def main():
     check_gaussian_dual_norm_wavelet_arithmetic()
     check_heat_integration_reexpansion_arithmetic()
     check_nonlinear_negative_coordinate_wick_arithmetic()
+    check_x2y_first_chaos_logarithmic_scale_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -1092,7 +1131,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":
