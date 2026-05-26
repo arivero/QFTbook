@@ -11,6 +11,55 @@ effects become important.  Its inputs are the residual centrally extended
 \(\mathfrak{su}(2|2)\oplus\mathfrak{su}(2|2)\) symmetry of the BMN vacuum,
 factorized magnon scattering, crossing, and analyticity.
 
+\section{Convention Ledger}
+
+The integrability literature uses several mutually inverse scalar-factor and
+Zhukovsky conventions.  This chapter follows the convention used in the
+stringbook integrability chapters, with the notational replacement
+\[
+  h_{\rm stringbook}=g_{\rm monograph}=\frac{\sqrt\lambda}{4\pi}.
+\]
+Thus
+\[
+  x^\pm+\frac1{x^\pm}
+  =
+  \frac{u\pm\ii/2}{g},
+  \qquad
+  \ee^{\ii p}=\frac{x^+}{x^-},
+\]
+and the physical weak-coupling branch has
+\[
+  x^\pm
+  =
+  \frac{\ee^{\pm\ii p/2}}{2g\sin(p/2)}+O(g).
+\]
+The one-magnon energy is written in the stringbook-compatible form
+\[
+  H
+  =
+  -1-2\ii g(x^+-x^-)
+  =
+  1+2\ii g\left(\frac1{x^+}-\frac1{x^-}\right).
+\]
+The equality of the two expressions is not an additional assumption: it is
+obtained by multiplying the defining \(x^\pm\) relation by \(2\ii g\).
+
+The scalar factor convention is also fixed here.  We write
+\(\sigma=\ee^{\ii\theta}\) and use the crossing equation in the same
+orientation as the stringbook:
+\[
+  \sigma_{12}\sigma_{\bar1 2}
+  =
+  \frac{x_2^+}{x_2^-}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}.
+\]
+Authors who put the rational scalar factor into the opposite part of the
+S-matrix, or define the two-body operator as \(S_{21}\) rather than \(S_{12}\),
+write the reciprocal of this expression.  The companion check script enforces
+the \(x^\pm\)-energy and sheet conventions used here; crossing itself remains
+a monodromy input rather than a finite algebraic identity.
+
 \section{BMN Vacuum and Central Extension}
 
 The vacuum spin-chain state is
@@ -117,7 +166,39 @@ elementary magnon.
 
 \section{Zhukovsky Variables}
 
-Introduce spectral parameters \(x^\pm\) by
+Introduce the Zhukovsky map \(x(u)\) by
+\begin{equation}
+  x(u)+\frac1{x(u)}=\frac ug .
+  \label{eq:planar-n4-zhukovsky-map}
+\end{equation}
+The physical branch is the solution satisfying \(x(u)\sim u/g\) as
+\(|u|\to\infty\).  Equivalently,
+\[
+  x_{\rm ph}(u)
+  =
+  \frac12\left(
+    \frac ug+\sqrt{\frac ug-2}\sqrt{\frac ug+2}
+  \right),
+\]
+with the square-root cuts chosen so that the only short cut on the physical
+sheet is \([-2g,2g]\).  Crossing this cut replaces \(x\) by \(1/x\).  More
+precisely, the two boundary values on the cut satisfy
+\[
+  x_{\rm above}(u)x_{\rm below}(u)=1,
+  \qquad -2g<u<2g .
+\]
+The large-\(u\) expansion on the physical sheet is
+\[
+  x_{\rm ph}(u)
+  =
+  \frac ug-\frac gu-\frac{g^3}{u^3}
+  -\frac{2g^5}{u^5}+O(u^{-7}).
+\]
+For a one-magnon state set
+\[
+  x^\pm=x(u\pm\ii/2).
+\]
+Then
 \begin{equation}
   \ee^{\ii p}=\frac{x^+}{x^-},
   \qquad
@@ -126,15 +207,17 @@ Introduce spectral parameters \(x^\pm\) by
 \end{equation}
 The physical region for real magnons is chosen so that
 \((x^+)^*=x^-\) and \(|x^\pm|>1\) at weak coupling.  The magnon energy is
-\[
+the sheet-dependent but single-valued physical-branch expression
+\begin{equation}
   H
   =
-  1+\ii g\left(
+  -1-2\ii g(x^+-x^-)
+  =
+  1+2\ii g\left(
     \frac1{x^+}-\frac1{x^-}
-  \right)
-  -
-  \ii g(x^+-x^-),
-\]
+  \right),
+  \label{eq:planar-n4-energy-xpm}
+\end{equation}
 with the same branch as \eqref{eq:planar-n4-magnon-dispersion}.  Conserved
 charges used in the dressing phase are
 \[
@@ -146,6 +229,54 @@ charges used in the dressing phase are
   \right],
   \qquad r\geq2 .
 \]
+
+\begin{lemma}[Zhukovsky form of the dispersion]
+\label{lem:planar-n4-zhukovsky-dispersion}
+Let \(x^\pm\) obey \eqref{eq:planar-n4-xpm-definition} on the physical sheet.
+Then \eqref{eq:planar-n4-energy-xpm} is equal to
+\[
+  \sqrt{1+16g^2\sin^2\frac p2}.
+\]
+\end{lemma}
+
+\begin{proof}
+For a physical real magnon write
+\[
+  x^\pm
+  =
+  \ee^{\pm\ii p/2}
+  \frac{1+\sqrt{1+16g^2\sin^2(p/2)}}
+       {4g\sin(p/2)} .
+\]
+This parametrization gives \(x^+/x^-=\ee^{\ii p}\).  Substituting it into the
+difference \(x^++1/x^+-x^- -1/x^-\) gives \(\ii/g\), so it is the physical
+solution of \eqref{eq:planar-n4-xpm-definition}.  The inverse difference is
+\[
+  \frac1{x^+}-\frac1{x^-}
+  =
+  \frac{\sqrt{1+16g^2\sin^2(p/2)}-1}{2\ii g}.
+\]
+Equation~\eqref{eq:planar-n4-energy-xpm} therefore reproduces
+\eqref{eq:planar-n4-magnon-dispersion}.  The equality extends to the
+physical sheet by analytic continuation away from the branch points.
+\end{proof}
+
+\begin{warning}[Sheet data in crossing]
+\label{warn:planar-n4-crossing-sheet-data}
+The formal replacement \(x^\pm\mapsto1/x^\pm\) is not a harmless algebraic
+substitution.  It records a path on the Zhukovsky surface.  Poles crossed by
+that path alter the scalar factor through the crossing equation, and the
+answer depends on whether the continuation crosses the short cut of \(x^+\),
+the short cut of \(x^-\), or the composed path used in the mirror theory.
+In the \(u\)-plane, the cuts of \(x^\pm=x(u\pm\ii/2)\) have endpoints
+\[
+  u=\pm2g-\ii/2,\qquad u=\pm2g+\ii/2 .
+\]
+The physical crossing path for one magnon winds around the appropriate pair
+of these branch points so that both \(x^+\) and \(x^-\) reach the crossed
+sheet.  Applying the path twice generally lands on a different sheet of the
+scalar factor even though the projected \(x^\pm\)-values have returned.
+\end{warning}
 
 \section{Two-Body S-Matrix}
 
@@ -208,10 +339,52 @@ the matrix part.  The dressing phase has the antisymmetric charge expansion
   c_{r,s}(g)\,
   \bigl(q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm)\bigr).
 \]
+Equivalently, the BES phase may be packaged as
+\begin{equation}
+\begin{aligned}
+  \theta(x_1^\pm,x_2^\pm)
+  &=
+  \chi(x_1^+,x_2^+)-\chi(x_1^+,x_2^-)
+  -\chi(x_1^-,x_2^+)+\chi(x_1^-,x_2^-),\\
+  \chi(x,y)
+  &=
+  -\ii
+  \oint\frac{\dd z}{2\pi\ii}
+  \oint\frac{\dd w}{2\pi\ii}
+  \frac{1}{x-z}\frac{1}{y-w}
+  \log
+  \frac{\Gamma\!\left(1+\ii g(z+z^{-1}-w-w^{-1})\right)}
+       {\Gamma\!\left(1-\ii g(z+z^{-1}-w-w^{-1})\right)} .
+\end{aligned}
+  \label{eq:planar-n4-bes-chi-integral}
+\end{equation}
+The contours encircle the unit circle singularities of \(z\) and \(w\) in the
+domain where \(|x|>1\), \(|y|>1\).  Formula
+\eqref{eq:planar-n4-bes-chi-integral} is therefore not a global formula on
+all sheets by itself; outside that domain it is continued with the crossing
+prescription.  Expanding the logarithm by polygamma values gives the weak
+zeta-valued coefficients, while a saddle expansion gives the AFS and
+Hernandez--Lopez strong-coupling terms.
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
+In the normalization where the rational matrix part is separated as above,
+Janik crossing has the convention-fixed form
+\begin{equation}
+  \sigma(\bar x_1^\pm,x_2^\pm)\sigma(x_1^\pm,x_2^\pm)
+  =
+  \frac{x_2^+}{x_2^-}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-} ,
+  \label{eq:planar-n4-crossing-scalar-factor}
+\end{equation}
+where \(\bar x_1^\pm\) denotes the crossed-sheet continuation of the first
+magnon, not merely a new independent pair of complex numbers.  The equation
+is best read as a monodromy statement for the scalar factor on the
+Zhukovsky rapidity surface.  The BES solution selects the minimal solution
+compatible with \eqref{eq:planar-n4-crossing-scalar-factor}, unitarity
+\(\sigma_{12}\sigma_{21}=1\), and the prescribed weak/strong asymptotics.
 
 \begin{definition}[Dressing-phase data and status]
 \label{def:planar-n4-dressing-phase-data}

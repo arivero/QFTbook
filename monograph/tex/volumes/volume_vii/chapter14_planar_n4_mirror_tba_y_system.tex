@@ -26,6 +26,46 @@ Since
 the mirror dispersion is not the same function of \(\widetilde p\) as the
 physical dispersion.  This is the first major difference from relativistic
 two-dimensional QFT, where the mirror transformation is a rapidity shift.
+
+\begin{proposition}[Mirror dispersion from double Wick rotation]
+\label{prop:planar-n4-mirror-dispersion}
+For a \(Q\)-magnon bound state with physical dispersion
+\[
+  E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2},
+\]
+the mirror dispersion obtained from
+\(\widetilde E=\ii p\), \(\widetilde p=\ii E_Q\) is
+\begin{equation}
+  \widetilde E_Q(\widetilde p)
+  =
+  2\,\operatorname{arsinh}
+  \left(
+    \frac{\sqrt{Q^2+\widetilde p^{\,2}}}{4g}
+  \right).
+  \label{eq:planar-n4-mirror-dispersion}
+\end{equation}
+The positive branch is chosen for real mirror momentum.
+\end{proposition}
+
+\begin{proof}
+Set \(p=-\ii\widetilde E\) and \(E_Q=-\ii\widetilde p\) in the physical
+dispersion relation.  Since
+\(\sin(-\ii\widetilde E/2)=-\ii\sinh(\widetilde E/2)\), one obtains
+\[
+  -\widetilde p^{\,2}
+  =
+  Q^2-16g^2\sinh^2\frac{\widetilde E}{2}.
+\]
+Thus
+\[
+  \sinh^2\frac{\widetilde E}{2}
+  =
+  \frac{Q^2+\widetilde p^{\,2}}{16g^2}.
+\]
+The mirror energy is positive on the real mirror line, which selects
+\eqref{eq:planar-n4-mirror-dispersion}.
+\end{proof}
+
 Equivalently one continues the Zhukovsky variables through a specified
 sequence of cuts.  On the physical sheet a real magnon has
 \((x^+)^*=x^-\) and \(|x^\pm|>1\).  A mirror particle of real mirror rapidity
@@ -34,6 +74,16 @@ choice of path is part of the definition of the mirror S-matrix: crossing a
 different cut changes the scalar dressing factor by the crossing equation.
 For this reason the mirror TBA below always includes the contour and sheet
 data together with the functional formulae.
+
+It is useful to keep the following sheet ledger explicit.  Let
+\(x^{[\pm Q]}(u)=x(u\pm\ii Q/2)\), with \(x(u)\) the physical Zhukovsky
+branch of Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.  Physical
+bound-state kinematics keeps both \(x^{[+Q]}\) and \(x^{[-Q]}\) on the
+outside sheet for real momentum.  Mirror kinematics continues one of the two
+variables through the short cut, so the pair has opposite inside/outside
+status.  The transfer matrix and the dressing factor must be continued along
+the same path.  A formula copied from the physical sheet but evaluated with
+the wrong inside/outside assignment gives the wrong wrapping sign.
 
 Bound states of \(Q\) physical magnons are described by pairs
 \[
@@ -47,6 +97,53 @@ obeying the bound-state shortening relation
 \]
 In the mirror region the branch is chosen so that the mirror energy
 \(\widetilde E_Q(u)\) is positive for real mirror rapidity \(u\).
+
+\begin{definition}[Mirror-kernel datum]
+\label{def:planar-n4-mirror-kernel-datum}
+A mirror kernel in this chapter means the triple
+\[
+  (S^{\rm mirror}_{BA}(v,u),\mathcal C_B,\mathcal C_A),
+\]
+where \(S^{\rm mirror}_{BA}\) is the analytically continued two-body
+scattering factor and \(\mathcal C_B,\mathcal C_A\) are the source and target
+rapidity contours on the chosen sheets.  The derivative kernel is then
+\[
+  K_{BA}(v,u)
+  =
+  \frac{1}{2\pi\ii}\partial_v\log S^{\rm mirror}_{BA}(v,u).
+  \]
+This convention packages the branch choice with the formula and prevents
+the common mistake of treating mirror TBA kernels as functions on a single
+unbranched \(u\)-plane.
+\end{definition}
+
+\section{Mirror Bethe-String Species}
+
+The mirror TBA is nested because a physical magnon carries two
+\(\mathfrak{su}(2|2)\) wings of polarization data.  The canonical node
+families are as follows.
+\[
+\begin{array}{c|c|c}
+\text{symbol} & \text{range} & \text{role}\\
+\hline
+\bullet_Q & Q=1,2,\ldots & \text{mirror bound states carrying energy}\\
+y_\pm & \text{two sheets} & \text{fermionic auxiliary roots}\\
+(v|M) & M=1,2,\ldots & \text{auxiliary strings in each wing}\\
+(w|M) & M=1,2,\ldots & \text{isotopic auxiliary strings in each wing}
+\end{array}
+\]
+Each wing has its own copy of the \(v\)- and \(w\)-string nodes.  The
+\(\bullet_Q\) nodes are the only nodes that enter the energy formula with the
+measure \(\dd\widetilde p_Q/\dd u\).  The auxiliary nodes enter through
+kernels and chemical potentials and enforce the nested Bethe constraints.
+
+The string hypothesis used here is a thermodynamic statement on the mirror
+Bethe roots: in a large mirror volume, complex roots organize into regular
+arrays whose centers become real variables \(u\).  In a relativistic model
+this statement is already subtle; in planar \(\mathcal N=4\) it is further
+entangled with the Zhukovsky cuts.  Consequently, the node table is part of
+the integrability construction, not a theorem about the original
+four-dimensional path integral.
 
 \section{Thermodynamic Bethe Ansatz}
 
@@ -149,6 +246,40 @@ conditions, and state labels.  Treating the Y-system equations alone as a
 definition of the theory discards the information that distinguishes physical
 states.
 \end{warning}
+
+\section{Analytic Y-System Data}
+
+The analytic Y-system supplements \eqref{eq:planar-n4-y-system} by specifying
+where each shifted function is meromorphic and which discontinuities occur
+when a shift crosses a cut.  A compact way to state the data is to introduce
+the shifted notation
+\[
+  f^{[n]}(u)=f(u+\ii n/2)
+\]
+and to assign to every T-hook node \((a,s)\) a strip
+\[
+  \mathcal A_{a,s}
+  =
+  \{u\in\C:\ |\operatorname{Im}u|<\alpha_{a,s}/2\}
+  \setminus\{\text{short Zhukovsky cuts and state poles}\}.
+\]
+The integers \(\alpha_{a,s}\) are fixed by the T-hook position and by the
+chosen analytic gauge for \(T_{a,s}\).  Inside \(\mathcal A_{a,s}\), the
+functions \(Y_{a,s}\) are meromorphic; on the boundary of the strip the
+discontinuity is inherited from the mirror dressing phase and from Bethe-root
+zeros.  The exact Bethe equations are then regularity conditions:
+\[
+  1+Y_{\bullet_1}^{\rm phys}(u_j)=0
+\]
+removes would-be singularities at the physical roots after the contour
+deformation.
+
+This formulation is deliberately more verbose than the symbolic Y-system.
+The shifts \(u\mapsto u\pm\ii/2\) can move a point from the physical sheet to
+the mirror sheet, and the operations ``shift'' and ``continue through a cut''
+do not commute without recording the path.  In practical TBA calculations
+this information is encoded in the integration contours, source terms, and
+driving terms for the excited state.
 
 \section{Konishi as the First Wrapping Test}
 

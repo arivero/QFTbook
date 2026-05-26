@@ -10,6 +10,7 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - `E,p`: physical magnon energy and momentum.
 - `tilde E, tilde p`: mirror energy and momentum.
 - `x_Q^pm`: bound-state Zhukovsky variables.
+- `bullet_Q,y_pm,(v|M),(w|M)`: mirror node families.
 - `epsilon_A`, `Y_A`: mirror pseudoenergies and Y-functions.
 - `K_BA`: mirror scattering kernel.
 - `Y_{a,s}`: T-hook Y-system variables.
@@ -22,12 +23,17 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 
 - Defines the mirror transformation and emphasizes the non-relativistic
   difference from two-dimensional relativistic integrable QFT.
+- Derives the mirror bound-state dispersion from double Wick rotation.
 - Adds the sheet/branch status of physical versus mirror Zhukovsky variables.
+- Defines a mirror-kernel datum as the scattering factor together with source
+  and target contours, and adds the mirror Bethe-string node inventory.
 - States the general mirror TBA equation with contours, kernels, chemical
   potentials, and signs as part of the data.
 - Gives the excited-state energy formula with wrapping integral.
 - States the T-hook Y-system relation, derives its local Hirota origin, and
   warns that Y-system equations alone do not define the spectrum.
+- Adds analytic Y-system data: shifted strips, meromorphy domains,
+  discontinuities, and exact-root regularity conditions.
 - Uses Konishi as the first wrapping test and separates finite-length
   correction from magnon-dispersion correction.
 - Adds the weak-coupling Konishi root expansion, ABA coefficient, wrapping
@@ -42,4 +48,5 @@ node domain.
 
 - `calculation-checks/planar_n4_integrability_checks.py` verifies a local
   Hirota-to-Y-system algebra identity.
+- The same script verifies the mirror double-Wick dispersion identity.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic.

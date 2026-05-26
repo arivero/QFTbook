@@ -16,6 +16,7 @@ as a local-operator spectral problem in four-dimensional gauge theory.
 - `tau`: cyclic shift on spin-chain sites.
 - `X,Z`: two complex scalars defining the `SU(2)` scalar sector.
 - `P_{j,j+1}`: adjacent spin permutation.
+- `I,P,K`: identity, permutation, and trace maps in the `SO(6)` scalar chain.
 - `H_XXX`: one-loop Heisenberg Hamiltonian.
 - `u_j,p_j`: Bethe rapidities and momenta.
 - `D_+`: lightlike covariant derivative in the `SL(2)` sector.
@@ -28,6 +29,8 @@ as a local-operator spectral problem in four-dimensional gauge theory.
   representatives.
 - Adds a two-site scalar mixing proposition with color-locality and BPS
   protection fixing the identity term.
+- Adds the full one-loop `SO(6)` scalar density
+  `K+2I-2P` and proves its holomorphic `SU(2)` reduction.
 - States and derives the one-loop `SU(2)` Hamiltonian from nearest-neighbor
   planar mixing, BPS protection of the identity term, and the adjacent
   exchange coefficient.
@@ -49,5 +52,7 @@ single-trace word and the adjacent exchange interaction.
 - `calculation-checks/planar_n4_integrability_checks.py` verifies the
   one-magnon finite-difference spectrum and the displayed cyclic Konishi
   Bethe roots.
+- The same script checks that the `SO(6)` trace operator vanishes on the
+  holomorphic `X,Z` subsector.
 - Same script now also checks BMN scaling and bound-state dispersion
   normalizations that depend on the chapter's coupling convention.

@@ -60,19 +60,50 @@
 - Added QSC asymptotic coefficient constraints, small-spin Bessel-ratio
   expansion, and Maldacena-Wilson/cusp/Bremsstrahlung interface.
 
+## Continuation Pass
+
+- Added the full one-loop `SO(6)` scalar density `K+2I-2P` and its
+  holomorphic `SU(2)` reduction.
+- Added an explicit convention ledger aligning the monograph with the
+  stringbook integrability convention `h=g=sqrt(lambda)/(4 pi)` and warning
+  about reciprocal scalar-factor conventions in the literature.
+- Corrected the Zhukovsky energy formula to
+  `H=-1-2ig(x^+-x^-)=1+2ig(1/x^+-1/x^-)` and added a proof from the
+  physical branch.
+- Added physical-branch Zhukovsky map data, large-`u` expansion, cut
+  reciprocal boundary values, shifted branch-point crossing paths, Janik
+  scalar crossing, and the BES `chi(x,y)` contour-integral representation
+  with sheet caveats.
+- Derived the mirror bound-state dispersion from double Wick rotation and
+  recorded the mirror-kernel datum and mirror Bethe-string node inventory.
+- Added analytic Y-system data: shifted strips, meromorphy domains,
+  discontinuities, and exact-root regularity conditions.
+- Added QSC Pfaffian normalization, a rank-two discontinuity consistency
+  lemma, the dual `Qomega` system, an explicit Konishi Baxter polynomial, and
+  the scalar hexagon factor with crossing-path caveat.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
 
+- `SO(6)` trace-operator reduction to the holomorphic `SU(2)` sector;
 - one-magnon XXX finite-difference normalization;
 - Konishi one-loop cyclic roots;
+- explicit Konishi Baxter polynomial identity;
 - central-extension dispersion;
+- Zhukovsky defining equation, large-`u` expansion, cut reciprocal boundary
+  values, `x^pm` relation, and corrected energy formula;
+- non-invariance of the stringbook-orientation crossing RHS under a naive
+  sheet-free `x -> 1/x` substitution;
 - weak-coupling dispersion expansion;
 - BMN scaling limit;
 - bound-state shortening dispersion;
+- mirror double-Wick dispersion;
 - Konishi four-loop wrapping arithmetic;
-- planar Bremsstrahlung weak-series Bessel-ratio coefficients;
+- planar Bremsstrahlung weak-series Bessel-ratio coefficients through four
+  displayed orders;
 - local Hirota-to-Y-system algebra.
+- QSC `Pmu` Pfaffian preservation under the rank-two discontinuity update.
 
 ## Status
 

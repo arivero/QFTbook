@@ -33,6 +33,19 @@ The \(P\mu\)-system is
   \mu_{ab}(u+\ii)&=\widetilde\mu_{ab}(u).
   \label{eq:planar-n4-pmu-period}
 \end{align}
+The normalization is completed by the Pfaffian condition
+\begin{equation}
+  \operatorname{Pf}\mu
+  =
+  \mu_{12}\mu_{34}-\mu_{13}\mu_{24}+\mu_{14}\mu_{23}
+  =
+  1,
+  \label{eq:planar-n4-pmu-pfaffian}
+\end{equation}
+up to the standard \(P\)-basis gauge transformations.  The tilde operation is
+analytic continuation through the short cut of the corresponding function;
+it is not complex conjugation.  On real states one imposes an additional
+reality or gluing condition relating the two sheets.
 State quantum numbers enter through large-\(u\) asymptotics of \(P_a\) and
 \(\mu_{ab}\).  In the \(SL(2)\) sector with twist \(J\), spin \(S\), and
 dimension \(\Delta\), these asymptotics encode the charges
@@ -73,6 +86,42 @@ These formulae are convention-sensitive because they depend on the shift
 normalization \(f^{[\pm1]}(u)=f(u\pm\ii/2)\), the short cut
 \([-2g,2g]\), and the choice of \(P\)-basis.
 
+\begin{lemma}[Consistency of the \(P\mu\) discontinuity]
+\label{lem:planar-n4-pmu-pfaffian-consistency}
+The discontinuity equation
+\eqref{eq:planar-n4-pmu-two} preserves the Pfaffian normalization
+\eqref{eq:planar-n4-pmu-pfaffian} if the \(P\)-functions satisfy
+\[
+  P_aP^a=0 .
+\]
+\end{lemma}
+
+\begin{proof}
+Use the rank-two Pfaffian identity
+\[
+  \operatorname{Pf}(M+v\wedge w)
+  =
+  \operatorname{Pf}(M)\bigl(1+w^TM^{-1}v\bigr)
+\]
+for an invertible antisymmetric \(4\times4\) matrix \(M\).  Here
+\(M=\mu\), \(v=P\), and \(w=\widetilde P=\mu P^\sharp\), where
+\((P^\sharp)^a=P^a=\chi^{ab}P_b\).  Hence
+\[
+  w^T\mu^{-1}v
+  =
+  (\mu P^\sharp)^T\mu^{-1}P
+  =
+  -(P^\sharp)^TP
+  =
+  -P^aP_a
+  =
+  0,
+\]
+because \(\chi^{ab}\) is antisymmetric.  Therefore crossing the cut does not
+change \(\operatorname{Pf}\mu\), so the normalization can be imposed on one
+sheet and transported consistently.
+\end{proof}
+
 \begin{quotedtheorem}[Quantum spectral curve spectral problem]
 \label{qthm:planar-n4-qsc-status}
 Within the planar \(\mathcal N=4\) integrability framework, a physical
@@ -84,6 +133,35 @@ planar scaling dimension of the state as a function of \(\lambda\).
 The theorem is quoted with its framework stated.  The QSC is a powerful exact
 solution of the planar integrability system; it is not presently a
 constructive definition of four-dimensional \(\mathcal N=4\) SYM.
+
+\section{Q-Omega System and Gauge Choices}
+
+The \(P\mu\)-system is one gauge for the QSC.  A dual description uses four
+functions \(Q_i(u)\), \(i=1,\ldots,4\), and an antisymmetric matrix
+\(\omega_{ij}(u)\).  In the standard convention the \(Q_i\) have long cuts,
+while the \(P_a\) have one short cut on the principal sheet.  The equations
+mirror the \(P\mu\) system:
+\[
+  \widetilde Q_i=\omega_{ij}Q^j,\qquad
+  \widetilde\omega_{ij}-\omega_{ij}
+  =
+  Q_i\widetilde Q_j-Q_j\widetilde Q_i,
+  \qquad
+  \omega_{ij}(u+\ii)=\widetilde\omega_{ij}(u).
+\]
+The two descriptions are related by the full \(Q_{A|I}\) system of
+finite-difference relations.  The useful point for this monograph is not the
+formal symmetry itself but the bookkeeping: choosing short cuts for \(P_a\)
+and long cuts for \(Q_i\) is an analytic gauge.  Physical charges are read
+from large-\(u\) asymptotics only after this gauge and the gluing conditions
+are fixed.
+
+For real left-right symmetric states, the gluing conditions may be written,
+after a basis choice, as relations between \(\widetilde P_a(u)\) and complex
+conjugates of \(P_a(u)\) on the real axis outside the cut.  These conditions
+select the physical solution among many formal solutions of the same
+finite-difference equations.  They play the same role as contour data in the
+mirror TBA.
 
 \section{Weak-Coupling Baxter Limit}
 
@@ -139,6 +217,29 @@ Dividing by \((u_j-\ii/2)^JQ(u_j-\ii)\) and using
 \]
 gives the displayed Bethe equation.
 \end{proof}
+
+\begin{example}[Konishi Baxter polynomial]
+\label{ex:planar-n4-konishi-baxter-polynomial}
+For the twist-two spin-two representative of Konishi, take
+\[
+  J=2,\qquad S=2,\qquad
+  Q(u)=u^2-\frac1{12}.
+\]
+Then
+\[
+  (u+\ii/2)^2Q(u+\ii)+(u-\ii/2)^2Q(u-\ii)
+  =
+  \left(2u^2-\frac{13}{2}\right)Q(u).
+\]
+Thus the transfer polynomial is \(T(u)=2u^2-13/2\), and the zeros
+\[
+  u=\pm\frac{1}{2\sqrt3}
+\]
+are precisely the one-loop Konishi Bethe roots used in
+Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains}.  This example is a
+finite calculation showing how the QSC weak-coupling limit remembers the
+spin-chain normalization.
+\end{example}
 
 \section{Cusp Anomalous Dimension and Konishi}
 
@@ -241,6 +342,23 @@ of the magnons moved across the bridge, and \(\mathcal N\) is the Gaudin norm
 factor of the Bethe state.  Mirror particles on the bridges add finite-size
 corrections, analogous in spirit to wrapping corrections in the spectral
 problem.
+
+For scalar magnons the elementary two-particle scalar factor entering the
+hexagon can be written, in the same \(x^\pm\) and \(\sigma\) conventions as
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}, as
+\begin{equation}
+  h(u,v)
+  =
+  \frac{x_u^- -x_v^-}{x_u^- -x_v^+}
+  \frac{1-1/(x_u^+x_v^-)}{1-1/(x_u^+x_v^+)}
+  \frac{1}{\sigma(u,v)} .
+  \label{eq:planar-n4-hexagon-scalar-factor}
+\end{equation}
+The matrix part is the same centrally extended symmetry intertwiner that
+appears in the magnon S-matrix, after the crossing moves needed to put
+excitations on a chosen hexagon edge.  Thus the hexagon construction imports
+the same analytic-continuation obligations: specifying \(h(u,v)\) without the
+crossing path of the moved excitation is incomplete.
 
 \begin{openproblem}[Derivation of the hexagon expansion]
 \label{op:planar-n4-hexagon-derivation}
