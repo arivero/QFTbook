@@ -1875,6 +1875,73 @@ def check_t_hook_wronskian_pmu_bridge() -> None:
         )
 
 
+def check_qsc_fermionic_node_ratio_large_u() -> None:
+    """Check the large-u sheet expansion of the fermionic-node ratio."""
+
+    for coupling, charge, mirror_momentum in (
+        (0.17, 1, 0.8),
+        (0.23, 2, -1.1),
+        (0.31, 4, 0.35),
+    ):
+        radius = math.sqrt(charge * charge + mirror_momentum * mirror_momentum)
+        mirror_energy = 2 * math.asinh(radius / (4 * coupling))
+        r_value = math.exp(-mirror_energy / 2)
+        xi = (mirror_momentum - 1j * charge) / radius
+        x_plus = r_value * xi
+        x_minus = xi / r_value
+
+        if not abs(x_plus) < 1:
+            raise AssertionError("mirror plus sheet should be inside")
+        if not abs(x_minus) > 1:
+            raise AssertionError("mirror minus sheet should be outside")
+        assert_close(
+            "mirror energy logarithm",
+            cmath.log(x_minus / x_plus),
+            mirror_energy,
+        )
+        assert_close(
+            "mirror momentum convention",
+            1j * mirror_momentum,
+            -charge - 2j * coupling * (x_plus - x_minus),
+        )
+
+        constant = x_plus / x_minus
+        coefficient = coupling * (
+            x_plus - x_minus + 1 / x_minus - 1 / x_plus
+        )
+        assert_close("fermionic ratio constant", constant, cmath.exp(-mirror_energy))
+        assert_close("fermionic ratio 1/u coefficient", coefficient, -mirror_momentum)
+
+        shortening = x_plus + 1 / x_plus - x_minus - 1 / x_minus
+        assert_close("mirror shortening used by ratio expansion", shortening, 1j * charge / coupling)
+
+        large_u = 10_000.0
+        x_small = coupling / large_u + coupling**3 / large_u**3
+        ratio = (
+            (x_small - x_plus)
+            / (x_small - x_minus)
+            * ((1 / x_small) - x_minus)
+            / ((1 / x_small) - x_plus)
+        )
+        asymptotic_ratio = cmath.exp(-mirror_energy) * (
+            1 - mirror_momentum / large_u
+        )
+        assert_close(
+            "fermionic ratio large-u expansion",
+            ratio / asymptotic_ratio,
+            1,
+            tol=5.0e-7,
+        )
+
+        physical_momentum = 1j * mirror_energy
+        physical_energy = 1j * mirror_momentum
+        assert_close(
+            "inverse mirror continuation of ratio exponent",
+            -mirror_energy - mirror_momentum / large_u,
+            1j * physical_momentum + 1j * physical_energy / large_u,
+        )
+
+
 def check_qsc_pq_bridge_unimodular_rank_one_update() -> None:
     """Check the local P-Q bridge rank-one update and determinant gauge."""
 
@@ -2292,6 +2359,7 @@ def main() -> None:
     check_t_system_to_y_system_identity()
     check_t_gauge_resolvent_hirota_factorization()
     check_t_hook_wronskian_pmu_bridge()
+    check_qsc_fermionic_node_ratio_large_u()
     check_qsc_pq_bridge_unimodular_rank_one_update()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()

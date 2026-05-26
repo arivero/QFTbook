@@ -732,3 +732,42 @@ Calculation checks added:
   coefficient arithmetic for the `sigma_0`, `sigma_1`, `A_0`, and `A_1`
   terms in the weak BES expansion and checks the dressing-kernel power
   counting.
+
+## Continuation XXVII: Fermionic-Node Large-u QSC Energy Bridge
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- The stringbook derives the QSC `mu_12` energy exponent from the
+  excited-state mirror-TBA fermionic product using a large-`u` expansion on a
+  small-`x` sheet.  The monograph previously recorded this as a
+  T-hook-to-`Pmu` normalization input.  This pass supplies the local
+  convention-sensitive calculation so the sign is visible.
+
+Content added:
+
+- Defined the fermionic-node sheet `x_f(u)=g/u+O(u^-3)`.
+- Defined the mirror fermionic-node ratio
+  `R_Q=((x_f-a)/(x_f-b))*((x_f^-1-b)/(x_f^-1-a))` with
+  `a=x_Q^+`, `b=x_Q^-`.
+- Proved that
+  `log R_Q=-tilde E_Q-tilde p_Q/u+O(u^-2)` using the mirror shortening
+  relation and the stringbook mirror momentum convention.
+- Recorded the inverse mirror continuation
+  `tilde E=-i p`, `tilde p=-i E`, giving the physical-root expansion
+  `log R_1^phys=i p+i E/u+O(u^-2)`.
+- Refined the fermionic-product energy-normalization assumption: the
+  remaining framework input is the global excited-state TBA contour formula,
+  not an independent QSC sign convention.
+
+Calculation checks added:
+
+- `check_qsc_fermionic_node_ratio_large_u()` verifies the mirror sheet
+  placement, mirror energy logarithm, mirror momentum convention, shortening
+  relation, ratio constant term, `u^-1` coefficient, numerical large-`u`
+  expansion, and inverse mirror continuation.

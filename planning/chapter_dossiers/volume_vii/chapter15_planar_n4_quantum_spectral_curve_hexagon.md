@@ -15,6 +15,10 @@ three-point functions.
 - `G, bar G, rho`: one-row T-gauge Cauchy transforms and discontinuity
   density used before passing to the magic-sheet T-hook gauge.
 - `hat G, hat T`: magic-sheet continuations through the Zhukovsky cut.
+- `x_f(u)`: fermionic-node large-`u` Zhukovsky sheet with
+  `x_f(u)=g/u+O(u^-3)`.
+- `R_Q(u,v)`: fermionic-node mirror scattering ratio whose large-`u`
+  expansion fixes the QSC energy exponent.
 - `Q_i`, `omega_ij`: dual QSC variables in the `Qomega` system.
 - `Q_{a|i}`: auxiliary Q-system matrix bridging the `Pmu` and `Qomega`
   gauges.
@@ -58,6 +62,13 @@ three-point functions.
 - Adds a T-hook-to-`Pmu` charge-bridge assumption for the fermionic nodes
   `Y_{1,1} Y_{2,2}`, now narrowed to the mirror-TBA large-`u` energy
   normalization after the local bridge algebra has been proved.
+- Adds and proves the local large-`u` expansion of the fermionic-node
+  scattering ratio
+  `R_Q=((x_f-a)/(x_f-b))*((x_f^-1-b)/(x_f^-1-a))` on the small-`x`
+  sheet: its constant term is `-tilde E_Q`, its `u^-1` coefficient is
+  `-tilde p_Q`, and inverse mirror continuation gives
+  `i p + i E/u` for a physical root.  This pins the sign in the
+  `Y_{1,1}Y_{2,2}` energy normalization to the stringbook mirror convention.
 - Proves from the `Pmu` discontinuity and pseudo-periodicity that
   `Y_{1,1}Y_{2,2}=mu_12(u+i)/mu_12(u)`, and derives
   `mu_12(u) ~ u^(Delta-J)` when the large-`u` behavior is power-like.
@@ -146,6 +157,10 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the two-row T-hook Wronskian Pluecker identity,
   central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
   `T_{1,0}=mu_12 tilde mu_12`.
+- The same script checks the fermionic-node ratio expansion: mirror sheet
+  placement, mirror energy logarithm, mirror momentum convention, shortening,
+  constant term `exp(-tilde E_Q)`, `u^-1` coefficient `-tilde p_Q`, and the
+  inverse mirror continuation to `i p+i E/u`.
 - The same script checks the QSC large-`u` characteristic equation for the
   displayed `A_1A_4` and `A_2A_3` products, including the dimension root,
   the spin-shadow root `S-1`, the intermediate linear relation, and

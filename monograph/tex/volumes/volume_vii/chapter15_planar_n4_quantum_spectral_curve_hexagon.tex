@@ -316,6 +316,95 @@ statement after substituting
 \eqref{eq:qsc-local-mu12-discontinuity}.
 \end{proof}
 
+\begin{proposition}[Fermionic-node ratio and the large-\(u\) energy sign]
+\label{prop:qsc-fermionic-node-large-u-ratio}
+Let \(x_{\rm f}(u)\) be the fermionic-node Zhukovsky sheet used in the
+large-\(u\) expansion of \(Y_{1,1}Y_{2,2}\), normalized by
+\[
+  x_{\rm f}(u)=\frac{g}{u}+O(u^{-3}),\qquad u\to\infty .
+\]
+For a mirror \(Q\)-particle at rapidity \(v\), write
+\[
+  a=x_Q^+(v),\qquad b=x_Q^-(v),
+  \qquad |a|<1<|b|,
+  \qquad
+  \widetilde E_Q(v)=\log\frac{b}{a},
+\]
+with the logarithm on the real mirror branch, and use the mirror momentum
+normalization of Chapter~\ref{ch:planar-n4-mirror-tba-y-system},
+\begin{equation}
+  \ii\widetilde p_Q(v)=-Q-2\ii g(a-b).
+  \label{eq:qsc-mirror-momentum-from-xpm}
+\end{equation}
+Define the fermionic-node scattering-ratio factor
+\[
+  R_Q(u,v)=
+  \frac{x_{\rm f}(u)-a}{x_{\rm f}(u)-b}\,
+  \frac{x_{\rm f}(u)^{-1}-b}{x_{\rm f}(u)^{-1}-a}.
+\]
+Then, on the branch of \(\log R_Q\) which tends to
+\(\log(a/b)\) at \(u=\infty\),
+\begin{equation}
+  \log R_Q(u,v)
+  =
+  -\widetilde E_Q(v)-\frac{\widetilde p_Q(v)}{u}
+  +O(u^{-2}).
+  \label{eq:qsc-fermionic-node-ratio-expansion}
+\end{equation}
+After the inverse mirror continuation of the second particle,
+\(\widetilde E=-\ii p\), \(\widetilde p=-\ii E\), the same local expansion
+becomes
+\[
+  \log R_1^{\rm phys}(u,u_j)
+  =
+  \ii p(u_j)+\frac{\ii E(u_j)}{u}+O(u^{-2}).
+\]
+\end{proposition}
+
+\begin{proof}
+Set \(x=x_{\rm f}(u)\).  Since \(x=g/u+O(u^{-3})\),
+\[
+  \frac{x-a}{x-b}
+  =
+  \frac{a}{b}
+  \left(1+x\left(\frac1b-\frac1a\right)+O(x^2)\right),
+  \qquad
+  \frac{x^{-1}-b}{x^{-1}-a}
+  =
+  1+x(a-b)+O(x^2).
+\]
+Multiplying,
+\[
+  R_Q(u,v)
+  =
+  \frac{a}{b}
+  \left[
+    1+\frac{g}{u}
+    \left(a-b+\frac1b-\frac1a\right)
+    +O(u^{-2})
+  \right].
+\]
+The constant term gives
+\(\log(a/b)=-\widetilde E_Q\).  For the coefficient of \(u^{-1}\), use the
+bound-state shortening condition
+\[
+  a+\frac1a-b-\frac1b=\frac{\ii Q}{g}.
+\]
+It implies
+\[
+  g\left(a-b+\frac1b-\frac1a\right)
+  =
+  2g(a-b)-\ii Q
+  =
+  -\widetilde p_Q,
+\]
+where the last equality is
+\eqref{eq:qsc-mirror-momentum-from-xpm}.  Taking the logarithm proves
+\eqref{eq:qsc-fermionic-node-ratio-expansion}.  The physical expansion is
+the same identity written with the stringbook double-Wick convention
+\(\widetilde E=-\ii p\), \(\widetilde p=-\ii E\).
+\end{proof}
+
 \begin{assumption}[Fermionic-product energy normalization]
 \label{ass:qsc-t-hook-charge-bridge}
 Work in the analytic T-hook gauge of
@@ -334,7 +423,14 @@ energy normalization inherited from the excited-state mirror TBA:
   \qquad u\to\infty
 \]
 in the upper-half-plane sector used for the \(SL(2)\) large-\(u\)
-asymptotics.
+asymptotics.  Proposition~\ref{prop:qsc-fermionic-node-large-u-ratio} is the
+local sheet calculation behind this normalization: in the standard
+excited-state mirror-TBA formula, the fermionic product is assembled from the
+ratio \(R_Q\), and its \(u^{-1}\) coefficient is the same mirror-momentum
+functional that appears in the energy formula
+\eqref{eq:planar-n4-excited-tba-energy}.  The assumption that remains is the
+global TBA contour formula for \(Y_{1,1}Y_{2,2}\), not an independent sign
+choice in the QSC.
 \end{assumption}
 
 \begin{lemma}[Dimension exponent of \(\mu_{12}\)]
