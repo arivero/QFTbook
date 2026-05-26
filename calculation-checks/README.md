@@ -214,7 +214,9 @@ Current checks:
   two-dimensional superconformal-algebra chapter, including the
   \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary
   norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
-  protected Landau--Ginzburg central-charge arithmetic, and the
+  extended \(\mathcal N=2\) spectral-flow operator weights, charges,
+  Heisenberg OPE exponents, and descendant charges, protected
+  Landau--Ginzburg central-charge arithmetic, and the
   supersymmetric \(SU(2)/U(1)\) and \(SL(2,\mathbb R)/U(1)\) rank-one
   coset central-charge, chiral-primary, field-identification, and
   spectral-flow formulas.

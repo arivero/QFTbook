@@ -18,8 +18,14 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 - `J(z)`: holomorphic `U(1)_R` current.
 - `L_n,J_n,G_r,G_r^pm`: modes in the NS or R sector.
 - `c`: holomorphic central charge.
+- `kappa`: `c/3`, the level of the `U(1)_R` current algebra.
 - `eta`: `N=2` spectral-flow parameter.
 - `h,q`: simultaneous `L_0,J_0` eigenvalues.
+- `varphi`: chiral boson used to exponentiate the `U(1)_R` current when a
+  charge-lattice extension is part of the CFT datum.
+- `X_eta`, `X^pm`, `Y^pm`: spectral-flow vertex, integer spectral-flow
+  generators, and their opposite superdescendants in the extended `N=2`
+  chiral algebra.
 - `W`: quasihomogeneous Landau--Ginzburg polynomial used only as a protected
   chiral-algebra test.
 - `q_i`: rational weights of the variables in `W`.
@@ -50,6 +56,19 @@ superconformal-algebra infrastructure that such constructions must satisfy.
   antichiral primary shortening conditions.
 - Shows that spectral flow by `eta=-1/2` maps an NS chiral primary to a
   Ramond state with `h=c/24`.
+- Separates abstract `N=2` spectral flow from the stronger claim that a
+  spectral-flow vertex is present in the chiral algebra.
+- Defines the Heisenberg/lattice realization of the `U(1)_R` current by
+  `J=i sqrt(kappa) partial varphi`, including the charge-lattice/locality
+  hypothesis.
+- Derives the spectral-flow vertex OPE with a charged field and recovers the
+  shifts `q -> q+eta kappa` and `h -> h+eta q+eta^2 kappa/2`.
+- Derives the integer spectral-flow operator weights/charges, their
+  chiral/antichiral shortening, the `Y^pm` descendant weights/charges, and
+  the first terms in the `X_eta X_-eta` OPE.
+- Records the `c=3n` Calabi-Yau-type charge-lattice values for integer and
+  half-integer spectral-flow fields as algebraic data rather than a
+  sigma-model construction.
 - Defines quasihomogeneous LG chiral data only as a protected algebraic test
   for supersymmetric dynamics, not as an RG-flow construction.
 - Computes the `A`-series Jacobi ring, central charge, and chiral weights.
@@ -94,21 +113,31 @@ superconformal-algebra infrastructure that such constructions must satisfy.
    `||G^+_{-1/2}v||^2=(2h-q)||v||^2` and
    `||G^-_{-1/2}v||^2=(2h+q)||v||^2`.
 8. For `h=q/2`, spectral flow by `eta=-1/2` gives `h'=c/24`.
-9. The `A`-series central charge from `W=X^{k+2}` is `3k/(k+2)`.
-10. The quintic protected algebraic central charge is `9`.
-11. The compact supersymmetric coset central charge is
+9. In a Heisenberg realization with `kappa=c/3`, the spectral-flow vertex
+   `X_eta=exp(i eta sqrt(kappa) varphi)` has
+   `h=eta^2 kappa/2` and `q=eta kappa`.
+10. The OPE `X_eta O_q` has branch exponent `eta q` and shifts the
+    Heisenberg weight by `eta q+eta^2 kappa/2`.
+11. The opposite-generator OPE `X_eta X_-eta` has pole order
+    `eta^2 kappa`, first `J` coefficient `eta`, and second-order
+    coefficients `eta/2` for `partial J` and `eta^2/2` for `:JJ:`.
+12. The integer generators `X^pm` have `h=c/6`, `q=pm c/3`, while
+    `Y^pm` have `h=c/6+1/2`, `q=pm(c/3-1)`.
+13. The `A`-series central charge from `W=X^{k+2}` is `3k/(k+2)`.
+14. The quintic protected algebraic central charge is `9`.
+15. The compact supersymmetric coset central charge is
     `3(k-2)/k` after adding three fermions and removing the `N=1`
     abelian Cartan sector.
-12. The compact coset primary formulas
+16. The compact coset primary formulas
     `h=(j(j+1)-m^2)/k`, `q=-2m/k` spectral-flow to
     `h=(j(j+1)-(m+eta)^2)/k+eta^2/2`,
     `q=-2(m+eta)/k+eta`.
-13. The compact chiral primaries `m=-j` have `h=q/2` and match the
+17. The compact chiral primaries `m=-j` have `h=q/2` and match the
     `A`-series protected values with minimal level `K=k-2`.
-14. The noncompact cigar central charge is `3(k+2)/k`, and the primary
+18. The noncompact cigar central charge is `3(k+2)/k`, and the primary
     formulas `h=(-j(j-1)+m^2)/k`, `q=2m/k` spectral-flow to the displayed
     cigar formulas.
-15. The compact and noncompact endpoint field-identification formulas
+19. The compact and noncompact endpoint field-identification formulas
     preserve the displayed `h,q` values, and the cigar momentum/winding
     labels satisfy `n=M-Mbar`, `w=(M+Mbar)/k` for flowed Cartan labels.
 
@@ -122,11 +151,13 @@ map without turning into a supersymmetric dynamics chapter.
 
 - `calculation-checks/superconformal_algebra_checks.py` verifies the
   `N=1` Ramond zero-mode shift, `N=2` chiral-primary norm identities,
-  spectral-flow automorphism, NS-to-R ground-state shift, protected LG
-  central-charge arithmetic, and the compact/noncompact supersymmetric
-  rank-one coset central charges, chiral-primary identities,
-  field-identification identities, spectral-flow formulas, and cigar
-  momentum/winding bookkeeping in exact rational arithmetic.
+  spectral-flow automorphism, NS-to-R ground-state shift, extended `N=2`
+  spectral-flow vertex weights, charges, Heisenberg OPE exponents,
+  `X^pm/Y^pm` descendant charges, protected LG central-charge arithmetic,
+  and the compact/noncompact supersymmetric rank-one coset central charges,
+  chiral-primary identities, field-identification identities, spectral-flow
+  formulas, and cigar momentum/winding bookkeeping in exact rational
+  arithmetic.
 
 ## Remaining Obligations
 
@@ -148,3 +179,8 @@ map without turning into a supersymmetric dynamics chapter.
   coset material beyond the stringbook formulas with stated hypotheses,
   self-contained central-charge/weight/flow derivations, and exact
   calculation-check coverage.
+- 2026-05-26 extended `N=2` spectral-flow operator pass: separated the
+  mode-algebra automorphism from the stronger local-operator assertion,
+  added the charge-lattice/Heisenberg realization, derived spectral-flow
+  vertex OPE data and `X^pm/Y^pm` charges, and extended the exact check
+  companion.

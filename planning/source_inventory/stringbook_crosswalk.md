@@ -287,11 +287,14 @@ Current absorption:
   spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and
   \(\mathcal N=2\) superconformal OPEs and mode algebras, the Ramond
   zero-mode shift, \(\mathcal N=2\) spectral flow, chiral-primary bounds,
+  the extended \(\mathcal N=2\) spectral-flow operator layer with the
+  charge-lattice/locality hypothesis, \(U(1)_R\) bosonization, integer and
+  half-integer flow fields, and \(X^\pm/Y^\pm\) charge bookkeeping,
   protected Landau--Ginzburg central-charge tests, and the supersymmetric
   rank-one coset interfaces for \(SU(2)_k/U(1)\) minimal models and the
   \(SL(2,\mathbb R)_k/U(1)\) cigar, including central charges, weights,
-  \(R\)-charges, spectral-flowed labels, field identifications,
-  compact \(\mathbb Z_k\) action, and cigar momentum/winding bookkeeping.
+  \(R\)-charges, spectral-flowed labels, field identifications, compact
+  \(\mathbb Z_k\) action, and cigar momentum/winding bookkeeping.
   It explicitly coordinates with the Volume VII supersymmetric-QFT lane for
   the actual LG/GLSM RG-flow and cigar/Liouville mirror-duality
   constructions.  The finite algebra is checked by

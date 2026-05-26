@@ -441,6 +441,193 @@ Insert \(h=q/2\) and \(\eta=-1/2\) into
 \]
 \end{proof}
 
+\section{Extended \texorpdfstring{\(\mathcal N=2\)}{N=2} Spectral-Flow Operators}
+\label{sec:extended-n2-spectral-flow-operators}
+
+Proposition~\ref{prop:n2-spectral-flow} is a statement about the abstract
+mode algebra.  It does not say that spectral flow is implemented by a local
+operator in a particular CFT.  That extra assertion needs a charge lattice
+and locality hypothesis.  This distinction is small in notation and large in
+logic: the extended \(\mathcal N=2\) algebra is an additional chiral-algebra
+datum requiring more than the singular OPEs in
+Definition~\ref{def:n2-superconformal-datum}.
+
+Put
+\[
+  \kappa=\frac c3 .
+\]
+In this section assume \(\kappa>0\) and assume that the \(U(1)_R\) current
+exponentiates to a rank-one Heisenberg/lattice chiral algebra.  Concretely,
+choose a chiral boson \(\varphi\) with
+\begin{equation}
+  \varphi(z)\varphi(0)\sim-\log z,
+  \qquad
+  J(z)=\ii\sqrt{\kappa}\,\partial\varphi(z).
+  \label{eq:n2-r-current-bosonization}
+\end{equation}
+Then \(J(z)J(0)\sim\kappa z^{-2}\), matching
+\eqref{eq:n2-jj-ope}.  A field of \(R\)-charge \(q\) has a Heisenberg
+factor
+\[
+  \exp\left(\ii\frac{q}{\sqrt\kappa}\varphi\right)
+\]
+up to a neutral factor.  The charge lattice of the actual CFT specifies
+which such exponentials exist and which are mutually local.
+
+\begin{definition}[Spectral-flow vertex]
+\label{def:n2-spectral-flow-vertex}
+Let \(\eta\in\frac12\mathbb Z\).  A spectral-flow vertex of parameter
+\(\eta\) is a chiral field
+\begin{equation}
+  X_\eta(z)
+  =
+  :\exp\left(\ii\eta\sqrt{\kappa}\,\varphi(z)\right):
+  \label{eq:n2-spectral-flow-vertex}
+\end{equation}
+provided the momentum \(\eta\sqrt{\kappa}\) belongs to the chosen
+Heisenberg/lattice extension.  It is a local chiral operator only when its
+monodromy with the fields of the chiral algebra is trivial.  If its
+monodromy is spin-dependent, it is instead an operator between spin sectors.
+\end{definition}
+
+\begin{proposition}[Operator implementation of spectral flow]
+\label{prop:n2-spectral-flow-operator-implementation}
+Assume the factorization above, and let
+\[
+  \mathcal O(z)
+  =
+  :\exp\left(\ii\frac{q}{\sqrt\kappa}\varphi(z)\right):
+  \mathcal O_0(z)
+\]
+where \(\mathcal O_0\) is neutral under \(J\).  If \(X_\eta\) exists, then
+\[
+  X_\eta(z)\mathcal O(0)
+  \sim
+  z^{\eta q}\,
+  \mathcal O^{(\eta)}(0)+\cdots
+  \label{eq:n2-spectral-flow-vertex-ope-with-field}
+\]
+where \(\mathcal O^{(\eta)}\) has
+\[
+  q^{(\eta)}=q+\eta\kappa,
+  \qquad
+  h^{(\eta)}=h+\eta q+\frac{\eta^2\kappa}{2}.
+  \label{eq:n2-spectral-flow-vertex-hq}
+\]
+Since \(\kappa=c/3\), this is exactly
+\eqref{eq:n2-spectral-flow-hq}.  The branch factor \(z^{\eta q}\) is the
+locality test: integer powers give ordinary chiral locality, while
+half-integer powers signal the NS/R spin-sector change.
+\end{proposition}
+
+\begin{proof}
+The OPE of bosonic exponentials gives
+\[
+  :e^{\ii a\varphi(z)}:
+  :e^{\ii b\varphi(0)}:
+  \sim
+  z^{ab}:e^{\ii(a+b)\varphi(0)}:+\cdots .
+\]
+With \(a=\eta\sqrt\kappa\) and \(b=q/\sqrt\kappa\), the branch factor is
+\(z^{\eta q}\) and the new charge is
+\[
+  \sqrt\kappa\left(\frac q{\sqrt\kappa}+\eta\sqrt\kappa\right)
+  =
+  q+\eta\kappa .
+\]
+The Heisenberg part of the conformal weight changes by
+\[
+  \frac{(q+\eta\kappa)^2-q^2}{2\kappa}
+  =
+  \eta q+\frac{\eta^2\kappa}{2}.
+\]
+The neutral factor \(\mathcal O_0\) is unchanged, so the same difference is
+the total weight shift.
+\end{proof}
+
+For \(\eta=\pm1\), write
+\[
+  X^\pm=X_{\pm1}.
+\]
+These fields, when present as local chiral fields, are the integer
+spectral-flow generators of the extended \(\mathcal N=2\) algebra.  They
+are obtained from the vacuum by spectral flow, hence
+\begin{equation}
+  h(X^\pm)=\frac c6,
+  \qquad
+  q(X^\pm)=\pm\frac c3 .
+  \label{eq:n2-integer-spectral-flow-operator-hq}
+\end{equation}
+In a unitary NS representation \(X^+\) is chiral and \(X^-\) is antichiral:
+\begin{equation}
+  G^+_{-1/2}X^+=0,
+  \qquad
+  G^-_{-1/2}X^-=0,
+  \label{eq:n2-spectral-flow-operator-shortening}
+\end{equation}
+because \eqref{eq:n2-integer-spectral-flow-operator-hq} saturates the
+bound of Proposition~\ref{prop:n2-chiral-primary-bound}.  Define the
+opposite superdescendants
+\begin{equation}
+  Y^+=G^-_{-1/2}X^+,
+  \qquad
+  Y^-=G^+_{-1/2}X^- .
+  \label{eq:n2-extended-y-operators}
+\end{equation}
+Then
+\begin{equation}
+  h(Y^\pm)=\frac c6+\frac12,
+  \qquad
+  q(Y^\pm)=\pm\left(\frac c3-1\right).
+  \label{eq:n2-extended-y-operator-hq}
+\end{equation}
+These four fields \(X^\pm,Y^\pm\), together with
+\(T,J,G^\pm\), are the finite generator set usually meant by the extended
+\(\mathcal N=2\) chiral algebra.
+
+The singular part of the spectral-flow-generator OPE is also fixed by the
+Heisenberg current.  From \eqref{eq:n2-spectral-flow-vertex},
+\[
+  X_\eta(z)X_{-\eta}(0)
+  \sim
+  z^{-\eta^2\kappa}
+  \left[
+    1+\eta zJ(0)
+    +z^2\left(
+      \frac{\eta}{2}\partial J(0)
+      +\frac{\eta^2}{2}:J J:(0)
+    \right)
+    +O(z^3)
+  \right].
+  \label{eq:n2-spectral-flow-opposite-ope}
+\]
+The pole order, the coefficient of \(J\), and the two second-order
+coefficients are therefore convention-sensitive consequences of
+\eqref{eq:n2-r-current-bosonization}, not independent structure constants.
+
+\begin{example}[Calabi--Yau-type charge lattice]
+\label{ex:calabi-yau-type-spectral-flow-operators}
+If \(c=3n\), then \(\kappa=n\).  The integer spectral-flow fields have
+\[
+  h(X^\pm)=\frac n2,
+  \qquad
+  q(X^\pm)=\pm n,
+\]
+and the half-flow fields \(X_{\pm1/2}\), when present on the spin cover,
+have
+\begin{equation}
+  h(X_{\pm1/2})=\frac n8,
+  \qquad
+  q(X_{\pm1/2})=\pm\frac n2 .
+  \label{eq:calabi-yau-type-half-flow-hq}
+\end{equation}
+In a large-radius Calabi--Yau sigma-model representative these are realized
+by the holomorphic top-form fermion product and the Ramond spin fields,
+respectively.  The present chapter uses only the algebraic implication:
+their existence is a charge-lattice and spin-sector datum whose weights and
+charges must be exactly those displayed above.
+\end{example}
+
 \section{Protected Algebraic Tests for Supersymmetric Dynamics}
 
 The full construction of two-dimensional \(\mathcal N=(2,2)\)
@@ -559,7 +746,7 @@ Calabi--Yau sigma-model phase is not part of the present chapter.
 
 The rank-one cosets of
 Section~\ref{subsec:rank-one-solvable-cosets} have supersymmetric
-refinements which are too important to leave as folklore.  This section
+refinements which are too important to leave as informal shorthand.  This section
 records the exact chiral-algebraic interface needed by the CFT volume.  It
 does not assert a construction of a UV Landau--Ginzburg or GLSM flow.  The
 latter requires the regulator, supersymmetric Ward identities, and
