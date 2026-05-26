@@ -4101,10 +4101,12 @@ Assume the following three further analytic facts.
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
 the finite-cutoff Wick-ordered Schwinger functions, and \(\mu\) satisfies OS
-reflection positivity for cylinder observables.  Hence, after the usual
-Schwartz growth and regularity hypotheses required in OS reconstruction are
-verified for this limit measure, \(\mu\) determines a two-dimensional
-Wightman theory by the reconstruction theorem.
+reflection positivity for cylinder observables.  If, in addition, the
+resulting Schwinger hierarchy satisfies the moment-continuity,
+positive-time semigroup, and corrected OS-II linear-growth hypotheses in
+Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion}, then
+the hierarchy determines a two-dimensional Wightman theory by
+Theorem~\ref{thm:os-reconstruction}.
 \end{theorem}
 
 \begin{proof}
@@ -9328,6 +9330,119 @@ counterterms.  Reflection positivity, however, is a property of the
 Euclidean field measure under physical time reflection; it is not automatic
 from Markov positivity in the auxiliary stochastic time.
 
+\begin{proposition}[SPDE invariant law as an OS reconstruction input]
+\label{prop:spde-invariant-law-os-reconstruction-criterion}
+Let \(E=\mathcal S'(\R^d)\) be the real tempered-distribution space,
+equipped with its Borel \(\sigma\)-algebra, and let \(\mu\) be a probability
+measure on \(E\).  For \(f\in\mathcal S(\R^d)\) write
+\(\Phi(f)(\varphi)=\varphi(f)\).  Suppose that the following conditions
+hold.
+\begin{enumerate}[label=(\roman*)]
+  \item For every \(n\geq0\), the multilinear functional initially defined on
+  finite tensor sums by
+  \[
+    S_n\!\left(\sum_a c_a f_{a,1}\otimes\cdots\otimes f_{a,n}\right)
+    =
+    \sum_a c_a
+    \int_E
+      \Phi(f_{a,1})\cdots\Phi(f_{a,n})\,\dd\mu(\Phi)
+  \]
+  is well-defined and obeys a Schwartz-seminorm estimate
+  \begin{equation}
+    |S_n(F)|\leq C_n\,q_{n,N_n}(F),
+    \qquad F\in \mathcal S((\R^d)^n),
+    \label{eq:spde-os-moment-continuity}
+  \end{equation}
+  after extending from finite tensor sums.  Here \(q_{n,N}\) is any fixed
+  increasing defining family of Schwartz seminorms on
+  \(\mathcal S((\R^d)^n)\).  Equivalently, \(\mu\) has enough polynomial
+  cylinder moments, with enough seminorm continuity, to make each \(S_n\) a
+  tempered Euclidean distribution.
+  \item The hierarchy \(\{S_n\}\) is normalized, Euclidean covariant,
+  permutation symmetric, and Hermitian in the sense of
+  Definition~\ref{def:os-admissible-euclidean-data}.  In a scalar real
+  theory these conditions follow from \(S_0=1\), invariance of \(\mu\) under
+  the Euclidean group action on \(E\), and reality of the field coordinates;
+  for labelled or graded fields the label reflection and Koszul signs must
+  be part of the declared field presentation.
+  \item Let \(\Theta\) denote physical Euclidean time reflection.  For every
+  polynomial cylinder observable
+  \[
+    F(\Phi)=
+    \sum_a c_a\,\Phi(f_{a,1})\cdots\Phi(f_{a,r_a})
+  \]
+  whose test functions are supported in the positive-time half-space,
+  \begin{equation}
+    \int_E \overline{F(\Theta\Phi)}\,F(\Phi)\,\dd\mu(\Phi)\geq0 .
+    \label{eq:spde-os-cylinder-positivity}
+  \end{equation}
+  If this inequality is first proved only for bounded cylinder functions,
+  then the passage to polynomial cylinders must be justified by the uniform
+  integrability or truncation estimates appropriate to the cutoff limit.
+  \item The positive-time translation operators on the OS quotient satisfy
+  the semigroup law, symmetry, and strong-continuity hypotheses
+  \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}.
+  \item The translation-reduced hierarchy satisfies the corrected OS-II
+  linear-growth estimate \eqref{eq:os-linear-growth-condition};
+  explicitly, for some \(A,B,\gamma>0\) and integers \(N_0,C_{\rm OS}\),
+  \[
+    |S_n^{\rm red}(F)|
+    \leq
+    A\,B^n\,(n!)^\gamma\,
+    q_{n,N_0+C_{\rm OS}n}(F)
+  \]
+  on the zero-diagonal reduced Schwartz test space of
+  Chapter~\ref{ch:os-reconstruction}.
+\end{enumerate}
+Then the Schwinger hierarchy obtained from \(\mu\) satisfies the hypotheses
+of Theorem~\ref{thm:os-reconstruction}.  Consequently it reconstructs
+Lorentzian Wightman field data whose Euclidean time-ordered boundary values
+recover the Schwinger functions at noncoincident Euclidean configurations.
+If the hierarchy is clustering in the sense of
+Corollary~\ref{cor:os-reconstruction-vacuum-sector}, the reconstructed vacuum is
+unique; without clustering one obtains the corresponding phase-decomposed
+Wightman presentation.
+\end{proposition}
+
+\begin{proof}
+Condition (i) is the distributional regularity step.  Finite tensor sums are
+dense in the Schwartz tensor product, and the estimate
+\eqref{eq:spde-os-moment-continuity} makes the cylinder moment functional
+continuous for the Schwartz topology.  Thus each \(S_n\) extends uniquely to
+a tempered distribution on \((\R^d)^n\).
+
+Condition (ii) gives normalization, Euclidean covariance, permutation
+symmetry, and Hermiticity.  Condition (iii) is exactly OS reflection
+positivity on the positive-time polynomial cylinder algebra; the warning in
+the second sentence records the point used repeatedly above, namely that
+polynomial OS positivity cannot be read off from bounded-cylinder positivity
+without a tail estimate.  Conditions (iv) and (v) are the corrected analytic
+inputs emphasized in Chapter~\ref{ch:os-reconstruction}: reflection
+positivity constructs the Hilbert space and positive Hamiltonian, while the
+OS-II semigroup and linear-growth package supplies the many-variable
+Fourier--Laplace continuation with tempered Lorentzian boundary values.
+
+All hypotheses of Theorem~\ref{thm:os-reconstruction} are therefore present.
+Applying that theorem gives
+\[
+  (\Hilb_{\rm OS},\vac_{\rm OS},U,\mathcal D_{\rm OS},
+  \{\widehat\Phi_\alpha\})
+\]
+and the Wightman distributions obtained as boundary values of the analytic
+continuations of the \(S_n\).  The clustering statement is precisely
+Corollary~\ref{cor:os-reconstruction-vacuum-sector}.
+\end{proof}
+
+In stochastic quantization the proposition is a checklist, not an automatic
+corollary of stationarity.  The Markov invariant law supplies a candidate
+\(\mu\).  The constructive proof must still establish moment continuity,
+physical-time reflection positivity, the OS-II positive-time semigroup
+regularity, and the corrected linear-growth estimate.  For \(\Phi^4_2\) and
+\(\Phi^4_3\), these conditions should ultimately be verified by comparing
+the SPDE invariant law with the corresponding constructive Euclidean measure
+in a common renormalization chart, because the constructive measure is where
+reflection positivity and OS growth are naturally controlled.
+
 \begin{remark}[Gauge theories and BV compatibility]
 \label{rem:spde-gauge-bv-compatibility}
 For gauge theories, stochastic quantization must be reconciled with gauge
@@ -9344,8 +9459,9 @@ problem.
 \begin{openproblem}[SPDE-to-Wightman construction]
 \label{op:spde-to-wightman-construction}
 Starting from a renormalized singular SPDE construction of an interacting
-Euclidean field, prove the OS hypotheses, including the linear growth
-condition needed for reconstruction where applicable, identify the resulting
-Wightman distributions, and compare the stochastic counterterms with
-Wilsonian local coordinates in a common renormalization chart.
+Euclidean field, prove the inputs of
+Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion},
+identify the resulting Wightman distributions, and compare the stochastic
+counterterms with Wilsonian local coordinates in a common renormalization
+chart.
 \end{openproblem}

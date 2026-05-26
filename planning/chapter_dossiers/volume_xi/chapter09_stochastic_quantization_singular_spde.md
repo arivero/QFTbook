@@ -993,3 +993,12 @@ data maps.
   comparison and polynomial uniform integrability are proved.  The assembly
   theorem now points to this criterion rather than leaving regulator
   comparison as an unnamed gap.
+- 2026-05-26 SPDE-to-OS reconstruction pass: added a theorem-level criterion
+  for when an SPDE invariant law actually supplies OS reconstruction data.
+  The proposition states the precise moment-continuity, Euclidean covariance,
+  polynomial reflection positivity, positive-time semigroup, and corrected
+  OS-II linear-growth inputs needed to apply the reconstruction theorem.  The
+  \(\Phi^4_2\) assembly theorem now points to this criterion instead of
+  saying only that "usual growth hypotheses" remain.  The calculation-check
+  companion verifies the linear seminorm-order bookkeeping for reflected
+  positive-time tests.

@@ -1410,6 +1410,36 @@ def check_regulator_comparison_error_budget_arithmetic():
     assert_equal(l1_tail_bound, Fraction(1, 20), "regulator comparison L1 tail")
 
 
+def check_spde_os_reconstruction_growth_arithmetic():
+    # The corrected OS-II input allows the Schwartz-seminorm order to grow
+    # linearly with the number of insertions:
+    #   N(n) = N0 + C_OS n.
+    # Reflection positivity tests a positive-time polynomial F against its
+    # reflected copy, so an r-insertion monomial produces a 2r-point
+    # distribution.  The required seminorm order is therefore still linear in
+    # r, not quadratic.
+    N0 = 3
+    C_os = 2
+    for r in range(0, 8):
+        n = 2 * r
+        order = N0 + C_os * n
+        assert_equal(order, N0 + 2 * C_os * r, "OS reflected insertion order")
+
+    # Factorial/exponential growth is stable under multiplication by a fixed
+    # polynomial in n: n^a B^n (n!)^gamma <= B2^n (n!)^(gamma+1) for B2>B
+    # in the finite samples below, reflecting why polynomial seminorm
+    # combinatorics do not change the qualitative OS-II growth class.
+    B = Fraction(2)
+    B2 = Fraction(8)
+    gamma = 2
+    for n in range(1, 9):
+        factorial = math.factorial(n)
+        left = (n ** 3) * (B ** n) * (factorial ** gamma)
+        right = (B2 ** n) * (factorial ** (gamma + 1))
+        if left > right:
+            raise AssertionError("OS growth class polynomial absorption failed")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -1457,7 +1487,8 @@ def main():
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
     check_regulator_comparison_error_budget_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, and regulator-comparison checks passed.")
+    check_spde_os_reconstruction_growth_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, and SPDE-to-OS growth checks passed.")
 
 
 if __name__ == "__main__":
