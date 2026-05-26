@@ -1056,6 +1056,24 @@ not formal: in constructive field theory it is exactly where uniform moment
 or exponential-integrability estimates for the cutoff measures enter.
 \end{proof}
 
+\begin{remark}[Fourier cutoffs and reflection-positive regulators]
+\label{rem:spde-fourier-cutoff-os-regulator-separation}
+The Fourier-Galerkin cutoff used above is an analytically convenient way to
+construct the stochastic convolution and the local Da Prato--Debussche
+solution map.  OS reflection positivity, however, is not a formal consequence
+of being a reflection-symmetric ultraviolet cutoff.  It is a positivity
+property of the Euclidean regulator with respect to a chosen time reflection.
+Thus the reflection-positivity hypothesis in
+Theorem~\ref{thm:phi-four-two-spde-main-theorem} must be read as a condition
+on the actual cutoff family used to define the Euclidean measures, or else
+one must prove a regulator-independence comparison between a
+reflection-positive cutoff family and the Fourier-Galerkin SPDE
+approximation.  The theorem below deliberately keeps this point visible:
+Fourier cutoffs are used for the path-space stochastic estimates, while OS
+positivity remains a separate regulator property until such a comparison is
+proved.
+\end{remark}
+
 \begin{theorem}[\(\Phi^4_2\) stochastic-quantization assembly on the torus]
 \label{thm:phi-four-two-spde-main-theorem}
 Fix \(m^2>0\), \(\lambda>0\), \(0<\kappa<1/4\), and
@@ -1097,6 +1115,9 @@ Assume the following three further analytic facts.
   the polynomial Wick observables used to identify Schwinger functions obey
   the uniform-integrability bounds needed for the truncation step in
   Proposition~\ref{prop:spde-os-positivity-closed-under-weak-convergence}.
+  This is a property of the chosen Euclidean regulator, not an automatic
+  consequence of the Fourier-Galerkin cutoff; see
+  Remark~\ref{rem:spde-fourier-cutoff-os-regulator-separation}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of

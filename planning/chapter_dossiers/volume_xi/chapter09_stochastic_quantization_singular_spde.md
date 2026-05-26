@@ -194,6 +194,10 @@ data.
   bounded positive-time cylinder observables, and isolates the additional
   uniform-integrability hypothesis needed to pass unbounded polynomial
   cylinder observables by truncation.
+- Adds an explicit regulator-separation remark: Fourier-Galerkin cutoffs are
+  used for stochastic estimates, while OS reflection positivity is a separate
+  property of the Euclidean regulator and must either be assumed for that
+  regulator or obtained by a regulator-comparison theorem.
 - Adds a \(\Phi^4_2\) stochastic-quantization assembly theorem on the torus.
   The theorem now proves the path-space enhanced-noise input and makes
   explicit the remaining three analytic inputs needed to pass from

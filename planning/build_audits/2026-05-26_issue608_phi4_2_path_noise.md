@@ -28,6 +28,11 @@ This pass addresses the concrete path-space enhanced-noise gap in
   reflection-positivity input remains explicit, and the only extra condition
   for unbounded Wick-polynomial observables is the stated uniform
   integrability needed for truncation.
+- Added Remark `rem:spde-fourier-cutoff-os-regulator-separation`, making
+  explicit that the Fourier-Galerkin cutoff used for stochastic estimates is
+  not being assumed to be OS-positive.  OS positivity is a separate property
+  of the Euclidean regulator, or else one owes a regulator-independence
+  comparison theorem.
 
 ## Remaining Issue-608 Boundary
 
