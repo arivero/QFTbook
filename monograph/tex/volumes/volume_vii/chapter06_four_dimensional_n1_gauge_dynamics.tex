@@ -1128,6 +1128,132 @@ anomaly and NSVZ calculations below test these assumptions; they do not by
 themselves construct the fixed point.
 \end{hypothesis}
 
+\begin{proposition}[SQCD central charges and free-field comparison]
+\label{prop:sqcd-conformal-window-central-charges}
+Assume Hypothesis~\ref{hyp:n1-scft-bookkeeping-input} and suppose
+\(\frac32N_c<N_f<3N_c\).  For the candidate SQCD superconformal
+\(R\)-current displayed above,
+\[
+  \operatorname{Tr}R=-N_c^2-1,
+  \qquad
+  \operatorname{Tr}R^3
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+  \label{eq:sqcd-superconformal-r-traces}
+\]
+Consequently the conformal anomalies are
+\[
+  a_{\mathrm{IR}}
+  =
+  \frac3{32}
+  \left(
+    4N_c^2-2-\frac{6N_c^4}{N_f^2}
+  \right),
+  \qquad
+  c_{\mathrm{IR}}
+  =
+  \frac1{32}
+  \left(
+    14N_c^2-4-\frac{18N_c^4}{N_f^2}
+  \right).
+  \label{eq:sqcd-central-charges}
+\]
+The free ultraviolet theory has
+\[
+  a_{\mathrm{UV}}
+  =
+  \frac3{16}(N_c^2-1)+\frac{N_cN_f}{24}.
+  \label{eq:sqcd-free-uv-a}
+\]
+Writing \(y=N_f/N_c\), the difference is
+\[
+  a_{\mathrm{UV}}-a_{\mathrm{IR}}
+  =
+  \frac{N_c^2}{48y^2}
+  (3-y)^2(2y+3).
+  \label{eq:sqcd-free-field-a-comparison}
+\]
+It is strictly positive in the interacting conformal window and vanishes at
+the Gaussian edge \(N_f=3N_c\).  This is only an anomaly-arithmetic
+comparison between a free ultraviolet fixed point and the candidate
+infrared SCFT.  It is not a proof of a monotonicity theorem or of the
+existence of the flow; those remain part of the independent continuum and
+SCFT hypotheses.
+\end{proposition}
+
+\begin{proof}
+The traces are over Weyl fermions.  The gaugino contributes
+\[
+  \operatorname{Tr}R_{\lambda}=N_c^2-1,
+  \qquad
+  \operatorname{Tr}R_{\lambda}^3=N_c^2-1 .
+\]
+The scalar \(R\)-charge of \(Q\) and \(\widetilde Q\) is
+\[
+  R(Q)=R(\widetilde Q)=1-\frac{N_c}{N_f},
+\]
+so their fermions have \(R\)-charge \(-N_c/N_f\).  There are
+\(2N_cN_f\) such Weyl fermions.  Hence
+\[
+  \operatorname{Tr}R
+  =
+  (N_c^2-1)+2N_cN_f\left(-\frac{N_c}{N_f}\right)
+  =
+  -N_c^2-1,
+\]
+and
+\[
+  \operatorname{Tr}R^3
+  =
+  (N_c^2-1)
+  +2N_cN_f\left(-\frac{N_c}{N_f}\right)^3
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\]
+For a four-dimensional \(\mathcal N=1\) SCFT,
+\[
+  a=\frac3{32}(3\operatorname{Tr}R^3-\operatorname{Tr}R),
+  \qquad
+  c=\frac1{32}(9\operatorname{Tr}R^3-5\operatorname{Tr}R).
+  \label{eq:n1-central-charge-from-r-traces}
+\]
+Substituting the two traces gives \eqref{eq:sqcd-central-charges}.
+
+At the ultraviolet Gaussian fixed point, a vector multiplet contributes
+\(\frac3{16}\dim SU(N_c)\) to \(a\), and a free chiral multiplet contributes
+\(\frac1{48}\) per complex gauge-flavor component.  Since
+\(\dim SU(N_c)=N_c^2-1\) and there are \(2N_cN_f\) chiral components,
+\eqref{eq:sqcd-free-uv-a} follows.
+
+Subtracting the candidate infrared value from the ultraviolet value gives
+\[
+  a_{\mathrm{UV}}-a_{\mathrm{IR}}
+  =
+  -\frac{3N_c^2}{16}
+  +\frac{N_cN_f}{24}
+  +\frac{9N_c^4}{16N_f^2}.
+\]
+Set \(y=N_f/N_c\).  Then
+\[
+  a_{\mathrm{UV}}-a_{\mathrm{IR}}
+  =
+  N_c^2
+  \left(
+    -\frac3{16}+\frac{y}{24}+\frac{9}{16y^2}
+  \right)
+  =
+  \frac{N_c^2}{48y^2}\bigl(2y^3-9y^2+27\bigr).
+\]
+The polynomial factorizes as
+\[
+  2y^3-9y^2+27=(3-y)^2(2y+3).
+\]
+For \(y>0\) this expression is nonnegative and it is zero only when \(y=3\).
+In the interacting window \(3/2<y<3\), it is strictly positive.  The proof
+has established this finite anomaly comparison; it has not established the
+general \(a\)-theorem.
+\end{proof}
+
 \section{Seiberg Duality And The SQCD Phase Ledger}
 \label{sec:n1-seiberg-duality-sqcd}
 

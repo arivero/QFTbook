@@ -362,7 +362,10 @@ Current checks:
   holomorphic-canonical NSVZ coordinate-relation algebra, electric and
   magnetic NSVZ numerator cancellation in the monograph \(\gamma\)
   convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
-  superpotential dimension and \(R\)-charge, full electric-magnetic
+  superpotential dimension and \(R\)-charge, SQCD conformal-window
+  central-charge and free-field \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\)
+  comparison factorization,
+  full electric-magnetic
   't Hooft anomaly matching, mass and Higgs deformation rank/dimension/
   \(R\)-charge tests, \(N_f=N_c+1\) confining-superpotential
   dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)

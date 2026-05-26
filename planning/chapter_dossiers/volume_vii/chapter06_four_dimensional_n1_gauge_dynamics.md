@@ -57,6 +57,10 @@ status-boundary style.
 - `prop:sqcd-nsvz-coordinate-audit`: derivation of
   `X_h=X_c+N_c log g^2-N_f log Z_Q+kappa` and the specialized SQCD NSVZ
   beta function.
+- `prop:sqcd-conformal-window-central-charges`: SQCD conformal-window
+  `Tr R`, `Tr R^3`, \(a\), \(c\), and conditional free-field
+  \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\) comparison under the SCFT-input
+  hypothesis.
 - `hyp:sqcd-quantum-modified-confining-input`: assumptions for comparing
   the `N_f=N_c` quantum-modified chiral ring with the `N_f=N_c+1`
   confining chiral-sector description.
@@ -172,6 +176,12 @@ status-boundary style.
   `Delta=3R/2`: existence of a unitary `N=1` SCFT, chiral-primary status,
   correct superconformal R-current after mixing, and no accidental symmetry
   changing the operator charge.
+- Derives SQCD conformal-window central charges from the superconformal
+  \(R\)-trace formulas:
+  `Tr R=-N_c^2-1`, `Tr R^3=N_c^2-1-2N_c^4/N_f^2`, the resulting \(a,c\),
+  and the exact free-field comparison factorization
+  `a_UV-a_IR=N_c^2(3-y)^2(2y+3)/(48y^2)` with `y=N_f/N_c`, explicitly not
+  used as a proof of a general \(a\)-theorem or of flow existence.
 - Adds the general SQCD Seiberg-duality ledger as a status-bounded
   nonperturbative input rather than a citation-as-proof: electric/magnetic
   field content, magnetic rank `N_f-N_c`, baryon normalization, magnetic
@@ -245,7 +255,10 @@ status-boundary style.
   dual-rank involution, baryon-charge map, SQCD holomorphic-canonical NSVZ
   coordinate-relation algebra, electric/magnetic NSVZ numerator
   cancellation, magnetic gauge-`R` anomaly cancellation, magnetic
-  superpotential dimension and \(R\)-charge, full global anomaly matching,
+  superpotential dimension and \(R\)-charge, SQCD conformal-window
+  central-charge and conditional free-field
+  \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\) comparison factorization,
+  full global anomaly matching,
   mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
   `N_f=N_c` quantum-modified constraint, and phase-window inequalities.

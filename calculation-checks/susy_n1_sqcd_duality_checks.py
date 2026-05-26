@@ -151,6 +151,40 @@ def check_anomaly_matching():
             assert_equal(magnetic["Tr_R3"], expected_tr_r3, "magnetic Tr R^3 form")
 
 
+def check_conformal_window_central_charges():
+    for nc in range(2, 20):
+        for nf in range(1, 5 * nc + 1):
+            tr_r = Fraction(nc * nc - 1) - 2 * nc * nc
+            tr_r3 = Fraction(nc * nc - 1) - Fraction(2 * nc**4, nf * nf)
+
+            assert_equal(tr_r, -nc * nc - 1, "SQCD Tr R form")
+
+            a_ir = Fraction(3, 32) * (3 * tr_r3 - tr_r)
+            c_ir = Fraction(1, 32) * (9 * tr_r3 - 5 * tr_r)
+            assert_equal(
+                a_ir,
+                Fraction(3, 32) * (4 * nc * nc - 2 - Fraction(6 * nc**4, nf * nf)),
+                "SQCD a central charge formula",
+            )
+            assert_equal(
+                c_ir,
+                Fraction(1, 32) * (14 * nc * nc - 4 - Fraction(18 * nc**4, nf * nf)),
+                "SQCD c central charge formula",
+            )
+
+            a_uv = Fraction(3, 16) * (nc * nc - 1) + Fraction(nc * nf, 24)
+            y = Fraction(nf, nc)
+            a_difference = a_uv - a_ir
+            factored_difference = Fraction(nc * nc, 48) * (3 - y) ** 2 * (2 * y + 3) / (y * y)
+            assert_equal(a_difference, factored_difference, "SQCD free-field a comparison")
+
+            if Fraction(3, 2) * nc < nf < 3 * nc:
+                if not a_difference > 0:
+                    raise AssertionError("interacting SQCD free-field a comparison should be positive")
+            if nf == 3 * nc:
+                assert_equal(a_difference, 0, "SQCD Gaussian edge a equality")
+
+
 def check_duality_deformation_tests():
     for nc in range(2, 12):
         for nf in range(nc + 2, 5 * nc + 1):
@@ -307,6 +341,7 @@ def main():
     check_sqcd_nsvz_coordinate_relation()
     check_r_charges_superpotential_and_nsvz()
     check_anomaly_matching()
+    check_conformal_window_central_charges()
     check_duality_deformation_tests()
     check_sconfining_superpotential()
     check_quantum_modified_constraint_and_decoupling()
