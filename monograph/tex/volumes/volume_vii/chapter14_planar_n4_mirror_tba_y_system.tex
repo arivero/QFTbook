@@ -26,6 +26,14 @@ Since
 the mirror dispersion is not the same function of \(\widetilde p\) as the
 physical dispersion.  This is the first major difference from relativistic
 two-dimensional QFT, where the mirror transformation is a rapidity shift.
+Equivalently one continues the Zhukovsky variables through a specified
+sequence of cuts.  On the physical sheet a real magnon has
+\((x^+)^*=x^-\) and \(|x^\pm|>1\).  A mirror particle of real mirror rapidity
+has one Zhukovsky variable inside and one outside the unit circle.  The
+choice of path is part of the definition of the mirror S-matrix: crossing a
+different cut changes the scalar dressing factor by the crossing equation.
+For this reason the mirror TBA below always includes the contour and sheet
+data together with the functional formulae.
 
 Bound states of \(Q\) physical magnons are described by pairs
 \[
@@ -111,6 +119,27 @@ where
 The indices \((a,s)\) lie in the T-hook domain determined by the two
 \(\mathfrak{su}(2|2)\) wings.  Boundary nodes require modified relations.
 
+The same relation may be obtained from Hirota \(T\)-functions.  If
+\[
+  Y_{a,s}
+  =
+  \frac{T_{a,s+1}T_{a,s-1}}{T_{a+1,s}T_{a-1,s}}
+\]
+and the \(T\)-functions obey
+\[
+  T_{a,s}^+T_{a,s}^-
+  =
+  T_{a+1,s}T_{a-1,s}+T_{a,s+1}T_{a,s-1},
+\]
+then the interior Y-system equation follows by direct substitution.  The
+representation has gauge redundancy
+\[
+  T_{a,s}\mapsto
+  g_1^{[a+s]}g_2^{[a-s]}g_3^{[-a-s]}g_4^{[-a+s]}T_{a,s},
+\]
+so a QSC derivation must also state the analytic gauge in which the cuts and
+asymptotics are imposed.
+
 \begin{warning}[Y-system data are not only equations]
 \label{warn:y-system-not-complete}
 The functional relations \eqref{eq:planar-n4-y-system} do not by themselves
@@ -146,6 +175,35 @@ excited-state TBA or, more efficiently, the quantum spectral curve of the next
 chapter.  In this monograph the TBA formula is used as a logically explicit
 construction of the finite-size correction: every input is an S-matrix kernel,
 a contour, a chemical potential, or a Bethe-root condition.
+
+At weak coupling the leading finite-size effect is the Luescher or first
+wrapping correction.  For the \(SL(2)\) Konishi descendant one has \(K=2\)
+physical roots \(u_1=-u_2\) with
+\[
+  u_1=\frac{1}{2\sqrt3}
+  \bigl(1+8g^2-20g^4+(112+48\zeta(3))g^6+O(g^8)\bigr)
+\]
+in the asymptotic equation.  The asymptotic energy gives
+\[
+  \Delta_{\rm K}^{\rm ABA}
+  =
+  4+12g^2-48g^4+336g^6-(2820+288\zeta(3))g^8+O(g^{10}).
+\]
+The mirror correction at order \(g^8\) is
+\[
+  \Delta_{\rm K}^{\rm wrap}
+  =
+  (324+864\zeta(3)-1440\zeta(5))g^8+O(g^{10}),
+\]
+so the physical four-loop coefficient is
+\[
+  -2496+576\zeta(3)-1440\zeta(5).
+\]
+The calculation depends on the mirror branch of the dressing factor and on
+the transfer matrix for mirror bound states.  The companion script
+\path{calculation-checks/planar_n4_integrability_checks.py} verifies the
+displayed coefficient arithmetic; it does not certify the analytic
+continuation of the full mirror integral.
 
 \section{Relation to Relativistic Integrable QFT}
 

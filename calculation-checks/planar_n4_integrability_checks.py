@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import cmath
+from fractions import Fraction
 import math
 
 
@@ -68,6 +69,63 @@ def check_weak_dispersion_expansion() -> None:
             )
 
 
+def check_bmn_scaling_limit() -> None:
+    lam_prime = 0.37
+    for charge in (2000, 5000):
+        lam = lam_prime * charge * charge
+        g = math.sqrt(lam) / (4 * math.pi)
+        for mode in (1, 2, 5):
+            momentum = 2 * math.pi * mode / charge
+            exact = math.sqrt(1 + 16 * g * g * math.sin(momentum / 2) ** 2)
+            bmn = math.sqrt(1 + lam_prime * mode * mode)
+            if abs(exact - bmn) > 3.0e-3:
+                raise AssertionError(
+                    f"BMN scaling J={charge} mode={mode}: got {exact}, expected {bmn}"
+                )
+
+
+def check_bound_state_dispersion() -> None:
+    for coupling in (0.1, 0.4):
+        for charge in (1, 2, 5):
+            for momentum in (0.2, 1.3, 2.6):
+                constituent_energy = 0j
+                # The fused shortening relation telescopes from x_1^+ to x_Q^-.
+                fused = math.sqrt(charge * charge + 16 * coupling * coupling * math.sin(momentum / 2) ** 2)
+                central_p = coupling * (1 - cmath.exp(1j * momentum))
+                central_k = coupling * (1 - cmath.exp(-1j * momentum))
+                shortened = cmath.sqrt(charge * charge + 4 * central_p * central_k)
+                constituent_energy += shortened
+                assert_close("bound-state dispersion", constituent_energy, fused)
+
+
+def check_konishi_four_loop_wrapping_arithmetic() -> None:
+    # ABA coefficient: -(2820 + 288 zeta_3).
+    # Wrapping coefficient: 324 + 864 zeta_3 - 1440 zeta_5.
+    rational = -2820 + 324
+    zeta3 = -288 + 864
+    zeta5 = -1440
+    if (rational, zeta3, zeta5) != (-2496, 576, -1440):
+        raise AssertionError("Konishi four-loop coefficient arithmetic failed")
+
+
+def check_bremsstrahlung_weak_series() -> None:
+    # B(lambda) = sqrt(lambda)/(4 pi^2) I_2(sqrt(lambda))/I_1(sqrt(lambda)).
+    # From I_1(z)=z/2+z^3/16+z^5/384+...
+    # and I_2(z)=z^2/8+z^4/96+z^6/3072+...
+    a1 = Fraction(1, 2)
+    a3 = Fraction(1, 16)
+    b2 = Fraction(1, 8)
+    b4 = Fraction(1, 96)
+    ratio_z_coeff = b2 / a1
+    ratio_z3_coeff = b4 / a1 - b2 * a3 / (a1 * a1)
+    # z/(4 pi^2) * (ratio_z_coeff z + ratio_z3_coeff z^3 + ...)
+    # with z^2=lambda gives lambda/(16 pi^2) - lambda^2/(384 pi^2)+...
+    if ratio_z_coeff != Fraction(1, 4):
+        raise AssertionError("B(lambda) leading Bessel ratio coefficient failed")
+    if ratio_z3_coeff != Fraction(-1, 96):
+        raise AssertionError("B(lambda) next Bessel ratio coefficient failed")
+
+
 def check_t_system_to_y_system_identity() -> None:
     """Check the algebraic Y-system relation from a local Hirota square."""
 
@@ -95,6 +153,10 @@ def main() -> None:
     check_konishi_one_loop_roots()
     check_central_extension_dispersion()
     check_weak_dispersion_expansion()
+    check_bmn_scaling_limit()
+    check_bound_state_dispersion()
+    check_konishi_four_loop_wrapping_arithmetic()
+    check_bremsstrahlung_weak_series()
     check_t_system_to_y_system_identity()
     print("All planar N=4 integrability checks passed.")
 

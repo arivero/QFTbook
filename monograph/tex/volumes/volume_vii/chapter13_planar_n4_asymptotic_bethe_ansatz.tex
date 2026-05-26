@@ -57,6 +57,13 @@ The shortening condition of the centrally extended algebra is
 \[
   H^2-4PK=1 .
 \]
+The central extension is compatible with trace cyclicity.  A single magnon is
+an excitation on an open segment of the BMN vacuum, so \(Z^\pm\) records
+length data at the edge of that segment.  On a closed trace the product of
+all such phases is \(\ee^{\ii P_{\rm tot}}-1\), where \(P_{\rm tot}\) is the
+total spin-chain momentum.  The physical single-trace projection sets
+\(P_{\rm tot}=0\), but individual magnons may still transform in centrally
+extended short representations before that projection is imposed.
 With
 \[
   P=g(1-\ee^{\ii p}),\qquad K=g(1-\ee^{-\ii p}),
@@ -67,6 +74,21 @@ this gives the exact single-magnon dispersion relation
   \label{eq:planar-n4-magnon-dispersion}
 \end{equation}
 The anomalous contribution of a magnon is \(H(p)-1\).
+
+\begin{controlledapproximation}[BMN scaling check]
+\label{ca:planar-n4-bmn-scaling-check}
+Let \(J\to\infty\) with \(\lambda'=\lambda/J^2\) fixed and take
+\[
+  p=\frac{2\pi n}{J}+O(J^{-2}),\qquad n\in\mathbb Z .
+\]
+Then
+\[
+  H(p)=\sqrt{1+\lambda' n^2}+O(J^{-1}).
+\]
+This reproduces the pp-wave oscillator normalization.  Here it is a
+convention check on the gauge-theory spectral problem, not a proof of the
+all-coupling Bethe ansatz from string theory.
+\end{controlledapproximation}
 
 \begin{proposition}[Dispersion from shortening]
 \label{prop:planar-n4-dispersion-shortening}
@@ -134,6 +156,40 @@ operator is
 \[
   S_{12}=S_0(x_1^\pm,x_2^\pm)\,S^{\rm mat}_{12}.
 \]
+For one \(\mathfrak{su}(2|2)\) copy, the matrix part is the graded
+intertwiner
+\[
+  S^{\rm mat}_{12}\Delta_{12}(J)
+  =
+  \Delta_{21}(J)S^{\rm mat}_{12},
+  \qquad J\in\mathfrak{su}(2|2)_{\rm c},
+\]
+where the coproduct includes the braiding phase carried by the magnon
+momentum.  Its independent amplitudes are fixed by
+\[
+\begin{aligned}
+  S\ket{\phi_1^a\phi_2^b}
+  &=
+  A_{12}\ket{\phi_2^{\{a}\phi_1^{b\}}}
+  +B_{12}\ket{\phi_2^{[a}\phi_1^{b]}}
+  +C_{12}\varepsilon^{ab}\varepsilon_{\alpha\beta}
+    \ket{\psi_2^\alpha\psi_1^\beta},\\
+  S\ket{\psi_1^\alpha\psi_2^\beta}
+  &=
+  D_{12}\ket{\psi_2^{\{\alpha}\psi_1^{\beta\}}}
+  +E_{12}\ket{\psi_2^{[\alpha}\psi_1^{\beta]}}
+  +F_{12}\varepsilon^{\alpha\beta}\varepsilon_{ab}
+    \ket{\phi_2^a\phi_1^b},\\
+  S\ket{\phi_1^a\psi_2^\beta}
+  &=
+  G_{12}\ket{\psi_2^\beta\phi_1^a}
+  +H_{12}\ket{\phi_2^a\psi_1^\beta},
+\end{aligned}
+\]
+with analogous \(K_{12},L_{12}\) amplitudes on
+\(\ket{\psi_1^\alpha\phi_2^b}\).  Solving the intertwining equations fixes
+these ten amplitudes as rational functions of \(x_1^\pm,x_2^\pm\) and of the
+representation coefficients \(a,b,c,d\), up to one common scalar factor.
 The scalar factor is written as
 \[
   S_0(x_1^\pm,x_2^\pm)
@@ -156,6 +212,23 @@ Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
+
+\begin{definition}[Dressing-phase data and status]
+\label{def:planar-n4-dressing-phase-data}
+The scalar dressing phase used in the asymptotic equations is specified by
+the antisymmetric charge expansion above, the AFS leading strong-coupling
+term \(c_{r,r+1}(g)=g+O(g^0)\), the Hernandez--Lopez semiclassical
+correction, Janik crossing on the Zhukovsky surface, and the BES integral
+representation selecting the minimal crossing-symmetric solution.  Its weak
+series begins with
+\[
+  c_{2,3}(g)=4\zeta(3)g^6+O(g^8),
+\]
+so the first dressing contribution to Konishi enters at four loops.  This is
+an exact datum of the planar-integrability framework and a highly tested
+claim about gauge theory, not a theorem here derived from a constructive
+definition of four-dimensional \(\mathcal N=4\) SYM.
+\end{definition}
 
 \begin{quotedtheorem}[Asymptotic planar magnon S-matrix]
 \label{qthm:planar-n4-asymptotic-smatrix-status}
@@ -206,6 +279,29 @@ Chapter~\ref{ch:integrable-nested-bethe-ansatz-matrix-bethe-yang}; their
 physical meaning is different because these auxiliary roots organize
 polarizations of magnons on a gauge-theory trace.
 
+The first nesting step can be displayed without the full
+\(\mathfrak{psu}(2,2|4)\) bookkeeping.  Start with \(M\) level-I magnons
+\(\phi_1(p_k)\).  A single level-II fermionic excitation with spectral
+parameter \(y\) has coefficients
+\[
+  C_k(y;\{p_j\})
+  =
+  f(y,p_k)\prod_{\ell<k}S^{{\rm II},{\rm I}}(y,p_\ell),
+  \qquad
+  S^{{\rm II},{\rm I}}(y,p)
+  =
+  \frac{y-x^-(p)}{y-x^+(p)}
+\]
+up to the square-root braiding factor of the string basis.  A level-III root
+\(w\) diagonalizes the remaining \(SU(2)\) matrix problem and scatters by
+\[
+  S^{{\rm III},{\rm III}}(w_1,w_2)
+  =
+  \frac{w_1-w_2+\ii/g}{w_1-w_2-\ii/g}.
+\]
+Thus the nested Bethe equations are the diagonalization of a matrix-valued
+factorized scattering problem, not additional dynamical assumptions.
+
 \begin{controlledapproximation}[Asymptotic long-chain regime]
 \label{ca:planar-n4-asymptotic-regime}
 Equation~\eqref{eq:planar-n4-su2-aba} applies to the planar single-trace
@@ -245,3 +341,45 @@ equation is the one-loop Bethe equation
 \]
 Using \(g^2=\lambda/(16\pi^2)\), the leading term agrees with the one-loop
 normalization of Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains}.
+
+\section{Bound States and the Large-Spin Cusp Limit}
+
+A pole of the \(SL(2)\) scalar factor at \(x_1^-=x_2^+\) gives a Bethe
+string.  A \(Q\)-magnon bound state is described by
+\[
+  u_j=u+\frac{\ii}{2}(Q-2j+1),
+  \qquad j=1,\ldots,Q,
+\]
+and has
+\[
+  \ee^{\ii p}=\frac{x_1^+}{x_Q^-},
+  \qquad
+  E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2}.
+\]
+Its scattering with another bound state is obtained by fusing the elementary
+S-matrices over all constituent rapidities and projecting to the short
+\(Q\)-particle representation.  This fusion step is one of the inputs that
+later reappears in mirror TBA kernels.
+
+In the \(SL(2)\) sector, twist-\(L\) spin-\(S\) operators are
+\[
+  \operatorname{tr}(D_+^{s_1}Z\cdots D_+^{s_L}Z),
+  \qquad \sum_{j=1}^Ls_j=S .
+\]
+At one loop the large-\(S\) Bethe roots form a continuum density, and the
+resolvent computation gives
+\[
+  \Delta-S-L=8g^2\log S+O(S^0,g^4).
+\]
+With the all-loop ABA and the BES dressing phase, the density fluctuation
+satisfies the BES integral equation.  The resulting scaling function begins
+\[
+  \Delta-S-L=f(g)\log S+O(S^0),
+  \qquad
+  f(g)=8g^2-\frac{8\pi^2}{3}g^4+\frac{88\pi^4}{45}g^6+O(g^8).
+\]
+This \(f(g)\) is the lightlike cusp anomalous dimension in the convention of
+Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.  The equality is
+a structural matching between large-spin single-trace operators and the
+Wilson-line cusp observable; the nonperturbative gauge-theory proof remains
+outside the present monograph.
