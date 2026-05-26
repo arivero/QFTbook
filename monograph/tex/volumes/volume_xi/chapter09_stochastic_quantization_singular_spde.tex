@@ -4481,6 +4481,144 @@ first-chaos kernel is precisely the local subtraction from
 hidden in \(F_{X^2Y,1}^{\chi}\).
 \end{proof}
 
+\begin{proposition}[Covariance integral formulas for nonlinear chaos kernels]
+\label{prop:spde-nonlinear-negative-coordinate-kernel-norms}
+Use the notation and hypotheses of
+Proposition~\ref{prop:spde-nonlinear-negative-coordinate-chaos-kernels}.
+Write
+\[
+  G_{uv}=G_\epsilon(u,v),\qquad
+  K_{ab}=K_\epsilon(a,b),
+\]
+and let all integrals below run over two copies of the spacetime variables
+\((a,b)\) and \((a',b')\).  Then the Hilbert norms of the tested kernels are
+\begin{equation}
+\begin{aligned}
+  \|F_{XY,4}^{\chi}\|_{\mathcal H^{\otimes4}}^2
+  &=
+  \int\chi(a)\chi(a')K_{ab}K_{a'b'}
+  \left(
+     \frac14G_{aa'}G_{bb'}^3
+    +\frac34G_{ab'}G_{ba'}G_{bb'}^2
+  \right)\,\dd a\,\dd b\,\dd a'\,\dd b',\\
+  \|F_{XY,2}^{\chi}\|_{\mathcal H^{\otimes2}}^2
+  &=
+  9\int\chi(a)\chi(a')K_{ab}K_{a'b'}G_{ab}G_{a'b'}G_{bb'}^2
+  \,\dd a\,\dd b\,\dd a'\,\dd b'.
+\end{aligned}
+  \label{eq:spde-xy-kernel-norm-integrals}
+\end{equation}
+For the locally subtracted \(X^2Y\) coordinate,
+\begin{equation}
+\begin{aligned}
+  \|F_{X^2Y,5}^{\chi}\|_{\mathcal H^{\otimes5}}^2
+  &=
+  \int\chi(a)\chi(a')K_{ab}K_{a'b'}
+  \Bigl(
+    \frac1{10}G_{aa'}^2G_{bb'}^3
+    +\frac35G_{aa'}G_{ab'}G_{ba'}G_{bb'}^2\\
+  &\hspace{7.0em}
+    +\frac3{10}G_{ab'}^2G_{ba'}^2G_{bb'}
+  \Bigr)\,\dd a\,\dd b\,\dd a'\,\dd b',\\
+  \|F_{X^2Y,3}^{\chi}\|_{\mathcal H^{\otimes3}}^2
+  &=
+  36\int\chi(a)\chi(a')K_{ab}K_{a'b'}G_{ab}G_{a'b'}
+  \left(
+    \frac13G_{aa'}G_{bb'}^2
+    +\frac23G_{ab'}G_{ba'}G_{bb'}
+  \right)\,\dd a\,\dd b\,\dd a'\,\dd b',\\
+  \|F_{X^2Y,1}^{\chi}\|_{\mathcal H}^2
+  &=
+  36\int\chi(a)\chi(a')K_{ab}K_{a'b'}G_{ab}^2G_{a'b'}^2\\
+  &\hspace{5.5em}\times
+  \bigl(
+    G_{bb'}-G_{ba'}-G_{ab'}+G_{aa'}
+  \bigr)\,\dd a\,\dd b\,\dd a'\,\dd b'.
+\end{aligned}
+  \label{eq:spde-x2y-kernel-norm-integrals}
+\end{equation}
+Consequently, if
+\[
+\begin{aligned}
+  Z_{XY}^{\chi}
+  &=
+  \int\chi(a)X_\epsilon(a)Y_\epsilon(a)\,\dd a,\\
+  Z_{X^2Y}^{\chi}
+  &=
+  \int\chi(a)
+  \bigl(:\!X_\epsilon(a)^2\!:Y_\epsilon(a)
+        -3C_{2,\epsilon}(a)X_\epsilon(a)\bigr)\,\dd a ,
+\end{aligned}
+\]
+then
+\begin{equation}
+\begin{aligned}
+  \mathbb E\bigl[|Z_{XY}^{\chi}|^2\bigr]
+  &=
+  4!\,\|F_{XY,4}^{\chi}\|_{\mathcal H^{\otimes4}}^2
+  +2!\,\|F_{XY,2}^{\chi}\|_{\mathcal H^{\otimes2}}^2,\\
+  \mathbb E\bigl[|Z_{X^2Y}^{\chi}|^2\bigr]
+  &=
+  5!\,\|F_{X^2Y,5}^{\chi}\|_{\mathcal H^{\otimes5}}^2
+  +3!\,\|F_{X^2Y,3}^{\chi}\|_{\mathcal H^{\otimes3}}^2
+  +\|F_{X^2Y,1}^{\chi}\|_{\mathcal H}^2 .
+\end{aligned}
+  \label{eq:spde-nonlinear-coordinate-second-moments-from-kernels}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For \(h_1,\ldots,h_q,k_1,\ldots,k_q\in\mathcal H\),
+\begin{equation}
+  \left\langle
+    \operatorname{Sym}_q(h_1\otimes\cdots\otimes h_q),
+    \operatorname{Sym}_q(k_1\otimes\cdots\otimes k_q)
+  \right\rangle
+  =
+  \frac1{q!}
+  \sum_{\sigma\in S_q}
+  \prod_{i=1}^q\langle h_i,k_{\sigma(i)}\rangle_{\mathcal H}.
+  \label{eq:spde-symmetrized-tensor-inner-product}
+\end{equation}
+This is the orthogonal projection formula for symmetrization:
+\(\operatorname{Sym}_q^*=\operatorname{Sym}_q\) and
+\(\operatorname{Sym}_q^2=\operatorname{Sym}_q\).
+
+Apply \eqref{eq:spde-symmetrized-tensor-inner-product} first to
+\(p(a)\otimes p(b)^{\otimes3}\) and
+\(p(a')\otimes p(b')^{\otimes3}\).  In a random permutation of the four
+right-hand factors, the single \(p(a')\) occupies the single \(p(a)\)-slot
+with probability \(1/4\), and one of the three \(p(b)\)-slots with
+probability \(3/4\).  This gives the two coefficients in the first line of
+\eqref{eq:spde-xy-kernel-norm-integrals}.  The second line follows because
+\(p(b)^{\otimes2}\) is already symmetric.
+
+For \(p(a)^{\otimes2}\otimes p(b)^{\otimes3}\), let \(k\) be the number of
+right-hand \(p(a')\)-factors landing in the two \(p(a)\)-slots.  The
+hypergeometric weights are
+\[
+  \frac{\binom{2}{2}\binom{3}{0}}{\binom{5}{2}}=\frac1{10},\qquad
+  \frac{\binom{2}{1}\binom{3}{1}}{\binom{5}{2}}=\frac35,\qquad
+  \frac{\binom{2}{0}\binom{3}{2}}{\binom{5}{2}}=\frac3{10},
+\]
+for \(k=2,1,0\), respectively.  These are the three coefficients in
+\(\|F_{X^2Y,5}^{\chi}\|^2\).  The same count for
+\(p(a)\otimes p(b)^{\otimes2}\) gives weights \(1/3\) and \(2/3\), producing
+\(\|F_{X^2Y,3}^{\chi}\|^2\).
+
+Finally,
+\[
+  \langle p(b)-p(a),p(b')-p(a')\rangle_{\mathcal H}
+  =
+  G_{bb'}-G_{ba'}-G_{ab'}+G_{aa'},
+\]
+which proves the first-chaos formula.  The second-moment identities
+\eqref{eq:spde-nonlinear-coordinate-second-moments-from-kernels} follow from
+orthogonality of distinct homogeneous Wiener chaoses and the isometry
+\(\mathbb E[I_q(f)I_q(g)]
+=q!\langle f,g\rangle_{\mathcal H^{\otimes q}}\).
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization

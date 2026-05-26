@@ -141,6 +141,8 @@ data.
 - `p_epsilon(a)`, `F_{XY,q}^{chi}`, `F_{X^2Y,q}^{chi}`: cutoff
   noise-to-field Hilbert kernel and the tested finite-chaos kernels of the
   nonlinear negative coordinates.
+- `G_{uv}`, `K_{ab}`: shorthand in the nonlinear kernel-norm proposition for
+  \(G_\epsilon(u,v)\) and \(K_\epsilon(a,b)\).
 
 ## Claim Ledger
 
@@ -282,6 +284,13 @@ data.
   I_1(F_{X^2Y,1}^{\chi})\), with
   \(F_{X^2Y,1}^{\chi}\) containing the precise difference
   \(p_\epsilon(b)-p_\epsilon(a)\).
+- Proves exact covariance-integral formulas for the Hilbert norms of the
+  tested nonlinear kernels.  The symmetrization weights are
+  \((1/4,3/4)\) for \(XY\)'s fourth chaos, \((1/10,3/5,3/10)\) for
+  \(X^2Y\)'s fifth chaos, and \((1/3,2/3)\) for \(X^2Y\)'s third chaos.
+  The first-chaos formula contains the increment covariance
+  \(G_{bb'}-G_{ba'}-G_{ab'}+G_{aa'}\), making the Taylor-subtraction gain
+  visible in scalar-kernel form.
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -565,3 +574,8 @@ data maps.
   finite-chaos kernels for tested \(XY\) and \(X^2Y\) coordinates.  This
   pins the analytic target to projective/Hilbert kernel estimates for the
   displayed kernels rather than informal products of distributions.
+- 2026-05-26 issue #582 covariance-integral continuation: the chapter now
+  expands those Hilbert-kernel norms into scalar covariance integrals with
+  exact symmetrization coefficients and the first-chaos increment covariance.
+  The next analytic pass can estimate explicit scalar kernels rather than
+  infer the cancellation from notation.

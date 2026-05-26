@@ -66,6 +66,16 @@
   - the first-chaos kernel is explicitly
     \(6\int\chi K_\epsilon G_\epsilon^2
       (p_\epsilon(b)-p_\epsilon(a))\,da\,db\).
+- Added Proposition
+  `prop:spde-nonlinear-negative-coordinate-kernel-norms`.
+- This proposition computes the scalar covariance-integral formulas for the
+  Hilbert norms of those tested kernels.  The exact symmetrization weights
+  are:
+  - \(1/4,3/4\) for the fourth-chaos \(XY\) kernel.
+  - \(1/10,3/5,3/10\) for the fifth-chaos \(X^2Y\) kernel.
+  - \(1/3,2/3\) for the third-chaos \(X^2Y\) kernel.
+  - the first-chaos \(X^2Y\) kernel contains the covariance increment
+    \(G_{bb'}-G_{ba'}-G_{ab'}+G_{aa'}\).
 
 ## Calculation Check
 
@@ -83,6 +93,8 @@
     subtraction normalization, and the target \(XY\), \(X^2Y\) scale slacks.
   - the tested finite-chaos arities \(4,2\) and \(5,3,1\) for the nonlinear
     negative coordinates.
+  - the symmetrized kernel-norm weights and the first-chaos increment signs
+    used in the covariance-integral formulas.
 
 ## Remaining Issue #582 Obligations
 
@@ -90,8 +102,8 @@
   concrete finite-cutoff chaos kernels in the displayed \(XY\) and \(X^2Y\)
   decompositions.
 - Prove the genuinely nonlinear BPHZ coordinate estimates for the explicit
-  tested fourth-, second-, fifth-, third-, and locally subtracted first-chaos
-  kernels now identified.
+  scalar covariance kernels for the fourth-, second-, fifth-, third-, and
+  locally subtracted first-chaos sectors now identified.
 - Supply the remaining \(X^3\) cutoff-difference and base-increment estimates
   needed to feed the deterministic \(c_n\) transfer into the full
   scale-summed \(\Gamma\)-coordinate theorem.

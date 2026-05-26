@@ -277,6 +277,40 @@ def check_nonlinear_negative_coordinate_wick_arithmetic():
     x2y_arities = [2 + 3 - 2 * r for r in range(0, 3)]
     assert_equal(xy_arities, [4, 2], "XY tested chaos arities")
     assert_equal(x2y_arities, [5, 3, 1], "X2Y tested chaos arities")
+    xy4_sym_weights = [
+        Fraction(math.comb(1, 1) * math.comb(3, 0), math.comb(4, 1)),
+        Fraction(math.comb(1, 0) * math.comb(3, 1), math.comb(4, 1)),
+    ]
+    x2y5_sym_weights = [
+        Fraction(math.comb(2, 2) * math.comb(3, 0), math.comb(5, 2)),
+        Fraction(math.comb(2, 1) * math.comb(3, 1), math.comb(5, 2)),
+        Fraction(math.comb(2, 0) * math.comb(3, 2), math.comb(5, 2)),
+    ]
+    x2y3_sym_weights = [
+        Fraction(math.comb(1, 1) * math.comb(2, 0), math.comb(3, 1)),
+        Fraction(math.comb(1, 0) * math.comb(2, 1), math.comb(3, 1)),
+    ]
+    assert_equal(
+        xy4_sym_weights,
+        [Fraction(1, 4), Fraction(3, 4)],
+        "XY fourth-chaos symmetrized norm weights",
+    )
+    assert_equal(
+        x2y5_sym_weights,
+        [Fraction(1, 10), Fraction(3, 5), Fraction(3, 10)],
+        "X2Y fifth-chaos symmetrized norm weights",
+    )
+    assert_equal(
+        x2y3_sym_weights,
+        [Fraction(1, 3), Fraction(2, 3)],
+        "X2Y third-chaos symmetrized norm weights",
+    )
+    first_chaos_increment_signs = [1, -1, -1, 1]
+    assert_equal(
+        first_chaos_increment_signs,
+        [1, -1, -1, 1],
+        "first-chaos increment covariance signs",
+    )
 
     # The monograph defines C_2 = 2 int K G^2.  The r=2 contraction in
     # :X(a)^2: I(:X(b)^3:) has coefficient 6 int K G^2 X(b), hence the local
