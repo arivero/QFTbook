@@ -67,11 +67,58 @@ def check_heterotic_gauge_dilaton_redundant_direction() -> None:
     assert_equal("heterotic dilaton-gradient coefficient", overall * Fraction(-2), 1)
 
 
+def check_torsionful_connection_package() -> None:
+    # For Gamma^- = Gamma - H/2, the contorsion coefficient is -1/2.
+    contorsion = Fraction(-1, 2)
+    assert_equal("torsionful Ricci divergence coefficient", contorsion, Fraction(-1, 2))
+    assert_equal(
+        "torsionful Ricci quadratic H coefficient",
+        -contorsion * contorsion,
+        Fraction(-1, 4),
+    )
+
+    # Acting on a covector changes the sign of the connection correction;
+    # 2 nabla^-_i nabla_j Phi therefore contributes + H^k_ij grad_k Phi.
+    assert_equal(
+        "torsionful dilaton H-gradient coefficient",
+        2 * (-contorsion),
+        1,
+    )
+
+
+def check_exterior_square_zero_for_h_beta() -> None:
+    # Verify d(d beta^B)=0 in one component with commuting derivatives.
+    # A term is ((derivative_a, derivative_b), beta_pair).
+    terms: dict[tuple[tuple[int, int], tuple[int, int]], int] = {}
+
+    def add_term(sign: int, deriv_a: int, deriv_b: int, beta_pair: tuple[int, int]) -> None:
+        derivative_pair = tuple(sorted((deriv_a, deriv_b)))
+        key = (derivative_pair, beta_pair)
+        terms[key] = terms.get(key, 0) + sign
+
+    # d beta^B_{abc}=partial_a beta_bc - partial_b beta_ac + partial_c beta_ab
+    def add_d_beta(overall: int, outer_deriv: int, a: int, b: int, c: int) -> None:
+        add_term(overall, outer_deriv, a, (b, c))
+        add_term(-overall, outer_deriv, b, (a, c))
+        add_term(overall, outer_deriv, c, (a, b))
+
+    # d(d beta^B)_{0123}
+    add_d_beta(1, 0, 1, 2, 3)
+    add_d_beta(-1, 1, 0, 2, 3)
+    add_d_beta(1, 2, 0, 1, 3)
+    add_d_beta(-1, 3, 0, 1, 2)
+
+    cancelled = {key: value for key, value in terms.items() if value}
+    assert_equal("d squared beta^B cancellation", cancelled, {})
+
+
 def main() -> None:
     check_h_squared_variation_coefficients()
     check_linear_dilaton_constant()
     check_heterotic_bianchi_coefficients()
     check_heterotic_gauge_dilaton_redundant_direction()
+    check_torsionful_connection_package()
+    check_exterior_square_zero_for_h_beta()
     print("All NLSM Weyl-anomaly coefficient checks passed.")
 
 

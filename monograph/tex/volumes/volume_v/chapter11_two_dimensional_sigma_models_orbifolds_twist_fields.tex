@@ -532,6 +532,90 @@ so the non-gauge part is the \(\nabla\Phi\cdot H\) term in
 \eqref{eq:nlsm-one-loop-hatted-beta-b}.
 \end{proof}
 
+\begin{proposition}[Torsionful one-loop package]
+\label{prop:nlsm-torsionful-one-loop-package}
+Let \(H=\dd B\), and define the metric connections
+\[
+  \nabla_i^\pm v^k
+  =
+  \nabla_i v^k
+  \pm \frac12 H^k{}_{i\ell}v^\ell .
+\]
+Write \(R^-_{ij}\) for the Ricci tensor of \(\nabla^-\).  Through one loop,
+and in the same local scheme as
+\eqref{eq:nlsm-one-loop-hatted-beta-g}--\eqref{eq:nlsm-one-loop-hatted-beta-b},
+the symmetric and antisymmetric Weyl-anomaly coefficients are the two parts
+of the nonsymmetric tensor
+\begin{equation}
+  \alpha'^{-1}
+  \left(\widehat\beta^G_{ij}+\widehat\beta^B_{ij}\right)
+  =
+  R^-_{ij}+2\nabla_i^-\nabla_j\Phi .
+  \label{eq:nlsm-torsionful-one-loop-package}
+\end{equation}
+Equivalently,
+\begin{align}
+  (R^-_{ij})_{(ij)}
+  &=
+  R_{ij}-\frac14H_i{}^{k\ell}H_{jk\ell},
+  \label{eq:nlsm-torsionful-ricci-symmetric}\\
+  (R^-_{ij})_{[ij]}
+  &=
+  -\frac12\nabla^kH_{kij}.
+  \label{eq:nlsm-torsionful-ricci-antisymmetric}
+\end{align}
+The exterior derivative of the antisymmetric beta representative is a
+three-form beta tensor for \(H\), and it automatically obeys
+\(\dd\beta^H=0\).  This is the one-loop seed of the Curci--Paffuti
+consistency condition: higher-loop representatives must be chosen so that
+target diffeomorphism invariance, \(B\)-field gauge invariance, and the
+Bianchi identity \(\dd H=0\) are preserved simultaneously.
+\end{proposition}
+
+\begin{proof}
+Let \(K^k{}_{ij}=-H^k{}_{ij}/2\), so that
+\(\Gamma^{-\,k}_{ij}=\Gamma^k_{ij}+K^k{}_{ij}\).  Since \(H^k{}_{ik}=0\),
+the Ricci tensor of \(\nabla^-\) is
+\[
+  R^-_{ij}
+  =
+  R_{ij}
+  +\nabla_kK^k{}_{ij}
+  +K^k{}_{k\ell}K^\ell{}_{ij}
+  -K^k{}_{j\ell}K^\ell{}_{ik}.
+  \label{eq:nlsm-ricci-with-contorsion}
+\]
+The trace term vanishes and the derivative term is
+\(-\frac12\nabla^kH_{kij}\).  The quadratic term is
+\[
+  -K^k{}_{j\ell}K^\ell{}_{ik}
+  =
+  -\frac14H^k{}_{j\ell}H^\ell{}_{ik}
+  =
+  -\frac14H_i{}^{k\ell}H_{jk\ell},
+\]
+after lowering indices and using total antisymmetry of \(H\).  This proves
+\eqref{eq:nlsm-torsionful-ricci-symmetric} and
+\eqref{eq:nlsm-torsionful-ricci-antisymmetric}.
+
+For the dilaton term, \(\nabla^-_i\nabla_j\Phi\) means applying
+\(\nabla^-\) to the covector \(\nabla_j\Phi\):
+\[
+  \nabla^-_i\nabla_j\Phi
+  =
+  \nabla_i\nabla_j\Phi+\frac12H^k{}_{ij}\nabla_k\Phi .
+\]
+Therefore \(2\nabla^-_i\nabla_j\Phi\) contributes
+\(2\nabla_i\nabla_j\Phi\) to the symmetric part and
+\(\nabla^k\Phi\,H_{kij}\) to the antisymmetric part.  Combining these
+terms with the displayed Ricci tensor gives exactly
+\eqref{eq:nlsm-one-loop-hatted-beta-g} and
+\eqref{eq:nlsm-one-loop-hatted-beta-b}.  Finally
+\(\beta^H=\dd\widehat\beta^B\) is exact as a three-form representative, so
+\(\dd\beta^H=\dd^2\widehat\beta^B=0\); possible global gerbe data affect
+large gauge sectors, not this local identity.
+\end{proof}
+
 \begin{controlledapproximation}[Two-loop metric beta tensor]
 \label{capprox:nlsm-two-loop-metric-beta}
 For \(B=\Phi=0\), dimensional regularization and minimal subtraction give,
