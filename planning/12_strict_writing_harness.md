@@ -23,8 +23,11 @@ its assumptions and argument, or else mark it as an external theorem with a
 precise statement and state that the proof is outside the present scope.
 Use the `quotedtheorem` environment for such imported mathematical theorems:
 state the hypotheses and conclusion in the manuscript, state the local role
-of the theorem immediately after it, and do not attach a `proof` environment
-unless the proof is actually reproduced.
+of the theorem immediately after it, name the external source or source
+lineage in the theorem block or immediately following paragraph, and do not
+attach a `proof` environment unless the proof is actually reproduced.  A
+footnote is acceptable as bibliographic support, but the reader-facing text
+must still say whose theorem or theorem-lineage is being quoted.
 
 For theorem-level claims specifically about QFT, `quotedtheorem` is an
 interim honesty boundary, not the final monograph standard.  Such a theorem
