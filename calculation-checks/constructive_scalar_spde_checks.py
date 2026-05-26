@@ -436,6 +436,48 @@ def check_phi4_three_spde_bphz_counterterm_combinatorics():
     assert_equal(-(outer_response_choices * local_sunset_factor), -9, "Phi4_3 two-loop counterterm sign")
 
 
+def check_phi4_three_negative_sector_coordinate_chart():
+    kappa = Fraction(1, 20)
+    x = -Fraction(1, 2) - kappa
+    xi = -Fraction(5, 2) - kappa
+    y = 3 * x + 2
+    gamma_minus = Fraction(1, 2) - 7 * kappa
+
+    hom = {
+        "Xi": xi,
+        "X": x,
+        "X2": 2 * x,
+        "X3": 3 * x,
+        "Y": y,
+        "XY": x + y,
+        "X2Y": 2 * x + y,
+        "Y2": 2 * y,
+        "XY2": x + 2 * y,
+        "Y3": 3 * y,
+    }
+    assert_equal(y, Fraction(7, 20), "Phi4_3 Y homogeneity")
+    assert_equal(gamma_minus, Fraction(3, 20), "Phi4_3 negative-sector cutoff")
+    expected_below = {"Xi", "X", "X2", "X3", "XY", "X2Y"}
+    actual_below = {name for name, value in hom.items() if value < gamma_minus}
+    assert_equal(actual_below, expected_below, "Phi4_3 negative coordinate sector")
+    assert_equal(hom["XY2"], gamma_minus, "Phi4_3 excluded boundary monomial")
+    if not hom["Y"] > gamma_minus:
+        raise AssertionError("Y should lie above the strict negative coordinate sector")
+    if not hom["Y2"] > gamma_minus:
+        raise AssertionError("Y^2 should lie above the strict negative coordinate sector")
+    if not hom["Y3"] > gamma_minus:
+        raise AssertionError("Y^3 should lie above the strict negative coordinate sector")
+
+    gamma_gap_xy_to_x = hom["XY"] - hom["X"]
+    gamma_gap_x2y_to_x2 = hom["X2Y"] - hom["X2"]
+    assert_equal(gamma_gap_xy_to_x, y, "Gamma XY-to-X gap")
+    assert_equal(gamma_gap_x2y_to_x2, y, "Gamma X2Y-to-X2 gap")
+
+    nontrivial_pi_coordinates = len(expected_below)
+    nontrivial_gamma_coordinates = 2
+    assert_equal(nontrivial_pi_coordinates + nontrivial_gamma_coordinates, 8, "negative-sector coordinate count")
+
+
 def check_modelled_fixed_point_contraction_arithmetic():
     # Exact rational check of the abstract fixed-point inequalities:
     # A T^theta (B |lambda| R^3 + D |M| R) <= R/2 and
@@ -691,6 +733,7 @@ def main():
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
+    check_phi4_three_negative_sector_coordinate_chart()
     check_modelled_fixed_point_contraction_arithmetic()
     check_random_model_cauchy_criterion_arithmetic()
     check_dyadic_parabolic_convolution_bound_arithmetic()
@@ -699,7 +742,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

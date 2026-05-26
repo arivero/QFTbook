@@ -2428,6 +2428,190 @@ the spacetime coordinates.  Negative-homogeneity trees encode precisely the
 subdivergent stochastic diagrams.  Renormalization acts on these trees before
 the reconstruction theorem is applied.
 
+\begin{proposition}[Finite negative-sector coordinates for dynamic \(\Phi^4_3\)]
+\label{prop:spde-phi-four-three-negative-sector-coordinate-chart}
+Let \(0<\kappa<1/14\), and set
+\[
+  X=\mathcal I(\Xi),\qquad
+  Y=\mathcal I(X^3),\qquad
+  |X|=-\frac12-\kappa,\qquad |Y|=\frac12-3\kappa .
+\]
+Put
+\[
+  \gamma_-=\frac12-7\kappa>0 .
+\]
+Among the monomials \(X^aY^b\) with \(a+b\leq3\), the non-polynomial
+symbols of homogeneity \(<\gamma_-\) are
+\[
+  X,\quad X^2,\quad X^3,\quad XY,\quad X^2Y .
+  \label{eq:spde-negative-sector-monomial-list}
+\]
+Together with the noise symbol \(\Xi\) and the constant symbol \(\mathbf 1\),
+these form the finite sector
+\[
+  \mathcal T_-=
+  \{\mathbf 1,\Xi,X,X^2,X^3,XY,X^2Y\}.
+\]
+Their homogeneities are
+\[
+\begin{array}{c|c}
+  \tau & |\tau|\\
+  \hline
+  \mathbf 1 & 0\\
+  \Xi & -\frac52-\kappa\\
+  X & -\frac12-\kappa\\
+  X^2 & -1-2\kappa\\
+  X^3 & -\frac32-3\kappa\\
+  XY & -4\kappa\\
+  X^2Y & -\frac12-5\kappa .
+\end{array}
+\]
+The excluded cubic monomial \(XY^2\) has homogeneity
+\[
+  |XY^2|=\gamma_-,
+\]
+and is therefore not part of the strict sector \(T_{<\gamma_-}\).
+
+Let \(Z_n=(\Pi^{(n)},\Gamma^{(n)})\) be cutoff models whose restriction to
+\(\mathcal T_-\) is multiplicative and whose reexpansion of \(Y\), modulo
+terms of homogeneity \(\geq\gamma_-\), has the form
+\[
+  \Gamma_{zz'}^{(n)}Y
+  =
+  Y+c_n(z,z')\mathbf 1 .
+  \label{eq:spde-y-reexpansion-coefficient}
+\]
+Then, on \(\mathcal T_-\), the only strict lower stochastic reexpansion
+coefficients are
+\begin{equation}
+  \Gamma_{zz'}^{(n)}(XY)
+  =
+  XY+c_n(z,z')X,
+  \qquad
+  \Gamma_{zz'}^{(n)}(X^2Y)
+  =
+  X^2Y+c_n(z,z')X^2 .
+  \label{eq:spde-negative-sector-gamma-coordinates}
+\end{equation}
+In particular, for a compact \(K\), the model seminorm below
+\(\gamma_-\) is controlled by the following explicit coordinate fields:
+\[
+  P_{n,\tau}(z,\delta,\varphi)
+  =
+  \delta^{-|\tau|}
+  \left|
+    \langle\Pi_z^{(n)}\tau,\varphi_z^\delta\rangle
+  \right|,
+  \qquad
+  \tau\in\{\Xi,X,X^2,X^3,XY,X^2Y\},
+\]
+and
+\[
+  G_n(z,z')
+  =
+  \frac{|c_n(z,z')|}
+       {\|z-z'\|_{\mathfrak s}^{\,|Y|}}
+  \qquad
+  (0<\|z-z'\|_{\mathfrak s}\leq1).
+\]
+More precisely, with the basis vectors above assigned norm one,
+\begin{equation}
+  1+\|\Pi^{(n)}\|_{K;\gamma_-}+\|\Gamma^{(n)}\|_{K;\gamma_-}
+  \leq
+  A_-
+  \left(
+    1+
+    \sum_{\tau\in\mathcal T_-\setminus\{\mathbf 1\}}
+    \sup_{z,\delta,\varphi} P_{n,\tau}(z,\delta,\varphi)
+    +
+    \sup_{z,z'}G_n(z,z')
+  \right)
+  \label{eq:spde-negative-sector-coordinate-domination}
+\end{equation}
+for a numerical constant \(A_-<\infty\) depending only on this finite basis.
+The same inequality holds for the model distance
+\(d_{K;\gamma_-}(Z_{n+1},Z_n)\) after replacing \(P_{n,\tau}\) and \(G_n\)
+by the corresponding cutoff differences.
+\end{proposition}
+
+\begin{proof}
+The homogeneity of \(X^aY^b\) is
+\[
+  a\left(-\frac12-\kappa\right)
+  +
+  b\left(\frac12-3\kappa\right).
+\]
+For \(a+b\leq3\), direct evaluation gives
+\[
+\begin{array}{c|c}
+  X & -\frac12-\kappa\\
+  X^2 & -1-2\kappa\\
+  X^3 & -\frac32-3\kappa\\
+  Y & \frac12-3\kappa\\
+  XY & -4\kappa\\
+  X^2Y & -\frac12-5\kappa\\
+  Y^2 & 1-6\kappa\\
+  XY^2 & \frac12-7\kappa\\
+  Y^3 & \frac32-9\kappa .
+\end{array}
+\]
+Since \(0<\kappa<1/14\), the entries in
+\eqref{eq:spde-negative-sector-monomial-list} are strictly below
+\(\gamma_-\), while \(Y\), \(Y^2\), and \(Y^3\) are above
+\(\gamma_-\), and \(XY^2\) is exactly at \(\gamma_-\).  The strict
+truncation \(T_{<\gamma_-}\) therefore contains the displayed
+non-polynomial monomials and not \(XY^2\).
+
+The symbol \(Y\) has homogeneity \(|Y|=\frac12-3\kappa\), which lies in
+\((0,1)\).  Below \(\gamma_-\), the only polynomial symbol with lower
+homogeneity than \(Y\) that can appear in its reexpansion is the constant
+symbol.  This is the coefficient \(c_n(z,z')\) in
+\eqref{eq:spde-y-reexpansion-coefficient}.  The negative symbols
+\(\Xi,X,X^2,X^3\) have no lower polynomial component in the sector
+\(\mathcal T_-\).  Multiplicativity of the model then gives
+\[
+  \Gamma_{zz'}^{(n)}(XY)
+  =
+  \Gamma_{zz'}^{(n)}X\,\Gamma_{zz'}^{(n)}Y
+  =
+  X(Y+c_n(z,z')\mathbf 1),
+\]
+and similarly
+\[
+  \Gamma_{zz'}^{(n)}(X^2Y)
+  =
+  X^2(Y+c_n(z,z')\mathbf 1).
+\]
+This proves \eqref{eq:spde-negative-sector-gamma-coordinates}.  The
+homogeneity gaps are
+\[
+  |XY|-|X|=|Y|,\qquad
+  |X^2Y|-|X^2|=|Y|.
+\]
+Thus the normalized \(\Gamma\)-seminorms of these two strict lower
+components are both bounded by \(\sup G_n\); all other strict lower
+components in this sector vanish.
+
+For \(\Pi\), the seminorm in
+Definition~\ref{def:spde-parabolic-modelled-distribution-norms} is the
+supremum over unit vectors in a finite-dimensional graded space.  In the
+chosen basis, the unit-vector supremum is bounded by a finite multiple of
+the sum of the basis-vector suprema.  The constant symbol contributes the
+deterministic bound
+\[
+  |\langle1,\varphi_z^\delta\rangle|
+  \leq
+  \|\varphi\|_{L^1}
+  \leq C_r .
+\]
+Combining this deterministic constant, the six non-polynomial \(\Pi\)
+coordinates, and the single \(c_n\)-coordinate proves
+\eqref{eq:spde-negative-sector-coordinate-domination}.  Applying the same
+finite-dimensional norm comparison to
+\(\Pi^{(n+1)}-\Pi^{(n)}\) and to the coefficient
+\(c_{n+1}-c_n\) gives the stated model-distance version.
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization
