@@ -31,6 +31,9 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
 - `G`, `V`, `r`, `Q_i`, `t`, `sigma`: GLSM gauge group, matter
   representation, Fayet-Iliopoulos coordinate, charges, complexified
   FI-theta coordinate, and vector-multiplet scalar.
+- `Sigma`, `tilde W_eff`, `mu`, `Q_tot`: twisted chiral field strength,
+  abelian Coulomb-branch effective twisted superpotential, renormalization
+  scale, and total positive charge in the one-loop Coulomb ledger.
 - `X_i`, `P`, `G_d`, `d`, `mu_d`: hypersurface GLSM fields, homogeneous
   polynomial, degree, and residual finite gauge group.
 
@@ -83,6 +86,17 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   regulator.
 - States the axial anomaly charge sum as a finite ledger and a necessary
   condition, not a conformality proof.
+- States the abelian GLSM Coulomb-branch one-loop determinant hypotheses,
+  including logarithm branches, regulator scheme, and exclusion of
+  boundary/vortex/singular-locus contributions from the local determinant.
+- Derives the effective twisted-superpotential critical equation
+  `prod_i (Q_i sigma/mu)^{Q_i}=e^t` and proves that all-positive charges
+  give `sum_i Q_i` simple local Coulomb vacua.
+- Works out the `P^{N-1}` charge-one vacuum count and records the
+  hypersurface charge-vector signal: the Coulomb `sigma` exponent is
+  `N-d`, equal to the axial anomaly coefficient, so the anomaly-free case
+  gives a FI-theta singular-locus condition rather than isolated Coulomb
+  roots.
 - Proves the classical chamber analysis for the hypersurface GLSM with
   charges `(1,...,1,-d)`, including the `r>0` hypersurface quotient, the
   `r<0` Landau-Ginzburg finite-quotient chamber, and the singular status of
@@ -103,7 +117,10 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
     dimension, and negative-chamber residual finite group order;
   - A/B twist spin shifts and scalar-supercharge nilpotence ledger;
   - abelian circle-duality momentum-winding spectrum invariance and
-    chiral/twisted-chiral Legendre-Hessian inversion.
+    chiral/twisted-chiral Legendre-Hessian inversion;
+  - abelian GLSM Coulomb one-loop charge-exponent, positive-charge
+    vacuum-count, hypersurface exponent/anomaly, and quintic exponent-zero
+    arithmetic.
 
 ## Figure Ledger
 

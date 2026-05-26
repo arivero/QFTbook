@@ -751,6 +751,125 @@ contributes its charge to the axial rotation of the fermion measure.  When
 one loop.  This is a necessary condition for an axial \(R\)-symmetry in an
 infrared superconformal candidate, not a proof of conformality.
 
+\section{Abelian GLSM Coulomb-Branch One-Loop Ledger}
+\label{sec:abelian-glsm-coulomb-one-loop-ledger}
+
+The classical Higgs quotient is not the whole GLSM story.  A second protected
+calculation is obtained by moving to a Coulomb-branch region where
+\(\sigma\neq0\), so charged chiral multiplets have masses
+\[
+  m_i(\sigma)=Q_i\sigma .
+\]
+The calculation below is a Wilsonian twisted \(F\)-term calculation.  It is
+not a nonperturbative construction of the full infrared QFT.
+
+\begin{hypothesis}[Abelian Coulomb one-loop determinant]
+\label{hyp:abelian-glsm-coulomb-one-loop-determinant}
+Fix an abelian GLSM datum as in
+Definition~\ref{def:abelian-2d-glsm-datum}, assume all charges \(Q_i\) are
+nonzero, and restrict to a simply connected branch of the region
+\[
+  Q_i\sigma\neq0,\qquad i=1,\ldots,m.
+\]
+Assume a supersymmetric Wilsonian regulator preserving the twisted chiral
+field strength \(\Sigma\), the gauge symmetry, and the integer charge
+normalization.  The finite part of the massive chiral determinant is assumed
+to be represented by the local twisted superpotential
+\begin{equation}
+  \widetilde W_{\rm eff}(\Sigma)
+  =
+  -t\Sigma
+  +
+  \sum_{i=1}^m
+  Q_i\Sigma\left(
+    \log\frac{Q_i\Sigma}{\mu}-1
+  \right)
+  \label{eq:abelian-glsm-one-loop-twisted-superpotential}
+\end{equation}
+up to an additive constant and an affine function of \(\Sigma\).  The
+renormalization scale \(\mu>0\) and the logarithm branches are part of the
+scheme choice.  Boundary contributions from \(\sigma=0\), vortex sectors,
+and singular loci are not included in this local determinant hypothesis.
+\end{hypothesis}
+
+\begin{proposition}[Coulomb critical equation]
+\label{prop:abelian-glsm-coulomb-critical-equation}
+Under Hypothesis~\ref{hyp:abelian-glsm-coulomb-one-loop-determinant}, the
+local Coulomb critical equation is
+\begin{equation}
+  -t+\sum_{i=1}^m Q_i\log\frac{Q_i\sigma}{\mu}=0 .
+  \label{eq:abelian-glsm-coulomb-log-critical-equation}
+\end{equation}
+Equivalently, on the chosen logarithm branch,
+\begin{equation}
+  \prod_{i=1}^m
+  \left(\frac{Q_i\sigma}{\mu}\right)^{Q_i}
+  =
+  \ee^t .
+  \label{eq:abelian-glsm-coulomb-exponential-critical-equation}
+\end{equation}
+If all \(Q_i>0\), then this equation has
+\begin{equation}
+  Q_{\rm tot}=\sum_{i=1}^m Q_i
+  \label{eq:abelian-glsm-positive-charge-vacuum-count}
+\end{equation}
+simple solutions for \(\sigma\) whenever \(\ee^t\neq0\).  For \(m=N\) fields
+of charge \(1\), the count is \(N\).
+\end{proposition}
+
+\begin{proof}
+Differentiate \eqref{eq:abelian-glsm-one-loop-twisted-superpotential} with
+respect to \(\Sigma\).  For a single summand,
+\[
+  \frac{d}{d\Sigma}
+  \left[
+    Q_i\Sigma\left(\log\frac{Q_i\Sigma}{\mu}-1\right)
+  \right]
+  =
+  Q_i\log\frac{Q_i\Sigma}{\mu}.
+\]
+The critical equation is therefore
+\eqref{eq:abelian-glsm-coulomb-log-critical-equation}.  Exponentiating gives
+\eqref{eq:abelian-glsm-coulomb-exponential-critical-equation}.
+
+When all charges are positive, write
+\[
+  C_Q=\prod_{i=1}^m Q_i^{Q_i}.
+\]
+Then \eqref{eq:abelian-glsm-coulomb-exponential-critical-equation} becomes
+\[
+  C_Q\,\mu^{-Q_{\rm tot}}\sigma^{Q_{\rm tot}}=\ee^t .
+\]
+Since \(Q_{\rm tot}>0\) and the right side is nonzero, this polynomial
+equation has \(Q_{\rm tot}\) nonzero roots.  Its derivative is proportional
+to \(\sigma^{Q_{\rm tot}-1}\), so every nonzero root is simple.  For \(N\)
+charge-one fields, \(Q_{\rm tot}=N\).
+\end{proof}
+
+\begin{example}[\(\mathbb P^{N-1}\) GLSM quantum vacua]
+\label{ex:cpn-glsm-coulomb-vacua}
+Take \(m=N\), \(Q_i=1\), and \(W=0\).  The local equation is
+\[
+  \left(\frac{\sigma}{\mu}\right)^N=\ee^t .
+\]
+Thus the Coulomb-branch one-loop ledger predicts \(N\) massive twisted
+chiral vacua in the chamber where this effective description is valid.  This
+is the protected arithmetic behind the usual \(\mathbb P^{N-1}\) vacuum
+count.  The statement that these vacua exhaust the continuum theory requires
+the same regulator, compactness, and singular-locus controls stated in
+Hypothesis~\ref{hyp:abelian-glsm-coulomb-one-loop-determinant}.
+\end{example}
+
+For the hypersurface charge vector \((1,\ldots,1,-d)\), the exponent of
+\(\sigma\) in
+\eqref{eq:abelian-glsm-coulomb-exponential-critical-equation} is \(N-d\),
+the same integer as the axial anomaly coefficient
+\eqref{eq:abelian-glsm-axial-anomaly}.  In the anomaly-free case \(N=d\),
+the Coulomb equation becomes a condition on \(t\) and the logarithm branch
+rather than an equation with finitely many isolated \(\sigma\)-solutions.
+This is a protected signal of a singular locus in the FI-theta parameter
+space, not a proof of a full infrared phase transition.
+
 \begin{proposition}[Classical chambers for the hypersurface GLSM]
 \label{prop:hypersurface-glsm-classical-chambers}
 Fix integers \(N\geq2\) and \(d\geq2\).  Let the GLSM have chiral fields

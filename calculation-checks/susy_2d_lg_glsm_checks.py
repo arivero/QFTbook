@@ -181,6 +181,47 @@ def check_abelian_legendre_duality() -> None:
             )
 
 
+def check_abelian_glsm_coulomb_ledger() -> None:
+    positive_charge_examples = [
+        [1, 1],
+        [1, 1, 1],
+        [2, 1],
+        [2, 3, 1],
+    ]
+    for charges in positive_charge_examples:
+        total_charge = sum(charges)
+        assert_equal("positive-charge Coulomb vacuum count", total_charge, sum(charges))
+
+        # In product_i (Q_i sigma/mu)^{Q_i}, the exponent of sigma and mu is
+        # plus/minus the total charge.  The nonzero constant is product Q_i^{Q_i}.
+        sigma_exponent = sum(charges)
+        mu_exponent = -sum(charges)
+        charge_constant_degree = sum(charges)
+        assert_equal("Coulomb sigma exponent", sigma_exponent, total_charge)
+        assert_equal("Coulomb mu exponent", mu_exponent, -total_charge)
+        assert_equal(
+            "Coulomb charge-constant weighted degree",
+            charge_constant_degree,
+            total_charge,
+        )
+
+    for num_x_fields, degree in [(5, 5), (4, 3), (6, 4), (3, 7)]:
+        charges = [1] * num_x_fields + [-degree]
+        sigma_exponent = sum(charges)
+        assert_equal(
+            f"hypersurface Coulomb sigma exponent N={num_x_fields} d={degree}",
+            sigma_exponent,
+            num_x_fields - degree,
+        )
+        assert_equal(
+            f"hypersurface Coulomb exponent equals axial anomaly N={num_x_fields} d={degree}",
+            sigma_exponent,
+            glsm_charge_sum(num_x_fields, degree),
+        )
+
+    assert_equal("quintic Coulomb exponent vanishes", sum([1, 1, 1, 1, 1, -5]), 0)
+
+
 def main() -> None:
     check_a_series_lg()
     check_fermat_tensor_products()
@@ -188,6 +229,7 @@ def main() -> None:
     check_twist_spin_ledger()
     check_abelian_circle_duality()
     check_abelian_legendre_duality()
+    check_abelian_glsm_coulomb_ledger()
     print("All 2D SUSY LG/GLSM checks passed.")
 
 
