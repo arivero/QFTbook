@@ -4,9 +4,9 @@
 
 This chapter states the corrected OS-II reconstruction route from Euclidean
 Schwinger data to Lorentzian Wightman data.  Its role is bridge-theorem
-precision: reflection positivity gives the Hilbert space, the OS-II
-semigroup hypotheses give a positive Hamiltonian, and the analytic
-boundary-value package gives the Lorentzian distributions and locality.
+precision: reflection positivity gives the Hilbert space, positive-time
+semigroup regularity gives a positive Hamiltonian, and the corrected OS-II
+many-variable analytic route gives the Lorentzian distributions and locality.
 
 ## Notation Inventory
 
@@ -25,20 +25,40 @@ boundary-value package gives the Lorentzian distributions and locality.
   Fourier--Laplace boundary-value theorem.
 - `W_n`, `mathcal W_n`: Lorentzian Wightman boundary value and holomorphic
   tube function.
+- `C_k^(N)`, `D_m^(N)`: scalar analyticity domains and mixed Hilbert-vector
+  domains in the corrected OS-II many-variable route.
+- `Psi_m(x,zeta)`: Hilbert-vector fields used in the OS-II `A_N/P_N`
+  induction.
 
 ## Claim Ledger
 
 - Defines OS-admissible Euclidean data on zero-diagonal Schwartz test spaces,
   keeping contact-term extensions separate from reconstruction.
-- States the corrected OS-II linear-growth condition and separates it from
-  the insufficient OS-I positivity/covariance/symmetry package.
-- Exhibits the Klein--Landau failure mode: positive-time translations need
-  not be bounded on the reflection-positive quotient without the OS-II
-  contractivity and continuity input.
+- States the corrected OS-II linear-growth condition as the input for the
+  many-variable analytic and boundary-value estimate, not as a substitute for
+  the positive-time quotient construction.
+- Corrects the OS-I/OS-II historical diagnosis: the famous error is the
+  false separate-Laplace-to-joint-Laplace step (OS I Lemma 8.8), not the
+  positive-time Hilbert quotient or one-variable semigroup continuation.
+- Proves the iterative Cauchy--Schwarz contraction estimate for the
+  positive-time semigroup from OS symmetry, the semigroup law, and polynomial
+  translated-matrix-element growth.
 - Proves self-adjointness of the Euclidean time semigroup from the OS-II
   quotient symmetry, without using negative-time formal manipulations.
+- Proves one-gap holomorphic continuation from the OS semigroup by the
+  spectral theorem for the nonnegative Hamiltonian.
 - Proves closability of ordered Euclidean insertions from an explicit
   adjoint-insertion identity on the dense OS domain.
+- Adds Proposition `prop:os-ii-analytic-route-to-boundary-package`, isolating
+  the corrected OS-II `A_N/P_N` analytic route, Hilbert Taylor remainder
+  identity, domain exhaustion, polynomial tube estimate, and covariance inputs
+  whose construction implies the Lorentzian boundary-value package.
+- Proves Theorem `thm:corrected-os-ii-analytic-theorem`, deriving the OS-II
+  analytic route from the Euclidean axioms plus the linear-growth condition:
+  local one-gap continuations, Malgrange--Zerner gluing, the `A_N/P_N`
+  induction, Hilbert Taylor reconstruction of vector-valued analytic fields,
+  convex argument-domain exhaustion, regularized positivity estimates, and
+  Banach-valued maximum-principle propagation of polynomial tube bounds.
 - States the Lorentzian boundary-value package and proves the
   Fourier--Laplace mechanism by which spectral support plus polynomial
   distributional order yields holomorphic tube functions with tempered
@@ -50,6 +70,10 @@ boundary-value package gives the Lorentzian distributions and locality.
   Schwinger functions at noncoincident Euclidean points.
 - Proves uniqueness of OS reconstruction by the intrinsic quotient/GNS
   argument.
+- Records the mathematical inputs used as such: Malgrange--Zerner
+  continuation, envelope-of-holomorphy/maximum-principle theorems for tube
+  domains, Vladimirov's polynomial-growth boundary-value theorem, and the
+  Paley--Wiener--Schwartz cone theorem.
 
 ## Figure Ledger
 
@@ -70,5 +94,10 @@ boundary-value package gives the Lorentzian distributions and locality.
 
 - 2026-05-25 issue #580 pass: added the Fourier--Laplace tempered
   boundary-value proposition, expanded the Jost-domain/edge-of-the-wedge
-  locality proof, tightened the Klein--Landau failure-mode note, and recorded
+  locality proof, tightened the OS-I Lemma 8.8 failure-mode note, and recorded
   the chapter's OS-II proof obligations in this dossier.
+- 2026-05-26 OS completeness audit: corrected the historical diagnosis of the
+  OS-I error, added the one-gap semigroup continuation theorem, added the
+  positive-time contraction iteration, and proved the corrected OS-II
+  many-variable analytic theorem in the chapter rather than treating it as an
+  external black box.

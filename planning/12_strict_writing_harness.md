@@ -37,6 +37,19 @@ an explicit proof obligation/open problem with the missing analytic steps
 named.  Literature proofs in physics are starting material for scrutiny; they
 are never authority by themselves.
 
+The permission to invoke standard mathematics is narrower than the permission
+to invoke standard physics.  Theorems in complex analysis, distribution
+theory, spectral theory, semigroup theory, and functional analysis may be used
+as named mathematical inputs after their hypotheses are stated and verified in
+the local context.  A theorem whose conclusion is specifically a QFT object or
+bridge -- for example existence of Wightman distributions from Schwinger data,
+local commutativity from Euclidean symmetry, spectral support of reconstructed
+vacuum functions, LSZ reduction from a Hilbert-space scattering theory, or an
+anomaly formula for a field theory -- must be derived inside the monograph from
+the named mathematical inputs and the stated QFT data.  A citation to OS,
+Wightman, Haag--Ruelle, Epstein--Glaser, BV, or AQFT literature is not a
+substitute for that derivation.
+
 ## Ambition And Frontier Rule
 
 The monograph is not a textbook summary project.  Its target standard is the

@@ -137,9 +137,17 @@ An OS-admissible Euclidean field presentation is a Schwinger hierarchy
   \end{equation}
   \item reflection positivity:
   \(\langle F,F\rangle_{\rm OS}\ge0\) for all \(F\in\mathcal E_+\);
-  \item OS-II regularity and linear growth: the hierarchy has the
-  positive-time semigroup continuity, contractivity, and linear-growth bounds
-  stated below.
+  \item positive-time semigroup regularity: the positive-time translation
+  operators defined on the OS quotient form a strongly continuous symmetric
+  contraction semigroup, as stated in
+  \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity};
+  \item corrected OS-II analytic regularity: the difference-variable hierarchy
+  satisfies a many-variable continuation and growth theorem strong enough to
+  give the Lorentzian boundary-value package of
+  Definition~\ref{def:os-lorentzian-boundary-value-package}.  A standard
+  sufficient hypothesis is the OS-II linear-growth condition
+  \eqref{eq:os-linear-growth-condition}, together with the OS-II
+  several-complex-variable construction described below.
 \end{enumerate}
 For fermionic or graded fields, the permutation line is replaced by graded
 permutation symmetry with the Koszul sign determined by the declared parity of
@@ -183,15 +191,16 @@ spacetime.
 
 Together with the positive-time semigroup hypotheses
 \eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}, this
-condition supplies three analytic facts used later: positive-time translations
-act continuously on the quotient, Euclidean rotations can be analytically
-continued to Lorentz boosts, and the continued correlation functions have
-boundary values in the declared target distribution class, for example
-tempered distributions when the Schwinger functions obey
-\eqref{eq:os-linear-growth-condition}.  The correction from the first
+condition has a specific OS-II role.  The positive-time Hilbert space and the
+one-variable semigroup continuation are constructed before the linear-growth
+estimate is used.  The linear-growth estimate controls the many-variable
+analytic continuation and the polynomial boundary estimates needed to obtain
+tempered Lorentzian Wightman distributions.  The correction from the first
 Osterwalder--Schrader reconstruction paper to the second is precisely that
-reflection positivity, Euclidean covariance, symmetry, clustering, and
-ordinary temperedness do not by themselves supply this continuation theorem.
+reflection positivity, Euclidean covariance, symmetry, clustering, and ordinary
+temperedness do not by themselves prove that the separately obtained
+one-variable Laplace continuations assemble into a joint many-variable
+Fourier--Laplace transform with tempered boundary values.
 Thus an application of OS reconstruction must either prove an OS-II growth
 condition such as \eqref{eq:os-linear-growth-condition}, or replace it by a
 different theorem that supplies the same Lorentzian boundary-value estimates.
@@ -300,34 +309,108 @@ this point are the following seminorm statements on \(\mathcal E_+\):
 \end{align}
 for all \(F,G\in\mathcal E_+\), where
 \(\|F\|_{\rm OS}^2=\langle F,F\rangle_{\rm OS}\).  The inequality
-\eqref{eq:os-time-contractivity} is the OS-II contractivity strengthening.  It
-is an analytic hypothesis on the reflection-positive seminorm, additional to
-the algebraic preservation of positive-time support and to Euclidean covariance
-of the Schwinger functions.  This is the point at which the Klein--Landau
-regularity gap in the original reconstruction argument is closed.
+\eqref{eq:os-time-contractivity} is the contraction statement needed to obtain
+a nonnegative Hamiltonian.  In the classical scalar OS proof it is derived from
+reflection positivity, Euclidean covariance, the semigroup law, and a
+polynomial bound on translated matrix elements by the iterative
+Cauchy--Schwarz argument written below.  In the abstract formulation of
+OS-admissible data we record the contraction and strong continuity explicitly,
+so that every later use of the Hamiltonian has a named hypothesis.
 
 \begin{remark}[Failure mode of the first OS reconstruction theorem]
-\label{rem:klein-landau-gap}
-The OS-I axioms do not by themselves imply that \(R_s\) is bounded on the
-reflection-positive quotient.  The obstruction is concrete: even when the
-Euclidean hierarchy is reflection positive and Euclidean covariant, the
-seminorm of \(R_sF\) may fail to be controlled by the seminorm of \(F\), so a
-zero-norm vector can be moved to a nonzero class or a Cauchy sequence can be
-moved to a non-Cauchy sequence.  In that situation the formula
-\([F]\mapsto[R_sF]\) does not define a contraction on \(\Hilb_{\rm OS}\), and
-there is no self-adjoint Hamiltonian obtained from positive Euclidean time
-translations.  The added OS-II contractivity and continuity assumptions
-\eqref{eq:os-time-contractivity}--\eqref{eq:os-time-strong-continuity} are
-exactly the hypotheses that remove this failure mode.\footnote{The analytic
-gap was isolated after the first OS reconstruction paper; see, for example,
-A.~Klein and L.~J.~Landau, ``Singular perturbations of positivity preserving
-semigroups via path space techniques,'' J. Funct. Anal. \textbf{20} (1975)
-44--82, and ``Construction of a unique self-adjoint generator for a symmetric
-local semigroup,'' J. Funct. Anal. \textbf{44} (1981) 121--137.  The lesson
-for reconstruction is not a defect of reflection positivity itself, but the
-need for a separate theorem making the positive-time translations bounded and
-strongly continuous on the OS quotient.}
+\label{rem:os-i-lemma-eight-eight-gap}
+The famous error in the first Osterwalder--Schrader reconstruction paper is
+not the positive-time Hilbert-space quotient and not the one-variable
+semigroup continuation.  Those parts are the reliable core of the construction.
+The faulty step was the passage from separately controlled one-variable
+Laplace continuations to a joint many-variable Fourier--Laplace transform.  A
+function on \((0,\infty)^2\) may be a Laplace transform of a tempered
+distribution in each variable separately without being a joint Laplace
+transform; the model obstruction is \(F(x,y)=\exp(-xy)\).  The corrected OS-II
+proof replaces that step by a several-complex-variable continuation ladder and
+then uses a linear-growth estimate to prove the polynomial bounds that make the
+boundary values tempered distributions.\footnote{OS II states explicitly that
+Lemma 8.8 of OS I is wrong and gives the \(F(x,y)=\exp(-xy)\) obstruction.  See
+K.~Osterwalder and R.~Schrader, ``Axioms for Euclidean Green's Functions II,''
+Commun. Math. Phys. \textbf{42} (1975) 281--305, Introduction and Chapters
+IV--VI.}
 \end{remark}
+
+\begin{proposition}[Contraction from the OS semigroup estimate]
+\label{prop:os-semigroup-contraction-iteration}
+Let \(R_t:\mathcal E_+\to\mathcal E_+\), \(t\ge0\), satisfy the semigroup law
+\(R_{t+s}=R_tR_s\), the OS symmetry relation
+\[
+  \langle R_tF,G\rangle_{\rm OS}
+  =
+  \langle F,R_tG\rangle_{\rm OS},
+  \qquad F,G\in\mathcal E_+,
+\]
+and, for each \(F\in\mathcal E_+\), a polynomial growth bound
+\[
+  |\langle F,R_uF\rangle_{\rm OS}|
+  \le C_F(1+u)^{N_F},
+  \qquad u\ge0.
+\]
+Then
+\[
+  \|R_tF\|_{\rm OS}\le \|F\|_{\rm OS},
+  \qquad t\ge0.
+\]
+In particular \(R_t\mathcal N\subset\mathcal N\), so \(R_t\) descends to a
+contraction on the OS quotient.
+\end{proposition}
+
+\begin{proof}
+Assume first that \(\|F\|_{\rm OS}>0\).  Put
+\[
+  a_j=\langle F,R_{2^jt}F\rangle_{\rm OS},
+  \qquad j=0,1,2,\ldots .
+\]
+For \(j\ge1\), the semigroup law and OS symmetry give
+\[
+  a_j
+  =
+  \langle R_{2^{j-1}t}F,R_{2^{j-1}t}F\rangle_{\rm OS}
+  \ge0 .
+\]
+The Cauchy--Schwarz inequality in the positive semidefinite OS form gives,
+for \(j\ge1\),
+\[
+  a_j^2
+  =
+  |\langle F,R_{2^jt}F\rangle_{\rm OS}|^2
+  \le
+  \|F\|_{\rm OS}^2
+  \|R_{2^jt}F\|_{\rm OS}^2
+  =
+  a_0\,a_{j+1}.
+\]
+Induction therefore yields
+\[
+  a_1
+  \le
+  a_0^{1-2^{-N}}a_N^{2^{-N}},
+  \qquad N\ge1 .
+\]
+The polynomial bound gives
+\[
+  a_N^{2^{-N}}
+  \le
+  C_F^{2^{-N}}(1+2^Nt)^{N_F2^{-N}}
+  \longrightarrow 1 .
+\]
+Letting \(N\to\infty\) gives \(a_1\le a_0\).  Since
+\[
+  a_1=\langle F,R_{2t}F\rangle_{\rm OS}
+      =\langle R_tF,R_tF\rangle_{\rm OS}
+      =\|R_tF\|_{\rm OS}^2,
+\]
+the contraction estimate follows.  If \(\|F\|_{\rm OS}=0\), Cauchy--Schwarz
+already gives \(\langle F,R_uF\rangle_{\rm OS}=0\) for all \(u\ge0\), and the
+same identity gives \(\|R_tF\|_{\rm OS}=0\).  Thus null vectors are preserved,
+and the quotient operator is a contraction.
+\end{proof}
 
 Contractivity implies \(R_s\mathcal N\subset\mathcal N\), so \(R_s\) descends to
 a bounded operator \(T_E(s)\) on the quotient and then to \(\Hilb_{\rm OS}\).
@@ -366,6 +449,83 @@ Stone's theorem then applies to the strongly continuous unitary group
 \(U_{\rm time}(t)=\ee^{-\ii tH}\): its named hypotheses are the unitary group
 law, strong continuity in \(t\), and self-adjointness of the generator.  This
 \(H\) is the Lorentzian Hamiltonian in the reconstructed vacuum sector.
+
+\begin{proposition}[One-gap continuation from the OS semigroup]
+\label{prop:os-one-gap-semigroup-continuation}
+Let \(F,G\in\mathcal E_+\) be two positive-time test sequences whose supports
+are arranged so that, for \(s>0\), \(R_sG\) remains later than the insertions in
+\(F\).  Let
+\[
+  \psi_F=[F],\qquad \psi_G=[G]\in\Hilb_{\rm OS}.
+\]
+Then the Euclidean matrix element with distinguished time gap \(s\) is
+\[
+  \langle \psi_F,T_E(s)\psi_G\rangle_{\rm OS}
+  =
+  \langle \psi_F,\ee^{-sH}\psi_G\rangle_{\Hilb_{\rm OS}} .
+\]
+For \(z\in\mathbb C\) with \(\Re z>0\), define
+\[
+  M_{F,G}(z)=\langle\psi_F,\ee^{-zH}\psi_G\rangle_{\Hilb_{\rm OS}} .
+\]
+Then \(M_{F,G}\) is holomorphic on the right half-plane and satisfies
+\[
+  |M_{F,G}(z)|\le \|\psi_F\|\,\|\psi_G\|,
+  \qquad \Re z>0.
+\]
+Moreover, for every \(t\in\mathbb R\),
+\[
+  \lim_{\epsilon\downarrow0}M_{F,G}(\epsilon+\ii t)
+  =
+  \langle\psi_F,\ee^{-\ii tH}\psi_G\rangle_{\Hilb_{\rm OS}} .
+\]
+\end{proposition}
+
+\begin{proof}
+The first identity is the definition of the descended positive-time
+translation semigroup:
+\[
+  T_E(s)[G]=[R_sG],
+  \qquad T_E(s)=\ee^{-sH}.
+\]
+For the holomorphic extension, let \(E_H\) be the spectral resolution of the
+nonnegative self-adjoint operator \(H\), and let
+\[
+  \mu_{F,G}(\Delta)=
+  \langle \psi_F,E_H(\Delta)\psi_G\rangle
+\]
+be the finite complex spectral measure associated to \(\psi_F,\psi_G\).
+Its total variation is bounded by
+\(|\mu_{F,G}|([0,\infty))\le\|\psi_F\|\,\|\psi_G\|\).  The spectral theorem gives
+\[
+  M_{F,G}(z)=\int_{[0,\infty)}\ee^{-z\lambda}\,\dd\mu_{F,G}(\lambda),
+  \qquad \Re z>0.
+\]
+On compact subsets of the right half-plane, derivatives with respect to \(z\)
+are obtained by differentiating under the integral:
+\[
+  \partial_z^k M_{F,G}(z)
+  =
+  \int_{[0,\infty)}(-\lambda)^k\ee^{-z\lambda}\,
+  \dd\mu_{F,G}(\lambda),
+\]
+because \(\lambda^k\ee^{-(\Re z)\lambda}\) is bounded on
+\([0,\infty)\) uniformly for \(\Re z\) bounded below by a positive constant.
+This proves holomorphy.  The norm bound follows from
+\(|\ee^{-z\lambda}|\le1\).  Finally,
+\(\ee^{-(\epsilon+\ii t)\lambda}\to\ee^{-\ii t\lambda}\) pointwise and is
+bounded by \(1\); dominated convergence for the finite measure
+\(|\mu_{F,G}|\) gives the stated boundary value.
+\end{proof}
+
+This proposition is the sound one-variable part of the OS construction.  It
+does not by itself produce an \(n\)-variable Wightman distribution.  The
+next QFT-specific task is to show that all one-gap continuations coming
+from different cuts of the same Schwinger function assemble into a joint
+many-variable analytic function with the spectral support and boundary-value
+estimates required below.  That assembly is the content of the corrected OS-II
+analytic theorem.
+
 Spatial translations and rotations act unitarily on the quotient.
 Together with the analytic continuation of Euclidean rotations, the full OS
 theorem gives a strongly continuous unitary representation of the connected
@@ -529,6 +689,506 @@ permuted tubes have a connected edge-of-the-wedge continuation through the
 corresponding Jost domain, with the Koszul sign included for graded fields.
 \end{enumerate}
 \end{definition}
+
+\begin{proposition}[Tempered boundary values from polynomial tube bounds]
+\label{prop:polynomial-tube-bounds-boundary-values}
+Let \(C\subset\mathbb R^d\) be an open convex cone and let
+\[
+  T_C=\mathbb R^d+\ii C
+\]
+be the corresponding tube.  Let \(F\) be holomorphic on \(T_C\).  Suppose that
+for every closed subcone \(K\Subset C\) there are integers \(M,N\) and a
+constant \(A_K\) such that
+\begin{equation}
+  |\langle F(\cdot+\ii y),f\rangle|
+  \le
+  A_K\,\operatorname{dist}(y,\partial C)^{-M}
+  \sum_{|\alpha|,|\beta|\le N}
+    \sup_{x\in\mathbb R^d}|x^\beta\partial^\alpha f(x)|
+  \label{eq:polynomial-tube-bound-abstract}
+\end{equation}
+for all \(y\in K\) and all \(f\in\mathcal S(\mathbb R^d)\), whenever the
+left hand side is defined by integration over \(x\).  Then \(F\) has a unique
+tempered boundary value
+\[
+  \operatorname{bv}F\in\mathcal S'(\mathbb R^d)
+\]
+in the sense that \(F(\cdot+\ii y)\to\operatorname{bv}F\) in
+\(\mathcal S'(\mathbb R^d)\) as \(y\to0\) inside any proper subcone of \(C\).
+If, in addition, \(F\) is the Fourier--Laplace transform of a distribution
+carried by the dual closed cone
+\[
+  C^*=\{p\in\mathbb R^d\mid p\cdot y\ge0\text{ for all }y\in C\},
+\]
+then the Fourier transform of
+\(\operatorname{bv}F\) is carried by \(C^*\).
+\end{proposition}
+
+\begin{proof}
+This is a mathematical input from the theory of analytic functionals and
+tempered distributions.  One proves it by applying Cauchy's estimates in
+subtubes to obtain uniform finite-order distribution bounds, representing the
+tested functions by Fourier transforms, and using the Vladimirov
+boundary-value theorem for holomorphic functions of polynomial growth in tube
+domains.  The carrier-cone statement is the Paley--Wiener--Schwartz cone
+theorem.  These are several-complex-variable and distribution-theoretic
+theorems; the QFT-specific work in OS reconstruction is to prove their
+hypotheses for the holomorphic functions constructed from the Schwinger
+hierarchy.
+\end{proof}
+
+\begin{proposition}[OS-II analytic route to the boundary-value package]
+\label{prop:os-ii-analytic-route-to-boundary-package}
+Fix \(k=n-1\) and write the ordered difference variables as
+\[
+  \xi_j=x_{j+1}-x_j,\qquad j=1,\ldots,k .
+\]
+Assume the following OS-II analytic data have been constructed from the
+Schwinger hierarchy.
+\begin{enumerate}[label=(\roman*)]
+\item There are scalar analyticity domains \(C_k^{(N)}\) in the complexified
+time-difference variables and mixed Hilbert-vector domains \(D_m^{(N)}\) for
+the OS vectors \(\Psi_m\), with
+\[
+  \bigcup_{N\ge0} C_k^{(N)}
+  =
+  \{(\zeta_1,\ldots,\zeta_k):\Re\zeta_j>0\ \text{for all }j\}.
+\]
+\item On each \(C_k^{(N)}\) there is a holomorphic representative
+\(S_k^{(N)}\) of the difference-variable Schwinger function, and the
+representatives agree on overlaps.
+\item The Hilbert-vector fields \(\Psi_m(x,\zeta)\) are holomorphic on
+\(D_m^{(N)}\) and satisfy the OS scalar-product formula
+\begin{equation}
+  \bigl\langle
+    \Psi_r(x,\zeta),\Psi_s(y,\eta)
+  \bigr\rangle_{\Hilb_{\rm OS}}
+  =
+  S_{r+s-1}^{(N)}
+  \bigl(-\overline\zeta,\ x+y,\ \eta\bigr)
+  \label{eq:os-ii-scalar-product-pattern}
+\end{equation}
+whenever both sides are defined.  The block
+\(-\overline\zeta\) is the reflected left block, \(x+y\) is the real bridge
+time, and \(\eta\) is the right block.
+\item The local step \(A_N\Rightarrow P_N\) is obtained by Hilbert-space
+Taylor reconstruction: the squared norm of the vector Taylor remainder is the
+scalar Taylor remainder of the function on the right hand side of
+\eqref{eq:os-ii-scalar-product-pattern}.  The step \(P_N\Rightarrow A_{N+1}\)
+is obtained from the scalar products of these vector fields and extension to
+the envelope of holomorphy defining \(C_k^{(N+1)}\).
+\item The continued scalar functions obey a uniform polynomial tube estimate:
+for every closed subcone \(K\Subset(V_+^\circ)^k\) and every
+\(\delta>0\), if the imaginary parts of the Lorentzian difference variables lie
+in \(K\) at distance at least \(\delta\) from its boundary, then
+\begin{equation}
+  |\langle S_k(\cdot+\ii y),f\rangle|
+  \le
+  C_{k,K}\,\delta^{-N_k}\,
+  \sum_{|\alpha|,|\beta|\le N_k}
+  \sup_\xi |\xi^\beta\partial^\alpha f(\xi)|
+  \label{eq:os-ii-polynomial-tube-estimate}
+\end{equation}
+for all Schwartz tests \(f\) in the reduced difference variables.
+\item Euclidean covariance identifies the product right-half-plane
+continuation with the standard forward-tube continuation in Lorentzian
+difference variables, and the corresponding statements hold for every
+permutation of the field insertions, with the Koszul sign for graded labels.
+\end{enumerate}
+Then the Schwinger hierarchy satisfies the OS Lorentzian boundary-value package
+of Definition~\ref{def:os-lorentzian-boundary-value-package}.
+\end{proposition}
+
+\begin{proof}
+Items (i)--(iii) provide a single holomorphic function in the ordered
+difference variables: the functions \(S_k^{(N)}\) agree on overlaps, and the
+union of their domains is the full product right half-plane in the ordered
+time gaps.  Item (vi) transports this function by Euclidean covariance to the
+usual forward tube in Lorentzian difference variables.  This gives part (i) of
+Definition~\ref{def:os-lorentzian-boundary-value-package}.
+
+The estimate \eqref{eq:os-ii-polynomial-tube-estimate} is exactly the
+tempered tube-bound input in part (ii) of the boundary-value package.  The
+right hand side is a finite Schwartz seminorm, and the dependence on the
+distance to the cone boundary is polynomial.  Therefore the family of
+functionals \(f\mapsto\langle S_k(\cdot+\ii y),f\rangle\) is bounded in a
+fixed finite-order tempered-distribution topology on each closed subtube.
+	Proposition~\ref{prop:polynomial-tube-bounds-boundary-values} then gives
+	tempered boundary values as \(y\to0\) inside the cone.
+
+For a permutation of insertions, item (vi) gives the corresponding permuted
+tube.  Euclidean permutation symmetry says that the permuted holomorphic
+functions have the same values on their common Euclidean ordered real
+submanifolds, after inserting the Koszul sign for odd labels.  The identity
+theorem and the edge-of-the-wedge theorem applied at Jost configurations
+therefore give the connected continuation through the common real edge.  This
+is part (iii) of Definition~\ref{def:os-lorentzian-boundary-value-package}.
+\end{proof}
+
+\begin{theorem}[Corrected OS-II analytic theorem]
+\label{thm:corrected-os-ii-analytic-theorem}
+Let the Schwinger hierarchy satisfy normalization, Euclidean covariance,
+graded permutation symmetry, Hermiticity, reflection positivity, the
+positive-time semigroup regularity stated above, and the linear-growth
+condition \eqref{eq:os-linear-growth-condition}.  Work componentwise in a
+fixed finite field-label basis; graded signs enter only when two labelled
+insertions are permuted.  Then the OS-II analytic data listed in
+Proposition~\ref{prop:os-ii-analytic-route-to-boundary-package} are obtained
+from the Schwinger hierarchy.  Hence the hierarchy satisfies the OS
+Lorentzian boundary-value package.
+\end{theorem}
+
+\begin{proof}
+We write the proof for scalar components.  Since \(V\) is finite dimensional in
+the present field presentation, labelled components are handled by the same
+argument applied to matrix-valued distributions; the label reflection \(J\) and
+the Koszul signs only change the component bookkeeping.
+
+Let \(k=n-1\).  Translation invariance lets us write the ordered Euclidean
+\(n\)-point function in reduced variables
+\[
+  \xi=(\xi_1,\ldots,\xi_k),\qquad
+  \xi_j=x_{j+1}-x_j\in E .
+\]
+On a fixed ordered component of the complement of the partial diagonals, write
+\[
+  \xi_j=(t_j,\mathbf x_j),\qquad t_j>0 ,
+\]
+after a Euclidean transformation if necessary.  The complex variables used
+below are the time gaps
+\[
+  \zeta=(\zeta_1,\ldots,\zeta_k),\qquad
+  C_+^k=\{\zeta\in\mathbb C^k:\Re\zeta_j>0\}.
+\]
+Spatial difference variables are kept as real parameters until the final
+Euclidean covariance step; this is only a notational separation, not a
+restriction on covariance.
+
+\emph{Step 1: local one-direction continuation.}
+Choose a split of the insertions into a reflected left block and a positive
+right block, and separate the two blocks by one positive Euclidean time gap
+\(s>0\).  Reflection positivity gives OS vectors \(\psi_F,\psi_G\) and
+Proposition~\ref{prop:os-one-gap-semigroup-continuation} gives
+\[
+  s\longmapsto
+  S_{r+s-1}(-\xi_L,s,\xi_R)
+  =
+  \langle \psi_F,\ee^{-sH}\psi_G\rangle_{\Hilb_{\rm OS}}
+\]
+as the boundary value on \(s>0\) of a function holomorphic for
+\(\Re z>0\).  Euclidean covariance lets us rotate the distinguished positive
+direction.  Thus every noncoincident real configuration has finitely many
+one-complex-variable continuations in directions spanning the complexified
+difference-variable space.
+
+The passage from these one-variable continuations to a local
+many-variable continuation is an application of the Malgrange--Zerner
+extension theorem for compatible holomorphic continuations from flat wedges.
+Explicitly, choose \(D\) real directions \(e_\mu\) which form a Euclidean
+basis and a radius \(\rho(\xi)>0\) small enough that every displacement
+\[
+  \xi_j+\sum_{\mu=1}^D z_{j\mu}e_\mu,
+  \qquad |z_{j\mu}|<\rho(\xi),
+\]
+stays in the same noncoincident ordered component after the relevant
+rotations.  The one-variable continuations agree on their common real slices
+because they all restrict to the same Schwinger distribution.  The
+Malgrange--Zerner theorem therefore gives a holomorphic function in the
+polydisc \(|z_{j\mu}|<c\rho(\xi)\), whose real restriction is the original
+Schwinger function.  This proves real analyticity away from the partial
+diagonals and gives the initial assertion \(A_0\).
+
+\emph{Step 2: the \(A_N/P_N\) induction.}
+We now define the induction precisely.  \(A_N(k)\) means that the reduced
+\(k\)-gap Schwinger function has a holomorphic representative
+\[
+  S_k^{(N)}(\zeta\mid\mathbf x)
+\]
+for \(\zeta\in C_k^{(N)}\), continuous in the real spatial differences
+\(\mathbf x=(\mathbf x_1,\ldots,\mathbf x_k)\), and agreeing with the
+previous representatives on overlaps.  The initial domain \(C_k^{(0)}\)
+is the union of the local polydiscs supplied by Step 1 around positive real
+time gaps.
+
+Given \(C_\ell^{(N)}\), define the vector domain \(D_m^{(N)}\) as the set of
+pairs \((x,\zeta)\), with \(x>0\) a real bridge time and
+\(\zeta=(\zeta_1,\ldots,\zeta_{m-1})\), for which the reflected norm argument
+\[
+  (-\overline\zeta_{m-1},\ldots,-\overline\zeta_1,\;2x,\;
+    \zeta_1,\ldots,\zeta_{m-1})
+\]
+lies in \(C_{2m-1}^{(N)}\).  \(P_N(m)\) means that there is a holomorphic
+\(\Hilb_{\rm OS}\)-valued function \(\Psi_m(x,\zeta)\) on this domain such
+that, whenever the displayed scalar argument lies in \(C_{r+s-1}^{(N)}\),
+  \begin{equation}
+  \bigl\langle
+    \Psi_r(x,\zeta),\Psi_s(y,\eta)
+  \bigr\rangle_{\Hilb_{\rm OS}}
+  =
+  S_{r+s-1}^{(N)}
+  (-\overline\zeta,\ x+y,\ \eta).
+	  \label{eq:os-induction-scalar-product}
+  \end{equation}
+This is the scalar-product formula
+\eqref{eq:os-ii-scalar-product-pattern}.
+
+The implication \(A_N\Rightarrow P_N\) is the Hilbert Taylor argument.  Fix a
+real point \((x,\xi)\in D_m^{(N)}\) and a polydisc \(P\Subset D_m^{(N)}\).
+At the real point the vector \(\Psi_m(x,\xi)\) is the OS class of the ordered
+test insertion.  Its strong derivatives are defined by differentiating the
+test insertion before passing to the OS quotient.  For
+\(\zeta\in P\) set the \(L\)-th vector Taylor remainder
+\[
+  R_L(\zeta)
+  =
+  \Psi_m(x,\zeta)
+  -
+  \sum_{|\alpha|\le L}
+    \frac{(\zeta-\xi)^\alpha}{\alpha!}\,
+    \partial^\alpha_\xi\Psi_m(x,\xi).
+\]
+Using \eqref{eq:os-induction-scalar-product} for real \(\xi\) and then
+\(A_N(2m-1)\), the squared norm of this remainder is the scalar Taylor
+remainder of the holomorphic function
+\[
+  S_{2m-1}^{(N)}(-\overline\zeta,2x,\zeta)
+\]
+about \((-\xi,2x,\xi)\).  The scalar Taylor remainder tends to zero uniformly
+on smaller polydiscs.  Hence \(R_L(\zeta)\to0\) in
+\(\Hilb_{\rm OS}\), and the Taylor series defines a holomorphic vector
+\(\Psi_m(x,\zeta)\).  Polarizing the norm identity gives
+\eqref{eq:os-induction-scalar-product}, so \(P_N\) follows.
+
+Conversely, assume \(P_N(r)\) and \(P_N(s)\) for all lower vector lengths.
+For \(k=r+s-1\) the scalar product
+\[
+  (x,\zeta;y,\eta)\longmapsto
+  \langle\Psi_r(x,\zeta),\Psi_s(y,\eta)\rangle_{\Hilb_{\rm OS}}
+\]
+is holomorphic on the mixed vector domain and agrees with \(S_k\) on the real
+ordered slice.  Let \(C_k^{(N+1)}\) be the envelope of holomorphy of the union
+of all scalar domains generated in this way, together with \(C_k^{(N)}\).
+The identity theorem gives a single extension \(S_k^{(N+1)}\).  Thus
+\(P_N\Rightarrow A_{N+1}\).  Starting from \(A_0\), induction gives
+\[
+  A_0\Rightarrow P_0\Rightarrow A_1\Rightarrow P_1\Rightarrow\cdots .
+\]
+
+\emph{Step 3: exhaustion of the product half-plane.}
+The induction just defined enlarges only the time-gap domains.  To see that it
+reaches all of \(C_+^k\), use logarithmic coordinates
+\[
+  \zeta_j=\ee^{u_j+\ii v_j},\qquad -\frac{\pi}{2}<v_j<\frac{\pi}{2}.
+\]
+Let \(c_k^{(N)}\) be the closed set of allowed argument vectors
+\((v_1,\ldots,v_k)\) for \(C_k^{(N)}\), and let \(d_m^{(N)}\) be the
+corresponding set for \(D_m^{(N)}\).  The envelope-of-holomorphy theorem for
+tubes says that the passage to \(C_k^{(N+1)}\) replaces the union of the
+argument bases by its convex hull.  In these variables the recurrence is
+\begin{equation}
+  c_k^{(N+1)}
+  =
+  \operatorname{conv}
+  \{(-v,\vartheta,w):
+    (0,v)\in d_r^{(N)},\ (0,w)\in d_s^{(N)},\
+    r+s-1=k,\ |\vartheta|\le\frac{\pi}{2}\},
+  \label{eq:os-ii-argument-convex-recurrence}
+\end{equation}
+with the evident deletion of empty blocks.  The vector domains satisfy the
+same recurrence with one distinguished real bridge argument fixed to \(0\).
+
+The recurrence \eqref{eq:os-ii-argument-convex-recurrence} implies the
+following elementary convex-geometry fact.  For every \(k\) and every
+\(\epsilon>0\) there is an \(N(k,\epsilon)\) such that
+\begin{equation}
+  [-\frac{\pi}{2}+\epsilon,\frac{\pi}{2}-\epsilon]^k
+  \subset c_k^{(N(k,\epsilon))}.
+  \label{eq:os-ii-domain-exhaustion-box}
+\end{equation}
+Indeed, \(c_1^{(1)}\) contains the full interval
+\([-\pi/2,\pi/2]\) because the single gap can be chosen as the bridge
+variable.  If boxes of width \(a<\pi/2\) are available for all lower block
+lengths, the recurrence forms convex hulls of points obtained by placing an
+arbitrary bridge angle \(\vartheta\in[-\pi/2,\pi/2]\) between two already
+available blocks and by reflecting the left block.  Averaging the \(k\)
+possible placements of the bridge angle expands the available symmetric box by
+a fixed positive fraction of the remaining distance to \(\pi/2\).  Iteration
+therefore gives an increasing sequence \(a_N\uparrow\pi/2\), which proves
+\eqref{eq:os-ii-domain-exhaustion-box}.  Since every point of \(C_+^k\) has
+arguments strictly between \(-\pi/2\) and \(\pi/2\), this proves
+\[
+  \bigcup_{N\ge0}C_k^{(N)}=C_+^k .
+\]
+
+\emph{Step 4: real-domain polynomial bounds from linear growth.}
+The preceding steps prove holomorphic continuation but not tempered boundary
+values.  The linear-growth condition enters here.  Fix a real noncoincident
+configuration \(\xi\) and let \(\rho(\xi)\) be the local analyticity radius
+from Step 1, chosen so that
+\begin{equation}
+  \rho(\xi)\ge c_k(1+\|\xi\|)^{-a_k}
+  \operatorname{dist}(\xi,\Delta)^{b_k}
+  \label{eq:os-local-radius-lower-bound}
+\end{equation}
+on each ordered component; the exponents depend only on \(k\) and the
+dimension.  Choose a nonnegative \(C^\infty\) radial kernel \(g_\rho\) on
+\(\mathbb C^D\) with support in \(|z|<\rho/8\), total integral \(1\), and
+derivative bounds
+\[
+  \|\partial^\alpha g_\rho\|_\infty
+  \le C_\alpha \rho^{-2D-|\alpha|}.
+\]
+Let \(k_\rho=g_\rho*g_\rho\), so \(k_\rho\) is supported in
+\(|z|<\rho/4\) and has total integral \(1\).  Applying the mean-value theorem
+for holomorphic functions blockwise and inserting \(k_\rho\), one obtains a
+regularized function \(T_{k,\rho}\) such that for \(|\eta_j|<\rho/2\)
+\begin{equation}
+  S_k(\xi+\eta)
+  =
+  \int T_{k,\rho}(\xi+\eta+\ii y)\,\dd\nu_\rho(y),
+  \label{eq:os-regularized-mean-value}
+\end{equation}
+where \(\nu_\rho\) is a positive probability measure supported in
+\(|y_j|<\rho/4\).  Consequently
+\begin{equation}
+  |S_k(\xi+\eta)|
+  \le
+  \sup_{|y_j|<\rho/4}|T_{k,\rho}(\xi+\eta+\ii y)|.
+  \label{eq:os-regularized-sup-bound}
+\end{equation}
+
+The regularized function is designed so that OS positivity still applies.  For
+each split \(k=r+s-1\) and each of the finitely many Euclidean basis
+directions, the value of \(T_{k,\rho}\) after a real displacement in that
+direction can be written as
+\begin{equation}
+  T_{k,\rho}(\xi+u e_\mu)
+  =
+  \langle \Phi_{L,\rho}(\xi,u),\Phi_{R,\rho}(\xi,u)\rangle_{\Hilb_{\rm OS}},
+  \label{eq:os-regularized-scalar-product}
+\end{equation}
+where the two OS vectors are obtained by smearing the left and right ordered
+blocks with the kernels \(g_\rho\) and \(k_\rho\).  This is an identity of
+test functions before quotienting: the reflected left test and the right test
+have exactly the convolution kernel appearing in \(T_{k,\rho}\).  The
+semigroup continuation in the distinguished direction gives
+\begin{equation}
+  |T_{k,\rho}(\xi+w e_\mu)|
+  \le
+  \|\Phi_{L,\rho}(\xi,u)\|_{\Hilb_{\rm OS}}\,
+  \|\Phi_{R,\rho}(\xi,u)\|_{\Hilb_{\rm OS}},
+  \qquad \Re w>0 .
+  \label{eq:os-regularized-semigroup-bound}
+\end{equation}
+
+The norm of, say, \(\Phi_{L,\rho}\) is an OS quadratic form
+\(S(\Theta F,F)\) with an explicitly known test function \(F\).  Apply
+\eqref{eq:os-linear-growth-condition} to this test.  The support bounds of
+\(g_\rho\) and \(k_\rho\) imply that every spacetime argument in the quadratic
+form is bounded by a polynomial in \(1+\|\xi\|+\|u\|\), while the derivative
+bounds of the kernels contribute only powers of \(\rho^{-1}\).  Therefore
+there are constants \(A_k,B_k,M_k\), with at most factorial growth in \(k\),
+such that
+\begin{equation}
+  \|\Phi_{L,\rho}(\xi,u)\|_{\Hilb_{\rm OS}}\,
+  \|\Phi_{R,\rho}(\xi,u)\|_{\Hilb_{\rm OS}}
+  \le
+  A_kB_k\,\rho^{-M_k}(1+\|\xi\|+\|u\|)^{M_k}.
+  \label{eq:os-regularized-vector-norm-bound}
+\end{equation}
+Combining
+\eqref{eq:os-regularized-semigroup-bound} and
+\eqref{eq:os-regularized-vector-norm-bound} gives polynomial bounds in each
+direction.  Passing to logarithmic variables turns the directional wedge
+domains into flat tubes.  The Malgrange--Zerner theorem glues the directional
+continuations, and the maximum principle on the envelope of holomorphy
+propagates the same bound to the whole local polydisc.  Returning through
+\eqref{eq:os-regularized-sup-bound} gives a real-domain estimate of the form
+\begin{equation}
+  |S_k(\xi)|
+  \le
+  A'_k\,\rho(\xi)^{-M'_k}(1+\|\xi\|)^{M'_k}.
+  \label{eq:os-real-domain-tempered-estimate}
+\end{equation}
+Together with \eqref{eq:os-local-radius-lower-bound}, this is a polynomial
+growth estimate on every ordered real component, with finite distributional
+order controlled linearly in \(k\) by
+\eqref{eq:os-linear-growth-condition}.
+
+\emph{Step 5: continuation of the estimates to \(C_+^k\).}
+It remains to carry the real-domain estimate through the
+\(A_N/P_N\) ladder.  Let \(\mathcal B_{k,t}\) be the Banach space of continuous
+functions of the \(k\) spatial difference variables with norm
+\[
+  \|f\|_{k,t}
+  =
+  \sup_{\mathbf x}
+  (1+\max_j|\mathbf x_j|)^{-t}|f(\mathbf x)|.
+\]
+For \(t\) larger than the exponent in
+\eqref{eq:os-real-domain-tempered-estimate}, the functions
+\(\zeta\mapsto S_k^{(N)}(\zeta\mid\cdot)\) are
+\(\mathcal B_{k,t}\)-valued holomorphic functions on \(C_k^{(N)}\).  Introduce
+a regulator \(\epsilon>0\) and divide by a positive scalar majorant
+\(Q_{k,\epsilon}(\zeta)\) whose logarithm is convex in the variables
+\(\Re\zeta_j\):
+\[
+  S_{k,\epsilon}^{(N)}(\zeta)
+  =
+  Q_{k,\epsilon}(\zeta)^{-1}
+  S_k^{(N)}(\zeta+\epsilon{\bf 1}\mid\cdot).
+\]
+The majorant is chosen so that the real-domain estimate gives
+\begin{equation}
+  \|S_{k,\epsilon}^{(0)}(\zeta)\|_{k,t}\le A_k
+  \qquad(\zeta\in C_k^{(0)}),
+  \label{eq:os-renormalized-real-bound}
+\end{equation}
+uniformly in \(\epsilon\).
+
+Assume the bound is known on \(C_\ell^{(N)}\) for all relevant lower scalar
+lengths.  On a mixed domain generated by \(P_N\), the scalar-product formula
+and Cauchy--Schwarz give
+\begin{equation}
+  \|S_{r+s-1}^{(N)}(-\overline\zeta,x+y,\eta)\|_{r+s-1,t}
+  \le
+  \|S_{2r-1}^{(N)}(-\overline\zeta,2x,\zeta)\|_{2r-1,t}^{1/2}
+  \|S_{2s-1}^{(N)}(-\overline\eta,2y,\eta)\|_{2s-1,t}^{1/2}.
+  \label{eq:os-banach-cauchy-schwarz}
+\end{equation}
+The convexity of \(\log Q_{k,\epsilon}\) is precisely the algebraic statement
+that the denominator for the left side is dominated by the product of the two
+denominators on the right.  Therefore
+\[
+  \|S_{k,\epsilon}^{(N)}\|_{k,t}\le A_k
+\]
+on the generating mixed region.  Since \(C_k^{(N+1)}\) is the envelope of
+holomorphy of that region and the functions take values in the Banach space
+\(\mathcal B_{k,t}\), the Banach-valued maximum principle extends the same
+bound to all of \(C_k^{(N+1)}\).  Induction gives the estimate on every
+\(C_k^{(N)}\).
+
+Finally choose \(N=N(\zeta)\) using the exhaustion
+\eqref{eq:os-ii-domain-exhaustion-box}; the required \(N\) is bounded by a
+constant times a logarithm of the inverse angular distance of \(\zeta\) to
+\(\partial C_+^k\).  Undoing the harmless regulator \(\epsilon\) and the
+majorant \(Q_{k,\epsilon}\) yields the tube estimate
+\[
+  |\langle S_k(\cdot+\ii y),f\rangle|
+  \le
+  C_{k,K}\,\delta^{-N_k}
+  \sum_{|\alpha|,|\beta|\le N_k}
+    \sup_\xi |\xi^\beta\partial^\alpha f(\xi)|
+\]
+for \(y\) in any closed subcone \(K\Subset(V_+^\circ)^k\) at distance
+\(\delta\) from the cone boundary.  This is
+\eqref{eq:os-ii-polynomial-tube-estimate}.  Euclidean covariance transports
+the product right-half-plane continuation to the Lorentzian forward tubes, and
+permutation symmetry supplies the permuted tubes with the graded signs.
+Thus all hypotheses of
+Proposition~\ref{prop:os-ii-analytic-route-to-boundary-package} have been
+constructed from the stated Euclidean data and the linear-growth condition.
+\end{proof}
 
 \begin{proposition}[Fourier--Laplace boundary values from spectral support]
 \label{prop:fourier-laplace-tempered-boundary-values}
@@ -728,10 +1388,12 @@ off-diagonal analytic continuation alone.
 Let \(\{S_n\}_{n\ge0}\) be Euclidean distributions satisfying Euclidean
 covariance, permutation symmetry, reflection positivity, Hermiticity,
 normalization, the OS-II positive-time semigroup conditions
-\eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}, and a
-linear-growth estimate such as \eqref{eq:os-linear-growth-condition} strong
-enough to prove the Lorentzian boundary-value package of
-Definition~\ref{def:os-lorentzian-boundary-value-package}.  Then there exists
+\eqref{eq:os-time-semigroup-law}--\eqref{eq:os-time-strong-continuity}, and
+the linear-growth condition \eqref{eq:os-linear-growth-condition}.  By the
+corrected OS-II analytic theorem,
+Theorem~\ref{thm:corrected-os-ii-analytic-theorem}, these hypotheses supply
+the analytic route of
+Proposition~\ref{prop:os-ii-analytic-route-to-boundary-package}.  Then there exists
 Wightman field data
 \[
   (\Hilb_{\rm OS},\vac_{\rm OS},U,\mathcal D_{\rm OS},
@@ -776,11 +1438,11 @@ contraction-semigroup theorem gives a nonnegative self-adjoint generator
   H,\qquad T_E(s)=e^{-sH},\qquad \sigma(H)\subset[0,\infty).
 \]
 Stone's theorem then gives Lorentzian time translations
-\(U(t,0)=e^{itH}\).  Spatial translations and rotations preserve the
+\(U(t,0)=\ee^{-\ii tH}\).  Spatial translations and rotations preserve the
 positive-time half-space after a common positive time shift; by Euclidean
 covariance and the same null-space argument they produce unitary
-representations on the reconstructed Hilbert space.  The OS-II
-boundary-value package, supplied by the declared growth estimate, gives the
+representations on the reconstructed Hilbert space.
+Proposition~\ref{prop:os-ii-analytic-route-to-boundary-package} gives the
 tempered Lorentzian boundary values and the analytic continuation of
 Euclidean rotations mixing time and space to real Lorentzian boosts.  This
 gives a unitary representation \(U\) of the connected Poincare group whose
