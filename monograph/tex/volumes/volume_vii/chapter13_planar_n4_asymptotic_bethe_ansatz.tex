@@ -1281,15 +1281,282 @@ one obtains
   8g^2\log S+O(S^0g^2,g^4).
   \label{eq:planar-n4-sl2-one-loop-cusp-log}
 \end{equation}
-With the all-loop ABA and the BES dressing phase, the density fluctuation
-satisfies the BES integral equation.  The resulting scaling function begins
+The all-loop ABA refines this large-spin calculation rather than replacing
+it.  The macroscopic roots at \(|u|\sim S\) still produce the logarithmic
+enhancement, but the all-loop phase induces an \(O(\log S)\) fluctuation of
+the density near \(u=O(1)\).  This near-origin fluctuation is the object
+described by the BES equation.
+
+\begin{assumption}[Large-spin BES scaling regime]
+\label{ass:planar-n4-bes-scaling-regime}
+Use the \(SL(2)\) all-loop asymptotic Bethe equation in the regime
 \[
+  S\to\infty,\qquad L\ \text{fixed},\qquad \log S\gg L,
+\]
+with symmetric mode numbers \(n_k=\pm1\), zero total momentum, the physical
+Zhukovsky branch for the Bethe roots before crossing, and the BES dressing
+phase of Definition~\ref{def:planar-n4-dressing-phase-data}.  Assume that the
+large-spin root density has a one-cut bulk part at \(u=O(S)\) and a
+near-origin correction at \(u=O(1)\) whose coefficient is proportional to
+the scaling function.  The all-loop ABA is being used here in precisely the
+finite-density sense of Assumption~\ref{ass:planar-n4-aba-regime}; wrapping
+effects are outside this asymptotic calculation.
+\end{assumption}
+
+The derivative of the logarithmic all-loop \(SL(2)\) Bethe equation has three
+types of terms.  The rational XXX kernel gives the one-loop singular source
+already solved above.  The rational all-loop Zhukovsky factors and the
+dressing phase give additional kernels.  Finally, the \(u=O(S)\) bulk roots
+feed a source into the \(u=O(1)\) equation.  After the bulk density has been
+used to solve the outer problem, the inner equation is closed for a single
+Fourier density.  We use the standard BES normalization
+\[
+  \widehat\sigma(t)
+  =
+  \ee^{-t/2}\int_{-\infty}^{\infty}\dd u\,
+  \ee^{-\ii t u}\sigma(u),
+  \qquad t>0,
+\]
+where \(\sigma(u)\) denotes the inner density correction in the present
+large-spin normalization.
+
+\begin{definition}[BES kernel in the stringbook convention]
+\label{def:planar-n4-bes-kernel}
+Let \(J_n\) be the Bessel function of the first kind.  Set
+\begin{equation}
+  K_0(t,t')
+  =
+  \frac{J_1(t)J_0(t')-J_0(t)J_1(t')}{t-t'},
+  \label{eq:planar-n4-bes-rational-kernel}
+\end{equation}
+with the diagonal value defined by analytic continuation.  The dressing part
+is
+\begin{equation}
+  K_{\rm dr}(t,t';g)
+  =
+  \frac{4}{tt'}
+  \sum_{k,\ell\geq1}
+  (-1)^{k+\ell}c_{2k,2\ell+1}(g)
+  J_{2\ell}(t)J_{2k-1}(t'),
+  \label{eq:planar-n4-bes-dressing-kernel}
+\end{equation}
+where \(c_{r,s}(g)=-c_{s,r}(g)\) for \(r>s\).  The BES kernel used below is
+\[
+  K_{\rm BES}(t,t';g)=K_0(t,t')+K_{\rm dr}(t,t';g),
+  \qquad
+  K_{\rm BES}(t,0;g)
+  =
+  \frac{J_1(t)}{t}
+  +
+  \frac{2}{t}\sum_{\ell\geq1}
+  (-1)^{\ell-1}c_{2,2\ell+1}(g)J_{2\ell}(t).
+\]
+\end{definition}
+
+The Fourier transform which turns powers of \(x^\pm(u)^{-1}\) into Bessel
+functions is the convention-sensitive step.  On the physical weak branch,
+with \(m\geq1\),
+\begin{equation}
+  \int_{-\infty}^{\infty}\frac{\dd u}{2\pi}\,
+  \ee^{-\ii t u}\frac1{x^\pm(u)^m}
+  =
+  (-\ii)^m m\,\ee^{-|t|/2}\,
+  \frac{\pm\Theta(\pm t)J_m(2g|t|)}{|t|}.
+  \label{eq:planar-n4-bes-fourier-xpm}
+\end{equation}
+The signs in \eqref{eq:planar-n4-bes-fourier-xpm} encode the same
+\(x^+\)-above, \(x^-\)-below sheet convention as the mirror continuation in
+Chapter~\ref{ch:planar-n4-mirror-tba-y-system}.  Reversing them would invert
+the dressing-source contribution.
+
+\begin{proposition}[BES equation from the large-spin ABA]
+\label{prop:planar-n4-bes-equation}
+Under Assumption~\ref{ass:planar-n4-bes-scaling-regime}, and after applying
+the Fourier transform \eqref{eq:planar-n4-bes-fourier-xpm}, the inner
+large-spin density obeys
+\begin{equation}
+  \widehat\sigma(t)
+  =
+  \frac{t}{\ee^t-1}
+  \left[
+    K_{\rm BES}(2gt,0;g)
+    -
+    4g^2\int_0^\infty\dd t'\,
+    K_{\rm BES}(2gt,2gt';g)\widehat\sigma(t')
+  \right],
+  \qquad t>0.
+  \label{eq:planar-n4-bes-equation}
+\end{equation}
+The corresponding large-spin scaling function in the normalization of
+\eqref{eq:planar-n4-sl2-one-loop-cusp-log} is
+\begin{equation}
   \Delta-S-L=f(g)\log S+O(S^0),
   \qquad
-  f(g)=8g^2-\frac{8\pi^2}{3}g^4+\frac{88\pi^4}{45}g^6+O(g^8).
+  f(g)
+  =
+  8g^2
+  -
+  64g^4
+  \int_0^\infty\dd t\,
+  \widehat\sigma(t)\frac{J_1(2gt)}{2gt}.
+  \label{eq:planar-n4-bes-scaling-function}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+We spell out the logic because it is easy to hide a convention change in this
+calculation.  Taking the logarithm of the \(SL(2)\) all-loop Bethe equation
+and differentiating with respect to the target rapidity \(u\) gives the
+rational kernel
+\[
+  \frac{2}{(u-v)^2+1}-2\pi\delta(u-v),
 \]
-This \(f(g)\) is the lightlike cusp anomalous dimension in the convention of
-Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.  The equality is
-a structural matching between large-spin single-trace operators and the
-Wilson-line cusp observable; the nonperturbative gauge-theory proof remains
+where the delta term records the branch of the arccotangent scattering phase.
+The all-loop rational Zhukovsky factor contributes
+\[
+  -2\ii\,\partial_u\log
+  \frac{1-1/(x^+(u)x^-(v))}
+       {1-1/(x^-(u)x^+(v))},
+\]
+and the scalar factor contributes
+\[
+  2\partial_u\theta(x^\pm(v),x^\pm(u)).
+\]
+The \(O(S)\) bulk roots are described by the one-cut density
+\eqref{eq:planar-n4-sl2-cusp-density}; expanding their contribution for
+fixed \(u\) produces the driving term
+\[
+  \partial_u\left[
+  \frac1{2g}\left(\frac1{x^+(u)}+\frac1{x^-(u)}\right)
+  +
+  \frac{\ii}{2g}
+  \sum_{n\geq1}\frac{c_{2,2n+1}(g)}{n}
+  \left(\frac1{x^+(u)^{2n}}-\frac1{x^-(u)^{2n}}\right)
+  \right].
+  \label{eq:planar-n4-bes-inner-driving}
+\]
+The explicit \(L\)-dependent terms in the logarithmic Bethe equation are
+smaller than this driving term in the scaling regime \(\log S\gg L\), so they
+affect the \(O(S^0)\) part rather than \(f(g)\).
+
+Applying \((2\pi)^{-1}\ee^{-t/2}\int\dd u\,\ee^{-\ii t u}\) to the inner
+equation gives \eqref{eq:planar-n4-bes-equation}.  The Bessel transform
+\eqref{eq:planar-n4-bes-fourier-xpm} turns the all-loop rational factors into
+\(K_0\), and turns the charge expansion of the dressing phase into
+\(K_{\rm dr}\).  The factor \(t/(\ee^t-1)\) is the inverse of the rational
+large-spin kernel in this Fourier normalization.  The energy formula follows
+by expanding
+\[
+  \sum_k\left(
+  \frac1{x_k^+}-\frac1{x_k^-}
+  \right)
+\]
+against the same bulk-plus-inner density and applying
+\eqref{eq:planar-n4-bes-fourier-xpm} with \(m=1\).  The outer density gives
+the one-loop \(8g^2\log S\) term; the inner density gives the integral
+correction in \eqref{eq:planar-n4-bes-scaling-function}.
+\end{proof}
+
+\begin{proposition}[Weak expansion of the BES scaling function]
+\label{prop:planar-n4-bes-weak-scaling-function}
+The BES equation \eqref{eq:planar-n4-bes-equation} implies
+\begin{equation}
+  f(g)
+  =
+  8g^2-\frac{8\pi^2}{3}g^4+\frac{88\pi^4}{45}g^6+O(g^8).
+  \label{eq:planar-n4-bes-weak-scaling-function}
+\end{equation}
+The first dressing-phase contribution enters at order \(g^8\).
+\end{proposition}
+
+\begin{proof}
+For the terms through \(g^6\), the dressing kernel may be omitted: from
+\(c_{2,3}(g)=4\zeta(3)g^3+O(g^5)\),
+\(J_2(2gt)=O(g^2)\), and the \(1/t\) factor in \(K_{\rm BES}(2gt,0)\), the
+driving dressing term starts at \(O(g^4)\) in \(\widehat\sigma\), hence at
+order \(g^8\) in \(f(g)\).
+
+Write
+\[
+  \widehat\sigma(t)=\sigma_0(t)+g^2\sigma_1(t)+O(g^4).
+\]
+Since
+\[
+  \frac{J_1(2gt)}{2gt}
+  =
+  \frac12-\frac{g^2t^2}{4}+O(g^4),
+  \qquad
+  K_0(2gt,0)=\frac12-\frac{g^2t^2}{4}+O(g^4),
+\]
+and \(K_0(2gt,2gt')=\frac12+O(g^2)\), the BES equation gives
+\[
+  \sigma_0(t)=\frac{t}{2(\ee^t-1)}
+\]
+and
+\[
+  \sigma_1(t)
+  =
+  \frac{t}{\ee^t-1}
+  \left[
+    -\frac{t^2}{4}
+    -4\int_0^\infty\dd t'\,\frac12\,\sigma_0(t')
+  \right]
+  =
+  -\frac{t}{\ee^t-1}
+  \left(\frac{t^2}{4}+\frac{\pi^2}{6}\right),
+\]
+because
+\[
+  \int_0^\infty\frac{t\,\dd t}{\ee^t-1}=\frac{\pi^2}{6}.
+\]
+Put
+\[
+  A(g)=
+  \int_0^\infty\dd t\,
+  \widehat\sigma(t)\frac{J_1(2gt)}{2gt}
+  =
+  A_0+g^2A_1+O(g^4).
+\]
+The two coefficients are
+\[
+  A_0
+  =
+  \int_0^\infty\frac{t\,\dd t}{4(\ee^t-1)}
+  =
+  \frac{\pi^2}{24},
+\]
+and
+\[
+  A_1
+  =
+  \int_0^\infty\frac{t\,\dd t}{\ee^t-1}
+  \left(-\frac{t^2}{4}-\frac{\pi^2}{12}\right)
+  =
+  -\frac{\pi^4}{60}-\frac{\pi^4}{72}
+  =
+  -\frac{11\pi^4}{360},
+\]
+using
+\[
+  \int_0^\infty\frac{t^3\,\dd t}{\ee^t-1}=\frac{\pi^4}{15}.
+\]
+Substitution into
+\eqref{eq:planar-n4-bes-scaling-function} gives
+\[
+  f(g)=8g^2-64g^4A_0-64g^6A_1+O(g^8),
+\]
+which is \eqref{eq:planar-n4-bes-weak-scaling-function}.
+\end{proof}
+
+The strong-coupling solution of the same BES equation gives
+\[
+  f(g)=4g-\frac{3\log2}{\pi}+O(g^{-1}).
+\]
+This is the convention in which the large-spin anomalous dimension has
+coefficient \(f(g)\).  Some Wilson-line literature denotes by
+\(\Gamma_{\rm cusp}\) half of this quantity; Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}
+states its Wilson-line convention at the point where cusped Wilson loops are
+introduced.  The equality between the large-spin scaling function and the
+Wilson-line cusp observable is a structural matching within planar
+\(\mathcal N=4\) theory; a nonperturbative construction-level proof remains
 outside the present monograph.

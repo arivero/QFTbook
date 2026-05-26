@@ -976,6 +976,62 @@ def check_sl2_large_spin_cusp_resolvent() -> None:
         )
 
 
+def check_bes_weak_scaling_function() -> None:
+    """Check the weak BES scaling-function expansion through g^6."""
+
+    # BES equation in the normalization used in Chapter 13:
+    # sigma = t/(e^t-1) [K(2gt,0) - 4 g^2 int K(2gt,2gt') sigma(t') dt'].
+    # K(2gt,0) = 1/2 - g^2 t^2/4 + O(g^4),
+    # K(2gt,2gt') = 1/2 + O(g^2).
+    integral_t_over_bose = Fraction(1, 1)  # coefficient of pi^2: int t/(e^t-1)=pi^2/6
+    integral_t3_over_bose = Fraction(1, 1)  # coefficient of pi^4: int t^3/(e^t-1)=pi^4/15
+
+    sigma0_integral_coeff_pi2 = Fraction(1, 2) * Fraction(1, 6) * integral_t_over_bose
+    if sigma0_integral_coeff_pi2 != Fraction(1, 12):
+        raise AssertionError("BES sigma0 integral normalization failed")
+
+    # sigma_0=t/[2(e^t-1)]
+    # sigma_1= - t/(e^t-1) (t^2/4 + pi^2/6)
+    convolution_source_coeff_pi2 = 4 * Fraction(1, 2) * sigma0_integral_coeff_pi2
+    if convolution_source_coeff_pi2 != Fraction(1, 6):
+        raise AssertionError("BES leading convolution source failed")
+
+    a0_coeff_pi2 = Fraction(1, 2) * sigma0_integral_coeff_pi2
+    if a0_coeff_pi2 != Fraction(1, 24):
+        raise AssertionError("BES A0 coefficient failed")
+
+    # A1 = int [sigma1/2 - sigma0 t^2/4].
+    sigma1_half_t3_coeff_pi4 = -Fraction(1, 8) * Fraction(1, 15) * integral_t3_over_bose
+    sigma1_half_pi2_t_coeff_pi4 = -Fraction(1, 12) * Fraction(1, 6) * integral_t_over_bose
+    bessel_correction_coeff_pi4 = -Fraction(1, 8) * Fraction(1, 15) * integral_t3_over_bose
+    a1_coeff_pi4 = (
+        sigma1_half_t3_coeff_pi4
+        + sigma1_half_pi2_t_coeff_pi4
+        + bessel_correction_coeff_pi4
+    )
+    if a1_coeff_pi4 != -Fraction(11, 360):
+        raise AssertionError(f"BES A1 coefficient failed: {a1_coeff_pi4}")
+
+    f_g2 = Fraction(8)
+    f_g4_coeff_pi2 = -64 * a0_coeff_pi2
+    f_g6_coeff_pi4 = -64 * a1_coeff_pi4
+    if (f_g2, f_g4_coeff_pi2, f_g6_coeff_pi4) != (
+        Fraction(8),
+        -Fraction(8, 3),
+        Fraction(88, 45),
+    ):
+        raise AssertionError("BES weak scaling-function coefficients failed")
+
+    # Leading dressing contribution to K(2gt,0) from c_{2,3} J_2(2gt)/(gt)
+    # carries powers g^3 * g^2 / g = g^4 in sigma, hence g^8 in f(g).
+    driving_dressing_power = 3 + 2 - 1
+    kernel_dressing_power = 3 + 2 + 1 - 2
+    if driving_dressing_power != 4 or kernel_dressing_power != 4:
+        raise AssertionError("BES dressing-kernel power counting failed")
+    if 4 + driving_dressing_power != 8:
+        raise AssertionError("BES dressing contribution should first enter f(g) at g^8")
+
+
 def check_bound_state_dispersion() -> None:
     for coupling in (0.1, 0.4):
         for charge in (1, 2, 5):
@@ -2222,6 +2278,7 @@ def main() -> None:
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()
+    check_bes_weak_scaling_function()
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()
     check_mirror_zhukovsky_sheet_parametrization()

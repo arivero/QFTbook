@@ -691,3 +691,44 @@ Calculation checks added:
 - `check_dhm_weak_dressing_coefficients()` now compares the exact Laurent
   residue prefactor against the closed Gamma/binomial formula on a rectangular
   grid of odd `N` and admissible `r,s`, including vanishing cases.
+
+## Continuation XXVI: BES Large-Spin Scaling Bridge
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Source/standard motivation:
+
+- The stringbook contains a more coherent all-loop cusp/BES derivation than
+  the monograph previously recorded.  The monograph had only stated the
+  weak scaling function; this pass inserts the large-spin ABA-to-BES bridge
+  with assumptions and convention data.
+
+Content added:
+
+- Added a large-spin BES scaling-regime assumption for the `SL(2)` all-loop
+  ABA at fixed twist and `log S >> L`.
+- Defined the Fourier inner-density fluctuation `hat sigma(t)`, the rational
+  kernel `K_0`, the dressing kernel `K_dr`, and the combined `K_BES` in the
+  stringbook convention.
+- Stated the branch-sensitive Fourier transform of `1/(x^pm)^m` that turns
+  the all-loop ABA inner equation into Bessel kernels.
+- Derived the BES integral equation and the monograph scaling-function
+  formula `f(g)=8g^2-64g^4 int hat sigma(t) J_1(2gt)/(2gt) dt`.
+- Proved the weak expansion
+  `f(g)=8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45+O(g^8)` directly from the BES
+  equation, including the power-counting reason the dressing kernel starts
+  affecting `f(g)` at `g^8`.
+- Recorded the strong-coupling status `f(g)=4g-3 log(2)/pi+O(1/g)` with an
+  explicit warning about the factor-of-two convention relative to some
+  Wilson-line `Gamma_cusp` normalizations.
+
+Calculation checks added:
+
+- `check_bes_weak_scaling_function()` verifies the exact rational
+  coefficient arithmetic for the `sigma_0`, `sigma_1`, `A_0`, and `A_1`
+  terms in the weak BES expansion and checks the dressing-kernel power
+  counting.

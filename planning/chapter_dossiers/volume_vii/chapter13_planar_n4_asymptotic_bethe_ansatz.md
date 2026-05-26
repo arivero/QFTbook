@@ -37,6 +37,10 @@ the monograph's proof-boundary language.
   ABA counting equation.
 - `E_Q,p`: bound-state energy and momentum.
 - `f(g)`: large-spin cusp scaling function.
+- `hat sigma(t)`: Fourier-space BES inner-density fluctuation for the
+  large-spin `SL(2)` root distribution.
+- `K_0,K_dr,K_BES`: rational, dressing, and total BES kernels entering the
+  large-spin scaling equation.
 
 ## Claim Ledger
 
@@ -120,6 +124,19 @@ the monograph's proof-boundary language.
   `G_0(z)=-i log((sqrt(4z^2-1)+i)/(sqrt(4z^2-1)-i))`, derives the density,
   and extracts `Delta-S-L=8g^2 log S+O(S^0 g^2,g^4)` from
   `G_0(i/(2S))`.
+- Adds the all-loop large-spin BES bridge from the `SL(2)` ABA: states the
+  fixed-twist/large-spin assumptions, defines the inner-density fluctuation
+  `hat sigma(t)`, gives the rational and dressing BES kernels in the
+  stringbook convention, records the branch-sensitive Fourier transform of
+  `1/(x^pm)^m`, and derives the BES integral equation for `hat sigma`.
+- Defines the monograph scaling-function normalization
+  `Delta-S-L=f(g) log S+O(S^0)` and derives
+  `f(g)=8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45+O(g^8)` from the BES equation,
+  including the power-counting reason that the dressing kernel first affects
+  the scaling function at order `g^8`.
+- Records the strong-coupling BES status in the same normalization,
+  `f(g)=4g-3 log(2)/pi+O(1/g)`, and warns that some Wilson-line conventions
+  call half of this quantity `Gamma_cusp`.
 
 ## Figure Ledger
 
@@ -163,6 +180,11 @@ crossed Zhukovsky sheets.
   square-root branch normalization, derivative formula, discontinuity and
   positivity of the density, and extraction of the `8g^2 log S` term with
   the constant `4g^2 log 4`.
+- It checks the weak BES scaling-function expansion: the `sigma_0` and
+  `sigma_1` density coefficients, the Bose-integral coefficients
+  `A_0=pi^2/24` and `A_1=-11 pi^4/360`, the resulting
+  `8g^2-8 pi^2 g^4/3+88 pi^4 g^6/45` scaling function, and the `g^8`
+  onset of the dressing-kernel contribution.
 
 ## External References Used In Current Pass
 
