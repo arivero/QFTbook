@@ -711,8 +711,121 @@ A pair of level-III roots scatters by
   =
   \frac{w_1-w_2+\ii/g}{w_1-w_2-\ii/g}.
 \]
-Thus the nested Bethe equations are the diagonalization of a matrix-valued
-factorized scattering problem, not additional dynamical assumptions.
+
+\begin{proposition}[Single-copy nested Bethe--Yang equations]
+\label{prop:planar-n4-single-copy-nested-bethe-yang}
+In the spin-chain basis for one \(\mathfrak{su}(2|2)_{\rm c}\) copy, let
+\(K^{\rm I}\), \(K^{\rm II}\), and \(K^{\rm III}\) be the numbers of
+level-I momenta \(p_k\), level-II roots \(y_a\), and level-III roots \(w_b\).
+Assume the asymptotic long-chain regime and the absence of singular
+coincidences among the displayed factors.  The closed-chain periodicity
+conditions are
+\begin{equation}
+\begin{aligned}
+  \ee^{\ii p_kL}
+  &=
+  \prod_{\substack{j=1\\j\neq k}}^{K^{\rm I}}
+  S^{{\rm I},{\rm I}}(p_j,p_k)
+  \prod_{a=1}^{K^{\rm II}}
+  S^{{\rm II},{\rm I}}(y_a,p_k),
+  \qquad
+  k=1,\ldots,K^{\rm I},\\
+  1
+  &=
+  \prod_{j=1}^{K^{\rm I}}
+  S^{{\rm II},{\rm I}}(y_a,p_j)^{-1}
+  \prod_{b=1}^{K^{\rm III}}
+  S^{{\rm III},{\rm II}}(w_b,y_a),
+  \qquad
+  a=1,\ldots,K^{\rm II},\\
+  1
+  &=
+  \prod_{a=1}^{K^{\rm II}}
+  S^{{\rm III},{\rm II}}(w_b,y_a)^{-1}
+  \prod_{\substack{c=1\\c\neq b}}^{K^{\rm III}}
+  S^{{\rm III},{\rm III}}(w_c,w_b),
+  \qquad
+  b=1,\ldots,K^{\rm III}.
+\end{aligned}
+  \label{eq:planar-n4-single-copy-nested-bethe-yang}
+\end{equation}
+For a state with \(N_1,N_2,N_3,N_4\) excitations of types
+\(\phi_1,\phi_2,\psi_1,\psi_2\), the nesting numbers are
+\[
+  K^{\rm I}=N_1+N_2+N_3+N_4,\qquad
+  K^{\rm II}=2N_2+N_3+N_4,\qquad
+  K^{\rm III}=N_2+N_4.
+\]
+\end{proposition}
+
+\begin{proof}
+The first equation is obtained by transporting the \(k\)-th level-I magnon
+once around the trace.  It crosses every other physical magnon and every
+level-II defect, hence the two products in the first line.  The second
+equation transports the \(a\)-th level-II defect around the level-II chain.
+Crossing a physical magnon in the reverse direction contributes
+\(S^{{\rm II},{\rm I}}(y_a,p_j)^{-1}\), while crossing a level-III defect
+contributes \(S^{{\rm III},{\rm II}}(w_b,y_a)\).  The third equation is the
+same argument one nesting level higher.  The three equations are therefore
+the Bethe--Yang periodicity conditions for the three Zamolodchikov--Faddeev
+chains, not thermodynamic Bethe ansatz.  The formulas for
+\(K^{\rm I},K^{\rm II},K^{\rm III}\) follow from the nesting content of each
+letter: \(\phi_1\) contributes only level I, \(\psi_1\) contributes one
+level-II root, \(\psi_2\) contributes one level-II and one level-III root,
+and \(\phi_2\) is the two-level-II contact state carrying one level-III root.
+\end{proof}
+
+The dynamic spin-chain basis contains explicit \(Z^\pm\) markers.  In the
+string basis one absorbs half of this marker into each boson:
+\[
+  \ket{\phi_A(p)}_{\rm str}=\ket{\phi_A(p)(Z^+)^{1/2}},
+  \qquad
+  \ket{\psi_\alpha(p)}_{\rm str}=\ket{\psi_\alpha(p)} .
+\]
+The scattering factors which enter
+\eqref{eq:planar-n4-single-copy-nested-bethe-yang} are then replaced by
+\begin{equation}
+\begin{aligned}
+  S^{{\rm I},{\rm I}}_{\rm str}(p_1,p_2)
+  &=
+  S^{{\rm I},{\rm I}}(p_1,p_2)
+  \sqrt{\frac{x_1^+x_2^-}{x_1^-x_2^+}},\\
+  S^{{\rm II},{\rm I}}_{\rm str}(y,p)
+  &=
+  \frac{y-x^-(p)}{y-x^+(p)}
+  \sqrt{\frac{x^+(p)}{x^-(p)}},\\
+  S^{{\rm III},{\rm II}}_{\rm str}(w,y)
+  &=
+  S^{{\rm III},{\rm II}}(w,y),
+  \qquad
+  S^{{\rm III},{\rm III}}_{\rm str}(w_1,w_2)
+  =
+  S^{{\rm III},{\rm III}}(w_1,w_2).
+\end{aligned}
+  \label{eq:planar-n4-string-basis-nesting-factors}
+\end{equation}
+For the full \(\mathfrak{su}(2|2)_{\rm c}\otimes
+\mathfrak{su}(2|2)_{\rm c}\) magnon, the left and right copies have
+independent roots \(y_a^{(\varsigma)},w_b^{(\varsigma)}\),
+\(\varsigma=L,R\).  The physical level-I Bethe equation is obtained by
+multiplying the left and right auxiliary factors and by using the chosen
+physical vacuum scalar factor.  In the \(SU(2)\)-vacuum nesting, the
+auxiliary insertion on the \(k\)-th physical magnon is
+\[
+  \prod_{\varsigma=L,R}\prod_{a=1}^{K^{\rm II}_{(\varsigma)}}
+  \frac{y_a^{(\varsigma)}-x_k^-}{y_a^{(\varsigma)}-x_k^+}
+  \sqrt{\frac{x_k^+}{x_k^-}}.
+\]
+In the alternative \(SL(2)\)-vacuum nesting this factor is inverted:
+\[
+  \prod_{\varsigma=L,R}\prod_{a=1}^{K^{\rm II}_{(\varsigma)}}
+  \frac{y_a^{(\varsigma)}-x_k^+}{y_a^{(\varsigma)}-x_k^-}
+  \sqrt{\frac{x_k^-}{x_k^+}}.
+\]
+This reciprocal relation is a nesting-frame statement, not a change of the
+BES dressing phase.  Thus the nested Bethe equations are the
+diagonalization of a matrix-valued factorized scattering problem, not
+additional dynamical assumptions.
 
 \begin{controlledapproximation}[Asymptotic long-chain regime]
 \label{ca:planar-n4-asymptotic-regime}

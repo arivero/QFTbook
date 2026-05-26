@@ -570,6 +570,84 @@ def check_su2c_level_ii_and_iii_nested_scattering() -> None:
         assert_close("level-III self-scattering unitarity", s12 * s21, 1)
 
 
+def check_su2c_nested_bethe_yang_frame_factors() -> None:
+    coupling = 0.31
+    momenta = (0.6, 1.4, 2.2)
+    x_data = [xpm_from_momentum(momentum, coupling) for momentum in momenta]
+    y_roots = (0.7 + 0.9j, -1.2 + 0.4j)
+    w_roots = (0.3 + 1.1j, -0.8 + 0.2j)
+
+    def s_ii_i_spin(y: complex, x_plus: complex, x_minus: complex) -> complex:
+        return (y - x_minus) / (y - x_plus)
+
+    def s_ii_i_string(y: complex, x_plus: complex, x_minus: complex) -> complex:
+        return s_ii_i_spin(y, x_plus, x_minus) * cmath.sqrt(x_plus / x_minus)
+
+    def s_iii_ii(w: complex, y: complex) -> complex:
+        shifted = w - y - 1 / y
+        eta = 0.5j / coupling
+        return (shifted - eta) / (shifted + eta)
+
+    def s_iii_iii(w_left: complex, w_right: complex) -> complex:
+        shift = 1j / coupling
+        return (w_left - w_right + shift) / (w_left - w_right - shift)
+
+    for x_plus, x_minus in x_data:
+        for y in y_roots:
+            su2_auxiliary = s_ii_i_string(y, x_plus, x_minus)
+            sl2_auxiliary = ((y - x_plus) / (y - x_minus)) * cmath.sqrt(x_minus / x_plus)
+            assert_close("SU(2)/SL(2) auxiliary nesting reciprocity", su2_auxiliary * sl2_auxiliary, 1)
+
+    target = 1
+    xk_plus, xk_minus = x_data[target]
+    spin_level_i = 1 + 0j
+    string_level_i = 1 + 0j
+    expected_frame = 1 + 0j
+    for index, (xj_plus, xj_minus) in enumerate(x_data):
+        if index == target:
+            continue
+        frame = cmath.sqrt((xj_plus * xk_minus) / (xj_minus * xk_plus))
+        string_level_i *= frame
+        expected_frame *= frame
+    for y in y_roots:
+        spin_factor = s_ii_i_spin(y, xk_plus, xk_minus)
+        string_factor = s_ii_i_string(y, xk_plus, xk_minus)
+        spin_level_i *= spin_factor
+        string_level_i *= string_factor
+        expected_frame *= cmath.sqrt(xk_plus / xk_minus)
+    assert_close("level-I Bethe-Yang string-basis frame ratio", string_level_i / spin_level_i, expected_frame)
+
+    target_y = y_roots[0]
+    spin_level_ii = 1 + 0j
+    string_level_ii = 1 + 0j
+    expected_level_ii_frame = 1 + 0j
+    for x_plus, x_minus in x_data:
+        spin_level_ii *= 1 / s_ii_i_spin(target_y, x_plus, x_minus)
+        string_level_ii *= 1 / s_ii_i_string(target_y, x_plus, x_minus)
+        expected_level_ii_frame *= cmath.sqrt(x_minus / x_plus)
+    for w in w_roots:
+        spin_level_ii *= s_iii_ii(w, target_y)
+        string_level_ii *= s_iii_ii(w, target_y)
+    assert_close("level-II Bethe-Yang inverse string-frame ratio", string_level_ii / spin_level_ii, expected_level_ii_frame)
+
+    target_w = w_roots[0]
+    level_iii_product = 1 + 0j
+    inverse_level_iii_product = 1 + 0j
+    for y in y_roots:
+        level_iii_product *= 1 / s_iii_ii(target_w, y)
+        inverse_level_iii_product *= s_iii_ii(target_w, y)
+    for w in w_roots[1:]:
+        level_iii_product *= s_iii_iii(w, target_w)
+        inverse_level_iii_product *= s_iii_iii(target_w, w)
+    assert_close("level-III Bethe-Yang inverse orientation", level_iii_product * inverse_level_iii_product, 1)
+
+    counts = (3, 2, 5, 7)
+    n1, n2, n3, n4 = counts
+    assert_close("nested K^I count", n1 + n2 + n3 + n4, 17)
+    assert_close("nested K^II count", 2 * n2 + n3 + n4, 16)
+    assert_close("nested K^III count", n2 + n4, 9)
+
+
 def check_weak_dispersion_expansion() -> None:
     g = 1.0e-4
     for momentum in (0.4, 1.2, 2.7):
@@ -1241,6 +1319,7 @@ def main() -> None:
     check_crossing_rhs_is_sheet_sensitive()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()
+    check_su2c_nested_bethe_yang_frame_factors()
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_bound_state_dispersion()

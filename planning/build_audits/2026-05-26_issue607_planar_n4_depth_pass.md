@@ -271,6 +271,20 @@
   derives the displayed `S^{III,II}` factor by two cleared polynomial
   identities.
 
+## Comprehensive Development Continuation XIII
+
+- Assembled the local Chapter 13 nesting factors into the single-copy
+  closed-chain nested Bethe-Yang equations.  The proof now explicitly
+  transports level-I, level-II, and level-III excitations around the
+  corresponding ZF chains and distinguishes this asymptotic quantization from
+  thermodynamic Bethe ansatz.
+- Added the nesting-number bookkeeping for a state with
+  `(N_1,N_2,N_3,N_4)` excitations and a string-basis frame ledger for
+  `S^{I,I}`, `S^{II,I}`, `S^{III,II}`, and `S^{III,III}`.
+- Recorded the reciprocal auxiliary insertion for the alternative `SL(2)`
+  vacuum nesting while keeping the BES dressing phase separate from the
+  nesting-frame choice.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -299,6 +313,9 @@
   matrix unitarity, graded vacuum-sign conversion, the two level-III local
   equations, their cleared polynomial identities, and level-III self-scattering
   unitarity;
+- closed-chain nested Bethe-Yang frame conventions: string-basis level-I and
+  level-II frame ratios, reciprocal `SU(2)`/`SL(2)` auxiliary nesting factors,
+  level-III inverse orientation, and nesting-number bookkeeping;
 - weak-coupling dispersion expansion;
 - BMN scaling limit;
 - bound-state shortening dispersion;

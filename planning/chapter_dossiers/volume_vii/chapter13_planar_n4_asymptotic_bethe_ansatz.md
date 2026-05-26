@@ -27,6 +27,10 @@ the monograph's proof-boundary language.
 - `M(y_1,y_2), N(y_1,y_2)`: `SU(2)`-invariant level-II matrix amplitudes.
 - `gamma(w,y)`, `S^{III,II}(w,y)`: one-defect level-III coefficient and
   level-III/level-II scattering factor.
+- `K^I,K^II,K^III`: nesting numbers for physical, level-II, and level-III
+  excitations in one `su(2|2)_c` copy.
+- `S_str`: string-basis nesting factor after absorbing half of the
+  length-changing marker into bosons.
 - `E_Q,p`: bound-state energy and momentum.
 - `f(g)`: large-spin cusp scaling function.
 
@@ -72,6 +76,13 @@ the monograph's proof-boundary language.
   `S^{III,II}(w,y)=(w-v(y)-i/(2g))/(w-v(y)+i/(2g))`.
 - Displays the level-III rational self-scattering factor following this
   nesting step.
+- Proves the single-copy closed-chain nested Bethe-Yang equations by
+  transporting level-I, level-II, and level-III excitations around their
+  corresponding ZF chains; records the nesting numbers
+  `K^I=N_1+N_2+N_3+N_4`, `K^II=2N_2+N_3+N_4`, and `K^III=N_2+N_4`.
+- Adds a string-basis frame ledger for `S^{I,I}`, `S^{II,I}`,
+  `S^{III,II}`, and `S^{III,III}`, and states the reciprocal auxiliary
+  insertion for the alternative `SL(2)` vacuum nesting.
 - Proves weak-coupling reduction to the one-loop Bethe equation and dispersion
   normalization.
 - Adds bound-state dispersion and the large-spin cusp-scaling function with
@@ -98,6 +109,9 @@ crossed Zhukovsky sheets.
   graded conversion of `M+N=-1` to trivial level-III vacuum scattering, the
   two level-III local coefficient equations, and their cleared rational
   identities.
+- It checks closed-chain nesting frame conventions: string-basis level-I and
+  level-II frame ratios, reciprocal `SU(2)`/`SL(2)` auxiliary factors,
+  level-III inverse orientation, and the nesting-number bookkeeping.
 - The same script now checks BMN scaling, bound-state dispersion, and weak
   coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
 
