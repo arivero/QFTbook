@@ -239,11 +239,12 @@ Current absorption:
   public arithmetic check for the central-charge and conformal-weight
   formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
-  operator algebras, ordinary modules, characters, conformal blocks as Ward
-  identity functionals, higher-genus sewing, modular tensor category data,
-  the Verlinde formula, rational full-CFT modular invariants, a leading
-  Cardy high-temperature derivation, and logarithmic CFT boundaries.  The
-  Ising modular data are checked by
+  operator algebras, ordinary modules, characters, Zhu algebras and top-level
+  module classification, conformal blocks as Ward identity functionals,
+  higher-genus sewing, modular tensor category data, the Verlinde formula,
+  rational full-CFT modular invariants, a leading Cardy high-temperature
+  derivation, and logarithmic CFT boundaries.  The Ising modular and Zhu data
+  are checked by
   `calculation-checks/cft_voa_modular_checks.py`.
 - Volume V, Chapter 15 now absorbs the chiral-algebra part of Appendix J:
   spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and

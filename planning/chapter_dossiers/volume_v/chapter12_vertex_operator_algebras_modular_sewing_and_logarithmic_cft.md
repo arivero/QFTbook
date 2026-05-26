@@ -17,6 +17,11 @@ current QFT scope.
 - `c`: chiral central charge.
 - `M_i`: simple ordinary \(V\)-module.
 - `chi_M(tau)`: character \(\operatorname{Tr}_M q^{L_0-c/24}\).
+- `O(V)`: Zhu subspace spanned by \(a\circ b\).
+- `A(V)`: Zhu algebra \(V/O(V)\) with product induced by `*`.
+- `Omega(M)`: subspace killed by modes above their zero-mode threshold.
+- `C_2(V)`: span of \(a_{-2}b\), used in the explicit cofiniteness
+  hypothesis for character modularity.
 - `CB_{g,n}`: space of chiral conformal blocks.
 - `q`: sewing parameter in \(zw=q\).
 - `S,T`: genus-one modular matrices.
@@ -35,6 +40,16 @@ current QFT scope.
 - Derives the chiral OPE expansion from VOA locality and lower truncation.
 - Defines ordinary modules, characters, and chiral conformal blocks as Ward
   identity functionals on pointed Riemann surfaces.
+- Defines Zhu's products \(a*b\), \(a\circ b\), the quotient algebra
+  \(A(V)=V/O(V)\), and the zero-mode top-level action on ordinary modules.
+- Records the component Jacobi identity used in the Zhu top-level calculation,
+  proves that \(O(V)\) acts trivially on lowest-energy spaces and that
+  \(o_M(a*b)=o_M(a)o_M(b)\) there, and states the classification theorem with
+  explicit CFT-type, ordinary-module, rationality, and \(C_2\)-cofiniteness
+  hypotheses.
+- Works the Ising Zhu algebra as
+  \(\mathbb C[x]/(x(x-1/16)(x-1/2))\), matching the vacuum, spin, and energy
+  top weights.
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
 - States explicit rationality/sewing hypotheses before invoking modular
@@ -74,8 +89,9 @@ current QFT scope.
 
 - `calculation-checks/cft_voa_modular_checks.py` verifies the Ising modular
   \(S\)-matrix, Verlinde fusion coefficients, quantum dimensions, the
-  conformal-net `mu`-index/global-dimension relation, and character exponent
-  shifts in \(\mathbb Q(\sqrt2)\).
+  conformal-net `mu`-index/global-dimension relation, character exponent
+  shifts in \(\mathbb Q(\sqrt2)\), and the Ising Zhu polynomial/idempotent
+  decomposition over \(\mathbb Q\).
 
 ## Reference Intake
 
@@ -96,3 +112,6 @@ current QFT scope.
   framework, complete-rationality and strongly-local-VOA theorem boundaries,
   the Ising `mu`-index check, and the open problem for unqualified VOA/net
   equivalence.
+- 2026-05-26 Zhu-algebra pass: inserted the Zhu algebra/top-level module
+  section, made the theorem hypotheses explicit, and added exact Ising
+  Zhu-polynomial/idempotent checks.

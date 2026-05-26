@@ -44,6 +44,11 @@ HALF = Qsqrt2(Fraction(1, 2))
 
 
 LABELS = ("1", "sigma", "epsilon")
+TOP_WEIGHTS = {
+    "1": Fraction(0),
+    "sigma": Fraction(1, 16),
+    "epsilon": Fraction(1, 2),
+}
 
 S = [
     [HALF, Qsqrt2(Fraction(0), Fraction(1, 2)), HALF],
@@ -125,18 +130,98 @@ def check_quantum_dimensions() -> None:
 
 def check_character_exponents() -> None:
     central_charge = Fraction(1, 2)
-    weights = {
-        "1": Fraction(0),
-        "sigma": Fraction(1, 16),
-        "epsilon": Fraction(1, 2),
-    }
     shifted = {
         label: weight - central_charge / 24
-        for label, weight in weights.items()
+        for label, weight in TOP_WEIGHTS.items()
     }
     assert_equal("vacuum shifted exponent", shifted["1"], Fraction(-1, 48))
     assert_equal("sigma shifted exponent", shifted["sigma"], Fraction(1, 24))
     assert_equal("epsilon shifted exponent", shifted["epsilon"], Fraction(23, 48))
+
+
+def polynomial_multiply(lhs: list[Fraction], rhs: list[Fraction]) -> list[Fraction]:
+    product = [Fraction(0) for _ in range(len(lhs) + len(rhs) - 1)]
+    for i, left in enumerate(lhs):
+        for j, right in enumerate(rhs):
+            product[i + j] += left * right
+    return product
+
+
+def polynomial_eval(coefficients: list[Fraction], x: Fraction) -> Fraction:
+    total = Fraction(0)
+    power = Fraction(1)
+    for coefficient in coefficients:
+        total += coefficient * power
+        power *= x
+    return total
+
+
+def lagrange_idempotent(root: Fraction, roots: list[Fraction]) -> list[Fraction]:
+    coefficients = [Fraction(1)]
+    denominator = Fraction(1)
+    for other in roots:
+        if other == root:
+            continue
+        coefficients = polynomial_multiply(coefficients, [-other, Fraction(1)])
+        denominator *= root - other
+    return [coefficient / denominator for coefficient in coefficients]
+
+
+def check_ising_zhu_polynomial() -> None:
+    roots = [TOP_WEIGHTS[label] for label in LABELS]
+    polynomial = [Fraction(1)]
+    for root in roots:
+        polynomial = polynomial_multiply(polynomial, [-root, Fraction(1)])
+
+    expected = [Fraction(0), Fraction(1, 32), Fraction(-9, 16), Fraction(1)]
+    assert_equal("Ising Zhu polynomial coefficients", polynomial, expected)
+    for label, root in zip(LABELS, roots):
+        assert_equal(
+            f"Ising Zhu polynomial at {label} top weight",
+            polynomial_eval(polynomial, root),
+            Fraction(0),
+        )
+
+    idempotents = {
+        label: lagrange_idempotent(root, roots)
+        for label, root in zip(LABELS, roots)
+    }
+    expected_idempotents = {
+        "1": [Fraction(1), Fraction(-18), Fraction(32)],
+        "sigma": [Fraction(0), Fraction(128, 7), Fraction(-256, 7)],
+        "epsilon": [Fraction(0), Fraction(-2, 7), Fraction(32, 7)],
+    }
+    assert_equal(
+        "Ising Zhu idempotent coefficients",
+        idempotents,
+        expected_idempotents,
+    )
+    for left_label, coefficients in idempotents.items():
+        for right_label, root in zip(LABELS, roots):
+            expected_value = Fraction(1) if left_label == right_label else Fraction(0)
+            assert_equal(
+                f"Zhu idempotent {left_label} on {right_label}",
+                polynomial_eval(coefficients, root),
+                expected_value,
+            )
+        square = polynomial_multiply(coefficients, coefficients)
+        for root in roots:
+            assert_equal(
+                f"Zhu idempotent square at {root}",
+                polynomial_eval(square, root),
+                polynomial_eval(coefficients, root),
+            )
+
+    max_degree = max(len(coefficients) for coefficients in idempotents.values())
+    total_idempotent = [Fraction(0) for _ in range(max_degree)]
+    for coefficients in idempotents.values():
+        for index, coefficient in enumerate(coefficients):
+            total_idempotent[index] += coefficient
+    assert_equal(
+        "sum of Ising Zhu idempotents",
+        total_idempotent,
+        [Fraction(1), Fraction(0), Fraction(0)],
+    )
 
 
 def main() -> None:
@@ -144,7 +229,8 @@ def main() -> None:
     check_verlinde_fusion()
     check_quantum_dimensions()
     check_character_exponents()
-    print("All CFT VOA/modular-data and conformal-net index checks passed.")
+    check_ising_zhu_polynomial()
+    print("All CFT VOA/modular-data, Zhu-algebra, and conformal-net index checks passed.")
 
 
 if __name__ == "__main__":
