@@ -214,7 +214,10 @@ Current checks:
   two-dimensional superconformal-algebra chapter, including the
   \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary
   norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
-  and protected Landau--Ginzburg central-charge arithmetic.
+  protected Landau--Ginzburg central-charge arithmetic, and the
+  supersymmetric \(SU(2)/U(1)\) and \(SL(2,\mathbb R)/U(1)\) rank-one
+  coset central-charge, chiral-primary, field-identification, and
+  spectral-flow formulas.
 - `cohomological_metric_descent_checks.py`: exact polynomial differential-form
   checks for the Volume VIII metric-independence chapter, including
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary

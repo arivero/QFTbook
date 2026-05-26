@@ -219,12 +219,128 @@ def check_lg_central_charges():
         raise AssertionError("quintic LG central charge should be 9")
 
 
+def compact_coset_hq(k: int, j: Fraction, m: Fraction, eta: Fraction = Fraction(0)):
+    return (
+        (j * (j + 1) - (m + eta) ** 2) / k + eta**2 / 2,
+        -2 * (m + eta) / k + eta,
+    )
+
+
+def noncompact_coset_hq(k: int, j: Fraction, m: Fraction, eta: Fraction = Fraction(0)):
+    return (
+        (-j * (j - 1) + (m + eta) ** 2) / k + eta**2 / 2,
+        2 * (m + eta) / k + eta,
+    )
+
+
+def check_supersymmetric_rank_one_coset_interfaces():
+    etas = (Fraction(-1), Fraction(-1, 2), Fraction(0), Fraction(1, 2), Fraction(1))
+
+    for k in range(2, 30):
+        minimal_level = k - 2
+        c_compact = Fraction(3 * (k - 2), k)
+
+        bosonic_su_c = Fraction(3 * (k - 2), k)
+        parent_su_c = bosonic_su_c + Fraction(3, 2)
+        removed_n1_u1_c = Fraction(3, 2)
+        if parent_su_c - removed_n1_u1_c != c_compact:
+            raise AssertionError(f"compact supersymmetric coset c failed for k={k}")
+
+        if c_compact != Fraction(3 * minimal_level, minimal_level + 2):
+            raise AssertionError(f"A-series/minimal-model central charge mismatch for k={k}")
+
+        for two_j in range(0, k - 1):
+            j = Fraction(two_j, 2)
+
+            h_chiral, q_chiral = compact_coset_hq(k, j, -j)
+            assert_equal(h_chiral, q_chiral / 2, f"compact chiral primary j={j}, k={k}")
+            assert_equal(h_chiral, Fraction(two_j, 2 * k), f"compact chiral weight j={j}, k={k}")
+
+            for two_m in range(-two_j, two_j + 1, 2):
+                m = Fraction(two_m, 2)
+                h, q = compact_coset_hq(k, j, m)
+                for eta in etas:
+                    flowed_h_general = h + eta * q + eta**2 * c_compact / 6
+                    flowed_q_general = q + eta * c_compact / 3
+                    flowed_h_rank, flowed_q_rank = compact_coset_hq(k, j, m, eta)
+                    assert_equal(
+                        flowed_h_general,
+                        flowed_h_rank,
+                        f"compact spectral-flow h k={k}, j={j}, m={m}, eta={eta}",
+                    )
+                    assert_equal(
+                        flowed_q_general,
+                        flowed_q_rank,
+                        f"compact spectral-flow q k={k}, j={j}, m={m}, eta={eta}",
+                    )
+
+            for eta in etas:
+                # The simple-current identification is written for the
+                # endpoint labels m=j in the text; it preserves h and q.
+                image_j = Fraction(k - 2, 2) - j
+                image_m = j - Fraction(k - 2, 2)
+                h_left, q_left = compact_coset_hq(k, j, j, eta)
+                h_right, q_right = compact_coset_hq(k, image_j, image_m, eta - 1)
+                assert_equal(h_left, h_right, f"compact field-identification h k={k}, j={j}")
+                assert_equal(q_left, q_right, f"compact field-identification q k={k}, j={j}")
+
+    for k in range(1, 30):
+        c_cigar = Fraction(3 * (k + 2), k)
+
+        bosonic_sl_c = Fraction(3 * (k + 2), k)
+        parent_sl_c = bosonic_sl_c + Fraction(3, 2)
+        removed_n1_u1_c = Fraction(3, 2)
+        if parent_sl_c - removed_n1_u1_c != c_cigar:
+            raise AssertionError(f"noncompact supersymmetric coset c failed for k={k}")
+
+        for two_j in (1, 2, 3, 5):
+            j = Fraction(two_j, 2)
+
+            h_chiral, q_chiral = noncompact_coset_hq(k, j, j)
+            assert_equal(h_chiral, q_chiral / 2, f"cigar chiral primary j={j}, k={k}")
+
+            for m in (j, -j, j + 1, -j - 1):
+                h, q = noncompact_coset_hq(k, j, m)
+                for eta in etas:
+                    flowed_h_general = h + eta * q + eta**2 * c_cigar / 6
+                    flowed_q_general = q + eta * c_cigar / 3
+                    flowed_h_rank, flowed_q_rank = noncompact_coset_hq(k, j, m, eta)
+                    assert_equal(
+                        flowed_h_general,
+                        flowed_h_rank,
+                        f"cigar spectral-flow h k={k}, j={j}, m={m}, eta={eta}",
+                    )
+                    assert_equal(
+                        flowed_q_general,
+                        flowed_q_rank,
+                        f"cigar spectral-flow q k={k}, j={j}, m={m}, eta={eta}",
+                    )
+
+            for eta in etas:
+                image_j = Fraction(k + 2, 2) - j
+                image_m = j - Fraction(k + 2, 2)
+                h_left, q_left = noncompact_coset_hq(k, j, j, eta)
+                h_right, q_right = noncompact_coset_hq(k, image_j, image_m, eta + 1)
+                assert_equal(h_left, h_right, f"cigar field-identification h k={k}, j={j}")
+                assert_equal(q_left, q_right, f"cigar field-identification q k={k}, j={j}")
+
+        for winding in range(-2, 3):
+            for momentum in range(-2, 3):
+                left_cartan = Fraction(k * winding + momentum, 2)
+                right_cartan = Fraction(k * winding - momentum, 2)
+                n = left_cartan - right_cartan
+                w = (left_cartan + right_cartan) / k
+                assert_equal(n, Fraction(momentum), f"cigar momentum label k={k}")
+                assert_equal(w, Fraction(winding), f"cigar winding label k={k}")
+
+
 def main():
     check_n1_zero_mode_and_ns_coefficients()
     check_n2_chiral_primary_norms()
     check_spectral_flow_automorphism()
     check_ns_to_ramond_ground_state()
     check_lg_central_charges()
+    check_supersymmetric_rank_one_coset_interfaces()
     print("All 2D superconformal algebra checks passed.")
 
 

@@ -126,6 +126,10 @@
   the rotational curvature formulas and computes the constant scalar
   dilaton-anomaly terms, matching the leading large-\(k\) central-charge
   shifts.
+- Cross-references the supersymmetric rank-one coset refinements to
+  Volume V, Chapter 15, where the compact `N=2` minimal coset and
+  noncompact cigar chiral-algebra interfaces are developed with
+  spectral-flow and `R`-charge bookkeeping.
 - Defines finite orbifolds using anomaly-free topological symmetry lines,
   twisted Hilbert spaces, centralizer projection, and discrete torsion.
 - Derives the finite-orbifold torus partition function and its modular label
@@ -277,6 +281,10 @@
    \(-S_\Phi/2\), while the dilaton variation is \(-2S_\Phi\); imposing the
    scalar equation therefore removes exactly the trace part and leaves the
    hatted metric Weyl-anomaly representative.
+42. The supersymmetric rank-one coset refinements are not inferred from the
+    bell/cigar sigma-model metrics; their exact `N=2` chiral data are stated
+    in Chapter 15 and coordinated with Volume VII for GLSM/mirror
+    constructions.
 
 ## Figures
 
@@ -341,6 +349,7 @@
   and the WZW/coset and supersymmetric coset discussions around
   `sec:wzwcoset`, `sec:coset`, `sec:sutwocos`, and the \(N=2\)
   \(SL(2,\mathbb R)/U(1)\) subsection.  The monograph import keeps the
-  stringbook's conceptual order but expands the bosonic derivations and
-  defers the supersymmetric \(N=2\) refinements to the supersymmetric field
-  theory development.
+  stringbook's conceptual order but expands the bosonic derivations; the
+  exact supersymmetric \(N=2\) coset chiral data are now developed in
+  Volume V, Chapter 15, while the GLSM/mirror-flow construction remains a
+  supersymmetric-QFT obligation.
