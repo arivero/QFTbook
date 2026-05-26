@@ -37,8 +37,16 @@
   \(\lambda:\phi^4:+\alpha_\varepsilon:\phi^2:+\beta_\varepsilon\),
   their conversion to un-Wick-ordered coordinates, and the two-loop
   logarithmic mass-coordinate calculation.
-- Open proof obligation for a self-contained monograph proof of the quoted
-  \(\Phi^4_3\) constructive output theorem.
+- Finite-cutoff stability lower bound for the local normal-ordered
+  \(\Phi^4_3\) polynomial.
+- Reflection-positivity preservation for split positive-time interactions.
+- Abstract multiscale phase-cell datum and theorem proving summability,
+  rooted-tree bounds, and ultraviolet Cauchy convergence from a scale-decay
+  polymer bound.
+- Refined proof obligation for a self-contained monograph proof of the quoted
+  \(\Phi^4_3\) constructive output theorem: the remaining gap is now the
+  model-specific derivation of the phase-cell activities and their
+  scale-decay bound.
 - OS data output from constructive theorems.
 - Comparison problem for cluster, stochastic, and rigorous-RG constructions.
 
@@ -56,9 +64,14 @@
 | \(a_\varepsilon,b_\varepsilon\) | regulator-dependent local coefficients |
 | \(\alpha_\varepsilon,\beta_\varepsilon\) | normal-ordered \(\Phi^4_3\) mass and vacuum coordinates |
 | \(J_\varepsilon(R)\) | local sunset integral \(\int_{|x|\le R}C_\varepsilon(x)^3\,d^3x\) |
+| \(p_\varepsilon(q)\) | finite-cutoff normal-ordered local \(\Phi^4_3\) polynomial |
+| \(A_\varepsilon,B_\varepsilon\) | quadratic-in-\(y=q^2\) coefficients of \(p_\varepsilon\) |
 | \(K(X,\phi)\) | polymer activity on the polymer \(X\) |
 | \(\kappa(X)\) | numerical majorant for the polymer activity after large-field weighting |
 | \(\|K\|_{a,b}\) | schematic cluster norm with large-field weight |
+| \(K_j(X),\kappa_j(X)\) | scale-\(j\) polymer activity and numerical majorant |
+| \(L\) | phase-cell scale factor |
+| \(B_R\) | finite-range multiscale incompatibility neighbourhood constant |
 | \(\varphi_{\mathrm c}(X_1,\ldots,X_n)\) | hard-core Ursell coefficient for the incompatibility graph |
 | \(B_{R_0}\) | finite-range cell-neighbourhood constant for incompatible polymers |
 | \(m_{\mathrm E}\) | Euclidean exponential-clustering rate entering the spectral gap argument |
@@ -93,12 +106,27 @@
    \(J_\varepsilon(R)=(16\pi^2)^{-1}\log(1/\varepsilon)+O(1)\) and
    \(\alpha_\varepsilon=48\lambda^2J_\varepsilon+\alpha_{\rm fin}
    +O(\lambda^3)\), hence logarithmic coefficient \(3\lambda^2/\pi^2\).
-9. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+9. The finite-cutoff local \(\Phi^4_3\) polynomial is bounded below by
+   \(B_\varepsilon-(A_\varepsilon^-)^2/(4\lambda)\); this proves finite-cutoff
+   integrability after the vacuum-energy coordinate is chosen, but not the
+   continuum theorem.
+10. Split positive-time interactions preserve reflection positivity by the
+    identity
+    \(\langle\theta F\,F e^{-V_+-\theta V_+}\rangle_0
+    =\langle \theta(e^{-V_+}F)(e^{-V_+}F)\rangle_0\).
+11. A scale-decay polymer bound
+    \(\sup_{\Delta\in\mathcal D_j}\sum_{X\ni\Delta}e^{a|X|_j}\kappa_j(X)
+    \le C_0|\lambda|^{1+\delta}L^{-\alpha j}\)
+    implies multiscale cluster summability and an ultraviolet Cauchy bound
+    \(C_0|\lambda|^{1+\delta}L^{-\alpha J}/(1-L^{-\alpha})\) under the
+    displayed KP smallness condition.
+12. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
-   as a `quotedtheorem` rather than a locally proved theorem, and explicitly
-   records the missing self-contained constructive proof as an open proof
-   obligation.
-10. Constructive route comparison requires equality of Schwinger functions in
+   as a `quotedtheorem` rather than a locally proved theorem.  The abstract
+   summation, reflection-positivity, and ultraviolet-Cauchy components are
+   now proved locally; the remaining open proof obligation is the
+   model-specific multiscale estimate generating their hypotheses.
+13. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Figures
@@ -146,3 +174,8 @@
   \(\alpha_\varepsilon=48\lambda^2J_\varepsilon+\alpha_{\rm fin}
   +O(\lambda^3)\).  The companion calculation check now verifies these
   finite combinatorial and normalization factors.
+- 2026-05-26 issue #581 continuation: the \(\Phi^4_3\) proof stack now proves
+  finite-cutoff local stability, split-interaction reflection positivity, and
+  the abstract multiscale phase-cell summability theorem.  The open problem
+  has been narrowed to the model-specific derivation of the actual
+  phase-cell activities and the scale-decay polymer bound.

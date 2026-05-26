@@ -109,6 +109,41 @@ def check_phi4_three_two_loop_mass_coordinate():
     assert_equal(sunset_log_numerator, Fraction(3), "phi4_3 logarithmic mass numerator")
 
 
+def check_phi4_three_finite_cutoff_stability_bound():
+    # For p(q)=lambda :q^4: + alpha :q^2: + beta at cutoff variance c,
+    # write y=q^2 and p=lambda y^2 + A y + B.  The lower bound is
+    # B - (A^-)^2/(4 lambda).
+    lam = Fraction(2)
+    c = Fraction(5)
+    alpha = Fraction(3)
+    beta = Fraction(7)
+    a_coeff = alpha - 6 * lam * c
+    b_coeff = 3 * lam * c * c - alpha * c + beta
+    lower_bound = b_coeff - max(-a_coeff, 0) ** 2 / (4 * lam)
+    vertex_y = -a_coeff / (2 * lam)
+    vertex_value = lam * vertex_y * vertex_y + a_coeff * vertex_y + b_coeff
+    assert_equal(lower_bound, Fraction(-2113, 8), "phi4_3 local stability lower bound")
+    assert_equal(vertex_value, lower_bound, "phi4_3 local stability vertex value")
+
+
+def check_phi4_three_multiscale_geometric_bound():
+    # The abstract phase-cell theorem uses
+    # sum_j C0 |lambda|^(1+delta) L^(-alpha j)
+    # = C0 |lambda|^(1+delta)/(1-L^(-alpha)).
+    # Use a finite exact sample with L^(-alpha)=1/2.
+    scale_ratio = Fraction(1, 2)
+    c_lambda = Fraction(1, 100)
+    b_r = Fraction(3)
+    a_prime = Fraction(1, 10)
+    scale_sum = c_lambda / (1 - scale_ratio)
+    assert_equal(scale_sum, Fraction(1, 50), "phi4_3 multiscale full sum")
+    if not b_r * scale_sum <= a_prime:
+        raise AssertionError("phi4_3 multiscale KP smallness failed")
+
+    tail_j5 = c_lambda * scale_ratio**5 / (1 - scale_ratio)
+    assert_equal(tail_j5, Fraction(1, 1600), "phi4_3 multiscale ultraviolet tail")
+
+
 def check_spde_ou_and_smoothing_normalizations():
     # For dZ_t = -a Z_t dt + sqrt(2) dB_t, the stationary variance is
     # 2 int_0^infty exp(-2 a u) du = 1/a.  This fixes the noise
@@ -189,6 +224,8 @@ def main():
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
+    check_phi4_three_finite_cutoff_stability_bound()
+    check_phi4_three_multiscale_geometric_bound()
     check_spde_ou_and_smoothing_normalizations()
     check_dpd_sobolev_fixed_point_exponents()
     print("All constructive scalar/SPDE Wick, power-counting, and DPD exponent checks passed.")
