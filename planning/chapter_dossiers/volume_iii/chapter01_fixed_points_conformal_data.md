@@ -46,10 +46,14 @@ The chapter establishes:
   \(\mathcal F(R)=R S'(R)-S(R)\), its strong-subadditivity/Lorentz-invariance
   monotonicity, and its endpoint identification with the \(S^3\) free energy
   when the CFT and counterterm hypotheses are satisfied;
-- the four-dimensional Komargodski--Schwimmer \(a_{\rm W}\)-monotonicity
-  mechanism: Wess--Zumino anomaly matching for a weak spectator dilaton,
-  the forward four-dilaton amplitude, the dispersion relation, and the
-  positive cross-section sum rule for \(a_{\rm UV}-a_{\rm IR}\);
+- the four-dimensional Komargodski--Schwimmer \(a_{\rm W}\) conditional
+  dilaton-dispersion mechanism: Wess--Zumino anomaly matching for a weak
+  spectator dilaton, the forward four-dilaton amplitude, the dispersion
+  relation, and the positive cross-section sum rule for
+  \(a_{\rm UV}-a_{\rm IR}\), explicitly not treated as a rigorous universal
+  proof unless the source-functional, decoupling, infrared, analyticity,
+  crossing, boundedness, and positivity assumptions are independently
+  supplied;
 - CFT data as local operator space, stress tensor, conformal-algebra action,
   and Euclidean separated-point distributions;
 - source functionals \(W_\ast[g,J]\) whose derivatives define stress
@@ -125,7 +129,10 @@ The chapter establishes:
 5a. RG monotonicity statements must specify their class of trajectories and
     analytic assumptions.  The chapter may use \(c_{2d}\), \(F\), and
     \(a_{\rm W}\) as endpoint-ordering data only with the corresponding
-    positivity, entanglement, or S-matrix hypotheses stated.
+    positivity, entanglement, or S-matrix hypotheses stated.  In particular,
+    the four-dimensional dilaton effective-action argument is recorded as a
+    conditional physical argument and not as a theorem-level proof of a
+    universal \(a\)-theorem.
 6. The Ising fixed point supplies a statistical-mechanics example whose
    continuum CFT data are obtained from scaling limits of correlators, not
    from the finite lattice trace space.
@@ -173,6 +180,12 @@ The chapter establishes:
   formulated \(2D\) \(c\)-function, \(3D\) entropic \(F\)-monotone, and
   \(4D\) Komargodski--Schwimmer \(a_{\rm W}\)-monotonicity argument, with
   assumptions and endpoint meanings stated.
+- 2026-05-26 issue #280 status refinement: sharpened the \(4D\)
+  Komargodski--Schwimmer paragraph so the dilaton effective-action and
+  forward-dispersion chain is explicitly a conditional physical argument, not
+  a rigorous universal theorem-level proof.  The dossier now lists the
+  source-functional, decoupling, infrared, analyticity, crossing,
+  boundedness, and positivity assumptions as load-bearing inputs.
 - 2026-05-24 issue #282 pass: strengthened the \(D=3\) Ising numerical
   provenance remark to identify the conformal-bootstrap constraints and
   semidefinite relaxations behind the displayed values, and to separate those

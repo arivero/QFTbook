@@ -397,13 +397,18 @@ In four spacetime dimensions the endpoint quantity is the Euler coefficient
   \right),
 \]
 with the notation developed in
-Chapter~\ref{ch:volume-iii-stress-tensor-weyl}.  For a
-unitary Lorentz-invariant flow between four-dimensional CFTs, the
-Komargodski--Schwimmer argument couples a weak spectator dilaton \(\tau\) by
-writing the background metric as \(g_{\mu\nu}=\ee^{-2\tau}\eta_{\mu\nu}\) and
-then takes the spectator decay constant \(f\) large.  Wess--Zumino consistency
-for the mismatch of the UV and IR Weyl anomalies fixes the flat-space
-four-derivative dilaton interaction whose on-shell four-dilaton amplitude is
+Chapter~\ref{ch:volume-iii-stress-tensor-weyl}.  The standard
+Komargodski--Schwimmer construction should be read here as a conditional
+dilaton-dispersion argument, not as a theorem-level proof from the general
+axioms of four-dimensional QFT.  Its input is a unitary Lorentz-invariant
+flow between CFT endpoints, a renormalized stress-tensor source functional
+along the flow, a weak spectator dilaton \(\tau\) coupled by
+\(g_{\mu\nu}=\ee^{-2\tau}\eta_{\mu\nu}\), a controlled large-\(f\) decoupling
+limit for the spectator sector, and an infrared prescription under which the
+dilaton scattering amplitude exists.  Under these hypotheses,
+Wess--Zumino consistency for the mismatch of the UV and IR Weyl anomalies
+fixes the flat-space four-derivative dilaton interaction whose on-shell
+four-dilaton amplitude is
 \begin{equation}
   \mathcal A(s,t,u)
   =
@@ -420,9 +425,11 @@ In the forward limit \(t=0\), this becomes
   =
   \frac{2(a_{\rm UV}-a_{\rm IR})}{f^4}s^2+O(s^4).
 \]
-Assuming the analyticity, crossing, polynomial boundedness, and infrared
-regulator conditions needed for the forward dispersion relation, Cauchy's
-theorem applied to \(\mathcal A(s)/s^3\) gives
+If, in addition, the forward amplitude obeys the analyticity, crossing,
+polynomial boundedness, unitarity, and infrared-regulator conditions needed
+for the dispersion relation, and if the large-circle and small-circle
+contour contributions are controlled, Cauchy's theorem applied to
+\(\mathcal A(s)/s^3\) gives the formal sum rule
 \begin{equation}
   a_{\rm UV}-a_{\rm IR}
   =
@@ -432,12 +439,13 @@ theorem applied to \(\mathcal A(s)/s^3\) gives
   \label{eq:ks-a-theorem-sum-rule}
 \end{equation}
 where the optical theorem has been used in the form
-\(\operatorname{Im}\mathcal A(s,0)=s\,\sigma_{\tau\tau}(s)\).  Unitarity gives
-\(\sigma_{\tau\tau}(s)\geq0\), hence
+\(\operatorname{Im}\mathcal A(s,0)=s\,\sigma_{\tau\tau}(s)\).  Under the same
+scattering assumptions, unitarity gives \(\sigma_{\tau\tau}(s)\geq0\), hence
 \[
   a_{\rm UV}\geq a_{\rm IR}.
 \]
-The same sum rule gives an interpolating function
+If such a positive cross-section representation is available with a scale
+cutoff, the same formal sum rule defines an interpolating quantity
 \begin{equation}
   a(\mu)
   =
@@ -455,9 +463,12 @@ The same sum rule gives an interpolating function
   \label{eq:ks-interpolating-a}
 \end{equation}
 Thus \(a(\mu)\) increases with the energy scale \(\mu\) and decreases with
-the length scale \(R\sim\mu^{-1}\).  The coefficient \(c_{\rm W}\) does not
-obey an analogous general endpoint inequality; its role in fixed-point data is
-through stress-tensor correlators, not through this dilaton sum rule.
+the length scale \(R\sim\mu^{-1}\), inside the same conditional scattering
+framework.  This \(a(\mu)\) is not by itself a nonperturbative local RG
+\(c\)-function constructed for every four-dimensional QFT.  The coefficient
+\(c_{\rm W}\) does not obey an analogous general endpoint inequality; its role
+in fixed-point data is through stress-tensor correlators, not through this
+dilaton sum rule.
 
 \begin{remark}[Status of the monotonicity statements]
 The preceding paragraphs state the monotonicity statements at the level at
@@ -465,10 +476,13 @@ which this volume uses them.  The two-dimensional result is a theorem after
 the analytic assumptions entering the \(C(R)\) construction have been fixed.
 The three-dimensional sphere quantity is recorded here as fixed-point data;
 the core CFT volume does not use an entropic construction as a structural
-input.  The four-dimensional statement uses the additional S-matrix
-assumptions displayed above.  None of these statements is a substitute for
-constructing the RG trajectory or proving that its endpoints satisfy the CFT
-hypotheses.\footnote{For the two-dimensional construction see
+input.  The four-dimensional dilaton discussion is an inspired and highly
+constraining physical argument whose conclusion follows only after the
+displayed source-functional, decoupling, infrared, analyticity, crossing,
+boundedness, and positivity assumptions have been supplied.  The monograph
+does not treat it as a rigorous proof of a universal \(a\)-theorem, nor as a
+substitute for constructing the RG trajectory or proving that its endpoints
+satisfy the CFT hypotheses.\footnote{For the two-dimensional construction see
 A.~B.~Zamolodchikov, ``Irreversibility of the flux of the renormalization
 group in a 2D field theory,'' \emph{JETP Lett.} \textbf{43} (1986) 730--732,
 and J.~Polchinski, ``Scale and conformal invariance in quantum field
