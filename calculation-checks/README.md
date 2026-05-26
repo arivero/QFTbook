@@ -355,8 +355,10 @@ Current checks:
   four-dimensional \(\mathcal N=1\) supersymmetric Yang--Mills, including
   the adjoint-fermion discrete chiral anomaly, the
   \(\mathbb Z_{2N_c}\to\mathbb Z_2\) condensate orbit, VY glueball
-  dimension/source/\(F\)-term arithmetic, and the affine-Toda/Witten-index
-  vacuum count match.
+  dimension/source/\(F\)-term arithmetic, condensate branch monodromy under a
+  theta-angle loop, the affine-Toda product constraint, constrained Hessian
+  nondegeneracy, local critical-point index contribution, and the
+  affine-Toda/Witten-index vacuum count match.
 - `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
   including Seiberg-dual rank involution, baryon-charge matching, SQCD

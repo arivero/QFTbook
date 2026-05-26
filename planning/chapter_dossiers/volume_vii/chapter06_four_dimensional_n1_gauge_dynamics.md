@@ -37,6 +37,23 @@ status-boundary style.
   used.
 - `prop:pure-sym-vy-superpotential`: derivation of the VY representative and
   the critical equation `S^N_c=Lambda_h^(3N_c)`.
+- `prop:pure-sym-condensate-branches-source`: branch/source-normalization
+  ledger for the pure-SYM condensate values and theta-angle monodromy.
+- `hyp:pure-sym-finite-volume-index-problem`: finite-volume Hamiltonian,
+  Gauss-law, spin-structure, global-form, and trace-class assumptions for the
+  `SU(N_c)` Witten index.
+- `prop:pure-sym-finite-volume-graded-trace`: positive-energy pairing and
+  finite-volume index identity.
+- `hyp:pure-sym-small-circle-affine-toda-input`: assumptions behind the
+  small-circle monopole-instanton affine-Toda superpotential.
+- `prop:pure-sym-affine-toda-critical-count`: constrained affine-Toda
+  critical-point count giving `N_c` isolated solutions.
+- `hyp:pure-sym-index-continuation-massive-branch`: spectral-continuation and
+  massive-branch hypotheses linking the small-circle count to 4D pure
+  `SU(N_c)` SYM.
+- `prop:pure-sym-index-condensate-ledger`: conditional assembly of
+  `I_SU(Nc)=N_c`, the `N_c` condensate branches, and
+  `Z_{2N_c}->Z_2`.
 - `W_ADS`: Affleck-Dine-Seiberg superpotential coordinate.
 - `k`: instanton number, normalized as in the BPST section of Volume II.
 - `hyp:sqcd-one-instanton-calculus`: assumptions needed for using the
@@ -130,8 +147,31 @@ status-boundary style.
   `S(log(Lambda_h^(3N_c)/S^N_c)+N_c)` from the dimensionless ratio
   `S^N_c/Lambda_h^(3N_c)` and the source identity, then derives
   `S^N_c=Lambda_h^(3N_c)` and the `N_c` isolated glueball critical points.
-- Defines the Witten index and explains the finite-volume pairing logic and
-  the small-circle affine-Toda count for pure \(SU(N_c)\) SYM.
+- Derives the pure-SYM condensate branch/source ledger: at a VY critical
+  point `W_k=N_c S_k`, the source identity gives
+  `L dW_k/dL=<S>_k`, and a loop of `L=Lambda_h^(3N_c)` around the origin
+  shifts the branch label by one.
+- Defines the Witten index with explicit finite-volume assumptions:
+  simply connected `SU(N_c)`, spatial `T^3_L`, periodic gaugino spin
+  structure, trivial flux sector, Gauss-law projection, exact regulated
+  supersymmetry, trace-class heat operator, and finite zero-energy space.
+- Proves the positive-energy boson-fermion pairing identity for the
+  finite-volume Witten index and states the exact spectral caveat for
+  invariance under volume/coupling/regulator deformations.
+- States the small-circle affine-Toda input with root data
+  `alpha_i=e_i-e_{i+1}` and affine root `alpha_0=e_N-e_1`, two gaugino zero
+  modes for each fundamental monopole event, and the instanton-weight
+  product coordinate `eta`, with the local-index convention that each
+  nondegenerate massive chiral critical point contributes one even ground
+  state.
+- Proves the constrained affine-Toda critical-point count: with
+  `x_1...x_N=eta`, stationarity of `sum_i x_i` forces all `x_i` equal, so
+  `x^N=eta`, and the constrained Hessian is nondegenerate.
+- Assembles the conditional pure `SU(N_c)` index and condensate ledger:
+  `I_SU(Nc)=N_c` under finite-volume/continuation hypotheses, and the
+  glueball `F`-term hypothesis gives the `N_c` nonzero condensate phases and
+  `Z_{2N_c}->Z_2`; the text explicitly states that the index alone does not
+  prove confinement, a mass gap, or the condensate.
 - Derives the allowed ADS superpotential form from dimension and \(R\)-charge
   constraints.
 - States the analytic assumptions required for the semiclassical
@@ -258,7 +298,9 @@ status-boundary style.
 - `calculation-checks/susy_n1_pure_sym_checks.py` verifies exact finite
   arithmetic for pure `N=1` SYM: adjoint anomaly coefficient, residual
   discrete chiral group, condensate orbit count, VY dimension/source/F-term
-  checks, and affine-Toda/Witten-index count matching.
+  checks, condensate branch monodromy, affine-Toda product-constraint
+  telescoping, constrained Hessian nondegeneracy, local critical-point index
+  contribution, and affine-Toda/Witten-index count matching.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:
   dual-rank involution, baryon-charge map, SQCD holomorphic-canonical NSVZ

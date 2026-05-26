@@ -398,25 +398,111 @@ statement with invariant content is the existence of a nonzero chiral
 condensate with these relative phases in a scheme where the low-energy
 theory has a mass gap and isolated vacua.
 
+\begin{proposition}[Condensate branches and source normalization]
+\label{prop:pure-sym-condensate-branches-source}
+Assume Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description} and assume
+that the isolated critical points of
+\eqref{eq:pure-sym-vy-critical-equation} are realized as massive chiral
+branches of the pure \(SU(N_c)\) theory.  Let
+\[
+  L=\Lambda_h^{3N_c}.
+\]
+On the \(k\)-th branch,
+\[
+  W_k(L)=N_c\,C\,L^{1/N_c}\ee^{2\pi\ii k/N_c},
+  \qquad
+  \langle S\rangle_k
+  =
+  C\,L^{1/N_c}\ee^{2\pi\ii k/N_c},
+  \qquad k\in\mathbb Z/N_c\mathbb Z .
+\]
+The source identity gives
+\[
+  L\frac{\partial W_k}{\partial L}=\langle S\rangle_k .
+\]
+Analytic continuation of \(L\) once around the origin sends
+\(k\mapsto k+1\).  Thus the \(N_c\) branches form one orbit under the
+anomalous chiral symmetry and under a \(2\pi\) theta-angle loop.
+\end{proposition}
+
+\begin{proof}
+At a VY critical point the logarithm in
+\eqref{eq:pure-sym-vy-superpotential} vanishes, so the critical value of the
+standard representative is \(W_k=N_cS_k\).  The finite normalization
+constant \(C\) records the allowed rescaling of \(S\) and of the chosen
+branch of \(\Lambda_h^3\).  Differentiating
+\[
+  W_k(L)=N_c\,C\,L^{1/N_c}\ee^{2\pi\ii k/N_c}
+\]
+gives
+\[
+  L\frac{\partial W_k}{\partial L}
+  =
+  C\,L^{1/N_c}\ee^{2\pi\ii k/N_c}
+  =
+  \langle S\rangle_k .
+\]
+The remaining statement is the elementary monodromy of the \(N_c\)-th root:
+if \(L\) is carried around a positively oriented loop about the origin, then
+\(L^{1/N_c}\) is multiplied by \(\ee^{2\pi\ii/N_c}\).  This shifts the branch
+label by one.  The same shift is produced by the generator
+\(\alpha=\pi/N_c\) of the anomaly-preserving \(\mathbb Z_{2N_c}\), since
+\(S\) has gaugino-phase charge \(2\).
+\end{proof}
+
+The component condensate \(\langle\operatorname{tr}\lambda\lambda\rangle_k\)
+is obtained from \(\langle S\rangle_k\) by the fixed component convention in
+the definition of \(S\).  The phase information above is convention
+independent.  In a massive infinite-volume vacuum, cluster decomposition
+would give
+\[
+  \lim_{|x|\to\infty}
+  \langle S(x)S(0)\rangle_k
+  =
+  \langle S\rangle_k^2 .
+\]
+This is an infinite-volume statement about a chosen pure phase.  A
+finite-volume ground-state basis can instead diagonalize the discrete
+symmetry, and the passage to cluster vacua is part of the massive-branch
+hypothesis rather than a consequence of the index alone.
+
 \section{Witten Index Of Pure Supersymmetric Yang--Mills}
 
-Put pure supersymmetric Yang--Mills on a spatial three-torus \(T^3_L\) with
-periodic spin structure for the gaugino.  The finite-volume index is
+\begin{hypothesis}[Finite-volume pure-SYM index problem]
+\label{hyp:pure-sym-finite-volume-index-problem}
+Fix \(N_c\geq2\) and take the gauge group to be the simply connected group
+\(SU(N_c)\).  Put the theory on a spatial three-torus \(T^3_L\) with
+periodic spin structure for the gaugino, and impose Gauss' law in the
+trivial discrete-flux sector.  The index is computed by a regulated
+Hamiltonian system whose supersymmetry, gauge invariance, and fermion parity
+are exact at finite regulator.  The physical Hilbert space
+\(\mathcal H_0(T^3_L)\) has a self-adjoint Hamiltonian \(H\), closed
+supercharges \(Q,Q^\dagger\), and a fermion-parity operator \((-1)^F\) such
+that
+\[
+  H=\frac12\{Q,Q^\dagger\},
+  \qquad
+  \{(-1)^F,Q\}=\{(-1)^F,Q^\dagger\}=0 .
+\]
+The heat operator \(\ee^{-\beta H}\) is trace class in the regulated
+finite-volume problem, and the zero-energy subspace is finite-dimensional.
+Changing the global form of the gauge group or turning on 't Hooft fluxes
+changes the Hilbert-space sector and is not part of the displayed
+\(SU(N_c)\) index.
+\end{hypothesis}
+
+Under Hypothesis~\ref{hyp:pure-sym-finite-volume-index-problem}, the
+finite-volume index is
 \[
   \mathcal I(\beta,L)
   =
-  \operatorname{Tr}_{\mathcal H(T^3_L)}
+  \operatorname{Tr}_{\mathcal H_0(T^3_L)}
   (-1)^F\ee^{-\beta H}.
 \]
-If the Hamiltonian has discrete spectrum and supersymmetry is represented by
-closed supercharges with
-\[
-  H=\frac12\{Q,Q^\dagger\},
-\]
-then every positive-energy state belongs to a boson-fermion pair.  Indeed, if
-\(H|\psi\rangle=E|\psi\rangle\) with \(E>0\), at least one of
-\(Q|\psi\rangle\) and \(Q^\dagger|\psi\rangle\) is nonzero and has the same
-energy and opposite fermion parity.  Therefore
+
+\begin{proposition}[Finite-volume graded-trace identity]
+\label{prop:pure-sym-finite-volume-graded-trace}
+Assume Hypothesis~\ref{hyp:pure-sym-finite-volume-index-problem}.  Then
 \[
   \mathcal I(\beta,L)
   =
@@ -424,17 +510,67 @@ energy and opposite fermion parity.  Therefore
   -
   \dim\ker H|_{\mathrm{fermionic}}
 \]
-and is independent of \(\beta\).  Its invariance under changes of \(L\) or
-coupling requires that zero-energy states do not disappear into or emerge
-from a continuum; this is an analytic hypothesis beyond the graded trace
-identity.
+and is independent of \(\beta\).  Invariance under a continuous change of
+coupling, volume, or regulator follows provided no zero-energy state is lost
+to a continuum, no state enters from a continuum, and the deformation
+preserves the same supercharge, spin structure, global form, and flux sector.
+\end{proposition}
 
-For \(G=SU(N_c)\), a semiclassical computation can be organized on
-\(\mathbb R^3\times S^1\) at small circle size.  The Wilson line around
-\(S^1\) and the dual photon combine into periodic chiral coordinates
-\(Y_i\), with \(i=1,\ldots,N_c\) and \(\sum_iY_i=0\).  Monopole-instanton
-events associated with the simple roots and the affine root generate an
-affine-Toda superpotential of the form
+\begin{proof}
+If \(H|\psi\rangle=E|\psi\rangle\) with \(E>0\), then at least one of
+\(Q|\psi\rangle\) and \(Q^\dagger|\psi\rangle\) is nonzero; otherwise
+\[
+  E\|\psi\|^2
+  =
+  \frac12\bigl(\|Q|\psi\rangle\|^2+\|Q^\dagger|\psi\rangle\|^2\bigr)
+  =
+  0 .
+\]
+The nonzero image has the same energy and opposite fermion parity.  Thus the
+positive-energy spectrum contributes zero to the supertrace.  Only
+\(\ker H\) remains, giving the displayed formula and \(\beta\)-independence.
+
+For a continuous family of finite-volume Hamiltonians satisfying the same
+algebra, positive-energy levels can cross or split only in supersymmetric
+boson-fermion multiplets.  The integer supertrace can change only if the
+definition of the Hilbert-space sector changes or if zero-energy states
+escape to, or arrive from, a continuum.  This is the analytic caveat: the
+graded trace identity is algebraic, while deformation invariance of a
+continuum quantum field theory is a statement about the spectral behavior of
+the regulated family.
+\end{proof}
+
+\begin{hypothesis}[Small-circle affine-Toda input]
+\label{hyp:pure-sym-small-circle-affine-toda-input}
+The following semiclassical computation is used as a controlled chiral-sector
+model for the same \(SU(N_c)\) theory with periodic fermions on
+\(\mathbb R^3\times S^1_R\).  Work at small \(R\) in a weak-coupling region
+with a generic Wilson line breaking
+\[
+  SU(N_c)\longrightarrow U(1)^{N_c-1}.
+\]
+The Wilson-line scalars and dual photons are assembled into periodic chiral
+coordinates \(Y_i\), \(i=1,\ldots,N_c\), with
+\(\sum_iY_i=0\).  In the basis
+\[
+  \alpha_i=e_i-e_{i+1},\quad i=1,\ldots,N_c-1,
+  \qquad
+  \alpha_0=e_{N_c}-e_1,
+\]
+the \(N_c-1\) fundamental monopole-instantons and the affine monopole each
+have exactly two gaugino zero modes and contribute a chiral superpotential
+term.  Their product has the topological charge and holomorphic weight of
+one four-dimensional instanton, denoted by the compactified scale coordinate
+\(\eta\).  Effects with additional fermion zero modes, nonchiral
+determinants, and boundary terms are assumed not to change the protected
+critical-point count.  After the chiral variables are gapped, the remaining
+three-dimensional theory may be placed in finite spatial volume; each
+nondegenerate massive chiral critical point contributes one even
+supersymmetric ground state to the local index.
+\end{hypothesis}
+
+Under Hypothesis~\ref{hyp:pure-sym-small-circle-affine-toda-input}, the
+monopole terms generate an affine-Toda superpotential of the form
 \[
   W_{\mathrm{aff}}
   =
@@ -443,7 +579,7 @@ affine-Toda superpotential of the form
   \eta\,\exp(Y_{N_c}-Y_1),
 \]
 where \(\eta\) is the four-dimensional holomorphic scale coordinate in the
-compactified normalization.  Define
+compactified normalization.  Define the nonzero variables
 \[
   x_i=\exp(Y_i-Y_{i+1}),\quad i=1,\ldots,N_c-1,
   \qquad
@@ -453,29 +589,108 @@ The constraint is
 \[
   x_1x_2\cdots x_{N_c}=\eta .
 \]
-The critical equations of \(W_{\mathrm{aff}}\) set
+
+\begin{proposition}[Affine-Toda critical-point count]
+\label{prop:pure-sym-affine-toda-critical-count}
+Assume Hypothesis~\ref{hyp:pure-sym-small-circle-affine-toda-input} and
+\(\eta\neq0\).  The critical equations of \(W_{\mathrm{aff}}\) on the
+constraint hypersurface
+\[
+  x_1\cdots x_{N_c}=\eta
+\]
+have exactly \(N_c\) isolated solutions:
 \[
   x_1=x_2=\cdots=x_{N_c}.
 \]
-Hence
+Equivalently, if \(x\) is the common value, then
 \[
-  x_i^{N_c}=\eta ,
+  x^{N_c}=\eta .
 \]
-and there are \(N_c\) isolated supersymmetric vacua.  This matches the
-discrete phases of the gaugino condensate above and gives
-\[
-  \mathcal I_{SU(N_c)}=N_c
-\]
-under the compactification and gap hypotheses just stated.  For a simple
-simply connected gauge group \(G\), the corresponding number is the dual
-Coxeter number \(h^\vee_G\).
+\end{proposition}
 
-The delicate point is the route from this small-circle computation to the
-four-dimensional infinite-volume theory.  The index protects the count only
-if the family of Hamiltonians has no leakage through a continuum and if the
-boundary conditions preserve the same supersymmetry and global form.  The
-index is used here together with this finite-volume and compactification
-ledger.
+\begin{proof}
+Write variations tangent to the constraint as
+\[
+  \delta x_i=x_i\,\delta y_i,
+  \qquad
+  \sum_{i=1}^{N_c}\delta y_i=0 .
+\]
+The first variation of \(W_{\mathrm{aff}}=\sum_i x_i\) is
+\[
+  \delta W_{\mathrm{aff}}
+  =
+  \sum_{i=1}^{N_c}x_i\,\delta y_i .
+\]
+This vanishes for every vector \((\delta y_i)\) with zero sum if and only if
+all \(x_i\) are equal.  The constraint then gives \(x^{N_c}=\eta\), which has
+\(N_c\) solutions when \(\eta\neq0\).
+
+The solutions are isolated.  On the tangent hyperplane
+\(\sum_i\delta y_i=0\), the quadratic term at a critical point is
+\[
+  \frac{x}{2}\sum_{i=1}^{N_c}(\delta y_i)^2 .
+\]
+Since \(x\neq0\), the bilinear form \(\sum_i(\delta y_i)^2\) is
+nondegenerate on the hyperplane.  Thus each critical point is Morse in the
+complex holomorphic sense.
+\end{proof}
+
+\begin{hypothesis}[Index continuation and massive-branch interpretation]
+\label{hyp:pure-sym-index-continuation-massive-branch}
+The \(SU(N_c)\) index obtained in the small-circle semiclassical chamber is
+identified with the four-dimensional finite-volume index only when no
+zero-energy state leaks through a continuum and the spin structure, global
+form, and flux sector are unchanged.  The infinite-volume limit is assumed
+to have \(N_c\) massive pure phases, related by the anomalous
+\(\mathbb Z_{2N_c}\) chiral symmetry and satisfying cluster decomposition.
+This hypothesis is not a constructive proof of confinement or of a mass gap.
+\end{hypothesis}
+
+\begin{proposition}[Pure \(SU(N_c)\) index and condensate ledger]
+\label{prop:pure-sym-index-condensate-ledger}
+Assume Hypotheses~\ref{hyp:pure-sym-finite-volume-index-problem},
+\ref{hyp:pure-sym-small-circle-affine-toda-input}, and
+\ref{hyp:pure-sym-index-continuation-massive-branch}.  Then
+\[
+  \mathcal I_{SU(N_c)}=N_c .
+\]
+If, in addition, Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description}
+realizes the massive chiral branches through the glueball coordinate \(S\),
+then the \(N_c\) branches have condensates
+\[
+  \langle S\rangle_k
+  =
+  C\,\Lambda_h^3\ee^{2\pi\ii k/N_c},
+  \qquad k=0,\ldots,N_c-1,
+\]
+and the discrete chiral symmetry is broken as
+\(\mathbb Z_{2N_c}\to\mathbb Z_2\) in each pure phase.
+\end{proposition}
+
+\begin{proof}
+The affine-Toda computation gives \(N_c\) isolated supersymmetric critical
+points in the small-circle chamber.  The finite-volume graded-trace identity
+turns this critical-point count into the index in that chamber, because the
+critical points are isolated and massive in the chiral variables of the
+semiclassical approximation.  The continuation hypothesis then identifies
+the same integer with the four-dimensional \(SU(N_c)\) finite-volume index.
+
+The condensate statement uses an input beyond the index: the additional
+glueball \(F\)-term hypothesis.  Under that hypothesis,
+Proposition~\ref{prop:pure-sym-condensate-branches-source} gives precisely
+the displayed \(N_c\)-fold orbit of \(\langle S\rangle\).  Since \(S\) has
+gaugino-phase charge \(2\), a nonzero value of \(\langle S\rangle_k\) leaves
+only the \(\alpha=\pi\) subgroup unbroken, namely \(\mathbb Z_2\).
+\end{proof}
+
+For a simple simply connected gauge group \(G\), the expected index is the
+dual Coxeter number \(h^\vee_G\).  The monograph does not use that general
+statement here; the detailed derivation above is the \(SU(N_c)\) case, where
+\(h^\vee_{SU(N_c)}=N_c\).  The delicate point is still the route from the
+regulated finite-volume computation to the four-dimensional infinite-volume
+theory: the index protects a signed count only under the stated spectral and
+boundary-condition hypotheses, while the condensate requires the additional
+massive-branch and chiral-source input.
 
 \section{ADS Superpotential}
 

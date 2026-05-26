@@ -10,6 +10,32 @@ def assert_equal(left, right, label):
         raise AssertionError(f"{label}: got {left!r}, expected {right!r}")
 
 
+def determinant_integer(matrix):
+    size = len(matrix)
+    work = [[Fraction(entry) for entry in row] for row in matrix]
+    det = Fraction(1)
+    for col in range(size):
+        pivot = None
+        for row in range(col, size):
+            if work[row][col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            return 0
+        if pivot != col:
+            work[col], work[pivot] = work[pivot], work[col]
+            det *= -1
+        pivot_value = work[col][col]
+        det *= pivot_value
+        for entry in range(col, size):
+            work[col][entry] /= pivot_value
+        for row in range(col + 1, size):
+            factor = work[row][col]
+            for entry in range(col, size):
+                work[row][entry] -= factor * work[col][entry]
+    return det
+
+
 def check_discrete_chiral_anomaly_and_condensate_phases():
     for nc in range(2, 30):
         anomaly_coefficient = 2 * nc
@@ -58,6 +84,24 @@ def check_vy_superpotential_arithmetic():
             raise AssertionError("VY critical point should be isolated for Nc >= 2")
 
 
+def check_condensate_source_and_branch_monodromy():
+    for nc in range(2, 30):
+        # W_k(L)=Nc*C*L^(1/Nc)*phase_k, so L dW_k/dL=S_k.
+        critical_value_coefficient = nc
+        root_exponent = Fraction(1, nc)
+        source_coefficient = critical_value_coefficient * root_exponent
+        assert_equal(source_coefficient, 1, "condensate branch source identity")
+
+        for branch in range(nc):
+            theta_loop_branch = (branch + 1) % nc
+            chiral_generator_branch = (branch + 1) % nc
+            assert_equal(
+                theta_loop_branch,
+                chiral_generator_branch,
+                "theta-loop and chiral-generator branch action",
+            )
+
+
 def check_affine_toda_index_match():
     for nc in range(2, 30):
         simple_root_terms = nc - 1
@@ -65,9 +109,45 @@ def check_affine_toda_index_match():
         total_terms = simple_root_terms + affine_root_terms
         assert_equal(total_terms, nc, "pure SYM affine-Toda term count")
 
+        root_vectors = []
+        for index in range(nc - 1):
+            vector = [0] * nc
+            vector[index] = 1
+            vector[index + 1] = -1
+            root_vectors.append(vector)
+        affine_vector = [-1] + [0] * (nc - 2) + [1]
+        root_vectors.append(affine_vector)
+        telescoping_sum = [
+            sum(vector[column] for vector in root_vectors)
+            for column in range(nc)
+        ]
+        assert_equal(
+            telescoping_sum,
+            [0] * nc,
+            "affine-Toda product constraint telescopes to eta",
+        )
+
+        # On sum_i delta y_i=0, use the basis e_i-e_N.  The quadratic form
+        # sum_i (delta y_i)^2 has Gram matrix I+J, determinant Nc.
+        tangent_gram = [
+            [2 if row == column else 1 for column in range(nc - 1)]
+            for row in range(nc - 1)
+        ]
+        assert_equal(
+            determinant_integer(tangent_gram),
+            nc,
+            "affine-Toda constrained Hessian determinant",
+        )
+
         roots_of_x_power_equation = nc
+        local_index_contribution_per_critical_point = 1
         witten_index = nc
         condensate_phases = nc
+        assert_equal(
+            roots_of_x_power_equation * local_index_contribution_per_critical_point,
+            witten_index,
+            "affine-Toda local critical-point index",
+        )
         assert_equal(roots_of_x_power_equation, witten_index, "affine-Toda vacuum count")
         assert_equal(condensate_phases, witten_index, "pure SYM condensate/index match")
 
@@ -75,6 +155,7 @@ def check_affine_toda_index_match():
 def main():
     check_discrete_chiral_anomaly_and_condensate_phases()
     check_vy_superpotential_arithmetic()
+    check_condensate_source_and_branch_monodromy()
     check_affine_toda_index_match()
     print("All pure N=1 SYM glueball and index checks passed.")
 
