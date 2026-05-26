@@ -95,6 +95,38 @@ def check_wiener_chaos_isometry_and_moments():
     assert_equal(moment_constant, 132543, "finite chaos coordinate-moment constant")
 
 
+def check_dual_norm_finite_chaos_estimate_arithmetic():
+    # The dual-norm finite-chaos proposition deliberately uses the integer
+    # moment constants C_{q,m}, rather than their 1/(2m)-roots, to keep a
+    # clean explicit bound.  For 2m=4, use C_0=1, C_1=3, and the exact
+    # fourth moment C_2=60 of H_2(G).
+    c = [1, 3, 60]
+    b_uniform = [2, 3, 4]
+    b_edge = [1, 2, 1]
+    uniform_lp_prefactor = sum(ci * bi for ci, bi in zip(c, b_uniform))
+    edge_lp_prefactor = sum(ci * bi for ci, bi in zip(c, b_edge))
+    assert_equal(uniform_lp_prefactor, 251, "dual-norm chaos uniform L4 prefactor")
+    assert_equal(edge_lp_prefactor, 67, "dual-norm chaos edge L4 prefactor")
+    assert_equal(uniform_lp_prefactor**4, 3969126001, "dual-norm chaos uniform fourth moment")
+    assert_equal(edge_lp_prefactor**4, 20151121, "dual-norm chaos edge fourth moment")
+
+    # If the projective tensor norm on an edge carries
+    # 2^{-((d+epsilon)/p) ell}, then the p-th moment carries
+    # 2^{-(d+epsilon) ell}, exactly matching the dyadic-net hypothesis.
+    p = 4
+    d = 6
+    epsilon = 2
+    ell = 5
+    numerator = (d + epsilon) * ell
+    if numerator % p != 0:
+        raise AssertionError("dual-norm edge sample must have integral exponent")
+    projective_exponent = -numerator // p
+    moment_exponent = p * projective_exponent
+    assert_equal(projective_exponent, -10, "dual-norm projective edge exponent")
+    assert_equal(moment_exponent, -40, "dual-norm moment edge exponent")
+    assert_equal(moment_exponent, -(d + epsilon) * ell, "dual-norm edge exponent transfer")
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -818,6 +850,7 @@ def check_one_loop_relative_scale_gap_arithmetic():
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
+    check_dual_norm_finite_chaos_estimate_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -841,7 +874,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

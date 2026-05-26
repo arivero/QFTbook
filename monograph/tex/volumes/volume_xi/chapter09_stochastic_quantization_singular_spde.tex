@@ -1537,6 +1537,138 @@ seminorm by spatial and scale regularity estimates.  Once those deterministic
 steps are done, Theorem~\ref{thm:spde-random-model-cauchy-criterion} turns
 the coordinate estimates into convergence of the random model.
 
+\begin{proposition}[Dual-norm finite-chaos estimate]
+\label{prop:spde-dual-norm-finite-chaos-estimate}
+Let \(E\) be a separable Banach space with dual \(E'\).  For a Hilbert space
+\(H\), write \(H^{\odot q}\widehat\otimes_\pi E'\) for the projective tensor
+completion of the algebraic tensor product, with norm
+\[
+  \|F\|_{\pi}
+  =
+  \inf
+  \left\{
+    \sum_{j=1}^N\|f_j\|_{H^{\otimes q}}\|\ell_j\|_{E'}:
+    F=\sum_{j=1}^N f_j\otimes \ell_j
+  \right\},
+\]
+where the infimum is over all finite representations; the completed norm is
+obtained by taking limits.  If \(F\in H^{\odot q}\widehat\otimes_\pi E'\),
+define the \(E'\)-valued chaos integral \(I_q(F)\) by completion from
+\[
+  I_q\!\left(\sum_{j=1}^N f_j\otimes \ell_j\right)
+  =
+  \sum_{j=1}^N I_q(f_j)\ell_j .
+\]
+Then, for every integer \(m\geq1\),
+\begin{equation}
+  \left\|\|I_q(F)\|_{E'}\right\|_{L^{2m}(\Omega)}
+  \leq
+  C_{q,m}\|F\|_\pi ,
+  \label{eq:spde-dual-chaos-single-bound}
+\end{equation}
+where \(C_{q,m}\) is any constant satisfying
+\eqref{eq:spde-wiener-chaos-even-moment-bound} and \(C_{q,m}\geq1\).
+
+Consequently, suppose that \(E'\)-valued random variables \(Y_n(a)\),
+\(a\in\mathcal A\), have finite chaos expansions
+\[
+  Y_n(a)=\sum_{q=0}^{Q_0}I_q(F_{n,a,q}),
+  \qquad
+  F_{n,a,q}\in H^{\odot q}\widehat\otimes_\pi E',
+\]
+and that deterministic weights \(\sigma(a)\) and \(\omega(a,b)\) obey
+\[
+  \|F_{n,a,q}\|_\pi\leq B_q\sigma(a),
+  \qquad
+  \|F_{n,b,q}-F_{n,a,q}\|_\pi\leq B_q^{\rm ed}\omega(a,b).
+\]
+Then
+\[
+  \mathbb E\|Y_n(a)\|_{E'}^{2m}
+  \leq
+  M_m\sigma(a)^{2m},
+  \qquad
+  \mathbb E\|Y_n(b)-Y_n(a)\|_{E'}^{2m}
+  \leq
+  M_m^{\rm ed}\omega(a,b)^{2m},
+\]
+with
+\[
+  M_m=
+  \left(\sum_{q=0}^{Q_0}C_{q,m}B_q\right)^{2m},
+  \qquad
+  M_m^{\rm ed}=
+  \left(\sum_{q=0}^{Q_0}C_{q,m}B_q^{\rm ed}\right)^{2m}.
+\]
+The same conclusion holds with an additional factor \(2^{-\rho n}\) in the
+projective-norm bounds for cutoff differences; the \(2m\)-th moments then
+carry the factor \(2^{-2m\rho n}\).
+\end{proposition}
+
+\begin{proof}
+First take \(F=\sum_{j=1}^N f_j\otimes\ell_j\).  The triangle inequality in
+\(E'\) and Minkowski's inequality in \(L^{2m}(\Omega)\) give
+\[
+\begin{aligned}
+  \left\|\|I_q(F)\|_{E'}\right\|_{L^{2m}}
+  &\leq
+  \sum_{j=1}^N
+  \left\||I_q(f_j)|\,\|\ell_j\|_{E'}\right\|_{L^{2m}}       \\
+  &\leq
+  C_{q,m}\sum_{j=1}^N\|f_j\|_{H^{\otimes q}}\|\ell_j\|_{E'} .
+\end{aligned}
+\]
+Taking the infimum over finite representations proves
+\eqref{eq:spde-dual-chaos-single-bound} on the algebraic tensor product.
+If \(F^{(N)}\to F\) in the projective norm, the same inequality applied to
+\(F^{(N)}-F^{(M)}\) shows that \(I_q(F^{(N)})\) is Cauchy in
+\(L^{2m}(\Omega;E')\); its limit is the stated completion, and the bound
+passes to the limit.
+
+For a finite chaos expansion, apply
+\eqref{eq:spde-dual-chaos-single-bound} to each \(q\) and use Minkowski:
+\[
+  \left\|\|Y_n(a)\|_{E'}\right\|_{L^{2m}}
+  \leq
+  \sum_{q=0}^{Q_0}
+  C_{q,m}\|F_{n,a,q}\|_\pi
+  \leq
+  \left(\sum_{q=0}^{Q_0}C_{q,m}B_q\right)\sigma(a).
+\]
+Raising to the \(2m\)-th power gives the first estimate.  Replacing
+\(F_{n,a,q}\) by \(F_{n,b,q}-F_{n,a,q}\) gives the edge estimate.  Replacing
+that difference by a cutoff difference with projective-norm bound
+\(2^{-\rho n}B_q\sigma(a)\), or by an edge cutoff difference with
+\(2^{-\rho n}B_q^{\rm ed}\omega(a,b)\), gives the stated cutoff factor.
+\end{proof}
+
+Apply Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} with
+\[
+  E=E_r:=
+  \{\varphi\in C^r(\R^{1+3}):
+    \operatorname{supp}\varphi\subset B_{\mathfrak s}(0,1)\},
+  \qquad
+  \|\varphi\|_{E_r}=\|\varphi\|_{C^r}.
+\]
+Then \(E_r'\) is the space in which a tested model coordinate acts before
+the supremum over \(\varphi\in\mathcal B_r\) is taken.  For a fixed physical
+parameter \(a\), an \(E_r'\)-valued chaos expansion of the functional
+\[
+  \varphi\longmapsto
+  \delta^{-|\tau|}
+  \langle\Pi_z^{(n)}\tau,\varphi_z^\delta\rangle
+\]
+has dual norm exactly
+\[
+  \sup_{\varphi\in\mathcal B_r}
+  \delta^{-|\tau|}
+  |\langle\Pi_z^{(n)}\tau,\varphi_z^\delta\rangle|.
+\]
+Thus the correct route to the \(Q_{n,\tau}^{\#}\) estimates is not to net the
+test-function ball.  It is to prove projective tensor bounds for the
+\(E_r'\)-valued BPHZ kernels and then apply the dual-norm chaos estimate
+above.
+
 \begin{proposition}[Dyadic parabolic convolution bound]
 \label{prop:spde-dyadic-parabolic-convolution-bound}
 Let \((\mathbb R^D,\mathfrak s)\) be a parabolically scaled space with
@@ -3130,6 +3262,40 @@ The parabolic norm is homogeneous under \(\mathsf D_\lambda\), hence
 \(h\in A_{\mathfrak s}\) and \(z'=z+\mathsf D_{2^{-m}}h\).  This proves the
 \(\Gamma\)-coordinate decomposition.
 \end{proof}
+
+Combining
+Proposition~\ref{prop:spde-negative-sector-physical-parameter-entropy} with
+Proposition~\ref{prop:spde-dual-norm-finite-chaos-estimate} gives the precise
+form of the remaining stochastic estimates for the \(\Pi\)-coordinates.  For
+each \(\tau\in\mathfrak C_\Pi\), each dyadic physical scale \(m\), and each
+point \((z,a)\in K\times[1/2,1]\), the BPHZ construction must produce an
+\(E_r'\)-valued finite chaos expansion of
+\[
+  \varphi\longmapsto
+  2^{m|\tau|}a^{-|\tau|}
+  \left\langle
+    \Pi_z^{(n)}\tau,\varphi_z^{2^{-m}a}
+  \right\rangle .
+\]
+The projective tensor norm of each chaos kernel must carry a factor
+\(2^{-\sigma_\tau m}\), and the projective norm of its increment along an
+edge of the \(d_{\Pi,m}\)-net at level \(\ell\) must carry the additional
+factor \(2^{-(6+\varepsilon_\tau)\ell/(2m_0)}\) when the final moment is
+\(p=2m_0\).  The same statements, with an extra factor \(2^{-\rho n}\), are
+required for the cutoff difference \(Z_{n+1}-Z_n\).  These bounds feed
+directly into
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence} with
+\(D_\tau=5\) and \(d_\tau=6\).
+
+For the \(\Gamma\)-coordinate \(c_n(z,z')\), there is no test-function dual
+norm.  The remaining estimate is a scalar finite-chaos estimate on the
+physical space \(\mathcal X_{\Gamma,m}\), with projective tensor bounds in
+\(\mathbb R\) and edge exponent \(d_{\mathfrak g}=10\).  The analytic
+substance is therefore concentrated in the concrete BPHZ kernel estimates for
+\(\Xi,X,X^2,X^3,XY,X^2Y\) and for the reexpansion coefficient of
+\(Y=\mathcal I(X^3)\); once those estimates are written with the displayed
+projective norms, the stochastic and entropy parts of the negative-sector
+model convergence proof have already been proved in this chapter.
 
 \section{BPHZ Renormalization of the Dynamic Equation}
 

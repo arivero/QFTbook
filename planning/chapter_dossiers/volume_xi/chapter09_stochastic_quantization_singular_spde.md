@@ -66,6 +66,9 @@ data.
   regularity sector.
 - `H`, `xi`, `I_q(f)`: Hilbert space, isonormal Gaussian process, and
   \(q\)-fold Wick multiple integral in the finite Wiener-chaos estimate.
+- `E`, `E'`, `H^{odot q} \widehat\otimes_\pi E'`: Banach test-function
+  space, its dual, and the projective tensor space used to turn
+  distribution-valued chaos kernels into dual-norm coordinate estimates.
 - `Y_n(a)`, `sigma(a)`: model-coordinate random variable and deterministic
   scale weight in the kernel-to-coordinate moment corollary.
 - `Q`, `K_i`, `L_i`, `M_k`: homogeneous dimension, dyadic input kernels, and
@@ -211,6 +214,12 @@ data.
 - Proves a kernel-to-coordinate stochastic moment corollary: finite chaos
   expansions with deterministic kernel bounds give the pointwise stochastic
   moment and dyadic increment estimates that enter random-model convergence.
+- Proves a dual-norm finite-chaos estimate: projective tensor bounds on
+  \(E'\)-valued chaos kernels give \(L^{2m}\) bounds for the dual norm.
+  Applying this with \(E=E_r\), the \(C^r\) test-function Banach space,
+  identifies \(Q_{n,\tau}^{#}\) with the correct dual norm and avoids
+  treating the infinite-dimensional test-function ball as a finite
+  parameter space.
 - Proves a dyadic parabolic convolution bound: support and pointwise scale
   estimates for order-\(a\) and order-\(b\) kernels imply order-\((a+b)\)
   output bounds, including \(L^\infty\) and \(L^1\) estimates with explicit
@@ -450,3 +459,11 @@ data maps.
   \(K\times[1/2,1]\) and \(K\times A_{\mathfrak s}\) by parabolic grids.  The
   calculation-check companion verifies the exponents \(D=5\), \(d_\Pi=6\), and
   \(d_\Gamma=10\).
+- 2026-05-26 issue #582 dual-norm continuation: the chapter now proves the
+  Banach-dual finite-chaos estimate needed after the test-function supremum is
+  dualized.  The proof defines the projective tensor norm, constructs
+  \(E'\)-valued chaos integrals by completion, and derives the \(L^{2m}\)
+  dual-norm bound from the scalar chaos moment estimate and Minkowski's
+  inequality.  The calculation-check companion verifies the integer
+  overestimate constants and the transfer from projective edge decay to the
+  dyadic-net moment exponent.

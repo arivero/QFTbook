@@ -118,7 +118,8 @@ Current checks:
   finite negative-sector coordinate chart, including the scale-summed
   coordinate supremum arithmetic and the seven-coordinate constants in the
   negative-sector model convergence criterion, plus the physical-parameter
-  entropy exponents after the test-function supremum has been dualized.
+  entropy exponents after the test-function supremum has been dualized, and
+  the projective-tensor arithmetic in the dual-norm finite-chaos estimate.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian
