@@ -773,6 +773,68 @@ def check_su2c_nested_bethe_yang_frame_factors() -> None:
     assert_close("nested K^III count", n2 + n4, 9)
 
 
+def check_finite_density_aba_counting_normalization() -> None:
+    """Check the L-normalized counting function used at finite magnon density."""
+
+    density_fraction = 0.6
+
+    def momentum_derivative(u_value: float) -> float:
+        return 1 + u_value * u_value
+
+    def phase(u_value: float, v_value: float) -> float:
+        difference = u_value - v_value
+        return difference + difference**3 / 3
+
+    def phase_derivative(u_value: float, v_value: float) -> float:
+        difference = u_value - v_value
+        return 1 + difference * difference
+
+    def continuum_counting_derivative(u_value: float) -> float:
+        uniform_average = 1 + u_value * u_value + Fraction(1, 3)
+        return momentum_derivative(u_value) + density_fraction * float(uniform_average)
+
+    def roots_for_length(length: int) -> list[float]:
+        root_count = int(round(density_fraction * length))
+        return [-1 + (index + 0.5) * 2 / root_count for index in range(root_count)]
+
+    for u_value in (-0.4, 0.2, 0.9):
+        roots = roots_for_length(3000)
+        finite_derivative = momentum_derivative(u_value) + sum(
+            phase_derivative(u_value, root) for root in roots
+        ) / 3000
+        continuum_derivative = continuum_counting_derivative(u_value)
+        assert_close(
+            "finite-density ABA counting derivative",
+            finite_derivative,
+            continuum_derivative,
+            tol=1.0e-7,
+        )
+
+        unit_mass_derivative = momentum_derivative(u_value) + float(
+            1 + u_value * u_value + Fraction(1, 3)
+        )
+        if abs(finite_derivative - continuum_derivative) >= 0.25 * abs(
+            finite_derivative - unit_mass_derivative
+        ):
+            raise AssertionError("ABA counting used the wrong empirical-measure mass")
+
+        small_interval = 1.0e-5
+        finite_counting_jump = (
+            small_interval * momentum_derivative(u_value)
+            + sum(
+                phase(u_value + small_interval, root) - phase(u_value, root)
+                for root in roots
+            )
+            / 3000
+        )
+        assert_close(
+            "finite-density ABA level-density normalization",
+            finite_counting_jump / (2 * math.pi * small_interval),
+            continuum_derivative / (2 * math.pi),
+            tol=5.0e-6,
+        )
+
+
 def check_weak_dispersion_expansion() -> None:
     g = 1.0e-4
     for momentum in (0.4, 1.2, 2.7):
@@ -2045,6 +2107,7 @@ def main() -> None:
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()
     check_su2c_nested_bethe_yang_frame_factors()
+    check_finite_density_aba_counting_normalization()
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()

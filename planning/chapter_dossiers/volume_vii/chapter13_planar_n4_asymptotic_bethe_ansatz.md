@@ -31,6 +31,10 @@ the monograph's proof-boundary language.
   excitations in one `su(2|2)_c` copy.
 - `S_str`: string-basis nesting factor after absorbing half of the
   length-changing marker into bosons.
+- `Z_L,Z,rho,rho_h`: ABA counting functions, occupied root density, and hole
+  density used in the large-`L` finite-density limit.
+- `K(u,v)`: phase-derivative kernel `(2 pi)^{-1} partial_u Theta(u,v)` in the
+  ABA counting equation.
 - `E_Q,p`: bound-state energy and momentum.
 - `f(g)`: large-spin cusp scaling function.
 
@@ -71,6 +75,12 @@ the monograph's proof-boundary language.
   root configurations as `L -> infinity`, with wrapping/mirror winding
   suppressed.  This is deliberately distinguished from thermodynamic Bethe
   ansatz.
+- Adds and proves a finite-density ABA counting equation: from
+  `L p(u_j)+sum Theta(u_j,u_k)=2 pi I_j`, empirical measures normalized by
+  `1/L` converge to `rho(v) dv`, and the available-level density satisfies
+  `rho+rho_h=Z'(u)/(2 pi)=p'(u)/(2 pi)+int K(u,v)rho(v)dv`.  The text states
+  the branch/no-crossed-singularity hypotheses and emphasizes that this is
+  still ABA, not mirror TBA.
 - Gives the `SU(2)` all-loop asymptotic Bethe equations and cyclicity.
 - Proves the first single-defect nested Bethe step in the stringbook
   orientation: the mixed `su(2|2)_c` amplitude ratios imply
@@ -132,6 +142,9 @@ crossed Zhukovsky sheets.
 - It checks closed-chain nesting frame conventions: string-basis level-I and
   level-II frame ratios, reciprocal `SU(2)`/`SL(2)` auxiliary factors,
   level-III inverse orientation, and the nesting-number bookkeeping.
+- It checks the finite-density ABA counting normalization on a toy diagonal
+  phase: the empirical measure is normalized by `1/L`, the limiting mass is
+  `M/L`, and the level density is `Z'(u)/(2 pi)`.
 - The same script now checks BMN scaling, bound-state dispersion, and weak
   coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
 - It checks the one-loop `SL(2)` large-spin cusp resolvent: physical

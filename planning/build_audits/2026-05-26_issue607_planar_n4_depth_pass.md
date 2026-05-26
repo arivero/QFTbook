@@ -574,3 +574,32 @@ Calculation checks added:
 - `check_mirror_zhukovsky_sheet_parametrization()` verifies the inside/outside
   sheet assignment, shortening, mirror momentum sign, and weak Boltzmann
   leading order for several charges, momenta, and couplings.
+
+## Continuation XXII: Finite-Density ABA Counting Assumption
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Content added:
+
+- Added a self-contained finite-density ABA counting proposition immediately
+  after the asymptotic Bethe-Yang regime assumption.
+- Stated the branch, regularity, empirical-measure, and hole-density
+  hypotheses needed to pass from
+  `L p(u_j)+sum_{k neq j} Theta(u_j,u_k)=2 pi I_j` to the macroscopic
+  counting equation.
+- Proved
+  `rho+rho_h=Z'(u)/(2 pi)=p'(u)/(2 pi)+int K(u,v)rho(v)dv`, with
+  `K=(2 pi)^{-1} partial_u Theta`, using the `1/L` empirical measure.
+- Explicitly separated this large-`L` finite-density ABA limit from mirror
+  TBA: it uses no mirror energy, entropy functional, pseudoenergy, or thermal
+  variational principle.
+
+Calculation checks added:
+
+- `check_finite_density_aba_counting_normalization()` verifies the `1/L`
+  empirical-measure normalization and `Z'(u)/(2 pi)` level-density
+  normalization on a finite-density diagonal Bethe-Yang toy model.

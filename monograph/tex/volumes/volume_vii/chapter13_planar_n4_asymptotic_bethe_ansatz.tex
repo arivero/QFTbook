@@ -530,6 +530,82 @@ can wrap around the trace, the omitted mirror-winding effects are no longer
 parametrically absent.
 \end{assumption}
 
+The word ``asymptotic'' in this assumption refers to the spatial length of the
+spin chain, not to a sparse-gas approximation.  The following elementary
+counting statement is the precise large-\(L\) bridge used whenever an ABA
+solution is replaced by a macroscopic root distribution.
+
+\begin{proposition}[Finite-density ABA counting equation]
+\label{prop:planar-n4-aba-finite-density-counting}
+Consider a diagonal component of a long-chain Bethe--Yang problem with rapidity
+variables \(u_j\), \(j=1,\ldots,M_L\), and logarithmic equations
+\begin{equation}
+  Lp(u_j)+\sum_{\substack{k=1\\k\neq j}}^{M_L}\Theta(u_j,u_k)
+  =
+  2\pi I_j,
+  \qquad I_j\in\mathbb Z .
+  \label{eq:planar-n4-aba-log-counting-form}
+\end{equation}
+Assume a branch of the two-body phase \(\Theta\) has been chosen on the
+rapidity interval under consideration; possible diagonal jumps have either
+been removed by this branch choice or are treated as explicit source terms.
+Assume also that \(M_L/L\) has a finite limit and that the empirical measures
+\[
+  \nu_L=\frac1L\sum_{j=1}^{M_L}\delta_{u_j}
+\]
+converge weakly to \(\rho(v)\dd v\) on compact subintervals where
+\(p\) and \(\Theta\) are \(C^1\).  Define
+\[
+  Z_L(u)=p(u)+\frac1L\sum_{j=1}^{M_L}\Theta(u,u_j),
+  \qquad
+  Z(u)=p(u)+\int\Theta(u,v)\rho(v)\,\dd v .
+\]
+Then \(Z_L\to Z\) locally uniformly after differentiating under the stated
+regularity hypotheses, and the density of available Bethe levels is
+\begin{equation}
+  \rho(u)+\rho_{\rm h}(u)
+  =
+  \frac{1}{2\pi}Z'(u)
+  =
+  \frac{p'(u)}{2\pi}
+  +
+  \int K(u,v)\rho(v)\,\dd v,
+  \qquad
+  K(u,v)=\frac{1}{2\pi}\partial_u\Theta(u,v).
+  \label{eq:planar-n4-aba-finite-density-counting-equation}
+\end{equation}
+Here \(\rho_{\rm h}\) is the macroscopic density of unoccupied integer levels
+in the chosen branch.  In a completely filled interval \(\rho_{\rm h}=0\).
+\end{proposition}
+
+\begin{proof}
+Weak convergence gives
+\[
+  \frac1L\sum_{j=1}^{M_L}\Theta(u,u_j)
+  \longrightarrow
+  \int\Theta(u,v)\rho(v)\,\dd v
+\]
+uniformly on compact subsets on which the phase is continuous and the root
+cloud stays away from unaccounted singularities.  The same statement applied
+to \(\partial_u\Theta\) gives the derivative formula for \(Z'(u)\).
+Equation~\eqref{eq:planar-n4-aba-log-counting-form} says that the integer
+level attached to rapidity \(u\) is, to leading order, \(LZ(u)/(2\pi)\).  Hence
+the number of available integer levels in a small interval \([u,u+\dd u]\) is
+\[
+  \frac{L}{2\pi}Z'(u)\,\dd u+o(L\,\dd u).
+\]
+Dividing by \(L\,\dd u\) gives the density of occupied plus unoccupied
+available levels, namely \(\rho+\rho_{\rm h}\).  This proves
+\eqref{eq:planar-n4-aba-finite-density-counting-equation}.
+\end{proof}
+
+This is a large-\(L\) continuum limit of the same physical ABA equations.  It
+is not mirror TBA: no mirror energy, entropy functional, pseudoenergy, or
+thermal variational problem has been introduced.  The additional dynamical
+assumption is exactly the one stated above, namely that the long-chain
+two-body magnon S-matrix continues to quantize the physical chain when
+\(M_L/L=O(1)\), as long as mirror winding remains asymptotically suppressed.
+
 In the \(SU(2)\) scalar subsector, the all-loop asymptotic Bethe equations can
 be written
 \begin{equation}
