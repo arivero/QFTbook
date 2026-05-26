@@ -1179,16 +1179,209 @@ identity on the dense set \(D\) identifies that limit with \(Y(T)\).  Hence
 \(Y_n(T)\rightharpoonup Y(T)\) weakly in \(L^2(\mathbb T^2)\).
 \end{proof}
 
+\begin{lemma}[Fourier Aubin--Lions compactness on the torus]
+\label{lem:spde-fourier-aubin-lions}
+Let \((u_n)\) be a sequence such that
+\[
+  \sup_n
+  \left[
+    \|u_n\|_{L^2([0,T];H^1(\mathbb T^2))}
+    +
+    \|\partial_tu_n\|_{L^{4/3}([0,T];H^{-1}(\mathbb T^2))}
+  \right]
+  <\infty .
+\]
+Then a subsequence converges strongly in
+\(L^2([0,T];L^2(\mathbb T^2))\).
+\end{lemma}
+
+\begin{proof}
+Let \(P_M\) denote the Fourier projection onto modes \(|k|\leq M\).  The
+high-frequency tail is uniformly small:
+\[
+  \|(1-P_M)u_n\|_{L^2_tL^2_x}
+  \leq
+  (1+M^2)^{-1/2}
+  \|u_n\|_{L^2_tH^1_x}.
+\]
+It remains to prove compactness of \(P_Mu_n\) for fixed \(M\).  The range
+\(E_M=P_ML^2(\mathbb T^2)\) is finite dimensional.  On \(E_M\) all Hilbert
+norms are equivalent, and the hypotheses imply
+\[
+  \sup_n
+  \left[
+    \|P_Mu_n\|_{L^2([0,T];E_M)}
+    +
+    \|\partial_tP_Mu_n\|_{L^{4/3}([0,T];E_M)}
+  \right]
+  <\infty .
+\]
+Since \([0,T]\) has finite measure, the first term also bounds
+\(\|P_Mu_n\|_{L^{4/3}([0,T];E_M)}\).  Thus \(P_Mu_n\) is bounded in
+\(W^{1,4/3}([0,T];E_M)\).  For \(s,t\in[0,T]\),
+\[
+  \|P_Mu_n(t)-P_Mu_n(s)\|_{E_M}
+  \leq
+  |t-s|^{1/4}\,
+  \|\partial_tP_Mu_n\|_{L^{4/3}([0,T];E_M)} ,
+\]
+so the family is equicontinuous, and the \(L^{4/3}\)-bound controls its
+so the family is equicontinuous.  The \(L^{4/3}\)-bound also gives a
+uniform pointwise bound: for each \(n\), choose \(t_n\) with
+\[
+  \|P_Mu_n(t_n)\|_{E_M}
+  \leq
+  T^{-3/4}\|P_Mu_n\|_{L^{4/3}([0,T];E_M)} ,
+\]
+and use the preceding Hölder estimate to bound \(P_Mu_n(t)\) for every
+\(t\).  Arzela--Ascoli in the finite-dimensional space \(E_M\) now gives a
+subsequence converging in \(C([0,T];E_M)\), hence strongly in
+\(L^2([0,T];E_M)\).  Taking \(M=1,2,\ldots\) and using a diagonal
+subsequence, the finite-mode parts converge for every \(M\).  The uniform
+tail estimate then shows that the same subsequence is Cauchy in
+\(L^2([0,T];L^2(\mathbb T^2))\), proving the lemma.
+\end{proof}
+
+\begin{proposition}[Identification of the DPD distributional limit]
+\label{prop:spde-dpd-distributional-limit}
+Let the hypotheses of
+Proposition~\ref{prop:spde-dpd-energy-compactness} hold, and in addition
+assume that, for some functions \(X_1,X_2,X_3\),
+\[
+\begin{aligned}
+  X_{1,n}&\to X_1
+    &&\text{strongly in }L^4(Q_T),\\
+  X_{2,n}&\to X_2
+    &&\text{strongly in }L^2(Q_T),\\
+  X_{3,n}&\to X_3
+    &&\text{strongly in }L^{4/3}(Q_T),
+\end{aligned}
+\]
+and that \(Y_n(0)\to Y_0\) strongly in \(L^2(\mathbb T^2)\).  Let \(Y\) be
+the subsequential limit supplied by
+Proposition~\ref{prop:spde-dpd-energy-compactness}.  After passing to a
+subsequence, \(Y_n\to Y\) strongly in \(L^r(Q_T)\) for every
+\(1\leq r<4\).  Moreover \(Y\) satisfies
+\begin{equation}
+  \partial_tY
+  =
+  \Delta Y-m^2Y
+  -\lambda\bigl(Y^3+3Y^2X_1+3YX_2+X_3\bigr)
+  \label{eq:spde-dpd-distributional-limit-equation}
+\end{equation}
+as an identity in \(\mathcal D'((0,T)\times\mathbb T^2)\).  Equivalently,
+for every \(\varphi\in C^\infty([0,T]\times\mathbb T^2)\),
+\begin{align}
+  &\langle Y(T),\varphi(T)\rangle
+  -\langle Y_0,\varphi(0)\rangle
+  -\int_0^T\langle Y(t),\partial_t\varphi(t)\rangle\,\dd t
+  \notag\\
+  &\qquad =
+  \int_0^T
+  \langle Y(t),\Delta\varphi(t)-m^2\varphi(t)\rangle\,\dd t
+  \notag\\
+  &\qquad\quad
+  -\lambda\int_{Q_T}
+  \bigl(Y^3+3Y^2X_1+3YX_2+X_3\bigr)\varphi\,\dd t\,\dd x .
+  \label{eq:spde-dpd-distributional-limit-weak-form}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The compactness lemma applied to \(u_n=Y_n\) gives, after passing to a
+subsequence,
+\[
+  Y_n\to Y
+  \qquad\text{strongly in }L^2(Q_T).
+\]
+The same sequence is bounded in \(L^4(Q_T)\).  Interpolation between
+\(L^2\) convergence and the uniform \(L^4\) bound gives strong convergence
+in \(L^r(Q_T)\) for every \(2\leq r<4\), and finite measure gives strong
+convergence for \(1\leq r<2\) as well.
+
+We next pass the nonlinearities.  The cubic term satisfies
+\[
+  \|Y_n^3-Y^3\|_{L^1}
+  \leq
+  C\|Y_n-Y\|_{L^2}
+  \bigl(\|Y_n\|_{L^4}^2+\|Y\|_{L^4}^2\bigr)
+  \longrightarrow0 .
+\]
+For the \(Y^2X_1\) term, choose the strong convergence
+\(Y_n\to Y\) in \(L^{8/3}(Q_T)\).  Then
+\[
+  \|Y_n^2-Y^2\|_{L^{4/3}}
+  \leq
+  C\|Y_n-Y\|_{L^{8/3}}
+  \bigl(\|Y_n\|_{L^{8/3}}+\|Y\|_{L^{8/3}}\bigr)
+  \longrightarrow0 .
+\]
+Hence, using Hölder's inequality and the strong \(L^4\) convergence of
+\(X_{1,n}\),
+\[
+\begin{aligned}
+  \|Y_n^2X_{1,n}-Y^2X_1\|_{L^1}
+  &\leq
+  \|Y_n^2-Y^2\|_{L^{4/3}}\|X_{1,n}\|_{L^4}
+\\
+  &\quad
+  +\|Y^2\|_{L^{4/3}}\|X_{1,n}-X_1\|_{L^4}
+  \longrightarrow0 .
+\end{aligned}
+\]
+The mixed term with \(X_2\) is simpler:
+\[
+  \|Y_nX_{2,n}-YX_2\|_{L^1}
+  \leq
+  \|Y_n-Y\|_{L^2}\|X_{2,n}\|_{L^2}
+  +
+  \|Y\|_{L^2}\|X_{2,n}-X_2\|_{L^2}
+  \longrightarrow0 .
+\]
+Finally \(X_{3,n}\to X_3\) in \(L^{4/3}(Q_T)\), hence in \(L^1(Q_T)\)
+because \(Q_T\) has finite measure.
+
+For every smooth test function \(\varphi\), the smooth equation for \(Y_n\)
+gives
+\[
+\begin{aligned}
+  &\langle Y_n(T),\varphi(T)\rangle
+  -\langle Y_n(0),\varphi(0)\rangle
+  -\int_0^T\langle Y_n,\partial_t\varphi\rangle\,\dd t
+\\
+  &\qquad =
+  \int_0^T
+  \langle Y_n,\Delta\varphi-m^2\varphi\rangle\,\dd t
+  -\lambda\int_{Q_T}
+  \bigl(Y_n^3+3Y_n^2X_{1,n}+3Y_nX_{2,n}+X_{3,n}\bigr)
+  \varphi\,\dd t\,\dd x .
+\end{aligned}
+\]
+The initial term converges by the strong \(L^2\) convergence of \(Y_n(0)\).
+The terminal term converges by the weak \(L^2\) convergence
+\(Y_n(T)\rightharpoonup Y(T)\) from
+Proposition~\ref{prop:spde-dpd-energy-compactness}.  The linear spacetime
+terms converge by the strong \(L^2(Q_T)\) convergence of \(Y_n\), and the
+nonlinear terms converge by the \(L^1\) convergence just proved.  Passing to
+the limit gives
+\eqref{eq:spde-dpd-distributional-limit-weak-form}, which is precisely
+\eqref{eq:spde-dpd-distributional-limit-equation} in distributional form.
+\end{proof}
+
 The rough Da Prato--Debussche global argument is therefore reduced to two
 precise analytic tasks.  First, construct smooth approximations whose
 enhanced noises converge in the integrability spaces appearing in
 Proposition~\ref{prop:spde-dpd-energy-closed-under-approximation}, or in
 Besov/paracontrolled spaces that imply those bounds after pairing with the
-energy solution.  Second, identify the weak limit produced by
-Proposition~\ref{prop:spde-dpd-energy-compactness} as a solution of the
-rough equation.  The quartic term supplies the coercive bound, compactness
-extracts a weak energy limit, and the closedness proposition passes the
-energy inequality to that rough limit.
+energy solution.  Proposition~\ref{prop:spde-dpd-distributional-limit}
+then identifies the compactness limit as a distributional solution whenever
+the products are represented in these strong \(L^p\) spaces.  In the full
+rough stochastic application, where the enhanced noise is controlled in
+Besov or paracontrolled coordinates rather than in ordinary Lebesgue spaces,
+the same role is played by the corresponding product-continuity theorem.
+The quartic term supplies the coercive bound, compactness extracts a weak
+energy limit, the product-continuity theorem identifies the equation, and
+the closedness proposition passes the energy inequality to that rough limit.
 
 \begin{proposition}[Passing invariance through a cutoff limit]
 \label{prop:spde-invariant-measure-limit}

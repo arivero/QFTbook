@@ -659,6 +659,29 @@ def check_dpd_energy_compactness_derivative_arithmetic():
         raise AssertionError("finite-interval L2 to L4/3 inclusion failed")
 
 
+def check_dpd_distributional_limit_exponents():
+    # Strong L2 convergence plus uniform L4 boundedness interpolates to
+    # strong Lr convergence for every 2 <= r < 4.  The Y^2 X1 product uses
+    # r=8/3 so that Y_n^2-Y^2 lies in L^(4/3).
+    r = Fraction(8, 3)
+    if not Fraction(2) < r < Fraction(4):
+        raise AssertionError("DPD interpolation exponent must lie between 2 and 4")
+    assert_equal(Fraction(2) / r, Fraction(3, 4), "square map L8/3 to L4/3")
+    assert_equal(Fraction(3, 4) + Fraction(1, 4), 1, "Y2X1 product to L1")
+
+    # Cubic difference: (Y_n-Y)(Y_n^2+Y_nY+Y^2) uses L2 times L2.
+    assert_equal(Fraction(1, 2) + Fraction(1, 2), 1, "cubic difference L1")
+
+    # Mixed enhanced-noise term: (Y_n-Y)X2 and Y(X2_n-X2) use L2 times L2.
+    assert_equal(Fraction(1, 2) + Fraction(1, 2), 1, "YX2 product to L1")
+
+    # The compactness lemma uses the finite-interval embedding
+    # W^(1,4/3)([0,T];E_M) -> C([0,T];E_M), whose time Holder exponent is
+    # 1 - 1/(4/3) = 1/4.
+    holder_exponent = 1 - Fraction(3, 4)
+    assert_equal(holder_exponent, Fraction(1, 4), "finite-mode time Holder exponent")
+
+
 def check_invariant_measure_limit_identity():
     # A finite Markov-chain analogue of the cutoff invariance passage:
     # if mu P = mu and P_n=P exactly, then the invariant identity is the
@@ -1317,6 +1340,7 @@ def main():
     check_dpd_energy_young_exponents()
     check_dpd_energy_closedness_lp_power_arithmetic()
     check_dpd_energy_compactness_derivative_arithmetic()
+    check_dpd_distributional_limit_exponents()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
@@ -1336,7 +1360,7 @@ def main():
     check_gaussian_negative_sobolev_summability_arithmetic()
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

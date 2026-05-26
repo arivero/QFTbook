@@ -65,6 +65,8 @@ data.
 - `M_T`, `Q_T`: uniform smooth DPD energy-input bound and the stochastic
   time-space slab \([0,T]\times\mathbb T^2\) in the DPD energy-compactness
   theorem.
+- `E_M`: finite-dimensional Fourier subspace used in the self-contained
+  torus Aubin-Lions compactness lemma for DPD remainders.
 - `P_t^(n), P_t`: cutoff and limiting Markov semigroups in the invariant-law
   passage lemma.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
@@ -234,6 +236,16 @@ data.
   the exponent identities \(Y^3,Y^2X_1,YX_2,X_3\in L^{4/3}_{t,x}\), then
   applies Banach--Alaoglu and a scalar \(W^{1,4/3}\)-compactness argument to
   identify terminal weak \(L^2\) limits.
+- Proves the self-contained torus Aubin-Lions compactness lemma needed to
+  upgrade the DPD weak compactness to strong \(L^2_{t,x}\) convergence:
+  finite Fourier modes are compact by Arzela-Ascoli and high Fourier modes
+  are uniformly small by the \(L^2_tH^1_x\) bound.
+- Proves identification of the DPD distributional limit when
+  \(X_{1,n}\to X_1\) in \(L^4\), \(X_{2,n}\to X_2\) in \(L^2\), and
+  \(X_{3,n}\to X_3\) in \(L^{4/3}\).  The proof obtains strong
+  \(L^r_{t,x}\) convergence of \(Y_n\) for every \(r<4\), then passes
+  \(Y_n^3\), \(Y_n^2X_{1,n}\), \(Y_nX_{2,n}\), and \(X_{3,n}\) to the limit
+  in \(L^1\), yielding the weak distributional equation with endpoint terms.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
@@ -776,3 +788,8 @@ data maps.
   convergence for smooth DPD remainders from the same energy inputs.  The
   calculation-check companion verifies the \(L^{4/3}\) drift exponents
   behind the \(\partial_tY_n\) estimate.
+- 2026-05-26 DPD distributional-limit pass: added a Fourier proof of the
+  torus Aubin-Lions compactness input and a proposition identifying the
+  compactness limit as a distributional DPD solution under strong Lebesgue
+  convergence of the enhanced-noise approximants.  The calculation-check
+  companion verifies the interpolation and product exponents.
