@@ -313,6 +313,37 @@ def check_phi4_three_spde_bphz_counterterm_combinatorics():
     assert_equal(-(outer_response_choices * local_sunset_factor), -9, "Phi4_3 two-loop counterterm sign")
 
 
+def check_modelled_fixed_point_contraction_arithmetic():
+    # Exact rational check of the abstract fixed-point inequalities:
+    # A T^theta (B |lambda| R^3 + D |M| R) <= R/2 and
+    # A T^theta (2 B |lambda| R^2 + D |M|) < 1.
+    a = Fraction(2)
+    ttheta = Fraction(1, 200)
+    b = Fraction(3)
+    lam = Fraction(1)
+    d = Fraction(1)
+    mass = Fraction(1, 2)
+    r0 = Fraction(1)
+    r = 2 * r0
+
+    ball_increment = a * ttheta * (b * lam * r**3 + d * mass * r)
+    contraction = a * ttheta * (2 * b * lam * r**2 + d * mass)
+    assert_equal(ball_increment, Fraction(1, 4), "modelled fixed-point ball increment")
+    assert_equal(r / 2, 1, "modelled fixed-point half radius")
+    if not ball_increment <= r / 2:
+        raise AssertionError("modelled fixed-point ball condition failed")
+    if not contraction < 1:
+        raise AssertionError("modelled fixed-point contraction condition failed")
+
+    # The Picard tail bound is q^n/(1-q) times the first step.
+    q = contraction
+    n = 3
+    first_step = Fraction(5, 7)
+    tail = q**n * first_step / (1 - q)
+    expected = Fraction(16807, 1208000)
+    assert_equal(tail, expected, "modelled fixed-point Picard tail")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
@@ -326,7 +357,8 @@ def main():
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
-    print("All constructive scalar/SPDE Wick, power-counting, DPD, reconstruction, and BPHZ local checks passed.")
+    check_modelled_fixed_point_contraction_arithmetic()
+    print("All constructive scalar/SPDE Wick, power-counting, DPD, reconstruction, BPHZ, and fixed-point checks passed.")
 
 
 if __name__ == "__main__":

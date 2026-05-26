@@ -30,6 +30,10 @@ data.
   in the finite-cutoff local counterterm calculation.
 - `mathcal L`: projection to the local linear part of a finite-cutoff Wick
   contraction after removing nested one-loop subdivergences.
+- `E_T`, `F_T`: Banach spaces of modelled distributions and forcing terms
+  on a parabolic time slab in the abstract fixed-point theorem.
+- `mathcal K_T`, `Psi_T`: zero-initial-time abstract heat integration
+  operator and the associated nonlinear fixed-point map.
 - `c_fin`: finite mass coordinate in the renormalized dynamic
   \(\Phi^4_3\) equation.
 - `mu`: invariant Euclidean measure of the Markov process.
@@ -100,6 +104,12 @@ data.
   contraction gives \(+9\lambda^2C_{2,\epsilon}X_\epsilon\), and the drift
   counterterm has the opposite signs.  The proof also separates the nested
   one-loop subdivergence from the new two-loop local coordinate.
+- Proves an abstract local fixed-point theorem for modelled distributions:
+  given a small-time Schauder estimate, cubic product Lipschitz estimate,
+  and linear forcing estimate, the dynamic \(\Phi^4_3\) fixed-point map sends
+  a closed ball to itself, is a contraction there, and has a unique solution
+  with Lipschitz dependence on the lifted initial data plus stochastic
+  convolution.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -165,3 +175,8 @@ data maps.
   \(3\lambda C_{1,\epsilon}-9\lambda^2C_{2,\epsilon}\) drift counterterm.
   The calculation-check companion verifies the homogeneity, sign, and
   combinatorial arithmetic.
+- 2026-05-26 issue #582 fixed-point continuation: the chapter now proves the
+  abstract modelled-distribution fixed-point step from explicit Banach-space
+  hypotheses rather than quoting the contraction argument.  The
+  calculation-check companion verifies the ball condition, contraction
+  constant, and Picard tail arithmetic.

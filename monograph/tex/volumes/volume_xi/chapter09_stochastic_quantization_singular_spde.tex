@@ -632,10 +632,19 @@ For \(Y,Z\in B_R\), equations
   \bigl(1+\|\mathbb X\|_{C_TH^{-\kappa}}\bigr)
   \|Y-Z\|_{C_TH^\beta}.
 \]
-Reducing \(T\) once more makes the coefficient \(<1\).  Banach's fixed-point
-theorem gives a unique fixed point in \(B_R\).  The same contraction
-estimate applied to two sets of data gives local Lipschitz dependence,
-after taking the smaller of the two local existence times.
+Reducing \(T\) once more makes the coefficient \(<1\).  Starting from
+any \(Y_0^\sharp\in B_R\) and setting \(Y_{n+1}^\sharp=\Psi Y_n^\sharp\),
+the differences obey
+\[
+  \|Y_{n+1}^\sharp-Y_n^\sharp\|_{C_TH^\beta}
+  \leq q^n\|Y_1^\sharp-Y_0^\sharp\|_{C_TH^\beta},
+  \qquad q<1.
+\]
+The resulting sequence is Cauchy in the complete space \(C_TH^\beta\);
+its limit is a fixed point, and the same inequality applied to two fixed
+points forces equality.  Applying the contraction estimate to two sets of
+data gives local Lipschitz dependence, after taking the smaller of the two
+local existence times.
 \end{proof}
 
 This theorem is deliberately weaker than the sharp Da Prato--Debussche
@@ -1369,6 +1378,173 @@ formula.  The finite coordinate \(c_{\rm fin}\) is not fixed by singular
 subtraction; it labels the chosen renormalized mass coordinate.
 \end{proof}
 
+\begin{theorem}[Abstract local fixed point in modelled distributions]
+\label{thm:spde-abstract-modelled-fixed-point}
+Let \(0<T\leq1\).  Let \(E_T\) be a Banach space of modelled distributions
+on the parabolic time slab \([0,T]\times\mathbb T^3\), let \(F_T\) be a
+Banach space of modelled distributional forcing terms on the same slab, and
+assume the following data and estimates.
+\begin{enumerate}[label=(\roman*)]
+  \item A zero-initial-time abstract heat integration operator
+  \(\mathcal K_T:F_T\to E_T\) satisfies, for constants \(A>0\) and
+  \(\theta>0\),
+  \begin{equation}
+    \|\mathcal K_T H\|_{E_T}
+    \leq
+    A T^\theta \|H\|_{F_T}.
+    \label{eq:spde-abstract-schauder-small-time}
+  \end{equation}
+  The power \(T^\theta\) encodes the positive time gain obtained after the
+  singular local model has been fixed.
+  \item A reconstructed stochastic convolution \(X_T\in E_T\) and an
+  initial-data lift \(P_Tu_0\in E_T\) are given.  Put
+  \[
+    R_0=\|P_Tu_0+X_T\|_{E_T}.
+  \]
+  \item The cubic product is a locally Lipschitz map \(E_T\to F_T\):
+  for a constant \(B>0\),
+  \[
+    \|U^3\|_{F_T}\leq B\|U\|_{E_T}^3,
+  \]
+  and
+  \begin{equation}
+    \|U^3-V^3\|_{F_T}
+    \leq
+    B(\|U\|_{E_T}^2+\|V\|_{E_T}^2)\|U-V\|_{E_T}.
+    \label{eq:spde-cubic-modelled-lipschitz}
+  \end{equation}
+  \item The local linear term is bounded as a map \(E_T\to F_T\):
+  \[
+    \|U\|_{F_T}\leq D\|U\|_{E_T}
+  \]
+  for a constant \(D>0\).
+\end{enumerate}
+Fix real parameters \(\lambda\) and \(M\).  Define
+\begin{equation}
+  \Psi_T(U)
+  =
+  P_Tu_0+X_T
+  +
+  \mathcal K_T\bigl(-\lambda U^3+MU\bigr).
+  \label{eq:spde-modelled-fixed-point-map}
+\end{equation}
+Let \(R=2R_0\).  If
+\begin{align}
+  A T^\theta\bigl(B|\lambda|R^3+D|M|R\bigr)
+  &\leq \frac{R}{2},
+  \label{eq:spde-fixed-point-ball-condition}\\
+  A T^\theta\bigl(2B|\lambda|R^2+D|M|\bigr)
+  &<1,
+  \label{eq:spde-fixed-point-contraction-condition}
+\end{align}
+then \(\Psi_T\) has a unique fixed point in the closed ball
+\[
+  \mathbb B_R=\{U\in E_T:\|U\|_{E_T}\leq R\}.
+\]
+The fixed point depends Lipschitz-continuously on \(P_Tu_0+X_T\) as long as
+the same constants and the same ball are used.
+\end{theorem}
+
+\begin{proof}
+For \(U\in\mathbb B_R\), the Schauder estimate
+\eqref{eq:spde-abstract-schauder-small-time}, the cubic bound, and the
+linear bound give
+\[
+\begin{aligned}
+  \|\Psi_T(U)\|_{E_T}
+  &\leq
+  R_0
+  +
+  A T^\theta
+  \bigl(|\lambda|\|U^3\|_{F_T}+|M|\|U\|_{F_T}\bigr)\\
+  &\leq
+  \frac{R}{2}
+  +
+  A T^\theta
+  \bigl(B|\lambda|R^3+D|M|R\bigr)
+  \leq R .
+\end{aligned}
+\]
+Thus \(\Psi_T\) maps \(\mathbb B_R\) into itself.  For
+\(U,V\in\mathbb B_R\), the Lipschitz estimate
+\eqref{eq:spde-cubic-modelled-lipschitz} gives
+\[
+\begin{aligned}
+  \|\Psi_T(U)-\Psi_T(V)\|_{E_T}
+  &\leq
+  A T^\theta
+  \left(
+    |\lambda|\|U^3-V^3\|_{F_T}
+    +|M|\|U-V\|_{F_T}
+  \right)\\
+  &\leq
+  A T^\theta
+  \bigl(2B|\lambda|R^2+D|M|\bigr)\|U-V\|_{E_T}.
+\end{aligned}
+\]
+Condition~\eqref{eq:spde-fixed-point-contraction-condition} makes this
+Lipschitz constant strictly smaller than one; call it \(q\).  Choose
+\(U_0\in\mathbb B_R\) and set \(U_{n+1}=\Psi_T(U_n)\).  Since
+\(\Psi_T(\mathbb B_R)\subset\mathbb B_R\),
+\[
+  \|U_{n+1}-U_n\|_{E_T}
+  \leq
+  q^n\|U_1-U_0\|_{E_T}.
+\]
+For \(m>n\),
+\[
+  \|U_m-U_n\|_{E_T}
+  \leq
+  \sum_{j=n}^{m-1}q^j\|U_1-U_0\|_{E_T}
+  \leq
+  \frac{q^n}{1-q}\|U_1-U_0\|_{E_T}.
+\]
+The space \(E_T\) is complete, so \(U_n\) converges to some
+\(U_\ast\in\mathbb B_R\).  Continuity of \(\Psi_T\) gives
+\(\Psi_T(U_\ast)=U_\ast\).  If \(V_\ast\) is another fixed point in
+\(\mathbb B_R\), then
+\[
+  \|U_\ast-V_\ast\|_{E_T}
+  \leq
+  q\|U_\ast-V_\ast\|_{E_T},
+\]
+and \(q<1\) forces \(U_\ast=V_\ast\).
+
+For dependence on the inhomogeneous term, let \(Y=P_Tu_0+X_T\) and
+\(\widetilde Y=\widetilde P_T\widetilde u_0+\widetilde X_T\), and suppose
+the two corresponding fixed points \(U,\widetilde U\) lie in the same ball
+\(\mathbb B_R\).  The same estimate gives
+\[
+  \|U-\widetilde U\|_{E_T}
+  \leq
+  \|Y-\widetilde Y\|_{E_T}
+  +
+  q\|U-\widetilde U\|_{E_T},
+  \qquad
+  q=A T^\theta(2B|\lambda|R^2+D|M|)<1.
+\]
+Therefore
+\[
+  \|U-\widetilde U\|_{E_T}
+  \leq
+  \frac{1}{1-q}\|Y-\widetilde Y\|_{E_T}.
+\]
+\end{proof}
+
+In the dynamic \(\Phi^4_3\) application, \(E_T\) is a weighted
+modelled-distribution space whose lowest components encode the stochastic
+convolution and whose positive components encode the unknown remainder.
+The space \(F_T\) is the corresponding forcing space after subtracting the
+singular local parts of the cubic.  The operator \(\mathcal K_T\) is the
+abstract heat integration map, and
+\[
+  M=3\lambda C_{1,\epsilon}-9\lambda^2C_{2,\epsilon}+c_{\rm fin}
+\]
+in the finite-cutoff equation before passing to the renormalized model.  The
+theorem proves the fixed-point step once the model bounds, product bounds,
+and Schauder bound have been established.  It does not prove convergence of
+the BPHZ-renormalized models; that remains a separate stochastic estimate.
+
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
 Let the spatial manifold be a finite three-dimensional torus, let
@@ -1415,11 +1591,13 @@ character subtracts the expectations of all divergent negative subtrees,
 producing a renormalized model satisfying uniform analytic bounds; compactness
 and Kolmogorov estimates then give convergence of the model.
 
-The fixed-point problem for the SPDE is then solved in the space of modelled
-distributions.  The contraction uses parabolic Schauder estimates for the
-abstract integration map and local Lipschitz bounds for the cubic
-nonlinearity in the regularity-structure product.  Reconstructing the fixed
-point gives the distribution-valued solution.  The explicit local term in
+After the renormalized model has been constructed, the local fixed-point
+step has the form proved in
+Theorem~\ref{thm:spde-abstract-modelled-fixed-point}.  The missing analytic
+input is the verification, for the actual BPHZ model, of the Schauder,
+product, and small-time estimates used in that theorem.  Reconstructing the
+fixed point then gives the distribution-valued solution by
+Theorem~\ref{thm:spde-compact-reconstruction}.  The explicit local term in
 \eqref{eq:phi-four-three-renormalized-spde} is the image, in the concrete
 equation, of the BPHZ action on the negative trees.  Invariant measures are
 identified by finite-cutoff stationarity, tightness, and convergence of
@@ -1455,12 +1633,14 @@ powers for the stochastic convolution; the parabolic Schauder and Besov or
 Holder multiplication estimates used in the Da Prato--Debussche fixed point;
 the global energy estimate and invariant-law identification for
 \(\Phi^4_2\); construction of the BPHZ-renormalized model for dynamic
-\(\Phi^4_3\); convergence of the renormalized models; solution of the
-fixed-point problem in modelled distributions; analytic derivation that the
-finite-cutoff local coordinates calculated above are exactly the local
-counterterms of the convergent BPHZ model; and the passage from stationary
-SPDE solutions to OS data.  Until these arguments are supplied, the quoted
-theorem blocks are documented proof boundaries, not authority claims.
+\(\Phi^4_3\); convergence of the renormalized models; verification that the
+concrete BPHZ model satisfies the Schauder and product estimates required by
+Theorem~\ref{thm:spde-abstract-modelled-fixed-point}; analytic derivation
+that the finite-cutoff local coordinates calculated above are exactly the
+local counterterms of the convergent BPHZ model; and the passage from
+stationary SPDE solutions to OS data.  Until these arguments are supplied,
+the quoted theorem blocks are documented proof boundaries, not authority
+claims.
 \end{openproblem}
 
 \section{Paracontrolled and RG Routes}
