@@ -1010,3 +1010,11 @@ data maps.
   with no unabsorbed positive power of the Besov continuation norm.  The
   calculation-check companion verifies the absorption and recursion
   arithmetic.
+- 2026-05-26 singular-SPDE ledger pass: revised the monograph open-problem
+  ledger so it no longer lists already-proved \(\Phi^4_2\) infrastructure as
+  quoted theorem-boundary material.  The remaining two-dimensional tasks are
+  now the rough-forcing estimate, regulator-specific Nelson stability, and
+  OS-II reconstruction inputs; the remaining \(\Phi^4_3\) tasks are the
+  concrete BPHZ coordinate moment/cutoff-Cauchy estimates, extension from the
+  strict negative sector to the full fixed-point sector, counterterm
+  identification, invariant-law comparison, and SPDE-to-OS passage.

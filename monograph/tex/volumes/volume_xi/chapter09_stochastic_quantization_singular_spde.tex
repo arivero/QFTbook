@@ -9379,41 +9379,78 @@ matched, and equality of the limiting Schwinger moments must be proved.  Each
 sentence in this paragraph names a theorem-level estimate; none is to be
 treated as proved merely by being quoted.
 
-The theorem-boundary statements still left in this chapter concern the
-global Da Prato--Debussche construction of two-dimensional stochastic
-quantization and the BPHZ-renormalized construction of the dynamic
-\(\Phi^4_3\) model.\footnote{See G.~Da Prato and A.~Debussche, ``Strong
-solutions to the stochastic quantization equations,'' \emph{Ann. Probab.}
-31 (2003); M.~Hairer, ``A theory of regularity structures,''
-\emph{Invent. Math.} 198 (2014); and the Hairer--Mourrat--Weber
-regularity-structures treatment of \(\Phi^4_3\) renormalization.  For recent
-singular-SPDE work in gauge contexts, see A.~Chandra, I.~Chevyrev,
-M.~Hairer, and H.~Shen, ``Stochastic quantisation of Yang--Mills,''
-Invent. Math. \textbf{230} (2022) 1025--1096.}  The compact finite-sector
-reconstruction theorem has been proved above because its proof is a local
-analytic argument once the model bounds and modelled-distribution bounds are
-available.  The cited works identify deeper analytic machinery that remains
-to be reconstructed in this monograph; they do not by themselves settle the
+The proof boundary has narrowed.
+For the \(\Phi^4_2\) equation, the construction of the stochastic
+convolution and its Wick powers, the path-space enhanced-noise convergence,
+the Sobolev and Besov local DPD maps, the smooth energy estimate, the
+compactness and closedness steps for smooth approximants, the regulator
+comparison criteria, and the abstract SPDE-to-OS reconstruction criterion
+have been proved above.  The remaining two-dimensional work is not a generic
+appeal to the Da Prato--Debussche theorem.  It consists of specific
+constructive estimates: the local rough-forcing estimate in
+\eqref{eq:spde-local-rough-forcing-estimate}, Nelson stability for the
+chosen Wick quartic cutoff family, and the moment-continuity, positive-time
+semigroup regularity, and corrected OS-II growth estimates needed by
+Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion}.
+
+For dynamic \(\Phi^4_3\), the self-contained proof boundary is still larger.
+The finite negative sector, its homogeneity ledger, its reexpansion
+coordinates, and the scale-summed criterion that would imply convergence of
+that sector have been proved in
+Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart}
+and
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence}.
+What remains is to prove, for the actual BPHZ-renormalized model, the
+coordinate estimates required by that theorem for
+\[
+  \Xi,\quad X,\quad X^2,\quad X^3,\quad XY,\quad X^2Y,
+  \quad\text{and}\quad c_n(z,z'),
+\]
+including both uniform model-seminorm moments and dyadic cutoff-increment
+moments with enough scale and parameter slack.  One must then extend the
+negative-sector convergence to the full modelled-distribution space used by
+the fixed point, prove the Schauder and multiplication estimates for the
+concrete model, identify the BPHZ counterterms with the local constants in
+\eqref{eq:phi-four-three-renormalized-spde}, and compare the stationary SPDE
+law with the Euclidean constructive measure.
+\footnote{See G.~Da Prato and A.~Debussche, ``Strong solutions to the
+stochastic quantization equations,'' \emph{Ann. Probab.} 31 (2003);
+M.~Hairer, ``A theory of regularity structures,'' \emph{Invent. Math.} 198
+(2014); and the Hairer--Mourrat--Weber regularity-structures treatment of
+\(\Phi^4_3\) renormalization.  For recent singular-SPDE work in gauge
+contexts, see A.~Chandra, I.~Chevyrev, M.~Hairer, and H.~Shen, ``Stochastic
+quantisation of Yang--Mills,'' Invent. Math. \textbf{230} (2022)
+1025--1096.}
+The cited works identify deeper analytic machinery that remains to be
+reconstructed in this monograph; they do not by themselves settle the
 monograph's proof obligations.
 
-\begin{openproblem}[Self-contained singular-SPDE proof stack]
+\begin{openproblem}[Remaining self-contained singular-SPDE proof stack]
 \label{op:self-contained-singular-spde-proof-stack}
-Develop self-contained monograph proofs of the quoted SPDE results used
-above.  At minimum this requires: construction and convergence of Wick
-powers for the stochastic convolution; the parabolic Schauder and Besov or
-Holder multiplication estimates used in the Da Prato--Debussche fixed point;
-the global energy estimate and invariant-law identification for
-\(\Phi^4_2\); construction of the BPHZ-renormalized model for dynamic
-\(\Phi^4_3\); proof of the uniform model moment bounds and dyadic Cauchy
-estimates needed in
-Theorem~\ref{thm:spde-random-model-cauchy-criterion}; verification that the
-concrete BPHZ model satisfies the Schauder and product estimates required by
-Theorem~\ref{thm:spde-abstract-modelled-fixed-point}; analytic derivation
-that the finite-cutoff local coordinates calculated above are exactly the
-local counterterms of the convergent BPHZ model; and the passage from
-stationary SPDE solutions to OS data.  Until these arguments are supplied,
-the quoted theorem blocks are documented proof boundaries, not authority
-claims.
+Complete the proof stack left open by the preceding analysis.  The
+two-dimensional part requires: a proof of the rough-forcing estimate
+\eqref{eq:spde-local-rough-forcing-estimate} for the Wick-enhanced
+\(\Phi^4_2\) stochastic convolution; a direct Nelson stability theorem, or a
+fully controlled comparison with a regulator for which Nelson stability has
+been proved, for the cutoff family used in the stochastic assembly; and the
+OS reconstruction inputs listed in
+Proposition~\ref{prop:spde-invariant-law-os-reconstruction-criterion}.
+
+The three-dimensional part requires: construction of the BPHZ-renormalized
+dynamic \(\Phi^4_3\) model; proof of the coordinate moment and cutoff-Cauchy
+estimates in
+Theorem~\ref{thm:spde-phi-four-three-negative-sector-model-convergence};
+extension of those estimates from the strict negative sector to the full
+sector used in the fixed-point problem; verification that the concrete BPHZ
+model satisfies the Schauder and product estimates required by
+Theorem~\ref{thm:spde-abstract-modelled-fixed-point}; derivation of the
+local counterterms \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and
+\(c_{\rm fin}\) from the BPHZ character in the convention of
+\eqref{eq:phi-four-three-renormalized-spde}; invariant-law construction and
+comparison with the constructive Euclidean \(\Phi^4_3\) measure; and the
+SPDE-to-OS reconstruction inputs for the resulting Schwinger hierarchy.
+Until these arguments are supplied, the quoted theorem blocks are documented
+proof boundaries, not authority claims.
 \end{openproblem}
 
 \section{Paracontrolled and RG Routes}
