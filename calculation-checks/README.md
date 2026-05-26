@@ -190,6 +190,11 @@ Current checks:
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
   term on the unit square, and vanishing of a \(Q\)-exact deformation when the
   boundary contribution is zero.
+- `tqft_frobenius_gluing_checks.py`: exact rational checks for the Volume VIII
+  bordism-functoriality chapter, including the inverse-pairing cylinder
+  identity, Frobenius neck-exchange relation, pair-of-pants associativity, and
+  the semisimple genus-\(g\) partition function
+  \(\sum_\alpha\lambda_\alpha^{1-g}\).
 - `donaldson_sw_comparison_checks.py`: exact arithmetic checks for the
   Witten-Donaldson and Seiberg-Witten comparison chapter, including the
   anti-self-dual deformation-complex index, the monopole expected-dimension

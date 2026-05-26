@@ -3,123 +3,628 @@
 
 \ConventionsEuclidean
 
-The cohomological mechanism of the preceding chapter produces
-metric-independent correlation functions under explicit Ward-identity
-hypotheses.  A functorial topological field theory packages a stronger set of
-gluing laws.  This chapter states the target structure before examples such
-as BF theory and Chern--Simons theory are introduced.
+The cohomological mechanism of
+Chapter~\ref{ch:tqft-metric-independence} produces correlation functionals
+whose metric variation is controlled by a Ward identity.  A functorial
+topological field theory is a stronger object.  It assigns state spaces to
+closed spatial manifolds, linear maps to bordisms, and compatibility maps for
+cutting and gluing.  The purpose of this chapter is to state the functorial
+data precisely enough that later claims about BF theory, Chern--Simons
+theory, finite gauge theory, cohomological gauge theory, and topological
+twists have a definite target.
 
-\section{Bordism Categories}
+Throughout this chapter \(\Bbbk\) is a field of characteristic zero unless a
+finite-field example is explicitly declared.  The finite-dimensional target
+is denoted \({\bf Vect}^{\rm fd}_{\Bbbk}\).  Infinite-dimensional state
+spaces, bornological vector spaces, and Hilbert completions occur naturally in
+non-topological QFT and in some noncompact topological theories; whenever
+they are used later, the topology on the target is part of the datum and the
+gluing maps must be continuous for that topology.
 
-Fix a dimension \(D\) and a tangential structure \(\xi\), such as orientation,
-spin, or framing.  The bordism category \(\operatorname{Bord}_D^\xi\) has
-closed \((D-1)\)-manifolds with \(\xi\)-structure as objects and compact
-\(D\)-dimensional bordisms with compatible \(\xi\)-structure as morphisms.
-Disjoint union makes it a symmetric monoidal category:
+\section{Tangential Structures and Collared Bordisms}
+
+A tangential structure in dimension \(D\) is a map
 \[
-  \Sigma_1\sqcup\Sigma_2,\qquad
-  M_1\sqcup M_2.
+  \theta_\xi:B_\xi\longrightarrow BO(D).
 \]
-Composition is gluing along the identified boundary component.
+Examples are \(BSO(D)\to BO(D)\) for oriented manifolds,
+\(BSpin(D)\to BO(D)\) for spin manifolds, and the point
+\(\ast\to BO(D)\) classifying a framing of the tangent bundle.  If \(N\) is a
+smooth \(d\)-manifold with \(d\le D\), a \(\xi\)-structure on \(N\) means a
+lift, up to homotopy through lifts, of the classifying map of the stabilized
+tangent bundle
+\[
+  TN\oplus\mathbb R^{D-d}\longrightarrow BO(D)
+\]
+to \(B_\xi\).  This stabilized convention is the one compatible with
+extended bordisms: a hypersurface, a boundary corner, and a point are all
+regarded as lower-dimensional strata inside \(D\)-dimensional bordisms.
+
+\begin{definition}[Collared \(\xi\)-bordism]
+\label{def:collared-xi-bordism}
+Let \(\Sigma_0\) and \(\Sigma_1\) be closed compact smooth
+\((D-1)\)-manifolds with \(\xi\)-structure.  A collared \(\xi\)-bordism
+\[
+  M:\Sigma_0\longrightarrow\Sigma_1
+\]
+is a compact smooth \(D\)-manifold \(M\) with \(\xi\)-structure, together
+with boundary identifications
+\[
+  \partial M\simeq \bar\Sigma_0\sqcup\Sigma_1
+\]
+and collar embeddings near the incoming and outgoing components.  Here
+\(\bar\Sigma_0\) denotes the same underlying manifold with the tangential
+structure reversed in the sense appropriate to \(\xi\).  Two collared
+bordisms are equivalent if they are related by a \(\xi\)-diffeomorphism
+which respects the collars up to isotopy.
+\end{definition}
+
+The collars are not decorative.  They make composition a smooth operation:
+if \(M_{01}:\Sigma_0\to\Sigma_1\) and \(M_{12}:\Sigma_1\to\Sigma_2\), then
+\[
+  M_{12}\circ M_{01}
+  =
+  M_{01}\cup_{\Sigma_1}M_{12}
+\]
+is obtained by identifying the outgoing collar of \(M_{01}\) with the
+incoming collar of \(M_{12}\), followed by the canonical smoothing determined
+by the collar product coordinate.  The identity of \(\Sigma\) is the
+cylinder \(\Sigma\times[0,1]\) with product \(\xi\)-structure.
+
+\begin{definition}[Ordinary bordism category]
+\label{def:ordinary-bordism-category}
+The category \(\operatorname{Bord}^{\xi}_{D}\) has:
+\begin{itemize}
+\item objects: closed compact smooth \((D-1)\)-manifolds with
+  \(\xi\)-structure;
+\item morphisms: equivalence classes of collared \(\xi\)-bordisms;
+\item composition: collar gluing;
+\item symmetric monoidal product: disjoint union.
+\end{itemize}
+The monoidal unit is the empty manifold \(\varnothing\).
+\end{definition}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[thick] (0,0) rectangle (2.4,1.2);
+  \draw[thick] (2.4,0) rectangle (4.8,1.2);
+  \draw[very thick,blue!55!black] (2.4,0) -- (2.4,1.2);
+  \node at (1.2,0.6) {\(M_{01}\)};
+  \node at (3.6,0.6) {\(M_{12}\)};
+  \node[below] at (0,0) {\(\Sigma_0\)};
+  \node[below] at (2.4,0) {\(\Sigma_1\)};
+  \node[below] at (4.8,0) {\(\Sigma_2\)};
+  \draw[->] (5.25,0.6) -- (6.15,0.6);
+  \draw[thick] (6.6,0) rectangle (9.4,1.2);
+  \node at (8.0,0.6) {\(M_{12}\circ M_{01}\)};
+  \node[below] at (6.6,0) {\(\Sigma_0\)};
+  \node[below] at (9.4,0) {\(\Sigma_2\)};
+\end{tikzpicture}
+\caption{Composition in the ordinary bordism category is collar gluing.  The
+intermediate boundary component is not retained as extra data after the
+composition; extended TQFT keeps track of such cuts through lower-codimension
+assignments.}
+\label{fig:tqft-collar-gluing}
+\end{figure}
+
+Definition~\ref{def:ordinary-bordism-category} is the \(1\)-categorical
+version.  A fully smooth functorial QFT normally uses a topologically
+enriched or higher bordism object in which smooth families of bordisms are
+also visible.  The ordinary category is nevertheless the right first target
+for finite-dimensional Atiyah--Segal TQFT because it isolates the exact
+gluing identities on which every refinement must reduce.
+
+\section{Atiyah--Segal Functoriality}
 
 \begin{definition}[Atiyah--Segal topological field theory]
 \label{def:atiyah-segal-tqft}
-A \(D\)-dimensional topological field theory with tangential structure
-\(\xi\) and linear target is a symmetric monoidal functor
+An honest \(D\)-dimensional Atiyah--Segal TQFT with tangential structure
+\(\xi\) and finite-dimensional linear target is a symmetric monoidal functor
 \[
-  Z:\operatorname{Bord}_D^\xi\longrightarrow {\bf Vect}_{\Bbbk}
+  Z:\operatorname{Bord}^{\xi}_{D}
+  \longrightarrow
+  {\bf Vect}^{\rm fd}_{\Bbbk}.
 \]
-to vector spaces over a field \(\Bbbk\).  Thus
+Thus there are canonical isomorphisms
 \[
-  Z(\Sigma_1\sqcup\Sigma_2)\simeq Z(\Sigma_1)\otimes Z(\Sigma_2),
+  Z(\Sigma_1\sqcup\Sigma_2)
+  \simeq
+  Z(\Sigma_1)\otimes Z(\Sigma_2),
   \qquad
-  Z(M_2\circ M_1)=Z(M_2)Z(M_1).
+  Z(\varnothing)\simeq \Bbbk,
 \]
+and for composable bordisms
+\[
+  Z(M_{12}\circ M_{01})=Z(M_{12})\,Z(M_{01}).
+\]
+The cylinder maps to the identity on \(Z(\Sigma)\).
 \end{definition}
 
-The vector space \(Z(\Sigma)\) is the state space assigned to the spatial
-slice \(\Sigma\).  For a closed \(D\)-manifold \(M\), the value \(Z(M)\) is a
-linear map \(\Bbbk\to\Bbbk\), hence a number.  The cylinder
-\(\Sigma\times[0,1]\) maps to the identity on \(Z(\Sigma)\).
+For a closed \(D\)-manifold \(M\), regarded as a bordism
+\(\varnothing\to\varnothing\), the value \(Z(M)\) is the scalar by which the
+map \(\Bbbk\to\Bbbk\) multiplies.  For a bordism
+\(M:\Sigma_0\to\Sigma_1\), \(Z(M)\) is the transition amplitude from the
+state space \(Z(\Sigma_0)\) to \(Z(\Sigma_1)\).  These words are justified by
+the gluing axiom, not by an analogy with time evolution: if \(M\) is cut
+along an intermediate closed hypersurface \(\Sigma\), the amplitude factors
+through the state space assigned to \(\Sigma\).
 
-This is the metric-independent specialization of the functorial viewpoint
-developed in Chapter~\ref{ch:kontsevich-segal-functorial-qft}.  A
+\begin{definition}[Anomalous or relative functorial theory]
+\label{def:anomalous-relative-tqft}
+Let \(\mathcal L\) be an invertible \((D+1)\)-dimensional field theory, or
+equivalently in the finite-dimensional setting a compatible system of
+one-dimensional anomaly lines over boundary data.  A \(D\)-dimensional theory
+relative to \(\mathcal L\) assigns vectors or linear maps valued in those
+lines.  It becomes an honest functor only after the anomaly line has been
+trivialized, or after the \((D+1)\)-dimensional bulk \(\mathcal L\) is kept
+as part of the system.
+\end{definition}
+
+This distinction matters in gauge theory and in theories with gravitational
+or global anomalies.  A path integral may satisfy topological Ward identities
+on closed manifolds while its boundary Hilbert spaces transform projectively.
+The functorial object is then relative, not an honest functor
+\(\operatorname{Bord}^{\xi}_{D}\to{\bf Vect}_{\Bbbk}^{\rm fd}\).
+
+The Atiyah--Segal datum is the metric-independent specialization of the
+Kontsevich--Segal viewpoint developed in
+Chapter~\ref{ch:kontsevich-segal-functorial-qft}.  A
 Kontsevich--Segal theory keeps admissible complex metrics and analytic
-dependence as part of the bordism datum; an Atiyah--Segal TQFT is obtained
-when the dependence on that metric datum is constant after the required
-topological anomaly data have been included.
+dependence as part of the bordism datum.  An Atiyah--Segal TQFT is obtained
+when, after all anomaly and background-structure data have been included, the
+amplitude is locally constant on the geometric parameters.
 
-\section{Pairing and Reflection}
+\section{Duality, Pairings, and Reflection}
 
-If \(\bar\Sigma\) denotes \(\Sigma\) with reversed tangential structure, a
-bordism from \(\varnothing\) to \(\bar\Sigma\sqcup\Sigma\) gives a bilinear
-pairing
+If \(\bar\Sigma\) is the reversed \(\xi\)-manifold, the evaluation bordism
 \[
-  Z(\bar\Sigma)\otimes Z(\Sigma)\to\Bbbk .
+  {\rm ev}_\Sigma:\bar\Sigma\sqcup\Sigma\longrightarrow\varnothing
 \]
-In unitary theories the target is a category of Hilbert spaces or a
-reflection-positive variant of it.  The pairing is then compatible with the
-adjoint operation obtained by reflecting bordisms.  Positivity is additional
-structure on the functor, parallel to reflection positivity in Euclidean QFT.
+and coevaluation bordism
+\[
+  {\rm coev}_\Sigma:\varnothing\longrightarrow
+  \Sigma\sqcup\bar\Sigma
+\]
+are the two caps obtained by viewing the cylinder on \(\Sigma\) sideways.
+Functoriality gives maps
+\[
+  Z({\rm ev}_\Sigma):
+  Z(\bar\Sigma)\otimes Z(\Sigma)\to\Bbbk,
+  \qquad
+  Z({\rm coev}_\Sigma):
+  \Bbbk\to Z(\Sigma)\otimes Z(\bar\Sigma).
+\]
 
-\section{Extended Theories}
+\begin{proposition}[State-space duality from caps and cylinders]
+\label{prop:tqft-state-space-duality}
+Let \(Z\) be an honest finite-dimensional Atiyah--Segal TQFT.  Then
+\(Z(\bar\Sigma)\) is canonically dual to \(Z(\Sigma)\).  Equivalently, the
+pairing \(Z(\bar\Sigma)\otimes Z(\Sigma)\to\Bbbk\) from the evaluation
+bordism is nondegenerate, and the coevaluation vector is its inverse tensor.
+\end{proposition}
 
-An extended TQFT assigns data to manifolds of all codimensions.  The target is
-then a symmetric monoidal higher category \(\mathcal C\), and the theory is a
+\begin{proof}
+The two zig-zag composites
+\[
+  \Sigma
+  \xrightarrow{\ {\rm coev}_\Sigma\sqcup\id_\Sigma\ }
+  \Sigma\sqcup\bar\Sigma\sqcup\Sigma
+  \xrightarrow{\ \id_\Sigma\sqcup{\rm ev}_\Sigma\ }
+  \Sigma
+\]
+and
+\[
+  \bar\Sigma
+  \xrightarrow{\ \id_{\bar\Sigma}\sqcup{\rm coev}_\Sigma\ }
+  \bar\Sigma\sqcup\Sigma\sqcup\bar\Sigma
+  \xrightarrow{\ {\rm ev}_\Sigma\sqcup\id_{\bar\Sigma}\ }
+  \bar\Sigma
+\]
+are diffeomorphic to the corresponding cylinders.  Applying \(Z\), and using
+the cylinder axiom, gives the triangular identities for a dual pair in
+\({\bf Vect}^{\rm fd}_{\Bbbk}\).  In finite dimension those triangular
+identities are equivalent to nondegeneracy of the evaluation pairing and to
+the assertion that the coevaluation vector is the inverse of that pairing.
+\end{proof}
+
+A unitary topological theory requires more than the bilinear pairing above.
+Reflection of bordisms should be implemented by an antilinear involution on
+state spaces, and the pairing obtained by reflecting a state and gluing it to
+the original state should be positive.  This is the TQFT analogue of
+reflection positivity in Euclidean QFT.  Positivity is therefore not a
+consequence of Definition~\ref{def:atiyah-segal-tqft}; it is extra structure
+on the functor.
+
+\section{The Complete Two-Dimensional Oriented Example}
+
+The first nontrivial test of the definition is the classification of ordinary
+two-dimensional oriented TQFTs by finite-dimensional commutative Frobenius
+algebras.  This theorem is not merely a slogan about pair-of-pants
+multiplication.  It is the exact algebraic form of the gluing law for
+surfaces.
+
+\begin{definition}[Commutative Frobenius algebra]
+\label{def:commutative-frobenius-algebra}
+A commutative Frobenius algebra over \(\Bbbk\) is a finite-dimensional
+unital associative commutative \(\Bbbk\)-algebra \(A\), together with a
+linear functional
+\[
+  \epsilon:A\to\Bbbk
+\]
+such that the bilinear form
+\[
+  \eta(a,b)=\epsilon(ab)
+  \label{eq:frobenius-pairing}
+\]
+is nondegenerate.  The unit is denoted \(1_A\), the multiplication is
+\(m:A\otimes A\to A\), and the counit is \(\epsilon\).
+\end{definition}
+
+Choose a basis \(\{e_i\}_{i=1}^{N}\) of \(A\).  Let
+\[
+  \eta_{ij}=\epsilon(e_i e_j),
+  \qquad
+  (\eta^{ij})=(\eta_{ij})^{-1},
+\]
+and define the dual elements
+\[
+  e^i=\sum_j \eta^{ij}e_j .
+\]
+Then \(\epsilon(e_i e^j)=\delta_i^{\,j}\).  The inverse of the Frobenius
+pairing is the tensor
+\[
+  C=\sum_i e_i\otimes e^i\in A\otimes A.
+\]
+The comultiplication adjoint to multiplication is
+\begin{equation}
+  \Delta(a)
+  =
+  \sum_i e_i\otimes e^i a
+  =
+  \sum_i ae_i\otimes e^i .
+  \label{eq:frobenius-comultiplication}
+\end{equation}
+The equality of the two expressions follows from commutativity.  The defining
+adjointness property is
+\begin{equation}
+  (\epsilon\otimes\epsilon)\bigl(\Delta(a)(b\otimes c)\bigr)
+  =
+  \epsilon(abc),
+  \qquad a,b,c\in A.
+  \label{eq:delta-adjoint-to-m}
+\end{equation}
+
+\begin{lemma}[Cylinder and Frobenius identities]
+\label{lem:frobenius-cylinder-and-neck}
+For a commutative Frobenius algebra \(A\), the tensor \(C=\sum_i e_i\otimes
+e^i\) and the comultiplication \(\Delta\) satisfy:
+\begin{align}
+  \sum_i e_i\,\epsilon(e^i a)&=a,
+  \label{eq:frobenius-cylinder-identity}\\
+  (m\otimes\id_A)(\id_A\otimes\Delta)
+  &=
+  \Delta m
+  =
+  (\id_A\otimes m)(\Delta\otimes\id_A).
+  \label{eq:frobenius-neck-identity}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+For any \(b\in A\),
+\[
+  \epsilon\!\left(b\sum_i e_i\,\epsilon(e^i a)\right)
+  =
+  \sum_i \epsilon(be_i)\epsilon(e^i a)
+  =
+  \epsilon(ba),
+\]
+because \(\{e_i\}\) and \(\{e^i\}\) are dual bases for the pairing
+\(\eta\).  Nondegeneracy of \(\eta\) gives
+\eqref{eq:frobenius-cylinder-identity}.
+
+For the first equality in \eqref{eq:frobenius-neck-identity}, evaluate both
+sides on \(a\otimes b\).  The left side is
+\[
+  (m\otimes\id)(a\otimes\Delta(b))
+  =
+  \sum_i ae_i\otimes e^i b .
+\]
+The middle term is
+\[
+  \Delta(ab)=\sum_i e_i\otimes e^i ab .
+\]
+To prove equality, pair the first tensor factor with an arbitrary \(x\in A\)
+and the second with an arbitrary \(y\in A\).  The two pairings give
+\[
+  \sum_i \epsilon(xae_i)\epsilon(ye^i b)
+  =
+  \epsilon(xyab)
+  =
+  \sum_i \epsilon(xe_i)\epsilon(ye^i ab),
+\]
+again by the dual-basis identity.  Nondegeneracy of
+\(\eta\otimes\eta\) proves the equality.  The second equality is identical,
+or follows by commutativity.
+\end{proof}
+
+\begin{theorem}[Oriented \(2\)-dimensional TQFTs and Frobenius algebras]
+\label{thm:2d-oriented-tqft-frobenius}
+Finite-dimensional ordinary oriented \(2\)-dimensional Atiyah--Segal TQFTs
+over \(\Bbbk\) are equivalent to finite-dimensional commutative Frobenius
+algebras over \(\Bbbk\).  Under this equivalence,
+\[
+  A=Z(S^1),
+  \qquad
+  m=Z(P_{2\to1}),
+  \qquad
+  1_A=Z(D_{\varnothing\to1})(1),
+  \qquad
+  \epsilon=Z(D_{1\to\varnothing}),
+\]
+where \(P_{2\to1}\) is the oriented pair of pants with two incoming circles
+and one outgoing circle.
+\end{theorem}
+
+\begin{proof}
+First let \(Z\) be a \(2\)-dimensional oriented TQFT and set
+\(A=Z(S^1)\).  The disk from \(\varnothing\) to \(S^1\) gives the unit
+\(1_A\), the reversed disk gives \(\epsilon:A\to\Bbbk\), and the pair of
+pants gives \(m:A\otimes A\to A\).  Associativity follows because the two
+bordisms
+\[
+  P_{2\to1}\circ(P_{2\to1}\sqcup\id_{S^1})
+  \quad\hbox{and}\quad
+  P_{2\to1}\circ(\id_{S^1}\sqcup P_{2\to1})
+\]
+are diffeomorphic as oriented bordisms from three circles to one circle.
+Commutativity follows from the diffeomorphism of the pair of pants which
+interchanges the two incoming circles.  The unit axiom follows by gluing a
+disk to one incoming circle of the pair of pants, producing a cylinder.
+Proposition~\ref{prop:tqft-state-space-duality}, applied to the circle,
+shows that \(\epsilon(ab)\) is nondegenerate.  Thus \(A\) is a commutative
+Frobenius algebra.
+
+Conversely, let \((A,\epsilon)\) be a commutative Frobenius algebra.  Define
+the value on a disjoint union of \(n\) positively oriented circles to be
+\(A^{\otimes n}\); reversed circles are assigned the dual vector space, and
+the Frobenius pairing identifies it with \(A\) when an explicit formula is
+written using the basis-independent tensor \(C\).  Assign to the elementary
+Morse bordisms the maps
+\[
+  D_{\varnothing\to1}\mapsto 1_A,\qquad
+  D_{1\to\varnothing}\mapsto\epsilon,\qquad
+  P_{2\to1}\mapsto m,\qquad
+  P_{1\to2}\mapsto\Delta .
+\]
+For a general compact oriented surface with collared boundary, choose a
+Morse function constant near the boundary.  The critical points decompose
+the surface into disks and pairs of pants, hence into a composite of the
+elementary maps above.
+
+It remains to show that the resulting linear map is independent of the Morse
+decomposition.  The differential-topological input is the standard Cerf
+description of decompositions of compact surfaces: two decompositions are
+related by isotopy, by creation or cancellation of adjacent critical points,
+and by interchange of neighboring critical levels.  Isotopy gives no change.
+Cancellation of a birth-death pair gives precisely the cylinder identity
+\eqref{eq:frobenius-cylinder-identity} and the unit/counit identities.
+Interchange of two pair-of-pants critical levels gives associativity,
+commutativity, and the neck-exchange Frobenius identity
+\eqref{eq:frobenius-neck-identity}.  Therefore the map depends only on the
+oriented bordism class, and collar gluing is sent to composition because
+concatenating Morse functions concatenates the associated elementary maps.
+The construction is symmetric monoidal by tensor product on disjoint unions.
+
+The two constructions are inverse up to the evident natural isomorphism: a
+TQFT is generated by disks and pairs of pants modulo the relations just
+checked, and a Frobenius algebra is recovered from the values of the
+constructed functor on those generating bordisms.
+\end{proof}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.92]
+  \draw[thick] (0,0.8) .. controls (0.9,0.8) and (1.2,0.35) .. (1.9,0.35)
+               .. controls (2.6,0.35) and (3.0,0.8) .. (3.9,0.8);
+  \draw[thick] (0,-0.8) .. controls (0.9,-0.8) and (1.2,-0.35) .. (1.9,-0.35)
+               .. controls (2.6,-0.35) and (3.0,-0.8) .. (3.9,-0.8);
+  \draw[thick] (1.9,0.35) .. controls (2.1,0.1) and (2.1,-0.1) .. (1.9,-0.35);
+  \node[left] at (0,0.8) {\(a\)};
+  \node[left] at (0,-0.8) {\(b\)};
+  \node[right] at (3.9,0) {\(m(a,b)\)};
+  \node at (1.95,-1.25) {pair of pants \(P_{2\to1}\)};
+
+  \draw[->] (4.8,0) -- (5.7,0);
+
+  \draw[thick] (6.2,0) ellipse (0.45 and 0.85);
+  \draw[thick] (7.1,0.55) .. controls (7.8,0.55) and (8.1,0.2) .. (8.7,0.2);
+  \draw[thick] (7.1,-0.55) .. controls (7.8,-0.55) and (8.1,-0.2) .. (8.7,-0.2);
+  \draw[thick] (8.7,0.2) .. controls (8.95,0.05) and (8.95,-0.05) .. (8.7,-0.2);
+  \node at (6.2,-1.25) {cap/cup tensor \(C=\sum_i e_i\otimes e^i\)};
+  \node at (8.25,-1.25) {comultiplication \(\Delta\)};
+\end{tikzpicture}
+\caption{In two dimensions the gluing generators are disks, caps, cups, and
+pairs of pants.  The inverse pairing tensor \(C\) is what makes gluing along
+an internal circle a contraction over the intermediate state space.}
+\label{fig:tqft-frobenius-generators}
+\end{figure}
+
+\begin{example}[Semisimple idempotent basis]
+\label{ex:semisimple-2d-tqft}
+Let
+\[
+  A=\Bbbk^r
+\]
+with pointwise multiplication.  Let \(p_\alpha\), \(1\le\alpha\le r\), be the
+primitive idempotents and choose nonzero weights
+\(\lambda_\alpha\in\Bbbk^\times\).  Define
+\[
+  \epsilon(p_\alpha)=\lambda_\alpha .
+\]
+Then
+\[
+  \eta(p_\alpha,p_\beta)=\lambda_\alpha\delta_{\alpha\beta},
+  \qquad
+  p^\alpha=\lambda_\alpha^{-1}p_\alpha,
+\]
+and the Euler element
+\[
+  E=m\Delta(1_A)=\sum_{\alpha=1}^{r}\lambda_\alpha^{-1}p_\alpha
+\]
+is the handle operator.  For a closed connected oriented surface
+\(\Sigma_g\) of genus \(g\),
+\begin{equation}
+  Z(\Sigma_g)=\epsilon(E^g)
+  =
+  \sum_{\alpha=1}^{r}\lambda_\alpha^{1-g}.
+  \label{eq:semisimple-2d-tqft-genus-partition}
+\end{equation}
+The formula is obtained by cutting \(\Sigma_g\) into a sphere with \(g\)
+handles.  Each handle inserts \(E\); the final cap applies \(\epsilon\).
+\end{example}
+
+\section{Extended Theories and What Extra Data They Contain}
+
+An extended TQFT assigns data not only to closed \((D-1)\)-manifolds but also
+to lower-dimensional strata.  Its source is an extended bordism
+\((\infty,D)\)-category
+\[
+  \operatorname{Bord}^{\xi,{\rm ext}}_{D},
+\]
+whose objects are points with \(\xi\)-structure, whose \(1\)-morphisms are
+collared intervals and \(1\)-manifolds, whose \(2\)-morphisms are surfaces
+with corners, and so on up to \(D\)-morphisms.  The target is a symmetric
+monoidal higher category \(\mathcal C\).  A fully extended TQFT is a
 symmetric monoidal higher functor
 \[
-  Z:\operatorname{Bord}_{D}^{\xi,{\rm ext}}\to\mathcal C .
+  Z:\operatorname{Bord}^{\xi,{\rm ext}}_{D}\to\mathcal C .
 \]
-For example, in a fully extended two-dimensional theory, a point is assigned
-an object \(A\), an interval a morphism built from \(A\), and a surface a
-linear map obtained by composing those lower-codimension data.  Locality is
-encoded by the ability to cut and reglue at every codimension.
+The phrase ``locality at all codimensions'' means that cutting along corners,
+defects, junctions, and points is represented by composition in
+\(\mathcal C\).
 
 \begin{quotedtheorem}[Cobordism hypothesis, framed fully extended form]
 \label{thm:cobordism-hypothesis-boundary}
 Let \(\mathcal C\) be a symmetric monoidal \((\infty,D)\)-category with the
-dual and adjoint data needed to evaluate framed bordisms.  An object
+duals and adjoints needed to evaluate framed bordisms.  An object
 \(X\in\mathcal C\) is fully \(D\)-dualizable when \(X\) has a dual, the
 evaluation and coevaluation \(1\)-morphisms admit left and right adjoints,
 those adjunction data admit the required adjoints one categorical level
 higher, and this iterated adjointability continues through level \(D\).
-For \(D=1\) this is ordinary dualizability; for \(D=2\) it is
-dualizability plus adjoints for the evaluation and coevaluation
-\(1\)-morphisms.  Under these hypotheses, fully extended framed
-\(D\)-dimensional topological field theories with target \(\mathcal C\) are
-classified by fully \(D\)-dualizable objects of \(\mathcal C\), with
-equivalence understood as equivalence of symmetric monoidal higher functors.
+Under these hypotheses, fully extended framed \(D\)-dimensional topological
+field theories with target \(\mathcal C\) are classified by fully
+\(D\)-dualizable objects of \(\mathcal C\), with equivalence understood as
+equivalence of symmetric monoidal higher functors.
 \end{quotedtheorem}
 
-This is the framed fully extended cobordism hypothesis in Lurie's
-\((\infty,n)\)-categorical formulation.  It is used here as a boundary
-statement, not as a result proved in this monograph.  Its role in the present
-chapter is to fix the kind of target data that an extended TQFT claim must
-supply.  Whenever an example is claimed to define an extended theory, the
-target category, dualizability, anomaly, and boundary data must be supplied.
-The quoted source lineage is the Baez--Dolan cobordism-hypothesis conjecture,
-Lurie's proof and formulation for fully extended framed theories, and modern
-low-dimensional and derived-geometric expositions such as the work of
-Calaque--Scheimbauer.  The proof is not reproduced here; the statement is
-kept to fix the exact data an extended TQFT claim must provide.
+Theorem~\ref{thm:cobordism-hypothesis-boundary} is quoted as a boundary
+statement.  Its proof is not reproduced in this monograph.  Its role here is
+to fix the kind of target data that must be supplied when an example is said
+to be fully extended: the target higher category, the object assigned to a
+point, the required duals and adjoints, the tangential-structure action, and
+any anomaly or boundary decoration.
+
+\begin{example}[The extended refinement of the semisimple \(2\)-dimensional model]
+\label{ex:extended-semisimple-2d-tqft}
+Let \({\bf Alg}_2^{\rm fd}\) be the Morita \(2\)-category whose objects are
+finite-dimensional \(\Bbbk\)-algebras, whose \(1\)-morphisms are finite
+bimodules, and whose \(2\)-morphisms are bimodule maps.  A finite-dimensional
+separable algebra \(A\) is fully dualizable in this \(2\)-category.  A
+separability idempotent is an element
+\[
+  e=\sum_r x_r\otimes y_r\in A\otimes A^{\rm op}
+\]
+such that
+\[
+  \sum_r x_ry_r=1_A,
+  \qquad
+  \sum_r ax_r\otimes y_r=\sum_r x_r\otimes y_ra
+  \quad\hbox{for all }a\in A.
+\]
+These two identities give the coevaluation and evaluation bimodules their
+adjoints.  If \(A\) also has a symmetric nondegenerate trace
+\(\epsilon:A\to\Bbbk\), then the oriented structure is supplied by the
+Calabi--Yau trace.  The value on the circle is the Hochschild trace
+\[
+  HH_0(A)=A/[A,A].
+\]
+For the commutative semisimple algebra \(A=\Bbbk^r\), this is \(A\) itself,
+and the ordinary theory obtained by forgetting point and interval data is the
+Frobenius-algebra TQFT of
+Example~\ref{ex:semisimple-2d-tqft}.
+\end{example}
+
+This example illustrates the conceptual difference between an ordinary and a
+fully extended theory.  In the ordinary theory the circle state space is the
+primitive datum.  In the fully extended Morita-theoretic description the
+point value is the algebra \(A\), the interval value is the regular
+bimodule, and the circle state space is obtained by taking the trace of the
+identity \(A\)-bimodule.
 
 \section{From Local QFT to Functorial Data}
 
-A local QFT with a gapped phase can produce a topological theory of its
-infrared protected sector.  The passage has several ingredients:
-identification of the protected observables; proof that correlation functions
-depend only on topology and background \(\xi\)-structure; finite-dimensional
-state spaces after imposing the topological sector; and gluing compatibility
-for cutting manifolds.  In gauge-theoretic examples this also includes gauge
-fixing, BV integration cycles, anomaly cancellation, and boundary conditions.
+A local QFT with a protected topological sector can produce a functorial
+TQFT only after several independent statements have been proved.  The
+cohomological Ward identity must show metric independence of the selected
+observables.  The state spaces obtained by quantizing on closed spatial
+manifolds must be identified and completed.  Cutting a spacetime along a
+hypersurface must give an actual contraction over the intermediate state
+space.  Gauge redundancies must be treated by a BV or lattice construction
+which supplies a gauge-independent integral and a boundary-condition
+category.  Finally, possible anomaly lines must either be trivialized or kept
+as relative data.
 
-\begin{openproblem}[Functorial extraction from QFT]
+\begin{proposition}[Functorial extraction criterion]
+\label{prop:functorial-extraction-criterion}
+Let a regulated local QFT assign, for each collared \(\xi\)-bordism
+\(M:\Sigma_0\to\Sigma_1\), a multilinear amplitude
+\[
+  Z_{\rm reg}(M):\mathcal H_{\rm reg}(\Sigma_0)\to
+  \mathcal H_{\rm reg}(\Sigma_1)
+\]
+depending on a regulator and auxiliary geometric choices.  Suppose:
+\begin{enumerate}[label=(\roman*)]
+\item the selected state spaces have regulator-independent finite-dimensional
+  limits \(\mathcal H(\Sigma)\);
+\item for every smooth family of metrics or auxiliary choices, the
+  renormalized variation of the selected amplitudes is zero or is valued in a
+  specified anomaly line;
+\item for every decomposition \(M=M_{12}\circ M_{01}\), the regulated gluing
+  identity converges to
+  \[
+    Z(M)=Z(M_{12})Z(M_{01})
+  \]
+  in the operator topology on the finite-dimensional state spaces, with the
+  same anomaly-line convention on both sides;
+\item the cylinder converges to the identity and disjoint union converges to
+  tensor product.
+\end{enumerate}
+Then the limiting amplitudes define an honest or relative Atiyah--Segal TQFT,
+according to whether the anomaly line has been trivialized.
+\end{proposition}
+
+\begin{proof}
+The limiting assignments are defined on objects by
+\(\Sigma\mapsto\mathcal H(\Sigma)\) and on morphisms by
+\(M\mapsto Z(M)\).  Hypothesis (iii) is exactly preservation of composition;
+hypothesis (iv) is exactly preservation of identities and the symmetric
+monoidal product.  Hypothesis (ii) says that the assignment is independent of
+representatives inside the allowed bordism class, or that its representative
+dependence is precisely the stated relative anomaly.  These are the axioms of
+Definition~\ref{def:atiyah-segal-tqft} and
+Definition~\ref{def:anomalous-relative-tqft}.
+\end{proof}
+
+\begin{openproblem}[Functorial extraction from interacting QFT]
 \label{op:functorial-extraction-from-qft}
-Given a local QFT with a proposed topological sector, construct the associated
-bordism functor directly from its Hilbert spaces, local algebras, or
-Euclidean functional integrals.  The construction should identify the precise
-completion of state spaces, the gluing topology, anomaly line, and boundary
-category.
+Given a local interacting QFT with a proposed topological sector, construct
+the associated ordinary or extended bordism functor directly from its Hilbert
+spaces, local algebras, or Euclidean functional integrals.  The construction
+should identify the precise completion of state spaces, the gluing topology,
+the anomaly line, the boundary category, and the status of gauge fixing or BV
+integration cycles.
 \end{openproblem}
 
 \section{Four-Dimensional Cohomological Gauge Theory As A Test Case}
@@ -130,11 +635,10 @@ four-dimensional gauge theory.  Its ultraviolet presentation is the
 topological twist of \(\mathcal N=2\) Yang--Mills theory.  The Donaldson side
 is organized by the moduli space of anti-self-dual connections, its
 compactification and orientation data, and the observables obtained from the
-descent of gauge-invariant polynomials.  These are not merely formal symbols:
-to define the invariant one must state the gauge group and global form, the
-four-manifold and its orientation data, the metric dependence and chamber
-structure, the compactification of the instanton moduli space, and the
-treatment of reducible connections.
+descent of gauge-invariant polynomials.  To define the invariant one must
+state the gauge group and global form, the four-manifold and its orientation
+data, the metric dependence and chamber structure, the compactification of
+the instanton moduli space, and the treatment of reducible connections.
 
 The Seiberg--Witten explanation compares this ultraviolet cohomological gauge
 theory to an Abelian monopole effective theory on the Coulomb branch.  The
@@ -147,7 +651,8 @@ complete argument must construct the Wilsonian coordinate \(u\), the effective
 coupling \(\tau(u)\), the duality frame near each singular locus, the
 monopole or dyon hypermultiplet, the contact terms and gravitational
 couplings, the observable map from Donaldson classes to low-energy
-observables, and the wall-crossing or \(u\)-plane terms when they are present.
+observables, and the wall-crossing or \(u\)-plane terms when they are
+present.
 
 \begin{openproblem}[Donaldson--SW RG comparison]
 \label{op:donaldson-seiberg-witten-rg-comparison}

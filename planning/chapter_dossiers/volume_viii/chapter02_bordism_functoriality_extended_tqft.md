@@ -3,23 +3,39 @@
 ## Logical Role
 
 - Role in the monograph: state the functorial target of topological field
-  theory after the cohomological metric-independence mechanism.
+  theory after the cohomological metric-independence mechanism, with one
+  completely worked ordinary example rather than only abstract packaging.
 - Immediate predecessor: metric variation and \(Q\)-cohomological observables.
 - Immediate successor: BF theory, Chern--Simons theory, cohomological gauge
   theory, and twists.
 
 ## Definitions And Results
 
-- Bordism category with tangential structure.
+- Tangential structure as a map \(\theta_\xi:B_\xi\to BO(D)\) and
+  stabilized lower-stratum \(\xi\)-structures.
+- Collared \(\xi\)-bordisms, collar gluing, identity cylinders, and disjoint
+  union as symmetric monoidal product.
 - Symmetric monoidal Atiyah--Segal TQFT functor.
+- Honest versus relative/anomalous functorial theories.
 - State spaces from closed \((D-1)\)-manifolds and numbers from closed
   \(D\)-manifolds.
-- Pairing from evaluation bordism and reflection-positive/unitary refinement.
+- Pairing from evaluation bordism; proposition that finite-dimensional honest
+  TQFTs assign dual vector spaces to reversed hypersurfaces.
+- Complete ordinary \(2D\) theorem: finite-dimensional oriented TQFTs are
+  equivalent to finite-dimensional commutative Frobenius algebras.
+- Explicit Frobenius tensor \(C=\sum_i e_i\otimes e^i\),
+  comultiplication \(\Delta(a)=\sum_i e_i\otimes e^ia\), cylinder identity,
+  neck-exchange/Frobenius identity, and genus-\(g\) semisimple partition
+  function.
 - Extended TQFT as a higher functor from an extended bordism category.
 - Cobordism hypothesis through fully \(D\)-dualizable objects: duals,
   adjoints for evaluation/coevaluation, and iterated adjoints through level
   \(D\), marked as a `quotedtheorem` rather than a theorem proved in the
   monograph.
+- Morita \(2\)-category example: finite-dimensional separable algebras as
+  fully dualizable objects, Calabi-Yau trace for oriented structure, and
+  \(HH_0(A)\) as the circle value.
+- Functorial extraction criterion from regulated local QFT amplitudes.
 - Extraction problem from local QFT protected sectors.
 - Witten--Donaldson theory as a four-dimensional cohomological gauge-theory
   test case.
@@ -36,28 +52,51 @@
 | \(Z\) | topological field theory functor |
 | \(\Sigma\) | closed spatial \((D-1)\)-manifold |
 | \(M:\Sigma_{\rm in}\to\Sigma_{\rm out}\) | bordism |
+| \(\mathcal L\) | invertible anomaly theory/anomaly-line system |
+| \(A\) | commutative Frobenius algebra, often \(Z(S^1)\) |
+| \(\epsilon\) | Frobenius trace/counit |
+| \(\eta(a,b)\) | Frobenius pairing \(\epsilon(ab)\) |
+| \(C\) | inverse pairing tensor \(\sum_i e_i\otimes e^i\) |
+| \(\Delta\) | comultiplication adjoint to multiplication |
+| \(E\) | Euler/handle element \(m\Delta(1_A)\) |
 | \(\mathcal C\) | higher-categorical target for extended theories |
 | \(X\) | fully \(D\)-dualizable object classifying a framed extended TQFT |
+| \(HH_0(A)\) | Hochschild trace \(A/[A,A]\), the circle value in Morita \(2D\) examples |
 | \(u\) | Coulomb-branch Wilsonian coordinate in the Seiberg--Witten comparison |
 | \(\tau(u)\) | low-energy Abelian gauge coupling coordinate |
 
 ## Claim Ledger
 
-1. Functorial TQFT requires gluing laws beyond metric-independent
+1. Functorial TQFT requires collar-gluing laws beyond metric-independent
    correlation functions.
-2. Reflection positivity/unitarity is extra structure on the functor.
-3. Extended theories assign data to lower-dimensional strata and require a
+2. Reversal of a hypersurface gives the dual state space in any honest
+   finite-dimensional TQFT; the proof is the cap/cup zig-zag identity.
+3. Reflection positivity/unitarity is extra structure on the functor.
+4. The \(2D\) oriented case is not merely illustrative: the full gluing law is
+   exactly the commutative Frobenius algebra identities, including the
+   cylinder inverse-pairing identity and Frobenius neck exchange.
+5. Extended theories assign data to lower-dimensional strata and require a
    higher-categorical target.
-4. The cobordism hypothesis is quoted only with its target-category,
+6. The cobordism hypothesis is quoted only with its target-category,
    full-dualizability, and source-lineage hypotheses stated; the monograph
    does not present it as a locally proved theorem.
-5. The Donaldson/Seiberg--Witten relation is an RG comparison problem whose
+7. A local QFT gives a TQFT only after state-space limits, metric-choice
+   independence/anomaly-line data, gluing convergence, and cylinder/tensor
+   laws are proved.
+8. The Donaldson/Seiberg--Witten relation is an RG comparison problem whose
    current mathematical status must be separated into differential-geometric
    moduli-space theorems, finite-dimensional localization or gluing inputs, and
    still-unproved QFT RG statements.
 
 ## Figures
 
-- Bordism composition/gluing diagram.
-- Pairing from a cap/cup bordism.
-- Extended assignment ladder from points to \(D\)-manifolds.
+- Collar-gluing diagram for \(M_{12}\circ M_{01}\).
+- Frobenius generator diagram showing pair of pants, cap/cup tensor, and
+  comultiplication.
+
+## Calculation Checks
+
+- `calculation-checks/tqft_frobenius_gluing_checks.py` verifies the
+  semisimple Frobenius algebra formulas with exact rational arithmetic:
+  cylinder identity, neck-exchange identity, associativity/commutativity, and
+  \(\Sigma_g\) partition function.
