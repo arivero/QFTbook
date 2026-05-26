@@ -434,6 +434,59 @@ def check_crossing_rhs_is_sheet_sensitive() -> None:
         raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
 
 
+def check_dressing_charge_antisymmetry_unitarity() -> None:
+    """Check that the charge expansion gives scalar dressing unitarity."""
+
+    coefficients = {
+        (2, 3): 4.0,
+        (2, 5): -0.75,
+        (3, 4): 1.25,
+        (4, 7): -0.2,
+    }
+
+    def charge_from_x(r_value: int, x_plus: complex, x_minus: complex) -> complex:
+        return 1j * (
+            (1 / x_plus) ** (r_value - 1)
+            - (1 / x_minus) ** (r_value - 1)
+        ) / (r_value - 1)
+
+    def theta(
+        left: tuple[complex, complex],
+        right: tuple[complex, complex],
+    ) -> complex:
+        left_charges = {
+            r_value: charge_from_x(r_value, left[0], left[1])
+            for r_value in range(2, 8)
+        }
+        right_charges = {
+            r_value: charge_from_x(r_value, right[0], right[1])
+            for r_value in range(2, 8)
+        }
+        value = 0j
+        for (r_value, s_value), coefficient in coefficients.items():
+            value -= coefficient * (
+                left_charges[r_value] * right_charges[s_value]
+                - left_charges[s_value] * right_charges[r_value]
+            )
+        return value
+
+    for coupling, momentum_1, momentum_2 in (
+        (0.08, 0.6, 1.4),
+        (0.2, 0.9, 2.1),
+        (0.45, 1.2, 2.7),
+    ):
+        x1 = xpm_from_momentum(momentum_1, coupling)
+        x2 = xpm_from_momentum(momentum_2, coupling)
+        theta_12 = theta(x1, x2)
+        theta_21 = theta(x2, x1)
+        assert_close("dressing charge antisymmetry", theta_12 + theta_21, 0)
+
+        sigma_12 = cmath.exp(1j * theta_12)
+        sigma_21 = cmath.exp(1j * theta_21)
+        assert_close("dressing scalar unitarity", sigma_12 * sigma_21, 1)
+        assert_close("squared dressing scalar unitarity", (sigma_12 * sigma_21) ** 2, 1)
+
+
 def check_dhm_weak_dressing_coefficients() -> None:
     """Check DHM contour residues for the first weak dressing coefficients."""
 
@@ -2148,6 +2201,7 @@ def main() -> None:
     check_central_extension_dispersion()
     check_zhukovsky_map_and_energy()
     check_crossing_rhs_is_sheet_sensitive()
+    check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()

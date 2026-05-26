@@ -54,6 +54,10 @@ the monograph's proof-boundary language.
   dressing factor, including the ten-amplitude intertwiner form.
 - Adds the BES `chi(x,y)` contour-integral representation with its
   sheet-domain caveat.
+- Proves dressing scalar unitarity in the charge-expansion domain:
+  antisymmetry of `q_r(1)q_s(2)-q_s(1)q_r(2)` gives `theta_21=-theta_12` and
+  hence `sigma_12 sigma_21=1`, while leaving crossing as separate monodromy
+  data.
 - Derives the weak-coupling DHM/BES coefficient extraction directly from the
   contour integral: expand the gamma-function logarithm, take the Laurent
   coefficient of `(z+z^{-1}-w-w^{-1})^N`, and obtain the residue formula for
@@ -127,6 +131,10 @@ crossed Zhukovsky sheets.
   corrected energy formula.
 - It also checks that the stringbook-orientation crossing RHS is not
   invariant under a naive sheet-free `x -> 1/x` substitution.
+- It checks dressing scalar unitarity by evaluating the antisymmetric charge
+  expansion on physical-branch `x^pm` samples and verifying
+  `theta_12+theta_21=0`, `sigma_12 sigma_21=1`, and the squared-factor
+  version used in the `SU(2)` ABA.
 - It checks the DHM weak dressing coefficients by Laurent-expanding the
   contour-integrand monomial `(z+z^{-1}-w-w^{-1})^N`, comparing the residue
   prefactors against the closed weak formula for several `c_{r,s}` values,

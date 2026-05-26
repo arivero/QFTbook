@@ -340,6 +340,61 @@ the matrix part.  The dressing phase has the antisymmetric charge expansion
   c_{r,s}(g)\,
   \bigl(q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm)\bigr).
 \]
+
+\begin{proposition}[Dressing unitarity from charge antisymmetry]
+\label{prop:planar-n4-dressing-unitarity-from-antisymmetry}
+Work in a domain of the physical sheet where the charge expansion for
+\(\theta_{12}=\theta(x_1^\pm,x_2^\pm)\) is either finite after truncation or
+absolutely convergent, and use the same branch of the phase for the exchanged
+pair \(\theta_{21}=\theta(x_2^\pm,x_1^\pm)\).  Then
+\[
+  \theta_{21}=-\theta_{12},
+  \qquad
+  \sigma_{12}\sigma_{21}=1.
+\]
+Consequently the squared dressing factor appearing in the \(SU(2)\)
+asymptotic Bethe equation also satisfies
+\[
+  \sigma_{12}^2\sigma_{21}^2=1 .
+\]
+\end{proposition}
+
+\begin{proof}
+For each pair \(r<s\) with \(r+s\) odd, define
+\[
+  A_{r,s}(1,2)
+  =
+  q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm).
+\]
+Exchanging the two magnons gives
+\[
+  A_{r,s}(2,1)
+  =
+  q_r(x_2^\pm)q_s(x_1^\pm)-q_s(x_2^\pm)q_r(x_1^\pm)
+  =
+  -A_{r,s}(1,2).
+\]
+The coefficients \(c_{r,s}(g)\) are scalar functions of the coupling and the
+integer pair \((r,s)\), not of the ordering of the two magnons.  Therefore the
+whole series changes sign under \(1\leftrightarrow2\), proving
+\(\theta_{21}=-\theta_{12}\).  Since \(\sigma=\ee^{\ii\theta}\),
+\[
+  \sigma_{12}\sigma_{21}
+  =
+  \ee^{\ii(\theta_{12}+\theta_{21})}
+  =
+  1.
+\]
+Squaring gives the last statement.
+\end{proof}
+
+This is only the scalar dressing part of physical two-body unitarity.  The
+rational scalar factor and the matrix part must obey their own unitarity
+relations in the same frame.  The proposition also does not replace crossing:
+after analytic continuation around Zhukovsky cuts the charge expansion must be
+continued with its prescribed monodromy, and that monodromy is precisely the
+additional crossing datum discussed below.
+
 Equivalently, the BES phase may be packaged as
 \begin{equation}
 \begin{aligned}

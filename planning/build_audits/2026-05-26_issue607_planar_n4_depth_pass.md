@@ -628,3 +628,27 @@ Calculation checks added:
 
 - `check_y_system_shift_source_factor()` verifies the shifted source factor,
   inverse orientation, and finite source products on complex samples.
+
+## Continuation XXIV: Dressing Scalar Unitarity
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Content added:
+
+- Added a proposition proving dressing scalar unitarity directly from the
+  antisymmetric charge expansion of the BES/DHM phase.
+- Stated the local convergence/truncation and same-branch hypotheses needed
+  for the derivation.
+- Proved `theta_21=-theta_12`, hence `sigma_12 sigma_21=1` and
+  `sigma_12^2 sigma_21^2=1`, while keeping crossing as separate monodromy data
+  on the Zhukovsky surface.
+
+Calculation checks added:
+
+- `check_dressing_charge_antisymmetry_unitarity()` evaluates finite charge
+  expansions on physical-branch `x^pm` samples and verifies phase
+  antisymmetry, scalar unitarity, and squared-factor unitarity.
