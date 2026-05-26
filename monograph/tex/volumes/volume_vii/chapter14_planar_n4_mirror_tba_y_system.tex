@@ -554,6 +554,157 @@ finite-size wrapping correction from the thermal mirror bath.
 
 \section{Y-System}
 
+The passage from TBA integral equations to local Y-system relations is not a
+formal cancellation of symbols.  It uses a special inverse for the fused
+Bethe-string kernels and an analyticity strip in which
+\(\mathsf s^{-1}\) may be represented by shifts.  We spell out the
+auxiliary-wing case because it is the cleanest part of the planar
+\(\mathcal N=4\) construction and fixes the normalization used later by the
+T-hook notation.
+
+\begin{proposition}[Auxiliary-string kernel inverse]
+\label{prop:planar-n4-auxiliary-kernel-inverse}
+Let
+\[
+  (K*f)(u)=\int_{\mathbb R}\dd v\,K(u-v)f(v)
+\]
+and, for \(n\geq 1\),
+\begin{equation}
+  K_n(u-v)
+  =
+  \frac{1}{2\pi\ii}\partial_v
+  \log\frac{u-v+\ii n/2}{u-v-\ii n/2}
+  =
+  \frac{n/2}{\pi((u-v)^2+n^2/4)} .
+  \label{eq:planar-n4-rational-string-kernel}
+\end{equation}
+Set \(K_0=0\), and define the fused \(A_\infty\)-string kernel
+\[
+  K_{mn}
+  =
+  K_{m+n}+K_{\lvert m-n\rvert}
+  +
+  2\sum_{j=1}^{\min(m,n)-1}K_{\lvert m-n\rvert+2j},
+  \qquad m,n\geq 1,
+\]
+with \(A_{mn}=\delta_{mn}\delta+K_{mn}\).  Finally put
+\[
+  \mathsf s(u-v)=\frac{1}{2\cosh\pi(u-v)} .
+\]
+On the Fourier side, with
+\(\widehat f(\omega)=\int_{\mathbb R}\ee^{\ii\omega u}f(u)\,\dd u\) and
+\(q=\ee^{-|\omega|/2}\),
+\begin{equation}
+  \widehat K_n=q^n,\qquad
+  \widehat{\mathsf s}=\frac{q}{1+q^2},\qquad
+  \widehat A_{mn}
+  =
+  \frac{1+q^2}{1-q^2}\left(q^{|m-n|}-q^{m+n}\right).
+  \label{eq:planar-n4-a-kernel-fourier-symbol}
+\end{equation}
+Consequently
+\begin{equation}
+  (A^{-1})_{mn}
+  =
+  \delta_{mn}\delta
+  -
+  (\delta_{m+1,n}+\delta_{m-1,n})\mathsf s,
+  \qquad \delta_{0n}=0.
+  \label{eq:planar-n4-a-kernel-inverse}
+\end{equation}
+Equivalently,
+\begin{align}
+  \sum_{\ell\geq 1}(A^{-1})_{m\ell}*K_{\ell n}
+  &=
+  (\delta_{m+1,n}+\delta_{m-1,n})\mathsf s,
+  \label{eq:planar-n4-a-inverse-kmn}\\
+  \sum_{\ell\geq 1}(A^{-1})_{m\ell}*K_\ell
+  &=
+  \delta_{m1}\mathsf s .
+  \label{eq:planar-n4-a-inverse-kn}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The transform of \eqref{eq:planar-n4-rational-string-kernel} is the elementary
+Poisson-kernel identity \(\widehat K_n(\omega)=\ee^{-n|\omega|/2}\).  The
+displayed expression for \(\widehat A_{mn}\) follows by summing the finite
+geometric progression in the fused kernel.  In Fourier variables the asserted
+inverse is the tridiagonal matrix
+\[
+  \delta_{mn}
+  -
+  \frac{q}{1+q^2}(\delta_{m+1,n}+\delta_{m-1,n}).
+\]
+Multiplying it by the last expression in
+\eqref{eq:planar-n4-a-kernel-fourier-symbol} gives
+\[
+  \widehat A_{mn}
+  -
+  \widehat{\mathsf s}\,
+  (\widehat A_{m+1,n}+\widehat A_{m-1,n})
+  =
+  \delta_{mn},
+  \qquad \widehat A_{0n}=0.
+\]
+For \(m\neq n\) the two geometric tails cancel.  For \(m=n\) the remaining
+jump is one.  Equations \eqref{eq:planar-n4-a-inverse-kmn} and
+\eqref{eq:planar-n4-a-inverse-kn} follow by subtracting the identity kernel
+from \(A\) and by applying the same calculation to the one-index kernel
+\(\widehat K_n=q^n\).
+\end{proof}
+
+\begin{proposition}[One auxiliary wing of the Y-system]
+\label{prop:planar-n4-auxiliary-wing-y-system}
+Fix one \(\mathfrak{su}(2|2)\) wing.  Let \(Y_n^\circ\) denote the \(n|w\)
+string Y-functions, and let \(Y^\oplus,Y^\ominus\) denote the two \(y\)-sheet
+Y-functions in the stringbook orientation.  Suppose the \(n|w\) part of the
+mirror TBA can be written as
+\begin{equation}
+  \sum_{m\geq 1}A_{nm}*\log Y_m^\circ
+  =
+  \sum_{m\geq 1}K_{nm}*\log(1+Y_m^\circ)
+  +
+  K_n*\log\frac{1+1/Y^\oplus}{1+1/Y^\ominus},
+  \label{eq:planar-n4-wing-tba-a-form}
+\end{equation}
+with \(Y_0^\circ=0\).  Assume all functions appearing after convolution by
+\(\mathsf s\) are analytic in the strip \(|\operatorname{Im}u|<1/2\), decay
+enough at infinity, and have no pole crossed by the shifts
+\(u\mapsto u\pm\ii/2\).  Then
+\begin{equation}
+  \frac{(Y_n^\circ)^+(Y_n^\circ)^-}
+       {(1+Y_{n+1}^\circ)(1+Y_{n-1}^\circ)}
+  =
+  \left(
+    \frac{1+1/Y^\oplus}{1+1/Y^\ominus}
+  \right)^{\delta_{n1}},
+  \qquad n\geq 1.
+  \label{eq:planar-n4-wing-y-system}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Apply \(A^{-1}\) to \eqref{eq:planar-n4-wing-tba-a-form}.  Using
+\eqref{eq:planar-n4-a-inverse-kmn} and \eqref{eq:planar-n4-a-inverse-kn}
+gives
+\[
+  \log Y_n^\circ
+  =
+  \mathsf s*\log(1+Y_{n+1}^\circ)
+  +
+  \mathsf s*\log(1+Y_{n-1}^\circ)
+  +
+  \delta_{n1}\mathsf s*
+  \log\frac{1+1/Y^\oplus}{1+1/Y^\ominus}.
+\]
+For functions analytic in the stated strip,
+\(\mathsf s^{-1}*f=f^+ + f^-\).  Applying this inverse and exponentiating gives
+\eqref{eq:planar-n4-wing-y-system}.  If a pole or branch cut crosses during
+the shift, the right-hand side acquires extra source terms; this is precisely
+why the analytic data below are part of the finite-volume spectral problem.
+\end{proof}
+
 The TBA equations imply functional relations among Y-functions after applying
 kernel identities and shifting the spectral parameter.  On the interior of
 the planar \(\mathcal N=4\) T-hook, the relation has the form

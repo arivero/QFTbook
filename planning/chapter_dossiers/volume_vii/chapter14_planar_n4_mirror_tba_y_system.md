@@ -25,6 +25,12 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   source-derivative kernel convention.
 - `zeta`: one-species pseudoenergy satisfying
   `rho_p/rho_L=(1+exp zeta)^{-1}`.
+- `K_n,K_mn,A_mn`: rational auxiliary-string kernels and the fused
+  `A_infinity` string kernel used in the TBA-to-Y-system inversion.
+- `s(u)=1/(2 cosh pi u)`: kernel whose inverse is represented by
+  `f(u+i/2)+f(u-i/2)` under the stated strip analyticity assumptions.
+- `Y_n^circ,Y^oplus,Y^ominus`: one-wing `n|w` and two-sheet `y` Y-functions
+  used to derive the auxiliary-wing Y-system.
 - `Y_{a,s}`: T-hook Y-system variables.
 - `u_j`: exact physical Bethe roots in excited-state TBA.
 - `T_{a,s}`: Hirota T-functions.
@@ -60,6 +66,11 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - States the general mirror TBA equation with contours, kernels, chemical
   potentials, and signs as part of the data.
 - Gives the excited-state energy formula with wrapping integral.
+- Adds a self-contained derivation of the `A_infinity` auxiliary-string kernel
+  inverse in Fourier variables, including the fused kernel symbol and the
+  one-index kernel identity.
+- Derives the one-wing `n|w` Y-system relation from the mirror TBA by applying
+  the kernel inverse and then the strip-analytic inverse of `s`.
 - States the T-hook Y-system relation, derives its local Hirota origin, and
   warns that Y-system equations alone do not define the spectrum.
 - Adds analytic Y-system data: shifted strips, meromorphy domains,
@@ -95,6 +106,9 @@ node domain.
   finite grid: constrained entropy variation, stationarity of the grand
   functional, free-energy identity, source-kernel sign conversion, and the
   excited-state zero condition.
+- The same script checks the auxiliary-wing TBA-to-Y-system kernel algebra:
+  the fused `A_mn` Fourier symbol, tridiagonal inverse, `A^{-1}K` identities,
+  `s^{-1}` shift symbol, and boundary-source algebra for the `n|w` Y-system.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic,
   the stringbook `u`-integrand to `q=2u` rational-integrand conversion,
   numerical real-line integrals for the first four mirror charges, and the

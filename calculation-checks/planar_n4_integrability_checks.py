@@ -1124,6 +1124,98 @@ def check_one_species_tba_variation() -> None:
         )
 
 
+def check_mirror_wing_kernel_inverse() -> None:
+    """Check the A-infinity auxiliary-string kernel inverse used for the Y-system."""
+
+    def a_symbol(m_value: int, n_value: int, q_value: float) -> float:
+        return (
+            (1 + q_value * q_value)
+            * (q_value ** abs(m_value - n_value) - q_value ** (m_value + n_value))
+            / (1 - q_value * q_value)
+        )
+
+    def fused_a_symbol(m_value: int, n_value: int, q_value: float) -> float:
+        value = 1.0 if m_value == n_value else 0.0
+        distance = abs(m_value - n_value)
+        if distance:
+            value += q_value**distance
+        value += q_value ** (m_value + n_value)
+        for offset in range(1, min(m_value, n_value)):
+            value += 2 * q_value ** (distance + 2 * offset)
+        return value
+
+    def k_symbol(m_value: int, n_value: int, q_value: float) -> float:
+        return a_symbol(m_value, n_value, q_value) - (1.0 if m_value == n_value else 0.0)
+
+    for q_value in (0.2, 0.55, 0.85):
+        s_symbol = q_value / (1 + q_value * q_value)
+        for m_value in range(1, 8):
+            for n_value in range(1, 8):
+                assert_close(
+                    "mirror A-kernel fused symbol",
+                    fused_a_symbol(m_value, n_value, q_value),
+                    a_symbol(m_value, n_value, q_value),
+                    tol=2.0e-12,
+                )
+
+                inverse_product = a_symbol(m_value, n_value, q_value)
+                inverse_product -= s_symbol * a_symbol(m_value + 1, n_value, q_value)
+                if m_value > 1:
+                    inverse_product -= s_symbol * a_symbol(m_value - 1, n_value, q_value)
+                assert_close(
+                    "mirror A-kernel inverse symbol",
+                    inverse_product,
+                    1.0 if m_value == n_value else 0.0,
+                    tol=2.0e-12,
+                )
+
+                inverse_times_k = k_symbol(m_value, n_value, q_value)
+                inverse_times_k -= s_symbol * k_symbol(m_value + 1, n_value, q_value)
+                if m_value > 1:
+                    inverse_times_k -= s_symbol * k_symbol(m_value - 1, n_value, q_value)
+                expected = s_symbol * (
+                    (1.0 if m_value + 1 == n_value else 0.0)
+                    + (1.0 if m_value > 1 and m_value - 1 == n_value else 0.0)
+                )
+                assert_close(
+                    "mirror A-inverse times fused K",
+                    inverse_times_k,
+                    expected,
+                    tol=2.0e-12,
+                )
+
+            one_index = q_value**m_value - s_symbol * q_value ** (m_value + 1)
+            if m_value > 1:
+                one_index -= s_symbol * q_value ** (m_value - 1)
+            assert_close(
+                "mirror A-inverse times one-index K",
+                one_index,
+                s_symbol if m_value == 1 else 0.0,
+                tol=2.0e-12,
+            )
+
+        shift_symbol = (q_value + 1 / q_value) * s_symbol
+        assert_close("mirror s-kernel shift inverse", shift_symbol, 1.0)
+
+    circle_y = {0: 0.0, 1: 0.6, 2: 1.4, 3: 0.9, 4: 1.8, 5: 2.2}
+    y_oplus = 1.7
+    y_ominus = 0.8
+    source_ratio = (1 + 1 / y_oplus) / (1 + 1 / y_ominus)
+    for n_value in range(1, 5):
+        shifted_log_sum = (
+            math.log(1 + circle_y[n_value + 1])
+            + math.log(1 + circle_y[n_value - 1])
+        )
+        if n_value == 1:
+            shifted_log_sum += math.log(source_ratio)
+        assert_close(
+            "mirror auxiliary-wing Y-system algebra",
+            math.exp(shifted_log_sum)
+            / ((1 + circle_y[n_value + 1]) * (1 + circle_y[n_value - 1])),
+            source_ratio if n_value == 1 else 1.0,
+        )
+
+
 def check_konishi_four_loop_wrapping_arithmetic() -> None:
     # ABA coefficient: -(2820 + 288 zeta_3).
     # Wrapping coefficient: 324 + 864 zeta_3 - 1440 zeta_5.
@@ -1736,6 +1828,7 @@ def main() -> None:
     check_mirror_double_wick_dispersion()
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
+    check_mirror_wing_kernel_inverse()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()

@@ -460,3 +460,33 @@ Calculation checks added:
   free-energy identity after using the density equation, the source-kernel
   sign convention implied by unitarity, and the excited-state zero
   quantization condition.
+
+## Continuation XVIII: Auxiliary-Wing TBA to Y-System Kernel Inversion
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Content added:
+
+- Added a self-contained derivation of the rational auxiliary-string kernel
+  inverse used in the stringbook mirror-TBA-to-Y-system passage.  The text now
+  defines `K_n`, the fused `K_mn`, the `A_mn=delta+K_mn` kernel, and the
+  `s(u)=1/(2 cosh pi u)` kernel with its Fourier symbols.
+- Proved in Fourier variables that
+  `A^{-1}_{mn}=delta_{mn}-s(delta_{m+1,n}+delta_{m-1,n})`, including the
+  boundary condition at `m=1`, and recorded the two consequences
+  `A^{-1}K_mn` and `A^{-1}K_n` needed for the wing Y-system.
+- Derived the one-wing `n|w` Y-system relation from the mirror TBA equation,
+  explicitly stating the strip analyticity and no-crossed-pole hypotheses
+  needed to replace `s^{-1}` by the shifts `u -> u +/- i/2`.
+
+Calculation checks added:
+
+- `check_mirror_wing_kernel_inverse()` now checks the fused `A_mn` Fourier
+  symbol against the finite fusion sum, verifies the tridiagonal inverse,
+  verifies the `A^{-1}K_mn` and `A^{-1}K_n` identities, checks the
+  `s^{-1}` shift symbol, and checks the boundary-source algebra in the
+  auxiliary-wing Y-system.
