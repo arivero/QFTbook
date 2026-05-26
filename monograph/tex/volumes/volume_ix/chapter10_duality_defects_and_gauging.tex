@@ -110,6 +110,75 @@ local operators maps untwisted operators into the \(G\)-invariant part of
 twisted or gauged sectors, depending on which side of the interface the
 operator lies.
 
+\begin{proposition}[Self-dual gauging produces a noninvertible defect]
+\label{prop:self-dual-gauging-noninvertible-defect}
+Let \(H\) be finite.  Assume that \(H\) acts internally on a QFT
+\(\mathcal Q\) and can be gauged without an anomaly.  Suppose there is an
+equivalence
+\[
+  \Phi:\mathcal Q/H\longrightarrow \mathcal Q
+\]
+after all background choices and local counterterms have been fixed.  Then
+the composite
+\[
+  D_H:=\Phi\circ\mathcal N_H
+\]
+is a topological defect of \(\mathcal Q\) satisfying
+\[
+  D_H^\dagger\otimes D_H
+  \simeq
+  \bigoplus_{h\in H}D_h .
+  \label{eq:self-dual-gauging-defect-fusion}
+\]
+If \(H\) is nontrivial and the \(D_h\) are distinct simple invertible
+defects, \(D_H\) is noninvertible.
+\end{proposition}
+
+\begin{proof}
+The equivalence \(\Phi\) is invertible as an interface, so
+\(\Phi^\dagger\circ\Phi\simeq\mathbf 1_{\mathcal Q/H}\).  Therefore
+\[
+  D_H^\dagger\otimes D_H
+  =
+  \mathcal N_H^\dagger\circ\Phi^\dagger\circ\Phi\circ\mathcal N_H
+  \simeq
+  \mathcal N_H^\dagger\circ\mathcal N_H .
+\]
+The slab calculation of the gauging interface gives
+\[
+  \mathcal N_H^\dagger\circ\mathcal N_H
+  \simeq
+  \bigoplus_{h\in H}D_h,
+\]
+because the flat \(H\)-bundle in the thin slab is classified by its holonomy
+\(h\).  If \(D_H\) were invertible, the left side of
+\eqref{eq:self-dual-gauging-defect-fusion} would be the simple vacuum defect.
+For nontrivial \(H\) with distinct simple \(D_h\), the right side has more
+than one simple summand, so no inverse exists.
+\end{proof}
+
+\begin{example}[Normal-subgroup gauging interface]
+\label{ex:normal-subgroup-gauging-defect}
+Let \(G\) be a finite internal symmetry and \(H\triangleleft G\) a normal
+subgroup that is anomaly-free as a symmetry of \(\mathcal Q\).  Gauging \(H\)
+produces \(\mathcal Q/H\) with residual ordinary symmetry \(G/H\) when no
+extension anomaly obstructs the quotient action.  The interface
+\(\mathcal N_H:\mathcal Q\to\mathcal Q/H\) has junction operators with the
+invertible \(H\)-symmetry defects:
+\[
+  D_h\otimes\mathcal N_H\simeq\mathcal N_H,
+  \qquad h\in H .
+\]
+At a self-dual point where an equivalence \(\Phi:\mathcal Q/H\to\mathcal Q\)
+is part of the QFT datum, Proposition~\ref{prop:self-dual-gauging-noninvertible-defect}
+turns the gauging interface into a genuine noninvertible defect of
+\(\mathcal Q\).  The critical Ising Kramers--Wannier defect is the case
+\(H=\mathbb Z_2\), with fusion
+\[
+  \mathcal N\otimes\mathcal N\simeq\mathbf 1\oplus\eta .
+\]
+\end{example}
+
 \section{Gauge-Theory Duality Walls}
 
 In gauge theories, duality walls can act on line-operator lattices.  Let
@@ -126,6 +195,64 @@ If the wall is topological, it maps genuine line operators to genuine line
 operators after global form and discrete theta data are transformed.  If
 additional degrees of freedom live on the wall, their anomaly inflow must
 cancel the mismatch between the two sides.
+
+\begin{example}[Four-dimensional abelian line-lattice duality walls]
+\label{ex:abelian-line-lattice-duality-walls}
+For four-dimensional \(U(1)\) gauge theory with both electric and magnetic
+line operators allowed, take
+\[
+  \Gamma=\mathbb Z^2,\qquad
+  x=(q_e,q_m),
+\]
+with Dirac pairing
+\[
+  \langle x,y\rangle=q_e q'_m-q_m q'_e .
+\]
+The two standard generators of \(SL(2,\mathbb Z)\) act by
+\[
+  S(q_e,q_m)=(q_m,-q_e),
+  \qquad
+  T(q_e,q_m)=(q_e+q_m,q_m).
+\]
+Both preserve the pairing.  A topological \(S\)-wall maps an electric Wilson
+line to a magnetic 't Hooft line and a magnetic line to the inverse electric
+line.  A \(T\)-wall implements the Witten-effect shift of electric charge by
+magnetic charge.  These walls are genuine defects only after the global form
+of the gauge group, the allowed line lattice, and the discrete theta angle
+are transformed consistently; otherwise the wall maps a genuine line on one
+side to a line that is not genuine on the other side.
+\end{example}
+
+\begin{proposition}[Pairing preservation for the \(S\) and \(T\) walls]
+\label{prop:st-walls-preserve-dirac-pairing}
+The transformations in Example~\ref{ex:abelian-line-lattice-duality-walls}
+preserve the Dirac pairing on \(\Gamma\).
+\end{proposition}
+
+\begin{proof}
+For \(Sx=(q_m,-q_e)\) and \(Sy=(q'_m,-q'_e)\),
+\[
+  \langle Sx,Sy\rangle
+  =
+  q_m(-q'_e)-(-q_e)q'_m
+  =
+  q_e q'_m-q_m q'_e
+  =
+  \langle x,y\rangle .
+\]
+For \(Tx=(q_e+q_m,q_m)\) and \(Ty=(q'_e+q'_m,q'_m)\),
+\[
+  \langle Tx,Ty\rangle
+  =
+  (q_e+q_m)q'_m-q_m(q'_e+q'_m)
+  =
+  q_e q'_m-q_m q'_e
+  =
+  \langle x,y\rangle .
+\]
+Thus both maps are automorphisms of the charge lattice with its
+antisymmetric Dirac pairing.
+\end{proof}
 
 \begin{openproblem}[Continuum gauging interfaces]
 \label{op:continuum-gauging-interfaces}

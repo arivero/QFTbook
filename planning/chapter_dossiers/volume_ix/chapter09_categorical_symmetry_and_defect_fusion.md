@@ -44,6 +44,9 @@ anomaly obstruction.
   from such a fully extended bulk-boundary construction.
 - Identifies anomaly as obstruction to choice-independent defect-network
   evaluation.
+- Hands off explicitly to Chapter 10 for the finite normal-subgroup gauging
+  and electric-magnetic line-lattice examples, while keeping the unresolved
+  interacting-continuum construction as the open problem.
 
 ## Calculation Checks
 
