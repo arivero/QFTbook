@@ -259,6 +259,49 @@ def check_heat_integration_reexpansion_arithmetic():
     assert_equal(edge_eta_power, 2, "reexpansion normalized edge eta power")
 
 
+def check_nonlinear_negative_coordinate_wick_arithmetic():
+    # Wick product identity:
+    # :A^m::B^n: = sum_r binom(m,r) binom(n,r) r! C^r
+    #              :A^(m-r) B^(n-r):.
+    xy_coefficients = [
+        math.comb(1, r) * math.comb(3, r) * math.factorial(r)
+        for r in range(0, 2)
+    ]
+    x2y_coefficients = [
+        math.comb(2, r) * math.comb(3, r) * math.factorial(r)
+        for r in range(0, 3)
+    ]
+    assert_equal(xy_coefficients, [1, 3], "XY Wick contraction coefficients")
+    assert_equal(x2y_coefficients, [1, 6, 6], "X2Y Wick contraction coefficients")
+
+    # The monograph defines C_2 = 2 int K G^2.  The r=2 contraction in
+    # :X(a)^2: I(:X(b)^3:) has coefficient 6 int K G^2 X(b), hence the local
+    # subtraction is 3 C_2 X(a).
+    c2_normalization = 2
+    r2_contraction = x2y_coefficients[2]
+    local_subtraction_multiple = Fraction(r2_contraction, c2_normalization)
+    assert_equal(local_subtraction_multiple, 3, "X2Y local C2 subtraction multiple")
+    outer_cubic_expansion_factor = 3
+    assert_equal(
+        outer_cubic_expansion_factor * local_subtraction_multiple,
+        9,
+        "two-loop mass-coordinate coefficient before coupling signs",
+    )
+
+    kappa = Fraction(1, 20)
+    x = -Fraction(1, 2) - kappa
+    y = Fraction(1, 2) - 3 * kappa
+    xy_assigned = x + y
+    x2y_assigned = 2 * x + y
+    assert_equal(xy_assigned, -4 * kappa, "XY assigned homogeneity")
+    assert_equal(x2y_assigned, -Fraction(1, 2) - 5 * kappa, "X2Y assigned homogeneity")
+
+    xy_true_target = Fraction(0)
+    x2y_true_target = -Fraction(1, 2)
+    assert_equal(xy_true_target - xy_assigned, 4 * kappa, "XY target scale slack")
+    assert_equal(x2y_true_target - x2y_assigned, 5 * kappa, "X2Y target scale slack")
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -987,6 +1030,7 @@ def main():
     check_gaussian_wick_coordinate_scale_arithmetic()
     check_gaussian_dual_norm_wavelet_arithmetic()
     check_heat_integration_reexpansion_arithmetic()
+    check_nonlinear_negative_coordinate_wick_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -1010,7 +1054,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

@@ -45,6 +45,18 @@
   slack \(\sigma\).  For \(Y=\mathcal I(X^3)\), this gives
   \(\alpha=-3/2-3\kappa\), \(\beta=1/2-3\kappa\), and
   \(\sigma=3\kappa\).
+- Added Proposition
+  `prop:spde-nonlinear-negative-coordinate-wick-decomposition`.
+- This proposition gives the exact finite-cutoff Wick decompositions of
+  \(XY\) and locally subtracted \(X^2Y\):
+  - \(XY\) splits into fourth- and second-chaos pieces with coefficients
+    \(1,3\).
+  - \(X^2Y\) splits into fifth-, third-, and first-chaos pieces with
+    coefficients \(1,6,6\), and the first-chaos piece is locally subtracted
+    by \(3C_{2,\epsilon}X_\epsilon\).
+  - The local subtraction rewrites the first-chaos term as
+    \(6\int K_\epsilon G_\epsilon^2(X_\epsilon(b)-X_\epsilon(a))\,db\),
+    identifying the exact Taylor-gain input for the next multiscale estimate.
 
 ## Calculation Check
 
@@ -58,14 +70,17 @@
     Gaussian-coordinate upgrade.
   - the heat-integration coarse/fine scale arithmetic that transfers the
     \(X^3\) slack to the \(c_n\) coefficient.
+  - the nonlinear-coordinate Wick contraction coefficients, \(3C_2\) local
+    subtraction normalization, and the target \(XY\), \(X^2Y\) scale slacks.
 
 ## Remaining Issue #582 Obligations
 
 - Extend the dual-norm strategy from primitive Gaussian coordinates to the
-  genuinely nonlinear BPHZ coordinates where the kernels are not pure
-  Wick powers.
-- Prove the genuinely nonlinear BPHZ coordinate estimates for \(XY\) and
-  \(X^2Y\).
+  concrete finite-cutoff chaos kernels in the displayed \(XY\) and \(X^2Y\)
+  decompositions.
+- Prove the genuinely nonlinear BPHZ coordinate estimates for the fourth-,
+  second-, fifth-, third-, and locally subtracted first-chaos kernels now
+  identified explicitly.
 - Supply the remaining \(X^3\) cutoff-difference and base-increment estimates
   needed to feed the deterministic \(c_n\) transfer into the full
   scale-summed \(\Gamma\)-coordinate theorem.

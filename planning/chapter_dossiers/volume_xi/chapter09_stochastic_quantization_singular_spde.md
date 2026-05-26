@@ -135,6 +135,9 @@ data.
   negative homogeneity, integrated homogeneity, regularity slack, true
   integrated Holder exponent, and heat-integration reexpansion coefficient in
   the deterministic \(c_n\)-transfer estimate.
+- `C_{2,epsilon}(a)`, `G_epsilon(a,b)`, `K_epsilon(a,b)`: finite-cutoff
+  covariance, retarded kernel, and local two-loop coordinate used in the
+  Wick decompositions of the nonlinear negative symbols \(XY\) and \(X^2Y\).
 
 ## Claim Ledger
 
@@ -261,6 +264,13 @@ data.
   homogeneity \(\beta=\alpha+2\) and normalized scale slack \(\sigma\).
   Applied to \(Y=\mathcal I(X^3)\), this transfers the \(X^3\) slack
   \(3\kappa\) to the \(c_n\)-coordinate.
+- Proves the finite-cutoff Wick decomposition of the nonlinear negative
+  coordinates \(XY\) and \(X^2Y\).  The \(XY\) coordinate splits into fourth-
+  and second-chaos pieces with contraction coefficient \(3\).  The BPHZ
+  \(X^2Y\) coordinate splits into fifth-, third-, and locally subtracted
+  first-chaos pieces, with coefficients \(1,6,6\) and local subtraction
+  \(3C_{2,\epsilon}X_\epsilon\).  This identifies the exact kernels whose
+  analytic estimates must produce slacks \(4\kappa\) and \(5\kappa\).
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -532,3 +542,9 @@ data maps.
   scales at the physical separation and proves both the fine-scale tail and
   the coarse translation-gain bound.  The calculation-check companion verifies
   the homogeneity and coarse/fine exponent arithmetic.
+- 2026-05-26 issue #582 nonlinear-coordinate continuation: the chapter now
+  identifies the finite-cutoff chaos decompositions for \(XY\) and the
+  locally subtracted \(X^2Y\) coordinate.  The calculation-check companion
+  verifies the Wick contraction coefficients, the \(3C_2\) local subtraction
+  normalization, the resulting \(9C_2\) mass-coordinate coefficient before
+  coupling signs, and the target scale slacks \(4\kappa\) and \(5\kappa\).
