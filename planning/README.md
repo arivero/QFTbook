@@ -44,6 +44,8 @@ finished monograph.
 - `12_strict_writing_harness.md`: immediate hard gate for drafting.
 - `13_development_dependency_map.md`: dependency order, promotion gates, and
   uniformization queue for compiled and future volumes.
+- `agent_handoffs/`: detailed parallel-work packets for agents developing
+  independent topics simultaneously.
 
 Historical build audits and chapter dossiers are preserved in subdirectories.
 
