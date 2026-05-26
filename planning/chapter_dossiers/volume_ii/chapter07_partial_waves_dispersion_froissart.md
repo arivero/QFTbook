@@ -74,6 +74,12 @@ hypotheses:
 - \(\sigma_{\mathrm{tot}}\): total cross section in this normalization.
 - \(N\): number of subtractions.
 - \(P_{N-1}(s;t)\): subtraction polynomial.
+- \(\langle s\rangle=(1+s^2)^{1/2}\): polynomial weight used in the
+  fixed-\(t\) Schwartz seminorm.
+- \(p_{r,N}(\varphi)\): Schwartz seminorm controlling a tempered fixed-\(t\)
+  boundary distribution.
+- \(\varphi_{R,\Delta}\): translated energy packet centered at \(R\) and of
+  width \(\Delta\), used to express distributional high-energy growth.
 - \(\lambda=(D-3)/2\): Gegenbauer index in \(D\) spacetime dimensions.
 - \(C_\ell^\lambda(x)\): Gegenbauer polynomial replacing \(P_\ell(x)\) for
   \(D>4\).
@@ -137,6 +143,15 @@ hypotheses:
 10. Fixed-\(t\) polynomial boundedness gives an \(N\)-subtracted dispersion relation with a subtraction polynomial and cut integrals.
     The compact right/left-cut formula should be accompanied by the explicit
     \(s'\)- and crossed \(u'\)-channel version, with \(u=4m^2-s-t\).
+10a. Tempered fixed-\(t\) LSZ boundary values imply polynomial growth only
+    after smearing with Schwartz energy packets:
+    \[
+      |\langle\mathcal M_t,\varphi_{R,\Delta}\rangle|
+      \le C_{\varphi,t}(1+|R|+\Delta)^{N_t}.
+    \]
+    This is the direct consequence of Wightman temperedness; pointwise
+    cut-plane bounds and angular-tube bounds require additional analyticity
+    and boundary-regularity input.
 11. The subtraction-count argument uses the positive elastic unitarity integral
     \[
       \operatorname{Im}\mathcal A(s,0)\ge
@@ -300,3 +315,9 @@ hypotheses:
   ordering, and develops the Sommerfeld--Watson Regge-pole representation with
   signature factors, particle-pole recovery, and the relation between Pomeron
   growth, eikonal saturation, and Froissart behavior.
+- 2026-05-25 issue #495 pass: added the self-contained tempered-distribution
+  proof of distributional polynomial growth for fixed-\(t\) LSZ boundary
+  values, including the Schwartz seminorm bound and translated energy-packet
+  estimate.  The text now states precisely that this is the boundedness
+  supplied immediately by Wightman temperedness, while Jin--Martin pointwise
+  cut-plane boundedness and angular-tube boundedness are stronger inputs.
