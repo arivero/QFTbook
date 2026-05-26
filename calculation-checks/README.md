@@ -616,8 +616,9 @@ Current checks:
 - `symmetric_product_orbifold_checks.py`: exact finite group-theory and
   rational-weight checks for the Volume V symmetric-product orbifold section,
   including \(S_N\) centralizer orders, conjugacy-class counting, central
-  charge additivity, cycle-type twist weights, join/split weight shifts, and
-  the two-cycle normalization count.
+  charge additivity, cycle-type twist weights, join/split weight shifts, the
+  two-cycle normalization count, connected torus-cover Hecke weights, and the
+  constant-seed partition-number test.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign

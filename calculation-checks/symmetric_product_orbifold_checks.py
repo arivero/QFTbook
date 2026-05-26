@@ -25,6 +25,39 @@ def symmetric_group_order(n: int) -> int:
     return factorial(n)
 
 
+def divisor_sum(n: int) -> int:
+    return sum(divisor for divisor in range(1, n + 1) if n % divisor == 0)
+
+
+def connected_cover_representatives(degree: int) -> list[tuple[int, int, int]]:
+    representatives = []
+    for d in range(1, degree + 1):
+        if degree % d != 0:
+            continue
+        a = degree // d
+        for b in range(d):
+            representatives.append((a, d, b))
+    return representatives
+
+
+def partition_numbers(limit: int) -> list[int]:
+    counts = [0] * (limit + 1)
+    counts[0] = 1
+    for part in range(1, limit + 1):
+        for total in range(part, limit + 1):
+            counts[total] += counts[total - part]
+    return counts
+
+
+def constant_seed_symmetric_product_coefficients(limit: int) -> list[Fraction]:
+    coefficients = [Fraction(0) for _ in range(limit + 1)]
+    coefficients[0] = Fraction(1)
+    for n in range(1, limit + 1):
+        total = sum(divisor_sum(k) * coefficients[n - k] for k in range(1, n + 1))
+        coefficients[n] = total / n
+    return coefficients
+
+
 def twist_weight(c_seed: Fraction, length: int) -> Fraction:
     return c_seed * Fraction(length * length - 1, 24 * length)
 
@@ -76,11 +109,38 @@ def check_normalized_two_cycle_count() -> None:
     assert_equal("two-cycle normalization denominator squared", transpositions, 15)
 
 
+def check_connected_cover_hecke_count() -> None:
+    for degree in range(1, 13):
+        representatives = connected_cover_representatives(degree)
+        assert_equal(
+            f"degree {degree} connected torus covers in Hermite normal form",
+            len(representatives),
+            divisor_sum(degree),
+        )
+        assert_equal(
+            f"degree {degree} Hecke automorphism weight",
+            Fraction(len(representatives), degree),
+            Fraction(divisor_sum(degree), degree),
+        )
+
+    # A constant formal seed gives prod_{n>=1} (1-p^n)^(-1), so the
+    # coefficients are partition numbers, equivalently S_N conjugacy classes.
+    limit = 10
+    from_hecke_exponential = constant_seed_symmetric_product_coefficients(limit)
+    expected_partitions = partition_numbers(limit)
+    assert_equal(
+        "constant-seed symmetric product partition coefficients",
+        from_hecke_exponential,
+        [Fraction(value) for value in expected_partitions],
+    )
+
+
 def main() -> None:
     check_centralizer_orders()
     check_central_charge_and_weights()
     check_join_weight_shift()
     check_normalized_two_cycle_count()
+    check_connected_cover_hecke_count()
     print("All symmetric-product orbifold checks passed.")
 
 

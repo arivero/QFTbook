@@ -253,7 +253,10 @@ Current absorption:
   spectrum-status conventions stated before the gauged sigma-model
   geometries.  The monograph now also checks the bell and cigar
   one-loop Weyl-anomaly equations directly from the rotational curvature
-  formulas.  The public arithmetic check covers the central-charge,
+  formulas.  The symmetric-product orbifold pass now includes the
+  connected-torus-cover Hermite-normal-form count behind the Hecke transform
+  and the constant-seed partition-number normalization test.  The public
+  arithmetic check covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex

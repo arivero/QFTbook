@@ -141,8 +141,10 @@
 - Defines the symmetric-product orbifold
   \(\operatorname{Sym}^N(\mathcal C)=\mathcal C^{\otimes N}/S_N\),
   cycle-type sectors, centralizer projection, long-string weights,
-  Hecke-transform partition-function generating series, twist OPE
-  monodromy multiplication, and normalized two-cycle deformation operators.
+  Hecke-transform partition-function generating series, connected torus-cover
+  Hermite-normal-form counting, the constant-seed partition-number test,
+  twist OPE monodromy multiplication, and normalized two-cycle deformation
+  operators.
 - Defines twist-field deformations as regulated integrated local-operator
   perturbations with OPE/contact-term beta functions.
 
@@ -253,7 +255,9 @@
 35. The symmetric-product partition-function generating series is the
    exponential of nonholomorphic Hecke transforms of the seed partition
    function, obtained by decomposing commuting \(S_N\)-bundle holonomies into
-   connected torus covers.
+   connected torus covers; the connected degree-\(m\) covers are counted by
+   \(\sigma_1(m)\), and the deck-automorphism factor gives the \(1/m\) in the
+   Hecke transform.
 36. Twist OPEs multiply monodromies before conjugacy-class averaging; a
    transposition joins two disjoint cycles or splits one cycle, with the
    leading bare-twist exponent fixed by the cycle-weight difference.
@@ -285,6 +289,10 @@
     bell/cigar sigma-model metrics; their exact `N=2` chiral data are stated
     in Chapter 15 and coordinated with Volume VII for GLSM/mirror
     constructions.
+43. Replacing the seed partition function in the symmetric-product Hecke
+    formula by the formal constant `1` gives
+    `prod_{r >= 1} (1-p^r)^(-1)`, so the coefficient of `p^N` is the number
+    of cycle types of `S_N`.
 
 ## Figures
 
@@ -330,8 +338,9 @@
   Ising/tricritical examples.
 - `calculation-checks/symmetric_product_orbifold_checks.py` verifies
   \(S_N\) centralizer orders, conjugacy-class counting, central-charge
-  additivity, cycle-type twist weights, joining weight shifts, and the
-  two-cycle normalization count.
+  additivity, cycle-type twist weights, joining weight shifts, the two-cycle
+  normalization count, connected torus-cover Hecke weights, and the
+  constant-seed partition-number test.
 - Later calculation checks should cover covering-space twist correlators.
 
 ## Reference Intake
