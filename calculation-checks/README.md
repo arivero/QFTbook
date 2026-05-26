@@ -81,6 +81,11 @@ Current checks:
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
+- `cohomological_metric_descent_checks.py`: exact polynomial differential-form
+  checks for the Volume VIII metric-independence chapter, including
+  \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
+  term on the unit square, and vanishing of a \(Q\)-exact deformation when the
+  boundary contribution is zero.
 - `free_cylinder_partition_checks.py`: finite character checks for the
   radial-cylinder free-field section, including the four-dimensional scalar
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion

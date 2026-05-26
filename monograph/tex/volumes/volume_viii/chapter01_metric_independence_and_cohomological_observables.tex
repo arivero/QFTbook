@@ -3,61 +3,378 @@
 
 \ConventionsEuclidean
 
-A topological QFT assigns quantities to manifolds and bordisms in a way that
-is insensitive to continuous changes of geometric representatives after the
-allowed background structures are fixed.  A cohomological QFT realizes this
-insensitivity by an odd differential \(Q\) acting on fields, states, and
-operators.
+A topological sector of a quantum field theory is not defined by the absence
+of formulas containing a metric.  It is defined by correlation functionals
+whose variation under allowed changes of geometric representatives is
+controlled and, for the observables under consideration, vanishes in
+cohomology.  The most common mechanism is cohomological: an odd symmetry
+\(Q\) acts on the regulated fields, sources, and insertions; metric variation
+of the action and of the insertions is \(Q\)-exact; and the regulated
+expectation functional obeys the corresponding Ward identity.  This chapter
+develops that mechanism before any particular example is introduced.
 
-\section{Metric Variation}
+\section{Metric Response as a Renormalized Insertion}
 
-Let \(M\) be a closed oriented \(D\)-manifold and let \(g\) be a Riemannian
-metric.  Suppose the theory has correlation functions
-\(\langle\mathcal O_1\cdots\mathcal O_n\rangle_g\) for metric-dependent
-representatives of local or extended observables.  The stress tensor is
-defined by metric variation of the generating functional:
+Let \(M\) be a closed oriented smooth \(D\)-manifold and let
+\(\mathcal G(M)\) denote the Fréchet manifold of smooth Riemannian metrics on
+\(M\).  A metric-dependent QFT presentation assigns, for \(g\in\mathcal G(M)\),
+renormalized correlation functionals
 \[
+  \langle X\rangle_g
+\]
+for insertions \(X\) in a specified algebra of local, extended, and source
+dependent observables.  The notation includes the regulator, local
+counterterms, source chart, and contact-term convention.  Different choices
+can present the same continuum theory, but a metric-variation formula is a
+statement inside one such presentation.
+
+\begin{definition}[Stress-tensor response]
+\label{def:stress-tensor-response}
+Let \(X\) be a renormalized insertion whose support is disjoint from the
+support of a compactly supported metric variation \(\delta g^{\mu\nu}\).
+The stress-tensor response of the presentation is the distributional
+identity
+\begin{equation}
   \delta_g\langle X\rangle_g
   =
   -\frac12
   \int_M\dd^Dx\,\sqrt g\,\delta g^{\mu\nu}(x)\,
   \langle T_{\mu\nu}(x)X\rangle_g
-  +\hbox{contact terms from metric-dependent insertions}.
+  +
+  \langle C_{\delta g}(X)\rangle_g .
+  \label{eq:tqft-stress-response}
+\end{equation}
+Here \(T_{\mu\nu}\) is the renormalized stress tensor and
+\(C_{\delta g}(X)\) is the sum of contact insertions supported where the
+metric variation collides with the support or source-dependence of \(X\).
+\end{definition}
+
+If \(X\) is a product of metric-independent local operators at fixed points
+and \(\delta g\) is supported away from those points, then
+\(C_{\delta g}(X)=0\).  If \(X\) includes integrated observables, line
+operators, boundary conditions, or metric-dependent representatives, the
+contact term is part of the definition of the observable.  Ignoring it is
+equivalent to changing the problem.
+
+For a one-parameter family \(g_s\), \eqref{eq:tqft-stress-response} becomes
+\begin{equation}
+  \frac{\dd}{\dd s}\langle X_s\rangle_{g_s}
+  =
+  -\frac12\int_M\dd^Dx\sqrt{g_s}\,
+  \dot g_s^{\mu\nu}\langle T_{\mu\nu}(x)X_s\rangle_{g_s}
+  +
+  \left\langle C_{\dot g_s}(X_s)+\dot X_s\right\rangle_{g_s}.
+  \label{eq:tqft-one-parameter-metric-response}
+\end{equation}
+The term \(\dot X_s\) records explicit variation of the chosen insertion
+representative.  Metric independence is the assertion that the right-hand
+side vanishes for the chosen cohomology classes and for every allowed
+path \(g_s\).
+
+\section{Cohomological Ward Data}
+
+The letter \(Q\) will denote an odd operator of degree \(+1\).  If \(Y\) is a
+homogeneous insertion, write \(|Y|\in\mathbb Z_2\) for its parity.  The
+graded commutator with \(Q\) is
+\[
+  [Q,Y]_{\rm gr}=QY-(-1)^{|Y|}YQ .
 \]
-This formula is a definition of the response to background geometry.  The
-contact terms are part of the operator definition and must be retained when
-insertions collide with the support of \(\delta g\).
+For an odd \(Y\), this is an anticommutator; for an even \(Y\), it is a
+commutator.  In a path-integral presentation it is often clearer to regard
+\(Q\) as an odd derivation \(\delta_Q\) on the algebra of insertions.
+
+\begin{definition}[Cohomological Ward datum]
+\label{def:cohomological-ward-datum}
+A cohomological Ward datum over a family of metrics \(g_s\) consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a graded algebra \(\mathcal A_s\) of renormalized insertions;
+\item an odd degree-\(+1\) derivation
+  \(\delta_Q:\mathcal A_s\to\mathcal A_s\) satisfying
+  \(\delta_Q^2=0\);
+\item expectation functionals
+  \(\langle\cdot\rangle_s:\mathcal A_s\to\mathbb C\);
+\item a subspace \(\mathcal A_s^{\rm adm}\subset\mathcal A_s\) of insertions
+  for which metric derivatives and \(Q\)-variations are both defined;
+\item the Ward identity
+  \begin{equation}
+    \langle\delta_Q Y\rangle_s=0,
+    \qquad
+    Y\in\mathcal A_s^{\rm adm}.
+    \label{eq:cohomological-ward-identity}
+  \end{equation}
+\end{enumerate}
+The datum is anomaly-free on this family if
+\eqref{eq:cohomological-ward-identity} holds without additional local or
+boundary terms.  If
+\(\langle\delta_QY\rangle_s=\langle\mathcal A_Q(Y)\rangle_s\) for a nonzero
+local functional \(\mathcal A_Q\), then \(\mathcal A_Q\) is the
+cohomological anomaly in the chosen presentation.
+\end{definition}
+
+The Ward identity is a theorem only after regularization and renormalization
+are specified.  In finite-dimensional compact models it is Stokes' theorem.
+In gauge theory it is a statement about the BV or BRST measure, the quantum
+master equation, and boundary behavior at infinity or at singular strata.
 
 \begin{definition}[Cohomological topological sector]
 \label{def:cohomological-topological-sector}
-A cohomological topological sector consists of a graded vector space of
-states or observables, an odd differential \(Q\) with \(Q^2=0\), a class of
-\(Q\)-closed observables, and tensors \(G_{\mu\nu}\) such that
-\[
-  T_{\mu\nu}=\{Q,G_{\mu\nu}\}
-\]
-inside correlation functions, including the contact-term prescription for
-metric variation.
+A cohomological topological sector for the family \(g_s\) is a
+cohomological Ward datum together with, for every \(s\), a class of
+\(Q\)-closed insertions \(X_s\) and an odd insertion \(V_s\) such that
+\begin{equation}
+  \frac{\dd}{\dd s}\langle X_s\rangle_s
+  =
+  \left\langle
+    \delta_Q V_s
+  \right\rangle_s .
+  \label{eq:cohomological-topological-sector-condition}
+\end{equation}
+If the metric response is expressed by a stress tensor, this condition is
+usually implemented by
+\begin{equation}
+  -\frac12\sqrt{g_s}\,\dot g_s^{\mu\nu}T_{\mu\nu}\,X_s
+  +
+  C_{\dot g_s}(X_s)+\dot X_s
+  =
+  \delta_Q V_s
+  \label{eq:stress-response-q-exact-family}
+\end{equation}
+as an integrated renormalized insertion.
 \end{definition}
 
-\begin{proposition}[Metric independence in \(Q\)-cohomology]
-\label{prop:q-cohomology-metric-independence}
-Assume the hypotheses of Definition~\ref{def:cohomological-topological-sector}
-and suppose \(X=\mathcal O_1\cdots\mathcal O_n\) is a product of
-\(Q\)-closed observables whose metric-dependence is itself \(Q\)-exact.  If
-the functional expectation satisfies the Ward identity
-\(\langle \{Q,Y\}\rangle_g=0\) for all insertions \(Y\) produced by the metric
-variation, then \(\delta_g\langle X\rangle_g=0\).
+This definition keeps two distinct statements separate.  The local formula
+\(T_{\mu\nu}=[Q,G_{\mu\nu}]_{\rm gr}\) is sufficient only when the contact
+terms and the explicit variation of \(X_s\) are also \(Q\)-exact.  In
+examples, the latter terms are often where the nontrivial geometry of the
+observable enters.
+
+\begin{theorem}[Metric independence from a cohomological Ward datum]
+\label{thm:metric-independence-from-ward-datum}
+Let \(g_s\), \(0\le s\le1\), be a smooth path of metrics on a closed
+manifold \(M\).  Suppose \(X_s\in\mathcal A_s^{\rm adm}\) satisfies
+\(\delta_QX_s=0\), the one-parameter metric response is defined for all
+\(s\), and the response insertion is \(Q\)-exact as in
+\eqref{eq:cohomological-topological-sector-condition}.  If the Ward identity
+\eqref{eq:cohomological-ward-identity} holds for the corresponding \(V_s\),
+then
+\[
+  \langle X_1\rangle_{g_1}
+  =
+  \langle X_0\rangle_{g_0}.
+\]
+\end{theorem}
+
+\begin{proof}
+By hypothesis,
+\[
+  \frac{\dd}{\dd s}\langle X_s\rangle_s
+  =
+  \langle\delta_QV_s\rangle_s .
+\]
+The Ward identity makes the right-hand side vanish pointwise in \(s\).
+Therefore the function \(s\mapsto\langle X_s\rangle_s\) is constant on the
+interval.  Integrating over \(s\) gives the equality of the endpoint
+correlators.
+\end{proof}
+
+In local stress-tensor language, Theorem~\ref{thm:metric-independence-from-ward-datum}
+is often summarized by saying that \(T_{\mu\nu}\) is \(Q\)-exact.  The
+precise statement is \eqref{eq:stress-response-q-exact-family}: the whole
+renormalized metric response, including contact terms and moving insertion
+representatives, must be \(Q\)-exact.
+
+\section{Contact Terms, Anomalies, and Boundaries of Field Space}
+
+There are three common mechanisms by which the proof above can fail.
+
+First, the \(Q\)-variation of the measure may be anomalous.  In BV language,
+the anomaly is the obstruction to the quantum master equation for the
+renormalized action.  If \(S\) is a regulated BV action and \(\Delta\) is the
+regulated BV Laplacian, the formal Ward identity follows from
+\[
+  \frac12(S,S)-\hbar\Delta S=0.
+\]
+Failure of this equation gives a local functional \(\mathcal A_Q\) whose
+cohomology class controls whether a local counterterm can restore the Ward
+identity.  This is why gauge-theoretic cohomological theories must be
+connected to the BV formalism developed in
+Chapter~\ref{ch:bv-master-formalism}.
+
+Second, the integration space may have boundaries or noncompact ends.  A
+finite-dimensional model with an odd vector field \(Q\) obeys
+\[
+  \int_{\mathcal F}\delta_Q(\cdots)=
+  \int_{\partial\mathcal F}\iota_Q(\cdots)
+\]
+whenever Stokes' theorem applies.  Thus the Ward identity requires either
+\(\partial\mathcal F=\varnothing\), boundary conditions that kill the
+boundary term, or compactification data for which the boundary contribution
+is itself cancelled by other strata.  In Donaldson--Witten theory this issue
+is reflected in compactification of instanton moduli spaces; in
+localization integrals it appears as contour, Jeffrey--Kirwan, or other
+cycle choices.
+
+Third, contact terms can change the observable algebra.  If a metric
+variation moves the representative of an integrated observable, its
+collision with other insertions can generate lower-dimensional descendant
+operators.  A cohomological topological sector therefore contains not only
+the cohomology of isolated operators but also a contact-term prescription
+compatible with products and collisions.
+
+\begin{warning}[Metric independence is not automatic functoriality]
+\label{warn:metric-independence-not-functoriality}
+Metric-independent closed-manifold numbers do not by themselves define a
+topological field theory in the Atiyah--Segal sense.  A functorial theory
+must also assign state spaces to codimension-one manifolds, linear maps to
+bordisms, and gluing isomorphisms.  Cohomological Ward identities are a
+mechanism for producing such data under additional compactness, anomaly,
+boundary, and finite-dimensionality hypotheses; they are not a substitute
+for those hypotheses.
+\end{warning}
+
+\section{Descent and Integrated Observables}
+
+Cohomological gauge theories often start from a local \(Q\)-closed scalar
+operator and produce observables supported on cycles.  This is the descent
+construction.  It is the source of Donaldson observables, topological
+sigma-model observables, and many protected line and surface insertions.
+
+\begin{definition}[Descent datum]
+\label{def:tqft-descent-datum}
+Let \(O^{(p)}\) be a sequence of renormalized \(p\)-form-valued local
+operators, \(0\le p\le D\), with total parity including form degree.  A
+descent datum is the system
+\begin{equation}
+  \delta_Q O^{(0)}=0,
+  \qquad
+  \delta_Q O^{(p+1)}+\dd O^{(p)}=0,
+  \quad 0\le p\le D-1,
+  \label{eq:tqft-descent-equations}
+\end{equation}
+as an identity of renormalized local operator-valued forms, including
+contact terms when other insertions are present.
+\end{definition}
+
+For a closed oriented \(p\)-cycle \(\Sigma_p\subset M\), define
+\[
+  O(\Sigma_p)=\int_{\Sigma_p}O^{(p)}.
+\]
+This integral is a renormalized insertion; if \(\Sigma_p\) intersects other
+operator supports, one must specify the collision prescription.
+
+\begin{proposition}[Homological invariance of descended observables]
+\label{prop:homological-invariance-descended-observables}
+Assume \eqref{eq:tqft-descent-equations} holds and that no contact terms are
+encountered during the deformations below.  If \(\Sigma_p\) is closed, then
+\(O(\Sigma_p)\) is \(Q\)-closed.  If
+\(\Sigma_p'-\Sigma_p=\partial B_{p+1}\), then
+\[
+  O(\Sigma_p')-O(\Sigma_p)
+  =
+  -\delta_Q\int_{B_{p+1}}O^{(p+1)} .
+  \label{eq:tqft-homologous-descendants-q-exact}
+\]
+Thus the \(Q\)-cohomology class of \(O(\Sigma_p)\) depends only on the
+homology class \([\Sigma_p]\).
 \end{proposition}
 
 \begin{proof}
-Substituting \(T_{\mu\nu}=\{Q,G_{\mu\nu}\}\) into the metric variation gives
-an integral of \(\langle\{Q,G_{\mu\nu}\}X\rangle_g\), plus the declared
-metric-variation contact terms.  Since \(QX=0\) and \(Q\) is an odd
-derivation, this is \(\langle\{Q,G_{\mu\nu}X\}\rangle_g\) up to the signs
-fixed by the grading.  The contact terms are \(Q\)-exact by hypothesis.  The
-Ward identity therefore makes every term vanish.
+For a closed cycle,
+\[
+  \delta_Q O(\Sigma_p)
+  =
+  \int_{\Sigma_p}\delta_QO^{(p)}
+  =
+  -\int_{\Sigma_p}\dd O^{(p-1)}
+  =
+  -\int_{\partial\Sigma_p}O^{(p-1)}
+  =
+  0 .
+\]
+If \(\Sigma_p'-\Sigma_p=\partial B_{p+1}\), then Stokes' theorem and the
+descent equation give
+\[
+  O(\Sigma_p')-O(\Sigma_p)
+  =
+  \int_{\partial B_{p+1}}O^{(p)}
+  =
+  \int_{B_{p+1}}\dd O^{(p)}
+  =
+  -\delta_Q\int_{B_{p+1}}O^{(p+1)} .
+\]
+The calculation is an identity in the renormalized insertion algebra under
+the stated no-contact hypothesis.
 \end{proof}
+
+\begin{example}[Donaldson-type descent form]
+\label{ex:donaldson-descent-form}
+In a four-dimensional cohomological gauge theory obtained from a twisted
+\(\mathcal N=2\) vector multiplet, the scalar field \(\phi\) is even and the
+connection \(A\) has an odd one-form partner \(\psi\).  With gauge-invariant
+quadratic polynomial
+\[
+  O^{(0)}=\frac{1}{8\pi^2}\operatorname{tr}\phi^2,
+\]
+and with the convention
+\[
+  \delta_QA=\psi,\qquad
+  \delta_Q\psi=-D_A\phi,\qquad
+  \delta_Q\phi=0,
+\]
+one may choose the first descendants to be
+\[
+  O^{(1)}=\frac{1}{4\pi^2}\operatorname{tr}(\phi\psi),
+  \qquad
+  O^{(2)}=\frac{1}{4\pi^2}\operatorname{tr}
+  \left(\phi F+\frac12\psi\wedge\psi\right),
+\]
+with higher descendants determined by
+\eqref{eq:tqft-descent-equations}.  Direct substitution gives
+\[
+  \delta_QO^{(1)}=-\dd O^{(0)},
+  \qquad
+  \delta_QO^{(2)}=-\dd O^{(1)},
+\]
+using the Bianchi identity \(D_AF=0\) and cyclicity of the trace.  The
+normalizations depend on the trace convention and must match the
+instanton-number normalization of the gauge theory.  The integral
+\(\int_{\Sigma_2}O^{(2)}\) is the basic surface observable entering
+Donaldson--Witten theory;
+Proposition~\ref{prop:homological-invariance-descended-observables}
+explains why its cohomology class depends on the homology class of
+\(\Sigma_2\), before compactification and contact-term issues are addressed.
+\end{example}
+
+\section{A Finite-Dimensional Model of the Ward Identity}
+
+The following model is not a field theory, but it is the algebraic core of
+cohomological localization.  Let \(x^i\) be even coordinates on a compact
+oriented finite-dimensional manifold \(X\), and let \(\psi^i\) be odd
+coordinates corresponding to \(\dd x^i\).  The de Rham differential is the
+odd derivation
+\[
+  Qx^i=\psi^i,\qquad Q\psi^i=0.
+\]
+An ordinary differential form \(\alpha\) is represented as a function
+\(\alpha(x,\psi)\), and \(Q\alpha\) is \(\dd\alpha\).  If \(X\) is closed,
+Stokes' theorem gives
+\[
+  \int_X Q\eta=\int_X\dd\eta=0.
+\]
+If \(\alpha\) is \(Q\)-closed and \(V_t\) is an odd family, then
+\[
+  \frac{\dd}{\dd t}
+  \int_X \alpha\,\exp[-Q V_t]
+  =
+  -\int_X \alpha\,Q(\dot V_t)\,\exp[-QV_t]
+  =
+  -\int_X Q\left(\alpha\,\dot V_t\,\exp[-QV_t]\right)=0,
+\]
+where \(Q\alpha=0\), \(Q(QV_t)=0\), and the graded Leibniz rule fix the
+sign.  This is the finite-dimensional prototype of
+Theorem~\ref{thm:metric-independence-from-ward-datum}.  Infinite-dimensional
+QFT applications require a regulator, a measure or BV half-density, and a
+proof that no boundary terms appear from noncompact field directions.
 
 \section{Functorial Target}
 
@@ -74,13 +391,17 @@ under gluing:
 Extended versions refine this assignment to manifolds with corners and
 higher-categorical targets.  The cohomological construction above is one
 source of such functors after gauge fixing, anomaly cancellation, boundary
-conditions, and finite-dimensionality hypotheses have been supplied.
+conditions, compactness, and finite-dimensionality hypotheses have been
+supplied.
 
 \begin{openproblem}[From cohomological path integrals to extended functors]
 \label{op:cohomological-to-extended-functor}
-Given a cohomological gauge theory with \(T_{\mu\nu}=QG_{\mu\nu}\), determine
-the exact hypotheses under which its correlation functions define an
-extended topological functor: compactness or properness of the moduli
+Given a cohomological gauge theory with a \(Q\)-exact metric response,
+determine the exact hypotheses under which its correlation functions define
+an extended topological functor: compactness or properness of the moduli
 problem, anomaly cancellation, boundary conditions, gluing analysis,
-orientation data, and compatibility with local operator insertions.
+orientation data, contact-term compatibility, and compatibility with local
+operator insertions.  The objective is not merely to match known invariants
+but to construct the functorial QFT object from regulated cohomological
+field theory data.
 \end{openproblem}
