@@ -530,9 +530,189 @@ contact terms at \(x=0\) are not part of the finite-particle spectral
 calculation.
 \end{proof}
 
-The order/disorder fields of the Ising theory are more instructive because
-their form factors form an infinite family.  We record the odd family in a
-normalization \(v\in\C\):
+The spin and disorder fields of the Ising theory are more instructive because
+their form factors form infinite families and because their locality relative
+to the Majorana particle is a branch-field datum with an explicit monodromy.
+Let
+\[
+  P_N(\theta_1,\ldots,\theta_N)
+  =
+  \prod_{1\le i<j\le N}
+  \tanh\!\left(\frac{\theta_i-\theta_j}{2}\right),
+  \qquad P_0=P_1=1 .
+\]
+The function \(P_N\) is antisymmetric and satisfies
+\[
+  P_N(\theta_1+2\pi\ii,\theta_2,\ldots,\theta_N)
+  =
+  P_N(\theta_1,\ldots,\theta_N),
+  \qquad
+  P_N(\theta_2,\ldots,\theta_N,\theta_1)
+  =
+  (-1)^{N-1}P_N(\theta_1,\ldots,\theta_N).
+\]
+Thus a nonzero product family with even \(N\) solves cyclicity with
+semi-locality phase \(-1\), while a nonzero product family with odd \(N\)
+solves cyclicity with phase \(+1\).  This phase is part of the operator
+sector.  It is not determined by the diagonal scattering function alone.
+
+In the thermally perturbed Ising field theory, the sign of the Majorana mass
+selects which of the lattice order/disorder scaling fields has a nonzero
+vacuum expectation value.  We write \(\sigma_+\) for the spin field in the
+ordered convention in which
+\[
+  \bar\sigma=\langle\Omega|\sigma_+(0)|\Omega\rangle\ne0 .
+\]
+With the conformal normalization
+\(\langle\sigma(x)\sigma(0)\rangle\sim |x|^{-1/4}\) at short distance, the
+standard infinite-plane normalization is
+\[
+  \bar\sigma
+  =
+  2^{1/12}e^{-1/8}A_{\rm G}^{3/2}|m|^{1/8},
+\]
+where \(A_{\rm G}\) is the Glaisher constant.  The derivation below uses only
+the symbol \(\bar\sigma\), because the form-factor equations determine the
+rapidity dependence and relative phases, not the ultraviolet normalization of
+the spin field.
+
+\begin{proposition}[Spin-field form factors in the free massive fermion]
+\label{prop:ising-spin-field-fz-form-factors}
+Let the Majorana particle have \(S=-1\), and let \(\sigma_+\) be a scalar
+branch field with semi-locality phase \(-1\) relative to the Majorana
+particle.  The even family
+\begin{equation}
+  F_{2k}^{\sigma_+}(\theta_1,\ldots,\theta_{2k})
+  =
+  \bar\sigma\,\ii^k P_{2k}(\theta_1,\ldots,\theta_{2k}),
+  \qquad
+  F_{2k+1}^{\sigma_+}=0 ,
+  \label{eq:ising-spin-even-form-factors}
+\end{equation}
+satisfies Watson exchange, semi-local cyclicity
+\[
+  F_{2k}^{\sigma_+}(\theta_1+2\pi\ii,\theta_2,\ldots,\theta_{2k})
+  =
+  -F_{2k}^{\sigma_+}(\theta_2,\ldots,\theta_{2k},\theta_1),
+\]
+and the semi-local annihilation-pole equation
+\[
+  -\ii\,\operatorname*{Res}_{\theta'=\theta+\ii\pi}
+  F_{n+2}^{\sigma_+}(\theta',\theta,\eta_1,\ldots,\eta_n)
+  =
+  \left(1+(-1)^n\right)
+  F_n^{\sigma_+}(\eta_1,\ldots,\eta_n).
+\]
+In particular,
+\[
+  F_0^{\sigma_+}=\bar\sigma,\qquad
+  F_2^{\sigma_+}(\theta_1,\theta_2)
+  =
+  \ii\bar\sigma
+  \tanh\!\left(\frac{\theta_1-\theta_2}{2}\right).
+\]
+Away from coincident bra and ket rapidities, crossing \(K\) outgoing
+particles gives the connected analytic part of the mixed matrix element
+\begin{align}
+  &{}_{\rm out}\!\bra{\beta_1,\ldots,\beta_K}
+  \sigma_+(0)
+  \ket{\beta'_1,\ldots,\beta'_N}_{\rm in}^{\rm conn}
+  \notag\\
+  &\qquad =
+  \bar\sigma\,\ii^{(K+N)/2}
+  \prod_{1\le i<j\le K}
+  \tanh\!\left(\frac{\beta_i-\beta_j}{2}\right)
+  \prod_{1\le p<q\le N}
+  \tanh\!\left(\frac{\beta'_p-\beta'_q}{2}\right)
+  \prod_{\substack{1\le s\le K\\1\le t\le N}}
+  \coth\!\left(\frac{\beta_s-\beta'_t}{2}\right),
+  \label{eq:ising-spin-mixed-fz-form-factor}
+\end{align}
+for \(K+N\) even; it vanishes for \(K+N\) odd.  The superscript
+``conn'' reminds us that the full distributional matrix element also has
+disconnected delta-function contractions when some bra rapidity coincides
+with a ket rapidity.
+\end{proposition}
+
+\begin{proof}
+Watson exchange follows because \(P_N\) is antisymmetric and \(S=-1\).
+For \(N=2k\), the two displayed identities for \(P_N\) give
+\[
+  P_N(\theta_1+2\pi\ii,\theta_2,\ldots,\theta_N)
+  =
+  -P_N(\theta_2,\ldots,\theta_N,\theta_1),
+\]
+which is exactly cyclicity with semi-locality phase \(-1\).
+
+For the pole equation, set \(\theta'=\theta+\ii\pi+\epsilon\).  The
+annihilating pair contributes
+\[
+  \tanh\!\left(\frac{\theta'-\theta}{2}\right)
+  =
+  \coth\!\left(\frac{\epsilon}{2}\right)
+  =
+  \frac{2}{\epsilon}+O(\epsilon),
+\]
+while each spectator pair gives
+\[
+  \tanh\!\left(\frac{\theta'-\eta_j}{2}\right)
+  \tanh\!\left(\frac{\theta-\eta_j}{2}\right)
+  \longrightarrow 1 .
+\]
+Hence
+\[
+  \operatorname*{Res}_{\theta'=\theta+\ii\pi}
+  P_{n+2}(\theta',\theta,\eta_1,\ldots,\eta_n)
+  =
+  2P_n(\eta_1,\ldots,\eta_n).
+\]
+When \(n\) is even, \(F_n^{\sigma_+}=\bar\sigma \ii^{n/2}P_n\) and
+\(F_{n+2}^{\sigma_+}=\bar\sigma \ii^{n/2+1}P_{n+2}\), so
+\[
+  -\ii\,\operatorname*{Res}F_{n+2}^{\sigma_+}
+  =
+  2F_n^{\sigma_+}.
+\]
+This is the displayed equation because \(1+(-1)^n=2\).  When \(n\) is odd,
+both \(F_n^{\sigma_+}\) and \(F_{n+2}^{\sigma_+}\) vanish.
+
+The crossed formula is a direct consequence of the same even family.  Move
+\(K\) outgoing particles to the incoming side by the boundary-value
+continuation \(\beta_s\mapsto\beta_s+\ii\pi\).  Products among two crossed
+rapidities and among two uncrossed rapidities remain \(\tanh\)-products,
+because \(\tanh(z+\pi\ii)=\tanh z\).  A crossed-uncrossed pair gives
+\[
+  \tanh\!\left(\frac{\beta_s+\ii\pi-\beta'_t}{2}\right)
+  =
+  \coth\!\left(\frac{\beta_s-\beta'_t}{2}\right).
+\]
+Substitution in \(F_{K+N}^{\sigma_+}\) gives
+\eqref{eq:ising-spin-mixed-fz-form-factor}.  The exclusion of coincident
+rapidities is necessary because crossing a particle onto an identical
+particle in the other state also produces the ordinary Fock-space contraction
+terms; those delta terms are separate from the meromorphic connected form
+factor derived here.
+\end{proof}
+
+The case \(K=N=1\) gives the convention-sensitive spin-field matrix element
+used in the Fonseca--Zamolodchikov treatment:
+\[
+  {}_{\rm out}\!\bra{\beta_1}\sigma_+(0)\ket{\beta_2}_{\rm in}^{\rm conn}
+  =
+  \ii\bar\sigma
+  \coth\!\left(\frac{\beta_1-\beta_2}{2}\right).
+\]
+In the present chapter this is not imported as a separate rule; it is the
+crossed boundary value of the two-particle spin form factor above.\footnote{A
+useful comparison point is P.~Fonseca and A.~Zamolodchikov,
+``Ising field theory in a magnetic field: analytic properties of the free
+energy'', arXiv:hep-th/0112167, and ``Ward identities and integrable
+differential equations in the Ising field theory'', arXiv:hep-th/0309228.
+The formulas here are rederived in the rapidity and crossing conventions of
+this chapter.}
+
+The dual odd product family is obtained by the same algebra with the opposite
+cyclicity phase.  In a normalization \(v\in\C\) it is
 \begin{equation}
   F_{2k+1}^{\Sigma}(\theta_1,\ldots,\theta_{2k+1})
   =
@@ -544,10 +724,11 @@ normalization \(v\in\C\):
   \label{eq:ising-order-form-factors}
 \end{equation}
 The constant \(v=F_1^\Sigma\) is the one-particle normalization in this
-sector.  The complementary even family is obtained by exchanging the order
-and disorder sectors; which of the two is called \(\sigma\) or \(\mu\)
-depends on the sign convention for the massive Ising perturbation.  The
-mathematical point here is independent of that naming convention.
+sector.  Which product family is called order or disorder after matching to
+the lattice scaling limit depends on the sign convention for the Majorana
+mass and on the Kramers--Wannier identification.  The mathematical point here
+is independent of that naming convention: the parity of the nonzero
+form-factor family is fixed by the declared cyclicity phase.
 
 \begin{proposition}[Ising odd form-factor family]
 \label{prop:ising-odd-form-factor-family}
@@ -565,13 +746,6 @@ for every odd \(n\).  For even \(n\), both sides vanish because
 \end{proposition}
 
 \begin{proof}
-Set
-\[
-  P_N(\theta_1,\ldots,\theta_N)
-  =
-  \prod_{1\le i<j\le N}
-  \tanh\!\left(\frac{\theta_i-\theta_j}{2}\right).
-\]
 Interchanging adjacent variables changes exactly one factor by a sign and
 permutes the rest, so \(P_N\) is antisymmetric.  Since \(S=-1\), this is
 precisely Watson's equation.

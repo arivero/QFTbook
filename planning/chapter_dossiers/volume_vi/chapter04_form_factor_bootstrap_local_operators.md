@@ -22,7 +22,9 @@
 - Bound-state pole equations.
 - Free Majorana examples: the energy-density two-particle form factor, its
   explicit two-particle Wightman spectral density and Euclidean Bessel-kernel
-  reconstruction, and the odd Ising order/twist form-factor family.
+  reconstruction, the even semi-local Ising spin-field family, its crossed
+  mixed bra/ket product formula, and the odd Ising order/twist form-factor
+  family.
 - Form-factor datum for a scalar local operator.
 - Reconstruction boundary for Wightman distributions from spectral series.
 
@@ -39,6 +41,9 @@
 | \(F_n^\varepsilon\) | free-Majorana energy-density form factor |
 | \(s=-P^2\) | positive invariant mass squared in the mostly-plus convention |
 | \(K_0\) | modified Bessel function defined by \(K_0(z)=\int_0^\infty e^{-z\cosh u}\,du\) |
+| \(P_N\) | Ising product \(\prod_{i<j}\tanh((\theta_i-\theta_j)/2)\) |
+| \(\bar\sigma\) | spin-field vacuum expectation value in the ordered massive-Ising convention |
+| \(F_n^{\sigma_+}\) | even semi-local spin-field form-factor family |
 | \(F_n^\Sigma\) | odd Ising order/twist form-factor family |
 
 ## Claim Ledger
@@ -65,11 +70,19 @@
    \(K_0\)-kernel integral.  The derivation constructs the delta-function
    Jacobian and the identical-particle factor instead of importing a
    phase-space formula.
-7. The odd Ising product formula
+7. The even spin-field family
+   \(F_{2k}^{\sigma_+}=\bar\sigma i^kP_{2k}\) satisfies Watson exchange,
+   semi-local cyclicity with phase \(-1\), and the semi-local kinematic-pole
+   equation \( -i\,\mathrm{Res}\,F_{n+2}^{\sigma_+}=(1+(-1)^n)F_n^{\sigma_+}\).
+8. Crossing the even spin-field family gives the connected mixed bra/ket
+   formula with \(\tanh\)-factors within each side and \(\coth\)-factors
+   between crossed and uncrossed rapidities, including the
+   \(i^{(K+N)/2}\bar\sigma\) phase in this chapter's convention.
+9. The odd Ising product formula
    \(F_{2k+1}^{\Sigma}=v i^k\prod_{i<j}\tanh((\theta_i-\theta_j)/2)\)
    satisfies Watson exchange, cyclicity, and the kinematic annihilation
    recursion; the \(i^k\) factor is fixed by the residue equation.
-8. Form-factor axioms do not by themselves complete local reconstruction;
+10. Form-factor axioms do not by themselves complete local reconstruction;
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
 
@@ -79,8 +92,9 @@
   energy-density exchange/cyclicity identities and the Ising odd-family
   Watson, cyclicity, and kinematic-pole residue signs.  It also checks the
   two-particle invariant-mass identity, the spectral-density normalization
-  after the identical-particle cancellation, and the Euclidean
-  Bessel-reduction prefactor.
+  after the identical-particle cancellation, the Euclidean Bessel-reduction
+  prefactor, the even spin-field semi-local cyclicity phase, the crossed
+  \(\coth\) matrix element, and the semi-local kinematic residue.
 
 ## Figures
 

@@ -32,6 +32,18 @@ def sigma_form_factor(thetas: list[complex], v: complex = 1.0) -> complex:
     return v * (1j**k) * tanh_product(thetas)
 
 
+def spin_even_form_factor(thetas: list[complex], sigma_bar: complex = 1.0) -> complex:
+    n = len(thetas)
+    if n % 2 == 1:
+        return 0.0 + 0.0j
+    k = n // 2
+    return sigma_bar * (1j**k) * tanh_product(thetas)
+
+
+def coth(z: complex) -> complex:
+    return 1.0 / cmath.tanh(z)
+
+
 def swapped(values: list[complex], i: int) -> list[complex]:
     out = values[:]
     out[i], out[i + 1] = out[i + 1], out[i]
@@ -113,6 +125,48 @@ def check_sigma_exchange_and_cyclicity() -> None:
     assert_close("sigma odd cyclicity", sigma_form_factor(shifted), sigma_form_factor(cycled))
 
 
+def check_spin_even_semilocal_family() -> None:
+    sigma_bar = 1.37
+    thetas = [1.31, 0.62, -0.17, -0.84]
+    for i in range(len(thetas) - 1):
+        assert_close(
+            f"spin even Watson exchange slot {i}",
+            spin_even_form_factor(thetas, sigma_bar),
+            -spin_even_form_factor(swapped(thetas, i), sigma_bar),
+        )
+
+    shifted = [thetas[0] + 2j * math.pi, *thetas[1:]]
+    cycled = [*thetas[1:], thetas[0]]
+    assert_close(
+        "spin even semi-local cyclicity",
+        spin_even_form_factor(shifted, sigma_bar),
+        -spin_even_form_factor(cycled, sigma_bar),
+    )
+
+    beta_1 = 0.93
+    beta_2 = -0.28
+    assert_close(
+        "spin crossing gives coth matrix element",
+        spin_even_form_factor([beta_1 + 1j * math.pi, beta_2], sigma_bar),
+        1j * sigma_bar * coth((beta_1 - beta_2) / 2.0),
+    )
+
+    outgoing = [1.11, 0.36]
+    incoming = [-0.22, -0.91]
+    crossed = [complex(beta + 1j * math.pi) for beta in outgoing] + [complex(beta) for beta in incoming]
+    mixed = sigma_bar * (1j ** ((len(outgoing) + len(incoming)) // 2))
+    for i, beta_i in enumerate(outgoing):
+        for beta_j in outgoing[i + 1 :]:
+            mixed *= cmath.tanh((beta_i - beta_j) / 2.0)
+    for i, beta_i in enumerate(incoming):
+        for beta_j in incoming[i + 1 :]:
+            mixed *= cmath.tanh((beta_i - beta_j) / 2.0)
+    for beta_out in outgoing:
+        for beta_in in incoming:
+            mixed *= coth((beta_out - beta_in) / 2.0)
+    assert_close("spin mixed bra-ket product", spin_even_form_factor(crossed, sigma_bar), mixed)
+
+
 def check_sigma_kinematic_residue() -> None:
     theta = 0.37
     for spectators in ([0.91], [1.44, 0.52, -0.66], [1.7, 0.83, 0.11, -0.47, -1.28]):
@@ -129,11 +183,30 @@ def check_sigma_kinematic_residue() -> None:
         assert_close(f"sigma numerical kinematic residue n={n}", numerical_residue, residue, tol=1.0e-6)
 
 
+def check_spin_even_kinematic_residue() -> None:
+    sigma_bar = 1.37
+    theta = 0.37
+    for spectators in ([], [1.44, 0.52], [1.7, 0.83, 0.11, -0.47]):
+        n = len(spectators)
+        big_n = n + 2
+        residue = 2.0 * sigma_bar * (1j ** (big_n // 2)) * tanh_product([complex(x) for x in spectators])
+        lhs = -1j * residue
+        rhs = (1.0 + (-1.0) ** n) * spin_even_form_factor([complex(x) for x in spectators], sigma_bar)
+        assert_close(f"spin analytic semi-local residue n={n}", lhs, rhs)
+
+        eps = 1.0e-7
+        near_pair = [theta + 1j * math.pi + eps, theta, *spectators]
+        numerical_residue = eps * spin_even_form_factor([complex(x) for x in near_pair], sigma_bar)
+        assert_close(f"spin numerical semi-local residue n={n}", numerical_residue, residue, tol=1.0e-6)
+
+
 def main() -> None:
     check_energy_density_form_factor()
     check_energy_two_particle_reconstruction()
     check_sigma_exchange_and_cyclicity()
+    check_spin_even_semilocal_family()
     check_sigma_kinematic_residue()
+    check_spin_even_kinematic_residue()
     print("All Ising form-factor checks passed.")
 
 

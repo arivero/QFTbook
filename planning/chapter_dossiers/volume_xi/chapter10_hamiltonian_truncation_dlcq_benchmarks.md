@@ -14,9 +14,12 @@ numerics.
   counterterm coordinates.
 - `E_n(Lambda)`: variational finite-subspace eigenvalue.
 - `E_cut`: truncated conformal-space cutoff.
+- `tau`, `h`: thermal and magnetic Ising deformation couplings.
 - `r`, `p_r`, `H_r`, `H_N`: Neveu-Schwarz Majorana mode label, finite-circle
   momentum, two-dimensional Bogoliubov block, and finite direct-sum
   Hamiltonian for the Ising energy-deformation benchmark.
+- `Q_s`, `theta_n`, `rho_I`: finite-volume fermion momentum set, rapidity,
+  and free Bethe-state density used in the TFFSA spin matrix element.
 - `x^pm`, `p^+`, `K`: light-front coordinates, longitudinal momentum, and
   harmonic resolution.
 - `M^2`, `P^-`: invariant mass operator and light-front Hamiltonian.
@@ -33,6 +36,17 @@ numerics.
   counterterm dependence.
 - Proves the finite-mode Majorana Bogoliubov spectrum used as a
   Hamiltonian-truncation smoke benchmark.
+- Develops the two-coupling Ising TCSA datum
+  \(H_{\rm CFT}+\tau\int\varepsilon+h\int\sigma\), distinguishing cylinder
+  operator normalizations and coupling dimensions.
+- Defines the TFFSA reorganization in which the thermal deformation is
+  treated exactly as a massive Majorana Hamiltonian and the spin perturbation
+  is represented by finite-volume spin-field form factors.
+- States the connected TFFSA spin matrix element with momentum conservation,
+  free Bethe-state density \(\rho_I=\prod_i mL\cosh\theta_i\), disconnected
+  contraction caveats, and finite-size correction status.
+- Proves the Feshbach-Schur complement identity that underlies Hamiltonian
+  truncation counterterms and high-energy tail corrections.
 - Defines DLCQ kinematics and the role of harmonic resolution.
 - Constructs a finite DLCQ-style matrix for the large-N two-dimensional QCD
   meson equation and proves positivity of its quadratic form.

@@ -123,8 +123,10 @@ Current checks:
 - `ising_form_factor_checks.py`: finite checks for the Volume VI
   free-Majorana and Ising form-factor examples, including Watson exchange,
   cyclicity, the kinematic-pole residue sign, the two-particle invariant-mass
-  identity, the energy-density spectral threshold factor, and the Euclidean
-  Bessel-kernel prefactor.
+  identity, the energy-density spectral threshold factor, the Euclidean
+  Bessel-kernel prefactor, the even spin-field semi-local cyclicity phase,
+  the crossed \(\coth\) matrix element, the mixed bra/ket product formula,
+  and the semi-local kinematic-pole residue.
 - `ising_metropolis_finite_checks.py`: exact enumeration checks for the
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising
