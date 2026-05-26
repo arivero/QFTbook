@@ -1390,6 +1390,26 @@ def check_quartic_tail_integrability_arithmetic():
             raise AssertionError("polynomial-by-exponential tail domination failed")
 
 
+def check_regulator_comparison_error_budget_arithmetic():
+    # Regulator comparison for an unbounded polynomial observable is a
+    # two-limit argument:
+    #   |F_N(P)-L_N(P)|
+    # <= |F_N(P-P_R)| + |F_N(P_R)-L_N(P_R)| + |L_N(P_R-P)|.
+    # The first and third terms are controlled by uniform integrability, and
+    # the middle term is the bounded-cylinder comparison hypothesis.
+    fourier_tail = Fraction(1, 90)
+    lattice_tail = Fraction(1, 75)
+    bounded_comparison = Fraction(1, 100)
+    total = fourier_tail + lattice_tail + bounded_comparison
+    assert_equal(total, Fraction(31, 900), "regulator comparison error budget")
+
+    # If |P-P_R| <= 2 |P| 1_{|P|>R}, then a uniform L^2-tail epsilon for P
+    # gives an L^1-tail at most 2 epsilon by Cauchy's inequality.
+    l2_tail_norm = Fraction(1, 40)
+    l1_tail_bound = 2 * l2_tail_norm
+    assert_equal(l1_tail_bound, Fraction(1, 20), "regulator comparison L1 tail")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -1436,7 +1456,8 @@ def main():
     check_gaussian_negative_sobolev_summability_arithmetic()
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
+    check_regulator_comparison_error_budget_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, and regulator-comparison checks passed.")
 
 
 if __name__ == "__main__":

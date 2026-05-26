@@ -97,6 +97,9 @@ data.
   time reflection, lattice Euclidean measure, lattice scalar action, and
   reflection-invariant on-site potential used in the OS-positive lattice
   regulator proposition.
+- `mu_N^F`, `mu_N^L`: Fourier-Galerkin stochastic cutoff family and
+  lattice cutoff family in the regulator-comparison criterion for
+  transferring OS positivity.
 - `ell_j`, `V(phi)`: finite list of cylinder coordinates and exponential
   moment weight used to turn exponential tails into uniform integrability of
   polynomial OS observables.
@@ -327,6 +330,15 @@ data.
   squares.  The chapter then states precisely that this settles finite-cutoff
   positivity for the lattice regulator but not the comparison between lattice
   Schwinger functions and the Fourier-Galerkin stochastic family.
+- Proves an abstract regulator-comparison criterion for transferring
+  finite-cutoff lattice OS positivity to a Fourier-Galerkin stochastic
+  continuum limit.  If the Fourier family converges weakly, the lattice
+  family is OS-positive at finite cutoff, and bounded cylinder observables
+  have matching expectations between the two regulators, then the limiting
+  Fourier measure is OS-positive.  The same proposition treats unbounded
+  polynomial cylinder observables by bounded truncation and uniform
+  integrability, isolating exactly which analytic comparison estimate remains
+  to be proved in \(\Phi^4_2\).
 - Proves a de la Vallee Poussin-type criterion: exponential moment bounds for
   a finite list of cylinder coordinates imply uniform integrability of every
   polynomial cylinder observable built from those coordinates.  This supplies
@@ -844,3 +856,9 @@ data maps.
   energy convergence hypotheses hold.  The pass also removed a duplicated
   sentence in the Fourier Aubin-Lions proof and added a calculation-check
   companion for the exponent arithmetic used in the compatibility argument.
+- 2026-05-26 regulator-comparison criterion pass: added the theorem-level
+  criterion that transfers OS positivity from an OS-positive lattice cutoff
+  family to a Fourier-Galerkin stochastic limit once bounded-cylinder
+  comparison and polynomial uniform integrability are proved.  The assembly
+  theorem now points to this criterion rather than leaving regulator
+  comparison as an unnamed gap.
