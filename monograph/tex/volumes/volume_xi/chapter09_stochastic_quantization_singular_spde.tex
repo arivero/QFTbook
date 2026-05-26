@@ -2839,6 +2839,100 @@ satisfied, and its conclusion is exactly
 \eqref{eq:spde-common-potential-cylinder-limit}.
 \end{proof}
 
+\begin{corollary}[Bounded Wick-cylinder comparison for stable quartic cutoffs]
+\label{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}
+Let \(X_N^A\) and \(X_N^B\) be two cutoff approximations of the same massive
+two-dimensional Gaussian field on a common probability space
+\((\Omega,\mathcal F,\gamma)\).  Fix \(\lambda\in\R\) and define
+\[
+  V_N^\sigma
+  =
+  \frac{\lambda}{4}\,:\!(X_N^\sigma)^4\!:(1),
+  \qquad \sigma\in\{A,B\}.
+\]
+Assume that the finite Wick coordinates
+\[
+  :\!(X_N^\sigma)^{n_j}\!:(f_j),
+  \qquad 1\leq j\leq r,
+\]
+converge in \(L^2(\Omega)\), for both \(\sigma=A,B\), to common limits
+\(:\!X^{n_j}\!:(f_j)\), and that
+\[
+  V_N^\sigma
+  \longrightarrow
+  V:=\frac{\lambda}{4}\,:\!X^4\!:(1)
+  \quad\hbox{in }L^2(\Omega),
+  \qquad \sigma=A,B.
+  \label{eq:spde-stable-quartic-comparison-potential-l2}
+\]
+Assume also that there is \(p>1\) such that
+\[
+  \sup_{N,\sigma}
+  \left\|e^{-V_N^\sigma}\right\|_{L^p(\gamma)}
+  <\infty .
+  \label{eq:spde-stable-quartic-comparison-lp}
+\]
+Let
+\[
+  \mathcal X_N^\sigma
+  =
+  \bigl(:\!(X_N^\sigma)^{n_1}\!:(f_1),\ldots,
+        :\!(X_N^\sigma)^{n_r}\!:(f_r)\bigr),
+  \qquad
+  \mathcal X
+  =
+  \bigl(:\!X^{n_1}\!:(f_1),\ldots,:\!X^{n_r}\!:(f_r)\bigr).
+\]
+Then, for every bounded continuous \(G:\R^r\to\C\),
+\[
+  \lim_{N\to\infty}
+  \frac{\int G(\mathcal X_N^A)e^{-V_N^A}\,\dd\gamma}
+       {\int e^{-V_N^A}\,\dd\gamma}
+  =
+  \frac{\int G(\mathcal X)e^{-V}\,\dd\gamma}
+       {\int e^{-V}\,\dd\gamma}
+  =
+  \lim_{N\to\infty}
+  \frac{\int G(\mathcal X_N^B)e^{-V_N^B}\,\dd\gamma}
+       {\int e^{-V_N^B}\,\dd\gamma}.
+  \label{eq:spde-stable-quartic-bounded-cylinder-comparison}
+\]
+\end{corollary}
+
+\begin{proof}
+Corollary~\ref{cor:spde-common-wick-coordinate-limits} gives
+\[
+  \mathcal X_N^\sigma\longrightarrow \mathcal X
+  \quad\hbox{in probability},
+  \qquad \sigma=A,B.
+\]
+The assumed \(L^2\)-convergence
+\eqref{eq:spde-stable-quartic-comparison-potential-l2} gives
+\[
+  V_N^\sigma\longrightarrow V
+  \quad\hbox{in probability}.
+\]
+From every subsequence one may choose a further subsequence along which
+\(V_N^\sigma\to V\) almost surely.  Fatou's lemma and
+\eqref{eq:spde-stable-quartic-comparison-lp} imply
+\[
+  \int e^{-pV}\,\dd\gamma
+  \leq
+  \liminf_{k\to\infty}
+  \int e^{-pV_{N_k}^\sigma}\,\dd\gamma
+  <\infty .
+\]
+Thus \(e^{-V}\in L^p(\gamma)\), while \(e^{-V}>0\) almost surely because
+\(V\) is real-valued and finite almost surely.  Hence
+\[
+  0<\int e^{-V}\,\dd\gamma<\infty .
+\]
+All hypotheses of
+Corollary~\ref{cor:spde-bounded-cylinder-common-potential} are satisfied,
+and its conclusion is precisely
+\eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
+\end{proof}
+
 In the regulator-comparison problem, \(X_N^\sigma\) is the finite list of
 smeared field or Wick-polynomial coordinates entering a bounded positive-time
 cylinder observable, and \(W_N^\sigma\) is the finite-cutoff interaction
@@ -2850,8 +2944,12 @@ Corollary~\ref{cor:spde-bounded-cylinder-common-potential}
 gives the common route used in cutoff constructions: it is enough to prove
 that the renormalized interaction functionals converge in probability to the
 same limiting potential and that their exponential weights obey a uniform
-\(L^p\) stability estimate.  Unbounded polynomial observables still require
-the separate uniform-integrability argument stated in
+\(L^p\) stability estimate.  In the Wick quartic case,
+Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}
+packages the corresponding bounded cylinder comparison once the common Wick
+coordinate limits and exponential-weight stability have been proved.
+Unbounded polynomial observables still require the separate
+uniform-integrability argument stated in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}.
 
 \begin{proposition}[Brascamp--Lieb covariance domination for convex cutoffs]
@@ -3599,7 +3697,10 @@ Assume the following three further analytic facts.
   regulator-specific input is the uniform exponential-weight stability.
   The common finite cylinder-coordinate convergence for smeared Wick
   polynomials is supplied by
-  Corollary~\ref{cor:spde-common-wick-coordinate-limits}.
+  Corollary~\ref{cor:spde-common-wick-coordinate-limits}.  Equivalently,
+  under these common Wick-limit hypotheses and the uniform \(L^p\) stability
+  bound, the bounded Wick-cylinder comparison is the direct conclusion of
+  Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -3699,7 +3800,10 @@ Corollary~\ref{cor:spde-wick-quartic-potential-convergence}, so the
 remaining constructive estimate is the uniform \(L^p\) stability of the
 weights in the chosen regulator family.  The matching convergence of finite
 Wick-coordinate cylinder vectors is
-Corollary~\ref{cor:spde-common-wick-coordinate-limits}.  The
+Corollary~\ref{cor:spde-common-wick-coordinate-limits}; combined with the
+stability estimate, these inputs give the bounded comparison statement in
+Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
+The
 uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite

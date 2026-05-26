@@ -390,6 +390,14 @@ data.
   upgrades to \(L^1\).  This moves regulator comparison from an
   assumed-density statement to the potential-level stability estimate that
   constructive cutoff arguments can actually target.
+- Proves a bounded Wick-cylinder comparison criterion for stable quartic
+  cutoffs.  Given two cutoff schemes with common finite Wick-coordinate
+  \(L^2\) limits, common \(L^2\) convergence of the Wick quartic potentials,
+  and a uniform \(L^p\) bound on \(e^{-V_N^\sigma}\), all bounded continuous
+  functions of the Wick-coordinate vector have the same normalized continuum
+  expectation.  The proof checks the hypotheses of the common-potential
+  theorem and uses Fatou to verify that the limiting weight is finite and
+  has positive partition function.
 - Proves a finite-dimensional Brascamp-Lieb covariance domination theorem
   for convex scalar cutoffs.  The proof uses the symmetric generator
   \(\mathcal L=\Delta-\nabla S\cdot\nabla\), its Friedrichs resolvent, and
