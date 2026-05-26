@@ -93,6 +93,13 @@
   \(KG^2\) packets in dynamic \(\Phi^4_3\): heat order \(2\) and covariance
   orders \(4,4\) give relative gaps \(3,1,1\), hence the shell
   \(\max(i,j,\ell)=n\) is uniformly summable.
+- Added Corollary `cor:spde-covariance-block-double-increment-bound`.
+- This verifies the covariance double-increment hypothesis for compact
+  dyadic order-four covariance blocks.  After rescaling
+  \(C_s(a,a')=2^s c_s(\mathsf D_{2^s}(a-a'))\), uniform \(C^2\) control
+  gives the scale-one mixed finite-difference bound, and local shell
+  supports give the factors
+  \(2^{-\theta(n-s)_+}2^{-\theta(n'-s)_+}\).
 
 ## Calculation Check
 
@@ -115,14 +122,13 @@
   - the first-chaos logarithmic physical-scale arithmetic
     \(\delta^{-1}(1+|\log\delta|)^2\) and the resulting normalized slack
     after a sample logarithmic loss.
+  - the order-four covariance double-increment scale arithmetic.
 
 ## Remaining Issue #582 Obligations
 
 - Extend the dual-norm strategy from primitive Gaussian coordinates to the
   concrete finite-cutoff chaos kernels in the displayed \(XY\) and \(X^2Y\)
   decompositions.
-- Verify the regulator-specific covariance double-increment hypothesis
-  entering the first-chaos bound directly from the chosen cutoff kernels.
 - Prove the genuinely nonlinear BPHZ coordinate estimates for the remaining
   explicit scalar covariance kernels: \(XY\)'s fourth and second chaos and
   \(X^2Y\)'s fifth and third chaos.

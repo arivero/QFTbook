@@ -307,6 +307,12 @@ data.
   first-chaos bound for dynamic \(\Phi^4_3\): heat order \(2\) and
   covariance order \(4,4\) give relative gaps \(3,1,1\), and the shell
   \(\max(i,j,\ell)=n\) is uniformly summable.
+- Verifies the covariance double-increment hypothesis used in the same
+  first-chaos bound for compact dyadic order-four covariance blocks.  The
+  proof rescales \(C_s(a,a')\) to \(2^s c_s(\mathsf D_{2^s}(a-a'))\), proves
+  the mixed scale-one finite-difference estimate from uniform \(C^2\) control,
+  and converts the local supports \(2^{-n}\), \(2^{-n'}\) into the factors
+  \(2^{-\theta(n-s)_+}\), \(2^{-\theta(n'-s)_+}\).
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -603,3 +609,7 @@ data maps.
 - 2026-05-26 issue #582 local-shell verification: added the corollary
   deriving the \(KG^2\) local shell \(L^1\) hypothesis from the already
   established heat/covariance/covariance order arithmetic \((2,4,4)\).
+- 2026-05-26 issue #582 covariance-increment verification: added the
+  corollary proving the order-four covariance block double-increment bound
+  from compact rescaled \(C^2\) block control, discharging the second
+  deterministic hypothesis in the locally subtracted first-chaos estimate.

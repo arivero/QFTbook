@@ -378,6 +378,26 @@ def check_x2y_first_chaos_logarithmic_scale_arithmetic():
     )
 
 
+def check_covariance_double_increment_arithmetic():
+    qdim = Fraction(5)
+    covariance_order = Fraction(4)
+    theta = Fraction(1, 2)
+    block_scale = 5
+    local_shell = 9
+    other_shell = 7
+
+    amplitude_exponent = (qdim - covariance_order) * block_scale
+    assert_equal(amplitude_exponent, 5, "order-four covariance block exponent at scale five")
+
+    first_increment_gain = theta * max(local_shell - block_scale, 0)
+    second_increment_gain = theta * max(other_shell - block_scale, 0)
+    assert_equal(first_increment_gain, 2, "first covariance double-increment shell gain")
+    assert_equal(second_increment_gain, 1, "second covariance double-increment shell gain")
+
+    total_exponent = amplitude_exponent - first_increment_gain - second_increment_gain
+    assert_equal(total_exponent, 2, "covariance double-increment final exponent")
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -1108,6 +1128,7 @@ def main():
     check_heat_integration_reexpansion_arithmetic()
     check_nonlinear_negative_coordinate_wick_arithmetic()
     check_x2y_first_chaos_logarithmic_scale_arithmetic()
+    check_covariance_double_increment_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -1131,7 +1152,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

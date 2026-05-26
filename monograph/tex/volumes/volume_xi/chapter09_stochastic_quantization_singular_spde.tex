@@ -4874,6 +4874,109 @@ This proves the uniform shell \(L^1\) estimate.  Translation of all kernels
 does not change either the support radius or the integral bound.
 \end{proof}
 
+\begin{corollary}[Covariance double increment for compact order-four blocks]
+\label{cor:spde-covariance-block-double-increment-bound}
+Let \(Q=5\), \(0<\theta\leq1\), and let
+\(\mathsf D_\lambda(t,x)=(\lambda^2t,\lambda x)\).  Suppose the dyadic
+covariance blocks have the rescaled form
+\[
+  C_s(a,a')=2^s c_s\bigl(\mathsf D_{2^s}(a-a')\bigr),
+  \qquad s\geq0,
+\]
+where the functions \(c_s\) are supported in a fixed parabolic unit-scale
+ball and are bounded uniformly in \(C^2\).  Let \(h,h'\) satisfy
+\[
+  \|h\|_{\mathfrak s}\leq R_1 2^{-n},
+  \qquad
+  \|h'\|_{\mathfrak s}\leq R_1 2^{-n'} .
+\]
+Then there are constants \(A,R\), depending only on \(R_1\), \(\theta\), and
+the uniform block bounds, such that
+\begin{equation}
+\begin{aligned}
+  |\Delta_{h,h'}C_s(a,a')|
+  &\leq
+  A\,2^s\,
+  2^{-\theta(n-s)_+}
+  2^{-\theta(n'-s)_+}                                   \\
+  &\quad\times
+  \sum_{\rho\in\{0,h\}}\sum_{\rho'\in\{0,h'\}}
+  \mathbf 1_{\{\|a+\rho-a'-\rho'\|_{\mathfrak s}\leq R2^{-s}\}} .
+\end{aligned}
+  \label{eq:spde-covariance-double-increment-verified}
+\end{equation}
+In particular the covariance-block hypothesis
+\eqref{eq:spde-covariance-block-double-increment-bound} follows for compact
+dyadic order-four decompositions of the cutoff covariance.
+\end{corollary}
+
+\begin{proof}
+Write
+\[
+  r=\mathsf D_{2^s}(a-a'),\qquad
+  u=\mathsf D_{2^s}h,\qquad
+  u'=\mathsf D_{2^s}h'.
+\]
+Then
+\[
+\begin{aligned}
+  \Delta_{h,h'}C_s(a,a')
+  =
+  2^s\{&
+  c_s(r+u-u')-c_s(r+u)\\
+  &\quad -c_s(r-u')+c_s(r)\}.
+\end{aligned}
+  \label{eq:spde-rescaled-covariance-double-difference}
+\]
+The uniform \(C^2\) bound gives the scale-one finite-difference estimate
+\begin{equation}
+  |c_s(r+u-u')-c_s(r+u)-c_s(r-u')+c_s(r)|
+  \leq
+  C_\theta
+  \min\{1,\|u\|_{\mathfrak s}\}^{\theta}
+  \min\{1,\|u'\|_{\mathfrak s}\}^{\theta}.
+  \label{eq:spde-scale-one-double-difference}
+\end{equation}
+Indeed, if \(\|u\|_{\mathfrak s}\leq1\) and
+\(\|u'\|_{\mathfrak s}\leq1\), the second-order integral form of the
+increment bounds the left side by \(C\|u\|_{\mathfrak s}\|u'\|_{\mathfrak s}\),
+which is stronger than \eqref{eq:spde-scale-one-double-difference} because
+\(\theta\leq1\).  If only one increment is small, apply the first-order
+mean-value bound to the small increment and the triangle inequality in the
+other variable.  If both increments are large, the uniform \(C^0\) bound
+gives the estimate.
+
+Since
+\[
+  \|u\|_{\mathfrak s}=2^s\|h\|_{\mathfrak s}
+  \leq R_1 2^{s-n},
+  \qquad
+  \|u'\|_{\mathfrak s}=2^s\|h'\|_{\mathfrak s}
+  \leq R_1 2^{s-n'},
+\]
+we have
+\[
+  \min\{1,\|u\|_{\mathfrak s}\}^{\theta}
+  \leq C_{R_1}2^{-\theta(n-s)_+},
+  \qquad
+  \min\{1,\|u'\|_{\mathfrak s}\}^{\theta}
+  \leq C_{R_1}2^{-\theta(n'-s)_+}.
+\]
+Combining these estimates with
+\eqref{eq:spde-rescaled-covariance-double-difference} gives the numerical
+factor in \eqref{eq:spde-covariance-double-increment-verified}.
+
+It remains only to record support.  Each of the four terms in
+\eqref{eq:spde-rescaled-covariance-double-difference} vanishes unless the
+corresponding separation \(a+\rho-a'-\rho'\), with
+\(\rho\in\{0,h\}\) and \(\rho'\in\{0,h'\}\), lies in a fixed parabolic ball
+of radius \(O(2^{-s})\).  If all four indicators in
+\eqref{eq:spde-covariance-double-increment-verified} vanish, then all four
+terms vanish.  Otherwise the indicator sum is at least \(1\), and the
+previous numerical bound applies.  Enlarging the support constant gives the
+displayed estimate.
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization
