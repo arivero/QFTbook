@@ -352,8 +352,9 @@ Current checks:
   \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
 - `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
-  including Seiberg-dual rank involution, baryon-charge matching, electric
-  and magnetic NSVZ numerator cancellation in the monograph \(\gamma\)
+  including Seiberg-dual rank involution, baryon-charge matching, SQCD
+  holomorphic-canonical NSVZ coordinate-relation algebra, electric and
+  magnetic NSVZ numerator cancellation in the monograph \(\gamma\)
   convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, full electric-magnetic
   't Hooft anomaly matching, \(N_f=N_c+1\) confining-superpotential

@@ -66,6 +66,36 @@ def check_dual_rank_and_baryon_map():
             )
 
 
+def check_sqcd_nsvz_coordinate_relation():
+    for nc in range(2, 12):
+        for nf in range(1, 5 * nc + 1):
+            c2_adj = nc
+            t_fund = Fraction(1, 2)
+            t_antifund = Fraction(1, 2)
+            matter_index = nf * t_fund + nf * t_antifund
+
+            assert_equal(c2_adj, nc, "SU(Nc) adjoint index")
+            assert_equal(matter_index, nf, "SQCD total matter index")
+
+            # X_h = X_c + Nc log(g^2) - Nf log(Z_Q) + kappa on the
+            # flavor-symmetric submanifold.  Differentiating gives
+            # 2(Nc-x) beta_g/g - Nf gamma = 3Nc - Nf,
+            # where x=8 pi^2/g^2.
+            for gamma in (Fraction(-2), Fraction(-1, 3), Fraction(0), Fraction(1, 2)):
+                nsvz_numerator = 3 * nc - nf * (1 - gamma)
+                for x_coordinate in (Fraction(nc + 1), Fraction(2 * nc + 3), Fraction(5 * nc, 2)):
+                    beta_over_g = -nsvz_numerator / (2 * (x_coordinate - nc))
+                    differentiated_relation = (
+                        2 * (nc - x_coordinate) * beta_over_g
+                        - nf * gamma
+                    )
+                    assert_equal(
+                        differentiated_relation,
+                        3 * nc - nf,
+                        "SQCD NSVZ differentiated coordinate relation",
+                    )
+
+
 def check_r_charges_superpotential_and_nsvz():
     for nc in range(2, 12):
         for nf in range(nc + 2, 4 * nc + 3):
@@ -228,6 +258,7 @@ def check_phase_inequalities():
 
 def main():
     check_dual_rank_and_baryon_map()
+    check_sqcd_nsvz_coordinate_relation()
     check_r_charges_superpotential_and_nsvz()
     check_anomaly_matching()
     check_sconfining_superpotential()

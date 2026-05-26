@@ -17,6 +17,8 @@ status-boundary style.
 - `G=SU(N_c)`: gauge group for the chapter.
 - `Q^i`, `tilde Q_j`: fundamental and antifundamental chiral superfields.
 - `W_alpha`, `tau`: gauge field strength and holomorphic gauge coordinate.
+- `X_h=8 pi^2/g_h^2`, `X_c=8 pi^2/g^2`: holomorphic Wilsonian and
+  canonical real gauge-coupling coordinates used in the SQCD NSVZ audit.
 - `Lambda_h^{b_0}`: invariant holomorphic scale.
 - `M`, `B`, `tilde B`: meson, baryon, and antibaryon chiral coordinates.
 - `hat M`: light \(N_c\times N_c\) meson block used when a last massive
@@ -36,6 +38,11 @@ status-boundary style.
   Yukawa-lifting ledger for the ADS instanton calculation.
 - `kappa_Nc`: scheme-dependent nonzero one-instanton coefficient in the
   `N_f=N_c-1` ADS normalization.
+- `hyp:sqcd-nsvz-coordinate-specialization`: assumptions for specializing
+  the Chapter 05 holomorphic-canonical NSVZ coordinate relation to SQCD.
+- `prop:sqcd-nsvz-coordinate-audit`: derivation of
+  `X_h=X_c+N_c log g^2-N_f log Z_Q+kappa` and the specialized SQCD NSVZ
+  beta function.
 - `hyp:sqcd-quantum-modified-confining-input`: assumptions for comparing
   the `N_f=N_c` quantum-modified chiral ring with the `N_f=N_c+1`
   confining chiral-sector description.
@@ -84,7 +91,9 @@ status-boundary style.
 - Computes the anomaly-free \(R\)-charge assignment in the stated trace
   normalization.
 - Specializes the NSVZ coordinate beta function to SQCD with the chapter's
-  trace convention.
+  trace convention, including the holomorphic-canonical coordinate relation,
+  matter Konishi-rescaling coefficients, vector-multiplet denominator, and
+  the status of the denominator pole as a coordinate-chart feature.
 - Defines the Witten index and explains the finite-volume pairing logic and
   the small-circle affine-Toda count for pure \(SU(N_c)\) SYM.
 - Derives the allowed ADS superpotential form from dimension and \(R\)-charge
@@ -189,7 +198,8 @@ status-boundary style.
   count, and the `Z_{2M}->Z_2` vacuum count.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:
-  dual-rank involution, baryon-charge map, electric/magnetic NSVZ numerator
+  dual-rank involution, baryon-charge map, SQCD holomorphic-canonical NSVZ
+  coordinate-relation algebra, electric/magnetic NSVZ numerator
   cancellation, magnetic gauge-`R` anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, full global anomaly matching,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the

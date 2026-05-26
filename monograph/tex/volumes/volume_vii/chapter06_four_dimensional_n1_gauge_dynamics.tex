@@ -36,17 +36,121 @@ The holomorphic scale is the invariant coordinate
 This equation defines \(\Lambda_h\) after a branch convention has been chosen;
 only \(\Lambda_h^{b_0}\) is invariant under the periodicity of \(\theta\).
 
-\section{Canonical Coupling And NSVZ For SQCD}
+\section{SQCD NSVZ Coordinate Audit}
+\label{sec:sqcd-nsvz-coordinate-audit}
 
 The holomorphic scale is not the same coordinate as the canonical gauge
-coupling used in particle normalizations.  Let \(g\) be the canonical
-coupling defined by the component kinetic term of
-Chapter~\ref{ch:susy-gauge-theory}, and let \(Z_Q=Z_{\widetilde Q}\) be the
-flavor-symmetric matter wave-function coordinate.  With
+coupling used in particle normalizations.  This distinction is a coordinate
+statement, not a change of the underlying theory.  Write
+\[
+  X_h(\mu)=\frac{8\pi^2}{g_h(\mu)^2},\qquad
+  X_c(\mu)=\frac{8\pi^2}{g(\mu)^2},
+\]
+where \(g_h\) is the holomorphic Wilsonian coupling and \(g\) is the
+canonical coupling defined by the component kinetic term of
+Chapter~\ref{ch:susy-gauge-theory}.  Let \(Z_Q\) and
+\(Z_{\widetilde Q}\) be the matter wave-function coordinates, with
 \[
   \gamma_Q(\mu)=\mu\frac{d}{d\mu}\log Z_Q(\mu),
+  \qquad
+  \gamma_{\widetilde Q}(\mu)
+  =
+  \mu\frac{d}{d\mu}\log Z_{\widetilde Q}(\mu).
 \]
-the NSVZ coordinate formula of
+
+\begin{hypothesis}[SQCD NSVZ coordinate specialization]
+\label{hyp:sqcd-nsvz-coordinate-specialization}
+The SQCD beta-function identity below is stated in a perturbative
+supersymmetric Wilsonian scheme satisfying the hypotheses of
+Proposition~\ref{prop:nsvz-coordinate-relation-derived}.  The
+flavor-symmetric submanifold is imposed by taking
+\[
+  Z_Q=Z_{\widetilde Q},\qquad
+  \gamma_Q=\gamma_{\widetilde Q}.
+\]
+The trace convention is the half-trace convention of this chapter:
+\[
+  C_2(SU(N_c))=N_c,\qquad
+  T(\mathbf N_c)=T(\overline{\mathbf N}_c)=\frac12 .
+\]
+Finite changes of canonical coupling coordinate are allowed, but then the
+rational NSVZ denominator changes by the induced reparametrization.  Thus
+the pole of the displayed denominator is a feature of this coordinate chart;
+the invariant tests in later sections are the numerator condition, anomaly
+matching, holomorphic scale matching, and protected chiral data.
+\end{hypothesis}
+
+\begin{proposition}[SQCD specialization of the NSVZ coordinate relation]
+\label{prop:sqcd-nsvz-coordinate-audit}
+Assume Hypothesis~\ref{hyp:sqcd-nsvz-coordinate-specialization}.  In the
+flavor-symmetric SQCD coordinate chart,
+\[
+  X_h
+  =
+  X_c+N_c\log g^2-N_f\log Z_Q+\kappa ,
+  \label{eq:sqcd-holomorphic-canonical-coordinate-relation}
+\]
+where \(\kappa\) is independent of \(\mu\).  Consequently
+\[
+  \beta_g
+  =
+  -\frac{g^3}{16\pi^2}\,
+  \frac{
+    3N_c-N_f(1-\gamma_Q)
+  }{
+    1-\frac{N_cg^2}{8\pi^2}
+  } .
+  \label{eq:sqcd-nsvz-beta-specialized}
+\]
+\end{proposition}
+
+\begin{proof}
+The general relation of
+Proposition~\ref{prop:nsvz-coordinate-relation-derived} gives
+\[
+  X_h
+  =
+  X_c+C_2(SU(N_c))\log g^2
+  -
+  \sum_i T(R_i)\log Z_i+\kappa .
+\]
+There are \(N_f\) chiral multiplets \(Q^i\) in \(\mathbf N_c\) and \(N_f\)
+chiral multiplets \(\widetilde Q_j\) in \(\overline{\mathbf N}_c\).  Hence
+\[
+  \sum_iT(R_i)\log Z_i
+  =
+  \frac{N_f}{2}\log Z_Q+\frac{N_f}{2}\log Z_{\widetilde Q}.
+\]
+On the flavor-symmetric submanifold this is \(N_f\log Z_Q\), and
+\(C_2(SU(N_c))=N_c\).  This proves
+\eqref{eq:sqcd-holomorphic-canonical-coordinate-relation}.
+
+The holomorphic Wilsonian coordinate has one-loop derivative
+\[
+  \mu\frac{dX_h}{d\mu}=3N_c-N_f .
+\]
+Differentiating \eqref{eq:sqcd-holomorphic-canonical-coordinate-relation}
+therefore gives
+\[
+  \left(
+    -\frac{16\pi^2}{g^3}+\frac{2N_c}{g}
+  \right)\beta_g
+  -N_f\gamma_Q
+  =
+  3N_c-N_f .
+\]
+Moving the anomalous-dimension term to the right hand side yields the
+NSVZ numerator \(3N_c-N_f(1-\gamma_Q)\).  Solving the displayed linear
+equation for \(\beta_g=\mu\,dg/d\mu\) gives
+\eqref{eq:sqcd-nsvz-beta-specialized}.
+\end{proof}
+
+Equivalently, inserting
+\[
+  C_2(SU(N_c))=N_c,\qquad
+  T(\mathbf N_c)=T(\overline{\mathbf N}_c)=\frac12
+\]
+directly into the general NSVZ coordinate formula of
 Chapter~\ref{ch:susy-nonrenormalization-holomorphy} gives
 \[
   \beta_g
@@ -59,21 +163,17 @@ Chapter~\ref{ch:susy-nonrenormalization-holomorphy} gives
     (1-\gamma_Q)
   }{
     1-\frac{C_2(SU(N_c))g^2}{8\pi^2}
-  } .
+  },
 \]
-In the half-trace convention for this SQCD subsection,
-\[
-  C_2(SU(N_c))=N_c,\qquad
-  T(\mathbf N_c)=T(\overline{\mathbf N}_c)=\frac12,
-\]
-and the numerator becomes
+whose numerator is
 \[
   3N_c-N_f(1-\gamma_Q).
 \]
-The formula follows from three inputs: one-loop running of the holomorphic
-Wilsonian coordinate, the rescaling anomaly of matter and vector variables,
-and the definition of \(Z_Q\).  A different canonical coupling coordinate
-changes the displayed rational form by a finite reparametrization of \(g\).
+The proof above displays why the same numerator arises from the
+holomorphic-canonical coordinate relation: the two factors of \(1/2\) from
+the fundamental and antifundamental indices add to the single coefficient
+\(N_f\), while the vector-multiplet Jacobian produces the denominator in the
+chosen canonical coordinate.
 
 \section{Gauge-Invariant Chiral Coordinates}
 
