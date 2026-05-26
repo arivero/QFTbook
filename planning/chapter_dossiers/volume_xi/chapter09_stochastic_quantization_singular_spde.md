@@ -114,6 +114,10 @@ data.
   negative-sector index set, uniform and cutoff-increment coordinate
   functions, scale-summed constants, negative-sector model seminorm, and
   negative-sector model-distance increment.
+- `Q_{n,tau}^{#}`, `mathcal X_{Pi,m}`, `mathcal X_{Gamma,m}`, `d_Pi`,
+  `d_Gamma`:
+  test-function-dualized \(\Pi\)-coordinates, physical scale-ratio parameter
+  spaces, normalized-separation parameter spaces, and their entropy exponents.
 
 ## Claim Ledger
 
@@ -267,6 +271,11 @@ data.
   uniform \(L^p\) model seminorm bounds, dyadic Cauchy bounds for model
   distance, and convergence to a limiting random model on \(\mathcal T_-\) with
   an explicit geometric \(L^p\) tail.
+- Proves the physical-parameter entropy for those seven coordinates after the
+  test-function supremum has been dualized: \(\Pi\)-coordinates use
+  \(K\times[1/2,1]\) with scale entropy \(D=5\) and edge entropy \(d=6\), while
+  the \(c_n\) coordinate uses \(K\) times the parabolic annulus of normalized
+  separations with scale entropy \(D=5\) and edge entropy \(d=10\).
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -433,3 +442,11 @@ data maps.
   \(\tilde S_i^{sc}\), and the exact \(L^p\) bounds that produce a limiting
   random model on \(\mathcal T_-\).  The calculation-check companion verifies
   the seven-coordinate \(C_N\), \(C_D\), and tail arithmetic in an exact sample.
+- 2026-05-26 issue #582 physical-parameter continuation: the chapter now
+  proves the parameter-space entropy used by the strict negative-sector
+  convergence criterion, without treating the \(C^r\) test-function unit ball as
+  a finite-dimensional parameter.  The proof first replaces the test-function
+  dependence by the dualized coordinate \(Q_{n,\tau}^{#}\), then covers
+  \(K\times[1/2,1]\) and \(K\times A_{\mathfrak s}\) by parabolic grids.  The
+  calculation-check companion verifies the exponents \(D=5\), \(d_\Pi=6\), and
+  \(d_\Gamma=10\).

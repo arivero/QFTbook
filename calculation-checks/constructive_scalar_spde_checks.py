@@ -672,6 +672,37 @@ def check_negative_sector_scale_summed_model_convergence_arithmetic():
     assert_equal(tail, Fraction(28, 3), "negative-sector model convergence tail")
 
 
+def check_negative_sector_physical_parameter_entropy_arithmetic():
+    # Dynamic Phi^4_3 uses parabolic scaling (2,1,1,1), hence homogeneous
+    # dimension Q=5.  After dualizing the test function, a Pi-coordinate has
+    # parameters (base point, scale ratio), while the Gamma coordinate has
+    # parameters (base point, normalized separation).
+    qdim = 5
+    pi_edge_entropy = qdim + 1
+    gamma_edge_entropy = 2 * qdim
+    assert_equal(qdim, 5, "Phi4_3 parabolic homogeneous dimension")
+    assert_equal(pi_edge_entropy, 6, "Pi physical parameter edge entropy")
+    assert_equal(gamma_edge_entropy, 10, "Gamma physical parameter edge entropy")
+
+    m = 4
+    ell = 3
+    pi_base_exponent = qdim * m
+    pi_edge_exponent = qdim * m + pi_edge_entropy * ell
+    gamma_edge_exponent = qdim * m + gamma_edge_entropy * ell
+    assert_equal(pi_base_exponent, 20, "Pi physical parameter base exponent")
+    assert_equal(pi_edge_exponent, 38, "Pi physical parameter edge exponent")
+    assert_equal(gamma_edge_exponent, 50, "Gamma physical parameter edge exponent")
+
+    # A sample high-moment choice p=12 and regularity slack sigma=1 beats the
+    # scale entropy D=5 because p*sigma-D=7>0.
+    p = 12
+    sigma = 1
+    scale_slack_numerator = p * sigma - qdim
+    assert_equal(scale_slack_numerator, 7, "physical parameter scale slack numerator")
+    if not scale_slack_numerator > 0:
+        raise AssertionError("physical parameter scale slack condition failed")
+
+
 def check_coordinate_to_model_convergence_arithmetic():
     # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
     # epsilon=2, every coordinate has geometric ratio 1/2.  The first
@@ -806,10 +837,11 @@ def main():
     check_dyadic_net_supremum_upgrade_arithmetic()
     check_scale_summed_coordinate_upgrade_arithmetic()
     check_negative_sector_scale_summed_model_convergence_arithmetic()
+    check_negative_sector_physical_parameter_entropy_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

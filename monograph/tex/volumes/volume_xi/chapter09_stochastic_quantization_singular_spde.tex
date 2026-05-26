@@ -2954,6 +2954,183 @@ Applying that theorem on the finite sector \(\mathcal T_-\) gives the limiting
 model and the stated \(L^p\) tail estimate.
 \end{proof}
 
+\begin{proposition}[Physical parameter entropy for the strict negative sector]
+\label{prop:spde-negative-sector-physical-parameter-entropy}
+Let \(K\subset\R^{1+3}\) be compact, fix \(r>0\), let
+\[
+  \mathfrak C_\Pi=\{\Xi,X,X^2,X^3,XY,X^2Y\},
+\]
+let \(|Y|>0\) be the exponent used to normalize the \(c_n\)-coordinate,
+let \(\mathfrak s=(2,1,1,1)\), and let
+\[
+  Q=|\mathfrak s|=5 .
+\]
+For \(\lambda>0\), write
+\[
+  \mathsf D_\lambda(t,x_1,x_2,x_3)
+  =
+  (\lambda^2t,\lambda x_1,\lambda x_2,\lambda x_3).
+\]
+For \(\tau\in\mathfrak C_\Pi\), set
+\[
+  Q_{n,\tau}^{\#}(z,\delta)
+  =
+  \sup_{\varphi\in\mathcal B_r}
+  \delta^{-|\tau|}
+  \left|
+    \langle\Pi_z^{(n)}\tau,\varphi_z^\delta\rangle
+  \right|.
+\]
+Then the supremum over \(z\in K\) and \(0<\delta\leq1\) is the supremum over
+the dyadic-scale spaces
+\[
+  \mathcal X_{\Pi,m}=K\times[1/2,1],
+  \qquad
+  (z,a)\longmapsto Q_{n,\tau}^{\#}(z,2^{-m}a),
+  \qquad m\geq0.
+\]
+Equip \(\mathcal X_{\Pi,m}\) with
+\[
+  d_{\Pi,m}((z,a),(z',a'))
+  =
+  2^m\|z-z'\|_{\mathfrak s}+|a-a'|.
+\]
+There are finite nets and projections as in
+Theorem~\ref{thm:spde-scale-summed-coordinate-upgrade} for which
+\begin{equation}
+  |\mathcal X_{\Pi,m,0}|\leq C_{\Pi,0}2^{Qm},
+  \qquad
+  |\mathcal E_{\Pi,m,\ell}|
+  \leq
+  C_{\Pi,1}2^{Qm}2^{(Q+1)\ell}.
+  \label{eq:spde-pi-physical-parameter-entropy}
+\end{equation}
+
+For the \(\Gamma\)-coordinate, let
+\[
+  A_{\mathfrak s}
+  =
+  \{h\in\R^{1+3}:1/2\leq\|h\|_{\mathfrak s}\leq1\},
+\]
+and, for the reexpansion coefficient \(c_n(z,z')\), set
+\[
+  Q_{n,\mathfrak g}(z,z')
+  =
+  \frac{|c_n(z,z')|}
+       {\|z-z'\|_{\mathfrak s}^{\,|Y|}} .
+\]
+For \(m\geq0\), define
+\[
+  \mathcal X_{\Gamma,m}
+  =
+  \{(z,h)\in K\times A_{\mathfrak s}:
+      z+\mathsf D_{2^{-m}}h\in K\}.
+\]
+The map
+\[
+  (z,h)
+  \longmapsto
+  Q_{n,\mathfrak g}(z,z+\mathsf D_{2^{-m}}h)
+\]
+parametrizes the part of the \(\Gamma\)-seminorm with
+\[
+  2^{-(m+1)}
+  \leq
+  \|z-z'\|_{\mathfrak s}
+  \leq
+  2^{-m}.
+\]
+Equip \(\mathcal X_{\Gamma,m}\) with
+\[
+  d_{\Gamma,m}((z,h),(z',h'))
+  =
+  2^m\|z-z'\|_{\mathfrak s}+\|h-h'\|_{\mathfrak s}.
+\]
+There are finite nets and projections for which
+\begin{equation}
+  |\mathcal X_{\Gamma,m,0}|\leq C_{\Gamma,0}2^{Qm},
+  \qquad
+  |\mathcal E_{\Gamma,m,\ell}|
+  \leq
+  C_{\Gamma,1}2^{Qm}2^{2Q\ell}.
+  \label{eq:spde-gamma-physical-parameter-entropy}
+\end{equation}
+The constants in
+\eqref{eq:spde-pi-physical-parameter-entropy} and
+\eqref{eq:spde-gamma-physical-parameter-entropy} depend on \(K\) and on the
+chosen parabolic norm, but not on \(m\), \(\ell\), \(n\), or the coordinate
+label \(\tau\).
+\end{proposition}
+
+\begin{proof}
+First record the covering estimate used twice.  Since \(K\) is compact, it is
+contained in a rectangular box
+\[
+  [-R,R]\times[-R,R]^3 .
+\]
+A grid with temporal mesh \(\eta^2\) and spatial mesh \(\eta\) covers this box
+by at most \(C_R\eta^{-5}\) parabolic balls of radius \(C\eta\), for
+\(0<\eta\leq1\).  After changing the constant, every compact subset of
+\(\R^{1+3}\) therefore has parabolic covering number at scale \(\eta\) bounded
+by \(C_K\eta^{-Q}\).  The interval \([1/2,1]\) has covering number
+\(\leq C\eta^{-1}\) in the ordinary metric, and the annulus
+\(A_{\mathfrak s}\) has covering number \(\leq C\eta^{-Q}\) in
+\(\|\cdot\|_{\mathfrak s}\).
+
+For \(\mathcal X_{\Pi,m}\), a ball of radius \(2^{-\ell}\) in
+\(d_{\Pi,m}\) requires resolution \(2^{-m-\ell}\) in \(K\) and resolution
+\(2^{-\ell}\) in \([1/2,1]\).  Hence
+\[
+  N(\mathcal X_{\Pi,m},d_{\Pi,m};2^{-\ell})
+  \leq
+  C\,2^{Qm}2^{(Q+1)\ell}.
+\]
+Choose a \(2^{-\ell}\)-net \(\mathcal X_{\Pi,m,\ell}\) with this cardinality,
+increasing in \(\ell\) after replacing it by the union of the previous nets if
+needed.  Let \(\pi_{\Pi,m,\ell}\) be any nearest-net projection.  The base
+bound in \eqref{eq:spde-pi-physical-parameter-entropy} is the case \(\ell=0\),
+and the edge set
+\[
+  \mathcal E_{\Pi,m,\ell}
+  =
+  \{(\pi_{\Pi,m,\ell}x,\pi_{\Pi,m,\ell+1}x):x\in\mathcal X_{\Pi,m}\}
+\]
+has cardinality no larger than \(|\mathcal X_{\Pi,m,\ell+1}|\).  Absorbing the
+extra factor \(2^{Q+1}\) into \(C_{\Pi,1}\) gives the displayed edge estimate.
+
+For \(\mathcal X_{\Gamma,m}\), the same argument applies to the product
+parameters \(z\in K\) and \(h\in A_{\mathfrak s}\).  A
+\(2^{-\ell}\)-ball in \(d_{\Gamma,m}\) requires resolution \(2^{-m-\ell}\) in
+\(z\) and \(2^{-\ell}\) in \(h\), so
+\[
+  N(\mathcal X_{\Gamma,m},d_{\Gamma,m};2^{-\ell})
+  \leq
+  C\,2^{Qm}2^{2Q\ell}.
+\]
+The subset condition \(z+\mathsf D_{2^{-m}}h\in K\) only decreases the covering
+number.  The same projection and edge-set construction proves
+\eqref{eq:spde-gamma-physical-parameter-entropy}.
+
+It remains to check the parametrization.  If \(0<\delta\leq1\), choose
+\(m\geq0\) and \(a\in[1/2,1]\) with \(\delta=2^{-m}a\).  This gives the
+\(\Pi\)-coordinate decomposition.  If \(0<\|z-z'\|_{\mathfrak s}\leq1\), choose
+\(m\geq0\) so that
+\[
+  2^{-(m+1)}
+  \leq
+  \|z-z'\|_{\mathfrak s}
+  \leq
+  2^{-m}
+\]
+and set
+\[
+  h=\mathsf D_{2^m}(z'-z).
+\]
+The parabolic norm is homogeneous under \(\mathsf D_\lambda\), hence
+\(h\in A_{\mathfrak s}\) and \(z'=z+\mathsf D_{2^{-m}}h\).  This proves the
+\(\Gamma\)-coordinate decomposition.
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization
