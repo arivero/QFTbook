@@ -10,14 +10,19 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
 - `Q_pm`, `bar Q_pm`, `P_pm`: two-dimensional supersymmetry generators and
   light-cone momenta.
 - `F_V`, `F_A`: vector and axial `R` charges.
+- `s`, `s_A`, `s_B`: untwisted, A-twisted, and B-twisted Lorentz spins.
+- `Q_A`, `Q_B`: scalar supercharges after the A and B twists.
 - `Phi^i=(phi^i, psi^i_+, psi^i_-, F^i)`, `K`, `g_i bar j`, `W`:
   Landau-Ginzburg chiral multiplet variables, Kahler potential, metric, and
   superpotential.
 - `q_i`: quasihomogeneous Landau-Ginzburg weights.
 - `Jac(W)`: Landau-Ginzburg Jacobian ring.
-- `Q_B`, `eta_i`: B-type scalar differential and odd local variables used in
-  the cohomological derivation of the Jacobian quotient.
-- `X`, `g_i bar j`, `B`: sigma-model target, Kahler metric, and `B`-field.
+- `eta_i`: B-type odd local variables used in the cohomological derivation
+  of the Jacobian quotient.
+- `H_W`, `Res_W`: Landau-Ginzburg Hessian determinant and Morse residue
+  functional.
+- `X`, `g_i bar j`, `B`, `omega`, `chi^a`: sigma-model target, Kahler
+  metric, `B`-field, Kahler form, and A-model odd zero modes.
 - `G`, `V`, `r`, `Q_i`, `t`, `sigma`: GLSM gauge group, matter
   representation, Fayet-Iliopoulos coordinate, charges, complexified
   FI-theta coordinate, and vector-multiplet scalar.
@@ -41,6 +46,20 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   infrared fixed-point existence claim as a separate construction problem.
 - Defines sigma-model and GLSM data and separates protected coordinates from
   full infrared QFT equivalence.
+- Defines the A/B twist spin-shift convention and proves that
+  `Q_A = bar Q_+ + Q_-` and `Q_B = bar Q_+ + bar Q_-` are scalar nilpotent
+  supercharges in the central-charge-free local sector.
+- States the anomaly requirements for the vector and axial `R` symmetries
+  and identifies the axial GLSM obstruction as the charge sum.
+- Proves that the Morse residue functional descends to `Jac(W)` and gives a
+  nondegenerate pairing when the critical points of `W` are nondegenerate.
+- Records the genus-`g` B-twisted LG zero-mode formula with its determinant
+  and regulator status boundary.
+- Proves that the constant-map A-model zero-mode algebra is the de Rham
+  complex of the target.
+- States the A-model holomorphic-map energy decomposition and names the
+  compactification/orientation/contact-term inputs required for genuine
+  correlation functions.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -63,7 +82,8 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   - Fermat tensor-product monomial charges and Jacobi dimensions;
   - quintic Landau-Ginzburg central charge `c=9` and Jacobi dimension `4^5`;
   - hypersurface GLSM gauge-invariance, axial-anomaly sum, positive-chamber
-    dimension, and negative-chamber residual finite group order.
+    dimension, and negative-chamber residual finite group order;
+  - A/B twist spin shifts and scalar-supercharge nilpotence ledger.
 
 ## Figure Ledger
 

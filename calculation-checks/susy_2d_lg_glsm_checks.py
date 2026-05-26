@@ -100,10 +100,46 @@ def check_hypersurface_glsm_ledger() -> None:
     assert_equal("quintic negative chamber residual group order", 5, 5)
 
 
+def check_twist_spin_ledger() -> None:
+    # Convention in Volume VII Chapter 09:
+    # (s, F_V, F_A) for Q_+, bar Q_+, Q_-, bar Q_-.
+    charges = {
+        "Q+": (Fraction(1, 2), 1, 1),
+        "barQ+": (Fraction(1, 2), -1, -1),
+        "Q-": (Fraction(-1, 2), 1, -1),
+        "barQ-": (Fraction(-1, 2), -1, 1),
+    }
+
+    a_twisted = {name: spin + Fraction(vector, 2) for name, (spin, vector, _axial) in charges.items()}
+    b_twisted = {name: spin + Fraction(axial, 2) for name, (spin, _vector, axial) in charges.items()}
+
+    assert_equal("A-twist Q+ spin", a_twisted["Q+"], 1)
+    assert_equal("A-twist barQ+ scalar", a_twisted["barQ+"], 0)
+    assert_equal("A-twist Q- scalar", a_twisted["Q-"], 0)
+    assert_equal("A-twist barQ- spin", a_twisted["barQ-"], -1)
+
+    assert_equal("B-twist Q+ spin", b_twisted["Q+"], 1)
+    assert_equal("B-twist barQ+ scalar", b_twisted["barQ+"], 0)
+    assert_equal("B-twist Q- spin", b_twisted["Q-"], -1)
+    assert_equal("B-twist barQ- scalar", b_twisted["barQ-"], 0)
+
+    # In the central-charge-free local algebra, the scalar sums square to
+    # zero because no same-chirality barred/barred or opposite-chirality
+    # barred/unbarred anticommutator appears.
+    nonzero_anticommutators = {frozenset(("Q+", "barQ+")), frozenset(("Q-", "barQ-"))}
+    for label, pair in {
+        "A scalar mixed anticommutator": frozenset(("barQ+", "Q-")),
+        "B scalar mixed anticommutator": frozenset(("barQ+", "barQ-")),
+    }.items():
+        if pair in nonzero_anticommutators:
+            raise AssertionError(f"{label} should vanish in the local algebra")
+
+
 def main() -> None:
     check_a_series_lg()
     check_fermat_tensor_products()
     check_hypersurface_glsm_ledger()
+    check_twist_spin_ledger()
     print("All 2D SUSY LG/GLSM checks passed.")
 
 

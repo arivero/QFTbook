@@ -250,29 +250,6 @@ and the protected central-charge test gives
 No string-theoretic interpretation is part of this calculation.
 \end{example}
 
-\section{B-Type Topological Sector}
-
-The B-twist uses a scalar supercharge \(Q_B\).  The \(Q_B\)-closed local
-operators in a Landau--Ginzburg model are represented by holomorphic
-functions modulo \(Q_B\)-exact terms.  The auxiliary-field equations imply
-\[
-  \partial_iW(\phi)=Q_B(\cdots)_i ,
-\]
-inside \(Q_B\)-cohomology, hence the local operator algebra is \(\mathcal R_W\).
-On a compact Riemann surface the finite-dimensional localization formula
-takes the form
-\[
-  \langle f_1\cdots f_m\rangle_{g}
-  =
-  \sum_{\partial W=0}
-  \frac{f_1(\phi)\cdots f_m(\phi)}
-  {\det(\partial_i\partial_jW)(\phi)^{1-g}},
-\]
-after a normalization of zero modes and determinants is fixed.  This formula
-is a theorem of the finite-dimensional localized model; the QFT statement
-requires a regulator preserving the chosen \(Q_B\) and a proof that no
-boundary terms are produced in the localization deformation.
-
 \section{Sigma-Model Datum}
 
 A \(2D\) \(\mathcal N=(2,2)\) nonlinear sigma model is specified by a K\"ahler
@@ -299,6 +276,243 @@ Thus Ricci-flatness is the first condition for a conformal infrared candidate
 in a large-volume chart.  The full QFT claim includes instanton corrections,
 operator renormalization, and a continuum limit; these are additional data,
 not consequences of the local tensor equation alone.
+
+\section{A And B Twisting Data}
+
+The two cohomological twists of a \(2D\) \(\mathcal N=(2,2)\) theory are
+intrinsic operations on the two-dimensional QFT.  They require nonanomalous
+\(R\)-symmetries and a regulator preserving the selected scalar supercharge.
+No target-space or string-theoretic interpretation is part of the definition.
+
+\begin{definition}[Two-dimensional twist convention]
+\label{def:two-dimensional-ab-twist-convention}
+Let \(s\) denote the Lorentz spin for \(U(1)_{\rm rot}\).  In this chapter
+the supercharges have charges
+\begin{equation}
+\begin{array}{c|rrrr}
+  & Q_+ & \bar Q_+ & Q_- & \bar Q_-\\ \hline
+  s & \frac12 & \frac12 & -\frac12 & -\frac12\\
+  F_V & 1 & -1 & 1 & -1\\
+  F_A & 1 & -1 & -1 & 1 .
+\end{array}
+\label{eq:two-dimensional-supercharge-charge-table}
+\end{equation}
+The A twist uses
+\begin{equation}
+  s_A=s+\frac12F_V ,
+  \label{eq:a-twist-spin-shift}
+\end{equation}
+and the B twist uses
+\begin{equation}
+  s_B=s+\frac12F_A .
+  \label{eq:b-twist-spin-shift}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Scalar supercharges after the A and B twists]
+\label{prop:two-dimensional-ab-twist-scalar-supercharges}
+Assume the charge convention of
+Definition~\ref{def:two-dimensional-ab-twist-convention} and assume that
+there are no central charges in the local-sector supersymmetry algebra.
+Then:
+\begin{equation}
+  Q_A=\bar Q_+ + Q_-
+  \label{eq:a-twist-scalar-supercharge}
+\end{equation}
+is scalar for the A-twisted rotation action and satisfies \(Q_A^2=0\) on
+gauge-invariant local observables, while
+\begin{equation}
+  Q_B=\bar Q_+ + \bar Q_-
+  \label{eq:b-twist-scalar-supercharge}
+\end{equation}
+is scalar for the B-twisted rotation action and satisfies \(Q_B^2=0\) on
+gauge-invariant local observables.
+\end{proposition}
+
+\begin{proof}
+Using \eqref{eq:a-twist-spin-shift}, the A-twisted spins are
+\[
+\begin{array}{c|rrrr}
+  & Q_+ & \bar Q_+ & Q_- & \bar Q_-\\ \hline
+  s_A & 1 & 0 & 0 & -1 .
+\end{array}
+\]
+Thus \(\bar Q_+\) and \(Q_-\) are scalars, while the other two supercharges
+are not.  Using \eqref{eq:b-twist-spin-shift}, the B-twisted spins are
+\[
+\begin{array}{c|rrrr}
+  & Q_+ & \bar Q_+ & Q_- & \bar Q_-\\ \hline
+  s_B & 1 & 0 & -1 & 0 .
+\end{array}
+\]
+Thus \(\bar Q_+\) and \(\bar Q_-\) are scalars for the B twist.  The
+untwisted local algebra has only
+\[
+  \{Q_+,\bar Q_+\}=2P_+,\qquad
+  \{Q_-,\bar Q_-\}=2P_-
+\]
+among these generators.  Therefore
+\[
+  Q_A^2=\frac12\{\bar Q_+ + Q_-,\bar Q_+ + Q_-\}=0,
+  \qquad
+  Q_B^2=\frac12\{\bar Q_+ + \bar Q_-,\bar Q_+ + \bar Q_-\}=0
+\]
+in the central-charge-free local sector.  If gauge transformations appear in
+an off-shell realization, the same statement is made after passing to
+gauge-invariant observables.
+\end{proof}
+
+The vector and axial \(R\)-symmetries have different anomaly requirements.
+The A twist is available only when \(F_V\) is a genuine symmetry of the
+regulated theory.  The B twist is available only when \(F_A\) is a genuine
+symmetry.  In the abelian GLSM datum of
+Definition~\ref{def:abelian-2d-glsm-datum}, the axial anomaly obstruction is
+the charge sum \eqref{eq:abelian-glsm-axial-anomaly}.  Therefore the
+hypersurface GLSM with charges \((1,\ldots,1,-d)\) has an axial B-twist
+candidate precisely when \(N=d\).
+
+\section{B-Twisted Landau--Ginzburg Sector}
+
+The B-twisted Landau--Ginzburg model uses the scalar supercharge
+\eqref{eq:b-twist-scalar-supercharge}.  The local algebraic calculation in
+Proposition~\ref{prop:lg-jacobian-quotient-from-qb} gives the first
+protected observable: polynomial local operators map to
+\(\operatorname{Jac}(W)\).  The next finite-dimensional check is the residue
+pairing at nondegenerate critical points.
+
+\begin{proposition}[Morse residue pairing on the LG Jacobi algebra]
+\label{prop:lg-morse-residue-pairing}
+Let \(W\in\C[\phi^1,\ldots,\phi^n]\) have a finite critical set
+\[
+  \operatorname{Crit}(W)=\{p\in\C^n:\partial_iW(p)=0
+  \text{ for all }i\}.
+\]
+Assume every critical point is nondegenerate:
+\[
+  H_W(p)=\det(\partial_i\partial_jW)(p)\neq0 .
+\]
+Define
+\begin{equation}
+  \operatorname{Res}_W(f)
+  =
+  \sum_{p\in\operatorname{Crit}(W)}
+  \frac{f(p)}{H_W(p)},
+  \qquad f\in\C[\phi^1,\ldots,\phi^n].
+  \label{eq:lg-morse-residue-functional}
+\end{equation}
+Then \(\operatorname{Res}_W\) kills the ideal
+\((\partial_1W,\ldots,\partial_nW)\), so it descends to
+\(\operatorname{Jac}(W)\).  The bilinear form
+\begin{equation}
+  \langle [f],[g]\rangle_{\rm res}
+  =
+  \operatorname{Res}_W(fg)
+  \label{eq:lg-morse-residue-pairing}
+\end{equation}
+on \(\operatorname{Jac}(W)\) is nondegenerate.
+\end{proposition}
+
+\begin{proof}
+If \(f=\sum_i h_i\partial_iW\), then \(f(p)=0\) at every critical point
+\(p\), so \(\operatorname{Res}_W(f)=0\).  Hence the functional descends to
+the quotient.  Nondegeneracy of the Hessian means that each zero of the
+gradient map
+\[
+  \nabla W:\C^n\longrightarrow\C^n,
+  \qquad
+  \phi\longmapsto(\partial_1W,\ldots,\partial_nW)
+\]
+is simple.  The local algebra of \(\nabla W\) at such a zero is therefore
+\(\C\).  Since the critical set is finite, the Chinese-remainder
+decomposition gives
+\[
+  \operatorname{Jac}(W)\cong
+  \prod_{p\in\operatorname{Crit}(W)}\C,
+\]
+where a class \([f]\) is sent to its values \(f(p)\).  In these coordinates
+\eqref{eq:lg-morse-residue-pairing} is the diagonal pairing with nonzero
+diagonal entries \(H_W(p)^{-1}\), hence is nondegenerate.
+\end{proof}
+
+For a compact Riemann surface of genus \(g\), the B-twisted
+Landau--Ginzburg zero-mode formula used in this chapter is
+\begin{equation}
+  \langle f_1\cdots f_m\rangle_g
+  =
+  \sum_{p\in\operatorname{Crit}(W)}
+  \frac{f_1(p)\cdots f_m(p)}
+  {H_W(p)^{1-g}}.
+  \label{eq:b-twisted-lg-zero-mode-correlator}
+\end{equation}
+In this monograph \eqref{eq:b-twisted-lg-zero-mode-correlator} has the
+following status: it is the finite-dimensional zero-mode and determinant
+calculation after the \(Q_B\)-preserving regulator, determinant-line
+orientation, and absence of boundary terms have been supplied.  The
+continuum QFT assertion is conditional on those analytic inputs.
+
+\section{A-Twisted Sigma-Model Zero Modes}
+
+Let \(X\) be a smooth K\"ahler target with real tangent bundle \(TX\).  The
+A-twisted sigma model uses the scalar supercharge
+\eqref{eq:a-twist-scalar-supercharge}.  The full model includes nonconstant
+maps \(\Sigma\to X\), instanton sectors, compactification of moduli spaces,
+and operator contact terms.  The constant-map sector, however, is a
+finite-dimensional calculation.
+
+\begin{proposition}[Constant-map A-model algebra]
+\label{prop:a-model-constant-map-de-rham}
+In the constant-map truncation of an A-twisted sigma model with target \(X\),
+let \(x^a\) be local real coordinates on \(X\) and let \(\chi^a\) be odd
+variables transforming as \(dx^a\).  Suppose the scalar differential acts by
+\begin{equation}
+  Q_Ax^a=\chi^a,\qquad Q_A\chi^a=0.
+  \label{eq:a-model-zero-mode-differential}
+\end{equation}
+Then the algebra of polynomial functions in the odd variables identifies
+with differential forms on \(X\), and \(Q_A\) identifies with the de Rham
+differential \(d_X\).  Thus the constant-map local \(Q_A\)-cohomology is
+\[
+  H^\bullet_{Q_A}\cong H^\bullet_{\rm dR}(X;\C).
+\]
+\end{proposition}
+
+\begin{proof}
+Functions of \(x^a\) and the odd variables \(\chi^a\) are local functions on
+the parity-shifted tangent bundle \(\Pi TX\).  The coordinate identification
+\[
+  \chi^{a_1}\cdots\chi^{a_k}
+  \longleftrightarrow
+  dx^{a_1}\wedge\cdots\wedge dx^{a_k}
+\]
+identifies these functions with differential forms.  Under this
+identification the derivation determined by
+\eqref{eq:a-model-zero-mode-differential} is
+\[
+  Q_A=\chi^a\frac{\partial}{\partial x^a},
+\]
+which is precisely the de Rham differential in local coordinates.  Its
+cohomology is therefore de Rham cohomology after gluing the coordinate
+charts.
+\end{proof}
+
+The nonconstant A-model sectors are classified, at the classical level, by
+homology classes \(\beta=\phi_*[\Sigma]\in H_2(X,\mathbb Z)\).  For a
+K\"ahler metric with form \(\omega\), the bosonic energy admits the
+pointwise Bogomolny decomposition
+\begin{equation}
+  E(\phi)
+  =
+  \int_\Sigma |\bar\partial_J\phi|^2\,\mathrm{vol}_\Sigma
+  +
+  \int_\Sigma\phi^*\omega
+  \label{eq:a-model-energy-decomposition}
+\end{equation}
+in the normalization of the sigma-model action.  Thus holomorphic maps
+\(\bar\partial_J\phi=0\) minimize the energy in a fixed homology class.  A
+mathematical A-model correlation function requires compactifying the
+holomorphic-map moduli space, orienting its virtual determinant line, and
+controlling collisions of marked points.  These are theorem-level inputs,
+not consequences of the twist alone.
 
 \section{Gauged Linear Sigma-Model Datum}
 
@@ -442,8 +656,9 @@ classical Higgs quotient is the degree-five hypersurface
 For \(r<0\), the residual finite gauge group is \(\mu_5\), and the local
 Landau--Ginzburg polynomial is \(G_5(X_1,\ldots,X_5)\).  These are
 statements about chambers of a two-dimensional supersymmetric gauge theory.
-They do not assert a string compactification, and they do not by themselves
-prove equivalence of the corresponding continuum infrared QFTs.
+They do not assert any higher-dimensional target-space construction, and
+they do not by themselves prove equivalence of the corresponding continuum
+infrared QFTs.
 \end{example}
 
 \section{Infrared Comparison Problem}
