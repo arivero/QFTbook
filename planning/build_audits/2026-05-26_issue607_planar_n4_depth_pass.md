@@ -104,12 +104,27 @@
   leading dressing-phase status, and absence of a weak-coupling Konishi
   `mu`-term.
 
+## Comprehensive Development Continuation II
+
+- Strengthened Chapter 12's coordinate Bethe ansatz derivation.  The text now
+  derives the two-magnon contact equation for the one-loop `XXX_{1/2}` chain,
+  solves for the ordered-chamber exchange coefficient
+  `(u_1-u_2-i)/(u_1-u_2+i)`, and explains why the Bethe-Yang phase in the
+  closed-chain equation is the inverse coefficient in this chamber convention.
+- Derived the two-magnon cyclic quantization directly from
+  `Psi(n_1,n_2)=Psi(n_2,n_1+L)` before stating the factorized `M`-magnon
+  equations.  This keeps the one-loop finite-chain statement separate from
+  the all-loop asymptotic long-range Bethe ansatz.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
 
 - `SO(6)` trace-operator reduction to the holomorphic `SU(2)` sector;
 - one-magnon XXX finite-difference normalization;
+- two-magnon coordinate-Bethe matching: contact equation, chamber exchange
+  coefficient, inverse Bethe-Yang phase, and the length-four cyclic Konishi
+  eigenvector;
 - Konishi one-loop cyclic roots;
 - explicit Konishi Baxter polynomial identity;
 - central-extension dispersion;

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import cmath
 from fractions import Fraction
+import itertools
 import math
 
 
@@ -57,6 +58,89 @@ def check_one_magnon_laplacian() -> None:
             energy = 4 * math.sin(momentum / 2) ** 2
             residual = max(abs(acted[site] - energy * wave[site]) for site in range(length))
             assert_close(f"one-magnon XXX energy L={length} mode={mode}", residual)
+
+
+def two_magnon_exchange_coefficient(momentum_1: float, momentum_2: float) -> complex:
+    z1 = cmath.exp(1j * momentum_1)
+    z2 = cmath.exp(1j * momentum_2)
+    return -(1 - 2 * z2 + z1 * z2) / (1 - 2 * z1 + z1 * z2)
+
+
+def bethe_rapidity(momentum: float) -> float:
+    return 0.5 / math.tan(momentum / 2)
+
+
+def check_two_magnon_coordinate_matching() -> None:
+    for momentum_1, momentum_2 in ((0.7, -1.2), (1.4, 0.3), (2.1, -0.8)):
+        z1 = cmath.exp(1j * momentum_1)
+        z2 = cmath.exp(1j * momentum_2)
+        amplitude = two_magnon_exchange_coefficient(momentum_1, momentum_2)
+        u1 = bethe_rapidity(momentum_1)
+        u2 = bethe_rapidity(momentum_2)
+        rapidity_amplitude = (u1 - u2 - 1j) / (u1 - u2 + 1j)
+        assert_close("two-magnon amplitude rapidity form", amplitude, rapidity_amplitude)
+
+        energy = (
+            4
+            - z1
+            - 1 / z1
+            - z2
+            - 1 / z2
+        )
+        contact_wave = z2 + amplitude * z1
+        contact_rhs = (
+            2 * contact_wave
+            - (z2 / z1 + amplitude * z1 / z2)
+            - (z2 * z2 + amplitude * z1 * z1)
+        )
+        assert_close("two-magnon adjacent contact equation", energy * contact_wave, contact_rhs)
+
+    length = 4
+    momentum_1 = 2 * math.pi / 3
+    momentum_2 = -2 * math.pi / 3
+    amplitude = two_magnon_exchange_coefficient(momentum_1, momentum_2)
+    assert_close(
+        "Konishi first Bethe phase is inverse chamber amplitude",
+        cmath.exp(1j * momentum_1 * length),
+        1 / amplitude,
+    )
+    assert_close(
+        "Konishi second Bethe phase is chamber amplitude",
+        cmath.exp(1j * momentum_2 * length),
+        amplitude,
+    )
+
+    basis = list(itertools.combinations(range(length), 2))
+    basis_index = {state: index for index, state in enumerate(basis)}
+    wave = []
+    for n1, n2 in basis:
+        wave.append(
+            cmath.exp(1j * (momentum_1 * n1 + momentum_2 * n2))
+            + amplitude * cmath.exp(1j * (momentum_2 * n1 + momentum_1 * n2))
+        )
+
+    acted = [0j for _ in basis]
+    for state, coefficient in zip(basis, wave):
+        bits = [0] * length
+        for site in state:
+            bits[site] = 1
+        for site in range(length):
+            acted[basis_index[state]] += coefficient
+            swapped = bits.copy()
+            next_site = (site + 1) % length
+            swapped[site], swapped[next_site] = swapped[next_site], swapped[site]
+            swapped_state = tuple(index for index, value in enumerate(swapped) if value)
+            acted[basis_index[swapped_state]] -= coefficient
+
+    residual = max(abs(value - 6 * expected) for value, expected in zip(acted, wave))
+    assert_close("Konishi two-magnon finite-chain eigenvector", residual, tol=1.0e-12)
+
+    translated = []
+    for state in basis:
+        shifted = tuple(sorted((site + 1) % length for site in state))
+        translated.append(wave[basis_index[shifted]])
+    translation_residual = max(abs(value - expected) for value, expected in zip(translated, wave))
+    assert_close("Konishi two-magnon cyclicity", translation_residual, tol=1.0e-12)
 
 
 def check_konishi_one_loop_roots() -> None:
@@ -515,6 +599,7 @@ def check_pmu_pfaffian_rank_two_update() -> None:
 def main() -> None:
     check_so6_hamiltonian_reduces_to_su2()
     check_one_magnon_laplacian()
+    check_two_magnon_coordinate_matching()
     check_konishi_one_loop_roots()
     check_konishi_baxter_polynomial()
     check_central_extension_dispersion()

@@ -278,7 +278,13 @@ not introduced independently of the renormalized local-operator problem.
 
 \section{Coordinate Bethe Ansatz}
 
-On an infinite chain, a one-magnon wavefunction is
+We now diagonalize the dimensionless Hamiltonian
+\[
+  H_{XXX}=\sum_{j}(1-P_{j,j+1})
+\]
+before reinstating the overall factor \(\lambda/(8\pi^2)\).  On an infinite
+chain let \(\ket{n}\) denote the state with a single \(X\) at site
+\(n\in\mathbb Z\) and \(Z\)'s elsewhere.  A one-magnon wavefunction is
 \[
   \Psi_p(n)=\ee^{\ii pn}.
 \]
@@ -296,10 +302,20 @@ The corresponding one-loop anomalous dimension contribution is
 \[
   \gamma_1(p)=\frac{\lambda}{8\pi^2}E_1(p).
 \]
+On a cyclic single trace a single magnon with nonzero momentum is not a
+physical operator, because trace cyclicity requires total momentum zero.  The
+one-magnon calculation is nevertheless the local dispersion input for
+multi-magnon states.
 
-For \(M\) magnons on a long chain, integrability permits an asymptotic
-wavefunction built from plane waves in each ordering chamber.  In the
-two-magnon chamber \(n_1<n_2\),
+\begin{proposition}[Two-magnon matching for the one-loop chain]
+\label{prop:planar-n4-two-magnon-matching}
+Let \(z_a=\ee^{\ii p_a}\), \(a=1,2\), and let
+\[
+  u_a=\frac12\cot\frac{p_a}{2},
+  \qquad
+  z_a=\frac{u_a+\ii/2}{u_a-\ii/2}.
+\]
+In the two-magnon chamber \(n_1<n_2\), set
 \[
   \Psi(n_1,n_2)
   =
@@ -307,24 +323,82 @@ two-magnon chamber \(n_1<n_2\),
   +
   A_{21}\ee^{\ii(p_2n_1+p_1n_2)} .
 \]
-Solving the discrete eigenvalue equation at adjacent sites gives
+Then \(\Psi\) is an eigenfunction of \(H_{XXX}\) on the infinite chain with
+energy \(E_1(p_1)+E_1(p_2)\) precisely when
 \[
   \frac{A_{21}}{A_{12}}
   =
-  S(p_1,p_2),
-\]
-where, after introducing
-\[
-  u=\frac12\cot\frac p2,\qquad
-  \ee^{\ii p}=\frac{u+\ii/2}{u-\ii/2},
-\]
-the scattering phase is
-\[
-  S(u_1,u_2)
+  \mathsf a(p_1,p_2)
   =
-  \frac{u_1-u_2+\ii}{u_1-u_2-\ii}.
+  -\frac{1-2\ee^{\ii p_2}+\ee^{\ii(p_1+p_2)}}
+          {1-2\ee^{\ii p_1}+\ee^{\ii(p_1+p_2)}}
+  =
+  \frac{u_1-u_2-\ii}{u_1-u_2+\ii}.
 \]
-The periodic closed-chain Bethe equations are
+\end{proposition}
+
+\begin{proof}
+When the magnons are separated, \(n_2>n_1+1\), the Hamiltonian is the sum of
+two one-particle finite-difference operators:
+\[
+\begin{aligned}
+  (H_{XXX}\Psi)(n_1,n_2)
+  &=
+  4\Psi(n_1,n_2)-\Psi(n_1-1,n_2)-\Psi(n_1+1,n_2)
+\\
+  &\quad
+  -\Psi(n_1,n_2-1)-\Psi(n_1,n_2+1).
+\end{aligned}
+\]
+Hence the separated equation fixes the energy to
+\(E_1(p_1)+E_1(p_2)\).  The only remaining condition is the contact equation
+at \(n_2=n_1+1\).  There the adjacent \(XX\) pair is symmetric, so the
+middle link contributes zero and only the two exterior links move a magnon:
+\[
+  (H_{XXX}\Psi)(n,n+1)
+  =
+  2\Psi(n,n+1)-\Psi(n-1,n+1)-\Psi(n,n+2).
+\]
+Substituting the plane-wave ansatz and the separated energy gives
+\[
+  0
+  =
+  -A_{21}z_1z_2+2A_{21}z_1-A_{21}
+  -A_{12}z_1z_2+2A_{12}z_2-A_{12}.
+\]
+Solving this linear equation for \(A_{21}/A_{12}\) gives the rational
+expression in \(z_1,z_2\).  Rewriting \(z_a=(u_a+\ii/2)/(u_a-\ii/2)\) gives
+the displayed rapidity form.
+\end{proof}
+
+The coefficient \(\mathsf a(p_1,p_2)\) is the exchange coefficient for the
+ordered chamber convention just chosen.  The Bethe--Yang phase in the closed
+chain is its inverse:
+\[
+  S_{\rm BY}(u_j,u_k)
+  =
+  \mathsf a(p_j,p_k)^{-1}
+  =
+  \frac{u_j-u_k+\ii}{u_j-u_k-\ii}.
+\]
+This inverse is a convention-sensitive point.  For two magnons, trace
+periodicity says
+\[
+  \Psi(n_1,n_2)=\Psi(n_2,n_1+L),\qquad n_1<n_2.
+\]
+Comparing the coefficient of
+\(\ee^{\ii(p_1n_1+p_2n_2)}\) gives
+\[
+  A_{12}=A_{21}\ee^{\ii p_1L},
+  \qquad
+  \ee^{\ii p_1L}=S_{\rm BY}(u_1,u_2).
+\]
+The second equation is obtained by moving the other magnon around the trace.
+For \(M\) magnons the one-loop \(XXX_{1/2}\) chain has factorized scattering;
+equivalently, the transfer matrices constructed in
+Chapter~\ref{ch:integrable-algebraic-bethe-ansatz-transfer-matrices}
+commute and the coordinate wavefunction is consistent in every ordering
+chamber.  The finite periodic-chain equations are therefore
 \begin{equation}
   \left(\frac{u_j+\ii/2}{u_j-\ii/2}\right)^L
   =
@@ -339,13 +413,11 @@ The second equation is the cyclicity condition.  The energy is
   E=\sum_{j=1}^M\frac{1}{u_j^2+1/4}.
 \]
 
-The finite-chain transfer-matrix derivation of
-\eqref{eq:planar-n4-one-loop-su2-bethe} is exactly the rational \(SU(2)\)
-construction in
-Chapter~\ref{ch:integrable-algebraic-bethe-ansatz-transfer-matrices}.  The
-physical interpretation differs: here the chain is the color trace of a
-four-dimensional gauge-theory operator, not the spatial circle of a
-two-dimensional relativistic QFT.
+At one loop these Bethe equations are exact for the finite \(XXX_{1/2}\)
+Hamiltonian.  The word ``asymptotic'' in later all-loop chapters has a
+different meaning: the long-range planar dilatation operator ceases to be
+finite-neighbor once the loop order grows, and finite trace length then
+requires wrapping corrections.
 
 \section{Konishi at One Loop}
 
