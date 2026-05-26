@@ -13,6 +13,62 @@ def assert_equal(name: str, got: object, expected: object) -> None:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
 
 
+def identity_permutation(degree: int) -> tuple[int, ...]:
+    return tuple(range(degree))
+
+
+def cycle_permutation(degree: int, entries: list[int]) -> tuple[int, ...]:
+    permutation = list(range(degree))
+    for index, entry in enumerate(entries):
+        permutation[entry] = entries[(index + 1) % len(entries)]
+    return tuple(permutation)
+
+
+def compose(left: tuple[int, ...], right: tuple[int, ...]) -> tuple[int, ...]:
+    return tuple(left[right[index]] for index in range(len(left)))
+
+
+def inverse(permutation: tuple[int, ...]) -> tuple[int, ...]:
+    result = [0] * len(permutation)
+    for index, image in enumerate(permutation):
+        result[image] = index
+    return tuple(result)
+
+
+def generated_orbit(generators: list[tuple[int, ...]], start: int = 0) -> set[int]:
+    orbit = {start}
+    changed = True
+    while changed:
+        changed = False
+        for generator in generators:
+            for point in tuple(orbit):
+                for image in (generator[point], inverse(generator)[point]):
+                    if image not in orbit:
+                        orbit.add(image)
+                        changed = True
+    return orbit
+
+
+def cycle_count(permutation: tuple[int, ...]) -> int:
+    seen: set[int] = set()
+    count = 0
+    for point in range(len(permutation)):
+        if point in seen:
+            continue
+        count += 1
+        current = point
+        while current not in seen:
+            seen.add(current)
+            current = permutation[current]
+    return count
+
+
+def riemann_hurwitz_genus(branch_cycles: list[tuple[int, ...]]) -> Fraction:
+    degree = len(branch_cycles[0])
+    ramification = sum(degree - cycle_count(permutation) for permutation in branch_cycles)
+    return Fraction(1 - degree, 1) + Fraction(ramification, 2)
+
+
 def centralizer_order(cycle_lengths: list[int]) -> int:
     counts = Counter(cycle_lengths)
     result = 1
@@ -135,12 +191,63 @@ def check_connected_cover_hecke_count() -> None:
     )
 
 
+def check_twist_cover_riemann_hurwitz() -> None:
+    for length in range(2, 10):
+        cycle = cycle_permutation(length, list(range(length)))
+        branch_cycles = [cycle, inverse(cycle)]
+        assert_equal(
+            f"length {length} two-point monodromy product",
+            compose(branch_cycles[0], branch_cycles[1]),
+            identity_permutation(length),
+        )
+        assert_equal(
+            f"length {length} two-point cover transitivity",
+            generated_orbit(branch_cycles),
+            set(range(length)),
+        )
+        assert_equal(
+            f"length {length} two-point cover genus",
+            riemann_hurwitz_genus(branch_cycles),
+            Fraction(0),
+        )
+
+    for left_length in range(2, 8):
+        for right_length in range(2, 8):
+            degree = left_length + right_length - 1
+            alpha = cycle_permutation(degree, list(range(left_length)))
+            beta = cycle_permutation(degree, list(range(left_length - 1, degree)))
+            gamma = inverse(compose(alpha, beta))
+            branch_cycles = [alpha, beta, gamma]
+
+            assert_equal(
+                f"join product K={left_length}, L={right_length}",
+                compose(compose(alpha, beta), gamma),
+                identity_permutation(degree),
+            )
+            assert_equal(
+                f"join transitivity K={left_length}, L={right_length}",
+                generated_orbit(branch_cycles),
+                set(range(degree)),
+            )
+            assert_equal(
+                f"joined cycle count K={left_length}, L={right_length}",
+                cycle_count(compose(alpha, beta)),
+                1,
+            )
+            assert_equal(
+                f"join cover genus K={left_length}, L={right_length}",
+                riemann_hurwitz_genus(branch_cycles),
+                Fraction(0),
+            )
+
+
 def main() -> None:
     check_centralizer_orders()
     check_central_charge_and_weights()
     check_join_weight_shift()
     check_normalized_two_cycle_count()
     check_connected_cover_hecke_count()
+    check_twist_cover_riemann_hurwitz()
     print("All symmetric-product orbifold checks passed.")
 
 

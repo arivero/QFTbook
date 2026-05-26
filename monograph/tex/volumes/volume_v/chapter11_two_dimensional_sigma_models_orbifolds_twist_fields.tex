@@ -3161,6 +3161,105 @@ single cycle splits it into two cycles.  The covering surface of the
 correlator determines the numerical OPE coefficient after the seed
 correlator and the chosen normalization of twist fields have been specified.
 
+\begin{proposition}[Riemann--Hurwitz ledger for twist correlators]
+\label{prop:symmetric-product-twist-riemann-hurwitz}
+Consider a connected component of a genus-zero symmetric-product twist
+correlator with branch points \(z_1,\ldots,z_n\).  Choose monodromies
+\[
+  \gamma_1,\ldots,\gamma_n\in S_N
+\]
+acting transitively on the active sheets and ordered so that
+\[
+  \gamma_1\gamma_2\cdots\gamma_n=1.
+  \label{eq:symmetric-product-sphere-monodromy-product}
+\]
+Let \(c(\gamma_a)\) denote the number of cycles of \(\gamma_a\) on those
+active sheets, including fixed points.  If the corresponding covering surface
+has genus \(g_{\mathrm{cov}}\), then
+\begin{equation}
+  g_{\mathrm{cov}}
+  =
+  1-N+\frac12
+  \sum_{a=1}^n\bigl(N-c(\gamma_a)\bigr).
+  \label{eq:symmetric-product-twist-riemann-hurwitz}
+\end{equation}
+Thus a proposed leading twist correlator must pass three finite tests before
+any seed-CFT correlator is evaluated: the monodromy product is the identity,
+the generated subgroup is transitive on the active sheets, and the integer
+\eqref{eq:symmetric-product-twist-riemann-hurwitz} is a nonnegative genus.
+\end{proposition}
+
+\begin{proof}
+The monodromies specify the connected covering of the punctured sphere.  A
+cycle of length \(r\) over \(z_a\) contributes ramification \(r-1\).  Summing
+over all cycles of \(\gamma_a\) gives
+\[
+  \sum_{\text{cycles }C\subset\gamma_a}(|C|-1)
+  =
+  N-c(\gamma_a).
+  \label{eq:symmetric-product-local-ramification}
+\]
+Riemann--Hurwitz for a degree-\(N\) map
+\(\widehat\Sigma\to\mathbb P^1\) says
+\[
+  2-2g_{\mathrm{cov}}
+  =
+  2N-\sum_{a=1}^n\bigl(N-c(\gamma_a)\bigr).
+\]
+Solving for \(g_{\mathrm{cov}}\) gives
+\eqref{eq:symmetric-product-twist-riemann-hurwitz}.  The identity product is
+the statement that the loop enclosing all branch points on the sphere is
+contractible, and transitivity is exactly connectedness of the active cover.
+\end{proof}
+
+\begin{example}[Two-point and primitive joining covers]
+\label{ex:symmetric-product-basic-cover-ledger}
+For a normalized two-point function of length-\(K\) twists, take active degree
+\(N=K\) and monodromies
+\[
+  \gamma=(1\,2\,\cdots\,K),
+  \qquad
+  \gamma^{-1}.
+\]
+Both have one cycle on the active sheets, so
+\[
+  g_{\mathrm{cov}}
+  =
+  1-K+\frac12\bigl((K-1)+(K-1)\bigr)=0.
+  \label{eq:symmetric-product-two-point-cover-genus}
+\]
+
+For a primitive connected three-point joining component, let
+\[
+  \alpha=(1\,2\,\cdots\,K),
+  \qquad
+  \beta=(K\,K+1\,\cdots\,K+L-1),
+  \qquad
+  \gamma=(\alpha\beta)^{-1},
+  \label{eq:symmetric-product-primitive-join-monodromies}
+\]
+where \(K,L\ge2\).  The active degree is \(N=K+L-1\).  The product is
+\(\alpha\beta\gamma=1\), and \(\alpha,\beta\) overlap on the sheet \(K\), so
+the generated subgroup is transitive.  The product \(\alpha\beta\) is a single
+cycle of length \(K+L-1\).  Hence
+\[
+  c(\alpha)=L,\qquad
+  c(\beta)=K,\qquad
+  c(\gamma)=1,
+\]
+where fixed points on the active sheets are included.  Formula
+\eqref{eq:symmetric-product-twist-riemann-hurwitz} gives
+\[
+  g_{\mathrm{cov}}
+  =
+  1-(K+L-1)+\frac12\bigl((K-1)+(L-1)+(K+L-2)\bigr)=0.
+  \label{eq:symmetric-product-primitive-join-genus}
+\]
+This genus-zero ledger fixes the covering topology.  It does not determine
+the OPE coefficient without the seed correlator, local coordinate choices at
+the branch points, and the normalization of the twist fields.
+\end{example}
+
 Discrete torsion is incorporated by replacing the centralizer projection by a
 projective centralizer action determined by a class in
 \[
@@ -3265,7 +3364,7 @@ same formalism:
   \text{WZW and gauged WZW/coset sigma-model CFTs},\\
   \text{Buscher duality as an equality of regulated path integrals},\\
   \text{orbifold defects, discrete torsion, and anomaly obstructions},\\
-  \text{covering-space evaluation of twist correlators},\\
+  \text{higher-point covering-space evaluation of twist correlators},\\
   \text{supersymmetric twist fields and exactly marginal blow-up modes}.
 \end{gathered}
 \]

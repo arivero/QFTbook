@@ -255,8 +255,9 @@ Current absorption:
   one-loop Weyl-anomaly equations directly from the rotational curvature
   formulas.  The symmetric-product orbifold pass now includes the
   connected-torus-cover Hermite-normal-form count behind the Hecke transform
-  and the constant-seed partition-number normalization test.  The public
-  arithmetic check covers the central-charge,
+  and the constant-seed partition-number normalization test, together with a
+  Riemann--Hurwitz monodromy ledger for the first twist-correlator covering
+  checks.  The public arithmetic check covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
