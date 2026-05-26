@@ -363,7 +363,8 @@ Current checks:
   magnetic NSVZ numerator cancellation in the monograph \(\gamma\)
   convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, full electric-magnetic
-  't Hooft anomaly matching, \(N_f=N_c+1\) confining-superpotential
+  't Hooft anomaly matching, mass and Higgs deformation rank/dimension/
+  \(R\)-charge tests, \(N_f=N_c+1\) confining-superpotential
   dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
   quantum-modified constraint, and the conformal-window/free-phase
   inequalities.

@@ -1438,6 +1438,116 @@ and
 This proves the displayed anomaly matching.
 \end{proof}
 
+\begin{proposition}[Mass and Higgs deformation tests for SQCD duality]
+\label{prop:sqcd-seiberg-deformation-tests}
+Let \(N_f\geq N_c+2\) and set \(\widetilde N_c=N_f-N_c\).  The magnetic
+field content and superpotential in
+\eqref{eq:sqcd-magnetic-superpotential} pass the following necessary
+deformation tests.
+
+\begin{enumerate}
+\item Give the last electric flavor a holomorphic mass
+\[
+  W_{\mathrm{el,mass}}=m\,M^L{}_L,\qquad L=N_f .
+\]
+In the magnetic variables the \(F\)-term equation for \(M^L{}_L\) is
+\[
+  \frac1{\mu_*}q_L^\alpha\widetilde q^L_\alpha+m=0 .
+  \label{eq:sqcd-mass-deformation-magnetic-fterm}
+\]
+For \(\widetilde N_c\geq2\), a rank-one solution Higgses
+\[
+  SU(\widetilde N_c)\longrightarrow SU(\widetilde N_c-1).
+\]
+The light magnetic theory has \(N_f-1\) flavors, gauge rank
+\[
+  \widetilde N_c-1=(N_f-1)-N_c,
+\]
+and the same meson-quark superpotential form for the light flavor block.
+For initial \(\widetilde N_c=2\), the resulting \(SU(1)\) gauge group is
+trivial; this is the boundary case leading to the \(N_f=N_c+1\) confining
+chiral description rather than to another nonabelian magnetic gauge theory.
+
+\item Give the electric theory a rank-\(r\) meson expectation value on the
+classical Higgs patch, with \(1\leq r<N_c\):
+\[
+  M^A{}_B=v_A\delta^A{}_B,\qquad A,B=1,\ldots,r,\qquad v_A\neq0 .
+\]
+The electric gauge group is Higgsed to \(SU(N_c-r)\) with \(N_f-r\) light
+flavors.  In the magnetic variables the same background gives masses
+\[
+  \frac{v_A}{\mu_*}\,q_A\widetilde q^A,
+  \qquad A=1,\ldots,r,
+\]
+to \(r\) magnetic flavor pairs.  After they are integrated out, the magnetic
+gauge rank remains \(\widetilde N_c\), which is precisely the dual rank of
+the low-energy electric theory:
+\[
+  (N_f-r)-(N_c-r)=N_f-N_c=\widetilde N_c .
+  \label{eq:sqcd-higgs-deformation-rank-test}
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For the mass deformation, split flavor indices as \(i=(a,L)\), with
+\(a=1,\ldots,N_f-1\).  The deformed magnetic superpotential is
+\[
+  W_{\mathrm{mag}}+mM^L{}_L
+  =
+  \frac1{\mu_*}M^i{}_j q_i^\alpha\widetilde q^j_\alpha
+  +mM^L{}_L .
+\]
+The \(M^L{}_L\) equation is
+\eqref{eq:sqcd-mass-deformation-magnetic-fterm}, while the other
+\(M\)-equations set the corresponding magnetic quark bilinears to zero on
+the light branch.  Choose a local representative
+\[
+  q_L^\alpha=v\,\delta^\alpha{}_{\widetilde N_c},
+  \qquad
+  \widetilde q^L_\alpha=\widetilde v\,\delta_{\alpha\widetilde N_c},
+  \qquad
+  v\widetilde v=-\mu_*m ,
+  \label{eq:sqcd-magnetic-mass-higgs-representative}
+\]
+with the usual \(D\)-flat representative chosen inside the complexified
+gauge orbit.  The stabilizer of this nonzero fundamental-antifundamental
+pair is \(SU(\widetilde N_c-1)\).  The fields carrying the broken color line
+are massive or gauge directions.  The remaining light magnetic quarks have
+flavor labels \(a=1,\ldots,N_f-1\) and color labels in
+\(SU(\widetilde N_c-1)\), and the surviving singlet block is \(M^a{}_b\).
+Restricting the superpotential to these light fields gives
+\[
+  W_{\mathrm{light}}
+  =
+  \frac1{\mu_*}M^a{}_b q_a\widetilde q^b ,
+\]
+which has the same form as \eqref{eq:sqcd-magnetic-superpotential}.  The rank
+identity is immediate:
+\[
+  \widetilde N_c-1=N_f-N_c-1=(N_f-1)-N_c .
+\]
+
+For the Higgs deformation, a rank-\(r\) electric meson expectation value may
+be represented on the dense Higgs patch by \(r\) independent nonzero
+quark-antiquark pairs.  Their common stabilizer in \(SU(N_c)\) is
+\(SU(N_c-r)\), and the light electric flavors are the remaining
+\(N_f-r\).  In the magnetic superpotential, substituting
+\(M^A{}_B=v_A\delta^A{}_B\) gives the displayed mass terms
+\((v_A/\mu_*)q_A\widetilde q^A\).  For generic nonzero \(v_A\), these
+integrate out exactly \(r\) magnetic flavor pairs.  The magnetic gauge group
+is not Higgsed by this operation, so its rank remains
+\(\widetilde N_c=N_f-N_c\).  Equation
+\eqref{eq:sqcd-higgs-deformation-rank-test} shows that this is the dual rank
+of the low-energy electric \(SU(N_c-r)\) theory with \(N_f-r\) flavors.
+\end{proof}
+
+These deformation tests are necessary consequences of the proposed duality,
+not a replacement for the quoted nonperturbative input.  Their value in this
+chapter is that the mass, Higgs, and rank bookkeeping is completely visible:
+one can see which fields are eliminated, which gauge group remains, and where
+the boundary \(N_f=N_c+1\) description enters.
+
 The \(N_f<N_c\) entries in the phase ledger below have a different logical
 status from the duality entries.  The \(N_f=N_c-1\) ADS term was derived
 above from an explicit one-instanton zero-mode and symmetry calculation under

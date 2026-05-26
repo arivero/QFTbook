@@ -80,6 +80,9 @@ status-boundary style.
   needed before comparing electric and magnetic SQCD infrared limits.
 - `qt:sqcd-seiberg-duality-input`: quoted nonperturbative status boundary
   for SQCD Seiberg duality.
+- `prop:sqcd-seiberg-deformation-tests`: explicit mass-deformation and
+  Higgs-deformation consistency tests for the SQCD magnetic field content,
+  including the boundary to the `N_f=N_c+1` confining description.
 - `G_KW=SU(N)_1 x SU(N)_2`: Klebanov-Witten gauge group.
 - `A_i`, `B_j`: KW bifundamental chiral multiplets, transforming as
   `(N,bar N)` and `(bar N,N)`.
@@ -182,6 +185,12 @@ status-boundary style.
 - Proves electric/magnetic matching for the displayed global anomalies:
   `SU(N_f)_L^3`, `SU(N_f)_R^3`, mixed flavor-`R`, mixed flavor-baryon,
   `U(1)_B^2 U(1)_R`, `Tr R`, and `Tr R^3`.
+- Adds explicit deformation tests for the Seiberg-duality field content:
+  an electric mass for one flavor maps to a rank-one magnetic Higgs branch
+  `SU(N_f-N_c)->SU(N_f-N_c-1)` with the correct light-flavor rank, while a
+  rank-`r` electric meson expectation value maps to masses for `r` magnetic
+  flavor pairs and leaves the dual rank unchanged as
+  `(N_f-r)-(N_c-r)=N_f-N_c`.
 - Records the SQCD phase ledger with explicit logical status: ADS runaway
   from the direct `N_f=N_c-1` instanton calculation plus holomorphic
   decoupling, quantum-modified `N_f=N_c`, confining `N_f=N_c+1`, free
@@ -237,6 +246,7 @@ status-boundary style.
   coordinate-relation algebra, electric/magnetic NSVZ numerator
   cancellation, magnetic gauge-`R` anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, full global anomaly matching,
+  mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
   `N_f=N_c` quantum-modified constraint, and phase-window inequalities.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational

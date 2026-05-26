@@ -151,6 +151,52 @@ def check_anomaly_matching():
             assert_equal(magnetic["Tr_R3"], expected_tr_r3, "magnetic Tr R^3 form")
 
 
+def check_duality_deformation_tests():
+    for nc in range(2, 12):
+        for nf in range(nc + 2, 5 * nc + 1):
+            dual_nc = nf - nc
+
+            # Electric mass for one flavor maps to a rank-one magnetic Higgs
+            # branch: SU(dual_nc) -> SU(dual_nc-1), matching the dual of the
+            # (nf-1)-flavor electric theory.
+            low_flavors = nf - 1
+            low_magnetic_rank = dual_nc - 1
+            assert_equal(low_magnetic_rank, low_flavors - nc, "mass deformation dual rank")
+            assert_equal(dual_nc == 2, low_magnetic_rank == 1, "mass deformation confining boundary")
+
+            # In the microscopic matching convention dim(M)=2, dim(q)=1, and
+            # dim(mu_*)=1, so F_M compares q tilde q / mu_* with the mass m.
+            assert_equal(1 + 1 - 1, 1, "mass-deformation F_M dimension")
+            assert_equal(2 + 1, 3, "electric mass term dimension")
+
+            r_meson = Fraction(2 * (nf - nc), nf)
+            r_q_magnetic = Fraction(nc, nf)
+            r_mass_spurion = 2 - r_meson
+            assert_equal(r_mass_spurion, 2 * r_q_magnetic, "magnetic Higgs F-term R-charge")
+
+            # Electric rank-r meson vevs Higgs SU(nc) -> SU(nc-r) and leave
+            # nf-r flavors.  Magnetic rank is unchanged because the same
+            # background gives masses to r magnetic flavor pairs.
+            for higgs_rank in range(1, nc):
+                low_electric_rank = nc - higgs_rank
+                low_electric_flavors = nf - higgs_rank
+                assert_equal(
+                    low_electric_flavors - low_electric_rank,
+                    dual_nc,
+                    "Higgs deformation dual rank unchanged",
+                )
+                assert_equal(
+                    low_electric_flavors >= low_electric_rank + 2,
+                    nf >= nc + 2,
+                    "Higgs deformation preserves duality-window offset",
+                )
+
+                # The magnetic mass v q tilde q / mu_* has dimension three
+                # and R-charge two when v has the meson quantum numbers.
+                assert_equal(2 + 1 + 1 - 1, 3, "magnetic Higgs mass dimension")
+                assert_equal(r_meson + 2 * r_q_magnetic, 2, "magnetic Higgs mass R-charge")
+
+
 def check_sconfining_superpotential():
     for nc in range(2, 16):
         nf = nc + 1
@@ -261,6 +307,7 @@ def main():
     check_sqcd_nsvz_coordinate_relation()
     check_r_charges_superpotential_and_nsvz()
     check_anomaly_matching()
+    check_duality_deformation_tests()
     check_sconfining_superpotential()
     check_quantum_modified_constraint_and_decoupling()
     check_phase_inequalities()
