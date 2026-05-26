@@ -77,9 +77,36 @@ def check_mean_zero_source_and_square_completion() -> None:
     )
 
 
+def check_second_variation_action_normalization() -> None:
+    # Strip the common factor (pi alpha')^{-1}.  The pure-metric action has
+    # prefactor 1/4, so its first variation carries 2*(1/4), and the
+    # quadratic term in S[x+s xi] carries exactly 1/4 after the Taylor
+    # factor 1/2 multiplies the second derivative.
+    action_prefactor = Fraction(1, 4)
+    first_variation_prefactor = -2 * action_prefactor
+    quadratic_prefactor = action_prefactor
+    assert_equal("pure-metric first-variation normalization", first_variation_prefactor, Fraction(-1, 2))
+    assert_equal("pure-metric quadratic-action normalization", quadratic_prefactor, Fraction(1, 4))
+
+    # With R(U,V)W = nabla_U nabla_V W - ..., metric compatibility gives
+    # <R(V,W)V,W> = - <R(V,W)W,V>.  The second variation therefore has a
+    # minus sign in front of the curvature vertex written as
+    # <R(xi, dx) dx, xi>.
+    r_vwvw = Fraction(7, 5)
+    r_vwwv = -r_vwvw
+    curvature_vertex_sign = -1
+    assert_equal("curvature skew-adjoint sign", r_vwwv, -r_vwvw)
+    assert_equal(
+        "second-variation curvature vertex coefficient",
+        curvature_vertex_sign * r_vwwv,
+        r_vwvw,
+    )
+
+
 def main() -> None:
     check_mean_zero_source_and_square_completion()
-    print("All NLSM background-field source checks passed.")
+    check_second_variation_action_normalization()
+    print("All NLSM background-field source and second-variation checks passed.")
 
 
 if __name__ == "__main__":

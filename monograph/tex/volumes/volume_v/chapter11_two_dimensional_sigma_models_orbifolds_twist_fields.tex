@@ -101,7 +101,8 @@ background map \(x:\Sigma\to M\).  A fluctuation is a section
 \[
   X(\sigma)=\exp_{x(\sigma)}\xi(\sigma).
 \]
-whenever \(\xi(\sigma)\) lies in a normal neighborhood of \(x(\sigma)\).
+This is defined whenever \(\xi(\sigma)\) lies in a normal neighborhood of
+\(x(\sigma)\).
 Equivalently, \(X(\sigma)=\lambda_\sigma(1)\), where
 \(\lambda_\sigma(t)\) is the target geodesic satisfying
 \[
@@ -224,6 +225,125 @@ one to compute the local counterterms for an arbitrary slowly varying
 background \(x\); this is why the beta tensor is an off-shell local tensor on
 coupling space, rather than only an equation evaluated on classical
 solutions.
+
+\begin{proposition}[Second variation and the curvature vertex]
+\label{prop:nlsm-second-variation-curvature-vertex}
+Let \(B=\Phi=0\), assume \(\Sigma\) is closed, and set
+\[
+  S_G[X]
+  =
+  \frac1{4\pi\alpha'}
+  \int_\Sigma\dd^d\sigma\sqrt\gamma\,
+  \gamma^{ab}G_{ij}(X)\partial_aX^i\partial_bX^j .
+\]
+For the geodesic variation \(X_s=\exp_x(s\xi)\), the expansion through
+second order is
+\begin{equation}
+\begin{aligned}
+  S_G[X_s]
+  &=
+  S_G[x]
+  -
+  \frac{s}{2\pi\alpha'}
+  \int_\Sigma\sqrt\gamma\,
+  G_{ij}(x)\xi^i\nabla^a\partial_ax^j
+  \\
+  &\quad
+  +
+  \frac{s^2}{4\pi\alpha'}
+  \int_\Sigma\sqrt\gamma\,\gamma^{ab}
+  \left[
+    G_{ij}(x)D_a\xi^iD_b\xi^j
+    -
+    R_{ikj\ell}(x)
+    \partial_ax^i\partial_bx^j\xi^k\xi^\ell
+  \right]
+  +
+  O(s^3).
+\end{aligned}
+  \label{eq:nlsm-pure-metric-second-variation}
+\end{equation}
+Here
+\[
+  D_a\xi^i=\partial_a\xi^i+\Gamma^i{}_{jk}(x)\partial_ax^j\xi^k
+\]
+and the curvature convention is
+\begin{equation}
+  R(U,V)W
+  =
+  \nabla_U\nabla_VW-\nabla_V\nabla_UW-\nabla_{[U,V]}W .
+  \label{eq:nlsm-curvature-convention-second-variation}
+\end{equation}
+The displayed component ordering is defined by
+\[
+  R_{ikj\ell}\partial_ax^i\partial_bx^j\xi^k\xi^\ell
+  =
+  \langle R(\xi,\partial_ax)\partial_bx,\xi\rangle .
+\]
+Consequently the quadratic fluctuation action used below is precisely the
+\(s^2\)-coefficient in \eqref{eq:nlsm-pure-metric-second-variation} at
+\(s=1\).
+\end{proposition}
+
+\begin{proof}
+Let \(V=\partial_sX_s\) and \(W_a=\partial_aX_s\).  Since the target
+connection is torsion free,
+\[
+  \nabla_sW_a=\nabla_aV,
+\]
+and since \(s\mapsto X_s(\sigma)\) is a geodesic for every \(\sigma\),
+\[
+  \nabla_sV=0.
+\]
+Differentiate the Lagrangian density
+\(\gamma^{ab}\langle W_a,W_b\rangle\).  At \(s=0\),
+\[
+  \frac{\dd}{\dd s}
+  \gamma^{ab}\langle W_a,W_b\rangle
+  =
+  2\gamma^{ab}\langle D_a\xi,\partial_bx\rangle .
+\]
+Integrating by parts on the closed worldsheet gives the first-order term in
+\eqref{eq:nlsm-pure-metric-second-variation}.  For the second derivative,
+\[
+\begin{aligned}
+  \frac12\frac{\dd^2}{\dd s^2}
+  \gamma^{ab}\langle W_a,W_b\rangle
+  &=
+  \gamma^{ab}
+  \left[
+    \langle \nabla_s\nabla_aV,W_b\rangle
+    +
+    \langle \nabla_aV,\nabla_sW_b\rangle
+  \right].
+\end{aligned}
+\]
+The commutator identity and \(\nabla_sV=0\) give
+\[
+  \nabla_s\nabla_aV=R(V,W_a)V .
+\]
+Metric compatibility and the skew-adjointness of \(R(V,W_a)\) in its last
+two entries imply
+\[
+  \langle R(V,W_a)V,W_b\rangle
+  =
+  -\langle R(V,W_a)W_b,V\rangle .
+\]
+Evaluating at \(s=0\), where \(V=\xi\) and \(W_a=\partial_ax\), therefore
+gives
+\[
+  \frac12\frac{\dd^2}{\dd s^2}
+  \gamma^{ab}\langle W_a,W_b\rangle\Big|_{s=0}
+  =
+  \gamma^{ab}
+  \left[
+    \langle D_a\xi,D_b\xi\rangle
+    -
+    \langle R(\xi,\partial_ax)\partial_bx,\xi\rangle
+  \right],
+\]
+which is \eqref{eq:nlsm-pure-metric-second-variation} in components.
+\end{proof}
 
 \begin{proposition}[One-loop metric divergence]
 \label{prop:nlsm-one-loop-ricci-divergence}

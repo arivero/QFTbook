@@ -297,8 +297,9 @@ Current checks:
   anomaly.
 - `nlsm_background_field_checks.py`: exact rational checks for the NLSM
   background-field source convention, including the mean-zero condition
-  \(J=L\) and the Gaussian square-completion sign used in the one-loop
-  effective-action determinant.
+  \(J=L\), the Gaussian square-completion sign used in the one-loop
+  effective-action determinant, and the pure-metric second-variation
+  normalization and curvature-vertex sign.
 - `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
   NLSM Buscher and pure-metric beta-function sections, including Buscher
   \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift

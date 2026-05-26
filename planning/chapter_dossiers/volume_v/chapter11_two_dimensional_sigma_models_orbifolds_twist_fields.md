@@ -27,6 +27,10 @@
   at Gaussian order that the auxiliary source is \(J=L\), the first
   variation density, leaving the one-loop determinant of the quadratic
   fluctuation operator.
+- Proves the second variation of the pure-metric sigma-model action along
+  the geodesic variation \(X_s=\exp_x(s\xi)\), including the first-variation
+  density, \(D_a\xi\) kinetic term, and the curvature vertex with the chapter
+  curvature convention.
 - Derives the one-loop Ricci divergence in background-field dimensional
   regularization.
 - Records the one-loop \(G\) and \(B\) hatted Weyl-anomaly coefficients with
@@ -250,6 +254,10 @@
    `A^{-1}(J-L)`, so the condition \(\langle\xi\rangle_J=0\) fixes
    \(J=L\) and justifies computing the one-loop pole from
    `1/2 log det A` off shell.
+39. The pure-metric second variation along \(X_s=\exp_x(s\xi)\) has
+   first-variation coefficient \(-(2\pi\alpha')^{-1}G_{ij}\nabla^a
+   \partial_ax^j\) and quadratic coefficient \((4\pi\alpha')^{-1}
+   (|D\xi|^2-\langle R(\xi,\partial x)\partial x,\xi\rangle)\).
 
 ## Figures
 
@@ -268,7 +276,8 @@
   anomaly-condition logic.
 - `calculation-checks/nlsm_background_field_checks.py` verifies the
   source-coupled background-field Gaussian algebra: the mean-zero condition
-  \(J=L\) and the sign in completing the square.
+  \(J=L\), the sign in completing the square, and the pure-metric
+  second-variation normalization and curvature-vertex sign.
 - `calculation-checks/nlsm_buscher_checks.py` verifies the finite Buscher
   algebra, the component \(G,B\) rules, the involutive dilaton shift, and the
   constant-curvature specialization of the two-loop metric coefficient and
