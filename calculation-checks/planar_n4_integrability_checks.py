@@ -2233,6 +2233,86 @@ def check_qsc_weak_mu12_mu24_elimination() -> None:
 def check_qsc_large_u_coefficient_constraints() -> None:
     """Check the large-u characteristic equation for the QSC coefficient products."""
 
+    def determinant_complex(matrix: list[list[complex]]) -> complex:
+        work = [row[:] for row in matrix]
+        size = len(work)
+        determinant = 1 + 0j
+        for column in range(size):
+            pivot = max(range(column, size), key=lambda row: abs(work[row][column]))
+            if abs(work[pivot][column]) < 1.0e-14:
+                return 0j
+            if pivot != column:
+                work[column], work[pivot] = work[pivot], work[column]
+                determinant = -determinant
+            pivot_value = work[column][column]
+            determinant *= pivot_value
+            for row in range(column + 1, size):
+                factor = work[row][column] / pivot_value
+                for entry in range(column, size):
+                    work[row][entry] -= factor * work[column][entry]
+        return determinant
+
+    def characteristic_matrix(
+        alpha: complex,
+        twist: float,
+        a14: complex,
+        a23: complex,
+    ) -> list[list[complex]]:
+        a1 = 1 + 0j
+        a2 = 1 + 0j
+        a3 = a23
+        a4 = a14
+        return [
+            [
+                1j * (alpha - twist) - (a14 - a23),
+                -(a2 * a2),
+                a1 * a2,
+                a1 * a2,
+                -(a1 * a1),
+                0j,
+            ],
+            [
+                a3 * a3,
+                1j * (alpha + 1) - (a14 + a23),
+                a1 * a3,
+                a1 * a3,
+                0j,
+                -(a1 * a1),
+            ],
+            [
+                a3 * a4,
+                -(a2 * a4),
+                1j * alpha,
+                0j,
+                a1 * a3,
+                -(a1 * a2),
+            ],
+            [
+                a3 * a4,
+                -(a2 * a4),
+                0j,
+                1j * alpha,
+                a1 * a3,
+                -(a1 * a2),
+            ],
+            [
+                a4 * a4,
+                0j,
+                -(a2 * a4),
+                -(a2 * a4),
+                1j * (alpha - 1) + a14 + a23,
+                -(a2 * a2),
+            ],
+            [
+                0j,
+                a4 * a4,
+                -(a3 * a4),
+                -(a3 * a4),
+                a3 * a3,
+                1j * (alpha + twist) + a14 - a23,
+            ],
+        ]
+
     def coefficient_products(
         twist: float,
         spin: float,
@@ -2309,6 +2389,22 @@ def check_qsc_large_u_coefficient_constraints() -> None:
             raise AssertionError(
                 "QSC coefficient products are insensitive to an overall sign flip"
             )
+
+    for twist, alpha, a14, a23 in (
+        (2.0, 1.3 + 0.2j, 0.7 - 0.4j, -0.2 + 0.5j),
+        (3.0, -0.6 + 0.9j, 1.1 + 0.3j, 0.4 - 0.7j),
+        (5.0, 2.2 - 0.3j, -0.8 + 0.6j, 0.9 + 0.2j),
+    ):
+        determinant = determinant_complex(
+            characteristic_matrix(alpha, twist, a14, a23)
+        )
+        expected = alpha * alpha * characteristic(alpha, twist, a14, a23)
+        assert_close(
+            "QSC large-u characteristic determinant",
+            determinant,
+            expected,
+            tol=2.0e-8,
+        )
 
 
 def check_qsc_collapsed_cut_digamma_package() -> None:

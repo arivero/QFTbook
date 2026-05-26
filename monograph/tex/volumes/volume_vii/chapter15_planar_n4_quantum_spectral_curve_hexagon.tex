@@ -499,31 +499,39 @@ terms in
   \widetilde P_a=\mu_{ab}P^b,\qquad
   (P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)
 \]
-then force the remaining \(\mu\)-powers
-\[
-  (\mu_{12},\mu_{13},\mu_{14},\mu_{24},\mu_{34})
+then force the remaining \(\mu\)-powers.  For the characteristic calculation
+one should not insert the physical value of the exponent too early: keep a
+trial exponent \(\alpha\) and write
+\begin{equation}
+  (\mu_{12},\mu_{13},\mu_{14},\mu_{23},\mu_{24},\mu_{34})
   \sim
-  (u^{\Delta-J},u^{\Delta+1},u^\Delta,u^{\Delta-1},u^{\Delta+J}),
-\]
-provided the leading terms do not undergo accidental cancellations.  For
-example, the three contributions
+  (u^{\alpha-J},u^{\alpha+1},u^\alpha,u^\alpha,
+    u^{\alpha-1},u^{\alpha+J}),
+  \label{eq:qsc-mu-leading-powers-alpha}
+\end{equation}
+provided the leading terms do not undergo accidental cancellations.  The
+physical branch later has \(\alpha=\Delta\).  For example, the three
+contributions
 \[
   \mu_{14}P_1,\qquad \mu_{13}P_2,\qquad \mu_{12}P_3
 \]
-to \(\widetilde P_1\) all scale as \(u^{\Delta-J/2}\); this fixes the
+to \(\widetilde P_1\) all scale as \(u^{\alpha-J/2}\); this fixes the
 relative powers of \(\mu_{13}\) and \(\mu_{14}\) once the powers of \(P_a\)
-and \(\mu_{12}\) are known.  The same balance applied to
-\(\widetilde P_2,\widetilde P_3,\widetilde P_4\) gives the displayed list.
+and \(\mu_{12}\) are known.  The physical branch is obtained by setting
+\(\alpha=\Delta\).  The same balance applied to
+\(\widetilde P_2,\widetilde P_3,\widetilde P_4\) gives
+\eqref{eq:qsc-mu-leading-powers-alpha}.
 
-\begin{assumption}[Large-\(u\) QSC characteristic roots]
-\label{ass:qsc-large-u-characteristic-roots}
+\begin{proposition}[Large-\(u\) characteristic determinant]
+\label{prop:qsc-large-u-characteristic-determinant}
 Let
 \[
   X=A_1A_4,\qquad Y=A_2A_3 .
 \]
-After inserting the \(SL(2)\) large-\(u\) powers into the one-step
-monodromy recursion for \(\mu\), the leading system for the five independent
-\(\mu_{ab}\) components has the characteristic equation
+Insert the \(SL(2)\) \(P\)-powers and the trial \(\mu\)-powers
+\eqref{eq:qsc-mu-leading-powers-alpha} into the one-step monodromy recursion
+\eqref{eq:planar-n4-pmu-monodromy-recursion}.  For a nonzero leading vector
+with \(\alpha\neq0\), the characteristic equation is
 \[
   \Phi(\alpha)
   =
@@ -537,14 +545,72 @@ monodromy recursion for \(\mu\), the leading system for the five independent
   0 .
   \label{eq:qsc-large-u-characteristic-polynomial}
 \]
-The physical dimension root is \(\alpha=\Delta\).  The representation-theory
-input fixing the second nonzero root is
-\(\alpha=S-1\), where \(S\) is the Lorentz spin of the \(SL(2)\) state.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  P_1=A_1u^{-J/2},\quad
+  P_2=A_2u^{-J/2-1},\quad
+  P_3=A_3u^{J/2},\quad
+  P_4=A_4u^{J/2-1}
+\]
+at leading order, and use
+\((P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)\).  If
+\(\mu_{ab}=m_{ab}u^{e_{ab}}+\cdots\), then
+\(\mu_{ab}(u+\ii)-\mu_{ab}(u)=\ii e_{ab}m_{ab}u^{e_{ab}-1}+\cdots\).
+Keeping the leading power in each component gives the finite linear system
+\[
+\begin{aligned}
+  \ii(\alpha-J)m_{12}
+  &=(X-Y)m_{12}+A_2^2m_{13}-A_1A_2m_{14}
+    -A_1A_2m_{23}+A_1^2m_{24},\\
+  \ii(\alpha+1)m_{13}
+  &=-A_3^2m_{12}+(X+Y)m_{13}-A_1A_3m_{14}
+    -A_1A_3m_{23}+A_1^2m_{34},\\
+  \ii\alpha m_{14}
+  &=-A_3A_4m_{12}+A_2A_4m_{13}
+    -A_1A_3m_{24}+A_1A_2m_{34},\\
+  \ii\alpha m_{23}
+  &=-A_3A_4m_{12}+A_2A_4m_{13}
+    -A_1A_3m_{24}+A_1A_2m_{34},\\
+  \ii(\alpha-1)m_{24}
+  &=-A_4^2m_{12}+A_2A_4m_{14}+A_2A_4m_{23}
+    -(X+Y)m_{24}+A_2^2m_{34},\\
+  \ii(\alpha+J)m_{34}
+  &=-A_4^2m_{13}+A_3A_4m_{14}+A_3A_4m_{23}
+    -A_3^2m_{24}+(-X+Y)m_{34}.
+\end{aligned}
+  \label{eq:qsc-large-u-characteristic-linear-system}
+\]
+Let \(\mathcal M_\alpha\) be the coefficient matrix obtained by moving the
+right-hand side to the left.  Expanding the determinant and collecting only
+the invariant products \(X=A_1A_4\) and \(Y=A_2A_3\) gives
+\[
+  \det\mathcal M_\alpha=\alpha^2\Phi(\alpha).
+\]
+The factor \(\alpha^2\) records a degenerate zero-exponent subspace of this
+redundant six-coordinate leading system before imposing the Pfaffian and gauge
+reductions.  The nonzero characteristic exponents used below therefore obey
+\(\Phi(\alpha)=0\).
+\end{proof}
+
+\begin{assumption}[Physical QSC characteristic roots]
+\label{ass:qsc-large-u-characteristic-roots}
+For an \(SL(2)\) single-trace state of twist \(J\), Lorentz spin \(S\), and
+dimension \(\Delta\), the physical large-\(u\) gluing/asymptotic data select,
+after quotienting the redundant \(\alpha^2\) factor above, the roots
+\[
+  \alpha=\Delta,\qquad \alpha=S-1
+\]
+of the characteristic polynomial
+\eqref{eq:qsc-large-u-characteristic-polynomial}; cases in which the
+spin-shadow root coincides with the zero sector are understood by continuity.
 \end{assumption}
 
-This assumption is not a path-integral theorem.  It is the large-\(u\)
-characteristic form of the QSC gluing/asymptotic data in this gauge.  The
-local algebra below is included because it is a common source of sign errors:
+This root assignment is not a path-integral theorem.  It is the large-\(u\)
+representation-theory and QSC-gluing input in this gauge.  The local algebra
+above is included because it is a common source of sign errors:
 the products \(A_1A_4\) and \(A_2A_3\) carry the sign convention for
 \(\chi\), for \(f^{[\pm1]}(u)=f(u\pm\ii/2)\), and for the short-cut sheet.
 

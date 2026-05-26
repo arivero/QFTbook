@@ -850,3 +850,39 @@ Calculation checks added:
 - `check_konishi_baxter_polynomial()` now also verifies that the Konishi
   Baxter polynomial gives the `SL(2)` phase
   `(u_j-u_k-i)/(u_j-u_k+i)` at its roots.
+
+## Continuation XXX: Large-u QSC Characteristic Determinant
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- The stringbook gives the `SL(2)` QSC asymptotic products after a compact
+  characteristic-root calculation.  The monograph had recorded the
+  characteristic polynomial as part of an assumption.  This pass moves the
+  convention-sensitive part into an inline derivation from the Pmu monodromy
+  recursion, leaving only the physical root assignment as QSC
+  gluing/representation-theory input.
+
+Content added:
+
+- Introduced a trial large-`u` exponent `alpha` for the `mu_ab` sector and
+  included the `mu_23` leading power alongside
+  `mu_12,mu_13,mu_14,mu_24,mu_34`.
+- Derived the six leading coefficient equations obtained from the monodromy
+  recursion with `P^1=-P_4`, `P^2=P_3`, `P^3=-P_2`, `P^4=P_1`.
+- Expanded the determinant of the resulting coefficient matrix and displayed
+  the factorization `det M_alpha = alpha^2 Phi(alpha)`, so the nonzero
+  charge-carrying exponents obey the stated characteristic polynomial.
+- Reframed the physical roots `alpha=Delta` and `alpha=S-1` as the remaining
+  QSC asymptotic/gluing input before solving for `A_1A_4` and `A_2A_3`.
+
+Calculation checks added:
+
+- `check_qsc_large_u_coefficient_constraints()` now also constructs the
+  six-by-six leading characteristic matrix for complex sample values and
+  verifies numerically that its determinant equals `alpha^2 Phi(alpha)`.

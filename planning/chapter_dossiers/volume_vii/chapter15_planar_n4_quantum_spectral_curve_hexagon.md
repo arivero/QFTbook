@@ -75,11 +75,15 @@ three-point functions.
 - Derives the remaining `mu_ab` large-`u` powers from the `Pmu` sheet
   equation and the `SL(2)` `P_a` powers, under an explicit no-accidental-
   cancellation assumption.
-- Adds the large-`u` QSC characteristic-root input for the five independent
-  `mu_ab` components, then proves the displayed coefficient products
-  `A_1A_4` and `A_2A_3` by solving the two root equations
-  `Phi(Delta)=Phi(S-1)=0`.  This records the representation-theory status of
-  the spin-shadow root instead of hiding it in the formula.
+- Derives the large-`u` QSC characteristic determinant from the six leading
+  `mu_ab` monodromy-recursion equations, including the `mu_23` exponent and
+  the determinant factorization `det M_alpha = alpha^2 Phi(alpha)`.  The
+  physical assignment of the nonzero roots `alpha=Delta` and `alpha=S-1`
+  remains an explicit QSC gluing/representation-theory input.
+- Proves the displayed coefficient products `A_1A_4` and `A_2A_3` by solving
+  the two root equations `Phi(Delta)=Phi(S-1)=0`.  This records the
+  representation-theory status of the spin-shadow root instead of hiding it
+  in the formula.
 - Adds the Pfaffian normalization and proves its preservation under the
   rank-two Pmu discontinuity update.
 - Proves the one-step `mu(u+i)` monodromy recursion from pseudo-periodicity,
@@ -167,10 +171,11 @@ structure and the pair-of-pants-to-hexagons cut.
   placement, mirror energy logarithm, mirror momentum convention, shortening,
   constant term `exp(-tilde E_Q)`, `u^-1` coefficient `-tilde p_Q`, and the
   inverse mirror continuation to `i p+i E/u`.
-- The same script checks the QSC large-`u` characteristic equation for the
-  displayed `A_1A_4` and `A_2A_3` products, including the dimension root,
-  the spin-shadow root `S-1`, the intermediate linear relation, and
-  sensitivity to an overall sign flip.
+- The same script checks the QSC large-`u` characteristic determinant
+  `det M_alpha = alpha^2 Phi(alpha)` for the six leading `mu_ab` equations,
+  then checks the displayed `A_1A_4` and `A_2A_3` products, including the
+  dimension root, the spin-shadow root `S-1`, the intermediate linear
+  relation, and sensitivity to an overall sign flip.
 - The same script checks the collapsed-cut digamma package for twist-two
   spins `S=2,4,6`: residues at `u=+-i/2` and the large-`u` logarithmic
   coefficient, using a local recurrence/Stirling implementation of
