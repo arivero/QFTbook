@@ -78,6 +78,16 @@ resonances.
   changes are inner Weyl coordinate changes with strongly convergent
   implementers; this separates harmless soft reparametrizations from genuine
   changes of charged infrared sector.
+- Constructs the velocity-fibered soft representation
+  \(\int^\oplus \mathcal H_{\mathbf v}\,d\nu(\mathbf v)\) for infrared-regular
+  Weyl tests and proves that the soft photon Weyl algebra preserves velocity
+  fibers, so momentum-changing charged scattering dynamics cannot be an
+  operator of the soft photon algebra alone.
+- Restricts the dressed charged Haag--Ruelle/LSZ open problem explicitly to
+  nonconfining charged sectors with finite-energy physical charged asymptotic
+  data; in a confining phase the relevant asymptotic particles are neutral
+  hadrons or glueballs, and ordinary Haag--Ruelle theory is the starting
+  point when isolated shells exist.
 
 ## Figure Ledger
 
@@ -97,13 +107,16 @@ resonances.
   and the monotone decay of the coherent overlap as the infrared cutoff is
   removed.  The same script now checks the finite Hilbert soft-coordinate
   transformation law and strong-continuity behavior on coherent vectors.
+- The direct-integral velocity-fiber proposition is purely algebraic and has
+  no numerical companion: it is a decomposability statement for the
+  representation of the Weyl algebra.
 
 ## Open Problems
 
 - Complete the nonperturbative charged-sector Haag--Ruelle theorem for
-  noncompact gauge-invariant charged dressings, including the replacement for
-  the almost-local commutator estimate and the representation theory of
-  asymptotic flux sectors.
+  nonconfining sectors with noncompact gauge-invariant charged dressings,
+  including the replacement for the almost-local commutator estimate and the
+  representation theory of asymptotic flux sectors.
 - Combine that theorem with the infraparticle analysis of massless QED and
   with detector-inclusive probabilities.
 
