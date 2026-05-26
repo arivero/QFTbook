@@ -3,111 +3,456 @@
 
 \ConventionsEuclidean
 
-Discrete theta terms are topological phases in the path integral depending
-on global bundle data rather than on local curvature polynomials alone.  They
-are part of the definition of a gauge theory with a specified global form of
-the gauge group.  Their correct formulation requires cohomology classes,
-quadratic refinements, and compatibility with line-operator spectra.
+Discrete theta terms are topological phases depending on global bundle data
+and finite higher-form gauge fields.  They are part of the definition of a
+gauge theory with a specified global form: the same local gauge algebra and
+the same curvature Lagrangian can have distinct sums over bundles, distinct
+topological weights, and distinct spectra of genuine line operators.  This
+chapter gives the cochain-level definitions needed for the four-dimensional
+gauge-theory applications in Volume IX.
 
-\section{Finite Gauge Fields}
+\section{Finite Cochains And Topological Actions}
 
-For a finite abelian group \(A\), a background \(A\)-gauge field on a
-triangulated \(D\)-manifold \(M\) is represented by a cocycle
+Let \(M\) be a closed oriented triangulated \(D\)-manifold.  For an abelian
+group \(A\), write
 \[
-  a\in Z^1(M,A)
+  C^r(M,A),\qquad Z^r(M,A),\qquad B^r(M,A),\qquad H^r(M,A)
 \]
-modulo coboundaries.  A discrete theta term is a \(U(1)\)-valued topological
-action
+for \(r\)-cochains, cocycles, coboundaries, and cohomology classes.  The
+coboundary is denoted \(\delta\).  A finite \(A\)-valued zero-form gauge
+field is a one-cocycle
 \[
-  \exp(2\pi\ii\int_M \omega(a)),
+  a\in Z^1(M,A),
 \]
-where \(\omega\) is a cocycle representative of a class in
+with gauge equivalence
 \[
-  H^D(BA,U(1)).
+  a\sim a+\delta\lambda,\qquad \lambda\in C^0(M,A).
 \]
-Changing \(\omega\) by a coboundary changes the action by a boundary term.
-Thus on a closed manifold the phase depends only on the cohomology class and
-the gauge-field isomorphism class.
-
-\section{One-Form Backgrounds}
-
-For an \(SU(N)/\mathbb Z_N\) gauge theory, the obstruction to lifting a
-bundle to an \(SU(N)\)-bundle is a two-form cocycle
+For a finite \(p\)-form symmetry or gauge field, the background is instead a
+\((p+1)\)-cocycle
 \[
-  B\in Z^2(M,\mathbb Z_N).
+  B\in Z^{p+1}(M,A),
+  \qquad
+  B\sim B+\delta\Lambda,\quad \Lambda\in C^p(M,A).
 \]
-In four dimensions a discrete theta term is built from a quadratic refinement
-of the cup square of \(B\).  On manifolds where the Pontryagin square
-\(\mathcal P(B)\in H^4(M,\mathbb Z_{2N})\) is defined, the phase has the
-form
+
+An exponentiated finite topological action is a function
 \[
-  \exp\!\left(
-  \frac{2\pi\ii p}{2N}\int_M \mathcal P(B)
-  \right),
-  \qquad p\in\mathbb Z_{2N},
+  S_{\mathrm{top}}:Z^{p+1}(M,A)\longrightarrow U(1)
 \]
-with further identifications depending on spin structure and the precise
-global form.  The integer \(p\) labels the discrete theta angle.
-
-\section{Line Operators and Mutual Locality}
-
-The choice of discrete theta term changes which electric and magnetic line
-operators are mutually local.  Let a line charge be
+that is invariant under subdivision and gauge transformation, and is local in
+the sense that it is obtained by evaluating a \(D\)-cocycle built from
+cochains on the fundamental class of \(M\).  For a zero-form finite gauge
+field this data is equivalently represented by a class
 \[
-  \gamma=(e,m)\in \mathbb Z_N\oplus\mathbb Z_N .
+  [\omega]\in H^D(BA,U(1)).
 \]
-A discrete theta parameter \(p\) shifts the electric charge carried by a
-magnetic line by a Witten-effect-type relation
+For a \(p\)-form field it is represented by a class on \(B^{p+1}A\).
+Explicitly, if \(\omega(a)\in C^D(M,\mathbb R/\mathbb Z)\) is a cocycle
+depending naturally on \(a\), then
 \[
-  e\sim p\,m\quad \text{mod }N
+  S_{\mathrm{top}}[a]
+  =
+  \exp\left(2\pi\ii\int_M\omega(a)\right).
 \]
-in the minimal mutually local lattice.  Thus changing \(p\) is not a
-decorative addition to the action; it changes the spectrum of admissible
-genuine line operators.
-
-\section{Coupling to Background Fields}
-
-Let \(B\) be a background two-form field for a one-form symmetry.  The
-generating functional \(Z[B]\) may transform under a one-form gauge
-transformation \(B\mapsto B+d\lambda\) by a local phase.  If the phase cannot
-be removed by a local counterterm in \(D\) dimensions, it is an anomaly
-represented by an invertible theory in \(D+1\) dimensions.  Discrete theta
-terms in \(D\) dimensions are therefore intertwined with anomaly inflow
-terms in one higher dimension.
+Here
+\[
+  \int_M:C^D(M,\mathbb R/\mathbb Z)\longrightarrow\mathbb R/\mathbb Z
+\]
+is evaluation on the fundamental cycle.
 
 \begin{proposition}[Coboundary invariance on closed manifolds]
 \label{prop:discrete-theta-coboundary-invariance}
-If two discrete topological Lagrangians differ by a cocycle coboundary, their
-exponentiated actions agree on closed manifolds for every flat finite
-background field.
+If two finite topological Lagrangians differ by a coboundary,
+\[
+  \omega'(a)-\omega(a)=\delta\alpha(a),
+\]
+then their exponentiated actions agree on every closed \(D\)-manifold for
+every flat finite background field \(a\).
 \end{proposition}
 
 \begin{proof}
-Let \(\omega'=\omega+d\alpha\).  For a closed \(D\)-manifold,
+Let \(c_M\) be a fundamental \(D\)-cycle of \(M\).  Since \(M\) is closed,
 \[
-  \int_M(\omega'-\omega)=\int_M d\alpha=\int_{\partial M}\alpha=0
-  \quad \text{mod }1 .
+  \partial c_M=0.
 \]
-Therefore the exponentials of the two actions are equal.  On a manifold with
-boundary the same calculation leaves the boundary phase, which must be
-cancelled by boundary data or interpreted as the boundary variation of an
-anomaly theory.
+The evaluation pairing satisfies
+\[
+  \langle\delta\alpha(a),c_M\rangle
+  =
+  \langle\alpha(a),\partial c_M\rangle
+  =
+  0
+  \quad\text{in }\mathbb R/\mathbb Z .
+\]
+Therefore
+\[
+  \exp\left(2\pi\ii\int_M\omega'(a)\right)
+  =
+  \exp\left(2\pi\ii\int_M\omega(a)\right).
+\]
+For a manifold with boundary the same calculation leaves the boundary
+evaluation \(\int_{\partial M}\alpha(a)\), which is the boundary datum used in
+anomaly inflow.
 \end{proof}
+
+\section{Two-Form \texorpdfstring{\(\mathbb Z_N\)}{ZN} Fields}
+
+The four-dimensional examples use a two-form finite field
+\[
+  B\in Z^2(M,\mathbb Z_N).
+\]
+Choose an integral lift
+\[
+  \widetilde B\in C^2(M,\mathbb Z)
+\]
+whose reduction modulo \(N\) is \(B\).  Since \(B\) is closed modulo \(N\),
+there is an integral three-cochain \(C\) such that
+\[
+  \delta\widetilde B=N C .
+\]
+The Pontryagin square is the cohomology operation
+\[
+  \mathcal P:H^2(M,\mathbb Z_N)\longrightarrow H^4(M,\mathbb Z_{2N})
+\]
+characterized by
+\[
+  \mathcal P(B)\equiv B\smile B \pmod N
+\]
+and by the quadratic-refinement identity
+\[
+  \mathcal P(B+B')
+  =
+  \mathcal P(B)+\mathcal P(B')+2\,B\smile B'
+  \quad\text{in }H^4(M,\mathbb Z_{2N}).
+\]
+A cochain representative is
+\[
+  \mathcal P(B)
+  =
+  \widetilde B\smile\widetilde B
+  -N\,\widetilde B\smile_1 C
+  \quad\text{mod }2N,
+\]
+where \(\smile_1\) is Steenrod's first cup product.  The second term is what
+makes the expression independent of the chosen lift and invariant under
+\(B\mapsto B+\delta\Lambda\).  When \(N\) is odd, \(2\) is invertible modulo
+\(N\), and the same information can be represented by the ordinary square
+\[
+  B\smile B\in H^4(M,\mathbb Z_N).
+\]
+When \(N\) is even, the lift to \(\mathbb Z_{2N}\) is essential.
+
+The corresponding four-dimensional local counterterms for a background
+\(\mathbb Z_N\) one-form symmetry have the form
+\[
+  S_p[B]
+  =
+  \exp\left(
+    \frac{2\pi\ii p}{2N}
+    \int_M\mathcal P(B)
+  \right).
+\]
+On oriented manifolds the coefficient is valued in
+\[
+  p\in
+  \begin{cases}
+    \mathbb Z_N, & N\ \text{odd},\\
+    \mathbb Z_{2N}, & N\ \text{even},
+  \end{cases}
+\]
+using the identifications of \(H^4(B^2\mathbb Z_N,U(1))\).  On spin
+manifolds some terms that differ on a general oriented manifold can coincide,
+because the Wu-class relations constrain the integral of the Pontryagin
+square.  For odd \(N\), the displayed formula is read as
+\[
+  \frac{p}{2N}\mathcal P(B)
+  =
+  \frac{p}{N}\,\frac{1}{2}B\smile B
+  \quad\text{in }\mathbb R/\mathbb Z,
+\]
+where \(1/2\) denotes the inverse of \(2\) in \(\mathbb Z_N\).  Thus the
+spacetime category is part of the definition of the available counterterm
+group.
+
+\begin{proposition}[Quadratic refinement phase]
+\label{prop:pontryagin-square-quadratic-phase}
+Let \(B,B'\in H^2(M,\mathbb Z_N)\).  The ratio of counterterms obeys
+\[
+  \frac{S_p[B+B']}{S_p[B]S_p[B']}
+  =
+  \exp\left(
+    \frac{2\pi\ii p}{N}
+    \int_M B\smile B'
+  \right).
+\]
+\end{proposition}
+
+\begin{proof}
+Use the defining identity of the Pontryagin square:
+\[
+  \mathcal P(B+B')-\mathcal P(B)-\mathcal P(B')
+  =
+  2B\smile B'
+  \quad\text{mod }2N .
+\]
+Substituting this into the exponent gives
+\[
+  \frac{2\pi\ii p}{2N}
+  \int_M 2B\smile B'
+  =
+  \frac{2\pi\ii p}{N}
+  \int_M B\smile B' .
+\]
+Exponentiation gives the stated ratio.
+\end{proof}
+
+\section{Global Form And Obstruction Classes}
+
+Let
+\[
+  G=SU(N)/\mathbb Z_k,\qquad k\mid N,
+\]
+where \(\mathbb Z_k\subset Z(SU(N))\) is generated by
+\[
+  \exp(2\pi\ii/k)\mathbf 1_N=\exp(2\pi\ii\,N/kN)\mathbf 1_N .
+\]
+A principal \(G\)-bundle \(P_G\to M\) has an obstruction class
+\[
+  w_2^{(k)}(P_G)\in H^2(M,\mathbb Z_k)
+\]
+to lifting \(P_G\) to an \(SU(N)\)-bundle.  This class is obtained from the
+central extension
+\[
+  1\longrightarrow\mathbb Z_k
+  \longrightarrow SU(N)
+  \longrightarrow SU(N)/\mathbb Z_k
+  \longrightarrow1
+\]
+by the connecting homomorphism in nonabelian cohomology.  Concretely, choose
+local lifts of the \(G\)-transition functions to \(SU(N)\).  On triple
+overlaps the lifted transition functions multiply to a \(\mathbb Z_k\)-valued
+two-cocycle.  Its cohomology class is \(w_2^{(k)}(P_G)\).  Changing the local
+lifts changes this two-cocycle by a coboundary.
+
+For \(k=N\), \(G=PSU(N)\) and the obstruction class is usually written
+\[
+  w_2(P_{PSU(N)})\in H^2(M,\mathbb Z_N).
+\]
+
+\begin{proposition}[Fractional \(PSU(N)\) instanton number]
+\label{prop:psu-n-fractional-instanton-number}
+With the instanton-number convention compatible with
+\[
+  k=c_2(E)
+\]
+for an \(SU(N)\)-bundle \(E\), the fractional part of the instanton number of
+a \(PSU(N)\)-bundle is fixed by its obstruction class:
+\[
+  \nu(P_{PSU(N)})
+  =
+  -\frac{N-1}{2N}\int_M\mathcal P(w_2)
+  \quad\text{mod }1 .
+\]
+\end{proposition}
+
+\begin{proof}
+A projective \(PSU(N)\)-bundle can be described locally by \(SU(N)\)
+transition functions that close on triple overlaps up to a central
+\(\mathbb Z_N\)-valued two-cocycle representing \(w_2\).  Equivalently, for
+the purpose of computing the fractional characteristic class, choose local
+\(U(N)\) lifts and write \(x\) for the integral Cech two-cocycle that reduces
+to \(w_2\) modulo \(N\).  If the projective bundle is represented by an
+ordinary \(U(N)\)-bundle \(E\), then \(x=c_1(E)\); the local Cech computation
+gives the same expression in general.
+
+The projective second Chern coordinate is
+\[
+  \nu(E)
+  =
+  c_2(E)-\frac{N-1}{2N}c_1(E)^2
+  \quad\in\mathbb Q .
+\]
+This combination is invariant under tensoring \(E\) by a line bundle.  Indeed,
+if \(\ell=c_1(L)\), then
+\[
+  c_1(E\otimes L)=c_1(E)+N\ell
+\]
+and
+\[
+  c_2(E\otimes L)
+  =
+  c_2(E)+(N-1)c_1(E)\ell+\frac{N(N-1)}{2}\ell^2 .
+\]
+Substitution gives
+\[
+\begin{aligned}
+  c_2(E\otimes L)
+  &-\frac{N-1}{2N}c_1(E\otimes L)^2\\
+  &=
+  c_2(E)-\frac{N-1}{2N}c_1(E)^2 .
+\end{aligned}
+\]
+Thus \(\nu\) is a characteristic class of the projective bundle.  Since
+\(c_2(E)\) is integral, its fractional part is
+\[
+  -\frac{N-1}{2N}c_1(E)^2
+  \quad\text{mod }1 .
+\]
+The Pontryagin square is the lift of \(w_2^2\) modulo \(2N\); hence
+\[
+  c_1(E)^2\equiv \mathcal P(w_2)\pmod{2N}.
+\]
+The displayed formula follows.
+\end{proof}
+
+This characteristic-class formula is the global reason that shifting the
+ordinary continuous theta angle by \(2\pi\) changes the discrete theta
+coordinate in a theory whose bundles fail to lift to \(SU(N)\).
+
+\section{Discrete Theta Coordinate For \texorpdfstring{\(SU(N)/\mathbb Z_k\)}{SU(N)/Zk}}
+
+The pure \(SU(N)/\mathbb Z_k\) Yang--Mills theories have a discrete theta
+coordinate
+\[
+  p\in\mathbb Z_k
+\]
+in addition to the continuous theta angle.  This coordinate can be detected
+without writing a continuum path integral: it is the electric tilt of the
+minimal magnetic line.  With the finite charge notation of
+Chapter~\ref{ch:global-forms-higher-form-symmetry}, write a dyonic line label
+as
+\[
+  (e,m)\in\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}.
+\]
+The genuine line lattice is
+\[
+  L_{N,k,p}
+  =
+  \langle (k,0),(p,N/k)\rangle .
+\]
+The generator \((k,0)\) records the Wilson lines that descend to
+\(SU(N)/\mathbb Z_k\).  The generator \((p,N/k)\) records the minimal magnetic
+line, whose magnetic charge is \(N/k\) and whose electric charge is shifted by
+the discrete theta coordinate \(p\).  The identification
+\[
+  p\sim p+k
+\]
+holds because
+\[
+  (p+k,N/k)=(p,N/k)+(k,0).
+\]
+Thus \(p\) is naturally a class in \(\mathbb Z_k\).
+
+\begin{proposition}[Discrete theta tilt and maximal locality]
+\label{prop:discrete-theta-line-tilt}
+For each \(p\in\mathbb Z_k\), the line lattice
+\[
+  L_{N,k,p}
+  =
+  \langle (k,0),(p,N/k)\rangle
+  \subset\mathbb Z_N\oplus\mathbb Z_N
+\]
+is maximal isotropic for the finite Dirac pairing
+\[
+  \overline B((e,m),(e',m'))
+  =
+  \frac{em'-e'm}{N}
+  \quad\in\mathbb Q/\mathbb Z .
+\]
+Changing \(p\) changes the electric charge of the minimal magnetic line by a
+Witten-effect shift.
+\end{proposition}
+
+\begin{proof}
+The isotropy and maximality are proved in
+Proposition~\ref{prop:su-n-finite-line-lattices}.  The new point is the
+interpretation of \(p\).  The minimal magnetic generator has magnetic
+component \(N/k\), the generator of the magnetic subgroup allowed by the
+global form.  Its electric component is \(p\).  Replacing \(p\) by \(p+k\)
+adds the Wilson generator \((k,0)\), so the subgroup is unchanged.  Therefore
+the inequivalent tilts are indexed by \(p\in\mathbb Z_k\).  A shift of the
+continuous theta angle by \(2\pi\) changes the electric charge of a magnetic
+line by its magnetic charge in the finite pairing convention; in these
+coordinates this sends
+\[
+  p\longmapsto p+1
+  \quad\text{in }\mathbb Z_k .
+\]
+\end{proof}
+
+For \(N=2\) this gives the familiar three finite line spectra:
+\[
+  SU(2):\ \langle(1,0)\rangle,\qquad
+  SO(3)_+:\ \langle(0,1)\rangle,\qquad
+  SO(3)_-:\ \langle(1,1)\rangle .
+\]
+The last two have the same local Lie algebra and the same quotient gauge
+group \(SO(3)=SU(2)/\mathbb Z_2\), but different discrete theta coordinate
+and different dyonic line spectrum.
+
+\section{Gauging One-Form Symmetry And Counterterms}
+
+Start with the \(SU(N)\) theory and its electric
+\(\mathbb Z_N\) one-form symmetry.  Coupling this symmetry to a background
+two-form field
+\[
+  B\in Z^2(M,\mathbb Z_N)
+\]
+modifies the allowed bundles by allowing transition functions to close only
+up to the center.  Gauging a subgroup \(\mathbb Z_k\subset\mathbb Z_N\) means
+summing over the corresponding two-form gauge field, with a choice of
+Pontryagin-square counterterm.  The result is an
+\(SU(N)/\mathbb Z_k\) theory, and the counterterm choice is the discrete theta
+coordinate \(p\) seen by the line lattice above.
+
+The counterterm also controls anomalies.  If the generating functional in
+background \(B\) transforms under a one-form gauge transformation by a phase
+\[
+  Z[B+\delta\Lambda]
+  =
+  \exp\left(2\pi\ii\int_M \alpha(B,\Lambda)\right)Z[B],
+\]
+then the phase is removed by a local counterterm exactly when
+\(\alpha\) is the gauge variation of a \(D\)-dimensional local cochain.  If
+the phase is the boundary variation of a \((D+1)\)-dimensional invertible
+theory, it is an anomaly.  Discrete theta terms and anomaly inflow are
+therefore the same cohomological mechanism viewed in neighboring dimensions:
+in \(D\) dimensions the cochain changes the definition of the theory, and in
+\(D+1\) dimensions its variation supplies an inflow phase for a boundary.
 
 \section{Continuum Gauge-Theory Status}
 
-In continuum Yang--Mills theory with nontrivial global form, discrete theta
-terms are defined by summing over bundles with specified characteristic
-classes and weighting each topological sector by the corresponding phase.
-A lattice regulator can implement the same data through plaquette variables
-and higher-form background cochains.  The comparison between continuum and
-lattice definitions requires matching characteristic classes and line
-operator spectra.
+A continuum Yang--Mills theory with nontrivial global form is specified by:
+\[
+\begin{array}{ll}
+  \text{local data} &
+  \mathfrak{su}(N)\text{ fields and curvature action},\\[1mm]
+  \text{global form} &
+  SU(N)/\mathbb Z_k,\\[1mm]
+  \text{bundle sum} &
+  \text{principal }SU(N)/\mathbb Z_k\text{ bundles on }M,\\[1mm]
+  \text{topological weights} &
+  \theta\text{ and }p\in\mathbb Z_k,\\[1mm]
+  \text{line spectrum} &
+  L_{N,k,p}\subset\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m},\\[1mm]
+  \text{background fields} &
+  \text{two-form backgrounds for remaining one-form symmetries}.
+\end{array}
+\]
+A lattice regulator implements the same data by plaquette variables and
+finite cochains for higher-form backgrounds.  Matching a lattice construction
+to the continuum description requires matching the obstruction class
+\(w_2^{(k)}\), the Pontryagin-square phase, the continuous theta coordinate,
+and the genuine line spectrum.  Perturbation theory around the trivial bundle
+sees only the local Lie algebra and curvature vertices; the discrete theta
+data are detected by global bundle sectors and extended operators.
 
 \begin{openproblem}[Discrete theta terms in interacting continuum QFT]
 \label{op:discrete-theta-continuum-qft}
 Give a nonperturbative construction of four-dimensional gauge theories with
 all global forms and discrete theta terms in which bundles, one-form
 backgrounds, line operators, anomalies, and continuum limits are treated in a
-single framework.
+single framework, and prove the equivalence between continuum characteristic
+classes, lattice finite-cochain definitions, and the operator line spectra.
 \end{openproblem}

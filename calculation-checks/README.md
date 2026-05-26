@@ -179,6 +179,14 @@ Current checks:
   formula from Dirac plus Abelian gauge indices, the
   \(2\chi+3\sigma\) identity, Donaldson descent degrees, and the
   trace-delta instanton-action coefficient.
+- `discrete_theta_terms_checks.py`: finite arithmetic checks for the discrete
+  theta terms chapter, including the Pontryagin-square quadratic-refinement
+  identity, oriented classification periodicity of the counterterm group,
+  \(p\sim p+k\) for \(SU(N)/\mathbb Z_k\) line lattices, mutual locality of
+  \(L_{N,k,p}\), the \(SU(2)\), \(SO(3)_+\), and \(SO(3)_-\) cases, and the
+  electric tilt under a \(2\pi\) theta shift, together with tensor-line
+  invariance of the projective second Chern coordinate and the fractional
+  \(PSU(N)\) instanton-number sign convention.
 - `extended_defect_ward_checks.py`: finite arithmetic checks for the extended
   operators and topological defects chapter, including group-like
   \(\mathbb Z_N\) fusion, higher-form Ward phase multiplicativity, orientation
