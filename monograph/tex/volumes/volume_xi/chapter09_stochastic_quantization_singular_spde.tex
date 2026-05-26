@@ -2250,6 +2250,112 @@ therefore include not only a moment bound for each fixed coordinate, but also
 the increment bound \eqref{eq:spde-dyadic-net-increment-bound} in the
 parameters that enter the model seminorm.
 
+\begin{theorem}[Scale-summed dyadic-net coordinate upgrade]
+\label{thm:spde-scale-summed-coordinate-upgrade}
+Let \(p\geq1\).  For every \(m\in\mathbb N=\{0,1,2,\ldots\}\), let
+\((\mathcal X_m,d_m)\) be a compact metric space with finite nets
+\(\mathcal X_{m,\ell}\), \(\ell\geq0\), projections
+\[
+  \pi_{m,\ell}:\mathcal X_m\to\mathcal X_{m,\ell},
+\]
+and edge sets
+\[
+  \mathcal E_{m,\ell}
+  =
+  \{(\pi_{m,\ell}x,\pi_{m,\ell+1}x):x\in\mathcal X_m\}.
+\]
+Assume
+\[
+  |\mathcal X_{m,0}|\leq C_0 2^{D m},
+  \qquad
+  |\mathcal E_{m,\ell}|\leq C_1 2^{D m}2^{d\ell}
+  \quad(m,\ell\geq0),
+  \label{eq:spde-scale-net-entropy}
+\]
+for constants \(C_0,C_1,D,d\geq0\).  Let \(Y_m:\mathcal X_m\to
+L^p(\Omega)\) have almost surely continuous sample paths.  Suppose there are
+constants \(B_0,B,\sigma,\varepsilon>0\) such that
+\[
+  \mathbb E|Y_m(u)|^p\leq B_0^p2^{-p\sigma m}
+  \quad(u\in\mathcal X_{m,0})
+\]
+and
+\[
+  \mathbb E|Y_m(v)-Y_m(u)|^p
+  \leq
+  B^p2^{-p\sigma m}2^{-(d+\varepsilon)\ell}
+  \quad((u,v)\in\mathcal E_{m,\ell}).
+\]
+If
+\[
+  \sigma>\frac{D}{p},
+  \label{eq:spde-scale-slack-condition}
+\]
+then
+\begin{equation}
+  \left\|
+    \sup_{m\geq0}\sup_{x\in\mathcal X_m}|Y_m(x)|
+  \right\|_{L^p(\Omega)}
+  \leq
+  \frac{
+    C_0^{1/p}B_0+
+    C_1^{1/p}B(1-2^{-\varepsilon/p})^{-1}
+  }
+  {1-2^{-(\sigma-D/p)}} .
+  \label{eq:spde-scale-summed-supremum-bound}
+\end{equation}
+
+If \(Y_m=Y_{n,m}\) depends on a cutoff index \(n\) and the two moment
+hypotheses are multiplied by \(2^{-p\rho n}\), with \(\rho>0\), then the
+right-hand side of \eqref{eq:spde-scale-summed-supremum-bound} is multiplied
+by \(2^{-\rho n}\).
+\end{theorem}
+
+\begin{proof}
+Fix \(m\).  Apply
+Theorem~\ref{thm:spde-dyadic-net-supremum-upgrade} to the compact space
+\(\mathcal X_m\).  The base entropy and edge entropy in
+\eqref{eq:spde-scale-net-entropy} replace \(C_0\) and \(C_1\) by
+\(C_0 2^{Dm}\) and \(C_1 2^{Dm}\), while the coordinate moment constants are
+multiplied by \(2^{-\sigma m}\).  Hence
+\[
+  \left\|
+    \sup_{x\in\mathcal X_m}|Y_m(x)|
+  \right\|_{L^p}
+  \leq
+  \left(
+    C_0^{1/p}B_0+
+    \frac{C_1^{1/p}B}{1-2^{-\varepsilon/p}}
+  \right)
+  2^{-(\sigma-D/p)m}.
+\]
+The \(L^p\) triangle inequality gives
+\[
+  \left\|
+    \sup_{m\geq0}\sup_{x\in\mathcal X_m}|Y_m(x)|
+  \right\|_{L^p}
+  \leq
+  \sum_{m\geq0}
+  \left\|
+    \sup_{x\in\mathcal X_m}|Y_m(x)|
+  \right\|_{L^p}.
+\]
+The geometric series in \(m\) converges exactly under
+\eqref{eq:spde-scale-slack-condition} and gives
+\eqref{eq:spde-scale-summed-supremum-bound}.  The cutoff-dependent statement
+follows by carrying the factor \(2^{-\rho n}\) through the same inequalities.
+\end{proof}
+
+The parameter \(m\) in
+Theorem~\ref{thm:spde-scale-summed-coordinate-upgrade} is the physical
+testing scale, \(\delta\simeq2^{-m}\), in a model seminorm.  The exponent
+\(D\) is the entropy cost of resolving base points and test functions at
+that scale.  The exponent \(\sigma\) is the regularity slack between the
+assigned homogeneity and the moment regularity proved for the stochastic
+coordinate.  Thus the condition \(\sigma>D/p\) is the precise high-moment
+requirement: by choosing \(p\) large enough, a positive regularity slack
+beats the scale entropy.
+
 \begin{theorem}[Coordinate estimates imply finite-sector model convergence]
 \label{thm:spde-coordinate-estimates-model-convergence}
 Fix \(K\), \(\gamma\), \(A_{<\gamma}\), and \(r\) as in

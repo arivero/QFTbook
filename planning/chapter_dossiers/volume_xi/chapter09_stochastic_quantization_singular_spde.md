@@ -79,6 +79,8 @@ data.
 - `C_0`, `C_1`, `d`, `epsilon`: base-net size, edge entropy constant,
   entropy exponent, and excess moment-decay exponent in the dyadic-net
   supremum theorem.
+- `m`, `D`, `sigma`: physical testing-scale index, scale-entropy exponent,
+  and regularity slack in the scale-summed coordinate supremum theorem.
 - `I`, `U_{n,i}`, `V_{n,i}`, `A_ctrl`: finite coordinate index set,
   uniform coordinate fields, cutoff-increment coordinate fields, and the
   deterministic constant controlling model seminorms and distances by
@@ -212,6 +214,11 @@ data.
   \(L^p\) bound for the compact supremum with the explicit constant
   \(C_0^{1/p}B_0+C_1^{1/p}B/(1-2^{-\epsilon/p})\), and cutoff decay factors
   pass through unchanged.
+- Proves a scale-summed coordinate supremum theorem: when the parameter
+  entropy at physical scale \(m\) costs \(2^{Dm}\) and the stochastic
+  coordinate has regularity slack \(2^{-\sigma m}\), the supremum over all
+  scales is \(L^p\)-controlled if \(\sigma>D/p\).  The proof applies the
+  dyadic-net theorem at each scale and sums the resulting geometric series.
 - Proves a coordinate-to-model convergence criterion: if finitely many
   compact coordinate suprema dominate the finite-sector model seminorm and
   model distance, and if each coordinate satisfies the dyadic-net moment and
@@ -401,3 +408,9 @@ data maps.
   explicit coordinate fields.  The calculation-check companion verifies the
   homogeneity cutoff, the excluded boundary monomial, the two nontrivial
   \(\Gamma\)-gap exponents, and the coordinate count.
+- 2026-05-26 issue #582 scale-summed-coordinate continuation: the chapter
+  now proves the theorem that turns fixed-scale dyadic-net coordinate
+  estimates into all-scale coordinate suprema when the regularity slack beats
+  scale entropy after taking \(L^p\).  The calculation-check companion
+  verifies the entropy cancellation, the geometric scale sum, and cutoff
+  factor propagation in an exact sample.

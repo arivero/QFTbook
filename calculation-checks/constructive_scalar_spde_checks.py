@@ -607,6 +607,40 @@ def check_dyadic_net_supremum_upgrade_arithmetic():
     assert_equal(cutoff_total, Fraction(27, 16), "dyadic-net cutoff tail")
 
 
+def check_scale_summed_coordinate_upgrade_arithmetic():
+    # Scale-summed coordinate upgrade: entropy 2^(D m) changes the scale
+    # decay from 2^(-sigma m) to 2^(-(sigma-D/p)m) after taking an L^p root.
+    p = 2
+    d_big = 4
+    sigma = 3
+    epsilon = 2
+    c0_root = 3
+    c1_root = 2
+    b0 = 5
+    b = 3
+    slack = Fraction(sigma) - Fraction(d_big, p)
+    assert_equal(slack, 1, "scale-summed entropy slack")
+
+    if epsilon % p != 0:
+        raise AssertionError("scale-summed sample must use integral epsilon/p")
+    ell_ratio = Fraction(1, 2) ** (epsilon // p)
+    per_scale_constant = c0_root * b0 + c1_root * b / (1 - ell_ratio)
+    scale_ratio = Fraction(1, 2) ** slack
+    total = per_scale_constant / (1 - scale_ratio)
+    assert_equal(per_scale_constant, 27, "scale-summed per-scale constant")
+    assert_equal(scale_ratio, Fraction(1, 2), "scale-summed m-ratio")
+    assert_equal(total, 54, "scale-summed total constant")
+
+    m = 5
+    summed_base_p_moment = (c0_root**p) * (2 ** (d_big * m)) * (b0**p) * Fraction(1, 2) ** (p * sigma * m)
+    assert_equal(summed_base_p_moment, Fraction(225, 1024), "scale-summed base entropy cancellation")
+
+    rho = 2
+    n = 3
+    cutoff_total = total * Fraction(1, 2) ** (rho * n)
+    assert_equal(cutoff_total, Fraction(27, 32), "scale-summed cutoff factor")
+
+
 def check_coordinate_to_model_convergence_arithmetic():
     # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
     # epsilon=2, every coordinate has geometric ratio 1/2.  The first
@@ -739,10 +773,11 @@ def main():
     check_dyadic_parabolic_convolution_bound_arithmetic()
     check_parabolic_taylor_subtraction_gain_arithmetic()
     check_dyadic_net_supremum_upgrade_arithmetic()
+    check_scale_summed_coordinate_upgrade_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":
