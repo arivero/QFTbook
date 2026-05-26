@@ -358,6 +358,116 @@ Sobolev DPD fixed point below is available for any prescribed
 \(0<\kappa<1/4\) after taking \(s=\kappa\).
 \end{proof}
 
+\begin{proposition}[Mixed-covariance criterion for common Wick limits]
+\label{prop:spde-mixed-covariance-common-wick-limits}
+Let \(X\) be a centered Gaussian generalized field on \(\mathbb T^2\), and
+let \(X_N^\sigma\), \(\sigma\in\{A,B\}\), be centered Gaussian cutoff fields
+on the same probability space.  Write
+\[
+  C(x,y)=\mathbb E[X(x)X(y)],
+  \qquad
+  C_N^{\sigma\sigma}(x,y)
+  =
+  \mathbb E[X_N^\sigma(x)X_N^\sigma(y)],
+\]
+and
+\[
+  C_N^{\sigma\infty}(x,y)
+  =
+  \mathbb E[X_N^\sigma(x)X(y)] .
+\]
+Fix \(n\geq1\), and assume that these covariance kernels are represented by
+functions in \(L^n(\mathbb T^2\times\mathbb T^2)\) and that, for
+\(\sigma=A,B\),
+\begin{equation}
+  \|C_N^{\sigma\sigma}-C\|_{L^n(\mathbb T^2\times\mathbb T^2)}
+  +
+  \|C_N^{\sigma\infty}-C\|_{L^n(\mathbb T^2\times\mathbb T^2)}
+  \longrightarrow0 .
+  \label{eq:spde-mixed-covariance-common-wick-limits}
+\end{equation}
+Then, for every real \(f\in C^\infty(\mathbb T^2)\),
+\[
+  :\!(X_N^\sigma)^n\!:(f)
+  \longrightarrow
+  :\!X^n\!:(f)
+  \quad\hbox{in }L^2(\Omega),
+  \qquad \sigma=A,B,
+  \label{eq:spde-mixed-covariance-wick-coordinate-convergence}
+\]
+where each Wick product is normal ordered with respect to the covariance of
+the Gaussian field appearing in it.
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  Y_N^\sigma=:\!(X_N^\sigma)^n\!:(f),
+  \qquad
+  Y=:\!X^n\!:(f).
+\]
+For two jointly Gaussian centered random variables \(U,V\), Wick ordering
+with respect to the individual variances gives
+\[
+  \mathbb E\bigl[:\!U^n\!:\,:\!V^n\!:\bigr]
+  =
+  n!\,\mathbb E[UV]^n .
+\]
+This follows by differentiating the identity
+\[
+  \mathbb E\!\left[
+    e^{tU-\frac12t^2\mathbb E[U^2]}
+    e^{sV-\frac12s^2\mathbb E[V^2]}
+  \right]
+  =
+  e^{ts\mathbb E[UV]}
+\]
+\(n\) times in \(t\) and \(n\) times in \(s\) at the origin.  Therefore
+\[
+\begin{aligned}
+  \mathbb E|Y_N^\sigma-Y|^2
+  =
+  n!\int_{\mathbb T^2\times\mathbb T^2}
+  f(x)f(y)
+  \Big[
+    \big(C_N^{\sigma\sigma}(x,y)\big)^n
+    -2\big(C_N^{\sigma\infty}(x,y)\big)^n
+    +C(x,y)^n
+  \Big]\,\dd^2x\,\dd^2y .
+\end{aligned}
+\]
+It remains to show that the two \(n\)-th powers converge in \(L^1\) to
+\(C^n\).  If \(a,b\in L^n(\mathbb T^2\times\mathbb T^2)\), then
+\[
+  |a^n-b^n|
+  \leq
+  n|a-b|\bigl(|a|^{n-1}+|b|^{n-1}\bigr).
+\]
+Holder's inequality gives
+\[
+  \|a^n-b^n\|_{L^1}
+  \leq
+  n\|a-b\|_{L^n}
+  \left(
+    \|a\|_{L^n}^{n-1}+\|b\|_{L^n}^{n-1}
+  \right).
+\]
+The convergence assumption
+\eqref{eq:spde-mixed-covariance-common-wick-limits} implies that the
+\(L^n\)-norms of \(C_N^{\sigma\sigma}\) and
+\(C_N^{\sigma\infty}\) are bounded and that both kernels converge to \(C\)
+in \(L^n\).  Hence
+\[
+  \big(C_N^{\sigma\sigma}\big)^n\to C^n,
+  \qquad
+  \big(C_N^{\sigma\infty}\big)^n\to C^n
+  \quad\hbox{in }L^1.
+\]
+Since \(f\) is bounded, the displayed formula for
+\(\mathbb E|Y_N^\sigma-Y|^2\) tends to zero.  This proves
+\eqref{eq:spde-mixed-covariance-wick-coordinate-convergence}.
+\end{proof}
+
 \begin{corollary}[Common limits of finite Wick-coordinate vectors]
 \label{cor:spde-common-wick-coordinate-limits}
 Fix finitely many pairs
@@ -431,7 +541,10 @@ Proposition~\ref{prop:spde-two-dimensional-wick-powers}.  Therefore
 \]
 The two-regulator statement is identical after replacing the preceding
 coordinate convergence by
-\eqref{eq:spde-common-wick-coordinate-l2-hypothesis}.  \(L^2\)-convergence
+\eqref{eq:spde-common-wick-coordinate-l2-hypothesis}; a concrete covariance
+criterion for this hypothesis is
+Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}.
+\(L^2\)-convergence
 implies convergence in probability by Chebyshev's inequality.  Finally,
 if \(\mathcal X_N^\sigma\to\mathcal X\) in probability and \(F\) is
 continuous, then \(F(\mathcal X_N^\sigma)\to F(\mathcal X)\) in probability
@@ -3701,6 +3814,9 @@ Assume the following three further analytic facts.
   under these common Wick-limit hypotheses and the uniform \(L^p\) stability
   bound, the bounded Wick-cylinder comparison is the direct conclusion of
   Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
+  The common Wick-limit hypothesis itself can be checked from mixed
+  covariance convergence by
+  Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -3803,8 +3919,9 @@ Wick-coordinate cylinder vectors is
 Corollary~\ref{cor:spde-common-wick-coordinate-limits}; combined with the
 stability estimate, these inputs give the bounded comparison statement in
 Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
-The
-uniform-integrability input can be supplied by the exponential cylinder-moment
+The common Wick-limit hypothesis is reduced to a covariance estimate by
+Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}.
+The uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite
 quartic tails at each lattice cutoff are proved by

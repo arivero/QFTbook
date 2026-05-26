@@ -96,6 +96,9 @@ data.
   negative-Sobolev moments.
 - `V_N`, `Z_N`: cutoff Wick quartic interaction and its finite-dimensional
   partition function in the Nelson-stability-to-density proposition.
+- `C_N^{sigma sigma}`, `C_N^{sigma infinity}`: cutoff covariance and
+  cutoff-limit mixed covariance in the mixed-covariance criterion for common
+  Wick limits.
 - `mathcal X_N`, `mathcal X_N^A`, `mathcal X_N^B`: finite vectors of
   smeared Wick coordinates used in the common-coordinate convergence
   corollary.
@@ -230,6 +233,14 @@ data.
   two-dimensional stochastic convolution, including convergence in
   \(L^2(\Omega;H^{-s})\) for every \(s>0\), using a two-dimensional
   massive-propagator convolution bound.
+- Proves a mixed-covariance criterion for common Wick limits.  If two cutoff
+  Gaussian fields and their common limiting Gaussian field have cutoff
+  covariances \(C_N^{\sigma\sigma}\) and mixed covariances
+  \(C_N^{\sigma\infty}\) converging to the limiting covariance \(C\) in
+  \(L^n(\mathbb T^2\times\mathbb T^2)\), then the smeared \(n\)-th Wick
+  powers converge in \(L^2\) to the same limit.  The proof differentiates
+  the two-variable Wick generating function and uses
+  \(\|a^n-b^n\|_1\le n\|a-b\|_n(\|a\|_n^{n-1}+\|b\|_n^{n-1})\).
 - Extracts the finite Wick-coordinate vector convergence needed by regulator
   comparison.  For any finite list of smearings and Wick orders, coordinate
   convergence in \(L^2\) implies convergence of the vector in
