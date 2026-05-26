@@ -171,6 +171,12 @@ Current checks:
   plaquette coefficient formula
   \(a_\ell=I_\ell-I_{\ell+2}=2(\ell+1)I_{\ell+1}/\beta\), and finite
   \(SU(2)\) tensor-product character multiplicities.
+- `locally_covariant_kg_checks.py`: exact finite linear-algebra checks for
+  the Volume XII locally covariant Klein--Gordon construction, including
+  descent of the causal-propagator pairing to the equation-of-motion
+  quotient, vanishing of equation generators in the CCR commutator,
+  symplectic preservation under embeddings, and the quotient-level
+  distinction between Cauchy and non-Cauchy morphisms.
 - `qcd_string_luscher_checks.py`: exact rational checks for the QCD-string
   effective-string section, including the open and closed transverse-scalar
   Casimir coefficients \(-1/24\) and \(-1/6\), the displayed

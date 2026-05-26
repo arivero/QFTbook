@@ -3,116 +3,662 @@
 
 \ConventionsMixed
 
-QFT on curved spacetime treats the metric as a fixed background field and asks
-for local observables that vary functorially with the background.  The basic
-replacement for a preferred vacuum is a class of states whose short-distance
-singularities match those of positive-frequency Minkowski two-point
-functions in local inertial coordinates.
+Curved-spacetime QFT is a background-field problem.  The Lorentzian metric,
+orientation, time orientation, spin structure, background gauge bundle, and
+external sources are held fixed, while the quantum observables are assigned
+locally and covariantly to each background.  The absence of a preferred
+translation-invariant vacuum is replaced by a condition on states: their
+short-distance singularity must have the same positive-frequency geometric
+form as the Minkowski vacuum when examined in a sufficiently small convex
+normal neighborhood.
 
-\section{Locally Covariant Assignment}
+This chapter fixes the functorial language and then constructs the free
+Klein--Gordon example in detail.  The example is important because the
+time-slice axiom, causal propagation, commutation relations, and Hadamard
+subtraction are visible in one model without using a perturbative expansion.
+
+\section{Spacetimes And Causal Embeddings}
+
+Let \(M\) be a smooth \(D\)-manifold with Lorentzian metric \(g\) of
+mostly-plus signature.  A tangent vector \(v\in T_xM\) is causal when
+\(g_x(v,v)\le0\), timelike when \(g_x(v,v)<0\), and null when
+\(g_x(v,v)=0\) and \(v\ne0\).  A time orientation is a continuous choice of
+future cone in the causal cone at every point.  For a subset \(S\subset M\),
+write \(J_M^\pm(S)\) for the causal future and causal past of \(S\).
+
+\begin{definition}[Globally hyperbolic spacetime]
+\label{def:globally-hyperbolic-spacetime}
+An oriented and time-oriented Lorentzian manifold \((M,g)\) is globally
+hyperbolic when it has no closed causal curve and when
+\[
+  J_M^+(p)\cap J_M^-(q)
+\]
+is compact for every \(p,q\in M\).  A Cauchy surface is a subset
+\(\Sigma\subset M\) intersected exactly once by every inextendible timelike
+curve.  For globally hyperbolic \(M\), smooth spacelike Cauchy surfaces
+exist, and \(M\) is diffeomorphic to \(\mathbb R\times\Sigma\).
+\end{definition}
+
+The compactness condition is the analytic input behind finite propagation
+statements.  If \(K\subset M\) is compact, then
+\[
+  J_M^+(K)\cap J_M^-(K')
+\]
+is compact for every compact \(K'\subset M\).  This property is used below
+when a solution is cut off between two Cauchy surfaces.
+
+\begin{definition}[Causally convex subset]
+\label{def:causally-convex-subset}
+An open subset \(O\subset M\) is causally convex when every causal curve in
+\(M\) whose endpoints lie in \(O\) is entirely contained in \(O\).
+\end{definition}
+
+Causal convexity is the condition that lets a field equation be restricted
+to a subspacetime without importing causal propagation from the complement.
 
 \begin{definition}[Background category]
 \label{def:background-category-loc}
-Let \({\bf Loc}\) be the category whose objects are oriented and
-time-oriented globally hyperbolic Lorentzian manifolds \((M,g)\), possibly
-with specified background bundles and sources.  A morphism
-\(\chi:(M,g)\to(M',g')\) is an isometric embedding preserving orientations
-and causal structure, with causally convex image.
+Let \({\bf Loc}\) be the category defined as follows.
+
+An object is an oriented, time-oriented, globally hyperbolic Lorentzian
+manifold \((M,g)\), possibly equipped with fixed background bundles and
+smooth background sources.  A morphism
+\[
+  \chi:(M,g)\longrightarrow (N,h)
+\]
+is a smooth embedding with open causally convex image such that
+\[
+  \chi^*h=g
+\]
+and such that \(\chi\) preserves the declared orientation, time orientation,
+and background bundle/source data.  A morphism \(\chi:M\to N\) is a Cauchy
+morphism when \(\chi(M)\) contains a Cauchy surface of \(N\).
 \end{definition}
+
+Composition of morphisms is ordinary composition of embeddings.  The image
+of a composite is causally convex: if a causal curve in the final spacetime
+has endpoints in the composite image, causal convexity of the second image
+first keeps the curve in the intermediate image, and causal convexity of the
+first image then keeps its pullback in the original image.  Thus the above
+data form a category.
+
+\section{Algebra-Valued Functors}
+
+Let \({\bf Alg}_*\) denote a category of unital complex \(\ast\)-algebras.
+Its morphisms are unit-preserving injective \(\ast\)-homomorphisms.  In
+analytic versions one uses locally convex topological \(\ast\)-algebras and
+continuous morphisms; the algebraic definition is enough for the functorial
+axioms in this chapter.
 
 \begin{definition}[Locally covariant QFT]
 \label{def:locally-covariant-qft}
 A locally covariant QFT is a covariant functor
 \[
-  \mathfrak A:{\bf Loc}\to{\bf Alg}
+  \mathfrak A:{\bf Loc}\longrightarrow{\bf Alg}_*
 \]
-from the background category to a category of \(\ast\)-algebras, satisfying
-isotony, Einstein causality for causally disjoint subregions, and the
-time-slice axiom: if \(\chi(M)\) contains a Cauchy surface of \(M'\), then
-\(\mathfrak A(\chi)\) is an isomorphism.
+with the following additional properties.
+
+\begin{enumerate}[label=(\roman*)]
+\item If \(\chi:M\to N\) is a Cauchy morphism, then
+\[
+  \mathfrak A(\chi):\mathfrak A(M)\longrightarrow\mathfrak A(N)
+\]
+is an isomorphism.  This is the time-slice axiom.
+
+\item If \(\chi_i:M_i\to N\), \(i=1,2\), have causally disjoint images, then
+\[
+  [\,\mathfrak A(\chi_1)(A_1),\mathfrak A(\chi_2)(A_2)\,]=0
+\]
+for all \(A_i\in\mathfrak A(M_i)\).  This is Einstein causality.
+\end{enumerate}
 \end{definition}
 
-A locally covariant field of tensor type \(E\) is a natural transformation
-from compactly supported test sections of \(E\) to the algebra functor:
-\[
-  \Phi_M(f)\in\mathfrak A(M),
-  \qquad
-  \mathfrak A(\chi)\Phi_M(f)=\Phi_{M'}(\chi_\ast f).
-\]
-This naturality condition is the curved-spacetime replacement for global
-translation covariance.
+The injectivity of morphisms in \({\bf Alg}_*\) records isotony: an
+admissible spacetime inclusion identifies the algebra of the smaller
+background with a subalgebra of the larger one.
 
-\section{Hadamard Singular Structure}
-
-For a real Klein--Gordon field
+\begin{definition}[Kinematic local algebra]
+\label{def:kinematic-local-algebra}
+Let \(O\subset M\) be open, causally convex, and globally hyperbolic with
+the induced metric and orientations.  Let
+\(\iota_{M;O}:O\hookrightarrow M\) be the inclusion morphism in
+\({\bf Loc}\).  The kinematic algebra of \(O\) inside \(M\) is
 \[
-  P_g=-\nabla^\mu\nabla_\mu+m^2+\xi R[g],
-\]
-a quasifree state is determined by its two-point distribution
-\(\omega_2(x,y)\).  In four dimensions the Hadamard condition says that, in a
-convex normal neighborhood,
-\[
-  \omega_2(x,y)
+  \mathfrak A^{\rm kin}(M;O)
   =
-  \lim_{\epsilon\downarrow0}
+  \mathfrak A(\iota_{M;O})(\mathfrak A(O))
+  \subset \mathfrak A(M).
+\]
+\end{definition}
+
+\begin{proposition}[Local net associated to a locally covariant theory]
+\label{prop:kinematic-net-from-lcqft}
+For each fixed \(M\), the assignment
+\[
+  O\longmapsto \mathfrak A^{\rm kin}(M;O)
+\]
+on causally convex globally hyperbolic open subsets is isotone and satisfies
+Einstein causality.
+\end{proposition}
+
+\begin{proof}
+If \(O_1\subset O_2\), the inclusion factors as
+\[
+  O_1\stackrel{\iota_{O_2;O_1}}{\longrightarrow}O_2
+  \stackrel{\iota_{M;O_2}}{\longrightarrow}M .
+\]
+Functoriality gives
+\[
+  \mathfrak A(\iota_{M;O_1})
+  =
+  \mathfrak A(\iota_{M;O_2})\circ
+  \mathfrak A(\iota_{O_2;O_1}),
+\]
+so the image for \(O_1\) is contained in the image for \(O_2\).  If
+\(O_1\) and \(O_2\) are causally disjoint in \(M\), the two inclusion
+morphisms into \(M\) satisfy the hypothesis of Einstein causality in
+Definition~\ref{def:locally-covariant-qft}, and the commutator of the two
+image algebras vanishes.
+\end{proof}
+
+Locally covariant fields are defined by naturality.  Let
+\({\bf Test}_E\) be the functor assigning to \(M\) the vector space
+\(\Gamma_c(M,E_M)\) of compactly supported smooth sections of a natural
+bundle \(E_M\), and to a morphism \(\chi:M\to N\) the pushforward
+\(\chi_*:\Gamma_c(M,E_M)\to\Gamma_c(N,E_N)\).
+
+\begin{definition}[Locally covariant field]
+\label{def:locally-covariant-field}
+A locally covariant field of type \(E\) is a natural transformation
+\[
+  \Phi:{\bf Test}_E\Longrightarrow \mathfrak A .
+\]
+Equivalently, for every \(M\) and every \(f\in\Gamma_c(M,E_M)\) there is an
+element \(\Phi_M(f)\in\mathfrak A(M)\), and every morphism
+\(\chi:M\to N\) satisfies
+\[
+  \mathfrak A(\chi)\Phi_M(f)=\Phi_N(\chi_*f).
+  \label{eq:locally-covariant-field-naturality}
+\]
+\end{definition}
+
+The condition is a commutative square:
+\[
+\begin{tikzcd}[column sep=large,row sep=large]
+  \Gamma_c(M,E_M) \arrow[r,"\Phi_M"] \arrow[d,"\chi_*"']
+  & \mathfrak A(M) \arrow[d,"\mathfrak A(\chi)"]\\
+  \Gamma_c(N,E_N) \arrow[r,"\Phi_N"']
+  & \mathfrak A(N).
+\end{tikzcd}
+\]
+
+\section{States As Contravariant Data}
+
+A state on a unital \(\ast\)-algebra \(\mathcal A\) is a linear functional
+\(\omega:\mathcal A\to\mathbb C\) satisfying
+\[
+  \omega(\mathbf 1)=1,
+  \qquad
+  \omega(A^*A)\ge0
+  \quad\hbox{for all }A\in\mathcal A .
+\]
+Every morphism \(\alpha:\mathcal A\to\mathcal B\) pulls states on
+\(\mathcal B\) back to states on \(\mathcal A\) by composition:
+\[
+  \alpha^*\omega=\omega\circ\alpha .
+\]
+Thus a state assignment for a locally covariant theory is contravariant.
+
+\begin{definition}[Locally covariant state space]
+\label{def:locally-covariant-state-space}
+A locally covariant state space for \(\mathfrak A\) is a choice of subsets
+\[
+  \mathcal S(M)\subset \{\hbox{states on }\mathfrak A(M)\}
+\]
+such that for every morphism \(\chi:M\to N\),
+\[
+  \omega\in\mathcal S(N)
+  \quad\Longrightarrow\quad
+  \omega\circ\mathfrak A(\chi)\in\mathcal S(M).
+\]
+\end{definition}
+
+Hadamard states provide the state spaces used for free scalar fields on
+curved backgrounds.  Their definition is local in spacetime and stable under
+restriction to causally convex subregions.
+
+\section{The Free Klein--Gordon Functor}
+
+Fix real constants \(m^2\ge0\) and \(\xi\in\mathbb R\).  For every
+\((M,g)\in{\bf Loc}\), define the real differential operator
+\[
+  P_M=-\nabla^\mu\nabla_\mu+m^2+\xi R[g]
+\]
+on \(C^\infty(M,\mathbb R)\).  It is formally self-adjoint with respect to
+the pairing
+\[
+  (f,h)_M=\int_M f h\,\dd\operatorname{vol}_g .
+\]
+Global hyperbolicity gives unique retarded and advanced Green operators
+\[
+  E_M^{\rm ret},E_M^{\rm adv}:C_c^\infty(M)\longrightarrow C^\infty(M)
+\]
+with
+\[
+  P_M E_M^{\rm ret}f=f,\qquad
+  P_M E_M^{\rm adv}f=f,
+\]
+\[
+  E_M^{\rm ret}P_M f=f,\qquad
+  E_M^{\rm adv}P_M f=f,
+\]
+and support restrictions
+\[
+  \operatorname{supp}E_M^{\rm ret}f\subset J_M^+(\operatorname{supp}f),
+  \qquad
+  \operatorname{supp}E_M^{\rm adv}f\subset J_M^-(\operatorname{supp}f).
+\]
+The causal propagator is
+\[
+  E_M=E_M^{\rm ret}-E_M^{\rm adv}.
+\]
+
+\begin{lemma}[Kernel of the causal propagator]
+\label{lem:kg-causal-propagator-kernel}
+For \(f\in C_c^\infty(M)\),
+\[
+  E_M f=0
+  \quad\Longleftrightarrow\quad
+  f=P_M h\hbox{ for some }h\in C_c^\infty(M).
+\]
+\end{lemma}
+
+\begin{proof}
+If \(f=P_Mh\) with compactly supported \(h\), then
+\[
+  E_M f=E_M P_M h=h-h=0,
+\]
+using the defining identities for retarded and advanced Green operators.
+
+Conversely assume \(E_Mf=0\).  Then
+\[
+  u:=E_M^{\rm ret}f=E_M^{\rm adv}f .
+\]
+The retarded expression has support in \(J_M^+(\operatorname{supp}f)\), and
+the advanced expression has support in \(J_M^-(\operatorname{supp}f)\).
+Thus
+\[
+  \operatorname{supp}u
+  \subset
+  J_M^+(\operatorname{supp}f)\cap J_M^-(\operatorname{supp}f),
+\]
+which is compact by global hyperbolicity.  Finally \(P_Mu=f\).  Hence
+\(f\in P_M C_c^\infty(M)\).
+\end{proof}
+
+Define the real vector space of smeared solutions by
+\[
+  \mathcal V(M)
+  =
+  C_c^\infty(M,\mathbb R)/P_M C_c^\infty(M,\mathbb R),
+  \qquad
+  [f]_M \hbox{ for the class of }f .
+\]
+Define
+\[
+  \sigma_M([f]_M,[h]_M)
+  =
+  \int_M f\,E_M h\,\dd\operatorname{vol}_g .
+  \label{eq:kg-symplectic-form}
+\]
+This is well-defined because \(E_MP_M=0\) on compactly supported test
+functions and because \(P_M\) is formally self-adjoint.  It is antisymmetric:
+\[
+  \int_M f\,E_Mh\,\dd\operatorname{vol}_g
+  =
+  -\int_M h\,E_Mf\,\dd\operatorname{vol}_g ,
+\]
+which follows by applying formal self-adjointness to retarded and advanced
+Green operators and using
+\[
+  (E_M^{\rm ret})^*=E_M^{\rm adv}.
+\]
+Lemma~\ref{lem:kg-causal-propagator-kernel} implies that
+\(\sigma_M\) is nondegenerate on \(\mathcal V(M)\).
+
+\begin{definition}[CCR algebra of the scalar field]
+\label{def:curved-kg-ccr-algebra}
+The algebra \(\mathfrak A_{\rm KG}(M)\) is the unital \(\ast\)-algebra
+generated by symbols \(\Phi_M([f]_M)\), linear in \([f]_M\), with relations
+\[
+  \Phi_M([f]_M)^*=\Phi_M([f]_M),
+  \qquad
+  [\Phi_M([f]_M),\Phi_M([h]_M)]
+  =
+  \ii\,\sigma_M([f]_M,[h]_M)\mathbf 1 .
+\]
+\end{definition}
+
+The quotient by \(P_MC_c^\infty(M)\) is the equation of motion:
+\[
+  \Phi_M(P_Mh)=0 .
+\]
+The commutator is determined by the causal propagator and therefore by the
+hyperbolic equation, not by a choice of state.
+
+\begin{proposition}[Functoriality of the free scalar field]
+\label{prop:kg-functoriality}
+For every morphism \(\chi:M\to N\), the pushforward of test functions
+induces a symplectic linear map
+\[
+  \mathcal V(\chi):\mathcal V(M)\longrightarrow\mathcal V(N),
+  \qquad
+  [f]_M\longmapsto [\chi_*f]_N .
+\]
+Consequently there is an injective \(\ast\)-homomorphism
+\[
+  \mathfrak A_{\rm KG}(\chi):\mathfrak A_{\rm KG}(M)\to
+  \mathfrak A_{\rm KG}(N)
+\]
+defined by
+\[
+  \mathfrak A_{\rm KG}(\chi)\Phi_M([f]_M)
+  =
+  \Phi_N([\chi_*f]_N).
+\]
+\end{proposition}
+
+\begin{proof}
+The embedding is isometric and preserves background scalar data, so
+\[
+  P_N\chi_*f=\chi_*P_Mf .
+\]
+Therefore \(\chi_*\) maps \(P_MC_c^\infty(M)\) into
+\(P_NC_c^\infty(N)\), giving a map on quotients.  Causal convexity gives
+compatibility of causal propagators:
+\[
+  E_N\chi_*f=\chi_*E_Mf .
+  \label{eq:causal-propagator-embedding-compatibility}
+\]
+Indeed, both sides solve \(P_Nu=\chi_*f\) in \(\chi(M)\), both vanish outside
+the same retarded-minus-advanced causal support determined by
+\(\chi(\operatorname{supp}f)\), and uniqueness of retarded and advanced
+solutions gives equality.  The volume form is preserved by \(\chi\), hence
+\[
+  \sigma_N([\chi_*f]_N,[\chi_*h]_N)
+  =
+  \int_N \chi_*f\,E_N\chi_*h\,\dd\operatorname{vol}_h
+  =
+  \int_M f\,E_Mh\,\dd\operatorname{vol}_g
+  =
+  \sigma_M([f]_M,[h]_M).
+\]
+The universal property of the CCR algebra then gives a
+\(\ast\)-homomorphism preserving the defining commutator.  Injectivity
+follows from injectivity of the induced symplectic map; if
+\([\chi_*f]_N=0\), then \(E_N\chi_*f=0\), so
+\(\chi_*E_Mf=0\), hence \(E_Mf=0\) and \([f]_M=0\) by
+Lemma~\ref{lem:kg-causal-propagator-kernel}.
+\end{proof}
+
+\begin{proposition}[Time-slice property for the free scalar]
+\label{prop:kg-time-slice}
+If \(\chi:M\to N\) is a Cauchy morphism, then
+\[
+  \mathfrak A_{\rm KG}(\chi):\mathfrak A_{\rm KG}(M)\to
+  \mathfrak A_{\rm KG}(N)
+\]
+is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+It suffices to prove that
+\(\mathcal V(\chi):\mathcal V(M)\to\mathcal V(N)\) is surjective, since
+Proposition~\ref{prop:kg-functoriality} already gives injectivity and the
+CCR algebra is generated by the smeared fields.
+
+Let \(f\in C_c^\infty(N)\) and set \(u=E_Nf\).  Choose two smooth spacelike
+Cauchy surfaces \(\Sigma_-\) and \(\Sigma_+\) contained in \(\chi(M)\) such
+that \(\Sigma_+\) lies to the future of \(\Sigma_-\) and the compact set
+\[
+  J_N(\operatorname{supp}f)\cap J_N^+(\Sigma_-)\cap J_N^-(\Sigma_+)
+\]
+contains the part of \(u\) between the two surfaces.  Choose a smooth
+function \(\eta:N\to[0,1]\) that is \(0\) to the past of \(\Sigma_-\), is
+\(1\) to the future of \(\Sigma_+\), and whose derivative is supported in
+\(\chi(M)\).  Define
+\[
+  g=P_N(\eta u).
+\]
+Since \(P_Nu=0\), the support of \(g\) lies where derivatives of \(\eta\)
+are nonzero, hence \(g\in C_c^\infty(\chi(M))\).  Set
+\[
+  w=\eta u .
+\]
+The section \(w\) vanishes to the past of \(\Sigma_-\) and satisfies
+\(P_Nw=g\), so uniqueness of the retarded Green solution gives
+\[
+  E_N^{\rm ret}g=w .
+\]
+The section \(w-u=(\eta-1)u\) vanishes to the future of \(\Sigma_+\) and
+also satisfies \(P_N(w-u)=g\), so uniqueness of the advanced Green solution
+gives
+\[
+  E_N^{\rm adv}g=w-u .
+\]
+Therefore
+\[
+  E_Ng=E_N^{\rm ret}g-E_N^{\rm adv}g=w-(w-u)=u=E_Nf .
+\]
+Thus \(E_N(g-f)=0\).
+By Lemma~\ref{lem:kg-causal-propagator-kernel}, \(g-f=P_Nk\) for some
+\(k\in C_c^\infty(N)\).  Thus \([f]_N=[g]_N\).  Since
+\(\operatorname{supp}g\subset\chi(M)\), there is
+\(\widetilde g\in C_c^\infty(M)\) with \(g=\chi_*\widetilde g\), and
+\([f]_N=\mathcal V(\chi)[\widetilde g]_M\).
+\end{proof}
+
+\section{Quasifree States}
+
+A state \(\omega\) on \(\mathfrak A_{\rm KG}(M)\) has \(n\)-point
+distributions
+\[
+  \omega_n(f_1,\ldots,f_n)
+  =
+  \omega\!\left(\Phi_M([f_1])\cdots\Phi_M([f_n])\right).
+\]
+It is quasifree with vanishing one-point function when all odd \(n\)-point
+distributions vanish and all even \(n\)-point distributions are sums over
+pairings:
+\[
+  \omega_{2n}(f_1,\ldots,f_{2n})
+  =
+  \sum_{\hbox{\scriptsize pairings }P}
+  \prod_{\{i,j\}\in P}\omega_2(f_i,f_j).
+\]
+The two-point distribution \(\omega_2\in\mathcal D'(M\times M)\) must
+satisfy
+\[
+  P_{M,x}\omega_2=0,\qquad P_{M,y}\omega_2=0,
+\]
+\[
+  \omega_2(f,h)-\omega_2(h,f)=\ii\,\sigma_M([f],[h]),
+\]
+and positivity:
+\[
+  \omega_2(\bar f,f)\ge0
+  \quad\hbox{for all }f\in C_c^\infty(M,\mathbb C).
+\]
+Conversely, a bidistribution with these properties defines a quasifree state
+on the CCR algebra.
+
+\section{Hadamard Form}
+
+Let \(x\) and \(y\) lie in a convex normal neighborhood \(U\subset M\).  Let
+\[
+  \sigma(x,y)
+\]
+be Synge's world function: one half of the signed squared geodesic distance
+from \(x\) to \(y\).  Let \(T\) be any smooth time function on \(U\), and set
+\[
+  \sigma_\epsilon(x,y)
+  =
+  \sigma(x,y)+\ii\epsilon\bigl(T(x)-T(y)\bigr)+\epsilon^2,
+  \qquad \epsilon>0 .
+\]
+The limit \(\epsilon\downarrow0\) is taken in the distributional sense.
+
+In four spacetime dimensions, the local Hadamard singular distribution for
+\(P_M\) has the form
+\begin{equation}
+  H_{\epsilon,\mu}(x,y)
+  =
   \frac{1}{8\pi^2}
   \left[
     \frac{U(x,y)}{\sigma_\epsilon(x,y)}
     +V(x,y)\log\!\bigl(\mu^2\sigma_\epsilon(x,y)\bigr)
-    +W(x,y)
-  \right].
+  \right],
+  \label{eq:hadamard-parametrix-local}
+\end{equation}
+where \(\mu>0\) is a length inverse.  The coefficient \(U\) is
+\[
+  U(x,y)=\Delta(x,y)^{1/2},
 \]
-Here \(\sigma(x,y)\) is Synge's signed squared geodesic distance divided by
-two, \(\sigma_\epsilon\) is the usual causal boundary prescription,
-\(U\) and \(V\) are locally and covariantly determined by \(g,m,\xi\), and
-\(W\) is the smooth state-dependent part.  The wavefront-set formulation is
-equivalent and is stable under the operations used to build Wick polynomials.
+with \(\Delta\) the van Vleck determinant.  It is characterized by the
+transport equation
+\[
+  2\sigma^{;\mu}\nabla_\mu U
+  +
+  (\Box_g\sigma-D)U=0,
+  \qquad
+  U(x,x)=1 .
+\]
+The function \(V\) is locally determined by \(g,m,\xi\) through the
+requirement that \(P_{M,x}H_{\epsilon,\mu}(x,y)\) have no singular part away
+from the diagonal.  Equivalently, expanding
+\[
+  V(x,y)\sim\sum_{n\ge0}V_n(x,y)\sigma(x,y)^n
+\]
+gives transport equations along the geodesic from \(y\) to \(x\), with
+initial data fixed recursively by \(P_M\) and the previous coefficients.
+The smooth part of a state is not included in \(H_{\epsilon,\mu}\).
 
-\begin{proposition}[Hadamard subtraction]
+\begin{definition}[Hadamard quasifree state]
+\label{def:hadamard-quasifree-state}
+A quasifree state \(\omega\) of the Klein--Gordon field is Hadamard when, in
+every convex normal neighborhood,
+\[
+  \omega_2(x,y)-H_{\epsilon,\mu}(x,y)
+\]
+has a smooth distributional limit as \(\epsilon\downarrow0\).  The resulting
+smooth function is denoted \(W_\omega(x,y)\).
+\end{definition}
+
+Changing the time function \(T\) in \(\sigma_\epsilon\) changes only the
+boundary-value prescription used to define the same positive-frequency
+singularity.  Changing \(\mu\) changes the subtraction by
+\[
+  \frac{1}{8\pi^2}V(x,y)\log(\mu'^2/\mu^2),
+\]
+which is smooth near the diagonal because \(V\) is smooth.
+
+\begin{proposition}[State-independent singular part]
 \label{prop:hadamard-state-independent-subtraction}
-Let \(\omega\) and \(\omega'\) be two Hadamard quasifree states for the same
-Klein--Gordon operator on the same globally hyperbolic spacetime.  Then
-\(\omega_2-\omega'_2\) is smooth.
+Let \(\omega\) and \(\omega'\) be Hadamard quasifree states for the same
+operator \(P_M\) on the same globally hyperbolic spacetime.  Then
+\[
+  \omega_2-\omega'_2\in C^\infty(M\times M).
+\]
 \end{proposition}
 
 \begin{proof}
-Both two-point functions have the same distributions
+On each convex normal neighborhood, Definition~\ref{def:hadamard-quasifree-state}
+gives
 \[
-  \frac{U}{\sigma_\epsilon}
-  +
-  V\log(\mu^2\sigma_\epsilon)
+  \omega_2=H_{\epsilon,\mu}+W_\omega,
+  \qquad
+  \omega'_2=H_{\epsilon,\mu}+W_{\omega'}
 \]
-in each convex normal neighborhood because \(U\) and \(V\) are determined by
-the operator \(P_g\) and the local geometry through transport equations.  The
-only remaining terms are \(W\) and \(W'\), which are smooth by the Hadamard
-definition.  Hence the difference is locally smooth.  A partition of unity on
-the globally hyperbolic manifold gives smoothness globally.
+after taking the distributional boundary value.  The same
+\(H_{\epsilon,\mu}\) appears because \(U\) and \(V\) are fixed by
+\((M,g)\), \(m\), and \(\xi\).  Therefore
+\[
+  \omega_2-\omega'_2=W_\omega-W_{\omega'}
+\]
+is smooth on that neighborhood.  Smoothness is local on \(M\times M\), so the
+difference is smooth globally.
 \end{proof}
 
-\section{Stress Tensor and Renormalization Freedom}
+\section{Microlocal Form And Wick Products}
 
-The composite stress tensor is defined by point splitting: subtract the
-Hadamard parametrix, apply a bidifferential operator determined by the
-classical stress tensor, and take the coincident limit.  The locally
-covariant subtraction has finite local freedom.  In four dimensions the
-remaining renormalization freedom is a linear combination of conserved local
-curvature tensors obtained by varying
+The local formula above is equivalent to the microlocal Hadamard condition
+developed in Chapter~\ref{ch:curved-microlocal-spectrum-condition}:
+\[
+  \operatorname{WF}(\omega_2)
+  =
+  \{(x,k_x;y,-k_y): (x,k_x)\sim(y,k_y),\ k_x\in\overline V_+^*\}.
+\]
+Here \((x,k_x)\sim(y,k_y)\) means that \(x\) and \(y\) are connected by a
+null geodesic and that \(k_y\) is the parallel transport of \(k_x\).  This
+condition is the curved-spacetime replacement for positive energy support.
+
+For a Hadamard state, define the Wick square by point splitting:
+\[
+  :\!\phi^2\!:_H(f)
+  =
+  \int_M f(x)
+  \lim_{y\to x}
+  \left(\phi(x)\phi(y)-H_{\epsilon,\mu}(x,y)\mathbf 1\right)
+  \dd\operatorname{vol}_g(x).
+\]
+Proposition~\ref{prop:hadamard-state-independent-subtraction} implies that
+the subtraction removes the state-independent singularity.  The remaining
+freedom is finite and local.  In four dimensions,
+\[
+  :\!\phi^2\!:'=
+  :\!\phi^2\!:+c_1m^2+c_2R
+\]
+for constants \(c_1,c_2\), once covariance, scaling dimension, and the field
+equation are imposed.  Stress-tensor point splitting in the next chapter is
+the same construction with the bidifferential operator dictated by the
+classical stress tensor.
+
+\section{Renormalization Freedom Of The Stress Tensor}
+
+The stress tensor is obtained by applying a bidifferential operator
+\(D_{\mu\nu}(x,y)\) to the subtracted two-point expression and then taking
+the diagonal limit:
+\[
+  \langle T_{\mu\nu}(x)\rangle_\omega
+  =
+  \lim_{y\to x}
+  D_{\mu\nu}(x,y)
+  \bigl(\omega_2(x,y)-H_{\epsilon,\mu}(x,y)\bigr)
+  +
+  C_{\mu\nu}[g](x).
+\]
+The tensor \(C_{\mu\nu}[g]\) is local and covariant in the background.  In
+four dimensions, conservation and engineering dimension restrict it to a
+linear combination of metric variations of
 \[
   \int\sqrt{|g|},\qquad
   \int\sqrt{|g|}R,\qquad
   \int\sqrt{|g|}R^2,\qquad
   \int\sqrt{|g|}R_{\mu\nu}R^{\mu\nu},\qquad
-  \int\sqrt{|g|}R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}.
+  \int\sqrt{|g|}R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
 \]
-Thus stress-tensor renormalization in curved spacetime is a local
-background-field coordinate choice subject to covariance and conservation.
+with constants specifying the finite local curvature coordinates of the
+renormalized theory.  This statement is a covariance and conservation
+classification of finite local terms; the explicit point-splitting
+construction and the trace-anomaly consequences are developed in
+Chapters~\ref{ch:point-splitting-stress-tensor-renormalization} and
+\ref{ch:curved-trace-anomalies}.
 
 \begin{openproblem}[Interacting curved-spacetime QFT]
 \label{op:interacting-curved-spacetime-qft}
 Construct interacting locally covariant QFTs with nonperturbative control of
-states, composite operators, stress tensors, and background dependence beyond
-the perturbative algebraic framework.  Perturbative AQFT gives a precise
-formal-power-series construction under microlocal hypotheses; convergent or
-constructive interacting examples on general curved backgrounds remain a
-frontier problem.
+state spaces, composite operators, stress tensors, and background dependence.
+The construction should compare perturbative algebraic QFT, constructive
+methods, lattice methods on discretized backgrounds, and Hamiltonian
+approaches in examples where more than one construction exists.
 \end{openproblem}
