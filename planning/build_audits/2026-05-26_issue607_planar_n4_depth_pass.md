@@ -169,6 +169,23 @@
   dimension-carrying asymptotic of `mu_12` a checked consequence of the
   bridge assumptions rather than an unexplained proclamation.
 
+## Comprehensive Development Continuation VI
+
+- Expanded the T-hook-to-`Pmu` bridge from an assumed formula into a local
+  reconstruction derivation in Chapter 15.  The text now states the two-row
+  physical/magic-gauge datum: shifted Wronskians for `T_{1,m}`,
+  `T_{0,1}=mu_12^2`, `T_{3,2}=T_{2,3} mu_12`, central-node regularity, and
+  nondegeneracy of the shifted Wronskian determinant.
+- Proved the Pluecker/Hirota algebra behind the bridge.  Regularity of
+  `T_{2,1}` across the central cut forces
+  `tilde mu_12-mu_12=P_1 tilde P_2-P_2 tilde P_1`; the central `(1,1)`
+  Hirota square then gives `T_{1,0}=mu_12 tilde mu_12`, hence
+  `Y_{1,1}Y_{2,2}=tilde mu_12/mu_12`.
+- Narrowed the later fermionic-product assumption to the genuine remaining
+  framework input: the mirror-TBA large-`u` energy normalization.  This keeps
+  the monograph closer to the stringbook convention while making the local
+  algebra self-contained.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -202,6 +219,9 @@
 - QSC `Pmu` Pfaffian preservation under the rank-two discontinuity update.
 - QSC `Y_{1,1}Y_{2,2}` bridge algebra and large-`u` exponent extraction for
   `mu_12(u+i)/mu_12(u)`.
+- QSC two-row T-hook Wronskian bridge algebra: the Pluecker factorization,
+  central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
+  `T_{1,0}=mu_12 tilde mu_12`.
 - QSC `Pmu` monodromy-recursion signs and antisymmetry of the shifted
   `mu` matrix.
 

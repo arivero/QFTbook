@@ -66,23 +66,149 @@ functions on one copy of the plane.  The data above tell the reader both what
 is evaluated on the defining sheet and how the functions are continued to
 the neighboring sheets.
 
-\begin{assumption}[T-hook to \(P\mu\) charge bridge]
+\begin{assumption}[Two-row T-hook reconstruction datum]
+\label{ass:qsc-two-row-t-hook-reconstruction}
+Use the shift notation
+\[
+  f^{[n]}(u)=f(u+n\ii/2).
+\]
+In the physical or magic T-hook gauge, assume that the two horizontal rows
+adjacent to the central node are reconstructed from two single-short-cut
+functions \(P_1,P_2\) by
+\[
+  \mathbb T_{1,m}
+  =
+  P_1^{[m]}P_2^{[-m]}-P_2^{[m]}P_1^{[-m]},
+  \qquad m\geq1,
+  \label{eq:qsc-two-row-wronskian}
+\]
+and that Hirota continuation extends this expression to the central nodes.
+Let
+\[
+  \mathbb T_{0,1}=\mu_{12}^2,\qquad
+  \mathbb T_{3,2}=\mathbb T_{2,3}\mu_{12}.
+\]
+The functions \(\mathbb T_{2,1}\) and \(\mathbb T_{1,0}\) are assumed to be
+regular across the central short cut in the strip where the following
+calculation is made.  Finally, the Wronskian
+\[
+  D=P_1^{[+2]}P_2^{[-2]}-P_2^{[+2]}P_1^{[-2]}
+\]
+is not identically zero; any isolated zeros are handled by analytic
+continuation of the resulting identities.
+\end{assumption}
+
+\begin{proposition}[Local T-hook algebra behind the \(P\mu\) bridge]
+\label{prop:qsc-local-t-hook-pmu-bridge}
+Under Assumption~\ref{ass:qsc-two-row-t-hook-reconstruction}, regularity of
+the T-hook functions across the central short cut forces
+\[
+  \widetilde\mu_{12}-\mu_{12}
+  =
+  P_1\widetilde P_2-P_2\widetilde P_1.
+  \label{eq:qsc-local-mu12-discontinuity}
+\]
+Moreover
+\[
+  \mathbb T_{1,0}=\mu_{12}\widetilde\mu_{12},
+  \qquad
+  Y_{1,1}Y_{2,2}
+  =
+  \frac{\widetilde\mu_{12}}{\mu_{12}}
+  =
+  1+
+  \frac{P_1\widetilde P_2-P_2\widetilde P_1}{\mu_{12}}.
+  \label{eq:qsc-local-y11-y22-bridge}
+\]
+\end{proposition}
+
+\begin{proof}
+Write \(P_a^+=P_a^{[+2]}\), \(P_a^-=P_a^{[-2]}\), and
+\[
+  D=P_1^+P_2^- - P_2^+P_1^- .
+\]
+The Hirota equation at the \((2,2)\) square, expressed through the
+Wronskians in \eqref{eq:qsc-two-row-wronskian}, gives in the upper
+half-plane sector
+\[
+  \mathbb T_{2,1}
+  =
+  (\widetilde P_1P_2^- - \widetilde P_2P_1^-)
+  (P_1^+P_2-P_2^+P_1)
+  -\mu_{12}D .
+\]
+Continuing across the central cut replaces \(P_1,P_2,\mu_{12}\) in the
+unshifted slot by their tilded values, so the same node is
+\[
+  \widetilde{\mathbb T}_{2,1}
+  =
+  (P_1P_2^- - P_2P_1^-)
+  (P_1^+\widetilde P_2-P_2^+\widetilde P_1)
+  -\widetilde\mu_{12}D .
+\]
+Since \(\mathbb T_{2,1}\) is regular in this strip, these two expressions
+are equal.  Moving the \(\mu\)-terms to one side gives
+\[
+  (\mu_{12}-\widetilde\mu_{12})D
+  =
+  A-B,
+\]
+where
+\[
+\begin{aligned}
+  A&=(\widetilde P_1P_2^- - \widetilde P_2P_1^-)
+    (P_1^+P_2-P_2^+P_1),\\
+  B&=(P_1P_2^- - P_2P_1^-)
+    (P_1^+\widetilde P_2-P_2^+\widetilde P_1).
+\end{aligned}
+\]
+Expanding both products and canceling pairwise gives the Pluecker identity
+\[
+  A-B=(\widetilde P_1P_2-\widetilde P_2P_1)D.
+\]
+Because \(D\) is not identically zero, division by \(D\) on the open set
+where it is nonzero gives
+\[
+  \mu_{12}-\widetilde\mu_{12}
+  =
+  \widetilde P_1P_2-\widetilde P_2P_1,
+\]
+and analyticity extends the identity through isolated zeros of \(D\).  This
+is \eqref{eq:qsc-local-mu12-discontinuity}.
+
+The \((1,1)\) Hirota square gives the central-node relation
+\[
+  \frac{\mathbb T_{1,0}}{\mu_{12}}
+  =
+  \mu_{12}+\widetilde P_2P_1-\widetilde P_1P_2 .
+\]
+Using the discontinuity identity just proved, the right side is
+\(\widetilde\mu_{12}\), hence
+\(\mathbb T_{1,0}=\mu_{12}\widetilde\mu_{12}\).  In this gauge
+\[
+  Y_{1,1}Y_{2,2}
+  =
+  \frac{\mathbb T_{1,0}}{\mathbb T_{0,1}}
+  =
+  \frac{\mu_{12}\widetilde\mu_{12}}{\mu_{12}^2},
+\]
+which proves the first equality in
+\eqref{eq:qsc-local-y11-y22-bridge}.  The second equality is the same
+statement after substituting
+\eqref{eq:qsc-local-mu12-discontinuity}.
+\end{proof}
+
+\begin{assumption}[Fermionic-product energy normalization]
 \label{ass:qsc-t-hook-charge-bridge}
 Work in the analytic T-hook gauge of
 Chapter~\ref{ch:planar-n4-mirror-tba-y-system}, and consider an \(SL(2)\)
 single-trace state of twist \(J\), Lorentz spin \(S\), and total physical
 momentum zero.  Let \(Y_{1,1}\) and \(Y_{2,2}\) denote the two fermionic
-T-hook nodes adjacent to the central strip in this gauge.  The QSC
-reconstruction of the T-system is assumed to identify
-\[
-  Y_{1,1}(u)Y_{2,2}(u)
-  =
-  1+
-  \frac{P_1(u)\widetilde P_2(u)-P_2(u)\widetilde P_1(u)}
-       {\mu_{12}(u)} .
-  \label{eq:qsc-y11-y22-pmu-bridge}
-\]
-The energy normalization inherited from the excited-state mirror TBA is
+T-hook nodes adjacent to the central strip in this gauge.  The local
+reconstruction algebra in
+Proposition~\ref{prop:qsc-local-t-hook-pmu-bridge} supplies the \(P\mu\)
+expression for \(Y_{1,1}Y_{2,2}\).  The remaining framework input is the
+energy normalization inherited from the excited-state mirror TBA:
 \[
   \log\bigl(Y_{1,1}(u)Y_{2,2}(u)\bigr)
   =
@@ -117,7 +243,7 @@ The \((1,2)\) component of the \(P\mu\) discontinuity equation gives
   P_1(u)\widetilde P_2(u)-P_2(u)\widetilde P_1(u).
 \]
 Dividing by \(\mu_{12}(u)\) and using the bridge formula
-\eqref{eq:qsc-y11-y22-pmu-bridge} gives
+\eqref{eq:qsc-local-y11-y22-bridge} gives
 \[
   Y_{1,1}(u)Y_{2,2}(u)
   =

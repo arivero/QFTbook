@@ -644,6 +644,86 @@ def check_t_system_to_y_system_identity() -> None:
     assert_close("1+1/Y from Hirota", one_plus_inverse_y, 1 + 1 / y)
 
 
+def check_t_hook_wronskian_pmu_bridge() -> None:
+    """Check the local T-hook Wronskian algebra leading to the Pmu bridge."""
+
+    samples = (
+        (
+            1 + 2j,
+            -3 + 0.5j,
+            2 - 1j,
+            -0.7 + 1.3j,
+            1.4 - 0.2j,
+            -2.1j,
+            0.6 + 0.8j,
+            1.7 - 0.4j,
+            2.3 - 0.6j,
+        ),
+        (
+            -0.4 + 0.9j,
+            2.2 - 1.1j,
+            -1.3 - 0.2j,
+            0.5 + 1.7j,
+            1.9 + 0.3j,
+            -0.8 + 0.6j,
+            2.4 - 1.5j,
+            -1.2 + 0.2j,
+            -0.9 + 1.4j,
+        ),
+    )
+    for (
+        p1,
+        p2,
+        tilde_p1,
+        tilde_p2,
+        p1_plus,
+        p2_plus,
+        p1_minus,
+        p2_minus,
+        mu12,
+    ) in samples:
+        determinant = p1_plus * p2_minus - p2_plus * p1_minus
+        if abs(determinant) < 1.0e-12:
+            raise AssertionError("Wronskian determinant sample accidentally degenerate")
+
+        first_hirota_product = (
+            (tilde_p1 * p2_minus - tilde_p2 * p1_minus)
+            * (p1_plus * p2 - p2_plus * p1)
+        )
+        continued_hirota_product = (
+            (p1 * p2_minus - p2 * p1_minus)
+            * (p1_plus * tilde_p2 - p2_plus * tilde_p1)
+        )
+        plucker_factor = (tilde_p1 * p2 - tilde_p2 * p1) * determinant
+        assert_close(
+            "T-hook Wronskian Plucker identity",
+            first_hirota_product - continued_hirota_product,
+            plucker_factor,
+        )
+
+        tilde_mu12 = mu12 + p1 * tilde_p2 - p2 * tilde_p1
+        t21 = first_hirota_product - mu12 * determinant
+        continued_t21 = continued_hirota_product - tilde_mu12 * determinant
+        assert_close("T-hook T21 central-cut regularity", t21, continued_t21)
+        assert_close(
+            "T-hook mu12 discontinuity sign",
+            tilde_mu12 - mu12,
+            p1 * tilde_p2 - p2 * tilde_p1,
+        )
+
+        central_t10 = mu12 * (mu12 + tilde_p2 * p1 - tilde_p1 * p2)
+        assert_close(
+            "T-hook T10 equals mu tilde-mu",
+            central_t10,
+            mu12 * tilde_mu12,
+        )
+        assert_close(
+            "T-hook fermionic-node product",
+            central_t10 / (mu12 * mu12),
+            1 + (p1 * tilde_p2 - p2 * tilde_p1) / mu12,
+        )
+
+
 def check_pmu_pfaffian_rank_two_update() -> None:
     def pfaffian_4(matrix: list[list[complex]]) -> complex:
         return (
@@ -733,6 +813,7 @@ def main() -> None:
     check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()
     check_t_system_to_y_system_identity()
+    check_t_hook_wronskian_pmu_bridge()
     check_pmu_pfaffian_rank_two_update()
     print("All planar N=4 integrability checks passed.")
 

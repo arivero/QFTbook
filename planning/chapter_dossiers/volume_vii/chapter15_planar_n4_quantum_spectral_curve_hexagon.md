@@ -31,9 +31,18 @@ three-point functions.
   `P_a`, antisymmetric `mu_ab`, fixed `chi`, tilde continuation, regularity,
   large-`u` charge asymptotics, gluing data, and cyclic single-trace
   constraints.
+- Adds a two-row T-hook reconstruction datum in the physical/magic gauge:
+  shifted Wronskians for `T_{1,m}`, `T_{0,1}=mu_12^2`,
+  `T_{3,2}=T_{2,3} mu_12`, central-node regularity, and the nondegenerate
+  Wronskian condition.
+- Proves the local T-hook algebra behind the `Pmu` bridge: central-cut
+  regularity of `T_{2,1}` gives
+  `tilde mu_12-mu_12=P_1 tilde P_2-P_2 tilde P_1`, the central Hirota square
+  gives `T_{1,0}=mu_12 tilde mu_12`, and hence
+  `Y_{1,1}Y_{2,2}=tilde mu_12/mu_12`.
 - Adds a T-hook-to-`Pmu` charge-bridge assumption for the fermionic nodes
-  `Y_{1,1} Y_{2,2}`, including the mirror-TBA large-`u` energy
-  normalization.
+  `Y_{1,1} Y_{2,2}`, now narrowed to the mirror-TBA large-`u` energy
+  normalization after the local bridge algebra has been proved.
 - Proves from the `Pmu` discontinuity and pseudo-periodicity that
   `Y_{1,1}Y_{2,2}=mu_12(u+i)/mu_12(u)`, and derives
   `mu_12(u) ~ u^(Delta-J)` when the large-`u` behavior is power-like.
@@ -90,6 +99,9 @@ structure and the pair-of-pants-to-hexagons cut.
   Pmu Pfaffian rank-two update.
 - The same script checks the algebraic `Y_{1,1}Y_{2,2}` bridge ratio and the
   large-`u` exponent extraction for `mu_12(u+i)/mu_12(u)`.
+- The same script checks the two-row T-hook Wronskian Pluecker identity,
+  central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
+  `T_{1,0}=mu_12 tilde mu_12`.
 - The same script checks the sign convention in the `mu(u+i)` monodromy
   recursion against the rank-two discontinuity update and verifies
   antisymmetry of the shifted matrix.
