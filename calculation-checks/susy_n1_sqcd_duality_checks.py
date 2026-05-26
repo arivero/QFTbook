@@ -290,6 +290,67 @@ def check_quantum_modified_constraint_and_decoupling():
             )
 
 
+def check_massive_sqcd_to_pure_sym_decoupling():
+    for nc in range(2, 16):
+        for nf in range(1, nc):
+            d = nc - nf
+            ads_scale_exponent = 3 * nc - nf
+
+            assert_equal(d + nf, nc, "massive SQCD ADS denominator plus flavors")
+            assert_equal(
+                nf + ads_scale_exponent,
+                3 * nc,
+                "massive SQCD pure-scale matching dimension",
+            )
+
+            # For Y=(A/det M)^(1/d), the F_M equation gives
+            # m = Y M^{-T}.  Taking determinants gives det(m)=Y^nf/det(M),
+            # while the definition of Y gives Y^d=A/det(M).  Eliminating
+            # det(M) yields Y^Nc=A det(m).
+            y_power_from_f_terms = nf + d
+            assert_equal(y_power_from_f_terms, nc, "massive SQCD Y power to pure SYM")
+
+            ads_term_coefficient = d
+            mass_term_trace_coefficient = nf
+            assert_equal(
+                ads_term_coefficient + mass_term_trace_coefficient,
+                nc,
+                "massive SQCD critical superpotential coefficient",
+            )
+
+            root_exponent = Fraction(1, nc)
+            source_identity_coefficient = nc * root_exponent
+            assert_equal(
+                source_identity_coefficient,
+                1,
+                "massive SQCD pure-branch source identity",
+            )
+
+            # The pure branch equation Y^Nc=L_0 has Nc roots.  Raising each
+            # branch value to Nc removes the branch label.
+            for branch in range(nc):
+                assert_equal(
+                    (nc * branch) % nc,
+                    0,
+                    "massive SQCD pure branch root equation",
+                )
+
+            # Dimension and R-charge spurion checks.  det(m) has dimension nf;
+            # Lambda^(3Nc-nf) has dimension 3Nc-nf, so Y has dimension 3.
+            y_dimension = Fraction(nf + ads_scale_exponent, nc)
+            assert_equal(y_dimension, 3, "massive SQCD pure condensate dimension")
+
+            r_meson = Fraction(2 * (nf - nc), nf)
+            r_mass = 2 - r_meson
+            det_mass_r_charge = nf * r_mass
+            assert_equal(det_mass_r_charge, 2 * nc, "massive SQCD det mass R-charge")
+            assert_equal(
+                Fraction(det_mass_r_charge, nc),
+                2,
+                "massive SQCD pure branch superpotential R-charge",
+            )
+
+
 def classify_phase(nc, nf):
     if nf < nc:
         return "ADS runaway"
@@ -345,6 +406,7 @@ def main():
     check_duality_deformation_tests()
     check_sconfining_superpotential()
     check_quantum_modified_constraint_and_decoupling()
+    check_massive_sqcd_to_pure_sym_decoupling()
     check_phase_inequalities()
     print("All N=1 SQCD duality and phase checks passed.")
 

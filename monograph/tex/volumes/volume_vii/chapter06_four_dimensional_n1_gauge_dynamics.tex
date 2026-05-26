@@ -1262,6 +1262,146 @@ If \(C_{N_c-1}=1\), induction on \(d=N_c-n\) gives \(C_n=d\).  Indeed, if
 \]
 \end{proof}
 
+\begin{proposition}[Massive SQCD decoupling to pure SYM branches]
+\label{prop:massive-sqcd-to-pure-sym-condensate-branches}
+Fix \(1\leq n<N_c\), and assume the \(n\)-flavor Wilsonian chiral sector on
+the maximal-rank meson patch is described by the standard ADS representative
+\begin{equation}
+  W_{\mathrm{ADS},n}
+  =
+  d\left(
+    \frac{\Lambda_n^{3N_c-n}}{\det M}
+  \right)^{1/d},
+  \qquad d=N_c-n,
+  \label{eq:massive-sqcd-ads-standard-representative}
+\end{equation}
+on a chosen holomorphic branch.  Add an invertible holomorphic mass matrix
+\begin{equation}
+  W_{\mathrm{mass}}=m_i{}^j M^i{}_j,
+  \qquad \det m\neq0 .
+  \label{eq:massive-sqcd-mass-matrix}
+\end{equation}
+Assume that integrating out the massive meson coordinates is legitimate in
+the Wilsonian chiral theory and that holomorphic threshold matching to pure
+SYM holds:
+\begin{equation}
+  \Lambda_0^{3N_c}
+  =
+  (\det m)\,\Lambda_n^{3N_c-n}.
+  \label{eq:massive-sqcd-pure-scale-matching}
+\end{equation}
+Then the massive SQCD branch superpotential is
+\begin{equation}
+  W_{\mathrm{eff},k}
+  =
+  N_c\,\Lambda_0^3
+  \exp\!\left(\frac{2\pi\ii k}{N_c}\right),
+  \qquad k\in\mathbb Z/N_c\mathbb Z,
+  \label{eq:massive-sqcd-pure-branch-superpotential}
+\end{equation}
+up to the same finite normalization of \(\Lambda_0\) and \(S\) used in the
+pure-SYM glueball description.  The source identity gives
+\begin{equation}
+  \Lambda_0^{3N_c}
+  \frac{\partial W_{\mathrm{eff},k}}
+       {\partial \Lambda_0^{3N_c}}
+  =
+  \Lambda_0^3
+  \exp\!\left(\frac{2\pi\ii k}{N_c}\right).
+  \label{eq:massive-sqcd-pure-source-identity}
+\end{equation}
+Thus massive SQCD decoupling reproduces the pure-SYM condensate root
+equation and its \(N_c\) branches, conditional on the ADS input and the
+massive threshold assumptions.
+\end{proposition}
+
+\begin{proof}
+Write
+\begin{equation}
+  A=\Lambda_n^{3N_c-n},
+  \qquad
+  Y=\left(\frac{A}{\det M}\right)^{1/d}.
+  \label{eq:massive-sqcd-y-coordinate}
+\end{equation}
+Then \(W_{\mathrm{ADS},n}=dY\).  For a variation of an invertible meson
+matrix,
+\[
+  \delta\log\det M=\operatorname{tr}(M^{-1}\delta M),
+  \qquad
+  \delta Y
+  =
+  -\frac{Y}{d}\operatorname{tr}(M^{-1}\delta M).
+\]
+Hence
+\[
+  \delta W_{\mathrm{ADS},n}
+  =
+  -Y\,\operatorname{tr}(M^{-1}\delta M).
+\]
+In indices, the \(F_M=0\) equation is therefore
+\begin{equation}
+  m_i{}^j=Y\,(M^{-1})^j{}_i .
+  \label{eq:massive-sqcd-f-term-matrix}
+\end{equation}
+Multiplying by \(M^i{}_j\) and summing gives
+\begin{equation}
+  m_i{}^jM^i{}_j=nY,
+  \label{eq:massive-sqcd-trace-mass-meson}
+\end{equation}
+because \(M^i{}_j(M^{-1})^j{}_i=n\).  Taking determinants in
+\eqref{eq:massive-sqcd-f-term-matrix} gives
+\begin{equation}
+  \det m=\frac{Y^n}{\det M}.
+  \label{eq:massive-sqcd-determinant-f-term}
+\end{equation}
+Since \(Y^d=A/\det M\), equations
+\eqref{eq:massive-sqcd-determinant-f-term} and
+\eqref{eq:massive-sqcd-y-coordinate} imply
+\[
+  Y^{d+n}=A\,\det m.
+\]
+As \(d+n=N_c\), this is
+\[
+  Y^{N_c}
+  =
+  (\det m)\Lambda_n^{3N_c-n}
+  =
+  \Lambda_0^{3N_c}
+\]
+by \eqref{eq:massive-sqcd-pure-scale-matching}.  Thus
+\[
+  Y_k=\Lambda_0^3\exp\!\left(\frac{2\pi\ii k}{N_c}\right),
+  \qquad k\in\mathbb Z/N_c\mathbb Z,
+\]
+after choosing a branch of \(\Lambda_0^3\).
+
+At a critical point,
+\[
+  W_{\mathrm{eff}}
+  =
+  dY+m_i{}^jM^i{}_j
+  =
+  dY+nY
+  =
+  N_cY,
+\]
+which proves \eqref{eq:massive-sqcd-pure-branch-superpotential}.  Finally,
+with \(L_0=\Lambda_0^{3N_c}\), the branch value is
+\[
+  W_{\mathrm{eff},k}=N_c\,L_0^{1/N_c}\ee^{2\pi\ii k/N_c}.
+\]
+Therefore
+\[
+  L_0\frac{\partial W_{\mathrm{eff},k}}{\partial L_0}
+  =
+  L_0^{1/N_c}\ee^{2\pi\ii k/N_c},
+\]
+which is \eqref{eq:massive-sqcd-pure-source-identity}.  The proof is a
+finite-dimensional chiral-coordinate elimination.  It does not by itself
+construct the pure-SYM Hilbert space, prove the mass gap, or justify the ADS
+and threshold hypotheses from a microscopic regulator.
+\end{proof}
+
 \section{Quantum Modified Constraint and Confining Decoupling}
 
 For \(N_f=N_c\), the classical relation between mesons and baryons is

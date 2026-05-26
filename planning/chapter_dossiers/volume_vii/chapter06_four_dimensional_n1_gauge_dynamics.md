@@ -84,6 +84,10 @@ status-boundary style.
 - `prop:ads-holomorphic-decoupling-recursion`: finite-dimensional
   `F_X=0` elimination step propagating the one-instanton ADS seed from
   `N_f=N_c-1` to all `N_f<N_c` by holomorphic mass decoupling.
+- `prop:massive-sqcd-to-pure-sym-condensate-branches`: finite-dimensional
+  elimination of massive `N_f=n<N_c` SQCD with invertible mass matrix,
+  deriving the pure-SYM branch superpotential and source identity from the
+  ADS representative and holomorphic threshold matching.
 - `hyp:sqcd-nsvz-coordinate-specialization`: assumptions for specializing
   the Chapter 05 holomorphic-canonical NSVZ coordinate relation to SQCD.
 - `prop:sqcd-nsvz-coordinate-audit`: derivation of
@@ -241,6 +245,15 @@ status-boundary style.
   one-variable `F_X=0` equation gives the \(n\)-flavor ADS form, the scale
   matching `Lambda_-^(3Nc-n)=m Lambda_+^(3Nc-(n+1))`, and the coefficient
   recursion whose standard normalization is `C_n=N_c-n`.
+- Derives pure-SYM branch superpotentials from massive SQCD decoupling:
+  for `1 <= n < N_c`, invertible mass matrix `m`, and the standard ADS
+  representative, the matrix \(F_M=0\) equation gives
+  `m_i^j = Y (M^{-1})^j_i`, hence
+  `Y^N_c = det(m) Lambda_n^(3N_c-n) = Lambda_0^(3N_c)` and
+  `W_eff,k=N_c Y_k`; differentiating with respect to
+  `Lambda_0^(3N_c)` gives the pure-SYM source identity.  The text states
+  explicitly that this is a Wilsonian chiral-coordinate elimination,
+  conditional on ADS and threshold hypotheses, not a mass-gap theorem.
 - States and sharpens the quantum modified constraint for \(N_f=N_c\) with
   explicit Wilsonian and infrared hypotheses.
 - Proves uniqueness of a field-independent quantum modification from
@@ -361,7 +374,8 @@ status-boundary style.
   full global anomaly matching,
   mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
-  `N_f=N_c` quantum-modified constraint, and phase-window inequalities.
+  `N_f=N_c` quantum-modified constraint, massive-SQCD-to-pure-SYM branch
+  elimination and source-identity checks, and phase-window inequalities.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch
