@@ -24,6 +24,16 @@
   regularization.
 - Records the one-loop \(G\) and \(B\) hatted Weyl-anomaly coefficients with
   \(H\)-flux and dilaton terms.
+- Defines local perturbative sigma-model renormalization schemes as
+  coordinate systems on the infinite-dimensional coupling space
+  \((G,B,\Phi)\), modulo target diffeomorphism and gerbe gauge redundancy.
+- Proves the relation between hatted Weyl-anomaly coefficients and redundant
+  beta-function directions, including the one-loop dilaton-gradient vector.
+- Records the two-loop pure-metric beta tensor as a controlled
+  large-radius/minimal-subtraction approximation and states its scheme
+  dependence.
+- Separates the flat linear-dilaton central-charge condition from the
+  nonconstant tensor beta functions.
 - Defines even integral and unimodular lattices of signature
   \((n_L,n_R)\), lattice vertex operators, cocycle operators, and their
   conformal weights.
@@ -38,6 +48,10 @@
 - States toroidal CFT moduli as the \(O(d,d;\mathbb Z)\) quotient of
   positive \(d\)-planes and formulates \(T\)-duality as an isomorphism of
   exact CFT data.
+- Derives the Buscher rules by gauging a circle isometry, integrating out the
+  gauge fields, and tracking the Gaussian determinant dilaton shift.
+- Proves Buscher involutivity and states beta-function covariance as an
+  order-by-order perturbative statement, not a nonperturbative theorem.
 - Defines the compact simply connected WZW action using the integral
   generator \([\Omega_G]\in H^3(G,\mathbb Z)\), proves level quantization,
   and fixes the affine-current normalization.
@@ -72,47 +86,54 @@
    quadratic action and the coincident heat-kernel pole.
 3. The hatted beta tensors are defined modulo target diffeomorphism and
    \(B\)-field gauge directions.
-4. The Narain vertex OPE monodromy gives \(e^{2\pi i k\circ\ell}\), and
+4. The dilaton-gradient vector \(W=\alpha'\nabla\Phi\) produces
+   \(2\alpha'\nabla_i\nabla_j\Phi\) in \(\widehat\beta^G\) and the
+   non-gauge \(\nabla\Phi\cdot H\) contribution in \(\widehat\beta^B\).
+5. The pure-metric two-loop representative has coefficient
+   \((\alpha')^2R_{ik\ell m}R_j{}^{k\ell m}/2\) in the stated MS scheme.
+6. The Buscher \(E\)-rules imply the displayed \(G,B\) component rules and
+   are involutive with the dilaton shift.
+7. The Narain vertex OPE monodromy gives \(e^{2\pi i k\circ\ell}\), and
    integer spin gives \(k\circ k\in2\mathbb Z\).
-5. The explicit cocycle
+8. The explicit cocycle
    \((-1)^{\sum_{i>j}A_{ij}m^in^j}\) satisfies associativity and the exchange
    law when \(A\) is an even integral Gram matrix.
-6. The lattice theta function's \(T\)-phase from the zero modes is cancelled
+9. The lattice theta function's \(T\)-phase from the zero modes is cancelled
    by evenness, while the eta determinants leave the gravitational-anomaly
    phase \(\exp[-2\pi i(n_L-n_R)/24]\).
-7. The toroidal sigma-model momenta
+10. The toroidal sigma-model momenta
    \(k_{L,R}(m,w)\) give the integral pairing
    \(m(w')+m'(w)\), independent of the antisymmetric \(B\)-field.
-8. The WZW level is integral because changing the filling shifts the action
+11. The WZW level is integral because changing the filling shifts the action
    by \(2\pi i k\) times the pairing with \(H^3(G,\mathbb Z)\).
-9. The affine current OPE in the chapter convention gives the mode algebra
+12. The affine current OPE in the chapter convention gives the mode algebra
    \([J_m^a,J_n^b]=f_{ab}{}^cJ_{m+n}^c+km\delta^{ab}\delta_{m+n,0}\).
-10. Sugawara's coefficient is fixed by the requirement that currents have
+13. Sugawara's coefficient is fixed by the requirement that currents have
     conformal weight \(1\), with the \(h^\vee\) shift coming from the adjoint
     Casimir in the double contraction.
-11. Coset central charges and weights are differences of the \(G\) and
+14. Coset central charges and weights are differences of the \(G\) and
     embedded \(H\) Sugawara data; gauge consistency is level matching for the
     gauged subgroup.
-12. The orbifold Hilbert space is
+15. The orbifold Hilbert space is
    \(\bigoplus_{[g]}\mathcal H_g^{C_g}\) after an \(H^3(G,U(1))\) anomaly
    trivialization is chosen.
-13. The torus partition function is the finite gauge sum over commuting
+16. The torus partition function is the finite gauge sum over commuting
    holonomies and is modular invariant with the stated label action.
-14. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
+17. The cyclic twist weight equals \(c_0(K-K^{-1})/24\), and the real
    reflection twist field has \(h=1/16\).
-15. For a cycle type
+18. For a cycle type
    \(\lambda=(1^{m_1}\cdots N^{m_N})\), the symmetric-product centralizer has
    order \(\prod_K K^{m_K}m_K!\), and the sector Hilbert space is the
    \(C_\lambda\)-invariant subspace of the tensor product of long-string
    Hilbert spaces.
-16. The symmetric-product partition-function generating series is the
+19. The symmetric-product partition-function generating series is the
    exponential of nonholomorphic Hecke transforms of the seed partition
    function, obtained by decomposing commuting \(S_N\)-bundle holonomies into
    connected torus covers.
-17. Twist OPEs multiply monodromies before conjugacy-class averaging; a
+20. Twist OPEs multiply monodromies before conjugacy-class averaging; a
    transposition joins two disjoint cycles or splits one cycle, with the
    leading bare-twist exponent fixed by the cycle-weight difference.
-18. Twist-field deformations are conformal perturbations by projected local
+21. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
 
@@ -131,6 +152,9 @@
   cocycle identities, sample even-unimodular Gram matrices, the
   \(B\)-independence of the Narain integral pairing, and the modular
   anomaly-condition logic.
+- `calculation-checks/nlsm_buscher_checks.py` verifies the finite Buscher
+  algebra, the component \(G,B\) rules, the involutive dilaton shift, and the
+  constant-curvature specialization of the two-loop metric coefficient.
 - `calculation-checks/wzw_sugawara_coset_checks.py` verifies the finite
   arithmetic of the Sugawara central charges, \(SU(2)\) affine-primary
   weights, diagonal coset minimal-model central charges, and Ising/tricritical
