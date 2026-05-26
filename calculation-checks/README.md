@@ -352,9 +352,11 @@ Current checks:
   prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
-  Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian matrix integral, the
-  \(U(1)_k\) \(S^3\) Chern--Simons Fresnel completion of the square, and the
-  round-\(S^3\) conjugate-chiral-pair integral
+  Gaussian coefficient, the \(S^4\) \(H\)-function finite-product logarithmic
+  derivative, the \(U(1)\) \(S^4\) Gaussian matrix integral, finite
+  double-sine reflection and pole-convention checks, the \(U(1)_k\) \(S^3\)
+  Chern--Simons Fresnel completion of the square, and the round-\(S^3\)
+  conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
 - `susy_qm_index_checks.py`: exact rational checks for the Volume I
   SUSY-QM and worldline index-density section, including the oscillator

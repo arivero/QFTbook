@@ -65,27 +65,56 @@ Using \(\mathcal L_Q\mu=0\), the right hand side integrates to the assumed
 zero Stokes term.  Hence \(dI/dt=0\).
 \end{proof}
 
-If the real part of \(QV\) is nonnegative on the bosonic body of \(C\), and
-if its zero locus \(F\) is compact and clean, the \(t\to\infty\) limit reduces
-the integral to \(F\) with a normal Gaussian determinant.  Let \(N_F\) denote
-the normal complex to \(F\), obtained by linearizing the \(Q\)-complex in the
-directions transverse to \(F\).  In a coordinate chart in which the quadratic
-part of \(QV\) is
+\begin{definition}[Clean fixed locus and normal complex]
+\label{def:clean-fixed-locus-normal-complex}
+Let \(F\subset C_{\bar 0}\) be the common zero locus of the bosonic part of
+\(QV\) on the body of the integration cycle.  The fixed locus is called clean
+for the datum \((C,\mu,Q,V)\) if \(F\) is a submanifold, if the Hessian of
+\(\operatorname{Re}(QV)\) is nondegenerate on a chosen normal bundle
+\(N_{F,\bar 0}\), and if the linearization of \(Q\) in the directions normal
+to \(F\) gives a finite \(\mathbb Z_2\)-graded complex
+\[
+  N_F^\bullet:\qquad
+  N_{F,\bar 0}\xrightarrow{\,Q_{\rm lin}\,}N_{F,\bar 1}
+  \xrightarrow{\,Q_{\rm lin}\,}N_{F,\bar 0}
+\]
+whose cohomology has been split off as zero-mode coordinates on \(F\).  The
+one-loop determinant is the Berezin Gaussian of this acyclic normal complex,
+with orientation and square-root branches inherited from the integration
+cycle.
+\end{definition}
+
+Assume, in addition to Proposition~\ref{prop:susy-localization-deformation-identity},
+that \(\operatorname{Re}(QV)\ge0\) on the bosonic body of \(C\), that \(F\) is
+compact and clean, and that the large-\(t\) integral is dominated by a tubular
+neighborhood of \(F\).  In local coordinates \(y\) along \(F\), bosonic normal
+coordinates \(x^i\), and fermionic normal coordinates \((\psi^a,\chi^r)\), the
+quadratic part may be written after choosing splittings as
 \[
   (QV)_{\rm quad}
   =
-  \frac12 x^i A_{ij}x^j+\psi^a B_{ab}\psi^b+\chi^r C_{ri}x^i ,
+  \frac12 x^i A_{ij}(y)x^j
+  +\frac12\psi^a B_{ab}(y)\psi^b
+  +\chi^r C_{ri}(y)x^i .
 \]
-the normal contribution is the Berezin Gaussian
+Here \(A\) is symmetric on the declared real normal cycle, \(B\) is
+antisymmetric, and \(C\) records the mixed fermion-boson differential in the
+normal \(Q\)-complex.  With the conventional finite-dimensional Gaussian
+normalization absorbed into the definition of \(\mu\), the local normal factor
+is
 \[
-  Z_{\rm normal}
+  Z_{\rm normal}(y)
   =
-  \frac{\operatorname{Pf}(B)\,\det(C)}
-  {\sqrt{\det(A)}} ,
+  \frac{\operatorname{Pf}B(y)\,\det C(y)}
+       {\sqrt{\det A(y)}} .
+  \label{eq:finite-normal-localization-factor}
 \]
-with the square-root branch fixed by the original integration cycle.  This
-finite formula is the local model for the one-loop determinants in the
-compact-space QFT examples below.
+Unpaired zero modes are not included in this determinant: they are coordinates
+on \(F\), insertions to be saturated, or obstructions showing that the proposed
+localized observable vanishes.  Thus a determinant formula without a zero-mode
+statement is not a localization theorem.  Equation
+\eqref{eq:finite-normal-localization-factor} is the finite model for the
+one-loop determinants in the compact-space QFT examples below.
 
 \section{QFT Localization Datum}
 
@@ -157,6 +186,47 @@ The coefficient equals the familiar half-trace coefficient because
   \frac{4\pi^2}{g_{\rm YM}^2}(a,a).
 \]
 
+The localization datum contains more than the Cartan variable.  An off-shell
+\(4D\) \(\mathcal N=2\) vector multiplet on the round sphere consists of a
+connection \(A_\mu\), complex adjoint scalars \(\phi,\bar\phi\), gaugini
+\(\lambda_{A},\bar\lambda_{A}\) with \(A=1,2\) an \(SU(2)_R\) index, and
+auxiliary fields \(D_{AB}=D_{BA}\).  The chosen supercharge is specified by a
+pair of conformal Killing spinors \((\xi_A,\bar\xi_A)\).  Its square has the
+form
+\[
+  Q^2
+  =
+  \mathcal L_v+\delta_{\rm gauge}(\Lambda)
+  +\delta_{SU(2)_R}(\Theta)+\delta_{\rm flavor}(m),
+  \label{eq:s4-q-square-data}
+\]
+where \(v^\mu=\xi^A\sigma^\mu\bar\xi_A\) is a Killing vector on \(S^4_r\),
+\(\Lambda\) is an adjoint-valued gauge parameter, \(\Theta\) is an
+\(SU(2)_R\) rotation, and \(m\) denotes background flavor masses when present.
+For the standard round-sphere choice, \(v\) vanishes at the north and south
+poles and generates rotations in the two tangent planes near each pole.
+
+The bosonic fixed-locus statement used in the matrix model is the following
+field-theoretic reduction.  After choosing the real integration cycle for
+which the localizing term is nonnegative, all smooth bulk fields on the
+trivial bundle are gauge-equivalent to
+\[
+  A_\mu=0,\qquad
+  \phi,\bar\phi\hbox{ constant with real-cycle coordinate }a,\qquad
+  D_{AB}=D_{AB}(a),
+  \qquad a\in\mathfrak t ,
+  \label{eq:s4-bulk-fixed-locus}
+\]
+with the auxiliary field determined algebraically by the Killing-spinor
+background.  Nonzero instanton number is not represented by a smooth global
+bulk deformation of \eqref{eq:s4-bulk-fixed-locus}; in the large-localizing
+parameter limit it is concentrated in the two tangent-space models at the
+poles.  The north-pole tangent space contributes an equivariant instanton
+integral on \(\mathbb C^2\), and the south pole contributes the anti-instanton
+factor.  This is why the compactification or contour defining
+\(Z_{\rm inst}\) is part of Definition~\ref{def:s4-nekrasov-factor}, rather
+than an optional interpretation added after the formula.
+
 Define the even entire function
 \[
   H(x)
@@ -166,10 +236,55 @@ Define the even entire function
   \exp\!\left(-\frac{x^2}{n}\right),
   \label{eq:pestun-H-function}
 \]
-understood by zeta regularization or by the equivalent Barnes-double-gamma
-definition.  For a vector multiplet and hypermultiplets of masses \(m_\ell\)
-in representations \(R_\ell\), the perturbative determinant on the round
-sphere is
+where the product is taken in the displayed counterterm convention.
+
+\begin{lemma}[The \(H\)-function convention]
+\label{lem:s4-H-function-convention}
+The product in \eqref{eq:pestun-H-function} converges locally uniformly on
+the complex \(x\)-plane, defines an even entire function, and satisfies
+\[
+  \frac{d}{dx}\log H(x)
+  =
+  \sum_{n=1}^{\infty}
+  \left(
+    \frac{2nx}{n^2+x^2}-\frac{2x}{n}
+  \right)
+  \label{eq:H-log-derivative}
+\]
+away from its zeros.  If \(G_B\) is the Barnes \(G\)-function normalized by
+\(G_B(1)=1\) and \(G_B(z+1)=\Gamma(z)G_B(z)\), then
+\[
+  H(x)
+  =
+  \exp\!\bigl(-(1+\gamma_{\mathrm E})x^2\bigr)\,
+  G_B(1+\ii x)G_B(1-\ii x).
+  \label{eq:H-Barnes-G-convention}
+\]
+Changing the exponential prefactor \(\exp(c x^2)\) is a local quadratic
+counterterm for the background vector multiplet or the gauge coupling; it is
+therefore a convention that must be kept fixed when comparing Gaussian
+coefficients.
+\end{lemma}
+
+\begin{proof}
+For \(x\) in a compact subset of \(\mathbb C\), the logarithm of the
+\(n\)-th factor is
+\[
+  n\log\!\left(1+\frac{x^2}{n^2}\right)-\frac{x^2}{n}
+  =
+  -\frac{x^4}{2n^3}+O(n^{-5}),
+\]
+uniformly on the compact set.  The Weierstrass \(M\)-test gives local uniform
+convergence of the logarithm after deleting the displayed zeros, hence an
+entire even product.  Differentiating the locally uniformly convergent
+logarithmic series gives \eqref{eq:H-log-derivative}.  Formula
+\eqref{eq:H-Barnes-G-convention} follows by substituting \(z=\ii x\) in the
+standard Weierstrass product for the Barnes \(G\)-function; the only mismatch
+between common physics normalizations is the displayed exponential quadratic.
+\end{proof}
+
+For a vector multiplet and hypermultiplets of masses \(m_\ell\) in
+representations \(R_\ell\), the perturbative determinant on the round sphere is
 \[
   Z_{1{\rm -loop}}^{S^4}(a)
   =
@@ -287,10 +402,50 @@ overall normalization of \(Z_{S^3}\), by
   -\log\!\bigl(2\cosh(\pi x)\bigr).
   \label{eq:kwy-ell-identity}
 \]
+Equivalently, the round-sphere determinant is the \(b=1\) specialization of
+the double-sine convention
+\[
+  s_b(x)
+  =
+  \prod_{m,n\ge0}
+  \frac{mb+nb^{-1}+\frac{Q_b}{2}-\ii x}
+       {mb+nb^{-1}+\frac{Q_b}{2}+\ii x},
+  \qquad Q_b=b+b^{-1},
+  \label{eq:double-sine-definition}
+\]
+defined by zeta regularization or by the corresponding meromorphic
+continuation.  In the convention of \eqref{eq:kwy-s3-localization},
+\[
+  \exp\!\left[\ell(1-\Delta+\ii x)\right]
+  =
+  s_1\!\left(\ii(1-\Delta)-x\right),
+  \qquad x\in\mathbb R,
+  \label{eq:ell-double-sine-round}
+\]
+after fixing the same \(x\)-independent normalization on both sides.  The
+reflection identity used for a conjugate \(R\)-charge \(1/2\) pair is
+\[
+  s_1\!\left(\frac{\ii}{2}-x\right)
+  s_1\!\left(\frac{\ii}{2}+x\right)
+  =
+  \frac1{2\cosh(\pi x)} .
+  \label{eq:double-sine-hyper-identity}
+\]
+
 The integration contour is the real Cartan in the displayed unitary
-normalization.  If the matter content makes the integral nonconvergent, a
-mass, FI parameter, analytic continuation, or contour prescription must be
-declared as part of the theory being evaluated.
+normalization.  This statement includes a convergence hypothesis.  If the
+large-\(|\sigma|\) behavior is not damping in every Weyl chamber, then a real
+mass, FI chamber, analytic continuation, or residue prescription must be
+declared as part of the theory being evaluated.  In abelianized descriptions
+the possible poles lie on complexified hyperplanes
+\[
+  \rho(\sigma)+m_\Phi
+  +\ii\bigl(n+\Delta_\Phi\bigr)/r=0,
+  \qquad n\in\mathbb Z_{\ge0},
+\]
+up to the convention used for \(\ell\) or \(s_b\).  A Jeffrey--Kirwan-type
+residue prescription is therefore not a decorative evaluation trick: it is a
+choice of chamber and integration cycle for the regulated localization datum.
 
 \begin{example}[Abelian Chern--Simons Gaussian]
 \label{ex:s3-u1-cs-fresnel}
