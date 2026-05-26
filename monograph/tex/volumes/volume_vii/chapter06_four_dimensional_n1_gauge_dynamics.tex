@@ -1402,6 +1402,90 @@ construct the pure-SYM Hilbert space, prove the mass gap, or justify the ADS
 and threshold hypotheses from a microscopic regulator.
 \end{proof}
 
+\begin{proposition}[Mass-source and Konishi ledger in massive SQCD]
+\label{prop:massive-sqcd-konishi-source-ledger}
+Assume the hypotheses and notation of
+Proposition~\ref{prop:massive-sqcd-to-pure-sym-condensate-branches}.  On a
+chosen massive branch, the holomorphic source derivative with respect to the
+mass matrix gives the meson expectation
+\begin{equation}
+  \frac{\partial W_{\mathrm{eff},k}}{\partial m_i{}^j}
+  =
+  \langle M^i{}_j\rangle_k .
+  \label{eq:massive-sqcd-mass-source-meson}
+\end{equation}
+The finite-dimensional \(F_M=0\) equation then implies the matrix identity
+\begin{equation}
+  \langle M^a{}_j\rangle_k\,m_i{}^j
+  =
+  \langle S\rangle_k\,\delta_i{}^a,
+  \qquad
+  \langle S\rangle_k
+  =
+  \Lambda_0^3\exp\!\left(\frac{2\pi\ii k}{N_c}\right).
+  \label{eq:massive-sqcd-konishi-matrix-ledger}
+\end{equation}
+Taking the trace gives
+\begin{equation}
+  m_i{}^j\langle M^i{}_j\rangle_k
+  =
+  n\,\langle S\rangle_k .
+  \label{eq:massive-sqcd-konishi-trace-ledger}
+\end{equation}
+This is the massive-SQCD chiral-coordinate realization of the Konishi
+relation.  The local operator identity with the Konishi current and
+\(\bar D^2\)-exact terms requires the regulator-level current statement of
+Chapter~\ref{ch:susy-nonrenormalization-holomorphy}; the proposition here
+uses only the already stated Wilsonian source calculus.
+\end{proposition}
+
+\begin{proof}
+The full chiral function before eliminating \(M\) is
+\[
+  W(M;m,L_n)
+  =
+  d\left(\frac{L_n}{\det M}\right)^{1/d}
+  +m_i{}^jM^i{}_j,
+  \qquad L_n=\Lambda_n^{3N_c-n}.
+\]
+Let \(M_k(m,L_n)\) be the critical point on the chosen branch.  The
+envelope theorem for a holomorphic finite-dimensional critical point gives
+\[
+  \frac{\partial}{\partial m_i{}^j}
+  W(M_k(m,L_n);m,L_n)
+  =
+  M_k{}^i{}_j ,
+\]
+because the terms involving
+\(\partial M_k/\partial m_i{}^j\) are multiplied by \(F_M\) and vanish at
+the critical point.  This proves
+\eqref{eq:massive-sqcd-mass-source-meson}.
+
+Equation~\eqref{eq:massive-sqcd-f-term-matrix} says
+\[
+  m_i{}^j=Y_k(M_k^{-1})^j{}_i .
+\]
+Multiplying by \(M_k{}^a{}_j\) gives
+\[
+  M_k{}^a{}_j\,m_i{}^j
+  =
+  Y_k\,M_k{}^a{}_j(M_k^{-1})^j{}_i
+  =
+  Y_k\,\delta_i{}^a .
+\]
+By
+\eqref{eq:massive-sqcd-pure-source-identity}, the same branch coordinate is
+the glueball source derivative:
+\[
+  \langle S\rangle_k=Y_k
+  =
+  \Lambda_0^3\exp\!\left(\frac{2\pi\ii k}{N_c}\right).
+\]
+This gives \eqref{eq:massive-sqcd-konishi-matrix-ledger}.  Setting
+\(a=i\) and summing over \(i=1,\ldots,n\) gives
+\eqref{eq:massive-sqcd-konishi-trace-ledger}.
+\end{proof}
+
 \section{Quantum Modified Constraint and Confining Decoupling}
 
 For \(N_f=N_c\), the classical relation between mesons and baryons is

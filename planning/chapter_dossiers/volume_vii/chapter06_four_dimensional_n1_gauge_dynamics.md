@@ -88,6 +88,10 @@ status-boundary style.
   elimination of massive `N_f=n<N_c` SQCD with invertible mass matrix,
   deriving the pure-SYM branch superpotential and source identity from the
   ADS representative and holomorphic threshold matching.
+- `prop:massive-sqcd-konishi-source-ledger`: finite-dimensional
+  mass-source derivative and Konishi ledger on the same massive SQCD
+  branches, deriving `dW_eff/dm_i^j=<M^i_j>` and
+  `<M^a_j> m_i^j = <S> delta_i^a`.
 - `hyp:sqcd-nsvz-coordinate-specialization`: assumptions for specializing
   the Chapter 05 holomorphic-canonical NSVZ coordinate relation to SQCD.
 - `prop:sqcd-nsvz-coordinate-audit`: derivation of
@@ -254,6 +258,12 @@ status-boundary style.
   `Lambda_0^(3N_c)` gives the pure-SYM source identity.  The text states
   explicitly that this is a Wilsonian chiral-coordinate elimination,
   conditional on ADS and threshold hypotheses, not a mass-gap theorem.
+- Derives the mass-source/Konishi ledger for the same massive SQCD branches:
+  the envelope theorem at the holomorphic critical point gives
+  `dW_eff/dm_i^j=<M^i_j>`, the matrix \(F_M=0\) equation gives
+  `<M^a_j> m_i^j=<S> delta_i^a`, and the trace gives
+  `m_i^j <M^i_j>=n<S>`.  The text separates this chiral-coordinate
+  realization from the regulator-level local Konishi-current identity.
 - States and sharpens the quantum modified constraint for \(N_f=N_c\) with
   explicit Wilsonian and infrared hypotheses.
 - Proves uniqueness of a field-independent quantum modification from
@@ -375,7 +385,8 @@ status-boundary style.
   mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
   `N_f=N_c` quantum-modified constraint, massive-SQCD-to-pure-SYM branch
-  elimination and source-identity checks, and phase-window inequalities.
+  elimination, source-identity checks, mass-source/Konishi ledger checks,
+  and phase-window inequalities.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch

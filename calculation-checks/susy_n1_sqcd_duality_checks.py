@@ -350,6 +350,49 @@ def check_massive_sqcd_to_pure_sym_decoupling():
                 "massive SQCD pure branch superpotential R-charge",
             )
 
+            # Mass-source/Konishi ledger on a diagonal mass patch:
+            # m_i M_i = Y for each flavor, so tr(mM)=nf Y.  The same Y is
+            # the source derivative L_0 dW/dL_0 on the pure branch.
+            mass_source_euler_coefficient = nc * Fraction(1, nc)
+            assert_equal(
+                mass_source_euler_coefficient,
+                1,
+                "massive SQCD mass-source derivative coefficient",
+            )
+            for branch in range(nc):
+                glueball_branch_exponent = branch
+                for flavor_index in range(nf):
+                    mass_meson_product_exponent = glueball_branch_exponent
+                    assert_equal(
+                        mass_meson_product_exponent % nc,
+                        glueball_branch_exponent % nc,
+                        "massive SQCD matrix Konishi branch exponent",
+                    )
+
+                trace_coefficient = nf * mass_source_euler_coefficient
+                assert_equal(
+                    trace_coefficient,
+                    nf,
+                    "massive SQCD trace Konishi flavor count",
+                )
+
+            # The mass source has R-charge 2-R(M), so m M and S both have
+            # R-charge two, matching the Konishi matrix identity.
+            assert_equal(r_mass + r_meson, 2, "massive SQCD mM Konishi R-charge")
+            mass_dimension = 1
+            meson_dimension = 2
+            assert_equal(
+                mass_dimension + meson_dimension,
+                3,
+                "massive SQCD mM Konishi dimension",
+            )
+            assert_equal(
+                3 - mass_dimension,
+                meson_dimension,
+                "mass-source derivative dimension",
+            )
+            assert_equal(2 - r_mass, r_meson, "mass-source derivative R-charge")
+
 
 def classify_phase(nc, nf):
     if nf < nc:

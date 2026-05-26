@@ -552,8 +552,8 @@ Current checks:
   \(R\)-charge tests, \(N_f=N_c+1\) confining-superpotential
   dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
   quantum-modified constraint, massive-SQCD elimination to pure-SYM branch
-  superpotentials and source identity, and the conformal-window/free-phase
-  inequalities.
+  superpotentials, source identity, and mass-source/Konishi ledger, and the
+  conformal-window/free-phase inequalities.
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
