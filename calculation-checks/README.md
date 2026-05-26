@@ -102,7 +102,9 @@ Current checks:
   tail estimates, plus the dyadic geometric-tail arithmetic in the random
   model convergence criterion and the exponent/geometric-factor arithmetic in
   the dyadic parabolic convolution bound, and the exponent arithmetic in the
-  parabolic Taylor-subtraction gain.
+  parabolic Taylor-subtraction gain, together with the finite-net entropy
+  cancellation and geometric-series arithmetic in the dyadic-net supremum
+  upgrade from pointwise coordinate moments to compact model-seminorm bounds.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

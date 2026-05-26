@@ -439,6 +439,47 @@ def check_parabolic_taylor_subtraction_gain_arithmetic():
     assert_equal(bound, Fraction(1, 1048576), "Taylor-subtraction sample bound")
 
 
+def check_dyadic_net_supremum_upgrade_arithmetic():
+    # The dyadic-net theorem bounds the base net by C0^(1/p) B0 and the
+    # edge tower by C1^(1/p) B sum_l 2^(-epsilon l/p).  Choose perfect
+    # p-th powers so that the check remains exact in rational arithmetic.
+    p = 2
+    d = 5
+    epsilon = 2
+    c0 = 9
+    c1 = 4
+    b0 = 5
+    b = 3
+
+    base = 3 * b0
+    if epsilon % p != 0:
+        raise AssertionError("dyadic-net sample must use an integral epsilon/p")
+    ratio = Fraction(1, 2) ** (epsilon // p)
+    tail = 2 * b / (1 - ratio)
+    total = base + tail
+    assert_equal(ratio, Fraction(1, 2), "dyadic-net geometric ratio")
+    assert_equal(base, 15, "dyadic-net base contribution")
+    assert_equal(tail, 12, "dyadic-net edge contribution")
+    assert_equal(total, 27, "dyadic-net supremum bound")
+
+    # At edge level ell=3 the summed p-th moment is
+    # C1 B^p 2^(-epsilon ell)=4*9/64=9/16, whose L^2 root is 3/4.
+    ell = 3
+    edge_exponent = d * ell - (d + epsilon) * ell
+    assert_equal(edge_exponent, -epsilon * ell, "dyadic-net entropy cancellation")
+    summed_p_moment = c1 * b**p * Fraction(2) ** edge_exponent
+    assert_equal(summed_p_moment, Fraction(9, 16), "dyadic-net edge p-moment sum")
+    edge_l2_norm_squared = summed_p_moment
+    assert_equal(edge_l2_norm_squared, Fraction(3, 4) ** 2, "dyadic-net edge L2 root")
+
+    # If the base and edge constants both carry a cutoff factor
+    # 2^(-rho n), then the entire right side carries the same factor.
+    rho = 1
+    n = 4
+    cutoff_total = total * Fraction(1, 2) ** (rho * n)
+    assert_equal(cutoff_total, Fraction(27, 16), "dyadic-net cutoff tail")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -457,7 +498,8 @@ def main():
     check_random_model_cauchy_criterion_arithmetic()
     check_dyadic_parabolic_convolution_bound_arithmetic()
     check_parabolic_taylor_subtraction_gain_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, and Taylor-gain checks passed.")
+    check_dyadic_net_supremum_upgrade_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, and dyadic-net supremum checks passed.")
 
 
 if __name__ == "__main__":

@@ -62,6 +62,12 @@ data.
 - `a`, `b`: kernel orders in the dyadic parabolic convolution bound.
 - `F`, `P`, `H`, `r`: local factor, subtracted polynomial, remainder
   coefficient, and parabolic remainder order in the Taylor-subtraction gain.
+- `mathcal X_l`, `pi_l`, `mathcal E_l`: finite dyadic nets, projections to
+  the nets, and edge sets used to pass from pointwise coordinate moments to a
+  compact supremum.
+- `C_0`, `C_1`, `d`, `epsilon`: base-net size, edge entropy constant,
+  entropy exponent, and excess moment-decay exponent in the dyadic-net
+  supremum theorem.
 
 ## Claim Ledger
 
@@ -142,6 +148,11 @@ data.
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
+- Proves a dyadic-net supremum upgrade: finite-net pointwise moment bounds
+  and edge increment bounds with decay \(2^{-(d+\epsilon)\ell}\) imply an
+  \(L^p\) bound for the compact supremum with the explicit constant
+  \(C_0^{1/p}B_0+C_1^{1/p}B/(1-2^{-\epsilon/p})\), and cutoff decay factors
+  pass through unchanged.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -238,3 +249,10 @@ data maps.
   proof is the direct \(L^1\)-kernel estimate multiplied by the parabolic
   Taylor remainder bound.  The calculation-check companion verifies the
   exponent arithmetic for a sample \(a=2\), \(r=3\), \(i=4\) estimate.
+- 2026-05-26 issue #582 dyadic-net continuation: the chapter now proves the
+  finite-net upgrade needed to convert fixed-coordinate BPHZ moment and
+  increment estimates into compact model-seminorm bounds.  The proof gives
+  the telescoping net expansion, the base-net and edge-level \(L^p\)
+  estimates, the metric-entropy cancellation, and the exact geometric-series
+  constant.  The calculation-check companion verifies the entropy
+  cancellation and cutoff-factor arithmetic.
