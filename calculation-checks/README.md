@@ -239,6 +239,12 @@ Current checks:
   isotropy of dyonic condensates \(\langle(p,1)\rangle\), the oblique
   unconfined condition \(e\equiv pm\pmod N\), and confinement of nonzero
   electric \(N\)-ality under magnetic condensation.
+- `duality_defect_gauging_checks.py`: exact finite checks for the finite
+  gauging and duality-defect chapter, including the regular algebra identity
+  \(A_H\otimes A_H=|H|A_H\), normality of \(A_3\triangleleft S_3\), the
+  \(S_3/A_3\simeq\mathbb Z_2\) quotient multiplication, orbifold
+  pair-of-pants monodromy, centralizer sizes, and preservation of the
+  electric-magnetic Dirac pairing by \(S\), \(T\), and \(T^p\).
 - `haag_ruelle_fock_inner_product_checks.py`: exact rational checks for the
   Haag--Ruelle Fock inner-product recursion, comparing the recursive
   contraction formula with the direct bosonic permanent and particle-number

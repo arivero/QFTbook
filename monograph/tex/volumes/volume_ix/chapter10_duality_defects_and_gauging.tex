@@ -3,112 +3,316 @@
 
 \ConventionsMixed
 
-Gauging a finite symmetry and placing duality defects are operations on QFT
-data.  This chapter treats them as manipulations of topological defects,
-background fields, and sums over sectors, with anomaly and boundary choices
-made explicit.
+Gauging a finite symmetry is a finite path integral over background fields.
+A duality defect is an interface obtained from such a gauging operation,
+possibly followed by an equivalence between the gauged theory and another
+theory.  The definitions in this chapter are formulated in terms of
+background-field groupoids, topological symmetry defects, and line-charge
+lattices.  This keeps separate three pieces of data which are often
+compressed in the literature: the finite sum over bundles, the anomaly or
+counterterm choice, and the identification of the resulting theory with a
+theory already under study.
 
 \section{Finite Symmetry Backgrounds}
 
 Let \(G\) be a finite internal symmetry of a \(D\)-dimensional QFT
-\(\mathcal Q\).  A background \(G\)-field on spacetime \(M\) is a principal
+\(\mathcal Q\).  A background \(G\)-field on a spacetime \(M\) is a principal
 \(G\)-bundle
 \[
-  P\to M,
+  P\to M.
 \]
-or equivalently a Cech one-cocycle \(g_{ij}\) on a good cover, modulo
-coboundaries.  The partition function in the background is
+On a good cover \(\{U_i\}\) it may be represented by locally constant
+transition functions
 \[
-  Z_{\mathcal Q}[P].
+  g_{ij}:U_i\cap U_j\longrightarrow G
 \]
-The anomaly-free gauged theory is defined by the finite sum
+obeying
 \[
+  g_{ij}g_{jk}=g_{ik}
+  \quad\text{on }U_i\cap U_j\cap U_k.
+\]
+Two representatives related by functions \(u_i:U_i\to G\),
+\[
+  g_{ij}\mapsto u_i g_{ij}u_j^{-1},
+\]
+define isomorphic bundles.  Equivalently, after choosing a triangulation, a
+background is a flat \(G\)-valued one-cocycle on edges, modulo vertex gauge
+transformations.
+
+The QFT with background \(P\) has partition function
+\[
+  Z_{\mathcal Q}[M;P],
+\]
+and correlation functions with insertions carry the same background datum.
+The collection of bundles and their isomorphisms is the finite groupoid
+\[
+  \operatorname{Bun}_G(M).
+\]
+For a representative \(P\), the automorphism group
+\[
+  \operatorname{Aut}(P)
+\]
+is the group of gauge transformations preserving \(P\).  On connected \(M\)
+and for the trivial bundle it is \(G\), while for a general flat bundle it is
+the centralizer of the holonomy representation.
+
+\begin{definition}[Finite gauging groupoid sum]
+\label{def:finite-gauging-groupoid-sum}
+Assume the \(G\)-symmetry is anomaly-free after all local counterterms have
+been fixed.  The gauged partition function is the groupoid cardinality sum
+\begin{equation}
   Z_{\mathcal Q/G}(M)
   =
-  \frac1{|G|}
-  \sum_{[P]\in\operatorname{Bun}_G(M)}
-  \frac{Z_{\mathcal Q}[P]}{|\operatorname{Aut}(P)|/|G|},
-\]
-with the normalization chosen by the convention for the empty gauge field on
-connected \(M\).  Equivalent groupoid-sum conventions differ by invertible
-topological factors.
+  \sum_{[P]\in\pi_0\operatorname{Bun}_G(M)}
+  \frac{Z_{\mathcal Q}[M;P]}{|\operatorname{Aut}(P)|}.
+  \label{eq:finite-gauging-groupoid-sum}
+\end{equation}
+Different choices of an invertible finite gauge theory multiplying
+\eqref{eq:finite-gauging-groupoid-sum} are different normalization
+conventions.  Once a convention is fixed, the same convention must be used for
+closed manifolds, manifolds with boundary, interfaces, and operator
+insertions.
+\end{definition}
 
-\section{Dijkgraaf--Witten Twist}
+The groupoid factor is part of the finite path integral.  It is the finite
+analogue of dividing by the gauge group volume in a continuous gauge theory.
+
+\begin{proposition}[Disjoint-union multiplicativity]
+\label{prop:finite-gauging-disjoint-union}
+With the groupoid convention \eqref{eq:finite-gauging-groupoid-sum}, finite
+gauging is multiplicative under disjoint union:
+\[
+  Z_{\mathcal Q/G}(M_1\sqcup M_2)
+  =
+  Z_{\mathcal Q/G}(M_1)Z_{\mathcal Q/G}(M_2),
+\]
+provided the original background partition functions are multiplicative.
+\end{proposition}
+
+\begin{proof}
+A principal \(G\)-bundle on \(M_1\sqcup M_2\) is a pair
+\((P_1,P_2)\) with \(P_i\to M_i\).  Its automorphism group is the product
+\[
+  \operatorname{Aut}(P_1,P_2)
+  =
+  \operatorname{Aut}(P_1)\times\operatorname{Aut}(P_2).
+\]
+Thus the groupoid sum factorizes:
+\[
+\begin{aligned}
+  Z_{\mathcal Q/G}(M_1\sqcup M_2)
+  &=
+  \sum_{[P_1],[P_2]}
+  \frac{
+    Z_{\mathcal Q}[M_1;P_1]Z_{\mathcal Q}[M_2;P_2]
+  }{
+    |\operatorname{Aut}(P_1)|\,|\operatorname{Aut}(P_2)|
+  }  \\
+  &=
+  Z_{\mathcal Q/G}(M_1)Z_{\mathcal Q/G}(M_2).
+\end{aligned}
+\]
+\end{proof}
+
+\section{Dijkgraaf--Witten Twists And Anomaly Data}
 
 A class
 \[
   \omega\in H^D(BG,U(1))
 \]
-defines an invertible topological action for the background \(P\).  The
-twisted gauging is
+defines an invertible topological action for a \(G\)-bundle \(P\to M\).  If
+\(\Omega\) is a cocycle representative, the exponentiated action is
 \[
+  \exp(\ii S_\omega(P))
+  =
+  \exp\left(2\pi\ii\int_M f_P^*\Omega\right),
+\]
+where \(f_P:M\to BG\) classifies \(P\).  On a triangulated manifold this is
+the evaluation of the finite group cocycle on the flat edge labels of \(P\).
+The twisted gauging is
+\begin{equation}
   Z_{\mathcal Q/G,\omega}(M)
   =
-  \sum_{[P]}\frac1{|\operatorname{Aut}(P)|}
-  Z_{\mathcal Q}[P]\,\ee^{\ii S_\omega(P)}.
-\]
-If \(\mathcal Q\) has anomaly \(\alpha\in H^{D+1}(BG,U(1))\), gauging \(G\)
-requires a trivialization of \(\alpha\) or a bulk theory whose boundary is
-\(\mathcal Q\).  A Dijkgraaf--Witten twist changes the gauged theory but does
-not by itself cancel a nontrivial anomaly one degree higher.
+  \sum_{[P]}
+  \frac{Z_{\mathcal Q}[M;P]\exp(\ii S_\omega(P))}
+       {|\operatorname{Aut}(P)|}.
+  \label{eq:dw-twisted-gauging}
+\end{equation}
 
-\section{Gauging Interface}
+If \(\mathcal Q\) has a \(G\)-anomaly
+\[
+  \alpha\in H^{D+1}(BG,U(1)),
+\]
+then \(Z_{\mathcal Q}[M;P]\) is naturally a vector in a one-dimensional
+anomaly line rather than an ordinary complex number.  Gauging requires a
+trivialization of this anomaly line over the groupoid of \(G\)-bundles, or a
+\((D+1)\)-dimensional invertible bulk whose boundary is \(\mathcal Q\).  A
+Dijkgraaf--Witten twist in degree \(D\) changes the gauged theory; it cancels
+an anomaly only through its coboundary when a cochain-level trivialization of
+the degree \(D+1\) anomaly has been chosen.
+
+\section{The Gauging Interface}
 
 There is a codimension-one interface
 \[
   \mathcal N_G:\mathcal Q\longrightarrow \mathcal Q/G
 \]
-that implements the sum over \(G\)-bundles on one side.  The reverse
-interface \(\mathcal N_G^\dagger\) satisfies the fusion relation
+obtained by gauging \(G\) on one side of the interface.  More concretely, if a
+spacetime is cut along a hypersurface \(Y\), then on the gauged side one sums
+over \(G\)-bundles whose restriction to \(Y\) is allowed to vary, while on the
+ungauged side the boundary value is interpreted as a background for
+\(\mathcal Q\).  The reverse interface is denoted
+\[
+  \mathcal N_G^\dagger:\mathcal Q/G\longrightarrow\mathcal Q .
+\]
+
+For every \(g\in G\) let \(D_g\) be the invertible symmetry defect of
+\(\mathcal Q\).  It is supported on \(Y\) and imposes \(G\)-holonomy \(g\)
+across a small transverse interval.  The orientation convention is
+\[
+  D_g\otimes D_h\simeq D_{gh}.
+\]
+
+\begin{proposition}[Slab derivation of the gauging-interface fusion]
+\label{prop:gauging-interface-slab-fusion}
+With compatible groupoid normalizations for the two interfaces,
 \[
   \mathcal N_G^\dagger\circ\mathcal N_G
-  =
-  \bigoplus_{g\in G}D_g,
+  \simeq
+  \bigoplus_{g\in G}D_g
+  \label{eq:gauging-interface-slab-fusion}
 \]
-where \(D_g\) is the invertible symmetry defect of \(\mathcal Q\).  This
-follows by cutting spacetime along two nearby interfaces: the gauge field in
-the thin slab is flat, so its holonomy label is an element \(g\in G\), and
-each holonomy sector inserts \(D_g\).
+as defects of \(\mathcal Q\).
+\end{proposition}
 
-The opposite fusion,
+\begin{proof}
+Fuse \(\mathcal N_G\) with \(\mathcal N_G^\dagger\) and separate the two
+interfaces by a thin slab \(Y\times[0,\epsilon]\).  Inside the slab the
+\(G\)-field is flat.  Choose trivializations on the two boundary components
+of the slab.  A flat bundle on an interval with these endpoint
+trivializations is classified by a single holonomy \(g\in G\).  In the
+sector with holonomy \(g\), transporting an operator across the slab inserts
+the symmetry defect \(D_g\) on \(Y\).  Summing over the finite gauge field in
+the slab therefore produces the direct sum over all holonomies.
+
+The only normalization issue is the volume of gauge transformations in the
+slab that are identity on the two boundary components.  With the interface
+normalization induced from Definition~\ref{def:finite-gauging-groupoid-sum},
+these factors cancel between the two sides of the cut, leaving one copy of
+each holonomy sector.  Hence the fused interface is
+\(\oplus_{g\in G}D_g\).
+\end{proof}
+
+The opposite fusion
 \[
-  \mathcal N_G\circ\mathcal N_G^\dagger,
+  \mathcal N_G\circ\mathcal N_G^\dagger
 \]
-is an algebra object in the defect category of the gauged theory.  It
-contains the quantum symmetry defects acting on twisted sectors.
+is a defect of the gauged theory.  It is the algebra object generated by the
+quantum symmetry defects acting on twisted sectors.
+
+\begin{definition}[Regular algebra defect of a finite symmetry]
+\label{def:regular-algebra-defect}
+The regular algebra object associated to a finite anomaly-free symmetry \(G\)
+is
+\[
+  A_G=\bigoplus_{g\in G}D_g
+\]
+with multiplication induced by the defect junctions
+\[
+  D_g\otimes D_h\longrightarrow D_{gh}
+\]
+and unit \(\mathbf 1=D_e\hookrightarrow A_G\).  As an object in the fusion
+category generated by the symmetry defects,
+\[
+  A_G\otimes A_G\simeq |G|\,A_G .
+  \label{eq:regular-algebra-square}
+\]
+\end{definition}
+
+\begin{proof}[Proof of \eqref{eq:regular-algebra-square}]
+Using \(D_g\otimes D_h\simeq D_{gh}\),
+\[
+  A_G\otimes A_G
+  \simeq
+  \bigoplus_{g,h\in G}D_{gh}.
+\]
+For each fixed \(k\in G\), the equation \(gh=k\) has exactly \(|G|\)
+solutions, one for each choice of \(g\), with \(h=g^{-1}k\).  Therefore every
+simple summand \(D_k\) appears with multiplicity \(|G|\), which gives
+\(|G|A_G\).
+\end{proof}
 
 \section{Orbifold Local Operators In Two Dimensions}
 
-For a two-dimensional QFT with finite symmetry \(G\), gauging produces local
-operators from sectors with monodromy
+For a two-dimensional QFT with finite internal symmetry \(G\), a local
+operator of the gauged theory is described by a punctured disk carrying a flat
+\(G\)-bundle.  Choose a small positively oriented circle around the insertion.
+Its holonomy is an element
 \[
-  g\in G
+  g\in G.
 \]
-around the insertion.  If \(hgh^{-1}=g'\), the sectors labelled by \(g\) and
-\(g'\) are identified.  The local operator space of the gauged theory has the
-form
+Changing the trivialization at the base point conjugates \(g\), so the
+topological sector is a conjugacy class \([g]\).  Let
 \[
+  \mathcal V_g
+\]
+be the local operator space in the \(g\)-twisted sector.  Gauge
+transformations preserving the chosen holonomy form the centralizer
+\[
+  C_G(g)=\{h\in G\mid hg=gh\}.
+\]
+Thus the local operator space of the gauged theory is
+\begin{equation}
   \mathcal V_{\mathcal Q/G}
   =
-  \bigoplus_{[g]}
-  \mathcal V_g^{C_G(g)},
-\]
-where \(\mathcal V_g\) is the \(g\)-twisted local space and \(C_G(g)\) is the
-centralizer.  The operator product is defined by bringing together punctures
-with compatible flat \(G\)-bundles on the pair of pants.
+  \bigoplus_{[g]\subset G}
+  \mathcal V_g^{C_G(g)}.
+  \label{eq:orbifold-local-operator-space}
+\end{equation}
 
-\section{Duality Defects}
-
-A duality defect is a topological defect \(D\) such that fusing it with its
-orientation reverse produces a sum of symmetry defects rather than the vacuum
-defect alone:
+\begin{proposition}[Pair-of-pants selection rule]
+\label{prop:orbifold-pair-of-pants-selection}
+In a two-dimensional orbifold by a finite group \(G\), an OPE coefficient
+between twisted sectors can receive a contribution from a flat bundle on a
+pair of pants only if, after choosing compatible base paths,
 \[
-  D^\dagger\otimes D\simeq \bigoplus_{g\in G}D_g.
+  g_1g_2g_3^{-1}=e.
+  \label{eq:orbifold-pair-of-pants-monodromy}
 \]
-The defect is therefore noninvertible unless \(G\) is trivial.  Its action on
-local operators maps untwisted operators into the \(G\)-invariant part of
-twisted or gauged sectors, depending on which side of the interface the
-operator lies.
+Equivalently, the outgoing holonomy is the product \(g_3=g_1g_2\), up to
+simultaneous conjugation.
+\end{proposition}
+
+\begin{proof}
+The fundamental group of a pair of pants has generators represented by the
+three boundary circles with the relation
+\[
+  \gamma_1\gamma_2\gamma_3^{-1}=1
+\]
+for the convention in which \(\gamma_3\) is the outgoing boundary.  A flat
+\(G\)-bundle is a homomorphism from this fundamental group to \(G\), modulo
+conjugation.  Therefore the boundary holonomies
+\[
+  g_i=\operatorname{Hol}(\gamma_i)
+\]
+must satisfy \(g_1g_2g_3^{-1}=e\).  Conversely any triple satisfying this
+relation defines a flat bundle on the pair of pants after choosing a
+trivialization at the base point.  Changing the base trivialization conjugates
+all three holonomies simultaneously.
+\end{proof}
+
+Formula \eqref{eq:orbifold-local-operator-space} and
+Proposition~\ref{prop:orbifold-pair-of-pants-selection} give the finite
+topological part of the orbifold OPE.  The analytic OPE coefficients inside
+each allowed twisted sector are still QFT data; they are not determined by
+the group \(G\) alone.
+
+\section{Duality Defects From Self-Dual Gauging}
+
+A duality defect is a topological interface whose fusion with its reverse is
+the regular algebra defect \(A_G\) rather than a single copy of the invisible
+defect.  The construction is especially transparent when a gauged theory is
+equivalent to the original theory.
 
 \begin{proposition}[Self-dual gauging produces a noninvertible defect]
 \label{prop:self-dual-gauging-noninvertible-defect}
@@ -118,25 +322,30 @@ equivalence
 \[
   \Phi:\mathcal Q/H\longrightarrow \mathcal Q
 \]
-after all background choices and local counterterms have been fixed.  Then
-the composite
+after all background choices, discrete torsion choices, and local
+counterterms have been fixed.  Then the composite
 \[
   D_H:=\Phi\circ\mathcal N_H
 \]
 is a topological defect of \(\mathcal Q\) satisfying
-\[
+\begin{equation}
   D_H^\dagger\otimes D_H
   \simeq
+  A_H
+  =
   \bigoplus_{h\in H}D_h .
   \label{eq:self-dual-gauging-defect-fusion}
-\]
-If \(H\) is nontrivial and the \(D_h\) are distinct simple invertible
-defects, \(D_H\) is noninvertible.
+\end{equation}
+If \(H\) is nontrivial and the \(D_h\) are distinct simple invertible defects,
+then \(D_H\) is noninvertible and has quantum dimension \(\sqrt{|H|}\).
 \end{proposition}
 
 \begin{proof}
 The equivalence \(\Phi\) is invertible as an interface, so
-\(\Phi^\dagger\circ\Phi\simeq\mathbf 1_{\mathcal Q/H}\).  Therefore
+\[
+  \Phi^\dagger\circ\Phi\simeq\mathbf 1_{\mathcal Q/H}.
+\]
+Therefore
 \[
   D_H^\dagger\otimes D_H
   =
@@ -144,83 +353,167 @@ The equivalence \(\Phi\) is invertible as an interface, so
   \simeq
   \mathcal N_H^\dagger\circ\mathcal N_H .
 \]
-The slab calculation of the gauging interface gives
+Proposition~\ref{prop:gauging-interface-slab-fusion} identifies the last
+defect with \(\oplus_{h\in H}D_h=A_H\), proving
+\eqref{eq:self-dual-gauging-defect-fusion}.
+
+If \(D_H\) were invertible, \(D_H^\dagger\otimes D_H\) would be a single copy
+of the invisible defect.  For nontrivial \(H\) with distinct simple \(D_h\),
+the right hand side of \eqref{eq:self-dual-gauging-defect-fusion} has
+\(|H|\) simple summands, so \(D_H\) is not invertible.
+
+Quantum dimension is multiplicative under fusion and additive under direct
+sum.  Since each \(D_h\) is invertible, \(d(D_h)=1\).  Hence
 \[
-  \mathcal N_H^\dagger\circ\mathcal N_H
-  \simeq
-  \bigoplus_{h\in H}D_h,
+  d(D_H)^2
+  =
+  d(D_H^\dagger\otimes D_H)
+  =
+  \sum_{h\in H}d(D_h)
+  =
+  |H|.
 \]
-because the flat \(H\)-bundle in the thin slab is classified by its holonomy
-\(h\).  If \(D_H\) were invertible, the left side of
-\eqref{eq:self-dual-gauging-defect-fusion} would be the simple vacuum defect.
-For nontrivial \(H\) with distinct simple \(D_h\), the right side has more
-than one simple summand, so no inverse exists.
+Positivity gives \(d(D_H)=\sqrt{|H|}\).
 \end{proof}
 
-\begin{example}[Normal-subgroup gauging interface]
+\begin{example}[The Ising Kramers--Wannier defect]
+\label{ex:ising-kw-as-self-dual-gauging}
+At the critical Ising point the anomaly-free spin-flip symmetry is
+\(H=\mathbb Z_2=\{e,\eta\}\).  The gauged theory is equivalent to the original
+critical Ising CFT after the Kramers--Wannier self-duality identification is
+chosen.  Proposition~\ref{prop:self-dual-gauging-noninvertible-defect} gives
+\[
+  \mathcal N^\dagger\otimes\mathcal N
+  \simeq
+  \mathbf 1\oplus\eta,
+  \qquad
+  d(\mathcal N)=\sqrt2,
+\]
+which is the categorical fusion rule used in
+Chapter~\ref{ch:global-categorical-symmetry-defect-fusion}.  The statement is
+conditional on the self-duality equivalence, while the fusion calculation
+itself is the finite slab calculation above.
+\end{example}
+
+\section{Normal-Subgroup Gauging}
+
+Let \(G\) be a finite internal symmetry of \(\mathcal Q\), and let
+\[
+  H\triangleleft G
+\]
+be a normal subgroup.  Assume the \(H\)-symmetry is anomaly-free after the
+restriction of all anomaly and counterterm data has been fixed.  Gauging \(H\)
+produces \(\mathcal Q/H\).
+
+\begin{proposition}[Residual quotient symmetry after normal-subgroup gauging]
+\label{prop:normal-subgroup-residual-symmetry}
+If the \(G\)-action on \(\mathcal Q\) is anomaly-compatible with the chosen
+\(H\)-gauging, then \(\mathcal Q/H\) has a residual ordinary symmetry
+\[
+  G/H .
+\]
+\end{proposition}
+
+\begin{proof}
+For \(g\in G\), conjugation maps an \(H\)-bundle \(P\) to another \(H\)-bundle
+\[
+  P^g:=P\times_{H,c_g}H,
+  \qquad c_g(h)=ghg^{-1}.
+\]
+This is well-defined because \(H\) is normal.  The original \(G\)-symmetry
+identifies the \(H\)-background partition functions for \(P\) and \(P^g\),
+up to the specified anomaly-compatible counterterm.  Therefore \(g\) acts on
+the groupoid sum defining \(\mathcal Q/H\).  If \(g\in H\), this action is a
+gauge transformation of the summed \(H\)-field and hence acts trivially on
+gauge-invariant observables of the gauged theory.  The action therefore
+factors through \(G/H\).  Compatibility of the anomaly and counterterm choices
+ensures that the factorized action is associative rather than projective.
+\end{proof}
+
+\begin{example}[Normal-subgroup interface and a finite test case]
 \label{ex:normal-subgroup-gauging-defect}
-Let \(G\) be a finite internal symmetry and \(H\triangleleft G\) a normal
-subgroup that is anomaly-free as a symmetry of \(\mathcal Q\).  Gauging \(H\)
-produces \(\mathcal Q/H\) with residual ordinary symmetry \(G/H\) when no
-extension anomaly obstructs the quotient action.  The interface
-\(\mathcal N_H:\mathcal Q\to\mathcal Q/H\) has junction operators with the
-invertible \(H\)-symmetry defects:
+Let \(G=S_3\) and let
+\[
+  H=A_3=\{e,r,r^2\}\triangleleft S_3.
+\]
+After anomaly-free \(H\)-gauging, the residual ordinary symmetry is
+\[
+  S_3/A_3\simeq\mathbb Z_2.
+\]
+The gauging interface obeys
 \[
   D_h\otimes\mathcal N_H\simeq\mathcal N_H,
-  \qquad h\in H .
+  \qquad h\in H,
 \]
-At a self-dual point where an equivalence \(\Phi:\mathcal Q/H\to\mathcal Q\)
-is part of the QFT datum, Proposition~\ref{prop:self-dual-gauging-noninvertible-defect}
-turns the gauging interface into a genuine noninvertible defect of
-\(\mathcal Q\).  The critical Ising Kramers--Wannier defect is the case
-\(H=\mathbb Z_2\), with fusion
+because an \(H\)-defect ending on the gauged side can be absorbed into the
+summed \(H\)-bundle.  At a self-dual point with an equivalence
+\(\Phi:\mathcal Q/H\to\mathcal Q\), the defect
 \[
-  \mathcal N\otimes\mathcal N\simeq\mathbf 1\oplus\eta .
+  D_H=\Phi\circ\mathcal N_H
 \]
+satisfies
+\[
+  D_H^\dagger\otimes D_H
+  \simeq
+  \mathbf 1\oplus D_r\oplus D_{r^2},
+  \qquad
+  d(D_H)=\sqrt3 .
+\]
+This example separates the finite algebra from the dynamical question of
+whether a particular QFT possesses the required self-duality equivalence.
 \end{example}
 
 \section{Gauge-Theory Duality Walls}
 
-In gauge theories, duality walls can act on line-operator lattices.  Let
-\(\Gamma\) be the electric-magnetic charge lattice with antisymmetric pairing
+In gauge theories, duality walls can act on electric-magnetic line-charge
+lattices.  Let
+\[
+  \Gamma
+\]
+be a free abelian group of line charges equipped with an integral
+antisymmetric Dirac pairing
 \[
   \langle\ ,\ \rangle:\Gamma\times\Gamma\to\mathbb Z.
 \]
-A duality wall induces an automorphism
+A line-lattice duality wall is a topological wall whose induced map
 \[
-  \gamma:\Gamma\to\Gamma,\qquad
-  \langle\gamma x,\gamma y\rangle=\langle x,y\rangle .
+  M:\Gamma\longrightarrow\Gamma
 \]
-If the wall is topological, it maps genuine line operators to genuine line
-operators after global form and discrete theta data are transformed.  If
-additional degrees of freedom live on the wall, their anomaly inflow must
-cancel the mismatch between the two sides.
+is an automorphism preserving this pairing:
+\[
+  \langle Mx,My\rangle=\langle x,y\rangle
+  \qquad x,y\in\Gamma.
+  \label{eq:line-lattice-symplectic-condition}
+\]
+If the global form of the gauge group or a discrete theta angle selects a
+proper set of genuine lines, the wall is a wall between the corresponding
+theories only when \(M\) maps the genuine line data on one side to the genuine
+line data on the other side.  Boundary degrees of freedom may be required to
+cancel an anomaly mismatch.
 
 \begin{example}[Four-dimensional abelian line-lattice duality walls]
 \label{ex:abelian-line-lattice-duality-walls}
-For four-dimensional \(U(1)\) gauge theory with both electric and magnetic
-line operators allowed, take
+For four-dimensional \(U(1)\) gauge theory with electric and magnetic line
+charges
 \[
-  \Gamma=\mathbb Z^2,\qquad
+  \Gamma=\mathbb Z^2,
+  \qquad
   x=(q_e,q_m),
 \]
-with Dirac pairing
+take the Dirac pairing
 \[
   \langle x,y\rangle=q_e q'_m-q_m q'_e .
 \]
-The two standard generators of \(SL(2,\mathbb Z)\) act by
+The two line-lattice generators used here act on column vectors by
 \[
   S(q_e,q_m)=(q_m,-q_e),
   \qquad
   T(q_e,q_m)=(q_e+q_m,q_m).
+  \label{eq:abelian-st-line-action}
 \]
-Both preserve the pairing.  A topological \(S\)-wall maps an electric Wilson
-line to a magnetic 't Hooft line and a magnetic line to the inverse electric
-line.  A \(T\)-wall implements the Witten-effect shift of electric charge by
-magnetic charge.  These walls are genuine defects only after the global form
-of the gauge group, the allowed line lattice, and the discrete theta angle
-are transformed consistently; otherwise the wall maps a genuine line on one
-side to a line that is not genuine on the other side.
+The \(S\)-wall exchanges Wilson and 't Hooft charges with the orientation
+shown in \eqref{eq:abelian-st-line-action}.  The \(T\)-wall implements the
+Witten-effect shift of electric charge by magnetic charge.
 \end{example}
 
 \begin{proposition}[Pairing preservation for the \(S\) and \(T\) walls]
@@ -254,9 +547,53 @@ Thus both maps are automorphisms of the charge lattice with its
 antisymmetric Dirac pairing.
 \end{proof}
 
+\begin{example}[Finite center-sensitive line lattice]
+\label{ex:finite-center-line-lattice-duality-wall}
+For a theory whose center-sensitive electric and magnetic charges reduce to
+\[
+  \mathcal C_N=\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m},
+\]
+the finite pairing is
+\[
+  B((e,m),(e',m'))=\frac{em'-me'}{N}\in\mathbb Q/\mathbb Z.
+\]
+The reductions of \(S\) and \(T\) modulo \(N\),
+\[
+  S(e,m)=(m,-e),\qquad T(e,m)=(e+m,m),
+\]
+preserve \(B\).  More generally
+\[
+  T^p(e,m)=(e+pm,m)
+\]
+preserves \(B\) and maps a magnetic condensate direction to the dyonic
+direction used in oblique confinement:
+\[
+  (0,1)\mapsto(p,1).
+\]
+Thus the finite line-lattice action gives a precise algebraic bridge between
+duality walls and the oblique-confinement diagnostic of
+Chapter~\ref{ch:global-confinement-screening-oblique}.
+\end{example}
+
+\section{Logical Scope}
+
+The finite statements above are theorem-level statements about groupoids of
+finite bundles, topological symmetry defects, and line-charge lattices.  To
+apply them to an interacting continuum QFT one must supply the QFT input:
+existence of the symmetry defects as genuine topological extended operators,
+reflection-positive state spaces with the required defect sectors, anomaly
+trivializations, and any claimed equivalence \(\Phi:\mathcal Q/H\to\mathcal
+Q\).  Once those data are supplied, the slab fusion
+\(\mathcal N_H^\dagger\mathcal N_H=A_H\), the orbifold twisted-sector
+decomposition, and the line-lattice pairing preservation are finite
+consequences.
+
 \begin{openproblem}[Continuum gauging interfaces]
 \label{op:continuum-gauging-interfaces}
 Construct gauging interfaces and duality defects in interacting continuum QFTs
 from background-field sums, local operator sectors, defect junctions, anomaly
-trivializations, and reflection-positive state spaces.
+trivializations, and reflection-positive state spaces.  The construction
+should prove topological invariance of the interface, the existence and
+composition law of junction operators, and compatibility with the Hilbert
+spaces obtained by cutting spacetime along the defect.
 \end{openproblem}
