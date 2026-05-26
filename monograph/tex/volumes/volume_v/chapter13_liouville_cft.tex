@@ -305,6 +305,153 @@ measure, the location of possible discrete residues after analytic
 continuation, and the crossing kernel for the Virasoro blocks.
 \end{definition}
 
+\section{Virasoro Blocks from Gram Matrices}
+\label{sec:liouville-virasoro-block-gram-matrices}
+
+The symbol \(\mathcal F_P\) in
+\eqref{eq:liouville-continuous-block-decomposition} hides a representation
+theoretic construction.  The construction is local in the moduli variable
+\(z\) and does not require the DOZZ formula.  It uses only Virasoro Ward
+identities, the contravariant form on a Verma module, and the three-point
+matrix elements of descendants.
+
+\begin{definition}[Four-point Virasoro block coefficients]
+\label{def:virasoro-block-coefficients}
+Fix a central charge \(c\), an internal highest weight \(h\), and four
+external weights \(h_1,h_2,h_3,h_4\).  Consider the chiral four-point
+geometry
+\[
+  V_1(\infty)V_2(1)V_3(z)V_4(0),
+\]
+with the intermediate channel separating \((1,2)\) from \((3,4)\).  Assume
+that the contravariant Gram matrix on the Verma module \(\mathcal V_{c,h}\)
+is nondegenerate through level \(2\).  The normalized Virasoro block is
+written
+\[
+  \mathcal F_h^{(c)}
+  \!\left[
+    \begin{matrix}h_1&h_2\\ h_4&h_3\end{matrix}
+  \right]\!(z)
+  =
+  z^{h-h_3-h_4}
+  \left(1+f_1 z+f_2 z^2+O(z^3)\right).
+\]
+The assumption of nondegeneracy excludes \(h=0\) at level \(1\) and excludes
+the zeros of the level-two Kac determinant at level \(2\).  At those
+parameters one must quotient by null states, take a meromorphic limit, or
+work with logarithmic extensions.
+\end{definition}
+
+\begin{proposition}[Level-one and level-two block coefficients]
+\label{prop:liouville-virasoro-block-level-two}
+In the notation of Definition~\ref{def:virasoro-block-coefficients}, set
+\[
+  a_1=h+h_3-h_4,\qquad b_1=h+h_2-h_1,
+\]
+\[
+  a_2=h+2h_3-h_4,\qquad b_2=h+2h_2-h_1,
+\]
+and
+\[
+  a_{11}=a_1(a_1+1),\qquad b_{11}=b_1(b_1+1).
+\]
+Then
+\begin{equation}
+  f_1=\frac{b_1a_1}{2h}.
+  \label{eq:liouville-virasoro-block-level-one}
+\end{equation}
+Let
+\[
+  G_2=
+  \begin{pmatrix}
+    4h+c/2 & 6h\\
+    6h & 4h(2h+1)
+  \end{pmatrix},
+  \qquad
+  \Delta_2=\det G_2
+  =
+  2h\{16h^2+2(c-5)h+c\}.
+\]
+With the ordered level-two basis
+\((L_{-2}|h\rangle,L_{-1}^2|h\rangle)\), the second coefficient is
+\begin{equation}
+\begin{aligned}
+  f_2
+  =
+  \frac1{\Delta_2}
+  \bigl(&
+    4h(2h+1)b_2a_2
+    -6h(b_2a_{11}+b_{11}a_2)
+  \\
+  &\quad
+    +(4h+c/2)b_{11}a_{11}
+  \bigr).
+\end{aligned}
+  \label{eq:liouville-virasoro-block-level-two}
+\end{equation}
+For Liouville blocks one substitutes
+\[
+  c=1+6Q^2,\qquad h=\frac{Q^2}{4}+P^2,\qquad
+  h_i=\alpha_i(Q-\alpha_i).
+\]
+For generic real \(P\) the denominators above are nonzero; the degenerate
+values are precisely the places where a BPZ quotient changes the block
+recursion.
+\end{proposition}
+
+\begin{proof}
+Let \(\rho_{12}(Y)\) be the normalized three-point matrix element with the
+descendant \(L_{-Y}|h\rangle\) in
+\(\langle V_1(\infty)V_2(1)\cdot\rangle\), and let \(\rho_{34}(Y)\) be the
+corresponding matrix element for the OPE of \(V_3(z)V_4(0)\).  The Ward
+identity gives, for \(n=1,2\),
+\[
+  \rho_{12}(L_{-n})=h+n h_2-h_1,\qquad
+  \rho_{34}(L_{-n})=h+n h_3-h_4.
+\]
+For the repeated \(L_{-1}\) descendant one differentiates the three-point
+function
+\[
+  \langle V_1(\infty)V_2(1)V_h(x)\rangle
+  =
+  (1-x)^{-h_2-h+h_1}
+\]
+and its right-channel analogue.  This gives
+\[
+  \rho_{12}(L_{-1}^2)=b_1(b_1+1),\qquad
+  \rho_{34}(L_{-1}^2)=a_1(a_1+1).
+\]
+
+The level-one Gram matrix is \((2h)\), so the projector onto the
+intermediate module gives \eqref{eq:liouville-virasoro-block-level-one}.  At
+level \(2\), the Virasoro commutation relation gives
+\[
+  \langle L_{-2}h,L_{-2}h\rangle=4h+c/2,\qquad
+  \langle L_{-2}h,L_{-1}^2h\rangle=6h,
+\]
+\[
+  \langle L_{-1}^2h,L_{-1}^2h\rangle=4h(2h+1).
+\]
+Therefore the level-two contribution is
+\[
+  f_2=
+  \begin{pmatrix}b_2&b_{11}\end{pmatrix}
+  G_2^{-1}
+  \begin{pmatrix}a_2\\ a_{11}\end{pmatrix}.
+\]
+Inverting the displayed \(2\times2\) matrix gives
+\[
+  G_2^{-1}
+  =
+  \frac1{\Delta_2}
+  \begin{pmatrix}
+    4h(2h+1) & -6h\\
+    -6h & 4h+c/2
+  \end{pmatrix},
+\]
+which is exactly \eqref{eq:liouville-virasoro-block-level-two}.
+\end{proof}
+
 \section{The DOZZ Formula and Shift Checks}
 
 The exact three-point function is the Dorn--Otto--Zamolodchikov--Zamolodchikov

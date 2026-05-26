@@ -282,7 +282,67 @@ require_affine_equal(
     -one_exp.scale(4),
 )
 
+# Ordinary Virasoro block check through level two.  The ordered basis is
+# (L_-2 |h>, L_-1^2 |h>), matching the monograph convention.
+c_sample = Fraction(47, 5)
+h_sample = Fraction(7, 3)
+h1_sample = Fraction(11, 6)
+h2_sample = Fraction(5, 4)
+h3_sample = Fraction(13, 10)
+h4_sample = Fraction(2, 5)
+
+a1_block = h_sample + h3_sample - h4_sample
+b1_block = h_sample + h2_sample - h1_sample
+a2_block = h_sample + 2 * h3_sample - h4_sample
+b2_block = h_sample + 2 * h2_sample - h1_sample
+a11_block = a1_block * (a1_block + 1)
+b11_block = b1_block * (b1_block + 1)
+
+gram_22 = 4 * h_sample + c_sample / 2
+gram_211 = 6 * h_sample
+gram_1111 = 4 * h_sample * (2 * h_sample + 1)
+det_direct = gram_22 * gram_1111 - gram_211 * gram_211
+det_formula = 2 * h_sample * (
+    16 * h_sample * h_sample + 2 * (c_sample - 5) * h_sample + c_sample
+)
+if det_direct != det_formula:
+    raise AssertionError(
+        f"level-two Gram determinant mismatch: {det_direct} != {det_formula}"
+    )
+
+level_one = b1_block * a1_block / (2 * h_sample)
+if level_one != Fraction(97, 80):
+    raise AssertionError(f"unexpected level-one block sample: {level_one}")
+
+level_two_from_inverse = (
+    gram_1111 * b2_block * a2_block
+    - gram_211 * (b2_block * a11_block + b11_block * a2_block)
+    + gram_22 * b11_block * a11_block
+) / det_direct
+level_two_from_display = (
+    4 * h_sample * (2 * h_sample + 1) * b2_block * a2_block
+    - 6 * h_sample * (b2_block * a11_block + b11_block * a2_block)
+    + (4 * h_sample + c_sample / 2) * b11_block * a11_block
+) / det_formula
+if level_two_from_inverse != level_two_from_display:
+    raise AssertionError(
+        "level-two Virasoro-block coefficient formula mismatch: "
+        f"{level_two_from_inverse} != {level_two_from_display}"
+    )
+
+global_level_two = b11_block * a11_block / (
+    4 * h_sample * (2 * h_sample + 1)
+)
+large_c_limit_from_formula = (b11_block * a11_block / 2) / (
+    2 * h_sample * (2 * h_sample + 1)
+)
+if global_level_two != large_c_limit_from_formula:
+    raise AssertionError(
+        f"global block limit mismatch: {global_level_two} != "
+        f"{large_c_limit_from_formula}"
+    )
+
 print(
-    "All Liouville BPZ, screening, connection-matrix, "
+    "All Liouville BPZ, screening, Virasoro-block, connection-matrix, "
     "and DOZZ-shift checks passed."
 )

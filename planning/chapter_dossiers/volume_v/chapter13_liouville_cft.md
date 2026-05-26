@@ -23,6 +23,12 @@ boundaries rather than importing the appendix exposition.
   `alpha=Q/2+iP`.
 - `S(P)`: reflection phase in the cylinder scattering normalization.
 - `h_alpha`: Liouville conformal weight `alpha(Q-alpha)`.
+- `h_i`: external chiral conformal weights in a four-point Virasoro block.
+- `h`: internal chiral conformal weight in a Virasoro Verma module.
+- `G_2`: level-two Virasoro Gram/Shapovalov matrix in the
+  `(L_-2|h>, L_-1^2|h>)` basis.
+- `f_1`, `f_2`: first two normalized Virasoro four-point block
+  coefficients in the `z`-channel expansion.
 - `Upsilon_b`: entire special function entering the DOZZ constant.
 - `F_P`: Virasoro conformal block with internal Liouville momentum `P`.
 - `M_{gamma,g}`: Gaussian multiplicative-chaos measure in probabilistic
@@ -48,6 +54,12 @@ boundaries rather than importing the appendix exposition.
   delta-normalized primary `V_P`.
 - States the continuous Liouville four-point conformal-block decomposition as
   a direct integral over `P in [0,infty)`.
+- Defines normalized ordinary Virasoro four-point blocks with explicit
+  nondegeneracy hypotheses through level two and derives `f_1` and `f_2`
+  from the level-one and level-two Gram matrices.
+- Records where the Gram-matrix formula fails without modification:
+  degenerate Kac-determinant parameters require null quotients,
+  meromorphic limits, or logarithmic extensions.
 - Defines `Upsilon_b`, states the DOZZ formula as a `quotedtheorem`, and names
   the proof boundary.
 - Derives the scattering-normalized `P`-basis DOZZ representative from the
@@ -90,11 +102,15 @@ boundaries rather than importing the appendix exposition.
 - The same script now also checks the affine parameter algebra in the
   hypergeometric connection matrix: the `z=1` exponent gap and the gamma
   arguments `C-A`, `C-B`, and `A+B-C`.
+- The same script checks the level-two Virasoro Gram determinant, the
+  level-one and level-two ordinary block coefficients, and the large-`c`
+  global-block limit in exact rational arithmetic.
 
 ## Remaining Obligations
 
-- Add detailed conformal-block recursion examples beyond the first BPZ
-  equation.
+- Extend the conformal-block discussion from the level-two Gram-matrix
+  coefficients to the full Zamolodchikov recursion and elliptic `q`
+  coordinate when the needed convergence/status boundary is developed.
 - Develop Liouville boundary states only after the BCFT chapter is added; do
   not fold black-hole entropy or HKS/SSS material into this chapter.
 - Complete the full functorial sewing comparison with the Volume IV
@@ -116,3 +132,6 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-26 screening pass: derived the degenerate one-screening
   Coulomb-gas coefficient `C_-(alpha)` in chapter conventions and added the
   corresponding gamma-argument and gamma-identity checks.
+- 2026-05-26 Virasoro-block pass: added ordinary conformal-block
+  coefficients through level two from Gram matrices, including
+  nondegeneracy hypotheses and exact rational calculation checks.
