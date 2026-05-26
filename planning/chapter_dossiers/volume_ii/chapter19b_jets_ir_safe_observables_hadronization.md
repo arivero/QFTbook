@@ -40,6 +40,10 @@ The chapter establishes:
 - the soft-drop grooming definition and an IRC classification that separates
   \(\beta_{\rm SD}>0\) groomed four-momentum safety from the
   \(\beta_{\rm SD}=0\) collinear counterexample for the groomed four-vector;
+- a finite-kernel track-function evolution datum and Proposition
+  `prop:track-function-normalization-moment`, proving normalization
+  preservation and the first-moment evolution formula under paired real--virtual
+  track-function RG;
 - a measure-theoretic formulation of energy correlators as continuous
   functionals of the calorimetric energy measure;
 - Lemma `lem:smeared-energy-correlator-continuity`, proving soft and
@@ -90,6 +94,9 @@ The chapter establishes:
     calorimetric energy measure; their polynomial algebra separates
     finite-energy calorimetric measures and is dense in continuous
     finite-resolution calorimetric observables.
+10a. Track functions are nonperturbative operator coordinates with paired
+     real--virtual evolution; the pairing, not a slogan of IRC safety, is what
+     preserves normalization and gives the charged-energy moment RG.
 11. Fragmentation functions are nonperturbative light-ray matrix elements with
     perturbative scale evolution; their finite-scale boundary data are not
     produced by fixed-order perturbation theory.
@@ -130,3 +137,6 @@ The chapter establishes:
   separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
   \(\beta_{\rm SD}=0\) collinear counterexample, and added
   `calculation-checks/soft_drop_irc_checks.py`.
+- 2026-05-26 issue #526 track-function pass: added the paired finite-kernel
+  RG datum, proved normalization preservation and first-moment evolution, and
+  added `calculation-checks/track_function_moment_checks.py`.

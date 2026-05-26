@@ -502,6 +502,9 @@ Current checks:
   IRC-classification section, including the \(\beta_{\rm SD}=0\) collinear
   counterexample for the groomed four-vector and the \(\beta_{\rm SD}>0\)
   threshold behavior.
+- `track_function_moment_checks.py`: exact rational checks for the finite-kernel
+  track-function RG identities, verifying preservation of normalization and
+  the first-moment evolution formula for discrete track measures.
 - `susy_qm_index_checks.py`: exact rational checks for the Volume I
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian

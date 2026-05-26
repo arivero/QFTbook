@@ -718,27 +718,121 @@ renormalization are the QFT data.
 Track-based observables measure only charged hadrons.  They are generally not
 IRC safe as ordinary partonic measurements, because a collinear splitting can
 change the charged energy fraction observed by the detector.  The replacement
-input is a track function.  For a parton species \(i\), let \(T_i(x,\mu)\) be
-the renormalized probability density, in a specified operator scheme, that
-the charged tracks in the jet initiated by \(i\) carry fraction \(x\) of the
-parent energy.  Perturbative coefficients are then convolved with \(T_i\)
-rather than evaluated with a purely partonic charged-energy measurement.
-The renormalization group has DGLAP form with nonlinear mixing reflecting the
-fact that charged fractions of daughter branches add:
-\[
+input is a track function.  For a parton species \(i\), let
+\(T_i(x,\mu)\) be the renormalized track coordinate, in a specified operator
+scheme, for the fraction \(x\in[0,1]\) of the parent energy carried by charged
+tracks.  At a reference nonperturbative scale this coordinate is naturally a
+probability measure.  After renormalization it should be viewed as a
+scheme-dependent distributional coordinate whose normalization is fixed by the
+operator definition; when it has a density we write the same symbol for that
+density.  Perturbative coefficients are then convolved with \(T_i\) rather
+than evaluated with a purely partonic charged-energy measurement.
+
+\begin{definition}[Paired track-function evolution datum]
+\label{def:paired-track-function-evolution}
+Fix a renormalization scale \(\mu\).  A finite-kernel track-function evolution
+datum consists of:
+\begin{itemize}
+  \item a finite set \(\mathcal I\) of parton species;
+  \item for every ordered splitting \(i\to jk\), an integrable kernel
+  \(K_{i\to jk}(z,\mu)\) on \(0<z<1\);
+  \item the paired loss rate
+  \[
+    \Gamma_i(\mu)
+    =
+    \sum_{j,k\in\mathcal I}\int_0^1\dd z\,K_{i\to jk}(z,\mu).
+  \]
+\end{itemize}
+The associated evolution equation for track coordinates is
+\begin{align}
   \mu\frac{\dd}{\dd\mu}T_i(x,\mu)
-  =
-  \sum_{j,k}\int_0^1\dd z
+  &=
+  \sum_{j,k\in\mathcal I}
+  \int_0^1\dd z
   \int_0^1\dd x_1\,\dd x_2\,
-  \frac{\alpha_s(\mu)}{2\pi}P_{i\to jk}(z)\,
+  K_{i\to jk}(z,\mu)\,
   T_j(x_1,\mu)T_k(x_2,\mu)
-  \delta(x-zx_1-(1-z)x_2)
-  +\cdots .
+  \delta\!\left(x-zx_1-(1-z)x_2\right)
+  \nonumber\\
+  &\hspace{2.5em}
+  -\Gamma_i(\mu)T_i(x,\mu).
+  \label{eq:paired-track-function-evolution}
+\end{align}
+In perturbative QCD the kernels are renormalized splitting distributions
+rather than honest integrable functions before smearing; the finite-kernel
+definition records the algebraic real--virtual pairing that the
+renormalized distributional equation must preserve.
+\end{definition}
+
+\begin{proposition}[Normalization and first moment of track-function evolution]
+\label{prop:track-function-normalization-moment}
+Suppose the track functions in
+Definition~\ref{def:paired-track-function-evolution} have unit normalization,
+\[
+  \int_0^1\dd x\,T_i(x,\mu)=1 .
 \]
-The ellipsis denotes virtual terms and higher-order kernels fixed by the same
-renormalization prescription.  Track functions are therefore
-nonperturbative inputs with perturbative evolution, not substitutes for IRC
-safety.
+Then the paired evolution
+\eqref{eq:paired-track-function-evolution} preserves this normalization.
+If
+\[
+  m_i(\mu)=\int_0^1\dd x\,x\,T_i(x,\mu)
+\]
+is the charged-energy first moment, then
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}m_i(\mu)
+  =
+  \sum_{j,k}\int_0^1\dd z\,K_{i\to jk}(z,\mu)
+  \left[z\,m_j(\mu)+(1-z)m_k(\mu)-m_i(\mu)\right].
+  \label{eq:track-function-first-moment-rg}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Integrating \eqref{eq:paired-track-function-evolution} over \(x\) and using
+\[
+  \int_0^1\dd x\,
+  \delta\!\left(x-zx_1-(1-z)x_2\right)
+  =
+  1,
+\]
+because \(0\leq zx_1+(1-z)x_2\leq1\), gives
+\[
+  \mu\frac{\dd}{\dd\mu}\int_0^1\dd x\,T_i(x,\mu)
+  =
+  \sum_{j,k}\int_0^1\dd z\,K_{i\to jk}(z,\mu)
+  \left[
+    \left(\int T_j\right)\left(\int T_k\right)
+    -\int T_i
+  \right].
+\]
+If all normalizations are \(1\), the bracket vanishes for every splitting
+channel.  Hence the normalization is preserved.
+
+Multiplying by \(x\) before integrating gives
+\[
+  \int_0^1\dd x\,x\,
+  \delta\!\left(x-zx_1-(1-z)x_2\right)
+  =
+  zx_1+(1-z)x_2.
+\]
+The gain term therefore contributes
+\[
+  \sum_{j,k}\int_0^1\dd z\,K_{i\to jk}(z,\mu)
+  \left[
+    z\,m_j(\mu)\int T_k
+    +(1-z)\,m_k(\mu)\int T_j
+  \right].
+\]
+Using unit normalization and subtracting the loss term
+\(\Gamma_i m_i\) gives \eqref{eq:track-function-first-moment-rg}.
+\end{proof}
+
+Track functions are therefore nonperturbative inputs with perturbative
+evolution, not substitutes for IRC safety.  The point is sharper than a
+terminological distinction: a track observable is calculable only after the
+observable has been lifted from a partonic measurement to a convolution with
+the nonperturbative track coordinates and the real--virtual pairing in
+Definition~\ref{def:paired-track-function-evolution} has been specified.
 
 \section{Parton Showers}
 
