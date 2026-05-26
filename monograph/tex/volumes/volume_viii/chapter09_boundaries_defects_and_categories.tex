@@ -3,32 +3,132 @@
 
 \ConventionsEuclidean
 
-This chapter develops boundary and defect data in topological QFT.  The
-central idea is that a topological theory assigns algebraic objects not only
-to closed manifolds, but also to strata, interfaces, and corners, and that
-composition of bordisms becomes composition of the corresponding objects.
+This chapter develops boundary and defect data in topological QFT through
+finite-dimensional models where the algebra can be written explicitly.  The
+point is not merely that categories appear.  The point is that cutting a
+topological theory along strata produces state spaces, module categories,
+defect bimodules, junction spaces, and gluing pairings, and these structures
+must satisfy concrete associativity and nondegeneracy identities.
 
-\section{Boundary Condition Datum}
+\section{Boundary Conditions As Modules}
 
-Let \(Z\) be an \(n\)-dimensional topological theory.  A boundary condition
-\(B\) is an assignment of a state space or category to a boundary component
-together with compatible amplitudes for bordisms with that boundary label.
-For an interval \(I\) with endpoints labelled by \(B_0,B_1\), the theory
-assigns a space
+Let \(Z\) be an extended \(n\)-dimensional topological theory with a chosen
+target \((\infty,n)\)-category.  A boundary condition \(B\) for \(Z\) assigns
+compatible data to manifolds with boundary labelled by \(B\).  In a fully
+local formulation, if the value of \(Z\) on a point is an algebraic object
+\(\mathcal A\), then a boundary condition is represented by a module object
+over \(\mathcal A\), in the target appropriate to the codimension.
+
+\begin{definition}[Boundary category in dimension one]
+\label{def:tqft-boundary-category}
+Let \(Z\) be a one-dimensional topological theory with a set of boundary
+labels \(\mathcal B\).  For \(B_0,B_1\in\mathcal B\), let
 \[
   \mathcal H(B_0,B_1).
 \]
-Gluing two intervals gives a composition map
+be the state space assigned to an interval whose incoming endpoint is
+labelled by \(B_0\) and outgoing endpoint by \(B_1\).  Gluing intervals gives
+linear maps
 \[
   \mathcal H(B_0,B_1)\otimes \mathcal H(B_1,B_2)
   \longrightarrow
   \mathcal H(B_0,B_2).
 \]
-Associativity is the equality of amplitudes for the two decompositions of a
-three-segment interval.  Thus boundary conditions in a one-dimensional
-topological theory form a category.
+If these maps are associative and if the interval of zero length gives
+identity elements in \(\mathcal H(B,B)\), then the labels \(B\) are the
+objects of a category and \(\mathcal H(B_0,B_1)\) are its morphism spaces.
+\end{definition}
 
-\section{Defect Fusion}
+\begin{proposition}[Associativity from one-dimensional gluing]
+\label{prop:interval-gluing-category}
+The interval amplitudes of a one-dimensional topological theory with labelled
+endpoints satisfy the associativity condition in
+Definition~\ref{def:tqft-boundary-category}.
+\end{proposition}
+
+\begin{proof}
+Let \(I=I_1\cup I_2\cup I_3\) be an interval decomposed into three subintervals
+with intermediate labels \(B_1,B_2\).  Topological invariance says that the
+linear map assigned to \(I\) depends only on the labelled bordism, not on the
+choice of cut positions.  The two parenthesizations
+\[
+  (I_1\cup I_2)\cup I_3,
+  \qquad
+  I_1\cup(I_2\cup I_3)
+\]
+are the same labelled bordism.  Functoriality therefore identifies the two
+composite multiplication maps from
+\(\mathcal H(B_0,B_1)\otimes\mathcal H(B_1,B_2)\otimes
+\mathcal H(B_2,B_3)\) to \(\mathcal H(B_0,B_3)\).  The zero-length interval
+is the identity bordism, hence gives identity morphisms.
+\end{proof}
+
+\section{\texorpdfstring{\(BF_2\)}{BF2} and Finite Gauge Boundary States}
+
+The most concrete two-dimensional example is untwisted finite gauge theory,
+the finite counterpart of \(BF_2\).  Let \(G\) be a finite group.  The closed
+state space on the circle is the center of the group algebra
+\[
+  \mathcal H(S^1)=Z(\C[G]).
+\]
+The pair-of-pants product is multiplication in \(Z(\C[G])\).  For each
+irreducible complex representation \(\rho\) of \(G\), with character
+\(\chi_\rho\) and dimension \(d_\rho\), define
+\begin{equation}
+  e_\rho
+  =
+  \frac{d_\rho}{|G|}
+  \sum_{g\in G}\chi_\rho(g^{-1})\,g
+  \in Z(\C[G]).
+  \label{eq:finite-bf-two-idempotent}
+\end{equation}
+
+\begin{proposition}[Elementary \(BF_2\) boundary states]
+\label{prop:finite-bf-two-boundary-states}
+The elements \(e_\rho\), as \(\rho\) ranges over irreducible representations
+of \(G\), are the primitive central idempotents of \(\C[G]\):
+\[
+  e_\rho e_\sigma=\delta_{\rho\sigma}e_\rho,
+  \qquad
+  \sum_{\rho\in\operatorname{Irr}(G)}e_\rho=1 .
+\]
+The elementary closed-channel topological boundary states of this semisimple
+model are therefore labelled by \(\operatorname{Irr}(G)\).  Equivalently, the
+elementary modules over the closed Frobenius algebra \(Z(\C[G])\) are
+\[
+  M_\rho=e_\rho Z(\C[G]),
+  \qquad
+  \operatorname{Hom}_{Z(\C[G])}(M_\rho,M_\sigma)
+  \cong
+  \begin{cases}
+  \C, & \rho=\sigma,\\
+  0, & \rho\ne\sigma .
+  \end{cases}
+\]
+\end{proposition}
+
+\begin{proof}
+The regular representation decomposes as
+\[
+  \C[G]\cong \bigoplus_{\rho\in\operatorname{Irr}(G)}
+  V_\rho\otimes V_\rho^* .
+\]
+The center acts on the summand \(V_\rho\otimes V_\rho^*\) by a scalar.
+Schur orthogonality gives the central projector onto that summand as
+\eqref{eq:finite-bf-two-idempotent}.  Projectors onto distinct summands are
+orthogonal and their sum is the identity.  Since \(Z(\C[G])\) is a finite
+direct product of copies of \(\C\), its simple modules are exactly the
+one-dimensional summands \(e_\rho Z(\C[G])\), with the displayed Hom spaces.
+\end{proof}
+
+This proposition is deliberately a closed-sector statement.  A fully extended
+finite-gauge theory has a richer boundary classification by module categories
+over \(\operatorname{Rep}(G)\), and twisted theories replace
+\(\operatorname{Rep}(G)\) by the corresponding cocycle-twisted tensor
+category.  The idempotents above are the part of that story visible to the
+ordinary two-dimensional closed TQFT.
+
+\section{Defect Fusion and Junction Spaces}
 
 A codimension-one defect \(D_{12}\) from a theory \(Z_1\) to a theory \(Z_2\)
 is placed on a separating hypersurface.  Fusion is defined by bringing two
@@ -39,11 +139,59 @@ parallel defects together:
 For a topological defect, correlation functions are unchanged under
 deformations that keep the ordering of defects and avoid operator insertions.
 The fusion product is associative when the three-defect collision limit is
-independent of the relative distances used to take the limit.  This
-associativity is an analytic statement in a QFT realization and an axiom in a
-pure bordism-functor presentation.
+independent of the relative distances used to take the limit.  In a
+regulated QFT this independence is a theorem to be proved; in a bordism
+presentation it is part of the functorial data.
 
-\section{Line Defects In Three-Dimensional TQFT}
+\begin{example}[Finite gauge defects as bisets]
+\label{ex:finite-gauge-biset-defects}
+Let \(G\) and \(H\) be finite groups.  A topological interface from
+two-dimensional finite \(G\)-gauge theory to finite \(H\)-gauge theory can be
+modelled by a finite \((G,H)\)-biset \(X\), namely a finite set with commuting
+left \(G\)- and right \(H\)-actions.  If \(Y\) is an \((H,K)\)-biset, the
+fused interface is the balanced product
+\[
+  X\otimes_H Y
+  =
+  (X\times Y)/\{(xh,y)\sim(x,hy):h\in H\},
+\]
+which is a \((G,K)\)-biset.  Junction fields between two \((G,H)\)-bisets
+\(X\) and \(X'\) are the equivariant functions
+\[
+  \operatorname{Hom}_{G,H}(X,X')
+  =
+  \{f:X\to X': f(gxh)=gf(x)h\}.
+\]
+\end{example}
+
+\begin{proposition}[Associativity of finite defect fusion]
+\label{prop:biset-defect-fusion-associativity}
+For finite biset defects,
+\[
+  (X\otimes_H Y)\otimes_K Z
+  \cong
+  X\otimes_H (Y\otimes_K Z)
+\]
+canonically as \((G,L)\)-bisets, whenever \(X,Y,Z\) are composable
+\((G,H)\)-, \((H,K)\)-, and \((K,L)\)-bisets.
+\end{proposition}
+
+\begin{proof}
+Both sides are quotients of \(X\times Y\times Z\) by the equivalence relation
+generated by
+\[
+  (xh,y,z)\sim(x,hy,z),
+  \qquad
+  (x,yk,z)\sim(x,y,kz),
+  \qquad h\in H,\ k\in K .
+\]
+The identity map on \(X\times Y\times Z\) therefore descends to a bijection
+between the two iterated quotients.  The left \(G\)- and right \(L\)-actions
+commute with the two generating equivalences, so the bijection is a
+\((G,L)\)-biset isomorphism.
+\end{proof}
+
+\section{Line Defects and Modular Tensor Data}
 
 In a three-dimensional oriented TQFT, line defects form a monoidal category
 \(\mathcal C\).  The tensor product is parallel fusion:
@@ -61,7 +209,50 @@ Additional finiteness, semisimplicity, and nondegenerate braiding hypotheses
 give a modular tensor category; these hypotheses are part of the claimed
 three-dimensional theory, not consequences of topology alone.
 
-\section{Boundary Categories For Chern--Simons Theory}
+\begin{definition}[Modular tensor category data]
+\label{def:modular-tensor-category-data}
+For the purposes of this volume, a semisimple modular tensor category
+\(\mathcal C\) consists of a finite set \(I\) of simple objects, a tensor unit
+\(0\in I\), duals \(a\mapsto a^*\), fusion multiplicities
+\(N_{ab}^{\phantom{ab}c}\), associativity isomorphisms \(F\), braiding
+isomorphisms \(R\), twists \(\theta_a\), and a nondegenerate matrix
+\[
+  S_{ab}=\frac{1}{\mathcal D}
+  \operatorname{tr}_{a\otimes b}\!\left(c_{b,a}c_{a,b}\right),
+  \qquad
+  \mathcal D^2=\sum_{a\in I}d_a^2,
+\]
+subject to the pentagon, hexagon, ribbon, and nondegeneracy identities.  The
+numbers \(d_a\) are categorical dimensions.  A three-dimensional TQFT whose
+line category is \(\mathcal C\) must produce these data from line fusion,
+line exchange, and framed line rotation.
+\end{definition}
+
+\begin{example}[\(SU(2)_k\) line data]
+\label{ex:su2k-line-data-boundary-chapter}
+For \(SU(2)\) Chern--Simons theory at positive integer level \(k\), the line
+labels are \(a=0,\ldots,k\), corresponding to spin \(a/2\).  The modular
+matrix is
+\[
+  S_{ab}
+  =
+  \sqrt{\frac{2}{k+2}}\,
+  \sin\!\left(\frac{(a+1)(b+1)\pi}{k+2}\right),
+\]
+and the fusion rule is
+\[
+  N_{ab}^{\phantom{ab}c}=1
+  \quad\Longleftrightarrow\quad
+  |a-b|\le c\le \min(a+b,2k-a-b),
+  \quad a+b+c\in2\mathbb Z,
+\]
+with \(N_{ab}^{\phantom{ab}c}=0\) otherwise.  The derivation and the Hopf-link
+normalization are given in
+Chapter~\ref{ch:tqft-chern-simons-theory}; here the same data are read as the
+input controlling boundaries, condensable algebras, and line-defect junctions.
+\end{example}
+
+\section{Boundary Categories for Chern--Simons Theory}
 
 For compact \(G\) Chern--Simons theory at level \(k\), a Wilson line labelled
 by a representation \(R\) is
@@ -80,6 +271,83 @@ object that describes states on a surface with boundary and line endpoints.
 The equality between bulk Chern--Simons amplitudes and boundary conformal
 blocks is a gluing statement relating two constructions of the same
 surface-state spaces.
+
+\begin{definition}[Lagrangian subgroup of an abelian Chern--Simons theory]
+\label{def:abelian-cs-lagrangian-subgroup}
+Let \(K\) be a nondegenerate integral symmetric \(r\times r\) matrix defining
+an abelian Chern--Simons theory.  The finite group of line labels is
+\[
+  A_K=\mathbb Z^r/K\mathbb Z^r .
+\]
+For charge representatives \(\ell,\ell'\in\mathbb Z^r\), define
+\[
+  b(\ell,\ell')=\ell^T K^{-1}\ell'\quad\operatorname{mod}\mathbb Z,
+  \qquad
+  q(\ell)=\frac12\ell^T K^{-1}\ell\quad\operatorname{mod}\mathbb Z .
+\]
+A subgroup \(L\subset A_K\) is Lagrangian if \(q|_L=0\) and
+\[
+  L=L^\perp,
+  \qquad
+  L^\perp=\{a\in A_K: b(a,\ell)=0\ \text{for every}\ \ell\in L\}.
+\]
+\end{definition}
+
+\begin{proposition}[Abelian Chern--Simons boundary algebra]
+\label{prop:abelian-cs-lagrangian-boundary}
+In the pointed modular category of an abelian Chern--Simons theory, a
+Lagrangian subgroup \(L\subset A_K\) determines a commutative separable
+algebra object
+\[
+  A_L=\bigoplus_{\ell\in L}\ell .
+\]
+The condition \(q|_L=0\) is exactly the condition that the summands have
+trivial topological spin, and \(L=L^\perp\) is the condition that no nontrivial
+bulk line has trivial monodromy with every condensed line.
+\end{proposition}
+
+\begin{proof}
+In a pointed modular category the simple objects form an abelian group under
+fusion, here \(A_K\).  The braiding monodromy of charges \(\ell,\ell'\) is
+\(\exp(2\pi\ii b(\ell,\ell'))\), and the twist of \(\ell\) is
+\(\exp(2\pi\ii q(\ell))\).  The direct sum over a subgroup carries
+multiplication induced by the group law \(L\times L\to L\).  Commutativity of
+this multiplication requires trivial mutual braiding among condensed
+summands; this follows from \(q|_L=0\) by the quadratic identity
+\[
+  b(\ell,\ell')=q(\ell+\ell')-q(\ell)-q(\ell') .
+\]
+Separability is the finite semisimple averaging idempotent for the finite
+group \(L\).  A line \(a\) can pass through the boundary condensate without
+monodromy precisely when \(a\in L^\perp\).  If \(L=L^\perp\), the only such
+transparent bulk lines are the condensed ones, so the boundary is a boundary
+to the trivial bulk rather than to another residual topological order.
+\end{proof}
+
+\begin{example}[Toric-code boundary subgroups]
+\label{ex:toric-code-lagrangian-boundaries}
+For
+\[
+  K=\begin{pmatrix}0&2\\2&0\end{pmatrix},
+\]
+the line group is \(A_K\cong\mathbb Z_2\oplus\mathbb Z_2\).  Writing the
+generators as \(e=(1,0)\) and \(m=(0,1)\), one has
+\[
+  q(e)=q(m)=0,
+  \qquad
+  b(e,m)=\frac12 .
+\]
+Thus
+\[
+  L_e=\{0,e\},
+  \qquad
+  L_m=\{0,m\}
+\]
+are Lagrangian subgroups, while \(\{0,e+m\}\) is not because
+\(q(e+m)=1/2\).  The two Lagrangian subgroups are the two elementary gapped
+boundaries: one condenses the electric line and the other condenses the
+magnetic line.
+\end{example}
 
 \section{BV-BFV Boundary Mechanism}
 
@@ -105,6 +373,31 @@ boundary condition is a Lagrangian subspace or derived Lagrangian object
 \]
 on which the boundary variation vanishes.  This is the local mechanism behind
 boundary categories in gauge-theoretic TQFTs.
+
+\section{Crane--Yetter and Walker--Wang Boundaries}
+
+Four-dimensional state-sum and lattice-Hamiltonian constructions make the
+boundary role of braided tensor categories especially visible.
+
+\begin{quotedtheorem}[Crane--Yetter and Walker--Wang boundary principle]
+\label{qthm:crane-yetter-walker-wang-boundary}
+Let \(\mathcal C\) be a suitable spherical or ribbon fusion category with the
+finiteness and nondegeneracy assumptions required by the chosen construction.
+The Crane--Yetter state sum defines a four-dimensional oriented topological
+theory whose amplitudes are built from the categorical \(F\)-, braiding-, and
+twist data of \(\mathcal C\).  In the Walker--Wang Hamiltonian realization,
+the bulk deconfined line content is controlled by the transparent, or Mueger
+central, part of \(\mathcal C\).  If \(\mathcal C\) is modular, this
+transparent part is trivial, and the nontrivial anyonic category \(\mathcal C\)
+appears naturally on a three-dimensional boundary.
+\end{quotedtheorem}
+
+This quoted theorem records the Crane--Yetter and Walker--Wang source
+lineage; the proof is not reproduced here.  The statement is included because
+it prevents a common misconception: a modular category in this construction
+does not produce freely propagating four-dimensional anyons.  Rather, its
+nondegenerate braiding confines bulk line excitations and leaves the modular
+category as boundary topological order.
 
 \section{Extended Assignment}
 
