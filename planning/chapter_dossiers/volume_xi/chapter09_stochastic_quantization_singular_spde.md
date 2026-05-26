@@ -99,6 +99,9 @@ data.
 - `C_N^{sigma sigma}`, `C_N^{sigma infinity}`: cutoff covariance and
   cutoff-limit mixed covariance in the mixed-covariance criterion for common
   Wick limits.
+- `mu^sigma`, `K_{j,N}^nu`, `q_{j,N}^nu`: smooth Fourier multiplier,
+  dyadic covariance block, and Euclidean symbol used in the smooth
+  multiplier covariance-convergence theorem.
 - `mathcal X_N`, `mathcal X_N^A`, `mathcal X_N^B`: finite vectors of
   smeared Wick coordinates used in the common-coordinate convergence
   corollary.
@@ -241,6 +244,15 @@ data.
   powers converge in \(L^2\) to the same limit.  The proof differentiates
   the two-variable Wick generating function and uses
   \(\|a^n-b^n\|_1\le n\|a-b\|_n(\|a\|_n^{n-1}+\|b\|_n^{n-1})\).
+- Proves a smooth Fourier multiplier covariance-convergence theorem.  For
+  cutoff fields \(X_N^\sigma=\mu^\sigma(D/N)X\) with
+  \(\mu^\sigma\in C_c^\infty\), real, even, and \(\mu^\sigma(0)=1\), both
+  the cutoff covariance and the cutoff-limit mixed covariance converge to
+  the massive covariance in every finite \(L^p\).  The proof uses a dyadic
+  partition, symbol derivative bounds, Poisson summation, a uniform
+  logarithmic majorant, pointwise convergence away from the diagonal, and
+  dominated convergence.  This supplies a concrete check of the
+  mixed-covariance hypothesis for smooth Fourier regulators.
 - Extracts the finite Wick-coordinate vector convergence needed by regulator
   comparison.  For any finite list of smearings and Wick orders, coordinate
   convergence in \(L^2\) implies convergence of the vector in

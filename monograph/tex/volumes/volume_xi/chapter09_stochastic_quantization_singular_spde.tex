@@ -358,6 +358,158 @@ Sobolev DPD fixed point below is available for any prescribed
 \(0<\kappa<1/4\) after taking \(s=\kappa\).
 \end{proof}
 
+\begin{proposition}[Smooth Fourier multiplier covariance convergence]
+\label{prop:spde-smooth-fourier-multiplier-covariance-convergence}
+Let \(m^2>0\), and let
+\[
+  C(z)=\sum_{k\in\mathbb Z^2}\frac{e^{ik\cdot z}}{|k|^2+m^2}
+\]
+be the massive covariance on \(\mathbb T^2\), understood through the
+dyadic Fourier decomposition used below.  For
+\(\sigma\in\{A,B\}\), let \(\mu^\sigma\in C_c^\infty(\mathbb R^2)\) be
+real, even, and satisfy \(\mu^\sigma(0)=1\).  Define the cutoff Gaussian
+field on the same Gaussian probability space by
+\[
+  X_N^\sigma=\mu^\sigma(D/N)X,
+\]
+so that the mixed and cutoff covariances are translation invariant kernels
+\[
+  C_N^{\sigma\infty}(z)
+  =
+  \sum_{k\in\mathbb Z^2}
+  \frac{\mu^\sigma(k/N)}{|k|^2+m^2}e^{ik\cdot z},
+  \qquad
+  C_N^{\sigma\sigma}(z)
+  =
+  \sum_{k\in\mathbb Z^2}
+  \frac{\mu^\sigma(k/N)^2}{|k|^2+m^2}e^{ik\cdot z}.
+\]
+Then, for every \(1\leq p<\infty\),
+\[
+  C_N^{\sigma\infty}\longrightarrow C,
+  \qquad
+  C_N^{\sigma\sigma}\longrightarrow C
+  \quad\hbox{in }L^p(\mathbb T^2).
+  \label{eq:spde-smooth-fourier-multiplier-covariance-lp}
+\]
+Consequently the hypotheses of
+Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits} hold for
+every finite Wick order \(n\).
+\end{proposition}
+
+\begin{proof}
+Choose a smooth radial dyadic partition of unity on frequency space,
+\[
+  \chi_{-1}(\xi)+\sum_{j\geq0}\chi_j(\xi)=1,
+  \qquad
+  \chi_j(\xi)=\chi(2^{-j}\xi),
+\]
+where \(\chi_{-1}\) is supported near the origin and \(\chi\) is supported
+in an annulus.  Let
+\[
+  a(k)=|k|^2+m^2,
+\]
+and let \(\nu_N(k)\) denote any one of the three multipliers
+\[
+  1,\qquad \mu^\sigma(k/N),\qquad \mu^\sigma(k/N)^2 .
+\]
+For \(j\geq0\), set
+\[
+  K_{j,N}^{\nu}(z)
+  =
+  \sum_{k\in\mathbb Z^2}
+  \chi_j(k)\frac{\nu_N(k)}{a(k)}e^{ik\cdot z}.
+\]
+We first prove the uniform dyadic kernel bound
+\begin{equation}
+  |K_{j,N}^{\nu}(z)|
+  \leq
+  C_M\bigl(1+2^j d_{\mathbb T^2}(z,0)\bigr)^{-M},
+  \qquad M\geq0,
+  \label{eq:spde-smooth-multiplier-dyadic-kernel-bound}
+\end{equation}
+with a constant independent of \(j,N,\nu\).  Indeed, put
+\[
+  q_{j,N}^{\nu}(\xi)
+  =
+  \chi_j(\xi)\frac{\nu_N(\xi)}{|\xi|^2+m^2}.
+\]
+On the support of \(\chi_j\), \(|\xi|\simeq2^j\).  If
+\(\nu_N(\xi)=\mu^\sigma(\xi/N)\) or \(\mu^\sigma(\xi/N)^2\), the support
+of \(q_{j,N}^{\nu}\) is empty unless \(2^j\leq C N\); on the nonempty
+support, derivatives of \(\nu_N\) satisfy
+\[
+  |\partial^\alpha\nu_N(\xi)|\leq C_\alpha N^{-|\alpha|}
+  \leq C_\alpha 2^{-j|\alpha|}.
+\]
+Together with the corresponding derivative bounds for
+\(\chi_j\) and \((|\xi|^2+m^2)^{-1}\), this gives
+\[
+  |\partial^\alpha q_{j,N}^{\nu}(\xi)|
+  \leq
+  C_\alpha\,2^{-2j}2^{-j|\alpha|}.
+  \label{eq:spde-smooth-multiplier-symbol-derivatives}
+\]
+Let \(\check q_{j,N}^{\nu}\) be the inverse Fourier transform on
+\(\mathbb R^2\).  Integrating by parts in the oscillatory integral and
+using \eqref{eq:spde-smooth-multiplier-symbol-derivatives} gives
+\[
+  |\check q_{j,N}^{\nu}(x)|
+  \leq
+  C_M(1+2^j|x|)^{-M}.
+\]
+Poisson summation identifies \(K_{j,N}^{\nu}\) with the periodization of
+\(\check q_{j,N}^{\nu}\).  Summing over lattice translates gives
+\eqref{eq:spde-smooth-multiplier-dyadic-kernel-bound} when \(M>2\);
+decreasing \(M\) if necessary gives the stated form for all \(M\geq0\).
+The low-frequency block \(j=-1\) is bounded uniformly because it contains
+only finitely many lattice modes.
+
+Summing \eqref{eq:spde-smooth-multiplier-dyadic-kernel-bound} over \(j\)
+with \(M>2\) gives the logarithmic majorant
+\[
+  \left|
+    \sum_{j\geq-1}K_{j,N}^{\nu}(z)
+  \right|
+  \leq
+  C\bigl(1+|\log d_{\mathbb T^2}(z,0)|\bigr),
+  \label{eq:spde-smooth-multiplier-log-majorant}
+\]
+where the right side is interpreted as a bounded function away from
+\(z=0\).  The logarithmic singularity belongs to
+\(L^p(\mathbb T^2)\) for every finite \(p\), because in polar coordinates
+\[
+  \int_0^{1/2} r\,|\log r|^p\,\dd r<\infty .
+\]
+
+It remains to prove pointwise convergence away from the diagonal.  Fix
+\(z\neq0\).  For any fixed dyadic level \(j\), the block
+\(K_{j,N}^{\nu}\) is a finite sum, and the multiplier
+\(\nu_N(k)\) tends to \(1\) for every fixed \(k\).  Hence
+\[
+  K_{j,N}^{\nu}(z)\longrightarrow K_{j,\infty}(z)
+\]
+for each fixed \(j\).  The tail is uniform in \(N\):
+\[
+  \sum_{j>J}|K_{j,N}^{\nu}(z)|
+  \leq
+  C_M\sum_{j>J}(1+2^jd_{\mathbb T^2}(z,0))^{-M}
+  \leq
+  C_{M,z}\,2^{-JM}.
+\]
+Therefore the full dyadic sums converge pointwise for every \(z\neq0\).
+Together with the logarithmic majorant
+\eqref{eq:spde-smooth-multiplier-log-majorant}, dominated convergence gives
+\eqref{eq:spde-smooth-fourier-multiplier-covariance-lp}.  Taking
+\(\nu_N=\mu^\sigma(k/N)\) gives the mixed covariance, while taking
+\(\nu_N=\mu^\sigma(k/N)^2\) gives the cutoff covariance.  Since this holds
+for \(p=n\), and since a translation-invariant kernel \(K(x-y)\) has
+\(L^n(\mathbb T^2\times\mathbb T^2)\)-norm equal to the volume factor times
+its \(L^n(\mathbb T^2)\)-norm, the hypotheses of
+Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits} hold for
+every finite Wick order \(n\).
+\end{proof}
+
 \begin{proposition}[Mixed-covariance criterion for common Wick limits]
 \label{prop:spde-mixed-covariance-common-wick-limits}
 Let \(X\) be a centered Gaussian generalized field on \(\mathbb T^2\), and
@@ -3816,7 +3968,10 @@ Assume the following three further analytic facts.
   Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
   The common Wick-limit hypothesis itself can be checked from mixed
   covariance convergence by
-  Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}.
+  Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}; for
+  smooth compactly supported Fourier multiplier cutoffs, that covariance
+  convergence is proved by
+  Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -3920,7 +4075,10 @@ Corollary~\ref{cor:spde-common-wick-coordinate-limits}; combined with the
 stability estimate, these inputs give the bounded comparison statement in
 Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}.
 The common Wick-limit hypothesis is reduced to a covariance estimate by
-Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}.
+Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}, and for
+smooth Fourier multiplier cutoffs the needed covariance estimate follows
+from
+Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}.
 The uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite
