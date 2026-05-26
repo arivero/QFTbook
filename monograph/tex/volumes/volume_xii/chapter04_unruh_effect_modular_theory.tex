@@ -48,6 +48,67 @@ In proper time, the temperature is therefore
   T_{\rm Unruh}=\frac{a}{2\pi}.
 \]
 
+\section{Complex Boost Geometry}
+
+The factor \(2\pi\) in the preceding definition is fixed by the complexified
+boost geometry.  This subsection records the elementary geometry because it
+is the part of the Unruh effect that is often hidden behind a detector
+calculation.
+
+Let \(\Lambda_\eta\) denote the boost in the \((x^0,x^1)\)-plane:
+\[
+  (\Lambda_\eta x)^0=x^0\cosh\eta+x^1\sinh\eta,\qquad
+  (\Lambda_\eta x)^1=x^1\cosh\eta+x^0\sinh\eta,
+\]
+with transverse coordinates fixed.  For complex \(\eta=t+\ii s\), write
+\(\operatorname{Im}\Lambda_\eta x\) for the imaginary part of the complex
+vector \(\Lambda_\eta x\).
+
+\begin{lemma}[Imaginary part of a complex boost]
+\label{lem:unruh-complex-boost-geometry}
+If \(y\in W_R\) and \(\eta=t+\ii s\), then
+\[
+\begin{aligned}
+  \operatorname{Im}(\Lambda_\eta y)^0
+  &=\sin s\,(\Lambda_t y)^1,\\
+  \operatorname{Im}(\Lambda_\eta y)^1
+  &=\sin s\,(\Lambda_t y)^0 .
+\end{aligned}
+\]
+Consequently \(\operatorname{Im}\Lambda_\eta y\) is future timelike for
+\(0<s<\pi\), past timelike for \(\pi<s<2\pi\), and
+\[
+  \Lambda_{t+\ii\pi}y=-\Lambda_t y
+\]
+in the \((0,1)\)-plane.  In particular \(\Lambda_{t+\ii\pi}W_R\) is the
+left wedge
+\[
+  W_L=\{x\in\mathbb M^D:x^1<-|x^0|\}.
+\]
+Every point of \(W_R\) is spacelike separated from every point of \(W_L\).
+\end{lemma}
+
+\begin{proof}
+The formulas follow from
+\[
+  \cosh(t+\ii s)=\cosh t\cos s+\ii\sinh t\sin s,\qquad
+  \sinh(t+\ii s)=\sinh t\cos s+\ii\cosh t\sin s .
+\]
+Since \(y\in W_R\), also \(\Lambda_t y\in W_R\), so
+\((\Lambda_t y)^1>|(\Lambda_t y)^0|\).  The vector
+\(((\Lambda_t y)^1,(\Lambda_t y)^0,0,\ldots,0)\) is therefore future
+timelike in the mostly-plus convention.  Multiplication by \(\sin s\) gives
+the future/past alternatives.
+
+At \(s=\pi\), \(\cosh(t+\ii\pi)=-\cosh t\) and
+\(\sinh(t+\ii\pi)=-\sinh t\), hence the stated left-wedge image.  If
+\(x\in W_R\) and \(\ell\in W_L\), then
+\[
+  x^1-\ell^1>|x^0|+|\ell^0|\ge |x^0-\ell^0|.
+\]
+Thus \(x-\ell\) is spacelike.
+\end{proof}
+
 \section{Quoted Bisognano--Wichmann Theorem}
 
 \begin{quotedtheorem}[Bisognano--Wichmann theorem]
@@ -69,15 +130,175 @@ computation below.  The quoted source lineage is Bisognano--Wichmann's
 modular theorem for relativistic QFT, together with the standard AQFT
 expositions of the same result.
 
-\section{Free Scalar Check}
+\section{Free Scalar Wedge KMS}
 
-For a free massive scalar field in \(D=2\), the positive-frequency two-point
-function is
+We now prove the wedge KMS property for the free scalar polynomial algebra.
+This is not the Bisognano--Wichmann theorem in full generality, but it gives a
+complete model calculation with all orderings and analytic domains visible.
+
+\begin{definition}[Free scalar two-point distribution]
+\label{def:unruh-free-scalar-two-point}
+For \(m>0\), the massive scalar vacuum two-point distribution on
+\(\mathbb M^D\) is
 \[
-  W(x)=\int\frac{dp}{2\pi\,2E_p}\,e^{-\ii E_p x^0+\ii p x^1},
-  \qquad E_p=\sqrt{p^2+m^2}.
+  \Delta_+^{(m)}(z)
+  =
+  \int_{\mathbb R^{D-1}}
+  \frac{\dd^{D-1}{\bf p}}{(2\pi)^{D-1}2E_{\bf p}}\,
+  e^{-\ii E_{\bf p}z^0+\ii{\bf p}\cdot{\bf z}},
+  \qquad
+  E_{\bf p}=\sqrt{|{\bf p}|^2+m^2}.
 \]
-Along the uniformly accelerated trajectory
+For test functions \(f,g\in C_c^\infty(\mathbb M^D)\),
+\[
+  \langle\Omega,\phi(f)\phi(g)\Omega\rangle
+  =
+  \iint f(x)g(y)\Delta_+^{(m)}(x-y)\,\dd x\,\dd y .
+\]
+\end{definition}
+
+The distribution \(\Delta_+^{(m)}(z)\) is the boundary value of a holomorphic
+function in the past tube
+\[
+  \mathcal T_-=\{z\in\mathbb C^D:\operatorname{Im}z\in V_-\},
+\]
+where \(V_-\) is the open past timelike cone.  Indeed, if
+\(\operatorname{Im}z=u\in V_-\), then
+\[
+  E_{\bf p}u^0-{\bf p}\cdot{\bf u}\le -c_u E_{\bf p}
+\]
+for some \(c_u>0\) on every compact subcone of \(V_-\), and the defining
+mass-shell integral is absolutely convergent after the usual polynomial
+bounds from differentiating in \(z\).
+
+\begin{theorem}[Free scalar wedge KMS]
+\label{thm:unruh-free-scalar-wedge-kms}
+Let \(f,g\in C_c^\infty(W_R)\).  Let the boost automorphism act on smeared
+fields by
+\[
+  \alpha_\eta(\phi(g))=\phi(g_\eta),
+  \qquad
+  g_\eta(x)=g(\Lambda_{-\eta}x).
+\]
+Then
+\[
+  F_{f,g}(\eta)
+  =
+  \langle\Omega,\phi(f)\alpha_\eta(\phi(g))\Omega\rangle
+\]
+is the lower boundary value of a function holomorphic in the strip
+\[
+  0<\operatorname{Im}\eta<2\pi ,
+\]
+continuous as a distributional boundary value on the two edges, and its
+upper boundary satisfies
+\[
+  F_{f,g}(\eta+2\pi\ii)
+  =
+  \langle\Omega,\alpha_\eta(\phi(g))\phi(f)\Omega\rangle .
+  \label{eq:unruh-free-two-point-kms-boundary}
+\]
+\end{theorem}
+
+\begin{proof}
+For real \(\eta\), change variables in \(g_\eta\) to write
+\[
+  F_{f,g}(\eta)
+  =
+  \iint f(x)g(y)\Delta_+^{(m)}(x-\Lambda_\eta y)\,\dd x\,\dd y .
+  \label{eq:unruh-free-two-point-lower-boundary}
+\]
+For \(0<\operatorname{Im}\eta<\pi\), Lemma~\ref{lem:unruh-complex-boost-geometry}
+implies that
+\[
+  \operatorname{Im}(x-\Lambda_\eta y)
+  =
+  -\operatorname{Im}\Lambda_\eta y
+  \in V_-
+\]
+for all \(x,y\in W_R\).  Since the supports of \(f\) and \(g\) are compact
+subsets of \(W_R\), the image stays in a compact subcone of the past tube on
+compact sub-strips.  Thus
+\[
+  F^{(1)}_{f,g}(\eta)
+  =
+  \iint f(x)g(y)\Delta_+^{(m)}(x-\Lambda_\eta y)\,\dd x\,\dd y
+\]
+is holomorphic for \(0<\operatorname{Im}\eta<\pi\).
+
+For \(\pi<\operatorname{Im}\eta<2\pi\), the same lemma says that
+\(\operatorname{Im}\Lambda_\eta y\in V_-\).  Hence
+\[
+  F^{(2)}_{f,g}(\eta)
+  =
+  \iint f(x)g(y)\Delta_+^{(m)}(\Lambda_\eta y-x)\,\dd x\,\dd y
+\]
+is holomorphic on the upper half of the strip.
+
+It remains to glue the two holomorphic functions across
+\(\operatorname{Im}\eta=\pi\).  At \(\eta=t+\ii\pi\), the point
+\(\Lambda_\eta y\) lies in \(W_L\).  Lemma~\ref{lem:unruh-complex-boost-geometry}
+therefore makes \(x\) and \(\Lambda_\eta y\) spacelike separated.  The free
+scalar commutator is
+\[
+  [\phi(x),\phi(y)]=\ii\Delta_m(x-y)\mathbf 1,
+\]
+where \(\Delta_m\) is the difference of the retarded and advanced
+fundamental solutions of \(\Box-m^2\).  Hyperbolic finite propagation gives
+\(\Delta_m(z)=0\) for spacelike \(z\).  Therefore the two boundary values
+\[
+  \Delta_+^{(m)}(x-\Lambda_{t+\ii\pi}y)
+  \quad\hbox{and}\quad
+  \Delta_+^{(m)}(\Lambda_{t+\ii\pi}y-x)
+\]
+agree after smearing with \(f(x)g(y)\).  The edge-of-the-wedge gluing in this
+one-complex-variable strip is the following elementary distributional fact:
+if two holomorphic functions on adjacent strips have the same distributional
+boundary value on the common real line, they define a holomorphic function on
+the union.  Applying it here gives a holomorphic \(F_{f,g}\) on
+\(0<\operatorname{Im}\eta<2\pi\).
+
+The lower boundary is
+\eqref{eq:unruh-free-two-point-lower-boundary}.  The upper boundary is
+obtained from \(F^{(2)}\) because
+\(\Lambda_{\eta+2\pi\ii}=\Lambda_\eta\):
+\[
+  \lim_{s\uparrow2\pi}F^{(2)}_{f,g}(t+\ii s)
+  =
+  \iint f(x)g(y)\Delta_+^{(m)}(\Lambda_t y-x)\,\dd x\,\dd y
+  =
+  \langle\Omega,\alpha_t(\phi(g))\phi(f)\Omega\rangle .
+\]
+This is \eqref{eq:unruh-free-two-point-kms-boundary}.
+\end{proof}
+
+\begin{corollary}[Polynomial free-field wedge algebra]
+\label{cor:unruh-free-polynomial-wedge-kms}
+Let \(\mathcal P(W_R)\) be the unital \(\ast\)-algebra generated by the
+smeared free fields \(\phi(f)\), \(f\in C_c^\infty(W_R)\), modulo the free
+field equation and canonical commutation relations.  The vacuum state
+restricted to \(\mathcal P(W_R)\) is KMS at inverse boost temperature
+\(2\pi\) with respect to \(\alpha_\eta\).
+\end{corollary}
+
+\begin{proof}
+Every vacuum \(n\)-point function of the free scalar field is a finite sum of
+products of two-point functions by Wick's theorem.  If a polynomial \(B\) is
+boosted by complex \(\eta\), each two-point factor connecting a field in
+\(A\) to a field in \(B\) is one of the strip-holomorphic functions proved in
+Theorem~\ref{thm:unruh-free-scalar-wedge-kms}.  Pairings entirely inside
+\(A\) or entirely inside \(B\) are independent of \(\eta\) or are invariant
+under the common boost.  Products and finite sums preserve holomorphy in the
+strip.  The boundary relation follows term by term from
+\eqref{eq:unruh-free-two-point-kms-boundary}; the reordering at the upper
+edge is legitimate because the free commutator has already supplied the
+spacelike gluing at imaginary boost time \(\pi\).  This is exactly the KMS
+condition for all polynomial elements.
+\end{proof}
+
+\section{Worldline Specialization}
+
+For a uniformly accelerated trajectory in \(D=2\),
 \[
   x^0(\tau)=a^{-1}\sinh(a\tau),\qquad
   x^1(\tau)=a^{-1}\cosh(a\tau),
@@ -97,7 +318,7 @@ The Wightman function along the trajectory is therefore a function of
 \]
 the two-point function has imaginary proper-time periodicity
 \(\beta=2\pi/a\) with the KMS ordering prescription.  This verifies the
-thermal response for the free field.
+two-point form of the free-field wedge KMS theorem on a single orbit.
 
 \section{Detector Response}
 
@@ -118,6 +339,58 @@ The KMS condition implies detailed balance
 Thus the detector response is thermal at temperature \(a/(2\pi)\) when the
 coupling is weak, the detector is operated for a long time, and switching
 effects have been separated from the stationary rate.
+
+\begin{proposition}[Detailed balance from the KMS boundary relation]
+\label{prop:unruh-detector-detailed-balance-from-kms}
+Let \(G(\tau)\) be a tempered distribution which is the stationary two-point
+function sampled by a detector along a time-translation orbit, and suppose
+that it has the KMS boundary relation at inverse temperature \(\beta\) in the
+following convention:
+\[
+  G(\tau-\ii\beta)=G(-\tau)
+\]
+as boundary values of one holomorphic function in the strip
+\(-\beta<\operatorname{Im}\tau<0\).  If the stationary transition rate
+\[
+  \dot P(E)=\int_{-\infty}^{\infty}e^{-\ii E\tau}G(\tau)\,\dd\tau
+\]
+exists as the Fourier transform of this tempered distribution at
+\(\pm E\), \(E>0\), and if the contour shift is justified by inserting a
+Schwartz switching function and then taking the stationary limit, then
+\[
+  \dot P(-E)=e^{\beta E}\dot P(E).
+\]
+\end{proposition}
+
+\begin{proof}
+With a Schwartz switching function, all integrals below are ordinary
+absolutely convergent contour integrals; the stated distributional formula is
+the limit after the switching function is removed.  Start from
+\[
+  \dot P(-E)
+  =
+  \int e^{\ii E\tau}G(\tau)\,\dd\tau
+  =
+  \int e^{-\ii E\tau}G(-\tau)\,\dd\tau .
+\]
+Use the KMS boundary relation \(G(-\tau)=G(\tau-\ii\beta)\):
+\[
+  \dot P(-E)
+  =
+  \int_{\mathbb R}e^{-\ii E\tau}G(\tau-\ii\beta)\,\dd\tau .
+\]
+Shift the contour to \(u=\tau-\ii\beta\), so
+\(\tau=u+\ii\beta\).  The exponential becomes
+\[
+  e^{-\ii E(u+\ii\beta)}=e^{\beta E}e^{-\ii Eu}.
+\]
+Holomorphy in the strip gives
+\[
+  \dot P(-E)=e^{\beta E}\int_{\mathbb R}e^{-\ii Eu}G(u)\,\dd u
+  =
+  e^{\beta E}\dot P(E).
+\]
+\end{proof}
 
 \begin{openproblem}[Interacting wedge thermality in examples]
 \label{op:interacting-wedge-thermality-examples}
