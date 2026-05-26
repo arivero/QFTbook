@@ -1,0 +1,373 @@
+\chapter{Supersymmetric Localization On Compact Manifolds}
+\label{ch:susy-localization-compact-manifolds}
+
+\ConventionsMixed
+
+Supersymmetric localization is an exact-evaluation method only after the
+regulated functional integral has been specified with enough information to
+justify deformation of the integration cycle.  This chapter separates the
+finite-dimensional theorem from the QFT formulae used in four-dimensional
+\(\mathcal N=2\) gauge theory on \(S^4\) and three-dimensional
+\(\mathcal N=2\) Chern--Simons--matter theory on \(S^3\).  The formulae below
+are therefore not introduced as formal replacements for a definition of a QFT:
+they are consequences of a localization datum in the sense of
+Definition~\ref{def:susy-localization-datum}, together with the determinant
+and instanton-sector prescriptions explicitly stated here.
+
+\section{Finite-Dimensional Deformation Identity}
+
+Let \(X\) be an oriented finite-dimensional supermanifold equipped with an
+integration cycle \(C\subset X\) and Berezinian density \(\mu\).  Let \(Q\) be
+an odd vector field on \(X\), and let \(B\) be the even vector field \(Q^2\).
+For the following proposition all functions and densities are assumed smooth
+on a neighborhood of \(C\), and \(C\) is assumed to be either compact without
+boundary or equipped with boundary conditions for which the displayed
+Stokes term vanishes.
+
+\begin{proposition}[Localization deformation identity]
+\label{prop:susy-localization-deformation-identity}
+Let \(S,V,\mathcal O\) be functions on \(X\) with parities
+\(|S|=|\mathcal O|=0\), \(|V|=1\).  Suppose
+\[
+  Q S=0,\qquad Q\mathcal O=0,\qquad
+  B S=B\mathcal O=BV=0,
+\]
+and suppose the Berezinian density is \(Q\)-invariant:
+\(\mathcal L_Q\mu=0\).  Define
+\[
+  I(t)=\int_C\mu\,\mathcal O\,\exp\{-S-t\,QV\}.
+\]
+If \(Q(\mu\,\mathcal O\,V\,\exp\{-S-tQV\})\) has zero integral over \(C\),
+then \(I(t)\) is independent of \(t\).
+\end{proposition}
+
+\begin{proof}
+Because \(Q\) is an odd derivation and \(Q^2V=BV=0\),
+\[
+  \frac{dI}{dt}
+  =
+  -\int_C\mu\,\mathcal O\,(QV)\,\exp\{-S-tQV\}.
+\]
+The hypotheses \(QS=0\), \(Q\mathcal O=0\), and \(Q(QV)=0\) give
+\[
+\begin{aligned}
+  Q\!\left(\mathcal O\,V\,\exp\{-S-tQV\}\right)
+  &=
+  (Q\mathcal O)V\ee^{-S-tQV}
+  +\mathcal O(QV)\ee^{-S-tQV} \\
+  &\quad
+  -\mathcal O V\,Q(S+tQV)\ee^{-S-tQV} \\
+  &=
+  \mathcal O(QV)\ee^{-S-tQV}.
+\end{aligned}
+\]
+Using \(\mathcal L_Q\mu=0\), the right hand side integrates to the assumed
+zero Stokes term.  Hence \(dI/dt=0\).
+\end{proof}
+
+If the real part of \(QV\) is nonnegative on the bosonic body of \(C\), and
+if its zero locus \(F\) is compact and clean, the \(t\to\infty\) limit reduces
+the integral to \(F\) with a normal Gaussian determinant.  Let \(N_F\) denote
+the normal complex to \(F\), obtained by linearizing the \(Q\)-complex in the
+directions transverse to \(F\).  In a coordinate chart in which the quadratic
+part of \(QV\) is
+\[
+  (QV)_{\rm quad}
+  =
+  \frac12 x^i A_{ij}x^j+\psi^a B_{ab}\psi^b+\chi^r C_{ri}x^i ,
+\]
+the normal contribution is the Berezin Gaussian
+\[
+  Z_{\rm normal}
+  =
+  \frac{\operatorname{Pf}(B)\,\det(C)}
+  {\sqrt{\det(A)}} ,
+\]
+with the square-root branch fixed by the original integration cycle.  This
+finite formula is the local model for the one-loop determinants in the
+compact-space QFT examples below.
+
+\section{QFT Localization Datum}
+
+For a supersymmetric QFT on a compact Riemannian manifold \(M\), the symbol
+\[
+  Z_M=\int_{\mathfrak F}\mathcal D\Phi\,\ee^{-S[\Phi]}
+\]
+will be used only as shorthand for a regulated datum:
+\[
+  (\mathfrak F_\Lambda,C_\Lambda,\mu_\Lambda,S_\Lambda,Q_\Lambda,V_\Lambda)
+\]
+together with a limiting prescription \(\Lambda\to\infty\).  Here
+\(\mathfrak F_\Lambda\) is a finite-mode, lattice, heat-kernel, BV, or other
+regulated field-variable space; \(C_\Lambda\) is the declared integration
+cycle; \(\mu_\Lambda\) is the regulated Berezinian density; \(Q_\Lambda\) is
+an odd symmetry whose square is a combination of an isometry, gauge
+transformation, \(R\)-symmetry, and flavor transformation; and \(V_\Lambda\)
+is the chosen localizing functional.  The localized expression is justified
+when the following conditions are verified or retained as hypotheses:
+\[
+\begin{gathered}
+  Q_\Lambda S_\Lambda=0,\qquad
+  \mathcal L_{Q_\Lambda}\mu_\Lambda=0,\qquad
+  Q_\Lambda\mathcal O_\Lambda=0,\\
+  \int_{\partial C_\Lambda}
+  \mu_\Lambda\,\mathcal O_\Lambda V_\Lambda
+  \ee^{-S_\Lambda-tQ_\Lambda V_\Lambda}=0,\\
+  \operatorname{Re}(Q_\Lambda V_\Lambda)\ge0
+  \quad\hbox{on the bosonic integration cycle}.
+\end{gathered}
+\]
+The fixed locus, zero modes, determinants, and singular strata must then be
+included in the limiting prescription.
+Noncompact Coulomb directions, Jeffrey--Kirwan residues, and point-instanton
+compactifications are not automatic outputs of the symbol \(\int\mathcal
+D\Phi\).  They are part of the regulated localization datum.  In the formulae
+below this datum will be stated by naming the finite-dimensional variables,
+the contour, and the determinant or equivariant-integral prescription.
+
+\section{\texorpdfstring{\(S^4\) Localization In Four-Dimensional \(\mathcal N=2\) Gauge Theory}{S4 Localization In Four-Dimensional N=2 Gauge Theory}}
+
+Let \(G\) be compact connected, with Lie algebra \(\mathfrak g\), maximal
+torus \(T\), Cartan algebra \(\mathfrak t\), Weyl group \(W_G\), and root
+system \(\Delta\subset\mathfrak t^\ast\).  The monograph convention for
+non-Abelian gauge theory is
+\[
+  \operatorname{tr}_{\square}(t^at^b)=\delta^{ab},
+  \qquad
+  S_{\rm YM}=\frac1{4g_{\rm YM}^2}
+  \int \operatorname{tr}_{\square}(F_{\mu\nu}F^{\mu\nu}) .
+\]
+With \((a,a):=\operatorname{tr}_{\square}(a^2)\) for \(a\in\mathfrak t\), the
+round \(S^4_r\) localization variable is the constant adjoint scalar
+\(a\in\mathfrak t\) on the Coulomb locus.  The classical Gaussian in this
+trace-delta convention is
+\[
+  Z_{\rm cl}(a)
+  =
+  \exp\!\left\{
+    -\frac{4\pi^2r^2}{g_{\rm YM}^2}(a,a)
+  \right\}.
+  \label{eq:s4-localization-classical-gaussian}
+\]
+The coefficient equals the familiar half-trace coefficient because
+\(t^a=\sqrt2\,T^a\) and \(g_{\rm ht}^2=2g_{\rm YM}^2\), so
+\[
+  \frac{8\pi^2}{g_{\rm ht}^2}\operatorname{tr}_{\rm ht}(a_{\rm ht}^2)
+  =
+  \frac{4\pi^2}{g_{\rm YM}^2}(a,a).
+\]
+
+Define the even entire function
+\[
+  H(x)
+  =
+  \prod_{n=1}^{\infty}
+  \left(1+\frac{x^2}{n^2}\right)^n
+  \exp\!\left(-\frac{x^2}{n}\right),
+  \label{eq:pestun-H-function}
+\]
+understood by zeta regularization or by the equivalent Barnes-double-gamma
+definition.  For a vector multiplet and hypermultiplets of masses \(m_\ell\)
+in representations \(R_\ell\), the perturbative determinant on the round
+sphere is
+\[
+  Z_{1{\rm -loop}}^{S^4}(a)
+  =
+  \prod_{\alpha\in\Delta_+}
+  \alpha(a)^2 H(r\,\alpha(a))^2
+  \prod_\ell\prod_{\rho\in{\rm wt}(R_\ell)}
+  H\!\left(r\,\rho(a)+r\,m_\ell\right)^{-1}.
+  \label{eq:s4-localization-one-loop}
+\]
+The factor \(\prod_{\alpha>0}\alpha(a)^2\) is the Cartan gauge-fixing
+Jacobian.  If the representation is real or pseudoreal, the weights are
+counted with the multiplicity appropriate to a full hypermultiplet in the
+chosen convention.  A different convention for the hypermultiplet mass shifts
+the argument of \(H\) by the corresponding \(R\)-symmetry background; this is
+a coordinate change in the localization datum, not a change of the underlying
+determinant complex.
+
+\begin{definition}[Nekrasov factor in the \(S^4\) formula]
+\label{def:s4-nekrasov-factor}
+For the four-dimensional localization formula, \(Z_{\rm inst}(a,\tau;
+\epsilon_1,\epsilon_2)\) denotes the equivariant integral over the framed
+instanton moduli space on \(\mathbb C^2\), with equivariant rotation weights
+\((\epsilon_1,\epsilon_2)\), Coulomb parameter \(a\), and
+\[
+  \tau=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g_{\rm YM}^2}.
+\]
+For \(U(N)\) this can be defined by integration over the smooth framed
+torsion-free-sheaf compactification.  For other gauge groups and matter
+systems the formula requires the corresponding compactification or an
+equivalent contour prescription as part of the stated datum.
+\end{definition}
+
+The localized partition function is
+\[
+  Z_{S^4}^{\mathcal N=2}
+  =
+  \frac1{|W_G|}
+  \int_{\mathfrak t} da\,
+  Z_{\rm cl}(a)\,
+  Z_{1{\rm -loop}}^{S^4}(a)\,
+  Z_{\rm inst}\!\left(a,\tau;\frac1r,\frac1r\right)
+  Z_{\rm inst}\!\left(a,\bar\tau;\frac1r,\frac1r\right).
+  \label{eq:pestun-s4-localization}
+\]
+The north pole contributes instantons and the south pole contributes
+anti-instantons.  The two factors are complex conjugates only when the
+integration cycle and masses are chosen so that reflection positivity gives
+the corresponding conjugation property.
+
+\begin{example}[\(\mathcal N=4\) Yang--Mills degeneration]
+\label{ex:s4-n4-gaussian-matrix-model}
+For an \(\mathcal N=2\) vector multiplet plus an adjoint hypermultiplet with
+the mass coordinate tuned to the \(\mathcal N=4\) point, the hypermultiplet
+weights cancel the \(H\)-factors from the vector multiplet.  The remaining
+matrix model is
+\[
+  Z_{S^4}^{\mathcal N=4}
+  =
+  \frac1{|W_G|}
+  \int_{\mathfrak t}da\,
+  \exp\!\left\{
+    -\frac{4\pi^2r^2}{g_{\rm YM}^2}(a,a)
+  \right\}
+  \prod_{\alpha\in\Delta_+}\alpha(a)^2 .
+\]
+For \(G=U(1)\) there is no root factor and no finite-action instanton sector
+on \(\mathbb C^2\).  The partition function reduces to the ordinary Gaussian
+\[
+  \int_{-\infty}^{\infty} da\,
+  \exp\!\left(-\frac{4\pi^2r^2}{g_{\rm YM}^2}a^2\right)
+  =
+  \frac{g_{\rm YM}}{2\sqrt{\pi}\,r}.
+  \label{eq:s4-u1-gaussian-localization}
+\]
+\end{example}
+
+\section{\texorpdfstring{\(S^3\) Localization In Three-Dimensional \(\mathcal N=2\) Theories}{S3 Localization In Three-Dimensional N=2 Theories}}
+
+Let \(G\), \(T\), \(\mathfrak t\), \(W_G\), and \(\Delta\) be as above.  On
+the round \(S^3_r\), the Coulomb-branch localization variable is the constant
+real scalar \(\sigma\in\mathfrak t\) in the vector multiplet.  With
+Chern--Simons level \(k\), FI parameter \(\zeta\in\mathfrak t^\ast\), chiral
+multiplets \(\Phi\) in representations \(R_\Phi\), real masses \(m_\Phi\),
+and \(R\)-charges \(\Delta_\Phi\), the Kapustin--Willett--Yaakov matrix
+integral is
+\[
+  Z_{S^3}
+  =
+  \frac1{|W_G|}
+  \int_{\mathfrak t}d\sigma\,
+  \ee^{\ii\pi k r^2(\sigma,\sigma)+2\pi\ii r(\zeta,\sigma)}
+  \prod_{\alpha\in\Delta_+}
+  4\sinh^2\!\bigl(\pi r\,\alpha(\sigma)\bigr)
+  \prod_{\Phi}Z_{\Phi}^{S^3}(\sigma),
+  \label{eq:kwy-s3-localization}
+\]
+where
+\[
+  Z_{\Phi}^{S^3}(\sigma)
+  =
+  \prod_{\rho\in{\rm wt}(R_\Phi)}
+  \exp\!\left[
+    \ell\!\left(1-\Delta_\Phi+\ii r\,\rho(\sigma)+\ii r\,m_\Phi\right)
+  \right].
+\]
+The function \(\ell\) is fixed, up to an additive constant that changes the
+overall normalization of \(Z_{S^3}\), by
+\[
+  \ell'(z)=-\pi z\cot(\pi z),
+  \qquad
+  \ell\!\left(\frac12+\ii x\right)
+  +
+  \ell\!\left(\frac12-\ii x\right)
+  =
+  -\log\!\bigl(2\cosh(\pi x)\bigr).
+  \label{eq:kwy-ell-identity}
+\]
+The integration contour is the real Cartan in the displayed unitary
+normalization.  If the matter content makes the integral nonconvergent, a
+mass, FI parameter, analytic continuation, or contour prescription must be
+declared as part of the theory being evaluated.
+
+\begin{example}[Abelian Chern--Simons Gaussian]
+\label{ex:s3-u1-cs-fresnel}
+For pure \(U(1)_k\) Chern--Simons theory on \(S^3\) with FI parameter
+\(\zeta\), the localized integral is the oscillatory Fresnel integral
+\[
+  Z_{U(1)_k}(\zeta)
+  =
+  \int_{\mathbb R} d\sigma\,
+  \exp\!\left(\ii\pi k\sigma^2+2\pi\ii\zeta\sigma\right).
+\]
+With the contour obtained by rotating the positive quadratic direction by the
+usual \(\ii0\) prescription, completing the square gives
+\[
+  Z_{U(1)_k}(\zeta)
+  =
+  \frac{\ee^{\ii\pi\,{\rm sgn}(k)/4}}{\sqrt{|k|}}\,
+  \exp\!\left(-\frac{\ii\pi\zeta^2}{k}\right).
+  \label{eq:s3-u1-cs-fresnel}
+\]
+The phase depends on the framing convention of the Chern--Simons theory; the
+absolute value and FI dependence follow from the declared contour.
+\end{example}
+
+\begin{example}[A conjugate pair of chirals]
+\label{ex:s3-chiral-pair-integral}
+For two chiral multiplets of charges \(+1\) and \(-1\), both with
+\(R\)-charge \(1/2\) and zero real mass, the product of one-loop determinants
+on the \(U(1)\) Coulomb parameter is
+\[
+  \exp\!\left[
+    \ell\!\left(\frac12+\ii\sigma\right)
+    +
+    \ell\!\left(\frac12-\ii\sigma\right)
+  \right]
+  =
+  \frac1{2\cosh(\pi\sigma)}.
+\]
+The elementary integral
+\[
+  \int_{-\infty}^{\infty}
+  \frac{d\sigma}{2\cosh(\pi\sigma)}
+  =
+  \frac12
+  \label{eq:s3-chiral-pair-integral}
+\]
+is a finite check on the determinant normalization in
+\eqref{eq:kwy-s3-localization}.  It is not by itself a definition of a gauge
+theory; the gauge quotient, possible Chern--Simons contact terms, and
+background-field couplings remain part of the QFT datum.
+\end{example}
+
+\section{Theorem Boundary And Singular Loci}
+
+Equations~\eqref{eq:pestun-s4-localization} and
+\eqref{eq:kwy-s3-localization} have different mathematical status from
+Proposition~\ref{prop:susy-localization-deformation-identity}.  The
+proposition is a finite-dimensional deformation identity under stated
+hypotheses.  The compact-space QFT formulae additionally require:
+\[
+\begin{array}{ll}
+S^4:&
+\text{a regulator preserving the chosen supercharge, determinant
+regularization,}\\
+&\text{and an instanton compactification or contour for singular point
+instantons;}\\[3pt]
+S^3:&
+\text{a parity-anomaly regulator, framing convention, real contour or
+analytic continuation,}\\
+&\text{and a treatment of noncompact Coulomb directions and singular
+hyperplanes.}
+\end{array}
+\]
+When these data are supplied, localization turns a protected observable into
+an integral over fixed-locus variables.  It does not erase the distinction
+between regularization and renormalization, nor does it make contact terms
+canonical.  Background Chern--Simons terms in three dimensions and local
+curvature counterterms in four dimensions change phases or local
+source-dependent factors in the localized answer; they must be tracked as
+coordinates of the QFT, not discarded as normalization details.

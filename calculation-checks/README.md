@@ -284,6 +284,12 @@ Current checks:
   Kontsevich--Segal allowability chapter, including the angle criterion,
   Euclidean and Lorentzian boundary examples, two-time exclusion, and
   positivity of all diagonal \(q\)-form coefficients.
+- `susy_localization_matrix_checks.py`: finite checks for the compact-space
+  supersymmetric localization chapter, including the trace-delta \(S^4\)
+  Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian matrix integral, the
+  \(U(1)_k\) \(S^3\) Chern--Simons Fresnel completion of the square, and the
+  round-\(S^3\) conjugate-chiral-pair integral
+  \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
 - `susy_qm_index_checks.py`: exact rational checks for the Volume I
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
