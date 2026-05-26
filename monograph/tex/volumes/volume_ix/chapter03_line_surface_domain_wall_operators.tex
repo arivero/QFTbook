@@ -42,6 +42,28 @@ renormalization scheme for the short-distance singularity along the line.
 If \(\gamma\) is open, the endpoints must carry charged states or additional
 operators so that the full insertion is gauge invariant.
 
+For a closed curve, choose a base point \(p\in\gamma\) and write
+\(\operatorname{Hol}_\gamma(A)\in G\) for parallel transport from \(p\) back
+to \(p\).  Under a gauge transformation \(u:X\to G\),
+\[
+  \operatorname{Hol}_\gamma(A^u)
+  =
+  u(p)^{-1}\operatorname{Hol}_\gamma(A)u(p),
+\]
+so \(\operatorname{Tr}_R\operatorname{Hol}_\gamma(A)\) is gauge invariant.
+For an interval \(\gamma=[p_-,p_+]\), parallel transport is a map
+\[
+  U_\gamma(A):R_{p_-}\longrightarrow R_{p_+},
+  \qquad
+  U_\gamma(A^u)=R(u(p_+))^{-1}U_\gamma(A)R(u(p_-)).
+\]
+Gauge invariance is then obtained after contracting the endpoint indices with
+charged endpoint vectors or endpoint local operators in the dual
+representations.  This endpoint bookkeeping is part of the line definition
+because it determines whether the line is genuine, a boundary of a surface
+operator, or an operator that changes the charged sector of the Hilbert
+space.
+
 \section{Magnetic and Dyonic Lines}
 
 A magnetic line in four-dimensional gauge theory is defined by a prescribed
@@ -63,6 +85,94 @@ dual magnetic lattice changes accordingly.  Therefore the line-operator
 spectrum is part of the definition of a gauge theory: it is fixed by the
 global gauge group, the allowed bundles, and the chosen mutually local
 electric-magnetic charge lattice.
+
+\subsection{The Local Monopole Model}
+
+Let \(m:U(1)\to T\subset G\) be a cocharacter and let
+\[
+  m_*:\ii\mathbb R\longrightarrow\mathfrak t
+\]
+be its differential.  We identify \(m_*\) with the element of
+\(\mathfrak t\) obtained by evaluating the differential on \(\ii\).  On a
+small oriented two-sphere linking the candidate line, use spherical
+coordinates \((\vartheta,\varphi)\).  Cover the sphere by the northern and
+southern patches \(U_N=\{\vartheta\ne\pi\}\) and
+\(U_S=\{\vartheta\ne0\}\).  The embedded Dirac monopole connection is
+\begin{equation}
+  A_N=\frac{m_*}{2}(1-\cos\vartheta)\,\dd\varphi,
+  \qquad
+  A_S=-\frac{m_*}{2}(1+\cos\vartheta)\,\dd\varphi .
+  \label{eq:thooft-local-dirac-patches}
+\end{equation}
+On the overlap,
+\[
+  A_N-A_S=m_*\,\dd\varphi .
+\]
+The transition function
+\[
+  g_{NS}(\varphi)=m(e^{\ii\varphi})
+\]
+satisfies
+\[
+  A_N=g_{NS}^{-1}A_Sg_{NS}+g_{NS}^{-1}\dd g_{NS}
+\]
+in the abelianized \(T\)-valued model, and in a nonabelian theory after the
+choice of local reduction to \(T\).  Its curvature is
+\begin{equation}
+  F_m=\frac{m_*}{2}\sin\vartheta\,\dd\vartheta\wedge\dd\varphi,
+  \qquad
+  \int_{S^2}\frac{F_m}{2\pi}=m_* .
+  \label{eq:thooft-local-flux}
+\end{equation}
+The equality in the second formula means equality in the cocharacter lattice
+after pairing with characters of \(T\).
+
+\begin{proposition}[Cocharacter criterion for the monopole singularity]
+\label{prop:thooft-cocharacter-criterion}
+The local model \eqref{eq:thooft-local-dirac-patches} defines a
+\(G\)-connection on the punctured ball modulo the chosen singularity exactly
+when \(m\in X_*(T)=\operatorname{Hom}(U(1),T)\).  For every character
+\(\lambda\in X^*(T)\), a charge-\(\lambda\) Wilson probe transported across
+the Dirac ray changes by the phase
+\[
+  \exp\!\bigl(2\pi\ii\langle\lambda,m\rangle\bigr),
+\]
+which is one by the definition of the character-cocharacter pairing.
+\end{proposition}
+
+\begin{proof}
+The northern and southern gauge potentials define a single connection on the
+punctured sphere precisely when the transition map on the equatorial overlap
+is a single-valued smooth map \(S^1\to T\).  Such maps are exactly
+cocharacters \(m:U(1)\to T\).  The relation
+\(g_{NS}^{-1}\dd g_{NS}=m_*\,\dd\varphi\) gives the patching equation above.
+
+Let a Wilson probe have \(T\)-weight \(\lambda\).  In the one-dimensional
+weight space, \(g_{NS}(\varphi)\) acts by
+\[
+  \lambda(g_{NS}(\varphi))
+  =
+  \lambda(m(e^{\ii\varphi}))
+  =
+  e^{\ii\langle\lambda,m\rangle\varphi}.
+\]
+Taking \(\varphi\) once around the equator gives
+\(\exp(2\pi\ii\langle\lambda,m\rangle)\).  Since
+\(\lambda\circ m:U(1)\to U(1)\) is a group homomorphism, it has integer
+degree \(\langle\lambda,m\rangle\).  Hence the phase is trivial.  Conversely,
+a \(T\)-valued transition map with this single-valuedness property for all
+characters is an element of \(X_*(T)\), because characters separate points of
+the compact torus.
+\end{proof}
+
+Two cocharacters related by the Weyl group determine gauge-equivalent local
+singularities: a gauge transformation whose value on the linking sphere
+implements the Weyl representative conjugates one Cartan reduction to the
+other.  The underlying topological class of the \(G\)-bundle on the linking
+two-sphere records only the image of \(m\) in \(\pi_1(G)\).  The full
+cocharacter class is finer data: it fixes an asymptotic reduction of the
+connection and thereby determines the stabilizer group and electric labels of
+a dyonic refinement.
 
 \begin{definition}[Renormalized 't Hooft line]
 \label{def:renormalized-thooft-line}
@@ -105,6 +215,156 @@ which the limit and the allowed counterterms are part of the line-operator
 data.
 \end{definition}
 
+\subsection{Dyonic Refinement and the Stabilizer}
+
+The magnetic singularity \(m\) breaks the gauge transformations along the
+line to the centralizer
+\[
+  G_m=Z_G(m(U(1))).
+\]
+Equivalently, \(G_m\) is the compact subgroup whose Lie algebra is the sum of
+\(\mathfrak t\) and the root spaces with roots \(\alpha\) satisfying
+\(\langle\alpha,m\rangle=0\).  The tangential component of the connection
+along \(\gamma\), restricted to the boundary condition above, is a
+\(G_m\)-connection up to terms fixed by the singular normal model.  A dyonic
+Wilson--'t Hooft line is therefore specified by
+\[
+  (m,\rho),
+  \qquad
+  m\in X_*(T)/W,\quad
+  \rho\in\operatorname{Rep}(G_m),
+\]
+with the convention that \(\rho\) is replaced by its Weyl-conjugate
+representation when \(m\) is Weyl-conjugated.  The insertion is the magnetic
+boundary condition together with the Wilson parallel transport in \(\rho\)
+for the residual \(G_m\)-connection along \(\gamma\), followed by the same
+line-counterterm renormalization appearing in
+Definition~\ref{def:renormalized-thooft-line}.  If \(\gamma\) has endpoints,
+the endpoint states must be modules for the corresponding residual
+stabilizer groups.
+
+For center-sensitive questions it is often enough to abelianize the label to
+\[
+  (\lambda,m)\in
+  \bigl(\Lambda_{\rm wt}/\Lambda_{\rm rt}\bigr)
+  \oplus
+  \bigl(\Lambda_{\rm cwt}/\Lambda_{\rm crt}\bigr),
+\]
+as in Chapter~\ref{ch:global-forms-higher-form-symmetry}.  This quotient
+records the charge detected by electric and magnetic one-form symmetries.  The
+full operator also contains the stabilizer representation, defect
+counterterms, and the choice of regularization.
+
+\begin{proposition}[Linking phase and mutual locality]
+\label{prop:thooft-linking-phase}
+Let \(L_{\lambda,m}\) and \(L_{\lambda',m'}\) be two abelianized dyonic
+labels in the universal center-sensitive lattice.  In a configuration where
+the first line links once with the second, the finite topological phase
+obtained by moving the first line around the second is
+\[
+  \exp\!\left[
+    2\pi\ii\bigl(\lambda(m')-\lambda'(m)\bigr)
+  \right].
+\]
+Consequently two line labels can belong to the same mutually local genuine
+line spectrum only if
+\[
+  \lambda(m')-\lambda'(m)\in\mathbb Z .
+  \label{eq:thooft-mutual-locality-condition}
+\]
+\end{proposition}
+
+\begin{proof}
+Choose disjoint tubular neighborhoods of the two curves.  Near
+\(L_{\lambda',m'}\), the first line's Wilson factor of weight \(\lambda\)
+sees the transition function \(m'(e^{\ii\varphi})\) when its path crosses the
+Dirac ray of the second magnetic singularity.  By the computation in
+Proposition~\ref{prop:thooft-cocharacter-criterion}, the phase is
+\(\exp(2\pi\ii\lambda(m'))\).  Interchanging the roles of the two lines gives
+\(\exp(2\pi\ii\lambda'(m))\).  The orientation convention for linking assigns
+the second contribution with the opposite sign, because dragging the first
+line around the second is inverse to dragging the second around the first.
+Multiplying the two contributions gives the displayed phase.  The line
+operators are mutually local precisely when the phase is one for all allowed
+linking moves, which is \eqref{eq:thooft-mutual-locality-condition}.
+\end{proof}
+
+\begin{proposition}[Screening equivalence of center-sensitive charges]
+\label{prop:line-screening-root-coroot}
+Adjoint dynamical particles shift the electric weight of a line by an element
+of the root lattice \(\Lambda_{\rm rt}\).  Smooth monopole cores shift the
+magnetic cocharacter by an element of the coroot lattice
+\(\Lambda_{\rm crt}\).  Therefore the finite charge of a genuine
+Wilson--'t Hooft line is a class in
+\[
+  \bigl(\Lambda_{\rm wt}/\Lambda_{\rm rt}\bigr)
+  \oplus
+  \bigl(\Lambda_{\rm cwt}/\Lambda_{\rm crt}\bigr),
+\]
+subject to the mutual-locality condition imposed by the chosen theory.
+\end{proposition}
+
+\begin{proof}
+An adjoint field transforms with weights in the root lattice together with
+zero weights.  Attaching a massive adjoint particle worldline to a Wilson
+line changes the line's electric weight by one of these roots.  The endpoint
+of the adjoint worldline is a local charged insertion in the screened sector,
+so the two Wilson lines differ by a locally creatable charge and have the
+same finite one-form charge.
+
+For the magnetic statement, a smooth finite-energy monopole embedded in the
+\(\mathfrak{su}(2)\) subalgebra of a root \(\alpha\) has magnetic charge the
+coroot \(\alpha^\vee\).  Bringing such a monopole worldline to the
+'t Hooft line changes the singular cocharacter by \(\alpha^\vee\) while
+leaving the asymptotic bundle class modulo smooth monopole creation
+unchanged.  The coroots generate \(\Lambda_{\rm crt}\), so magnetic charges
+are screened modulo this lattice.
+\end{proof}
+
+\subsection{Theta Angle and the Witten Effect}
+
+In an abelian sector with curvature normalized by
+\(\int_{\Sigma}F/(2\pi)\in\mathbb Z\), the theta term changes the electric
+charge measured at infinity in a magnetic background.  With the convention
+\[
+  S_\theta=\frac{\ii\theta}{8\pi^2}\int_X F\wedge F
+\]
+in Euclidean signature, varying the action with respect to the boundary value
+of \(A\) shows that the electric displacement receives the magnetic
+contribution \((\theta/2\pi)m\).  Thus a line whose integral electric label
+is \(\lambda\) and magnetic label is \(m\) has theta-dependent electric
+charge
+\[
+  q_\theta=\lambda+\frac{\theta}{2\pi}m
+\]
+after pairing with any probe character.  Under \(\theta\mapsto\theta+2\pi\),
+the integral label changes by the lattice automorphism
+\begin{equation}
+  T:(\lambda,m)\longmapsto(\lambda+m,m).
+  \label{eq:witten-effect-T-action}
+\end{equation}
+For a nonabelian gauge theory the theta term contains a chosen invariant
+integral quadratic form.  Its polarization gives a symmetric homomorphism
+\[
+  I:X_*(T)\longrightarrow X^*(T),
+  \qquad
+  I(m)(m')=I(m,m') .
+\]
+The Witten-effect automorphism is then
+\[
+  T_I:(\lambda,m)\longmapsto(\lambda+I(m),m).
+\]
+The abelian formula \eqref{eq:witten-effect-T-action} is the special case in
+which \(I\) is the identity under the chosen electric-magnetic
+identification.  The automorphism \(T_I\) preserves the Dirac pairing:
+\[
+  (\lambda+I(m))(m')-(\lambda'+I(m'))(m)
+  =
+  \lambda(m')-\lambda'(m),
+\]
+because \(I(m,m')=I(m',m)\).  Hence theta periodicity maps mutually local
+line spectra to mutually local line spectra.
+
 For \(G=U(1)\), the cocharacter lattice is \(\mathbb Z\).  The minimal
 't Hooft line \(H(\gamma)\) has magnetic charge \(1\), so the boundary
 condition is
@@ -134,6 +394,83 @@ parameters can couple to the magnetic flux through \(\Sigma\).  A complete
 definition must state the singularity, defect counterterms, gauge
 equivalence, and how local operators approaching the surface are
 renormalized.
+
+Here is the corresponding local definition.  Let \(N_\Sigma\) be the
+oriented real rank-two normal bundle of \(\Sigma\), and on each punctured
+normal disk write polar coordinates \((r,\varphi)\).  A Cartan-type surface
+singularity is a reduction of the gauge field near \(\Sigma\) to a maximal
+torus \(T\) with
+\begin{equation}
+  A=\alpha\,\dd\varphi+A_{\rm reg},
+  \qquad
+  \alpha\in\mathfrak t,
+  \label{eq:surface-alpha-singularity}
+\end{equation}
+where \(A_{\rm reg}\) has a finite limit as \(r\to0\) in the chosen regulator.
+The holonomy around a small positively oriented normal circle is
+\[
+  \exp(2\pi\alpha)\in T
+\]
+after the convention that \(\mathfrak t\) is the compact real Lie algebra.
+If \(u\in X_*(T)\), the gauge transformation
+\[
+  g_u(\varphi)=u(e^{\ii\varphi})
+\]
+shifts \(\alpha\) by \(u_*\).  Thus the singular holonomy parameter is
+\[
+  \alpha\in\mathfrak t/X_*(T)
+\]
+modulo the Weyl group.  In distributional notation the singular part of the
+curvature is
+\[
+  F_{\rm sing}=2\pi \alpha\,\delta_\Sigma,
+\]
+where \(\delta_\Sigma\) is the two-form current Poincare dual to \(\Sigma\);
+the formula is an instruction for the regulated boundary condition and for
+the boundary values of correlation functions with the surface insertion.
+
+An abelianized surface operator may also contain a two-dimensional theta
+parameter
+\[
+  \eta\in X^*(T)\otimes_{\mathbb Z}\mathbb R/X^*(T),
+\]
+paired with magnetic flux through \(\Sigma\).  If \(F_T\) denotes the
+regularized \(T\)-curvature on \(\Sigma\), the phase is
+\[
+  \exp\!\left(2\pi\ii\,\eta\!\left(\int_\Sigma\frac{F_T}{2\pi}\right)\right),
+\]
+with the flux interpreted in the cocharacter lattice.  The pair
+\((\alpha,\eta)\), modulo cocharacter shifts and Weyl transformations, is the
+center-sensitive datum of the abelianized surface singularity.  Coupling a
+genuine two-dimensional QFT on \(\Sigma\) refines this datum by adding a
+defect Hilbert space, a defect stress tensor, and defect counterterms.
+
+\begin{proposition}[Gauge equivalence of Cartan surface singularities]
+\label{prop:surface-alpha-gauge-equivalence}
+Two Cartan surface singularities with parameters \(\alpha,\alpha'\in
+\mathfrak t\) have the same normal-circle holonomy datum exactly when
+\[
+  \alpha'=w(\alpha)+u_*
+  \qquad
+  \text{for some }w\in W,\; u\in X_*(T).
+\]
+\end{proposition}
+
+\begin{proof}
+A boundary-preserving gauge transformation may conjugate the chosen Cartan
+reduction by an element of the normalizer \(N_G(T)\); modulo \(T\), this is
+the Weyl action \(W=N_G(T)/T\).  A gauge transformation on the punctured
+normal disk whose restriction to the normal circle is a map \(S^1\to T\) is
+a cocharacter \(u\), and its logarithmic derivative is
+\(u_*\,\dd\varphi\).  It shifts the coefficient of \(\dd\varphi\) by
+\(u_*\).  These two operations generate the displayed equivalence.
+
+Conversely, equal holonomies in the compact torus mean
+\(\exp(2\pi\alpha')=\exp(2\pi w(\alpha))\) for some Weyl representative after
+matching Cartan reductions.  The kernel of the exponential map
+\(\mathfrak t\to T\) is the cocharacter lattice, so
+\(\alpha'-w(\alpha)=u_*\) for some \(u\in X_*(T)\).
+\end{proof}
 
 \section{Domain Walls and Interfaces}
 

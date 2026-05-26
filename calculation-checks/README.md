@@ -112,6 +112,11 @@ Current checks:
   Dirac pairing, bilinearity and nondegeneracy, \(SU(N)/\mathbb Z_k\)
   Wilson-charge descent, magnetic cocharacter enlargement, and maximal
   isotropy of \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\).
+- `thooft_line_local_model_checks.py`: finite checks for the Volume IX
+  't Hooft-line local model, including the northern/southern Dirac-monopole
+  patch difference, flux normalization, integer Dirac phase, finite linking
+  pairing bilinearity, theta-angle Witten-effect automorphism, and Cartan
+  surface-operator cocharacter shifts.
 - `hawking_bogoliubov_checks.py`: finite numerical checks for the Hawking
   mode-tracing calculation, including the imaginary-axis Gamma-function norm,
   the \(|\alpha|^2/|\beta|^2=e^{2\pi\omega/\kappa}\) ratio, the displayed
