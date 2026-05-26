@@ -167,6 +167,14 @@ def coherent_weyl_characteristic(F: tuple[complex, ...], f: tuple[complex, ...])
     return cmath.exp(1j * sigma_complex(F, f)) * math.exp(-0.5 * norm_sq_complex(f))
 
 
+def add_complex(a: tuple[complex, ...], b: tuple[complex, ...]) -> tuple[complex, ...]:
+    return tuple(x + y for x, y in zip(a, b))
+
+
+def coherent_inner(a: tuple[complex, ...], b: tuple[complex, ...]) -> complex:
+    return cmath.exp(-0.5 * norm_sq_complex(a) - 0.5 * norm_sq_complex(b) + inner_complex(a, b))
+
+
 def check_weyl_characteristic_and_overlap_decay() -> None:
     F = (1.0 + 0.3j, -0.4 + 0.7j, 0.2 - 0.1j)
     G = (-0.2 + 0.8j, 0.1 - 0.5j, 0.6 + 0.4j)
@@ -191,6 +199,41 @@ def check_weyl_characteristic_and_overlap_decay() -> None:
         raise AssertionError("IR coherent overlap should decrease as the infrared cutoff is removed")
 
 
+def check_hilbert_soft_change_inner_equivalence() -> None:
+    F = (0.4 + 0.2j, -0.3 + 0.1j, 0.15 - 0.45j)
+    delta = (0.05 - 0.07j, -0.02 + 0.03j, 0.08 + 0.04j)
+    f = (-0.2 + 0.5j, 0.35 - 0.1j, 0.25 + 0.15j)
+    G = add_complex(F, delta)
+
+    transformed = cmath.exp(1j * sigma_complex(delta, f)) * coherent_weyl_characteristic(F, f)
+    direct = coherent_weyl_characteristic(G, f)
+    assert_close("inner Weyl coordinate change on characteristic functional", transformed, direct)
+
+    overlap_abs = abs(coherent_inner(F, G))
+    expected_overlap_abs = math.exp(-0.5 * norm_sq_complex(delta))
+    assert_close("finite Hilbert soft change has nonzero coherent overlap", overlap_abs, expected_overlap_abs)
+
+    K = (0.1 + 0.2j, -0.05 + 0.3j, 0.4 - 0.2j)
+
+    def weyl_on_coherent_inner(H_left: tuple[complex, ...], H_right: tuple[complex, ...]) -> complex:
+        phase_left = cmath.exp(-0.5j * sigma_complex(H_left, K))
+        phase_right = cmath.exp(-0.5j * sigma_complex(H_right, K))
+        return phase_left.conjugate() * phase_right * coherent_inner(add_complex(K, H_left), add_complex(K, H_right))
+
+    def strong_distance_sq(H_left: tuple[complex, ...], H_right: tuple[complex, ...]) -> float:
+        inner = weyl_on_coherent_inner(H_left, H_right)
+        return 2.0 - 2.0 * inner.real
+
+    approximants = [
+        add_complex(delta, (0.1 + 0.0j, 0.0 + 0.0j, 0.0 + 0.0j)),
+        add_complex(delta, (0.05 + 0.0j, 0.0 + 0.0j, 0.0 + 0.0j)),
+        add_complex(delta, (0.01 + 0.0j, 0.0 + 0.0j, 0.0 + 0.0j)),
+    ]
+    distances = [strong_distance_sq(H, delta) for H in approximants]
+    if not distances[2] < distances[1] < distances[0]:
+        raise AssertionError(f"Weyl implementers should be strongly continuous, got {distances!r}")
+
+
 def main() -> None:
     check_boosted_flux_integral()
     check_velocity_read_from_flux_extrema()
@@ -198,6 +241,7 @@ def main() -> None:
     check_half_line_fourier_transform()
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
+    check_hilbert_soft_change_inner_equivalence()
     print("All charged flux and Wilson-line dressing checks passed.")
 
 

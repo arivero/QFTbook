@@ -1130,15 +1130,161 @@ limit of unitaries is an isometry on every vector whose norm limit exists:
 The zero operator is not an isometry.  Thus no strong limit exists.
 \end{proof}
 
+\begin{definition}[Hilbert-equivalent soft dressings]
+\label{def:hilbert-equivalent-soft-dressings}
+Fix the ultraviolet cutoff \(\Lambda\) and use the photon one-particle space
+\(\mathfrak h_{0,\Lambda}\) introduced above.  Let
+\[
+  F_{\lambda},G_{\lambda}\in\mathfrak h_{\lambda,\Lambda}
+  \subset\mathfrak h_{0,\Lambda},
+  \qquad 0<\lambda<\Lambda,
+\]
+be two infrared-regulated soft profiles for the same charged insertion.  They
+are called Hilbert-equivalent at the cutoff \(\Lambda\) if there exists a
+vector \(\Delta\in\mathfrak h_{0,\Lambda}\) such that
+\begin{equation}
+  \lim_{\lambda\downarrow0}
+  \|G_{\lambda}-F_{\lambda}-\Delta\|_{\mathfrak h_{0,\Lambda}}
+  =
+  0 .
+  \label{eq:soft-profile-hilbert-equivalence}
+\end{equation}
+The vector \(\Delta\) is the finite soft-coordinate change between the two
+dressings.  This definition is deliberately a Hilbert-space definition: it
+does not identify dressings whose difference changes the limiting Gauss-law
+flux, because such a difference is not represented by a vector of
+\(\mathfrak h_{0,\Lambda}\).
+\end{definition}
+
+\begin{proposition}[Hilbert soft changes are inner Weyl coordinate changes]
+\label{prop:hilbert-soft-changes-inner-weyl-coordinate}
+Let \(F_{\lambda}\) and \(G_{\lambda}\) be Hilbert-equivalent soft profiles in
+the sense of Definition~\ref{def:hilbert-equivalent-soft-dressings}, and put
+\[
+  \Delta_{\lambda}=G_{\lambda}-F_{\lambda}.
+\]
+For every finite Weyl polynomial \(A\) in the generators \(W(f)\),
+\(f\in\mathfrak h_{0,\Lambda}\),
+\begin{equation}
+  \omega_{G_{\lambda}}(A)
+  -
+  \omega_{F_{\lambda}}\!\left(
+    W(\Delta_{\lambda})^* A W(\Delta_{\lambda})
+  \right)
+  =
+  0 ,
+  \label{eq:finite-cutoff-soft-coordinate-inner-equality}
+\end{equation}
+and the implementing unitaries have the strong limit
+\[
+  W(\Delta_{\lambda})
+  \longrightarrow
+  W(\Delta)
+  \qquad\text{on }\mathcal F_{0,\Lambda}.
+\]
+Consequently
+\[
+  |\langle\mathcal E(F_{\lambda}),\mathcal E(G_{\lambda})\rangle|
+  =
+  \exp\!\left(-\frac12\|\Delta_{\lambda}\|^2\right)
+  \longrightarrow
+  \exp\!\left(-\frac12\|\Delta\|^2\right)>0 .
+\]
+Thus a Hilbert-equivalent soft change is a finite reparametrization of the
+same infrared representation, not a change of charged sector.  The velocity
+change in
+Proposition~\ref{prop:no-common-fock-implementer-distinct-velocities} fails
+this criterion because
+\(\|F_{q,\mathbf v,\lambda,\Lambda}
+-F_{q,\mathbf w,\lambda,\Lambda}\|\to\infty\) for
+\(\mathbf v\ne\mathbf w\).
+\end{proposition}
+
+\begin{proof}
+The equality \eqref{eq:finite-cutoff-soft-coordinate-inner-equality} is first
+checked on one Weyl generator.  The Weyl relations give
+\[
+  W(\Delta_{\lambda})^*W(f)W(\Delta_{\lambda})
+  =
+  \exp\!\left(\ii\sigma(\Delta_{\lambda},f)\right)W(f),
+\]
+and hence, using
+\eqref{eq:coherent-weyl-state-characteristic-functional},
+\[
+\begin{aligned}
+  \omega_{F_{\lambda}}\!\left(
+    W(\Delta_{\lambda})^*W(f)W(\Delta_{\lambda})
+  \right)
+  &=
+  \exp\!\left(\ii\sigma(\Delta_{\lambda},f)\right)
+  \exp\!\left(\ii\sigma(F_{\lambda},f)\right)
+  \exp\!\left(-\frac12\|f\|^2\right)
+\\
+  &=
+  \exp\!\left(\ii\sigma(G_{\lambda},f)\right)
+  \exp\!\left(-\frac12\|f\|^2\right)
+  =
+  \omega_{G_{\lambda}}(W(f)).
+\end{aligned}
+\]
+Linearity and multiplication by the Weyl relations extend this identity to
+finite Weyl polynomials.
+
+It remains to prove the strong convergence of the implementers.  The coherent
+vectors
+\[
+  \mathcal E(K)
+  =
+  \ee^{-\|K\|^2/2}
+  \bigoplus_{n\ge0}\frac{K^{\otimes_s n}}{\sqrt{n!}},
+  \qquad K\in\mathfrak h_{0,\Lambda},
+\]
+span a dense subspace of \(\mathcal F_{0,\Lambda}\).  On such vectors,
+\[
+  W(H)\mathcal E(K)
+  =
+  \exp\!\left(-\frac{\ii}{2}\sigma(H,K)\right)
+  \mathcal E(K+H),
+\]
+because \(\mathcal E(K)=W(K)\Omega\) and
+\eqref{eq:charged-sector-weyl-relations} gives
+\(W(H)W(K)=\exp[-\ii\sigma(H,K)/2]W(H+K)\).  If \(H_n\to H\) in
+\(\mathfrak h_{0,\Lambda}\), the displayed formula and the coherent-vector
+inner product
+\[
+  \langle\mathcal E(K_1),\mathcal E(K_2)\rangle
+  =
+  \exp\!\left(
+    -\frac12\|K_1\|^2-\frac12\|K_2\|^2+\langle K_1,K_2\rangle
+  \right)
+\]
+show that \(W(H_n)\mathcal E(K)\to W(H)\mathcal E(K)\) in norm.  Since all
+\(W(H_n)\) and \(W(H)\) are unitary, density upgrades convergence on coherent
+vectors to strong convergence on the whole Fock space.  Applying this to
+\(H_n=\Delta_{\lambda_n}\) along every sequence
+\(\lambda_n\downarrow0\) proves
+\[
+  W(\Delta_{\lambda})\to W(\Delta)
+  \quad\text{strongly}.
+\]
+The overlap formula follows by summing the Fock inner products of coherent
+vectors, and the limiting overlap is nonzero because
+\(\Delta\in\mathfrak h_{0,\Lambda}\) has finite norm.  The last assertion is
+then exactly
+Proposition~\ref{prop:no-common-fock-implementer-distinct-velocities}.
+\end{proof}
+
 Proposition~\ref{prop:no-common-fock-implementer-distinct-velocities} is a
 precise version of the representation-theoretic obstruction.  At every
 positive infrared cutoff, changing the soft cloud is an ordinary Weyl
-displacement on Fock space.  Removing the cutoff turns a change of charged
-velocity into a non-Fock operation: the finite-cutoff implementing unitaries
-escape to infinity in the one-particle norm.  Therefore a charged
+displacement on Fock space.  Removing the cutoff separates two cases.  A
+Hilbert-equivalent change remains an inner coordinate change by
+Proposition~\ref{prop:hilbert-soft-changes-inner-weyl-coordinate}.  A change
+of charged velocity escapes to infinity in the one-particle norm and is not
+implemented on the original Fock representation.  Therefore a charged
 asymptotic Hilbert space must be organized as a direct integral or measurable
-field of infrared representations labelled by the limiting flux data, not
-as a single photon Fock space tensored with a Wigner one-particle electron
+field of infrared representations labelled by the limiting flux data, not as
+a single photon Fock space tensored with a Wigner one-particle electron
 space.  This is still not the missing Haag--Ruelle theorem, but it is one of
 the structural inputs that theorem must contain.
 

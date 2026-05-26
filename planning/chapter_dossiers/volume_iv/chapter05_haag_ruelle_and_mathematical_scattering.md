@@ -32,6 +32,8 @@ resonances.
   one-particle space, Weyl operator, and real symplectic form.
 - `D_{lambda,Lambda}`: difference between two finite-cutoff charged soft
   profiles with distinct velocities.
+- `Delta`: finite Hilbert-space soft-coordinate change between two
+  infrared-regulated dressings.
 
 ## Claim Ledger
 
@@ -67,6 +69,10 @@ resonances.
   characteristic functional, and proves that the Weyl implementers changing
   between distinct charged velocities have no strong operator limit and no
   nonzero weak operator limit as the infrared cutoff is removed.
+- Defines Hilbert-equivalent soft dressings and proves that such finite soft
+  changes are inner Weyl coordinate changes with strongly convergent
+  implementers; this separates harmless soft reparametrizations from genuine
+  changes of charged infrared sector.
 
 ## Figure Ledger
 
@@ -84,7 +90,8 @@ resonances.
   normalization for the soft coherent velocity-separation coefficient.  It
   also checks the finite-dimensional Weyl/coherent characteristic functional
   and the monotone decay of the coherent overlap as the infrared cutoff is
-  removed.
+  removed.  The same script now checks the finite Hilbert soft-coordinate
+  transformation law and strong-continuity behavior on coherent vectors.
 
 ## Open Problems
 
