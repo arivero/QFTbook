@@ -318,7 +318,15 @@ moved to a non-Cauchy sequence.  In that situation the formula
 there is no self-adjoint Hamiltonian obtained from positive Euclidean time
 translations.  The added OS-II contractivity and continuity assumptions
 \eqref{eq:os-time-contractivity}--\eqref{eq:os-time-strong-continuity} are
-exactly the hypotheses that remove this failure mode.
+exactly the hypotheses that remove this failure mode.\footnote{The analytic
+gap was isolated after the first OS reconstruction paper; see, for example,
+A.~Klein and L.~J.~Landau, ``Singular perturbations of positivity preserving
+semigroups via path space techniques,'' J. Funct. Anal. \textbf{20} (1975)
+44--82, and ``Construction of a unique self-adjoint generator for a symmetric
+local semigroup,'' J. Funct. Anal. \textbf{44} (1981) 121--137.  The lesson
+for reconstruction is not a defect of reflection positivity itself, but the
+need for a separate theorem making the positive-time translations bounded and
+strongly continuous on the OS quotient.}
 \end{remark}
 
 Contractivity implies \(R_s\mathcal N\subset\mathcal N\), so \(R_s\) descends to
@@ -522,6 +530,100 @@ corresponding Jost domain, with the Koszul sign included for graded fields.
 \end{enumerate}
 \end{definition}
 
+\begin{proposition}[Fourier--Laplace boundary values from spectral support]
+\label{prop:fourier-laplace-tempered-boundary-values}
+Let \(d=D(n-1)\), let \(\Gamma\subset\mathbb R^d\) be a closed convex cone,
+and let \(\Gamma^\circledast\) be its open dual cone:
+\[
+  \Gamma^\circledast
+  =
+  \{y\in\mathbb R^d\mid p\cdot y>0
+    \text{ for every }0\ne p\in\Gamma\}.
+\]
+Let \(W\in\mathcal S'(\mathbb R^d)\) have Fourier transform
+\(\widehat W\) supported in \(\Gamma\).  For \(y\in\Gamma^\circledast\)
+define, by using any smooth cutoff equal to \(1\) on a conic neighbourhood of
+\(\Gamma\) on which \(p\cdot y\) is nonnegative,
+\begin{equation}
+  \mathcal W(x+\ii y)
+  =
+  (2\pi)^{-d}
+  \bigl\langle \widehat W(p),
+    \exp(-\ii p\cdot x)\exp(-p\cdot y)\bigr\rangle .
+  \label{eq:fourier-laplace-tube-transform}
+\end{equation}
+Then \(\mathcal W\) is holomorphic on the tube
+\(\mathbb R^d+\ii\Gamma^\circledast\).  If \(K\Subset\Gamma^\circledast\)
+is a closed subcone and \(\operatorname{dist}(y,\partial\Gamma^\circledast)
+\ge\delta>0\), then for every Schwartz test function \(f\)
+\[
+  \left|
+    \int_{\mathbb R^d}\mathcal W(x+\ii y) f(x)\,\dd^dx
+  \right|
+  \le
+  C_{K,N}\,\delta^{-N}\,
+  \sum_{|\alpha|,|\beta|\le N}
+    \sup_p |p^\beta\partial_p^\alpha\widehat f(p)|
+\]
+for some \(N\) determined by the distributional order of \(\widehat W\).
+Moreover,
+\[
+  \mathcal W(\cdot+\ii y)\longrightarrow W
+  \qquad\text{in }\mathcal S'(\mathbb R^d)
+\]
+as \(y\to0\) inside \(K\).
+\end{proposition}
+
+\begin{proof}
+Because \(\widehat W\) is a tempered distribution, there are \(C,N\) such
+that
+\[
+  |\langle\widehat W,\psi\rangle|
+  \le
+  C\sum_{|\alpha|,|\beta|\le N}
+  \sup_p |p^\beta\partial_p^\alpha\psi(p)|
+  \qquad \psi\in\mathcal S(\mathbb R^d).
+\]
+For \(y\in\Gamma^\circledast\), the multiplier
+\(\exp(-p\cdot y)\) is exponentially decreasing on the support cone
+\(\Gamma\).  To make the pairing literally a Schwartz pairing, choose a
+smooth conic cutoff \(\chi_y\) equal to \(1\) near \(\Gamma\) and supported
+where \(p\cdot y\ge c_y|p|-C_y\); then
+\(\chi_y\exp(-p\cdot y)\exp(-\ii p\cdot x)\) is a Schwartz multiplier after
+testing in \(x\).  Different choices of \(\chi_y\) give the same value,
+because their difference vanishes in a neighbourhood of
+\(\operatorname{supp}\widehat W\).  Derivatives in \(x+\ii y\) only multiply
+the cutoff multiplier by polynomials in \(p\), so the same estimate proves
+holomorphy by differentiation under the distributional pairing.
+
+If \(y\) stays in a closed subcone at distance \(\delta\) from the boundary,
+one cutoff may be chosen uniformly on that subcone, and cone duality gives
+\[
+  p\cdot y\ge c_K\delta |p|
+  \qquad (p\in\Gamma)
+\]
+with \(c_K>0\).  Hence every derivative of
+\(\exp(-p\cdot y)\widehat f(p)\) is bounded by a finite linear combination
+of Schwartz seminorms of \(\widehat f\) times a power of \(\delta^{-1}\).
+This gives the displayed tube bound.
+
+For the boundary value, test against \(f\).  The pairing equals
+\[
+  (2\pi)^{-d}
+  \langle\widehat W(p), \ee^{-p\cdot y}\widehat f(p)\rangle .
+\]
+More explicitly, the left side is computed with the same cutoff convention,
+and this convention is invisible to \(\widehat W\).  The cutoff functions
+\(\chi\,\ee^{-p\cdot y}\widehat f(p)\) converge to \(\chi\,\widehat f(p)\)
+in the Schwartz topology on every conic neighbourhood of \(\Gamma\) on which
+\(\chi=1\) near \(\Gamma\): the exponential is bounded by \(1\) on
+\(\Gamma\), the derivative terms are controlled by the rapid decrease of
+\(\widehat f\), and the factors \(\ee^{-p\cdot y}-1\) converge uniformly on
+compact \(p\)-sets while the tails are uniformly small.  Continuity of
+\(\widehat W\) gives convergence to
+\((2\pi)^{-d}\langle\widehat W,\widehat f\rangle=W(f)\).
+\end{proof}
+
 The linear-growth estimate \eqref{eq:os-linear-growth-condition} is one
 standard route to this package in the OS-II theorem: the controlled growth of
 distributional seminorm order is what keeps the Fourier--Laplace continuation
@@ -529,6 +631,18 @@ inside the tempered distribution class as the imaginary parts approach the
 Lorentzian boundary.  In a concrete constructive model, this route is a
 separate analytic estimate to be proved, not a formal consequence of
 reflection positivity alone.
+
+Applied to reconstruction, Proposition~\ref{prop:fourier-laplace-tempered-boundary-values}
+is used with \(d=D(n-1)\), \(\Gamma=(\overline V_+)^{n-1}\), and \(W\) equal
+to the translation-reduced Wightman distribution.  The OS-II linear-growth
+condition is the Euclidean-side estimate that makes the reconstructed
+matrix elements have the required finite distributional order uniformly in
+the number of insertions.  The spectral support itself comes from the
+nonnegative Hamiltonian, spatial translation covariance, and the
+OS-continued Lorentz transformations.  Thus the corrected OS theorem has two
+distinct analytic duties: it must construct the positive-energy
+translation representation, and it must prove the polynomial tube bounds
+needed for the boundary-value theorem above.
 
 \begin{proposition}[Consequences of the OS boundary-value package]
 \label{prop:os-boundary-package-consequences}
@@ -545,33 +659,66 @@ recovers the original \(S_n\) away from the partial diagonals.
 \end{proposition}
 
 \begin{proof}
-For (a), the tempered tube bounds are exactly the hypotheses of the standard
-boundary-value theorem for holomorphic functions of polynomial growth in a
-tube.  Explicitly, for a Schwartz test \(f\), the pairings
-\(\langle \mathcal W_n(\cdot+\ii y),f\rangle\) are Cauchy as
-\(y\to0\) inside every smaller cone because Cauchy's integral formula bounds
-the change in \(y\) by the same finite set of Schwartz seminorms.  The
-resulting limit is continuous in \(f\), hence a tempered distribution.
+For (a), fix one ordering and write the reduced difference variables as
+\(\xi=(\xi_1,\ldots,\xi_{n-1})\).  The tube bound in
+Definition~\ref{def:os-lorentzian-boundary-value-package} says that, for
+each smaller cone of imaginary parts, the function
+\(\xi\mapsto\mathcal W_n(\xi+\ii y)\) defines a continuous functional on
+\(\mathcal S(\mathbb R^{D(n-1)})\) with seminorm constants polynomial in the
+distance of \(y\) to the cone boundary.  Proposition~\ref{prop:fourier-laplace-tempered-boundary-values}
+displays the model estimate: after Fourier transformation, the imaginary
+part inserts exponential damping against a distribution whose spectral
+support lies in the forward cone.  Hence, for every Schwartz test \(f\), the
+pairings
+\(\langle\mathcal W_n(\cdot+\ii y),f\rangle\) have a limit as
+\(y\to0\) within the ordered cone.  The limiting functional is continuous in
+the same finite collection of Schwartz seminorms and is therefore a tempered
+distribution.  This distribution is the ordered Wightman distribution.
 
-For (b), take two adjacent insertions whose Lorentzian test supports are
-spacelike separated.  The two Euclidean orderings determine two holomorphic
-functions, one for each order.  By permutation symmetry they agree on the
-common Euclidean set, with the graded Koszul sign.  The Jost-domain
-connectivity in Definition~\ref{def:os-lorentzian-boundary-value-package}
-places the two functions on opposite sides of a common real edge.  The
-edge-of-the-wedge theorem identifies their analytic continuations in the
-envelope, and therefore identifies their Lorentzian boundary values.  This
-boundary-value identity is precisely graded commutativity of the smeared
-fields for spacelike separated supports.
+For (b), first treat unsmeared configurations away from diagonals.  In
+reduced variables, a real point \(\xi\) is a Jost point if every nonzero
+positive linear combination of the successive differences
+\(\xi_j=x_j-x_{j+1}\) is spacelike.  Such points are precisely the real
+edges at which the forward tube for one ordering and the forward tube for a
+permuted ordering meet after complex Lorentz transformations.  Euclidean
+permutation symmetry gives equality, with the Koszul sign, of the two
+holomorphic functions on the Euclidean real slice where both orderings are
+defined.  By the identity theorem this equality holds in the common analytic
+continuation region.  The edge-of-the-wedge theorem applies because the two
+tempered boundary values have a common real edge at the Jost set and agree
+there as distributions.  Therefore their analytic continuations coincide in
+the envelope of holomorphy of the union of the two tubes.
 
-For (c), both the original Schwinger function on the ordered Euclidean domain
-and the function obtained by first taking the Lorentzian boundary value and
-then substituting ordered imaginary times are restrictions of the same
-holomorphic function \(\mathcal W_n\) on a connected tube domain.  The
-identity theorem for holomorphic functions gives equality away from the
-partial diagonals.  Contact-term extensions on the diagonals are additional
-Euclidean data and are not recovered from this off-diagonal continuation
-alone.
+Now smear the adjacent fields with Lorentzian test functions whose supports
+are spacelike separated.  A partition of unity reduces the support of the
+smearing to coordinate neighbourhoods whose relative configurations lie in
+Jost neighbourhoods.  The boundary-value equality obtained above can then be
+paired with these test functions.  The result is
+\[
+  \langle\vac,
+    \cdots \widehat\Phi_\alpha(f)\widehat\Phi_\beta(g)\cdots\vac\rangle
+  =
+  (-1)^{|\alpha||\beta|}
+  \langle\vac,
+    \cdots \widehat\Phi_\beta(g)\widehat\Phi_\alpha(f)\cdots\vac\rangle
+\]
+for every surrounding finite string of test insertions.  Since the
+finite-insertion vectors are dense in \(\mathcal D_{\rm OS}\), this is
+exactly local graded commutativity on the reconstructed common domain.
+
+For (c), let \(0<\tau_1<\cdots<\tau_n\) be an ordered Euclidean
+configuration away from \(\Delta_n\).  The original Schwinger function and
+the function obtained by first taking the Lorentzian boundary value and then
+substituting \(t_j=-\ii\tau_j\) are restrictions of the same holomorphic
+function \(\mathcal W_n\) on the connected ordered tube.  If two such
+holomorphic functions had the same Lorentzian boundary value but differed in
+the ordered Euclidean interior, their difference would have zero
+distributional boundary value on a nonempty real edge and hence, by the same
+edge-of-the-wedge uniqueness theorem, would vanish in the connected tube.
+Thus the continuation back to ordered imaginary time recovers the original
+\(S_n\) away from the partial diagonals.  Contact-term extensions on the
+diagonals are additional Euclidean data and are not recovered from
+off-diagonal analytic continuation alone.
 \end{proof}
 
 \section{Reconstruction Theorem}
