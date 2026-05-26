@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from collections import Counter
 from fractions import Fraction
+from itertools import combinations, permutations
 from math import comb, factorial
 
 
@@ -63,6 +64,33 @@ def cycle_count(permutation: tuple[int, ...]) -> int:
     return count
 
 
+def nontrivial_cycle_lengths(permutation: tuple[int, ...]) -> list[int]:
+    seen: set[int] = set()
+    lengths: list[int] = []
+    for point in range(len(permutation)):
+        if point in seen:
+            continue
+        current = point
+        length = 0
+        while current not in seen:
+            seen.add(current)
+            length += 1
+            current = permutation[current]
+        if length > 1:
+            lengths.append(length)
+    return sorted(lengths)
+
+
+def all_cycles(degree: int, length: int) -> list[tuple[int, ...]]:
+    cycles = []
+    for support in combinations(range(degree), length):
+        first = min(support)
+        remaining = [point for point in support if point != first]
+        for tail in permutations(remaining):
+            cycles.append(cycle_permutation(degree, [first, *tail]))
+    return cycles
+
+
 def riemann_hurwitz_genus(branch_cycles: list[tuple[int, ...]]) -> Fraction:
     degree = len(branch_cycles[0])
     ramification = sum(degree - cycle_count(permutation) for permutation in branch_cycles)
@@ -116,6 +144,35 @@ def centralizer_order(cycle_lengths: list[int]) -> int:
     for length, multiplicity in counts.items():
         result *= (length**multiplicity) * factorial(multiplicity)
     return result
+
+
+def single_cycle_class_size(total_copies: int, length: int) -> int:
+    return factorial(total_copies) // (length * factorial(total_copies - length))
+
+
+def primitive_joining_factorization_count(left_length: int, right_length: int) -> int:
+    joined_length = left_length + right_length - 1
+    joined_cycle = cycle_permutation(joined_length, list(range(joined_length)))
+    count = 0
+    for left_cycle in all_cycles(joined_length, left_length):
+        candidate_right = compose(inverse(left_cycle), joined_cycle)
+        if nontrivial_cycle_lengths(candidate_right) == [right_length]:
+            count += 1
+    return count
+
+
+def primitive_joining_group_factor_square(
+    total_copies: int,
+    left_length: int,
+    right_length: int,
+) -> Fraction:
+    joined_length = left_length + right_length - 1
+    return Fraction(
+        joined_length * joined_length
+        * single_cycle_class_size(total_copies, joined_length),
+        single_cycle_class_size(total_copies, left_length)
+        * single_cycle_class_size(total_copies, right_length),
+    )
 
 
 def symmetric_group_order(n: int) -> int:
@@ -266,6 +323,56 @@ def check_normalized_two_cycle_count() -> None:
     # The normalization 1/sqrt(number of transpositions) gives unit two-point
     # function when individual transposition twists are orthonormal.
     assert_equal("two-cycle normalization denominator squared", transpositions, 15)
+
+
+def check_conjugacy_class_joining_normalization() -> None:
+    for total_copies in range(3, 10):
+        for length in range(2, total_copies + 1):
+            assert_equal(
+                f"single-cycle class size S_{total_copies}, length={length}",
+                single_cycle_class_size(total_copies, length),
+                symmetric_group_order(total_copies) // centralizer_order(
+                    [length, *([1] * (total_copies - length))]
+                ),
+            )
+
+    for left_length in range(2, 6):
+        for right_length in range(2, 6):
+            joined_length = left_length + right_length - 1
+            assert_equal(
+                f"primitive joining factorizations K={left_length}, L={right_length}",
+                primitive_joining_factorization_count(left_length, right_length),
+                joined_length,
+            )
+            for total_copies in range(joined_length, joined_length + 5):
+                expected_square = Fraction(
+                    left_length
+                    * right_length
+                    * joined_length
+                    * factorial(total_copies - left_length)
+                    * factorial(total_copies - right_length),
+                    factorial(total_copies) * factorial(total_copies - joined_length),
+                )
+                assert_equal(
+                    f"class-normalized primitive joining factor K={left_length}, L={right_length}, M={total_copies}",
+                    primitive_joining_group_factor_square(
+                        total_copies,
+                        left_length,
+                        right_length,
+                    ),
+                    expected_square,
+                )
+
+    assert_equal(
+        "S3 transposition-transposition to three-cycle group factor squared",
+        primitive_joining_group_factor_square(3, 2, 2),
+        Fraction(2, 1),
+    )
+    assert_equal(
+        "S6 length-two/length-three to length-four group factor squared",
+        primitive_joining_group_factor_square(6, 2, 3),
+        Fraction(12, 5),
+    )
 
 
 def check_connected_cover_hecke_count() -> None:
@@ -434,6 +541,7 @@ def main() -> None:
     check_join_weight_shift()
     check_schwarzian_and_primitive_ope_powers()
     check_normalized_two_cycle_count()
+    check_conjugacy_class_joining_normalization()
     check_connected_cover_hecke_count()
     check_twist_cover_riemann_hurwitz()
     check_primitive_joining_cover_polynomial()

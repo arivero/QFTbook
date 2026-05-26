@@ -621,7 +621,8 @@ Current checks:
   constant-seed partition-number test, plus Riemann--Hurwitz genus tests for
   twist-field two-point and primitive joining covers and beta-normalized
   primitive joining-cover local-coordinate coefficients, Schwarzian
-  double-pole weights, and primitive-joining OPE powers.
+  double-pole weights, primitive-joining OPE powers, and class-normalized
+  primitive joining group factors.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign

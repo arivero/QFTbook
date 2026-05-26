@@ -146,8 +146,8 @@
   twist OPE monodromy multiplication, the Riemann--Hurwitz covering-genus
   ledger for twist correlators, the primitive joining-cover polynomial and
   its local coordinate coefficients, the Schwarzian double-pole/OPE-power
-  ledger for primitive joining, and normalized two-cycle deformation
-  operators.
+  ledger for primitive joining, the class-normalized primitive joining group
+  factor, and normalized two-cycle deformation operators.
 - Defines twist-field deformations as regulated integrated local-operator
   perturbations with OPE/contact-term beta functions.
 
@@ -279,18 +279,23 @@
     twist-weight double pole `c_0(r-1/r)/24`; for primitive joining this
     fixes the OPE power `h_N-h_K-h_L` with `N=K+L-1`, but not the numerical
     OPE coefficient.
-40. Twist-field deformations are conformal perturbations by projected local
+40. For total copy number `M`, normalized single-cycle class sums have class
+    size `M!/(r(M-r)!)`; a fixed primitive joined cycle of length
+    `R=K+L-1` has exactly `R` labelled factorizations as a `K`-cycle times an
+    `L`-cycle, giving group-factor square
+    `K L R (M-K)!(M-L)!/(M!(M-R)!)`.
+41. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
-41. In the source-coupled background-field definition, the Gaussian mean is
+42. In the source-coupled background-field definition, the Gaussian mean is
    `A^{-1}(J-L)`, so the condition \(\langle\xi\rangle_J=0\) fixes
    \(J=L\) and justifies computing the one-loop pole from
    `1/2 log det A` off shell.
-42. The pure-metric second variation along \(X_s=\exp_x(s\xi)\) has
+43. The pure-metric second variation along \(X_s=\exp_x(s\xi)\) has
    first-variation coefficient \(-(2\pi\alpha')^{-1}G_{ij}\nabla^a
    \partial_ax^j\) and quadratic coefficient \((4\pi\alpha')^{-1}
    (|D\xi|^2-\langle R(\xi,\partial x)\partial x,\xi\rangle)\).
-43. The one-loop local heat-kernel pole
+44. The one-loop local heat-kernel pole
    \((-\partial^2)^{-1}(\sigma,\sigma)_{\mathrm{div}}=(2\pi\epsilon)^{-1}\)
    combines with the kinetic prefactor \((2\pi\alpha')^{-1}\) to give
    \(\langle\xi^k\xi^\ell\rangle_{\mathrm{div}}=
@@ -298,16 +303,16 @@
    \(\Gamma^{(1)}_{\mathrm{div}}=-(4\pi\epsilon)^{-1}
    \int R_{ij}\partial x^i\partial x^j\) and
    \(\delta G_{ij}=(\alpha'/\epsilon)R_{ij}\).
-44. In the string-frame one-loop functional, the fixed-\(\Phi\) metric
+45. In the string-frame one-loop functional, the fixed-\(\Phi\) metric
    variation has trace coefficient
    \(-S_\Phi/2\), while the dilaton variation is \(-2S_\Phi\); imposing the
    scalar equation therefore removes exactly the trace part and leaves the
    hatted metric Weyl-anomaly representative.
-45. The supersymmetric rank-one coset refinements are not inferred from the
+46. The supersymmetric rank-one coset refinements are not inferred from the
     bell/cigar sigma-model metrics; their exact `N=2` chiral data are stated
     in Chapter 15 and coordinated with Volume VII for GLSM/mirror
     constructions.
-46. Replacing the seed partition function in the symmetric-product Hecke
+47. Replacing the seed partition function in the symmetric-product Hecke
     formula by the formal constant `1` gives
     `prod_{r >= 1} (1-p^r)^(-1)`, so the coefficient of `p^N` is the number
     of cycle types of `S_N`.
@@ -361,7 +366,8 @@
   constant-seed partition-number test, and Riemann--Hurwitz genus tests for
   twist-field two-point and primitive joining covers, including the
   beta-normalized primitive joining-cover polynomial and its local
-  coefficients and the Schwarzian/OPE-power ledger.
+  coefficients, the Schwarzian/OPE-power ledger, and the class-normalized
+  primitive joining group factor.
 - Later calculation checks should cover numerical covering-space twist
   correlator coefficients after seed correlators and local coordinate
   normalizations are specified.

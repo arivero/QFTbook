@@ -3454,6 +3454,129 @@ Those data are not determined by monodromy, Riemann--Hurwitz, or conformal
 covariance alone.
 \end{proof}
 
+\begin{proposition}[Conjugacy-class normalization for primitive joining]
+\label{prop:symmetric-product-primitive-joining-class-normalization}
+Let \(M\) be the total number of copies in
+\(\operatorname{Sym}^M(\mathcal C)\).  For
+\(r\le M\), let \([r]\subset S_M\) denote the conjugacy class consisting of
+one \(r\)-cycle and \(M-r\) fixed points, and assume the labelled bare twists
+are normalized by
+\[
+  \left\langle
+    \sigma_\gamma(\infty)\sigma_\delta(0)
+  \right\rangle
+  =
+  \delta_{\delta,\gamma^{-1}} .
+\]
+The normalized single-cycle class operator is then
+\begin{equation}
+  \Sigma_r^{(M)}
+  =
+  |[r]|^{-1/2}\sum_{\gamma\in[r]}\sigma_\gamma,
+  \qquad
+  |[r]|=\frac{M!}{r(M-r)!}.
+  \label{eq:symmetric-product-normalized-single-cycle-class}
+\end{equation}
+Let \(K,L\ge2\), set \(R=K+L-1\), and assume \(M\ge R\).  If
+\(C_{K,L}^{R}\) denotes the labelled primitive joining coefficient in
+\eqref{eq:symmetric-product-primitive-joining-ope}, with the same local
+coordinate and seed-correlator convention for all conjugates, then the
+class-normalized leading primitive channel has the form
+\begin{equation}
+  \Sigma_K^{(M)}(z,\bar z)\Sigma_L^{(M)}(0)
+  \supset
+  \mathfrak g_{K,L}^{(M)}\,C_{K,L}^{R}\,
+  z^{h_R-h_K-h_L}
+  \bar z^{\bar h_R-\bar h_K-\bar h_L}
+  \Sigma_R^{(M)}(0),
+  \label{eq:symmetric-product-class-normalized-primitive-join-ope}
+\end{equation}
+where no additional symmetry factor is inserted in the operator product, and
+\begin{equation}
+  \left(\mathfrak g_{K,L}^{(M)}\right)^2
+  =
+  KLR\,
+  \frac{(M-K)!(M-L)!}{M!(M-R)!}.
+  \label{eq:symmetric-product-primitive-joining-group-factor}
+\end{equation}
+Equivalently,
+\(\mathfrak g_{K,L}^{(M)}
+=R\sqrt{|[R]|/(|[K]||[L]|)}\).  Thus the class-sum normalization supplies a
+universal finite-group factor, while \(C_{K,L}^{R}\) remains the analytic
+covering-space coefficient discussed in
+Proposition~\ref{prop:symmetric-product-primitive-joining-schwarzian-ledger}.
+\end{proposition}
+
+\begin{proof}
+The class-size formula in
+\eqref{eq:symmetric-product-normalized-single-cycle-class} follows by choosing
+the \(r\)-element support and then choosing a cyclic ordering:
+\[
+  \binom Mr(r-1)!
+  =
+  \frac{M!}{r(M-r)!}.
+\]
+Since inversion preserves the conjugacy class \([r]\), the labelled diagonal
+two-point normalization gives
+\[
+  \left\langle
+    \Sigma_r^{(M)}(\infty)\Sigma_r^{(M)}(0)
+  \right\rangle
+  =
+  |[r]|^{-1}
+  \sum_{\gamma,\delta\in[r]}\delta_{\delta,\gamma^{-1}}
+  =
+  1 .
+\]
+
+It remains to count primitive factorizations of a fixed \(R\)-cycle
+\(\eta\).  Write the support of \(\eta\) in cyclic order as
+\[
+  x_0\longmapsto x_1\longmapsto\cdots
+  \longmapsto x_{R-1}\longmapsto x_0 .
+\]
+For each choice of the unique overlap sheet \(x_j\), indices understood
+modulo \(R\), define
+\[
+  \alpha_j
+  =
+  (x_{j-K+1}\,x_{j-K+2}\,\cdots\,x_j),
+  \qquad
+  \beta_j
+  =
+  (x_j\,x_{j+1}\,\cdots\,x_{j+L-1}).
+\]
+With the convention that products act from right to left, one checks directly
+that \(\alpha_j\beta_j=\eta\).  These are \(R\) distinct factorizations.
+Conversely, if \(\alpha\) is a \(K\)-cycle and \(\beta\) is an \(L\)-cycle with
+\(\alpha\beta=\eta\), then the support of \(\eta\) has size \(K+L-1\).  If
+the supports of \(\alpha\) and \(\beta\) were disjoint, the product would have
+two nontrivial cycles rather than one.  If their intersection had more than
+one element, the union of the supports would have size strictly smaller than
+\(K+L-1\), too small to contain the support of \(\eta\).  Thus the supports
+meet in exactly one sheet and their union is the support of \(\eta\).
+Removing the overlap sheet cuts the two cycles into two directed strings, and
+their concatenation is the displayed cyclic order of \(\eta\).  The overlap
+sheet therefore reconstructs \(\alpha\) and \(\beta\) uniquely, so the number
+of primitive factorizations of a fixed \(\eta\in[R]\) is \(R\).
+
+When the two normalized class sums are multiplied, each fixed
+\(\eta\in[R]\) therefore receives \(R\) labelled primitive contributions.
+Projecting the resulting sum
+\[
+  \frac{R\,C_{K,L}^{R}}{\sqrt{|[K]||[L]|}}
+  \sum_{\eta\in[R]}\sigma_\eta
+\]
+onto \(\Sigma_R^{(M)}=|[R]|^{-1/2}\sum_{\eta\in[R]}\sigma_\eta\) gives
+\[
+  \mathfrak g_{K,L}^{(M)}
+  =
+  R\sqrt{\frac{|[R]|}{|[K]||[L]|}}.
+\]
+Substituting the class-size formula and using \(R=K+L-1\) gives
+\eqref{eq:symmetric-product-primitive-joining-group-factor}.
+\end{proof}
+
 Discrete torsion is incorporated by replacing the centralizer projection by a
 projective centralizer action determined by a class in
 \[
