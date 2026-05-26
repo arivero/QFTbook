@@ -1,0 +1,534 @@
+\chapter{Kontsevich--Segal Functorial Quantum Field Theory}
+\label{ch:kontsevich-segal-functorial-qft}
+\ConventionsEuclidean
+
+\section{Functorial Data and the Path-Integral Problem}
+
+The Wightman, Osterwalder--Schrader, and Haag--Kastler frameworks encode
+different shadows of locality.  Wightman fields encode distributional
+Lorentzian local operators on a Hilbert space; OS data encode Euclidean
+reflection-positive correlation distributions; Haag--Kastler nets encode
+bounded observable algebras localized in spacetime regions.  The
+Kontsevich--Segal viewpoint begins from the geometric operation that a path
+integral is expected to satisfy before any choice of coordinates on fields is
+made: cut a background along hypersurfaces, assign state spaces to the cuts,
+and recover the amplitude of the glued background by composing the amplitudes
+of the pieces.
+
+Let \(D\) be the spacetime dimension.  The intended datum is a symmetric
+monoidal assignment
+\[
+  Z:\operatorname{Bord}_{D}^{\mathrm{adm}}\longrightarrow
+  \operatorname{TVect}_{\C},
+\]
+where \(\operatorname{Bord}_{D}^{\mathrm{adm}}\) is a category of
+\((D-1)\)-manifolds and \(D\)-dimensional bordisms with admissible complex
+metrics and auxiliary background fields, and
+\(\operatorname{TVect}_{\C}\) is a category of complex topological vector
+spaces and continuous linear maps.  The target cannot be restricted in
+advance to Hilbert spaces.  Hilbert spaces arise from a reflection-positive
+pairing on suitable real slices; before that pairing is imposed and
+completed, the natural state spaces are locally convex spaces or distribution
+spaces.
+
+The word ``admissible'' carries the physical content of positive energy.  The
+complex metric is allowed to move inside a domain containing Riemannian
+metrics and having Lorentzian metrics on its boundary.  Analytic dependence
+inside this domain replaces the upper-half-plane analyticity of
+\(\exp(\ii tH)\) in quantum mechanics.  The objective is therefore sharper
+than a generic functorial field theory: the functor must be holomorphic in
+admissible complex metrics, compatible with sewing, and equipped with a
+reflection structure whose Lorentzian boundary values produce unitary
+evolution and microcausal fields when the required analytic hypotheses hold.
+
+\section{Segal Sewing in Two-Dimensional CFT}
+
+The two-dimensional conformal case is the prototype.  Let
+\(\operatorname{Bord}^{\mathrm{conf}}_2\) denote the category whose objects
+are finite disjoint unions of analytically parametrized oriented circles and
+whose morphisms are compact Riemann surfaces with incoming and outgoing
+parametrized boundary components.  Composition is sewing along boundary
+circles with inverse parametrizations.  A Segal CFT assigns a topological
+vector space \(\Hilb_{S}\) to each object \(S\) and a continuous linear map
+\[
+  Z(\Sigma):\Hilb_{S_{\mathrm{in}}}\longrightarrow
+  \Hilb_{S_{\mathrm{out}}}
+\]
+to a Riemann surface \(\Sigma:S_{\mathrm{in}}\to S_{\mathrm{out}}\), with
+\[
+  Z(\Sigma_2\circ\Sigma_1)=Z(\Sigma_2)Z(\Sigma_1),
+  \qquad
+  Z(\Sigma\sqcup\Sigma')=Z(\Sigma)\otimes Z(\Sigma').
+\]
+The sewing map is required to be continuous or holomorphic with respect to
+the relevant moduli of surfaces and boundary parametrizations.  Reflection of
+a Riemann surface across a parametrized boundary circle gives an antilinear
+involution on the state space, and reflection positivity requires the doubled
+surface to define a positive semidefinite pairing.
+
+The operator product in a Segal CFT is a sewing statement.  A pair of
+punctures contained in a disk determines a state on the boundary circle of
+that disk.  Expanding this state in the spectral decomposition of the annulus
+semigroup gives the local fields that may replace the pair of insertions
+when the disk is sewn into a larger surface.  Thus convergence of the OPE is
+not an extra mnemonic; it is the convergence of a state-vector expansion in
+the boundary state space chosen by the sewing theory.
+
+\section{Allowable Complex Metrics}
+
+Let \(V\) be a real vector space of dimension \(D\).  A complex metric on
+\(V\) is a nondegenerate complex-valued symmetric bilinear form
+\[
+  g\in\operatorname{Sym}^2(V^*)\otimes_{\R}\C .
+\]
+Let \(|\wedge^D V^*|\) be the real density line.  A choice of square root of
+\(\det g\) defines a complex density
+\[
+  \operatorname{vol}_g=(\det g)^{1/2}|dy^1\cdots dy^D|
+  \in |\wedge^D V^*|\otimes_{\R}\C
+\]
+in a basis \(y^1,\ldots,y^D\).  The sign of the square root is fixed by
+requiring the \(0\)-form positivity condition below.
+
+\begin{definition}[Kontsevich--Segal allowability]
+\label{def:ks-allowable-linear}
+A complex metric \(g\) on \(V\) is allowable when, for every
+\(q=0,\ldots,D\), the quadratic map
+\[
+  Q_{q,g}:\wedge^q V^*\longrightarrow |\wedge^D V^*|\otimes_{\R}\C,
+  \qquad
+  \alpha\longmapsto \alpha\wedge *_g\alpha
+\]
+has positive real part on every nonzero real \(q\)-form \(\alpha\).  For
+\(q=0\), this says that \(\operatorname{Re}\operatorname{vol}_g\) is a
+positive real density.
+\end{definition}
+
+For a \(q\)-form gauge field strength \(F\), the Euclidean quadratic action is
+\[
+  I_q(F;g)
+  =
+  \frac{1}{2q!}
+  \int_M
+  \sqrt{\det g}\,
+  g^{i_1j_1}\cdots g^{i_qj_q}
+  F_{i_1\cdots i_q}F_{j_1\cdots j_q}\,\dd^Dx .
+\]
+Definition~\ref{def:ks-allowable-linear} is precisely the pointwise
+condition that the real part of this quadratic form be positive for every
+real \(q\)-form field strength, simultaneously for all \(q\).  Imposing all
+degrees is essential because a field theory may contain scalars, gauge
+fields, higher-form fields, dual fields, and quantized flux sectors whose
+integration cycles cannot all be repaired by a degree-dependent phase
+rotation.
+
+\begin{theorem}[Argument criterion for allowability]
+\label{thm:ks-allowability-argument}
+Let \(g\) be a complex metric on \(V\).  It is allowable if and only if there
+is a real basis in which
+\[
+  g=\sum_{a=1}^D \lambda_a (dy^a)^2,
+  \qquad
+  \lambda_a\in\C\setminus(-\infty,0],
+\]
+and, with the principal argument \(\theta_a=\operatorname{Arg}\lambda_a\in
+(-\pi,\pi)\),
+\begin{equation}
+  \sum_{a=1}^D |\theta_a|<\pi .
+  \label{eq:ks-allowability-argument}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Assume first that \(g\) is allowable.  The \(q=0\) condition chooses the
+branch of \((\det g)^{1/2}\) with positive real part.  The \(q=1\) condition
+states that the complex symmetric matrix
+\[
+  W^{ij}=(\det g)^{1/2}g^{ij}
+\]
+has positive-definite real part.  Write \(W=A+\ii B\) with \(A,B\) real
+symmetric and \(A>0\).  A real change of basis puts \(A\) in the identity
+form.  A further orthogonal change of basis diagonalizes \(B\).  Hence \(W\)
+is diagonal in a real basis, so \(W^{-1}\) and then \(g\) are diagonal in the
+same basis.  Write the diagonal entries as \(\lambda_a\).
+
+For a subset \(S\subset\{1,\ldots,D\}\), the real basis \(q\)-form
+\(\dd y^S=\wedge_{a\in S}\dd y^a\) has
+\begin{equation}
+  \dd y^S\wedge *_g\dd y^S
+  =
+  A_S\,|dy^1\cdots dy^D|,
+  \qquad
+  A_S=(\det g)^{1/2}\prod_{a\in S}\lambda_a^{-1}.
+  \label{eq:ks-form-coefficient}
+\end{equation}
+The \(q\)-form positivity conditions are therefore equivalent to
+\(\operatorname{Re}A_S>0\) for all subsets \(S\).  If
+\(\theta_a=\operatorname{Arg}\lambda_a\), then
+\[
+  \operatorname{Arg} A_S
+  =
+  \frac12\sum_{a=1}^D\theta_a-\sum_{a\in S}\theta_a
+  =
+  \frac12\left(\sum_{a\notin S}\theta_a-\sum_{a\in S}\theta_a\right).
+\]
+Let \(P=\{a:\theta_a\ge0\}\).  Positivity for \(S=P\) gives
+\[
+  -\frac{\pi}{2}
+  <
+  -\frac12\sum_{a=1}^D|\theta_a|
+  <
+  \frac{\pi}{2},
+\]
+and hence \eqref{eq:ks-allowability-argument}.  Conversely, if
+\eqref{eq:ks-allowability-argument} holds, then for every subset \(S\),
+\[
+  |\operatorname{Arg}A_S|
+  \le
+  \frac12\sum_{a=1}^D|\theta_a|
+  <
+  \frac{\pi}{2}.
+\]
+Thus every \(A_S\) has positive real part.  Since the form coefficients are
+diagonal in the real basis, every nonzero real \(q\)-form has
+\(\operatorname{Re}Q_{q,g}>0\).  This is
+Definition~\ref{def:ks-allowable-linear}.
+\end{proof}
+
+\begin{example}[Euclidean, Lorentzian, and multi-time signatures]
+\label{ex:ks-basic-metrics}
+A positive Riemannian metric has all \(\theta_a=0\), hence is allowable.  A
+Lorentzian metric with diagonal entries \((-1,1,\ldots,1)\) has one argument
+equal to \(\pi\), so it lies on the boundary of the allowable domain.  The
+regularized metrics
+\[
+  -(1-\ii\epsilon)(dy^1)^2+\sum_{a=2}^D(dy^a)^2,
+  \qquad
+  -(1+\ii\epsilon)(dy^1)^2+\sum_{a=2}^D(dy^a)^2,
+  \qquad \epsilon>0,
+\]
+lie in the two adjacent allowable components approaching that Lorentzian
+boundary point.  A real metric with two negative directions has two arguments
+equal to \(\pi\) and does not lie on this boundary.  The criterion therefore
+distinguishes Lorentzian signature from signatures with more than one time
+direction.
+\end{example}
+
+\section{The Admissible Bordism Category}
+
+An admissible \(D\)-bordism is a smooth compact \(D\)-manifold \(M\) with
+boundary decomposed into incoming and outgoing collars, together with:
+\[
+  g\in\Gamma(\operatorname{Sym}^2T^*M\otimes\C),
+  \qquad
+  \text{background bundles and sources},
+\]
+where \(g_x\) is allowable for every \(x\in M\).  Boundary collars are part of
+the datum so that gluing is defined by identifying collars with matching
+induced complex metrics and background fields.  The category is symmetric
+monoidal under disjoint union.
+
+The state space assigned to a boundary germ \(Y\) will be denoted
+\[
+  E(Y).
+\]
+The notation emphasizes that \(Y\) is a germ of a hypersurface together with
+its collar metric and background fields, rather than only the underlying
+\((D-1)\)-manifold.  For a bordism \(M:Y_0\to Y_1\), the amplitude is a
+continuous linear map
+\[
+  Z(M):E(Y_0)\longrightarrow E(Y_1).
+\]
+For a closed \(M\), \(Z(M)\in\C\) is the partition function.  For marked
+points or extended insertions, \(E(Y)\) is replaced by a multilinear
+observable bundle over the configuration space of insertions.
+
+\begin{definition}[K-S functorial QFT datum]
+\label{def:ks-functorial-qft}
+A Kontsevich--Segal functorial QFT on a specified class of backgrounds
+consists of:
+\begin{enumerate}
+\item a symmetric monoidal functor \(Z\) from admissible complex bordism
+categories to complex topological vector spaces;
+\item holomorphic dependence of \(Z(M,g)\) on the admissible complex metric
+and on complexified sources in local coordinate charts on the space of
+background data;
+\item collar locality: if \(M=M_2\circ_Y M_1\), then
+\[
+  Z(M)=Z(M_2)Z(M_1)
+\]
+as a continuous map after the matching state-space identifications along
+\(Y\);
+\item a reflection operation \(Y\mapsto \bar Y\) and \(M\mapsto \bar M\)
+compatible with complex conjugation of metric and sources;
+\item reflection positivity on real Riemannian reflection doubles, as stated
+below.
+\end{enumerate}
+\end{definition}
+
+\section{Reflection Positivity and Hilbert Spaces}
+
+Let \(Y\) be a real Riemannian boundary germ fixed by an orientation-reversing
+reflection \(\rho\).  Suppose \(M_+\) is a bordism from the empty object to
+\(Y\), and let \(\bar M_+\) be its reflected conjugate from \(Y\) to the empty
+object.  The double
+\[
+  \bar M_+\circ_Y M_+
+\]
+is a closed Riemannian background.  If \(u,v\in E(Y)\) arise from states
+created by such half-bordisms with insertions, define
+\[
+  \langle u,v\rangle_Y
+  =
+  Z(\bar M_u\circ_Y M_v).
+\]
+Reflection positivity requires this sesquilinear form to be positive
+semidefinite on the subspace generated by positive-side states.  The physical
+Hilbert space associated to \(Y\) is then
+\begin{equation}
+  \Hilb_Y
+  =
+  \overline{E_+(Y)/\{u:\langle u,u\rangle_Y=0\}},
+  \label{eq:ks-hilbert-completion}
+\end{equation}
+where the bar denotes Hilbert completion.
+
+In a real-analytic globally hyperbolic Lorentzian spacetime, a Lorentzian
+time-slab appears as a boundary limit of admissible complex slabs.  Under the
+holomorphic and boundedness hypotheses needed to take this limit, the K-S
+construction gives unitary propagation between the Hilbert spaces of
+time-symmetric hypersurfaces.  Local field operators on a time slice are
+obtained as limits of insertion bordisms pinched to the slice; operators at
+spacelike separated points commute because both insertions can be represented
+on one common slice and the Euclidean sewing map is symmetric under exchanging
+their order.
+
+\section{Comparison with OS, Wightman, and Local Nets}
+
+\begin{proposition}[K-S data give OS Schwinger functions on flat space]
+\label{prop:ks-to-os}
+Assume a K-S functorial QFT is defined on Euclidean \(\R^D\) with
+translation-invariant vacuum state, local observable bundles
+\(\mathcal O_x\), and tempered boundary values for point insertions.  For
+local observables \(A_1,\ldots,A_n\), define
+\[
+  S_n(A_1,x_1;\ldots;A_n,x_n)
+  =
+  Z(\R^D;A_1(x_1),\ldots,A_n(x_n))
+\]
+for distinct Euclidean points, extended as a distribution by the assumed
+tempered boundary value.  Then Euclidean covariance, symmetry at separated
+points, reflection positivity, and clustering of the Schwinger functions
+follow from the functorial axioms plus the corresponding covariance and
+vacuum uniqueness assumptions on \(Z\).
+\end{proposition}
+
+\begin{proof}
+Euclidean covariance is functoriality under background isomorphisms.
+Symmetry follows by moving separated point insertions inside a Riemannian
+background without crossing; the configuration-space complement of diagonals
+records precisely the possible permutation monodromy, with ordinary bosonic
+local observables having trivial monodromy.  Reflection positivity is the
+positivity of the doubled half-space bordism.  Clustering is not a pure sewing
+identity: it is the assertion that the translation semigroup on a long
+cylinder has a unique zero-energy vector and that the remaining spectrum is
+separated or decays in the topology used for the state spaces.  Under that
+spectral hypothesis, inserting a long cylinder between two groups of
+observables projects to the vacuum state, giving the OS cluster property.
+\end{proof}
+
+\begin{quotedtheorem}[K-S Lorentzian boundary construction]
+\label{thm:ks-lorentzian-boundary}
+For a K-S theory on admissible complex metrics with the analytic dependence,
+reflection structure, and boundedness assumptions required by
+Kontsevich--Segal, real-analytic globally hyperbolic Lorentzian bordisms are
+obtained as boundary values of admissible complex bordisms.  Time-symmetric
+hypersurfaces acquire Hilbert spaces, globally hyperbolic Lorentzian
+bordisms induce unitary maps between them, and local fields obtained from
+insertion germs satisfy spacelike commutativity.  This is the content of the
+Lorentzian-boundary construction in Kontsevich--Segal's
+\emph{Wick Rotation and the Positivity of Energy in Quantum Field Theory},
+with Witten's \emph{A Note on Complex Spacetime Metrics} giving a detailed
+analysis of the finite-dimensional allowability criterion and gravitational
+examples.
+\end{quotedtheorem}
+
+Combining Proposition~\ref{prop:ks-to-os} with OS reconstruction gives the
+route
+\[
+  \text{K-S functorial data}
+  \longrightarrow
+  \text{OS Schwinger functions}
+  \longrightarrow
+  \text{Wightman fields}.
+\]
+After Wightman fields have been reconstructed, local nets are obtained by
+taking von Neumann algebras generated by bounded functions of smeared fields,
+provided the self-adjointness and strong-locality hypotheses needed for those
+bounded functions are verified.  Thus the arrow from K-S to Haag--Kastler is
+a composite arrow with analytic and operator-domain assumptions at each
+stage.
+
+The reverse direction requires additional structure.  OS Schwinger functions
+on flat space do not by themselves assign state spaces to arbitrary
+hypersurface germs, nor do they define amplitudes for all admissible complex
+bordisms.  A reconstruction of a K-S functor from OS data therefore requires
+sewing estimates, collar factorization, and control of metric dependence.
+Those hypotheses are available in selected two-dimensional constructions and
+topological theories; they are open in physically central higher-dimensional
+interacting theories.
+
+\section{OPE from Sewing}
+
+Let \(B_r(x)\subset M\) be a small ball whose boundary sphere is \(S_r(x)\).
+A collection of local insertions inside \(B_r(x)\) defines, by the K-S
+amplitude of the punctured ball, a vector
+\[
+  \Psi_{A_1,\ldots,A_k}(r;\xi_1,\ldots,\xi_k)\in E(S_r(x)),
+\]
+where \(\xi_i\) are coordinates of the insertion points relative to \(x\).
+Suppose the annular evolution identifying \(E(S_r(x))\) with \(E(S_1(x))\)
+has a discrete generalized eigenspace decomposition
+\[
+  E(S_1(x))=\widehat{\bigoplus_{\Delta,s}} E_{\Delta,s}
+\]
+with nuclear convergence for the expansion of punctured-ball states.  Choose
+a basis of local operators \(\mathcal O_{\Delta,s,a}\) corresponding to the
+dual basis of these eigenspaces.  Then sewing the punctured ball into the
+complement \(M\setminus B_r(x)\) gives
+\begin{equation}
+  A_1(x+\xi_1)\cdots A_k(x+\xi_k)
+  \sim
+  \sum_{\Delta,s,a}
+  C^{\Delta,s,a}_{A_1\ldots A_k}(\xi_1,\ldots,\xi_k)\,
+  \mathcal O_{\Delta,s,a}(x),
+  \label{eq:ks-ope-from-sewing}
+\end{equation}
+with convergence in the topology in which the boundary-state expansion
+converges.  In a CFT, annular evolution is generated by dilations, so the
+coefficients have homogeneous leading behavior determined by scaling
+dimensions and spin.  In a massive theory the same construction gives a local
+short-distance expansion when the small-ball state admits the corresponding
+asymptotic spectral expansion.
+
+This derivation identifies the analytic hypotheses behind OPE convergence:
+state spaces on spheres, trace or nuclear bounds for annuli, spectral
+control of the annular semigroup, and continuity of sewing.  Without these
+hypotheses, \eqref{eq:ks-ope-from-sewing} is a formal expansion rather than a
+theorem.
+
+\section{Stoyanovsky-Style Wick Rotation}
+
+Stoyanovsky's axiomatic Wick-rotation program may be viewed as a
+hypersurface-evolution formulation of the same problem.  The basic object is
+a bundle of state spaces over a space of embedded hypersurfaces in a
+complexified spacetime, equipped with flat evolution maps for deformations of
+the hypersurface.  Local fields act by insertion when the hypersurface passes
+the insertion point.  Flatness expresses independence of the chosen
+interpolating family of hypersurfaces; positivity and boundary-value
+conditions select the Lorentzian real slice.
+
+The K-S metric formulation supplies a concrete admissible domain for those
+hypersurface deformations.  Rather than complexifying the time coordinate
+alone, it complexifies the metric and imposes
+\eqref{eq:ks-allowability-argument} pointwise.  This gives a finite-dimensional
+linear-algebra condition at each tangent space and a gluing category of
+admissible metric bordisms.  The two viewpoints should agree when both are
+defined: hypersurface evolution is the local expression of the functor on
+thin bordisms.
+
+\section{Examples and Construction Status}
+
+Topological theories are the cleanest functorial examples.  If \(Z\) is
+independent of the metric and satisfies Atiyah--Segal sewing, then it is a
+K-S-type theory restricted to the topological subcategory: the admissible
+metric dependence is constant.  Finite gauge theory, Dijkgraaf--Witten
+theory, and Reshetikhin--Turaev theories provide theorem-level examples in
+this topological sector, with their anomaly and extended-boundary data
+recorded in Volume~VIII.
+
+Two-dimensional CFT supplies the deepest non-topological testing ground.
+Segal's sewing axioms have been verified in important representation-theoretic
+and probabilistic settings, including free-fermionic and loop-group examples
+in the operator-algebraic literature and Liouville-theory sewing results in
+the probabilistic conformal-bootstrap program.  Each such result is a
+two-dimensional Segal-CFT theorem with its own topology on state spaces and
+moduli dependence.  Passing from these theorems to a general-dimensional K-S
+construction is a separate problem.
+
+Two-dimensional Yang--Mills has exact heat-kernel formulas on surfaces and a
+rigorous measure-theoretic construction in several formulations.  These
+formulas obey cutting identities at the level of class functions and
+holonomy kernels.  A full continuum Segal functor with all state spaces,
+collar topologies, and boundary field insertions specified is a further
+structure that must be supplied before calling it a completed K-S example.
+
+Free massive scalar theory in \(D\ge3\) illustrates the gap.  The Gaussian
+path integral gives explicit kernels on cylinders, and the allowability
+condition gives positivity of the real part of the quadratic action.  A
+complete K-S construction still has to specify state spaces for arbitrary
+hypersurface germs, prove trace or nuclear sewing for admissible collars,
+control point-field insertions as distributions or hyperfunctions, prove
+reflection positivity for the chosen completions, and show holomorphic
+dependence on the admissible metric.  The monograph therefore treats the free
+scalar in \(D\ge3\) as a principal construction problem rather than as an
+already completed K-S theorem.
+
+\section{Research Ledger}
+
+\begin{openproblem}[Free fields as K-S functors]
+Construct the full K-S functor for the free massive scalar field in
+\(D\ge3\).  The construction must specify hypersurface state spaces,
+Gaussian amplitudes for admissible collars, holomorphic metric dependence,
+reflection positivity, distributional field insertions, and sewing estimates.
+\end{openproblem}
+
+\begin{openproblem}[\(P(\phi)_2\) and constructive scalar models]
+Starting from constructive OS data for \(P(\phi)_2\), build state spaces on
+curves, prove collar factorization, and extend the Schwinger functions to a
+Segal/K-S functor on the relevant admissible two-dimensional bordism
+category.
+\end{openproblem}
+
+\begin{openproblem}[Liouville and nonrational CFT]
+Determine the exact relation between probabilistic Liouville correlators,
+the DOZZ/bootstrap construction, Segal sewing, and a complete functorial
+state-space assignment.  The required output is a functor with specified
+boundary state spaces and sewing maps, not only closed-surface correlators.
+\end{openproblem}
+
+\begin{openproblem}[Two-dimensional Yang--Mills]
+Upgrade the heat-kernel and holonomy-cutting formulas of two-dimensional
+Yang--Mills to a continuum Segal functor with boundary Hilbert spaces,
+defect insertions, and compatibility with the admissible complex metric
+domain.
+\end{openproblem}
+
+\begin{openproblem}[Three-dimensional constructive models]
+For \(\phi^4_3\), Gross--Neveu type models, and related constructive
+theories, identify the additional estimates needed to pass from OS
+correlators to state spaces on arbitrary surfaces and to admissible
+complex-metric sewing.
+\end{openproblem}
+
+\begin{openproblem}[Four-dimensional gauge theory]
+Construct four-dimensional Yang--Mills with mass gap as a K-S functor.  This
+is at least as hard as the corresponding OS, Wightman, and Haag--Kastler
+existence problems and additionally requires functorial gluing and
+holomorphic admissible-metric dependence.
+\end{openproblem}
+
+\begin{openproblem}[Fermions and gauge fields in K-S form]
+Develop K-S functorial constructions for fermionic and gauge theories in a
+regularization that preserves the relevant reflection positivity, anomaly
+bookkeeping, and sewing identities.  For gauge theory the BV formulation of
+regularized path integrals and the lattice formulation are the currently
+available frameworks with a precise gauge-consistency condition.
+\end{openproblem}
+
+\begin{openproblem}[Extended K-S structures]
+Formulate and construct extended K-S theories assigning data to corners and
+higher-codimension strata, analogous to extended TQFT but with non-topological
+metric dependence and analytic sewing.  The target should record defects,
+boundary conditions, and local operator categories.
+\end{openproblem}

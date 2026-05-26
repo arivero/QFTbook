@@ -251,6 +251,10 @@ Current checks:
   between vertex-OPE exponent and scaling dimension, Coleman's coupling map,
   the current-dictionary coefficient, the Mandelstam exchange phase, the
   free-fermion point, and the sine-Gordon relevance threshold.
+- `ks_allowability_checks.py`: finite complex-linear-algebra checks for the
+  Kontsevich--Segal allowability chapter, including the angle criterion,
+  Euclidean and Lorentzian boundary examples, two-time exclusion, and
+  positivity of all diagonal \(q\)-form coefficients.
 - `susy_qm_index_checks.py`: exact rational checks for the Volume I
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian

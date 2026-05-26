@@ -157,6 +157,19 @@ Likely placement:
 - Volume IV framework comparison;
 - Volume III/V CFT material.
 
+Current absorption:
+
+- Issue #599 added a dedicated Kontsevich--Segal functorial QFT chapter in
+  `monograph/tex/volumes/volume_iv/chapter06_kontsevich_segal_functorial_qft.tex`,
+  included in the Volume I foundations sequence after OS reconstruction.
+- The chapter states Segal sewing, proves the K-S allowability angle
+  criterion, defines the functorial bordism datum, relates K-S data to OS,
+  Wightman, and local-net frameworks under explicit hypotheses, derives OPE
+  from sewing under annular spectral/nuclear assumptions, and records the
+  construction-status ledger.
+- The finite algebra is checked by
+  `calculation-checks/ks_allowability_checks.py`.
+
 ### Two-Dimensional CFT
 
 Potential use:
