@@ -84,6 +84,10 @@ def verlinde(a: int, b: int, c: int) -> Qsqrt2:
     return total
 
 
+def fusion(a: int, b: int, c: int) -> Qsqrt2:
+    return verlinde(a, b, c)
+
+
 def check_modular_s() -> None:
     identity = [
         [ONE if i == j else ZERO for j in range(3)]
@@ -104,6 +108,45 @@ def check_cardy_annulus() -> None:
                     f"Cardy annulus {left}-{right} open channel {channel}",
                     coefficient,
                     expected_value,
+                )
+
+
+def check_fusion_associativity() -> None:
+    for a, left in enumerate(LABELS):
+        for b, middle_left in enumerate(LABELS):
+            for c, middle_right in enumerate(LABELS):
+                for d, right in enumerate(LABELS):
+                    lhs = sum(
+                        (fusion(a, b, e) * fusion(e, c, d) for e in range(3)),
+                        ZERO,
+                    )
+                    rhs = sum(
+                        (fusion(b, c, e) * fusion(a, e, d) for e in range(3)),
+                        ZERO,
+                    )
+                    assert_equal(
+                        "Ising fusion associativity "
+                        f"({left} {middle_left}) {middle_right} -> {right}",
+                        lhs,
+                        rhs,
+                    )
+
+
+def check_cardy_fusion_ring_characters() -> None:
+    for boundary, boundary_label in enumerate(LABELS):
+        eigenvalues = [S[i][boundary] / S[0][boundary] for i in range(3)]
+        for i, left in enumerate(LABELS):
+            for j, right in enumerate(LABELS):
+                product = eigenvalues[i] * eigenvalues[j]
+                fusion_sum = sum(
+                    (fusion(i, j, k) * eigenvalues[k] for k in range(3)),
+                    ZERO,
+                )
+                assert_equal(
+                    "Cardy disk one-point fusion character "
+                    f"{boundary_label}: {left}*{right}",
+                    product,
+                    fusion_sum,
                 )
 
 
@@ -142,9 +185,11 @@ def check_compact_boson_zero_mode_duality() -> None:
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
+    check_fusion_associativity()
+    check_cardy_fusion_ring_characters()
     check_boundary_entropy()
     check_compact_boson_zero_mode_duality()
-    print("All BCFT Cardy and compact-boson boundary checks passed.")
+    print("All BCFT Cardy, sewing, and compact-boson boundary checks passed.")
 
 
 if __name__ == "__main__":

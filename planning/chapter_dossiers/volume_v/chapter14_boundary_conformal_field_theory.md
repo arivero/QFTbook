@@ -26,6 +26,19 @@
 - Derives the diagonal-rational Cardy solution
   `|a> = sum_i S_ai / sqrt(S_0i) |i>>` and proves that the open spectrum is
   the fusion coefficient `N_ab^k` by the Verlinde formula.
+- States explicit rational sewing hypotheses for boundary OPE equations:
+  finite semisimple unitary chiral data, convergent genus-zero blocks,
+  nondegenerate boundary two-point pairings, and Moore--Seiberg fusing
+  isomorphisms satisfying the pentagon identity.
+- Defines boundary-condition-changing fields, writes the boundary OPE
+  coefficient tensor, and displays the Cardy--Lewellen four-boundary-field
+  sewing equation.
+- Proves that in the diagonal Cardy case boundary-field multiplicities are
+  fusion coefficients and that normalized fusing matrices reduce boundary
+  sewing to the pentagon identity.
+- Corrects the disk one-point/fusion-character normalization: the fusion
+  character is `lambda_a(i)=S_ia/S_0a`, while the Cardy disk coefficient is
+  `B_a^i = S_0a lambda_a(i)/sqrt(S_0i)`.
 - Works out compact free-boson Neumann and Dirichlet boundary states,
   including oscillator gluing, zero-mode restrictions, Wilson-line/position
   phases, and T-duality exchange.
@@ -45,11 +58,20 @@
    characters.
 4. Cardy's diagonal solution converts the annulus coefficients into Verlinde
    fusion coefficients.
-5. Compact-boson Neumann gluing forces `m=0`, while Dirichlet gluing forces
+5. Boundary OPE coefficients depend on two-point normalization and block
+   bases, while the Cardy--Lewellen sewing equation is invariant under basis
+   changes.
+6. In the diagonal Cardy case, boundary-changing field multiplicities obey
+   `dim psi_i^{ab}=N_ia^b`, and associativity of boundary OPEs is the
+   Moore--Seiberg pentagon identity in boundary-field language.
+7. The Verlinde eigenvalue `S_ia/S_0a` is the fusion-ring character; the
+   Cardy disk one-point coefficient differs by the two-point normalization
+   factor `S_0a/sqrt(S_0i)`.
+8. Compact-boson Neumann gluing forces `m=0`, while Dirichlet gluing forces
    `w=0`; T-duality exchanges these constraints.
-6. The Ising Cardy states reproduce the open spectra of fixed/free boundary
+9. The Ising Cardy states reproduce the open spectra of fixed/free boundary
    conditions.
-7. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
+10. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
    rederived in full here.
 
 ## Figures
@@ -61,13 +83,24 @@
 ## Checks
 
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
-  `S`-matrix arithmetic, Cardy annulus spectra, boundary entropy squares, and
-  compact-boson zero-mode exchange under T-duality.
+  `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
+  fusion-ring characters, boundary entropy squares, and compact-boson
+  zero-mode exchange under T-duality.
 
 ## Remaining Obligations
 
-- Add explicit Cardy-Lewellen coefficient equations for a nontrivial rational
-  model beyond the annulus.
 - Add boundary-condition-changing three-point constants in the Ising model.
 - Develop Liouville boundary states only in a later pass coordinated with the
   nonrational Liouville sewing open problem.
+
+## Reference Intake
+
+- Local sources consulted:
+  `references/02_2d_cft/frs_tft1_hep-th-0204148/hep.tex` and
+  `references/02_2d_cft/frs_tft4_hep-th-0412290/IV.tex`.
+  Used to verify the rational-BCFT status boundary: symmetric special
+  Frobenius algebras and module categories solve rational sewing under
+  analytic RCFT hypotheses.  The chapter reproduces the annulus, boundary
+  OPE, fusion-character, and pentagon-reduction arguments locally; it quotes
+  the full all-surface Frobenius-algebra construction rather than treating it
+  as folklore.

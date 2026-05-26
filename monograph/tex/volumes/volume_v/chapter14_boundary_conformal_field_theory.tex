@@ -280,6 +280,137 @@ to the orientation convention.  Fusion coefficients are dimensions of
 three-point chiral block spaces, hence are nonnegative integers.
 \end{proof}
 
+\section{Boundary OPE and Cardy--Lewellen Equations}
+\label{sec:bcft-boundary-ope-sewing}
+
+The annulus only detects the graded dimensions of open-channel Hilbert
+spaces.  A BCFT also has boundary operator products.  If the boundary
+condition is \(a\) to the left of an insertion and \(b\) to the right, write
+\[
+  \psi^{ab,\alpha}_i(x)
+\]
+for a boundary-condition-changing primary transforming in the chiral
+representation \(i\).  The multiplicity label \(\alpha\) runs through a
+basis of the corresponding space of boundary fields.
+
+\begin{hypothesis}[Rational sewing hypotheses for this subsection]
+\label{hyp:bcft-rational-sewing-hypotheses}
+The explicit sewing equations in this subsection assume a unitary rational
+chiral algebra with finitely many simple representations, semisimple
+positive-energy modules, convergent genus-zero chiral conformal blocks,
+nondegenerate boundary two-point pairings, and Moore--Seiberg fusing
+isomorphisms satisfying the pentagon identity.  The diagonal Cardy example
+also assumes the closed Hilbert space
+\(\oplus_i\mathcal H_i\otimes\overline{\mathcal H_i}\).  Outside these
+hypotheses the formulas remain useful local models, but they are not a proof
+of analytic sewing.
+\end{hypothesis}
+
+Under Hypothesis~\ref{hyp:bcft-rational-sewing-hypotheses}, for ordered
+boundary conditions \(a,b,c\), the boundary OPE has the form
+\begin{equation}
+  \psi^{ab,\alpha}_i(x)\psi^{bc,\beta}_j(0)
+  \sim
+  \sum_{k,\gamma}
+  C\!\begin{bmatrix} a&b&c\\ i&j&k \end{bmatrix}_{\alpha\beta}^{\gamma}
+  x^{h_k-h_i-h_j}
+  \psi^{ac,\gamma}_k(0)+\cdots .
+  \label{eq:boundary-changing-ope}
+\end{equation}
+The coefficient is not just a number attached to three labels; it depends on
+normalizations of boundary two-point functions and on a choice of basis in
+each chiral block space.  A change of those bases conjugates the coefficient
+tensors, while the sewing equations below are invariant statements.
+
+For four boundary fields on a disk, with boundary conditions
+\[
+  a\longrightarrow b\longrightarrow c\longrightarrow d
+  \longrightarrow a ,
+\]
+there are two ways to perform the OPE.  In a rational theory the two chiral
+decompositions are related by the fusing matrix \(F\).  The resulting
+Cardy--Lewellen boundary sewing equation, with dual-basis pairings of chiral
+blocks suppressed from the notation, is
+\begin{align}
+  &\sum_{p,\mu}
+  C\!\begin{bmatrix} a&b&c\\ i&j&p \end{bmatrix}_{\alpha\beta}^{\mu}
+  C\!\begin{bmatrix} a&c&d\\ p&k&\ell \end{bmatrix}_{\mu\gamma}^{\delta}
+  F_{pq}\!\begin{bmatrix} i&j\\ k&\ell \end{bmatrix}
+  \notag\\
+  &\qquad =
+  \sum_{\eta}
+  C\!\begin{bmatrix} b&c&d\\ j&k&q \end{bmatrix}_{\beta\gamma}^{\eta}
+  C\!\begin{bmatrix} a&b&d\\ i&q&\ell \end{bmatrix}_{\alpha\eta}^{\delta}.
+  \label{eq:cardy-lewellen-boundary-sewing}
+\end{align}
+The displayed formula suppresses the standard dual-basis pairings of chiral
+blocks.  Its invariant content is that boundary OPE coefficients form an
+associative multiplication object in the chiral tensor category, with the
+associator supplied by the Moore--Seiberg fusing isomorphism.
+
+\begin{proposition}[Cardy boundary fields from fusion]
+\label{prop:cardy-boundary-fields-from-fusion}
+In the diagonal Cardy solution, the multiplicity of boundary primaries from
+\(a\) to \(b\) is
+\begin{equation}
+  \dim\operatorname{span}\{\psi^{ab}_i\}=N_{ia}{}^b .
+  \label{eq:cardy-boundary-field-multiplicity}
+\end{equation}
+If the boundary three-point coefficients are chosen to be the normalized
+fusing matrices of the chiral theory, then
+\eqref{eq:cardy-lewellen-boundary-sewing} is precisely the pentagon identity
+for the fusing matrices.
+\end{proposition}
+
+\begin{proof}
+The open spectrum for Cardy boundary labels is
+\(\Hilb_{ab}\simeq\oplus_iN_{ab}{}^i\mathcal H_i\).  After conjugating
+orientation conventions, this is equivalently
+\eqref{eq:cardy-boundary-field-multiplicity}.  Boundary three-point
+functions are chiral three-point blocks on the doubled disk.  The operation
+of composing two boundary OPEs is therefore the operation of changing
+parenthesization in a four-point chiral block.  The Moore--Seiberg fusing
+matrix is exactly the transition matrix between the two parenthesizations.
+The pentagon identity says that all ways of changing parenthesization in a
+five-point block agree.  Specializing the pentagon to the four-boundary-field
+factorization diagram gives \eqref{eq:cardy-lewellen-boundary-sewing}.
+\end{proof}
+
+The disk one-point coefficient of a spinless bulk primary is another piece
+of sewing data.  In the diagonal Cardy case the coefficient of the identity
+boundary field is proportional to
+\[
+  B_a{}^i=\frac{S_{ai}}{\sqrt{S_{0i}}}.
+\]
+The Verlinde eigenvalue
+\begin{equation}
+  \lambda_a(i)=\frac{S_{ia}}{S_{0a}}
+  \label{eq:cardy-fusion-ring-character}
+\end{equation}
+is a one-dimensional character of the fusion ring:
+\begin{equation}
+  \lambda_a(i)\lambda_a(j)
+  =
+  \sum_k N_{ij}{}^k\,\lambda_a(k).
+  \label{eq:fusion-ring-character-identity}
+\end{equation}
+Indeed, the Verlinde formula says that the matrices \(N_i\) are diagonalized
+by \(S\), with eigenvalues \(S_{ia}/S_{0a}\).  The Cardy disk coefficient is
+the same eigenvalue with the normalization required by the bulk two-point
+function:
+\[
+  B_a{}^i
+  =
+  \frac{S_{0a}}{\sqrt{S_{0i}}}\,\lambda_a(i).
+\]
+Thus the disk one-point functions solve the genus-zero bulk-boundary sewing
+equation because fusion has been simultaneously diagonalized by the modular
+\(S\)-matrix, with the remaining factors fixed by two-point normalization.
+In a non-diagonal rational CFT this fusion-ring character statement is
+replaced by the classifying algebra associated to the chosen Frobenius
+algebra object; in a nonrational theory there need not be a
+finite-dimensional classifying algebra at all.
+
 \section{Compact Free Boson Boundaries}
 
 Let \(X\sim X+2\pi R\) be a compact free boson with
@@ -461,12 +592,14 @@ after the corresponding fermion-parity gauging.
 
 \section{Sewing, Boundary Entropy, and Defect Interfaces}
 
-Cardy's annulus condition is only the first sewing equation.  A full BCFT
-also has boundary OPE coefficients, bulk-boundary OPE coefficients, and
-one-point functions on the disk.  They obey compatibility equations from
-sewing a disk with two bulk fields and one boundary field in different
-orders, and from comparing boundary four-point functions in different
-channels.
+Section~\ref{sec:bcft-boundary-ope-sewing} displayed the boundary
+four-point sewing equation and the fusion-ring character equation for disk
+one-point functions in the diagonal Cardy case.  A full BCFT also has
+bulk-boundary OPE coefficients with nontrivial boundary fields, bulk
+three-point coefficients, and compatibility with defect endpoints.  These
+data obey additional compatibility equations from sewing a disk with two
+bulk fields and one boundary field in different orders, and from comparing
+bulk, boundary, and defect factorizations.
 
 \begin{quotedtheorem}[Cardy--Lewellen sewing status]
 \label{qthm:cardy-lewellen-sewing-status}
