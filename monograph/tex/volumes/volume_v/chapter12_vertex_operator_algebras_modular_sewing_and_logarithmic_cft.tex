@@ -147,6 +147,192 @@ where \(M_k^\vee\) is the contragredient module.  This definition is intrinsic:
 it counts chiral three-point structures, not a particular coordinate
 presentation of a three-point function.
 
+\section{Zhu Algebra and Top Levels}
+
+The character and sewing constructions use the whole graded module.  The
+classification of ordinary modules begins with a smaller algebra obtained
+from genus-one coordinate changes.  This algebra is Zhu's algebra.  Its role
+in the monograph is structural: it converts the lowest-energy part of a
+positive-energy module into a finite algebraic object, while leaving the
+reconstruction of the full module to the VOA theorem boundary.
+
+Let \(a\in V\) be homogeneous of conformal weight \(\Delta_a\), and write
+\[
+  Y(a,z)=\sum_{n\in\mathbb Z}a_n z^{-n-1}.
+\]
+Define bilinear operations on \(V\) by
+\begin{align}
+  a*b
+  &:=
+  \operatorname{Res}_{z=0}
+  \frac{(1+z)^{\Delta_a}}{z}Y(a,z)b
+  =
+  \sum_{j\ge0}\binom{\Delta_a}{j}a_{j-1}b,
+  \label{eq:zhu-star-product}\\
+  a\circ b
+  &:=
+  \operatorname{Res}_{z=0}
+  \frac{(1+z)^{\Delta_a}}{z^2}Y(a,z)b
+  =
+  \sum_{j\ge0}\binom{\Delta_a}{j}a_{j-2}b .
+  \label{eq:zhu-circle-product}
+\end{align}
+The sums are finite on each pair \(a,b\) by lower truncation.  Let
+\[
+  O(V)=\operatorname{span}_{\mathbb C}\{a\circ b\mid a,b\in V
+  \text{ homogeneous}\}.
+\]
+
+\begin{definition}[Zhu algebra]
+\label{def:zhu-algebra}
+The Zhu algebra of a VOA \(V\) is the quotient vector space
+\[
+  A(V)=V/O(V)
+  \label{eq:zhu-algebra-quotient}
+\]
+with product
+\[
+  [a]\,[b]:=[a*b].
+  \label{eq:zhu-product-on-classes}
+\]
+The formal identities below imply that this product is independent of the
+chosen representatives and is associative; they are the same component-Jacobi
+residue identities used in Proposition~\ref{prop:zhu-top-level-action}.  We
+denote the class of \(a\in V\) by \([a]\in A(V)\).
+\end{definition}
+
+The exponent \((1+z)^{\Delta_a}\) is not decorative.  It is the coordinate
+factor relating the punctured plane coordinate to the genus-one coordinate
+used in torus one-point functions.  The quotient by \(O(V)\) removes the
+descendant terms that vanish on lowest-energy states.
+
+\begin{proposition}[Top-level action]
+\label{prop:zhu-top-level-action}
+Let \(M\) be an ordinary positive-energy \(V\)-module with lowest conformal
+weight \(h_M\), so that
+\[
+  M=\bigoplus_{n\ge0}M_{h_M+n}.
+\]
+For a homogeneous \(a\in V\), set
+\[
+  o_M(a):=a_{\Delta_a-1}\big|_{M_{h_M}} .
+  \label{eq:zhu-zero-mode-action}
+\]
+Then \(o_M(a\circ b)=0\) on \(M_{h_M}\), and
+\[
+  o_M(a*b)=o_M(a)o_M(b).
+  \label{eq:zhu-top-product}
+\]
+Thus \(M_{h_M}\) is an \(A(V)\)-module.
+\end{proposition}
+
+\begin{proof}
+The mode \(a_n\) sends an \(L_0\)-eigenvector of weight \(\lambda\) to weight
+\[
+  \lambda+\Delta_a-n-1.
+  \label{eq:voa-mode-weight-shift}
+\]
+Thus every lowest-weight vector \(v\in M_{h_M}\) is killed by \(u_n\) whenever
+\(u\) is homogeneous and \(n>\Delta_u-1\).  Equivalently,
+\[
+  M_{h_M}\subset
+  \Omega(M):=\{v\in M\mid u_n v=0
+  \text{ for all homogeneous }u\in V,\ n>\Delta_u-1\}.
+  \label{eq:zhu-omega-subspace}
+\]
+The remaining step is a finite component calculation from the module Jacobi
+identity.  In mode form, that identity says
+\begin{align}
+  \sum_{i\ge0}\binom{m}{i}(a_{n+i}b)_{m+k-i}
+  &=
+  \sum_{i\ge0}(-1)^i\binom{n}{i}
+  \bigl(a_{m+n-i}b_{k+i}
+  -(-1)^n b_{n+k-i}a_{m+i}\bigr).
+  \label{eq:borcherds-component-identity}
+\end{align}
+All sums are finite on a fixed vector by lower truncation.  Substitute
+\(n=j-2\) and sum with the coefficients
+\(\binom{\Delta_a}{j}\) from \eqref{eq:zhu-circle-product}.  The resulting
+finite sum is reorganized by the binomial identity
+\((1+z)^{\Delta_a}=(1+z)(1+z)^{\Delta_a-1}\); every summand in
+\(o_M(a\circ b)v\) contains a factor \(u_rv\) with \(r>\Delta_u-1\), hence
+vanishes for \(v\in M_{h_M}\).  Substituting \(n=j-1\) and summing with the
+coefficients in \eqref{eq:zhu-star-product} leaves exactly the term
+\(a_{\Delta_a-1}b_{\Delta_b-1}v\); the remaining terms again contain a mode
+killing \(\Omega(M)\).  Therefore
+\[
+  o_M(a\circ b)v=0,\qquad
+  o_M(a*b)v=o_M(a)o_M(b)v
+  \label{eq:zhu-top-level-identities}
+\]
+for every \(v\in M_{h_M}\).  This proves that \(O(V)\) is in the kernel of
+the top-level action and that the induced action is multiplicative.
+\end{proof}
+
+\begin{quotedtheorem}[Zhu classification theorem]
+\label{qthm:zhu-classification}
+Let \(V\) be a grading-restricted VOA of CFT type:
+\[
+  V_n=0\quad(n<0),\qquad V_0=\mathbb C\mathbf 1,\qquad
+  \dim V_n<\infty .
+\]
+For every simple ordinary positive-energy \(V\)-module \(M\), the lowest
+space \(M_{h_M}\) is a simple \(A(V)\)-module.  Conversely, every simple
+\(A(V)\)-module \(U\) has a universal \(N\)-gradable weak \(V\)-module
+generated from \(U\) as its top level; when the irreducible quotient is
+ordinary, this construction is inverse to \(M\mapsto M_{h_M}\).  In
+particular, if every simple \(A(V)\)-module induces an ordinary simple module,
+then simple ordinary positive-energy \(V\)-modules are classified by simple
+\(A(V)\)-modules.
+
+If \(V\) is rational in the sense that the ordinary module category is
+semisimple with finitely many simple objects and finite-dimensional graded
+pieces, then \(A(V)\) is finite-dimensional and semisimple.  If, in addition,
+\[
+  C_2(V):=\operatorname{span}_{\mathbb C}\{a_{-2}b\mid a,b\in V\}
+  \quad\text{has finite codimension in }V,
+\]
+then the same finite label set appears in the vector of characters
+\((\chi_i(\tau))_{i\in I}\) entering the modular-invariance theorem.
+\end{quotedtheorem}
+
+\begin{example}[Ising Zhu algebra as a top-weight test]
+\label{ex:ising-zhu-algebra-top-weights}
+For the Ising VOA \(L(1/2,0)\), the Zhu algebra is generated by the class
+\([\omega]\) of the conformal vector.  The three simple modules have top
+weights
+\[
+  0,\qquad \frac1{16},\qquad \frac12 .
+\]
+Equivalently, the semisimple Zhu algebra is the quotient
+\[
+  A(L(1/2,0))
+  \cong
+  \mathbb C[x]\Big/
+  \left(x\left(x-\frac1{16}\right)\left(x-\frac12\right)\right),
+  \label{eq:ising-zhu-polynomial}
+\]
+where \(x\) acts as \(L_0\) on the top level.  The idempotents of this
+three-dimensional algebra are the Lagrange polynomials
+\begin{align}
+  e_0
+  &=
+  32\left(x-\frac1{16}\right)\left(x-\frac12\right),
+  \\
+  e_{1/16}
+  &=
+  -\frac{256}{7}x\left(x-\frac12\right),
+  \\
+  e_{1/2}
+  &=
+  \frac{32}{7}x\left(x-\frac1{16}\right).
+  \label{eq:ising-zhu-idempotents}
+\end{align}
+They obey \(e_h(h')=\delta_{h,h'}\), \(e_h^2=e_h\) in the quotient
+\eqref{eq:ising-zhu-polynomial}, and \(e_0+e_{1/16}+e_{1/2}=1\).  Thus they
+project to the vacuum, spin, and energy top levels, respectively.
+\end{example}
+
 \section{Sewing and Higher-Genus Blocks}
 
 Sewing is the operation that constructs higher-genus surfaces and higher-point
@@ -342,6 +528,178 @@ The same substitution gives
 \(N_{\varepsilon\sigma}{}^\sigma=1\), with all other coefficients fixed by
 commutativity and the unit object.
 \end{proof}
+
+\section{Operator-Algebraic Conformal Nets}
+\label{sec:operator-algebraic-conformal-nets}
+
+The VOA formalism starts from chiral fields as formal distributions and then
+extracts algebraic consequences.  The operator-algebraic formalism starts
+from bounded observables localized in intervals on the circle.  This
+difference is not cosmetic.  Smeared chiral fields are usually unbounded
+operators; commutation on a common invariant domain does not by itself imply
+commutation of the generated von Neumann algebras.  A conformal net records
+the bounded local algebras directly, and treats fields as affiliated
+coordinates when such coordinates exist.
+
+\begin{definition}[Chiral conformal net]
+\label{def:chiral-conformal-net}
+Let \(\mathcal I(S^1)\) be the set of connected, nonempty, nondense open
+intervals \(I\subset S^1\).  A M\"obius covariant chiral local net consists
+of a Hilbert space \(\Hilb\), a unit vector \(\Omega\in\Hilb\), a positive
+energy unitary representation \(U\) of the M\"obius group on \(\Hilb\), and
+von Neumann algebras
+\[
+  \mathcal A(I)\subset B(\Hilb),\qquad I\in\mathcal I(S^1),
+\]
+such that:
+\begin{enumerate}
+\item isotony:
+  \(I_1\subset I_2\) implies \(\mathcal A(I_1)\subset\mathcal A(I_2)\);
+\item locality:
+  \(I_1\cap I_2=\varnothing\) implies
+  \([\mathcal A(I_1),\mathcal A(I_2)]=0\);
+\item covariance:
+  \(U(\gamma)\mathcal A(I)U(\gamma)^*=\mathcal A(\gamma I)\);
+\item positive energy:
+  the generator of rotations has spectrum bounded below by \(0\);
+\item vacuum:
+  \(U(\gamma)\Omega=\Omega\), and
+  \(\Omega\) is cyclic for
+  \(\bigvee_{I\in\mathcal I(S^1)}\mathcal A(I)\).
+\end{enumerate}
+The net is irreducible if
+\(\bigvee_I\mathcal A(I)=B(\Hilb)\).  It is a conformal net, or
+diffeomorphism-covariant net, if \(U\) extends to a strongly continuous
+projective positive-energy representation of
+\(\operatorname{Diff}^+(S^1)\) satisfying the same covariance and the local
+implementer condition: if a diffeomorphism is the identity on \(I\), its
+implementer acts trivially on \(\mathcal A(I)\).
+\end{definition}
+
+The complement \(I'\) of an interval is the interior of
+\(S^1\setminus I\).  Haag duality is the equality
+\[
+  \mathcal A(I)'=\mathcal A(I') .
+\]
+For irreducible M\"obius covariant nets on the circle it follows under the
+standard vacuum-net hypotheses; in higher-dimensional AQFT it is a separate
+condition, as in
+Chapter~\ref{ch:volume-iv-superselection-sectors-locality-properties}.
+
+\begin{definition}[Split property, strong additivity, and complete rationality]
+\label{def:complete-rational-conformal-net}
+Let \(\mathcal A\) be an irreducible M\"obius covariant net.
+\begin{enumerate}
+\item The split property means that whenever
+  \(\overline I_1\subset I_2\) there is a type I factor \(N\) with
+  \[
+    \mathcal A(I_1)\subset N\subset\mathcal A(I_2).
+  \]
+\item Strong additivity means that if deleting one point from an interval
+  \(I\) gives the two intervals \(I_1,I_2\), then
+  \[
+    \mathcal A(I)=\mathcal A(I_1)\vee\mathcal A(I_2).
+  \]
+\item Assume the split property.  Choose four intervals
+  \(I_1,I_2,I_3,I_4\) in cyclic order and set \(E=I_1\cup I_3\).  The
+  \(\mu\)-index is the Jones index
+  \[
+    \mu_{\mathcal A}=[\mathcal A(E')':\mathcal A(E)]
+  \]
+  when this index is finite and independent of the chosen four intervals.
+\end{enumerate}
+The net is completely rational if it has the split property, is strongly
+additive, and has finite \(\mu_{\mathcal A}\).
+\end{definition}
+
+\begin{quotedtheorem}[Representation category of a completely rational net]
+\label{qthm:complete-rational-net-mtc}
+For a completely rational chiral conformal net, the finite-index localized
+representations form a unitary modular tensor category.  The categorical
+global dimension agrees with the \(\mu\)-index:
+\[
+  \mu_{\mathcal A}=\sum_{\rho\in\operatorname{Irr}(\mathcal A)} d_\rho^2,
+\]
+where \(d_\rho\) is the statistical dimension of the sector \(\rho\).
+This is the Kawahigashi--Longo--M\"uger conformal-net rationality theorem.
+The proof uses subfactor index theory and DHR localization, and is not
+reproduced here.
+\end{quotedtheorem}
+
+The comparison with VOAs is therefore a comparison of two different
+coordinates on chiral locality.  A VOA gives formal fields and mode algebra;
+a net gives bounded interval algebras.  Passing from one to the other is an
+analytic theorem, not a definition.
+
+\begin{quotedtheorem}[Strongly local VOAs and conformal nets]
+\label{qthm:voa-to-conformal-net}
+Let \(V\) be a simple unitary VOA whose vertex operators obey polynomial
+energy bounds.  If the smeared fields \(Y(a,f)\), \(a\in V\),
+\(f\in C^\infty(S^1)\), generate mutually local von Neumann algebras
+\[
+  \mathcal A_V(I)
+  =
+  W^*\{\overline{Y(a,f)}:\operatorname{supp}f\subset I,\ a\in V\},
+  \qquad I\in\mathcal I(S^1),
+\]
+then \(V\) is called strongly local and \(I\mapsto\mathcal A_V(I)\) is an
+irreducible conformal net.  The net is independent, up to isomorphism, of
+the normalized invariant scalar product on \(V\).
+
+Conversely, the Fredenhagen--J\"or{\ss} reconstruction applied to
+\(\mathcal A_V\) recovers the smeared vertex operators of \(V\).  More
+generally, if an irreducible conformal net is generated by quasi-primary
+reconstructed fields, those fields satisfy polynomial energy bounds, and the
+\(L_0\)-eigenspaces are finite-dimensional, then the finite-energy subspace
+\(\Hilb^{\mathrm{fin}}\) carries a simple unitary strongly local VOA
+structure \(V\) with \(\mathcal A\simeq\mathcal A_V\).
+
+This is the Carpi--Kawahigashi--Longo--Weiner VOA-to-net theorem and its
+Fredenhagen--J\"or{\ss} converse under the stated analytic hypotheses.
+\end{quotedtheorem}
+
+\begin{proposition}[Ising net rationality check]
+\label{prop:ising-net-mu-index}
+Assume the unitary Ising VOA is taken in its strongly local realization and
+that its associated conformal net is completely rational with sectors
+\(\mathbf 1,\sigma,\varepsilon\).  Then
+\[
+  \mu_{\mathcal A_{\mathrm{Ising}}}=4,
+\]
+and the DHR fusion ring of the net agrees with the Ising Verlinde fusion
+ring displayed above.
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{thm:verlinde-from-modular-diagonalization} and the explicit
+Ising \(S\)-matrix \eqref{eq:ising-modular-s}, the quantum dimensions are
+\[
+  d_{\mathbf 1}=1,\qquad d_\sigma=\sqrt2,\qquad d_\varepsilon=1.
+\]
+The quoted complete-rationality theorem gives
+\[
+  \mu_{\mathcal A_{\mathrm{Ising}}}
+  =
+  d_{\mathbf 1}^2+d_\sigma^2+d_\varepsilon^2
+  =
+  1+2+1=4.
+\]
+The same theorem identifies finite-index DHR sectors with the modular tensor
+category of the net.  Under the VOA-to-net comparison theorem, the strongly
+local Ising VOA and the Ising net have the same chiral sectors, so the DHR
+fusion coefficients are the Verlinde coefficients already computed.
+\end{proof}
+
+\begin{openproblem}[Unqualified VOA/net equivalence]
+\label{op:voa-net-equivalence-without-extra-hypotheses}
+Remove or sharply weaken the analytic hypotheses in
+Theorem~\ref{qthm:voa-to-conformal-net}.  In particular, determine whether
+every simple unitary positive-energy VOA satisfying the specified finiteness
+conditions is strongly local, and whether every irreducible conformal net of
+finite chiral type is recovered from a strongly local VOA.  The monograph
+uses the proved strongly local correspondence as a theorem boundary and does
+not assume this unqualified equivalence.
+\end{openproblem}
 
 \section{Full CFT and the Modular Bootstrap}
 

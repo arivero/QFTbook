@@ -146,7 +146,25 @@ Current checks:
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
 - `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
-  coefficients, quantum dimensions, and shifted character exponents.
+  coefficients, quantum dimensions, shifted character exponents, and the
+  Zhu-algebra top-weight polynomial with its primitive idempotents.
+- `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
+  including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
+  fusion associativity and fusion-ring characters, boundary entropy squares,
+  Chan--Paton direct sums, compact-boson T-duality zero modes, Ising
+  boundary-changing fusing constants and OPE powers, and the Liouville
+  FZZT/ZZ hyperbolic identities used in the nonrational boundary-state
+  discussion.
+- `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
+  including the level-two BPZ null vector, one-screening coefficient
+  rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
+  level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
+  conversion through \(q^2\).
+- `superconformal_algebra_checks.py`: exact rational checks for the
+  two-dimensional superconformal-algebra chapter, including the
+  \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary
+  norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
+  and protected Landau--Ginzburg central-charge arithmetic.
 - `cohomological_metric_descent_checks.py`: exact polynomial differential-form
   checks for the Volume VIII metric-independence chapter, including
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
@@ -284,6 +302,26 @@ Current checks:
   integral pairing, and the distinction between even-unimodular existence
   and scalar modular-invariance in the presence of chiral gravitational
   anomaly.
+- `nlsm_background_field_checks.py`: exact rational checks for the NLSM
+  background-field source convention, including the mean-zero condition
+  \(J=L\), the Gaussian square-completion sign used in the one-loop
+  effective-action determinant, and the pure-metric second-variation
+  normalization and curvature-vertex sign.
+- `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
+  NLSM Buscher and pure-metric beta-function sections, including Buscher
+  \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift
+  involution, the constant-curvature two-loop \(R_{ik\ell m}R_j{}^{k\ell m}\)
+  coefficient, and the spherical/hyperbolic radius-flow beta functions.
+- `nlsm_scheme_redefinition_checks.py`: finite polynomial checks for the
+  NLSM finite-scheme-redefinition law
+  \(\beta'=\beta+[\beta,F]+O(F^2)\), including the sign of the beta-vector
+  Lie bracket in a two-coupling model.
+- `nlsm_weyl_anomaly_checks.py`: exact rational checks for one-loop NLSM
+  Weyl-anomaly bookkeeping, including the \(H^2\) metric and \(B\)-field
+  variation coefficients, linear-dilaton central-charge condition,
+  heterotic Green--Schwarz coefficient, heterotic gauge/dilaton redundant
+  direction, torsionful Ricci package, and local \(\dd^2=0\) preservation of
+  the \(H\)-beta Bianchi identity.
 - `nonequilibrium_open_system_checks.py`: finite checks for the Volume X
   nonequilibrium steady-state and open-system chapter, including reservoir
   entropy production, GKSL trace preservation, KMS detailed balance for a
@@ -420,7 +458,12 @@ Current checks:
   coset section, including Sugawara central charges at selected level-one
   simple groups, \(SU(2)_k\) affine-primary weights, the diagonal
   \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge
-  identity, and the Ising/tricritical-Ising coset values.
+  identity, \(SU(2)_k/U(1)\) parafermion selection and field-identification
+  weights, compact parafermion orbit counts and fusion rules,
+  \(SL(2,\mathbb R)_k/U(1)\) cigar central charges, reflection weight
+  invariance, momentum/winding spin checks, bell/cigar one-loop geometry
+  residuals and leading-versus-exact central-charge shifts, and the
+  Ising/tricritical-Ising coset values.
 - `zeta_determinant_checks.py`: numerical and exact checks for the spectral
   zeta-determinant section, including the periodic resolvent identity for
   \(-\dd_\tau^2+\omega^2\), the derivative of

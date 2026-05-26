@@ -91,6 +91,260 @@ We record the derivation with its regulator and expansion hypotheses because
 the Ricci tensor is a statement about the local logarithmic divergence of the
 two-dimensional QFT.
 
+\subsection{Covariant Background Fields and the Mean-Zero Split}
+\label{subsec:nlsm-covariant-background-mean-zero}
+
+The symbol \(X=x+\xi\) is not meaningful on a curved target.  The background
+field method used here is instead the following local construction.  Fix a
+background map \(x:\Sigma\to M\).  A fluctuation is a section
+\(\xi\in\Gamma(x^*TM)\), and the full map is
+\[
+  X(\sigma)=\exp_{x(\sigma)}\xi(\sigma).
+\]
+This is defined whenever \(\xi(\sigma)\) lies in a normal neighborhood of
+\(x(\sigma)\).
+Equivalently, \(X(\sigma)=\lambda_\sigma(1)\), where
+\(\lambda_\sigma(t)\) is the target geodesic satisfying
+\[
+  \lambda_\sigma(0)=x(\sigma),
+  \qquad
+  \dot\lambda_\sigma(0)=\xi(\sigma).
+\]
+In local coordinates this begins as
+\begin{equation}
+  X^i
+  =
+  x^i+\xi^i
+  -\frac12\Gamma^i{}_{jk}(x)\xi^j\xi^k
+  +O(\xi^3).
+  \label{eq:nlsm-exponential-map-coordinate-expansion}
+\end{equation}
+The fluctuation field \(\xi\) is therefore a target vector at the
+background point, not a coordinate difference between two points of \(M\).
+
+The effective action is also defined with a mean-field convention.  Introduce
+an auxiliary covector source \(J_i(\sigma)\) along \(x\), and define the
+source-dependent local functional integral by
+\begin{equation}
+  \exp(-\Gamma[x])
+  =
+  \left.
+  \int [D\xi]\,
+  \exp\left(
+    -S[\exp_x\xi]
+    +
+    \int_\Sigma \dd^d\sigma\sqrt\gamma\,J_i\xi^i
+  \right)
+  \right|_{\langle\xi^i(\sigma)\rangle_J=0}.
+  \label{eq:nlsm-source-defined-effective-action}
+\end{equation}
+The source \(J\) is not an additional sigma-model coupling.  It is the
+Legendre-transform device that enforces that the chosen background map
+\(x\), rather than \(x+\langle\xi\rangle\), is the mean field.
+
+\begin{proposition}[Mean-zero source at one loop]
+\label{prop:nlsm-mean-zero-source-one-loop}
+Assume that, in a chosen coordinate patch on field space, the action
+expanded around \(x\) has the form
+\begin{equation}
+  S[\exp_x\xi]
+  =
+  S[x]
+  +
+  \int\sqrt\gamma\,L_i\xi^i
+  +
+  \frac12
+  \int\sqrt\gamma\,\xi^i\mathcal A_{ij}\xi^j
+  +
+  O(\xi^3),
+  \label{eq:nlsm-gaussian-background-expansion}
+\end{equation}
+where \(\mathcal A\) is the quadratic fluctuation operator and \(L_i\) is
+the first variation density.  Ignoring zero modes and using a regulator for
+the determinant, the Gaussian part of
+\eqref{eq:nlsm-source-defined-effective-action} has
+\[
+  \langle\xi\rangle_J
+  =
+  \mathcal A^{-1}(J-L).
+  \label{eq:nlsm-gaussian-mean-field}
+\]
+Thus the condition \(\langle\xi\rangle_J=0\) fixes \(J=L\), and the one-loop
+effective action is
+\begin{equation}
+  \Gamma[x]
+  =
+  S[x]+\frac12\log\det{}'\mathcal A
+  +
+  \text{local measure terms}
+  +
+  \text{higher-loop terms}.
+  \label{eq:nlsm-one-loop-effective-action-determinant}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+At Gaussian order the exponent in
+\eqref{eq:nlsm-source-defined-effective-action} is
+\[
+  -S[x]
+  -\frac12\langle\xi,\mathcal A\xi\rangle
+  +
+  \langle J-L,\xi\rangle,
+\]
+where the brackets include the \(\sqrt\gamma\) density and target indices.
+Completing the square gives
+\[
+  -S[x]
+  -\frac12\langle \xi-\mathcal A^{-1}(J-L),
+    \mathcal A(\xi-\mathcal A^{-1}(J-L))\rangle
+  +
+  \frac12\langle J-L,\mathcal A^{-1}(J-L)\rangle .
+\]
+The Gaussian mean is therefore
+\(\mathcal A^{-1}(J-L)\), which proves
+\eqref{eq:nlsm-gaussian-mean-field}.  Setting \(J=L\) removes the linear
+term and leaves the regulated determinant of \(\mathcal A\), giving
+\eqref{eq:nlsm-one-loop-effective-action-determinant}.  If \(\mathcal A\)
+has zero modes, they are separated as collective coordinates or fixed by an
+additional gauge slice; this affects the global measure but not the local
+ultraviolet pole that determines the beta tensor.
+\end{proof}
+
+For the pure metric action, the first variation density is
+\begin{equation}
+  L_i
+  =
+  -\frac1{2\pi\alpha'}
+  G_{ij}(x)\nabla^a\partial_ax^j,
+  \label{eq:nlsm-pure-metric-first-variation-density}
+\end{equation}
+on a closed worldsheet.  Hence \(J=0\) is allowed only when the background map
+is a classical harmonic map.  The effective-action definition above permits
+one to compute the local counterterms for an arbitrary slowly varying
+background \(x\); this is why the beta tensor is an off-shell local tensor on
+coupling space, rather than only an equation evaluated on classical
+solutions.
+
+\begin{proposition}[Second variation and the curvature vertex]
+\label{prop:nlsm-second-variation-curvature-vertex}
+Let \(B=\Phi=0\), assume \(\Sigma\) is closed, and set
+\[
+  S_G[X]
+  =
+  \frac1{4\pi\alpha'}
+  \int_\Sigma\dd^d\sigma\sqrt\gamma\,
+  \gamma^{ab}G_{ij}(X)\partial_aX^i\partial_bX^j .
+\]
+For the geodesic variation \(X_s=\exp_x(s\xi)\), the expansion through
+second order is
+\begin{equation}
+\begin{aligned}
+  S_G[X_s]
+  &=
+  S_G[x]
+  -
+  \frac{s}{2\pi\alpha'}
+  \int_\Sigma\sqrt\gamma\,
+  G_{ij}(x)\xi^i\nabla^a\partial_ax^j
+  \\
+  &\quad
+  +
+  \frac{s^2}{4\pi\alpha'}
+  \int_\Sigma\sqrt\gamma\,\gamma^{ab}
+  \left[
+    G_{ij}(x)D_a\xi^iD_b\xi^j
+    -
+    R_{ikj\ell}(x)
+    \partial_ax^i\partial_bx^j\xi^k\xi^\ell
+  \right]
+  +
+  O(s^3).
+\end{aligned}
+  \label{eq:nlsm-pure-metric-second-variation}
+\end{equation}
+Here
+\[
+  D_a\xi^i=\partial_a\xi^i+\Gamma^i{}_{jk}(x)\partial_ax^j\xi^k
+\]
+and the curvature convention is
+\begin{equation}
+  R(U,V)W
+  =
+  \nabla_U\nabla_VW-\nabla_V\nabla_UW-\nabla_{[U,V]}W .
+  \label{eq:nlsm-curvature-convention-second-variation}
+\end{equation}
+The displayed component ordering is defined by
+\[
+  R_{ikj\ell}\partial_ax^i\partial_bx^j\xi^k\xi^\ell
+  =
+  \langle R(\xi,\partial_ax)\partial_bx,\xi\rangle .
+\]
+Consequently the quadratic fluctuation action used below is precisely the
+\(s^2\)-coefficient in \eqref{eq:nlsm-pure-metric-second-variation} at
+\(s=1\).
+\end{proposition}
+
+\begin{proof}
+Let \(V=\partial_sX_s\) and \(W_a=\partial_aX_s\).  Since the target
+connection is torsion free,
+\[
+  \nabla_sW_a=\nabla_aV,
+\]
+and since \(s\mapsto X_s(\sigma)\) is a geodesic for every \(\sigma\),
+\[
+  \nabla_sV=0.
+\]
+Differentiate the Lagrangian density
+\(\gamma^{ab}\langle W_a,W_b\rangle\).  At \(s=0\),
+\[
+  \frac{\dd}{\dd s}
+  \gamma^{ab}\langle W_a,W_b\rangle
+  =
+  2\gamma^{ab}\langle D_a\xi,\partial_bx\rangle .
+\]
+Integrating by parts on the closed worldsheet gives the first-order term in
+\eqref{eq:nlsm-pure-metric-second-variation}.  For the second derivative,
+\[
+\begin{aligned}
+  \frac12\frac{\dd^2}{\dd s^2}
+  \gamma^{ab}\langle W_a,W_b\rangle
+  &=
+  \gamma^{ab}
+  \left[
+    \langle \nabla_s\nabla_aV,W_b\rangle
+    +
+    \langle \nabla_aV,\nabla_sW_b\rangle
+  \right].
+\end{aligned}
+\]
+The commutator identity and \(\nabla_sV=0\) give
+\[
+  \nabla_s\nabla_aV=R(V,W_a)V .
+\]
+Metric compatibility and the skew-adjointness of \(R(V,W_a)\) in its last
+two entries imply
+\[
+  \langle R(V,W_a)V,W_b\rangle
+  =
+  -\langle R(V,W_a)W_b,V\rangle .
+\]
+Evaluating at \(s=0\), where \(V=\xi\) and \(W_a=\partial_ax\), therefore
+gives
+\[
+  \frac12\frac{\dd^2}{\dd s^2}
+  \gamma^{ab}\langle W_a,W_b\rangle\Big|_{s=0}
+  =
+  \gamma^{ab}
+  \left[
+    \langle D_a\xi,D_b\xi\rangle
+    -
+    \langle R(\xi,\partial_ax)\partial_bx,\xi\rangle
+  \right],
+\]
+which is \eqref{eq:nlsm-pure-metric-second-variation} in components.
+\end{proof}
+
 \begin{proposition}[One-loop metric divergence]
 \label{prop:nlsm-one-loop-ricci-divergence}
 Let \(M\) be Riemannian and set \(B=\Phi=0\).  Use dimensional
@@ -199,6 +453,618 @@ central charge.  Its nonconstant part is scheme dependent under dilaton and
 metric redefinitions, while its constant part is the physical \(c\)-number in
 the two-dimensional stress-tensor anomaly.
 
+\section{One-Loop Weyl Anomaly and the Target-Space Variational Package}
+\label{sec:nlsm-one-loop-weyl-variational-package}
+
+The formulas above are often quoted as target-space equations of motion.  The
+precise statement is more structured.  After a regulator and a local
+renormalization scheme have been chosen, ordinary coordinate beta functions
+are not themselves the local Weyl-anomaly coefficients.  The local Weyl
+coefficients differ from them by redundant directions: target
+diffeomorphisms, \(B\)-field gauge transformations, and the dilaton-gradient
+terms displayed below.  The hypotheses in this section are therefore:
+\(\Sigma\) is closed, the target fields are smooth on the coordinate patch
+under consideration, dimensional regularization is used near two worldsheet
+dimensions, and all formulas are first-order statements in the large-radius
+\(\alpha'\)-expansion.
+
+\begin{proposition}[One-loop string-frame functional]
+\label{prop:nlsm-one-loop-string-frame-functional}
+Let \(H=\dd B\).  Up to the constant central-charge term in
+\(\widehat\beta^\Phi\), the one-loop Weyl-anomaly equations for
+\((G,B,\Phi)\) are generated by the local target-space functional
+\begin{equation}
+  \mathcal I_0[G,B,\Phi]
+  =
+  \int_M
+  \dd^D x\,\sqrt G\,\ee^{-2\Phi}
+  \left(
+    R(G)+4|\nabla\Phi|^2-\frac1{12}H_{ijk}H^{ijk}
+  \right).
+  \label{eq:nlsm-string-frame-functional-one-loop}
+\end{equation}
+Variation with respect to \(B\) gives
+\begin{equation}
+  \nabla^kH_{kij}-2\nabla^k\Phi\,H_{kij}=0,
+  \label{eq:nlsm-b-field-eom-one-loop}
+\end{equation}
+and variation with respect to \(G\), after the scalar equation is used to
+choose the trace representative, gives
+\begin{equation}
+  R_{ij}-\frac14H_i{}^{k\ell}H_{jk\ell}
+  +2\nabla_i\nabla_j\Phi=0.
+  \label{eq:nlsm-metric-eom-one-loop}
+\end{equation}
+The scalar Weyl-anomaly coefficient may be represented as
+\begin{equation}
+  \widehat\beta^\Phi
+  =
+  \frac{D-26}{6}
+  +
+  \alpha'
+  \left(
+    |\nabla\Phi|^2
+    -\frac12\nabla^2\Phi
+    -\frac1{24}H_{ijk}H^{ijk}
+  \right)
+  +O(\alpha'^2).
+  \label{eq:nlsm-dilaton-weyl-anomaly-one-loop}
+\end{equation}
+With the reparametrization ghosts included, the conformality condition is
+the vanishing of the matter-plus-ghost scalar anomaly.
+\end{proposition}
+
+\begin{proof}
+For the \(B\)-variation, use
+\[
+  \delta H_{ijk}
+  =
+  \nabla_i\delta B_{jk}
+  +\nabla_j\delta B_{ki}
+  +\nabla_k\delta B_{ij}.
+  \label{eq:nlsm-delta-h}
+\]
+Because \(H\) is antisymmetric,
+\[
+  \delta(H_{ijk}H^{ijk})
+  =
+  2H^{ijk}\delta H_{ijk}
+  =
+  6H^{ijk}\nabla_i\delta B_{jk}.
+  \label{eq:nlsm-delta-h-squared}
+\]
+Thus
+\[
+  \delta_B\mathcal I_0
+  =
+  -\frac12
+  \int\sqrt G\,\ee^{-2\Phi}
+  H^{ijk}\nabla_i\delta B_{jk}.
+\]
+Integrating by parts gives
+\[
+  \delta_B\mathcal I_0
+  =
+  \frac12
+  \int\sqrt G\,
+  \nabla_i(\ee^{-2\Phi}H^{ijk})\delta B_{jk},
+\]
+which is equivalent to \eqref{eq:nlsm-b-field-eom-one-loop}.  Multiplying
+the left side of \eqref{eq:nlsm-b-field-eom-one-loop} by
+\(-\alpha'/2\) gives exactly
+\eqref{eq:nlsm-one-loop-hatted-beta-b}.
+
+For the metric variation, the Palatini identity gives
+\[
+  \delta(\sqrt G\,\ee^{-2\Phi}R)
+  =
+  \sqrt G\,\ee^{-2\Phi}
+  \left(
+    R_{ij}+2\nabla_i\nabla_j\Phi
+  \right)\delta G^{ij}
+  +\text{trace terms}
+  +\text{boundary terms}.
+\]
+Here ``trace terms'' means terms proportional to \(G_{ij}\); in the
+sigma-model Weyl-anomaly package these are assigned to the scalar dilaton
+equation and to the constant central-charge representative.  The coefficient
+of the \(H\)-term is fixed directly: \(H_{abc}H^{abc}\) contains three
+inverse metrics, so its variation with respect to \(G^{ij}\) contributes
+\[
+  -\frac1{12}\cdot3\,H_i{}^{k\ell}H_{jk\ell}
+  =
+  -\frac14H_i{}^{k\ell}H_{jk\ell}.
+\]
+The chosen metric representative is therefore
+\eqref{eq:nlsm-metric-eom-one-loop}, which is the vanishing of
+\eqref{eq:nlsm-one-loop-hatted-beta-g}.
+
+Finally, varying \(\Phi\) gives the scalar combination
+\[
+  R-\frac1{12}H^2+4\nabla^2\Phi-4|\nabla\Phi|^2
+\]
+before the universal free-field determinant is added.  That determinant
+supplies the constant \((D-26)/6\) after the bosonic ghosts are included.  In
+the flat linear-dilaton test \(G_{ij}=\delta_{ij}\), \(H=0\), and
+\(\Phi=V_iX^i+\Phi_0\), equation
+\eqref{eq:nlsm-dilaton-weyl-anomaly-one-loop} becomes
+\[
+  \frac{D-26}{6}+\alpha' V^2=0,
+\]
+equivalently \(D+6\alpha'V^2=26\), matching the central-charge convention
+used below in Remark~\ref{rem:nlsm-linear-dilaton-criticality}.
+\end{proof}
+
+\begin{remark}[One-loop \(H\)-coefficient origin]
+\label{rem:nlsm-one-loop-h-coefficients}
+The coefficients \(-1/4\) in
+\eqref{eq:nlsm-one-loop-hatted-beta-g} and \(-1/2\) in
+\eqref{eq:nlsm-one-loop-hatted-beta-b} have two independent origins.  The
+target-space functional variation above fixes them by the factors \(3\) and
+\(6\) in \(\delta(H^2)\) and \(\delta H=\dd\delta B\).  In the
+background-field computation, the same coefficients come from two one-loop
+poles.  The tadpole vertex
+\[
+  \frac{\ii}{8\pi\alpha'}
+  \int
+  \epsilon^{ab}
+  \nabla_\ell H_{kij}\,
+  \xi^\ell\xi^k
+  \partial_ax^i\partial_bx^j
+\]
+produces the \(\nabla^kH_{kij}\) pole in the antisymmetric channel, while the
+bubble built from
+\[
+  \frac{\ii}{4\pi\alpha'}
+  \int
+  \epsilon^{ab}
+  H_{k\ell i}\,
+  \xi^kD_a\xi^\ell\partial_bx^i
+\]
+produces the \(H_i{}^{k\ell}H_{jk\ell}\) pole in the metric channel.  These
+are local pole computations in a chosen dimensional-continuation convention
+for \(\epsilon^{ab}\); \(B\)-field gauge invariance of the final Weyl
+coefficient is restored by expressing the answer in terms of \(H\) and by
+allowing the gauge redundant direction in
+\eqref{eq:nlsm-hatted-beta-b-redundant}.
+\end{remark}
+
+\section{Minimal Subtraction as Geometry on Coupling Space}
+\label{sec:nlsm-ms-geometry}
+
+The sigma-model coupling is not a finite list of numbers.  It is the point
+\((G,B,\Phi)\) in an infinite-dimensional space of target-space fields,
+quotiented by target diffeomorphisms and gerbe gauge transformations.  A
+minimal-subtraction counterterm is therefore a local tensorial functional of
+\((G,H,\Phi)\), and a change of renormalization scheme is a local change of
+coordinates on this space.
+
+\begin{definition}[Local sigma-model scheme]
+\label{def:local-sigma-model-scheme}
+A local perturbative sigma-model renormalization scheme assigns bare fields
+\((G^0,B^0,\Phi^0)\) to renormalized fields \((G,B,\Phi)\) by expansions
+\begin{align}
+  G^0_{ij}
+  &=
+  \mu^{-\epsilon}
+  \left[
+    G_{ij}
+    +
+    \sum_{\ell\ge1}\sum_{r=1}^{\ell}
+    \frac{(\alpha')^\ell}{\epsilon^r}
+    C^{(\ell,r)}_{ij}(G,H,\Phi)
+  \right],
+  \\
+  B^0_{ij}
+  &=
+  \mu^{-\epsilon}
+  \left[
+    B_{ij}
+    +
+    \sum_{\ell\ge1}\sum_{r=1}^{\ell}
+    \frac{(\alpha')^\ell}{\epsilon^r}
+    D^{(\ell,r)}_{ij}(G,H,\Phi)
+  \right],
+\end{align}
+where the coefficients are local covariant expressions built from finitely
+many target derivatives.  Minimal subtraction keeps only pole terms in
+\(\epsilon\).  Two such schemes are equivalent if their renormalized fields
+are related by local target diffeomorphisms, \(B\)-field gauge
+transformations, and finite local tensor redefinitions.
+\end{definition}
+
+\begin{proposition}[Finite redefinitions and beta-vector fields]
+\label{prop:nlsm-finite-redefinition-beta-bracket}
+Use condensed notation \(g^A\) for the collection of local couplings
+\((G_{ij},B_{ij},\Phi)\), including the target point and tensor indices in
+the label \(A\).  Let a finite local scheme change be
+\begin{equation}
+  g'^A
+  =
+  g^A+F^A(g),
+  \qquad
+  F^A=O((\alpha')^r),
+  \label{eq:nlsm-finite-redefinition}
+\end{equation}
+where \(F\) is a covariant local tensor functional modulo the redundant
+diffeomorphism and \(B\)-gauge directions.  If
+\(\beta=\beta^A(g)\partial_A\) is the beta-vector field in the original
+coordinates, then, to first order in \(F\),
+\begin{equation}
+  \beta'^A(g')
+  =
+  \beta^A(g')
+  +
+  [\beta,F]^A(g')
+  +
+  O(F^2),
+  \qquad
+  [\beta,F]^A
+  =
+  \beta^B\partial_BF^A
+  -
+  F^B\partial_B\beta^A .
+  \label{eq:nlsm-beta-finite-redefinition-bracket}
+\end{equation}
+Since the leading sigma-model beta field starts at order \(\alpha'\), a
+finite counterterm of order \((\alpha')^r\) first affects the displayed
+representative one order later, at order \((\alpha')^{r+1}\).
+\end{proposition}
+
+\begin{proof}
+Differentiate \eqref{eq:nlsm-finite-redefinition} with respect to
+\(\log\mu\) at fixed bare fields:
+\[
+  \beta'^A(g')
+  =
+  \frac{\dd g'^A}{\dd\log\mu}
+  =
+  \beta^A(g)+\partial_BF^A(g)\,\beta^B(g)+O(F^2).
+\]
+To express the result in the new coordinate \(g'\), invert
+\eqref{eq:nlsm-finite-redefinition} to first order,
+\[
+  g^A=g'^A-F^A(g')+O(F^2),
+\]
+and expand
+\[
+  \beta^A(g)
+  =
+  \beta^A(g')-F^B(g')\partial_B\beta^A(g')+O(F^2).
+\]
+Combining the two displayed equations gives
+\eqref{eq:nlsm-beta-finite-redefinition-bracket}.  The same computation is
+valid for local tensor fields once the index \(A\) is interpreted as a
+DeWitt index and \(\partial_A\) as the corresponding functional derivative.
+\end{proof}
+
+\begin{proposition}[Hatted beta functions and redundant directions]
+\label{prop:nlsm-hatted-beta-redundant-directions}
+Let \(\beta^G,\beta^B\) be coordinate beta functions in a chosen local
+scheme.  A target vector field \(W\) and one-form \(\Lambda\) change the
+representatives by
+\begin{align}
+  \widehat\beta^G_{ij}
+  &=
+  \beta^G_{ij}+(\mathcal L_WG)_{ij},
+  \label{eq:nlsm-hatted-beta-g-redundant}\\
+  \widehat\beta^B_{ij}
+  &=
+  \beta^B_{ij}+(\mathcal L_WB)_{ij}+(\dd\Lambda)_{ij}.
+  \label{eq:nlsm-hatted-beta-b-redundant}
+\end{align}
+In particular, the dilaton-gradient terms in
+\eqref{eq:nlsm-one-loop-hatted-beta-g}--\eqref{eq:nlsm-one-loop-hatted-beta-b}
+are the one-loop representative obtained from
+\[
+  W^i=\alpha'\nabla^i\Phi+O(\alpha'^2),
+  \qquad
+  \Lambda_i=O(\alpha'^2).
+  \label{eq:nlsm-dilaton-gradient-redundant-vector}
+\]
+\end{proposition}
+
+\begin{proof}
+A target diffeomorphism generated by \(W\) changes the local action by
+replacing \(G\) and \(B\) with their Lie derivatives.  Since the trace of the
+stress tensor measures the response of the renormalized action to a Weyl
+change at fixed bare fields, adding a redundant flow direction changes the
+coordinate beta functions by the same Lie derivatives.  A gerbe gauge
+change adds \(\dd\Lambda\) to the two-form representative and leaves
+\(H=\dd B\) fixed on closed worldsheets.  Finally,
+\((\mathcal L_{\nabla\Phi}G)_{ij}=2\nabla_i\nabla_j\Phi\), and
+\[
+  (\mathcal L_{\nabla\Phi}B)_{ij}
+  =
+  \nabla^k\Phi\,H_{kij}
+  +
+  \nabla_i(\nabla^k\Phi B_{kj})
+  -
+  \nabla_j(\nabla^k\Phi B_{ki}),
+\]
+so the non-gauge part is the \(\nabla\Phi\cdot H\) term in
+\eqref{eq:nlsm-one-loop-hatted-beta-b}.
+\end{proof}
+
+\begin{proposition}[Torsionful one-loop package]
+\label{prop:nlsm-torsionful-one-loop-package}
+Let \(H=\dd B\), and define the metric connections
+\[
+  \nabla_i^\pm v^k
+  =
+  \nabla_i v^k
+  \pm \frac12 H^k{}_{i\ell}v^\ell .
+\]
+Write \(R^-_{ij}\) for the Ricci tensor of \(\nabla^-\).  Through one loop,
+and in the same local scheme as
+\eqref{eq:nlsm-one-loop-hatted-beta-g}--\eqref{eq:nlsm-one-loop-hatted-beta-b},
+the symmetric and antisymmetric Weyl-anomaly coefficients are the two parts
+of the nonsymmetric tensor
+\begin{equation}
+  \alpha'^{-1}
+  \left(\widehat\beta^G_{ij}+\widehat\beta^B_{ij}\right)
+  =
+  R^-_{ij}+2\nabla_i^-\nabla_j\Phi .
+  \label{eq:nlsm-torsionful-one-loop-package}
+\end{equation}
+Equivalently,
+\begin{align}
+  (R^-_{ij})_{(ij)}
+  &=
+  R_{ij}-\frac14H_i{}^{k\ell}H_{jk\ell},
+  \label{eq:nlsm-torsionful-ricci-symmetric}\\
+  (R^-_{ij})_{[ij]}
+  &=
+  -\frac12\nabla^kH_{kij}.
+  \label{eq:nlsm-torsionful-ricci-antisymmetric}
+\end{align}
+The exterior derivative of the antisymmetric beta representative is a
+three-form beta tensor for \(H\), and it automatically obeys
+\(\dd\beta^H=0\).  This is the one-loop seed of the Curci--Paffuti
+consistency condition: higher-loop representatives must be chosen so that
+target diffeomorphism invariance, \(B\)-field gauge invariance, and the
+Bianchi identity \(\dd H=0\) are preserved simultaneously.
+\end{proposition}
+
+\begin{proof}
+Let \(K^k{}_{ij}=-H^k{}_{ij}/2\), so that
+\(\Gamma^{-\,k}_{ij}=\Gamma^k_{ij}+K^k{}_{ij}\).  Since \(H^k{}_{ik}=0\),
+the Ricci tensor of \(\nabla^-\) is
+\[
+  R^-_{ij}
+  =
+  R_{ij}
+  +\nabla_kK^k{}_{ij}
+  +K^k{}_{k\ell}K^\ell{}_{ij}
+  -K^k{}_{j\ell}K^\ell{}_{ik}.
+  \label{eq:nlsm-ricci-with-contorsion}
+\]
+The trace term vanishes and the derivative term is
+\(-\frac12\nabla^kH_{kij}\).  The quadratic term is
+\[
+  -K^k{}_{j\ell}K^\ell{}_{ik}
+  =
+  -\frac14H^k{}_{j\ell}H^\ell{}_{ik}
+  =
+  -\frac14H_i{}^{k\ell}H_{jk\ell},
+\]
+after lowering indices and using total antisymmetry of \(H\).  This proves
+\eqref{eq:nlsm-torsionful-ricci-symmetric} and
+\eqref{eq:nlsm-torsionful-ricci-antisymmetric}.
+
+For the dilaton term, \(\nabla^-_i\nabla_j\Phi\) means applying
+\(\nabla^-\) to the covector \(\nabla_j\Phi\):
+\[
+  \nabla^-_i\nabla_j\Phi
+  =
+  \nabla_i\nabla_j\Phi+\frac12H^k{}_{ij}\nabla_k\Phi .
+\]
+Therefore \(2\nabla^-_i\nabla_j\Phi\) contributes
+\(2\nabla_i\nabla_j\Phi\) to the symmetric part and
+\(\nabla^k\Phi\,H_{kij}\) to the antisymmetric part.  Combining these
+terms with the displayed Ricci tensor gives exactly
+\eqref{eq:nlsm-one-loop-hatted-beta-g} and
+\eqref{eq:nlsm-one-loop-hatted-beta-b}.  Finally
+\(\beta^H=\dd\widehat\beta^B\) is exact as a three-form representative, so
+\(\dd\beta^H=\dd^2\widehat\beta^B=0\); possible global gerbe data affect
+large gauge sectors, not this local identity.
+\end{proof}
+
+\begin{controlledapproximation}[Two-loop metric beta tensor]
+\label{capprox:nlsm-two-loop-metric-beta}
+For \(B=\Phi=0\), dimensional regularization and minimal subtraction give,
+in the standard Riemann-normal-coordinate scheme,
+\begin{equation}
+  \mu\frac{\dd G_{ij}}{\dd\mu}
+  =
+  \alpha' R_{ij}
+  +
+  \frac{(\alpha')^2}{2}
+  R_{ik\ell m}R_j{}^{k\ell m}
+  +
+  O((\alpha')^3).
+  \label{eq:nlsm-two-loop-metric-beta}
+\end{equation}
+The displayed coefficient is a controlled perturbative statement in the
+large-radius expansion.  Starting at two loops, finite local redefinitions
+of \(G\) change the displayed tensor by Lie derivatives and by terms
+proportional to lower-order equations of motion.  Thus the tensor
+\eqref{eq:nlsm-two-loop-metric-beta} is a scheme representative, while
+vanishing of the Weyl anomaly modulo redundant directions is the invariant
+statement.
+\end{controlledapproximation}
+
+\begin{proposition}[RG time versus Hamilton Ricci flow]
+\label{prop:nlsm-rg-time-ricci-flow}
+Let \(B=\Phi=0\), and restrict to the one-loop metric flow
+\[
+  \frac{\partial G_{ij}}{\partial \tau}
+  =
+  \alpha'R_{ij}(G),
+  \qquad
+  \tau=\log\mu .
+  \label{eq:nlsm-one-loop-rg-time}
+\]
+If
+\[
+  t=-\frac{\alpha'}2\tau ,
+  \label{eq:nlsm-ricci-flow-time}
+\]
+then \(G(t)\) satisfies Hamilton's Ricci-flow equation
+\[
+  \frac{\partial G_{ij}}{\partial t}
+  =
+  -2R_{ij}(G).
+  \label{eq:nlsm-hamilton-ricci-flow}
+\]
+Thus the ultraviolet sigma-model flow, in the convention
+\(\tau=\log\mu\), is backward relative to the usual increasing Ricci-flow
+time \(t\).  This is a statement about the one-loop local beta-vector field
+on the space of target metrics.  It does not assert that the nonlinear
+sigma model has been constructed nonperturbatively at every point of the
+flow, nor that a finite-time singularity of Ricci flow is by itself a
+theorem about the continuum QFT.
+\end{proposition}
+
+\begin{proof}
+By the chain rule,
+\[
+  \frac{\partial G_{ij}}{\partial t}
+  =
+  \frac{\partial \tau}{\partial t}
+  \frac{\partial G_{ij}}{\partial \tau}
+  =
+  \left(-\frac2{\alpha'}\right)\alpha'R_{ij}
+  =
+  -2R_{ij}.
+\]
+The remaining assertions are hypotheses bookkeeping.  Equation
+\eqref{eq:nlsm-one-loop-rg-time} is a perturbative beta-function equation in
+a specified coupling coordinate and regulator scheme, while Ricci flow is a
+geometric partial differential equation for smooth metrics.  The two
+equations agree at the displayed order after the time reparametrization
+\eqref{eq:nlsm-ricci-flow-time}; this agreement does not supply the
+operator algebra, Hilbert space, stress tensor, or sewing data of a
+continuum CFT.
+\end{proof}
+
+\begin{proposition}[Constant-curvature radius flow]
+\label{prop:nlsm-constant-curvature-radius-flow}
+Let \(M\) have dimension \(n\ge2\), and let \(\gamma\) be a metric of
+constant sectional curvature \(\sigma\), where
+\(\sigma=+1\) for the unit sphere and \(\sigma=-1\) for the unit hyperbolic
+metric.  Put
+\[
+  G_{ij}=r^2\gamma_{ij},
+  \qquad
+  \lambda=\frac{\alpha'}{r^2},
+  \qquad
+  B=\Phi=0 .
+  \label{eq:nlsm-constant-curvature-ansatz}
+\]
+In the pure-metric minimal-subtraction representative
+\eqref{eq:nlsm-two-loop-metric-beta}, the radius parameter obeys
+\begin{equation}
+  \frac{\dd r^2}{\dd\log\mu}
+  =
+  (n-1)\alpha'
+  \left(
+    \sigma+\frac{\alpha'}{r^2}
+  \right)
+  +
+  O\!\left(\frac{(\alpha')^3}{r^4}\right),
+  \label{eq:nlsm-radius-squared-beta}
+\end{equation}
+and the dimensionless large-radius coupling obeys
+\begin{equation}
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  -(n-1)\lambda^2(\sigma+\lambda)+O(\lambda^4).
+  \label{eq:nlsm-constant-curvature-lambda-beta}
+\end{equation}
+In particular, for the sphere,
+\[
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  -(n-1)\lambda^2-(n-1)\lambda^3+O(\lambda^4),
+  \label{eq:nlsm-sphere-coupling-beta}
+\]
+which is the asymptotic-freedom sign in the convention
+\(\lambda=\alpha'/r^2\).  For the hyperbolic sign,
+\[
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  (n-1)\lambda^2-(n-1)\lambda^3+O(\lambda^4).
+  \label{eq:nlsm-hyperbolic-coupling-beta}
+\]
+The hyperbolic formula is a local curvature check of signs and scaling; it
+is not a claim that an arbitrary noncompact hyperbolic target, without
+additional infrared and spectral data, defines a full CFT.
+\end{proposition}
+
+\begin{proof}
+For the scaled constant-curvature metric \(G=r^2\gamma\), the sectional
+curvature is \(K=\sigma/r^2\).  Hence
+\[
+  R_{ij}
+  =
+  (n-1)K\,G_{ij}
+  =
+  (n-1)\sigma\,\gamma_{ij},
+  \label{eq:nlsm-constant-curvature-ricci}
+\]
+and the standard constant-curvature contraction gives
+\[
+  R_{ik\ell m}R_j{}^{k\ell m}
+  =
+  2(n-1)K^2G_{ij}
+  =
+  \frac{2(n-1)}{r^2}\gamma_{ij}.
+  \label{eq:nlsm-constant-curvature-riemann-square}
+\]
+Substituting these identities into
+\eqref{eq:nlsm-two-loop-metric-beta} gives
+\[
+  \frac{\partial G_{ij}}{\partial\log\mu}
+  =
+  \left[
+    (n-1)\sigma\alpha'
+    +
+    (n-1)\frac{(\alpha')^2}{r^2}
+  \right]\gamma_{ij}
+  +
+  O\!\left(\frac{(\alpha')^3}{r^4}\right)\gamma_{ij}.
+\]
+Because \(G_{ij}=r^2\gamma_{ij}\), this is exactly
+\eqref{eq:nlsm-radius-squared-beta}.  Finally,
+\(\lambda=\alpha'/r^2\) and \(\alpha'\) is held fixed, so
+\[
+  \frac{\dd\lambda}{\dd\log\mu}
+  =
+  -\frac{\alpha'}{r^4}
+  \frac{\dd r^2}{\dd\log\mu}
+  =
+  -(n-1)\lambda^2(\sigma+\lambda)+O(\lambda^4),
+\]
+which proves \eqref{eq:nlsm-constant-curvature-lambda-beta}.
+\end{proof}
+
+\begin{remark}[Flat target, linear dilaton, and the critical constant]
+\label{rem:nlsm-linear-dilaton-criticality}
+For flat \(D\)-dimensional target and linear dilaton
+\(\Phi(X)=V_iX^i+\Phi_0\), the nonconstant tensor beta functions vanish, and
+the scalar Weyl anomaly is the central-charge condition
+\[
+  c_{\mathrm{matter}}
+  =
+  D+6\alpha' V^2 .
+\]
+Coupling to the bosonic reparametrization ghosts imposes
+\(c_{\mathrm{matter}}=26\).  This is a convention-sensitive statement about
+the constant part of \(\widehat\beta^\Phi\); it is not the same as the
+vanishing of the nonconstant metric and \(B\)-field tensors.
+\end{remark}
+
 \section{Supersymmetric Sigma-Model CFTs}
 
 The supersymmetric cases are not separate from CFT; they are additional
@@ -211,6 +1077,87 @@ connection is replaced by the torsionful connections
   \nabla^{(\pm)}=\nabla^G\pm\frac12G^{-1}H
 \]
 in the left- and right-moving fermion covariant derivatives.
+
+The heterotic \(\mathcal N=(0,1)\) sigma model adds worldsheet fermions
+valued in a vector bundle \(E\to M\) with connection \(A\).  Its assumptions
+are stronger than those of the bosonic model: \(E\) must carry a compatible
+fiber metric, the worldsheet spin structure must be specified, and gauge and
+gravitational anomalies must be cancelled by the \(B\)-field transformation
+law.  In a convention where \(\operatorname{Tr}\) denotes the gauge trace and
+\(\operatorname{tr}\) the Lorentz trace, the Green--Schwarz-improved
+three-form is
+\begin{equation}
+  H
+  =
+  \dd B
+  +
+  \frac{\alpha'}4
+  \left(
+    \omega_3(\nabla^+)-\omega_3(A)
+  \right),
+  \qquad
+  \dd H
+  =
+  \frac{\alpha'}4
+  \left(
+    \operatorname{tr}R(\nabla^+)\wedge R(\nabla^+)
+    -\operatorname{Tr}F\wedge F
+  \right).
+  \label{eq:heterotic-green-schwarz-h}
+\end{equation}
+Here \(\nabla^+\) is the torsionful target connection chosen in this
+representative.  Replacing \(\nabla^+\) by another connection changes
+\eqref{eq:heterotic-green-schwarz-h} by a local counterterm and hence by a
+scheme change, provided the Chern--Simons convention is changed
+consistently.
+
+\begin{controlledapproximation}[Heterotic one-loop representative]
+\label{capprox:heterotic-one-loop-beta-representative}
+In the large-radius and weak-bundle-curvature expansion, the heterotic
+one-loop Weyl-anomaly representative contains the gauge equation
+\begin{equation}
+  \widehat\beta^A_i
+  =
+  -\frac{\alpha'}2
+  \left(
+    D^jF_{ji}
+    +\frac12H_i{}^{jk}F_{jk}
+    -2\nabla^j\Phi\,F_{ji}
+  \right)
+  +O(\alpha'^2),
+  \label{eq:heterotic-gauge-beta-one-loop}
+\end{equation}
+where \(D\) is induced by \(A\) and by the Levi-Civita connection on target
+indices.  The metric and \(B\)-field equations are modified at the same
+order by gauge-curvature terms and by the Bianchi identity
+\eqref{eq:heterotic-green-schwarz-h}.  The invariant statement is not the
+vanishing of the displayed coordinate tensor alone, but the vanishing of the
+local Weyl anomaly modulo target diffeomorphisms, bundle gauge
+transformations, and \(B\)-field gauge transformations.
+\end{controlledapproximation}
+
+\begin{proof}[Derivation of the displayed gauge equation]
+The pullback connection couples the bundle fermions through
+\(A_i(X)\partial X^i\).  In a covariant background-field expansion, the
+linear fluctuation of this coupling is \(F_{ij}\xi^i\partial X^j\), and the
+quadratic fluctuation contains \(D_iF_{jk}\xi^i\xi^j\partial X^k\).  The
+one-loop tadpole therefore gives a pole proportional to \(D^jF_{ji}\).  The
+mixed contraction with the torsion vertex in the \(B\)-coupling contributes
+\(\frac12H_i{}^{jk}F_{jk}\).  These two terms are the ordinary coordinate
+beta function for \(A\) in this scheme.
+
+The dilaton-gradient term is a redundant direction.  The vector field
+\(W^i=\alpha'\nabla^i\Phi\) acts on the pulled-back connection by
+\[
+  (\mathcal L_WA)_i
+  =
+  W^jF_{ji}+D_i(W^jA_j).
+\]
+The second term is a bundle gauge transformation, so the gauge-invariant
+part of the Weyl-anomaly representative receives only \(W^jF_{ji}\).  This
+is the \(-2\nabla^j\Phi\,F_{ji}\) term inside the parentheses in
+\eqref{eq:heterotic-gauge-beta-one-loop}.
+\end{proof}
 
 For \(\mathcal N=(2,2)\), the target must carry compatible complex structures.
 In the basic K\"ahler case, \(M\) is a complex manifold with K\"ahler metric
@@ -228,6 +1175,65 @@ K\"ahler metric is the one-loop version of
 statement that the corresponding sigma model is a conformal field theory is
 the existence of the continuum SCFT obtained after all higher-order local
 terms and nonperturbative worldsheet sectors are included.
+
+\begin{proposition}[\(\mathcal N=(2,2)\) one-loop K\"ahler beta tensor]
+\label{prop:n22-kahler-one-loop-beta}
+Assume the regulator preserves \(\mathcal N=(2,2)\) supersymmetry and that
+the target is K\"ahler in the coordinate patch under consideration.  In a
+local superspace scheme whose counterterms are K\"ahler-potential
+counterterms, the one-loop metric beta tensor is
+\begin{equation}
+  \beta_{I\bar J}
+  =
+  \alpha' R_{I\bar J}
+  =
+  -\alpha'\partial_I\partial_{\bar J}\log\det(G_{K\bar L}),
+  \label{eq:n22-kahler-one-loop-beta}
+\end{equation}
+and the \(II\) and \(\bar I\bar J\) components vanish in holomorphic
+coordinates.  A one-loop conformal representative therefore requires the
+Ricci form
+\[
+  \rho=-\ii\partial\bar\partial\log\det(G_{K\bar L})
+\]
+to vanish in its K\"ahler class, modulo K\"ahler-potential redefinitions and
+target diffeomorphisms.
+\end{proposition}
+
+\begin{proof}
+For a K\"ahler metric, the only nonzero Christoffel symbols are
+\(\Gamma^I{}_{JK}=G^{I\bar L}\partial_JG_{K\bar L}\) and their complex
+conjugates.  Hence
+\[
+  R_{I\bar J}
+  =
+  -\partial_{\bar J}\Gamma^K{}_{IK}
+  =
+  -\partial_I\partial_{\bar J}\log\det(G_{K\bar L}),
+\]
+where the last equality is the matrix identity
+\(\partial_I\log\det G=\operatorname{tr}(G^{-1}\partial_IG)\).  The
+background-field one-loop divergence is the restriction of
+Proposition~\ref{prop:nlsm-one-loop-ricci-divergence} to complex
+coordinates.  Supersymmetry rules out a local metric counterterm that is not
+of type \((1,1)\) and, in the stated superspace scheme, writes the
+counterterm as a local correction to \(K\).  This gives
+\eqref{eq:n22-kahler-one-loop-beta}.
+\end{proof}
+
+\begin{quotedtheorem}[Higher-loop supersymmetric status]
+\label{qthm:supersymmetric-nlsm-higher-loop-status}
+For two-dimensional supersymmetric nonlinear sigma models, higher-loop beta
+functions can be computed in superspace schemes that preserve the manifest
+worldsheet supersymmetry.  In \(\mathcal N=(2,2)\) K\"ahler models, the
+classic four-loop calculations exhibit the first scheme-invariant
+higher-curvature obstruction in the corresponding supersymmetric scheme,
+while many lower-loop terms can be moved by local K\"ahler-potential and
+target-coordinate redefinitions.  This theorem is used here only as a
+perturbative large-radius status boundary: it does not by itself prove
+nonperturbative existence of a compact Calabi--Yau sigma-model SCFT, nor
+does it specify the global CFT Hilbert space.
+\end{quotedtheorem}
 
 The local operators corresponding to K\"ahler and complex-structure
 deformations are represented at large radius by
@@ -505,6 +1511,209 @@ path-integral derivation is a derivation of this equality in a Lagrangian
 coordinate patch; the exact statement is the lattice-theoretic isomorphism
 of the local QFT.
 
+\section{Buscher Duality from a Gauged Isometry}
+\label{sec:buscher-duality-gauged-isometry}
+
+We now record the local path-integral derivation of the Buscher rules.  The
+derivation is formal unless a regulator preserving the gauge symmetry and
+the measure transformation is supplied, but it is the correct perturbative
+calculation behind the toroidal lattice isomorphism above.
+
+Let \(X^0\) be a coordinate along a circle isometry, and assume
+\[
+  \partial_0G_{\mu\nu}
+  =
+  \partial_0B_{\mu\nu}
+  =
+  \partial_0\Phi
+  =
+  0.
+\]
+Write \(i,j\) for the remaining target coordinates and
+\[
+  E_{\mu\nu}=G_{\mu\nu}+B_{\mu\nu}.
+\]
+In local light-cone coordinates \(\sigma^\pm\) on the worldsheet, the
+isometry is gauged by replacing \(\partial_\pm X^0\) with gauge fields
+\(A_\pm\) and adding a Lagrange multiplier \(\widetilde X^0\) for flatness:
+\begin{equation}
+\begin{aligned}
+  S_{\mathrm{gauged}}
+  &=
+  \frac1{4\pi\alpha'}
+  \int
+  \Big[
+    E_{00}A_+A_-
+    +E_{0i}A_+\partial_-X^i
+    +E_{i0}\partial_+X^iA_-
+    +E_{ij}\partial_+X^i\partial_-X^j
+  \Big]
+  \\
+  &\quad
+  +
+  \frac1{4\pi\alpha'}
+  \int
+  \widetilde X^0
+  (\partial_+A_- -\partial_-A_+).
+\end{aligned}
+  \label{eq:buscher-gauged-action}
+\end{equation}
+Integrating out \(\widetilde X^0\) forces \(A_\pm=\partial_\pm X^0\)
+locally and recovers the original model, modulo the usual global sum over
+circle bundles.  Integrating out \(A_\pm\) instead gives the dual model.
+
+\begin{proposition}[Buscher rules]
+\label{prop:buscher-rules}
+The Gaussian integration over \(A_\pm\) in
+\eqref{eq:buscher-gauged-action} gives the dual background
+\begin{align}
+  E'_{00}
+  &=
+  \frac1{E_{00}},
+  &
+  E'_{0i}
+  &=
+  \frac{E_{0i}}{E_{00}},
+  &
+  E'_{i0}
+  &=
+  -\frac{E_{i0}}{E_{00}},
+  \label{eq:buscher-e-rules}\\
+  E'_{ij}
+  &=
+  E_{ij}
+  -
+  \frac{E_{i0}E_{0j}}{E_{00}}.
+  \label{eq:buscher-eij-rule}
+\end{align}
+Equivalently,
+\begin{align}
+  G'_{00}
+  &=
+  \frac1{G_{00}},
+  &
+  G'_{0i}
+  &=
+  \frac{B_{0i}}{G_{00}},
+  &
+  B'_{0i}
+  &=
+  \frac{G_{0i}}{G_{00}},
+  \label{eq:buscher-g0i-b0i}\\
+  G'_{ij}
+  &=
+  G_{ij}
+  -
+  \frac{G_{0i}G_{0j}-B_{0i}B_{0j}}{G_{00}},
+  \label{eq:buscher-gij}\\
+  B'_{ij}
+  &=
+  B_{ij}
+  -
+  \frac{G_{0i}B_{0j}-B_{0i}G_{0j}}{G_{00}} .
+  \label{eq:buscher-bij}
+\end{align}
+The one-loop determinant of the \(A_\pm\) Gaussian changes the dilaton by
+\begin{equation}
+  \Phi'
+  =
+  \Phi-\frac12\log G_{00}.
+  \label{eq:buscher-dilaton-shift}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Integrate the Lagrange-multiplier term by parts and collect the terms
+linear in \(A_\pm\):
+\[
+  S_{\mathrm{gauged}}
+  =
+  \frac1{4\pi\alpha'}
+  \int
+  \left[
+    E_{00}A_+A_-
+    +A_+J_-
+    +J_+A_-
+    +E_{ij}\partial_+X^i\partial_-X^j
+  \right],
+\]
+where
+\[
+  J_-=E_{0i}\partial_-X^i+\partial_-\widetilde X^0,
+  \qquad
+  J_+=E_{i0}\partial_+X^i-\partial_+\widetilde X^0 .
+\]
+The equations of motion for \(A_\pm\) are
+\[
+  E_{00}A_-+J_-=0,
+  \qquad
+  E_{00}A_++J_+=0 .
+\]
+Substituting the solution back completes the square and gives the effective
+term
+\[
+  -\frac1{E_{00}}J_+J_- .
+\]
+Reading off the coefficients of
+\(\partial_+\widetilde X^0\partial_-\widetilde X^0\),
+\(\partial_+\widetilde X^0\partial_-X^i\),
+\(\partial_+X^i\partial_-\widetilde X^0\), and
+\(\partial_+X^i\partial_-X^j\) gives
+\eqref{eq:buscher-e-rules}--\eqref{eq:buscher-eij-rule}.  Splitting
+\(E'=G'+B'\) into symmetric and antisymmetric parts gives
+\eqref{eq:buscher-g0i-b0i}--\eqref{eq:buscher-bij}.
+
+The functional determinant from the Gaussian integral over \(A_\pm\) is
+proportional to \((\det G_{00})^{-1/2}\) at each worldsheet point in a
+covariant regulator.  Coupling this local factor to the worldsheet curvature
+is equivalent to shifting the dilaton by
+\eqref{eq:buscher-dilaton-shift}.  This last step is where the path-integral
+measure, rather than only the classical action, enters the Buscher rules.
+\end{proof}
+
+\begin{proposition}[Involutivity]
+\label{prop:buscher-involutive}
+Applying the transformation
+\eqref{eq:buscher-g0i-b0i}--\eqref{eq:buscher-bij} twice returns
+\((G,B)\).  The dilaton also returns to its original value after the second
+shift.
+\end{proposition}
+
+\begin{proof}
+In \(E\)-variables the rules are
+\[
+  E'_{00}=E_{00}^{-1},\qquad
+  E'_{0i}=E_{0i}E_{00}^{-1},\qquad
+  E'_{i0}=-E_{i0}E_{00}^{-1},
+  \qquad
+  E'_{ij}=E_{ij}-E_{i0}E_{0j}E_{00}^{-1}.
+\]
+A direct substitution gives \(E''_{00}=E_{00}\),
+\(E''_{0i}=E_{0i}\), \(E''_{i0}=E_{i0}\), and
+\(E''_{ij}=E_{ij}\).  For the dilaton,
+\[
+  \Phi''
+  =
+  \Phi-\frac12\log G_{00}
+  -\frac12\log G'_{00}
+  =
+  \Phi-\frac12\log G_{00}
+  +\frac12\log G_{00}
+  =
+  \Phi .
+\]
+\end{proof}
+
+\begin{controlledapproximation}[Beta functions and Buscher covariance]
+\label{capprox:buscher-beta-covariance}
+Order by order in \(\alpha'\), Buscher duality maps Weyl-anomaly
+coefficients of the original background to those of the dual background
+after the corresponding local field redefinitions have been chosen.  This is
+a perturbative covariance statement about the sigma-model renormalization
+scheme.  It is not, by itself, a nonperturbative proof that two arbitrary
+curved-target continuum CFTs exist or are isomorphic.
+\end{controlledapproximation}
+
 \section{WZW Models, Affine Currents, and Cosets}
 \label{sec:wzw-affine-currents-cosets}
 
@@ -766,6 +1975,618 @@ This gives the unitary Virasoro minimal-model central charges.  The central
 charge is the first scalar invariant of the construction; the full CFT data
 are the coset Hilbert space, OPE coefficients, sewing constraints, and
 modular invariant built from the branching of affine representations.
+
+\subsection{Rank-One Solvable Cosets: Parafermions and the Cigar}
+\label{subsec:rank-one-solvable-cosets}
+
+The cosets \(SU(2)_k/U(1)\) and \(SL(2,\mathbb R)_k/U(1)\) are small
+enough to compute explicitly, but they are also good tests of the logical
+order of the construction.  The exact CFT is first a current-algebra coset
+with specified representation data.  A gauged sigma-model metric and
+dilaton, when available, are then a useful representative in a controlled
+large-level regime.  Reversing this order can hide selection rules, field
+identifications, reflection amplitudes, and normalizability conditions.
+
+\begin{definition}[The compact parafermion coset]
+\label{def:compact-parafermion-coset}
+Let \(k\in\mathbb Z_{>0}\).  In the \(SU(2)_k\) WZW model write the Cartan
+current as \(J^3\), normalized so that the embedded abelian current algebra
+has level \(k\) and primary charges are naturally recorded by an integer
+\(m\) modulo \(2k\).  The compact parafermion coset is
+\[
+  \operatorname{PF}_k
+  =
+  SU(2)_k/U(1)_k,
+  \qquad
+  T_{\operatorname{PF}_k}=T_{SU(2)_k}-T_{U(1)_k}.
+\]
+Its affine branching labels are pairs
+\[
+  (\ell,m),
+  \qquad
+  0\le \ell\le k,\quad m\in\mathbb Z/2k\mathbb Z,
+  \qquad
+  \ell+m\in 2\mathbb Z .
+\]
+The selection rule means that the \(U(1)\) charge must actually occur in
+the finite \(SU(2)\) spin-\(\ell/2\) multiplet before its affine
+descendants are included.
+\end{definition}
+
+Equivalently, the integrable \(SU(2)_k\) character decomposes as
+\begin{equation}
+  \chi^{SU(2)_k}_{\ell}(q,z)
+  =
+  \sum_{\substack{m\in\mathbb Z/2k\mathbb Z\\ m\equiv \ell\;(\mathrm{mod}\;2)}}
+  b^{(k)}_{\ell,m}(q)\,
+  \Theta_{m,k}(q,z).
+  \label{eq:parafermion-branching}
+\end{equation}
+Here \(\Theta_{m,k}\) is the abelian level-\(k\) theta character and
+\(b^{(k)}_{\ell,m}\) is the parafermion branching function.  The formula is
+a representation-theoretic decomposition of the \(SU(2)_k\) affine module;
+it is not a pointwise quotient of a target manifold.
+
+\begin{proposition}[Parafermion central charge, weights, and identification]
+\label{prop:parafermion-data}
+The compact parafermion coset has central charge
+\begin{equation}
+  c(\operatorname{PF}_k)
+  =
+  \frac{3k}{k+2}-1
+  =
+  \frac{2(k-1)}{k+2}.
+  \label{eq:parafermion-central-charge}
+\end{equation}
+The holomorphic conformal weight of the coset primary labelled by
+\((\ell,m)\) is
+\begin{equation}
+  h^{\operatorname{PF}}_{\ell,m}
+  =
+  \frac{\ell(\ell+2)}{4(k+2)}
+  -
+  \frac{m^2}{4k}
+  \quad \mathrm{mod}\ \mathbb Z ,
+  \label{eq:parafermion-weight}
+\end{equation}
+and the branching labels are identified by
+\begin{equation}
+  (\ell,m)\sim(k-\ell,m+k).
+  \label{eq:parafermion-field-identification}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The central charge is the difference between the \(SU(2)_k\) Sugawara
+central charge \(3k/(k+2)\) and the abelian current central charge \(1\).
+For the weight, write the \(SU(2)\) highest weight as \(\lambda=\ell\omega\).
+Since \((\omega,\omega)=1/2\) and \(\rho=\omega\),
+\[
+  h^{SU(2)_k}_{\ell}
+  =
+  \frac{(\lambda,\lambda+2\rho)}{2(k+2)}
+  =
+  \frac{\ell(\ell+2)}{4(k+2)}.
+\]
+An abelian charge \(m\) at level \(k\), in this doubled-charge
+normalization, has conformal weight \(m^2/(4k)\).  Subtracting the abelian
+weight gives \eqref{eq:parafermion-weight}, with integer shifts coming from
+which affine descendants occur in the branching component.  The
+identification \eqref{eq:parafermion-field-identification} is generated by
+the simple current of \(SU(2)_k\).  Its compatibility with the displayed
+weight formula is checked directly:
+\[
+  h^{\operatorname{PF}}_{k-\ell,m+k}-h^{\operatorname{PF}}_{\ell,m}
+  =
+  -\frac{\ell+m}{2}.
+\]
+This is integral precisely on the selected branching labels
+\(\ell+m\in2\mathbb Z\).
+\end{proof}
+
+For \(k=2\) one obtains the Ising central charge \(c=1/2\): the labels
+\((1,1)\) and \((2,0)\) give the weights \(1/16\) and \(1/2\).  For \(k=3\)
+one obtains \(c=4/5\), the three-state Potts value: the labels \((1,1)\)
+and \((2,0)\) give weights \(1/15\) and \(2/5\).  The parafermion current
+can be represented by \((0,2)\); using
+\eqref{eq:parafermion-weight} modulo integers gives
+\[
+  h_{0,2}^{\operatorname{PF}}=1-\frac1k .
+\]
+
+\begin{proposition}[Parafermion fusion, modular data, and diagonal invariant]
+\label{prop:parafermion-fusion-modular-data}
+Let \(\mathcal L_k\) be the set of selected labels
+\[
+  \mathcal L_k
+  =
+  \{(\ell,m)\mid 0\le \ell\le k,\ m\in\mathbb Z/2k\mathbb Z,
+  \ell+m\in2\mathbb Z\},
+\]
+and let \(\mathcal I_k=\mathcal L_k/\!\sim\), where
+\((\ell,m)\sim(k-\ell,m+k)\).  The simple-current action is free, so
+\[
+  |\mathcal I_k|=\frac{k(k+1)}2 .
+\]
+For orbit labels \([\ell,m]\in\mathcal I_k\), the fusion rule is
+\begin{equation}
+  [\ell_1,m_1]\boxtimes[\ell_2,m_2]
+  =
+  \bigoplus_{\substack{
+      |\ell_1-\ell_2|\le \ell_3\le
+      \min(\ell_1+\ell_2,\,2k-\ell_1-\ell_2)\\
+      \ell_1+\ell_2+\ell_3\in2\mathbb Z}}
+  [\ell_3,m_1+m_2],
+  \label{eq:parafermion-fusion-rule}
+\end{equation}
+where the charge is reduced modulo \(2k\) and the result is again read as
+an orbit.  With the theta-function convention used in
+\eqref{eq:parafermion-branching}, the modular \(S\)-matrix on these orbits
+is
+\begin{equation}
+  S^{\operatorname{PF}}_{[\ell,m],[\ell',m']}
+  =
+  \frac{2}{\sqrt{k(k+2)}}\,
+  \sin\!\left(\frac{\pi(\ell+1)(\ell'+1)}{k+2}\right)
+  \exp\!\left(-\frac{\pi\ii mm'}{k}\right).
+  \label{eq:parafermion-modular-s}
+\end{equation}
+The diagonal compact parafermion torus partition function is
+\begin{equation}
+  Z_{\operatorname{PF}_k}^{\operatorname{diag}}(\tau,\bar\tau)
+  =
+  \sum_{[\ell,m]\in\mathcal I_k}
+  b^{(k)}_{\ell,m}(\tau)\,
+  \overline{b^{(k)}_{\ell,m}(\tau)} .
+  \label{eq:parafermion-diagonal-partition-function}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The action \((\ell,m)\mapsto(k-\ell,m+k)\) has no fixed point: a fixed
+point would require \(m\equiv m+k\pmod {2k}\), impossible for
+\(k>0\).  Since \(|\mathcal L_k|=k(k+1)\), the orbit count follows.
+
+Fusion in the parent \(SU(2)_k\) WZW model is the truncated tensor-product
+rule
+\[
+  \ell_3=|\ell_1-\ell_2|,\ |\ell_1-\ell_2|+2,\ldots,
+  \min(\ell_1+\ell_2,2k-\ell_1-\ell_2).
+\]
+The abelian factor conserves \(U(1)\) charge modulo \(2k\).  Taking the
+coset branching component therefore gives
+\eqref{eq:parafermion-fusion-rule}.  The parity condition is automatic
+from the \(SU(2)\) fusion parity and the two input selection rules.
+
+The modular matrix is the product of the \(SU(2)_k\) modular matrix and the
+complex conjugate of the \(U(1)_k\) theta modular matrix, multiplied by the
+order \(2\) of the free simple-current identification.  This gives
+\eqref{eq:parafermion-modular-s}.  The displayed expression is
+well-defined on orbits because replacing \((\ell,m)\) by
+\((k-\ell,m+k)\) multiplies the sine factor by \((-1)^{\ell'}\) and the
+exponential by \((-1)^{m'}\), whose product is \(1\) on selected labels
+\(\ell'+m'\in2\mathbb Z\).  The diagonal invariant is the branchwise
+diagonal invariant after quotienting by this free identification; it is
+equivalently one half of the selected-label diagonal sum before quotient.
+\end{proof}
+
+For \(k=2\), the three orbits may be represented by
+\((0,0)\), \((1,1)\), and \((2,0)\).  The fusion rule gives
+\[
+  (1,1)\boxtimes(1,1)=(0,0)\oplus(2,0),
+  \qquad
+  (2,0)\boxtimes(2,0)=(0,0),
+\]
+which is the Ising fusion algebra under the identifications
+\((1,1)=\sigma\) and \((2,0)=\varepsilon\).  For general \(k\), the field
+\((0,2)\) is a simple current of order \(k\) and shifts
+\([\ell,m]\) to \([\ell,m+2]\).
+
+\begin{controlledapproximation}[The bell as a gauged-WZW representative]
+\label{capprox:compact-coset-bell}
+Choose Euler-angle coordinates on \(SU(2)\) and gauge the Cartan circle
+axially.  In a local complex coordinate, write
+\(\partial=\partial_z\) and \(\bar\partial=\partial_{\bar z}\).  After
+parametrizing the group by base coordinates \((\theta,\varphi)\) and a
+fiber coordinate \(\psi\), the gauged action has the local form
+\begin{align}
+  S_{\mathrm{gauged}}
+  =
+  \frac{k}{2\pi}
+  \int d^2z\,\Big[
+    &
+    \partial\theta\,\bar\partial\theta
+    +\tan^2\theta\,\partial\varphi\,\bar\partial\varphi
+    \nonumber\\
+    &
+    +\cos^2\theta\,
+    \bigl(\partial\psi+\tan^2\theta\,\partial\varphi+A\bigr)
+    \bigl(\bar\partial\psi-\tan^2\theta\,\bar\partial\varphi+\bar A\bigr)
+  \Big].
+  \label{eq:compact-gauged-wzw-local-action}
+\end{align}
+This formula is a coordinate representative of the gauged WZW model; the
+global action is still defined by the WZW gerbe and the gauged
+Polyakov--Wiegmann construction.  Fixing the gauge \(\psi=0\), the gauge
+fields \(A,\bar A\) are algebraic.  Their equations of motion are
+\[
+  \bar A=\tan^2\theta\,\bar\partial\varphi,
+  \qquad
+  A=-\tan^2\theta\,\partial\varphi .
+\]
+Substitution leaves
+\[
+  \frac{k}{2\pi}
+  \int d^2z\,
+  \bigl(
+    \partial\theta\,\bar\partial\theta
+    +\tan^2\theta\,\partial\varphi\,\bar\partial\varphi
+  \bigr).
+\]
+The Gaussian integration over \(A,\bar A\) has quadratic coefficient
+\(k\cos^2\theta\); its determinant shifts the dilaton by
+\(-\log(k\cos\theta)\), up to the constant convention for \(\Phi_0\).  Thus
+the semiclassical large-\(k\) representative is
+\begin{equation}
+  ds^2
+  =
+  k\alpha'\bigl(d\theta^2+\tan^2\theta\,d\varphi^2\bigr),
+  \qquad
+  \Phi
+  =
+  \Phi_0-\log\cos\theta .
+  \label{eq:parafermion-bell-background}
+\end{equation}
+after absorbing \(-\log k\) into \(\Phi_0\).  This ``bell'' geometry is a
+useful sigma-model shadow of the coset.  The exact finite-\(k\) CFT is
+nevertheless the parafermion coset with the branching, selection,
+field-identification, and sewing data specified above; it is not defined by
+the unrenormalized metric alone.
+\end{controlledapproximation}
+
+\begin{definition}[The bosonic cigar coset]
+\label{def:bosonic-cigar-coset}
+Let \(k>2\).  The bosonic cigar CFT is the axial Cartan coset
+\[
+  \operatorname{Cig}_k
+  =
+  SL(2,\mathbb R)_k/U(1),
+  \qquad
+  T_{\operatorname{Cig}_k}=T_{SL(2,\mathbb R)_k}-T_{U(1)} ,
+\]
+with Euclidean continuation chosen so that the residual angular coordinate
+is compact.  A primary is labelled locally by \(SL(2,\mathbb R)\) quantum
+numbers \(j,m,\bar m\), but a full noncompact CFT datum also includes the
+choice of continuous and discrete representation ranges, spectral-flow
+sectors, reflection relation, normalizability prescription, and modular
+invariant pairing of left and right labels.
+\end{definition}
+
+\begin{proposition}[Cigar central charge, weights, and spin]
+\label{prop:cigar-data}
+In the above convention the bosonic cigar has
+\begin{equation}
+  c(\operatorname{Cig}_k)
+  =
+  \frac{3k}{k-2}-1
+  =
+  2+\frac{6}{k-2}.
+  \label{eq:cigar-central-charge}
+\end{equation}
+The holomorphic conformal weight of a coset primary with labels \((j,m)\)
+is
+\begin{equation}
+  h^{\operatorname{Cig}}_{j,m}
+  =
+  -\frac{j(j-1)}{k-2}
+  +
+  \frac{m^2}{k}.
+  \label{eq:cigar-weight}
+\end{equation}
+For momentum \(n\in\mathbb Z\) and winding \(w\in\mathbb Z\) around the
+asymptotic circle, use
+\begin{equation}
+  m=\frac{n+kw}{2},
+  \qquad
+  \bar m=\frac{-n+kw}{2}.
+  \label{eq:cigar-momentum-winding-labels}
+\end{equation}
+Then the spin is integral:
+\[
+  h^{\operatorname{Cig}}_{j,m}-\bar h^{\operatorname{Cig}}_{j,\bar m}=nw.
+\]
+\end{proposition}
+
+\begin{proof}
+For \(SL(2,\mathbb R)\) the dual-Coxeter shift has the opposite sign from
+the compact \(SU(2)\) case, giving the WZW central charge \(3k/(k-2)\).
+Subtracting the abelian current central charge gives
+\eqref{eq:cigar-central-charge}.  The parent \(SL(2,\mathbb R)\) affine
+primary of spin \(j\) has Sugawara weight
+\[
+  h^{SL(2)}_{j}
+  =
+  -\frac{j(j-1)}{k-2}.
+\]
+Writing the state as a coset branching field times the Cartan vertex, the
+timelike Cartan vertex has weight \(-m^2/k\).  Therefore
+\[
+  h^{SL(2)}_{j}
+  =
+  h^{\operatorname{Cig}}_{j,m}-\frac{m^2}{k},
+\]
+which gives \eqref{eq:cigar-weight}.  Finally,
+\[
+  h^{\operatorname{Cig}}_{j,m}-\bar h^{\operatorname{Cig}}_{j,\bar m}
+  =
+  \frac{m^2-\bar m^2}{k}
+  =
+  \frac{(m-\bar m)(m+\bar m)}{k}
+  =
+  nw,
+\]
+using \eqref{eq:cigar-momentum-winding-labels}.
+\end{proof}
+
+\begin{quotedtheorem}[Bosonic cigar spectrum status]
+\label{qthm:bosonic-cigar-spectrum-status}
+For the standard axial \(SL(2,\mathbb R)_k/U(1)\) cigar CFT with \(k>2\),
+the continuous normalizable spectrum contains
+\[
+  j=\frac12+\ii s,\qquad s\in\mathbb R_{\ge0},
+  \qquad
+  n,w\in\mathbb Z,
+\]
+with \(m,\bar m\) as in \eqref{eq:cigar-momentum-winding-labels}.  Its
+weights are therefore
+\[
+  h_{s,n,w}
+  =
+  \frac{s^2+\frac14}{k-2}
+  +
+  \frac{(n+kw)^2}{4k},
+  \qquad
+  \bar h_{s,n,w}
+  =
+  \frac{s^2+\frac14}{k-2}
+  +
+  \frac{(-n+kw)^2}{4k}.
+\]
+The analytic continuation in \(j\) obeys a reflection relation
+\[
+  \mathcal V_{j,m,\bar m}
+  \simeq
+  \mathcal R(j;m,\bar m)\,\mathcal V_{1-j,m,\bar m},
+  \qquad
+  \mathcal R(j;m,\bar m)\mathcal R(1-j;m,\bar m)=1,
+\]
+and the normalizable discrete states are obtained from the corresponding
+pole and residue prescription.  The exact discrete ranges and multiplicity
+choices are part of the noncompact CFT and modular-invariant datum; they do
+not follow from the local stress tensor and metric formulas alone.
+\end{quotedtheorem}
+
+The equality \(h^{\operatorname{Cig}}_{j,m}
+=h^{\operatorname{Cig}}_{1-j,m}\) is immediate from
+\eqref{eq:cigar-weight}.  Thus the reflection relation is compatible with
+Virasoro weights, but its coefficient and the allowed discrete residues are
+global analytic data of the noncompact theory.  This is one of the points
+where the cigar differs sharply from the compact parafermion coset: the
+compact model has finitely many ordinary characters and a finite modular
+matrix, while the cigar has delta-normalized continuum states and a
+scattering/reflection problem at infinity.
+
+\begin{controlledapproximation}[The cigar as a large-level background]
+\label{capprox:cigar-large-level-background}
+In the same gauged-WZW derivation, now for \(SL(2,\mathbb R)\) with the
+Euclidean axial gauging, choose local coordinates \((\rho,\theta,t)\) so
+that \(t\) is the gauged fiber coordinate.  The local action is
+\begin{align}
+  S_{\mathrm{gauged}}
+  =
+  \frac{k}{2\pi}
+  \int d^2z\,\Big[
+    &
+    \partial\rho\,\bar\partial\rho
+    +\tanh^2\rho\,\partial\theta\,\bar\partial\theta
+    \nonumber\\
+    &
+    -\cosh^2\rho\,
+    \bigl(\partial t+\tanh^2\rho\,\partial\theta+A\bigr)
+    \bigl(\bar\partial t-\tanh^2\rho\,\bar\partial\theta+\bar A\bigr)
+  \Big].
+  \label{eq:sl2-gauged-wzw-local-action}
+\end{align}
+The minus sign records the noncompact Cartan signature; in the Euclidean
+coset path integral it is accompanied by the corresponding Wick-rotated
+gauge-field contour.  Fixing \(t=0\), the algebraic equations of motion are
+\[
+  \bar A=\tanh^2\rho\,\bar\partial\theta,
+  \qquad
+  A=-\tanh^2\rho\,\partial\theta .
+\]
+Substitution gives the kinetic term
+\[
+  \frac{k}{2\pi}
+  \int d^2z\,
+  \bigl(
+    \partial\rho\,\bar\partial\rho
+    +\tanh^2\rho\,\partial\theta\,\bar\partial\theta
+  \bigr),
+\]
+and the Gaussian determinant has coefficient \(k\cosh^2\rho\), producing
+\(-\log(k\cosh\rho)\) in the dilaton.  Absorbing \(-\log k\) into
+\(\Phi_0\) gives the large-\(k\) sigma-model representative
+\begin{equation}
+  ds^2
+  =
+  k\alpha'\bigl(d\rho^2+\tanh^2\rho\,d\theta^2\bigr),
+  \qquad
+  \Phi
+  =
+  \Phi_0-\log\cosh\rho,
+  \qquad
+  \theta\sim\theta+2\pi .
+  \label{eq:cigar-background}
+\end{equation}
+The tip is smooth, while the end is an asymptotic cylinder with a linear
+dilaton.  The exact central charge is reproduced by the asymptotic
+background-charge convention \(Q=1/\sqrt{k-2}\).  At finite \(k\), however,
+the exact object is the noncompact coset CFT with its representation,
+reflection, normalizability, and modular data; the metric and dilaton alone
+do not determine those analytic choices.
+\end{controlledapproximation}
+
+\begin{proposition}[One-loop geometry check for the bell and cigar]
+\label{prop:rank-one-coset-geometry-weyl-check}
+Let
+\[
+  ds^2=K\bigl(du^2+f(u)^2d\varphi^2\bigr),
+  \qquad
+  \Phi=\Phi(u),
+  \qquad K>0,
+\]
+and set \(H=0\).  The only nonzero Christoffel symbols are
+\[
+  \Gamma^u_{\varphi\varphi}=-ff',
+  \qquad
+  \Gamma^\varphi_{u\varphi}=\Gamma^\varphi_{\varphi u}=\frac{f'}{f},
+\]
+and the Ricci tensor and dilaton Hessian are
+\[
+  R_{uu}=-\frac{f''}{f},
+  \qquad
+  R_{\varphi\varphi}=-ff'',
+  \qquad
+  \nabla_u\nabla_u\Phi=\Phi'',
+  \qquad
+  \nabla_\varphi\nabla_\varphi\Phi=ff'\Phi'.
+\]
+For the cigar,
+\[
+  f(\rho)=\tanh\rho,
+  \qquad
+  \Phi(\rho)=\Phi_0-\log\cosh\rho,
+\]
+and for the bell,
+\[
+  f(\theta)=\tan\theta,
+  \qquad
+  \Phi(\theta)=\Phi_0-\log\cos\theta .
+\]
+In both cases the one-loop metric Weyl-anomaly equation
+\[
+  R_{ij}+2\nabla_i\nabla_j\Phi=0
+\]
+holds identically on the coordinate patch.  The scalar combination entering
+\eqref{eq:nlsm-dilaton-weyl-anomaly-one-loop} is constant:
+\[
+  |\nabla\Phi|^2-\frac12\nabla^2\Phi
+  =
+  \begin{cases}
+    \phantom{-}K^{-1}, & \text{cigar},\\
+    -K^{-1}, & \text{bell}.
+  \end{cases}
+  \label{eq:bell-cigar-scalar-anomaly-constant}
+\]
+\end{proposition}
+
+\begin{proof}
+For a rotational metric with constant overall scale \(K\), the connection is
+independent of \(K\).  The displayed Christoffel symbols follow by direct
+substitution in
+\[
+  \Gamma^a_{bc}
+  =
+  \frac12g^{ad}
+  \bigl(\partial_bg_{cd}+\partial_cg_{bd}-\partial_dg_{bc}\bigr).
+\]
+The Ricci components reduce to
+\[
+  R_{uu}=-\frac{f''}{f},
+  \qquad
+  R_{\varphi\varphi}=-ff'',
+\]
+and the Hessian formulas follow from
+\(\nabla_i\nabla_j\Phi=\partial_i\partial_j\Phi-\Gamma^a_{ij}\partial_a\Phi\).
+
+For the cigar one has
+\[
+  f' = 1-f^2,
+  \qquad
+  f''=-2f(1-f^2),
+  \qquad
+  \Phi'=-f,
+  \qquad
+  \Phi''=-(1-f^2).
+\]
+Therefore
+\[
+  R_{uu}+2\Phi''
+  =
+  2(1-f^2)-2(1-f^2)=0
+\]
+and
+\[
+  R_{\varphi\varphi}+2\nabla_\varphi\nabla_\varphi\Phi
+  =
+  2f^2(1-f^2)-2f^2(1-f^2)=0.
+\]
+Also
+\[
+  K\left(|\nabla\Phi|^2-\frac12\nabla^2\Phi\right)
+  =
+  f^2-\frac12\left(\Phi''+\frac{f'}{f}\Phi'\right)
+  =
+  f^2+(1-f^2)=1 .
+\]
+
+For the bell one has
+\[
+  f'=1+f^2,
+  \qquad
+  f''=2f(1+f^2),
+  \qquad
+  \Phi'=f,
+  \qquad
+  \Phi''=1+f^2.
+\]
+The same substitutions give
+\[
+  R_{uu}+2\Phi''
+  =
+  -2(1+f^2)+2(1+f^2)=0
+\]
+and
+\[
+  R_{\varphi\varphi}+2\nabla_\varphi\nabla_\varphi\Phi
+  =
+  -2f^2(1+f^2)+2f^2(1+f^2)=0.
+\]
+Finally
+\[
+  K\left(|\nabla\Phi|^2-\frac12\nabla^2\Phi\right)
+  =
+  f^2-\frac12\left(\Phi''+\frac{f'}{f}\Phi'\right)
+  =
+  f^2-(1+f^2)=-1 .
+\]
+\end{proof}
+
+Taking \(K=k\alpha'\), the scalar constants in
+\eqref{eq:bell-cigar-scalar-anomaly-constant} give the leading large-\(k\)
+central-charge shifts \(2+6/k\) for the cigar and \(2-6/k\) for the bell in
+the convention of \eqref{eq:nlsm-dilaton-weyl-anomaly-one-loop}.  The exact
+finite-level current-algebra formulas replace these leading denominators by
+\(k-2\) and \(k+2\), respectively.  This is precisely why the geometry check
+is useful but not a definition of the exact CFT.
+
+The \(\mathcal N=2\) supersymmetric versions of these rank-one cosets add
+fermions, an \(R\)-current, spectral flow, chiral primaries, and mirror
+relations to \(\mathcal N=2\) Liouville theory.  Those structures should be
+developed together with the supersymmetric field-theory foundations.  The
+bosonic discussion here supplies the current-algebra and gauged-WZW
+baseline on which that later treatment rests.
 
 \section{Finite Orbifolds as Gauging of Topological Lines}
 \label{sec:finite-orbifolds-topological-lines}

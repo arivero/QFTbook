@@ -230,21 +230,64 @@ Current absorption:
   supersymmetric sigma-model CFTs, Narain lattice CFTs and toroidal sigma
   models, WZW/current-algebra/coset CFTs, finite orbifolds, twist sectors,
   cyclic and rotation twist weights, and twist-field deformations.  The
-  Narain pass rebuilds the stringbook lattice vertex-operator material with
-  explicit locality, spin, cocycle, modular-anomaly, and \(O(d,d;\mathbb Z)\)
-  moduli statements, together with a public calculation check for the cocycle
-  and pairing algebra.  The WZW pass adds integral level quantization, affine
+  NLSM renormalization pass now gives the covariant exponential background
+  split, the source-coupled mean-zero 1PI effective-action convention, the
+  pure-metric second variation and curvature vertex, the background-field
+  one-loop Ricci divergence, the \(G,B,\Phi\) Weyl-anomaly package,
+  scheme-redefinition geometry, torsionful one-loop packaging, the
+  pure-metric two-loop representative, the precise RG-time conversion to
+  Hamilton Ricci flow, and constant-curvature sphere/hyperbolic radius-flow
+  checks.  The Narain pass
+  rebuilds the stringbook lattice vertex-operator material with explicit
+  locality, spin, cocycle, modular-anomaly, and \(O(d,d;\mathbb Z)\) moduli
+  statements, together with a public calculation check for the cocycle and
+  pairing algebra.  The WZW pass adds integral level quantization, affine
   current algebra, Sugawara stress tensors, integrable highest weights, coset
-  stress tensors, and the diagonal \(SU(2)\) minimal-model example, with a
-  public arithmetic check for the central-charge and conformal-weight
-  formulas.
+  stress tensors, the diagonal \(SU(2)\) minimal-model example, and the
+  rank-one solvable cosets \(SU(2)_k/U(1)\) and
+  \(SL(2,\mathbb R)_k/U(1)\), with the parafermion branching/field
+  identification, fusion/modular data, and cigar momentum/winding and
+  spectrum-status conventions stated before the gauged sigma-model
+  geometries.  The monograph now also checks the bell and cigar
+  one-loop Weyl-anomaly equations directly from the rotational curvature
+  formulas.  The public arithmetic check covers the central-charge,
+  conformal-weight, field-identification, compact fusion, reflection-weight,
+  integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
-  operator algebras, ordinary modules, characters, conformal blocks as Ward
-  identity functionals, higher-genus sewing, modular tensor category data,
-  the Verlinde formula, rational full-CFT modular invariants, a leading
-  Cardy high-temperature derivation, and logarithmic CFT boundaries.  The
-  Ising modular data are checked by
+  operator algebras, ordinary modules, characters, Zhu algebras and top-level
+  module classification, conformal blocks as Ward identity functionals,
+  higher-genus sewing, modular tensor category data, the Verlinde formula,
+  rational full-CFT modular invariants, a leading Cardy high-temperature
+  derivation, and logarithmic CFT boundaries.  The Ising modular and Zhu data
+  are checked by
   `calculation-checks/cft_voa_modular_checks.py`.
+- Volume V, Chapter 13 develops Liouville CFT from the QFT side: classical
+  action and stress tensor, background charge and central charge, Seiberg
+  domain, probabilistic construction boundary, reflection relation,
+  continuous conformal-block decomposition, DOZZ theorem boundary, BPZ
+  equations, one-screening coefficient, hypergeometric connection formulas,
+  level-two Virasoro block coefficients, the elliptic nome interface to
+  Zamolodchikov recursion, and boundary Liouville states with FZZT
+  one-point functions and ZZ finite differences.  The finite convention
+  algebra is checked by `calculation-checks/liouville_bpz_checks.py` and the
+  Liouville boundary hyperbolic identities are checked by
+  `calculation-checks/bcft_cardy_checks.py`.
+- Volume V, Chapter 14 develops the 2D BCFT appendix material as a
+  self-contained boundary-state theory: conformal boundary data, Ishibashi
+  states, Cardy consistency, Cardy--Lewellen sewing hypotheses,
+  compact-boson Neumann/Dirichlet states, Majorana/Ising boundary states,
+  boundary-condition-changing OPE constants, direct-sum/Chan--Paton
+  boundaries, and the nonrational Liouville FZZT/ZZ bridge.  The finite
+  Cardy, Ising, compact-boson, Chan--Paton, and Liouville-boundary algebra is
+  checked by `calculation-checks/bcft_cardy_checks.py`.
+- Volume V, Chapter 15 now absorbs the chiral-algebra part of Appendix J:
+  spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and
+  \(\mathcal N=2\) superconformal OPEs and mode algebras, the Ramond
+  zero-mode shift, \(\mathcal N=2\) spectral flow, chiral-primary bounds,
+  and protected Landau--Ginzburg central-charge tests.  It explicitly
+  coordinates with the Volume VII supersymmetric-QFT lane for the actual
+  LG/GLSM RG-flow construction.  The finite algebra is checked by
+  `calculation-checks/superconformal_algebra_checks.py`.
 
 ### Planar Integrability
 
