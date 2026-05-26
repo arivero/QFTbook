@@ -734,6 +734,27 @@ def check_dpd_besov_fixed_point_exponents():
     assert_equal(-kappa + 2 * theta, alpha, "Besov DPD heat smoothing target")
 
 
+def check_dpd_besov_energy_compatibility_arithmetic():
+    # The compatibility proposition combines the Besov local map with the
+    # smooth energy compactness pass on the common approximation domain.  The
+    # Besov side supplies the same admissible Duhamel exponent as above.
+    alpha = Fraction(1, 3)
+    kappa = Fraction(1, 20)
+    theta = (alpha + kappa) / 2
+    if not 0 < kappa < alpha < 2 - kappa:
+        raise AssertionError("Besov-energy compatibility parameter window failed")
+    assert_equal(-kappa + 2 * theta, alpha, "compatibility heat target")
+
+    # The energy side uses the already proved Lp exponents.  Record the two
+    # identities that identify the compactness limit: C^alpha convergence on
+    # the finite torus implies L2 convergence, while Y^2 X1 still uses the
+    # L^(8/3) interpolation exponent from the distributional limit.
+    if not alpha > 0:
+        raise AssertionError("positive Holder regularity needed for L2 identification")
+    assert_equal(Fraction(2) / Fraction(8, 3), Fraction(3, 4), "compatibility Y2 L4/3")
+    assert_equal(Fraction(3, 4) + Fraction(1, 4), 1, "compatibility Y2X1 L1")
+
+
 def check_invariant_measure_limit_identity():
     # A finite Markov-chain analogue of the cutoff invariance passage:
     # if mu P = mu and P_n=P exactly, then the invariant identity is the
@@ -1395,6 +1416,7 @@ def main():
     check_dpd_distributional_limit_exponents()
     check_dpd_besov_product_continuity_arithmetic()
     check_dpd_besov_fixed_point_exponents()
+    check_dpd_besov_energy_compatibility_arithmetic()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
@@ -1414,7 +1436,7 @@ def main():
     check_gaussian_negative_sobolev_summability_arithmetic()
     check_brascamp_lieb_hminus_bound_arithmetic()
     check_quartic_tail_integrability_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, and quartic-tail checks passed.")
 
 
 if __name__ == "__main__":

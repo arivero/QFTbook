@@ -271,6 +271,15 @@ data.
   \(L^r_{t,x}\) convergence of \(Y_n\) for every \(r<4\), then passes
   \(Y_n^3\), \(Y_n^2X_{1,n}\), \(Y_nX_{2,n}\), and \(X_{3,n}\) to the limit
   in \(L^1\), yielding the weak distributional equation with endpoint terms.
+- Proves compatibility of the Besov local solution map with the smooth
+  energy-compactness approximation on their common domain of validity.
+  Smooth approximants converging in \(C_T\mathcal C^{-\kappa}\) and
+  \(Y_{0,n}\to Y_0\) in \(\mathcal C^\alpha\) converge to the canonical
+  Besov fixed point in \(C_T\mathcal C^\alpha\).  If the same enhanced
+  noises also converge in the Lebesgue spaces required by the elementary
+  energy inequality, compactness identifies the energy limit with this
+  Besov solution and passes the integrated energy inequality to every
+  terminal time on the common local interval.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
@@ -829,3 +838,9 @@ data maps.
   dependence.  The calculation-check companion verifies the Duhamel
   exponent \(\theta=(\alpha+\kappa)/2<1\) and the target regularity
   arithmetic.
+- 2026-05-26 DPD Besov-energy compatibility pass: added the theorem
+  identifying the Besov local fixed point with smooth energy-compactness
+  limits when both the Besov enhanced-noise convergence and the Lebesgue
+  energy convergence hypotheses hold.  The pass also removed a duplicated
+  sentence in the Fourier Aubin-Lions proof and added a calculation-check
+  companion for the exponent arithmetic used in the compatibility argument.

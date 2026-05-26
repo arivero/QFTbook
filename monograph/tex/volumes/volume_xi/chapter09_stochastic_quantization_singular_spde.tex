@@ -1645,7 +1645,6 @@ Since \([0,T]\) has finite measure, the first term also bounds
   |t-s|^{1/4}\,
   \|\partial_tP_Mu_n\|_{L^{4/3}([0,T];E_M)} ,
 \]
-so the family is equicontinuous, and the \(L^{4/3}\)-bound controls its
 so the family is equicontinuous.  The \(L^{4/3}\)-bound also gives a
 uniform pointwise bound: for each \(n\), choose \(t_n\) with
 \[
@@ -1787,6 +1786,164 @@ the limit gives
 \eqref{eq:spde-dpd-distributional-limit-weak-form}, which is precisely
 \eqref{eq:spde-dpd-distributional-limit-equation} in distributional form.
 \end{proof}
+
+\begin{proposition}[Compatibility of the Besov local solution with smooth energy approximation]
+\label{prop:spde-dpd-besov-energy-compatibility}
+Let \(m^2>0\), \(\lambda>0\), and
+\[
+  0<\kappa<\alpha<2-\kappa .
+\]
+Let \(T_0>0\), let
+\[
+  Y_{0,n}\in C^\infty(\mathbb T^2),
+  \qquad
+  Y_0\in\mathcal C^\alpha(\mathbb T^2),
+\]
+with \(Y_{0,n}\to Y_0\) in \(\mathcal C^\alpha\), and let
+\[
+  \mathbb X_n=(X_{1,n},X_{2,n},X_{3,n})
+  \in C^\infty([0,T_0]\times\mathbb T^2)^3
+\]
+converge to
+\(\mathbb X=(X_1,X_2,X_3)\) in
+\[
+  C([0,T_0];\mathcal C^{-\kappa}(\mathbb T^2))^3 .
+\]
+Let \(Y_n\) be the smooth solution of
+\[
+  \partial_tY_n
+  =
+  (\Delta-m^2)Y_n
+  -\lambda\bigl(
+    Y_n^3+3Y_n^2X_{1,n}+3Y_nX_{2,n}+X_{3,n}
+  \bigr),
+  \qquad
+  Y_n(0)=Y_{0,n}.
+\]
+Let \(Y\) be the Besov--Holder mild solution obtained from
+Theorem~\ref{thm:spde-dpd-besov-local-fixed-point} for the data
+\((Y_0,\mathbb X)\).  Then there is a time \(T\in(0,T_0]\), depending only
+on a bounded neighborhood of the convergent data, such that
+\[
+  Y_n\longrightarrow Y
+  \qquad\text{in }C([0,T];\mathcal C^\alpha).
+  \label{eq:spde-dpd-besov-energy-compatibility-local-convergence}
+\]
+
+Assume in addition that, on \(Q_T=[0,T]\times\mathbb T^2\),
+\[
+\begin{aligned}
+  X_{1,n}&\to X_1
+    &&\text{in }L^4(Q_T),\\
+  X_{2,n}&\to X_2
+    &&\text{in }L^2(Q_T),\\
+  X_{3,n}&\to X_3
+    &&\text{in }L^{4/3}(Q_T),
+\end{aligned}
+\]
+and that
+\[
+  \sup_n
+  \left[
+    \|Y_{0,n}\|_{L^2}
+    +\|X_{1,n}\|_{L^4(Q_T)}
+    +\|X_{2,n}\|_{L^2(Q_T)}
+    +\|X_{3,n}\|_{L^{4/3}(Q_T)}
+  \right]
+  <\infty .
+\]
+Then \(Y\) is the energy-compactness limit of the same smooth
+approximations.  More precisely, \(Y\in L^2([0,T];H^1)\cap L^4(Q_T)\) and
+for every \(0\leq\tau\leq T\),
+\begin{align}
+  \frac12\|Y(\tau)\|_{L^2}^2
+  &+
+  \int_0^\tau
+  \left[
+    \|\nabla Y(t)\|_{L^2}^2
+    +m^2\|Y(t)\|_{L^2}^2
+    +\frac{\lambda}{4}\|Y(t)\|_{L^4}^4
+  \right]\dd t
+  \notag\\
+  &\leq
+  \frac12\|Y_0\|_{L^2}^2
+  +
+  C\lambda
+  \int_0^\tau
+  \left[
+    \|X_1(t)\|_{L^4}^4
+    +\|X_2(t)\|_{L^2}^2
+    +\|X_3(t)\|_{L^{4/3}}^{4/3}
+  \right]\dd t .
+  \label{eq:spde-dpd-besov-energy-compatibility-energy}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Choose \(R\) so that, for all sufficiently large \(n\),
+\[
+  \|Y_{0,n}\|_{\mathcal C^\alpha}
+  +\|Y_0\|_{\mathcal C^\alpha}
+  +\|\mathbb X_n\|_{C([0,T_0];\mathcal C^{-\kappa})}
+  +\|\mathbb X\|_{C([0,T_0];\mathcal C^{-\kappa})}
+  \leq R .
+\]
+The local Lipschitz part of
+Theorem~\ref{thm:spde-dpd-besov-local-fixed-point} gives a common time
+\(T\in(0,T_0]\) and a Lipschitz constant \(L_R\) on this ball.  The smooth
+solution \(Y_n\) satisfies the Duhamel formula with ordinary products.
+Since Bony's product agrees with ordinary multiplication on smooth inputs,
+this is the same fixed-point equation as
+\eqref{eq:spde-dpd-besov-mild-equation} for the data
+\((Y_{0,n},\mathbb X_n)\).  The uniqueness statement in
+Theorem~\ref{thm:spde-dpd-besov-local-fixed-point} therefore identifies
+the smooth solution with the Besov fixed point on \([0,T]\).  The Lipschitz
+estimate gives
+\[
+  \|Y_n-Y\|_{C([0,T];\mathcal C^\alpha)}
+  \leq
+  L_R
+  \left(
+    \|Y_{0,n}-Y_0\|_{\mathcal C^\alpha}
+    +
+    \max_i
+    \|X_{i,n}-X_i\|_{C([0,T];\mathcal C^{-\kappa})}
+  \right),
+\]
+which proves
+\eqref{eq:spde-dpd-besov-energy-compatibility-local-convergence}.
+
+For the energy statement, fix \(\tau\in[0,T]\).  The additional hypotheses
+on \([0,\tau]\) are exactly the hypotheses of
+Proposition~\ref{prop:spde-dpd-energy-compactness}, so every subsequence of
+\((Y_n)\) has a further subsequence converging weakly in
+\[
+  L^2([0,\tau];H^1),\qquad L^4([0,\tau]\times\mathbb T^2),
+  \qquad\text{and at time }\tau\text{ in }L^2.
+\]
+But the already proved convergence in \(C([0,T];\mathcal C^\alpha)\)
+implies convergence in \(C([0,T];L^2)\), because
+\(\mathbb T^2\) has finite volume and
+\(\mathcal C^\alpha\hookrightarrow L^\infty\hookrightarrow L^2\).
+Thus every such weak limit is the same function \(Y\).  In particular
+\[
+  Y\in L^2([0,\tau];H^1)\cap L^4([0,\tau]\times\mathbb T^2).
+\]
+Applying
+Proposition~\ref{prop:spde-dpd-energy-closed-under-approximation} on
+\([0,\tau]\) gives
+\eqref{eq:spde-dpd-besov-energy-compatibility-energy}.  Since \(\tau\) was
+arbitrary, the inequality holds for every \(\tau\leq T\).
+\end{proof}
+
+The logical role of this proposition is to identify the two approximation
+mechanisms on their common domain of validity.  The Besov topology defines
+the canonical rough products and gives a unique local mild solution; the
+Lebesgue hypotheses are exactly those needed by the elementary energy
+inequality.  For the Wick-enhanced stochastic convolution in two dimensions,
+the corresponding global theorem requires a rough energy-continuity estimate
+in which the Lebesgue pairings above are replaced by the appropriate
+paracontrolled or Besov energy pairings.
 
 The rough Da Prato--Debussche global argument is therefore reduced to two
 precise analytic tasks.  First, construct smooth approximations whose
