@@ -3,147 +3,469 @@
 
 \ConventionsLorentzian
 
-Hydrodynamics is the long-wavelength effective theory of conserved densities.
-It is not obtained by assuming microscopic quasiparticles.  The input is a
-thermal or locally thermal state, Ward identities for conserved currents, and
-a derivative expansion of expectation values in terms of slowly varying
-intensive variables.
+Hydrodynamics is the long-wavelength effective theory of conserved
+densities.  Its variables are local thermodynamic parameters attached to a
+family of states whose correlators are controlled, at long distances and long
+times, by Ward identities and by an expansion in gradients.  This chapter
+develops the
+deterministic first-order theory in flat spacetime and fixes the sign and
+normalization conventions that connect it to the Kubo formulae of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}.
 
-\section{Conserved Densities}
+Let \(D=d+1\), where \(d\) is the number of spatial dimensions.  The
+Minkowski metric is mostly plus, \(\eta_{\mu\nu}=(-,+,\ldots,+)\).  Repeated
+ordinary charge labels \(A,B\) are summed.  All formulas in this chapter are
+written for parity-even fluids without anomalies; anomalous transport is
+developed separately in Chapter~\ref{ch:thermal-anomalous-topological-transport}.
 
-Let \(T^{\mu\nu}\) be the stress tensor and \(J^\mu_A\) conserved currents.
-In flat space without external sources,
-\[
-  \partial_\mu T^{\mu\nu}=0,\qquad
+\section{Conserved Densities and Local State Variables}
+
+Let \(T^{\mu\nu}\) be the stress tensor and let \(J^\mu_A\) be conserved
+currents for ordinary internal symmetries.  In flat space without external
+sources,
+\begin{equation}
+  \partial_\mu T^{\mu\nu}=0,
+  \qquad
   \partial_\mu J^\mu_A=0 .
-\]
-In a state near local equilibrium, introduce a velocity field \(u^\mu(x)\)
-with
+  \label{eq:hydro-flat-ward-identities}
+\end{equation}
+A local equilibrium state is parametrized by a future-timelike velocity field
+\(u^\mu(x)\), temperature \(T(x)>0\), and chemical potentials
+\(\mu_A(x)\), with
 \[
-  u^\mu u_\mu=-1,
+  u^\mu u_\mu=-1.
 \]
-temperature \(T(x)\), and chemical potentials \(\mu_A(x)\).  The ideal
-constitutive relations are
+The spatial projector in the local rest frame is
 \[
+  \Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu,
+  \qquad
+  \Delta^{\mu\nu}u_\nu=0.
+\]
+
+The ideal constitutive relations are
+\begin{equation}
   T^{\mu\nu}_{(0)}
   =
   \varepsilon u^\mu u^\nu
   +p\,\Delta^{\mu\nu},
   \qquad
-  J^\mu_{A(0)}=n_A u^\mu,
-\]
-where
-\[
-  \Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu
-\]
-projects orthogonally to the velocity.
+  J^\mu_{A(0)}=n_Au^\mu .
+  \label{eq:hydro-ideal-constitutive-relations}
+\end{equation}
+Here \(\varepsilon(T,\mu)\), \(p(T,\mu)\), and \(n_A(T,\mu)\) are local
+thermodynamic functions of the underlying QFT.  The frame used below is the
+Landau frame:
+\begin{equation}
+  u_\mu T^{\mu\nu}=-\varepsilon u^\nu,
+  \label{eq:hydro-landau-frame}
+\end{equation}
+so the nonideal stress tensor carries no energy flux in the local rest
+frame.  Charge diffusion is allowed to have components orthogonal to
+\(u^\mu\).
 
 \section{Thermodynamic Closure}
 
-The functions \(\varepsilon(T,\mu)\), \(p(T,\mu)\), and \(n_A(T,\mu)\) are
-related by the local first law
+The equation of state supplies a function \(p=p(T,\mu_A)\).  Define
 \[
-  d\varepsilon=T\,ds+\mu_A\,dn_A,
+  s=\left(\frac{\partial p}{\partial T}\right)_{\mu},
   \qquad
-  dp=s\,dT+n_A\,d\mu_A,
+  n_A=\left(\frac{\partial p}{\partial\mu_A}\right)_{T,\mu_{B\ne A}},
 \]
 and
-\[
-  \varepsilon+p=Ts+\mu_A n_A .
-\]
-These equations close the ideal hydrodynamic system after an equation of
-state is specified by the underlying QFT.
+\begin{equation}
+  \varepsilon+p=Ts+\mu_A n_A.
+  \label{eq:hydro-gibbs-duhem-energy}
+\end{equation}
+Then
+\begin{equation}
+  dp=s\,dT+n_A\,d\mu_A,
+  \qquad
+  d\varepsilon=T\,ds+\mu_A\,dn_A .
+  \label{eq:hydro-thermodynamic-relations}
+\end{equation}
+These identities are the local thermodynamic closure of the ideal Ward
+system.  They are imposed pointwise on the slowly varying local state
+variables; the microscopic QFT input is the equilibrium equation of state and
+the assumption that the hydrodynamic scaling limit probes only this local
+state manifold.
 
-\section{Entropy Current at Ideal Order}
+\section{Ideal Equations and Entropy Conservation}
 
-Define
-\[
-  S^\mu_{(0)}=s u^\mu .
-\]
-Using the Ward identities and the thermodynamic relations, one finds
-\[
-  \partial_\mu S^\mu_{(0)}=0
-\]
-for ideal nondissipative flow.  Indeed,
-\[
-  u_\nu\partial_\mu T^{\mu\nu}=0
-\]
-gives
-\[
+\begin{proposition}[Ideal hydrodynamic equations]
+\label{prop:ideal-hydro-equations}
+Substituting \eqref{eq:hydro-ideal-constitutive-relations} into the Ward
+identities gives
+\begin{align}
   u^\mu\partial_\mu\varepsilon
-  +(\varepsilon+p)\partial_\mu u^\mu=0,
-\]
-while current conservation gives
-\[
-  u^\mu\partial_\mu n_A+n_A\partial_\mu u^\mu=0 .
-\]
-Substituting the first law cancels all terms in
-\(\partial_\mu(su^\mu)\).
+  +(\varepsilon+p)\partial_\mu u^\mu&=0,
+  \label{eq:hydro-ideal-energy-equation}\\
+  (\varepsilon+p)u^\mu\partial_\mu u^\alpha
+  +\Delta^{\alpha\mu}\partial_\mu p&=0,
+  \label{eq:hydro-ideal-euler-equation}\\
+  u^\mu\partial_\mu n_A+n_A\partial_\mu u^\mu&=0 .
+  \label{eq:hydro-ideal-charge-equation}
+\end{align}
+\end{proposition}
 
-\section{First-Order Dissipation}
-
-At first derivative order in a parity-even relativistic fluid,
+\begin{proof}
+Contract \(\partial_\mu T^{\mu\nu}_{(0)}=0\) with \(u_\nu\).  Since
 \[
-  T^{\mu\nu}
+  u_\nu\partial_\mu(\varepsilon u^\mu u^\nu)
   =
-  T^{\mu\nu}_{(0)}
-  -\eta\,\sigma^{\mu\nu}
-  -\zeta\,\Delta^{\mu\nu}\partial_\lambda u^\lambda+\cdots ,
+  -\partial_\mu(\varepsilon u^\mu),
+  \qquad
+  u_\nu\partial_\mu(p\Delta^{\mu\nu})
+  =
+  -p\,\partial_\mu u^\mu,
 \]
-where
+using \(u_\nu\partial_\mu u^\nu=\frac12\partial_\mu(u_\nu u^\nu)=0\), one
+obtains \eqref{eq:hydro-ideal-energy-equation}.  Projecting the same Ward
+identity with \(\Delta^\alpha{}_\nu\) gives
 \[
+  \Delta^\alpha{}_\nu\partial_\mu(\varepsilon u^\mu u^\nu)
+  =
+  \varepsilon u^\mu\partial_\mu u^\alpha,
+  \qquad
+  \Delta^\alpha{}_\nu\partial_\mu(p\Delta^{\mu\nu})
+  =
+  p\,u^\mu\partial_\mu u^\alpha+\Delta^{\alpha\mu}\partial_\mu p,
+\]
+which is \eqref{eq:hydro-ideal-euler-equation}.  Current conservation gives
+\eqref{eq:hydro-ideal-charge-equation} directly.
+\end{proof}
+
+\begin{proposition}[Ideal entropy current]
+\label{prop:ideal-entropy-conservation}
+The ideal entropy current
+\[
+  S^\mu_{(0)}=s u^\mu
+\]
+is conserved on ideal hydrodynamic solutions:
+\[
+  \partial_\mu S^\mu_{(0)}=0.
+\]
+\end{proposition}
+
+\begin{proof}
+Using the first law,
+\[
+  T u^\mu\partial_\mu s
+  =
+  u^\mu\partial_\mu\varepsilon
+  -\mu_A u^\mu\partial_\mu n_A .
+\]
+Substitute the ideal energy equation
+\eqref{eq:hydro-ideal-energy-equation} and the ideal charge equations
+\eqref{eq:hydro-ideal-charge-equation}.  This gives
+\[
+  T u^\mu\partial_\mu s
+  =
+  -(\varepsilon+p)\partial_\mu u^\mu
+  +\mu_A n_A\partial_\mu u^\mu
+  =
+  -Ts\,\partial_\mu u^\mu,
+\]
+where \(\varepsilon+p=Ts+\mu_A n_A\) was used.  Therefore
+\[
+  \partial_\mu(su^\mu)
+  =
+  u^\mu\partial_\mu s+s\partial_\mu u^\mu=0.
+\]
+\end{proof}
+
+\section{First-Order Constitutive Relations}
+
+Define the expansion, acceleration, and shear tensor by
+\[
+  \vartheta=\partial_\mu u^\mu,
+  \qquad
+  a^\mu=u^\nu\partial_\nu u^\mu,
+\]
+and
+\begin{equation}
   \sigma^{\mu\nu}
   =
   2\Delta^{\mu\alpha}\Delta^{\nu\beta}
   \left(
   \partial_{(\alpha}u_{\beta)}
-  -\frac{1}{D-1}\eta_{\alpha\beta}\partial_\lambda u^\lambda
+  -\frac{1}{d}\Delta_{\alpha\beta}\vartheta
   \right).
-\]
-Charge diffusion is represented at first derivative order by
-\[
-  J^\mu_A=n_Au^\mu-\Sigma_{AB}\Delta^{\mu\nu}
-  \partial_\nu\!\left(\frac{\mu_B}{T}\right)+\cdots .
-\]
-The local second law requires
-\[
-  \eta\geq0,\qquad \zeta\geq0,\qquad
-  \Sigma_{AB}\ \text{positive semidefinite}.
-\]
+  \label{eq:hydro-shear-tensor-definition}
+\end{equation}
+Then \(\sigma^{\mu\nu}u_\nu=0\), \(\sigma^\mu{}_\mu=0\), and
+\(\sigma^{\mu\nu}=\sigma^{\nu\mu}\).
 
-\section{Linearized Modes}
-
-Linearize a neutral fluid around rest:
+In Landau frame, the parity-even first-order constitutive relations are
+\begin{align}
+  T^{\mu\nu}
+  &=
+  \varepsilon u^\mu u^\nu
+  +p\Delta^{\mu\nu}
+  -\eta\,\sigma^{\mu\nu}
+  -\zeta\,\Delta^{\mu\nu}\vartheta
+  +O(\partial^2),
+  \label{eq:hydro-first-order-stress}\\
+  J_A^\mu
+  &=
+  n_Au^\mu
+  -T\,\Sigma_{AB}\Delta^{\mu\nu}
+  \partial_\nu\!\left(\frac{\mu_B}{T}\right)
+  +O(\partial^2).
+  \label{eq:hydro-first-order-current}
+\end{align}
+The matrix \(\Sigma_{AB}\) is the conductivity matrix in the normalization
+where, at constant \(T\), Fick diffusion has diffusion matrix
 \[
-  u^\mu=(1,\mathbf v),\qquad
-  T=T_0+\delta T .
-\]
-The transverse velocity obeys
-\[
-  \partial_t v_\perp-\frac{\eta}{\varepsilon+p}\nabla^2v_\perp=0,
-\]
-so the shear pole is
-\[
-  \omega=-\ii\,\frac{\eta}{\varepsilon+p}k^2+\cdots .
-\]
-Longitudinal fluctuations give sound poles
-\[
-  \omega=\pm c_s k-\frac{\ii}{2}\Gamma_s k^2+\cdots ,
+  D_{AB}=\Sigma_{AC}(\chi^{-1})_{CB},
   \qquad
-  c_s^2=\left(\frac{\partial p}{\partial\varepsilon}\right)_{s/n},
+  \chi_{AB}=\left(\frac{\partial n_A}{\partial\mu_B}\right)_T .
 \]
-with attenuation \(\Gamma_s\) determined by viscosities and charge diffusion
-data.  These poles are the analytic continuation of the retarded correlators
-whose zero-frequency slopes define transport in
-Chapter~\ref{ch:thermal-spectral-kubo-transport}.
+
+\section{Entropy Production at First Order}
+
+The first-order entropy current in Landau frame is
+\begin{equation}
+  S^\mu
+  =
+  s u^\mu-\frac{\mu_A}{T}\nu_A^\mu+O(\partial^2),
+  \qquad
+  \nu_A^\mu
+  =
+  -T\Sigma_{AB}\Delta^{\mu\nu}
+  \partial_\nu\!\left(\frac{\mu_B}{T}\right).
+  \label{eq:hydro-first-order-entropy-current}
+\end{equation}
+
+\begin{proposition}[Entropy production fixes positivity]
+\label{prop:first-order-entropy-production}
+Using \eqref{eq:hydro-first-order-stress} and
+\eqref{eq:hydro-first-order-current}, the entropy production through second
+order in gradients is
+\begin{equation}
+  \partial_\mu S^\mu
+  =
+  \frac{\eta}{2T}\sigma^{\mu\nu}\sigma_{\mu\nu}
+  +\frac{\zeta}{T}\vartheta^2
+  +T\,\Sigma_{AB}
+  \Delta^{\mu\nu}
+  \partial_\mu\!\left(\frac{\mu_A}{T}\right)
+  \partial_\nu\!\left(\frac{\mu_B}{T}\right)
+  +O(\partial^3).
+  \label{eq:hydro-entropy-production}
+\end{equation}
+Hence local entropy production is nonnegative for arbitrary first gradients
+if
+\[
+  \eta\ge0,\qquad \zeta\ge0,\qquad
+  \Sigma_{AB}\ \text{is positive semidefinite}.
+\]
+\end{proposition}
+
+\begin{proof}
+Write the dissipative stress tensor as
+\[
+  \tau^{\mu\nu}
+  =
+  -\eta\sigma^{\mu\nu}-\zeta\Delta^{\mu\nu}\vartheta,
+  \qquad
+  T^{\mu\nu}=T_{(0)}^{\mu\nu}+\tau^{\mu\nu}.
+\]
+Using the Ward identities, the thermodynamic identities, and
+\(u_\mu\tau^{\mu\nu}=u_\mu\nu_A^\mu=0\), the divergence of
+\eqref{eq:hydro-first-order-entropy-current} through second order reduces to
+\[
+  \partial_\mu S^\mu
+  =
+  -\frac{1}{T}\tau^{\mu\nu}\partial_\mu u_\nu
+  -\nu_A^\mu\partial_\mu\!\left(\frac{\mu_A}{T}\right)
+  +O(\partial^3).
+\]
+The decomposition of \(\partial_\mu u_\nu\) into shear, trace, vorticity,
+and acceleration gives
+\[
+  \sigma^{\mu\nu}\partial_\mu u_\nu
+  =
+  \frac12\sigma^{\mu\nu}\sigma_{\mu\nu},
+  \qquad
+  \Delta^{\mu\nu}\partial_\mu u_\nu=\vartheta.
+\]
+Substituting \(\tau^{\mu\nu}\) and \(\nu_A^\mu\) gives
+\eqref{eq:hydro-entropy-production}.
+\end{proof}
+
+\section{Charge Diffusion}
+
+Consider a state with \(u^\mu=(1,\mathbf0)\), constant \(T\), and vanishing
+background flow.  Linearize a single conserved charge around equilibrium.
+The constitutive relation gives
+\[
+  J^0=n_0+\delta n,\qquad
+  J^i=-\Sigma\,\partial_i\delta\mu,
+  \qquad
+  \delta n=\chi\,\delta\mu .
+\]
+Charge conservation gives
+\begin{equation}
+  \partial_t\delta n-D\nabla^2\delta n=0,
+  \qquad
+  D=\frac{\Sigma}{\chi}.
+  \label{eq:hydro-charge-diffusion-equation}
+\end{equation}
+For a plane wave \(\delta n\propto e^{-\ii\omega t+\ii\mathbf k\cdot\mathbf x}\),
+the pole is
+\begin{equation}
+  \omega=-\ii D k^2+O(k^4).
+  \label{eq:hydro-charge-diffusion-pole}
+\end{equation}
+The Einstein relation \(D=\Sigma/\chi\) is the hydrodynamic form of the same
+coefficient matching that appears in the Kubo conductivity formula.
+
+\section{Neutral Linearized Modes}
+
+Linearize a neutral fluid around a homogeneous rest state:
+\[
+  u^\mu=(1,\mathbf v)+O(\mathbf v^2),
+  \qquad
+  \varepsilon=\varepsilon_0+\delta\varepsilon,
+  \qquad
+  p=p_0+\delta p,
+  \qquad
+  \delta p=c_s^2\delta\varepsilon ,
+\]
+where
+\[
+  c_s^2=\left(\frac{\partial p}{\partial\varepsilon}\right)_{\rm eq},
+  \qquad
+  w=\varepsilon_0+p_0 .
+\]
+The stress tensor components to first order in fluctuations and first order
+in gradients are
+\begin{align}
+  T^{00}&=\varepsilon_0+\delta\varepsilon,
+  \label{eq:hydro-linear-t00}\\
+  T^{0i}&=wv^i,
+  \label{eq:hydro-linear-t0i}\\
+  T^{ij}
+  &=
+  p_0\delta^{ij}
+  +c_s^2\delta\varepsilon\,\delta^{ij}
+  -\eta\left(\partial_i v_j+\partial_j v_i
+  -\frac{2}{d}\delta_{ij}\partial_\ell v^\ell\right)
+  -\zeta\delta_{ij}\partial_\ell v^\ell .
+  \label{eq:hydro-linear-tij}
+\end{align}
+The Ward identities become
+\begin{align}
+  \partial_t\delta\varepsilon+w\partial_i v^i&=0,
+  \label{eq:hydro-linear-energy}\\
+  w\partial_t v_i+\partial_i\delta p
+  -\eta\nabla^2v_i
+  -\left(\zeta+\eta\left(1-\frac{2}{d}\right)\right)
+  \partial_i\partial_jv^j&=0 .
+  \label{eq:hydro-linear-momentum}
+\end{align}
+
+\begin{proposition}[Shear and sound poles]
+\label{prop:hydro-shear-sound-poles}
+For fluctuations proportional to
+\(e^{-\ii\omega t+\ii\mathbf k\cdot\mathbf x}\), the transverse velocity
+mode has
+\begin{equation}
+  \omega_{\rm shear}
+  =
+  -\ii\,\frac{\eta}{w}k^2+O(k^4).
+  \label{eq:hydro-shear-pole}
+\end{equation}
+The longitudinal energy-momentum modes obey
+\begin{equation}
+  \omega_{\rm sound,\pm}
+  =
+  \pm c_s k
+  -\frac{\ii}{2}\Gamma_s k^2
+  +O(k^3),
+  \qquad
+  \Gamma_s
+  =
+  \frac{\zeta+2\eta\frac{d-1}{d}}{w}.
+  \label{eq:hydro-sound-poles}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For a transverse mode, \(k_i v^i=0\) and
+\eqref{eq:hydro-linear-momentum} becomes
+\[
+  -\ii\omega w v_i+\eta k^2v_i=0,
+\]
+which gives \eqref{eq:hydro-shear-pole}.
+
+For a longitudinal mode take \(\mathbf k=k\hat x\) and \(v_i=v_L\hat x_i\).
+Equations \eqref{eq:hydro-linear-energy} and
+\eqref{eq:hydro-linear-momentum} give
+\[
+  -\ii\omega\delta\varepsilon+\ii wk v_L=0,
+\]
+and
+\[
+  -\ii\omega wv_L+\ii k c_s^2\delta\varepsilon
+  +\left(\zeta+2\eta\frac{d-1}{d}\right)k^2v_L=0 .
+\]
+Eliminating \(v_L\) gives
+\[
+  \omega^2-c_s^2k^2
+  +\ii\frac{\zeta+2\eta(d-1)/d}{w}\,\omega k^2=0.
+\]
+Solving perturbatively at small \(k\) gives
+\eqref{eq:hydro-sound-poles}.
+\end{proof}
+
+\section{Retarded Correlator Pole Matching}
+
+Hydrodynamic poles are singularities of retarded correlators after the
+thermodynamic limit and the hydrodynamic scaling limit have been taken in the
+specified order.  For a single diffusive charge with susceptibility \(\chi\),
+the density response to a source for the chemical potential has the universal
+long-wavelength form
+\begin{equation}
+  G^R_{nn}(\omega,\mathbf k)
+  =
+  \chi\,
+  \frac{Dk^2}{Dk^2-\ii\omega}
+  +\text{terms analytic at }\omega,k=0 .
+  \label{eq:hydro-density-retarded-diffusion}
+\end{equation}
+in the source convention where \(G^R_{nn}(0,\mathbf k\to0)=\chi\).  The pole
+is \(\omega=-\ii Dk^2\).  Taking \(\mathbf k\to0\) before
+\(\omega\to0\) removes the diffusive denominator; taking the hydrodynamic
+scaling limit \(\omega\sim k^2\) keeps it.  This is the same order-of-limits
+issue that appears in dc conductivity and static susceptibility.
+
+In the shear channel, the momentum-density correlator has a pole at
+\eqref{eq:hydro-shear-pole}.  In the sound channel, the stress-tensor and
+energy-density correlators have the pair of poles
+\eqref{eq:hydro-sound-poles}.  The residues are fixed by thermodynamic
+susceptibilities and Ward identities, while the imaginary parts of the pole
+locations are fixed by the Kubo coefficients \(\eta\), \(\zeta\), and
+\(\Sigma_{AB}\).
 
 \section{Hydrodynamic Limit as a QFT Claim}
 
-A QFT derivation of hydrodynamics requires more than conservation laws.  One
-must prove that nonconserved excitations decay on microscopic time scales,
-that the derivative expansion is asymptotic in a controlled regime, and that
-the Kubo coefficients are the same coefficients appearing in the constitutive
-relations.
+The deterministic equations above are consequences of a proposed
+hydrodynamic scaling limit of the microscopic QFT.  The limit has the
+following structure.  First take the thermodynamic limit of the KMS state.
+Then consider sources and correlators with
+\[
+  \omega\tau_{\rm micro}\ll1,
+  \qquad
+  |\mathbf k|\ell_{\rm micro}\ll1,
+\]
+while keeping the ratios appropriate to the mode under study:
+\(\omega\sim k^2\) for diffusion and shear, and \(\omega\sim k\) for sound.
+The QFT assertion is that all nonconserved excitations produce analytic
+contributions in this scaling region, and the nonanalyticities are the
+conservation-law poles derived above.  Proving this assertion requires
+clustering, real-time analyticity, local equilibration, and control of
+long-time tails beyond the deterministic approximation.
 
 \begin{openproblem}[Hydrodynamic emergence theorem]
 \label{op:hydrodynamic-emergence-theorem}

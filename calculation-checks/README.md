@@ -95,6 +95,10 @@ Current checks:
   the \(|\alpha|^2/|\beta|^2=e^{2\pi\omega/\kappa}\) ratio, the displayed
   Planck factor in \(|\beta_{\omega\omega'}|^2\), the continuum
   normalization-density identity, and the exponential precursor blueshift.
+- `hydrodynamic_modes_checks.py`: finite algebra checks for the Volume X
+  hydrodynamic Ward-identity chapter, including shear diffusion, sound
+  attenuation, entropy-production positivity for sample transport matrices,
+  and the diffusion Einstein relation plus retarded density pole.
 - `ising_defect_fusion_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for
   the Ising/Kramers--Wannier noninvertible defect example, including fusion
   associativity, Frobenius--Perron dimensions, modular \(S\)-matrix
