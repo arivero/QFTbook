@@ -82,6 +82,28 @@
   lemma, the dual `Qomega` system, an explicit Konishi Baxter polynomial, and
   the scalar hexagon factor with crossing-path caveat.
 
+## Comprehensive Development Continuation
+
+- Downloaded local study copies of key planar-integrability TeX sources under
+  `references/planar_n4_integrability/` for convention checking:
+  Bajnok--Janik `0807.0399`, Arutyunov--Frolov `0901.1417` and `0903.0141`,
+  and Arutyunov--Frolov--Suzuki `1002.1711`.  These are local study cache
+  files and should not be staged.
+- Tightened Chapter 13 by adding an explicit asymptotic Bethe--Yang regime
+  assumption: ABA is a long-chain quantization rule, applicable to fixed or
+  controlled high-density root configurations as `L -> infinity`, with
+  wrapping/mirror winding suppressed; it is not thermodynamic Bethe ansatz.
+- Rebuilt the leading Konishi wrapping derivation in Chapter 14 from the
+  stringbook spine:
+  weak mirror branch, leading `Y_Q^{(0)}(u)`, mirror momentum measure
+  `d tilde p_Q/du=2+O(g^2)`, `q=2u` rational integral, residue summand,
+  telescoping rational tail, and the final
+  `324 + 864 zeta(3) - 1440 zeta(5)` coefficient.
+- Made the conceptual assumptions explicit: one-loop physical roots,
+  antisymmetric mirror `SL(2)` bound-state sector, weak mirror branch,
+  leading dressing-phase status, and absence of a weak-coupling Konishi
+  `mu`-term.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -100,6 +122,9 @@
 - bound-state shortening dispersion;
 - mirror double-Wick dispersion;
 - Konishi four-loop wrapping arithmetic;
+- Konishi leading wrapping rational-integral checks: stringbook `u`-integrand
+  versus `q=2u` rational integrand, numerical real-line integrals for
+  `Q=1,...,4`, and exact telescoping of the non-zeta rational tail;
 - planar Bremsstrahlung weak-series Bessel-ratio coefficients through four
   displayed orders;
 - local Hirota-to-Y-system algebra.

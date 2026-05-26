@@ -36,8 +36,17 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   discontinuities, and exact-root regularity conditions.
 - Uses Konishi as the first wrapping test and separates finite-length
   correction from magnon-dispersion correction.
-- Adds the weak-coupling Konishi root expansion, ABA coefficient, wrapping
-  correction, and resulting four-loop coefficient.
+- Adds the weak-coupling Konishi root expansion and ABA coefficient.
+- Adds a leading-Konishi-mirror-input assumption isolating the one-loop roots,
+  antisymmetric mirror `SL(2)` bound-state sector, weak mirror Zhukovsky
+  branch, leading dressing-phase status, and absence of a weak-coupling
+  `mu`-term.
+- Derives the leading mirror momentum measure
+  `d tilde p_Q/du = 2 + O(g^2)` from the stringbook branch convention.
+- Displays the weak asymptotic `Y_Q^{(0)}(u)` used for Konishi, the change of
+  variables `q=2u`, the real-line rational integral `I_Q`, the residue
+  summand, the exact telescoper for the non-zeta rational part, and the final
+  `324 + 864 zeta(3) - 1440 zeta(5)` coefficient.
 
 ## Figure Ledger
 
@@ -49,4 +58,25 @@ node domain.
 - `calculation-checks/planar_n4_integrability_checks.py` verifies a local
   Hirota-to-Y-system algebra identity.
 - The same script verifies the mirror double-Wick dispersion identity.
-- The same script verifies Konishi four-loop wrapping coefficient arithmetic.
+- The same script verifies Konishi four-loop wrapping coefficient arithmetic,
+  the stringbook `u`-integrand to `q=2u` rational-integrand conversion,
+  numerical real-line integrals for the first four mirror charges, and the
+  exact telescoping identity for the rational non-zeta tail.
+
+## External References Used In Current Pass
+
+- Stringbook anchors:
+  `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
+  especially the mirror TBA/Konishi block around the weak `Y_{n,0}` formula
+  and wrapping integral.
+- Stringbook notebook anchor:
+  `/Users/xiyin/ResearchIdeas/stringbook/codes/mirror TBA and wrapping corrections.nb`.
+- Downloaded local study copies under
+  `references/planar_n4_integrability/`: Bajnok--Janik `0807.0399` for the
+  displayed post-residue per-`Q` summand and telescoping target,
+  Arutyunov--Frolov `0901.1417`/`0903.0141` for mirror branch and TBA
+  assumption checks, and Arutyunov--Frolov--Suzuki `1002.1711` for
+  weak-Konishi mirror-TBA normalization comparison.
+- The monograph presents the finite rational integral and telescoping
+  derivation explicitly; the external TeX sources are convention checks and
+  source anchors, not replacements for the derivation.

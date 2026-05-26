@@ -232,6 +232,185 @@ def check_konishi_four_loop_wrapping_arithmetic() -> None:
         raise AssertionError("Konishi four-loop coefficient arithmetic failed")
 
 
+def konishi_wrapping_y0(u: float, charge: int) -> float:
+    """Leading weak-coupling mirror Y-function coefficient in stringbook units."""
+
+    root = 1 / (2 * math.sqrt(3))
+    q = charge
+    value = (
+        4
+        * q
+        * q
+        * (u * u - root * root + (q * q - 1) / 4) ** 2
+        / (u * u + q * q / 4) ** 4
+    )
+    for physical_root in (root, -root):
+        value /= (u - physical_root) ** 2 + (q + 1) ** 2 / 4
+        value /= (u - physical_root) ** 2 + (q - 1) ** 2 / 4
+    return value
+
+
+def konishi_wrapping_q_integrand(q_rapidity: float, charge: int) -> float:
+    """Coefficient of g^8 in the real-q wrapping integrand after q=2u."""
+
+    q2 = q_rapidity * q_rapidity
+    charge2 = charge * charge
+    b_minus = (
+        9 * q2 * q2
+        + 6 * (3 * (charge - 2) * charge + 2) * q2
+        + (3 * (charge - 2) * charge + 4) ** 2
+    )
+    b_plus = (
+        9 * q2 * q2
+        + 6 * (3 * charge * (charge + 2) + 2) * q2
+        + (3 * charge * (charge + 2) + 4) ** 2
+    )
+    numerator = 147456 * charge2 * (3 * q2 + 3 * charge2 - 4) ** 2
+    denominator = (q2 + charge2) ** 4 * b_minus * b_plus
+    return -numerator / (2 * math.pi * denominator)
+
+
+def konishi_wrapping_rational_tail(charge: int) -> Fraction:
+    q = Fraction(charge)
+    numerator = 7776 * q * (
+        19683 * q**18
+        - 78732 * q**16
+        + 150903 * q**14
+        - 134865 * q**12
+        + 1458 * q**10
+        + 48357 * q**8
+        - 13311 * q**6
+        - 1053 * q**4
+        + 369 * q**2
+        - 10
+    )
+    denominator = (9 * q**4 - 3 * q**2 + 1) ** 4 * (
+        27 * q**6 - 27 * q**4 + 36 * q**2 + 16
+    )
+    return -numerator / denominator
+
+
+def konishi_wrapping_telescoper(charge: int) -> Fraction:
+    q = Fraction(charge)
+    polynomial = (
+        486 * q**10
+        - 2430 * q**9
+        + 5184 * q**8
+        - 6156 * q**7
+        + 4752 * q**6
+        - 2916 * q**5
+        + 1521 * q**4
+        - 504 * q**3
+        + 51 * q**2
+        + 12 * q
+        - 2
+    )
+    denominator = (3 * q**2 + 1) * (3 * q**2 - 6 * q + 4) * (
+        3 * q**2 - 3 * q + 1
+    ) ** 4
+    return -648 * polynomial / denominator
+
+
+def konishi_wrapping_charge_summand(charge: int) -> Fraction:
+    q = Fraction(charge)
+    return (
+        konishi_wrapping_rational_tail(charge)
+        + Fraction(864, 1) / q**3
+        - Fraction(1440, 1) / q**5
+    )
+
+
+def adaptive_simpson(
+    function,
+    left: float,
+    right: float,
+    tolerance: float,
+    whole=None,
+    depth: int = 24,
+) -> float:
+    midpoint = (left + right) / 2
+
+    def simpson(a: float, b: float) -> float:
+        c = (a + b) / 2
+        return (b - a) * (function(a) + 4 * function(c) + function(b)) / 6
+
+    if whole is None:
+        whole = simpson(left, right)
+    left_part = simpson(left, midpoint)
+    right_part = simpson(midpoint, right)
+    refined = left_part + right_part
+    if depth <= 0 or abs(refined - whole) <= 15 * tolerance:
+        return refined + (refined - whole) / 15
+    return adaptive_simpson(
+        function, left, midpoint, tolerance / 2, left_part, depth - 1
+    ) + adaptive_simpson(
+        function, midpoint, right, tolerance / 2, right_part, depth - 1
+    )
+
+
+def integrate_even_real_line(function, tolerance: float = 1.0e-8) -> float:
+    # Map q in [0,infinity) to t in [0,1].  The transformed endpoint is zero
+    # for the present rational functions, which decay faster than q^{-2}.
+    def transformed(t: float) -> float:
+        if t >= 1:
+            return 0.0
+        q = t / (1 - t)
+        return function(q) / (1 - t) ** 2
+
+    return 2 * adaptive_simpson(transformed, 0.0, 1.0, tolerance)
+
+
+def check_konishi_wrapping_residue_sum() -> None:
+    # The stringbook rapidity u and the real variable q used for the rational
+    # residue calculation are related by q=2u.  The leading mirror momentum
+    # derivative is d p_tilde_Q/du = 2 + O(g^2).
+    for charge in (1, 2, 4):
+        for u in (-0.7, 0.0, 1.3):
+            stringbook_integrand = -konishi_wrapping_y0(u, charge) / math.pi
+            q_integrand = 2 * konishi_wrapping_q_integrand(2 * u, charge)
+            assert_close(
+                "Konishi wrapping u-to-q integrand",
+                q_integrand,
+                stringbook_integrand,
+            )
+
+    for charge in range(1, 16):
+        rational_tail = konishi_wrapping_rational_tail(charge)
+        telescoping_difference = (
+            konishi_wrapping_telescoper(charge)
+            - konishi_wrapping_telescoper(charge + 1)
+        )
+        if rational_tail != telescoping_difference:
+            raise AssertionError(f"Konishi rational tail does not telescope at Q={charge}")
+
+    if konishi_wrapping_telescoper(1) != 324:
+        raise AssertionError("Konishi rational wrapping tail has wrong first telescoper value")
+
+    for charge in range(1, 5):
+        numeric_integral = integrate_even_real_line(
+            lambda q, charge=charge: konishi_wrapping_q_integrand(q, charge)
+        )
+        exact_summand = float(konishi_wrapping_charge_summand(charge))
+        assert_close(
+            f"Konishi wrapping residue summand Q={charge}",
+            numeric_integral,
+            exact_summand,
+            tol=2.0e-7,
+        )
+
+    partial = sum(konishi_wrapping_charge_summand(charge) for charge in range(1, 25))
+    expected_partial = (
+        Fraction(324, 1)
+        - konishi_wrapping_telescoper(25)
+        + sum(
+            Fraction(864, charge**3) - Fraction(1440, charge**5)
+            for charge in range(1, 25)
+        )
+    )
+    if partial != expected_partial:
+        raise AssertionError("Konishi wrapping finite partial sum identity failed")
+
+
 def check_bremsstrahlung_weak_series() -> None:
     # B(lambda) = sqrt(lambda)/(4 pi^2) I_2(sqrt(lambda))/I_1(sqrt(lambda)).
     # Verify the first four coefficients using exact rational series division.
@@ -346,6 +525,7 @@ def main() -> None:
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()
     check_konishi_four_loop_wrapping_arithmetic()
+    check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()
     check_t_system_to_y_system_identity()
     check_pmu_pfaffian_rank_two_update()

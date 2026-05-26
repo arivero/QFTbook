@@ -46,6 +46,11 @@ the monograph's proof-boundary language.
   acting as a sheet-free substitution.
 - States the BES/crossing scalar-factor input as a quoted theorem with its
   framework assumptions.
+- Adds an explicit asymptotic Bethe-Yang regime assumption: the ABA is a
+  long-chain quantization rule for fixed-magnon or controlled high-density
+  root configurations as `L -> infinity`, with wrapping/mirror winding
+  suppressed.  This is deliberately distinguished from thermodynamic Bethe
+  ansatz.
 - Gives the `SU(2)` all-loop asymptotic Bethe equations and cyclicity.
 - Displays the first nested Bethe step and level-III rational scattering.
 - Proves weak-coupling reduction to the one-loop Bethe equation and dispersion
@@ -69,3 +74,13 @@ crossed Zhukovsky sheets.
   invariant under a naive sheet-free `x -> 1/x` substitution.
 - The same script now checks BMN scaling, bound-state dispersion, and weak
   coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
+
+## External References Used In Current Pass
+
+- Downloaded local study copies under
+  `references/planar_n4_integrability/` for convention comparison only:
+  Bajnok--Janik `0807.0399`, Arutyunov--Frolov `0901.1417` and `0903.0141`,
+  and Arutyunov--Frolov--Suzuki `1002.1711`.
+- The monograph text does not import a claim solely by citation.  The
+  downloaded sources were used to check convention-sensitive wording about
+  ABA, mirror branches, and wrapping assumptions against the stringbook spine.

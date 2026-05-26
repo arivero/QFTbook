@@ -422,6 +422,26 @@ checks and strong structural constraints.
 
 \section{Asymptotic Bethe Equations}
 
+\begin{assumption}[Asymptotic Bethe--Yang regime]
+\label{ass:planar-n4-aba-regime}
+The all-loop asymptotic Bethe ansatz is used as a long-chain
+Bethe--Yang quantization rule for planar single traces.  More precisely, for
+a sequence of operators of length \(L\), with either fixed magnon number or a
+controlled large-\(L\) distribution of Bethe roots, one assumes:
+\[
+  L\to\infty,\qquad
+  \text{virtual propagation around the trace is suppressed,}
+\]
+and the many-magnon quantization is obtained by factorizing scattering into
+the two-body S-matrix of the preceding section.  This intended domain includes
+high-density configurations of roots in the \(L\to\infty\) limit.  The
+additional assumption is not thermodynamic Bethe ansatz; it is the
+asymptotic finite-volume quantization of the physical spin-chain problem.
+At finite \(L\), or at a loop order where the long-range dilatation operator
+can wrap around the trace, the omitted mirror-winding effects are no longer
+parametrically absent.
+\end{assumption}
+
 In the \(SU(2)\) scalar subsector, the all-loop asymptotic Bethe equations can
 be written
 \begin{equation}
@@ -477,12 +497,12 @@ factorized scattering problem, not additional dynamical assumptions.
 
 \begin{controlledapproximation}[Asymptotic long-chain regime]
 \label{ca:planar-n4-asymptotic-regime}
-Equation~\eqref{eq:planar-n4-su2-aba} applies to the planar single-trace
-spectrum in the regime where the interaction range is shorter than the trace
-length \(L\).  At weak coupling, wrapping effects begin at the loop order at
-which planar interactions can close around the trace.  At finite coupling,
-the distinction is between the asymptotic Bethe-Yang problem and the
-finite-size problem solved by mirror TBA or the quantum spectral curve.
+Equation~\eqref{eq:planar-n4-su2-aba} is an instance of
+Assumption~\ref{ass:planar-n4-aba-regime}.  At weak coupling, wrapping
+effects begin at the loop order at which planar interactions can close around
+the trace.  At finite coupling, the distinction is between the asymptotic
+Bethe--Yang problem and the finite-size problem solved by mirror TBA or the
+quantum spectral curve.
 \end{controlledapproximation}
 
 \section{Weak-Coupling Reduction}

@@ -308,8 +308,8 @@ construction of the finite-size correction: every input is an S-matrix kernel,
 a contour, a chemical potential, or a Bethe-root condition.
 
 At weak coupling the leading finite-size effect is the Luescher or first
-wrapping correction.  For the \(SL(2)\) Konishi descendant one has \(K=2\)
-physical roots \(u_1=-u_2\) with
+wrapping correction.  The \(SL(2)\) Konishi descendant has \(K=2\) physical
+roots \(u_1=-u_2\) with
 \[
   u_1=\frac{1}{2\sqrt3}
   \bigl(1+8g^2-20g^4+(112+48\zeta(3))g^6+O(g^8)\bigr)
@@ -320,21 +320,224 @@ in the asymptotic equation.  The asymptotic energy gives
   =
   4+12g^2-48g^4+336g^6-(2820+288\zeta(3))g^8+O(g^{10}).
 \]
-The mirror correction at order \(g^8\) is
+
+\begin{assumption}[Leading Konishi mirror input]
+\label{ass:konishi-leading-mirror-input}
+The leading weak-coupling wrapping computation uses the following mirror-TBA
+data.
+First, the physical roots in all factors contributing at order \(g^8\) are
+the one-loop values
+\[
+  u_\ast=\frac{1}{2\sqrt3},\qquad u_1=u_\ast,\qquad u_2=-u_\ast .
+\]
+Second, the virtual particles are the mirror \(Q\)-particle bound states,
+\(Q\in\mathbb Z_{>0}\), in the antisymmetric \(SL(2)\)-type mirror sector.
+Third, for real mirror rapidity \(u\) the weak mirror branch is
+\[
+  x^{[Q]}(u)=\frac{g}{u+\ii Q/2}+O(g^3),\qquad
+  x^{[\ell]}(u)=\frac{u+\ii\ell/2}{g}+O(g),
+  \qquad -Q\leq \ell\leq Q-1.
+\]
+Fourth, the leading contribution of the dressing phase to the asymptotic
+mirror \(Y_Q\)-function starts beyond the displayed \(g^8\) coefficient.
+Finally, the excited-state contour deformation is the one for which
+\eqref{eq:planar-n4-excited-tba-energy} has no additional weak-coupling
+\(\mu\)-term for Konishi.
+\end{assumption}
+
+Under this assumption the asymptotic mirror density has the stringbook form
+\begin{equation}
+  Y_{\bullet_Q}(u)
+  =
+  g^8\,Y_Q^{(0)}(u)+O(g^{10}),
+  \label{eq:konishi-leading-yq}
+\end{equation}
+where
+\begin{equation}
+\begin{aligned}
+  Y_Q^{(0)}(u)
+  &=
+  \frac{
+    4Q^2\left(u^2-u_\ast^2+(Q^2-1)/4\right)^2
+  }{
+    \left(u^2+Q^2/4\right)^4
+  }
+\\
+  &\quad\times
+  \prod_{\varepsilon=\pm1}
+  \frac{1}{
+    \left((u-\varepsilon u_\ast)^2+(Q+1)^2/4\right)
+    \left((u-\varepsilon u_\ast)^2+(Q-1)^2/4\right)
+  } .
+\end{aligned}
+\label{eq:konishi-yq0}
+\end{equation}
+All symbols in \eqref{eq:konishi-yq0} are now fixed: \(Q\) is the positive
+integer mirror bound-state charge, \(u\in\mathbb R\) is the mirror rapidity,
+and \(g=\sqrt\lambda/(4\pi)\) is the coupling of
+Chapter~\ref{ch:planar-n4-asymptotic-bethe-ansatz}.
+
+The mirror momentum measure is also a branch-sensitive datum.  In the same
+convention as the stringbook, the mirror \(Q\)-particle satisfies
+\[
+  \ii\widetilde p_Q(u)
+  =
+  -Q-2\ii g\bigl(x^{[Q]}(u)-x^{[-Q]}(u)\bigr).
+\]
+Substituting the weak mirror branch of
+Assumption~\ref{ass:konishi-leading-mirror-input} gives
+\[
+  \ii\widetilde p_Q(u)
+  =
+  -Q-2\ii g\left(
+    \frac{g}{u+\ii Q/2}
+    -\frac{u-\ii Q/2}{g}
+  \right)+O(g^2)
+  =
+  2\ii u+O(g^2),
+\]
+and therefore
+\begin{equation}
+  \frac{\dd\widetilde p_Q}{\dd u}=2+O(g^2).
+  \label{eq:konishi-leading-mirror-measure}
+\end{equation}
+This is the sign check that fixes the convention in the energy correction.
+
+\begin{proposition}[Leading Konishi wrapping integral]
+\label{prop:konishi-leading-wrapping-integral}
+Assume the mirror input of
+Assumption~\ref{ass:konishi-leading-mirror-input}.  Then the order \(g^8\)
+finite-size correction to the Konishi dimension is
 \[
   \Delta_{\rm K}^{\rm wrap}
   =
-  (324+864\zeta(3)-1440\zeta(5))g^8+O(g^{10}),
+  (324+864\zeta(3)-1440\zeta(5))g^8+O(g^{10}).
 \]
-so the physical four-loop coefficient is
+\end{proposition}
+
+\begin{proof}
+Since \(Y_{\bullet_Q}=O(g^8)\),
+\[
+  \log(1+Y_{\bullet_Q})=Y_{\bullet_Q}+O(g^{16}).
+\]
+The \(O(g^{10})\) uncertainty in
+\eqref{eq:konishi-leading-yq}, rather than the logarithm square, controls the
+next uncomputed term.  Combining \eqref{eq:planar-n4-excited-tba-energy},
+\eqref{eq:konishi-leading-yq}, and
+\eqref{eq:konishi-leading-mirror-measure} gives
+\[
+  \Delta_{\rm K}^{\rm wrap}
+  =
+  -g^8\sum_{Q=1}^\infty
+  \int_{\mathbb R}\frac{\dd u}{\pi}\,Y_Q^{(0)}(u)+O(g^{10}).
+\]
+Set \(q=2u\).  The coefficient of \(g^8\) becomes
+\[
+  \sum_{Q=1}^\infty I_Q,
+\]
+with
+\begin{equation}
+  I_Q
+  =
+  -\int_{-\infty}^{\infty}\frac{\dd q}{2\pi}\,
+  \frac{147456Q^2(3q^2+3Q^2-4)^2}
+       {(q^2+Q^2)^4 B_Q^-(q)B_Q^+(q)},
+  \label{eq:konishi-iq-integral}
+\end{equation}
+where
+\[
+\begin{aligned}
+  B_Q^-(q)
+  &=
+  9q^4+6(3(Q-2)Q+2)q^2+(3(Q-2)Q+4)^2,
+\\
+  B_Q^+(q)
+  &=
+  9q^4+6(3Q(Q+2)+2)q^2+(3Q(Q+2)+4)^2 .
+\end{aligned}
+\]
+For \(Q=1\) the apparent real zeros in \(B_1^-\) are removable because the
+same factor appears in the numerator.  After this cancellation the integrand
+has no pole on the real contour and decays as \(q^{-12}\).  Closing the
+contour in the upper half-plane therefore gives a finite residue
+calculation.  The poles are the fourth-order pole at \(q=\ii Q\), together
+with the simple poles at
+\[
+  q=\pm\frac1{\sqrt3}+\ii(Q-1),
+  \qquad
+  q=\pm\frac1{\sqrt3}+\ii(Q+1),
+\]
+omitting the removable \(Q=1\) real points.
+
+The residue sum gives
+\begin{equation}
+  I_Q=R_Q+\frac{864}{Q^3}-\frac{1440}{Q^5},
+  \label{eq:konishi-iq-summand}
+\end{equation}
+where
+\[
+  R_Q
+  =
+  -\frac{7776Q\,N(Q)}
+  {(9Q^4-3Q^2+1)^4(27Q^6-27Q^4+36Q^2+16)}
+\]
+and
+\[
+\begin{aligned}
+  N(Q)
+  &=
+  19683Q^{18}-78732Q^{16}+150903Q^{14}-134865Q^{12}
+  +1458Q^{10}
+\\
+  &\quad
+  +48357Q^8-13311Q^6-1053Q^4+369Q^2-10 .
+\end{aligned}
+\]
+The non-zeta part is not left as a numerical experiment: it telescopes.  Define
+\[
+  F_Q
+  =
+  -\frac{648P(Q)}
+  {(3Q^2+1)(3Q^2-6Q+4)(3Q^2-3Q+1)^4},
+\]
+with
+\[
+\begin{aligned}
+  P(Q)
+  &=
+  486Q^{10}-2430Q^9+5184Q^8-6156Q^7+4752Q^6
+  -2916Q^5
+\\
+  &\quad
+  +1521Q^4-504Q^3+51Q^2+12Q-2 .
+\end{aligned}
+\]
+A direct common-denominator calculation verifies
+\[
+  R_Q=F_Q-F_{Q+1}.
+\]
+Moreover \(F_1=324\) and \(F_Q\to0\) as \(Q\to\infty\).  Hence
+\[
+  \sum_{Q=1}^\infty R_Q=324.
+\]
+The remaining two sums in \eqref{eq:konishi-iq-summand} are absolutely
+convergent and give \(864\zeta(3)-1440\zeta(5)\).  This proves the displayed
+coefficient.
+\end{proof}
+
+Combining the asymptotic and wrapping pieces gives the physical four-loop
+coefficient
 \[
   -2496+576\zeta(3)-1440\zeta(5).
 \]
-The calculation depends on the mirror branch of the dressing factor and on
-the transfer matrix for mirror bound states.  The companion script
-\path{calculation-checks/planar_n4_integrability_checks.py} verifies the
-displayed coefficient arithmetic; it does not certify the analytic
-continuation of the full mirror integral.
+The companion script
+\path{calculation-checks/planar_n4_integrability_checks.py} now checks the
+stringbook \(u\)-integrand against the \(q=2u\) rational form, numerically
+integrates the first four real-line rational integrals, and verifies the
+exact telescoping identity for the rational tail.  The conceptual assumptions
+remain those isolated in
+Assumption~\ref{ass:konishi-leading-mirror-input}; the finite residue and
+summation algebra is not conjectural.
 
 \section{Relation to Relativistic Integrable QFT}
 
