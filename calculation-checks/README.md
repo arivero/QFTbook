@@ -335,6 +335,14 @@ Current checks:
   denominator powers, six-dimensional Yang-Mills coupling dimension,
   \(A_{N-1}\) \((2,0)\) anomaly/tensor-branch arithmetic, and the
   trace-delta \(g_5^2=4\pi^2R\) compactification normalization.
+- `susy_n1_conifold_checks.py`: exact rational checks for the
+  four-dimensional \(\mathcal N=1\) conifold SCFT and cascade section,
+  including the KW \(R\)-anomaly, \(\gamma=2\mathcal C\) NSVZ convention,
+  \(a\)-maximization quadratic term, central charges, rank-one conifold
+  relation, KS beta-function numerator signs, unequal-rank \(R\)-anomaly
+  coefficients, Seiberg-dual magnetic rank, magnetic meson quadratic-form
+  integration, Euclidean cascade step count, and
+  \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
   Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian matrix integral, the
