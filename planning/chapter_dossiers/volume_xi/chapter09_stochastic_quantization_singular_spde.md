@@ -102,6 +102,8 @@ data.
 - `V_N^A`, `V_N^B`, `V`: regulator-dependent renormalized interaction
   potentials and their common limiting potential in the common-potential
   comparison corollary.
+- `V_N=(\lambda/4):X_N^4:(1)`: cutoff Wick quartic potential in the
+  potential-convergence corollary.
 - `H_N`, `A_N`, `L_N`, `e_{N,alpha}`, `lambda_{N,alpha}`, `nu_N`:
   finite-dimensional Hilbert space, Hessian lower-bound operator, reference
   nonnegative operator, spectral basis, eigenvalues, and convex cutoff
@@ -231,6 +233,14 @@ data.
   Ornstein--Uhlenbeck time cross-covariance, a weakened-propagator
   convolution estimate, finite-Wiener-chaos moment bounds, and a
   Kolmogorov/grid argument.
+- Extracts the Wick quartic potential convergence needed by regulator
+  comparison.  Since the smeared Wick-power theorem applies with \(n=4\)
+  and \(f\equiv1\), the cutoff potentials
+  \(V_N=(\lambda/4):X_N^4:(1)\) converge in \(L^2\), hence in probability,
+  to the common limiting Wick quartic.  For two cutoff schemes with the same
+  Wick-power limit, this supplies the potential-convergence hypothesis in
+  the common-potential comparison corollary; the remaining constructive
+  burden is the uniform \(L^p\) stability of the exponential weights.
 - Proves the Fourier heat-kernel smoothing estimate used as the Sobolev
   model for the parabolic Schauder estimates in the DPD fixed point.
 - Proves the Sobolev product estimates used in the elementary DPD fixed point:

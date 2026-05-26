@@ -358,6 +358,54 @@ Sobolev DPD fixed point below is available for any prescribed
 \(0<\kappa<1/4\) after taking \(s=\kappa\).
 \end{proof}
 
+\begin{corollary}[Convergence of the Wick quartic potential]
+\label{cor:spde-wick-quartic-potential-convergence}
+Let \(\lambda\in\R\), and define the cutoff Wick quartic functional on the
+Gaussian probability space of
+Proposition~\ref{prop:spde-two-dimensional-wick-powers} by
+\[
+  V_N=\frac{\lambda}{4}\int_{\mathbb T^2}:\!X_N(x)^4\!:\,\dd^2x
+  =
+  \frac{\lambda}{4}\,:\!X_N^4\!:(1).
+\]
+Then there is an \(L^2(\Omega)\) random variable
+\[
+  V=\frac{\lambda}{4}\,:\!X^4\!:(1)
+\]
+such that \(V_N\to V\) in \(L^2(\Omega)\), and hence in probability.
+
+More generally, suppose \(X_N^A\) and \(X_N^B\) are two cutoff
+approximations of the same massive Gaussian field for which the conclusion
+of Proposition~\ref{prop:spde-two-dimensional-wick-powers} holds for
+\(:\!(X_N^\sigma)^4\!:(1)\), \(\sigma=A,B\), with the same limiting Wick
+functional \(:\!X^4\!:(1)\).  Set
+\[
+  V_N^\sigma=\frac{\lambda}{4}\,:\!(X_N^\sigma)^4\!:(1),
+  \qquad
+  V=\frac{\lambda}{4}\,:\!X^4\!:(1).
+\]
+Then \(V_N^A\to V\) and \(V_N^B\to V\) in \(L^2(\Omega)\).  Consequently,
+if the exponential weights \(e^{-V_N^\sigma}\) obey a uniform \(L^p\) bound
+for some \(p>1\) and if the cylinder coordinates also converge to common
+limits, then the bounded-cylinder comparison conclusion of
+Corollary~\ref{cor:spde-bounded-cylinder-common-potential} applies.
+\end{corollary}
+
+\begin{proof}
+The first statement is Proposition~\ref{prop:spde-two-dimensional-wick-powers}
+with \(n=4\) and with the smooth test function \(f\equiv1\).  Multiplication
+by the scalar \(\lambda/4\) preserves \(L^2\)-convergence.  The
+generalization to two cutoff approximations is the same argument applied to
+each sequence; because both sequences have the same \(L^2\) limit,
+\[
+  \|V_N^\sigma-V\|_{L^2(\Omega)}\longrightarrow0,
+  \qquad \sigma=A,B.
+\]
+The last assertion follows from
+Corollary~\ref{cor:spde-bounded-cylinder-common-potential}, since
+\(L^2\)-convergence implies convergence in probability of the potentials.
+\end{proof}
+
 \begin{proposition}[Path-space convergence of the two-dimensional enhanced noise]
 \label{prop:spde-two-dimensional-enhanced-noise-path-convergence}
 Let
@@ -3459,7 +3507,11 @@ Assume the following three further analytic facts.
   still more primitive sufficient condition, stated in terms of convergence
   of the renormalized interaction potentials and a uniform \(L^p\) stability
   estimate for their exponential weights, is
-  Corollary~\ref{cor:spde-bounded-cylinder-common-potential}.
+  Corollary~\ref{cor:spde-bounded-cylinder-common-potential}.  For the
+  two-dimensional Wick quartic interaction, the potential convergence part
+  of this condition follows from
+  Corollary~\ref{cor:spde-wick-quartic-potential-convergence}; the remaining
+  regulator-specific input is the uniform exponential-weight stability.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -3553,7 +3605,11 @@ limiting cylinder coordinates; by
 Corollary~\ref{cor:spde-bounded-cylinder-common-potential}, the common
 \(L^1\) density limit follows from convergence in probability of the
 renormalized interaction potentials plus a uniform \(L^p\) stability bound
-on the exponential weights.  The
+on the exponential weights.  For the Wick quartic potential, the convergence
+in probability is supplied by
+Corollary~\ref{cor:spde-wick-quartic-potential-convergence}, so the
+remaining constructive estimate is the uniform \(L^p\) stability of the
+weights in the chosen regulator family.  The
 uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite
