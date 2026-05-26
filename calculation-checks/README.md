@@ -170,6 +170,12 @@ Current checks:
   Yang-Baxter, the free-fermion point, breather pole locations, breather mass
   kinematics, soliton-breather unitarity/crossing/pole kinematics, and
   lightest-breather unitarity and crossing.
+- `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
+  spectral-function conventions, including detailed balance and
+  fluctuation--dissipation in a two-level system, the sign
+  \(\rho=-2\operatorname{Im}G^R\), the shear-viscosity spectral slope, and
+  the vector-potential response sign, plus the fact that real local contact
+  terms do not change dissipative spectral slopes.
 - `trace_anomaly_classification_checks.py`: finite checks for the
   type-A/type-B trace-anomaly classification, including the parity-even bulk
   cohomology counts in \(D=2,4,6\), the engineering weights of the listed

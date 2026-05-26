@@ -7,46 +7,156 @@ Transport coefficients are low-frequency limits of real-time response
 functions.  The definitions use a thermal state, a conserved current or
 stress tensor, and a source coupled to the corresponding operator.  The
 derivation is linear response from the Schwinger--Keldysh generating
-functional of Chapter~\ref{ch:thermal-schwinger-keldysh}.
+functional of Chapter~\ref{ch:thermal-schwinger-keldysh}.  This chapter
+keeps separate three pieces that are often conflated: the commutator
+spectral density, possible local contact terms in the source response, and
+the order of limits needed to define a transport coefficient.
 
 \section{Retarded Functions and Spectral Densities}
 
 Let \(\rho_\beta\) be a KMS state at inverse temperature \(\beta\).  For
 bosonic Hermitian operators \(A(t,\mathbf x)\) and \(B(t,\mathbf x)\), define
 the retarded function
-\[
+\begin{equation}
   G^R_{AB}(t,\mathbf x)
   =
   -\ii\,\Theta(t)\,
   \langle [A(t,\mathbf x),B(0,\mathbf 0)]\rangle_\beta
-\]
-and the spectral density
-\[
+  \label{eq:kubo-retarded-definition}
+\end{equation}
+and the commutator spectral density
+\begin{equation}
   \rho_{AB}(t,\mathbf x)
   =
   \langle [A(t,\mathbf x),B(0,\mathbf 0)]\rangle_\beta .
-\]
+  \label{eq:kubo-commutator-spectral-density}
+\end{equation}
 Fourier transforms are defined distributionally by
-\[
+\begin{equation}
   G^R_{AB}(\omega,\mathbf k)
   =
   \int dt\,d^{D-1}x\,
   e^{\ii\omega t-\ii\mathbf k\cdot\mathbf x}
   G^R_{AB}(t,\mathbf x).
-\]
-For Hermitian \(A=B\), the finite-volume spectral representation gives
-\[
+  \label{eq:kubo-fourier-convention}
+\end{equation}
+With this convention, a retarded distribution that obeys the required
+tempered-growth hypothesis is the boundary value of a function holomorphic
+for \(\operatorname{Im}\omega>0\).
+
+\begin{proposition}[Finite-volume Lehmann representation]
+\label{prop:kubo-finite-volume-lehmann}
+Work in a finite spatial volume.  Let \(H|n\rangle=E_n|n\rangle\), let
+\(Z=\sum_n e^{-\beta E_n}<\infty\), and let \(A_{\mathbf k}\) obey
+\(A_{\mathbf k}^{\dagger}=A_{-\mathbf k}\).  Then
+\begin{equation}
+  G^>_{AA}(\omega,\mathbf k)
+  =
+  \frac{2\pi}{Z}\sum_{m,n}
+  e^{-\beta E_m}
+  |\langle m|A_{\mathbf k}|n\rangle|^2
+  \delta(\omega-E_n+E_m),
+  \label{eq:kubo-greater-lehmann}
+\end{equation}
+and
+\begin{equation}
   \rho_{AA}(\omega,\mathbf k)
   =
   \frac{2\pi}{Z}\sum_{m,n}
   e^{-\beta E_m}
   \left(1-e^{-\beta\omega}\right)
   |\langle m|A_{\mathbf k}|n\rangle|^2
-  \delta(\omega-E_n+E_m),
+  \delta(\omega-E_n+E_m).
+  \label{eq:kubo-spectral-lehmann}
+\end{equation}
+Consequently \(\omega\,\rho_{AA}(\omega,\mathbf k)\ge0\) as a
+distributional positivity statement.
+\end{proposition}
+
+\begin{proof}
+Insert a complete set of energy eigenstates into
+\[
+  G^>_{AA}(t,\mathbf k)
+  =
+  Z^{-1}\operatorname{Tr}
+  \left(e^{-\beta H}A_{\mathbf k}(t)A_{-\mathbf k}(0)\right).
 \]
-so \(\omega\,\rho_{AA}(\omega,\mathbf k)\geq0\) as a distributional
-positivity statement after the thermodynamic limit is taken under the stated
-hypotheses.
+Since
+\[
+  A_{\mathbf k}(t)
+  =
+  e^{\ii Ht}A_{\mathbf k}e^{-\ii Ht},
+\]
+the matrix element carries the phase
+\[
+  e^{\ii(E_m-E_n)t}
+  \langle m|A_{\mathbf k}|n\rangle
+  \langle n|A_{-\mathbf k}|m\rangle .
+\]
+The adjoint relation makes the product the squared modulus displayed in
+\eqref{eq:kubo-greater-lehmann}, and the Fourier integral gives the delta
+function \(\delta(\omega-E_n+E_m)\).
+
+The lesser function has the same delta support with the Boltzmann weight
+\(e^{-\beta E_n}\) after relabelling \(m\leftrightarrow n\).  On the support
+of the delta function,
+\[
+  E_n-E_m=\omega,
+  \qquad
+  e^{-\beta E_n}=e^{-\beta\omega}e^{-\beta E_m}.
+\]
+Subtracting \(G^<\) from \(G^>\) gives
+\eqref{eq:kubo-spectral-lehmann}.  For \(\omega>0\) every coefficient in
+\eqref{eq:kubo-spectral-lehmann} is nonnegative; for \(\omega<0\) it is
+nonpositive.  This is exactly \(\omega\rho_{AA}\ge0\).
+\end{proof}
+
+\begin{proposition}[Retarded boundary value and sign convention]
+\label{prop:kubo-retarded-spectral-sign}
+Assume the finite-volume spectral measure above has a thermodynamic limit for
+which the displayed integrals remain meaningful as tempered boundary values.
+Then
+\begin{equation}
+  G^R_{AA}(z,\mathbf k)
+  =
+  \int_{\mathbb R}\frac{d\omega'}{2\pi}\,
+  \frac{\rho_{AA}(\omega',\mathbf k)}{z-\omega'},
+  \qquad
+  \operatorname{Im}z>0,
+  \label{eq:kubo-retarded-spectral-representation}
+\end{equation}
+up to real polynomial contact terms, and therefore
+\begin{equation}
+  \rho_{AA}(\omega,\mathbf k)
+  =
+  -2\,\operatorname{Im}G^R_{AA}(\omega+\ii0,\mathbf k)
+  \label{eq:kubo-rho-minus-two-im-gr}
+\end{equation}
+for the nonlocal part of the response.
+\end{proposition}
+
+\begin{proof}
+Write the inverse Fourier representation of \(\rho\) in
+\eqref{eq:kubo-retarded-definition}.  For \(\operatorname{Im}z>0\),
+\[
+  -\ii\int_0^\infty dt\,e^{\ii zt}e^{-\ii\omega't}
+  =
+  \frac{1}{z-\omega'} .
+\]
+This gives \eqref{eq:kubo-retarded-spectral-representation}.  Taking
+\(z=\omega+\ii0\) and using
+\[
+  \frac{1}{\omega+\ii0-\omega'}
+  =
+  \operatorname{PV}\frac{1}{\omega-\omega'}
+  -
+  \ii\pi\delta(\omega-\omega')
+\]
+gives \eqref{eq:kubo-rho-minus-two-im-gr}.  Local source counterterms add
+real polynomials in \(\omega\) and \(\mathbf k\) to the real-time kernel in
+the absence of dissipation; they are not part of the commutator spectral
+measure.
+\end{proof}
 
 \section{KMS and Fluctuation--Dissipation}
 
@@ -57,89 +167,236 @@ Define the Wightman functions
 \]
 The KMS condition gives
 \[
-  G^>_{AB}(t-\ii\beta)=G^<_{AB}(t).
+  G^>_{AB}(t-\ii\beta)=G^<_{AB}(t)
 \]
-In frequency space this implies
-\[
-  G^>_{AB}(\omega)=e^{\beta\omega}G^<_{AB}(\omega),
+for operators in the analytic domain of the thermal state.  In frequency
+space this implies detailed balance.  For \(A=B^\dagger\), the finite-volume
+formula above gives
+\begin{equation}
+  G^<_{AA}(\omega,\mathbf k)
+  =
+  e^{-\beta\omega}G^>_{AA}(\omega,\mathbf k),
   \qquad
-  \rho_{AB}(\omega)=G^>_{AB}(\omega)-G^<_{AB}(\omega).
-\]
+  \rho_{AA}=G^>_{AA}-G^<_{AA}.
+  \label{eq:kubo-detailed-balance}
+\end{equation}
 Therefore the symmetrized correlator
 \[
-  G^{\rm sym}_{AB}(\omega)
+  G^{\rm sym}_{AA}(\omega,\mathbf k)
   =
-  \frac12\bigl(G^>_{AB}(\omega)+G^<_{AB}(\omega)\bigr)
+  \frac12\bigl(G^>_{AA}(\omega,\mathbf k)
+  +G^<_{AA}(\omega,\mathbf k)\bigr)
 \]
 satisfies
-\[
-  G^{\rm sym}_{AB}(\omega)
+\begin{equation}
+  G^{\rm sym}_{AA}(\omega,\mathbf k)
   =
-  \frac12\coth\!\left(\frac{\beta\omega}{2}\right)\rho_{AB}(\omega).
-\]
+  \frac12\coth\!\left(\frac{\beta\omega}{2}\right)
+  \rho_{AA}(\omega,\mathbf k).
+  \label{eq:kubo-fluctuation-dissipation}
+\end{equation}
+The apparent singularity at \(\omega=0\) is interpreted distributionally:
+the product is meaningful when the small-\(\omega\) behavior of
+\(\rho_{AA}\) is specified.  In a diffusive or viscous channel,
+\(\rho_{AA}(\omega)=O(\omega)\), so the symmetrized noise has a finite
+zero-frequency limit.  If a ballistic channel produces a Drude delta
+function, this limit is a different observable and the dc transport
+coefficient is infinite rather than a finite number.
 
-\section{Linear Response}
+\section{Linear Response from the Closed Time Path}
 
 Perturb the Hamiltonian by a source \(h_B(t,\mathbf x)\) coupled to \(B\):
-\[
+\begin{equation}
   H(t)=H_0-\int d^{D-1}x\,h_B(t,\mathbf x)B(t,\mathbf x).
-\]
-To first order in \(h_B\), the change in the expectation value of \(A\) is
+  \label{eq:kubo-source-hamiltonian}
+\end{equation}
+To first order in \(h_B\), the interaction-picture evolution operator is
 \[
+  U_h(t,-\infty)
+  =
+  1+\ii\int_{-\infty}^{t}dt'\int d^{D-1}x'\,
+  h_B(t',\mathbf x')B(t',\mathbf x')+O(h_B^2).
+\]
+Consequently
+\[
+  U_h(t,-\infty)^{-1}A(t,\mathbf x)U_h(t,-\infty)
+  =
+  A(t,\mathbf x)
+  +
+  \ii\int_{-\infty}^{t}dt'\,d^{D-1}x'\,
+  h_B(t',\mathbf x')
+  [A(t,\mathbf x),B(t',\mathbf x')]
+  +O(h_B^2).
+\]
+Taking the thermal expectation value gives
+\begin{equation}
   \delta\langle A(t,\mathbf x)\rangle
   =
   \int dt' d^{D-1}x'\,
   G^R_{AB}(t-t',\mathbf x-\mathbf x')h_B(t',\mathbf x').
-\]
-This follows by expanding the time-evolution operator to first order on the
-Schwinger--Keldysh contour and subtracting the insertion on the backward
-branch.  The contour difference is exactly the commutator, and causality is
-the step function.
+  \label{eq:kubo-linear-response}
+\end{equation}
+This is the same branch-difference identity obtained from the
+Schwinger--Keldysh functional: differentiating with respect to the \(a\)-type
+source and then setting \(J_a=0\) leaves precisely the commutator and the
+causal step function.
 
-\section{Conductivity and Viscosity}
+\section{Contact Terms and Response Kernels}
+
+The commutator retarded function is not always the full response kernel to a
+background source.  If the operator itself depends on the source, or if the
+regulated generating functional contains local source counterterms, then
+\[
+  \delta\langle A\rangle
+  =
+  (G^R_{AB}+C_{AB})\,h_B
+\]
+in Fourier space, where \(C_{AB}(\omega,\mathbf k)\) is local in spacetime
+and therefore polynomial, or a distributional limit of polynomials, in
+\(\omega,\mathbf k\).  For gauge and metric sources these terms are not
+optional: they are fixed by Ward identities, equilibrium thermodynamics, and
+the chosen operator scheme.
+
+The dissipative transport coefficient is extracted from the spectral slope
+of the nonlocal commutator part.  Real local contact terms can change static
+susceptibilities and Euclidean zero-mode correlators, but they do not change
+the positive spectral measure \(\rho_{AA}\) at nonzero frequency.  This is
+why Kubo formulae below are stated using \(\rho\), with a separate warning
+about Drude weights and conserved-density projections.
+
+\section{Conductivity}
 
 For a conserved current \(J^\mu\) coupled to a background gauge field
-\(A_\mu^{\rm ext}\), the electric field is
+\(A_\mu^{\rm ext}\), the electric field in the Fourier convention
+\eqref{eq:kubo-fourier-convention} is
 \[
   E_i(\omega,\mathbf k)=\ii\omega A_i^{\rm ext}(\omega,\mathbf k)
   -\ii k_i A_0^{\rm ext}(\omega,\mathbf k).
 \]
-At zero spatial momentum and in a gauge with \(A_0^{\rm ext}=0\), linear
-response gives
+At zero spatial momentum and in a gauge with \(A_0^{\rm ext}=0\), define the
+full transverse response kernel \(K_{ij}\) by the conventional
+background-gauge-field sign
 \[
   \langle J_i(\omega)\rangle
   =
-  G^R_{J_iJ_j}(\omega,\mathbf 0)A_j^{\rm ext}(\omega)
+  -K_{ij}(\omega,\mathbf0)A_j^{\rm ext}(\omega)
   =
-  \sigma_{ij}(\omega)E_j(\omega),
+  \sigma_{ij}(\omega)E_j(\omega).
 \]
-hence
+Thus
 \[
   \sigma_{ij}(\omega)
   =
-  \frac{1}{\ii\omega}G^R_{J_iJ_j}(\omega,\mathbf 0)
+  -\frac{1}{\ii\omega}K_{ij}(\omega,\mathbf0),
+  \qquad
+  K_{ij}=G^R_{J_iJ_j}+C_{ij}.
 \]
-after subtracting possible contact terms dictated by gauge invariance.
-
-For the stress tensor, couple the theory to a spatial metric perturbation
-\(g_{ij}=\delta_{ij}+h_{ij}\).  In an isotropic state, the shear viscosity is
-the zero-frequency slope
+For \(\omega\ne0\), the dissipative real part is determined by the spectral
+density:
+\begin{equation}
+  \operatorname{Re}\sigma_{ij}(\omega)
+  =
+  \frac{1}{2\omega}\,
+  \rho_{J_iJ_j}(\omega,\mathbf0)
+  \quad
+  \text{in a transverse channel after contact terms are separated.}
+  \label{eq:kubo-conductivity-spectral-slope}
+\end{equation}
+The dc conductivity, when finite, is therefore
 \[
+  \sigma_{ij}^{\rm dc}
+  =
+  \lim_{\omega\downarrow0}
+  \frac{1}{2\omega}\rho_{J_iJ_j}(\omega,\mathbf0),
+\]
+with the thermodynamic limit taken before the \(\omega\to0\) limit.  If
+momentum conservation or another exactly conserved quantity overlaps with
+the current, a \(\delta(\omega)\) Drude contribution is present and the dc
+conductivity is infinite unless the conserved contribution is relaxed or
+projected out.
+
+\section{Shear and Bulk Viscosity}
+
+Couple the theory to a spatial metric perturbation
+\[
+  g_{ij}(t,\mathbf x)=\delta_{ij}+h_{ij}(t,\mathbf x).
+\]
+The stress tensor is defined by the first variation of the regulated
+generating functional with respect to the metric source.  In an isotropic
+thermal state, take a shear perturbation \(h_{xy}(t)\) at zero spatial
+momentum.  The dissipative part of the stress response is characterized by
+the shear viscosity \(\eta\).  With the retarded sign convention
+\eqref{eq:kubo-retarded-definition} and the spectral convention
+\eqref{eq:kubo-rho-minus-two-im-gr},
+\begin{equation}
   \eta
   =
-  \lim_{\omega\to0^+}
+  \lim_{\omega\downarrow0}
+  \frac{1}{2\omega}\,
+  \rho_{T_{xy}T_{xy}}(\omega,\mathbf0)
+  =
+  -\lim_{\omega\downarrow0}
   \frac{1}{\omega}\,
-  \operatorname{Im}G^R_{T_{xy}T_{xy}}(\omega,\mathbf 0).
+  \operatorname{Im}G^R_{T_{xy}T_{xy}}(\omega,\mathbf0).
+  \label{eq:kubo-shear-viscosity-sign-correct}
+\end{equation}
+The equality between the two expressions is exactly
+\eqref{eq:kubo-rho-minus-two-im-gr}.  Positivity of
+\(\omega\rho_{T_{xy}T_{xy}}\) gives \(\eta\ge0\) when the limit exists and
+no singular zero-frequency contribution is present.
+
+The bulk channel requires a projection.  For a neutral relativistic fluid in
+\(d=D-1\) spatial dimensions, define
+\[
+  \mathcal P
+  =
+  \frac{1}{d}T^i_{\ i}-c_s^2 T^{00},
+  \qquad
+  c_s^2=\left(\frac{\partial p}{\partial\varepsilon}\right)_{\rm eq}.
 \]
-The bulk viscosity is obtained from the traceful spatial stress channel after
-projecting out pressure contact terms and conserved-density mixing.
+The subtraction removes the overlap of the pressure fluctuation with the
+conserved energy density.  In charged fluids one must project out all
+conserved densities using the susceptibility matrix.  After this projection,
+the bulk viscosity is
+\[
+  \zeta
+  =
+  \lim_{\omega\downarrow0}
+  \frac{1}{2\omega}\rho_{\mathcal P\mathcal P}(\omega,\mathbf0),
+\]
+again with the thermodynamic and zero-momentum limits taken before the
+zero-frequency limit.
+
+\section{Dispersion Relations and Sum-Rule Boundaries}
+
+Retardedness gives analyticity in the upper half \(\omega\)-plane.  If the
+response kernel is sufficiently bounded after subtracting its local
+polynomial terms, then Cauchy's theorem gives a subtracted dispersion
+relation.  A typical once-subtracted form is
+\begin{equation}
+  G^R(\omega)-G^R(0)
+  =
+  \omega
+  \int_{\mathbb R}\frac{d\omega'}{2\pi}\,
+  \frac{\rho(\omega')}
+       {\omega'(\omega-\omega'+\ii0)} .
+  \label{eq:kubo-once-subtracted-dispersion}
+\end{equation}
+This formula is not a definition.  It follows only after the large semicircle
+is controlled and after all contact terms have been declared.  Sum rules for
+conductivity or viscosity compare the small-\(\omega\) transport slope with
+Euclidean or equal-time data only under these additional analytic and
+ultraviolet assumptions.
 
 \section{Hydrodynamic Pole Boundary}
 
 Kubo formulae define transport coefficients when the indicated limits exist
 and commute with the thermodynamic and zero-momentum limits in the stated
 order.  Hydrodynamics begins after these coefficients are inserted into the
-long-wavelength Ward identities for conserved densities.
+long-wavelength Ward identities for conserved densities.  The microscopic
+Kubo formula by itself does not prove local equilibration, the derivative
+expansion, or the dominance of hydrodynamic poles; those are additional
+dynamical statements developed in the following chapters.
 
 \begin{openproblem}[Rigorous Kubo-to-hydrodynamics bridge]
 \label{op:kubo-hydrodynamics-bridge}
