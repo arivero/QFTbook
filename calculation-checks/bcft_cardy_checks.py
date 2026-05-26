@@ -37,6 +37,72 @@ class Qsqrt2:
         return self * other.inverse()
 
 
+@dataclass(frozen=True)
+class Laurent2:
+    """Laurent polynomial in two formal exponentials, with rational coefficients."""
+
+    terms: tuple[tuple[tuple[int, int], Fraction], ...] = ()
+
+    @staticmethod
+    def from_dict(terms: dict[tuple[int, int], Fraction]) -> Laurent2:
+        clean = tuple(
+            sorted(
+                (exponent, coefficient)
+                for exponent, coefficient in terms.items()
+                if coefficient
+            )
+        )
+        return Laurent2(clean)
+
+    @staticmethod
+    def monomial(
+        x_power: int,
+        y_power: int,
+        coefficient: Fraction = Fraction(1),
+    ) -> Laurent2:
+        return Laurent2.from_dict({(x_power, y_power): coefficient})
+
+    @staticmethod
+    def scalar(coefficient: Fraction) -> Laurent2:
+        return Laurent2.from_dict({(0, 0): coefficient})
+
+    def as_dict(self) -> dict[tuple[int, int], Fraction]:
+        return dict(self.terms)
+
+    def __add__(self, other: Laurent2) -> Laurent2:
+        result = self.as_dict()
+        for exponent, coefficient in other.terms:
+            result[exponent] = result.get(exponent, Fraction(0)) + coefficient
+        return Laurent2.from_dict(result)
+
+    def __neg__(self) -> Laurent2:
+        return Laurent2.from_dict(
+            {exponent: -coefficient for exponent, coefficient in self.terms}
+        )
+
+    def __sub__(self, other: Laurent2) -> Laurent2:
+        return self + (-other)
+
+    def __mul__(self, other: Laurent2) -> Laurent2:
+        result: dict[tuple[int, int], Fraction] = {}
+        for (x_left, y_left), coefficient_left in self.terms:
+            for (x_right, y_right), coefficient_right in other.terms:
+                exponent = (x_left + x_right, y_left + y_right)
+                result[exponent] = (
+                    result.get(exponent, Fraction(0))
+                    + coefficient_left * coefficient_right
+                )
+        return Laurent2.from_dict(result)
+
+    def scale(self, coefficient: Fraction) -> Laurent2:
+        return Laurent2.from_dict(
+            {
+                exponent: coefficient * term_coefficient
+                for exponent, term_coefficient in self.terms
+            }
+        )
+
+
 ZERO = Qsqrt2()
 ONE = Qsqrt2(Fraction(1))
 HALF = Qsqrt2(Fraction(1, 2))
@@ -272,6 +338,39 @@ def check_compact_boson_zero_mode_duality() -> None:
         assert_equal("dual winding records original momentum", dual_winding, momentum)
 
 
+def laurent_cosh(x_power: int, y_power: int = 0) -> Laurent2:
+    return (
+        Laurent2.monomial(x_power, y_power)
+        + Laurent2.monomial(-x_power, -y_power)
+    ).scale(Fraction(1, 2))
+
+
+def laurent_sinh(x_power: int, y_power: int = 0) -> Laurent2:
+    return (
+        Laurent2.monomial(x_power, y_power)
+        - Laurent2.monomial(-x_power, -y_power)
+    ).scale(Fraction(1, 2))
+
+
+def check_liouville_fzzt_zz_hyperbolic_identity() -> None:
+    lhs = laurent_cosh(1, 1) - laurent_cosh(1, -1)
+    rhs = (laurent_sinh(1, 0) * laurent_sinh(0, 1)).scale(Fraction(2))
+    assert_equal("FZZT difference to ZZ hyperbolic product", lhs, rhs)
+
+
+def check_liouville_degenerate_shift_sum() -> None:
+    for n in range(1, 9):
+        finite_shift_sum = Laurent2.from_dict(
+            {
+                (n - 1 - 2 * j, 0): Fraction(1)
+                for j in range(n)
+            }
+        )
+        lhs = laurent_sinh(n, 0)
+        rhs = laurent_sinh(1, 0) * finite_shift_sum
+        assert_equal(f"Liouville degenerate shift sum n={n}", lhs, rhs)
+
+
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
@@ -281,9 +380,11 @@ def main() -> None:
     check_chan_paton_direct_sums()
     check_ising_boundary_changing_constants()
     check_compact_boson_zero_mode_duality()
+    check_liouville_fzzt_zz_hyperbolic_identity()
+    check_liouville_degenerate_shift_sum()
     print(
         "All BCFT Cardy, sewing, Ising boundary-changing, "
-        "Chan-Paton, and compact-boson checks passed."
+        "Chan-Paton, compact-boson, and Liouville-boundary checks passed."
     )
 
 

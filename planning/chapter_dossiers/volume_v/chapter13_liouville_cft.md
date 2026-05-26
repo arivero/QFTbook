@@ -35,6 +35,15 @@ boundaries rather than importing the appendix exposition.
   substituting `z=lambda(q)`.
 - `H(c,h_i,h;q)`: Zamolodchikov elliptic block after universal prefactors
   are removed.
+- `mu_B`: boundary cosmological constant in the boundary Liouville action.
+- `K_g`: geodesic curvature of the boundary, paired with the outward normal.
+- `s`: FZZT boundary parameter, related to `mu_B` by
+  `cosh^2(pi b s)=mu_B^2 sin(pi b^2)/mu`.
+- `u_b(P)`: common FZZT momentum-space boundary wavefunction factor.
+- `U_s(P)`: FZZT disk one-point / boundary-state wavefunction
+  `u_b(P) cos(2 pi s P)`.
+- `ZZ_{m,n}`: discrete ZZ boundary state obtained as a finite difference of
+  FZZT states at imaginary parameters `i(m/b +/- n b)`.
 - `Upsilon_b`: entire special function entering the DOZZ constant.
 - `F_P`: Virasoro conformal block with internal Liouville momentum `P`.
 - `M_{gamma,g}`: Gaussian multiplicative-chaos measure in probabilistic
@@ -78,6 +87,15 @@ boundaries rather than importing the appendix exposition.
 - Derives the scattering-normalized `P`-basis DOZZ representative from the
   conventional `alpha`-basis formula and records the external-leg phase
   convention.
+- Adds the boundary Liouville action with the `Q K_g phi/(2 pi)` curvature
+  term and derives the boundary Euler equation
+  `nabla_n phi + Q K_g + 2 pi b mu_B exp(b phi)=0`.
+- States the boundary marginality condition for `exp(b phi)` from the
+  boundary dimension `b(Q-b)=1`.
+- Defines FZZT boundary parameters, one-point functions, and boundary-state
+  wavefunctions, with the boundary bootstrap isolated as a quoted theorem.
+- Defines ZZ boundary states as finite differences of imaginary-parameter
+  FZZT states and proves the hyperbolic wavefunction identity.
 - Proves the level-two null-vector coefficient for `alpha=-b/2` and derives
   the corresponding BPZ differential equation.
 - Derives the degenerate OPE coefficient `C_-(alpha)` from the local
@@ -121,6 +139,9 @@ boundaries rather than importing the appendix exposition.
 - The same script checks the modular-lambda expansion through
   `lambda(q)=16q(1-8q+44q^2+O(q^3))` and verifies the exact formulas for the
   raw elliptic \(q\)-coefficients `g_1` and `g_2`.
+- `calculation-checks/bcft_cardy_checks.py` verifies the exact hyperbolic
+  identities that turn imaginary FZZT differences into ZZ wavefunctions and
+  degenerate annulus kernels into finite shifted-character sums.
 
 ## Remaining Obligations
 
@@ -128,10 +149,23 @@ boundaries rather than importing the appendix exposition.
   Zamolodchikov residue-product normalization and higher-order recursive
   coefficients after the chiral vertex-operator normalization ledger is
   fixed.
-- Develop Liouville boundary states only after the BCFT chapter is added; do
-  not fold black-hole entropy or HKS/SSS material into this chapter.
+- Extend the Liouville boundary discussion to boundary two-point functions,
+  boundary-condition-changing operators, and annulus spectral-density
+  positivity only after the nonrational sewing framework is fixed; do not
+  fold black-hole entropy or HKS/SSS material into this chapter.
 - Complete the full functorial sewing comparison with the Volume IV
   Kontsevich-Segal open-problem ledger.
+
+## Reference Intake
+
+- Local sources consulted:
+  `references/02_2d_cft/boundary_liouville_fzz_hep-th-0001012/blio.tex` and
+  `references/02_2d_cft/liouville_pseudosphere_zz_hep-th-0101152/look.tex`.
+  Used to check the FZZT boundary action, boundary one-point function,
+  boundary-state wavefunction, and the ZZ/FZZT hyperbolic finite-difference
+  conventions.  The monograph text rederives the variational boundary
+  equation and the hyperbolic identities locally, while treating the boundary
+  bootstrap solution as a theorem boundary.
 
 ## Audit Notes
 
@@ -156,3 +190,7 @@ boundaries rather than importing the appendix exposition.
   modular lambda expansion, first `z`-to-`q` block-coefficient conversion,
   and a theorem boundary for the full Zamolodchikov recursion with exact
   coefficient checks.
+- 2026-05-26 boundary-state pass: added boundary Liouville action,
+  variational boundary equation, FZZT one-point and boundary-state
+  normalization, ZZ states as imaginary-FZZT finite differences, and exact
+  hyperbolic identity checks coordinated with the BCFT chapter.

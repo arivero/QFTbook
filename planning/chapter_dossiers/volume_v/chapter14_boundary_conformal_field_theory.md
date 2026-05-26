@@ -57,6 +57,9 @@
   Cardy/F-symbol basis, including the nontrivial
   `F^{sigma sigma sigma}_sigma` matrix, the free-boundary identity/energy
   channels, and the normalization-dependence of raw constants.
+- Adds Liouville as the nonrational boundary-state test case: continuous
+  direct-integral closed spectrum, FZZT wavefunctions, ZZ finite differences,
+  and the hyperbolic kernels replacing finite modular `S`-matrix entries.
 - States Cardy-Lewellen sewing status as a `quotedtheorem`, records the
   boundary `g`-theorem as a quoted monotonicity theorem, and adds an
   `openproblem` for nonrational/continuous-spectrum BCFT sewing.
@@ -94,7 +97,11 @@
    in the Cardy basis; raw constants rescale with boundary two-point
    normalizations, while the `sigma sigma sigma` fusing matrix and relative
    fixed-boundary sign are invariant sewing data.
-13. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
+13. Liouville FZZT/ZZ boundary states are distributional wavefunctions on a
+   continuous spectrum; their finite-difference and degenerate-annulus
+   simplifications are hyperbolic algebra, not a substitute for an analytic
+   sewing theorem.
+14. Cardy-Lewellen sewing and the boundary `g`-theorem are theorem inputs, not
    rederived in full here.
 
 ## Figures
@@ -109,13 +116,15 @@
   `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
   fusion-ring characters, boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, Chan--Paton direct-sum
-  multiplicities and matrix-unit multiplication, and compact-boson zero-mode
-  exchange under T-duality.
+  multiplicities and matrix-unit multiplication, compact-boson zero-mode
+  exchange under T-duality, and the Liouville FZZT/ZZ hyperbolic identities.
 
 ## Remaining Obligations
 
-- Develop Liouville boundary states only in a later pass coordinated with the
-  nonrational Liouville sewing open problem.
+- Develop the full analytic nonrational sewing framework: direct-integral
+  topology, boundary-condition-changing operators for Liouville, annulus
+  spectral-density positivity, pole prescriptions for contour motion, and
+  compatibility with anomaly lines.
 
 ## Reference Intake
 
@@ -128,6 +137,13 @@
   OPE, fusion-character, and pentagon-reduction arguments locally; it quotes
   the full all-surface Frobenius-algebra construction rather than treating it
   as folklore.
+- Liouville boundary-state sources consulted:
+  `references/02_2d_cft/boundary_liouville_fzz_hep-th-0001012/blio.tex` and
+  `references/02_2d_cft/liouville_pseudosphere_zz_hep-th-0101152/look.tex`.
+  Used to check FZZT wavefunction normalization, imaginary-parameter ZZ
+  finite differences, and degenerate annulus shift-sum identities.  The BCFT
+  chapter states only the algebraic and structural consequences; the full
+  nonrational sewing problem remains open.
 
 ## Audit Notes
 
@@ -135,3 +151,7 @@
   boundary-condition-changing OPE constants for fixed/free Ising boundaries
   in the Cardy/F-symbol basis, with calculation checks for the
   `F^{sigma sigma sigma}_sigma` matrix, relative signs, and OPE exponents.
+- 2026-05-26 Liouville boundary bridge: added the nonrational BCFT
+  interpretation of FZZT and ZZ states, displayed the direct-integral
+  replacement for rational Cardy sums, and added exact hyperbolic checks for
+  the boundary-state kernels.

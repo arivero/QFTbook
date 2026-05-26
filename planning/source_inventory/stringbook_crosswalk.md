@@ -251,9 +251,20 @@ Current absorption:
   domain, probabilistic construction boundary, reflection relation,
   continuous conformal-block decomposition, DOZZ theorem boundary, BPZ
   equations, one-screening coefficient, hypergeometric connection formulas,
-  level-two Virasoro block coefficients, and the elliptic nome interface to
-  Zamolodchikov recursion.  The finite convention algebra is checked by
-  `calculation-checks/liouville_bpz_checks.py`.
+  level-two Virasoro block coefficients, the elliptic nome interface to
+  Zamolodchikov recursion, and boundary Liouville states with FZZT
+  one-point functions and ZZ finite differences.  The finite convention
+  algebra is checked by `calculation-checks/liouville_bpz_checks.py` and the
+  Liouville boundary hyperbolic identities are checked by
+  `calculation-checks/bcft_cardy_checks.py`.
+- Volume V, Chapter 14 develops the 2D BCFT appendix material as a
+  self-contained boundary-state theory: conformal boundary data, Ishibashi
+  states, Cardy consistency, Cardy--Lewellen sewing hypotheses,
+  compact-boson Neumann/Dirichlet states, Majorana/Ising boundary states,
+  boundary-condition-changing OPE constants, direct-sum/Chan--Paton
+  boundaries, and the nonrational Liouville FZZT/ZZ bridge.  The finite
+  Cardy, Ising, compact-boson, Chan--Paton, and Liouville-boundary algebra is
+  checked by `calculation-checks/bcft_cardy_checks.py`.
 - Volume V, Chapter 15 now absorbs the chiral-algebra part of Appendix J:
   spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and
   \(\mathcal N=2\) superconformal OPEs and mode algebras, the Ramond

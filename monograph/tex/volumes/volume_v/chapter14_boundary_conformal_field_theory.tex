@@ -778,6 +778,83 @@ rescales the corresponding raw three-point constants but not the sewing
 class represented by \eqref{eq:ising-f-symbol-sigma-sigma-sigma}.
 \end{proof}
 
+\section{Nonrational Example: Liouville Boundary States}
+\label{sec:bcft-liouville-boundary-states}
+
+Chapter~\ref{ch:liouville-cft}, Section~\ref{sec:liouville-boundary-states},
+constructs the Liouville boundary states used as the basic nonrational test
+case for this chapter.  The closed state space is no longer a finite
+diagonal sum; in the scattering normalization used here it is a direct integral
+\[
+  \Hilb_{\mathrm{cl}}^{\mathrm{L}}
+  =
+  \int_0^\infty
+  \mathcal V_{Q/2+\ii P}\otimes
+  \overline{\mathcal V}_{Q/2+\ii P}\,\dd P ,
+\]
+and the Ishibashi label \(i\) is replaced by the continuous momentum
+\(P\).  A boundary state is therefore a distributional wavefunction
+\(\Psi_a(P)\) multiplying \(|P\rangle\!\rangle\), not a finite vector of
+Cardy coefficients.
+
+For the FZZT family, the wavefunction is
+\[
+  \Psi_s(P)
+  =
+  \frac1{\ii P}
+  \left(\pi\mu\,\gamma(b^2)\right)^{-\ii P/b}
+  \Gamma(1+2\ii bP)\Gamma(1+2\ii P/b)
+  \cos(2\pi sP),
+\]
+where \(\gamma(x)=\Gamma(x)/\Gamma(1-x)\), up to the common normalization and
+measure convention fixed in
+\eqref{eq:fzzt-boundary-state}.  The discrete ZZ states are finite
+differences at imaginary FZZT parameters, so their wavefunctions contain
+\[
+  2\sinh(2\pi mP/b)\sinh(2\pi nbP).
+\]
+This is the nonrational replacement for the finite modular \(S\)-matrix
+entry in Cardy's rational formula: annulus consistency is expressed by
+integral kernels and hyperbolic identities, followed by an analytic
+statement about the resulting spectral measure.
+
+\begin{proposition}[Hyperbolic kernels behind Liouville annuli]
+\label{prop:liouville-bcft-hyperbolic-kernels}
+For formal variables \(X,Y\) and for every \(n\in\mathbb Z_{>0}\),
+\begin{align}
+  \cosh(X+Y)-\cosh(X-Y)
+  &=
+  2\sinh X\sinh Y,
+  \label{eq:liouville-zz-hyperbolic-identity}
+  \\
+  \frac{\sinh(nX)}{\sinh X}
+  &=
+  \sum_{j=0}^{n-1}\exp\!\left((n-1-2j)X\right).
+  \label{eq:liouville-degenerate-shift-sum}
+\end{align}
+The first identity is the exact algebra turning an imaginary FZZT difference
+into a ZZ wavefunction.  The second identity is the exact algebra turning
+degenerate Liouville annulus kernels into a finite sum of shifted
+nondegenerate characters.
+\end{proposition}
+
+\begin{proof}
+The first equation follows immediately from writing
+\(\cosh Z=(\ee^Z+\ee^{-Z})/2\).  For the second, multiply the right hand side
+by \(2\sinh X=\ee^X-\ee^{-X}\).  All interior terms cancel in the finite
+telescoping sum, leaving \(\ee^{nX}-\ee^{-nX}=2\sinh(nX)\).  Since both sides
+are meromorphic functions of \(X\), the quotient identity follows away from
+the zeros of \(\sinh X\) and then by removable continuation at nonsingular
+limits.
+\end{proof}
+
+The proposition is deliberately only the algebraic part of the story.  A
+complete Liouville BCFT construction must still specify the direct-integral
+topology, the domains of boundary-condition-changing fields, the treatment
+of poles encountered under contour motion, and the positivity or distribution
+interpretation of the annulus spectral density.  Those are analytic sewing
+requirements, not consequences of the finite hyperbolic identities alone.
+
 \section{Sewing, Boundary Entropy, and Defect Interfaces}
 
 Section~\ref{sec:bcft-boundary-ope-sewing} displayed the boundary
@@ -843,9 +920,11 @@ defect viewpoint is developed in Volume IX.
 \begin{openproblem}[BCFT sewing beyond rational diagonal examples]
 \label{op:bcft-nonrational-sewing}
 Construct a single analytic framework that includes rational Cardy
-boundaries, compact-boson continuous families, Liouville/FZZT/ZZ-type
-continuous-spectrum boundaries, boundary-condition-changing operators, and
-defect endpoints, with convergent sewing maps for bordered Riemann surfaces.
-The framework must specify topologies on continuous direct integrals,
-domains of unbounded boundary fields, and compatibility with anomaly lines.
+boundaries, compact-boson continuous families, the Liouville FZZT and ZZ
+states of Section~\ref{sec:bcft-liouville-boundary-states},
+boundary-condition-changing operators, and defect endpoints, with convergent
+sewing maps for bordered Riemann surfaces.  The framework must specify
+topologies on continuous direct integrals, domains of unbounded boundary
+fields, pole prescriptions for contour deformations, and compatibility with
+anomaly lines.
 \end{openproblem}

@@ -148,6 +148,13 @@ Current checks:
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
   coefficients, quantum dimensions, shifted character exponents, and the
   Zhu-algebra top-weight polynomial with its primitive idempotents.
+- `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
+  including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
+  fusion associativity and fusion-ring characters, boundary entropy squares,
+  Chan--Paton direct sums, compact-boson T-duality zero modes, Ising
+  boundary-changing fusing constants and OPE powers, and the Liouville
+  FZZT/ZZ hyperbolic identities used in the nonrational boundary-state
+  discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the level-two BPZ null vector, one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,

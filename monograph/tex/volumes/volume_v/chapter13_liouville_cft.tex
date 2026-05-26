@@ -733,6 +733,267 @@ zero-mode convention for the origin of \(\phi_0\), so it is absent from this
 representative.
 \end{proof}
 
+\section{Boundary Liouville States}
+\label{sec:liouville-boundary-states}
+
+Boundary Liouville theory is the first place in this volume where the
+Cardy-state intuition from rational CFT has to be rebuilt rather than merely
+generalized by notation.  The closed spectrum is the continuous direct
+integral over \(P\ge0\), the boundary states are distributional wavefunctions
+on that spectrum, and the annulus kernels are Fourier or hyperbolic kernels
+rather than entries of a finite modular \(S\)-matrix.  This section fixes the
+normalization used later in the BCFT chapter; it does not assert a complete
+Segal-style sewing construction.
+
+\begin{definition}[Boundary Liouville datum]
+\label{def:boundary-liouville-datum}
+Let \((\Sigma,g)\) be an oriented smooth Riemannian surface with nonempty
+smooth boundary.  Let \(n\) be the outward unit normal, \(K_g\) the geodesic
+curvature of \(\partial\Sigma\) in the convention paired with \(n\), and
+\(\dd s_g\) the induced line element.  A boundary Liouville datum consists of
+\(\phi\in C^\infty(\Sigma,\mathbb R)\), \(b>0\), \(Q\in\mathbb R\),
+\(\mu>0\), and a boundary cosmological constant \(\mu_B\in\mathbb R\), with
+action
+\begin{equation}
+\begin{aligned}
+  S_L^\partial[\phi;g,\mu_B]
+  &=
+  \frac1{4\pi}
+  \int_\Sigma \dd^2x\,\sqrt g\,
+  \left(
+    g^{ab}\partial_a\phi\,\partial_b\phi
+    +Q R_g\phi
+    +4\pi\mu\,\ee^{2b\phi}
+  \right)
+  \\
+  &\quad
+  +\int_{\partial\Sigma}\dd s_g\,
+  \left(
+    \frac{Q}{2\pi}K_g\phi+\mu_B\ee^{b\phi}
+  \right).
+\end{aligned}
+  \label{eq:boundary-liouville-action}
+\end{equation}
+The factor \(QK_g/(2\pi)\) is not optional: it is the boundary partner of
+the bulk curvature coupling and is needed for conformal covariance under
+Weyl rescaling on surfaces with boundary.
+\end{definition}
+
+\begin{proposition}[Boundary Euler equation]
+\label{prop:boundary-liouville-euler-equation}
+For fixed metric \(g\), the first variation of
+\eqref{eq:boundary-liouville-action} with arbitrary smooth
+\(\delta\phi\) is stationary exactly when the bulk equation
+\eqref{eq:liouville-classical-eom} holds and the boundary field satisfies
+\begin{equation}
+  \nabla_n\phi+QK_g+2\pi b\mu_B\ee^{b\phi}=0
+  \qquad\text{on }\partial\Sigma .
+  \label{eq:boundary-liouville-boundary-condition}
+\end{equation}
+On the upper half-plane with the Euclidean metric, \(K_g=0\) and the outward
+normal is \(n=-\partial_y\), so
+\(-\partial_y\phi+2\pi b\mu_B\ee^{b\phi}=0\).
+\end{proposition}
+
+\begin{proof}
+The bulk variation is the one already displayed in
+\eqref{eq:liouville-classical-eom}, except that integration by parts now
+also gives the boundary term
+\[
+  \frac1{2\pi}\int_{\partial\Sigma}\dd s_g\,(\nabla_n\phi)\,\delta\phi .
+\]
+The variation of the boundary curvature coupling and of the boundary
+exponential, with \(g\) fixed, is
+\[
+  \int_{\partial\Sigma}\dd s_g\,
+  \left(\frac{Q}{2\pi}K_g+b\mu_B\ee^{b\phi}\right)\delta\phi .
+\]
+Since the boundary value of \(\delta\phi\) is arbitrary, the coefficient of
+\(\delta\phi\) on \(\partial\Sigma\) must vanish.  Multiplying that boundary
+coefficient by \(2\pi\) gives
+\eqref{eq:boundary-liouville-boundary-condition}.
+\end{proof}
+
+In the quantum conformal normalization \(Q=b+b^{-1}\), the boundary
+exponential
+\[
+  B_\beta(x)=\mathopen{:}\ee^{\beta\phi(x)}\mathclose{:}
+\]
+has boundary scaling dimension
+\begin{equation}
+  h^\partial_\beta=\beta(Q-\beta)
+  \label{eq:boundary-liouville-boundary-weight}
+\end{equation}
+in the doubled free-field coordinate.  Thus \(B_b\) has dimension \(1\).
+This is the perturbative Ward-identity reason why the coupling \(\mu_B\) is
+a conformal boundary coupling.  It is not, by itself, an existence theorem
+for the noncompact interacting boundary measure; the formulas below are
+bootstrap boundary data whose sewing status is recorded explicitly.
+
+\begin{definition}[FZZT parameter and wavefunction]
+\label{def:fzzt-wavefunction}
+Assume \(b>0\), \(Q=b+b^{-1}\), \(\mu>0\), and write
+\[
+  \gamma(x)=\frac{\Gamma(x)}{\Gamma(1-x)} .
+\]
+The FZZT boundary parameter \(s\in\mathbb C\) is related to the boundary
+cosmological constant by
+\begin{equation}
+  \cosh^2(\pi b s)
+  =
+  \frac{\mu_B^2}{\mu}\sin(\pi b^2),
+  \label{eq:fzzt-mub-s-relation}
+\end{equation}
+with the equality interpreted by analytic continuation when the displayed
+right hand side is outside the real positive range.  For physical Liouville
+momentum \(P\in\mathbb R\), set
+\begin{equation}
+  u_b(P)
+  =
+  \frac1{\ii P}
+  \left(\pi\mu\,\gamma(b^2)\right)^{-\ii P/b}
+  \Gamma(1+2\ii bP)\Gamma(1+2\ii P/b)
+  \label{eq:fzzt-u-wavefunction}
+\end{equation}
+as a meromorphic distribution in \(P\), and
+\begin{equation}
+  U_s(P)=u_b(P)\cos(2\pi sP).
+  \label{eq:fzzt-p-wavefunction}
+\end{equation}
+With the Ishibashi states \(\langle\!\langle P|\) normalized compatibly with
+\eqref{eq:ishibashi-overlap-character}, the formal FZZT boundary state is
+\begin{equation}
+  \langle B_s|
+  =
+  \int_0^\infty \frac{\dd P}{\pi}\,
+  U_s(P)\,\langle\!\langle P| .
+  \label{eq:fzzt-boundary-state}
+\end{equation}
+\end{definition}
+
+\begin{quotedtheorem}[FZZT one-point function]
+\label{qthm:fzzt-one-point-function}
+For generic \(b\) and generic boundary parameter \(s\), the disk one-point
+function of the bulk primary \(V_\alpha=\mathopen{:}\ee^{2\alpha\phi}
+\mathclose{:}\) on the upper half-plane has the form
+\begin{equation}
+  \langle V_\alpha(z,\bar z)\rangle_s
+  =
+  \frac{U_s(\alpha)}{|z-\bar z|^{2h_\alpha}},
+  \qquad h_\alpha=\alpha(Q-\alpha),
+  \label{eq:fzzt-disk-one-point-form}
+\end{equation}
+where
+\begin{equation}
+  U_s(\alpha)
+  =
+  \frac2b
+  \left(\pi\mu\,\gamma(b^2)\right)^{(Q-2\alpha)/(2b)}
+  \Gamma(2b\alpha-b^2)
+  \Gamma\!\left(\frac{2\alpha}{b}-\frac1{b^2}-1\right)
+  \cosh\!\left((2\alpha-Q)\pi s\right).
+  \label{eq:fzzt-alpha-one-point}
+\end{equation}
+The theorem boundary is the boundary bootstrap: the degenerate
+\(V_{-b/2}\) and \(V_{-1/(2b)}\) shift equations, the reflection relation,
+and the annulus consistency checks determine the meromorphic solution under
+the standard nonresonance and analytic-continuation hypotheses.
+\end{quotedtheorem}
+
+The conversion from \eqref{eq:fzzt-alpha-one-point} to the
+momentum-space wavefunction in Definition~\ref{def:fzzt-wavefunction} is
+elementary but convention sensitive.  If \(\alpha=Q/2+\ii P\), then
+\[
+  2b\alpha-b^2=1+2\ii bP,\qquad
+  \frac{2\alpha}{b}-\frac1{b^2}-1=\frac{2\ii P}{b}.
+\]
+Using \(\Gamma(1+x)=x\Gamma(x)\), the prefactor \(2/b\) changes
+\(\Gamma(2\ii P/b)\) into \(\Gamma(1+2\ii P/b)/(\ii P)\), while
+\(\cosh(2\pi\ii sP)=\cos(2\pi sP)\).  Hence
+\eqref{eq:fzzt-alpha-one-point} gives exactly
+\eqref{eq:fzzt-p-wavefunction}.
+
+\begin{definition}[ZZ boundary states as FZZT differences]
+\label{def:zz-boundary-state}
+For positive integers \(m,n\), define the two imaginary FZZT parameters
+\[
+  s_{m,n}^{+}=\ii\left(\frac{m}{b}+nb\right),
+  \qquad
+  s_{m,n}^{-}=\ii\left(\frac{m}{b}-nb\right).
+\]
+In the FZZT normalization above, the formal ZZ boundary state is the finite
+difference
+\begin{equation}
+  \langle ZZ_{m,n}|
+  =
+  \langle B_{s_{m,n}^{+}}|
+  -
+  \langle B_{s_{m,n}^{-}}| .
+  \label{eq:zz-as-fzzt-difference}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[ZZ wavefunction in FZZT normalization]
+\label{prop:zz-wavefunction-fzzt-normalization}
+The boundary state \(\langle ZZ_{m,n}|\) has the momentum-space expansion
+\begin{equation}
+  \langle ZZ_{m,n}|
+  =
+  \int_0^\infty\frac{\dd P}{\pi}\,
+  U_{m,n}^{ZZ}(P)\,\langle\!\langle P|,
+  \label{eq:zz-boundary-state-wavefunction}
+\end{equation}
+where
+\begin{equation}
+  U_{m,n}^{ZZ}(P)
+  =
+  2u_b(P)\,
+  \sinh\!\left(\frac{2\pi mP}{b}\right)
+  \sinh(2\pi nbP).
+  \label{eq:zz-wavefunction}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Insert \(s_{m,n}^{\pm}\) into \(\cos(2\pi sP)\).  Since
+\(\cos(\ii X)=\cosh X\),
+\[
+\begin{aligned}
+  U_{s_{m,n}^{+}}(P)-U_{s_{m,n}^{-}}(P)
+  &=
+  u_b(P)
+  \left[
+    \cosh\!\left(2\pi P\left(\frac mb+nb\right)\right)
+    -
+    \cosh\!\left(2\pi P\left(\frac mb-nb\right)\right)
+  \right]
+  \\
+  &=
+  2u_b(P)\,
+  \sinh\!\left(\frac{2\pi mP}{b}\right)\sinh(2\pi nbP),
+\end{aligned}
+\]
+using \(\cosh(X+Y)-\cosh(X-Y)=2\sinh X\sinh Y\).  The same identity is
+verified as an exact Laurent-polynomial equality in
+\texttt{calculation-checks/bcft\_cardy\_checks.py}.
+\end{proof}
+
+The discrete labels \((m,n)\) are therefore not new rational-Cardy labels.
+They are residues or finite differences inside a continuous boundary family.
+Their annulus interpretation uses the same open--closed equality as
+Chapter~\ref{ch:boundary-conformal-field-theory}, but with distributional
+wavefunctions and continuous characters.  In annulus-normalized conventions
+one often rewrites the degenerate \((m,n)\) wavefunction by dividing by the
+basic \((1,1)\) hyperbolic factors,
+\[
+  \frac{\sinh(2\pi mP/b)\sinh(2\pi nbP)}
+       {\sinh(2\pi P/b)\sinh(2\pi bP)} ,
+\]
+which makes the finite degenerate fusion sums visible.  The algebraic
+hyperbolic identities are elementary; the analytic sewing theorem for the
+resulting nonrational BCFT is not elementary and remains part of the open
+problem below.
+
 \section{Degenerate Insertions and BPZ Equations}
 
 The simplest degenerate Liouville momentum is \(\alpha=-b/2\).  Its conformal
