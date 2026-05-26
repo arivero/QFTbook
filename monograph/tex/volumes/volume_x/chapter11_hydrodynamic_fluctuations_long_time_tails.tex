@@ -1,165 +1,445 @@
 \chapter{Hydrodynamic Fluctuations And Long-Time Tails}
 \label{ch:thermal-hydrodynamic-fluctuations}
 
-\ConventionsLorentzian
+\ConventionsRealTime
 
-Hydrodynamics is an effective theory of conserved densities.  At nonzero
-temperature those densities fluctuate, and their nonlinear couplings produce
-universal late-time contributions to correlation functions.  This chapter
-derives the fluctuation framework and identifies the theorem boundary between
-hydrodynamic effective theory and a microscopic QFT.
+Hydrodynamics describes the long-wavelength evolution of conserved
+densities.  In a thermal state those densities also fluctuate.  The
+fluctuations are fixed at the linear level by static susceptibilities and
+the KMS fluctuation--dissipation relation; their nonlinear couplings then
+produce nonanalytic low-frequency terms in real-time correlators.  These
+terms are the hydrodynamic long-time tails.  They are universal within the
+hydrodynamic effective theory because their nonanalytic part is determined by
+the conserved-mode propagators and by the local nonlinear vertices.
 
-\section{Fluctuating Variables}
+Throughout this chapter spacetime is \(\mathbb R_t\times\mathbb R^d\), with
+\(d\) spatial dimensions.  Fourier modes are
+\(\exp(-\ii\omega t+\ii\mathbf k\cdot\mathbf x)\).  The diffusion
+normalizations are those of
+Chapter~\ref{ch:thermal-sk-hydrodynamic-effective-actions}: the charge
+susceptibility is \(\chi=\partial n/\partial\mu\), the conductivity is
+\(\sigma\), and \(D=\sigma/\chi\).  Equal-time thermal fluctuations of a
+coarse-grained density carry the covariance \(T\chi\).
 
-Let
+\section{Static Fluctuation Data}
+
+Let \(q_A(t,\mathbf x)\) be conserved densities in a homogeneous KMS state
+at temperature \(T\) and chemical potentials \(\mu_A\).  Write
 \[
-  \varphi_A(t,\mathbf x)
+  \delta q_A=q_A-\omega_\beta(q_A),
 \]
-denote hydrodynamic fields: energy density, charge densities, momentum
-density, or equivalent variables such as temperature, chemical potentials,
-and velocity.  Equilibrium fixes static susceptibilities
+where \(\omega_\beta\) denotes the thermal state.  The static susceptibility
+matrix in the chemical-potential convention is
 \[
   \chi_{AB}
   =
-  \int d^{d-1}x\,
-  \langle \delta q_A(0,\mathbf x)\delta q_B(0,\mathbf 0)\rangle_\beta .
+  \left(\frac{\partial q_A}{\partial\mu_B}\right)_T .
 \]
-For a diffusive charge density \(n\), the linearized equation is
-\[
-  \partial_t n-D\nabla^2 n=\nabla_i\xi^i ,
-\]
-where the noise satisfies
-\[
+For hydrodynamic variables averaged over a cell whose size is large compared
+with microscopic correlation lengths, the equal-time connected covariance is
+\begin{equation}
+  \int d^dx\,
+  \omega_\beta\!\left(
+    \delta q_A(0,\mathbf x)\delta q_B(0,\mathbf0)
+  \right)_{\rm conn}
+  =
+  T\chi_{AB}.
+  \label{eq:hydro-fluct-static-covariance}
+\end{equation}
+Equivalently, if one uses the dimensionless thermodynamic force
+\(\alpha_A=\mu_A/T\), the covariance equals
+\(\partial q_A/\partial\alpha_B\).  This convention removes a common source
+of factor-of-\(T\) errors in stochastic hydrodynamics.
+
+For one diffusive charge density \(n\), the Gaussian equilibrium
+probability functional for long-wavelength configurations is
+\begin{equation}
+  P_{\rm eq}[n]\propto
+  \exp\!\left[
+    -\frac{1}{2T\chi}\int d^dx\,(\delta n)^2
+  \right],
+  \qquad
+  \delta n=n-\omega_\beta(n).
+  \label{eq:hydro-fluct-static-gaussian}
+\end{equation}
+This formula is a local central-limit statement inside the hydrodynamic
+window.  The continuum delta function in
+\eqref{eq:hydro-fluct-static-covariance} is an effective-theory notation for
+a cell-averaged covariance; the cell scale is kept between the microscopic
+correlation length and the external wavelength.
+
+\section{Linear Stochastic Diffusion}
+
+The first-order stochastic constitutive relation for one conserved charge is
+\begin{equation}
+  \partial_t n+\partial_i j^i=0,
+  \qquad
+  j^i=-D\partial_i n+\xi^i,
+  \label{eq:hydro-fluct-langevin-diffusion}
+\end{equation}
+with Gaussian white current noise
+\begin{equation}
   \langle\xi^i(t,\mathbf x)\xi^j(t',\mathbf x')\rangle
   =
-  2T\sigma\,\delta^{ij}\delta(t-t')\delta^{(d-1)}(\mathbf x-\mathbf x')
-\]
-and \(D=\sigma/\chi\).  The noise strength is fixed by the KMS condition,
-equivalently by the fluctuation--dissipation relation.
-
-\section{Schwinger--Keldysh Origin}
-
-In the \(r,a\) basis, a quadratic diffusive effective action is
+  2T\sigma\,\delta^{ij}
+  \delta(t-t')\delta^{(d)}(\mathbf x-\mathbf x').
+  \label{eq:hydro-fluct-current-noise}
+\end{equation}
+The coefficient \(2T\sigma\) is the same coefficient derived from the
+dynamical KMS symmetry of the diffusion action in
+Chapter~\ref{ch:thermal-sk-hydrodynamic-effective-actions}.  The stochastic
+equation gives
 \[
-  I[n_r,n_a]
+  n(\omega,\mathbf k)
   =
-  \int dt\,d^{d-1}x\,
+  \frac{\ii k_i\xi^i(\omega,\mathbf k)}
+       {-\ii\omega+Dk^2},
+  \qquad
+  k^2=\mathbf k\cdot\mathbf k .
+\]
+Hence the symmetrized density correlator is
+\begin{equation}
+  G^{\rm sym}_{nn}(\omega,\mathbf k)
+  =
+  \frac{2T\sigma k^2}
+       {\omega^2+(Dk^2)^2}.
+  \label{eq:hydro-fluct-density-symmetric}
+\end{equation}
+Integrating over frequency gives
+\[
+  \int\frac{d\omega}{2\pi}
+  G^{\rm sym}_{nn}(\omega,\mathbf k)
+  =
+  \frac{T\sigma}{D}
+  =
+  T\chi,
+\]
+which is exactly the static covariance
+\eqref{eq:hydro-fluct-static-covariance}.  Thus the Einstein relation
+\(D=\sigma/\chi\) is forced by compatibility of the deterministic diffusion
+constant, the conductivity, and the equilibrium fluctuation measure.
+
+The retarded density source-response kernel from the Schwinger--Keldysh
+action is
+\begin{equation}
+  K^R_{nn}(\omega,\mathbf k)
+  =
+  \chi\,\frac{Dk^2}{Dk^2-\ii\omega}.
+  \label{eq:hydro-fluct-diffusive-retarded}
+\end{equation}
+Its imaginary part obeys the low-frequency fluctuation--dissipation relation
+\[
+  G^{\rm sym}_{nn}(\omega,\mathbf k)
+  =
+  \frac{2T}{\omega}\,
+  \operatorname{Im}K^R_{nn}(\omega,\mathbf k)
+  +O(\omega/T)
+\]
+inside the classical hydrodynamic regime.  The exact quantum formula is the
+KMS relation of Chapter~\ref{ch:thermal-spectral-kubo-transport}; the
+displayed expression is its \(|\omega|\ll T\) limit.
+
+\section{Local Schwinger--Keldysh Origin}
+
+The stochastic equation \eqref{eq:hydro-fluct-langevin-diffusion} is the
+Hubbard--Stratonovich form of the local diffusion action
+\begin{equation}
+  I_{\rm diff}
+  =
+  \int dt\,d^dx\,
   \left[
-    n_a(\partial_t n_r-D\nabla^2 n_r)
-    +iT\sigma\,(\nabla_i n_a)(\nabla_i n_a)
+  \chi B_{a0}B_{r0}
+  -\sigma B_{ai}\partial_tB_{ri}
+  +\ii T\sigma B_{ai}B_{ai}
+  \right].
+  \label{eq:hydro-fluct-diffusion-sk-action}
+\end{equation}
+Here \(B_{r\mu}=A_{r\mu}+\partial_\mu\varphi_r\) and
+\(B_{a\mu}=A_{a\mu}+\partial_\mu\varphi_a\) are the gauge-invariant
+hydrodynamic source combinations.  The \(a\)-phase variation imposes the
+continuity equation, and the imaginary term has the Gaussian representation
+\[
+  \exp\!\left[
+    -T\sigma\int B_{ai}B_{ai}
+  \right]
+  =
+  \int D\xi\,
+  \exp\!\left[
+    -\int\frac{\xi_i\xi_i}{4T\sigma}
+    +\ii\int B_{ai}\xi_i
   \right].
 \]
-Integrating over \(n_a\) gives the Langevin equation above.  The imaginary
-part is positive because the microscopic density matrix defines positive
-norms for Schwinger--Keldysh correlation functions.  Nonlinear hydrodynamics
-adds interactions constrained by conservation laws, KMS symmetry, and
-positivity.
+The same coefficient therefore controls current response, current noise, and
+diffusive relaxation.  This is the local effective-action statement of KMS:
+one chooses the dissipative term and the noise term together.
 
-\section{Mode-Coupling Integral}
+\section{Hydrodynamic Nonlinearities}
 
-Consider a conserved current containing a quadratic convective term
-\[
-  J^i=\lambda\,\varphi\,\varphi+\cdots .
-\]
-The one-loop hydrodynamic contribution to the retarded current correlator
-contains an integral of the form
-\[
-  G_R^{JJ}(\omega)\supset
-  \lambda^2
-  \int\frac{d^{d-1}k}{(2\pi)^{d-1}}
-  \frac{T^2\,\chi^{-2}}
-       {-i\omega+2Dk^2}.
-\]
-At small \(\omega\), the nonanalytic part is
-\[
-  G_R^{JJ}(\omega)\sim
-  \begin{cases}
-    (-i\omega)^{(d-3)/2}, & d\ne3,\\
-    \log(-i\omega), & d=3,
-  \end{cases}
-\]
-up to coefficients fixed by the tensor structure and susceptibilities.  In
-time domain this produces a long-time tail
-\[
-  C_{JJ}(t)\sim t^{-(d-1)/2}.
-\]
-
-\section{Cutoff Dependence And Transport}
-
-The analytic part of the same loop integral depends on the hydrodynamic
-cutoff \(\Lambda_{\mathrm{hyd}}\).  This dependence is absorbed into the
-transport coefficient that appears in the constitutive relation at that
-cutoff:
-\[
-  \sigma_{\mathrm{phys}}
+Hydrodynamic variables are local coordinates on the manifold of equilibrium
+states.  Expanding the currents in fluctuations around a homogeneous state
+gives
+\begin{equation}
+  J^i_A
   =
-  \sigma(\Lambda_{\mathrm{hyd}})
-  +
-  \Delta\sigma(\Lambda_{\mathrm{hyd}}).
+  J^i_{A,\rm lin}
+  +\frac12\,\lambda^i{}_{A,BC}\,\phi_B\phi_C
+  +O(\phi^3,\phi\,\partial\phi,\partial^2\phi),
+  \label{eq:hydro-fluct-quadratic-current}
+\end{equation}
+where \(\phi_A=\delta q_A\) after diagonalizing the linear hydrodynamic
+modes, and \(\lambda^i{}_{A,BC}\) is symmetric in \(B,C\).  The coefficient
+\(\lambda\) is determined by the equation of state and by the chosen
+hydrodynamic frame.  For example, the convective part of the stress tensor
+contains \(\pi^i\pi^j/(\varepsilon+p)\), where \(\pi^i=T^{0i}\) is momentum
+density and \(\varepsilon+p\) is the enthalpy density.
+
+The quadratic term in \eqref{eq:hydro-fluct-quadratic-current} produces a
+loop of hydrodynamic modes in current-current correlators.  The calculation
+is an effective-theory calculation with an ultraviolet cutoff
+\(\Lambda_{\rm hyd}\) below the inverse microscopic length.  Local analytic
+terms depend on this cutoff and renormalize local transport coefficients.
+The low-frequency nonanalytic part is independent of the detailed cutoff
+profile.
+
+\section{Time-Domain Tail From A Diffusive Pair}
+
+Consider one scalar diffusive mode \(\phi\) with
+\[
+  \langle\phi(t,\mathbf k)\phi(0,-\mathbf k)\rangle
+  =
+  T\chi\,e^{-Dk^2t},
+  \qquad t>0.
 \]
-The nonanalytic late-time contribution cannot be removed by a local
-coefficient.  Therefore transport in finite-temperature QFT has two layers:
-local coefficients in the hydrodynamic action and fluctuation corrections
-computed within the effective theory.
+Let the long-wavelength current contain the normal-ordered quadratic piece
+\[
+  J(t,\mathbf x)=\lambda:\!\phi(t,\mathbf x)^2\!: .
+\]
+At Gaussian order, Wick contraction gives
+\begin{align}
+  C_{JJ}(t)
+  &=
+  \int d^dx\,
+  \langle J(t,\mathbf x)J(0,\mathbf0)\rangle_{\rm conn}
+  \nonumber\\
+  &=
+  2\lambda^2(T\chi)^2
+  \int\frac{d^dk}{(2\pi)^d}\,e^{-2Dk^2t}
+  \nonumber\\
+  &=
+  2\lambda^2(T\chi)^2\,
+  (8\pi Dt)^{-d/2},
+  \qquad t>0 .
+  \label{eq:hydro-fluct-time-tail-single-diffusive-mode}
+\end{align}
+This is the basic long-time tail.  More general hydrodynamic systems give
+sums of terms of the same form, with diffusion constants replaced by sums of
+the damping rates of the two modes in the loop and with tensor projectors
+from momentum or sound modes.  The exponent is fixed by the Gaussian
+integration over small loop momentum.
 
-\section{Stochastic Stress Tensor}
+\section{Frequency-Domain Nonanalyticity}
 
-For a relativistic fluid, the stress tensor contains dissipative terms
+The same tail appears in the retarded correlator as a nonanalytic
+low-frequency term.  The scalar integral that controls a pair of diffusive
+modes is
+\begin{equation}
+  I_d(z;D)
+  =
+  \int\frac{d^dk}{(2\pi)^d}
+  \frac{1}{z+2Dk^2},
+  \qquad
+  z=-\ii\omega+0^+ .
+  \label{eq:hydro-fluct-basic-loop-integral}
+\end{equation}
+The analytic terms are cutoff dependent.  The nonanalytic part is obtained
+by subtracting local Taylor terms, or equivalently by dimensional
+regularization of the infrared integral:
+\begin{equation}
+  I_d^{\rm nonan}(z;D)
+  =
+  \frac{\Gamma(1-d/2)}{(4\pi)^{d/2}(2D)^{d/2}}\,
+  z^{d/2-1},
+  \qquad d\notin 2\mathbb Z_{\ge1}.
+  \label{eq:hydro-fluct-loop-nonanalytic-general}
+\end{equation}
+In even spatial dimension the pole of \(\Gamma(1-d/2)\) is replaced, after
+local subtraction, by \(z^{d/2-1}\log z\).  The first cases are
+\[
+\begin{array}{c|c}
+d & I_d^{\rm nonan}(z;D)\\ \hline
+1 & \displaystyle \frac{1}{2(2D)^{1/2}}\,z^{-1/2}\\[2mm]
+2 & \displaystyle -\frac{1}{8\pi D}\,\log z\\[2mm]
+3 & \displaystyle -\frac{1}{4\pi(2D)^{3/2}}\,z^{1/2}
+\end{array}
+\]
+up to scheme-dependent additive constants in \(d=2\).  The branch is fixed
+by \(z=-\ii\omega+0^+\), so the retarded function is analytic in the upper
+half \(\omega\)-plane.
+
+For \(d=3\), an explicit cutoff computation displays the separation between
+local and nonlocal terms:
+\[
+  I_3^\Lambda(z;D)
+  =
+  \frac{1}{2\pi^2(2D)}
+  \left[
+    \Lambda
+    -
+    \left(\frac{z}{2D}\right)^{1/2}
+    \arctan\!\left(
+      \frac{\Lambda}{(z/2D)^{1/2}}
+    \right)
+  \right].
+\]
+As \(z/\Lambda^2\to0\),
+\[
+  I_3^\Lambda(z;D)
+  =
+  \frac{\Lambda}{4\pi^2D}
+  -
+  \frac{z^{1/2}}{4\pi(2D)^{3/2}}
+  +O(z/\Lambda).
+\]
+The first term renormalizes a local transport coefficient.  The square-root
+term is the long-time tail written in frequency space.
+
+\section{Transport Coefficients As Scale-Dependent Local Data}
+
+Let \(\kappa\) be a transport coefficient multiplying a local term in the
+hydrodynamic constitutive relation or Schwinger--Keldysh action.  Hydrodynamic
+loops with momenta below \(\Lambda_{\rm hyd}\) shift the coefficient:
+\[
+  \kappa_{\rm phys}(\omega)
+  =
+  \kappa(\Lambda_{\rm hyd})
+  +
+  \Delta\kappa_{\rm loc}(\Lambda_{\rm hyd})
+  +
+  \Delta\kappa_{\rm nonan}(\omega).
+\]
+The sum of the first two terms is the local coefficient appropriate to the
+chosen hydrodynamic cutoff.  The last term is fixed by hydrodynamic mode
+propagation and is a genuinely nonlocal-in-time low-frequency contribution,
+distinct from a finite local derivative coefficient.  This is the
+finite-temperature analogue of ordinary effective-field theory
+renormalization: local coefficients are scheme dependent, while nonanalytic
+infrared dependence is physical within the regime of validity.
+
+The order of limits is part of the definition.  One first takes the
+thermodynamic limit of the KMS state, then probes frequencies and momenta
+inside the hydrodynamic scaling regime, and only then studies the small
+\(\omega,\mathbf k\) asymptotics.  Interchanging this order can erase the
+hydrodynamic pole, mix static and dynamic susceptibilities, or replace
+retarded functions by finite-volume quasiperiodic sums.
+
+\section{Stress-Tensor Noise}
+
+For a relativistic fluid in the local rest frame, write the stochastic
+spatial stress as
 \[
   T^{ij}
   =
-  p\delta^{ij}
-  +
-  \rho v^iv^j
-  -
-  \eta
+  p\,\delta^{ij}
+  -\eta
   \left(
     \partial^iv^j+\partial^jv^i
-    -\frac{2}{d-1}\delta^{ij}\partial_kv^k
+    -\frac{2}{d}\delta^{ij}\partial_kv^k
   \right)
-  -
-  \zeta\,\delta^{ij}\partial_kv^k
-  +
-  \Xi^{ij}.
+  -\zeta\,\delta^{ij}\partial_kv^k
+  +\Xi^{ij}
+  +O(v^2,\partial^2).
 \]
-The noise satisfies
-\[
-\begin{aligned}
-  \langle\Xi^{ij}(x)\Xi^{kl}(0)\rangle
-  =
+The white-noise covariance required by local KMS is
+\begin{align}
+  \langle\Xi^{ij}(x)\Xi^{kl}(x')\rangle
+  &=
   2T\Bigl[
     \eta
     \left(
-      \delta^{ik}\delta^{jl}+\delta^{il}\delta^{jk}
-      -\frac{2}{d-1}\delta^{ij}\delta^{kl}
+      \delta^{ik}\delta^{jl}
+      +\delta^{il}\delta^{jk}
+      -\frac{2}{d}\delta^{ij}\delta^{kl}
     \right)
     +\zeta\,\delta^{ij}\delta^{kl}
-  \Bigr]\delta^{(d)}(x).
-\end{aligned}
+  \Bigr]
+  \nonumber\\
+  &\qquad\qquad\times
+  \delta(t-t')\delta^{(d)}(\mathbf x-\mathbf x').
+  \label{eq:hydro-fluct-stress-noise}
+\end{align}
+For any real symmetric test tensor \(s_{ij}\), decompose
+\[
+  s_{ij}=s^{\rm T}_{ij}+\frac{1}{d}\delta_{ij}s^k{}_k,
+  \qquad
+  \delta^{ij}s^{\rm T}_{ij}=0.
 \]
-This is the local equilibrium limit of stress-tensor fluctuation relations.
-Its use requires a hydrodynamic cell scale larger than microscopic
-correlation lengths and smaller than the external wavelength.
+Contracting the tensor in \eqref{eq:hydro-fluct-stress-noise} with
+\(s_{ij}s_{kl}\) gives
+\[
+  4T\eta\,s^{\rm T}_{ij}s^{\rm T}_{ij}
+  +
+  2T\zeta\,(s^k{}_k)^2 .
+\]
+Thus positivity of the stochastic stress covariance is equivalent, at this
+order, to \(\eta\ge0\) and \(\zeta\ge0\).  The same inequalities are obtained
+from nonnegative entropy production in deterministic hydrodynamics.
+
+\section{Momentum Tails}
+
+Momentum density \(\pi^i=T^{0i}\) has static covariance
+\[
+  \langle\pi^i(\mathbf k)\pi^j(-\mathbf k)\rangle_{\rm eq}
+  =
+  T(\varepsilon+p)\delta^{ij}
+\]
+in the local rest frame.  Transverse momentum diffuses with kinematic
+viscosity
+\[
+  \nu=\frac{\eta}{\varepsilon+p}.
+\]
+Because the stress tensor contains the convective term
+\[
+  T^{ij}_{\rm conv}
+  =
+  \frac{\pi^i\pi^j}{\varepsilon+p},
+\]
+the shear-stress correlator contains a two-momentum hydrodynamic loop.  Its
+late-time behavior is again of the form
+\[
+  \langle T^{ij}(t)T^{kl}(0)\rangle_{\rm conn}
+  \sim
+  T^2\,\mathcal P^{ij,kl}\,
+  (8\pi\nu t)^{-d/2},
+\]
+with \(\mathcal P^{ij,kl}\) determined by the transverse projectors and by
+angular averaging.  Sound modes add oscillatory pieces with damping
+controlled by the sound attenuation constant.  The existence of the tail
+therefore follows from the convective nonlinearity and the conserved
+momentum pole; the exact tensor coefficient requires the full hydrodynamic
+mode basis and frame convention.
 
 \section{Microscopic Theorem Boundary}
 
-A derivation from QFT requires:
-\[
-\begin{gathered}
-  \text{KMS state and conserved currents},\\
-  \text{clustering and local equilibration},\\
-  \text{existence of a hydrodynamic scaling limit},\\
-  \text{positivity and KMS constraints on the Schwinger--Keldysh action},\\
-  \text{control of the order of low-frequency and infinite-volume limits}.
-\end{gathered}
-\]
-Hydrodynamic fluctuation theory computes consequences of these assumptions.
-It does not by itself prove that a given microscopic QFT equilibrates.
+A microscopic derivation from QFT must specify the KMS state, conserved
+currents, thermodynamic susceptibilities, the thermodynamic limit, clustering
+estimates, and the topology in which hydrodynamic correlators emerge from
+real-time QFT correlators.  It must also identify the slow subspace of
+conserved densities, prove local equilibration in the scaling regime being
+used, and derive the Schwinger--Keldysh positivity and KMS constraints on
+the effective action.  Hydrodynamic fluctuation theory then computes the
+consequences of these inputs.
+
+The long-time-tail calculation is rigorous as an internal statement of the
+stochastic hydrodynamic effective theory with a stated cutoff and Gaussian
+leading measure.  Promoting it to a theorem about a particular interacting
+continuum QFT requires a proof that the QFT has the hydrodynamic scaling
+limit assumed above.
 
 \begin{openproblem}[Hydrodynamic limit]
 \label{op:hydrodynamic-limit-qft}
 Derive fluctuating hydrodynamics and long-time tails directly from an
 interacting QFT with a KMS state, including the hydrodynamic scaling limit,
-noise kernel, nonlinear couplings, and renormalization of transport
-coefficients.
+noise kernel, nonlinear couplings, transport-coefficient renormalization,
+and control of the order of thermodynamic, real-time, and low-frequency
+limits.
 \end{openproblem}
