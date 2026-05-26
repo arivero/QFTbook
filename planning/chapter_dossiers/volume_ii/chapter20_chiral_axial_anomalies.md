@@ -47,6 +47,11 @@
   self-dual 't Hooft symbol identities, the quadratic identity entering the
   curvature calculation, the radial integral, topological charge, and
   coupling-coordinate conversion used there.
+- The index-normalized anomaly-polynomial section is paired with
+  `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
+  the six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
+  \(2\pi i\) inflow conversion, Standard Model hypercharge sums, and
+  \(SU(N)\) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
 
 ## Framework
 
@@ -104,6 +109,8 @@
 | \(\mathsf A,\mathsf F\) | anti-Hermitian connection and curvature for descent |
 | \(\mathsf c\) | odd anti-Hermitian ghost used in the descent complex |
 | \(I_6\) | six-form anomaly polynomial |
+| \(\mathcal I_6\) | index-normalized six-form anomaly polynomial whose descent is multiplied by \(2\pi i\) in the Euclidean effective action |
+| \(p_1(TM)\) | first Pontryagin Chern--Weil form of the tangent bundle |
 | \(I_5^{(0)}\) | Chern--Simons five-form in the descent sequence |
 | \(I_4^{(1)}\) | ghost-number-one four-form anomaly representative |
 | \(X,\mathsf A_X\) | five-dimensional inflow manifold and extension of the background connection |
@@ -185,6 +192,25 @@
   anomalous variation after integration.
 - In four dimensions the local chiral gauge anomaly descends from the six-form
   polynomial \(I_6\propto \operatorname{tr}\mathsf F^3\).
+- The index-normalized anomaly polynomial for a left-handed Weyl fermion is
+  \([\widehat A(TM)\operatorname{ch}_R(E)]_6\), whose four-dimensional
+  expansion is
+  \[
+    \frac16\operatorname{tr}_R(\ii\mathsf F/2\pi)^3
+    -
+    \frac1{24}p_1(TM)\operatorname{tr}_R(\ii\mathsf F/2\pi).
+  \]
+  The first term is the cubic gauge/flavor anomaly; the second is the mixed
+  gauge-gravitational anomaly.
+- For a \(U(1)\) symmetry, the gauged local anomaly constraints include both
+  \(\sum q_i^3=0\) and \(\sum q_i=0\), plus mixed nonabelian-\(U(1)\)
+  constraints.  One Standard Model generation satisfies these sums.
+- For \(SU(N)\), \(N\ge3\), the cubic anomaly coordinate obeys
+  \(A(\square)=1\), \(A(\overline\square)=-1\), and
+  \(A(\operatorname{adj})=0\), so vectorlike fundamentals cancel in a
+  left-handed description.
+- Anomaly matching is formulated as equality of anomaly lines under an RG flow
+  that preserves the background-field groupoid up to local counterterms.
 - The BRST descent is displayed as
   \(\dd I_5^{(0)}=I_6\), \(sI_5^{(0)}=\dd I_4^{(1)}\), and
   \(sI_4^{(1)}=\dd I_3^{(2)}\), with the even gauge parameter obtained by
@@ -250,7 +276,9 @@
 
 ## Open Boundaries
 
-- Gravitational anomalies are not developed here.
+- Pure gravitational anomalies in dimensions \(4k+2\) are not developed here.
+  This chapter includes only the mixed gauge-gravitational four-dimensional
+  anomaly polynomial needed for chiral fermions with \(U(1)\) charges.
 - Global anomalies are deferred to the next chapter.
 - The Wess--Zumino--Witten functional is introduced in the next chapter, after
   chiral symmetry breaking and pion effective fields have been set up.

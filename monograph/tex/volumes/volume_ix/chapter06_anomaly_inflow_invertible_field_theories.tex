@@ -86,6 +86,209 @@ bulk cocycles differing by a coboundary define anomaly representatives that
 are related by a local counterterm.
 \end{proof}
 
+\section{Weyl-Fermion Inflow}
+\label{sec:four-dimensional-weyl-five-dimensional-inflow}
+
+The local descent formalism of
+Chapter~\ref{ch:volume-ii-20} becomes an invertible five-dimensional theory
+after the anomaly polynomial is placed in its index normalization.  Let \(X\)
+be an oriented five-manifold with boundary \(M=\partial X\).  Let \(A_X\) be
+a background connection on \(X\), and let \(R_X\) be the curvature of a
+Riemannian connection on \(TX\).  For one left-handed four-dimensional Weyl
+fermion in a representation \(R\), the index-normalized six-form is
+\begin{equation}
+  \mathcal I_6(R)
+  =
+  \left[
+    \widehat A(TX)\operatorname{ch}_{R}(F_X)
+  \right]_6 ,
+  \label{eq:volix-index-normalized-six-form}
+\end{equation}
+with the notation of
+Section~\ref{sec:index-normalized-anomaly-polynomials}.  Choose locally a
+five-form \(\mathcal I_5^{(0)}\) satisfying
+\[
+  d\mathcal I_5^{(0)}=\mathcal I_6,
+  \qquad
+  \delta_\lambda\mathcal I_5^{(0)}
+  =
+  d\mathcal I_4^{(1)}(\lambda).
+\]
+The five-dimensional response
+\begin{equation}
+  W_X^{\rm inv}[A_X,g_X]
+  =
+  -2\pi\ii\int_X \mathcal I_5^{(0)}
+  \label{eq:five-dimensional-weyl-inflow-action}
+\end{equation}
+has boundary variation
+\[
+  \delta_\lambda W_X^{\rm inv}
+  =
+  -2\pi\ii\int_M\mathcal I_4^{(1)}(\lambda).
+\]
+It cancels a boundary left-handed determinant with
+\[
+  \delta_\lambda W_M
+  =
+  +2\pi\ii\int_M\mathcal I_4^{(1)}(\lambda).
+\]
+The sign in \eqref{eq:five-dimensional-weyl-inflow-action} is a
+boundary-condition choice: reversing the orientation of \(X\), or using a
+right-handed boundary fermion, reverses the phase.
+
+\begin{proposition}[Coefficient of abelian inflow]
+\label{prop:abelian-weyl-inflow-coefficient}
+Let the boundary field be one left-handed Weyl fermion of integer \(U(1)\)
+charge \(q\).  Let \(F=dA\), and normalize the first Pontryagin form by
+\[
+  p_1(TX)
+  =
+  -\frac1{8\pi^2}
+  \operatorname{tr}_{TX}(\mathsf R^2).
+\]
+Then a local representative of the inflow action is
+\begin{equation}
+  W_X^{\rm inv}
+  =
+  -2\pi\ii
+  \int_X
+  \left[
+    \frac{q^3}{6(2\pi)^3} A F^2
+    -
+    \frac{q}{24(2\pi)} A\,p_1(TX)
+  \right],
+  \label{eq:abelian-weyl-inflow-action}
+\end{equation}
+and under \(A\mapsto A+d\lambda\),
+\begin{equation}
+  \delta_\lambda W_X^{\rm inv}
+  =
+  -2\pi\ii
+  \int_M
+  \lambda
+  \left[
+    \frac{q^3}{6(2\pi)^3}F^2
+    -
+    \frac{q}{24(2\pi)}p_1(TM)
+  \right].
+  \label{eq:abelian-weyl-inflow-variation}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For \(U(1)\), the index-normalized polynomial is
+\[
+  \mathcal I_6(q)
+  =
+  \frac{q^3}{6(2\pi)^3}F^3
+  -
+  \frac{q}{24(2\pi)}p_1(TX)F .
+\]
+Because \(dF=0\) and \(dp_1=0\) for the Chern--Weil representative, a
+primitive is the bracketed five-form in
+\eqref{eq:abelian-weyl-inflow-action}.  Varying \(A\) gives
+\[
+  \delta_\lambda
+  \left[
+    \frac{q^3}{6(2\pi)^3}AF^2
+    -
+    \frac{q}{24(2\pi)}A\,p_1
+  \right]
+  =
+  d\lambda
+  \left[
+    \frac{q^3}{6(2\pi)^3}F^2
+    -
+    \frac{q}{24(2\pi)}p_1
+  \right].
+\]
+The expression in square brackets is closed, hence this variation is the
+exterior derivative of
+\[
+  \lambda
+  \left[
+    \frac{q^3}{6(2\pi)^3}F^2
+    -
+    \frac{q}{24(2\pi)}p_1
+  \right].
+\]
+Stokes' theorem gives \eqref{eq:abelian-weyl-inflow-variation} with the
+boundary orientation \(M=\partial X\).
+\end{proof}
+
+If the \(U(1)\) symmetry is dynamical, the boundary anomaly is an obstruction
+unless the sum of \eqref{eq:abelian-weyl-inflow-variation} over all
+left-handed Weyl fermions is the variation of an allowed four-dimensional
+local counterterm.  In the absence of such a counterterm, the local conditions
+are
+\[
+  \sum_i q_i^3=0,
+  \qquad
+  \sum_i q_i=0,
+\]
+together with the mixed nonabelian-\(U(1)\) conditions when other gauge
+factors are present.  If the \(U(1)\) symmetry is a background global
+symmetry, the same polynomial is retained as the response that must be
+matched by any infrared description.
+
+\section{From Inflow to Noninvertible Chiral Defects}
+\label{sec:inflow-to-noninvertible-chiral-defects}
+
+Inflow also gives a clean definition of some noninvertible codimension-one
+operators.  Start with a transformation \(g\) of a \(D\)-dimensional QFT whose
+background-field variation is an invertible \((D+1)\)-dimensional response
+\(\mathcal Z_{\rm anom}(g;A)\).  If \(\mathcal Z_{\rm anom}(g;A)\) is
+nontrivial, the bare codimension-one transformation wall for \(g\) is not an
+ordinary topological symmetry wall.  It becomes a genuine topological defect
+only after its boundary anomaly is trivialized by additional degrees of
+freedom on the wall or by a summation over wall gauge fields.
+
+This construction can be stated without path-integral shorthand.  Let
+\(\mathcal D_g\) be a wall implementing \(g\) across a hypersurface
+\(\Sigma\subset M\).  The wall is a relative theory for the restriction of the
+bulk anomaly to a small tubular neighborhood of \(\Sigma\).  A choice of wall
+TQFT \(\mathcal T_\Sigma\), together with a trivialization
+\[
+  \mathcal L_{\mathcal D_g}\otimes
+  \mathcal L_{\mathcal T_\Sigma}
+  \simeq
+  \mathbf 1
+\]
+of anomaly lines over the wall-background groupoid, produces an honest
+defect
+\[
+  D_g=\mathcal D_g\otimes\mathcal T_\Sigma .
+\]
+If \(\mathcal T_\Sigma\) is obtained by gauging a finite higher-form symmetry
+on the wall, fusion of \(D_g\) with its orientation reverse contains a sum
+over the gauged sectors.  That fusion is not a single copy of the identity
+defect, and \(D_g\) is noninvertible.
+
+\begin{example}[Axial defects in compact QED]
+\label{ex:qed-noninvertible-defect-from-inflow}
+Consider compact four-dimensional QED with a unit-charge massless Dirac
+fermion and with no dynamical monopoles.  The axial rotation by angle
+\(\alpha\) changes the effective action by the abelian anomaly
+\[
+  \delta_\alpha W
+  =
+  \ii\alpha\,\frac1{4\pi^2}
+  \int_M F\wedge F
+\]
+in the convention of \eqref{eq:abelian-axial-anomaly}.  For
+\(\alpha=2\pi/N\), the phase is sensitive to the magnetic one-form background
+when the theory is placed in sectors with fractional \(F/2\pi\) induced by
+that background.  The codimension-one axial wall therefore carries a mixed
+anomaly with the magnetic one-form symmetry.  Attaching a three-dimensional
+finite gauge theory whose Pontryagin-square variation cancels this mixed
+phase gives the defects \(D_{N,p}\) constructed in
+Chapter~\ref{ch:global-higher-group-symmetry-tft}.  The role of the
+three-dimensional theory is fixed by the inflow equation above: it is the
+boundary trivialization of the anomaly line of the axial wall, not an
+additional optional decoration.
+\end{example}
+
 \section{One-Form Symmetry Example}
 
 Let a four-dimensional theory have a finite abelian one-form symmetry \(A\).

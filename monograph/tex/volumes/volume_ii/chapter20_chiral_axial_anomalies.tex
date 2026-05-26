@@ -1320,6 +1320,263 @@ equivalently the vanishing of the symmetric cubic tensor
 If this polynomial is nonzero only for a background field coupled to a global
 symmetry, it is an anomaly to be matched rather than an inconsistency.
 
+\section{Index-Normalized Anomaly Polynomials}
+\label{sec:index-normalized-anomaly-polynomials}
+
+The descent representative above is written in the effective-action
+normalization convenient for Ward identities.  For global comparisons,
+especially when gravitational backgrounds are included, it is useful to keep a
+second normalization whose periods are the ones supplied by the Dirac index.
+Let \(\nabla^{TM}\) be a Riemannian connection on the tangent bundle with
+anti-Hermitian curvature \(\mathsf R\), and let
+\(\nabla^E\) be a unitary connection on the fermion bundle \(E_R\) with
+anti-Hermitian curvature \(\mathsf F_R\).  Define the Chern--Weil forms
+\begin{equation}
+  \operatorname{ch}_R(\mathsf F_R)
+  =
+  \operatorname{tr}_R
+  \exp\!\left(\frac{\ii\mathsf F_R}{2\pi}\right),
+  \qquad
+  p_1(TM)
+  =
+  -\frac1{8\pi^2}
+  \operatorname{tr}_{TM}(\mathsf R^2),
+  \label{eq:index-normalized-chern-pontryagin}
+\end{equation}
+where \(\operatorname{tr}_{TM}\) is the trace in the defining real tangent
+representation after complexification.  The six-form anomaly polynomial for a
+single left-handed Weyl fermion in \(R\), in the index normalization, is
+\begin{equation}
+  \mathcal I_6(R)
+  =
+  \bigl[
+    \widehat A(TM)\operatorname{ch}_R(\mathsf F_R)
+  \bigr]_6 .
+  \label{eq:index-normalized-anomaly-polynomial-general}
+\end{equation}
+A right-handed Weyl fermion contributes the negative of
+\eqref{eq:index-normalized-anomaly-polynomial-general}; equivalently it may be
+rewritten as a left-handed fermion in the conjugate representation and then
+the same formula may be applied to the left-handed list.
+
+Expanding
+\[
+  \widehat A(TM)=1-\frac1{24}p_1(TM)+O(\deg 8)
+\]
+and keeping six-forms gives
+\begin{equation}
+  \mathcal I_6(R)
+  =
+  \frac16
+  \operatorname{tr}_R
+  \left(\frac{\ii\mathsf F_R}{2\pi}\right)^3
+  -
+  \frac1{24}\,
+  p_1(TM)\,
+  \operatorname{tr}_R
+  \left(\frac{\ii\mathsf F_R}{2\pi}\right).
+  \label{eq:four-dimensional-index-polynomial-expanded}
+\end{equation}
+The first term is the cubic gauge or flavor anomaly.  The second term is the
+mixed gauge-gravitational anomaly.  It is present only for symmetries whose
+generator has a nonzero trace over the chiral fermion representation.  Thus it
+vanishes for a semisimple gauge group in any representation with traceless Lie
+algebra generators, but it is a genuine constraint for a gauged \(U(1)\).
+
+The relation between \(\mathcal I_6\) and the effective-action normalization
+used in \eqref{eq:consistent-descent-anomaly-representative} is as follows.
+Choose a Chern--Simons form \(\mathcal I_5^{(0)}\) with
+\[
+  d\mathcal I_5^{(0)}=\mathcal I_6,
+  \qquad
+  \delta_\lambda\mathcal I_5^{(0)}
+  =
+  d\mathcal I_4^{(1)}(\lambda).
+\]
+Then the Euclidean anomalous variation of a left-handed determinant is
+\begin{equation}
+  \delta_\lambda W_E
+  =
+  2\pi\ii\int_M
+  \mathcal I_4^{(1)}(\lambda).
+  \label{eq:index-polynomial-effective-action-normalization}
+\end{equation}
+The anti-Hermitian form \(I_6\) of the previous section is this same descent
+data after multiplying by \(2\pi\ii\) and rewriting the connection as
+\(\mathsf A=-\ii A\).  Keeping both notations visible prevents a common
+coefficient error: the index-normalized polynomial is a characteristic class,
+whereas the Ward identity carries the additional factor \(2\pi\ii\) and the
+chosen Lorentzian continuation.
+
+\begin{example}[Four-dimensional \(U(1)\) anomaly polynomial]
+\label{ex:u1-index-anomaly-polynomial}
+Let a left-handed Weyl fermion have integer charge \(q\) under a background
+\(U(1)\) connection \(A\) with curvature \(F=dA\).  In the Hermitian curvature
+notation \( \ii\mathsf F_R=qF \), and
+\eqref{eq:four-dimensional-index-polynomial-expanded} becomes
+\begin{equation}
+  \mathcal I_6(q)
+  =
+  \frac{q^3}{6(2\pi)^3}F^3
+  -
+  \frac{q}{24(2\pi)}p_1(TM)F .
+  \label{eq:u1-index-anomaly-polynomial}
+\end{equation}
+The cubic \(U(1)^3\) coefficient is \(\sum_i q_i^3\) over left-handed Weyl
+fields.  The mixed gravitational-\(U(1)\) coefficient is
+\(\sum_i q_i\).  If the \(U(1)\) is gauged, both sums must vanish, in addition
+to the mixed nonabelian-\(U(1)\) coefficients
+\[
+  \sum_i q_i\,T_{G_a}(R_i)=0
+\]
+for each simple nonabelian factor \(G_a\), where
+\(\operatorname{tr}_{R_i}(t^a t^b)=T_{G_a}(R_i)\delta^{ab}\) in the chosen
+generator normalization.
+\end{example}
+
+\begin{example}[\(SU(N)\) cubic anomaly in fundamental coordinates]
+\label{ex:su-n-fundamental-adjoint-anomaly}
+Let \(G=SU(N)\), \(N\geq3\), and choose a reference symmetric tensor
+\[
+  d_\square^{abc}
+  =
+  \operatorname{tr}_{\square}
+  \bigl(t^{(a}t^b t^{c)}\bigr)
+\]
+in the monograph trace convention.  For an irreducible representation \(R\)
+define \(A(R)\) by
+\[
+  \operatorname{tr}_{R}
+  \bigl(t^{(a}t^b t^{c)}\bigr)
+  =
+  A(R)d_\square^{abc}.
+\]
+This equation defines the cubic-anomaly coordinate; rescaling all generators
+rescales both sides and leaves \(A(R)\) unchanged.  The conjugate
+representation obeys \(A(\overline R)=-A(R)\), and every real representation
+has \(A(R)=0\).  In particular,
+\[
+  A(\square)=1,
+  \qquad
+  A(\overline\square)=-1,
+  \qquad
+  A(\operatorname{adj})=0 .
+\]
+Therefore a chiral \(SU(N)\) gauge theory containing
+\(n_\square\) left-handed fundamentals,
+\(n_{\overline\square}\) left-handed antifundamentals, and any number of
+left-handed adjoints has cubic gauge anomaly
+\begin{equation}
+  d_{\rm total}^{abc}
+  =
+  (n_\square-n_{\overline\square})d_\square^{abc}.
+  \label{eq:su-n-fund-anti-adjoint-anomaly}
+\end{equation}
+A vectorlike Dirac fundamental consists, in a left-handed description, of one
+\(\square\) and one \(\overline\square\); its contribution to
+\eqref{eq:su-n-fund-anti-adjoint-anomaly} vanishes.
+\end{example}
+
+\begin{example}[One Standard Model generation]
+\label{ex:standard-model-anomaly-sums}
+Use left-handed Weyl fields
+\[
+  Q_L:(3,2)_{1/6},\qquad
+  u^c:(\overline3,1)_{-2/3},\qquad
+  d^c:(\overline3,1)_{1/3},
+\]
+\[
+  L_L:(1,2)_{-1/2},\qquad
+  e^c:(1,1)_1 .
+\]
+The mixed nonabelian-\(U(1)_Y\) sums, with the common quadratic index of the
+fundamental factored out, are
+\[
+  SU(3)^2U(1)_Y:
+  \quad
+  2\!\left(\frac16\right)
+  -\frac23
+  +\frac13
+  =
+  0,
+\]
+and
+\[
+  SU(2)^2U(1)_Y:
+  \quad
+  3\!\left(\frac16\right)
+  -\frac12
+  =
+  0.
+\]
+The cubic and mixed gravitational hypercharge sums are
+\[
+\begin{aligned}
+  \sum_{\rm Weyl}Y^3
+  &=
+  6\left(\frac16\right)^3
+  +3\left(-\frac23\right)^3
+  +3\left(\frac13\right)^3
+  +2\left(-\frac12\right)^3
+  +1
+  =
+  0,
+\\
+  \sum_{\rm Weyl}Y
+  &=
+  6\left(\frac16\right)
+  +3\left(-\frac23\right)
+  +3\left(\frac13\right)
+  +2\left(-\frac12\right)
+  +1
+  =
+  0 .
+\end{aligned}
+  \label{eq:standard-model-hypercharge-anomaly-sums}
+\]
+The same field list contains \(3+1=4\) weak doublets, so the finite
+\(SU(2)\) anomaly discussed in Chapter~\ref{ch:volume-ii-21} is absent for
+each generation.  These cancellations are arithmetic consequences of the
+charge assignments; they do not follow from perturbative renormalizability
+alone.
+\end{example}
+
+\begin{proposition}[Anomaly matching as equality of anomaly lines]
+\label{prop:anomaly-matching-as-line-equality}
+Consider an RG flow from a ultraviolet theory \(\mathcal Q_{\rm UV}\) to an
+infrared description \(\mathcal Q_{\rm IR}\), and suppose a background-field
+groupoid \(\mathcal B(M)\) for a global symmetry is defined along the flow.
+Assume that the regulator and the integrating-out procedure preserve this
+background coupling up to local counterterms.  Then the UV and IR partition
+functions are sections of anomaly lines whose ratio is a local counterterm
+line.  Consequently the anomaly classes of \(\mathcal Q_{\rm UV}\) and
+\(\mathcal Q_{\rm IR}\) agree in the quotient by local counterterms.
+\end{proposition}
+
+\begin{proof}
+At a finite cutoff, splitting the fields into high- and low-energy variables
+is a change of variables in the regulated path integral, together with an
+ordinary integration over the high-energy variables.  Under a background gauge
+transformation, the regulated Berezinian or bosonic density changes by a
+local phase representing the UV anomaly.  The integral over high-energy modes
+produces an effective functional of the low-energy variables and backgrounds.
+Any dependence on the arbitrary separating scale is a local functional of the
+backgrounds and the retained sources, because the modes integrated out have
+no singularities at distances larger than the cutoff scale used in the split.
+Thus changing the scale changes the anomaly representative by a gauge
+variation of a local counterterm.
+
+Taking the continuum and infrared limits within the assumed background-field
+chart gives two sections over the same background groupoid.  Their
+transformation laws differ only by the local counterterm accumulated during
+the flow.  Passing to the anomaly class, where local counterterm variations
+are quotiented, gives equality.  If the symmetry is spontaneously broken, the
+Goldstone fields and Wess--Zumino--Witten functional provide one possible
+infrared section of the same line; if the infrared theory is topological, its
+invertible response supplies the section.  The statement does not assert a
+unique infrared realization, only equality of the background anomaly class.
+\end{proof}
+
 \section{Anomaly Inflow for Local Anomalies}
 
 The descent equations have a second interpretation when the four-dimensional

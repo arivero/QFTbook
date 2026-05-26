@@ -23,6 +23,12 @@ Current checks:
   cancellation between the two chiral components of a Dirac quark, and
   \(\operatorname{Tr}(T^3\{q,q\})=1/3\) for the
   \(\pi^0\gamma\gamma\) normalization.
+- `anomaly_polynomial_descent_checks.py`: exact rational checks for the
+  index-normalized anomaly-polynomial and inflow sections, including the
+  six-form \(\widehat A\,\operatorname{ch}\) coefficients, the
+  \(2\pi\ii\) conversion to effective-action inflow, one-generation Standard
+  Model hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
+  cubic-anomaly bookkeeping.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
