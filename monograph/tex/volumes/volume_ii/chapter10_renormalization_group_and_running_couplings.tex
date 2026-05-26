@@ -1646,6 +1646,152 @@ bounded by \(C\exp(-c'\rho/|g|)\) for some \(c'>0\), hence is
 \eqref{eq:borel-watson-remainder}.
 \end{proof}
 
+\begin{definition}[Lateral Borel sums and Stokes discontinuity]
+\label{def:lateral-borel-sums-stokes-discontinuity}
+Let \(\widehat A(g)\) be Gevrey-one, and suppose that its Borel transform is
+holomorphic in a punctured sector around the ray
+\(\arg\xi=\theta\), except for a locally finite set of singular points on the
+ray.  If the deformed rays
+\(\arg\xi=\theta\pm\epsilon\) have Borel--Laplace sums and these sums have
+limits as \(\epsilon\downarrow0\), the limits are the lateral sums
+\[
+  \mathcal S_{\theta^+}\widehat A(g),
+  \qquad
+  \mathcal S_{\theta^-}\widehat A(g).
+\]
+Their difference
+\[
+  \operatorname{Disc}_\theta \widehat A(g)
+  =
+  \mathcal S_{\theta^+}\widehat A(g)
+  -
+  \mathcal S_{\theta^-}\widehat A(g)
+  \label{eq:borel-stokes-discontinuity}
+\]
+is the Stokes discontinuity across the ray.  This definition is a statement
+about boundary values of a named Borel transform; it is not a prescription
+unless the analytic continuation, growth bounds, and lateral limits have been
+established.
+\end{definition}
+
+\begin{proposition}[Simple-pole Stokes jump]
+\label{prop:simple-pole-stokes-jump}
+Let \(A>0\), and suppose that in a neighborhood of \(\xi=A\) the Borel
+transform has the form
+\[
+  \mathcal B\widehat A(\xi)
+  =
+  \frac{r}{\xi-A}+H(\xi),
+  \label{eq:simple-borel-pole-local-form}
+\]
+where \(H\) is holomorphic.  Assume that away from this singularity the
+lateral Borel integrals along the positive ray satisfy the hypotheses of
+Definition~\ref{def:lateral-borel-sums-stokes-discontinuity}.  Then the
+contribution of this pole to the upper-minus-lower discontinuity is
+\[
+  \operatorname{Disc}_{0}\widehat A(g)
+  =
+  \frac{2\pi\ii r}{g}\,\ee^{-A/g}
+  +
+  \operatorname{Disc}_{0}^{\rm other}\widehat A(g),
+  \label{eq:simple-pole-stokes-jump}
+\]
+where the last term denotes contributions from other singularities on the
+same ray.
+\end{proposition}
+
+\begin{proof}
+Subtract the holomorphic part \(H\), whose upper and lower deformations across
+a small disk around \(A\) have the same limit.  The difference between the
+two lateral contours for the pole term is a positively oriented small circle
+around \(A\).  Hence
+\[
+  \frac1g\oint_{|\xi-A|=\epsilon}
+  \ee^{-\xi/g}\frac{r}{\xi-A}\,\dd\xi
+  =
+  \frac{2\pi\ii r}{g}\,\ee^{-A/g}.
+\]
+The remaining parts of the contour cancel by deformation in the common
+holomorphic domain.  Summing over singularities on the ray gives the stated
+local contribution.
+\end{proof}
+
+\begin{definition}[One-parameter transseries datum]
+\label{def:one-parameter-transseries-datum}
+Fix \(A>0\), \(\beta\in\mathbb C\), and a sector in the \(g\)-plane.  A
+one-parameter transseries datum at the first exponential scale is a formal
+object
+\[
+  \widehat F(g;\sigma)
+  =
+  \widehat\Phi_0(g)
+  +
+  \sigma\,\ee^{-A/g}g^\beta\widehat\Phi_1(g),
+  \label{eq:one-parameter-transseries-datum}
+\]
+where \(\widehat\Phi_0\) and \(\widehat\Phi_1\) are formal power series and
+\(\sigma\in\mathbb C\) is a parameter.  A summation of
+\eqref{eq:one-parameter-transseries-datum} requires summation data for both
+formal series and a rule for how \(\sigma\) changes when the summation
+direction crosses a Stokes ray.
+\end{definition}
+
+\begin{proposition}[Algebra of the first Stokes cancellation]
+\label{prop:first-stokes-cancellation-algebra}
+Assume that the lateral sums of \(\widehat\Phi_0\) and \(\widehat\Phi_1\)
+exist on a ray and satisfy
+\[
+  \mathcal S_{+}\widehat\Phi_0
+  -
+  \mathcal S_{-}\widehat\Phi_0
+  =
+  C\,\ee^{-A/g}g^\beta\,\mathcal S_{-}\widehat\Phi_1,
+  \qquad
+  \mathcal S_{+}\widehat\Phi_1=\mathcal S_{-}\widehat\Phi_1,
+  \label{eq:first-stokes-cancellation-hypothesis}
+\]
+for a constant \(C\).  Then the two lateral sums of
+\(\widehat F(g;\sigma)\) agree if and only if
+\[
+  \sigma_-=\sigma_+ + C .
+  \label{eq:transseries-parameter-stokes-jump}
+\]
+If the data are real on the two sides of a real Stokes ray and \(C\) is purely
+imaginary, the median choice
+\[
+  \sigma_+=\sigma_{\rm R}-\frac{C}{2},
+  \qquad
+  \sigma_-=\sigma_{\rm R}+\frac{C}{2},
+  \qquad
+  \sigma_{\rm R}\in\mathbb R,
+  \label{eq:median-transseries-parameter}
+\]
+gives a common real value whenever the two lateral boundary values are complex
+conjugates.
+\end{proposition}
+
+\begin{proof}
+Using \eqref{eq:first-stokes-cancellation-hypothesis},
+\[
+\begin{aligned}
+  \mathcal S_{+}\widehat F(g;\sigma_+)
+  &=
+  \mathcal S_{-}\widehat\Phi_0
+  +(C+\sigma_+)\ee^{-A/g}g^\beta\mathcal S_{-}\widehat\Phi_1,\\
+  \mathcal S_{-}\widehat F(g;\sigma_-)
+  &=
+  \mathcal S_{-}\widehat\Phi_0
+  +\sigma_-\ee^{-A/g}g^\beta\mathcal S_{-}\widehat\Phi_1.
+\end{aligned}
+\]
+Equality is therefore equivalent to \eqref{eq:transseries-parameter-stokes-jump}
+unless the displayed one-instanton lateral sum vanishes identically, in which
+case the same equation is the natural continuous extension.  The median
+choice is the symmetric solution of this affine relation.  Under the stated
+reality hypothesis the two lateral values are conjugate, so their common
+symmetric value is real.
+\end{proof}
+
 \begin{example}[Zero-dimensional stable quartic integral]
 \label{ex:zero-dimensional-quartic-large-order}
 The normalized integral
@@ -1700,6 +1846,51 @@ opposite sign of \(g\) makes the integral unstable on the real contour; the
 same analytic formula must then be understood only after choosing a complex
 cycle.
 \end{example}
+
+\begin{proposition}[Conformal Borel map for one negative cut]
+\label{prop:conformal-borel-negative-cut-map}
+Let \(A>0\), and suppose a Borel transform \(B(\xi)\) is holomorphic on the
+cut plane \(\mathbb C\setminus(-\infty,-A]\).  The map
+\[
+  w(\xi)
+  =
+  \frac{\sqrt{1+\xi/A}-1}{\sqrt{1+\xi/A}+1},
+  \qquad
+  \xi(w)=\frac{4Aw}{(1-w)^2},
+  \label{eq:conformal-borel-negative-cut-map}
+\]
+with the square root chosen positive at \(\xi=0\), maps the cut plane
+biholomorphically to the unit disk.  It sends \(\xi=0\) to \(w=0\), the first
+branch point \(\xi=-A\) to \(w=-1\), and the positive real \(\xi\)-axis to
+\(0\le w<1\).
+\end{proposition}
+
+\begin{proof}
+Set \(y=\sqrt{1+\xi/A}\).  The cut plane is mapped by \(y\) to the right half
+plane \(\Re y>0\).  The Cayley transform \(w=(y-1)/(y+1)\) maps the right
+half plane to \(|w|<1\).  Solving \(y=(1+w)/(1-w)\) gives
+\[
+  1+\frac{\xi}{A}=\left(\frac{1+w}{1-w}\right)^2,
+  \qquad
+  \xi=\frac{4Aw}{(1-w)^2}.
+\]
+The stated images of \(0\), \(-A\), and the positive real ray are immediate.
+\end{proof}
+
+\begin{remark}[Status of conformal-Borel numerics]
+\label{rem:conformal-borel-numerics-status}
+The conformal map in
+Proposition~\ref{prop:conformal-borel-negative-cut-map} is a rigorous
+acceleration device only when the analytic domain of the Borel transform is
+known.  In many applications to critical exponents one assumes, from
+finite-dimensional saddle analysis or from additional field-theoretic input,
+that the nearest Borel singularity is on the negative real axis and that no
+positive-ray singularity obstructs the Laplace integral.  A conformal-Borel
+or Borel--Pade computation made under those assumptions is a controlled
+numerical procedure conditional on the stated singularity hypothesis; it is
+not a proof that the regulated QFT exists or that the perturbative expansion
+by itself defines it.
+\end{remark}
 
 The preceding example is the finite-dimensional form of Dyson's warning:
 analytic continuation in a coupling can change the convergence of the
@@ -1848,7 +2039,8 @@ resurgence'' or ``renormalon resurgence'' name a proposed analytic mechanism,
 not a completed definition of the theory.
 \end{remark}
 
-\begin{remark}[Renormalons and Borel-plane obstructions]
+\paragraph{Renormalons and Borel-plane obstructions.}
+\label{rem:renormalons-borel-plane-obstructions}
 The term \emph{renormalon} refers to a class of large-order effects in
 renormalized perturbation theory whose diagnostic is a Borel singularity
 associated with an integration over a momentum region.  It is not a theorem
@@ -1859,10 +2051,66 @@ statement must always name the observable or coefficient function, the
 expansion coordinate, the renormalization scheme, and the factorization
 prescription.
 
-A controlled model calculation shows the mechanism.  Suppose a Euclidean
-short-distance quantity contains, after a specified set of approximations such
-as insertion of a chain of one-loop self-energy bubbles, an integral over a
-momentum \(k\) of the form
+\begin{proposition}[Factorial moment in a running-coupling model]
+\label{prop:renormalon-factorial-moment-model}
+For \(p>0\) and \(n\ge0\),
+\[
+  \int_0^1 x^{p-1}\bigl(-\log x\bigr)^n\,\dd x
+  =
+  \frac{n!}{p^{n+1}} .
+  \label{eq:renormalon-factorial-moment}
+\]
+Consequently, if a controlled approximation to an observable contains
+\[
+  R(\alpha)
+  =
+  \alpha\int_0^1
+  \frac{x^{p-1}\,\dd x}
+       {1-\beta_0\alpha(-\log x)}
+  \label{eq:renormalon-model-integral}
+\]
+and the geometric expansion is used before the integral is performed, then
+\[
+  R(\alpha)
+  \sim
+  \alpha\sum_{n\ge0}
+  \frac{\beta_0^n n!}{p^{n+1}}\alpha^n,
+  \qquad
+  \mathcal B_R(u)=\frac{1}{p-\beta_0 u}
+  \label{eq:renormalon-model-borel-pole}
+\]
+for the Borel transform of \(R(\alpha)/\alpha\).  The model therefore has a
+positive-axis Borel pole at \(u=p/\beta_0\) when \(\beta_0>0\).
+\end{proposition}
+
+\begin{proof}
+Set \(x=\ee^{-t}\).  Then \(x^{p-1}\dd x=\ee^{-pt}\dd t\) with \(t\in[0,\infty)\),
+and
+\[
+  \int_0^1 x^{p-1}(-\log x)^n\,\dd x
+  =
+  \int_0^\infty \ee^{-pt}t^n\,\dd t
+  =
+  \frac{\Gamma(n+1)}{p^{n+1}}
+  =
+  \frac{n!}{p^{n+1}}.
+\]
+Expanding the denominator in
+\eqref{eq:renormalon-model-integral} as
+\(\sum_{n\ge0}[\beta_0\alpha(-\log x)]^n\) gives the displayed asymptotic
+coefficients.  Dividing the coefficient of \(\alpha^{n+1}\) by \(n!\) gives
+the geometric Borel series
+\[
+  \sum_{n\ge0}\frac{\beta_0^n}{p^{n+1}}u^n
+  =
+  \frac1{p-\beta_0 u}.
+\]
+\end{proof}
+
+A controlled field-theoretic model calculation has the same algebraic core.
+Suppose a Euclidean short-distance quantity contains, after a specified set
+of approximations such as insertion of a chain of one-loop self-energy
+bubbles, an integral over a momentum \(k\) of the form
 \[
   \int \frac{\dd k}{k}\,F(k/Q)\,\alpha(k),
 \]
@@ -1916,7 +2164,6 @@ nonperturbative or effective-field-theory data.
 \footnote{For a systematic review, see M.~Beneke, ``Renormalons,''
 \emph{Phys. Rept.} \textbf{317} (1999) 1--142,
 doi:10.1016/S0370-1573(98)00130-6, arXiv:hep-ph/9807443.}
-\end{remark}
 
 In this monograph a displayed perturbative beta function or critical exponent
 has the following default meaning unless a stronger statement is stated: it is

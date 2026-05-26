@@ -109,14 +109,23 @@ The chapter must define:
   convergent series, and Borel summability.
 - the definition of Gevrey-one formal series, directional Borel transform, and
   Borel--Laplace sum, with Watson's lemma proved in the chapter.
+- lateral Borel sums, Stokes discontinuities, the simple-pole Stokes jump,
+  and the first transseries parameter-jump algebra underlying median
+  summation.
 - the zero-dimensional stable quartic integral as a worked large-order
   example, including its exact coefficients and hypergeometric Borel
   transform.
+- the conformal-Borel map for the case in which the Borel transform is
+  holomorphic on a plane cut from the first negative singularity; the chapter
+  states explicitly that numerical conformal-Borel use is conditional on the
+  singularity-domain hypothesis.
 - the finite-dimensional holomorphic Lefschetz-thimble setup: cycle,
   holomorphic Morse action, upward/downward thimbles, thimble decomposition,
   saddle expansion, and Stokes jumps.
 - the renormalon diagnostic as an observable- and scheme-dependent
-  Borel-plane obstruction tied to momentum regions and running couplings.
+  Borel-plane obstruction tied to momentum regions and running couplings,
+  with the factorial moment model
+  \(\int_0^1 x^{p-1}(-\log x)^n dx=n!/p^{n+1}\) proved in the chapter.
 
 ## Claim Ledger
 
@@ -229,7 +238,26 @@ The chapter must define:
     exponential growth bounds, and absence of singularities on the integration
     ray.  Watson's lemma supplies the asymptotic expansion of the resulting
     directional sum.
-20. Lefschetz-thimble analysis is a finite-dimensional relative-homology
+20. If a Borel singularity lies on the summation ray, lateral sums are the
+    correct boundary values.  A simple pole at positive Borel location \(A\)
+    contributes \(2\pi i r e^{-A/g}/g\) to the upper-minus-lower Stokes
+    discontinuity in the chapter's normalization.
+21. A one-parameter transseries does not acquire an unambiguous value until
+    the Stokes jump of its parameter is specified.  In the first Stokes
+    cancellation algebra, equality of upper and lower lateral sums requires
+    \(\sigma_-=\sigma_+ + C\), with the median choice obtained by splitting
+    this jump symmetrically under the stated reality hypotheses.
+22. The conformal-Borel map
+    \(w=(\sqrt{1+\xi/A}-1)/(\sqrt{1+\xi/A}+1)\) is theorem-level only after
+    the cut-plane analyticity domain has been established; numerical
+    conformal-Borel resummation is therefore conditional, not a substitute for
+    a nonperturbative QFT definition.
+23. The running-coupling renormalon model has a precise algebraic core:
+    \(\int_0^1 x^{p-1}(-\log x)^n dx=n!/p^{n+1}\), hence the geometric
+    one-loop model has Borel transform \(1/(p-\beta_0 u)\).  Applying this
+    conclusion to a QFT requires naming the observable, scheme, factorization
+    prescription, and approximation.
+24. Lefschetz-thimble analysis is a finite-dimensional relative-homology
     statement for holomorphic Morse integrals.  Its QFT use is regulator-level
     unless an infinite-dimensional or continuum-limit theorem is supplied.
 
@@ -294,6 +322,11 @@ The chapter must define:
   `thm:finite-dimensional-thimble-decomposition`, Example
   `ex:zero-dimensional-quartic-large-order`, and calculation check
   `calculation-checks/borel_laplace_checks.py`.
+- 2026-05-26 issue #503 pass: added lateral Borel sums, simple-pole Stokes
+  jump, one-parameter transseries/median-summation algebra, the conformal
+  Borel cut-plane map, and a theorem-level factorial moment model for
+  renormalons; expanded `calculation-checks/borel_laplace_checks.py`
+  accordingly.
 - 2026-05-24 issue pass: addressed #224 by stating the standard
   four-dimensional scalar triviality theorem at the Landau-scale discussion,
   with theorem-boundary language separating it from perturbative RG and from
