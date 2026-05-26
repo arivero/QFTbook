@@ -247,6 +247,87 @@ The coefficient is fixed by matching to a semiclassical instanton
 calculation for \(N_f=N_c-1\) and by holomorphic decoupling for smaller
 \(N_f\), once the instanton measure and scale convention have been specified.
 
+\begin{hypothesis}[SQCD one-instanton calculus input]
+\label{hyp:sqcd-one-instanton-calculus}
+For the direct instanton derivation at \(N_f=N_c-1\), the following analytic
+inputs are assumed.  The Euclidean functional integral is regulated in a
+supersymmetric holomorphic scheme preserving
+\(SU(N_f)_L\times SU(N_f)_R\times U(1)_B\) and the anomaly-free
+\(U(1)_R\).  The vacuum is taken on the maximal-rank Higgs patch, so the
+gauge group is completely broken and the instanton size integral is cut off
+at large size by the Higgs scale.  The collective-coordinate change of
+variables separates exact zero modes from nonzero modes, with the topological
+charge, \(\theta\)-angle, and coupling normalization fixed by
+Section~\ref{sec:bpst-instanton-thooft-vertex}.  Boundary terms from the
+small-size endpoint are absorbed into the holomorphic scale coordinate
+\(\Lambda_h\), and no further boundary contribution with the same quantum
+numbers is present.  Under these assumptions the one-instanton sector defines
+a holomorphic chiral \(F\)-term up to an overall nonzero constant depending on
+the normalization of \(\Lambda_h\).
+\end{hypothesis}
+
+\begin{proposition}[One-instanton test of the ADS numerator and denominator]
+\label{prop:ads-one-instanton-test}
+Assume Hypothesis~\ref{hyp:sqcd-one-instanton-calculus}.  For
+\(N_f=N_c-1\), the one-instanton contribution to the Wilsonian chiral
+superpotential has the form
+\[
+  W_{k=1}
+  =
+  \kappa_{N_c}
+  \frac{\Lambda_h^{2N_c+1}}{\det M},
+  \qquad
+  \kappa_{N_c}\neq0
+\]
+in the holomorphic scale convention used in the instanton measure.  This is
+the \(N_f=N_c-1\) specialization of \(W_{\mathrm{ADS}}\).
+\end{proposition}
+
+\begin{proof}
+For \(N_f=N_c-1\), the one-loop holomorphic exponent is
+\[
+  b_0=3N_c-N_f=2N_c+1,
+\]
+so a charge-one instanton carries the chiral scale factor
+\(\Lambda_h^{2N_c+1}\).  The index theorem used in
+Section~\ref{sec:bpst-instanton-thooft-vertex} gives \(2N_c\) adjoint
+gaugino zero modes for the \(\mathcal N=1\) vector multiplet and one zero
+mode for each fundamental Weyl fermion in a charge-one \(SU(N_c)\)
+instanton.  The \(Q^i,\widetilde Q_i\) chiral multiplets therefore contribute
+\[
+  N_f+N_f=2N_c-2
+\]
+matter-fermion zero modes.  On the maximal-rank Higgs patch the gauge
+Yukawa couplings pair \(2N_c-2\) of the adjoint zero modes with these
+matter zero modes.  Exactly two adjoint zero modes remain.  They are the
+Goldstino modes associated with the supersymmetries broken by the
+instanton, and integration over them supplies the \(d^2\theta\) measure of a
+superpotential term.
+
+The remaining dependence must be a holomorphic function of the meson matrix
+\(M^i{}_j=\widetilde Q_jQ^i\), because the baryonic coordinates are absent
+when \(N_f=N_c-1\).  Flavor invariance under
+\(SU(N_f)_L\times SU(N_f)_R\) allows dependence on \(M\) through \(\det M\)
+on this patch.  The lifted-mode determinant and the size integral must carry
+engineering dimension
+\[
+  3-(2N_c+1)=-(2N_c-2),
+\]
+which is precisely the dimension of \((\det M)^{-1}\), since
+\(\det M\) has dimension \(2N_f=2N_c-2\).  The anomaly-free
+\(R\)-charge gives
+\[
+  R(M)=2\left(1-\frac{N_c}{N_c-1}\right)=-\frac{2}{N_c-1},
+  \qquad
+  R(\det M)=-2,
+\]
+so \((\det M)^{-1}\) has \(R\)-charge \(2\), the required charge of a
+superpotential.  No other holomorphic monomial in \(\det M\) has both the
+required dimension and the required \(R\)-charge.  Thus the one-instanton
+sector has the displayed form, with the nonzero coefficient fixed by the
+chosen normalization of the regulated collective-coordinate measure.
+\end{proof}
+
 \begin{proposition}[Holomorphic decoupling equation]
 \label{prop:susy-holomorphic-decoupling}
 Give the \(N_f\)-flavor theory a mass \(m\) for the last flavor.  If the

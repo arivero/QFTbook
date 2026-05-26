@@ -343,6 +343,13 @@ Current checks:
   coefficients, Seiberg-dual magnetic rank, magnetic meson quadratic-form
   integration, Euclidean cascade step count, and
   \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
+- `susy_instanton_nekr_checks.py`: exact rational checks for the
+  supersymmetric instanton expansion, including the ADHM dimension count,
+  the trace-delta to half-trace instanton-action conversion, ADS dimension
+  and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
+  ledger, holomorphic decoupling exponent shift, the pure \(SU(2)\)
+  one-instanton Nekrasov fixed-point sum, and the first Nekrasov
+  prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
   Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian matrix integral, the

@@ -21,6 +21,12 @@ status-boundary style.
 - `M`, `B`, `tilde B`: meson, baryon, and antibaryon chiral coordinates.
 - `S`: chiral glueball coordinate.
 - `W_ADS`: Affleck-Dine-Seiberg superpotential coordinate.
+- `k`: instanton number, normalized as in the BPST section of Volume II.
+- `hyp:sqcd-one-instanton-calculus`: assumptions needed for using the
+  semiclassical `N_f=N_c-1` SQCD instanton calculation as an \(F\)-term
+  derivation.
+- `kappa_Nc`: scheme-dependent nonzero one-instanton coefficient in the
+  `N_f=N_c-1` ADS normalization.
 - `I(beta,L)`: finite-volume Witten index on a spatial three-torus.
 - `Y_i`, `x_i`: small-circle affine-Toda coordinates for pure `SU(N_c)`
   supersymmetric Yang-Mills.
@@ -58,6 +64,17 @@ status-boundary style.
   the small-circle affine-Toda count for pure \(SU(N_c)\) SYM.
 - Derives the allowed ADS superpotential form from dimension and \(R\)-charge
   constraints.
+- States the analytic assumptions required for the semiclassical
+  `N_f=N_c-1` SQCD one-instanton calculation: holomorphic regulator,
+  maximal-rank Higgs patch, collective-coordinate separation, BPST
+  topological normalization, and endpoint control by the holomorphic scale.
+- Proves the `N_f=N_c-1` instanton zero-mode ledger: `2N_c` adjoint gaugino
+  zero modes, `2N_c-2` matter zero modes, Yukawa lifting of `2N_c-2`
+  adjoint modes, and two remaining Goldstino modes giving the `d^2 theta`
+  superpotential measure.
+- Derives the one-instanton ADS form
+  `kappa_Nc Lambda_h^(2N_c+1)/det M` from the instanton scale factor,
+  flavor invariance, dimension, and \(R\)-charge.
 - Proves the holomorphic decoupling equation by matching the invariant
   holomorphic scale at a massive threshold.
 - States the quantum modified constraint for \(N_f=N_c\) with explicit
@@ -110,6 +127,10 @@ status-boundary style.
   KS numerator signs, unequal-rank R-anomaly coefficients, Seiberg-dual
   magnetic rank, magnetic meson quadratic-form integration, cascade step
   count, and the `Z_{2M}->Z_2` vacuum count.
+- `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
+  arithmetic for the ADS instanton expansion: general ADS dimension and
+  \(R\)-charge, `N_f=N_c-1` zero-mode counts, and holomorphic decoupling
+  exponent shifts.
 
 ## Figure Ledger
 

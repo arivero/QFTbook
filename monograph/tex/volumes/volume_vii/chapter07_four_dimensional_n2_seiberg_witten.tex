@@ -307,6 +307,257 @@ The phase and magnitude of \(c_-\) depend on the branch and symplectic basis;
 the linear vanishing and the charge \((1,-1)\) are invariant data of the
 singular fiber.
 
+\section{ADHM Moduli And The Nekrasov Expansion}
+\label{sec:n2-adhm-nekrasov-expansion}
+
+The Seiberg-Witten curve determines the low-energy prepotential indirectly
+through periods.  There is also a weak-coupling construction of the same
+instanton expansion from the ultraviolet gauge theory.  This section records
+the construction with all convention-dependent inputs exposed.
+
+Work in Euclidean signature on \(\mathbb R^4\simeq\mathbb C^2\), with the
+orientation and instanton number convention of
+Section~\ref{sec:bpst-instanton-thooft-vertex}.  The integer
+\[
+  k=\frac1{8\pi^2}\int_{\mathbb R^4}\operatorname{tr}(F\wedge F)
+\]
+is positive for the orientation chosen there.  The instanton-counting
+coordinate will be denoted by \(q\).  In the common half-trace superspace
+coordinate, \(q=\exp(2\pi\ii\tau_{\rm ht})\).  In the trace-delta component
+coupling coordinate of Section~\ref{sec:bpst-instanton-thooft-vertex}, the
+same one-instanton exponential is
+\[
+  q
+  =
+  \exp\!\left(
+    -\frac{4\pi^2}{g_{\rm YM}^2}+\ii\theta
+  \right)
+  =
+  \exp\!\left(
+    -\frac{8\pi^2}{g_{\rm ht}^2}+\ii\theta
+  \right).
+\]
+The ADHM and localization formulae below use \(q\) only as the holomorphic
+coordinate that grades instanton number.  For the pure \(SU(N)\) theory,
+dimensional transmutation replaces \(q\) by \(\Lambda^{2N}\) after the
+renormalization scheme has been fixed.
+
+\begin{definition}[Framed ADHM data for \(U(N)\)]
+\label{def:framed-adhm-data-un}
+Let \(K\simeq\mathbb C^k\) and \(W\simeq\mathbb C^N\).  Framed ADHM data are
+quadruples
+\[
+  (B_1,B_2,I,J),
+  \qquad
+  B_1,B_2\in\operatorname{End}(K),\quad
+  I\in\operatorname{Hom}(W,K),\quad
+  J\in\operatorname{Hom}(K,W),
+\]
+obeying
+\begin{align}
+  [B_1,B_2]+IJ&=0,
+  \label{eq:adhm-complex-moment-map}\\
+  [B_1,B_1^\dagger]+[B_2,B_2^\dagger]+II^\dagger-J^\dagger J
+  &=\zeta\,\mathbf 1_K .
+  \label{eq:adhm-real-moment-map}
+\end{align}
+The quotient by \(U(K)\) is the hyper-K\"ahler quotient.  The parameter
+\(\zeta>0\) is a stability or noncommutative resolution parameter; the
+ordinary framed instanton moduli space is recovered at \(\zeta=0\) away from
+small-instanton singular strata.  The framing is a trivialization at
+\(S^3_\infty\).
+\end{definition}
+
+\begin{proposition}[ADHM dimension count]
+\label{prop:adhm-dimension-count}
+On the stable locus where the \(GL(K)\) action has no stabilizer, the framed
+\(k\)-instanton ADHM moduli space for \(U(N)\) has complex dimension
+\[
+  2kN
+\]
+and real dimension \(4kN\).  Removing the center-of-mass position in
+\(\mathbb R^4\) gives the centered dimension \(4kN-4\).
+\end{proposition}
+
+\begin{proof}
+The complex variables \(B_1,B_2,I,J\) have complex dimension
+\[
+  2k^2+kN+kN=2k^2+2kN .
+\]
+The complex moment-map equation
+\eqref{eq:adhm-complex-moment-map} is an equation in
+\(\operatorname{End}(K)\), hence imposes \(k^2\) complex equations on the
+smooth stable locus.  Quotienting by the complexified gauge group
+\(GL(K)\) removes another \(k^2\) complex dimensions.  Thus
+\[
+  (2k^2+2kN)-k^2-k^2=2kN .
+\]
+The real moment-map quotient by \(U(K)\) is equivalent to this stable
+complex quotient by the Kempf--Ness correspondence.  Therefore the real
+dimension is \(2(2kN)=4kN\).  Translation of the instanton center is the
+trace part of \(B_1,B_2\), a copy of \(\mathbb C^2\simeq\mathbb R^4\);
+fixing it removes four real dimensions.
+\end{proof}
+
+\begin{remark}[Gauge group and compactification]
+\label{rem:adhm-u-n-su-n-compactification}
+The \(U(N)\) ADHM quotient is the clean equivariant model because the framing
+torus has \(N\) weights \(a_1,\ldots,a_N\).  Pure \(SU(N)\) instanton
+calculations are obtained by imposing \(\sum_{\alpha=1}^Na_\alpha=0\) and by
+discarding the decoupled abelian center in observables.  Ordinary
+commutative \(U(1)\) gauge theory has no smooth finite-action instantons on
+\(\mathbb R^4\); the \(U(1)\) fixed points in the sheaf or
+noncommutative compactification are pointlike ideal-sheaf strata.  Thus the
+compactification or contour prescription is part of the definition of
+\(Z_{\rm inst}\), as in Definition~\ref{def:s4-nekrasov-factor}.
+\end{remark}
+
+Let
+\[
+  T=(\mathbb C^\times)^2_{\epsilon_1,\epsilon_2}
+  \times(\mathbb C^\times)^N_{a_1,\ldots,a_N}
+\]
+act by rotating \(\mathbb C^2\) and by the framing torus.  The parameters
+\(\epsilon_1,\epsilon_2\) are the equivariant weights of the two complex
+planes, and \(a_\alpha\) are Coulomb weights.  The equivariant deformation is
+called the \(\Omega\)-background.  It has two jobs: it makes the instanton
+volume integral an equivariant integral, and it isolates fixed points for
+localization.
+
+\begin{quotedtheorem}[ADHM fixed points]
+\label{qt:adhm-fixed-points-young-diagrams}
+For the smooth framed \(U(N)\) ADHM compactification on \(\mathbb C^2\), with
+generic \(a_\alpha,\epsilon_1,\epsilon_2\), the \(T\)-fixed points are
+isolated and are labeled by \(N\)-tuples of Young diagrams
+\[
+  \vec Y=(Y_1,\ldots,Y_N),
+  \qquad
+  |\vec Y|:=\sum_{\alpha=1}^N |Y_\alpha|=k .
+\]
+The equivariant integral over the \(k\)-instanton component equals the sum of
+the reciprocal equivariant Euler classes of the tangent complexes at these
+fixed points.
+\end{quotedtheorem}
+
+The quoted statement is a theorem of equivariant algebraic geometry for the
+framed sheaf compactification.  Its use in the physical path integral
+additionally assumes that the supersymmetric regulator, the
+\(\Omega\)-background, and the contour define the same equivariant integral.
+This physical identification is the localization input; the dimension count
+alone does not imply it.
+
+\begin{definition}[Pure vector Nekrasov partition function]
+\label{def:pure-vector-nekrasov-partition}
+For pure \(U(N)\) vector multiplets, define
+\[
+  Z_{\rm inst}^{U(N)}(a,\epsilon_1,\epsilon_2;q)
+  =
+  \sum_{k\geq0}q^k Z_k^{U(N)}(a,\epsilon_1,\epsilon_2),
+  \qquad
+  Z_0^{U(N)}=1,
+\]
+where \(Z_k^{U(N)}\) is the equivariant integral over the framed
+\(k\)-instanton compactification.  The one-instanton fixed-point formula is
+\begin{equation}
+  Z_1^{U(N)}
+  =
+  \frac1{\epsilon_1\epsilon_2}
+  \sum_{\alpha=1}^N
+  \prod_{\beta\neq\alpha}
+  \frac1{(a_\alpha-a_\beta)
+  (a_\alpha-a_\beta+\epsilon_1+\epsilon_2)} .
+  \label{eq:nekrasov-one-instanton-un}
+\end{equation}
+The pure \(SU(N)\) specialization imposes \(\sum_\alpha a_\alpha=0\).  Matter
+hypermultiplets multiply each fixed-point term by the equivariant Euler class
+of the corresponding Dirac complex; the vector formula above is the part
+needed for the pure \(SU(2)\) Seiberg-Witten comparison.
+\end{definition}
+
+\begin{proposition}[Pure \(SU(2)\) one-instanton coefficient]
+\label{prop:nekrasov-su2-one-instanton}
+Set \(a_1=a\), \(a_2=-a\), and
+\(\epsilon=\epsilon_1+\epsilon_2\).  Then
+\[
+  Z_1^{SU(2)}
+  =
+  \frac{2}{\epsilon_1\epsilon_2(4a^2-\epsilon^2)} .
+\]
+Consequently, in the Nekrasov normalization
+\[
+  \mathcal F_{\rm inst}(a;q)
+  :=
+  \lim_{\epsilon_1,\epsilon_2\to0}
+  \epsilon_1\epsilon_2
+  \log Z_{\rm inst}^{SU(2)}(a,\epsilon_1,\epsilon_2;q),
+\]
+the first pure-gauge term is
+\[
+  \mathcal F_{\rm inst}(a;q)
+  =
+  \frac{q}{2a^2}+O(q^2).
+\]
+For the pure \(SU(2)\) theory, \(q\) is identified with \(\Lambda^4\) in the
+weak-coupling scale coordinate.
+\end{proposition}
+
+\begin{proof}
+Substituting \(a_1=a\), \(a_2=-a\) in
+\eqref{eq:nekrasov-one-instanton-un} gives two fixed-point contributions:
+\[
+  Z_1^{SU(2)}
+  =
+  \frac1{\epsilon_1\epsilon_2}
+  \left[
+    \frac1{(2a)(2a+\epsilon)}
+    +
+    \frac1{(-2a)(-2a+\epsilon)}
+  \right].
+\]
+The second denominator is \(2a(2a-\epsilon)\).  Hence
+\[
+  Z_1^{SU(2)}
+  =
+  \frac1{\epsilon_1\epsilon_2}
+  \frac1{2a}
+  \left(
+    \frac1{2a+\epsilon}
+    +
+    \frac1{2a-\epsilon}
+  \right)
+  =
+  \frac{2}{\epsilon_1\epsilon_2(4a^2-\epsilon^2)} .
+\]
+Since \(Z_{\rm inst}=1+qZ_1+O(q^2)\),
+\[
+  \epsilon_1\epsilon_2\log Z_{\rm inst}
+  =
+  q\,\frac{2}{4a^2-\epsilon^2}
+  +O(q^2).
+\]
+Taking \(\epsilon_1,\epsilon_2\to0\) gives \(q/(2a^2)\) at order \(q\).
+\end{proof}
+
+The coefficient in Proposition~\ref{prop:nekrasov-su2-one-instanton} is the
+first weak-coupling instanton correction to the same holomorphic prepotential
+whose periods are encoded by the curve \eqref{eq:sw-su2-curve-derived},
+after matching the additive quadratic ambiguity in \(\mathcal F\) and the
+scale coordinate.  The comparison is stringent because the Seiberg-Witten
+curve determines all powers of \(\Lambda^4/a^4\) by a period problem, while
+the ADHM construction determines them by finite-dimensional equivariant
+integrals.
+
+The exponential size of the \(k\)-instanton sector is \(q^k\).  In a
+transseries analysis of the weak-coupling expansion, these actions mark the
+candidate locations of Borel singularities separated from the perturbative
+sector by integer multiples of the one-instanton action.  A theorem-level
+resurgence statement for four-dimensional supersymmetric gauge theory would
+require a regulator, a summation prescription, and uniform control of the
+large-order perturbative coefficients.  The assertion here is the convention
+ledger: the same \(k\), action, and \(\theta\)-phase grade the ADHM integral,
+the \(\Omega\)-background partition function, and the instanton transseries
+sectors.
+
 \section{Monodromy And Light Charges}
 
 The weak-coupling region is the exterior of the curve of marginal stability
