@@ -122,6 +122,200 @@ contractions of two of the three fields.  The same convention gives
   \phi_\epsilon^4-6C_\epsilon\phi_\epsilon^2+3C_\epsilon^2 .
 \]
 
+\section{Stationary Stochastic Convolution and Wick Powers}
+
+The first analytic object in the Da Prato--Debussche construction is the
+stationary solution of the linear stochastic heat equation.  We record the
+Fourier construction because it fixes the normalization of the noise and
+proves, in a Sobolev form, the existence of the Wick powers used later.
+
+Let \(\mathbb T^2=\R^2/(2\pi\mathbb Z)^2\), and let
+\(\{e_k\}_{k\in\mathbb Z^2}\) be the orthonormal Fourier basis of
+\(L^2(\mathbb T^2)\), normalized so that
+\(-\Delta e_k=|k|^2e_k\).  The spacetime white noise in the stochastic
+quantization equation is normalized by
+\[
+  \mathbb E[\xi(\tau,x)\xi(\tau',y)]
+  =
+  2\,\delta(\tau-\tau')\delta(x-y).
+\]
+Equivalently, in Fourier coordinates,
+\begin{equation}
+  \dd X_k(\tau)
+  =
+  -(|k|^2+m^2)X_k(\tau)\dd\tau+\sqrt2\,\dd B_k(\tau),
+  \qquad X_{-k}=\overline{X_k},
+  \label{eq:spde-fourier-ou-mode}
+\end{equation}
+where the complex Brownian motions are paired so that the reconstructed
+field is real.
+
+\begin{lemma}[Stationary covariance of the linear SPDE]
+\label{lem:spde-stationary-ou-covariance}
+The stationary solution of \eqref{eq:spde-fourier-ou-mode} satisfies
+\begin{equation}
+  \mathbb E[X_k\overline{X_\ell}]
+  =
+  \frac{\delta_{k\ell}}{|k|^2+m^2}.
+  \label{eq:spde-stationary-fourier-covariance}
+\end{equation}
+Consequently \(X(\tau,\cdot)\) has the massive Gaussian free-field law with
+covariance \((-\Delta+m^2)^{-1}\), and
+\begin{equation}
+  \mathbb E\|X(\tau)\|_{H^{-s}(\mathbb T^2)}^2
+  =
+  \sum_{k\in\mathbb Z^2}
+  \frac{(1+|k|^2)^{-s}}{|k|^2+m^2}
+  <\infty
+  \qquad(s>0).
+  \label{eq:spde-ou-negative-sobolev-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For the one-dimensional Ornstein--Uhlenbeck equation
+\(\dd Z_t=-aZ_t\dd t+\sqrt2\,\dd B_t\), stationarity gives
+\[
+  Z_t=\sqrt2\int_{-\infty}^{t}e^{-a(t-r)}\,\dd B_r,
+  \qquad
+  \mathbb E|Z_t|^2
+  =
+  2\int_0^\infty e^{-2au}\,\dd u
+  =
+  a^{-1}.
+\]
+Taking \(a=|k|^2+m^2\) gives
+\eqref{eq:spde-stationary-fourier-covariance}.  The Sobolev expectation is
+the displayed Fourier sum.  In two dimensions the large-\(|k|\) summand is
+comparable to \(|k|^{-2-2s}\), whose lattice sum converges exactly when
+\(s>0\).
+\end{proof}
+
+Let \(P_N\) be the Fourier projection to \(|k|\leq N\), set \(X_N=P_NX\),
+and write
+\[
+  C_N(x-y)=\mathbb E[X_N(x)X_N(y)].
+\]
+The Wick powers are
+\[
+  :\!X_N^2\!:=X_N^2-C_N(0),\qquad
+  :\!X_N^3\!:=X_N^3-3C_N(0)X_N .
+\]
+
+\begin{proposition}[Smeared Wick powers of the two-dimensional stochastic convolution]
+\label{prop:spde-two-dimensional-wick-powers}
+For every \(n\geq1\) and every \(f\in C^\infty(\mathbb T^2)\), the random
+variables
+\[
+  :\!X_N^n\!:(f)=\int_{\mathbb T^2}f(x):\!X_N(x)^n\!:\,\dd^2x
+\]
+converge in \(L^2(\Omega)\) as \(N\to\infty\).  Moreover, for every
+\(s>1\), the fields \(:\!X_N^n\!:\) converge in
+\(L^2(\Omega;H^{-s}(\mathbb T^2))\).
+\end{proposition}
+
+\begin{proof}
+The Wick product covariance is the finite-dimensional Gaussian identity
+\begin{equation}
+  \mathbb E\!\left[
+    :\!X_N(x)^n\!:\,:\!X_M(y)^n\!:
+  \right]
+  =
+  n!\,C_{N,M}(x-y)^n,
+  \qquad
+  C_{N,M}(x-y)=\mathbb E[X_N(x)X_M(y)] .
+  \label{eq:spde-wick-power-covariance}
+\end{equation}
+This follows from the generating function
+\(\exp(tX_N-\frac12t^2C_N(0))\) and differentiating \(n\) times in each
+variable.  Hence
+\[
+  \mathbb E\left[
+    :\!X_N^n\!:(f)\,:\!X_M^n\!:(f)
+  \right]
+  =
+  n!\int_{\mathbb T^2\times\mathbb T^2}
+  f(x)f(y)\,C_{N,M}(x-y)^n\,\dd^2x\,\dd^2y .
+\]
+The massive two-dimensional covariance has the local form
+\[
+  C(x)=-\frac{1}{2\pi}\log |x|+O(1)
+  \qquad (x\to0),
+\]
+and powers of \(\log |x|\) are locally integrable in two dimensions:
+\[
+  \int_0^r \rho\,|\log \rho|^n\,\dd\rho<\infty .
+\]
+The kernels \(C_{N,M}\) converge to \(C\) away from the diagonal, and the
+standard Fourier cutoff bounds are dominated by an integrable logarithmic
+majorant.  Dominated convergence therefore proves the \(L^2\)-Cauchy
+property for every smeared Wick power.
+
+For the Sobolev statement, use the dual norm
+\[
+  \|u\|_{H^{-s}}^2
+  =
+  \sum_{q\in\mathbb Z^2}
+  (1+|q|^2)^{-s}|\widehat u(q)|^2 .
+\]
+Applying \eqref{eq:spde-wick-power-covariance} to Fourier test functions
+shows that
+\[
+  \mathbb E|\widehat{:\!X_N^n\!:}(q)
+          -\widehat{:\!X_M^n\!:}(q)|^2
+\]
+is the \(q\)-th Fourier coefficient of the integrable kernel
+\(n!\,(C_N^n-2C_{N,M}^n+C_M^n)\), and hence is bounded uniformly in \(q\) by
+the \(L^1\)-norm of that kernel.  The same dominated-convergence argument
+shows this \(L^1\)-norm tends to zero.  Since
+\(\sum_q(1+|q|^2)^{-s}<\infty\) for \(s>1\) in two dimensions, dominated
+convergence over \(q\) proves convergence in
+\(L^2(\Omega;H^{-s})\).
+\end{proof}
+
+\begin{proposition}[Heat-kernel smoothing estimate]
+\label{prop:spde-heat-kernel-smoothing}
+Let \(A=\Delta-m^2\) on \(\mathbb T^d\).  For \(r\in\R\), \(\theta\geq0\),
+and \(t>0\),
+\begin{equation}
+  \|e^{tA}u\|_{H^{r+2\theta}}
+  \leq
+  C_\theta t^{-\theta}e^{-m^2t/2}\|u\|_{H^r}.
+  \label{eq:spde-heat-kernel-smoothing}
+\end{equation}
+Consequently, if \(F\in L^\infty([0,T];H^r)\), then
+\begin{equation}
+  \left\|
+    \int_0^t e^{(t-s)A}F(s)\,\dd s
+  \right\|_{H^{r+2\theta}}
+  \leq
+  C_{\theta,T}\|F\|_{L^\infty([0,T];H^r)}
+  \quad(0\leq\theta<1).
+  \label{eq:spde-duhamel-smoothing}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+In Fourier coordinates,
+\[
+  \|e^{tA}u\|_{H^{r+2\theta}}^2
+  =
+  \sum_k
+  (1+|k|^2)^{r+2\theta}
+  e^{-2t(|k|^2+m^2)}
+  |\widehat u(k)|^2 .
+\]
+The elementary bound
+\[
+  (1+|k|^2)^{2\theta}e^{-t(|k|^2+m^2)}
+  \leq C_\theta t^{-2\theta}e^{-m^2t/2}
+\]
+gives \eqref{eq:spde-heat-kernel-smoothing}.  The Duhamel estimate follows
+by integrating
+\((t-s)^{-\theta}\) over \(0<s<t\), which is finite exactly for
+\(\theta<1\).
+\end{proof}
+
 \section{Da Prato--Debussche in Two Dimensions}
 
 On a two-dimensional torus, consider the stochastic quantization equation
@@ -188,9 +382,13 @@ The mild form of \eqref{eq:dpd-remainder-equation} is
 \]
 where \(\mathcal N\) is the cubic expression in
 \eqref{eq:dpd-remainder-equation}.  Parabolic Schauder estimates increase
-spatial regularity by two derivatives relative to the forcing, while the
-roughest forcing \(:\!X^3\!:\) has regularity below zero but above the
-threshold needed for the time-integrated heat kernel.  The remaining
+spatial regularity by two derivatives relative to the forcing; the Sobolev
+version is Proposition~\ref{prop:spde-heat-kernel-smoothing}, while the
+sharp Da Prato--Debussche proof uses the corresponding parabolic
+Besov--Holder estimates.  Proposition~\ref{prop:spde-two-dimensional-wick-powers}
+constructs the Wick powers in a Sobolev topology; the sharper statement used
+in the fixed point places \(:\!X^2\!:\) and \(:\!X^3\!:\) in negative
+Holder/Besov spaces of arbitrarily small negative regularity.  The remaining
 products contain at least one factor \(Y\) with positive regularity and are
 therefore defined by Besov or Holder multiplication.  These estimates make
 the mild map a contraction on a short time interval.  Multiplying the

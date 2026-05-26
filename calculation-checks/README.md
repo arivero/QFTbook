@@ -68,7 +68,8 @@ Current checks:
   \(\phi^4_d\) superficial-degree formula, and the two-loop
   \(\Phi^4_3\) sunset combinatorics giving the logarithmic mass-coordinate
   coefficient in the chapter's \(\lambda\phi^4+\alpha\phi^2\)
-  normalization.
+  normalization, plus the stochastic-quantization OU variance, two
+  negative-Sobolev threshold checks, and heat-kernel smoothing optimization.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

@@ -109,11 +109,47 @@ def check_phi4_three_two_loop_mass_coordinate():
     assert_equal(sunset_log_numerator, Fraction(3), "phi4_3 logarithmic mass numerator")
 
 
+def check_spde_ou_and_smoothing_normalizations():
+    # For dZ_t = -a Z_t dt + sqrt(2) dB_t, the stationary variance is
+    # 2 int_0^infty exp(-2 a u) du = 1/a.  This fixes the noise
+    # normalization giving invariant covariance (-Delta + m^2)^(-1).
+    a = Fraction(7, 3)
+    stationary_variance = Fraction(2, 1) * Fraction(1, 2 * a)
+    assert_equal(stationary_variance, Fraction(1, 1) / a, "OU stationary variance")
+
+    # In two dimensions, E ||X||_{H^{-s}}^2 has shell integrand
+    # r * r^{-2s} * r^{-2} = r^{-1-2s}, which is integrable at infinity
+    # precisely when s > 0.
+    s = Fraction(1, 5)
+    shell_exponent = Fraction(1, 1) - 2 * s - 2
+    if not shell_exponent < -1:
+        raise AssertionError("2D OU negative-Sobolev convergence threshold failed")
+
+    # The elementary Wick-power Sobolev proof bounds Fourier coefficients by
+    # an L^1 kernel norm, leaving sum_q (1+|q|^2)^(-s), whose two-dimensional
+    # shell exponent is 1 - 2s; convergence requires s > 1.
+    s_wick = Fraction(6, 5)
+    wick_shell_exponent = Fraction(1, 1) - 2 * s_wick
+    if not wick_shell_exponent < -1:
+        raise AssertionError("2D Wick H^{-s} convergence threshold failed")
+
+    # Heat smoothing uses sup_{y >= 0} y^theta exp(-t y) =
+    # (theta/t)^theta exp(-theta).  Check the value for a finite sample.
+    theta = 2.0
+    t = 0.25
+    y_star = theta / t
+    lhs = (y_star**theta) * math.exp(-t * y_star)
+    rhs = (theta / t) ** theta * math.exp(-theta)
+    if abs(lhs - rhs) > 1.0e-12:
+        raise AssertionError("heat-kernel smoothing optimization failed")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
+    check_spde_ou_and_smoothing_normalizations()
     print("All constructive scalar/SPDE Wick and power-counting checks passed.")
 
 

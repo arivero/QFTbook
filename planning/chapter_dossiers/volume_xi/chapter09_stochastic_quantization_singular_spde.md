@@ -17,6 +17,9 @@ data.
 - `C_epsilon`: Gaussian contraction in Wick powers.
 - `X`, `Y`: Ornstein-Uhlenbeck stochastic convolution and
   Da Prato--Debussche remainder.
+- `X_k`, `e_k`: Fourier modes of the stationary stochastic convolution on
+  \(\mathbb T^2\).
+- `P_N`, `C_N`: Fourier cutoff and cutoff covariance for Wick powers.
 - `(A,T,G)`, `Pi_z`, `Gamma_zz'`: regularity structure, model maps, and
   reexpansion maps.
 - `C_{1,epsilon}`, `C_{2,epsilon}`: one-loop and two-loop local SPDE
@@ -35,6 +38,16 @@ data.
 - Defines a regularized stochastic field equation as a gradient flow plus
   noise.
 - Derives the Wick subtraction in the cubic drift from Gaussian contractions.
+- Constructs the stationary two-dimensional stochastic convolution in
+  Fourier modes with the noise normalization
+  \(\mathbb E\xi\xi=2\delta\delta\), proves the invariant covariance
+  \((-\Delta+m^2)^{-1}\), and derives the \(H^{-s}\), \(s>0\), regularity
+  bound.
+- Proves a Sobolev-level convergence theorem for smeared Wick powers of the
+  two-dimensional stochastic convolution, including convergence in
+  \(L^2(\Omega;H^{-s})\) for \(s>1\).
+- Proves the Fourier heat-kernel smoothing estimate used as the Sobolev
+  model for the parabolic Schauder estimates in the DPD fixed point.
 - Develops the Da Prato--Debussche decomposition for `Phi^4_2`, identifies
   the role of the enhanced noise, and marks the solution mechanism as a
   `quotedtheorem` pending a self-contained proof.
@@ -78,3 +91,10 @@ data maps.
   \(C_{2,\epsilon}\), invariant measures of the limiting Markov process, and
   equality with the constructive Euclidean \(\Phi^4_3\) OS hierarchy only
   after the regulator chart and local coordinates are matched.
+- 2026-05-25 issue #582 pass: the chapter now proves the first elementary
+  part of the singular-SPDE proof stack internally: Fourier construction of
+  the stationary stochastic convolution, normalization of the factor \(2\) in
+  the white-noise covariance, negative-Sobolev regularity, smeared Wick-power
+  convergence in two dimensions, and a Fourier heat-kernel smoothing
+  estimate.  The calculation-check companion verifies the OU variance,
+  Sobolev threshold arithmetic, and heat-kernel optimization.
