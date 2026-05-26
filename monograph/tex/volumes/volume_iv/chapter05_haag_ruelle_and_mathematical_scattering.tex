@@ -493,6 +493,164 @@ sectors, it is a noncompact string-like excitation rather than an external
 particle creator.  This distinction is dynamical and cannot be read off from
 the formal gauge covariance alone.
 
+\subsection{Ray Dressings as Gauge-Slice Coordinates}
+
+The preceding covariance statement has a second, more computational,
+interpretation.  A Wilson-line dressed charged coordinate is the ordinary
+charged coordinate written on a gauge slice adapted to the same ray.  The
+statement below is elementary in abelian gauge theory, but it is a useful
+guardrail for perturbative calculations of dressed correlators.\footnote{A
+recent perturbative study of finite-distance dressed observables in
+electrodynamics and perturbative gravity is C.~Cheung,
+A.~Sivaramakrishnan, J.~Wilson-Gerow, and L.~Zhou, \emph{On Perturbatively
+Dressed Observables}, \href{https://arxiv.org/abs/2605.26077}
+{arXiv:2605.26077}.  The use made here is only the gauge-slice viewpoint; the
+abelian identities and denominators in this subsection are derived directly.}
+
+Let \(u^\mu\) be a fixed nonzero vector and let the half-line from \(x\) be
+\[
+  \gamma_{x,u}(\tau)=x+\tau u,\qquad \tau\ge0 .
+\]
+Work on a class of gauge potentials \(A\) and gauge functions \(\alpha\) for
+which \(u^\mu A_\mu(x+\tau u)\) and
+\(u^\mu\partial_\mu\alpha(x+\tau u)\) are absolutely integrable on
+\([0,\infty)\) and for which
+\[
+  \alpha(x+\tau u)\longrightarrow0,
+  \qquad
+  u^\mu A_\mu(x+\tau u)\longrightarrow0
+  \qquad(\tau\to\infty)
+\]
+along every ray under consideration.  Define the line functional
+\begin{equation}
+  \chi_u[A](x)
+  =
+  \int_0^\infty \dd\tau\,u^\mu A_\mu(x+\tau u).
+  \label{eq:ray-dressing-line-functional}
+\end{equation}
+For the abelian gauge convention
+\[
+  A_\mu\longmapsto A_\mu+\partial_\mu\alpha,
+  \qquad
+  \psi_q\longmapsto \ee^{\ii q\alpha}\psi_q ,
+\]
+one has
+\[
+  \chi_u[A+\dd\alpha](x)
+  =
+  \chi_u[A](x)-\alpha(x).
+\]
+Hence
+\begin{equation}
+  \Psi_{q,u}(x)
+  =
+  \ee^{\ii q\chi_u[A](x)}\psi_q(x)
+  \label{eq:ray-dressed-charged-coordinate}
+\end{equation}
+is invariant under gauge transformations that are trivial at the ray endpoint.
+
+\begin{proposition}[Ray dressing and axial gauge]
+\label{prop:ray-dressing-axial-gauge-coordinate}
+For every \(A\) in the class above, set
+\[
+  A_\mu^{[u]}(x)=A_\mu(x)+\partial_\mu\chi_u[A](x),
+  \qquad
+  \psi_q^{[u]}(x)=\ee^{\ii q\chi_u[A](x)}\psi_q(x).
+\]
+Then
+\[
+  u^\mu A_\mu^{[u]}(x)=0,
+  \qquad
+  \psi_q^{[u]}(x)=\Psi_{q,u}(x).
+  \label{eq:ray-dressing-axial-coordinate-equality}
+\]
+Thus a dressed charged insertion may be computed, in any finite regularized
+perturbative path integral for which this gauge slice and the corresponding
+change of variables have been defined with their regulator and
+Faddeev--Popov factors, as the ordinary charged field inserted in the gauge
+\(u^\mu A_\mu=0\) with the same endpoint prescription.
+\end{proposition}
+
+\begin{proof}
+Differentiate \eqref{eq:ray-dressing-line-functional} in the ray direction:
+\[
+\begin{aligned}
+  u^\nu\partial_\nu\chi_u[A](x)
+  &=
+  \int_0^\infty\dd\tau\,
+  \frac{d}{d\tau}\bigl(u^\mu A_\mu(x+\tau u)\bigr)
+  \\
+  &=
+  \lim_{T\to\infty}u^\mu A_\mu(x+Tu)-u^\mu A_\mu(x)
+  =
+  -u^\mu A_\mu(x).
+\end{aligned}
+\]
+Therefore
+\[
+  u^\mu A_\mu^{[u]}(x)
+  =
+  u^\mu A_\mu(x)+u^\mu\partial_\mu\chi_u[A](x)
+  =
+  0 .
+\]
+The second identity in
+\eqref{eq:ray-dressing-axial-coordinate-equality} is the definition of
+\(\psi_q^{[u]}\) together with \eqref{eq:ray-dressed-charged-coordinate}.
+The preceding transformation law for \(\chi_u\) shows that this construction
+is constant on gauge orbits once the boundary gauge value has been fixed.
+\end{proof}
+
+The perturbative singularities produced by the ray are also fixed at this
+elementary level.  Insert an endpoint regulator
+\[
+  \chi_{u,\epsilon}[A](x)
+  =
+  \int_0^\infty\dd\tau\,\ee^{-\epsilon\tau}
+  u^\mu A_\mu(x+\tau u),
+  \qquad \epsilon>0,
+\]
+and use the Fourier convention
+\[
+  A_\mu(y)=\int\frac{\dd^D k}{(2\pi)^D}\,
+  \ee^{-\ii k\cdot y}\widehat A_\mu(k).
+\]
+Then
+\begin{equation}
+  \chi_{u,\epsilon}[A](x)
+  =
+  -\ii
+  \int\frac{\dd^D k}{(2\pi)^D}\,
+  \ee^{-\ii k\cdot x}
+  \frac{u^\mu\widehat A_\mu(k)}{k\cdot u-\ii\epsilon}.
+  \label{eq:finite-ray-dressing-eikonal-denominator}
+\end{equation}
+Indeed, substituting the Fourier transform gives
+\[
+  \chi_{u,\epsilon}[A](x)
+  =
+  \int\frac{\dd^D k}{(2\pi)^D}
+  \ee^{-\ii k\cdot x}u^\mu\widehat A_\mu(k)
+  \int_0^\infty\dd\tau\,
+  \ee^{-(\epsilon+\ii k\cdot u)\tau},
+\]
+and the last integral is
+\[
+  \frac{1}{\epsilon+\ii k\cdot u}
+  =
+  -\frac{\ii}{k\cdot u-\ii\epsilon}.
+\]
+Expanding the exponential in
+\eqref{eq:ray-dressed-charged-coordinate} therefore inserts the distribution
+\((k\cdot u-\ii0)^{-1}\) for every photon emitted from the line.  These
+linear denominators are part of the nonlocal composite operator and of the
+corresponding axial-gauge coordinate system.  They must be treated as
+additional singular hypersurfaces in loop integrals involving dressed
+finite-distance correlators.  They do not, by themselves, supply the
+large-time Haag--Ruelle estimate or the infrared representation theory
+required for charged scattering; those are the separate problems formulated
+below and in Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}.
+
 \subsection{The Missing Haag--Ruelle Estimate}
 
 Ordinary Haag--Ruelle theory uses two facts at large time: the one-particle

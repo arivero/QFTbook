@@ -78,6 +78,10 @@ transcription/*.pdf
 references/**/*.pdf
 references/**/*.txt
 references/**/*.tex
+references/**/*.tar
+references/**/*.tar.gz
+references/**/*.tgz
+references/**/*.zip
 
 # Temporary local notes
 *.tmp

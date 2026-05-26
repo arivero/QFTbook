@@ -49,6 +49,11 @@ resonances.
   Haag--Ruelle creators.
 - Derives the abelian Wilson-line boundary-charge transformation and the
   nonabelian parallel-transporter transformation law.
+- Proves the finite-ray abelian identity that a Wilson-line dressed charged
+  coordinate is the ordinary charged coordinate on the axial gauge slice
+  \(u^\mu A_\mu=0\), under explicit endpoint and decay assumptions, and
+  derives the associated \((k\cdot u-\ii0)^{-1}\) line denominator from the
+  regulated half-line Fourier transform.
 - States the missing large-time commutator estimate for noncompact charged
   dressings as the core unsolved Haag--Ruelle replacement.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
@@ -101,3 +106,12 @@ resonances.
   asymptotic flux sectors.
 - Combine that theorem with the infraparticle analysis of massless QED and
   with detector-inclusive probabilities.
+
+## Reference Intake Notes
+
+- 2026-05-26 arXiv:2605.26077 intake: inspected the new paper
+  \emph{On Perturbatively Dressed Observables}.  Only the independently
+  checked finite-ray dressing/gauge-slice mechanism was absorbed.  The
+  paper's loop-level singularity claims, perturbative-gravity claims, and
+  finite-reference-system discussion were not imported as monograph results;
+  they remain possible prompts for future derivations if needed.
