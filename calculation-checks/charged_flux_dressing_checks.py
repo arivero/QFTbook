@@ -151,12 +151,53 @@ def check_soft_profile_velocity_separation() -> None:
     assert_close("soft coherent norm log prefactor", norm_difference, expected)
 
 
+def inner_complex(a: tuple[complex, ...], b: tuple[complex, ...]) -> complex:
+    return sum(x.conjugate() * y for x, y in zip(a, b))
+
+
+def norm_sq_complex(a: tuple[complex, ...]) -> float:
+    return inner_complex(a, a).real
+
+
+def sigma_complex(a: tuple[complex, ...], b: tuple[complex, ...]) -> float:
+    return 2.0 * inner_complex(a, b).imag
+
+
+def coherent_weyl_characteristic(F: tuple[complex, ...], f: tuple[complex, ...]) -> complex:
+    return cmath.exp(1j * sigma_complex(F, f)) * math.exp(-0.5 * norm_sq_complex(f))
+
+
+def check_weyl_characteristic_and_overlap_decay() -> None:
+    F = (1.0 + 0.3j, -0.4 + 0.7j, 0.2 - 0.1j)
+    G = (-0.2 + 0.8j, 0.1 - 0.5j, 0.6 + 0.4j)
+    f = (0.3 - 0.1j, -0.6 + 0.2j, 0.05 + 0.4j)
+
+    expected_modulus = math.exp(-0.5 * norm_sq_complex(f))
+    assert_close("coherent Weyl state modulus", abs(coherent_weyl_characteristic(F, f)), expected_modulus)
+
+    difference = tuple(x - y for x, y in zip(F, G))
+    coherent_overlap_abs = math.exp(-0.5 * norm_sq_complex(difference))
+    expected_overlap_abs = math.exp(-0.5 * norm_sq_complex(difference))
+    assert_close("coherent-vector overlap formula", coherent_overlap_abs, expected_overlap_abs)
+
+    charge = 1.0
+    uv_cutoff = 1.0
+    coefficient = angular_soft_coefficient((0.2, 0.0, 0.0), (0.4, 0.0, 0.0))
+    def overlap(ir_cutoff: float) -> float:
+        norm_sq = charge * charge * coefficient * math.log(uv_cutoff / ir_cutoff) / (2.0 * (2.0 * math.pi) ** 3)
+        return math.exp(-0.5 * norm_sq)
+
+    if not overlap(1.0e-6) < overlap(1.0e-3) < overlap(1.0e-1):
+        raise AssertionError("IR coherent overlap should decrease as the infrared cutoff is removed")
+
+
 def main() -> None:
     check_boosted_flux_integral()
     check_velocity_read_from_flux_extrema()
     check_worldline_current_denominator()
     check_half_line_fourier_transform()
     check_soft_profile_velocity_separation()
+    check_weyl_characteristic_and_overlap_decay()
     print("All charged flux and Wilson-line dressing checks passed.")
 
 

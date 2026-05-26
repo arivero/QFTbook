@@ -1012,6 +1012,136 @@ directions.  A Haag--Ruelle replacement for massless charged sectors must
 therefore build its asymptotic representation with the charged velocity and
 flux label included from the start.
 
+\subsection{Weyl Implementation and the Failure of a Common Photon Fock Space}
+
+The preceding norm calculation has an operator-algebraic meaning.  For
+\(0<\Lambda<\infty\), let \(\mathfrak h_{0,\Lambda}\) be the photon
+one-particle space obtained by replacing the interval
+\([\lambda,\Lambda]\) in \(\mathfrak h_{\lambda,\Lambda}\) by
+\((0,\Lambda]\).  For each \(\lambda>0\),
+\(\mathfrak h_{\lambda,\Lambda}\) is a closed subspace of
+\(\mathfrak h_{0,\Lambda}\) by extension by zero on \((0,\lambda]\).  Let
+\[
+  \mathcal F_{0,\Lambda}=\mathcal F_s(\mathfrak h_{0,\Lambda})
+\]
+be the corresponding fixed photon Fock space, and let
+\[
+  W(f)=\exp\!\left(a^\dagger(f)-a(f)\right),
+  \qquad f\in\mathfrak h_{0,\Lambda},
+\]
+be the Weyl operator.  With the real symplectic form
+\[
+  \sigma(f,g)=2\,\operatorname{Im}\langle f,g\rangle_{\mathfrak h},
+\]
+the Weyl relations are
+\begin{equation}
+  W(f)W(g)=
+  \exp\!\left(-\frac{\ii}{2}\sigma(f,g)\right)W(f+g),
+  \qquad
+  W(f)^*=W(-f),
+  \label{eq:charged-sector-weyl-relations}
+\end{equation}
+and the Fock vacuum state is
+\[
+  \omega_0(W(f))=\langle\Omega,W(f)\Omega\rangle
+  =
+  \exp\!\left(-\frac12\|f\|_{\mathfrak h}^2\right).
+\]
+The coherent state with soft profile \(F\) is
+\[
+  \omega_F(A)=
+  \langle \mathcal E(F),A\mathcal E(F)\rangle
+  =
+  \langle W(F)\Omega,A W(F)\Omega\rangle .
+\]
+On Weyl generators this gives
+\begin{equation}
+  \omega_F(W(f))
+  =
+  \exp\!\left(\ii\sigma(F,f)\right)
+  \exp\!\left(-\frac12\|f\|_{\mathfrak h}^2\right).
+  \label{eq:coherent-weyl-state-characteristic-functional}
+\end{equation}
+Thus the soft cloud changes the representation by adding a linear phase on
+the Weyl algebra.  At finite cutoff this phase is inner, implemented by the
+unitary \(W(F)\).  The infrared question is whether the implementing unitaries
+have a limit on one fixed Fock representation as \(\lambda\downarrow0\).
+
+\begin{proposition}[No common Fock implementer for distinct charged velocities]
+\label{prop:no-common-fock-implementer-distinct-velocities}
+Fix \(q\ne0\), \(0<\Lambda<\infty\), and two distinct velocities
+\(\mathbf v,\mathbf w\in B_1(0)\).  Put
+\[
+  D_{\lambda,\Lambda}
+  =
+  F_{q,\mathbf v,\lambda,\Lambda}
+  -
+  F_{q,\mathbf w,\lambda,\Lambda}.
+\]
+Then \(\|D_{\lambda,\Lambda}\|\to\infty\) as
+\(\lambda\downarrow0\).  Consequently the finite-cutoff Weyl implementers
+\(W(D_{\lambda,\Lambda})\) have no strong operator limit, and no nonzero weak
+operator limit, on the fixed photon Fock representation.
+\end{proposition}
+
+\begin{proof}
+The divergence of \(\|D_{\lambda,\Lambda}\|\) is exactly
+Proposition~\ref{prop:soft-coherent-velocity-separation}: for
+\(\mathbf v\ne\mathbf w\),
+\[
+  \|D_{\lambda,\Lambda}\|^2
+  =
+  \frac{q^2}{2(2\pi)^3}
+  \log\frac{\Lambda}{\lambda}\,
+  \mathcal A(\mathbf v,\mathbf w),
+  \qquad
+  \mathcal A(\mathbf v,\mathbf w)>0 .
+\]
+It remains to translate this divergence into an operator statement.  Let
+\(\mathcal D_{\rm fin}\) be the dense subspace of finite-particle vectors.
+Matrix elements of \(W(D)\) between vectors in
+\(\mathcal D_{\rm fin}\) are finite sums of polynomials in the finitely many
+inner products \(\langle f_i,D\rangle\) and their complex conjugates,
+multiplied by the vacuum Gaussian factor
+\[
+  \langle\Omega,W(D)\Omega\rangle
+  =
+  \exp\!\left(-\frac12\|D\|^2\right).
+\]
+This follows by commuting \(a(f)\) and \(a^\dagger(f)\) through \(W(D)\), or
+equivalently by differentiating the Weyl relation
+\eqref{eq:charged-sector-weyl-relations} with respect to finite test
+directions.  Polynomial growth cannot compensate the Gaussian decay.  Hence
+for every \(\xi,\eta\in\mathcal D_{\rm fin}\),
+\[
+  \langle\xi,W(D_{\lambda,\Lambda})\eta\rangle
+  \longrightarrow0
+  \qquad(\lambda\downarrow0).
+\]
+The operators \(W(D_{\lambda,\Lambda})\) are unitary and therefore uniformly
+bounded, so density of \(\mathcal D_{\rm fin}\) gives weak convergence to zero
+on all Fock vectors.  A strong limit of unitaries, if it existed, would have
+the same weak limit and would therefore be the zero operator; but a strong
+limit of unitaries is an isometry on every vector whose norm limit exists:
+\[
+  \|U\eta\|=\lim_{\lambda\downarrow0}
+  \|W(D_{\lambda,\Lambda})\eta\|=\|\eta\|.
+\]
+The zero operator is not an isometry.  Thus no strong limit exists.
+\end{proof}
+
+Proposition~\ref{prop:no-common-fock-implementer-distinct-velocities} is a
+precise version of the representation-theoretic obstruction.  At every
+positive infrared cutoff, changing the soft cloud is an ordinary Weyl
+displacement on Fock space.  Removing the cutoff turns a change of charged
+velocity into a non-Fock operation: the finite-cutoff implementing unitaries
+escape to infinity in the one-particle norm.  Therefore a charged
+asymptotic Hilbert space must be organized as a direct integral or measurable
+field of infrared representations labelled by the limiting flux data, not
+as a single photon Fock space tensored with a Wigner one-particle electron
+space.  This is still not the missing Haag--Ruelle theorem, but it is one of
+the structural inputs that theorem must contain.
+
 The flux statement and the eikonal statement are two aspects of the same
 nonlocal charged datum.  The Wilson line fixes how the charged insertion
 transforms under boundary gauge transformations; the boosted Coulomb field

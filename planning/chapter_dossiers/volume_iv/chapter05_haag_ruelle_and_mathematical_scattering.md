@@ -28,6 +28,10 @@ resonances.
   the charged velocity.
 - `A(v,w)`: positive angular coefficient controlling the infrared logarithm
   in the norm difference between two charged soft profiles.
+- `h_{0,Lambda}`, `W(f)`, `sigma(f,g)`: fixed infrared-sensitive photon
+  one-particle space, Weyl operator, and real symplectic form.
+- `D_{lambda,Lambda}`: difference between two finite-cutoff charged soft
+  profiles with distinct velocities.
 
 ## Claim Ledger
 
@@ -59,6 +63,10 @@ resonances.
   \(\log(\Lambda/\lambda)\mathcal A(v,w)\), with
   \(\mathcal A(v,w)>0\) off the diagonal; this gives the explicit
   finite-Fock calculation behind velocity-labelled charged sectors.
+- Defines the finite-cutoff Weyl algebra, derives the coherent-state
+  characteristic functional, and proves that the Weyl implementers changing
+  between distinct charged velocities have no strong operator limit and no
+  nonzero weak operator limit as the infrared cutoff is removed.
 
 ## Figure Ledger
 
@@ -73,7 +81,10 @@ resonances.
   Coulomb flux integral, the velocity read from flux extrema, the regulated
   half-line Fourier transform, the equality of worldline-current and
   momentum-space eikonal denominators, and sample positivity plus logarithmic
-  normalization for the soft coherent velocity-separation coefficient.
+  normalization for the soft coherent velocity-separation coefficient.  It
+  also checks the finite-dimensional Weyl/coherent characteristic functional
+  and the monotone decay of the coherent overlap as the infrared cutoff is
+  removed.
 
 ## Open Problems
 
