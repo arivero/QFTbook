@@ -1,0 +1,465 @@
+\chapter{Liouville Conformal Field Theory}
+\label{ch:liouville-cft}
+\ConventionsEuclideanCFT
+
+\section{Classical Datum and Stress Tensor}
+
+Liouville theory is the noncompact two-dimensional conformal theory whose
+interaction is an exponential of a scalar field.  This chapter treats it as a
+two-dimensional QFT construction problem whose data are a background surface,
+a scalar distribution, a curvature coupling, exponential insertions, Virasoro
+Ward identities, degenerate fields, and sewing constraints.  The development
+below fixes the normalizations, derives the local representation-theoretic
+identities, and states the present theorem boundaries for the probabilistic
+and bootstrap constructions.
+
+\begin{definition}[Classical Liouville datum]
+\label{def:classical-liouville-datum}
+A classical Liouville datum consists of an oriented smooth closed surface
+\(\Sigma\), a Riemannian metric \(g\) on \(\Sigma\), a real scalar field
+\(\phi\in C^\infty(\Sigma,\mathbb R)\), parameters
+\[
+  b>0,\qquad Q\in\mathbb R,\qquad \mu>0,
+\]
+and the Euclidean action
+\begin{equation}
+  S_L[\phi;g]
+  =
+  \frac1{4\pi}
+  \int_\Sigma \dd^2x\,\sqrt g\,
+  \left(
+    g^{ab}\partial_a\phi\,\partial_b\phi
+    +Q R_g\phi
+    +4\pi\mu\,\ee^{2b\phi}
+  \right).
+  \label{eq:liouville-classical-action}
+\end{equation}
+Here \(R_g\) is the scalar curvature of \(g\).  The exponential term is a
+function of the smooth classical field in this definition; in the quantum
+theory it is a renormalized random measure or a normal-ordered local field,
+depending on the construction framework.
+\end{definition}
+
+Varying a compactly supported smooth \(\delta\phi\) gives
+\[
+  \delta S_L
+  =
+  \frac1{4\pi}
+  \int_\Sigma\sqrt g\,
+  \left(
+    -2\Delta_g\phi+Q R_g+8\pi b\mu\ee^{2b\phi}
+  \right)\delta\phi .
+\]
+Thus the classical Euler--Lagrange equation is
+\begin{equation}
+  -\Delta_g\phi+\frac Q2 R_g+4\pi b\mu\ee^{2b\phi}=0.
+  \label{eq:liouville-classical-eom}
+\end{equation}
+On a flat complex coordinate patch \(z\), the holomorphic stress tensor
+representative is
+\begin{equation}
+  T(z)
+  =
+  -:\!(\partial\phi)^2\!:(z)+Q\,\partial^2\phi(z).
+  \label{eq:liouville-stress-tensor}
+\end{equation}
+The normal ordering in \eqref{eq:liouville-stress-tensor} is a free-field
+short-distance prescription.  It is used here as a perturbative coordinate on
+the Virasoro representation data; the nonperturbative probabilistic
+construction is stated later as a separate object.
+
+\begin{convention}[Free-field normalization]
+\label{conv:liouville-free-field-normalization}
+In this chapter the local free field has two-point singularity
+\[
+  \phi(z)\phi(w)\sim -\frac12\log |z-w|^2,
+  \qquad
+  \partial\phi(z)\partial\phi(w)\sim -\frac1{2(z-w)^2}.
+\]
+The holomorphic exponential field is denoted
+\[
+  V_\alpha(z,\bar z)=\mathopen{:}\ee^{2\alpha\phi(z,\bar z)}\mathclose{:}.
+\]
+With this convention the standard Liouville relation is
+\[
+  Q=b+b^{-1}.
+  \label{eq:liouville-Q-b-relation}
+\]
+\end{convention}
+
+\begin{proposition}[Improved central charge and Liouville weights]
+\label{prop:liouville-central-charge-weights}
+Assume the free-field OPE convention
+\ref{conv:liouville-free-field-normalization}.  The stress tensor
+\eqref{eq:liouville-stress-tensor} has Virasoro central charge
+\begin{equation}
+  c_L=1+6Q^2.
+  \label{eq:liouville-central-charge}
+\end{equation}
+The exponential \(V_\alpha\) is Virasoro primary in the free-field
+coordinate with conformal weights
+\begin{equation}
+  h_\alpha=\bar h_\alpha=\alpha(Q-\alpha).
+  \label{eq:liouville-exponential-weight}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The stress tensor is \(T=T_0+T_Q\), where
+\[
+  T_0=-:\!(\partial\phi)^2\!:,\qquad T_Q=Q\partial^2\phi.
+\]
+The double contraction in \(T_0(z)T_0(w)\) gives the central term
+\(\frac{1}{2}(z-w)^{-4}\), hence \(c=1\) for \(Q=0\).  The mixed terms have
+at most third-order poles and contribute to the transformation of \(T\), not
+to the central term.  Since
+\[
+  \partial^2\phi(z)\partial^2\phi(w)
+  =
+  \partial_z^2\partial_w^2
+  \left(-\frac12\log(z-w)\right)
+  \sim
+  \frac{3}{(z-w)^4},
+\]
+the improvement contributes \(3Q^2(z-w)^{-4}\).  Comparing
+\[
+  T(z)T(w)\sim
+  \frac{c/2}{(z-w)^4}
+  +\frac{2T(w)}{(z-w)^2}
+  +\frac{\partial T(w)}{z-w}
+\]
+gives \(c=1+6Q^2\).
+
+For the exponential,
+\[
+  \partial\phi(z)V_\alpha(w,\bar w)
+  \sim
+  -\frac{\alpha}{z-w}V_\alpha(w,\bar w),
+  \qquad
+  \partial^2\phi(z)V_\alpha(w,\bar w)
+  \sim
+  \frac{\alpha}{(z-w)^2}V_\alpha(w,\bar w).
+\]
+The double contraction of \(-:\!(\partial\phi)^2\!:\) contributes
+\(-\alpha^2(z-w)^{-2}V_\alpha\), and the improvement contributes
+\(\alpha Q(z-w)^{-2}V_\alpha\).  The simple-pole term is
+\((z-w)^{-1}\partial_wV_\alpha\).  Therefore \(V_\alpha\) has the weight
+\(\alpha(Q-\alpha)\).
+\end{proof}
+
+The interaction \(\mu\ee^{2b\phi}\) is marginal precisely when
+\(b(Q-b)=1\), which gives \(Q=b+b^{-1}\).  Thus
+\eqref{eq:liouville-Q-b-relation} is an operational normalization condition:
+it is the condition that the exponential potential have weight \((1,1)\) in
+the background-charge representation.
+
+\section{Exponential Operators and the Probabilistic Object}
+
+Liouville correlation functions are infinite-dimensional Euclidean QFT
+objects.  The rigorous probabilistic construction separates the constant mode
+from the mean-zero Gaussian free field and interprets the exponential
+interaction as Gaussian multiplicative chaos.
+
+\begin{definition}[Seiberg domain in physics normalization]
+\label{def:liouville-seiberg-domain}
+For insertions \(V_{\alpha_1}(x_1),\ldots,V_{\alpha_n}(x_n)\) on a closed
+surface \(\Sigma\) with Euler characteristic \(\chi(\Sigma)\), the Seiberg
+domain is the set of momenta satisfying
+\begin{equation}
+  \alpha_i<\frac Q2\quad\text{for every }i,
+  \qquad
+  2\sum_{i=1}^n\alpha_i>Q\,\chi(\Sigma).
+  \label{eq:liouville-seiberg-bound}
+\end{equation}
+The first inequalities are local integrability conditions near the marked
+points.  The second inequality is the negative-constant-mode integrability
+condition.  On the sphere it reads \(\sum_i\alpha_i>Q\).
+\end{definition}
+
+The zero-mode check is elementary and fixes the sign conventions.  Write
+\(\phi=c+\phi_0\), with \(\int_\Sigma\phi_0\,\mathrm{vol}_g=0\).  The
+curvature term contributes \(\exp[-Q\chi(\Sigma)c]\), while the insertions
+contribute \(\exp[2c\sum_i\alpha_i]\).  As \(c\to-\infty\), integrability
+requires \(2\sum_i\alpha_i-Q\chi(\Sigma)>0\).  The positive \(c\) direction
+is controlled by the Liouville potential when its multiplicative-chaos
+measure is nonzero.
+
+\begin{definition}[Gaussian multiplicative chaos input]
+\label{def:liouville-gmc-input}
+Let \(X_g\) be a mean-zero Gaussian free field on \((\Sigma,g)\), normalized
+by a Green kernel with logarithmic singularity \(-\log d_g(x,y)\).  For
+\(\gamma\in(0,2)\), let \(X_{g,\varepsilon}\) be a smooth mollification at
+scale \(\varepsilon\).  The subcritical Gaussian multiplicative-chaos measure
+is the probability-limit object
+\begin{equation}
+  M_{\gamma,g}(\dd x)
+  =
+  \lim_{\varepsilon\downarrow0}
+  \varepsilon^{\gamma^2/2}
+  \ee^{\gamma X_{g,\varepsilon}(x)}\,\mathrm{vol}_g(\dd x)
+  \label{eq:liouville-gmc-measure}
+\end{equation}
+in the topology of weak convergence in probability against continuous test
+functions.  In Liouville theory \(\gamma=2b\) after translating from the
+physics field \(\phi\) of Convention
+\ref{conv:liouville-free-field-normalization} to the probabilistic GFF
+normalization.
+\end{definition}
+
+\begin{quotedtheorem}[Probabilistic Liouville correlation functions]
+\label{qthm:gkrv-liouville-correlators}
+Guillarmou--Kupiainen--Rhodes--Vargas construct Liouville correlation
+functions on compact Riemann surfaces in the subcritical GMC regime by
+integrating the constant mode against the Gaussian multiplicative-chaos
+functional, with insertions in the Seiberg domain
+\eqref{eq:liouville-seiberg-bound}.  The construction gives finite
+correlation functions, conformal covariance with central charge
+\(1+6Q^2\), and meromorphic continuation in the insertion momenta after the
+initial probabilistic domain is established.  This chapter uses the theorem
+as the measure-theoretic construction of the Liouville path integral and then
+derives the Virasoro consequences needed below.
+\end{quotedtheorem}
+
+\begin{definition}[Reflection relation]
+\label{def:liouville-reflection-relation}
+The Liouville spectrum is parametrized by
+\[
+  \alpha=\frac Q2+\ii P,\qquad P\in\mathbb R_{\ge0},
+\]
+with conformal weight \(Q^2/4+P^2\).  The reflection relation is the
+identification, at the level of meromorphic correlation functions,
+\begin{equation}
+  V_\alpha=R_b(\alpha)\,V_{Q-\alpha},
+  \label{eq:liouville-reflection-relation}
+\end{equation}
+where \(R_b(\alpha)\) is the meromorphic reflection amplitude fixed by the
+two-point normalization and equivalently by the DOZZ three-point function.
+Thus a single bulk primary label is represented by the reflection orbit
+\(\{\alpha,Q-\alpha\}\), with the normalization encoded in \(R_b(\alpha)\).
+\end{definition}
+
+\section{The DOZZ Formula and Shift Checks}
+
+The exact three-point function is the Dorn--Otto--Zamolodchikov--Zamolodchikov
+structure constant.  It is theorem-level input for this chapter, but the
+special functions and convention checks are part of the manuscript.
+
+\begin{definition}[The \(\Upsilon_b\) function]
+\label{def:upsilon-b-function}
+For \(b>0\) and \(Q=b+b^{-1}\), \(\Upsilon_b(x)\) is the entire function
+characterized by self-duality \(\Upsilon_b(x)=\Upsilon_{1/b}(x)\), reflection
+\(\Upsilon_b(x)=\Upsilon_b(Q-x)\), zeros at
+\[
+  x=-mb-nb^{-1}
+  \quad\text{and}\quad
+  x=Q+mb+nb^{-1},
+  \qquad m,n\in\mathbb Z_{\ge0},
+\]
+and shift relations
+\begin{align}
+  \Upsilon_b(x+b)
+  &=
+  \gamma(bx)\,b^{1-2bx}\,\Upsilon_b(x),
+  \label{eq:upsilon-b-shift-b}\\
+  \Upsilon_b(x+b^{-1})
+  &=
+  \gamma(x/b)\,b^{2x/b-1}\,\Upsilon_b(x),
+  \label{eq:upsilon-b-shift-binverse}
+\end{align}
+where \(\gamma(x)=\Gamma(x)/\Gamma(1-x)\).  These equations fix the
+normalization up to the conventional value of \(\Upsilon'_b(0)\), which is
+kept explicit in the three-point constant.
+\end{definition}
+
+\begin{quotedtheorem}[DOZZ three-point function]
+\label{qthm:dozz-formula}
+In the normalization of Convention
+\ref{conv:liouville-free-field-normalization}, the sphere three-point
+function has the form
+\[
+  \left\langle
+    V_{\alpha_1}(z_1)V_{\alpha_2}(z_2)V_{\alpha_3}(z_3)
+  \right\rangle_{\mathbb P^1}
+  =
+  \frac{
+    C_b(\alpha_1,\alpha_2,\alpha_3)
+  }{
+    |z_{12}|^{2(h_1+h_2-h_3)}
+    |z_{13}|^{2(h_1+h_3-h_2)}
+    |z_{23}|^{2(h_2+h_3-h_1)}
+  },
+\]
+with \(h_i=\alpha_i(Q-\alpha_i)\) and
+\begin{equation}
+\begin{aligned}
+  C_b(\alpha_1,\alpha_2,\alpha_3)
+  &=
+  \left[
+    \pi\mu\,\gamma(b^2)\,b^{2-2b^2}
+  \right]^{(Q-\alpha_1-\alpha_2-\alpha_3)/b}
+  \\
+  &\quad\times
+  \frac{
+    \Upsilon'_b(0)
+    \prod_{i=1}^3\Upsilon_b(2\alpha_i)
+  }{
+    \Upsilon_b(\alpha_1+\alpha_2+\alpha_3-Q)
+    \Upsilon_b(\alpha_1+\alpha_2-\alpha_3)
+    \Upsilon_b(\alpha_1+\alpha_3-\alpha_2)
+    \Upsilon_b(\alpha_2+\alpha_3-\alpha_1)
+  } .
+\end{aligned}
+  \label{eq:dozz-structure-constant}
+\end{equation}
+The formula was proposed by Dorn--Otto and by the Zamolodchikovs and was
+proved in the probabilistic construction by Kupiainen--Rhodes--Vargas.  This
+chapter quotes the theorem rather than reproducing the GMC proof.
+\end{quotedtheorem}
+
+The shift relations \eqref{eq:upsilon-b-shift-b}--\eqref{eq:upsilon-b-shift-binverse}
+are the convention-sensitive part of \eqref{eq:dozz-structure-constant}.  They
+are what make the degenerate-field shift equations compatible with the
+normalization of the exponential interaction.  The companion script
+\texttt{calculation-checks/liouville\_bpz\_checks.py} verifies the level-two
+null-vector arithmetic used below; a later check should expand this to
+symbolic DOZZ shift-ratio simplifications.
+
+\section{Degenerate Insertions and BPZ Equations}
+
+The simplest degenerate Liouville momentum is \(\alpha=-b/2\).  Its conformal
+weight is
+\[
+  h_{-b/2}
+  =
+  -\frac12-\frac{3b^2}{4}.
+\]
+
+\begin{proposition}[Level-two Liouville null vector]
+\label{prop:liouville-level-two-null-vector}
+Let \(c=1+6Q^2\), \(Q=b+b^{-1}\), and
+\[
+  h=-\frac12-\frac{3b^2}{4}.
+\]
+In a highest-weight Virasoro module with highest vector \(|h\rangle\), the
+level-two vector
+\begin{equation}
+  \left(L_{-1}^2+b^2L_{-2}\right)|h\rangle
+  \label{eq:liouville-level-two-null-vector}
+\end{equation}
+is annihilated by \(L_1\) and \(L_2\).  Hence it is a null vector whenever the
+module is quotiented to the degenerate representation carried by
+\(V_{-b/2}\).
+\end{proposition}
+
+\begin{proof}
+For a candidate \((L_{-1}^2+\kappa L_{-2})|h\rangle\), the Virasoro
+commutators give
+\[
+  L_1L_{-1}^2|h\rangle=(4h+2)L_{-1}|h\rangle,
+  \qquad
+  L_1L_{-2}|h\rangle=3L_{-1}|h\rangle,
+\]
+and
+\[
+  L_2L_{-1}^2|h\rangle=6h|h\rangle,
+  \qquad
+  L_2L_{-2}|h\rangle=(4h+c/2)|h\rangle .
+\]
+The \(L_1\) equation requires
+\(\kappa=-(4h+2)/3=b^2\).  Substituting
+\(h=-1/2-3b^2/4\) and \(c=1+6(b+b^{-1})^2\) into the \(L_2\) equation gives
+\[
+  6h+b^2(4h+c/2)=0.
+\]
+Thus both positive modes annihilate \eqref{eq:liouville-level-two-null-vector}.
+\end{proof}
+
+\begin{proposition}[BPZ differential equation]
+\label{prop:liouville-bpz-equation}
+Let
+\[
+  F(z;z_1,\ldots,z_n)
+  =
+  \left\langle
+    V_{-b/2}(z)\prod_{i=1}^n V_{\alpha_i}(z_i)
+  \right\rangle
+\]
+be a separated-point correlation function in a domain where the Virasoro Ward
+identity and the degenerate null-vector quotient are valid.  Then \(F\)
+satisfies
+\begin{equation}
+  \left[
+    \partial_z^2
+    +b^2\sum_{i=1}^n
+    \left(
+      \frac{h_i}{(z-z_i)^2}
+      +\frac1{z-z_i}\partial_{z_i}
+    \right)
+  \right]F=0,
+  \qquad
+  h_i=\alpha_i(Q-\alpha_i).
+  \label{eq:liouville-bpz-equation}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The \(L_{-1}\) insertion at \(z\) is \(\partial_z\).  The Ward identity for a
+stress-tensor contour around \(z\), moved to contours around the other marked
+points, gives
+\[
+  \left\langle
+    (L_{-2}V_{-b/2})(z)\prod_iV_{\alpha_i}(z_i)
+  \right\rangle
+  =
+  \sum_i
+  \left(
+    \frac{h_i}{(z-z_i)^2}
+    +\frac1{z-z_i}\partial_{z_i}
+  \right)F.
+\]
+Inserting the null-vector equation
+\((L_{-1}^2+b^2L_{-2})V_{-b/2}=0\) gives
+\eqref{eq:liouville-bpz-equation}.  This is an identity for
+separated-point correlators; coincident-point limits require the OPE and
+contact-term renormalization.
+\end{proof}
+
+The BPZ equation constrains correlators recursively because fusing
+\(V_{-b/2}\) with a generic \(V_\alpha\) has only two allowed Liouville
+momenta,
+\[
+  V_{-b/2}V_\alpha
+  \sim
+  C_+(\alpha)V_{\alpha-b/2}
+  +
+  C_-(\alpha)V_{\alpha+b/2}.
+\]
+Solving \eqref{eq:liouville-bpz-equation} near one puncture and matching it
+to the same equation near another puncture gives shift equations for the
+three-point structure constants.  The DOZZ constant is the meromorphic
+solution with the reflection, shift, and analyticity properties stated above.
+
+\section{Sewing Status and Open Boundary}
+
+The closed-surface probabilistic theory, the bootstrap formula, and the
+Segal/Kontsevich--Segal sewing formulation require explicit comparison maps.
+
+\begin{openproblem}[Liouville sewing and functorial closure]
+\label{op:liouville-functorial-closure-volume-v}
+Construct, in a single framework, the Hilbert or topological vector spaces
+assigned to circles, the multilinear maps assigned to bordered Riemann
+surfaces, the boundary state spaces, and the sewing maps whose closed-surface
+matrix elements reproduce the probabilistic Liouville correlators and the
+DOZZ/bootstrap conformal blocks.  The comparison must specify the topology on
+continuous-spectrum direct integrals, the domain of unbounded vertex
+operators, and the convergence of the gluing integrals over
+\(\alpha=Q/2+\ii P\).  This is the Volume V form of
+the Liouville and nonrational-CFT open problem in the
+Kontsevich--Segal functorial-QFT chapter.
+\end{openproblem}
+
+Thus the status is deliberately layered.  The classical action and
+background-charge Ward algebra are derived in the chapter.  The
+measure-theoretic path integral and the DOZZ formula are quoted theorem
+inputs with named proof boundaries.  Full functorial sewing remains an open
+problem for the monograph's foundational program.
