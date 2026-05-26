@@ -253,6 +253,29 @@ def check_invariant_measure_limit_identity():
     assert_equal(lhs, rhs, "finite invariant-measure identity")
 
 
+def check_reconstruction_wavelet_scale_powers():
+    # The compact reconstruction proof uses two dyadic sums.  For coarse
+    # scales l >= delta the factor is delta^r l^(gamma-r), which sums to
+    # delta^gamma when r > gamma.  For fine scales l < delta and a
+    # homogeneity alpha, the factor is delta^(gamma-alpha-r) l^(alpha+r),
+    # which sums to delta^gamma when alpha+r > 0.
+    gamma = Fraction(3, 5)
+    alpha = Fraction(-2, 5)
+    r = Fraction(1, 1)
+    parabolic_dimension = Fraction(5, 1)
+    if not gamma < parabolic_dimension:
+        raise AssertionError("reconstruction scaling-function condition gamma < |s| failed")
+    if not r > gamma:
+        raise AssertionError("reconstruction coarse wavelet condition r > gamma failed")
+    if not alpha + r > 0:
+        raise AssertionError("reconstruction fine wavelet condition alpha+r > 0 failed")
+
+    coarse_delta_power = r + (gamma - r)
+    fine_delta_power = (gamma - alpha - r) + (alpha + r)
+    assert_equal(coarse_delta_power, gamma, "reconstruction coarse delta power")
+    assert_equal(fine_delta_power, gamma, "reconstruction fine delta power")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
@@ -264,7 +287,8 @@ def main():
     check_dpd_sobolev_fixed_point_exponents()
     check_dpd_energy_young_exponents()
     check_invariant_measure_limit_identity()
-    print("All constructive scalar/SPDE Wick, power-counting, and DPD exponent checks passed.")
+    check_reconstruction_wavelet_scale_powers()
+    print("All constructive scalar/SPDE Wick, power-counting, and DPD/reconstruction exponent checks passed.")
 
 
 if __name__ == "__main__":

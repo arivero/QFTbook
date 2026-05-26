@@ -867,31 +867,317 @@ A model on spacetime assigns to every point \(z\) a linear map
 together with analytic bounds compatible with the homogeneities.
 \end{definition}
 
-\begin{quotedtheorem}[Reconstruction theorem, role in SPDE]
-\label{thm:regularity-reconstruction-role}
-For a model satisfying the analytic bounds of
-Definition~\ref{def:regularity-structure}, every modelled distribution
-\(F\) of regularity \(\gamma>0\) has a unique distribution \(\mathcal R F\)
-such that, near each point \(z\), \(\mathcal R F\) is approximated by
-\(\Pi_zF(z)\) to order \(\gamma\).  In singular SPDE, this theorem converts
-the formal local expansion in \(T\) into an actual distributional solution.
-\end{quotedtheorem}
+\begin{definition}[Parabolic model and modelled-distribution norms]
+\label{def:spde-parabolic-modelled-distribution-norms}
+Let \(\mathfrak s=(2,1,\ldots,1)\) be the parabolic scaling on
+\(\R^{1+d}\), let \(|\mathfrak s|=d+2\), and set
+\[
+  \|(\tau,x)\|_{\mathfrak s}
+  =
+  |\tau|^{1/2}+|x_1|+\cdots+|x_d|.
+\]
+For \(0<\delta\leq1\), \(z\in\R^{1+d}\), and
+\(\varphi\in C_c^r(\R^{1+d})\), define
+\[
+  \varphi_z^\delta(w)
+  =
+  \delta^{-|\mathfrak s|}
+  \varphi\bigl(\delta^{-2}(w_0-z_0),
+               \delta^{-1}(w_1-z_1),\ldots,
+               \delta^{-1}(w_d-z_d)\bigr).
+\]
+Let \(\mathcal B_r\) be the set of such test functions supported in the unit
+\(\mathfrak s\)-ball and satisfying \(\|\varphi\|_{C^r}\leq1\).  Fix a
+compact set \(K\) and \(\gamma>0\).  The model seminorm below \(\gamma\) is
+finite when
+\[
+  \|\Pi\|_{K;\gamma}
+  =
+  \sup_{\substack{z\in K,\ \alpha<\gamma\\
+                  \tau\in T_\alpha,\ \|\tau\|_\alpha=1\\
+                  \varphi\in\mathcal B_r,\ 0<\delta\leq1}}
+  \delta^{-\alpha}
+  \left|\langle\Pi_z\tau,\varphi_z^\delta\rangle\right|
+  <\infty
+\]
+and
+\[
+  \|\Gamma\|_{K;\gamma}
+  =
+  \sup_{\substack{z,z'\in K,\ 0<\|z-z'\|_{\mathfrak s}\leq1\\
+                  \beta<\alpha<\gamma,\ \tau\in T_\alpha,\ \|\tau\|_\alpha=1}}
+  \frac{\|(\Gamma_{zz'}\tau)_\beta\|_\beta}
+       {\|z-z'\|_{\mathfrak s}^{\alpha-\beta}}
+  <\infty .
+\]
+Here \((\cdot)_\beta\) denotes projection to \(T_\beta\).  A modelled
+distribution of regularity \(\gamma\) on \(K\) is a function
+\[
+  F:K\longrightarrow T_{<\gamma}:=\bigoplus_{\alpha<\gamma}T_\alpha
+\]
+with finite norm
+\[
+  \|F\|_{\gamma;K}
+  =
+  \sup_{z\in K,\ \alpha<\gamma}\|F_\alpha(z)\|_\alpha
+  +
+  \sup_{\substack{z,z'\in K,\ 0<\|z-z'\|_{\mathfrak s}\leq1\\ \alpha<\gamma}}
+  \frac{\|F_\alpha(z)-(\Gamma_{zz'}F(z'))_\alpha\|_\alpha}
+       {\|z-z'\|_{\mathfrak s}^{\gamma-\alpha}} .
+\]
+\end{definition}
 
-This is Hairer's reconstruction theorem from the regularity-structures
-framework.  It is quoted here as a theorem boundary.  Its role in the
-present chapter is the following.  The
-modelled-distribution bounds say that the coefficients \(F(z)\) and
-\(\Gamma_{zz'}F(z')\) agree up to errors of order
-\(|z-z'|^{\gamma-\alpha}\) in each homogeneity \(\alpha\).  Testing the
-candidate local distributions \(\Pi_zF(z)\) against wavelets at scale
-\(2^{-j}\), these consistency estimates make the wavelet coefficients
-Cauchy across neighboring base points.  Summing the coefficients over scales
-constructs a distribution.  If two distributions had the same local
-approximation bounds, their wavelet coefficients would decay faster than
-every scale allowed by the lowest homogeneity, forcing their difference to
-vanish.  A self-contained proof in this monograph must spell out the model
-norms, wavelet or test-function estimates, summability over scales, and the
-uniqueness argument rather than relying on this summary.
+\begin{lemma}[Coherence of a modelled local germ]
+\label{lem:spde-modelled-germ-coherence}
+Let \(F\) be a modelled distribution in the sense of
+Definition~\ref{def:spde-parabolic-modelled-distribution-norms}, and set
+\(\zeta_z=\Pi_zF(z)\).  If \(z,z'\in K\),
+\(\|z-z'\|_{\mathfrak s}\leq\delta\leq1\), and
+\(\varphi\in\mathcal B_r\), then
+\[
+  \left|
+    \left\langle \zeta_z-\zeta_{z'},\varphi_z^\delta\right\rangle
+  \right|
+  \leq
+  C_K\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}\,\delta^\gamma .
+\]
+\end{lemma}
+
+\begin{proof}
+The model identity gives
+\[
+  \Pi_{z'}F(z')=\Pi_z\Gamma_{zz'}F(z') ,
+\]
+hence
+\[
+  \zeta_z-\zeta_{z'}
+  =
+  \Pi_z\bigl(F(z)-\Gamma_{zz'}F(z')\bigr).
+\]
+Decompose the vector in parentheses into homogeneous components.  For each
+\(\alpha<\gamma\), the modelled-distribution norm gives
+\[
+  \|(F(z)-\Gamma_{zz'}F(z'))_\alpha\|_\alpha
+  \leq
+  \|F\|_{\gamma;K}\|z-z'\|_{\mathfrak s}^{\gamma-\alpha}.
+\]
+The model bound gives
+\[
+  \left|
+  \left\langle
+    \Pi_z (F(z)-\Gamma_{zz'}F(z'))_\alpha,
+    \varphi_z^\delta
+  \right\rangle
+  \right|
+  \leq
+  \|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}
+  \delta^\alpha\|z-z'\|_{\mathfrak s}^{\gamma-\alpha}.
+\]
+Since \(\|z-z'\|_{\mathfrak s}\leq\delta\) and the set
+\(\{\alpha\in A:\alpha<\gamma\}\) is finite on compact homogeneity windows,
+the sum over \(\alpha\) is bounded by the displayed constant times
+\(\delta^\gamma\).
+\end{proof}
+
+\begin{theorem}[Compact finite-sector reconstruction theorem]
+\label{thm:spde-compact-reconstruction}
+Assume that the set \(A_{<\gamma}=\{\alpha\in A:\alpha<\gamma\}\) is finite,
+assume \(0<\gamma<|\mathfrak s|\),
+let
+\[
+  r>\max\{-\min A_{<\gamma},\,\gamma\},
+\]
+and let the model seminorms of
+Definition~\ref{def:spde-parabolic-modelled-distribution-norms} be finite on
+a compact parabolic neighborhood of \(K\).  For every modelled distribution
+\(F\) of regularity \(\gamma>0\) on that neighborhood, there is a unique
+distribution \(\mathcal RF\) on the interior of \(K\) such that, for every
+\(\varphi\in\mathcal B_r\), \(z\in K\), and \(0<\delta\leq1\) with
+\(\operatorname{supp}\varphi_z^\delta\subset K\),
+\begin{equation}
+  \left|
+    \left\langle
+      \mathcal RF-\Pi_zF(z),\varphi_z^\delta
+    \right\rangle
+  \right|
+  \leq
+  C_K
+  (1+\|\Pi\|_{K;\gamma})(1+\|\Gamma\|_{K;\gamma})
+  \|F\|_{\gamma;K}\,\delta^\gamma .
+  \label{eq:spde-reconstruction-bound}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Choose a compactly supported parabolic multiresolution system of class
+\(C^r\): scaling functions \(\varphi_y^0\) at scale \(1\), wavelets
+\(\psi_y^n\) at scale \(2^{-n}\), \(y\in\Lambda_n\), with vanishing moments
+against all parabolic polynomials of degree \(<r\), finite overlap at each
+scale, and the expansion formula
+\[
+  \eta
+  =
+  \sum_{y\in\Lambda_0}\langle\eta,\varphi_y^0\rangle\varphi_y^0
+  +
+  \sum_{n\geq0}\sum_{y\in\Lambda_n}
+  \langle\eta,\psi_y^n\rangle\psi_y^n
+\]
+for every test function \(\eta\) supported in the interior of \(K\).  The
+wavelets are \(L^2\)-normalized, so
+\(\psi_y^n=2^{n|\mathfrak s|/2}\psi_y^{2^{-n}}\) in the notation of
+Definition~\ref{def:spde-parabolic-modelled-distribution-norms}.
+
+Define a distribution by prescribing its coefficients
+\[
+  \langle\mathcal RF,\varphi_y^0\rangle
+  =
+  \langle\Pi_yF(y),\varphi_y^0\rangle,\qquad
+  \langle\mathcal RF,\psi_y^n\rangle
+  =
+  \langle\Pi_yF(y),\psi_y^n\rangle .
+\]
+The coefficient estimate for \(\psi_y^n\) is
+\[
+  |\langle\Pi_yF(y),\psi_y^n\rangle|
+  \leq
+  C\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}
+  2^{-n(\alpha_0+|\mathfrak s|/2)},
+  \qquad
+  \alpha_0=\min A_{<\gamma}.
+\]
+For a \(C^r\) test function \(\eta\), the wavelet moment cancellation gives
+\[
+  |\langle\eta,\psi_y^n\rangle|
+  \leq
+  C_\eta 2^{-n(r+|\mathfrak s|/2)} .
+\]
+Only \(O(2^{n|\mathfrak s|})\) wavelets at scale \(2^{-n}\) meet
+\(\operatorname{supp}\eta\), hence the absolute value of the scale-\(n\)
+contribution is bounded by
+\[
+  C_\eta\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}
+  2^{n|\mathfrak s|}
+  2^{-n(\alpha_0+|\mathfrak s|/2)}
+  2^{-n(r+|\mathfrak s|/2)}
+  =
+  C_\eta\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}2^{-n(\alpha_0+r)} .
+\]
+The hypothesis \(r>-\alpha_0\) makes the series converge.  Thus
+\(\mathcal RF\) is a well-defined distribution.
+
+It remains to prove the local estimate.  Fix \(z\), \(\delta\), and
+\(\varphi_z^\delta\).  Put \(\ell_n=2^{-n}\).  The coefficient of
+\(\mathcal RF-\Pi_zF(z)\) against a wavelet \(\psi_y^n\) equals
+\[
+  \langle\Pi_yF(y)-\Pi_zF(z),\psi_y^n\rangle .
+\]
+If \(\psi_y^n\) meets the support of \(\varphi_z^\delta\), then
+\(\|y-z\|_{\mathfrak s}\leq C(\ell_n+\delta)\).  Split the wavelet expansion
+into coarse scales \(\ell_n\geq\delta\) and fine scales \(\ell_n<\delta\).
+
+At a coarse scale, \(\|y-z\|_{\mathfrak s}\leq C\ell_n\), so
+Lemma~\ref{lem:spde-modelled-germ-coherence}, tested at scale \(\ell_n\),
+gives
+\[
+  |\langle\Pi_yF(y)-\Pi_zF(z),\psi_y^n\rangle|
+  \leq
+  C\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}
+  \ell_n^{\gamma+|\mathfrak s|/2}.
+\]
+The \(r\) vanishing moments of \(\psi_y^n\) and the \(C^r\) bound of
+\(\varphi_z^\delta\) give
+\[
+  |\langle\varphi_z^\delta,\psi_y^n\rangle|
+  \leq
+  C\,\delta^r\ell_n^{-r-|\mathfrak s|/2}.
+\]
+Only a bounded number of coarse-scale wavelets meet the support of
+\(\varphi_z^\delta\).  Therefore the coarse contribution is bounded by
+\[
+  C\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}\delta^\gamma ,
+\]
+because
+\[
+  \sum_{\ell_n\geq\delta}\delta^r\ell_n^{\gamma-r}
+  \leq
+  C\delta^\gamma
+\]
+when \(r>\gamma\).
+The scale-one scaling functions are handled in the same coarse block except
+that no moment cancellation is needed: their coefficients are bounded and
+their pairing with \(\varphi_z^\delta\) is \(O(\delta^{|\mathfrak s|})\),
+which is \(O(\delta^\gamma)\) under the hypothesis \(\gamma<|\mathfrak s|\).
+
+At a fine scale, write the modelled-distribution difference by homogeneity:
+\[
+  \langle\mathcal RF-\Pi_zF(z),\psi_y^n\rangle
+  =
+  \sum_{\alpha<\gamma}
+  \left\langle
+    \Pi_z\bigl(\Gamma_{zy}F(y)-F(z)\bigr)_\alpha,\psi_y^n
+  \right\rangle .
+\]
+For wavelets meeting the support of \(\varphi_z^\delta\),
+\(\|y-z\|_{\mathfrak s}\leq C\delta\).  The \(\alpha\)-component of the
+modelled-distribution difference is therefore bounded by
+\[
+  C\|F\|_{\gamma;K}\delta^{\gamma-\alpha}.
+\]
+Testing the corresponding model component at wavelet scale \(\ell_n\) gives
+\[
+  \left|
+  \left\langle
+    \Pi_z\bigl(\Gamma_{zy}F(y)-F(z)\bigr)_\alpha,\psi_y^n
+  \right\rangle
+  \right|
+  \leq
+  C\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}
+  \delta^{\gamma-\alpha}\ell_n^{\alpha+|\mathfrak s|/2}.
+\]
+The wavelet moment estimate in the opposite scale regime gives
+\[
+  |\langle\varphi_z^\delta,\psi_y^n\rangle|
+  \leq
+  C\,\delta^{-|\mathfrak s|-r}\ell_n^{r+|\mathfrak s|/2}.
+\]
+There are \(O((\delta/\ell_n)^{|\mathfrak s|})\) fine-scale wavelets meeting
+the support of \(\varphi_z^\delta\).  The scale-\(n\) contribution of a fixed
+homogeneity \(\alpha\) is thus bounded by
+\[
+  C\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}
+  \delta^{\gamma-\alpha-r}\ell_n^{\alpha+r}.
+\]
+Since \(r>-\alpha\), the sum over \(\ell_n<\delta\) is bounded by
+\[
+  C\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}
+  \delta^{\gamma-\alpha-r}\delta^{\alpha+r}
+  =
+  C\|\Pi\|_{K;\gamma}\|F\|_{\gamma;K}\delta^\gamma .
+\]
+There are only finitely many \(\alpha<\gamma\), so summing the homogeneities
+proves \eqref{eq:spde-reconstruction-bound}.
+
+For uniqueness, let \(U\) be the difference of two distributions satisfying
+\eqref{eq:spde-reconstruction-bound}.  Choose a non-negative
+\(\chi\in C_c^r\) with integral one.  For any test function \(\eta\) with
+support in the interior of \(K\),
+\[
+  \langle U,\eta\rangle
+  =
+  \lim_{\delta\downarrow0}
+  \int \eta(z)\langle U,\chi_z^\delta\rangle\,\dd z .
+\]
+The bound \(|\langle U,\chi_z^\delta\rangle|\leq C\delta^\gamma\) and
+\(\gamma>0\) force the limit to vanish.  Hence \(U=0\).
+\end{proof}
+
+Theorem~\ref{thm:spde-compact-reconstruction} supplies the reconstruction
+component of the finite-sector theory used by the local \(\Phi^4_3\)
+regularity structure.  The still-open part for dynamic \(\Phi^4_3\) is not
+the reconstruction step itself; it is the construction of the
+BPHZ-renormalized random model with uniform analytic bounds, the convergence
+of those models as the mollifier is removed, and the nonlinear fixed-point
+argument in the corresponding modelled-distribution spaces.
 
 For dynamic \(\Phi^4_3\), the symbols are generated by the noise \(\Xi\), the
 abstract integration map \(\mathcal I\), multiplication, and polynomials in
@@ -990,19 +1276,21 @@ matched, and equality of the limiting Schwinger moments must be proved.  Each
 sentence in this paragraph names a theorem-level estimate; none is to be
 treated as proved merely by being quoted.
 
-The theorem-boundary statements in this chapter correspond to the
-Da Prato--Debussche construction of two-dimensional stochastic
-quantization, Hairer's reconstruction theorem, and the regularity-structures
-renormalization of dynamic \(\Phi^4_3\).\footnote{See G.~Da Prato and
-A.~Debussche, ``Strong solutions to the stochastic quantization equations,''
-\emph{Ann. Probab.} 31 (2003); M.~Hairer, ``A theory of regularity
-structures,'' \emph{Invent. Math.} 198 (2014); and the
-Hairer--Mourrat--Weber regularity-structures treatment of
-\(\Phi^4_3\) renormalization.  For recent singular-SPDE work in gauge
-contexts, see A.~Chandra, I.~Chevyrev, M.~Hairer, and H.~Shen,
-``Stochastic quantisation of Yang--Mills,'' Invent. Math. \textbf{230}
-(2022) 1025--1096.}  These references identify the analytic machinery to be
-reconstructed in this monograph; they do not by themselves settle the
+The theorem-boundary statements still left in this chapter concern the
+global Da Prato--Debussche construction of two-dimensional stochastic
+quantization and the BPHZ-renormalized construction of the dynamic
+\(\Phi^4_3\) model.\footnote{See G.~Da Prato and A.~Debussche, ``Strong
+solutions to the stochastic quantization equations,'' \emph{Ann. Probab.}
+31 (2003); M.~Hairer, ``A theory of regularity structures,''
+\emph{Invent. Math.} 198 (2014); and the Hairer--Mourrat--Weber
+regularity-structures treatment of \(\Phi^4_3\) renormalization.  For recent
+singular-SPDE work in gauge contexts, see A.~Chandra, I.~Chevyrev,
+M.~Hairer, and H.~Shen, ``Stochastic quantisation of Yang--Mills,''
+Invent. Math. \textbf{230} (2022) 1025--1096.}  The compact finite-sector
+reconstruction theorem has been proved above because its proof is a local
+analytic argument once the model bounds and modelled-distribution bounds are
+available.  The cited works identify deeper analytic machinery that remains
+to be reconstructed in this monograph; they do not by themselves settle the
 monograph's proof obligations.
 
 \begin{openproblem}[Self-contained singular-SPDE proof stack]
@@ -1012,14 +1300,12 @@ above.  At minimum this requires: construction and convergence of Wick
 powers for the stochastic convolution; the parabolic Schauder and Besov or
 Holder multiplication estimates used in the Da Prato--Debussche fixed point;
 the global energy estimate and invariant-law identification for
-\(\Phi^4_2\); the reconstruction theorem for regularity structures with all
-model norms specified; construction of the BPHZ-renormalized model for
-dynamic \(\Phi^4_3\); convergence of the renormalized models; solution of
-the fixed-point problem in modelled distributions; identification of the
-local counterterms in the concrete cutoff equation; and the passage from
-stationary SPDE solutions to OS data.  Until these arguments are supplied,
-the quoted theorem blocks are documented proof boundaries, not authority
-claims.
+\(\Phi^4_2\); construction of the BPHZ-renormalized model for dynamic
+\(\Phi^4_3\); convergence of the renormalized models; solution of the
+fixed-point problem in modelled distributions; identification of the local
+counterterms in the concrete cutoff equation; and the passage from stationary
+SPDE solutions to OS data.  Until these arguments are supplied, the quoted
+theorem blocks are documented proof boundaries, not authority claims.
 \end{openproblem}
 
 \section{Paracontrolled and RG Routes}

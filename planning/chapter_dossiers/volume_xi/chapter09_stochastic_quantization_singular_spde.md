@@ -79,9 +79,9 @@ data.
   and marks the sharper global Besov/Holder solution mechanism as a
   `quotedtheorem` pending the full self-contained proof.
 - Defines regularity structures, models, and the reconstruction theorem at the
-  level needed for singular SPDE; the reconstruction theorem is now a
-  `quotedtheorem` with the wavelet-coefficient mechanism recorded as a role
-  explanation rather than a proof.
+  level needed for singular SPDE; the compact finite-sector reconstruction
+  theorem is now proved from the model and modelled-distribution seminorms by
+  a dyadic wavelet construction and separate coarse/fine scale estimates.
 - Presents the renormalized `Phi^4_3` dynamic equation at cutoff with
   one-loop and two-loop local counterterm constants; the quoted theorem now
   separates local cutoff well-posedness, BPHZ-renormalized convergence,
@@ -93,8 +93,8 @@ data.
   QFT reconstruction.
 - Records a self-contained singular-SPDE proof stack as an open obligation:
   Wick powers, Schauder and multiplication estimates, energy estimates,
-  invariant-law identification, reconstruction, BPHZ model convergence,
-  fixed points in modelled distributions, and SPDE-to-OS passage.
+  invariant-law identification, BPHZ model convergence, fixed points in
+  modelled distributions, and SPDE-to-OS passage.
 
 ## Figure Ledger
 
@@ -139,3 +139,11 @@ data maps.
   invariant-measure passage lemma for cutoff limits.  The calculation-check
   companion now verifies the Young-exponent arithmetic and a finite
   invariant-measure identity.
+- 2026-05-26 issue #582 reconstruction continuation: the earlier
+  reconstruction theorem boundary has been replaced by a compact
+  finite-sector theorem.  The proof defines parabolic test-function scaling,
+  model seminorms, and modelled-distribution norms; proves the germ coherence
+  estimate; constructs the reconstructed distribution from dyadic wavelet
+  coefficients; and derives the \(\delta^\gamma\) reconstruction bound by
+  separate coarse-scale and fine-scale sums.  The calculation-check companion
+  now verifies the exponent arithmetic in those two sums.

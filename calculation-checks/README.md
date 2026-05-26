@@ -93,7 +93,8 @@ Current checks:
   heat-kernel smoothing optimization, and the Sobolev exponent inequalities
   used in the Da Prato--Debussche local fixed-point proof, together with the
   Young-exponent arithmetic in the smooth DPD energy estimate and a finite
-  Markov-chain invariant-measure identity.
+  Markov-chain invariant-measure identity, plus the coarse/fine dyadic
+  exponent arithmetic in the compact reconstruction proof.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian
