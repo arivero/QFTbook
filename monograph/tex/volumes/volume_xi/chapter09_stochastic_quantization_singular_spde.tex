@@ -2718,6 +2718,242 @@ finite-dimensional norm comparison to
 \(c_{n+1}-c_n\) gives the stated model-distance version.
 \end{proof}
 
+\begin{theorem}[Negative-sector model convergence from scale-summed coordinates]
+\label{thm:spde-phi-four-three-negative-sector-model-convergence}
+Fix \(0<\kappa<1/14\), set
+\[
+  \gamma_-=\frac12-7\kappa,
+\]
+and let \(K\subset\R^{1+3}\) be compact.  Choose
+\[
+  r>\frac52+\kappa .
+\]
+Let \(Z_n=(\Pi^{(n)},\Gamma^{(n)})\), \(n\geq1\), be random cutoff models on
+the finite sector \(\mathcal T_-\) of
+Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart},
+with the same basis norms and with reexpansion coefficient \(c_n(z,z')\) as in
+\eqref{eq:spde-y-reexpansion-coefficient}.  Put
+\[
+  N_n^-
+  =
+  1+\|\Pi^{(n)}\|_{K;\gamma_-}
+   +\|\Gamma^{(n)}\|_{K;\gamma_-},
+  \qquad
+  D_n^-=d_{K;\gamma_-}(Z_{n+1},Z_n).
+\]
+For
+\[
+  \mathfrak C_\Pi=\{\Xi,X,X^2,X^3,XY,X^2Y\},
+  \qquad
+  \mathfrak C=\mathfrak C_\Pi\sqcup\{\mathfrak g\},
+\]
+define the physical coordinate functions
+\[
+  Q_{n,\tau}(z,\delta,\varphi)
+  =
+  \delta^{-|\tau|}
+  \left|
+    \langle\Pi_z^{(n)}\tau,\varphi_z^\delta\rangle
+  \right|,
+  \qquad \tau\in\mathfrak C_\Pi,
+\]
+\[
+  \Delta Q_{n,\tau}(z,\delta,\varphi)
+  =
+  \delta^{-|\tau|}
+  \left|
+    \langle(\Pi_z^{(n+1)}-\Pi_z^{(n)})\tau,\varphi_z^\delta\rangle
+  \right|,
+\]
+for \(z\in K\), \(0<\delta\leq1\), \(\varphi\in\mathcal B_r\), and
+\[
+  Q_{n,\mathfrak g}(z,z')
+  =
+  \frac{|c_n(z,z')|}
+       {\|z-z'\|_{\mathfrak s}^{\,|Y|}},
+  \qquad
+  \Delta Q_{n,\mathfrak g}(z,z')
+  =
+  \frac{|c_{n+1}(z,z')-c_n(z,z')|}
+       {\|z-z'\|_{\mathfrak s}^{\,|Y|}},
+\]
+for \(z,z'\in K\) with \(0<\|z-z'\|_{\mathfrak s}\leq1\).  For every
+\(i\in\mathfrak C\) and \(m\geq0\), let \((\mathcal X_{i,m},d_{i,m})\) be a
+compact metric space with finite nets \(\mathcal X_{i,m,\ell}\), projections
+\[
+  \pi_{i,m,\ell}:\mathcal X_{i,m}\to\mathcal X_{i,m,\ell},
+\]
+and edge sets
+\[
+  \mathcal E_{i,m,\ell}
+  =
+  \{(\pi_{i,m,\ell}x,\pi_{i,m,\ell+1}x):x\in\mathcal X_{i,m}\}.
+\]
+Assume that there are constants \(C_{i,0},C_{i,1},D_i,d_i>0\) such that
+\begin{equation}
+  |\mathcal X_{i,m,0}|\leq C_{i,0}2^{D_i m},
+  \qquad
+  |\mathcal E_{i,m,\ell}|\leq C_{i,1}2^{D_i m}2^{d_i\ell}
+  \label{eq:spde-negative-sector-scale-entropy}
+\end{equation}
+for all \(m,\ell\geq0\).  Suppose further that there are real random fields
+\[
+  U_{n,i,m},V_{n,i,m}:\mathcal X_{i,m}\to L^p(\Omega),
+  \qquad n\geq1,\quad i\in\mathfrak C,\quad m\geq0,
+\]
+with almost surely continuous sample paths, such that the coordinate
+domination inequalities
+\begin{equation}
+  \sup Q_{n,i}
+  \leq
+  \sup_{m\geq0}\sup_{x\in\mathcal X_{i,m}}|U_{n,i,m}(x)|,
+  \qquad
+  \sup \Delta Q_{n,i}
+  \leq
+  \sup_{m\geq0}\sup_{x\in\mathcal X_{i,m}}|V_{n,i,m}(x)|
+  \label{eq:spde-negative-sector-coordinate-scale-domination}
+\end{equation}
+hold almost surely.  In \eqref{eq:spde-negative-sector-coordinate-scale-domination},
+the first supremum is over the displayed physical variables of \(Q_{n,i}\), and
+the second supremum is over the displayed physical variables of
+\(\Delta Q_{n,i}\).
+
+Fix \(p\geq1\) and \(\rho>0\).  For each \(i\in\mathfrak C\), assume there are
+positive constants \(B_{i,0},B_i,\widetilde B_{i,0},\widetilde B_i,\sigma_i\),
+and \(\varepsilon_i\), with
+\begin{equation}
+  \sigma_i>\frac{D_i}{p},
+  \label{eq:spde-negative-sector-scale-slack}
+\end{equation}
+such that, for every \(n,m,\ell\),
+\[
+  \mathbb E|U_{n,i,m}(u)|^p
+  \leq
+  B_{i,0}^{\,p}2^{-p\sigma_i m}
+  \quad(u\in\mathcal X_{i,m,0}),
+\]
+\[
+  \mathbb E|U_{n,i,m}(v)-U_{n,i,m}(u)|^p
+  \leq
+  B_i^{\,p}2^{-p\sigma_i m}2^{-(d_i+\varepsilon_i)\ell}
+  \quad((u,v)\in\mathcal E_{i,m,\ell}),
+\]
+and
+\[
+  \mathbb E|V_{n,i,m}(u)|^p
+  \leq
+  \widetilde B_{i,0}^{\,p}2^{-p\rho n}2^{-p\sigma_i m}
+  \quad(u\in\mathcal X_{i,m,0}),
+\]
+\[
+  \mathbb E|V_{n,i,m}(v)-V_{n,i,m}(u)|^p
+  \leq
+  \widetilde B_i^{\,p}2^{-p\rho n}2^{-p\sigma_i m}
+  2^{-(d_i+\varepsilon_i)\ell}
+  \quad((u,v)\in\mathcal E_{i,m,\ell}).
+\]
+Define
+\[
+  S_i^{\rm sc}
+  =
+  \frac{
+    C_{i,0}^{1/p}B_{i,0}
+    +C_{i,1}^{1/p}B_i(1-2^{-\varepsilon_i/p})^{-1}
+  }
+  {1-2^{-(\sigma_i-D_i/p)}},
+\]
+and
+\[
+  \widetilde S_i^{\rm sc}
+  =
+  \frac{
+    C_{i,0}^{1/p}\widetilde B_{i,0}
+    +C_{i,1}^{1/p}\widetilde B_i(1-2^{-\varepsilon_i/p})^{-1}
+  }
+  {1-2^{-(\sigma_i-D_i/p)}} .
+\]
+Then
+\[
+  \sup_{n\geq1}\|N_n^-\|_{L^p(\Omega)}
+  \leq
+  A_-\left(1+\sum_{i\in\mathfrak C}S_i^{\rm sc}\right),
+\]
+and
+\[
+  \|D_n^-\|_{L^p(\Omega)}
+  \leq
+  A_-\left(\sum_{i\in\mathfrak C}\widetilde S_i^{\rm sc}\right)2^{-\rho n}.
+  \label{eq:spde-negative-sector-model-cauchy-bound}
+\]
+Consequently \(Z_n|_{\mathcal T_-}\) converges in \(L^p\) and almost surely,
+in the model distance \(d_{K;\gamma_-}\), to a limiting random model on
+\(\mathcal T_-\).  More precisely,
+\[
+  \left(
+    \mathbb E\,d_{K;\gamma_-}(Z_n,Z_\infty)^p
+  \right)^{1/p}
+  \leq
+  \frac{
+    A_-\sum_{i\in\mathfrak C}\widetilde S_i^{\rm sc}
+  }
+  {1-2^{-\rho}}\,2^{-\rho n}.
+\]
+\end{theorem}
+
+\begin{proof}
+For a fixed coordinate label \(i\), the entropy hypothesis
+\eqref{eq:spde-negative-sector-scale-entropy} and the four moment hypotheses
+are exactly the hypotheses of
+Theorem~\ref{thm:spde-scale-summed-coordinate-upgrade}, first for
+\(U_{n,i,m}\) and then for \(V_{n,i,m}\).  Hence
+\[
+  \left\|
+    \sup_{m\geq0}\sup_{x\in\mathcal X_{i,m}}
+    |U_{n,i,m}(x)|
+  \right\|_{L^p}
+  \leq
+  S_i^{\rm sc},
+\]
+uniformly in \(n\), and
+\[
+  \left\|
+    \sup_{m\geq0}\sup_{x\in\mathcal X_{i,m}}
+    |V_{n,i,m}(x)|
+  \right\|_{L^p}
+  \leq
+  \widetilde S_i^{\rm sc}2^{-\rho n}.
+\]
+
+Proposition~\ref{prop:spde-phi-four-three-negative-sector-coordinate-chart}
+gives the finite-dimensional coordinate domination
+\[
+  N_n^-
+  \leq
+  A_-\left(1+\sum_{i\in\mathfrak C}\sup Q_{n,i}\right)
+\]
+and the corresponding distance domination
+\[
+  D_n^-
+  \leq
+  A_-\sum_{i\in\mathfrak C}\sup\Delta Q_{n,i}.
+\]
+Insert \eqref{eq:spde-negative-sector-coordinate-scale-domination} into these
+two inequalities and apply the \(L^p\) triangle inequality.  This proves the
+two displayed bounds for \(N_n^-\) and \(D_n^-\).
+
+The hypotheses of Theorem~\ref{thm:spde-random-model-cauchy-criterion} are
+therefore satisfied with
+\[
+  C_N=
+  A_-^{\,p}\left(1+\sum_{i\in\mathfrak C}S_i^{\rm sc}\right)^p,
+  \qquad
+  C_D=
+  A_-^{\,p}\left(\sum_{i\in\mathfrak C}\widetilde S_i^{\rm sc}\right)^p .
+\]
+Applying that theorem on the finite sector \(\mathcal T_-\) gives the limiting
+model and the stated \(L^p\) tail estimate.
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization

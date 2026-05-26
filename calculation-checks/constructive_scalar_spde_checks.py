@@ -641,6 +641,37 @@ def check_scale_summed_coordinate_upgrade_arithmetic():
     assert_equal(cutoff_total, Fraction(27, 32), "scale-summed cutoff factor")
 
 
+def check_negative_sector_scale_summed_model_convergence_arithmetic():
+    # The strict negative Phi^4_3 sector is controlled by six Pi-coordinates and
+    # one Gamma coordinate.  In the sample below every coordinate has the same
+    # scale-summed uniform constant S=54 and cutoff-increment constant S~=32.
+    pi_coordinates = 6
+    gamma_coordinates = 1
+    coordinate_count = pi_coordinates + gamma_coordinates
+    assert_equal(coordinate_count, 7, "negative-sector scale-summed coordinate count")
+
+    p = 2
+    a_minus = 2
+    s_sc = 54
+    stilde_sc = 32
+    uniform_lp_bound = a_minus * (1 + coordinate_count * s_sc)
+    distance_prefactor = a_minus * coordinate_count * stilde_sc
+    assert_equal(uniform_lp_bound, 758, "negative-sector model uniform Lp bound")
+    assert_equal(uniform_lp_bound**p, 574564, "negative-sector model C_N")
+    assert_equal(distance_prefactor, 448, "negative-sector model distance prefactor")
+    assert_equal(distance_prefactor**p, 200704, "negative-sector model C_D")
+
+    rho = 2
+    n = 3
+    distance_lp_bound = distance_prefactor * Fraction(1, 2) ** (rho * n)
+    distance_p_moment = distance_lp_bound**p
+    assert_equal(distance_lp_bound, 7, "negative-sector model dyadic distance")
+    assert_equal(distance_p_moment, 49, "negative-sector model dyadic p-moment")
+
+    tail = distance_prefactor * Fraction(1, 2) ** (rho * n) / (1 - Fraction(1, 2) ** rho)
+    assert_equal(tail, Fraction(28, 3), "negative-sector model convergence tail")
+
+
 def check_coordinate_to_model_convergence_arithmetic():
     # Exact arithmetic for the coordinate-to-model theorem.  With p=2 and
     # epsilon=2, every coordinate has geometric ratio 1/2.  The first
@@ -774,10 +805,11 @@ def main():
     check_parabolic_taylor_subtraction_gain_arithmetic()
     check_dyadic_net_supremum_upgrade_arithmetic()
     check_scale_summed_coordinate_upgrade_arithmetic()
+    check_negative_sector_scale_summed_model_convergence_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

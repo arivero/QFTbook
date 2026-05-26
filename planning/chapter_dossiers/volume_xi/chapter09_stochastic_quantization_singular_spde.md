@@ -109,6 +109,11 @@ data.
   cutoff, finite dynamic \(\Phi^4_3\) model sector, normalized
   \(\Pi\)-coordinates, normalized \(\Gamma\)-coordinate, and the constant
   reexpansion coefficient of \(Y=\mathcal I(X^3)\).
+- `mathfrak C`, `Q_{n,i}`, `Delta Q_{n,i}`, `S_i^{sc}`,
+  `tilde S_i^{sc}`, `N_n^-`, `D_n^-`: the seven-coordinate strict
+  negative-sector index set, uniform and cutoff-increment coordinate
+  functions, scale-summed constants, negative-sector model seminorm, and
+  negative-sector model-distance increment.
 
 ## Claim Ledger
 
@@ -256,6 +261,12 @@ data.
   \(Y=\mathcal I(X^3)\).  The proposition then proves model-seminorm and
   model-distance domination by six \(\Pi\)-coordinates and one
   \(\Gamma\)-coordinate.
+- Proves the strict negative-sector model convergence criterion for dynamic
+  \(\Phi^4_3\): scale-summed moment and parameter-increment estimates for the
+  six \(\Pi\)-coordinates and the single \(c_n\) reexpansion coordinate imply
+  uniform \(L^p\) model seminorm bounds, dyadic Cauchy bounds for model
+  distance, and convergence to a limiting random model on \(\mathcal T_-\) with
+  an explicit geometric \(L^p\) tail.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -414,3 +425,11 @@ data maps.
   scale entropy after taking \(L^p\).  The calculation-check companion
   verifies the entropy cancellation, the geometric scale sum, and cutoff
   factor propagation in an exact sample.
+- 2026-05-26 issue #582 negative-sector model continuation: the chapter now
+  composes the finite negative-sector coordinate chart with the scale-summed
+  coordinate theorem and the random-model Cauchy theorem.  The resulting
+  theorem states the seven coordinate functions, the entropy hypotheses, the
+  scale-slack condition \(\sigma_i>D_i/p\), the constants \(S_i^{sc}\) and
+  \(\tilde S_i^{sc}\), and the exact \(L^p\) bounds that produce a limiting
+  random model on \(\mathcal T_-\).  The calculation-check companion verifies
+  the seven-coordinate \(C_N\), \(C_D\), and tail arithmetic in an exact sample.

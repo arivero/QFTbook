@@ -116,7 +116,8 @@ Current checks:
   coordinate \(C_2\), the bounded dyadic shell increment for \(C_2\), and
   the two-loop sunset sector gaps plus nested forest cancellation and the
   finite negative-sector coordinate chart, including the scale-summed
-  coordinate supremum arithmetic.
+  coordinate supremum arithmetic and the seven-coordinate constants in the
+  negative-sector model convergence criterion.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian
