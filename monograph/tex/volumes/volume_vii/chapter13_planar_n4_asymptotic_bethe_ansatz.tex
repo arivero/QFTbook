@@ -458,6 +458,28 @@ Then the contribution of order \(g^N\) to the coefficient \(c_{r,s}(g)\) in
   \zeta(N)g^N .
   \label{eq:planar-n4-dhm-residue-coefficient}
 \end{equation}
+Equivalently, writing
+\[
+  c_{r,s}(g)\big|_{g^N}=C^{(N)}_{r,s}\zeta(N)g^N,
+\]
+one has the closed coefficient
+\begin{equation}
+  C^{(N)}_{r,s}
+  =
+  \frac{
+    2(-1)^{(N-1)/2+s}(r-1)(s-1)N!(N-1)!
+  }{
+    \Gamma\!\left(\frac{N-r-s+4}{2}\right)
+    \Gamma\!\left(\frac{N+r-s+2}{2}\right)
+    \Gamma\!\left(\frac{N-r+s+2}{2}\right)
+    \Gamma\!\left(\frac{N+r+s}{2}\right)
+  },
+  \label{eq:planar-n4-dhm-closed-weak-coefficient}
+\end{equation}
+when the four Gamma-function arguments are positive integers; otherwise this
+order gives zero.  In particular, the coefficient vanishes unless the
+Laurent powers can be supplied by the \(N\) factors in
+\((z+z^{-1}-w-w^{-1})^N\).
 In particular,
 \[
   c_{2,3}(g)=4\zeta(3)g^3-40\zeta(5)g^5+O(g^7).
@@ -498,7 +520,72 @@ The two contour integrals pick the coefficient of \(z^{-1}w^{-1}\).  Thus the
 coefficient of \(x^{1-r}y^{1-s}\) is the displayed constant times
 \(R^{(N)}_{r,s}\).  Comparing with
 \eqref{eq:planar-n4-chi-coefficient-expansion} proves
-\eqref{eq:planar-n4-dhm-residue-coefficient}.  For \(r=2,s=3\),
+\eqref{eq:planar-n4-dhm-residue-coefficient}.
+
+It remains to evaluate the Laurent coefficient.  Put
+\(a=r-1\) and \(b=s-1\).  Expanding first in the number \(\ell\) of
+\((-w-w^{-1})\) factors gives the finite convolution
+\[
+  R^{(N)}_{r,s}
+  =
+  \sum_{\ell=0}^{N}
+  (-1)^\ell
+  \binom{N}{\ell}
+  \binom{N-\ell}{(N-\ell+a)/2}
+  \binom{\ell}{(\ell+b)/2},
+  \label{eq:planar-n4-dhm-residue-binomial-sum}
+\]
+where a binomial coefficient is declared zero unless its lower entry is an
+integer between \(0\) and the upper entry.  This convention records the parity
+and support restrictions.
+
+For the closed evaluation, compare Fourier coefficients by writing
+\(z=\ee^{\ii\theta}\), \(w=\ee^{\ii\varphi}\),
+\(A=(\theta+\varphi)/2\), and \(B=(\theta-\varphi)/2\).  Then
+\[
+  z+z^{-1}-w-w^{-1}
+  =
+  -4\sin A\,\sin B,
+  \qquad
+  z^{-a}w^{-b}=\ee^{-\ii(a+b)A}\ee^{-\ii(a-b)B}.
+\]
+The elementary expansion
+\[
+  \sin^N t
+  =
+  (2\ii)^{-N}
+  \sum_{j=0}^{N}
+  (-1)^j\binom{N}{j}\ee^{\ii(N-2j)t}
+\]
+therefore gives
+\[
+  R^{(N)}_{r,s}
+  =
+  (-1)^{N+a}
+  \binom{N}{(N+a+b)/2}
+  \binom{N}{(N+a-b)/2},
+\]
+with the same convention that the binomial coefficient is zero unless its
+lower entry is an integer between \(0\) and \(N\).  Since \(N\) is odd and the
+nonzero cases have \(a+b\) odd, the sign is
+\((-1)^{N+a}=(-1)^b=(-1)^{s-1}\).  Rewriting the two binomial coefficients as
+Gamma functions gives
+\[
+  R^{(N)}_{r,s}
+  =
+  (-1)^{s-1}
+  \frac{(N!)^2}{
+    \Gamma\!\left(\frac{N-r-s+4}{2}\right)
+    \Gamma\!\left(\frac{N+r-s+2}{2}\right)
+    \Gamma\!\left(\frac{N-r+s+2}{2}\right)
+    \Gamma\!\left(\frac{N+r+s}{2}\right)
+  } .
+\]
+The lower-entry bounds in the binomial formula are exactly the positivity
+conditions on the four Gamma-function arguments; outside those bounds the
+coefficient is zero.  Substitution into
+\eqref{eq:planar-n4-dhm-residue-coefficient} gives
+\eqref{eq:planar-n4-dhm-closed-weak-coefficient}.  For \(r=2,s=3\),
 \[
   R^{(3)}_{2,3}=3,\qquad R^{(5)}_{2,3}=50,
 \]

@@ -652,3 +652,42 @@ Calculation checks added:
 - `check_dressing_charge_antisymmetry_unitarity()` evaluates finite charge
   expansions on physical-branch `x^pm` samples and verifies phase
   antisymmetry, scalar unitarity, and squared-factor unitarity.
+
+## Continuation XXV: Integrability-Block Derivation Audit and Closed DHM Coefficients
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Review scope:
+
+- Re-read Volume VII Chapters 12--15 as a connected chain:
+  spectral problem and one-loop spin chain, crossing/dressing and ABA,
+  mirror TBA/Y-system, and QSC/hexagon status boundary.
+- Calibrated the review against issue #562 rather than line count: expand
+  convention-sensitive or genuinely nontrivial derivations, while avoiding
+  new detail on algebra that is already transparent.
+- Confirmed that Chapter 15's hexagon material remains intentionally
+  downstream and status-bounded; the spectral chain through QSC remains the
+  priority.
+
+Content added:
+
+- Strengthened the Chapter 13 DHM/BES weak-coefficient derivation by replacing
+  the compressed "apply Chu--Vandermonde" step with a direct two-variable
+  Fourier/Laurent coefficient evaluation.
+- The text now derives
+  `R^{(N)}_{r,s}=(-1)^{N+a} binom(N,(N+a+b)/2) binom(N,(N+a-b)/2)` for
+  `a=r-1`, `b=s-1`, then rewrites it as the closed Gamma-function formula for
+  `C^{(N)}_{r,s}`.
+- The parity/support restrictions are now tied explicitly to the binomial
+  lower-entry bounds, equivalently positivity and integrality of the four
+  Gamma-function arguments.
+
+Calculation checks added:
+
+- `check_dhm_weak_dressing_coefficients()` now compares the exact Laurent
+  residue prefactor against the closed Gamma/binomial formula on a rectangular
+  grid of odd `N` and admissible `r,s`, including vanishing cases.

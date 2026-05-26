@@ -578,6 +578,18 @@ def check_dhm_weak_dressing_coefficients() -> None:
                 f"DHM residue formula disagrees with closed weak formula: {prefactor} != {closed}"
             )
 
+    for power in (3, 5, 7, 9, 11):
+        for r_value in range(2, 8):
+            for s_value in range(r_value + 1, 10):
+                prefactor = residue_prefactor(power, r_value, s_value)
+                closed = closed_weak_prefactor(power - 1, r_value, s_value)
+                if prefactor != closed:
+                    raise AssertionError(
+                        "DHM closed weak coefficient formula failed "
+                        f"N={power}, r={r_value}, s={s_value}: "
+                        f"{prefactor} != {closed}"
+                    )
+
     for r_value, s_value in ((2, 4), (3, 5), (4, 6)):
         for power in (3, 5, 7, 9):
             if residue_prefactor(power, r_value, s_value) != 0:

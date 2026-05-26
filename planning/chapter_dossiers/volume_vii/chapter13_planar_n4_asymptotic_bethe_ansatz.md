@@ -62,6 +62,10 @@ the monograph's proof-boundary language.
   contour integral: expand the gamma-function logarithm, take the Laurent
   coefficient of `(z+z^{-1}-w-w^{-1})^N`, and obtain the residue formula for
   the order-`g^N` contribution to `c_{r,s}(g)`.
+- Evaluates that Laurent coefficient in closed form by converting it to a
+  two-variable Fourier coefficient of `(-4 sin A sin B)^N`; this gives the
+  Gamma-function formula for `C^{(N)}_{r,s}` and its parity/support
+  restrictions without hiding the step behind a citation.
 - Corrects the convention-sensitive distinction between the coefficient order
   and the physical perturbative order: in the stringbook/DHM convention
   `c_{2,3}(g)=4 zeta(3) g^3-40 zeta(5) g^5+O(g^7)`, while the first weak
@@ -137,9 +141,9 @@ crossed Zhukovsky sheets.
   version used in the `SU(2)` ABA.
 - It checks the DHM weak dressing coefficients by Laurent-expanding the
   contour-integrand monomial `(z+z^{-1}-w-w^{-1})^N`, comparing the residue
-  prefactors against the closed weak formula for several `c_{r,s}` values,
-  verifying parity/minimal-order selection, and confirming that the first
-  charge-dressed weak term scales as `g^6`.
+  prefactors against the closed weak formula on an exact rectangular grid in
+  `N,r,s`, verifying parity/minimal-order selection, and confirming that the
+  first charge-dressed weak term scales as `g^6`.
 - It checks the single level-II nesting step by evaluating the two local
   coefficient equations and their cleared polynomial identities for
   non-singular complex samples.
