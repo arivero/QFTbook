@@ -173,6 +173,90 @@ def check_konishi_baxter_polynomial() -> None:
         assert_close("Konishi Baxter polynomial identity", lhs, rhs)
 
 
+def polynomial_add(left: list[complex], right: list[complex]) -> list[complex]:
+    size = max(len(left), len(right))
+    result = [0j] * size
+    for index in range(size):
+        result[index] = (
+            (left[index] if index < len(left) else 0j)
+            + (right[index] if index < len(right) else 0j)
+        )
+    return result
+
+
+def polynomial_scale(poly: list[complex], scale: complex) -> list[complex]:
+    return [scale * coefficient for coefficient in poly]
+
+
+def polynomial_mul_linear(poly: list[complex], constant: complex, linear: complex) -> list[complex]:
+    result = [0j] * (len(poly) + 1)
+    for index, coefficient in enumerate(poly):
+        result[index] += constant * coefficient
+        result[index + 1] += linear * coefficient
+    return result
+
+
+def polynomial_eval(poly: list[complex], value: complex) -> complex:
+    result = 0j
+    for coefficient in reversed(poly):
+        result = result * value + coefficient
+    return result
+
+
+def polynomial_derivative(poly: list[complex]) -> list[complex]:
+    return [index * coefficient for index, coefficient in enumerate(poly)][1:]
+
+
+def rising_integer(start: int, length: int) -> int:
+    result = 1
+    for offset in range(length):
+        result *= start + offset
+    return result
+
+
+def twist_two_baxter_polynomial(spin: int) -> list[complex]:
+    polynomial = [0j]
+    for length in range(spin + 1):
+        coefficient = Fraction(
+            rising_integer(-spin, length) * rising_integer(spin + 1, length),
+            math.factorial(length) ** 3,
+        )
+        pochhammer = [1 + 0j]
+        for offset in range(length):
+            pochhammer = polynomial_mul_linear(pochhammer, offset + 0.5, -1j)
+        polynomial = polynomial_add(polynomial, polynomial_scale(pochhammer, coefficient))
+    return polynomial
+
+
+def check_twist_two_qsc_baxter_family() -> None:
+    for spin in range(1, 9):
+        q_polynomial = twist_two_baxter_polynomial(spin)
+        q_derivative = polynomial_derivative(q_polynomial)
+        transfer = lambda u, spin=spin: 2 * u * u - spin * (spin + 1) - 0.5
+        for u in (-1.1, 0.0, 0.8 + 0.3j):
+            lhs = (
+                (u + 0.5j) ** 2 * polynomial_eval(q_polynomial, u + 1j)
+                + (u - 0.5j) ** 2 * polynomial_eval(q_polynomial, u - 1j)
+            )
+            rhs = transfer(u) * polynomial_eval(q_polynomial, u)
+            assert_close(f"twist-two Baxter identity S={spin}", lhs, rhs, tol=2.0e-9)
+
+        q_plus = polynomial_eval(q_polynomial, 0.5j)
+        q_minus = polynomial_eval(q_polynomial, -0.5j)
+        assert_close("twist-two Q(i/2) sign", q_plus / q_minus, (-1) ** spin)
+
+        spin_chain_energy = 1j * (
+            polynomial_eval(q_derivative, 0.5j) / q_plus
+            - polynomial_eval(q_derivative, -0.5j) / q_minus
+        )
+        expected_energy = 4 * sum(Fraction(1, mode) for mode in range(1, spin + 1))
+        assert_close(
+            f"twist-two one-loop energy S={spin}",
+            spin_chain_energy,
+            float(expected_energy),
+        )
+
+
 def check_central_extension_dispersion() -> None:
     for coupling in (0.05, 0.2, 0.7):
         for momentum in (0.3, 1.1, 2.4):
@@ -602,6 +686,7 @@ def main() -> None:
     check_two_magnon_coordinate_matching()
     check_konishi_one_loop_roots()
     check_konishi_baxter_polynomial()
+    check_twist_two_qsc_baxter_family()
     check_central_extension_dispersion()
     check_zhukovsky_map_and_energy()
     check_crossing_rhs_is_sheet_sensitive()

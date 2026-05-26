@@ -116,6 +116,26 @@
   equations.  This keeps the one-loop finite-chain statement separate from
   the all-loop asymptotic long-range Bethe ansatz.
 
+## Comprehensive Development Continuation III
+
+- Downloaded a local study copy of the foundational QSC source
+  `1305.1939` under `references/planar_n4_integrability/qsc/` for convention
+  and weak-coupling-argument checking.  This is reference cache and should not
+  be staged.
+- Expanded Chapter 15's weak-coupling QSC derivation.  Added a precise
+  `SL(2)` weak-degeneration regularity assumption for the `Pmu` system:
+  leading `P_1`, suppression of `P_2 P_3`, polynomial `P_4/P_1`, polynomial
+  `Q`, and the allowed singularities in the `g^2` correction to `mu_12` from
+  collapsed short cuts.
+- Proved the one-loop dimension extraction formula from the weak QSC by
+  writing the singular correction to `mu_12` in digamma form, matching its
+  large-`u` logarithm to `mu_12 ~ u^(Delta-J)`, and reducing the result to
+  the Bethe-root energy sum.
+- Added a twist-two Baxter family example
+  `Q_S(u)=3F2(-S,S+1,1/2-iu;1,1;1)`, including its finite-difference
+  equation, endpoint/cyclicity signs, harmonic-number energy identity, and
+  `Delta_{J=2,S}=2+S+8g^2 H_S+O(g^4)` for physical even spin.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -127,6 +147,9 @@
   eigenvector;
 - Konishi one-loop cyclic roots;
 - explicit Konishi Baxter polynomial identity;
+- twist-two QSC Baxter-family identities for spins `S=1,...,8`, including
+  the finite-difference equation, endpoint sign/cyclicity pattern, and
+  logarithmic-derivative energy `4 H_S`;
 - central-extension dispersion;
 - Zhukovsky defining equation, large-`u` expansion, cut reciprocal boundary
   values, `x^pm` relation, and corrected energy formula;

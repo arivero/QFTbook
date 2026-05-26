@@ -37,7 +37,19 @@ three-point functions.
   short and long cuts.
 - Derives the one-loop Baxter equation from the weak-coupling QSC
   degeneration under explicit assumptions.
+- Adds a weak-coupling `SL(2)` QSC regularity assumption specifying the
+  leading `P_1`, `P_2 P_3`, polynomial `P_4/P_1`, polynomial `Q`, and
+  collapsed-cut singularity data of `mu_12`.
+- Proves the one-loop dimension extraction formula from the weak QSC:
+  the singular part of the `g^2` correction to `mu_12` is fixed by the
+  collapsed short cuts, has the displayed digamma form, and its large-`u`
+  logarithm gives
+  `Delta = J + S + 2 i g^2 d_u log(Q^+/Q^-)|_{u=0} + O(g^4)`.
 - Adds the twist-two spin-two Konishi Baxter polynomial example.
+- Adds the full twist-two Baxter-polynomial family
+  `Q_S(u) = 3F2(-S,S+1,1/2-iu;1,1;1)`, its finite-difference equation,
+  endpoint/cyclicity values, and the one-loop dimension
+  `Delta_{J=2,S}=2+S+8g^2 H_S+O(g^4)` for physical even spin.
 - Records the cusp anomalous dimension and Konishi as benchmark outputs, and
   adds the small-spin QSC expansion through the Bessel-ratio formula.
 - Defines the hexagon partition of planar three-point functions and states the
@@ -58,6 +70,20 @@ structure and the pair-of-pants-to-hexagons cut.
   `calculation-checks/planar_n4_integrability_checks.py`.
 - The same script now checks the explicit Konishi Baxter polynomial and the
   Pmu Pfaffian rank-two update.
+- The same script checks the twist-two QSC Baxter-polynomial family for
+  spins `S=1,...,8`: finite-difference equation, endpoint sign/cyclicity
+  pattern, and the logarithmic-derivative energy identity `4 H_S`.
 - The Bremsstrahlung weak-series coefficients through four displayed orders
   are checked in
   `calculation-checks/planar_n4_integrability_checks.py`.
+
+## External References Used In Current Pass
+
+- Stringbook source:
+  `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, around
+  the `Pmu` asymptotic conditions and weak-coupling QSC block.
+- Downloaded local study copy:
+  `references/planar_n4_integrability/qsc/1305.1939_src/PRL_paper.tex`.
+  It was used to check the original compact `Pmu` weak-coupling argument and
+  regularity assumptions.  The monograph text expands the argument rather
+  than citing it as authority.

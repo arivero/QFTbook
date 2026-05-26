@@ -191,6 +191,25 @@ then evaluating \eqref{eq:planar-n4-qsc-baxter-limit} at \(u=u_j\) gives
 which is the one-loop \(SL(2)\) Bethe equation in this convention.  Thus the
 QSC contains the one-loop spin chain as its weak-coupling degeneration.
 
+\begin{assumption}[Weak-coupling regularity of the \(SL(2)\) QSC]
+\label{ass:qsc-weak-coupling-regularity}
+Fix an \(SL(2)\) state of twist \(J\in\mathbb Z_{>0}\), Lorentz spin
+\(S\in\mathbb Z_{\geq0}\), and dimension
+\(\Delta=J+S+O(g^2)\).  In the weak-coupling degeneration of the
+\(P\mu\)-system assume the following analytic data.
+\[
+  P_2P_3=O(g^2),\qquad
+  P_1(u)=A_1u^{-J/2}+O(g^2),
+\]
+and \(P_4/P_1\) tends to a polynomial of degree \(J-1\).  Moreover
+\[
+  \mu_{12}(u+\ii/2)=Q(u)+g^2R(u)+O(g^4),
+\]
+where \(Q(u)\) is a degree-\(S\) polynomial and the singular part of \(R\) is
+produced only by the short cuts \([-2g,2g]+\ii n\) collapsing to the points
+\(\ii n\).  The defining sheet has no additional poles.
+\end{assumption}
+
 \begin{proposition}[Baxter equation from QSC degeneration]
 \label{prop:qsc-baxter-degeneration}
 Assume that in the weak-coupling limit the QSC functions in the \(SL(2)\)
@@ -218,6 +237,93 @@ Dividing by \((u_j-\ii/2)^JQ(u_j-\ii)\) and using
 gives the displayed Bethe equation.
 \end{proof}
 
+\begin{proposition}[One-loop dimension from the weak QSC]
+\label{prop:qsc-one-loop-dimension}
+Assume the regular weak-coupling degeneration of
+Assumption~\ref{ass:qsc-weak-coupling-regularity}, and impose the cyclic
+single-trace condition
+\[
+  \frac{Q(\ii/2)}{Q(-\ii/2)}=1 .
+\]
+Then the first anomalous-dimension coefficient extracted from the QSC is
+\[
+  \Delta
+  =
+  J+S
+  +2\ii g^2
+  \left.
+    \partial_u\log\frac{Q(u+\ii/2)}{Q(u-\ii/2)}
+  \right|_{u=0}
+  +O(g^4).
+\]
+Equivalently, if \(Q(u)=\prod_{k=1}^S(u-u_k)\), then
+\[
+  \Delta
+  =
+  J+S
+  +2g^2\sum_{k=1}^S\frac1{u_k^2+1/4}
+  +O(g^4).
+\]
+\end{proposition}
+
+\begin{proof}
+The leading \(P_2P_3=O(g^2)\) scaling decouples the
+\((\mu_{12},\mu_{24})\) equations of the \(P\mu\)-system.  Eliminating
+\(\mu_{24}\), and using the regularity of \(P_1\) and \(P_4/P_1\) in
+Assumption~\ref{ass:qsc-weak-coupling-regularity}, gives the Baxter equation
+of Proposition~\ref{prop:qsc-baxter-degeneration} for
+\(Q(u)=\mu_{12}(u+\ii/2)+O(g^2)\).  The same \(i\)-pseudoperiodicity of
+\(\mu_{12}\), evaluated at the collapsed branch point, gives the cyclicity
+condition \(Q(\ii/2)=Q(-\ii/2)\).
+
+It remains to extract the coefficient of \(g^2\) in \(\Delta\).  Since
+\(\mu_{12}(u)\sim u^{\Delta-J}\) and \(Q(u-\ii/2)\sim u^S\), the ratio
+\(\mu_{12}(u)/Q(u-\ii/2)\) has the large-\(u\) expansion
+\[
+  1+(\Delta-J-S)\log u+O(g^4)+O(u^{-1}).
+\]
+The collapsed square-root cuts force the singular part of the \(g^2\)
+correction to \(\mu_{12}(u+\ii/2)\) to be
+\[
+  R_{\rm sing}(u)
+  =
+  \ii r_0\,\frac{Q(u)}{Q(\ii/2)}
+  \left(\psi\!\left(\frac12-\ii u\right)
+       +\psi\!\left(\frac12+\ii u\right)\right),
+  \qquad
+  r_0=Q'(\ii/2)-Q'(-\ii/2),
+\]
+where \(\psi=\Gamma'/\Gamma\).  This expression is the unique meromorphic
+solution with the prescribed simple poles at the collapsed cuts and with the
+same homogeneous Baxter equation away from those poles; any additional
+entire \(i\)-periodic contribution is absorbed into the regular polynomial
+part and cannot change the coefficient of \(\log u\).  Because
+\[
+  \psi\!\left(\frac12-\ii u\right)
+  +\psi\!\left(\frac12+\ii u\right)
+  =
+  2\log u+O(u^{-1})
+\]
+in the large-\(u\) sector used for the \(SL(2)\) asymptotics, comparison of
+the logarithmic coefficients gives
+\[
+  \Delta-J-S
+  =
+  2\ii g^2\,\frac{Q'(\ii/2)-Q'(-\ii/2)}{Q(\ii/2)}+O(g^4).
+\]
+Using \(Q(\ii/2)=Q(-\ii/2)\) rewrites this as the derivative formula.  Finally
+\[
+  \ii\left(
+  \frac{Q'(\ii/2)}{Q(\ii/2)}
+  -
+  \frac{Q'(-\ii/2)}{Q(-\ii/2)}
+  \right)
+  =
+  \sum_{k=1}^S\frac1{u_k^2+1/4},
+\]
+which proves the root-sum form.
+\end{proof}
+
 \begin{example}[Konishi Baxter polynomial]
 \label{ex:planar-n4-konishi-baxter-polynomial}
 For the twist-two spin-two representative of Konishi, take
@@ -239,6 +345,53 @@ are precisely the one-loop Konishi Bethe roots used in
 Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains}.  This example is a
 finite calculation showing how the QSC weak-coupling limit remembers the
 spin-chain normalization.
+\end{example}
+
+\begin{example}[Twist-two Baxter family]
+\label{ex:planar-n4-twist-two-baxter-family}
+For twist \(J=2\) and spin \(S\), define the terminating polynomial
+\[
+  Q_S(u)
+  =
+  {}_3F_2\!\left(
+    \begin{matrix}
+      -S,\ S+1,\ \frac12-\ii u\\
+      1,\ 1
+    \end{matrix}
+    ;1
+  \right),
+\]
+where \((a)_k\) is the rising Pochhammer symbol in the terminating
+hypergeometric series.  It obeys
+\[
+  (u+\ii/2)^2Q_S(u+\ii)
+  +(u-\ii/2)^2Q_S(u-\ii)
+  =
+  \left(2u^2-S(S+1)-\frac12\right)Q_S(u).
+\]
+Thus \(T_S(u)=2u^2-S(S+1)-1/2\).  The endpoint values and logarithmic
+derivative are the finite identities
+\[
+  Q_S(-\ii/2)=1,\qquad
+  Q_S(\ii/2)=(-1)^S,\qquad
+  \ii\left(
+  \frac{Q'_S(\ii/2)}{Q_S(\ii/2)}
+  -
+  \frac{Q'_S(-\ii/2)}{Q_S(-\ii/2)}
+  \right)
+  =
+  4H_S,
+\]
+with \(H_S=\sum_{m=1}^S m^{-1}\).  Hence the physical even-spin twist-two
+single-trace states have
+\[
+  \Delta_{J=2,S}
+  =
+  2+S+8g^2H_S+O(g^4).
+\]
+For \(S=2\), \(Q_2(u)=1/4-3u^2\), which is the same root set as the monic
+Konishi polynomial \(u^2-1/12\), and the formula gives
+\(\Delta_{\rm K}=4+12g^2+O(g^4)\).
 \end{example}
 
 \section{Cusp Anomalous Dimension and Konishi}
