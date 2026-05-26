@@ -60,6 +60,8 @@ data.
 - `Q`, `K_i`, `L_i`, `M_k`: homogeneous dimension, dyadic input kernels, and
   output convolution scale in the parabolic convolution estimate.
 - `a`, `b`: kernel orders in the dyadic parabolic convolution bound.
+- `F`, `P`, `H`, `r`: local factor, subtracted polynomial, remainder
+  coefficient, and parabolic remainder order in the Taylor-subtraction gain.
 
 ## Claim Ledger
 
@@ -137,6 +139,9 @@ data.
   estimates for order-\(a\) and order-\(b\) kernels imply order-\((a+b)\)
   output bounds, including \(L^\infty\) and \(L^1\) estimates with explicit
   geometric factors.
+- Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
+  by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
+  order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -228,3 +233,8 @@ data maps.
   the two branches \(\min(i,j)=k\).  The calculation-check companion verifies
   the output exponents and geometric factors for a sample \(Q=5\),
   \(a=2\), \(b=1\) convolution.
+- 2026-05-26 issue #582 Taylor-gain continuation: the chapter now proves the
+  scale gain produced by Taylor subtraction at a dyadic kernel scale.  The
+  proof is the direct \(L^1\)-kernel estimate multiplied by the parabolic
+  Taylor remainder bound.  The calculation-check companion verifies the
+  exponent arithmetic for a sample \(a=2\), \(r=3\), \(i=4\) estimate.

@@ -101,7 +101,8 @@ Current checks:
   abstract modelled-distribution fixed-point ball, contraction, and Picard
   tail estimates, plus the dyadic geometric-tail arithmetic in the random
   model convergence criterion and the exponent/geometric-factor arithmetic in
-  the dyadic parabolic convolution bound.
+  the dyadic parabolic convolution bound, and the exponent arithmetic in the
+  parabolic Taylor-subtraction gain.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

@@ -427,6 +427,18 @@ def check_dyadic_parabolic_convolution_bound_arithmetic():
     assert_equal(scaled_bound, Fraction(448, 3), "dyadic convolution sample bound")
 
 
+def check_parabolic_taylor_subtraction_gain_arithmetic():
+    # The Taylor-subtraction lemma multiplies the kernel L1 scale
+    # 2^(-a i) by the remainder scale 2^(-r i).
+    a = Fraction(2)
+    r = Fraction(3)
+    i = 4
+    exponent = -(a + r) * i
+    assert_equal(exponent, Fraction(-20), "Taylor-subtraction total exponent")
+    bound = Fraction(2) ** exponent
+    assert_equal(bound, Fraction(1, 1048576), "Taylor-subtraction sample bound")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -444,7 +456,8 @@ def main():
     check_modelled_fixed_point_contraction_arithmetic()
     check_random_model_cauchy_criterion_arithmetic()
     check_dyadic_parabolic_convolution_bound_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, and dyadic-kernel checks passed.")
+    check_parabolic_taylor_subtraction_gain_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, and Taylor-gain checks passed.")
 
 
 if __name__ == "__main__":
