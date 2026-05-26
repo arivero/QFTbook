@@ -80,6 +80,10 @@ three-point functions.
   collapsed short cuts, has the displayed digamma form, and its large-`u`
   logarithm gives
   `Delta = J + S + 2 i g^2 d_u log(Q^+/Q^-)|_{u=0} + O(g^4)`.
+- Adds a collapsed-cut digamma-package lemma proving the pole locations,
+  residues at `u=+-i(n+1/2)`, endpoint residue signs at `+-i/2`, and the
+  `2 i r_0 log(u)/Q(i/2)` large-`u` coefficient used in the weak-QSC
+  one-loop dimension extraction.
 - Adds the twist-two spin-two Konishi Baxter polynomial example.
 - Adds the full twist-two Baxter-polynomial family
   `Q_S(u) = 3F2(-S,S+1,1/2-iu;1,1;1)`, its finite-difference equation,
@@ -114,6 +118,10 @@ structure and the pair-of-pants-to-hexagons cut.
   displayed `A_1A_4` and `A_2A_3` products, including the dimension root,
   the spin-shadow root `S-1`, the intermediate linear relation, and
   sensitivity to an overall sign flip.
+- The same script checks the collapsed-cut digamma package for twist-two
+  spins `S=2,4,6`: residues at `u=+-i/2` and the large-`u` logarithmic
+  coefficient, using a local recurrence/Stirling implementation of
+  `psi=Gamma'/Gamma`.
 - The same script checks the sign convention in the `mu(u+i)` monodromy
   recursion against the rank-two discontinuity update and verifies
   antisymmetry of the shifted matrix.

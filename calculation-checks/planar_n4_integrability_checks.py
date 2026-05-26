@@ -805,6 +805,77 @@ def check_qsc_large_u_coefficient_constraints() -> None:
             )
 
 
+def check_qsc_collapsed_cut_digamma_package() -> None:
+    """Check the weak-QSC digamma pole package and its logarithmic coefficient."""
+
+    def digamma_complex(z: complex) -> complex:
+        value = 0j
+        for _ in range(80):
+            if abs(z) >= 16:
+                break
+            value -= 1 / z
+            z += 1
+        inverse = 1 / z
+        inverse2 = inverse * inverse
+        return value + (
+            cmath.log(z)
+            - inverse / 2
+            - inverse2 / 12
+            + inverse2**2 / 120
+            - inverse2**3 / 252
+            + inverse2**4 / 240
+            - inverse2**5 / 132
+        )
+
+    for spin in (2, 4, 6):
+        q_polynomial = twist_two_baxter_polynomial(spin)
+        q_derivative = polynomial_derivative(q_polynomial)
+        q_plus = polynomial_eval(q_polynomial, 0.5j)
+        q_minus = polynomial_eval(q_polynomial, -0.5j)
+        r0 = polynomial_eval(q_derivative, 0.5j) - polynomial_eval(
+            q_derivative,
+            -0.5j,
+        )
+
+        def singular_correction(u: complex) -> complex:
+            return (
+                1j
+                * r0
+                * polynomial_eval(q_polynomial, u)
+                / q_plus
+                * (digamma_complex(0.5 - 1j * u) + digamma_complex(0.5 + 1j * u))
+            )
+
+        epsilon = 1.0e-7
+        residue_plus = epsilon * singular_correction(0.5j + epsilon)
+        residue_minus = epsilon * singular_correction(-0.5j + epsilon)
+        assert_close(
+            f"QSC digamma residue at +i/2 S={spin}",
+            residue_plus,
+            -r0,
+            tol=2.0e-5,
+        )
+        assert_close(
+            f"QSC digamma residue at -i/2 S={spin}",
+            residue_minus,
+            r0 * q_minus / q_plus,
+            tol=2.0e-5,
+        )
+
+        large_u = 1000.0
+        logarithmic_coefficient = singular_correction(large_u) / polynomial_eval(
+            q_polynomial,
+            large_u,
+        )
+        expected_coefficient = 2j * r0 * math.log(large_u) / q_plus
+        assert_close(
+            f"QSC digamma large-u logarithmic coefficient S={spin}",
+            logarithmic_coefficient / expected_coefficient,
+            1,
+            tol=5.0e-5,
+        )
+
+
 def check_pmu_pfaffian_rank_two_update() -> None:
     def pfaffian_4(matrix: list[list[complex]]) -> complex:
         return (
@@ -896,6 +967,7 @@ def main() -> None:
     check_t_system_to_y_system_identity()
     check_t_hook_wronskian_pmu_bridge()
     check_qsc_large_u_coefficient_constraints()
+    check_qsc_collapsed_cut_digamma_package()
     check_pmu_pfaffian_rank_two_update()
     print("All planar N=4 integrability checks passed.")
 

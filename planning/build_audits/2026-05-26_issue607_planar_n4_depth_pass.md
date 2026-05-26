@@ -203,6 +203,20 @@
   `U=-i(J+1)A_2A_3+i(J-1)A_1A_4` and the elementary factorization that fixes
   the convention-sensitive signs.
 
+## Comprehensive Development Continuation VIII
+
+- Expanded the weak-QSC analytic-continuation step in Chapter 15.  The
+  digamma singular correction to `mu_12(u+i/2)` is now packaged as a lemma
+  with its pole locations, residues, endpoint signs, and large-`u`
+  logarithmic coefficient proved explicitly.
+- The one-loop dimension proof now invokes this collapsed-cut lemma instead
+  of simply asserting the digamma expression.  This makes the branch-point
+  residue data and the `2 log u` coefficient auditable inside the monograph.
+- Added companion checks for the collapsed-cut digamma package on the
+  twist-two Baxter family.  The check uses a local recurrence/Stirling
+  implementation of `psi=Gamma'/Gamma` and verifies residues at `u=+-i/2`
+  and the large-`u` logarithmic coefficient.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -242,6 +256,8 @@
 - QSC large-`u` characteristic-root coefficient products: the dimension root,
   the spin-shadow root `S-1`, the intermediate linear relation, and failure
   of an overall sign flip.
+- QSC collapsed-cut digamma singular package: endpoint residues and large-`u`
+  logarithmic coefficient for twist-two spins `S=2,4,6`.
 - QSC `Pmu` monodromy-recursion signs and antisymmetry of the shifted
   `mu` matrix.
 
