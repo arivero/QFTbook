@@ -1712,6 +1712,142 @@ formula does not double count overlapping local parts, and combine the gain
 with the dyadic convolution bound in
 Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound}.
 
+\begin{theorem}[Multiscale sector summability for coordinate kernels]
+\label{thm:spde-multiscale-sector-kernel-summability}
+Let \(R\geq1\) and let \(\eta_1,\ldots,\eta_R\) be positive real numbers.
+Here \(\mathbb N=\{0,1,2,\ldots\}\).
+Set
+\[
+  \eta_*=\min_{1\leq h\leq R}\eta_h,\qquad
+  G=\prod_{h=1}^R\frac{1}{1-2^{-\eta_h}},
+\]
+and
+\[
+  \widetilde G
+  =
+  \sum_{h=1}^R
+  \prod_{\substack{1\leq k\leq R\\ k\neq h}}
+  \frac{1}{1-2^{-\eta_k}} .
+\]
+Let \(\mathcal H\) be a real Hilbert space.  Let \(\mathcal A\) be an index
+set with a positive scale weight
+\[
+  \sigma:\mathcal A\to(0,\infty).
+\]
+For \(q=0,\ldots,Q\), \(a\in\mathcal A\), and
+\(\mathbf r=(r_1,\ldots,r_R)\in\mathbb N^R\), let
+\[
+  f_{\mathbf r,a,q}\in \mathcal H^{\odot q}
+\]
+with \(\mathcal H^{\odot0}=\mathbb R\).  Suppose that, for constants
+\(B_q<\infty\),
+\begin{equation}
+  \|f_{\mathbf r,a,q}\|_{\mathcal H^{\otimes q}}
+  \leq
+  B_q\sigma(a)\prod_{h=1}^R2^{-\eta_h r_h}
+  \label{eq:spde-sector-kernel-gap-bound}
+\end{equation}
+for all displayed indices.  Define the cutoff kernel
+\[
+  f_{n,a,q}
+  =
+  \sum_{\substack{\mathbf r\in\mathbb N^R\\
+                  \max_h r_h\leq n}}
+  f_{\mathbf r,a,q}.
+\]
+Then the sum defining \(f_{n,a,q}\) is absolutely convergent in
+\(\mathcal H^{\otimes q}\), and
+\begin{equation}
+  \|f_{n,a,q}\|_{\mathcal H^{\otimes q}}
+  \leq
+  B_qG\sigma(a).
+  \label{eq:spde-sector-uniform-kernel-bound}
+\end{equation}
+Moreover,
+\begin{equation}
+  \|f_{n+1,a,q}-f_{n,a,q}\|_{\mathcal H^{\otimes q}}
+  \leq
+  B_q\widetilde G\,2^{-\eta_*(n+1)}\sigma(a)
+  \leq
+  B_q\widetilde G\,2^{-\eta_*n}\sigma(a).
+  \label{eq:spde-sector-kernel-increment-bound}
+\end{equation}
+Consequently, for any isonormal Gaussian process
+\(\xi:\mathcal H\to L^2(\Omega)\), the random variables
+\[
+  Y_n(a)=\sum_{q=0}^Q I_q(f_{n,a,q})
+\]
+satisfy the hypotheses of
+Corollary~\ref{cor:spde-chaos-kernel-coordinate-moments} with the
+replacement
+\[
+  B_q\mapsto B_qG,\qquad
+  \widetilde B_q\mapsto B_q\widetilde G,\qquad
+  \rho=\eta_* .
+\]
+\end{theorem}
+
+\begin{proof}
+The triangle inequality and
+\eqref{eq:spde-sector-kernel-gap-bound} give
+\[
+\begin{aligned}
+  \|f_{n,a,q}\|_{\mathcal H^{\otimes q}}
+  &\leq
+  B_q\sigma(a)
+  \sum_{\substack{\mathbf r\in\mathbb N^R\\ \max_h r_h\leq n}}
+  \prod_{h=1}^R2^{-\eta_h r_h}        \\
+  &\leq
+  B_q\sigma(a)
+  \prod_{h=1}^R
+  \sum_{r_h=0}^{\infty}2^{-\eta_h r_h}
+  =
+  B_qG\sigma(a).
+\end{aligned}
+\]
+This proves absolute convergence and
+\eqref{eq:spde-sector-uniform-kernel-bound}.
+
+The increment \(f_{n+1,a,q}-f_{n,a,q}\) is the sum of those scale-gap
+assignments for which at least one \(r_h\) is equal to \(n+1\) and no
+\(r_h\) is larger than \(n+1\).  This set is contained in the union, over
+\(h=1,\ldots,R\), of the sets with \(r_h=n+1\).  Therefore
+\[
+\begin{aligned}
+  \|f_{n+1,a,q}-f_{n,a,q}\|_{\mathcal H^{\otimes q}}
+  &\leq
+  B_q\sigma(a)
+  \sum_{h=1}^R
+  2^{-\eta_h(n+1)}
+  \prod_{\substack{1\leq k\leq R\\k\neq h}}
+  \sum_{r_k=0}^{\infty}2^{-\eta_k r_k}        \\
+  &\leq
+  B_q\sigma(a)\,2^{-\eta_*(n+1)}
+  \sum_{h=1}^R
+  \prod_{\substack{1\leq k\leq R\\k\neq h}}
+  \frac{1}{1-2^{-\eta_k}} .
+\end{aligned}
+\]
+This is \eqref{eq:spde-sector-kernel-increment-bound}.  The final assertion
+is obtained by comparing
+\eqref{eq:spde-sector-uniform-kernel-bound} and
+\eqref{eq:spde-sector-kernel-increment-bound} with the deterministic kernel
+hypotheses of
+Corollary~\ref{cor:spde-chaos-kernel-coordinate-moments}.
+\end{proof}
+
+Theorem~\ref{thm:spde-multiscale-sector-kernel-summability} is the
+multiscale summation step behind a BPHZ coordinate estimate.  In an actual
+tree calculation, a sector decomposition rewrites relative scale assignments
+as non-negative gap variables \(r_h\).  Taylor subtraction and the forest
+formula must then prove positive deficits \(\eta_h\) for every gap variable.
+Once that has been done, the theorem above converts those deficits into
+uniform kernel bounds and dyadic cutoff-increment bounds for the finite
+chaos coordinates.  The difficult part left for dynamic \(\Phi^4_3\) is
+therefore the derivation of
+\eqref{eq:spde-sector-kernel-gap-bound} for each negative tree and each
+coordinate entering the model seminorm.
+
 \begin{theorem}[Dyadic-net upgrade from coordinates to a supremum]
 \label{thm:spde-dyadic-net-supremum-upgrade}
 Let \((\mathcal X,d_{\mathcal X})\) be a compact metric space.  Assume that

@@ -77,6 +77,11 @@ data.
   convergence theorem.
 - `D_i`, `epsilon_i`: coordinate-wise entropy exponent and excess
   increment-decay exponent in the coordinate-to-model theorem.
+- `R`, `eta_h`, `eta_*`, `G`, `tilde G`: number of sector-gap variables,
+  positive scale deficits, minimal deficit, full geometric factor, and shell
+  geometric factor in the multiscale sector summability theorem.
+- `f_{r,a,q}`, `f_{n,a,q}`: sector kernel contribution and finite-cutoff
+  kernel entering the chaos expansion of a model coordinate.
 
 ## Claim Ledger
 
@@ -167,6 +172,11 @@ data.
   model distance, and if each coordinate satisfies the dyadic-net moment and
   increment estimates, then the random-model Cauchy hypotheses follow with
   explicit constants \(C_N\) and \(C_D\).
+- Proves a multiscale sector summability criterion: positive sector-gap
+  exponents \(\eta_h\) imply uniform kernel bounds with geometric factor
+  \(G=\prod_h(1-2^{-\eta_h})^{-1}\) and cutoff-increment bounds with shell
+  factor \(\tilde G\), hence the deterministic kernel hypotheses of the
+  finite-chaos moment corollary.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -277,3 +287,10 @@ data maps.
   domination of the model seminorm and model distance.  The calculation-check
   companion verifies the resulting \(C_N\), \(C_D\), and dyadic distance
   arithmetic in an exact finite sample.
+- 2026-05-26 issue #582 multiscale-sector continuation: the chapter now
+  proves the sector-gap summability step needed between tree-level BPHZ
+  kernel estimates and the finite-chaos coordinate moment corollary.  The
+  proof sums the full product of geometric scales for uniform bounds and
+  bounds a cutoff shell by a union over the active maximal gap.  The
+  calculation-check companion verifies \(G\), \(\tilde G\), the sharp and
+  relaxed increment bounds, and the shell union bound in an exact sample.

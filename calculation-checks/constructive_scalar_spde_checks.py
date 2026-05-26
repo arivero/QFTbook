@@ -517,6 +517,52 @@ def check_coordinate_to_model_convergence_arithmetic():
     assert_equal(distance_p_moment, Fraction(361, 16), "coordinate-to-model dyadic p-moment")
 
 
+def check_multiscale_sector_kernel_summability_arithmetic():
+    # Sector gap exponents eta=(1,2,3) give
+    # G = 1/(1-1/2) 1/(1-1/4) 1/(1-1/8)=64/21.
+    etas = [1, 2, 3]
+    geometric_factors = [Fraction(1, 1) / (1 - Fraction(1, 2) ** eta) for eta in etas]
+    g = Fraction(1)
+    for factor in geometric_factors:
+        g *= factor
+    assert_equal(geometric_factors, [Fraction(2), Fraction(4, 3), Fraction(8, 7)], "sector geometric factors")
+    assert_equal(g, Fraction(64, 21), "sector full geometric factor")
+
+    # G-tilde is the sum of products omitting one factor:
+    # 32/21 + 16/7 + 8/3 = 136/21.
+    g_tilde = sum(
+        math.prod(geometric_factors[k] for k in range(len(etas)) if k != h)
+        for h in range(len(etas))
+    )
+    assert_equal(g_tilde, Fraction(136, 21), "sector shell geometric factor")
+
+    b = Fraction(5)
+    sigma = Fraction(7)
+    uniform_bound = b * sigma * g
+    assert_equal(uniform_bound, Fraction(320, 3), "sector uniform kernel bound")
+
+    eta_star = min(etas)
+    n = 4
+    increment_bound = b * sigma * g_tilde * Fraction(1, 2) ** (eta_star * (n + 1))
+    relaxed_increment_bound = b * sigma * g_tilde * Fraction(1, 2) ** (eta_star * n)
+    assert_equal(increment_bound, Fraction(85, 12), "sector sharp increment bound")
+    assert_equal(relaxed_increment_bound, Fraction(85, 6), "sector relaxed increment bound")
+    if not increment_bound <= relaxed_increment_bound:
+        raise AssertionError("sector increment relaxation failed")
+
+    # Exact shell sum at max(r)=5 is below the union bound G-tilde 2^-5.
+    n_plus_one = 5
+    exact_shell = Fraction(1)
+    exact_inner = Fraction(1)
+    for eta in etas:
+        exact_shell *= sum(Fraction(1, 2) ** (eta * r) for r in range(n_plus_one + 1))
+        exact_inner *= sum(Fraction(1, 2) ** (eta * r) for r in range(n_plus_one))
+    exact_shell -= exact_inner
+    union_shell_bound = g_tilde * Fraction(1, 2) ** n_plus_one
+    if not exact_shell <= union_shell_bound:
+        raise AssertionError("sector shell union bound failed")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -537,7 +583,8 @@ def main():
     check_parabolic_taylor_subtraction_gain_arithmetic()
     check_dyadic_net_supremum_upgrade_arithmetic()
     check_coordinate_to_model_convergence_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, and coordinate-to-model convergence checks passed.")
+    check_multiscale_sector_kernel_summability_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, and multiscale-sector checks passed.")
 
 
 if __name__ == "__main__":

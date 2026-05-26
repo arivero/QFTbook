@@ -106,7 +106,9 @@ Current checks:
   cancellation and geometric-series arithmetic in the dyadic-net supremum
   upgrade from pointwise coordinate moments to compact model-seminorm bounds,
   plus the finite-coordinate arithmetic that converts those compact
-  suprema into the random-model Cauchy constants.
+  suprema into the random-model Cauchy constants, and the multiscale-sector
+  geometric factors used to pass from positive gap exponents to uniform and
+  cutoff-increment kernel bounds.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian
