@@ -96,6 +96,9 @@ data.
   negative-Sobolev moments.
 - `V_N`, `Z_N`: cutoff Wick quartic interaction and its finite-dimensional
   partition function in the Nelson-stability-to-density proposition.
+- `X_N^A`, `X_N^B`, `W_N^A`, `W_N^B`: regulator-dependent finite lists of
+  cylinder coordinates and interaction densities in the bounded-cylinder
+  common-density comparison theorem.
 - `H_N`, `A_N`, `L_N`, `e_{N,alpha}`, `lambda_{N,alpha}`, `nu_N`:
   finite-dimensional Hilbert space, Hessian lower-bound operator, reference
   nonnegative operator, spectral basis, eigenvalues, and convex cutoff
@@ -342,6 +345,18 @@ data.
   \(P(\phi)_2\) theorem from the still regulator-specific task of proving or
   comparing the same stability for a sharp Fourier-Galerkin stochastic
   regulator.
+- Proves a bounded-cylinder regulator-comparison theorem from a common
+  density limit.  If two cutoff schemes have cylinder coordinate vectors
+  converging in probability to the same limit, their nonnegative interaction
+  densities converge in \(L^1\) to the same limiting density, and the
+  densities are uniformly \(L^p\)-bounded for some \(p>1\), then all bounded
+  continuous cylinder expectations have the same normalized continuum limit.
+  The proof treats the normalization constants by \(L^1\)-convergence and
+  controls the term
+  \(\int(F(X_N)-F(X))W_N\,d\gamma\) by convergence in probability plus
+  uniform integrability from Holder.  This supplies a precise sufficient
+  condition for the bounded-observable comparison required before transferring
+  finite-cutoff OS positivity between regulators.
 - Proves a finite-dimensional Brascamp-Lieb covariance domination theorem
   for convex scalar cutoffs.  The proof uses the symmetric generator
   \(\mathcal L=\Delta-\nabla S\cdot\nabla\), its Friedrichs resolvent, and

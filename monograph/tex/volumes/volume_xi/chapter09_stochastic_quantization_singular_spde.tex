@@ -2503,6 +2503,105 @@ with a smooth ultraviolet regulator for which the stability theorem has
 already been established.  This is a regulator-specific constructive
 estimate, not a formal property of Wick ordering alone.
 
+\begin{proposition}[Bounded-cylinder comparison from a common density limit]
+\label{prop:spde-bounded-cylinder-common-density-limit}
+Let \((\Omega,\mathcal F,\gamma)\) be a probability space.  For
+\(\sigma\in\{A,B\}\) and \(N\geq1\), let
+\[
+  X_N^\sigma:\Omega\to\R^r,\qquad W_N^\sigma:\Omega\to[0,\infty)
+\]
+be measurable, and let \(X:\Omega\to\R^r\), \(W:\Omega\to[0,\infty)\) be
+measurable limits.  Assume
+\[
+  X_N^\sigma\longrightarrow X
+  \quad\hbox{in }\gamma\hbox{-probability},
+  \qquad
+  W_N^\sigma\longrightarrow W
+  \quad\hbox{in }L^1(\gamma)
+  \label{eq:spde-common-density-limit-hypotheses}
+\]
+for \(\sigma=A,B\).  Assume also that there is \(p>1\) such that
+\[
+  \sup_{N,\sigma}\|W_N^\sigma\|_{L^p(\gamma)}<\infty .
+  \label{eq:spde-common-density-limit-uniform-integrability}
+\]
+Set
+\[
+  Z_N^\sigma=\int W_N^\sigma\,\dd\gamma,
+  \qquad
+  Z=\int W\,\dd\gamma,
+\]
+and suppose \(Z>0\).  Then, for every bounded continuous
+\(F:\R^r\to\C\),
+\[
+  \lim_{N\to\infty}
+  \frac{\int F(X_N^A)W_N^A\,\dd\gamma}{Z_N^A}
+  =
+  \frac{\int F(X)W\,\dd\gamma}{Z}
+  =
+  \lim_{N\to\infty}
+  \frac{\int F(X_N^B)W_N^B\,\dd\gamma}{Z_N^B}.
+  \label{eq:spde-bounded-cylinder-common-density-limit}
+\]
+\end{proposition}
+
+\begin{proof}
+The \(L^1\)-convergence of \(W_N^\sigma\) gives
+\[
+  Z_N^\sigma\longrightarrow Z
+\]
+for \(\sigma=A,B\).  Thus it is enough to prove convergence of the
+unnormalized numerators.  Fix \(\sigma\) and write
+\[
+\begin{aligned}
+  &\int F(X_N^\sigma)W_N^\sigma\,\dd\gamma
+  -
+  \int F(X)W\,\dd\gamma
+\\
+  &=
+  \int \bigl(F(X_N^\sigma)-F(X)\bigr)W_N^\sigma\,\dd\gamma
+  +
+  \int F(X)\bigl(W_N^\sigma-W\bigr)\,\dd\gamma .
+\end{aligned}
+\]
+The second term tends to zero because \(F\) is bounded and
+\(W_N^\sigma\to W\) in \(L^1\).  For the first term, the convergence
+\(X_N^\sigma\to X\) in probability and continuity of \(F\) imply
+\[
+  F(X_N^\sigma)-F(X)\longrightarrow0
+  \quad\hbox{in probability}.
+\]
+The difference is bounded by \(2\|F\|_\infty\), while
+\eqref{eq:spde-common-density-limit-uniform-integrability} implies uniform
+integrability of \(\{W_N^\sigma\}\) by Holder's inequality:
+\[
+  \int_E W_N^\sigma\,\dd\gamma
+  \leq
+  \|W_N^\sigma\|_{L^p(\gamma)}
+  \gamma(E)^{1-1/p}.
+\]
+Given \(\varepsilon>0\), choose \(\delta>0\) so small that the right-hand
+side is at most \(\varepsilon\) for every \(N,\sigma\) whenever
+\(\gamma(E)<\delta\).  On the event
+\(\{|F(X_N^\sigma)-F(X)|\leq\varepsilon\}\), the first term is bounded by
+\(\varepsilon\int W_N^\sigma\dd\gamma\), and the integrals of
+\(W_N^\sigma\) are uniformly bounded by the \(L^p\) hypothesis.  On the
+complement, the uniform-integrability estimate applies because the
+complement has \(\gamma\)-probability tending to zero.  Hence the first term
+tends to zero.  The same argument applies to \(\sigma=A\) and \(\sigma=B\),
+and the normalized limits follow from \(Z_N^\sigma\to Z>0\).
+\end{proof}
+
+In the regulator-comparison problem, \(X_N^\sigma\) is the finite list of
+smeared field or Wick-polynomial coordinates entering a bounded positive-time
+cylinder observable, and \(W_N^\sigma\) is the finite-cutoff interaction
+density.  Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}
+therefore proves the bounded-observable comparison once both regulators are
+constructed on a common Gaussian probability space and their Wick densities
+are shown to have the same \(L^1\) limit.  Unbounded polynomial observables
+still require the separate uniform-integrability argument stated in
+Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}.
+
 \begin{proposition}[Brascamp--Lieb covariance domination for convex cutoffs]
 \label{prop:spde-brascamp-lieb-convex-cutoff-moment}
 Let \(H_N\) be a finite-dimensional real Hilbert space, let \(A_N\) be a
@@ -3234,7 +3333,10 @@ Assume the following three further analytic facts.
   lattice positivity in the present Fourier-Galerkin stochastic assembly
   requires the bounded-cylinder and uniform-integrability comparison
   hypotheses stated in
-  Proposition~\ref{prop:spde-regulator-comparison-os-criterion}.
+  Proposition~\ref{prop:spde-regulator-comparison-os-criterion}.  A
+  sufficient condition for the bounded-cylinder comparison part is the
+  common \(L^1\) density-limit criterion of
+  Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -3320,7 +3422,11 @@ a regulator-comparison theorem relating it to the
 OS-positive lattice regulator of
 Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
 abstract form of the latter implication is
-Proposition~\ref{prop:spde-regulator-comparison-os-criterion}.  The
+Proposition~\ref{prop:spde-regulator-comparison-os-criterion}; the bounded
+cylinder comparison follows from
+Proposition~\ref{prop:spde-bounded-cylinder-common-density-limit} if the two
+regulators have a common \(L^1\) interaction-density limit and identical
+limiting cylinder coordinates.  The
 uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite
