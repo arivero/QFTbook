@@ -84,6 +84,11 @@ three-point functions.
   residues at `u=+-i(n+1/2)`, endpoint residue signs at `+-i/2`, and the
   `2 i r_0 log(u)/Q(i/2)` large-`u` coefficient used in the weak-QSC
   one-loop dimension extraction.
+- Adds a half-integer digamma-primitive lemma proving the one-step shift
+  defects of
+  `psi(1/2-iu)+psi(1/2+iu)`, the resulting central second-difference
+  identity, and the precise `i`-periodic ambiguity statement used to replace
+  the earlier compressed "Baxter equation up to regular terms" step.
 - Adds the twist-two spin-two Konishi Baxter polynomial example.
 - Adds the full twist-two Baxter-polynomial family
   `Q_S(u) = 3F2(-S,S+1,1/2-iu;1,1;1)`, its finite-difference equation,
@@ -122,6 +127,9 @@ structure and the pair-of-pants-to-hexagons cut.
   spins `S=2,4,6`: residues at `u=+-i/2` and the large-`u` logarithmic
   coefficient, using a local recurrence/Stirling implementation of
   `psi=Gamma'/Gamma`.
+- The same script checks the half-integer digamma primitive shift defects,
+  the central second-difference identity, and the induced shift defects for
+  the QSC singular quotient `R_sing/Q` for twist-two spins `S=2,4,6`.
 - The same script checks the sign convention in the `mu(u+i)` monodromy
   recursion against the rank-two discontinuity update and verifies
   antisymmetry of the shifted matrix.

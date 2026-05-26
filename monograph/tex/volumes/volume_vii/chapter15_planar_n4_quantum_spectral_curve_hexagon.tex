@@ -589,6 +589,76 @@ Dividing by \((u_j-\ii/2)^JQ(u_j-\ii)\) and using
 gives the displayed Bethe equation.
 \end{proof}
 
+\begin{lemma}[Half-integer digamma primitive]
+\label{lem:qsc-half-integer-digamma-primitive}
+Let
+\[
+  \Phi(u)=
+  \psi\!\left(\frac12-\ii u\right)
+  +\psi\!\left(\frac12+\ii u\right),
+  \qquad \psi=\Gamma'/\Gamma .
+\]
+As a meromorphic function of \(u\), \(\Phi\) has only simple poles at
+\[
+  u=\pm\ii\left(n+\frac12\right),\qquad n\in\mathbb Z_{\ge0}.
+\]
+It satisfies the one-step shift identities
+\[
+  \Phi(u+\ii)-\Phi(u)=\frac{2\ii}{u+\ii/2},
+  \qquad
+  \Phi(u)-\Phi(u-\ii)=\frac{2\ii}{u-\ii/2},
+  \label{eq:qsc-digamma-primitive-shift-defects}
+\]
+and hence the central second-difference identity
+\[
+  \Phi(u+\ii)-2\Phi(u)+\Phi(u-\ii)
+  =
+  \frac{2}{u^2+1/4}.
+  \label{eq:qsc-digamma-primitive-second-difference}
+\]
+Moreover, if \(G\) is another meromorphic function with the same two
+one-step defects in \eqref{eq:qsc-digamma-primitive-shift-defects}, then
+\(G-\Phi\) is \(\ii\)-periodic wherever both functions are holomorphic.  If
+this difference extends to an entire function bounded on a vertical
+fundamental strip \(0\leq \operatorname{Im}u\leq1\), then \(G-\Phi\) is
+constant.
+\end{lemma}
+
+\begin{proof}
+The pole statement follows from the poles of \(\psi\) at
+\(0,-1,-2,\ldots\).  The recurrence relation
+\[
+  \psi(z+1)=\psi(z)+\frac1z
+\]
+gives
+\[
+\begin{aligned}
+  \Phi(u+\ii)
+  &=
+  \psi\!\left(\frac32-\ii u\right)
+  +\psi\!\left(-\frac12+\ii u\right)  \\
+  &=
+  \psi\!\left(\frac12-\ii u\right)
+  +\frac{1}{1/2-\ii u}
+  +\psi\!\left(\frac12+\ii u\right)
+  -\frac{1}{-1/2+\ii u}.
+\end{aligned}
+\]
+Since \(1/2-\ii u=-\ii(u+\ii/2)\), this is the first identity in
+\eqref{eq:qsc-digamma-primitive-shift-defects}.  The second identity is the
+same calculation with \(u\) replaced by \(u-\ii\), or equivalently with the
+two digamma arguments interchanged.  Subtracting the two one-step identities
+gives \eqref{eq:qsc-digamma-primitive-second-difference}.
+
+If \(G\) has the same one-step defects, then
+\[
+  (G-\Phi)(u+\ii)=(G-\Phi)(u)
+\]
+on the common holomorphy domain.  If this difference is entire and bounded
+on a vertical fundamental strip, periodicity bounds it on all of
+\(\mathbb C\); Liouville's theorem makes it constant.
+\end{proof}
+
 \begin{lemma}[Collapsed-cut digamma package]
 \label{lem:qsc-collapsed-cut-digamma-package}
 Let \(Q(u)\) be a polynomial with \(Q(\ii/2)\neq0\), and set
@@ -630,6 +700,17 @@ sector used for the \(SL(2)\) asymptotics,
   =
   2\ii\,\frac{r_0}{Q(\ii/2)}\log u+O(u^{-1}).
 \]
+Finally, for the meromorphic quotient \(F_{\rm sing}(u)=R_{\rm sing}(u)/Q(u)\),
+\[
+  F_{\rm sing}(u+\ii)-F_{\rm sing}(u)
+  =
+  -\frac{2r_0}{Q(\ii/2)(u+\ii/2)},
+  \qquad
+  F_{\rm sing}(u)-F_{\rm sing}(u-\ii)
+  =
+  -\frac{2r_0}{Q(\ii/2)(u-\ii/2)} .
+  \label{eq:qsc-digamma-singular-shift-defects}
+\]
 \end{lemma}
 
 \begin{proof}
@@ -662,7 +743,9 @@ in sectors avoiding the negative real axis.  Applying this to
   2\log u+O(u^{-1}),
 \]
 with the branch inherited from the QSC large-\(u\) sheet.  This proves the
-logarithmic coefficient.
+logarithmic coefficient.  The quotient shift identities
+\eqref{eq:qsc-digamma-singular-shift-defects} follow by multiplying
+\eqref{eq:qsc-digamma-primitive-shift-defects} by \(\ii r_0/Q(\ii/2)\).
 \end{proof}
 
 \begin{proposition}[One-loop dimension from the weak QSC]
@@ -715,12 +798,18 @@ correction to \(\mu_{12}(u+\ii/2)\) to be
 \eqref{eq:qsc-digamma-singular-package}.  By
 Lemma~\ref{lem:qsc-collapsed-cut-digamma-package}, this expression has the
 prescribed simple poles at the collapsed cuts, with residues fixed by the
-branch-point relation and cyclic endpoint condition.  It obeys the same
-homogeneous Baxter equation away from those poles; any additional entire
-\(i\)-periodic contribution is absorbed into the regular polynomial part and
-cannot change the coefficient of \(\log u\).  Comparing the logarithmic
-coefficient in Lemma~\ref{lem:qsc-collapsed-cut-digamma-package} with the
-large-\(u\) expansion of \(\mu_{12}/Q\) gives
+branch-point relation and cyclic endpoint condition.  More precisely, after
+division by the leading Baxter polynomial, the singular quotient has the
+one-step defects \eqref{eq:qsc-digamma-singular-shift-defects}.  These
+defects are the collapsed-cut remnant of the square-root decomposition of
+\(\mu_{12}\); by Lemma~\ref{lem:qsc-half-integer-digamma-primitive}, they fix
+the non-regular meromorphic primitive up to an entire \(\ii\)-periodic
+ambiguity.  In the weak-coupling regularity class of
+Assumption~\ref{ass:qsc-weak-coupling-regularity}, that ambiguity belongs to
+the regular polynomial/asymptotic-power part of \(R\), and it carries no
+\(\log u\) term.  Comparing the logarithmic coefficient in
+Lemma~\ref{lem:qsc-collapsed-cut-digamma-package} with the large-\(u\)
+expansion of \(\mu_{12}/Q\) gives
 \[
   \Delta-J-S
   =

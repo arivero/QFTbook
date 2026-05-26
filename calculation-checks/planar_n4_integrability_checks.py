@@ -207,6 +207,28 @@ def polynomial_derivative(poly: list[complex]) -> list[complex]:
     return [index * coefficient for index, coefficient in enumerate(poly)][1:]
 
 
+def digamma_complex(z: complex) -> complex:
+    """Evaluate digamma by recurrence to a right half-plane plus Stirling terms."""
+
+    value = 0j
+    for _ in range(80):
+        if abs(z) >= 16:
+            break
+        value -= 1 / z
+        z += 1
+    inverse = 1 / z
+    inverse2 = inverse * inverse
+    return value + (
+        cmath.log(z)
+        - inverse / 2
+        - inverse2 / 12
+        + inverse2**2 / 120
+        - inverse2**3 / 252
+        + inverse2**4 / 240
+        - inverse2**5 / 132
+    )
+
+
 def rising_integer(start: int, length: int) -> int:
     result = 1
     for offset in range(length):
@@ -808,25 +830,6 @@ def check_qsc_large_u_coefficient_constraints() -> None:
 def check_qsc_collapsed_cut_digamma_package() -> None:
     """Check the weak-QSC digamma pole package and its logarithmic coefficient."""
 
-    def digamma_complex(z: complex) -> complex:
-        value = 0j
-        for _ in range(80):
-            if abs(z) >= 16:
-                break
-            value -= 1 / z
-            z += 1
-        inverse = 1 / z
-        inverse2 = inverse * inverse
-        return value + (
-            cmath.log(z)
-            - inverse / 2
-            - inverse2 / 12
-            + inverse2**2 / 120
-            - inverse2**3 / 252
-            + inverse2**4 / 240
-            - inverse2**5 / 132
-        )
-
     for spin in (2, 4, 6):
         q_polynomial = twist_two_baxter_polynomial(spin)
         q_derivative = polynomial_derivative(q_polynomial)
@@ -874,6 +877,59 @@ def check_qsc_collapsed_cut_digamma_package() -> None:
             1,
             tol=5.0e-5,
         )
+
+
+def check_qsc_collapsed_cut_shift_primitive() -> None:
+    """Check the shift-defect identities for the half-integer digamma primitive."""
+
+    def primitive(u: complex) -> complex:
+        return digamma_complex(0.5 - 1j * u) + digamma_complex(0.5 + 1j * u)
+
+    for u in (0.37 + 0.22j, -1.3 + 0.41j, 2.2 - 0.3j):
+        assert_close(
+            "digamma primitive upward shift defect",
+            primitive(u + 1j) - primitive(u),
+            2j / (u + 0.5j),
+            tol=2.0e-10,
+        )
+        assert_close(
+            "digamma primitive downward shift defect",
+            primitive(u) - primitive(u - 1j),
+            2j / (u - 0.5j),
+            tol=2.0e-10,
+        )
+        assert_close(
+            "digamma primitive central second difference",
+            primitive(u + 1j) - 2 * primitive(u) + primitive(u - 1j),
+            2 / (u * u + 0.25),
+            tol=2.0e-10,
+        )
+
+    for spin in (2, 4, 6):
+        q_polynomial = twist_two_baxter_polynomial(spin)
+        q_derivative = polynomial_derivative(q_polynomial)
+        q_plus = polynomial_eval(q_polynomial, 0.5j)
+        r0 = polynomial_eval(q_derivative, 0.5j) - polynomial_eval(
+            q_derivative,
+            -0.5j,
+        )
+
+        def singular_ratio(u: complex) -> complex:
+            return 1j * r0 * primitive(u) / q_plus
+
+        for u in (0.8 + 0.2j, -1.5 + 0.6j):
+            assert_close(
+                f"QSC digamma singular ratio upward shift defect S={spin}",
+                singular_ratio(u + 1j) - singular_ratio(u),
+                -2 * r0 / (q_plus * (u + 0.5j)),
+                tol=2.0e-10,
+            )
+            assert_close(
+                f"QSC digamma singular ratio downward shift defect S={spin}",
+                singular_ratio(u) - singular_ratio(u - 1j),
+                -2 * r0 / (q_plus * (u - 0.5j)),
+                tol=2.0e-10,
+            )
 
 
 def check_pmu_pfaffian_rank_two_update() -> None:
@@ -968,6 +1024,7 @@ def main() -> None:
     check_t_hook_wronskian_pmu_bridge()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()
+    check_qsc_collapsed_cut_shift_primitive()
     check_pmu_pfaffian_rank_two_update()
     print("All planar N=4 integrability checks passed.")
 

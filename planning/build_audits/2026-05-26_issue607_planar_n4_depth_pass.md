@@ -217,6 +217,20 @@
   implementation of `psi=Gamma'/Gamma` and verifies residues at `u=+-i/2`
   and the large-`u` logarithmic coefficient.
 
+## Comprehensive Development Continuation IX
+
+- Replaced the compressed weak-QSC phrase "same Baxter equation up to regular
+  terms" by a local half-integer digamma-primitive lemma.  The lemma proves
+  the one-step shift defects of `psi(1/2-iu)+psi(1/2+iu)`, the central
+  second-difference identity, and the exact `i`-periodic ambiguity statement.
+- The one-loop QSC proof now says precisely what is fixed by the collapsed
+  square-root cuts: after division by the leading Baxter polynomial, the
+  singular quotient `R_sing/Q` has rational one-step defects.  The remaining
+  entire `i`-periodic ambiguity is explicitly assigned to the regular
+  polynomial/asymptotic-power part and cannot change the `log u` coefficient.
+- Added companion checks for the shift primitive and for the induced
+  `R_sing/Q` shift defects on the twist-two Baxter family.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -258,6 +272,9 @@
   of an overall sign flip.
 - QSC collapsed-cut digamma singular package: endpoint residues and large-`u`
   logarithmic coefficient for twist-two spins `S=2,4,6`.
+- QSC half-integer digamma primitive: upward/downward one-step defects,
+  central second difference, and induced singular-quotient shift defects for
+  twist-two spins `S=2,4,6`.
 - QSC `Pmu` monodromy-recursion signs and antisymmetry of the shifted
   `mu` matrix.
 
