@@ -360,6 +360,26 @@ def check_phi4_three_spde_bphz_counterterm_combinatorics():
     if not dyadic_shell_bound <= 26 * 8:
         raise AssertionError("dyadic one-loop shell increment bound failed")
 
+    # The two-loop Fourier coordinate is logarithmic because the dyadic
+    # block with p-scale ell and q-scale s is bounded by 2^(-|ell-s|).
+    max_scale = 6
+    c2_upper_factor = sum(
+        Fraction(1, 2) ** abs(ell - scale)
+        for ell in range(max_scale + 1)
+        for scale in range(max_scale + 1)
+    )
+    if not c2_upper_factor <= 3 * (max_scale + 1):
+        raise AssertionError("two-loop dyadic logarithmic upper sum failed")
+    if not c2_upper_factor >= max_scale + 1:
+        raise AssertionError("two-loop dyadic diagonal lower sum failed")
+
+    lower_scale = 5
+    positive_box_width = 2 ** (lower_scale - 2)
+    positive_box_size = positive_box_width ** 3
+    positive_pair_count = positive_box_size ** 2
+    lower_block_factor = Fraction(positive_pair_count, 2 ** (6 * lower_scale))
+    assert_equal(lower_block_factor, Fraction(1, 4096), "two-loop lower block factor")
+
     # One-loop cubic Wick contraction: choose the contracted pair in three
     # fields.  Two-loop non-nested sunset: choose the corrected outer factor,
     # then the local linear part of X(z)^2 K X(w)^3 gives 3*C2 with the
@@ -641,7 +661,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, C2-log-growth, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

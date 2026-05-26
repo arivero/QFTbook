@@ -31,6 +31,9 @@ data.
 - `e_n`, `M`, `C_1(M)`, `S_r`: Fourier mode, sharp spatial cutoff, one-loop
   local coordinate, and \(\ell^\infty\)-shell used in the explicit
   one-loop growth calculation.
+- `K_M`, `G_M`, `C_2(M)`, `B_l`, `P_l`: sharp Fourier-cutoff heat kernel,
+  covariance, two-loop local coordinate, dyadic annuli, and lower-bound
+  boxes used in the logarithmic two-loop growth estimate.
 - `K_epsilon`, `G_epsilon`: cutoff retarded heat kernel and covariance used
   in the finite-cutoff local counterterm calculation.
 - `mathcal L`: projection to the local linear part of a finite-cutoff Wick
@@ -156,6 +159,12 @@ data.
   coordinate \(C_1(M)\), including the stationary OU variance, the
   \(\ell^\infty\)-shell count \((2r+1)^3-(2r-1)^3=24r^2+2\), linear upper
   and lower growth, and dyadic shell increment bound.
+- Proves the sharp spatial Fourier-cutoff calculation for the two-loop
+  coordinate \(C_2(M)\): the retarded heat kernel and covariance give the
+  double momentum sum with denominator
+  \(a_pa_q(a_p+a_q+a_{p+q})\), dyadic annuli give the upper bound
+  \(O(\log M)\), and positive boxes give a matching lower bound
+  \(\Omega(\log M)\).
 - Proves an abstract local fixed-point theorem for modelled distributions:
   given a small-time Schauder estimate, cubic product Lipschitz estimate,
   and linear forcing estimate, the dynamic \(\Phi^4_3\) fixed-point map sends
@@ -331,3 +340,9 @@ data maps.
   local coordinate \(C_1\).  The calculation-check companion verifies the
   four cubic homogeneities, the \(\kappa<1/14\) positivity boundary, the
   \(\mathbb Z^3\) shell count, and a dyadic shell increment bound.
+- 2026-05-26 issue #582 C2-growth continuation: the BPHZ dynamic
+  \(\Phi^4_3\) section now derives the Fourier-cutoff double sum for the
+  two-loop local coordinate \(C_2(M)\) and proves matching logarithmic upper
+  and lower bounds.  The calculation-check companion verifies the dyadic
+  \(2^{-|\ell-s|}\) summability arithmetic and the lower positive-box block
+  factor.

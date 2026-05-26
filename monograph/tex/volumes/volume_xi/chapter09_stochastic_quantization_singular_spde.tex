@@ -2459,6 +2459,160 @@ bound follows from the upper shell estimate applied to
 \(M_N+1,\ldots,M_{N+1}\).
 \end{proof}
 
+\begin{proposition}[Spatial Fourier cutoff two-loop coordinate]
+\label{prop:spde-phi-four-three-c2-fourier-log-growth}
+Use the notation of
+Proposition~\ref{prop:spde-phi-four-three-c1-fourier-growth}, and put
+\[
+  a_n=|n|^2+m^2,\qquad n\in\mathbb Z^3 .
+\]
+Let
+\[
+  K_M(t,x)
+  =
+  \mathbf 1_{t>0}(2\pi)^{-3}
+  \sum_{\substack{k\in\mathbb Z^3\\ |k|_\infty\leq M}}
+  e^{-a_kt}e^{ik\cdot x}
+\]
+be the retarded heat kernel with the same spatial cutoff, and let
+\[
+  G_M(t,x)
+  =
+  (2\pi)^{-3}
+  \sum_{\substack{p\in\mathbb Z^3\\ |p|_\infty\leq M}}
+  \frac{e^{-a_p|t|}e^{ip\cdot x}}{a_p}
+\]
+be the stationary covariance.  Define
+\begin{equation}
+  C_2(M)
+  =
+  2\int_0^\infty\int_{\mathbb T^3}
+  K_M(t,x)G_M(t,x)^2\,\dd x\,\dd t .
+  \label{eq:spde-c2-fourier-cutoff-integral}
+\end{equation}
+Then
+\begin{equation}
+  C_2(M)
+  =
+  2(2\pi)^{-6}
+  \sum_{\substack{p,q\in\mathbb Z^3\\
+                  |p|_\infty,|q|_\infty,|p+q|_\infty\leq M}}
+  \frac{1}{a_pa_q(a_p+a_q+a_{p+q})}.
+  \label{eq:spde-c2-fourier-cutoff-sum}
+\end{equation}
+There are constants \(0<c_m<C_m<\infty\), depending on \(m\) but not on
+\(M\), such that
+\[
+  C_2(M)\leq C_m\bigl(1+\log(1+M)\bigr)
+  \qquad(M\geq1),
+\]
+and
+\[
+  C_2(M)\geq c_m\log M
+  \qquad(M\geq16).
+\]
+\end{proposition}
+
+\begin{proof}
+Substituting the Fourier series for \(K_M\) and \(G_M\) into
+\eqref{eq:spde-c2-fourier-cutoff-integral} gives
+\[
+\begin{aligned}
+  C_2(M)
+  &=
+  2(2\pi)^{-9}
+  \sum_{\substack{k,p,q\in\mathbb Z^3\\
+                  |k|_\infty,|p|_\infty,|q|_\infty\leq M}}
+  \frac{1}{a_pa_q}
+  \int_0^\infty e^{-(a_k+a_p+a_q)t}\,\dd t
+  \int_{\mathbb T^3}e^{i(k+p+q)\cdot x}\,\dd x .
+\end{aligned}
+\]
+The spatial integral is \((2\pi)^3\) when \(k+p+q=0\) and is zero otherwise.
+Eliminating \(k\) gives \eqref{eq:spde-c2-fourier-cutoff-sum}.
+
+For the upper bound, discard the restriction \(|p+q|_\infty\leq M\).  Let
+\[
+  B_0=\{n\in\mathbb Z^3:|n|_\infty<2\},
+  \qquad
+  B_\ell=\{n\in\mathbb Z^3:2^\ell\leq |n|_\infty<2^{\ell+1}\}
+  \quad(\ell\geq1).
+\]
+There is a constant \(A<\infty\) such that
+\[
+  |B_\ell|\leq A2^{3\ell}\qquad(\ell\geq0).
+\]
+For \(\ell\geq1\) this follows from
+\[
+  |B_\ell|\leq |\{n:|n|_\infty<2^{\ell+1}\}|
+  =(2^{\ell+2}-1)^3,
+\]
+and \(B_0\) is finite.  There is also \(b_m>0\), for instance
+\[
+  b_m=\min(m^2,1),
+\]
+such that, for \(n\in B_\ell\),
+\[
+  a_n\geq b_m2^{2\ell}\qquad(\ell\geq0).
+\]
+If \(p\in B_\ell\) and \(q\in B_s\), then
+\[
+  a_p+a_q+a_{p+q}\geq a_p+a_q
+  \geq b_m2^{2\max(\ell,s)} .
+\]
+Thus the contribution of the block \(B_\ell\times B_s\) is bounded by
+\[
+  C_m
+  \frac{2^{3\ell}2^{3s}}
+       {2^{2\ell}2^{2s}2^{2\max(\ell,s)}}
+  =
+  C_m2^{-|\ell-s|}.
+\]
+If \(|p|_\infty,|q|_\infty\leq M\), then only
+\(\ell,s\leq L_M=\lceil\log_2(1+M)\rceil\) occur.  Hence
+\[
+  C_2(M)
+  \leq
+  C_m
+  \sum_{\ell=0}^{L_M}\sum_{s=0}^{L_M}2^{-|\ell-s|}
+  \leq
+  3C_m(L_M+1),
+\]
+which is the stated upper bound after increasing \(C_m\).
+
+For the lower bound, write \(N=\lfloor\log_2M\rfloor\).  For
+\(2\leq \ell\leq N-2\), let
+\[
+  P_\ell
+  =
+  \{n\in\mathbb Z^3:
+    2^\ell\leq n_i<2^\ell+2^{\ell-2},\ i=1,2,3\}.
+\]
+Then \(|P_\ell|\geq 2^{3\ell-6}\).  If \(p,q\in P_\ell\), then
+\[
+  |p|_\infty,\ |q|_\infty,\ |p+q|_\infty\leq 2^{\ell+2}\leq M,
+\]
+and
+\[
+  a_p,\ a_q,\ a_{p+q}\leq A_m2^{2\ell}
+\]
+with \(A_m<\infty\) independent of \(\ell\).  The summands in
+\eqref{eq:spde-c2-fourier-cutoff-sum} are therefore bounded below by
+\(A_m^{-3}2^{-6\ell}\) on \(P_\ell\times P_\ell\).  The contribution of
+this block is at least
+\[
+  2(2\pi)^{-6}|P_\ell|^2A_m^{-3}2^{-6\ell}
+  \geq c_m .
+\]
+Summing the disjoint lower-bound blocks for
+\(\ell=2,\ldots,N-2\) gives \(C_2(M)\geq c_m(N-3)\).  Since
+there is an absolute constant \(c_0>0\) with
+\[
+  N-3\geq c_0\log M\qquad(M\geq16),
+\]
+the lower bound follows after decreasing \(c_m\).
+\end{proof}
+
 \begin{proposition}[Finite-cutoff local counterterm calculation]
 \label{prop:spde-phi-four-three-local-counterterm-calculation}
 Let \(X_\epsilon\) be the smooth stationary Gaussian solution of the
