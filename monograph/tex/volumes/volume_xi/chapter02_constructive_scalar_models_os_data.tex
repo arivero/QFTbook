@@ -517,6 +517,73 @@ analytic step that justifies taking \(\Lambda\uparrow\R^2\), proves
 exponential clustering in the massive phase, and gives uniform bounds on
 the Schwinger functions.
 
+\begin{quotedtheorem}[Massive \(P(\phi)_2\) OS output from the cluster expansion]
+\label{qthm:p-phi-two-cluster-os-output}
+Let \(P\) be an even-degree real polynomial bounded below with positive
+leading coefficient, let \(m>0\), and choose a reflection-positive
+finite-volume ultraviolet regulator.  Assume the finite-volume ultraviolet
+limit of Theorem~\ref{thm:p-phi-two-finite-volume-uv-limit} has been taken,
+and that the resulting polymer activities satisfy the uniform cluster norm
+bound \eqref{eq:constructive-kp-smallness} in the massive phase.  Then the
+thermodynamic limits
+\[
+  S_n(f_1,\ldots,f_n)
+  =
+  \lim_{\Lambda\uparrow\R^2}S_{\Lambda,n}(f_1,\ldots,f_n)
+\]
+exist for Schwartz test functions.  The hierarchy \(S=\{S_n\}_{n\geq0}\)
+satisfies Euclidean covariance, permutation symmetry, reflection positivity,
+distributional regularity, the OS growth hypotheses required for
+reconstruction, and exponential clustering of connected Schwinger functions.
+\end{quotedtheorem}
+
+The quoted theorem is the constructive \(P(\phi)_2\) output statement.  The
+inputs are not merely the polynomial interaction and Wick ordering; they
+include stability, ultraviolet convergence, the polymer norm estimate, and
+preservation of reflection positivity along the regulator sequence.
+
+\begin{corollary}[Mass gap from Euclidean clustering]
+\label{cor:constructive-mass-gap-from-clustering}
+Assume OS reconstruction has been performed from a scalar Schwinger
+hierarchy satisfying Quoted
+Theorem~\ref{qthm:p-phi-two-cluster-os-output}.  Let \(A\) be a local
+Euclidean-time-zero observable with \(\langle\Omega,A\Omega\rangle=0\), and
+suppose its two-point function obeys, for some \(m_{\rm E}>0\),
+\[
+  0\leq
+  \langle\Omega,A^*e^{-\tau H}A\Omega\rangle
+  \leq C_A e^{-m_{\rm E}\tau},
+  \qquad \tau\geq0 .
+\]
+Then the spectral measure of \(H\) in the vector \(A\Omega\) is supported in
+\([m_{\rm E},\infty)\).  If the set of such local vectors is dense in the
+orthogonal complement of the vacuum, the reconstructed Hamiltonian has mass
+gap at least \(m_{\rm E}\).
+\end{corollary}
+
+\begin{proof}
+By the spectral theorem,
+\[
+  \langle\Omega,A^*e^{-\tau H}A\Omega\rangle
+  =
+  \int_{[0,\infty)}e^{-\tau E}\,\dd\mu_A(E),
+  \qquad
+  \dd\mu_A(E)=\dd\langle A\Omega,P_H(E)A\Omega\rangle .
+\]
+If \(\mu_A([0,m_{\rm E}-\delta])>0\) for some \(\delta>0\), then
+\[
+  \int e^{-\tau E}\,\dd\mu_A(E)
+  \geq
+  e^{-(m_{\rm E}-\delta)\tau}\mu_A([0,m_{\rm E}-\delta]).
+\]
+This contradicts the assumed upper bound \(C_Ae^{-m_{\rm E}\tau}\) as
+\(\tau\to\infty\).  Therefore no spectral weight lies below \(m_{\rm E}\) in
+the vector \(A\Omega\).  If such local vectors are dense in
+\(\Omega^\perp\), the spectral projection \(P_H([0,m_{\rm E}))\) annihilates
+a dense subspace of \(\Omega^\perp\) and hence vanishes there.  This is the
+claimed gap.
+\end{proof}
+
 \section{Hamiltonian Viewpoint and Number-Operator Bounds}
 
 The original construction of \(\phi^4_2\) can also be formulated in the

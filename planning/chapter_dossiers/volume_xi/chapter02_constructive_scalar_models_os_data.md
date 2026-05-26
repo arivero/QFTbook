@@ -23,6 +23,9 @@
 - Polymer activity norm, hard-core Ursell coefficients, Penrose tree-graph
   inequality, Kotecky--Preiss/Brydges--Kennedy rooted-tree convergence
   criterion, and exponential clustering estimate.
+- Quoted massive \(P(\phi)_2\) OS-output theorem from the cluster expansion.
+- Corollary deriving a Hamiltonian mass gap from Euclidean exponential
+  clustering through the OS spectral representation.
 - Hamiltonian number-operator bound role in the original \(\phi^4_2\)
   construction.
 - \(\phi^4_d\) superficial-degree formula and explicit tadpole cutoff
@@ -52,6 +55,7 @@
 | \(\|K\|_{a,b}\) | schematic cluster norm with large-field weight |
 | \(\varphi_{\mathrm c}(X_1,\ldots,X_n)\) | hard-core Ursell coefficient for the incompatibility graph |
 | \(B_{R_0}\) | finite-range cell-neighbourhood constant for incompatible polymers |
+| \(m_{\mathrm E}\) | Euclidean exponential-clustering rate entering the spectral gap argument |
 | \(\omega_d\) | superficial degree of divergence |
 | \(S_n\) | limiting Schwinger hierarchy |
 
@@ -68,16 +72,22 @@
    the proof now displays the Penrose tree-graph inequality, the rooted-tree
    recursion \(F_{N+1}(X)\le\exp(\sum_{Y\nsim X}\kappa(Y)F_N(Y))\), and the
    leftover exponential-weight argument producing clustering.
-4. Hamiltonian \(\phi^4_2\) construction rests on number-operator and
+4. The cluster-expansion \(P(\phi)_2\) output theorem supplies the actual OS
+   hierarchy: thermodynamic-limit Schwinger functions with covariance,
+   symmetry, reflection positivity, regularity, OS growth, and exponential
+   clustering.
+5. Exponential Euclidean clustering implies a Hamiltonian spectral gap after
+   OS reconstruction by the Laplace-transform spectral-measure argument.
+6. Hamiltonian \(\phi^4_2\) construction rests on number-operator and
    relative-bound estimates, not on a formal interaction.
-5. \(\Phi^4_3\) needs regulator-dependent local terms as part of the
+7. \(\Phi^4_3\) needs regulator-dependent local terms as part of the
    regulated action; the allowed terms follow from power counting.
-6. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+8. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem, and explicitly
    records the missing self-contained constructive proof as an open proof
    obligation.
-7. Constructive route comparison requires equality of Schwinger functions in
+9. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Figures
@@ -103,6 +113,10 @@
   \(B_{R_0}\epsilon\le a'\) smallness condition, and derives exponential
   clustering from the unused \(a-a'\) weight along paths connecting the two
   observable supports.
+- 2026-05-25 issue #555 pass: the cluster-expansion section now states the
+  massive \(P(\phi)_2\) OS-output theorem and proves the mass-gap consequence
+  from exponential Euclidean clustering by a spectral-measure
+  Laplace-transform argument.
 - 2026-05-25 issue #573 pass: the \(\Phi^4_3\) constructive output result is
   no longer presented with a `proof[Proof architecture]` block.  It is now a
   `quotedtheorem` with the four phase-cell proof components kept as status
