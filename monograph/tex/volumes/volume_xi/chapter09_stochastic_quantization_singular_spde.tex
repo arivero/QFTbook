@@ -290,24 +290,49 @@ schemes change \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and \(c_{\rm fin}\)
 separately, but not the statement that only the local linear drift and
 vacuum-energy coordinates are needed in this superrenormalizable model.
 
-\begin{quotedtheorem}[Renormalized \(\Phi^4_3\) SPDE datum]
+\begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
-After enhancing the mollified noise by its BPHZ-renormalized negative trees,
-the solutions of \eqref{eq:phi-four-three-renormalized-spde} converge in
-probability, on compact stochastic-time intervals and in negative spatial
-Holder or Besov topologies, to a limit independent of the mollifier up to
-finite local coordinate changes.  On the torus the resulting Markov process
-has invariant measures that are the constructive \(\Phi^4_3\) Euclidean
-measures in the corresponding mass coordinate.
+Let the spatial manifold be a finite three-dimensional torus, let
+\(\xi_\epsilon=\rho_\epsilon\ast\xi\) be a smooth space-time mollification
+of white noise, and fix the normalization of
+\eqref{eq:phi-four-three-renormalized-spde}.  In the BPHZ
+regularity-structure chart there are local constants
+\(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and a finite mass coordinate
+\(c_{\rm fin}\), such that the following statements hold.
+\begin{enumerate}[label=(\roman*)]
+  \item For each fixed \(\epsilon>0\) and smooth initial field, the cutoff
+  equation \eqref{eq:phi-four-three-renormalized-spde} has a unique smooth
+  local solution.  The solution map is Markovian and depends continuously on
+  the initial field and on the smooth noise.
+  \item After enhancing the mollified noise by its BPHZ-renormalized negative
+  trees, the cutoff solutions converge in probability, on compact
+  stochastic-time intervals before explosion and in negative spatial Holder
+  or Besov topologies, to a limit independent of the mollifier up to finite
+  local coordinate changes.
+  \item The positive quartic drift, together with the renormalized mass
+  coordinate, gives global solutions and invariant probability measures for
+  the limiting Markov process in the massive phase.  Starting the cutoff
+  equation in its finite-cutoff Gibbs law gives stationary solutions, and
+  every limiting stationary law is invariant for the limiting Markov
+  semigroup.
+  \item In a common finite-volume regulator and renormalization chart, this
+  invariant law has the same Schwinger moments as the constructive
+  \(\Phi^4_3\) Euclidean measure with the same renormalized mass coordinate.
+  Equivalently, after the field and mass normalizations are matched, the
+  SPDE stationary construction and the constructive Euclidean construction
+  determine the same OS input hierarchy.
+\end{enumerate}
 \end{quotedtheorem}
 
 This renormalized \(\Phi^4_3\) SPDE theorem is a quoted theorem-boundary for
-the regularity-structures construction, not a proof completed here.  One
-first builds the canonical model from the mollified noise.  Its negative
-tree components diverge as \(\epsilon\downarrow0\).  The BPHZ character
-subtracts the expectations of all divergent negative subtrees, producing a
-renormalized model satisfying uniform analytic bounds.  Compactness and
-Kolmogorov estimates give convergence of the model.
+the regularity-structures construction, not a proof completed here.  The
+four clauses are logically distinct.  Local cutoff well-posedness is an
+ordinary smooth parabolic theorem.  Renormalized convergence is the singular
+SPDE theorem: one first builds the canonical model from the mollified noise;
+its negative tree components diverge as \(\epsilon\downarrow0\); the BPHZ
+character subtracts the expectations of all divergent negative subtrees,
+producing a renormalized model satisfying uniform analytic bounds; compactness
+and Kolmogorov estimates then give convergence of the model.
 
 The fixed-point problem for the SPDE is then solved in the space of modelled
 distributions.  The contraction uses parabolic Schauder estimates for the
@@ -317,8 +342,12 @@ point gives the distribution-valued solution.  The explicit local term in
 \eqref{eq:phi-four-three-renormalized-spde} is the image, in the concrete
 equation, of the BPHZ action on the negative trees.  Invariant measures are
 identified by finite-cutoff stationarity, tightness, and convergence of
-stationary solutions.  Each sentence in this paragraph names a theorem-level
-estimate; none is to be treated as proved merely by being quoted.
+stationary solutions.  Identification with the constructive Euclidean
+\(\Phi^4_3\) measure is still another step: both constructions must be placed
+in the same finite-volume cutoff chart, the mass and field coordinates must be
+matched, and equality of the limiting Schwinger moments must be proved.  Each
+sentence in this paragraph names a theorem-level estimate; none is to be
+treated as proved merely by being quoted.
 
 The theorem-boundary statements in this chapter correspond to the
 Da Prato--Debussche construction of two-dimensional stochastic
@@ -328,9 +357,12 @@ A.~Debussche, ``Strong solutions to the stochastic quantization equations,''
 \emph{Ann. Probab.} 31 (2003); M.~Hairer, ``A theory of regularity
 structures,'' \emph{Invent. Math.} 198 (2014); and the
 Hairer--Mourrat--Weber regularity-structures treatment of
-\(\Phi^4_3\) renormalization.}  These references identify the analytic
-machinery to be reconstructed in this monograph; they do not by themselves
-settle the monograph's proof obligations.
+\(\Phi^4_3\) renormalization.  For recent singular-SPDE work in gauge
+contexts, see A.~Chandra, I.~Chevyrev, M.~Hairer, and H.~Shen,
+``Stochastic quantisation of Yang--Mills,'' Invent. Math. \textbf{230}
+(2022) 1025--1096.}  These references identify the analytic machinery to be
+reconstructed in this monograph; they do not by themselves settle the
+monograph's proof obligations.
 
 \begin{openproblem}[Self-contained singular-SPDE proof stack]
 \label{op:self-contained-singular-spde-proof-stack}

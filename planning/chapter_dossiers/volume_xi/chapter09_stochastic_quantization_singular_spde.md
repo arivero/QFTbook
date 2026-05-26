@@ -21,6 +21,8 @@ data.
   reexpansion maps.
 - `C_{1,epsilon}`, `C_{2,epsilon}`: one-loop and two-loop local SPDE
   counterterm constants in the displayed BPHZ convention.
+- `c_fin`: finite mass coordinate in the renormalized dynamic
+  \(\Phi^4_3\) equation.
 - `mu`: invariant Euclidean measure of the Markov process.
 - `X_mathbb`: enhanced Da Prato--Debussche noise
   \((X,:X^2:,:X^3:)\).
@@ -41,8 +43,11 @@ data.
   `quotedtheorem` with the wavelet-coefficient mechanism recorded as a role
   explanation rather than a proof.
 - Presents the renormalized `Phi^4_3` dynamic equation at cutoff with
-  one-loop and two-loop local counterterm constants; the convergence theorem
-  for the renormalized SPDE is now a `quotedtheorem`.
+  one-loop and two-loop local counterterm constants; the quoted theorem now
+  separates local cutoff well-posedness, BPHZ-renormalized convergence,
+  invariant-law construction, and identification with the constructive
+  Euclidean \(\Phi^4_3\) measure after matching regulator and local
+  coordinates.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -67,3 +72,9 @@ data maps.
   `op:self-contained-singular-spde-proof-stack` records the monograph's
   obligation to prove the quoted SPDE results internally rather than accept
   them on authority.
+- 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
+  states the four requested components explicitly: local cutoff
+  well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and
+  \(C_{2,\epsilon}\), invariant measures of the limiting Markov process, and
+  equality with the constructive Euclidean \(\Phi^4_3\) OS hierarchy only
+  after the regulator chart and local coordinates are matched.
