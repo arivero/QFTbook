@@ -90,6 +90,10 @@ data.
   orthonormal eigenbasis, eigenvalues, spectral cutoff index set, and
   massive free Gaussian cutoff law in the reference negative-Sobolev
   tightness estimate.
+- `rho_N`, `A_q`, `a=q/(q-1)`: normalized interacting density with respect
+  to a Gaussian cutoff law, its uniform \(L^q\) bound, and the conjugate
+  Holder exponent in the density criterion for interacting
+  negative-Sobolev moments.
 - `H_N`, `A_N`, `L_N`, `e_{N,alpha}`, `lambda_{N,alpha}`, `nu_N`:
   finite-dimensional Hilbert space, Hessian lower-bound operator, reference
   nonnegative operator, spectral basis, eigenvalues, and convex cutoff
@@ -313,6 +317,18 @@ data.
   \(\sum_{k\in\mathbb Z^2}(1+|k|^2)^{-1-\eta}\) and proves convergence by
   dyadic annuli, thereby giving free cutoff tightness in \(H^{-\kappa}\)
   whenever \(0<\eta<\kappa\).
+- Proves an \(L^q\)-density criterion for interacting negative-Sobolev
+  moments.  If \(\mu_N=\rho_N\gamma_N\), the Gaussian cutoffs have a uniform
+  \(H^{-\eta}\) second moment, and \(\rho_N\) is uniformly bounded in
+  \(L^q(\gamma_N)\) for some \(q>1\), then \(\mu_N\) has uniform
+  \(H^{-\eta}\) moments of all finite orders.  The proof is self-contained:
+  Holder's inequality reduces the estimate to Gaussian moments, and the
+  latter are bounded by diagonalizing the covariance in \(H^{-\eta}\) and
+  using \(\mathbb E(\sum_i\lambda_i g_i^2)^m\le
+  (2m-1)!!(\sum_i\lambda_i)^m\).  The chapter records the resulting
+  density route to \(\Phi^4_2\) stationary-law tightness: a uniform
+  Nelson-type \(L^q\) bound for the normalized Wick-ordered density implies
+  tightness in \(H^{-\kappa}\).
 - Proves a finite-dimensional Brascamp-Lieb covariance domination theorem
   for convex scalar cutoffs.  The proof uses the symmetric generator
   \(\mathcal L=\Delta-\nabla S\cdot\nabla\), its Friedrichs resolvent, and

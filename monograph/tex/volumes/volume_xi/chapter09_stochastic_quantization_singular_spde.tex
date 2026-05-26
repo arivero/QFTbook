@@ -2302,6 +2302,129 @@ Proposition~\ref{prop:spde-sobolev-compactness-tightness} with \(p=2\) now
 gives tightness in \(H^{-\kappa}\).
 \end{proof}
 
+\begin{proposition}[\(L^q\)-density criterion for interacting negative-Sobolev moments]
+\label{prop:spde-lq-density-negative-sobolev-moment}
+Let \(0<\eta<\kappa\).  For each \(N\), let \(\gamma_N\) be a centered
+Gaussian probability measure carried by a finite-dimensional subspace of
+\(H^{-\eta}(\mathbb T^2)\), and assume
+\[
+  \sigma^2:=
+  \sup_N
+  \int \|\phi\|_{H^{-\eta}}^2\,\dd\gamma_N(\phi)
+  <\infty .
+\]
+Let \(\mu_N=\rho_N\gamma_N\), where
+\(\rho_N\geq0\), \(\int\rho_N\,\dd\gamma_N=1\), and, for some \(q>1\),
+\[
+  A_q:=\sup_N\|\rho_N\|_{L^q(\gamma_N)}<\infty .
+\]
+Then, for every \(r<\infty\),
+\[
+  \sup_N
+  \int\|\phi\|_{H^{-\eta}}^r\,\dd\mu_N(\phi)
+  <\infty .
+\]
+Consequently \(\{\mu_N\}\) is tight in \(H^{-\kappa}(\mathbb T^2)\).
+\end{proposition}
+
+\begin{proof}
+Let \(a=q/(q-1)\).  Holder's inequality gives
+\[
+  \int\|\phi\|_{H^{-\eta}}^r\,\dd\mu_N(\phi)
+  =
+  \int\|\phi\|_{H^{-\eta}}^r\rho_N(\phi)\,\dd\gamma_N(\phi)
+  \leq
+  A_q
+  \left(
+    \int\|\phi\|_{H^{-\eta}}^{ar}\,\dd\gamma_N(\phi)
+  \right)^{1/a}.
+  \label{eq:spde-lq-density-holder}
+\]
+It remains to bound the Gaussian moment uniformly.  Since \(\gamma_N\) is a
+finite-dimensional centered Gaussian law on the Hilbert space
+\(H^{-\eta}\), its covariance operator is a nonnegative symmetric operator
+of finite rank.  Diagonalize this covariance in an
+\(H^{-\eta}\)-orthonormal basis:
+\[
+  \phi_N=\sum_i \lambda_{N,i}^{1/2}g_i e_{N,i},
+  \qquad
+  \|\phi_N\|_{H^{-\eta}}^2=\sum_i\lambda_{N,i}g_i^2,
+\]
+where the \(g_i\) are independent standard real Gaussians and
+\(\sum_i\lambda_{N,i}\leq\sigma^2\).  For an integer \(m\geq1\),
+\[
+\begin{aligned}
+  \mathbb E_{\gamma_N}\|\phi\|_{H^{-\eta}}^{2m}
+  &=
+  \sum_{i_1,\ldots,i_m}
+  \lambda_{N,i_1}\cdots\lambda_{N,i_m}
+  \mathbb E(g_{i_1}^2\cdots g_{i_m}^2)
+\\
+  &\leq
+  (2m-1)!!
+  \left(\sum_i\lambda_{N,i}\right)^m
+  \leq
+  (2m-1)!!\,\sigma^{2m}.
+\end{aligned}
+\]
+Choose \(m\) with \(2m\geq ar\).  The elementary inequality
+\(x^{ar}\leq1+x^{2m}\) for \(x\geq0\) gives a uniform bound for the
+Gaussian moment in \eqref{eq:spde-lq-density-holder}.  Thus the
+\(H^{-\eta}\) \(r\)-th moments under \(\mu_N\) are uniformly bounded.
+Applying Proposition~\ref{prop:spde-sobolev-compactness-tightness} with any
+positive \(r\) proves tightness in \(H^{-\kappa}\).
+\end{proof}
+
+\begin{corollary}[Density route to \(\Phi^4_2\) stationary-law tightness]
+\label{cor:spde-phi-four-two-density-tightness-route}
+Let \(\mu_{0,N}\) be the massive Gaussian cutoff law in
+Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}, and
+let
+\[
+  \dd\mu_N(\phi)
+  =
+  Z_N^{-1}
+  \exp\!\left[
+    -\frac{\lambda}{4}
+    \int_{\mathbb T^2}:\!(P_N\phi)^4\!:\,\dd^2x
+  \right]\dd\mu_{0,N}(\phi)
+\]
+be a finite-dimensional Wick-ordered \(\Phi^4_2\) cutoff measure.  If there
+exists \(q>1\) such that the normalized densities
+\[
+  \rho_N(\phi)=
+  Z_N^{-1}
+  \exp\!\left[
+    -\frac{\lambda}{4}
+    \int_{\mathbb T^2}:\!(P_N\phi)^4\!:\,\dd^2x
+  \right]
+\]
+satisfy
+\[
+  \sup_N\|\rho_N\|_{L^q(\mu_{0,N})}<\infty ,
+\]
+then \(\{\mu_N\}\) is tight in \(H^{-\kappa}(\mathbb T^2)\) for every
+\(\kappa>0\).
+\end{corollary}
+
+\begin{proof}
+Choose any \(0<\eta<\kappa\).  The Gaussian reference law has a uniform
+\(H^{-\eta}\) second moment by
+Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.  The
+assumed \(L^q\) density bound then gives a uniform interacting
+\(H^{-\eta}\) moment by
+Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}, and
+Proposition~\ref{prop:spde-sobolev-compactness-tightness} turns that moment
+bound into tightness in \(H^{-\kappa}\).
+\end{proof}
+
+The corollary identifies the precise constructive estimate that is missing
+from the abstract assembly theorem below.  For \(\Phi^4_2\), the
+Wick-ordered quartic density is not pointwise dominated by an ordinary
+positive quartic potential uniformly in the cutoff.  The needed input is an
+\(L^q\)-bound for the normalized Wick density, or an equivalent Nelson-type
+stability estimate, strong enough to survive the continuum limit.
+
 \begin{proposition}[Brascamp--Lieb covariance domination for convex cutoffs]
 \label{prop:spde-brascamp-lieb-convex-cutoff-moment}
 Let \(H_N\) be a finite-dimensional real Hilbert space, let \(A_N\) be a
@@ -3006,6 +3129,11 @@ Assume the following three further analytic facts.
   bound before the weak-convergence passage is invoked.  The corresponding
   free massive Gaussian estimate is
   Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.
+  Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment} and
+  Corollary~\ref{cor:spde-phi-four-two-density-tightness-route} give one
+  precise route: a cutoff-uniform \(L^q\) bound for the normalized
+  Wick-ordered density with respect to the massive Gaussian reference law
+  implies the required interacting negative-Sobolev moments.
   \item Reflection positivity of the cutoff measures \(\mu_N\) holds for
   bounded cylinder observables depending on positive Euclidean time, and
   the polynomial Wick observables used to identify Schwinger functions obey
@@ -3099,9 +3227,12 @@ energy-to-Besov bound strong enough, by
 Proposition~\ref{prop:spde-dpd-global-compact-continuity-criterion}, to
 give global compact-continuity of the DPD solution map; a cutoff-uniform
 negative-Sobolev moment strong enough to imply tightness by
-Proposition~\ref{prop:spde-sobolev-compactness-tightness}, uniform
-integrability, and either finite-cutoff OS positivity for the stochastic
-regulator itself or a regulator-comparison theorem relating it to the
+Proposition~\ref{prop:spde-sobolev-compactness-tightness}; for Wick
+\(\Phi^4_2\) this moment follows from the density criterion
+Corollary~\ref{cor:spde-phi-four-two-density-tightness-route} once the
+uniform Nelson-type \(L^q\) density bound is proved; uniform integrability;
+and either finite-cutoff OS positivity for the stochastic regulator itself
+or a regulator-comparison theorem relating it to the
 OS-positive lattice regulator of
 Proposition~\ref{prop:spde-lattice-cutoff-os-positive-regulator}.  The
 abstract form of the latter implication is
