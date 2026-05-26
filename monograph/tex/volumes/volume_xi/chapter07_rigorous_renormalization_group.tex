@@ -399,15 +399,110 @@ reconstruction.
 
 \section{Relation To Universality Classes}
 
-In this monograph, a universality class is a triple
+In this monograph, the phrase \emph{universality class} is not used as a
+synonym for ``same symmetries and same dimension.''  It denotes a convergence
+statement in a declared topology.  The minimal datum is the following.
+
+\begin{definition}[Wilsonian universality datum]
+\label{def:wilsonian-universality-datum}
+A Wilsonian universality datum consists of:
+\begin{enumerate}
+  \item an index set \(I\) of microscopic regulators or bare finite-cutoff
+  models;
+  \item for each \(i\in I\), a tuned initial point \(V_i\) in a common Banach
+  RG chart \((\mathcal B,\|\cdot\|)\), or in charts identified by specified
+  coordinate maps;
+  \item an RG map \(\mathcal R:\mathcal U\to\mathcal B\), a neighborhood
+  \(\mathcal N\subset\mathcal U\), and a fixed point \(V_\ast\in\mathcal N\);
+  \item a topological vector space \(\mathcal O\) of normalized long-distance
+  observable data, for example finite lists of smeared Schwinger functions in
+  a distribution topology;
+  \item reconstruction maps
+  \[
+    \operatorname{Rec}_{i,n}:\mathcal U\to\mathcal O
+  \]
+  giving the \(n\)-step long-distance observable data of the microscopic
+  model \(i\);
+  \item a normalization group \(G\) acting continuously on \(\mathcal O\),
+  encoding allowed metric factors, field normalizations, and coordinate
+  rescalings.
+\end{enumerate}
+The datum is a theorem-level universality statement if, for every \(i\in I\),
+there are \(g_i\in G\) and \(O_\ast\in\mathcal O\) such that
+\[
+  \mathcal R^n(V_i)\in\mathcal N\quad(n\gg1),\qquad
+  \mathcal R^n(V_i)\longrightarrow V_\ast\quad\text{in }\mathcal B,
+\]
+and
+\[
+  g_i\,\operatorname{Rec}_{i,n}(V_i)
+  \longrightarrow O_\ast
+  \qquad\text{in }\mathcal O .
+\]
+The common limit \(O_\ast\) is part of the assertion; without the
+reconstruction convergence, convergence of local couplings alone is not a
+QFT universality theorem.
+\end{definition}
+
+\begin{proposition}[Universality as an equivalence relation after reconstruction]
+\label{prop:universality-equivalence-relation}
+Assume the data of Definition~\ref{def:wilsonian-universality-datum}, and
+suppose the displayed convergence to a common \(O_\ast\) holds.  Define
+\(i\sim j\) if there exist \(g_i,g_j\in G\) such that
+\[
+  g_i\,\operatorname{Rec}_{i,n}(V_i)
+  -
+  g_j\,\operatorname{Rec}_{j,n}(V_j)
+  \longrightarrow0
+  \qquad\text{in }\mathcal O .
+\]
+Then \(\sim\) is an equivalence relation on \(I\).
+\end{proposition}
+
+\begin{proof}
+Reflexivity holds by taking the same normalization on both sides.  Symmetry
+is immediate by changing the sign of the displayed difference in the vector
+space \(\mathcal O\).
+
+For transitivity, suppose \(i\sim j\) and \(j\sim k\).  Then there are
+normalizations \(g_i,g_j,h_j,h_k\in G\) for which
+\[
+  g_i\operatorname{Rec}_{i,n}(V_i)
+  -
+  g_j\operatorname{Rec}_{j,n}(V_j)\to0,
+  \qquad
+  h_j\operatorname{Rec}_{j,n}(V_j)
+  -
+  h_k\operatorname{Rec}_{k,n}(V_k)\to0 .
+\]
+In the theorem-level situation above, each normalized sequence also converges
+to the same orbit representative \(O_\ast\) after some allowed normalization.
+Choose the normalizations \(a_i,a_j,a_k\in G\) that appear in
+Definition~\ref{def:wilsonian-universality-datum}.  Then
+\[
+  a_i\operatorname{Rec}_{i,n}(V_i)\to O_\ast,
+  \qquad
+  a_k\operatorname{Rec}_{k,n}(V_k)\to O_\ast,
+\]
+so
+\[
+  a_i\operatorname{Rec}_{i,n}(V_i)
+  -
+  a_k\operatorname{Rec}_{k,n}(V_k)\to0 .
+\]
+Thus \(i\sim k\).  The proof uses the existence of a common reconstructed
+limit, not merely pairwise similarity of formal coupling lists.
+\end{proof}
+
+Thus a universality class may be summarized by a triple
 \[
   (\mathcal R,\mathcal N,V_\ast)
 \]
-together with an equivalence relation on microscopic regulators whose tuned
-RG trajectories converge to \(V_\ast\) in the normed neighborhood
-\(\mathcal N\) and whose reconstructed long-distance observables agree after
-declared normalizations.  The phrase therefore denotes a constructed
-attraction statement, not a label assigned solely by symmetry and dimension.
+together with the observable topology, reconstruction maps, and normalization
+group of Definition~\ref{def:wilsonian-universality-datum}.  Symmetry and
+dimension may guide the choice of \(I\) and the list of relevant coordinates,
+but they do not by themselves define the class.  The theorem is the attraction
+and reconstruction statement.
 
 \begin{openproblem}[Nonperturbative Wilsonian fixed points]
 \label{op:constructive-rg-nonperturbative-fixed-points}

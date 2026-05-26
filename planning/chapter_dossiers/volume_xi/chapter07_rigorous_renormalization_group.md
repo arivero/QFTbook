@@ -30,6 +30,12 @@ constructive RG developments.
   validation.
 - `eta`, `rho`, `L`: residual, linear inverse-error, and derivative-Lipschitz
   constants in the validated fixed-point theorem.
+- `I`: index set of microscopic regulators in a Wilsonian universality datum.
+- `Rec_{i,n}`: \(n\)-step reconstruction map from a tuned microscopic
+  regulator to normalized long-distance observable data.
+- `O`, `O_*`: observable-data topological vector space and common
+  reconstructed limit.
+- `G`: normalization group acting continuously on observable data.
 
 ## Claim Ledger
 
@@ -53,6 +59,11 @@ constructive RG developments.
   neighborhoods.
 - Gives a precise monograph definition of universality class as an RG
   attraction statement plus reconstruction data.
+- Defines a Wilsonian universality datum with microscopic regulators, tuned
+  initial points, a Banach RG chart, reconstruction maps, observable topology,
+  and normalization group.
+- Proves that universality is an equivalence relation once convergence to a
+  common reconstructed observable datum is part of the theorem.
 
 ## Figure Ledger
 
