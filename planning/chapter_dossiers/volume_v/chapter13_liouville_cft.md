@@ -74,11 +74,14 @@ boundaries rather than importing the appendix exposition.
   Virasoro arithmetic for the level-two null vector
   `(L_{-1}^2+b^2 L_{-2})|h>` at `h=-1/2-3b^2/4` and
   `c=1+6(b+b^{-1})^2`.
+- The same script checks the formal `b`-power bookkeeping in the explicit
+  DOZZ `b`-shift ratio, including the cancellation of all external-momentum
+  powers and the final `b^{-4}` factor.
 
 ## Remaining Obligations
 
-- Add an automated DOZZ shift-ratio calculation check mirroring the
-  handwritten `Upsilon_b` derivation in the chapter.
+- Add an independent check of the hypergeometric connection matrix and the
+  degenerate OPE normalization entering the same shift equation.
 - Add detailed conformal-block recursion examples beyond the first BPZ
   equation.
 - Develop Liouville boundary states only after the BCFT chapter is added; do
