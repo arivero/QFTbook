@@ -3198,6 +3198,123 @@ and its conclusion is precisely
 \eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
 \end{proof}
 
+\begin{proposition}[Smooth regulator consequences of Nelson stability]
+\label{prop:spde-smooth-regulator-nelson-consequences}
+Let \(\gamma\) be the massive Gaussian free-field law on
+\(\mathbb T^2\).  For \(\sigma\in\{A,B\}\), let
+\[
+  X_N^\sigma=\mu^\sigma(D/N)X
+\]
+be smooth Fourier multiplier cutoffs as in
+Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence},
+and let
+\[
+  V_N^\sigma
+  =
+  \frac{\lambda}{4}\int_{\mathbb T^2}
+  :\!(X_N^\sigma(x))^4\!:\,\dd^2x,
+  \qquad \lambda>0,
+\]
+with Wick ordering taken with respect to the cutoff covariance of
+\(X_N^\sigma\).  Assume the Nelson stability input
+\[
+  \sup_{N,\sigma}
+  \int \exp[-pV_N^\sigma]\,\dd\gamma<\infty
+  \qquad\hbox{for every finite }p\geq1 .
+  \label{eq:spde-smooth-regulator-nelson-input}
+\]
+Set
+\[
+  Z_N^\sigma=\int e^{-V_N^\sigma}\,\dd\gamma,
+  \qquad
+  \rho_N^\sigma=(Z_N^\sigma)^{-1}e^{-V_N^\sigma},
+  \qquad
+  \dd\nu_N^\sigma=\rho_N^\sigma\,\dd\gamma .
+\]
+Then the following statements hold.
+\begin{enumerate}
+\item For every finite \(q\geq1\),
+\[
+  \sup_{N,\sigma}
+  \|\rho_N^\sigma\|_{L^q(\gamma)}<\infty .
+  \label{eq:spde-smooth-regulator-density-lq}
+\]
+\item For every \(\kappa>0\), the two families
+\(\{\nu_N^A\}\) and \(\{\nu_N^B\}\) are tight in
+\(H^{-\kappa}(\mathbb T^2)\).
+\item For every finite list of Wick coordinates
+\(:\!(X_N^\sigma)^{n_j}\!:(f_j)\), \(1\leq j\leq r\), and every bounded
+continuous \(G:\R^r\to\C\), the normalized expectations of
+\(G\) under the two cutoff families have the common continuum limit stated in
+\eqref{eq:spde-stable-quartic-bounded-cylinder-comparison}.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Wick centering gives
+\[
+  \int V_N^\sigma\,\dd\gamma=0 .
+\]
+Jensen's inequality therefore gives
+\[
+  Z_N^\sigma=\int e^{-V_N^\sigma}\,\dd\gamma
+  \geq
+  \exp\!\left[-\int V_N^\sigma\,\dd\gamma\right]
+  =1 .
+\]
+Consequently
+\[
+  \|\rho_N^\sigma\|_{L^q(\gamma)}^q
+  =
+  (Z_N^\sigma)^{-q}
+  \int e^{-qV_N^\sigma}\,\dd\gamma
+  \leq
+  \int e^{-qV_N^\sigma}\,\dd\gamma,
+\]
+and \eqref{eq:spde-smooth-regulator-density-lq} follows from
+\eqref{eq:spde-smooth-regulator-nelson-input}.
+
+For tightness, choose \(0<\eta<\kappa\).  The massive Gaussian field has
+finite \(H^{-\eta}\)-moments of every order: diagonalizing the covariance
+in Fourier modes gives
+\[
+  \mathbb E_\gamma\|X\|_{H^{-\eta}}^2
+  =
+  \sum_{k\in\mathbb Z^2}
+  \frac{(1+|k|^2)^{-\eta}}{|k|^2+m^2}
+  <\infty,
+\]
+and the higher moments are bounded by the same Gaussian Hilbert-norm
+argument used in
+Proposition~\ref{prop:spde-lq-density-negative-sobolev-moment}.  Holder's
+inequality with the uniform \(L^q\) bound for \(\rho_N^\sigma\) gives
+\[
+  \sup_{N,\sigma}
+  \int\|\phi\|_{H^{-\eta}}^r\,\dd\nu_N^\sigma(\phi)<\infty
+  \qquad (r<\infty).
+\]
+The compact embedding \(H^{-\eta}\hookrightarrow H^{-\kappa}\), quantified
+in Proposition~\ref{prop:spde-sobolev-compactness-tightness}, proves
+tightness in \(H^{-\kappa}\).
+
+It remains to prove the comparison statement.  By
+Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}
+and
+Proposition~\ref{prop:spde-mixed-covariance-common-wick-limits}, the finite
+Wick-coordinate vectors of the two smooth regulators have common \(L^2\)
+limits.  The same argument with \(n=4\) and \(f\equiv1\) gives
+\[
+  V_N^\sigma\longrightarrow
+  \frac{\lambda}{4}:\!X^4\!:(1)
+  \quad\hbox{in }L^2(\gamma),
+  \qquad \sigma=A,B .
+\]
+The stability input \eqref{eq:spde-smooth-regulator-nelson-input} supplies
+the uniform \(L^p\) bound on \(e^{-V_N^\sigma}\).  Hence
+Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}
+applies and gives the stated bounded Wick-cylinder comparison.
+\end{proof}
+
 In the regulator-comparison problem, \(X_N^\sigma\) is the finite list of
 smeared field or Wick-polynomial coordinates entering a bounded positive-time
 cylinder observable, and \(W_N^\sigma\) is the finite-cutoff interaction
@@ -3213,6 +3330,10 @@ same limiting potential and that their exponential weights obey a uniform
 Corollary~\ref{cor:spde-bounded-wick-cylinder-stable-quartic-comparison}
 packages the corresponding bounded cylinder comparison once the common Wick
 coordinate limits and exponential-weight stability have been proved.
+For smooth Fourier multiplier regulators satisfying the Nelson stability
+input, Proposition~\ref{prop:spde-smooth-regulator-nelson-consequences}
+derives the normalized \(L^q\) density bounds, tightness, and bounded
+Wick-cylinder comparison in one statement.
 Unbounded polynomial observables still require the separate
 uniform-integrability argument stated in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}.
@@ -3972,6 +4093,10 @@ Assume the following three further analytic facts.
   smooth compactly supported Fourier multiplier cutoffs, that covariance
   convergence is proved by
   Proposition~\ref{prop:spde-smooth-fourier-multiplier-covariance-convergence}.
+  If, in addition, those smooth regulators satisfy the Nelson stability
+  input, the density bounds, tightness, and bounded Wick-cylinder comparison
+  are collected in
+  Proposition~\ref{prop:spde-smooth-regulator-nelson-consequences}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of

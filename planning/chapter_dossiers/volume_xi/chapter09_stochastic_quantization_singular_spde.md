@@ -421,6 +421,15 @@ data.
   expectation.  The proof checks the hypotheses of the common-potential
   theorem and uses Fatou to verify that the limiting weight is finite and
   has positive partition function.
+- Proves a smooth-regulator consequence theorem from Nelson stability.  For
+  smooth Fourier multiplier cutoffs satisfying uniform
+  \(\sup_N E e^{-pV_N}<\infty\) for every finite \(p\), Jensen's inequality
+  gives \(Z_N\ge1\), hence normalized \(L^q\) density bounds.  Holder
+  against the massive Gaussian \(H^{-\eta}\) moments gives interacting
+  \(H^{-\eta}\) moment bounds and tightness in \(H^{-\kappa}\).  Smooth
+  multiplier covariance convergence plus the mixed-covariance Wick theorem
+  gives common Wick-coordinate and potential limits, so the stable
+  Wick-cylinder comparison theorem applies.
 - Proves a finite-dimensional Brascamp-Lieb covariance domination theorem
   for convex scalar cutoffs.  The proof uses the symmetric generator
   \(\mathcal L=\Delta-\nabla S\cdot\nabla\), its Friedrichs resolvent, and
