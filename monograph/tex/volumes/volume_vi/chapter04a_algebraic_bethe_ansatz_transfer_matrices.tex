@@ -1,0 +1,321 @@
+\chapter{Algebraic Bethe Ansatz and Transfer Matrices}
+\label{ch:integrable-algebraic-bethe-ansatz-transfer-matrices}
+
+\ConventionsLorentzian
+
+Chapter~\ref{ch:integrable-yang-baxter-internal-symmetry} derived the
+Yang--Baxter equation as the condition that factorized three-particle
+scattering be independent of the chosen reduced decomposition.  This chapter
+develops the finite-dimensional algebraic consequence needed for non-diagonal
+finite-volume spectra.  The input is an \(R\)-matrix satisfying the
+Yang--Baxter equation.  The output is a commuting family of transfer matrices
+and, in the rational \(SU(2)\) case, explicit Bethe equations for their
+simultaneous eigenvectors.
+
+\section{Auxiliary Space, Quantum Space, and Monodromy}
+
+Let \(V\simeq\C^d\) be a finite-dimensional complex vector space.  In spin
+chains \(V\) is the one-site Hilbert space.  In finite-volume integrable QFT it
+is the internal species space transported through a sequence of two-body
+scatterings.  Let
+\[
+  R(u)\in \operatorname{End}(V\otimes V),\qquad u\in\C ,
+\]
+be a meromorphic endomorphism.  The parameter \(u\) is called the spectral
+parameter.  For three tensor factors, \(R_{ij}(u)\) denotes \(R(u)\) acting on
+the \(i\)-th and \(j\)-th factors and the identity on the remaining factor.
+The Yang--Baxter equation is
+\begin{equation}
+  R_{12}(u-v)R_{13}(u-w)R_{23}(v-w)
+  =
+  R_{23}(v-w)R_{13}(u-w)R_{12}(u-v).
+  \label{eq:aba-ybe-difference-form}
+\end{equation}
+
+Fix a chain length \(L\).  The quantum space is
+\[
+  \mathcal H_L=V_1\otimes\cdots\otimes V_L,\qquad V_j\simeq V .
+\]
+An additional copy \(V_0\simeq V\) is called the auxiliary space.  For complex
+inhomogeneities \(\xi_1,\ldots,\xi_L\), define the monodromy matrix
+\begin{equation}
+  T_0(u)
+  =
+  R_{0L}(u-\xi_L)\cdots R_{02}(u-\xi_2)R_{01}(u-\xi_1)
+  \in \operatorname{End}(V_0\otimes\mathcal H_L).
+  \label{eq:aba-monodromy}
+\end{equation}
+The order is part of the convention.  A different order conjugates or
+relabels later formulae but does not change the transfer-matrix commutativity
+argument.
+
+\begin{proposition}[RTT relation]
+\label{prop:aba-rtt}
+Assume \(R(u)\) satisfies \eqref{eq:aba-ybe-difference-form}.  Let \(V_0\) and
+\(V_{0'}\) be two auxiliary copies of \(V\).  Then
+\begin{equation}
+  R_{00'}(u-v)T_0(u)T_{0'}(v)
+  =
+  T_{0'}(v)T_0(u)R_{00'}(u-v)
+  \label{eq:aba-rtt-relation}
+\end{equation}
+as meromorphic endomorphisms of
+\(V_0\otimes V_{0'}\otimes\mathcal H_L\).
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  T_0(u)T_{0'}(v)
+  =
+  \prod_{j=L}^{1}R_{0j}(u-\xi_j)
+  \prod_{j=L}^{1}R_{0'j}(v-\xi_j),
+\]
+where products decrease in \(j\).  The Yang--Baxter equation applied to
+\(V_0\otimes V_{0'}\otimes V_j\) gives
+\[
+  R_{00'}(u-v)R_{0j}(u-\xi_j)R_{0'j}(v-\xi_j)
+  =
+  R_{0'j}(v-\xi_j)R_{0j}(u-\xi_j)R_{00'}(u-v).
+\]
+Operators with distinct quantum labels commute unless they share an auxiliary
+factor.  Move \(R_{00'}(u-v)\) successively through the pair
+\(R_{0j}(u-\xi_j)R_{0'j}(v-\xi_j)\) for \(j=L,L-1,\ldots,1\).  After the last
+move all \(R_{0'j}\) factors stand to the left of all \(R_{0j}\) factors in
+the order defining \(T_{0'}(v)T_0(u)\), and the auxiliary \(R_{00'}(u-v)\)
+stands at the right.  This is \eqref{eq:aba-rtt-relation}.
+\end{proof}
+
+\section{Commuting Transfer Matrices}
+
+The transfer matrix is the auxiliary trace of the monodromy:
+\begin{equation}
+  t(u)=\operatorname{tr}_{V_0}T_0(u)
+  \in \operatorname{End}(\mathcal H_L).
+  \label{eq:aba-transfer-matrix}
+\end{equation}
+The trace is the ordinary finite-dimensional trace on \(V_0\).  No trace is
+taken over \(\mathcal H_L\).
+
+\begin{theorem}[Transfer-matrix commutativity]
+\label{thm:aba-transfer-commutativity}
+Assume \(R(u)\) satisfies the Yang--Baxter equation and is invertible for
+generic \(u\).  Then, for all \(u,v\) in the common domain of meromorphy,
+\[
+  [t(u),t(v)]=0 .
+\]
+\end{theorem}
+
+\begin{proof}
+Take the trace over \(V_0\otimes V_{0'}\) in the RTT relation.  On the open
+set where \(R_{00'}(u-v)\) is invertible, multiply
+\eqref{eq:aba-rtt-relation} on the left by \(R_{00'}(u-v)^{-1}\) and use
+cyclicity of the finite-dimensional trace in the auxiliary factors:
+\[
+\begin{aligned}
+  t(u)t(v)
+  &=
+  \operatorname{tr}_{0,0'}\!\left(T_0(u)T_{0'}(v)\right)  \\
+  &=
+  \operatorname{tr}_{0,0'}\!\left(
+    R_{00'}(u-v)^{-1}T_{0'}(v)T_0(u)R_{00'}(u-v)
+  \right)                                      \\
+  &=
+  \operatorname{tr}_{0,0'}\!\left(T_{0'}(v)T_0(u)\right)
+  =
+  t(v)t(u).
+\end{aligned}
+\]
+Both sides are meromorphic in \(u,v\), hence equality on the invertibility
+domain extends as a meromorphic identity.
+\end{proof}
+
+The theorem is the algebraic source of the conservation laws used in
+integrable finite-volume problems.  Expanding \(t(u)\) or \(\log t(u)\) around
+a regular point gives commuting operators.  Which one is the Hamiltonian is a
+choice of representation and normalization, not part of the Yang--Baxter
+equation alone.
+
+\section{The Rational SU(2) R-Matrix}
+
+Let \(V=\C^2\) with basis \(\ket{\uparrow},\ket{\downarrow}\), and let
+\(P\in\operatorname{End}(V\otimes V)\) be the flip
+\[
+  P(x\otimes y)=y\otimes x .
+\]
+The rational \(SU(2)\) \(R\)-matrix in the normalization used below is
+\[
+  R(u)=u\,\id_{V\otimes V}+\ii P .
+\]
+It is \(SU(2)\)-invariant and satisfies the Yang--Baxter equation.  One direct
+verification uses only
+\[
+  P_{ij}^2=1,\qquad
+  P_{12}P_{23}P_{12}=P_{23}P_{12}P_{23},
+\]
+and the commutativity of disjoint flips; expanding both sides of
+\eqref{eq:aba-ybe-difference-form} gives identical words in the symmetric
+group algebra of \(S_3\).
+
+For the homogeneous spin chain it is convenient to use the shifted local
+operator
+\[
+  L_{0j}(u)=R_{0j}\!\left(u-\frac{\ii}{2}\right)
+  =
+  \left(u-\frac{\ii}{2}\right)\id+\ii P_{0j}.
+\]
+The monodromy is
+\[
+  T_0(u)=L_{0L}(u)\cdots L_{01}(u).
+\]
+Relative to the auxiliary basis, write
+\[
+  T_0(u)
+  =
+  \begin{pmatrix}
+    A(u) & B(u) \\
+    C(u) & D(u)
+  \end{pmatrix},
+\]
+where \(A,B,C,D\) are operators on \(\mathcal H_L\).  The ferromagnetic
+reference vector is
+\[
+  \Omega_L=\ket{\uparrow}^{\otimes L}.
+\]
+The local triangular form of \(L_{0j}(u)\) on
+\(\ket{\uparrow}_j\) gives
+\[
+  C(u)\Omega_L=0,\qquad
+  A(u)\Omega_L=\left(u+\frac{\ii}{2}\right)^L\Omega_L,\qquad
+  D(u)\Omega_L=\left(u-\frac{\ii}{2}\right)^L\Omega_L .
+\]
+
+\section{Creation Operators and Bethe Equations}
+
+The RTT relation gives commutation relations among \(A,B,C,D\).  The relations
+needed to compute \(t(u)=A(u)+D(u)\) on a Bethe vector are
+\begin{align}
+  B(u)B(v)&=B(v)B(u),
+  \label{eq:aba-bb-commutes}\\
+  A(u)B(v)
+  &=
+  \frac{u-v+\ii}{u-v}B(v)A(u)
+  -
+  \frac{\ii}{u-v}B(u)A(v),
+  \label{eq:aba-ab-relation}\\
+  D(u)B(v)
+  &=
+  \frac{u-v-\ii}{u-v}B(v)D(u)
+  +
+  \frac{\ii}{u-v}B(u)D(v).
+  \label{eq:aba-db-relation}
+\end{align}
+For complex numbers \(u_1,\ldots,u_M\), define
+\[
+  \ket{u_1,\ldots,u_M}
+  =
+  B(u_1)\cdots B(u_M)\Omega_L .
+\]
+
+\begin{theorem}[Algebraic Bethe ansatz for the \(XXX_{1/2}\) chain]
+\label{thm:aba-xxx-bethe}
+Suppose the numbers \(u_1,\ldots,u_M\) are distinct and satisfy
+\begin{equation}
+  \left(
+    \frac{u_j+\ii/2}{u_j-\ii/2}
+  \right)^L
+  =
+  \prod_{\substack{k=1\\ k\neq j}}^M
+  \frac{u_j-u_k+\ii}{u_j-u_k-\ii},
+  \qquad j=1,\ldots,M .
+  \label{eq:aba-xxx-bethe-equations}
+\end{equation}
+Then \(\ket{u_1,\ldots,u_M}\), if nonzero, is an eigenvector of \(t(u)\) with
+eigenvalue
+\begin{equation}
+\begin{aligned}
+  \Lambda(u)
+  &=
+  \left(u+\frac{\ii}{2}\right)^L
+  \prod_{j=1}^M\frac{u-u_j-\ii}{u-u_j}
+  +
+  \left(u-\frac{\ii}{2}\right)^L
+  \prod_{j=1}^M\frac{u-u_j+\ii}{u-u_j}.
+\end{aligned}
+  \label{eq:aba-xxx-transfer-eigenvalue}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Use \eqref{eq:aba-ab-relation} and \eqref{eq:aba-db-relation} to move
+\(A(u)\) and \(D(u)\) through the product \(B(u_1)\cdots B(u_M)\) until they
+act on \(\Omega_L\).  The terms in which \(A(u)\) or \(D(u)\) passes every
+\(B(u_j)\) without changing its spectral parameter give exactly
+\eqref{eq:aba-xxx-transfer-eigenvalue}.  The remaining terms have one
+\(B(u_j)\) replaced by \(B(u)\).  Because the \(B\)'s commute, the coefficient
+of
+\[
+  B(u)\prod_{\substack{k=1\\ k\neq j}}^M B(u_k)\Omega_L
+\]
+is proportional to
+\[
+  -\ii\left(u_j+\frac{\ii}{2}\right)^L
+  \prod_{\substack{k=1\\ k\neq j}}^M
+    \frac{u_j-u_k-\ii}{u_j-u_k}
+  +
+  \ii\left(u_j-\frac{\ii}{2}\right)^L
+  \prod_{\substack{k=1\\ k\neq j}}^M
+    \frac{u_j-u_k+\ii}{u_j-u_k}.
+\]
+Vanishing of this coefficient is precisely
+\eqref{eq:aba-xxx-bethe-equations}.  After these unwanted terms vanish, the
+displayed wanted term is the full action of \(t(u)\).
+\end{proof}
+
+The Bethe equations also have a pole-cancellation interpretation.  The
+right-hand side of \eqref{eq:aba-xxx-transfer-eigenvalue} is written with
+apparent simple poles at \(u=u_j\).  The residue at \(u=u_j\) vanishes exactly
+when \eqref{eq:aba-xxx-bethe-equations} holds.  Thus the Bethe equations make
+\(\Lambda(u)\) a polynomial of degree \(L\), as it must be because \(t(u)\) is
+a polynomial operator.
+
+\section{Hamiltonian Normalization and Momentum}
+
+The periodic \(XXX_{1/2}\) Hamiltonian in the normalization used by the
+calculation checks is
+\[
+  H_{XXX}=\sum_{j=1}^L(1-P_{j,j+1}),\qquad P_{L,L+1}=P_{L,1}.
+\]
+It is obtained from the logarithmic derivative of the transfer matrix at the
+regular point, up to an additive constant fixed by
+\(H_{XXX}\Omega_L=0\).  For a Bethe vector satisfying
+\eqref{eq:aba-xxx-bethe-equations},
+\begin{equation}
+  E=\sum_{j=1}^M \frac{1}{u_j^2+1/4},
+  \qquad
+  \ee^{\ii P_{\rm tot}}
+  =
+  \prod_{j=1}^M
+  \frac{u_j+\ii/2}{u_j-\ii/2}.
+  \label{eq:aba-xxx-energy-momentum}
+\end{equation}
+For \(M=1\), set
+\[
+  \ee^{\ii p}=\frac{u+\ii/2}{u-\ii/2}.
+\]
+Then \(u=(1/2)\cot(p/2)\), the Bethe equation gives
+\(\ee^{\ii pL}=1\), and
+\[
+  E=4\sin^2\frac p2 .
+\]
+
+\section{Use in Relativistic Integrable QFT}
+
+In a relativistic two-dimensional integrable QFT with non-diagonal internal
+scattering, the \(R\)-matrix in the monodromy is the matrix part of the
+two-body \(S\)-matrix.  A particle transported once around a circle scatters
+through every other particle.  The resulting internal monodromy is a transfer
+matrix.  Its eigenvalues replace the scalar product of phase shifts in the
+diagonal Bethe--Yang equation.  The next chapter makes this statement
+explicit and then develops the nested equations that diagonalize the internal
+transfer matrix for \(SU(N)\)-type scattering.

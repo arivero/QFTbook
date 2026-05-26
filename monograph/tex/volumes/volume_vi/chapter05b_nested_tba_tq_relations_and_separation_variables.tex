@@ -1,0 +1,253 @@
+\chapter{Nested TBA, Baxter Relations, and Separation Variables}
+\label{ch:integrable-nested-tba-tq-separation-variables}
+
+\ConventionsLorentzian
+
+Diagonal TBA converts scalar Bethe--Yang equations into density and
+pseudoenergy equations.  Non-diagonal scattering adds auxiliary roots.  The
+thermodynamic limit then contains physical densities and magnonic auxiliary
+densities.  This chapter records the precise structure needed later for
+factorized relativistic models and for the planar gauge-theory integrability
+volume.
+
+\section{Nested Densities}
+
+Start from logarithmic nested equations of the form
+\[
+  Lp_a(\theta_j)
+  +
+  \sum_{b,k}\delta_{ab}(\theta_j-\theta_k)
+  +
+  \sum_{\alpha,r}\chi_{a r}(\theta_j-u_\alpha^{(r)})
+  =
+  2\pi I_j ,
+\]
+together with auxiliary equations
+\[
+  \sum_{b,k}\chi_{r b}(u_\alpha^{(r)}-\theta_k)
+  +
+  \sum_{s,\beta}\psi_{rs}(u_\alpha^{(r)}-u_\beta^{(s)})
+  =
+  2\pi J_\alpha^{(r)} .
+\]
+The labels \(a,b\) enumerate physical particle species; \(r,s\) enumerate
+auxiliary Dynkin nodes or nesting levels.  The functions \(\delta,\chi,\psi\)
+are chosen branches of logarithms of the scalar and matrix-scattering
+eigenvalue factors.
+
+In the thermodynamic limit introduce physical densities
+\(\rho_a,\rho_a^h\) and auxiliary densities
+\(\sigma_r,\sigma_r^h\).  Differentiating the logarithmic equations gives
+\begin{align}
+  \rho_a+\rho_a^h
+  &=
+  \frac{1}{2\pi}\frac{\dd p_a}{\dd\theta}
+  +\sum_b K_{ab}*\rho_b
+  +\sum_r K_{a r}*\sigma_r ,
+  \label{eq:nested-tba-physical-density}\\
+  \sigma_r+\sigma_r^h
+  &=
+  \sum_a K_{r a}*\rho_a
+  +\sum_s K_{rs}*\sigma_s .
+  \label{eq:nested-tba-aux-density}
+\end{align}
+Here
+\[
+  (K*f)(x)=\int_\R K(x-y)f(y)\,\dd y,
+\]
+and each kernel is \(1/(2\pi)\) times the derivative of the corresponding
+phase.  Auxiliary roots carry no direct one-particle energy in the examples
+under discussion; they affect the free energy through the constraints.
+
+\begin{proposition}[Nested TBA variational equations]
+\label{prop:nested-tba-variational}
+Assume the density equations
+\eqref{eq:nested-tba-physical-density}--\eqref{eq:nested-tba-aux-density}
+have a thermodynamic limit with positive total densities, and use the
+fermionic occupancy entropy for each physical and auxiliary root species.
+Define pseudoenergies
+\[
+  \epsilon_a=\log\frac{\rho_a^h}{\rho_a},
+  \qquad
+  \eta_r=\log\frac{\sigma_r^h}{\sigma_r}.
+\]
+Then stationarity of the constrained free energy at inverse temperature \(R\)
+gives
+\begin{align}
+  \epsilon_a
+  &=
+  R E_a
+  -\sum_b K_{ba}*\log(1+\ee^{-\epsilon_b})
+  -\sum_r K_{r a}*\log(1+\ee^{-\eta_r}),
+  \label{eq:nested-tba-epsilon}\\
+  \eta_r
+  &=
+  -\sum_a K_{a r}*\log(1+\ee^{-\epsilon_a})
+  -\sum_s K_{s r}*\log(1+\ee^{-\eta_s}).
+  \label{eq:nested-tba-eta}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The proof is the same variational calculation as
+Proposition~\ref{prop:tba-variational-derivation}, with a larger list of
+densities.  Let the full list be \(n_A\), where \(A\) runs over both physical
+and auxiliary labels, and let \(n_A^t=n_A+n_A^h\).  The entropy variation is
+\[
+  \delta s
+  =
+  \sum_A\int \left[
+    \log\frac{n_A^h}{n_A}\,\delta n_A
+    +
+    \log\frac{n_A^t}{n_A^h}\,\delta n_A^t
+  \right].
+\]
+The linear density constraints express every \(\delta n_A^t\) as a convolution
+of kernels with variations of occupied densities.  Physical labels contribute
+\(\delta(RE_a n_a)\) to the energy variation; auxiliary labels do not.  Since
+the variations \(\delta\rho_a\) and \(\delta\sigma_r\) are independent, the
+coefficient of each variation must vanish.  Substituting
+\(\log(n_A^t/n_A^h)=\log(1+\ee^{-\epsilon_A})\) gives
+\eqref{eq:nested-tba-epsilon}--\eqref{eq:nested-tba-eta}.
+\end{proof}
+
+\section{Constant A2 Magnonic Example}
+
+The ultraviolet limit of many nested systems reduces to constant equations for
+the plateau values \(Y_A=\ee^{\epsilon_A}\).  A minimal \(A_2\) magnonic
+example has two auxiliary nodes and incidence matrix
+\[
+  I_{rs}=
+  \begin{pmatrix}
+    0&1\\
+    1&0
+  \end{pmatrix}.
+\]
+The constant Y-system is
+\[
+  Y_1^2=1+Y_2,\qquad
+  Y_2^2=1+Y_1 .
+\]
+The symmetric solution has \(Y_1=Y_2=\phi_{\rm g}\), where
+\[
+  \phi_{\rm g}=\frac{1+\sqrt5}{2},\qquad
+  \phi_{\rm g}^2=1+\phi_{\rm g}.
+\]
+This finite calculation is the algebraic core behind Rogers-dilogarithm
+central-charge evaluations.  To turn it into a central-charge theorem for a
+specific QFT one must also justify the scaling limit, the kernel reduction to
+the constant Y-system, and the absence or subtraction of bulk-energy terms.
+
+\section{Baxter TQ Relation}
+
+For the \(XXX_{1/2}\) transfer eigenvalue
+\eqref{eq:aba-xxx-transfer-eigenvalue}, define the Baxter polynomial
+\[
+  Q(u)=\prod_{j=1}^M(u-u_j).
+\]
+Then the eigenvalue equation can be rewritten as the finite-difference
+relation
+\begin{equation}
+  \Lambda(u)Q(u)
+  =
+  \left(u+\frac{\ii}{2}\right)^L Q(u-\ii)
+  +
+  \left(u-\frac{\ii}{2}\right)^L Q(u+\ii).
+  \label{eq:xxx-baxter-tq}
+\end{equation}
+
+\begin{proposition}[Bethe equations from the \(TQ\) relation]
+\label{prop:tq-pole-bethe-equations}
+Let \(Q(u)=\prod_j(u-u_j)\) have simple roots.  Equation
+\eqref{eq:xxx-baxter-tq} has a polynomial \(\Lambda(u)\) if and only if the
+roots \(u_j\) obey the \(XXX_{1/2}\) Bethe equations
+\eqref{eq:aba-xxx-bethe-equations}.
+\end{proposition}
+
+\begin{proof}
+If \(\Lambda\) is polynomial, evaluating \eqref{eq:xxx-baxter-tq} at
+\(u=u_j\) gives
+\[
+  \left(u_j+\frac{\ii}{2}\right)^L Q(u_j-\ii)
+  +
+  \left(u_j-\frac{\ii}{2}\right)^L Q(u_j+\ii)=0.
+\]
+Since
+\[
+  \frac{Q(u_j+\ii)}{Q(u_j-\ii)}
+  =
+  -\prod_{\substack{k=1\\ k\neq j}}^M
+  \frac{u_j-u_k+\ii}{u_j-u_k-\ii},
+\]
+the displayed equality is precisely
+\eqref{eq:aba-xxx-bethe-equations}.  Conversely, if the Bethe equations hold,
+the numerator on the right side of \eqref{eq:xxx-baxter-tq} vanishes at every
+root of \(Q\), so division by \(Q\) produces a polynomial \(\Lambda\).
+\end{proof}
+
+For higher-rank symmetry, \(Q\)-functions are attached to nodes of the Dynkin
+diagram, and the scalar \(TQ\) relation is replaced by a system of functional
+relations.  The simplest form is a \(T\)-system or Hirota equation
+\[
+  T_{a,s}(u+\tfrac{\ii}{2})T_{a,s}(u-\tfrac{\ii}{2})
+  =
+  T_{a+1,s}(u)T_{a-1,s}(u)
+  +
+  T_{a,s+1}(u)T_{a,s-1}(u),
+\]
+with boundary conditions determined by the representation and by the physical
+model.  The associated Y-functions are ratios of neighboring \(T\)'s.  These
+functional equations organize both relativistic nested TBA systems and the
+mirror-TBA/Y-system machinery used later in planar gauge theory.
+
+\section{Q-Operators and Separation Variables}
+
+A \(Q\)-operator is an operator-valued function \(Q(u)\) commuting with the
+transfer matrix and satisfying an operator \(TQ\) relation whose eigenvalue
+version is \eqref{eq:xxx-baxter-tq}.  Constructing \(Q(u)\) requires extra
+auxiliary representations; the construction is model-dependent.  The
+important logical point is that the Bethe roots are zeros of an eigenvalue of
+an operator, not merely parameters introduced by an ansatz.
+
+Separation of variables uses a different complete set of commuting objects.
+For the \(2\times2\) monodromy
+\[
+  T(u)=
+  \begin{pmatrix}
+    A(u)&B(u)\\
+    C(u)&D(u)
+  \end{pmatrix},
+\]
+one diagonalizes the commuting family \(B(u)\) in a representation where this
+is possible.  If
+\[
+  B(u)=B_0\prod_{\alpha=1}^{L-1}(u-x_\alpha)
+\]
+on a separated eigenvector, the variables \(x_\alpha\) are separated
+coordinates.  The transfer-matrix eigenvalue problem becomes a finite
+difference equation in each \(x_\alpha\), whose one-variable form is the
+Baxter equation.  The advantage is that a pseudovacuum need not exist.  The
+cost is that the functional-analytic construction of the separated basis is
+more delicate and depends on the representation.
+
+\begin{openproblem}[Completeness beyond the pseudovacuum construction]
+\label{op:bethe-completeness-sov}
+Develop, for each integrable QFT family used in this monograph, a precise
+finite-volume Hilbert-space theorem comparing algebraic Bethe ansatz,
+\(Q\)-operator, and separation-of-variables bases.  The theorem should state
+the representation space, boundary conditions, allowed singular roots, and the
+topology in which the large-volume limit is taken.
+\end{openproblem}
+
+\section{Interface with Later Volumes}
+
+The relativistic integrable-QFT use of nested TBA differs from planar
+gauge-theory integrability.  In the present volume, physical particles have
+relativistic dispersion \(E=m\cosh\theta\) and finite-size effects are
+organized by the mirror channel of a two-dimensional QFT.  In the planar
+\(\mathcal N=4\) SYM volume, magnons have a non-relativistic dispersion on a
+spin chain, wrapping effects arise from trace cyclicity and finite operator
+length, and the quantum spectral curve replaces the finite-rank Baxter
+polynomial by a system of analytic \(Q\)-functions.  The algebraic bridge is
+the same RTT, transfer-matrix, and \(TQ\) logic developed here; the physical
+interpretation is different.

@@ -173,6 +173,11 @@ Current checks:
   \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
   versus Veneziano quark-boundary counting, plus the displayed baryon Hartree
   pair-counting and fixed-spin rotor \(1/N_c\) scaling.
+- `nested_bethe_ansatz_checks.py`: finite algebra checks for the Volume VI
+  algebraic and nested Bethe-ansatz chapters, including the rational
+  Yang--Baxter equation, transfer-matrix commutativity, one-magnon spectra at
+  \(L=4,6,8\), an \(SU(3)\) nested-root solution, and Baxter \(TQ\)
+  pole-cancellation.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson

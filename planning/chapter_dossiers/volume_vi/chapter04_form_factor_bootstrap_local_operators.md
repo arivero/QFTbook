@@ -4,7 +4,7 @@
 
 - Role in the monograph: move from on-shell factorized scattering data to
   local-operator matrix elements.
-- Immediate predecessor: Yang--Baxter consistency and internal symmetry.
+- Immediate predecessor: nested Bethe ansatz and matrix Bethe--Yang equations.
 - Immediate successor: thermodynamic Bethe ansatz and finite-volume spectra.
 
 ## Definitions And Results

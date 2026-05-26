@@ -5,7 +5,7 @@
 - Role in the monograph: derive thermodynamic and finite-size data from exact
   factorized scattering in massive two-dimensional integrable QFT.
 - Immediate predecessor: form-factor bootstrap and local operators.
-- Immediate successor: integrable RG flows and perturbed two-dimensional CFT.
+- Immediate successor: nested TBA, Baxter relations, and separation variables.
 
 ## Definitions And Results
 

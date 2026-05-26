@@ -6,7 +6,7 @@
   equality of three-particle factorization channels.
 - Immediate predecessor: two-dimensional scattering analyticity and bootstrap
   pole data.
-- Immediate successor: form-factor bootstrap and local operators.
+- Immediate successor: algebraic Bethe ansatz and transfer matrices.
 
 ## Definitions And Results
 

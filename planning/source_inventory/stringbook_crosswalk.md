@@ -248,6 +248,20 @@ Current absorption:
 
 ### Planar Integrability
 
+Current relativistic-integrability absorption:
+
+- Volume VI now contains the algebraic/nested Bethe-ansatz infrastructure that
+  the stringbook mostly used in the planar gauge-theory setting:
+  RTT relations, transfer-matrix commutativity, the \(XXX_{1/2}\) algebraic
+  Bethe ansatz, matrix Bethe--Yang quantization, \(SU(N)\) nested equations,
+  an explicit \(SU(3)\) nested-root example, nested TBA, Baxter \(TQ\)
+  relations, \(T\)-systems, \(Q\)-operators, and separation variables.  The
+  finite algebra is checked by
+  `calculation-checks/nested_bethe_ansatz_checks.py`.  The planar
+  \(\mathcal N=4\) SYM development remains separate because its dispersion,
+  cyclic-trace finite-size effects, and quantum spectral curve are different
+  physical structures.
+
 Potential use:
 
 - planar single-trace spectral problem in \(\mathcal N=4\) SYM;
