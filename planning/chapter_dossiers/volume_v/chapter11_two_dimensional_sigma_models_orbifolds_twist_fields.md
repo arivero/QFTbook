@@ -44,8 +44,11 @@
   first-order large-radius \(\alpha'\) expansion.
 - Derives the one-loop string-frame variational package
   `int sqrt(G) exp(-2 Phi) (R + 4|grad Phi|^2 - H^2/12)`, including the
-  `B`-field integration by parts, the `-1/4 H_i H_j` metric coefficient, and
-  the scalar anomaly representative
+  fixed-dilaton metric variation
+  `E_ij - G_ij S_Phi/2`, the dilaton variation `-2 S_Phi`, the exact
+  removal of the metric trace by the scalar equation, the `B`-field
+  integration by parts, the `-1/4 H_i H_j` metric coefficient, and the
+  scalar anomaly representative
   `(D-26)/6 + alpha'(|grad Phi|^2 - nabla^2 Phi/2 - H^2/24)`.
 - Defines local perturbative sigma-model renormalization schemes as
   coordinate systems on the infinite-dimensional coupling space
@@ -269,6 +272,11 @@
    \(\Gamma^{(1)}_{\mathrm{div}}=-(4\pi\epsilon)^{-1}
    \int R_{ij}\partial x^i\partial x^j\) and
    \(\delta G_{ij}=(\alpha'/\epsilon)R_{ij}\).
+41. In the string-frame one-loop functional, the fixed-\(\Phi\) metric
+   variation has trace coefficient
+   \(-S_\Phi/2\), while the dilaton variation is \(-2S_\Phi\); imposing the
+   scalar equation therefore removes exactly the trace part and leaves the
+   hatted metric Weyl-anomaly representative.
 
 ## Figures
 
@@ -296,10 +304,11 @@
   radius/coupling beta functions for spherical and hyperbolic signs.
 - `calculation-checks/nlsm_weyl_anomaly_checks.py` verifies the rational
   coefficient bookkeeping for the one-loop \(H^2\) metric variation,
-  \(B\)-field integration by parts, linear-dilaton central charge, heterotic
-  Bianchi coefficient, heterotic gauge/dilaton redundant direction,
-  torsionful one-loop Ricci package, and local `d^2=0` preservation of the
-  `H` beta Bianchi identity.
+  the full string-frame metric trace decomposition and scalar dilaton
+  variation, \(B\)-field integration by parts, linear-dilaton central
+  charge, heterotic Bianchi coefficient, heterotic gauge/dilaton redundant
+  direction, torsionful one-loop Ricci package, and local `d^2=0`
+  preservation of the `H` beta Bianchi identity.
 - `calculation-checks/nlsm_scheme_redefinition_checks.py` verifies the sign
   and order of the finite-scheme-redefinition bracket
   `beta' = beta + [beta,F]` in a finite polynomial two-coupling model.

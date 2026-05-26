@@ -235,7 +235,8 @@ Current absorption:
   pure-metric second variation and curvature vertex, the background-field
   one-loop Ricci divergence with the local heat-kernel pole and
   Ricci-counterterm normalization derived explicitly, the \(G,B,\Phi\)
-  Weyl-anomaly package, scheme-redefinition geometry, torsionful one-loop
+  Weyl-anomaly package with full string-frame metric/dilaton variation and
+  trace representative, scheme-redefinition geometry, torsionful one-loop
   packaging, the
   pure-metric two-loop representative, the precise RG-time conversion to
   Hamilton Ricci flow, and constant-curvature sphere/hyperbolic radius-flow

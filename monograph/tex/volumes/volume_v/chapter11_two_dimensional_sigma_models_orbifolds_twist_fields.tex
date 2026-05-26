@@ -543,6 +543,34 @@ Let \(H=\dd B\).  Up to the constant central-charge term in
   \right).
   \label{eq:nlsm-string-frame-functional-one-loop}
 \end{equation}
+Assume either that \(M\) is compact or that all variations have compact
+support, so that target-space boundary terms can be discarded.  Define
+\begin{align}
+  E_{ij}
+  &=
+  R_{ij}+2\nabla_i\nabla_j\Phi
+  -\frac14H_i{}^{k\ell}H_{jk\ell},
+  \label{eq:nlsm-string-frame-metric-e-tensor}\\
+  S_\Phi
+  &=
+  R+4\nabla^2\Phi-4|\nabla\Phi|^2-\frac1{12}H^2 .
+  \label{eq:nlsm-string-frame-scalar-e-tensor}
+\end{align}
+Then the fixed-\(\Phi\) metric variation is
+\begin{equation}
+  \delta_G\mathcal I_0
+  =
+  \int_M\dd^D x\,\sqrt G\,\ee^{-2\Phi}
+  \left(E_{ij}-\frac12G_{ij}S_\Phi\right)\delta G^{ij},
+  \label{eq:nlsm-string-frame-full-metric-variation}
+\end{equation}
+and the dilaton variation is
+\begin{equation}
+  \delta_\Phi\mathcal I_0
+  =
+  -2\int_M\dd^D x\,\sqrt G\,\ee^{-2\Phi}S_\Phi\,\delta\Phi .
+  \label{eq:nlsm-string-frame-dilaton-variation}
+\end{equation}
 Variation with respect to \(B\) gives
 \begin{equation}
   \nabla^kH_{kij}-2\nabla^k\Phi\,H_{kij}=0,
@@ -616,30 +644,70 @@ the left side of \eqref{eq:nlsm-b-field-eom-one-loop} by
 
 For the metric variation, the Palatini identity gives
 \[
+  \begin{aligned}
   \delta(\sqrt G\,\ee^{-2\Phi}R)
+  &=
+  \sqrt G\,\ee^{-2\Phi}
+  \Bigl[
+    R_{ij}
+    -\frac12G_{ij}R
+    +2\nabla_i\nabla_j\Phi
+    \\
+    &\qquad
+    -4\nabla_i\Phi\nabla_j\Phi
+    +G_{ij}(4|\nabla\Phi|^2-2\nabla^2\Phi)
+  \Bigr]\delta G^{ij}
+  +\text{boundary terms}.
+  \end{aligned}
+\]
+The variation of \(4|\nabla\Phi|^2=4G^{ij}\partial_i\Phi\partial_j\Phi\),
+including the variation of \(\sqrt G\), is
+\[
+  \sqrt G\,\ee^{-2\Phi}
+  \left(
+    4\nabla_i\Phi\nabla_j\Phi
+    -2G_{ij}|\nabla\Phi|^2
+  \right)\delta G^{ij}.
+\]
+The nontrace \(\nabla_i\Phi\nabla_j\Phi\) terms therefore cancel.  The
+coefficient of the \(H\)-term is fixed directly: \(H_{abc}H^{abc}\) contains
+three inverse metrics, while the variation of \(\sqrt G\) contributes the
+trace term.  Thus
+\[
+  \delta_G
+  \left(
+    -\frac1{12}\sqrt G\,\ee^{-2\Phi}H^2
+  \right)
   =
   \sqrt G\,\ee^{-2\Phi}
   \left(
-    R_{ij}+2\nabla_i\nabla_j\Phi
-  \right)\delta G^{ij}
-  +\text{trace terms}
-  +\text{boundary terms}.
+    -\frac14H_i{}^{k\ell}H_{jk\ell}
+    +\frac1{24}G_{ij}H^2
+  \right)\delta G^{ij}.
 \]
-Here ``trace terms'' means terms proportional to \(G_{ij}\); in the
-sigma-model Weyl-anomaly package these are assigned to the scalar dilaton
-equation and to the constant central-charge representative.  The coefficient
-of the \(H\)-term is fixed directly: \(H_{abc}H^{abc}\) contains three
-inverse metrics, so its variation with respect to \(G^{ij}\) contributes
+Combining the three fixed-\(\Phi\) variations gives
+\eqref{eq:nlsm-string-frame-full-metric-variation}, because the trace
+coefficient is
 \[
-  -\frac1{12}\cdot3\,H_i{}^{k\ell}H_{jk\ell}
+  -\frac12R+2|\nabla\Phi|^2-2\nabla^2\Phi+\frac1{24}H^2
   =
-  -\frac14H_i{}^{k\ell}H_{jk\ell}.
+  -\frac12S_\Phi .
 \]
-The chosen metric representative is therefore
+The scalar equation \(S_\Phi=0\) therefore removes exactly the trace part of
+the metric variation and leaves the chosen representative
 \eqref{eq:nlsm-metric-eom-one-loop}, which is the vanishing of
 \eqref{eq:nlsm-one-loop-hatted-beta-g}.
 
-Finally, varying \(\Phi\) gives the scalar combination
+Finally, varying \(\Phi\) gives
+\[
+  -2
+  \left(R+4|\nabla\Phi|^2-\frac1{12}H^2\right)\delta\Phi
+  +
+  8\nabla^i\Phi\,\nabla_i\delta\Phi .
+\]
+After integration by parts with the \(\ee^{-2\Phi}\) density, this becomes
+\eqref{eq:nlsm-string-frame-dilaton-variation}; equivalently the scalar
+combination is
 \[
   R-\frac1{12}H^2+4\nabla^2\Phi-4|\nabla\Phi|^2
 \]
