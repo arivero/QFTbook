@@ -45,10 +45,13 @@ Date: 2026-05-26.
 - Added `calculation-checks/liouville_bpz_checks.py`, a finite rational
   Laurent-polynomial check of the Virasoro arithmetic for
   `(L_{-1}^2+b^2L_{-2})|h>`.
+- The same script checks the formal powers of `b` in the DOZZ `b`-shift ratio
+  after substituting `bQ=b^2+1`, including the surviving `b^{-4}` factor.
 
 ## Remaining Obligations
 
-- #601 remains open.  The chapter still needs an automated DOZZ shift-ratio
-  calculation check, low-order conformal-block recursion examples beyond the
-  first degenerate block, and eventual functorial sewing closure.
+- #601 remains open.  The chapter still needs an independent calculation check
+  of the hypergeometric connection matrix and degenerate OPE normalization,
+  low-order conformal-block recursion examples beyond the first degenerate
+  block, and eventual functorial sewing closure.
 - #600 and #602 were not addressed by this pass.

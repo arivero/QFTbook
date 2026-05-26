@@ -59,6 +59,56 @@ def require_zero(name: str, value: Laurent) -> None:
         raise AssertionError(f"{name} is not zero: {value!r}")
 
 
+class AffineExponent:
+    """Affine expression in formal symbols used for powers of b."""
+
+    def __init__(self, terms: dict[str, Fraction] | None = None) -> None:
+        self.terms = {
+            symbol: coeff
+            for symbol, coeff in (terms or {}).items()
+            if coeff != 0
+        }
+
+    @staticmethod
+    def constant(value: Fraction | int) -> AffineExponent:
+        return AffineExponent({"1": Fraction(value)})
+
+    @staticmethod
+    def symbol(name: str, coeff: Fraction | int = 1) -> AffineExponent:
+        return AffineExponent({name: Fraction(coeff)})
+
+    def __add__(self, other: AffineExponent) -> AffineExponent:
+        terms = dict(self.terms)
+        for symbol, coeff in other.terms.items():
+            terms[symbol] = terms.get(symbol, Fraction(0)) + coeff
+        return AffineExponent(terms)
+
+    def __sub__(self, other: AffineExponent) -> AffineExponent:
+        return self + (-other)
+
+    def __neg__(self) -> AffineExponent:
+        return AffineExponent({symbol: -coeff for symbol, coeff in self.terms.items()})
+
+    def scale(self, factor: Fraction | int) -> AffineExponent:
+        return AffineExponent({
+            symbol: Fraction(factor) * coeff
+            for symbol, coeff in self.terms.items()
+        })
+
+    def __repr__(self) -> str:
+        return f"AffineExponent({self.terms!r})"
+
+
+def require_affine_equal(
+    name: str,
+    left: AffineExponent,
+    right: AffineExponent,
+) -> None:
+    diff = left - right
+    if diff.terms:
+        raise AssertionError(f"{name} mismatch: {left!r} != {right!r}")
+
+
 one = Laurent.constant(1)
 t = Laurent.monomial(1)
 t_inverse = Laurent.monomial(-1)
@@ -82,4 +132,55 @@ require_zero("L2 null-vector coefficient", l2_coefficient)
 solved_kappa = -(h.scale(4) + Laurent.constant(2)).scale(Fraction(1, 3))
 require_zero("solved kappa minus b^2", solved_kappa - t)
 
-print("All Liouville BPZ null-vector checks passed.")
+# DOZZ b-shift ratio: verify the powers of b in the ratio
+# C(a1+b/2,a2,a3)/C(a1-b/2,a2,a3).  Symbols are
+# t=b^2 and baj=b alpha_j, with bQ=t+1 already substituted.
+one_exp = AffineExponent.constant(1)
+t_exp = AffineExponent.symbol("t")
+ba1 = AffineExponent.symbol("ba1")
+ba2 = AffineExponent.symbol("ba2")
+ba3 = AffineExponent.symbol("ba3")
+
+numerator_shift = (
+    one_exp.scale(2)
+    + t_exp.scale(2)
+    - ba1.scale(8)
+)
+denominator_shift_1 = (
+    -one_exp
+    + (ba1 + ba2 + ba3 - t_exp - one_exp - t_exp.scale(Fraction(1, 2))).scale(2)
+)
+denominator_shift_2 = (
+    -one_exp
+    + (ba1 + ba2 - ba3 - t_exp.scale(Fraction(1, 2))).scale(2)
+)
+denominator_shift_3 = (
+    -one_exp
+    + (ba1 + ba3 - ba2 - t_exp.scale(Fraction(1, 2))).scale(2)
+)
+denominator_shift_4 = (
+    one_exp
+    - (ba2 + ba3 - ba1 - t_exp.scale(Fraction(1, 2))).scale(2)
+)
+
+upsilon_shift_power = (
+    numerator_shift
+    + denominator_shift_1
+    + denominator_shift_2
+    + denominator_shift_3
+    + denominator_shift_4
+)
+require_affine_equal(
+    "Upsilon-shift power in DOZZ b-shift",
+    upsilon_shift_power,
+    -one_exp.scale(2) - t_exp.scale(2),
+)
+
+k_inverse_power = -one_exp.scale(2) + t_exp.scale(2)
+require_affine_equal(
+    "total b power in DOZZ b-shift",
+    upsilon_shift_power + k_inverse_power,
+    -one_exp.scale(4),
+)
+
+print("All Liouville BPZ and DOZZ-shift bookkeeping checks passed.")
