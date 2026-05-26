@@ -2135,6 +2135,283 @@ The finite-chaos moment bound again upgrades this to \(L^{2m}\), proving
 \eqref{eq:spde-wick-coordinate-scale}.
 \end{proof}
 
+\begin{proposition}[Dual-norm Gaussian Wick-coordinate estimates]
+\label{prop:spde-gaussian-wick-dual-norm-coordinate-estimates}
+Let the hypotheses and notation of
+Proposition~\ref{prop:spde-gaussian-wick-coordinate-scale-estimates} hold.
+Assume in addition that
+\[
+  0<\theta<r-\frac Q2 .
+\]
+Choose \(s\) with
+\[
+  \frac Q2+\theta<s<r .
+\]
+Let \(E_r\) be the test-function space
+\[
+  E_r=
+  \{\varphi\in C^r(\R^{1+3}):
+    \operatorname{supp}\varphi\subset B_{\mathfrak s}(0,1)\},
+  \qquad
+  \|\varphi\|_{E_r}=\|\varphi\|_{C^r}.
+\]
+Define the \(E_r'\)-valued random functionals
+\[
+  \mathcal W_x(\varphi)
+  =
+  \delta^{Q/2+\kappa}\xi(\psi_x^\varphi)
+\]
+and, for \(k=1,2,3\),
+\[
+  \mathcal X_{k,x}(\varphi)
+  =
+  \delta^{k/2+k\kappa}
+  \langle :X^k:,\psi_x^\varphi\rangle .
+\]
+Then, for every integer \(m\geq1\),
+\[
+  \left\|\|\mathcal W_x\|_{E_r'}\right\|_{L^{2m}(\Omega)}
+  \leq C\delta^\kappa ,
+  \qquad
+  \left\|\|\mathcal X_{k,x}\|_{E_r'}\right\|_{L^{2m}(\Omega)}
+  \leq C\delta^{k\kappa}.
+  \label{eq:spde-gaussian-dual-norm-uniform}
+\]
+If \(x=(z,\delta)\), \(y=(z',\delta')\),
+\(\delta,\delta'\in[2^{-M-1},2^{-M}]\), and
+\[
+  \eta=
+  2^M\|z-z'\|_{\mathfrak s}+2^M|\delta-\delta'|\leq1,
+\]
+then
+\[
+  \left\|\|\mathcal W_x-\mathcal W_y\|_{E_r'}\right\|_{L^{2m}(\Omega)}
+  \leq
+  C2^{-\kappa M}\eta^\theta ,
+  \label{eq:spde-gaussian-dual-norm-white-edge}
+\]
+and
+\[
+  \left\|\|\mathcal X_{k,x}-\mathcal X_{k,y}\|_{E_r'}\right\|_{L^{2m}(\Omega)}
+  \leq
+  C2^{-k\kappa M}\eta^\theta .
+  \label{eq:spde-gaussian-dual-norm-wick-edge}
+\]
+The constants depend on the compact region, the chosen wavelet system,
+\(r,s,\theta,\kappa,m\), and on the covariance constant \(A\) for the Wick
+powers, but not on \(x,y\), \(\delta,\delta'\), or the particular test
+function.
+\end{proposition}
+
+\begin{proof}
+Use a compactly supported parabolic wavelet system with regularity larger
+than \(r\), as in the reconstruction proof.  Write \(e_\lambda\),
+\(\lambda\in\Lambda_j\), for the
+\(L^2\)-normalized wavelets at unit-domain scale \(2^{-j}\), and include the
+finitely many scaling functions in a separate set \(\Lambda_{-1}\).  The
+system has finite overlap,
+\[
+  |\Lambda_j|\leq C2^{Qj}\qquad(j\geq0),
+\]
+and the coefficient estimate
+\[
+  \sum_{\lambda\in\Lambda_{-1}}
+    |\langle\varphi,e_\lambda\rangle|^2
+  +
+  \sum_{j\geq0}\sum_{\lambda\in\Lambda_j}
+    2^{2sj}|\langle\varphi,e_\lambda\rangle|^2
+  \leq
+  C\|\varphi\|_{C^r}^2
+  \label{eq:spde-wavelet-cr-to-hs}
+\]
+for \(0<s<r\).  For a distribution \(T\) supported in a fixed enlargement of
+the unit ball set
+\[
+  \|T\|_{-s,*}^2
+  =
+  \sum_{\lambda\in\Lambda_{-1}}
+    |\langle T,e_\lambda\rangle|^2
+  +
+  \sum_{j\geq0}\sum_{\lambda\in\Lambda_j}
+    2^{-2sj}|\langle T,e_\lambda\rangle|^2 .
+\]
+By Cauchy--Schwarz and \eqref{eq:spde-wavelet-cr-to-hs},
+\[
+  \|T\|_{E_r'}
+  =
+  \sup_{\|\varphi\|_{C^r}\leq1}|T(\varphi)|
+  \leq
+  C\|T\|_{-s,*}.
+  \label{eq:spde-hminus-controls-er-dual}
+\]
+It is therefore enough to estimate the weighted wavelet coefficient norm.
+
+For white noise, put \(T=\mathcal W_x\).  For every \(L^2\)-normalized
+unit-domain wavelet \(e_\lambda\),
+\[
+  \mathbb E|\langle T,e_\lambda\rangle|^2
+  =
+  \delta^{2\kappa}.
+\]
+Consequently
+\[
+  \mathbb E\|T\|_{-s,*}^2
+  \leq
+  C\delta^{2\kappa}
+  \left(
+    1+\sum_{j\geq0}2^{Qj}2^{-2sj}
+  \right)
+  \leq
+  C\delta^{2\kappa},
+  \label{eq:spde-white-dual-ltwo}
+\]
+because \(s>Q/2\).
+
+For the edge estimate, the coefficient tested against a scale-\(j\) wavelet
+is the white-noise pairing with the difference
+\[
+  \delta^{Q/2+\kappa}\psi_x^{e_\lambda}
+  -
+  {\delta'}^{Q/2+\kappa}\psi_y^{e_\lambda}.
+\]
+Rescale the common physical ball of radius \(C2^{-M}\) to unit size.  The
+unit-domain wavelet has \(C^\theta\)-size \(O(2^{j(Q/2+\theta)})\), while
+its \(L^2\)-size is one; translation and dilation of the outer parameter by
+\(\eta\) therefore give
+\[
+  \left\|
+    \delta^{Q/2+\kappa}\psi_x^{e_\lambda}
+    -
+    {\delta'}^{Q/2+\kappa}\psi_y^{e_\lambda}
+  \right\|_{L^2}
+  \leq
+  C2^{-\kappa M}\min\{1,2^{j\theta}\eta^\theta\}.
+  \label{eq:spde-white-dual-coefficient-edge}
+\]
+The finite set \(\Lambda_{-1}\) obeys the same bound with \(j=0\) after
+changing the constant.  Hence
+\[
+  \mathbb E\|\mathcal W_x-\mathcal W_y\|_{-s,*}^2
+  \leq
+  C2^{-2\kappa M}
+  \sum_{j\geq0}
+    2^{(Q-2s)j}\min\{1,2^{j\theta}\eta^\theta\}^2 .
+\]
+Let \(J\) be chosen so that \(2^{-J-1}<\eta\leq2^{-J}\).  The part
+\(j\leq J\) is bounded by
+\[
+  C\eta^{2\theta}
+  \sum_{j\leq J}2^{(Q-2s+2\theta)j}
+  \leq
+  C\eta^{2\theta},
+\]
+because \(Q-2s+2\theta<0\).  The part \(j>J\) is bounded by
+\[
+  C\sum_{j>J}2^{(Q-2s)j}
+  \leq
+  C2^{-(2s-Q)J}
+  \leq
+  C\eta^{2\theta},
+\]
+again because \(2s-Q>2\theta\).  This proves the \(L^2(\Omega)\) version of
+\eqref{eq:spde-gaussian-dual-norm-white-edge}.
+
+For the Wick powers, let \(T=\mathcal X_{k,x}\).  Wick covariance gives
+\[
+  \mathbb E|\langle T,e_\lambda\rangle|^2
+  \leq
+  C\delta^{2k\kappa}2^{(k-Q)j},
+  \qquad \lambda\in\Lambda_j,\quad j\geq0.
+  \label{eq:spde-wick-dual-coefficient-scale}
+\]
+Indeed, after the outer scale \(u=z+\mathsf D_\delta a\) is removed, the
+coefficient is tested by the unit-domain wavelet \(e_\lambda\), and
+\[
+  \iint
+  |e_\lambda(a)|\,|e_\lambda(b)|
+  \|a-b\|_{\mathfrak s}^{-k}\,\dd a\,\dd b
+  \leq
+  C2^{(k-Q)j}.
+\]
+The right-hand side follows from the support diameter \(O(2^{-j})\), the
+\(L^\infty\)-size \(O(2^{Qj/2})\), and the local integrability of
+\(\|a-b\|_{\mathfrak s}^{-k}\).  Summing the weighted coefficients gives
+\[
+  \mathbb E\|T\|_{-s,*}^2
+  \leq
+  C\delta^{2k\kappa}
+  \left(
+    1+\sum_{j\geq0}2^{Qj}2^{-2sj}2^{(k-Q)j}
+  \right)
+  \leq
+  C\delta^{2k\kappa},
+  \label{eq:spde-wick-dual-ltwo}
+\]
+because \(s>Q/2\geq k/2\) for \(k\leq3\).
+
+For \(x,y\) in the same dyadic annulus, apply the covariance identity to the
+difference of the two normalized test functions.  The same rescaling used in
+\eqref{eq:spde-white-dual-coefficient-edge} gives
+\[
+  \mathbb E
+  \left|
+    \langle\mathcal X_{k,x}-\mathcal X_{k,y},e_\lambda\rangle
+  \right|^2
+  \leq
+  C2^{-2k\kappa M}2^{(k-Q)j}
+  \min\{1,2^{j\theta}\eta^\theta\}^2 .
+  \label{eq:spde-wick-dual-coefficient-edge}
+\]
+Therefore
+\[
+  \mathbb E\|\mathcal X_{k,x}-\mathcal X_{k,y}\|_{-s,*}^2
+  \leq
+  C2^{-2k\kappa M}
+  \sum_{j\geq0}
+    2^{(k-2s)j}\min\{1,2^{j\theta}\eta^\theta\}^2 .
+\]
+Since \(k\leq3<Q\) and \(2s-Q>2\theta\), the same split at
+\(2^{-J}\simeq\eta\) bounds this sum by \(C\eta^{2\theta}\).  This proves the
+\(L^2(\Omega)\) versions of
+\eqref{eq:spde-gaussian-dual-norm-uniform},
+\eqref{eq:spde-gaussian-dual-norm-white-edge}, and
+\eqref{eq:spde-gaussian-dual-norm-wick-edge}.
+
+The random variables \(\mathcal W_x\) and \(\mathcal W_x-\mathcal W_y\) lie
+in the first Wiener chaos with values in the Hilbert space defined by
+\(\|\cdot\|_{-s,*}\).  The variables \(\mathcal X_{k,x}\) and
+\(\mathcal X_{k,x}-\mathcal X_{k,y}\) lie in the \(k\)-th Wiener chaos with
+values in the same Hilbert space.  We use the Hilbert-valued form of the
+finite-chaos moment bound.  For a finite wavelet truncation \(F\) in the
+\(q\)-th homogeneous chaos, let \(P_t\) be the Ornstein--Uhlenbeck semigroup.
+Then \(P_tF=e^{-qt}F\), and Jensen's inequality gives
+\[
+  e^{-qt}\|F\|_{-s,*}
+  =
+  \|P_tF\|_{-s,*}
+  \leq
+  P_t(\|F\|_{-s,*}).
+\]
+The scalar hypercontractive estimate
+\(\|P_t g\|_{L^{2m}}\leq\|g\|_{L^2}\) when
+\(e^{2t}\geq 2m-1\) therefore gives
+\[
+  \|\|F\|_{-s,*}\|_{L^{2m}}
+  \leq
+  (2m-1)^{q/2}\|\|F\|_{-s,*}\|_{L^2}.
+\]
+Passing from finite wavelet truncations to the limit by monotone convergence
+for the squared coefficient norm gives
+\[
+  \left\|\|F\|_{-s,*}\right\|_{L^{2m}}
+  \leq
+  C_{k,m}\left\|\|F\|_{-s,*}\right\|_{L^2}
+\]
+for every one of these Hilbert-valued chaos variables.  Combining this with
+\eqref{eq:spde-hminus-controls-er-dual} proves the claimed \(L^{2m}\)
+dual-norm estimates.
+\end{proof}
+
 \begin{lemma}[Parabolic Taylor-subtraction gain]
 \label{lem:spde-parabolic-taylor-subtraction-gain}
 Let \(K_i\) be a dyadic kernel on \((\mathbb R^D,\mathfrak s)\) such that

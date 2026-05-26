@@ -188,6 +188,41 @@ def check_gaussian_wick_coordinate_scale_arithmetic():
     assert_equal(edge_factor, Fraction(1, 8), "Gaussian Wick edge Holder factor")
 
 
+def check_gaussian_dual_norm_wavelet_arithmetic():
+    # The dual-norm upgrade uses a wavelet H^{-s} majorant.  For Q=5,
+    # choose s=3 and theta=1/4.  White-noise coefficients contribute
+    # 2^{(Q-2s)j}; the edge proof needs Q-2s+2theta<0.
+    qdim = Fraction(5)
+    s = Fraction(3)
+    theta = Fraction(1, 4)
+    white_uniform_exponent = qdim - 2 * s
+    white_low_edge_exponent = qdim - 2 * s + 2 * theta
+    white_tail_margin = 2 * s - qdim - 2 * theta
+    assert_equal(white_uniform_exponent, Fraction(-1), "Gaussian dual white summability")
+    assert_equal(white_low_edge_exponent, Fraction(-1, 2), "Gaussian dual white low-edge exponent")
+    assert_equal(white_tail_margin, Fraction(1, 2), "Gaussian dual white tail margin")
+
+    # For :X^k:, covariance singularity |z|^{-k} gives coefficient variance
+    # 2^{(k-Q)j}.  After summing 2^{Qj} wavelets and H^{-s} weight
+    # 2^{-2sj}, the exponent is k-2s.
+    for k in [1, 2, 3]:
+        wick_uniform_exponent = Fraction(k) - 2 * s
+        wick_low_edge_exponent = Fraction(k) - 2 * s + 2 * theta
+        wick_tail_margin = 2 * s - Fraction(k) - 2 * theta
+        if not wick_uniform_exponent < 0:
+            raise AssertionError("Wick dual wavelet exponent must be summable")
+        if not wick_low_edge_exponent < 0:
+            raise AssertionError("Wick dual edge low-scale exponent must be summable")
+        if not wick_tail_margin > 0:
+            raise AssertionError("Wick dual edge tail margin must be positive")
+    assert_equal(Fraction(3) - 2 * s, Fraction(-3), "Gaussian dual Wick cubic summability")
+    assert_equal(
+        Fraction(3) - 2 * s + 2 * theta,
+        Fraction(-5, 2),
+        "Gaussian dual Wick cubic low-edge exponent",
+    )
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -914,6 +949,7 @@ def main():
     check_dual_norm_finite_chaos_estimate_arithmetic()
     check_projective_kernel_dual_norm_criterion_arithmetic()
     check_gaussian_wick_coordinate_scale_arithmetic()
+    check_gaussian_dual_norm_wavelet_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -937,7 +973,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

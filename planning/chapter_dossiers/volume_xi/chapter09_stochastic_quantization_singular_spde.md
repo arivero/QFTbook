@@ -80,6 +80,10 @@ data.
 - `psi_x^varphi`, `theta`, `C(u,v)`: rescaled physical test kernel, Holder
   edge exponent, and stochastic-convolution covariance in the Gaussian
   negative-coordinate scale theorem.
+- `e_lambda`, `Lambda_j`, `s`, `||.||_{-s,*}`: parabolic wavelets, their
+  unit-domain scale sets, the auxiliary Sobolev exponent, and the weighted
+  wavelet norm used to dominate the \(E_r'\) dual norm of Gaussian
+  coordinates.
 - `F`, `P`, `H`, `r`: local factor, subtracted polynomial, remainder
   coefficient, and parabolic remainder order in the Taylor-subtraction gain.
 - `mathcal X_l`, `pi_l`, `mathcal E_l`: finite dyadic nets, projections to
@@ -242,6 +246,11 @@ data.
   parabolic covariance singularity \(C(u,v)=O(\|u-v\|_{\mathfrak s}^{-1})\)
   gives \(\sigma_{X^k}=k\kappa\) for \(k=1,2,3\), with Holder edge control
   on same-scale parameter increments.
+- Proves the corresponding \(E_r'\)-dual-norm estimates for the primitive
+  Gaussian coordinates when \(0<\theta<r-Q/2\): a parabolic wavelet
+  \(H^{-s}\) majorant controls the supremum over the \(C^r\) test-function
+  ball, white-noise coefficients sum when \(s>Q/2\), and Wick-power
+  coefficients sum using the variance exponent \(2^{(k-Q)j}\).
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -498,3 +507,10 @@ data maps.
   local integrability of \(\|u-v\|_{\mathfrak s}^{-k}\) for \(k\leq3<5\), and
   Holder edge estimates for same-scale parameter increments.  The
   calculation-check companion verifies the resulting scale slack exponents.
+- 2026-05-26 issue #582 Gaussian dual-norm continuation: the chapter now
+  upgrades the primitive Gaussian coordinate estimates to \(E_r'\)-valued
+  bounds.  The proof introduces a wavelet \(H^{-s}\) majorant for the dual
+  \(C^r\)-test norm, proves the white-noise and Wick-power coefficient
+  summability exponents, and proves same-scale dual-norm edge estimates under
+  \(0<\theta<r-Q/2\).  The calculation-check companion verifies the
+  wavelet-summability and edge-tail arithmetic.
