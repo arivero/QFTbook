@@ -6,12 +6,15 @@
 Boundaries and defects are QFT data supported on submanifolds.  They modify
 operator algebras, symmetry realization, anomaly inflow, and phase structure.
 This chapter formulates them as local data rather than as afterthoughts added
-to a bulk theory.
+to a bulk theory.  The examples below are elementary enough that their fusion
+and anomaly data can be checked directly.
 
 \section{Boundary QFT Datum}
 
+\begin{definition}[Boundary QFT datum]
+\label{def:boundary-qft-datum}
 Let \(M\) be a spacetime manifold with boundary \(\partial M\).  A boundary
-condition for a local QFT assigns:
+condition for a local QFT assigns the following data:
 \[
 \begin{array}{ll}
 \text{bulk observables} & \mathcal A(U),\quad U\subset M^\circ,\\
@@ -25,9 +28,17 @@ condition for a local QFT assigns:
 Locality requires that observables with spacelike separated supports commute
 or graded-commute after their supports are interpreted in the manifold with
 boundary.
+\end{definition}
+
+The bulk-to-boundary maps in Definition~\ref{def:boundary-qft-datum} are not
+optional.  They specify what happens when a bulk operator is brought to the
+boundary and therefore determine boundary operator expansions, boundary Ward
+identities, and the possible endpoints of bulk extended operators.
 
 \section{Boundary Operator Expansion}
 
+\begin{definition}[Boundary operator expansion]
+\label{def:boundary-operator-expansion}
 For a scalar bulk local operator \(\mathcal O(x_\perp,y)\), with
 \(x_\perp\geq0\) the distance to the boundary and \(y\in\partial M\), the
 boundary expansion has the form
@@ -42,9 +53,34 @@ symbol means convergence inside the declared correlation-function topology
 after smearing away from coincident boundary insertions.  Boundary critical
 exponents and boundary anomalies are properties of this expansion and of the
 boundary stress tensor.
+\end{definition}
+
+\begin{example}[Free scalar half-space boundary expansion]
+\label{ex:free-scalar-half-space-boe}
+Let \(\phi\) be a free massless scalar field on the Euclidean half-space
+\(\mathbb R_{\ge0}\times\mathbb R^{D-1}\), with coordinates
+\((x_\perp,y)\).  For Neumann boundary condition
+\(\partial_\perp\phi|_{x_\perp=0}=0\), the method of images gives
+\[
+  \langle\phi(x_\perp,y)\phi(x'_\perp,y')\rangle_N
+  =
+  G_D(x_\perp-x'_\perp,y-y')
+  +
+  G_D(x_\perp+x'_\perp,y-y').
+\]
+For Dirichlet boundary condition \(\phi|_{x_\perp=0}=0\), the sign of the
+image term is reversed.  Consequently the leading boundary operator in the
+Neumann case is \(\widehat\phi(y)=\phi(0,y)\), whereas in the Dirichlet case
+the leading nonzero boundary operator is
+\(\widehat{\partial_\perp\phi}(y)=\partial_\perp\phi(0,y)\).  This example
+shows that the boundary operator expansion is a statement about a boundary
+condition, not merely a formal expansion near a hypersurface.
+\end{example}
 
 \section{Interfaces And Domain Walls}
 
+\begin{definition}[Interface and domain wall]
+\label{def:interface-domain-wall}
 An interface between two QFTs \(\mathcal T_-\) and \(\mathcal T_+\) is a
 codimension-one defect whose local neighborhoods have \(\mathcal T_-\) on one
 side and \(\mathcal T_+\) on the other.  A domain wall is an interface between
@@ -52,9 +88,32 @@ two phases or vacua of the same microscopic theory.  Topological interfaces
 can be moved without changing separated correlation functions, up to contact
 terms specified on the wall.  Non-topological interfaces carry ordinary
 localized excitations and have their own stress-tensor Ward identities.
+\end{definition}
+
+\begin{example}[Chern--Simons boundary and chiral WZW currents]
+\label{ex:cs-boundary-wzw-global-chapter}
+For Chern--Simons theory on a three-manifold with boundary, the variation of
+the bulk action contains the boundary one-form
+\[
+  \frac{k}{4\pi}\int_{\partial M}\operatorname{tr}(A\wedge\delta A).
+\]
+After choosing the holomorphic polarization on the boundary surface
+\(\Sigma\), the boundary field \(g:\Sigma\to G\) has the chiral
+Wess--Zumino--Witten action displayed in
+Chapter~\ref{ch:tqft-chern-simons-theory}.  The boundary current
+\[
+  J(z)=-\frac{k}{2\pi}\partial_zg\,g^{-1}
+\]
+obeys the affine current algebra at level \(k\).  Thus the boundary condition
+does not simply remove a boundary term; it creates a boundary operator
+algebra whose representation theory is the state-space input for Wilson-line
+endpoints and boundary conformal blocks.
+\end{example}
 
 \section{Fusion}
 
+\begin{definition}[Renormalized defect fusion]
+\label{def:renormalized-defect-fusion}
 Let \(D_1\) and \(D_2\) be parallel defects separated by distance \(\ell\).
 Fusion asks for the limit
 \[
@@ -65,16 +124,126 @@ separated external insertions converge after renormalizing defect-local
 operators.  In a topological sector, fusion gives a monoidal category of
 defects.  In a general QFT, fusion is a renormalization problem for
 codimension-one local data.
+\end{definition}
+
+\begin{example}[Ising topological defect fusion]
+\label{ex:ising-defect-fusion-global-boundaries}
+At the critical two-dimensional Ising point, the basic topological defects
+are
+\[
+  \mathbf 1,\qquad \eta,\qquad \mathcal N,
+\]
+where \(\eta\) is the invertible spin-flip defect and \(\mathcal N\) is the
+Kramers--Wannier duality defect.  Their fusion rules are
+\[
+  \eta\otimes\eta\simeq\mathbf 1,\qquad
+  \eta\otimes\mathcal N\simeq\mathcal N\otimes\eta\simeq\mathcal N,
+  \qquad
+  \mathcal N\otimes\mathcal N\simeq\mathbf 1\oplus\eta .
+\]
+The last equation is the first test that the word ``duality'' is being used
+as a defect statement rather than as a slogan: \(\mathcal N\) has no inverse,
+because its square is a direct sum.  Chapter~\ref{ch:global-categorical-symmetry-defect-fusion}
+derives the corresponding action on primary sectors from the Ising modular
+\(S\)-matrix.
+\end{example}
+
+\begin{proposition}[Fusion detects noninvertibility]
+\label{prop:ising-defect-noninvertible}
+In the fusion algebra of Example~\ref{ex:ising-defect-fusion-global-boundaries},
+the defect \(\mathcal N\) is not invertible and has Frobenius--Perron
+dimension \(\sqrt2\).
+\end{proposition}
+
+\begin{proof}
+If \(\mathcal N\) had an inverse \(X\), then
+\(\mathcal N\otimes X\simeq\mathbf 1\) would be simple.  But fusing
+\(\mathcal N\otimes\mathcal N\simeq\mathbf 1\oplus\eta\) with \(X\) gives
+\[
+  \mathcal N\simeq X\oplus(\eta\otimes X),
+\]
+which expresses the simple defect \(\mathcal N\) as a direct sum of two
+nonzero summands, a contradiction in the semisimple defect category.  The
+positive dimension homomorphism satisfies
+\[
+  d_{\mathcal N}^2=d_{\mathbf 1}+d_\eta=2,
+\]
+because \(d_{\mathbf 1}=d_\eta=1\).  Hence
+\(d_{\mathcal N}=\sqrt2\).
+\end{proof}
+
+\begin{example}[Electric-magnetic duality surface in three-dimensional BF]
+\label{ex:three-d-bf-duality-surface}
+The \(\mathbb Z_N\) topological gauge theory can be written in continuum
+notation as the \(U(1)\times U(1)\) BF action
+\[
+  S_{\rm BF}
+  =
+  \frac{N}{2\pi}\int B\wedge dA,
+\]
+with compact one-form gauge fields \(A\) and \(B\).  Its simple line labels
+are pairs \((e,m)\in\mathbb Z_N\oplus\mathbb Z_N\), represented by
+\[
+  W_{e,m}(\gamma)
+  =
+  \exp\!\left(\ii e\int_\gamma A+\ii m\int_\gamma B\right).
+\]
+The codimension-one surface defect \(S\) that exchanges \(A\) and \(B\) acts
+by
+\[
+  S:\ (e,m)\longmapsto(m,e).
+\]
+It is topological because it preserves the BF action and the braiding pairing
+\[
+  \langle(e,m),(e',m')\rangle
+  =
+  \exp\!\left(\frac{2\pi\ii}{N}(em'+me')\right).
+\]
+Fusion satisfies \(S\otimes S\simeq\mathbf 1\).  This is an invertible
+surface defect; unlike the Ising \(\mathcal N\) defect, it is an ordinary
+duality wall because the induced map on the finite line-label group is an
+automorphism.
+\end{example}
 
 \section{Anomalies And Inflow}
 
+\begin{definition}[Anomaly line of a boundary or defect]
+\label{def:defect-anomaly-line}
 A boundary or defect can carry an anomaly line for background fields
-restricted to its support.  A bulk invertible theory cancels this anomaly
-when the combined bulk-defect partition function is a number rather than a
-section of a nontrivial line over background-field space.  If a boundary
+restricted to its support.  If \(A_D\) denotes those restricted background
+fields, then a defect partition function with anomaly is a section
+\[
+  Z_D(A_D)\in\Gamma(\mathcal L_D),
+\]
+where \(\mathcal L_D\) is a complex line over the background-field space.
+\end{definition}
+
+An invertible bulk theory with boundary \(D\) supplies a section of
+\(\mathcal L_D^{-1}\).  The product is then a complex number.  If a boundary
 condition preserves a global symmetry, its boundary anomaly must match the
 restriction of the bulk inflow.  If it breaks the symmetry, the broken
 background fields are not part of the boundary datum.
+
+\begin{proposition}[Inflow cancellation as line trivialization]
+\label{prop:inflow-line-trivialization}
+The combined bulk-defect amplitude is an ordinary complex-valued functional
+of background fields if and only if the tensor product of the defect anomaly
+line and the bulk inflow line is canonically trivialized.
+\end{proposition}
+
+\begin{proof}
+If \(Z_D(A_D)\) is a section of \(\mathcal L_D\) and the bulk inflow
+amplitude \(Z_{\rm bulk}(A)\) is a section of \(\mathcal L_{\rm bulk}\), then
+their product is a section of
+\(\mathcal L_D\otimes\mathcal L_{\rm bulk}\).  It is a number precisely after
+choosing a natural isomorphism
+\[
+  \mathcal L_D\otimes\mathcal L_{\rm bulk}\cong\underline{\C}.
+\]
+Conversely, if the product is a complex-valued functional for all background
+fields and is compatible with gluing of backgrounds, it defines exactly such
+a trivialization of the tensor product line.
+\end{proof}
 
 \section{Gauge-Theory Boundaries}
 
@@ -86,6 +255,25 @@ Hamiltonian polarization.  Magnetic boundary conditions fix the dual data.
 Line operators may end on the boundary precisely when boundary degrees of
 freedom carry the corresponding charge and cancel the endpoint gauge
 variation.
+
+\begin{example}[Endpoint gauge variation of a Wilson line]
+\label{ex:wilson-line-endpoint-boundary}
+Let \(\gamma\) be an oriented path from \(p\) to \(q\), and let
+\[
+  U_\gamma(A)=\operatorname{Pexp}\int_\gamma A
+\]
+be parallel transport in a representation \(R\).  Under a gauge
+transformation \(g\),
+\[
+  U_\gamma(A^g)=R(g(p))\,U_\gamma(A)\,R(g(q))^{-1}.
+\]
+Thus an open Wilson line is not gauge invariant by itself.  It can end on a
+boundary only if boundary operators at \(p\) and \(q\) transform in the dual
+representations needed to contract these endpoint factors, or if the
+boundary condition converts the relevant gauge transformations into fixed
+global symmetry transformations and the line is interpreted as a charged
+operator under that boundary symmetry.
+\end{example}
 
 \section{Defects And Phase Data}
 
