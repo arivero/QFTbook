@@ -979,11 +979,90 @@ In the \(SL(2)\) sector, twist-\(L\) spin-\(S\) operators are
   \operatorname{tr}(D_+^{s_1}Z\cdots D_+^{s_L}Z),
   \qquad \sum_{j=1}^Ls_j=S .
 \]
-At one loop the large-\(S\) Bethe roots form a continuum density, and the
-resolvent computation gives
+The one-loop Bethe equations in this noncompact sector are
+\begin{equation}
+  \left(\frac{u_k+\ii/2}{u_k-\ii/2}\right)^L
+  =
+  \prod_{\substack{j=1\\j\neq k}}^S
+  \frac{u_k-u_j-\ii}{u_k-u_j+\ii},
+  \qquad k=1,\ldots,S,
+  \label{eq:planar-n4-sl2-one-loop-bethe}
+\end{equation}
+with cyclicity selecting zero total spin-chain momentum.  For the minimal
+large-spin trajectory the roots are real, symmetric under \(u\mapsto -u\),
+and have mode numbers \(\pm1\) in the logarithmic equation.  Write
 \[
-  \Delta-S-L=8g^2\log S+O(S^0,g^4).
+  u_k=S\bar u_k,
+  \qquad
+  \int_{-a}^a\bar\rho_0(\bar u)\,\dd\bar u=1,
 \]
+where \(\bar\rho_0\) is the continuum density of the scaled roots.  In the
+limit \(S\gg L\), the derivative of the continuum logarithmic equation is
+encoded by the resolvent
+\[
+  G_0(z)=\int_{-a}^a\frac{\bar\rho_0(v)}{z-v}\,\dd v,
+  \qquad
+  G_0(z)=\frac1z+O(z^{-2}).
+\]
+The discontinuity convention is
+\[
+  G_0(y+\ii0)-G_0(y-\ii0)=-2\pi\ii\,\bar\rho_0(y).
+\]
+After differentiating the continuum Bethe equation, the boundary values obey
+\[
+  G_0'(y+\ii0)+G_0'(y-\ii0)=4\pi\delta(y)
+  \qquad (-a<y<a).
+\]
+The unique solution with one symmetric cut and the displayed normalization is
+\begin{equation}
+  G_0(z)
+  =
+  -\ii
+  \log\frac{\sqrt{4z^2-1}+\ii}{\sqrt{4z^2-1}-\ii},
+  \qquad a=\frac12,
+  \label{eq:planar-n4-sl2-cusp-resolvent}
+\end{equation}
+where the square root is chosen so that \(\sqrt{4z^2-1}\sim2z\) at infinity.
+Its density is
+\begin{equation}
+  \bar\rho_0(y)
+  =
+  \frac1\pi
+  \log
+  \frac{1+\sqrt{1-4y^2}}{1-\sqrt{1-4y^2}},
+  \qquad |y|<\frac12 .
+  \label{eq:planar-n4-sl2-cusp-density}
+\end{equation}
+The one-loop anomalous dimension is
+\[
+  \gamma^{(1)}
+  =
+  2g^2\sum_{k=1}^S\frac{1}{u_k^2+1/4}.
+\]
+The singular region near \(u=0\) is resolved by evaluating the resolvent at
+\(z=\ii/(2S)\):
+\[
+  \gamma^{(1)}
+  =
+  -4g^2\,\operatorname{Im}G_0\!\left(\frac{\ii}{2S}\right)+O(S^0g^2).
+\]
+Using the continuation
+\[
+  G_0\!\left(\frac{\ii}{2S}\right)
+  =
+  -\ii
+  \log
+  \frac{\sqrt{1+S^{-2}}+1}{\sqrt{1+S^{-2}}-1},
+\]
+one obtains
+\begin{equation}
+  \Delta-S-L
+  =
+  \gamma^{(1)}
+  =
+  8g^2\log S+O(S^0g^2,g^4).
+  \label{eq:planar-n4-sl2-one-loop-cusp-log}
+\end{equation}
 With the all-loop ABA and the BES dressing phase, the density fluctuation
 satisfies the BES integral equation.  The resulting scaling function begins
 \[

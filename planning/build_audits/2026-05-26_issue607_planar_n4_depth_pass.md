@@ -401,3 +401,29 @@ Calculation checks added:
   Laurent-residue prefactors for several DHM weak coefficients, compares them
   against the closed weak formula, verifies parity and minimal-order
   selection, and confirms that the first charge-dressed term scales as `g^6`.
+
+## Continuation XVI: One-Loop `SL(2)` Large-Spin Cusp Resolvent
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+
+Content added:
+
+- Expanded the pure spectral/QFT content of the stringbook's one-loop
+  `SL(2)` large-spin cusp derivation inside Chapter 13.
+- Stated the noncompact one-loop `SL(2)` Bethe equations for twist-`L`,
+  spin-`S` operators, introduced the scaled root density and resolvent, fixed
+  the one-cut square-root branch, derived the discontinuity density, and
+  extracted
+  `Delta-S-L=8g^2 log S+O(S^0 g^2,g^4)` from the resolvent value at
+  `z=i/(2S)`.
+
+Calculation checks added:
+
+- `check_sl2_large_spin_cusp_resolvent()` now checks the physical square-root
+  branch of the one-loop cusp resolvent, the derivative formula, the
+  discontinuity/density sign, and the large-spin extraction of the
+  `8g^2 log S` term including the constant `4g^2 log 4`.

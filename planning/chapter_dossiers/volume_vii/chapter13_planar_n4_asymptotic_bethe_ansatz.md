@@ -96,6 +96,12 @@ the monograph's proof-boundary language.
   normalization.
 - Adds bound-state dispersion and the large-spin cusp-scaling function with
   status boundaries.
+- Expands the one-loop `SL(2)` large-spin cusp derivation: states the
+  noncompact one-loop Bethe equation, defines the scaled root density and
+  resolvent, solves the one-cut Riemann-Hilbert problem with
+  `G_0(z)=-i log((sqrt(4z^2-1)+i)/(sqrt(4z^2-1)-i))`, derives the density,
+  and extracts `Delta-S-L=8g^2 log S+O(S^0 g^2,g^4)` from
+  `G_0(i/(2S))`.
 
 ## Figure Ledger
 
@@ -128,6 +134,10 @@ crossed Zhukovsky sheets.
   level-III inverse orientation, and the nesting-number bookkeeping.
 - The same script now checks BMN scaling, bound-state dispersion, and weak
   coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
+- It checks the one-loop `SL(2)` large-spin cusp resolvent: physical
+  square-root branch normalization, derivative formula, discontinuity and
+  positivity of the density, and extraction of the `8g^2 log S` term with
+  the constant `4g^2 log 4`.
 
 ## External References Used In Current Pass
 

@@ -800,6 +800,55 @@ def check_bmn_scaling_limit() -> None:
                 )
 
 
+def check_sl2_large_spin_cusp_resolvent() -> None:
+    """Check the one-loop SL(2) large-spin resolvent normalization."""
+
+    def physical_square_root(value: complex, asymptotic: complex) -> complex:
+        root = cmath.sqrt(value)
+        if abs(root - asymptotic) <= abs(-root - asymptotic):
+            return root
+        return -root
+
+    def resolvent(z: complex) -> complex:
+        root = physical_square_root(4 * z * z - 1, 2 * z)
+        return -1j * cmath.log((root + 1j) / (root - 1j))
+
+    def resolvent_derivative(z: complex) -> complex:
+        root = physical_square_root(z * z - 0.25, z)
+        return -1 / (z * root)
+
+    for z in (10 + 3j, -12 + 5j, 100):
+        assert_close("SL(2) cusp resolvent normalization", z * resolvent(z), 1, tol=2.0e-3)
+
+    for z in (1.1 + 0.4j, -0.8 + 1.3j, 2.0 - 0.7j):
+        step = 1.0e-6
+        numerical = (resolvent(z + step) - resolvent(z - step)) / (2 * step)
+        assert_close("SL(2) cusp resolvent derivative", numerical, resolvent_derivative(z), tol=2.0e-8)
+
+    for y in (0.1, 0.2, 0.4):
+        root = math.sqrt(1 - 4 * y * y)
+        density = math.log((1 + root) / (1 - root)) / math.pi
+        if density <= 0:
+            raise AssertionError("SL(2) cusp density positivity failed")
+        epsilon = 1.0e-7
+        jump = resolvent(y + 1j * epsilon) - resolvent(y - 1j * epsilon)
+        assert_close("SL(2) cusp resolvent discontinuity", jump, -2j * math.pi * density, tol=1.0e-8)
+
+    coupling = 0.3
+    constant = 4 * coupling * coupling * math.log(4)
+    for spin in (200, 1000):
+        root = math.sqrt(1 + 1 / (spin * spin))
+        continued = -1j * math.log((root + 1) / (root - 1))
+        energy = -4 * coupling * coupling * continued.imag
+        leading = 8 * coupling * coupling * math.log(spin)
+        assert_close(
+            "SL(2) one-loop cusp logarithm",
+            energy - leading,
+            constant,
+            tol=5.0e-6,
+        )
+
+
 def check_bound_state_dispersion() -> None:
     for coupling in (0.1, 0.4):
         for charge in (1, 2, 5):
@@ -1514,6 +1563,7 @@ def main() -> None:
     check_su2c_nested_bethe_yang_frame_factors()
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
+    check_sl2_large_spin_cusp_resolvent()
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()
     check_mirror_auxiliary_string_arrays()
