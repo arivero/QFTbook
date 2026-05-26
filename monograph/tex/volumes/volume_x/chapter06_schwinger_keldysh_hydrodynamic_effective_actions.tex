@@ -8,10 +8,11 @@ generating functionals for conserved densities in a long-wavelength state.
 Their defining constraints are inherited from the closed time path:
 normalization at coincident sources, a reality relation, positivity of the
 imaginary part, gauge or diffeomorphism Ward identities, and the KMS condition
-when the initial state is thermal.  This chapter develops the
-quadratic charge-diffusion action explicitly, because it is the simplest
-place where all of these constraints can be seen without hiding the
-source-response signs.
+when the initial state is thermal.  This chapter develops the quadratic
+multi-charge diffusion action explicitly, because it is the simplest place
+where all of these constraints can be seen without hiding the
+source-response signs or the matrix structure of susceptibilities and
+conductivities.
 
 Let spacetime be \(\mathbb R_t\times\mathbb R^d\).  Spatial indices
 \(i,j\) are raised with \(\delta^{ij}\), and
@@ -64,101 +65,124 @@ condition is the damping condition in the path-integral weight
 
 \section{Hydrodynamic Phase Field and Gauge Invariance}
 
-For a conserved \(U(1)\) charge, the hydrodynamic mode is represented by
-phase fields
+For \(N\) commuting conserved \(U(1)\) charges, labelled by
+\(A,B=1,\ldots,N\), the hydrodynamic modes are represented by phase fields
 \[
-  \varphi_1,\qquad \varphi_2 .
+  \varphi^A_1,\qquad \varphi^A_2 .
 \]
 The branchwise gauge transformations are
 \[
-  A_{s\mu}\mapsto A_{s\mu}+\partial_\mu\lambda_s,
+  A^A_{s\mu}\mapsto A^A_{s\mu}+\partial_\mu\lambda^A_s,
   \qquad
-  \varphi_s\mapsto\varphi_s-\lambda_s,
+  \varphi^A_s\mapsto\varphi^A_s-\lambda^A_s,
   \qquad s=1,2.
 \]
 Thus the gauge-invariant combinations are
 \begin{equation}
-  B_{s\mu}=A_{s\mu}+\partial_\mu\varphi_s .
+  B^A_{s\mu}=A^A_{s\mu}+\partial_\mu\varphi^A_s .
   \label{eq:sk-hydro-branch-b-fields}
 \end{equation}
 In \(r/a\) variables,
 \begin{equation}
-  B_{r\mu}=A_{r\mu}+\partial_\mu\varphi_r,
+  B^A_{r\mu}=A^A_{r\mu}+\partial_\mu\varphi^A_r,
   \qquad
-  B_{a\mu}=A_{a\mu}+\partial_\mu\varphi_a .
+  B^A_{a\mu}=A^A_{a\mu}+\partial_\mu\varphi^A_a .
   \label{eq:sk-hydro-ra-b-fields}
 \end{equation}
-The field \(\varphi_a\) is the Lagrange-multiplier partner of the
-conservation law.  Varying the action with respect to \(\varphi_a\) is
-equivalent to the Ward identity because \(\delta B_{a\mu}=\partial_\mu
-\delta\varphi_a\).
+The field \(\varphi^A_a\) is the Lagrange-multiplier partner of the
+conservation law for the \(A\)-th charge.  Varying the action with respect
+to \(\varphi^A_a\) is equivalent to the corresponding Ward identity because
+\(\delta B^A_{a\mu}=\partial_\mu\delta\varphi^A_a\).
 
 \section{Quadratic Diffusion Action}
 
-Consider a homogeneous thermal state at temperature \(T>0\), with charge
-susceptibility \(\chi>0\) and conductivity \(\sigma\ge0\).  Define
+Consider a homogeneous thermal state at temperature \(T>0\).  Let
+\(\chi_{AB}\) be the static susceptibility matrix
 \[
-  D=\frac{\sigma}{\chi}.
+  \chi_{AB}=\left.{\frac{\partial n_A}{\partial\mu_B}}\right|_T .
 \]
-The leading quadratic local action for the diffusive mode is
+At a thermodynamically stable point \(\chi\) is real, symmetric, and
+positive definite on the space of non-redundant conserved charges.  Let
+\(\Sigma_{AB}\) be the dissipative conductivity matrix in the convention of
+Chapter~\ref{ch:thermal-hydrodynamics-from-ward-identities}; for
+time-reversal-even charges and in the absence of parity-odd nondissipative
+transport, \(\Sigma\) is real, symmetric, and positive semidefinite.  The
+diffusion endomorphism acting on densities is
+\begin{equation}
+  D_A{}^B=\Sigma_{AC}(\chi^{-1})^{CB}.
+  \label{eq:sk-hydro-diffusion-matrix}
+\end{equation}
+The leading quadratic local action for the diffusive modes is
 \begin{equation}
   I_{\rm diff}
   =
   \int dt\,d^dx\,
   \left[
-  \chi B_{a0}B_{r0}
-  -\sigma B_{ai}\partial_t B_{ri}
-  +\ii T\sigma B_{ai}B_{ai}
+  \chi_{AB}B^A_{a0}B^B_{r0}
+  -\Sigma_{AB}B^A_{ai}\partial_t B^B_{ri}
+  +\ii T\Sigma_{AB}B^A_{ai}B^B_{ai}
   \right],
   \label{eq:sk-hydro-diffusion-action}
 \end{equation}
 up to terms with more derivatives or more powers of \(a\)-fields.  The
+one-charge formula is recovered by setting
+\(\chi_{11}=\chi\), \(\Sigma_{11}=\sigma\), and \(D=\sigma/\chi\).  The
 current obtained by varying with respect to the \(a\)-type source at
-\(A_a=\varphi_a=0\) is
+\(A^A_a=\varphi^A_a=0\) is
 \begin{equation}
-  n=\frac{\delta I_{\rm diff}}{\delta A_{a0}}
-  =\chi B_{r0},
+  n_A=\frac{\delta I_{\rm diff}}{\delta A^A_{a0}}
+  =\chi_{AB}B^B_{r0},
   \qquad
-  j^i=\frac{\delta I_{\rm diff}}{\delta A_{ai}}
-  =-\sigma\partial_t B_{ri}.
+  j_A^i=\frac{\delta I_{\rm diff}}{\delta A^A_{ai}}
+  =-\Sigma_{AB}\partial_t B^B_{ri}.
   \label{eq:sk-hydro-density-current-from-action}
 \end{equation}
-Using \(B_{r0}=A_{r0}+\partial_t\varphi_r\) and
-\(B_{ri}=A_{ri}+\partial_i\varphi_r\), this current may be written as
+Using \(B^A_{r0}=A^A_{r0}+\partial_t\varphi^A_r\) and
+\(B^A_{ri}=A^A_{ri}+\partial_i\varphi^A_r\), this current may be written as
 \begin{equation}
-  j^i
+  j_A^i
   =
-  -D\partial_i n+\sigma E_i,
+  -D_A{}^B\partial_i n_B+\Sigma_{AB}E^B_i,
   \qquad
-  E_i=\partial_i A_{r0}-\partial_t A_{ri}.
+  E^A_i=\partial_i A^A_{r0}-\partial_t A^A_{ri}.
   \label{eq:sk-hydro-constitutive-current-with-source}
 \end{equation}
-The sign of \(E_i\) is fixed by the source convention in which a static
-positive \(A_{r0}\) increases the charge density by \(\chi A_{r0}\).
+The sign of \(E^A_i\) is fixed by the source convention in which a static
+scalar-source perturbation changes the density by
+\(\delta n_A=\chi_{AB}\delta A^B_{r0}\).  Equation
+\eqref{eq:sk-hydro-constitutive-current-with-source} is the sourceful
+first-order constitutive relation
+\[
+  j_A^i=\Sigma_{AB}\partial_i A^B_{r0}
+  -\Sigma_{AB}\partial_i\mu_B,
+  \qquad
+  \mu_A=B^A_{r0}=(\chi^{-1})^{AB}n_B ,
+\]
+written with the hydrodynamic phase made explicit.
 
 \begin{proposition}[Diffusion equation from the \(a\)-phase]
 \label{prop:sk-hydro-diffusion-equation}
-At \(A_a=\varphi_a=0\), varying
-\eqref{eq:sk-hydro-diffusion-action} with respect to \(\varphi_a\) gives
+At \(A^A_a=\varphi^A_a=0\), varying
+\eqref{eq:sk-hydro-diffusion-action} with respect to \(\varphi^A_a\) gives
 \begin{equation}
-  \partial_t n+\partial_i j^i=0,
+  \partial_t n_A+\partial_i j_A^i=0,
   \label{eq:sk-hydro-continuity-from-phase}
 \end{equation}
-with \(n\) and \(j^i\) as in
+with \(n_A\) and \(j_A^i\) as in
 \eqref{eq:sk-hydro-density-current-from-action}.  With external sources set
 to zero this becomes
 \begin{equation}
-  \partial_t n-D\nabla^2 n=0 .
+  \partial_t n_A-D_A{}^B\nabla^2 n_B=0 .
   \label{eq:sk-hydro-diffusion-equation}
 \end{equation}
 \end{proposition}
 
 \begin{proof}
-Under \(\varphi_a\mapsto\varphi_a+\delta\varphi_a\),
+Under \(\varphi^A_a\mapsto\varphi^A_a+\delta\varphi^A_a\),
 \[
-  \delta B_{a0}=\partial_t\delta\varphi_a,
+  \delta B^A_{a0}=\partial_t\delta\varphi^A_a,
   \qquad
-  \delta B_{ai}=\partial_i\delta\varphi_a .
+  \delta B^A_{ai}=\partial_i\delta\varphi^A_a .
 \]
 The terms linear in \(a\)-fields therefore vary as
 \[
@@ -166,28 +190,29 @@ The terms linear in \(a\)-fields therefore vary as
   =
   \int dt\,d^dx\,
   \left[
-  \chi(\partial_t\delta\varphi_a)B_{r0}
-  -\sigma(\partial_i\delta\varphi_a)\partial_tB_{ri}
+  \chi_{AB}(\partial_t\delta\varphi^A_a)B^B_{r0}
+  -\Sigma_{AB}(\partial_i\delta\varphi^A_a)\partial_tB^B_{ri}
   \right],
 \]
 because the quadratic \(B_aB_a\) term does not contribute at
-\(A_a=\varphi_a=0\).  After integrating by parts and discarding boundary
+\(A^A_a=\varphi^A_a=0\).  After integrating by parts and discarding boundary
 terms compatible with the closed-time-path variational problem,
 \[
   \delta I_{\rm diff}
   =
-  -\int dt\,d^dx\,\delta\varphi_a
+  -\int dt\,d^dx\,\delta\varphi^A_a
   \left[
-  \partial_t(\chi B_{r0})
-  -\partial_i(\sigma\partial_tB_{ri})
+  \partial_t(\chi_{AB}B^B_{r0})
+  -\partial_i(\Sigma_{AB}\partial_tB^B_{ri})
   \right].
 \]
 Using \eqref{eq:sk-hydro-density-current-from-action}, the Euler-Lagrange
 equation is exactly \eqref{eq:sk-hydro-continuity-from-phase}.  If
-\(A_{r\mu}=0\), then \(n=\chi\partial_t\varphi_r\) and
+\(A^A_{r\mu}=0\), then \(n_A=\chi_{AB}\partial_t\varphi^B_r\) and
 \[
-  j^i=-\sigma\partial_i\partial_t\varphi_r
-  =-D\partial_i n,
+  j_A^i=-\Sigma_{AB}\partial_i\partial_t\varphi^B_r
+  =-\Sigma_{AB}(\chi^{-1})^{BC}\partial_i n_C
+  =-D_A{}^C\partial_i n_C,
 \]
 which gives \eqref{eq:sk-hydro-diffusion-equation}.
 \end{proof}
@@ -195,51 +220,58 @@ which gives \eqref{eq:sk-hydro-diffusion-equation}.
 \section{Density Response Kernel}
 
 The density response to a scalar source follows from the same saddle
-equation.  Set \(A_{ri}=0\) and use a Fourier mode
-\(\exp(-\ii\omega t+\ii\mathbf k\cdot\mathbf x)\).  The equation of motion
-from Proposition~\ref{prop:sk-hydro-diffusion-equation} gives
+equation.  Set \(A^A_{ri}=0\) and use a Fourier mode
+\(\exp(-\ii\omega t+\ii\mathbf k\cdot\mathbf x)\).  Write
+\(\mathbf A_0\), \(\boldsymbol\varphi\), and \(\mathbf n\) for the column
+vectors with components \(A^A_{r0}\), \(\varphi^A_r\), and \(n_A\).  The
+continuity equation gives
 \[
-  \chi(A_{r0}-\ii\omega\varphi_r)+\sigma k^2\varphi_r=0,
+  \mathbf n+k^2\Sigma\boldsymbol\varphi=0,
+  \qquad
+  \mathbf n=\chi(\mathbf A_0-\ii\omega\boldsymbol\varphi).
 \]
-because \(n=\chi(A_{r0}-\ii\omega\varphi_r)\) and
-\(\partial_i j^i=\sigma k^2(-\ii\omega)\varphi_r\).  Hence
+Equivalently,
 \[
-  \varphi_r
-  =
-  -\frac{\chi}{\sigma k^2-\ii\chi\omega}A_{r0}.
+  (k^2\Sigma-\ii\omega\chi)\boldsymbol\varphi=-\chi\mathbf A_0 .
 \]
-Substituting into \(n=\chi(A_{r0}-\ii\omega\varphi_r)\) gives the
-source-response kernel
+Eliminating \(\boldsymbol\varphi\) and using \(D=\Sigma\chi^{-1}\) gives
+the matrix source-response kernel
 \begin{equation}
-  K^R_{nn}(\omega,\mathbf k)
+  K^R_{n_An_B}(\omega,\mathbf k)
   =
-  \frac{\delta n}{\delta A_{r0}}
+  \frac{\delta n_A}{\delta A^B_{r0}}
   =
-  \chi\,\frac{Dk^2}{Dk^2-\ii\omega}.
+  \left[
+    (Dk^2-\ii\omega\mathbf 1)^{-1}k^2\Sigma
+  \right]_{AB}.
   \label{eq:sk-hydro-density-response-kernel}
 \end{equation}
 It has the diffusive pole
 \begin{equation}
-  \omega=-\ii Dk^2 .
+  \det(Dk^2-\ii\omega\mathbf 1)=0 .
   \label{eq:sk-hydro-density-response-pole}
 \end{equation}
 At fixed nonzero \(k\), the static limit is
 \[
-  K^R_{nn}(0,\mathbf k)=\chi.
+  K^R_{n_An_B}(0,\mathbf k)=\chi_{AB},
 \]
-At \(k=0\) and nonzero \(\omega\), the kernel vanishes, expressing
-conservation of the total charge.  These two limits are distinct; the
-hydrodynamic pole is the interpolation between them.
+provided \(D\) is invertible on the charge sector being probed.  If
+\(\Sigma\) has an exact null vector, the corresponding charge does not
+diffuse at this derivative order and must be treated by retaining the next
+allowed term.  At \(k=0\) and nonzero \(\omega\), the kernel vanishes,
+expressing conservation of the total charges.  These two limits are
+distinct; the hydrodynamic poles interpolate between them.
 
-For a transverse vector source, \(k_iA_{ri}=0\) and \(A_{r0}=0\), the phase
-decouples at quadratic order and
+For a transverse vector source, \(k_iA^A_{ri}=0\) and \(A^A_{r0}=0\), the
+phase decouples at quadratic order and
 \[
-  j^i=-\sigma\partial_tA_{ri}.
+  j_A^i=-\Sigma_{AB}\partial_tA^B_{ri}.
 \]
 With the electric-field convention
 \eqref{eq:sk-hydro-constitutive-current-with-source}, this is Ohm response
-\(j^i=\sigma E_i\).  The same \(\sigma\) therefore appears in the diffusion
-constant, the vector-source response, and the noise coefficient below.
+\(j_A^i=\Sigma_{AB}E^B_i\).  The same matrix \(\Sigma\) therefore appears in
+the diffusion endomorphism, the vector-source response, and the noise
+covariance below.
 
 \section{Noise Positivity and Langevin Form}
 
@@ -247,80 +279,88 @@ The imaginary part of \eqref{eq:sk-hydro-diffusion-action} is
 \begin{equation}
   \operatorname{Im} I_{\rm diff}
   =
-  T\sigma\int dt\,d^dx\,B_{ai}B_{ai}.
+  T\int dt\,d^dx\,\Sigma_{AB}B^A_{ai}B^B_{ai}.
   \label{eq:sk-hydro-imaginary-action}
 \end{equation}
-It is nonnegative precisely when \(\sigma\ge0\).  The same term has a
-stochastic representation.  For each spatial component,
+It is nonnegative precisely when \(\Sigma\) is positive semidefinite.  The
+same term has a stochastic representation on the image of \(\Sigma\).  If
+\(\Sigma\) is positive definite, then for each spatial component
 \begin{equation}
   \exp\!\left[
-    -T\sigma\int B_{ai}B_{ai}
+    -T\int\Sigma_{AB}B^A_{ai}B^B_{ai}
   \right]
   =
   \int D\xi\,
   \exp\!\left[
-    -\int\frac{\xi_i\xi_i}{4T\sigma}
-    +\ii\int B_{ai}\xi_i
+    -\int\frac{1}{4T}
+      \xi_{Ai}(\Sigma^{-1})^{AB}\xi_{Bi}
+    +\ii\int B^A_{ai}\xi_{Ai}
   \right],
   \label{eq:sk-hydro-hubbard-stratonovich}
 \end{equation}
-with normalization independent of \(B_a\).  Thus the noise satisfies
+with normalization independent of \(B_a\).  For positive semidefinite
+\(\Sigma\), the same formula is understood after restricting to the support
+of \(\Sigma\), or as a limit from positive definite matrices.  Thus the
+noise satisfies
 \begin{equation}
-  \langle \xi_i(t,\mathbf x)\xi_j(t',\mathbf x')\rangle
+  \langle \xi_{Ai}(t,\mathbf x)\xi_{Bj}(t',\mathbf x')\rangle
   =
-  2T\sigma\,\delta_{ij}
+  2T\Sigma_{AB}\,\delta_{ij}
   \delta(t-t')\delta^{(d)}(\mathbf x-\mathbf x').
   \label{eq:sk-hydro-noise-correlator}
 \end{equation}
-After the Hubbard--Stratonovich transformation, varying \(\varphi_a\) gives
+After the Hubbard--Stratonovich transformation, varying \(\varphi^A_a\) gives
 the Langevin equation
 \begin{equation}
-  \partial_t n+\partial_i\bigl(-D\partial_i n+\sigma E_i+\xi_i\bigr)=0 .
+  \partial_t n_A+
+  \partial_i\bigl(-D_A{}^B\partial_i n_B+\Sigma_{AB}E^B_i+\xi_{Ai}\bigr)=0 .
   \label{eq:sk-hydro-langevin-diffusion}
 \end{equation}
-This derivation fixes the factor of \(2T\sigma\) in the noise correlator
-from the same coefficient that governs the dissipative current.
+This derivation fixes the factor \(2T\Sigma_{AB}\) in the noise correlator
+from the same matrix that governs the dissipative current.
 
 \section{Dynamical KMS at Quadratic Order}
 
 Assume the initial state is thermal with inverse temperature
 \(\beta=1/T\) and that the long-wavelength effective action has the
 classical dynamical KMS symmetry appropriate to the derivative order under
-consideration.  In the diffusion sector, the transformation needed at this
-order is
+consideration.  In the diffusion sector, and for time-reversal-even charge
+densities, the transformation needed at this order is
 \begin{equation}
-  B_{ai}(t,\mathbf x)
+  B^A_{ai}(t,\mathbf x)
   \mapsto
-  B_{ai}(-t,\mathbf x)
-  +\ii\beta\,\partial_tB_{ri}(-t,\mathbf x),
+  B^A_{ai}(-t,\mathbf x)
+  +\ii\beta\,\partial_tB^A_{ri}(-t,\mathbf x),
   \label{eq:sk-hydro-classical-kms-ba}
 \end{equation}
 with the time-reversal parity of the spatial vector field included in
-\(\partial_tB_{ri}(-t,\mathbf x)\).  To see the coefficient constraint, keep
-one spatial component and write the dissipative-noise part as
+\(\partial_tB^A_{ri}(-t,\mathbf x)\).  To see the coefficient constraint,
+keep one spatial component and write the dissipative-noise part as
 \[
-  L=-\sigma a x+\ii c a^2,
+  L=-a^A\Sigma_{AB}x^B+\ii a^AC_{AB}a^B,
   \qquad
-  a=B_{ai},
+  a^A=B^A_{ai},
   \qquad
-  x=\partial_tB_{ri}.
+  x^A=\partial_tB^A_{ri},
 \]
-Time reversal sends \(x\mapsto -x\), while the KMS shift sends
+where \(C_{AB}\) is the unknown symmetric noise matrix.  Time reversal sends
+\(x\mapsto -x\), while the KMS shift sends
 \(a\mapsto a+\ii\beta x\).  The transformed expression is
 \[
   L'
   =
-  \sigma ax+\ii\sigma\beta x^2
-  +\ii c a^2-2c\beta ax-\ii c\beta^2x^2.
+  a^A(\Sigma_{AB}-2\beta C_{AB})x^B
+  +\ii a^AC_{AB}a^B
+  +\ii\beta x^A(\Sigma_{AB}-\beta C_{AB})x^B .
 \]
 Equality with \(L\), up to total derivatives and terms beyond the retained
-order, requires the coefficient of \(ax\) to match:
+order, requires the coefficient of \(a^Ax^B\) to match:
 \[
-  \sigma-2c\beta=-\sigma.
+  \Sigma_{AB}-2\beta C_{AB}=-\Sigma_{AB}.
 \]
-The \(x^2\) terms then cancel by the same condition.  Therefore
+The \(x^Ax^B\) terms then cancel by the same condition.  Therefore
 \begin{equation}
-  c=\frac{\sigma}{\beta}=T\sigma,
+  C_{AB}=\frac{\Sigma_{AB}}{\beta}=T\Sigma_{AB},
   \label{eq:sk-hydro-kms-noise-coefficient}
 \end{equation}
 which is the coefficient in \eqref{eq:sk-hydro-diffusion-action}.  This is
