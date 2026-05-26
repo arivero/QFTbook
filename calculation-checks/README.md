@@ -29,6 +29,11 @@ Current checks:
   \(2\pi\ii\) conversion to effective-action inflow, one-generation Standard
   Model hypercharge sums, and \(SU(N)\) fundamental/antifundamental/adjoint
   cubic-anomaly bookkeeping.
+- `inflow_anomaly_line_checks.py`: exact finite checks for the anomaly-inflow
+  chapter, including functorial composition of anomaly-line cocycles, local
+  counterterm/frame changes of cocycle representatives, and the finite
+  cochain Stokes identity behind the five-dimensional one-form \(BF\) inflow
+  variation.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,

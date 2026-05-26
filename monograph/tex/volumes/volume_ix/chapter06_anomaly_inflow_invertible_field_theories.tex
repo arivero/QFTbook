@@ -3,70 +3,332 @@
 
 \ConventionsMixed
 
-An anomaly of a \(D\)-dimensional QFT with background fields is an obstruction
-to making the background-field dependence an ordinary function on the
-background-field moduli stack.  Inflow records that obstruction as the
-boundary variation of a \((D+1)\)-dimensional invertible field theory.
+An anomaly is a precise failure of background-field covariance.  The
+partition function of an anomalous \(D\)-dimensional theory is not an
+ordinary function on the moduli groupoid of background fields; it is a vector
+in a one-dimensional complex vector space depending on the background.  An
+invertible \((D+1)\)-dimensional theory packages these lines and their
+gluing laws.  Inflow is the statement that the anomalous \(D\)-dimensional
+theory is a boundary condition, or relative theory, for this invertible bulk.
 
 \section{Background Fields and Relative Partition Functions}
 
-Let \(M^D\) be a closed spacetime and let \(A\) denote a background field for a
-global symmetry, including possible higher-form components.  Write
+Let \(M\) be a closed \(D\)-manifold with the spacetime structure required by
+the theory: orientation, spin structure, metric, conformal class, or another
+declared structure.  Let
 \[
   \mathcal B(M)
 \]
-for the groupoid of such backgrounds on \(M\).  A nonanomalous partition
-function assigns a complex number \(Z_M(A)\) invariant under isomorphisms in
-\(\mathcal B(M)\).  An anomalous theory assigns instead an element
+denote the groupoid of background fields on \(M\).  An object \(A\in
+\mathcal B(M)\) may contain ordinary gauge fields, higher-form gauge fields,
+metric data, spin connections, and background defect data.  A morphism
 \[
-  Z_M(A)\in \mathcal L_M(A)
+  u:A\longrightarrow A'
 \]
-of a one-dimensional complex vector space.  The collection \(\mathcal L_M\)
-over \(\mathcal B(M)\) is the anomaly line.
+is a background-field isomorphism, for example a gauge transformation,
+higher-form gauge transformation, or diffeomorphism preserving the declared
+spacetime structure.
 
-\section{Invertible Bulk Theory}
+For a nonanomalous theory the partition function is a function on isomorphism
+classes:
+\[
+  Z_M(A')=Z_M(A)
+  \quad\text{whenever }A\simeq A'.
+\]
+For an anomalous theory the correct object is a complex line over each
+background.  Write
+\[
+  \mathcal L_M:\mathcal B(M)\longrightarrow
+  \mathrm{Lines}_{\mathbb C}
+\]
+for a functor from the background groupoid to the groupoid of one-dimensional
+complex vector spaces and nonzero linear maps.  The anomalous partition
+function is a section
+\[
+  Z_M(A)\in \mathcal L_M(A).
+\]
+For a morphism \(u:A\to A'\), covariance means
+\[
+  Z_M(A')=\mathcal L_M(u)Z_M(A),
+\]
+not equality of complex numbers.  The functor \(\mathcal L_M\) is the anomaly
+line.
 
-A \((D+1)\)-dimensional invertible theory assigns a line
+Choosing a nonzero vector \(s_A\in\mathcal L_M(A)\) for every object \(A\)
+trivializes the line as a collection of vector spaces, but generally not as a
+functor.  In such a trivialization,
 \[
-  \mathcal Z_N(\widetilde A)
+  Z_M(A)=z_M(A)s_A,\qquad z_M(A)\in\mathbb C,
 \]
-to a closed \((D+1)\)-manifold \(N\) with background \(\widetilde A\), and a
-linear map to bordisms.  When the bulk is represented by a local action
+and every morphism \(u:A\to A'\) acts by a nonzero phase or scalar
 \[
-  \exp\!\left(2\pi\ii\int_N I_{D+1}(\widetilde A)\right),
+  \mathcal L_M(u)s_A=\alpha_M(u;A)s_{A'}.
 \]
-the integrand \(I_{D+1}\) is a cocycle or differential cocycle whose periods
-are integral in the normalization used.  If \(N\) has boundary \(M\), the same
-bulk theory assigns a boundary line to \(A=\widetilde A|_M\).  A relative
-\(D\)-dimensional QFT is a boundary condition for this invertible theory, and
-its partition function is a vector in the boundary line.
+Thus
+\[
+  z_M(A')=\alpha_M(u;A)z_M(A).
+\]
+The scalar \(\alpha_M\) is not itself the anomaly; it is the anomaly written
+in a chosen local trivialization.
+
+\begin{proposition}[Functorial cocycle condition]
+\label{prop:anomaly-line-functorial-cocycle}
+Let \(u:A\to A'\) and \(v:A'\to A''\) be composable morphisms in
+\(\mathcal B(M)\).  In any choice of nonzero local frame \(s_A\) for the
+anomaly line,
+\[
+  \alpha_M(vu;A)
+  =
+  \alpha_M(v;A')\alpha_M(u;A).
+\]
+If the frame is changed by
+\[
+  s_A'=c(A)s_A,\qquad c(A)\in\mathbb C^\times,
+\]
+then
+\[
+  \alpha'_M(u;A)
+  =
+  c(A')^{-1}\alpha_M(u;A)c(A).
+\]
+\end{proposition}
+
+\begin{proof}
+Functoriality gives
+\[
+  \mathcal L_M(vu)
+  =
+  \mathcal L_M(v)\mathcal L_M(u).
+\]
+Applying both sides to \(s_A\) gives
+\[
+  \alpha_M(vu;A)s_{A''}
+  =
+  \alpha_M(u;A)\alpha_M(v;A')s_{A''},
+\]
+which is the stated cocycle identity.  If \(s'_A=c(A)s_A\), then
+\[
+  \mathcal L_M(u)s'_A
+  =
+  c(A)\alpha_M(u;A)s_{A'}
+  =
+  c(A)\alpha_M(u;A)c(A')^{-1}s'_{A'}.
+\]
+This is exactly the displayed transformation law.
+\end{proof}
+
+A local counterterm is a choice of local functional \(K_M(A)\) whose
+exponential changes the frame:
+\[
+  s_A\longmapsto
+  \exp(2\pi\ii K_M(A))s_A.
+\]
+It changes the representative cocycle by a coboundary.  Therefore an anomaly
+class is not a particular variation formula; it is the isomorphism class of
+the line functor together with its locality and gluing structure.
+
+\section{Invertible Bulk Theory and Boundary Lines}
+
+Let \(\mathrm{Bord}_{D+1}^{\mathcal B}\) be the bordism category whose objects
+are closed \(D\)-manifolds with background fields and whose morphisms are
+\((D+1)\)-dimensional bordisms equipped with compatible background fields.
+An invertible \((D+1)\)-dimensional theory is a symmetric monoidal functor
+\[
+  \mathcal Z_{\mathrm{bulk}}:
+  \mathrm{Bord}_{D+1}^{\mathcal B}
+  \longrightarrow
+  \mathrm{Lines}_{\mathbb C}
+\]
+such that every closed \((D+1)\)-manifold \(X\) is assigned a nonzero complex
+number and every \(D\)-manifold \(M\) is assigned a line.  If
+\[
+  X=X_1\cup_M X_2,
+\]
+then the value on \(X\) is obtained by pairing the line assigned to \(M\) from
+\(X_1\) with the dual line assigned from \(X_2\).  This gluing axiom is the
+mathematical content behind the word ``inflow''.
+
+When the bulk is represented locally by a \((D+1)\)-cocycle
+\[
+  I_{D+1}(\widetilde A)\in C^{D+1}(X,\mathbb R/\mathbb Z)
+\]
+or by a differential-cocycle representative, its closed-manifold value is
+\[
+  \mathcal Z_{\mathrm{bulk}}(X,\widetilde A)
+  =
+  \exp\left(2\pi\ii\int_X I_{D+1}(\widetilde A)\right).
+\]
+The periods are integral in the normalization used, so changing a local
+representative by a globally defined coboundary leaves the closed value
+unchanged.
+
+There is a concrete construction of the boundary anomaly line from the bulk.
+Fix \(A\in\mathcal B(M)\).  A vector in the line \(\mathcal L_M(A)\) may be
+represented by a pair
+\[
+  (X,\widetilde A),
+  \qquad
+  \partial X=M,\quad
+  \widetilde A|_M=A,
+\]
+together with a complex coefficient.  Two representatives
+\((X,\widetilde A,z)\) and \((X',\widetilde A',z')\) are identified if
+\[
+  z'
+  =
+  z\,
+  \mathcal Z_{\mathrm{bulk}}
+  \bigl((-X)\cup_M X',\,(-\widetilde A)\cup_A\widetilde A'\bigr).
+\]
+This quotient is one-dimensional whenever the background admits the relevant
+extensions and the usual bordism-locality assumptions hold.  A relative
+boundary theory assigns a vector in this line.  Multiplying the boundary
+vector by the bulk number for a filling gives an ordinary complex number, but
+only after the filling has been chosen.
+
+\begin{proposition}[Bulk gluing gives the anomaly line]
+\label{prop:bulk-gluing-anomaly-line}
+The construction above defines a line functor over the background groupoid of
+\(M\).  If the bulk invertible theory is trivializable, the line functor is
+trivializable; if a boundary theory has partition vectors in this line, then
+the combined bulk-boundary partition function on a closed glued manifold is
+an ordinary complex number invariant under background isomorphisms.
+\end{proposition}
+
+\begin{proof}
+Transitivity of the equivalence relation follows from the closed-manifold
+gluing axiom:
+\[
+  \mathcal Z((-X)\cup_M X'')=
+  \mathcal Z((-X)\cup_M X')\,
+  \mathcal Z((-X')\cup_M X'')
+\]
+with the common boundary \(X'\) paired with its orientation reverse.  A
+background isomorphism \(u:A\to A'\) maps a filling of \(A\) to the same
+filling with boundary background identified by \(u\), hence gives a linear
+map between the corresponding quotient lines.  Functoriality of these maps is
+again the gluing axiom.  A trivialization of the bulk functor supplies
+canonical vectors in all boundary lines, and therefore trivializes the line
+functor.  Conversely, without such a choice the boundary partition function
+is a vector, and only the pairing with a compatible bulk filling produces a
+number.  Gauge covariance of the number follows because the bulk and boundary
+line transformations are inverse under this pairing.
+\end{proof}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.95, every node/.style={font=\small}]
+  \fill[gray!10] (-3.1,-1.1) rectangle (-0.35,1.1);
+  \draw[thick] (-0.35,-1.1) -- (-0.35,1.1);
+  \node at (-1.75,0.15) {\((X,\widetilde A)\)};
+  \node at (-0.15,1.32) {\(M,A\)};
+  \draw[->,thick] (0.35,0) -- (1.25,0);
+  \fill[gray!10] (1.9,-1.1) rectangle (4.65,1.1);
+  \draw[thick] (1.9,-1.1) -- (1.9,1.1);
+  \node at (3.25,0.15) {\((X',\widetilde A')\)};
+  \node at (1.7,1.32) {\(-M,A\)};
+  \node at (0.8,-0.55) {glue};
+  \draw[rounded corners, thick] (-3.1,-1.1) -- (-0.35,-1.1) -- (1.9,-1.1)
+    -- (4.65,-1.1) -- (4.65,1.1) -- (1.9,1.1) -- (-0.35,1.1) -- (-3.1,1.1)
+    -- cycle;
+  \node at (0.8,-1.45) {closed bulk phase relates boundary-line frames};
+\end{tikzpicture}
+\caption{A boundary anomaly line is obtained by comparing fillings.  Gluing
+two fillings along their common boundary produces the closed invertible-bulk
+phase that changes the frame.}
+\label{fig:inflow-boundary-line-gluing}
+\end{figure}
 
 \section{Descent for Connected Symmetries}
 
-For a continuous symmetry with connection \(A\), let \(P_{D+2}(F)\) be an
-invariant polynomial in the curvature \(F=dA+A^2\) with integral periods.
-Choose a Chern-Simons form \(I_{D+1}(A)\) satisfying
+Let \(A\) be a connection for a connected Lie symmetry and let
 \[
-  dI_{D+1}(A)=P_{D+2}(F).
+  F=dA+A\wedge A
+\]
+be its curvature.  Let \(P_{D+2}(F)\) be a closed invariant polynomial of
+degree \(D+2\), normalized so that its integral on every closed
+\((D+2)\)-manifold with the corresponding bundle is integral.  Locally one
+can choose a Chern--Simons form \(I_{D+1}^{(0)}(A)\) satisfying
+\[
+  dI_{D+1}^{(0)}(A)=P_{D+2}(F).
 \]
 For an infinitesimal gauge parameter \(\alpha\),
 \[
-  \delta_\alpha I_{D+1}(A)=dI_D^{(1)}(\alpha,A).
+  \delta_\alpha A=D_A\alpha=d\alpha+[A,\alpha].
 \]
-Therefore on a manifold \(N\) with boundary \(M\),
+Since \(P_{D+2}(F)\) is gauge invariant,
+\[
+  d\,\delta_\alpha I_{D+1}^{(0)}(A)=0.
+\]
+Locally, and globally after passing to the descent complex, this gives a
+\(D\)-form \(I_D^{(1)}(\alpha,A)\) such that
+\[
+  \delta_\alpha I_{D+1}^{(0)}(A)=dI_D^{(1)}(\alpha,A).
+\]
+Therefore, for \(X^{D+1}\) with boundary \(M\),
 \[
   \delta_\alpha
-  2\pi\ii\int_N I_{D+1}
+  2\pi\ii\int_X I_{D+1}^{(0)}
   =
   2\pi\ii\int_M I_D^{(1)}(\alpha,A).
 \]
-The boundary generating functional must vary by the negative of this term for
-the combined bulk-boundary partition function to be gauge invariant.
+The boundary generating functional must transform by the negative of this
+phase for the combined bulk-boundary object to be gauge invariant.
+
+\begin{proposition}[Wess--Zumino consistency from descent]
+\label{prop:wess-zumino-consistency-from-descent}
+Let
+\[
+  \delta_\alpha W_M[A]
+  =
+  2\pi\ii\int_M I_D^{(1)}(\alpha,A)
+\]
+be obtained from a gauge-invariant polynomial by descent.  Then
+\[
+  \delta_\alpha\delta_\beta W_M
+  -
+  \delta_\beta\delta_\alpha W_M
+  =
+  \delta_{[\alpha,\beta]}W_M .
+\]
+\end{proposition}
+
+\begin{proof}
+Gauge transformations act on the Chern--Simons representative by the Lie
+algebra action:
+\[
+  [\delta_\alpha,\delta_\beta]I_{D+1}^{(0)}
+  =
+  \delta_{[\alpha,\beta]}I_{D+1}^{(0)}.
+\]
+Using
+\(\delta_\alpha I_{D+1}^{(0)}=dI_D^{(1)}(\alpha,A)\), this becomes
+\[
+  d\left(
+    \delta_\alpha I_D^{(1)}(\beta,A)
+    -
+    \delta_\beta I_D^{(1)}(\alpha,A)
+    -
+    I_D^{(1)}([\alpha,\beta],A)
+  \right)=0.
+\]
+After choosing the standard descent representative, the closed \(D\)-form in
+parentheses is a descent coboundary.  Its integral on a closed \(M\) is
+therefore zero modulo the counterterm ambiguity.  The displayed consistency
+condition follows.  This is not an independent dynamical assumption: it is
+the functorial cocycle condition of
+Proposition~\ref{prop:anomaly-line-functorial-cocycle} written
+infinitesimally.
+\end{proof}
 
 \begin{proposition}[Cocycle ambiguity and local counterterms]
 \label{prop:inflow-cocycle-counterterm}
-Changing \(I_{D+1}\) by \(I_{D+1}+dK_D\) changes the boundary anomaly by the
-variation of the local \(D\)-dimensional functional
+Changing \(I_{D+1}^{(0)}\) by
+\[
+  I_{D+1}^{(0)}\longmapsto I_{D+1}^{(0)}+dK_D(A)
+\]
+changes the boundary anomaly by the variation of the local
+\(D\)-dimensional functional
 \[
   2\pi\ii\int_M K_D(A).
 \]
@@ -78,24 +340,122 @@ counterterm coordinate.
 \begin{proof}
 On a manifold with boundary,
 \[
-  \int_N dK_D=\int_M K_D .
+  \int_X dK_D=\int_M K_D .
 \]
 Under a background gauge transformation, the additional boundary variation is
 exactly the variation of this \(D\)-dimensional local functional.  Hence two
 bulk cocycles differing by a coboundary define anomaly representatives that
-are related by a local counterterm.
+are related by a local counterterm.  The same statement in the anomaly-line
+language is the frame change in
+Proposition~\ref{prop:anomaly-line-functorial-cocycle}.
+\end{proof}
+
+\section{Finite Higher-Form Inflow}
+
+The connected descent formalism is not the whole theory of anomalies.  Finite
+symmetries and higher-form symmetries are naturally described by cochains.
+Let \(A\) be a finite abelian group and let a \(p\)-form background on a
+\((D+1)\)-manifold \(X\) be
+\[
+  B\in Z^{p+1}(X,A),
+  \qquad
+  B\sim B+\delta\Lambda .
+\]
+An invertible finite response is represented by a cocycle
+\[
+  \omega(B)\in Z^{D+1}(X,\mathbb R/\mathbb Z)
+\]
+natural under subdivision and pullback.  Its value is
+\[
+  \exp\left(2\pi\ii\int_X\omega(B)\right).
+\]
+If \(X\) is closed and \(\omega\) is a cocycle on the classifying space
+\(B^{p+1}A\), gauge invariance follows by the same evaluation-on-cycles
+argument as Proposition~\ref{prop:discrete-theta-coboundary-invariance}.  If
+\(X\) has boundary, gauge variation leaves a boundary cochain.  The boundary
+QFT is then a section of the corresponding finite anomaly line.
+
+For one-form symmetries in four dimensions the bulk is five-dimensional.  A
+particularly useful local model is the finite Heisenberg response with
+\[
+  b,c\in C^2(X,\mathbb Z_N)
+\]
+and
+\[
+  S_H[X;b,c]
+  =
+  \exp\left(
+    \frac{2\pi\ii}{N}\int_X b\smile\delta c
+  \right).
+\]
+Here \(b\) and \(c\) are the two finite two-form fields paired by the
+\(\mathbb Z_N\) Pontryagin duality.  On a closed \(X\) the action is invariant
+under
+\[
+  b\mapsto b+\delta\lambda,\qquad c\mapsto c+\delta\kappa,
+  \qquad
+  \lambda,\kappa\in C^1(X,\mathbb Z_N).
+\]
+On a manifold with boundary \(M\), the first transformation changes the
+exponent by
+\[
+  \frac{2\pi\ii}{N}\int_M \lambda\smile\delta c.
+\]
+This is an anomaly for a boundary condition that keeps \(c|_M\) as a
+background.  Different boundary conditions correspond to different choices of
+which finite field is fixed, which is summed, and which boundary counterterm
+has been attached.  This is the cochain model behind one-form gauging,
+duality interfaces, and the symmetry-TQFT discussion in
+Chapter~\ref{ch:global-higher-group-symmetry-tft}.
+
+\begin{proposition}[Finite bulk variation]
+\label{prop:finite-higher-form-bulk-variation}
+For the five-dimensional action
+\[
+  \frac{2\pi\ii}{N}\int_X b\smile\delta c,
+\]
+the variation under \(b\mapsto b+\delta\lambda\) is trivial on closed \(X\)
+and equals
+\[
+  \frac{2\pi\ii}{N}\int_{\partial X}\lambda\smile\delta c
+\]
+when \(X\) has boundary.  The variation under
+\(c\mapsto c+\delta\kappa\) is zero.
+\end{proposition}
+
+\begin{proof}
+Since \(\delta^2=0\), changing \(c\) by \(\delta\kappa\) does not change
+\(\delta c\).  Under \(b\mapsto b+\delta\lambda\), the exponent changes by
+\[
+  \frac{2\pi\ii}{N}\int_X \delta\lambda\smile\delta c.
+\]
+The cup-product differential satisfies
+\[
+  \delta(\lambda\smile\delta c)
+  =
+  \delta\lambda\smile\delta c
+  -\lambda\smile\delta^2c
+  =
+  \delta\lambda\smile\delta c,
+\]
+because \(\deg\lambda=1\).  Evaluation of a coboundary on a closed
+fundamental cycle is zero.  On a manifold with boundary, the cochain Stokes
+formula gives the displayed boundary term.
 \end{proof}
 
 \section{Weyl-Fermion Inflow}
 \label{sec:four-dimensional-weyl-five-dimensional-inflow}
 
-The local descent formalism of
-Chapter~\ref{ch:volume-ii-20} becomes an invertible five-dimensional theory
-after the anomaly polynomial is placed in its index normalization.  Let \(X\)
-be an oriented five-manifold with boundary \(M=\partial X\).  Let \(A_X\) be
-a background connection on \(X\), and let \(R_X\) be the curvature of a
-Riemannian connection on \(TX\).  For one left-handed four-dimensional Weyl
-fermion in a representation \(R\), the index-normalized six-form is
+The local descent formalism of Chapter~\ref{ch:volume-ii-20} becomes an
+invertible five-dimensional theory after the anomaly polynomial is placed in
+its index normalization.  Let \(X\) be an oriented five-manifold with boundary
+\[
+  M=\partial X.
+\]
+Let \(A_X\) be a background connection on \(X\), and let \(R_X\) be the
+curvature of a Riemannian connection on \(TX\).  For one left-handed
+four-dimensional Weyl fermion in a representation \(R\), the
+index-normalized six-form is
 \begin{equation}
   \mathcal I_6(R)
   =
@@ -217,46 +577,48 @@ Stokes' theorem gives \eqref{eq:abelian-weyl-inflow-variation} with the
 boundary orientation \(M=\partial X\).
 \end{proof}
 
-If the \(U(1)\) symmetry is dynamical, the boundary anomaly is an obstruction
-unless the sum of \eqref{eq:abelian-weyl-inflow-variation} over all
-left-handed Weyl fermions is the variation of an allowed four-dimensional
-local counterterm.  In the absence of such a counterterm, the local conditions
-are
+For several left-handed Weyl fermions, the local \(U(1)^3\) and mixed
+gravitational-\(U(1)\) anomaly coefficients are
 \[
-  \sum_i q_i^3=0,
-  \qquad
-  \sum_i q_i=0,
+  \sum_i q_i^3,\qquad \sum_i q_i .
+\]
+If the \(U(1)\) symmetry is dynamical, the anomaly line for the dynamical
+gauge group must be canonically trivial.  In the absence of a four-dimensional
+local counterterm that shifts these representatives, the local conditions are
+\[
+  \sum_i q_i^3=0,\qquad \sum_i q_i=0,
 \]
 together with the mixed nonabelian-\(U(1)\) conditions when other gauge
 factors are present.  If the \(U(1)\) symmetry is a background global
 symmetry, the same polynomial is retained as the response that must be
-matched by any infrared description.
+matched by any infrared description.  Local cancellation does not by itself
+settle possible global anomalies; those are statements about the full
+invertible theory on the relevant bordism category.
 
 \section{From Inflow to Noninvertible Chiral Defects}
 \label{sec:inflow-to-noninvertible-chiral-defects}
 
-Inflow also gives a clean definition of some noninvertible codimension-one
-operators.  Start with a transformation \(g\) of a \(D\)-dimensional QFT whose
-background-field variation is an invertible \((D+1)\)-dimensional response
-\(\mathcal Z_{\rm anom}(g;A)\).  If \(\mathcal Z_{\rm anom}(g;A)\) is
-nontrivial, the bare codimension-one transformation wall for \(g\) is not an
-ordinary topological symmetry wall.  It becomes a genuine topological defect
-only after its boundary anomaly is trivialized by additional degrees of
-freedom on the wall or by a summation over wall gauge fields.
+Inflow also defines certain noninvertible codimension-one operators.  Start
+with a transformation \(g\) of a \(D\)-dimensional QFT.  Suppose that, in the
+presence of background fields \(A\), implementing \(g\) across a hypersurface
+\[
+  \Sigma\subset M
+\]
+leaves an anomaly line described by an invertible \((D+1)\)-dimensional
+response \(\mathcal Z_{\rm anom}(g;A)\).  The bare wall for \(g\) is then not
+an ordinary topological symmetry wall.  It is a relative theory for the
+restriction of the anomaly to a small tubular neighborhood of \(\Sigma\).
 
-This construction can be stated without path-integral shorthand.  Let
-\(\mathcal D_g\) be a wall implementing \(g\) across a hypersurface
-\(\Sigma\subset M\).  The wall is a relative theory for the restriction of the
-bulk anomaly to a small tubular neighborhood of \(\Sigma\).  A choice of wall
-TQFT \(\mathcal T_\Sigma\), together with a trivialization
+Let \(\mathcal D_g\) be the transformation wall.  A wall theory
+\(\mathcal T_\Sigma\) produces a genuine defect precisely when there is a
+trivialization
 \[
   \mathcal L_{\mathcal D_g}\otimes
   \mathcal L_{\mathcal T_\Sigma}
   \simeq
   \mathbf 1
 \]
-of anomaly lines over the wall-background groupoid, produces an honest
-defect
+of anomaly lines over the wall-background groupoid.  The honest defect is
 \[
   D_g=\mathcal D_g\otimes\mathcal T_\Sigma .
 \]
@@ -264,6 +626,34 @@ If \(\mathcal T_\Sigma\) is obtained by gauging a finite higher-form symmetry
 on the wall, fusion of \(D_g\) with its orientation reverse contains a sum
 over the gauged sectors.  That fusion is not a single copy of the identity
 defect, and \(D_g\) is noninvertible.
+
+\begin{proposition}[Wall trivialization criterion]
+\label{prop:wall-trivialization-criterion}
+Assume the transformation wall \(\mathcal D_g\) and the auxiliary wall theory
+\(\mathcal T_\Sigma\) are topological away from their anomaly lines.  The
+tensor product \(D_g=\mathcal D_g\otimes\mathcal T_\Sigma\) is a genuine
+topological defect exactly when the tensor product of their anomaly-line
+functors is trivializable.  If the trivializing wall theory contains a
+nontrivial finite gauge sum, then \(D_g\otimes D_g^\vee\) contains the
+corresponding condensation projector and need not be the identity defect.
+\end{proposition}
+
+\begin{proof}
+Topological invariance of a defect means that its correlation functional is a
+number invariant under isotopy, with no uncancelled dependence on a choice of
+background-field frame.  The product wall has anomaly line
+\(\mathcal L_{\mathcal D_g}\otimes\mathcal L_{\mathcal T_\Sigma}\).  A
+trivialization of this line converts its partition vector into an ordinary
+number and removes the frame dependence, so the wall is genuine.  Conversely,
+if the product line is nontrivial, changing the background by a morphism in
+the wall groupoid changes the wall vector by a nontrivial line map; no
+ordinary topological defect has this transformation law.  When
+\(\mathcal T_\Sigma\) is a finite gauge theory, fusing with the orientation
+reverse performs the finite gauge sum on the wall twice with the dual
+orientation.  The result is the projector onto invariant wall sectors, not
+necessarily the invisible wall.  This is the categorical source of
+noninvertibility.
+\end{proof}
 
 \begin{example}[Axial defects in compact QED]
 \label{ex:qed-noninvertible-defect-from-inflow}
@@ -299,23 +689,49 @@ A background is a two-cocycle
 An anomaly involving this symmetry is represented by a five-dimensional
 cohomology class
 \[
-  \omega\in H^5(B^2A,U(1)).
+  \omega\in H^5(B^2A,U(1))
 \]
-For \(A=\mathbb Z_N\), expressions built from cup products and the Pontryagin
-square give concrete representatives after the manifold orientation and spin
-structure have been specified.  The boundary theory then has line operators
-whose fusion and braiding with surface defects are acted on by the anomaly
-line; changing a four-dimensional discrete theta term shifts the
-representative but not the inflow class unless the bulk cohomology class
-changes.
+or, with spacetime structure included, by the corresponding generalized
+cohomology or bordism invariant.  For \(A=\mathbb Z_N\), expressions built
+from cup products and the Pontryagin square give concrete representatives
+after the manifold orientation and spin structure have been specified.  The
+boundary theory then has line operators whose fusion and braiding with
+surface defects are acted on by the anomaly line; changing a
+four-dimensional discrete theta term shifts the representative but not the
+inflow class unless the bulk cohomology class changes.
+
+The finite one-form anomaly is detected operationally as follows.  Couple the
+theory to \(B\).  If a one-form gauge transformation
+\[
+  B\mapsto B+\delta\Lambda
+\]
+changes the generating functional by
+\[
+  Z_M[B+\delta\Lambda]
+  =
+  \exp\left(2\pi\ii\int_M \eta(B,\Lambda)\right)Z_M[B],
+\]
+then \(\eta\) is a representative of the anomaly-line functor.  If there is a
+local four-dimensional cochain \(K(B)\) such that
+\[
+  \eta(B,\Lambda)=K(B+\delta\Lambda)-K(B)
+  \quad\text{mod }\mathbb Z,
+\]
+the anomaly is removed by the counterterm
+\(\exp(-2\pi\ii\int_MK(B))\).  If no such local cochain exists in the chosen
+background-field theory, gauging the one-form symmetry is obstructed unless
+another sector supplies the inverse anomaly.
 
 \section{Gauging Criterion}
 
 To gauge a global symmetry, one must sum or integrate over its backgrounds.
-For an anomalous theory this operation is possible only after the anomaly
-line is trivialized, or after the theory is coupled to another system whose
-anomaly line is the inverse.  In the invertible-language formulation the
-criterion is
+For a finite symmetry this means a groupoid cardinality weighted sum; for a
+continuous symmetry it means a regularized path integral over connections and
+gauge transformations.  In either case the integrand must be an ordinary
+number on the background groupoid.  If the partition function is a section of
+a nontrivial anomaly line, there is no canonical summand to add.
+
+In the invertible-language formulation the criterion is
 \[
   \mathcal Z_{\mathrm{bulk}}\otimes
   \mathcal Z_{\mathrm{counter}}
@@ -323,7 +739,38 @@ criterion is
 \]
 as an invertible theory over the background-field bordism category.  A local
 counterterm supplies such a trivialization exactly when the anomaly class is
-a coboundary in the chosen background-field cohomology theory.
+a coboundary in the chosen background-field cohomology theory.  A second QFT
+sector can also supply the inverse line; this is anomaly cancellation by
+tensor product.
+
+\begin{proposition}[Gauging requires a trivialized anomaly line]
+\label{prop:gauging-requires-trivialized-anomaly-line}
+Let a finite global symmetry have background groupoid \(\mathcal B(M)\).
+The gauged partition function
+\[
+  Z_{\mathrm{gauged}}(M)
+  =
+  \sum_{[A]\in\pi_0\mathcal B(M)}
+  \frac{1}{|\operatorname{Aut}(A)|}\,Z_M(A)
+\]
+is canonically defined only after the anomaly line \(\mathcal L_M\) has been
+trivialized compatibly with morphisms in \(\mathcal B(M)\).  If two
+trivializations differ by a local counterterm, the two gauged theories differ
+by that counterterm before summation.
+\end{proposition}
+
+\begin{proof}
+The summation formula adds complex numbers.  If \(Z_M(A)\) lies in
+\(\mathcal L_M(A)\), then terms belonging to different isomorphism classes
+live in unrelated one-dimensional vector spaces.  A trivialization identifies
+all these vectors with complex numbers.  Compatibility with morphisms is
+required because the factor \(1/|\operatorname{Aut}(A)|\) divides by
+automorphisms; if an automorphism acts nontrivially on the line, the would-be
+summand is frame dependent.  A second trivialization differs from the first
+by a nowhere-zero function on the background groupoid.  If this function is
+the exponential of a local cochain, it is exactly a local counterterm, and it
+weights each background sector before the groupoid sum is performed.
+\end{proof}
 
 \begin{openproblem}[Operator-level inflow]
 \label{op:operator-level-inflow}
