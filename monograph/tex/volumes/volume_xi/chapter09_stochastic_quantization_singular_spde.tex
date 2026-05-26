@@ -1080,6 +1080,89 @@ Finally, Markov's inequality applied to
 Choosing \(R\) large proves tightness.
 \end{proof}
 
+\begin{proposition}[Massive Gaussian cutoff tightness in negative Sobolev topology]
+\label{prop:spde-free-gaussian-negative-sobolev-tightness}
+Let \(A=-\Delta\) on \(\mathbb T^2\), and let
+\(\{e_\alpha\}_{\alpha\in\mathcal I}\) be a real orthonormal eigenbasis of
+\(L^2(\mathbb T^2)\), with \(Ae_\alpha=\lambda_\alpha e_\alpha\),
+\(\lambda_\alpha\geq0\).  Fix \(m^2>0\), and for \(N\geq1\) set
+\[
+  \mathcal I_N=\{\alpha\in\mathcal I:\lambda_\alpha\leq N^2\}.
+\]
+Let \(\gamma_N\) be the centered Gaussian law of
+\[
+  \phi_N
+  =
+  \sum_{\alpha\in\mathcal I_N}
+  g_\alpha(\lambda_\alpha+m^2)^{-1/2}e_\alpha ,
+\]
+where \(\{g_\alpha\}\) are independent real standard Gaussian random
+variables.  Then for every \(\eta>0\),
+\[
+  \sup_N
+  \int
+  \|\phi\|_{H^{-\eta}(\mathbb T^2)}^2\,\dd\gamma_N(\phi)
+  <\infty .
+\]
+Consequently, if \(0<\eta<\kappa\), the family \(\{\gamma_N\}\) is tight as
+a family of probability measures on \(H^{-\kappa}(\mathbb T^2)\).
+\end{proposition}
+
+\begin{proof}
+By definition of the Hilbert Sobolev norm associated with the Laplacian,
+\[
+  \|\phi_N\|_{H^{-\eta}}^2
+  =
+  \sum_{\alpha\in\mathcal I_N}
+  (1+\lambda_\alpha)^{-\eta}
+  |(\phi_N,e_\alpha)_{L^2}|^2 .
+\]
+Taking expectation and using \(\mathbb E g_\alpha^2=1\) gives
+\[
+  \mathbb E\|\phi_N\|_{H^{-\eta}}^2
+  =
+  \sum_{\alpha\in\mathcal I_N}
+  (1+\lambda_\alpha)^{-\eta}
+  (\lambda_\alpha+m^2)^{-1}.
+  \label{eq:spde-free-gaussian-hminus-eta-second-moment}
+\]
+There is a constant \(c_m<\infty\) such that
+\((\lambda+m^2)^{-1}\leq c_m(1+\lambda)^{-1}\) for all \(\lambda\geq0\).
+Thus the right hand side of
+\eqref{eq:spde-free-gaussian-hminus-eta-second-moment} is bounded by
+\[
+  c_m
+  \sum_{\alpha\in\mathcal I}
+  (1+\lambda_\alpha)^{-1-\eta}.
+\]
+For the flat two-torus \(\R^2/(2\pi\mathbb Z)^2\), the complex Fourier basis
+has eigenvalues \(|k|^2\), \(k\in\mathbb Z^2\).  Passing from the complex
+basis to a real sine-cosine eigenbasis changes the counting by a bounded
+factor.  It therefore suffices to prove convergence of
+\[
+  \sum_{k\in\mathbb Z^2}(1+|k|^2)^{-1-\eta}.
+\]
+Write \(\langle k\rangle=(1+|k|^2)^{1/2}\).
+Let \(A_0=\{k:\langle k\rangle<2\}\) and, for \(j\geq1\),
+\[
+  A_j=\{k\in\mathbb Z^2:2^j\leq \langle k\rangle<2^{j+1}\}.
+\]
+There is a universal constant \(C\) such that the cardinality of \(A_j\) is
+at most \(C2^{2j}\), while each summand on \(A_j\) is at most
+\(2^{-2(1+\eta)j}\).  Hence
+\[
+  \sum_{k\in A_j}(1+|k|^2)^{-1-\eta}
+  \leq
+  C2^{-2\eta j}.
+\]
+The geometric series over \(j\) converges because \(\eta>0\).  This proves
+the uniform second-moment bound.  Since each \(\gamma_N\) is carried by the
+finite-dimensional space spanned by \(\{e_\alpha:\alpha\in\mathcal I_N\}\),
+it is carried by \(H^{-\eta}\).
+Proposition~\ref{prop:spde-sobolev-compactness-tightness} with \(p=2\) now
+gives tightness in \(H^{-\kappa}\).
+\end{proof}
+
 \begin{proposition}[Closedness of OS reflection positivity under weak convergence]
 \label{prop:spde-os-positivity-closed-under-weak-convergence}
 Let \(E\) be a Hausdorff locally convex real vector space of Euclidean
@@ -1438,7 +1521,9 @@ Assume the following three further analytic facts.
   follows from a cutoff-uniform moment bound in \(H^{-\eta}\) for some
   \(0<\eta<\kappa\); the interacting stationary cutoff family therefore
   requires an independent constructive estimate establishing that moment
-  bound before the weak-convergence passage is invoked.
+  bound before the weak-convergence passage is invoked.  The corresponding
+  free massive Gaussian estimate is
+  Proposition~\ref{prop:spde-free-gaussian-negative-sobolev-tightness}.
   \item Reflection positivity of the cutoff measures \(\mu_N\) holds for
   bounded cylinder observables depending on positive Euclidean time, and
   the polynomial Wick observables used to identify Schwinger functions obey

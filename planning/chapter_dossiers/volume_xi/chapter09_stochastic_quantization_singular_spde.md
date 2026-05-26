@@ -68,6 +68,10 @@ data.
 - `P_M`: Fourier projection to modes \(|k|\le M\) used locally in the
   compactness proof for \(K_R\).  This is distinct from the ultraviolet
   regulator \(P_N\) used in the stochastic cutoff family.
+- `A`, `e_alpha`, `lambda_alpha`, `I_N`, `gamma_N`: Laplacian, real
+  orthonormal eigenbasis, eigenvalues, spectral cutoff index set, and
+  massive free Gaussian cutoff law in the reference negative-Sobolev
+  tightness estimate.
 - `Lambda_{a,L}`, `vartheta`, `mu_{a,L}`, `S_{a,L}`, `V_x`: finite lattice,
   time reflection, lattice Euclidean measure, lattice scalar action, and
   reflection-invariant on-site potential used in the OS-positive lattice
@@ -213,6 +217,13 @@ data.
   by \(\langle M\rangle^{-2(\kappa-\eta)}R^2\), finite-dimensional
   projections give total boundedness, Fatou gives closedness, and Markov's
   inequality gives the probability tail.
+- Proves the massive free Gaussian reference estimate:
+  \(\sup_N\mathbb E_{\gamma_N}\|\phi\|_{H^{-\eta}}^2<\infty\) on
+  \(\mathbb T^2\) for every \(\eta>0\).  The derivation reduces the second
+  moment to
+  \(\sum_{k\in\mathbb Z^2}(1+|k|^2)^{-1-\eta}\) and proves convergence by
+  dyadic annuli, thereby giving free cutoff tightness in \(H^{-\kappa}\)
+  whenever \(0<\eta<\kappa\).
 - Proves closedness of OS reflection positivity under weak convergence for
   bounded positive-time cylinder observables, and isolates the additional
   uniform-integrability hypothesis needed to pass unbounded polynomial
@@ -702,3 +713,9 @@ data maps.
   out the compact embedding by Fourier projection and records the exact
   Markov-tail estimate; the calculation-check companion verifies the
   Hilbert-scale exponent and sample Markov arithmetic.
+- 2026-05-26 issue #608 Gaussian reference pass: added the massive free
+  Gaussian negative-Sobolev moment estimate on \(\mathbb T^2\), including
+  the dyadic annulus summability proof for
+  \(\sum_k\langle k\rangle^{-2-2\eta}\).  The calculation-check companion
+  verifies the two-dimensional shell exponent and the sample dyadic
+  geometric sum.
