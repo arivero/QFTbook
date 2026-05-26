@@ -3,136 +3,500 @@
 
 \ConventionsRealTime
 
-This chapter introduces nonequilibrium steady states and open-system limits as
-QFT objects.  The definitions are made through states, correlation functions,
-source protocols, and controlled scaling limits, rather than through
-thermodynamic intuition alone.
+Nonequilibrium steady states and open systems are real-time QFT objects.  A
+steady state is a positive invariant state on an algebra of observables.  An
+open-system limit is a scaling limit of a larger closed system in which a
+subalgebra evolves by a completely positive trace-preserving semigroup.  This
+chapter fixes these definitions, derives the reservoir entropy-production
+formula, records the weak-coupling route to the GKSL generator, and connects
+the Markovian limit to a Schwinger--Keldysh influence functional and to
+hydrodynamic relaxation with noise.
 
 \section{Steady-State Datum}
 
-Let \(\mathcal A\) be the observable algebra of a real-time QFT and let
-\(\tau_t\) be time evolution.  A steady state is a positive normalized
-functional
+Let \(\mathcal A\) be a \(*\)-algebra of observables for a real-time QFT,
+or a local \(C^*\)-algebra when a norm-completed formulation is available.
+A state is a positive normalized linear functional
 \[
-  \omega_{\mathrm{ss}}:\mathcal A\to\C
+  \omega:\mathcal A\to\mathbb C,
+  \qquad
+  \omega(A^*A)\ge0,\qquad
+  \omega(\mathbf 1)=1.
 \]
-such that
-\[
-  \omega_{\mathrm{ss}}(\tau_t(A))=\omega_{\mathrm{ss}}(A)
-\]
-for all observables \(A\) in its domain.  A nonequilibrium steady state has
-nonzero currents or unequal reservoir parameters while remaining invariant
-under time translations.  Local stationarity means that time-translated local
-correlators are invariant as distributions.
+Let \(\tau_t\) be the time-evolution automorphism group.  A steady state is a
+state \(\omega_{\rm ss}\) such that
+\begin{equation}
+  \omega_{\rm ss}(\tau_t(A))=\omega_{\rm ss}(A)
+  \label{eq:ness-invariant-state}
+\end{equation}
+for all \(A\) in the common domain of the state and the time evolution.
+Local stationarity means that the distributional correlation functions of
+local observables are invariant under simultaneous time translation.  A
+nonequilibrium steady state is a steady state whose current expectation
+values or reservoir boundary data are not those of a single KMS state.
+
+Equation \eqref{eq:ness-invariant-state} is only the kinematic definition.
+Existence, uniqueness, clustering, stability under changes of the preparation
+protocol, and local normality relative to reference states are separate
+properties.  They must be proved or assumed in any concrete model.
 
 \section{Reservoir Construction}
 
-Consider a QFT on a line prepared at \(t=0\) by joining two half-systems with
-KMS states at \((\beta_L,\mu_L)\) and \((\beta_R,\mu_R)\).  A candidate
-steady state is the weak limit
+Consider a QFT on a line prepared at \(t=0\) by joining two half-systems.
+The left and right initial states are KMS states with parameters
 \[
-  \omega_{\mathrm{ss}}(A)
-  =
-  \lim_{t\to\infty}\omega_0(\tau_t(A))
+  (\beta_L,\mu_L),
+  \qquad
+  (\beta_R,\mu_R).
 \]
-for local \(A\) near the junction.  Existence of the limit, independence of
-the microscopic joining protocol, and clustering are separate assertions.
-When conserved densities propagate ballistically, the steady state may be
-described by occupation functions depending on ray \(x/t\).  At \(x/t=0\) the
-state is the central nonequilibrium steady state.
-
-\section{Entropy Production}
-
-Let \(J_E\) be the energy current from left to right and \(J_Q\) a conserved
-charge current.  For reservoirs with inverse temperatures \(\beta_{L,R}\) and
-chemical potentials \(\mu_{L,R}\), the steady entropy production rate is
-\[
-  \dot S
+For a local observable \(A\) supported near the junction, a central steady
+state is a weak limit
+\begin{equation}
+  \omega_{\rm ss}(A)
   =
-  (\beta_R-\beta_L)\omega_{\mathrm{ss}}(J_E)
-  -
-  (\beta_R\mu_R-\beta_L\mu_L)\omega_{\mathrm{ss}}(J_Q).
-\]
-This formula follows from the first law applied to the reservoirs: the right
-reservoir gains energy \(J_E\) and charge \(J_Q\), while the left reservoir
-loses the same amounts.  Positivity of \(\dot S\) is a dynamical property of
-the constructed state and its reservoirs.
+  \lim_{t\to\infty}\omega_0(\tau_t(A)),
+  \label{eq:ness-local-weak-limit}
+\end{equation}
+if the limit exists.  The limit is local: it is not a statement that the
+entire infinite-volume density matrix converges in trace norm.  When the
+large-time state has a ray dependence, one instead studies limits of
+\(\omega_0(\tau_t(A_{x=vt}))\), with \(v=x/t\).  The central steady state is
+the ray \(v=0\).
 
-\section{Open-System Scaling Limit}
-
-Let a system algebra \(\mathcal A_S\) couple weakly to an environment
-\(\mathcal A_E\) by
+The physical currents in the central steady state are defined by the
+expectation values of local current operators:
 \[
+  J_E=\omega_{\rm ss}(j_E),
+  \qquad
+  J_Q=\omega_{\rm ss}(j_Q),
+\]
+with the convention that positive current flows from left to right.
+
+\section{Reservoir Entropy Production}
+
+Let the right reservoir gain energy and charge at rates
+\[
+  \frac{dE_R}{dt}=J_E,\qquad
+  \frac{dQ_R}{dt}=J_Q,
+\]
+while the left reservoir loses the same amounts.  The reservoir entropy
+change is computed using the equilibrium reservoir first laws
+\[
+  dS_\alpha=\beta_\alpha(dE_\alpha-\mu_\alpha dQ_\alpha),
+  \qquad
+  \alpha=L,R.
+\]
+Therefore
+\begin{align}
+  \dot S_{\rm res}
+  &=
+  \beta_R(J_E-\mu_RJ_Q)
+  +\beta_L(-J_E+\mu_LJ_Q)
+  \nonumber\\
+  &=
+  (\beta_R-\beta_L)J_E
+  -(\beta_R\mu_R-\beta_L\mu_L)J_Q .
+  \label{eq:ness-reservoir-entropy-production}
+\end{align}
+This formula is an identity once the currents and reservoir parameters are
+defined.  Positivity is a dynamical statement about the state and the
+reservoir construction.  In linear response, if
+\[
+  X=
+  \begin{pmatrix}
+    \beta_R-\beta_L\\
+    -(\beta_R\mu_R-\beta_L\mu_L)
+  \end{pmatrix},
+  \qquad
+  \begin{pmatrix}J_E\\ J_Q\end{pmatrix}
+  =
+  L X,
+\]
+then \(\dot S_{\rm res}=X^TLX\).  The second law in this linear regime is
+equivalent to the positive semidefiniteness of the symmetric part of the
+Onsager matrix \(L\).
+
+\section{Weak-Coupling Open-System Limit}
+
+Let a system Hilbert space couple to an environment by
+\begin{equation}
   H=H_S+H_E+\lambda\sum_a S_a\otimes E_a .
-\]
-Assume the environment is stationary and has rapidly decaying connected
-correlators.  In the weak-coupling scaling
-\[
-  \lambda\to0,\qquad t=\lambda^{-2}\tau,
-\]
-the reduced system state may converge to a Markovian semigroup
-\[
-  \rho_S(\tau)=\ee^{\tau\mathcal L}\rho_S(0).
-\]
-Complete positivity and trace preservation give the GKSL form
-\[
-  \mathcal L(\rho)
+  \label{eq:open-system-total-hamiltonian}
+\end{equation}
+We take \(S_a=S_a^\dagger\) and \(E_a=E_a^\dagger\); a non-Hermitian
+coupling is rewritten in this form by separating Hermitian and
+anti-Hermitian parts.  This convention fixes the adjoints in the spectral
+matrices below.
+Assume the environment state \(\rho_E\) is stationary,
+\([H_E,\rho_E]=0\), and that connected environment correlators decay
+fast enough for their Fourier transforms to exist as positive matrices:
+\begin{equation}
+  \gamma_{ab}(\omega)
   =
-  -\ii[H_{\mathrm{eff}},\rho]
-  +
-  \sum_\alpha
-  \left(
-    L_\alpha\rho L_\alpha^\dagger
-    -\frac12\{L_\alpha^\dagger L_\alpha,\rho\}
+  \int_{-\infty}^{\infty}dt\,
+  e^{\ii\omega t}
+  \operatorname{Tr}_E\!\left(
+  \rho_E E_a(t)E_b(0)
   \right).
+  \label{eq:open-system-bath-spectral-matrix}
+\end{equation}
+Positivity follows because, for any complex vector \(v_a\),
+\[
+  C_v(t)=
+  v_a^*v_b\,\operatorname{Tr}_E\!\left(\rho_EE_a(t)E_b(0)\right)
+  =
+  \operatorname{Tr}_E\!\left(\rho_EF(t)^\dagger F(0)\right),
+  \qquad F=v_bE_b ,
 \]
-The operators \(L_\alpha\) are determined by Fourier transforms of
-environment correlators at Bohr frequencies of \(H_S\).
+is a function of positive type.  Indeed, for any times \(t_i\) and complex
+numbers \(c_i\),
+\[
+  \sum_{i,j}c_i^*c_j\,C_v(t_i-t_j)
+  =
+  \operatorname{Tr}_E\!\left(
+    \rho_E
+    \left(\sum_i c_iF(t_i)\right)^\dagger
+    \left(\sum_j c_jF(t_j)\right)
+  \right)\ge0.
+\]
+The distributional Bochner theorem then says that its Fourier transform is a
+positive measure.  Hence \(v_a^*\gamma_{ab}(\omega)v_b\ge0\) at frequencies
+where the density \(\gamma(\omega)\) exists, and more generally as a positive
+matrix-valued measure.
+
+Let \(P_\epsilon\) be the spectral projections of \(H_S\), and define
+Bohr-frequency components
+\begin{equation}
+  S_a(\omega)
+  =
+  \sum_{\epsilon'-\epsilon=\omega}
+  P_\epsilon S_aP_{\epsilon'} .
+  \label{eq:open-system-bohr-components}
+\end{equation}
+Under the weak-coupling scaling
+\[
+  \lambda\to0,
+  \qquad
+  t=\lambda^{-2}\tau,
+\]
+the interaction-picture density matrix satisfies the integral equation
+\[
+  \rho_I(t)
+  =
+  \rho_I(0)
+  -\ii\lambda\int_0^t ds\,[V_I(s),\rho_I(s)],
+  \qquad
+  V_I(s)=\sum_aS_a(s)\otimes E_a(s).
+\]
+Expanding once more, tracing over the environment, assuming
+\(\operatorname{Tr}_E(\rho_EE_a)=0\) after absorbing one-point terms into
+\(H_S\), and using fast decay of connected environment correlators gives a
+second-order memory integral.  The van Hove limit keeps
+\(\lambda^2t=\tau\) fixed.  Oscillatory factors
+\(e^{\ii(\omega-\omega')s}\) then project onto equal Bohr frequencies,
+while the time integral of the bath correlator supplies
+\(\gamma_{ab}(\omega)\) and its principal-value Hilbert transform.  For a
+finite-dimensional system with discrete Bohr spectrum, bounded system
+couplings, a stationary environment state, and absolutely integrable
+environment connected correlators with the mixing estimates needed to
+discard higher cumulants in the van Hove limit, this limit gives
+\begin{equation}
+  \frac{d\rho_S}{d\tau}
+  =
+  \mathcal L(\rho_S),
+  \label{eq:open-system-markov-master-equation}
+\end{equation}
+where
+\begin{align}
+  \mathcal L(\rho)
+  &=
+  -\ii[H_S+H_{\rm LS},\rho]
+  \nonumber\\
+  &\quad+
+  \sum_{\omega}\sum_{a,b}\gamma_{ab}(\omega)
+  \left[
+    S_b(\omega)\rho S_a(\omega)^\dagger
+    -\frac12\{S_a(\omega)^\dagger S_b(\omega),\rho\}
+  \right].
+  \label{eq:open-system-davies-generator}
+\end{align}
+\(H_{\rm LS}\) is the Lamb-shift Hamiltonian from the principal-value part
+of the bath correlator.  The dissipative part has the GKSL form because each
+matrix \(\gamma_{ab}(\omega)\) is positive semidefinite and hence can be
+diagonalized into jump operators.
+
+\begin{proposition}[Trace preservation and complete positivity]
+\label{prop:gksl-trace-cp}
+For any finite-dimensional system, the generator
+\eqref{eq:open-system-davies-generator} preserves
+\(\operatorname{Tr}\rho\), preserves Hermiticity, and generates a completely
+positive trace-preserving semigroup.
+\end{proposition}
+
+\begin{proof}
+Trace preservation follows term by term:
+\[
+  \operatorname{Tr}(L\rho L^\dagger)
+  -\frac12\operatorname{Tr}(L^\dagger L\rho)
+  -\frac12\operatorname{Tr}(\rho L^\dagger L)=0
+\]
+by cyclicity of the trace.  The commutator has zero trace and preserves
+Hermiticity.  Since \(\gamma(\omega)\) is positive, write
+\(\gamma_{ab}(\omega)=\sum_\alpha v_{\alpha a}(\omega)^*
+v_{\alpha b}(\omega)\) and define
+\[
+  L_{\alpha\omega}=\sum_b v_{\alpha b}(\omega)S_b(\omega).
+\]
+Then the dissipator is a sum of standard Lindblad terms
+\[
+  L_{\alpha\omega}\rho L_{\alpha\omega}^\dagger
+  -\frac12\{L_{\alpha\omega}^\dagger L_{\alpha\omega},\rho\}.
+\]
+Set \(H=H_S+H_{\rm LS}\),
+\[
+  \Gamma=\sum_{\alpha,\omega}
+  L_{\alpha\omega}^\dagger L_{\alpha\omega},
+  \qquad
+  H_{\rm eff}=H-\frac{\ii}{2}\Gamma ,
+\]
+and define the completely positive maps
+\[
+  \mathcal K_t(\rho)=
+  e^{-\ii H_{\rm eff}t}\rho e^{\ii H_{\rm eff}^\dagger t},
+  \qquad
+  \mathcal J(\rho)=
+  \sum_{\alpha,\omega}
+  L_{\alpha\omega}\rho L_{\alpha\omega}^\dagger .
+\]
+In finite dimension the Dyson--Phillips series
+\begin{align}
+  T_t
+  &=
+  \mathcal K_t
+  +
+  \sum_{n\ge1}
+  \int_{0<s_1<\cdots<s_n<t}
+  \mathcal K_{t-s_n}\mathcal J
+  \mathcal K_{s_n-s_{n-1}}\cdots
+  \mathcal J\mathcal K_{s_1}\,
+  ds_1\cdots ds_n
+  \label{eq:open-system-gksl-dyson}
+\end{align}
+converges in operator norm on the trace-class matrices.  Each summand is
+completely positive, so \(T_t\) is completely positive.  Differentiating the
+series gives \(dT_t/dt=\mathcal L T_t=T_t\mathcal L\) and \(T_0=\id\).
+Since the trace of \(\mathcal L(\rho)\) vanishes for every \(\rho\),
+\[
+  \frac{d}{dt}\operatorname{Tr}T_t(\rho)
+  =
+  \operatorname{Tr}\mathcal L(T_t(\rho))=0,
+\]
+and therefore \(T_t\) is trace preserving.  This proves complete positivity
+and trace preservation for the semigroup generated by
+\eqref{eq:open-system-davies-generator}.
+\end{proof}
+
+For comparison with the infinitesimal Kraus form, a short time step
+\(d\tau\) has
+\[
+  K_0=\mathbf 1-d\tau\left(\ii H
+  +\frac12\Gamma\right),
+  \qquad
+  K_{\alpha\omega}=\sqrt{d\tau}\,L_{\alpha\omega}.
+\]
+This is a first-order local representation of the same generator; the
+identity
+\[
+  K_0^\dagger K_0
+  +
+  \sum_{\alpha,\omega}
+  K_{\alpha\omega}^\dagger K_{\alpha\omega}
+  =
+  \mathbf 1+O(d\tau^2)
+\]
+is the infinitesimal trace-preservation statement, while the norm-convergent
+series \eqref{eq:open-system-gksl-dyson} is the finite-time object.
+
+\section{Thermal Bath and Detailed Balance}
+
+If the environment is a KMS state at inverse temperature \(\beta\), its
+spectral matrix obeys
+\begin{equation}
+  \gamma_{ab}(-\omega)=e^{-\beta\omega}\gamma_{ba}(\omega)
+  \label{eq:open-system-kms-rates}
+\end{equation}
+for Hermitian environment operators with the Fourier convention in
+\eqref{eq:open-system-bath-spectral-matrix}.  To see the sign and the order
+of indices, insert a spectral resolution of \(H_E\).  If
+\(H_E\ket m=E_m\ket m\), then
+\[
+  \gamma_{ab}(\omega)
+  =
+  \frac{2\pi}{Z}
+  \sum_{m,n}
+  e^{-\beta E_m}
+  \delta\!\left(\omega-(E_n-E_m)\right)
+  (E_a)_{mn}(E_b)_{nm}.
+\]
+The same expression for \(\gamma_{ba}(-\omega)\), with \(m\) and \(n\)
+exchanged, gives
+\[
+  \gamma_{ba}(-\omega)
+  =
+  e^{-\beta\omega}\gamma_{ab}(\omega),
+\]
+which is equivalent to \eqref{eq:open-system-kms-rates}.  For a two-level
+system with energy gap \(\Omega>0\), let
+\[
+  \Gamma_\downarrow=\gamma(\Omega),
+  \qquad
+  \Gamma_\uparrow=\gamma(-\Omega)
+  =
+  e^{-\beta\Omega}\Gamma_\downarrow .
+\]
+The population master equation is
+\[
+  \dot p_e=-\Gamma_\downarrow p_e+\Gamma_\uparrow p_g,
+  \qquad
+  p_g=1-p_e .
+\]
+The stationary ratio is
+\[
+  \frac{p_e}{p_g}
+  =
+  \frac{\Gamma_\uparrow}{\Gamma_\downarrow}
+  =
+  e^{-\beta\Omega},
+\]
+which is the Gibbs ratio.  This derivation is the open-system counterpart of
+the detailed-balance identity in kinetic theory.
 
 \section{Schwinger--Keldysh Influence Functional}
 
-In field theory the environment can be integrated out on a closed time path,
-producing an influence functional
+For a field-theoretic system variable \(\phi\) linearly coupled to an
+environment operator \(\mathcal O_E\), the environment can be integrated out
+on the closed time path:
 \[
-  \ee^{\ii S_{\mathrm{IF}}[\phi_+,\phi_-]}.
+  e^{\ii S_{\rm IF}[\phi_+,\phi_-]}
+  =
+  \operatorname{Tr}_E\!\left(
+  U_E[\phi_+]\rho_EU_E[\phi_-]^\dagger
+  \right).
 \]
-Unitarity imposes
+Closed-time-path normalization gives
 \[
-  S_{\mathrm{IF}}[\phi,\phi]=0,
+  S_{\rm IF}[\phi,\phi]=0.
 \]
-and positivity of the reduced density matrix imposes constraints on the
-imaginary part of \(S_{\mathrm{IF}}\).  Expanding in
+In \(r/a\) variables,
 \[
-  \phi_r=\frac12(\phi_++\phi_-),\qquad
+  \phi_r=\frac12(\phi_++\phi_-),
+  \qquad
   \phi_a=\phi_+-\phi_-,
 \]
-the quadratic open-system action has the form
-\[
-  S_{\mathrm{eff}}
+the quadratic influence action has the form
+\begin{equation}
+  S_{\rm IF}^{(2)}
   =
-  \int\phi_a D_R\phi_r
-  +
-  \frac{\ii}{2}\int\phi_a N\phi_a+\cdots,
+  \int \phi_a D_R\phi_r
+  +\frac{\ii}{2}\int \phi_aN\phi_a
+  +O(\phi_a^3,\phi_a^2\phi_r).
+  \label{eq:open-system-quadratic-influence}
+\end{equation}
+with
+\[
+  D_R(x-y)=-\ii\theta(x^0-y^0)
+  \omega_E([\mathcal O_E(x),\mathcal O_E(y)]),
+  \qquad
+  N(x-y)=\frac12
+  \omega_E(\{\mathcal O_E(x),\mathcal O_E(y)\})
 \]
-where \(D_R\) is a retarded kernel and \(N\) is a noise kernel.  KMS
-environments relate \(N\) to the anti-Hermitian part of \(D_R\).
+for a stationary environment state \(\omega_E\).  The kernel \(D_R\) is
+retarded because variations of the forward and backward branches cancel for
+earlier times, as in the Schwinger--Keldysh derivation of retarded response.
+The kernel \(N\) is positive in the sense
+\[
+  \int f N f\ge0
+\]
+for real test functions \(f\), so that
+\(\exp(\ii S_{\rm IF})\) is damped rather than amplified.  If the
+environment is KMS, \(N\) and the anti-Hermitian part of \(D_R\) obey the
+fluctuation--dissipation relation of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}.
 
 \section{Hydrodynamic Open Systems}
 
-If the system has conserved densities broken only by weak coupling to an
-environment, the hydrodynamic equations acquire relaxation and noise terms:
-\[
-  \partial_t n+\nabla\cdot j=-\gamma(n-n_{\mathrm{eq}})+\xi.
-\]
-The noise satisfies
-\[
-  \langle\xi(t,\mathbf x)\xi(0,\mathbf 0)\rangle
+Consider a single approximately conserved density \(n(t,\mathbf x)\) whose
+conservation is weakly broken by a KMS environment.  The Markovian
+hydrodynamic equation is
+\begin{equation}
+  \partial_t n+\nabla\cdot j
   =
-  2\gamma\chi T\,\delta(t)\delta(\mathbf x)
+  -\gamma(n-n_{\rm eq})+\xi .
+  \label{eq:open-system-hydro-relaxation}
+\end{equation}
+For one homogeneous mode with susceptibility \(\chi\), the quadratic
+equilibrium free energy is
+\[
+  F(n)=\frac{(n-n_{\rm eq})^2}{2\chi}.
 \]
-for a KMS bath with susceptibility \(\chi\), in the Markovian limit.  This
-relation follows from requiring the stationary solution of the Fokker-Planck
-equation to have the equilibrium Gaussian weight for \(n\).
+The Fokker--Planck equation associated with
+\[
+  \dot n=-\gamma(n-n_{\rm eq})+\xi,
+  \qquad
+  \langle\xi(t)\xi(t')\rangle=2D_n\delta(t-t')
+\]
+has stationary distribution proportional to \(e^{-\beta F(n)}\) precisely
+when
+\begin{equation}
+  D_n=\gamma\chi T .
+  \label{eq:open-system-einstein-noise}
+\end{equation}
+Indeed, the Fokker--Planck equation is
+\[
+  \partial_tP(n,t)
+  =
+  \partial_n\!\left[\gamma(n-n_{\rm eq})P(n,t)\right]
+  +D_n\partial_n^2P(n,t)
+  =
+  -\partial_nJ_P(n,t),
+\]
+where
+\[
+  J_P(n,t)=
+  -\gamma(n-n_{\rm eq})P(n,t)-D_n\partial_nP(n,t).
+\]
+For the equilibrium candidate
+\[
+  P_{\rm eq}(n)=
+  Z^{-1}\exp\!\left[-\frac{(n-n_{\rm eq})^2}{2\chi T}\right],
+\]
+the stationary probability current vanishes for every \(n\) exactly when
+\(D_n=\gamma\chi T\).
+Thus
+\begin{equation}
+  \langle\xi(t,\mathbf x)\xi(t',\mathbf x')\rangle
+  =
+  2\gamma\chi T\,
+  \delta(t-t')\delta^{(d)}(\mathbf x-\mathbf x')
+  \label{eq:open-system-hydro-noise}
+\end{equation}
+in the local Markovian limit.  The relation is the Einstein relation for a
+nonconserved relaxation mode; it is distinct from diffusive current noise,
+where the noise enters through a divergence.
+
+\section{Theorem Boundary}
+
+For continuum QFT, a complete nonequilibrium construction must state the
+local algebra, the reservoir states, the topology of the long-time local
+limit, the domains of the current operators, and the order in which weak
+coupling, thermodynamic, Markovian, hydrodynamic, and continuum limits are
+taken.  For open systems, complete positivity is a statement about the
+reduced dynamics of a subalgebra after tracing over an environment and taking
+a specified scaling limit.  A nonlocal truncation of a closed QFT becomes an
+open-system dynamics only after such an environment trace and limit have
+been constructed.  For hydrodynamic open systems, the noise kernel and
+relaxation matrix must be derived from the same influence functional that
+produces the dissipative terms.
 
 \begin{openproblem}[Continuum nonequilibrium states]
 \label{op:continuum-nonequilibrium-steady-states}

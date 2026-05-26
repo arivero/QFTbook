@@ -145,6 +145,11 @@ Current checks:
   integral pairing, and the distinction between even-unimodular existence
   and scalar modular-invariance in the presence of chiral gravitational
   anomaly.
+- `nonequilibrium_open_system_checks.py`: finite checks for the Volume X
+  nonequilibrium steady-state and open-system chapter, including reservoir
+  entropy production, GKSL trace preservation, KMS detailed balance for a
+  two-level system, Ornstein-Uhlenbeck noise normalization, and positivity of
+  a quadratic noise kernel.
 - `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
   two-loop \(N=1\) Wilson-Fisher pole coefficients into
   \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).
