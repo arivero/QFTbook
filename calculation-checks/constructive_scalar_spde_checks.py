@@ -521,6 +521,27 @@ def check_spde_ou_and_smoothing_normalizations():
         raise AssertionError("heat-kernel smoothing optimization failed")
 
 
+def check_phi4_two_path_space_increment_arithmetic():
+    # The path-space Wick-power estimate in d=2 weakens one propagator by
+    # theta through 1-exp(-r) <= r^theta.  The H^{-s} shell exponent is
+    # r * r^{-2s} * r^{-2+2 theta} = r^{-1-2s+2 theta}; summability needs
+    # theta < s.  The Kolmogorov step needs p theta > 1.
+    s = Fraction(1, 5)
+    theta = Fraction(1, 10)
+    shell_exponent = Fraction(1, 1) - 2 * s - 2 * (1 - theta)
+    assert_equal(shell_exponent, Fraction(-6, 5), "Phi4_2 path-space Wick shell exponent")
+    if not shell_exponent < -1:
+        raise AssertionError("Phi4_2 path-space shell summability failed")
+    if not theta < s:
+        raise AssertionError("Phi4_2 path-space theta<s condition failed")
+
+    p = 11
+    kolmogorov_power = p * theta
+    assert_equal(kolmogorov_power, Fraction(11, 10), "Phi4_2 Kolmogorov moment power")
+    if not kolmogorov_power > 1:
+        raise AssertionError("Phi4_2 Kolmogorov continuity threshold failed")
+
+
 def check_dpd_sobolev_fixed_point_exponents():
     # The Sobolev DPD proof in Volume XI Chapter 9 takes
     # beta = 1 + 2 kappa on T^2.  The conditions below are the exact
@@ -1154,6 +1175,7 @@ def main():
     check_phi4_three_finite_cutoff_stability_bound()
     check_phi4_three_multiscale_geometric_bound()
     check_spde_ou_and_smoothing_normalizations()
+    check_phi4_two_path_space_increment_arithmetic()
     check_dpd_sobolev_fixed_point_exponents()
     check_phi4_three_sobolev_dpd_obstruction_arithmetic()
     check_dpd_energy_young_exponents()
@@ -1172,7 +1194,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

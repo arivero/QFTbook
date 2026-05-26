@@ -91,8 +91,10 @@ Current checks:
   normalization, the finite-cutoff local stability lower bound, the
   multiscale phase-cell geometric tail estimate, plus the
   stochastic-quantization OU variance, two negative-Sobolev threshold checks,
-  heat-kernel smoothing optimization, and the Sobolev exponent inequalities
-  used in the Da Prato--Debussche local fixed-point proof, together with the
+  heat-kernel smoothing optimization, the path-space
+  \(\Phi^4_2\) enhanced-noise increment and Kolmogorov threshold arithmetic,
+  and the Sobolev exponent inequalities used in the Da Prato--Debussche
+  local fixed-point proof, together with the
   three-dimensional Sobolev obstruction to applying the same DPD closure to
   \(\Phi^4_3\), the Young-exponent arithmetic in the smooth DPD energy
   estimate and a finite Markov-chain invariant-measure identity, plus the

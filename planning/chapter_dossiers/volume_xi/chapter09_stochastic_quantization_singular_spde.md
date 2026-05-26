@@ -19,6 +19,8 @@ data.
   Da Prato--Debussche remainder.
 - `X_k`, `e_k`: Fourier modes of the stationary stochastic convolution on
   \(\mathbb T^2\).
+- `W_N^{(n)}`: cutoff Wick powers \(:X_N^n:\) as stochastic processes in
+  \(C([0,T];H^{-s})\).
 - `P_N`, `C_N`: Fourier cutoff and cutoff covariance for Wick powers.
 - `(A,T,G)`, `Pi_z`, `Gamma_zz'`: regularity structure, model maps, and
   reexpansion maps.
@@ -164,6 +166,12 @@ data.
   two-dimensional stochastic convolution, including convergence in
   \(L^2(\Omega;H^{-s})\) for every \(s>0\), using a two-dimensional
   massive-propagator convolution bound.
+- Proves path-space convergence of the two-dimensional enhanced noise
+  \((X_N,:X_N^2:,:X_N^3:)\) in
+  \(C([0,T];H^{-s})^3\) for every \(s>0\).  The proof uses the exact
+  Ornstein--Uhlenbeck time cross-covariance, a weakened-propagator
+  convolution estimate, finite-Wiener-chaos moment bounds, and a
+  Kolmogorov/grid argument.
 - Proves the Fourier heat-kernel smoothing estimate used as the Sobolev
   model for the parabolic Schauder estimates in the DPD fixed point.
 - Proves the Sobolev product estimates used in the elementary DPD fixed point:
@@ -183,11 +191,12 @@ data.
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
 - Adds a \(\Phi^4_2\) stochastic-quantization assembly theorem on the torus.
-  The theorem makes explicit the four analytic inputs needed to pass from
+  The theorem now proves the path-space enhanced-noise input and makes
+  explicit the remaining three analytic inputs needed to pass from
   finite-cutoff invariant Wick-ordered measures to a limiting invariant
-  Markov law and OS-positive Euclidean measure: path-space enhanced-noise
-  convergence, global compact-continuity of the DPD solution map, tightness
-  of stationary cutoff laws, and closure of reflection positivity.
+  Markov law and OS-positive Euclidean measure: global compact-continuity of
+  the DPD solution map, tightness of stationary cutoff laws, and closure of
+  reflection positivity.
 - Proves the Sobolev DPD obstruction in three dimensions: the minimal
   multiplier threshold \(\beta>1/2+\kappa\) for \(YX\), combined with
   forcing regularity \(:X^3:\in H^{-3/2-3\kappa-\varepsilon}\), forces a

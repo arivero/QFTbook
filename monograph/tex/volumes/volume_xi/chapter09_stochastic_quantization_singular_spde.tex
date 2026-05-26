@@ -358,6 +358,198 @@ Sobolev DPD fixed point below is available for any prescribed
 \(0<\kappa<1/4\) after taking \(s=\kappa\).
 \end{proof}
 
+\begin{proposition}[Path-space convergence of the two-dimensional enhanced noise]
+\label{prop:spde-two-dimensional-enhanced-noise-path-convergence}
+Let
+\[
+  W_N^{(n)}(\tau)=:\!X_N(\tau)^n\!:,
+  \qquad n=1,2,3 .
+\]
+For every \(T<\infty\), every \(s>0\), every
+\(0<\vartheta<\min\{s,1\}\), and every integer \(p\geq1\) with
+\(p\vartheta>1\), there is a constant
+\(C=C(T,s,\vartheta,p,n,m)<\infty\), independent of \(N\), such that
+\begin{equation}
+  \mathbb E\,
+  \|W_N^{(n)}(\tau)-W_N^{(n)}(\sigma)\|_{H^{-s}}^{2p}
+  \leq
+  C|\tau-\sigma|^{p\vartheta}
+  \qquad
+  (0\leq\sigma,\tau\leq T).
+  \label{eq:spde-two-dimensional-wick-path-increment-bound}
+\end{equation}
+Consequently the triple
+\[
+  \mathbb X_N=(X_N,:\!X_N^2\!:,:\!X_N^3\!:)
+\]
+converges in probability in
+\[
+  C([0,T];H^{-s}(\mathbb T^2))^3
+\]
+to a continuous enhanced noise
+\(\mathbb X=(X,:\!X^2\!:,:\!X^3\!:)\).
+\end{proposition}
+
+\begin{proof}
+Write \(a_k=|k|^2+m^2\).  The stationary Ornstein--Uhlenbeck formula gives,
+for \(\tau,\sigma\in\R\),
+\begin{equation}
+  \mathbb E\!\left[
+    X_k(\tau)\overline{X_\ell(\sigma)}
+  \right]
+  =
+  \delta_{k\ell}\frac{e^{-a_k|\tau-\sigma|}}{a_k}.
+  \label{eq:spde-ou-time-cross-covariance}
+\end{equation}
+Indeed, with \(\tau\geq\sigma\),
+\[
+  X_k(\tau)
+  =
+  e^{-a_k(\tau-\sigma)}X_k(\sigma)
+  +
+  \sqrt2\int_{\sigma}^{\tau}e^{-a_k(\tau-r)}\,\dd B_k(r),
+\]
+and the stochastic integral is independent of \(X_k(\sigma)\).
+
+Let \(\widehat W_{N,q}^{(n)}(\tau)\) denote the \(q\)-th Fourier
+coefficient of \(W_N^{(n)}(\tau)\).  Wick's theorem and
+\eqref{eq:spde-ou-time-cross-covariance} give
+\begin{equation}
+  \mathbb E\!\left[
+    \widehat W_{N,q}^{(n)}(\tau)
+    \overline{\widehat W_{N,q}^{(n)}(\sigma)}
+  \right]
+  =
+  n!\!\!
+  \sum_{\substack{k_1+\cdots+k_n=q\\ |k_i|\leq N}}
+  \prod_{i=1}^{n}
+  \frac{e^{-a_{k_i}|\tau-\sigma|}}{a_{k_i}} .
+  \label{eq:spde-wick-time-cross-covariance}
+\end{equation}
+Therefore
+\begin{align}
+  &\mathbb E\left|
+    \widehat W_{N,q}^{(n)}(\tau)
+    -
+    \widehat W_{N,q}^{(n)}(\sigma)
+  \right|^2
+  \notag\\
+  &\qquad =
+  2n!\!\!
+  \sum_{\substack{k_1+\cdots+k_n=q\\ |k_i|\leq N}}
+  \prod_{i=1}^{n}\frac1{a_{k_i}}
+  \left(
+    1-e^{-|\tau-\sigma|\sum_i a_{k_i}}
+  \right).
+  \label{eq:spde-wick-time-increment-variance-exact}
+\end{align}
+For \(0<\vartheta<1\), \(1-e^{-r}\leq r^\vartheta\), and concavity gives
+\((\sum_i a_{k_i})^\vartheta\leq\sum_i a_{k_i}^{\vartheta}\).  Hence the
+right side of
+\eqref{eq:spde-wick-time-increment-variance-exact} is bounded by
+\[
+  C_{n,\vartheta}|\tau-\sigma|^\vartheta
+  \sum_{j=1}^n
+  \sum_{k_1+\cdots+k_n=q}
+  a_{k_j}^{-1+\vartheta}
+  \prod_{i\neq j}a_{k_i}^{-1}.
+\]
+Let \(g_\vartheta(k)=(1+|k|^2)^{-1+\vartheta}\).  Repeating the
+three-region proof of
+Lemma~\ref{lem:spde-massive-convolution-bound}, with the factor
+\((1+|p|^2)^{-1}\) replaced once by
+\((1+|p|^2)^{-1+\vartheta}\), gives
+\begin{equation}
+  (g_\vartheta*g^{*(n-1)})(q)
+  \leq
+  C_{n,\vartheta}\,
+  \frac{L(q)^n}{(1+|q|^2)^{1-\vartheta}} .
+  \label{eq:spde-weakened-propagator-convolution-bound}
+\end{equation}
+The only changed part of the induction is the region in which the weakened
+factor is the small momentum: there
+\(\sum_{|p|\leq |q|/2}(1+|p|^2)^{-1+\vartheta}\leq
+C_\vartheta(1+|q|^2)^\vartheta\), which changes
+\((1+|q|^2)^{-1}\) into \((1+|q|^2)^{-1+\vartheta}\).  All other regions
+are bounded by the same or a smaller power, up to logarithms.  Thus
+\begin{equation}
+  \mathbb E\left|
+    \widehat W_{N,q}^{(n)}(\tau)
+    -
+    \widehat W_{N,q}^{(n)}(\sigma)
+  \right|^2
+  \leq
+  C|\tau-\sigma|^\vartheta
+  \frac{L(q)^n}{(1+|q|^2)^{1-\vartheta}} .
+  \label{eq:spde-wick-time-increment-fourier-bound}
+\end{equation}
+After multiplying by the \(H^{-s}\) weight and summing over \(q\), the
+large-shell exponent is
+\[
+  1-2s-2(1-\vartheta)=-1-2s+2\vartheta .
+\]
+This is strictly smaller than \(-1\) because \(\vartheta<s\).  Hence
+\[
+  \mathbb E\,
+  \|W_N^{(n)}(\tau)-W_N^{(n)}(\sigma)\|_{H^{-s}}^{2}
+  \leq
+  C|\tau-\sigma|^\vartheta .
+\]
+
+Each scalar Fourier coefficient of the increment lies in the \(n\)-th
+homogeneous Wiener chaos.  Applying
+Lemma~\ref{lem:spde-finite-wiener-chaos-moment-bound} to scalar Fourier
+coordinates and using Minkowski's inequality in
+\(L^p(\Omega)\) for the series defining the squared \(H^{-s}\)-norm gives
+\[
+  \mathbb E\,
+  \|W_N^{(n)}(\tau)-W_N^{(n)}(\sigma)\|_{H^{-s}}^{2p}
+  \leq
+  C_{p,n}
+  \left(
+    \sum_q(1+|q|^2)^{-s}
+    \mathbb E\left|
+      \widehat W_{N,q}^{(n)}(\tau)
+      -
+      \widehat W_{N,q}^{(n)}(\sigma)
+    \right|^2
+  \right)^p ,
+\]
+which proves \eqref{eq:spde-two-dimensional-wick-path-increment-bound}.
+
+It remains to pass from equal-time convergence to path convergence.  Fix
+\(\epsilon,\eta>0\).  By
+Proposition~\ref{prop:spde-two-dimensional-wick-powers}, for every finite
+time grid \(\mathcal G\subset[0,T]\),
+\[
+  \max_{\tau\in\mathcal G}
+  \|W_N^{(n)}(\tau)-W_M^{(n)}(\tau)\|_{H^{-s}}
+  \longrightarrow0
+  \quad\hbox{in probability as }N,M\to\infty .
+\]
+The uniform moment bound
+\eqref{eq:spde-two-dimensional-wick-path-increment-bound} and the
+Kolmogorov dyadic argument imply that, after choosing the mesh of
+\(\mathcal G\) sufficiently small,
+\[
+  \sup_N
+  \mathbb P\!\left(
+    \sup_{|\tau-\sigma|\leq\operatorname{mesh}(\mathcal G)}
+    \|W_N^{(n)}(\tau)-W_N^{(n)}(\sigma)\|_{H^{-s}}
+    >\epsilon
+  \right)
+  <\eta .
+\]
+The same estimate holds with \(M\) in place of \(N\).  The triangle
+inequality between a time and the nearest grid point then shows that
+\(\{W_N^{(n)}\}_N\) is Cauchy in probability in
+\(C([0,T];H^{-s})\).  Its limit has continuous paths because this Banach
+space is complete.  The finite-dimensional time marginals agree with the
+equal-time Wick-power limits, so the limiting process is precisely
+\(:\!X^n\!:\).  Applying the argument to \(n=1,2,3\) proves the convergence
+of \(\mathbb X_N\).
+\end{proof}
+
 \begin{proposition}[Heat-kernel smoothing estimate]
 \label{prop:spde-heat-kernel-smoothing}
 Let \(A=\Delta-m^2\) on \(\mathbb T^d\).  For \(r\in\R\), \(\theta\geq0\),
@@ -814,17 +1006,18 @@ Gibbs measure
 where \(\mu_{0,N}\) is the massive Gaussian law with covariance
 \(P_N(-\Delta+m^2)^{-1}P_N\).  Let \(P_t^{(N)}\) be the Markov semigroup of
 the corresponding finite-dimensional stochastic quantization equation, and
-embed all laws in \(H^{-\kappa}(\mathbb T^2)\).
+embed all laws in \(H^{-\kappa}(\mathbb T^2)\).  By
+Proposition~\ref{prop:spde-two-dimensional-enhanced-noise-path-convergence},
+the enhanced Ornstein--Uhlenbeck fields
+\[
+  \mathbb X_N=(X_N,:\!X_N^2\!:,:\!X_N^3\!:)
+\]
+converge in probability in \(C([0,T];H^{-\kappa})^3\), for every
+\(T<\infty\), to a limit
+\(\mathbb X=(X,:\!X^2\!:,:\!X^3\!:)\).
 
-Assume the following four analytic facts.
+Assume the following three further analytic facts.
 \begin{enumerate}[label=(\alph*)]
-  \item The enhanced Ornstein--Uhlenbeck fields
-  \[
-    \mathbb X_N=(X_N,:\!X_N^2\!:,:\!X_N^3\!:)
-  \]
-  converge in probability in
-  \(C([0,T];H^{-\kappa})^3\), for every \(T<\infty\), to a limit
-  \(\mathbb X=(X,:\!X^2\!:,:\!X^3\!:)\).
   \item For every \(Y_0\in H^\beta\), the local solution map of
   Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} extends
   globally in stochastic time, and the cutoff solution maps converge to it
@@ -855,18 +1048,20 @@ identity \eqref{eq:finite-dimensional-dirichlet-form} therefore gives
 \]
 for every bounded smooth cylinder function \(F\).
 
-The stochastic input in (a) is the path-space strengthening of
-Proposition~\ref{prop:spde-two-dimensional-wick-powers}; the latter proves
-the required equal-time Sobolev Wick-power convergence and fixes the Wick
-normalization.  Given (a), the products in the DPD nonlinearity are defined
-by Lemma~\ref{lem:spde-dpd-sobolev-products}, and
+The stochastic input is
+Proposition~\ref{prop:spde-two-dimensional-enhanced-noise-path-convergence},
+which strengthens the equal-time Wick-power construction of
+Proposition~\ref{prop:spde-two-dimensional-wick-powers} to path-space
+convergence and fixes the Wick normalization.  Given this enhanced noise,
+the products in the DPD nonlinearity are defined by
+Lemma~\ref{lem:spde-dpd-sobolev-products}, and
 Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} gives the local
-solution map.  Hypothesis (b) is precisely the global rough-energy and
+solution map.  Hypothesis (a) is precisely the global rough-energy and
 compact-continuity upgrade of the smooth estimate
 Proposition~\ref{prop:spde-dpd-smooth-energy-estimate}.  Thus the limiting
 Markov semigroup \(P_t\) is well-defined on the support of every weak
-stationary limit in (c), and \(P_t^{(N)}F\to P_tF\) uniformly on the
-high-probability compact sets supplied by (b) and (c).
+stationary limit in (b), and \(P_t^{(N)}F\to P_tF\) uniformly on the
+high-probability compact sets supplied by (a) and (b).
 
 Proposition~\ref{prop:spde-invariant-measure-limit} now applies with
 \(E=H^{-\kappa}\).  Therefore
@@ -878,7 +1073,7 @@ invariant.  The convergence of Schwinger functions follows by applying the
 same weak convergence to products of smeared fields and Wick powers after
 approximating the polynomial observables by bounded cylinder observables;
 the uniform moment bounds needed for this approximation are part of the
-tightness and rough-energy input in (c).
+tightness and rough-energy input in (b).
 
 For OS positivity, let \(\Theta\) be Euclidean time reflection and let
 \(F\) be a cylinder observable supported in positive Euclidean time.  The
@@ -886,7 +1081,7 @@ finite-cutoff reflection-positivity assumption gives
 \[
   \int \overline{\Theta F}\,F\,\dd\mu_N\geq0 .
 \]
-By (d), passing to the weak limit preserves the displayed inequality, so
+By (c), passing to the weak limit preserves the displayed inequality, so
 \[
   \int \overline{\Theta F}\,F\,\dd\mu\geq0 .
 \]
@@ -897,11 +1092,11 @@ reconstruction theorem of Chapter~\ref{ch:os-reconstruction} applies.
 
 The theorem separates the logical assembly from the analytic estimates.  In
 the chapter we have proved the finite-dimensional Langevin identity, the
-Sobolev Wick-power construction, the Sobolev DPD local solution map, the
-smooth enhanced-noise energy inequality, and the abstract invariant-law
-passage.  The sharp global two-dimensional theorem additionally requires the
-path-space enhanced-noise convergence, rough Besov/Hölder energy-continuity,
-tightness, and OS-closure estimates listed explicitly in
+Sobolev Wick-power construction, the path-space enhanced-noise convergence,
+the Sobolev DPD local solution map, the smooth enhanced-noise energy
+inequality, and the abstract invariant-law passage.  The sharp global
+two-dimensional theorem additionally requires the rough Besov/Hölder
+energy-continuity, tightness, and OS-closure estimates listed explicitly in
 Theorem~\ref{thm:phi-four-two-spde-main-theorem}.
 
 \begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
