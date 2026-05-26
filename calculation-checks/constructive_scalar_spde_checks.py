@@ -84,10 +84,36 @@ def check_phi4_power_counting():
     assert_equal(omega(4, 4, 1), Fraction(0), "4D phi4 marginal four point")
 
 
+def check_phi4_three_two_loop_mass_coordinate():
+    # In the normalization int lambda :phi^4: + alpha :phi^2:, the k=3
+    # Wick contraction in :phi^4(x)::phi^4(y): has coefficient
+    # binom(4,3)^2 3! = 96.  The perturbative expansion gives a factor 1/2,
+    # while the two possible external attachments to the local bilinear give
+    # a factor 2, so the local two-point divergence is
+    # 96 lambda^2 J_epsilon C*C.  The alpha :phi^2: insertion contributes
+    # -2 alpha C*C; hence alpha = 48 lambda^2 J_epsilon.
+    wick_k3 = math.comb(4, 3) ** 2 * math.factorial(3)
+    expansion_half = Fraction(1, 2)
+    external_pairings = 2
+    local_two_point_coefficient = Fraction(wick_k3 * external_pairings, 1) * expansion_half
+    alpha_insertion_coefficient = 2
+    alpha_over_j = local_two_point_coefficient / alpha_insertion_coefficient
+    assert_equal(wick_k3, 96, "phi4_3 sunset Wick contraction coefficient")
+    assert_equal(local_two_point_coefficient, Fraction(96), "phi4_3 local two-point coefficient")
+    assert_equal(alpha_over_j, Fraction(48), "phi4_3 alpha/J coefficient")
+
+    # C_m(x) ~ 1/(4 pi r) in three dimensions, so int C_m(x)^3 d^3x has
+    # logarithmic coefficient 4 pi / (4 pi)^3 = 1/(16 pi^2).  Therefore
+    # alpha_epsilon has coefficient 48/(16 pi^2)=3/pi^2.
+    sunset_log_numerator = Fraction(48, 16)
+    assert_equal(sunset_log_numerator, Fraction(3), "phi4_3 logarithmic mass numerator")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
+    check_phi4_three_two_loop_mass_coordinate()
     print("All constructive scalar/SPDE Wick and power-counting checks passed.")
 
 

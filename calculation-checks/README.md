@@ -64,8 +64,11 @@ Current checks:
 - `constructive_scalar_spde_checks.py`: finite checks for the constructive
   scalar and singular-SPDE chapters, including Hermite/Wick coefficients for
   \(:\phi^2:\), \(:\phi^3:\), \(:\phi^4:\), the sharp-cutoff tadpole
-  coefficients in two and three Euclidean dimensions, and the displayed
-  \(\phi^4_d\) superficial-degree formula.
+  coefficients in two and three Euclidean dimensions, the displayed
+  \(\phi^4_d\) superficial-degree formula, and the two-loop
+  \(\Phi^4_3\) sunset combinatorics giving the logarithmic mass-coordinate
+  coefficient in the chapter's \(\lambda\phi^4+\alpha\phi^2\)
+  normalization.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

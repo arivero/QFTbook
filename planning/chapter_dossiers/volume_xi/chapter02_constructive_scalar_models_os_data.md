@@ -33,6 +33,10 @@
 - \(\Phi^4_3\) regulated action with local mass and vacuum-energy
   renormalizations, plus a quoted constructive output theorem for the
   massive small-coupling phase-cell regimes.
+- Normal-ordered \(\Phi^4_3\) coordinates
+  \(\lambda:\phi^4:+\alpha_\varepsilon:\phi^2:+\beta_\varepsilon\),
+  their conversion to un-Wick-ordered coordinates, and the two-loop
+  logarithmic mass-coordinate calculation.
 - Open proof obligation for a self-contained monograph proof of the quoted
   \(\Phi^4_3\) constructive output theorem.
 - OS data output from constructive theorems.
@@ -50,6 +54,8 @@
 | \(\|\phi\|_{H^{-s}(\Lambda_1)}\) | negative Sobolev control norm used in the stability estimate |
 | \(\alpha\) | subquadratic exponent in the \(P(\phi)_2\) stability bound |
 | \(a_\varepsilon,b_\varepsilon\) | regulator-dependent local coefficients |
+| \(\alpha_\varepsilon,\beta_\varepsilon\) | normal-ordered \(\Phi^4_3\) mass and vacuum coordinates |
+| \(J_\varepsilon(R)\) | local sunset integral \(\int_{|x|\le R}C_\varepsilon(x)^3\,d^3x\) |
 | \(K(X,\phi)\) | polymer activity on the polymer \(X\) |
 | \(\kappa(X)\) | numerical majorant for the polymer activity after large-field weighting |
 | \(\|K\|_{a,b}\) | schematic cluster norm with large-field weight |
@@ -82,12 +88,17 @@
    relative-bound estimates, not on a formal interaction.
 7. \(\Phi^4_3\) needs regulator-dependent local terms as part of the
    regulated action; the allowed terms follow from power counting.
-8. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+8. In the chapter's \(\lambda\phi^4+\alpha\phi^2\) normalization, the
+   Wick-ordered two-loop sunset contraction gives
+   \(J_\varepsilon(R)=(16\pi^2)^{-1}\log(1/\varepsilon)+O(1)\) and
+   \(\alpha_\varepsilon=48\lambda^2J_\varepsilon+\alpha_{\rm fin}
+   +O(\lambda^3)\), hence logarithmic coefficient \(3\lambda^2/\pi^2\).
+9. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem, and explicitly
    records the missing self-contained constructive proof as an open proof
    obligation.
-9. Constructive route comparison requires equality of Schwinger functions in
+10. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Figures
@@ -125,3 +136,13 @@
   theorem counters.  After the later strictness clarification, the chapter
   also says explicitly that this theorem is a monograph-internal proof
   obligation, not something accepted on the authority of physics literature.
+- 2026-05-25 issue #581 pass: the \(\Phi^4_3\) section now derives the
+  normal-ordered coordinate conversion and the logarithmic two-loop local
+  mass coordinate in the chapter's normalization.  The derivation uses the
+  \(:\phi^4(x)::\phi^4(y):\) Wick-product coefficient
+  \(\binom{4}{3}^2 3!=96\), the two external pairings, and the universal
+  local integral
+  \(J_\varepsilon=(16\pi^2)^{-1}\log(1/\varepsilon)+O(1)\), giving
+  \(\alpha_\varepsilon=48\lambda^2J_\varepsilon+\alpha_{\rm fin}
+  +O(\lambda^3)\).  The companion calculation check now verifies these
+  finite combinatorial and normalization factors.

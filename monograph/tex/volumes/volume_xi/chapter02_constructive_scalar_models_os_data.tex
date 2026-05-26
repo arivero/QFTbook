@@ -739,6 +739,167 @@ local two-point divergence also appears.  In a BPHZ or phase-cell scheme it
 is encoded in the finite-regulator coordinate \(a_\varepsilon\), while the
 vacuum diagrams are encoded in \(b_\varepsilon\).
 
+It is useful to separate the Wick-coordinate bookkeeping from the remaining
+logarithmic local coordinate.  Write the same cutoff action temporarily in
+normal-ordered coordinates as
+\begin{equation}
+  S_{\varepsilon,\Lambda}
+  =
+  S_{0,\varepsilon}
+  +
+  \int_\Lambda
+  \left[
+    \lambda:\!\phi_\varepsilon^4\!:_\varepsilon
+    +\alpha_\varepsilon:\!\phi_\varepsilon^2\!:_\varepsilon
+    +\beta_\varepsilon
+  \right]\dd^3x .
+  \label{eq:phi-four-three-normal-ordered-coordinates}
+\end{equation}
+Here the subscript on \(:\cdot:_\varepsilon\) records that Wick ordering is
+relative to the same cutoff covariance used in the Gaussian reference
+measure.  Relative to the un-Wick-ordered coordinates in
+\eqref{eq:phi-four-three-regulated-action},
+\begin{equation}
+  a_\varepsilon
+  =
+  \alpha_\varepsilon-6\lambda C_\varepsilon(0),
+  \qquad
+  b_\varepsilon
+  =
+  \beta_\varepsilon-\alpha_\varepsilon C_\varepsilon(0)
+  +3\lambda C_\varepsilon(0)^2 .
+  \label{eq:phi-four-three-coordinate-conversion}
+\end{equation}
+The linear divergence in \(a_\varepsilon\) is therefore the one-loop Wick
+conversion; the logarithmic divergence is the leading divergent part of
+\(\alpha_\varepsilon\).
+
+\begin{lemma}[Universal logarithm in the three-dimensional sunset kernel]
+\label{lem:phi-four-three-sunset-logarithm}
+Let
+\[
+  C_m(x)=\frac{e^{-m|x|}}{4\pi |x|}
+\]
+be the massive covariance in \(\R^3\), and let \(C_\varepsilon\) be obtained
+from \(C_m\) by a smooth ultraviolet mollifier at length \(\varepsilon\).
+For every fixed \(R>0\),
+\begin{equation}
+  J_\varepsilon(R)
+  :=
+  \int_{|x|\leq R} C_\varepsilon(x)^3\,\dd^3x
+  =
+  \frac{1}{16\pi^2}\log\frac1\varepsilon+O_R(1).
+  \label{eq:phi-four-three-sunset-log}
+\end{equation}
+The coefficient of the logarithm is independent of the mollifier.
+\end{lemma}
+
+\begin{proof}
+Near the origin,
+\[
+  C_m(x)=\frac{1}{4\pi |x|}+O(1).
+\]
+On the annulus \(A_{\varepsilon,R}=\{c\varepsilon\leq |x|\leq R\}\), with
+\(c\) fixed large enough for the chosen mollifier, standard estimates on
+smooth approximate identities give
+\[
+  C_\varepsilon(x)
+  =
+  \frac{1}{4\pi |x|}+O(1)+O(\varepsilon |x|^{-2}).
+\]
+The last error contributes \(O(1)\) to the integral of \(C_\varepsilon^3\)
+over \(A_{\varepsilon,R}\).  The ball \(|x|\leq c\varepsilon\) contributes
+only a mollifier-dependent bounded term after the logarithmic part has been
+extracted, because its volume is \(O(\varepsilon^3)\) and the mollified
+covariance is \(O(\varepsilon^{-1})\).  Hence the divergent part is
+\[
+  \int_{c\varepsilon}^{R}
+  4\pi r^2
+  \left(\frac{1}{4\pi r}\right)^3\,\dd r
+  =
+  \frac{1}{16\pi^2}
+  \log\frac{R}{c\varepsilon},
+\]
+which proves \eqref{eq:phi-four-three-sunset-log}.
+\end{proof}
+
+\begin{proposition}[Two-loop local mass coordinate in the chapter's normalization]
+\label{prop:phi-four-three-two-loop-mass-coordinate}
+Use the normal-ordered coordinates
+\eqref{eq:phi-four-three-normal-ordered-coordinates}.  Through order
+\(\lambda^2\) and first order in \(\alpha_\varepsilon\), the logarithmically
+divergent local part of the connected two-point Schwinger function is
+\begin{equation}
+  \left(96\lambda^2J_\varepsilon(R)-2\alpha_\varepsilon\right)
+  \int f(u)C_m(u-z)C_m(z-v)g(v)\,
+  \dd^3u\,\dd^3z\,\dd^3v ,
+  \label{eq:phi-four-three-two-point-local-divergence}
+\end{equation}
+up to finite terms and derivative local terms.  Therefore the logarithmic
+mass coordinate is
+\begin{equation}
+  \alpha_\varepsilon
+  =
+  48\lambda^2J_\varepsilon(R)+\alpha_{\rm fin}+O(\lambda^3)
+  =
+  \frac{3\lambda^2}{\pi^2}\log\frac1\varepsilon
+  +\alpha_{\rm fin}+O(1)+O(\lambda^3),
+  \label{eq:phi-four-three-log-mass-coordinate}
+\end{equation}
+with \(\alpha_{\rm fin}\) fixed by the chosen finite mass normalization.
+\end{proposition}
+
+\begin{proof}
+The normal-ordered product identity for two quartic vertices is
+\begin{equation}
+  :\!\phi_\varepsilon(x)^4\!:\,:\!\phi_\varepsilon(y)^4\!:
+  =
+  \sum_{k=0}^{4}
+  \binom{4}{k}^2 k!\,
+  C_\varepsilon(x-y)^k
+  :\!\phi_\varepsilon(x)^{4-k}
+  \phi_\varepsilon(y)^{4-k}\!: .
+  \label{eq:phi-four-three-wick-product-two-vertices}
+\end{equation}
+The logarithmic two-point local term is the \(k=3\) term:
+\[
+  \binom{4}{3}^2\,3!\,C_\varepsilon(x-y)^3
+  :\!\phi_\varepsilon(x)\phi_\varepsilon(y)\!:
+  =
+  96\,C_\varepsilon(x-y)^3
+  :\!\phi_\varepsilon(x)\phi_\varepsilon(y)\!: .
+\]
+The second order in the expansion of
+\(\exp[-\lambda\int:\phi^4:]\) has the factor \(\lambda^2/2\).  Contracting
+\(:\!\phi(x)\phi(y)\!:\) with the two external fields gives
+\[
+  C_m(u-x)C_m(v-y)+C_m(u-y)C_m(v-x).
+\]
+In the singular region \(x-y\) small, both terms have the same local part.
+Thus the quartic vertices contribute
+\[
+  \frac{\lambda^2}{2}\cdot 96\cdot 2\,J_\varepsilon(R)
+  \int f(u)C_m(u-z)C_m(z-v)g(v)\,\dd^3u\,\dd^3z\,\dd^3v ,
+\]
+which is the \(96\lambda^2J_\varepsilon(R)\) term in
+\eqref{eq:phi-four-three-two-point-local-divergence}.  The insertion
+\(\alpha_\varepsilon\int:\phi^2:\) contributes at first order
+\[
+  -\alpha_\varepsilon
+  \int \langle\phi(u)\phi(v):\!\phi(z)^2\!:\rangle_0
+  \,\dd^3z
+  =
+  -2\alpha_\varepsilon
+  \int C_m(u-z)C_m(z-v)\,\dd^3z .
+  \]
+Cancellation of the logarithmic coefficient gives
+\(\alpha_\varepsilon=48\lambda^2J_\varepsilon(R)+\alpha_{\rm fin}\).  The
+coefficient in \eqref{eq:phi-four-three-log-mass-coordinate} follows from
+Lemma~\ref{lem:phi-four-three-sunset-logarithm}.  The dependence on the
+radius \(R\), on the mollifier, and on the subtraction convention is finite
+and is absorbed into \(\alpha_{\rm fin}\).
+\end{proof}
+
 \begin{quotedtheorem}[Constructive \(\Phi^4_3\) output datum]
 \label{thm:phi-four-three-constructive-output}
 Let the ultraviolet regulator, finite-volume boundary condition, and mass
