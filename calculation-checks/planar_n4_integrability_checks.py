@@ -1602,6 +1602,133 @@ def check_t_hook_wronskian_pmu_bridge() -> None:
         )
 
 
+def check_qsc_pq_bridge_unimodular_rank_one_update() -> None:
+    """Check the local P-Q bridge rank-one update and determinant gauge."""
+
+    def transpose(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+        return [list(column) for column in zip(*matrix)]
+
+    def mat_vec(matrix: list[list[Fraction]], vector: list[Fraction]) -> list[Fraction]:
+        return [sum(row[index] * vector[index] for index in range(len(vector))) for row in matrix]
+
+    def row_mat(row: list[Fraction], matrix: list[list[Fraction]]) -> list[Fraction]:
+        return [
+            sum(row[index] * matrix[index][column] for index in range(len(row)))
+            for column in range(len(matrix[0]))
+        ]
+
+    def dot(left: list[Fraction], right: list[Fraction]) -> Fraction:
+        return sum(left[index] * right[index] for index in range(len(left)))
+
+    def outer(column: list[Fraction], row: list[Fraction]) -> list[list[Fraction]]:
+        return [[column_entry * row_entry for row_entry in row] for column_entry in column]
+
+    def mat_add(
+        left: list[list[Fraction]], right: list[list[Fraction]]
+    ) -> list[list[Fraction]]:
+        return [
+            [left[row][column] + right[row][column] for column in range(len(left[row]))]
+            for row in range(len(left))
+        ]
+
+    def determinant(matrix: list[list[Fraction]]) -> Fraction:
+        work = [row[:] for row in matrix]
+        size = len(work)
+        det = Fraction(1)
+        for column in range(size):
+            pivot = None
+            for row in range(column, size):
+                if work[row][column] != 0:
+                    pivot = row
+                    break
+            if pivot is None:
+                return Fraction(0)
+            if pivot != column:
+                work[column], work[pivot] = work[pivot], work[column]
+                det = -det
+            pivot_value = work[column][column]
+            det *= pivot_value
+            for row in range(column + 1, size):
+                factor = work[row][column] / pivot_value
+                for entry in range(column, size):
+                    work[row][entry] -= factor * work[column][entry]
+        return det
+
+    def solve(matrix: list[list[Fraction]], rhs: list[Fraction]) -> list[Fraction]:
+        work = [row[:] + [rhs[index]] for index, row in enumerate(matrix)]
+        size = len(work)
+        for column in range(size):
+            pivot = None
+            for row in range(column, size):
+                if work[row][column] != 0:
+                    pivot = row
+                    break
+            if pivot is None:
+                raise AssertionError("P-Q bridge sample matrix is singular")
+            if pivot != column:
+                work[column], work[pivot] = work[pivot], work[column]
+            pivot_value = work[column][column]
+            for entry in range(column, size + 1):
+                work[column][entry] /= pivot_value
+            for row in range(size):
+                if row == column:
+                    continue
+                factor = work[row][column]
+                for entry in range(column, size + 1):
+                    work[row][entry] -= factor * work[column][entry]
+        return [work[row][-1] for row in range(size)]
+
+    eta = [
+        [Fraction(0), Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(-1), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(0), Fraction(-1), Fraction(0)],
+    ]
+    samples = (
+        (
+            [
+                [Fraction(1), Fraction(2), Fraction(0), Fraction(1)],
+                [Fraction(0), Fraction(1), Fraction(3), Fraction(-1)],
+                [Fraction(2), Fraction(0), Fraction(1), Fraction(1)],
+                [Fraction(1), Fraction(-1), Fraction(0), Fraction(2)],
+            ],
+            [Fraction(2), Fraction(-1), Fraction(3), Fraction(1)],
+        ),
+        (
+            [
+                [Fraction(3), Fraction(1), Fraction(-2), Fraction(0)],
+                [Fraction(1), Fraction(0), Fraction(1), Fraction(2)],
+                [Fraction(0), Fraction(2), Fraction(1), Fraction(-1)],
+                [Fraction(2), Fraction(-1), Fraction(1), Fraction(1)],
+            ],
+            [Fraction(-1), Fraction(4), Fraction(2), Fraction(-3)],
+        ),
+    )
+
+    for matrix, q_upper in samples:
+        if determinant(matrix) == 0:
+            raise AssertionError("P-Q bridge sample matrix is singular")
+        q_lower = mat_vec(eta, q_upper)
+        p_lower = [-entry for entry in mat_vec(matrix, q_upper)]
+        p_upper = solve(transpose(matrix), [-entry for entry in q_lower])
+        shifted = mat_add(matrix, outer(p_lower, q_lower))
+
+        if dot(q_lower, q_upper) != 0:
+            raise AssertionError("Q-null contraction failed")
+        if dot(p_upper, p_lower) != 0:
+            raise AssertionError("P-null contraction failed")
+        if [-entry for entry in mat_vec(matrix, q_upper)] != p_lower:
+            raise AssertionError("minus-shift P contraction failed")
+        if [-entry for entry in mat_vec(shifted, q_upper)] != p_lower:
+            raise AssertionError("plus-shift P contraction failed")
+        if [-entry for entry in row_mat(p_upper, matrix)] != q_lower:
+            raise AssertionError("minus-shift Q contraction failed")
+        if [-entry for entry in row_mat(p_upper, shifted)] != q_lower:
+            raise AssertionError("plus-shift Q contraction failed")
+        if determinant(shifted) != determinant(matrix):
+            raise AssertionError("P-Q bridge determinant gauge changed")
+
+
 def check_qsc_large_u_coefficient_constraints() -> None:
     """Check the large-u characteristic equation for the QSC coefficient products."""
 
@@ -1887,6 +2014,7 @@ def main() -> None:
     check_t_system_to_y_system_identity()
     check_t_gauge_resolvent_hirota_factorization()
     check_t_hook_wronskian_pmu_bridge()
+    check_qsc_pq_bridge_unimodular_rank_one_update()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()
     check_qsc_collapsed_cut_shift_primitive()

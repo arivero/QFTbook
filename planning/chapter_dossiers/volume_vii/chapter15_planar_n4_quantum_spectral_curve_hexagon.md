@@ -16,6 +16,9 @@ three-point functions.
   density used before passing to the magic-sheet T-hook gauge.
 - `hat G, hat T`: magic-sheet continuations through the Zhukovsky cut.
 - `Q_i`, `omega_ij`: dual QSC variables in the `Qomega` system.
+- `Q_{a|i}`: auxiliary Q-system matrix bridging the `Pmu` and `Qomega`
+  gauges.
+- `eta^{ij}`: fixed antisymmetric tensor used to raise Q-indices.
 - `Q(u)`: weak-coupling Baxter polynomial.
 - `T(u)`: transfer polynomial in the Baxter limit.
 - `f(lambda)`: cusp anomalous dimension scaling function.
@@ -82,6 +85,14 @@ three-point functions.
   equivalence to the exact planar gauge-theory spectrum.
 - Adds the dual `Qomega` system and explains the analytic-gauge status of
   short and long cuts.
+- Adds the local `P-Q` bridge before the weak-coupling limit: the rank-one
+  finite-difference relation `Q_{a|i}^+-Q_{a|i}^-=P_a Q_i`, the contraction
+  formulae `Q_i=-P^a Q_{a|i}^-`, `P_a=-Q^i Q_{a|i}^-`, and the null
+  contractions `P_a P^a=Q_i Q^i=0`.
+- Proves that the `P-Q` contraction formulae are shift-independent and that
+  the rank-one update preserves `det Q_{a|i}`.  This records the local
+  algebraic reason for the unimodular `Q_{a|i}` gauge while keeping global
+  cut/gluing existence as a QSC framework input.
 - Derives the one-loop Baxter equation from the weak-coupling QSC
   degeneration under explicit assumptions.
 - Adds a weak-coupling `SL(2)` QSC regularity assumption specifying the
@@ -149,6 +160,10 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the sign convention in the `mu(u+i)` monodromy
   recursion against the rank-two discontinuity update and verifies
   antisymmetry of the shifted matrix.
+- The same script checks the local `P-Q` bridge exactly over rational samples:
+  plus/minus shift independence of the `P` and `Q` contractions, null
+  contractions from antisymmetric raising, and determinant preservation under
+  the rank-one update.
 - The same script checks the twist-two QSC Baxter-polynomial family for
   spins `S=1,...,8`: finite-difference equation, endpoint sign/cyclicity
   pattern, and the logarithmic-derivative energy identity `4 H_S`.

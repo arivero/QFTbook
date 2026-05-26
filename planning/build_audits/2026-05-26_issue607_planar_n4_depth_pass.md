@@ -518,3 +518,33 @@ Calculation checks added:
 
 - `check_t_gauge_resolvent_hirota_factorization()` verifies the one-row Hirota
   factorization algebra and the magic-sheet Cauchy-continuation sign.
+
+## Continuation XX: Local `P-Q` Bridge for the QSC Gauge Change
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Content added:
+
+- Expanded the `Qomega` section with the local auxiliary `Q_{a|i}` bridge
+  between the `Pmu` and `Qomega` gauges.
+- Stated the rank-one finite-difference relation
+  `Q_{a|i}^+ - Q_{a|i}^- = P_a Q_i`, the contraction formulae
+  `Q_i=-P^a Q_{a|i}^-`, `P_a=-Q^i Q_{a|i}^-`, and the null contractions
+  `P_a P^a=Q_i Q^i=0`.
+- Proved that the contraction formulae are independent of the `+/-` shift
+  and that the rank-one update preserves `det Q_{a|i}`, giving the local
+  algebraic reason for the unimodular Q-system gauge.
+- Stated the proof boundary explicitly: this local algebra does not prove
+  global cut structure, physical gluing, or existence/uniqueness of QSC
+  solutions.
+
+Calculation checks added:
+
+- `check_qsc_pq_bridge_unimodular_rank_one_update()` verifies the local
+  `P-Q` bridge over exact rational samples: antisymmetric null contractions,
+  plus/minus shift independence for both contraction formulae, and determinant
+  preservation under the rank-one update.

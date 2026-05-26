@@ -633,6 +633,118 @@ select the physical solution among many formal solutions of the same
 finite-difference equations.  They play the same role as contour data in the
 mirror TBA.
 
+\subsection{Local P-Q Bridge}
+
+The two QSC gauges are not independent systems.  Locally in a strip where the
+auxiliary \(Q\)-functions have no singularities, they are projections of a
+first-order finite-difference system.  The following algebraic statement is
+the part of that system that is used repeatedly when changing between
+short-cut and long-cut descriptions.
+
+\begin{assumption}[Local \(P\)-\(Q\) bridge]
+\label{ass:qsc-local-pq-bridge}
+Let \(Q_{a|i}(u)\), \(a,i=1,\ldots,4\), be a \(4\times4\) matrix of auxiliary
+Q-functions with nonzero determinant in the strip under consideration.  Let
+\(\chi^{ab}\) and \(\eta^{ij}\) be the fixed antisymmetric tensors used to
+raise \(P\)- and \(Q\)-indices:
+\[
+  P^a=\chi^{ab}P_b,\qquad Q^i=\eta^{ij}Q_j.
+\]
+In the local Q-system gauge assume
+\begin{align}
+  Q_{a|i}^+ - Q_{a|i}^-
+  &=
+  P_a Q_i,
+  \label{eq:qsc-local-pq-rank-one-shift}\\
+  Q_i&=-P^a Q_{a|i}^-,
+  \qquad
+  P_a=-Q^i Q_{a|i}^-,
+  \label{eq:qsc-local-pq-contractions}
+\end{align}
+with the null contractions
+\[
+  P_aP^a=0,\qquad Q_iQ^i=0.
+\]
+\end{assumption}
+
+The null contractions are automatic once the upper indices are obtained from
+antisymmetric forms and the same lower vector is contracted with itself.  They
+are nevertheless displayed because they are exactly what makes the choice of
+\(+\) or \(-\) shift harmless in the contraction formulae.
+
+\begin{proposition}[Shift independence and unimodular \(P\)-\(Q\) bridge]
+\label{prop:qsc-local-pq-unimodular-bridge}
+Under Assumption~\ref{ass:qsc-local-pq-bridge}, the contraction identities are
+independent of the shift:
+\[
+  Q_i=-P^a Q_{a|i}^+,\qquad
+  P_a=-Q^i Q_{a|i}^+ .
+  \label{eq:qsc-local-pq-shift-independent}
+\]
+Moreover
+\[
+  \det(Q_{a|i}^+)=\det(Q_{a|i}^-).
+  \label{eq:qsc-local-pq-determinant-preserved}
+\]
+\end{proposition}
+
+\begin{proof}
+Contract \eqref{eq:qsc-local-pq-rank-one-shift} with \(-P^a\).  Using
+\eqref{eq:qsc-local-pq-contractions} and \(P_aP^a=0\) gives
+\[
+  -P^aQ_{a|i}^+
+  =
+  -P^aQ_{a|i}^- - P^aP_a Q_i
+  =
+  Q_i .
+\]
+Contracting the same rank-one shift with \(-Q^i\) gives
+\[
+  -Q^iQ_{a|i}^+
+  =
+  -Q^iQ_{a|i}^- - P_a Q_iQ^i
+  =
+  P_a ,
+\]
+which proves \eqref{eq:qsc-local-pq-shift-independent}.
+
+For the determinant, write \(M_{a i}=Q_{a|i}^-\), regard \(Q^i\) as a column
+vector \(Q^\sharp\), and regard \(Q_i\) as a row vector \(Q^\flat\).  The
+second identity in \eqref{eq:qsc-local-pq-contractions} says
+\[
+  P=-M Q^\sharp .
+\]
+Therefore
+\[
+  Q_{a|i}^+
+  =
+  M_{a i}+P_aQ_i
+  =
+  \bigl(M(1-Q^\sharp Q^\flat)\bigr)_{a i}.
+\]
+The matrix-determinant lemma gives
+\[
+  \det(1-Q^\sharp Q^\flat)
+  =
+  1-Q^\flat Q^\sharp
+  =
+  1-Q_iQ^i
+  =
+  1.
+\]
+Thus \(\det(Q_{a|i}^+)=\det M=\det(Q_{a|i}^-)\).
+\end{proof}
+
+This proposition is only local algebra.  It does not prove the existence of
+global \(Q_{a|i}\) functions with the required cut structure, nor does it fix
+the physical gluing conditions.  It does explain why the QSC can be written in
+a unimodular \(Q_{a|i}\) gauge and why the formulae
+\(Q_i=-P^aQ_{a|i}^{\pm}\), \(P_a=-Q^iQ_{a|i}^{\pm}\) are conventionally quoted
+without specifying the shift: the rank-one difference has zero contraction in
+both null directions.  Nonconstant \(\ii\)-periodic changes of \(Q_{a|i}\)
+are still analytic gauge transformations; they must be fixed before large-\(u\)
+asymptotics or gluing relations are compared.
+
 \section{Weak-Coupling Baxter Limit}
 
 At weak coupling the short cut collapses to the origin in the rescaled
