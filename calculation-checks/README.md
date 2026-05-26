@@ -147,6 +147,11 @@ Current checks:
 - `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
   coefficients, quantum dimensions, and shifted character exponents.
+- `superconformal_algebra_checks.py`: exact rational checks for the
+  two-dimensional superconformal-algebra chapter, including the
+  \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary
+  norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
+  and protected Landau--Ginzburg central-charge arithmetic.
 - `cohomological_metric_descent_checks.py`: exact polynomial differential-form
   checks for the Volume VIII metric-independence chapter, including
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary

@@ -245,6 +245,14 @@ Current absorption:
   Cardy high-temperature derivation, and logarithmic CFT boundaries.  The
   Ising modular data are checked by
   `calculation-checks/cft_voa_modular_checks.py`.
+- Volume V, Chapter 15 now absorbs the chiral-algebra part of Appendix J:
+  spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and
+  \(\mathcal N=2\) superconformal OPEs and mode algebras, the Ramond
+  zero-mode shift, \(\mathcal N=2\) spectral flow, chiral-primary bounds,
+  and protected Landau--Ginzburg central-charge tests.  It explicitly
+  coordinates with the Volume VII supersymmetric-QFT lane for the actual
+  LG/GLSM RG-flow construction.  The finite algebra is checked by
+  `calculation-checks/superconformal_algebra_checks.py`.
 
 ### Planar Integrability
 
