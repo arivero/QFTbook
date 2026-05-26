@@ -46,6 +46,26 @@ up to the standard \(P\)-basis gauge transformations.  The tilde operation is
 analytic continuation through the short cut of the corresponding function;
 it is not complex conjugation.  On real states one imposes an additional
 reality or gluing condition relating the two sheets.
+
+\begin{definition}[QSC Riemann--Hilbert datum]
+\label{def:planar-n4-qsc-rh-datum}
+Within the planar integrability framework, a \(P\mu\) Riemann--Hilbert datum
+consists of the spectral plane with parameter \(u\in\mathbb C\), four
+single-short-cut functions \(P_a\), an antisymmetric matrix
+\(\mu_{ab}\), the fixed antisymmetric tensor \(\chi^{ab}\), and the
+continuation operation \(\widetilde{\phantom P}\) through the short cut
+\([-2g,2g]\).  The datum is required to satisfy
+\eqref{eq:planar-n4-pmu-one}--\eqref{eq:planar-n4-pmu-period},
+\eqref{eq:planar-n4-pmu-pfaffian}, regularity on the defining sheet, and
+large-\(u\) asymptotics specifying the global charges.  A physical solution
+adds state-dependent gluing conditions and cyclic single-trace constraints.
+\end{definition}
+
+This is a Riemann--Hilbert problem, not a finite collection of ordinary
+functions on one copy of the plane.  The data above tell the reader both what
+is evaluated on the defining sheet and how the functions are continued to
+the neighboring sheets.
+
 State quantum numbers enter through large-\(u\) asymptotics of \(P_a\) and
 \(\mu_{ab}\).  In the \(SL(2)\) sector with twist \(J\), spin \(S\), and
 dimension \(\Delta\), these asymptotics encode the charges
@@ -122,6 +142,40 @@ change \(\operatorname{Pf}\mu\), so the normalization can be imposed on one
 sheet and transported consistently.
 \end{proof}
 
+\begin{lemma}[Monodromy recursion for \(\mu\)]
+\label{lem:planar-n4-pmu-monodromy-recursion}
+The \(P\mu\) equations imply the one-step continuation formula
+\[
+  \mu_{ab}(u+\ii)
+  =
+  \mu_{ab}(u)
+  +P_a(u)\mu_{bc}(u)P^c(u)
+  -P_b(u)\mu_{ac}(u)P^c(u).
+  \label{eq:planar-n4-pmu-monodromy-recursion}
+\]
+Consequently, once the functions in one strip and the continued \(P\)-sheet
+are known, the shifted \(\mu\)-sheets are generated recursively by algebraic
+substitution.
+\end{lemma}
+
+\begin{proof}
+Use the pseudo-periodicity equation
+\eqref{eq:planar-n4-pmu-period} and the discontinuity equation
+\eqref{eq:planar-n4-pmu-two}:
+\[
+  \mu_{ab}(u+\ii)-\mu_{ab}(u)
+  =
+  P_a(u)\widetilde P_b(u)-P_b(u)\widetilde P_a(u).
+\]
+Substituting \(\widetilde P_b=\mu_{bc}P^c\) from
+\eqref{eq:planar-n4-pmu-one} gives
+\eqref{eq:planar-n4-pmu-monodromy-recursion}.  Applying the same identity at
+successively shifted arguments gives the recursion through the tower of
+short cuts.  The lemma is algebraic; it does not by itself prove that the
+regularity, gluing, and large-\(u\) conditions select a unique physical
+solution.
+\end{proof}
+
 \begin{quotedtheorem}[Quantum spectral curve spectral problem]
 \label{qthm:planar-n4-qsc-status}
 Within the planar \(\mathcal N=4\) integrability framework, a physical
@@ -132,7 +186,14 @@ planar scaling dimension of the state as a function of \(\lambda\).
 
 The theorem is quoted with its framework stated.  The QSC is a powerful exact
 solution of the planar integrability system; it is not presently a
-constructive definition of four-dimensional \(\mathcal N=4\) SYM.
+constructive definition of four-dimensional \(\mathcal N=4\) SYM.  In this
+chapter, the algebraic consequences of the \(P\mu\) equations are derived
+when feasible: Pfaffian preservation, monodromy recursion, the weak-coupling
+Baxter degeneration, and the one-loop dimension extraction below.  The
+existence of the single-short-cut \(P\)-functions, the normalization of the
+discontinuity coefficient in \eqref{eq:planar-n4-pmu-two}, the physical
+gluing conditions, and the equivalence to the exact planar gauge-theory
+spectrum remain QSC framework inputs.
 
 \section{Q-Omega System and Gauge Choices}
 

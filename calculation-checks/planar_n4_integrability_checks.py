@@ -679,6 +679,28 @@ def check_pmu_pfaffian_rank_two_update() -> None:
     ]
     assert_close("Pmu Pfaffian rank-two update", pfaffian_4(updated), pfaffian_4(mu))
 
+    shifted_by_recursion = [
+        [
+            mu[row][col]
+            + p[row] * sum(mu[col][k] * p_sharp[k] for k in range(4))
+            - p[col] * sum(mu[row][k] * p_sharp[k] for k in range(4))
+            for col in range(4)
+        ]
+        for row in range(4)
+    ]
+    for row in range(4):
+        for col in range(4):
+            assert_close(
+                "Pmu monodromy recursion equals discontinuity update",
+                shifted_by_recursion[row][col],
+                updated[row][col],
+            )
+            assert_close(
+                "Pmu monodromy recursion preserves antisymmetry",
+                shifted_by_recursion[row][col],
+                -shifted_by_recursion[col][row],
+            )
+
 
 def main() -> None:
     check_so6_hamiltonian_reduces_to_su2()

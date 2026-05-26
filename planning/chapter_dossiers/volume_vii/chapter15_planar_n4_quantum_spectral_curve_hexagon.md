@@ -27,12 +27,24 @@ three-point functions.
 ## Claim Ledger
 
 - Defines the Pmu system, periodicity, cuts, and charge-carrying asymptotics.
+- Adds a QSC Riemann-Hilbert datum definition: spectral plane, single-cut
+  `P_a`, antisymmetric `mu_ab`, fixed `chi`, tilde continuation, regularity,
+  large-`u` charge asymptotics, gluing data, and cyclic single-trace
+  constraints.
 - Adds the Pfaffian normalization and proves its preservation under the
   rank-two Pmu discontinuity update.
+- Proves the one-step `mu(u+i)` monodromy recursion from pseudo-periodicity,
+  the discontinuity equation, and `tilde P_a = mu_ab P^b`.  The proof also
+  states the boundary: the recursion is algebraic and does not itself prove
+  physical existence/uniqueness.
 - Adds explicit `SL(2)` QSC large-`u` asymptotics and algebraic coefficient
   constraints.
 - States the QSC spectral claim as a quoted theorem inside the planar
   integrability framework.
+- Adds a status boundary after the quoted theorem separating local derivations
+  in the chapter from QSC framework inputs: existence of single-short-cut
+  functions, the normalized discontinuity coefficient, physical gluing, and
+  equivalence to the exact planar gauge-theory spectrum.
 - Adds the dual `Qomega` system and explains the analytic-gauge status of
   short and long cuts.
 - Derives the one-loop Baxter equation from the weak-coupling QSC
@@ -70,6 +82,9 @@ structure and the pair-of-pants-to-hexagons cut.
   `calculation-checks/planar_n4_integrability_checks.py`.
 - The same script now checks the explicit Konishi Baxter polynomial and the
   Pmu Pfaffian rank-two update.
+- The same script checks the sign convention in the `mu(u+i)` monodromy
+  recursion against the rank-two discontinuity update and verifies
+  antisymmetry of the shifted matrix.
 - The same script checks the twist-two QSC Baxter-polynomial family for
   spins `S=1,...,8`: finite-difference equation, endpoint sign/cyclicity
   pattern, and the logarithmic-derivative energy identity `4 H_S`.

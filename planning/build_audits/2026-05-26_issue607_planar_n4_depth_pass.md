@@ -136,6 +136,24 @@
   equation, endpoint/cyclicity signs, harmonic-number energy identity, and
   `Delta_{J=2,S}=2+S+8g^2 H_S+O(g^4)` for physical even spin.
 
+## Comprehensive Development Continuation IV
+
+- Further expanded Chapter 15's QSC foundations before the weak limit.
+  Added a QSC Riemann-Hilbert datum definition that states the spectral
+  plane, single-short-cut `P_a` functions, antisymmetric `mu_ab`, fixed
+  `chi`, tilde continuation, regularity, large-`u` asymptotics, gluing data,
+  and cyclic single-trace constraints.
+- Proved the one-step monodromy recursion
+  `mu_ab(u+i)=mu_ab(u)+P_a mu_bc P^c-P_b mu_ac P^c` from
+  pseudo-periodicity, the discontinuity equation, and
+  `tilde P_a=mu_ab P^b`.  The text explicitly separates this algebraic
+  continuation mechanism from the unproved physical existence/uniqueness
+  input.
+- Added a QSC status boundary after the quoted theorem, listing what the
+  chapter derives locally and what remains framework input: existence of
+  single-short-cut functions, the normalized discontinuity coefficient,
+  physical gluing, and equivalence to the exact planar gauge-theory spectrum.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -167,6 +185,8 @@
   displayed orders;
 - local Hirota-to-Y-system algebra.
 - QSC `Pmu` Pfaffian preservation under the rank-two discontinuity update.
+- QSC `Pmu` monodromy-recursion signs and antisymmetry of the shifted
+  `mu` matrix.
 
 ## Status
 
