@@ -513,7 +513,8 @@ Current checks:
   hypersurface GLSM gauge-invariance arithmetic, axial-anomaly charge sums,
   positive-chamber hypersurface dimensions, and negative-chamber residual
   finite-gauge-group orders, together with the A/B twist spin-shift ledger
-  that identifies the scalar supercharges.
+  that identifies the scalar supercharges and the abelian circle-duality
+  momentum-winding/Legendre-Hessian inversion checks.
 - `susy_n1_conifold_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) conifold SCFT and cascade section,
   including the KW \(R\)-anomaly, \(\gamma=2\mathcal C\) NSVZ convention,

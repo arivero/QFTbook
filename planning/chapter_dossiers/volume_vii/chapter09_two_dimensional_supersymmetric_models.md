@@ -23,6 +23,11 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   functional.
 - `X`, `g_i bar j`, `B`, `omega`, `chi^a`: sigma-model target, Kahler
   metric, `B`-field, Kahler form, and A-model odd zero modes.
+- `vartheta`, `tilde vartheta`, `R`, `A`: compact scalar, dual compact
+  scalar, radius, and first-order abelian duality one-form.
+- `mathcal B`, `Y`, `u=Y+bar Y`, `K`, `tilde K`: local real superfield,
+  twisted-chiral dual variable, real Legendre coordinate, original Kahler
+  potential, and dual Kahler potential in abelian `N=(2,2)` duality.
 - `G`, `V`, `r`, `Q_i`, `t`, `sigma`: GLSM gauge group, matter
   representation, Fayet-Iliopoulos coordinate, charges, complexified
   FI-theta coordinate, and vector-multiplet scalar.
@@ -60,6 +65,19 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
 - States the A-model holomorphic-map energy decomposition and names the
   compactification/orientation/contact-term inputs required for genuine
   correlation functions.
+- Defines abelian duality as an intrinsic two-dimensional QFT operation,
+  not a string-theoretic mirror-symmetry argument.
+- States the compact scalar first-order duality hypotheses, including
+  winding sectors, integral-period normalization, Gaussian contour, and
+  determinant normalization.
+- Proves the local compact-scalar radius inversion `R -> R^{-1}` from the
+  first-order Gaussian path integral and records the momentum-winding
+  spectrum test.
+- Defines the local `N=(2,2)` chiral/twisted-chiral Legendre-transform
+  duality datum and proves the Hessian inversion `tilde K'' = 1/K''`.
+- Records the GLSM charged-chiral dualization ledger and marks
+  nonperturbative exponential twisted-superpotential terms as requiring a
+  separate vortex-instanton compactness/zero-mode/determinant proof.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -83,7 +101,9 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   - quintic Landau-Ginzburg central charge `c=9` and Jacobi dimension `4^5`;
   - hypersurface GLSM gauge-invariance, axial-anomaly sum, positive-chamber
     dimension, and negative-chamber residual finite group order;
-  - A/B twist spin shifts and scalar-supercharge nilpotence ledger.
+  - A/B twist spin shifts and scalar-supercharge nilpotence ledger;
+  - abelian circle-duality momentum-winding spectrum invariance and
+    chiral/twisted-chiral Legendre-Hessian inversion.
 
 ## Figure Ledger
 

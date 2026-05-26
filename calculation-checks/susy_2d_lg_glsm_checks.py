@@ -135,11 +135,59 @@ def check_twist_spin_ledger() -> None:
             raise AssertionError(f"{label} should vanish in the local algebra")
 
 
+def check_abelian_circle_duality() -> None:
+    for radius in [Fraction(2, 3), Fraction(3, 2), Fraction(5, 4), Fraction(7, 5)]:
+        dual_radius = 1 / radius
+        assert_equal("circle duality is involutive", 1 / dual_radius, radius)
+
+        for momentum in range(-4, 5):
+            for winding in range(-4, 5):
+                p_left = Fraction(momentum, 1) / radius + winding * radius
+                p_right = Fraction(momentum, 1) / radius - winding * radius
+                dual_p_left = Fraction(winding, 1) / dual_radius + momentum * dual_radius
+                dual_p_right = Fraction(winding, 1) / dual_radius - momentum * dual_radius
+
+                assert_equal("T-dual left-moving momentum", dual_p_left, p_left)
+                assert_equal("T-dual right-moving momentum sign", dual_p_right, -p_right)
+                assert_equal(
+                    "T-dual zero-mode quadratic form",
+                    dual_p_left**2 + dual_p_right**2,
+                    p_left**2 + p_right**2,
+                )
+
+
+def check_abelian_legendre_duality() -> None:
+    for radius_squared in [Fraction(4, 9), Fraction(9, 4), Fraction(25, 16), Fraction(7, 3)]:
+        kahler_hessian = radius_squared
+        dual_hessian = 1 / kahler_hessian
+        assert_equal("Legendre Hessian inverse", kahler_hessian * dual_hessian, 1)
+        assert_equal("free chiral radius-squared inversion", dual_hessian, 1 / radius_squared)
+
+        # Add an affine term K(B)=a B^2/2 + b B + c.  It shifts the
+        # Legendre coordinate u=aB+b but does not change the dual Hessian.
+        affine_slope = Fraction(5, 7)
+        for u_value in [Fraction(-3, 2), Fraction(1, 5), Fraction(11, 6)]:
+            b_value = (u_value - affine_slope) / radius_squared
+            assert_equal(
+                "affine-shifted Legendre equation",
+                radius_squared * b_value + affine_slope,
+                u_value,
+            )
+            derivative_dual_b_wrt_u = 1 / radius_squared
+            assert_equal(
+                "affine-shifted Legendre inverse Hessian",
+                derivative_dual_b_wrt_u,
+                dual_hessian,
+            )
+
+
 def main() -> None:
     check_a_series_lg()
     check_fermat_tensor_products()
     check_hypersurface_glsm_ledger()
     check_twist_spin_ledger()
+    check_abelian_circle_duality()
+    check_abelian_legendre_duality()
     print("All 2D SUSY LG/GLSM checks passed.")
 
 
