@@ -202,6 +202,73 @@ The Wick powers are
   :\!X_N^3\!:=X_N^3-3C_N(0)X_N .
 \]
 
+\begin{lemma}[Two-dimensional massive-convolution bound]
+\label{lem:spde-massive-convolution-bound}
+Let
+\[
+  g(k)=\frac{1}{1+|k|^2},\qquad
+  L(k)=1+\log(2+|k|),
+  \qquad k\in\mathbb Z^2 .
+\]
+For every integer \(n\geq1\) there is \(C_n<\infty\) such that the
+\(n\)-fold lattice convolution satisfies
+\begin{equation}
+  g^{*n}(q)
+  \leq
+  C_n\,\frac{L(q)^{n-1}}{1+|q|^2},
+  \qquad q\in\mathbb Z^2 .
+  \label{eq:spde-lattice-convolution-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The case \(n=1\) is the definition.  The induction step is the elementary
+estimate
+\begin{equation}
+  \sum_{p\in\mathbb Z^2}
+  \frac{L(p)^a}{(1+|p|^2)(1+|q-p|^2)}
+  \leq
+  C_a\,\frac{L(q)^{a+1}}{1+|q|^2},
+  \qquad a\geq0 .
+  \label{eq:spde-convolution-induction-estimate}
+\end{equation}
+For \(|q|\leq4\) the left side is finite and the estimate is absorbed into
+the constant.  Assume \(|q|>4\).  Split the sum into three regions:
+\[
+  A=\{|p|\leq |q|/2\},\qquad
+  B=\{|q-p|\leq |q|/2\},\qquad
+  C=(A\cup B)^c .
+\]
+On \(A\), \(1+|q-p|^2\geq c(1+|q|^2)\), and
+\[
+  \sum_{|p|\leq |q|/2}\frac{L(p)^a}{1+|p|^2}
+  \leq
+  C_a L(q)^{a+1},
+\]
+because the two-dimensional shell of radius \(r\) contributes
+\(\lesssim r^{-1}(1+\log r)^a\).  This proves the desired bound on \(A\).
+The region \(B\) is identical after replacing \(r=q-p\): then
+\(|p|\geq |q|/2\), \(L(p)\leq C L(q)\), and the remaining
+\(\sum_{|r|\leq |q|/2}(1+|r|^2)^{-1}\) contributes one additional
+logarithm.
+On \(C\), both \(|p|\) and \(|q-p|\) are \(\geq |q|/2\).  Decompose \(C\)
+into dyadic annuli \(|p|\sim 2^j|q|\) and
+\(|q-p|\sim 2^k|q|\).  The number of lattice points in a two-dimensional
+dyadic annulus of radius \(R\) is \(O(R^2)\), while the summand is bounded
+by \(C L(p)^a/(|p|^2|q-p|^2)\).  Summing first over the smaller of the two
+annuli and then over the larger gives
+\[
+  \sum_{p\in C}
+  \frac{L(p)^a}{(1+|p|^2)(1+|q-p|^2)}
+  \leq
+  C_a\frac{L(q)^a}{1+|q|^2}.
+\]
+Combining the three regions proves
+\eqref{eq:spde-convolution-induction-estimate}.  Applying it with
+\(a=n-1\) to \(g*g^{*n}\) proves
+\eqref{eq:spde-lattice-convolution-bound} by induction.
+\end{proof}
+
 \begin{proposition}[Smeared Wick powers of the two-dimensional stochastic convolution]
 \label{prop:spde-two-dimensional-wick-powers}
 For every \(n\geq1\) and every \(f\in C^\infty(\mathbb T^2)\), the random
@@ -210,7 +277,7 @@ variables
   :\!X_N^n\!:(f)=\int_{\mathbb T^2}f(x):\!X_N(x)^n\!:\,\dd^2x
 \]
 converge in \(L^2(\Omega)\) as \(N\to\infty\).  Moreover, for every
-\(s>1\), the fields \(:\!X_N^n\!:\) converge in
+\(s>0\), the fields \(:\!X_N^n\!:\) converge in
 \(L^2(\Omega;H^{-s}(\mathbb T^2))\).
 \end{proposition}
 
@@ -260,17 +327,35 @@ For the Sobolev statement, use the dual norm
 \]
 Applying \eqref{eq:spde-wick-power-covariance} to Fourier test functions
 shows that
+\begin{equation}
+  \mathbb E|\widehat{:\!X_N^n\!:}(q)|^2
+  =
+  n!\!
+  \sum_{\substack{k_1+\cdots+k_n=q\\ |k_i|\leq N}}
+  \prod_{i=1}^n\frac{1}{|k_i|^2+m^2}.
+  \label{eq:spde-wick-fourier-variance-convolution}
+\end{equation}
+The right side is bounded by
+\(C_{n,m}L(q)^{n-1}(1+|q|^2)^{-1}\) by
+Lemma~\ref{lem:spde-massive-convolution-bound}.  Therefore
 \[
-  \mathbb E|\widehat{:\!X_N^n\!:}(q)
-          -\widehat{:\!X_M^n\!:}(q)|^2
+  \sum_{q\in\mathbb Z^2}
+  (1+|q|^2)^{-s}
+  \mathbb E|\widehat{:\!X_N^n\!:}(q)|^2
+  \leq
+  C_{n,m}
+  \sum_{q\in\mathbb Z^2}
+  \frac{L(q)^{n-1}}{(1+|q|^2)^{1+s}}<\infty
 \]
-is the \(q\)-th Fourier coefficient of the integrable kernel
-\(n!\,(C_N^n-2C_{N,M}^n+C_M^n)\), and hence is bounded uniformly in \(q\) by
-the \(L^1\)-norm of that kernel.  The same dominated-convergence argument
-shows this \(L^1\)-norm tends to zero.  Since
-\(\sum_q(1+|q|^2)^{-s}<\infty\) for \(s>1\) in two dimensions, dominated
-convergence over \(q\) proves convergence in
-\(L^2(\Omega;H^{-s})\).
+for every \(s>0\).  For fixed \(q\), the cutoff variances and mixed
+covariances converge by dominated convergence of the convolution sums.
+The same convolution bound dominates
+\(\mathbb E|\widehat{:\!X_N^n\!:}(q)
+          -\widehat{:\!X_M^n\!:}(q)|^2\), up to a harmless constant, so
+dominated convergence over \(q\) proves convergence in
+\(L^2(\Omega;H^{-s})\).  In particular the stochastic input needed by the
+Sobolev DPD fixed point below is available for any prescribed
+\(0<\kappa<1/4\) after taking \(s=\kappa\).
 \end{proof}
 
 \begin{proposition}[Heat-kernel smoothing estimate]
@@ -352,6 +437,214 @@ In two dimensions the products in
 \(:\!X^2\!:\) and \(:\!X^3\!:\) are constructed as Wick powers, because the
 unknown \(Y\) gains positive parabolic regularity from the heat operator.
 
+\begin{lemma}[Sobolev products for the DPD fixed point]
+\label{lem:spde-dpd-sobolev-products}
+Let \(0<\kappa<1/4\) and set \(\beta=1+2\kappa\).  On \(\mathbb T^2\),
+there is \(C_\kappa<\infty\) such that
+\begin{align}
+  \|uv\|_{H^\beta}
+  &\leq C_\kappa\|u\|_{H^\beta}\|v\|_{H^\beta},
+  \label{eq:spde-hbeta-algebra}\\
+  \|uv\|_{H^{-\kappa}}
+  &\leq C_\kappa\|u\|_{H^\beta}\|v\|_{H^{-\kappa}},
+  \label{eq:spde-hbeta-negative-multiplier}
+\end{align}
+for \(u,v\) in the indicated spaces.  Consequently, if
+\(\mathbb X=(X,X^{(2)},X^{(3)})\in C([0,T];H^{-\kappa})^3\) and
+\begin{equation}
+  \mathcal N(Y,\mathbb X)
+  =
+  Y^3+3Y^2X+3YX^{(2)}+X^{(3)},
+  \label{eq:spde-dpd-nonlinearity}
+\end{equation}
+then \(\mathcal N(Y,\mathbb X)\in C([0,T];H^{-\kappa})\) for every
+\(Y\in C([0,T];H^\beta)\).  We write
+\[
+  \|\mathbb X\|_{C_TH^{-\kappa}}
+  =
+  \max_{1\leq j\leq3}\|X^{(j)}\|_{C([0,T];H^{-\kappa})},
+  \qquad X^{(1)}=X,
+\]
+and for
+\(\|Y\|_{C_TH^\beta},\|Z\|_{C_TH^\beta}\leq R\),
+\begin{equation}
+  \|\mathcal N(Y,\mathbb X)-\mathcal N(Z,\mathbb X)\|_{C_TH^{-\kappa}}
+  \leq
+  C_{\kappa,R}\bigl(1+\|\mathbb X\|_{C_TH^{-\kappa}}\bigr)
+  \|Y-Z\|_{C_TH^\beta}.
+  \label{eq:spde-dpd-nonlinearity-lipschitz}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We recall the dyadic proof because this is the exact multiplication input in
+the fixed point.  Let \(\Delta_j\) be a Littlewood--Paley partition on the
+torus and \(S_j=\sum_{i<j}\Delta_i\).  Bony's decomposition writes
+\[
+  uv=u\prec v+u\circ v+u\succ v,
+  \qquad
+  u\prec v=\sum_j S_{j-1}u\,\Delta_jv ,
+\]
+with \(u\circ v=\sum_{|i-j|\leq1}\Delta_i u\,\Delta_jv\).  Bernstein's
+inequality in two dimensions gives
+\begin{equation}
+  \|\Delta_j u\|_{L^\infty}\leq C2^{j(1-\beta)}\|u\|_{H^\beta}
+  \qquad(\beta>1),
+  \label{eq:spde-bernstein-hbeta-linfty-block}
+\end{equation}
+and summing in \(j\) gives \(H^\beta\hookrightarrow L^\infty\).  The
+paraproduct estimates following from the almost-disjoint frequency supports
+are
+\begin{equation}
+  \|u\prec v\|_{H^s}+\|u\succ v\|_{H^s}
+  \leq C\|u\|_{L^\infty}\|v\|_{H^s}
+       +C\|v\|_{L^\infty}\|u\|_{H^s},
+\end{equation}
+and, for the resonant term,
+\begin{equation}
+  \|u\circ v\|_{H^{s+t-1}}
+  \leq C\|u\|_{H^s}\|v\|_{H^t}
+  \quad\text{when }s+t>1 .
+  \label{eq:spde-resonant-product-estimate}
+\end{equation}
+Indeed, \(\Delta_\ell(u\prec v)\) only receives terms with
+\(|j-\ell|\leq O(1)\), so
+\[
+  2^{\ell s}\|\Delta_\ell(u\prec v)\|_{L^2}
+  \leq
+  C\|u\|_{L^\infty}
+  \sum_{|j-\ell|\leq O(1)}2^{js}\|\Delta_jv\|_{L^2},
+\]
+and square summation in \(\ell\) gives the first paraproduct bound; the
+bound for \(u\succ v\) is identical.  For \(u\circ v\), the product
+\(\Delta_i u\,\Delta_j v\) with \(|i-j|\leq1\) has frequencies
+\(\lesssim 2^j\).  Bernstein and Cauchy--Schwarz give
+\(\|\Delta_i u\,\Delta_jv\|_{L^2}\leq
+C2^{j(1-s-t)}a_ib_j\), where
+\(a_j=2^{js}\|\Delta_j u\|_{L^2}\) and
+\(b_j=2^{jt}\|\Delta_jv\|_{L^2}\).  Multiplication by the
+\(H^{s+t-1}\) weight cancels the factor \(2^{j(1-s-t)}\), and the condition
+\(s+t>1\) makes the finite-overlap high-frequency convolution summable.
+Taking \(s=t=\beta\) gives the algebra estimate
+\eqref{eq:spde-hbeta-algebra}, since \(2\beta-1>\beta\).  Taking
+\(s=\beta\) and \(t=-\kappa\) gives
+\(\beta-\kappa>1\), so the resonant term lands in
+\(H^{\beta-\kappa-1}\).  Because \(\beta-\kappa-1=\kappa>-\kappa\), this
+term is in \(H^{-\kappa}\), and the two paraproduct terms are controlled by
+the \(L^\infty\) embedding of \(H^\beta\).  This proves
+\eqref{eq:spde-hbeta-negative-multiplier}.
+
+The bounds on \(\mathcal N\) follow by applying
+\eqref{eq:spde-hbeta-algebra} and
+\eqref{eq:spde-hbeta-negative-multiplier} term by term:
+\[
+  \|Y^3\|_{H^\beta}\leq C\|Y\|_{H^\beta}^3,
+  \quad
+  \|Y^2X\|_{H^{-\kappa}}\leq C\|Y\|_{H^\beta}^2\|X\|_{H^{-\kappa}},
+\]
+and similarly for \(YX^{(2)}\).  For the Lipschitz estimate, use
+\[
+  Y^3-Z^3=(Y-Z)(Y^2+YZ+Z^2),
+  \qquad
+  Y^2X-Z^2X=(Y-Z)(Y+Z)X,
+\]
+and the same two product estimates.  This gives
+\eqref{eq:spde-dpd-nonlinearity-lipschitz}.
+\end{proof}
+
+\begin{theorem}[Deterministic DPD local fixed point in Sobolev coordinates]
+\label{thm:spde-dpd-deterministic-local-fixed-point}
+Let \(0<\kappa<1/4\), \(\beta=1+2\kappa\), \(m^2>0\), \(\lambda>0\), and
+\[
+  \mathbb X=(X,X^{(2)},X^{(3)})\in C([0,T_0];H^{-\kappa}(\mathbb T^2))^3 .
+\]
+Set
+\[
+  M_{\mathbb X}
+  =
+  \max_{1\leq j\leq3}
+  \|X^{(j)}\|_{C([0,T_0];H^{-\kappa})},
+  \qquad X^{(1)}=X .
+\]
+For every \(Y_0\in H^\beta(\mathbb T^2)\) there is
+\(T\in(0,T_0]\), depending only on
+\(\|Y_0\|_{H^\beta}\), \(\lambda\), \(m\), \(\kappa\), and \(M_{\mathbb X}\),
+such that the mild equation
+\begin{equation}
+  Y(t)
+  =
+  e^{t(\Delta-m^2)}Y_0
+  -
+  \lambda\int_0^t
+  e^{(t-s)(\Delta-m^2)}
+  \mathcal N(Y(s),\mathbb X(s))\,\dd s
+  \label{eq:spde-dpd-mild-fixed-point}
+\end{equation}
+has a unique solution \(Y\in C([0,T];H^\beta)\).  The solution depends
+locally Lipschitz continuously on \(Y_0\) and on \(\mathbb X\) in these
+norms.
+\end{theorem}
+
+\begin{proof}
+Let \(C_T H^r=C([0,T];H^r)\) and put \(A=\Delta-m^2\).  Define
+\[
+  (\Psi Y)(t)
+  =
+  e^{tA}Y_0
+  -
+  \lambda\int_0^t e^{(t-s)A}\mathcal N(Y(s),\mathbb X(s))\,\dd s .
+\]
+The forcing belongs to \(C_T H^{-\kappa}\) by
+Lemma~\ref{lem:spde-dpd-sobolev-products}.  To estimate the Duhamel term in
+\(H^\beta\), use Proposition~\ref{prop:spde-heat-kernel-smoothing} with
+\[
+  r=-\kappa,\qquad
+  r+2\theta=\beta,\qquad
+  \theta=\frac{\beta+\kappa}{2}=\frac{1+3\kappa}{2}.
+\]
+Since \(\kappa<1/4\), \(\theta<1\).  Hence
+\begin{equation}
+  \left\|
+    \int_0^t e^{(t-s)A}F(s)\,\dd s
+  \right\|_{C_TH^\beta}
+  \leq
+  C_{\kappa,m}T^{1-\theta}\|F\|_{C_TH^{-\kappa}} .
+  \label{eq:spde-dpd-duhamel-time-gain}
+\end{equation}
+Choose \(R=2C\|Y_0\|_{H^\beta}+1\), where \(C\) bounds the heat semigroup
+on \(H^\beta\).  Lemma~\ref{lem:spde-dpd-sobolev-products} gives, for
+\(\|Y\|_{C_TH^\beta}\leq R\),
+\[
+  \|\mathcal N(Y,\mathbb X)\|_{C_TH^{-\kappa}}
+  \leq
+  C_{\kappa,R}\bigl(1+\|\mathbb X\|_{C_TH^{-\kappa}}\bigr).
+\]
+By \eqref{eq:spde-dpd-duhamel-time-gain}, \(T\) can be chosen so small that
+\(\Psi\) maps the closed ball \(B_R\subset C_TH^\beta\) into itself.
+For \(Y,Z\in B_R\), equations
+\eqref{eq:spde-dpd-nonlinearity-lipschitz} and
+\eqref{eq:spde-dpd-duhamel-time-gain} give
+\[
+  \|\Psi Y-\Psi Z\|_{C_TH^\beta}
+  \leq
+  |\lambda|C_{\kappa,R,m}
+  T^{1-\theta}
+  \bigl(1+\|\mathbb X\|_{C_TH^{-\kappa}}\bigr)
+  \|Y-Z\|_{C_TH^\beta}.
+\]
+Reducing \(T\) once more makes the coefficient \(<1\).  Banach's fixed-point
+theorem gives a unique fixed point in \(B_R\).  The same contraction
+estimate applied to two sets of data gives local Lipschitz dependence,
+after taking the smaller of the two local existence times.
+\end{proof}
+
+This theorem is deliberately weaker than the sharp Da Prato--Debussche
+theorem in Holder--Besov spaces, but it proves the exact deterministic
+logic: enhanced noise first makes every term in the nonlinearity meaningful,
+then heat smoothing supplies a positive time power, and the local solution
+is obtained by contraction.  The remaining global and invariant-measure
+steps require estimates beyond this local theorem.
+
 \begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
 \label{thm:dpd-solution-mechanism}
 Fix \(m^2>0\), \(\lambda>0\), and a finite spatial torus in dimension two.
@@ -388,11 +681,13 @@ sharp Da Prato--Debussche proof uses the corresponding parabolic
 Besov--Holder estimates.  Proposition~\ref{prop:spde-two-dimensional-wick-powers}
 constructs the Wick powers in a Sobolev topology; the sharper statement used
 in the fixed point places \(:\!X^2\!:\) and \(:\!X^3\!:\) in negative
-Holder/Besov spaces of arbitrarily small negative regularity.  The remaining
-products contain at least one factor \(Y\) with positive regularity and are
-therefore defined by Besov or Holder multiplication.  These estimates make
-the mild map a contraction on a short time interval.  Multiplying the
-equation by \(Y\), integrating over space, and using the sign of
+Holder/Besov spaces of arbitrarily small negative regularity.
+Lemma~\ref{lem:spde-dpd-sobolev-products} and
+Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} give a
+self-contained Sobolev version of the local fixed-point argument.  The sharp
+proof upgrades these Sobolev exponents to the scale-invariant parabolic
+Besov--Holder spaces.  Multiplying the equation by \(Y\), integrating over
+space, and using the sign of
 \(\lambda Y^4\) gives an energy inequality with random lower-order forcing;
 that estimate prevents blowup and gives global solutions.  The invariant law
 is identified by applying the finite-cutoff Langevin identity and proving

@@ -69,7 +69,9 @@ Current checks:
   \(\Phi^4_3\) sunset combinatorics giving the logarithmic mass-coordinate
   coefficient in the chapter's \(\lambda\phi^4+\alpha\phi^2\)
   normalization, plus the stochastic-quantization OU variance, two
-  negative-Sobolev threshold checks, and heat-kernel smoothing optimization.
+  negative-Sobolev threshold checks, heat-kernel smoothing optimization, and
+  the Sobolev exponent inequalities used in the Da Prato--Debussche local
+  fixed-point proof.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
   exact free-scalar pole mass and correlation length, the Gaussian

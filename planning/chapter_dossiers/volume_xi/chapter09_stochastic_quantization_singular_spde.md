@@ -29,6 +29,11 @@ data.
 - `mu`: invariant Euclidean measure of the Markov process.
 - `X_mathbb`: enhanced Da Prato--Debussche noise
   \((X,:X^2:,:X^3:)\).
+- `kappa`, `beta`: Sobolev exponents in the self-contained DPD proof, with
+  \(0<\kappa<1/4\) and \(\beta=1+2\kappa\).
+- `mathcal N(Y,X_mathbb)`: DPD renormalized cubic nonlinearity
+  \(Y^3+3Y^2X+3YX^{(2)}+X^{(3)}\).
+- `Psi`: mild fixed-point map for the DPD remainder equation.
 - `R F`: reconstruction of a modelled distribution.
 
 ## Claim Ledger
@@ -45,12 +50,23 @@ data.
   bound.
 - Proves a Sobolev-level convergence theorem for smeared Wick powers of the
   two-dimensional stochastic convolution, including convergence in
-  \(L^2(\Omega;H^{-s})\) for \(s>1\).
+  \(L^2(\Omega;H^{-s})\) for every \(s>0\), using a two-dimensional
+  massive-propagator convolution bound.
 - Proves the Fourier heat-kernel smoothing estimate used as the Sobolev
   model for the parabolic Schauder estimates in the DPD fixed point.
+- Proves the Sobolev product estimates used in the elementary DPD fixed point:
+  \(H^\beta H^\beta\subset H^\beta\) and
+  \(H^\beta H^{-\kappa}\subset H^{-\kappa}\), using a dyadic
+  Littlewood--Paley/Bony decomposition.
+- Proves a deterministic local mild fixed-point theorem for the DPD
+  remainder equation with enhanced noise in
+  \(C([0,T];H^{-\kappa})^3\), including the heat-smoothing time gain
+  \(T^{1-\theta}\), \(\theta=(1+3\kappa)/2<1\), and local Lipschitz
+  dependence on initial data and enhanced noise.
 - Develops the Da Prato--Debussche decomposition for `Phi^4_2`, identifies
-  the role of the enhanced noise, and marks the solution mechanism as a
-  `quotedtheorem` pending a self-contained proof.
+  the role of the enhanced noise, proves a Sobolev local fixed-point version,
+  and marks the sharper global Besov/Holder solution mechanism as a
+  `quotedtheorem` pending the full self-contained proof.
 - Defines regularity structures, models, and the reconstruction theorem at the
   level needed for singular SPDE; the reconstruction theorem is now a
   `quotedtheorem` with the wavelet-coefficient mechanism recorded as a role
@@ -98,3 +114,11 @@ data maps.
   convergence in two dimensions, and a Fourier heat-kernel smoothing
   estimate.  The calculation-check companion verifies the OU variance,
   Sobolev threshold arithmetic, and heat-kernel optimization.
+- 2026-05-25 DPD fixed-point pass: the chapter now proves the deterministic
+  Sobolev local fixed-point component of the DPD construction internally.
+  The pass also sharpens the Wick-power Sobolev theorem from the earlier
+  crude \(s>1\) estimate to every \(s>0\), closing the regularity input
+  needed for the displayed Sobolev DPD theorem.  The proof displays the
+  Littlewood--Paley product bounds, constructs the mild map, proves the
+  contraction from the Duhamel time gain, and adds a calculation-check gate
+  for the exponent inequalities.

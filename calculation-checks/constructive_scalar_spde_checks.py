@@ -125,11 +125,12 @@ def check_spde_ou_and_smoothing_normalizations():
     if not shell_exponent < -1:
         raise AssertionError("2D OU negative-Sobolev convergence threshold failed")
 
-    # The elementary Wick-power Sobolev proof bounds Fourier coefficients by
-    # an L^1 kernel norm, leaving sum_q (1+|q|^2)^(-s), whose two-dimensional
-    # shell exponent is 1 - 2s; convergence requires s > 1.
-    s_wick = Fraction(6, 5)
-    wick_shell_exponent = Fraction(1, 1) - 2 * s_wick
+    # The sharpened Wick-power Sobolev proof uses the two-dimensional
+    # n-fold massive-propagator convolution bound
+    # G^{*n}(q) <= log(q)^(n-1) / q^2.  With H^{-s} weight the shell
+    # exponent is r * r^{-2s} * r^{-2} = r^{-1-2s}, so any s > 0 works.
+    s_wick = Fraction(1, 5)
+    wick_shell_exponent = Fraction(1, 1) - 2 * s_wick - 2
     if not wick_shell_exponent < -1:
         raise AssertionError("2D Wick H^{-s} convergence threshold failed")
 
@@ -144,13 +145,53 @@ def check_spde_ou_and_smoothing_normalizations():
         raise AssertionError("heat-kernel smoothing optimization failed")
 
 
+def check_dpd_sobolev_fixed_point_exponents():
+    # The Sobolev DPD proof in Volume XI Chapter 9 takes
+    # beta = 1 + 2 kappa on T^2.  The conditions below are the exact
+    # inequalities used in the multiplication and heat-smoothing proof.
+    kappa = Fraction(1, 5)
+    beta = 1 + 2 * kappa
+    assert_equal(beta, Fraction(7, 5), "DPD beta value")
+
+    if not (0 < kappa < Fraction(1, 4)):
+        raise AssertionError("DPD kappa range failed")
+    if not beta > 1:
+        raise AssertionError("H^beta is not above the 2D algebra threshold")
+
+    # H^beta * H^beta -> H^beta follows from the resonant estimate landing in
+    # H^(2 beta - 1), which must be at least H^beta.
+    algebra_gain = 2 * beta - 1 - beta
+    assert_equal(algebra_gain, Fraction(2, 5), "DPD algebra gain")
+    if not algebra_gain > 0:
+        raise AssertionError("DPD algebra resonance estimate failed")
+
+    # H^beta * H^(-kappa) -> H^(-kappa) uses beta - kappa > 1 and the
+    # resonant regularity beta - kappa - 1 = kappa > -kappa.
+    multiplier_threshold = beta - kappa - 1
+    assert_equal(multiplier_threshold, kappa, "DPD multiplier resonant output")
+    if not beta - kappa > 1:
+        raise AssertionError("DPD multiplier resonance threshold failed")
+    if not multiplier_threshold > -kappa:
+        raise AssertionError("DPD multiplier output does not dominate H^-kappa")
+
+    # Heat smoothing from H^(-kappa) to H^beta requires
+    # theta = (beta + kappa)/2 < 1 so that the Duhamel integral gains
+    # T^(1-theta).
+    theta = (beta + kappa) / 2
+    assert_equal(theta, Fraction(4, 5), "DPD heat-smoothing theta")
+    assert_equal(1 - theta, Fraction(1, 5), "DPD Duhamel time gain")
+    if not theta < 1:
+        raise AssertionError("DPD Duhamel exponent is not integrable")
+
+
 def main():
     check_wick_polynomials()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
     check_spde_ou_and_smoothing_normalizations()
-    print("All constructive scalar/SPDE Wick and power-counting checks passed.")
+    check_dpd_sobolev_fixed_point_exponents()
+    print("All constructive scalar/SPDE Wick, power-counting, and DPD exponent checks passed.")
 
 
 if __name__ == "__main__":
