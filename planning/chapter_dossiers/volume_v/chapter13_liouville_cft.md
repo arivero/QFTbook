@@ -29,6 +29,12 @@ boundaries rather than importing the appendix exposition.
   `(L_-2|h>, L_-1^2|h>)` basis.
 - `f_1`, `f_2`: first two normalized Virasoro four-point block
   coefficients in the `z`-channel expansion.
+- `q(z)`: elliptic nome of the four-punctured sphere.
+- `lambda(q)`: modular lambda function `theta_2(q)^4/theta_3(q)^4`.
+- `g_1`, `g_2`: first two raw elliptic-coordinate block coefficients after
+  substituting `z=lambda(q)`.
+- `H(c,h_i,h;q)`: Zamolodchikov elliptic block after universal prefactors
+  are removed.
 - `Upsilon_b`: entire special function entering the DOZZ constant.
 - `F_P`: Virasoro conformal block with internal Liouville momentum `P`.
 - `M_{gamma,g}`: Gaussian multiplicative-chaos measure in probabilistic
@@ -60,6 +66,13 @@ boundaries rather than importing the appendix exposition.
 - Records where the Gram-matrix formula fails without modification:
   degenerate Kac-determinant parameters require null quotients,
   meromorphic limits, or logarithmic extensions.
+- Defines the elliptic nome \(q(z)\), the modular lambda expansion
+  `lambda(q)=16q-128q^2+704q^3+O(q^4)`, and derives the first conversion from
+  `z`-block coefficients `f_1,f_2` to raw elliptic coefficients `g_1,g_2`.
+- States Zamolodchikov's elliptic recursion as a theorem boundary with
+  explicit pole locations \(h_{m,n}\) and identifies the residue-products
+  whose normalization must be synchronized with the DOZZ and chiral-block
+  conventions.
 - Defines `Upsilon_b`, states the DOZZ formula as a `quotedtheorem`, and names
   the proof boundary.
 - Derives the scattering-normalized `P`-basis DOZZ representative from the
@@ -105,12 +118,16 @@ boundaries rather than importing the appendix exposition.
 - The same script checks the level-two Virasoro Gram determinant, the
   level-one and level-two ordinary block coefficients, and the large-`c`
   global-block limit in exact rational arithmetic.
+- The same script checks the modular-lambda expansion through
+  `lambda(q)=16q(1-8q+44q^2+O(q^3))` and verifies the exact formulas for the
+  raw elliptic \(q\)-coefficients `g_1` and `g_2`.
 
 ## Remaining Obligations
 
-- Extend the conformal-block discussion from the level-two Gram-matrix
-  coefficients to the full Zamolodchikov recursion and elliptic `q`
-  coordinate when the needed convergence/status boundary is developed.
+- Extend the elliptic-recursion discussion by adding the full
+  Zamolodchikov residue-product normalization and higher-order recursive
+  coefficients after the chiral vertex-operator normalization ledger is
+  fixed.
 - Develop Liouville boundary states only after the BCFT chapter is added; do
   not fold black-hole entropy or HKS/SSS material into this chapter.
 - Complete the full functorial sewing comparison with the Volume IV
@@ -135,3 +152,7 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-26 Virasoro-block pass: added ordinary conformal-block
   coefficients through level two from Gram matrices, including
   nondegeneracy hypotheses and exact rational calculation checks.
+- 2026-05-26 elliptic-recursion coordinate pass: added the elliptic nome,
+  modular lambda expansion, first `z`-to-`q` block-coefficient conversion,
+  and a theorem boundary for the full Zamolodchikov recursion with exact
+  coefficient checks.

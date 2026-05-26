@@ -452,6 +452,149 @@ Inverting the displayed \(2\times2\) matrix gives
 which is exactly \eqref{eq:liouville-virasoro-block-level-two}.
 \end{proof}
 
+\section{Elliptic Nome and Recursion Coordinates}
+\label{sec:liouville-elliptic-recursion-coordinate}
+
+The \(z\)-series in Definition~\ref{def:virasoro-block-coefficients} is the
+local OPE expansion near \(z=0\).  For crossing and numerical bootstrap
+questions it is better to use the elliptic nome of the four-punctured sphere.
+This change of coordinate is not a cosmetic acceleration trick: it separates
+the universal geometry of the double cover from the representation-theoretic
+recursion in the intermediate Virasoro module.
+
+\begin{definition}[Elliptic nome of the four-punctured sphere]
+\label{def:liouville-elliptic-nome}
+Let
+\[
+  K(z)=\frac{\pi}{2}\,
+  {}_2F_1\!\left(\frac12,\frac12;1;z\right)
+\]
+be the complete elliptic integral on the principal branch.  For
+\(z\in\mathbb C\setminus((-\infty,0]\cup[1,\infty))\), define
+\[
+  q(z)=\exp\!\left(-\pi\,\frac{K(1-z)}{K(z)}\right).
+  \label{eq:liouville-elliptic-nome}
+\]
+Equivalently, if \(|q|\) is small,
+\[
+  z=\lambda(q)
+  =
+  \frac{\vartheta_2(q)^4}{\vartheta_3(q)^4},
+  \label{eq:liouville-modular-lambda}
+\]
+where
+\[
+  \vartheta_2(q)=2q^{1/4}\sum_{n\ge0}q^{n(n+1)},
+  \qquad
+  \vartheta_3(q)=1+2\sum_{n\ge1}q^{n^2}.
+\]
+The first terms are
+\[
+  \lambda(q)=16q-128q^2+704q^3+O(q^4).
+  \label{eq:liouville-lambda-q-expansion}
+\]
+\end{definition}
+
+\begin{proposition}[First conversion from \(z\)-coefficients to \(q\)-coefficients]
+\label{prop:liouville-z-to-q-block-coefficients}
+Let the normalized block be as in
+Definition~\ref{def:virasoro-block-coefficients}, and set
+\[
+  a=h-h_3-h_4 .
+\]
+Write its elliptic-coordinate expansion before the universal theta-function
+factorization as
+\[
+  \mathcal F_h^{(c)}
+  \!\left[
+    \begin{matrix}h_1&h_2\\ h_4&h_3\end{matrix}
+  \right]\!(\lambda(q))
+  =
+  (16q)^a
+  \left(1+g_1q+g_2q^2+O(q^3)\right).
+  \label{eq:liouville-raw-q-block-expansion}
+\]
+Then
+\begin{align}
+  g_1
+  &=
+  16f_1-8a,
+  \label{eq:liouville-q-block-g1}\\
+  g_2
+  &=
+  256f_2-128(1+a)f_1+32a^2+12a .
+  \label{eq:liouville-q-block-g2}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:liouville-lambda-q-expansion} gives
+\[
+  \lambda(q)=16q(1-8q+44q^2+O(q^3)).
+\]
+Therefore
+\[
+  \lambda(q)^a
+  =
+  (16q)^a
+  \left(
+    1-8aq+(32a^2+12a)q^2+O(q^3)
+  \right).
+\]
+The nonleading part of the \(z\)-block contributes
+\[
+  1+f_1\lambda(q)+f_2\lambda(q)^2+O(q^3)
+  =
+  1+16f_1q+(-128f_1+256f_2)q^2+O(q^3).
+\]
+Multiplying these two displayed series gives
+\eqref{eq:liouville-q-block-g1}--\eqref{eq:liouville-q-block-g2}.
+\end{proof}
+
+\begin{quotedtheorem}[Zamolodchikov elliptic recursion]
+\label{qthm:zamolodchikov-elliptic-recursion}
+Fix a central charge \(c=1+6Q^2\), external weights \(h_i\), and a nondegenerate
+internal weight \(h\).  After multiplying
+\(\mathcal F_h^{(c)}(z)\) by the universal powers of \(z\), \(1-z\), \(16q\),
+and \(\vartheta_3(q)\) determined by \eqref{eq:liouville-modular-lambda}, one
+obtains an elliptic block
+\[
+  H(c,h_i,h;q)=1+O(q)
+\]
+which is meromorphic as a function of \(h\) and satisfies the recursive
+expansion
+\[
+  H(c,h_i,h;q)
+  =
+  1+
+  \sum_{m,n\ge1}
+  \frac{(16q)^{mn}R_{m,n}(c,h_i)}
+       {h-h_{m,n}(c)}
+  H(c,h_i,h_{m,n}(c)+mn;q).
+  \label{eq:zamolodchikov-elliptic-recursion}
+\]
+Here
+\[
+  h_{m,n}(c)
+  =
+  \frac{Q^2-(mb+n b^{-1})^2}{4}
+\]
+when \(Q=b+b^{-1}\), and the residues \(R_{m,n}\) are explicit products of
+the inverse null-vector norm residue and the two chiral fusion polynomials for
+the pairs \((h_1,h_2)\) and \((h_3,h_4)\).
+\end{quotedtheorem}
+
+The theorem boundary in
+Theorem~\ref{qthm:zamolodchikov-elliptic-recursion} is deliberate.  The
+monograph has derived the local \(z\)-coefficients and the first
+coordinate-conversion coefficients above.  The full recursion also requires
+normalizing null vectors and chiral vertex-operator matrix elements at every
+degenerate level and proving the analytic meromorphy/convergence statements
+that make the infinite recursive expression meaningful.  The residue products
+must be inserted with the same external-leg and block normalizations as the
+DOZZ constants; otherwise the recursion is a formal mnemonic rather than a
+defined object.
+
 \section{The DOZZ Formula and Shift Checks}
 
 The exact three-point function is the Dorn--Otto--Zamolodchikov--Zamolodchikov

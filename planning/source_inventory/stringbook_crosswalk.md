@@ -246,6 +246,14 @@ Current absorption:
   derivation, and logarithmic CFT boundaries.  The Ising modular and Zhu data
   are checked by
   `calculation-checks/cft_voa_modular_checks.py`.
+- Volume V, Chapter 13 develops Liouville CFT from the QFT side: classical
+  action and stress tensor, background charge and central charge, Seiberg
+  domain, probabilistic construction boundary, reflection relation,
+  continuous conformal-block decomposition, DOZZ theorem boundary, BPZ
+  equations, one-screening coefficient, hypergeometric connection formulas,
+  level-two Virasoro block coefficients, and the elliptic nome interface to
+  Zamolodchikov recursion.  The finite convention algebra is checked by
+  `calculation-checks/liouville_bpz_checks.py`.
 - Volume V, Chapter 15 now absorbs the chiral-algebra part of Appendix J:
   spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and
   \(\mathcal N=2\) superconformal OPEs and mode algebras, the Ramond

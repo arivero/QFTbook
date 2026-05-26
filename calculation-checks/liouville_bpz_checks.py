@@ -342,7 +342,87 @@ if global_level_two != large_c_limit_from_formula:
         f"{large_c_limit_from_formula}"
     )
 
+def multiply_truncated(
+    left: list[Fraction],
+    right: list[Fraction],
+    degree: int,
+) -> list[Fraction]:
+    result = [Fraction(0) for _ in range(degree + 1)]
+    for left_degree, left_coefficient in enumerate(left):
+        for right_degree, right_coefficient in enumerate(right):
+            total_degree = left_degree + right_degree
+            if total_degree <= degree:
+                result[total_degree] += left_coefficient * right_coefficient
+    return result
+
+
+def binomial_rational(x: Fraction, n: int) -> Fraction:
+    product = Fraction(1)
+    for index in range(n):
+        product *= x - index
+    return product / math.factorial(n)
+
+
+def power_one_plus_truncated(
+    coefficients: list[Fraction],
+    exponent: Fraction,
+    degree: int,
+) -> list[Fraction]:
+    if coefficients[0] != 1:
+        raise ValueError("series must start with 1")
+    tail = [Fraction(0)] + coefficients[1:]
+    result = [Fraction(1)] + [Fraction(0) for _ in range(degree)]
+    tail_power = [Fraction(1)] + [Fraction(0) for _ in range(degree)]
+    for order in range(1, degree + 1):
+        tail_power = multiply_truncated(tail_power, tail, degree)
+        coefficient = binomial_rational(exponent, order)
+        for index in range(degree + 1):
+            result[index] += coefficient * tail_power[index]
+    return result
+
+
+# Elliptic-nome conversion.  The theta identity
+# lambda(q)=theta_2(q)^4/theta_3(q)^4 gives
+# lambda(q)=16 q (1 - 8 q + 44 q^2 + O(q^3)).
+theta2_reduced_fourth = [Fraction(1), Fraction(0), Fraction(4)]
+theta3_inverse_fourth = power_one_plus_truncated(
+    [Fraction(1), Fraction(2), Fraction(0)],
+    Fraction(-4),
+    2,
+)
+lambda_reduced = multiply_truncated(
+    theta2_reduced_fourth,
+    theta3_inverse_fourth,
+    2,
+)
+if lambda_reduced != [Fraction(1), Fraction(-8), Fraction(44)]:
+    raise AssertionError(f"unexpected modular-lambda expansion: {lambda_reduced}")
+
+elliptic_exponent = h_sample - h3_sample - h4_sample
+lambda_power = power_one_plus_truncated(lambda_reduced, elliptic_exponent, 2)
+ordinary_block_in_q = [
+    Fraction(1),
+    16 * level_one,
+    -128 * level_one + 256 * level_two_from_display,
+]
+raw_q_block = multiply_truncated(lambda_power, ordinary_block_in_q, 2)
+g1_formula = 16 * level_one - 8 * elliptic_exponent
+g2_formula = (
+    256 * level_two_from_display
+    - 128 * (1 + elliptic_exponent) * level_one
+    + 32 * elliptic_exponent * elliptic_exponent
+    + 12 * elliptic_exponent
+)
+if raw_q_block[1] != g1_formula:
+    raise AssertionError(
+        f"elliptic q g1 mismatch: {raw_q_block[1]} != {g1_formula}"
+    )
+if raw_q_block[2] != g2_formula:
+    raise AssertionError(
+        f"elliptic q g2 mismatch: {raw_q_block[2]} != {g2_formula}"
+    )
+
 print(
     "All Liouville BPZ, screening, Virasoro-block, connection-matrix, "
-    "and DOZZ-shift checks passed."
+    "elliptic-q, and DOZZ-shift checks passed."
 )

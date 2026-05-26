@@ -148,6 +148,11 @@ Current checks:
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
   coefficients, quantum dimensions, shifted character exponents, and the
   Zhu-algebra top-weight polynomial with its primitive idempotents.
+- `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
+  including the level-two BPZ null vector, one-screening coefficient
+  rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
+  level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
+  conversion through \(q^2\).
 - `superconformal_algebra_checks.py`: exact rational checks for the
   two-dimensional superconformal-algebra chapter, including the
   \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary
