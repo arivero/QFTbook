@@ -560,6 +560,25 @@ def check_dpd_sobolev_fixed_point_exponents():
         raise AssertionError("DPD Duhamel exponent is not integrable")
 
 
+def check_phi4_three_sobolev_dpd_obstruction_arithmetic():
+    # In three spatial dimensions X has regularity -1/2-kappa and :X^3:
+    # has regularity -3/2-3 kappa.  Even the minimal multiplier threshold
+    # beta > 1/2+kappa forces a Duhamel smoothing exponent above one.
+    kappa = Fraction(1, 20)
+    beta_min_sample = Fraction(1, 2) + 2 * kappa
+    forcing_regular = -Fraction(3, 2) - 3 * kappa
+    theta_min_sample = (beta_min_sample - forcing_regular) / 2
+    assert_equal(theta_min_sample, 1 + Fraction(5, 2) * kappa, "Phi4_3 minimal DPD theta sample")
+    if not theta_min_sample > 1:
+        raise AssertionError("Phi4_3 minimal DPD obstruction failed")
+
+    beta_algebra_sample = Fraction(3, 2) + kappa
+    theta_algebra_sample = (beta_algebra_sample - forcing_regular) / 2
+    assert_equal(theta_algebra_sample, Fraction(3, 2) + 2 * kappa, "Phi4_3 algebra DPD theta sample")
+    if not theta_algebra_sample > 1:
+        raise AssertionError("Phi4_3 algebra DPD obstruction failed")
+
+
 def check_dpd_energy_young_exponents():
     # The smooth DPD energy estimate uses Young pairs:
     # |Y|^3 |X_1| with (4/3,4), |Y|^2 |X_2| with (2,2),
@@ -1136,6 +1155,7 @@ def main():
     check_phi4_three_multiscale_geometric_bound()
     check_spde_ou_and_smoothing_normalizations()
     check_dpd_sobolev_fixed_point_exponents()
+    check_phi4_three_sobolev_dpd_obstruction_arithmetic()
     check_dpd_energy_young_exponents()
     check_invariant_measure_limit_identity()
     check_reconstruction_wavelet_scale_powers()
@@ -1152,7 +1172,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, covariance-double-increment, power-counting, DPD, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":

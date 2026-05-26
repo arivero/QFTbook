@@ -182,6 +182,17 @@ data.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
+- Adds a \(\Phi^4_2\) stochastic-quantization assembly theorem on the torus.
+  The theorem makes explicit the four analytic inputs needed to pass from
+  finite-cutoff invariant Wick-ordered measures to a limiting invariant
+  Markov law and OS-positive Euclidean measure: path-space enhanced-noise
+  convergence, global compact-continuity of the DPD solution map, tightness
+  of stationary cutoff laws, and closure of reflection positivity.
+- Proves the Sobolev DPD obstruction in three dimensions: the minimal
+  multiplier threshold \(\beta>1/2+\kappa\) for \(YX\), combined with
+  forcing regularity \(:X^3:\in H^{-3/2-3\kappa-\varepsilon}\), forces a
+  Duhamel smoothing exponent \(\theta>1+2\kappa\), contradicting the
+  integrability requirement \(\theta<1\).
 - Develops the Da Prato--Debussche decomposition for `Phi^4_2`, identifies
   the role of the enhanced noise, proves a Sobolev local fixed-point version,
   and marks the sharper global Besov/Holder solution mechanism as a
@@ -613,3 +624,9 @@ data maps.
   corollary proving the order-four covariance block double-increment bound
   from compact rescaled \(C^2\) block control, discharging the second
   deterministic hypothesis in the locally subtracted first-chaos estimate.
+- 2026-05-26 issue #608 first pass: added the \(\Phi^4_2\)
+  stochastic-quantization assembly theorem and the explicit three-dimensional
+  Sobolev DPD obstruction.  This addresses the review weakness that the
+  two-dimensional DPD pieces were present but not assembled into a theorem,
+  while keeping the still-required rough Besov/Holder estimates as visible
+  hypotheses rather than hidden folklore.

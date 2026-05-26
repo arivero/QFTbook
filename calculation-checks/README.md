@@ -93,8 +93,10 @@ Current checks:
   stochastic-quantization OU variance, two negative-Sobolev threshold checks,
   heat-kernel smoothing optimization, and the Sobolev exponent inequalities
   used in the Da Prato--Debussche local fixed-point proof, together with the
-  Young-exponent arithmetic in the smooth DPD energy estimate and a finite
-  Markov-chain invariant-measure identity, plus the coarse/fine dyadic
+  three-dimensional Sobolev obstruction to applying the same DPD closure to
+  \(\Phi^4_3\), the Young-exponent arithmetic in the smooth DPD energy
+  estimate and a finite Markov-chain invariant-measure identity, plus the
+  coarse/fine dyadic
   exponent arithmetic in the compact reconstruction proof and the
   homogeneity/sign/combinatorial checks for the dynamic \(\Phi^4_3\) BPHZ
   local counterterm calculation, together with exact arithmetic for the

@@ -797,6 +797,113 @@ limiting Markov semigroup on the same topology.  This is the exact
 invariant-law step that sits between cutoff Langevin stationarity and a
 Euclidean measure for QFT.
 
+\begin{theorem}[\(\Phi^4_2\) stochastic-quantization assembly on the torus]
+\label{thm:phi-four-two-spde-main-theorem}
+Fix \(m^2>0\), \(\lambda>0\), \(0<\kappa<1/4\), and
+\(\beta=1+2\kappa\).  Let \(P_N\) be a reflection-symmetric Fourier cutoff
+on \(\mathbb T^2\).  Let \(\mu_N\) be the finite-dimensional Wick-ordered
+Gibbs measure
+\[
+  \dd\mu_N(\phi)
+  =
+  Z_N^{-1}
+  \exp\!\left[
+    -\frac{\lambda}{4}\int_{\mathbb T^2}:\!(P_N\phi)^4\!:\,\dd^2x
+  \right]\dd\mu_{0,N}(\phi),
+\]
+where \(\mu_{0,N}\) is the massive Gaussian law with covariance
+\(P_N(-\Delta+m^2)^{-1}P_N\).  Let \(P_t^{(N)}\) be the Markov semigroup of
+the corresponding finite-dimensional stochastic quantization equation, and
+embed all laws in \(H^{-\kappa}(\mathbb T^2)\).
+
+Assume the following four analytic facts.
+\begin{enumerate}[label=(\alph*)]
+  \item The enhanced Ornstein--Uhlenbeck fields
+  \[
+    \mathbb X_N=(X_N,:\!X_N^2\!:,:\!X_N^3\!:)
+  \]
+  converge in probability in
+  \(C([0,T];H^{-\kappa})^3\), for every \(T<\infty\), to a limit
+  \(\mathbb X=(X,:\!X^2\!:,:\!X^3\!:)\).
+  \item For every \(Y_0\in H^\beta\), the local solution map of
+  Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} extends
+  globally in stochastic time, and the cutoff solution maps converge to it
+  uniformly on compact subsets of the enhanced-noise/initial-data space.
+  \item The stationary laws \(\{\mu_N\}\) are tight in \(H^{-\kappa}\), and
+  every weak limit \(\mu\) is carried by fields admitting the decomposition
+  \(\Phi=X+Y\) with \(Y\) given by the global DPD solution map.
+  \item Reflection positivity of the cutoff measures \(\mu_N\) holds for
+  cylinder observables depending on positive Euclidean time, and this
+  positivity is closed under the weak convergence in (c) for those cylinder
+  observables.
+\end{enumerate}
+Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
+limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
+the finite-cutoff Wick-ordered Schwinger functions, and \(\mu\) satisfies OS
+reflection positivity for cylinder observables.  Hence, after the usual
+Schwartz growth and regularity hypotheses required in OS reconstruction are
+verified for this limit measure, \(\mu\) determines a two-dimensional
+Wightman theory by the reconstruction theorem.
+\end{theorem}
+
+\begin{proof}
+At finite cutoff the Langevin generator is the gradient generator of the
+finite-dimensional action defining \(\mu_N\).  The integration-by-parts
+identity \eqref{eq:finite-dimensional-dirichlet-form} therefore gives
+\[
+  \int P_t^{(N)}F\,\dd\mu_N=\int F\,\dd\mu_N
+\]
+for every bounded smooth cylinder function \(F\).
+
+The stochastic input in (a) is the path-space strengthening of
+Proposition~\ref{prop:spde-two-dimensional-wick-powers}; the latter proves
+the required equal-time Sobolev Wick-power convergence and fixes the Wick
+normalization.  Given (a), the products in the DPD nonlinearity are defined
+by Lemma~\ref{lem:spde-dpd-sobolev-products}, and
+Theorem~\ref{thm:spde-dpd-deterministic-local-fixed-point} gives the local
+solution map.  Hypothesis (b) is precisely the global rough-energy and
+compact-continuity upgrade of the smooth estimate
+Proposition~\ref{prop:spde-dpd-smooth-energy-estimate}.  Thus the limiting
+Markov semigroup \(P_t\) is well-defined on the support of every weak
+stationary limit in (c), and \(P_t^{(N)}F\to P_tF\) uniformly on the
+high-probability compact sets supplied by (b) and (c).
+
+Proposition~\ref{prop:spde-invariant-measure-limit} now applies with
+\(E=H^{-\kappa}\).  Therefore
+\[
+  \int P_tF\,\dd\mu=\int F\,\dd\mu
+\]
+for every bounded continuous cylinder observable \(F\), and hence \(\mu\) is
+invariant.  The convergence of Schwinger functions follows by applying the
+same weak convergence to products of smeared fields and Wick powers after
+approximating the polynomial observables by bounded cylinder observables;
+the uniform moment bounds needed for this approximation are part of the
+tightness and rough-energy input in (c).
+
+For OS positivity, let \(\Theta\) be Euclidean time reflection and let
+\(F\) be a cylinder observable supported in positive Euclidean time.  The
+finite-cutoff reflection-positivity assumption gives
+\[
+  \int \overline{\Theta F}\,F\,\dd\mu_N\geq0 .
+\]
+By (d), passing to the weak limit preserves the displayed inequality, so
+\[
+  \int \overline{\Theta F}\,F\,\dd\mu\geq0 .
+\]
+This is OS reflection positivity on the cylinder algebra.  Once the
+remaining OS growth and regularity estimates are verified, the OS
+reconstruction theorem of Chapter~\ref{ch:os-reconstruction} applies.
+\end{proof}
+
+The theorem separates the logical assembly from the analytic estimates.  In
+the chapter we have proved the finite-dimensional Langevin identity, the
+Sobolev Wick-power construction, the Sobolev DPD local solution map, the
+smooth enhanced-noise energy inequality, and the abstract invariant-law
+passage.  The sharp global two-dimensional theorem additionally requires the
+path-space enhanced-noise convergence, rough Besov/Hölder energy-continuity,
+tightness, and OS-closure estimates listed explicitly in
+Theorem~\ref{thm:phi-four-two-spde-main-theorem}.
+
 \begin{quotedtheorem}[Da Prato--Debussche solution mechanism]
 \label{thm:dpd-solution-mechanism}
 Fix \(m^2>0\), \(\lambda>0\), and a finite spatial torus in dimension two.
@@ -847,6 +954,75 @@ tightness plus convergence of the enhanced noise.  In the final standard of
 this monograph, these Schauder, multiplication, energy, tightness, and
 invariant-law identification estimates are proof obligations, not facts
 accepted merely because they are standard in the SPDE literature.
+
+\begin{proposition}[Why the Sobolev DPD closure is two-dimensional]
+\label{prop:spde-sobolev-dpd-three-dimensional-obstruction}
+The Sobolev fixed-point mechanism used above for \(\Phi^4_2\) cannot close
+the dynamic \(\Phi^4_3\) equation by replacing \(2\) with \(3\).  More
+precisely, let \(X\) be the three-dimensional stationary stochastic
+convolution.  Its spatial regularity is
+\[
+  X\in H^{-1/2-\kappa-\varepsilon}(\mathbb T^3)
+  \quad\text{for every }\varepsilon>0,
+\]
+and the cubic Wick power has the formal Sobolev regularity
+\[
+  :\!X^3\!:\in H^{-3/2-3\kappa-\varepsilon}(\mathbb T^3)
+  \quad\text{for every }\varepsilon>0.
+\]
+If the remainder \(Y\) is sought in \(H^\beta\), then even the minimal
+Sobolev multiplier requirement for the product \(YX\) is
+\[
+  \beta>\frac12+\kappa .
+  \label{eq:spde-three-dpd-minimal-multiplier-threshold}
+\]
+The Duhamel map from the cubic forcing
+\(:\!X^3\!:\) to \(H^\beta\) would require
+\[
+  \theta
+  =
+  \frac{\beta+\frac32+3\kappa}{2}>1 .
+  \label{eq:spde-three-dpd-duhamel-obstruction}
+\]
+But the heat-kernel Duhamel estimate
+\eqref{eq:spde-duhamel-smoothing} is locally integrable at the upper time
+endpoint only for \(\theta<1\).  Therefore the two-dimensional Sobolev DPD
+argument has no three-dimensional analogue.
+\end{proposition}
+
+\begin{proof}
+The covariance of the massive three-dimensional Gaussian field has
+short-distance singularity \(\|x-y\|^{-1}\).  Equivalently, the field has
+Sobolev regularity below \(-1/2\), and the \(k\)-th Wick power has the
+additive formal regularity below \(-k/2\).  With the small loss parameter
+\(\kappa\), this gives the displayed regularities for \(X\) and
+\(:\!X^3\!:\).
+
+For multiplication in three spatial dimensions, a distribution of regularity
+\(-1/2-\kappa\) can be multiplied by a Sobolev function of regularity
+\(\beta\) only when the sum of regularities is positive; this gives
+\eqref{eq:spde-three-dpd-minimal-multiplier-threshold}.  If the forcing is
+in \(H^{-3/2-3\kappa-\varepsilon}\), reaching \(H^\beta\) by the heat
+equation requires, after letting \(\varepsilon\downarrow0\), gain
+\[
+  2\theta>\beta+\frac32+3\kappa .
+\]
+Combining this with
+\eqref{eq:spde-three-dpd-minimal-multiplier-threshold} gives
+\[
+  \theta
+  >
+  \frac{\frac12+\kappa+\frac32+3\kappa}{2}
+  =
+  1+2\kappa .
+\]
+This contradicts the condition \(\theta<1\) needed for the time singularity
+\((t-s)^{-\theta}\) to be integrable.  If one instead requires
+\(H^\beta\) to be an algebra, then \(\beta>3/2\), and the obstruction is
+even stronger:
+\(\theta>3/2+\frac32\kappa\).  Thus the failure is structural, not an
+artifact of a nonoptimal exponent choice.
+\end{proof}
 
 \section{\texorpdfstring{Regularity Structures and \(\Phi^4_3\)}{Regularity Structures and Phi-four-three}}
 
