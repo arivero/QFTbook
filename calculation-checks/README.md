@@ -279,6 +279,11 @@ Current checks:
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising
   chain.
+- `z2_gauge_metropolis_checks.py`: exact finite checks for the
+  `qft_scripts/z2_gauge_3d_metropolis.py` companion script, verifying the
+  local link-flip plaquette-score change, pairwise detailed balance, gauge
+  invariance of the action and Wilson loops, and the identity between the
+  \(1\times1\) Wilson-loop average and the plaquette average.
 - `kinetic_theory_checks.py`: finite algebra checks for the Volume X kinetic
   theory chapter, including Bose/Fermi detailed balance, the H-theorem
   integrand, linearized collision-operator positivity and null vectors, and

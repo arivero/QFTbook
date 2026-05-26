@@ -20,6 +20,9 @@ chapters.
   spin configuration, finite Hamiltonian, and Boltzmann probability.
 - `P(s,s')`, `a(s,x)`: single-spin Metropolis transition probability and
   acceptance probability.
+- `Q(U)`: total plaquette score in the finite \(\mathbb Z_2\) gauge model.
+- `B_e(U)`: sum of plaquettes containing a link \(e\).
+- `U^e`: gauge configuration obtained by flipping the link \(e\).
 
 ## Claim Ledger
 
@@ -29,12 +32,18 @@ chapters.
   hypotheses.
 - Proves detailed balance, irreducibility, and aperiodicity for the finite
   single-spin Metropolis chain in the two-dimensional periodic Ising model.
+- Proves detailed balance and irreducibility for the finite single-link
+  Metropolis chain in the periodic \(\mathbb Z_2\) lattice gauge model, and
+  separates full link-space sampling from gauge-orbit interpretation.
 - Derives the variance formula with integrated autocorrelation time.
 - Derives exponential degradation of phase reweighting from the average
   phase.
 - Separates finite-lattice numerical estimates from continuum QFT claims.
 - Adds the companion script `qft_scripts/ising2d_metropolis.py` as a
   finite-regulator demonstration with a smoke-mode algorithm check.
+- Adds the companion script `qft_scripts/z2_gauge_3d_metropolis.py` as a
+  compact-gauge finite-regulator demonstration measuring plaquettes and
+  Wilson loops.
 
 ## Figure Ledger
 
@@ -47,9 +56,17 @@ the exponential decay of average phase with volume.
   Metropolis sampler.  Certifies the implemented finite chain and reports
   acceptance, energy, magnetization, and a windowed autocorrelation estimate.
   It does not certify a continuum limit.
+- `qft_scripts/z2_gauge_3d_metropolis.py --smoke`: finite periodic
+  \(\mathbb Z_2\) gauge Metropolis sampler.  Certifies a compact gauge
+  single-link update and reports plaquette and Wilson-loop measurements for a
+  small beta scan.  It does not certify an infinite-volume transition or a
+  continuum limit.
 
 ## Calculation Checks
 
 - `calculation-checks/ising_metropolis_finite_checks.py` enumerates the
   \(2\times2\) periodic Ising chain and verifies the companion script's local
   energy difference and detailed-balance identity exactly at finite volume.
+- `calculation-checks/z2_gauge_metropolis_checks.py` verifies the companion
+  script's local score change, detailed-balance identity, gauge invariance,
+  and the \(1\times1\) Wilson-loop/plaquette identity.

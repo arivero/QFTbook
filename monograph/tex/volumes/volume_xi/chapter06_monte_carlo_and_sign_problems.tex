@@ -150,6 +150,93 @@ The deterministic calculation check
 enumerates the \(2\times2\) periodic chain and verifies both the local energy
 difference and the detailed-balance identity used by the script.
 
+\section{Single-Link Metropolis for Finite Gauge Fields}
+
+The same finite-regulator theorem should be stated for gauge variables,
+because lattice gauge Monte Carlo samples compact group data rather than
+coordinate fields.  For the \(\mathbb Z_2\) gauge model of
+Proposition~\ref{prop:z2-gauge-character-expansion}, write
+\[
+  Q(U)=\sum_{p}U_p,\qquad
+  \pi_\beta(U)=Z_\Lambda(\beta)^{-1}e^{\beta Q(U)} .
+\]
+For a link \(e\), let \(U^e\) be the configuration obtained by flipping
+\(U_e\).  The only plaquettes whose values change are the plaquettes
+containing \(e\).  If
+\[
+  B_e(U)=\sum_{p\supset e} U_p ,
+\]
+then
+\[
+  Q(U^e)-Q(U)=-2B_e(U).
+\]
+The single-link Metropolis chain chooses a link uniformly and accepts
+\(U\mapsto U^e\) with probability
+\[
+  a(U,e)=\min\{1,\exp(\beta[Q(U^e)-Q(U)])\}.
+\]
+
+\begin{proposition}[Detailed balance for the finite \(\mathbb Z_2\) gauge chain]
+\label{prop:z2-gauge-metropolis-detailed-balance}
+The preceding single-link update satisfies
+\[
+  \pi_\beta(U)P(U,U')
+  =
+  \pi_\beta(U')P(U',U)
+\]
+for all finite lattice gauge configurations \(U,U'\).  On a connected finite
+lattice, the chain is irreducible on the full link-configuration space.
+Gauge-invariant observables may be averaged either on this full space or
+after quotienting by gauge transformations; the full-space chain preserves
+the gauge-invariant expectation values because \(\pi_\beta\) is gauge
+invariant.
+\end{proposition}
+
+\begin{proof}
+If \(U'\) differs from \(U\) by more than one link, the off-diagonal
+transition probabilities in both directions vanish.  If \(U'=U^e\), set
+\(\Delta Q=Q(U^e)-Q(U)\).  The off-diagonal transition probabilities are
+\[
+  P(U,U^e)=\frac1{|E|}\min\{1,e^{\beta\Delta Q}\},
+  \qquad
+  P(U^e,U)=\frac1{|E|}\min\{1,e^{-\beta\Delta Q}\}.
+\]
+For \(\Delta Q\geq0\),
+\[
+  e^{\beta Q(U)}P(U,U^e)
+  =
+  \frac1{|E|}e^{\beta Q(U)}
+  =
+  \frac1{|E|}e^{\beta Q(U^e)}e^{-\beta\Delta Q}
+  =
+  e^{\beta Q(U^e)}P(U^e,U).
+\]
+The case \(\Delta Q<0\) is the same identity with \(U\) and \(U^e\)
+interchanged.  Division by \(Z_\Lambda(\beta)\) gives detailed balance.
+
+Irreducibility is immediate on the finite link hypercube: any configuration
+can be reached from any other by flipping the finite set of links on which
+they differ, and each proposed flip has positive acceptance probability for
+finite \(\beta\).  Gauge invariance follows because each \(U_p\) and each
+closed Wilson loop is unchanged under \(U_{xy}\mapsto g_xU_{xy}g_y\).
+Therefore averaging over the full link space includes gauge orbits with equal
+weights and gives the same gauge-invariant expectations as any exact
+gauge-orbit average with the corresponding orbit weights.
+\end{proof}
+
+The companion script
+\[
+  \texttt{qft\_scripts/z2\_gauge\_3d\_metropolis.py}
+\]
+implements this update for a periodic three-dimensional cubic lattice.  The
+associated deterministic check
+\[
+  \texttt{calculation-checks/z2\_gauge\_metropolis\_checks.py}
+\]
+verifies the local score change, pairwise detailed balance, gauge invariance
+of the plaquette action and Wilson loops, and the equality between the
+\(1\times1\) Wilson-loop average and the plaquette average.
+
 \section{Autocorrelation and Effective Sample Size}
 
 For a stationary chain, define the connected autocorrelation function

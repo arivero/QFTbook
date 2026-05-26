@@ -49,6 +49,103 @@ The finite-volume partition function is the compact group integral
 \]
 where \(dU\) is Haar measure.
 
+\section{A Finite \texorpdfstring{\(\mathbb Z_2\)}{Z2} Gauge Benchmark}
+
+Before taking any continuum limit, a lattice gauge theory is an ordinary
+finite-dimensional integral.  The smallest nontrivial pure gauge benchmark is
+the \(\mathbb Z_2\) gauge model on a finite periodic cubic lattice.  Let
+\(E\) be the set of oriented positive links, let \(P\) be the set of
+elementary plaquettes, and assign
+\[
+  U_e\in\{\pm1\},\qquad e\in E .
+\]
+For a plaquette \(p\), define
+\[
+  U_p=\prod_{e\in\partial p}U_e ,
+\]
+where orientation is irrelevant because \(U_e^{-1}=U_e\).  The finite
+partition function at parameter \(\beta\in\mathbb R\) is
+\[
+  Z_\Lambda(\beta)
+  =
+  \sum_{U:E\to\{\pm1\}}
+  \exp\!\left(\beta\sum_{p\in P}U_p\right).
+\]
+A gauge transformation is a function \(g:V\to\{\pm1\}\) acting on a link
+\(e=(x,y)\) by
+\[
+  U_e\longmapsto g_xU_eg_y .
+\]
+The plaquette variables and Wilson loop variables
+\[
+  W(C)=\prod_{e\in C}U_e
+\]
+for closed lattice contours \(C\) are gauge invariant.
+
+\begin{proposition}[Finite \(\mathbb Z_2\) character expansion]
+\label{prop:z2-gauge-character-expansion}
+Let \(t=\tanh\beta\).  For a closed contour \(C\), regard \(C\) as a
+\(\mathbb Z_2\)-one-chain, and regard a subset \(A\subset P\) as a
+\(\mathbb Z_2\)-two-chain with boundary \(\partial A\).  Then
+\[
+  Z_\Lambda(\beta)
+  =
+  2^{|E|}(\cosh\beta)^{|P|}
+  \sum_{\substack{A\subset P\\ \partial A=0}} t^{|A|},
+\]
+and
+\[
+  \langle W(C)\rangle_{\Lambda,\beta}
+  =
+  \frac{\displaystyle
+  \sum_{\substack{A\subset P\\ \partial A=C}}t^{|A|}}
+  {\displaystyle
+  \sum_{\substack{A\subset P\\ \partial A=0}}t^{|A|}} .
+\]
+The sums are finite sums over plaquette subsets.  Thus the strong-coupling
+area mechanism in this model is not an analogy: at finite cutoff the Wilson
+loop numerator is exactly a weighted sum over lattice surfaces whose
+boundary is the loop.
+\end{proposition}
+
+\begin{proof}
+For each plaquette variable \(U_p=\pm1\),
+\[
+  e^{\beta U_p}=\cosh\beta\,(1+tU_p)
+  =
+  \cosh\beta\sum_{n_p=0}^1 t^{n_p}U_p^{n_p}.
+\]
+Multiplying over plaquettes gives
+\[
+  \exp\!\left(\beta\sum_p U_p\right)
+  =
+  (\cosh\beta)^{|P|}
+  \sum_{A\subset P}
+  t^{|A|}
+  \prod_{p\in A}\prod_{e\in\partial p}U_e .
+\]
+Summing over a single link variable gives
+\(\sum_{U_e=\pm1}U_e^m=0\) if \(m\) is odd and \(2\) if \(m\) is even.
+Therefore the partition function keeps precisely those plaquette subsets for
+which every link appears an even number of times, namely
+\(\partial A=0\), and contributes the overall factor \(2^{|E|}\).
+
+For the Wilson-loop numerator, the additional factor
+\(\prod_{e\in C}U_e\) changes the parity condition on each link from
+\((\partial A)_e=0\) to \((\partial A)_e=C_e\).  Dividing the resulting
+finite numerator by the finite partition function gives the displayed
+expectation value.
+\end{proof}
+
+The companion script
+\[
+  \texttt{qft\_scripts/z2\_gauge\_3d\_metropolis.py}
+\]
+samples this finite model by single-link Metropolis updates and measures the
+plaquette average and rectangular Wilson loops.  Its output is finite-cutoff
+data.  An infinite-volume transition, a continuum limit, or a continuum
+confinement statement requires additional limiting hypotheses and estimates.
+
 \section{Continuum Expansion}
 
 For a smooth continuum connection \(A_\mu(x)\), set
