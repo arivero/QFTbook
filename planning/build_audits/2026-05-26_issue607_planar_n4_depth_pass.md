@@ -603,3 +603,28 @@ Calculation checks added:
 - `check_finite_density_aba_counting_normalization()` verifies the `1/L`
   empirical-measure normalization and `Z'(u)/(2 pi)` level-density
   normalization on a finite-density diagonal Bethe-Yang toy model.
+
+## Continuation XXIII: Analytic Y-System Source Factors
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Content added:
+
+- Added a local proposition deriving the analytic Y-system source factor
+  contributed by a shifted zero-pole pair
+  `B_alpha(u)=(u-alpha+i/2)/(u-alpha-i/2)`.
+- Proved the convention-sensitive identity
+  `B_a^+(u) B_a^-(u)=(u-a+i)/(u-a-i)` and its finite-product extension.
+- Explained that the homogeneous Y-system only applies after the
+  `s^{-1}` shift inverse is used in a singularity-free strip; positions,
+  orientations, and sheets of the source factors are separate contour and
+  exact-root data.
+
+Calculation checks added:
+
+- `check_y_system_shift_source_factor()` verifies the shifted source factor,
+  inverse orientation, and finite source products on complex samples.

@@ -1323,6 +1323,51 @@ def check_mirror_wing_kernel_inverse() -> None:
         )
 
 
+def check_y_system_shift_source_factor() -> None:
+    """Check local shifted zero-pole source factors for analytic Y-systems."""
+
+    def source_factor(u_value: complex, root: complex) -> complex:
+        return (u_value - root + 0.5j) / (u_value - root - 0.5j)
+
+    for u_value, root in (
+        (0.3 + 0.2j, -0.7 + 0.1j),
+        (1.4 - 0.15j, 0.2 - 0.35j),
+        (-0.9 + 0.4j, 0.6 + 0.05j),
+    ):
+        shifted_product = source_factor(u_value + 0.5j, root) * source_factor(
+            u_value - 0.5j,
+            root,
+        )
+        rational_source = (u_value - root + 1j) / (u_value - root - 1j)
+        assert_close("Y-system shifted source factor", shifted_product, rational_source)
+
+        inverse_shifted_product = (
+            1 / source_factor(u_value + 0.5j, root)
+            / source_factor(u_value - 0.5j, root)
+        )
+        assert_close(
+            "Y-system inverse shifted source factor",
+            inverse_shifted_product,
+            1 / rational_source,
+        )
+
+    u_value = 0.8 - 0.25j
+    roots_with_powers = (
+        (-0.4 + 0.1j, 2),
+        (0.5 - 0.3j, -1),
+        (1.2 + 0.2j, 1),
+    )
+    shifted_product = 1 + 0j
+    rational_product = 1 + 0j
+    for root, power in roots_with_powers:
+        shifted_product *= (
+            source_factor(u_value + 0.5j, root)
+            * source_factor(u_value - 0.5j, root)
+        ) ** power
+        rational_product *= ((u_value - root + 1j) / (u_value - root - 1j)) ** power
+    assert_close("Y-system finite source product", shifted_product, rational_product)
+
+
 def check_konishi_four_loop_wrapping_arithmetic() -> None:
     # ABA coefficient: -(2820 + 288 zeta_3).
     # Wrapping coefficient: 324 + 864 zeta_3 - 1440 zeta_5.
@@ -2117,6 +2162,7 @@ def main() -> None:
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
     check_mirror_wing_kernel_inverse()
+    check_y_system_shift_source_factor()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()

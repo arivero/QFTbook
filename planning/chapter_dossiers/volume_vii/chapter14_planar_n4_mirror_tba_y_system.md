@@ -35,6 +35,8 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - `Y_n^circ,Y^oplus,Y^ominus`: one-wing `n|w` and two-sheet `y` Y-functions
   used to derive the auxiliary-wing Y-system.
 - `Y_{a,s}`: T-hook Y-system variables.
+- `B_alpha(u)=(u-alpha+i/2)/(u-alpha-i/2)`: elementary shifted zero-pole source
+  factor whose shifted product supplies a local analytic Y-system source.
 - `u_j`: exact physical Bethe roots in excited-state TBA.
 - `T_{a,s}`: Hirota T-functions.
 - `Z_0^\vee`: mirror-sheet cut locus when inherited from the stringbook
@@ -82,6 +84,9 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   the kernel inverse and then the strip-analytic inverse of `s`.
 - States the T-hook Y-system relation, derives its local Hirota origin, and
   warns that Y-system equations alone do not define the spectrum.
+- Proves the local shifted zero-pole source-factor identity
+  `B_a^+ B_a^-=(u-a+i)/(u-a-i)`, explaining how contour and sheet data enter
+  analytic Y-system equations as rational source factors.
 - Adds analytic Y-system data: shifted strips, meromorphy domains,
   discontinuities, and exact-root regularity conditions.
 - Uses Konishi as the first wrapping test and separates finite-length
@@ -121,6 +126,9 @@ node domain.
 - The same script checks the auxiliary-wing TBA-to-Y-system kernel algebra:
   the fused `A_mn` Fourier symbol, tridiagonal inverse, `A^{-1}K` identities,
   `s^{-1}` shift symbol, and boundary-source algebra for the `n|w` Y-system.
+- The same script checks the local analytic Y-system source factor
+  `B_a^+B_a^-=(u-a+i)/(u-a-i)`, its inverse orientation, and finite products
+  of shifted zero-pole sources.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic,
   the stringbook `u`-integrand to `q=2u` rational-integrand conversion,
   numerical real-line integrals for the first four mirror charges, and the

@@ -842,6 +842,66 @@ definition of the theory discards the information that distinguishes physical
 states.
 \end{warning}
 
+\begin{proposition}[Local source factor from a shifted zero-pole pair]
+\label{prop:planar-n4-local-y-source-factor}
+Let \(\alpha\in\C\), and define the elementary shifted source factor
+\[
+  B_\alpha(u)=\frac{u-\alpha+\ii/2}{u-\alpha-\ii/2}.
+\]
+Thus \(B_\alpha\) has a simple zero at \(u=\alpha-\ii/2\) and a simple pole at
+\(u=\alpha+\ii/2\).  If a meromorphic Y-function is written locally as
+\[
+  Y_{a,s}(u)=B_\alpha(u)^\nu\,\widehat Y_{a,s}(u),
+  \qquad \nu\in\mathbb Z,
+\]
+where \(\widehat Y_{a,s}\) has no zero or pole crossed by the two shifts
+\(u\mapsto u\pm\ii/2\), then
+\begin{equation}
+  Y_{a,s}^+(u)Y_{a,s}^-(u)
+  =
+  \left(\frac{u-\alpha+\ii}{u-\alpha-\ii}\right)^\nu
+  \widehat Y_{a,s}^+(u)\widehat Y_{a,s}^-(u).
+  \label{eq:planar-n4-local-y-source-factor}
+\end{equation}
+For a finite set of shifted zero-pole pairs, the source factor is the product
+of the corresponding powers of
+\((u-\alpha+\ii)/(u-\alpha-\ii)\).
+\end{proposition}
+
+\begin{proof}
+The claim is the algebra of the shift operation.  Directly,
+\[
+  B_\alpha^+(u)
+  =
+  \frac{u-\alpha+\ii}{u-\alpha},
+  \qquad
+  B_\alpha^-(u)
+  =
+  \frac{u-\alpha}{u-\alpha-\ii}.
+\]
+Multiplying the two expressions gives
+\[
+  B_\alpha^+(u)B_\alpha^-(u)
+  =
+  \frac{u-\alpha+\ii}{u-\alpha-\ii}.
+\]
+Raising to the integer power \(\nu\) and multiplying by
+\(\widehat Y_{a,s}^+\widehat Y_{a,s}^-\) proves
+\eqref{eq:planar-n4-local-y-source-factor}.  A finite product follows by
+commutativity.
+\end{proof}
+
+This proposition is the local algebraic shadow of contour deformation.  The
+homogeneous Y-system records what happens after \(\mathsf s^{-1}\) is applied
+in a strip free of singularities.  If a zero, pole, or logarithmic branch point
+crosses one of the two strip boundaries, the remaining regular part
+\(\widehat Y_{a,s}\) still obeys the same shift algebra, but the singular part
+contributes the rational source factor in
+\eqref{eq:planar-n4-local-y-source-factor}.  The Y-system equations alone do
+not determine the positions \(\alpha\), the powers \(\nu\), or the sheet on
+which the factor lives; these data come from the excited-state contours and
+from the exact Bethe-root regularity conditions.
+
 \section{Analytic Y-System Data}
 
 The analytic Y-system supplements \eqref{eq:planar-n4-y-system} by specifying
