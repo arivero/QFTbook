@@ -558,7 +558,7 @@ to the same equation near another puncture gives shift equations for the
 three-point structure constants.  The DOZZ constant is the meromorphic
 solution with the reflection, shift, and analyticity properties stated above.
 
-\begin{proposition}[Degenerate BPZ blocks]
+\begin{proposition}[Degenerate BPZ blocks and the DOZZ \(b\)-shift]
 \label{prop:liouville-degenerate-hypergeometric-solutions}
 Fix three generic momenta \(\alpha_1,\alpha_2,\alpha_3\), put the degenerate
 field \(V_{-b/2}\) at \(z\), and use global conformal covariance to set the
@@ -596,17 +596,36 @@ degenerate shift equation
   \mathcal R_b(\alpha_1;\alpha_2,\alpha_3),
   \label{eq:liouville-degenerate-shift-ratio}
 \end{equation}
-where \(\mathcal R_b\) is the explicit product of gamma functions obtained
-from the connection matrix and the OPE normalization
+where, in the DOZZ normalization of \eqref{eq:dozz-structure-constant},
+\begin{equation}
+\begin{aligned}
+  \mathcal R_b(\alpha_1;\alpha_2,\alpha_3)
+  &=
+  \frac{
+    \gamma(2b\alpha_1)\,
+    \gamma(2b\alpha_1-b^2)\,
+    \gamma\!\left(b(\alpha_2+\alpha_3-\alpha_1-b/2)\right)
+  }{
+    \pi\mu\,\gamma(b^2)\,b^4
+  }
+  \\
+  &\quad\times
+  \frac1{
+    \gamma\!\left(b(\alpha_1+\alpha_2+\alpha_3-Q-b/2)\right)
+    \gamma\!\left(b(\alpha_1+\alpha_2-\alpha_3-b/2)\right)
+    \gamma\!\left(b(\alpha_1+\alpha_3-\alpha_2-b/2)\right)
+  } .
+\end{aligned}
+  \label{eq:liouville-dozz-b-shift-ratio}
+\end{equation}
+The same function is obtained from the hypergeometric connection matrix and
+the OPE normalization
 \[
   V_{-b/2}V_{\alpha_1}
   \sim
   C_+(\alpha_1)V_{\alpha_1-b/2}
   +C_-(\alpha_1)V_{\alpha_1+b/2}.
 \]
-The exact expression is equivalent to the \(b\)-shift of
-\eqref{eq:dozz-structure-constant} under the \(\Upsilon_b\) relation
-\eqref{eq:upsilon-b-shift-b}.
 \end{proposition}
 
 \begin{proof}
@@ -626,10 +645,44 @@ Gauss hypergeometric functions expresses the same two-dimensional solution
 space in the \(z=1\) fusion basis.  Crossing symmetry of the four-point
 function with one degenerate insertion identifies the products of OPE
 coefficients in the two bases, giving
-\eqref{eq:liouville-degenerate-shift-ratio}.  Substituting the
-\(\Upsilon_b\) shift relation into the ratio of the two DOZZ constants gives
-the same gamma-function product, which is the convention-sensitive check
-recorded here.
+\eqref{eq:liouville-degenerate-shift-ratio}.
+
+It remains to compute the right hand side in the DOZZ normalization.  Let
+\(K=\pi\mu\,\gamma(b^2)b^{2-2b^2}\).  In the ratio
+\[
+  \frac{
+    C_b(\alpha_1+b/2,\alpha_2,\alpha_3)
+  }{
+    C_b(\alpha_1-b/2,\alpha_2,\alpha_3)
+  },
+\]
+the cosmological-constant factor contributes \(K^{-1}\).  The numerator
+\(\Upsilon_b(2\alpha_1)\) contributes
+\[
+  \frac{\Upsilon_b(2\alpha_1+b)}
+       {\Upsilon_b(2\alpha_1-b)}
+  =
+  \gamma(2b\alpha_1)\,
+  \gamma(2b\alpha_1-b^2)\,
+  b^{2+2b^2-8b\alpha_1}.
+\]
+For the denominator factors one uses
+\(\Upsilon_b(x)/\Upsilon_b(x+b)=
+\gamma(bx)^{-1}b^{-1+2bx}\) for the first three terms and
+\(\Upsilon_b(y+b)/\Upsilon_b(y)=\gamma(by)b^{1-2by}\) for the last term,
+with
+\[
+\begin{gathered}
+  x_1=\alpha_1+\alpha_2+\alpha_3-Q-b/2,\qquad
+  x_2=\alpha_1+\alpha_2-\alpha_3-b/2,\\
+  x_3=\alpha_1+\alpha_3-\alpha_2-b/2,\qquad
+  y=\alpha_2+\alpha_3-\alpha_1-b/2 .
+\end{gathered}
+\]
+The powers of \(b\) from these four denominator ratios and the numerator
+combine to \(b^{-2b^2-2}\); multiplying by \(K^{-1}\) leaves the total
+factor \(1/(\pi\mu\,\gamma(b^2)b^4)\).  The remaining gamma functions are
+exactly \eqref{eq:liouville-dozz-b-shift-ratio}.
 \end{proof}
 
 \section{Sewing Status and Open Boundary}

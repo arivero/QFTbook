@@ -35,6 +35,8 @@ Date: 2026-05-26.
   conventional `alpha`-basis formula.
 - Added the hypergeometric form of the BPZ solutions for one degenerate
   insertion and the resulting shift-equation logic.
+- Expanded the DOZZ `b`-shift ratio to an explicit gamma-product derivation
+  from the `Upsilon_b` shift relation.
 - Recorded the remaining functorial sewing problem as an `openproblem`,
   cross-linked to the Volume IV Kontsevich-Segal ledger.
 
@@ -46,8 +48,7 @@ Date: 2026-05-26.
 
 ## Remaining Obligations
 
-- #601 remains open.  The chapter still needs a fully expanded gamma-product
-  DOZZ shift-ratio calculation check, low-order conformal-block recursion
-  examples beyond the first degenerate block, and eventual functorial sewing
-  closure.
+- #601 remains open.  The chapter still needs an automated DOZZ shift-ratio
+  calculation check, low-order conformal-block recursion examples beyond the
+  first degenerate block, and eventual functorial sewing closure.
 - #600 and #602 were not addressed by this pass.

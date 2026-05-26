@@ -57,7 +57,8 @@ boundaries rather than importing the appendix exposition.
   the corresponding BPZ differential equation.
 - Reduces the four-point function with one `V_{-b/2}` insertion to
   hypergeometric blocks, identifies the two local fusion exponents, and
-  explains the origin of the degenerate shift equation.
+  derives the explicit gamma-product DOZZ `b`-shift ratio from the
+  `Upsilon_b` shift relation.
 - Records an open problem for functorial/sewing closure and cross-links the
   Kontsevich-Segal ledger.
 
@@ -76,8 +77,8 @@ boundaries rather than importing the appendix exposition.
 
 ## Remaining Obligations
 
-- Expand the DOZZ shift-ratio calculation check using the `Upsilon_b` shift
-  relations.
+- Add an automated DOZZ shift-ratio calculation check mirroring the
+  handwritten `Upsilon_b` derivation in the chapter.
 - Add detailed conformal-block recursion examples beyond the first BPZ
   equation.
 - Develop Liouville boundary states only after the BCFT chapter is added; do
@@ -93,4 +94,5 @@ boundaries rather than importing the appendix exposition.
   a calculation check.
 - 2026-05-26 stringbook-spine expansion: added the asymptotic scattering
   basis, continuous conformal-block decomposition, `P`-basis DOZZ
-  representative, and degenerate hypergeometric BPZ block derivation.
+  representative, degenerate hypergeometric BPZ block derivation, and explicit
+  gamma-product DOZZ `b`-shift ratio.
