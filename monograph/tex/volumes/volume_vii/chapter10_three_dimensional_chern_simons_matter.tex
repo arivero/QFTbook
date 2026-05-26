@@ -4,9 +4,14 @@
 \ConventionsMixed
 
 In three dimensions, supersymmetric gauge theories combine topological gauge
-terms, parity anomalies, monopole operators, and matter dynamics.  This chapter
-fixes the basic \(3D\) \(\mathcal N=2\) Chern--Simons--matter datum before
-later protected-sector and localization chapters use it.
+terms, parity anomalies, monopole operators, and matter dynamics.  This
+chapter treats them as field-theoretic data, not as slogans imported from a
+dual description.  The first part fixes the \(3D\) \(\mathcal N=2\)
+Chern--Simons--matter conventions used by the localization chapter.  The
+second part gives the Aharony--Bergman--Jafferis--Maldacena theory as a
+worked example with gauge group, levels, matter, superpotential, moduli
+space, monopole enhancement boundary, and \(S^3\) localization matrix model
+all stated in the same normalization.
 
 \section{Three-Dimensional Supersymmetry}
 
@@ -24,6 +29,21 @@ representations of this Hilbert-space algebra.  Superfields are off-shell
 coordinate packages for local variables; the two notions are connected only
 after dynamics and quantization have been specified.
 
+A \(3D\) \(\mathcal N=2\) vector multiplet contains
+\[
+  (A_\mu,\sigma,\lambda,\bar\lambda,D),
+\]
+where \(A_\mu\) is a gauge field, \(\sigma\) is a real adjoint scalar,
+\(\lambda,\bar\lambda\) are gauginos, and \(D\) is an auxiliary scalar.  A
+chiral multiplet contains
+\[
+  (\phi,\psi,F)
+\]
+in a unitary representation of the gauge group.  These are field variables
+in a chosen off-shell presentation.  A statement about BPS particles or local
+operators must also specify the Hamiltonian, Gauss law, and operator
+completion of the theory.
+
 \section{Chern--Simons Datum}
 
 Let \(G\) be compact and let \(P\to M_3\) be a principal \(G\)-bundle.  A
@@ -38,7 +58,10 @@ Chern--Simons action is
 The trace convention and the allowed levels \(k\) are tied to the lattice of
 large gauge transformations.  Gauge invariance of
 \(\exp(\ii S_{\mathrm{CS}})\) requires the change of \(S_{\mathrm{CS}}\) under
-a large gauge transformation to lie in \(2\pi\mathbb Z\).
+a large gauge transformation to lie in \(2\pi\mathbb Z\).  For a spin
+Chern--Simons theory the allowed counterterms may differ from the purely
+bosonic theory by half-integral contact terms; this choice is part of the
+three-dimensional QFT datum.
 
 Varying the action gives
 \[
@@ -55,13 +78,8 @@ On a closed manifold, the field equation of pure Chern--Simons theory is
 On a manifold with boundary, a boundary condition or boundary degrees of
 freedom are part of the gauge-theory datum.
 
-\section{Supersymmetric Vector Multiplet}
+\section{Supersymmetric Chern--Simons--Matter Action}
 
-A \(3D\) \(\mathcal N=2\) vector multiplet contains
-\[
-  (A_\mu,\sigma,\lambda,\bar\lambda,D),
-\]
-where \(\sigma\) is a real adjoint scalar and \(D\) is an auxiliary field.
 The supersymmetric Chern--Simons action contains
 \[
   S_{\mathrm{CS}}^{\mathcal N=2}
@@ -73,34 +91,61 @@ The supersymmetric Chern--Simons action contains
     -\bar\lambda\lambda
     +2D\sigma
   \right),
+  \label{eq:three-d-susy-cs-vector-action}
 \]
-with the displayed signs defining the convention of this chapter.  The
-auxiliary equation couples \(D\) to matter moment maps and to \(\sigma\),
-thereby modifying the vacuum equations compared with pure Yang--Mills matter
-systems.
-
-\section{Matter And Moment Maps}
-
-Let chiral multiplets \(\Phi_i\) take values in a unitary representation
-\(R\) of \(G\).  Their scalar fields are \(\phi_i\).  With real mass
-parameters \(m_i\), the bosonic potential contains
+with the displayed signs defining the convention of this chapter.  Let
+chiral multiplets \(\Phi_i\) take values in a unitary representation \(R\) of
+\(G\).  Their scalar fields are \(\phi_i\).  With real mass parameters
+\(m_i\), FI coordinate \(\zeta\) for an abelian factor, and superpotential
+\(W\), the bosonic potential contains
 \[
   \sum_i\left|(\sigma+m_i)\phi_i\right|^2
   +
   \frac12\left(\mu(\phi)+\frac{k}{2\pi}\sigma-\zeta\right)^2
   +
   |dW(\phi)|^2,
+  \label{eq:three-d-n2-bosonic-potential}
 \]
-in an abelian normalization where \(\mu\) is the matter moment map and
-\(\zeta\) is the FI coordinate.  Supersymmetric classical vacua solve
+in an abelian normalization where \(\mu\) is the matter moment map.
+Supersymmetric classical vacua solve
 \[
   dW=0,\qquad
   (\sigma+m_i)\phi_i=0,\qquad
   \mu(\phi)+\frac{k}{2\pi}\sigma-\zeta=0,
+  \label{eq:three-d-n2-vacuum-equations}
 \]
 modulo gauge transformations.
 
-\section{Parity Anomaly}
+\begin{proposition}[Auxiliary-field origin of the shifted D-term]
+\label{prop:three-d-cs-d-term-shift}
+In the abelian convention of \eqref{eq:three-d-susy-cs-vector-action}, the
+auxiliary equation shifts the moment-map equation by
+\[
+  \mu(\phi)-\zeta\longmapsto
+  \mu(\phi)+\frac{k}{2\pi}\sigma-\zeta .
+\]
+\end{proposition}
+
+\begin{proof}
+The part of the Lagrangian involving \(D\) has the form
+\[
+  \frac12D^2+D\bigl(\mu(\phi)-\zeta\bigr)
+  +\frac{k}{2\pi}D\sigma ,
+\]
+where the last term is the \(2D\sigma\) term in
+\eqref{eq:three-d-susy-cs-vector-action}.  Completing the square gives
+\[
+  \frac12
+  \left(D+\mu(\phi)+\frac{k}{2\pi}\sigma-\zeta\right)^2
+  -
+  \frac12
+  \left(\mu(\phi)+\frac{k}{2\pi}\sigma-\zeta\right)^2 .
+\]
+Eliminating \(D\) leaves the displayed positive potential and hence the
+vacuum equation \eqref{eq:three-d-n2-vacuum-equations}.
+\end{proof}
+
+\section{Parity Anomaly And Contact Terms}
 
 A massive three-dimensional Dirac fermion in representation \(R\) shifts the
 effective Chern--Simons level by
@@ -112,10 +157,16 @@ where
   \operatorname{Tr}_R(t^at^b)=T(R)\delta^{ab}
 \]
 in the trace convention used for the gauge action.  Therefore a massless
-fermion coupled to a gauge field requires a choice of regulator that fixes the
-integer or half-integer effective level.  This choice is part of the
+fermion coupled to a gauge field requires a choice of regulator that fixes
+the integer or half-integer effective level.  This choice is part of the
 definition of the continuum theory and of its time-reversal or parity
 properties.
+
+Background flavor and R-symmetry Chern--Simons terms are equally important.
+Two proposed dual theories with the same local operator spectrum can still
+differ as QFTs if their background contact terms differ.  In localization
+formulae these contact terms appear as phases or Gaussian factors in the
+Cartan variables; they are not disposable normalizations.
 
 \section{Monopole Operators}
 
@@ -133,6 +184,219 @@ abelian theory with level \(k\), Gauss law gives electric charge
 for a bare monopole of magnetic charge \(m\).  Gauge-invariant monopole
 operators may require dressing by charged matter fields.
 
+This point is not optional in supersymmetric Chern--Simons--matter theory.
+Monopole operators can carry flavor and R-charges, can complete multiplets
+that are invisible in a polynomial superfield presentation, and can change
+the apparent global symmetry of the interacting fixed point.  Thus a
+Lagrangian written in \(\mathcal N=2\) variables may describe a theory with
+larger supersymmetry only after the monopole sectors are included.
+
+\section{ABJM Gauge-Theory Datum}
+\label{sec:abjm-gauge-theory-datum}
+
+Fix integers \(N\ge1\) and \(k\ne0\).  The ABJM gauge group and levels are
+\[
+  G_{N,k}=U(N)_k\times U(N)_{-k},
+\]
+with connections \(A\) and \(\widehat A\).  The subscript means that the
+Chern--Simons functional of \(A\) has level \(k\), while that of
+\(\widehat A\) has level \(-k\), in the same trace normalization.  The
+global form of the gauge group and the quotient by any diagonal one-form
+symmetry affect line operators and must be declared in a fully specified
+theory.  In this chapter \(U(N)\times U(N)\) denotes the standard ABJM
+choice used for the local-operator and \(S^3\) partition-function formulae.
+
+In \(\mathcal N=2\) language the matter consists of four chiral multiplets
+\[
+  A_a\in(\mathbf N,\overline{\mathbf N}),\qquad
+  B_{\dot a}\in(\overline{\mathbf N},\mathbf N),
+  \qquad a,\dot a=1,2 .
+\]
+The classical superpotential is
+\[
+  W_{\rm ABJM}
+  =
+  \frac{2\pi}{k}
+  \varepsilon^{ab}\varepsilon^{\dot a\dot b}
+  \operatorname{Tr}
+  \bigl(A_aB_{\dot a}A_bB_{\dot b}\bigr).
+  \label{eq:abjm-superpotential}
+\]
+The trace is over the first \(U(N)\) gauge indices, so every product in
+\eqref{eq:abjm-superpotential} is an endomorphism of the first gauge factor.
+The displayed coefficient fixes the convention in which the Yukawa and
+sextic scalar terms assemble into the \(\mathcal N=6\) invariant potential
+after auxiliary fields are eliminated.  The \(\mathcal N=2\) trial
+\(R\)-charge assignment
+\[
+  R(A_a)=R(B_{\dot a})=\frac12
+\]
+gives \(R(W_{\rm ABJM})=2\), as required for a superpotential term.
+
+The scalar variables can be grouped as
+\[
+  C_I=(A_1,A_2,B_1^\dagger,B_2^\dagger),
+  \qquad I=1,\ldots,4 .
+\]
+The interacting theory has an \(SU(4)\) flavor symmetry rotating the \(C_I\)
+in the \(\mathcal N=6\) presentation.  This is a field-theory statement
+about the completed gauge theory, including monopole sectors and the
+Chern--Simons Gauss law.  It is not merely a symmetry of the holomorphic
+\(\mathcal N=2\) superpotential variables.
+
+\begin{proposition}[Parity and the opposite levels]
+\label{prop:abjm-parity-opposite-levels}
+Let \(P\) be an orientation-reversing diffeomorphism of the three-manifold.
+The Chern--Simons functional changes sign under \(P\).  Therefore the pair of
+levels \((k,-k)\) is invariant under the combined operation
+\[
+  P:\quad A\longleftrightarrow\widehat A,\qquad
+  A_a\longleftrightarrow B_{\dot a}^{\dagger},
+\]
+up to the corresponding exchange of flavor indices and spinor conventions.
+\end{proposition}
+
+\begin{proof}
+Under an orientation reversal the integral of a three-form changes sign, so
+\[
+  S_{\rm CS,k}[A]\mapsto -S_{\rm CS,k}[P^\ast A].
+\]
+Exchanging the two gauge factors sends the level \(k\) contribution to the
+sector that originally carried level \(-k\), and conversely.  Hence the sum
+\[
+  S_{\rm CS,k}[A]+S_{\rm CS,-k}[\widehat A]
+\]
+is mapped to itself after relabeling the two connections.  The matter
+exchange identifies the bifundamental and antibifundamental representations,
+so the gauge-covariant kinetic terms and the quartic superpotential are
+carried into their complex conjugate form with the same real action.
+\end{proof}
+
+\section{ABJM Classical Moduli Space}
+\label{sec:abjm-classical-moduli-space}
+
+The vacuum equations of the \(G_{N,k}\) theory are not those of an ordinary
+Yang--Mills quotient: the Chern--Simons auxiliary fields identify moment-map
+coordinates with vector-multiplet scalars.  A useful branch is the commuting
+branch, where the four complex scalar matrices are simultaneously diagonal
+after gauge transformations:
+\[
+  C_I=\operatorname{diag}(c_{I,1},\ldots,c_{I,N}),\qquad I=1,\ldots,4 .
+\]
+For generic diagonal eigenvalues the residual gauge group is the permutation
+group \(S_N\), together with abelian gauge transformations acting on each
+eigenvalue.
+
+\begin{proposition}[One-brane quotient]
+\label{prop:abjm-one-brane-quotient}
+For \(N=1\), set \(C=(C_1,\ldots,C_4)\).  The classical ABJM branch is
+\[
+  \mathcal M_{1,k}^{\rm cl}=\C^4/\mathbb Z_k,
+\]
+where the generator of \(\mathbb Z_k\) acts by simultaneous phase rotation
+\[
+  (C_1,\ldots,C_4)\longmapsto
+  \bigl(\ee^{2\pi\ii/k}C_1,\ldots,\ee^{2\pi\ii/k}C_4\bigr).
+\]
+\end{proposition}
+
+\begin{proof}
+For \(U(1)_k\times U(1)_{-k}\), every matter scalar has charge \(+1\) under
+the anti-diagonal gauge parameter and charge \(0\) under the diagonal gauge
+parameter.  Put
+\[
+  A_D=A+\widehat A,\qquad B=A-\widehat A .
+\]
+On a closed three-manifold the abelian Chern--Simons term is, up to the
+declared boundary convention,
+\[
+  \frac{k}{4\pi}\int(A\wedge dA-\widehat A\wedge d\widehat A)
+  =
+  \frac{k}{4\pi}\int B\wedge dA_D .
+  \label{eq:abjm-abelian-bf-term}
+\]
+Thus the diagonal gauge field acts as a Lagrange multiplier for the
+anti-diagonal flux, while the anti-diagonal gauge field is the one seen by
+the matter.  Dualizing the flat diagonal connection gives a periodic scalar.
+Large shifts of that scalar leave a residual anti-diagonal gauge
+transformation of order \(k\).  This residual transformation multiplies every
+\(C_I\) by \(\ee^{2\pi\ii/k}\).  Therefore the continuous anti-diagonal
+phase quotient is accompanied by the finite residual quotient
+\(\mathbb Z_k\), giving \(\C^4/\mathbb Z_k\).
+\end{proof}
+
+\begin{quotedtheorem}[ABJM commuting-branch moduli space]
+\label{qt:abjm-commuting-branch-moduli}
+For the \(U(N)_k\times U(N)_{-k}\) ABJM theory, the branch obtained from
+simultaneously diagonalizable scalar vacuum expectation values has classical
+moduli space
+\[
+  \mathcal M_{N,k}^{\rm cl}
+  =
+  \bigl((\C^4/\mathbb Z_k)^N\bigr)/S_N .
+\]
+For \(k=1,2\) the interacting theory has enhanced \(\mathcal N=8\)
+supersymmetry; for \(|k|>2\) the standard interacting theory has
+\(\mathcal N=6\) supersymmetry.  The enhancement statement uses monopole
+operators and requires data beyond the polynomial superpotential.
+\end{quotedtheorem}
+
+The theorem is quoted here because the full statement identifies quantum
+operator sectors, monopole operators, and the global form of the gauge group.
+The finite quotient in Proposition~\ref{prop:abjm-one-brane-quotient} is the
+calculation that fixes the \(k\)-dependent orbifold convention used later in
+localization and protected-sector comparisons.
+
+\section{ABJM Localization Specialization}
+\label{sec:abjm-localization-specialization}
+
+The \(S^3\) localization formula of
+Chapter~\ref{ch:susy-localization-compact-manifolds} specializes to ABJM
+when all four chiral multiplets have \(R\)-charge \(1/2\) and zero real mass.
+For Cartan variables
+\[
+  \lambda_i,\mu_j\in\mathbb R,\qquad i,j=1,\ldots,N,
+\]
+associated respectively to the two \(U(N)\) factors, the matrix integral is
+\[
+\begin{aligned}
+  Z^{\rm ABJM}_{S^3}(N,k)
+  &=
+  \frac1{(N!)^2}
+  \int_{\mathbb R^{2N}}
+  \prod_{i=1}^N d\lambda_i\,d\mu_i\,
+  \exp\!\left[
+    \ii\pi k\sum_i(\lambda_i^2-\mu_i^2)
+  \right] \\
+  &\quad\times
+  \frac{
+    \prod_{i<j}4\sinh^2\!\bigl(\pi(\lambda_i-\lambda_j)\bigr)
+    \prod_{i<j}4\sinh^2\!\bigl(\pi(\mu_i-\mu_j)\bigr)
+  }{
+    \prod_{i,j}4\cosh^2\!\bigl(\pi(\lambda_i-\mu_j)\bigr)
+  } .
+\end{aligned}
+  \label{eq:abjm-s3-matrix-model}
+\]
+The numerator is the product of the two vector-multiplet determinants.  The
+denominator is the product of two conjugate bifundamental chiral pairs:
+each pair contributes
+\[
+  \exp\!\left[
+    \ell\!\left(\frac12+\ii(\lambda_i-\mu_j)\right)
+    +
+    \ell\!\left(\frac12-\ii(\lambda_i-\mu_j)\right)
+  \right]
+  =
+  \frac1{2\cosh\!\bigl(\pi(\lambda_i-\mu_j)\bigr)} .
+\]
+The two pairs give \(1/(4\cosh^2(\pi(\lambda_i-\mu_j)))\) for each ordered
+pair \((i,j)\).  The oscillatory contour, framing phase, and contact terms
+are part of the localization datum.  Thus
+\eqref{eq:abjm-s3-matrix-model} is an exact protected observable once that
+datum is supplied; it is not, by itself, a microscopic construction of the
+continuum theory.
+
 \section{Three-Dimensional Dynamics Ledger}
 
 A complete \(3D\) supersymmetric Chern--Simons--matter example must specify:
@@ -145,6 +409,17 @@ A complete \(3D\) supersymmetric Chern--Simons--matter example must specify:
   \text{boundary and global-form choices}.
 \end{gathered}
 \]
+For ABJM this list becomes
+\[
+\begin{gathered}
+  U(N)_k\times U(N)_{-k},\quad
+  A_a,B_{\dot a},\quad W_{\rm ABJM},\\
+  \text{the chosen global form and line-operator lattice},\\
+  \text{the monopole sectors implementing the }SU(4)\text{ symmetry and
+  possible } \mathcal N=8 \text{ enhancement},\\
+  \text{and the }S^3\text{ contour, framing, and contact-term convention}.
+\end{gathered}
+\]
 Duality proposals compare these full data, including contact terms and
 background Chern--Simons counterterms.
 
@@ -153,5 +428,5 @@ background Chern--Simons counterterms.
 Construct \(3D\) supersymmetric Chern--Simons--matter theories with a
 regulator preserving the stated gauge and supersymmetry Ward identities,
 including parity-anomaly choices, monopole-operator definitions, boundary
-conditions, and contact-term coordinates.
+conditions, contact-term coordinates, and global-form data.
 \end{openproblem}

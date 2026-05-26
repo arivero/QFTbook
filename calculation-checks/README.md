@@ -328,6 +328,13 @@ Current checks:
   Kontsevich--Segal allowability chapter, including the angle criterion,
   Euclidean and Lorentzian boundary examples, two-time exclusion, and
   positivity of all diagonal \(q\)-form coefficients.
+- `susy_abjm_6d_checks.py`: exact finite checks for the ABJM and
+  six-dimensional supersymmetric field-theory chapters, including the ABJM
+  superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
+  BF normalization, \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model
+  denominator powers, six-dimensional Yang-Mills coupling dimension,
+  \(A_{N-1}\) \((2,0)\) anomaly/tensor-branch arithmetic, and the
+  trace-delta \(g_5^2=4\pi^2R\) compactification normalization.
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
   Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian matrix integral, the
