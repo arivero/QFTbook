@@ -1817,6 +1817,188 @@ that the two relative-scale sectors have strictly positive gap exponents:
 off-diagonal sector \(j>i\).  Thus the relative scales are summable once the
 local coordinate has been separated.
 
+\begin{proposition}[Two-loop sunset gaps and nested forest cancellation]
+\label{prop:spde-two-loop-sunset-scale-gaps}
+Let \((\mathbb R^D,\mathfrak s)\) be a parabolically scaled space with
+homogeneous dimension \(Q=|\mathfrak s|\), and assume
+\[
+  |B_{\mathfrak s}(0,r)|\leq V r^Q,\qquad 0<r\leq A .
+\]
+Let \(a,b,c\in(0,Q)\) satisfy
+\[
+  a+b+c=2Q .
+\]
+For \(i,j,\ell\geq0\), let \(K_i,L_j,M_\ell\) be measurable kernels such
+that
+\[
+  \operatorname{supp}K_i\subset B_{\mathfrak s}(0,A2^{-i}),\quad
+  \operatorname{supp}L_j\subset B_{\mathfrak s}(0,A2^{-j}),\quad
+  \operatorname{supp}M_\ell\subset B_{\mathfrak s}(0,A2^{-\ell}),
+\]
+and
+\[
+  |K_i(h)|\leq C_K2^{(Q-a)i},\quad
+  |L_j(h)|\leq C_L2^{(Q-b)j},\quad
+  |M_\ell(h)|\leq C_M2^{(Q-c)\ell}.
+\]
+Define
+\[
+  S_{i,j,\ell}=\int K_i(h)L_j(h)M_\ell(h)\,\dd h,
+  \qquad
+  n_*=\max(i,j,\ell),
+\]
+and the non-negative relative gaps
+\[
+  r_K=n_*-i,\qquad r_L=n_*-j,\qquad r_M=n_*-\ell .
+\]
+Then
+\begin{equation}
+  |S_{i,j,\ell}|
+  \leq
+  V A^Q C_KC_LC_M
+  2^{-(Q-a)r_K-(Q-b)r_L-(Q-c)r_M}.
+  \label{eq:spde-two-loop-sunset-gap-bound}
+\end{equation}
+Consequently, if
+\[
+  S_N=\sum_{\max(i,j,\ell)\leq N}S_{i,j,\ell},
+\]
+then
+\begin{equation}
+  |S_{N+1}-S_N|
+  \leq
+  V A^Q C_KC_LC_M
+  \sum_{\nu\in\{K,L,M\}}
+  \prod_{\mu\neq\nu}\frac{1}{1-2^{-\eta_\mu}},
+  \label{eq:spde-two-loop-sunset-shell-bound}
+\end{equation}
+where
+\[
+  \eta_K=Q-a,\qquad \eta_L=Q-b,\qquad \eta_M=Q-c .
+\]
+
+For dynamic \(\Phi^4_3\), \(Q=5\).  The heat kernel in the retarded edge has
+order \(a=2\).  Each stationary covariance edge has order \(4\): it is the
+time convolution of two order-\(2\) heat edges, so
+Proposition~\ref{prop:spde-dyadic-parabolic-convolution-bound} gives the
+order \(2+2=4\) dyadic bound.  Thus \(b=c=4\) and
+\[
+  \eta_K=3,\qquad \eta_L=\eta_M=1,
+\]
+and the non-nested two-loop local sunset sectors obey
+\begin{equation}
+  |S_{i,j,\ell}|
+  \leq
+  C\,2^{-3r_K-r_L-r_M},
+  \qquad
+  |S_{N+1}-S_N|\leq \frac{60}{7}C ,
+  \label{eq:spde-phi-four-three-sunset-sector-bound}
+\end{equation}
+with \(C=V A^5C_KC_LC_M\).
+
+In the same finite cutoff chart, write
+\[
+  G=\sum_{\ell\geq0}G_\ell,\qquad C_{1,\ell}=G_\ell(0).
+\]
+At fixed scales \(i,j,\ell\), the nested local coefficient in
+\[
+  X(z)^2\int K_i(z-w)X(w)^3\,\dd w
+\]
+is
+\[
+  6C_{1,\ell}\int K_i(h)G_j(h)\,\dd h .
+\]
+After the recursive one-loop forest subtraction
+\[
+  X(w)^3\longmapsto X(w)^3-3C_{1,\ell}X(w),
+\]
+the corresponding local coefficient from the subtracted term is
+\[
+  -6C_{1,\ell}\int K_i(h)G_j(h)\,\dd h .
+\]
+Therefore the renormalized nested two-loop local coefficient is zero for
+each triple \((i,j,\ell)\).  The only new two-loop local coordinate left by
+the forest operation is the non-nested sunset coefficient bounded above.
+\end{proposition}
+
+\begin{proof}
+The product \(K_iL_jM_\ell\) is supported in the smallest of the three
+supports.  Hence
+\[
+  \operatorname{supp}(K_iL_jM_\ell)
+  \subset B_{\mathfrak s}(0,A2^{-n_*}) .
+\]
+Therefore
+\[
+\begin{aligned}
+  |S_{i,j,\ell}|
+  &\leq
+  C_KC_LC_M
+  2^{(Q-a)i+(Q-b)j+(Q-c)\ell}
+  |B_{\mathfrak s}(0,A2^{-n_*})|                  \\
+  &\leq
+  V A^Q C_KC_LC_M
+  2^{(Q-a)i+(Q-b)j+(Q-c)\ell-Qn_*}.
+\end{aligned}
+\]
+Substitute
+\[
+  i=n_*-r_K,\qquad j=n_*-r_L,\qquad \ell=n_*-r_M .
+\]
+The coefficient of \(n_*\) is
+\[
+  (Q-a)+(Q-b)+(Q-c)-Q=2Q-(a+b+c)=0,
+\]
+so the remaining factor is exactly the right-hand side of
+\eqref{eq:spde-two-loop-sunset-gap-bound}.
+
+The increment \(S_{N+1}-S_N\) is the sum over triples with
+\(\max(i,j,\ell)=N+1\).  Equivalently, at least one of the gaps
+\(r_K,r_L,r_M\) is zero.  This shell is contained in the union of the three
+sets \(r_\nu=0\).  Summing the geometric majorant from
+\eqref{eq:spde-two-loop-sunset-gap-bound} over that union gives
+\eqref{eq:spde-two-loop-sunset-shell-bound}.  For
+\((Q,a,b,c)=(5,2,4,4)\), this shell constant is
+\[
+  \frac{1}{(1-2^{-1})^2}
+  +
+  2\,\frac{1}{(1-2^{-3})(1-2^{-1})}
+  =
+  \frac{60}{7}.
+\]
+
+It remains to verify the nested cancellation.  In
+\[
+  X(z)^2X(w)^3
+\]
+leave one of the three fields at \(w\) uncontracted, contract the two fields
+at \(z\) with the two remaining fields at \(w\), and then Taylor-expand the
+uncontracted field at \(w\) to its local value at \(z\).  This is the
+non-nested sunset and gives \(3\cdot2=6\) bridge pairings.  For the nested
+coefficient, instead leave one of the two fields at \(z\) uncontracted,
+contract the other field at \(z\) with one of the three fields at \(w\), and
+contract the two remaining fields at \(w\) with each other.  This gives
+\[
+  2\cdot3=6
+\]
+pairings and the coefficient
+\[
+  6C_{1,\ell}\int K_i(h)G_j(h)\,\dd h .
+\]
+The inner one-loop forest subtraction contributes
+\[
+  -3C_{1,\ell}X(w).
+\]
+Multiplying by \(X(z)^2\), leaving one of the two fields at \(z\)
+uncontracted, and contracting the other one with \(X(w)\) gives
+\[
+  -3\cdot2\,C_{1,\ell}\int K_i(h)G_j(h)\,\dd h .
+\]
+This is the negative of the nested coefficient above.  The cancellation is
+scale-wise because \(C_{1,\ell}=G_\ell(0)\) was kept at fixed tadpole scale
+\(\ell\) throughout the calculation.
+\end{proof}
+
 \begin{theorem}[Multiscale sector summability for coordinate kernels]
 \label{thm:spde-multiscale-sector-kernel-summability}
 Let \(R\geq1\) and let \(\eta_1,\ldots,\eta_R\) be positive real numbers.

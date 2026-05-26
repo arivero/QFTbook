@@ -390,6 +390,34 @@ def check_phi4_three_spde_bphz_counterterm_combinatorics():
     if not c2_shell_factor <= 9:
         raise AssertionError("two-loop dyadic shell bound failed")
 
+    # For the non-nested dynamic Phi4_3 sunset, the retarded heat edge has
+    # order 2 and the two covariance edges have order 4 in parabolic
+    # dimension Q=5.  The equal-scale exponent is zero, and the relative
+    # gaps have weights 3,1,1.
+    q_parabolic = 5
+    heat_order = 2
+    cov_order = 4
+    heat_gap = q_parabolic - heat_order
+    cov_gap = q_parabolic - cov_order
+    sunset_equal_scale_exponent = 2 * q_parabolic - (heat_order + 2 * cov_order)
+    assert_equal(sunset_equal_scale_exponent, 0, "Phi4_3 sunset logarithmic balance")
+    assert_equal(heat_gap, 3, "Phi4_3 sunset heat gap")
+    assert_equal(cov_gap, 1, "Phi4_3 sunset covariance gap")
+    sunset_shell_factor = (
+        Fraction(1, 1) / (1 - Fraction(1, 2)) ** 2
+        + 2
+        * Fraction(1, 1)
+        / ((1 - Fraction(1, 8)) * (1 - Fraction(1, 2)))
+    )
+    assert_equal(sunset_shell_factor, Fraction(60, 7), "Phi4_3 sunset shell factor")
+
+    # The nested tadpole at fixed scales cancels against the inner one-loop
+    # forest subtraction: 2*3 pairings from X(z)^2 X(w)^3 and -3*2 from
+    # X(z)^2 C1 X(w).
+    nested_pairings = 2 * 3
+    inner_counterterm_pairings = -3 * 2
+    assert_equal(nested_pairings + inner_counterterm_pairings, 0, "Phi4_3 nested forest cancellation")
+
     # One-loop cubic Wick contraction: choose the contracted pair in three
     # fields.  Two-loop non-nested sunset: choose the corrected outer factor,
     # then the local linear part of X(z)^2 K X(w)^3 gives 3*C2 with the
@@ -671,7 +699,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, C2-log-growth, C2-shell, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":
