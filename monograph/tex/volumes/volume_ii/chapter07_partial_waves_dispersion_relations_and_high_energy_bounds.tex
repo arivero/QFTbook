@@ -1511,21 +1511,74 @@ handled by their displayed Cauchy residues in the dispersion formula rather
 than hidden inside the cut distribution.
 \end{proof}
 
+\begin{proposition}[Temperedness alone does not give pointwise polynomial bounds]
+\label{prop:temperedness-does-not-imply-pointwise-polynomial-bound}
+There is a smooth nonnegative function \(f\in L^1(\mathbb R)\), hence a
+tempered distribution by
+\[
+  \langle T_f,\varphi\rangle=\int_{\mathbb R}f(s)\varphi(s)\,\dd s,
+\]
+such that \(f(n)\ge e^{n^2}\) for all positive integers \(n\).  Consequently,
+no pointwise polynomial bound for a chosen boundary-value representative can
+be inferred from temperedness alone.
+\end{proposition}
+
+\begin{proof}
+Choose \(\psi\in C_c^\infty((-1/4,1/4))\) with \(\psi\ge0\) and
+\(\psi(0)=1\).  Define
+\[
+  f(s)=\sum_{n=1}^\infty
+  e^{n^2}\psi\!\left(e^{3n^2}(s-n)\right).
+\]
+The supports are contained in intervals
+\[
+  \left(n-\frac14e^{-3n^2},\,n+\frac14e^{-3n^2}\right),
+\]
+which are pairwise disjoint.  On every compact subset of \(\mathbb R\), only
+finitely many summands are present, so \(f\) is smooth.  Moreover
+\[
+  \int_{\mathbb R} f(s)\,\dd s
+  =
+  \sum_{n=1}^\infty
+  e^{n^2}e^{-3n^2}\int_{\mathbb R}\psi(u)\,\dd u
+  =
+  \left(\int_{\mathbb R}\psi(u)\,\dd u\right)
+  \sum_{n=1}^\infty e^{-2n^2}<\infty .
+\]
+Thus \(f\in L^1(\mathbb R)\), and
+\[
+  |\langle T_f,\varphi\rangle|
+  \le
+  \|f\|_{L^1}\sup_s|\varphi(s)|
+  \le
+  \|f\|_{L^1}p_{0,0}(\varphi),
+\]
+so \(T_f\in\mathcal S'(\mathbb R)\).  At the center of the \(n\)-th spike,
+\[
+  f(n)\ge e^{n^2}\psi(0)=e^{n^2}.
+\]
+This exceeds \(C(1+n)^N\) for every fixed \(C,N\).  Hence distributional
+temperedness is compatible with super-polynomial pointwise values of a smooth
+representative.
+\end{proof}
+
 Corollary~\ref{cor:fixed-t-lsz-tempered-polynomial-smearing} is the
 polynomial boundedness that follows immediately from temperedness.  It says
 that smooth high-energy packet matrix elements with fixed energy resolution
 cannot grow faster than a power of the central energy.  It does not by itself
 give a pointwise
 bound for a chosen boundary-value representative, nor does it control the
-large semicircle in a complex \(s\)-plane Cauchy deformation.  Those stronger
-statements use additional analyticity and boundary-regularity input.  The
-Jin--Martin fixed-\(t\) theorem is precisely such an additional theorem-level
-upgrade in the massive Wightman setting: it turns the locality, spectral,
-edge-of-the-wedge, Lehmann-domain, and LSZ hypotheses into a pointwise
-cut-plane polynomial estimate at fixed \(t<0\).  The angular-tube estimate at
-positive \(t<t_0\), used in the Froissart comparison above, is a still
-different boundedness statement and must be supplied separately when it is
-used.
+large semicircle in a complex \(s\)-plane Cauchy deformation.  The obstruction
+is not cosmetic: Proposition~\ref{prop:temperedness-does-not-imply-pointwise-polynomial-bound}
+shows that the distributional statement is logically too weak even for smooth
+functions.  Those stronger statements use additional analyticity and
+boundary-regularity input.  The Jin--Martin fixed-\(t\) theorem is precisely
+such an additional theorem-level upgrade in the massive Wightman setting: it
+turns the locality, spectral, edge-of-the-wedge, Lehmann-domain, and LSZ
+hypotheses into a pointwise cut-plane polynomial estimate at fixed \(t<0\).
+The angular-tube estimate at positive \(t<t_0\), used in the Froissart
+comparison above, is a still different boundedness statement and must be
+supplied separately when it is used.
 
 The polynomial boundedness assumption has a causal interpretation.  A
 one-dimensional model isolates the relevant analytic structure.  Let

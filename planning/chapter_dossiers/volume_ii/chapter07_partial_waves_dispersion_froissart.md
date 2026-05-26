@@ -152,6 +152,15 @@ hypotheses:
     This is the direct consequence of Wightman temperedness; pointwise
     cut-plane bounds and angular-tube bounds require additional analyticity
     and boundary-regularity input.
+10b. Temperedness alone cannot imply pointwise polynomial bounds.  The
+    chapter constructs a smooth nonnegative \(L^1\) function
+    \[
+      f(s)=\sum_{n\ge1} e^{n^2}\psi(e^{3n^2}(s-n))
+    \]
+    which defines a tempered distribution but has
+    \(f(n)\ge e^{n^2}\).  This proves that the Jin--Martin pointwise upgrade
+    needs genuine analytic machinery and cannot be replaced by an appeal to
+    Wightman temperedness.
 11. The subtraction-count argument uses the positive elastic unitarity integral
     \[
       \operatorname{Im}\mathcal A(s,0)\ge
@@ -321,3 +330,8 @@ hypotheses:
   estimate.  The text now states precisely that this is the boundedness
   supplied immediately by Wightman temperedness, while Jin--Martin pointwise
   cut-plane boundedness and angular-tube boundedness are stronger inputs.
+- 2026-05-26 issue #495 pass: added the smooth \(L^1\) spike construction
+  proving that temperedness alone does not imply pointwise polynomial
+  boundedness of any chosen representative.  This pins down the logical gap
+  that the Jin--Martin/Jost--Lehmann--Dyson/Bros--Epstein--Glaser analytic
+  machinery must close.
