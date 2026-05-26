@@ -823,6 +823,80 @@ supersymmetries are not lifted; they are the exact Grassmann coordinates
 whose integration is the \(d^2\theta\) measure.
 \end{proof}
 
+\begin{proposition}[Maximal-rank meson invariant for the ADS patch]
+\label{prop:ads-maximal-rank-meson-invariant}
+Let \(n=N_c-1\), and let
+\[
+  U_n=\{M\in \operatorname{Mat}_{n\times n}(\mathbb C)\mid \det M\neq0\}.
+\]
+Suppose \(\mathcal F:U_n\to\mathbb C\) is a single-valued holomorphic
+function satisfying
+\[
+  \mathcal F(LMR^{-1})=\mathcal F(M),
+  \qquad L,R\in \operatorname{SL}_n(\mathbb C),
+  \label{eq:ads-special-flavor-invariance}
+\]
+and the homogeneous scaling law
+\[
+  \mathcal F(sM)=s^{-n}\mathcal F(M),
+  \qquad s\in\mathbb C^\times .
+  \label{eq:ads-reduced-factor-homogeneity}
+\]
+Then
+\[
+  \mathcal F(M)=\frac{C}{\det M}
+\]
+for a constant \(C\).  For the \(N_f=N_c-1\) SQCD \(R\)-charge assignment,
+\((\det M)^{-1}\) has \(R\)-charge \(2\).
+\end{proposition}
+
+\begin{proof}
+The action in \eqref{eq:ads-special-flavor-invariance} is the complexified
+special-flavor action on the meson matrix.  For
+\(\delta\in\mathbb C^\times\), set
+\[
+  D_\delta=\operatorname{diag}(\delta,1,\ldots,1).
+\]
+Every \(M\in U_n\) with \(\det M=\delta\) lies in the same
+\(\operatorname{SL}_n(\mathbb C)\) left orbit as \(D_\delta\), because
+\[
+  A=M D_\delta^{-1}
+  \qquad\text{satisfies}\qquad
+  \det A=(\det M)(\det D_\delta)^{-1}=1
+\]
+and hence \(A\in \operatorname{SL}_n(\mathbb C)\) with \(M=AD_\delta\).
+Therefore
+\(\mathcal F\) is constant on each determinant fiber.  Define
+\[
+  f(\delta)=\mathcal F(D_\delta),\qquad \delta\in\mathbb C^\times .
+\]
+Then
+\[
+  \mathcal F(M)=f(\det M).
+\]
+
+Now scale \(M\) by \(s\in\mathbb C^\times\).  Since
+\(\det(sM)=s^n\det M\), the homogeneity condition gives
+\[
+  f(s^n\delta)=s^{-n}f(\delta).
+\]
+For arbitrary \(u\in\mathbb C^\times\), choose \(s\) with \(s^n=u\).  The
+displayed identity becomes
+\[
+  f(u\delta)=u^{-1}f(\delta).
+\]
+Taking \(\delta=1\) gives \(f(u)=C/u\).  Thus
+\(\mathcal F(M)=C/(\det M)\).
+
+Finally, when \(N_f=N_c-1=n\),
+\[
+  R(M)=2\left(1-\frac{N_c}{N_c-1}\right)=-\frac{2}{n},
+  \qquad
+  R(\det M)=-2,
+\]
+so \(R((\det M)^{-1})=2\).
+\end{proof}
+
 \begin{proposition}[One-instanton test of the ADS numerator and denominator]
 \label{prop:ads-one-instanton-test}
 Assume Hypothesis~\ref{hyp:sqcd-one-instanton-calculus}.  For
@@ -870,27 +944,33 @@ absorbed into the holomorphic scale by the hypothesis.
 
 The remaining dependence must be a holomorphic function of the meson matrix
 \(M^i{}_j=\widetilde Q_jQ^i\), because the baryonic coordinates are absent
-when \(N_f=N_c-1\).  Flavor invariance under
-\(SU(N_f)_L\times SU(N_f)_R\) allows dependence on \(M\) through powers of
-\(\det M\) on this patch.  The reduced factor \(\mathcal F(M)\) in
-\eqref{eq:ads-reduced-instanton-integral} must carry
+when \(N_f=N_c-1\).  The exact nonzero modes and lifted zero modes are
+integrated out in a regulator preserving the special flavor group, so
+\(\mathcal F\) obeys the complexified
+\(\operatorname{SL}(N_f,\mathbb C)_L\times
+\operatorname{SL}(N_f,\mathbb C)_R\) invariance used in
+Proposition~\ref{prop:ads-maximal-rank-meson-invariant}.  The reduced factor
+\(\mathcal F(M)\) in \eqref{eq:ads-reduced-instanton-integral} must carry
 engineering dimension
 \[
   3-(2N_c+1)=-(2N_c-2),
 \]
-which is precisely the dimension of \((\det M)^{-1}\), since
-\(\det M\) has dimension \(2N_f=2N_c-2\).  The anomaly-free
-\(R\)-charge gives
+so under the coordinate scaling \(M\mapsto sM\), where each meson entry has
+dimension \(2\), it is homogeneous of degree \(-N_f\).  With \(N_f=N_c-1\),
+Proposition~\ref{prop:ads-maximal-rank-meson-invariant} gives
+\[
+  \mathcal F(M)=\frac{C}{\det M}.
+\]
+The anomaly-free \(R\)-charge gives the independent convention check
 \[
   R(M)=2\left(1-\frac{N_c}{N_c-1}\right)=-\frac{2}{N_c-1},
   \qquad
   R(\det M)=-2,
 \]
-so \((\det M)^{-1}\) has \(R\)-charge \(2\), the required charge of a
-superpotential.  No other holomorphic monomial in \(\det M\) has both the
-required dimension and the required \(R\)-charge.  Thus the one-instanton
-sector has the displayed form, with the nonzero coefficient fixed by the
-chosen normalization of the regulated collective-coordinate measure.
+so \((\det M)^{-1}\) has \(R\)-charge \(2\), matching the charge of a
+superpotential.  Thus the one-instanton sector has the displayed form, with
+the nonzero coefficient fixed by the chosen normalization of the regulated
+collective-coordinate measure.
 \end{proof}
 
 For the smallest example, \(SU(2)\) with one flavor, the ledger gives

@@ -378,9 +378,10 @@ Current checks:
   supersymmetric instanton expansion, including the ADHM dimension count,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
-  and Higgs-patch collective-coordinate ledger, holomorphic decoupling
-  exponent shift, ADS decoupling-recursion coefficient and one-variable
-  \(F\)-term algebra, the pure \(SU(2)\)
+  and Higgs-patch collective-coordinate ledger, the maximal-rank meson
+  determinant-invariant uniqueness step, holomorphic decoupling exponent
+  shift, ADS decoupling-recursion coefficient and one-variable \(F\)-term
+  algebra, the pure \(SU(2)\)
   one-instanton Nekrasov fixed-point sum, and the first Nekrasov
   prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space

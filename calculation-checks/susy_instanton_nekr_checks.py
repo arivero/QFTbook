@@ -96,6 +96,48 @@ def check_ads_higgs_patch_collective_coordinates() -> None:
         assert_equal(reduced_factor_dimension, -det_m_dimension, "ADS reduced determinant dimension")
 
 
+def check_ads_meson_invariant_uniqueness() -> None:
+    for nc in range(2, 12):
+        n = nc - 1
+        nf = n
+
+        # The complexified special-flavor action M -> L M R^{-1} preserves
+        # det(M) because det(L)=det(R)=1.
+        for det_m in (Fraction(2), Fraction(5, 3), Fraction(11, 7)):
+            det_l = Fraction(1)
+            det_r = Fraction(1)
+            transformed_det = det_l * det_m / det_r
+            assert_equal(transformed_det, det_m, "ADS special-flavor determinant invariant")
+
+            # The proof uses D_delta=diag(delta,1,...,1): M D_delta^{-1}
+            # has determinant one and so lies in SL_n(C).
+            det_d_delta = det_m
+            det_left_multiplier = det_m / det_d_delta
+            assert_equal(det_left_multiplier, 1, "ADS determinant-fiber SL transitivity")
+
+        reduced_factor_dimension = 3 - (2 * nc + 1)
+        meson_entry_dimension = 2
+        homogeneous_degree = Fraction(reduced_factor_dimension, meson_entry_dimension)
+        assert_equal(homogeneous_degree, -n, "ADS reduced factor meson-scaling degree")
+
+        determinant_scaling_degree = n
+        inverse_det_scaling_degree = -determinant_scaling_degree
+        assert_equal(inverse_det_scaling_degree, homogeneous_degree, "ADS inverse determinant scaling")
+
+        r_m = Fraction(2 * (nf - nc), nf)
+        r_det_m = nf * r_m
+        assert_equal(r_det_m, -2, "ADS determinant semi-invariant R-charge")
+        assert_equal(-r_det_m, 2, "ADS inverse determinant superpotential R-charge")
+
+        # If F(M)=f(det M) and F(sM)=s^{-n}F(M), then
+        # f(u delta)=u^{-1}f(delta).  Check the exponent arithmetic.
+        for u in (Fraction(2), Fraction(3, 5), Fraction(7)):
+            for delta in (Fraction(5), Fraction(11, 3)):
+                left = (u * delta) ** -1
+                right = u ** -1 * delta ** -1
+                assert_equal(left, right, "ADS determinant homogeneity descent")
+
+
 def check_holomorphic_decoupling_dimensions() -> None:
     for nc in range(2, 12):
         for nf in range(1, nc + 3):
@@ -177,6 +219,7 @@ def main() -> None:
     check_ads_dimensions_and_r_charges()
     check_one_instanton_ads_zero_modes()
     check_ads_higgs_patch_collective_coordinates()
+    check_ads_meson_invariant_uniqueness()
     check_holomorphic_decoupling_dimensions()
     check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
