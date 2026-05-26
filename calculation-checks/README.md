@@ -366,7 +366,8 @@ Current checks:
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
   and Higgs-patch collective-coordinate ledger, holomorphic decoupling
-  exponent shift, the pure \(SU(2)\)
+  exponent shift, ADS decoupling-recursion coefficient and one-variable
+  \(F\)-term algebra, the pure \(SU(2)\)
   one-instanton Nekrasov fixed-point sum, and the first Nekrasov
   prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space

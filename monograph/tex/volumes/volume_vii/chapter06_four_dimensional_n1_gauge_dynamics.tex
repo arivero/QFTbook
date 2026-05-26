@@ -557,6 +557,137 @@ Wilsonian chiral coordinate.  Eliminating the common value of \(\tau(m)\)
 gives the displayed equation.
 \end{proof}
 
+\begin{proposition}[ADS decoupling recursion]
+\label{prop:ads-holomorphic-decoupling-recursion}
+Fix \(N_c\) and let \(1\leq n<N_c-1\).  Suppose the \((n+1)\)-flavor
+Wilsonian chiral theory has, on a chosen holomorphic branch of the
+maximal-rank meson patch, the ADS superpotential
+\[
+  W_{n+1}
+  =
+  C_{n+1}
+  \left(
+    \frac{\Lambda_{+}^{3N_c-(n+1)}}{\det \mathcal M}
+  \right)^{\frac{1}{N_c-n-1}},
+\]
+with \(C_{n+1}\neq0\).  Add a holomorphic mass term
+\[
+  W_{\mathrm{mass}}=m\,\mathcal M^L{}_L,\qquad L=n+1,
+\]
+and assume the Wilsonian threshold is described by
+Proposition~\ref{prop:susy-holomorphic-decoupling}.  On the light branch
+\(\mathcal M^a{}_L=\mathcal M^L{}_a=0\), \(a=1,\ldots,n\), the effective
+\(n\)-flavor superpotential is
+\[
+  W_n
+  =
+  C_n
+  \left(
+    \frac{\Lambda_-^{3N_c-n}}{\det M}
+  \right)^{\frac{1}{N_c-n}},
+  \qquad
+  \Lambda_-^{3N_c-n}=m\,\Lambda_+^{3N_c-(n+1)},
+  \label{eq:ads-decoupling-recursion-result}
+\]
+where \(M^a{}_b\) is the light meson block and, writing \(d=N_c-n\),
+\[
+  C_n
+  =
+  d\left(\frac{C_{n+1}}{d-1}\right)^{\frac{d-1}{d}} .
+  \label{eq:ads-coefficient-recursion}
+\]
+In the holomorphic scale normalization for which the one-instanton seed has
+\(C_{N_c-1}=1\), the recursion gives the standard representative
+\[
+  C_n=N_c-n .
+\]
+\end{proposition}
+
+\begin{proof}
+The statement is local on a holomorphic branch because fractional powers are
+involved.  The branch data are the usual discrete chiral choices of the
+Wilsonian description and do not affect the algebraic recursion.
+
+Set \(d=N_c-n\geq2\), split \(\mathcal M\) into the light block \(M\), the
+mixed components, and
+\[
+  X=\mathcal M^L{}_L .
+\]
+On the light branch the determinant factorizes:
+\[
+  \det\mathcal M=X\det M .
+\]
+Define the holomorphic quantity
+\[
+  A=\frac{\Lambda_{+}^{3N_c-(n+1)}}{\det M}.
+\]
+The superpotential to be extremized with respect to the massive chiral
+coordinate \(X\) is therefore
+\[
+  W(X)
+  =
+  C_{n+1}\left(\frac{A}{X}\right)^{\frac1{d-1}}
+  +mX .
+  \label{eq:ads-recursion-one-variable-w}
+\]
+Introduce
+\[
+  Y=\left(\frac{A}{X}\right)^{\frac1{d-1}} .
+\]
+The \(F_X=0\) equation is
+\[
+  0
+  =
+  -\frac{C_{n+1}}{d-1}
+  A^{\frac1{d-1}}X^{-\frac{d}{d-1}}
+  +m .
+\]
+Multiplying by \(X\) gives the useful identity
+\[
+  mX=\frac{C_{n+1}}{d-1}Y .
+  \label{eq:ads-recursion-mx-y}
+\]
+The same equation also gives
+\[
+  Y^d
+  =
+  \frac{(d-1)m}{C_{n+1}}\,A .
+  \label{eq:ads-recursion-y-power}
+\]
+Substituting \eqref{eq:ads-recursion-mx-y} into
+\eqref{eq:ads-recursion-one-variable-w} gives
+\[
+  W_{\mathrm{eff}}
+  =
+  C_{n+1}Y+mX
+  =
+  \frac{d}{d-1}C_{n+1}Y .
+\]
+Using \eqref{eq:ads-recursion-y-power}, this becomes
+\[
+  W_{\mathrm{eff}}
+  =
+  d\left(\frac{C_{n+1}}{d-1}\right)^{\frac{d-1}{d}}
+  \left(
+    \frac{m\Lambda_{+}^{3N_c-(n+1)}}{\det M}
+  \right)^{\frac1d}.
+\]
+The scale matching in Proposition~\ref{prop:susy-holomorphic-decoupling}
+turns the numerator into \(\Lambda_-^{3N_c-n}\), proving
+\eqref{eq:ads-decoupling-recursion-result} and
+\eqref{eq:ads-coefficient-recursion}.
+
+If \(C_{N_c-1}=1\), induction on \(d=N_c-n\) gives \(C_n=d\).  Indeed, if
+\(C_{n+1}=d-1\), then \eqref{eq:ads-coefficient-recursion} gives
+\[
+  C_n
+  =
+  d\left(\frac{d-1}{d-1}\right)^{\frac{d-1}{d}}
+  =
+  d .
+\]
+\end{proof}
+
 \section{Quantum Modified Constraint and Confining Decoupling}
 
 For \(N_f=N_c\), the classical relation between mesons and baryons is
@@ -1150,10 +1281,12 @@ status from the duality entries.  The \(N_f=N_c-1\) ADS term was derived
 above from an explicit one-instanton zero-mode and symmetry calculation under
 Hypothesis~\ref{hyp:sqcd-one-instanton-calculus}.  The cases
 \(N_f<N_c-1\) are then reached by holomorphic decoupling using
-Proposition~\ref{prop:susy-holomorphic-decoupling}.  Thus the nonzero
+Propositions~\ref{prop:susy-holomorphic-decoupling} and
+\ref{prop:ads-holomorphic-decoupling-recursion}.  Thus the nonzero
 superpotential in the runaway range is not inferred from Seiberg duality; it
-is a chiral \(F\)-term result whose direct semiclassical anchor and
-decoupling assumptions are displayed separately.
+is a chiral \(F\)-term result whose direct semiclassical anchor,
+finite-dimensional elimination step, and decoupling assumptions are
+displayed separately.
 
 \begin{quotedtheorem}[SQCD phase ledger]
 \label{qt:sqcd-phase-ledger}

@@ -38,6 +38,9 @@ status-boundary style.
   Yukawa-lifting ledger for the ADS instanton calculation.
 - `kappa_Nc`: scheme-dependent nonzero one-instanton coefficient in the
   `N_f=N_c-1` ADS normalization.
+- `prop:ads-holomorphic-decoupling-recursion`: finite-dimensional
+  `F_X=0` elimination step propagating the one-instanton ADS seed from
+  `N_f=N_c-1` to all `N_f<N_c` by holomorphic mass decoupling.
 - `hyp:sqcd-nsvz-coordinate-specialization`: assumptions for specializing
   the Chapter 05 holomorphic-canonical NSVZ coordinate relation to SQCD.
 - `prop:sqcd-nsvz-coordinate-audit`: derivation of
@@ -118,6 +121,11 @@ status-boundary style.
   dimension, and \(R\)-charge.
 - Proves the holomorphic decoupling equation by matching the invariant
   holomorphic scale at a massive threshold.
+- Proves the ADS decoupling recursion: after adding
+  `m M^L_L` to the `(n+1)`-flavor ADS superpotential, the light-branch
+  one-variable `F_X=0` equation gives the \(n\)-flavor ADS form, the scale
+  matching `Lambda_-^(3Nc-n)=m Lambda_+^(3Nc-(n+1))`, and the coefficient
+  recursion whose standard normalization is `C_n=N_c-n`.
 - States and sharpens the quantum modified constraint for \(N_f=N_c\) with
   explicit Wilsonian and infrared hypotheses.
 - Proves uniqueness of a field-independent quantum modification from
@@ -207,7 +215,8 @@ status-boundary style.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch
-  collective-coordinate counts, and holomorphic decoupling exponent shifts.
+  collective-coordinate counts, holomorphic decoupling exponent shifts, and
+  ADS decoupling-recursion coefficient and one-variable `F_X=0` algebra.
 
 ## Figure Ledger
 

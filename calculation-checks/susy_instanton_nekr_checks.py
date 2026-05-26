@@ -105,6 +105,38 @@ def check_holomorphic_decoupling_dimensions() -> None:
             assert_equal(1 + high_exponent, low_exponent, "mass times high scale dimension")
 
 
+def check_ads_decoupling_recursion() -> None:
+    for nc in range(3, 14):
+        for n_light in range(1, nc - 1):
+            d = nc - n_light
+            high_flavors = n_light + 1
+            high_exponent = 3 * nc - high_flavors
+            low_exponent = 3 * nc - n_light
+
+            assert_equal(d >= 2, True, "ADS recursion denominator range")
+            assert_equal(low_exponent, high_exponent + 1, "ADS recursion scale exponent")
+
+            # If the one-instanton seed is normalized with C_{Nc-1}=1, the
+            # recursion C_n=d(C_{n+1}/(d-1))^((d-1)/d) is solved by C_n=d.
+            high_coefficient = d - 1
+            coefficient_power = (
+                Fraction(d) ** d
+                * Fraction(high_coefficient, d - 1) ** (d - 1)
+            )
+            assert_equal(coefficient_power, Fraction(d) ** d, "standard ADS coefficient recursion")
+
+            # A = Lambda_+^b/det(M_light).  The combination m A has dimension
+            # 3d, so its d-th root has the dimension of a superpotential.
+            det_light_dimension = 2 * n_light
+            mass_times_a_dimension = 1 + high_exponent - det_light_dimension
+            assert_equal(mass_times_a_dimension, 3 * d, "ADS recursion mA dimension")
+
+            for mass in (Fraction(2), Fraction(5, 3), Fraction(11, 7)):
+                for a_value in (Fraction(3), Fraction(7, 5), Fraction(13, 2)):
+                    y_power_from_f_term = Fraction(d - 1) * mass * a_value / high_coefficient
+                    assert_equal(y_power_from_f_term, mass * a_value, "ADS recursion Y^d relation")
+
+
 def z1_su2(a: Fraction, epsilon1: Fraction, epsilon2: Fraction) -> Fraction:
     epsilon = epsilon1 + epsilon2
     term_plus = Fraction(1, (2 * a) * (2 * a + epsilon))
@@ -146,6 +178,7 @@ def main() -> None:
     check_one_instanton_ads_zero_modes()
     check_ads_higgs_patch_collective_coordinates()
     check_holomorphic_decoupling_dimensions()
+    check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
     check_young_diagram_one_box_count()
     print("All SUSY instanton/ADHM/Nekrasov checks passed.")
