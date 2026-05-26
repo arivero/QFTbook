@@ -88,6 +88,11 @@
   - after normalizing by the assigned homogeneity
     \(-1/2-5\kappa\), the logarithm is absorbed as an arbitrary small loss
     from the \(5\kappa\) slack.
+- Added Corollary `cor:spde-local-kg2-shell-lone-bound`.
+- This corollary verifies the local shell \(L^1\) hypothesis for the
+  \(KG^2\) packets in dynamic \(\Phi^4_3\): heat order \(2\) and covariance
+  orders \(4,4\) give relative gaps \(3,1,1\), hence the shell
+  \(\max(i,j,\ell)=n\) is uniformly summable.
 
 ## Calculation Check
 
@@ -116,7 +121,7 @@
 - Extend the dual-norm strategy from primitive Gaussian coordinates to the
   concrete finite-cutoff chaos kernels in the displayed \(XY\) and \(X^2Y\)
   decompositions.
-- Verify the regulator-specific shell and covariance-increment hypotheses
+- Verify the regulator-specific covariance double-increment hypothesis
   entering the first-chaos bound directly from the chosen cutoff kernels.
 - Prove the genuinely nonlinear BPHZ coordinate estimates for the remaining
   explicit scalar covariance kernels: \(XY\)'s fourth and second chaos and

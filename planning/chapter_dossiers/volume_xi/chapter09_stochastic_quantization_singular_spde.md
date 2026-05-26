@@ -303,6 +303,10 @@ data.
   \(X^2Y\) first-chaos coordinate has every slack strictly below
   \(5\kappa\), with the logarithm explicitly accounted for rather than
   hidden.
+- Verifies the local \(KG^2\) shell \(L^1\) hypothesis used in that
+  first-chaos bound for dynamic \(\Phi^4_3\): heat order \(2\) and
+  covariance order \(4,4\) give relative gaps \(3,1,1\), and the shell
+  \(\max(i,j,\ell)=n\) is uniformly summable.
 - Proves a parabolic Taylor-subtraction gain: if a local factor is replaced
   by a remainder bounded by \(H\|h\|_{\mathfrak s}^r\), then pairing with an
   order-\(a\) dyadic kernel gains \(r\) additional powers of the scale.
@@ -596,3 +600,6 @@ data maps.
   subtracted \(X^2Y\) first-chaos kernel.  The proof keeps the two local
   logarithmic shell factors and absorbs them only as an arbitrarily small
   loss of the available \(5\kappa\) slack.
+- 2026-05-26 issue #582 local-shell verification: added the corollary
+  deriving the \(KG^2\) local shell \(L^1\) hypothesis from the already
+  established heat/covariance/covariance order arithmetic \((2,4,4)\).

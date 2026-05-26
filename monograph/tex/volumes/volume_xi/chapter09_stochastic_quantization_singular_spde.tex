@@ -4804,6 +4804,76 @@ For every \(\eta>0\),
 which gives \eqref{eq:spde-first-chaos-normalized-log-loss}.
 \end{proof}
 
+\begin{corollary}[Local \(KG^2\) shell bound in dynamic \(\Phi^4_3\)]
+\label{cor:spde-local-kg2-shell-lone-bound}
+Let \(Q=5\).  Let \(K_i\), \(i\geq0\), be dyadic heat-kernel pieces of
+order \(2\), and let \(G_j\), \(j\geq0\), be dyadic covariance pieces of
+order \(4\).  Thus, for a fixed parabolic ball constant \(R\),
+with
+\[
+  \operatorname{supp}K_i\subset B_{\mathfrak s}(0,R2^{-i}),
+  \qquad
+  \operatorname{supp}G_j\subset B_{\mathfrak s}(0,R2^{-j}),
+\]
+and
+\[
+  |K_i(h)|\leq C_K2^{(Q-2)i},\qquad
+  |G_j(h)|\leq C_G2^{(Q-4)j}.
+\]
+For \(n\geq0\), define the local two-loop shell packet
+\[
+  A_n(h)
+  =
+  \sum_{\max(i,j,\ell)=n}K_i(h)G_j(h)G_\ell(h).
+\]
+Then
+\begin{equation}
+  \int |A_n(h)|\,\dd h
+  \leq C
+  \label{eq:spde-kg2-shell-lone-bound-verified}
+\end{equation}
+uniformly in \(n\).  The same estimate holds uniformly in a base point
+after translating the kernels, and hence supplies
+\eqref{eq:spde-local-two-loop-shell-lone-bound} for the first-chaos
+proposition.
+\end{corollary}
+
+\begin{proof}
+For a single triple \((i,j,\ell)\), set
+\[
+  n_*=\max(i,j,\ell),\qquad
+  r_K=n_*-i,\qquad r_G=n_*-j,\qquad r_{G'}=n_*-\ell .
+\]
+The product is supported in a ball of radius \(O(2^{-n_*})\).  Therefore
+\[
+\begin{aligned}
+  \int |K_i(h)G_j(h)G_\ell(h)|\,\dd h
+  &\leq
+  C\,2^{(Q-2)i+(Q-4)j+(Q-4)\ell}2^{-Qn_*}  \\
+  &=
+  C\,2^{-3r_K-r_G-r_{G'}} .
+\end{aligned}
+\]
+Here the coefficient of \(n_*\) vanishes because
+\[
+  (Q-2)+(Q-4)+(Q-4)-Q=3+1+1-5=0 .
+\]
+Summing over the shell \(\max(i,j,\ell)=n\) gives
+\[
+  \int |A_n(h)|\,\dd h
+  \leq
+  C
+  \sum_{\substack{r_K,r_G,r_{G'}\geq0\\ \min(r_K,r_G,r_{G'})=0}}
+  2^{-3r_K-r_G-r_{G'}}
+  \leq
+  C
+  \left(1+\frac{1}{1-2^{-3}}\right)
+  \left(\frac{1}{1-2^{-1}}\right)^2 .
+\]
+This proves the uniform shell \(L^1\) estimate.  Translation of all kernels
+does not change either the support radius or the integral bound.
+\end{proof}
+
 \section{BPHZ Renormalization of the Dynamic Equation}
 
 For the normalization
