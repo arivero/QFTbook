@@ -3,119 +3,394 @@
 
 \ConventionsEuclidean
 
-BF theory is the first cohomological gauge theory developed in this volume.
-It is simple enough to display the fields, equations, gauge symmetries,
-observables, and BV reducibility explicitly, while still showing why
-topological gauge theory is more than a number assigned to a closed manifold.
+BF theory is the first gauge-theoretic example in this volume.  It already
+displays recurring ingredients of topological gauge theory:
+fields with form degree, ordinary gauge symmetry, higher-form gauge symmetry,
+reducibility, metric-free classical action, extended observables, and a BV
+complex.  The abelian compact theory also has a finite cochain model, so some
+correlation functions reduce to exact finite sums.
 
-\section{Classical Fields and Action}
+\section{Nonabelian Classical Fields}
 
-Let \(M\) be an oriented smooth \(D\)-manifold, and let \(P\to M\) be a
-principal \(G\)-bundle for a compact Lie group \(G\).  Fix an invariant
-pairing \(\langle\cdot,\cdot\rangle\) between \(\mathfrak g^*\) and
-\(\mathfrak g\).  The classical fields of nonabelian BF theory are
+Let \(M\) be a closed oriented smooth \(D\)-manifold.  Let \(G\) be a compact
+Lie group, let \(P\to M\) be a principal \(G\)-bundle, and let
 \[
-  A\in\Omega^1(M,\operatorname{ad}P),
-  \qquad
+  \operatorname{ad}P=P\times_G\mathfrak g
+\]
+be the adjoint bundle.  Choose an invariant nondegenerate pairing
+\[
+  \langle-,-\rangle:\mathfrak g^*\otimes\mathfrak g\longrightarrow\mathbb R .
+\]
+The classical fields of \(D\)-dimensional nonabelian BF theory are a
+connection \(A\) on \(P\) and a \(B\)-field
+\[
   B\in\Omega^{D-2}(M,\operatorname{ad}P^*).
 \]
-The curvature is \(F_A=dA+\frac12[A,A]\).  The action is
+The curvature of \(A\) is
 \[
+  F_A=\dd A+\frac12[A,A]\in\Omega^2(M,\operatorname{ad}P),
+\]
+where the bracket combines the Lie bracket on \(\mathfrak g\) with exterior
+wedge product.  The action is
+\begin{equation}
   S_{\rm BF}[A,B]
   =
-  2\pi\ii\int_M \langle B\wedge F_A\rangle ,
-\]
-with the coefficient chosen so that integral-period constraints in abelian
-compact examples can be imposed without changing the local formula.
+  2\pi\ii\int_M \langle B\wedge F_A\rangle .
+  \label{eq:bf-action-nonabelian}
+\end{equation}
+The coefficient is fixed so that the compact abelian specialization below has
+integer periods in the exponent.
 
-Varying \(B\) gives
+\begin{proposition}[Euler--Lagrange equations]
+\label{prop:bf-euler-lagrange}
+On a closed \(M\), the stationary equations of
+\eqref{eq:bf-action-nonabelian} are
 \[
-  F_A=0.
-\]
-Varying \(A\) gives
-\[
-  d_A B=0.
-\]
-Thus the stationary points are flat connections equipped with covariantly
-closed \(B\)-fields, modulo the gauge symmetries described below.
-
-\section{Gauge Symmetries and Reducibility}
-
-Ordinary gauge transformations act by
-\[
-  A\mapsto gAg^{-1}-dg\,g^{-1},
+  F_A=0,
   \qquad
-  B\mapsto gBg^{-1}
+  \dd_A B=0 .
 \]
-after identifying \(\mathfrak g^*\) with \(\mathfrak g\) by an invariant
-form.  Infinitesimally, with \(c\in\Omega^0(M,\operatorname{ad}P)\),
+\end{proposition}
+
+\begin{proof}
+Let \(\alpha\in\Omega^1(M,\operatorname{ad}P)\) and
+\(\beta\in\Omega^{D-2}(M,\operatorname{ad}P^*)\) be variations of \(A\) and
+\(B\).  The curvature variation is
 \[
-  \delta_c A=d_Ac,
+  \left.\frac{\dd}{\dd t}\right|_{t=0}F_{A+t\alpha}
+  =
+  \dd_A\alpha .
+\]
+Therefore
+\[
+  \delta S_{\rm BF}
+  =
+  2\pi\ii\int_M
+  \left(
+    \langle\beta\wedge F_A\rangle
+    +
+    \langle B\wedge\dd_A\alpha\rangle
+  \right).
+\]
+The first term gives \(F_A=0\) because \(\beta\) is arbitrary.  For the second
+term, use the covariant Leibniz rule
+\[
+  \dd\langle B\wedge\alpha\rangle
+  =
+  \langle\dd_A B\wedge\alpha\rangle
+  +
+  (-1)^{D-2}\langle B\wedge\dd_A\alpha\rangle .
+\]
+The integral of the left side vanishes on a closed manifold, so
+\[
+  \int_M\langle B\wedge\dd_A\alpha\rangle
+  =
+  (-1)^{D-1}\int_M\langle\dd_A B\wedge\alpha\rangle .
+\]
+Since \(\alpha\) is arbitrary, \(\dd_A B=0\).
+\end{proof}
+
+\section{Gauge Symmetry And Reducibility}
+
+The ordinary gauge group \(\mathcal G(P)\) acts by
+\[
+  A\longmapsto A^g=g^{-1}Ag+g^{-1}\dd g,
+  \qquad
+  B\longmapsto B^g=\operatorname{Ad}^*_{g^{-1}}B,
+\]
+where the second formula is the coadjoint action; after choosing an invariant
+inner product on \(\mathfrak g\) it is written as \(B^g=g^{-1}Bg\).
+Infinitesimally, for \(c\in\Omega^0(M,\operatorname{ad}P)\),
+\[
+  \delta_c A=\dd_Ac,
   \qquad
   \delta_c B=[B,c].
 \]
-There is also a shift symmetry
+There is also a \(B\)-field shift symmetry.  For
+\[
+  \eta\in\Omega^{D-3}(M,\operatorname{ad}P^*)
+\]
+define
 \[
   \delta_\eta A=0,
   \qquad
-  \delta_\eta B=d_A\eta,
-  \qquad
-  \eta\in\Omega^{D-3}(M,\operatorname{ad}P^*).
+  \delta_\eta B=\dd_A\eta .
 \]
-On the locus \(F_A=0\), this shift symmetry is reducible because
-\(\eta=d_A\eta_1\) gives \(\delta_\eta B=d_A^2\eta_1=0\).  The reducibility
-continues through a chain
+
+\begin{proposition}[Invariance of the shift symmetry]
+\label{prop:bf-shift-invariance}
+On a closed manifold,
 \[
-  \Omega^{D-4}\to\Omega^{D-3}\to\Omega^{D-2}.
+  S_{\rm BF}[A,B+\dd_A\eta]-S_{\rm BF}[A,B]
+  =
+  2\pi\ii\int_M \dd\langle\eta\wedge F_A\rangle .
 \]
-Therefore a BV description is not decoration; it is the natural field space
-for ghosts, ghosts-for-ghosts, antifields, and the master equation.
-
-\section{Metric Independence}
-
-The displayed action uses only the orientation of \(M\), the exterior
-derivative, wedge product, bundle data, and invariant pairing.  It contains no
-metric.  If the gauge fixing and regularization can be chosen so that their
-metric dependence is BV-exact and no anomaly remains, correlation functions
-of BV-closed observables are metric independent.  The verification has two
-parts: the classical action has no metric dependence, and the regulated
-quantum measure plus gauge fixing has vanishing metric anomaly in the sector
-being used.
-
-\section{Observables}
-
-For a closed loop \(\gamma\subset M\) and a representation \(R\) of \(G\), the
-Wilson loop
+Hence the shift is a symmetry on closed \(M\).  On a manifold with boundary it
+produces the boundary term
 \[
-  W_R(\gamma)=\operatorname{Tr}_R\,\operatorname{Hol}_\gamma(A)
+  2\pi\ii\int_{\partial M}\langle\eta\wedge F_A\rangle .
 \]
-is gauge invariant.  In abelian BF theory, if \(G=U(1)\), the field \(B\) is a
-\((D-2)\)-form gauge field and a closed \((D-2)\)-cycle \(\Sigma\) defines
+\end{proposition}
+
+\begin{proof}
+The change in the action is
 \[
-  V_n(\Sigma)=\exp\!\left(2\pi\ii n\int_\Sigma B\right),
-  \qquad n\in\mathbb Z,
+  2\pi\ii\int_M\langle\dd_A\eta\wedge F_A\rangle .
 \]
-when \(B\) has the corresponding compact-period normalization.  The path
-integral pairs electric Wilson loops and magnetic \(B\)-surface operators by
-intersection or linking data.  The precise formula depends on the global
-normalization of the compact fields and must be derived from the finite
-abelian gauge group or differential-cohomology model being used.
+The covariant Leibniz rule and Bianchi identity \(\dd_A F_A=0\) give
+\[
+  \dd\langle\eta\wedge F_A\rangle
+  =
+  \langle\dd_A\eta\wedge F_A\rangle
+  +(-1)^{D-3}\langle\eta\wedge\dd_A F_A\rangle
+  =
+  \langle\dd_A\eta\wedge F_A\rangle .
+\]
+This proves the formula.
+\end{proof}
 
-\begin{example}[Finite abelian BF theory]
-\label{ex:finite-abelian-bf}
-For a finite abelian group \(A\), the fully finite theory can be defined by
-summing over flat \(A\)-bundles.  On a closed \(D\)-manifold \(M\), the
-partition function is a normalized count of maps from the fundamental
-groupoid of \(M\) to \(A\), with gauge automorphisms divided out.  This
-definition is a genuine finite sum and supplies a rigorous model for the
-topological sector that continuum \(U(1)\) BF theory approximates after
-choosing compact periods.
-\end{example}
+The shift symmetry is reducible.  If
+\(\eta=\dd_A\eta_1\), then
+\[
+  \delta_\eta B=\dd_A^2\eta_1=F_A\cdot\eta_1 .
+\]
+Thus the transformation vanishes on the flat-connection locus.  Continuing,
+\[
+  \eta_1\in\Omega^{D-4}(M,\operatorname{ad}P^*),
+  \quad
+  \eta_1\sim\eta_1+\dd_A\eta_2,
+  \quad
+  \ldots ,
+\]
+ending in degree \(0\).  In the abelian theory \(\dd_A=\dd\) and the
+reducibility holds off shell because \(\dd^2=0\).  The BV field space
+therefore contains the ordinary ghost \(c\), the \(B\)-shift ghost
+\(\eta\), the ghosts-for-ghosts \(\eta_1,\eta_2,\ldots\), and antifields for
+all these variables.  This is the finite-stage reducible gauge system whose
+BV integration is modeled by Chapter~\ref{ch:tqft-bv-integration-localization}.
 
-\begin{openproblem}[Continuum BF quantization with boundaries]
+\section{Compact Abelian Normalization}
+
+A precise continuum normalization of compact abelian BF theory uses
+differential characters.  For a \(U(1)\) one-form gauge field \(A\), the
+holonomy around a closed one-cycle \(\gamma\) is
+\[
+  W_q(\gamma)=
+  \exp\!\left(2\pi\ii q\int_\gamma A\right),
+  \qquad q\in\mathbb Z .
+\]
+For a compact \((D-2)\)-form gauge field \(B\), the surface operator on a
+closed \((D-2)\)-cycle \(\Sigma\) is
+\[
+  V_p(\Sigma)=
+  \exp\!\left(2\pi\ii p\int_\Sigma B\right),
+  \qquad p\in\mathbb Z .
+\]
+The local action is
+\[
+  S_{\rm BF}[A,B]=2\pi\ii N\int_M B\wedge\dd A ,
+  \qquad N\in\mathbb Z_{>0}.
+\]
+Large gauge transformations shift the periods of \(A\) and \(B\) by
+integers, and the factor \(N\) makes the exponent single-valued.  The
+equation obtained by varying \(B\) is
+\[
+  N\,\dd A=0
+\]
+as a differential character.  Thus the theory describes a flat
+\(\mathbb Z_N\) one-form gauge sector after the continuous modes and gauge
+redundancies are accounted for.
+
+\section{Finite \texorpdfstring{\(\mathbb Z_N\)}{ZN} Cochain Model}
+
+Let \(K\) be a finite cell decomposition of a closed connected oriented
+\(D\)-manifold \(M\).  Write \(C^r=C^r(K;\mathbb Z_N)\), and let
+\[
+  \delta_r:C^r\longrightarrow C^{r+1}
+\]
+be the cellular coboundary.  The finite constraint form of \(\mathbb Z_N\)
+BF theory has a one-cochain gauge field \(a\in C^1\) and a Lagrange
+multiplier \(b\in\operatorname{Hom}(C^2,\mathbb Z_N)\).  Its normalized
+finite sum is
+\begin{equation}
+  Z_{\rm BF}^{(N)}(K)
+  =
+  \frac{1}{|C^0|\,|C^2|}
+  \sum_{a\in C^1}\sum_{b\in\operatorname{Hom}(C^2,\mathbb Z_N)}
+  \exp\!\left(\frac{2\pi\ii}{N}\,b(\delta_1a)\right).
+  \label{eq:finite-bf-cochain-partition}
+\end{equation}
+The factor \(|C^0|^{-1}\) divides by ordinary \(0\)-form gauge
+transformations \(a\mapsto a+\delta_0\lambda\).  The factor \(|C^2|^{-1}\)
+normalizes the \(b\)-sum as a finite Fourier transform.
+
+\begin{proposition}[Finite BF partition function]
+\label{prop:finite-bf-partition-function}
+For a connected \(K\),
+\[
+  Z_{\rm BF}^{(N)}(K)
+  =
+  \frac{|Z^1(K;\mathbb Z_N)|}{|C^0(K;\mathbb Z_N)|}
+  =
+  \frac{|H^1(K;\mathbb Z_N)|}{|H^0(K;\mathbb Z_N)|}
+  =
+  \frac{|H^1(M;\mathbb Z_N)|}{N}.
+\]
+\end{proposition}
+
+\begin{proof}
+The finite character identity
+\[
+  \frac{1}{|C^2|}
+  \sum_{b\in\operatorname{Hom}(C^2,\mathbb Z_N)}
+  \exp\!\left(\frac{2\pi\ii}{N}\,b(x)\right)
+  =
+  \begin{cases}
+  1,&x=0,\\
+  0,&x\ne0
+  \end{cases}
+\]
+holds for every \(x\in C^2\).  Applying it to \(x=\delta_1a\) reduces
+\eqref{eq:finite-bf-cochain-partition} to
+\[
+  Z_{\rm BF}^{(N)}(K)=|C^0|^{-1}\,|\ker\delta_1|.
+\]
+Since
+\[
+  H^1(K;\mathbb Z_N)=\ker\delta_1/\operatorname{im}\delta_0,
+\]
+we have \(|\ker\delta_1|=|H^1|\,|\operatorname{im}\delta_0|\).  Also
+\[
+  H^0(K;\mathbb Z_N)=\ker\delta_0
+\]
+and \(|C^0|=|\ker\delta_0|\,|\operatorname{im}\delta_0|\).  Hence
+\[
+  |C^0|^{-1}|\ker\delta_1|
+  =
+  |H^1|/|H^0|.
+\]
+For connected \(K\), \(H^0(K;\mathbb Z_N)\cong\mathbb Z_N\), giving the last
+formula.
+\end{proof}
+
+The value \(|H^1|/N\) is the groupoid cardinality of flat
+\(\mathbb Z_N\)-bundles on a connected manifold: each flat bundle has
+automorphism group \(\mathbb Z_N\), and groupoid cardinality weights each
+isomorphism class by the reciprocal of the automorphism-group order.
+
+\section{Wilson Operators And Linking}
+
+Let \(\gamma\in Z_1(K;\mathbb Z)\) be a closed cellular one-cycle.  Its
+Wilson operator of charge \(q\in\mathbb Z_N\) is
+\[
+  W_q(\gamma)(a)
+  =
+  \exp\!\left(\frac{2\pi\ii q}{N}\langle a,\gamma\rangle\right).
+\]
+Gauge invariance follows from the cellular Stokes formula:
+\[
+  \langle a+\delta_0\lambda,\gamma\rangle
+  =
+  \langle a,\gamma\rangle+\langle\lambda,\partial\gamma\rangle
+  =
+  \langle a,\gamma\rangle .
+\]
+
+Let \(\Sigma\) be a closed oriented \((D-2)\)-cycle, represented on the dual
+cellulation by a two-cochain \(\sigma_\Sigma\in C^2(K;\mathbb Z_N)\) through
+Poincare duality.  The \(B\)-surface insertion of charge \(p\in\mathbb Z_N\)
+shifts the finite Fourier constraint by
+\[
+  b(\delta a)
+  \longmapsto
+  b(\delta a+p\,\sigma_\Sigma).
+\]
+Thus the \(b\)-sum imposes
+\[
+  \delta a=-p\,\sigma_\Sigma .
+\]
+This equation is the finite cochain form of a prescribed surface singularity.
+
+\begin{proposition}[Linking phase in finite BF theory]
+\label{prop:finite-bf-linking-phase}
+Assume \(M=S^D\) and let \(\gamma\) and \(\Sigma\) be disjoint closed cycles
+of dimensions \(1\) and \(D-2\).  Choose a two-chain \(C\) with
+\(\partial C=\gamma\), and define
+\[
+  \operatorname{Lk}(\gamma,\Sigma)
+  =
+  \langle\sigma_\Sigma,C\rangle\in\mathbb Z .
+\]
+With the sign convention above,
+\[
+  \langle W_q(\gamma)V_p(\Sigma)\rangle
+  =
+  \exp\!\left(
+    -\frac{2\pi\ii pq}{N}\operatorname{Lk}(\gamma,\Sigma)
+  \right)
+  \langle V_p(\Sigma)\rangle .
+\]
+\end{proposition}
+
+\begin{proof}
+After inserting \(V_p(\Sigma)\), the \(b\)-sum enforces
+\[
+  \delta a=-p\,\sigma_\Sigma .
+\]
+For any solution \(a\),
+\[
+  \langle a,\gamma\rangle
+  =
+  \langle a,\partial C\rangle
+  =
+  \langle\delta a,C\rangle
+  =
+  -p\,\langle\sigma_\Sigma,C\rangle .
+\]
+Therefore the Wilson insertion contributes the phase
+\[
+  \exp\!\left(
+    -\frac{2\pi\ii pq}{N}\operatorname{Lk}(\gamma,\Sigma)
+  \right)
+\]
+for every allowed \(a\).  The remaining sum is the sum defining
+\(\langle V_p(\Sigma)\rangle\).  Independence of the choice of \(C\) follows
+because \(H_2(S^D;\mathbb Z)=0\) for \(D\ne2\), and in the relevant
+codimension-linking case \(D\ge3\).
+\end{proof}
+
+\section{Metric Independence And Boundary Data}
+
+The classical action \eqref{eq:bf-action-nonabelian} uses the orientation of
+\(M\), the exterior derivative, wedge product, bundle data, and invariant
+pairing.  It uses no Riemannian metric.  Quantum metric independence requires
+additional data:
+\[
+  \text{BV field space},\qquad
+  \text{gauge-fixing Lagrangian},\qquad
+  \text{regularized semidensity},\qquad
+  \text{anomaly analysis}.
+\]
+If the metric variation of the gauge-fixed integrand is BV-exact and if the
+BV Stokes boundary term vanishes, then the corresponding BV-closed
+correlators are metric independent by
+Corollary~\ref{cor:bv-gauge-fixing-independence}.  On a manifold with
+boundary, Proposition~\ref{prop:bf-shift-invariance} shows that the shift
+symmetry produces boundary phase-space data.  The boundary fields are the
+restrictions of \(A\) and \(B\), and the boundary symplectic pairing is
+obtained from the boundary term in the variation:
+\[
+  \Omega_{\partial M}
+  =
+  2\pi\ii\int_{\partial M}\langle\delta B\wedge\delta A\rangle .
+\]
+A functorial BF theory must choose a boundary polarization or boundary
+condition, then prove compatibility with gluing.
+
+\begin{openproblem}[Continuum nonabelian BF theory with boundaries]
 \label{op:continuum-bf-boundaries}
 Construct nonabelian continuum BF theory on manifolds with boundary as a
-functorial BV theory.  The construction must specify the boundary phase
+functorial BV-BFV theory.  The construction must specify the boundary phase
 space, residual fields, gauge fixing, anomaly line, gluing pairing, and the
 relationship between Wilson, surface, and boundary observables.
 \end{openproblem}

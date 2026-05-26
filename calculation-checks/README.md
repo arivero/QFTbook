@@ -28,6 +28,10 @@ Current checks:
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
   including the conformal-window edge and leading \(\epsilon_{\rm BZ}\)
   fixed-point formulas.
+- `bf_theory_checks.py`: exact finite cochain checks for the Volume VIII BF
+  theory chapter, including finite Fourier projection onto flat cochains,
+  the groupoid-cardinality partition function, cellular Wilson gauge
+  invariance, and the Wilson/surface linking phase sign.
 - `bpst_instanton_normalization_checks.py`: finite algebra and radial-integral
   checks for the BPST instanton section, including self-duality of the
   't Hooft symbols, the quadratic \(\eta\)-symbol identity used in the
