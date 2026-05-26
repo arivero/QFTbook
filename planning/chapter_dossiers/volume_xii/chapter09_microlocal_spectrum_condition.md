@@ -16,17 +16,34 @@ renormalization.
 - `U`, `V`: Hadamard parametrix coefficients.
 - `H_epsilon`: local Hadamard singular distribution.
 - `p(x,k)`: principal symbol governing propagation of singularities.
+- `Gamma_n(M)`: graph-defined microlocal spectrum cone for \(n\)-point
+  distributions.
+- `k^\sharp`: metric dual vector of a covector \(k\).
 
 ## Claim Ledger
 
-- Defines wavefront set and the product criterion for distributions.
+- Defines wavefront set with the chart-level rapid-decay condition and proves
+  the product criterion for distributions by the Fourier-convolution
+  obstruction mechanism.
 - States the microlocal Hadamard two-point condition with null-geodesic
-  cotangent relation.
+  cotangent relation, including the mostly-plus future-covector convention
+  and the sign of the second covector.
+- Adds the higher microlocal spectrum cone \(\Gamma_n(M)\) and the
+  all-\(n\)-point microlocal spectrum condition; records why quasifree
+  Hadamard states satisfy it by Wick's theorem and the product criterion.
 - Defines the local Hadamard parametrix and its geometric coefficients.
-- Explains propagation of singularities for the Klein-Gordon principal
-  symbol.
+- Derives explicitly that the Hamiltonian flow of the Klein-Gordon principal
+  symbol projects to affinely parametrized null geodesics and parallel
+  transports the covector.
 - Defines Wick products by point splitting and relates time-ordered products
   to local extensions across diagonals.
+
+## Calculation Checks
+
+- `calculation-checks/microlocal_spectrum_checks.py`: verifies the
+  mostly-plus future-covector convention, the Klein-Gordon Hamilton flow sign,
+  the two-point graph covector pattern \((p,-p)\), and the opposite-cone
+  product obstruction.
 
 ## Figure Ledger
 

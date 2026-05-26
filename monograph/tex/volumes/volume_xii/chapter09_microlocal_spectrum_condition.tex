@@ -18,10 +18,96 @@ Fourier transform of \(\chi u\) decays faster than every power in \(\Gamma\).
 The wavefront set records both the singular support and the covector
 directions of oscillation.
 
-For distributions \(u,v\), the product \(uv\) is defined if there is no
-\((x,k)\in\operatorname{WF}(u)\) and \((x,-k)\in\operatorname{WF}(v)\).  This
-criterion is the local analytic reason that Wick products and time-ordered
-products require subtraction before coincident points are taken.
+\begin{definition}[Wavefront set in a chart]
+\label{def:wavefront-set-chart}
+Let \(u\in\mathcal D'(X)\).  In a coordinate chart \(U\subset X\), write
+\(\widehat{\chi u}(\xi)\) for the Fourier transform of the compactly
+supported distribution \(\chi u\), \(\chi\in C_c^\infty(U)\), in the chosen
+coordinates.  A nonzero covector \(k\in T_x^*X\) is a regular direction for
+\(u\) if there exist \(\chi\in C_c^\infty(U)\), \(\chi(x)\ne0\), and an open
+conic neighborhood \(\Gamma\subset\mathbb R^D\setminus\{0\}\) of the
+coordinate representative of \(k\) such that, for every \(N\),
+\[
+  |\widehat{\chi u}(\xi)|
+  \leq C_N(1+|\xi|)^{-N},
+  \qquad
+  \xi\in\Gamma .
+  \label{eq:microlocal-rapid-decay-direction}
+\]
+The wavefront set \(\operatorname{WF}(u)\) is the complement, in
+\(T^*X\setminus0\), of the regular directions.
+\end{definition}
+
+The definition is independent of the chart.  Under a change of coordinates,
+the localized Fourier transform is an oscillatory integral whose phase has
+non-degenerate mixed Hessian at the point under consideration; integration
+by parts in directions where the transformed covector is separated from the
+old singular cone preserves rapid decay.  Thus \(\operatorname{WF}(u)\) is a
+closed conic subset of \(T^*X\setminus0\).
+
+\begin{theorem}[Product criterion for distributions]
+\label{thm:microlocal-product-criterion}
+Let \(u,v\in\mathcal D'(X)\).  Suppose that there is no
+\[
+  (x,k)\in\operatorname{WF}(u)
+  \quad\hbox{and}\quad
+  (x,-k)\in\operatorname{WF}(v).
+  \label{eq:microlocal-no-opposite-covectors}
+\]
+Then the pointwise product \(uv\) has a unique distributional extension
+which agrees with the ordinary product when one factor is smooth.  Moreover
+\[
+\begin{aligned}
+  \operatorname{WF}(uv)
+  \subset&
+  \operatorname{WF}(u)\cup\operatorname{WF}(v)\\
+  &\cup
+  \{(x,k+\ell):(x,k)\in\operatorname{WF}(u),\
+        (x,\ell)\in\operatorname{WF}(v),\ k+\ell\ne0\}.
+\end{aligned}
+  \label{eq:microlocal-product-wavefront-bound}
+\]
+\end{theorem}
+
+\begin{proof}
+The statement is local, so work in one coordinate chart and multiply by a
+cutoff equal to \(1\) near the point.  If \(u\) and \(v\) are compactly
+supported distributions, the formal Fourier transform of the product is the
+convolution
+\[
+  \widehat{uv}(\xi)
+  =
+  (2\pi)^{-D}\int \widehat u(\eta)\widehat v(\xi-\eta)\,\dd\eta .
+  \label{eq:microlocal-product-convolution}
+\]
+The obstruction to defining this integral distributionally at large
+\(|\eta|\) is simultaneous non-decay of \(\widehat u(\eta)\) and
+\(\widehat v(\xi-\eta)\).  As \(|\eta|\to\infty\), the second direction is
+asymptotic to \(-\eta\).  Thus a large-frequency obstruction can occur only
+from an opposite pair of singular covectors \((k,-k)\), which is excluded by
+\eqref{eq:microlocal-no-opposite-covectors}.
+
+Choose a conic partition of unity in the \(\eta\)-variable.  On pieces where
+\(\eta\) avoids \(\operatorname{WF}(u)\), the factor \(\widehat u(\eta)\) is
+rapidly decreasing after localization.  On pieces where \(\xi-\eta\) avoids
+\(\operatorname{WF}(v)\), the factor \(\widehat v(\xi-\eta)\) is rapidly
+decreasing.  The exclusion of opposite cones gives such a finite conic cover
+of the large-\(\eta\) region.  The bounded-\(\eta\) region is harmless
+because Fourier transforms of compactly supported distributions have at most
+polynomial growth.  This defines
+\eqref{eq:microlocal-product-convolution}, and the same conic decomposition
+proves rapid decay of \(\widehat{uv}\) away from the three sets displayed in
+\eqref{eq:microlocal-product-wavefront-bound}.
+
+Uniqueness follows by regularizing \(u\) and \(v\) with a smoothing
+approximate identity.  The estimates above show convergence in every allowed
+conic region and independence of the regularization.  If one factor is
+smooth, the construction reduces to ordinary multiplication because the
+smooth factor has rapidly decreasing localized Fourier transform.
+\end{proof}
+
+This criterion is the local analytic reason that Wick products and
+time-ordered products require subtraction before coincident points are taken.
 
 \section{Hadamard Two-Point Condition}
 
@@ -34,6 +120,17 @@ A quasifree state is determined by its two-point function
 \[
   \omega_2(x,y)=\omega(\phi(x)\phi(y)).
 \]
+The time orientation on tangent vectors induces a convention on covectors:
+a nonzero causal covector \(k\in T_x^*M\) is future directed when its metric
+dual
+\[
+  k^\sharp=g^{\mu\nu}k_\nu\partial_\mu
+\]
+is a future-directed causal vector.  In mostly-plus Minkowski coordinates,
+this means that a future null covector has \(k_0<0\).  This convention makes
+the positive-frequency plane wave \(e^{-\ii Et+\ii{\bf p}\cdot{\bf x}}\)
+carry future null covector \((-E,{\bf p})\).
+
 The microlocal Hadamard condition is
 \[
   \operatorname{WF}(\omega_2)
@@ -44,6 +141,73 @@ Here \((x,k_x)\sim(y,k_y)\) means that \(x\) and \(y\) are joined by a null
 geodesic and that \(k_y\) is the parallel transport of \(k_x\) along that
 geodesic.  The cone \(\overline V_+^*\) is the closed future causal cone in
 the cotangent space.
+
+The minus sign on the second covector is not a convention that can be
+dropped.  It records that a two-point distribution is a distribution on
+\(M\times M\).  If the same future covector is transported from \(x\) to
+\(y\), the corresponding singular phase is locally of the form
+\[
+  \exp\bigl(\ii\lambda(\Phi(x)-\Phi(y))\bigr),
+  \qquad \lambda\to+\infty,
+\]
+so the covector on the second copy of \(M\) is the negative of the
+transported covector.
+
+\section{Higher Microlocal Spectrum Condition}
+
+For non-Gaussian states, the two-point condition is not enough.  The
+curved-spacetime replacement of the Wightman spectral condition is a family
+of cone constraints on all \(n\)-point distributions.
+
+\begin{definition}[Microlocal spectrum cone]
+\label{def:microlocal-spectrum-cone}
+Let \(x_1,\ldots,x_n\in M\).  A covector tuple
+\[
+  (x_1,k_1;\ldots;x_n,k_n)\in T^*M^n\setminus0
+\]
+belongs to \(\Gamma_n(M)\) if there is a finite directed graph with vertex
+set \(\{1,\ldots,n\}\) such that each edge \(e:i\to j\) is assigned a
+future-directed causal covector field \(p_e\) parallel transported along a
+future-directed causal curve from \(x_i\) to \(x_j\), and
+\[
+  k_i
+  =
+  \sum_{e:i\to j}p_e(x_i)
+  -
+  \sum_{e:j\to i}p_e(x_i)
+  \qquad (i=1,\ldots,n).
+  \label{eq:microlocal-spectrum-graph-balance}
+\]
+The empty graph gives the zero tuple, which is omitted from
+\(T^*M^n\setminus0\).
+\end{definition}
+
+\begin{definition}[Microlocal spectrum condition for a state]
+\label{def:microlocal-spectrum-condition-state}
+A state \(\omega\) on a scalar field algebra satisfies the microlocal
+spectrum condition when all \(n\)-point distributions
+\[
+  \omega_n(f_1,\ldots,f_n)
+  =
+  \omega(\phi(f_1)\cdots\phi(f_n))
+\]
+obey
+\[
+  \operatorname{WF}(\omega_n)\subset\Gamma_n(M).
+  \label{eq:microlocal-spectrum-condition-all-n}
+\]
+\end{definition}
+
+For \(n=2\), a graph with one edge \(1\to2\) gives
+\[
+  (k_1,k_2)=(p,-p),
+\]
+which is the sign pattern in the Hadamard two-point condition.  For
+quasifree Hadamard states, Wick's theorem reduces every \(n\)-point
+distribution to a finite sum of products of two-point functions.  Applying
+Theorem~\ref{thm:microlocal-product-criterion} and the graph description
+above shows that the microlocal spectrum condition for all \(n\) follows
+from the two-point Hadamard condition.
 
 \section{Hadamard Parametrix}
 
@@ -79,10 +243,48 @@ the Klein--Gordon operator the principal symbol is
 \[
   p(x,k)=g^{\mu\nu}(x)k_\mu k_\nu .
 \]
-The Hamiltonian flow on \(p=0\) is the null geodesic flow lifted to
-cotangent space.  Hence once the two-point function has positive-frequency
-wavefront directions on one Cauchy surface, the equation of motion propagates
-those directions along null geodesics.  This is the geometric content of the
+The Hamiltonian vector field on \(T^*M\) is
+\[
+  H_p
+  =
+  \frac{\partial p}{\partial k_\mu}\frac{\partial}{\partial x^\mu}
+  -
+  \frac{\partial p}{\partial x^\mu}\frac{\partial}{\partial k_\mu}.
+\]
+Thus its integral curves satisfy
+\[
+  \dot x^\mu=2g^{\mu\nu}(x)k_\nu,
+  \qquad
+  \dot k_\mu=-(\partial_\mu g^{\alpha\beta})(x)k_\alpha k_\beta .
+  \label{eq:microlocal-kg-hamilton-equations}
+\]
+Let \(v^\mu=\dot x^\mu\).  Then
+\[
+  v^\mu=2k^{\sharp\mu},
+  \qquad
+  g_{\mu\nu}v^\mu v^\nu=4p(x,k).
+\]
+On \(p=0\), the projected curve \(x(s)\) is therefore null.  Lowering the
+index in the first Hamilton equation gives \(k_\mu=\frac12g_{\mu\nu}v^\nu\).
+Differentiate this identity and use the second Hamilton equation together
+with
+\[
+  \partial_\mu g^{\alpha\beta}
+  =
+  -g^{\alpha\rho}g^{\beta\sigma}\partial_\mu g_{\rho\sigma}.
+\]
+One obtains
+\[
+  g_{\mu\nu}\left(\ddot x^\nu+\Gamma^\nu_{\rho\sigma}
+       \dot x^\rho\dot x^\sigma\right)=0 .
+\]
+Since \(g\) is non-degenerate, \(x(s)\) is an affinely parametrized null
+geodesic, and \(k\) is parallel transported along it up to the fixed factor
+\(1/2\).
+
+Hence once the two-point function has positive-frequency wavefront
+directions on one Cauchy surface, the equation of motion propagates those
+directions along null geodesics.  This is the geometric content of the
 microlocal spectrum condition.
 
 \section{Wick Products}
