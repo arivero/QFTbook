@@ -91,6 +91,126 @@ exact, so there exists \(\mathcal F\) with
 \(d\mathcal F=\sum_I a_{D,I}\,da^I\).  This is the required prepotential.
 \end{proof}
 
+\section{Argument Types And Charge-Monodromy Conventions}
+\label{sec:sw-argument-ledger-charge-monodromy}
+
+The Seiberg-Witten construction mixes several kinds of reasoning.  In this
+chapter every load-bearing step is to be read with one of the following status
+labels.
+
+\begin{definition}[Argument-status labels for Seiberg-Witten theory]
+\label{def:sw-argument-status-labels}
+A statement in the rank-one Seiberg-Witten construction has one of these
+statuses.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \emph{QFT-hypothesis}: an assumption about the existence of the
+  four-dimensional continuum theory, its Coulomb-branch vacua, or its
+  Wilsonian effective action.
+\item \emph{Symmetry-derived}: a consequence of the microscopic global
+  symmetries, anomalies, Weyl group, and dimensional analysis.
+\item \emph{Holomorphy-derived}: a consequence of holomorphic dependence on
+  Coulomb parameters and couplings once the Wilsonian \(\mathcal N=2\)
+  framework has been assumed.
+\item \emph{Special-geometry theorem}: a statement about periods, symplectic
+  lattices, Riemann bilinear identities, or nodal degenerations of curves.
+\item \emph{Constraint-derived}: the minimal object satisfying the preceding
+  symmetry, monodromy, and asymptotic constraints, with uniqueness only inside
+  the declared ansatz.
+\item \emph{Consistency check}: a nontrivial compatibility test, such as a
+  monodromy product, Picard-Fuchs equation, or instanton coefficient match.
+\item \emph{Heuristic/status boundary}: a physical identification not derived
+  from a complete regulator construction in this monograph.
+\end{enumerate}
+\end{definition}
+
+For the pure \(\mathfrak{su}(2)\) theory below, the input that the Coulomb
+branch exists and is described at generic points by a two-derivative Abelian
+Wilsonian action is a QFT-hypothesis.  The one-loop logarithm and the
+resulting monodromy at infinity are holomorphy-derived after the perturbative
+Wilsonian scheme is fixed.  The residual \(u\mapsto -u\) action is
+symmetry-derived.  The Picard-Lefschetz transformation at a nodal fiber is a
+special-geometry theorem.  The curve
+\(y^2=(x^2-\Lambda^4)(x-u)\) is constraint-derived inside the minimal
+genus-one ansatz.  The hypergeometric periods, Picard-Fuchs equation,
+finite-monodromy product, BPS mass vanishings, and Nekrasov coefficient are
+consistency checks.  The statement that these data are the exact
+nonperturbative low-energy dynamics of the four-dimensional continuum QFT
+remains at the status boundary recorded at the end of the chapter.
+
+In rank one the electromagnetic charge lattice is
+\[
+  \Gamma\simeq\mathbb Z^2,\qquad
+  \gamma=(n_m,n_e),
+\]
+with central charge \(Z_\gamma=n_m a_D+n_e a\).  For two charges
+\(\delta=(m_m,m_e)\) and \(\gamma=(n_m,n_e)\), use the antisymmetric pairing
+\[
+  \langle \delta,\gamma\rangle
+  =
+  m_m n_e-m_e n_m .
+  \label{eq:rank-one-em-pairing}
+\]
+This is the Dirac pairing in the period basis \(\Pi=(a_D,a)^T\).
+
+\begin{proposition}[Rank-one hypermultiplet monodromy]
+\label{prop:rank-one-hyper-pl-monodromy}
+Suppose that a primitive charge \(\gamma=(n_m,n_e)\) is represented by a
+single massless hypermultiplet at a nodal singular fiber, and suppose the
+period vector is ordered as \(\Pi=(a_D,a)^T\).  Then the Picard-Lefschetz
+monodromy acting on periods is
+\begin{equation}
+  M_\gamma
+  =
+  \begin{pmatrix}
+  1+2n_m n_e&2n_e^2\\
+  -2n_m^2&1-2n_m n_e
+  \end{pmatrix}.
+  \label{eq:sw-picard-lefschetz-charge-monodromy}
+\end{equation}
+Equivalently, for every test charge \(\delta\),
+\[
+  Z_\delta\longmapsto
+  Z_\delta+2\langle\delta,\gamma\rangle Z_\gamma .
+  \label{eq:rank-one-pl-central-charge-action}
+\]
+The matrix \(M_\gamma\) is integral symplectic and unipotent.
+\end{proposition}
+
+\begin{proof}
+The special-geometry Picard-Lefschetz transformation says that a cycle
+\(\delta\) transported around a nodal degeneration is shifted by its
+intersection with the vanishing cycle.  In the physical period convention a
+massless hypermultiplet contributes twice the primitive Picard-Lefschetz
+shift, giving \eqref{eq:rank-one-pl-central-charge-action}.  Writing
+\(\gamma=(p,q)\) and \(\Pi=(a_D,a)^T\), the displayed matrix gives
+\[
+\begin{aligned}
+  a_D'&=(1+2pq)a_D+2q^2a,\\
+  a'&=-2p^2a_D+(1-2pq)a .
+\end{aligned}
+\]
+For \(\delta=(m,e)\),
+\[
+\begin{aligned}
+  m a_D'+e a'
+  &=
+  ma_D+ea
+  +2(mq-ep)(p a_D+q a)  \\
+  &=
+  Z_\delta+2\langle\delta,\gamma\rangle Z_\gamma .
+\end{aligned}
+\]
+Thus \eqref{eq:rank-one-pl-central-charge-action} holds.  The same formula
+implies preservation of the antisymmetric pairing because
+\(\langle\gamma,\gamma\rangle=0\) and the two added rank-one terms cancel.
+Equivalently, \(M_\gamma^T J M_\gamma=J\) for
+\[
+  J=\begin{pmatrix}0&1\\ -1&0\end{pmatrix}.
+\]
+The determinant is one, and \(M_\gamma-I\) has square zero, so the monodromy
+is unipotent.
+\end{proof}
+
 \section{Pure Gauge Theory With Gauge Algebra su two}
 
 For the pure theory with gauge algebra \(\mathfrak{su}(2)\), the Coulomb
@@ -146,21 +266,10 @@ breaks it to \(\mathbb Z_4\), leaving the quotient action \(u\mapsto -u\).
 Consequently finite singularities, if there are only two in the minimal
 period problem, occur at opposite values.  The scale \(\Lambda\) fixes their
 locations to \(u=\pm\Lambda^2\).  At a nodal singular fiber, a primitive
-charge \(\gamma=(n_m,n_e)\) becomes massless and the Picard-Lefschetz
-transformation of the period vector is
-\begin{equation}
-  M_\gamma
-  =
-  \begin{pmatrix}
-  1+2n_m n_e&2n_e^2\\
-  -2n_m^2&1-2n_m n_e
-  \end{pmatrix}.
-  \label{eq:sw-picard-lefschetz-charge-monodromy}
-\end{equation}
-The factor \(2\) is the hypermultiplet contribution in the charge convention
-where the central charge is \(Z_\gamma=n_ea+n_m a_D\).  Choosing the
-singularity at \(u=\Lambda^2\) to be a monopole point, \(\gamma_m=(1,0)\),
-gives
+charge \(\gamma=(n_m,n_e)\) becomes massless and the period vector transforms
+by Proposition~\ref{prop:rank-one-hyper-pl-monodromy}.  Choosing the
+singularity at \(u=\Lambda^2\) to be a monopole point,
+\(\gamma_m=(1,0)\), gives
 \[
   M_{\Lambda^2}=M_{(1,0)}
   =
@@ -188,15 +297,43 @@ hence
 Thus the second singularity carries a massless dyon of charge
 \(\gamma_d=(1,-1)\) in this period basis.
 
-The elliptic curve must have a discriminant with precisely these two finite
-zeros and must reproduce the weak-coupling cusp at \(u=\infty\).  In a
-hyperelliptic genus-one coordinate \(x\), after rescaling \(x\) and \(u\), the
-minimal such family is
+\begin{proposition}[Minimal rank-one curve inside the two-singularity ansatz]
+\label{prop:minimal-sw-su2-curve}
+Assume the rank-one period problem is represented by a genus-one
+hyperelliptic family with two fixed finite branch points and one branch point
+depending holomorphically on \(u\).  Assume further that the only finite
+singularities are exchanged by \(u\mapsto -u\), occur at
+\(\pm\Lambda^2\), and are nodal singularities, while \(u=\infty\) is the
+weak-coupling cusp.  Then, up to an affine change of the hyperelliptic
+coordinate and a rescaling of \(\Lambda\), the minimal family is
 \begin{equation}
   \Sigma_u:\qquad
   y^2=(x^2-\Lambda^4)(x-u).
   \label{eq:sw-su2-curve-derived}
 \end{equation}
+\end{proposition}
+
+\begin{proof}
+An affine change of \(x\) sends the two fixed finite branch points to
+\(\Lambda^2\) and \(-\Lambda^2\).  A nodal singularity occurs when the moving
+branch point collides with one of these fixed branch points, so the moving
+branch point must take the values \(\pm\Lambda^2\) at
+\(u=\pm\Lambda^2\).  In the minimal degree-one ansatz it is therefore \(x=u\)
+after the same normalization of \(u\).  The fourth branch point is at
+infinity, giving the weak-coupling cusp.  The resulting hyperelliptic
+equation is \eqref{eq:sw-su2-curve-derived}.  Its finite branch-point
+discriminant is proportional to
+\[
+  (\Lambda^2-(-\Lambda^2))^2
+  (\Lambda^2-u)^2(-\Lambda^2-u)^2
+  =
+  4\Lambda^4(u^2-\Lambda^4)^2,
+\]
+so the only finite singular values are exactly \(u=\pm\Lambda^2\).  This
+proves uniqueness only within the stated ansatz; the QFT assertion that this
+ansatz captures the exact pure theory is the Seiberg-Witten status boundary.
+\end{proof}
+
 Its branch points are
 \[
   x=\Lambda^2,\qquad x=-\Lambda^2,\qquad x=u,\qquad x=\infty,
@@ -592,6 +729,83 @@ wall-crossing mechanism in its rank-one Seiberg-Witten form: the central
 charge function is continuous, while the protected index of one-particle BPS
 states is locally constant only away from marginal-stability walls.
 
+\section{Argyres-Douglas Scaling As A Rank-One Singularity}
+\label{sec:argyres-douglas-rank-one-singularity}
+
+The pure \(\mathfrak{su}(2)\) theory has two separated finite singularities,
+so a local duality frame exists near either one and the low-energy theory
+contains a single light hypermultiplet.  A different phenomenon occurs when
+two singularities with mutually nonlocal vanishing charges collide after a
+mass or coupling is tuned.  If \(\gamma_1,\gamma_2\in\Gamma\) vanish at the
+same point and
+\[
+  \langle\gamma_1,\gamma_2\rangle\neq0,
+\]
+then no electric-magnetic frame makes both light states purely electric.
+There is therefore no local Abelian Lagrangian consisting of one vector
+multiplet coupled to two ordinary electric hypermultiplets.  The
+Seiberg-Witten interpretation is an interacting rank-one superconformal
+fixed point, usually called an Argyres-Douglas point.  The existence of the
+four-dimensional QFT fixed point is a status-boundary statement unless a
+separate construction is supplied; the scaling dimensions below are
+consequences of the local special-geometry model.
+
+\begin{definition}[Rank-one cusp model]
+\label{def:rank-one-ad-cusp-model}
+The simplest rank-one Argyres-Douglas local period model is the cusp
+\[
+  \Sigma_{u,v}:\qquad y^2=x^3+v x+u ,
+  \label{eq:ad-a1-a2-local-curve}
+\]
+with local Seiberg-Witten differential
+\[
+  \lambda_{\rm AD}=\frac{u\,dx}{y} .
+  \label{eq:ad-local-differential}
+\]
+The parameter \(u\) is the Coulomb-branch deformation of the cusp and \(v\)
+is the relevant deformation that unfolds the collision.  The normalization is
+chosen so that a period of \(\lambda_{\rm AD}\) has mass dimension one.
+\end{definition}
+
+\begin{proposition}[Scaling dimensions in the cusp model]
+\label{prop:ad-cusp-scaling-dimensions}
+For the local model \eqref{eq:ad-a1-a2-local-curve} with differential
+\eqref{eq:ad-local-differential}, the scaling dimensions are
+\[
+  [x]=\frac25,\qquad
+  [y]=\frac35,\qquad
+  [u]=\frac65,\qquad
+  [v]=\frac45 .
+  \label{eq:ad-cusp-scaling-dimensions}
+\]
+Thus the Coulomb-branch operator has dimension \(6/5\), and the unfolding
+parameter \(v\) has dimension \(4/5\).
+\end{proposition}
+
+\begin{proof}
+Quasi-homogeneity of \(y^2=x^3+v x+u\) gives
+\[
+  2[y]=3[x]=[u].
+\]
+The period of the Seiberg-Witten differential has mass dimension one, and
+\(\lambda_{\rm AD}=u\,dx/y\) scales with dimension \([u]+[x]-[y]\).  Therefore
+\[
+  [u]+[x]-[y]=1 .
+\]
+Solving these equations gives \([x]=2/5\), \([y]=3/5\), and
+\([u]=6/5\).  The term \(v x\) has the same dimension as \(u\), so
+\([v]+[x]=6/5\), and therefore \([v]=4/5\).
+\end{proof}
+
+This calculation is intentionally local.  It does not claim that every
+collision of singular fibers produces a continuum QFT, nor does it replace
+the need to specify which ultraviolet theory and deformation realize the
+collision.  What it does fix is the special-geometry consequence of a cusp
+with differential \(\lambda_{\rm AD}\): periods scale with dimension one,
+the Coulomb operator can have fractional dimension, and mutually nonlocal
+light charges force the infrared description outside an ordinary weakly
+coupled Abelian hypermultiplet frame.
+
 \section{Low-Energy Abelian Theory Near A Singular Point}
 
 Near a point where the monopole period \(a_D\) vanishes, the correct
@@ -618,7 +832,7 @@ states assigned to vanishing cycles.  The missing nonperturbative regulator
 for four-dimensional supersymmetric gauge theory remains part of the
 Wilsonian-scheme problem recorded in Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.
 
-\begin{openproblem}[Theorem-level Seiberg-Witten construction]
+\begin{openproblem}[Theorem-level SW construction]
 \label{op:theorem-level-seiberg-witten-construction}
 Construct the four-dimensional \(\mathcal N=2\) gauge theory with a regulator
 and continuum limit sufficient to derive the Coulomb-branch special geometry,
