@@ -251,6 +251,10 @@ Current checks:
   between vertex-OPE exponent and scaling dimension, Coleman's coupling map,
   the current-dictionary coefficient, the Mandelstam exchange phase, the
   free-fermion point, and the sine-Gordon relevance threshold.
+- `susy_qm_index_checks.py`: exact rational checks for the Volume I
+  SUSY-QM and worldline index-density section, including the oscillator
+  supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
+  extraction, and the \(\widehat A\)-series coefficients through degree six.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign

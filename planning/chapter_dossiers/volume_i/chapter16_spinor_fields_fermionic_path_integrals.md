@@ -83,6 +83,9 @@
 | \(S_F\) | free Dirac Feynman two-point function |
 | \(Z_\psi\) | spinor one-particle pole residue |
 | \(K_{\alpha\beta}{}^{\gamma\delta}\) | local spinor-index kernel of the first four-fermion vertex |
+| \(p_!\) | finite-dimensional Berezin pushforward along a purely odd fiber |
+| \(Q,Q^\dagger,H,I_W\) | supersymmetric quantum-mechanics supercharges, Hamiltonian, and Witten index |
+| \(\widehat A(TM),\operatorname{ch}(E)\) | characteristic classes appearing in the worldline index-density computation |
 
 ## Claims Established
 
@@ -127,6 +130,23 @@
 - The ordinary fermionic thermal trace yields anti-periodic Euclidean
   boundary conditions, while the supertrace with \((-1)^F\) yields periodic
   fermionic boundary conditions.
+- Berezin integration over a finite odd fiber is formulated as a functorial
+  pushforward \(p_!\) of Berezinian densities; staged integration is
+  associativity of ordered coefficient extraction.
+- In one-dimensional supersymmetric quantum mechanics with superpotential
+  \(W\), the Hamiltonian \(H=\{Q,Q^\dagger\}/2\) pairs all positive-energy
+  states by fermion parity, so the Witten index is the even minus odd
+  dimension of the zero-energy subspace.
+- For \(W(x)=mx^2/2\), \(m>0\), the even zero mode
+  \(\exp(-mx^2/2)\) is square-integrable and the odd candidate
+  \(\exp(mx^2/2)\) is not, giving \(I_W=1\); the oscillator supertrace
+  gives the same result by an explicit geometric-series cancellation.
+- The periodic-fermion worldline supertrace for a twisted spin Dirac operator
+  is expanded in normal coordinates; finite-mode Gaussian determinant ratios
+  give \(\widehat A(TM)\), the bundle curvature gives
+  \(\operatorname{ch}(E)\), and the fermion zero-mode Berezin integral extracts
+  the top-degree component of
+  \(\widehat A(TM)\operatorname{ch}(E)\).
 - The Dirac propagator is the inverse of \(\not\partial+m\) with the Feynman
   boundary value.
 - In an interacting theory with an isolated charged massive spin-\(\frac12\)
@@ -150,6 +170,12 @@
   outgoing charge \(-\) pole extractions.
 - Four-fermion direct/exchange contraction figure with the relative fermion
   sign displayed.
+
+## Calculation Checks
+
+- `calculation-checks/susy_qm_index_checks.py` verifies the harmonic SUSY-QM
+  supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
+  extraction, and the \(\widehat A\)-series coefficients through degree six.
 
 ## Exclusions
 

@@ -998,6 +998,269 @@ periodic fermionic boundary conditions. This distinction is the
 finite-dimensional origin of the spin-structure choice for fermionic fields
 on a Euclidean time circle.
 
+\section{Berezin Integration as Functorial Pushforward}
+
+Let \(V\) be a finite-dimensional complex vector space and let
+\(\Pi V\) denote the purely odd affine superspace with structure sheaf
+\(\Lambda(V^\vee)\).  A basis \(e_1,\ldots,e_N\) of \(V\) determines odd
+coordinates \(\theta_1,\ldots,\theta_N\) and the ordered Berezinian density
+\[
+  [\dd\theta]=\dd\theta_N\cdots\dd\theta_1 .
+\]
+The integral of \(f(\theta)[\dd\theta]\) is the coefficient of
+\(\theta_1\cdots\theta_N\) in \(f\).  If
+\(\theta'_a=A_a{}^b\theta_b\), then
+\[
+  \theta'_1\cdots\theta'_N=(\det A)\theta_1\cdots\theta_N,
+  \qquad
+  [\dd\theta']=(\det A)^{-1}[\dd\theta].
+\]
+Thus the product \(f(\theta)[\dd\theta]\) is the coordinate-independent
+object, and Berezin integration is the linear functional on compactly
+supported algebraic Berezinian densities in this finite model.
+
+For a direct sum \(V\oplus W\), choose ordered coordinates \(\theta\) on
+\(\Pi V\) and \(\eta\) on \(\Pi W\), with total density
+\[
+  [\dd\eta][\dd\theta]
+  =
+  \dd\eta_M\cdots\dd\eta_1\,\dd\theta_N\cdots\dd\theta_1 .
+\]
+The projection
+\[
+  p:\Pi(V\oplus W)\longrightarrow \Pi V
+\]
+has a pushforward
+\[
+  p_!:\Gamma(\operatorname{Ber}_{\Pi(V\oplus W)})
+  \longrightarrow
+  \Gamma(\operatorname{Ber}_{\Pi V})
+\]
+defined by
+\[
+  p_!\bigl(F(\theta,\eta)[\dd\eta][\dd\theta]\bigr)
+  =
+  \left(
+    \int\dd\eta_M\cdots\dd\eta_1\,F(\theta,\eta)
+  \right)
+  [\dd\theta].
+\]
+This is the finite-dimensional prototype of a fermionic path integral: a
+fiberwise algebraic pushforward of Berezinian densities.  Functoriality is
+literal.  For
+\[
+  \Pi(V\oplus W\oplus U)
+  \xrightarrow{q}
+  \Pi(V\oplus W)
+  \xrightarrow{p}
+  \Pi V ,
+\]
+the equality
+\[
+  (p\circ q)_!=p_!\circ q_!
+\]
+is the associativity of coefficient extraction with the declared ordering of
+the odd coordinates.  This is the algebraic reason that a finite regulator
+may integrate fermionic modes in stages without changing the value, provided
+the induced Berezinian order is carried along.
+
+\section{Supersymmetric Quantum Mechanics and the Witten Index}
+
+Let \(W:\mathbb R\to\mathbb R\) be a smooth function for which the operators
+below are essentially self-adjoint on the Schwartz domain and have discrete
+low-energy spectrum.  The Hilbert space is
+\[
+  \mathcal H=L^2(\mathbb R)\otimes\Lambda^\bullet\C,
+\]
+with fermion operators \(\psi,\psi^\dagger\) obeying
+\[
+  \{\psi,\psi^\dagger\}=1,\qquad
+  F=\psi^\dagger\psi .
+\]
+Define
+\[
+  Q=\psi^\dagger(\partial_x+W'(x)),
+  \qquad
+  Q^\dagger=\psi(-\partial_x+W'(x)),
+  \qquad
+  H=\frac12\{Q,Q^\dagger\}.
+\]
+Then \(Q^2=(Q^\dagger)^2=0\), \([H,Q]=[H,Q^\dagger]=0\), and
+\[
+  H
+  =
+  \frac12
+  \left[
+    -\partial_x^2+W'(x)^2+W''(x)(2F-1)
+  \right].
+  \label{eq:susy-qm-hamiltonian}
+\]
+The Witten index is
+\[
+  I_W(\beta_{\mathrm T})
+  =
+  \operatorname{Tr}_{\mathcal H}
+  \left((-1)^F\ee^{-\beta_{\mathrm T}H}\right)
+\]
+whenever this trace is defined by the finite-volume or confining
+regularization under discussion.
+
+\begin{proposition}[Pairing of positive-energy states]
+\label{prop:susy-qm-witten-index-pairing}
+Assume \(H\ge0\), the nonzero spectrum in the regulated problem is discrete,
+and \(Q,Q^\dagger\) preserve the domain of \(H\).  Then
+\[
+  I_W(\beta_{\mathrm T})
+  =
+  \dim\ker H|_{F=0}-\dim\ker H|_{F=1},
+  \qquad
+  \frac{d}{d\beta_{\mathrm T}}I_W(\beta_{\mathrm T})=0 .
+\]
+\end{proposition}
+
+\begin{proof}
+Let \(E>0\) and let \(\mathcal H_E\) be the finite-dimensional eigenspace of
+energy \(E\).  Since \(H=\frac12(QQ^\dagger+Q^\dagger Q)\),
+a vector \(\Psi\in\mathcal H_E\) with \(E>0\) cannot be annihilated by both
+\(Q\) and \(Q^\dagger\).  The maps \(Q\) and \(Q^\dagger\) commute with \(H\)
+and change fermion parity.  The operator
+\[
+  \frac{1}{2E}(QQ^\dagger+Q^\dagger Q)
+\]
+is the identity on \(\mathcal H_E\), so the even and odd parts of
+\(\mathcal H_E\) have equal dimension: \(Q+Q^\dagger\) gives an invertible
+odd map on \(\mathcal H_E\) after division by \(\sqrt{2E}\).  Therefore the
+supertrace of \(\ee^{-\beta_{\mathrm T}H}\) vanishes on every
+positive-energy eigenspace.  Only \(\ker H\) remains, where
+\(Q\Psi=Q^\dagger\Psi=0\).  The displayed formula and
+\(\beta_{\mathrm T}\)-independence follow.
+\end{proof}
+
+For the harmonic superpotential
+\[
+  W(x)=\frac{m}{2}x^2,\qquad m>0,
+\]
+the zero-mode equations are
+\[
+  (\partial_x+mx)f_0(x)=0,
+  \qquad
+  (-\partial_x+mx)f_1(x)=0.
+\]
+Their solutions are
+\[
+  f_0(x)=C_0\ee^{-mx^2/2},
+  \qquad
+  f_1(x)=C_1\ee^{mx^2/2}.
+\]
+Only \(f_0\) lies in \(L^2(\mathbb R)\).  Hence
+\[
+  I_W=1 .
+\]
+The oscillator spectrum makes the cancellation explicit.  With
+\[
+  q=\ee^{-\beta_{\mathrm T}m},
+\]
+the even contribution is
+\[
+  Z_{\mathrm{even}}=\sum_{n\ge0}q^n=\frac1{1-q},
+\]
+and the odd contribution is
+\[
+  Z_{\mathrm{odd}}=\sum_{n\ge0}q^{n+1}=\frac{q}{1-q}.
+\]
+Thus
+\[
+  \operatorname{Str}\ee^{-\beta_{\mathrm T}H}
+  =
+  Z_{\mathrm{even}}-Z_{\mathrm{odd}}=1.
+\]
+In the coherent-state path integral this is the same supertrace discussed in
+the previous section, so the fermionic variable is periodic on the Euclidean
+time circle.
+
+\section{Worldline Index Density from Periodic Fermions}
+
+Let \(M\) be a compact oriented Riemannian spin manifold of dimension
+\(2n\), let \(E\to M\) be a Hermitian vector bundle with unitary connection,
+and let
+\[
+  D_E:\Gamma(S^+\otimes E)\longrightarrow\Gamma(S^-\otimes E)
+\]
+be the chiral Dirac operator.  The analytic index is
+\[
+  \operatorname{ind}D_E
+  =
+  \dim\ker D_E-\dim\ker D_E^\dagger
+  =
+  \operatorname{Str}_{L^2(S\otimes E)}
+  \ee^{-\beta_{\mathrm T}D_E^2}.
+\]
+The last equality follows from the same positive-spectrum pairing as in
+Proposition~\ref{prop:susy-qm-witten-index-pairing}, with
+\((-1)^F\) replaced by chirality.
+
+The worldline path integral for this supertrace has periodic bosonic and
+fermionic loops:
+\[
+  x(\tau+\beta_{\mathrm T})=x(\tau),
+  \qquad
+  \psi^a(\tau+\beta_{\mathrm T})=\psi^a(\tau),
+\]
+where \(a\) is an orthonormal tangent-frame index.  In normal coordinates at
+a point \(x_0\in M\), split
+\[
+  x(\tau)=x_0+\sqrt{\beta_{\mathrm T}}\,y(\tau),
+  \qquad
+  \psi^a(\tau)=\psi_0^a+\psi_{\perp}^a(\tau),
+\]
+with \(y\) and \(\psi_\perp\) having zero average.  The finite-mode Gaussian
+calculation of the nonzero modes gives one factor for each skew-eigenvalue
+\(r_j\) of the curvature two-form \(R/(2\pi\ii)\):
+\begin{equation}
+  \prod_{j=1}^n
+  \frac{r_j/2}{\sinh(r_j/2)}.
+  \label{eq:worldline-ahat-product}
+\end{equation}
+The derivation is the product identity
+\[
+  \frac{\sinh z}{z}
+  =
+  \prod_{k=1}^\infty
+  \left(1+\frac{z^2}{\pi^2k^2}\right)
+\]
+applied to the ratio of the periodic bosonic and fermionic nonzero-mode
+determinants in each curvature two-plane.  The connection on \(E\) contributes
+\[
+  \operatorname{tr}_E\exp\!\left(\frac{F_E}{2\pi\ii}\right),
+\]
+because the fermion zero modes represent exterior multiplication by tangent
+one-forms and the Berezin integral over
+\(\psi_0^1,\ldots,\psi_0^{2n}\) extracts the top-degree component.  Therefore
+the local density produced by the worldline supertrace is
+\begin{equation}
+  \left[
+    \widehat A(TM)\operatorname{ch}(E)
+  \right]_{2n},
+  \qquad
+  \widehat A(TM)=
+  \prod_{j=1}^n\frac{r_j/2}{\sinh(r_j/2)},
+  \qquad
+  \operatorname{ch}(E)=
+  \operatorname{tr}_E\exp\!\left(\frac{F_E}{2\pi\ii}\right).
+  \label{eq:worldline-index-density}
+\end{equation}
+Integrating over the bosonic zero mode \(x_0\) gives the
+Atiyah--Singer formula
+\[
+  \operatorname{ind}D_E
+  =
+  \int_M\widehat A(TM)\operatorname{ch}(E).
+\]
+The analytic content behind the last equality is the heat-kernel asymptotic
+expansion for \(D_E^2\) on a compact manifold and the McKean--Singer
+supertrace identity.  The path-integral calculation above identifies the
+local coefficient by finite-dimensional Gaussian and Berezinian operations.
+
 \section{Dirac Functional Integrals and Propagators}
 
 For a classical Grassmann spinor field \(\psi_\alpha(x)\), define
