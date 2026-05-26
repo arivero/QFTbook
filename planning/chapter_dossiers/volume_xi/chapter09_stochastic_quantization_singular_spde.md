@@ -53,6 +53,10 @@ data.
   model distance used in the random-model Cauchy criterion.
 - `Z_n`, `Z_infty`: cutoff random models and their limiting model on a finite
   regularity sector.
+- `H`, `xi`, `I_q(f)`: Hilbert space, isonormal Gaussian process, and
+  \(q\)-fold Wick multiple integral in the finite Wiener-chaos estimate.
+- `Y_n(a)`, `sigma(a)`: model-coordinate random variable and deterministic
+  scale weight in the kernel-to-coordinate moment corollary.
 
 ## Claim Ledger
 
@@ -120,6 +124,12 @@ data.
   almost-sure convergence with every weaker dyadic exponent, passage of the
   model identities to the limit, and the limiting analytic bound by Fatou's
   lemma.
+- Proves a finite Wiener-chaos moment lemma from Wick exponential generating
+  functions and finite pairing combinatorics, including the \(q!\) chaos
+  isometry and even-moment bounds.
+- Proves a kernel-to-coordinate stochastic moment corollary: finite chaos
+  expansions with deterministic kernel bounds give the pointwise stochastic
+  moment and dyadic increment estimates that enter random-model convergence.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -197,3 +207,10 @@ data maps.
   \(L^p\) convergence with an explicit tail, and derives the almost-sure
   dyadic rate by Markov and Borel-Cantelli.  The calculation-check companion
   verifies the geometric-series arithmetic used in the tail bound.
+- 2026-05-26 issue #582 Wiener-chaos continuation: the chapter now proves the
+  stochastic moment estimate used underneath BPHZ model bounds.  The proof
+  derives the chaos isometry from Wick exponential generating functions,
+  bounds higher even moments by counting admissible Wick pairings, and applies
+  the result to finite chaos model-coordinate kernels.  The calculation-check
+  companion verifies the second/third chaos isometry, the fourth moment of
+  \(H_2(G)\), and a sample coordinate-moment constant.

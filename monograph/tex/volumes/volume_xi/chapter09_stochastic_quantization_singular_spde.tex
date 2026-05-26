@@ -1365,6 +1365,178 @@ subtree and after the remaining kernels have been bounded in the parabolic
 model norm.  The theorem above proves what those estimates imply; it does
 not prove the estimates for the concrete dynamic \(\Phi^4_3\) trees.
 
+\begin{lemma}[Finite Wiener-chaos moment bound]
+\label{lem:spde-finite-wiener-chaos-moment-bound}
+Let \(H\) be a real Hilbert space and let
+\(\xi:H\to L^2(\Omega)\) be an isonormal Gaussian process:
+\[
+  \mathbb E\xi(h)=0,\qquad
+  \mathbb E\xi(h)\xi(k)=\langle h,k\rangle_H .
+\]
+For \(q\geq1\) and \(f\in H^{\odot q}\), let \(I_q(f)\) denote the
+\(q\)-fold Wick multiple integral, normalized by
+\[
+  I_q(h^{\otimes q})
+  =
+  \|h\|_H^q
+  H_q\!\left(\frac{\xi(h)}{\|h\|_H}\right)
+  \quad(h\neq0),
+\]
+where \(H_q\) is the probabilists' Hermite polynomial and extension to
+\(H^{\odot q}\) is by polarization and completion.  Set \(I_0(c)=c\).  Then
+\[
+  \mathbb E\,I_q(f)I_{q'}(g)
+  =
+  \delta_{q q'}q!\,\langle f,g\rangle_{H^{\otimes q}} .
+  \label{eq:spde-wiener-chaos-isometry}
+\]
+For every integer \(m\geq1\) there is a finite constant \(C_{q,m}\),
+depending only on \(q\) and \(m\), such that
+\begin{equation}
+  \mathbb E|I_q(f)|^{2m}
+  \leq
+  C_{q,m}\|f\|_{H^{\otimes q}}^{2m}.
+  \label{eq:spde-wiener-chaos-even-moment-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The exponential definition of Wick ordering is
+\[
+  :\!\exp \xi(h)\!:
+  =
+  \exp\left(\xi(h)-\frac12\|h\|_H^2\right).
+\]
+For \(s,t\in\mathbb R\),
+\[
+\begin{aligned}
+  \mathbb E\bigl(:\!\exp t\xi(h)\!:\,:\!\exp s\xi(k)\!:\bigr)
+  &=
+  \exp\left(
+    \frac12\|th+sk\|_H^2
+    -\frac12t^2\|h\|_H^2
+    -\frac12s^2\|k\|_H^2
+  \right)  \\
+  &=
+  \exp(ts\langle h,k\rangle_H).
+\end{aligned}
+\]
+Comparing the coefficient of \(t^q s^{q'}\) gives
+\[
+  \mathbb E\,I_q(h^{\otimes q})I_{q'}(k^{\otimes q'})
+  =
+  \delta_{q q'}q!\,\langle h,k\rangle_H^q .
+\]
+Polarization gives \eqref{eq:spde-wiener-chaos-isometry} for finite sums of
+pure symmetric tensors, and completion gives the general case.
+
+For the even moment, first take \(f\) to be a finite-rank symmetric tensor.
+The needed pairing formula is derived from the same generating function.  For
+vectors \(h_1,\ldots,h_N\in H\),
+\[
+  \mathbb E\prod_{\ell=1}^N :\!\exp t_\ell\xi(h_\ell)\!:
+  =
+  \exp\left(
+    \sum_{1\leq i<j\leq N}
+    t_it_j\langle h_i,h_j\rangle_H
+  \right).
+\]
+Expanding the right-hand side and comparing coefficients gives pairings
+only between distinct Wick blocks.  By multilinearity, the product of
+\(2m\) finite-rank Wick monomials therefore obeys
+\[
+  \mathbb E\,I_q(f)^{2m}
+  =
+  \sum_{\pi\in\mathcal P_{q,2m}} C_\pi(f,\ldots,f).
+\]
+Here \(\mathcal P_{q,2m}\) is the finite set of pairings of the
+\(\{1,\ldots,2m\}\times\{1,\ldots,q\}\) labels that pair no two labels in
+the same block \(\{\ell\}\times\{1,\ldots,q\}\), and \(C_\pi\) is the
+complete tensor contraction prescribed by \(\pi\).  Every \(C_\pi\) is a
+composition of tensor permutations and Hilbert contractions.  Tensor
+permutations are unitary and each Hilbert contraction has operator norm
+\(\leq1\), hence
+\[
+  |C_\pi(f,\ldots,f)|
+  \leq
+  \|f\|_{H^{\otimes q}}^{2m}.
+\]
+Therefore
+\[
+  \mathbb E|I_q(f)|^{2m}
+  =
+  \mathbb E I_q(f)^{2m}
+  \leq
+  |\mathcal P_{q,2m}|\,
+  \|f\|_{H^{\otimes q}}^{2m}.
+\]
+Take \(C_{q,m}=|\mathcal P_{q,2m}|\) for finite-rank tensors.  Approximate
+a general \(f\in H^{\odot q}\) by finite-rank tensors in \(H^{\otimes q}\).
+The isometry \eqref{eq:spde-wiener-chaos-isometry} gives convergence in
+\(L^2(\Omega)\), hence a subsequence converges almost surely.  Fatou's lemma
+applied to that subsequence gives the same \(2m\)-moment bound for the
+limit.  This proves \eqref{eq:spde-wiener-chaos-even-moment-bound}.
+\end{proof}
+
+\begin{corollary}[Kernel bounds imply stochastic coordinate moments]
+\label{cor:spde-chaos-kernel-coordinate-moments}
+Let \(\mathcal A\) be an index set and let
+\(\sigma:\mathcal A\to(0,\infty)\) be a deterministic scale weight.  Suppose
+that random variables \(Y_n(a)\), \(a\in\mathcal A\), have finite chaos
+expansions
+\[
+  Y_n(a)=\sum_{q=0}^Q I_q(f_{n,a,q}),
+  \qquad f_{n,a,q}\in H^{\odot q},
+\]
+and that, for constants \(B_q,\widetilde B_q<\infty\),
+\[
+  \|f_{n,a,q}\|_{H^{\otimes q}}\leq B_q\sigma(a),
+  \qquad
+  \|f_{n+1,a,q}-f_{n,a,q}\|_{H^{\otimes q}}
+  \leq
+  \widetilde B_q2^{-\rho n}\sigma(a).
+\]
+Then, for every integer \(m\geq1\), there are finite constants
+\(M_m,\widetilde M_m\), depending only on \(m\), \(Q\), and the displayed
+kernel constants, such that
+\[
+  \mathbb E|Y_n(a)|^{2m}\leq M_m\sigma(a)^{2m},
+  \qquad
+  \mathbb E|Y_{n+1}(a)-Y_n(a)|^{2m}
+  \leq
+  \widetilde M_m2^{-2m\rho n}\sigma(a)^{2m}.
+\]
+\end{corollary}
+
+\begin{proof}
+Use the elementary convexity inequality
+\[
+  \left|\sum_{q=0}^Q x_q\right|^{2m}
+  \leq
+  (Q+1)^{2m-1}\sum_{q=0}^Q |x_q|^{2m}.
+\]
+Apply Lemma~\ref{lem:spde-finite-wiener-chaos-moment-bound} to each chaos
+component.  The deterministic \(q=0\) component is included with
+\(C_{0,m}=1\).  This gives
+\[
+  M_m
+  =
+  (Q+1)^{2m-1}
+  \sum_{q=0}^Q C_{q,m}B_q^{2m}
+\]
+and the same expression with \(B_q\) replaced by \(\widetilde B_q\) for
+\(\widetilde M_m\).  The factor \(2^{-2m\rho n}\) comes from raising the
+dyadic kernel-difference estimate to the \(2m\)-th power.
+\end{proof}
+
+Corollary~\ref{cor:spde-chaos-kernel-coordinate-moments} is the stochastic
+part of a BPHZ model estimate.  A concrete tree calculation must still prove
+the deterministic kernel bounds for every tested model coordinate and must
+upgrade the resulting pointwise coordinate estimates to the full model
+seminorm by spatial and scale regularity estimates.  Once those deterministic
+steps are done, Theorem~\ref{thm:spde-random-model-cauchy-criterion} turns
+the coordinate estimates into convergence of the random model.
+
 For dynamic \(\Phi^4_3\), the symbols are generated by the noise \(\Xi\), the
 abstract integration map \(\mathcal I\), multiplication, and polynomials in
 the spacetime coordinates.  Negative-homogeneity trees encode precisely the

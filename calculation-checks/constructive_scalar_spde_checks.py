@@ -39,6 +39,27 @@ def wick_coefficients(n):
     return terms
 
 
+def poly_multiply(a, b):
+    product = [Fraction(0)] * (len(a) + len(b) - 1)
+    for i, ai in enumerate(a):
+        for j, bj in enumerate(b):
+            product[i + j] += ai * bj
+    return product
+
+
+def gaussian_moment(power):
+    if power % 2 == 1:
+        return Fraction(0)
+    result = Fraction(1)
+    for odd in range(1, power, 2):
+        result *= odd
+    return result
+
+
+def gaussian_polynomial_expectation(coefficients):
+    return sum(coeff * gaussian_moment(power) for power, coeff in enumerate(coefficients))
+
+
 def check_wick_polynomials():
     assert_equal(
         wick_coefficients(2),
@@ -55,6 +76,23 @@ def check_wick_polynomials():
         [(0, 2, Fraction(3)), (2, 1, Fraction(-6)), (4, 0, Fraction(1))],
         "Wick quartic",
     )
+
+
+def check_wiener_chaos_isometry_and_moments():
+    h2 = hermite_probabilists(2)
+    h3 = hermite_probabilists(3)
+    h2_squared = poly_multiply(h2, h2)
+    h3_squared = poly_multiply(h3, h3)
+    h2_fourth = poly_multiply(h2_squared, h2_squared)
+    assert_equal(gaussian_polynomial_expectation(h2_squared), 2, "second chaos isometry")
+    assert_equal(gaussian_polynomial_expectation(h3_squared), 6, "third chaos isometry")
+    assert_equal(gaussian_polynomial_expectation(h2_fourth), 60, "second chaos fourth moment")
+
+    # Corollary constant for Q=2, m=2, B_0=1, B_1=2, B_2=3 with
+    # C_0=1, C_1=3!!=3, C_2 bounded by the exact fourth moment 60.
+    q_plus_one_factor = 3 ** 3
+    moment_constant = q_plus_one_factor * (1 + 3 * 2**4 + 60 * 3**4)
+    assert_equal(moment_constant, 132543, "finite chaos coordinate-moment constant")
 
 
 def check_tadpole_asymptotics():
@@ -368,6 +406,7 @@ def check_random_model_cauchy_criterion_arithmetic():
 
 def main():
     check_wick_polynomials()
+    check_wiener_chaos_isometry_and_moments()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -381,7 +420,7 @@ def main():
     check_phi4_three_spde_bphz_counterterm_combinatorics()
     check_modelled_fixed_point_contraction_arithmetic()
     check_random_model_cauchy_criterion_arithmetic()
-    print("All constructive scalar/SPDE Wick, power-counting, DPD, reconstruction, BPHZ, fixed-point, and random-model convergence checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, and random-model convergence checks passed.")
 
 
 if __name__ == "__main__":
