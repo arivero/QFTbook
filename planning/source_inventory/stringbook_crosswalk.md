@@ -258,7 +258,8 @@ Current absorption:
   and the constant-seed partition-number normalization test, together with a
   Riemann--Hurwitz monodromy ledger for the first twist-correlator covering
   checks and the beta-normalized local coordinate map for the primitive
-  joining cover.  The public arithmetic check covers the central-charge,
+  joining cover, plus the Schwarzian/OPE-power ledger for the primitive
+  joining channel.  The public arithmetic check covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex

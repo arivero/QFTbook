@@ -3354,6 +3354,106 @@ the twist-field normalization, and a regulator convention for the Liouville
 or Schwarzian anomaly associated with the chosen local coordinates.
 \end{proof}
 
+\begin{proposition}[Schwarzian and OPE-exponent ledger for primitive joining]
+\label{prop:symmetric-product-primitive-joining-schwarzian-ledger}
+Assume the seed theory is in the cover vacuum near the branch points and that
+the bare twist fields are normalized as Virasoro primaries with weights
+\[
+  h_r=\frac{c_0}{24}\left(r-\frac1r\right),
+  \qquad
+  \bar h_r=\frac{\bar c_0}{24}\left(r-\frac1r\right).
+\]
+Let \(z-z_a=a w^r+O(w^{r+1})\), with \(a\ne0\), be a local ramified cover
+coordinate of index \(r\).  Then the Schwarzian contribution to the base
+stress-tensor one-point function has double-pole coefficient \(h_r\):
+\begin{equation}
+  \left\langle T_{\mathrm{base}}(z)\right\rangle
+  =
+  \frac{h_r}{(z-z_a)^2}+O((z-z_a)^{-1}).
+  \label{eq:symmetric-product-local-schwarzian-weight}
+\end{equation}
+For the primitive joining branch data of
+Proposition~\ref{prop:symmetric-product-primitive-joining-cover-map}, with
+\(N=K+L-1\), the holomorphic OPE power in the channel
+\[
+  (K)\cdot(L)\longrightarrow (N)
+\]
+is therefore
+\begin{equation}
+  h_N-h_K-h_L
+  =
+  \frac{c_0}{24}
+  \left[
+    N-\frac1N
+    -K+\frac1K
+    -L+\frac1L
+  \right],
+  \label{eq:symmetric-product-primitive-joining-ope-power}
+\end{equation}
+with the analogous antiholomorphic formula using \(\bar c_0\).  Equivalently,
+before conjugacy-class averaging and before inserting excited seed states,
+\begin{equation}
+  \sigma_K(z,\bar z)\sigma_L(0)
+  =
+  C_{K,L}^{N}\,
+  z^{h_N-h_K-h_L}
+  \bar z^{\bar h_N-\bar h_K-\bar h_L}
+  \sigma_N(0)+\cdots ,
+  \label{eq:symmetric-product-primitive-joining-ope}
+\end{equation}
+where \(C_{K,L}^{N}\) is not fixed by the ledger alone.
+\end{proposition}
+
+\begin{proof}
+The inverse branches near \(z_a\) have the form
+\[
+  w_j(z)
+  =
+  \omega_r^j a^{-1/r}(z-z_a)^{1/r}+O((z-z_a)^{2/r}),
+  \qquad
+  j=0,\ldots,r-1 .
+\]
+The leading Schwarzian of any such branch is independent of \(a\) and of the
+root label:
+\[
+  \{w_j,z\}
+  =
+  \frac{1-r^{-2}}{2(z-z_a)^2}+O((z-z_a)^{-1}).
+\]
+Using the stress-tensor transformation law
+\eqref{eq:stress-tensor-schwarzian-transformation} in the inverse direction,
+and using the cover-vacuum assumption, the ramified point contributes
+\[
+  \frac{c_0}{12}
+  \sum_{j=0}^{r-1}
+  \frac{1-r^{-2}}{2(z-z_a)^2}
+  =
+  \frac{c_0}{24}\left(r-\frac1r\right)\frac1{(z-z_a)^2}.
+\]
+Unramified preimages over the same base point have regular inverse branches
+and do not contribute to the double pole.  This proves
+\eqref{eq:symmetric-product-local-schwarzian-weight}.
+
+For three primary insertions at \(z_1,z_2,z_3\), global conformal covariance
+fixes the holomorphic coordinate dependence to
+\[
+  C\,
+  z_{12}^{h_3-h_1-h_2}
+  z_{13}^{h_2-h_1-h_3}
+  z_{23}^{h_1-h_2-h_3}.
+\]
+Applying this with branch indices \(K,L,N\) and then taking the OPE limit
+of the \(K\)- and \(L\)-twists gives
+\eqref{eq:symmetric-product-primitive-joining-ope-power} and
+\eqref{eq:symmetric-product-primitive-joining-ope}.  The constant
+\(C_{K,L}^{N}\) also contains the cover anomaly functional, the local
+coordinate coefficients in
+\eqref{eq:symmetric-product-primitive-cover-local-zero}--\eqref{eq:symmetric-product-primitive-cover-local-infinity},
+the chosen twist-field normalization, and any nontrivial seed correlator.
+Those data are not determined by monodromy, Riemann--Hurwitz, or conformal
+covariance alone.
+\end{proof}
+
 Discrete torsion is incorporated by replacing the centralizer projection by a
 projective centralizer action determined by a class in
 \[

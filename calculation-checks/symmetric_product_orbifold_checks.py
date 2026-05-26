@@ -159,8 +159,26 @@ def twist_weight(c_seed: Fraction, length: int) -> Fraction:
     return c_seed * Fraction(length * length - 1, 24 * length)
 
 
+def ramification_schwarzian_weight(c_seed: Fraction, ramification_index: int) -> Fraction:
+    inverse_branch_double_pole = Fraction(
+        ramification_index * ramification_index - 1,
+        2 * ramification_index * ramification_index,
+    )
+    branch_sum_double_pole = ramification_index * inverse_branch_double_pole
+    return c_seed * branch_sum_double_pole / 12
+
+
 def cycle_type_weight(c_seed: Fraction, cycle_lengths: list[int]) -> Fraction:
     return sum(twist_weight(c_seed, length) for length in cycle_lengths)
+
+
+def primitive_joining_ope_power(c_seed: Fraction, left_length: int, right_length: int) -> Fraction:
+    joined_length = left_length + right_length - 1
+    return (
+        twist_weight(c_seed, joined_length)
+        - twist_weight(c_seed, left_length)
+        - twist_weight(c_seed, right_length)
+    )
 
 
 def check_centralizer_orders() -> None:
@@ -195,6 +213,50 @@ def check_join_weight_shift() -> None:
 
     shift_2_1_to_3 = twist_weight(c_seed, 3) - twist_weight(c_seed, 2)
     assert_equal("join length two and one to length three", shift_2_1_to_3, Fraction(7, 24))
+
+
+def check_schwarzian_and_primitive_ope_powers() -> None:
+    c_seed = Fraction(6, 1)
+    for ramification_index in range(2, 12):
+        assert_equal(
+            f"Schwarzian double pole gives twist weight r={ramification_index}",
+            ramification_schwarzian_weight(c_seed, ramification_index),
+            twist_weight(c_seed, ramification_index),
+        )
+
+    assert_equal(
+        "primitive joining OPE power K=2, L=2, c=6",
+        primitive_joining_ope_power(c_seed, 2, 2),
+        Fraction(-1, 12),
+    )
+
+    for left_length in range(2, 8):
+        for right_length in range(2, 8):
+            joined_length = left_length + right_length - 1
+            expected = c_seed * Fraction(
+                joined_length,
+                24,
+            ) - c_seed * Fraction(
+                1,
+                24 * joined_length,
+            ) - c_seed * Fraction(
+                left_length,
+                24,
+            ) + c_seed * Fraction(
+                1,
+                24 * left_length,
+            ) - c_seed * Fraction(
+                right_length,
+                24,
+            ) + c_seed * Fraction(
+                1,
+                24 * right_length,
+            )
+            assert_equal(
+                f"primitive joining OPE power formula K={left_length}, L={right_length}",
+                primitive_joining_ope_power(c_seed, left_length, right_length),
+                expected,
+            )
 
 
 def check_normalized_two_cycle_count() -> None:
@@ -370,6 +432,7 @@ def main() -> None:
     check_centralizer_orders()
     check_central_charge_and_weights()
     check_join_weight_shift()
+    check_schwarzian_and_primitive_ope_powers()
     check_normalized_two_cycle_count()
     check_connected_cover_hecke_count()
     check_twist_cover_riemann_hurwitz()
