@@ -16,6 +16,8 @@ Reviewed source spine:
   and relation to the `C^4/Z_k` branch.
 - GitHub issue #588: request for ABJM as a `3D` `N=6/N=8` SCFT, including
   Lagrangian datum, moduli, and localization conventions.
+- GitHub issue #594: conformal-manifold worked examples; this chapter supplies
+  the ABJM fixed-level ledger inside the SUSY field-theory volume.
 
 ## Notation Inventory
 
@@ -32,6 +34,10 @@ Reviewed source spine:
 - `A_a`, `B_dot a`: bifundamental and antibifundamental ABJM chiral
   multiplets.
 - `C_I`: the four complex scalar variables in the `SU(4)` presentation.
+- `mathfrak D`: fixed QFT datum used in the local conformal-manifold
+  definition.
+- `h_ABJM=2 pi/k`: standard ABJM quartic-superpotential coefficient in this
+  chapter's component convention.
 - `A_D`, `B`: diagonal and anti-diagonal abelian gauge fields in the
   one-brane quotient calculation.
 - `lambda_i`, `mu_i`: `S^3` localization Cartan variables for the two
@@ -51,6 +57,13 @@ Reviewed source spine:
   bifundamental chirals and quartic superpotential.
 - Proves the opposite-level parity bookkeeping under orientation reversal and
   exchange of the two gauge factors.
+- Defines a fixed-datum local conformal manifold and applies it to standard
+  ABJM, distinguishing quantized levels and contact-term data from continuous
+  scalar-primary deformations.
+- Proves that the standard `N=6`, `SU(4)`-symmetric ABJM conformal locus at
+  fixed `(N,k)` is zero-dimensional: `k` is integral, `h_ABJM=2 pi/k` is then
+  fixed, real masses/FI coordinates are dimension-one deformations, and
+  Yang-Mills kinetic terms are dimensionful regulator/UV-completion data.
 - Proves the `N=1` ABJM branch quotient `C^4/Z_k` from the abelian BF
   reduction and residual finite gauge transformation.
 - States the general commuting-branch moduli space
@@ -64,8 +77,9 @@ Reviewed source spine:
 
 - `calculation-checks/susy_abjm_6d_checks.py` verifies the ABJM
   superpotential `R`-charge, parity action on levels `(k,-k)`, abelian
-  BF K-matrix normalization, `Z_k` orbifold order, commuting-branch dimension,
-  and the `S^3` matrix-model denominator powers.
+  BF K-matrix normalization, standard conformal-locus tangent count, `Z_k`
+  orbifold order, commuting-branch dimension, and the `S^3` matrix-model
+  denominator powers.
 
 ## Proof Obligations And Boundaries
 
@@ -77,6 +91,10 @@ Reviewed source spine:
 - Future depth passes should add line-operator lattices, one-form symmetries,
   explicit monopole charge formulae, and background Chern-Simons contact-term
   matching for ABJM dualities.
+- The zero-dimensional conformal-locus result is intentionally restricted to
+  the standard `N=6`, `SU(4)` ABJM datum.  Less-symmetric `N=2`
+  Chern-Simons-matter marginal candidates require their own beta-function,
+  current-moment-map, and monopole-sector analysis.
 
 ## Figure Ledger
 

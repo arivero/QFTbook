@@ -502,10 +502,11 @@ Current checks:
 - `susy_abjm_6d_checks.py`: exact finite checks for the ABJM and
   six-dimensional supersymmetric field-theory chapters, including the ABJM
   superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
-  BF normalization, \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model
-  denominator powers, six-dimensional Yang-Mills coupling dimension,
-  \(A_{N-1}\) \((2,0)\) anomaly/tensor-branch arithmetic, and the
-  trace-delta \(g_5^2=4\pi^2R\) compactification normalization.
+  BF normalization, standard ABJM conformal-locus tangent count,
+  \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model denominator powers,
+  six-dimensional Yang-Mills coupling dimension, \(A_{N-1}\) \((2,0)\)
+  anomaly/tensor-branch arithmetic, and the trace-delta
+  \(g_5^2=4\pi^2R\) compactification normalization.
 - `susy_2d_lg_glsm_checks.py`: exact finite checks for the
   two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
   including \(A\)-series quasihomogeneous charges and central charges,
