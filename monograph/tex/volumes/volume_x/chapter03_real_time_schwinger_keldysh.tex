@@ -3,120 +3,460 @@
 
 \ConventionsRealTime
 
-Euclidean thermal correlators encode equilibrium data on the thermal circle.
-Transport and response require real-time correlation functions.  The
-Schwinger--Keldysh construction gives a generating functional for real-time
-ordered products in an initial state without assuming a vacuum.
+The Schwinger--Keldysh formalism is the real-time generating functional for
+correlation and response functions in a specified initial state.  It is an
+operator identity before it is a path integral.  The doubled fields and
+sources are a bookkeeping device for the two sides of a trace, and the
+fundamental constraints come from unitarity, positivity of the density
+operator, and, in thermal equilibrium, the KMS condition.
 
-\section{Closed Time Path}
+\section{Finite-System Definition}
 
-Let a quantum system have Hilbert space \(\Hilb\), Hamiltonian \(H\), and
-initial density operator \(\rho_0\) with \(\operatorname{Tr}\rho_0=1\).  For
-an operator \(O(t)\) coupled to a source \(J(t)\), define two time-evolution
-operators
+Let \(\Hilb\) be a Hilbert space, let \(H\) be a self-adjoint Hamiltonian, and
+let \(\rho_0\) be a positive trace-class density operator with
+\[
+  \operatorname{Tr}\rho_0=1 .
+\]
+Let \(O_\alpha\), \(\alpha\in\mathcal I\), be a finite or regulated family of
+Hermitian operators.  For real compactly supported sources \(J^\alpha(t)\),
+define the source-dependent Hamiltonian
+\[
+  H_J(t)=H-\sum_{\alpha\in\mathcal I} J^\alpha(t)O_\alpha .
+\]
+The evolution operator \(U_J(t,t_i)\) is the solution of
+\[
+  \ii\frac{d}{dt}U_J(t,t_i)=H_J(t)U_J(t,t_i),
+  \qquad U_J(t_i,t_i)=\mathbf 1 ,
+\]
+equivalently
 \[
   U_J(t_f,t_i)
   =
-  \operatorname{T}\exp\!\left(
-  -\ii\int_{t_i}^{t_f}dt\,\bigl(H-J(t)O\bigr)\right),
+  \operatorname{T}\exp\!\left[
+  -\ii\int_{t_i}^{t_f}dt\,
+  \left(H-\sum_{\alpha}J^\alpha(t)O_\alpha\right)\right].
 \]
-\[
-  U_J^\dagger(t_f,t_i)
+The closed-time-path generating functional is
+\begin{equation}
+  Z[J_+,J_-]
   =
-  \widetilde{\operatorname{T}}\exp\!\left(
-  \ii\int_{t_i}^{t_f}dt\,\bigl(H-J(t)O\bigr)\right),
+  \operatorname{Tr}\!\left(
+    U_{J_+}(t_f,t_i)\rho_0
+    U_{J_-}(t_f,t_i)^\dagger
+  \right).
+  \label{eq:sk-operator-generating-functional}
+\end{equation}
+The \(+\) and \(-\) labels record whether a source acts on the forward or
+backward side of the trace.  The physical source is obtained on the diagonal
+\(J_+=J_-\).
+
+\begin{definition}[Closed-time-path correlators]
+\label{def:closed-time-path-correlators}
+The Schwinger--Keldysh correlators of the regulated system are the
+functional derivatives of \(Z[J_+,J_-]\) at \(J_+=J_-=0\).  Differentiation
+with respect to \(J_+\) inserts operators on the forward branch with time
+ordering; differentiation with respect to \(J_-\) inserts operators on the
+backward branch with anti-time ordering and an opposite sign from the
+adjoint evolution.
+\end{definition}
+
+For example, in the unperturbed Heisenberg convention
+\[
+  O_\alpha(t)=\ee^{\ii H(t-t_i)}O_\alpha\ee^{-\ii H(t-t_i)},
 \]
-where \(\operatorname{T}\) and \(\widetilde{\operatorname{T}}\) denote time
-and anti-time ordering.  The closed-time-path generating functional is
+one has
+\[
+  \left.
+  \frac{\delta Z}{\delta J_+^\alpha(t)}
+  \right|_{0}
+  =
+  \ii\,\operatorname{Tr}(\rho_0 O_\alpha(t)),
+  \qquad
+  \left.
+  \frac{\delta Z}{\delta J_-^\alpha(t)}
+  \right|_{0}
+  =
+  -\ii\,\operatorname{Tr}(\rho_0 O_\alpha(t)).
+\]
+Higher derivatives give the four contour orderings.  With two insertions,
+\begin{align}
+  \left.
+  \frac{1}{\ii^2}
+  \frac{\delta^2Z}{\delta J_+^\alpha(t)\delta J_+^\beta(t')}
+  \right|_{0}
+  &=
+  \operatorname{Tr}\!\left(
+    \rho_0\,\operatorname{T}O_\alpha(t)O_\beta(t')\right),\\
+  \left.
+  \frac{1}{(-\ii)^2}
+  \frac{\delta^2Z}{\delta J_-^\alpha(t)\delta J_-^\beta(t')}
+  \right|_{0}
+  &=
+  \operatorname{Tr}\!\left(
+    \rho_0\,\widetilde{\operatorname{T}}O_\alpha(t)O_\beta(t')\right),\\
+  \left.
+  \frac{1}{\ii(-\ii)}
+  \frac{\delta^2Z}{\delta J_+^\alpha(t)\delta J_-^\beta(t')}
+  \right|_{0}
+  &=
+  \operatorname{Tr}\!\left(\rho_0\,O_\beta(t')O_\alpha(t)\right),\\
+  \left.
+  \frac{1}{(-\ii)\ii}
+  \frac{\delta^2Z}{\delta J_-^\alpha(t)\delta J_+^\beta(t')}
+  \right|_{0}
+  &=
+  \operatorname{Tr}\!\left(\rho_0\,O_\alpha(t)O_\beta(t')\right).
+\end{align}
+These formulae are finite trace identities.  In a continuum QFT the same
+symbols require a regulator, an operator topology, and a limiting procedure.
+
+\section{Unitarity, Reality, and Positivity Constraints}
+
+Setting the two sources equal gives
+\begin{equation}
+  Z[J,J]
+  =
+  \operatorname{Tr}(U_J\rho_0U_J^\dagger)
+  =
+  \operatorname{Tr}\rho_0
+  =
+  1 .
+  \label{eq:sk-unitarity-normalization}
+\end{equation}
+This is the closed-time-path normalization constraint.
+
+\begin{proposition}[Basic Schwinger--Keldysh constraints]
+\label{prop:basic-sk-constraints}
+For real sources in the finite system above,
+\begin{align}
+  Z[J,J]&=1,\\
+  Z[J_+,J_-]^*&=Z[J_-,J_+],\\
+  |Z[J_+,J_-]|&\leq1 .
+\end{align}
+If \(Z=\exp(\ii W)\) is defined by the branch with \(W[0,0]=0\), then near
+the origin
+\[
+  W[J,J]=0,\qquad
+  W[J_+,J_-]^*=-W[J_-,J_+],\qquad
+  \operatorname{Im}W[J_+,J_-]\geq0 .
+\]
+\end{proposition}
+
+\begin{proof}
+The first identity is \eqref{eq:sk-unitarity-normalization}.  For real
+sources \(U_J\) is unitary, and complex conjugation of the trace gives
+\[
+  Z[J_+,J_-]^*
+  =
+  \operatorname{Tr}(U_{J_-}\rho_0U_{J_+}^\dagger)
+  =
+  Z[J_-,J_+] .
+\]
+For the bound, write
 \[
   Z[J_+,J_-]
   =
   \operatorname{Tr}\!\left(
-  U_{J_+}(t_f,t_i)\rho_0 U_{J_-}^{\dagger}(t_f,t_i)
+    \rho_0\,U_{J_-}^\dagger U_{J_+}
   \right).
 \]
-The \(+\) and \(-\) labels are contour labels, not independent physical
-systems.
-
-\section{Unitarity Constraint}
-
-Setting \(J_+=J_-=J\) gives
+The operator \(V=U_{J_-}^\dagger U_{J_+}\) is unitary.  Since \(\rho_0\) is a
+positive normalized density matrix, \(Z=\omega_{\rho_0}(V)\) is an
+expectation value of a unitary in a state.  Cauchy--Schwarz for the positive
+inner product
 \[
-  Z[J,J]
-  =
-  \operatorname{Tr}\!\left(U_J\rho_0U_J^\dagger\right)
-  =
-  \operatorname{Tr}\rho_0=1.
+  (A,B)_{\rho_0}=\operatorname{Tr}(\rho_0 A^\dagger B)
 \]
-This identity is the real-time normalization constraint.  Functional
-derivatives of \(Z\) with unequal sources generate contour-ordered
-correlators; the equality above imposes relations among them.  Any effective
-Schwinger--Keldysh action must preserve this identity, or must state the
-controlled approximation that violates it.
-
-\section{Retarded Functions}
-
-Introduce
+gives
 \[
-  J_r=\frac12(J_++J_-),\qquad
-  J_a=J_+-J_- .
+  |Z|^2\leq
+  \operatorname{Tr}(\rho_0\mathbf 1)
+  \operatorname{Tr}(\rho_0 V^\dagger V)=1.
 \]
-The expectation value of \(O\) in the presence of the physical source \(J_r\)
-is obtained by differentiating with respect to \(J_a\) and then setting
-\(J_a=0\).  Expanding to first order around \(J_r=0\) gives the retarded
-response
+The statements about \(W\) follow from \(Z=\exp(\ii W)\) on the branch
+connected to \(Z=1\).
+\end{proof}
+
+Equation \eqref{eq:sk-unitarity-normalization} implies that all derivatives
+of \(Z\) or \(W\) with respect only to a common physical source vanish on the
+diagonal.  This is the origin of the rule that every local term in a
+Schwinger--Keldysh effective action contains at least one difference field.
+
+\section{The r/a Basis and Retarded Response}
+
+Introduce average and difference sources
 \[
-  \delta\langle O(t)\rangle
+  J_{\mathrm r}^\alpha=\frac12(J_+^\alpha+J_-^\alpha),
+  \qquad
+  J_{\mathrm a}^\alpha=J_+^\alpha-J_-^\alpha .
+\]
+Equivalently,
+\[
+  J_+^\alpha=J_{\mathrm r}^\alpha+\frac12J_{\mathrm a}^\alpha,
+  \qquad
+  J_-^\alpha=J_{\mathrm r}^\alpha-\frac12J_{\mathrm a}^\alpha .
+\]
+The connected generating functional is
+\[
+  W[J_{\mathrm r},J_{\mathrm a}]
+  =-\ii\log Z[J_{\mathrm r},J_{\mathrm a}],
+  \qquad W[0,0]=0 .
+\]
+The expectation value in the physical source \(J_{\mathrm r}\) is
+\begin{equation}
+  \langle O_\alpha(t)\rangle_{J_{\mathrm r}}
   =
-  \int dt'\,G_R(t,t')\,\delta J_r(t'),
+  \left.
+  \frac{\delta W}{\delta J_{\mathrm a}^\alpha(t)}
+  \right|_{J_{\mathrm a}=0}.
+  \label{eq:sk-one-point-from-a-source}
+\end{equation}
+At zero source this follows from the one-point identities above:
+\[
+  \left.
+  \frac{\delta Z}{\delta J_{\mathrm a}^\alpha(t)}
+  \right|_0
+  =
+  \frac12\left(
+  \ii\langle O_\alpha(t)\rangle+\ii\langle O_\alpha(t)\rangle
+  \right)
+  =
+  \ii\langle O_\alpha(t)\rangle .
+\]
+
+\begin{proposition}[Source-response kernel from \(r/a\) differentiation]
+\label{prop:sk-retarded-kernel}
+With the source convention \(H_J=H-J^\alpha O_\alpha\),
+\[
+  \left.
+  \frac{\delta}{\delta J_{\mathrm r}^\beta(t')}
+  \frac{\delta W}{\delta J_{\mathrm a}^\alpha(t)}
+  \right|_{J_{\mathrm r}=J_{\mathrm a}=0}
+  =
+  K^R_{\alpha\beta}(t,t'),
 \]
 where
 \[
-  G_R(t,t')
+  K^R_{\alpha\beta}(t,t')
   =
-  -\ii\,\theta(t-t')\operatorname{Tr}\rho_0[O(t),O(t')].
+  \ii\,\theta(t-t')\,
+  \operatorname{Tr}\!\left(\rho_0[O_\alpha(t),O_\beta(t')]\right).
 \]
-The step function is a consequence of the operator ordering in \(U_J\):
-varying the forward source at time \(t'\) changes later Heisenberg operators
-but cancels against the backward variation for earlier times.
-
-\section{KMS State on the Contour}
-
-For the thermal state \(\rho_\beta=Z(\beta)^{-1}e^{-\beta H}\), cyclicity of
-the trace gives the KMS relation
+If the commutator-retarded convention is
 \[
-  \operatorname{Tr}\rho_\beta A(t)B(0)
+  G^{R,\mathrm{comm}}_{\alpha\beta}(t,t')
   =
-  \operatorname{Tr}\rho_\beta B(0)A(t+\ii\beta)
+  -\ii\,\theta(t-t')\,
+  \operatorname{Tr}\!\left(\rho_0[O_\alpha(t),O_\beta(t')]\right),
 \]
-for operators whose analytic continuation is controlled in the stated strip.
-In Schwinger--Keldysh language this relation is not a contour identity alone;
-it uses the thermal density matrix and its analytic domain.  The fluctuation-
-dissipation relation follows by applying the KMS relation to the spectral
-decomposition of two-point functions.
+then \(K^R_{\alpha\beta}=-G^{R,\mathrm{comm}}_{\alpha\beta}\).  The sign is
+fixed by the source coupling \(H_J=H-J^\gamma O_\gamma\), with summation over
+\(\gamma\in\mathcal I\).
+\end{proposition}
 
-\section{Path-Integral Status}
+\begin{proof}
+Let \(J_{\mathrm r}\) be the same physical source on both branches.  To first
+order in the source, the interaction-picture evolution gives
+\[
+  U_J(t,t_i)
+  =
+  U_0(t,t_i)
+  \left[
+    1+\ii\int_{t_i}^{t}ds\,J_{\mathrm r}^\beta(s)O_\beta(s)
+    +O(J_{\mathrm r}^2)
+  \right].
+\]
+Inserting this in the Heisenberg expectation of \(O_\alpha(t)\) gives
+\[
+\begin{aligned}
+  \delta\langle O_\alpha(t)\rangle
+  &=
+  \ii\int_{t_i}^{t}ds\,J_{\mathrm r}^\beta(s)\,
+  \operatorname{Tr}\!\left(\rho_0[O_\alpha(t),O_\beta(s)]\right)\\
+  &=
+  \int ds\,J_{\mathrm r}^\beta(s)\,
+  \bigl[\ii\theta(t-s)
+  \operatorname{Tr}(\rho_0[O_\alpha(t),O_\beta(s)])\bigr].
+\end{aligned}
+\]
+Combining this linear-response identity with
+\eqref{eq:sk-one-point-from-a-source} gives the displayed derivative of
+\(W\).
+\end{proof}
+
+The same statement can be read directly from contour ordering.  The
+derivative with respect to \(J_{\mathrm a}\) inserts the physical operator
+whose expectation value is measured; the derivative with respect to
+\(J_{\mathrm r}\) inserts the perturbation.  The cancellation between the two
+contour branches removes all terms in which the perturbation is later than
+the measured operator, leaving the causal source-response commutator
+\(\ii\theta(t-t')\operatorname{Tr}(\rho_0[O_\alpha(t),O_\beta(t')])\).
+
+\section{Two-Point Matrix}
+
+For a bosonic Hermitian operator \(O\), define
+\[
+  G^>(t,t')=\operatorname{Tr}(\rho_0O(t)O(t')),
+  \qquad
+  G^<(t,t')=\operatorname{Tr}(\rho_0O(t')O(t)).
+\]
+The contour-ordered functions are
+\begin{align}
+  G_{++}(t,t')
+  &=
+  \theta(t-t')G^>(t,t')+\theta(t'-t)G^<(t,t'),\\
+  G_{--}(t,t')
+  &=
+  \theta(t'-t)G^>(t,t')+\theta(t-t')G^<(t,t'),\\
+  G_{-+}(t,t')&=G^>(t,t'),\\
+  G_{+-}(t,t')&=G^<(t,t').
+\end{align}
+In the \(r/a\) basis the independent linear-response and fluctuation data are
+\[
+  G^{R,\mathrm{comm}}(t,t')=
+  -\ii\theta(t-t')\bigl(G^>(t,t')-G^<(t,t')\bigr),
+\]
+\[
+  G^{A,\mathrm{comm}}(t,t')=
+  \ii\theta(t'-t)\bigl(G^>(t,t')-G^<(t,t')\bigr),
+\]
+\[
+  G^K(t,t')=G^>(t,t')+G^<(t,t').
+\]
+The component with two difference-type operator insertions vanishes:
+\[
+  G^{\mathrm{aa}}(t,t')=0 .
+\]
+This is another form of
+\(Z[J_{\mathrm r},J_{\mathrm a}=0]=1\).  The \(rr\) component is the
+symmetrized fluctuation, while \(ra\) and \(ar\) contain the causal response
+kernels.  With the source convention \(H-J^\alpha O_\alpha\), the physical
+source-response kernel is the negative of \(G^{R,\mathrm{comm}}\).
+
+\section{Thermal KMS Constraint on the Contour}
+
+Let
+\[
+  \rho_\beta=Z(\beta)^{-1}\ee^{-\beta H}.
+\]
+For operators whose thermal strip analytic continuation is controlled,
+cyclicity of the trace gives
+\[
+  \operatorname{Tr}(\rho_\beta A(t)B(0))
+  =
+  \operatorname{Tr}(\rho_\beta B(0)A(t+\ii\beta)).
+\]
+In frequency space this becomes detailed balance:
+\[
+  G^<(\omega)=\ee^{-\beta\omega}G^>(\omega)
+\]
+for bosonic operators in the convention of
+Chapter~\ref{ch:kms-states-thermal-correlators}.  Therefore
+\[
+  G^K(\omega)
+  =
+  \coth\!\left(\frac{\beta\omega}{2}\right)
+  \bigl(G^>(\omega)-G^<(\omega)\bigr).
+\]
+Since
+\[
+  G^{R,\mathrm{comm}}(\omega)-G^{A,\mathrm{comm}}(\omega)
+  =
+  -\ii\bigl(G^>(\omega)-G^<(\omega)\bigr)
+\]
+with the commutator-retarded convention above, the fluctuation-dissipation
+relation is
+\[
+  G^K(\omega)
+  =
+  \ii\coth\!\left(\frac{\beta\omega}{2}\right)
+  \bigl(G^{R,\mathrm{comm}}(\omega)
+  -G^{A,\mathrm{comm}}(\omega)\bigr).
+\]
+For fermionic operators the graded KMS condition replaces the hyperbolic
+cotangent by the hyperbolic tangent in the corresponding anticommutator
+fluctuation function.
+
+Thermal Schwinger--Keldysh path integrals often implement this condition by
+adding an imaginary Euclidean segment of length \(\beta\) to the contour or,
+in effective theory, by imposing a dynamical KMS symmetry.  Both
+formulations express the same operator statement: the initial density matrix
+is the Gibbs operator and the required strip analyticity exists.
+
+\section{Coordinate Path Integrals}
 
 A Schwinger--Keldysh path integral is a coordinate representation of
-\(Z[J_+,J_-]\).  Its fields are doubled,
+\eqref{eq:sk-operator-generating-functional}.  For a regulated bosonic
+configuration variable \(q\), inserting coordinate resolutions of identity
+on both sides of the trace gives two histories
 \[
-  \phi_+,\phi_-,
+  q_+(t),\qquad q_-(t),
 \]
-with a matching condition at the final time that implements the trace.  For a
-regulated bosonic theory, the phase is
+with a final-time gluing condition implementing the trace:
 \[
-  \ii S[\phi_+]-\ii S[\phi_-]
-  +\ii\int J_+O[\phi_+]-\ii\int J_-O[\phi_-]
+  q_+(t_f)=q_-(t_f).
 \]
-plus the coordinate representation of \(\rho_0\).  Gauge theories require
-BRST or BV data on the doubled contour, including ghost, antifield, and
-boundary conditions compatible with \(Z[J,J]=1\).
+The initial density matrix contributes its coordinate kernel
+\[
+  \rho_0(q_+(t_i),q_-(t_i)).
+\]
+In formal continuum notation,
+\[
+  Z[J_+,J_-]
+  =
+  \int_{\mathrm{SK}}Dq_+Dq_-\,
+  \rho_0(q_+(t_i),q_-(t_i))\,
+  \exp\!\left\{
+  \ii S[q_+]-\ii S[q_-]
+  +\ii\int J_+O[q_+]-\ii\int J_-O[q_-]
+  \right\}.
+\]
+This formula has the same logical status as every path integral in the
+monograph: its meaning is supplied by the finite regulator or constructive
+definition from which it is obtained.  For thermal initial data, the kernel
+\(\rho_\beta\) may be represented by the Euclidean thermal path integral of
+Chapter~\ref{ch:finite-temperature-path-integrals}, producing the familiar
+contour with an imaginary thermal segment.
+
+\section{Gauge Theories and BV Data on the Closed Time Path}
+
+For a gauge theory, branch doubling must be applied to the full gauge-fixed
+or BV field space.  A perturbative BV representation has two copies
+\[
+  \Phi_+,\Phi_+^*,
+  \qquad
+  \Phi_-,\Phi_-^*,
+\]
+and a regulated exponent whose local part has the form
+\[
+  \ii S_{\rm BV}[\Phi_+,\Phi_+^*]
+  -
+  \ii S_{\rm BV}[\Phi_-,\Phi_-^*]
+  +
+  \ii J_+\cdot O[\Phi_+]
+  -
+  \ii J_-\cdot O[\Phi_-]
+\]
+plus the initial density matrix and the final gluing of physical variables.
+Gauge consistency is the statement that the doubled measure, action, sources,
+and boundary conditions satisfy the appropriate quantum BV master equation
+and preserve the diagonal identity \(Z[J,J]=1\).  In a lattice gauge
+regulator the same physical constraints are expressed without gauge fixing by
+two copies of link variables on the closed time path, projection to
+gauge-invariant states or Gauss-law sectors, and final gluing inside the
+trace.
+
+The real-time continuum construction is therefore stronger than writing a
+formal doubled action.  It must define the initial state, operator domains,
+source space, contour gluing, gauge constraints, and limiting topology in
+which unitarity, positivity, KMS relations, and retarded support survive.
 
 \begin{openproblem}[Real-time continuum construction]
 \label{op:real-time-sk-continuum-construction}
 Construct Schwinger--Keldysh generating functionals for interacting continuum
 QFTs in a topology strong enough to derive retarded correlators, KMS
 relations, and transport limits.  The construction must state the initial
-state, operator domains, regulator, contour matching, and the sense in which
-unitarity and positivity survive the continuum limit.
+state, operator domains, regulator, contour matching, gauge or BV data when
+present, and the sense in which unitarity and positivity survive the
+continuum limit.
 \end{openproblem}

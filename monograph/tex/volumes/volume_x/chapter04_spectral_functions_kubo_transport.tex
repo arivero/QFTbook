@@ -232,14 +232,26 @@ Taking the thermal expectation value gives
 \begin{equation}
   \delta\langle A(t,\mathbf x)\rangle
   =
-  \int dt' d^{D-1}x'\,
+  -\int dt' d^{D-1}x'\,
   G^R_{AB}(t-t',\mathbf x-\mathbf x')h_B(t',\mathbf x').
   \label{eq:kubo-linear-response}
 \end{equation}
-This is the same branch-difference identity obtained from the
-Schwinger--Keldysh functional: differentiating with respect to the \(a\)-type
-source and then setting \(J_a=0\) leaves precisely the commutator and the
-causal step function.
+Equivalently, the source-response kernel for the convention
+\(H=H_0-h_BB\) is
+\[
+  K^R_{AB}
+  =
+  \ii\Theta(t)\langle[A(t),B(0)]\rangle_\beta
+  =
+  -G^R_{AB}.
+\]
+This is the branch-difference identity obtained from the
+Schwinger--Keldysh functional in
+Chapter~\ref{ch:thermal-schwinger-keldysh}: differentiating with respect to
+the \(a\)-type source and then setting \(J_a=0\) leaves the causal
+source-response commutator.  Transport formulae below are stated in terms of
+the commutator spectral density \(\rho_{AB}\), which is independent of this
+source-sign convention.
 
 \section{Contact Terms and Response Kernels}
 
@@ -249,7 +261,7 @@ regulated generating functional contains local source counterterms, then
 \[
   \delta\langle A\rangle
   =
-  (G^R_{AB}+C_{AB})\,h_B
+  (K^R_{AB}+C_{AB})\,h_B
 \]
 in Fourier space, where \(C_{AB}(\omega,\mathbf k)\) is local in spacetime
 and therefore polynomial, or a distributional limit of polynomials, in

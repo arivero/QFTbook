@@ -405,6 +405,11 @@ Current checks:
   curvature-squared Euler tensors, the KMS fluctuation-dissipation factor,
   positivity of a finite noise covariance, and the low-energy root selected
   by reduction of order in a toy higher-derivative equation.
+- `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
+  the real-time Schwinger--Keldysh operator chapter, including diagonal
+  unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,
+  the \(H-J^\alpha O_\alpha\) source-response sign from an impulsive physical
+  source, and KMS detailed balance.
 - `sk_diffusion_action_checks.py`: finite algebra checks for the Volume X
   Schwinger--Keldysh hydrodynamic diffusion action, including the sourced
   density saddle, diffusive response kernel, transverse Ohm response, KMS

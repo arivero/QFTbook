@@ -17,7 +17,8 @@
 - Retarded spectral representation with the chapter's sign convention
   \(\rho=-2\operatorname{Im}G^R\).
 - KMS fluctuation--dissipation relation.
-- Linear response from Schwinger--Keldysh contour difference.
+- Linear response from Schwinger--Keldysh contour difference, with the
+  source-response sign separated from the commutator-retarded convention.
 - Separation between commutator correlators, local contact terms, and full
   background-source response kernels.
 - Conductivity, shear-viscosity, and bulk-viscosity Kubo formulae with
@@ -34,6 +35,7 @@
 | \(\rho_{AB}\) | spectral density |
 | \(G^{\rm sym}_{AB}\) | symmetrized correlator |
 | \(K_{ij}\) | full transverse current response kernel, including contact terms, defined by \(\langle J_i\rangle=-K_{ij}A_j\) |
+| \(K^R_{AB}\) | source-response kernel for \(H=H_0-h_BB\), equal to \(-G^R_{AB}\) in the chapter's commutator-retarded convention |
 | \(C_{AB}\) | local source-contact contribution to a response kernel |
 | \(\sigma_{ij}\) | conductivity tensor |
 | \(\eta\) | shear viscosity |
@@ -43,8 +45,10 @@
 
 ## Claim Ledger
 
-1. Retarded response is the Schwinger--Keldysh branch difference and equals a
-   commutator with a causal step function.
+1. The Schwinger--Keldysh branch difference gives the causal
+   source-response commutator; with the convention \(H=H_0-h_BB\), this
+   kernel is the negative of the chapter's commutator-retarded function
+   \(G^R=-i\Theta\langle[A,B]\rangle\).
 2. In finite volume, inserting energy eigenstates gives the Lehmann
    representation for \(G^>\) and \(\rho\); for Hermitian operators it implies
    \(\omega\rho_{AA}\ge0\).
