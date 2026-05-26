@@ -55,6 +55,10 @@ boundaries rather than importing the appendix exposition.
   convention.
 - Proves the level-two null-vector coefficient for `alpha=-b/2` and derives
   the corresponding BPZ differential equation.
+- Derives the degenerate OPE coefficient `C_-(alpha)` from the local
+  one-screening Coulomb-gas integral, including the Dotsenko-Fateev
+  meromorphic-continuation boundary and the gamma-function rewrites matching
+  the chapter convention.
 - Reduces the four-point function with one `V_{-b/2}` insertion to
   hypergeometric blocks, identifies the two local fusion exponents, and
   derives the explicit gamma-product DOZZ `b`-shift ratio from the
@@ -80,6 +84,9 @@ boundaries rather than importing the appendix exposition.
 - The same script checks the formal `b`-power bookkeeping in the explicit
   DOZZ `b`-shift ratio, including the cancellation of all external-momentum
   powers and the final `b^{-4}` factor.
+- The same script verifies the one-screening OPE power, the three
+  Dotsenko-Fateev beta-integral gamma arguments, and the gamma-function
+  rewrites of the meromorphic `C_-(alpha)` coefficient.
 - The same script now also checks the affine parameter algebra in the
   hypergeometric connection matrix: the `z=1` exponent gap and the gamma
   arguments `C-A`, `C-B`, and `A+B-C`.
@@ -88,9 +95,6 @@ boundaries rather than importing the appendix exposition.
 
 - Add detailed conformal-block recursion examples beyond the first BPZ
   equation.
-- Further refine the degenerate OPE normalization by deriving the
-  screening-integral coefficient \(C_-(\alpha)\) directly in the chapter
-  convention.
 - Develop Liouville boundary states only after the BCFT chapter is added; do
   not fold black-hole entropy or HKS/SSS material into this chapter.
 - Complete the full functorial sewing comparison with the Volume IV
@@ -109,3 +113,6 @@ boundaries rather than importing the appendix exposition.
 - 2026-05-26 assumption-ledger pass: displayed the hypergeometric connection
   formula and added a calculation check for the connection-matrix exponent and
   gamma-argument algebra.
+- 2026-05-26 screening pass: derived the degenerate one-screening
+  Coulomb-gas coefficient `C_-(alpha)` in chapter conventions and added the
+  corresponding gamma-argument and gamma-identity checks.

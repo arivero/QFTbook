@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import math
 from fractions import Fraction
 
 
@@ -172,6 +173,73 @@ require_affine_equal(
     ba2.scale(2) - one_exp - t_exp,
 )
 
+# Coulomb-gas screening check for C_-(alpha).  With one screening insertion,
+# the free contractions give |z|^(2+2b^2-2b alpha); this must equal the
+# second degenerate OPE exponent 2(h_{alpha+b/2}-h_alpha-h_{-b/2}).
+require_affine_equal(
+    "screening OPE power",
+    one_exp.scale(2) + t_exp.scale(2) - ba1.scale(2),
+    (one_exp + t_exp - ba1).scale(2),
+)
+
+screening_a = -ba1.scale(2)
+screening_c = t_exp
+require_affine_equal(
+    "screening beta first gamma argument",
+    one_exp + screening_a,
+    one_exp - ba1.scale(2),
+)
+require_affine_equal(
+    "screening beta second gamma argument",
+    one_exp + screening_c,
+    one_exp + t_exp,
+)
+require_affine_equal(
+    "screening beta third gamma argument",
+    -one_exp - screening_a - screening_c,
+    ba1.scale(2) - one_exp - t_exp,
+)
+
+def gamma_ratio(x: float) -> float:
+    """gamma(x)=Gamma(x)/Gamma(1-x) for non-pole real samples."""
+
+    return math.gamma(x) / math.gamma(1.0 - x)
+
+
+sample_b = 0.73
+sample_alpha = 1.47
+sample_t = sample_b * sample_b
+sample_ba = sample_b * sample_alpha
+
+screening_original = (
+    -math.pi
+    * gamma_ratio(1.0 - 2.0 * sample_ba)
+    * gamma_ratio(1.0 + sample_t)
+    * gamma_ratio(2.0 * sample_ba - 1.0 - sample_t)
+)
+screening_denominator_form = (
+    -math.pi
+    * gamma_ratio(2.0 * sample_ba - 1.0 - sample_t)
+    / (gamma_ratio(2.0 * sample_ba) * gamma_ratio(-sample_t))
+)
+screening_b_power_form = (
+    math.pi
+    * sample_b ** 4
+    * gamma_ratio(sample_t)
+    * gamma_ratio(2.0 * sample_ba - 1.0 - sample_t)
+    / gamma_ratio(2.0 * sample_ba)
+)
+
+for name, value in [
+    ("screening denominator form", screening_denominator_form),
+    ("screening b-power form", screening_b_power_form),
+]:
+    scale = max(1.0, abs(screening_original), abs(value))
+    if abs(screening_original - value) > 1e-12 * scale:
+        raise AssertionError(
+            f"{name} mismatch: {screening_original!r} != {value!r}"
+        )
+
 numerator_shift = (
     one_exp.scale(2)
     + t_exp.scale(2)
@@ -214,4 +282,7 @@ require_affine_equal(
     -one_exp.scale(4),
 )
 
-print("All Liouville BPZ, connection-matrix, and DOZZ-shift checks passed.")
+print(
+    "All Liouville BPZ, screening, connection-matrix, "
+    "and DOZZ-shift checks passed."
+)

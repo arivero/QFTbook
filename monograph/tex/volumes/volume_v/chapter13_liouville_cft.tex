@@ -558,6 +558,95 @@ to the same equation near another puncture gives shift equations for the
 three-point structure constants.  The DOZZ constant is the meromorphic
 solution with the reflection, shift, and analyticity properties stated above.
 
+\begin{proposition}[Screening computation of the degenerate OPE coefficient]
+\label{prop:liouville-degenerate-screening-coefficient}
+In the free-field normalization of Convention
+\ref{conv:liouville-free-field-normalization}, and with the interaction
+normalization in \eqref{eq:liouville-classical-action}, the degenerate OPE is
+normalized so that \(C_+(\alpha)=1\).  The one-screening coefficient in the
+second channel is the meromorphic function
+\begin{equation}
+\begin{aligned}
+  C_-(\alpha)
+  &=
+  -\pi\mu\,
+  \gamma(1-2b\alpha)\,
+  \gamma(1+b^2)\,
+  \gamma(2b\alpha-1-b^2)
+  \\
+  &=
+  -\pi\mu\,
+  \frac{\gamma(2b\alpha-1-b^2)}
+       {\gamma(2b\alpha)\gamma(-b^2)} ,
+\end{aligned}
+  \label{eq:liouville-coulomb-gas-cminus}
+\end{equation}
+where \(\gamma(x)=\Gamma(x)/\Gamma(1-x)\).  Equivalently,
+\[
+  C_-(\alpha)
+  =
+  \pi\mu\,b^4\gamma(b^2)\,
+  \frac{\gamma(2b\alpha-1-b^2)}{\gamma(2b\alpha)} .
+\]
+The equalities are identities of meromorphic functions of \(b\) and
+\(\alpha\); the intermediate Coulomb-gas integral is defined by analytic
+continuation.
+\end{proposition}
+
+\begin{proof}
+The coefficient \(C_+\) is fixed by the no-screening normal-ordered product:
+the charges add as \(\alpha-b/2\), and the free contraction gives the
+expected OPE power
+\[
+  V_{-b/2}(z)V_\alpha(0)
+  =
+  |z|^{2b\alpha}V_{\alpha-b/2}(0)+\cdots .
+\]
+For the second channel one expands the interaction
+\(\exp[-\mu\int V_b]\) to first order.  The charge of
+\(V_b(w)V_{-b/2}(z)V_\alpha(0)\) is \(\alpha+b/2\), so this is the unique
+single-screening contribution to the channel \(V_{\alpha+b/2}\).  The free
+contractions give
+\[
+  -\mu\int_{\mathbb C}\dd^2 w\,
+  |z|^{2b\alpha}\,|w-z|^{2b^2}\,|w|^{-4b\alpha}\,
+  V_{\alpha+b/2}(0).
+\]
+Set \(w=zu\).  The \(z\)-dependent factor becomes
+\[
+  |z|^{2+2b^2-2b\alpha}
+  =
+  |z|^{2(h_{\alpha+b/2}-h_\alpha-h_{-b/2})},
+\]
+which is exactly the required OPE power in the second channel.  Thus
+\[
+  C_-(\alpha)
+  =
+  -\mu
+  \int_{\mathbb C}\dd^2u\,
+  |u|^{-4b\alpha}|1-u|^{2b^2}.
+\]
+For complex exponents \(a,c\) in a convergence domain, the
+Dotsenko--Fateev beta integral is
+\begin{equation}
+  \int_{\mathbb C}\dd^2u\,|u|^{2a}|1-u|^{2c}
+  =
+  \pi\,
+  \gamma(1+a)\,
+  \gamma(1+c)\,
+  \gamma(-1-a-c).
+  \label{eq:liouville-dotsenko-fateev-beta-integral}
+\end{equation}
+Both sides are meromorphic in \(a,c\), so
+\eqref{eq:liouville-dotsenko-fateev-beta-integral} defines the continued
+value when the physical exponents do not lie in an absolute-convergence
+strip.  Substituting \(a=-2b\alpha\) and \(c=b^2\) gives the first line of
+\eqref{eq:liouville-coulomb-gas-cminus}.  The remaining forms follow from
+\(\gamma(1-x)=\gamma(x)^{-1}\),
+\(\gamma(1+b^2)=\gamma(-b^2)^{-1}\), and
+\(\gamma(1+b^2)=-b^4\gamma(b^2)\).
+\end{proof}
+
 \begin{proposition}[Degenerate BPZ blocks and the DOZZ \(b\)-shift]
 \label{prop:liouville-degenerate-hypergeometric-solutions}
 Fix three generic momenta \(\alpha_1,\alpha_2,\alpha_3\), put the degenerate
