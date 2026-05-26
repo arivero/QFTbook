@@ -69,6 +69,9 @@ data.
 - `E`, `E'`, `H^{odot q} \widehat\otimes_\pi E'`: Banach test-function
   space, its dual, and the projective tensor space used to turn
   distribution-valued chaos kernels into dual-norm coordinate estimates.
+- `S`, `f_x`, `ell_x`, `delta_u`: kernel parameter space, Hilbert-valued
+  deterministic chaos kernel, dual test-function functional, and point
+  evaluation functional in the projective kernel criterion.
 - `Y_n(a)`, `sigma(a)`: model-coordinate random variable and deterministic
   scale weight in the kernel-to-coordinate moment corollary.
 - `Q`, `K_i`, `L_i`, `M_k`: homogeneous dimension, dyadic input kernels, and
@@ -220,6 +223,13 @@ data.
   identifies \(Q_{n,\tau}^{#}\) with the correct dual norm and avoids
   treating the infinite-dimensional test-function ball as a finite
   parameter space.
+- Proves a projective kernel criterion: if an \(E'\)-valued chaos kernel is
+  represented by an integral of Hilbert kernels tensored with dual
+  test-function functionals, its projective tensor norm is bounded by the
+  integral of the Hilbert norm times the dual norm.  The edge version splits
+  increments into Hilbert-kernel variation and dual-functional variation.
+  For \(E_r=C^r\) test functions, point evaluations have bounded dual norm
+  and their differences carry the expected Holder power.
 - Proves a dyadic parabolic convolution bound: support and pointwise scale
   estimates for order-\(a\) and order-\(b\) kernels imply order-\((a+b)\)
   output bounds, including \(L^\infty\) and \(L^1\) estimates with explicit
@@ -467,3 +477,10 @@ data maps.
   inequality.  The calculation-check companion verifies the integer
   overestimate constants and the transfer from projective edge decay to the
   dyadic-net moment exponent.
+- 2026-05-26 issue #582 projective-kernel continuation: the chapter now
+  proves the deterministic bridge from concrete BPHZ kernels to the
+  projective tensor hypotheses of the dual-norm chaos theorem.  The proof is
+  a Bochner integral estimate in the projective tensor product, with an edge
+  decomposition separating Hilbert-kernel increments from movement of the
+  test-function evaluation functional.  The calculation-check companion
+  verifies the discrete base and edge arithmetic.

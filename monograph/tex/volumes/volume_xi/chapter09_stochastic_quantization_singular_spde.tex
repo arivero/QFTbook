@@ -1669,6 +1669,139 @@ test-function ball.  It is to prove projective tensor bounds for the
 \(E_r'\)-valued BPHZ kernels and then apply the dual-norm chaos estimate
 above.
 
+\begin{proposition}[Kernel criterion for projective dual-norm bounds]
+\label{prop:spde-projective-kernel-dual-norm-criterion}
+Let \(E\) be a separable Banach space, let \(H\) be a Hilbert space, and let
+\((S,\mu)\) be a \(\sigma\)-finite measure space.  Fix \(q\geq0\).  Suppose
+that \(f:S\to H^{\odot q}\) is strongly measurable and that
+\(\ell:S\to E'\) is strongly measurable, with
+\[
+  \int_S \|f(s)\|_{H^{\otimes q}}\|\ell(s)\|_{E'}\,\dd\mu(s)<\infty .
+\]
+Then the Bochner integral
+\[
+  F=\int_S f(s)\otimes \ell(s)\,\dd\mu(s)
+\]
+defines an element of \(H^{\odot q}\widehat\otimes_\pi E'\), and
+\begin{equation}
+  \|F\|_\pi
+  \leq
+  \int_S \|f(s)\|_{H^{\otimes q}}\|\ell(s)\|_{E'}\,\dd\mu(s).
+  \label{eq:spde-projective-kernel-bound}
+\end{equation}
+
+Let \(X\) be a parameter set.  Suppose \(f_x:S\to H^{\odot q}\) and
+\(\ell_x:S\to E'\) satisfy the preceding hypotheses for every \(x\in X\).
+If deterministic functions \(\Sigma:X\to[0,\infty)\) and
+\(\Omega:X\times X\to[0,\infty)\) obey
+\[
+  \int_S\|f_x(s)\|\,\|\ell_x(s)\|\,\dd\mu(s)
+  \leq B\Sigma(x)
+  \label{eq:spde-projective-kernel-base-hypothesis}
+\]
+and
+\[
+\begin{aligned}
+  &\int_S\|f_x(s)-f_y(s)\|\,\|\ell_x(s)\|\,\dd\mu(s)        \\
+  &\qquad
+  +\int_S\|f_y(s)\|\,\|\ell_x(s)-\ell_y(s)\|\,\dd\mu(s)
+  \leq B_{\rm ed}\Omega(x,y),
+\end{aligned}
+  \label{eq:spde-projective-kernel-edge-hypothesis}
+\]
+then
+\[
+  \|F_x\|_\pi\leq B\Sigma(x),
+  \qquad
+  \|F_x-F_y\|_\pi\leq B_{\rm ed}\Omega(x,y),
+\]
+where
+\[
+  F_x=\int_S f_x(s)\otimes\ell_x(s)\,\dd\mu(s).
+\]
+\end{proposition}
+
+\begin{proof}
+The algebraic tensor norm is a crossnorm:
+\[
+  \|u\otimes\lambda\|_\pi=\|u\|_{H^{\otimes q}}\|\lambda\|_{E'}.
+\]
+Hence
+\[
+  \|f(s)\otimes\ell(s)\|_\pi
+  =
+  \|f(s)\|_{H^{\otimes q}}\|\ell(s)\|_{E'}.
+\]
+The assumed integrability therefore makes
+\(s\mapsto f(s)\otimes\ell(s)\) Bochner integrable as a map into
+\(H^{\odot q}\widehat\otimes_\pi E'\).  Approximate this map by simple
+functions \(G_N\) in \(L^1(S;H^{\odot q}\widehat\otimes_\pi E')\).  For a
+simple function \(G_N=\sum_a \mathbf 1_{S_a}u_a\otimes\lambda_a\),
+\[
+  \left\|\int_S G_N\,\dd\mu\right\|_\pi
+  \leq
+  \sum_a\mu(S_a)\|u_a\|\,\|\lambda_a\|
+  =
+  \int_S\|G_N(s)\|_\pi\,\dd\mu(s).
+\]
+Passing to the \(L^1\) limit gives
+\eqref{eq:spde-projective-kernel-bound}.
+
+The base estimate is
+\eqref{eq:spde-projective-kernel-bound} applied to
+\((f_x,\ell_x)\).  For the edge estimate write
+\[
+  F_x-F_y
+  =
+  \int_S (f_x(s)-f_y(s))\otimes\ell_x(s)\,\dd\mu(s)
+  +
+  \int_S f_y(s)\otimes(\ell_x(s)-\ell_y(s))\,\dd\mu(s).
+\]
+Applying \eqref{eq:spde-projective-kernel-bound} to the two terms and using
+\eqref{eq:spde-projective-kernel-edge-hypothesis} proves the displayed bound.
+\end{proof}
+
+The criterion has a concrete meaning for tested model kernels.  With
+\[
+  E_r=\{\varphi\in C^r(\R^{1+3}):
+  \operatorname{supp}\varphi\subset B_{\mathfrak s}(0,1)\},
+\]
+the point-evaluation functional
+\[
+  \delta_u(\varphi)=\varphi(u)
+\]
+has \(\|\delta_u\|_{E_r'}\leq1\).  If
+\(0<\theta\leq\min\{r,1\}\), then
+\[
+  \|\delta_u-\delta_v\|_{E_r'}
+  =
+  \sup_{\|\varphi\|_{C^r}\leq1}|\varphi(u)-\varphi(v)|
+  \leq
+  C_r\|u-v\|_{\mathfrak s}^{\theta}.
+  \label{eq:spde-evaluation-difference-dual-bound}
+\]
+The same bound holds for a finite sum of derivative evaluations
+\(\partial^a\delta_u\) whenever \(|a|_{\mathfrak s}+\theta\leq r\), after
+replacing \(C_r\) by a constant depending on \(r\) and \(a\).  Thus a
+BPHZ-tested chaos kernel represented as
+\[
+  F_{x,q}
+  =
+  \int_S f_{x,q}(s)\otimes\delta_{u_x(s)}\,\dd\mu(s)
+\]
+is controlled by
+\[
+  \|F_{x,q}\|_\pi
+  \leq
+  \int_S\|f_{x,q}(s)\|_{H^{\otimes q}}\,\dd\mu(s),
+\]
+and its parameter increments are controlled by the two visible mechanisms:
+variation of the Hilbert kernel \(f_{x,q}\), and variation of the evaluation
+point \(u_x(s)\) measured by
+\eqref{eq:spde-evaluation-difference-dual-bound}.  These are the deterministic
+estimates that the tree-by-tree BPHZ analysis must prove for the six
+\(\Pi\)-coordinates in the strict negative sector.
+
 \begin{proposition}[Dyadic parabolic convolution bound]
 \label{prop:spde-dyadic-parabolic-convolution-bound}
 Let \((\mathbb R^D,\mathfrak s)\) be a parabolically scaled space with

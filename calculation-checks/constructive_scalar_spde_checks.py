@@ -127,6 +127,33 @@ def check_dual_norm_finite_chaos_estimate_arithmetic():
     assert_equal(moment_exponent, -(d + epsilon) * ell, "dual-norm edge exponent transfer")
 
 
+def check_projective_kernel_dual_norm_criterion_arithmetic():
+    # Discrete model of the projective-kernel criterion:
+    # ||sum_s f_s tensor ell_s||_pi is bounded by sum_s ||f_s|| ||ell_s||.
+    f_norms = [2, 3, 5]
+    ell_norms = [7, 11, 13]
+    base_bound = sum(f * ell for f, ell in zip(f_norms, ell_norms))
+    assert_equal(base_bound, 112, "projective kernel base bound")
+
+    # Edge decomposition:
+    # (f_x-f_y) tensor ell_x + f_y tensor (ell_x-ell_y).
+    f_diff_norms = [1, 2, 1]
+    ell_diff_norms = [1, 1, 2]
+    first_edge = sum(df * ell for df, ell in zip(f_diff_norms, ell_norms))
+    second_edge = sum(f * dell for f, dell in zip(f_norms, ell_diff_norms))
+    edge_bound = first_edge + second_edge
+    assert_equal(first_edge, 42, "projective kernel edge Hilbert variation")
+    assert_equal(second_edge, 15, "projective kernel edge dual variation")
+    assert_equal(edge_bound, 57, "projective kernel total edge bound")
+
+    # Evaluation difference in C^1 dual norm carries one power of distance.
+    distance = Fraction(1, 8)
+    evaluation_difference_bound = distance
+    kernel_l1_norm = Fraction(9)
+    increment_bound = kernel_l1_norm * evaluation_difference_bound
+    assert_equal(increment_bound, Fraction(9, 8), "evaluation difference projective increment")
+
+
 def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
@@ -851,6 +878,7 @@ def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
     check_dual_norm_finite_chaos_estimate_arithmetic()
+    check_projective_kernel_dual_norm_criterion_arithmetic()
     check_tadpole_asymptotics()
     check_phi4_power_counting()
     check_phi4_three_two_loop_mass_coordinate()
@@ -874,7 +902,7 @@ def main():
     check_coordinate_to_model_convergence_arithmetic()
     check_multiscale_sector_kernel_summability_arithmetic()
     check_one_loop_relative_scale_gap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, dual-norm chaos, projective-kernel, power-counting, DPD, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, negative-sector model convergence, physical-parameter entropy, coordinate-to-model convergence, multiscale-sector, and one-loop relative-scale checks passed.")
 
 
 if __name__ == "__main__":
