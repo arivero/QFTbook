@@ -231,6 +231,21 @@
 - Added companion checks for the shift primitive and for the induced
   `R_sing/Q` shift defects on the twist-two Baxter family.
 
+## Comprehensive Development Continuation X
+
+- Upgraded the twist-two Baxter family in Chapter 15 from a stated example to
+  a proved proposition.  The proof rewrites the hypergeometric polynomial in
+  the variable `z=1/2-iu` and proves the finite-difference equation by an
+  explicit summand-level telescoping certificate.
+- The endpoint values and energy identity are now derived rather than merely
+  recorded.  The proof uses the finite Chu--Vandermonde identity for
+  `Qhat_S(1)`, an integral form for `Qhat'_S(0)`, the endpoint
+  Christoffel--Darboux identity for Legendre polynomials, and a differentiated
+  Chu--Vandermonde identity for `Qhat'_S(1)`.
+- Extended the companion checks so the twist-two finite-sum derivation is
+  audited exactly over rational arithmetic: endpoint values, endpoint
+  derivatives, and the telescoping certificate behind the Baxter equation.
+
 ## Calculation Checks
 
 `calculation-checks/planar_n4_integrability_checks.py` now checks:
@@ -245,6 +260,9 @@
 - twist-two QSC Baxter-family identities for spins `S=1,...,8`, including
   the finite-difference equation, endpoint sign/cyclicity pattern, and
   logarithmic-derivative energy `4 H_S`;
+- exact twist-two QSC Baxter-family finite-sum identities: endpoint values,
+  endpoint derivatives, and the summand-level telescoping certificate over
+  rational `z` test points;
 - central-extension dispersion;
 - Zhukovsky defining equation, large-`u` expansion, cut reciprocal boundary
   values, `x^pm` relation, and corrected energy formula;

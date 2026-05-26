@@ -250,6 +250,45 @@ def twist_two_baxter_polynomial(spin: int) -> list[complex]:
     return polynomial
 
 
+def twist_two_baxter_z_polynomial(spin: int) -> list[Fraction]:
+    polynomial = [Fraction(0)]
+    for length in range(spin + 1):
+        coefficient = Fraction(
+            rising_integer(-spin, length) * rising_integer(spin + 1, length),
+            math.factorial(length) ** 3,
+        )
+        pochhammer = [Fraction(1)]
+        for offset in range(length):
+            shifted = [Fraction(0)] * (len(pochhammer) + 1)
+            for index, value in enumerate(pochhammer):
+                shifted[index] += offset * value
+                shifted[index + 1] += value
+            pochhammer = shifted
+        if len(polynomial) < len(pochhammer):
+            polynomial.extend(Fraction(0) for _ in range(len(pochhammer) - len(polynomial)))
+        for index, value in enumerate(pochhammer):
+            polynomial[index] += coefficient * value
+    return polynomial
+
+
+def polynomial_eval_fraction(poly: list[Fraction], value: Fraction) -> Fraction:
+    result = Fraction(0)
+    for coefficient in reversed(poly):
+        result = result * value + coefficient
+    return result
+
+
+def polynomial_derivative_fraction(poly: list[Fraction]) -> list[Fraction]:
+    return [index * coefficient for index, coefficient in enumerate(poly)][1:]
+
+
+def pochhammer_fraction(start: Fraction, length: int) -> Fraction:
+    result = Fraction(1)
+    for offset in range(length):
+        result *= start + offset
+    return result
+
+
 def check_twist_two_qsc_baxter_family() -> None:
     for spin in range(1, 9):
         q_polynomial = twist_two_baxter_polynomial(spin)
@@ -277,6 +316,56 @@ def check_twist_two_qsc_baxter_family() -> None:
             spin_chain_energy,
             float(expected_energy),
         )
+
+        z_polynomial = twist_two_baxter_z_polynomial(spin)
+        z_derivative = polynomial_derivative_fraction(z_polynomial)
+        harmonic = sum(Fraction(1, mode) for mode in range(1, spin + 1))
+        if polynomial_eval_fraction(z_polynomial, Fraction(0)) != 1:
+            raise AssertionError(f"twist-two exact Qhat(0) S={spin}")
+        if polynomial_eval_fraction(z_polynomial, Fraction(1)) != (-1) ** spin:
+            raise AssertionError(f"twist-two exact Qhat(1) S={spin}")
+        if polynomial_eval_fraction(z_derivative, Fraction(0)) != -2 * harmonic:
+            raise AssertionError(f"twist-two exact Qhat'(0) S={spin}")
+        if (
+            polynomial_eval_fraction(z_derivative, Fraction(1))
+            / polynomial_eval_fraction(z_polynomial, Fraction(1))
+            != 2 * harmonic
+        ):
+            raise AssertionError(f"twist-two exact Qhat'(1)/Qhat(1) S={spin}")
+
+        for z_value in (Fraction(3, 7), Fraction(5, 3)):
+            for length in range(spin + 1):
+                term = (
+                    Fraction(
+                        rising_integer(-spin, length)
+                        * rising_integer(spin + 1, length),
+                        math.factorial(length) ** 3,
+                    )
+                    * pochhammer_fraction(z_value, length)
+                )
+                next_term = (
+                    Fraction(
+                        rising_integer(-spin, length + 1)
+                        * rising_integer(spin + 1, length + 1),
+                        math.factorial(length + 1) ** 3,
+                    )
+                    * pochhammer_fraction(z_value, length + 1)
+                    if length < spin
+                    else Fraction(0)
+                )
+                summand_defect = (
+                    z_value * (z_value + length)
+                    + (z_value - 1) ** 3 / (z_value + length - 1)
+                    - (2 * z_value * z_value - 2 * z_value + spin * (spin + 1) + 1)
+                ) * term
+                certificate = (
+                    Fraction((length + 1) ** 3, 1) / (z_value + length) * next_term
+                    - Fraction(length**3, 1) / (z_value + length - 1) * term
+                )
+                if summand_defect != certificate:
+                    raise AssertionError(
+                        f"twist-two exact telescoping certificate S={spin} k={length}"
+                    )
 
 
 def check_central_extension_dispersion() -> None:

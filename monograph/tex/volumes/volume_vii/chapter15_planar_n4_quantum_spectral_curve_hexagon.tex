@@ -851,8 +851,8 @@ finite calculation showing how the QSC weak-coupling limit remembers the
 spin-chain normalization.
 \end{example}
 
-\begin{example}[Twist-two Baxter family]
-\label{ex:planar-n4-twist-two-baxter-family}
+\begin{proposition}[Twist-two Baxter family]
+\label{prop:planar-n4-twist-two-baxter-family}
 For twist \(J=2\) and spin \(S\), define the terminating polynomial
 \[
   Q_S(u)
@@ -896,7 +896,146 @@ single-trace states have
 For \(S=2\), \(Q_2(u)=1/4-3u^2\), which is the same root set as the monic
 Konishi polynomial \(u^2-1/12\), and the formula gives
 \(\Delta_{\rm K}=4+12g^2+O(g^4)\).
-\end{example}
+\end{proposition}
+
+\begin{proof}
+Put
+\[
+  z=\frac12-\ii u,\qquad Q_S(u)=\widehat Q_S(z),
+\]
+so that \(u+\ii/2=\ii z\), \(u-\ii/2=\ii(z-1)\), and the shifts
+\(u\mapsto u\pm\ii\) become \(z\mapsto z\pm1\).  The Baxter equation is
+equivalent to
+\[
+  z^2\widehat Q_S(z+1)+(z-1)^2\widehat Q_S(z-1)
+  =
+  \bigl(2z^2-2z+S(S+1)+1\bigr)\widehat Q_S(z).
+\]
+Write the \(k\)-th summand of \(\widehat Q_S\) as
+\[
+  \tau_k(z)=
+  \frac{(-S)_k(S+1)_k(z)_k}{(k!)^3},
+  \qquad 0\leq k\leq S,
+\]
+and set \(\tau_k=0\) outside this range.  For \(k\geq1\),
+\[
+  (z+1)_k=(z)_k\frac{z+k}{z},
+  \qquad
+  (z-1)_k=(z)_k\frac{z-1}{z+k-1}.
+\]
+A direct substitution gives the summand identity
+\[
+\begin{aligned}
+&z^2\tau_k(z+1)+(z-1)^2\tau_k(z-1)
+  -\bigl(2z^2-2z+S(S+1)+1\bigr)\tau_k(z)  \\
+&\hspace{2cm}
+  =
+  \frac{(k+1)^3}{z+k}\tau_{k+1}(z)
+  -\frac{k^3}{z+k-1}\tau_k(z).
+\end{aligned}
+\]
+The identity is first read away from the apparent poles \(z=1-k\) and then
+extended across the removable singularities by polynomial continuation.  It is
+a finite telescoping certificate.  The right side sums to zero because the
+lower boundary has the factor \(k^3\) and the upper boundary has
+\(\tau_{S+1}=0\).  Hence the \(z\)-form of the Baxter equation holds, and the
+displayed Baxter equation follows after returning to \(u\).
+
+The endpoint \(u=-\ii/2\) corresponds to \(z=0\), so
+\(\widehat Q_S(0)=1\).  The endpoint \(u=\ii/2\) corresponds to \(z=1\), and
+Chu--Vandermonde gives the finite sum
+\[
+  \widehat Q_S(1)
+  =
+  {}_2F_1(-S,S+1;1;1)
+  =
+  \frac{(-S)_S}{S!}=(-1)^S.
+\]
+It remains to prove the logarithmic-derivative identity.  Since
+\[
+  \frac{d}{du}Q_S(u)=-\ii\,\widehat Q'_S(z),
+\]
+we must compute the endpoint logarithmic derivatives of \(\widehat Q_S\).
+First,
+\[
+  \widehat Q'_S(0)
+  =
+  \sum_{k=1}^{S}
+  \frac{(-S)_k(S+1)_k}{(k!)^2\,k}.
+  \label{eq:qsc-twist-two-derivative-zero-sum}
+\]
+Indeed \(d(z)_k/dz|_{z=0}=(k-1)!\).  The same sum may be written as
+\[
+  \widehat Q'_S(0)
+  =
+  \int_0^1
+  \frac{{}_2F_1(-S,S+1;1;t)-1}{t}\,dt .
+\]
+Using \({}_2F_1(-S,S+1;1;t)=\mathsf P_S(1-2t)\), where
+\(\mathsf P_S\) is the Legendre polynomial, and setting \(x=1-2t\), this is
+\[
+  I_S=\int_{-1}^{1}\frac{\mathsf P_S(x)-1}{1-x}\,dx .
+\]
+The finite Christoffel--Darboux identity at one endpoint,
+\[
+  n\,\frac{\mathsf P_n(x)-\mathsf P_{n-1}(x)}{x-1}
+  =
+  \sum_{\ell=0}^{n-1}(2\ell+1)\mathsf P_\ell(x),
+\]
+is the telescoping form of the Legendre three-term recurrence.  It gives
+\(I_n-I_{n-1}=-2/n\) after integration, because only the \(\ell=0\) Legendre
+polynomial has nonzero integral over \([-1,1]\).  Since \(I_0=0\),
+\[
+  \widehat Q'_S(0)=-2H_S.
+\]
+At \(z=1\),
+\[
+  \widehat Q'_S(1)
+  =
+  \sum_{k=1}^{S}
+  \frac{(-S)_k(S+1)_k}{(k!)^2}H_k .
+\]
+This is obtained from \(d(1)_k/dz=k!H_k\).  Differentiate
+Chu--Vandermonde in the denominator parameter:
+\[
+  F(a)={}_2F_1(-S,S+1;a;1)
+  =
+  \frac{(a-S-1)_S}{(a)_S}.
+\]
+At \(a=1\),
+\[
+  \frac{F'(1)}{F(1)}
+  =
+  \sum_{m=0}^{S-1}\frac{1}{1-S-1+m}
+  -
+  \sum_{m=0}^{S-1}\frac{1}{1+m}
+  =
+  -2H_S .
+\]
+On the other hand differentiating the series in \(a\) gives
+\[
+  F'(1)=-\widehat Q'_S(1).
+\]
+Since \(F(1)=(-1)^S\), we obtain
+\[
+  \frac{\widehat Q'_S(1)}{\widehat Q_S(1)}=2H_S.
+\]
+Therefore
+\[
+  \ii\left(
+  \frac{Q'_S(\ii/2)}{Q_S(\ii/2)}
+  -
+  \frac{Q'_S(-\ii/2)}{Q_S(-\ii/2)}
+  \right)
+  =
+  \frac{\widehat Q'_S(1)}{\widehat Q_S(1)}
+  -\frac{\widehat Q'_S(0)}{\widehat Q_S(0)}
+  =
+  4H_S.
+\]
+The dimension formula is now the specialization of
+Proposition~\ref{prop:qsc-one-loop-dimension}.
+\end{proof}
 
 \section{Cusp Anomalous Dimension and Konishi}
 

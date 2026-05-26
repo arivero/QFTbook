@@ -90,10 +90,12 @@ three-point functions.
   identity, and the precise `i`-periodic ambiguity statement used to replace
   the earlier compressed "Baxter equation up to regular terms" step.
 - Adds the twist-two spin-two Konishi Baxter polynomial example.
-- Adds the full twist-two Baxter-polynomial family
+- Proves the full twist-two Baxter-polynomial family
   `Q_S(u) = 3F2(-S,S+1,1/2-iu;1,1;1)`, its finite-difference equation,
-  endpoint/cyclicity values, and the one-loop dimension
-  `Delta_{J=2,S}=2+S+8g^2 H_S+O(g^4)` for physical even spin.
+  endpoint/cyclicity values, harmonic-number logarithmic derivative, and the
+  one-loop dimension `Delta_{J=2,S}=2+S+8g^2 H_S+O(g^4)` for physical even
+  spin.  The proof uses a finite summand-level telescoping certificate and
+  finite Chu--Vandermonde/Christoffel--Darboux identities.
 - Records the cusp anomalous dimension and Konishi as benchmark outputs, and
   adds the small-spin QSC expansion through the Bessel-ratio formula.
 - Defines the hexagon partition of planar three-point functions and states the
@@ -136,6 +138,9 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the twist-two QSC Baxter-polynomial family for
   spins `S=1,...,8`: finite-difference equation, endpoint sign/cyclicity
   pattern, and the logarithmic-derivative energy identity `4 H_S`.
+- The same script now also checks the twist-two finite-sum derivation
+  exactly: endpoint values, endpoint derivatives, and the telescoping
+  certificate for the Baxter equation over rational `z` test points.
 - The Bremsstrahlung weak-series coefficients through four displayed orders
   are checked in
   `calculation-checks/planar_n4_integrability_checks.py`.
