@@ -1,0 +1,161 @@
+\chapter{Mirror TBA and the Y-System}
+\label{ch:planar-n4-mirror-tba-y-system}
+
+\ConventionsLorentzian
+
+The asymptotic Bethe ansatz determines long-chain states before wrapping
+effects.  Finite single traces require a finite-size formalism.  The planar
+\(\mathcal N=4\) construction uses a mirror model obtained by exchanging
+worldsheet space and Euclidean time in the integrable spin-chain scattering
+problem.  This chapter states the logical structure without pretending that
+the mirror thermodynamic Bethe ansatz is a theorem of four-dimensional
+constructive QFT.
+
+\section{Mirror Transformation}
+
+For a physical magnon with energy \(E(p)\) and momentum \(p\), the mirror
+variables are defined by analytic continuation
+\[
+  \widetilde E=\ii p,\qquad
+  \widetilde p=\ii E .
+\]
+Since
+\[
+  E(p)=\sqrt{1+16g^2\sin^2\frac p2},
+\]
+the mirror dispersion is not the same function of \(\widetilde p\) as the
+physical dispersion.  This is the first major difference from relativistic
+two-dimensional QFT, where the mirror transformation is a rapidity shift.
+
+Bound states of \(Q\) physical magnons are described by pairs
+\[
+  x_Q^+,\qquad x_Q^-,
+\]
+obeying the bound-state shortening relation
+\[
+  x_Q^++\frac1{x_Q^+}-x_Q^- -\frac1{x_Q^-}
+  =
+  \frac{\ii Q}{g}.
+\]
+In the mirror region the branch is chosen so that the mirror energy
+\(\widetilde E_Q(u)\) is positive for real mirror rapidity \(u\).
+
+\section{Thermodynamic Bethe Ansatz}
+
+Let \(A,B\) range over the mirror Bethe-string species: physical
+\(Q\)-particle bound states, auxiliary \(y\)-roots, and auxiliary \(w\)-string
+families for the two \(\mathfrak{su}(2|2)\) wings.  Denote the mirror
+pseudoenergy by \(\epsilon_A(u)\) and set
+\[
+  Y_A(u)=\ee^{-\epsilon_A(u)}.
+\]
+The TBA equations have the form
+\begin{equation}
+  \epsilon_A(u)
+  =
+  L\,\widetilde E_A(u)-\mu_A
+  -
+  \sum_B\int_{\mathcal C_B}\dd v\,
+  K_{BA}(v,u)\log\!\left(1+Y_B(v)\right),
+  \label{eq:planar-n4-mirror-tba-general}
+\end{equation}
+with kernels
+\[
+  K_{BA}(v,u)
+  =
+  \frac{1}{2\pi\ii}\frac{\partial}{\partial v}
+  \log S_{BA}^{\rm mirror}(v,u).
+\]
+The contours \(\mathcal C_B\), signs for fermionic auxiliary roots, and
+chemical potentials \(\mu_A\) are part of the mirror-model definition.  They
+are not decorations: changing them changes the finite-size answer.
+
+For a state with physical Bethe roots \(u_1,\ldots,u_K\), the excited-state
+TBA is obtained by contour deformation.  The physical roots satisfy exact
+Bethe equations of the form
+\[
+  1+Y_{\bullet_1}^{\rm phys}(u_j)=0,
+  \qquad j=1,\ldots,K,
+\]
+and the energy is
+\begin{equation}
+  \Delta-J
+  =
+  \sum_{j=1}^K E(u_j)
+  -
+  \sum_{Q=1}^\infty
+  \int_{\R}\frac{\dd u}{2\pi}\,
+  \frac{\dd\widetilde p_Q}{\dd u}
+  \log(1+Y_{\bullet_Q}(u)).
+  \label{eq:planar-n4-excited-tba-energy}
+\end{equation}
+The first term is the asymptotic magnon energy.  The integral term is the
+finite-size wrapping correction from the thermal mirror bath.
+
+\section{Y-System}
+
+The TBA equations imply functional relations among Y-functions after applying
+kernel identities and shifting the spectral parameter.  On the interior of
+the planar \(\mathcal N=4\) T-hook, the relation has the form
+\begin{equation}
+  Y_{a,s}^+(u)Y_{a,s}^-(u)
+  =
+  \frac{(1+Y_{a,s+1}(u))(1+Y_{a,s-1}(u))}
+       {(1+Y_{a+1,s}(u)^{-1})(1+Y_{a-1,s}(u)^{-1})},
+  \label{eq:planar-n4-y-system}
+\end{equation}
+where
+\[
+  f^\pm(u)=f(u\pm\ii/2).
+\]
+The indices \((a,s)\) lie in the T-hook domain determined by the two
+\(\mathfrak{su}(2|2)\) wings.  Boundary nodes require modified relations.
+
+\begin{warning}[Y-system data are not only equations]
+\label{warn:y-system-not-complete}
+The functional relations \eqref{eq:planar-n4-y-system} do not by themselves
+determine a spectrum.  A solution also requires analyticity domains,
+large-\(u\) asymptotics, branch-cut discontinuity relations, exact Bethe-root
+conditions, and state labels.  Treating the Y-system equations alone as a
+definition of the theory discards the information that distinguishes physical
+states.
+\end{warning}
+
+\section{Konishi as the First Wrapping Test}
+
+The Konishi multiplet contains an \(SL(2)\) descendant represented by a
+length-two state with two derivative magnons.  In the asymptotic Bethe ansatz,
+the two physical roots are opposite,
+\[
+  u_1=-u_2.
+\]
+At weak coupling the one-loop solution is
+\[
+  u_1=\frac{1}{2\sqrt3},\qquad
+  u_2=-\frac{1}{2\sqrt3},
+\]
+in the normalization of the rational Bethe equations.  The asymptotic
+dimension matches direct perturbative gauge theory through the orders before
+wrapping appears.  The first wrapping correction is supplied by the mirror
+integral term in \eqref{eq:planar-n4-excited-tba-energy}.  Conceptually, this
+is the finite-length correction to the trace, not a correction to the
+two-magnon dispersion relation.
+
+The exact finite-coupling Konishi dimension is obtained by solving the
+excited-state TBA or, more efficiently, the quantum spectral curve of the next
+chapter.  In this monograph the TBA formula is used as a logically explicit
+construction of the finite-size correction: every input is an S-matrix kernel,
+a contour, a chemical potential, or a Bethe-root condition.
+
+\section{Relation to Relativistic Integrable QFT}
+
+The nested TBA of
+Chapter~\ref{ch:integrable-nested-tba-tq-separation-variables} supplies the
+finite-density variational logic.  The present system differs in three ways.
+First, the dispersion is not relativistic.  Second, the mirror theory has an
+infinite family of bound-state and auxiliary nodes.  Third, the spectral
+problem is a gauge-theory local-operator problem, so the circle length is the
+trace length \(L\) or a charge shifted from it by sector-dependent
+conventions.  These differences are why the planar \(\mathcal N=4\) TBA is
+placed in the supersymmetric gauge-theory volume rather than in the
+relativistic integrable-QFT volume.

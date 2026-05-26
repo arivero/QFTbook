@@ -1,0 +1,259 @@
+\chapter{Planar N=4 Supersymmetric Yang-Mills as a Spectral Problem}
+\label{ch:planar-n4-spectral-problem-spin-chains}
+
+\ConventionsLorentzian
+
+The subject of this chapter is the spectrum of local gauge-invariant
+operators in four-dimensional \(\mathcal N=4\) supersymmetric Yang--Mills
+theory in the planar limit.  The same theory appears earlier in this volume
+as a maximally supersymmetric conformal gauge theory.  Here it is treated as a
+spectral problem: diagonalize the dilatation operator on the vector space of
+renormalized local operators.
+
+\section{Planar Limit and Operator Hilbert Space}
+
+Let the gauge group be \(SU(N)\) or \(U(N)\), with gauge coupling defined by
+the kinetic term
+\[
+  \frac{1}{4g_{\rm YM}^2}\int \dd^4x\,
+  \operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+\]
+in the trace normalization used throughout the gauge-theory volumes.  The
+'t Hooft coupling is
+\[
+  \lambda=g_{\rm YM}^2N,\qquad
+  g=\frac{\sqrt\lambda}{4\pi}.
+\]
+The planar limit means
+\[
+  N\to\infty,\qquad \lambda\ \text{fixed},
+\]
+with local single-trace operators normalized so that their planar two-point
+functions remain finite.
+
+Let \(\mathfrak V\) denote the one-letter vector space spanned by the
+elementary adjoint fields of \(\mathcal N=4\) SYM and their covariant
+derivatives, modulo the equations of motion and gauge-covariant descendant
+relations appropriate to local-operator renormalization.  For fixed length
+\(L\), a single-trace word is
+\[
+  \mathcal O_W(x)
+  =
+  \operatorname{tr}\!\bigl(W_1(x)W_2(x)\cdots W_L(x)\bigr),
+  \qquad W_i\in\mathfrak V .
+\]
+Cyclicity of the trace identifies
+\[
+  W_1\otimes W_2\otimes\cdots\otimes W_L
+  \sim
+  W_2\otimes\cdots\otimes W_L\otimes W_1 .
+\]
+Thus the fixed-length single-trace space is the cyclic quotient
+\[
+  \mathcal H_L^{\rm cyc}
+  =
+  \mathfrak V^{\otimes L}/\langle\tau-1\rangle ,
+\]
+where \(\tau\) shifts all letters by one site.
+
+The dilatation operator \(D\) is defined by the logarithmic scale dependence
+of renormalized local operators.  In a basis \(\mathcal O_A\),
+\[
+  \mu\frac{\dd}{\dd\mu}\mathcal O_A
+  =
+  -\Gamma_A{}^B\mathcal O_B,\qquad
+  D_A{}^B=(D_0)_A{}^B+\Gamma_A{}^B .
+\]
+At a conformal fixed point, diagonalizing \(D\) is equivalent to finding local
+operators of definite scaling dimension.  Planarity implies that, at fixed
+loop order, \(D\) acts locally along the cyclic word: at \(\ell\) loops the
+range is at most \(\ell+1\) adjacent sites in the scalar subsectors described
+below.
+
+\section{The SU(2) Scalar Sector}
+
+Choose two complex scalar fields
+\[
+  Z=\frac{1}{\sqrt2}(\phi^5+\ii\phi^6),
+  \qquad
+  X=\frac{1}{\sqrt2}(\phi^1+\ii\phi^2).
+\]
+The \(SU(2)\) scalar sector is spanned by
+\[
+  \operatorname{tr}(W_1\cdots W_L),\qquad W_i\in\{Z,X\}.
+\]
+Identify \(Z\) with a down spin and \(X\) with an up spin:
+\[
+  Z\leftrightarrow\ket{\downarrow},\qquad
+  X\leftrightarrow\ket{\uparrow}.
+\]
+Let \(P_{j,j+1}\) be the operator that interchanges the two letters at sites
+\(j\) and \(j+1\), with \(L+1\equiv1\).
+
+\begin{theorem}[One-loop planar \(SU(2)\) Hamiltonian]
+\label{thm:planar-n4-one-loop-su2}
+In the \(SU(2)\) scalar sector, with the coupling convention above, the planar
+one-loop dilatation operator is
+\[
+  D
+  =
+  L+\frac{\lambda}{8\pi^2}H_{XXX}
+  +O(\lambda^2),
+  \qquad
+  H_{XXX}=\sum_{j=1}^{L}(1-P_{j,j+1})
+\]
+on the cyclic spin-chain quotient.
+\end{theorem}
+
+\begin{proof}
+The only planar one-loop terms that move \(X\) and \(Z\) letters inside the
+holomorphic \(SU(2)\) sector come from the scalar quartic interaction and the
+wavefunction and non-exchange diagrams required by supersymmetry.  The
+exchange part is local on adjacent sites and is proportional to
+\(-P_{j,j+1}\).  The non-exchange part is proportional to the identity on the
+same pair.  Hence the most general nearest-neighbor planar one-loop operator
+compatible with the two-letter \(SU(2)\) symmetry and translation around the
+trace is
+\[
+  c\sum_{j=1}^L(1-P_{j,j+1})+c'\sum_{j=1}^L(1+P_{j,j+1}).
+\]
+The half-BPS operators \(\operatorname{tr}(Z^L)\) and their fully symmetrized
+scalar descendants have protected scaling dimension.  On a symmetric pair,
+\(P_{j,j+1}=1\), so protection forces \(c'=0\).  The coefficient \(c\) is
+fixed by the logarithmic part of the single adjacent exchange integral.  In
+the present normalization the divergent scalar integral is
+\[
+  \frac{\lambda}{8\pi^2}\log(\mu |x|)+\text{finite},
+\]
+and its color contraction is planar and nearest-neighbor.  Substituting this
+coefficient gives the displayed \(H_{XXX}\).  The cyclic quotient implements
+the trace relation and imposes zero total spin-chain momentum on physical
+single-trace states.
+\end{proof}
+
+The proof uses supersymmetric protection only to fix the identity term after
+the exchange coefficient has been computed.  This is a useful place where the
+field-theory origin of the spin chain matters: the spin-chain Hamiltonian is
+not introduced independently of the renormalized local-operator problem.
+
+\section{Coordinate Bethe Ansatz}
+
+On an infinite chain, a one-magnon wavefunction is
+\[
+  \Psi_p(n)=\ee^{\ii pn}.
+\]
+The Hamiltonian \(H_{XXX}\) gives
+\[
+  (H_{XXX}\Psi_p)(n)
+  =
+  2\Psi_p(n)-\Psi_p(n+1)-\Psi_p(n-1),
+\]
+hence
+\[
+  E_1(p)=4\sin^2\frac p2 .
+\]
+The corresponding one-loop anomalous dimension contribution is
+\[
+  \gamma_1(p)=\frac{\lambda}{8\pi^2}E_1(p).
+\]
+
+For \(M\) magnons on a long chain, integrability permits an asymptotic
+wavefunction built from plane waves in each ordering chamber.  In the
+two-magnon chamber \(n_1<n_2\),
+\[
+  \Psi(n_1,n_2)
+  =
+  A_{12}\ee^{\ii(p_1n_1+p_2n_2)}
+  +
+  A_{21}\ee^{\ii(p_2n_1+p_1n_2)} .
+\]
+Solving the discrete eigenvalue equation at adjacent sites gives
+\[
+  \frac{A_{21}}{A_{12}}
+  =
+  S(p_1,p_2),
+\]
+where, after introducing
+\[
+  u=\frac12\cot\frac p2,\qquad
+  \ee^{\ii p}=\frac{u+\ii/2}{u-\ii/2},
+\]
+the scattering phase is
+\[
+  S(u_1,u_2)
+  =
+  \frac{u_1-u_2+\ii}{u_1-u_2-\ii}.
+\]
+The periodic closed-chain Bethe equations are
+\begin{equation}
+  \left(\frac{u_j+\ii/2}{u_j-\ii/2}\right)^L
+  =
+  \prod_{\substack{k=1\\k\neq j}}^M
+  \frac{u_j-u_k+\ii}{u_j-u_k-\ii},
+  \qquad
+  \prod_{j=1}^M\frac{u_j+\ii/2}{u_j-\ii/2}=1 .
+  \label{eq:planar-n4-one-loop-su2-bethe}
+\end{equation}
+The second equation is the cyclicity condition.  The energy is
+\[
+  E=\sum_{j=1}^M\frac{1}{u_j^2+1/4}.
+\]
+
+The finite-chain transfer-matrix derivation of
+\eqref{eq:planar-n4-one-loop-su2-bethe} is exactly the rational \(SU(2)\)
+construction in
+Chapter~\ref{ch:integrable-algebraic-bethe-ansatz-transfer-matrices}.  The
+physical interpretation differs: here the chain is the color trace of a
+four-dimensional gauge-theory operator, not the spatial circle of a
+two-dimensional relativistic QFT.
+
+\section{Konishi at One Loop}
+
+The shortest non-BPS state in this sector is the length-four two-magnon
+descendant represented by \(\operatorname{tr}([X,Z]^2)\).  Set
+\[
+  L=4,\qquad M=2,\qquad
+  u_1=\frac{1}{2\sqrt3},\qquad u_2=-\frac{1}{2\sqrt3}.
+\]
+Then
+\[
+  \frac{u_1+\ii/2}{u_1-\ii/2}=\ee^{2\pi\ii/3},
+  \qquad
+  \frac{u_2+\ii/2}{u_2-\ii/2}=\ee^{-2\pi\ii/3},
+\]
+so the cyclicity product is \(1\).  The first Bethe equation reads
+\[
+  \ee^{8\pi\ii/3}
+  =
+  \frac{u_1-u_2+\ii}{u_1-u_2-\ii}
+  =
+  \ee^{2\pi\ii/3},
+\]
+and the second is its inverse.  The spin-chain energy is
+\[
+  E=\frac{1}{1/12+1/4}+\frac{1}{1/12+1/4}=6 .
+\]
+Therefore the one-loop anomalous dimension is
+\[
+  \gamma_{\rm K}^{(1)}
+  =
+  \frac{\lambda}{8\pi^2}\,6
+  =
+  \frac{3\lambda}{4\pi^2}.
+\]
+
+\section{Beyond One Loop}
+
+At higher loop order the planar dilatation operator becomes a long-range spin
+chain.  In the \(SU(2)\) sector its range grows with loop order, and for an
+operator of finite length \(L\) interactions can wrap around the trace once
+the perturbative range reaches \(L\).  Thus there are two different spectral
+problems:
+\[
+  \text{asymptotic long chain}
+  \qquad\text{and}\qquad
+  \text{finite trace with wrapping}.
+\]
+The next chapter describes the asymptotic all-loop Bethe ansatz.  The
+following chapter explains how mirror TBA and the Y-system incorporate
+finite-length effects.

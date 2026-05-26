@@ -178,6 +178,11 @@ Current checks:
   Yang--Baxter equation, transfer-matrix commutativity, one-magnon spectra at
   \(L=4,6,8\), an \(SU(3)\) nested-root solution, and Baxter \(TQ\)
   pole-cancellation.
+- `planar_n4_integrability_checks.py`: finite checks for the Volume VII
+  planar \(\mathcal N=4\) SYM integrability chapters, including cyclic
+  one-loop Konishi Bethe roots, one-magnon XXX spectra, central-extension
+  magnon dispersion, its weak-coupling expansion, and a local
+  Hirota-to-Y-system algebra identity.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson

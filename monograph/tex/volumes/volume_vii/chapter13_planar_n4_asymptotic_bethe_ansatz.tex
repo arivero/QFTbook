@@ -1,0 +1,247 @@
+\chapter{All-Loop Asymptotic Bethe Ansatz}
+\label{ch:planar-n4-asymptotic-bethe-ansatz}
+
+\ConventionsLorentzian
+
+The one-loop spin chain of
+Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains} is only the first
+term in the planar dilatation operator.  The all-loop asymptotic Bethe ansatz
+is a proposal for the spectrum of long single-trace operators before wrapping
+effects become important.  Its inputs are the residual centrally extended
+\(\mathfrak{su}(2|2)\oplus\mathfrak{su}(2|2)\) symmetry of the BMN vacuum,
+factorized magnon scattering, crossing, and analyticity.
+
+\section{BMN Vacuum and Central Extension}
+
+The vacuum spin-chain state is
+\[
+  \operatorname{tr}(Z^J).
+\]
+It is protected and carries large \(R\)-charge \(J\).  A magnon is an
+insertion into this long chain.  The residual symmetry preserving the vacuum
+contains two centrally extended \(\mathfrak{su}(2|2)\) algebras.  For one
+copy, write the bosonic states as \(\ket{\phi^a}\), \(a=1,2\), and the
+fermionic states as \(\ket{\psi^\alpha}\), \(\alpha=1,2\).  The supercharges
+act in the form
+\[
+\begin{aligned}
+  Q^\alpha{}_a\ket{\phi^b}
+  &=a\,\delta_a^b\ket{\psi^\alpha},
+&
+  Q^\alpha{}_a\ket{\psi^\beta}
+  &=b\,\varepsilon^{\alpha\beta}\varepsilon_{ab}\ket{\phi^b Z^+},
+\\
+  S^a{}_\alpha\ket{\phi^b}
+  &=c\,\varepsilon^{ab}\varepsilon_{\alpha\beta}\ket{\psi^\beta Z^-},
+&
+  S^a{}_\alpha\ket{\psi^\beta}
+  &=d\,\delta_\alpha^\beta\ket{\phi^a}.
+\end{aligned}
+\]
+The symbols \(Z^+\) and \(Z^-\) record insertion or removal of one vacuum
+letter.  On a momentum eigenstate,
+\[
+  Z^+\mapsto \ee^{\ii p}-1,
+  \qquad
+  Z^-\mapsto \ee^{-\ii p}-1
+\]
+up to the chosen side convention.  The representation constraint is
+\[
+  ad-bc=1.
+\]
+The central charges are
+\[
+  P=ab,\qquad K=cd,\qquad H=ad+bc .
+\]
+The shortening condition of the centrally extended algebra is
+\[
+  H^2-4PK=1 .
+\]
+With
+\[
+  P=g(1-\ee^{\ii p}),\qquad K=g(1-\ee^{-\ii p}),
+\]
+this gives the exact single-magnon dispersion relation
+\begin{equation}
+  H(p)=\sqrt{1+16g^2\sin^2\frac p2}.
+  \label{eq:planar-n4-magnon-dispersion}
+\end{equation}
+The anomalous contribution of a magnon is \(H(p)-1\).
+
+\begin{proposition}[Dispersion from shortening]
+\label{prop:planar-n4-dispersion-shortening}
+Assuming the centrally extended residual symmetry acts on a one-magnon
+representation with central charges \(P=g(1-\ee^{\ii p})\) and
+\(K=g(1-\ee^{-\ii p})\), the shortening condition fixes the dispersion
+relation to \eqref{eq:planar-n4-magnon-dispersion}.
+\end{proposition}
+
+\begin{proof}
+Compute
+\[
+  PK
+  =
+  g^2(1-\ee^{\ii p})(1-\ee^{-\ii p})
+  =
+  4g^2\sin^2\frac p2 .
+\]
+Substitution into \(H^2-4PK=1\) gives
+\[
+  H^2=1+16g^2\sin^2\frac p2 .
+\]
+The positive square root is selected because \(H=1\) at \(g=0\) for an
+elementary magnon.
+\end{proof}
+
+\section{Zhukovsky Variables}
+
+Introduce spectral parameters \(x^\pm\) by
+\begin{equation}
+  \ee^{\ii p}=\frac{x^+}{x^-},
+  \qquad
+  x^++\frac1{x^+}-x^- -\frac1{x^-}=\frac{\ii}{g}.
+  \label{eq:planar-n4-xpm-definition}
+\end{equation}
+The physical region for real magnons is chosen so that
+\((x^+)^*=x^-\) and \(|x^\pm|>1\) at weak coupling.  The magnon energy is
+\[
+  H
+  =
+  1+\ii g\left(
+    \frac1{x^+}-\frac1{x^-}
+  \right)
+  -
+  \ii g(x^+-x^-),
+\]
+with the same branch as \eqref{eq:planar-n4-magnon-dispersion}.  Conserved
+charges used in the dressing phase are
+\[
+  q_r(x^\pm)
+  =
+  \frac{\ii}{r-1}
+  \left[
+    \frac1{(x^+)^{r-1}}-\frac1{(x^-)^{r-1}}
+  \right],
+  \qquad r\geq2 .
+\]
+
+\section{Two-Body S-Matrix}
+
+The magnon two-body \(S\)-matrix is fixed by symmetry up to a scalar factor.
+Let \(S^{\rm mat}_{12}\) denote the matrix part determined by the two
+centrally extended \(\mathfrak{su}(2|2)\) copies.  The full two-magnon
+operator is
+\[
+  S_{12}=S_0(x_1^\pm,x_2^\pm)\,S^{\rm mat}_{12}.
+\]
+The scalar factor is written as
+\[
+  S_0(x_1^\pm,x_2^\pm)
+  =
+  S_{\rm rat}(x_1^\pm,x_2^\pm)\,
+  \sigma(x_1^\pm,x_2^\pm)^2,
+  \qquad
+  \sigma=\ee^{\ii\theta}.
+\]
+The rational part is fixed by the same representation data that determine
+the matrix part.  The dressing phase has the antisymmetric charge expansion
+\[
+  \theta(x_1^\pm,x_2^\pm)
+  =
+  \sum_{r=2}^\infty\sum_{\substack{s>r\\ r+s\ {\rm odd}}}
+  c_{r,s}(g)\,
+  \bigl(q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm)\bigr).
+\]
+Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
+analytically continuing the first magnon through the crossed sheet
+\(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
+on the scalar factor beyond factorized Yang--Baxter compatibility.
+
+\begin{quotedtheorem}[Asymptotic planar magnon S-matrix]
+\label{qthm:planar-n4-asymptotic-smatrix-status}
+Assume planar integrability of the long \(\mathcal N=4\) SYM spin chain, the
+centrally extended residual symmetry, physical unitarity, Yang--Baxter
+factorization, crossing, and the minimal analyticity condition used in the
+BES construction.  Then the asymptotic two-body magnon S-matrix is the
+\(\mathfrak{su}(2|2)^2\)-invariant matrix part multiplied by the scalar
+dressing factor whose phase has the charge expansion above with the BES
+coefficients \(c_{r,s}(g)\).
+\end{quotedtheorem}
+
+This is stated as a quoted theorem because the full claim is not a theorem of
+four-dimensional QFT derived from a nonperturbative definition of the gauge
+theory.  It is an integrability theorem inside a framework whose physical
+identification with the planar gauge-theory dilatation operator has extensive
+checks and strong structural constraints.
+
+\section{Asymptotic Bethe Equations}
+
+In the \(SU(2)\) scalar subsector, the all-loop asymptotic Bethe equations can
+be written
+\begin{equation}
+  \left(\frac{x_j^+}{x_j^-}\right)^L
+  =
+  \prod_{\substack{k=1\\ k\neq j}}^M
+  \frac{x_j^- -x_k^+}{x_j^+ -x_k^-}
+  \frac{1-1/(x_j^+x_k^-)}{1-1/(x_j^-x_k^+)}
+  \sigma(x_j^\pm,x_k^\pm)^2 ,
+  \label{eq:planar-n4-su2-aba}
+\end{equation}
+with cyclicity
+\[
+  \prod_{j=1}^M\frac{x_j^+}{x_j^-}=1.
+\]
+The scaling dimension is
+\[
+  \Delta
+  =
+  L+\sum_{j=1}^M\left(
+    \sqrt{1+16g^2\sin^2\frac{p_j}{2}}-1
+  \right),
+\]
+up to wrapping corrections.  The full
+\(\mathfrak{psu}(2,2|4)\) asymptotic Bethe equations require nested roots
+for the residual symmetry algebra.  Their algebraic role is the same as in
+Chapter~\ref{ch:integrable-nested-bethe-ansatz-matrix-bethe-yang}; their
+physical meaning is different because these auxiliary roots organize
+polarizations of magnons on a gauge-theory trace.
+
+\begin{controlledapproximation}[Asymptotic long-chain regime]
+\label{ca:planar-n4-asymptotic-regime}
+Equation~\eqref{eq:planar-n4-su2-aba} applies to the planar single-trace
+spectrum in the regime where the interaction range is shorter than the trace
+length \(L\).  At weak coupling, wrapping effects begin at the loop order at
+which planar interactions can close around the trace.  At finite coupling,
+the distinction is between the asymptotic Bethe-Yang problem and the
+finite-size problem solved by mirror TBA or the quantum spectral curve.
+\end{controlledapproximation}
+
+\section{Weak-Coupling Reduction}
+
+At small \(g\), \(x^\pm\) reduce to the one-loop rapidity variable:
+\[
+  x^\pm=\frac{1}{g}\left(u\pm\frac{\ii}{2}\right)+O(g).
+\]
+Then
+\[
+  \frac{x_j^+}{x_j^-}
+  =
+  \frac{u_j+\ii/2}{u_j-\ii/2}+O(g^2),
+\]
+and the rational part of \eqref{eq:planar-n4-su2-aba} reduces to
+\[
+  \frac{u_j-u_k+\ii}{u_j-u_k-\ii}+O(g^2).
+\]
+The dressing phase starts at higher weak-coupling order, so the leading
+equation is the one-loop Bethe equation
+\eqref{eq:planar-n4-one-loop-su2-bethe}.  The dispersion expands as
+\[
+  H(p)-1
+  =
+  8g^2\sin^2\frac p2
+  -32g^4\sin^4\frac p2
+  +256g^6\sin^6\frac p2
+  +O(g^8).
+\]
+Using \(g^2=\lambda/(16\pi^2)\), the leading term agrees with the one-loop
+normalization of Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains}.

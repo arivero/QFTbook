@@ -1,0 +1,195 @@
+\chapter{Quantum Spectral Curve and Hexagon Form Factors}
+\label{ch:planar-n4-quantum-spectral-curve-hexagon}
+
+\ConventionsLorentzian
+
+The mirror TBA is exact but highly redundant.  The quantum spectral curve
+compresses the same spectral information into a finite system of analytic
+functions.  This chapter states the \(P\mu\)-system, explains its weak-coupling
+reduction to Baxter equations, and records the separate hexagon framework for
+three-point functions.
+
+\section{Pmu System}
+
+Let \(u\in\C\) be the spectral parameter.  The quantum spectral curve uses four
+functions \(P_a(u)\), \(a=1,\ldots,4\), and an antisymmetric matrix
+\(\mu_{ab}(u)=-\mu_{ba}(u)\).  The functions \(P_a\) have one short branch
+cut, conventionally on \([-2g,2g]\), on their principal sheet.  Analytic
+continuation through this cut is denoted by a tilde.  Introduce
+\[
+  P^a=\chi^{ab}P_b,
+\]
+where \(\chi^{ab}\) is the fixed antisymmetric tensor with nonzero entries
+chosen so that \(P_aP^a=0\).
+
+The \(P\mu\)-system is
+\begin{align}
+  \widetilde P_a(u)&=\mu_{ab}(u)P^b(u),
+  \label{eq:planar-n4-pmu-one}\\
+  \widetilde\mu_{ab}(u)-\mu_{ab}(u)
+  &=
+  P_a(u)\widetilde P_b(u)-P_b(u)\widetilde P_a(u),
+  \label{eq:planar-n4-pmu-two}\\
+  \mu_{ab}(u+\ii)&=\widetilde\mu_{ab}(u).
+  \label{eq:planar-n4-pmu-period}
+\end{align}
+State quantum numbers enter through large-\(u\) asymptotics of \(P_a\) and
+\(\mu_{ab}\).  In the \(SL(2)\) sector with twist \(J\), spin \(S\), and
+dimension \(\Delta\), these asymptotics encode the charges
+\[
+  (J,S,\Delta)
+\]
+through powers and leading coefficients constrained by the algebraic
+relations of the QSC.
+
+\begin{quotedtheorem}[Quantum spectral curve spectral problem]
+\label{qthm:planar-n4-qsc-status}
+Within the planar \(\mathcal N=4\) integrability framework, a physical
+single-trace state is specified by QSC analyticity, gluing, asymptotic, and
+regularity data.  Solving the resulting \(P\mu\)-system determines the exact
+planar scaling dimension of the state as a function of \(\lambda\).
+\end{quotedtheorem}
+
+The theorem is quoted with its framework stated.  The QSC is a powerful exact
+solution of the planar integrability system; it is not presently a
+constructive definition of four-dimensional \(\mathcal N=4\) SYM.
+
+\section{Weak-Coupling Baxter Limit}
+
+At weak coupling the short cut collapses to the origin in the rescaled
+spectral plane.  In the \(SL(2)\) sector, the QSC reduces to a finite-difference
+Baxter equation for a polynomial \(Q(u)\) whose zeros are one-loop Bethe roots.
+The equation has the form
+\begin{equation}
+  (u+\ii/2)^JQ(u+\ii)
+  +(u-\ii/2)^JQ(u-\ii)
+  =
+  T(u)Q(u),
+  \label{eq:planar-n4-qsc-baxter-limit}
+\end{equation}
+where \(T(u)\) is a degree-\(J\) transfer polynomial fixed by charges and
+regularity.  If
+\[
+  Q(u)=\prod_{k=1}^S(u-u_k),
+\]
+then evaluating \eqref{eq:planar-n4-qsc-baxter-limit} at \(u=u_j\) gives
+\[
+  \left(\frac{u_j+\ii/2}{u_j-\ii/2}\right)^J
+  =
+  -\prod_{\substack{k=1\\k\neq j}}^S
+  \frac{u_j-u_k-\ii}{u_j-u_k+\ii},
+\]
+which is the one-loop \(SL(2)\) Bethe equation in this convention.  Thus the
+QSC contains the one-loop spin chain as its weak-coupling degeneration.
+
+\begin{proposition}[Baxter equation from QSC degeneration]
+\label{prop:qsc-baxter-degeneration}
+Assume that in the weak-coupling limit the QSC functions in the \(SL(2)\)
+sector reduce so that the ratio of two independent \(P\)-functions is a
+degree-\(S\) polynomial \(Q(u)\), and that \(\mu\)-periodicity becomes a
+finite-difference relation with shifts \(\pm\ii\).  Then regularity at the
+zeros of \(Q\) gives the one-loop \(SL(2)\) Bethe equations.
+\end{proposition}
+
+\begin{proof}
+Under the stated degeneration, the finite-difference relation is
+\eqref{eq:planar-n4-qsc-baxter-limit}.  The right side is regular at every
+zero \(u_j\) of \(Q\), so the left side must vanish there:
+\[
+  (u_j+\ii/2)^JQ(u_j+\ii)
+  +(u_j-\ii/2)^JQ(u_j-\ii)=0.
+\]
+Dividing by \((u_j-\ii/2)^JQ(u_j-\ii)\) and using
+\[
+  \frac{Q(u_j+\ii)}{Q(u_j-\ii)}
+  =
+  -\prod_{\substack{k=1\\k\neq j}}^S
+  \frac{u_j-u_k+\ii}{u_j-u_k-\ii}
+\]
+gives the displayed Bethe equation.
+\end{proof}
+
+\section{Cusp Anomalous Dimension and Konishi}
+
+Two benchmark spectral quantities organize many tests of the framework.  The
+first is the cusp anomalous dimension \(f(\lambda)\), extracted from large
+spin twist operators:
+\[
+  \Delta-S
+  =
+  f(\lambda)\log S+O(S^0),
+  \qquad S\to\infty.
+\]
+The QSC reproduces the same function obtained from the BES equation.  At weak
+coupling it has a perturbative series in \(g^2\); at strong coupling it begins
+with the semiclassical string result
+\[
+  f(\lambda)=\frac{\sqrt\lambda}{\pi}+O(\lambda^0)
+\]
+in the convention where \(\Delta-S=f(\lambda)\log S+O(S^0)\).
+
+The second is the Konishi dimension.  The QSC treats it as an ordinary finite
+state with \(J=2\), \(S=2\), and zero total momentum.  At weak coupling it
+matches the asymptotic Bethe ansatz until wrapping corrections enter; at
+strong coupling it gives the short-string expansion
+\[
+  \Delta_{\rm K}(\lambda)
+  =
+  2\lambda^{1/4}
+  +O(\lambda^0).
+\]
+The numerical and analytic solution of the QSC is a calculation problem
+inside the finite functional system \eqref{eq:planar-n4-pmu-one}--\eqref{eq:planar-n4-pmu-period}.
+
+\section{Hexagon Form Factors}
+
+The spectral problem determines scaling dimensions.  Three-point functions
+require additional data.  In the planar limit, a single-trace three-point
+function can be represented by a pair of pants worldsheet.  The hexagon
+program cuts this pair of pants into two hexagons and assigns a form factor to
+each half.
+
+For three single-trace operators with spin-chain lengths \(L_1,L_2,L_3\), the
+bridge lengths are
+\[
+  \ell_{12}=\frac{L_1+L_2-L_3}{2},\qquad
+  \ell_{23}=\frac{L_2+L_3-L_1}{2},\qquad
+  \ell_{31}=\frac{L_3+L_1-L_2}{2}.
+\]
+Asymptotically, the structure constant is a sum over partitions of magnons
+between the two hexagons:
+\[
+  C_{123}^{\rm asym}
+  =
+  \sum_{\alpha\cup\bar\alpha=\{u\}}
+  (-1)^{|\bar\alpha|}
+  \ee^{\ii p(\bar\alpha)\ell}
+  H(\alpha)H(\bar\alpha)\,
+  \mathcal N^{-1/2}.
+\]
+Here \(H\) is the hexagon form factor, \(p(\bar\alpha)\) is the total momentum
+of the magnons moved across the bridge, and \(\mathcal N\) is the Gaudin norm
+factor of the Bethe state.  Mirror particles on the bridges add finite-size
+corrections, analogous in spirit to wrapping corrections in the spectral
+problem.
+
+\begin{openproblem}[Derivation of the hexagon expansion]
+\label{op:planar-n4-hexagon-derivation}
+Give a derivation of the hexagon expansion from a nonperturbatively defined
+planar gauge-theory path integral, including the emergence of the hexagon
+form factor, the measure for mirror corrections, and the treatment of
+operator mixing at finite length.  Existing evidence is strong inside the
+integrability framework.  A derivation at the level of a theorem in
+four-dimensional QFT remains open.
+\end{openproblem}
+
+\section{Proof Boundary}
+
+Planar integrability gives a highly constrained exact spectral structure for
+four-dimensional interacting QFT.  Symmetry fixes matrix scattering, crossing
+fixes the scalar factor, Bethe equations organize asymptotic spectra, mirror
+TBA incorporates finite size, and the QSC compresses the exact spectral
+problem into analytic functional equations.  The remaining mathematical task
+is to derive this structure from a precise nonperturbative formulation of
+planar \(\mathcal N=4\) SYM, including the topology in which local operators,
+large-\(N\) limits, and analytic continuation in \(\lambda\) are controlled.

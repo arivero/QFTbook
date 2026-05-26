@@ -262,6 +262,18 @@ Current relativistic-integrability absorption:
   cyclic-trace finite-size effects, and quantum spectral curve are different
   physical structures.
 
+Current planar-integrability absorption:
+
+- Volume VII now contains a dedicated planar \(\mathcal N=4\) SYM
+  integrability spine: single-trace operators as cyclic spin chains, the
+  one-loop `SU(2)` Heisenberg Hamiltonian and Konishi calculation, the
+  centrally extended magnon dispersion relation, the all-loop asymptotic
+  Bethe ansatz with scalar dressing phase and proof-boundary statement,
+  mirror TBA and the T-hook Y-system, the QSC Pmu system and its
+  weak-coupling Baxter limit, and the hexagon form-factor framework for
+  three-point functions.  The finite algebra is checked by
+  `calculation-checks/planar_n4_integrability_checks.py`.
+
 Potential use:
 
 - planar single-trace spectral problem in \(\mathcal N=4\) SYM;
