@@ -144,7 +144,8 @@
   Hecke-transform partition-function generating series, connected torus-cover
   Hermite-normal-form counting, the constant-seed partition-number test,
   twist OPE monodromy multiplication, the Riemann--Hurwitz covering-genus
-  ledger for twist correlators, and normalized two-cycle deformation
+  ledger for twist correlators, the primitive joining-cover polynomial and
+  its local coordinate coefficients, and normalized two-cycle deformation
   operators.
 - Defines twist-field deformations as regulated integrated local-operator
   perturbations with OPE/contact-term beta functions.
@@ -267,18 +268,24 @@
    genus
    `1-N + sum_a(N-c(gamma_a))/2`; the two-point and primitive joining covers
    are genus zero.
-38. Twist-field deformations are conformal perturbations by projected local
+38. The primitive joining cover with branch indices `K,L,K+L-1` is
+    represented, after placing the branch points at `0,1,infty`, by the
+    beta-normalized polynomial
+    `B_{K,L}^{-1} int_0^t u^{K-1}(u-1)^{L-1} du`; its local coefficients are
+    `binom(N,K)`, `(-1)^{L-1} binom(N,L)`, and
+    `(-1)^{L-1}(K-1)!(L-1)!/(N-1)!` at `0,1,infty`.
+39. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
-39. In the source-coupled background-field definition, the Gaussian mean is
+40. In the source-coupled background-field definition, the Gaussian mean is
    `A^{-1}(J-L)`, so the condition \(\langle\xi\rangle_J=0\) fixes
    \(J=L\) and justifies computing the one-loop pole from
    `1/2 log det A` off shell.
-40. The pure-metric second variation along \(X_s=\exp_x(s\xi)\) has
+41. The pure-metric second variation along \(X_s=\exp_x(s\xi)\) has
    first-variation coefficient \(-(2\pi\alpha')^{-1}G_{ij}\nabla^a
    \partial_ax^j\) and quadratic coefficient \((4\pi\alpha')^{-1}
    (|D\xi|^2-\langle R(\xi,\partial x)\partial x,\xi\rangle)\).
-41. The one-loop local heat-kernel pole
+42. The one-loop local heat-kernel pole
    \((-\partial^2)^{-1}(\sigma,\sigma)_{\mathrm{div}}=(2\pi\epsilon)^{-1}\)
    combines with the kinetic prefactor \((2\pi\alpha')^{-1}\) to give
    \(\langle\xi^k\xi^\ell\rangle_{\mathrm{div}}=
@@ -286,16 +293,16 @@
    \(\Gamma^{(1)}_{\mathrm{div}}=-(4\pi\epsilon)^{-1}
    \int R_{ij}\partial x^i\partial x^j\) and
    \(\delta G_{ij}=(\alpha'/\epsilon)R_{ij}\).
-42. In the string-frame one-loop functional, the fixed-\(\Phi\) metric
+43. In the string-frame one-loop functional, the fixed-\(\Phi\) metric
    variation has trace coefficient
    \(-S_\Phi/2\), while the dilaton variation is \(-2S_\Phi\); imposing the
    scalar equation therefore removes exactly the trace part and leaves the
    hatted metric Weyl-anomaly representative.
-43. The supersymmetric rank-one coset refinements are not inferred from the
+44. The supersymmetric rank-one coset refinements are not inferred from the
     bell/cigar sigma-model metrics; their exact `N=2` chiral data are stated
     in Chapter 15 and coordinated with Volume VII for GLSM/mirror
     constructions.
-44. Replacing the seed partition function in the symmetric-product Hecke
+45. Replacing the seed partition function in the symmetric-product Hecke
     formula by the formal constant `1` gives
     `prod_{r >= 1} (1-p^r)^(-1)`, so the coefficient of `p^N` is the number
     of cycle types of `S_N`.
@@ -347,7 +354,9 @@
   additivity, cycle-type twist weights, joining weight shifts, the two-cycle
   normalization count, connected torus-cover Hecke weights, and the
   constant-seed partition-number test, and Riemann--Hurwitz genus tests for
-  twist-field two-point and primitive joining covers.
+  twist-field two-point and primitive joining covers, including the
+  beta-normalized primitive joining-cover polynomial and its local
+  coefficients.
 - Later calculation checks should cover numerical covering-space twist
   correlator coefficients after seed correlators and local coordinate
   normalizations are specified.

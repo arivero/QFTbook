@@ -257,7 +257,8 @@ Current absorption:
   connected-torus-cover Hermite-normal-form count behind the Hecke transform
   and the constant-seed partition-number normalization test, together with a
   Riemann--Hurwitz monodromy ledger for the first twist-correlator covering
-  checks.  The public arithmetic check covers the central-charge,
+  checks and the beta-normalized local coordinate map for the primitive
+  joining cover.  The public arithmetic check covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex

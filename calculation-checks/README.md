@@ -619,7 +619,8 @@ Current checks:
   charge additivity, cycle-type twist weights, join/split weight shifts, the
   two-cycle normalization count, connected torus-cover Hecke weights, and the
   constant-seed partition-number test, plus Riemann--Hurwitz genus tests for
-  twist-field two-point and primitive joining covers.
+  twist-field two-point and primitive joining covers and beta-normalized
+  primitive joining-cover local-coordinate coefficients.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign

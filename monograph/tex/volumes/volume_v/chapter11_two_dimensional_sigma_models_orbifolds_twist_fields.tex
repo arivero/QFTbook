@@ -3260,6 +3260,100 @@ the OPE coefficient without the seed correlator, local coordinate choices at
 the branch points, and the normalization of the twist fields.
 \end{example}
 
+\begin{proposition}[Primitive joining cover in local coordinates]
+\label{prop:symmetric-product-primitive-joining-cover-map}
+Let \(K,L\ge2\), and set \(N=K+L-1\).  After moving the three branch
+points on the base sphere to \(0,1,\infty\), the primitive joining cover of
+Example~\ref{ex:symmetric-product-basic-cover-ledger} has a polynomial
+representative
+\begin{equation}
+  z_{K,L}(t)
+  =
+  B_{K,L}^{-1}
+  \int_0^t u^{K-1}(u-1)^{L-1}\,\dd u,
+  \qquad
+  B_{K,L}
+  =
+  (-1)^{L-1}\frac{(K-1)!(L-1)!}{N!}.
+  \label{eq:symmetric-product-primitive-cover-map}
+\end{equation}
+It is a degree-\(N\) map \(\mathbb P^1_t\to\mathbb P^1_z\) with ramification
+indices \(K,L,N\) over \(z=0,1,\infty\), respectively.  More precisely, the
+local expansions are
+\begin{align}
+  z_{K,L}(t)
+  &=
+  \binom{N}{K}t^K+O(t^{K+1}),
+  \label{eq:symmetric-product-primitive-cover-local-zero}\\
+  z_{K,L}(t)-1
+  &=
+  (-1)^{L-1}\binom{N}{L}(t-1)^L+O((t-1)^{L+1}),
+  \label{eq:symmetric-product-primitive-cover-local-one}\\
+  \frac1{z_{K,L}(t)}
+  &=
+  (-1)^{L-1}
+  \frac{(K-1)!(L-1)!}{(N-1)!}\,s^N+O(s^{N+1}),
+  \qquad s=\frac1t .
+  \label{eq:symmetric-product-primitive-cover-local-infinity}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The integral in \eqref{eq:symmetric-product-primitive-cover-map} is a
+polynomial of degree \(N\), because its derivative is
+\[
+  \frac{\dd z_{K,L}}{\dd t}
+  =
+  B_{K,L}^{-1}t^{K-1}(t-1)^{L-1}.
+\]
+The beta-integral normalization gives
+\[
+  \int_0^1 u^{K-1}(u-1)^{L-1}\,\dd u
+  =
+  (-1)^{L-1}\frac{(K-1)!(L-1)!}{(K+L-1)!}
+  =
+  B_{K,L},
+\]
+so \(z_{K,L}(0)=0\) and \(z_{K,L}(1)=1\).  The derivative factorization shows
+that the only finite critical points are \(t=0\) with multiplicity \(K-1\)
+and \(t=1\) with multiplicity \(L-1\).  Since \(z_{K,L}\) is a degree-\(N\)
+polynomial, the point \(t=\infty\) maps to \(z=\infty\) with ramification
+index \(N\).
+There are no further branch points, because the total finite critical
+multiplicity is \((K-1)+(L-1)=N-1\), the finite critical multiplicity of a
+degree-\(N\) polynomial with a single point above infinity.
+
+The local coefficient at \(t=0\) is obtained by replacing
+\((u-1)^{L-1}\) by its constant term \((-1)^{L-1}\):
+\[
+  B_{K,L}^{-1}\frac{(-1)^{L-1}}K
+  =
+  \frac{N!}{K!(L-1)!}
+  =
+  \binom{N}{K}.
+\]
+Near \(t=1\), write \(u=1+v\).  The first nonzero term is
+\[
+  B_{K,L}^{-1}\frac{(t-1)^L}{L}
+  =
+  (-1)^{L-1}\frac{N!}{(K-1)!L!}(t-1)^L
+  =
+  (-1)^{L-1}\binom{N}{L}(t-1)^L.
+\]
+Finally, the leading term at infinity is
+\[
+  z_{K,L}(t)
+  =
+  \frac{B_{K,L}^{-1}}N t^N+O(t^{N-1}).
+\]
+Inverting this leading term and using \(s=1/t\) gives
+\eqref{eq:symmetric-product-primitive-cover-local-infinity}.  These local
+coefficients are the Jacobian data that enter a covering-space path-integral
+calculation.  A numerical OPE coefficient still requires the seed correlator,
+the twist-field normalization, and a regulator convention for the Liouville
+or Schwarzian anomaly associated with the chosen local coordinates.
+\end{proof}
+
 Discrete torsion is incorporated by replacing the centralizer projection by a
 projective centralizer action determined by a class in
 \[
@@ -3364,7 +3458,7 @@ same formalism:
   \text{WZW and gauged WZW/coset sigma-model CFTs},\\
   \text{Buscher duality as an equality of regulated path integrals},\\
   \text{orbifold defects, discrete torsion, and anomaly obstructions},\\
-  \text{higher-point covering-space evaluation of twist correlators},\\
+  \text{higher-point Hurwitz sums and normalized twist OPE coefficients},\\
   \text{supersymmetric twist fields and exactly marginal blow-up modes}.
 \end{gathered}
 \]

@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from collections import Counter
 from fractions import Fraction
-from math import factorial
+from math import comb, factorial
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -67,6 +67,47 @@ def riemann_hurwitz_genus(branch_cycles: list[tuple[int, ...]]) -> Fraction:
     degree = len(branch_cycles[0])
     ramification = sum(degree - cycle_count(permutation) for permutation in branch_cycles)
     return Fraction(1 - degree, 1) + Fraction(ramification, 2)
+
+
+def poly_eval(poly: list[Fraction], x: Fraction) -> Fraction:
+    value = Fraction(0)
+    power = Fraction(1)
+    for coefficient in poly:
+        value += coefficient * power
+        power *= x
+    return value
+
+
+def poly_derivative(poly: list[Fraction]) -> list[Fraction]:
+    return [index * poly[index] for index in range(1, len(poly))]
+
+
+def poly_shift_to_one(poly: list[Fraction]) -> list[Fraction]:
+    """Return coefficients of p(1+s) in increasing powers of s."""
+    shifted = [Fraction(0) for _ in poly]
+    for power, coefficient in enumerate(poly):
+        for shifted_power in range(power + 1):
+            shifted[shifted_power] += coefficient * comb(power, shifted_power)
+    return shifted
+
+
+def primitive_joining_cover_polynomial(left_length: int, right_length: int) -> list[Fraction]:
+    degree = left_length + right_length - 1
+    normalization_inverse = Fraction(
+        ((-1) ** (right_length - 1)) * factorial(degree),
+        factorial(left_length - 1) * factorial(right_length - 1),
+    )
+    derivative = [Fraction(0) for _ in range(degree)]
+    for power in range(right_length):
+        derivative[left_length - 1 + power] = (
+            normalization_inverse
+            * comb(right_length - 1, power)
+            * ((-1) ** (right_length - 1 - power))
+        )
+    polynomial = [Fraction(0) for _ in range(degree + 1)]
+    for power, coefficient in enumerate(derivative):
+        polynomial[power + 1] = coefficient / (power + 1)
+    return polynomial
 
 
 def centralizer_order(cycle_lengths: list[int]) -> int:
@@ -241,6 +282,90 @@ def check_twist_cover_riemann_hurwitz() -> None:
             )
 
 
+def check_primitive_joining_cover_polynomial() -> None:
+    for left_length in range(2, 8):
+        for right_length in range(2, 8):
+            degree = left_length + right_length - 1
+            polynomial = primitive_joining_cover_polynomial(left_length, right_length)
+            derivative = poly_derivative(polynomial)
+
+            assert_equal(
+                f"primitive cover degree K={left_length}, L={right_length}",
+                len(polynomial) - 1,
+                degree,
+            )
+            assert_equal(
+                f"primitive cover z(0) K={left_length}, L={right_length}",
+                poly_eval(polynomial, Fraction(0)),
+                Fraction(0),
+            )
+            assert_equal(
+                f"primitive cover z(1) K={left_length}, L={right_length}",
+                poly_eval(polynomial, Fraction(1)),
+                Fraction(1),
+            )
+
+            expected_zero_coefficient = Fraction(comb(degree, left_length))
+            for power in range(1, left_length):
+                assert_equal(
+                    f"zero branch vanishing power {power} K={left_length}, L={right_length}",
+                    polynomial[power],
+                    Fraction(0),
+                )
+            assert_equal(
+                f"zero branch leading coefficient K={left_length}, L={right_length}",
+                polynomial[left_length],
+                expected_zero_coefficient,
+            )
+
+            shifted = poly_shift_to_one(polynomial)
+            assert_equal(
+                f"one branch value K={left_length}, L={right_length}",
+                shifted[0],
+                Fraction(1),
+            )
+            for power in range(1, right_length):
+                assert_equal(
+                    f"one branch vanishing power {power} K={left_length}, L={right_length}",
+                    shifted[power],
+                    Fraction(0),
+                )
+            assert_equal(
+                f"one branch leading coefficient K={left_length}, L={right_length}",
+                shifted[right_length],
+                Fraction(((-1) ** (right_length - 1)) * comb(degree, right_length)),
+            )
+
+            expected_derivative = [Fraction(0) for _ in range(degree)]
+            normalization_inverse = Fraction(
+                ((-1) ** (right_length - 1)) * factorial(degree),
+                factorial(left_length - 1) * factorial(right_length - 1),
+            )
+            for power in range(right_length):
+                expected_derivative[left_length - 1 + power] = (
+                    normalization_inverse
+                    * comb(right_length - 1, power)
+                    * ((-1) ** (right_length - 1 - power))
+                )
+            assert_equal(
+                f"primitive cover derivative factorization K={left_length}, L={right_length}",
+                derivative,
+                expected_derivative,
+            )
+
+            leading_coefficient = polynomial[degree]
+            assert_equal(
+                f"infinity branch leading inverse K={left_length}, L={right_length}",
+                Fraction(1, 1) / leading_coefficient,
+                Fraction(
+                    ((-1) ** (right_length - 1))
+                    * factorial(left_length - 1)
+                    * factorial(right_length - 1),
+                    factorial(degree - 1),
+                ),
+            )
+
+
 def main() -> None:
     check_centralizer_orders()
     check_central_charge_and_weights()
@@ -248,6 +373,7 @@ def main() -> None:
     check_normalized_two_cycle_count()
     check_connected_cover_hecke_count()
     check_twist_cover_riemann_hurwitz()
+    check_primitive_joining_cover_polynomial()
     print("All symmetric-product orbifold checks passed.")
 
 
