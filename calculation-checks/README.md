@@ -295,6 +295,10 @@ Current checks:
   integral pairing, and the distinction between even-unimodular existence
   and scalar modular-invariance in the presence of chiral gravitational
   anomaly.
+- `nlsm_background_field_checks.py`: exact rational checks for the NLSM
+  background-field source convention, including the mean-zero condition
+  \(J=L\) and the Gaussian square-completion sign used in the one-loop
+  effective-action determinant.
 - `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
   NLSM Buscher and pure-metric beta-function sections, including Buscher
   \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift

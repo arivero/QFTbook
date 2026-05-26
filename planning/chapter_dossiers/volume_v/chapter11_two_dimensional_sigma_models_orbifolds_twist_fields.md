@@ -20,6 +20,13 @@
 - Defines a conformal sigma-model point by the continuum QFT and its
   Weyl-anomaly coefficients modulo target diffeomorphism and \(B\)-field
   gauge redundancy.
+- Defines the covariant background-field split \(X=\exp_x\xi\), where
+  \(\xi\) is a section of \(x^*TM\), and records the local coordinate
+  expansion of the exponential map.
+- Defines the source-coupled mean-zero background effective action and proves
+  at Gaussian order that the auxiliary source is \(J=L\), the first
+  variation density, leaving the one-loop determinant of the quadratic
+  fluctuation operator.
 - Derives the one-loop Ricci divergence in background-field dimensional
   regularization.
 - Records the one-loop \(G\) and \(B\) hatted Weyl-anomaly coefficients with
@@ -239,6 +246,10 @@
 37. Twist-field deformations are conformal perturbations by projected local
    fields; exact marginality requires the full beta-function/contact-term
    analysis.
+38. In the source-coupled background-field definition, the Gaussian mean is
+   `A^{-1}(J-L)`, so the condition \(\langle\xi\rangle_J=0\) fixes
+   \(J=L\) and justifies computing the one-loop pole from
+   `1/2 log det A` off shell.
 
 ## Figures
 
@@ -255,6 +266,9 @@
   cocycle identities, sample even-unimodular Gram matrices, the
   \(B\)-independence of the Narain integral pairing, and the modular
   anomaly-condition logic.
+- `calculation-checks/nlsm_background_field_checks.py` verifies the
+  source-coupled background-field Gaussian algebra: the mean-zero condition
+  \(J=L\) and the sign in completing the square.
 - `calculation-checks/nlsm_buscher_checks.py` verifies the finite Buscher
   algebra, the component \(G,B\) rules, the involutive dilaton shift, and the
   constant-curvature specialization of the two-loop metric coefficient and
@@ -293,7 +307,8 @@
   existence of sigma-model CFTs.
 - Local stringbook source consulted:
   `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
-  especially the WZW/coset and supersymmetric coset discussions around
+  especially the NLSM background-field discussion around `sec:bosoneloopbeta`,
+  and the WZW/coset and supersymmetric coset discussions around
   `sec:wzwcoset`, `sec:coset`, `sec:sutwocos`, and the \(N=2\)
   \(SL(2,\mathbb R)/U(1)\) subsection.  The monograph import keeps the
   stringbook's conceptual order but expands the bosonic derivations and

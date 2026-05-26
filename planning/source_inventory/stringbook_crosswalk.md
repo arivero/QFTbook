@@ -230,11 +230,13 @@ Current absorption:
   supersymmetric sigma-model CFTs, Narain lattice CFTs and toroidal sigma
   models, WZW/current-algebra/coset CFTs, finite orbifolds, twist sectors,
   cyclic and rotation twist weights, and twist-field deformations.  The
-  NLSM renormalization pass now gives the background-field one-loop Ricci
-  divergence, the \(G,B,\Phi\) Weyl-anomaly package, scheme-redefinition
-  geometry, torsionful one-loop packaging, the pure-metric two-loop
-  representative, the precise RG-time conversion to Hamilton Ricci flow, and
-  constant-curvature sphere/hyperbolic radius-flow checks.  The Narain pass
+  NLSM renormalization pass now gives the covariant exponential background
+  split, the source-coupled mean-zero 1PI effective-action convention, the
+  background-field one-loop Ricci divergence, the \(G,B,\Phi\)
+  Weyl-anomaly package, scheme-redefinition geometry, torsionful one-loop
+  packaging, the pure-metric two-loop representative, the precise RG-time
+  conversion to Hamilton Ricci flow, and constant-curvature
+  sphere/hyperbolic radius-flow checks.  The Narain pass
   rebuilds the stringbook lattice vertex-operator material with explicit
   locality, spin, cocycle, modular-anomaly, and \(O(d,d;\mathbb Z)\) moduli
   statements, together with a public calculation check for the cocycle and

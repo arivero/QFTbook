@@ -91,6 +91,140 @@ We record the derivation with its regulator and expansion hypotheses because
 the Ricci tensor is a statement about the local logarithmic divergence of the
 two-dimensional QFT.
 
+\subsection{Covariant Background Fields and the Mean-Zero Split}
+\label{subsec:nlsm-covariant-background-mean-zero}
+
+The symbol \(X=x+\xi\) is not meaningful on a curved target.  The background
+field method used here is instead the following local construction.  Fix a
+background map \(x:\Sigma\to M\).  A fluctuation is a section
+\(\xi\in\Gamma(x^*TM)\), and the full map is
+\[
+  X(\sigma)=\exp_{x(\sigma)}\xi(\sigma).
+\]
+whenever \(\xi(\sigma)\) lies in a normal neighborhood of \(x(\sigma)\).
+Equivalently, \(X(\sigma)=\lambda_\sigma(1)\), where
+\(\lambda_\sigma(t)\) is the target geodesic satisfying
+\[
+  \lambda_\sigma(0)=x(\sigma),
+  \qquad
+  \dot\lambda_\sigma(0)=\xi(\sigma).
+\]
+In local coordinates this begins as
+\begin{equation}
+  X^i
+  =
+  x^i+\xi^i
+  -\frac12\Gamma^i{}_{jk}(x)\xi^j\xi^k
+  +O(\xi^3).
+  \label{eq:nlsm-exponential-map-coordinate-expansion}
+\end{equation}
+The fluctuation field \(\xi\) is therefore a target vector at the
+background point, not a coordinate difference between two points of \(M\).
+
+The effective action is also defined with a mean-field convention.  Introduce
+an auxiliary covector source \(J_i(\sigma)\) along \(x\), and define the
+source-dependent local functional integral by
+\begin{equation}
+  \exp(-\Gamma[x])
+  =
+  \left.
+  \int [D\xi]\,
+  \exp\left(
+    -S[\exp_x\xi]
+    +
+    \int_\Sigma \dd^d\sigma\sqrt\gamma\,J_i\xi^i
+  \right)
+  \right|_{\langle\xi^i(\sigma)\rangle_J=0}.
+  \label{eq:nlsm-source-defined-effective-action}
+\end{equation}
+The source \(J\) is not an additional sigma-model coupling.  It is the
+Legendre-transform device that enforces that the chosen background map
+\(x\), rather than \(x+\langle\xi\rangle\), is the mean field.
+
+\begin{proposition}[Mean-zero source at one loop]
+\label{prop:nlsm-mean-zero-source-one-loop}
+Assume that, in a chosen coordinate patch on field space, the action
+expanded around \(x\) has the form
+\begin{equation}
+  S[\exp_x\xi]
+  =
+  S[x]
+  +
+  \int\sqrt\gamma\,L_i\xi^i
+  +
+  \frac12
+  \int\sqrt\gamma\,\xi^i\mathcal A_{ij}\xi^j
+  +
+  O(\xi^3),
+  \label{eq:nlsm-gaussian-background-expansion}
+\end{equation}
+where \(\mathcal A\) is the quadratic fluctuation operator and \(L_i\) is
+the first variation density.  Ignoring zero modes and using a regulator for
+the determinant, the Gaussian part of
+\eqref{eq:nlsm-source-defined-effective-action} has
+\[
+  \langle\xi\rangle_J
+  =
+  \mathcal A^{-1}(J-L).
+  \label{eq:nlsm-gaussian-mean-field}
+\]
+Thus the condition \(\langle\xi\rangle_J=0\) fixes \(J=L\), and the one-loop
+effective action is
+\begin{equation}
+  \Gamma[x]
+  =
+  S[x]+\frac12\log\det{}'\mathcal A
+  +
+  \text{local measure terms}
+  +
+  \text{higher-loop terms}.
+  \label{eq:nlsm-one-loop-effective-action-determinant}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+At Gaussian order the exponent in
+\eqref{eq:nlsm-source-defined-effective-action} is
+\[
+  -S[x]
+  -\frac12\langle\xi,\mathcal A\xi\rangle
+  +
+  \langle J-L,\xi\rangle,
+\]
+where the brackets include the \(\sqrt\gamma\) density and target indices.
+Completing the square gives
+\[
+  -S[x]
+  -\frac12\langle \xi-\mathcal A^{-1}(J-L),
+    \mathcal A(\xi-\mathcal A^{-1}(J-L))\rangle
+  +
+  \frac12\langle J-L,\mathcal A^{-1}(J-L)\rangle .
+\]
+The Gaussian mean is therefore
+\(\mathcal A^{-1}(J-L)\), which proves
+\eqref{eq:nlsm-gaussian-mean-field}.  Setting \(J=L\) removes the linear
+term and leaves the regulated determinant of \(\mathcal A\), giving
+\eqref{eq:nlsm-one-loop-effective-action-determinant}.  If \(\mathcal A\)
+has zero modes, they are separated as collective coordinates or fixed by an
+additional gauge slice; this affects the global measure but not the local
+ultraviolet pole that determines the beta tensor.
+\end{proof}
+
+For the pure metric action, the first variation density is
+\begin{equation}
+  L_i
+  =
+  -\frac1{2\pi\alpha'}
+  G_{ij}(x)\nabla^a\partial_ax^j,
+  \label{eq:nlsm-pure-metric-first-variation-density}
+\end{equation}
+on a closed worldsheet.  Hence \(J=0\) is allowed only when the background map
+is a classical harmonic map.  The effective-action definition above permits
+one to compute the local counterterms for an arbitrary slowly varying
+background \(x\); this is why the beta tensor is an off-shell local tensor on
+coupling space, rather than only an equation evaluated on classical
+solutions.
+
 \begin{proposition}[One-loop metric divergence]
 \label{prop:nlsm-one-loop-ricci-divergence}
 Let \(M\) be Riemannian and set \(B=\Phi=0\).  Use dimensional
