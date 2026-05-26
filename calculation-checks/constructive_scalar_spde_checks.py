@@ -404,6 +404,29 @@ def check_random_model_cauchy_criterion_arithmetic():
     assert_equal(closed_tail, Fraction(1, 16), "random-model tail at n=5")
 
 
+def check_dyadic_parabolic_convolution_bound_arithmetic():
+    # For kernels of orders a and b in homogeneous dimension Q, the
+    # proposition gives output L^infty exponent Q-a-b and L^1 exponent
+    # -(a+b).  The geometric factor separates the i=k and j=k branches.
+    qdim = Fraction(5)
+    a = Fraction(2)
+    b = Fraction(1)
+    output_linf_exponent = qdim - a - b
+    output_l1_exponent = output_linf_exponent - qdim
+    assert_equal(output_linf_exponent, Fraction(2), "dyadic convolution L-infinity exponent")
+    assert_equal(output_l1_exponent, Fraction(-3), "dyadic convolution L1 exponent")
+
+    k = 3
+    branch_j_tail = Fraction(1, 1) / (1 - Fraction(1, 2) ** b)
+    branch_i_tail = (Fraction(1, 2) ** a) / (1 - Fraction(1, 2) ** a)
+    total_geometric_factor = branch_j_tail + branch_i_tail
+    scaled_bound = (Fraction(2) ** (output_linf_exponent * k)) * total_geometric_factor
+    assert_equal(branch_j_tail, 2, "dyadic convolution j-tail factor")
+    assert_equal(branch_i_tail, Fraction(1, 3), "dyadic convolution i-tail factor")
+    assert_equal(total_geometric_factor, Fraction(7, 3), "dyadic convolution total factor")
+    assert_equal(scaled_bound, Fraction(448, 3), "dyadic convolution sample bound")
+
+
 def main():
     check_wick_polynomials()
     check_wiener_chaos_isometry_and_moments()
@@ -420,7 +443,8 @@ def main():
     check_phi4_three_spde_bphz_counterterm_combinatorics()
     check_modelled_fixed_point_contraction_arithmetic()
     check_random_model_cauchy_criterion_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, and random-model convergence checks passed.")
+    check_dyadic_parabolic_convolution_bound_arithmetic()
+    print("All constructive scalar/SPDE Wick, chaos, power-counting, DPD, reconstruction, BPHZ, fixed-point, random-model convergence, and dyadic-kernel checks passed.")
 
 
 if __name__ == "__main__":

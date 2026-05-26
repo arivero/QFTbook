@@ -57,6 +57,9 @@ data.
   \(q\)-fold Wick multiple integral in the finite Wiener-chaos estimate.
 - `Y_n(a)`, `sigma(a)`: model-coordinate random variable and deterministic
   scale weight in the kernel-to-coordinate moment corollary.
+- `Q`, `K_i`, `L_i`, `M_k`: homogeneous dimension, dyadic input kernels, and
+  output convolution scale in the parabolic convolution estimate.
+- `a`, `b`: kernel orders in the dyadic parabolic convolution bound.
 
 ## Claim Ledger
 
@@ -130,6 +133,10 @@ data.
 - Proves a kernel-to-coordinate stochastic moment corollary: finite chaos
   expansions with deterministic kernel bounds give the pointwise stochastic
   moment and dyadic increment estimates that enter random-model convergence.
+- Proves a dyadic parabolic convolution bound: support and pointwise scale
+  estimates for order-\(a\) and order-\(b\) kernels imply order-\((a+b)\)
+  output bounds, including \(L^\infty\) and \(L^1\) estimates with explicit
+  geometric factors.
 - Separates regularity-structure, paracontrolled, and RG routes.
 - Separates invariant-measure construction from the OS hypotheses needed for
   QFT reconstruction.
@@ -214,3 +221,10 @@ data maps.
   the result to finite chaos model-coordinate kernels.  The calculation-check
   companion verifies the second/third chaos isometry, the fourth moment of
   \(H_2(G)\), and a sample coordinate-moment constant.
+- 2026-05-26 issue #582 dyadic-kernel continuation: the chapter now proves the
+  deterministic parabolic convolution estimate used before finite-chaos
+  moments can be applied to BPHZ model coordinates.  The proof derives the
+  support, \(L^\infty\), and \(L^1\) bounds by splitting the scale sum into
+  the two branches \(\min(i,j)=k\).  The calculation-check companion verifies
+  the output exponents and geometric factors for a sample \(Q=5\),
+  \(a=2\), \(b=1\) convolution.
