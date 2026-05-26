@@ -4,59 +4,149 @@
 \ConventionsLorentzian
 
 Exact scattering data become QFT data only after they are connected to local
-operator matrix elements and to Hilbert-space traces or correlation
-functions.  This chapter develops the finite-volume bridge.  The finite
-circumference \(L\) is a regulator, not an infrared decoration: it turns
-rapidity states into discrete vectors, supplies a controlled normalization of
-matrix elements, and gives a testable route from bootstrap form factors to
-correlators.
+operator matrix elements and to correlation functions.  A spatial circle of
+circumference \(L\) is the cleanest intermediate regulator in massive
+two-dimensional integrable theories: rapidities become discrete, scattering
+states become normalizable vectors, matrix elements have honest Hilbert-space
+normalizations, and the infinite-volume spectral expansion is recovered as a
+controlled limit.  This chapter develops that bridge for diagonal scattering
+sectors.  Non-diagonal scattering requires replacing scalar phase functions by
+eigenvalues of transfer matrices and is treated in the nested Bethe-ansatz
+chapters.
 
-\section{Bethe--Yang States}
+\section{Finite-Volume Hilbert Space And Bethe--Yang Quantization}
 
-Let a massive integrable two-dimensional QFT have particle species
-\(a=1,\ldots,N\), masses \(m_a\), and two-body scattering eigenvalues
+Let the infinite-volume theory have stable particle species
 \[
-  S_{ab}(\theta)=\ee^{i\delta_{ab}(\theta)}
+  a\in\mathcal I,
+  \qquad
+  p_a^\mu(\theta)=m_a(\cosh\theta,\sinh\theta),
 \]
-in a diagonal sector.  On a circle of circumference \(L\), an \(n\)-particle
-state with rapidities \(\theta_1,\ldots,\theta_n\) satisfies the Bethe--Yang
-equations
+with diagonal two-body scattering eigenvalues
 \[
+  S_{ab}(\theta)=\exp(\ii\delta_{ab}(\theta)).
+\]
+The phase convention is fixed by unitarity and real analyticity on the real
+rapidity axis:
+\[
+  S_{ab}(\theta)S_{ba}(-\theta)=1,
+  \qquad
+  \delta_{ab}(\theta)+\delta_{ba}(-\theta)\in2\pi\mathbb Z .
+\]
+We choose a continuous branch on the rapidity interval under consideration
+and define
+\[
+  \varphi_{ab}(\theta)=\partial_\theta\delta_{ab}(\theta).
+\]
+The branch of \(\delta\) changes the Bethe integers, while
+\(\varphi\) and the Gaudin density below are branch-independent.
+
+For a multiparticle state with ordered rapidities
+\[
+  \theta_1,\ldots,\theta_n
+\]
+and species \(a_1,\ldots,a_n\), the Bethe--Yang equations are
+\begin{equation}
   Q_j(\theta)
   =
   m_{a_j}L\sinh\theta_j
   +
-  \sum_{k\ne j}\delta_{a_j a_k}(\theta_j-\theta_k)
+  \sum_{k\ne j}
+  \delta_{a_ja_k}(\theta_j-\theta_k)
   =
-  2\pi I_j ,
+  2\pi I_j,
   \qquad j=1,\ldots,n .
-\]
-The integers or half-integers \(I_j\) specify the state once a branch of
-\(\delta\) and an ordering convention are fixed.  The finite-volume energy
-and momentum at this order are
+  \label{eq:finite-volume-bethe-yang}
+\end{equation}
+The \(I_j\) are integers or half-integers depending on particle statistics,
+twists, and branch choices.  The finite-volume energy and momentum at
+Bethe--Yang order are
 \[
-  E_L(\theta)=\sum_{j=1}^n m_{a_j}\cosh\theta_j ,
+  E_L(\theta)=\sum_{j=1}^n m_{a_j}\cosh\theta_j,
   \qquad
   P_L(\theta)=\sum_{j=1}^n m_{a_j}\sinh\theta_j .
 \]
-Corrections are exponentially small in \(mL\) when no massless channel or
-nearby singularity invalidates the contour deformation used in the derivation.
-
-\section{Gaudin Density}
-
-The density of Bethe--Yang states is the Jacobian
+The neglected effects are exponentially small in \(m_\ast L\), where
 \[
-  \rho_n(\theta)
+  m_\ast=\min_{a\in\mathcal I}m_a,
+\]
+provided no massless channel, threshold singularity, or nearby bound-state
+pole invalidates the contour deformation used to wrap virtual particles
+around the circle.
+
+\begin{proposition}[Bethe--Yang phase from moving one particle around the circle]
+\label{prop:bethe-yang-phase-around-circle}
+Assume the \(n\)-particle wave function is described away from collision
+hyperplanes by ordered plane waves, and that crossing a hyperplane
+\(x_j=x_k\) multiplies the ordered amplitude by the diagonal scattering phase
+\(S_{a_ja_k}(\theta_j-\theta_k)\).  Periodicity of particle \(j\) around the
+circle gives \eqref{eq:finite-volume-bethe-yang}.
+\end{proposition}
+
+\begin{proof}
+Move particle \(j\) once around the spatial circle while keeping the other
+particles fixed.  The free propagation of this particle contributes
+\[
+  \exp(\ii p_jL),
+  \qquad
+  p_j=m_{a_j}\sinh\theta_j .
+\]
+During the circuit it crosses each other particle once.  In the diagonal
+sector the ordered amplitude is multiplied by
+\[
+  \prod_{k\ne j}S_{a_ja_k}(\theta_j-\theta_k)
   =
-  \det_{1\le i,j\le n}
-  \frac{\partial Q_i}{\partial\theta_j}.
+  \exp\!\left(
+    \ii\sum_{k\ne j}\delta_{a_ja_k}(\theta_j-\theta_k)
+  \right).
+\]
+Single-valuedness of the wave function demands that the total phase be one.
+Taking the logarithm on the chosen branch gives
+\[
+  m_{a_j}L\sinh\theta_j
+  +
+  \sum_{k\ne j}\delta_{a_ja_k}(\theta_j-\theta_k)
+  =
+  2\pi I_j .
+\]
+\end{proof}
+
+\section{Gaudin Density And Normalization}
+
+The density of Bethe--Yang states is the Jacobian of the map
+\[
+  \theta\longmapsto Q(\theta).
+\]
+Define the Gaudin matrix
+\begin{equation}
+  G_{ij}(\theta)
+  =
+  \frac{\partial Q_i}{\partial\theta_j},
+  \qquad
+  \rho_n(\theta)=\det G(\theta).
+  \label{eq:gaudin-matrix-density}
+\end{equation}
+Explicitly,
+\[
+  G_{ii}
+  =
+  m_{a_i}L\cosh\theta_i
+  +
+  \sum_{k\ne i}\varphi_{a_ia_k}(\theta_i-\theta_k),
+  \qquad
+  G_{ij}
+  =
+  -\varphi_{a_ia_j}(\theta_i-\theta_j)
+  \quad (i\ne j).
 \]
 For one particle,
 \[
   \rho_1(\theta)=m_aL\cosh\theta .
 \]
-For two particles in a diagonal channel,
-\[
+For two particles, using
+\(\varphi_{a_2a_1}(\theta_2-\theta_1)=
+\varphi_{a_1a_2}(\theta_1-\theta_2)\), one obtains
+\begin{equation}
   \rho_2(\theta_1,\theta_2)
   =
   m_{a_1}m_{a_2}L^2\cosh\theta_1\cosh\theta_2
@@ -65,156 +155,475 @@ For two particles in a diagonal channel,
   L\bigl(
     m_{a_1}\cosh\theta_1+m_{a_2}\cosh\theta_2
   \bigr),
-\]
-where \(\theta_{12}=\theta_1-\theta_2\) and
+  \label{eq:two-particle-gaudin-density}
+\end{equation}
+where \(\theta_{12}=\theta_1-\theta_2\).
+
+\begin{proposition}[State-counting measure]
+\label{prop:gaudin-state-counting-measure}
+Let \(U\subset\mathbb R^n\) be a rapidity region in which the Bethe--Yang map
+\(Q:U\to\mathbb R^n\) is one-to-one and \(\rho_n>0\).  For every smooth
+compactly supported test function \(f\) in \(U\),
 \[
-  \varphi_{ab}(\theta)=\partial_\theta\delta_{ab}(\theta).
+  \sum_{I:\,\theta(I)\in U}f(\theta(I))
+  =
+  \int_U
+  \frac{\dd^n\theta}{(2\pi)^n}\,
+  \rho_n(\theta)f(\theta)
+  +
+  O(L^{n-1})
 \]
-The determinant is the finite-volume normalization factor that converts
-infinite-volume delta-normalized rapidity states into unit vectors.
+as \(L\to\infty\), with the boundary correction depending on \(f\) and \(U\).
+\end{proposition}
+
+\begin{proof}
+The Bethe integers form the lattice \((2\pi)\mathbb Z^n\) or a translate of
+it in \(Q\)-space.  Since \(Q\) is one-to-one on \(U\), summing over Bethe
+solutions in \(U\) is summing the function
+\[
+  f(\theta(Q))
+\]
+over lattice points in \(Q(U)\).  The leading Euler--Maclaurin term is the
+Lebesgue integral in \(Q\)-space with lattice cell volume \((2\pi)^n\):
+\[
+  \sum_I f(\theta(I))
+  =
+  \int_{Q(U)}
+  \frac{\dd^nQ}{(2\pi)^n}\,
+  f(\theta(Q))
+  +
+  O(\operatorname{area}\partial Q(U)).
+\]
+Changing variables from \(Q\) to \(\theta\) gives
+\[
+  \dd^nQ=\det\left(\frac{\partial Q_i}{\partial\theta_j}\right)\dd^n\theta
+  =
+  \rho_n(\theta)\dd^n\theta .
+\]
+The boundary term is \(O(L^{n-1})\) because \(Q(U)\) has linear size
+\(O(L)\) in each direction for fixed \(U\).
+\end{proof}
+
+The same determinant normalizes finite-volume states.  If
+\[
+  \ket{\theta_1,a_1;\ldots;\theta_n,a_n}_{\infty}
+\]
+is an infinite-volume rapidity state normalized by delta functions, then the
+corresponding unit finite-volume vector has leading normalization
+\[
+  \ket{I_1,\ldots,I_n}_L
+  =
+  \rho_n(\theta)^{-1/2}
+  \ket{\theta_1,a_1;\ldots;\theta_n,a_n}_{\infty}
+  +
+  O(\ee^{-\mu L})
+\]
+in matrix elements of local operators.  The statement compares normalized
+matrix elements through the finite-volume regulator; the infinite-volume
+delta-normalized state and the finite-volume unit vector live in different
+Hilbert-space normalizations.
 
 \section{Off-Diagonal Matrix Elements}
 
-Let \(\mathcal O\) be a local scalar operator and let
+Let \(\widehat{\mathcal O}\) be a local scalar operator.  The infinite-volume
+crossed form factor for an outgoing \(m\)-particle state and incoming
+\(n\)-particle state is written
 \[
   F^{\mathcal O}_{b_1\ldots b_m,a_1\ldots a_n}
-  (\theta'_1+i\pi,\ldots,\theta'_m+i\pi,\theta_1,\ldots,\theta_n)
+  (\theta'_1+\ii\pi,\ldots,\theta'_m+\ii\pi,
+    \theta_1,\ldots,\theta_n),
 \]
-be the infinite-volume crossed form factor in the branch specified by the
-ordering of particles.  If the incoming and outgoing finite-volume states have
-no coincident rapidities after crossing, the leading finite-volume matrix
-element is
-\[
-  {}_L\langle J_1,\ldots,J_m|\mathcal O(0)|I_1,\ldots,I_n\rangle_L
+with the branch specified by the rapidity ordering and by the crossing
+prescription of Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}.
+
+\begin{proposition}[Off-diagonal finite-volume form-factor formula]
+\label{prop:off-diagonal-finite-volume-form-factor}
+Assume the incoming and outgoing Bethe--Yang rapidity sets have no coincident
+rapidities after crossing, and assume that the crossed form factor is regular
+at the corresponding point.  Then
+\begin{equation}
+  {}_L\!\langle J_1,\ldots,J_m|
+  \widehat{\mathcal O}(0)
+  |I_1,\ldots,I_n\rangle_L
   =
   \frac{
     F^{\mathcal O}_{b_1\ldots b_m,a_1\ldots a_n}
-    (\theta'_1+i\pi,\ldots,\theta'_m+i\pi,\theta_1,\ldots,\theta_n)
+    (\theta'_1+\ii\pi,\ldots,\theta'_m+\ii\pi,
+      \theta_1,\ldots,\theta_n)
   }{
     \sqrt{\rho_m(\theta')\rho_n(\theta)}
   }
   +
-  O(\ee^{-\mu L}) .
+  O(\ee^{-\mu L}).
+  \label{eq:off-diagonal-finite-volume-form-factor}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Smear the finite-volume Bethe states by packets whose rapidity widths are
+large compared with the level spacing \(L^{-1}\) and small compared with the
+distance to any kinematic or bound-state pole.  In that window the
+finite-volume packet is approximated by the infinite-volume packet with the
+state-counting measure of Proposition~\ref{prop:gaudin-state-counting-measure}.
+The unit normalization of the finite-volume packet therefore supplies one
+factor \(\rho_n^{-1/2}\) for the incoming state and one factor
+\(\rho_m^{-1/2}\) for the outgoing state.  The local operator matrix element
+between the corresponding infinite-volume packets is the crossed form factor
+by the crossing prescription.  Since the form factor is regular at the
+chosen point, shrinking the packets to the Bethe rapidities gives
+\eqref{eq:off-diagonal-finite-volume-form-factor}.  Virtual particles
+wrapping around the circle give the exponentially small correction.
+\end{proof}
+
+\begin{corollary}[Cancellation in the infinite-volume two-point sum]
+\label{cor:finite-volume-sum-integral-cancellation}
+For vacuum-to-\(n\)-particle matrix elements of a scalar operator,
+\[
+  \sum_I
+  \left|
+  {}_L\!\langle\Omega_L|\widehat{\mathcal O}(0)|I\rangle_L
+  \right|^2 f(\theta(I))
+  \longrightarrow
+  \int
+  \frac{\dd^n\theta}{(2\pi)^n}
+  |F_n^{\mathcal O}(\theta)|^2f(\theta)
 \]
-The constant \(\mu\) is determined by the lightest particle and by the closest
-singularity crossed in moving virtual particles around the circle.  The
-formula is a theorem only after the analytic strip, residue prescriptions,
-and finite-volume Hilbert-space construction have been stated.
+on rapidity regions with no singularities, after the usual \(1/n!\) quotient
+for identical unordered particles.
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{prop:off-diagonal-finite-volume-form-factor}, the squared
+matrix element contributes
+\[
+  |F_n^{\mathcal O}(\theta(I))|^2/\rho_n(\theta(I))
+\]
+up to exponentially small corrections.  Summing over Bethe integers and
+using Proposition~\ref{prop:gaudin-state-counting-measure} supplies the
+measure
+\[
+  \rho_n(\theta)\dd^n\theta/(2\pi)^n .
+\]
+The Gaudin determinant cancels.  If the rapidity ordering was used to label
+states, the ordered chamber gives one copy; if integration is over all
+\(\mathbb R^n\) for identical particles, the \(n!\) permutations must be
+divided out.
+\end{proof}
 
 \section{Diagonal Matrix Elements}
 
 Diagonal matrix elements require subtracting kinematic poles.  Let
 \[
-  F^{\mathcal O}_{2n,c}
-  (\theta_1,\ldots,\theta_n)
+  F^{\mathcal O}_{2n,c}(\theta_1,\ldots,\theta_n)
 \]
-denote the connected diagonal form factor obtained from the finite part of
+denote the connected diagonal form factor obtained as the finite part of
 \[
   F^{\mathcal O}_{\bar a_n\ldots\bar a_1a_1\ldots a_n}
-  (\theta_n+i\pi+\epsilon_n,\ldots,\theta_1+i\pi+\epsilon_1,
+  (\theta_n+\ii\pi+\epsilon_n,\ldots,\theta_1+\ii\pi+\epsilon_1,
   \theta_1,\ldots,\theta_n)
 \]
-after removing all pole terms as \(\epsilon_j\to0\).  The finite-volume
-expectation has the expansion
+after removing all terms singular in the \(\epsilon_j\) as
+\(\epsilon_j\to0\).  The order of the crossed rapidities is part of the
+definition.  In diagonal theories the connected finite part is symmetric in
+the rapidities after the same branch convention is used throughout.
+
+\begin{definition}[Principal minors of the Gaudin matrix]
+\label{def:gaudin-principal-minors}
+For \(A\subset\{1,\ldots,n\}\), let \(G_A\) be the principal submatrix of
+the Gaudin matrix with rows and columns in \(A\), and set
 \[
-  {}_L\langle I_1,\ldots,I_n|\mathcal O|I_1,\ldots,I_n\rangle_L
+  \rho_A(\theta)=\det G_A,
+  \qquad
+  \rho_\emptyset=1 .
+\]
+When the complement of \(A\) is denoted \(\bar A\), the symbol
+\(\rho_{\bar A}\) means the determinant of the principal minor on that
+complement, not the Gaudin density of an isolated smaller-volume theory.
+\end{definition}
+
+\begin{proposition}[Diagonal finite-volume matrix element]
+\label{prop:diagonal-finite-volume-form-factor}
+Under the same massive diagonal assumptions and away from accidental
+degeneracies,
+\begin{equation}
+  {}_L\!\langle I_1,\ldots,I_n|
+  \widehat{\mathcal O}(0)
+  |I_1,\ldots,I_n\rangle_L
   =
   \frac{1}{\rho_n(\theta)}
   \sum_{A\subset\{1,\ldots,n\}}
   F^{\mathcal O}_{2|A|,c}(\theta_A)\,
-  \rho_{n-|A|}(\theta_{\bar A})
+  \rho_{\bar A}(\theta)
   +
-  O(\ee^{-\mu L}) .
+  O(\ee^{-\mu L}).
+  \label{eq:diagonal-finite-volume-form-factor}
+\end{equation}
+Here \(F^{\mathcal O}_{0,c}\) is the infinite-volume vacuum expectation value
+\(\langle\mathcal O\rangle\).
+\end{proposition}
+
+\begin{proof}
+Start from the off-diagonal formula with outgoing rapidities
+\(\theta'_j\) distinct from the incoming rapidities, then approach
+\(\theta'_j=\theta_j\).  The crossed form factor develops kinematic poles.
+Each singular contraction identifies one crossed particle with one incoming
+particle and produces the finite-volume delta contribution associated with
+the corresponding Bethe quantum number.  In the finite-volume regularization
+these delta contributions are replaced by derivatives of the quantization
+conditions, namely entries and minors of the Gaudin matrix.
+
+After all possible disconnected contractions are grouped by the subset
+\(\bar A\) of particles that contract through the finite-volume
+normalization, the remaining particles \(A\) contribute the connected
+diagonal finite part \(F^{\mathcal O}_{2|A|,c}(\theta_A)\), while the
+contracted particles contribute the principal minor \(\rho_{\bar A}\).  The
+overall normalization of the bra and ket contributes \(1/\rho_n\).  Summing
+over all subsets gives \eqref{eq:diagonal-finite-volume-form-factor}.
+The only analytic input beyond the off-diagonal case is the kinematic-pole
+residue equation of Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators},
+which ensures that the disconnected pieces are exactly the contractions
+enumerated by the subsets.
+\end{proof}
+
+For one particle this gives
+\[
+  {}_L\!\langle I|\mathcal O|I\rangle_L
+  =
+  \langle\mathcal O\rangle
+  +
+  \frac{F^{\mathcal O}_{2,c}(\theta)}{\rho_1(\theta)}
+  +
+  O(\ee^{-\mu L}).
 \]
-Here \(\rho_0=1\), and \(\theta_A\) is the rapidity list indexed by \(A\).
-This identity is a precise statement of how contact terms from coincident
-crossed particles are replaced by connected diagonal form factors.
+For two particles,
+\[
+\begin{aligned}
+  {}_L\!\langle I_1,I_2|\mathcal O|I_1,I_2\rangle_L
+  &=
+  \frac{1}{\rho_{12}}
+  \Bigl[
+    \langle\mathcal O\rangle\rho_{12}
+    +F_{2,c}^{\mathcal O}(\theta_1)\rho_{\{2\}}
+    +F_{2,c}^{\mathcal O}(\theta_2)\rho_{\{1\}}  \\
+  &\hspace{3.4cm}
+    +F_{4,c}^{\mathcal O}(\theta_1,\theta_2)
+  \Bigr]
+  +
+  O(\ee^{-\mu L}).
+\end{aligned}
+\]
+This explicit formula is often the first place where the distinction between
+connected diagonal form factors and symmetric finite parts matters.
 
-\section{Spectral Expansion Of Correlators}
+\section{Zero-Temperature Spectral Expansion}
 
-For a zero-temperature two-point function in finite volume,
+For a finite-volume two-point function
 \[
   C_L(x,t)=
-  \langle\Omega_L|\mathcal O(x,t)\mathcal O(0,0)|\Omega_L\rangle ,
+  \langle\Omega_L|
+  \widehat{\mathcal O}(x,t)\widehat{\mathcal O}(0,0)
+  |\Omega_L\rangle ,
 \]
-inserting a complete orthonormal basis gives
+insert the finite-volume identity operator:
+\[
+  \mathbf 1_L=\sum_\alpha|\alpha,L\rangle\langle\alpha,L|.
+\]
+Translation covariance gives
 \[
   C_L(x,t)
   =
   \sum_\alpha
   \bigl|
-    \langle\Omega_L|\mathcal O(0)|\alpha,L\rangle
+    \langle\Omega_L|\widehat{\mathcal O}(0)|\alpha,L\rangle
   \bigr|^2
-  \ee^{-iE_\alpha t+iP_\alpha x}.
+  \exp(-\ii E_\alpha t+\ii P_\alpha x).
 \]
-The infinite-volume expansion is obtained by replacing sums over Bethe
-integers by rapidity integrals with the Gaudin density.  For a scalar operator
-in a diagonal theory,
-\[
+Using Corollary~\ref{cor:finite-volume-sum-integral-cancellation} in each
+particle-number sector gives the infinite-volume Wightman expansion
+\begin{equation}
   C(x,t)
   =
   \sum_{n=0}^{\infty}
   \frac{1}{n!}
   \sum_{a_1,\ldots,a_n}
   \int_{\mathbb R^n}
-  \prod_{j=1}^n\frac{d\theta_j}{2\pi}\,
+  \prod_{j=1}^n\frac{\dd\theta_j}{2\pi}\,
   \bigl|
     F^{\mathcal O}_{a_1\ldots a_n}(\theta_1,\ldots,\theta_n)
   \bigr|^2
-  \ee^{-i\sum_j m_{a_j}t\cosh\theta_j
-      +i\sum_j m_{a_j}x\sinh\theta_j}.
-\]
-Convergence is part of the statement.  It requires bounds on form factors at
-large rapidity, control of particle-number growth, and a domain for
-\((x,t)\) or its Euclidean continuation.
-
-\section{Thermal Traces And Leclair--Mussardo Type Series}
-
-At finite temperature the Gibbs trace is not obtained by simply inserting the
-zero-temperature spectral sum with Boltzmann weights.  The thermodynamic
-limit must be taken at fixed rapidity density.  A thermal expectation of a
-local operator has the candidate series
+  e^{-\ii\sum_j m_{a_j}t\cosh\theta_j
+      +\ii\sum_j m_{a_j}x\sinh\theta_j}.
+  \label{eq:zero-temperature-form-factor-spectral-expansion}
+\end{equation}
+The Euclidean Schwinger function at separation
 \[
+  r=\sqrt{\tau^2+x^2}>0
+\]
+is obtained by analytic continuation \(t=-\ii\tau\).  Lorentz invariance
+allows the exponent to be written, in a frame where the separation is purely
+Euclidean time, as
+\[
+  \exp\left[-r\sum_{j=1}^n m_{a_j}\cosh\theta_j\right].
+\]
+
+\begin{proposition}[A sufficient convergence criterion]
+\label{prop:form-factor-spectral-convergence-criterion}
+Fix \(r>0\).  Suppose there are constants \(A,B,c\ge0\) with \(c<m_\ast r\)
+such that, for every \(n\),
+\[
+  \frac{1}{n!}
+  \sum_{a_1,\ldots,a_n}
+  \int_{\mathbb R^n}
+  \prod_{j=1}^n\frac{\dd\theta_j}{2\pi}\,
+  |F^{\mathcal O}_{a_1\ldots a_n}(\theta)|^2
+  e^{-r\sum_jm_{a_j}\cosh\theta_j}
+  \le
+  \frac{A B^n}{n!}e^{cn}.
+\]
+Then the Euclidean spectral series converges absolutely.
+\end{proposition}
+
+\begin{proof}
+The right hand side is summable in \(n\):
+\[
+  \sum_{n=0}^\infty \frac{A(B e^c)^n}{n!}
+  =
+  A\exp(Be^c).
+\]
+The hypothesis bounds the absolute value of the \(n\)-particle contribution
+by a summable sequence, so the series converges absolutely by comparison.
+The displayed condition is deliberately a sufficient condition; sharp
+convergence in specific integrable models is a model-dependent analytic
+problem involving the large-rapidity and large-particle-number behavior of
+the form factors.
+\end{proof}
+
+\section{Example: Free Majorana Energy Density}
+
+In the massive Ising field theory without magnetic perturbation, the free
+Majorana scattering phase is
+\[
+  S=-1.
+\]
+For the energy-density operator \(\varepsilon\), the only nonzero
+vacuum-to-particle form factor in the even sector needed for the first
+spectral term is the two-particle form factor
+\[
+  F_2^\varepsilon(\theta_1,\theta_2)
+  =
+  \kappa\sinh\left(\frac{\theta_1-\theta_2}{2}\right),
+\]
+with normalization \(\kappa\) fixed by the convention for
+\(\varepsilon\).  The two-particle contribution to the Euclidean two-point
+function is
+\begin{equation}
+  C_2^\varepsilon(r)
+  =
+  \frac12
+  \int_{\mathbb R^2}
+  \frac{\dd\theta_1\dd\theta_2}{(2\pi)^2}
+  \left|
+    \kappa\sinh\frac{\theta_1-\theta_2}{2}
+  \right|^2
+  e^{-mr(\cosh\theta_1+\cosh\theta_2)} .
+  \label{eq:ising-energy-two-particle-spectral-term}
+\end{equation}
+Introduce center and relative rapidities
+\[
+  \Theta=\frac{\theta_1+\theta_2}{2},
+  \qquad
+  \alpha=\theta_1-\theta_2.
+\]
+Then
+\[
+  \cosh\theta_1+\cosh\theta_2
+  =
+  2\cosh\Theta\cosh\frac{\alpha}{2},
+  \qquad
+  \dd\theta_1\dd\theta_2=\dd\Theta\,\dd\alpha.
+\]
+Using
+\[
+  \int_{-\infty}^{\infty}
+  e^{-z\cosh\Theta}\,\dd\Theta
+  =
+  2K_0(z),
+\]
+\eqref{eq:ising-energy-two-particle-spectral-term} becomes
+\[
+  C_2^\varepsilon(r)
+  =
+  \frac{|\kappa|^2}{(2\pi)^2}
+  \int_{-\infty}^{\infty}
+  \dd\alpha\,
+  \sinh^2\frac{\alpha}{2}\,
+  K_0\!\left(2mr\cosh\frac{\alpha}{2}\right).
+\]
+Since the integrand is even,
+\[
+  C_2^\varepsilon(r)
+  =
+  \frac{2|\kappa|^2}{(2\pi)^2}
+  \int_0^\infty
+  \dd\alpha\,
+  \sinh^2\frac{\alpha}{2}\,
+  K_0\!\left(2mr\cosh\frac{\alpha}{2}\right).
+\]
+This example displays the finite-volume logic in its simplest form: the
+finite-volume matrix element contains the inverse Gaudin determinant, the sum
+over Bethe integers contains the Gaudin determinant, and the infinite-volume
+answer contains only the invariant rapidity measure and the form factor.
+
+\section{Thermal Traces And Connected Diagonal Series}
+
+At finite temperature, the Gibbs trace is organized by the thermodynamic
+limit at fixed rapidity density.  The pseudoenergy
+\(\varepsilon_a(\theta)\) is determined by the TBA equations in the same
+scattering convention used to define the form factors.
+For fermionic Bethe quantization conventions, the occupation factor is
+\[
+  n_a(\theta)=\frac{1}{1+e^{\varepsilon_a(\theta)}}.
+\]
+The Leclair--Mussardo type one-point series has the form
+\begin{equation}
   \langle\mathcal O\rangle_R
   =
   \sum_{n=0}^{\infty}\frac{1}{n!}
   \sum_{a_1,\ldots,a_n}
-  \int\prod_{j=1}^n\frac{d\theta_j}{2\pi}\,
+  \int\prod_{j=1}^n\frac{\dd\theta_j}{2\pi}\,
   \prod_{j=1}^n n_{a_j}(\theta_j)\,
   F^{\mathcal O}_{2n,c}(\theta_1,\ldots,\theta_n),
-\]
-where \(R\) is inverse temperature and
-\[
-  n_a(\theta)=\frac{1}{1+\ee^{\varepsilon_a(\theta)}}
-\]
-for fermionic Bethe quantization conventions.  Other statistics conventions
-change the occupation factor and the definition of the pseudoenergy.  The
-series is tied to the TBA equations; it is meaningful only with the same
-scattering kernel, branch conventions, and connected-diagonal prescription.
+  \label{eq:lm-connected-diagonal-series}
+\end{equation}
+where \(R\) is inverse temperature.  Other quantization conventions move
+statistical signs between the occupation factor and the connected diagonal
+form factor.  The formula is meaningful only with a fixed prescription for
+the TBA kernel, the connected diagonal finite part, and the convergence
+domain.
 
 \section{Reconstruction Boundary}
 
-Finite-volume form-factor formulae are not a replacement for local QFT
-construction.  They provide a computable comparison system:
+The finite-volume form-factor formalism supplies a computable chain
 \[
-  \text{bootstrap } S
+  S\text{-matrix}
   \longrightarrow
-  \text{form factors}
+  F_n^{\mathcal O}
   \longrightarrow
-  \text{finite-volume matrix elements}
+  {}_L\!\langle\beta|\mathcal O|\alpha\rangle_L
   \longrightarrow
-  \text{correlators}.
+  \text{correlation functions}.
 \]
-To obtain a local QFT, the correlators must satisfy positivity, covariance,
-locality, clustering, and reconstruction hypotheses in the intended
-framework.  The finite-volume regulator is valuable because every step before
-the infinite-volume limit has a declared Hilbert space and normalizable
-vectors.
+It does not by itself prove that the resulting distributions define a local
+QFT.  A construction theorem must prove positivity of the reconstructed
+correlation functions, covariance, locality or wedge-locality with a local
+subalgebra, clustering, and compatibility with the scattering theory used at
+the beginning.  The finite-volume regulator is valuable precisely because
+each pre-limit step has a declared Hilbert space and normalizable vectors.
 
 \begin{openproblem}[Form-factor construction]
 \label{op:form-factor-construction}
 Construct an interacting factorizing QFT from bootstrap scattering and
 form-factor data by proving convergence of the spectral expansions, locality
 of reconstructed fields or algebras, and agreement of finite-volume matrix
-elements with the Hilbert-space limit.
+elements with the Hilbert-space scattering limit.
 \end{openproblem}

@@ -294,6 +294,11 @@ Current checks:
   Bessel-kernel prefactor, the even spin-field semi-local cyclicity phase,
   the crossed \(\coth\) matrix element, the mixed bra/ket product formula,
   and the semi-local kinematic-pole residue.
+- `finite_volume_form_factor_checks.py`: finite checks for the Volume VI
+  finite-volume form-factor chapter, including the two-particle Gaudin
+  determinant, cancellation of the Gaudin density between matrix elements and
+  state counting, connected diagonal subset combinatorics, and the
+  free-Majorana two-particle Bessel-reduction prefactor.
 - `ising_metropolis_finite_checks.py`: exact enumeration checks for the
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising
