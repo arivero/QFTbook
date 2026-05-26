@@ -217,6 +217,11 @@ Current checks:
   constants, \(C_A=2N\), \(T_F=1\), \(C_F=(N^2-1)/N\), the coupling-coordinate
   conversion from the common half-trace convention, and the Wilson-plaquette
   factor giving \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\).
+- `gauge_phase_diagnostics_checks.py`: finite checks for the gauge-theory
+  phases chapter, including electric, magnetic, and dyonic condensate
+  orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
+  Dirac-pairing confinement criterion, tropical spectral extraction of static
+  potentials, and exponent bookkeeping for Fredenhagen--Marcu type ratios.
 - `global_form_line_lattice_checks.py`: exact finite checks for the
   \(\mathfrak{su}(N)\) global-form and Wilson--'t Hooft line-lattice
   section, including the \(\mathbb Z_N^{\mathrm e}\oplus\mathbb Z_N^{\mathrm m}\)
