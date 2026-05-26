@@ -25,6 +25,11 @@ status-boundary style.
 - `hyp:sqcd-one-instanton-calculus`: assumptions needed for using the
   semiclassical `N_f=N_c-1` SQCD instanton calculation as an \(F\)-term
   derivation.
+- `eq:ads-diagonal-higgs-patch`: local diagonal Higgs-patch coordinates for
+  the explicit `N_f=N_c-1` instanton calculation.
+- `prop:ads-higgs-patch-collective-coordinate-ledger`: explicit
+  Higgs-patch gauge-breaking, bosonic-moduli, fermion-zero-mode, and
+  Yukawa-lifting ledger for the ADS instanton calculation.
 - `kappa_Nc`: scheme-dependent nonzero one-instanton coefficient in the
   `N_f=N_c-1` ADS normalization.
 - `I(beta,L)`: finite-volume Witten index on a spatial three-torus.
@@ -83,9 +88,16 @@ status-boundary style.
   zero modes, `2N_c-2` matter zero modes, Yukawa lifting of `2N_c-2`
   adjoint modes, and two remaining Goldstino modes giving the `d^2 theta`
   superpotential measure.
+- Adds the explicit Higgs-patch collective-coordinate calculation behind the
+  ADS derivation: local diagonal coordinates with `det M != 0`, complete
+  breaking of `SU(N_c)`, charge-one bosonic moduli count `4N_c` from
+  translations/size/orientations, index-theorem fermion zero-mode counts,
+  and the rank statement for Yukawa lifting by nonzero Higgs expectation
+  values.
 - Derives the one-instanton ADS form
   `kappa_Nc Lambda_h^(2N_c+1)/det M` from the instanton scale factor,
-  flavor invariance, dimension, and \(R\)-charge.
+  the reduced `d^4x_0 d^2 eta` instanton integral, flavor invariance,
+  dimension, and \(R\)-charge.
 - Proves the holomorphic decoupling equation by matching the invariant
   holomorphic scale at a massive threshold.
 - States the quantum modified constraint for \(N_f=N_c\) with explicit
@@ -166,8 +178,8 @@ status-boundary style.
   inequalities.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
-  \(R\)-charge, `N_f=N_c-1` zero-mode counts, and holomorphic decoupling
-  exponent shifts.
+  \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch
+  collective-coordinate counts, and holomorphic decoupling exponent shifts.
 
 ## Figure Ledger
 

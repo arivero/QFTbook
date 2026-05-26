@@ -71,6 +71,31 @@ def check_one_instanton_ads_zero_modes() -> None:
         assert_equal(-r_det_m, 2, "ADS k=1 inverse determinant R-charge")
 
 
+def check_ads_higgs_patch_collective_coordinates() -> None:
+    for nc in range(2, 12):
+        nf = nc - 1
+
+        su_nc_dimension = nc * nc - 1
+        stabilizer_dimension = (nc - 2) * (nc - 2) - 1 + 1
+        if nc == 2:
+            # For SU(2), the embedded instanton is the whole gauge group and
+            # the continuous orientation stabilizer is trivial.
+            stabilizer_dimension = 0
+        orientation_dimension = su_nc_dimension - stabilizer_dimension
+        assert_equal(orientation_dimension, 4 * nc - 5, "k=1 SU(Nc) orientation dimension")
+        assert_equal(4 + 1 + orientation_dimension, 4 * nc, "k=1 SU(Nc) bosonic moduli")
+
+        adjoint_gaugino_zero_modes = 2 * nc
+        exact_goldstino_modes = 2
+        lifted_gaugino_modes = adjoint_gaugino_zero_modes - exact_goldstino_modes
+        matter_zero_modes = 2 * nf
+        assert_equal(lifted_gaugino_modes, matter_zero_modes, "Higgs-patch Yukawa lifting rank")
+
+        det_m_dimension = 2 * nf
+        reduced_factor_dimension = 3 - (2 * nc + 1)
+        assert_equal(reduced_factor_dimension, -det_m_dimension, "ADS reduced determinant dimension")
+
+
 def check_holomorphic_decoupling_dimensions() -> None:
     for nc in range(2, 12):
         for nf in range(1, nc + 3):
@@ -119,6 +144,7 @@ def main() -> None:
     check_instanton_exponential_coupling_conversion()
     check_ads_dimensions_and_r_charges()
     check_one_instanton_ads_zero_modes()
+    check_ads_higgs_patch_collective_coordinates()
     check_holomorphic_decoupling_dimensions()
     check_nekrasov_su2_one_instanton()
     check_young_diagram_one_box_count()
