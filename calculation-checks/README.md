@@ -330,6 +330,10 @@ Current checks:
   entropy production, GKSL trace preservation, KMS detailed balance for a
   two-level system, Ornstein-Uhlenbeck noise normalization, and positivity of
   a quadratic noise kernel.
+- `microlocal_spectrum_checks.py`: finite convention checks for the
+  microlocal spectrum chapter, including the mostly-plus future-covector
+  convention, the Klein-Gordon Hamilton-flow sign, the two-point graph
+  covector pattern \((p,-p)\), and the opposite-cone product obstruction.
 - `wilson_fisher_epsilon_checks.py`: exact rational arithmetic turning the
   two-loop \(N=1\) Wilson-Fisher pole coefficients into
   \(x_*\), \(\eta\), \(\gamma_{2*}\), \(y_t\), \(\nu\), and \(\omega\).
@@ -346,6 +350,9 @@ Current checks:
   weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the
   \(c_0=6\) length-two value \(h=3/8\), and the real
   \(\mathbb Z_2\) reflection twist value \(h=1/16\).
+- `paqft_algebra_checks.py`: finite polynomial checks for the curved pAQFT
+  chapter, including Hadamard star-product associativity, the smooth
+  Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the Bose integral
   \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat thermal scalar

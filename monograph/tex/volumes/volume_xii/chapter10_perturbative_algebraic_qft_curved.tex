@@ -9,49 +9,206 @@ microcausal functionals, time-ordered products, and causal factorization.
 The framework is perturbative, but its locality and covariance conditions are
 nonperturbative constraints on the allowed coefficients.
 
+\section{Functional Spaces And Supports}
+
+Let \(M\) be an oriented time-oriented globally hyperbolic Lorentzian
+manifold and let
+\[
+  \mathcal E(M)=C^\infty(M,\mathbb R)
+\]
+be the classical configuration space of a real scalar field.  It is a
+Frechet space with the usual seminorms obtained by taking suprema of
+derivatives on compact subsets in coordinate charts.  A functional in this
+chapter is a smooth map \(F:\mathcal E(M)\to\C\) in the Bastiani sense:
+all iterated directional derivatives
+\[
+  F^{(n)}(\phi)(h_1,\ldots,h_n)
+  =
+  \left.
+  \frac{\partial^n}{\partial t_1\cdots\partial t_n}
+  F\!\left(\phi+\sum_{i=1}^nt_i h_i\right)
+  \right|_{t_1=\cdots=t_n=0}
+\]
+exist and depend jointly continuously on \((\phi,h_1,\ldots,h_n)\).
+When \(F^{(n)}(\phi)\) is distributional, the displayed multilinear form is
+identified with a distributional density on \(M^n\) by
+\[
+  F^{(n)}(\phi)(h_1,\ldots,h_n)
+  =
+  \int_{M^n}
+    F^{(n)}(\phi)(x_1,\ldots,x_n)
+    h_1(x_1)\cdots h_n(x_n).
+\]
+This convention suppresses the volume density in the kernel notation.
+
+The support of \(F\) is the closed set of points \(x\in M\) such that, for
+every neighborhood \(U\ni x\), there are fields \(\phi\) and perturbations
+\(h\in C_c^\infty(U)\) with
+\[
+  F(\phi+h)\ne F(\phi).
+\]
+Thus support is defined by actual sensitivity of the functional, not by a
+chosen formula for it.
+
+\begin{definition}[Local functional]
+\label{def:paqft-local-functional}
+A compactly supported smooth functional \(F\) is local if there are an
+integer \(r\) and a compactly supported smooth density-valued function \(L\)
+on the finite jet bundle \(J^rM\), polynomial in the highest derivatives in
+the usual local-coordinate presentation, such that
+\[
+  F(\phi)=\int_M L\bigl(x,j_x^r\phi\bigr),
+  \label{eq:paqft-local-functional-jet-form}
+\]
+and such that \(F^{(n)}(\phi)\) is supported on the thin diagonal
+\[
+  \Delta_n=\{(x,\ldots,x):x\in M\}
+\]
+for every \(n\ge2\).  Equivalently, after integrations by parts,
+\[
+  F^{(n)}(\phi)(x_1,\ldots,x_n)
+  =
+  \sum_{|\alpha_2|+\cdots+|\alpha_n|\le N}
+  a_{\alpha_2\cdots\alpha_n}(x_1;\phi)
+  \partial^{\alpha_2}\delta(x_1,x_2)\cdots
+  \partial^{\alpha_n}\delta(x_1,x_n)
+  \label{eq:paqft-local-functional-diagonal-kernel}
+\]
+in each coordinate chart, with coefficients depending locally and smoothly
+on a finite jet of \(\phi\).
+\end{definition}
+
+The two descriptions in Definition~\ref{def:paqft-local-functional} are
+both needed.  The jet formula is the geometric expression of locality; the
+diagonal-support formula is the microlocal expression used in
+renormalization.
+
 \section{Microcausal Functionals}
 
-Let \(M\) be globally hyperbolic and let \(\mathcal E=C^\infty(M)\) be the
-space of scalar field configurations.  A functional \(F:\mathcal E\to\C\) is
-microcausal when its functional derivatives
+\begin{definition}[Microcausal functional]
+\label{def:paqft-microcausal-functional}
+Let \(F:\mathcal E(M)\to\C\) be a compactly supported smooth functional
+whose functional derivatives are compactly supported distributions,
 \[
   F^{(n)}(\phi)\in\mathcal E'(M^n)
 \]
-have wavefront sets avoiding products of closed future or past light cones:
+for all \(n\).  The functional is microcausal if
 \[
   \operatorname{WF}(F^{(n)}(\phi))
   \cap
-  \left(\overline V_+^{\,n}\cup\overline V_-^{\,n}\right)
+  \left((\overline V_+^*)^n\cup(\overline V_-^*)^n\right)
   =
   \varnothing .
+  \label{eq:paqft-microcausal-cone-condition}
 \]
-This condition makes the contractions with Hadamard distributions defined by
-the wavefront-set product criterion.
+Here \(\overline V_\pm^*\subset T^*M\setminus0\) are the closed future and
+past causal covector cones, using the convention of
+Chapter~\ref{ch:curved-microlocal-spectrum-condition}.  The vector space of
+microcausal functionals is denoted \(\mathcal F_{\mu{\rm c}}(M)\), and the
+subspace of local functionals is denoted \(\mathcal F_{\rm loc}(M)\).
+\end{definition}
+
+The exclusion in \eqref{eq:paqft-microcausal-cone-condition} is exactly the
+condition needed to contract with Hadamard two-point functions.  A Hadamard
+bidistribution has future covectors in one variable and past covectors in the
+other.  If all covectors in \(F^{(n)}\) could point to the same closed time
+cone, the product criterion of
+Theorem~\ref{thm:microlocal-product-criterion} would fail when one contracts
+the variables against the Hadamard kernel.
 
 \section{Star Product}
 
-Choose a Hadamard two-point function \(H\).  The star product of microcausal
-functionals is
+Choose a Hadamard two-point function \(H\) whose antisymmetric part is
+\[
+  H(x,y)-H(y,x)=\ii\Delta(x,y),
+\]
+where \(\Delta=\Delta_{\rm ret}-\Delta_{\rm adv}\) is the causal propagator
+of the Klein--Gordon operator.  For \(F,G\in\mathcal F_{\mu{\rm c}}(M)\),
+define
 \[
   F\star_H G
   =
   \sum_{n=0}^{\infty}
   \frac{\hbar^n}{n!}
   \left\langle
-    F^{(n)},H^{\otimes n}G^{(n)}
+    F^{(n)}(\phi), H^{\otimes n}G^{(n)}(\phi)
   \right\rangle .
+  \label{eq:paqft-star-product-expanded}
 \]
-For polynomial functionals the sum is finite.  Associativity follows from the
-fact that the bidifferential contraction operator
+The \(n\)-th summand means
+\[
+  \int_{M^{2n}}
+    F^{(n)}(\phi)(x_1,\ldots,x_n)
+    \prod_{j=1}^n H(x_j,y_j)
+    G^{(n)}(\phi)(y_1,\ldots,y_n),
+  \label{eq:paqft-star-product-kernel}
+\]
+with the integral interpreted as the pairing of distributions.  The
+microcausal cone condition and the Hadamard wavefront set make this pairing
+well-defined.  For polynomial functionals the sum is finite; in general the
+product is understood in the completed formal space
+\(\mathcal F_{\mu{\rm c}}(M)[[\hbar]]\) when the formal series is meaningful.
+
+\begin{proposition}[Associativity and commutator]
+\label{prop:paqft-star-associativity}
+The product \(\star_H\) is associative on polynomial microcausal
+functionals.  Its first-order commutator is
+\[
+  [F,G]_{\star_H}
+  =
+  \ii\hbar\,\{F,G\}_{\rm P}
+  +O(\hbar^2),
+  \qquad
+  \{F,G\}_{\rm P}
+  =
+  \left\langle F^{(1)},\Delta G^{(1)}\right\rangle ,
+  \label{eq:paqft-peierls-first-order}
+\]
+where \(\{\,\cdot\,,\,\cdot\,\}_{\rm P}\) is the Peierls bracket of the free
+field.
+\end{proposition}
+
+\begin{proof}
+Let \(m\) denote pointwise multiplication and set
 \[
   \Gamma_H=\left\langle H,\frac{\delta}{\delta\phi}\otimes
   \frac{\delta}{\delta\phi}\right\rangle
+  \qquad\hbox{on}\qquad
+  \mathcal F\otimes\mathcal F .
 \]
-has commuting copies on tensor products, so
+Then
 \[
-  \exp(\hbar\Gamma_H)
+  F\star_HG=m\circ e^{\hbar\Gamma_H}(F\otimes G).
 \]
-defines an associative deformation of pointwise multiplication.
+For three factors let \(\Gamma_{ij}\) contract the \(i\)-th and \(j\)-th
+tensor factors.  Functional derivatives with respect to different tensor
+factors commute, so
+\[
+  [\Gamma_{12},\Gamma_{13}]
+  =
+  [\Gamma_{12},\Gamma_{23}]
+  =
+  [\Gamma_{13},\Gamma_{23}]
+  =
+  0 .
+\]
+Both \((F\star_HG)\star_HK\) and \(F\star_H(G\star_HK)\) are therefore equal
+to
+\[
+  m_3\circ
+  \exp\bigl(\hbar(\Gamma_{12}+\Gamma_{13}+\Gamma_{23})\bigr)
+  (F\otimes G\otimes K),
+\]
+where \(m_3(F\otimes G\otimes K)=FGK\).  This proves associativity.
+
+The order-\(\hbar\) part of the commutator is
+\[
+  \hbar\left\langle F^{(1)},(H-H^{\rm op})G^{(1)}\right\rangle
+  =
+  \ii\hbar\left\langle F^{(1)},\Delta G^{(1)}\right\rangle ,
+\]
+which is the free Peierls bracket.
+\end{proof}
 
 \section{Change Of Hadamard Function}
 
@@ -71,16 +228,75 @@ is smooth.  Define
 Then
 \[
   \alpha_w(F\star_H G)=\alpha_w(F)\star_{H'}\alpha_w(G).
+  \label{eq:paqft-hadamard-change-isomorphism}
 \]
 Thus the abstract algebra is independent of the particular Hadamard
 parametrix up to a canonical isomorphism determined by the smooth difference.
 
+\begin{proof}
+Let
+\[
+  \Delta_w=\left\langle w,\frac{\delta^2}{\delta\phi^2}\right\rangle .
+\]
+Because \(w\) is smooth, \(\Delta_w\) maps microcausal polynomial
+functionals to microcausal polynomial functionals.  The second-order
+operator \(\Delta_w\) satisfies
+\[
+  \Delta_w(FG)
+  =
+  (\Delta_wF)G+F(\Delta_wG)
+  +
+  2\left\langle F^{(1)},wG^{(1)}\right\rangle .
+  \label{eq:paqft-laplacian-product-rule}
+\]
+Equivalently,
+\[
+  e^{\frac{\hbar}{2}\Delta_w}\circ m
+  =
+  m\circ e^{\hbar\Gamma_w}
+    \left(e^{\frac{\hbar}{2}\Delta_w}\otimes
+          e^{\frac{\hbar}{2}\Delta_w}\right),
+  \label{eq:paqft-alpha-coproduct-identity}
+\]
+where \(\Gamma_w\) is the cross-contraction with kernel \(w\).  Therefore
+\[
+\begin{aligned}
+  \alpha_w(F\star_HG)
+  &=
+  e^{\frac{\hbar}{2}\Delta_w}
+  m e^{\hbar\Gamma_H}(F\otimes G)\\
+  &=
+  m e^{\hbar\Gamma_w}
+  \left(e^{\frac{\hbar}{2}\Delta_w}\otimes
+        e^{\frac{\hbar}{2}\Delta_w}\right)
+  e^{\hbar\Gamma_H}(F\otimes G)\\
+  &=
+  m e^{\hbar\Gamma_{H+w}}(\alpha_wF\otimes\alpha_wG)
+  =
+  \alpha_w(F)\star_{H'}\alpha_w(G).
+\end{aligned}
+\]
+\end{proof}
+
 \section{Time-Ordered Products}
 
-Let \(T_n\) assign distributions on \(M^n\) to \(n\) local functionals.  Away
-from coincident diagonals, \(T_n\) is determined by causal ordering and the
-Feynman propagator.  The construction problem is to extend \(T_n\) to the
-diagonals while preserving:
+Let \(H_F=H+\ii\Delta_{\rm adv}\) denote the Feynman bidistribution
+associated with \(H\).  Away from coincident points, the naive time-ordered
+product is obtained by replacing \(H\) in the contraction exponential by
+\(H_F\).  The problem is that \(H_F\) has a wavefront set whose products are
+not defined on diagonals.  Thus time ordering is not a pointwise operation on
+local fields; it is an extension problem for distributions.
+
+A system of time-ordered products is a family of maps
+\[
+  T_n:\mathcal F_{\rm loc}(M)^{\otimes n}
+  \longrightarrow
+  \mathcal F_{\mu{\rm c}}(M)[[\hbar]],
+  \qquad n\ge1,
+  \label{eq:paqft-time-ordered-products-maps}
+\]
+with \(T_1=\operatorname{id}\), symmetric in the \(n\) entries, equal to the
+Feynman contraction formula away from partial diagonals, and satisfying:
 \[
 \begin{gathered}
   \text{local covariance},\qquad
@@ -90,8 +306,84 @@ diagonals while preserving:
   \text{unitarity and Ward identities}.
 \end{gathered}
 \]
-The extension freedom is a finite sum of local curvature and coupling
-polynomials multiplying derivatives of delta distributions on diagonals.
+These words are constraints, not decoration.  Local covariance means natural
+dependence on the background metric and couplings.  Field independence means
+that differentiating \(T_n\) with respect to the background field inserts the
+time-ordered derivative of the input local functionals.  Scaling degree
+bounds control the ultraviolet order of singularities.  Ward identities are
+the equations imposed by symmetries; for gauge theories they are properly
+encoded by the BV quantum master equation.
+
+\begin{theorem}[Extension with fixed scaling degree]
+\label{thm:paqft-extension-scaling-degree}
+Let \(t^0\in\mathcal D'(\mathbb R^N\setminus\{0\})\) have finite scaling
+degree
+\[
+  \operatorname{sd}(t^0)
+  =
+  \inf\left\{\delta:
+    \lambda^\delta t^0(\lambda x)\to0
+    \text{ in }\mathcal D'(\mathbb R^N\setminus\{0\})
+    \text{ as }\lambda\to0^+
+  \right\}.
+\]
+Then \(t^0\) has an extension \(t\in\mathcal D'(\mathbb R^N)\) with
+\(\operatorname{sd}(t)=\operatorname{sd}(t^0)\).  If
+\(\operatorname{sd}(t^0)<N\), this extension is unique.  If
+\(\operatorname{sd}(t^0)\ge N\), two such extensions differ by
+\[
+  \sum_{|\alpha|\le \operatorname{sd}(t^0)-N}
+  c_\alpha\,\partial^\alpha\delta_0 ,
+  \label{eq:paqft-extension-ambiguity}
+\]
+with the upper bound understood as its integer part.
+\end{theorem}
+
+\begin{proof}
+Choose a test function \(\rho\in C_c^\infty(\mathbb R^N)\) equal to \(1\)
+near the origin.  For a test function \(f\), subtract its Taylor polynomial
+at the origin through degree
+\[
+  r=\lfloor\operatorname{sd}(t^0)\rfloor-N
+\]
+when \(r\ge0\):
+\[
+  f_R(x)=
+  f(x)-
+  \rho(x)\sum_{|\alpha|\le r}\frac{x^\alpha}{\alpha!}
+  (\partial^\alpha f)(0).
+  \label{eq:paqft-taylor-subtracted-test-function}
+\]
+The subtracted test function vanishes to order \(r+1\) at the origin.  The
+definition of scaling degree then implies that \(t^0(f_R)\) is finite and
+independent of how \(f_R\) is represented away from the origin.  Set
+\[
+  t(f)=t^0(f_R)+\sum_{|\alpha|\le r}c_\alpha(\partial^\alpha f)(0).
+  \label{eq:paqft-extension-by-taylor-subtraction}
+\]
+The constants \(c_\alpha\) are arbitrary finite renormalization constants.
+The subtraction raises the vanishing order of the test function precisely
+enough to preserve the original scaling degree, and the additional
+\(\partial^\alpha\delta_0\) terms have scaling degree \(N+|\alpha|\le
+\operatorname{sd}(t^0)\).
+
+If \(r<0\), no Taylor coefficient may be added without increasing the scaling
+degree.  An extension is then forced by continuity from
+\(\mathbb R^N\setminus\{0\}\), hence unique.  In the case \(r\ge0\), any two
+extensions agree away from the origin, so their difference is a distribution
+supported at \(0\).  Every distribution supported at one point is a finite
+linear combination of derivatives of the delta distribution, and the scaling
+degree bound permits exactly the derivatives in
+\eqref{eq:paqft-extension-ambiguity}.
+\end{proof}
+
+In pAQFT the role of the origin in
+Theorem~\ref{thm:paqft-extension-scaling-degree} is played by a partial
+diagonal in \(M^n\).  The finite ambiguity is therefore a finite sum of local
+curvature, mass, coupling, and field polynomials multiplying derivatives of
+delta distributions supported on that diagonal.  These are contact terms
+created by the definition of time-ordered products, not a separate physical
+process.
 
 \section{Causal Factorization}
 
@@ -106,6 +398,17 @@ of \(F_{k+1},\ldots,F_n\), causal factorization states
 This identity determines \(T_n\) outside the total diagonal from lower orders.
 Renormalization is precisely the choice of extension to the total and partial
 diagonals compatible with the listed constraints.
+
+The induction is local in configuration space.  On a configuration
+\((x_1,\ldots,x_n)\) not lying on the total diagonal, global hyperbolicity
+provides a Cauchy time function and one may separate the points into a later
+cluster and an earlier cluster.  Causal factorization expresses \(T_n\) there
+as a \(\star_H\)-product of already constructed lower-order time-ordered
+products.  On overlaps of such cluster decompositions the lower-order
+factorization identities and associativity of \(\star_H\) give the same
+distribution.  Hence the only new datum at order \(n\) is the extension
+across the total diagonal, subject to covariance, scaling degree, unitarity,
+and any Ward identities.
 
 \section{Interacting Fields}
 
@@ -129,6 +432,35 @@ Bogoliubov derivative
 Changing the time cutoff of \(V\) outside the causal domain of \(F\) gives
 isomorphic interacting algebras by causal factorization.
 
+\begin{proposition}[Causal support of the Bogoliubov field]
+\label{prop:paqft-bogoliubov-causal-support}
+If two interaction functionals \(V\) and \(V'\) agree on a neighborhood of
+the causal hull \(J(\operatorname{supp}F)\), then the corresponding
+Bogoliubov fields \(R_V(F)\) and \(R_{V'}(F)\) are identified by the
+canonical relative \(S\)-matrix isomorphism of the two cutoff theories.
+\end{proposition}
+
+\begin{proof}
+Write \(V'=V+A+B\), where \(A\) is supported to the future of
+\(\operatorname{supp}F\) and \(B\) is supported to its past; a partition of
+unity built from a Cauchy time function gives such a decomposition after
+shrinking to the region where \(V=V'\) near the causal hull.  Causal
+factorization gives
+\[
+  S(V+A+B+\lambda F)
+  =
+  S(A)\star S(V+\lambda F)\star S(B)
+\]
+in the corresponding ordered region, and similarly with \(\lambda=0\).
+After forming
+\[
+  S_{V'}(\lambda F)=S(V')^{-1}\star S(V'+\lambda F),
+\]
+the future and past factors cancel up to conjugation by a relative
+\(\star\)-unitary depending only on \(A\) and \(B\).  Differentiating at
+\(\lambda=0\) gives the claimed canonical identification.
+\end{proof}
+
 \section{Renormalization Group}
 
 Two choices of time-ordered products \(T\) and \(\widetilde T\) are related
@@ -140,6 +472,45 @@ The map \(Z\) is local, begins with \(Z(F)=F+O(F^2)\), preserves the constant
 term, and has coefficients supported on coincident points.  In curved
 backgrounds these coefficients include curvature terms.  This is the
 perturbative algebraic form of local counterterm freedom.
+
+More explicitly, \(Z\) is a formal diffeomorphism of the space of local
+functionals:
+\[
+  Z(F)
+  =
+  F+
+  \sum_{n\ge2}\frac1{n!}Z_n(F^{\otimes n}),
+  \label{eq:paqft-z-expansion}
+\]
+where each \(Z_n\) is symmetric, local, and supported on the thin diagonal in
+the \(n\)-fold product.  The defining identity
+\(\widetilde S(F)=S(Z(F))\) implies that changing the extension of
+time-ordered products is equivalent to changing the local interaction
+functional by finite local terms.  In a curved background those terms are
+not limited to flat-space monomials: covariance permits terms built from the
+metric, curvature, masses, background couplings, and their covariant
+derivatives, constrained by dimension, symmetries, and field independence.
+
+\section{Gauge Theories And The BV Condition}
+
+The preceding scalar construction is not a foundation for gauge theory by
+itself.  A gauge-fixed perturbative algebra contains unphysical fields,
+ghosts, antifields, and a differential.  Consistency is the statement that
+the interacting quantum BV differential squares to zero, or equivalently
+that the renormalized time-ordered products can be chosen so that the
+quantum master equation holds:
+\[
+  \frac12(S_{\rm BV},S_{\rm BV})-\ii\hbar\,\Delta_{\rm BV}S_{\rm BV}=0
+  \label{eq:paqft-bv-qme-curved}
+\]
+in the renormalized algebra.  Here \((\,\cdot\,,\,\cdot\,)\) is the BV
+antibracket and \(\Delta_{\rm BV}\) denotes the renormalized second-order
+operator measuring the short-distance contraction of fields with antifields.
+The equation is not a slogan for gauge invariance.  It is the algebraic
+condition that the interacting BRST operator is a differential and that the
+physical algebra is its cohomology.  If the obstruction to solving
+\eqref{eq:paqft-bv-qme-curved} is a nontrivial local cohomology class, the
+theory has an anomaly in the chosen background and field content.
 
 \begin{openproblem}[Nonperturbative curved-background comparison]
 \label{op:nonperturbative-paqft-comparison}
