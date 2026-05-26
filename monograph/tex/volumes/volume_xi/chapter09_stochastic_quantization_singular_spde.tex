@@ -358,6 +358,89 @@ Sobolev DPD fixed point below is available for any prescribed
 \(0<\kappa<1/4\) after taking \(s=\kappa\).
 \end{proof}
 
+\begin{corollary}[Common limits of finite Wick-coordinate vectors]
+\label{cor:spde-common-wick-coordinate-limits}
+Fix finitely many pairs
+\[
+  (n_j,f_j),\qquad 1\leq j\leq r,
+\]
+where \(n_j\geq1\) and \(f_j\in C^\infty(\mathbb T^2)\).  For one cutoff
+sequence \(X_N\), set
+\[
+  \mathcal X_N
+  =
+  \bigl(:\!X_N^{n_1}\!:(f_1),\ldots,
+        :\!X_N^{n_r}\!:(f_r)\bigr)\in\R^r .
+\]
+Then \(\mathcal X_N\) converges in \(L^2(\Omega;\R^r)\), hence in
+probability, to
+\[
+  \mathcal X
+  =
+  \bigl(:\!X^{n_1}\!:(f_1),\ldots,
+        :\!X^{n_r}\!:(f_r)\bigr).
+\]
+
+More generally, suppose \(X_N^A\) and \(X_N^B\) are two cutoff
+approximations of the same massive Gaussian field on a common probability
+space, and suppose that, for every \(j\) and
+\(\sigma\in\{A,B\}\),
+\[
+  :\!(X_N^\sigma)^{n_j}\!:(f_j)
+  \longrightarrow
+  :\!X^{n_j}\!:(f_j)
+  \quad\hbox{in }L^2(\Omega).
+  \label{eq:spde-common-wick-coordinate-l2-hypothesis}
+\]
+Then the coordinate vectors
+\[
+  \mathcal X_N^\sigma
+  =
+  \bigl(:\!(X_N^\sigma)^{n_1}\!:(f_1),\ldots,
+        :\!(X_N^\sigma)^{n_r}\!:(f_r)\bigr)
+\]
+satisfy
+\[
+  \mathcal X_N^\sigma\longrightarrow\mathcal X
+  \quad\hbox{in }L^2(\Omega;\R^r)
+  \quad\hbox{and in probability},
+  \qquad \sigma=A,B .
+  \label{eq:spde-common-wick-coordinate-vector-convergence}
+\]
+For every bounded continuous \(F:\R^r\to\C\),
+\[
+  F(\mathcal X_N^\sigma)\longrightarrow F(\mathcal X)
+  \quad\hbox{in probability}.
+  \label{eq:spde-common-wick-coordinate-observable-convergence}
+\]
+\end{corollary}
+
+\begin{proof}
+For the single Fourier cutoff sequence, each coordinate converges in
+\(L^2(\Omega)\) by
+Proposition~\ref{prop:spde-two-dimensional-wick-powers}.  Therefore
+\[
+  \mathbb E|\mathcal X_N-\mathcal X|_{\R^r}^2
+  =
+  \sum_{j=1}^r
+  \mathbb E
+  \left|
+    :\!X_N^{n_j}\!:(f_j)-:\!X^{n_j}\!:(f_j)
+  \right|^2
+  \longrightarrow0 .
+\]
+The two-regulator statement is identical after replacing the preceding
+coordinate convergence by
+\eqref{eq:spde-common-wick-coordinate-l2-hypothesis}.  \(L^2\)-convergence
+implies convergence in probability by Chebyshev's inequality.  Finally,
+if \(\mathcal X_N^\sigma\to\mathcal X\) in probability and \(F\) is
+continuous, then \(F(\mathcal X_N^\sigma)\to F(\mathcal X)\) in probability
+because the inverse image of the complement of any small neighborhood of
+\(F(\mathcal X)\) is controlled by continuity of \(F\) at the realized value
+of \(\mathcal X\); equivalently, every almost surely convergent subsequence
+has a further subsequence on which the conclusion follows pointwise.
+\end{proof}
+
 \begin{corollary}[Convergence of the Wick quartic potential]
 \label{cor:spde-wick-quartic-potential-convergence}
 Let \(\lambda\in\R\), and define the cutoff Wick quartic functional on the
@@ -386,8 +469,10 @@ functional \(:\!X^4\!:(1)\).  Set
 \]
 Then \(V_N^A\to V\) and \(V_N^B\to V\) in \(L^2(\Omega)\).  Consequently,
 if the exponential weights \(e^{-V_N^\sigma}\) obey a uniform \(L^p\) bound
-for some \(p>1\) and if the cylinder coordinates also converge to common
-limits, then the bounded-cylinder comparison conclusion of
+for some \(p>1\) and if the cylinder coordinates are finite Wick-coordinate
+vectors satisfying
+Corollary~\ref{cor:spde-common-wick-coordinate-limits}, then the
+bounded-cylinder comparison conclusion of
 Corollary~\ref{cor:spde-bounded-cylinder-common-potential} applies.
 \end{corollary}
 
@@ -3512,6 +3597,9 @@ Assume the following three further analytic facts.
   of this condition follows from
   Corollary~\ref{cor:spde-wick-quartic-potential-convergence}; the remaining
   regulator-specific input is the uniform exponential-weight stability.
+  The common finite cylinder-coordinate convergence for smeared Wick
+  polynomials is supplied by
+  Corollary~\ref{cor:spde-common-wick-coordinate-limits}.
 \end{enumerate}
 Then every weak limit \(\mu\) of \(\{\mu_N\}\) is an invariant law of the
 limiting DPD Markov semigroup.  Its Schwinger functions are the limits of
@@ -3609,7 +3697,9 @@ on the exponential weights.  For the Wick quartic potential, the convergence
 in probability is supplied by
 Corollary~\ref{cor:spde-wick-quartic-potential-convergence}, so the
 remaining constructive estimate is the uniform \(L^p\) stability of the
-weights in the chosen regulator family.  The
+weights in the chosen regulator family.  The matching convergence of finite
+Wick-coordinate cylinder vectors is
+Corollary~\ref{cor:spde-common-wick-coordinate-limits}.  The
 uniform-integrability input can be supplied by the exponential cylinder-moment
 criterion in
 Proposition~\ref{prop:spde-polynomial-os-uniform-integrability}; finite

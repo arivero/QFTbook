@@ -96,6 +96,9 @@ data.
   negative-Sobolev moments.
 - `V_N`, `Z_N`: cutoff Wick quartic interaction and its finite-dimensional
   partition function in the Nelson-stability-to-density proposition.
+- `mathcal X_N`, `mathcal X_N^A`, `mathcal X_N^B`: finite vectors of
+  smeared Wick coordinates used in the common-coordinate convergence
+  corollary.
 - `X_N^A`, `X_N^B`, `W_N^A`, `W_N^B`: regulator-dependent finite lists of
   cylinder coordinates and interaction densities in the bounded-cylinder
   common-density comparison theorem.
@@ -227,6 +230,13 @@ data.
   two-dimensional stochastic convolution, including convergence in
   \(L^2(\Omega;H^{-s})\) for every \(s>0\), using a two-dimensional
   massive-propagator convolution bound.
+- Extracts the finite Wick-coordinate vector convergence needed by regulator
+  comparison.  For any finite list of smearings and Wick orders, coordinate
+  convergence in \(L^2\) implies convergence of the vector in
+  \(L^2(\Omega;\mathbb R^r)\), hence in probability; for two cutoff schemes
+  with common Wick-power limits, the same argument gives common coordinate
+  vectors.  Bounded continuous functions of these vectors therefore converge
+  in probability by the subsequence form of the continuous-mapping theorem.
 - Proves path-space convergence of the two-dimensional enhanced noise
   \((X_N,:X_N^2:,:X_N^3:)\) in
   \(C([0,T];H^{-s})^3\) for every \(s>0\).  The proof uses the exact
