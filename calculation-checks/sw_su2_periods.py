@@ -6,12 +6,16 @@ The checks use the chapter normalization with Lambda=1:
     a(u)  = sqrt(2(u+1)) 2F1(-1/2,1/2;1;2/(u+1)),
     aD(u) = i (u-1) 2F1(1/2,1/2;2;(1-u)/2)/2.
 
-They verify monodromy matrices, the Picard-Fuchs equation, the electric
-large-u asymptotic, the logarithmic large-u growth of the dual period, and
-the linear vanishing of the monopole period at u=1.
+They verify monodromy matrices, Picard-Lefschetz central-charge action,
+symplectic preservation, the minimal curve discriminant, the Picard-Fuchs
+equation, the electric large-u asymptotic, the logarithmic large-u growth of
+the dual period, the linear vanishing of the monopole period at u=1, and the
+rank-one Argyres-Douglas cusp scaling dimensions.
 """
 
 from __future__ import annotations
+
+from fractions import Fraction
 
 import mpmath as mp
 
@@ -31,11 +35,25 @@ def matmul(a: list[list[int]], b: list[list[int]]) -> list[list[int]]:
     ]
 
 
+def transpose(a: list[list[int]]) -> list[list[int]]:
+    return [[a[0][0], a[1][0]], [a[0][1], a[1][1]]]
+
+
 def charge_monodromy(n_m: int, n_e: int) -> list[list[int]]:
     return [
         [1 + 2 * n_m * n_e, 2 * n_e * n_e],
         [-2 * n_m * n_m, 1 - 2 * n_m * n_e],
     ]
+
+
+def symplectic_pair(delta: tuple[int, int], gamma: tuple[int, int]) -> int:
+    m_m, m_e = delta
+    n_m, n_e = gamma
+    return m_m * n_e - m_e * n_m
+
+
+def row_times_matrix(row: tuple[int, int], a: list[list[int]]) -> tuple[int, int]:
+    return (row[0] * a[0][0] + row[1] * a[1][0], row[0] * a[0][1] + row[1] * a[1][1])
 
 
 def a_period(u: mp.mpf | mp.mpc) -> mp.mpc:
@@ -56,6 +74,43 @@ def check_monodromies() -> None:
         raise AssertionError(f"dyon monodromy mismatch: {m_dyon}")
     if matmul(m_monopole, m_dyon) != m_infinity:
         raise AssertionError("finite monodromy product does not give M_infinity")
+
+
+def check_picard_lefschetz_action_and_symplecticity() -> None:
+    j_form = [[0, 1], [-1, 0]]
+    for gamma in ((1, 0), (1, -1), (2, 1), (1, 3)):
+        monodromy = charge_monodromy(*gamma)
+        if matmul(transpose(monodromy), matmul(j_form, monodromy)) != j_form:
+            raise AssertionError(f"monodromy is not symplectic for gamma={gamma}")
+
+        nilpotent = [
+            [monodromy[0][0] - 1, monodromy[0][1]],
+            [monodromy[1][0], monodromy[1][1] - 1],
+        ]
+        if matmul(nilpotent, nilpotent) != [[0, 0], [0, 0]]:
+            raise AssertionError(f"monodromy is not unipotent rank-one for gamma={gamma}")
+
+        for delta in ((0, 1), (1, 0), (1, 2), (-2, 3)):
+            transformed_coeffs = row_times_matrix(delta, monodromy)
+            expected = (
+                delta[0] + 2 * symplectic_pair(delta, gamma) * gamma[0],
+                delta[1] + 2 * symplectic_pair(delta, gamma) * gamma[1],
+            )
+            if transformed_coeffs != expected:
+                raise AssertionError(
+                    f"central-charge PL action mismatch: gamma={gamma}, delta={delta}, "
+                    f"got {transformed_coeffs}, expected {expected}"
+                )
+
+
+def check_minimal_curve_discriminant() -> None:
+    for u in (3, -4, 7):
+        branch_discriminant = (1 - (-1)) ** 2 * (1 - u) ** 2 * ((-1) - u) ** 2
+        expected = 4 * (u * u - 1) ** 2
+        if branch_discriminant != expected:
+            raise AssertionError("minimal SW curve discriminant mismatch")
+    if 4 * (1 * 1 - 1) ** 2 != 0 or 4 * ((-1) * (-1) - 1) ** 2 != 0:
+        raise AssertionError("finite discriminant should vanish at u=+-1")
 
 
 def check_picard_fuchs() -> None:
@@ -82,11 +137,29 @@ def check_monopole_vanishing() -> None:
         assert_close(f"aD/(u-1) near u=1, s={s}", ratio, 0.5j, mp.mpf("4e-5"))
 
 
+def check_argyres_douglas_scaling() -> None:
+    x_dim = Fraction(2, 5)
+    y_dim = Fraction(3, 5)
+    u_dim = Fraction(6, 5)
+    v_dim = Fraction(4, 5)
+    if 2 * y_dim != 3 * x_dim:
+        raise AssertionError("AD cusp quasi-homogeneity failed")
+    if u_dim + x_dim - y_dim != 1:
+        raise AssertionError("AD differential should have dimension one")
+    if u_dim != 2 * y_dim:
+        raise AssertionError("AD Coulomb parameter dimension mismatch")
+    if v_dim + x_dim != u_dim:
+        raise AssertionError("AD relevant deformation dimension mismatch")
+
+
 def main() -> None:
     check_monodromies()
+    check_picard_lefschetz_action_and_symplecticity()
+    check_minimal_curve_discriminant()
     check_picard_fuchs()
     check_large_u_asymptotics()
     check_monopole_vanishing()
+    check_argyres_douglas_scaling()
     print("All SU(2) Seiberg-Witten period and monodromy checks passed.")
 
 

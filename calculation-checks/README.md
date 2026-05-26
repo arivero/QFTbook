@@ -180,9 +180,11 @@ Current checks:
   isotropy of \(L_{N,k,p}=\langle(k,0),(p,N/k)\rangle\).
 - `sw_su2_periods.py`: numerical and exact checks for the pure \(SU(2)\)
   Seiberg--Witten period section, including Picard--Lefschetz monodromy
-  matrices, the Picard--Fuchs equation, the electric large-\(u\) asymptotic,
-  logarithmic dual-period growth, and linear monopole-period vanishing at
-  \(u=\Lambda^2\).
+  matrices, central-charge action and symplecticity, the minimal-curve
+  discriminant, the Picard--Fuchs equation, the electric large-\(u\)
+  asymptotic, logarithmic dual-period growth, linear monopole-period
+  vanishing at \(u=\Lambda^2\), and rank-one Argyres-Douglas cusp scaling
+  dimensions.
 - `thooft_line_local_model_checks.py`: finite checks for the Volume IX
   't Hooft-line local model, including the northern/southern Dirac-monopole
   patch difference, flux normalization, integer Dirac phase, finite linking
@@ -238,6 +240,11 @@ Current checks:
   one-loop Konishi Bethe roots, one-magnon XXX spectra, central-extension
   magnon dispersion, its weak-coupling expansion, and a local
   Hirota-to-Y-system algebra identity.
+- `susy_n4_scft_checks.py`: exact arithmetic checks for the Volume VII
+  \(\mathcal N=4\) SYM SCFT foundation material, including one-loop and
+  holomorphic beta-function cancellation, \(a=c=\dim\mathfrak g/4\), the
+  \(SO(6)\) symmetric-traceless projector, stress-tensor-multiplet
+  two-point normalization, and planar half-BPS chiral OPE coefficients.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
@@ -328,11 +335,62 @@ Current checks:
   Kontsevich--Segal allowability chapter, including the angle criterion,
   Euclidean and Lorentzian boundary examples, two-time exclusion, and
   positivity of all diagonal \(q\)-form coefficients.
+- `susy_abjm_6d_checks.py`: exact finite checks for the ABJM and
+  six-dimensional supersymmetric field-theory chapters, including the ABJM
+  superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
+  BF normalization, \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model
+  denominator powers, six-dimensional Yang-Mills coupling dimension,
+  \(A_{N-1}\) \((2,0)\) anomaly/tensor-branch arithmetic, and the
+  trace-delta \(g_5^2=4\pi^2R\) compactification normalization.
+- `susy_n1_conifold_checks.py`: exact rational checks for the
+  four-dimensional \(\mathcal N=1\) conifold SCFT and cascade section,
+  including the KW \(R\)-anomaly, \(\gamma=2\mathcal C\) NSVZ convention,
+  KW beta-function rank count for the two gauge numerators and quartic
+  marginality defect, \(a\)-maximization quadratic term, central charges,
+  rank-one conifold relation, KS beta-function numerator signs, unequal-rank
+  \(R\)-anomaly coefficients, Seiberg-dual magnetic rank, magnetic meson
+  quadratic-form integration, Euclidean cascade step count, and
+  \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
+- `susy_n1_pure_sym_checks.py`: exact finite checks for pure
+  four-dimensional \(\mathcal N=1\) supersymmetric Yang--Mills, including
+  the adjoint-fermion discrete chiral anomaly, the
+  \(\mathbb Z_{2N_c}\to\mathbb Z_2\) condensate orbit, VY glueball
+  dimension/source/\(F\)-term arithmetic, condensate branch monodromy under a
+  theta-angle loop, the affine-Toda product constraint, constrained Hessian
+  nondegeneracy, local critical-point index contribution, and the
+  affine-Toda/Witten-index vacuum count match.
+- `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
+  four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
+  including Seiberg-dual rank involution, baryon-charge matching, SQCD
+  holomorphic-canonical NSVZ coordinate-relation algebra, electric and
+  magnetic NSVZ numerator cancellation in the monograph \(\gamma\)
+  convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
+  superpotential dimension and \(R\)-charge, SQCD conformal-window
+  central-charge and free-field \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\)
+  comparison factorization,
+  full electric-magnetic
+  't Hooft anomaly matching, mass and Higgs deformation rank/dimension/
+  \(R\)-charge tests, \(N_f=N_c+1\) confining-superpotential
+  dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
+  quantum-modified constraint, and the conformal-window/free-phase
+  inequalities.
+- `susy_instanton_nekr_checks.py`: exact rational checks for the
+  supersymmetric instanton expansion, including the ADHM dimension count,
+  the trace-delta to half-trace instanton-action conversion, ADS dimension
+  and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
+  and Higgs-patch collective-coordinate ledger, the maximal-rank meson
+  determinant-invariant uniqueness step, holomorphic decoupling exponent
+  shift, ADS decoupling-recursion coefficient and one-variable \(F\)-term
+  algebra, the pure \(SU(2)\)
+  one-instanton Nekrasov fixed-point sum, and the first Nekrasov
+  prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
-  Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian matrix integral, the
-  \(U(1)_k\) \(S^3\) Chern--Simons Fresnel completion of the square, and the
-  round-\(S^3\) conjugate-chiral-pair integral
+  Gaussian coefficient, the \(S^4\) \(H\)-function finite-product logarithmic
+  derivative, the \(U(1)\) \(S^4\) Gaussian matrix integral, finite
+  double-sine reflection and pole-convention checks, the \(U(1)_k\) \(S^3\)
+  Chern--Simons Fresnel completion of the square, and the round-\(S^3\)
+  conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
 - `susy_qm_index_checks.py`: exact rational checks for the Volume I
   SUSY-QM and worldline index-density section, including the oscillator

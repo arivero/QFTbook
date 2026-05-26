@@ -36,17 +36,121 @@ The holomorphic scale is the invariant coordinate
 This equation defines \(\Lambda_h\) after a branch convention has been chosen;
 only \(\Lambda_h^{b_0}\) is invariant under the periodicity of \(\theta\).
 
-\section{Canonical Coupling And NSVZ For SQCD}
+\section{SQCD NSVZ Coordinate Audit}
+\label{sec:sqcd-nsvz-coordinate-audit}
 
 The holomorphic scale is not the same coordinate as the canonical gauge
-coupling used in particle normalizations.  Let \(g\) be the canonical
-coupling defined by the component kinetic term of
-Chapter~\ref{ch:susy-gauge-theory}, and let \(Z_Q=Z_{\widetilde Q}\) be the
-flavor-symmetric matter wave-function coordinate.  With
+coupling used in particle normalizations.  This distinction is a coordinate
+statement, not a change of the underlying theory.  Write
+\[
+  X_h(\mu)=\frac{8\pi^2}{g_h(\mu)^2},\qquad
+  X_c(\mu)=\frac{8\pi^2}{g(\mu)^2},
+\]
+where \(g_h\) is the holomorphic Wilsonian coupling and \(g\) is the
+canonical coupling defined by the component kinetic term of
+Chapter~\ref{ch:susy-gauge-theory}.  Let \(Z_Q\) and
+\(Z_{\widetilde Q}\) be the matter wave-function coordinates, with
 \[
   \gamma_Q(\mu)=\mu\frac{d}{d\mu}\log Z_Q(\mu),
+  \qquad
+  \gamma_{\widetilde Q}(\mu)
+  =
+  \mu\frac{d}{d\mu}\log Z_{\widetilde Q}(\mu).
 \]
-the NSVZ coordinate formula of
+
+\begin{hypothesis}[SQCD NSVZ coordinate specialization]
+\label{hyp:sqcd-nsvz-coordinate-specialization}
+The SQCD beta-function identity below is stated in a perturbative
+supersymmetric Wilsonian scheme satisfying the hypotheses of
+Proposition~\ref{prop:nsvz-coordinate-relation-derived}.  The
+flavor-symmetric submanifold is imposed by taking
+\[
+  Z_Q=Z_{\widetilde Q},\qquad
+  \gamma_Q=\gamma_{\widetilde Q}.
+\]
+The trace convention is the half-trace convention of this chapter:
+\[
+  C_2(SU(N_c))=N_c,\qquad
+  T(\mathbf N_c)=T(\overline{\mathbf N}_c)=\frac12 .
+\]
+Finite changes of canonical coupling coordinate are allowed, but then the
+rational NSVZ denominator changes by the induced reparametrization.  Thus
+the pole of the displayed denominator is a feature of this coordinate chart;
+the invariant tests in later sections are the numerator condition, anomaly
+matching, holomorphic scale matching, and protected chiral data.
+\end{hypothesis}
+
+\begin{proposition}[SQCD specialization of the NSVZ coordinate relation]
+\label{prop:sqcd-nsvz-coordinate-audit}
+Assume Hypothesis~\ref{hyp:sqcd-nsvz-coordinate-specialization}.  In the
+flavor-symmetric SQCD coordinate chart,
+\[
+  X_h
+  =
+  X_c+N_c\log g^2-N_f\log Z_Q+\kappa ,
+  \label{eq:sqcd-holomorphic-canonical-coordinate-relation}
+\]
+where \(\kappa\) is independent of \(\mu\).  Consequently
+\[
+  \beta_g
+  =
+  -\frac{g^3}{16\pi^2}\,
+  \frac{
+    3N_c-N_f(1-\gamma_Q)
+  }{
+    1-\frac{N_cg^2}{8\pi^2}
+  } .
+  \label{eq:sqcd-nsvz-beta-specialized}
+\]
+\end{proposition}
+
+\begin{proof}
+The general relation of
+Proposition~\ref{prop:nsvz-coordinate-relation-derived} gives
+\[
+  X_h
+  =
+  X_c+C_2(SU(N_c))\log g^2
+  -
+  \sum_i T(R_i)\log Z_i+\kappa .
+\]
+There are \(N_f\) chiral multiplets \(Q^i\) in \(\mathbf N_c\) and \(N_f\)
+chiral multiplets \(\widetilde Q_j\) in \(\overline{\mathbf N}_c\).  Hence
+\[
+  \sum_iT(R_i)\log Z_i
+  =
+  \frac{N_f}{2}\log Z_Q+\frac{N_f}{2}\log Z_{\widetilde Q}.
+\]
+On the flavor-symmetric submanifold this is \(N_f\log Z_Q\), and
+\(C_2(SU(N_c))=N_c\).  This proves
+\eqref{eq:sqcd-holomorphic-canonical-coordinate-relation}.
+
+The holomorphic Wilsonian coordinate has one-loop derivative
+\[
+  \mu\frac{dX_h}{d\mu}=3N_c-N_f .
+\]
+Differentiating \eqref{eq:sqcd-holomorphic-canonical-coordinate-relation}
+therefore gives
+\[
+  \left(
+    -\frac{16\pi^2}{g^3}+\frac{2N_c}{g}
+  \right)\beta_g
+  -N_f\gamma_Q
+  =
+  3N_c-N_f .
+\]
+Moving the anomalous-dimension term to the right hand side yields the
+NSVZ numerator \(3N_c-N_f(1-\gamma_Q)\).  Solving the displayed linear
+equation for \(\beta_g=\mu\,dg/d\mu\) gives
+\eqref{eq:sqcd-nsvz-beta-specialized}.
+\end{proof}
+
+Equivalently, inserting
+\[
+  C_2(SU(N_c))=N_c,\qquad
+  T(\mathbf N_c)=T(\overline{\mathbf N}_c)=\frac12
+\]
+directly into the general NSVZ coordinate formula of
 Chapter~\ref{ch:susy-nonrenormalization-holomorphy} gives
 \[
   \beta_g
@@ -59,21 +163,17 @@ Chapter~\ref{ch:susy-nonrenormalization-holomorphy} gives
     (1-\gamma_Q)
   }{
     1-\frac{C_2(SU(N_c))g^2}{8\pi^2}
-  } .
+  },
 \]
-In the half-trace convention for this SQCD subsection,
-\[
-  C_2(SU(N_c))=N_c,\qquad
-  T(\mathbf N_c)=T(\overline{\mathbf N}_c)=\frac12,
-\]
-and the numerator becomes
+whose numerator is
 \[
   3N_c-N_f(1-\gamma_Q).
 \]
-The formula follows from three inputs: one-loop running of the holomorphic
-Wilsonian coordinate, the rescaling anomaly of matter and vector variables,
-and the definition of \(Z_Q\).  A different canonical coupling coordinate
-changes the displayed rational form by a finite reparametrization of \(g\).
+The proof above displays why the same numerator arises from the
+holomorphic-canonical coordinate relation: the two factors of \(1/2\) from
+the fundamental and antifundamental indices add to the single coefficient
+\(N_f\), while the vector-multiplet Jacobian produces the denominator in the
+chosen canonical coordinate.
 
 \section{Gauge-Invariant Chiral Coordinates}
 
@@ -116,45 +216,293 @@ is included, then \(m_i{}^j\) is treated as a background chiral coordinate
 with the charge needed to make the superpotential have \(R\)-charge \(2\).
 
 \section{Gaugino Condensation}
+\label{sec:pure-sym-gaugino-condensation}
 
 For pure \(SU(N_c)\) supersymmetric Yang--Mills, \(b_0=3N_c\).  Let
 \[
   S=-\frac{1}{32\pi^2}\operatorname{tr}(W^\alpha W_\alpha)
 \]
-be the chiral glueball coordinate in the same trace convention.  The anomalous
-discrete chiral symmetry leaves a \(\mathbb Z_{2N_c}\) symmetry of the
-classical gaugino phase and permits \(N_c\) vacua after condensation:
+be the chiral glueball coordinate in the same trace convention.  Its lowest
+component is proportional to the gaugino bilinear \(\operatorname{tr}\lambda
+\lambda\), so it has engineering dimension \(3\) and gaugino-phase charge
+\(2\).
+
+A useful way to keep the nonperturbative status honest is to separate three
+statements: the anomaly fixes the possible discrete phases, the Witten index
+counts supersymmetric vacua under finite-volume hypotheses, and a glueball
+Wilsonian description produces the chiral condensate equation.  These
+statements are mutually consistent, but none of them alone is a constructive
+mass-gap theorem.
+
+\begin{proposition}[Pure SYM discrete chiral anomaly]
+\label{prop:pure-sym-discrete-chiral-anomaly}
+In pure \(SU(N_c)\) supersymmetric Yang--Mills, the classical gaugino phase
+rotation
+\[
+  \lambda_\alpha\longmapsto \ee^{\ii\alpha}\lambda_\alpha
+\]
+is reduced by the adjoint fermion anomaly to
+\[
+  \mathbb Z_{2N_c}.
+\]
+If a nonzero condensate \(\langle S\rangle\) forms, this discrete symmetry is
+further broken to \(\mathbb Z_2\), giving \(N_c\) possible condensate
+phases.
+\end{proposition}
+
+\begin{proof}
+The left-handed adjoint Weyl fermion has anomaly coefficient
+\[
+  2T(\operatorname{adj})=2N_c
+\]
+in the instanton normalization used throughout the chapter.  Under the
+formal rotation by \(\alpha\), the functional measure shifts the Yang--Mills
+angle by
+\[
+  \theta\longmapsto \theta+2N_c\alpha .
+\]
+Since \(\theta\) is \(2\pi\)-periodic, the rotation is a genuine symmetry
+precisely when
+\[
+  2N_c\alpha\in2\pi\mathbb Z,
+  \qquad\text{that is}\qquad
+  \alpha=\frac{\pi\ell}{N_c},\quad \ell\in\mathbb Z .
+\]
+Modulo \(\alpha\sim\alpha+2\pi\), these rotations form
+\(\mathbb Z_{2N_c}\).  The glueball coordinate \(S\) has charge \(2\) under
+the same rotation:
+\[
+  S\longmapsto \ee^{2\ii\alpha}S .
+\]
+A nonzero value of \(S\) is fixed only when \(\ee^{2\ii\alpha}=1\), which is
+the subgroup generated by \(\alpha=\pi\).  Hence the unbroken subgroup is
+\(\mathbb Z_2\), and the quotient has \(2N_c/2=N_c\) phases.
+\end{proof}
+
+\begin{hypothesis}[Pure SYM glueball \(F\)-term description]
+\label{hyp:pure-sym-glueball-f-term-description}
+The following glueball description is a Wilsonian chiral-sector hypothesis,
+not a constructive derivation of confinement.  Work in a supersymmetric
+holomorphic scheme for pure \(SU(N_c)\) Yang--Mills with the glueball
+coordinate \(S\) normalized as above.  On each massive chiral branch, assume
+that the protected \(F\)-term dependence is locally described by a
+holomorphic, possibly multivalued, superpotential
+\[
+  W_{\mathrm{eff}}(S;\Lambda_h^{3N_c})
+\]
+and that there are no further massless chiral coordinates.  The source
+normalization of \(S\) is fixed by
+\[
+  \Lambda_h^{3N_c}
+  \frac{\partial W_{\mathrm{eff}}}{\partial \Lambda_h^{3N_c}}
+  =
+  S .
+  \label{eq:pure-sym-glueball-source-normalization}
+\]
+Finite holomorphic rescalings of \(S\) or \(\Lambda_h\) change the numerical
+constant in the final condensate but not the number of vacua or their
+relative phases.
+\end{hypothesis}
+
+\begin{proposition}[VY glueball superpotential]
+\label{prop:pure-sym-vy-superpotential}
+Assume Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description}.  Up to the
+finite normalization just described, the pure-SYM glueball superpotential may
+be written as
+\[
+  W_{\mathrm{VY}}(S)
+  =
+  S\left(
+    \log\frac{\Lambda_h^{3N_c}}{S^{N_c}}+N_c
+  \right).
+  \label{eq:pure-sym-vy-superpotential}
+\]
+It has dimension \(3\), satisfies the source identity
+\eqref{eq:pure-sym-glueball-source-normalization}, and its critical points
+obey
+\[
+  S^{N_c}=\Lambda_h^{3N_c}.
+  \label{eq:pure-sym-vy-critical-equation}
+\]
+\end{proposition}
+
+\begin{proof}
+Set \(L=\Lambda_h^{3N_c}\).  The only dimensionless holomorphic combination
+of \(S\) and \(L\) is
+\[
+  u=\frac{S^{N_c}}{L}.
+\]
+A dimension-three glueball superpotential therefore has the local form
+\[
+  W_{\mathrm{eff}}=S f(u)
+\]
+for a holomorphic function \(f\) on a chosen logarithmic branch.  The source
+normalization gives
+\[
+  S
+  =
+  L\frac{\partial}{\partial L}\bigl(Sf(u)\bigr)
+  =
+  -S\,u f'(u).
+\]
+Thus
+\[
+  u f'(u)=-1,
+\]
+so
+\[
+  f(u)=-\log u+c
+\]
+on that branch.  Hence
+\[
+  W_{\mathrm{eff}}
+  =
+  S\left(\log\frac{L}{S^{N_c}}+c\right).
+\]
+The constant \(c\) is shifted by a finite holomorphic rescaling of \(L\) or
+of \(S\).  The standard Veneziano--Yankielowicz representative is the
+normalization \(c=N_c\), giving
+\eqref{eq:pure-sym-vy-superpotential}.  Differentiating this representative
+with respect to \(S\) yields
+\[
+  \frac{\partial W_{\mathrm{VY}}}{\partial S}
+  =
+  \log\frac{\Lambda_h^{3N_c}}{S^{N_c}},
+\]
+so the \(F_S=0\) equation is
+\eqref{eq:pure-sym-vy-critical-equation}.  Finally, both \(S\) and
+\(\Lambda_h^3\) have dimension \(3\), and the logarithm is dimensionless;
+therefore \(W_{\mathrm{VY}}\) has dimension \(3\).
+\end{proof}
+
+Choosing a branch of \(\Lambda_h^3\), the solutions of
+\eqref{eq:pure-sym-vy-critical-equation} are
 \[
   \langle S\rangle_k
   =
-  C\,\Lambda_h^3\,\exp\!\left(\frac{2\pi\ii k}{N_c}\right),
+  C\,\Lambda_h^3\,
+  \exp\!\left(\frac{2\pi\ii k}{N_c}\right),
   \qquad
   k=0,\ldots,N_c-1 .
 \]
 The constant \(C\) depends on the normalization of \(S\) and on the definition
-of \(\Lambda_h\).  The statement with invariant content is the existence of a
-nonzero chiral condensate with these discrete phases in a scheme where the
-low-energy theory has a mass gap and isolated vacua.
+of \(\Lambda_h\).  In the standard representative of
+\eqref{eq:pure-sym-vy-superpotential}, \(C=1\).  At a critical point,
+\[
+  \frac{\partial^2 W_{\mathrm{VY}}}{\partial S^2}
+  =
+  -\frac{N_c}{S},
+\]
+so the glueball critical points are isolated whenever \(S\neq0\).  The
+statement with invariant content is the existence of a nonzero chiral
+condensate with these relative phases in a scheme where the low-energy
+theory has a mass gap and isolated vacua.
+
+\begin{proposition}[Condensate branches and source normalization]
+\label{prop:pure-sym-condensate-branches-source}
+Assume Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description} and assume
+that the isolated critical points of
+\eqref{eq:pure-sym-vy-critical-equation} are realized as massive chiral
+branches of the pure \(SU(N_c)\) theory.  Let
+\[
+  L=\Lambda_h^{3N_c}.
+\]
+On the \(k\)-th branch,
+\[
+  W_k(L)=N_c\,C\,L^{1/N_c}\ee^{2\pi\ii k/N_c},
+  \qquad
+  \langle S\rangle_k
+  =
+  C\,L^{1/N_c}\ee^{2\pi\ii k/N_c},
+  \qquad k\in\mathbb Z/N_c\mathbb Z .
+\]
+The source identity gives
+\[
+  L\frac{\partial W_k}{\partial L}=\langle S\rangle_k .
+\]
+Analytic continuation of \(L\) once around the origin sends
+\(k\mapsto k+1\).  Thus the \(N_c\) branches form one orbit under the
+anomalous chiral symmetry and under a \(2\pi\) theta-angle loop.
+\end{proposition}
+
+\begin{proof}
+At a VY critical point the logarithm in
+\eqref{eq:pure-sym-vy-superpotential} vanishes, so the critical value of the
+standard representative is \(W_k=N_cS_k\).  The finite normalization
+constant \(C\) records the allowed rescaling of \(S\) and of the chosen
+branch of \(\Lambda_h^3\).  Differentiating
+\[
+  W_k(L)=N_c\,C\,L^{1/N_c}\ee^{2\pi\ii k/N_c}
+\]
+gives
+\[
+  L\frac{\partial W_k}{\partial L}
+  =
+  C\,L^{1/N_c}\ee^{2\pi\ii k/N_c}
+  =
+  \langle S\rangle_k .
+\]
+The remaining statement is the elementary monodromy of the \(N_c\)-th root:
+if \(L\) is carried around a positively oriented loop about the origin, then
+\(L^{1/N_c}\) is multiplied by \(\ee^{2\pi\ii/N_c}\).  This shifts the branch
+label by one.  The same shift is produced by the generator
+\(\alpha=\pi/N_c\) of the anomaly-preserving \(\mathbb Z_{2N_c}\), since
+\(S\) has gaugino-phase charge \(2\).
+\end{proof}
+
+The component condensate \(\langle\operatorname{tr}\lambda\lambda\rangle_k\)
+is obtained from \(\langle S\rangle_k\) by the fixed component convention in
+the definition of \(S\).  The phase information above is convention
+independent.  In a massive infinite-volume vacuum, cluster decomposition
+would give
+\[
+  \lim_{|x|\to\infty}
+  \langle S(x)S(0)\rangle_k
+  =
+  \langle S\rangle_k^2 .
+\]
+This is an infinite-volume statement about a chosen pure phase.  A
+finite-volume ground-state basis can instead diagonalize the discrete
+symmetry, and the passage to cluster vacua is part of the massive-branch
+hypothesis rather than a consequence of the index alone.
 
 \section{Witten Index Of Pure Supersymmetric Yang--Mills}
 
-Put pure supersymmetric Yang--Mills on a spatial three-torus \(T^3_L\) with
-periodic spin structure for the gaugino.  The finite-volume index is
+\begin{hypothesis}[Finite-volume pure-SYM index problem]
+\label{hyp:pure-sym-finite-volume-index-problem}
+Fix \(N_c\geq2\) and take the gauge group to be the simply connected group
+\(SU(N_c)\).  Put the theory on a spatial three-torus \(T^3_L\) with
+periodic spin structure for the gaugino, and impose Gauss' law in the
+trivial discrete-flux sector.  The index is computed by a regulated
+Hamiltonian system whose supersymmetry, gauge invariance, and fermion parity
+are exact at finite regulator.  The physical Hilbert space
+\(\mathcal H_0(T^3_L)\) has a self-adjoint Hamiltonian \(H\), closed
+supercharges \(Q,Q^\dagger\), and a fermion-parity operator \((-1)^F\) such
+that
+\[
+  H=\frac12\{Q,Q^\dagger\},
+  \qquad
+  \{(-1)^F,Q\}=\{(-1)^F,Q^\dagger\}=0 .
+\]
+The heat operator \(\ee^{-\beta H}\) is trace class in the regulated
+finite-volume problem, and the zero-energy subspace is finite-dimensional.
+Changing the global form of the gauge group or turning on 't Hooft fluxes
+changes the Hilbert-space sector and is not part of the displayed
+\(SU(N_c)\) index.
+\end{hypothesis}
+
+Under Hypothesis~\ref{hyp:pure-sym-finite-volume-index-problem}, the
+finite-volume index is
 \[
   \mathcal I(\beta,L)
   =
-  \operatorname{Tr}_{\mathcal H(T^3_L)}
+  \operatorname{Tr}_{\mathcal H_0(T^3_L)}
   (-1)^F\ee^{-\beta H}.
 \]
-If the Hamiltonian has discrete spectrum and supersymmetry is represented by
-closed supercharges with
-\[
-  H=\frac12\{Q,Q^\dagger\},
-\]
-then every positive-energy state belongs to a boson-fermion pair.  Indeed, if
-\(H|\psi\rangle=E|\psi\rangle\) with \(E>0\), at least one of
-\(Q|\psi\rangle\) and \(Q^\dagger|\psi\rangle\) is nonzero and has the same
-energy and opposite fermion parity.  Therefore
+
+\begin{proposition}[Finite-volume graded-trace identity]
+\label{prop:pure-sym-finite-volume-graded-trace}
+Assume Hypothesis~\ref{hyp:pure-sym-finite-volume-index-problem}.  Then
 \[
   \mathcal I(\beta,L)
   =
@@ -162,17 +510,67 @@ energy and opposite fermion parity.  Therefore
   -
   \dim\ker H|_{\mathrm{fermionic}}
 \]
-and is independent of \(\beta\).  Its invariance under changes of \(L\) or
-coupling requires that zero-energy states do not disappear into or emerge
-from a continuum; this is an analytic hypothesis beyond the graded trace
-identity.
+and is independent of \(\beta\).  Invariance under a continuous change of
+coupling, volume, or regulator follows provided no zero-energy state is lost
+to a continuum, no state enters from a continuum, and the deformation
+preserves the same supercharge, spin structure, global form, and flux sector.
+\end{proposition}
 
-For \(G=SU(N_c)\), a semiclassical computation can be organized on
-\(\mathbb R^3\times S^1\) at small circle size.  The Wilson line around
-\(S^1\) and the dual photon combine into periodic chiral coordinates
-\(Y_i\), with \(i=1,\ldots,N_c\) and \(\sum_iY_i=0\).  Monopole-instanton
-events associated with the simple roots and the affine root generate an
-affine-Toda superpotential of the form
+\begin{proof}
+If \(H|\psi\rangle=E|\psi\rangle\) with \(E>0\), then at least one of
+\(Q|\psi\rangle\) and \(Q^\dagger|\psi\rangle\) is nonzero; otherwise
+\[
+  E\|\psi\|^2
+  =
+  \frac12\bigl(\|Q|\psi\rangle\|^2+\|Q^\dagger|\psi\rangle\|^2\bigr)
+  =
+  0 .
+\]
+The nonzero image has the same energy and opposite fermion parity.  Thus the
+positive-energy spectrum contributes zero to the supertrace.  Only
+\(\ker H\) remains, giving the displayed formula and \(\beta\)-independence.
+
+For a continuous family of finite-volume Hamiltonians satisfying the same
+algebra, positive-energy levels can cross or split only in supersymmetric
+boson-fermion multiplets.  The integer supertrace can change only if the
+definition of the Hilbert-space sector changes or if zero-energy states
+escape to, or arrive from, a continuum.  This is the analytic caveat: the
+graded trace identity is algebraic, while deformation invariance of a
+continuum quantum field theory is a statement about the spectral behavior of
+the regulated family.
+\end{proof}
+
+\begin{hypothesis}[Small-circle affine-Toda input]
+\label{hyp:pure-sym-small-circle-affine-toda-input}
+The following semiclassical computation is used as a controlled chiral-sector
+model for the same \(SU(N_c)\) theory with periodic fermions on
+\(\mathbb R^3\times S^1_R\).  Work at small \(R\) in a weak-coupling region
+with a generic Wilson line breaking
+\[
+  SU(N_c)\longrightarrow U(1)^{N_c-1}.
+\]
+The Wilson-line scalars and dual photons are assembled into periodic chiral
+coordinates \(Y_i\), \(i=1,\ldots,N_c\), with
+\(\sum_iY_i=0\).  In the basis
+\[
+  \alpha_i=e_i-e_{i+1},\quad i=1,\ldots,N_c-1,
+  \qquad
+  \alpha_0=e_{N_c}-e_1,
+\]
+the \(N_c-1\) fundamental monopole-instantons and the affine monopole each
+have exactly two gaugino zero modes and contribute a chiral superpotential
+term.  Their product has the topological charge and holomorphic weight of
+one four-dimensional instanton, denoted by the compactified scale coordinate
+\(\eta\).  Effects with additional fermion zero modes, nonchiral
+determinants, and boundary terms are assumed not to change the protected
+critical-point count.  After the chiral variables are gapped, the remaining
+three-dimensional theory may be placed in finite spatial volume; each
+nondegenerate massive chiral critical point contributes one even
+supersymmetric ground state to the local index.
+\end{hypothesis}
+
+Under Hypothesis~\ref{hyp:pure-sym-small-circle-affine-toda-input}, the
+monopole terms generate an affine-Toda superpotential of the form
 \[
   W_{\mathrm{aff}}
   =
@@ -181,7 +579,7 @@ affine-Toda superpotential of the form
   \eta\,\exp(Y_{N_c}-Y_1),
 \]
 where \(\eta\) is the four-dimensional holomorphic scale coordinate in the
-compactified normalization.  Define
+compactified normalization.  Define the nonzero variables
 \[
   x_i=\exp(Y_i-Y_{i+1}),\quad i=1,\ldots,N_c-1,
   \qquad
@@ -191,29 +589,108 @@ The constraint is
 \[
   x_1x_2\cdots x_{N_c}=\eta .
 \]
-The critical equations of \(W_{\mathrm{aff}}\) set
+
+\begin{proposition}[Affine-Toda critical-point count]
+\label{prop:pure-sym-affine-toda-critical-count}
+Assume Hypothesis~\ref{hyp:pure-sym-small-circle-affine-toda-input} and
+\(\eta\neq0\).  The critical equations of \(W_{\mathrm{aff}}\) on the
+constraint hypersurface
+\[
+  x_1\cdots x_{N_c}=\eta
+\]
+have exactly \(N_c\) isolated solutions:
 \[
   x_1=x_2=\cdots=x_{N_c}.
 \]
-Hence
+Equivalently, if \(x\) is the common value, then
 \[
-  x_i^{N_c}=\eta ,
+  x^{N_c}=\eta .
 \]
-and there are \(N_c\) isolated supersymmetric vacua.  This matches the
-discrete phases of the gaugino condensate above and gives
-\[
-  \mathcal I_{SU(N_c)}=N_c
-\]
-under the compactification and gap hypotheses just stated.  For a simple
-simply connected gauge group \(G\), the corresponding number is the dual
-Coxeter number \(h^\vee_G\).
+\end{proposition}
 
-The delicate point is the route from this small-circle computation to the
-four-dimensional infinite-volume theory.  The index protects the count only
-if the family of Hamiltonians has no leakage through a continuum and if the
-boundary conditions preserve the same supersymmetry and global form.  The
-index is used here together with this finite-volume and compactification
-ledger.
+\begin{proof}
+Write variations tangent to the constraint as
+\[
+  \delta x_i=x_i\,\delta y_i,
+  \qquad
+  \sum_{i=1}^{N_c}\delta y_i=0 .
+\]
+The first variation of \(W_{\mathrm{aff}}=\sum_i x_i\) is
+\[
+  \delta W_{\mathrm{aff}}
+  =
+  \sum_{i=1}^{N_c}x_i\,\delta y_i .
+\]
+This vanishes for every vector \((\delta y_i)\) with zero sum if and only if
+all \(x_i\) are equal.  The constraint then gives \(x^{N_c}=\eta\), which has
+\(N_c\) solutions when \(\eta\neq0\).
+
+The solutions are isolated.  On the tangent hyperplane
+\(\sum_i\delta y_i=0\), the quadratic term at a critical point is
+\[
+  \frac{x}{2}\sum_{i=1}^{N_c}(\delta y_i)^2 .
+\]
+Since \(x\neq0\), the bilinear form \(\sum_i(\delta y_i)^2\) is
+nondegenerate on the hyperplane.  Thus each critical point is Morse in the
+complex holomorphic sense.
+\end{proof}
+
+\begin{hypothesis}[Index continuation and massive-branch interpretation]
+\label{hyp:pure-sym-index-continuation-massive-branch}
+The \(SU(N_c)\) index obtained in the small-circle semiclassical chamber is
+identified with the four-dimensional finite-volume index only when no
+zero-energy state leaks through a continuum and the spin structure, global
+form, and flux sector are unchanged.  The infinite-volume limit is assumed
+to have \(N_c\) massive pure phases, related by the anomalous
+\(\mathbb Z_{2N_c}\) chiral symmetry and satisfying cluster decomposition.
+This hypothesis is not a constructive proof of confinement or of a mass gap.
+\end{hypothesis}
+
+\begin{proposition}[Pure \(SU(N_c)\) index and condensate ledger]
+\label{prop:pure-sym-index-condensate-ledger}
+Assume Hypotheses~\ref{hyp:pure-sym-finite-volume-index-problem},
+\ref{hyp:pure-sym-small-circle-affine-toda-input}, and
+\ref{hyp:pure-sym-index-continuation-massive-branch}.  Then
+\[
+  \mathcal I_{SU(N_c)}=N_c .
+\]
+If, in addition, Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description}
+realizes the massive chiral branches through the glueball coordinate \(S\),
+then the \(N_c\) branches have condensates
+\[
+  \langle S\rangle_k
+  =
+  C\,\Lambda_h^3\ee^{2\pi\ii k/N_c},
+  \qquad k=0,\ldots,N_c-1,
+\]
+and the discrete chiral symmetry is broken as
+\(\mathbb Z_{2N_c}\to\mathbb Z_2\) in each pure phase.
+\end{proposition}
+
+\begin{proof}
+The affine-Toda computation gives \(N_c\) isolated supersymmetric critical
+points in the small-circle chamber.  The finite-volume graded-trace identity
+turns this critical-point count into the index in that chamber, because the
+critical points are isolated and massive in the chiral variables of the
+semiclassical approximation.  The continuation hypothesis then identifies
+the same integer with the four-dimensional \(SU(N_c)\) finite-volume index.
+
+The condensate statement uses an input beyond the index: the additional
+glueball \(F\)-term hypothesis.  Under that hypothesis,
+Proposition~\ref{prop:pure-sym-condensate-branches-source} gives precisely
+the displayed \(N_c\)-fold orbit of \(\langle S\rangle\).  Since \(S\) has
+gaugino-phase charge \(2\), a nonzero value of \(\langle S\rangle_k\) leaves
+only the \(\alpha=\pi\) subgroup unbroken, namely \(\mathbb Z_2\).
+\end{proof}
+
+For a simple simply connected gauge group \(G\), the expected index is the
+dual Coxeter number \(h^\vee_G\).  The monograph does not use that general
+statement here; the detailed derivation above is the \(SU(N_c)\) case, where
+\(h^\vee_{SU(N_c)}=N_c\).  The delicate point is still the route from the
+regulated finite-volume computation to the four-dimensional infinite-volume
+theory: the index protects a signed count only under the stated spectral and
+boundary-condition hypotheses, while the condensate requires the additional
+massive-branch and chiral-source input.
 
 \section{ADS Superpotential}
 
@@ -247,6 +724,270 @@ The coefficient is fixed by matching to a semiclassical instanton
 calculation for \(N_f=N_c-1\) and by holomorphic decoupling for smaller
 \(N_f\), once the instanton measure and scale convention have been specified.
 
+\begin{hypothesis}[SQCD one-instanton calculus input]
+\label{hyp:sqcd-one-instanton-calculus}
+For the direct instanton derivation at \(N_f=N_c-1\), the following analytic
+inputs are assumed.  The Euclidean functional integral is regulated in a
+supersymmetric holomorphic scheme preserving
+\(SU(N_f)_L\times SU(N_f)_R\times U(1)_B\) and the anomaly-free
+\(U(1)_R\).  The vacuum is taken on the maximal-rank Higgs patch, so the
+gauge group is completely broken and the instanton size integral is cut off
+at large size by the Higgs scale.  The collective-coordinate change of
+variables separates exact zero modes from nonzero modes, with the topological
+charge, \(\theta\)-angle, and coupling normalization fixed by
+Section~\ref{sec:bpst-instanton-thooft-vertex}.  Boundary terms from the
+small-size endpoint are absorbed into the holomorphic scale coordinate
+\(\Lambda_h\), and no further boundary contribution with the same quantum
+numbers is present.  Under these assumptions the one-instanton sector defines
+a holomorphic chiral \(F\)-term up to an overall nonzero constant depending on
+the normalization of \(\Lambda_h\).
+\end{hypothesis}
+
+\begin{proposition}[Higgs-patch collective-coordinate ledger]
+\label{prop:ads-higgs-patch-collective-coordinate-ledger}
+Let \(N_f=N_c-1\).  On the dense maximal-rank meson patch one may choose
+local complex coordinates
+\[
+  Q^{ai}=v_i\delta^{ai},\qquad
+  \widetilde Q_{ia}=\widetilde v_i\delta_{ia},
+  \qquad i=1,\ldots,N_c-1,
+  \label{eq:ads-diagonal-higgs-patch}
+\]
+with all \(v_i\widetilde v_i\neq0\), so that
+\[
+  M^i{}_j=\widetilde v_i v_i\,\delta^i{}_j,\qquad
+  \det M=\prod_{i=1}^{N_c-1}\widetilde v_i v_i .
+\]
+At such a point the gauge group \(SU(N_c)\) is completely Higgsed.  A
+charge-one instanton has \(4N_c\) bosonic collective coordinates, \(2N_c\)
+adjoint gaugino zero modes, and \(2N_c-2\) matter-fermion zero modes.  The
+Yukawa coupling to the Higgs expectation values lifts \(2N_c-2\) adjoint
+zero modes together with all \(2N_c-2\) matter zero modes, leaving exactly
+two gaugino zero modes for the \(d^2\theta\) superpotential measure.
+\end{proposition}
+
+\begin{proof}
+The diagonal form \eqref{eq:ads-diagonal-higgs-patch} is only a local
+coordinate choice on the open set \(\det M\neq0\); the final answer must be
+rewritten in flavor-covariant variables.  If \(g\in SU(N_c)\) preserves all
+nonzero columns \(v_ie_i\), \(i=1,\ldots,N_c-1\), then \(g e_i=e_i\) for
+those \(i\).  The determinant-one condition then fixes the last basis vector
+as well, so the continuous stabilizer is trivial.
+
+For \(N_c\geq3\), the charge-one \(SU(N_c)\) instanton bosonic moduli may be
+counted as four translations, one size coordinate, and the gauge-orientation
+quotient
+\[
+  \frac{SU(N_c)}{SU(N_c-2)\times U(1)} .
+\]
+The orientation quotient has real dimension
+\[
+  (N_c^2-1)-\bigl((N_c-2)^2-1\bigr)-1
+  =
+  4N_c-5 .
+\]
+For \(N_c=2\) the orientation space is the full \(SU(2)\), which has the
+same dimension \(3=4N_c-5\).  Thus the formula below holds uniformly.
+The total bosonic dimension is therefore
+\[
+  4+1+(4N_c-5)=4N_c .
+\]
+
+The fermion zero-mode counts are the index-theorem counts in the BPST
+normalization used earlier.  For a charge-one instanton,
+\[
+  n_{\lambda}=2T(\operatorname{adj})=2N_c,
+  \qquad
+  n_{\psi_Q}=N_f,\qquad
+  n_{\psi_{\widetilde Q}}=N_f,
+\]
+because \(2T(\mathbf N_c)=2T(\overline{\mathbf N}_c)=1\).  Hence the matter
+zero-mode count is \(2N_f=2N_c-2\).
+
+The Euclidean Yukawa terms contain the finite-dimensional zero-mode
+couplings obtained by inserting the scalar expectation values into the
+gauge-matter interaction
+\[
+  \sqrt2\,\widetilde Q^\dagger\lambda\psi_{\widetilde Q}
+  -
+  \sqrt2\,\psi_Q\lambda Q^\dagger
+  +\text{conjugate terms},
+  \label{eq:ads-yukawa-lifting-zero-mode-coupling}
+\]
+with spinor and color contractions inherited from
+Chapter~\ref{ch:susy-gauge-theory}.  In the diagonal patch each nonzero
+\(v_i\) and \(\widetilde v_i\) supplies a nondegenerate pairing between a
+matter zero mode and one non-Goldstino gaugino mode.  Thus the lifting matrix
+has rank \(2N_f=2N_c-2\).  The two gaugino modes generated by the broken
+supersymmetries are not lifted; they are the exact Grassmann coordinates
+whose integration is the \(d^2\theta\) measure.
+\end{proof}
+
+\begin{proposition}[Maximal-rank meson invariant for the ADS patch]
+\label{prop:ads-maximal-rank-meson-invariant}
+Let \(n=N_c-1\), and let
+\[
+  U_n=\{M\in \operatorname{Mat}_{n\times n}(\mathbb C)\mid \det M\neq0\}.
+\]
+Suppose \(\mathcal F:U_n\to\mathbb C\) is a single-valued holomorphic
+function satisfying
+\[
+  \mathcal F(LMR^{-1})=\mathcal F(M),
+  \qquad L,R\in \operatorname{SL}_n(\mathbb C),
+  \label{eq:ads-special-flavor-invariance}
+\]
+and the homogeneous scaling law
+\[
+  \mathcal F(sM)=s^{-n}\mathcal F(M),
+  \qquad s\in\mathbb C^\times .
+  \label{eq:ads-reduced-factor-homogeneity}
+\]
+Then
+\[
+  \mathcal F(M)=\frac{C}{\det M}
+\]
+for a constant \(C\).  For the \(N_f=N_c-1\) SQCD \(R\)-charge assignment,
+\((\det M)^{-1}\) has \(R\)-charge \(2\).
+\end{proposition}
+
+\begin{proof}
+The action in \eqref{eq:ads-special-flavor-invariance} is the complexified
+special-flavor action on the meson matrix.  For
+\(\delta\in\mathbb C^\times\), set
+\[
+  D_\delta=\operatorname{diag}(\delta,1,\ldots,1).
+\]
+Every \(M\in U_n\) with \(\det M=\delta\) lies in the same
+\(\operatorname{SL}_n(\mathbb C)\) left orbit as \(D_\delta\), because
+\[
+  A=M D_\delta^{-1}
+  \qquad\text{satisfies}\qquad
+  \det A=(\det M)(\det D_\delta)^{-1}=1
+\]
+and hence \(A\in \operatorname{SL}_n(\mathbb C)\) with \(M=AD_\delta\).
+Therefore
+\(\mathcal F\) is constant on each determinant fiber.  Define
+\[
+  f(\delta)=\mathcal F(D_\delta),\qquad \delta\in\mathbb C^\times .
+\]
+Then
+\[
+  \mathcal F(M)=f(\det M).
+\]
+
+Now scale \(M\) by \(s\in\mathbb C^\times\).  Since
+\(\det(sM)=s^n\det M\), the homogeneity condition gives
+\[
+  f(s^n\delta)=s^{-n}f(\delta).
+\]
+For arbitrary \(u\in\mathbb C^\times\), choose \(s\) with \(s^n=u\).  The
+displayed identity becomes
+\[
+  f(u\delta)=u^{-1}f(\delta).
+\]
+Taking \(\delta=1\) gives \(f(u)=C/u\).  Thus
+\(\mathcal F(M)=C/(\det M)\).
+
+Finally, when \(N_f=N_c-1=n\),
+\[
+  R(M)=2\left(1-\frac{N_c}{N_c-1}\right)=-\frac{2}{n},
+  \qquad
+  R(\det M)=-2,
+\]
+so \(R((\det M)^{-1})=2\).
+\end{proof}
+
+\begin{proposition}[One-instanton test of the ADS numerator and denominator]
+\label{prop:ads-one-instanton-test}
+Assume Hypothesis~\ref{hyp:sqcd-one-instanton-calculus}.  For
+\(N_f=N_c-1\), the one-instanton contribution to the Wilsonian chiral
+superpotential has the form
+\[
+  W_{k=1}
+  =
+  \kappa_{N_c}
+  \frac{\Lambda_h^{2N_c+1}}{\det M},
+  \qquad
+  \kappa_{N_c}\neq0
+\]
+in the holomorphic scale convention used in the instanton measure.  This is
+the \(N_f=N_c-1\) specialization of \(W_{\mathrm{ADS}}\).
+\end{proposition}
+
+\begin{proof}
+For \(N_f=N_c-1\), Proposition~\ref{prop:ads-higgs-patch-collective-coordinate-ledger}
+and Hypothesis~\ref{hyp:sqcd-one-instanton-calculus} reduce the charge-one
+sector to a finite-dimensional zero-mode integral of the form
+\[
+  \int d^4x_0\,d^2\eta\,
+  \Lambda_h^{2N_c+1}\,\mathcal F(M),
+  \label{eq:ads-reduced-instanton-integral}
+\]
+where \(x_0\) is the instanton position, \(\eta_\alpha\) are the two exact
+gaugino modes, and \(\mathcal F(M)\) is holomorphic on the patch
+\(\det M\neq0\).  The one-loop holomorphic exponent is
+\[
+  b_0=3N_c-N_f=2N_c+1,
+\]
+so a charge-one instanton carries the chiral scale factor
+\(\Lambda_h^{2N_c+1}\).  The Higgs expectation values cut off the large-size
+region of the instanton integral through a positive term of the form
+\[
+  \Delta S_{\mathrm{cl}}
+  =
+  c\,\rho^2
+  \sum_{i=1}^{N_c-1}\bigl(|v_i|^2+|\widetilde v_i|^2\bigr),
+  \qquad c>0,
+\]
+in the bosonic collective-coordinate action, while the small-size endpoint is
+absorbed into the holomorphic scale by the hypothesis.
+
+The remaining dependence must be a holomorphic function of the meson matrix
+\(M^i{}_j=\widetilde Q_jQ^i\), because the baryonic coordinates are absent
+when \(N_f=N_c-1\).  The exact nonzero modes and lifted zero modes are
+integrated out in a regulator preserving the special flavor group, so
+\(\mathcal F\) obeys the complexified
+\(\operatorname{SL}(N_f,\mathbb C)_L\times
+\operatorname{SL}(N_f,\mathbb C)_R\) invariance used in
+Proposition~\ref{prop:ads-maximal-rank-meson-invariant}.  The reduced factor
+\(\mathcal F(M)\) in \eqref{eq:ads-reduced-instanton-integral} must carry
+engineering dimension
+\[
+  3-(2N_c+1)=-(2N_c-2),
+\]
+so under the coordinate scaling \(M\mapsto sM\), where each meson entry has
+dimension \(2\), it is homogeneous of degree \(-N_f\).  With \(N_f=N_c-1\),
+Proposition~\ref{prop:ads-maximal-rank-meson-invariant} gives
+\[
+  \mathcal F(M)=\frac{C}{\det M}.
+\]
+The anomaly-free \(R\)-charge gives the independent convention check
+\[
+  R(M)=2\left(1-\frac{N_c}{N_c-1}\right)=-\frac{2}{N_c-1},
+  \qquad
+  R(\det M)=-2,
+\]
+so \((\det M)^{-1}\) has \(R\)-charge \(2\), matching the charge of a
+superpotential.  Thus the one-instanton sector has the displayed form, with
+the nonzero coefficient fixed by the chosen normalization of the regulated
+collective-coordinate measure.
+\end{proof}
+
+For the smallest example, \(SU(2)\) with one flavor, the ledger gives
+eight bosonic collective coordinates, four gaugino zero modes, and two matter
+zero modes.  The Higgs expectation value lifts two gaugino modes together
+with the two matter modes, leaving \(d^2\theta\).  The formula becomes
+\[
+  W_{SU(2),\,N_f=1}
+  =
+  \kappa_2\frac{\Lambda_h^5}{M},
+  \qquad M=\widetilde Q_aQ^a .
+\]
+This low-rank case is often the cleanest way to audit the convention: the
+power \(5\) is \(3N_c-N_f\), the denominator has dimension \(2\), and
+\(R(M)=-2\), so \(M^{-1}\) supplies the required superpotential
+\(R\)-charge \(2\).
+
 \begin{proposition}[Holomorphic decoupling equation]
 \label{prop:susy-holomorphic-decoupling}
 Give the \(N_f\)-flavor theory a mass \(m\) for the last flavor.  If the
@@ -273,21 +1014,1639 @@ Wilsonian chiral coordinate.  Eliminating the common value of \(\tau(m)\)
 gives the displayed equation.
 \end{proof}
 
-\section{Quantum Modified Constraint}
+\begin{proposition}[ADS decoupling recursion]
+\label{prop:ads-holomorphic-decoupling-recursion}
+Fix \(N_c\) and let \(1\leq n<N_c-1\).  Suppose the \((n+1)\)-flavor
+Wilsonian chiral theory has, on a chosen holomorphic branch of the
+maximal-rank meson patch, the ADS superpotential
+\[
+  W_{n+1}
+  =
+  C_{n+1}
+  \left(
+    \frac{\Lambda_{+}^{3N_c-(n+1)}}{\det \mathcal M}
+  \right)^{\frac{1}{N_c-n-1}},
+\]
+with \(C_{n+1}\neq0\).  Add a holomorphic mass term
+\[
+  W_{\mathrm{mass}}=m\,\mathcal M^L{}_L,\qquad L=n+1,
+\]
+and assume the Wilsonian threshold is described by
+Proposition~\ref{prop:susy-holomorphic-decoupling}.  On the light branch
+\(\mathcal M^a{}_L=\mathcal M^L{}_a=0\), \(a=1,\ldots,n\), the effective
+\(n\)-flavor superpotential is
+\[
+  W_n
+  =
+  C_n
+  \left(
+    \frac{\Lambda_-^{3N_c-n}}{\det M}
+  \right)^{\frac{1}{N_c-n}},
+  \qquad
+  \Lambda_-^{3N_c-n}=m\,\Lambda_+^{3N_c-(n+1)},
+  \label{eq:ads-decoupling-recursion-result}
+\]
+where \(M^a{}_b\) is the light meson block and, writing \(d=N_c-n\),
+\[
+  C_n
+  =
+  d\left(\frac{C_{n+1}}{d-1}\right)^{\frac{d-1}{d}} .
+  \label{eq:ads-coefficient-recursion}
+\]
+In the holomorphic scale normalization for which the one-instanton seed has
+\(C_{N_c-1}=1\), the recursion gives the standard representative
+\[
+  C_n=N_c-n .
+\]
+\end{proposition}
+
+\begin{proof}
+The statement is local on a holomorphic branch because fractional powers are
+involved.  The branch data are the usual discrete chiral choices of the
+Wilsonian description and do not affect the algebraic recursion.
+
+Set \(d=N_c-n\geq2\), split \(\mathcal M\) into the light block \(M\), the
+mixed components, and
+\[
+  X=\mathcal M^L{}_L .
+\]
+On the light branch the determinant factorizes:
+\[
+  \det\mathcal M=X\det M .
+\]
+Define the holomorphic quantity
+\[
+  A=\frac{\Lambda_{+}^{3N_c-(n+1)}}{\det M}.
+\]
+The superpotential to be extremized with respect to the massive chiral
+coordinate \(X\) is therefore
+\[
+  W(X)
+  =
+  C_{n+1}\left(\frac{A}{X}\right)^{\frac1{d-1}}
+  +mX .
+  \label{eq:ads-recursion-one-variable-w}
+\]
+Introduce
+\[
+  Y=\left(\frac{A}{X}\right)^{\frac1{d-1}} .
+\]
+The \(F_X=0\) equation is
+\[
+  0
+  =
+  -\frac{C_{n+1}}{d-1}
+  A^{\frac1{d-1}}X^{-\frac{d}{d-1}}
+  +m .
+\]
+Multiplying by \(X\) gives the useful identity
+\[
+  mX=\frac{C_{n+1}}{d-1}Y .
+  \label{eq:ads-recursion-mx-y}
+\]
+The same equation also gives
+\[
+  Y^d
+  =
+  \frac{(d-1)m}{C_{n+1}}\,A .
+  \label{eq:ads-recursion-y-power}
+\]
+Substituting \eqref{eq:ads-recursion-mx-y} into
+\eqref{eq:ads-recursion-one-variable-w} gives
+\[
+  W_{\mathrm{eff}}
+  =
+  C_{n+1}Y+mX
+  =
+  \frac{d}{d-1}C_{n+1}Y .
+\]
+Using \eqref{eq:ads-recursion-y-power}, this becomes
+\[
+  W_{\mathrm{eff}}
+  =
+  d\left(\frac{C_{n+1}}{d-1}\right)^{\frac{d-1}{d}}
+  \left(
+    \frac{m\Lambda_{+}^{3N_c-(n+1)}}{\det M}
+  \right)^{\frac1d}.
+\]
+The scale matching in Proposition~\ref{prop:susy-holomorphic-decoupling}
+turns the numerator into \(\Lambda_-^{3N_c-n}\), proving
+\eqref{eq:ads-decoupling-recursion-result} and
+\eqref{eq:ads-coefficient-recursion}.
+
+If \(C_{N_c-1}=1\), induction on \(d=N_c-n\) gives \(C_n=d\).  Indeed, if
+\(C_{n+1}=d-1\), then \eqref{eq:ads-coefficient-recursion} gives
+\[
+  C_n
+  =
+  d\left(\frac{d-1}{d-1}\right)^{\frac{d-1}{d}}
+  =
+  d .
+\]
+\end{proof}
+
+\section{Quantum Modified Constraint and Confining Decoupling}
 
 For \(N_f=N_c\), the classical relation between mesons and baryons is
 \[
   \det M-B\widetilde B=0 .
 \]
-The holomorphic scale has dimension \(2N_c\) and the same global quantum
-numbers as the left side.  The quantum chiral coordinate ring is therefore
-expected, under the Wilsonian and infrared hypotheses just stated, to obey
+The holomorphic scale has dimension \(2N_c\) and the same spurionic quantum
+numbers as the left side.  Under the Wilsonian and infrared hypotheses made
+explicit below, the protected quantum chiral-coordinate ring is represented by
 \[
   \det M-B\widetilde B=\Lambda_h^{2N_c}.
 \]
 This equation is a statement about the chiral ring and its vacuum space.  It
 does not by itself determine the full Hilbert space, massive spectrum, or
 metric on the moduli space.
+
+\begin{hypothesis}[\(N_f=N_c\) and \(N_f=N_c+1\) chiral-sector descriptions]
+\label{hyp:sqcd-quantum-modified-confining-input}
+The following derivations compare protected chiral-coordinate rings in a
+supersymmetric Wilsonian scheme.  For \(N_f=N_c\), the infrared chiral
+sector is assumed to be generated by \(M,B,\widetilde B\), with no generated
+superpotential and with a possible holomorphic deformation of the classical
+relation.  For \(N_f=N_c+1\), the infrared chiral sector is assumed to be
+generated by mesons \(M^I{}_J\), baryons \(B_I\), and antibaryons
+\(\widetilde B^J\), \(I,J=1,\ldots,N_c+1\), with superpotential
+\[
+  W_{N_c+1}
+  =
+  \frac{1}{\Lambda_{+}^{2N_c-1}}
+  \left(B_I M^I{}_J\widetilde B^J-\det M\right).
+  \label{eq:sqcd-nc-plus-one-confining-superpotential}
+\]
+Here \(\Lambda_{+}\) is the holomorphic scale of the \(N_f=N_c+1\) theory.
+The statements below derive consequences of these chiral descriptions and of
+holomorphic decoupling; they do not construct the full Hilbert space metric
+or prove confinement from a microscopic regulator.
+\end{hypothesis}
+
+\begin{proposition}[Uniqueness of the quantum modification]
+\label{prop:sqcd-quantum-modification-uniqueness}
+Assume the \(N_f=N_c\) chiral-sector part of
+Hypothesis~\ref{hyp:sqcd-quantum-modified-confining-input}.  If the
+classical constraint is deformed by a field-independent holomorphic scale
+term, then up to the normalization of \(\Lambda_h\) the only allowed
+deformation is
+\[
+  \det M-B\widetilde B=\Lambda_h^{2N_c}.
+\]
+\end{proposition}
+
+\begin{proof}
+For \(N_f=N_c\), the anomaly-free assignment gives
+\[
+  R(Q)=R(\widetilde Q)=0 .
+\]
+Thus \(R(M)=R(B)=R(\widetilde B)=0\).  The two classical terms have the same
+engineering dimension:
+\[
+  [\det M]=2N_c,\qquad [B\widetilde B]=N_c+N_c=2N_c,
+\]
+and the same flavor and baryon quantum numbers.  A field-independent
+holomorphic deformation must therefore have dimension \(2N_c\), zero
+baryon charge, and the same spurionic flavor and \(R\)-charges.  The
+holomorphic scale of the \(N_f=N_c\) theory appears in the invariant
+combination
+\[
+  \Lambda_h^{b_0},\qquad b_0=3N_c-N_f=2N_c .
+\]
+No other field-independent monomial in the holomorphic scale has the required
+dimension.  Absorbing the nonzero numerical coefficient into the definition
+of \(\Lambda_h^{2N_c}\) gives the displayed constraint.
+\end{proof}
+
+\begin{proposition}[Mass decoupling from \(N_f=N_c+1\) to \(N_f=N_c\)]
+\label{prop:sqcd-confining-to-quantum-modified-decoupling}
+Assume Hypothesis~\ref{hyp:sqcd-quantum-modified-confining-input}.  Add a
+holomorphic mass term for the last flavor of the \(N_f=N_c+1\) theory,
+\[
+  W_{\mathrm{mass}}=m\,M^{L}{}_{L},
+  \qquad L=N_c+1 .
+\]
+On the branch where the mixed heavy-light chiral coordinates vanish, the
+\(F\)-term equations of
+\[
+  W_{N_c+1}+W_{\mathrm{mass}}
+\]
+imply the \(N_f=N_c\) quantum-modified constraint
+\[
+  \det \widehat M-B\widetilde B=\Lambda_-^{2N_c},
+  \qquad
+  \Lambda_-^{2N_c}=m\,\Lambda_+^{2N_c-1},
+  \label{eq:sqcd-qm-from-sconfining-decoupling}
+\]
+where \(\widehat M^a{}_b\), \(a,b=1,\ldots,N_c\), is the light meson block
+and \(B=B_L,\widetilde B=\widetilde B^L\) are the light baryons.
+\end{proposition}
+
+\begin{proof}
+Split the flavor indices as \(I=(a,L)\), with \(a=1,\ldots,N_c\).  On the
+branch used for the low-energy \(N_f=N_c\) variables, set
+\[
+  M^a{}_L=M^L{}_a=0,\qquad B_a=\widetilde B^a=0,
+\]
+and write \(X=M^L{}_L\).  Then
+\[
+  \det M=X\det\widehat M,
+  \qquad
+  B_I M^I{}_J\widetilde B^J=B_LX\widetilde B^L .
+\]
+The superpotential restricted to these coordinates is
+\[
+  W
+  =
+  \frac{X}{\Lambda_+^{2N_c-1}}
+  \left(B\widetilde B-\det\widehat M\right)
+  +mX .
+\]
+The \(F\)-term equation for \(X\) gives
+\[
+  \frac{B\widetilde B-\det\widehat M}{\Lambda_+^{2N_c-1}}+m=0,
+\]
+or
+\[
+  \det\widehat M-B\widetilde B=m\,\Lambda_+^{2N_c-1}.
+\]
+The remaining \(F\)-term equations along the low-energy branch set
+\[
+  X=0
+\]
+unless one sits on special subloci where additional massive coordinates have
+not yet been eliminated.  Finally, holomorphic decoupling at the mass
+threshold gives
+\[
+  \Lambda_-^{3N_c-N_c}
+  =
+  m\,\Lambda_+^{3N_c-(N_c+1)}
+  =
+  m\,\Lambda_+^{2N_c-1},
+\]
+which is exactly \eqref{eq:sqcd-qm-from-sconfining-decoupling}.
+\end{proof}
+
+\begin{proposition}[Checks on the \(N_f=N_c+1\) confining superpotential]
+\label{prop:sqcd-sconfining-superpotential-checks}
+For \(N_f=N_c+1\), the two terms in
+\eqref{eq:sqcd-nc-plus-one-confining-superpotential} have the same
+engineering dimension and \(R\)-charge, and the prefactor makes
+\(W_{N_c+1}\) a dimension-three, \(R\)-charge-two chiral superpotential.
+\end{proposition}
+
+\begin{proof}
+At \(N_f=N_c+1\),
+\[
+  R(Q)=R(\widetilde Q)=\frac1{N_c+1}.
+\]
+Thus
+\[
+  R(M)=\frac2{N_c+1},\qquad
+  R(B_I)=R(\widetilde B^J)=\frac{N_c}{N_c+1}.
+\]
+The product \(B_IM^I{}_J\widetilde B^J\) has \(R\)-charge
+\[
+  \frac{N_c}{N_c+1}+\frac2{N_c+1}
+  +\frac{N_c}{N_c+1}
+  =
+  2 ,
+\]
+and \(\det M\), where the determinant is over the \(N_f=N_c+1\) flavor
+indices, has \(R\)-charge
+\[
+  (N_c+1)\frac2{N_c+1}=2 .
+\]
+Classically, \(\dim M=2\) and \(\dim B_I=\dim\widetilde B^J=N_c\).  Both
+\(B_IM^I{}_J\widetilde B^J\) and \(\det M\) therefore have dimension
+\[
+  2N_c+2=2(N_c+1).
+\]
+Since \(\Lambda_+^{2N_c-1}\) has dimension \(2N_c-1\) and zero
+\(R\)-charge in the anomaly-free spurion convention, the quotient has
+dimension \(3\) and \(R\)-charge \(2\), as required.
+\end{proof}
+
+\section{Superconformal SQCD Bookkeeping}
+\label{sec:n1-superconformal-sqcd-bookkeeping}
+
+The same anomaly ledger also fixes the candidate superconformal data of SQCD
+in the range where an interacting infrared fixed point exists.  For a chiral
+primary operator \(\mathcal O\) in a four-dimensional \(\mathcal N=1\)
+superconformal theory,
+\[
+  \Delta(\mathcal O)=\frac32 R(\mathcal O).
+\]
+For an elementary chiral field \(\Phi\), write its scalar scaling dimension
+as
+\[
+  \Delta(\Phi)=1+\frac12\gamma_\Phi .
+\]
+Compatibility of these two conventions gives
+\[
+  \gamma_\Phi=3R(\Phi)-2 .
+  \label{eq:n1-gamma-from-r}
+\]
+Here \(\gamma_\Phi\) is the chapter convention
+\[
+  \gamma_\Phi=\frac{d}{d\log\mu}\log Z_\Phi .
+\]
+Some supersymmetric-gauge-theory references instead use
+\(\mathcal C_\Phi=\frac12\,d\log Z_\Phi/d\log\mu\).  The conversion is
+\[
+  \gamma_\Phi=2\mathcal C_\Phi,\qquad
+  \Delta(\Phi)=1+\mathcal C_\Phi .
+\]
+For a product of two chiral fields with equal anomalous dimensions, the
+product anomalous dimension in the \(\mathcal C\)-notation is numerically
+equal to the single-field \(\gamma_\Phi\) used below:
+\[
+  \mathcal C_{\Phi\Psi}
+  =
+  \Delta(\Phi\Psi)-2
+  =
+  \mathcal C_\Phi+\mathcal C_\Psi
+  =
+  \gamma_\Phi
+  \qquad
+  (\gamma_\Phi=\gamma_\Psi).
+\]
+This is why the conifold formulas may be written with \(1-\gamma_A\) here
+while the same fixed point is sometimes described by
+\(\mathcal C_{AB}=-\frac12\) for the meson \(A_iB_j\).
+
+For SQCD with no tree superpotential, the anomaly-free assignment of the
+previous section gives
+\[
+  R(Q)=R(\widetilde Q)=1-\frac{N_c}{N_f},
+  \qquad
+  \gamma_Q=1-\frac{3N_c}{N_f}.
+\]
+Substitution in the NSVZ numerator gives
+\[
+  3N_c-N_f(1-\gamma_Q)
+  =
+  3N_c-N_f\left(\frac{3N_c}{N_f}\right)
+  =
+  0 .
+\]
+Thus the anomaly-free \(R\)-charge is also the unique candidate
+superconformal \(R\)-charge compatible with the flavor-symmetric NSVZ
+coordinate.
+
+The meson \(M=\widetilde Q Q\) has
+\[
+  R(M)=2\left(1-\frac{N_c}{N_f}\right),
+  \qquad
+  \Delta(M)=3\left(1-\frac{N_c}{N_f}\right).
+\]
+The scalar unitarity bound for a gauge-invariant chiral operator requires
+\(\Delta(M)\geq1\), which gives \(N_f\geq\frac32N_c\).  This is the lower
+edge of the usual electric conformal-window test; below it the electric
+meson cannot be an interacting chiral primary with the displayed
+superconformal \(R\)-charge.  The upper edge \(N_f<3N_c\) is the condition
+that the electric gauge coupling is asymptotically free in the holomorphic
+one-loop coordinate.  The existence and uniqueness of the infrared fixed
+point in the full interval require the nonperturbative input summarized in
+the status boundary below.
+
+\begin{hypothesis}[SCFT input used in bookkeeping]
+\label{hyp:n1-scft-bookkeeping-input}
+Whenever this chapter assigns a scaling dimension by
+\(\Delta=\frac32R\), the following assumptions are in force: the infrared
+limit exists as a unitary four-dimensional \(\mathcal N=1\) SCFT; the
+operator under discussion is a chiral primary in that SCFT; the displayed
+\(U(1)_R\) current is the superconformal \(R\)-current after all allowed
+mixing with non-\(R\) flavor currents has been fixed; and accidental
+symmetries do not change the \(R\)-charge of the operator in question.  The
+anomaly and NSVZ calculations below test these assumptions; they do not by
+themselves construct the fixed point.
+\end{hypothesis}
+
+\begin{proposition}[SQCD central charges and free-field comparison]
+\label{prop:sqcd-conformal-window-central-charges}
+Assume Hypothesis~\ref{hyp:n1-scft-bookkeeping-input} and suppose
+\(\frac32N_c<N_f<3N_c\).  For the candidate SQCD superconformal
+\(R\)-current displayed above,
+\[
+  \operatorname{Tr}R=-N_c^2-1,
+  \qquad
+  \operatorname{Tr}R^3
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+  \label{eq:sqcd-superconformal-r-traces}
+\]
+Consequently the conformal anomalies are
+\[
+  a_{\mathrm{IR}}
+  =
+  \frac3{32}
+  \left(
+    4N_c^2-2-\frac{6N_c^4}{N_f^2}
+  \right),
+  \qquad
+  c_{\mathrm{IR}}
+  =
+  \frac1{32}
+  \left(
+    14N_c^2-4-\frac{18N_c^4}{N_f^2}
+  \right).
+  \label{eq:sqcd-central-charges}
+\]
+The free ultraviolet theory has
+\[
+  a_{\mathrm{UV}}
+  =
+  \frac3{16}(N_c^2-1)+\frac{N_cN_f}{24}.
+  \label{eq:sqcd-free-uv-a}
+\]
+Writing \(y=N_f/N_c\), the difference is
+\[
+  a_{\mathrm{UV}}-a_{\mathrm{IR}}
+  =
+  \frac{N_c^2}{48y^2}
+  (3-y)^2(2y+3).
+  \label{eq:sqcd-free-field-a-comparison}
+\]
+It is strictly positive in the interacting conformal window and vanishes at
+the Gaussian edge \(N_f=3N_c\).  This is only an anomaly-arithmetic
+comparison between a free ultraviolet fixed point and the candidate
+infrared SCFT.  It is not a proof of a monotonicity theorem or of the
+existence of the flow; those remain part of the independent continuum and
+SCFT hypotheses.
+\end{proposition}
+
+\begin{proof}
+The traces are over Weyl fermions.  The gaugino contributes
+\[
+  \operatorname{Tr}R_{\lambda}=N_c^2-1,
+  \qquad
+  \operatorname{Tr}R_{\lambda}^3=N_c^2-1 .
+\]
+The scalar \(R\)-charge of \(Q\) and \(\widetilde Q\) is
+\[
+  R(Q)=R(\widetilde Q)=1-\frac{N_c}{N_f},
+\]
+so their fermions have \(R\)-charge \(-N_c/N_f\).  There are
+\(2N_cN_f\) such Weyl fermions.  Hence
+\[
+  \operatorname{Tr}R
+  =
+  (N_c^2-1)+2N_cN_f\left(-\frac{N_c}{N_f}\right)
+  =
+  -N_c^2-1,
+\]
+and
+\[
+  \operatorname{Tr}R^3
+  =
+  (N_c^2-1)
+  +2N_cN_f\left(-\frac{N_c}{N_f}\right)^3
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\]
+For a four-dimensional \(\mathcal N=1\) SCFT,
+\[
+  a=\frac3{32}(3\operatorname{Tr}R^3-\operatorname{Tr}R),
+  \qquad
+  c=\frac1{32}(9\operatorname{Tr}R^3-5\operatorname{Tr}R).
+  \label{eq:n1-central-charge-from-r-traces}
+\]
+Substituting the two traces gives \eqref{eq:sqcd-central-charges}.
+
+At the ultraviolet Gaussian fixed point, a vector multiplet contributes
+\(\frac3{16}\dim SU(N_c)\) to \(a\), and a free chiral multiplet contributes
+\(\frac1{48}\) per complex gauge-flavor component.  Since
+\(\dim SU(N_c)=N_c^2-1\) and there are \(2N_cN_f\) chiral components,
+\eqref{eq:sqcd-free-uv-a} follows.
+
+Subtracting the candidate infrared value from the ultraviolet value gives
+\[
+  a_{\mathrm{UV}}-a_{\mathrm{IR}}
+  =
+  -\frac{3N_c^2}{16}
+  +\frac{N_cN_f}{24}
+  +\frac{9N_c^4}{16N_f^2}.
+\]
+Set \(y=N_f/N_c\).  Then
+\[
+  a_{\mathrm{UV}}-a_{\mathrm{IR}}
+  =
+  N_c^2
+  \left(
+    -\frac3{16}+\frac{y}{24}+\frac{9}{16y^2}
+  \right)
+  =
+  \frac{N_c^2}{48y^2}\bigl(2y^3-9y^2+27\bigr).
+\]
+The polynomial factorizes as
+\[
+  2y^3-9y^2+27=(3-y)^2(2y+3).
+\]
+For \(y>0\) this expression is nonnegative and it is zero only when \(y=3\).
+In the interacting window \(3/2<y<3\), it is strictly positive.  The proof
+has established this finite anomaly comparison; it has not established the
+general \(a\)-theorem.
+\end{proof}
+
+\section{Seiberg Duality And The SQCD Phase Ledger}
+\label{sec:n1-seiberg-duality-sqcd}
+
+The preceding superconformal bookkeeping used only the electric SQCD
+variables.  We now isolate the nonperturbative duality input that is needed
+whenever the chapter talks about the full SQCD phase diagram.  This is a
+field-theoretic statement about four-dimensional \(\mathcal N=1\) gauge
+dynamics; no string construction is part of the definition or the argument.
+
+Write the flavor symmetry as
+\[
+  SU(N_f)_L\times SU(N_f)_R\times U(1)_B\times U(1)_R .
+\]
+The electric fields transform as
+\[
+\begin{array}{c|c|c|c|c|c}
+  & SU(N_c) & SU(N_f)_L & SU(N_f)_R & U(1)_B & U(1)_R \\ \hline
+  Q^i & \mathbf N_c & \mathbf N_f & \mathbf 1
+      & +1 & 1-\frac{N_c}{N_f} \\
+  \widetilde Q_j & \overline{\mathbf N}_c & \mathbf 1
+      & \overline{\mathbf N}_f
+      & -1 & 1-\frac{N_c}{N_f}
+\end{array}
+\]
+and the meson \(M^i{}_j=\widetilde Q_jQ^i\) transforms as
+\((\mathbf N_f,\overline{\mathbf N}_f)\).  The normalization of
+\(U(1)_B\) is chosen so that an electric baryon \(Q^{N_c}\) has charge
+\(N_c\).  This differs by a harmless overall factor from conventions in
+which \(Q\) has baryon charge \(1/N_c\).
+
+For \(N_f\geq N_c+2\), set
+\[
+  \widetilde N_c=N_f-N_c .
+\]
+The magnetic SQCD variables consist of an \(SU(\widetilde N_c)\) vector
+multiplet, magnetic quarks \(q_i,\widetilde q^j\), and a gauge-singlet meson
+coordinate \(M^i{}_j\) with the global charges
+\[
+\begin{array}{c|c|c|c|c|c}
+  & SU(\widetilde N_c) & SU(N_f)_L & SU(N_f)_R
+  & U(1)_B & U(1)_R \\ \hline
+  q_i & \mathrm{fund} & \overline{\mathbf N}_f & \mathbf 1
+      & \frac{N_c}{\widetilde N_c} & \frac{N_c}{N_f} \\
+  \widetilde q^j & \overline{\mathrm{fund}} & \mathbf 1 & \mathbf N_f
+      & -\frac{N_c}{\widetilde N_c} & \frac{N_c}{N_f} \\
+  M^i{}_j & \mathbf 1 & \mathbf N_f & \overline{\mathbf N}_f
+      & 0 & 2\left(1-\frac{N_c}{N_f}\right).
+\end{array}
+\]
+The magnetic superpotential is
+\[
+  W_{\mathrm{mag}}
+  =
+  \frac1{\mu_*}M^i{}_j q_i\widetilde q^j .
+  \label{eq:sqcd-magnetic-superpotential}
+\]
+Here \(M^i{}_j\) is normalized as the electric composite
+\(\widetilde Q_jQ^i\), so it has engineering dimension two in the
+microscopic matching convention; \(\mu_*\) is a nonzero matching scale of
+dimension one.  Equivalently one may use the canonically normalized magnetic
+singlet \(M_{\mathrm{can}}=M/\mu_*\) and absorb \(\mu_*\) into the Yukawa
+coupling.  The displayed form keeps the operator map visible.
+
+\begin{hypothesis}[SQCD infrared-comparison hypotheses]
+\label{hyp:sqcd-ir-comparison-hypotheses}
+Whenever this section compares the electric and magnetic SQCD descriptions,
+the following hypotheses are part of the statement.
+\begin{enumerate}
+\item The electric and magnetic Lagrangians have continuum infrared limits in
+  a regulator preserving the gauge Ward identities, the listed flavor
+  symmetries, and enough supersymmetry for the Wilsonian chiral-coordinate
+  arguments of Chapters~\ref{ch:susy-wilsonian-schemes-exact-dynamics} and
+  \ref{ch:susy-nonrenormalization-holomorphy}.
+\item The unbroken global currents are represented by the same operators in
+  the two infrared limits.  Consequently their 't Hooft anomalies are
+  invariant data of the infrared theory and must match.
+\item The displayed \(U(1)_R\) current is the superconformal current in the
+  interacting range after all allowed flavor-current mixing has been fixed.
+  At free endpoints one must include the accidental symmetries of the free
+  fields before interpreting \(\Delta=\frac32R\).
+\item The chiral coordinates \(M,B,\widetilde B\) and their magnetic images
+  generate the protected chiral sector being compared, after imposing
+  \(F\)-term equations and after excluding extra accidental chiral generators
+  not present in the stated phase.
+\item Relevant deformations by holomorphic quark masses and by generic
+  Higgs-branch expectation values commute with the comparison: after
+  integrating out massive fields and matching holomorphic scales, the
+  lower-rank theories satisfy the same comparison hypotheses.
+\end{enumerate}
+\end{hypothesis}
+
+These assumptions are not justified by historical authority.  Their role is
+visible in the calculations below.  The magnetic rank and baryon charges are
+forced by the baryon map \(Q^{N_c}\leftrightarrow q^{\widetilde N_c}\);
+the meson singlet is forced because \(Q\widetilde Q\) is an independent
+electric chiral coordinate; the superpotential is the unique cubic chiral
+coupling with the displayed flavor charges and \(R\)-charge \(2\); the
+magnetic gauge anomaly cancellation is a necessary consistency test; and the
+global anomaly matching below is a regulator-independent test of the common
+infrared current algebra.  These checks do not construct the continuum
+infrared fixed point, but they make every algebraic burden of the duality
+statement explicit.
+
+\begin{quotedtheorem}[Seiberg-duality input for SQCD]
+\label{qt:sqcd-seiberg-duality-input}
+For four-dimensional \(\mathcal N=1\) SQCD with gauge group \(SU(N_c)\),
+\(N_f\geq N_c+2\) flavors, zero tree superpotential, and the Wilsonian
+coordinate conventions of this chapter, and under
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}, the infrared theory at
+the origin of the quantum moduli space has an equivalent magnetic description
+with gauge group \(SU(N_f-N_c)\), fields and charges as displayed above, and
+superpotential \eqref{eq:sqcd-magnetic-superpotential}.  The equivalence
+identifies the common global currents, chiral ring after imposing
+superpotential equations, deformations by masses and Higgs expectation
+values, and all 't Hooft anomalies.  In the interval
+\(\frac32N_c<N_f<3N_c\) this is an equivalence of interacting infrared
+SCFTs; in the free electric and free magnetic ranges it is understood after
+including the appropriate free variables and accidental symmetries at the
+endpoint.
+\end{quotedtheorem}
+
+This quoted theorem is not a theorem proved from the preceding Wilsonian
+holomorphy alone.  The monograph uses it as an exact nonperturbative input
+and then exposes the checks that make the statement sharp: charge
+assignments, anomaly matching, deformation matching, and consistency with
+NSVZ fixed-point arithmetic.
+
+\begin{proposition}[Magnetic \(R\)-charge, superpotential, and NSVZ checks]
+\label{prop:sqcd-magnetic-r-nsvz-checks}
+With the magnetic charges displayed above, \(U(1)_R\) is free of
+\(SU(\widetilde N_c)^2U(1)_R\) gauge anomaly, the magnetic superpotential
+has \(R\)-charge \(2\), and the magnetic NSVZ numerator vanishes at the same
+candidate superconformal point as the electric numerator.
+\end{proposition}
+
+\begin{proof}
+The \(SU(\widetilde N_c)^2U(1)_R\) anomaly receives \(+\widetilde N_c\)
+from the magnetic gaugino.  The two magnetic quark families have fermion
+\(R\)-charge
+\[
+  R(q)-1=R(\widetilde q)-1
+  =
+  \frac{N_c}{N_f}-1
+  =
+  -\frac{\widetilde N_c}{N_f}.
+\]
+Using \(T(\mathbf{fund})=T(\overline{\mathbf{fund}})=\frac12\),
+\[
+  \widetilde N_c
+  +\frac12N_f\left(-\frac{\widetilde N_c}{N_f}\right)
+  +\frac12N_f\left(-\frac{\widetilde N_c}{N_f}\right)
+  =
+  0 .
+\]
+The superpotential charge is
+\[
+  R(M)+R(q)+R(\widetilde q)
+  =
+  2\left(1-\frac{N_c}{N_f}\right)
+  +2\frac{N_c}{N_f}
+  =
+  2 .
+\]
+At a superconformal fixed point the chapter convention gives
+\[
+  \gamma_q=3R(q)-2=\frac{3N_c}{N_f}-2 .
+\]
+The magnetic NSVZ numerator is therefore
+\[
+  3\widetilde N_c-N_f(1-\gamma_q)
+  =
+  3(N_f-N_c)
+  -N_f\left(3-\frac{3N_c}{N_f}\right)
+  =
+  0 .
+\]
+The electric numerator was checked in
+Section~\ref{sec:n1-superconformal-sqcd-bookkeeping}; both descriptions
+therefore pass the same fixed-point arithmetic.
+\end{proof}
+
+\begin{proposition}[Electric-magnetic anomaly matching]
+\label{prop:sqcd-seiberg-anomaly-matching}
+Normalize cubic nonabelian anomalies so that a left-handed Weyl fermion in
+the fundamental of \(SU(N_f)\) contributes \(+1\) and an antifundamental
+contributes \(-1\).  Normalize mixed \(SU(N_f)^2U(1)\) anomalies so that a
+fundamental or antifundamental contributes the same quadratic index.  Then
+the electric and magnetic descriptions have the common anomaly coefficients
+\[
+\begin{array}{c|c}
+  \text{anomaly} & \text{coefficient} \\ \hline
+  SU(N_f)_L^3 & N_c \\
+  SU(N_f)_R^3 & -N_c \\
+  SU(N_f)_L^2U(1)_R & -\frac{N_c^2}{N_f} \\
+  SU(N_f)_R^2U(1)_R & -\frac{N_c^2}{N_f} \\
+  SU(N_f)_L^2U(1)_B & N_c \\
+  SU(N_f)_R^2U(1)_B & -N_c \\
+  U(1)_B^2U(1)_R & -2N_c^2 \\
+  U(1)_R & -N_c^2-1 \\
+  U(1)_R^3 & N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\end{array}
+\]
+\end{proposition}
+
+\begin{proof}
+All traces are over left-handed Weyl fermions.  In the electric theory the
+quark and antiquark fermions have \(R\)-charge \(-N_c/N_f\), while the
+gaugino has \(R\)-charge \(1\).  Thus, for example,
+\[
+  SU(N_f)_L^3:\quad N_c,
+  \qquad
+  SU(N_f)_R^3:\quad -N_c,
+\]
+and
+\[
+  SU(N_f)_L^2U(1)_R:
+  \quad
+  N_c\left(-\frac{N_c}{N_f}\right)
+  =
+  -\frac{N_c^2}{N_f}.
+\]
+The right-flavor mixed \(R\)-anomaly is the same, while the baryonic mixed
+anomalies are \(N_c\) and \(-N_c\) because \(Q\) and \(\widetilde Q\) have
+baryon charges \(+1\) and \(-1\).  The purely abelian traces are
+\[
+  U(1)_B^2U(1)_R:
+  \quad
+  2N_cN_f\left(-\frac{N_c}{N_f}\right)
+  =
+  -2N_c^2,
+\]
+\[
+  \operatorname{Tr}R
+  =
+  (N_c^2-1)+2N_cN_f\left(-\frac{N_c}{N_f}\right)
+  =
+  -N_c^2-1,
+\]
+and
+\[
+  \operatorname{Tr}R^3
+  =
+  (N_c^2-1)
+  +2N_cN_f\left(-\frac{N_c}{N_f}\right)^3
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\]
+
+For the magnetic theory set \(t=\widetilde N_c=N_f-N_c\).  The \(q\) and
+\(\widetilde q\) fermions have \(R\)-charge \(-t/N_f\), baryon charges
+\(\pm N_c/t\), and \(tN_f\) components each.  The mesino in \(M^i{}_j\) has
+\[
+  R(M)-1
+  =
+  2\left(1-\frac{N_c}{N_f}\right)-1
+  =
+  \frac{N_f-2N_c}{N_f}.
+\]
+For the left cubic flavor anomaly, \(q\) gives \(-t\) and the \(N_f\) right
+flavor copies of the mesino give \(+N_f\), hence \(-t+N_f=N_c\).  For the
+right cubic anomaly, \(\widetilde q\) gives \(+t\) and the mesino gives
+\(-N_f\), hence \(t-N_f=-N_c\).  The left mixed \(R\)-anomaly is
+\[
+  t\left(-\frac{t}{N_f}\right)
+  +
+  N_f\left(\frac{N_f-2N_c}{N_f}\right)
+  =
+  -\frac{(N_f-N_c)^2}{N_f}+N_f-2N_c
+  =
+  -\frac{N_c^2}{N_f},
+\]
+and the right mixed \(R\)-anomaly is identical.  The mixed baryonic flavor
+anomalies are
+\[
+  SU(N_f)_L^2U(1)_B:\quad
+  t\frac{N_c}{t}=N_c,
+  \qquad
+  SU(N_f)_R^2U(1)_B:\quad
+  -t\frac{N_c}{t}=-N_c .
+\]
+The \(U(1)_B^2U(1)_R\) trace is
+\[
+  2tN_f\left(\frac{N_c}{t}\right)^2
+  \left(-\frac{t}{N_f}\right)
+  =
+  -2N_c^2 .
+\]
+Finally,
+\[
+  \operatorname{Tr}R
+  =
+  (t^2-1)+2tN_f\left(-\frac{t}{N_f}\right)
+  +N_f^2\left(\frac{N_f-2N_c}{N_f}\right)
+  =
+  -N_c^2-1,
+\]
+and
+\[
+  \operatorname{Tr}R^3
+  =
+  (t^2-1)
+  -\frac{2t^4}{N_f^2}
+  +
+  \frac{(N_f-2N_c)^3}{N_f}
+  =
+  N_c^2-1-\frac{2N_c^4}{N_f^2}.
+\]
+This proves the displayed anomaly matching.
+\end{proof}
+
+\begin{proposition}[Mass and Higgs deformation tests for SQCD duality]
+\label{prop:sqcd-seiberg-deformation-tests}
+Let \(N_f\geq N_c+2\) and set \(\widetilde N_c=N_f-N_c\).  The magnetic
+field content and superpotential in
+\eqref{eq:sqcd-magnetic-superpotential} pass the following necessary
+deformation tests.
+
+\begin{enumerate}
+\item Give the last electric flavor a holomorphic mass
+\[
+  W_{\mathrm{el,mass}}=m\,M^L{}_L,\qquad L=N_f .
+\]
+In the magnetic variables the \(F\)-term equation for \(M^L{}_L\) is
+\[
+  \frac1{\mu_*}q_L^\alpha\widetilde q^L_\alpha+m=0 .
+  \label{eq:sqcd-mass-deformation-magnetic-fterm}
+\]
+For \(\widetilde N_c\geq2\), a rank-one solution Higgses
+\[
+  SU(\widetilde N_c)\longrightarrow SU(\widetilde N_c-1).
+\]
+The light magnetic theory has \(N_f-1\) flavors, gauge rank
+\[
+  \widetilde N_c-1=(N_f-1)-N_c,
+\]
+and the same meson-quark superpotential form for the light flavor block.
+For initial \(\widetilde N_c=2\), the resulting \(SU(1)\) gauge group is
+trivial; this is the boundary case leading to the \(N_f=N_c+1\) confining
+chiral description rather than to another nonabelian magnetic gauge theory.
+
+\item Give the electric theory a rank-\(r\) meson expectation value on the
+classical Higgs patch, with \(1\leq r<N_c\):
+\[
+  M^A{}_B=v_A\delta^A{}_B,\qquad A,B=1,\ldots,r,\qquad v_A\neq0 .
+\]
+The electric gauge group is Higgsed to \(SU(N_c-r)\) with \(N_f-r\) light
+flavors.  In the magnetic variables the same background gives masses
+\[
+  \frac{v_A}{\mu_*}\,q_A\widetilde q^A,
+  \qquad A=1,\ldots,r,
+\]
+to \(r\) magnetic flavor pairs.  After they are integrated out, the magnetic
+gauge rank remains \(\widetilde N_c\), which is precisely the dual rank of
+the low-energy electric theory:
+\[
+  (N_f-r)-(N_c-r)=N_f-N_c=\widetilde N_c .
+  \label{eq:sqcd-higgs-deformation-rank-test}
+\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+For the mass deformation, split flavor indices as \(i=(a,L)\), with
+\(a=1,\ldots,N_f-1\).  The deformed magnetic superpotential is
+\[
+  W_{\mathrm{mag}}+mM^L{}_L
+  =
+  \frac1{\mu_*}M^i{}_j q_i^\alpha\widetilde q^j_\alpha
+  +mM^L{}_L .
+\]
+The \(M^L{}_L\) equation is
+\eqref{eq:sqcd-mass-deformation-magnetic-fterm}, while the other
+\(M\)-equations set the corresponding magnetic quark bilinears to zero on
+the light branch.  Choose a local representative
+\[
+  q_L^\alpha=v\,\delta^\alpha{}_{\widetilde N_c},
+  \qquad
+  \widetilde q^L_\alpha=\widetilde v\,\delta_{\alpha\widetilde N_c},
+  \qquad
+  v\widetilde v=-\mu_*m ,
+  \label{eq:sqcd-magnetic-mass-higgs-representative}
+\]
+with the usual \(D\)-flat representative chosen inside the complexified
+gauge orbit.  The stabilizer of this nonzero fundamental-antifundamental
+pair is \(SU(\widetilde N_c-1)\).  The fields carrying the broken color line
+are massive or gauge directions.  The remaining light magnetic quarks have
+flavor labels \(a=1,\ldots,N_f-1\) and color labels in
+\(SU(\widetilde N_c-1)\), and the surviving singlet block is \(M^a{}_b\).
+Restricting the superpotential to these light fields gives
+\[
+  W_{\mathrm{light}}
+  =
+  \frac1{\mu_*}M^a{}_b q_a\widetilde q^b ,
+\]
+which has the same form as \eqref{eq:sqcd-magnetic-superpotential}.  The rank
+identity is immediate:
+\[
+  \widetilde N_c-1=N_f-N_c-1=(N_f-1)-N_c .
+\]
+
+For the Higgs deformation, a rank-\(r\) electric meson expectation value may
+be represented on the dense Higgs patch by \(r\) independent nonzero
+quark-antiquark pairs.  Their common stabilizer in \(SU(N_c)\) is
+\(SU(N_c-r)\), and the light electric flavors are the remaining
+\(N_f-r\).  In the magnetic superpotential, substituting
+\(M^A{}_B=v_A\delta^A{}_B\) gives the displayed mass terms
+\((v_A/\mu_*)q_A\widetilde q^A\).  For generic nonzero \(v_A\), these
+integrate out exactly \(r\) magnetic flavor pairs.  The magnetic gauge group
+is not Higgsed by this operation, so its rank remains
+\(\widetilde N_c=N_f-N_c\).  Equation
+\eqref{eq:sqcd-higgs-deformation-rank-test} shows that this is the dual rank
+of the low-energy electric \(SU(N_c-r)\) theory with \(N_f-r\) flavors.
+\end{proof}
+
+These deformation tests are necessary consequences of the proposed duality,
+not a replacement for the quoted nonperturbative input.  Their value in this
+chapter is that the mass, Higgs, and rank bookkeeping is completely visible:
+one can see which fields are eliminated, which gauge group remains, and where
+the boundary \(N_f=N_c+1\) description enters.
+
+The \(N_f<N_c\) entries in the phase ledger below have a different logical
+status from the duality entries.  The \(N_f=N_c-1\) ADS term was derived
+above from an explicit one-instanton zero-mode and symmetry calculation under
+Hypothesis~\ref{hyp:sqcd-one-instanton-calculus}.  The cases
+\(N_f<N_c-1\) are then reached by holomorphic decoupling using
+Propositions~\ref{prop:susy-holomorphic-decoupling} and
+\ref{prop:ads-holomorphic-decoupling-recursion}.  Thus the nonzero
+superpotential in the runaway range is not inferred from Seiberg duality; it
+is a chiral \(F\)-term result whose direct semiclassical anchor,
+finite-dimensional elimination step, and decoupling assumptions are
+displayed separately.
+
+\begin{quotedtheorem}[SQCD phase ledger]
+\label{qt:sqcd-phase-ledger}
+Combining the instanton, holomorphy, and quantum-moduli-space results above
+with the Seiberg-duality input of
+Quoted Theorem~\ref{qt:sqcd-seiberg-duality-input} in the range where that
+input is invoked, massless \(SU(N_c)\) SQCD with \(N_f\) flavors has the
+following infrared ledger.
+\begin{description}
+\item[\(N_f<N_c\).]
+The ADS superpotential is generated.  With no tree-level mass terms there is
+no supersymmetric vacuum at finite meson expectation value; the potential has
+a runaway direction on the maximal-rank meson patch.
+\item[\(N_f=N_c\).]
+There is no generated superpotential, but the chiral coordinate ring is
+quantum modified:
+\[
+  \det M-B\widetilde B=\Lambda_h^{2N_c}.
+\]
+\item[\(N_f=N_c+1\).]
+The infrared chiral description is confining in terms of mesons and baryons.
+If \(B_i\) and \(\widetilde B^j\) denote the baryons with one flavor index
+left over, the exact superpotential is
+\[
+  W_{\mathrm{conf}}
+  =
+  \frac{1}{\Lambda_h^{2N_c-1}}
+  \left(B_iM^i{}_j\widetilde B^j-\det M\right).
+  \label{eq:sqcd-sconfining-superpotential}
+\]
+\item[\(N_c+2\leq N_f<\frac32N_c\).]
+The magnetic gauge group \(SU(N_f-N_c)\) is infrared free, since its
+one-loop coefficient is
+\[
+  b_{0,\mathrm{mag}}
+  =
+  3(N_f-N_c)-N_f
+  =
+  2N_f-3N_c<0 .
+\]
+The appropriate low-energy variables are the magnetic quarks, magnetic
+gluons, and meson singlets.
+\item[\(\frac32N_c<N_f<3N_c\).]
+Both electric and magnetic variables are asymptotically free and flow, under
+the quoted duality input, to the same interacting nonabelian Coulomb-phase
+SCFT.  The lower endpoint is detected by the electric meson unitarity bound,
+and the upper endpoint by the electric loss of asymptotic freedom.
+\item[\(N_f\geq3N_c\).]
+The electric variables are in the free electric phase.  For
+\(N_f>3N_c\) the electric gauge coupling is infrared free in the usual
+perturbative sense; at \(N_f=3N_c\) the interacting Banks--Zaks fixed point
+has collided with the Gaussian endpoint in this ledger.
+\end{description}
+\end{quotedtheorem}
+
+\section{Klebanov--Witten Conifold SCFT}
+\label{sec:n1-klebanov-witten-conifold}
+
+Let \(N\geq2\).  The Klebanov--Witten theory has gauge group
+\[
+  G_{\mathrm{KW}}=SU(N)_1\times SU(N)_2
+\]
+and four chiral superfields
+\[
+  A_i\in(\mathbf N,\overline{\mathbf N}),\qquad
+  B_j\in(\overline{\mathbf N},\mathbf N),
+  \qquad i,j=1,2 .
+\]
+Equivalently, one may start from the regular-brane
+\(U(N)_1\times U(N)_2\) presentation.  Its diagonal \(U(1)\) is a free
+center-of-mass vector multiplet, and the interacting nonabelian sector is
+the \(SU(N)_1\times SU(N)_2\) theory displayed above.  The relative abelian
+factor is useful for describing the one-brane quotient below.
+
+The index \(i\) is a doublet index for a global \(SU(2)_A\), and \(j\) is a
+doublet index for a global \(SU(2)_B\).  The baryonic symmetry \(U(1)_B\) is
+normalized here by
+\[
+  q_B(A_i)=+1,\qquad q_B(B_j)=-1 .
+\]
+The tree superpotential is
+\[
+  W_{\mathrm{KW}}
+  =
+  h\,\epsilon^{ij}\epsilon^{kl}
+  \operatorname{tr}(A_iB_kA_jB_l),
+  \label{eq:kw-superpotential}
+\]
+where the trace is over the gauge indices in the alternating product
+\[
+  \mathbf N_1\xrightarrow{A_i}\mathbf N_2
+  \xrightarrow{B_k}\mathbf N_1
+  \xrightarrow{A_j}\mathbf N_2
+  \xrightarrow{B_l}\mathbf N_1 .
+\]
+The manifest continuous global symmetry at the superpotential point is
+\[
+  SU(2)_A\times SU(2)_B\times U(1)_B\times U(1)_R .
+\]
+There is also a charge-conjugation symmetry exchanging the two gauge factors
+and the \(A\)- and \(B\)-multiplets when the two gauge couplings are
+exchanged.
+
+\begin{hypothesis}[KW Lagrangian and branch assumptions]
+\label{hyp:kw-lagrangian-branch-assumptions}
+The algebraic calculations in this section use the four-dimensional
+\(\mathcal N=1\) Lagrangian with gauge group, matter representations, trace
+normalization, and superpotential displayed above.  Statements about the
+mesonic vacuum branch use the classical \(F\)- and \(D\)-flat quotient of
+that Lagrangian and then restrict to the commuting branch where the
+bifundamental matrices can be simultaneously reduced to diagonal regular
+brane data.  Statements about protected dimensions use
+Hypothesis~\ref{hyp:n1-scft-bookkeeping-input}.  Claims about the full
+continuum conformal manifold are isolated in
+Quoted Theorem~\ref{qt:kw-conformal-manifold}.
+\end{hypothesis}
+
+\begin{proposition}[KW \(F\)-term equations]
+\label{prop:kw-f-term-equations}
+The \(F\)-term equations of \(W_{\mathrm{KW}}\) are
+\[
+  A_1B_jA_2=A_2B_jA_1,\qquad j=1,2,
+  \label{eq:kw-f-term-a}
+\]
+and
+\[
+  B_1A_iB_2=B_2A_iB_1,\qquad i=1,2 .
+  \label{eq:kw-f-term-b}
+\]
+\end{proposition}
+
+\begin{proof}
+Expanding the antisymmetric tensors and using cyclicity of the trace gives
+\[
+  W_{\mathrm{KW}}
+  =
+  2h\,\operatorname{tr}(A_1B_1A_2B_2-A_1B_2A_2B_1).
+\]
+Varying with respect to \(A_1\) and moving \(\delta A_1\) to the left inside
+the trace gives
+\[
+  \delta_{A_1}W_{\mathrm{KW}}
+  =
+  2h\,\operatorname{tr}\bigl[
+    \delta A_1(B_1A_2B_2-B_2A_2B_1)
+  \bigr],
+\]
+so \(B_1A_2B_2=B_2A_2B_1\).  The variation with respect to \(A_2\) gives the
+same equation with \(A_1\) and \(A_2\) exchanged.  Varying with respect to
+\(B_1\) and \(B_2\) in the same way gives
+\[
+  A_2B_2A_1=A_1B_2A_2,\qquad
+  A_1B_1A_2=A_2B_1A_1,
+\]
+which is exactly \eqref{eq:kw-f-term-a}.  These are matrix equations in the
+appropriate bifundamental Hom-spaces.
+\end{proof}
+
+\begin{proposition}[KW anomaly and superpotential \(R\)-charge]
+\label{prop:kw-r-charge-anomaly}
+Assume the \(SU(2)_A\times SU(2)_B\) symmetry and the exchange symmetry, so
+that
+\[
+  R(A_i)=R(B_j)=r .
+\]
+The simultaneous conditions that \(U(1)_R\) have no \(SU(N)_a^2U(1)_R\)
+anomaly and that \(W_{\mathrm{KW}}\) have \(R\)-charge \(2\) give
+\[
+  r=\frac12 .
+\]
+\end{proposition}
+
+\begin{proof}
+For either gauge factor the gaugino contributes \(T(\operatorname{adj})=N\)
+to the \(SU(N)^2U(1)_R\) anomaly coefficient.  Each of the two \(A\)-fields
+and each of the two \(B\)-fields is a fundamental or antifundamental for that
+gauge factor and has \(N\) copies from the other gauge index.  With
+\(T(\mathbf N)=T(\overline{\mathbf N})=\frac12\), the matter contribution is
+\[
+  4\cdot \frac{N}{2}(r-1)=2N(r-1).
+\]
+The anomaly coefficient is therefore
+\[
+  N+2N(r-1)=N(2r-1),
+\]
+which vanishes exactly at \(r=\frac12\).  The superpotential contains two
+\(A\)-fields and two \(B\)-fields, so its \(R\)-charge is \(4r\), also equal
+to \(2\) exactly at \(r=\frac12\).
+\end{proof}
+
+\begin{proposition}[KW NSVZ numerator]
+\label{prop:kw-nsvz-numerator}
+At the \(R\)-charge found in Proposition~\ref{prop:kw-r-charge-anomaly}, the
+chiral-multiplet anomalous dimensions in the superconformal convention are
+\[
+  \gamma_A=\gamma_B=-\frac12 ,
+\]
+and the NSVZ numerator of each gauge factor vanishes.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:n1-gamma-from-r} gives
+\[
+  \gamma_A=\gamma_B=3\cdot\frac12-2=-\frac12 .
+\]
+For either \(SU(N)\) factor, the total matter index is
+\[
+  4\cdot N\cdot\frac12=2N.
+\]
+Hence the NSVZ numerator is
+\[
+  3N-2N(1-\gamma_A)
+  =
+  3N-2N\left(1+\frac12\right)
+  =
+  0 .
+\]
+The scalar dimension of each \(A_i\) and \(B_j\) is therefore
+\[
+  \Delta(A_i)=\Delta(B_j)=1+\frac12\gamma_A=\frac34
+  =
+  \frac32R(A_i).
+\]
+\end{proof}
+
+\begin{proposition}[KW beta-function rank count]
+\label{prop:kw-beta-function-rank-count}
+Work in the \(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving source chart
+near the Klebanov--Witten point, and assume the NSVZ coordinate convention of
+this chapter with finite denominators for both gauge couplings.  Let
+\(\gamma_A\) and \(\gamma_B\) be the anomalous dimensions of the \(A\)- and
+\(B\)-doublets in the monograph convention.  Then the two gauge beta-function
+numerators and the quartic-superpotential marginality defect are all
+proportional to the same expression:
+\[
+  \mathcal B_1=\mathcal B_2=N(1+\gamma_A+\gamma_B),
+  \qquad
+  \mathcal B_h=1+\gamma_A+\gamma_B.
+  \label{eq:kw-beta-rank-common-defect}
+\]
+Consequently the three local vanishing conditions have rank one in this
+symmetry-preserving chart.  At the exchange-symmetric point
+\(\gamma_A=\gamma_B=\gamma\), the common condition is
+\(\gamma=-\frac12\).
+\end{proposition}
+
+\begin{proof}
+For the first gauge group, each of the two \(A\)-fields is a fundamental with
+\(N\) copies from the second gauge index, and each of the two \(B\)-fields is
+an antifundamental with the same multiplicity.  Hence
+\[
+  \sum_iT_1(R_i)(1-\gamma_i)
+  =
+  2\cdot\frac N2(1-\gamma_A)
+  +
+  2\cdot\frac N2(1-\gamma_B)
+  =
+  N(2-\gamma_A-\gamma_B).
+\]
+The NSVZ numerator of the first gauge factor is therefore
+\[
+  \mathcal B_1
+  =
+  3N-N(2-\gamma_A-\gamma_B)
+  =
+  N(1+\gamma_A+\gamma_B).
+\]
+The same count holds for the second gauge factor, with fundamentals and
+antifundamentals interchanged, so \(\mathcal B_2=\mathcal B_1\).
+
+For the superpotential term, nonrenormalization means that the local
+condition for a quartic chiral coordinate to be marginal is the dimension
+condition on the chiral operator.  The operator
+\(\operatorname{tr}(A_iB_kA_jB_l)\) has dimension
+\[
+  2\left(1+\frac{\gamma_A}{2}\right)
+  +
+  2\left(1+\frac{\gamma_B}{2}\right)
+  =
+  4+\gamma_A+\gamma_B .
+\]
+Since a four-dimensional superpotential integrand must have dimension \(3\),
+the marginality defect is
+\[
+  \mathcal B_h
+  =
+  (4+\gamma_A+\gamma_B)-3
+  =
+  1+\gamma_A+\gamma_B .
+\]
+Equivalently, the beta function of a dimensionless quartic coupling is
+proportional to this defect, up to the sign convention for whether the flow
+parameter is an energy scale or a length scale.  Only the zero locus is used
+here.
+
+Thus \(\mathcal B_1\), \(\mathcal B_2\), and \(\mathcal B_h\) impose a single
+scalar condition in the symmetric chart.  This is a necessary local
+beta-function count.  It does not prove that the continuum SCFT exists, that
+the common zero is reached by an RG trajectory, or that the local zero locus
+is a nonsingular conformal manifold.
+\end{proof}
+
+The anomaly and NSVZ calculations above fix the exchange-symmetric point.  To
+see that the same value is selected by \(a\)-maximization, allow mixing with
+the baryonic current:
+\[
+  R_s(A_i)=\frac12+s,\qquad
+  R_s(B_j)=\frac12-s .
+\]
+The gauge-anomaly and superpotential constraints impose only
+\(R_s(A)+R_s(B)=1\).  The trial central charge is computed from Weyl fermion
+\(R\)-charges.  The two gaugino adjoints have fermion \(R\)-charge \(1\);
+the two \(A\)-fermions have charge \(-\frac12+s\); the two \(B\)-fermions
+have charge \(-\frac12-s\).  Therefore
+\[
+  \operatorname{Tr}R_s=-2,
+\]
+and
+\[
+  \operatorname{Tr}R_s^3
+  =
+  2(N^2-1)
+  +
+  2N^2\left[
+    \left(-\frac12+s\right)^3
+    +
+    \left(-\frac12-s\right)^3
+  \right]
+  =
+  \frac32N^2-2-6N^2s^2 .
+\]
+Thus
+\[
+  a(s)
+  =
+  \frac{3}{32}
+  \left(3\operatorname{Tr}R_s^3-\operatorname{Tr}R_s\right)
+  =
+  \frac{3}{32}
+  \left(\frac92N^2-4-18N^2s^2\right),
+\]
+which is maximized at \(s=0\).  The superconformal \(R\)-charge is the
+symmetric one:
+\[
+  R(A_i)=R(B_j)=\frac12 .
+\]
+
+\begin{proposition}[KW central charges]
+\label{prop:kw-central-charges}
+At the symmetric superconformal \(R\)-charge,
+\[
+  a_{\mathrm{KW}}=\frac{27}{64}N^2-\frac38,\qquad
+  c_{\mathrm{KW}}=\frac{27}{64}N^2-\frac14 .
+\]
+\end{proposition}
+
+\begin{proof}
+For a four-dimensional \(\mathcal N=1\) SCFT,
+\[
+  a=\frac{3}{32}(3\operatorname{Tr}R_f^3-\operatorname{Tr}R_f),
+  \qquad
+  c=\frac{1}{32}(9\operatorname{Tr}R_f^3-5\operatorname{Tr}R_f),
+\]
+where the traces run over Weyl fermions.  The fermion trace data at \(s=0\)
+are
+\[
+  \operatorname{Tr}R_f
+  =
+  2(N^2-1)+4N^2\left(-\frac12\right)
+  =
+  -2
+\]
+and
+\[
+  \operatorname{Tr}R_f^3
+  =
+  2(N^2-1)+4N^2\left(-\frac18\right)
+  =
+  \frac32N^2-2 .
+\]
+Substitution gives the displayed values.
+\end{proof}
+
+The basic mesonic chiral operators are
+\[
+  W_{ij}=A_iB_j .
+\]
+For a single regular brane in the \(U(1)\times U(1)\) presentation, the
+diagonal \(U(1)\) decouples and the complexified anti-diagonal gauge group
+acts with charges \(+1\) on the \(A_i\) and \(-1\) on the \(B_j\).  The four
+coordinates \(W_{ij}\) are invariant and obey one quadratic relation.
+
+\begin{proposition}[One-brane conifold quotient]
+\label{prop:kw-one-brane-conifold-branch}
+For the one-brane abelian quotient just described, the mesonic coordinate
+ring is
+\[
+  \C[W_{11},W_{12},W_{21},W_{22}]
+  /
+  (W_{11}W_{22}-W_{12}W_{21}) .
+\]
+\end{proposition}
+
+\begin{proof}
+Write \(W_{ij}=A_iB_j\) with commuting complex variables
+\(A_1,A_2,B_1,B_2\).  Then
+\[
+  W_{11}W_{22}-W_{12}W_{21}
+  =
+  A_1B_1A_2B_2-A_1B_2A_2B_1
+  =
+  0 .
+\]
+Conversely, the invariant functions of a \(\C^\times\) action with charges
+\(+1,+1,-1,-1\) are generated by the degree-zero monomials \(A_iB_j\).  The
+only rank-one relation among the entries of the \(2\times2\) matrix
+\((W_{ij})\) is its determinant.  Hence the quotient is the affine conifold
+\[
+  \det(W)=0 .
+\]
+\end{proof}
+
+On the mesonic commuting branch for general \(N\), the matrices \(A_iB_j\)
+can be diagonalized simultaneously at generic points, and the Weyl group
+permutes the \(N\) eigenvalue quadruples.  The corresponding branch is
+\[
+  \operatorname{Sym}^N\{W_{11}W_{22}-W_{12}W_{21}=0\}.
+\]
+This statement concerns the commuting mesonic branch; baryonic branches and
+noncommuting chiral-ring strata require additional invariant-theory data.
+
+The protected operator dimensions follow immediately from the
+superconformal \(R\)-charges.  The mesons \(W_{ij}\) transform as
+\((\mathbf2,\mathbf2)\) under \(SU(2)_A\times SU(2)_B\) and have
+\[
+  R(W_{ij})=1,\qquad \Delta(W_{ij})=\frac32 .
+\]
+The baryons
+\[
+  \mathcal B_A=\det A_i,\qquad
+  \mathcal B_B=\det B_j
+\]
+have
+\[
+  R(\mathcal B_A)=R(\mathcal B_B)=\frac N2,\qquad
+  \Delta(\mathcal B_A)=\Delta(\mathcal B_B)=\frac{3N}{4},
+\]
+and baryonic charges \(+N\) and \(-N\) in the normalization above.
+Symmetric products
+\[
+  \operatorname{tr}(A_{i_1}B_{j_1}\cdots A_{i_\ell}B_{j_\ell})
+\]
+have \(R=\ell\) and \(\Delta=\frac32\ell\) when they represent nonzero
+chiral-primary classes.
+
+\begin{quotedtheorem}[KW local conformal manifold]
+\label{qt:kw-conformal-manifold}
+In the continuum \(\mathcal N=1\) SCFT defined by the Klebanov--Witten
+fixed point, the \(SU(2)_A\times SU(2)_B\times U(1)_B\)-preserving exactly
+marginal deformations form a local complex two-dimensional conformal
+manifold near the symmetric point.  One may use the two gauge couplings
+\(\tau_1,\tau_2\) and the superpotential coupling \(h\) as microscopic
+coordinates.  The local quotient by the complexified field redefinition
+acting on \((A_i,B_j)\) leaves one independent complex beta-function
+constraint among these three coordinates, and hence two local exactly
+marginal coordinates.
+\end{quotedtheorem}
+
+The theorem is quoted because exact marginality is an infrared statement
+about the continuum SCFT.  Proposition~\ref{prop:kw-beta-function-rank-count}
+supplies only the necessary beta-function rank count.  The chapter also
+supplies the anomaly, NSVZ, and \(a\)-maximization arithmetic that any such
+statement must satisfy.
+
+\section{Klebanov--Strassler Cascade}
+\label{sec:n1-klebanov-strassler-cascade}
+
+Fix integers \(M>0\) and \(N>M\).  The ultraviolet theory used in the
+Klebanov--Strassler cascade has gauge group
+\[
+  SU(N+M)_1\times SU(N)_2
+\]
+with the same bifundamental matter and quartic superpotential as
+\eqref{eq:kw-superpotential}, now with rectangular gauge indices.  Treating
+the anomalous dimensions of the four bifundamentals as equal to a common
+\(\gamma\), the NSVZ numerators are
+\[
+  \mathcal B_1
+  =
+  3(N+M)-2N(1-\gamma),
+  \qquad
+  \mathcal B_2
+  =
+  3N-2(N+M)(1-\gamma).
+  \label{eq:ks-nsvz-numerators}
+\]
+At the Klebanov--Witten value \(\gamma=-\frac12\),
+\[
+  \mathcal B_1=3M,\qquad
+  \mathcal B_2=-3M .
+\]
+Since the NSVZ beta function has the sign
+\(\beta_g=-g^3\mathcal B/(16\pi^2(1-\cdots))\), the larger gauge factor is
+driven to stronger coupling toward the infrared in this local coordinate,
+while the smaller factor is driven in the opposite direction.  The cascade
+idealizes the strongly coupled step by applying Seiberg duality to the
+larger factor.
+
+\begin{hypothesis}[Cascade input assumptions]
+\label{hyp:ks-cascade-input-assumptions}
+The cascade discussion assumes the same supersymmetric Wilsonian scheme and
+NSVZ coordinate convention used earlier in the chapter.  The displayed
+numerator signs are perturbative-coordinate diagnostics near the
+Klebanov--Witten anomalous dimension, not a proof that the flow follows a
+unique trajectory.  Each rank-reducing step additionally assumes Seiberg
+duality for the strongly coupled node with the other node treated during the
+matching as a weakly gauged flavor symmetry, and assumes that integrating out
+the mesons in the magnetic description is legitimate in the Wilsonian
+neighborhood being used.  These duality assumptions are recorded again in
+Quoted Theorem~\ref{qt:ks-seiberg-duality-input}.
+\end{hypothesis}
+
+\begin{proposition}[Cascade rank step]
+\label{prop:ks-cascade-rank-step}
+Assume the Seiberg-duality transformation for the first gauge factor while
+the second gauge factor is treated as a weakly gauged flavor symmetry during
+the dualization.  Then
+\[
+  SU(N+M)\times SU(N)
+  \quad\longmapsto\quad
+  SU(N)\times SU(N-M),
+\]
+up to relabeling of the two factors and matching of the quartic
+superpotential.
+\end{proposition}
+
+\begin{proof}
+The first gauge factor \(SU(N+M)\) sees two \(A\)-fields and two \(B\)-fields.
+Because each carries an \(SU(N)\) index of the second gauge group, it has
+\[
+  N_f=2N
+\]
+flavors in the SQCD sense.  Seiberg duality maps an electric
+\(SU(N_c)\) theory with \(N_f\) flavors to a magnetic
+\(SU(N_f-N_c)\) theory.  Here
+\[
+  N_f-N_c=2N-(N+M)=N-M .
+\]
+The untouched second gauge factor is \(SU(N)\).  Relabeling the larger
+factor first gives \(SU(N)\times SU(N-M)\).  The electric mesons of the
+dualized node are composites
+\[
+  M_{ij}=A_iB_j .
+\]
+The magnetic superpotential has the local form
+\[
+  W_{\mathrm{mag}}
+  =
+  h\,\epsilon^{ij}\epsilon^{kl}\operatorname{tr}(M_{ik}M_{jl})
+  +
+  \frac1{\mu_*}\operatorname{tr}(M_{ij}a_i b_j),
+  \label{eq:ks-magnetic-superpotential-local}
+\]
+where \(a_i,b_j\) are magnetic bifundamentals and \(\mu_*\) is the matching
+scale used to assign dimension one to \(M_{ij}\).  The quadratic form
+\[
+  (M_{ij})\longmapsto
+  \epsilon^{ij}\epsilon^{kl}\operatorname{tr}(M_{ik}M_{jl})
+\]
+is nondegenerate on the four mesons.  Thus the \(F\)-term equations of
+\eqref{eq:ks-magnetic-superpotential-local} solve \(M_{ij}\) linearly in
+the bilinears \(a_i b_j\).  Substitution gives again a quartic
+superpotential proportional to
+\[
+  \epsilon^{ij}\epsilon^{kl}\operatorname{tr}(a_i b_k a_j b_l),
+\]
+with a coefficient depending on the normalization of \(M_{ij}\) and
+\(\mu_*\).
+\end{proof}
+
+Thus the rank difference remains \(M\), while the regular-brane rank
+parameter drops by \(M\).  If
+\[
+  N=qM+r,\qquad 0\leq r<M ,
+\]
+then after \(q\) formal cascade steps the pair has reached
+\[
+  SU(M+r)\times SU(r),
+\]
+where the second factor is absent when \(r=0\).  The integer \(q\) is the
+number of rank-reducing duality steps, and \(r=N\bmod M\) is the residual
+regular-brane rank.
+
+\begin{proposition}[KS \(R\)-anomaly remnant]
+\label{prop:ks-r-anomaly-remnant}
+For the unequal-rank theory with the field charges
+\[
+  R(A_i)=R(B_j)=\frac12,\qquad R(\lambda_1)=R(\lambda_2)=1,
+\]
+the continuous \(U(1)_R\) has gauge-anomaly coefficients
+\[
+  \mathcal A_1=M,\qquad \mathcal A_2=-M
+\]
+for \(SU(N+M)_1^2U(1)_R\) and \(SU(N)_2^2U(1)_R\).  Consequently only the
+\(\mathbb Z_{2M}\) subgroup is an honest symmetry with fixed theta angles.
+\end{proposition}
+
+\begin{proof}
+For \(SU(N+M)_1\), the gaugino contributes \(N+M\).  Each chiral fermion in
+an \(A_i\) or \(B_j\) multiplet has \(R\)-charge \(-\frac12\), and the total
+matter index seen by the first gauge group is
+\[
+  4\cdot N\cdot\frac12=2N .
+\]
+Therefore
+\[
+  \mathcal A_1=(N+M)-\frac12(2N)=M .
+\]
+For \(SU(N)_2\), the total matter index is instead
+\[
+  4\cdot (N+M)\cdot\frac12=2(N+M),
+\]
+so
+\[
+  \mathcal A_2=N-\frac12\bigl(2(N+M)\bigr)=-M .
+\]
+In the normalization where pure \(SU(K)\) supersymmetric Yang--Mills leaves
+\(\mathbb Z_{2K}\), an \(R\)-rotation by angle \(\varphi\) shifts the two
+theta angles by
+\[
+  \theta_1\mapsto\theta_1+2M\varphi,\qquad
+  \theta_2\mapsto\theta_2-2M\varphi .
+\]
+Because each theta angle has period \(2\pi\), the rotation is a symmetry at
+fixed theta angles exactly when
+\[
+  2M\varphi\in2\pi\mathbb Z .
+\]
+Modulo the \(2\pi\)-periodicity of the \(R\)-rotation parameter, this leaves
+\(2M\) elements, namely \(\mathbb Z_{2M}\).
+\end{proof}
+
+\begin{quotedtheorem}[Seiberg-duality input for the cascade]
+\label{qt:ks-seiberg-duality-input}
+The cascade rank step describes the infrared chiral data and anomalies of the
+successive Wilsonian theories provided Seiberg duality holds for the strongly
+coupled node with the neighboring gauge group treated as a weakly gauged
+flavor symmetry during the matching.  The matching includes the flavor
+symmetries, baryonic symmetry, \(R\)-symmetry, holomorphic scale coordinates,
+and the quartic superpotential after the massive mesons are eliminated.
+\end{quotedtheorem}
+
+This is a status boundary, not a new proof of Seiberg duality.  The
+monograph uses the duality as an exact field-theoretic input with visible
+checks: the magnetic rank is \(N_f-N_c\), the rank difference is preserved,
+the alternating quartic superpotential is regenerated, and the global anomaly
+ledger is unchanged after the duality map.
+
+For \(r=0\), the cascade ends at pure \(SU(M)\) supersymmetric Yang--Mills.
+The anomalous chiral symmetry leaves a \(\mathbb Z_{2M}\) gaugino phase
+symmetry, and gaugino condensation breaks it to \(\mathbb Z_2\), producing
+\(M\) massive vacua in the finite-volume/gap sense used earlier in this
+chapter.  For \(0<r<M\), the final strongly coupled theory contains an ADS
+or quantum-modified chiral coordinate, depending on the precise endpoint
+rank.  In the string-theory realization this field-theoretic endpoint is
+reflected by a deformed conifold parameter; here it is recorded only as a
+cross-reference to the chiral-coordinate dynamics already derived for SQCD.
 
 \section{Status Boundary}
 

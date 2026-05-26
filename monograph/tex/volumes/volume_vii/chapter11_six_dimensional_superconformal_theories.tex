@@ -4,40 +4,100 @@
 \ConventionsMixed
 
 Six-dimensional superconformal theories are QFTs whose central examples do
-not admit ordinary Lagrangian descriptions at the fixed point.  They therefore
-force a separation between the definition of a theory and the use of
-effective field variables on a branch of vacua.  This chapter records the
+not admit ordinary Lagrangian descriptions at the fixed point.  They
+therefore force a separation between the definition of a theory and the use
+of effective field variables on a branch of vacua.  This chapter records the
 objects that can be defined without assuming a microscopic Lagrangian:
 superconformal representation data, tensor-branch effective actions, anomaly
 polynomials, BPS strings, compactification tests, and extended operators.
+The emphasis is the \((2,0)\) family and the adjacent \((1,0)\) tensor-branch
+formalism, because these are the supersymmetric field theories that most
+sharply test the distinction between protected data and construction of a
+local QFT.
 
 \section{Six-Dimensional Supersymmetry Data}
 
-Let the Lorentz group be \(\operatorname{Spin}(1,5)\).  A chiral spinor has four complex
-components before reality conditions.  Six-dimensional supersymmetry is
-labeled by \((\mathcal N_+,\mathcal N_-)\), the numbers of positive and
-negative chirality symplectic-Majorana-Weyl supercharges.  The cases most
-central for local interacting fixed points are \((1,0)\) and \((2,0)\).
+Let the Lorentz group be \(\operatorname{Spin}(1,5)\).  A chiral spinor has
+four complex components before imposing a symplectic-Majorana-Weyl reality
+condition.  Six-dimensional supersymmetry is labeled by
+\((\mathcal N_+,\mathcal N_-)\), the numbers of positive and negative
+chirality symplectic-Majorana-Weyl supercharges.  The cases most central for
+interacting local fixed points are \((1,0)\) and \((2,0)\).
 
 For \((1,0)\), the R-symmetry is \(SU(2)_R\).  For \((2,0)\), the
-R-symmetry is \(USp(4)_R\).  Superconformal symmetry enlarges the bosonic
-group to
+R-symmetry is \(USp(4)_R\simeq \operatorname{Spin}(5)_R\).  Superconformal
+symmetry enlarges the bosonic group to
 \[
   SO(2,6)\times G_R ,
 \]
-with \(G_R=SU(2)_R\) or \(USp(4)_R\).  Local operators are organized as
-positive-energy representations of the corresponding superconformal algebra.
-This statement concerns Hilbert-space representation theory on the cylinder;
-it does not supply off-shell fields.
+with \(G_R=SU(2)_R\) or \(USp(4)_R\).  The full superconformal algebras are
+usually denoted \(OSp(8^\ast|2)\) for \((1,0)\) and \(OSp(8^\ast|4)\) for
+\((2,0)\).  Local operators are organized as positive-energy
+representations of these algebras on the cylinder.  This statement concerns
+Hilbert-space representation theory; it does not supply off-shell fields.
 
-\section{Multiplets And Branch Coordinates}
+\section{Why Six-Dimensional Gauge Fields Are Branch Variables}
+
+A six-dimensional vector multiplet can appear in an effective gauge-theory
+description on a tensor branch, but it is not a conformal gauge field at an
+interacting fixed point.
+
+\begin{proposition}[Dimension of the Yang--Mills coupling]
+\label{prop:six-d-yang-mills-coupling-dimension}
+In a six-dimensional Yang--Mills presentation with canonical gauge field
+normalization, the gauge coupling has mass dimension \(-1\), equivalently
+\([g_6^2]=-2\).  Hence the local Yang--Mills interaction is not a marginal
+microscopic coupling of a six-dimensional conformal field theory.
+\end{proposition}
+
+\begin{proof}
+In \(d\) spacetime dimensions a canonically normalized vector field has mass
+dimension
+\[
+  [A_\mu]=\frac{d-2}{2}.
+\]
+The covariant derivative is \(\partial_\mu+\ii g_d A_\mu\), so
+\[
+  [g_d]+[A_\mu]=1 .
+\]
+Therefore
+\[
+  [g_d]=1-\frac{d-2}{2}=\frac{4-d}{2},
+  \qquad
+  [g_d^2]=4-d .
+\]
+Putting \(d=6\) gives \([g_6]=-1\) and \([g_6^2]=-2\).  A coupling with
+negative mass dimension is not a marginal conformal coordinate.  Thus any
+six-dimensional vector-multiplet gauge theory used below is an effective
+description on a branch, not a Lagrangian definition of the fixed point.
+\end{proof}
+
+\section{Multiplets And Self-Dual Fields}
 
 A \((1,0)\) tensor multiplet contains a two-form gauge potential \(B\) with
 self-dual field strength, a real scalar \(\phi\), and fermions.  A
 hypermultiplet contains scalars in quaternionic representations and fermions.
-A vector multiplet can appear in gauge-theory descriptions on a tensor branch,
-but it is not a conformal gauge field at the origin of a six-dimensional
-interacting fixed point.
+A \((2,0)\) tensor multiplet contains
+\[
+  B,\qquad \phi^A\;(A=1,\ldots,5),\qquad \text{fermions},
+\]
+where the five real scalars transform as the vector representation of
+\(\operatorname{Spin}(5)_R\).  The field strength
+\[
+  H=dB+\cdots
+\]
+obeys a self-duality constraint
+\[
+  H=*H .
+\]
+For a nonabelian interacting \((2,0)\) theory there is no known ordinary
+local action written in terms of nonabelian two-form gauge potentials.  Even
+for abelian self-dual fields, a covariant action requires auxiliary
+structure or a formulation in which self-duality is imposed after variation.
+Consequently this chapter states self-dual fields through their equations,
+charge lattice, anomaly inflow, and compactification tests.
+
+\section{Tensor-Branch Datum}
 
 On a tensor branch, expectation values of tensor-multiplet scalars define
 coordinates
@@ -53,10 +113,39 @@ low-energy action contains
   +
   B^I\wedge X_I^{(4)}
   +\cdots ,
+  \label{eq:six-d-tensor-branch-action}
 \]
 with self-duality imposed as a constraint on the equations of motion or by a
-chosen self-dual-field formalism.  The four-form \(X_I^{(4)}\) encodes gauge
-and gravitational couplings of the branch EFT.
+chosen self-dual-field formalism.  The four-form \(X_I^{(4)}\) encodes gauge,
+flavor, and gravitational couplings of the branch EFT.
+
+For a \((2,0)\) theory of simply laced type \(\mathfrak g\), with Cartan
+algebra \(\mathfrak t_{\mathfrak g}\), rank \(r_{\mathfrak g}\), and Weyl
+group \(W_{\mathfrak g}\), the tensor-branch scalar space has the form
+\[
+  \mathcal C_{\mathfrak g}^{(2,0)}
+  =
+  \bigl(\mathbb R^5\otimes\mathfrak t_{\mathfrak g}\bigr)/W_{\mathfrak g}
+\]
+after removing any decoupled center-of-mass tensor multiplet.  The five
+\(\mathbb R^5\) directions are the \(\operatorname{Spin}(5)_R\) vector
+directions.  The Weyl quotient records the identification of Cartan
+coordinates that survive from the interacting nonabelian theory.
+
+\begin{example}[Type \(A_{N-1}\) tensor branch]
+\label{ex:six-d-a-type-tensor-branch}
+For type \(A_{N-1}\), the rank is \(N-1\), and the tensor branch may be
+written as
+\[
+  \left\{
+    (x_1,\ldots,x_N)\in(\mathbb R^5)^N:
+    \sum_{i=1}^N x_i=0
+  \right\}/S_N .
+\]
+The symmetric group permutes the \(N\) eigenvalue-like vectors.  This formula
+is a tensor-branch coordinate chart; it is not a definition of the
+interacting fixed point at the origin \(x_i=x_j\).
+\end{example}
 
 \section{Anomaly Polynomial}
 
@@ -91,10 +180,44 @@ On a tensor branch, anomaly matching takes the form
   I_8^{\mathrm{UV}}-I_8^{\mathrm{branch}}
   =
   \frac12\Omega^{IJ}X_I^{(4)}X_J^{(4)} ,
+  \label{eq:six-d-gs-anomaly-matching}
 \]
 where \(\Omega^{IJ}\) is the inverse tensor pairing.  The right-hand side is
 produced by Green--Schwarz couplings \(B^I\wedge X_I^{(4)}\).  This equation
 is a computable constraint on branch EFTs and on proposed fixed points.
+
+\begin{quotedtheorem}[\((2,0)\) anomaly polynomial]
+\label{qt:six-d-two-zero-anomaly-polynomial}
+Let \(\mathfrak g\) be simply laced, with rank \(r_{\mathfrak g}\), dimension
+\(d_{\mathfrak g}\), and dual Coxeter number \(h^\vee_{\mathfrak g}\).  The
+\((2,0)\) theory of type \(\mathfrak g\) has anomaly polynomial
+\[
+  I_8[\mathfrak g]
+  =
+  r_{\mathfrak g} I_8(1)
+  +
+  \frac{d_{\mathfrak g}h^\vee_{\mathfrak g}}{24}\,
+  p_2(N_R),
+  \label{eq:six-d-two-zero-anomaly}
+\]
+where \(N_R\) is the rank-five \(SO(5)_R\) background bundle and
+\[
+  I_8(1)
+  =
+  \frac1{48}
+  \left[
+    p_2(N_R)-p_2(T)
+    +\frac14\bigl(p_1(T)-p_1(N_R)\bigr)^2
+  \right]
+  \label{eq:six-d-free-tensor-anomaly}
+\]
+is the anomaly polynomial of one free \((2,0)\) tensor multiplet.
+\end{quotedtheorem}
+
+The theorem is quoted because its usual derivations use anomaly inflow,
+compactification, and string-theoretic or geometric constructions.  In this
+monograph it is used as protected QFT data: it fixes anomaly coefficients
+that any proposed construction of the \((2,0)\) theory must reproduce.
 
 \section{BPS Strings}
 
@@ -106,9 +229,17 @@ has tension
 \[
   T_q=q_I\phi^I
 \]
-on the tensor branch, in a chamber where this pairing is positive.  At the
-superconformal point some tensions vanish, and the corresponding string
-degrees of freedom are not particles in six dimensions.
+on a \((1,0)\) tensor branch, in a chamber where this pairing is positive.
+For a \((2,0)\) theory of type \(\mathfrak g\), the charge lattice is
+identified with the root lattice in the simply connected convention, and a
+root \(\alpha\) gives a string with tension
+\[
+  T_\alpha=\left|\alpha(\phi)\right|,
+  \qquad
+  \phi\in\mathbb R^5\otimes\mathfrak t_{\mathfrak g}.
+\]
+At the superconformal point some tensions vanish, and the corresponding
+degrees of freedom are strings, not particles in six dimensions.
 
 The worldsheet theory of a BPS string carries anomalies determined by inflow
 from the bulk Green--Schwarz term.  If the string worldsheet is \(\Sigma\),
@@ -124,26 +255,87 @@ the anomaly polynomial has the form
 where \(N_\Sigma\) is the normal bundle.  The omitted terms must be fixed by
 the chosen R-symmetry and tangent-bundle conventions, not by analogy.
 
-\section{Compactification Tests}
+\section{Circle Compactification And Five-Dimensional Yang--Mills}
 
 Compactification on a smooth compact manifold \(Y\) gives lower-dimensional
 QFTs whose protected data test the six-dimensional proposal.  For a circle
-of radius \(R\), a \((2,0)\) theory of type \(\mathfrak g\) yields five
-dimensional maximally supersymmetric Yang--Mills on its Coulomb branch with
-coupling scaling as
+of radius \(R\), a \((2,0)\) theory of type \(\mathfrak g\) yields
+five-dimensional maximally supersymmetric Yang--Mills on its Coulomb branch
+with gauge algebra \(\mathfrak g\).  This statement is a compactification
+test and an effective description, not a Lagrangian definition of the
+six-dimensional fixed point.
+
+\begin{proposition}[Five-dimensional coupling convention]
+\label{prop:six-d-five-d-coupling-convention}
+Use the monograph trace-delta convention for the five-dimensional gauge
+action,
 \[
-  g_5^2\propto R .
+  S_{5d}
+  =
+  \frac1{4g_5^2}
+  \int \operatorname{tr}_{\delta}(F_{\mu\nu}F^{\mu\nu})
+  +\cdots .
 \]
-The proportionality depends on trace and instanton-charge conventions.  The
-Kaluza--Klein momentum along \(S^1\) is identified with instanton number in
-the five-dimensional description.
+If one unit of five-dimensional instanton number is identified with one unit
+of Kaluza--Klein momentum on a circle of radius \(R\), then
+\[
+  g_5^2=4\pi^2R .
+\]
+In the common half-trace convention this same relation is
+\[
+  g_{5,\rm ht}^2=8\pi^2R .
+\]
+\end{proposition}
+
+\begin{proof}
+For a static self-dual unit instanton on the spatial \(\mathbb R^4\), the
+trace-delta normalization used in the BPST calculation gives
+\[
+  E_{\rm inst}
+  =
+  \frac{4\pi^2}{g_5^2}.
+\]
+Kaluza--Klein momentum on a circle of radius \(R\) is quantized in units
+\[
+  E_{\rm KK}=\frac1R
+\]
+for a BPS state with one unit of momentum and no additional transverse
+motion.  Identifying the instanton number with KK momentum gives
+\[
+  \frac{4\pi^2}{g_5^2}=\frac1R,
+\]
+hence \(g_5^2=4\pi^2R\).  The half-trace convention has
+\(g_{5,\rm ht}^2=2g_5^2\), so \(g_{5,\rm ht}^2=8\pi^2R\).
+\end{proof}
+
+The proportionality in Proposition~\ref{prop:six-d-five-d-coupling-convention}
+is often quoted without specifying the trace convention.  Here it is tied to
+the instanton normalization used elsewhere in the monograph, so that
+compactification tests, instanton-soliton masses, and Yang--Mills kinetic
+terms use the same coupling coordinate.
+
+\section{Compactification On Riemann Surfaces}
 
 For compactification on a Riemann surface \(C\), partial twists use an
 embedding of the spin connection of \(C\) into \(G_R\).  The resulting
 four-dimensional theory must have matching anomalies, flavor symmetries,
-defect descendants, and moduli-space dimensions.  These are tests of a
-six-dimensional construction, not definitions of the parent theory by
-themselves.
+defect descendants, and moduli-space dimensions.  For \((2,0)\) theories this
+is the field-theory origin of class-\(S\) constructions: the input is a
+six-dimensional theory of type \(\mathfrak g\), a punctured or unpunctured
+Riemann surface, and boundary conditions or defects at punctures.
+
+The compactification is a test with substantial content.  It must specify:
+\[
+\begin{gathered}
+  \text{the twist homomorphism from }\operatorname{Spin}(2)_C\text{ to }G_R,\\
+  \text{the defect or puncture data},\\
+  \text{the surviving supercharges and flavor symmetries},\\
+  \text{the map of six-dimensional anomalies to four-dimensional anomalies},\\
+  \text{and the descent of surface defects and BPS strings.}
+\end{gathered}
+\]
+Supplying only a Seiberg--Witten curve in four dimensions does not by itself
+construct the six-dimensional parent theory.
 
 \section{Status Ledger}
 
@@ -157,6 +349,13 @@ A six-dimensional SCFT datum in this monograph consists of:
   \text{compactification tests and extended-operator descendants}.
 \end{gathered}
 \]
+For \((2,0)\) type \(\mathfrak g\) this includes the simply laced Lie algebra,
+the tensor-branch quotient
+\((\mathbb R^5\otimes\mathfrak t_{\mathfrak g})/W_{\mathfrak g}\), the
+anomaly polynomial \eqref{eq:six-d-two-zero-anomaly}, the root-lattice BPS
+strings, and the five-dimensional compactification normalization
+\(g_5^2=4\pi^2R\) in trace-delta variables.
+
 No item in this list is dispensable.  A proposed fixed point that supplies
 only a branch EFT is incomplete; a proposed non-Lagrangian object that
 supplies only protected indices is also incomplete.
