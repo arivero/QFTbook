@@ -66,6 +66,11 @@ Current checks:
   \(:\phi^2:\), \(:\phi^3:\), \(:\phi^4:\), the sharp-cutoff tadpole
   coefficients in two and three Euclidean dimensions, and the displayed
   \(\phi^4_d\) superficial-degree formula.
+- `continuum_scaling_window_checks.py`: finite checks for the Volume XI
+  continuum-limit chapter, including the lattice momentum expansion, the
+  exact free-scalar pole mass and correlation length, the Gaussian
+  mass-squared RG eigenvalue, the \(\nu=1/y_t\) scaling relation, and finite
+  Wick-subtraction contact-coordinate shifts.
 - `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)

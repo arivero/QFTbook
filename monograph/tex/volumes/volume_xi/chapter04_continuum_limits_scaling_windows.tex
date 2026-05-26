@@ -3,110 +3,346 @@
 
 \ConventionsEuclidean
 
-A lattice or cutoff theory becomes a continuum QFT only after its correlation
-functions have limiting distributions with the desired locality, covariance,
-positivity, and clustering properties.  The continuum limit is therefore a
-statement about a family of regulated theories and a choice of coordinates in
-the space of local observables.
+A regulated model becomes a continuum QFT only after its correlation
+functions converge as distributions and the limiting Schwinger functions
+satisfy the hypotheses needed for reconstruction.  The continuum limit is
+therefore a statement about a family of measures, a scaling trajectory in
+the regulated action, and a coordinate system for local observables.  The
+object produced is the limiting system of Schwinger distributions together
+with its reconstruction data.
 
-\section{Scaling Trajectories}
+Throughout this chapter \(D\) is the Euclidean spacetime dimension,
+\(\Lambda_a=a\mathbb Z^D\), and \(a>0\) is the lattice spacing.  The
+infinite-volume limit is taken before \(a\downarrow0\), except where a
+finite-volume scaling limit is explicitly stated.
 
-Let \(a>0\) be a lattice spacing and \(\Lambda_a=a\mathbb Z^D\) the lattice.
-For each \(a\), let \(S_a[\phi]\) be the regulated action and
-\(\langle\cdots\rangle_a\) the corresponding finite-volume expectation,
-with the infinite-volume limit taken before the continuum limit when it
-exists.  A scaling trajectory is a map
+\section{Regulated Families and Schwinger Distributions}
+
+For each \(a\), let \(\mathcal E_a\) be a space of lattice fields and let
+\[
+  d\mu_a(\phi)=Z_a^{-1}\exp[-S_a(\phi)]D\phi
+\]
+be the regulated expectation functional.  The notation \(D\phi\) denotes the
+finite-dimensional Lebesgue or Berezin product before infinite volume; after
+an infinite-volume limit it denotes the resulting cylindrical expectation,
+understood through its values on local observables.
+
+A scaling trajectory is a map
 \[
   a\longmapsto c(a)
 \]
-from lattice spacing to the couplings and counterterms appearing in
-\(S_a\).  The word counterterm here means a local term in the regulated
-action chosen as part of the path integral definition.
+from lattice spacing to the local coefficients appearing in \(S_a\).  These
+coefficients include all regulator-dependent local terms.  In this
+monograph the word counterterm means such a local term in the regulated
+action.  It is part of the action defining the path integral, not a second
+action added afterward.
 
-For a lattice observable \(O^I_a(n)\), choose a renormalization matrix
-\(Z^I{}_J(a)\) and define the smeared continuum-coordinate observable
-\[
+Let \(O^I_a(n)\) be local lattice observables.  A renormalized smeared
+observable is
+\begin{equation}
   O^I_a(f)
   =
   a^D\sum_{n\in\mathbb Z^D}
   f(an)\,Z^I{}_J(a)\,O^J_a(n),
-  \qquad f\in C_c^\infty(\mathbb R^D).
-\]
-A continuum limit of the \(k\)-point functions is the distributional limit
-\[
-  \lim_{a\to0}
-  \langle O^{I_1}_a(f_1)\cdots O^{I_k}_a(f_k)\rangle_a
+  \qquad f\in C_c^\infty(\mathbb R^D),
+  \label{eq:continuum-limit-renormalized-smeared-observable}
+\end{equation}
+where \(Z^I{}_J(a)\) may mix all observables with the same quantum numbers
+and dimension bounded by the chosen truncation.  A continuum Schwinger
+distribution is the multilinear distribution
+\begin{equation}
+  S^{I_1\ldots I_k}(f_1,\ldots,f_k)
   =
-  W^{I_1\ldots I_k}(f_1,\ldots,f_k).
+  \lim_{a\downarrow0}
+  \left\langle
+    O^{I_1}_a(f_1)\cdots O^{I_k}_a(f_k)
+  \right\rangle_a ,
+  \label{eq:continuum-limit-schwinger-distribution}
+\end{equation}
+when the limit exists for all test functions in the stated topology.
+
+The topology matters.  A useful constructive statement gives uniform bounds
+on the regulated distributions in a negative Sobolev or Schwartz seminorm,
+then proves convergence on a dense test-function space.  Pointwise
+convergence of unsmeared lattice correlators at separated lattice sites is a
+weaker statement; it does not determine contact terms and does not by itself
+give an operator-valued distribution after reconstruction.
+
+\section{Free Lattice Scalar as a Model Calculation}
+
+The massive free scalar illustrates the exact normalization of the
+continuum limit.  Let
+\begin{equation}
+  S_a(\phi)
+  =
+  \frac12 a^D\sum_{x\in a\mathbb Z^D}
+  \left[
+    \sum_{\mu=1}^D
+    \frac{(\phi_{x+a\hat\mu}-\phi_x)^2}{a^2}
+    +m_a^2\phi_x^2
+  \right],
+  \label{eq:continuum-limit-free-lattice-action}
+\end{equation}
+with \(m_a\to m>0\).  The infinite-volume covariance is
+\begin{equation}
+  C_a(x-y)
+  =
+  \int_{B_a}\frac{d^Dp}{(2\pi)^D}\,
+  \frac{e^{\ii p\cdot(x-y)}}
+       {\hat p_a^2+m_a^2},
+  \qquad
+  \hat p_a^2=\frac{4}{a^2}\sum_{\mu=1}^D
+  \sin^2\!\left(\frac{ap_\mu}{2}\right),
+  \label{eq:continuum-limit-free-lattice-covariance}
+\end{equation}
+where \(B_a=(-\pi/a,\pi/a]^D\) is the Brillouin zone.  Define the smeared
+field
+\[
+  \phi_a(f)=a^D\sum_{x\in a\mathbb Z^D} f(x)\phi_x .
 \]
 
-\section{OS Reconstruction Target}
+\begin{proposition}[Massive free lattice scalar continuum limit]
+\label{prop:free-lattice-scalar-continuum-limit}
+If \(m_a\to m>0\), then for every \(f,g\in C_c^\infty(\mathbb R^D)\),
+\[
+  \lim_{a\downarrow0}
+  \langle\phi_a(f)\phi_a(g)\rangle_a
+  =
+  \int_{\mathbb R^D}\frac{d^Dp}{(2\pi)^D}\,
+  \frac{\widehat f(-p)\widehat g(p)}{p^2+m^2}.
+  \label{eq:continuum-limit-free-scalar-limit}
+\]
+All higher Schwinger functions converge to the Gaussian Wick contractions of
+this covariance.
+\end{proposition}
 
-The limiting Euclidean distributions define a Wightman QFT only if they
-satisfy the Osterwalder--Schrader hypotheses with the growth assumptions
-needed for reconstruction.  Reflection positivity is inherited from the
-lattice when the reflection-positive structure is uniform in the limit.
-Euclidean invariance is obtained only after proving that lattice rotation
-breaking terms vanish in the scaling trajectory.
+\begin{proof}
+For the covariance,
+\[
+  \langle\phi_a(f)\phi_a(g)\rangle_a
+  =
+  \int_{B_a}\frac{d^Dp}{(2\pi)^D}\,
+  \frac{\widehat f_a(-p)\widehat g_a(p)}
+       {\hat p_a^2+m_a^2},
+\]
+where
+\[
+  \widehat f_a(p)=a^D\sum_{x\in a\mathbb Z^D} f(x)e^{-\ii p\cdot x}.
+\]
+Poisson summation gives
+\[
+  \widehat f_a(p)
+  =
+  \sum_{\ell\in\mathbb Z^D}
+  \widehat f(p+2\pi \ell/a).
+\]
+Since \(f\) is smooth and compactly supported, \(\widehat f\) is rapidly
+decreasing; hence \(\widehat f_a(p)\to\widehat f(p)\) uniformly on every
+fixed compact momentum set and has uniform rapid-decay bounds after
+periodization.  Also
+\[
+  \hat p_a^2=p^2+O(a^2|p|^4)
+\]
+on compact sets, so the integrand converges pointwise to the continuum
+integrand.  Split the Brillouin zone into \(|p|\le R\) and its complement.
+On \(|p|\le R\), dominated convergence applies.  On the complement, rapid
+decay of the periodized test functions and positivity of
+\(\hat p_a^2+m_a^2\) give a bound whose \(R\to\infty\) limit is uniform for
+small \(a\).  This proves the two-point convergence.  The finite-dimensional
+Gaussian measures are determined by their covariance, so Wick's theorem
+gives convergence of every smeared \(k\)-point function.
+\end{proof}
+
+This proof is the prototype of a constructive continuum statement:
+regulated objects are smeared first, the limiting object is a distribution,
+and the proof supplies a uniform estimate that lets the limit pass through
+the integral.
+
+\section{Correlation Length and Scaling Window}
+
+The lattice correlation length is a property of a regulated state.  In a
+massive translation-invariant theory, a connected two-point function at
+large separation behaves like
+\[
+  \langle O(n)O(0)\rangle_{\rm conn}
+  \sim e^{-|n|/\xi_{\rm lat}},
+\]
+where \(\xi_{\rm lat}\) is measured in lattice units.  A massive continuum
+limit with physical mass \(M>0\) requires
+\begin{equation}
+  \xi_{\rm lat}(a)\to\infty,
+  \qquad
+  a\,\xi_{\rm lat}(a)\to M^{-1}.
+  \label{eq:continuum-limit-massive-scaling-window}
+\end{equation}
+For a scale-invariant continuum limit, \(a\xi_{\rm lat}(a)\to\infty\).
+The phrase scaling window means that the lattice spacing, observation
+length, and correlation length are separated in the order
+\[
+  a\ll r\lesssim a\xi_{\rm lat}(a),
+\]
+with the last inequality replaced by \(r\ll a\xi_{\rm lat}(a)\) when one is
+studying critical short-distance scaling inside a massive deformation.
+
+For the free lattice scalar, the zero-spatial-momentum pole gives an exact
+correlation length.  The pole in the Euclidean time direction is
+\[
+  \frac{4}{a^2}\sinh^2\!\left(\frac{a\kappa_a}{2}\right)=m_a^2,
+  \qquad
+  \kappa_a=\frac{2}{a}\operatorname{arcsinh}\!\left(\frac{am_a}{2}\right).
+\]
+Thus
+\begin{equation}
+  \xi_{\rm lat}(a)=\frac{1}{a\kappa_a}
+  =
+  \frac{1}{2\operatorname{arcsinh}(am_a/2)},
+  \qquad
+  a\xi_{\rm lat}(a)\to m^{-1}.
+  \label{eq:continuum-limit-free-scalar-correlation-length}
+\end{equation}
+The expansion
+\[
+  \kappa_a=m_a-\frac{a^2m_a^3}{24}+O(a^4m_a^5)
+\]
+shows explicitly how the lattice mass approaches the physical pole mass.
+
+\section{Operator Coordinates and Contact Terms}
+
+Renormalized operator coordinates are part of the continuum-limit datum.
+For composite observables, the matrix \(Z^I{}_J(a)\) in
+\eqref{eq:continuum-limit-renormalized-smeared-observable} may mix an
+operator with derivatives of lower-dimensional operators and with the
+identity.  The identity and derivative mixings are the lattice form of
+contact terms.  They are visible only after smearing test functions and
+studying coincident-point limits.
+
+For example, the lattice square \(\phi_x^2\) in the free scalar model has
+\[
+  \langle\phi_x^2\rangle_a=C_a(0),
+\]
+which diverges for \(D\ge2\).  The Wick coordinate
+\[
+  :\!\phi_x^2\!:_a=\phi_x^2-C_a(0)
+\]
+has finite separated correlators and a well-defined smeared distributional
+limit in the superrenormalizable dimensions where the corresponding
+continuum Wick square exists.  If one changes the subtraction by a finite
+local constant, the smeared operator changes by a multiple of
+\(\int f(x)\dd^Dx\), namely by an identity contact coordinate.  Thus contact
+terms are part of the coordinate chart on
+local distributions.
+
+\section{Osterwalder--Schrader Reconstruction Target}
 
 \begin{definition}[Constructive continuum limit]
 \label{def:constructive-continuum-limit}
 A constructive continuum limit of a regulated family is a collection of
-limiting Schwinger distributions satisfying symmetry, Euclidean covariance,
-reflection positivity, permutation symmetry, clustering, and the required
-regularity and growth bounds, together with an OS reconstruction of the
-Hilbert space, vacuum, fields, and local operator domains.
+limiting Schwinger distributions satisfying Euclidean covariance,
+permutation symmetry, reflection positivity, clustering, regularity, and the
+growth assumptions required by the reconstruction theorem, together with the
+OS-reconstructed Hilbert space, vacuum, fields, local domains, and
+translation generators.
 \end{definition}
 
-\section{Scaling Window and Correlation Length}
-
-Let \(\xi(a)\) be a correlation length measured in lattice units.  A
-continuum scaling window requires
+Reflection positivity can pass to the limit by a closed-cone argument: if
 \[
-  \xi(a)\to\infty,\qquad a\,\xi(a)\to \ell_{\rm phys}
+  \sum_{i,j}\overline{c_i}c_j
+  S_{a}(\Theta F_i,F_j)\ge0
 \]
-with \(\ell_{\rm phys}\) finite or infinite according to whether the target
-continuum theory is massive or scale invariant.  Local lattice observables
-probe continuum physics at separations \(r\) satisfying
-\[
-  a\ll r\ll a\,\xi(a)
-\]
-in a massive scaling limit.  The lower inequality suppresses lattice
-artifacts; the upper inequality keeps the observable inside the universal
-scaling regime before exponential decay dominates.
+for every finite set of positive-time test functions and the distributions
+converge on these tests, then the limiting quadratic form is nonnegative.
+Euclidean invariance is a separate limit theorem.  Hypercubic invariance at
+fixed \(a\) becomes full Euclidean invariance only after one proves that
+rotation-breaking local operators are irrelevant or have been tuned away.
 
-\section{Renormalization Coordinates}
+The reconstruction target also includes growth bounds.  In Euclidean QFT the
+Schwinger functions must be sufficiently controlled as tempered
+distributions, and the analytic continuation to Wightman functions requires
+the hypotheses discussed in
+Chapter~\ref{ch:volume-iv-osterwalder-schrader-reconstruction}.  A continuum limit that
+produces reflection-positive distributions but lacks the needed growth
+control has not yet produced the full Lorentzian QFT object used elsewhere
+in this monograph.
 
-Let \(\mathcal B\) be a Banach space of local lattice interactions near a
-candidate fixed point \(S_*\), and let \(\mathcal R_b\) be a block-spin map
-with scale factor \(b>1\).  Linearization gives
+\section{Wilsonian Coordinates and Scaling Manifolds}
+
+Let \(\mathcal B\) be a Banach space of local interactions near a fixed point
+\(S_*\), and let \(\mathcal R_b:\mathcal U\subset\mathcal B\to\mathcal B\)
+be a block-spin map with scale factor \(b>1\).  If \(\mathcal R_b(S_*)=S_*\)
+and
 \[
-  D\mathcal R_b|_{S_*}\,v_i=b^{y_i}v_i .
+  D\mathcal R_b|_{S_*}\,v_i=b^{y_i}v_i ,
 \]
-Coordinates with \(y_i>0\) are relevant, \(y_i=0\) marginal, and \(y_i<0\)
-irrelevant in this specified norm and blocking scheme.  A statement that a
-scaling trajectory reaches \(S_*\) is a theorem only after the nonlinear map
-\(\mathcal R_b\), its domain, and estimates controlling irrelevant directions
-are supplied.
+then \(y_i>0\), \(y_i=0\), and \(y_i<0\) define relevant, marginal, and
+irrelevant directions in this specified Banach norm and blocking scheme.
+The classification is therefore tied to the chosen RG map and norm.
+
+Suppose for simplicity that there is one relevant coordinate \(t\) with
+eigenvalue \(b^{y_t}\), \(y_t>0\), and that all irrelevant coordinates are
+controlled by a stable-manifold estimate.  Under \(N\) blocking steps,
+\[
+  t_N\approx b^{Ny_t}t_0.
+\]
+The correlation length in lattice units is the number of lattice spacings
+needed until the running coordinate becomes order one, so
+\[
+  b^{Ny_t}|t_0|\sim1,
+  \qquad
+  \xi_{\rm lat}\sim b^N\sim |t_0|^{-1/y_t}.
+\]
+Thus the exponent relation
+\begin{equation}
+  \nu=\frac1{y_t}
+  \label{eq:continuum-limit-nu-yt-relation}
+\end{equation}
+is a consequence of a controlled one-relevant-coordinate RG chart.  Without
+the chart, the nonlinear estimates, and the identification of the
+correlation length, the same formula is a scaling hypothesis rather than a
+proof.
 
 \section{Status of Scalar Examples}
 
 Superrenormalizable scalar theories such as \(P(\phi)_2\) and
-\(\phi^4_3\) have constructive continuum realizations with Wightman or OS
-reconstruction under their stated hypotheses.  This is different from proving
+\(\phi^4_3\) have constructive continuum realizations with OS or Wightman
+reconstruction under their stated hypotheses.  The existence theorem for
+\(\phi^4_3\) as an interacting massive QFT is distinct from the assertion
 that the three-dimensional Ising critical point is a conformal field theory
-with the full expected operator spectrum and OPE.  In four dimensions, the
-existence of a nonperturbative ultraviolet-complete QFT agreeing with
-\(\phi^4_4\) to all orders in perturbation theory is not known; perturbative
-renormalizability and nonperturbative continuum existence are distinct
-claims.
+with the full expected operator spectrum and OPE.  The latter requires a
+critical scaling limit with conformal covariance and operator-product
+control, not only a massive constructive realization.
+
+In four dimensions, perturbative renormalizability of \(\phi^4_4\) does not
+settle nonperturbative ultraviolet existence.  The current rigorous status is
+that no construction is known of a nonperturbative four-dimensional
+UV-complete QFT whose perturbation series agrees with \(\phi^4_4\) to all
+orders around the Gaussian fixed point.  Perturbative formal power series and
+constructive continuum measures are different mathematical objects.
+
+\section{Theorem Boundary}
+
+The minimal data for a continuum-limit theorem are:
+\[
+\begin{gathered}
+  \text{a regulated expectation functional for each }a,\\
+  \text{a scaling trajectory }c(a),\\
+  \text{renormalized observable coordinates }Z^I{}_J(a),\\
+  \text{uniform distributional bounds and convergence},\\
+  \text{reflection positivity, covariance, clustering, and growth control},\\
+  \text{and an OS reconstruction of the limiting data.}
+\end{gathered}
+\]
+For Wilsonian fixed-point arguments, the theorem must also specify the
+function space, the blocking map, the fixed point, the relevant and
+irrelevant projections, and estimates that control nonlinear remainders.
+This is the line between a precise construction and a physically motivated
+scaling picture.
 
 \begin{openproblem}[Nonperturbative fixed points from Wilsonian maps]
 \label{op:nonperturbative-wilsonian-fixed-points}
 Develop a Wilsonian Banach-space framework for physically relevant
 four-dimensional and three-dimensional QFTs in which fixed points,
-renormalized operator coordinates, contact terms, and OS reconstruction can
-all be controlled in the same theorem.  The framework should make precise
-when a physicists' fixed-point argument is a proof and when it is a
+renormalized operator coordinates, contact terms, scaling windows, and OS
+reconstruction can all be controlled in the same theorem.  The framework
+should make precise when a fixed-point argument is a proof and when it is a
 well-supported construction principle.
 \end{openproblem}
