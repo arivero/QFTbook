@@ -384,6 +384,11 @@ Current checks:
   \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
   versus Veneziano quark-boundary counting, plus the displayed baryon Hartree
   pair-counting and fixed-spin rotor \(1/N_c\) scaling.
+- `lattice_continuum_bridge_checks.py`: exact finite checks for the
+  Volume XI lattice-to-continuum local-QFT chapter, including cell-average
+  test-function arithmetic, the finite-graph random-walk resolvent,
+  closedness of reflection-positive Gram matrices, and tensor-product
+  locality for spin algebras.
 - `nested_bethe_ansatz_checks.py`: finite algebra checks for the Volume VI
   algebraic and nested Bethe-ansatz chapters, including the rational
   Yang--Baxter equation, transfer-matrix commutativity, one-magnon spectra at

@@ -27,6 +27,86 @@ operators require a mixing matrix
 \]
 The operator basis and normalization are part of the continuum-limit datum.
 
+A useful way to remove a common normalization ambiguity is to use cell
+averages.  Let \(Q_a(x)\) be the half-open cube of side \(a\) centered at
+\(x\in a\mathbb Z^d\), and define
+\[
+  (I_af)(x)=a^{-d}\int_{Q_a(x)} f(u)\,d^du .
+  \label{eq:cell-average-map}
+\]
+The smeared lattice field is then
+\[
+  \Phi_a(f)
+  =
+  Z_a^{1/2}a^d\sum_{x\in a\mathbb Z^d}(I_af)(x)\phi_a(x).
+  \label{eq:cell-average-smeared-field}
+\]
+This is exactly the pairing of the lattice field with the piecewise-constant
+test function
+\[
+  f_a(u)=\sum_{x\in a\mathbb Z^d}(I_af)(x)\mathbf 1_{Q_a(x)}(u).
+  \label{eq:piecewise-constant-test-function}
+\]
+
+\begin{proposition}[Cell averages approximate test functions]
+\label{prop:cell-average-test-function-convergence}
+Let \(K\subset\mathbb R^d\) be compact and let \(f,h\in C_c^1(\mathbb R^d)\)
+have support contained in \(K\).  Then
+\[
+  \left|
+  a^d\sum_{x\in a\mathbb Z^d}(I_af)(x)(I_ah)(x)
+  -
+  \int_{\mathbb R^d} f(u)h(u)\,d^du
+  \right|
+  \leq
+  C_K a
+  \bigl(\|f\|_{C^1}\|h\|_{C^0}+\|f\|_{C^0}\|h\|_{C^1}\bigr),
+  \label{eq:cell-average-product-error}
+\]
+where \(C_K\) depends only on a fixed compact enlargement of \(K\).  In
+particular \(f_a\to f\) in \(L^2_{\mathrm{loc}}\).
+\end{proposition}
+
+\begin{proof}
+On each cell \(Q_a(x)\),
+\[
+  |(I_af)(x)-f(u)|\leq c_d a\|f\|_{C^1},
+  \qquad
+  |(I_ah)(x)-h(u)|\leq c_d a\|h\|_{C^1}
+  \]
+for all \(u\in Q_a(x)\), by the mean-value theorem and
+\(\operatorname{diam}Q_a(x)=\sqrt d\,a\).  Therefore
+\[
+  |(I_af)(x)(I_ah)(x)-f(u)h(u)|
+  \leq
+  c'_d a
+  \bigl(\|f\|_{C^1}\|h\|_{C^0}+\|f\|_{C^0}\|h\|_{C^1}\bigr)
+  +
+  c''_d a^2\|f\|_{C^1}\|h\|_{C^1}.
+  \]
+Integrating this estimate over the cells meeting the compact enlargement of
+\(K\) gives \eqref{eq:cell-average-product-error}, after increasing \(C_K\).
+\end{proof}
+
+\begin{definition}[Scaling-limit datum]
+\label{def:scaling-limit-datum}
+A scaling-limit datum for a lattice regulator family consists of:
+\[
+\begin{array}{ll}
+\text{regulator spaces} & \Omega_a\text{ and probability states }\langle-\rangle_a,\\
+\text{scaling trajectory} & \text{couplings and boundary conditions as
+functions of }a,\\
+\text{test spaces} & \mathcal D_i\text{ for each intended continuum field
+or operator},\\
+\text{operator maps} & \mathcal O_{i,a}(f)\text{ for }f\in\mathcal D_i,\\
+\text{normalizations} & Z_{ij}(a)\text{ and operator-mixing matrices},\\
+\text{topology} & \text{the seminorms in which all correlators converge}.
+\end{array}
+\]
+Without these data the phrase ``the continuum limit of a lattice operator''
+does not define a mathematical object.
+\end{definition}
+
 \section{Distributional Convergence}
 
 The \(n\)-point Schwinger distributions are
@@ -47,6 +127,148 @@ for all test functions in the chosen class, with compatible infinite-volume
 and continuum limits.  Pointwise lattice correlators are auxiliary data; the
 continuum field is distributional.
 
+The next criterion is the practical form in which distributional convergence
+is often verified.  Let \(\mathcal D\) be a test-function space equipped with
+an increasing family of seminorms \(p_1,p_2,\ldots\).  For functions
+supported in a compact set \(K\), a typical seminorm is
+\[
+  p_{K,r}(f)=\max_{|\alpha|\leq r}\sup_{x\in K}|\partial^\alpha f(x)|.
+\]
+
+\begin{proposition}[Dense-test convergence plus uniform seminorm control]
+\label{prop:dense-test-seminorm-convergence}
+Let \(T_a\) be a family of \(n\)-linear functionals on \(\mathcal D\), and
+let \(D_0\subset\mathcal D\) be dense in the seminorm used below.  Assume
+there are a constant \(C\) and a continuous seminorm \(p\) such that
+\[
+  |T_a(f_1,\ldots,f_n)|
+  \leq
+  C\,p(f_1)\cdots p(f_n)
+  \label{eq:uniform-multilinear-seminorm-bound}
+\]
+for all sufficiently small \(a\), and assume \(T_a(g_1,\ldots,g_n)\)
+converges for all \(g_i\in D_0\).  Then there is a unique continuous
+\(n\)-linear functional \(T\) satisfying
+\[
+  \lim_{a\to0}T_a(f_1,\ldots,f_n)=T(f_1,\ldots,f_n)
+  \qquad(f_i\in\mathcal D).
+  \label{eq:dense-test-extension-limit}
+\]
+\end{proposition}
+
+\begin{proof}
+For \(g_i\in D_0\), define \(T(g_1,\ldots,g_n)\) as the limit.  The bound
+\eqref{eq:uniform-multilinear-seminorm-bound} passes to the limit on \(D_0\),
+so \(T\) is uniformly continuous with respect to \(p\) on \(D_0^n\).  It
+therefore has a unique continuous extension to \(\mathcal D^n\).  For
+general \(f_i\in\mathcal D\), choose \(g_i\in D_0\) with
+\[
+  p(f_i-g_i)<\epsilon .
+\]
+Multilinearity and \eqref{eq:uniform-multilinear-seminorm-bound} give,
+uniformly in \(a\),
+\[
+  |T_a(f_1,\ldots,f_n)-T_a(g_1,\ldots,g_n)|
+  \leq
+  C'\epsilon
+  \prod_i(1+p(f_i))
+  \]
+after replacing one entry at a time.  The same estimate holds for \(T\).
+Taking first \(a\to0\) on the dense tuple \(g_1,\ldots,g_n\), and then
+\(\epsilon\to0\), proves \eqref{eq:dense-test-extension-limit}.
+\end{proof}
+
+This proposition is not a substitute for estimates.  Its content is that,
+once the uniform seminorm bound has been proved, one may check convergence on
+a countable dense family of test functions.  The hard constructive work is
+the bound \eqref{eq:uniform-multilinear-seminorm-bound}, not the extension
+argument.
+
+\section{Random-Walk Representation of a Massive Lattice Covariance}
+
+The most concrete bridge from lattice locality to continuum estimates is the
+path expansion of a massive lattice Green function.  Let \(G=(V,E)\) be a
+finite undirected \(r\)-regular graph without self-loops, let \(A\) be its
+adjacency matrix, and let \(m^2>0\).  Define
+\[
+  K_m=(m^2+r)I-A .
+  \label{eq:massive-finite-graph-operator}
+\]
+For vertices \(x,y\), let \(N_n(x,y)\) be the number of length-\(n\) nearest
+neighbor paths from \(x\) to \(y\), equivalently \(N_n(x,y)=(A^n)_{xy}\).
+
+\begin{proposition}[Finite-graph random-walk resolvent]
+\label{prop:finite-graph-random-walk-resolvent}
+The matrix \(K_m\) is positive definite and
+\[
+  (K_m^{-1})_{xy}
+  =
+  \sum_{n=0}^{\infty}
+  \frac{N_n(x,y)}{(m^2+r)^{n+1}} .
+  \label{eq:finite-graph-random-walk-resolvent}
+\]
+Equivalently, if \(P=A/r\) is the simple-random-walk transition matrix and
+\[
+  \rho=\frac{r}{m^2+r}<1,
+\]
+then
+\[
+  (K_m^{-1})_{xy}
+  =
+  \frac1{m^2+r}\sum_{n=0}^{\infty}\rho^n P^n(x,y).
+  \label{eq:finite-graph-random-walk-probability-form}
+\]
+\end{proposition}
+
+\begin{proof}
+For any vector \(u\),
+\[
+  u^*K_m u
+  =
+  m^2\sum_x |u_x|^2
+  +
+  \frac12\sum_{x\sim y}|u_x-u_y|^2 ,
+  \label{eq:finite-graph-positive-quadratic-form}
+\]
+where each unoriented edge is counted once.  Thus \(K_m\) is positive
+definite.  Since the operator norm of \(A\) on \(\ell^2(V)\) is at most \(r\),
+\[
+  \left\|\frac{A}{m^2+r}\right\|<1 .
+\]
+The Neumann series converges absolutely in operator norm:
+\[
+  K_m^{-1}
+  =
+  \frac1{m^2+r}
+  \left(I-\frac{A}{m^2+r}\right)^{-1}
+  =
+  \sum_{n=0}^{\infty}\frac{A^n}{(m^2+r)^{n+1}} .
+  \]
+Taking the \((x,y)\) matrix entry gives
+\eqref{eq:finite-graph-random-walk-resolvent}.  Replacing \(A^n\) by
+\(r^nP^n\) gives \eqref{eq:finite-graph-random-walk-probability-form}.
+\end{proof}
+
+For a cubic lattice with spacing \(a\), the free covariance is obtained from
+the same formula after the replacement
+\[
+  K_{m,a}=m^2I-a^{-2}\sum_{\mu=1}^{d}(T_\mu+T_\mu^{-1}-2I)
+  =
+  (m^2+2da^{-2})I-a^{-2}A .
+  \label{eq:massive-cubic-lattice-operator}
+\]
+The path expansion then weights an \(n\)-step path by
+\[
+  a^{-2n}\bigl(m^2+2da^{-2}\bigr)^{-(n+1)}
+\]
+in the covariance matrix \(K_{m,a}^{-1}\).  In an interacting scalar
+construction the free path expansion is replaced by a random-walk or polymer
+expansion with local weights.  The proof obligations are the same in
+structure as in Proposition~\ref{prop:finite-graph-random-walk-resolvent}:
+identify a positive reference operator, expand the perturbation in local
+objects, and prove a norm or polymer-sum bound that survives the intended
+limit.
+
 \section{Reflection Positivity And OS Reconstruction}
 
 Assume the lattice measures are reflection positive with respect to a
@@ -60,6 +282,41 @@ regularity, and the OS growth hypotheses, OS reconstruction produces a
 Hilbert space, vacuum, Hamiltonian, and Wightman distributions.  Thus the
 lattice-to-continuum bridge is a theorem only after these hypotheses are
 verified for the limiting distributions.
+
+\begin{proposition}[Closedness of reflection positivity]
+\label{prop:reflection-positivity-closed-under-limits}
+Let \(S_a\) be reflection-positive Schwinger functionals on a common
+positive-time test algebra \(\mathfrak A_+\).  Suppose that, for every
+finite list \(F_1,\ldots,F_N\in\mathfrak A_+\), the limits
+\[
+  \lim_{a\to0} S_a(F_i^\Theta F_j)
+  =
+  S(F_i^\Theta F_j)
+  \label{eq:reflection-positive-matrix-entry-limit}
+\]
+exist.  Then the limiting functional \(S\) is reflection positive:
+\[
+  \sum_{i,j=1}^{N}\overline c_i c_j\,S(F_i^\Theta F_j)\geq0
+  \label{eq:limit-reflection-positivity}
+\]
+for all \(c_i\in\mathbb C\).
+\end{proposition}
+
+\begin{proof}
+For each \(a\), the matrix
+\[
+  M_a(F)_{ij}=S_a(F_i^\Theta F_j)
+\]
+is positive semidefinite by reflection positivity.  Hence
+\[
+  \sum_{i,j}\overline c_i c_j M_a(F)_{ij}\geq0 .
+\]
+Taking the entrywise limit
+\eqref{eq:reflection-positive-matrix-entry-limit} gives
+\eqref{eq:limit-reflection-positivity}.  No compactness or reconstruction
+input is hidden here; the only point is that positivity of finite Gram
+matrices is a closed condition under entrywise convergence.
+\end{proof}
 
 \section{Local Algebras From Lattice Algebras}
 
@@ -76,6 +333,83 @@ that preserve inclusion, locality, and the state in the scaling limit.  The
 construction is delicate for gauge theories because Gauss-law constraints and
 center degrees of freedom affect the algebra assigned to a region with
 boundary.
+
+For spin systems the algebraic limit can be stated directly.  Let
+\(\mathcal H_x\) be a finite-dimensional Hilbert space at each site and set
+\[
+  \mathcal A_a(X)=\bigotimes_{x\in X}\operatorname{End}(\mathcal H_x)
+  \label{eq:finite-region-spin-algebra}
+\]
+for a finite set \(X\subset\Lambda_a\).  If \(X\subset Y\), the inclusion is
+\[
+  A\longmapsto A\otimes \mathbf 1_{Y\setminus X}.
+\]
+For disjoint \(X,Y\), the images of \(\mathcal A_a(X)\) and
+\(\mathcal A_a(Y)\) commute.  The quasi-local algebra at fixed \(a\) is the
+norm closure of the union over finite \(X\).
+
+\begin{proposition}[Locality passes through state convergence for spin nets]
+\label{prop:spin-locality-passes-to-gNS-limit}
+Assume that for every bounded continuum region \(O\) and every sufficiently
+small \(a\) there is a finite set \(O_a\subset\Lambda_a\), with isotony
+\(O_1\subset O_2\Rightarrow O_{1,a}\subset O_{2,a}\).  Suppose a collection
+of lattice observables \(A_{i,a}(O_i)\in\mathcal A_a(O_{i,a})\) has limiting
+correlation functions in a state \(\omega\) on the abstract algebra generated
+by the symbols \(A_i(O_i)\).  If \(O_1\) and \(O_2\) have positive
+separation, then for all sufficiently small \(a\),
+\[
+  [A_{1,a}(O_1),A_{2,a}(O_2)]=0,
+\]
+and the limiting GNS representation obeys
+\[
+  [\pi_\omega(A_1(O_1)),\pi_\omega(A_2(O_2))]=0
+  \]
+on the dense domain generated by finite products of local symbols.
+\end{proposition}
+
+\begin{proof}
+Positive separation of \(O_1\) and \(O_2\) implies
+\(O_{1,a}\cap O_{2,a}=\varnothing\) for all sufficiently small \(a\), after
+the cell approximation is chosen inside a fixed small thickening.  The finite
+tensor-product construction then gives exact commutation at lattice spacing
+\(a\).  For any finite product \(B_a\) of additional local lattice
+observables whose correlations converge,
+\[
+  \omega\bigl(B[A_1(O_1),A_2(O_2)]\bigr)
+  =
+  \lim_{a\to0}\omega_a\bigl(B_a[A_{1,a}(O_1),A_{2,a}(O_2)]\bigr)
+  =
+  0 .
+  \]
+Moreover, for every such \(B\), set
+\[
+  C=[A_1(O_1),A_2(O_2)],
+  \qquad
+  C_a=[A_{1,a}(O_1),A_{2,a}(O_2)] .
+\]
+Then
+\[
+  \left\|\pi_\omega(C)\pi_\omega(B)\Omega_\omega\right\|^2
+  =
+  \omega(B^*C^*CB)
+  =
+  \lim_{a\to0}\omega_a(B_a^*C_a^*C_aB_a)
+  =
+  0 .
+  \]
+Thus the commutator annihilates the GNS dense domain generated by local
+symbols.  Extension to bounded local von Neumann algebras, when they exist,
+is a further closure statement and requires the chosen topology of the
+scaling limit.
+\end{proof}
+
+Gauge theories are not obtained by the same tensor-factor argument after
+imposing Gauss constraints.  The gauge-invariant algebra of a region need not
+factor over a boundary; electric center, magnetic center, and extended
+Hilbert-space prescriptions assign different boundary algebras.  A continuum
+local-net claim for a lattice gauge scaling limit must therefore state which
+regional algebra is being scaled and how charged or line-operator sectors are
+represented.
 
 \section{Gauge-Invariant Operators}
 
