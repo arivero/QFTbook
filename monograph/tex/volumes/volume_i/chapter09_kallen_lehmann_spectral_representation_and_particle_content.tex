@@ -5,6 +5,8 @@
 
 \section{Spectral Data of a Scalar Field}
 
+\begin{definition}[Centered scalar two-point spectral datum]
+\label{def:kallen-lehmann-centered-scalar-spectral-datum}
 Let \(\Hilb\) carry a strongly continuous unitary representation of spacetime
 translations with commuting self-adjoint generators \(P^\mu\). Let
 \[
@@ -34,7 +36,33 @@ because the zero-momentum spectral projection is \(|\vac\rangle\langle\vac|\),
 there is no remaining translation-invariant component after this subtraction.
 Point-field notation below is distributional notation; after smearing, the
 matrix elements are ordinary Hilbert-space pairings.
+\end{definition}
 
+\begin{proposition}[Two-point spectral measure of a scalar field]
+\label{prop:kallen-lehmann-two-point-spectral-measure}
+In the datum of
+Definition~\ref{def:kallen-lehmann-centered-scalar-spectral-datum}, define
+\[
+  \nu_\phi(\Delta)
+  =
+  \langle\vac|
+  \widehat\phi(0)E(\Delta)\widehat\phi(0)
+  |\vac\rangle
+\]
+for Borel \(\Delta\subset\mathbb R^D\), in the distributional sense explained
+there.  Then \(\nu_\phi\) is a positive measure supported in
+\(\overline V_+\), and
+if \(\widehat\phi\) is Lorentz scalar and the vacuum is Lorentz invariant,
+\(\nu_\phi\) is invariant under \(SO^+(1,D-1)\).  The Wightman two-point
+distribution is the Fourier--Stieltjes transform
+\[
+  W_2(x-y)
+  =
+  \int_{\overline V_+}\ee^{\ii p\cdot(x-y)}\,\dd\nu_\phi(p).
+\]
+\end{proposition}
+
+\begin{proof}
 The Wightman two-point distribution is
 \[
   W_2(x-y)
@@ -65,6 +93,29 @@ Positivity is immediate from the spectral theorem: for a Borel set
   \|E(\Delta)\widehat\phi(0)\vac\|^2
   \ge0.
 \]
+The support condition follows from
+\(E(\mathbb R^D\setminus\overline V_+)=0\).  With the translation convention
+\[
+  U(a)^{-1}\widehat\phi(0)U(a)=\widehat\phi(a),
+  \qquad
+  U(a)=\ee^{\ii a^\mu P_\mu},
+\]
+and \(U(a)\vac=\vac\), the two-point function is
+\[
+\begin{aligned}
+  \langle\vac|\widehat\phi(x)\widehat\phi(y)|\vac\rangle
+  &=
+  \langle\vac|\widehat\phi(0)U(x-y)\widehat\phi(0)|\vac\rangle  \\
+  &=
+  \int_{\overline V_+}\ee^{\ii p\cdot(x-y)}\,\dd\nu_\phi(p).
+\end{aligned}
+\]
+If \(U(\Lambda)\widehat\phi(0)U(\Lambda)^{-1}=\widehat\phi(0)\) and
+\(U(\Lambda)\vac=\vac\), then covariance of the joint spectral measure,
+\(U(\Lambda)E(\Delta)U(\Lambda)^{-1}=E(\Lambda\Delta)\), gives
+\(\nu_\phi(\Lambda\Delta)=\nu_\phi(\Delta)\).
+\end{proof}
+
 Equivalently, if one writes the same statement in generalized
 energy-momentum eigenvector notation, with
 \[
@@ -240,6 +291,8 @@ measure \(\dd\rho(s):=c(s)\dd\lambda(s)\).  Substituting
 removed origin has zero \(\nu\)-measure.
 \end{proof}
 
+\begin{definition}[K\"all\'en--Lehmann spectral measure]
+\label{def:kallen-lehmann-spectral-measure}
 Applying Proposition~\ref{prop:kallen-lehmann-mass-shell-disintegration} to
 \(\nu_\phi\), with the vacuum atom removed as above, gives
 \[
@@ -261,7 +314,10 @@ the density is of the form
 \]
 with support on \(-p^2\ge0\). The measure notation is retained because the
 one-particle contribution is an atom, not an ordinary function.
+\end{definition}
 
+\begin{definition}[Positive-frequency massive scalar distribution]
+\label{def:positive-frequency-massive-scalar-distribution}
 Define the positive-frequency scalar two-point function of mass \(\mu\) by
 \[
   \Delta_+(x;\mu^2)
@@ -280,6 +336,10 @@ Equivalently,
     \ee^{\ii\vec p\cdot\vec x-\ii\sqrt{\vec p^{\,2}+\mu^2}\,x^0}
   }{2\sqrt{\vec p^{\,2}+\mu^2}} .
 \]
+\end{definition}
+
+\begin{proposition}[K\"all\'en--Lehmann representation for \(W_2\)]
+\label{prop:kallen-lehmann-wightman-representation}
 The Wightman two-point function is then
 \[
   W_2(x)
@@ -290,25 +350,54 @@ The Wightman two-point function is then
 \]
 This is the K\"all\'en--Lehmann representation for the Wightman two-point
 function.
+\end{proposition}
 
+\begin{proof}
+Substitute the disintegration of
+Definition~\ref{def:kallen-lehmann-spectral-measure} into the spectral
+Fourier representation of
+Proposition~\ref{prop:kallen-lehmann-two-point-spectral-measure}.  The inner
+mass-shell integral is exactly
+Definition~\ref{def:positive-frequency-massive-scalar-distribution}.  The
+result follows first against Schwartz test functions in \(x\), where Fubini's
+theorem applies to the positive measure after inserting a rapidly decreasing
+test function, and then by equality of tempered distributions.
+\end{proof}
+
+\begin{proposition}[Spacelike symmetry of the scalar two-point function]
+\label{prop:kallen-lehmann-spacelike-symmetry}
 For each \(\mu^2\), the distribution \(\Delta_+(x;\mu^2)\) is even at
-spacelike separation. Indeed, if \(x^2>0\), one may choose a Lorentz frame in
-which \(x^0=0\); in that frame the integral is
-\[
-  \int
-  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}
-  \frac{\ee^{\ii\vec p\cdot\vec x}}{2\sqrt{\vec p^{\,2}+\mu^2}},
-\]
-which is unchanged by \(\vec p\mapsto-\vec p\). Therefore
+spacelike separation:
 \[
   \Delta_+(x;\mu^2)=\Delta_+(-x;\mu^2),
   \qquad x^2>0,
 \]
-and hence \(W_2(x)=W_2(-x)\) for spacelike \(x\). No such equality follows for
-timelike \(x\); the ordering of operators is then genuine data.
+and hence \(W_2(x)=W_2(-x)\) for spacelike \(x\).  No such equality follows
+from the spectral representation for timelike \(x\).
+\end{proposition}
+
+\begin{proof}
+For \(x^2>0\), choose a proper orthochronous Lorentz transformation carrying
+\(x\) to \((0,\vec r)\).  The mass-shell measure in
+Definition~\ref{def:positive-frequency-massive-scalar-distribution} is
+Lorentz invariant, so \(\Delta_+(x;\mu^2)=\Delta_+(0,\vec r;\mu^2)\).  In
+that frame the integral is
+\[
+  \int
+  \frac{\dd^{D-1}\vec p}{(2\pi)^{D-1}}
+  \frac{\ee^{\ii\vec p\cdot\vec r}}{2\sqrt{\vec p^{\,2}+\mu^2}},
+\]
+which has an even denominator.  Changing variables \(\vec p\mapsto-\vec p\)
+gives
+\(\Delta_+(0,\vec r;\mu^2)=\Delta_+(0,-\vec r;\mu^2)\), which is
+\(\Delta_+(-x;\mu^2)\).  Integrating this equality against the positive
+measure \(d\rho(\mu^2)\) gives the statement for \(W_2\).
+\end{proof}
 
 \section{Time-Ordered and Euclidean Forms}
 
+\begin{definition}[Time-ordered scalar two-point distribution]
+\label{def:kallen-lehmann-time-ordered-two-point}
 The time-ordered two-point function is
 \[
   G_T(x)
@@ -325,15 +414,11 @@ Using the definition of time ordering,
   =
   \theta(x^0)W_2(x)+\theta(-x^0)W_2(-x).
 \]
-Therefore
-\[
-  G_T(x)
-  =
-  \int_{[0,\infty)}
-  \dd\rho(\mu^2)\,
-  \Delta_F(x;\mu^2),
-\]
-where
+\end{definition}
+
+\begin{definition}[Massive Feynman two-point kernel]
+\label{def:kallen-lehmann-massive-feynman-kernel}
+For \(\mu^2\ge0\), define
 \[
   \Delta_F(x;\mu^2)
   =
@@ -341,8 +426,38 @@ where
   \int\frac{\dd^Dk}{(2\pi)^D}
   \frac{\ee^{\ii k\cdot x}}{k^2+\mu^2-\ii\epsilon}.
 \]
-To see explicitly that this \(i\epsilon\) prescription gives the
-time-ordered expression, set
+\end{definition}
+
+\begin{proposition}[Time-ordered K\"all\'en--Lehmann representation]
+\label{prop:kallen-lehmann-time-ordered-representation}
+The time-ordered two-point function satisfies
+\[
+  G_T(x)
+  =
+  \int_{[0,\infty)}
+  \dd\rho(\mu^2)\,
+  \Delta_F(x;\mu^2)
+\]
+as a distribution.  Equivalently,
+\[
+  \Delta_F(x;\mu^2)
+  =
+  \theta(x^0)\Delta_+(x;\mu^2)
+  +
+  \theta(-x^0)\Delta_+(-x;\mu^2).
+\]
+\end{proposition}
+
+\begin{proof}
+The first equality follows from
+Definition~\ref{def:kallen-lehmann-time-ordered-two-point},
+Proposition~\ref{prop:kallen-lehmann-wightman-representation}, and the second
+displayed identity for \(\Delta_F\).  It remains to prove that the
+\(\ii\epsilon\) kernel in
+Definition~\ref{def:kallen-lehmann-massive-feynman-kernel} has this
+time-ordered boundary value.
+
+Set
 \[
   \omega_{\vec k,\mu}=\sqrt{\vec k^{\,2}+\mu^2}.
 \]
@@ -362,9 +477,9 @@ The two poles are displaced to
   \qquad
   k^0=-\omega_{\vec k,\mu}+\ii0.
 \]
-For \(x^0>0\) the exponential damps in the lower half-plane, and the closed
-contour has clockwise orientation; for \(x^0<0\) the contour closes in the
-upper half-plane. Thus
+For \(x^0>0\), the exponential damps in the lower half-plane and the closed
+contour has clockwise orientation.  For \(x^0<0\), the exponential damps in
+the upper half-plane.  The residue theorem gives
 \[
   I(x^0,\vec k;\mu^2)
   =
@@ -382,6 +497,7 @@ After the remaining spatial Fourier transform this is exactly
   +
   \theta(-x^0)\Delta_+(-x;\mu^2).
 \]
+\end{proof}
 
 \begin{figure}[H]
 \centering
@@ -423,8 +539,33 @@ Equivalently,
   \frac{\dd\rho(\mu^2)}{k^2+\mu^2-\ii\epsilon}.
 \]
 
+\begin{proposition}[Euclidean K\"all\'en--Lehmann representation]
+\label{prop:kallen-lehmann-euclidean-representation}
+Let \(G_E\) be the Euclidean two-point distribution obtained from the ordered
+Wightman boundary values by \(x^0=-\ii\tau_x\),
+\(y^0=-\ii\tau_y\).  Then
+\[
+  G_E(x_E)
+  =
+  \int_{[0,\infty)}
+  \dd\rho(\mu^2)\,
+  \Delta_E(x_E;\mu^2),
+\]
+where
+\[
+  \Delta_E(x_E;\mu^2)
+  =
+  \int\frac{\dd^Dk_E}{(2\pi)^D}
+  \frac{\ee^{\ii k_E\cdot x_E}}{k_E^2+\mu^2}.
+  \label{eq:kallen-lehmann-free-euclidean-kernel}
+\]
+Thus the same positive measure \(d\rho\) controls the Wightman,
+time-ordered, and Euclidean scalar two-point functions.
+\end{proposition}
+
+\begin{proof}
 The Euclidean function is obtained by analytic continuation of the Wightman
-functions in the time variable. For
+functions in the time variable.  For
 \[
   z=x-y,\qquad z^0\in\mathbb C,\qquad \operatorname{Im}z^0<0,
 \]
@@ -436,28 +577,23 @@ Set \(x^0=-\ii\tau_x\), \(y^0=-\ii\tau_y\). If
 plane and the Euclidean two-point function is the continuation of
 \(W_2(x-y)\). If \(\tau_x<\tau_y\), the time-ordered function instead continues
 \(W_2(y-x)\). This gives a single symmetric Euclidean distribution.
-
-The Euclidean two-point function has the same spectral measure:
-\[
-  G_E(x_E)
-  =
-  \int_{[0,\infty)}
-  \dd\rho(\mu^2)\,
-  \Delta_E(x_E;\mu^2),
-\]
-with
-\[
-  \Delta_E(x_E;\mu^2)
-  =
-  \int\frac{\dd^Dk_E}{(2\pi)^D}
-  \frac{\ee^{\ii k_E\cdot x_E}}{k_E^2+\mu^2}.
-\]
-The spectral measure \(d\rho\) is thus common to the Wightman, time-ordered,
-and Euclidean two-point functions. The different Green functions are different
-boundary values or analytic continuations of the same positive spectral data.
+For each fixed \(\mu^2\), the same continuation of
+\(\Delta_+(x;\mu^2)\) gives the free Euclidean kernel
+\eqref{eq:kallen-lehmann-free-euclidean-kernel}; this is the one-particle
+Wick rotation already derived in
+Chapter~\ref{ch:scalar-path-integrals-green-functions}.  Substituting
+the spectral integral of
+Proposition~\ref{prop:kallen-lehmann-wightman-representation} and testing
+against compactly supported Euclidean test functions permits the continuation
+under the positive spectral integral.  The result is the displayed formula for
+\(G_E\).  The three Green functions are therefore different boundary values or
+analytic continuations of the same positive spectral data.
+\end{proof}
 
 \section{Stieltjes Positivity of the Euclidean Propagator}
 
+\begin{definition}[Stieltjes datum of a scalar Euclidean two-point function]
+\label{def:kallen-lehmann-stieltjes-datum}
 The Euclidean momentum-space two-point function contains the same information
 in a form that is often the most robust for constructive and lattice
 arguments.  In this section \(z\) denotes the complex continuation of the
@@ -484,7 +620,34 @@ case discussed below.  It is not automatic for arbitrary local composite
 operators; for them the two-point function may require subtractions, and
 polynomial ambiguities in \(Q^2\) are precisely the momentum-space form of
 contact terms at coincident Euclidean points.
+\end{definition}
 
+\begin{proposition}[Stieltjes positivity and spectral recovery]
+\label{prop:kallen-lehmann-stieltjes-positivity}
+Under the integrability condition
+\eqref{eq:stieltjes-integrability-condition}, the function
+\[
+  F(z)=\int_{[0,\infty)}\frac{\dd\rho(s)}{z+s}
+\]
+is holomorphic on \(\mathbb C\setminus(-\infty,0]\), restricts to
+\(\widetilde G_E(Q^2)\) on \(Q^2>0\), obeys
+\[
+  (-1)^r
+  \frac{\dd^r}{\dd (Q^2)^r}\widetilde G_E(Q^2)\ge0,
+  \qquad Q^2>0,\quad r=0,1,2,\ldots ,
+\]
+and recovers the absolutely continuous spectral density by the discontinuity
+formula
+\[
+  \rho_{\rm ac}(s)
+  =
+  -\frac{1}{2\pi\ii}
+  \operatorname{Disc}_{z=-s}\widetilde G_E(z).
+\]
+Atoms of \(d\rho\) are simple poles on the cut with positive residues.
+\end{proposition}
+
+\begin{proof}
 Under \eqref{eq:stieltjes-integrability-condition}, \(\widetilde G_E\) is a
 Stieltjes transform of a positive measure.  More precisely,
 \[
@@ -530,7 +693,28 @@ with atoms appearing as simple poles at \(z=-s_0\) of positive residue.  This
 is the Euclidean form of the statement that stable particles are isolated
 positive atoms of the spectral measure and multiparticle states are continuous
 spectral support.
+\end{proof}
 
+\begin{proposition}[Subtracted Stieltjes form and contact terms]
+\label{prop:kallen-lehmann-subtracted-stieltjes-contact-terms}
+If the spectral measure has tempered growth in the sense that there is
+\(N\ge0\) with
+\[
+  \int_{[0,\infty)}\frac{\dd\rho(s)}{(1+s)^{N+1}}<\infty ,
+\]
+then the \((N+1)\)-st derivative of the nonlocal Euclidean momentum-space
+two-point function is the convergent Stieltjes transform
+\[
+  F^{(N+1)}(z)
+  =
+  (-1)^{N+1}(N+1)!
+  \int_{[0,\infty)}\frac{\dd\rho(s)}{(z+s)^{N+2}} .
+\]
+Integrating back determines \(F\) only up to a polynomial of degree \(N\),
+which is the momentum-space ambiguity of contact terms at coincident points.
+\end{proposition}
+
+\begin{proof}
 For a more singular local field, the spectral measure may have only tempered
 growth, by which we mean here that there is an integer \(N\ge0\) such that
 \[
@@ -550,9 +734,12 @@ equation back determines a representative \(F(z)\) only up to a polynomial of
 degree \(N\), which is exactly the freedom to add contact terms.  The
 discontinuity across the cut, and therefore the spectral measure away from
 contact terms, is unaffected by this polynomial ambiguity.
+\end{proof}
 
 \section{Canonical Normalization and Spectral Weight}
 
+\begin{definition}[Canonical equal-time normalization of a scalar field]
+\label{def:kallen-lehmann-canonical-equal-time-normalization}
 The measure \(d\rho\) depends on the normalization of the local field.  A
 canonical equal-time normalization consists of a regularity datum on the
 operator-valued distribution together with a smeared commutator identity.
@@ -601,7 +788,24 @@ then the same argument below gives \(\int\dd\rho=C_\phi\).  If no such
 equal-time normalization is part of the field data, the K\"all\'en--Lehmann
 representation by itself gives positivity and support, but not a total-weight
 sum rule.
+\end{definition}
 
+\begin{proposition}[Canonical spectral-weight sum rule]
+\label{prop:kallen-lehmann-canonical-spectral-sum-rule}
+Assume the canonical equal-time normalization of
+Definition~\ref{def:kallen-lehmann-canonical-equal-time-normalization}, and
+assume that the spectral truncations converge after applying
+\(\partial_t|_{t=0}\) in \(\mathcal S'(\mathbb R^{D-1})\).  Then
+\[
+  \int_{[0,\infty)}\dd\rho(s)=1 .
+\]
+If the equal-time commutator has central normalization \(C_\phi\), then
+\[
+  \int_{[0,\infty)}\dd\rho(s)=C_\phi .
+\]
+\end{proposition}
+
+\begin{proof}
 The commutator two-point distribution is
 \[
   C(x):=
@@ -710,7 +914,27 @@ and monotone convergence yields the canonical sum rule
 \end{equation}
 It fixes the chosen field normalization; changing the field normalization
 rescales the spectral measure.
+If the equal-time commutator has central normalization \(C_\phi\), the right
+hand side of
+\eqref{eq:kallen-lehmann-equal-time-commutator-derivative} is multiplied by
+\(C_\phi\), and the same comparison gives
+\(\int_{[0,\infty)}\dd\rho(s)=C_\phi\).
+\end{proof}
 
+\begin{proposition}[One-particle residue bound for a canonically normalized field]
+\label{prop:kallen-lehmann-one-particle-residue-bound}
+If a canonically normalized scalar field has a one-particle atomic
+contribution \(Z\,\delta_{m^2}(\dd s)\), then
+\[
+  0\le Z\le1 .
+\]
+More generally, if the equal-time commutator has central normalization
+\(C_\phi\), then \(0\le Z\le C_\phi\).  Without such a finite equal-time
+normalization, the atom weight \(Z\) is positive for the chosen field but has
+no universal upper bound.
+\end{proposition}
+
+\begin{proof}
 If the same canonically normalized field has a one-particle atomic contribution
 \(Z\,\delta_{m^2}(\dd s)\), where \(\delta_{m^2}\) is the unit point measure at
 \(s=m^2\), positivity of \(d\rho\) and
@@ -733,6 +957,7 @@ chosen interpolating field, but it has no universal upper bound; rescaling the
 field rescales \(Z\).  The canonical free field used later in LSZ is the
 asymptotic field on the one-particle Fock space, normalized separately from the
 interpolating local field whose correlators contain the pole.
+\end{proof}
 
 \begin{remark}[Support hypothesis for a single massive scalar channel]
 \label{rem:kallen-lehmann-single-massive-support}
@@ -818,6 +1043,8 @@ candidate pole data rather than this Hilbert-space spectral theorem.
 
 \section{Scalar One-Particle States and Normalization}
 
+\begin{definition}[Scalar massive one-particle normalization datum]
+\label{def:kallen-lehmann-scalar-one-particle-normalization-datum}
 Assume now that the Hilbert space contains an isolated positive-mass
 one-particle subspace with mass \(m>0\). In this section ``scalar particle''
 means that the corresponding massive Wigner representation has trivial
@@ -852,6 +1079,7 @@ write
   \qquad
   N(\vec 0)=1.
 \]
+\end{definition}
 
 \begin{figure}[H]
 \centering
@@ -873,6 +1101,31 @@ for one-particle states.}
 \label{fig:standard-boost-positive-mass-shell}
 \end{figure}
 
+\begin{proposition}[Delta-normalized and invariant scalar momentum states]
+\label{prop:kallen-lehmann-one-particle-state-normalization}
+For the scalar massive one-particle representation,
+\[
+  N(\vec k)=\sqrt{\frac{m}{\omega_{\vec k}}},
+\]
+up to a phase convention.  The invariantly normalized states
+\[
+  |\vec k\rangle_{\rm inv}
+  =
+  \sqrt{(2\pi)^{D-1}2\omega_{\vec k}}\,
+  |\vec k\rangle_\delta
+\]
+obey
+\[
+  {}_{\rm inv}\langle\vec k\,{}'|\vec k\rangle_{\rm inv}
+  =
+  (2\pi)^{D-1}2\omega_{\vec k}\,
+  \delta^{(D-1)}(\vec k\,{}'-\vec k),
+  \qquad
+  U(\Lambda)|\vec k\rangle_{\rm inv}=|\Lambda\vec k\rangle_{\rm inv}.
+\]
+\end{proposition}
+
+\begin{proof}
 For a Lorentz transformation \(\Lambda\), define the Wigner rotation
 \[
   W(\Lambda,k)=L(\Lambda k)^{-1}\Lambda L(k).
@@ -933,7 +1186,10 @@ for which
   \qquad
   U(\Lambda)|\vec k\rangle_{\rm inv}=|\Lambda\vec k\rangle_{\rm inv}.
 \]
+\end{proof}
 
+\begin{proposition}[Scalar field matrix element on an isolated scalar shell]
+\label{prop:kallen-lehmann-scalar-field-one-particle-matrix-element}
 If \(\widehat\phi\) is a scalar local field and the vacuum is invariant, then
 the matrix element
 \[
@@ -941,22 +1197,8 @@ the matrix element
   =
   {}_\delta\langle\vec k|\widehat\phi(0)|\vac\rangle
 \]
-has the same \(\vec k\)-dependence as \(N(\vec k)\). Indeed,
-\(U(\Lambda)\widehat\phi(0)U(\Lambda)^{-1}=\widehat\phi(0)\) and
-\(U(\Lambda)\vac=\vac\) give
-\[
-  A(\vec k)
-  =
-  \frac{N(\vec k)}{N(\Lambda\vec k)}
-  A(\Lambda\vec k).
-\]
-Choosing \(\Lambda=L(\vec k)^{-1}\) gives
-\[
-  A(\vec k)=N(\vec k)A(\vec 0),
-\]
-up to the phase convention already fixed in the definition of the
-one-particle states. Thus there is a nonnegative number \(Z\), depending on the
-chosen field, such that
+has the same \(\vec k\)-dependence as \(N(\vec k)\).  Equivalently, there is
+a nonnegative number \(Z\), depending on the chosen field, such that
 \[
   {}_\delta\langle\vec k|\widehat\phi(0)|\vac\rangle
   =
@@ -970,13 +1212,57 @@ or equivalently
   =
   Z^{1/2}.
 \]
+\end{proposition}
+
+\begin{proof}
+The scalar covariance equation
+\(U(\Lambda)\widehat\phi(0)U(\Lambda)^{-1}=\widehat\phi(0)\), vacuum
+invariance, and
+Proposition~\ref{prop:kallen-lehmann-one-particle-state-normalization} imply
+the transformation law
+\[
+  A(\vec k)
+  =
+  \frac{N(\vec k)}{N(\Lambda\vec k)}
+  A(\Lambda\vec k).
+\]
+Taking
+\(\Lambda=L(\vec k)^{-1}\) reduces the matrix element to its rest-frame value
+and gives \(A(\vec k)=N(\vec k)A(\vec0)\).  Choosing the phase of the
+one-particle states fixes \(A(\vec0)\ge0\).  Writing
+\(Z=(2\pi)^{D-1}2m\,|A(\vec0)|^2\) gives the delta-normalized formula, and
+the invariant normalization removes the kinematic factor.
+\end{proof}
 
 \section{One-Particle Atoms}
 
+\begin{proposition}[One-particle atom in the scalar spectral measure]
+\label{prop:kallen-lehmann-one-particle-atom}
 Assume the spectrum contains an isolated scalar one-particle mass \(m>0\), and
 assume the local field \(\widehat\phi\) has nonzero projection onto that
-one-particle subspace. With the invariant normalization from the one-particle
-construction,
+one-particle subspace.  With the invariant normalization from
+Proposition~\ref{prop:kallen-lehmann-one-particle-state-normalization}, define
+\(Z\ge0\) by
+\[
+  {}_{\rm inv}\langle\vec p|\widehat\phi(0)|\vac\rangle=Z^{1/2}.
+\]
+Then the one-particle contribution to the spectral measure is
+\[
+  \dd\rho_1(\mu^2)=Z\,\delta_{m^2}(\dd\mu^2),
+\]
+so
+\[
+  \dd\rho(\mu^2)
+  =
+  Z\,\delta_{m^2}(\dd\mu^2)
+  +
+  \dd\rho_{\mathrm c}(\mu^2)
+\]
+with \(d\rho_{\mathrm c}\) positive.
+\end{proposition}
+
+\begin{proof}
+With the invariant normalization from the one-particle construction,
 \[
   \langle\vec p\,{}'|\vec p\rangle
   =
@@ -1028,6 +1314,7 @@ in the previous section, the same statement is the calculation
 \]
 Comparison with the invariant-mass decomposition then gives
 \(\dd\rho_1(\mu^2)=Z\,\delta_{m^2}(\dd\mu^2)\).
+\end{proof}
 
 \begin{figure}[H]
 \centering
