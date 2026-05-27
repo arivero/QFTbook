@@ -44,6 +44,12 @@ finished monograph.
 - `12_strict_writing_harness.md`: immediate hard gate for drafting.
 - `13_development_dependency_map.md`: dependency order, promotion gates, and
   uniformization queue for compiled and future volumes.
+- `14_code_policy.md`: reproducibility and public-facing calculation companion
+  policy.
+- `15_convention_dictionary.md`: global convention defaults, chapter-header
+  macros, and chapter-local deviations.
+- `16_primary_definitions.md`: canonical homes of load-bearing definitions and
+  theorem families.
 - `agent_handoffs/`: detailed parallel-work packets for agents developing
   independent topics simultaneously.
 
