@@ -961,6 +961,71 @@ properties of regulated/lattice formulations, not as consequences of the
 one-loop beta function.
 \end{remark}
 
+\section{Regulated Gauge-Invariant Matrix Elements}
+\label{sec:qcd-regulated-gauge-invariant-matrix-elements}
+
+The basic nonperturbative quantities of QCD are not matrix elements of isolated
+colored fields.  They are limits, when such limits exist, of regulated
+gauge-invariant matrix elements.  A calculation may use gauge-fixed quark and
+gluon variables internally, but the object being defined must be a
+color-singlet operator, a line operator, or a BRST-cohomology class with a
+specified regulator and renormalization prescription.
+
+\begin{definition}[Regulated gauge-invariant QCD matrix-element datum]
+\label{def:qcd-regulated-matrix-element-datum}
+A regulated gauge-invariant QCD matrix-element datum consists of:
+\begin{enumerate}
+  \item a regulator family \(\mathcal R_\epsilon\), such as a finite lattice,
+  a gauge-covariant heat-kernel cutoff, or a gauge-fixed BV regulator together
+  with its quantum master equation;
+  \item a regulated operator \(\mathcal O_\epsilon\) built from local
+  gauge-invariant fields, closed Wilson loops, or colored fields whose exposed
+  color indices are joined by Wilson transporters along specified paths;
+  \item the external states or density matrix in which the operator is
+  evaluated, for example hadron states, the vacuum, a thermal state, or a
+  finite-volume transfer-matrix state;
+  \item ultraviolet, endpoint, cusp, and rapidity subtractions whenever the
+  operator contains coincident fields, cusped Wilson lines, infinite Wilson
+  lines, or lightlike separations;
+  \item a topology in which the renormalized matrix elements are required to
+  converge as \(\epsilon\to0\), usually a distribution topology in spacetime,
+  momentum fraction, or detector angle.
+\end{enumerate}
+Only after these data have been supplied does a symbol such as a Wilson loop,
+PDF, fragmentation function, soft function, quasi-PDF, static potential, or
+energy-flow correlator denote a nonperturbative QCD quantity.  If the
+continuum limit or lightcone limit is not known to exist, the same formula is a
+regulated definition plus a continuum-existence hypothesis, not a theorem.
+\end{definition}
+
+The Wilson transporter is the mechanism by which separated colored insertions
+become gauge-covariant before their endpoint indices are contracted.  For
+example,
+\[
+  \bar q(x)W_{\square}(x,y)q(y),\qquad
+  F^a_{\mu\nu}(x)W_{\rm ad}^{ab}(x,y)F^b_{\rho\sigma}(y),
+\]
+are gauge-invariant bilocals after the spinor and Lorentz indices are
+contracted as specified.  Closed Wilson loops are obtained by taking the color
+trace of a transporter around a closed curve.  Baryonic static-source
+operators join \(N_c\) fundamental Wilson lines at a color-antisymmetric
+junction.  Soft functions and parton distributions use Wilson lines whose
+directions are fixed by the high-energy kinematics; their lightlike or cusped
+nature is a source of additional renormalization, not an optional convention.
+
+This rule is not limited to perturbation theory.  On a lattice, the transporter
+is the ordered product of link variables and gauge invariance is exact at
+nonzero lattice spacing.  In a continuum path-integral or Hilbert-space
+construction, the same Wilson-line operator must be obtained as a renormalized
+composite.  Perturbative Feynman graphs then compute short-distance
+coefficients, anomalous dimensions, and matching kernels for these
+nonperturbative matrix elements.  They do not replace the matrix elements by
+colored asymptotic particles.  Energy correlators are a useful complementary
+case: the detector operator is built from the gauge-invariant stress tensor,
+so no Wilson line is needed in the operator definition, although perturbative
+representatives of the same observable still involve colored internal
+coordinates after factorization.
+
 \section{Infrared Possibilities and Wilson Loop Diagnostics}
 
 The one-loop beta function determines the ultraviolet direction of the flow
@@ -3195,39 +3260,166 @@ matrix elements
 \section{Twist, Parton Distributions, and Factorization}
 \label{sec:qcd-twist-parton-distributions-factorization}
 
-For a local operator of spin \(s\) and scaling dimension \(\Delta\), its twist
-is
+For a local symmetric traceless operator of Lorentz spin \(s\) and scaling
+dimension \(\Delta\), its twist is
 \[
   \tau:=\Delta-s .
 \]
-In the Bjorken limit, the leading terms in the OPE are the smallest-twist
-operators compatible with the quantum numbers of the currents.  A convenient
-way to collect the tower of leading-twist matrix elements is by light-ray
-operators.  Let \(n^\mu\) be a lightlike vector, \(n^2=0\), and let
+In an interacting theory \(\Delta\) is a renormalized scaling exponent of the
+chosen operator basis.  The word ``twist'' in this section is therefore a
+statement about the renormalized leading-power expansion, not merely about the
+engineering dimension of a classical monomial.  In the Bjorken limit, the
+leading terms in the OPE are the smallest-twist operators compatible with the
+quantum numbers of the currents.  A convenient way to collect the tower of
+leading-twist matrix elements is by light-ray operators.
+
+Let \(n^\mu\) be a future-directed lightlike vector, \(n^2=0\), and choose the
+normalization \(P\cdot n>0\) for the target momentum.  For a representation
+\(R\) of the gauge group, define the straight Wilson transporter
 \[
-  W(\lambda n,0)
+  W_R(\lambda n,0)
   =
   \mathcal P
   \exp\left\{\ii\int_0^\lambda
-  n^\mu A_\mu(sn)\,\dd s\right\}
+  n^\mu A_\mu^a(sn)t_R^a\,\dd s\right\}.
 \]
-be the Wilson line in the appropriate color representation.  With the
-normalization of one-particle hadron states fixed as in the scattering
-chapters, a quark parton distribution is defined by the renormalized light-ray
-matrix element
-\begin{equation}
-  f_{q/H}(x,\mu)
+Here \(A_\mu=A_\mu^at^a\) is the same connection coordinate used throughout the
+chapter, with \(D_\mu=\partial_\mu-\ii A_\mu\) and
+\(-\frac1{4g^2}\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\).  The symbol
+\(\mathcal P\) orders factors with larger parameter \(s\) to the left.
+
+\begin{proposition}[Gauge covariance of the open light-ray operator]
+\label{prop:qcd-light-ray-gauge-covariance}
+Let \(U(x)\) be a smooth gauge transformation in the fundamental
+representation, and let \(U_R(x)\) be its image in a representation \(R\).
+With the transformation law
+\[
+  A_\mu\longmapsto U A_\mu U^{-1}-\ii(\partial_\mu U)U^{-1},
+  \qquad
+  q(x)\longmapsto U(x)q(x),
+\]
+the transporter satisfies
+\[
+  W_R(\lambda n,0)
+  \longmapsto
+  U_R(\lambda n)W_R(\lambda n,0)U_R(0)^{-1}.
+\]
+Consequently
+\[
+  \bar q(\lambda n)W_{\square}(\lambda n,0)\gamma\cdot n\,q(0)
+\]
+is a color-singlet bilocal operator before renormalization, and its
+renormalized descendants remain gauge invariant if the regularization and
+subtraction scheme preserve background gauge covariance.
+\end{proposition}
+
+\begin{proof}
+Let \(W_R(s,0)\) denote the partial transporter from \(0\) to \(sn\).  It is the
+solution of
+\[
+  \frac{\dd}{\dd s}W_R(s,0)
   =
+  \ii n^\mu A_\mu^a(sn)t_R^a W_R(s,0),
+  \qquad
+  W_R(0,0)=\mathbf 1 .
+\]
+After the gauge transformation, the product
+\(U_R(sn)W_R(s,0)U_R(0)^{-1}\) obeys the same differential equation with the
+transformed connection and has the same initial value at \(s=0\).  Uniqueness of
+solutions to this finite-dimensional linear ordinary differential equation
+gives the stated transformation law.  The endpoint factors cancel against the
+transformations of \(\bar q(\lambda n)\) and \(q(0)\), because the gamma matrix
+acts on spinor indices and is the identity in color space.
+\end{proof}
+
+For an unpolarized target, write
+\[
+  \langle \mathcal X\rangle_{P,H}
+  :=
+  \frac12\sum_s\bra{P,s}\mathcal X\ket{P,s},
+\]
+with the one-particle normalization fixed in the scattering chapters.  The
+renormalized quark light-ray operator and its parton distribution are
+\begin{align}
+  \mathbb O_q(\lambda n;\mu)
+  &:=
+  \left[
+    \bar q(\lambda n)W_{\square}(\lambda n,0)\gamma\cdot n\,q(0)
+  \right]_{\mu},
+  \label{eq:qcd-quark-light-ray-operator}\\
+  f_{q/H}(x,\mu)
+  &:=
+  \frac1{2P\cdot n}
   \int\frac{\dd\lambda}{2\pi}\,
   \ee^{-\ii x\lambda P\cdot n}
-  \bra{P}
-  \bar q(\lambda n) W(\lambda n,0)\gamma\cdot n\,q(0)
-  \ket{P}_{\mu}.
+  \langle\mathbb O_q(\lambda n;\mu)\rangle_{P,H}.
   \label{eq:pdf-light-ray-definition}
+\end{align}
+The factor \(2P\cdot n\) fixes the convention so that a free quark target has
+\(f_{q/q}(x)=\delta(1-x)\).  The antiquark distribution is defined by the
+charge-conjugate bilocal with the fields interchanged and the transporter
+running between the same endpoints.  The gluon distribution is defined from
+the adjoint light-ray operator
+\begin{align}
+  \mathbb O_g(\lambda n;\mu)
+  &:=
+  \left[
+    F^a_{n\rho}(\lambda n)
+    W_{\rm ad}^{ab}(\lambda n,0)
+    F_n^{b\rho}(0)
+  \right]_{\mu},
+  \qquad
+  F_{n\rho}:=n^\mu F_{\mu\rho},
+  \label{eq:qcd-gluon-light-ray-operator}\\
+  f_{g/H}(x,\mu)
+  &:=
+  \frac1{2x(P\cdot n)^2}
+  \int\frac{\dd\lambda}{2\pi}\,
+  \ee^{-\ii x\lambda P\cdot n}
+  \langle\mathbb O_g(\lambda n;\mu)\rangle_{P,H},
+  \qquad 0<x<1 .
+  \label{eq:qcd-gluon-pdf-definition}
+\end{align}
+The factor \(1/x\) is part of the conventional normalization of the gluon
+light-ray distribution; it is what makes the \(N\)-th Mellin moment correspond
+to the spin-\(N\) local gluon operator below.  Possible singular behavior at
+\(x=0\) belongs to the small-\(x\) problem and is not hidden inside the
+definition.
+
+The preceding equations are nonperturbative operator definitions once the
+underlying quantum field theory supplies the renormalized light-ray operators
+\(\mathbb O_a(\lambda n;\mu)\) as operator-valued distributions, or at least as
+matrix-element distributions between the hadron states under consideration.
+They are not definitions in terms of on-shell quarks or gluons, and they do not
+presuppose a colored particle interpretation.  In four-dimensional continuum
+QCD this existence statement is tied to the still-open problem of constructing
+the theory and to the additional ultraviolet problem of renormalizing lightlike
+Wilson-line composites.  A gauge-invariant regulator can define finite
+approximants, but the continuum lightcone limit, the operator-renormalization
+limit, and the factorization theorem are separate assertions.  Equal-time
+Euclidean bilocals used in lattice quasi-PDF or pseudo-PDF methods are therefore
+matching observables for the light-ray definition, not the definition itself.
+
+The subscript \(\mu\) in
+\eqref{eq:qcd-quark-light-ray-operator}--\eqref{eq:qcd-gluon-pdf-definition}
+means that the singular lightlike bilocal has been defined in a specified
+regularization and factorization scheme.  For integrated collinear PDFs, the
+renormalization is a convolution in the light-cone momentum fraction:
+\begin{equation}
+  \mathbb O^{\rm bare}_{a}(x)
+  =
+  \sum_b
+  \int_x^1\frac{\dd z}{z}\,
+  Z_{ab}\!\left(\frac{x}{z},\mu,\Lambda_{\rm UV}\right)
+  \mathbb O_b(z;\mu),
+  \label{eq:qcd-light-ray-renormalization-convolution}
 \end{equation}
-The Wilson line makes the nonlocal operator gauge covariant, and the
-subscript \(\mu\) indicates the renormalization scale of the light-ray
-operator.
+where \(a,b\) range over quarks, antiquarks, and gluons.  This equation is a
+definition of the renormalized light-ray coordinates; the anomalous-dimension
+kernel obtained from \(Z\) is the splitting kernel in DGLAP evolution.  For
+TMDs or other observables with unresolved transverse momentum, an additional
+rapidity renormalization is required; it is not part of the integrated PDF
+definition used in inclusive DIS.
 
 \begin{figure}[H]
   \centering
@@ -3272,7 +3464,7 @@ operator.
       \fill[red!70!black] (1.75,0.52) circle (2.3pt);
       \node[below] at (-1.75,0.35) {\(\bar q(\lambda n)\)};
       \node[below] at (1.75,0.35) {\(q(0)\)};
-      \node[purple!70!black,above] at (0,0.78) {\(W(\lambda n,0)\)};
+      \node[purple!70!black,above] at (0,0.78) {\(W_{\square}(\lambda n,0)\)};
       \node[align=center] at (0,-0.72)
         {matrix element in \(\ket P\)\\defines \(f_{a/H}(x,\mu)\)};
     \end{scope}
@@ -3285,7 +3477,41 @@ operator.
   \label{fig:qcd-dis-ope-light-ray-factorization}
 \end{figure}
 
-Factorization expresses a structure function \(F_i\) in the form
+The factorization assertion has two logically separate parts.  The first is
+the exact definition of the hadronic tensor as the current-current Wightman
+matrix element \eqref{eq:hadronic-tensor-current-product}.  The second is the
+leading-power short-distance statement that, after the current OPE and
+light-ray renormalization have been performed, the same observable can be
+coordinatized by universal hadronic light-ray matrix elements and perturbative
+coefficient functions.
+
+\begin{hypothesis}[Leading-twist DIS factorization datum]
+\label{hyp:qcd-dis-leading-twist-factorization}
+Fix a factorization scheme and a compact interval
+\(K\Subset(0,1)\) of Bjorken \(x\).  A leading-twist factorization datum for an
+inclusive structure function \(F_i\) consists of coefficient distributions
+\(C_{i,a}\), renormalized integrated PDFs \(f_{a/H}\), and constants
+\(C_{K,\varphi}\), \(\Lambda_{\rm HT}\), and \(p>0\), such that for every test
+function \(\varphi\in C_c^\infty(K)\) the difference between the exact
+structure function and the factorized expression obeys
+\[
+  \left|
+  \left\langle
+  F_i-\sum_a C_{i,a}\otimes f_{a/H},\varphi
+  \right\rangle
+  \right|
+  \le
+  C_{K,\varphi}
+  \left(\frac{\Lambda_{\rm HT}}{Q}\right)^p
+\]
+for all sufficiently large \(Q\).  The convolution is the one displayed in
+\eqref{eq:dis-factorization}.  The compact-\(x\) restriction excludes the
+separate threshold \(x\to1\) and small-\(x\) limits, whose large logarithms
+require additional factorization data.
+\end{hypothesis}
+
+Under this hypothesis, factorization expresses a structure function \(F_i\) in
+the form
 \begin{equation}
   F_i(x_B,Q)
   =
@@ -3294,14 +3520,17 @@ Factorization expresses a structure function \(F_i\) in the form
   C_{i,a}\!\left(\frac{x_B}{z},\frac{Q}{\mu},g(\mu)\right)
   f_{a/H}(z,\mu)
   +
-  O\!\left(\frac{\Lambda^p}{Q^p}\right),
+  R_i(x_B,Q),
   \label{eq:dis-factorization}
 \end{equation}
 where \(a\) runs over quark, antiquark, and gluon parton species, and the
-power \(p>0\) depends on the first omitted higher-twist operators.  The
-coefficients \(C_{i,a}\) are short-distance kernels; the distributions
-\(f_{a/H}\) are universal hadronic matrix elements for the chosen
-factorization scheme.
+remainder \(R_i\) satisfies the distributional power bound in
+Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization}.  The coefficients
+\(C_{i,a}\) are short-distance kernels; the distributions \(f_{a/H}\) are
+universal hadronic matrix elements for the chosen factorization scheme.  This
+paragraph is not a statement about colored asymptotic particles.  The
+``parton'' label \(a\) is a label in the light-ray operator basis and in the
+coefficient algebra.
 
 The role of the parton distributions in
 \eqref{eq:dis-factorization} is also the point at which the nonabelian theory
@@ -3331,6 +3560,12 @@ where \(P_{ab}\) are splitting kernels, equivalently anomalous dimensions of
 the light-ray operators.  This is the precise sense in which short-distance
 quark and gluon variables control high-energy hadronic observables while
 physical asymptotic states remain color singlets.
+More explicitly, differentiating
+\eqref{eq:qcd-light-ray-renormalization-convolution} at fixed bare operator
+gives a convolution anomalous dimension.  With the sign convention used in
+\eqref{eq:dglap-evolution}, that anomalous dimension is denoted \(P_{ab}\).
+The coefficient functions obey the dual equation, so the \(\mu\)-dependence of
+the convolution in \eqref{eq:dis-factorization} cancels.
 At leading order, in the same convention as \eqref{eq:dglap-evolution},
 \[
   P_{ab}(x,g)
@@ -3348,14 +3583,26 @@ For unpolarized distributions in the \(\overline{\mathrm{MS}}\) scheme,
 in the trace normalization of \eqref{eq:qcd-casimir-definitions}.  These are
 twice the standard half-trace numbers, while the overall perturbative
 coefficient in \eqref{eq:dglap-evolution} is written in the corresponding
-coupling coordinate.
-and the nonzero leading kernels are
+coupling coordinate.  Let
+\begin{equation}
+  D_0(x):=\left(\frac1{1-x}\right)_+
+  \label{eq:qcd-d0-plus-distribution}
+\end{equation}
+be the plus distribution defined by
+\[
+  \int_0^1\dd x\,D_0(x)\,\varphi(x)
+  =
+  \int_0^1\dd x\,\frac{\varphi(x)-\varphi(1)}{1-x}
+\]
+for every smooth test function \(\varphi\).  Products such as \(xD_0(x)\) are
+defined by multiplication of this distribution by the smooth function \(x\).
+With this unambiguous convention, the nonzero leading kernels are
 \begin{align}
   P_{q_iq_j}^{(0)}(x)
   &=
   \delta_{ij}\,
   C_F\left[
-    \left(\frac{1+x^2}{1-x}\right)_+
+    2D_0(x)-1-x
     +\frac32\delta(1-x)
   \right],
   \notag\\
@@ -3378,7 +3625,7 @@ and the nonzero leading kernels are
   P_{gg}^{(0)}(x)
   &=
   2C_A\left[
-    \left(\frac{x}{1-x}\right)_+
+    xD_0(x)
     +\frac{1-x}{x}
     +x(1-x)
   \right]
@@ -3386,13 +3633,10 @@ and the nonzero leading kernels are
   \frac{11C_A-4T_RN_f}{6}\delta(1-x).
   \label{eq:lo-dglap-splitting-kernels}
 \end{align}
-The plus prescription is defined by
-\[
-  \int_0^1\dd x\,[h(x)]_+\,\varphi(x)
-  =
-  \int_0^1\dd x\,h(x)\,[\varphi(x)-\varphi(1)]
-\]
-for every smooth test function \(\varphi\).  Equivalently, for the flavor
+This notation avoids the common ambiguity between plus-prescribing the whole
+rational function and plus-prescribing only the pole at \(x=1\).  For example,
+\(2D_0-1-x\) is the distribution often abbreviated as
+\((1+x^2)/(1-x)_+\) in particle-physics notation.  Equivalently, for the flavor
 singlet quark distribution
 \(\Sigma=\sum_{i=1}^{N_f}(q_i+\bar q_i)\),
 \[
@@ -3411,6 +3655,75 @@ singlet quark distribution
 where \(\otimes\) denotes the convolution appearing in
 \eqref{eq:dglap-evolution}.  Nonsinglet quark combinations evolve with the
 same \(P_{qq}^{(0)}\) and do not mix with the gluon at this order.
+
+\begin{proposition}[Number and momentum sum rules at one loop]
+\label{prop:qcd-lo-dglap-sum-rules}
+The kernels in \eqref{eq:lo-dglap-splitting-kernels} satisfy
+\[
+  \int_0^1\dd x\,P_{qq}^{(0)}(x)=0,
+\]
+and the two momentum-column identities
+\[
+  \int_0^1\dd x\,x
+  \bigl(P_{qq}^{(0)}(x)+P_{gq}^{(0)}(x)\bigr)=0,
+  \qquad
+  \int_0^1\dd x\,x
+  \bigl(2N_fP_{qg}^{(0)}(x)+P_{gg}^{(0)}(x)\bigr)=0 .
+\]
+Thus nonsinglet quark number and the total light-cone momentum fraction are
+preserved by the leading-order evolution.
+\end{proposition}
+
+\begin{proof}
+For \(m\ge0\),
+\[
+  \int_0^1\dd x\,x^mD_0(x)
+  =
+  \int_0^1\dd x\,\frac{x^m-1}{1-x}
+  =
+  -H_m,
+  \qquad
+  H_m:=\sum_{r=1}^m\frac1r ,
+\]
+with \(H_0=0\).  The number sum rule is
+\[
+  C_F\left(2H_0-\int_0^1(1+x)\,\dd x+\frac32\right)=0.
+\]
+For a quark parent,
+\[
+  \int_0^1\dd x\,xP_{qq}^{(0)}(x)
+  =
+  C_F\left(-2-\frac12-\frac13+\frac32\right)
+  =
+  -\frac43C_F,
+\]
+while
+\[
+  \int_0^1\dd x\,xP_{gq}^{(0)}(x)
+  =
+  C_F\int_0^1\dd x\,\bigl[1+(1-x)^2\bigr]
+  =
+  \frac43C_F .
+\]
+For a gluon parent,
+\[
+  \int_0^1\dd x\,xP_{qg}^{(0)}(x)
+  =
+  T_R\int_0^1\dd x\,x\bigl[x^2+(1-x)^2\bigr]
+  =
+  \frac13T_R ,
+\]
+and
+\[
+  \int_0^1\dd x\,xP_{gg}^{(0)}(x)
+  =
+  2C_A\left(-H_2+\frac12+\frac1{12}\right)
+  +\frac{11C_A-4T_RN_f}{6}
+  =
+  -\frac23T_RN_f .
+\]
+The two column sums therefore vanish.
+\end{proof}
 
 \section{Local Twist-Two Operators and Integer Moments}
 
@@ -3556,3 +3869,73 @@ up to the matrix of anomalous dimensions when several operators mix.  The
 power \(\omega^N\) is the Bjorken-scaling kinematic dependence of a spin-\(N\)
 operator; asymptotic freedom turns exact scaling into logarithmic scaling
 violation.
+
+\section{Endpoint, Large Spin, and the Cusp Coefficient}
+
+The compact-\(x\) factorization statement in
+Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization} deliberately does not
+claim uniform control as \(x_B\to1\).  In that endpoint region the invariant
+mass of the hadronic final state,
+\[
+  W_X^2=(P+q)^2
+  =
+  M^2+Q^2\left(\frac1{x_B}-1\right),
+\]
+is much smaller than \(Q^2\).  The short-distance coefficient functions then
+contain distributions supported near \(x=1\), such as
+\([\log^k(1-x)/(1-x)]_+\), and the perturbative expansion must be reorganized.
+The Mellin transform turns this endpoint problem into a large-spin problem.
+For a distribution \(K(x)\), define
+\[
+  K_N:=\int_0^1\dd x\,x^{N-1}K(x).
+\]
+Using the \(D_0\) convention above, the nonsinglet one-loop kernel has the
+exact moment
+\begin{equation}
+  P_{{\rm ns},N}^{(0)}
+  =
+  C_F\left[
+    -2H_{N-1}-\frac1N-\frac1{N+1}+\frac32
+  \right],
+  \qquad N\ge1 .
+  \label{eq:qcd-nonsinglet-moment-exact}
+\end{equation}
+This formula is a useful normalization check: at \(N=1\) it gives quark-number
+conservation, and at large \(N\)
+\begin{equation}
+  P_{{\rm ns},N}^{(0)}
+  =
+  -2C_F\log N
+  +C_F\left(\frac32-2\gamma_{\rm E}\right)
+  +O(N^{-1}).
+  \label{eq:qcd-nonsinglet-large-n}
+\end{equation}
+Therefore, with the convention
+\(P=(g^2/8\pi^2)P^{(0)}+O(g^4)\), the large-\(N\) anomalous dimension contains
+\[
+  -\Gamma_{\rm cusp}(g)\log N,
+  \qquad
+  \Gamma_{\rm cusp}(g)
+  =
+  \frac{g^2C_F}{4\pi^2}+O(g^4)
+\]
+in the monograph's trace-delta normalization.  This is the same invariant
+coefficient as the one-loop lightlike Wilson-line cusp coefficient: if
+\(T^a\) denotes the common half-trace generator and
+\(g_{\rm ht}=\sqrt2\,g\), then
+\[
+  g^2C_F=g_{\rm ht}^2C_F^{\rm ht}.
+\]
+The cusp coefficient is thus independent of the choice of generator
+coordinates once the coupling coordinate is transformed with the action.
+
+Endpoint resummation is not a new definition of the PDF.  It is an additional
+factorization of the coefficient function in a region where the compact-\(x\)
+remainder estimate is not uniform.  A precise threshold factorization theorem
+must specify the hard current coefficient, the jet function for the nearly
+collinear final-state radiation, the soft Wilson-line matrix element, the
+contour prescription for Mellin or Laplace inversion, and a remainder estimate
+in the joint limit \(Q\to\infty\), \(N\to\infty\).  The large-spin logarithm in
+\eqref{eq:qcd-nonsinglet-large-n} is the operator-renormalization side of that
+structure.  The small-\(x\) limit is a different boundary of the same DIS
+observable and is not obtained by continuing the threshold expansion.

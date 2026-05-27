@@ -55,6 +55,11 @@ Current checks:
   phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,
   baryon-chemical-potential coefficients, Banks--Casher kernel normalization,
   the Linde magnetic-scale power count, and the CFL Goldstone count.
+- `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
+  conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
+  number conservation, quark/gluon momentum-column sum rules, the exact
+  nonsinglet Mellin moment formula, and the trace-delta versus half-trace cusp
+  coefficient conversion.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,

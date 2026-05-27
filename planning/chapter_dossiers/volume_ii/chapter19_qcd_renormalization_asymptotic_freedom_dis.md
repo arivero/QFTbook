@@ -155,9 +155,15 @@ The chapter must define and derive:
   amplitude, the non-time-ordered hadronic tensor, the current-conservation
   tensor decomposition, support in \(x_B\), the discontinuity of the
   time-ordered forward Compton amplitude, twist-two operators, Wilson lines,
-  factorization assumptions, the replacement of abelian Bloch--Nordsieck
-  cancellation by nonabelian PDF renormalization for incoming colored
-  partons, and logarithmic scaling violation.
+  the regulated gauge-invariant matrix-element principle for QCD quantities,
+  the gauge-covariance proof for open light-ray operators, integrated quark and
+  gluon PDF definitions with Wilson-line dressing, convolution
+  renormalization, factorization assumptions with a compact-\(x_B\)
+  distributional power-remainder bound, the replacement of abelian
+  Bloch--Nordsieck cancellation by nonabelian PDF renormalization for incoming
+  colored partons, unambiguous \(D_0\)-based DGLAP kernels, number and momentum
+  sum-rule checks, logarithmic scaling violation, and the endpoint/large-spin
+  cusp boundary of the DIS factorization statement.
 
 ## Claim Ledger
 
@@ -276,6 +282,21 @@ The chapter must define and derive:
     an abelian Bloch--Nordsieck final-state sum.  They are absorbed into the
     renormalized Wilson-line light-ray operators defining PDFs, and the
     resulting factorization-scale dependence is governed by DGLAP evolution.
+22a. QCD quantities involving colored fields must be grounded as regulated
+     gauge-invariant matrix elements.  Wilson lines are part of the operator
+     definition whenever exposed color indices at separated points are
+     connected, and ultraviolet, cusp, endpoint, and rapidity subtractions are
+     part of the datum when the geometry of the operator requires them.
+22b. The leading-order DGLAP kernels are written with the explicit
+     \(D_0=(1-x)^{-1}_+\) distribution to avoid the ambiguous shorthand
+     \((1+x^2)/(1-x)_+\).  With this convention the kernels obey quark-number
+     and momentum-column sum rules exactly, and the nonsinglet Mellin moment is
+     \(C_F[-2H_{N-1}-1/N-1/(N+1)+3/2]\), giving the one-loop cusp coefficient
+     \(g^2C_F/(4\pi^2)\) in the monograph trace normalization.
+22c. Inclusive DIS factorization is recorded as a leading-twist datum with a
+     distributional remainder estimate on compact Bjorken-\(x\) intervals.  The
+     threshold \(x\to1\) and small-\(x\) limits are separate boundary problems,
+     not consequences of the compact-\(x\) statement.
 23. Physical QCD asymptotic completeness remains an open large-time problem:
     one must construct wave operators from stable color-singlet asymptotic
     spaces, treat resonances through analytic scattering data, include
@@ -411,3 +432,10 @@ The chapter must define and derive:
   large-\(N_c\) string-coupling counting, and the \(D=3\) effective-string
   testbed; extended `calculation-checks/qcd_string_luscher_checks.py` to
   verify the displayed baryonic geometry.
+- 2026-05-27 issue #630 A1 pass: added the QCD-wide regulated
+  gauge-invariant matrix-element datum, upgraded the DIS/PDF block with
+  Wilson-line gauge covariance, normalized quark and gluon light-ray PDF
+  definitions, explicit separation between nonperturbative operator
+  definitions and colored parton-model language, convolution renormalization,
+  compact-\(x\) factorization status with a distributional remainder, exact
+  \(D_0\)-based DGLAP sum-rule proof, and endpoint/large-spin cusp discussion.
