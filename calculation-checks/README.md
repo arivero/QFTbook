@@ -608,7 +608,8 @@ Current checks:
   Coulomb one-loop charge-exponent/vacuum-count ledger.
 - `susy_holomorphy_nsvz_checks.py`: exact rational checks for Volume VII
   holomorphy and NSVZ coordinate algebra, including quadratic chiral
-  tree-level elimination, the eliminated derivative identity, Konishi and
+  tree-level elimination, the eliminated derivative identity, the
+  holomorphic gauge-coupling \(q^0\) perturbative projection, Konishi and
   vector-multiplet coordinate shifts, and the differentiated
   holomorphic-canonical relation leading to the NSVZ beta function.
 - `susy_n1_conifold_checks.py`: exact rational checks for the

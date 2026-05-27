@@ -16,7 +16,9 @@
   implicit-function theorem application and worked out for a quadratic
   heavy-field block.
 - Spurion symmetry selection rule.
-- Holomorphic gauge coupling and one-loop Wilsonian statement.
+- Holomorphic gauge coupling and Wilsonian one-loop exactness, stated with
+  weak-coupling patch, theta-periodicity, perturbative \(q_h^0\) projection,
+  and spurion-ledger hypotheses.
 - Konishi-type rescaling anomaly as a regulated super-Berezinian coordinate
   change, with the local \(W^\alpha W_\alpha\) coefficient derived from the
   chiral heat-kernel density and the chapter's gauge-coupling normalization.
@@ -40,6 +42,8 @@
 | \(X_*^a(\Phi;t)\) | holomorphic solution of the heavy chiral equation \(\partial_{X^a}W=0\) |
 | \(H_{ab}\) | heavy-block Hessian \(\partial_{X^a}\partial_{X^b}W\) |
 | \(\tau\) | holomorphic gauge coupling |
+| \(\tau_{\rm eff}\) | Wilsonian effective holomorphic gauge coordinate |
+| \(q_h\) | weak-coupling instanton-counting coordinate \(\exp(2\pi i\tau)\) |
 | \(b_0\) | one-loop holomorphic gauge coefficient |
 | \(T(R)\) | representation index in the monograph trace convention |
 | \(C_2(G)\) | adjoint index in the same trace convention |
@@ -52,7 +56,9 @@
 2. Tree-level elimination of massive chiral fields stays in the chiral
    coordinate class because the heavy chiral equation with invertible Hessian
    has a holomorphic solution by the implicit-function theorem.
-3. Holomorphic gauge coupling is one-loop exact as a Wilsonian coordinate.
+3. Holomorphic gauge coupling is one-loop exact as a Wilsonian coordinate
+   after the perturbative sector is identified as the \(q_h^0\) coefficient;
+   finite holomorphic reference-coordinate changes are scale independent.
 4. The Konishi rescaling anomaly is a local Jacobian statement inside a
    declared regulator; its chiral representative is fixed by gauge invariance,
    chirality, locality, the component heat-kernel anomaly, and the
@@ -71,9 +77,11 @@
 
 - `calculation-checks/susy_holomorphy_nsvz_checks.py` verifies the quadratic
   chiral-elimination formula, the derivative identity after eliminating a
-  heavy chiral coordinate, Konishi and vector-multiplet coordinate shifts,
-  and the rational algebra that differentiates the holomorphic-canonical
-  coordinate relation into the NSVZ beta function.
+  heavy chiral coordinate, the holomorphic gauge-coupling \(q_h^0\)
+  perturbative projection and finite scheme-shift invariance, Konishi and
+  vector-multiplet coordinate shifts, and the rational algebra that
+  differentiates the holomorphic-canonical coordinate relation into the NSVZ
+  beta function.
 
 ## Figures
 
