@@ -131,12 +131,26 @@ the surface relative to insertions.
 
 \section{Solutions in Dimension at Least Three}
 
-\begin{proposition}[Classification of flat conformal Killing vectors]
-\label{prop:flat-conformal-killing-vector-classification}
-For \(D\ge3\), differentiating
-\eqref{eq:conformal-killing-equation} and combining permutations of the
-indices gives
+\begin{lemma}[Rigidity of the flat conformal factor]
+\label{lem:flat-ckv-conformal-factor-rigidity}
+Let \(D\ge3\), and let \(\epsilon\) solve the flat conformal Killing equation
+\eqref{eq:conformal-killing-equation} on a connected open set.  Then
 \[
+  \partial_\mu\partial_\nu\sigma_\epsilon=0 .
+\]
+Consequently \(\sigma_\epsilon\) is affine-linear in \(x\).
+\end{lemma}
+
+\begin{proof}
+The conformal Killing equation is
+\[
+  \partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu
+  =
+  2\sigma_\epsilon\delta_{\mu\nu}.
+\]
+Differentiate this identity and combine the three equations obtained by
+cyclically permuting \((\mu,\nu,\rho)\).  The result is
+\begin{equation}
   \partial_\mu\partial_\nu\epsilon_\rho
   =
   \delta_{\rho\nu}\partial_\mu\sigma_\epsilon
@@ -144,13 +158,44 @@ indices gives
   \delta_{\rho\mu}\partial_\nu\sigma_\epsilon
   -
   \delta_{\mu\nu}\partial_\rho\sigma_\epsilon .
-\]
-Taking another derivative and antisymmetrizing shows
+  \label{eq:ckv-second-derivative-identity}
+\end{equation}
+Set
 \[
-  \partial_\mu\partial_\nu\partial_\rho\sigma_\epsilon=0.
+  S_{\mu\nu}:=\partial_\mu\partial_\nu\sigma_\epsilon .
 \]
-Hence \(\sigma_\epsilon\) is at most linear in \(x\), and
-\(\epsilon^\mu\) is at most quadratic.  The general solution is
+Since third derivatives of \(\epsilon_\rho\) commute, differentiating
+\eqref{eq:ckv-second-derivative-identity} with respect to \(x^\kappa\) and
+then interchanging \(\kappa\) and \(\mu\) gives
+\[
+  \delta_{\rho\mu}S_{\kappa\nu}
+  -
+  \delta_{\mu\nu}S_{\kappa\rho}
+  =
+  \delta_{\rho\kappa}S_{\mu\nu}
+  -
+  \delta_{\kappa\nu}S_{\mu\rho}.
+\]
+Contracting \(\rho\) with \(\mu\) yields
+\[
+  (D-2)S_{\kappa\nu}
+  =
+  -\delta_{\kappa\nu}S_\lambda{}^\lambda .
+\]
+Taking the trace gives
+\[
+  (2D-2)S_\lambda{}^\lambda=0.
+\]
+For \(D\ge3\), this implies \(S_\lambda{}^\lambda=0\), and then the preceding
+display gives \(S_{\kappa\nu}=0\).  Thus all second derivatives of
+\(\sigma_\epsilon\) vanish, so \(\sigma_\epsilon\) is affine-linear on each
+connected component.
+\end{proof}
+
+\begin{proposition}[Classification of flat conformal Killing vectors]
+\label{prop:flat-conformal-killing-vector-classification}
+For \(D\ge3\), every flat conformal Killing vector is at most quadratic in the
+Cartesian coordinates.  More precisely, the general solution is
 \begin{equation}
   \epsilon^\mu(x)
   =
@@ -172,18 +217,38 @@ proportional to \(\delta_{\mu\nu}\).
 \end{proposition}
 
 \begin{proof}
-Differentiate the conformal Killing equation and combine cyclic permutations.
-This gives the displayed second-derivative formula.  A further
-derivative followed by antisymmetrization in two derivative indices forces
-\(\partial_\mu\partial_\nu\partial_\rho\sigma_\epsilon=0\).  Thus
-\(\sigma_\epsilon\) is affine-linear and \(\epsilon^\mu\) is a polynomial of
-degree at most two.  Its constant part is \(a^\mu\), its antisymmetric linear
-part is \(\omega^\mu{}_\nu x^\nu\), its trace linear part is
-\(\lambda x^\mu\), and its quadratic part is fixed by
-\(\partial_\mu\sigma_\epsilon\) to be
-\(c^\mu x^2-2(c\cdot x)x^\mu\).  Substitution in
-\eqref{eq:conformal-killing-equation} verifies that these and only these
-polynomials solve the equation.
+By Lemma~\ref{lem:flat-ckv-conformal-factor-rigidity},
+\[
+  \sigma_\epsilon(x)=\lambda-2c_\rho x^\rho
+\]
+for constants \(\lambda\) and \(c_\rho\), where the sign of \(c_\rho\) is
+chosen to match \eqref{eq:ckv-general-solution}.  Substituting this affine
+form in \eqref{eq:ckv-second-derivative-identity} gives
+\[
+  \partial_\mu\partial_\nu\epsilon_\rho
+  =
+  -2\delta_{\rho\nu}c_\mu
+  -2\delta_{\rho\mu}c_\nu
+  +2\delta_{\mu\nu}c_\rho ,
+\]
+so the second derivatives of \(\epsilon_\rho\) are constant and all third
+derivatives vanish.  Integrating twice gives a polynomial of degree at most
+two:
+\[
+  \epsilon_\rho(x)=a_\rho+B_{\rho\nu}x^\nu
+  +c_\rho x^2-2(c\cdot x)x_\rho .
+\]
+The symmetric part of \(B_{\rho\nu}\) is fixed by the conformal Killing
+equation at the origin:
+\[
+  B_{\rho\nu}+B_{\nu\rho}=2\lambda\delta_{\rho\nu}.
+\]
+Writing \(B_{\rho\nu}=\omega_{\rho\nu}+\lambda\delta_{\rho\nu}\) with
+\(\omega_{\rho\nu}=-\omega_{\nu\rho}\) gives
+\eqref{eq:ckv-general-solution}.  Direct substitution verifies that the
+displayed vector fields solve \eqref{eq:conformal-killing-equation}.  The
+preceding integration shows that no other smooth local solutions exist in
+dimension \(D\ge3\).
 \end{proof}
 
 \begin{definition}[Differential conformal generators]
@@ -903,10 +968,56 @@ the distinctions matter.  The Euclidean conformal group
   G_E=SO_0(D+1,1)
 \]
 acts on the compactified Euclidean sphere \(S^D\), or through a chosen cover
-when spin structures are present.  A Euclidean primary operator is encoded by a
-covariant section of a homogeneous vector bundle associated to the stabilizer
-\(P_E\) of a point on \(S^D\).  In a flat chart, the transformation law has the
-form
+when spin structures are present.
+
+\begin{proposition}[Parabolic stabilizer of a Euclidean point]
+\label{prop:euclidean-point-parabolic-stabilizer}
+Fix the point \(x=0\) in the flat chart of \(S^D\).  Its stabilizer in the
+identity component of the Euclidean conformal group has Lie algebra
+\[
+  \mathfrak p_E
+  =
+  \mathfrak{so}(D)\oplus\mathbb R D\oplus
+  \operatorname{span}\{K_\mu\}.
+\]
+Equivalently, at the group level and in the chosen chart, it is generated by
+rotations, positive dilatations, and special conformal transformations.  Its
+Levi factor is \(SO(D)\times\mathbb R_+\), and the special conformal
+transformations form the nilpotent radical.
+\end{proposition}
+
+\begin{proof}
+Translations do not fix the origin unless their parameter is zero.  A rotation
+and a positive dilatation fix \(x=0\) and act on the tangent space by
+\(\lambda R\), with \(R\in SO(D)\) and \(\lambda>0\).  The finite special
+conformal transformation
+\[
+  x^\mu\mapsto
+  \frac{x^\mu+c^\mu x^2}{1+2c\cdot x+c^2x^2}
+\]
+also fixes \(x=0\), and its derivative at \(x=0\) is the identity; hence its
+generator lies in the nilpotent radical of the stabilizer.  The infinitesimal
+classification in Proposition~\ref{prop:flat-conformal-killing-vector-classification}
+shows that these exhaust the conformal Killing vectors vanishing at the
+origin.  Thus the stabilizer has the displayed Lie algebra and
+Levi/nilpotent decomposition.
+\end{proof}
+
+\begin{definition}[Euclidean primary type]
+\label{def:euclidean-primary-parabolic-type}
+A Euclidean primary type at the point \(x=0\) is a finite-dimensional
+representation of the point stabilizer \(P_E\) with the following structure.
+The nilpotent radical generated by \(K_\mu\) acts trivially; the rotation
+factor acts by a finite-dimensional representation \(\rho\) of \(SO(D)\), or
+of \(\operatorname{Spin}(D)\) when spin is present; and a positive dilatation
+\(x\mapsto\lambda x\) acts by the character \(\lambda^{-\Delta}\).  The real
+number \(\Delta\) is the Euclidean scaling dimension in the covariance
+convention used below.
+\end{definition}
+
+A Euclidean primary operator is encoded by a covariant section of the
+homogeneous vector bundle associated to this \(P_E\)-representation.  In a
+flat chart, the transformation law has the form
 \begin{definition}[Euclidean primary covariance law]
 \label{def:euclidean-primary-covariance-law}
 \begin{equation}
