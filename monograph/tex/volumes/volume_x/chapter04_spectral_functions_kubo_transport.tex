@@ -276,6 +276,148 @@ the positive spectral measure \(\rho_{AA}\) at nonzero frequency.  This is
 why Kubo formulae below are stated using \(\rho\), with a separate warning
 about Drude weights and conserved-density projections.
 
+\section{Transport Limits and Zero-Frequency Singular Terms}
+
+Transport is a statement about an infinite system.  In finite spatial volume
+the spectrum of the Hamiltonian is discrete, so real-time correlators are
+almost periodic sums of phases rather than decaying functions.  The
+thermodynamic limit is therefore part of the definition of a finite
+dissipative coefficient.
+
+\begin{definition}[Transport limit datum]
+\label{def:kubo-transport-limit-datum}
+A transport limit datum for a pair of local operators \(A,B\) consists of
+\[
+  (\Sigma_L,\rho_{\beta,L},A_L,B_L,\mathcal R,\mathcal O),
+\]
+where \(\Sigma_L\) is a sequence of spatial regions or lattices of volume
+\(V_L\), \(\rho_{\beta,L}\) is a KMS or finite Gibbs state on the regulated
+system, \(A_L,B_L\) are regulated extensive or density operators with their
+normalization declared, \(\mathcal R\) is the prescription for subtracting
+local contact terms and conserved-density projections, and \(\mathcal O\) is
+the order of limits.  For ordinary dc transport the order is
+\[
+  L\to\infty,\qquad \mathbf k\to\mathbf0\ \text{in the channel specified by
+  symmetry},\qquad \omega\downarrow0 .
+  \label{eq:kubo-transport-order-of-limits}
+\]
+Changing \(\mathcal O\) can change the answer; for example static
+susceptibilities and dc conductivities use different zero-frequency limits.
+\end{definition}
+
+The most elementary obstruction to a finite dc coefficient is an exactly
+conserved operator that has nonzero overlap with the current.  Let \(I_i\) be
+the total current in direction \(i\) in finite volume \(V\), and let
+\(\bar I_i=I_i-\langle I_i\rangle_\beta\).  Suppose
+\(\{Q_a\}_{a=1}^N\) are Hermitian conserved operators with zero thermal
+expectation and positive covariance matrix
+\[
+  C_{ab}
+  =
+  \frac1{2V}\langle Q_aQ_b+Q_bQ_a\rangle_\beta .
+  \label{eq:kubo-conserved-covariance}
+\]
+Define the current--charge overlap vector
+\[
+  v_{ia}
+  =
+  \frac1{2V}\langle \bar I_iQ_a+Q_a\bar I_i\rangle_\beta .
+  \label{eq:kubo-current-charge-overlap}
+\]
+The projection of \(\bar I_i\) onto the span of conserved charges is
+\[
+  P\bar I_i
+  =
+  Q_a(C^{-1})^{ab}v_{ib}.
+  \label{eq:kubo-mazur-projection}
+\]
+
+\begin{proposition}[Finite-volume Mazur projection]
+\label{prop:kubo-mazur-projection}
+In the finite-dimensional Gibbs setting above, for every real vector \(u_i\),
+the infinite-time averaged connected symmetrized current autocorrelation
+satisfies
+\[
+  \lim_{T\to\infty}\frac1T\int_0^T dt\,
+  \frac1{2V}
+  \left\langle
+    \{u_i\bar I_i(t),u_j\bar I_j(0)\}
+  \right\rangle_\beta
+  \geq
+  u_i v_{ia}(C^{-1})^{ab}v_{jb}u_j .
+  \label{eq:kubo-mazur-bound}
+\]
+If the right hand side has a nonzero thermodynamic limit, the conductivity
+has a zero-frequency singular contribution and the ordinary dc limit is not
+a finite dissipative number.
+\end{proposition}
+
+\begin{proof}
+Use the real Hilbert-space inner product on Hermitian operators
+\[
+  (X,Y)_{\beta,{\rm sym}}
+  =
+  \frac1{2V}\langle XY+YX\rangle_\beta .
+\]
+Time evolution is orthogonal for this inner product because \(\rho_\beta\)
+commutes with \(H\).  For \(X=u_i\bar I_i\), let
+\[
+  X_\parallel
+  =
+  Q_a(C^{-1})^{ab}(Q_b,X)_{\beta,{\rm sym}} .
+\]
+Then \(X_\parallel\) is conserved and is the orthogonal projection of \(X\)
+onto the conserved subspace spanned by the \(Q_a\).  The time average of the
+symmetrized correlation is the squared norm of the component of \(X\) in the
+zero-frequency subspace of the Liouville operator \(L=[H,\cdot]\).  This
+zero-frequency subspace contains \(X_\parallel\), hence the time average is
+at least
+\[
+  (X_\parallel,X_\parallel)_{\beta,{\rm sym}}
+  =
+  u_i v_{ia}(C^{-1})^{ab}v_{jb}u_j .
+\]
+If this quantity survives per unit volume as \(V\to\infty\), the symmetrized
+current spectrum contains a term
+\[
+  \frac{2\pi}{\beta}D_{ij}\delta(\omega),
+  \qquad
+  D_{ij}=\beta\lim_{t\to\infty}\lim_{V\to\infty}
+  \frac1{2V}\langle\{\bar I_i(t),\bar I_j(0)\}\rangle_\beta ,
+  \label{eq:kubo-drude-weight-definition}
+\]
+in the convention of \eqref{eq:kubo-fluctuation-dissipation}.  Equivalently
+\(\operatorname{Re}\sigma_{ij}\) contains
+\(\pi D_{ij}\delta(\omega)\).  This is a singular transport sector, not the
+regular slope appearing in the finite dc Kubo formula.
+\end{proof}
+
+Figure~\ref{fig:kubo-order-of-limits} records the operational order in which
+the singular and regular parts of the low-frequency response are separated.
+The dc Kubo limit is not a finite-volume operation: one first takes the
+thermodynamic limit, separates possible \(\delta(\omega)\) terms produced by
+conserved projections, and only then extracts the regular low-frequency
+slope.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth]
+  \node[draw,rounded corners=2pt,align=center,text width=2.65cm,minimum height=1.05cm]
+    (finite) {finite volume\\pure-point spectrum};
+  \node[draw,rounded corners=2pt,align=center,right=0.95cm of finite,text width=2.85cm,minimum height=1.05cm]
+    (thermo) {thermodynamic limit\\continuous spectral sector};
+  \node[draw,rounded corners=2pt,align=center,right=0.95cm of thermo,text width=2.9cm,minimum height=1.05cm]
+    (zero) {zero-frequency limit\\regular slope or singular term};
+  \draw[->,thick] (finite) -- node[above] {\(L\to\infty\)} (thermo);
+  \draw[->,thick] (thermo) -- node[above] {\(\omega\downarrow0\)} (zero);
+  \node[below=0.85cm of thermo,align=center]
+    {Drude weights and conserved projections must be separated before the
+    final limit.};
+\end{tikzpicture}
+\caption{Order of limits in the dc Kubo prescription.}
+\label{fig:kubo-order-of-limits}
+\end{figure}
+
 \section{Conductivity}
 
 For a conserved current \(J^\mu\) coupled to a background gauge field

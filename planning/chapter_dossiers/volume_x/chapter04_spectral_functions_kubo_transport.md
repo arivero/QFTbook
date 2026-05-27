@@ -21,6 +21,10 @@
   source-response sign separated from the commutator-retarded convention.
 - Separation between commutator correlators, local contact terms, and full
   background-source response kernels.
+- Transport limit datum specifying regulator sequence, operator
+  normalization, projection/contact prescription, and order of limits.
+- Zero-frequency singular sector and finite-volume Mazur projection for
+  conserved current overlap.
 - Conductivity, shear-viscosity, and bulk-viscosity Kubo formulae with
   explicit order of limits and conserved-density projections.
 - Once-subtracted retarded dispersion relation and its theorem boundary.
@@ -37,6 +41,9 @@
 | \(K_{ij}\) | full transverse current response kernel, including contact terms, defined by \(\langle J_i\rangle=-K_{ij}A_j\) |
 | \(K^R_{AB}\) | source-response kernel for \(H=H_0-h_BB\), equal to \(-G^R_{AB}\) in the chapter's commutator-retarded convention |
 | \(C_{AB}\) | local source-contact contribution to a response kernel |
+| \(I_i\), \(\bar I_i\) | total current and connected total current in finite volume |
+| \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
+| \(D_{ij}\) | Drude-weight matrix in \(\operatorname{Re}\sigma_{ij}\) |
 | \(\sigma_{ij}\) | conductivity tensor |
 | \(\eta\) | shear viscosity |
 | \(\zeta\) | bulk viscosity |
@@ -58,12 +65,17 @@
 4. KMS implies detailed balance and the fluctuation--dissipation relation.
 5. Local source contacts are part of the full background response but not of
    the commutator spectral measure at nonzero frequency.
-6. Conductivity and viscosity are low-frequency spectral slopes after contact
+6. A transport coefficient requires a declared thermodynamic and
+   zero-frequency order of limits.
+7. Conserved charges with nonzero current overlap give a positive
+   zero-frequency singular sector bounded by the Mazur projection; this is
+   separated from the finite dissipative dc slope.
+8. Conductivity and viscosity are low-frequency spectral slopes after contact
    terms, Drude weights, order of limits, and conserved-density mixings are
    specified.
-7. Subtracted dispersion relations require large-\(\omega\) control and an
+9. Subtracted dispersion relations require large-\(\omega\) control and an
    explicit declaration of contact terms.
-8. Hydrodynamic control requires additional analyticity, clustering,
+10. Hydrodynamic control requires additional analyticity, clustering,
    equilibration, and limit-exchange hypotheses.
 
 ## Calculation Checks
@@ -71,8 +83,10 @@
 - `calculation-checks/thermal_kubo_checks.py` verifies the two-level
   detailed-balance and fluctuation--dissipation weights, the retarded sign
   \(\rho=-2\operatorname{Im}G^R\), the shear-viscosity spectral slope, and
-  invariance of dissipative spectral slopes under real contact terms.
+  invariance of dissipative spectral slopes under real contact terms, and
+  the finite Mazur projection/Drude-weight normalization.
 
 ## Figures
 
-- None in this chapter.
+- Figure `fig:kubo-order-of-limits`: thermodynamic limit, zero-frequency
+  limit, and prior separation of Drude/conserved singular sectors.
