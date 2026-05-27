@@ -115,9 +115,10 @@ Current checks:
 - `hamiltonian_truncation_dlcq_checks.py`: finite checks for the
   Hamiltonian-truncation and DLCQ benchmark chapter, including the Ising
   energy-deformation Bogoliubov spectrum, the large-\(N\) two-dimensional
-  QCD DLCQ quadratic-form identity, residual-to-spectrum certification,
-  spectral-projector leakage control, and the finite Feshbach determinant
-  identity behind truncation counterterms.
+  QCD DLCQ quadratic-form identity, connected Ising TFFSA spin-block
+  normalization, residual-to-spectrum certification, spectral-projector
+  leakage control, and the finite Feshbach determinant identity behind
+  truncation counterterms.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
   extraction of the charged velocity from flux extrema, the half-line Fourier

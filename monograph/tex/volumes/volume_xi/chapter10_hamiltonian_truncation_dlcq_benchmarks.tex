@@ -316,6 +316,89 @@ the removal or extrapolation of the cutoff and, if
 \eqref{eq:tffsa-connected-spin-matrix-element} is used, the large-\(mL\)
 control of the finite-volume form-factor approximation.
 
+\begin{definition}[Zero-momentum connected TFFSA block]
+\label{def:zero-momentum-connected-tffsa-block}
+Fix \(m>0\), \(L>0\), an integer \(N_{\rm pair}\geq0\), a spin-field
+normalization \(\bar\sigma\), and a magnetic coupling \(h\).  For
+\[
+  r_n=n+\frac12,\qquad
+  p_n=\frac{2\pi r_n}{L},\qquad
+  p_n=m\sinh\theta_n,\qquad
+  \omega_n=m\cosh\theta_n ,
+  \quad n=0,\ldots,N_{\rm pair}-1,
+\]
+let
+\[
+  \ket{0},\qquad
+  \ket{n}:=\ket{\theta_n,-\theta_n},\quad
+  n=0,\ldots,N_{\rm pair}-1,
+\]
+be the finite zero-total-momentum basis consisting of the vacuum and
+two-particle pairs.  Set
+\[
+  \rho_n=(mL\cosh\theta_n)^2 .
+\]
+The connected-block TFFSA matrix is the Hermitian
+\((N_{\rm pair}+1)\times(N_{\rm pair}+1)\) matrix
+\[
+  H_{ij}=E_i^{(0)}\delta_{ij}+hL\,V_{ij},
+\]
+where \(E_0^{(0)}=0\), \(E_n^{(0)}=2\omega_n\) for \(n\geq1\), and
+\[
+  V_{ii}=\bar\sigma .
+\]
+For \(i<j\), \(V_{ij}\) is defined by the crossed connected form factor
+\[
+  V_{ij}
+  =
+  \frac{
+    F_{\rm conn}^{\sigma}(
+      \{\theta_a+\ii\pi:a\in I_i\}\mid \{\theta_b:b\in I_j\})
+  }{
+    \sqrt{\rho_i\rho_j}
+  },
+  \qquad
+  V_{ji}=\overline{V_{ij}},
+  \label{eq:zero-momentum-tffsa-block}
+\]
+with \(\rho_0=1\) and \(I_0=\varnothing\).  The diagonal convention
+\(V_{ii}=\bar\sigma\) keeps only the disconnected vacuum-expectation
+contribution.  The omitted diagonal connected finite parts are singular
+crossed limits and require a separate diagonal finite-volume prescription.
+\end{definition}
+
+\begin{proposition}[Connected TFFSA block]
+\label{prop:zero-momentum-connected-tffsa-hermitian}
+The matrix in Definition~\ref{def:zero-momentum-connected-tffsa-block} is
+Hermitian.  If \(h=0\), its eigenvalues are
+\[
+  0,\quad 2\omega_0,\quad 2\omega_1,\quad\ldots,\quad
+  2\omega_{N_{\rm pair}-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+The diagonal entries \(E_i^{(0)}+hL\bar\sigma\) are real.  For \(i<j\) the
+lower-triangular entry is defined to be \(\overline{V_{ij}}\), hence
+\[
+  H_{ji}=hL\,\overline{V_{ij}}=\overline{hL\,V_{ij}}=\overline{H_{ij}}
+\]
+for real \(h\) and \(L\).  Thus \(H^\dagger=H\).  At \(h=0\), all
+off-diagonal entries vanish and the matrix is diagonal with the displayed
+free finite-volume energies.
+\end{proof}
+
+The script
+\[
+  \texttt{qft\_scripts/tffsa\_ising\_spin\_connected.py}
+\]
+implements Definition~\ref{def:zero-momentum-connected-tffsa-block}.  It
+checks Hermiticity in smoke mode and prints the finite eigenvalues together
+with the corresponding free energies.  The purpose is to make the
+form-factor normalization, density factors, and diagonal convention
+executable.  It is not a claim that the small connected block is the full
+magnetic-Ising spectrum.
+
 \begin{proposition}[Schur complement form of truncation error]
 \label{prop:hamiltonian-truncation-schur-complement}
 In a finite regulated Hilbert space, let \(H=H^\dagger\) be a Hermitian
@@ -486,8 +569,8 @@ verifies the finite residual bound
 \eqref{eq:residual-distance-to-spectrum}, the projector leakage estimate
 \eqref{eq:finite-projector-leakage-bound}, the Feshbach determinant identity
 behind \eqref{eq:feshbach-schur-truncation-effective-hamiltonian}, the
-Ising-energy Bogoliubov benchmark, and the finite large-\(N\) QCD DLCQ
-quadratic-form identity.
+Ising-energy Bogoliubov benchmark, the connected Ising TFFSA block
+normalization, and the finite large-\(N\) QCD DLCQ quadratic-form identity.
 
 \section{DLCQ Datum}
 
@@ -828,7 +911,8 @@ The public companion-script policy is recorded in
   \texttt{tools/run\_qft\_scripts\_smoke.sh}
 \]
 runs the finite Ising Metropolis, Ising-energy Hamiltonian-truncation, and
-the large-\(N\) QCD DLCQ example.  Passing that harness certifies
+the large-\(N\) QCD DLCQ example, together with the connected Ising TFFSA
+block.  Passing that harness certifies
 only the finite computations and internal consistency checks just described.
 
 \begin{openproblem}[Certified QFT truncation]

@@ -19,6 +19,7 @@ python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
+python3 qft_scripts/tffsa_ising_spin_connected.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
 ```
 
@@ -48,6 +49,11 @@ notebooks or CI checks can consume the results without scraping prose.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.
+- `tffsa_ising_spin_connected.py`: finite zero-momentum TFFSA-style
+  connected-block benchmark for the massive Ising spin perturbation.  It
+  assembles off-diagonal form-factor matrix elements in a free-fermion basis
+  and declares its diagonal convention explicitly; it is not a production
+  magnetic-Ising spectrum calculation.
 - `thooft_dlcq.py`: finite harmonic-resolution matrix for the large-\(N\)
   two-dimensional QCD meson equation.  It is a DLCQ-style principal-value
   regulator, not a proof of the continuum spectrum.

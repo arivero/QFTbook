@@ -52,6 +52,9 @@ numerics.
 - States the connected TFFSA spin matrix element with momentum conservation,
   free Bethe-state density \(\rho_I=\prod_i mL\cosh\theta_i\), disconnected
   contraction caveats, and finite-size correction status.
+- Defines a zero-momentum connected TFFSA block with vacuum and
+  two-particle-pair states, declares the diagonal vacuum-expectation
+  convention, and proves Hermiticity plus the zero-coupling free spectrum.
 - Proves the Feshbach-Schur complement identity that underlies Hamiltonian
   truncation counterterms and high-energy tail corrections.
 - Defines finite residual certificates for Hermitian truncation matrices and
@@ -87,6 +90,9 @@ plots.
 - `qft_scripts/tcsa_ising_energy_benchmark.py --smoke`: diagonalizes finite
   Ising thermal-deformation Bogoliubov blocks and checks their exact
   eigenvalues.
+- `qft_scripts/tffsa_ising_spin_connected.py --smoke`: builds the finite
+  zero-momentum connected Ising spin-field TFFSA block, checks Hermiticity,
+  and reports the finite eigenvalues and free energies.
 - `qft_scripts/thooft_dlcq.py --smoke`: builds and diagonalizes the finite
   principal-value matrix for the large-N two-dimensional QCD meson equation
   at a small harmonic resolution, with a positivity smoke check.
@@ -95,6 +101,6 @@ plots.
   cancellation, and integer-power extrapolation weights used in the chapter.
 - `calculation-checks/hamiltonian_truncation_dlcq_checks.py`: finite
   regression check for the Ising-energy benchmark spectrum, the large-\(N\)
-  two-dimensional QCD DLCQ quadratic-form identity, finite residual
-  certification, spectral-projector leakage, and the Feshbach determinant
-  identity.
+  two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
+  block normalization, finite residual certification, spectral-projector
+  leakage, and the Feshbach determinant identity.

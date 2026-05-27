@@ -14,6 +14,7 @@ SCRIPT_DIR = ROOT / "qft_scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import tcsa_ising_energy_benchmark as tcsa  # noqa: E402
+import tffsa_ising_spin_connected as tffsa  # noqa: E402
 import thooft_dlcq  # noqa: E402
 
 
@@ -30,6 +31,55 @@ def assert_leq(name: str, actual: float, bound: float, tol: float = 1.0e-12) -> 
 def check_ising_bogoliubov_benchmark() -> None:
     result = tcsa.run(num_modes=7, mass=0.8, circumference=9.0)
     assert_leq("Ising Bogoliubov finite spectrum", result["max_abs_error"], 1.0e-12)
+
+
+def check_tffsa_connected_spin_block() -> None:
+    cfg = tffsa.RunConfig(
+        num_pairs=4,
+        mass=1.0,
+        circumference=7.0,
+        magnetic_coupling=0.02,
+        sigma_bar=1.3,
+    )
+    states = tffsa.pair_states(cfg.num_pairs, cfg.mass, cfg.circumference)
+    matrix = tffsa.finite_matrix(cfg)
+    hermiticity_error = float(np.max(np.abs(matrix - matrix.conjugate().T)))
+    assert_leq("TFFSA finite block Hermiticity", hermiticity_error, 1.0e-12)
+
+    theta = states[0].theta
+    density = states[0].density
+    expected_vacuum_pair = (
+        cfg.magnetic_coupling
+        * cfg.circumference
+        * 1j
+        * cfg.sigma_bar
+        * np.tanh(theta)
+        / np.sqrt(density)
+    )
+    assert_close("TFFSA vacuum-pair form factor", matrix[0, 1], expected_vacuum_pair)
+
+    theta_1 = states[0].theta
+    theta_2 = states[1].theta
+    crossed = [complex(theta_1, np.pi), complex(-theta_1, np.pi), theta_2, -theta_2]
+    expected_pair_pair = (
+        cfg.magnetic_coupling
+        * cfg.circumference
+        * tffsa.spin_even_form_factor(crossed, cfg.sigma_bar)
+        / np.sqrt(states[0].density * states[1].density)
+    )
+    assert_close("TFFSA pair-pair crossed form factor", matrix[1, 2], expected_pair_pair)
+
+    free_cfg = tffsa.RunConfig(
+        num_pairs=cfg.num_pairs,
+        mass=cfg.mass,
+        circumference=cfg.circumference,
+        magnetic_coupling=0.0,
+        sigma_bar=cfg.sigma_bar,
+    )
+    free_eigs = np.linalg.eigvalsh(tffsa.finite_matrix(free_cfg))
+    expected_free = np.array([0.0] + [state.energy for state in states])
+    if np.max(np.abs(free_eigs - expected_free)) > 1.0e-12:
+        raise AssertionError("TFFSA zero-coupling spectrum does not match free energies")
 
 
 def check_thooft_quadratic_form_identity() -> None:
@@ -92,6 +142,7 @@ def check_feshbach_determinant_identity() -> None:
 
 def main() -> None:
     check_ising_bogoliubov_benchmark()
+    check_tffsa_connected_spin_block()
     check_thooft_quadratic_form_identity()
     check_residual_certificate()
     check_feshbach_determinant_identity()
