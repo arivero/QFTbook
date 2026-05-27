@@ -73,6 +73,12 @@ Current checks:
   and the conversion between the common half-trace action
   \(8\pi^2/g_{\rm ht}^2\) and the monograph trace-delta coupling
   \(4\pi^2/g_{\rm YM}^2\).
+- `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
+  gauge-Higgs soliton and collective-coordinate section, including the
+  Bogomolny and vortex square completions, the Prasad-Sommerfield profile
+  equations, the coordinate transformation of
+  \(\sqrt{\det G_{ab}}\,d^mz\), and the \(4N_c\) local dimension count of the
+  embedded one-instanton moduli.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

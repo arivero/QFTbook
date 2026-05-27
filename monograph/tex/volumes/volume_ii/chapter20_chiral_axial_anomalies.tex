@@ -2141,10 +2141,45 @@ bosonic zero modes: four translations, one dilation, and three global gauge
 orientations.  For an \(SU(N_c)\) instanton obtained by embedding the above
 \(SU(2)\) solution, the orientation moduli are enlarged, and the
 one-instanton bosonic moduli space has dimension \(4N_c\) before quotienting
-possible global identifications.  The collective-coordinate measure is
-obtained by separating these zero modes from the nonzero-mode determinant; its
-precise normalization is scheme dependent, while the zero-mode count and the
-exponential action are not.
+possible global identifications.  The reason for the number \(4N_c\) is
+local and elementary.  The center and size contribute \(4+1\) parameters.  The
+embedded \(SU(2)\) orientation is the orbit of the embedding under
+\(SU(N_c)\), whose stabilizer is \(SU(N_c-2)\times U(1)\).  Hence the
+orientation dimension is
+\[
+  (N_c^2-1)-\bigl((N_c-2)^2-1\bigr)-1=4N_c-5 ,
+\]
+and adding center and size gives \(4N_c\).  The precise global quotient by
+the center and by stabilizers affects the coordinate range, not this local
+dimension count.
+
+The regulated collective-coordinate measure is the one constructed in
+Theorem~\ref{thm:collective-coordinate-morse-bott-measure}.  In a finite
+gauge-fixed regulator its local bosonic factor has the form
+\begin{equation}
+  \dd\mu_{k=1,\Lambda}^{\rm bos}
+  =
+  \frac{\Delta_{\rm FP,\Lambda}(A_z)}
+       {\operatorname{Vol}(\Gamma_z)}
+  \frac{\sqrt{\det G^{(\Lambda)}_{ab}(z)}\,
+        \dd^4a\,\dd\rho\,
+        \dd\Omega_{SU(N_c)/(SU(N_c-2)\times U(1))}}
+       {\det{}'_\Lambda(L_{A_z})^{1/2}},
+  \label{eq:one-instanton-bosonic-collective-measure}
+\end{equation}
+multiplied by the exponential
+\eqref{eq:bpst-instanton-exponential-conventions}.  Here \(z\) denotes the
+center, size, and orientation coordinates; \(G^{(\Lambda)}_{ab}\) is the
+zero-mode Gram matrix induced by the regulated gauge-field inner product;
+\(L_{A_z}\) is the gauge-fixed quadratic operator on nonzero bosonic
+fluctuations; and \(\Gamma_z\) is the residual stabilizer left by the chosen
+slice.  Equation
+\eqref{eq:one-instanton-bosonic-collective-measure} is not yet a continuum
+formula.  Taking \(\Lambda\to\infty\) requires combining the determinant, the
+coupling coordinate, and the normalization of the local operator insertions
+in a specified renormalization scheme.  What is scheme independent at this
+stage is the topological sector, the zero-mode count, the finite-regulator
+construction of the measure, and the exponential action.
 
 Fermion zero modes are controlled by the index theorem already stated in
 \eqref{eq:dirac-index-anomaly}.  In the conventional half-trace notation, a

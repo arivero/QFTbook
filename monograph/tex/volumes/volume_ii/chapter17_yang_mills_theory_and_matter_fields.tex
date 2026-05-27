@@ -1470,6 +1470,263 @@ fluctuations and collective-coordinate wave functions, possible fermion zero
 modes, and a determination of which
 semiclassical sectors survive in the continuum quantum theory being studied.
 
+\subsection{Collective Coordinates and the Regularized Semiclassical Measure}
+\label{subsec:collective-coordinate-regularized-measure}
+
+The word ``collective coordinate'' will mean a coordinate on a finite
+dimensional manifold of gauge-equivalence classes of classical solutions,
+not a new field added by hand.  The measure on this manifold is not guessed
+from the number of zero modes.  It is obtained by first defining a regulated
+path integral, choosing a gauge slice or working directly on the quotient,
+and then applying stationary phase in a neighborhood of the critical
+manifold.  This is the point at which the distinction between a classical
+moduli space and the quantum weight assigned to that moduli space enters.
+
+\begin{definition}[Regulated collective-coordinate datum]
+\label{def:regulated-collective-coordinate-datum}
+Fix a finite regulator \(\Lambda\).  A regulated bosonic
+collective-coordinate datum consists of the following objects.
+
+\begin{enumerate}
+\item A finite-dimensional smooth manifold \(\mathcal C_\Lambda\) of
+regulated field variables, equipped with a smooth positive density
+\(\mathrm D_\Lambda\varphi\).
+\item A compact Lie group \(\mathcal G_\Lambda\) acting smoothly on
+\(\mathcal C_\Lambda\), preserving the action \(S_\Lambda\) and the density.
+\item A gauge slice \(\Sigma_\Lambda\subset\mathcal C_\Lambda\) meeting the
+gauge orbits under consideration transversely, with Faddeev--Popov
+Jacobian \(\Delta_{\rm FP,\Lambda}\).  Equivalently, one may replace this
+item by a smooth density on the local quotient
+\(\mathcal C_\Lambda/\mathcal G_\Lambda\).
+\item A connected \(m\)-dimensional submanifold
+\(\mathcal M_\Lambda\subset\Sigma_\Lambda\) of critical points of
+\(S_\Lambda\), parametrized locally by \(z=(z^1,\ldots,z^m)\), such that
+\[
+  S_\Lambda(\varphi_z)=S_0
+  \qquad
+  \hbox{for all }z\in\mathcal M_\Lambda .
+\]
+\item A regulator inner product
+\(\langle\ ,\ \rangle_{\Lambda,z}\) on \(T_{\varphi_z}\Sigma_\Lambda\).
+The tangent vectors
+\[
+  Z_a(z):=\frac{\partial\varphi_z}{\partial z^a}
+\]
+define the zero-mode Gram matrix
+\begin{equation}
+  G_{ab}^{(\Lambda)}(z)
+  :=
+  \langle Z_a(z),Z_b(z)\rangle_{\Lambda,z}.
+  \label{eq:collective-coordinate-zero-mode-gram}
+\end{equation}
+\end{enumerate}
+The datum is nondegenerate if the Hessian \(L_{\Lambda,z}\) of
+\(S_\Lambda|_{\Sigma_\Lambda}\) has kernel exactly
+\(T_{\varphi_z}\mathcal M_\Lambda\) and is positive on a chosen normal
+bundle \(N_z\mathcal M_\Lambda\).  If the residual stabilizer of
+\(\varphi_z\) in \(\mathcal G_\Lambda\) is a compact group \(\Gamma_z\), its
+volume is computed using the same normalization of the gauge-group density
+that was used to define \(\Delta_{\rm FP,\Lambda}\).
+\end{definition}
+
+For a monopole, \(z\) includes center-of-mass and phase coordinates.  For a
+BPST instanton, \(z\) includes center, size, and gauge-orientation
+coordinates.  In both cases, the formula below is a statement at fixed
+regulator.  The continuum semiclassical formula is obtained only after the
+renormalized nonzero-mode determinant and the moduli integral have been
+given a limit in the chosen scheme.
+
+\begin{theorem}[Collective-coordinate stationary phase]
+\label{thm:collective-coordinate-morse-bott-measure}
+Let \(\mathfrak D_\Lambda\) be a nondegenerate regulated
+collective-coordinate datum in the sense of
+Definition~\ref{def:regulated-collective-coordinate-datum}.  Denote its
+field space, gauge slice, critical manifold, and action by
+\(\mathcal C_\Lambda\), \(\Sigma_\Lambda\), \(\mathcal M_\Lambda\), and
+\(S_\Lambda\).  Let \(\epsilon_{\rm sc}>0\) be the semiclassical parameter
+multiplying the action, and let \(O\) be a smooth gauge-invariant observable
+supported in a tubular neighborhood of \(\mathcal M_\Lambda\) inside the
+gauge slice.  Then, for each coordinate patch on \(\mathcal M_\Lambda\),
+\begin{align}
+  &\int_{\Sigma_\Lambda}
+    O(\varphi)\,
+    \exp\!\left[-S_\Lambda(\varphi)/\epsilon_{\rm sc}\right]\,
+    \Delta_{\rm FP,\Lambda}(\varphi)\,\mathrm D_\Lambda\varphi
+  \nonumber\\
+  &\quad =
+  \exp(-S_0/\epsilon_{\rm sc})\,
+  (2\pi\epsilon_{\rm sc})^{r/2}
+  \int_{\mathcal M_\Lambda}
+  \frac{O(\varphi_z)\,\Delta_{\rm FP,\Lambda}(\varphi_z)}
+       {\operatorname{Vol}(\Gamma_z)\,
+        \det{}'_{\Lambda}(L_{\Lambda,z})^{1/2}}\,
+  \dd\nu_{\Lambda,\mathcal M}(z)
+  +O\!\left(\epsilon_{\rm sc}^{r/2+1}\right),
+  \label{eq:collective-coordinate-stationary-phase-formula}
+\end{align}
+where \(r=\dim N_z\mathcal M_\Lambda\) is the number of nonzero bosonic
+normal directions in the regulated slice,
+\(\det{}'_{\Lambda}(L_{\Lambda,z})\) is the determinant of the Hessian on
+\(N_z\mathcal M_\Lambda\) with respect to the regulator inner product, and
+\begin{equation}
+  \dd\nu_{\Lambda,\mathcal M}(z)
+  =
+  \sqrt{\det G^{(\Lambda)}_{ab}(z)}\,
+  \dd z^1\cdots \dd z^m .
+  \label{eq:collective-coordinate-bosonic-measure}
+\end{equation}
+The product
+\(\sqrt{\det G^{(\Lambda)}}\,\dd^mz\) is invariant under changes of
+collective-coordinate chart.  If the path integral is formulated directly on
+the local quotient rather than on a gauge slice, the factor
+\(\Delta_{\rm FP,\Lambda}/\operatorname{Vol}(\Gamma_z)\) is absent and
+\(\dd\nu_{\Lambda,\mathcal M}\) is computed from the quotient metric.
+\end{theorem}
+
+\begin{proof}
+The proof is finite dimensional.  Choose a tubular-neighborhood map
+\[
+  (z,\eta)\longmapsto \varphi(z,\eta),
+  \qquad
+  z\in\mathcal M_\Lambda,\quad
+  \eta\in N_z\mathcal M_\Lambda,
+\]
+with \(\varphi(z,0)=\varphi_z\).  The density in these coordinates has the
+form
+\[
+  \mathrm D_\Lambda\varphi
+  =
+  J_\Lambda(z,\eta)\,\dd^mz\,\dd^r\eta,
+  \qquad
+  J_\Lambda(z,0)=\sqrt{\det G^{(\Lambda)}_{ab}(z)}
+\]
+after the normal coordinates are chosen orthonormally in
+\(N_z\mathcal M_\Lambda\).  This equality is precisely the definition of the
+Riemannian density induced on the critical manifold by the regulator inner
+product.
+
+Because every \(\varphi_z\) is critical and the tangent directions are
+exactly the kernel of the Hessian,
+\[
+  S_\Lambda(\varphi(z,\eta))
+  =
+  S_0+\frac12\langle \eta,L_{\Lambda,z}\eta\rangle_{\Lambda,z}
+  +O(\|\eta\|^3).
+\]
+By nondegeneracy, \(L_{\Lambda,z}\) is positive on the normal space.  For an
+observable with support in a fixed tubular neighborhood, the part
+\(\|\eta\|\ge c\) is exponentially smaller than any power of
+\(\epsilon_{\rm sc}\), after possibly shrinking the neighborhood.  In the
+remaining region set \(\eta=\epsilon_{\rm sc}^{1/2}\xi\).  Taylor expand
+\[
+  O(\varphi(z,\epsilon_{\rm sc}^{1/2}\xi))\,
+  \Delta_{\rm FP,\Lambda}(\varphi(z,\epsilon_{\rm sc}^{1/2}\xi))\,
+  J_\Lambda(z,\epsilon_{\rm sc}^{1/2}\xi)
+\]
+and the cubic remainder in the action.  Odd Gaussian moments vanish and the
+leading normal integral is
+\[
+  \int_{N_z\mathcal M_\Lambda}
+  \exp\!\left[-\frac12
+    \langle \xi,L_{\Lambda,z}\xi\rangle_{\Lambda,z}\right]\dd^r\xi
+  =
+  (2\pi)^{r/2}\det{}'_{\Lambda}(L_{\Lambda,z})^{-1/2}.
+\]
+Multiplying by the Jacobian
+\(\epsilon_{\rm sc}^{r/2}\) from
+\(\dd^r\eta=\epsilon_{\rm sc}^{r/2}\dd^r\xi\) gives
+\eqref{eq:collective-coordinate-stationary-phase-formula}.  The factor
+\(\operatorname{Vol}(\Gamma_z)^{-1}\) removes the residual gauge copies left
+inside the slice.  Under a chart change \(z=z(z')\), the Gram matrix
+transforms as \(G'=(\partial z/\partial z')^T G(\partial z/\partial z')\);
+hence \(\sqrt{\det G'}\,\dd^mz'=\sqrt{\det G}\,\dd^mz\).  The displayed
+measure is therefore intrinsic.
+\end{proof}
+
+\begin{corollary}[Low-velocity monopole dynamics]
+\label{cor:monopole-moduli-space-kinetic-metric}
+Let \((A_i(z),\Phi(z))\) be local coordinates on a smooth BPS monopole
+moduli space and choose tangent vectors
+\((\delta_aA_i,\delta_a\Phi)\) satisfying the background-gauge condition
+\[
+  D_i\delta_aA_i-\ii[\Phi,\delta_a\Phi]=0 .
+\]
+Substituting
+\[
+  A_i(t,x)=A_i(z(t),x),\qquad
+  \Phi(t,x)=\Phi(z(t),x)
+\]
+into the real-time Yang--Mills--Higgs kinetic energy and discarding terms of
+order \(\dot z^3\) and higher gives
+\[
+  L_{\rm eff}
+  =
+  \frac12\,g_{ab}^{\rm mon}(z)\dot z^a\dot z^b
+  -M_{\rm BPS},
+  \qquad
+  g_{ab}^{\rm mon}(z)
+  =
+  \frac1{g_{\mathrm{YM}}^2}
+  \int_{\mathbb R^3}\dd^3x\,
+  \operatorname{tr}
+  \bigl(\delta_aA_i\,\delta_bA_i+\delta_a\Phi\,\delta_b\Phi\bigr).
+  \label{eq:monopole-moduli-space-metric}
+\]
+Thus the leading low-velocity motion is geodesic motion on the monopole
+moduli space with metric \(g_{ab}^{\rm mon}\).
+\end{corollary}
+
+\begin{proof}
+The Gauss-law constraint is the equation obtained by varying \(A_0\).  At
+linear order in \(\dot z\), setting \(A_0=0\) is compatible with Gauss' law
+exactly when the tangent vector obeys the displayed background-gauge
+condition; otherwise one must add a compensating infinitesimal gauge
+transformation to project the tangent vector orthogonally to gauge orbits.
+The electric field and scalar velocity are then
+\[
+  E_i=\dot z^a\delta_aA_i+O(\dot z^2),
+  \qquad
+  D_0\Phi=\dot z^a\delta_a\Phi+O(\dot z^2).
+\]
+The magnetic and Higgs-gradient energy remains the BPS mass
+\(M_{\rm BPS}\) to first order because each point of the moduli space is a
+static solution with the same topological charge.  The quadratic kinetic
+terms give \eqref{eq:monopole-moduli-space-metric}.  Terms cubic in
+velocities come from radiation and massive fluctuations; they are outside the
+adiabatic approximation stated here.
+\end{proof}
+
+\begin{construction}[Fermion zero modes and Berezin saturation]
+\label{con:fermion-zero-mode-berezin-saturation}
+At finite regulator, suppose the quadratic fermion action in a bosonic
+background \(\varphi_z\) is
+\[
+  S_F=\frac12\Psi^T\mathcal D_z\Psi,
+\]
+where \(\Psi\) is a finite list of odd variables and
+\(\mathcal D_z\) is the antisymmetric matrix representing the regulated
+Dirac operator in the chosen pairing.  Split
+\[
+  \Psi=\sum_{\alpha=1}^{n_0}\zeta^\alpha\Psi_{0,\alpha}
+       +\Psi_\perp,
+  \qquad
+  \mathcal D_z\Psi_{0,\alpha}=0 .
+\]
+The nonzero modes give \(\operatorname{Pf}'(\mathcal D_z)\).  The zero-mode
+part of the Berezin integral is
+\[
+  \int \dd\zeta^{n_0}\cdots\dd\zeta^1\,
+  F(\zeta^1,\ldots,\zeta^{n_0}),
+\]
+which extracts the coefficient of
+\(\zeta^1\cdots\zeta^{n_0}\).  Therefore a correlation function in this
+background vanishes unless the operator insertions or mass terms supply all
+fermion zero-mode variables.  This is the regulated algebraic origin of the
+'t Hooft vertex; the index theorem counts how many such variables are
+present, while the zero-mode wavefunctions determine the gauge, spin, and
+flavor tensor multiplying them.
+\end{construction}
+
 The same finite-energy logic also produces codimension-two vortices.  In the
 Abelian Higgs model on \(\mathbb R^2\), with
 \[
