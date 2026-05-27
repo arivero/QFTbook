@@ -455,3 +455,10 @@ hypotheses:
   The Chapter 7 stack should state the remaining source-current input as a
   concrete theorem about those hypotheses, rather than as the undefined phrase
   ``Dyson regularity.''
+- 2026-05-27 issue #495 source-current differential pass: Chapter 6 now proves
+  that the LSZ source-current replacement is a finite-order
+  relative-coordinate differential operation preserving causal support,
+  punctured conormal wavefront avoidance, and finite scaling degree.  Chapter
+  7 should therefore phrase the remaining source-current task as the
+  construction of the six-dimensional extension and Cauchy data, not as a
+  concern about the formal application of \(\mathcal K\) to the local fields.

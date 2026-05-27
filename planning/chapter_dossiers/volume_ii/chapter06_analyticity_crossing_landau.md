@@ -289,3 +289,13 @@
   source-current work is therefore the actual QFT theorem verifying these
   wavefront/scaling, cone-equation, pushforward, and Cauchy-trace hypotheses
   for LSZ source-current kernels.
+- 2026-05-27 issue #495 source-current differential pass: added local scaling
+  degree and proved that replacing fields by LSZ source currents is the
+  relative-coordinate differential operation
+  \(\mathcal K_b(2\partial_x)\mathcal K_c(-2\partial_x)\).  The proposition
+  proves preservation of causal support, punctured light-cone conormal
+  wavefront avoidance, finite scaling degree, and finite scaling degree of
+  the punctured six-dimensional Dyson product.  This removes the source-current
+  differential step from the list of hidden assumptions; the remaining theorem
+  is the genuine extension/Cauchy-data construction for the source-current
+  kernels.

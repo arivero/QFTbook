@@ -51,6 +51,14 @@ inside the monograph, not left as literature imports.
     \(y\)-pushforward normalization modulo \(x=0\) contact terms; it proves
     that the Fourier transform solves the six-dimensional wave equation and
     that all extension ambiguity restricts to a polynomial in \(q\).
+  - `def:local-scaling-degree` and
+    `prop:source-current-differentials-preserve-punctured-input`, proving
+    that replacing interpolating fields by LSZ source currents is a
+    finite-order relative-coordinate differential operation
+    \(\mathcal K_b(2\partial_x)\mathcal K_c(-2\partial_x)\).  The proposition
+    proves preservation of causal support, punctured light-cone wavefront
+    avoidance, finite scaling degree, and finite scaling degree of the
+    punctured six-dimensional Dyson product.
   - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
     to LSZ source-current commutators and separating finite contact
     polynomials.
@@ -92,16 +100,22 @@ criterion now explains exactly where the naive light-cone product is valid
 and where renormalized lift data must be supplied.  The finite-scaling-degree
 extension theorem now makes the local extension/contact-polynomial mechanism
 explicit, including the cone equation and pushforward normalization that a
-physical source-current kernel must satisfy.  Remaining closure work:
+physical source-current kernel must satisfy.  The source-current differential
+pass proves that the LSZ replacement \(J=\mathcal K\Phi\) itself preserves the
+punctured wavefront and scaling inputs; the remaining regularity issue is
+therefore not a hidden derivative problem.  Remaining closure work:
 
 1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
    in the massive scattering application.  The new microlocal proposition
    supplies a sufficient wavefront transversality criterion and the contact
    ambiguity analysis, and the extension theorem supplies the local
-   finite-scaling-degree mechanism.  The actual source-current kernels still
-   require a theorem proving the needed wavefront/scaling behavior, cone
-   equation, pushforward normalization, temperedness, and Cauchy-data trace
-   hypotheses, or a different construction of the six-dimensional lift.
+   finite-scaling-degree mechanism.  The source-current differential
+   proposition proves stability under the LSZ differential operators.  The
+   actual source-current kernels still require a theorem proving the needed
+   wavefront/scaling behavior for the underlying field commutators together
+   with the cone equation, pushforward normalization, temperedness, and
+   Cauchy-data trace hypotheses for the six-dimensional lift, or a different
+   construction of that lift.
 2. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
    needed for the cut
    \(s\)-plane at fixed \(t\), including the off-shell normal-coordinate
