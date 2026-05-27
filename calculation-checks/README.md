@@ -522,6 +522,11 @@ Current checks:
   \((f_g)_h=f_{hg}\), Koszul signs for adjacent spacelike exchange, and the
   tensor-product ordering of component covariance factors in Wightman
   distributions.
+- `cross_section_partial_wave_checks.py`: exact rational checks for the
+  Volume I cross-section chapter, including the Kallen momentum formula,
+  invariant flux, two-body phase-space coefficient, identical \(\phi^4\)
+  tree cross-section coefficient, the ordered \(16\pi\) partial-wave
+  normalization, and the elastic/inelastic partial-wave unitarity circle.
 - `lsz_residue_checks.py`: finite checks for the Volume I LSZ chapter,
   including mostly-plus invariant-denominator factorization, partial-fraction
   signs, per-leg amputation normalization, all-incoming momentum bookkeeping,

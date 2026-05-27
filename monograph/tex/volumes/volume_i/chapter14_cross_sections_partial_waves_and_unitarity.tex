@@ -5,6 +5,8 @@
 
 \section{Transition Probabilities}
 
+\begin{definition}[Transition probability for an outgoing event class]
+\label{def:scattering-transition-probability-event-class}
 Let \(\mathcal H_{\rm as}\) be the asymptotic Hilbert space in a sector where
 the incoming and outgoing Haag--Ruelle ranges coincide.  The scattering
 operator
@@ -30,7 +32,10 @@ subspace spanned by \(\mathcal D\).  The transition probability into
 This is the primary definition.  Sharp-momentum formulas are distributional
 kernels obtained from this expression after smearing with wave packets and
 then taking a narrow-packet limit.
+\end{definition}
 
+\begin{definition}[Invariant amplitude convention]
+\label{def:invariant-amplitude-convention}
 For positive-energy momenta in the mostly-plus metric,
 \[
   p_i=(E_i,\vec p_i),
@@ -71,9 +76,12 @@ with ket label \(i\) and bra label \(f\), namely the transition \(i\to f\).
 The notation is ordered; \(\mathcal M(f|i)\) and \(\mathcal M(i|f)\) are
 different matrix elements unless an additional reciprocity symmetry is
 assumed.
+\end{definition}
 
 \section{Sharp-Momentum Limit and Delta-Squares}
 
+\begin{proposition}[Sharp-momentum density limit]
+\label{prop:sharp-momentum-density-limit-cross-section}
 The wave-packet definition is primary, but the conventional plane-wave formula
 is useful as a check on all factors.  Temporarily use
 \(\delta\)-normalized one-particle states in \(d=D-1\) spatial dimensions,
@@ -155,6 +163,30 @@ Therefore
 Converting \(M_\delta\) to the invariant amplitude \(\mathcal M\) by the
 external normalization factors stated in the LSZ chapter gives the covariant
 phase-space formula below.
+\end{proposition}
+
+\begin{proof}
+The connected sharp kernel contains a single total momentum-conservation
+distribution.  In the probability, the square of this distribution is defined
+by putting the theory in a spatial box of volume \(V\) and evolving for an
+observation time \(\mathcal T\).  In that regulator,
+\[
+  \bigl[(2\pi)^D\delta^{(D)}(P_\beta-P_\alpha)\bigr]^2
+  =
+  (2\pi)^D\delta^{(D)}(0)\,
+  (2\pi)^D\delta^{(D)}(P_\beta-P_\alpha)
+\]
+with \((2\pi)^D\delta^{(D)}(0)=V\mathcal T\).  A two-particle incoming
+\(\delta\)-normalized box state contributes
+\(\delta^{(d)}(0)^{-2}=[(2\pi)^d/V]^2\).  Multiplying these factors gives the
+displayed probability density
+\((2\pi)^{2d}\mathcal T/V\) times the final-state phase-space integral.
+Dividing by the geometric probability
+\(v_{\rm rel}\mathcal T/V\) for a unit transverse area gives the sharp
+cross-section density.  The last conversion is exactly the external
+normalization conversion between \(M_\delta\) and \(\mathcal M\) fixed in
+Definition~\ref{def:invariant-amplitude-convention}.
+\end{proof}
 
 \section{Wave-Packet Origin of Cross Sections}
 
@@ -208,6 +240,8 @@ The next section expresses the same factor in covariant form.
 
 \section{Invariant Phase Space and Flux}
 
+\begin{definition}[Invariant phase space]
+\label{def:invariant-final-state-phase-space}
 For one on-shell final particle of mass \(M\), the Lorentz-invariant
 positive-energy measure is
 \[
@@ -260,7 +294,10 @@ where \(n_\lambda\) is the number of identical outgoing particles of species
 \(\lambda\).  Fermionic sectors have the corresponding antisymmetric identity
 resolution; the same factorial appears, with signs carried by the
 antisymmetric external wavefunctions and matrix elements.
+\end{definition}
 
+\begin{proposition}[Invariant two-particle flux]
+\label{prop:invariant-two-particle-flux}
 For a two-particle initial state, the invariant flux factor is
 \[
   \mathcal F(p_1,p_2)
@@ -285,7 +322,39 @@ so
 \[
   \mathcal F=4(E_1+E_2)|\vec p_*|.
 \]
+\end{proposition}
 
+\begin{proof}
+The quantity
+\((p_1\cdot p_2)^2-m_1^2m_2^2\) is Lorentz invariant, so it suffices to
+evaluate it in the center-of-mass frame.  With mostly-plus metric,
+\[
+  p_1\cdot p_2=-E_1E_2-\vec p_*^{\,2}.
+\]
+Using \(E_i^2=\vec p_*^{\,2}+m_i^2\),
+\[
+\begin{aligned}
+  (p_1\cdot p_2)^2-m_1^2m_2^2
+  &=
+  (E_1E_2+\vec p_*^{\,2})^2
+  -(E_1^2-\vec p_*^{\,2})(E_2^2-\vec p_*^{\,2})  \\
+  &=
+  \vec p_*^{\,2}(E_1+E_2)^2 .
+\end{aligned}
+\]
+Thus \(\mathcal F=4(E_1+E_2)|\vec p_*|\).  Since
+\(\vec v_1=\vec p_*/E_1\) and \(\vec v_2=-\vec p_*/E_2\), the relative speed
+is
+\[
+  v_{\rm rel}=|\vec v_1-\vec v_2|
+  =
+  \frac{(E_1+E_2)|\vec p_*|}{E_1E_2},
+\]
+which proves the equivalent form \(\mathcal F=4E_1E_2v_{\rm rel}\).
+\end{proof}
+
+\begin{definition}[Differential cross section from invariant data]
+\label{def:differential-cross-section-invariant-data}
 The differential cross section for
 \[
   p_1+p_2\longrightarrow q_1+\cdots+q_m
@@ -301,6 +370,7 @@ is
 All factors in this expression have now been fixed: the asymptotic state
 normalization, the amplitude convention, the final-state measure, and the
 incoming flux.
+\end{definition}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.86,>=Stealth]
@@ -349,20 +419,21 @@ For incoming masses \(m_1,m_2\) and final masses \(M_1,M_2\),
   =
   \frac{\sqrt{\lambda_K(s,M_1^2,M_2^2)}}{2\sqrt s}.
 \]
-Performing the two-body phase-space integral over the energy-conserving
-delta function gives
+The next proposition performs the two-body phase-space integral over the
+energy-conserving delta function.  Here \(\dd\Omega\) is the solid-angle
+measure of one final momentum in the center-of-mass frame.
+
+\begin{proposition}[Two-body phase-space reduction in four dimensions]
+\label{prop:two-body-phase-space-reduction-four-dimensions}
+With the normalization of Definition~\ref{def:invariant-final-state-phase-space},
+the two-body final-state measure in the center-of-mass frame is
 \[
   \dd\Phi_2
   =
   \frac{1}{16\pi^2}
-  \frac{|\vec q_*|}{\sqrt s}\,\dd\Omega ,
+  \frac{|\vec q_*|}{\sqrt s}\,\dd\Omega .
 \]
-where \(\dd\Omega\) is the solid-angle measure of one final momentum in the
-center-of-mass frame.  The flux is
-\[
-  \mathcal F=4\sqrt s\,|\vec p_*|.
-\]
-Therefore
+Consequently
 \[
   \frac{\dd\sigma}{\dd\Omega}
   =
@@ -370,6 +441,37 @@ Therefore
   \frac{|\vec q_*|}{|\vec p_*|}
   |\mathcal M(s,\Omega)|^2 .
 \]
+\end{proposition}
+
+\begin{proof}
+In the center-of-mass frame the spatial delta function in
+\(\dd\Phi_2\) sets \(\vec q_2=-\vec q_1\).  Writing
+\(q=|\vec q_1|\), the remaining radial integral contains
+\[
+  \delta(\omega_1(q)+\omega_2(q)-\sqrt s),
+  \qquad
+  \omega_a(q)=\sqrt{q^2+M_a^2}.
+\]
+At the root \(q=|\vec q_*|\),
+\[
+  \frac{\dd}{\dd q}(\omega_1+\omega_2)
+  =
+  q\left(\frac1{\omega_1}+\frac1{\omega_2}\right)
+  =
+  \frac{q\sqrt s}{\omega_1\omega_2}.
+\]
+Therefore
+\[
+  \int\frac{q^2\dd q\,\dd\Omega}{(2\pi)^2\,4\omega_1\omega_2}\,
+  \delta(\omega_1+\omega_2-\sqrt s)
+  =
+  \frac{|\vec q_*|}{16\pi^2\sqrt s}\,\dd\Omega .
+\]
+Dividing by the center-of-mass flux
+\(\mathcal F=4\sqrt s\,|\vec p_*|\) gives the displayed differential
+cross-section formula.
+\end{proof}
+
 For two identical final particles, the symmetric two-particle identity
 resolution supplies the factor \(1/2\) when the integral is written over the
 full labeled solid angle.
@@ -423,6 +525,39 @@ for identical final particles.
 
 \section{Unitarity and the Optical Theorem}
 
+\begin{theorem}[Sharp-kernel unitarity and the optical theorem]
+\label{thm:sharp-kernel-unitarity-optical-theorem}
+Let \(S=\mathbf 1+\ii T\) be unitary on the asymptotic Hilbert space.  With
+the amplitude convention of Definition~\ref{def:invariant-amplitude-convention},
+the connected sharp kernels obey
+\[
+  -\ii\left[
+  \mathcal M(f|i)-\mathcal M(i|f)^*
+  \right]
+  =
+  \sum_X
+  \int\dd\Phi_X\,
+  \mathcal M(X|f)^*\mathcal M(X|i),
+\]
+where \(X\) runs over a complete orthogonal resolution of outgoing
+asymptotic channels, including the corresponding phase-space measures and
+identical-particle symmetry factors.  In the forward case \(f=i\),
+\[
+  2\,\operatorname{Im}\mathcal M(i|i)
+  =
+  \sum_X
+  \int\dd\Phi_X\,|\mathcal M(X|i)|^2 .
+\]
+For two incoming particles,
+\[
+  \sigma_{\rm tot}
+  =
+  \frac{2\,\operatorname{Im}\mathcal M(i|i)}
+  {\mathcal F(p_1,p_2)} .
+\]
+\end{theorem}
+
+\begin{proof}
 The operator identity
 \[
   S^\dagger S=\mathbf 1,\qquad S=\mathbf 1+\ii T,
@@ -433,20 +568,9 @@ is equivalent to
 \]
 Let \(i\) and \(f\) denote incoming and outgoing asymptotic momentum labels,
 including all discrete quantum numbers.  Insert a complete set of outgoing
-asymptotic states between \(T^\dagger\) and \(T\).  After removing the common
-overall momentum-conservation delta function, the sharp-kernel form is
-\[
-  -\ii\left[
-  \mathcal M(f|i)-\mathcal M(i|f)^*
-  \right]
-  =
-  \sum_X
-  \int\dd\Phi_X\,
-  \mathcal M(X|f)^*\mathcal M(X|i),
-\]
-where \(X\) runs over all allowed multiparticle channels and
-\(\dd\Phi_X\) includes the corresponding phase-space measure and symmetry
-factors.
+asymptotic states between \(T^\dagger\) and \(T\).  Removing the common
+overall momentum-conservation delta function gives the first displayed
+sharp-kernel identity.
 The conjugated factor on the right is fixed by Hilbert-space adjunction:
 \[
   \langle f|T^\dagger|X\rangle
@@ -458,26 +582,15 @@ Thus it is \(\mathcal M(X|f)^*\), not in general
 reciprocity statement, for example from a time-reversal or detailed-balance
 symmetry after its antiunitary phases have been fixed.
 
-For \(f=i\), this becomes the optical theorem
-\[
-  2\,\operatorname{Im}\mathcal M(i|i)
-  =
-  \sum_X
-  \int\dd\Phi_X\,|\mathcal M(X|i)|^2 .
-\]
+Setting \(f=i\) gives the optical theorem.
 No time-reversal invariance is used in this forward specialization:
 \(\langle i|T^\dagger|X\rangle=\langle X|T|i\rangle^*\) by the definition of
 the adjoint, so each term is the norm square of the outgoing transition
-amplitude from the fixed incoming state.
-For two incoming particles,
-\[
-  \sigma_{\rm tot}
-  =
-  \frac{2\,\operatorname{Im}\mathcal M(i|i)}
-  {\mathcal F(p_1,p_2)} .
-\]
+amplitude from the fixed incoming state.  Dividing the complete transition
+probability per unit time by the incoming flux gives the total cross section.
 The amplitude on the left is the forward amplitude: the outgoing labels are
 the same as the incoming labels.
+\end{proof}
 
 \begin{remark}[Complete sums and detector resolution]
 The symbol \(X\) in the optical theorem denotes a complete orthogonal
@@ -679,6 +792,8 @@ This is the convention used later for identical-particle high-energy bounds.
 
 \section{Partial-Wave Unitarity Geometry}
 
+\begin{proposition}[Partial-wave unitarity circle]
+\label{prop:partial-wave-unitarity-circle}
 Define
 \[
   b_\ell(s)=\beta(s)a_\ell(s),
@@ -726,6 +841,33 @@ The difference
 \]
 is the contribution of inelastic final states in that angular-momentum
 channel.  This is the partial-wave form of the optical theorem.
+\end{proposition}
+
+\begin{proof}
+Substitute \(S_\ell=1+2\ii b_\ell\) with
+\(b_\ell=x_\ell+\ii y_\ell\).  Then
+\[
+  S_\ell=(1-2y_\ell)+2\ii x_\ell .
+\]
+The elastic condition \(|S_\ell|=1\) is therefore
+\[
+  (1-2y_\ell)^2+4x_\ell^2=1,
+\]
+which is equivalent to the displayed circle equation and to
+\(y_\ell=|b_\ell|^2\).  If \(S_\ell=\eta_\ell e^{2\ii\delta_\ell}\) with
+\(0\le\eta_\ell\le1\), the same substitution gives
+\[
+  \left|1+2\ii b_\ell\right|^2=\eta_\ell^2 .
+\]
+Rearranging yields
+\[
+  y_\ell-|b_\ell|^2=\frac{1-\eta_\ell^2}{4}\ge0,
+\]
+and the inequality form of the unitarity disk follows.  The right side is the
+deficit \(1-\eta_\ell^2\) in the norm of the elastic component, expressed in
+the \(b_\ell=(S_\ell-1)/(2\ii)\) normalization.  This is the partial-wave
+optical theorem.
+\end{proof}
 
 \section{Thresholds, Poles, and Resonances}
 
