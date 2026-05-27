@@ -1844,3 +1844,38 @@ Calculation checks added:
   sheet-sensitivity of `Xi_12`, the expanded double-crossing product, the
   two-step branch recursion, and inversion in the reciprocal scalar
   convention.
+
+## Continuation LVIII: Crossing CDD Ambiguity
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition identifying the CDD ambiguity left by the scalar
+  crossing problem in the stringbook convention.
+- The text defines the quotient `mathcal F=sigma'/sigma` of two scalar
+  branches solving the same Janik crossing and scalar unitarity equations.
+- It proves the local CDD equations
+  `mathcal F^{[gamma C_1]} mathcal F^{[gamma]}=1` and
+  `mathcal F^{[gamma P]}_{21} mathcal F^{[gamma]}_{12}=1`, and proves the
+  converse: multiplying a solution by such a non-zero meromorphic factor
+  preserves the same crossing multiplier and unitarity.
+- It derives regular double-crossing triviality for the CDD factor and the
+  induced zero/pole propagation under crossing and particle exchange.
+- It states explicitly that choosing the BES CDD-free branch is a
+  minimality/analyticity condition, not a consequence of finite matrix
+  crossing algebra.
+
+Calculation checks added:
+
+- Added `check_crossing_cdd_factor_ambiguity()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  that a crossing-odd and swap-odd CDD factor preserves Janik crossing and
+  scalar unitarity, leaves the regular double-crossing multiplier unchanged,
+  fails if made crossing-even, and propagates divisor signs correctly under
+  crossing, exchange, and double crossing.

@@ -1277,17 +1277,110 @@ all possible homotopy classes of scalar branches or prove that the BES
 branch is the unique minimal solution.
 \end{proof}
 
+\begin{proposition}[CDD ambiguity of the scalar crossing problem]
+\label{prop:planar-n4-crossing-cdd-ambiguity}
+Let \(\mathcal U\) be a regular domain of scalar branches closed under
+particle exchange and under the chosen first-particle crossing segments
+\(\mathsf C_1\), with no zero or pole of the functions below on the crossed
+segments.  Suppose \(\sigma_{12}\) and \(\sigma'_{12}\) are two non-zero
+meromorphic scalar branches on \(\mathcal U\) satisfying the same Janik
+crossing equation
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}\,
+  \sigma^{[\gamma]}_{12}
+  =
+  \sigma'^{[\gamma\mathsf C_1]}_{12}\,
+  \sigma'^{[\gamma]}_{12}
+  =
+  \Xi_{12}
+\]
+and the same scalar unitarity equation
+\[
+  \sigma^{[\gamma P]}_{21}\sigma^{[\gamma]}_{12}
+  =
+  \sigma'^{[\gamma P]}_{21}\sigma'^{[\gamma]}_{12}
+  =1,
+\]
+where \(P\) exchanges the two particles.  Set
+\[
+  \mathcal F^{[\gamma]}_{12}
+  :=
+  \frac{\sigma'^{[\gamma]}_{12}}{\sigma^{[\gamma]}_{12}} .
+\]
+Then \(\mathcal F\) is a CDD factor in this convention:
+\begin{equation}
+  \mathcal F^{[\gamma\mathsf C_1]}_{12}
+  \mathcal F^{[\gamma]}_{12}=1,\qquad
+  \mathcal F^{[\gamma P]}_{21}
+  \mathcal F^{[\gamma]}_{12}=1,\qquad
+  \mathcal F^{[\gamma\mathsf C_1\mathsf C_1]}_{12}
+  =
+  \mathcal F^{[\gamma]}_{12}.
+  \label{eq:planar-n4-cdd-factor-equations}
+\end{equation}
+Conversely, multiplying any scalar solution by a non-zero meromorphic
+\(\mathcal F\) satisfying the first two equations in
+\eqref{eq:planar-n4-cdd-factor-equations} gives another scalar solution with
+the same crossing multiplier and scalar unitarity.  If \(\mathcal F\) has a
+zero of order \(m\) at a regular point of a branch, then it has a pole of
+order \(m\) at the corresponding crossed point and at the exchanged point.
+Thus a CDD-free BES branch is a minimality and analyticity choice, not a
+formal consequence of the finite matrix crossing multiplier.
+\end{proposition}
+
+\begin{proof}
+Dividing the crossing equation for \(\sigma'\) by the crossing equation for
+\(\sigma\) gives
+\[
+  \mathcal F^{[\gamma\mathsf C_1]}_{12}
+  \mathcal F^{[\gamma]}_{12}=1.
+\]
+Dividing scalar unitarity for \(\sigma'\) by scalar unitarity for
+\(\sigma\) gives
+\[
+  \mathcal F^{[\gamma P]}_{21}
+  \mathcal F^{[\gamma]}_{12}=1.
+\]
+Applying the first identity on the already crossed branch gives
+\[
+  \mathcal F^{[\gamma\mathsf C_1\mathsf C_1]}_{12}
+  \mathcal F^{[\gamma\mathsf C_1]}_{12}=1.
+\]
+Together with \(\mathcal F^{[\gamma\mathsf C_1]}_{12}
+=(\mathcal F^{[\gamma]}_{12})^{-1}\), this proves the double-crossing
+identity for the CDD factor.  Conversely, if
+\(\sigma'_{12}:=\mathcal F_{12}\sigma_{12}\), then the first CDD equation
+cancels the extra factor in crossing and the second cancels the extra factor
+in scalar unitarity.
+
+For the divisor statement, work in a coordinate chart where crossing and
+exchange are biholomorphic.  The identity
+\(\mathcal F^{[\gamma\mathsf C_1]}=1/\mathcal F^{[\gamma]}\) changes an
+order-\(m\) zero into an order-\(m\) pole on the crossed branch, and the
+exchange identity does the same on the exchanged branch.  In a simply
+connected pole-free subdomain one may write
+\(\mathcal F=\exp \ell\), and the equations become
+\[
+  \ell^{[\gamma\mathsf C_1]}_{12}=-\ell^{[\gamma]}_{12},
+  \qquad
+  \ell^{[\gamma P]}_{21}=-\ell^{[\gamma]}_{12}.
+\]
+Hence setting \(\ell=0\), or equivalently \(\mathcal F=1\), is an additional
+minimal-branch normalization.
+\end{proof}
+
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
 The preceding propositions fix the rational convention carried by the
 chosen scalar split, its finite crossed-amplitude origin, and the
-double-crossing sheet displacement forced by that convention; they do not
-derive the global monodromy condition from finite algebra.  Homotopic
-crossing paths inside a singularity-free chamber give the same rational
-cocycle, but paths separated by poles, zeros, or extra CDD singularities can
-land on different scalar branches.  In the
+double-crossing sheet displacement forced by that convention, while
+\eqref{eq:planar-n4-cdd-factor-equations} identifies the remaining
+CDD freedom.  They do not derive the global monodromy condition from finite
+algebra.  Homotopic crossing paths inside a singularity-free chamber give
+the same rational cocycle, but paths separated by poles, zeros, or extra CDD
+singularities can land on different scalar branches.  In the
 normalization where the rational matrix part is separated as
 above, Janik crossing has the convention-fixed form
 \begin{equation}

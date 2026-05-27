@@ -26,6 +26,8 @@ motivational checks, not foundations.
 - `mathsf C_1`: chosen first-magnon crossing continuation along `gamma_cr`.
 - `mathcal M_{12}^{(2)}`: two-crossing scalar-branch displacement
   `Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`.
+- `mathcal F_{12}`: quotient of two scalar dressing branches, i.e. the CDD
+  factor left undetermined by crossing and scalar unitarity.
 - `chi(x,y)`: BES contour-integral kernel for the dressing phase.
 - `mathcal L_g(z,w)`: logarithmic Gamma-function kernel inside the DHM
   double contour.
@@ -157,6 +159,14 @@ motivational checks, not foundations.
   double-crossing multiplier and the reciprocal-convention inverse stated
   explicitly.  Homotopy and minimal BES-branch uniqueness remain analytic
   inputs rather than finite algebra.
+- Classifies the local CDD ambiguity left by crossing and scalar unitarity:
+  the quotient `mathcal F=sigma'/sigma` must obey
+  `mathcal F^{[gamma C_1]} mathcal F^{[gamma]}=1` and
+  `mathcal F^{[gamma P]}_{21} mathcal F^{[gamma]}_{12}=1`; conversely any
+  non-zero meromorphic factor with these two properties preserves the same
+  scalar crossing multiplier and unitarity.  The text records the induced
+  zero/pole propagation and makes explicit that the BES CDD-free branch is a
+  minimality/analyticity choice, not a finite algebra consequence.
 - States the BES/crossing scalar-factor input as a quoted theorem with its
   framework assumptions.
 - Adds an explicit asymptotic Bethe-Yang regime assumption: the ABA is a
@@ -258,6 +268,11 @@ crossed Zhukovsky sheets.
   `Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`, the expanded product agrees
   with that quotient, the two-step branch recursion reproduces it, and the
   reciprocal scalar convention inverts it.
+- It checks the CDD quotient equations exactly: multiplying a scalar branch
+  by a crossing-odd and swap-odd CDD factor preserves Janik crossing and
+  scalar unitarity, leaves regular double crossing unchanged, fails if the
+  CDD factor is crossing-even, and propagates divisor signs correctly under
+  crossing, exchange, and double crossing.
 - It checks dressing scalar unitarity by evaluating the antisymmetric charge
   expansion on physical-branch `x^pm` samples and verifying
   `theta_12+theta_21=0`, `sigma_12 sigma_21=1`, and the squared-factor

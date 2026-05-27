@@ -697,6 +697,73 @@ def check_crossing_scalar_monodromy_cocycle() -> None:
         raise AssertionError("reciprocal scalar convention should invert the cocycle")
 
 
+def check_crossing_cdd_factor_ambiguity() -> None:
+    """Check the CDD quotient equations left by crossing and unitarity."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+
+    def xi(
+        first_plus: Fraction,
+        first_minus: Fraction,
+        second_plus: Fraction,
+        second_minus: Fraction,
+    ) -> Fraction:
+        return (
+            second_plus
+            / second_minus
+            * (second_plus - first_plus)
+            / (second_plus - first_minus)
+            * (second_minus - 1 / first_plus)
+            / (second_minus - 1 / first_minus)
+        )
+
+    physical_multiplier = xi(x1_plus, x1_minus, x2_plus, x2_minus)
+    crossed_multiplier = xi(1 / x1_plus, 1 / x1_minus, x2_plus, x2_minus)
+    sigma_branch = Fraction(11, 13)
+    sigma_crossed = physical_multiplier / sigma_branch
+    sigma_double_crossed = crossed_multiplier / sigma_crossed
+    sigma_swapped = 1 / sigma_branch
+
+    cdd_branch = Fraction(17, 19)
+    cdd_crossed = 1 / cdd_branch
+    cdd_double_crossed = cdd_branch
+    cdd_swapped = 1 / cdd_branch
+
+    sigma_prime = cdd_branch * sigma_branch
+    sigma_prime_crossed = cdd_crossed * sigma_crossed
+    sigma_prime_double_crossed = cdd_double_crossed * sigma_double_crossed
+    sigma_prime_swapped = cdd_swapped * sigma_swapped
+
+    if sigma_prime_crossed * sigma_prime != physical_multiplier:
+        raise AssertionError("CDD-dressed branch failed Janik crossing")
+    if sigma_prime_swapped * sigma_prime != 1:
+        raise AssertionError("CDD-dressed branch failed scalar unitarity")
+    if sigma_prime_double_crossed / sigma_prime != sigma_double_crossed / sigma_branch:
+        raise AssertionError("CDD factor should not change regular double crossing")
+
+    wrong_cdd_crossed = cdd_branch
+    if wrong_cdd_crossed * sigma_crossed * sigma_prime == physical_multiplier:
+        raise AssertionError("crossing-even CDD factor unexpectedly preserved crossing")
+
+    physical_divisor = Counter({"z0": 2, "z1": -3})
+
+    def propagated_divisor(divisor: Counter[str], sign: int) -> Counter[str]:
+        return Counter({point: sign * order for point, order in divisor.items()})
+
+    crossed_divisor = propagated_divisor(physical_divisor, -1)
+    swapped_divisor = propagated_divisor(physical_divisor, -1)
+    double_crossed_divisor = propagated_divisor(crossed_divisor, -1)
+    if crossed_divisor != Counter({"z0": -2, "z1": 3}):
+        raise AssertionError(f"CDD crossed divisor propagation: {crossed_divisor}")
+    if swapped_divisor != crossed_divisor:
+        raise AssertionError("CDD swap should invert the divisor just like crossing")
+    if double_crossed_divisor != physical_divisor:
+        raise AssertionError("CDD regular double crossing should restore the divisor")
+
+
 def check_dressing_charge_antisymmetry_unitarity() -> None:
     """Check that the charge expansion gives scalar dressing unitarity."""
 
@@ -4619,6 +4686,7 @@ def main() -> None:
     check_zhukovsky_crossing_path_monodromy()
     check_crossing_rhs_is_sheet_sensitive()
     check_crossing_scalar_monodromy_cocycle()
+    check_crossing_cdd_factor_ambiguity()
     check_matrix_crossing_channel_scalar_multiplier()
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
