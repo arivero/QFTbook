@@ -26,6 +26,11 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 - `X_eta`, `X^pm`, `Y^pm`: spectral-flow vertex, integer spectral-flow
   generators, and their opposite superdescendants in the extended `N=2`
   chiral algebra.
+- `varphi_C(tau,z)`: elliptic genus of a compact unitary `N=(2,2)` spin CFT
+  under the stated Ramond trace hypotheses.
+- `m_ell`: elliptic genus index `c/6`.
+- `chi_y^LG`: finite Landau--Ginzburg Ramond charge polynomial obtained from
+  the Jacobi ring after NS-to-R spectral flow.
 - `W`: quasihomogeneous Landau--Ginzburg polynomial used only as a protected
   chiral-algebra test.
 - `q_i`: rational weights of the variables in `W`.
@@ -69,6 +74,12 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 - Records the `c=3n` Calabi-Yau-type charge-lattice values for integer and
   half-integer spectral-flow fields as algebraic data rather than a
   sigma-model construction.
+- Defines the elliptic genus under compact/discrete Ramond trace hypotheses,
+  proves right-moving Ramond-ground-state localization from the zero-mode
+  anticommutator, derives the elliptic spectral-flow law and index `c/6`,
+  states the Jacobi modular law as a full spin-CFT sewing theorem boundary,
+  and records the finite LG `chi_y` charge polynomial as a protected shadow
+  rather than an RG-flow theorem.
 - Defines quasihomogeneous LG chiral data only as a protected algebraic test
   for supersymmetric dynamics, not as an RG-flow construction.
 - Computes the `A`-series Jacobi ring, central charge, and chiral weights.
@@ -123,21 +134,25 @@ superconformal-algebra infrastructure that such constructions must satisfy.
     coefficients `eta/2` for `partial J` and `eta^2/2` for `:JJ:`.
 12. The integer generators `X^pm` have `h=c/6`, `q=pm c/3`, while
     `Y^pm` have `h=c/6+1/2`, `q=pm(c/3-1)`.
-13. The `A`-series central charge from `W=X^{k+2}` is `3k/(k+2)`.
-14. The quintic protected algebraic central charge is `9`.
-15. The compact supersymmetric coset central charge is
+13. The elliptic genus spectral-flow law has Jacobi index `c/6`, and the
+    elliptic shift multipliers obey the Jacobi cocycle.
+14. The `A`-series LG `chi_y` Ramond charges are
+    `(2 ell-k)/(2(k+2))`, sum to zero, and give Witten index `k+1`.
+15. The `A`-series central charge from `W=X^{k+2}` is `3k/(k+2)`.
+16. The quintic protected algebraic central charge is `9`.
+17. The compact supersymmetric coset central charge is
     `3(k-2)/k` after adding three fermions and removing the `N=1`
     abelian Cartan sector.
-16. The compact coset primary formulas
+18. The compact coset primary formulas
     `h=(j(j+1)-m^2)/k`, `q=-2m/k` spectral-flow to
     `h=(j(j+1)-(m+eta)^2)/k+eta^2/2`,
     `q=-2(m+eta)/k+eta`.
-17. The compact chiral primaries `m=-j` have `h=q/2` and match the
+19. The compact chiral primaries `m=-j` have `h=q/2` and match the
     `A`-series protected values with minimal level `K=k-2`.
-18. The noncompact cigar central charge is `3(k+2)/k`, and the primary
+20. The noncompact cigar central charge is `3(k+2)/k`, and the primary
     formulas `h=(-j(j-1)+m^2)/k`, `q=2m/k` spectral-flow to the displayed
     cigar formulas.
-19. The compact and noncompact endpoint field-identification formulas
+21. The compact and noncompact endpoint field-identification formulas
     preserve the displayed `h,q` values, and the cigar momentum/winding
     labels satisfy `n=M-Mbar`, `w=(M+Mbar)/k` for flowed Cartan labels.
 
@@ -154,7 +169,9 @@ map without turning into a supersymmetric dynamics chapter.
   spectral-flow automorphism, NS-to-R ground-state shift, extended `N=2`
   spectral-flow vertex weights, charges, Heisenberg OPE exponents,
   `X^pm/Y^pm` descendant charges, protected LG central-charge arithmetic,
-  and the compact/noncompact supersymmetric rank-one coset central charges,
+  elliptic-genus spectral-flow Jacobi multipliers, LG `chi_y` charge
+  polynomials and Witten-index counts, and the compact/noncompact
+  supersymmetric rank-one coset central charges,
   chiral-primary identities, field-identification identities, spectral-flow
   formulas, and cigar momentum/winding bookkeeping in exact rational
   arithmetic.
@@ -166,8 +183,9 @@ map without turning into a supersymmetric dynamics chapter.
   topological twists, cigar/Liouville mirror duality, or any IR-flow theorem.
 - Develop the full small-`N=4` OPE tensor and representation theory only if
   a later QFT chapter needs it.
-- Add theorem-level sewing/modular statements for spin SCFTs only after the
-  relevant spin-surface and modular-functor hypotheses are stated.
+- Broader spin-SCFT sewing/modular statements beyond the elliptic-genus
+  theorem boundary require the corresponding spin-surface and modular-functor
+  hypotheses to be stated first.
 
 ## Audit Notes
 
@@ -184,3 +202,8 @@ map without turning into a supersymmetric dynamics chapter.
   added the charge-lattice/Heisenberg realization, derived spectral-flow
   vertex OPE data and `X^pm/Y^pm` charges, and extended the exact check
   companion.
+- 2026-05-27 elliptic-genus coordination pass: added compact Ramond-trace
+  hypotheses, right-moving localization, spectral-flow/Jacobi covariance,
+  the full spin-CFT modular theorem boundary, finite LG `chi_y` charge
+  polynomials, and exact rational checks for the index, cocycle, and
+  Witten-index ledgers.

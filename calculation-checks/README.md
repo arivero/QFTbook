@@ -243,7 +243,9 @@ Current checks:
   norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
   extended \(\mathcal N=2\) spectral-flow operator weights, charges,
   Heisenberg OPE exponents, and descendant charges, protected
-  Landau--Ginzburg central-charge arithmetic, and the
+  Landau--Ginzburg central-charge arithmetic, elliptic-genus spectral-flow
+  Jacobi multipliers, Landau--Ginzburg \(\chi_y\) Ramond charge
+  polynomials and Witten-index counts, and the
   supersymmetric \(SU(2)/U(1)\) and \(SL(2,\mathbb R)/U(1)\) rank-one
   coset central-charge, chiral-primary, field-identification, and
   spectral-flow formulas.

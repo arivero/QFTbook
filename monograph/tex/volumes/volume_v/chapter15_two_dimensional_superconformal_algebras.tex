@@ -628,6 +628,185 @@ their existence is a charge-lattice and spin-sector datum whose weights and
 charges must be exactly those displayed above.
 \end{example}
 
+\section{Elliptic Genus and Spectral-Flow Covariance}
+\label{sec:elliptic-genus-spectral-flow-covariance}
+
+The elliptic genus is the protected genus-one observable that links the
+chiral algebraic data above to the supersymmetric models of Volume~VII.  Its
+definition requires a full spin CFT, not just a chiral algebra.  We therefore
+state the hypotheses before using the trace.
+
+\begin{definition}[Elliptic genus datum]
+\label{def:elliptic-genus-datum}
+Let \(\mathcal C\) be a compact unitary \(\mathcal N=(2,2)\) spin CFT with
+discrete Ramond--Ramond Hilbert space
+\[
+  \Hilb_{\mathrm{RR}}
+  =
+  \bigoplus_{h,\bar h,q} \Hilb_{h,\bar h,q}
+\]
+of finite multiplicities.  Assume \(c=\bar c\), a left \(U(1)_R\) current
+\(J\), a fermion parity \((-1)^F\), and convergence of the Ramond trace for
+\(\operatorname{Im}\tau>0\).  The elliptic genus is
+\begin{equation}
+  \varphi_{\mathcal C}(\tau,z)
+  =
+  \operatorname{Tr}_{\Hilb_{\mathrm{RR}}}
+  (-1)^F y^{J_0}
+  q^{L_0-c/24}\bar q^{\bar L_0-c/24},
+  \qquad
+  y=\ee^{2\pi\ii z},\quad q=\ee^{2\pi\ii\tau},\quad
+  \bar q=\ee^{-2\pi\ii\bar\tau}.
+  \label{eq:elliptic-genus-definition}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Right-moving localization]
+\label{prop:elliptic-genus-right-moving-localization}
+Under Definition~\ref{def:elliptic-genus-datum}, and assuming the usual
+trace-class cyclicity for the Ramond supertrace, the elliptic genus is
+independent of \(\bar\tau\) and receives contributions only from right-moving
+Ramond ground states:
+\begin{equation}
+  \bar L_0=\frac c{24}.
+  \label{eq:elliptic-genus-right-ground-condition}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+In the right Ramond sector the zero-mode relation is
+\begin{equation}
+  \{\bar G^+_0,\bar G^-_0\}
+  =
+  2\left(\bar L_0-\frac c{24}\right).
+  \label{eq:right-ramond-zero-mode-elliptic-genus}
+\end{equation}
+Differentiating \eqref{eq:elliptic-genus-definition} with respect to
+\(\bar\tau\) inserts \(\bar L_0-c/24\).  By
+\eqref{eq:right-ramond-zero-mode-elliptic-genus}, the derivative is a
+supertrace of a right-moving supercommutator.  Cyclicity of the convergent
+supertrace makes this vanish.  Equivalently, states with
+\(\bar L_0>c/24\) are paired by the right zero modes with opposite fermion
+parity and identical left quantum numbers, so their contributions cancel.
+The unpaired states are precisely the right Ramond ground states.
+\end{proof}
+
+The elliptic variable \(z\) remembers left \(R\)-charge, so spectral flow
+imposes a finite functional equation.  Put
+\begin{equation}
+  m_{\rm ell}:=\frac c6 .
+  \label{eq:elliptic-genus-index}
+\end{equation}
+Assume that integer left spectral flow is implemented on the Ramond Hilbert
+space and that the chosen left \(R\)-charge lattice has a multiplier
+\(\zeta(\mu)\in U(1)\) under \(z\mapsto z+\mu\), meaning that
+\(\ee^{2\pi\ii\mu J_0}\) acts by this scalar on the Ramond states contributing
+to the trace.  Then
+\begin{equation}
+  \varphi_{\mathcal C}(\tau,z+\lambda\tau+\mu)
+  =
+  \exp\!\left[
+    -2\pi\ii m_{\rm ell}\left(\lambda^2\tau+2\lambda z\right)
+  \right]
+  \zeta(\mu)
+  \varphi_{\mathcal C}(\tau,z),
+  \label{eq:elliptic-genus-elliptic-law}
+\end{equation}
+for \(\lambda,\mu\in\mathbb Z\).  If all Ramond left \(R\)-charges in the
+trace are integral, the last multiplier is \(1\).
+
+\begin{proof}
+It suffices to prove the \(\lambda\)-shift.  Replacing \(z\) by
+\(z+\lambda\tau\) multiplies each state by \(q^{\lambda q_L}\).  Under left
+spectral flow by \(\lambda\),
+\begin{equation}
+  h' = h+\lambda q_L+\frac c6\lambda^2,
+  \qquad
+  q'_L=q_L+\frac c3\lambda .
+  \label{eq:elliptic-genus-spectral-flow-reindex}
+\end{equation}
+Thus
+\begin{equation}
+  q^{h-c/24+\lambda q_L}y^{q_L}
+  =
+  q^{-c\lambda^2/6}y^{-c\lambda/3}
+  q^{h'-c/24}y^{q'_L}.
+  \label{eq:elliptic-genus-elliptic-law-weight}
+\end{equation}
+Reindexing the trace by the spectral-flow bijection gives
+\eqref{eq:elliptic-genus-elliptic-law}, since
+\(m_{\rm ell}=c/6\).  The \(\mu\)-shift is exactly the assumed
+charge-lattice scalar \(\zeta(\mu)\).
+\end{proof}
+
+\begin{quotedtheorem}[Elliptic genus as a Jacobi form]
+\label{qthm:elliptic-genus-jacobi-form}
+Assume, in addition to Definition~\ref{def:elliptic-genus-datum}, the spin
+modular-functor covariance of the Ramond trace, anomaly cancellation for the
+chosen \(R\)-symmetry background, and the charge-lattice multiplier specified
+above.  Then \(\varphi_{\mathcal C}(\tau,z)\) is a holomorphic weak Jacobi
+form of weight \(0\) and index \(m_{\rm ell}=c/6\), with the corresponding
+charge-lattice multiplier when the index is half-integral.  In particular,
+for
+\begin{equation}
+  \gamma=\begin{pmatrix}a&b\\ c_\gamma&d\end{pmatrix}\in SL_2(\mathbb Z),
+  \label{eq:elliptic-genus-modular-matrix}
+\end{equation}
+one has
+\begin{equation}
+  \varphi_{\mathcal C}\!\left(
+    \frac{a\tau+b}{c_\gamma\tau+d},
+    \frac{z}{c_\gamma\tau+d}
+  \right)
+  =
+  \exp\!\left(
+    2\pi\ii m_{\rm ell}\frac{c_\gamma z^2}{c_\gamma\tau+d}
+  \right)
+  \varphi_{\mathcal C}(\tau,z)
+  \label{eq:elliptic-genus-modular-law}
+\end{equation}
+up to that multiplier.  The modular law is a sewing theorem for the full spin
+CFT with an \(R\)-symmetry background; the left-moving mode algebra supplies
+only the spectral-flow part of this statement.
+\end{quotedtheorem}
+
+There is a finite Landau--Ginzburg shadow of the elliptic genus which can be
+checked before any infrared-flow theorem is invoked.  Suppose a
+quasihomogeneous isolated datum \(W\) of
+Definition~\ref{def:quasihomogeneous-lg-chiral-datum} is realized by a
+compact unitary \(\mathcal N=2\) fixed point, and suppose the Jacobi ring
+classes are represented by NS chiral primaries with charges
+\[
+  Q_R(X^a)=\sum_i a_i q_i .
+\]
+Spectral flow by \(\eta=-1/2\) gives the corresponding left Ramond charges
+\begin{equation}
+  Q_R^{\mathrm R}(X^a)
+  =
+  Q_R(X^a)-\frac{c_{\rm LG}}6 .
+  \label{eq:lg-ramond-charge-from-ns-chiral-primary}
+\end{equation}
+Therefore the \(q^0\) protected charge polynomial has the form
+\begin{equation}
+  \chi_y^{\rm LG}
+  =
+  \sum_{[X^a]\in\operatorname{Jac}(W)}
+  y^{Q_R(X^a)-c_{\rm LG}/6}.
+  \label{eq:lg-chi-y-polynomial}
+\end{equation}
+For \(W=X^{k+2}\), this becomes
+\begin{equation}
+  \chi_y^{A_k}
+  =
+  \sum_{\ell=0}^k
+  y^{\frac{\ell}{k+2}-\frac{k}{2(k+2)}}.
+  \label{eq:a-series-chi-y-polynomial}
+\end{equation}
+Setting \(y=1\) gives the Witten index \(k+1=\dim\operatorname{Jac}(W)\).
+The equality between this protected finite polynomial and the infrared
+elliptic genus is precisely the kind of LG/GLSM construction statement
+assigned to Volume~VII.
+
 \section{Protected Algebraic Tests for Supersymmetric Dynamics}
 
 The full construction of two-dimensional \(\mathcal N=(2,2)\)

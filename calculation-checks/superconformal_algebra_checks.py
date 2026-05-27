@@ -307,6 +307,67 @@ def check_lg_central_charges():
         raise AssertionError("quintic LG central charge should be 9")
 
 
+def check_elliptic_genus_spectral_flow_law():
+    for c in (Fraction(3), Fraction(6), Fraction(9), Fraction(12), Fraction(15, 2)):
+        index = c / 6
+        for lam in range(-3, 4):
+            q_factor = -index * lam * lam
+            y_factor = -2 * index * lam
+            assert_equal(q_factor, -c * lam * lam / 6, f"elliptic q multiplier c={c}, lambda={lam}")
+            assert_equal(y_factor, -c * lam / 3, f"elliptic y multiplier c={c}, lambda={lam}")
+
+        for lam_1 in range(-2, 3):
+            for lam_2 in range(-2, 3):
+                # The elliptic shift factors obey the Jacobi cocycle:
+                # first shift by lam_2, then by lam_1 at z+lam_2 tau.
+                sequential_q = (
+                    -index * lam_2 * lam_2
+                    -index * lam_1 * lam_1
+                    -2 * index * lam_1 * lam_2
+                )
+                sequential_y = -2 * index * (lam_1 + lam_2)
+                combined_q = -index * (lam_1 + lam_2) ** 2
+                combined_y = -2 * index * (lam_1 + lam_2)
+                assert_equal(
+                    sequential_q,
+                    combined_q,
+                    f"elliptic q cocycle c={c}, lambda1={lam_1}, lambda2={lam_2}",
+                )
+                assert_equal(
+                    sequential_y,
+                    combined_y,
+                    f"elliptic y cocycle c={c}, lambda1={lam_1}, lambda2={lam_2}",
+                )
+
+
+def check_lg_chi_y_charge_polynomials():
+    for k in range(0, 16):
+        c = Fraction(3 * k, k + 2)
+        ramond_shift = c / 6
+        charges = [Fraction(ell, k + 2) - ramond_shift for ell in range(k + 1)]
+        assert_equal(len(charges), k + 1, f"A-series chi_y term count k={k}")
+        assert_equal(sum(charges), Fraction(0), f"A-series Ramond charges sum k={k}")
+        for ell, charge in enumerate(charges):
+            reflected = charges[k - ell]
+            assert_equal(charge + reflected, Fraction(0), f"A-series charge reflection k={k}, ell={ell}")
+            expected = Fraction(2 * ell - k, 2 * (k + 2))
+            assert_equal(charge, expected, f"A-series Ramond charge k={k}, ell={ell}")
+
+        witten_index = sum(Fraction(1) for _ in charges)
+        assert_equal(witten_index, Fraction(k + 1), f"A-series Witten index k={k}")
+
+    quintic_degrees = [5, 5, 5, 5, 5]
+    quintic_weights = [Fraction(1, degree) for degree in quintic_degrees]
+    quintic_c = 3 * sum(Fraction(1) - 2 * weight for weight in quintic_weights)
+    quintic_shift = quintic_c / 6
+    quintic_dimension = 1
+    for degree in quintic_degrees:
+        quintic_dimension *= degree - 1
+    assert_equal(quintic_c, Fraction(9), "quintic elliptic central charge")
+    assert_equal(quintic_shift, Fraction(3, 2), "quintic Ramond charge shift")
+    assert_equal(quintic_dimension, 4**5, "quintic Jacobi/Witten index dimension")
+
+
 def compact_coset_hq(k: int, j: Fraction, m: Fraction, eta: Fraction = Fraction(0)):
     return (
         (j * (j + 1) - (m + eta) ** 2) / k + eta**2 / 2,
@@ -429,8 +490,10 @@ def main():
     check_ns_to_ramond_ground_state()
     check_extended_n2_spectral_flow_operators()
     check_lg_central_charges()
+    check_elliptic_genus_spectral_flow_law()
+    check_lg_chi_y_charge_polynomials()
     check_supersymmetric_rank_one_coset_interfaces()
-    print("All 2D superconformal algebra checks passed.")
+    print("All 2D superconformal algebra, elliptic-genus, and rank-one coset checks passed.")
 
 
 if __name__ == "__main__":

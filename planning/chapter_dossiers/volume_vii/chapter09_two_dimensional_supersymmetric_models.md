@@ -17,6 +17,8 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
   superpotential.
 - `q_i`: quasihomogeneous Landau-Ginzburg weights.
 - `Jac(W)`: Landau-Ginzburg Jacobian ring.
+- `chi_y`: finite protected Ramond charge polynomial coordinated with the
+  Volume V elliptic-genus interface.
 - `eta_i`: B-type odd local variables used in the cohomological derivation
   of the Jacobian quotient.
 - `H_W`, `Res_W`: Landau-Ginzburg Hessian determinant and Morse residue
@@ -52,6 +54,11 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
 - Proves the quasihomogeneous charge ledger, Fermat Jacobi basis, Fermat
   Jacobi dimension, and protected central-charge test, while marking the
   infrared fixed-point existence claim as a separate construction problem.
+- Adds the coordination bridge to Volume V: if the infrared SCFT exists and
+  `Jac(W)` classes become NS chiral primaries, then spectral flow by
+  `eta=-1/2` shifts a monomial charge to the left Ramond charge
+  `Q_R-c_LG/6`, giving the finite `chi_y` protected polynomial required by
+  the elliptic-genus interface.
 - Defines sigma-model and GLSM data and separates protected coordinates from
   full infrared QFT equivalence.
 - Defines the A/B twist spin-shift convention and proves that
