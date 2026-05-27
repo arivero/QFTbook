@@ -122,6 +122,9 @@
 | \(T_R^a\) | anti-Hermitian generator in representation \(R\) used in the Bardeen--Zumino and descent formulas |
 | \(\bar\theta\) | anomaly-invariant QCD CP-odd parameter |
 | \(Q[A]\) | instanton/topological charge |
+| \(Z_{\Lambda,V_4,Q}\) | finite-regulator sector partition weight at topological charge \(Q\) |
+| \(E_{\Lambda,V_4}(\theta)\) | finite-regulator vacuum-energy density near \(\theta=0\) |
+| \(\chi_{\rm top}\), \(\chi_{\rm YM}\) | continuum topological susceptibility, and its pure-Yang--Mills specialization |
 | \(\eta^a_{\mu\nu}\) | self-dual 't Hooft symbol in the BPST construction |
 | \(a^\mu,\rho,U\) | instanton center, size, and global gauge-orientation collective coordinates |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
@@ -254,6 +257,17 @@
   theory, while a nonzero gauge anomaly obstructs the gauge theory.
 - The strong CP parameter is the anomaly-invariant combination of the
   topological angle and the quark mass phase.
+- The topological susceptibility is defined as a thermodynamic and continuum
+  limit of a finite-regulator cumulant.  At finite regulator,
+  \[
+    E_{\Lambda,V_4}''(0)
+    =
+    V_4^{-1}
+    \left(\langle Q^2\rangle-\langle Q\rangle^2\right),
+  \]
+  and the CP-invariant case has \(\langle Q\rangle=0\).  The finite identity,
+  the existence of the continuum limit, and its use in large-\(N_c\) chiral
+  matching are kept logically separate.
 - The BPST connection
   \(A_\mu=2\eta^a_{\mu\nu}(x-a)^\nu[(x-a)^2+\rho^2]^{-1}T_a\) has curvature
   \(F_{\mu\nu}=-4\rho^2\eta^a_{\mu\nu}[(x-a)^2+\rho^2]^{-2}T_a\), is
@@ -332,3 +346,6 @@
   action saturation with the half-trace/trace-delta coupling comparison,
   bosonic and fermionic zero-mode counts, the QCD and electroweak 't Hooft
   vertices, and a BPST normalization calculation-check script.
+- 2026-05-27 issue #630 theta pass: added the finite-regulator topological
+  susceptibility datum and finite-volume cumulant proof, paired with
+  `calculation-checks/qcd_theta_witten_veneziano_checks.py`.

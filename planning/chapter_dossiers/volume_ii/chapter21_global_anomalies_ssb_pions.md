@@ -76,6 +76,9 @@
 | \(m_A=gv\) | Abelian Higgs vector mass used in the Goldstone-versus-gauge-direction caveat |
 | \(\Sigma_{IJ}\), \(\Sigma_0\) | QCD chiral condensate matrix and its flavor-singlet value, used as a conjectural dynamical input for the pion EFT |
 | \(U(x)\) | pion field valued in \(SU(N_f)\) |
+| \(\widehat U(x)\) | local \(U(N_f)\) chiral field used for the singlet large-\(N_c\) theta datum |
+| \(T^0,\eta_0\) | normalized flavor-singlet generator \(\mathbf 1/\sqrt{2N_f}\) and the corresponding pseudoscalar field |
+| \(\chi_{\rm YM}\) | pure Yang--Mills topological susceptibility entering the large-\(N_c\) Witten--Veneziano matching datum |
 | \(\ell_\mu,r_\mu\) | external left and right flavor gauge fields |
 | \(F_{\rm st}\) | stereographic-coordinate pion normalization used for the explicit \(N_f=2\) scattering calculation |
 | \(\vec D_\mu=\partial_\mu\vec\xi/(1+\vec\xi^{\,2})\) | covariant stereographic building block for the \(N_f=2\) four-derivative invariants |
@@ -168,6 +171,20 @@
   \(SU(N_f)_L\times SU(N_f)_R\to SU(N_f)_V\) are stated as a conjectural
   dynamical property of small-\(N_f\) QCD, not as a theorem derived from the
   continuum Lagrangian or from a completed lattice continuum construction.
+- The singlet axial direction is treated through a large-\(N_c\) hypothesis,
+  not as an exact finite-\(N_c\) Goldstone coordinate.  Assuming pure
+  Yang--Mills has \(\chi_{\rm YM}=O(1)\), the local Yang--Mills theta branch
+  has curvature \(\chi_{\rm YM}\), and the chiral field is enlarged locally to
+  \(U(N_f)\), the singlet potential
+  \[
+    \frac12\chi_{\rm YM}
+    \left(\theta-\sqrt{2N_f}\eta_0/f_\pi\right)^2
+  \]
+  gives the chiral-limit Witten--Veneziano mass
+  \(m_{\eta_0}^2=2N_f\chi_{\rm YM}/f_\pi^2\).  The text also states why the
+  full massless-QCD topological susceptibility vanishes after \(\eta_0\) is
+  minimized, so \(\chi_{\rm YM}\) must not be confused with the full-QCD
+  susceptibility.
 - The leading pion Lagrangian is the invariant two-derivative functional of
   the \(SU(N_f)\)-valued Goldstone field and external flavor backgrounds.
 - The non-singlet axial-current Ward identity with one current insertion and

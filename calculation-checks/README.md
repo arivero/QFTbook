@@ -65,6 +65,11 @@ Current checks:
   scheme-change covariance, fixed-product rapidity-scale cancellation in
   two-hadron factorization, and GPD polynomiality from local twist-two
   contractions.
+- `qcd_theta_witten_veneziano_checks.py`: exact checks for the Volume II theta
+  and singlet-axial discussion, including the finite-volume topological
+  susceptibility cumulant identity, CP-symmetric first moment, theta
+  periodicity by branch relabeling, massless-quark theta screening, and the
+  Witten--Veneziano mass coefficient.
 - `qcd_hqet_checks.py`: finite algebra checks for the Volume II HQET
   Wilson-line section, including the mostly-plus heavy-velocity spin
   projectors, the transverse covariant-derivative projector, residual-momentum
