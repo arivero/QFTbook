@@ -348,6 +348,213 @@ freedom in a crossover regime; it is not, by itself, a theorem that an exact
 phase transition exists.
 \end{remark}
 
+\section{Controlled High-Temperature Holonomy Potential}
+\label{sec:qcd-weiss-polyakov-holonomy-potential}
+
+The Polyakov loop becomes a calculable order-coordinate in a regime where a
+constant temporal holonomy is a valid background-field variable.  Choose a
+spatially constant commuting background on
+\(S^1_\beta\times\mathbb R^3\) and write its fundamental holonomy as
+\begin{equation}
+  P=\operatorname{diag}\left(e^{\ii\theta_1},\ldots,e^{\ii\theta_{N_c}}\right),
+  \qquad
+  \sum_{j=1}^{N_c}\theta_j\equiv0\pmod {2\pi}.
+  \label{eq:qcd-weiss-holonomy-eigenphases}
+\end{equation}
+The variables \(\theta_j\) are defined modulo permutations and common shifts
+compatible with \(\det P=1\).  A center transformation sends
+\(P\mapsto zP\), \(z^{N_c}=1\).
+
+\begin{controlledapproximation}[One-loop holonomy regime]
+\label{ca:qcd-one-loop-holonomy-regime}
+The one-loop holonomy potential is the leading weak-coupling thermal
+effective potential for the zero Matsubara mode of \(A_0\), computed in a
+background whose spatial gradients and noncommuting components are set to
+zero.  Its expansion parameter is the running gauge coupling at scale
+\(T\), and its infrared completion still requires the electric and magnetic
+static sectors discussed in
+Section~\ref{sec:qcd-phase-hard-thermal-loops-linde} below.
+\end{controlledapproximation}
+
+\begin{theorem}[One-loop Polyakov-holonomy potential]
+\label{thm:qcd-weiss-potential}
+For pure \(SU(N_c)\) Yang--Mills, the one-loop gluonic free-energy density
+as a function of the holonomy \(P\) is
+\begin{equation}
+  f_g(P)
+  =
+  -\frac{2}{\pi^2\beta^4}
+  \sum_{n=1}^{\infty}
+  \frac{1}{n^4}\operatorname{tr}_{\rm adj}(P^n)
+  =
+  -\frac{2}{\pi^2\beta^4}
+  \sum_{n=1}^{\infty}
+  \frac{|\operatorname{tr}_{\square}P^n|^2-1}{n^4}.
+  \label{eq:qcd-weiss-gluon-potential}
+\end{equation}
+For \(N_f\) massless Dirac fundamental quarks at \(\mu_q=0\), the one-loop
+fermion contribution is
+\begin{equation}
+  f_q(P)
+  =
+  \frac{2N_f}{\pi^2\beta^4}
+  \sum_{n=1}^{\infty}\frac{(-1)^n}{n^4}
+  \left(
+    \operatorname{tr}_{\square}P^n+
+    \operatorname{tr}_{\square}P^{-n}
+  \right).
+  \label{eq:qcd-weiss-quark-potential}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Consider first one bosonic oscillator with thermal phase \(\varphi\), meaning
+that its Matsubara frequencies are shifted by the holonomy eigenvalue
+\(e^{\ii\varphi}\).  Its thermal free-energy density is
+\[
+  T\int\frac{d^3p}{(2\pi)^3}
+  \log\left(1-e^{-\beta |\mathbf p|+\ii\varphi}\right).
+\]
+Expanding the logarithm and integrating term by term gives
+\[
+  -T\sum_{n\ge1}\frac{e^{\ii n\varphi}}{n}
+  \int\frac{d^3p}{(2\pi)^3}e^{-n\beta|\mathbf p|}
+  =
+  -\frac{1}{\pi^2\beta^4}
+  \sum_{n\ge1}\frac{e^{\ii n\varphi}}{n^4},
+  \label{eq:qcd-weiss-boson-oscillator}
+\]
+because
+\[
+  \int\frac{d^3p}{(2\pi)^3}e^{-n\beta|\mathbf p|}
+  =
+  \frac{1}{2\pi^2}\int_0^\infty p^2e^{-n\beta p}\,dp
+  =
+  \frac{1}{\pi^2n^3\beta^3}.
+  \label{eq:qcd-weiss-thermal-momentum-integral}
+\]
+In background gauge, ghosts and unphysical vector polarizations cancel so
+that two physical bosonic polarizations remain for each adjoint weight.
+Summing \eqref{eq:qcd-weiss-boson-oscillator} over adjoint weights gives the
+first expression in \eqref{eq:qcd-weiss-gluon-potential}.  The identity
+\[
+  \operatorname{tr}_{\rm adj}(P^n)
+  =
+  \operatorname{tr}_{\square}(P^n)
+  \operatorname{tr}_{\overline\square}(P^n)-1
+  =
+  |\operatorname{tr}_{\square}P^n|^2-1
+\]
+uses \(\square\otimes\overline\square=\mathbf1\oplus{\rm adj}\).
+
+For a Dirac fundamental quark at zero chemical potential the two spin
+polarizations and the quark-antiquark pair give
+\[
+  -2T\int\frac{d^3p}{(2\pi)^3}
+  \left[
+    \log\left(1+e^{-\beta|\mathbf p|+\ii\theta_j}\right)
+    +
+    \log\left(1+e^{-\beta|\mathbf p|-\ii\theta_j}\right)
+  \right]
+\]
+for each color eigenphase \(\theta_j\).  The plus sign inside the logarithm
+is the antiperiodic thermal boundary condition.  Expanding
+\(\log(1+x)=\sum_{n\ge1}(-1)^{n+1}x^n/n\), using
+\eqref{eq:qcd-weiss-thermal-momentum-integral}, and summing over colors and
+flavors gives \eqref{eq:qcd-weiss-quark-potential}.
+\end{proof}
+
+\begin{proposition}[Perturbative center-broken minima in pure Yang--Mills]
+\label{prop:qcd-weiss-center-broken-minima}
+For pure \(SU(N_c)\) Yang--Mills, the one-loop potential
+\eqref{eq:qcd-weiss-gluon-potential} is minimized exactly at center
+holonomies
+\[
+  P=z\,\mathbf1_{N_c},
+  \qquad
+  z^{N_c}=1 .
+  \label{eq:qcd-weiss-center-minima}
+\]
+At these minima
+\[
+  f_g(z\mathbf1)
+  =
+  -\frac{\pi^2T^4}{45}(N_c^2-1),
+  \label{eq:qcd-weiss-broken-free-energy}
+\]
+which is the free gluon free-energy density.
+\end{proposition}
+
+\begin{proof}
+For every unitary \(N_c\times N_c\) matrix,
+\[
+  |\operatorname{tr}_{\square}P^n|\le N_c .
+\]
+Hence \(\operatorname{tr}_{\rm adj}(P^n)\le N_c^2-1\) for every \(n\).  All
+coefficients in \eqref{eq:qcd-weiss-gluon-potential} are negative, so the
+minimum is obtained by maximizing each
+\(\operatorname{tr}_{\rm adj}(P^n)\).  The \(n=1\) term already forces
+\(|\operatorname{tr}_{\square}P|=N_c\), which for a unitary matrix means all
+eigenvalues are equal.  The determinant-one condition then gives
+\(P=z\mathbf1_{N_c}\) with \(z^{N_c}=1\).  Substitution in
+\eqref{eq:qcd-weiss-gluon-potential} gives
+\[
+  f_g(z\mathbf1)
+  =
+  -\frac{2}{\pi^2\beta^4}(N_c^2-1)
+  \sum_{n\ge1}\frac1{n^4}
+  =
+  -\frac{2}{\pi^2\beta^4}(N_c^2-1)\frac{\pi^4}{90},
+\]
+which is \eqref{eq:qcd-weiss-broken-free-energy}.
+\end{proof}
+
+\begin{example}[Uniform center-symmetric holonomy]
+\label{ex:qcd-weiss-center-symmetric-holonomy}
+Let \(P_{\rm cs}\) have eigenvalues uniformly spaced around the unit circle,
+with an overall phase chosen so that \(P_{\rm cs}\in SU(N_c)\).  Then
+\[
+  \operatorname{tr}_{\square}P_{\rm cs}^n=0
+  \quad(N_c\nmid n),
+  \qquad
+  |\operatorname{tr}_{\square}P_{\rm cs}^n|^2=N_c^2
+  \quad(N_c\mid n).
+\]
+Therefore
+\[
+  f_g(P_{\rm cs})
+  =
+  \frac{\pi^2T^4}{45}\left(1-\frac1{N_c^2}\right),
+  \qquad
+  f_g(P_{\rm cs})-f_g(\mathbf1)
+  =
+  \frac{\pi^2T^4}{45}\left(N_c^2-\frac1{N_c^2}\right).
+  \label{eq:qcd-weiss-center-symmetric-cost}
+\]
+The perturbative high-temperature gluon determinant therefore energetically
+selects a center sector rather than the uniformly distributed holonomy.
+\end{example}
+
+\begin{remark}[Fundamental quarks as a center source]
+\label{rem:qcd-weiss-fundamental-quark-center-source}
+The gluon potential depends on \(P\) through adjoint traces and is invariant
+under \(P\mapsto zP\).  The quark potential
+\eqref{eq:qcd-weiss-quark-potential} contains fundamental traces:
+\[
+  \operatorname{tr}_{\square}(zP)^n=z^n\operatorname{tr}_{\square}P^n .
+\]
+Thus dynamical fundamental quarks supply an explicit center-breaking source.
+At \(P=\mathbf1\), \eqref{eq:qcd-weiss-quark-potential} gives
+\[
+  f_q(\mathbf1)
+  =
+  -\frac{7\pi^2T^4}{180}N_cN_f,
+  \label{eq:qcd-weiss-free-quark-free-energy}
+\]
+the negative of the free massless Dirac-quark pressure in
+Proposition~\ref{prop:qcd-stefan-boltzmann-pressure}.
+\end{remark}
+
 \section{Chiral Symmetry and the Dirac Spectrum}
 
 Now set \(\mu_B=0\) and take \(N_f\) massless Dirac quarks.  Ignoring the
@@ -535,6 +742,7 @@ For a conformal thermal state in four dimensions, \(\Delta=0\).  In QCD,
 running coupling, and by the thermal state itself.
 
 \section{Hard Thermal Loops and the Linde Obstruction}
+\label{sec:qcd-phase-hard-thermal-loops-linde}
 
 Chapter~\ref{ch:thermal-gauge-theory-screening} derived the one-loop Debye
 mass in the present trace convention:

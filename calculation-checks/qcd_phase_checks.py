@@ -3,9 +3,10 @@
 
 The script checks convention-sensitive numerical factors used in the
 Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
-magnetic-scale estimate, finite-regulator source-curvature identities, and
-the color-flavor-locked symmetry count.  It is not a lattice simulation and
-it does not assert the existence or order of any QCD phase transition.
+magnetic-scale estimate, finite-regulator source-curvature identities,
+one-loop Polyakov-holonomy coefficients, and the color-flavor-locked
+symmetry count.  It is not a lattice simulation and it does not assert the
+existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -100,6 +101,43 @@ def check_source_curvature_susceptibility():
     assert_equal("source curvature equals pressure second derivative", pressure_second, susceptibility_form)
 
 
+def check_weiss_holonomy_potential_coefficients():
+    # Coefficients are reported as f/T^4 = pi^2 * coefficient.
+    # The pure-glue Weiss potential is
+    # f_g = -(2/pi^2 beta^4) sum_n tr_adj(P^n)/n^4.
+    # Since zeta(4)=pi^4/90, a center holonomy P=z*1 gives
+    # coefficient -(N_c^2-1)/45.
+    nc = 3
+    nf = 2
+    adj_dim = nc * nc - 1
+    zeta4_over_pi4 = Fraction(1, 90)
+
+    broken_center_coeff = -2 * zeta4_over_pi4 * adj_dim
+    assert_equal("SU(3) Weiss broken-center free energy", broken_center_coeff, Fraction(-8, 45))
+
+    # For uniformly spaced eigenvalues, tr_F(P^n)=0 unless N_c divides n.
+    # Therefore sum_n tr_adj(P^n)/n^4 = pi^4*(1/N_c^2 - 1)/90.
+    center_symmetric_sum = zeta4_over_pi4 * (Fraction(1, nc * nc) - 1)
+    center_symmetric_coeff = -2 * center_symmetric_sum
+    assert_equal("SU(3) Weiss center-symmetric free energy", center_symmetric_coeff, Fraction(8, 405))
+    assert_equal(
+        "SU(3) Weiss center-symmetric cost",
+        center_symmetric_coeff - broken_center_coeff,
+        Fraction(16, 81),
+    )
+
+    # At P=1, the massless Dirac-quark holonomy potential is the negative
+    # of the free pressure.  The alternating sum is -7*pi^4/720.
+    alternating_zeta4_over_pi4 = Fraction(-7, 720)
+    quark_identity_coeff = 4 * nc * nf * alternating_zeta4_over_pi4
+    assert_equal("two-flavor SU(3) free quark free energy", quark_identity_coeff, Fraction(-7, 30))
+
+    # Center charge bookkeeping: adjoint traces are center-neutral, while a
+    # fundamental trace tr_F(P^n) has N-ality n mod N_c.
+    assert_equal("fundamental n=1 center charge", 1 % nc, 1)
+    assert_equal("adjoint center charge", (1 - 1) % nc, 0)
+
+
 def check_linde_magnetic_scale():
     # In four dimensions, g_3^2 = g^2 T has mass dimension one.  A purely
     # magnetic three-dimensional vacuum free-energy density scales as (g_3^2)^3.
@@ -126,6 +164,7 @@ def main():
     check_banks_casher_kernel_normalization()
     check_fugacity_laurent_polynomial_shift()
     check_source_curvature_susceptibility()
+    check_weiss_holonomy_potential_coefficients()
     check_linde_magnetic_scale()
     check_cfl_global_goldstone_count()
     print("All QCD phase-structure checks passed.")

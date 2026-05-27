@@ -21,6 +21,10 @@ GitHub issue #628.
 - `h`, `X_Lambda`, `overline O_Lambda`: source, integrated observable, and
   intensive observable entering susceptibility definitions.
 - `P_R(x)`, `ell(T)`: normalized Polyakov loop and center order parameter.
+- `P=diag(e^{i theta_j})`: constant Polyakov holonomy used in the one-loop
+  high-temperature potential.
+- `f_g(P)`, `f_q(P)`: gluon and quark one-loop holonomy free-energy
+  densities.
 - `Sigma(T)`, `rho(lambda)`: chiral condensate and thermodynamic Dirac
   eigenvalue density.
 - `p_SB`, `Delta=epsilon-3p`: Stefan--Boltzmann pressure and trace anomaly.
@@ -47,6 +51,12 @@ GitHub issue #628.
 - Separates center deconfinement from the zero-temperature Wilson-loop area
   law and from the crossover use of Polyakov loops with dynamical fundamental
   quarks.
+- Derives the one-loop Polyakov-holonomy potential from thermal oscillator
+  sums, including the adjoint trace formula
+  `tr_adj(P^n)=|tr_F P^n|^2-1` and the antiperiodic fundamental-quark term.
+- Proves that the pure-glue one-loop holonomy potential is minimized at
+  center holonomies, computes the uniform center-symmetric holonomy cost, and
+  records fundamental quarks as an explicit center source.
 - Defines the chiral condensate as a mass-source derivative and proves the
   Banks--Casher relation under an explicit spectral-density hypothesis.
 - Derives the massless free QCD pressure at zero and nonzero baryon chemical
@@ -74,7 +84,8 @@ GitHub issue #628.
   Stefan--Boltzmann coefficients, baryon-chemical-potential coefficients,
   Banks--Casher kernel normalization, Linde magnetic-scale power counting,
   fugacity Laurent-polynomial shift, source-curvature susceptibility
-  identity, and CFL Goldstone count.
+  identity, one-loop Polyakov-holonomy potential coefficients, and CFL
+  Goldstone count.
 
 ## Open Issues
 
@@ -87,3 +98,6 @@ GitHub issue #628.
   susceptibility layer so that the chapter defines phase transitions through
   limiting analytic structure and connected correlators before discussing
   QCD-specific order parameters.
+- 2026-05-27 holonomy pass: added a controlled one-loop high-temperature
+  Polyakov-holonomy derivation, center-minimum proof, center-symmetric
+  holonomy energy cost, and fundamental-quark center-source term.
