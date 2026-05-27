@@ -966,3 +966,43 @@ Calculation checks added:
   preservation, equality of the dual monodromy recursion with the rank-two
   discontinuity update, antisymmetry of the shifted matrix, and sensitivity
   to the overall transport sign on exact and complex samples.
+
+## Continuation XXXIII: Small-Spin QSC Bessel Slope
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- The stringbook gives the small-spin QSC slope through the Bessel-ratio
+  formula after displaying the small-spin `Pmu` germ.  Chapter 15 previously
+  stated the formula with only a short coefficient-comparison sentence.  This
+  was below the derivation density now used in the weak-QSC and large-`u`
+  parts of the chapter.
+
+Content added:
+
+- Added the Laurent identity
+  `sinh(2 pi u)=sum_n I_{2n+1}(4 pi g) x^{2n+1}`, derived from the
+  modified-Bessel generating function and the Zhukovsky relation
+  `u=g(x+x^-1)`.
+- Extracted the leading small-spin coefficients
+  `A_1=epsilon g^(J/2)`,
+  `A_2=-epsilon g^(J/2+1) I_{J+1}`,
+  `A_3=-epsilon g^(-J/2)`, and
+  `A_4=-epsilon g^(-J/2+1) I_{J-1}` from the regularity split of `P_2,P_4`.
+- Proved the small-spin slope proposition by substituting these coefficients
+  into the linearized QSC charge equations for `Delta-J` and `S`, then using
+  `I_{J-1}(z)-I_{J+1}(z)=2J I_J(z)/z` to eliminate `epsilon^2`.
+- Kept the extrapolation from infinitesimal spin to integer-spin Konishi as a
+  separate QSC analytic-continuation input rather than promoting it to a
+  theorem.
+
+Calculation checks added:
+
+- `check_qsc_small_spin_bessel_slope()` verifies the Bessel recurrence and
+  the first two exact rational coefficients of
+  `z I_{J+1}(z)/(J I_J(z))` for twists `J=1,...,6`.

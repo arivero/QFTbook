@@ -30,6 +30,8 @@ three-point functions.
 - `ell_ij`: bridge lengths between three single-trace operators.
 - `A_i`: leading QSC asymptotic coefficients.
 - `S`: Lorentz spin in the `SL(2)` QSC asymptotic conditions.
+- `epsilon`: small-spin QSC amplitude with `epsilon^2=O(S)`.
+- `I_J`: modified Bessel function entering the small-spin QSC slope.
 - `W_MW(C,theta)`: Maldacena-Wilson line.
 - `B(lambda)`: planar Bremsstrahlung function.
 - `D(t)`: displacement operator on the line defect.
@@ -145,8 +147,15 @@ three-point functions.
   one-loop dimension `Delta_{J=2,S}=2+S+8g^2 H_S+O(g^4)` for physical even
   spin.  The proof uses a finite summand-level telescoping certificate and
   finite Chu--Vandermonde/Christoffel--Darboux identities.
-- Records the cusp anomalous dimension and Konishi as benchmark outputs, and
-  adds the small-spin QSC expansion through the Bessel-ratio formula.
+- Records the cusp anomalous dimension and Konishi as benchmark outputs.
+- Expands the small-spin QSC block into a proved slope proposition: derives
+  the Laurent identity
+  `sinh(2 pi u)=sum_n I_{2n+1}(4 pi g) x^{2n+1}`, extracts the leading
+  `A_1,...,A_4` coefficients from the regularity split, uses the linearized
+  QSC charge equations, and applies the Bessel recurrence to obtain
+  `(Delta-J-S)/S = 4 pi g I_{J+1}(4 pi g)/(J I_J(4 pi g))+O(S)`.
+  The analytic continuation from small spin to integer-spin Konishi remains
+  explicitly marked as a QSC input.
 - Defines the hexagon partition of planar three-point functions and states the
   proof boundary for deriving it from the gauge-theory path integral.
 - Adds the elementary scalar hexagon factor `h(u,v)` and its crossing-path
@@ -211,6 +220,9 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script now also checks the twist-two finite-sum derivation
   exactly: endpoint values, endpoint derivatives, and the telescoping
   certificate for the Baxter equation over rational `z` test points.
+- The same script checks the small-spin QSC Bessel slope by exact rational
+  series: the recurrence `I_{J-1}-I_{J+1}=2J I_J/z` and the first two
+  coefficients of `z I_{J+1}(z)/(J I_J(z))` for twists `J=1,...,6`.
 - The Bremsstrahlung weak-series coefficients through four displayed orders
   are checked in
   `calculation-checks/planar_n4_integrability_checks.py`.

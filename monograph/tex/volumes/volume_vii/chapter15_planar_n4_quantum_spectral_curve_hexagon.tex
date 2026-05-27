@@ -1650,16 +1650,116 @@ with the short-cut branch, the leading solution has
   \qquad
   P_3=\epsilon(x^{-J/2}-x^{J/2}),
 \]
-and \(P_2,P_4\) determined by the Laurent expansion of \(\sinh(2\pi u)\) in
-powers of \(x\).  Comparing the large-\(u\) coefficients with the algebraic
-relations above gives
+where \(\epsilon^2=O(S)\).  The remaining two \(P\)-functions are fixed, in
+this small-spin germ, by solving the \(P\mu\) equations with the above
+\(\mu\)-matrix and imposing the single-short-cut regularity condition.  The
+calculation reduces to splitting the Laurent expansion of \(\sinh(2\pi u)\)
+into the powers allowed in \(P_2\) and \(P_4\).  Since
+\[
+  u=g(x+x^{-1}),
+\]
+the modified-Bessel generating function gives
+\begin{equation}
+  \sinh(2\pi u)
+  =
+  \sum_{n\in\mathbb Z} I_{2n+1}(4\pi g)x^{2n+1}.
+  \label{eq:qsc-small-spin-bessel-laurent}
+\end{equation}
+Here \(I_m\) is the modified Bessel function of the first kind.  The first
+large-\(x\) coefficients produced by the regularity split are
+\[
+  P_2
+  =
+  -\epsilon I_{J+1}(4\pi g)x^{-J/2-1}
+  +O(x^{-J/2-3}),
+  \qquad
+  P_4
+  =
+  -\epsilon I_{J-1}(4\pi g)x^{J/2-1}
+  +O(x^{J/2-3}).
+\]
+Thus, in the large-\(u\) normalization of
+Proposition~\ref{prop:qsc-large-u-coefficient-products},
+\[
+  A_1=\epsilon g^{J/2},\quad
+  A_2=-\epsilon g^{J/2+1}I_{J+1}(4\pi g),\quad
+  A_3=-\epsilon g^{-J/2},\quad
+  A_4=-\epsilon g^{-J/2+1}I_{J-1}(4\pi g).
+\]
+
+\begin{proposition}[Small-spin QSC slope]
+\label{prop:qsc-small-spin-bessel-slope}
+For the small-spin QSC germ above, the leading anomalous dimension satisfies
 \[
   \Delta-J-S
   =
   \frac{4\pi g\,I_{J+1}(4\pi g)}{J\,I_J(4\pi g)}\,S+O(S^2),
 \]
-where \(I_J\) is the modified Bessel function.  Continuing the resulting
-strong-coupling expansion to \(J=2,S=2\) gives the Konishi estimate
+\end{proposition}
+
+\begin{proof}
+First prove the Laurent identity
+\eqref{eq:qsc-small-spin-bessel-laurent}.  The generating function
+\[
+  \exp\left(\frac{z}{2}(t+t^{-1})\right)
+  =
+  \sum_{m\in\mathbb Z}I_m(z)t^m
+\]
+with \(z=4\pi g\) and \(t=x\) gives
+\(\exp(2\pi g(x+x^{-1}))=\sum_m I_m(4\pi g)x^m\).  Replacing
+\(x\) by \(-x\) gives the negative exponential.  Taking half the difference
+selects exactly the odd powers and proves
+\eqref{eq:qsc-small-spin-bessel-laurent}.
+
+The displayed leading coefficients then give
+\[
+  A_1A_4=-\epsilon^2 g\,I_{J-1}(4\pi g),
+  \qquad
+  A_2A_3=\epsilon^2 g\,I_{J+1}(4\pi g).
+\]
+Linearizing the large-\(u\) QSC coefficient relations at small spin gives
+the two charge equations
+\[
+  \Delta-J=-\ii(A_1A_4-A_2A_3)+O(S^2),
+  \qquad
+  S=-\ii(A_1A_4+A_2A_3)+O(S^2).
+\]
+Substitution yields
+\[
+  \Delta-J
+  =
+  \ii\epsilon^2g\bigl(I_{J-1}(4\pi g)+I_{J+1}(4\pi g)\bigr)+O(S^2),
+\]
+and
+\[
+  S
+  =
+  \ii\epsilon^2g\bigl(I_{J-1}(4\pi g)-I_{J+1}(4\pi g)\bigr)+O(S^2).
+\]
+Use the modified-Bessel recurrence
+\[
+  I_{J-1}(z)-I_{J+1}(z)=\frac{2J}{z}I_J(z),
+  \qquad z=4\pi g.
+\]
+It gives
+\[
+  \epsilon^2
+  =
+  \frac{2\pi S}{\ii J I_J(4\pi g)}+O(S^2).
+\]
+Therefore
+\[
+  \Delta-J-S
+  =
+  2\ii\epsilon^2g\,I_{J+1}(4\pi g)+O(S^2)
+  =
+  \frac{4\pi g\,I_{J+1}(4\pi g)}{J\,I_J(4\pi g)}S+O(S^2),
+\]
+which is the claimed slope.
+\end{proof}
+
+Continuing the resulting strong-coupling expansion to \(J=2,S=2\) gives the
+Konishi estimate
 \[
   \Delta_{\rm K}
   =

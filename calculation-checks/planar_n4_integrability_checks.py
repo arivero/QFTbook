@@ -1881,6 +1881,89 @@ def check_bremsstrahlung_weak_series() -> None:
         raise AssertionError("B(lambda) weak-series coefficients failed")
 
 
+def check_qsc_small_spin_bessel_slope() -> None:
+    """Check the exact Bessel recurrences behind the QSC small-spin slope."""
+
+    def bessel_i_series(order: int, max_degree: int) -> dict[int, Fraction]:
+        series: dict[int, Fraction] = {}
+        if order > max_degree:
+            return series
+        for index in range((max_degree - order) // 2 + 1):
+            degree = order + 2 * index
+            coefficient = Fraction(
+                1,
+                (2**degree)
+                * math.factorial(index)
+                * math.factorial(index + order),
+            )
+            series[degree] = coefficient
+        return series
+
+    def series_sub(
+        left: dict[int, Fraction], right: dict[int, Fraction]
+    ) -> dict[int, Fraction]:
+        degrees = set(left) | set(right)
+        return {degree: left.get(degree, 0) - right.get(degree, 0) for degree in degrees}
+
+    def divide_bessel_series(
+        numerator: dict[int, Fraction],
+        denominator: dict[int, Fraction],
+        denominator_order: int,
+        max_ratio_degree: int,
+    ) -> dict[int, Fraction]:
+        ratio: dict[int, Fraction] = {}
+        leading = denominator[denominator_order]
+        for ratio_degree in range(max_ratio_degree + 1):
+            target_degree = denominator_order + ratio_degree
+            known = Fraction(0)
+            for den_degree, den_coeff in denominator.items():
+                if den_degree == denominator_order:
+                    continue
+                previous_degree = target_degree - den_degree
+                if previous_degree in ratio:
+                    known += den_coeff * ratio[previous_degree]
+            ratio[ratio_degree] = (numerator.get(target_degree, 0) - known) / leading
+        return ratio
+
+    max_degree = 14
+    for twist in range(1, 7):
+        i_j_minus = bessel_i_series(twist - 1, max_degree)
+        i_j = bessel_i_series(twist, max_degree)
+        i_j_plus = bessel_i_series(twist + 1, max_degree)
+
+        recurrence_lhs = series_sub(i_j_minus, i_j_plus)
+        recurrence_rhs = {
+            degree - 1: 2 * twist * coefficient
+            for degree, coefficient in i_j.items()
+        }
+        for degree in range(max_degree):
+            if recurrence_lhs.get(degree, 0) != recurrence_rhs.get(degree, 0):
+                raise AssertionError(f"small-spin Bessel recurrence failed for J={twist}")
+
+        ratio = divide_bessel_series(i_j_plus, i_j, twist, 7)
+        slope = {
+            degree + 1: coefficient / twist
+            for degree, coefficient in ratio.items()
+        }
+        expected_z2 = Fraction(1, 2 * twist * (twist + 1))
+        expected_z4 = Fraction(-1, 8 * twist * (twist + 1) ** 2 * (twist + 2))
+        if slope.get(2, 0) != expected_z2:
+            raise AssertionError(f"small-spin slope z^2 coefficient failed for J={twist}")
+        if slope.get(4, 0) != expected_z4:
+            raise AssertionError(f"small-spin slope z^4 coefficient failed for J={twist}")
+
+        # The linearized QSC charge equations use
+        # S = i eps^2 g (I_{J-1}-I_{J+1}) and
+        # gamma = 2 i eps^2 g I_{J+1}.  Eliminating eps reproduces
+        # z I_{J+1}/(J I_J), z=4 pi g.
+        eliminated_slope = {
+            degree + 1: coefficient / twist
+            for degree, coefficient in ratio.items()
+        }
+        if eliminated_slope != slope:
+            raise AssertionError("small-spin slope elimination changed the series")
+
+
 def check_t_system_to_y_system_identity() -> None:
     """Check the algebraic Y-system relation from a local Hirota square."""
 
@@ -2790,6 +2873,7 @@ def main() -> None:
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
     check_bremsstrahlung_weak_series()
+    check_qsc_small_spin_bessel_slope()
     check_t_system_to_y_system_identity()
     check_t_gauge_resolvent_hirota_factorization()
     check_t_hook_wronskian_pmu_bridge()
