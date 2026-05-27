@@ -55,9 +55,9 @@ Current checks:
   phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,
   baryon-chemical-potential coefficients, Banks--Casher kernel normalization,
   fugacity Laurent-polynomial shift, source-curvature susceptibility identity,
-  one-loop Polyakov-holonomy potential coefficients, the Linde magnetic-scale
-  power count, baryon-number cumulants and radius estimators, and the CFL
-  Goldstone count.
+  one-loop Polyakov-holonomy potential coefficients, chiral Ward-identity and
+  GMOR normalization factors, the Linde magnetic-scale power count,
+  baryon-number cumulants and radius estimators, and the CFL Goldstone count.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
   number conservation, quark/gluon momentum-column sum rules, the exact

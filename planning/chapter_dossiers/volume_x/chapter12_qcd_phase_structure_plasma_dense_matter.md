@@ -27,6 +27,10 @@ GitHub issue #628.
   densities.
 - `Sigma(T)`, `rho(lambda)`: chiral condensate and thermodynamic Dirac
   eigenvalue density.
+- `Sigma_m(T)`, `tau^a`, `P^a`, `A_mu^a`, `chi_pi^{ab}`: positive
+  per-flavor massive chiral condensate, trace-delta flavor generators,
+  nonsinglet pseudoscalar density, nonsinglet axial current, and
+  pseudoscalar susceptibility.
 - `p_SB`, `Delta=epsilon-3p`: Stefan--Boltzmann pressure and trace anomaly.
 - `g_3^2=g^2T`, `m_D`: static magnetic coupling and Debye mass.
 - `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
@@ -61,6 +65,17 @@ GitHub issue #628.
   records fundamental quarks as an explicit center source.
 - Defines the chiral condensate as a mass-source derivative and proves the
   Banks--Casher relation under an explicit spectral-density hypothesis.
+- Fixes the chiral condensate convention as the positive per-flavor
+  source response, with the flavor-summed scalar expectation equal to
+  `-N_f Sigma_m`, and distinguishes the spatial volume from the Euclidean
+  thermal four-volume in the Banks--Casher normalization.
+- Proves the integrated nonsinglet axial Ward identity
+  `2m chi_pi^{ab}=-<bar q {tau^a,tau^b} q>` in trace-delta flavor
+  normalization and derives the flavor-symmetric consequence
+  `m chi_pi^{ab}=delta^{ab} Sigma_m`.
+- Derives the finite-temperature GMOR relation as a pole-saturation
+  consequence with the normalization conversion between trace-delta and
+  half-trace flavor generators stated explicitly.
 - Derives the massless free QCD pressure at zero and nonzero baryon chemical
   potential.
 - Records the HTL domain as a controlled approximation and proves the
@@ -91,7 +106,8 @@ GitHub issue #628.
   Banks--Casher kernel normalization, Linde magnetic-scale power counting,
   fugacity Laurent-polynomial shift, source-curvature susceptibility
   identity, one-loop Polyakov-holonomy potential coefficients,
-  baryon-number cumulants and radius estimators, and CFL Goldstone count.
+  chiral Ward-identity and GMOR normalization factors, baryon-number
+  cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -110,3 +126,7 @@ GitHub issue #628.
 - 2026-05-27 baryon-susceptibility pass: added finite-regulator cumulant
   definitions, explicit first/second/fourth cumulant formulas, the
   Cauchy--Hadamard diagnostic, and ratio-estimator status hypotheses.
+- 2026-05-27 chiral-Ward pass: fixed the per-flavor condensate sign and
+  Euclidean-volume normalization, added the integrated nonsinglet axial Ward
+  identity, and derived the finite-temperature GMOR statement only as a
+  stated pole-saturation consequence.

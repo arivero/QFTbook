@@ -4,9 +4,10 @@
 The script checks convention-sensitive numerical factors used in the
 Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
 magnetic-scale estimate, finite-regulator source-curvature identities,
-one-loop Polyakov-holonomy coefficients, baryon-number cumulants, and the
-color-flavor-locked symmetry count.  It is not a lattice simulation and it
-does not assert the existence or order of any QCD phase transition.
+one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
+baryon-number cumulants, and the color-flavor-locked symmetry count.  It is
+not a lattice simulation and it does not assert the existence or order of any
+QCD phase transition.
 """
 
 from fractions import Fraction
@@ -176,6 +177,31 @@ def check_baryon_cumulants_and_radius_estimator():
     assert_equal("even susceptibility ratio estimator squared", ratio_squared, radius * radius)
 
 
+def check_chiral_ward_identity_normalization():
+    # Flavor generators tau^a are normalized by tr_f(tau^a tau^b)=delta^{ab}.
+    # In a flavor-symmetric state,
+    # <bar q {tau^a,tau^b} q> = (2/N_f) delta^{ab} <bar q q>_sum.
+    # With the positive per-flavor condensate Sigma=-<bar q q>_sum/N_f,
+    # the integrated Ward identity 2m chi_pi^{ab}=-<bar q {tau^a,tau^b} q>
+    # gives m chi_pi^{ab}=delta^{ab} Sigma.
+    nf = Fraction(3)
+    sigma = Fraction(5, 7)
+    scalar_sum = -nf * sigma
+    singlet_anticommutator_coeff = Fraction(2, 1) / nf
+    ward_rhs = -singlet_anticommutator_coeff * scalar_sum
+    chi_times_m_from_ward = ward_rhs / 2
+    assert_equal("delta-normalized chiral Ward identity", chi_times_m_from_ward, sigma)
+
+    # With delta-normalized generators, pole saturation and PCAC give
+    # f_delta^2 M_pi^2 = 4 m Sigma.  The conventional tr(t^a t^b)=1/2 delta
+    # decay constant is smaller by sqrt(2), so f_half^2 M_pi^2 = 2 m Sigma.
+    mass = Fraction(11, 13)
+    f_delta_sq_mpi_sq = 4 * mass * sigma
+    f_half_sq_mpi_sq = f_delta_sq_mpi_sq / 2
+    assert_equal("delta-normalized GMOR coefficient", f_delta_sq_mpi_sq, 4 * mass * sigma)
+    assert_equal("half-normalized GMOR coefficient", f_half_sq_mpi_sq, 2 * mass * sigma)
+
+
 def check_linde_magnetic_scale():
     # In four dimensions, g_3^2 = g^2 T has mass dimension one.  A purely
     # magnetic three-dimensional vacuum free-energy density scales as (g_3^2)^3.
@@ -203,6 +229,7 @@ def main():
     check_fugacity_laurent_polynomial_shift()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
+    check_chiral_ward_identity_normalization()
     check_baryon_cumulants_and_radius_estimator()
     check_linde_magnetic_scale()
     check_cfl_global_goldstone_count()

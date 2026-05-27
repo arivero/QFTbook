@@ -557,23 +557,39 @@ Proposition~\ref{prop:qcd-stefan-boltzmann-pressure}.
 
 \section{Chiral Symmetry and the Dirac Spectrum}
 
-Now set \(\mu_B=0\) and take \(N_f\) massless Dirac quarks.  Ignoring the
-anomalous axial \(U(1)\), the classical flavor symmetry is
+Now set \(\mu_B=0\) and take \(N_f\) Dirac quarks with a common mass \(m\).
+In the chiral limit \(m=0\), and ignoring the anomalous axial \(U(1)\), the
+classical flavor symmetry is
 \[
   SU(N_f)_L\times SU(N_f)_R\times U(1)_B .
 \]
-The chiral condensate is the derivative of the pressure with respect to a
-flavor-diagonal mass source:
+Let \(V_3\) be the spatial volume and let
+\[
+  \mathcal V_4=\beta V_3
+\]
+be the Euclidean thermal volume.  For degenerate quark mass, the pressure
+derivative is the flavor-summed scalar source response.  We use the positive
+per-flavor condensate convention
 \begin{equation}
-  \langle\bar q q\rangle_T
+  \Sigma_m(T)
   =
-  \frac{T}{V}\frac{\partial}{\partial m}
-  \log Z_{V,T}(m)\Big|_{m=0}
-  =
-  \frac{\partial p(T,m)}{\partial m}\Big|_{m=0},
+  \frac1{N_f}\frac{\partial p(T,m)}{\partial m}.
   \label{eq:qcd-phase-chiral-condensate-source}
 \end{equation}
-when the thermodynamic and chiral limits specified below exist.  A nonzero
+Equivalently, after integrating the fermions in a fixed gauge background,
+\(\Sigma_m(T)\) is the thermal average of
+\(\mathcal V_4^{-1}\operatorname{Tr}(D_E+m)^{-1}\) for the one-flavor
+Euclidean Dirac operator \(D_E\).  With the Grassmann-ordering convention in
+which the local scalar density is
+\(\bar q q=\sum_{i=1}^{N_f}\bar q_iq_i\), its flavor-summed expectation is
+\[
+  \langle\bar q q\rangle_{\mathrm{sum},T,m}
+  =
+  -N_f\Sigma_m(T).
+\]
+Thus \(\Sigma_m\ge0\) in a phase with the usual sign of the scalar condensate.
+The chiral order parameter is the limit \(\Sigma(T)=\lim_{m\downarrow0}
+\lim_{V_3\to\infty}\Sigma_m(T)\), when this limit exists.  A nonzero
 condensate in the chiral limit transforms as
 \((\overline{\mathbf N_f},\mathbf N_f)\oplus
 (\mathbf N_f,\overline{\mathbf N_f})\) and breaks
@@ -589,22 +605,23 @@ The chiral condensate used as an order parameter is
 \begin{equation}
   \Sigma(T)
   =
-  -\lim_{m\downarrow0}\lim_{V\to\infty}
-  \frac{1}{V}
-  \left\langle \operatorname{Tr}(D_E+m)^{-1}\right\rangle_{V,T,m},
+  \lim_{m\downarrow0}\lim_{V_3\to\infty}
+  \frac{1}{\mathcal V_4}
+  \left\langle \operatorname{Tr}(D_E+m)^{-1}\right\rangle_{V_3,T,m},
   \label{eq:qcd-phase-sigma-definition}
 \end{equation}
-where \(D_E\) is the massless Euclidean Dirac operator in a gauge background
-at \(\mu_B=0\).  The infinite-volume limit precedes the chiral limit.
+where \(D_E\) is the one-flavor massless Euclidean Dirac operator in a gauge
+background at \(\mu_B=0\).  The infinite-volume limit precedes the chiral
+limit.
 \end{definition}
 
 \begin{theorem}[Banks--Casher relation under a spectral-density hypothesis]
 \label{thm:qcd-banks-casher}
 Assume that the positive Dirac eigenvalue density
 \[
-  \rho_V(\lambda)
+  \rho_{\mathcal V_4}(\lambda)
   =
-  \frac1V\left\langle
+  \frac1{\mathcal V_4}\left\langle
   \sum_{\lambda_n>0}\delta(\lambda-\lambda_n)
   \right\rangle
 \]
@@ -626,19 +643,19 @@ inner product and anticommutes with \(\gamma_5\) in the massless theory.
 Nonzero eigenvalues occur in pairs \(\pm\ii\lambda_n\), \(\lambda_n>0\).
 For fixed positive mass,
 \[
-  \frac1V\operatorname{Tr}(D_E+m)^{-1}
+  \frac1{\mathcal V_4}\operatorname{Tr}(D_E+m)^{-1}
   =
-  \frac{N_0}{Vm}
+  \frac{N_0}{\mathcal V_4m}
   +
-  \frac1V\sum_{\lambda_n>0}
+  \frac1{\mathcal V_4}\sum_{\lambda_n>0}
   \left(\frac1{m+\ii\lambda_n}+\frac1{m-\ii\lambda_n}\right),
 \]
 where \(N_0\) is the number of zero modes.  The nonzero pair contribution is
 \[
-  \frac{2m}{V}\sum_{\lambda_n>0}\frac1{\lambda_n^2+m^2}.
+  \frac{2m}{\mathcal V_4}\sum_{\lambda_n>0}\frac1{\lambda_n^2+m^2}.
 \]
 By the zero-density hypothesis the first term drops out after
-\(V\to\infty\).  The condensate definition therefore gives
+\(V_3\to\infty\).  The condensate definition therefore gives
 \[
   \Sigma(T)
   =
@@ -664,10 +681,179 @@ two-sided density evaluated at zero.
 \begin{remark}[Order of limits]
 The theorem is a statement about the thermodynamic spectral density near
 zero.  Setting \(m=0\) at finite volume first gives no condensate from paired
-nonzero eigenvalues.  The density of eigenvalues at spacing \(O(V^{-1})\)
-near the origin is precisely the infinite-volume datum that can survive the
-subsequent chiral limit.
+nonzero eigenvalues.  The density of eigenvalues at spacing
+\(O(\mathcal V_4^{-1})\) near the origin is precisely the infinite-volume
+datum that can survive the subsequent chiral limit.
 \end{remark}
+
+\subsection{Axial Ward Identity and Thermal GMOR Logic}
+\label{subsec:qcd-thermal-axial-ward-gmor}
+
+The condensate is not merely a symbol for a phase diagram.  It is tied to
+integrated pseudoscalar correlations by an axial Ward identity.  This is the
+cleanest finite-temperature form of the Gell-Mann--Oakes--Renner logic,
+because at \(T>0\) Lorentz invariance is absent and one must specify which
+pion pole, screening pole, or spectral residue is being used.
+
+Let \(\tau^a\), \(a=1,\ldots,N_f^2-1\), be Hermitian generators of
+\(\mathfrak{su}(N_f)\) normalized by
+\begin{equation}
+  \operatorname{tr}_{f}(\tau^a\tau^b)=\delta^{ab}.
+  \label{eq:qcd-flavor-generator-normalization}
+\end{equation}
+Define the nonsinglet Euclidean axial current and pseudoscalar density by
+\begin{equation}
+  A_\mu^a=\bar q\gamma_\mu\gamma_5\tau^a q,
+  \qquad
+  P^a=\bar q\,\ii\gamma_5\tau^a q .
+  \label{eq:qcd-axial-current-pseudoscalar-density}
+\end{equation}
+The factor of \(\ii\) in \(P^a\) is part of the Euclidean source convention:
+a real pseudoscalar source \(p^a\) appears in the mass matrix as
+\(m\mathbf1+\ii\gamma_5p^a\tau^a\).  With this convention the Euclidean
+pseudoscalar susceptibility is
+\begin{equation}
+  \chi_\pi^{ab}(T,m)
+  =
+  -\int_0^\beta d\tau\int_{\mathbb R^3}d^3x\,
+  \langle P^a(\tau,\mathbf x)P^b(0)\rangle_{c,T,m},
+  \label{eq:qcd-pseudoscalar-susceptibility-definition}
+\end{equation}
+with the finite-volume definition obtained by replacing \(\mathbb R^3\) by
+the spatial torus and taking the thermodynamic limit after the integral.
+
+\begin{proposition}[Integrated nonsinglet axial Ward identity]
+\label{prop:qcd-integrated-axial-ward}
+Assume a regulator and renormalization prescription preserving the nonsinglet
+vector flavor symmetry and the nonsinglet axial Ward identity up to the
+explicit mass term; there is no nonsinglet axial anomaly.  Then
+\begin{equation}
+  2m\,\chi_\pi^{ab}(T,m)
+  =
+  -\left\langle
+  \bar q\{\tau^a,\tau^b\}q
+  \right\rangle_{T,m}.
+  \label{eq:qcd-integrated-axial-ward}
+\end{equation}
+In a flavor-symmetric thermal state this becomes
+\begin{equation}
+  m\,\chi_\pi^{ab}(T,m)=\delta^{ab}\Sigma_m(T).
+  \label{eq:qcd-flavor-symmetric-pseudoscalar-ward}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Perform the local nonsinglet axial change of variables
+\[
+  \delta q=\ii\alpha^a(x)\tau^a\gamma_5 q,\qquad
+  \delta\bar q=\ii\alpha^a(x)\bar q\gamma_5\tau^a .
+\]
+The regulator hypothesis says that the fermion measure has no nonsinglet
+Jacobian anomaly.  The action variation is the distributional Ward
+insertion
+\[
+  \partial_\mu A_\mu^a(x)-2mP^a(x),
+\]
+with contact terms when \(x\) collides with other insertions.  Apply this
+identity to the insertion \(P^b(0)\).  The contact term is its infinitesimal
+axial variation:
+\[
+  \delta^a P^b(0)
+  =
+  -\bar q\{\tau^a,\tau^b\}q(0).
+\]
+Integrating the Ward identity over the thermal spacetime torus removes the
+divergence term by periodicity of the bosonic current and gives
+\eqref{eq:qcd-integrated-axial-ward}, with the minus sign in
+\eqref{eq:qcd-pseudoscalar-susceptibility-definition} coming from the
+Euclidean \(P^a=\bar q\ii\gamma_5\tau^a q\) convention.
+
+In a flavor-symmetric state
+\[
+  \left\langle\bar q\{\tau^a,\tau^b\}q\right\rangle_{T,m}
+  =
+  \frac{2}{N_f}\delta^{ab}
+  \langle\bar q q\rangle_{\mathrm{sum},T,m}
+  =
+  -2\delta^{ab}\Sigma_m(T),
+\]
+where \eqref{eq:qcd-flavor-generator-normalization} fixes the singlet part of
+the anticommutator.  Substitution gives
+\eqref{eq:qcd-flavor-symmetric-pseudoscalar-ward}.
+\end{proof}
+
+\begin{proposition}[GMOR as a pole-saturation consequence]
+\label{prop:qcd-thermal-gmor-pole-saturation}
+Suppose, in addition to the hypotheses of
+Proposition~\ref{prop:qcd-integrated-axial-ward}, that for small \(m>0\) the
+zero-spatial-momentum pseudoscalar susceptibility in a broken phase is
+saturated at leading order by an isolated pion pole of mass \(M_\pi(T,m)\).
+Let \(G_\pi(T,m)\) and \(f_{t,\delta}(T,m)\) be defined in the same flavor
+normalization \eqref{eq:qcd-flavor-generator-normalization} by the pole
+matrix elements
+\[
+  \langle\Omega_T|P^a(0)|\pi^b\rangle
+  =
+  \delta^{ab}G_\pi,
+  \qquad
+  \langle\Omega_T|A_0^a(0)|\pi^b\rangle
+  =
+  \delta^{ab}f_{t,\delta}M_\pi,
+\]
+or by the corresponding KMS spectral residues when a thermal Hilbert-space
+representative is used.  If the pole obeys the axial Ward relation
+\begin{equation}
+  2m\,G_\pi=f_{t,\delta}M_\pi^2
+  \label{eq:qcd-pcac-pole-relation}
+\end{equation}
+and the non-pole part of \(\chi_\pi^{aa}\) is \(O(1)\) as
+\(m\downarrow0\), then
+\begin{equation}
+  f_{t,\delta}(T,m)^2M_\pi(T,m)^2
+  =
+  4m\Sigma(T)+o(m).
+  \label{eq:qcd-thermal-gmor-delta-normalization}
+\end{equation}
+If instead one uses generators \(t^a\) normalized by
+\(\operatorname{tr}_{f}(t^at^b)=\frac12\delta^{ab}\), the decay constant is
+smaller by \(\sqrt2\) and the same statement is
+\begin{equation}
+  f_{t,1/2}(T,m)^2M_\pi(T,m)^2
+  =
+  2m\Sigma(T)+o(m).
+  \label{eq:qcd-thermal-gmor-half-normalization}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Pole saturation gives
+\[
+  \chi_\pi^{ab}(T,m)
+  =
+  \delta^{ab}\frac{G_\pi(T,m)^2}{M_\pi(T,m)^2}+O(1).
+\]
+The Ward identity \eqref{eq:qcd-flavor-symmetric-pseudoscalar-ward} says that
+the same susceptibility has leading behavior
+\[
+  \chi_\pi^{ab}(T,m)
+  =
+  \delta^{ab}\frac{\Sigma(T)}{m}+o(m^{-1})
+\]
+when \(\Sigma_m(T)\to\Sigma(T)\).  Using
+\eqref{eq:qcd-pcac-pole-relation} to replace \(G_\pi\) gives
+\[
+  \frac{G_\pi^2}{M_\pi^2}
+  =
+  \frac{f_{t,\delta}^2M_\pi^2}{4m^2}.
+\]
+Equating the coefficients of \(1/m\) yields
+\eqref{eq:qcd-thermal-gmor-delta-normalization}.  Rescaling the generators
+from \(\operatorname{tr}_f(\tau^a\tau^b)=\delta^{ab}\) to
+\(\operatorname{tr}_f(t^at^b)=\frac12\delta^{ab}\) rescales both the current
+and the pseudoscalar density by \(1/\sqrt2\), hence
+\(f_{t,1/2}=f_{t,\delta}/\sqrt2\), giving
+\eqref{eq:qcd-thermal-gmor-half-normalization}.
+\end{proof}
 
 \section{Free Plasma Limit and Thermodynamic Observables}
 
