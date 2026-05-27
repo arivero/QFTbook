@@ -43,7 +43,8 @@
 - Wilson loop operators.
 - Rectangular Wilson-loop transfer-matrix spectral representation, static
   potential extraction, line self-energy caveat, and Creutz-ratio perimeter
-  cancellation.
+  cancellation, with a companion CSV analysis script for effective-mass and
+  Creutz-ratio extraction.
 - Wilson/gradient flow as a finite-dimensional ODE on the compact link
   manifold, including link-gradient definition, global existence,
   gauge covariance, action monotonicity, continuum linearized heat-kernel
@@ -161,6 +162,9 @@
 - `qft_scripts/z2_gauge_3d_metropolis.py --smoke`: finite periodic
   three-dimensional \(\mathbb Z_2\) gauge sampler for plaquette and
   rectangular Wilson-loop measurements.
+- `qft_scripts/static_potential_from_wilson_loops.py --smoke`: finite
+  Wilson-loop analysis tool for transfer-matrix effective masses and Creutz
+  ratios from positive rectangular-loop data.
 
 ## Calculation Checks
 
@@ -186,6 +190,9 @@
 - `calculation-checks/lattice_perturbation_tadpole_checks.py` verifies the
   tree-level gauge-fixed kernel inverse, the \(\widehat p^2\) expansion
   coefficient, and tadpole-normalization bookkeeping.
+- `calculation-checks/static_potential_analysis_checks.py` verifies the
+  static-potential companion script on synthetic area-plus-perimeter
+  Wilson-loop data, including elementary ratio-error propagation.
 - `calculation-checks/nonabelian_lattice_observable_checks.py` verifies the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
   transfer-matrix ratio for static-energy extraction, and Creutz-ratio
@@ -213,3 +220,6 @@
   tadpole normalization, deriving the tree-level gauge-fixed kernel and
   boosted-coupling coordinate as finite perturbative conventions whose
   continuum use requires a stated matching problem.
+- 2026-05-27 issue #631 pass: added a theorem-anchored static-potential
+  companion script for effective-mass and Creutz-ratio extraction from
+  rectangular Wilson-loop data.

@@ -544,6 +544,11 @@ Current checks:
   the tree-level gauge-fixed lattice kernel, the \(\widehat p^2\) expansion
   coefficient \(-1/12\), and the plaquette tadpole/boosted-coupling
   bookkeeping.
+- `static_potential_analysis_checks.py`: finite checks for
+  `qft_scripts/static_potential_from_wilson_loops.py`, verifying that
+  synthetic area-plus-perimeter Wilson-loop data reproduce the expected
+  transfer-matrix effective masses and Creutz ratios, including elementary
+  ratio-error propagation.
 - `nonabelian_lattice_observable_checks.py`: finite convention checks for
   the Volume XI nonabelian lattice-observable section, including the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
