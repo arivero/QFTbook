@@ -2748,6 +2748,232 @@ for a specified family of hadronic matrix elements is additional dynamical and
 renormalization information.
 \end{controlledapproximation}
 
+\section{Heavy-Light Currents and Heavy-Quark Symmetry}
+\label{sec:qcd-hqet-heavy-light-currents}
+
+The static Wilson-line limit becomes predictive only after composite currents
+and hadron states are matched.  Let \(q\) be a light quark field and let
+\(Q\) be a heavy quark field.  The mostly-plus spinor convention of
+Definition~\ref{def:four-dimensional-mostly-plus-spinor-convention} fixes the
+Hermitian vector and axial currents with an explicit factor of \(\ii\).  Thus
+in this section
+\[
+  A^\mu_{qQ}=\ii[\bar q\gamma^\mu\gamma_5Q]_{\rm R},
+  \qquad
+  V^\mu_{qQ}=\ii[\bar q\gamma^\mu Q]_{\rm R}.
+\]
+More generally a renormalized heavy-light QCD current is a renormalized
+gauge-invariant local operator
+\[
+  J_\Gamma^{\rm QCD}(x)=[\kappa_\Gamma\bar q(x)\Gamma Q(x)]_{\rm R},
+\]
+where \(\Gamma\) is a fixed spinor matrix, \(\kappa_\Gamma\in\{1,\ii\}\) is
+part of the current convention, and the subscript records the regulator and
+subtraction convention.  In HQET this current is represented by an expansion
+\begin{equation}
+  J_\Gamma^{\rm QCD}
+  =
+  C_\Gamma(m_Q,\mu)\,[\kappa_\Gamma\bar q\Gamma h_v]_{\rm R}
+  +
+  \sum_a\frac{B_{\Gamma,a}(m_Q,\mu)}{2m_Q}\,
+  \mathcal J_{\Gamma,a}^{(1)}
+  +O(m_Q^{-2})
+  \label{eq:hqet-current-matching}
+\end{equation}
+inside the chosen class of matrix elements.  The operators
+\(\mathcal J_{\Gamma,a}^{(1)}\) are local gauge-invariant HQET currents with
+one additional transverse derivative, chromomagnetic insertion, or light-quark
+mass insertion, modulo the leading equations of motion in the chosen operator
+basis.  Equation \eqref{eq:hqet-current-matching} is a matching statement for
+renormalized operator-valued distributions tested on low-residual-momentum
+states.
+
+Assume that for a heavy flavor \(Q\) there is an isolated stable pseudoscalar
+meson \(P_Q\) and an isolated stable vector meson \(V_Q\) in the same
+light-cloud channel.  Their decay constants are defined by
+\begin{align}
+  \langle 0|\,A^\mu_{qQ}\,|P_Q(p)\rangle
+  &=
+  f_{P_Q}\,p^\mu,
+  \label{eq:hqet-pseudoscalar-decay-constant}\\
+  \langle 0|\,V^\mu_{qQ}\,|V_Q(p,\varepsilon)\rangle
+  &=
+  f_{V_Q}\,M_{V_Q}\,\varepsilon^\mu,
+  \label{eq:hqet-vector-decay-constant}
+\end{align}
+where \(p^2=-M^2\), \(p^0>0\), and the vector polarization satisfies
+\(p\cdot\varepsilon=0\).  Momentum eigenstates in QCD are normalized by
+\[
+  \langle H(p')|H(p)\rangle
+  =
+  2p^0(2\pi)^3\delta^3(\mathbf p-\mathbf p').
+\]
+The corresponding HQET residual-momentum state is normalized by
+\[
+  {}_{\rm HQET}\langle H_v(k')|H_v(k)\rangle_{\rm HQET}
+  =
+  2v^0(2\pi)^3\delta^3(\mathbf k-\mathbf k'),
+\]
+with \(p^\mu=M_Hv^\mu+k^\mu\), and the leading state matching is
+\begin{equation}
+  |H_Q(p=M_Hv+k)\rangle_{\rm QCD}
+  =
+  \sqrt{M_H}\,|H_v(k)\rangle_{\rm HQET}
+  +O(\Lambda_{\rm had}/m_Q)
+  \label{eq:hqet-state-normalization-matching}
+\end{equation}
+for matrix elements in the stated residual-momentum domain.
+
+\begin{proposition}[Heavy-light decay-constant scaling]
+\label{prop:hqet-decay-constant-scaling}
+Let
+\[
+  {}_{\rm HQET}\langle0|\,\ii[\bar q\gamma^\mu\gamma_5h_v]_{\rm R}
+  |P_v(0)\rangle_{\rm HQET}
+  =
+  F_P(\mu)\,v^\mu .
+\]
+Then the leading HQET matching of the axial current gives
+\begin{equation}
+  f_{P_Q}\sqrt{M_{P_Q}}
+  =
+  C_A(m_Q,\mu)F_P(\mu)
+  +O(\Lambda_{\rm had}/m_Q).
+  \label{eq:hqet-decay-constant-scaling}
+\end{equation}
+The analogous vector-meson relation has the same static reduced matrix
+element up to the spin rotation dictated by
+Proposition~\ref{prop:hqet-static-spin-flavor}.
+\end{proposition}
+
+\begin{proof}
+At \(p^\mu=M_{P_Q}v^\mu\), the QCD definition
+\eqref{eq:hqet-pseudoscalar-decay-constant} gives
+\[
+  \langle0|A^\mu_{qQ}|P_Q(p)\rangle_{\rm QCD}
+  =
+  f_{P_Q}M_{P_Q}v^\mu .
+\]
+Using the leading current matching
+\[
+  A^\mu_{qQ}
+  =
+  C_A(m_Q,\mu)\,\ii[\bar q\gamma^\mu\gamma_5h_v]_{\rm R}
+  +O(m_Q^{-1})
+\]
+and the state relation \eqref{eq:hqet-state-normalization-matching} gives
+\[
+  \langle0|A^\mu_{qQ}|P_Q(p)\rangle_{\rm QCD}
+  =
+  C_A\sqrt{M_{P_Q}}\,
+  F_P(\mu)v^\mu
+  +O(\Lambda_{\rm had}/m_Q).
+\]
+Equating the coefficients of \(v^\mu\) proves
+\eqref{eq:hqet-decay-constant-scaling}.  The vector statement follows because
+the leading static action transports color but contains no operator acting on
+the projected heavy spin; pseudoscalar and vector states in the same light
+cloud are related by the heavy-spin symmetry of the leading theory.
+\end{proof}
+
+Heavy-to-heavy currents compare two static sectors with velocities \(v\) and
+\(v'\).  Define the recoil variable
+\begin{equation}
+  w=-v\cdot v'\ge1 .
+  \label{eq:hqet-recoil-variable}
+\end{equation}
+For pseudoscalar ground-state mesons in the same light-cloud channel, the
+leading HQET vector-current matrix element has the form
+\begin{equation}
+  {}_{\rm HQET}\langle H_{v'}|\,
+  \mathcal V_{Q'Q}^\mu(v',v)\,|H_v\rangle_{\rm HQET}
+  =
+  \xi(w)(v+v')^\mu ,
+  \label{eq:hqet-isgur-wise-definition}
+\end{equation}
+where
+\[
+  \mathcal V_{Q'Q}^\mu(v',v)
+  =
+  \ii[\bar h_{v'}^{(Q')}\gamma^\mu h_v^{(Q)}]_{\rm R}
+\]
+with the coefficient fixed by coupling the leading HQET action to a background
+heavy-flavor gauge field.  The scalar function \(\xi\) is the leading
+heavy-quark symmetry form factor.  For the full QCD states this corresponds to
+\begin{equation}
+  \begin{aligned}
+  &\langle H_{Q'}(M_{Q'}v')|\,\ii[\bar Q'\gamma^\mu Q]_{\rm R}\,
+  |H_Q(M_Qv)\rangle
+  \\
+  &\qquad =
+  \sqrt{M_{Q'}M_Q}\,
+  C_{Q'Q}(m_{Q'},m_Q,\mu)\,
+  \xi(w)(v+v')^\mu
+  +O(\Lambda_{\rm had}/m_Q,\Lambda_{\rm had}/m_{Q'}).
+  \end{aligned}
+  \label{eq:hqet-heavy-to-heavy-qcd-form-factor}
+\end{equation}
+More general spin states are obtained from the same light-cloud overlap by
+inserting the appropriate heavy-spin trace factors.
+
+\begin{proposition}[Zero-recoil normalization]
+\label{prop:hqet-isgur-wise-normalization}
+At zero recoil, \(v'=v\), the leading heavy-quark symmetry form factor obeys
+\begin{equation}
+  \xi(1)=1
+  \label{eq:hqet-isgur-wise-normalization}
+\end{equation}
+when the current is normalized as the generator of the heavy-flavor symmetry
+of the leading HQET action.
+\end{proposition}
+
+\begin{proof}
+At \(v'=v\), the leading HQET action has a unitary flavor symmetry rotating
+the heavy labels \(Q\) and \(Q'\) while leaving the light fields and gauge
+field fixed.  Couple this symmetry to a smooth background matrix-valued
+connection \(B_\mu{}^A{}_B\) by replacing
+\(D_\mu h_{v,A}\) with
+\((D_\mu\delta_A{}^B-\ii B_\mu{}^B{}_A)h_{v,B}\).  Differentiation of the
+action with respect to \(B_\mu{}^Q{}_{Q'}\) defines the current
+\(\mathcal V^\mu_{Q'Q}(v,v)\), and the associated charge
+\[
+  Q_{Q'Q}
+  =
+  \int_{\Sigma_t}\dd^3x\,n_\mu\,\mathcal V^\mu_{Q'Q}(v,v)
+\]
+is the generator of the heavy-flavor rotation on the one-heavy-particle
+sector.  Here \(n_\mu\) is the future unit normal covector to the quantization
+slice, and the state normalization above fixes the matrix element of
+\(Q_{Q'Q}\) between one-particle velocity states to be one.  Therefore
+\(Q_{Q'Q}|H_v^{(Q)}\rangle=|H_v^{(Q')}\rangle\) after the same phase convention
+for the two states is chosen.  Covariance in the fixed-velocity sector then
+gives
+\[
+  {}_{\rm HQET}\langle H_v^{(Q')}|
+  \mathcal V^\mu_{Q'Q}(v,v)
+  |H_v^{(Q)}\rangle_{\rm HQET}
+  =
+  2v^\mu .
+\]
+Comparing with \eqref{eq:hqet-isgur-wise-definition} at \(v'=v\) gives
+\(\xi(1)=1\).
+\end{proof}
+
+\begin{controlledapproximation}[Heavy-light current expansion]
+\label{ca:hqet-heavy-light-current-expansion}
+A heavy-light or heavy-to-heavy form-factor prediction must specify the
+renormalized QCD current, the HQET current basis, the state normalization, the
+matching coefficients, and the spectral assumption that the meson states used
+in the matrix element are isolated in the relevant channel.  The leading
+relations \eqref{eq:hqet-decay-constant-scaling} and
+\eqref{eq:hqet-isgur-wise-definition} are symmetry consequences of the static
+theory after these data are fixed.  Corrections of order \(1/m_Q\) are matrix
+elements of the subleading current operators and of insertions from the
+subleading HQET action; their absence or suppression at special kinematic
+points is an additional theorem only when the corresponding operator basis and
+symmetry argument are displayed.
+\end{controlledapproximation}
+
 \section{Nonrelativistic Heavy Pairs and Potential Matching}
 \label{sec:qcd-nrqcd-potential-matching}
 

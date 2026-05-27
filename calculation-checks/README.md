@@ -70,6 +70,10 @@ Current checks:
   projectors, the transverse covariant-derivative projector, residual-momentum
   reparametrization, the free residual-dispersion expansion, and the
   first-order Wilson-line differential equation.
+- `qcd_hqet_current_checks.py`: finite checks for the Volume II HQET
+  heavy-light-current section, including QCD/HQET state normalization,
+  \(f_H\sqrt M\) decay-constant scaling, the mostly-plus recoil variable,
+  zero-recoil Isgur-Wise normalization, and finite current-scheme covariance.
 - `qcd_nrqcd_checks.py`: finite checks for the Volume II NRQCD/pNRQCD
   convention block, including endpoint cancellation in gauge-invariant
   quarkonium bilocals, the Schrödinger kinetic-sign convention, the singlet

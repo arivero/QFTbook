@@ -140,6 +140,12 @@ The chapter must define and derive:
   propagator as a Wilson transporter, static spin/flavor symmetry, the
   free residual-dispersion derivation, and the controlled status of the
   \(1/m_Q\) expansion;
+- heavy-light and heavy-to-heavy HQET current matching, including the explicit
+  mostly-plus factor of \(\ii\) in Hermitian vector and axial currents,
+  QCD/HQET residual-state normalization, \(f_H\sqrt M\) scaling, the recoil
+  variable \(w=-v\cdot v'\), the Isgur-Wise function as a light-cloud overlap,
+  zero-recoil normalization from the heavy-flavor charge, and the controlled
+  status of subleading current and action insertions;
 - NRQCD and pNRQCD as the heavy-pair expansion, including Pauli quark and
   charge-conjugated antiquark fields, the leading Schrödinger action, the
   NRQCD operator datum, gauge-invariant singlet and octet quarkonium bilocals
@@ -285,6 +291,16 @@ The chapter must define and derive:
      together with reparametrization compatibility.  The uniform
      \(1/m_Q\) expansion is recorded as a controlled matrix-element estimate,
      not as a consequence of the static Wilson-line identity alone.
+15aa. Heavy-light currents are matched as renormalized operator-valued
+      distributions in the same finite-regulator datum as the HQET action.
+      With the monograph mostly-plus spinor convention, physical vector and
+      axial currents include the explicit factor \(\ii\).  The state
+      normalization
+      \(|H(Mv+k)\rangle_{\rm QCD}=\sqrt M\,|H_v(k)\rangle_{\rm HQET}\)
+      gives \(f_H\sqrt M=C_A F_H+O(\Lambda_{\rm had}/m_Q)\), while the
+      zero-recoil Isgur-Wise normalization follows from the heavy-flavor
+      Noether charge of the leading static theory after the current
+      normalization is fixed by a background heavy-flavor connection.
 15b. NRQCD is a separate heavy-pair datum with Pauli fields \(\psi,\chi\),
      local gauge-covariant operators, and a velocity power counting.  The
      quarkonium singlet bilocal
@@ -528,3 +544,9 @@ The chapter must define and derive:
   potential-subtracted mass coefficient, stated the renormalon status
   carefully, and added
   `calculation-checks/qcd_heavy_mass_static_energy_checks.py`.
+- 2026-05-27 QCD HQET current/symmetry pass: added heavy-light current
+  matching, mostly-plus current normalization, QCD/HQET state normalization,
+  decay-constant scaling, heavy-to-heavy recoil kinematics, the Isgur-Wise
+  function, zero-recoil normalization from the heavy-flavor charge, controlled
+  subleading-current status, and
+  `calculation-checks/qcd_hqet_current_checks.py`.
