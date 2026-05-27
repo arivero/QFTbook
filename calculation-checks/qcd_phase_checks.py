@@ -12,9 +12,10 @@ bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
 one-gluon exchange color factors for dense pairing, leading-log magnetic gap
 coefficient bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity
 bookkeeping, dense-matter neutrality constraints, color-flavor-locked
-gauge-invariant composite charges, screening and collective-mode counts, and
-the color-flavor-locked symmetry count.  It is not a lattice simulation and
-it does not assert the existence or order of any QCD phase transition.
+gauge-invariant composite charges, screening and collective-mode counts,
+color-flavor-locked anomaly matching, and the color-flavor-locked symmetry
+count.  It is not a lattice simulation and it does not assert the existence
+or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -539,6 +540,43 @@ def check_cfl_screening_and_collective_counts():
     assert_equal("CFL Higgs magnetic screening prefactor before velocity", magnetic_prefactor_without_velocity, Fraction(1, 1))
 
 
+def check_cfl_anomaly_matching_bookkeeping():
+    # With half-trace flavor generators, a left-handed fundamental Weyl
+    # fermion contributes tr(F^3)/(6(2*pi)^3) and, after tensoring with a
+    # U(1)_B line of charge q_B, q_B F_B tr(F^2)/(2(2*pi)^3).
+    nc = 3
+    quark_baryon_charge = Fraction(1, nc)
+
+    pure_left_coeff = Fraction(nc, 6)
+    wzw_level = nc
+    assert_equal("CFL WZW level equals color copies", wzw_level, nc)
+    assert_equal("CFL pure left anomaly coefficient", pure_left_coeff, Fraction(1, 2))
+
+    mixed_coeff = Fraction(nc, 1) * quark_baryon_charge * Fraction(1, 2)
+    assert_equal("CFL mixed baryon-flavor anomaly coefficient", mixed_coeff, Fraction(1, 2))
+
+    # Vector flavor backgrounds have F_L=F_R, so both pure chiral and mixed
+    # baryon-flavor anomaly representatives cancel between L and R.
+    left_pure = pure_left_coeff
+    right_pure = pure_left_coeff
+    left_mixed = mixed_coeff
+    right_mixed = mixed_coeff
+    assert_equal("CFL vector pure flavor anomaly cancellation", left_pure - right_pure, Fraction(0))
+    assert_equal("CFL vector mixed anomaly cancellation", left_mixed - right_mixed, Fraction(0))
+
+    # The mixed CFL Goldstone representative is
+    # - (D phi/2pi) wedge [tr F_L^2-tr F_R^2]/[2(2pi)^2].
+    # Since d(D phi)=-F_B, its exterior derivative has the positive
+    # coefficient +1/2 needed above.
+    representative_coeff = -Fraction(1, 2)
+    d_dphi_sign = -1
+    assert_equal(
+        "CFL baryon Goldstone mixed anomaly derivative",
+        representative_coeff * d_dphi_sign,
+        mixed_coeff,
+    )
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -562,6 +600,7 @@ def main():
     check_cfl_gauge_invariant_composite_charges()
     check_dense_neutrality_bookkeeping()
     check_cfl_screening_and_collective_counts()
+    check_cfl_anomaly_matching_bookkeeping()
     print("All QCD phase-structure checks passed.")
 
 

@@ -74,6 +74,9 @@ GitHub issue #628.
   screening correlators and the low-energy CFL Higgs-screening coefficients.
 - `F_pi`, `F_B`, `v_pi`, `v_B`, `phi_B`: CFL chiral and baryon-superfluid
   collective-mode coefficients and baryon phase.
+- `A_L`, `A_R`, `B`, `F_L`, `F_R`, `F_B`, `D_B phi_B`: chiral flavor and
+  baryon background fields used in CFL anomaly matching, their curvatures,
+  and the baryon-Goldstone covariant one-form.
 
 ## Claim Ledger
 
@@ -186,6 +189,13 @@ GitHub issue #628.
   and baryon-phonon dispersions from the leading low-energy action, and
   identifies the rotated unbroken electromagnetic \(U(1)\) in the same
   transformation convention as the CFL orientation field.
+- Computes the UV six-form anomaly polynomial for
+  \(SU(3)_L\times SU(3)_R\times U(1)_B\) backgrounds in half-trace flavor
+  normalization, derives the pure chiral coefficient \(N_c\), derives the
+  mixed baryon-flavor coefficient \(N_cq_B/2=1/2\), and matches these in CFL
+  by the level-\(N_c\) gauged WZW functional of \(\Sigma\) plus the baryon
+  Goldstone inflow representative
+  `-(D_B phi_B/2pi) wedge (tr F_L^2-tr F_R^2)/(2(2pi)^2)`.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
 
@@ -212,8 +222,8 @@ GitHub issue #628.
   magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, dense neutrality
   bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
-  screening-sector and collective-mode count bookkeeping, and CFL Goldstone
-  count.
+  screening-sector and collective-mode count bookkeeping, CFL anomaly-matching
+  coefficient bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -283,3 +293,7 @@ GitHub issue #628.
   static screening correlators, the CFL Higgs screening effective action and
   mass-matrix derivation, and the leading chiral-octet/baryon-phonon
   collective-mode action and dispersion derivation.
+- 2026-05-27 CFL anomaly-matching pass: added the local UV anomaly polynomial
+  for chiral flavor plus baryon backgrounds, the level-\(N_c\) WZW matching
+  statement for the CFL chiral field, and the baryon-Goldstone mixed-anomaly
+  inflow representative.
