@@ -18,6 +18,8 @@ language.
 - `rho_a`, `rho_a^h`, `epsilon_a`: Bethe particle density, hole density, and
   pseudoenergy.
 - `q_a(theta)`: large-circumference mirror occupation factor.
+- `mathsf A`, `m_*`, `Phi`: finite mirror-species set, lightest mirror mass,
+  and \(L^1\) kernel bound used in the vacuum Luescher remainder theorem.
 - `Delta E_Psi^F`: first finite-size mirror correction to an excited state.
 
 ## Claim Ledger
@@ -28,6 +30,10 @@ language.
   extremization.
 - Extracts the first large-circumference vacuum correction as a one-mirror
   occupation contribution.
+- Proves the vacuum Luescher coefficient
+  \(-\sum_a m_aK_1(m_aR)/\pi\) from the TBA fixed point under a finite species,
+  positive mass gap, and integrable-kernel hypothesis, with a
+  \(O(R^{-1/2}e^{-2m_*R})\) bound on the two-winding remainder.
 - States the first excited-state finite-size correction with the required
   analytic-strip and pole-data hypotheses.
 - Defines wrapping effects as finite-cycle mirror propagation and records the

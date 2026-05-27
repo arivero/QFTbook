@@ -50,6 +50,30 @@ def check_two_winding_tba_expansion() -> None:
     assert_equal("two-winding energy coefficient", e2, displayed_e2)
 
 
+def check_vacuum_luscher_coefficient_and_threshold() -> None:
+    # The theorem uses
+    #   int_{-infty}^{infty} cosh(theta) exp[-r cosh(theta)] dtheta = 2 K_1(r).
+    # Combined with the energy prefactor -m/(2 pi), this gives -m K_1(mR)/pi.
+    full_line_bessel_factor = Fraction(2, 1)
+    energy_measure_factor = Fraction(-1, 2)
+    assert_equal(
+        "vacuum Luscher K1 coefficient",
+        energy_measure_factor * full_line_bessel_factor,
+        Fraction(-1, 1),
+    )
+
+    masses = [Fraction(2, 1), Fraction(3, 1), Fraction(5, 1)]
+    m_star = min(masses)
+
+    # The two sources of the stated remainder are q_a e^{-m_* R} and q_a^2.
+    # Their exponential rates are respectively m_a + m_* and 2 m_a; both are
+    # bounded below by 2 m_* for every species.
+    mixed_rates = [m + m_star for m in masses]
+    square_rates = [2 * m for m in masses]
+    assert_equal("mixed remainder exponential threshold", min(mixed_rates), 2 * m_star)
+    assert_equal("square remainder exponential threshold", min(square_rates), 2 * m_star)
+
+
 def check_bessel_k1_asymptotic_coefficients() -> None:
     nu = 1
     coeffs = [Fraction(1, 1)]
@@ -88,6 +112,7 @@ def check_mu_residue_orientation_ledger() -> None:
 
 def main() -> None:
     check_two_winding_tba_expansion()
+    check_vacuum_luscher_coefficient_and_threshold()
     check_bessel_k1_asymptotic_coefficients()
     check_f_term_product_subtraction()
     check_mu_residue_orientation_ledger()

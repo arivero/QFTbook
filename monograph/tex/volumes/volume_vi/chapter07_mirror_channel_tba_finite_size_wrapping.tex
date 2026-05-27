@@ -245,6 +245,146 @@ Proposition~\ref{prop:mirror-tba-variational-equation} gives the stated
 energy expansion term by term.
 \end{proof}
 
+\begin{proposition}[Vacuum Luescher term with a remainder bound]
+\label{prop:vacuum-luscher-term-remainder}
+Let the set \(\mathsf A\) of mirror particle species be finite, and let
+\[
+  m_*=\min_{a\in\mathsf A}m_a>0 .
+\]
+Assume that the diagonal mirror TBA equations of
+Proposition~\ref{prop:mirror-tba-variational-equation} have the exclusion
+form written above and that their kernels obey
+\[
+  \Phi
+  =
+  \sup_{a\in\mathsf A}
+  \sum_{b\in\mathsf A}\int_{\R}du\,|\varphi_{ab}(u)|<\infty .
+\]
+Then there are constants \(R_0\) and \(C\), depending on the masses and on
+\(\Phi\), such that for \(R\ge R_0\) the solution in the small-occupation
+branch satisfies
+\[
+  E_0(R)-\mathcal E_{\mathrm{bulk}}R
+  =
+  -\sum_{a\in\mathsf A}\frac{m_a}{\pi}K_1(m_aR)
+  +\mathcal R_2(R),
+  \qquad
+  |\mathcal R_2(R)|\le C R^{-1/2}e^{-2m_*R}.
+\]
+Here \(K_1\) is the modified Bessel function normalized by
+\[
+  K_1(r)=\int_0^\infty d\theta\,e^{-r\cosh\theta}\cosh\theta .
+\]
+\end{proposition}
+
+\begin{proof}
+Write the TBA fixed-point equation directly for
+\[
+  L_a(\theta)=\log(1+e^{-\epsilon_a(\theta)}).
+\]
+With
+\[
+  (K L)_a(\theta)
+  =
+  \sum_{b\in\mathsf A}\int_{\R}d\theta'\,
+  \varphi_{ab}(\theta-\theta')L_b(\theta'),
+\]
+the equation is
+\[
+  L_a(\theta)
+  =
+  \log\!\left(1+q_a(\theta)e^{(K L)_a(\theta)}\right),
+  \qquad
+  q_a(\theta)=e^{-Rm_a\cosh\theta}.
+\]
+The integral bound gives
+\[
+  \|K L\|_\infty\le \Phi\|L\|_\infty .
+\]
+For \(R\) large enough the map
+\[
+  T_R(L)_a(\theta)
+  =
+  \log\!\left(1+q_a(\theta)e^{(K L)_a(\theta)}\right)
+\]
+maps the closed ball
+\(\|L\|_\infty\le 2e^{-Rm_*}\) into itself.  Indeed
+\[
+  |T_R(L)_a(\theta)|
+  \le q_a(\theta)e^{\Phi\|L\|_\infty}
+  \le e^{-Rm_*}e^{2\Phi e^{-Rm_*}}
+  \le 2e^{-Rm_*}
+\]
+after increasing \(R_0\).  The mean-value theorem and
+\(|\log(1+x)-\log(1+y)|\le |x-y|\) for \(x,y\ge0\) give
+\[
+  \|T_R(L)-T_R(M)\|_\infty
+  \le
+  C_\Phi e^{-Rm_*}\|L-M\|_\infty ,
+\]
+with \(C_\Phi\) independent of \(R\).  Thus \(T_R\) is a contraction for
+\(R\ge R_0\), so the small-occupation solution exists uniquely in this ball.
+
+For that solution,
+\[
+  |(K L)_a(\theta)|\le 2\Phi e^{-Rm_*}.
+\]
+Using \(e^x=1+O(x)\) uniformly for
+\(|x|\le 2\Phi e^{-Rm_*}\) and
+\(\log(1+y)=y+O(y^2)\) uniformly for
+\(0\le y\le 2e^{-Rm_*}\), one obtains the pointwise estimate
+\[
+  L_a(\theta)
+  =
+  q_a(\theta)+\delta L_a(\theta),
+  \qquad
+  |\delta L_a(\theta)|
+  \le
+  C q_a(\theta)e^{-Rm_*}+C q_a(\theta)^2 .
+\]
+Substitution in the vacuum-energy formula gives
+\[
+  E_0(R)-\mathcal E_{\mathrm{bulk}}R
+  =
+  -\sum_a\int_{\R}\frac{d\theta}{2\pi}\,
+  m_a\cosh\theta\,q_a(\theta)+\mathcal R_2(R),
+\]
+where
+\[
+  |\mathcal R_2(R)|
+  \le
+  C\sum_a
+  \int_{\R}\frac{d\theta}{2\pi}\,
+  m_a\cosh\theta
+  \left(q_a(\theta)e^{-Rm_*}+q_a(\theta)^2\right).
+\]
+The first integral is
+\[
+  \int_{\R}d\theta\,\cosh\theta\,e^{-Rm_a\cosh\theta}
+  =
+  2K_1(m_aR),
+\]
+so its contribution to the energy is
+\(-m_aK_1(m_aR)/\pi\).  It remains only to record the uniform large-\(R\)
+bound.  For \(\lambda\ge1\),
+\[
+  K_1(\lambda)
+  =
+  \int_0^\infty d\theta\,\cosh\theta\,e^{-\lambda\cosh\theta}
+  \le
+  C\lambda^{-1/2}e^{-\lambda}.
+\]
+This elementary estimate follows by splitting the integral at
+\(\theta=1\): on \(0\le\theta\le1\), \(\cosh\theta\ge 1+\theta^2/3\), while
+on \(\theta\ge1\) the stronger decay of \(e^{-\lambda\cosh\theta}\) gives a
+term bounded by \(C e^{-\lambda\cosh 1}\).  Applying this estimate to
+\(\lambda=m_aR\) and to \(\lambda=2m_aR\) gives
+\[
+  |\mathcal R_2(R)|\le C R^{-1/2}e^{-2m_*R}
+\]
+after another harmless enlargement of \(C\).
+\end{proof}
+
 \begin{example}[Free Majorana leading winding]
 \label{ex:free-majorana-leading-winding}
 For the massive Ising/Majorana theory the derivative kernel vanishes.  The
