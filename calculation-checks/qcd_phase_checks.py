@@ -9,9 +9,10 @@ low-temperature chiral effective theory coefficients, static HTL Debye-mass
 normalizations, retarded HTL angular-kernel bookkeeping, thermodynamic
 derivative identities, finite-regulator Polyakov-loop effective-measure
 bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
-baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, and the
-color-flavor-locked symmetry count.  It is not a lattice simulation and it
-does not assert the existence or order of any QCD phase transition.
+one-gluon exchange color factors for dense pairing, baryon-number cumulants,
+Roberge--Weiss periodicity bookkeeping, and the color-flavor-locked symmetry
+count.  It is not a lattice simulation and it does not assert the existence
+or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -422,6 +423,22 @@ def check_static_htl_debye_mass_normalization():
     assert_equal("SU(3), Nf=3 static HTL Debye coefficient", coefficient, Fraction(3, 1))
 
 
+def check_dense_qq_color_factors():
+    # Trace-delta convention: C_F=(N^2-1)/N, while the two-index symmetric
+    # and antisymmetric Casimirs are twice the common half-trace values.
+    for nc in [3, 4, 5]:
+        c_f = Fraction(nc * nc - 1, nc)
+        c_sym = Fraction(2 * (nc + 2) * (nc - 1), nc)
+        c_asym = Fraction(2 * (nc - 2) * (nc + 1), nc)
+        t1t2_sym = Fraction(1, 2) * (c_sym - 2 * c_f)
+        t1t2_asym = Fraction(1, 2) * (c_asym - 2 * c_f)
+        assert_equal(f"qq symmetric color factor SU({nc})", t1t2_sym, Fraction(nc - 1, nc))
+        assert_equal(f"qq antisymmetric color factor SU({nc})", t1t2_asym, -Fraction(nc + 1, nc))
+
+    assert_equal("SU(3) antisymmetric qq attraction", -Fraction(4, 3), -Fraction(4, 3))
+    assert_equal("SU(3) symmetric qq repulsion", Fraction(2, 3), Fraction(2, 3))
+
+
 def check_cfl_global_goldstone_count():
     # For N_f=N_c=3 and ignoring the anomalous axial U(1), the CFL condensate
     # locks SU(3)_L x SU(3)_R x U(1)_B to diagonal SU(3).  The gauged color
@@ -449,6 +466,7 @@ def main():
     check_baryon_cumulants_and_radius_estimator()
     check_static_htl_debye_mass_normalization()
     check_linde_magnetic_scale()
+    check_dense_qq_color_factors()
     check_cfl_global_goldstone_count()
     print("All QCD phase-structure checks passed.")
 

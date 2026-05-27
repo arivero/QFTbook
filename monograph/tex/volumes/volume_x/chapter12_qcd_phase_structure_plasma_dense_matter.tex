@@ -2401,11 +2401,139 @@ basic logarithmic instability once an attractive channel is present.
 \end{remark}
 
 \section{Color Superconductivity and CFL Order}
+\label{sec:qcd-color-superconductivity-cfl}
 
 At asymptotically large \(\mu_B\), quarks near the Fermi surface interact
 through channels that can be attractive.  The BCS mechanism is then a
 controlled weak-coupling instability of the Fermi surface, though the
 precise gap prefactor is sensitive to magnetic gluon exchange and screening.
+
+\begin{proposition}[Color factor of one-gluon exchange between two quarks]
+\label{prop:qcd-one-gluon-qq-color-factor}
+Let the \(SU(N_c)\) fundamental generators be normalized as throughout the
+monograph,
+\[
+  \operatorname{tr}_{\square}(T^aT^b)=\delta^{ab}.
+\]
+In the tensor product
+\[
+  \square\otimes\square
+  =
+  \operatorname{Sym}^2\square
+  \oplus
+  \wedge^2\square ,
+\]
+the color operator \(T_1^aT_2^a\) has eigenvalues
+\[
+  \left(T_1\cdot T_2\right)_{\operatorname{Sym}^2\square}
+  =
+  \frac{N_c-1}{N_c},
+  \qquad
+  \left(T_1\cdot T_2\right)_{\wedge^2\square}
+  =
+  -\frac{N_c+1}{N_c}.
+\]
+With the Born-kernel sign convention in which the static exchange energy is
+proportional to
+\[
+  \mathcal V_R(\mathbf q)
+  =
+  \frac{g^2}{\mathbf q^2}
+  \left(T_1\cdot T_2\right)_R ,
+\]
+the two-index antisymmetric channel is attractive and the symmetric channel
+is repulsive.  For \(SU(3)\), the attractive channel is
+\(\wedge^2\square=\overline{\square}\), with color factor \(-4/3\), while
+the symmetric sextet has color factor \(2/3\).
+\end{proposition}
+
+\begin{proof}
+Let \(C_2(R)\) denote the quadratic Casimir in the present trace convention.
+On an irreducible summand \(R\subset\square\otimes\square\),
+\[
+  (T_1^a+T_2^a)(T_1^a+T_2^a)=C_2(R)\mathbf 1 .
+\]
+Since each tensor factor is fundamental,
+\[
+  2T_1^aT_2^a=C_2(R)-2C_2(\square).
+\]
+The trace-delta convention doubles the more common half-trace Casimirs, so
+\[
+  C_2(\square)=\frac{N_c^2-1}{N_c},
+\]
+\[
+  C_2(\operatorname{Sym}^2\square)
+  =
+  \frac{2(N_c+2)(N_c-1)}{N_c},
+  \qquad
+  C_2(\wedge^2\square)
+  =
+  \frac{2(N_c-2)(N_c+1)}{N_c}.
+\]
+Substitution gives
+\[
+  \frac12\left[
+    \frac{2(N_c+2)(N_c-1)}{N_c}
+    -\frac{2(N_c^2-1)}{N_c}
+  \right]
+  =
+  \frac{N_c-1}{N_c},
+\]
+and
+\[
+  \frac12\left[
+    \frac{2(N_c-2)(N_c+1)}{N_c}
+    -\frac{2(N_c^2-1)}{N_c}
+  \right]
+  =
+  -\frac{N_c+1}{N_c}.
+\]
+The sign statement follows from the displayed exchange-energy convention.
+\end{proof}
+
+\begin{proposition}[Exchange symmetry and the CFL tensor]
+\label{prop:qcd-cfl-exchange-symmetry}
+For a local \(s\)-wave spin-zero pairing of two left-handed Weyl quarks,
+the coefficient multiplying
+\[
+  q^{a i\alpha}_L q^{b j\beta}_L\epsilon_{\alpha\beta}
+\]
+is symmetric under the simultaneous interchange
+\((a,i)\leftrightarrow(b,j)\).  Therefore a pair in the attractive
+color-antisymmetric channel must also be antisymmetric in flavor.  For
+\(N_c=N_f=3\), the nondegenerate antisymmetric tensor
+\[
+  \epsilon^{abA}\epsilon_{ijA}
+\]
+is invariant precisely under the diagonal subgroup obtained by identifying
+color and flavor \(SU(3)\) rotations.
+\end{proposition}
+
+\begin{proof}
+The fermion fields anticommute, while
+\(\epsilon_{\alpha\beta}\) is antisymmetric.  Hence
+\[
+  q^{b j\alpha}_L q^{a i\beta}_L\epsilon_{\alpha\beta}
+  =
+  -q^{a i\beta}_L q^{b j\alpha}_L\epsilon_{\alpha\beta}
+  =
+  q^{a i\alpha}_L q^{b j\beta}_L\epsilon_{\alpha\beta},
+\]
+where the last equality relabels \(\alpha\leftrightarrow\beta\) and uses
+\(\epsilon_{\beta\alpha}=-\epsilon_{\alpha\beta}\).  Thus the color-flavor
+coefficient must be symmetric under simultaneous exchange.  Since
+Proposition~\ref{prop:qcd-one-gluon-qq-color-factor} identifies the
+attractive color channel as antisymmetric, the flavor tensor must be
+antisymmetric as well.
+
+Let \(U\in SU(3)_{\rm color}\) and \(V\in SU(3)_{\rm flavor}\).  The tensor
+\(\epsilon^{abA}\epsilon_{ijA}\) may be viewed as the identity map from the
+color \(\overline{\square}\) carried by \(\wedge^2\square_{\rm color}\) to
+the flavor \(\overline{\square}\) carried by \(\wedge^2\square_{\rm flavor}\).
+It is preserved exactly when these two \(\overline{\square}\) actions agree,
+which is the diagonal \(SU(3)\) condition after the chosen color-flavor
+identification.  This is the color-flavor locking statement.
+\end{proof}
 
 \begin{definition}[CFL condensate datum]
 \label{def:qcd-cfl-condensate-datum}
@@ -2436,23 +2564,42 @@ flavor rotations preserving the same diagonal \(SU(3)\) leave the
 representative invariant.
 \end{definition}
 
-The color group is gauged, so broken color generators do not produce
-physical Nambu--Goldstone particles; they Higgs the gauge bosons.  Ignoring
-the anomalous axial \(U(1)\), the global symmetry breaking pattern is
+\begin{proposition}[Physical CFL Goldstone count]
+\label{prop:qcd-cfl-goldstone-count}
+Assume \(N_c=N_f=3\), ignore the anomalous axial \(U(1)\), and treat the
+CFL datum of Definition~\ref{def:qcd-cfl-condensate-datum} as the
+source-selected order in an infinite-volume dense state.  The physical
+global symmetry breaking pattern is
 \[
   SU(3)_L\times SU(3)_R\times U(1)_B
   \longrightarrow
   SU(3)_{\rm diagonal},
 \]
-and therefore gives
+and the number of physical Nambu--Goldstone modes before quark-mass effects
+are included is
 \[
-  (8+8+1)-8=9
+  (8+8+1)-8=9.
 \]
-physical Goldstone modes before quark-mass effects are included.  This
-count is a group-theoretic statement about the order parameter.  Establishing
-which region of QCD realizes it requires control of dense QCD, where direct
-lattice importance sampling is obstructed by
+\end{proposition}
+
+\begin{proof}
+The color \(SU(3)\) is gauged.  Directions that rotate the condensate by a
+pure color transformation are Higgs directions of the gauge field, not
+generators of physical global particles.  The remaining exact global
+generators, in the massless and anomaly-idealized limit stated in the
+proposition, span
+\[
+  \mathfrak{su}(3)_L\oplus\mathfrak{su}(3)_R\oplus\mathfrak u(1)_B .
+\]
+The CFL tensor identifies a diagonal \(\mathfrak{su}(3)\) subgroup with the
+unbroken simultaneous flavor rotation, as shown in
+Proposition~\ref{prop:qcd-cfl-exchange-symmetry}.  The dimension of the
+broken global coset is therefore \(8+8+1-8=9\).  The conclusion is only a
+group-theoretic consequence of the source-selected CFL order.  Establishing
+which region of QCD realizes this order requires control of dense QCD, where
+direct lattice importance sampling is obstructed by
 Proposition~\ref{prop:qcd-finite-density-sign-problem}.
+\end{proof}
 
 \section{Comparison of Confinement Criteria}
 

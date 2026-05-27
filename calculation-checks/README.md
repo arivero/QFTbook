@@ -62,8 +62,9 @@ Current checks:
   retarded HTL angular-kernel transversality bookkeeping, Roberge--Weiss
   angle-periodicity bookkeeping, Polyakov-loop effective-measure center-charge
   bookkeeping, high-density Fermi-surface density, dense HDL Debye-mass, and
-  patch-curvature coefficients, baryon-number cumulants and radius
-  estimators, and the CFL Goldstone count.
+  patch-curvature coefficients, one-gluon exchange color factors in dense
+  pairing channels, baryon-number cumulants and radius estimators, and the
+  CFL Goldstone count.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
   number conservation, quark/gluon momentum-column sum rules, the exact

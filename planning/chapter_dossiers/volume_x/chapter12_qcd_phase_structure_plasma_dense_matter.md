@@ -55,6 +55,8 @@ GitHub issue #628.
   theory shell scale, patch quark field, and residual momentum components.
 - `N_ch(0)`, `Delta`: channel density of states at the Fermi surface and the
   superconducting gap entering the BCS logarithm.
+- `T_1 dot T_2`, `C_2(R)`: one-gluon exchange color operator and quadratic
+  Casimir used to identify the attractive dense-quark pairing channel.
 - `Delta_L`, `Delta_R`: CFL pairing amplitudes.
 
 ## Claim Ledger
@@ -144,7 +146,12 @@ GitHub issue #628.
 - Derives the BCS logarithm from the Fermi-surface shell as a controlled
   instability of a specified attractive channel, separating the universal
   logarithmic mechanism from the QCD-specific gap prefactor.
-- Defines the CFL condensate datum and performs the physical Goldstone count.
+- Derives the one-gluon exchange color factors for
+  `square tensor square = Sym^2 square plus wedge^2 square` in the
+  trace-delta convention, identifies the antisymmetric channel as attractive,
+  proves the exchange symmetry that pairs color antisymmetry with flavor
+  antisymmetry in spin-zero \(s\)-wave pairing, defines the CFL condensate
+  datum, and proves the physical Goldstone count.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
 
@@ -167,6 +174,7 @@ GitHub issue #628.
   derivative identities, Roberge--Weiss angle-periodicity bookkeeping,
   Polyakov-loop effective-measure center-charge bookkeeping,
   high-density Fermi-surface and dense-HDL coefficient bookkeeping,
+  dense one-gluon-exchange color-factor bookkeeping,
   baryon-number cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
@@ -217,3 +225,6 @@ GitHub issue #628.
 - 2026-05-27 high-density EFT pass: added the patch decomposition, density
   of states, tree-level HDET action, zero-temperature HDL Debye coefficient,
   and BCS logarithm derivation before the CFL order-parameter discussion.
+- 2026-05-27 CFL color-factor pass: added the trace-delta one-gluon exchange
+  color-factor derivation, the spin-zero exchange-symmetry derivation, and a
+  proposition-level physical Goldstone count.
