@@ -706,6 +706,164 @@ polynomials in \(q\).  Such terms have no cut or hyperboloid support and are
 separated as subtraction/contact terms in dispersion formulae.
 \end{proof}
 
+\begin{proposition}[Coincidence regions from the spectral condition]
+\label{prop:source-current-commutator-coincidence-region}
+Let \(J_b,J_c\) be local source-current fields whose matrix elements with the
+states below define tempered distributions.  Let \(\Psi_i,\Psi_f\) be
+normalizable vectors whose joint energy-momentum spectral supports are compact
+sets \(B_i,B_f\subset\operatorname{Spec}(P)\), and let \(E(\cdot)\) be the
+joint spectral measure of \(P^\mu\).  Define the intermediate spectral
+matrix distributions
+\begin{align}
+  \dd\nu^+_{bc}(r_f,p,r_i)
+  &=
+  \langle E(\dd r_f)\Psi_f,
+    J_b(0)E(\dd p)J_c(0)E(\dd r_i)\Psi_i\rangle,
+  \nonumber\\
+  \dd\nu^-_{bc}(r_f,p,r_i)
+  &=
+  \langle E(\dd r_f)\Psi_f,
+    J_c(0)E(\dd p)J_b(0)E(\dd r_i)\Psi_i\rangle .
+  \label{eq:source-current-intermediate-spectral-distributions}
+\end{align}
+Let \(\mathfrak S^+_{bc}\) and \(\mathfrak S^-_{bc}\) be their supports in
+\[
+  B_f\times\operatorname{Spec}(P)\times B_i .
+\]
+With the
+Fourier convention
+\[
+  \widehat f(q)=\int\ee^{\ii q\cdot x}f(x)\,\dd^4x,
+\]
+the two ordered matrix elements
+\[
+  C^+_{bc}(x)=
+  \langle\Psi_f,J_b(x/2)J_c(-x/2)\Psi_i\rangle,
+  \qquad
+  C^-_{bc}(x)=
+  \langle\Psi_f,J_c(-x/2)J_b(x/2)\Psi_i\rangle
+\]
+obey
+\begin{align}
+  \operatorname{supp}\widehat C^+_{bc}
+  \subset
+  \left\{
+    p-\frac12(r_f+r_i)
+    \ \middle|\ (r_f,p,r_i)\in\mathfrak S^+_{bc}
+  \right\},
+  \nonumber\\
+  \operatorname{supp}\widehat C^-_{bc}
+  \subset
+  \left\{
+    \frac12(r_f+r_i)-p
+    \ \middle|\ (r_f,p,r_i)\in\mathfrak S^-_{bc}
+  \right\}.
+  \label{eq:source-current-ordered-supports-wavepacket}
+\end{align}
+Hence the commutator distribution
+\[
+  C_{bc}=C^+_{bc}-C^-_{bc}
+\]
+has Fourier transform supported in the union of the two displayed sets.
+Every open set \(R\) disjoint from this union is a coincidence region:
+\[
+  \widehat C_{bc}(q)=0\qquad(q\in R).
+  \label{eq:source-current-coincidence-vanishing}
+\]
+The coarser but often sufficient replacement
+\[
+  \mathfrak S^\pm_{bc}\subset
+  B_f\times\overline V_+\times B_i
+\]
+uses
+\[
+  K_{fi}=\frac12(B_f+B_i)
+  =
+  \left\{\frac12(r_f+r_i)\ \middle|\ r_f\in B_f,\ r_i\in B_i\right\}
+\]
+and gives the model coincidence region between the two shifted spectral cones
+\[
+  \overline V_+-K_{fi},
+  \qquad
+  K_{fi}-\overline V_+ .
+\]
+For generalized sharp external momenta \(Q_i,Q_f\), one recovers the familiar
+shorthand by setting \(K=(Q_f+Q_i)/2\) and
+\[
+  \Sigma_{bc}^{fi}=\operatorname{supp}
+  \langle J_b(0)^*\Psi_f,E(\dd p)J_c(0)\Psi_i\rangle,
+  \qquad
+  \Sigma_{cb}^{fi}=\operatorname{supp}
+  \langle J_c(0)^*\Psi_f,E(\dd p)J_b(0)\Psi_i\rangle ,
+\]
+so that the two ordered supports are contained in
+\[
+  \Sigma_{bc}^{fi}-K,\qquad K-\Sigma_{cb}^{fi}.
+\]
+\end{proposition}
+
+\begin{proof}
+Translation covariance gives
+\[
+  J_b(x/2)=\ee^{\ii P\cdot x/2}J_b(0)\ee^{-\ii P\cdot x/2},
+  \qquad
+  J_c(-x/2)=\ee^{-\ii P\cdot x/2}J_c(0)\ee^{\ii P\cdot x/2}.
+\]
+Insert the spectral resolution of \(P\) on the external vectors and between
+the two currents.  The first ordered matrix element becomes
+\[
+\begin{aligned}
+  C^+_{bc}(x)
+  &=
+  \int
+  \ee^{\ii(r_f+r_i)\cdot x/2}
+  \ee^{-\ii p\cdot x}\,
+  \dd\nu^+_{bc}(r_f,p,r_i)\\
+  &=
+  \int
+  \ee^{\ii((r_f+r_i)/2-p)\cdot x}\,
+  \dd\nu^+_{bc}(r_f,p,r_i),
+\end{aligned}
+  \label{eq:source-current-first-ordered-spectral-form}
+\]
+where the equality is first read after smearing all fields and then extended
+to the matrix-element distribution by Wightman temperedness.  Pairing against
+a test function in \(x\) and using the Fourier convention in the statement
+shows that \(\widehat C^+_{bc}\) is supported where
+\[
+  q+\frac12(r_f+r_i)-p=0.
+\]
+Thus \(q=p-\frac12(r_f+r_i)\) with
+\((r_f,p,r_i)\in\mathfrak S^+_{bc}\).  This is the first inclusion in
+\eqref{eq:source-current-ordered-supports-wavepacket}.
+
+The second ordered product is
+\[
+\begin{aligned}
+  C^-_{bc}(x)
+  &=
+  \int
+  \ee^{-\ii(r_f+r_i)\cdot x/2}
+  \ee^{\ii p\cdot x}\,
+  \dd\nu^-_{bc}(r_f,p,r_i)\\
+  &=
+  \int
+  \ee^{\ii(p-(r_f+r_i)/2)\cdot x}\,
+  \dd\nu^-_{bc}(r_f,p,r_i).
+\end{aligned}
+  \label{eq:source-current-second-ordered-spectral-form}
+\]
+Therefore its Fourier transform is supported where
+\[
+  q+p-\frac12(r_f+r_i)=0,
+\]
+or \(q=\frac12(r_f+r_i)-p\), proving the second inclusion.  Taking the
+difference of the two ordered products proves the support inclusion for the
+commutator.  A distribution whose Fourier support is contained in a closed set
+vanishes on every open set disjoint from that support, which proves
+\eqref{eq:source-current-coincidence-vanishing}.
+\end{proof}
+
 \begin{corollary}[JLD input for the LSZ retarded commutator]
 \label{cor:jld-input-for-lsz-retarded-commutator}
 Let
@@ -740,10 +898,10 @@ source-current reduction.
 
 \begin{proof}
 Locality of the source currents gives support of \(C_{bc}(x)\) in the closed
-causal cone.  Translation covariance and the spectral theorem applied to the
-intermediate states between the two currents give the coincidence slabs in
-which the causal Fourier transform vanishes; the functions \(h_\pm\) are the
-lower spectral thresholds for the two possible intermediate-state orderings.
+causal cone.  Proposition~\ref{prop:source-current-commutator-coincidence-region}
+gives the coincidence regions in which the causal Fourier transform vanishes;
+the functions \(h_\pm\) are boundary descriptions of the lower spectral
+thresholds for the two possible intermediate-state orderings.
 The assumed Dyson regularity is precisely the additional analytic regularity
 needed to run Theorem~\ref{thm:dyson-causal-commutator-representation}; it is
 not supplied by the words ``tempered distribution'' alone.  The theorem then
@@ -761,13 +919,16 @@ subtraction terms.
 Corollary~\ref{cor:primitive-domain-output-for-scattering} is the rigorous
 crossing-domain input supplied directly by the Wightman locality and spectrum
 axioms, while
-Theorem~\ref{thm:dyson-causal-commutator-representation} supplies the
-causal-commutator representation used to enlarge domains from coincidence
-regions.  The stronger fixed-\(t\) cut-plane theorem used in dispersion
-relations still requires three more steps: the Dyson-regularity verification
-for the relevant LSZ source-current matrix coefficients, the
-Bros--Epstein--Glaser analytic-completion step, and the LSZ pole-separation
-transfer hypotheses.  The analytic LSZ transfer itself is proved in
+Proposition~\ref{prop:source-current-commutator-coincidence-region} supplies
+the spectral coincidence regions for the LSZ source-current commutator.
+Theorem~\ref{thm:dyson-causal-commutator-representation} then supplies the
+causal-commutator representation used to enlarge domains from those
+coincidence regions, provided the commutator is Dyson-regular.  The stronger
+fixed-\(t\) cut-plane theorem used in dispersion relations still requires the
+Dyson-regularity verification for the relevant LSZ source-current matrix
+coefficients, the Bros--Epstein--Glaser analytic-completion step, and the LSZ
+pole-separation transfer hypotheses.  The analytic LSZ transfer itself is
+proved in
 Theorem~\ref{thm:lsz-transfer-fixed-t-domain}: once an off-shell fixed-\(t\)
 domain has normal-crossing external one-particle poles with uniform boundary
 growth, restricting the LSZ-amputated germ to the external mass shells

@@ -257,3 +257,13 @@
   off-shell normal-coordinate and large-contour growth hypotheses needed to
   apply the LSZ-transfer and finite-subtraction Cauchy theorems of Volume II,
   Chapter 7.
+- 2026-05-27 issue #495 spectral-support pass: added the source-current
+  coincidence-region proposition.  The proof derives the Fourier-support
+  inclusions for the two ordered source-current matrix elements from
+  translation covariance and the joint spectral theorem, using spectral
+  matrix distributions on
+  \(B_f\times\operatorname{Spec}(P)\times B_i\).  The generalized
+  sharp-momentum shorthand recovers the supports \(\Sigma_{bc}^{fi}-K\) and
+  \(K-\Sigma_{cb}^{fi}\).  The coincidence slab used by the Dyson/JLD theorem
+  is therefore a proved spectral-support output; the remaining source-current
+  issue is Dyson regularity, not the spectral vanishing region.

@@ -207,14 +207,17 @@ hypotheses:
 10f. The chapter now records the QFT-specific fixed-\(t\) domain proof stack:
     primitive tube analyticity of four-point Wightman functions; local
     commutativity at Jost configurations plus edge-of-the-wedge enlargement; the
+    source-current coincidence-region support theorem from the joint spectral
+    condition; the
     Jost--Lehmann--Dyson representation for Dyson-regular retarded commutator
     matrix elements; the Bros--Epstein--Glaser enlargement to the
     Lehmann--Martin domain; and the verification that this off-shell domain
     has the normal-crossing external-pole control required by the LSZ-transfer
     theorem.  The primitive Wightman tube-domain theorem, Jost-edge gluing
-    theorem, conditional causal-commutator Dyson/JLD representation, and
-    analytic LSZ-transfer theorem are now proved in the manuscript, and the
-    one-variable finite-subtraction Cauchy theorem is also proved.  The
+    theorem, source-current coincidence-region theorem, conditional
+    causal-commutator Dyson/JLD representation, and analytic LSZ-transfer
+    theorem are now proved in the manuscript, and the one-variable
+    finite-subtraction Cauchy theorem is also proved.  The
     remaining Dyson-regularity verification for the LSZ source-current matrix
     coefficients and the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
     completion with uniform off-shell control and a pointwise large-contour
@@ -431,3 +434,9 @@ hypotheses:
   on the QFT domain/growth theorem: Dyson regularity for LSZ source-current
   kernels and the BEG/Lehmann--Martin fixed-\(t\) enlargement with off-shell
   normal-coordinate and large-contour control.
+- 2026-05-27 issue #495 spectral-support pass: Chapter 6 now proves the
+  source-current coincidence-region input from translation covariance and the
+  joint spectral theorem.  The fixed-\(t\) proof stack should no longer list
+  spectral vanishing in the coincidence slab as an asserted JLD premise; it is
+  now a derived support statement.  The remaining source-current premise is
+  Dyson regularity.

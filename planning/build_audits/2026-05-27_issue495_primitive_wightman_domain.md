@@ -29,6 +29,13 @@ inside the monograph, not left as literature imports.
   - `thm:dyson-causal-commutator-representation`, proving the
     Dyson/Jost--Lehmann representation for a Dyson-regular causal commutator
     distribution whose Fourier transform vanishes in a coincidence slab.
+  - `prop:source-current-commutator-coincidence-region`, deriving the
+    coincidence regions for LSZ source-current commutator matrix elements
+    directly from translation covariance and the joint spectral theorem.  The
+    wave-packet theorem uses spectral matrix distributions on
+    \(B_f\times\operatorname{Spec}(P)\times B_i\), with the generalized
+    sharp-momentum shorthand giving the familiar supports
+    \(\Sigma_{bc}^{fi}-K\) and \(K-\Sigma_{cb}^{fi}\).
   - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
     to LSZ source-current commutators and separating finite contact
     polynomials.
@@ -62,9 +69,11 @@ inside the monograph, not left as literature imports.
 
 Issue #495 is not closed by this checkpoint.  The primitive tube-domain and
 Jost-edge gluing theorems are now in the monograph.  The
-causal-commutator Dyson/JLD theorem is now proved for the mathematically
-defined class of Dyson-regular causal commutators, with the light-cone lift
-regularity no longer hidden in notation.  Remaining closure work:
+source-current coincidence-region support statement is now proved from the
+spectral theorem.  The causal-commutator Dyson/JLD theorem is now proved for
+the mathematically defined class of Dyson-regular causal commutators, with the
+light-cone lift regularity no longer hidden in notation.  Remaining closure
+work:
 
 1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
    in the massive scattering application, or state the minimal wavefront or
