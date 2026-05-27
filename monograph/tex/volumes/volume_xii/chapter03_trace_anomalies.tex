@@ -3,125 +3,558 @@
 
 \ConventionsEuclidean
 
-The stress tensor of Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}
-is defined by variation with respect to a background metric.  This chapter
-studies the trace obtained by Weyl variation.  The central object is the
-renormalized generating functional as a functional of background fields.
+The preceding chapter defined renormalized stress tensors on curved
+backgrounds by locally covariant point splitting.  The present chapter studies
+the trace of that stress tensor.  The trace anomaly is a local response of
+the renormalized source functional to a Weyl variation of the background
+metric.  It is part of the same curved-background QFT datum as the stress
+tensor, its contact terms, and its finite curvature counterterms.
 
-\section{Generating Functional and Weyl Variation}
+\section{Metric Source Convention}
 
-Let \(W[g]\) be the renormalized connected Euclidean generating functional of
-a QFT on a smooth \(D\)-manifold with metric \(g_{\mu\nu}\).  The stress
-tensor expectation value is defined by
+Let \(M\) be a closed smooth \(D\)-manifold and let \(g\) be a Riemannian
+metric.  Write
 \[
-  \delta W[g]
-  =
-  \frac12\int_M d^Dx\,\sqrt g\,
-  \langle T^{\mu\nu}(x)\rangle_g\,\delta g_{\mu\nu}(x)
+  \mathcal W[g,\lambda]
 \]
-for metric variations in the chosen renormalization scheme.  A local Weyl
-variation is
+for the renormalized Euclidean effective action, including all declared
+background sources \(\lambda\) besides the metric.  In a path-integral
+regularization this is \(-\log Z[g,\lambda]\), after local counterterms have
+been fixed.  The stress-tensor expectation value is defined by
+\begin{equation}
+  \delta_g\mathcal W[g,\lambda]
+  =
+  -\frac12\int_M d^D x\,\sqrt g\,
+  \langle T^{\mu\nu}(x)\rangle_{g,\lambda}\,
+  \delta g_{\mu\nu}(x).
+  \label{eq:curved-trace-stress-convention}
+\end{equation}
+Equivalently,
+\[
+  \langle T^{\mu\nu}(x)\rangle_{g,\lambda}
+  =
+  -\frac{2}{\sqrt g}
+  \frac{\delta\mathcal W}{\delta g_{\mu\nu}(x)} .
+\]
+For a local Weyl parameter \(\sigma\in C^\infty(M)\),
 \[
   \delta_\sigma g_{\mu\nu}=2\sigma g_{\mu\nu}.
 \]
-Therefore
-\[
-  \delta_\sigma W[g]
+Substituting this variation into
+\eqref{eq:curved-trace-stress-convention} gives
+\begin{equation}
+  \delta_\sigma\mathcal W[g,\lambda]
   =
-  \int_M d^Dx\,\sqrt g\,
-  \sigma(x)\langle T^\mu{}_\mu(x)\rangle_g .
-\]
-If the classical theory is Weyl invariant, a nonzero local functional on the
-right side is a trace anomaly.
+  -\int_M d^D x\,\sqrt g\,
+  \sigma(x)\,\langle T^\mu{}_\mu(x)\rangle_{g,\lambda}.
+  \label{eq:curved-trace-weyl-response}
+\end{equation}
 
-\section{Locality and Wess--Zumino Consistency}
-
-Assume the regulator and renormalization prescription produce a local Weyl
-variation
+\begin{definition}[Trace-anomaly density]
+\label{def:curved-trace-anomaly-density}
+For a theory whose classical curved-background action is Weyl invariant
+after the assigned transformations of all sources \(\lambda\), the
+renormalized trace-anomaly density \(\mathcal A[g,\lambda]\) is the local
+scalar density coefficient defined by
 \[
-  \delta_\sigma W[g]=\int_M d^Dx\,\sqrt g\,\sigma\,\mathcal A[g].
-\]
-Since Weyl transformations commute,
-\[
-  [\delta_{\sigma_1},\delta_{\sigma_2}]W=0.
-\]
-This gives the Wess--Zumino consistency condition
-\[
-  \delta_{\sigma_1}\!\int\sqrt g\,\sigma_2\mathcal A
+  \langle T^\mu{}_\mu(x)\rangle_{g,\lambda}
   =
-  \delta_{\sigma_2}\!\int\sqrt g\,\sigma_1\mathcal A .
+  \mathcal A[g,\lambda](x)
 \]
-An anomaly is therefore a cohomology class of local Weyl variations modulo
-Weyl variations of local counterterms.  If
+in the vacuum or state-independent part of the Weyl response.  Thus
+\begin{equation}
+  \delta_\sigma\mathcal W[g,\lambda]
+  =
+  -\int_M d^D x\,\sqrt g\,\sigma\,\mathcal A[g,\lambda].
+  \label{eq:curved-trace-anomaly-definition}
+\end{equation}
+\end{definition}
+
+If the theory has mass parameters, relevant couplings, or fields assigned
+nontrivial Weyl transformations, the trace Ward identity contains additional
+operator terms such as \(\beta^i\mathcal O_i\), masses times composite
+operators, and improvement terms.  This chapter isolates the purely local
+curvature part which remains in a conformal theory or in the state-independent
+part of a locally covariant stress tensor.
+
+\section{Wess--Zumino Consistency}
+
+Let
 \[
-  W[g]\mapsto W[g]+\int_M\sqrt g\,L_{\rm ct}(g)
+  \mathbf A_\sigma[g,\lambda]
+  :=
+  \int_M d^D x\,\sqrt g\,\sigma\,\mathcal A[g,\lambda].
 \]
-is a finite local counterterm change, then \(\mathcal A\) changes by the Weyl
-variation of \(L_{\rm ct}\).
-
-\section{Two Dimensions}
-
-In two dimensions, for a unitary conformal theory on a curved background, the
-metric trace anomaly has the form
+The Weyl transformations form an abelian Lie algebra:
 \[
+  [\delta_{\sigma_1},\delta_{\sigma_2}]g_{\mu\nu}=0
+\]
+when the source transformations are also abelian.  Since
+\(\mathcal W[g,\lambda]\) is a functional, the commutator of its two Weyl
+variations must vanish.
+
+\begin{proposition}[Wess--Zumino consistency]
+\label{prop:curved-trace-wz-consistency}
+Assume the Weyl variation of \(\mathcal W\) is local and has the form
+\eqref{eq:curved-trace-anomaly-definition}.  Then
+\[
+  \delta_{\sigma_1}\mathbf A_{\sigma_2}
+  -
+  \delta_{\sigma_2}\mathbf A_{\sigma_1}
+  =
+  0.
+  \label{eq:curved-trace-wz-consistency}
+\]
+If a finite local counterterm \(B[g,\lambda]\) is added to
+\(\mathcal W\), then
+\[
+  \mathbf A_\sigma\longmapsto
+  \mathbf A_\sigma-\delta_\sigma B.
+  \label{eq:curved-trace-counterterm-coboundary}
+\]
+Therefore the intrinsic trace anomaly is a class in local Weyl cohomology:
+local solutions of \eqref{eq:curved-trace-wz-consistency} modulo local Weyl
+variations of counterterms.
+\end{proposition}
+
+\begin{proof}
+Using \(\delta_\sigma\mathcal W=-\mathbf A_\sigma\),
+\[
+  0
+  =
+  [\delta_{\sigma_1},\delta_{\sigma_2}]\mathcal W
+  =
+  -\delta_{\sigma_1}\mathbf A_{\sigma_2}
+  +\delta_{\sigma_2}\mathbf A_{\sigma_1}.
+\]
+This is \eqref{eq:curved-trace-wz-consistency}.  If
+\(\mathcal W'=\mathcal W+B\), then
+\[
+  -\mathbf A'_\sigma
+  =
+  \delta_\sigma\mathcal W'
+  =
+  -\mathbf A_\sigma+\delta_\sigma B,
+\]
+which gives \eqref{eq:curved-trace-counterterm-coboundary}.
+\end{proof}
+
+The proposition is formal only after locality has been supplied.  In
+perturbation theory, locality follows from the locality of counterterms.  For
+free fields on curved backgrounds, it follows from the local Hadamard
+parametrix or, equivalently, from local heat-kernel coefficients.  In a
+nonperturbative locally covariant QFT, locality is an additional structural
+property of the background dependence.
+
+\section{Curvature Variations under Weyl Rescaling}
+
+The classification in low dimensions uses a few explicit Weyl variations.
+On a \(D\)-dimensional Riemannian manifold,
+\begin{align}
+  \delta_\sigma\sqrt g
+  &=
+  D\sigma\sqrt g,
+  \label{eq:weyl-variation-volume}\\
+  \delta_\sigma R
+  &=
+  -2\sigma R-2(D-1)\nabla^2\sigma,
+  \label{eq:weyl-variation-ricci-scalar}
+\end{align}
+where \(\nabla^2=\nabla_\mu\nabla^\mu\).  In \(D=4\), these imply
+\begin{equation}
+  \delta_\sigma\int_M d^4x\,\sqrt g\,R^2
+  =
+  -12\int_M d^4x\,\sqrt g\,\sigma\,\nabla^2R
+  \label{eq:r-squared-counterterm-weyl-variation}
+\end{equation}
+on a closed manifold.
+
+\begin{proof}
+The variation of the volume form follows from
+\(\delta\sqrt g=\frac12\sqrt g\,g^{\mu\nu}\delta g_{\mu\nu}\).  The standard
+variation of the scalar curvature under a metric variation \(h_{\mu\nu}\) is
+\[
+  \delta R
+  =
+  -R^{\mu\nu}h_{\mu\nu}
+  +\nabla^\mu\nabla^\nu h_{\mu\nu}
+  -\nabla^2(g^{\mu\nu}h_{\mu\nu}).
+\]
+Putting \(h_{\mu\nu}=2\sigma g_{\mu\nu}\) gives
+\eqref{eq:weyl-variation-ricci-scalar}.  In \(D=4\),
+\[
+  \delta_\sigma(\sqrt g\,R^2)
+  =
+  4\sigma\sqrt g\,R^2
+  +2\sqrt g\,R(-2\sigma R-6\nabla^2\sigma)
+  =
+  -12\sqrt g\,R\nabla^2\sigma .
+\]
+Integrating by parts twice gives
+\eqref{eq:r-squared-counterterm-weyl-variation}.
+\end{proof}
+
+Equation~\eqref{eq:r-squared-counterterm-weyl-variation} is the concrete
+reason why the coefficient of \(\nabla^2R\) in four dimensions is a scheme
+coordinate.  Adding \(\kappa(16\pi^2)^{-1}\int\sqrt g\,R^2\) shifts the
+coefficient \(b\) in the convention below by \(12\kappa\).
+
+\section{Two-Dimensional Anomaly}
+
+In two dimensions, the local parity-even scalar of Weyl weight two is the
+Ricci scalar.  The trace anomaly of a unitary two-dimensional conformal field
+theory is written
+\begin{equation}
   \langle T^\mu{}_\mu\rangle_g
   =
-  -\frac{c}{24\pi}R
-\]
-with the sign tied to the convention for \(W[g]\) and the Euclidean action.
-The coefficient \(c\) is the same parameter that appears in the flat-space
-stress-tensor two-point function after the normalization of \(T_{\mu\nu}\) is
-fixed.  The integral of \(R\) is topological on a closed surface, but the
-local relation is stronger: it controls the response to a space-dependent
-Weyl factor.
-
-\section{Four Dimensions}
-
-In four dimensions, the parity-even trace anomaly of a conformal theory has
-the form
+  -\frac{c}{24\pi}R .
+  \label{eq:curved-two-dimensional-trace-anomaly}
+\end{equation}
+The coefficient \(c\) is the Virasoro central charge when the stress tensor
+is normalized by
 \[
+  \langle T(z)T(0)\rangle=\frac{c}{2z^4}
+\]
+on the flat complex plane.
+
+\begin{proposition}[Two-dimensional Wess--Zumino action]
+\label{prop:curved-two-dimensional-wz-action}
+Let \(\hat g_{\mu\nu}=e^{2\tau}g_{\mu\nu}\).  The functional
+\[
+  S_{\rm WZ}^{(2)}[\tau;g]
+  =
+  -\frac{c}{24\pi}
+  \int_M d^2x\,\sqrt g\,\bigl(\tau R+(\nabla\tau)^2\bigr)
+\]
+satisfies
+\[
+  S_{\rm WZ}^{(2)}[\tau+\sigma;g]
+  -
+  S_{\rm WZ}^{(2)}[\tau;g]
+  =
+  -\frac{c}{24\pi}
+  \int_M d^2x\,\sqrt{\hat g}\,\sigma\,R[\hat g]
+  +O(\sigma^2)
+\]
+for infinitesimal \(\sigma\).  Hence it integrates the anomaly
+\eqref{eq:curved-two-dimensional-trace-anomaly}.
+\end{proposition}
+
+\begin{proof}
+In two dimensions,
+\[
+  \sqrt{\hat g}\,R[\hat g]
+  =
+  \sqrt g\,(R-2\nabla^2\tau).
+\]
+Varying \(S_{\rm WZ}^{(2)}\) with respect to \(\tau\) gives
+\[
+  \delta_\sigma S_{\rm WZ}^{(2)}
+  =
+  -\frac{c}{24\pi}
+  \int_M\sqrt g\,\sigma(R-2\nabla^2\tau)
+  =
+  -\frac{c}{24\pi}
+  \int_M\sqrt{\hat g}\,\sigma R[\hat g],
+\]
+after integrating by parts in the \((\nabla\tau)^2\) term.
+\end{proof}
+
+\section{Four-Dimensional Parity-Even Anomaly}
+
+In four dimensions define
+\[
+  E_4
+  =
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+  -4R_{\mu\nu}R^{\mu\nu}
+  +R^2
+\]
+and
+\[
+  W^2
+  =
+  W_{\mu\nu\rho\sigma}W^{\mu\nu\rho\sigma}
+  =
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+  -2R_{\mu\nu}R^{\mu\nu}
+  +\frac13R^2 .
+\]
+For a parity-even four-dimensional conformal theory on a closed manifold,
+the metric trace anomaly has the form
+\begin{equation}
   \langle T^\mu{}_\mu\rangle_g
   =
   \frac{1}{16\pi^2}
-  \left(c\,W_{\mu\nu\rho\sigma}W^{\mu\nu\rho\sigma}
-  -a\,E_4
-  +b\,\Box R\right)
-\]
-plus background gauge-field and parity-odd terms when such backgrounds are
-present.  Here
+  \left(
+  c\,W^2-a\,E_4+b\,\nabla^2R
+  \right)
+  \label{eq:curved-four-dimensional-trace-anomaly}
+\end{equation}
+plus terms involving other background fields when such sources are present.
+
+\begin{proposition}[Four-dimensional cohomology representatives]
+\label{prop:curved-four-dimensional-weyl-classes}
+Modulo local Weyl variations of dimension-four metric counterterms and total
+derivatives, the parity-even metric anomaly on a closed four-manifold has the
+two nontrivial representatives \(E_4\) and \(W^2\).  The term
+\(\nabla^2R\) is shifted by the local counterterm \(\int\sqrt g\,R^2\).
+\end{proposition}
+
+\begin{proof}
+The dimension-four parity-even scalar curvature basis is spanned by
 \[
-  E_4=
-  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
-  -4R_{\mu\nu}R^{\mu\nu}+R^2
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
+  \qquad
+  R_{\mu\nu}R^{\mu\nu},
+  \qquad
+  R^2,
+  \qquad
+  \nabla^2R .
 \]
-is the Euler density and \(W_{\mu\nu\rho\sigma}\) is the Weyl tensor.  The
-\(\Box R\) coefficient is scheme dependent because it can be shifted by a
-local \(R^2\) counterterm.  The coefficients \(a\) and \(c\) are invariant
-under such local metric counterterm changes in ordinary four-dimensional CFT
-settings.
+The two combinations \(E_4\) and \(W^2\) displayed above are linearly
+independent.  The integral of \(E_4\) is topological on a closed
+four-manifold, so its Weyl variation is a total derivative and satisfies
+Wess--Zumino consistency.  The density \(\sqrt g\,W^2\) is pointwise Weyl
+invariant in four dimensions, so it also satisfies consistency.  The
+\(\nabla^2R\) term is the Weyl variation of the \(R^2\) counterterm by
+\eqref{eq:r-squared-counterterm-weyl-variation}.  These three directions
+span the basis modulo a choice of representative, leaving \(E_4\) and \(W^2\)
+as the nontrivial local cohomology classes in this sector.
+\end{proof}
 
-\section{What Must Be Proved in a QFT}
+If background gauge fields are present, further type-B terms appear.  For a
+dimensionless background gauge field \(A\), the density
+\(\operatorname{tr}_{\mathcal R}F_{\mu\nu}F^{\mu\nu}\) has Weyl weight four,
+so its coefficient is constrained by the flavor current two-point
+normalization and by the choice of current-source convention.  Parity-odd
+terms and manifolds with boundary require a separate orientation and boundary
+classification.
 
-The displayed classifications use locality of the renormalized background
-variation.  In a concrete QFT one must still prove or assume that:
+\section{Heat-Kernel Derivation for Free Conformal Fields}
+
+The following computation gives a controlled derivation of the free-field
+entries in \eqref{eq:curved-four-dimensional-trace-anomaly}.  Let \(P\) be a
+positive Laplace-type operator on a vector bundle \(E\to M\), written
+\[
+  P=-(g^{\mu\nu}\nabla_\mu\nabla_\nu+\mathcal E).
+\]
+Let \(\Omega_{\mu\nu}=[\nabla_\mu,\nabla_\nu]\).  On a closed four-manifold,
+the local heat-kernel expansion is
+\[
+  {\rm Tr}\,e^{-sP}
+  \sim
+  \frac{1}{(4\pi s)^2}
+  \sum_{n\ge0}s^n
+  \int_M d^4x\,\sqrt g\,
+  {\rm tr}_E\,a_{2n}(P).
+\]
+The coefficient needed for the logarithmic Weyl response is
+\begin{align}
+  {\rm tr}_E\,a_4(P)
+  &=
+  {\rm tr}_E\left[
+  \frac{1}{360}
+  \left(
+  5R^2-2R_{\mu\nu}R^{\mu\nu}
+  +2R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+  \right)\mathbf 1
+  \right.
+  \notag\\
+  &\hspace{4em}\left.
+  +\frac16R\mathcal E+\frac12\mathcal E^2
+  +\frac1{12}\Omega_{\mu\nu}\Omega^{\mu\nu}
+  \right]
+  +\nabla_\mu J^\mu .
+  \label{eq:curved-heat-kernel-a4}
+\end{align}
+The divergent logarithmic term in \(\frac12\log\det P\) is proportional to
+\(\int{\rm tr}\,a_4(P)\).  For Grassmann fields and gauge fields one includes
+the corresponding minus signs, square-root factors, and ghost determinants.
+
+\begin{proposition}[Conformal scalar from \(a_4\)]
+\label{prop:curved-conformal-scalar-a4}
+For a real conformally coupled scalar in four dimensions,
+\[
+  P_\phi=-\nabla^2+\frac16R
+  =
+  -(\nabla^2+\mathcal E),
+  \qquad
+  \mathcal E=-\frac16R,
+\]
+and \(\Omega_{\mu\nu}=0\).  The non-derivative part of
+\({\rm tr}\,a_4(P_\phi)\) is
+\[
+  \frac{1}{180}
+  \left(
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+  -
+  R_{\mu\nu}R^{\mu\nu}
+  \right).
+\]
+Equivalently,
+\[
+  a_{\rm scalar}=\frac1{360},
+  \qquad
+  c_{\rm scalar}=\frac1{120}.
+\]
+\end{proposition}
+
+\begin{proof}
+Substituting \(\mathcal E=-R/6\) and \(\Omega_{\mu\nu}=0\) into
+\eqref{eq:curved-heat-kernel-a4} gives the \(R^2\) coefficient
+\[
+  \frac{5}{360}-\frac{1}{36}+\frac{1}{72}=0.
+\]
+The remaining terms are
+\[
+  \frac{2}{360}R_{\mu\nu\rho\sigma}^2
+  -
+  \frac{2}{360}R_{\mu\nu}^2
+  =
+  \frac1{180}(R_{\mu\nu\rho\sigma}^2-R_{\mu\nu}^2).
+\]
+Using
+\[
+  cW^2-aE_4
+  =
+  (c-a)R_{\mu\nu\rho\sigma}^2
+  +(-2c+4a)R_{\mu\nu}^2
+  +\left(\frac c3-a\right)R^2
+\]
+with \(a=1/360\), \(c=1/120\), gives the same curvature combination.
+\end{proof}
+
+For the remaining free conformal fields, the same heat-kernel formula is
+applied to the squared Dirac operator and to the gauge-fixed Maxwell complex.
+The fermion sign and the vector ghost subtraction are part of the determinant
+calculation:
+\[
+  \mathcal W_{\rm Dirac}
+  =
+  -\frac12\log\det P_{\mathcal D},
+  \qquad
+  \mathcal W_{\rm Maxwell}
+  =
+  \frac12\log\det P_1-\log\det P_0 .
+\]
+Here
+\[
+  P_{\mathcal D}=\mathcal D^2=-\nabla^2+\frac14R,
+\]
+while \(P_1\) is the Hodge Laplacian on one-forms and \(P_0\) the scalar
+ghost Laplacian.  Gamma-matrix traces in the spin bundle and the
+one-form/ghost bundle traces reduce the logarithmic terms to the following
+table:
+\[
+\begin{array}{c|cc}
+\text{free conformal field} & a & c\\ \hline
+\text{real scalar} & \frac{1}{360} & \frac{1}{120}\\[0.2em]
+\text{Weyl fermion} & \frac{11}{720} & \frac{1}{40}\\[0.2em]
+\text{Dirac fermion} & \frac{11}{360} & \frac{1}{20}\\[0.2em]
+\text{Maxwell vector} & \frac{31}{180} & \frac{1}{10}
+\end{array}
+\]
+The Weyl fermion entries are half the Dirac entries.  The vector entries
+include the Faddeev-Popov ghost determinant and refer to the gauge-invariant
+stress tensor rather than the unconstrained one-form determinant alone.
+
+\section{Example: N=4 Yang-Mills}
+
+Consider free four-dimensional \(\mathcal N=4\) Yang-Mills fields in the
+adjoint representation of a compact gauge group \(G\), with
+\[
+  \dim G=d_G.
+\]
+Per generator of \(G\), the field content is one Maxwell vector, four Weyl
+fermions, and six real conformal scalars.  Therefore
+\[
+  a_{\mathcal N=4}/d_G
+  =
+  \frac{31}{180}
+  +4\frac{11}{720}
+  +6\frac1{360}
+  =
+  \frac14,
+\]
+and
+\[
+  c_{\mathcal N=4}/d_G
+  =
+  \frac1{10}
+  +4\frac1{40}
+  +6\frac1{120}
+  =
+  \frac14.
+\]
+Thus
+\[
+  a_{\mathcal N=4}=c_{\mathcal N=4}=\frac14\,\dim G
+\]
+in the free normalization.  Supersymmetry and current multiplet arguments
+protect this equality in the interacting conformal theory once the theory
+and stress-tensor multiplet have been constructed with a compatible
+renormalization scheme.
+
+\section{Contact Terms and Local Covariance}
+
+The anomaly is a statement about coincident stress-tensor insertions as well
+as one-point functions.  Functional differentiation of
+\eqref{eq:curved-trace-anomaly-definition} gives
+\[
+  g_{\mu\nu}(x)
+  \left\langle
+  T^{\mu\nu}(x)T^{\rho\sigma}(y)
+  \right\rangle_{\rm conn}
+  =
+  \frac{2}{\sqrt g(y)}
+  \frac{\delta}{\delta g_{\rho\sigma}(y)}
+  \mathcal A[g](x)
+  +\text{index-variation contact terms}.
+\]
+At separated points in a flat conformal theory the trace vanishes.  The
+curvature anomaly records the contact distribution obtained by varying
+through curved backgrounds and then returning to flat space.  This is why
+the same coefficient \(c\) controls both the \(W^2\) anomaly and the
+normalization of the separated stress-tensor two-point function, whereas
+\(a\) first appears in genuinely three-stress-tensor contact data.
+
+In the locally covariant language, the assignment
+\[
+  (M,g,\lambda)\longmapsto \mathcal W[g,\lambda]
+\]
+should be replaced by a functorial algebra of observables, a class of
+Hadamard states, and locally covariant composite fields.  The anomaly is then
+the obstruction to choosing the stress tensor so that it is simultaneously
+conserved, locally covariant, and Weyl covariant with the declared finite
+renormalization freedom.
+
+\section{Status of the Curved-Background Theorem}
+
+For free scalar, spinor, and gauge fields, the heat-kernel and point-splitting
+constructions give theorem-level anomaly formulas once the operator domain,
+gauge fixing, ghost determinant, and finite local counterterms are fixed.  In
+perturbative algebraic QFT, the anomaly appears in the local covariance and
+scaling behavior of time-ordered products.  For a general nonperturbative
+interacting QFT, the following ingredients are required:
 \begin{enumerate}[label=(\roman*)]
-\item \(W[g]\) exists in the stated class of backgrounds;
-\item metric variations define renormalized stress-tensor insertions;
-\item Weyl variation is local after the allowed counterterms are chosen;
-\item contact terms in multiple stress-tensor insertions are part of the same
-  renormalization scheme;
-\item anomalies in other background fields are compatible with Weyl
-  consistency.
+\item a locally covariant curved-background QFT object replacing
+  \(\mathcal W[g,\lambda]\);
+\item stress-tensor insertions as locally covariant composite fields;
+\item a contact-term prescription for multiple metric variations;
+\item a proof that Weyl variation is local modulo allowed counterterms;
+\item compatibility with gauge and gravitational anomaly lines for other
+  background fields;
+\item a rule identifying which finite curvature counterterms are part of the
+  chosen renormalization scheme.
 \end{enumerate}
-These conditions are automatic neither in an abstract local-net formulation
-nor in a symbolic path integral.  They are extra structure connecting the QFT
-to background geometry.
 
 \begin{openproblem}[Trace anomaly from nonperturbative QFT data]
 \label{op:trace-anomaly-nonperturbative-data}
 Formulate trace anomalies directly from nonperturbative local QFT data on
-curved backgrounds.  The construction should identify the algebraic or
-functorial object replacing \(W[g]\), define stress-tensor contact terms, and
-recover the local Weyl cohomology class without relying on a perturbative
-regulator.
+curved backgrounds.  The construction should identify the algebraic,
+functorial, or analytic object replacing \(\mathcal W[g,\lambda]\), define
+stress-tensor contact terms, prove locality of Weyl variation, and recover
+the local Weyl cohomology class without importing a perturbative regulator as
+part of the definition.
 \end{openproblem}
