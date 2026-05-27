@@ -17,6 +17,18 @@ def complex_rotation_weight(alpha):
     return Fraction(1, 2) * alpha * (1 - alpha)
 
 
+def hurwitz_zeta_minus_one(argument):
+    return -Fraction(1, 2) * (argument * argument - argument + Fraction(1, 6))
+
+
+def complex_rotation_weight_from_zeta(alpha):
+    return (
+        Fraction(1, 2) * hurwitz_zeta_minus_one(alpha)
+        + Fraction(1, 2) * hurwitz_zeta_minus_one(1 - alpha)
+        - hurwitz_zeta_minus_one(1)
+    )
+
+
 for c_seed in [1, 6, 12, 24]:
     for length in range(2, 11):
         h = cyclic_permutation_weight(c_seed, length)
@@ -48,6 +60,15 @@ for denominator in range(2, 15):
             == complex_rotation_weight(1 - alpha),
             f"alpha <-> 1-alpha symmetry failed for {alpha}",
         )
+        require(
+            complex_rotation_weight_from_zeta(alpha) == complex_rotation_weight(alpha),
+            f"Hurwitz-zeta oscillator shift failed for {alpha}",
+        )
+
+require(
+    hurwitz_zeta_minus_one(1) == Fraction(-1, 12),
+    "untwisted zeta-regularized oscillator sum should be -1/12",
+)
 
 require(
     complex_rotation_weight(Fraction(1, 2)) / 2 == Fraction(1, 16),

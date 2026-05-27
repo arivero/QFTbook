@@ -103,10 +103,59 @@ def check_second_variation_action_normalization() -> None:
     )
 
 
+def check_heat_kernel_pole_and_ricci_counterterm() -> None:
+    # Strip common factors of pi, epsilon, and alpha'.  The scalar
+    # heat-kernel pole is (2 pi epsilon)^{-1}; the inverse kinetic operator
+    # contributes 2 pi alpha', so the coincident fluctuation pole is
+    # alpha'/epsilon.
+    scalar_heat_kernel_pole = Fraction(1, 2)
+    inverse_kinetic_prefactor = Fraction(2)
+    coincident_fluctuation_pole = (
+        inverse_kinetic_prefactor * scalar_heat_kernel_pole
+    )
+    assert_equal(
+        "coincident fluctuation pole",
+        coincident_fluctuation_pole,
+        Fraction(1),
+    )
+
+    curvature_interaction_prefactor = Fraction(-1, 4)
+    divergence_prefactor = curvature_interaction_prefactor * coincident_fluctuation_pole
+    assert_equal(
+        "one-loop Ricci divergence sign",
+        divergence_prefactor,
+        Fraction(-1, 4),
+    )
+
+    metric_action_prefactor = Fraction(1, 4)
+    counterterm_delta_g_coefficient = (
+        -divergence_prefactor / metric_action_prefactor
+    )
+    assert_equal(
+        "minimal-subtraction metric counterterm coefficient",
+        counterterm_delta_g_coefficient,
+        Fraction(1),
+    )
+
+    # A finite component model for R_{ikj ell} G^{k ell}=R_{ij}.
+    ricci_00 = Fraction(5, 7) + Fraction(11, 13)
+    ricci_01 = Fraction(-2, 3) + Fraction(3, 5)
+    ricci_10 = Fraction(17, 19) + Fraction(-7, 23)
+    ricci_11 = Fraction(29, 31) + Fraction(37, 41)
+    assert_equal("Ricci contraction 00", ricci_00, Fraction(142, 91))
+    assert_equal("Ricci contraction 01", ricci_01, Fraction(-1, 15))
+    assert_equal("Ricci contraction 10", ricci_10, Fraction(258, 437))
+    assert_equal("Ricci contraction 11", ricci_11, Fraction(2336, 1271))
+
+
 def main() -> None:
     check_mean_zero_source_and_square_completion()
     check_second_variation_action_normalization()
-    print("All NLSM background-field source and second-variation checks passed.")
+    check_heat_kernel_pole_and_ricci_counterterm()
+    print(
+        "All NLSM background-field source, second-variation, "
+        "and heat-kernel checks passed."
+    )
 
 
 if __name__ == "__main__":

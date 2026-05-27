@@ -347,9 +347,9 @@ which is \eqref{eq:nlsm-pure-metric-second-variation} in components.
 
 \begin{proposition}[One-loop metric divergence]
 \label{prop:nlsm-one-loop-ricci-divergence}
-Let \(M\) be Riemannian and set \(B=\Phi=0\).  Use dimensional
-regularization around \(2-\epsilon\) worldsheet dimensions and the
-background-field expansion
+Let \(M\) be Riemannian, assume \(\Sigma\) is closed, and set
+\(B=\Phi=0\).  Use dimensional regularization around \(d=2-\epsilon\)
+worldsheet dimensions and the covariant background-field expansion
 \[
   X(\sigma)=\exp_{x(\sigma)}\xi(\sigma),
 \]
@@ -377,7 +377,7 @@ in this coupling coordinate.
 \end{proposition}
 
 \begin{proof}
-Choose geodesic normal coordinates along the background map \(x\).  The
+By Proposition~\ref{prop:nlsm-second-variation-curvature-vertex}, the
 quadratic action for \(\xi\) is
 \[
   S_2
@@ -394,33 +394,93 @@ quadratic action for \(\xi\) is
 \]
 The covariant derivative \(D_a\xi^i=\partial_a\xi^i+
 \Gamma^i{}_{jk}(x)\partial_ax^j\xi^k\) makes target diffeomorphism covariance
-manifest.  The local divergent part of the one-loop determinant is obtained
-from the coincident Green kernel of the covariant Laplacian.  In dimensional
-regularization,
+manifest.  To extract a local pole, freeze the background at a point
+\(\sigma_0\), choose geodesic normal coordinates on \(\Sigma\) at
+\(\sigma_0\) and an orthonormal frame of \(x^*TM\) parallel at
+\(\sigma_0\), and keep only terms with two derivatives of the slowly varying
+background map \(x\).  Derivatives of the connection and worldsheet
+curvature either contribute higher-derivative terms or the universal
+worldsheet-gravity anomaly, not the metric counterterm being computed here.
+
+The free kinetic action in this frame is
 \[
+  S_{\mathrm{kin}}
+  =
+  \frac1{4\pi\alpha'}
+  \int\dd^d\sigma\,\delta_{ij}\partial_a\xi^i\partial^a\xi^j
+  =
+  \frac12
+  \int\dd^d\sigma\,\xi^i
+  \left(\frac{-\partial^2}{2\pi\alpha'}\right)\xi^i .
+\]
+Thus the free covariance is \(2\pi\alpha'(-\partial^2)^{-1}\).  Introduce an
+auxiliary mass \(m\) only to separate the ultraviolet pole from the infrared
+zero mode.  The coincident scalar Green kernel has the local heat-kernel
+representation
+\[
+\begin{aligned}
+  (-\partial^2+m^2)^{-1}(\sigma_0,\sigma_0)
+  &=
+  \int_0^\infty\dd s\,
+  (4\pi s)^{-d/2}\ee^{-m^2s}
+  \\
+  &=
+  (4\pi)^{-d/2}\Gamma(1-d/2)(m^2)^{d/2-1}
+  =
+  \frac1{2\pi\epsilon}+O(\epsilon^0).
+\end{aligned}
+  \label{eq:nlsm-local-heat-kernel-pole}
+\]
+Restoring covariance gives the singular part
+\begin{equation}
   \langle \xi^k(\sigma)\xi^\ell(\sigma)\rangle_{\mathrm{div}}
   =
-  \frac{\alpha'}{\epsilon}G^{k\ell}(x(\sigma))
-\]
-in the convention in which the scalar Laplacian Green function has pole
-\((2\pi/\epsilon)\) and the kinetic operator carries the prefactor
-\((2\pi\alpha')^{-1}\).  Contracting the curvature vertex gives
+  2\pi\alpha'\,
+  \frac1{2\pi\epsilon}\,
+  G^{k\ell}(x(\sigma))
+  =
+  \frac{\alpha'}{\epsilon}G^{k\ell}(x(\sigma)).
+  \label{eq:nlsm-free-fluctuation-coincident-pole}
+\end{equation}
+The curvature interaction in \(S_2\) is
 \[
-  \frac1{4\pi\alpha'}
+  S_{\mathrm{curv}}
+  =
+  -\frac1{4\pi\alpha'}
+  \int\sqrt\gamma\,\gamma^{ab}
+  R_{ikj\ell}(x)\partial_ax^i\partial_bx^j\xi^k\xi^\ell .
+\]
+Since
+\[
+  \Gamma[x]
+  =
+  S[x]-\log\langle \ee^{-S_{\mathrm{curv}}}\rangle_{\mathrm{kin}}
+  =
+  S[x]+\langle S_{\mathrm{curv}}\rangle_{\mathrm{kin}}
+  +O((\partial x)^4),
+\]
+the logarithmic pole is
+\[
+\begin{aligned}
+  \Gamma^{(1)}_{\mathrm{div}}[x]
+  &=
+  -\frac1{4\pi\alpha'}
   \int\sqrt\gamma\,\gamma^{ab}
   R_{ikj\ell}\partial_ax^i\partial_bx^j
   \langle\xi^k\xi^\ell\rangle_{\mathrm{div}}
-  =
-  \frac1{4\pi\epsilon}
+  \\
+  &=
+  -\frac1{4\pi\epsilon}
   \int\sqrt\gamma\,\gamma^{ab}
-  R_{ij}\partial_ax^i\partial_bx^j .
+  R_{ij}\partial_ax^i\partial_bx^j ,
+\end{aligned}
 \]
-It appears in \(-\log\int D\xi\,\ee^{-S_2}\), giving
-\eqref{eq:nlsm-one-loop-divergent-effective-action}.  Since a local metric
-term in the action is multiplied by \(1/(4\pi\alpha')\), cancelling
-\eqref{eq:nlsm-one-loop-divergent-effective-action} requires a local
-Lagrangian metric term proportional to \(\alpha'R_{ij}/\epsilon\).  Requiring
-the regularized coupling representative to be independent of \(\mu\) gives
+where \(R_{ikj\ell}G^{k\ell}=R_{ij}\) in the component ordering fixed in
+Proposition~\ref{prop:nlsm-second-variation-curvature-vertex}.  Since a
+local metric term in the action is multiplied by \(1/(4\pi\alpha')\),
+cancelling \eqref{eq:nlsm-one-loop-divergent-effective-action} requires
+\(\delta G_{ij}=(\alpha'/\epsilon)R_{ij}\) in minimal subtraction.  Requiring
+the bare coupling representative to be independent of \(\mu\) then gives
 \eqref{eq:nlsm-one-loop-beta-ricci}.
 \end{proof}
 
@@ -482,6 +542,34 @@ Let \(H=\dd B\).  Up to the constant central-charge term in
     R(G)+4|\nabla\Phi|^2-\frac1{12}H_{ijk}H^{ijk}
   \right).
   \label{eq:nlsm-string-frame-functional-one-loop}
+\end{equation}
+Assume either that \(M\) is compact or that all variations have compact
+support, so that target-space boundary terms can be discarded.  Define
+\begin{align}
+  E_{ij}
+  &=
+  R_{ij}+2\nabla_i\nabla_j\Phi
+  -\frac14H_i{}^{k\ell}H_{jk\ell},
+  \label{eq:nlsm-string-frame-metric-e-tensor}\\
+  S_\Phi
+  &=
+  R+4\nabla^2\Phi-4|\nabla\Phi|^2-\frac1{12}H^2 .
+  \label{eq:nlsm-string-frame-scalar-e-tensor}
+\end{align}
+Then the fixed-\(\Phi\) metric variation is
+\begin{equation}
+  \delta_G\mathcal I_0
+  =
+  \int_M\dd^D x\,\sqrt G\,\ee^{-2\Phi}
+  \left(E_{ij}-\frac12G_{ij}S_\Phi\right)\delta G^{ij},
+  \label{eq:nlsm-string-frame-full-metric-variation}
+\end{equation}
+and the dilaton variation is
+\begin{equation}
+  \delta_\Phi\mathcal I_0
+  =
+  -2\int_M\dd^D x\,\sqrt G\,\ee^{-2\Phi}S_\Phi\,\delta\Phi .
+  \label{eq:nlsm-string-frame-dilaton-variation}
 \end{equation}
 Variation with respect to \(B\) gives
 \begin{equation}
@@ -556,30 +644,70 @@ the left side of \eqref{eq:nlsm-b-field-eom-one-loop} by
 
 For the metric variation, the Palatini identity gives
 \[
+  \begin{aligned}
   \delta(\sqrt G\,\ee^{-2\Phi}R)
+  &=
+  \sqrt G\,\ee^{-2\Phi}
+  \Bigl[
+    R_{ij}
+    -\frac12G_{ij}R
+    +2\nabla_i\nabla_j\Phi
+    \\
+    &\qquad
+    -4\nabla_i\Phi\nabla_j\Phi
+    +G_{ij}(4|\nabla\Phi|^2-2\nabla^2\Phi)
+  \Bigr]\delta G^{ij}
+  +\text{boundary terms}.
+  \end{aligned}
+\]
+The variation of \(4|\nabla\Phi|^2=4G^{ij}\partial_i\Phi\partial_j\Phi\),
+including the variation of \(\sqrt G\), is
+\[
+  \sqrt G\,\ee^{-2\Phi}
+  \left(
+    4\nabla_i\Phi\nabla_j\Phi
+    -2G_{ij}|\nabla\Phi|^2
+  \right)\delta G^{ij}.
+\]
+The nontrace \(\nabla_i\Phi\nabla_j\Phi\) terms therefore cancel.  The
+coefficient of the \(H\)-term is fixed directly: \(H_{abc}H^{abc}\) contains
+three inverse metrics, while the variation of \(\sqrt G\) contributes the
+trace term.  Thus
+\[
+  \delta_G
+  \left(
+    -\frac1{12}\sqrt G\,\ee^{-2\Phi}H^2
+  \right)
   =
   \sqrt G\,\ee^{-2\Phi}
   \left(
-    R_{ij}+2\nabla_i\nabla_j\Phi
-  \right)\delta G^{ij}
-  +\text{trace terms}
-  +\text{boundary terms}.
+    -\frac14H_i{}^{k\ell}H_{jk\ell}
+    +\frac1{24}G_{ij}H^2
+  \right)\delta G^{ij}.
 \]
-Here ``trace terms'' means terms proportional to \(G_{ij}\); in the
-sigma-model Weyl-anomaly package these are assigned to the scalar dilaton
-equation and to the constant central-charge representative.  The coefficient
-of the \(H\)-term is fixed directly: \(H_{abc}H^{abc}\) contains three
-inverse metrics, so its variation with respect to \(G^{ij}\) contributes
+Combining the three fixed-\(\Phi\) variations gives
+\eqref{eq:nlsm-string-frame-full-metric-variation}, because the trace
+coefficient is
 \[
-  -\frac1{12}\cdot3\,H_i{}^{k\ell}H_{jk\ell}
+  -\frac12R+2|\nabla\Phi|^2-2\nabla^2\Phi+\frac1{24}H^2
   =
-  -\frac14H_i{}^{k\ell}H_{jk\ell}.
+  -\frac12S_\Phi .
 \]
-The chosen metric representative is therefore
+The scalar equation \(S_\Phi=0\) therefore removes exactly the trace part of
+the metric variation and leaves the chosen representative
 \eqref{eq:nlsm-metric-eom-one-loop}, which is the vanishing of
 \eqref{eq:nlsm-one-loop-hatted-beta-g}.
 
-Finally, varying \(\Phi\) gives the scalar combination
+Finally, varying \(\Phi\) gives
+\[
+  -2
+  \left(R+4|\nabla\Phi|^2-\frac1{12}H^2\right)\delta\Phi
+  +
+  8\nabla^i\Phi\,\nabla_i\delta\Phi .
+\]
+After integration by parts with the \(\ee^{-2\Phi}\) density, this becomes
+\eqref{eq:nlsm-string-frame-dilaton-variation}; equivalently the scalar
+combination is
 \[
   R-\frac1{12}H^2+4\nabla^2\Phi-4|\nabla\Phi|^2
 \]
@@ -595,39 +723,161 @@ equivalently \(D+6\alpha'V^2=26\), matching the central-charge convention
 used below in Remark~\ref{rem:nlsm-linear-dilaton-criticality}.
 \end{proof}
 
-\begin{remark}[One-loop \(H\)-coefficient origin]
-\label{rem:nlsm-one-loop-h-coefficients}
-The coefficients \(-1/4\) in
-\eqref{eq:nlsm-one-loop-hatted-beta-g} and \(-1/2\) in
-\eqref{eq:nlsm-one-loop-hatted-beta-b} have two independent origins.  The
-target-space functional variation above fixes them by the factors \(3\) and
-\(6\) in \(\delta(H^2)\) and \(\delta H=\dd\delta B\).  In the
-background-field computation, the same coefficients come from two one-loop
-poles.  The tadpole vertex
-\[
-  \frac{\ii}{8\pi\alpha'}
-  \int
-  \epsilon^{ab}
-  \nabla_\ell H_{kij}\,
-  \xi^\ell\xi^k
-  \partial_ax^i\partial_bx^j
-\]
-produces the \(\nabla^kH_{kij}\) pole in the antisymmetric channel, while the
-bubble built from
-\[
+\begin{proposition}[Local one-loop origin of the \(H\)-coefficients]
+\label{prop:nlsm-one-loop-h-flux-poles}
+Work in the same dimensional-regularization and minimal-subtraction scheme as
+Proposition~\ref{prop:nlsm-one-loop-ricci-divergence}.  Freeze the background
+map at a point, choose a local orthonormal target frame parallel at that point,
+and keep only logarithmic poles with two derivatives of the slowly varying
+background \(x:\Sigma\to M\).  The \(B\)-field interaction has the local
+covariant expansion
+\begin{equation}
+\begin{aligned}
+  S_B[x,\xi]
+  &=
   \frac{\ii}{4\pi\alpha'}
+  \int\epsilon^{ab}B_{ij}(x)\partial_ax^i\partial_bx^j
+  \\
+  &\quad+
+  \frac{\ii}{4\pi\alpha'}
+  \int\epsilon^{ab}
+  H_{k\ell i}(x)\xi^kD_a\xi^\ell\partial_bx^i
+  \\
+  &\quad+
+  \frac{\ii}{8\pi\alpha'}
+  \int\epsilon^{ab}
+  \nabla_\ell H_{kij}(x)\xi^\ell\xi^k
+  \partial_ax^i\partial_bx^j
+  +O(\xi^3,\partial^3x).
+\end{aligned}
+  \label{eq:nlsm-b-field-background-expansion}
+\end{equation}
+With the dimensional-continuation convention
+\begin{equation}
+  \epsilon^{ab}\epsilon^{cd}\gamma_{ac}
+  =
+  \gamma^{bd}+O(\epsilon)
+  \quad\text{inside logarithmic poles},
+  \label{eq:nlsm-epsilon-contraction-convention}
+\end{equation}
+the one-loop pole from the last line of
+\eqref{eq:nlsm-b-field-background-expansion} is
+\begin{equation}
+  \Gamma^{(1)}_{B,\mathrm{tad},\mathrm{div}}
+  =
+  \frac{\ii}{8\pi\epsilon}
   \int
-  \epsilon^{ab}
-  H_{k\ell i}\,
-  \xi^kD_a\xi^\ell\partial_bx^i
+  \epsilon^{ab}\nabla^kH_{kij}(x)
+  \partial_ax^i\partial_bx^j ,
+  \label{eq:nlsm-b-tadpole-divergence}
+\end{equation}
+and the connected bubble from the middle line is
+\begin{equation}
+  \Gamma^{(1)}_{B,\mathrm{bub},\mathrm{div}}
+  =
+  \frac1{16\pi\epsilon}
+  \int\sqrt\gamma\,\gamma^{ab}
+  H_i{}^{k\ell}H_{jk\ell}(x)
+  \partial_ax^i\partial_bx^j .
+  \label{eq:nlsm-b-bubble-divergence}
+\end{equation}
+Consequently the minimal-subtraction counterterms contain
+\begin{equation}
+  \delta B_{ij}
+  =
+  -\frac{\alpha'}{2\epsilon}\nabla^kH_{kij},
+  \qquad
+  \delta G_{ij}
+  =
+  -\frac{\alpha'}{4\epsilon}H_i{}^{k\ell}H_{jk\ell},
+  \label{eq:nlsm-h-flux-minimal-subtraction-counterterms}
+\end{equation}
+which are precisely the \(H\)-dependent non-dilaton coefficients in
+\eqref{eq:nlsm-one-loop-hatted-beta-g} and
+\eqref{eq:nlsm-one-loop-hatted-beta-b}.
+\end{proposition}
+
+\begin{proof}
+The expansion \eqref{eq:nlsm-b-field-background-expansion} is most cleanly
+obtained by differentiating the pulled-back gerbe representative along the
+geodesic family \(X_s=\exp_x(s\xi)\).  The linear term in \(s\) is
+\(\iota_\xi H\) up to an exact two-form on the worldsheet, which is a
+\(B\)-field gauge variation on closed \(\Sigma\).  Covariantizing the
+worldsheet derivative of \(\xi\) gives the middle vertex.  Differentiating
+once more gives the \(\nabla H\) vertex, and the Taylor factor \(1/2\) gives
+the coefficient in the third line.
+
+The tadpole uses only the coincident pole
+\eqref{eq:nlsm-free-fluctuation-coincident-pole}:
+\[
+  \left\langle
+    \xi^\ell(\sigma)\xi^k(\sigma)
+  \right\rangle_{\mathrm{div}}
+  =
+  \frac{\alpha'}{\epsilon}G^{\ell k}.
 \]
-produces the \(H_i{}^{k\ell}H_{jk\ell}\) pole in the metric channel.  These
-are local pole computations in a chosen dimensional-continuation convention
-for \(\epsilon^{ab}\); \(B\)-field gauge invariance of the final Weyl
-coefficient is restored by expressing the answer in terms of \(H\) and by
-allowing the gauge redundant direction in
-\eqref{eq:nlsm-hatted-beta-b-redundant}.
-\end{remark}
+Substituting this in the third line of
+\eqref{eq:nlsm-b-field-background-expansion} gives
+\eqref{eq:nlsm-b-tadpole-divergence}.  Since the local \(B\)-coupling in the
+action has prefactor \(\ii/(4\pi\alpha')\), cancellation of this pole requires
+the first counterterm in
+\eqref{eq:nlsm-h-flux-minimal-subtraction-counterterms}.
+
+For the bubble, let \(\Delta=(-\partial^2+m^2)^{-1}\) be the scalar local
+Green kernel used in \eqref{eq:nlsm-local-heat-kernel-pole}.  The only local
+logarithmic contraction needed, after freezing \(x\), is
+\begin{equation}
+  \int\dd^d\sigma'\,
+  \partial_a\Delta(\sigma-\sigma')\,
+  \partial_c\Delta(\sigma-\sigma')
+  =
+  \frac{\gamma_{ac}}{4\pi\epsilon}+O(\epsilon^0).
+  \label{eq:nlsm-derivative-propagator-pole}
+\end{equation}
+In momentum space this is the rotational identity
+\[
+  \int\frac{\dd^dp}{(2\pi)^d}
+  \frac{p_ap_c}{(p^2+m^2)^2}
+  =
+  \frac{\gamma_{ac}}{d}
+  \int\frac{\dd^dp}{(2\pi)^d}
+  \frac{p^2}{(p^2+m^2)^2}
+  =
+  \frac{\gamma_{ac}}{4\pi\epsilon}+O(\epsilon^0),
+\]
+using \(d=2-\epsilon\); terms proportional to \(m^2/(p^2+m^2)^2\) are finite
+in the logarithmic pole part.  The free covariance contributes
+\((2\pi\alpha')^2\), the two Wick pairings give the same tensor after using
+antisymmetry of \(H_{k\ell i}\), and the connected effective action contains
+\[
+  -\frac12\left(\frac{\ii}{4\pi\alpha'}\right)^2
+  \left\langle
+    \left(
+      \int\epsilon^{ab}H_{k\ell i}\xi^kD_a\xi^\ell\partial_bx^i
+    \right)^2
+  \right\rangle_{\!c}.
+\]
+Combining the factors gives
+\[
+  -\frac12\left(\frac{\ii}{4\pi\alpha'}\right)^2
+  \cdot 2\cdot
+  \frac{\pi(\alpha')^2}{\epsilon}
+  =
+  \frac1{16\pi\epsilon}.
+\]
+The target-index contractions give
+\(H_{k\ell i}H_{mn j}G^{km}G^{\ell n}=H_i{}^{k\ell}H_{jk\ell}\), and
+\eqref{eq:nlsm-epsilon-contraction-convention} converts the two
+antisymmetric worldsheet tensors into \(\gamma^{bd}\).  This proves
+\eqref{eq:nlsm-b-bubble-divergence}.  Comparing with the metric action
+prefactor \(1/(4\pi\alpha')\) gives the second counterterm in
+\eqref{eq:nlsm-h-flux-minimal-subtraction-counterterms}.
+
+The two counterterms are local and gauge invariant after being expressed in
+terms of \(H\).  Adding the dilaton-gradient redundant direction later in
+Proposition~\ref{prop:nlsm-hatted-beta-redundant-directions} converts these
+coordinate beta representatives into the hatted Weyl-anomaly coefficients.
+\end{proof}
 
 \section{Minimal Subtraction as Geometry on Coupling Space}
 \label{sec:nlsm-ms-geometry}
@@ -1664,11 +1914,51 @@ Reading off the coefficients of
 \eqref{eq:buscher-g0i-b0i}--\eqref{eq:buscher-bij}.
 
 The functional determinant from the Gaussian integral over \(A_\pm\) is
-proportional to \((\det G_{00})^{-1/2}\) at each worldsheet point in a
-covariant regulator.  Coupling this local factor to the worldsheet curvature
-is equivalent to shifting the dilaton by
-\eqref{eq:buscher-dilaton-shift}.  This last step is where the path-integral
-measure, rather than only the classical action, enters the Buscher rules.
+the only remaining convention-sensitive point.  A gauge-invariant cell
+regularization makes its coefficient transparent.  First take \(G_{00}\) to
+be constant and choose a finite cell decomposition of the closed worldsheet
+with \(N_0\) vertices, \(N_1\) edges, and \(N_2\) faces.  Put the gauged
+field \(A\) on edges, the gauge parameter on vertices, and the dual scalar
+\(\widetilde X^0\) on faces.  Normalize the scalar and gauge-parameter
+measures by the \(L^2\) norm induced by \(G_{00}\), and normalize the dual
+scalar measure by the dual metric \(G'_{00}=G_{00}^{-1}\).  Ignoring only
+zero modes and holonomy sums, which do not change the local coefficient of
+\(\log G_{00}\), the \(G_{00}\)-dependent factors in the finite-dimensional
+Gaussian are:
+\[
+  \underbrace{(G_{00})^{-N_1/2}}_{A\text{-edge Gaussian}}
+  \underbrace{(G_{00})^{N_0/2}}_{\text{gauge normalization}}
+  \underbrace{(G_{00})^{N_2/2}}_{\text{dual scalar measure}} .
+\]
+The product is
+\begin{equation}
+  (G_{00})^{(N_0-N_1+N_2)/2}
+  =
+  (G_{00})^{\chi(\Sigma)/2}.
+  \label{eq:buscher-cell-determinant-euler-factor}
+\end{equation}
+This is the finite-dimensional origin of the half coefficient; it is not a
+choice that can be read from the classical saddle alone.
+
+For slowly varying \(G_{00}(X^i)\), locality of the ultraviolet regulator
+promotes the constant factor
+\eqref{eq:buscher-cell-determinant-euler-factor} to the local curvature
+counterterm
+\[
+  \exp\!\left[
+    \frac1{8\pi}
+    \int_\Sigma\sqrt\gamma\,R_\gamma\,\log G_{00}(X)
+  \right],
+\]
+up to terms with derivatives of \(G_{00}\) that belong to the same
+higher-derivative \(\alpha'\)-scheme choice as the other Buscher covariance
+corrections.  Since the dilaton coupling in
+\eqref{eq:nlsm-euclidean-action-representative} contributes
+\(\exp[-(4\pi)^{-1}\int\sqrt\gamma\,R_\gamma\Phi]\) to the path integral,
+this local determinant factor is exactly equivalent to
+\eqref{eq:buscher-dilaton-shift}.  This last step is where the
+path-integral measure, rather than only the classical action, enters the
+Buscher rules.
 \end{proof}
 
 \begin{proposition}[Involutivity]
@@ -2140,6 +2430,25 @@ The diagonal compact parafermion torus partition function is
   \overline{b^{(k)}_{\ell,m}(\tau)} .
   \label{eq:parafermion-diagonal-partition-function}
 \end{equation}
+Moreover \(S^{\operatorname{PF}}\) is unitary and the Verlinde formula
+recovers exactly the fusion rule \eqref{eq:parafermion-fusion-rule}:
+\begin{equation}
+  N_{ab}{}^{c}
+  =
+  \sum_{x\in\mathcal I_k}
+  \frac{
+    S^{\operatorname{PF}}_{a x}
+    S^{\operatorname{PF}}_{b x}
+    \overline{S^{\operatorname{PF}}_{c x}}
+  }{
+    S^{\operatorname{PF}}_{[0,0] x}
+  },
+  \qquad
+  a,b,c\in\mathcal I_k,
+  \label{eq:parafermion-verlinde}
+\end{equation}
+where \(N_{ab}{}^c\) is \(1\) when \(c\) appears in
+\eqref{eq:parafermion-fusion-rule} and \(0\) otherwise.
 \end{proposition}
 
 \begin{proof}
@@ -2168,6 +2477,57 @@ exponential by \((-1)^{m'}\), whose product is \(1\) on selected labels
 \(\ell'+m'\in2\mathbb Z\).  The diagonal invariant is the branchwise
 diagonal invariant after quotienting by this free identification; it is
 equivalently one half of the selected-label diagonal sum before quotient.
+
+It remains to check that no normalization has been lost in passing to
+orbits.  Put
+\[
+  S^{su}_{\ell\ell'}
+  =
+  \sqrt{\frac2{k+2}}\,
+  \sin\!\left(\frac{\pi(\ell+1)(\ell'+1)}{k+2}\right),
+  \qquad
+  S^{u(1)}_{m m'}
+  =
+  \frac1{\sqrt{2k}}\,
+  \exp\!\left(\frac{\pi\ii mm'}{k}\right).
+\]
+The finite sine and Fourier orthogonality relations give
+\[
+  \sum_{\ell'=0}^{k}S^{su}_{\ell\ell'}S^{su}_{\ell''\ell'}
+  =\delta_{\ell,\ell''},
+  \qquad
+  \sum_{m'\in\mathbb Z/2k\mathbb Z}
+  S^{u(1)}_{m m'}\overline{S^{u(1)}_{m'' m'}}
+  =\delta_{m,m''}.
+\]
+Before quotienting, the branching functions transform with the product
+kernel
+\(\widehat S_{(\ell,m),(\ell',m')}
+=S^{su}_{\ell\ell'}\overline{S^{u(1)}_{m m'}}\).  The selection rule is the
+zero-monodromy condition for the simple current
+\(\mathsf J(\ell,m)=(k-\ell,m+k)\), and the previous paragraph shows that
+\(\widehat S\) is constant on selected \(\mathsf J\)-orbits.  Since every
+orbit has two elements, the induced orbit matrix is \(2\widehat S\), namely
+\eqref{eq:parafermion-modular-s}.  Summing first over selected labels and
+then dividing by the orbit size gives
+\[
+  \sum_{x\in\mathcal I_k}
+  S^{\operatorname{PF}}_{a x}
+  \overline{S^{\operatorname{PF}}_{b x}}
+  =
+  \delta_{a,b},
+\]
+with \(\delta_{a,b}\) understood on orbit labels.
+
+For \eqref{eq:parafermion-verlinde}, insert
+\eqref{eq:parafermion-modular-s}.  The finite Fourier sum over \(m_x\)
+imposes \(m_c\equiv m_a+m_b\pmod{2k}\), up to the same free
+field-identification orbit.  The remaining sine-kernel quotient is the
+\(SU(2)_k\) Verlinde coefficient, equivalently the truncated Clebsch--Gordan
+condition on \(\ell_c\).  These two constraints are precisely
+\eqref{eq:parafermion-fusion-rule}.  Because the simple-current action is
+free, no fixed-point resolution or multiplicity factor is hidden in this
+last step.
 \end{proof}
 
 For \(k=2\), the three orbits may be represented by
@@ -2583,10 +2943,13 @@ is useful but not a definition of the exact CFT.
 
 The \(\mathcal N=2\) supersymmetric versions of these rank-one cosets add
 fermions, an \(R\)-current, spectral flow, chiral primaries, and mirror
-relations to \(\mathcal N=2\) Liouville theory.  Those structures should be
-developed together with the supersymmetric field-theory foundations.  The
-bosonic discussion here supplies the current-algebra and gauged-WZW
-baseline on which that later treatment rests.
+relations to \(\mathcal N=2\) Liouville theory.  The exact chiral-algebraic
+interface for the compact minimal coset and the noncompact cigar coset is
+recorded in
+Section~\ref{sec:supersymmetric-rank-one-coset-interfaces}.  The bosonic
+discussion here supplies the current-algebra and gauged-WZW baseline, while
+the GLSM and mirror-duality construction remains part of the
+supersymmetric-QFT development.
 
 \section{Finite Orbifolds as Gauging of Topological Lines}
 \label{sec:finite-orbifolds-topological-lines}
@@ -2723,6 +3086,8 @@ The Ward identity
 then gives \eqref{eq:cyclic-permutation-twist-weight}.
 \end{proof}
 
+\begin{proposition}[Free-boson rotation twist weight]
+\label{prop:complex-boson-rotation-twist-weight}
 For a single complex free boson \(Z\) with rotation
 \[
   Z(\ee^{2\pi\ii}z,\ee^{-2\pi\ii}\bar z)
@@ -2730,15 +3095,55 @@ For a single complex free boson \(Z\) with rotation
   \ee^{2\pi\ii\alpha}Z(z,\bar z),
   \qquad 0\le\alpha<1,
 \]
-the twisted oscillator frequencies are \(n+\alpha\) and \(n+1-\alpha\).
-Zeta-regularizing the normal-ordering shift relative to the untwisted sector
-gives
+the holomorphic ground twist field has
 \begin{equation}
   h_\alpha
   =
   \frac12\alpha(1-\alpha).
   \label{eq:complex-boson-rotation-twist-weight}
 \end{equation}
+\end{proposition}
+
+\begin{proof}
+The monodromy shifts the holomorphic oscillator moding of \(\partial Z\) and
+\(\partial\bar Z\) by \(\alpha\) and \(1-\alpha\).  With the convention that
+positive oscillator frequencies contribute \(\frac12 r\) to the
+normal-ordering constant, the twisted zero-point contribution relative to the
+untwisted complex boson is
+\[
+  E_0(\alpha)-E_0(0)
+  =
+  \frac12\sum_{n=0}^\infty(n+\alpha)
+  +\frac12\sum_{n=0}^\infty(n+1-\alpha)
+  -\sum_{n=1}^\infty n .
+\]
+The sums are not ordinary convergent sums; they define the local
+normal-ordering constant by Hurwitz-zeta continuation,
+\[
+  \sum_{n=0}^\infty(n+x)
+  :=
+  \zeta(-1,x)
+  =
+  -\frac12\left(x^2-x+\frac16\right).
+\]
+At the endpoint \(\alpha=0\), this expression is read as the untwisted
+sector value, equivalently as the continuous limit \(\alpha\downarrow0\)
+after the zero-frequency mode has been omitted from the oscillator energy.
+Therefore
+\[
+  E_0(\alpha)-E_0(0)
+  =
+  \frac12\zeta(-1,\alpha)
+  +\frac12\zeta(-1,1-\alpha)
+  -\zeta(-1,1)
+  =
+  \frac12\alpha(1-\alpha).
+\]
+The twist ground state is a Virasoro primary, and its \(L_0\) eigenvalue is
+this shifted zero-point energy, giving
+\eqref{eq:complex-boson-rotation-twist-weight}.
+\end{proof}
+
 For one real boson with \(\mathbb Z_2\) reflection, this is half of the
 complex-boson answer at \(\alpha=1/2\):
 \[
@@ -2879,6 +3284,104 @@ gauge sum over all degree-\(N\) covers, which is exactly the
 \(S_N\)-orbifold torus partition function.
 \end{proof}
 
+\begin{lemma}[Connected torus covers]
+\label{lem:symmetric-product-connected-cover-count}
+Let \(E_\tau=\mathbb C/(\mathbb Z\tau+\mathbb Z)\), with
+\(\operatorname{Im}\tau>0\).  Connected unbranched degree-\(m\) covers of
+\(E_\tau\), with a chosen lift of the origin, are represented uniquely by
+integers
+\[
+  a,d>0,\qquad ad=m,\qquad 0\le b<d .
+\]
+The covering torus has modulus
+\[
+  \tau'=\frac{a\tau+b}{d},
+  \label{eq:symmetric-product-connected-cover-modulus}
+\]
+and the number of such marked connected covers is
+\begin{equation}
+  \sigma_1(m)=\sum_{d\mid m}d .
+  \label{eq:symmetric-product-connected-cover-count}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+A connected unbranched cover of \(E_\tau\) is equivalent to a finite-index
+sublattice
+\[
+  \Lambda'\subset \Lambda=\mathbb Z\tau+\mathbb Z
+\]
+of index \(m\).  The chosen lift of the origin removes translations of the
+covering torus.  With respect to the ordered basis \((\tau,1)\) of
+\(\Lambda\), every index-\(m\) sublattice has a unique Hermite normal form:
+\[
+  \Lambda'
+  =
+  \mathbb Z(a\tau+b)+\mathbb Z d,
+  \qquad
+  a,d>0,\quad ad=m,\quad 0\le b<d .
+\]
+The index is the determinant \(ad\).  Dividing the lattice by \(d\) gives an
+isomorphic complex torus with lattice generated by
+\((a\tau+b)/d\) and \(1\), which proves
+\eqref{eq:symmetric-product-connected-cover-modulus}.  For each divisor
+\(d\mid m\), there are exactly \(d\) choices of \(b\), hence
+\eqref{eq:symmetric-product-connected-cover-count}.
+\end{proof}
+
+The automorphism factor in
+\eqref{eq:symmetric-product-hecke-transform} is also visible in this
+lattice description.  Since \(\Lambda\) is abelian, every finite-index
+sublattice is normal, so the deck group is \(\Lambda/\Lambda'\) and has
+order \(m\).  Thus a connected degree-\(m\) component contributes with weight
+\(1/m\), exactly as in the finite gauge-volume normalization of the orbifold
+sum.
+
+\begin{corollary}[Constant-seed covering-count test]
+\label{cor:symmetric-product-constant-seed-test}
+If the seed partition function in
+\eqref{eq:symmetric-product-hecke-generating-function} is replaced by the
+formal constant \(1\), then
+\[
+  T_m1=\frac{\sigma_1(m)}m
+\]
+and
+\begin{equation}
+  \exp\left[
+    \sum_{m=1}^\infty p^m\frac{\sigma_1(m)}m
+  \right]
+  =
+  \prod_{r=1}^\infty\frac1{1-p^r}.
+  \label{eq:symmetric-product-constant-seed-partitions}
+\end{equation}
+Consequently the coefficient of \(p^N\) is the partition number
+\(p_{\mathrm{part}}(N)\), the number of conjugacy classes of \(S_N\).
+\end{corollary}
+
+\begin{proof}
+The first assertion is Lemma~\ref{lem:symmetric-product-connected-cover-count}
+with the deck-automorphism factor \(1/m\).  For the product identity, expand
+the logarithm:
+\[
+  -\sum_{r=1}^\infty\log(1-p^r)
+  =
+  \sum_{r=1}^\infty\sum_{k=1}^\infty \frac{p^{rk}}k .
+\]
+The coefficient of \(p^m\) in this logarithm is
+\[
+  \sum_{r\mid m}\frac1{m/r}
+  =
+  \frac1m\sum_{r\mid m}r
+  =
+  \frac{\sigma_1(m)}m .
+\]
+Exponentiating gives \eqref{eq:symmetric-product-constant-seed-partitions}.
+The same coefficient counts cycle types of \(S_N\), because a cycle type is a
+partition \(N=\sum_r r\,m_r\).  This is only a finite-cover normalization
+test; the constant seed is not being used as a substitute for a specified
+unitary seed CFT.
+\end{proof}
+
 The twist fields of the symmetric product are organized by cycle type.  A
 bare twist field \(\sigma_\lambda\) has ground weight
 \begin{equation}
@@ -2932,6 +3435,545 @@ single cycle splits it into two cycles.  The covering surface of the
 correlator determines the numerical OPE coefficient after the seed
 correlator and the chosen normalization of twist fields have been specified.
 
+\begin{proposition}[Riemann--Hurwitz ledger for twist correlators]
+\label{prop:symmetric-product-twist-riemann-hurwitz}
+Consider a connected component of a genus-zero symmetric-product twist
+correlator with branch points \(z_1,\ldots,z_n\).  Choose monodromies
+\[
+  \gamma_1,\ldots,\gamma_n\in S_N
+\]
+acting transitively on the active sheets and ordered so that
+\[
+  \gamma_1\gamma_2\cdots\gamma_n=1.
+  \label{eq:symmetric-product-sphere-monodromy-product}
+\]
+Let \(c(\gamma_a)\) denote the number of cycles of \(\gamma_a\) on those
+active sheets, including fixed points.  If the corresponding covering surface
+has genus \(g_{\mathrm{cov}}\), then
+\begin{equation}
+  g_{\mathrm{cov}}
+  =
+  1-N+\frac12
+  \sum_{a=1}^n\bigl(N-c(\gamma_a)\bigr).
+  \label{eq:symmetric-product-twist-riemann-hurwitz}
+\end{equation}
+Thus a proposed leading twist correlator must pass three finite tests before
+any seed-CFT correlator is evaluated: the monodromy product is the identity,
+the generated subgroup is transitive on the active sheets, and the integer
+\eqref{eq:symmetric-product-twist-riemann-hurwitz} is a nonnegative genus.
+\end{proposition}
+
+\begin{proof}
+The monodromies specify the connected covering of the punctured sphere.  A
+cycle of length \(r\) over \(z_a\) contributes ramification \(r-1\).  Summing
+over all cycles of \(\gamma_a\) gives
+\[
+  \sum_{\text{cycles }C\subset\gamma_a}(|C|-1)
+  =
+  N-c(\gamma_a).
+  \label{eq:symmetric-product-local-ramification}
+\]
+Riemann--Hurwitz for a degree-\(N\) map
+\(\widehat\Sigma\to\mathbb P^1\) says
+\[
+  2-2g_{\mathrm{cov}}
+  =
+  2N-\sum_{a=1}^n\bigl(N-c(\gamma_a)\bigr).
+\]
+Solving for \(g_{\mathrm{cov}}\) gives
+\eqref{eq:symmetric-product-twist-riemann-hurwitz}.  The identity product is
+the statement that the loop enclosing all branch points on the sphere is
+contractible, and transitivity is exactly connectedness of the active cover.
+\end{proof}
+
+\begin{example}[Two-point and primitive joining covers]
+\label{ex:symmetric-product-basic-cover-ledger}
+For a normalized two-point function of length-\(K\) twists, take active degree
+\(N=K\) and monodromies
+\[
+  \gamma=(1\,2\,\cdots\,K),
+  \qquad
+  \gamma^{-1}.
+\]
+Both have one cycle on the active sheets, so
+\[
+  g_{\mathrm{cov}}
+  =
+  1-K+\frac12\bigl((K-1)+(K-1)\bigr)=0.
+  \label{eq:symmetric-product-two-point-cover-genus}
+\]
+
+For a primitive connected three-point joining component, let
+\[
+  \alpha=(1\,2\,\cdots\,K),
+  \qquad
+  \beta=(K\,K+1\,\cdots\,K+L-1),
+  \qquad
+  \gamma=(\alpha\beta)^{-1},
+  \label{eq:symmetric-product-primitive-join-monodromies}
+\]
+where \(K,L\ge2\).  The active degree is \(N=K+L-1\).  The product is
+\(\alpha\beta\gamma=1\), and \(\alpha,\beta\) overlap on the sheet \(K\), so
+the generated subgroup is transitive.  The product \(\alpha\beta\) is a single
+cycle of length \(K+L-1\).  Hence
+\[
+  c(\alpha)=L,\qquad
+  c(\beta)=K,\qquad
+  c(\gamma)=1,
+\]
+where fixed points on the active sheets are included.  Formula
+\eqref{eq:symmetric-product-twist-riemann-hurwitz} gives
+\[
+  g_{\mathrm{cov}}
+  =
+  1-(K+L-1)+\frac12\bigl((K-1)+(L-1)+(K+L-2)\bigr)=0.
+  \label{eq:symmetric-product-primitive-join-genus}
+\]
+This genus-zero ledger fixes the covering topology.  It does not determine
+the OPE coefficient without the seed correlator, local coordinate choices at
+the branch points, and the normalization of the twist fields.
+\end{example}
+
+\begin{proposition}[Primitive joining cover in local coordinates]
+\label{prop:symmetric-product-primitive-joining-cover-map}
+Let \(K,L\ge2\), and set \(N=K+L-1\).  After moving the three branch
+points on the base sphere to \(0,1,\infty\), the primitive joining cover of
+Example~\ref{ex:symmetric-product-basic-cover-ledger} has a polynomial
+representative
+\begin{equation}
+  z_{K,L}(t)
+  =
+  B_{K,L}^{-1}
+  \int_0^t u^{K-1}(u-1)^{L-1}\,\dd u,
+  \qquad
+  B_{K,L}
+  =
+  (-1)^{L-1}\frac{(K-1)!(L-1)!}{N!}.
+  \label{eq:symmetric-product-primitive-cover-map}
+\end{equation}
+It is a degree-\(N\) map \(\mathbb P^1_t\to\mathbb P^1_z\) with ramification
+indices \(K,L,N\) over \(z=0,1,\infty\), respectively.  More precisely, the
+local expansions are
+\begin{align}
+  z_{K,L}(t)
+  &=
+  \binom{N}{K}t^K+O(t^{K+1}),
+  \label{eq:symmetric-product-primitive-cover-local-zero}\\
+  z_{K,L}(t)-1
+  &=
+  (-1)^{L-1}\binom{N}{L}(t-1)^L+O((t-1)^{L+1}),
+  \label{eq:symmetric-product-primitive-cover-local-one}\\
+  \frac1{z_{K,L}(t)}
+  &=
+  (-1)^{L-1}
+  \frac{(K-1)!(L-1)!}{(N-1)!}\,s^N+O(s^{N+1}),
+  \qquad s=\frac1t .
+  \label{eq:symmetric-product-primitive-cover-local-infinity}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The integral in \eqref{eq:symmetric-product-primitive-cover-map} is a
+polynomial of degree \(N\), because its derivative is
+\[
+  \frac{\dd z_{K,L}}{\dd t}
+  =
+  B_{K,L}^{-1}t^{K-1}(t-1)^{L-1}.
+\]
+The beta-integral normalization gives
+\[
+  \int_0^1 u^{K-1}(u-1)^{L-1}\,\dd u
+  =
+  (-1)^{L-1}\frac{(K-1)!(L-1)!}{(K+L-1)!}
+  =
+  B_{K,L},
+\]
+so \(z_{K,L}(0)=0\) and \(z_{K,L}(1)=1\).  The derivative factorization shows
+that the only finite critical points are \(t=0\) with multiplicity \(K-1\)
+and \(t=1\) with multiplicity \(L-1\).  Since \(z_{K,L}\) is a degree-\(N\)
+polynomial, the point \(t=\infty\) maps to \(z=\infty\) with ramification
+index \(N\).
+There are no further branch points, because the total finite critical
+multiplicity is \((K-1)+(L-1)=N-1\), the finite critical multiplicity of a
+degree-\(N\) polynomial with a single point above infinity.
+
+The local coefficient at \(t=0\) is obtained by replacing
+\((u-1)^{L-1}\) by its constant term \((-1)^{L-1}\):
+\[
+  B_{K,L}^{-1}\frac{(-1)^{L-1}}K
+  =
+  \frac{N!}{K!(L-1)!}
+  =
+  \binom{N}{K}.
+\]
+Near \(t=1\), write \(u=1+v\).  The first nonzero term is
+\[
+  B_{K,L}^{-1}\frac{(t-1)^L}{L}
+  =
+  (-1)^{L-1}\frac{N!}{(K-1)!L!}(t-1)^L
+  =
+  (-1)^{L-1}\binom{N}{L}(t-1)^L.
+\]
+Finally, the leading term at infinity is
+\[
+  z_{K,L}(t)
+  =
+  \frac{B_{K,L}^{-1}}N t^N+O(t^{N-1}).
+\]
+Inverting this leading term and using \(s=1/t\) gives
+\eqref{eq:symmetric-product-primitive-cover-local-infinity}.  These local
+coefficients are the Jacobian data that enter a covering-space path-integral
+calculation.  A numerical OPE coefficient still requires the seed correlator,
+the twist-field normalization, and a regulator convention for the Liouville
+or Schwarzian anomaly associated with the chosen local coordinates.
+\end{proof}
+
+\begin{proposition}[Schwarzian and OPE-exponent ledger for primitive joining]
+\label{prop:symmetric-product-primitive-joining-schwarzian-ledger}
+Assume the seed theory is in the cover vacuum near the branch points and that
+the bare twist fields are normalized as Virasoro primaries with weights
+\[
+  h_r=\frac{c_0}{24}\left(r-\frac1r\right),
+  \qquad
+  \bar h_r=\frac{\bar c_0}{24}\left(r-\frac1r\right).
+\]
+Let \(z-z_a=a w^r+O(w^{r+1})\), with \(a\ne0\), be a local ramified cover
+coordinate of index \(r\).  Then the Schwarzian contribution to the base
+stress-tensor one-point function has double-pole coefficient \(h_r\):
+\begin{equation}
+  \left\langle T_{\mathrm{base}}(z)\right\rangle
+  =
+  \frac{h_r}{(z-z_a)^2}+O((z-z_a)^{-1}).
+  \label{eq:symmetric-product-local-schwarzian-weight}
+\end{equation}
+For the primitive joining branch data of
+Proposition~\ref{prop:symmetric-product-primitive-joining-cover-map}, with
+\(N=K+L-1\), the holomorphic OPE power in the channel
+\[
+  (K)\cdot(L)\longrightarrow (N)
+\]
+is therefore
+\begin{equation}
+  h_N-h_K-h_L
+  =
+  \frac{c_0}{24}
+  \left[
+    N-\frac1N
+    -K+\frac1K
+    -L+\frac1L
+  \right],
+  \label{eq:symmetric-product-primitive-joining-ope-power}
+\end{equation}
+with the analogous antiholomorphic formula using \(\bar c_0\).  Equivalently,
+before conjugacy-class averaging and before inserting excited seed states,
+\begin{equation}
+  \sigma_K(z,\bar z)\sigma_L(0)
+  =
+  C_{K,L}^{N}\,
+  z^{h_N-h_K-h_L}
+  \bar z^{\bar h_N-\bar h_K-\bar h_L}
+  \sigma_N(0)+\cdots ,
+  \label{eq:symmetric-product-primitive-joining-ope}
+\end{equation}
+where \(C_{K,L}^{N}\) is not fixed by the ledger alone.
+\end{proposition}
+
+\begin{proof}
+The inverse branches near \(z_a\) have the form
+\[
+  w_j(z)
+  =
+  \omega_r^j a^{-1/r}(z-z_a)^{1/r}+O((z-z_a)^{2/r}),
+  \qquad
+  j=0,\ldots,r-1 .
+\]
+The leading Schwarzian of any such branch is independent of \(a\) and of the
+root label:
+\[
+  \{w_j,z\}
+  =
+  \frac{1-r^{-2}}{2(z-z_a)^2}+O((z-z_a)^{-1}).
+\]
+Using the stress-tensor transformation law
+\eqref{eq:stress-tensor-schwarzian-transformation} in the inverse direction,
+and using the cover-vacuum assumption, the ramified point contributes
+\[
+  \frac{c_0}{12}
+  \sum_{j=0}^{r-1}
+  \frac{1-r^{-2}}{2(z-z_a)^2}
+  =
+  \frac{c_0}{24}\left(r-\frac1r\right)\frac1{(z-z_a)^2}.
+\]
+Unramified preimages over the same base point have regular inverse branches
+and do not contribute to the double pole.  This proves
+\eqref{eq:symmetric-product-local-schwarzian-weight}.
+
+For three primary insertions at \(z_1,z_2,z_3\), global conformal covariance
+fixes the holomorphic coordinate dependence to
+\[
+  C\,
+  z_{12}^{h_3-h_1-h_2}
+  z_{13}^{h_2-h_1-h_3}
+  z_{23}^{h_1-h_2-h_3}.
+\]
+Applying this with branch indices \(K,L,N\) and then taking the OPE limit
+of the \(K\)- and \(L\)-twists gives
+\eqref{eq:symmetric-product-primitive-joining-ope-power} and
+\eqref{eq:symmetric-product-primitive-joining-ope}.  The constant
+\(C_{K,L}^{N}\) also contains the cover anomaly functional, the local
+coordinate coefficients in
+\eqref{eq:symmetric-product-primitive-cover-local-zero}--\eqref{eq:symmetric-product-primitive-cover-local-infinity},
+the chosen twist-field normalization, and any nontrivial seed correlator.
+Those data are not determined by monodromy, Riemann--Hurwitz, or conformal
+covariance alone.
+\end{proof}
+
+\begin{proposition}[Conjugacy-class normalization for primitive joining]
+\label{prop:symmetric-product-primitive-joining-class-normalization}
+Let \(M\) be the total number of copies in
+\(\operatorname{Sym}^M(\mathcal C)\).  For
+\(r\le M\), let \([r]\subset S_M\) denote the conjugacy class consisting of
+one \(r\)-cycle and \(M-r\) fixed points, and assume the labelled bare twists
+are normalized by
+\[
+  \left\langle
+    \sigma_\gamma(\infty)\sigma_\delta(0)
+  \right\rangle
+  =
+  \delta_{\delta,\gamma^{-1}} .
+\]
+The normalized single-cycle class operator is then
+\begin{equation}
+  \Sigma_r^{(M)}
+  =
+  |[r]|^{-1/2}\sum_{\gamma\in[r]}\sigma_\gamma,
+  \qquad
+  |[r]|=\frac{M!}{r(M-r)!}.
+  \label{eq:symmetric-product-normalized-single-cycle-class}
+\end{equation}
+Let \(K,L\ge2\), set \(R=K+L-1\), and assume \(M\ge R\).  If
+\(C_{K,L}^{R}\) denotes the labelled primitive joining coefficient in
+\eqref{eq:symmetric-product-primitive-joining-ope}, with the same local
+coordinate and seed-correlator convention for all conjugates, then the
+class-normalized leading primitive channel has the form
+\begin{equation}
+  \Sigma_K^{(M)}(z,\bar z)\Sigma_L^{(M)}(0)
+  \supset
+  \mathfrak g_{K,L}^{(M)}\,C_{K,L}^{R}\,
+  z^{h_R-h_K-h_L}
+  \bar z^{\bar h_R-\bar h_K-\bar h_L}
+  \Sigma_R^{(M)}(0),
+  \label{eq:symmetric-product-class-normalized-primitive-join-ope}
+\end{equation}
+where no additional symmetry factor is inserted in the operator product, and
+\begin{equation}
+  \left(\mathfrak g_{K,L}^{(M)}\right)^2
+  =
+  KLR\,
+  \frac{(M-K)!(M-L)!}{M!(M-R)!}.
+  \label{eq:symmetric-product-primitive-joining-group-factor}
+\end{equation}
+Equivalently,
+\(\mathfrak g_{K,L}^{(M)}
+=R\sqrt{|[R]|/(|[K]||[L]|)}\).  Thus the class-sum normalization supplies a
+universal finite-group factor, while \(C_{K,L}^{R}\) remains the analytic
+covering-space coefficient discussed in
+Proposition~\ref{prop:symmetric-product-primitive-joining-schwarzian-ledger}.
+\end{proposition}
+
+\begin{proof}
+The class-size formula in
+\eqref{eq:symmetric-product-normalized-single-cycle-class} follows by choosing
+the \(r\)-element support and then choosing a cyclic ordering:
+\[
+  \binom Mr(r-1)!
+  =
+  \frac{M!}{r(M-r)!}.
+\]
+Since inversion preserves the conjugacy class \([r]\), the labelled diagonal
+two-point normalization gives
+\[
+  \left\langle
+    \Sigma_r^{(M)}(\infty)\Sigma_r^{(M)}(0)
+  \right\rangle
+  =
+  |[r]|^{-1}
+  \sum_{\gamma,\delta\in[r]}\delta_{\delta,\gamma^{-1}}
+  =
+  1 .
+\]
+
+It remains to count primitive factorizations of a fixed \(R\)-cycle
+\(\eta\).  Write the support of \(\eta\) in cyclic order as
+\[
+  x_0\longmapsto x_1\longmapsto\cdots
+  \longmapsto x_{R-1}\longmapsto x_0 .
+\]
+For each choice of the unique overlap sheet \(x_j\), indices understood
+modulo \(R\), define
+\[
+  \alpha_j
+  =
+  (x_{j-K+1}\,x_{j-K+2}\,\cdots\,x_j),
+  \qquad
+  \beta_j
+  =
+  (x_j\,x_{j+1}\,\cdots\,x_{j+L-1}).
+\]
+With the convention that products act from right to left, one checks directly
+that \(\alpha_j\beta_j=\eta\).  These are \(R\) distinct factorizations.
+Conversely, if \(\alpha\) is a \(K\)-cycle and \(\beta\) is an \(L\)-cycle with
+\(\alpha\beta=\eta\), then the support of \(\eta\) has size \(K+L-1\).  If
+the supports of \(\alpha\) and \(\beta\) were disjoint, the product would have
+two nontrivial cycles rather than one.  If their intersection had more than
+one element, the union of the supports would have size strictly smaller than
+\(K+L-1\), too small to contain the support of \(\eta\).  Thus the supports
+meet in exactly one sheet and their union is the support of \(\eta\).
+Removing the overlap sheet cuts the two cycles into two directed strings, and
+their concatenation is the displayed cyclic order of \(\eta\).  The overlap
+sheet therefore reconstructs \(\alpha\) and \(\beta\) uniquely, so the number
+of primitive factorizations of a fixed \(\eta\in[R]\) is \(R\).
+
+When the two normalized class sums are multiplied, each fixed
+\(\eta\in[R]\) therefore receives \(R\) labelled primitive contributions.
+Projecting the resulting sum
+\[
+  \frac{R\,C_{K,L}^{R}}{\sqrt{|[K]||[L]|}}
+  \sum_{\eta\in[R]}\sigma_\eta
+\]
+onto \(\Sigma_R^{(M)}=|[R]|^{-1/2}\sum_{\eta\in[R]}\sigma_\eta\) gives
+\[
+  \mathfrak g_{K,L}^{(M)}
+  =
+  R\sqrt{\frac{|[R]|}{|[K]||[L]|}}.
+\]
+Substituting the class-size formula and using \(R=K+L-1\) gives
+\eqref{eq:symmetric-product-primitive-joining-group-factor}.
+\end{proof}
+
+\begin{proposition}[Transposition class algebra: join and split factors]
+\label{prop:symmetric-product-transposition-join-split-factors}
+Let \(\Sigma_2^{(M)}\) be the normalized transposition class operator from
+\eqref{eq:symmetric-product-normalized-single-cycle-class}.  Assume the same
+labelled twist normalization as in
+Proposition~\ref{prop:symmetric-product-primitive-joining-class-normalization}.
+For \(K\ge2\) and \(M\ge K+1\), the class-normalized channel in which a
+transposition joins a fixed point to a \(K\)-cycle is
+\begin{equation}
+  \Sigma_2^{(M)}(z,\bar z)\Sigma_K^{(M)}(0)
+  \supset
+  \mathfrak j_K^{(M)}\,C_{2,K}^{K+1}\,
+  z^{h_{K+1}-h_2-h_K}
+  \bar z^{\bar h_{K+1}-\bar h_2-\bar h_K}
+  \Sigma_{K+1}^{(M)}(0),
+  \label{eq:symmetric-product-transposition-join-channel}
+\end{equation}
+with
+\begin{equation}
+  \left(\mathfrak j_K^{(M)}\right)^2
+  =
+  2K(K+1)\frac{M-K}{M(M-1)}.
+  \label{eq:symmetric-product-transposition-join-factor}
+\end{equation}
+
+For a split channel, let \(K\ge4\), let \(a,b\ge2\), and let \(a+b=K\).  Let
+\([a,b]\subset S_M\) be the conjugacy class with one \(a\)-cycle, one
+\(b\)-cycle, and \(M-K\) fixed points, and define
+\[
+  \Sigma_{a,b}^{(M)}
+  =
+  |[a,b]|^{-1/2}\sum_{\eta\in[a,b]}\sigma_\eta .
+\]
+Then
+\begin{equation}
+  \Sigma_2^{(M)}(z,\bar z)\Sigma_K^{(M)}(0)
+  \supset
+  \mathfrak s_{a,b}^{(M)}\,C_{2,K}^{a,b}\,
+  z^{h_a+h_b-h_2-h_K}
+  \bar z^{\bar h_a+\bar h_b-\bar h_2-\bar h_K}
+  \Sigma_{a,b}^{(M)}(0),
+  \label{eq:symmetric-product-transposition-split-channel}
+\end{equation}
+where \(C_{2,K}^{a,b}\) is the labelled split-channel coefficient and
+\begin{equation}
+  \left(\mathfrak s_{a,b}^{(M)}\right)^2
+  =
+  \frac{2Kab}{(1+\delta_{a,b})M(M-1)} .
+  \label{eq:symmetric-product-transposition-split-factor}
+\end{equation}
+If one piece is a fixed point, say \(K=b+1\) with \(b\ge2\), the output class
+is the single-cycle class \([b]\) and the endpoint split factor is
+\begin{equation}
+  \left(\mathfrak s_{1,b}^{(M)}\right)^2
+  =
+  2(b+1)b\,\frac{M-b}{M(M-1)}.
+  \label{eq:symmetric-product-transposition-endpoint-split-factor}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The join channel is the special case \(L=2\) of
+Proposition~\ref{prop:symmetric-product-primitive-joining-class-normalization}.
+Substituting \(R=K+1\) into
+\eqref{eq:symmetric-product-primitive-joining-group-factor} gives
+\eqref{eq:symmetric-product-transposition-join-factor}.
+
+For the split channel, fix a permutation \(\eta=\alpha\beta\), where
+\(\alpha\) and \(\beta\) are disjoint cycles of lengths \(a\) and \(b\).
+If \(p\) is in the support of \(\alpha\) and \(q\) is in the support of
+\(\beta\), then \(\tau=(p\,q)\) cuts and reglues the two directed cycles into
+a single \(K\)-cycle
+\[
+  \gamma=\tau\eta .
+\]
+Since \(\tau^2=1\), this is equivalent to \(\tau\gamma=\eta\).  Conversely,
+if \(\tau\gamma=\eta\) with \(\tau\) a transposition and \(\gamma\) a
+\(K\)-cycle, then \(\tau\) cannot involve a fixed point of \(\eta\), because
+then \(\gamma=\tau\eta\) would move a sheet outside the support of \(\eta\).
+It also cannot exchange two points in the same component of \(\eta\): the
+other component would remain invariant under \(\gamma\), contradicting the
+assumption that \(\gamma\) is a single \(K\)-cycle.  Hence \(\tau\) must
+connect one point of the \(a\)-cycle to one point of the \(b\)-cycle, so a
+fixed output \(\eta\in[a,b]\) has exactly
+\[
+  ab
+\]
+labelled split factorizations.
+
+The class size is
+\[
+  |[a,b]|
+  =
+  \frac{M!}{ab(1+\delta_{a,b})(M-K)!},
+\]
+where the factor \(1+\delta_{a,b}\) is the permutation symmetry of the two
+equal-length cycles when \(a=b\).  Projecting
+\[
+  \frac{ab\,C_{2,K}^{a,b}}{\sqrt{|[2]||[K]|}}
+  \sum_{\eta\in[a,b]}\sigma_\eta
+\]
+onto \(\Sigma_{a,b}^{(M)}\) gives
+\[
+  \left(\mathfrak s_{a,b}^{(M)}\right)^2
+  =
+  a^2b^2\frac{|[a,b]|}{|[2]||[K]|}.
+\]
+Using \(|[2]|=M!/(2(M-2)!)\) and
+\(|[K]|=M!/(K(M-K)!)\) gives
+\eqref{eq:symmetric-product-transposition-split-factor}.
+
+If one component has length \(1\), fix the nontrivial output \(b\)-cycle
+\(\beta\).  The split-off fixed point may be any of the \(M-b\) sheets outside
+the support of \(\beta\), and the cut point on \(\beta\) may be chosen in
+\(b\) ways.  Thus a fixed output \(\beta\in[b]\) receives \(b(M-b)\) labelled
+factorizations.  Projecting to the single-cycle class \(\Sigma_b^{(M)}\) and
+using \(K=b+1\) gives
+\eqref{eq:symmetric-product-transposition-endpoint-split-factor}.  This is
+the same finite factor as the join coefficient
+\(\mathfrak j_b^{(M)}\), as required by the diagonal two-point
+normalization.
+\end{proof}
+
 Discrete torsion is incorporated by replacing the centralizer projection by a
 projective centralizer action determined by a class in
 \[
@@ -2966,18 +4008,140 @@ by the OPEs of the \(\sigma_A\).  The coupling dimension is
 \[
   [\lambda^A]=2-\Delta_A .
 \]
-For \(\Delta_A<2\) the deformation is relevant.  For \(\Delta_A=2\), exact
-marginality is a condition on all beta functions, beginning with the
-quadratic OPE obstruction
+Separate this engineering dimension from the operator-theoretic obstruction as
+follows.  Choose a local flat coordinate patch and a short-distance cutoff
+\(a\).  Write dimensionless couplings \(g^A(a)\) by
 \[
-  \beta^C
+  S_{\mathrm{int}}(a)
   =
-  \pi C_{AB}{}^C\lambda^A\lambda^B+O(\lambda^3)
+  \sum_A g^A(a)\,a^{\Delta_A-2}
+  \int \dd^2z\,\sigma_A(z,\bar z),
+  \qquad
+  y_A=2-\Delta_A .
 \]
-in a scheme where the integrated two-point logarithm has coefficient \(\pi\).
-The coefficient \(C_{AB}{}^C\) is the coefficient of \(\sigma_C\) in the
-short-distance OPE \(\sigma_A(z)\sigma_B(0)\), after projecting to spinless
-dimension-two fields and after specifying contact-term conventions.
+
+\begin{proposition}[Cutoff OPE beta function]
+\label{prop:twist-field-cutoff-ope-beta}
+Assume that the spinless primary fields \(\sigma_A\) have diagonal two-point
+normalization and short-distance OPE
+\begin{equation}
+  \sigma_B(z,\bar z)\sigma_C(0)
+  \sim
+  \sum_A C_{BC}{}^A
+  |z|^{\Delta_A-\Delta_B-\Delta_C}\sigma_A(0)
+  +\hbox{descendants and other spins}.
+  \label{eq:twist-field-ope-coefficients}
+\end{equation}
+In the minimal annular cutoff scheme that discards derivative descendants and
+projects to the listed spinless primaries, the length-scale Wilsonian beta
+function
+\[
+  \beta_\ell^A=\frac{\dd g^A}{\dd \ell},
+  \qquad \ell=\log a ,
+\]
+is
+\begin{equation}
+  \beta_\ell^A
+  =
+  y_A g^A
+  -
+  \pi C_{BC}{}^A g^B g^C
+  +O(g^3),
+  \label{eq:twist-field-length-beta}
+\end{equation}
+with ordered repeated indices.  Equivalently, for the energy scale
+\(\mu=a^{-1}\),
+\begin{equation}
+  \mu\frac{\dd g^A}{\dd\mu}
+  =
+  -y_A g^A
+  +
+  \pi C_{BC}{}^A g^B g^C
+  +O(g^3).
+  \label{eq:twist-field-energy-beta}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Expand \(\exp(-S_{\mathrm{int}})\) to second order and isolate pairs with
+relative coordinate \(r=z-w\) in the annulus \(a<|r|<ae^{\dd\ell}\).  The
+term in the exponential is
+\[
+  \frac12 g^Bg^C a^{\Delta_B+\Delta_C-4}
+  \int\dd^2w\int_{a<|r|<ae^{\dd\ell}}\dd^2r\,
+  \sigma_B(w+r)\sigma_C(w).
+\]
+Using \eqref{eq:twist-field-ope-coefficients}, the contribution to the
+\(\sigma_A(w)\) channel is
+\[
+  \frac12 g^Bg^C C_{BC}{}^A
+  a^{\Delta_B+\Delta_C-4}
+  \int\dd^2w\,\sigma_A(w)
+  \int_a^{ae^{\dd\ell}}2\pi\rho\,\dd\rho\,
+  \rho^{\Delta_A-\Delta_B-\Delta_C}.
+\]
+To first order in \(\dd\ell\), the radial integral is
+\[
+  2\pi\,\dd\ell\,
+  a^{2+\Delta_A-\Delta_B-\Delta_C},
+\]
+so the local term is
+\[
+  \pi\,g^Bg^C C_{BC}{}^A\,\dd\ell\,
+  a^{\Delta_A-2}\int\dd^2w\,\sigma_A(w).
+\]
+Because this term appears with a plus sign in the expansion of
+\(\exp(-S_{\mathrm{int}})\), it decreases the local coefficient in
+\(S_{\mathrm{int}}\) by the same amount.  The classical rescaling of the
+dimensionless coupling contributes \(y_Ag^A\dd\ell\).  Combining the two
+effects gives \eqref{eq:twist-field-length-beta}, and
+\eqref{eq:twist-field-energy-beta} follows from \(\log\mu=-\ell\).
+\end{proof}
+
+\begin{remark}[Contact terms and coupling coordinates]
+\label{rem:twist-field-contact-scheme}
+A local contact convention is a choice of finite counterterms supported at
+operator collisions.  To quadratic order it is equivalently a coupling
+coordinate change
+\[
+  g^{\prime A}=g^A+M^A{}_{BC}g^Bg^C+O(g^3).
+\]
+If
+\[
+  \beta_\ell^A=y_Ag^A+b^A{}_{BC}g^Bg^C+O(g^3),
+\]
+then
+\begin{equation}
+  b^{\prime A}{}_{BC}
+  =
+  b^A{}_{BC}
+  +(y_B+y_C-y_A)M^A{}_{BC}.
+  \label{eq:twist-field-quadratic-scheme-shift}
+\end{equation}
+Indeed,
+\[
+  \frac{\partial g^{\prime A}}{\partial g^D}\beta_\ell^D
+  =
+  y_Ag^A+
+  \bigl(b^A{}_{BC}+(y_B+y_C)M^A{}_{BC}\bigr)g^Bg^C
+  +O(g^3),
+\]
+and substituting \(g^A=g^{\prime A}-M^A{}_{BC}g^{\prime B}g^{\prime C}
++O(g^{\prime3})\) gives \eqref{eq:twist-field-quadratic-scheme-shift}.
+Thus a quadratic term is scheme-invariant only in resonant channels
+\(y_A=y_B+y_C\), including the marginal-to-marginal channel
+\(y_A=y_B=y_C=0\).  Exact marginality of a spinless dimension-two twist
+deformation therefore starts with the condition that the projection of
+\(C_{BC}{}^A\) to dimension-two nonredundant primaries vanish in the chosen
+operator algebra; higher orders require the full contact-term calculus, not
+only the bare group-theoretic monodromy.
+\end{remark}
+
+The relevance classification is the linear part of
+\eqref{eq:twist-field-length-beta}: if \(\Delta_A<2\), then \(y_A>0\) and the
+coupling grows toward longer distances; if \(\Delta_A=2\), the first
+nontrivial obstruction is the dimension-two projection of the quadratic OPE
+coefficient in \eqref{eq:twist-field-energy-beta}.
 
 In the symmetric-product case of
 Section~\ref{sec:symmetric-product-orbifolds}, a deformation by a single seed
@@ -3036,7 +4200,7 @@ same formalism:
   \text{WZW and gauged WZW/coset sigma-model CFTs},\\
   \text{Buscher duality as an equality of regulated path integrals},\\
   \text{orbifold defects, discrete torsion, and anomaly obstructions},\\
-  \text{covering-space evaluation of twist correlators},\\
+  \text{higher-point Hurwitz sums and normalized twist OPE coefficients},\\
   \text{supersymmetric twist fields and exactly marginal blow-up modes}.
 \end{gathered}
 \]

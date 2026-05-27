@@ -194,10 +194,19 @@ Current checks:
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
+- `conformal_perturbation_rg_checks.py`: exact rational checks for the
+  two-dimensional conformal-perturbation section, including the cutoff-power
+  cancellation in the annular OPE integral, the second-order \(\pi\) factor,
+  the length-scale versus energy-scale beta-function sign, and the quadratic
+  contact-term scheme-shift law.
 - `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
-  coefficients, quantum dimensions, shifted character exponents, and the
-  Zhu-algebra top-weight polynomial with its primitive idempotents.
+  coefficients, quantum dimensions, shifted character exponents, the
+  \(T\)-phase spin-selection rule, uniqueness of the diagonal genus-one
+  Ising modular invariant with one vacuum, the Cardy Tauberian saddle
+  coefficient, the rank-two logarithmic Jordan-cell Ward identities and trace
+  invisibility of the nilpotent extension, and the Zhu-algebra top-weight
+  polynomial with its primitive idempotents.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,
@@ -206,7 +215,8 @@ Current checks:
   FZZT/ZZ hyperbolic identities used in the nonrational boundary-state
   discussion.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
-  including the level-two BPZ null vector, one-screening coefficient
+  including the level-two BPZ null vector, its \(b\leftrightarrow b^{-1}\)
+  dual, one-screening and dual one-screening coefficient
   rewrites, DOZZ \(b\)-shift powers, hypergeometric connection arguments,
   level-two Virasoro block coefficients, and the elliptic \(q\)-coordinate
   conversion through \(q^2\).
@@ -214,7 +224,12 @@ Current checks:
   two-dimensional superconformal-algebra chapter, including the
   \(\mathcal N=1\) Ramond zero-mode shift, \(\mathcal N=2\) chiral-primary
   norm identities, spectral-flow automorphism, NS-to-R ground-state shift,
-  and protected Landau--Ginzburg central-charge arithmetic.
+  extended \(\mathcal N=2\) spectral-flow operator weights, charges,
+  Heisenberg OPE exponents, and descendant charges, protected
+  Landau--Ginzburg central-charge arithmetic, and the
+  supersymmetric \(SU(2)/U(1)\) and \(SL(2,\mathbb R)/U(1)\) rank-one
+  coset central-charge, chiral-primary, field-identification, and
+  spectral-flow formulas.
 - `cohomological_metric_descent_checks.py`: exact polynomial differential-form
   checks for the Volume VIII metric-independence chapter, including
   \(Q^2=0\) in the de Rham model, the graded Leibniz sign, Stokes' boundary
@@ -453,19 +468,24 @@ Current checks:
   background-field source convention, including the mean-zero condition
   \(J=L\), the Gaussian square-completion sign used in the one-loop
   effective-action determinant, and the pure-metric second-variation
-  normalization and curvature-vertex sign.
+  normalization, curvature-vertex sign, heat-kernel pole normalization, and
+  Ricci-counterterm sign.
 - `nlsm_buscher_checks.py`: exact rational checks for the two-dimensional
   NLSM Buscher and pure-metric beta-function sections, including Buscher
   \(E\)-matrix involutivity, the component \(G,B\) rules, the dilaton-shift
-  involution, the constant-curvature two-loop \(R_{ik\ell m}R_j{}^{k\ell m}\)
-  coefficient, and the spherical/hyperbolic radius-flow beta functions.
+  involution, the cell-regulated Euler-characteristic ledger for the
+  Buscher determinant, the constant-curvature two-loop
+  \(R_{ik\ell m}R_j{}^{k\ell m}\) coefficient, and the
+  spherical/hyperbolic radius-flow beta functions.
 - `nlsm_scheme_redefinition_checks.py`: finite polynomial checks for the
   NLSM finite-scheme-redefinition law
   \(\beta'=\beta+[\beta,F]+O(F^2)\), including the sign of the beta-vector
   Lie bracket in a two-coupling model.
 - `nlsm_weyl_anomaly_checks.py`: exact rational checks for one-loop NLSM
   Weyl-anomaly bookkeeping, including the \(H^2\) metric and \(B\)-field
-  variation coefficients, linear-dilaton central-charge condition,
+  variation coefficients, the local worldsheet tadpole and bubble origins of
+  the \(H\)-dependent counterterms, the full string-frame metric trace split and
+  scalar dilaton variation, linear-dilaton central-charge condition,
   heterotic Green--Schwarz coefficient, heterotic gauge/dilaton redundant
   direction, torsionful Ricci package, and local \(\dd^2=0\) preservation of
   the \(H\)-beta Bianchi identity.
@@ -492,8 +512,9 @@ Current checks:
 - `orbifold_twist_weight_checks.py`: finite rational checks for the
   two-dimensional orbifold chapter, including the cyclic permutation twist
   weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the
-  \(c_0=6\) length-two value \(h=3/8\), and the real
-  \(\mathbb Z_2\) reflection twist value \(h=1/16\).
+  \(c_0=6\) length-two value \(h=3/8\), the Hurwitz-zeta oscillator derivation
+  of the complex rotation twist weight, and the real \(\mathbb Z_2\)
+  reflection twist value \(h=1/16\).
 - `paqft_algebra_checks.py`: finite polynomial checks for the curved pAQFT
   chapter, including Hadamard star-product associativity, the smooth
   Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
@@ -609,8 +630,13 @@ Current checks:
 - `symmetric_product_orbifold_checks.py`: exact finite group-theory and
   rational-weight checks for the Volume V symmetric-product orbifold section,
   including \(S_N\) centralizer orders, conjugacy-class counting, central
-  charge additivity, cycle-type twist weights, join/split weight shifts, and
-  the two-cycle normalization count.
+  charge additivity, cycle-type twist weights, join/split weight shifts, the
+  two-cycle normalization count, connected torus-cover Hecke weights, and the
+  constant-seed partition-number test, plus Riemann--Hurwitz genus tests for
+  twist-field two-point and primitive joining covers and beta-normalized
+  primitive joining-cover local-coordinate coefficients, Schwarzian
+  double-pole weights, primitive-joining OPE powers, and class-normalized
+  primitive joining and transposition join/split group factors.
 - `thermal_kubo_checks.py`: finite checks for the Volume X Kubo and
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign
@@ -631,7 +657,8 @@ Current checks:
   simple groups, \(SU(2)_k\) affine-primary weights, the diagonal
   \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge
   identity, \(SU(2)_k/U(1)\) parafermion selection and field-identification
-  weights, compact parafermion orbit counts and fusion rules,
+  weights, compact parafermion orbit counts, fusion rules, modular
+  \(S\)-matrix unitarity, and Verlinde recovery of fusion,
   \(SL(2,\mathbb R)_k/U(1)\) cigar central charges, reflection weight
   invariance, momentum/winding spin checks, bell/cigar one-loop geometry
   residuals and leading-versus-exact central-charge shifts, and the

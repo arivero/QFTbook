@@ -158,12 +158,49 @@ def check_dilaton_shift_involutive() -> None:
     assert_equal("Buscher dilaton shift involution", first_shift + second_shift, 0)
 
 
+def check_cell_regularized_dilaton_shift() -> None:
+    """Check the Euler-characteristic ledger for the Buscher determinant."""
+
+    # On a finite cell decomposition the G00 exponents are:
+    #   - one half per edge gauge Gaussian,
+    #   + one half per vertex gauge/Faddeev-Popov normalization,
+    #   + one half per face when the multiplier is written as the dual scalar.
+    # The resulting exponent must match the path-integral effect of
+    # delta Phi = -log(G00)/2, namely -chi * delta Phi = chi/2.
+    cell_decompositions = [
+        (4, 6, 4),   # tetrahedral sphere
+        (8, 12, 6),  # cubical sphere
+        (1, 2, 1),   # one-vertex two-edge torus cell structure
+        (1, 4, 1),   # one-vertex genus-two polygon
+        (1, 6, 1),   # one-vertex genus-three polygon
+    ]
+    for vertices, edges, faces in cell_decompositions:
+        chi = vertices - edges + faces
+        determinant_exponent = (
+            Fraction(vertices, 2)
+            - Fraction(edges, 2)
+            + Fraction(faces, 2)
+        )
+        dilaton_shift_exponent = -chi * Fraction(-1, 2)
+        assert_equal(
+            f"Buscher cell determinant Euler exponent for {(vertices, edges, faces)}",
+            determinant_exponent,
+            Fraction(chi, 2),
+        )
+        assert_equal(
+            f"Buscher cell determinant versus dilaton shift for {(vertices, edges, faces)}",
+            determinant_exponent,
+            dilaton_shift_exponent,
+        )
+
+
 def main() -> None:
     check_buscher_involutive()
     check_g_b_component_rules()
     check_constant_curvature_two_loop_coefficient()
     check_constant_curvature_radius_flow()
     check_dilaton_shift_involutive()
+    check_cell_regularized_dilaton_shift()
     print("All NLSM Buscher and beta-coefficient/radius-flow checks passed.")
 
 

@@ -459,6 +459,7 @@ characters diagonalizes the fusion ring.  Once this is granted, the formula is
 linear algebra.
 
 \section{The Ising Chiral Theory}
+\label{sec:ising-chiral-theory}
 
 The Ising minimal model has central charge
 \[
@@ -486,6 +487,18 @@ In the ordered basis \((\mathbf 1,\sigma,\varepsilon)\), the modular
   \end{pmatrix}.
   \label{eq:ising-modular-s}
 \end{equation}
+The corresponding \(T\)-matrix is diagonal:
+\begin{equation}
+  T_{\rm Ising}
+  =
+  \operatorname{diag}\left(
+    \ee^{-\pi\ii/24},
+    \ee^{\pi\ii/12},
+    \ee^{23\pi\ii/24}
+  \right),
+  \label{eq:ising-modular-t}
+\end{equation}
+because \(T_{ii}=\ee^{2\pi\ii(h_i-c/24)}\) and \(c=1/2\).
 It is real, unitary, and obeys \(S^2=1\), because every simple object is
 self-dual.  The quantum dimensions are
 \[
@@ -721,6 +734,68 @@ These are genus-one sewing constraints.  Higher-genus sewing imposes further
 compatibility between \(M\), chiral blocks, duality moves, and the pairing of
 left and right chiral sectors.
 
+\begin{proposition}[Ising genus-one invariant]
+\label{prop:ising-diagonal-modular-invariant}
+For the Ising chiral data of Section~\ref{sec:ising-chiral-theory},
+restrict to full CFT
+torus partition functions whose left and right chiral labels both lie in
+\((\mathbf 1,\sigma,\varepsilon)\).  Let
+\[
+  M=(M_{ij})_{i,j\in\{\mathbf 1,\sigma,\varepsilon\}}
+  \in \operatorname{Mat}_3(\mathbb Z_{\ge0})
+\]
+with \(M_{\mathbf 1\mathbf 1}=1\).  If \(M\) satisfies
+\eqref{eq:modular-invariant-matrix} with
+\eqref{eq:ising-modular-s} and \eqref{eq:ising-modular-t}, then \(M=I_3\).
+Thus the only genus-one modular invariant with one vacuum in this chiral
+Ising label set is the diagonal invariant
+\[
+  Z_{\rm Ising}(\tau,\bar\tau)
+  =
+  |\chi_{\mathbf 1}|^2+|\chi_\sigma|^2+|\chi_\varepsilon|^2 .
+  \label{eq:ising-diagonal-torus-partition-function}
+\]
+\end{proposition}
+
+\begin{proof}
+The \(T\)-constraint is already a spin-selection rule.  Since \(T\) is
+diagonal,
+\[
+  (MT)_{ij}-(TM)_{ij}
+  =
+  M_{ij}\left(
+    \ee^{2\pi\ii(h_j-c/24)}
+    -
+    \ee^{2\pi\ii(h_i-c/24)}
+  \right).
+\]
+Therefore \(M_{ij}\ne0\) implies \(h_i-h_j\in\mathbb Z\).  For the Ising
+weights
+\[
+  0,\qquad \frac1{16},\qquad \frac12,
+\]
+no two distinct weights differ by an integer.  Hence \(M\) is diagonal:
+\[
+  M=\operatorname{diag}(1,a,b),
+  \qquad a,b\in\mathbb Z_{\ge0}.
+\]
+The \(S\)-constraint now gives, entry by entry,
+\[
+  (MS)_{\mathbf 1\sigma}=S_{\mathbf 1\sigma},
+  \qquad
+  (SM)_{\mathbf 1\sigma}=aS_{\mathbf 1\sigma}.
+\]
+Since \(S_{\mathbf 1\sigma}=1/\sqrt2\ne0\), one gets \(a=1\).  Similarly
+\[
+  (MS)_{\mathbf 1\varepsilon}=S_{\mathbf 1\varepsilon},
+  \qquad
+  (SM)_{\mathbf 1\varepsilon}=bS_{\mathbf 1\varepsilon},
+\]
+and \(S_{\mathbf 1\varepsilon}=1/2\ne0\), so \(b=1\).  Thus
+\(M=I_3\), and \eqref{eq:ising-diagonal-torus-partition-function} follows
+from \eqref{eq:rational-torus-partition-function}.
+\end{proof}
+
 For a unitary compact two-dimensional CFT with discrete spectrum on the
 circle, the rectangular torus partition function
 \[
@@ -753,6 +828,96 @@ this high-temperature partition-function statement into an asymptotic density
 of states.  Those hypotheses are analytic input; modular invariance alone is
 not a pointwise formula for individual degeneracies.
 
+\begin{quotedtheorem}[Exponential Tauberian theorem]
+\label{qthm:exponential-tauberian-cardy}
+Let \(N(E)\) be a nondecreasing right-continuous function on
+\([0,\infty)\), and suppose its Laplace transform
+\[
+  Z(\beta)=\int_{[0,\infty)}\ee^{-\beta E}\,\dd N(E)
+\]
+is finite for every \(\beta>0\).  If, for some \(A>0\),
+\[
+  \log Z(\beta)=\frac A\beta+o(\beta^{-1})
+  \qquad(\beta\downarrow0),
+\]
+then
+\[
+  \log N(E)=2\sqrt{AE}+o(\sqrt E)
+  \qquad(E\to\infty).
+\]
+\end{quotedtheorem}
+
+This theorem is the precise analytic bridge between the modular
+high-temperature statement and the density of states.  Its positivity
+hypothesis is essential: \(N(E)\) is a cumulative spectral counting function,
+not a signed distribution obtained by subtracting sectors.
+
+\begin{proposition}[CFT-internal Cardy growth]
+\label{prop:cft-internal-cardy-growth}
+Let \(\mathcal C\) be a unitary compact two-dimensional CFT on a circle of
+circumference \(2\pi\).  Assume the Hilbert-space spectrum of
+\[
+  E=L_0+\bar L_0
+\]
+is discrete with finite multiplicities, \(E\ge0\), and has a unique vacuum at
+\(E=0\).  Assume also that the torus partition function is modular invariant
+and has no continuous spectral contribution.  Let
+\[
+  N(E)=\dim\{\psi\in\mathcal H(S^1)\mid
+  (L_0+\bar L_0)\psi\le E\}
+\]
+be the cumulative degeneracy.  Then
+\begin{equation}
+  \log N(E)
+  =
+  2\pi\sqrt{\frac{c_{\rm tot}E}{6}}+o(\sqrt E),
+  \qquad
+  E\to\infty .
+  \label{eq:cardy-cumulative-density}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The shifted cylinder partition function used above is
+\[
+  Z(\beta)
+  =
+  \operatorname{Tr}\exp\{-\beta(L_0+\bar L_0-c_{\rm tot}/24)\}.
+\]
+Multiplying by \(\exp\{-\beta c_{\rm tot}/24\}\) gives the ordinary Laplace
+transform of the positive counting measure \(\dd N(E)\):
+\[
+  \widetilde Z(\beta)
+  =
+  \operatorname{Tr}\exp\{-\beta(L_0+\bar L_0)\}
+  =
+  \int_{[0,\infty)}\ee^{-\beta E}\,\dd N(E).
+\]
+Since \(\beta c_{\rm tot}/24=o(\beta^{-1})\), the high-temperature asymptotic
+\eqref{eq:cardy-partition-leading} gives
+\[
+  \log \widetilde Z(\beta)
+  =
+  \frac{\pi^2c_{\rm tot}}{6\beta}+o(\beta^{-1}).
+\]
+Apply Theorem~\ref{qthm:exponential-tauberian-cardy} with
+\(A=\pi^2c_{\rm tot}/6\).
+\end{proof}
+
+A saddle calculation checks the coefficient but does not replace the
+Tauberian theorem.  If a smooth density had entropy
+\[
+  S(E)=2\sqrt{AE},
+\]
+then the Laplace exponent \(S(E)-\beta E\) is stationary at
+\[
+  E_\ast=\frac A{\beta^2},
+\]
+and the stationary value is \(A/\beta\).  Thus the density-growth coefficient
+in \eqref{eq:cardy-cumulative-density} is exactly the Legendre dual of the
+modular coefficient in \eqref{eq:cardy-partition-leading}; the theorem above
+is what justifies this conclusion for a discrete positive spectrum.
+
 The modular bootstrap is the study of the constraints
 \eqref{eq:modular-invariant-matrix}, reflection positivity, spin integrality,
 and higher-genus sewing on the spectrum and OPE data.  In rational theories it
@@ -762,32 +927,188 @@ partition functions.
 
 \section{Logarithmic Theories}
 
-A logarithmic CFT is a conformal field theory in which the chiral module
-category is not semisimple and \(L_0\) may have Jordan blocks.  If
+A logarithmic CFT is a conformal field theory whose chiral module category is
+not semisimple and in which the energy operator \(L_0\) need not be
+diagonalizable.  This is not merely a change of terminology.  Diagonal
+\(L_0\) is what made the rational characters honest sums of powers of \(q\)
+over simple modules; a nilpotent part of \(L_0\) changes both local conformal
+covariance and the genus-one trace problem.
+
+\begin{definition}[Rank-two logarithmic Virasoro pair]
+\label{def:rank-two-logarithmic-pair}
+A rank-two logarithmic pair of chiral fields of weight \(h\) is a pair
+\((\mathcal C,\mathcal D)\) whose states \(C,D\) satisfy
 \[
-  L_0 v=hv+w,\qquad L_0w=hw,
+  L_0C=hC,\qquad L_0D=hD+C,\qquad L_nC=L_nD=0\quad(n>0).
 \]
-then cylinder evolution gives
+Equivalently, the singular part of the stress-tensor OPE is
 \[
-  q^{L_0-c/24}v
+  T(\zeta)\mathcal C(z)
+  \sim
+  \frac{h\mathcal C(z)}{(\zeta-z)^2}
+  +
+  \frac{\partial\mathcal C(z)}{\zeta-z},
+\]
+\[
+  T(\zeta)\mathcal D(z)
+  \sim
+  \frac{h\mathcal D(z)+\mathcal C(z)}{(\zeta-z)^2}
+  +
+  \frac{\partial\mathcal D(z)}{\zeta-z}.
+\]
+Thus \(\mathcal C\) is primary, while \(\mathcal D\) is its logarithmic
+partner.  With \(N D=C\) and \(NC=0\), the two-dimensional span of
+\((C,D)\) carries \(L_0=h\operatorname{id}+N\).
+\end{definition}
+
+The finite consequences are immediate and worth recording because this is
+where signs and \(2\pi\ii\)'s enter.  On states,
+\[
+  q^{L_0-c/24}C=q^{h-c/24}C,\qquad
+  q^{L_0-c/24}D=q^{h-c/24}\bigl(D+2\pi\ii\tau\,C\bigr),
+  \qquad q=\ee^{2\pi\ii\tau}.
+\]
+On fields, the Virasoro commutators are, for \(n=-1,0,1\),
+\[
+  [L_n,\mathcal C(z)]
   =
-  q^{h-c/24}(v+2\pi\ii\tau\,w).
+  \bigl(z^{n+1}\partial_z+(n+1)hz^n\bigr)\mathcal C(z),
 \]
-Correlation functions may therefore contain logarithms after mapping between
-the plane and the cylinder.  Ordinary characters do not separate all modules;
-one must include pseudo-traces and projective objects.  The category replacing
-the semisimple modular tensor category is a finite tensor category with
-braiding and twist, and the modular group acts on a larger space of
-generalized characters and pseudo-trace functions.
+\[
+  [L_n,\mathcal D(z)]
+  =
+  \bigl(z^{n+1}\partial_z+(n+1)hz^n\bigr)\mathcal D(z)
+  +(n+1)z^n\mathcal C(z).
+\]
+In particular,
+\[
+  \ee^{sL_0}\mathcal C(z)\ee^{-sL_0}
+  =
+  \ee^{sh}\mathcal C(\ee^s z),
+\]
+\[
+  \ee^{sL_0}\mathcal D(z)\ee^{-sL_0}
+  =
+  \ee^{sh}\bigl(\mathcal D(\ee^s z)+s\mathcal C(\ee^s z)\bigr).
+\]
+The additive \(s=\log\lambda\) term is the local origin of logarithms in
+correlators.
+
+\begin{proposition}[Two-point functions of a logarithmic pair]
+\label{prop:logarithmic-pair-two-point-functions}
+Assume the vacuum is invariant under \(L_{-1},L_0,L_1\), the two fields in
+Definition~\ref{def:rank-two-logarithmic-pair} are mutually local, and their
+two-point functions are single-valued on a chosen simply connected
+punctured coordinate chart after a branch of \(\log z\) is fixed.  Then
+translation, scaling, and special-conformal Ward identities force
+\[
+  \langle\mathcal C(z)\mathcal C(0)\rangle=0,
+\]
+\[
+  \langle\mathcal C(z)\mathcal D(0)\rangle
+  =
+  b\,z^{-2h},
+\]
+\[
+  \langle\mathcal D(z)\mathcal D(0)\rangle
+  =
+  (d-2b\log z)z^{-2h},
+\]
+for constants \(b,d\in\mathbb C\).  The constant \(d\) depends on the choice
+of logarithmic partner \(D\), while \(b\) is invariant under
+\(D\mapsto D+\lambda C\).
+\end{proposition}
+
+\begin{proof}
+Translation invariance makes the correlators functions of
+\(z=z_1-z_2\).  Write
+\[
+  G_{CC}(z)=\langle\mathcal C(z)\mathcal C(0)\rangle,\qquad
+  G_{CD}(z)=\langle\mathcal C(z)\mathcal D(0)\rangle,
+\]
+\[
+  G_{DD}(z)=\langle\mathcal D(z)\mathcal D(0)\rangle.
+\]
+The \(L_0\) Ward identity gives
+\[
+  (z\partial_z+2h)G_{CC}=0,
+\]
+\[
+  (z\partial_z+2h)G_{CD}+G_{CC}=0,
+\]
+\[
+  (z\partial_z+2h)G_{DD}+2G_{CD}=0.
+\]
+Hence, before imposing \(L_1\),
+\[
+  G_{CC}=A z^{-2h},\qquad
+  G_{CD}=(B-A\log z)z^{-2h},
+\]
+\[
+  G_{DD}=(D_0-2B\log z+A(\log z)^2)z^{-2h}.
+\]
+This calculation is the scale-covariant source of logarithms.
+
+Now impose the \(L_1\) Ward identity on
+\(\langle\mathcal C(z_1)\mathcal D(z_2)\rangle\).  The ordinary primary part
+of the differential operator is
+\[
+  (z_1+z_2)(z\partial_z+2h)G_{CD}(z),
+  \qquad z=z_1-z_2,
+\]
+and the nilpotent term from the \(\mathcal D\)-insertion is
+\[
+  2z_2G_{CC}(z).
+\]
+Using the \(L_0\) equation, the total \(L_1\) variation is
+\[
+  -(z_1+z_2)G_{CC}(z)+2z_2G_{CC}(z)
+  =
+  -z\,G_{CC}(z).
+\]
+It must vanish for \(z\ne0\), so \(G_{CC}=0\) and therefore \(A=0\).  The
+remaining \(L_0\) equations give the displayed forms with \(b=B\) and
+\(d=D_0\).  The \(L_1\) equation for \(G_{DD}\) is then automatic:
+the primary differential part gives
+\(-2b(z_1+z_2)z^{-2h}\), while the two nilpotent insertions contribute
+\(2b(z_1+z_2)z^{-2h}\).
+
+Finally replace \(D\) by \(D+\lambda C\).  Since \(G_{CC}=0\),
+\[
+  G_{CD}\mapsto G_{CD},\qquad
+  G_{DD}\mapsto G_{DD}+2\lambda G_{CD}.
+\]
+Thus \(b\) is unchanged and \(d\) is shifted to \(d+2\lambda b\).
+\end{proof}
+
+The ordinary character sees only the trace of
+\(q^{L_0-c/24}\).  On the span of \(C,D\),
+\[
+  \operatorname{Tr}\bigl(q^{L_0-c/24}\bigr)
+  =
+  2q^{h-c/24},
+\]
+because the nilpotent coefficient \(2\pi\ii\tau N\) has trace zero.  Thus an
+ordinary character records the generalized eigenvalue and multiplicity but
+not the extension class producing the logarithmic partner.  In a finite-length
+\(C_2\)-cofinite logarithmic theory, the genus-one space closed under
+modular transformations is therefore larger than the span of ordinary
+characters: it includes generalized characters and pseudo-trace functions on
+projective modules.  A pseudo-trace is the replacement for the usual matrix
+trace when the endomorphism algebra of a projective module is not semisimple;
+it is a linear functional with the cyclicity property needed for torus
+sewing, and it can couple to the nilpotent part invisible to the ordinary
+trace.
 
 The semisimple Verlinde formula
-\eqref{eq:verlinde-formula} is then replaced by categorical statements about
-the Grothendieck ring, projective modules, and modified traces.  The right
-question is not whether the same matrix formula survives unchanged, but which
-categorical pairing diagonalizes which quotient of the tensor product.  This
-is one of the places where the algebraic formulation is essential: it names
-the objects whose semisimplicity has failed and identifies the extra data
-needed to recover modular sewing.
+\eqref{eq:verlinde-formula} is consequently replaced by categorical
+statements about the Grothendieck ring, projective modules, modified traces,
+and the factorizable braided finite tensor category attached to the
+logarithmic chiral theory.  The right question is not whether the same matrix
+formula survives unchanged, but which categorical pairing diagonalizes which
+quotient of the tensor product.  This is one of the places where the
+algebraic formulation is essential: it names the objects whose semisimplicity
+has failed and identifies the extra data needed to recover modular sewing.
 
 \section{Output}
 

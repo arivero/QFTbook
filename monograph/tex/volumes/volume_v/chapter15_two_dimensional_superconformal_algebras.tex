@@ -441,6 +441,193 @@ Insert \(h=q/2\) and \(\eta=-1/2\) into
 \]
 \end{proof}
 
+\section{Extended \texorpdfstring{\(\mathcal N=2\)}{N=2} Spectral-Flow Operators}
+\label{sec:extended-n2-spectral-flow-operators}
+
+Proposition~\ref{prop:n2-spectral-flow} is a statement about the abstract
+mode algebra.  It does not say that spectral flow is implemented by a local
+operator in a particular CFT.  That extra assertion needs a charge lattice
+and locality hypothesis.  This distinction is small in notation and large in
+logic: the extended \(\mathcal N=2\) algebra is an additional chiral-algebra
+datum requiring more than the singular OPEs in
+Definition~\ref{def:n2-superconformal-datum}.
+
+Put
+\[
+  \kappa=\frac c3 .
+\]
+In this section assume \(\kappa>0\) and assume that the \(U(1)_R\) current
+exponentiates to a rank-one Heisenberg/lattice chiral algebra.  Concretely,
+choose a chiral boson \(\varphi\) with
+\begin{equation}
+  \varphi(z)\varphi(0)\sim-\log z,
+  \qquad
+  J(z)=\ii\sqrt{\kappa}\,\partial\varphi(z).
+  \label{eq:n2-r-current-bosonization}
+\end{equation}
+Then \(J(z)J(0)\sim\kappa z^{-2}\), matching
+\eqref{eq:n2-jj-ope}.  A field of \(R\)-charge \(q\) has a Heisenberg
+factor
+\[
+  \exp\left(\ii\frac{q}{\sqrt\kappa}\varphi\right)
+\]
+up to a neutral factor.  The charge lattice of the actual CFT specifies
+which such exponentials exist and which are mutually local.
+
+\begin{definition}[Spectral-flow vertex]
+\label{def:n2-spectral-flow-vertex}
+Let \(\eta\in\frac12\mathbb Z\).  A spectral-flow vertex of parameter
+\(\eta\) is a chiral field
+\begin{equation}
+  X_\eta(z)
+  =
+  :\exp\left(\ii\eta\sqrt{\kappa}\,\varphi(z)\right):
+  \label{eq:n2-spectral-flow-vertex}
+\end{equation}
+provided the momentum \(\eta\sqrt{\kappa}\) belongs to the chosen
+Heisenberg/lattice extension.  It is a local chiral operator only when its
+monodromy with the fields of the chiral algebra is trivial.  If its
+monodromy is spin-dependent, it is instead an operator between spin sectors.
+\end{definition}
+
+\begin{proposition}[Operator implementation of spectral flow]
+\label{prop:n2-spectral-flow-operator-implementation}
+Assume the factorization above, and let
+\[
+  \mathcal O(z)
+  =
+  :\exp\left(\ii\frac{q}{\sqrt\kappa}\varphi(z)\right):
+  \mathcal O_0(z)
+\]
+where \(\mathcal O_0\) is neutral under \(J\).  If \(X_\eta\) exists, then
+\[
+  X_\eta(z)\mathcal O(0)
+  \sim
+  z^{\eta q}\,
+  \mathcal O^{(\eta)}(0)+\cdots
+  \label{eq:n2-spectral-flow-vertex-ope-with-field}
+\]
+where \(\mathcal O^{(\eta)}\) has
+\[
+  q^{(\eta)}=q+\eta\kappa,
+  \qquad
+  h^{(\eta)}=h+\eta q+\frac{\eta^2\kappa}{2}.
+  \label{eq:n2-spectral-flow-vertex-hq}
+\]
+Since \(\kappa=c/3\), this is exactly
+\eqref{eq:n2-spectral-flow-hq}.  The branch factor \(z^{\eta q}\) is the
+locality test: integer powers give ordinary chiral locality, while
+half-integer powers signal the NS/R spin-sector change.
+\end{proposition}
+
+\begin{proof}
+The OPE of bosonic exponentials gives
+\[
+  :e^{\ii a\varphi(z)}:
+  :e^{\ii b\varphi(0)}:
+  \sim
+  z^{ab}:e^{\ii(a+b)\varphi(0)}:+\cdots .
+\]
+With \(a=\eta\sqrt\kappa\) and \(b=q/\sqrt\kappa\), the branch factor is
+\(z^{\eta q}\) and the new charge is
+\[
+  \sqrt\kappa\left(\frac q{\sqrt\kappa}+\eta\sqrt\kappa\right)
+  =
+  q+\eta\kappa .
+\]
+The Heisenberg part of the conformal weight changes by
+\[
+  \frac{(q+\eta\kappa)^2-q^2}{2\kappa}
+  =
+  \eta q+\frac{\eta^2\kappa}{2}.
+\]
+The neutral factor \(\mathcal O_0\) is unchanged, so the same difference is
+the total weight shift.
+\end{proof}
+
+For \(\eta=\pm1\), write
+\[
+  X^\pm=X_{\pm1}.
+\]
+These fields, when present as local chiral fields, are the integer
+spectral-flow generators of the extended \(\mathcal N=2\) algebra.  They
+are obtained from the vacuum by spectral flow, hence
+\begin{equation}
+  h(X^\pm)=\frac c6,
+  \qquad
+  q(X^\pm)=\pm\frac c3 .
+  \label{eq:n2-integer-spectral-flow-operator-hq}
+\end{equation}
+In a unitary NS representation \(X^+\) is chiral and \(X^-\) is antichiral:
+\begin{equation}
+  G^+_{-1/2}X^+=0,
+  \qquad
+  G^-_{-1/2}X^-=0,
+  \label{eq:n2-spectral-flow-operator-shortening}
+\end{equation}
+because \eqref{eq:n2-integer-spectral-flow-operator-hq} saturates the
+bound of Proposition~\ref{prop:n2-chiral-primary-bound}.  Define the
+opposite superdescendants
+\begin{equation}
+  Y^+=G^-_{-1/2}X^+,
+  \qquad
+  Y^-=G^+_{-1/2}X^- .
+  \label{eq:n2-extended-y-operators}
+\end{equation}
+Then
+\begin{equation}
+  h(Y^\pm)=\frac c6+\frac12,
+  \qquad
+  q(Y^\pm)=\pm\left(\frac c3-1\right).
+  \label{eq:n2-extended-y-operator-hq}
+\end{equation}
+These four fields \(X^\pm,Y^\pm\), together with
+\(T,J,G^\pm\), are the finite generator set usually meant by the extended
+\(\mathcal N=2\) chiral algebra.
+
+The singular part of the spectral-flow-generator OPE is also fixed by the
+Heisenberg current.  From \eqref{eq:n2-spectral-flow-vertex},
+\[
+  X_\eta(z)X_{-\eta}(0)
+  \sim
+  z^{-\eta^2\kappa}
+  \left[
+    1+\eta zJ(0)
+    +z^2\left(
+      \frac{\eta}{2}\partial J(0)
+      +\frac{\eta^2}{2}:J J:(0)
+    \right)
+    +O(z^3)
+  \right].
+  \label{eq:n2-spectral-flow-opposite-ope}
+\]
+The pole order, the coefficient of \(J\), and the two second-order
+coefficients are therefore convention-sensitive consequences of
+\eqref{eq:n2-r-current-bosonization}, not independent structure constants.
+
+\begin{example}[Calabi--Yau-type charge lattice]
+\label{ex:calabi-yau-type-spectral-flow-operators}
+If \(c=3n\), then \(\kappa=n\).  The integer spectral-flow fields have
+\[
+  h(X^\pm)=\frac n2,
+  \qquad
+  q(X^\pm)=\pm n,
+\]
+and the half-flow fields \(X_{\pm1/2}\), when present on the spin cover,
+have
+\begin{equation}
+  h(X_{\pm1/2})=\frac n8,
+  \qquad
+  q(X_{\pm1/2})=\pm\frac n2 .
+  \label{eq:calabi-yau-type-half-flow-hq}
+\end{equation}
+In a large-radius Calabi--Yau sigma-model representative these are realized
+by the holomorphic top-form fermion product and the Ramond spin fields,
+respectively.  The present chapter uses only the algebraic implication:
+their existence is a charge-lattice and spin-sector datum whose weights and
+charges must be exactly those displayed above.
+\end{example}
+
 \section{Protected Algebraic Tests for Supersymmetric Dynamics}
 
 The full construction of two-dimensional \(\mathcal N=(2,2)\)
@@ -553,6 +740,432 @@ with all weights \(q_i=1/5\), the anomaly formula gives
 This is an algebraic \(U(1)_R\)-anomaly calculation.  Interpreting it as a
 Calabi--Yau sigma-model phase is not part of the present chapter.
 \end{example}
+
+\section{Supersymmetric Rank-One Coset Interfaces}
+\label{sec:supersymmetric-rank-one-coset-interfaces}
+
+The rank-one cosets of
+Section~\ref{subsec:rank-one-solvable-cosets} have supersymmetric
+refinements which are too important to leave as informal shorthand.  This section
+records the exact chiral-algebraic interface needed by the CFT volume.  It
+does not assert a construction of a UV Landau--Ginzburg or GLSM flow.  The
+latter requires the regulator, supersymmetric Ward identities, and
+infrared-comparison topology of Volume~VII.  The point here is narrower and
+sharper: once the supersymmetric WZW coset exists as an \(\mathcal N=2\)
+chiral algebra, its central charge, primary weights, \(R\)-charges, spectral
+flow, and basic field-identification arithmetic are fixed.
+
+We use the following conventions.  A supersymmetric \(SU(2)_k\) WZW datum,
+with \(k\in\mathbb Z_{\ge2}\), is represented by a bosonic
+\(\widehat{\mathfrak{su}}(2)_{k-2}\) current algebra with currents
+\(k^a(z)\), \(a=1,2,3\), together with three free Majorana fermions
+\(\chi^a(z)\).  The total Cartan current is denoted \(K^3\).  The
+supersymmetric \(SL(2,\mathbb R)_k\) datum, with \(k>0\), is represented by
+a bosonic \(\widehat{\mathfrak{sl}}(2,\mathbb R)_{k+2}\) current algebra with
+currents \(j^a(z)\), three free fermions \(\psi^a(z)\) with the
+noncompact-signature bilinear form, and total Cartan current \(J^3\).  In
+both cases the coset removes the \(\mathcal N=1\) abelian sector generated
+by the Cartan fermion and total Cartan current.  This is an operator
+statement: the displayed coset fields are required to have regular OPE with
+the removed \(\mathcal N=1\) \(U(1)\) sector.
+
+\begin{definition}[Compact supersymmetric rank-one coset]
+\label{def:compact-supersymmetric-rank-one-coset}
+For \(k\in\mathbb Z_{\ge2}\), the compact supersymmetric rank-one coset is
+the chiral algebra obtained from the supersymmetric \(SU(2)_k\) datum by
+decoupling the \(\mathcal N=1\) \(U(1)\) sector generated by
+\(\chi^3\) and \(K^3\).  Put
+\[
+  k^\pm=k^1\pm\ii k^2,
+  \qquad
+  \chi^\pm=\frac{\chi^1\pm\ii\chi^2}{\sqrt2}.
+\]
+In the standard free-fermion realization the \(\mathcal N=2\) generators of
+the coset are
+\begin{equation}
+  G^\pm
+  =
+  \sqrt{\frac2k}\,k^\mp\chi^\pm,
+  \qquad
+  J_R
+  =
+  -\frac2k k^3+\frac{k-2}{k}\chi^+\chi^-
+  =
+  -\frac2k K^3+\chi^+\chi^- .
+  \label{eq:compact-susy-coset-n2-generators}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Compact coset central charge and primary data]
+\label{prop:compact-susy-coset-primary-data}
+The compact coset of
+Definition~\ref{def:compact-supersymmetric-rank-one-coset} has
+\begin{equation}
+  c_{\mathrm{comp}}(k)=\frac{3(k-2)}{k}.
+  \label{eq:compact-susy-coset-central-charge}
+\end{equation}
+Let \(V^{su}_{j,m,\bar m}\) be a diagonal bosonic
+\(\widehat{\mathfrak{su}}(2)_{k-2}\) primary, where
+\[
+  j\in\left\{0,\frac12,\ldots,\frac{k-2}{2}\right\},
+  \qquad
+  m,\bar m\in\{-j,-j+1,\ldots,j\}.
+\]
+Bosonize the total Cartan current by
+\[
+  K^3\simeq \ii\sqrt{\frac k2}\,\partial Y
+\]
+and factor the Cartan vertex by
+\begin{equation}
+  V^{su}_{j,m,\bar m}
+  \simeq
+  \exp\left[
+    \ii\sqrt{\frac2k}\,(mY+\bar m\,\bar Y)
+  \right]
+  \Psi^{su}_{j,m,\bar m}.
+  \label{eq:compact-susy-coset-factorization}
+\end{equation}
+Then the coset primary \(\Psi^{su}_{j,m,\bar m}\) has
+\begin{equation}
+  h=\frac{j(j+1)-m^2}{k},
+  \qquad
+  q=-\frac{2m}{k},
+  \qquad
+  \bar h=\frac{j(j+1)-\bar m^2}{k},
+  \qquad
+  \bar q=-\frac{2\bar m}{k}.
+  \label{eq:compact-susy-coset-unflowed-hq}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The central-charge calculation is a useful place to keep the level shifts
+visible.  The bosonic \(SU(2)_{k-2}\) algebra has central charge
+\[
+  \frac{3(k-2)}{(k-2)+2}=\frac{3(k-2)}{k}.
+\]
+The three free fermions contribute \(3/2\).  The removed abelian
+\(\mathcal N=1\) sector contributes \(1+1/2=3/2\).  Hence the coset central
+charge is \(\frac{3(k-2)}{k}+3/2-3/2\), which is
+\eqref{eq:compact-susy-coset-central-charge}.
+
+For the weights, the bosonic \(SU(2)_{k-2}\) primary of spin \(j\) has
+Sugawara weight \(j(j+1)/k\), while the Cartan factor in
+\eqref{eq:compact-susy-coset-factorization} has holomorphic weight
+\(m^2/k\).  Subtracting the Cartan part gives the displayed \(h\), and the
+same argument gives \(\bar h\).  The \(R\)-charge follows by taking the
+simple pole of \(J_R\) with the coset factor after the \(K^3\)-vertex has
+been removed.  With the normalization above, this pole is
+\(-2m/k\) times the field; the antiholomorphic formula is identical.
+\end{proof}
+
+The compact coset is the \(\mathcal N=2\) minimal model whose usual
+minimal-model level is
+\[
+  K=k-2 .
+\]
+Thus \(c_{\mathrm{comp}}=3K/(K+2)\).  The chiral-primary representatives in
+the convention \eqref{eq:compact-susy-coset-unflowed-hq} are obtained by
+setting \(m=-j\).  Then
+\[
+  h=\frac{j}{k},
+  \qquad
+  q=\frac{2j}{k},
+  \qquad
+  h=\frac q2 .
+\]
+Writing \(\ell=2j\), with \(0\le\ell\le K\), gives
+\[
+  q_\ell=\frac{\ell}{K+2},
+  \qquad
+  h_\ell=\frac{\ell}{2(K+2)}.
+\]
+These are exactly the \(A\)-series algebraic values in
+Example~\ref{ex:a-series-lg-algebra}, after identifying
+\(W=X^{K+2}\).  The equality of protected chiral data is a consistency
+interface; it is not, by itself, a proof that a chosen UV
+Landau--Ginzburg regulator flows to this coset.
+
+The compact coset has independent holomorphic and antiholomorphic spectral
+flow operations.  Applying \eqref{eq:n2-spectral-flow-hq} with
+\eqref{eq:compact-susy-coset-central-charge} to
+\eqref{eq:compact-susy-coset-unflowed-hq} gives the flowed labels
+\begin{align}
+  h^{(\eta)}
+  &=
+  \frac{j(j+1)-(m+\eta)^2}{k}+\frac{\eta^2}{2},
+  &
+  q^{(\eta)}
+  &=
+  -\frac{2(m+\eta)}{k}+\eta,
+  \label{eq:compact-susy-coset-flowed-hq}\\
+  \bar h^{(\bar\eta)}
+  &=
+  \frac{j(j+1)-(\bar m+\bar\eta)^2}{k}
+  +\frac{\bar\eta^2}{2},
+  &
+  \bar q^{(\bar\eta)}
+  &=
+  -\frac{2(\bar m+\bar\eta)}{k}+\bar\eta,
+  \nonumber
+\end{align}
+where \(\eta,\bar\eta\in\frac12\mathbb Z\).  The compact simple-current
+identification becomes, for the corresponding spectral-flowed fields,
+\begin{equation}
+  \Psi^{su,(\eta,\bar\eta)}_{j,m,\bar m}
+  \simeq
+  \Psi^{su,(\eta-1,\bar\eta-1)}
+       _{\frac{k-2}{2}-j,\,
+         m-\frac{k-2}{2},\,\bar m-\frac{k-2}{2}}
+  \simeq
+  \Psi^{su,(\eta-1,\bar\eta+1)}
+       _{\frac{k-2}{2}-j,\,
+         m-\frac{k-2}{2},\,\bar m+\frac{k-2}{2}} .
+  \label{eq:compact-susy-coset-field-identification}
+\end{equation}
+The full diagonal compact theory is obtained only after the left and right
+representations are paired.  In the conventional diagonal pairing one
+imposes
+\begin{equation}
+  m+\eta-\bar m-\bar\eta\in k\mathbb Z,
+  \qquad
+  \eta-\bar\eta\in\mathbb Z .
+  \label{eq:compact-susy-coset-diagonal-condition}
+\end{equation}
+The remaining angular symmetry of the disc sigma-model representative is a
+\(\mathbb Z_k\) symmetry acting by
+\begin{equation}
+  \Psi^{su,(\eta,\bar\eta)}_{j,m,\bar m}
+  \longmapsto
+  \exp\left[
+    \frac{2\pi\ii}{k}(m+\eta+\bar m+\bar\eta)
+  \right]
+  \Psi^{su,(\eta,\bar\eta)}_{j,m,\bar m}.
+  \label{eq:compact-susy-coset-zk-action}
+\end{equation}
+This last statement is a warning against a common shortcut: the disc metric
+is not the exact CFT data.  The finite-level CFT remembers the simple-current
+identification and the \(\mathbb Z_k\) selection rule.
+
+\begin{definition}[Noncompact supersymmetric rank-one coset]
+\label{def:noncompact-supersymmetric-rank-one-coset}
+For \(k>0\), the noncompact supersymmetric rank-one coset is obtained from
+the supersymmetric \(SL(2,\mathbb R)_k\) datum by decoupling the
+\(\mathcal N=1\) abelian sector generated by \(\psi^3\) and \(J^3\).  Put
+\[
+  j^\pm=j^1\pm\ii j^2,
+  \qquad
+  \psi^\pm=\frac{\psi^1\pm\ii\psi^2}{\sqrt2}.
+\]
+In the standard realization its \(\mathcal N=2\) generators are
+\begin{equation}
+  G^\pm
+  =
+  \sqrt{\frac2k}\,j^\mp\psi^\pm,
+  \qquad
+  J_R
+  =
+  \frac2k j^3+\frac{k+2}{k}\psi^+\psi^-
+  =
+  \frac2k J^3+\psi^+\psi^- .
+  \label{eq:noncompact-susy-coset-n2-generators}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Cigar central charge and primary data]
+\label{prop:noncompact-susy-coset-primary-data}
+The noncompact coset of
+Definition~\ref{def:noncompact-supersymmetric-rank-one-coset} has
+\begin{equation}
+  c_{\mathrm{cig}}(k)=\frac{3(k+2)}{k}.
+  \label{eq:noncompact-susy-coset-central-charge}
+\end{equation}
+Let \(V^{sl}_{j,m,\bar m}\) be a bosonic
+\(\widehat{\mathfrak{sl}}(2,\mathbb R)_{k+2}\) primary, with \(j\) the
+standard \(SL(2,\mathbb R)\) spin parameter and \(m,\bar m\) the total
+Cartan eigenvalues.  Bosonize the total Cartan current by
+\[
+  J^3\simeq-\sqrt{\frac k2}\,\partial X
+\]
+and factor
+\begin{equation}
+  V^{sl}_{j,m,\bar m}
+  \simeq
+  \exp\left[
+    \sqrt{\frac2k}\,(mX+\bar m\,\bar X)
+  \right]
+  \Psi^{sl}_{j,m,\bar m}.
+  \label{eq:noncompact-susy-coset-factorization}
+\end{equation}
+Then
+\begin{equation}
+  h=\frac{-j(j-1)+m^2}{k},
+  \qquad
+  q=\frac{2m}{k},
+  \qquad
+  \bar h=\frac{-j(j-1)+\bar m^2}{k},
+  \qquad
+  \bar q=\frac{2\bar m}{k}.
+  \label{eq:noncompact-susy-coset-unflowed-hq}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The bosonic \(SL(2,\mathbb R)_{k+2}\) current algebra has central charge
+\(3(k+2)/k\) in the convention of
+Section~\ref{subsec:rank-one-solvable-cosets}.  Adding three fermions and
+removing the abelian \(\mathcal N=1\) Cartan sector changes the central
+charge by \(+3/2-3/2\), so the coset central charge is
+\eqref{eq:noncompact-susy-coset-central-charge}.  The bosonic primary has
+Sugawara weight \(-j(j-1)/k\).  The Cartan boson in
+\eqref{eq:noncompact-susy-coset-factorization} is timelike with respect to
+the noncompact bilinear form, so removing the Cartan factor adds \(m^2/k\)
+to the coset weight.  The \(R\)-charge is the simple-pole coefficient of
+the \(J_R\) OPE after the \(J^3\)-vertex has been factored out, giving
+\(2m/k\).  The barred formulas are the same calculation in the
+antiholomorphic sector.
+\end{proof}
+
+The noncompact spectrum is not determined by
+\eqref{eq:noncompact-susy-coset-unflowed-hq} alone.  In the conventional
+cigar theory the continuous series has
+\[
+  j=\frac12+\ii s,
+  \qquad
+  s\in\mathbb R,
+  \qquad
+  m-\bar m\in\mathbb Z,
+\]
+while discrete normalizable states are residues in an allowed strip such as
+\[
+  \frac12<j<\frac{k+1}{2},
+  \qquad
+  m,\bar m\in j+\mathbb Z_{\ge0}
+  \quad\text{or}\quad
+  m,\bar m\in -j-\mathbb Z_{\ge0},
+\]
+together with the winding condition
+\begin{equation}
+  m+\bar m\in k\mathbb Z .
+  \label{eq:noncompact-susy-coset-unflowed-winding}
+\end{equation}
+The exact reflection coefficient, its poles, and the spectral density are
+analytic CFT data.  They should not be replaced by the cigar metric.
+
+Spectral flow gives
+\begin{align}
+  h^{(\eta)}
+  &=
+  \frac{-j(j-1)+(m+\eta)^2}{k}+\frac{\eta^2}{2},
+  &
+  q^{(\eta)}
+  &=
+  \frac{2(m+\eta)}{k}+\eta,
+  \label{eq:noncompact-susy-coset-flowed-hq}\\
+  \bar h^{(\bar\eta)}
+  &=
+  \frac{-j(j-1)+(\bar m+\bar\eta)^2}{k}
+  +\frac{\bar\eta^2}{2},
+  &
+  \bar q^{(\bar\eta)}
+  &=
+  \frac{2(\bar m+\bar\eta)}{k}+\bar\eta .
+  \nonumber
+\end{align}
+The momentum and winding labels in the asymptotic cigar circle are shifted
+to
+\begin{equation}
+  n=m+\eta-\bar m-\bar\eta,
+  \qquad
+  w=\frac{m+\eta+\bar m+\bar\eta}{k},
+  \label{eq:noncompact-susy-coset-momentum-winding}
+\end{equation}
+so the winding condition becomes
+\begin{equation}
+  m+\eta+\bar m+\bar\eta\in k\mathbb Z .
+  \label{eq:noncompact-susy-coset-flowed-winding}
+\end{equation}
+For discrete states one extends the range by the identification
+\begin{equation}
+  \Psi^{sl,(\eta,\bar\eta)}_{j,m,\bar m}
+  \simeq
+  \Psi^{sl,(\eta+1,\bar\eta+1)}
+       _{\frac{k+2}{2}-j,\,
+         m-\frac{k+2}{2},\,\bar m-\frac{k+2}{2}} .
+  \label{eq:noncompact-susy-coset-field-identification}
+\end{equation}
+There is no compact-coset analogue shifting \(\eta\) and \(\bar\eta\) with
+opposite signs.  The reason is structural: the cigar has an exact circle
+translation quantum number \(n\), whereas the compact disc representative has
+only the finite \(\mathbb Z_k\) remnant in
+\eqref{eq:compact-susy-coset-zk-action}.
+
+\begin{proposition}[Spectral-flow derivation of the rank-one formulas]
+\label{prop:supersymmetric-rank-one-spectral-flow-check}
+Equations~\eqref{eq:compact-susy-coset-flowed-hq} and
+\eqref{eq:noncompact-susy-coset-flowed-hq} follow from the general
+\(\mathcal N=2\) spectral-flow law
+\eqref{eq:n2-spectral-flow-hq} and the unflowed data
+\eqref{eq:compact-susy-coset-unflowed-hq},
+\eqref{eq:noncompact-susy-coset-unflowed-hq}.
+\end{proposition}
+
+\begin{proof}
+For the compact coset,
+\[
+  h+\eta q+\frac{c_{\mathrm{comp}}\eta^2}{6}
+  =
+  \frac{j(j+1)-m^2}{k}
+  -\frac{2\eta m}{k}
+  +\frac{k-2}{2k}\eta^2 .
+\]
+Since
+\[
+  -\frac{(m+\eta)^2}{k}+\frac{\eta^2}{2}
+  =
+  -\frac{m^2+2m\eta}{k}
+  +\frac{k-2}{2k}\eta^2,
+\]
+this is the first formula in
+\eqref{eq:compact-susy-coset-flowed-hq}.  The charge identity is
+\[
+  q+\frac{c_{\mathrm{comp}}\eta}{3}
+  =
+  -\frac{2m}{k}+\frac{k-2}{k}\eta
+  =
+  -\frac{2(m+\eta)}{k}+\eta .
+\]
+The barred compact formulas are identical.  For the noncompact coset,
+\[
+  h+\eta q+\frac{c_{\mathrm{cig}}\eta^2}{6}
+  =
+  \frac{-j(j-1)+m^2}{k}
+  +\frac{2\eta m}{k}
+  +\frac{k+2}{2k}\eta^2 ,
+\]
+and
+\[
+  \frac{(m+\eta)^2}{k}+\frac{\eta^2}{2}
+  =
+  \frac{m^2+2m\eta}{k}
+  +\frac{k+2}{2k}\eta^2.
+\]
+The charge shift is
+\[
+  \frac{2m}{k}+\frac{k+2}{k}\eta
+  =
+  \frac{2(m+\eta)}{k}+\eta .
+\]
+\end{proof}
+
+The mirror relation between the noncompact \(SL(2,\mathbb R)_k/U(1)\)
+coset and \(\mathcal N=2\) Liouville theory belongs at the interface between
+this chiral algebra, the cigar sigma-model representative in
+Section~\ref{subsec:rank-one-solvable-cosets}, and the Volume~VII GLSM
+duality construction.  In this volume it is safest to treat mirror symmetry
+as a target theorem for the supersymmetric-QFT development: the present
+section supplies the exact coset side, including the \(R\)-charges and
+spectral-flow labels that any such theorem must match.
 
 \section{Small \texorpdfstring{\(\mathcal N=4\)}{N=4} Boundary}
 

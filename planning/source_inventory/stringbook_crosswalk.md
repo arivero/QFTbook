@@ -233,8 +233,11 @@ Current absorption:
   NLSM renormalization pass now gives the covariant exponential background
   split, the source-coupled mean-zero 1PI effective-action convention, the
   pure-metric second variation and curvature vertex, the background-field
-  one-loop Ricci divergence, the \(G,B,\Phi\) Weyl-anomaly package,
-  scheme-redefinition geometry, torsionful one-loop packaging, the
+  one-loop Ricci divergence with the local heat-kernel pole and
+  Ricci-counterterm normalization derived explicitly, the \(G,B,\Phi\)
+  Weyl-anomaly package with full string-frame metric/dilaton variation and
+  trace representative, scheme-redefinition geometry, torsionful one-loop
+  packaging, the
   pure-metric two-loop representative, the precise RG-time conversion to
   Hamilton Ricci flow, and constant-curvature sphere/hyperbolic radius-flow
   checks.  The Narain pass
@@ -250,7 +253,19 @@ Current absorption:
   spectrum-status conventions stated before the gauged sigma-model
   geometries.  The monograph now also checks the bell and cigar
   one-loop Weyl-anomaly equations directly from the rotational curvature
-  formulas.  The public arithmetic check covers the central-charge,
+  formulas.  The orbifold twist-field pass now derives the complex-boson
+  rotation twist weight from the fractional oscillator normal-ordering
+  constant.  The symmetric-product orbifold pass now includes the
+  connected-torus-cover Hermite-normal-form count behind the Hecke transform
+  and the constant-seed partition-number normalization test, together with a
+  Riemann--Hurwitz monodromy ledger for the first twist-correlator covering
+  checks and the beta-normalized local coordinate map for the primitive
+  joining cover, plus the Schwarzian/OPE-power ledger and class-normalized
+  group factor for the primitive joining channel, together with the normalized
+  transposition join/split class-algebra factors.  The twist-deformation layer
+  now derives the annular conformal-perturbation beta function and the
+  contact-term scheme law instead of leaving exact marginality as a slogan.
+  The public arithmetic check covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
@@ -265,7 +280,8 @@ Current absorption:
   action and stress tensor, background charge and central charge, Seiberg
   domain, probabilistic construction boundary, reflection relation,
   continuous conformal-block decomposition, DOZZ theorem boundary, BPZ
-  equations, one-screening coefficient, hypergeometric connection formulas,
+  equations for both \(V_{-b/2}\) and \(V_{-1/(2b)}\), ordinary and dual
+  one-screening coefficients, hypergeometric connection formulas,
   level-two Virasoro block coefficients, the elliptic nome interface to
   Zamolodchikov recursion, and boundary Liouville states with FZZT
   one-point functions and ZZ finite differences.  The finite convention
@@ -284,9 +300,17 @@ Current absorption:
   spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and
   \(\mathcal N=2\) superconformal OPEs and mode algebras, the Ramond
   zero-mode shift, \(\mathcal N=2\) spectral flow, chiral-primary bounds,
-  and protected Landau--Ginzburg central-charge tests.  It explicitly
-  coordinates with the Volume VII supersymmetric-QFT lane for the actual
-  LG/GLSM RG-flow construction.  The finite algebra is checked by
+  the extended \(\mathcal N=2\) spectral-flow operator layer with the
+  charge-lattice/locality hypothesis, \(U(1)_R\) bosonization, integer and
+  half-integer flow fields, and \(X^\pm/Y^\pm\) charge bookkeeping,
+  protected Landau--Ginzburg central-charge tests, and the supersymmetric
+  rank-one coset interfaces for \(SU(2)_k/U(1)\) minimal models and the
+  \(SL(2,\mathbb R)_k/U(1)\) cigar, including central charges, weights,
+  \(R\)-charges, spectral-flowed labels, field identifications, compact
+  \(\mathbb Z_k\) action, and cigar momentum/winding bookkeeping.
+  It explicitly coordinates with the Volume VII supersymmetric-QFT lane for
+  the actual LG/GLSM RG-flow and cigar/Liouville mirror-duality
+  constructions.  The finite algebra is checked by
   `calculation-checks/superconformal_algebra_checks.py`.
 
 ### Planar Integrability
