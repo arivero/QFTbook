@@ -21,7 +21,10 @@ the `volume_iv` framework cluster.
 - `Bord_D^adm`: admissible complex-metric bordism category.
 - `E(Y)`: topological state space assigned to a boundary germ `Y`.
 - `Z(M)`: continuous amplitude map assigned to an admissible bordism.
-- `H_Y`: Hilbert completion obtained from reflection positivity.
+- `Hilb_Y`: Hilbert completion obtained from reflection positivity.
+- `T_Y(\tau)`: Euclidean cylinder semigroup on the \(Y\)-sector.
+- `H_Y`: positive generator of the cylinder semigroup after Hilbert
+  completion and vacuum-energy normalization.
 
 ## Claim Ledger
 
@@ -35,6 +38,15 @@ the `volume_iv` framework cluster.
 - Defines the K-S functorial QFT datum: admissible complex bordisms,
   holomorphic metric/source dependence, collar locality, reflection, and
   reflection positivity.
+- Proves the one-dimensional holomorphic-semigroup criterion for positive
+  energy: a reflected contraction semigroup has a unique self-adjoint
+  generator \(H\ge0\), and imaginary boundary values are unitary.
+- Defines admissible complex-metric bordisms with collars and records the
+  locally convex topological target needed before Hilbert completion.
+- Proves that K-S reflection positivity plus cylinder sewing gives a
+  positive-energy Hamiltonian on a reflected boundary Hilbert space, once
+  quotient-domain, strong-continuity, and cylinder-normalization hypotheses
+  are supplied.
 - Derives the route from K-S data to OS Schwinger functions under explicit
   temperedness, covariance, and spectral clustering assumptions.
 - States the Lorentzian-boundary theorem as a quoted theorem, with precise
@@ -56,6 +68,9 @@ the `volume_iv` framework cluster.
 - `calculation-checks/ks_allowability_checks.py` verifies the angle criterion
   on representative diagonal metrics and checks positivity of all diagonal
   \(q\)-form coefficients for finite examples.
+- `calculation-checks/ks_semigroup_checks.py` verifies Mehler-kernel
+  composition for finite harmonic-oscillator modes and the
+  contraction-to-unitary boundary behavior of \(e^{-zH}\).
 
 ## Audit Notes
 
@@ -63,3 +78,6 @@ the `volume_iv` framework cluster.
   Volume I foundations sequence, linked it from Volume I chapter 1, Volume
   III radial quantization, and Volume VIII Atiyah--Segal TQFT, and added the
   finite allowability calculation check.
+- 2026-05-27 depth pass: added the one-dimensional positive-energy semigroup
+  theorem, the K-S cylinder-to-Hamiltonian theorem, the collared bordism and
+  topological-target refinements, and the finite Gaussian Mehler-kernel check.

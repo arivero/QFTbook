@@ -718,6 +718,10 @@ Current checks:
   Kontsevich--Segal allowability chapter, including the angle criterion,
   Euclidean and Lorentzian boundary examples, two-time exclusion, and
   positivity of all diagonal \(q\)-form coefficients.
+- `ks_semigroup_checks.py`: finite checks for the K-S positive-energy
+  mechanism, including Mehler-kernel composition for a harmonic oscillator
+  mode and the contraction-to-unitary boundary-value behavior of
+  \(e^{-zH}\) for a positive spectrum.
 - `susy_abjm_6d_checks.py`: exact finite checks for the ABJM and
   six-dimensional supersymmetric field-theory chapters, including the ABJM
   superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian

@@ -41,6 +41,89 @@ admissible complex metrics, compatible with sewing, and equipped with a
 reflection structure whose Lorentzian boundary values produce unitary
 evolution and microcausal fields when the required analytic hypotheses hold.
 
+\section{The One-Dimensional Semigroup Model}
+
+The smallest model of the Kontsevich--Segal idea is ordinary positive-energy
+quantum mechanics written without choosing a preferred real time coordinate.
+Let \(\Hilb\) be a Hilbert space and let \(H\) be a self-adjoint operator
+bounded below.  After subtracting the infimum of the spectrum, assume
+\(H\ge0\).  The Euclidean time evolution is
+\[
+  T(\tau)=\exp(-\tau H),
+  \qquad \tau>0 .
+\]
+It is a strongly continuous semigroup of self-adjoint contractions.  The
+Lorentzian evolution is the boundary value
+\[
+  U(t)=\lim_{\epsilon\downarrow0}T(\epsilon+\ii t)
+  =
+  \exp(-\ii tH),
+  \qquad t\in\R,
+\]
+in the strong operator topology.  Thus positive energy is equivalently the
+existence of a bounded holomorphic semigroup
+\[
+  z\longmapsto T(z)=\exp(-zH),
+  \qquad \operatorname{Re}z>0,
+\]
+whose boundary values on the imaginary axis are unitary.
+
+\begin{proposition}[Holomorphic semigroup and positive generator]
+\label{prop:ks-one-dimensional-positive-energy}
+Let \(T(z)\), \(\operatorname{Re}z>0\), be a holomorphic family of bounded
+operators on a Hilbert space \(\Hilb\).  Assume:
+\begin{enumerate}
+\item \(T(z+w)=T(z)T(w)\) for \(\operatorname{Re}z,\operatorname{Re}w>0\);
+\item \(T(\tau)\) is self-adjoint and positive for every real \(\tau>0\);
+\item \(T(\tau)\) is strongly continuous in \(\tau\) and
+      \(\|T(\tau)\|\le1\);
+\item \(T(\tau)\to \mathbf1\) strongly as \(\tau\downarrow0\).
+\end{enumerate}
+Then there is a unique self-adjoint operator \(H\ge0\) such that
+\[
+  T(\tau)=\exp(-\tau H),\qquad \tau>0.
+\]
+If the non-tangential strong boundary values
+\(\lim_{\epsilon\downarrow0}T(\epsilon+\ii t)\) exist for all \(t\), they are
+the unitary group \(\exp(-\ii tH)\).
+\end{proposition}
+
+\begin{proof}
+The real-time family \(\tau\mapsto T(\tau)\) is a strongly continuous
+contraction semigroup, so the Hille--Yosida theorem gives a closed densely
+defined generator \(-H\) with \(T(\tau)=\exp(-\tau H)\).  Because each
+\(T(\tau)\) is self-adjoint, the generator is self-adjoint.  Positivity of
+\(T(\tau)\) and the spectral mapping theorem give
+\(\operatorname{spec}(T(\tau))\subset[0,1]\), hence
+\(\operatorname{spec}(H)\subset[0,\infty)\).  Equivalently, the spectral
+calculus gives \(T(\tau)=\int e^{-\tau\lambda}\,dE_H(\lambda)\) with
+\(\lambda\ge0\).  The holomorphic semigroup is then uniquely determined by
+this spectral formula:
+\[
+  T(z)=\int e^{-z\lambda}\,dE_H(\lambda),
+  \qquad \operatorname{Re}z>0.
+\]
+Letting \(z=\epsilon+\ii t\) and using dominated convergence in the spectral
+integral gives the strong boundary value
+\[
+  \lim_{\epsilon\downarrow0}T(\epsilon+\ii t)
+  =
+  \int e^{-\ii t\lambda}\,dE_H(\lambda)
+  =
+  e^{-\ii tH},
+\]
+which is unitary by the spectral theorem.
+\end{proof}
+
+In the functorial language, an interval of complex length \(z\) with
+\(\operatorname{Re}z>0\) is a one-dimensional admissible bordism.  Sewing
+intervals gives the semigroup law.  Reflection positivity gives positivity of
+the real-length operators.  The Lorentzian line is not an interior part of
+the domain; it is a boundary where the holomorphic contraction semigroup has
+unitary boundary values.  The higher-dimensional Kontsevich--Segal condition
+is designed so that every time-thickness and every local quadratic field
+mode has this same analytic structure.
+
 \section{Segal Sewing in Two-Dimensional CFT}
 
 The two-dimensional conformal case is the prototype.  Let
@@ -216,6 +299,8 @@ direction.
 
 \section{The Admissible Bordism Category}
 
+\begin{definition}[Admissible complex-metric bordism]
+\label{def:ks-admissible-bordism}
 An admissible \(D\)-bordism is a smooth compact \(D\)-manifold \(M\) with
 boundary decomposed into incoming and outgoing collars, together with:
 \[
@@ -227,6 +312,25 @@ where \(g_x\) is allowable for every \(x\in M\).  Boundary collars are part of
 the datum so that gluing is defined by identifying collars with matching
 induced complex metrics and background fields.  The category is symmetric
 monoidal under disjoint union.
+\end{definition}
+
+The collar is not decorative.  Without a collar, equality of boundary metrics
+does not determine a smooth glued metric; with a collar, composition is
+ordinary gluing of germs.  A morphism is therefore an equivalence class of
+collared backgrounds, where two representatives are identified only when
+there is a collar-preserving diffeomorphism respecting the complex metric and
+all background fields.  This convention keeps sewing as an exact categorical
+composition, not as a limiting operation.
+
+The target category must remember topology.  A useful minimal target is the
+symmetric monoidal category of complete locally convex complex vector spaces
+with continuous linear maps and completed projective tensor product
+\(\widehat\otimes_\pi\).  In examples with trace or nuclear sewing estimates,
+one may restrict to nuclear spaces; in Hilbert-space boundary sectors one
+passes only after reflection positivity and null-state quotient.  Thus the
+symbols \(E(Y_1)\widehat\otimes_\pi E(Y_2)\) and \(E(Y_1\sqcup Y_2)\) are
+identified as part of the monoidal datum, not by an algebraic tensor product
+completion chosen after the fact.
 
 The state space assigned to a boundary germ \(Y\) will be denoted
 \[
@@ -292,6 +396,68 @@ Hilbert space associated to \(Y\) is then
   \label{eq:ks-hilbert-completion}
 \end{equation}
 where the bar denotes Hilbert completion.
+
+\begin{theorem}[Positive-energy cylinder from K-S reflection positivity]
+\label{thm:ks-cylinder-positive-energy}
+Let \(Y\) be a real Riemannian boundary germ for which the reflection-positive
+construction above gives a Hilbert space \(\Hilb_Y\).  Suppose the K-S functor
+assigns to each real positive cylinder
+\[
+  C_\tau=[0,\tau]\times Y,\qquad \tau>0,
+\]
+a continuous operator \(T_Y(\tau)\) on the positive-side state space and that:
+\begin{enumerate}
+\item sewing gives \(T_Y(\tau+\sigma)=T_Y(\tau)T_Y(\sigma)\);
+\item reflection of the cylinder gives
+      \(\langle u,T_Y(\tau)v\rangle_Y
+        =\langle T_Y(\tau)u,v\rangle_Y\);
+\item the doubled cylinder form gives
+      \(\langle u,T_Y(\tau)u\rangle_Y\ge0\);
+\item \(T_Y(\tau)\) descends to a strongly continuous contraction semigroup on
+      \(\Hilb_Y\), after the vacuum-energy normalization of the cylinder.
+\end{enumerate}
+Then there is a unique self-adjoint \(H_Y\ge0\) on \(\Hilb_Y\) such that
+\[
+  T_Y(\tau)=e^{-\tau H_Y}.
+\]
+If the functor is holomorphic for the corresponding admissible complex
+cylinders and has strong boundary values at imaginary cylinder length, those
+boundary values are the unitary Lorentzian propagators
+\[
+  U_Y(t)=e^{-\ii tH_Y}.
+\]
+\end{theorem}
+
+\begin{proof}
+The null space of the reflection-positive form is invariant under
+\(T_Y(\tau)\): if \(u\) has zero norm, Cauchy--Schwarz for the positive
+semidefinite doubled form gives
+\(\langle u,w\rangle_Y=0\) for every positive-side state \(w\).  Taking
+\(w=T_Y(2\tau)u\) and using the semigroup law and self-adjointness gives
+\[
+  \|T_Y(\tau)u\|_Y^2
+  =
+  \langle T_Y(\tau)u,T_Y(\tau)u\rangle_Y
+  =
+  \langle u,T_Y(2\tau)u\rangle_Y
+  =
+  0 .
+\]
+Therefore
+\(T_Y(\tau)\) descends to the quotient and then to the Hilbert completion.
+The sewing axiom gives the semigroup law on the quotient.  Reflection gives
+self-adjointness.  The doubled-cylinder positivity gives positivity.  The
+normalization and continuity hypothesis give a strongly continuous
+contraction semigroup.  Proposition~\ref{prop:ks-one-dimensional-positive-energy}
+then supplies \(H_Y\ge0\) and the unitary boundary values.
+\end{proof}
+
+This theorem is the precise point at which functorial gluing becomes positive
+energy.  It also explains why reflection positivity alone is insufficient:
+one still needs domain control for the quotient, strong continuity of the
+cylinder semigroup, and the boundedness or vacuum-energy normalization needed
+to apply the semigroup theorem.  These analytic requirements are part of the
+K-S construction problem in every infinite-dimensional QFT example.
 
 In a real-analytic globally hyperbolic Lorentzian spacetime, a Lorentzian
 time-slab appears as a boundary limit of admissible complex slabs.  Under the
@@ -463,16 +629,47 @@ holonomy kernels.  A full continuum Segal functor with all state spaces,
 collar topologies, and boundary field insertions specified is a further
 structure that must be supplied before calling it a completed K-S example.
 
-Free massive scalar theory in \(D\ge3\) illustrates the gap.  The Gaussian
-path integral gives explicit kernels on cylinders, and the allowability
-condition gives positivity of the real part of the quadratic action.  A
-complete K-S construction still has to specify state spaces for arbitrary
-hypersurface germs, prove trace or nuclear sewing for admissible collars,
-control point-field insertions as distributions or hyperfunctions, prove
-reflection positivity for the chosen completions, and show holomorphic
-dependence on the admissible metric.  The monograph therefore treats the free
-scalar in \(D\ge3\) as a principal construction problem rather than as an
-already completed K-S theorem.
+Free Gaussian theory illustrates both what is clear and what remains
+unfinished.  Let \(A\) be a positive self-adjoint operator on a Hilbert space
+of spatial modes, and first replace it by a finite-dimensional positive
+matrix.  The Euclidean cylinder kernel is the harmonic-oscillator Mehler
+kernel
+\[
+  K_\tau(\varphi_0,\varphi_1)
+  =
+  \det\!\left(\frac{A^{1/2}}{2\pi\sinh(\tau A^{1/2})}\right)^{1/2}
+  \exp\!\left[
+    -\frac12
+    \begin{pmatrix}\varphi_0\\ \varphi_1\end{pmatrix}^{T}
+    B_\tau
+    \begin{pmatrix}\varphi_0\\ \varphi_1\end{pmatrix}
+  \right],
+\]
+where
+\[
+  B_\tau=
+  \begin{pmatrix}
+    A^{1/2}\coth(\tau A^{1/2})&
+    -A^{1/2}\operatorname{csch}(\tau A^{1/2})\\
+    -A^{1/2}\operatorname{csch}(\tau A^{1/2})&
+    A^{1/2}\coth(\tau A^{1/2})
+  \end{pmatrix}.
+\]
+For \(\operatorname{Re}\tau>0\) this kernel is holomorphic and composes by
+Gaussian integration.  Reflection positivity follows because the same kernel
+is the integral kernel of \(e^{-\tau H_A}\) for a positive harmonic-oscillator
+Hamiltonian \(H_A\).  Thus every finite collection of modes is a genuine
+one-dimensional K-S semigroup.
+
+The continuum free scalar in \(D\ge3\) is obtained formally by replacing
+the finite determinant and finite Gaussian integral by zeta, heat-kernel, or
+Fock-space constructions.  A complete K-S construction still has to specify
+state spaces for arbitrary hypersurface germs, prove trace or nuclear sewing
+for admissible collars, control point-field insertions as distributions or
+hyperfunctions, prove reflection positivity for the chosen completions, and
+show holomorphic dependence on the admissible metric.  The monograph
+therefore treats the free scalar in \(D\ge3\) as a principal construction
+problem rather than as an already completed K-S theorem.
 
 \section{Research Ledger}
 
