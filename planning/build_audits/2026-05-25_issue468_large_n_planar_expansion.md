@@ -17,7 +17,7 @@ double-line notation, planar limit, genus expansion, and explicit nonplanar
   \(\operatorname{tr}_{\square}(t^at^b)=\delta^{ab}\),
   \(C_A=2N_c\), \(T_F=1\), and
   \(\lambda=g^2N_c\), with comparison to the common half-trace
-  \(\lambda_{\rm ht}=\lambda/2\).
+  \(\lambda_{\rm ht}=2\lambda\).
 - Derived the \(SU(N_c)\) double-line completeness relation in the displayed
   trace convention and explained the status of the traceless subtraction.
 - Derived the ribbon-graph power

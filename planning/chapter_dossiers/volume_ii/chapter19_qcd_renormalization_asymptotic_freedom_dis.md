@@ -140,6 +140,12 @@ The chapter must define and derive:
   propagator as a Wilson transporter, static spin/flavor symmetry, the
   free residual-dispersion derivation, and the controlled status of the
   \(1/m_Q\) expansion;
+- NRQCD and pNRQCD as the heavy-pair expansion, including Pauli quark and
+  charge-conjugated antiquark fields, the leading Schrödinger action, the
+  NRQCD operator datum, gauge-invariant singlet and octet quarkonium bilocals
+  with equal-time Wilson transporters, the pNRQCD singlet action, the
+  tree-level attractive singlet Coulomb potential in the trace-delta
+  convention, and the hard/soft/ultrasoft scale-separation hypothesis;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
@@ -223,8 +229,9 @@ The chapter must define and derive:
    diagnostic, while dynamical fundamental matter can break the flux tube.
 11. In the trace convention
    \(\operatorname{tr}_{\square}(t^at^b)=\delta^{ab}\), the large-\(N_c\)
-   coupling held fixed is \(\lambda=g^2N_c\), equal to twice the common
-   half-trace 't Hooft coupling.  The leading color-flow propagator and the
+   coupling held fixed is \(\lambda=g^2N_c\), equal to one half of the common
+   half-trace 't Hooft coupling because \(g_{\rm ht}^2=2g^2\).  The leading
+   color-flow propagator and the
    Euler characteristic of the associated ribbon surface give
    \(N_c^{V-E+F}=N_c^{2-2h-b}\), while the \(SU(N_c)\) trace subtraction is
    explicitly subleading.  The planar and one-handle theta graphs have the
@@ -272,6 +279,17 @@ The chapter must define and derive:
      together with reparametrization compatibility.  The uniform
      \(1/m_Q\) expansion is recorded as a controlled matrix-element estimate,
      not as a consequence of the static Wilson-line identity alone.
+15b. NRQCD is a separate heavy-pair datum with Pauli fields \(\psi,\chi\),
+     local gauge-covariant operators, and a velocity power counting.  The
+     quarkonium singlet bilocal
+     \(\chi^\dagger W(\mathbf x_2,\mathbf x_1)\psi/\sqrt{N_c}\) is gauge
+     invariant by endpoint cancellation, while the octet bilocal transforms at
+     the chosen center point.  Potential NRQCD treats \(V_S(r;\mu)\) as a
+     bilocal matching coefficient; at weak coupling the tree singlet color
+     factor is \(-C_F\) and
+     \(V_S^{(0)}(r)=-g^2C_F/(4\pi r)\), with
+     \(g_{\rm ht}^2=2g^2\) and \(C_F^{\rm ht}=C_F/2\) leaving the product
+     invariant.
 16. Colored quark and gluon fields are not physical asymptotic states in the
    QCD confinement scenario; deriving this spectral property from the
    four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
@@ -482,3 +500,9 @@ The chapter must define and derive:
   datum, a proof of the static propagator/Wilson-transporter identity, static
   spin/flavor symmetry, residual-dispersion derivation, controlled
   \(1/m_Q\)-expansion status, and `calculation-checks/qcd_hqet_checks.py`.
+- 2026-05-27 QCD NRQCD/pNRQCD pass: corrected the half-trace large-\(N_c\)
+  conversion to \(g_{\rm ht}^2=2g^2\) and
+  \(\lambda_{\rm ht}=2\lambda\), then added the heavy-pair datum,
+  gauge-invariant singlet/octet bilocals, pNRQCD singlet action, tree-level
+  singlet color-factor proof, scale-separation status, and
+  `calculation-checks/qcd_nrqcd_checks.py`.

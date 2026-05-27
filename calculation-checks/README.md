@@ -70,6 +70,11 @@ Current checks:
   projectors, the transverse covariant-derivative projector, residual-momentum
   reparametrization, the free residual-dispersion expansion, and the
   first-order Wilson-line differential equation.
+- `qcd_nrqcd_checks.py`: finite checks for the Volume II NRQCD/pNRQCD
+  convention block, including endpoint cancellation in gauge-invariant
+  quarkonium bilocals, the Schrödinger kinetic-sign convention, the singlet
+  color factor, the trace-delta to half-trace Coulomb-product conversion, and
+  the hard/soft/ultrasoft scale hierarchy.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
@@ -512,7 +517,8 @@ Current checks:
 - `large_n_topology_checks.py`: finite checks for the 't Hooft
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph
-  \(N^{-2}\) suppression, normalized single-trace scaling, and fixed-\(N_f\)
+  \(N^{-2}\) suppression, the half-trace coupling conversion
+  \(g_{\rm ht}^2=2g^2\), normalized single-trace scaling, and fixed-\(N_f\)
   versus Veneziano quark-boundary counting, plus the displayed baryon Hartree
   pair-counting and fixed-spin rotor \(1/N_c\) scaling.
 - `lattice_continuum_bridge_checks.py`: exact finite checks for the

@@ -1338,8 +1338,8 @@ and with
 \end{equation}
 held fixed as \(N_c\to\infty\).  In the common half-trace convention
 \(\operatorname{tr}(T^aT^b)=\frac12\delta^{ab}\), the corresponding coupling
-is \(g_{\rm ht}^2=g^2/2\) and the conventional 't Hooft coupling is
-\(\lambda_{\rm ht}=g_{\rm ht}^2N_c=\lambda/2\).  The constant factor \(1/2\)
+is \(g_{\rm ht}^2=2g^2\) and the conventional 't Hooft coupling is
+\(\lambda_{\rm ht}=g_{\rm ht}^2N_c=2\lambda\).  The constant factor \(2\)
 has no effect on the \(N_c\)-power counting, but it matters when comparing
 formulae across conventions.
 
@@ -2748,13 +2748,231 @@ for a specified family of hadronic matrix elements is additional dynamical and
 renormalization information.
 \end{controlledapproximation}
 
-Quarkonium requires a different heavy-mass expansion.  A heavy quark and
-antiquark with small relative velocity involve the scales \(m_Q\),
-\(m_Qv_{\rm rel}\), and \(m_Qv_{\rm rel}^2\); the corresponding effective
-theories are NRQCD and its lower-energy potential descendants.  The same
-standard of definition applies there: one specifies the regulator, the
-gauge-covariant operator basis, the matching coefficients, and the power
-counting before using the language of potentials or bound-state wavefunctions.
+\section{Nonrelativistic Heavy Pairs and Potential Matching}
+\label{sec:qcd-nrqcd-potential-matching}
+
+Quarkonium requires a heavy-mass expansion with two heavy fields and a
+specified time foliation.  Choose the rest frame of the heavy pair and write
+\(t\) for its time coordinate.  A nonrelativistic heavy quark is represented by
+a two-component Pauli field \(\psi(t,\mathbf x)\) in the fundamental
+representation.  The corresponding antiquark is represented, after charge
+conjugation, by another Pauli field \(\chi(t,\mathbf x)\) which also
+transforms in the fundamental representation; its adjoint \(\chi^\dagger\)
+creates an antiquark and transforms as a row antifundamental.  With
+\[
+  D_t=\partial_t-\ii A_0,\qquad
+  \mathbf D=\nabla-\ii\mathbf A ,
+\]
+the leading nonrelativistic action is
+\begin{equation}
+  S_{\rm NR}^{(0)}
+  =
+  \int \dd t\,\dd^3\mathbf x\,
+  \left[
+    \psi^\dagger\left(\ii D_t+\frac{\mathbf D^2}{2m_Q}\right)\psi
+    +
+    \chi^\dagger\left(\ii D_t+\frac{\mathbf D^2}{2m_Q}\right)\chi
+  \right].
+  \label{eq:nrqcd-leading-action}
+\end{equation}
+The sign of the spatial Laplacian in \eqref{eq:nrqcd-leading-action} is fixed
+by the convention \(D_i\ee^{\ii\mathbf p\cdot\mathbf x}=\ii p_i
+\ee^{\ii\mathbf p\cdot\mathbf x}\) in the free theory.
+
+\begin{definition}[NRQCD datum]
+\label{def:nrqcd-datum}
+An NRQCD datum for a heavy flavor of mass \(m_Q\) consists of the following
+items.
+\begin{enumerate}
+  \item A gauge-covariant regulator for QCD and a matching scale below
+  \(m_Q\), together with a class of states whose heavy-quark three-momenta
+  obey \(|\mathbf p|/m_Q\ll1\).
+  \item Pauli fields \(\psi,\chi\), the gauge fields, and a local action of
+  the form
+  \[
+    S_{\rm NRQCD}^{(N)}
+    =
+    S_{\rm NR}^{(0)}
+    +
+    \sum_{a}\frac{c_a(\mu,m_Q)}{m_Q^{d_a-4}}
+    \int \mathcal O_a^{\rm NR}(t,\mathbf x)\,\dd t\,\dd^3\mathbf x ,
+  \]
+  where \(\mathcal O_a^{\rm NR}\) ranges over gauge-invariant local operators
+  built from \(\psi,\chi,F_{\mu\nu}\), covariant derivatives, Pauli matrices,
+  and local four-heavy-field annihilation operators, ordered by the chosen
+  velocity and \(1/m_Q\) power counting.
+  \item Renormalized heavy-pair composite operators.  A quarkonium interpolator
+  or current is part of the datum only after its Wilson-line dressing,
+  regulator, and subtraction convention have been specified.
+\end{enumerate}
+The Pauli magnetic term
+\[
+  \frac{c_F}{2m_Q}\,
+  \psi^\dagger\sigma^iB_i\psi
+  -
+  \frac{c_F}{2m_Q}\,
+  \chi^\dagger\sigma^iB_i\chi,
+  \qquad
+  B_i=\frac12\epsilon_{ijk}F_{jk},
+\]
+is the first spin-dependent single-particle correction in a parity-invariant
+coordinate system.  Its coefficient is a matching coefficient; it is not
+deduced from the leading Schrödinger action alone.
+\end{definition}
+
+\begin{proposition}[Free NRQCD dispersion]
+\label{prop:nrqcd-free-dispersion}
+The free equation following from the leading quark term in
+\eqref{eq:nrqcd-leading-action} has plane-wave solutions
+\[
+  \psi(t,\mathbf x)=u\,\ee^{-\ii Et+\ii\mathbf p\cdot\mathbf x}
+\]
+with
+\[
+  E=\frac{|\mathbf p|^2}{2m_Q}.
+\]
+Thus \eqref{eq:nrqcd-leading-action} realizes the leading term of the
+relativistic residual-energy expansion
+\eqref{eq:hqet-free-dispersion}.
+\end{proposition}
+
+\begin{proof}
+Substitution of the plane wave gives
+\[
+  \left(E-\frac{|\mathbf p|^2}{2m_Q}\right)u=0,
+\]
+because \(\nabla^2\ee^{\ii\mathbf p\cdot\mathbf x}
+=-|\mathbf p|^2\ee^{\ii\mathbf p\cdot\mathbf x}\).  A nonzero spinor
+amplitude \(u\) therefore requires the displayed dispersion relation.
+\end{proof}
+
+Gauge-invariant quarkonium operators are bilocal at nonzero separation.  Let
+\[
+  \mathbf x_1=\mathbf R+\frac{\mathbf r}{2},
+  \qquad
+  \mathbf x_2=\mathbf R-\frac{\mathbf r}{2},
+\]
+and let \(W(\mathbf x_2,\mathbf x_1;t)\) be the equal-time fundamental Wilson
+transporter from \(\mathbf x_1\) to \(\mathbf x_2\).  Define the singlet
+bilocal
+\begin{equation}
+  S(t,\mathbf R,\mathbf r)
+  =
+  \frac1{\sqrt{N_c}}\,
+  \chi^\dagger(t,\mathbf x_2)
+  W(\mathbf x_2,\mathbf x_1;t)
+  \psi(t,\mathbf x_1).
+  \label{eq:pnrqcd-singlet-bilocal}
+\end{equation}
+An octet bilocal with a color label based at \(\mathbf R\) is represented by
+\begin{equation}
+  O^a(t,\mathbf R,\mathbf r)
+  =
+  \chi^\dagger(t,\mathbf x_2)
+  W(\mathbf x_2,\mathbf R;t)\,
+  t^a\,
+  W(\mathbf R,\mathbf x_1;t)
+  \psi(t,\mathbf x_1).
+  \label{eq:pnrqcd-octet-bilocal}
+\end{equation}
+The octet transforms in the adjoint representation at \(\mathbf R\); the
+singlet is gauge invariant.
+
+\begin{proof}[Gauge covariance of the bilocals]
+Under a gauge transformation \(U(t,\mathbf x)\),
+\[
+  \psi(\mathbf x_1)\mapsto U(\mathbf x_1)\psi(\mathbf x_1),
+  \qquad
+  \chi^\dagger(\mathbf x_2)\mapsto
+  \chi^\dagger(\mathbf x_2)U(\mathbf x_2)^{-1},
+\]
+and
+\[
+  W(\mathbf x_2,\mathbf x_1)
+  \mapsto
+  U(\mathbf x_2)W(\mathbf x_2,\mathbf x_1)U(\mathbf x_1)^{-1}.
+\]
+The endpoint matrices cancel in \eqref{eq:pnrqcd-singlet-bilocal}.  In
+\eqref{eq:pnrqcd-octet-bilocal} the endpoint matrices again cancel, while the
+generator at \(\mathbf R\) transforms by conjugation,
+\(t^a\mapsto U(\mathbf R)t^aU(\mathbf R)^{-1}\), which is the adjoint action.
+\end{proof}
+
+Potential NRQCD is obtained by integrating out the relative-momentum scale
+\(m_Qv_{\rm rel}\) while retaining the lower energy scale
+\(m_Qv_{\rm rel}^2\).  The singlet part of the resulting bilocal action has
+the form
+\begin{equation}
+  S_{\rm pNRQCD}^{S}
+  =
+  \int \dd t\,\dd^3\mathbf R\,\dd^3\mathbf r\,
+  S^\dagger
+  \left[
+    \ii\partial_t
+    +\frac{\nabla_{\mathbf r}^2}{m_Q}
+    -V_S(r;\mu)
+    +\cdots
+  \right]S ,
+  \label{eq:pnrqcd-singlet-action}
+\end{equation}
+where \(r=|\mathbf r|\).  The potential \(V_S(r;\mu)\) is a matching
+coefficient for the bilocal singlet operator.  In a weak-coupling matching
+regime, the tree-level Coulomb exchange gives
+\begin{equation}
+  V_S^{(0)}(r)=-\frac{g^2C_F}{4\pi r},
+  \label{eq:pnrqcd-tree-coulomb-potential}
+\end{equation}
+with \(C_F=(N_c^2-1)/N_c\) and the same trace-delta coupling used throughout
+this chapter.  This formula is invariant under conversion to the common
+half-trace convention because \(g_{\rm ht}^2=2g^2\) and
+\(C_F^{\rm ht}=C_F/2\).
+
+\begin{proposition}[Tree-level singlet color factor]
+\label{prop:pnrqcd-singlet-color-factor}
+In the trace convention of \eqref{eq:qcd-casimir-definitions}, the color
+factor for one-gluon exchange in a normalized quark-antiquark singlet is
+\(-C_F\).  Hence the attractive Coulomb potential is
+\eqref{eq:pnrqcd-tree-coulomb-potential}.
+\end{proposition}
+
+\begin{proof}
+The normalized singlet color tensor is
+\(\delta^i{}_j/\sqrt{N_c}\).  The antiquark generator is the negative
+transpose of the quark generator.  Acting with \(t^a\otimes(-t^{aT})\) on the
+singlet gives
+\[
+  -\frac1{\sqrt{N_c}}(t^at^a)^i{}_j
+  =
+  -C_F\frac{\delta^i{}_j}{\sqrt{N_c}} .
+\]
+The spatial Fourier transform of the Coulomb kernel is
+\[
+  \int\frac{\dd^3\mathbf q}{(2\pi)^3}\,
+  \frac{\ee^{\ii\mathbf q\cdot\mathbf r}}{|\mathbf q|^2}
+  =
+  \frac1{4\pi r},
+\]
+so the product of the exchange kernel \(g^2/|\mathbf q|^2\) with the singlet
+color eigenvalue gives \eqref{eq:pnrqcd-tree-coulomb-potential}.
+\end{proof}
+
+\begin{controlledapproximation}[Quarkonium scale separation]
+\label{ca:nrqcd-pnrqcd-scale-separation}
+Let \(v_{\rm rel}\) be the velocity coordinate assigned to a family of
+quarkonium states.  The weak-coupling potential expansion assumes
+\[
+  m_Q\gg m_Qv_{\rm rel}\gg m_Qv_{\rm rel}^2,
+  \qquad
+  m_Qv_{\rm rel}\gg \Lambda_{\rm QCD},
+\]
+so that the soft relative-momentum scale can be integrated out
+perturbatively.  Strong-coupling pNRQCD instead treats the potential as a
+nonperturbative matching coefficient defined by static Wilson-loop and
+chromofield-insertion matrix elements.  In both regimes a claim of accuracy
+requires a norm or class of smeared matrix elements and an explicit remainder
+estimate in powers of \(v_{\rm rel}\), \(1/m_Q\), and
+\(\Lambda_{\rm QCD}/(m_Qv_{\rm rel})\) when that ratio is used.
+\end{controlledapproximation}
 
 \section{Color and Physical External States}
 

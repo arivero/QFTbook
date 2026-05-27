@@ -99,6 +99,27 @@ def check_theta_graph_suppression() -> None:
     assert_equal("one-handle suppression", handle_power - planar_power, -2)
 
 
+def check_half_trace_coupling_conversion() -> None:
+    # The same matrix connection can be expanded as A_delta^a t_delta^a or
+    # A_ht^a T^a, with t_delta^a=sqrt(2) T^a.  Component curvatures therefore
+    # satisfy F_ht^2=2 F_delta^2.  Matching the component action
+    # (4g^2)^(-1) F_delta^2 to (4g_ht^2)^(-1) F_ht^2 gives g_ht^2=2g^2.
+    g_sq = Fraction(1, 1)
+    g_ht_sq = 2 * g_sq
+    c_f_half_trace = Fraction(3, 4)  # SU(2), used only as a finite example.
+    c_f_trace_delta = 2 * c_f_half_trace
+    assert_equal(
+        "invariant Coulomb/cusp product",
+        g_sq * c_f_trace_delta,
+        g_ht_sq * c_f_half_trace,
+    )
+
+    n_colors = Fraction(5, 1)
+    lambda_delta = g_sq * n_colors
+    lambda_half_trace = g_ht_sq * n_colors
+    assert_equal("half-trace 't Hooft coupling", lambda_half_trace, 2 * lambda_delta)
+
+
 def check_single_trace_and_quark_boundary_scaling() -> None:
     for genus in range(4):
         for insertions in range(1, 6):
@@ -163,6 +184,7 @@ def main() -> None:
         check_trace_normalization(n)
         check_su_completeness(n)
     check_theta_graph_suppression()
+    check_half_trace_coupling_conversion()
     check_single_trace_and_quark_boundary_scaling()
     check_baryon_large_n_scaling()
     print("All large-N color-topology checks passed.")
