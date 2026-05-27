@@ -607,6 +607,12 @@ Current checks:
   dimension identity for the one-oscillator spin sector, the rank-one massless
   supercharge norm matrix, and BPS-bound block eigenvalues
   \(2(m\pm z)\).
+- `susy_superspace_component_checks.py`: finite Grassmann-algebra checks for
+  the Volume VII superspace/local-actions conventions, including
+  \(\theta^2=2\theta^1\theta^2\), the left-derivative rule for \(\theta^2\),
+  the \((\theta\psi)(\theta\chi)\) identity, the
+  \(-\frac12 W_{ij}\psi^i\psi^j\) chiral \(F\)-term coefficient, and
+  auxiliary \(F\)-field elimination.
 - `symmetric_product_orbifold_checks.py`: exact finite group-theory and
   rational-weight checks for the Volume V symmetric-product orbifold section,
   including \(S_N\) centralizer orders, conjugacy-class counting, central
