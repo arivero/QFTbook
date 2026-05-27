@@ -91,6 +91,18 @@ The chapter establishes:
   primary projection in the two-particle radial Hilbert space, the leading
   normalized scalar coefficient \(a^{\rm GFF}_{0,0}=2\), and the matching of
   the \(s\)- and \(t\)-channel block expansions;
+- the mixed-correlator scalar bootstrap datum for the
+  three-dimensional Ising system, including the \(\mathbb Z_2\)-graded
+  hypotheses on \(\sigma,\varepsilon\), the spin-\(\ell\) exchange sign,
+  the \(\mathsf F_\pm^{ij,kl}\) crossing kernels, the five scalar crossing
+  equations, their five-vector semidefinite-programming packaging, the
+  positive-semidefinite even-sector OPE matrices, and the finite-functional
+  exclusion certificate;
+- the status boundary for the three-dimensional Ising numerical island:
+  the mixed-correlator crossing and positivity system is derived in the
+  chapter, while derivative truncations, block approximations, gap choices,
+  and high-precision SDP islands require separately certified numerical
+  input;
 - the boundary between core OPE machinery and later specialized bootstrap
   methods.
 
@@ -162,6 +174,30 @@ The chapter establishes:
     \(12\to34\) OPE identity block gives \(1\), the bilinear tower sums to
     \(u^{\Delta_\phi}+(u/v)^{\Delta_\phi}\), and the crossed channel has the
     same tower with the prefactor \((u/v)^{\Delta_\phi}\).
+17. In the \(\sigma,\varepsilon\) mixed-correlator system, the scalar
+    four-point prefactor in `eq:scalar-four-point-general` gives the exact
+    ratios
+    \(u^{\Delta_\sigma}v^{-(\Delta_\sigma+\Delta_\varepsilon)/2}\) and
+    \(u^{(\Delta_\sigma+\Delta_\varepsilon)/2}v^{-\Delta_\sigma}\) for the
+    two mixed crossing comparisons used in the five-vector system.
+18. The exchange of the two scalar legs in a scalar-scalar-spin-\(\ell\)
+    three-point tensor contributes precisely \((-1)^\ell\) to
+    \(\lambda_{\varepsilon\sigma\mathcal O}\) relative to
+    \(\lambda_{\sigma\varepsilon\mathcal O}\).
+19. The five-vector packaging is algebraically equivalent to the five scalar
+    crossing equations: even primaries enter through the quadratic form of
+    \((\lambda_{\sigma\sigma\mathcal O},
+    \lambda_{\varepsilon\varepsilon\mathcal O})\) against a vector of
+    \(2\times2\) matrices, and odd primaries enter through
+    \(\lambda_{\sigma\varepsilon\mathcal O}^2\vec{\mathsf V}_-\).
+20. Reflection positivity gives positive-semidefinite even-sector OPE
+    matrices after summing over degenerate even primaries with the same
+    \((\Delta,\ell)\); the odd coefficients are ordinary nonnegative squares.
+21. A mixed-correlator functional with positive identity contribution,
+    positive-semidefinite even matrix action, and nonnegative odd action is an
+    exclusion certificate.  Numerical derivative functionals become theorem
+    evidence only after the conformal-block derivatives and semidefinite
+    inequalities are certified.
 
 ## Figures
 
@@ -194,6 +230,13 @@ The chapter establishes:
 - Do not describe Mellin amplitudes as universally existing functions for all
   CFT correlators.  State the Mellin-representability, meromorphy, contour,
   and growth hypotheses before using contour shifts or OPE-pole language.
+- Keep the three-dimensional Ising mixed-correlator section at the level of
+  exact crossing, positivity, and finite-functional certificates unless a
+  fully certified numerical bootstrap proof is supplied.  The quoted Ising
+  dimensions remain external high-precision data.
+- Run `calculation-checks/ising_mixed_bootstrap_checks.py` after changing the
+  mixed-correlator prefactor, \(F_\pm\), spin-exchange, PSD, or five-vector
+  conventions.
 
 ## Audit Notes
 
@@ -257,3 +300,11 @@ The chapter establishes:
   four-point \((\mathfrak s,\mathfrak t,\mathfrak u)\) formula compatible with
   the existing prefactor, contour-shift pole extraction, Mack-polynomial
   residue interpretation, and the crossing action on Mellin variables.
+- 2026-05-27 higher-dimensional CFT pass: added the
+  \(\sigma,\varepsilon\) mixed-correlator bootstrap datum for the
+  three-dimensional Ising system, derived the five crossing equations and
+  five-vector positivity packaging from the chapter's conformal-block
+  conventions, proved the finite-functional exclusion certificate, separated
+  numerical SDP islands as external/certification-boundary input, and added
+  `calculation-checks/ising_mixed_bootstrap_checks.py` for the exact
+  prefactor/sign/PSD/vector-packing algebra.

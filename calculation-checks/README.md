@@ -295,6 +295,12 @@ Current checks:
   u^{\Delta_\phi}\mathcal G(v,u)\), Wick-pairing counts, the normalized
   \(:\phi^2:/\sqrt2\) OPE coefficient \(a_{0,0}=2\), and the even-spin
   bilinear dimensions.
+- `ising_mixed_bootstrap_checks.py`: exact rational checks for the
+  higher-dimensional mixed-correlator Ising bootstrap conventions, including
+  scalar four-point prefactor crossing ratios, the \(F_\pm\) symmetry signs,
+  the spin-\(\ell\) exchange sign, even-sector OPE positive-semidefinite
+  matrices, and the five-vector packing of the \(\sigma,\varepsilon\)
+  crossing equations.
 - `gamma_trace_checks.py`: mostly-plus gamma-matrix conventions, \(\gamma_5\),
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used
