@@ -82,6 +82,15 @@ Date: 2026-05-22
   source, cross-check, or seed, with independent QFT-side definitions,
   hypotheses, derivations, and external references supplied as needed.
 
+Date: 2026-05-27
+
+- String-field-theoretic methods may be relevant later as a systematic
+  frontier framework for renormalized conformal perturbation theory in one
+  and two dimensions.  They should not be part of the present compiled
+  monograph spine.  For now, conformal perturbation theory must be developed
+  directly in QFT/CFT language, with explicit regulator, contact-term,
+  operator-domain, and reconstruction assumptions.
+
 Date: 2026-05-23
 
 - The current compiled manuscript has no formal BibTeX or biblatex layer and
