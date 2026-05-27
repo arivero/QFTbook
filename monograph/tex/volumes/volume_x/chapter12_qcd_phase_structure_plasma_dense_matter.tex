@@ -76,6 +76,170 @@ A QCD phase datum at fixed \(N_c,N_f\) consists of:
 The word ``phase'' is used in this chapter only through such a datum.
 \end{definition}
 
+\section{Finite-Regulator Analyticity and Thermodynamic Phases}
+\label{sec:qcd-phase-finite-regulator-analyticity}
+
+A phase transition is not a property of a single finite lattice integral.  At
+finite cutoff and finite volume the partition function is an analytic
+function of its sources away from its zeros.  Nonanalyticity can only emerge
+from a limiting procedure: thermodynamic volume, continuum cutoff, chiral
+mass, or a source-selection limit.  This elementary point is important
+because it prevents a phase diagram from being treated as a drawing whose
+curves exist before the limiting observables have been defined.
+
+\begin{definition}[Finite lattice thermal gauge datum]
+\label{def:qcd-finite-lattice-thermal-gauge-datum}
+Fix a finite Euclidean lattice
+\[
+  \Lambda=(N_\tau,N_s^3,a)
+\]
+with compact gauge group \(G\), Haar measure \(dU\) on each link, and
+antiperiodic temporal boundary condition for quarks.  Let
+\(\kappa=(\kappa_\alpha)\) denote finitely many gauge couplings multiplying
+bounded continuous class functions \(S_\alpha(U)\), let
+\(\zeta=e^{a\mu_q}\) be the quark fugacity, and let
+\[
+  M_\Lambda(U;m,\zeta)
+\]
+be the finite fermion matrix in the chosen lattice discretization, with
+entries polynomial in the masses \(m_i\) and Laurent-polynomial in \(\zeta\).
+For an integer number of unrooted Dirac flavors, the finite-regulator
+partition function is
+\begin{equation}
+  Z_\Lambda(\kappa,m,\zeta)
+  =
+  \int_{G^{E(\Lambda)}}\prod_{\ell}dU_\ell\,
+  \exp\left[-\sum_\alpha \kappa_\alpha S_\alpha(U)\right]
+  \prod_{i=1}^{N_f}\det M_{\Lambda,i}(U;m_i,\zeta),
+  \label{eq:qcd-finite-lattice-partition-analytic}
+\end{equation}
+where \(E(\Lambda)\) is the finite link set.  Rooted or otherwise
+non-polynomial fermion prescriptions are not included in this datum unless a
+separate branch and locality construction has been supplied.
+\end{definition}
+
+\begin{proposition}[Finite-regulator analyticity]
+\label{prop:qcd-finite-regulator-analyticity}
+For the datum of Definition~\ref{def:qcd-finite-lattice-thermal-gauge-datum},
+\(Z_\Lambda(\kappa,m,\zeta)\) is entire in the gauge couplings and masses
+and Laurent-polynomial in the fugacity \(\zeta\).  Consequently the finite
+pressure
+\[
+  p_\Lambda(\kappa,m,\zeta)
+  =
+  \frac{T}{V_\Lambda}\log Z_\Lambda(\kappa,m,\zeta)
+\]
+is holomorphic on every simply connected parameter domain that does not meet
+the zero locus of \(Z_\Lambda\), after a branch of the logarithm has been
+chosen.
+\end{proposition}
+
+\begin{proof}
+The lattice has finitely many links, and \(G^{E(\Lambda)}\) is compact.  For
+each fixed gauge field \(U\), the determinant factors are polynomials in the
+masses and Laurent polynomials in \(\zeta\).  The exponential of the gauge
+action has an absolutely and uniformly convergent power series in
+\(\kappa\) on compact subsets of complex coupling space, because every
+\(S_\alpha(U)\) is bounded on the compact integration domain.  Termwise
+integration is justified by uniform convergence on compact parameter sets.
+Thus the integral defines an entire function in \(\kappa\) and \(m\), with
+only finitely many positive and negative fugacity powers.  Wherever this
+function is nonzero on a simply connected domain, a holomorphic logarithm
+exists, and the displayed finite pressure is holomorphic there.
+\end{proof}
+
+\begin{definition}[Thermodynamic phase transition and Lee--Yang obstruction]
+\label{def:qcd-thermodynamic-phase-transition}
+Let \(x\) denote a real collection of thermal parameters, masses, and
+sources, and let \(p_\Lambda(x)\) be the finite-regulator pressure along a
+specified sequence of lattices and continuum trajectories.  A thermodynamic
+phase transition at \(x_0\) means that the limiting pressure
+\[
+  p(x)=\lim_{\Lambda\to\infty}p_\Lambda(x)
+\]
+exists in a real neighborhood of \(x_0\) but is not real analytic at
+\(x_0\), or that the limiting local Gibbs/KMS state is not unique after the
+source-selection prescription has been removed.  The finite-regulator
+Lee--Yang locus is
+\[
+  \mathcal Z_\Lambda
+  =
+  \{z\in\mathcal U_{\mathbb C}\mid Z_\Lambda(z)=0\}.
+\]
+\end{definition}
+
+\begin{proposition}[Zero-free neighborhoods exclude pressure singularities]
+\label{prop:qcd-lee-yang-zero-free-analytic-limit}
+Let \(\mathcal U_{\mathbb C}\) be a complex neighborhood of a real point
+\(x_0\).  Suppose that, for all sufficiently large \(\Lambda\),
+\(Z_\Lambda\) has no zeros in \(\mathcal U_{\mathbb C}\), that the logarithm
+branches are chosen compatibly, and that \(p_\Lambda\) converges uniformly on
+compact subsets of \(\mathcal U_{\mathbb C}\).  Then the limiting pressure
+\(p\) is holomorphic on \(\mathcal U_{\mathbb C}\), hence real analytic near
+\(x_0\).  Therefore a pressure nonanalyticity at \(x_0\) requires either
+Lee--Yang zeros approaching \(x_0\) in every complex neighborhood, or failure
+of the stated uniform analytic convergence.
+\end{proposition}
+
+\begin{proof}
+By Proposition~\ref{prop:qcd-finite-regulator-analyticity}, each
+\(p_\Lambda\) is holomorphic on \(\mathcal U_{\mathbb C}\) after the stated
+choice of logarithm.  The uniform compact convergence hypothesis then makes
+the limit holomorphic by the Weierstrass theorem for holomorphic functions.
+Restricting a holomorphic function to the real slice gives a real-analytic
+function.  The contrapositive gives the final statement.
+\end{proof}
+
+\begin{proposition}[Source curvature as an integrated connected correlator]
+\label{prop:qcd-source-curvature-susceptibility}
+Let \(h\) be a real source coupled at finite regulator to an integrated
+gauge-invariant local observable
+\[
+  X_\Lambda=\sum_{x\in\Lambda_s}a^3\,\mathcal O_x
+\]
+through the Euclidean weight \(\exp(hX_\Lambda)\).  With
+\[
+  p_\Lambda(h)=\frac{T}{V_\Lambda}\log Z_\Lambda(h),
+  \qquad
+  \overline{\mathcal O}_\Lambda=V_\Lambda^{-1}X_\Lambda,
+\]
+one has
+\begin{equation}
+  \frac{\partial p_\Lambda}{\partial h}
+  =
+  T\langle\overline{\mathcal O}_\Lambda\rangle_h,
+  \qquad
+  \frac{\partial^2 p_\Lambda}{\partial h^2}
+  =
+  T\,V_\Lambda
+  \left(
+    \langle\overline{\mathcal O}_\Lambda^2\rangle_h
+    -
+    \langle\overline{\mathcal O}_\Lambda\rangle_h^2
+  \right).
+  \label{eq:qcd-source-curvature-susceptibility}
+\end{equation}
+Thus a divergent susceptibility is a statement about the scaling of an
+integrated connected correlator in the thermodynamic limit.
+\end{proposition}
+
+\begin{proof}
+Differentiating the finite integral gives
+\[
+  \partial_h\log Z_\Lambda(h)=\langle X_\Lambda\rangle_h .
+\]
+A second derivative differentiates both the numerator and denominator of the
+normalized expectation value:
+\[
+  \partial_h^2\log Z_\Lambda(h)
+  =
+  \langle X_\Lambda^2\rangle_h-\langle X_\Lambda\rangle_h^2 .
+\]
+Multiplying by \(T/V_\Lambda\) and writing
+\(X_\Lambda=V_\Lambda\overline{\mathcal O}_\Lambda\) gives
+\eqref{eq:qcd-source-curvature-susceptibility}.
+\end{proof}
+
 For physical QCD with fundamental quarks of nonzero mass, the most familiar
 finite-temperature change near \(T\sim\Lambda_{\rm QCD}\) is not attached to
 an exact fundamental center symmetry and not attached to an exact chiral

@@ -54,6 +54,7 @@ Current checks:
 - `qcd_phase_checks.py`: finite arithmetic checks for the Volume X QCD
   phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,
   baryon-chemical-potential coefficients, Banks--Casher kernel normalization,
+  fugacity Laurent-polynomial shift, source-curvature susceptibility identity,
   the Linde magnetic-scale power count, and the CFL Goldstone count.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark

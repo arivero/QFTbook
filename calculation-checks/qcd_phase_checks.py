@@ -3,9 +3,9 @@
 
 The script checks convention-sensitive numerical factors used in the
 Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
-magnetic-scale estimate, and the color-flavor-locked symmetry count.  It is
-not a lattice simulation and it does not assert the existence or order of any
-QCD phase transition.
+magnetic-scale estimate, finite-regulator source-curvature identities, and
+the color-flavor-locked symmetry count.  It is not a lattice simulation and
+it does not assert the existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -68,6 +68,38 @@ def check_banks_casher_kernel_normalization():
     assert_true("Banks-Casher arguments increase as m decreases", arguments[0] < arguments[1] < arguments[2])
 
 
+def check_fugacity_laurent_polynomial_shift():
+    # A finite lattice fermion determinant is Laurent-polynomial in the
+    # fugacity zeta.  Multiplication by a sufficiently large power of zeta
+    # turns it into an ordinary polynomial; zeros of this polynomial are the
+    # finite-regulator Lee-Yang zeros in the fugacity plane, up to the point
+    # zeta=0 introduced by the shift.
+    exponents = [-3, -1, 0, 4]
+    shift = -min(exponents)
+    shifted_exponents = [power + shift for power in exponents]
+    assert_equal("fugacity shift removes negative powers", min(shifted_exponents), 0)
+    assert_equal("fugacity polynomial degree after shift", max(shifted_exponents), 7)
+    assert_equal("shift preserves exponent differences", shifted_exponents[-1] - shifted_exponents[1], 5)
+
+
+def check_source_curvature_susceptibility():
+    # For Z(h)=sum_i w_i exp(h X_i), d^2 log Z/dh^2 at h=0 is Var(X).
+    weights = [Fraction(1, 2), Fraction(1, 3), Fraction(1, 6)]
+    x_values = [Fraction(-2, 3), Fraction(1, 5), Fraction(7, 4)]
+    volume = Fraction(11, 1)
+    temperature = Fraction(3, 2)
+
+    mean_x = sum(w * x for w, x in zip(weights, x_values))
+    mean_x2 = sum(w * x * x for w, x in zip(weights, x_values))
+    variance_x = mean_x2 - mean_x * mean_x
+
+    pressure_second = temperature * variance_x / volume
+    intensive_variance = variance_x / (volume * volume)
+    susceptibility_form = temperature * volume * intensive_variance
+
+    assert_equal("source curvature equals pressure second derivative", pressure_second, susceptibility_form)
+
+
 def check_linde_magnetic_scale():
     # In four dimensions, g_3^2 = g^2 T has mass dimension one.  A purely
     # magnetic three-dimensional vacuum free-energy density scales as (g_3^2)^3.
@@ -92,6 +124,8 @@ def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
     check_banks_casher_kernel_normalization()
+    check_fugacity_laurent_polynomial_shift()
+    check_source_curvature_susceptibility()
     check_linde_magnetic_scale()
     check_cfl_global_goldstone_count()
     print("All QCD phase-structure checks passed.")

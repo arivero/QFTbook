@@ -15,6 +15,11 @@ GitHub issue #628.
   potential, and quark chemical potential.
 - `Z_{a,V}`, `p(T,mu_B,m)`: finite-regulator thermal partition function and
   thermodynamic pressure.
+- `Lambda=(N_tau,N_s^3,a)`, `zeta=e^{a mu_q}`: finite thermal lattice and
+  quark fugacity.
+- `mathcal Z_Lambda`: finite-regulator Lee--Yang zero locus.
+- `h`, `X_Lambda`, `overline O_Lambda`: source, integrated observable, and
+  intensive observable entering susceptibility definitions.
 - `P_R(x)`, `ell(T)`: normalized Polyakov loop and center order parameter.
 - `Sigma(T)`, `rho(lambda)`: chiral condensate and thermodynamic Dirac
   eigenvalue density.
@@ -26,6 +31,15 @@ GitHub issue #628.
 
 - Defines a QCD phase datum requiring pressure, exact symmetries, order
   parameters, limit prescriptions, and status labels.
+- Adds a finite-lattice thermal gauge datum and proves finite-regulator
+  analyticity: finite lattice partition functions are entire in finite
+  couplings and masses and Laurent-polynomial in fugacity.
+- Defines thermodynamic phase transitions through limiting pressure
+  nonanalyticity or nonunique source-selected Gibbs/KMS states, and proves
+  that zero-free complex neighborhoods with uniform analytic convergence
+  exclude pressure singularities.
+- Proves the source-curvature susceptibility identity, making divergent
+  susceptibilities statements about integrated connected correlators.
 - Defines center deconfinement in pure Yang--Mills by the Polyakov-loop order
   parameter with the correct source/infinite-volume limiting order.
 - Proves that nonzero-\(N\)-ality Polyakov loops vanish at finite volume and
@@ -59,7 +73,8 @@ GitHub issue #628.
 - `calculation-checks/qcd_phase_checks.py`: exact finite checks for the
   Stefan--Boltzmann coefficients, baryon-chemical-potential coefficients,
   Banks--Casher kernel normalization, Linde magnetic-scale power counting,
-  and CFL Goldstone count.
+  fugacity Laurent-polynomial shift, source-curvature susceptibility
+  identity, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -68,3 +83,7 @@ GitHub issue #628.
   dedicated derivations of Polyakov-loop effective potentials, stronger
   lattice-continuum status ledgers, and substantially more quantitative QGP
   and dense-QCD examples.
+- 2026-05-27 finite-regulator pass: added the analyticity/Lee--Yang/source
+  susceptibility layer so that the chapter defines phase transitions through
+  limiting analytic structure and connected correlators before discussing
+  QCD-specific order parameters.
