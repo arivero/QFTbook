@@ -1,6 +1,6 @@
 # Volume I, Chapter 20 Dossier: QED Renormalization and Electromagnetic Form Factors
 
-Status: revised and source-audited on 2026-05-22.
+Status: revised, source-audited, and formalized on 2026-05-27.
 
 ## Source Placement
 
@@ -62,19 +62,25 @@ Status: revised and source-audited on 2026-05-22.
 | \(M^{\mu\nu}(k)\) | noncontact current-current two-point coefficient |
 | \(M_x^2\) | \(m^2+x(1-x)k^2\) in the vacuum-polarization integral |
 | \(F(k^2),G(k^2)\) | electron electromagnetic form factors in the chapter's gamma convention |
-| \(F_1^{\rm DP}(k^2),F_2^{\rm DP}(k^2)\) | Dirac--Pauli form factors defined by \(m^{-1}S^{\mu\nu}k_\nu\), with \(F_1^{\rm DP}=F+G\) and \(F_2^{\rm DP}=-G\) |
+| \(F_{1,2}^{\rm DP}\) | Dirac--Pauli form factors; \(F_1^{\rm DP}=F+G\), \(F_2^{\rm DP}=-G\) |
 | \(g_{\mathrm{mag}}\) | electron magnetic \(g\)-factor |
 | \(\alpha\) | fine-structure parameter \(e^2/(4\pi)\) |
-| \(\mathcal W_\alpha\) | Abelian Ward--Takahashi generator acting as a fixed first-order differential operator on the QED 1PI functional |
+| \(\mathcal W_\alpha\) | Abelian Ward--Takahashi generator on the QED 1PI functional |
 
 ## Claims Established
 
-- Gauge-covariant local counterterms organize the electron kinetic and QED
-  vertex counterterms through the Abelian Ward identity \(Z_1=Z_\psi\).
-- The current entering form factors is
+- `def:qed-regulated-explicit-coupling-coordinates` fixes the regulated QED
+  representative variables, the explicit-coupling normalization, and the
+  distinction between field-residue constants and the electric charge
+  coordinate.
+- `prop:qed-ward-organization-current` proves that gauge-covariant local
+  counterterms organize the electron kinetic and QED vertex counterterms
+  through the Abelian Ward identity \(Z_1=Z_\psi\).
+- The current entering form factors is consequently
   \(j^\mu=-iZ_A^{-1}eZ_\psi\bar\psi\gamma^\mu\psi\), as follows from the
   renormalized Maxwell equation.
-- Current conservation forces the photon self-energy to be transverse:
+- `prop:qed-photon-self-energy-transversality` proves that current
+  conservation forces the photon self-energy to be transverse:
   \(k_\mu\Pi^{\mu\nu}=0\).
 - The transversality statement is now identified as the two-photon consequence
   of a linear Abelian Ward--Takahashi identity
@@ -86,21 +92,34 @@ Status: revised and source-audited on 2026-05-22.
   \(\Pi^{\mu\nu}=(\eta^{\mu\nu}k^2-k^\mu k^\nu)\pi(k^2)\).
 - The photon pole normalization condition is \(\pi(0)=0\), fixing \(Z_A\) at
   one loop.
-- The one-loop finite vacuum-polarization function is the standard
-  Feynman-parameter integral after subtraction at \(k^2=0\).
+- `prop:qed-one-loop-vacuum-polarization` gives the one-loop pole
+  \(Z_A=1-e^2/(6\pi^2\epsilon)+\cdots\) and the finite Feynman-parameter
+  integral after subtraction at \(k^2=0\).
 - The dimensional-regularization algebra is displayed through the shifted
   numerator, \(p_\mu p_\nu\mapsto D^{-1}\eta_{\mu\nu}p^2\), and the two scalar
   integrals analytically continued in \(D\).
-- The electron current matrix element has two form factors in the stated
-  parity-preserving theory.  The chapter's \((F,G)\) basis is related to the
-  Dirac--Pauli basis by \(F_1^{\rm DP}=F+G\) and \(F_2^{\rm DP}=-G\);
-  charge normalization gives \(F(0)+G(0)=1\).
-- In a weak magnetic background, \(g_{\mathrm{mag}}=2F(0)\).
+- `def:qed-electron-electromagnetic-form-factors` defines the electron current
+  matrix element in a parity-preserving theory.  The chapter's \((F,G)\) basis
+  is related to the Dirac--Pauli basis by \(F_1^{\rm DP}=F+G\) and
+  \(F_2^{\rm DP}=-G\).
+- `prop:qed-electron-charge-normalization` proves that charge normalization
+  gives \(F(0)+G(0)=1\).
+- `prop:qed-magnetic-factor-from-form-factor` proves that, in a weak magnetic
+  background, \(g_{\mathrm{mag}}=2F(0)=2(1-G(0))\).
 - The tree current vertex plus photon self-energy chain contributes only to
   \(F(k^2)\); the order-\(e^2\) contribution to \(G(k^2)\) comes from the
   proper vertex correction.
-- The one-loop vertex correction gives \(G(0)=-\alpha/(2\pi)\), hence
+- `prop:qed-one-loop-vertex-schwinger` records the one-loop vertex correction
+  \(G(0)=-\alpha/(2\pi)\), hence
   \(g_{\mathrm{mag}}=2+\alpha/\pi+O(\alpha^2)\).
+
+## Calculation Checks
+
+- `calculation-checks/qed_form_factor_checks.py` checks the exact rational
+  factors in the vacuum-polarization pole, the Ward organization of \(Z_1\),
+  the \((F,G)\) versus Dirac--Pauli basis conversion, the zero-transfer
+  Feynman-parameter integral for \(G(0)\), and
+  \(g_{\mathrm{mag}}-2=\alpha/\pi\).
 
 ## Figure Requirements
 
@@ -131,3 +150,8 @@ Status: revised and source-audited on 2026-05-22.
   external spinors and records that \(F_2^{\rm DP}=-G\), so
   \(G(0)=-\alpha/(2\pi)\) is equivalent to the standard positive
   \(F_2^{\rm DP}(0)=+\alpha/(2\pi)\).
+- 2026-05-27 issue #615 pass: converted the chapter's definitions,
+  Ward-identity argument, photon transversality, vacuum-polarization
+  calculation, charge normalization, magnetic-moment extraction, and one-loop
+  vertex correction into labeled formal environments; added the companion
+  rational calculation check listed above.

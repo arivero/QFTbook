@@ -129,6 +129,12 @@ Current checks:
   Gasser--Leutwyler labels, selected \(\Gamma_i\) entries, and the
   cancellation of the \(\mu\)-dependence in the two-flavor
   \(M_\pi^2\) chiral logarithm by the running of \(l_3^r(\mu)\).
+- `qed_form_factor_checks.py`: exact rational checks for the Volume I QED
+  renormalization and form-factor chapter, including the photon
+  vacuum-polarization pole coefficient, Ward organization \(Z_1=Z_\psi\),
+  Dirac--Pauli conversion \(F_1=F+G\), \(F_2=-G\), the zero-transfer
+  vertex-parameter integral, and Schwinger's
+  \(g_{\mathrm{mag}}-2=\alpha/\pi\) normalization.
 - `conformal_collider_checks.py`: exact rational checks for the ANEC and
   conformal-collider section, including the \(S^2\) angular averages in the
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions

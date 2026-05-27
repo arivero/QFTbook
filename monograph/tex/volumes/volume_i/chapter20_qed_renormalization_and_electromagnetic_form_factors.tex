@@ -5,6 +5,8 @@
 
 \section{Regulated Variables and Ward Organization}
 
+\begin{definition}[Regulated explicit-coupling QED coordinates]
+\label{def:qed-regulated-explicit-coupling-coordinates}
 Use the electron convention of Chapter~\ref{ch:qed-external-states}.  At a
 chosen perturbative regulator, use regulator-dependent representative fields
 and parameters
@@ -123,15 +125,43 @@ because \(m\bar\psi\psi\) is gauge-invariant.  These counterterm vertices are
 not added to a separate bare theory; they are the regulator-dependent part of
 the single local Lagrangian \(\mathcal L_B\) after it has been expressed in
 the renormalized coordinates \(A_\mu,\psi,\bar\psi,m,e\).
+\end{definition}
 
-The current normalized by the renormalized field strength is obtained from
-the Euler--Lagrange equation for \(A_\mu\):
+\begin{proposition}[Ward organization of the renormalized current]
+\label{prop:qed-ward-organization-current}
+In the coordinate system of
+Definition~\ref{def:qed-regulated-explicit-coupling-coordinates}, the
+coefficient \(e\) in the renormalized gauge transformation is the same
+coefficient fixed by the zero-momentum electromagnetic current matrix element.
+If a vertex constant \(Z_1\) is introduced by
+\(e^BZ_A^{1/2}Z_\psi=eZ_1\), Abelian gauge covariance gives
+\(Z_1=Z_\psi\), and the current normalized by the renormalized field strength is
 \[
   \partial_\nu F^{\mu\nu}
   =
   -\ii Z_A^{-1}eZ_\psi\,\bar\psi\gamma^\mu\psi
   \equiv j^\mu .
 \]
+\end{proposition}
+
+\begin{proof}
+The equality \(e=e^BZ_A^{1/2}\) is the condition that the covariant derivative
+written in regulator fields,
+\(\partial_\mu+\ii e^BA_\mu^B\), becomes
+\(\partial_\mu+\ii eA_\mu\) after the field-residue change
+\(A_\mu^B=Z_A^{1/2}A_\mu\).  Therefore the renormalized representative
+transformation
+\(A_\mu\mapsto A_\mu+\partial_\mu\xi\),
+\(\psi\mapsto \exp(-\ii e\xi)\psi\) fixes \(e\) before the spinor residue
+normalization is chosen.  Substituting \(e=e^BZ_A^{1/2}\) into
+\(e^BZ_A^{1/2}Z_\psi=eZ_1\) gives \(Z_1=Z_\psi\).  Finally vary
+\(\mathcal L_B\), expressed in the finite fields of
+Definition~\ref{def:qed-regulated-explicit-coupling-coordinates}, with respect
+to \(A_\mu\).  The Maxwell term contributes \(Z_A\partial_\nu F^{\mu\nu}\) and
+the interaction term contributes \(\ii eZ_\psi\bar\psi\gamma^\mu\psi\), which
+gives the displayed operator identity after division by \(Z_A\).
+\end{proof}
+
 This identity is an operator identity at separated insertions in the regulated
 theory.  In time-ordered products, differentiating the ordering symbols may
 also produce local contact terms; the nonlocal momentum dependence discussed
@@ -154,7 +184,10 @@ one-particle-irreducible photon self-energies into the free propagator:
 \begin{gathered}
 \begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.88]
   \tikzset{
-    photon/.style={decorate,decoration={snake,amplitude=1.15pt,segment length=5pt},line width=0.55pt}
+    photon/.style={
+      decorate,
+      decoration={snake,amplitude=1.15pt,segment length=5pt},
+      line width=0.55pt}
   }
   \draw[photon] (-0.2,0)--(1.0,0);
   \node at (1.45,0) {\(=\)};
@@ -174,10 +207,22 @@ one-particle-irreducible photon self-energies into the free propagator:
 \end{gathered}
 \]
 Let \(\ii\Pi^{\mu\nu}(k)\) denote the sum of amputated one-particle
-irreducible photon two-point insertions.  Current conservation implies
-transversality in a way that does not depend on a gauge-dependent
-longitudinal representative.  The Maxwell equation with the renormalized
-current has the form
+irreducible photon two-point insertions.
+
+\begin{proposition}[Transversality of the photon self-energy]
+\label{prop:qed-photon-self-energy-transversality}
+Modulo local contact terms in time-ordered products, Abelian current
+conservation implies
+\[
+  k_\mu\Pi^{\mu\nu}(k)=0,\qquad k_\nu\Pi^{\mu\nu}(k)=0 .
+\]
+The statement is about the amputated nonlocal 1PI two-point kernel and is
+independent of the longitudinal representative chosen for the photon
+propagator.
+\end{proposition}
+
+\begin{proof}
+The Maxwell equation with the renormalized current has the form
 \[
   \partial_\nu \widehat F^{\mu\nu}=\widehat j^\mu,
   \qquad
@@ -234,6 +279,8 @@ Chapter~\ref{ch:volume-ii-18} has a different mathematical
 form: because the BRST variations of \(A_\mu\) and \(c\) are composite local
 fields, the corresponding 1PI identity is quadratic in \(\Gamma\), as in
 \eqref{eq:slavnov-taylor-identity}.
+\end{proof}
+
 Lorentz covariance then gives the tensor decomposition
 \[
   \Pi^{\mu\nu}(k)
@@ -268,10 +315,35 @@ photon point \(k^2=0\).
 
 \section{One-Loop Vacuum Polarization}
 
+\begin{proposition}[One-loop QED vacuum polarization in explicit-coupling coordinates]
+\label{prop:qed-one-loop-vacuum-polarization}
+In the regulator convention of
+Definition~\ref{def:qed-regulated-explicit-coupling-coordinates}, dimensional
+continuation to \(D=4-\epsilon\) and the pole normalization \(\pi(0)=0\) give
+\[
+  Z_A=1-\frac{e^2}{6\pi^2}\frac1\epsilon+\textup{finite},
+\]
+and the cutoff-removed one-loop transverse photon form factor is
+\[
+  \pi(k^2)
+  =
+  \frac{e^2}{2\pi^2}
+  \int_0^1\dd x\,x(1-x)
+  \log
+  \frac{m^2+x(1-x)k^2}{m^2}.
+\]
+\end{proposition}
+
+\begin{proof}
 The photon counterterm contributes
 \[
 \begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.82]
-  \tikzset{photon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=5pt},line width=0.55pt}}
+  \tikzset{
+    photon/.style={
+      decorate,
+      decoration={snake,amplitude=1.1pt,segment length=5pt},
+      line width=0.55pt}
+  }
   \draw[photon] (-1.25,0)--(1.25,0);
   \draw[thick] (0,-0.18)--(0,0.18);
   \node[below] at (-1.25,-0.08) {\scriptsize \(\mu\)};
@@ -285,8 +357,15 @@ which contributes \(1-Z_A\) to \(\pi(k^2)\). The one-loop electron diagram is
 \[
 \begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.9]
   \tikzset{
-    photon/.style={decorate,decoration={snake,amplitude=1.1pt,segment length=5pt},line width=0.55pt},
-    fermion/.style={postaction={decorate,decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},line width=0.55pt}
+    photon/.style={
+      decorate,
+      decoration={snake,amplitude=1.1pt,segment length=5pt},
+      line width=0.55pt},
+    fermion/.style={
+      postaction={
+        decorate,
+        decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},
+      line width=0.55pt}
   }
   \draw[photon] (-1.7,0)--(-0.62,0);
   \draw[fermion] (0,0) circle (0.62);
@@ -429,9 +508,12 @@ charge normalization \(\pi(0)=0\) held fixed.  In dimensional
 regularization the same statement is represented by the analytic continuation
 to \(D=4\) after the local counterterm \(Z_A\) has subtracted the ultraviolet
 pole.
+\end{proof}
 
 \section{The Electron Current Matrix Element}
 
+\begin{definition}[Electron electromagnetic form factors]
+\label{def:qed-electron-electromagnetic-form-factors}
 Let \(|\vec p,\sigma\rangle\) be a one-electron state of charge \(q=-e\).
 Translation covariance gives
 \[
@@ -515,7 +597,20 @@ displayed \((F,G)\) decomposition gives
 Thus the charge normalization below, \(F(0)+G(0)=1\), is precisely
 \(F_1^{\rm DP}(0)=1\), while the anomalous magnetic moment is
 \(F_2^{\rm DP}(0)=-G(0)\).
+\end{definition}
 
+\begin{proposition}[Charge normalization of the electron current]
+\label{prop:qed-electron-charge-normalization}
+With the plane-wave normalization and current normalization used in
+Definition~\ref{def:qed-electron-electromagnetic-form-factors}, the charge
+operator acts by
+\(\widehat Q|\vec p,\sigma\rangle=q|\vec p,\sigma\rangle\) if and only if
+\[
+  F(0)+G(0)=1 .
+\]
+\end{proposition}
+
+\begin{proof}
 Charge normalization fixes one combination at zero momentum transfer. Taking
 \(p'\to p\), using
 \[
@@ -553,9 +648,26 @@ The equality is a distributional momentum-state identity: after smearing the
 external plane waves by a common wave packet and then removing the smearing,
 the spatial integral supplies the same
 \(\delta^{(3)}(\vec p'-\vec p)\) on both sides.
+\end{proof}
 
 \section{Magnetic Moment from the Form Factor}
 
+\begin{proposition}[Magnetic factor in the \((F,G)\) basis]
+\label{prop:qed-magnetic-factor-from-form-factor}
+For an electron current matrix element written in the basis of
+Definition~\ref{def:qed-electron-electromagnetic-form-factors}, the
+spin-dependent coupling to a slowly varying external magnetic field is
+\[
+  \Delta H_{\mathrm{spin}}
+  =
+  -g_{\mathrm{mag}}\frac{q}{2m}\,
+  \vec B\cdot\frac{\vec\sigma}{2},
+  \qquad
+  g_{\mathrm{mag}}=2F(0)=2\bigl(1-G(0)\bigr).
+\]
+\end{proposition}
+
+\begin{proof}
 Couple the current to a weak classical background:
 \[
   \Delta H
@@ -623,9 +735,27 @@ Together with \(F(0)+G(0)=1\), this gives
 \[
   g_{\mathrm{mag}}=2\bigl(1-G(0)\bigr).
 \]
+\end{proof}
 
 \section{One-Loop Vertex Correction}
 
+\begin{proposition}[Schwinger term in the electron magnetic factor]
+\label{prop:qed-one-loop-vertex-schwinger}
+In the same ultraviolet and infrared hard-kernel convention used for
+Proposition~\ref{prop:qed-one-loop-vacuum-polarization}, the one-loop vertex
+correction gives
+\[
+  G(0)=-\frac{e^2}{8\pi^2}=-\frac{\alpha}{2\pi},
+  \qquad
+  g_{\mathrm{mag}}
+  =
+  2+\frac{\alpha}{\pi}+O(\alpha^2),
+  \qquad
+  \alpha=\frac{e^2}{4\pi}.
+\]
+\end{proposition}
+
+\begin{proof}
 The current is represented by
 \[
   \widehat j^\mu
@@ -640,8 +770,15 @@ external spinor legs by LSZ:
 \[
 \begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.88]
   \tikzset{
-    fermion/.style={postaction={decorate,decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},line width=0.55pt},
-    photon/.style={decorate,decoration={snake,amplitude=1.15pt,segment length=5pt},line width=0.55pt}
+    fermion/.style={
+      postaction={
+        decorate,
+        decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},
+      line width=0.55pt},
+    photon/.style={
+      decorate,
+      decoration={snake,amplitude=1.15pt,segment length=5pt},
+      line width=0.55pt}
   }
   \coordinate (v) at (0,0);
   \draw[fermion] (v)--(1.0,0.65);
@@ -689,8 +826,15 @@ correction
 \[
 \begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth,scale=0.95]
   \tikzset{
-    fermion/.style={postaction={decorate,decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},line width=0.55pt},
-    photon/.style={decorate,decoration={snake,amplitude=1.15pt,segment length=5pt},line width=0.55pt}
+    fermion/.style={
+      postaction={
+        decorate,
+        decoration={markings,mark=at position .58 with {\arrow{Stealth}}}},
+      line width=0.55pt},
+    photon/.style={
+      decorate,
+      decoration={snake,amplitude=1.15pt,segment length=5pt},
+      line width=0.55pt}
   }
   \coordinate (v) at (0,0);
   \coordinate (a) at (0.9,0.72);
@@ -728,13 +872,55 @@ in Feynman gauge. Its integrand is
 \end{aligned}
 \]
 To isolate the term that affects the magnetic moment, Wick rotate, continue
-the loop integral dimensionally, combine the three denominators by Feynman
-parameters, and use the external Dirac equations.  The reduced numerator has
-the form
+the loop integral dimensionally, and combine the three denominators
+\[
+  D_0=q^2,\qquad
+  D_1=(p'-q)^2+m^2,\qquad
+  D_2=(p-q)^2+m^2
+\]
+by the simplex coordinates
+\[
+  z_0=1-x,\qquad z_1=y,\qquad z_2=x-y,
+  \qquad 0\le y\le x\le1 .
+\]
+On the external mass shell \(p^2=p'^2=-m^2\), \(k=p-p'\), one has
+\[
+  z_0D_0+z_1D_1+z_2D_2
+  =
+  \ell^2+m^2x^2+k^2y(x-y),
+  \qquad
+  q=\ell+yp'+(x-y)p .
+\]
+Thus
+\[
+  \frac1{D_0D_1D_2}
+  =
+  2\int_0^1\dd x\int_0^x\dd y\,
+  \frac1{\bigl(\ell^2+m^2x^2+k^2y(x-y)\bigr)^3}.
+\]
+The external Dirac equations and the Clifford algebra reduce every parity-even
+vector bilinear between the on-shell spinors to the two-basis form
 \[
   \bar u(p')\gamma^\mu u(p)\,A(k^2)
   +(p+p')^\mu\bar u(p')u(p)\,B(k^2).
 \]
+The scalar \(B(k^2)\) is the coefficient of the second basis vector in this
+on-shell quotient; for \(k^2\neq0\) it is obtained by solving the resulting
+two-by-two Gram system, and the \(k^2=0\) value used below is the regular
+limit.  Terms odd in \(\ell\) vanish, and the \(\ell_\alpha\ell_\beta\) terms
+are replaced by \(D^{-1}\eta_{\alpha\beta}\ell^2\) before the scalar
+integrals are evaluated.  The Pauli-coordinate projection of the finite part
+gives
+\[
+  B(k^2)
+  =
+  \frac{\ii e^2m}{8\pi^2}
+  \int_0^1\dd x\int_0^x\dd y\,
+  \frac{x(1-x)}
+       {m^2x^2+k^2y(x-y)} .
+\]
+Since the form-factor definition is
+\(B(k^2)=-\ii G(k^2)/(2m)\), this is equivalent to the formula below.
 The scalar \(A(k^2)\) contains ultraviolet and infrared singular terms whose
 contribution is fixed by the charge normalization and the spinor
 wavefunction counterterm.  The scalar \(B(k^2)\) is finite at this order and
@@ -778,3 +964,4 @@ the one-loop magnetic factor is
   =
   2+\frac{\alpha}{\pi}+O(\alpha^2).
 \]
+\end{proof}
