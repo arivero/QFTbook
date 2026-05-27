@@ -25,6 +25,8 @@ the monograph's proof-boundary language.
   the Cauchy kernels expanded in specified radial chambers.
 - `Psi_x`, `Psi_y`, `mathcal C_g`: one-residue and double-residue contact
   corrections for local DHM sheet continuation in the stringbook orientation.
+- `theta_raw^{-,+}`, `Delta_bar1 theta`: raw crossed-first-particle BES
+  phase and its local residue correction.
 - `S_mat`, `S_0`: matrix and scalar parts of the two-body magnon S-matrix.
 - `S^{(1)}_{12}`, `mathcal S_{12}`: one-copy `su(2|2)_c` intertwiner and
   its unfixed common scalar in the stringbook dynamic spin-chain frame.
@@ -95,6 +97,11 @@ the monograph's proof-boundary language.
   residue in the stringbook sign convention, and crossing both variables
   subtracts the double-residue contact term `i mathcal L_g(x,y)`, producing
   the notebook's final `-i mathcal L_g(x,y)` contribution.
+- Applies the local DHM rule to the four-kernel BES phase for a crossed first
+  particle, deriving the residue combination
+  `-Psi(x1+,x2+)+Psi(x1+,x2-)+Psi(x1-,x2+)-Psi(x1-,x2-)` and explicitly
+  separating this local contour algebra from the global Janik scalar
+  monodromy.
 - Proves dressing scalar unitarity in the charge-expansion domain:
   antisymmetry of `q_r(1)q_s(2)-q_s(1)q_r(2)` gives `theta_21=-theta_12` and
   hence `sigma_12 sigma_21=1`, while leaving crossing as separate monodromy
@@ -222,7 +229,9 @@ crossed Zhukovsky sheets.
 - It checks the local DHM analytic-continuation residue bookkeeping on a
   finite Laurent model of the Gamma-kernel expansion, including the
   single-residue signs and the necessity/sign of the double-residue contact
-  term.
+  term.  The same check now verifies the crossed-first-particle four-kernel
+  BES phase residue signs and confirms that reversing them does not restore
+  the outside branch.
 - It ports the local finite checks from the stringbook `su(2|2) spin
   chain.nb` notebook: the ten-amplitude formulas satisfy the
   highest-weight `Q` relation, the boson-boson/fermion-fermion and mixed

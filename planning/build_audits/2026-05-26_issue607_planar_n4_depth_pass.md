@@ -1572,3 +1572,34 @@ Calculation checks added:
   `x^+`, the upper endpoint flips only `x^-`, and the combined path flips
   both variables while preserving shortening, inverting momentum, and flipping
   the continued energy.
+
+## Continuation L: Crossed BES Phase Residue Package
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a local crossed-first-particle BES-phase proposition after the DHM
+  residue-continuation rule.
+- The text defines `theta_raw^{-,+}` for the four raw DHM kernels with the
+  first magnon in the inside chamber and the second in the outside chamber.
+- It derives the residue package
+  `-Psi(x1+,x2+)+Psi(x1+,x2-)+Psi(x1-,x2+)-Psi(x1-,x2-)`, exposing the
+  signs inherited from the BES combination `+,-,-,+` and the single-kernel
+  `x`-crossing correction.
+- It explicitly states that this is still local contour algebra: the global
+  Janik scalar crossing equation additionally needs the scalar branch,
+  homotopy class, and treatment of additional crossed singularities.
+
+Calculation checks added:
+
+- Extended `check_dhm_local_residue_continuation()` so the finite Laurent
+  DHM model also checks the crossed-first-particle four-kernel BES phase.
+  The check verifies the displayed residue package, confirms restoration of
+  the outside branch termwise, and fails if the four residue signs are
+  reversed.

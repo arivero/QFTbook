@@ -764,15 +764,17 @@ def check_dhm_local_residue_continuation() -> None:
     for _ in range(3):
         kernel = multiply(kernel, delta_terms)
 
-    x_value = 0.73 + 0.29j
-    y_value = -0.68 + 0.24j
-
     def cauchy_factor(power: int, variable: complex, inside: bool) -> complex:
         if inside:
             return -(variable**power) if power >= 0 else 0j
         return variable**power if power <= -1 else 0j
 
-    def raw_integral(x_inside: bool, y_inside: bool) -> complex:
+    def raw_integral_at(
+        x_value: complex,
+        y_value: complex,
+        x_inside: bool,
+        y_inside: bool,
+    ) -> complex:
         bare_value = sum(
             coefficient
             * cauchy_factor(z_power, x_value, x_inside)
@@ -781,11 +783,17 @@ def check_dhm_local_residue_continuation() -> None:
         )
         return -1j * bare_value
 
-    def kernel_value() -> complex:
+    def kernel_value_at(x_value: complex, y_value: complex) -> complex:
         return sum(
             coefficient * x_value**z_power * y_value**w_power
             for (z_power, w_power), coefficient in kernel.items()
         )
+
+    x_value = 0.73 + 0.29j
+    y_value = -0.68 + 0.24j
+
+    def raw_integral(x_inside: bool, y_inside: bool) -> complex:
+        return raw_integral_at(x_value, y_value, x_inside, y_inside)
 
     outside_outside = raw_integral(False, False)
     inside_x_outside_y = raw_integral(True, False)
@@ -809,7 +817,11 @@ def check_dhm_local_residue_continuation() -> None:
     psi_x_inside_y = inside_inside - outside_x_inside_y
     psi_y_inside_x = inside_x_outside_y - inside_inside
     contact = outside_x_inside_y + inside_x_outside_y - inside_inside - outside_outside
-    assert_close("DHM double-residue contact sign", contact, 1j * kernel_value())
+    assert_close(
+        "DHM double-residue contact sign",
+        contact,
+        1j * kernel_value_at(x_value, y_value),
+    )
     assert_close(
         "DHM double crossing with contact restores outside branch",
         inside_inside - psi_x_inside_y + psi_y_inside_x - contact,
@@ -818,6 +830,64 @@ def check_dhm_local_residue_continuation() -> None:
     without_contact = inside_inside - psi_x_inside_y + psi_y_inside_x
     if abs(without_contact - outside_outside) < 1.0e-9:
         raise AssertionError("DHM double crossing unexpectedly worked without contact term")
+
+    x1_plus = 0.72 + 0.13j
+    x1_minus = -0.61 + 0.21j
+    x2_plus = 1.31 - 0.17j
+    x2_minus = -1.44 - 0.19j
+
+    def psi_x_outside_second(x_value: complex, y_value: complex) -> complex:
+        return raw_integral_at(x_value, y_value, True, False) - raw_integral_at(
+            x_value, y_value, False, False
+        )
+
+    def crossed_first_chi(x_value: complex, y_value: complex) -> complex:
+        return raw_integral_at(x_value, y_value, True, False) - psi_x_outside_second(
+            x_value, y_value
+        )
+
+    raw_crossed_theta = (
+        raw_integral_at(x1_plus, x2_plus, True, False)
+        - raw_integral_at(x1_plus, x2_minus, True, False)
+        - raw_integral_at(x1_minus, x2_plus, True, False)
+        + raw_integral_at(x1_minus, x2_minus, True, False)
+    )
+    residue_theta = (
+        -psi_x_outside_second(x1_plus, x2_plus)
+        + psi_x_outside_second(x1_plus, x2_minus)
+        + psi_x_outside_second(x1_minus, x2_plus)
+        - psi_x_outside_second(x1_minus, x2_minus)
+    )
+    crossed_theta = (
+        crossed_first_chi(x1_plus, x2_plus)
+        - crossed_first_chi(x1_plus, x2_minus)
+        - crossed_first_chi(x1_minus, x2_plus)
+        + crossed_first_chi(x1_minus, x2_minus)
+    )
+    outside_branch_theta = (
+        raw_integral_at(x1_plus, x2_plus, False, False)
+        - raw_integral_at(x1_plus, x2_minus, False, False)
+        - raw_integral_at(x1_minus, x2_plus, False, False)
+        + raw_integral_at(x1_minus, x2_minus, False, False)
+    )
+    assert_close(
+        "DHM crossed BES theta residue combination",
+        crossed_theta,
+        raw_crossed_theta + residue_theta,
+    )
+    assert_close(
+        "DHM crossed BES theta restores outside branch termwise",
+        crossed_theta,
+        outside_branch_theta,
+    )
+    wrong_residue_theta = (
+        psi_x_outside_second(x1_plus, x2_plus)
+        - psi_x_outside_second(x1_plus, x2_minus)
+        - psi_x_outside_second(x1_minus, x2_plus)
+        + psi_x_outside_second(x1_minus, x2_minus)
+    )
+    if abs(raw_crossed_theta + wrong_residue_theta - outside_branch_theta) < 1.0e-9:
+        raise AssertionError("DHM crossed BES theta signs unexpectedly worked when reversed")
 
 
 def check_su2c_matrix_amplitudes_and_unitarity() -> None:
