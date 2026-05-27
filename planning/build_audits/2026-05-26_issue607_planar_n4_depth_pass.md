@@ -1357,3 +1357,37 @@ Calculation checks added:
   checks of the `q=2u` weak-density rationalization for several mirror charges
   and rational rapidities, in addition to the existing numerical integrand and
   residue/telescoping checks.
+
+## Continuation XLIV: Konishi Rational Pole Structure
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Source/standard motivation:
+
+- The leading Konishi wrapping proof already used the upper-half-plane residue
+  contour, but the absence of real contour poles and the `Q=1` cancellation
+  were compressed into prose.  Since this step fixes which singularities are
+  included in the residue sum, it belongs in the derivation rather than in an
+  implicit Mathematica notebook convention.
+
+Content added:
+
+- Added a lemma factoring `B_Q^-` and `B_Q^+` as paired physical-root
+  quadratics, listing the resulting upper-half-plane poles, proving that the
+  `Q=1` points `q=+-1/sqrt(3)` are removable because `B_1^-=(3q^2-1)^2`
+  cancels against the numerator, and proving the `q^{-12}` decay needed to
+  discard the closing semicircle.
+- Updated the wrapping-integral proof to cite this lemma before the residue
+  computation, so the contour prescription now rests on a stated pole
+  inventory.
+
+Calculation checks added:
+
+- Strengthened `check_konishi_wrapping_residue_sum()` with exact coefficient
+  checks of the paired-root factorizations of `B_Q^-` and `B_Q^+`, the `Q=1`
+  removable-factor identity and reduced density, and the large-`q` leading
+  coefficient consistent with `q^{-12}` decay.

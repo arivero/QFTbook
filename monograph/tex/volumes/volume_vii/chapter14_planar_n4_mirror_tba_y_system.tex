@@ -1286,6 +1286,64 @@ is \(B_Q^\pm(q)/144\).  Substituting these three elementary identities in
 which simplifies to \eqref{eq:konishi-yq0-rationalized}.
 \end{proof}
 
+\begin{lemma}[Pole structure of the Konishi weak density]
+\label{lem:konishi-weak-density-poles}
+Let \(Q\geq1\), and let \(Y_Q^{(0)}(q/2)\) be the rational function in
+\eqref{eq:konishi-yq0-rationalized}.  Then
+\[
+\begin{aligned}
+  B_Q^-(q)
+  &=
+  9\prod_{\sigma=\pm1}
+  \left(\left(q-\frac{\sigma}{\sqrt3}\right)^2+(Q-1)^2\right),
+\\
+  B_Q^+(q)
+  &=
+  9\prod_{\sigma=\pm1}
+  \left(\left(q-\frac{\sigma}{\sqrt3}\right)^2+(Q+1)^2\right).
+\end{aligned}
+\]
+After the removable \(Q=1\) cancellation described below, the function has no
+pole on the real \(q\)-axis and obeys \(Y_Q^{(0)}(q/2)=O(q^{-12})\) as
+\(|q|\to\infty\).  Its upper-half-plane poles are the fourth-order pole
+\(q=\ii Q\), the simple poles
+\[
+  q=\pm\frac1{\sqrt3}+\ii(Q+1),
+\]
+and, for \(Q>1\), the simple poles
+\[
+  q=\pm\frac1{\sqrt3}+\ii(Q-1).
+\]
+For \(Q=1\) the latter two points are real removable points, not contour
+poles.
+\end{lemma}
+
+\begin{proof}
+For any real \(a\),
+\[
+  \prod_{\sigma=\pm1}
+  \left(\left(q-\frac{\sigma}{\sqrt3}\right)^2+a^2\right)
+  =
+  q^4+2\left(a^2-\frac13\right)q^2
+  +\left(a^2+\frac13\right)^2 .
+\]
+Multiplication by \(9\), followed by \(a=Q-1\) and \(a=Q+1\), gives the two
+displayed factorizations and therefore the zero locations.  The factor
+\((q^2+Q^2)^4\) gives a fourth-order zero of the denominator at
+\(q=\ii Q\) and at \(q=-\ii Q\).  For real \(q\), the factors with
+\(a>0\) are strictly positive.  The only exceptional case is \(Q=1\) in
+\(B_1^-\), where
+\[
+  B_1^-(q)=(3q^2-1)^2 .
+\]
+The numerator of \eqref{eq:konishi-yq0-rationalized} contains the identical
+factor \((3q^2-1)^2\), so the singularities at \(q=\pm1/\sqrt3\) are
+removable.  Finally, before this cancellation the numerator has degree
+\(4\) and the denominator has degree \(16\).  For \(Q=1\), after cancellation
+the numerator has degree \(0\) and the denominator has degree \(12\).  In both
+cases the decay is \(q^{-12}\).
+\end{proof}
+
 \begin{proposition}[Leading Konishi wrapping integral]
 \label{prop:konishi-leading-wrapping-integral}
 Assume the mirror input of
@@ -1331,12 +1389,11 @@ with
 \end{equation}
 where \(B_Q^\pm\) are the polynomials in
 Proposition~\ref{prop:konishi-weak-density-rationalization}.
-For \(Q=1\) the apparent real zeros in \(B_1^-\) are removable because the
-same factor appears in the numerator.  After this cancellation the integrand
-has no pole on the real contour and decays as \(q^{-12}\).  Closing the
-contour in the upper half-plane therefore gives a finite residue
-calculation.  The poles are the fourth-order pole at \(q=\ii Q\), together
-with the simple poles at
+By Lemma~\ref{lem:konishi-weak-density-poles}, after the removable \(Q=1\)
+cancellation the integrand has no pole on the real contour and decays as
+\(q^{-12}\).  Closing the contour in the upper half-plane therefore gives a
+finite residue calculation.  The poles are the fourth-order pole at
+\(q=\ii Q\), together with the simple poles at
 \[
   q=\pm\frac1{\sqrt3}+\ii(Q-1),
   \qquad

@@ -1803,6 +1803,36 @@ def konishi_wrapping_q_rational_density(q_rapidity: Fraction, charge: int) -> Fr
     return numerator / denominator
 
 
+def konishi_wrapping_b_coefficients(charge: int, sign: int) -> tuple[Fraction, Fraction, Fraction]:
+    """Coefficients of B_Q^sign as c4 q^4 + c2 q^2 + c0."""
+
+    q = Fraction(charge)
+    if sign == -1:
+        base = 3 * (q - 2) * q
+    elif sign == 1:
+        base = 3 * q * (q + 2)
+    else:
+        raise ValueError("sign must be -1 or 1")
+    return (Fraction(9), 6 * (base + 2), (base + 4) ** 2)
+
+
+def konishi_wrapping_paired_b_coefficients(offset: Fraction) -> tuple[Fraction, Fraction, Fraction]:
+    """Coefficients from 9 prod_{sigma=+-1} ((q-sigma/sqrt(3))^2+offset^2)."""
+
+    return (
+        Fraction(9),
+        18 * (offset**2 - Fraction(1, 3)),
+        9 * (offset**2 + Fraction(1, 3)) ** 2,
+    )
+
+
+def evaluate_even_quartic(
+    coefficients: tuple[Fraction, Fraction, Fraction], q_value: Fraction
+) -> Fraction:
+    q2 = q_value * q_value
+    return coefficients[0] * q2 * q2 + coefficients[1] * q2 + coefficients[2]
+
+
 def konishi_wrapping_rational_tail(charge: int) -> Fraction:
     q = Fraction(charge)
     numerator = 7776 * q * (
@@ -1897,6 +1927,37 @@ def check_konishi_wrapping_residue_sum() -> None:
     # The stringbook rapidity u and the real variable q used for the rational
     # residue calculation are related by q=2u.  The leading mirror momentum
     # derivative is d p_tilde_Q/du = 2 + O(g^2).
+    for charge in range(1, 8):
+        charge_fraction = Fraction(charge)
+        for sign, offset in ((-1, charge_fraction - 1), (1, charge_fraction + 1)):
+            direct_coefficients = konishi_wrapping_b_coefficients(charge, sign)
+            paired_coefficients = konishi_wrapping_paired_b_coefficients(offset)
+            if direct_coefficients != paired_coefficients:
+                raise AssertionError(
+                    f"Konishi B_Q^{sign:+d} paired-root factorization failed at Q={charge}"
+                )
+
+        numerator_leading = 147456 * charge_fraction**2 * 9
+        denominator_leading = (
+            konishi_wrapping_b_coefficients(charge, -1)[0]
+            * konishi_wrapping_b_coefficients(charge, 1)[0]
+        )
+        if numerator_leading / denominator_leading != 16384 * charge_fraction**2:
+            raise AssertionError(f"Konishi large-q leading coefficient failed at Q={charge}")
+
+    if konishi_wrapping_b_coefficients(1, -1) != (Fraction(9), Fraction(-6), Fraction(1)):
+        raise AssertionError("Konishi Q=1 removable B^- factor has wrong coefficients")
+
+    for q in (Fraction(0), Fraction(1, 3), Fraction(-4, 5), Fraction(7, 4)):
+        zero_factor = (3 * q * q - 1) ** 2
+        b_minus = evaluate_even_quartic(konishi_wrapping_b_coefficients(1, -1), q)
+        if b_minus != zero_factor:
+            raise AssertionError("Konishi Q=1 removable factor identity failed")
+        b_plus = evaluate_even_quartic(konishi_wrapping_b_coefficients(1, 1), q)
+        reduced_density = Fraction(147456) / ((q * q + 1) ** 4 * b_plus)
+        if konishi_wrapping_q_rational_density(q, 1) != reduced_density:
+            raise AssertionError("Konishi Q=1 removable-pole cancellation failed")
+
     for charge in (1, 2, 5):
         charge_fraction = Fraction(charge)
         for q in (Fraction(0), Fraction(1, 3), Fraction(-4, 5), Fraction(7, 4)):
