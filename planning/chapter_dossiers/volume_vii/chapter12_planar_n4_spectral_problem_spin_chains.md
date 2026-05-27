@@ -68,9 +68,12 @@ replacement for the QFT.
   nonrenormalization.
 - Derives the stress-tensor-multiplet two-point normalization from Wick
   contractions and the symmetric-traceless `SO(6)` projector.
-- Records the leading planar chiral-ring OPE coefficient
-  `sqrt(J1 J2 (J1+J2))/N` and states the finite-\(N\) trace-relation and
-  multi-trace caveat.
+- Proves the leading planar chiral-primary normalization:
+  cyclic planar Wick contractions give the unit two-point function for
+  `mathcal Z_J`, the extremal pair-of-pants color graph gives the raw factor
+  `J J1 J2 N^(J-1)`, and the normalized OPE coefficient is
+  `sqrt(J1 J2 (J1+J2))/N`.  The finite-\(N\) trace-relation and multi-trace
+  caveat remains explicit.
 - Defines the planar single-trace operator space as a cyclic quotient before
   introducing spin-chain language.
 - Adds the planar two-point inner product and quotient status of spin-chain
@@ -110,7 +113,8 @@ single-trace word and the adjacent exchange interaction.
   relations and upper-half-plane preservation, `a=c=dim(g)/4`, idempotence
   and dimension of the `SO(6)` symmetric-traceless projector, the
   stress-tensor-multiplet two-point normalization factor, and the planar
-  chiral OPE coefficient arithmetic.
+  chiral two-point/OPE coefficient arithmetic including the pair-of-pants
+  cyclic factor.
 - `calculation-checks/planar_n4_integrability_checks.py` verifies the
   one-magnon finite-difference spectrum and the displayed cyclic Konishi
   Bethe roots.

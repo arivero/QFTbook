@@ -98,16 +98,27 @@ Expanding and collecting terms gives
 which is \eqref{eq:qsc-t-gauge-two-row-factorization}.
 \end{proof}
 
-The analytic Y-system condition
-\(Y_{2,\pm2}(u+\ii0)=1/Y_{1,\pm1}(u-\ii0)\) across the mirror cut forces the
-upper and lower Cauchy transforms to be opposite boundary values on that cut:
+\begin{proposition}[Magic-sheet continuation of the one-row gauge]
+\label{prop:qsc-magic-sheet-one-row-gauge}
+Assume the one-row gauge of Assumption~\ref{ass:qsc-one-row-t-gauge}.  Suppose
+that, across the mirror cut in the strip under consideration, the analytic
+Y-system gluing condition
+\[
+  Y_{2,\pm2}(u+\ii0)=\frac{1}{Y_{1,\pm1}(u-\ii0)}
+\]
+imposes the Cauchy-transform boundary relation
 \[
   G(u+\ii0)=-\overline G(u-\ii0).
 \]
-Consequently the density is supported on the short cut in the magic-sheet
-presentation.  Let \(\widehat G\) denote the single-cut continuation which
-equals \(G\) in the upper half-plane and \(-\overline G\) in the lower
-half-plane.  Then
+Define the magic-sheet continuation by
+\[
+  \widehat G=
+  \begin{cases}
+    G, & \text{on the branch reached from the upper half-plane},\\
+    -\overline G, & \text{on the branch reached from the lower half-plane}.
+  \end{cases}
+\]
+Then, on the continued sheet,
 \begin{equation}
   \widehat{\mathcal T}_{1,m}
   =
@@ -120,6 +131,43 @@ half-plane.  Then
   \qquad m\geq2.
   \label{eq:qsc-magic-sheet-t-gauge}
 \end{equation}
+\end{proposition}
+
+\begin{proof}
+The boundary relation says precisely that the upper branch \(G\) and the
+negative of the lower branch \(-\overline G\) glue with the same boundary
+value across the mirror cut.  Thus \(\widehat G\) is a single continued Cauchy
+transform on the magic sheet; the remaining discontinuity data are carried by
+the Zhukovsky short cut rather than by two independent upper/lower transforms.
+
+In the original strip,
+\[
+  \mathcal T_{1,m}=m+G^{[m]}+\overline G^{[-m]} .
+\]
+After continuation through the mirror cut, the upper shifted term remains
+\(\widehat G^{[m]}\), while the lower shifted term satisfies
+\(\overline G^{[-m]}=-\widehat G^{[-m]}\).  This gives the first formula in
+\eqref{eq:qsc-magic-sheet-t-gauge}.
+
+For the two-row function use
+Proposition~\ref{prop:qsc-t-gauge-hirota-factorization}.  Its first factor
+becomes
+\[
+  1+\widehat G^{[m+1]}-\widehat G^{[m-1]}
+  =
+  \widehat{\mathcal T}_{1,1}^{[m]},
+\]
+and its second factor becomes
+\[
+  1+\widehat G^{[-m+1]}-\widehat G^{[-m-1]}
+  =
+  \widehat{\mathcal T}_{1,1}^{[-m]}.
+\]
+Multiplying the two factors proves the second formula.  The proof is local in
+the strip: if a pole or endpoint is crossed, the missing information is an
+extra source term rather than a failure of the algebra.
+\end{proof}
+
 The hats emphasize that these are not new functions on the same sheet but
 analytic continuations through the Zhukovsky cut.  In the strip
 \(|\operatorname{Im}u|<m/2\), \(\widehat{\mathcal T}_{1,m}\) agrees with the
@@ -316,6 +364,95 @@ statement after substituting
 \eqref{eq:qsc-local-mu12-discontinuity}.
 \end{proof}
 
+\begin{proposition}[Fermionic-node ratio and the large-\(u\) energy sign]
+\label{prop:qsc-fermionic-node-large-u-ratio}
+Let \(x_{\rm f}(u)\) be the fermionic-node Zhukovsky sheet used in the
+large-\(u\) expansion of \(Y_{1,1}Y_{2,2}\), normalized by
+\[
+  x_{\rm f}(u)=\frac{g}{u}+O(u^{-3}),\qquad u\to\infty .
+\]
+For a mirror \(Q\)-particle at rapidity \(v\), write
+\[
+  a=x_Q^+(v),\qquad b=x_Q^-(v),
+  \qquad |a|<1<|b|,
+  \qquad
+  \widetilde E_Q(v)=\log\frac{b}{a},
+\]
+with the logarithm on the real mirror branch, and use the mirror momentum
+normalization of Chapter~\ref{ch:planar-n4-mirror-tba-y-system},
+\begin{equation}
+  \ii\widetilde p_Q(v)=-Q-2\ii g(a-b).
+  \label{eq:qsc-mirror-momentum-from-xpm}
+\end{equation}
+Define the fermionic-node scattering-ratio factor
+\[
+  R_Q(u,v)=
+  \frac{x_{\rm f}(u)-a}{x_{\rm f}(u)-b}\,
+  \frac{x_{\rm f}(u)^{-1}-b}{x_{\rm f}(u)^{-1}-a}.
+\]
+Then, on the branch of \(\log R_Q\) which tends to
+\(\log(a/b)\) at \(u=\infty\),
+\begin{equation}
+  \log R_Q(u,v)
+  =
+  -\widetilde E_Q(v)-\frac{\widetilde p_Q(v)}{u}
+  +O(u^{-2}).
+  \label{eq:qsc-fermionic-node-ratio-expansion}
+\end{equation}
+After the inverse mirror continuation of the second particle,
+\(\widetilde E=-\ii p\), \(\widetilde p=-\ii E\), the same local expansion
+becomes
+\[
+  \log R_1^{\rm phys}(u,u_j)
+  =
+  \ii p(u_j)+\frac{\ii E(u_j)}{u}+O(u^{-2}).
+\]
+\end{proposition}
+
+\begin{proof}
+Set \(x=x_{\rm f}(u)\).  Since \(x=g/u+O(u^{-3})\),
+\[
+  \frac{x-a}{x-b}
+  =
+  \frac{a}{b}
+  \left(1+x\left(\frac1b-\frac1a\right)+O(x^2)\right),
+  \qquad
+  \frac{x^{-1}-b}{x^{-1}-a}
+  =
+  1+x(a-b)+O(x^2).
+\]
+Multiplying,
+\[
+  R_Q(u,v)
+  =
+  \frac{a}{b}
+  \left[
+    1+\frac{g}{u}
+    \left(a-b+\frac1b-\frac1a\right)
+    +O(u^{-2})
+  \right].
+\]
+The constant term gives
+\(\log(a/b)=-\widetilde E_Q\).  For the coefficient of \(u^{-1}\), use the
+bound-state shortening condition
+\[
+  a+\frac1a-b-\frac1b=\frac{\ii Q}{g}.
+\]
+It implies
+\[
+  g\left(a-b+\frac1b-\frac1a\right)
+  =
+  2g(a-b)-\ii Q
+  =
+  -\widetilde p_Q,
+\]
+where the last equality is
+\eqref{eq:qsc-mirror-momentum-from-xpm}.  Taking the logarithm proves
+\eqref{eq:qsc-fermionic-node-ratio-expansion}.  The physical expansion is
+the same identity written with the stringbook double-Wick convention
+\(\widetilde E=-\ii p\), \(\widetilde p=-\ii E\).
+\end{proof}
+
 \begin{assumption}[Fermionic-product energy normalization]
 \label{ass:qsc-t-hook-charge-bridge}
 Work in the analytic T-hook gauge of
@@ -334,7 +471,14 @@ energy normalization inherited from the excited-state mirror TBA:
   \qquad u\to\infty
 \]
 in the upper-half-plane sector used for the \(SL(2)\) large-\(u\)
-asymptotics.
+asymptotics.  Proposition~\ref{prop:qsc-fermionic-node-large-u-ratio} is the
+local sheet calculation behind this normalization: in the standard
+excited-state mirror-TBA formula, the fermionic product is assembled from the
+ratio \(R_Q\), and its \(u^{-1}\) coefficient is the same mirror-momentum
+functional that appears in the energy formula
+\eqref{eq:planar-n4-excited-tba-energy}.  The assumption that remains is the
+global TBA contour formula for \(Y_{1,1}Y_{2,2}\), not an independent sign
+choice in the QSC.
 \end{assumption}
 
 \begin{lemma}[Dimension exponent of \(\mu_{12}\)]
@@ -403,31 +547,100 @@ terms in
   \widetilde P_a=\mu_{ab}P^b,\qquad
   (P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)
 \]
-then force the remaining \(\mu\)-powers
-\[
-  (\mu_{12},\mu_{13},\mu_{14},\mu_{24},\mu_{34})
+then force the remaining \(\mu\)-powers.  For the characteristic calculation
+one should not insert the physical value of the exponent too early: keep a
+trial exponent \(\alpha\) and write
+\begin{equation}
+  (\mu_{12},\mu_{13},\mu_{14},\mu_{23},\mu_{24},\mu_{34})
   \sim
-  (u^{\Delta-J},u^{\Delta+1},u^\Delta,u^{\Delta-1},u^{\Delta+J}),
-\]
-provided the leading terms do not undergo accidental cancellations.  For
-example, the three contributions
-\[
-  \mu_{14}P_1,\qquad \mu_{13}P_2,\qquad \mu_{12}P_3
-\]
-to \(\widetilde P_1\) all scale as \(u^{\Delta-J/2}\); this fixes the
-relative powers of \(\mu_{13}\) and \(\mu_{14}\) once the powers of \(P_a\)
-and \(\mu_{12}\) are known.  The same balance applied to
-\(\widetilde P_2,\widetilde P_3,\widetilde P_4\) gives the displayed list.
+  (u^{\alpha-J},u^{\alpha+1},u^\alpha,u^\alpha,
+    u^{\alpha-1},u^{\alpha+J}),
+  \label{eq:qsc-mu-leading-powers-alpha}
+\end{equation}
+provided the leading terms do not undergo accidental cancellations.  The
+physical branch later has \(\alpha=\Delta\).
 
-\begin{assumption}[Large-\(u\) QSC characteristic roots]
-\label{ass:qsc-large-u-characteristic-roots}
+\begin{proposition}[Large-\(u\) power balance for the \(P\mu\) sheet equation]
+\label{prop:qsc-mu-power-balance}
+Fix the \(SL(2)\) \(P\)-powers displayed above and use
+\((P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)\).  Suppose that in the trial
+large-\(u\) sector \(\widetilde P_a\) has the common sheet exponent shift
+\[
+  \widetilde P_a=O(u^{\alpha+p_a}),
+  \qquad
+  (p_1,p_2,p_3,p_4)=
+  \left(-\frac J2,-\frac J2-1,\frac J2,\frac J2-1\right),
+\]
+and that the \(\mu_{12}\) exponent is \(\alpha-J\).  If no leading row of
+\(\widetilde P_a=\mu_{ab}P^b\) is cancelled identically, then the six
+\(\mu\)-exponents are exactly those in
+\eqref{eq:qsc-mu-leading-powers-alpha}.  With these exponents, every term
+kept in the leading monodromy system
+\eqref{eq:qsc-large-u-characteristic-linear-system} has the same power as
+\(\mu_{ab}(u+\ii)-\mu_{ab}(u)\) in its component.
+\end{proposition}
+
+\begin{proof}
+Let \(e_{ab}=e_{ba}\) be the large-\(u\) exponent of \(\mu_{ab}\), and let
+\[
+  (q_1,q_2,q_3,q_4)=
+  \left(\frac J2-1,\frac J2,-\frac J2-1,-\frac J2\right)
+\]
+be the powers of \((P^1,P^2,P^3,P^4)\).  The row \(a=1\) in
+\(\widetilde P_a=\mu_{ab}P^b\) has target exponent
+\(\alpha-J/2\).  Since \(e_{12}=\alpha-J\),
+\[
+  e_{12}+q_2=\alpha-\frac J2,\qquad
+  e_{13}+q_3=\alpha-\frac J2,\qquad
+  e_{14}+q_4=\alpha-\frac J2,
+\]
+and hence \(e_{13}=\alpha+1\), \(e_{14}=\alpha\).  Applying the same balance
+to the second row, whose target exponent is \(\alpha-J/2-1\), gives
+\[
+  e_{23}+q_3=\alpha-\frac J2-1,\qquad
+  e_{24}+q_4=\alpha-\frac J2-1,
+\]
+so \(e_{23}=\alpha\) and \(e_{24}=\alpha-1\).  The third row has target
+\(\alpha+J/2\), and therefore
+\[
+  e_{34}+q_4=\alpha+\frac J2,
+\]
+which gives \(e_{34}=\alpha+J\).  The fourth row gives the same value and is
+a consistency check.  These are precisely the powers in
+\eqref{eq:qsc-mu-leading-powers-alpha}.
+
+For the monodromy recursion, the left side of the \((a,b)\) component has
+power \(e_{ab}-1\), since
+\[
+  \mu_{ab}(u+\ii)-\mu_{ab}(u)
+  =
+  \ii e_{ab}m_{ab}u^{e_{ab}-1}+\cdots .
+\]
+Each retained term on the right is of the form
+\(P_a\mu_{bc}P^c\) or \(P_b\mu_{ac}P^c\).  The row balance just proved says
+\[
+  e_{bc}+q_c=\alpha+p_b,\qquad
+  e_{ac}+q_c=\alpha+p_a .
+\]
+Thus these terms have powers \(p_a+\alpha+p_b\) and \(p_b+\alpha+p_a\).
+A direct substitution of the exponents above gives
+\[
+  p_a+p_b+\alpha=e_{ab}-1
+\]
+for the six pairs \((12),(13),(14),(23),(24),(34)\).  Hence the leading
+linear system is homogeneous in powers of \(u\), as required.
+\end{proof}
+
+\begin{proposition}[Large-\(u\) characteristic determinant]
+\label{prop:qsc-large-u-characteristic-determinant}
 Let
 \[
   X=A_1A_4,\qquad Y=A_2A_3 .
 \]
-After inserting the \(SL(2)\) large-\(u\) powers into the one-step
-monodromy recursion for \(\mu\), the leading system for the five independent
-\(\mu_{ab}\) components has the characteristic equation
+Insert the \(SL(2)\) \(P\)-powers and the trial \(\mu\)-powers
+\eqref{eq:qsc-mu-leading-powers-alpha} into the one-step monodromy recursion
+\eqref{eq:planar-n4-pmu-monodromy-recursion}.  For a nonzero leading vector
+with \(\alpha\neq0\), the characteristic equation is
 \[
   \Phi(\alpha)
   =
@@ -441,14 +654,72 @@ monodromy recursion for \(\mu\), the leading system for the five independent
   0 .
   \label{eq:qsc-large-u-characteristic-polynomial}
 \]
-The physical dimension root is \(\alpha=\Delta\).  The representation-theory
-input fixing the second nonzero root is
-\(\alpha=S-1\), where \(S\) is the Lorentz spin of the \(SL(2)\) state.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  P_1=A_1u^{-J/2},\quad
+  P_2=A_2u^{-J/2-1},\quad
+  P_3=A_3u^{J/2},\quad
+  P_4=A_4u^{J/2-1}
+\]
+at leading order, and use
+\((P^1,P^2,P^3,P^4)=(-P_4,P_3,-P_2,P_1)\).  If
+\(\mu_{ab}=m_{ab}u^{e_{ab}}+\cdots\), then
+\(\mu_{ab}(u+\ii)-\mu_{ab}(u)=\ii e_{ab}m_{ab}u^{e_{ab}-1}+\cdots\).
+Keeping the leading power in each component gives the finite linear system
+\[
+\begin{aligned}
+  \ii(\alpha-J)m_{12}
+  &=(X-Y)m_{12}+A_2^2m_{13}-A_1A_2m_{14}
+    -A_1A_2m_{23}+A_1^2m_{24},\\
+  \ii(\alpha+1)m_{13}
+  &=-A_3^2m_{12}+(X+Y)m_{13}-A_1A_3m_{14}
+    -A_1A_3m_{23}+A_1^2m_{34},\\
+  \ii\alpha m_{14}
+  &=-A_3A_4m_{12}+A_2A_4m_{13}
+    -A_1A_3m_{24}+A_1A_2m_{34},\\
+  \ii\alpha m_{23}
+  &=-A_3A_4m_{12}+A_2A_4m_{13}
+    -A_1A_3m_{24}+A_1A_2m_{34},\\
+  \ii(\alpha-1)m_{24}
+  &=-A_4^2m_{12}+A_2A_4m_{14}+A_2A_4m_{23}
+    -(X+Y)m_{24}+A_2^2m_{34},\\
+  \ii(\alpha+J)m_{34}
+  &=-A_4^2m_{13}+A_3A_4m_{14}+A_3A_4m_{23}
+    -A_3^2m_{24}+(-X+Y)m_{34}.
+\end{aligned}
+  \label{eq:qsc-large-u-characteristic-linear-system}
+\]
+Let \(\mathcal M_\alpha\) be the coefficient matrix obtained by moving the
+right-hand side to the left.  Expanding the determinant and collecting only
+the invariant products \(X=A_1A_4\) and \(Y=A_2A_3\) gives
+\[
+  \det\mathcal M_\alpha=\alpha^2\Phi(\alpha).
+\]
+The factor \(\alpha^2\) records a degenerate zero-exponent subspace of this
+redundant six-coordinate leading system before imposing the Pfaffian and gauge
+reductions.  The nonzero characteristic exponents used below therefore obey
+\(\Phi(\alpha)=0\).
+\end{proof}
+
+\begin{assumption}[Physical QSC characteristic roots]
+\label{ass:qsc-large-u-characteristic-roots}
+For an \(SL(2)\) single-trace state of twist \(J\), Lorentz spin \(S\), and
+dimension \(\Delta\), the physical large-\(u\) gluing/asymptotic data select,
+after quotienting the redundant \(\alpha^2\) factor above, the roots
+\[
+  \alpha=\Delta,\qquad \alpha=S-1
+\]
+of the characteristic polynomial
+\eqref{eq:qsc-large-u-characteristic-polynomial}; cases in which the
+spin-shadow root coincides with the zero sector are understood by continuity.
 \end{assumption}
 
-This assumption is not a path-integral theorem.  It is the large-\(u\)
-characteristic form of the QSC gluing/asymptotic data in this gauge.  The
-local algebra below is included because it is a common source of sign errors:
+This root assignment is not a path-integral theorem.  It is the large-\(u\)
+representation-theory and QSC-gluing input in this gauge.  The local algebra
+above is included because it is a common source of sign errors:
 the products \(A_1A_4\) and \(A_2A_3\) carry the sign convention for
 \(\chi\), for \(f^{[\pm1]}(u)=f(u\pm\ii/2)\), and for the short-cut sheet.
 
@@ -610,7 +881,12 @@ The \(P\mu\)-system is one gauge for the QSC.  A dual description uses four
 functions \(Q_i(u)\), \(i=1,\ldots,4\), and an antisymmetric matrix
 \(\omega_{ij}(u)\).  In the standard convention the \(Q_i\) have long cuts,
 while the \(P_a\) have one short cut on the principal sheet.  The equations
-mirror the \(P\mu\) system:
+mirror the \(P\mu\) system.  Introduce
+\[
+  Q^i=\eta^{ij}Q_j,
+\]
+where \(\eta^{ij}\) is a fixed antisymmetric tensor, normalized in the same
+unimodular convention as the \(P\)-index tensor \(\chi^{ab}\).  Then
 \[
   \widetilde Q_i=\omega_{ij}Q^j,\qquad
   \widetilde\omega_{ij}-\omega_{ij}
@@ -619,6 +895,16 @@ mirror the \(P\mu\) system:
   \qquad
   \omega_{ij}(u+\ii)=\widetilde\omega_{ij}(u).
 \]
+The dual Pfaffian normalization is
+\[
+  \operatorname{Pf}\omega
+  =
+  \omega_{12}\omega_{34}-\omega_{13}\omega_{24}
+  +\omega_{14}\omega_{23}
+  =
+  1
+\]
+after the same class of \(Q\)-basis gauge transformations used below.
 The two descriptions are related by the full \(Q_{A|I}\) system of
 finite-difference relations.  The useful point for this monograph is not the
 formal symmetry itself but the bookkeeping: choosing short cuts for \(P_a\)
@@ -632,6 +918,183 @@ conjugates of \(P_a(u)\) on the real axis outside the cut.  These conditions
 select the physical solution among many formal solutions of the same
 finite-difference equations.  They play the same role as contour data in the
 mirror TBA.
+
+\begin{lemma}[Dual \(Q\omega\) transport]
+\label{lem:qsc-qomega-transport}
+Assume the local \(Q\omega\) equations displayed above and the null
+contraction \(Q_iQ^i=0\).  Then the \(\omega\)-Pfaffian is transported
+consistently through a long cut, and the one-step shifted sheet obeys
+\[
+  \omega_{ij}(u+\ii)
+  =
+  \omega_{ij}(u)
+  +Q_i(u)\omega_{jk}(u)Q^k(u)
+  -Q_j(u)\omega_{ik}(u)Q^k(u).
+  \label{eq:qsc-qomega-monodromy-recursion}
+\]
+\end{lemma}
+
+\begin{proof}
+The proof is the dual copy of the \(P\mu\) calculation, but it is worth
+displaying because the sign is fixed by the long-cut convention.  Write
+\[
+  \widetilde Q_i=\omega_{ij}Q^j .
+\]
+The discontinuity equation says that crossing the cut changes \(\omega\) by
+the rank-two antisymmetric update
+\[
+  \omega\longmapsto \omega+Q\wedge\widetilde Q .
+\]
+For an invertible antisymmetric \(4\times4\) matrix \(M\),
+\[
+  \operatorname{Pf}(M+v\wedge w)
+  =
+  \operatorname{Pf}(M)\bigl(1+w^TM^{-1}v\bigr).
+\]
+With \(M=\omega\), \(v=Q\), and \(w=\widetilde Q=\omega Q^\sharp\),
+where \((Q^\sharp)^i=Q^i=\eta^{ij}Q_j\), the correction factor is
+\[
+  w^T\omega^{-1}Q
+  =
+  (\omega Q^\sharp)^T\omega^{-1}Q
+  =
+  -(Q^\sharp)^TQ
+  =
+  -Q^iQ_i
+  =
+  0.
+\]
+Hence the Pfaffian normalization, once imposed on one sheet, is preserved by
+the cut transport.  The pseudo-periodicity equation
+\(\omega_{ij}(u+\ii)=\widetilde\omega_{ij}(u)\) and the discontinuity
+equation give
+\[
+  \omega_{ij}(u+\ii)-\omega_{ij}(u)
+  =
+  Q_i(u)\widetilde Q_j(u)-Q_j(u)\widetilde Q_i(u).
+\]
+Substituting \(\widetilde Q_j=\omega_{jk}Q^k\) gives
+\eqref{eq:qsc-qomega-monodromy-recursion}.
+\end{proof}
+
+The lemma is not a proof of the global \(Q\omega\) Riemann--Hilbert problem.
+It is the local transport rule after the long-cut gauge has been chosen.  In
+particular, changing the antisymmetric tensor \(\eta\), reversing the tilde
+continuation, or using the opposite \(u\mapsto u-\ii\) shift convention changes
+the displayed signs unless the same convention change is made everywhere in
+the \(Q_{A|I}\) bridge.
+
+\subsection{Local P-Q Bridge}
+
+The two QSC gauges are not independent systems.  Locally in a strip where the
+auxiliary \(Q\)-functions have no singularities, they are projections of a
+first-order finite-difference system.  The following algebraic statement is
+the part of that system that is used repeatedly when changing between
+short-cut and long-cut descriptions.
+
+\begin{assumption}[Local \(P\)-\(Q\) bridge]
+\label{ass:qsc-local-pq-bridge}
+Let \(Q_{a|i}(u)\), \(a,i=1,\ldots,4\), be a \(4\times4\) matrix of auxiliary
+Q-functions with nonzero determinant in the strip under consideration.  Let
+\(\chi^{ab}\) and \(\eta^{ij}\) be the fixed antisymmetric tensors used to
+raise \(P\)- and \(Q\)-indices:
+\[
+  P^a=\chi^{ab}P_b,\qquad Q^i=\eta^{ij}Q_j.
+\]
+In the local Q-system gauge assume
+\begin{align}
+  Q_{a|i}^+ - Q_{a|i}^-
+  &=
+  P_a Q_i,
+  \label{eq:qsc-local-pq-rank-one-shift}\\
+  Q_i&=-P^a Q_{a|i}^-,
+  \qquad
+  P_a=-Q^i Q_{a|i}^-,
+  \label{eq:qsc-local-pq-contractions}
+\end{align}
+with the null contractions
+\[
+  P_aP^a=0,\qquad Q_iQ^i=0.
+\]
+\end{assumption}
+
+The null contractions are automatic once the upper indices are obtained from
+antisymmetric forms and the same lower vector is contracted with itself.  They
+are nevertheless displayed because they are exactly what makes the choice of
+\(+\) or \(-\) shift harmless in the contraction formulae.
+
+\begin{proposition}[Shift independence and unimodular \(P\)-\(Q\) bridge]
+\label{prop:qsc-local-pq-unimodular-bridge}
+Under Assumption~\ref{ass:qsc-local-pq-bridge}, the contraction identities are
+independent of the shift:
+\[
+  Q_i=-P^a Q_{a|i}^+,\qquad
+  P_a=-Q^i Q_{a|i}^+ .
+  \label{eq:qsc-local-pq-shift-independent}
+\]
+Moreover
+\[
+  \det(Q_{a|i}^+)=\det(Q_{a|i}^-).
+  \label{eq:qsc-local-pq-determinant-preserved}
+\]
+\end{proposition}
+
+\begin{proof}
+Contract \eqref{eq:qsc-local-pq-rank-one-shift} with \(-P^a\).  Using
+\eqref{eq:qsc-local-pq-contractions} and \(P_aP^a=0\) gives
+\[
+  -P^aQ_{a|i}^+
+  =
+  -P^aQ_{a|i}^- - P^aP_a Q_i
+  =
+  Q_i .
+\]
+Contracting the same rank-one shift with \(-Q^i\) gives
+\[
+  -Q^iQ_{a|i}^+
+  =
+  -Q^iQ_{a|i}^- - P_a Q_iQ^i
+  =
+  P_a ,
+\]
+which proves \eqref{eq:qsc-local-pq-shift-independent}.
+
+For the determinant, write \(M_{a i}=Q_{a|i}^-\), regard \(Q^i\) as a column
+vector \(Q^\sharp\), and regard \(Q_i\) as a row vector \(Q^\flat\).  The
+second identity in \eqref{eq:qsc-local-pq-contractions} says
+\[
+  P=-M Q^\sharp .
+\]
+Therefore
+\[
+  Q_{a|i}^+
+  =
+  M_{a i}+P_aQ_i
+  =
+  \bigl(M(1-Q^\sharp Q^\flat)\bigr)_{a i}.
+\]
+The matrix-determinant lemma gives
+\[
+  \det(1-Q^\sharp Q^\flat)
+  =
+  1-Q^\flat Q^\sharp
+  =
+  1-Q_iQ^i
+  =
+  1.
+\]
+Thus \(\det(Q_{a|i}^+)=\det M=\det(Q_{a|i}^-)\).
+\end{proof}
+
+This proposition is only local algebra.  It does not prove the existence of
+global \(Q_{a|i}\) functions with the required cut structure, nor does it fix
+the physical gluing conditions.  It does explain why the QSC can be written in
+a unimodular \(Q_{a|i}\) gauge and why the formulae
+\(Q_i=-P^aQ_{a|i}^{\pm}\), \(P_a=-Q^iQ_{a|i}^{\pm}\) are conventionally quoted
+without specifying the shift: the rank-one difference has zero contraction in
+both null directions.  Nonconstant \(\ii\)-periodic changes of \(Q_{a|i}\)
+are still analytic gauge transformations; they must be fixed before large-\(u\)
+asymptotics or gluing relations are compared.
 
 \section{Weak-Coupling Baxter Limit}
 
@@ -655,7 +1118,7 @@ then evaluating \eqref{eq:planar-n4-qsc-baxter-limit} at \(u=u_j\) gives
 \[
   \left(\frac{u_j+\ii/2}{u_j-\ii/2}\right)^J
   =
-  -\prod_{\substack{k=1\\k\neq j}}^S
+  \prod_{\substack{k=1\\k\neq j}}^S
   \frac{u_j-u_k-\ii}{u_j-u_k+\ii},
 \]
 which is the one-loop \(SL(2)\) Bethe equation in this convention.  Thus the
@@ -680,29 +1143,118 @@ produced only by the short cuts \([-2g,2g]+\ii n\) collapsing to the points
 \(\ii n\).  The defining sheet has no additional poles.
 \end{assumption}
 
-\begin{proposition}[Baxter equation from QSC degeneration]
-\label{prop:qsc-baxter-degeneration}
-Assume that in the weak-coupling limit the QSC functions in the \(SL(2)\)
-sector reduce so that the ratio of two independent \(P\)-functions is a
-degree-\(S\) polynomial \(Q(u)\), and that \(\mu\)-periodicity becomes a
-finite-difference relation with shifts \(\pm\ii\).  Then regularity at the
-zeros of \(Q\) gives the one-loop \(SL(2)\) Bethe equations.
+\begin{proposition}[Weak \(P\mu\) elimination before the Baxter equation]
+\label{prop:qsc-weak-mu12-mu24-elimination}
+Work in the weak-coupling regularity class of
+Assumption~\ref{ass:qsc-weak-coupling-regularity}.  To leading order in
+\(g\), neglect the \(P_2P_3\) terms in the \((1,2)\) and \((2,4)\)
+components of the monodromy recursion
+\eqref{eq:planar-n4-pmu-monodromy-recursion}.  Then
+\begin{equation}
+  \mu_{24}
+  =
+  \frac{\mu_{12}^{[+2]}-\mu_{12}}{P_1^2}
+  -
+  \mu_{12}\frac{P_4}{P_1},
+  \label{eq:qsc-weak-mu24-from-mu12}
+\end{equation}
+and eliminating \(\mu_{24}\) gives
+\begin{equation}
+\begin{aligned}
+  &\left(
+    \frac{P_4^{[+1]}}{P_1^{[+1]}}
+    -
+    \frac{P_4^{[-1]}}{P_1^{[-1]}}
+    +
+    \frac{1}{(P_1^{[+1]})^2}
+    +
+    \frac{1}{(P_1^{[-1]})^2}
+  \right)\mu_{12}^{[+1]}  \\
+  &\hspace{3em}
+  =
+  \frac{\mu_{12}^{[+3]}}{(P_1^{[+1]})^2}
+  +
+  \frac{\mu_{12}^{[-1]}}{(P_1^{[-1]})^2}.
+\end{aligned}
+  \label{eq:qsc-weak-mu12-pre-baxter}
+\end{equation}
 \end{proposition}
 
 \begin{proof}
-Under the stated degeneration, the finite-difference relation is
-\eqref{eq:planar-n4-qsc-baxter-limit}.  The right side is regular at every
-zero \(u_j\) of \(Q\), so the left side must vanish there:
+Use \(P^1=-P_4\), \(P^4=P_1\), and discard terms proportional to \(P_2\)
+or \(P_3\).  The \((1,2)\) component of
+\eqref{eq:planar-n4-pmu-monodromy-recursion} gives
+\[
+  \mu_{12}^{[+2]}-\mu_{12}
+  =
+  P_1(\mu_{21}P^1+\mu_{24}P^4)
+  =
+  P_1(\mu_{12}P_4+\mu_{24}P_1),
+\]
+which is \eqref{eq:qsc-weak-mu24-from-mu12}.  The \((2,4)\) component gives
+\begin{equation}
+  \mu_{24}^{[+2]}-\mu_{24}
+  =
+  -P_4(\mu_{21}P^1+\mu_{24}P^4)
+  =
+  -\frac{P_4}{P_1}(\mu_{12}^{[+2]}-\mu_{12}),
+  \label{eq:qsc-weak-mu24-recursion}
+\end{equation}
+where the last equality uses the preceding \((1,2)\) equation.  Now write
+\eqref{eq:qsc-weak-mu24-from-mu12} once at \(u\) and once at \(u+\ii\), and
+substitute both expressions into
+\eqref{eq:qsc-weak-mu24-recursion}.  After shifting the resulting equation by
+\(u\mapsto u-\ii/2\), the terms proportional to
+\(\mu_{12}^{[+1]}\) collect exactly into the coefficient displayed in
+\eqref{eq:qsc-weak-mu12-pre-baxter}.  This proves the claim.
+\end{proof}
+
+\begin{proposition}[Baxter equation from QSC degeneration]
+\label{prop:qsc-baxter-degeneration}
+Assume the hypotheses of
+Proposition~\ref{prop:qsc-weak-mu12-mu24-elimination}.  Normalize \(P_1\) so
+that, at \(g=0\),
+\[
+  \frac{1}{(P_1^{[\pm1]}(u))^2}=(u\pm\ii/2)^J,
+\]
+and assume the regular ratio \(P_4/P_1\) is such that
+\[
+  T(u)=
+    \frac{P_4^{[+1]}}{P_1^{[+1]}}
+    -
+    \frac{P_4^{[-1]}}{P_1^{[-1]}}
+    +(u+\ii/2)^J+(u-\ii/2)^J
+\]
+is a degree-\(J\) transfer polynomial.  With
+\[
+  Q(u)=\mu_{12}^{[+1]}(u)\big|_{g=0},
+\]
+the leading weak equation is the Baxter equation
+\[
+  (u+\ii/2)^JQ(u+\ii)
+  +(u-\ii/2)^JQ(u-\ii)
+  =
+  T(u)Q(u).
+\]
+If \(Q(u)=\prod_{k=1}^S(u-u_k)\), regularity at the zeros of \(Q\) gives the
+one-loop \(SL(2)\) Bethe equations.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:qsc-weak-mu12-pre-baxter}, with the stated leading
+asymptotics of \(P_1\), is exactly the displayed Baxter equation.  The right
+side is regular at every zero \(u_j\) of \(Q\), so the left side must vanish
+there:
 \[
   (u_j+\ii/2)^JQ(u_j+\ii)
   +(u_j-\ii/2)^JQ(u_j-\ii)=0.
 \]
 Dividing by \((u_j-\ii/2)^JQ(u_j-\ii)\) and using
 \[
-  \frac{Q(u_j+\ii)}{Q(u_j-\ii)}
+  \frac{Q(u_j-\ii)}{Q(u_j+\ii)}
   =
   -\prod_{\substack{k=1\\k\neq j}}^S
-  \frac{u_j-u_k+\ii}{u_j-u_k-\ii}
+  \frac{u_j-u_k-\ii}{u_j-u_k+\ii}
 \]
 gives the displayed Bethe equation.
 \end{proof}
@@ -1209,16 +1761,116 @@ with the short-cut branch, the leading solution has
   \qquad
   P_3=\epsilon(x^{-J/2}-x^{J/2}),
 \]
-and \(P_2,P_4\) determined by the Laurent expansion of \(\sinh(2\pi u)\) in
-powers of \(x\).  Comparing the large-\(u\) coefficients with the algebraic
-relations above gives
+where \(\epsilon^2=O(S)\).  The remaining two \(P\)-functions are fixed, in
+this small-spin germ, by solving the \(P\mu\) equations with the above
+\(\mu\)-matrix and imposing the single-short-cut regularity condition.  The
+calculation reduces to splitting the Laurent expansion of \(\sinh(2\pi u)\)
+into the powers allowed in \(P_2\) and \(P_4\).  Since
+\[
+  u=g(x+x^{-1}),
+\]
+the modified-Bessel generating function gives
+\begin{equation}
+  \sinh(2\pi u)
+  =
+  \sum_{n\in\mathbb Z} I_{2n+1}(4\pi g)x^{2n+1}.
+  \label{eq:qsc-small-spin-bessel-laurent}
+\end{equation}
+Here \(I_m\) is the modified Bessel function of the first kind.  The first
+large-\(x\) coefficients produced by the regularity split are
+\[
+  P_2
+  =
+  -\epsilon I_{J+1}(4\pi g)x^{-J/2-1}
+  +O(x^{-J/2-3}),
+  \qquad
+  P_4
+  =
+  -\epsilon I_{J-1}(4\pi g)x^{J/2-1}
+  +O(x^{J/2-3}).
+\]
+Thus, in the large-\(u\) normalization of
+Proposition~\ref{prop:qsc-large-u-coefficient-products},
+\[
+  A_1=\epsilon g^{J/2},\quad
+  A_2=-\epsilon g^{J/2+1}I_{J+1}(4\pi g),\quad
+  A_3=-\epsilon g^{-J/2},\quad
+  A_4=-\epsilon g^{-J/2+1}I_{J-1}(4\pi g).
+\]
+
+\begin{proposition}[Small-spin QSC slope]
+\label{prop:qsc-small-spin-bessel-slope}
+For the small-spin QSC germ above, the leading anomalous dimension satisfies
 \[
   \Delta-J-S
   =
   \frac{4\pi g\,I_{J+1}(4\pi g)}{J\,I_J(4\pi g)}\,S+O(S^2),
 \]
-where \(I_J\) is the modified Bessel function.  Continuing the resulting
-strong-coupling expansion to \(J=2,S=2\) gives the Konishi estimate
+\end{proposition}
+
+\begin{proof}
+First prove the Laurent identity
+\eqref{eq:qsc-small-spin-bessel-laurent}.  The generating function
+\[
+  \exp\left(\frac{z}{2}(t+t^{-1})\right)
+  =
+  \sum_{m\in\mathbb Z}I_m(z)t^m
+\]
+with \(z=4\pi g\) and \(t=x\) gives
+\(\exp(2\pi g(x+x^{-1}))=\sum_m I_m(4\pi g)x^m\).  Replacing
+\(x\) by \(-x\) gives the negative exponential.  Taking half the difference
+selects exactly the odd powers and proves
+\eqref{eq:qsc-small-spin-bessel-laurent}.
+
+The displayed leading coefficients then give
+\[
+  A_1A_4=-\epsilon^2 g\,I_{J-1}(4\pi g),
+  \qquad
+  A_2A_3=\epsilon^2 g\,I_{J+1}(4\pi g).
+\]
+Linearizing the large-\(u\) QSC coefficient relations at small spin gives
+the two charge equations
+\[
+  \Delta-J=-\ii(A_1A_4-A_2A_3)+O(S^2),
+  \qquad
+  S=-\ii(A_1A_4+A_2A_3)+O(S^2).
+\]
+Substitution yields
+\[
+  \Delta-J
+  =
+  \ii\epsilon^2g\bigl(I_{J-1}(4\pi g)+I_{J+1}(4\pi g)\bigr)+O(S^2),
+\]
+and
+\[
+  S
+  =
+  \ii\epsilon^2g\bigl(I_{J-1}(4\pi g)-I_{J+1}(4\pi g)\bigr)+O(S^2).
+\]
+Use the modified-Bessel recurrence
+\[
+  I_{J-1}(z)-I_{J+1}(z)=\frac{2J}{z}I_J(z),
+  \qquad z=4\pi g.
+\]
+It gives
+\[
+  \epsilon^2
+  =
+  \frac{2\pi S}{\ii J I_J(4\pi g)}+O(S^2).
+\]
+Therefore
+\[
+  \Delta-J-S
+  =
+  2\ii\epsilon^2g\,I_{J+1}(4\pi g)+O(S^2)
+  =
+  \frac{4\pi g\,I_{J+1}(4\pi g)}{J\,I_J(4\pi g)}S+O(S^2),
+\]
+which is the claimed slope.
+\end{proof}
+
+Continuing the resulting strong-coupling expansion to \(J=2,S=2\) gives the
+Konishi estimate
 \[
   \Delta_{\rm K}
   =
@@ -1242,6 +1894,44 @@ bridge lengths are
   \ell_{23}=\frac{L_2+L_3-L_1}{2},\qquad
   \ell_{31}=\frac{L_3+L_1-L_2}{2}.
 \]
+
+\begin{proposition}[Planar bridge-length bookkeeping]
+\label{prop:planar-n4-hexagon-bridge-lengths}
+Consider the planar tree-level pair-of-pants skeleton for three cyclic
+single-trace operators of lengths \(L_1,L_2,L_3\).  Let \(\ell_{ij}=\ell_{ji}\)
+be the number of adjacent Wick-contraction slots shared by operators \(i\)
+and \(j\).  Then the bridge lengths are forced to be
+\[
+  \ell_{12}=\frac{L_1+L_2-L_3}{2},\qquad
+  \ell_{23}=\frac{L_2+L_3-L_1}{2},\qquad
+  \ell_{31}=\frac{L_3+L_1-L_2}{2}.
+  \label{eq:planar-n4-hexagon-bridge-lengths-derived}
+\]
+Conversely, a nonnegative integer planar skeleton of this type exists exactly
+when \(L_1+L_2+L_3\) is even and the three triangle inequalities
+\(L_i+L_j\geq L_k\) hold.
+\end{proposition}
+
+\begin{proof}
+In the planar skeleton each trace is cut at two cyclic splitting points.  The
+letters of operator \(1\) are divided into the bridge shared with operator
+\(2\) and the bridge shared with operator \(3\), and similarly for the other
+two operators.  Hence
+\[
+  L_1=\ell_{12}+\ell_{31},\qquad
+  L_2=\ell_{12}+\ell_{23},\qquad
+  L_3=\ell_{23}+\ell_{31}.
+\]
+Adding the first two equations and subtracting the third gives
+\(2\ell_{12}=L_1+L_2-L_3\).  The other two formulae follow by cyclic
+permutation.  Since \(\ell_{ij}\) counts letters, the right-hand sides must
+be nonnegative integers; this is precisely even total length plus the
+triangle inequalities.  Conversely, if these conditions hold, the three
+numbers in \eqref{eq:planar-n4-hexagon-bridge-lengths-derived} define
+nonnegative integer arcs on the three cyclic words satisfying the displayed
+length-balance equations, which is the required pair-of-pants skeleton.
+\end{proof}
+
 Asymptotically, the structure constant is a sum over partitions of magnons
 between the two hexagons:
 \[
@@ -1253,11 +1943,24 @@ between the two hexagons:
   H(\alpha)H(\bar\alpha)\,
   \mathcal N^{-1/2}.
 \]
-Here \(H\) is the hexagon form factor, \(p(\bar\alpha)\) is the total momentum
-of the magnons moved across the bridge, and \(\mathcal N\) is the Gaudin norm
-factor of the Bethe state.  Mirror particles on the bridges add finite-size
-corrections, analogous in spirit to wrapping corrections in the spectral
-problem.
+Here the displayed formula is the specialization in which the magnons shown
+belong to one external operator: \(\ell\) is the bridge crossed by the subset
+\(\bar\alpha\), \(H\) is the hexagon form factor, and
+\[
+  p(\bar\alpha)=\sum_{u_j\in\bar\alpha}p(u_j).
+\]
+The phase is the spin-chain translation phase.  Moving a magnon of momentum
+\(p_j\) through \(\ell\) vacuum letters multiplies the coordinate Bethe wave
+by \(\ee^{\ii p_j\ell}\), and moving all magnons in \(\bar\alpha\) gives
+\[
+  \prod_{u_j\in\bar\alpha}\ee^{\ii p_j\ell}
+  =
+  \ee^{\ii p(\bar\alpha)\ell}.
+  \label{eq:planar-n4-hexagon-bridge-translation-phase}
+\]
+The factor \(\mathcal N\) is the Gaudin norm factor of the Bethe state.
+Mirror particles on the bridges add finite-size corrections, analogous in
+spirit to wrapping corrections in the spectral problem.
 
 For scalar magnons the elementary two-particle scalar factor entering the
 hexagon can be written, in the same \(x^\pm\) and \(\sigma\) conventions as
@@ -1275,6 +1978,87 @@ appears in the magnon S-matrix, after the crossing moves needed to put
 excitations on a chosen hexagon edge.  Thus the hexagon construction imports
 the same analytic-continuation obligations: specifying \(h(u,v)\) without the
 crossing path of the moved excitation is incomplete.
+
+\begin{proposition}[Hexagon scalar Watson factor]
+\label{prop:planar-n4-hexagon-scalar-watson}
+Let \(x_i^\pm\), \(i=1,2\), be non-zero Zhukovsky variables in a sheet domain
+where the denominators below do not vanish, and write
+\(\sigma_{ij}=\sigma(x_i^\pm,x_j^\pm)\).  Assume scalar dressing unitarity
+\(\sigma_{12}\sigma_{21}=1\) on this domain.  If \(h_{12}=h(u_1,u_2)\) is
+defined by \eqref{eq:planar-n4-hexagon-scalar-factor}, then
+\[
+  \frac{h_{12}}{h_{21}}
+  =
+  S^{\rm hex}_{\rm scal}(1,2),
+  \qquad
+  S^{\rm hex}_{\rm scal}(1,2)
+  =
+  \frac{x_1^+ -x_2^-}{x_1^- -x_2^+}
+  \frac{1-1/(x_1^+x_2^-)}{1-1/(x_1^-x_2^+)}
+  \frac{1}{\sigma_{12}^2}.
+  \label{eq:planar-n4-hexagon-watson-scalar}
+\]
+On the weak physical branch
+\[
+  x_i^\pm=\frac{u_i\pm\ii/2}{g}+O(g),
+  \qquad
+  \sigma_{12}=1+O(g^6),
+\]
+with \(u_1-u_2\neq\ii\), this becomes
+\[
+  S^{\rm hex}_{\rm scal}(1,2)
+  =
+  \frac{u_1-u_2+\ii}{u_1-u_2-\ii}
+  +O(g^2).
+  \label{eq:planar-n4-hexagon-watson-weak-limit}
+\]
+\end{proposition}
+
+\begin{proof}
+From \eqref{eq:planar-n4-hexagon-scalar-factor},
+\[
+\begin{aligned}
+  \frac{h_{12}}{h_{21}}
+  &=
+  \frac{x_1^- -x_2^-}{x_1^- -x_2^+}
+  \frac{x_2^- -x_1^+}{x_2^- -x_1^-}
+  \frac{1-1/(x_1^+x_2^-)}{1-1/(x_1^+x_2^+)}
+  \frac{1-1/(x_2^+x_1^+)}{1-1/(x_2^+x_1^-)}
+  \frac{\sigma_{21}}{\sigma_{12}} .
+\end{aligned}
+\]
+The first two rational factors reduce to
+\[
+  \frac{x_1^- -x_2^-}{x_2^- -x_1^-}
+  \frac{x_2^- -x_1^+}{x_1^- -x_2^+}
+  =
+  \frac{x_1^+ -x_2^-}{x_1^- -x_2^+}.
+\]
+The middle denominator \(1-1/(x_1^+x_2^+)\) cancels the identical factor
+\(1-1/(x_2^+x_1^+)\), and the remaining denominator is
+\(1-1/(x_1^-x_2^+)\).  Finally scalar dressing unitarity gives
+\(\sigma_{21}/\sigma_{12}=1/\sigma_{12}^2\).  This proves
+\eqref{eq:planar-n4-hexagon-watson-scalar}.
+
+For the weak limit, the first rational factor is
+\[
+  \frac{(u_1+\ii/2)/g-(u_2-\ii/2)/g+O(g)}
+       {(u_1-\ii/2)/g-(u_2+\ii/2)/g+O(g)}
+  =
+  \frac{u_1-u_2+\ii}{u_1-u_2-\ii}+O(g^2).
+\]
+The second rational factor is \(1+O(g^2)\), because
+\((x_i^\pm x_j^\pm)^{-1}=O(g^2)\), and the dressing factor contributes
+\(1+O(g^6)\).  This proves
+\eqref{eq:planar-n4-hexagon-watson-weak-limit}.
+\end{proof}
+
+The weak factor in
+\eqref{eq:planar-n4-hexagon-watson-weak-limit} is the compact one-loop
+exchange phase.  It should not be identified with the rank-one \(SL(2)\)
+phase in \eqref{eq:planar-n4-rank-one-stringbook-aba} unless the vacuum,
+edge-crossing path, and scalar-factor split have all been transported to the
+same convention.
 
 \begin{openproblem}[Derivation of the hexagon expansion]
 \label{op:planar-n4-hexagon-derivation}
@@ -1306,21 +2090,100 @@ anomalous dimension.
 
 For two rays meeting with Euclidean deflection angle \(\varphi\), define
 \(\Gamma_{\rm cusp}(\varphi,\theta)\) by the logarithmic divergence of the
-renormalized cusped line.  At small geometric angle and fixed scalar coupling,
+renormalized cusped line:
+\[
+  \log\langle W_{\rm cusp}\rangle_{\rm ren}
+  =
+  -\Gamma_{\rm cusp}(\varphi)\log\frac{R}{\epsilon}+O(1),
+\]
+where \(R\) is an infrared distance scale and \(\epsilon\) is the short-distance
+cutoff at the cusp.  At small geometric angle and fixed scalar coupling,
 \[
   \Gamma_{\rm cusp}(\varphi)
   =
   -B(\lambda)\varphi^2+O(\varphi^4).
 \]
 The coefficient \(B(\lambda)\) is the Bremsstrahlung function.  On the
-straight-line defect, the displacement operator \(\mathbb D(t)\) has
+straight-line defect, the transverse displacement operators \(\mathbb D_i(t)\)
+are defined by the first shape variation of the line; \(i=1,2,3\) labels
+directions normal to the straight Euclidean line.  Conformal invariance on the
+defect fixes their two-point function to
 \[
-  \langle \mathbb D(t)\mathbb D(0)\rangle
+  \langle \mathbb D_i(t)\mathbb D_j(0)\rangle
   =
-  \frac{C_D}{(t-\ii0)^4},
-  \qquad C_D=12B(\lambda),
+  \frac{C_D\delta_{ij}}{(t-\ii0)^4}.
 \]
-and the radiated power of a slowly accelerating heavy probe is
+
+\begin{proposition}[Displacement normalization of the small cusp]
+\label{prop:displacement-normalization-small-cusp}
+Assume the straight half-BPS line admits the standard defect shape-variation
+Ward identity: for a small transverse deformation \(X^i(t)\) of compact
+support, the universal nonlocal quadratic part of
+\(\log\langle W_X\rangle\) is, with summation over the transverse index \(i\),
+\[
+  \frac12
+  \int\frac{\dd\omega}{2\pi}\,
+  \frac{\pi C_D}{6}|\omega|^3
+  \widehat X^i(\omega)\widehat X^i(-\omega),
+\]
+up to local counterterms polynomial in \(\omega\).  Equivalently, this fixes
+the nonlocal part of the finite-part Fourier transform of the displacement
+two-point distribution,
+\[
+  \operatorname{Fp}\int\dd t\,
+  \frac{\ee^{\ii\omega t}}{(t-\ii0)^4}
+  =
+  \frac{\pi}{6}|\omega|^3
+  +\text{a polynomial in }\omega .
+\]
+Then the small-angle cusp coefficient satisfies
+\[
+  C_D=12B(\lambda).
+\]
+\end{proposition}
+
+\begin{proof}
+Represent a cusp of small angle \(\varphi\) by a deformation of the straight
+line for which
+\[
+  X^1(t)=\varphi t\,\Theta(t)
+\]
+between the scales \(\epsilon\) and \(R\), with a smooth interpolation outside
+that window.  Different smoothings change only power divergences and finite
+terms.  In the logarithmic momentum window \(R^{-1}\ll |\omega|\ll
+\epsilon^{-1}\),
+\[
+  \widehat X^1(\omega)
+  =
+  -\frac{\varphi}{(\omega+\ii0)^2}
+  +\text{endpoint and zero-frequency terms}
+  +O(R^{-1},\epsilon).
+\]
+The endpoint terms depend on the infrared smoothing and give only power
+divergences or finite oscillatory contributions, while the polynomial/contact
+terms and the \(\omega=0\) terms do not affect the coefficient of
+\(\log(R/\epsilon)\).  Hence the universal logarithmic contribution is
+\[
+  \frac12
+  \int_{R^{-1}<|\omega|<\epsilon^{-1}}
+  \frac{\dd\omega}{2\pi}\,
+  \frac{\pi C_D}{6}|\omega|^3
+  \frac{\varphi^2}{\omega^4}
+  =
+  \frac{C_D}{12}\varphi^2\log\frac{R}{\epsilon}.
+\]
+By the definition of the cusp anomalous dimension,
+\[
+  \log\langle W_{\rm cusp}\rangle_{\rm ren}\big|_{\log}
+  =
+  -\Gamma_{\rm cusp}(\varphi)\log\frac{R}{\epsilon}.
+\]
+Using
+\(\Gamma_{\rm cusp}(\varphi)=-B(\lambda)\varphi^2+O(\varphi^4)\) and comparing
+the quadratic logarithmic coefficient gives \(B=C_D/12\).
+\end{proof}
+
+Thus the radiated power of a slowly accelerating heavy probe is
 \[
   \frac{\dd E_{\rm rad}}{\dd t}=2\pi B(\lambda)\,\dot v^2 .
 \]

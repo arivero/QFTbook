@@ -173,6 +173,15 @@ def check_konishi_baxter_polynomial() -> None:
         rhs = (2 * u * u - Fraction(13, 2)) * q_polynomial(u)
         assert_close("Konishi Baxter polynomial identity", lhs, rhs)
 
+    roots = [1 / (2 * math.sqrt(3)), -1 / (2 * math.sqrt(3))]
+    for index, root in enumerate(roots):
+        lhs = ((root + 0.5j) / (root - 0.5j)) ** 2
+        rhs = 1 + 0j
+        for other_index, other in enumerate(roots):
+            if index != other_index:
+                rhs *= (root - other - 1j) / (root - other + 1j)
+        assert_close("Konishi Baxter-to-SL2 Bethe orientation", lhs, rhs)
+
 
 def polynomial_add(left: list[complex], right: list[complex]) -> list[complex]:
     size = max(len(left), len(right))
@@ -416,22 +425,265 @@ def check_zhukovsky_map_and_energy() -> None:
             assert_close("alternate stringbook energy formula", energy_from_difference, energy)
 
 
-def check_crossing_rhs_is_sheet_sensitive() -> None:
-    coupling = 0.2
-    x1_plus, x1_minus = xpm_from_momentum(0.7, coupling)
-    x2_plus, x2_minus = xpm_from_momentum(1.6, coupling)
+def check_zhukovsky_crossing_path_monodromy() -> None:
+    """Track square-root branches around shifted Zhukovsky crossing endpoints."""
 
-    def stringbook_crossing_rhs(a_plus: complex, a_minus: complex) -> complex:
-        return (
-            (x2_plus / x2_minus)
-            * ((x2_plus - a_plus) / (x2_plus - a_minus))
-            * ((x2_minus - 1 / a_plus) / (x2_minus - 1 / a_minus))
+    coupling = 1.0
+    base_u = 3.1 + 0j
+    radius = 0.31
+
+    def segment(start: complex, end: complex, steps: int) -> list[complex]:
+        return [start + (end - start) * index / steps for index in range(1, steps + 1)]
+
+    def endpoint_loop(center: complex) -> list[complex]:
+        start = center + radius
+        path = [base_u]
+        path.extend(segment(base_u, start, 80))
+        path.extend(
+            center + radius * cmath.exp(2j * math.pi * index / 180)
+            for index in range(1, 181)
+        )
+        path.extend(segment(start, base_u, 80))
+        return path
+
+    lower_endpoint = 2 * coupling - 0.5j
+    upper_endpoint = 2 * coupling + 0.5j
+    lower_loop = endpoint_loop(lower_endpoint)
+    upper_loop = endpoint_loop(upper_endpoint)
+    combined_loop = lower_loop + upper_loop[1:]
+
+    def continued_x(path: list[complex], shift: complex) -> complex:
+        z_initial = (path[0] + shift) / coupling
+        x_initial = zhukovsky_outside(path[0] + shift, coupling)
+        root = 2 * x_initial - z_initial
+        for u_value in path[1:]:
+            z_value = (u_value + shift) / coupling
+            candidate = cmath.sqrt(z_value * z_value - 4)
+            if abs(candidate - root) > abs(-candidate - root):
+                candidate = -candidate
+            root = candidate
+        z_final = (path[-1] + shift) / coupling
+        return 0.5 * (z_final + root)
+
+    x_plus = zhukovsky_outside(base_u + 0.5j, coupling)
+    x_minus = zhukovsky_outside(base_u - 0.5j, coupling)
+
+    lower_plus = continued_x(lower_loop, 0.5j)
+    lower_minus = continued_x(lower_loop, -0.5j)
+    assert_close("lower crossing loop flips x+", lower_plus, 1 / x_plus, tol=2.0e-8)
+    assert_close("lower crossing loop leaves x-", lower_minus, x_minus, tol=2.0e-8)
+
+    upper_plus = continued_x(upper_loop, 0.5j)
+    upper_minus = continued_x(upper_loop, -0.5j)
+    assert_close("upper crossing loop leaves x+", upper_plus, x_plus, tol=2.0e-8)
+    assert_close("upper crossing loop flips x-", upper_minus, 1 / x_minus, tol=2.0e-8)
+
+    crossed_plus = continued_x(combined_loop, 0.5j)
+    crossed_minus = continued_x(combined_loop, -0.5j)
+    assert_close("combined crossing path flips x+", crossed_plus, 1 / x_plus, tol=2.0e-8)
+    assert_close("combined crossing path flips x-", crossed_minus, 1 / x_minus, tol=2.0e-8)
+    assert_close(
+        "crossing path preserves xpm shortening",
+        crossed_plus + 1 / crossed_plus - crossed_minus - 1 / crossed_minus,
+        1j / coupling,
+        tol=2.0e-8,
+    )
+    assert_close(
+        "crossing path inverts momentum ratio",
+        crossed_plus / crossed_minus,
+        x_minus / x_plus,
+        tol=2.0e-8,
+    )
+
+    energy = 1 + 2j * coupling * (1 / x_plus - 1 / x_minus)
+    crossed_energy = 1 + 2j * coupling * (1 / crossed_plus - 1 / crossed_minus)
+    assert_close("crossing path flips continued energy", crossed_energy, -energy, tol=2.0e-8)
+
+
+def check_crossing_rhs_is_sheet_sensitive() -> None:
+    for coupling, momentum_1, momentum_2 in (
+        (0.08, 0.45, 1.35),
+        (0.2, 0.7, 1.6),
+        (0.55, 1.1, 2.45),
+    ):
+        x1_plus, x1_minus = xpm_from_momentum(momentum_1, coupling)
+        x2_plus, x2_minus = xpm_from_momentum(momentum_2, coupling)
+
+        def stringbook_crossing_rhs(a_plus: complex, a_minus: complex) -> complex:
+            return (
+                (x2_plus / x2_minus)
+                * ((x2_plus - a_plus) / (x2_plus - a_minus))
+                * ((x2_minus - 1 / a_plus) / (x2_minus - 1 / a_minus))
+            )
+
+        def reciprocal_crossing_rhs(a_plus: complex, a_minus: complex) -> complex:
+            return (
+                (x2_minus / x2_plus)
+                * ((x2_plus - a_minus) / (x2_plus - a_plus))
+                * ((x2_minus - 1 / a_minus) / (x2_minus - 1 / a_plus))
+            )
+
+        physical_rhs = stringbook_crossing_rhs(x1_plus, x1_minus)
+        reciprocal_rhs = reciprocal_crossing_rhs(x1_plus, x1_minus)
+        assert_close(
+            "crossing RHS reciprocal convention",
+            physical_rhs * reciprocal_rhs,
+            1,
+            tol=2.0e-9,
         )
 
-    physical_rhs = stringbook_crossing_rhs(x1_plus, x1_minus)
-    naively_crossed_rhs = stringbook_crossing_rhs(1 / x1_plus, 1 / x1_minus)
-    if abs(physical_rhs - naively_crossed_rhs) < 1.0e-6:
-        raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
+        naively_crossed_rhs = stringbook_crossing_rhs(1 / x1_plus, 1 / x1_minus)
+        if abs(physical_rhs - naively_crossed_rhs) < 1.0e-6:
+            raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
+
+    algebraic_rhs = (
+        Fraction(5, 7)
+        * Fraction(5 - 2, 5 - 3)
+        * (Fraction(7, 1) - Fraction(1, 2))
+        / (Fraction(7, 1) - Fraction(1, 3))
+    )
+    algebraic_naive = (
+        Fraction(5, 7)
+        * (Fraction(5, 1) - Fraction(1, 2))
+        / (Fraction(5, 1) - Fraction(1, 3))
+        * Fraction(7 - 2, 7 - 3)
+    )
+    if algebraic_rhs != Fraction(117, 112):
+        raise AssertionError(f"crossing RHS algebraic sample: {algebraic_rhs}")
+    if algebraic_naive != Fraction(675, 784):
+        raise AssertionError(f"crossing RHS naive algebraic sample: {algebraic_naive}")
+
+
+def check_matrix_crossing_channel_scalar_multiplier() -> None:
+    """Port the stringbook finite L_cross/G_swap crossing-channel check."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+
+    def scalar_split_radicand(
+        first_plus: Fraction,
+        first_minus: Fraction,
+        second_plus: Fraction,
+        second_minus: Fraction,
+    ) -> Fraction:
+        return (
+            (second_minus - first_plus)
+            / (second_plus - first_minus)
+            * (1 - 1 / (second_plus * first_minus))
+            / (1 - 1 / (second_minus * first_plus))
+        )
+
+    physical_radicand = scalar_split_radicand(x1_plus, x1_minus, x2_plus, x2_minus)
+    crossed_radicand = scalar_split_radicand(
+        1 / x1_plus,
+        1 / x1_minus,
+        x2_plus,
+        x2_minus,
+    )
+    crossing_multiplier = (
+        x2_plus
+        / x2_minus
+        * (x2_plus - x1_plus)
+        / (x2_plus - x1_minus)
+        * (x2_minus - 1 / x1_plus)
+        / (x2_minus - 1 / x1_minus)
+    )
+    amplitude_prefactor = (
+        (x2_minus - 1 / x1_minus)
+        * x1_plus
+        * (x1_minus - x2_plus)
+        / ((x2_minus * x1_plus - 1) * (x1_plus - x2_plus))
+    )
+
+    squared_channel_ratio = (
+        physical_radicand
+        * crossed_radicand
+        * crossing_multiplier**2
+        * amplitude_prefactor**2
+    )
+    if squared_channel_ratio != 1:
+        raise AssertionError(f"crossed matrix channel squared ratio: {squared_channel_ratio}")
+
+    inferred_multiplier_squared = 1 / (
+        physical_radicand * crossed_radicand * amplitude_prefactor**2
+    )
+    if inferred_multiplier_squared != crossing_multiplier**2:
+        raise AssertionError(
+            "matrix crossing channel infers the wrong scalar multiplier: "
+            f"{inferred_multiplier_squared}"
+        )
+
+    wrong_reciprocal_ratio = (
+        physical_radicand
+        * crossed_radicand
+        * (1 / crossing_multiplier) ** 2
+        * amplitude_prefactor**2
+    )
+    if wrong_reciprocal_ratio == 1:
+        raise AssertionError("reciprocal scalar crossing multiplier unexpectedly passed")
+
+    branch_ratio = (
+        math.sqrt(float(physical_radicand))
+        * math.sqrt(float(crossed_radicand))
+        * float(crossing_multiplier)
+        * float(amplitude_prefactor)
+    )
+    assert_close("crossed matrix channel positive branch", branch_ratio, 1.0)
+
+
+def check_dressing_charge_antisymmetry_unitarity() -> None:
+    """Check that the charge expansion gives scalar dressing unitarity."""
+
+    coefficients = {
+        (2, 3): 4.0,
+        (2, 5): -0.75,
+        (3, 4): 1.25,
+        (4, 7): -0.2,
+    }
+
+    def charge_from_x(r_value: int, x_plus: complex, x_minus: complex) -> complex:
+        return 1j * (
+            (1 / x_plus) ** (r_value - 1)
+            - (1 / x_minus) ** (r_value - 1)
+        ) / (r_value - 1)
+
+    def theta(
+        left: tuple[complex, complex],
+        right: tuple[complex, complex],
+    ) -> complex:
+        left_charges = {
+            r_value: charge_from_x(r_value, left[0], left[1])
+            for r_value in range(2, 8)
+        }
+        right_charges = {
+            r_value: charge_from_x(r_value, right[0], right[1])
+            for r_value in range(2, 8)
+        }
+        value = 0j
+        for (r_value, s_value), coefficient in coefficients.items():
+            value -= coefficient * (
+                left_charges[r_value] * right_charges[s_value]
+                - left_charges[s_value] * right_charges[r_value]
+            )
+        return value
+
+    for coupling, momentum_1, momentum_2 in (
+        (0.08, 0.6, 1.4),
+        (0.2, 0.9, 2.1),
+        (0.45, 1.2, 2.7),
+    ):
+        x1 = xpm_from_momentum(momentum_1, coupling)
+        x2 = xpm_from_momentum(momentum_2, coupling)
+        theta_12 = theta(x1, x2)
+        theta_21 = theta(x2, x1)
+        assert_close("dressing charge antisymmetry", theta_12 + theta_21, 0)
+
+        sigma_12 = cmath.exp(1j * theta_12)
+        sigma_21 = cmath.exp(1j * theta_21)
+        assert_close("dressing scalar unitarity", sigma_12 * sigma_21, 1)
+        assert_close("squared dressing scalar unitarity", (sigma_12 * sigma_21) ** 2, 1)
 
 
 def check_dhm_weak_dressing_coefficients() -> None:
@@ -525,6 +777,18 @@ def check_dhm_weak_dressing_coefficients() -> None:
                 f"DHM residue formula disagrees with closed weak formula: {prefactor} != {closed}"
             )
 
+    for power in (3, 5, 7, 9, 11):
+        for r_value in range(2, 8):
+            for s_value in range(r_value + 1, 10):
+                prefactor = residue_prefactor(power, r_value, s_value)
+                closed = closed_weak_prefactor(power - 1, r_value, s_value)
+                if prefactor != closed:
+                    raise AssertionError(
+                        "DHM closed weak coefficient formula failed "
+                        f"N={power}, r={r_value}, s={s_value}: "
+                        f"{prefactor} != {closed}"
+                    )
+
     for r_value, s_value in ((2, 4), (3, 5), (4, 6)):
         for power in (3, 5, 7, 9):
             if residue_prefactor(power, r_value, s_value) != 0:
@@ -556,6 +820,365 @@ def check_dhm_weak_dressing_coefficients() -> None:
         64,
         tol=5.0e-5,
     )
+
+
+def check_dhm_local_residue_continuation() -> None:
+    """Check DHM local crossing residue signs and the double-residue contact term."""
+
+    delta_terms = Counter({(1, 0): 1, (-1, 0): 1, (0, 1): -1, (0, -1): -1})
+
+    def multiply(
+        left: Counter[tuple[int, int]],
+        right: Counter[tuple[int, int]],
+    ) -> Counter[tuple[int, int]]:
+        result: Counter[tuple[int, int]] = Counter()
+        for (left_z, left_w), left_coefficient in left.items():
+            for (right_z, right_w), right_coefficient in right.items():
+                result[(left_z + right_z, left_w + right_w)] += (
+                    left_coefficient * right_coefficient
+                )
+        return result
+
+    kernel: Counter[tuple[int, int]] = Counter({(0, 0): 1})
+    for _ in range(3):
+        kernel = multiply(kernel, delta_terms)
+
+    def cauchy_factor(power: int, variable: complex, inside: bool) -> complex:
+        if inside:
+            return -(variable**power) if power >= 0 else 0j
+        return variable**power if power <= -1 else 0j
+
+    def raw_integral_at(
+        x_value: complex,
+        y_value: complex,
+        x_inside: bool,
+        y_inside: bool,
+    ) -> complex:
+        bare_value = sum(
+            coefficient
+            * cauchy_factor(z_power, x_value, x_inside)
+            * cauchy_factor(w_power, y_value, y_inside)
+            for (z_power, w_power), coefficient in kernel.items()
+        )
+        return -1j * bare_value
+
+    def kernel_value_at(x_value: complex, y_value: complex) -> complex:
+        return sum(
+            coefficient * x_value**z_power * y_value**w_power
+            for (z_power, w_power), coefficient in kernel.items()
+        )
+
+    x_value = 0.73 + 0.29j
+    y_value = -0.68 + 0.24j
+
+    def raw_integral(x_inside: bool, y_inside: bool) -> complex:
+        return raw_integral_at(x_value, y_value, x_inside, y_inside)
+
+    outside_outside = raw_integral(False, False)
+    inside_x_outside_y = raw_integral(True, False)
+    outside_x_inside_y = raw_integral(False, True)
+    inside_inside = raw_integral(True, True)
+
+    psi_x_outside_y = inside_x_outside_y - outside_outside
+    assert_close(
+        "DHM x-crossing residue restores outside branch",
+        inside_x_outside_y - psi_x_outside_y,
+        outside_outside,
+    )
+
+    psi_y_outside_x = outside_outside - outside_x_inside_y
+    assert_close(
+        "DHM y-crossing residue restores outside branch",
+        outside_x_inside_y + psi_y_outside_x,
+        outside_outside,
+    )
+
+    psi_x_inside_y = inside_inside - outside_x_inside_y
+    psi_y_inside_x = inside_x_outside_y - inside_inside
+    contact = outside_x_inside_y + inside_x_outside_y - inside_inside - outside_outside
+    assert_close(
+        "DHM double-residue contact sign",
+        contact,
+        1j * kernel_value_at(x_value, y_value),
+    )
+    assert_close(
+        "DHM double crossing with contact restores outside branch",
+        inside_inside - psi_x_inside_y + psi_y_inside_x - contact,
+        outside_outside,
+    )
+    without_contact = inside_inside - psi_x_inside_y + psi_y_inside_x
+    if abs(without_contact - outside_outside) < 1.0e-9:
+        raise AssertionError("DHM double crossing unexpectedly worked without contact term")
+
+    x1_plus = 0.72 + 0.13j
+    x1_minus = -0.61 + 0.21j
+    x2_plus = 1.31 - 0.17j
+    x2_minus = -1.44 - 0.19j
+
+    def psi_x_outside_second(x_value: complex, y_value: complex) -> complex:
+        return raw_integral_at(x_value, y_value, True, False) - raw_integral_at(
+            x_value, y_value, False, False
+        )
+
+    def crossed_first_chi(x_value: complex, y_value: complex) -> complex:
+        return raw_integral_at(x_value, y_value, True, False) - psi_x_outside_second(
+            x_value, y_value
+        )
+
+    raw_crossed_theta = (
+        raw_integral_at(x1_plus, x2_plus, True, False)
+        - raw_integral_at(x1_plus, x2_minus, True, False)
+        - raw_integral_at(x1_minus, x2_plus, True, False)
+        + raw_integral_at(x1_minus, x2_minus, True, False)
+    )
+    residue_theta = (
+        -psi_x_outside_second(x1_plus, x2_plus)
+        + psi_x_outside_second(x1_plus, x2_minus)
+        + psi_x_outside_second(x1_minus, x2_plus)
+        - psi_x_outside_second(x1_minus, x2_minus)
+    )
+    crossed_theta = (
+        crossed_first_chi(x1_plus, x2_plus)
+        - crossed_first_chi(x1_plus, x2_minus)
+        - crossed_first_chi(x1_minus, x2_plus)
+        + crossed_first_chi(x1_minus, x2_minus)
+    )
+    outside_branch_theta = (
+        raw_integral_at(x1_plus, x2_plus, False, False)
+        - raw_integral_at(x1_plus, x2_minus, False, False)
+        - raw_integral_at(x1_minus, x2_plus, False, False)
+        + raw_integral_at(x1_minus, x2_minus, False, False)
+    )
+    assert_close(
+        "DHM crossed BES theta residue combination",
+        crossed_theta,
+        raw_crossed_theta + residue_theta,
+    )
+    assert_close(
+        "DHM crossed BES theta restores outside branch termwise",
+        crossed_theta,
+        outside_branch_theta,
+    )
+    wrong_residue_theta = (
+        psi_x_outside_second(x1_plus, x2_plus)
+        - psi_x_outside_second(x1_plus, x2_minus)
+        - psi_x_outside_second(x1_minus, x2_plus)
+        + psi_x_outside_second(x1_minus, x2_minus)
+    )
+    if abs(raw_crossed_theta + wrong_residue_theta - outside_branch_theta) < 1.0e-9:
+        raise AssertionError("DHM crossed BES theta signs unexpectedly worked when reversed")
+
+
+def check_dhm_gamma_pole_lattice_and_admissibility() -> None:
+    """Check the DHM Gamma-kernel pole lattice used in crossing hypotheses."""
+
+    coupling = 0.6
+
+    for pole_level in range(1, 6):
+        delta_plus = 1j * pole_level / coupling
+        delta_minus = -1j * pole_level / coupling
+        assert_close(
+            "DHM numerator Gamma pole lattice",
+            1 + 1j * coupling * delta_plus,
+            1 - pole_level,
+        )
+        assert_close(
+            "DHM denominator regular at numerator pole",
+            1 - 1j * coupling * delta_plus,
+            1 + pole_level,
+        )
+        assert_close(
+            "DHM denominator Gamma pole lattice",
+            1 - 1j * coupling * delta_minus,
+            1 - pole_level,
+        )
+        assert_close(
+            "DHM numerator regular at denominator pole",
+            1 + 1j * coupling * delta_minus,
+            1 + pole_level,
+        )
+
+    def delta_value(x_value: complex, y_value: complex) -> complex:
+        return x_value + 1 / x_value - y_value - 1 / y_value
+
+    def zhukovsky_roots(total: complex) -> tuple[complex, complex]:
+        root = cmath.sqrt(total * total - 4)
+        return 0.5 * (total + root), 0.5 * (total - root)
+
+    y_value = 1.37 + 0.21j
+    for sign in (1, -1):
+        for pole_level in (1, 3, 5):
+            target_delta = sign * 1j * pole_level / coupling
+            target_sum = y_value + 1 / y_value + target_delta
+            x_value = zhukovsky_roots(target_sum)[0]
+            assert_close(
+                "DHM endpoint pole divisor realization",
+                delta_value(x_value, y_value),
+                target_delta,
+            )
+
+    def pole_clearance(delta: complex, max_level: int = 8) -> float:
+        return min(
+            min(
+                abs(delta - 1j * level / coupling),
+                abs(delta + 1j * level / coupling),
+            )
+            for level in range(1, max_level + 1)
+        )
+
+    safe_pairs = (
+        (2 + 0j, 5 + 0j),
+        (3 + 0j, 7 + 0j),
+        (0.5 + 0j, 5 + 0j),
+        (1 / 3 + 0j, 7 + 0j),
+        (0.72 + 0.13j, 1.31 - 0.17j),
+        (-0.61 + 0.21j, -1.44 - 0.19j),
+    )
+    for x_value, y_value in safe_pairs:
+        if pole_clearance(delta_value(x_value, y_value)) <= 1.0e-3:
+            raise AssertionError("DHM admissible sample lies on the Gamma pole lattice")
+
+    unsafe_delta = 1j * 4 / coupling
+    assert_close("DHM pole clearance vanishes on pole lattice", pole_clearance(unsafe_delta), 0)
+
+
+def check_su2c_matrix_amplitudes_and_unitarity() -> None:
+    """Port finite checks from the stringbook su(2|2) S-matrix notebook."""
+
+    def amplitudes(
+        x1_plus: complex,
+        x1_minus: complex,
+        x2_plus: complex,
+        x2_minus: complex,
+        a1: complex,
+        a2: complex,
+        coupling: float,
+        scalar: complex = 1 + 0j,
+    ) -> tuple[complex, complex, complex, complex, complex, complex, complex, complex, complex, complex]:
+        denominator = x2_minus - x1_plus
+        a12 = scalar * (x2_plus - x1_minus) / denominator
+        b12 = a12 * (
+            1
+            - 2
+            * (x2_plus - x1_plus)
+            / (x2_plus - x1_minus)
+            * (x2_minus - 1 / x1_plus)
+            / (x2_minus - 1 / x1_minus)
+        )
+        c12 = (
+            scalar
+            * 2
+            / coupling
+            * a1
+            * a2
+            / (x1_minus * x2_minus - 1)
+            * (x2_plus - x1_plus)
+            / denominator
+        )
+        d12 = -scalar
+        e12 = -scalar * (
+            1
+            - 2
+            * (x2_minus - x1_minus)
+            / denominator
+            * (x2_plus - 1 / x1_minus)
+            / (x2_plus - 1 / x1_plus)
+        )
+        f12 = (
+            -scalar
+            * 2
+            * coupling
+            / (a1 * a2)
+            * (x1_plus - x1_minus)
+            * (x2_plus - x2_minus)
+            / (x1_plus * x2_plus - 1)
+            * (x2_minus - x1_minus)
+            / denominator
+        )
+        g12 = scalar * (x2_plus - x1_plus) / denominator
+        h12 = scalar * (a1 / a2) * (x2_plus - x2_minus) / denominator
+        k12 = scalar * (a2 / a1) * (x1_plus - x1_minus) / denominator
+        l12 = scalar * (x2_minus - x1_minus) / denominator
+        return a12, b12, c12, d12, e12, f12, g12, h12, k12, l12
+
+    def bosonic_block(amplitude_data: tuple[complex, ...]) -> list[list[complex]]:
+        a12, b12, c12, d12, e12, f12, _g12, _h12, _k12, _l12 = amplitude_data
+        return [
+            [(d12 - e12) / 2, (d12 + e12) / 2, -f12 / 2, f12 / 2],
+            [(d12 + e12) / 2, (d12 - e12) / 2, f12 / 2, -f12 / 2],
+            [-c12 / 2, c12 / 2, (a12 - b12) / 2, (a12 + b12) / 2],
+            [c12 / 2, -c12 / 2, (a12 + b12) / 2, (a12 - b12) / 2],
+        ]
+
+    def mixed_block(amplitude_data: tuple[complex, ...]) -> list[list[complex]]:
+        _a12, _b12, _c12, _d12, _e12, _f12, g12, h12, k12, l12 = amplitude_data
+        return [[h12, g12], [l12, k12]]
+
+    def matrix_product(left: list[list[complex]], right: list[list[complex]]) -> list[list[complex]]:
+        return [
+            [
+                sum(left[row][middle] * right[middle][col] for middle in range(len(right)))
+                for col in range(len(right[0]))
+            ]
+            for row in range(len(left))
+        ]
+
+    def identity_matrix(size: int) -> list[list[complex]]:
+        return [[1 if row == col else 0 for col in range(size)] for row in range(size)]
+
+    samples = (
+        (0.31, 0.6, 1.4, 1.2 + 0.3j, -0.7 + 0.8j),
+        (0.47, 1.2, 2.1, -0.4 + 1.1j, 1.3 - 0.2j),
+    )
+    for coupling, p1, p2, a1, a2 in samples:
+        x1_plus, x1_minus = xpm_from_momentum(p1, coupling)
+        x2_plus, x2_minus = xpm_from_momentum(p2, coupling)
+
+        amp12 = amplitudes(x1_plus, x1_minus, x2_plus, x2_minus, a1, a2, coupling)
+        amp21 = amplitudes(x2_plus, x2_minus, x1_plus, x1_minus, a2, a1, coupling)
+        a12, _b12, _c12, _d12, _e12, _f12, g12, h12, k12, l12 = amp12
+
+        assert_close("su(2|2)c Q-intertwiner first amplitude relation", a12, a1 * k12 / a2 + g12)
+        assert_close("su(2|2)c Q-intertwiner second amplitude relation", a12, l12 + a2 * h12 / a1)
+
+        for block_name, block_function, size in (
+            ("bosonic", bosonic_block, 4),
+            ("mixed", mixed_block, 2),
+        ):
+            product = matrix_product(block_function(amp12), block_function(amp21))
+            expected = identity_matrix(size)
+            for row in range(size):
+                for col in range(size):
+                    assert_close(
+                        f"su(2|2)c {block_name} matrix unitarity",
+                        product[row][col],
+                        expected[row][col],
+                        tol=1.0e-12,
+                    )
+
+        scalar_split = cmath.sqrt(
+            (x2_minus - x1_plus)
+            / (x2_plus - x1_minus)
+            * (1 - 1 / (x2_plus * x1_minus))
+            / (1 - 1 / (x2_minus * x1_plus))
+        )
+        compact_a12 = amplitudes(
+            x1_plus,
+            x1_minus,
+            x2_plus,
+            x2_minus,
+            a1,
+            a2,
+            coupling,
+            scalar_split,
+        )[0]
+        su2_rational_factor = (
+            (x2_plus - x1_minus)
+            / (x2_minus - x1_plus)
+            * (1 - 1 / (x2_plus * x1_minus))
+            / (1 - 1 / (x2_minus * x1_plus))
+        )
+        assert_close("su(2|2)c scalar split gives compact SU(2) factor", compact_a12**2, su2_rational_factor)
 
 
 def check_su2c_single_level_ii_nesting_step() -> None:
@@ -773,6 +1396,137 @@ def check_su2c_nested_bethe_yang_frame_factors() -> None:
     assert_close("nested K^III count", n2 + n4, 9)
 
 
+def check_finite_density_aba_counting_normalization() -> None:
+    """Check the L-normalized counting function used at finite magnon density."""
+
+    density_fraction = 0.6
+
+    def momentum_derivative(u_value: float) -> float:
+        return 1 + u_value * u_value
+
+    def phase(u_value: float, v_value: float) -> float:
+        difference = u_value - v_value
+        return difference + difference**3 / 3
+
+    def phase_derivative(u_value: float, v_value: float) -> float:
+        difference = u_value - v_value
+        return 1 + difference * difference
+
+    def continuum_counting_derivative(u_value: float) -> float:
+        uniform_average = 1 + u_value * u_value + Fraction(1, 3)
+        return momentum_derivative(u_value) + density_fraction * float(uniform_average)
+
+    def roots_for_length(length: int) -> list[float]:
+        root_count = int(round(density_fraction * length))
+        return [-1 + (index + 0.5) * 2 / root_count for index in range(root_count)]
+
+    for u_value in (-0.4, 0.2, 0.9):
+        roots = roots_for_length(3000)
+        finite_derivative = momentum_derivative(u_value) + sum(
+            phase_derivative(u_value, root) for root in roots
+        ) / 3000
+        continuum_derivative = continuum_counting_derivative(u_value)
+        assert_close(
+            "finite-density ABA counting derivative",
+            finite_derivative,
+            continuum_derivative,
+            tol=1.0e-7,
+        )
+
+        unit_mass_derivative = momentum_derivative(u_value) + float(
+            1 + u_value * u_value + Fraction(1, 3)
+        )
+        if abs(finite_derivative - continuum_derivative) >= 0.25 * abs(
+            finite_derivative - unit_mass_derivative
+        ):
+            raise AssertionError("ABA counting used the wrong empirical-measure mass")
+
+        small_interval = 1.0e-5
+        finite_counting_jump = (
+            small_interval * momentum_derivative(u_value)
+            + sum(
+                phase(u_value + small_interval, root) - phase(u_value, root)
+                for root in roots
+            )
+            / 3000
+        )
+        assert_close(
+            "finite-density ABA level-density normalization",
+            finite_counting_jump / (2 * math.pi * small_interval),
+            continuum_derivative / (2 * math.pi),
+            tol=5.0e-6,
+        )
+
+
+def check_rank_one_aba_weak_orientation() -> None:
+    """Check the stringbook rank-one ABA weak limit and reciprocal SU(2) phase."""
+
+    def x_shifted(rapidity: complex, shift_sign: int, coupling: float) -> complex:
+        return zhukovsky_outside(rapidity + shift_sign * 0.5j, coupling)
+
+    coupling = 1.0e-4
+    for rapidity in (0.7, -1.3, 2.2 + 0.4j):
+        for shift_sign in (1, -1):
+            shifted = rapidity + shift_sign * 0.5j
+            x_value = x_shifted(rapidity, shift_sign, coupling)
+            expansion = shifted / coupling - coupling / shifted
+            assert_close(
+                "rank-one xpm weak branch expansion",
+                x_value / expansion,
+                1,
+                tol=1.0e-12,
+            )
+
+        x_plus = x_shifted(rapidity, 1, coupling)
+        x_minus = x_shifted(rapidity, -1, coupling)
+        assert_close(
+            "rank-one weak momentum ratio",
+            x_plus / x_minus,
+            (rapidity + 0.5j) / (rapidity - 0.5j),
+            tol=5.0e-8,
+        )
+        anomalous_energy = 2j * coupling * (1 / x_plus - 1 / x_minus)
+        assert_close(
+            "rank-one weak energy normalization",
+            anomalous_energy / (coupling * coupling),
+            2 / (rapidity * rapidity + 0.25),
+            tol=2.0e-7,
+        )
+
+    for rapidity_j, rapidity_k in ((0.7, -1.1), (1.4, 0.2), (-0.8 + 0.3j, 1.6 - 0.2j)):
+        xj_plus = x_shifted(rapidity_j, 1, coupling)
+        xj_minus = x_shifted(rapidity_j, -1, coupling)
+        xk_plus = x_shifted(rapidity_k, 1, coupling)
+        xk_minus = x_shifted(rapidity_k, -1, coupling)
+        first_factor = (xj_minus - xk_plus) / (xj_plus - xk_minus)
+        second_factor = (1 - 1 / (xj_plus * xk_minus)) / (
+            1 - 1 / (xj_minus * xk_plus)
+        )
+        stringbook_factor = first_factor * second_factor
+        sl2_factor = (rapidity_j - rapidity_k - 1j) / (
+            rapidity_j - rapidity_k + 1j
+        )
+        su2_factor = 1 / sl2_factor
+        assert_close(
+            "rank-one stringbook ABA weak SL2 orientation",
+            stringbook_factor / sl2_factor,
+            1,
+            tol=5.0e-8,
+        )
+        assert_close(
+            "rank-one reciprocal compact SU2 orientation",
+            (1 / stringbook_factor) / su2_factor,
+            1,
+            tol=5.0e-8,
+        )
+        assert_close(
+            "rank-one dressingless second rational factor starts at one",
+            second_factor,
+            1,
+            tol=5.0e-8,
+        )
+
+
 def check_weak_dispersion_expansion() -> None:
     g = 1.0e-4
     for momentum in (0.4, 1.2, 2.7):
@@ -849,6 +1603,110 @@ def check_sl2_large_spin_cusp_resolvent() -> None:
         )
 
 
+def check_bes_zhukovsky_fourier_transform_signs() -> None:
+    """Check the signed-t Bessel convention in the BES Fourier transform."""
+
+    def bessel_j_series(order: int, max_degree: int) -> dict[int, Fraction]:
+        series: dict[int, Fraction] = {}
+        if order > max_degree:
+            return series
+        for index in range((max_degree - order) // 2 + 1):
+            degree = order + 2 * index
+            coefficient = Fraction(
+                (-1) ** index,
+                (2**degree)
+                * math.factorial(index)
+                * math.factorial(index + order),
+            )
+            series[degree] = coefficient
+        return series
+
+    max_degree = 16
+    for order in range(1, 8):
+        j_minus = bessel_j_series(order - 1, max_degree)
+        j_order = bessel_j_series(order, max_degree)
+        j_plus = bessel_j_series(order + 1, max_degree)
+        recurrence_lhs = {
+            degree: j_minus.get(degree, 0) + j_plus.get(degree, 0)
+            for degree in set(j_minus) | set(j_plus)
+        }
+        recurrence_rhs = {
+            degree - 1: 2 * order * coefficient
+            for degree, coefficient in j_order.items()
+        }
+        for degree in range(max_degree):
+            if recurrence_lhs.get(degree, 0) != recurrence_rhs.get(degree, 0):
+                raise AssertionError(f"BES Fourier Bessel recurrence failed for m={order}")
+
+        plus_cut_phase = -1j * ((-1j) ** (order - 1))
+        if abs(plus_cut_phase - (-1j) ** order) > 0:
+            raise AssertionError(f"BES x+ contour phase failed for m={order}")
+
+        lower_signed_t_phase = ((-1) ** order) * ((-1j) ** order)
+        if abs(lower_signed_t_phase - (1j) ** order) > 0:
+            raise AssertionError(f"BES x- signed-t phase failed for m={order}")
+
+        lower_abs_t_phase = -((-1j) ** order)
+        if order % 2 == 0 and abs(lower_abs_t_phase - lower_signed_t_phase) == 0:
+            raise AssertionError("absolute-value lower transform failed to expose parity sign")
+
+
+def check_bes_weak_scaling_function() -> None:
+    """Check the weak BES scaling-function expansion through g^6."""
+
+    # BES equation in the normalization used in Chapter 13:
+    # sigma = t/(e^t-1) [K(2gt,0) - 4 g^2 int K(2gt,2gt') sigma(t') dt'].
+    # K(2gt,0) = 1/2 - g^2 t^2/4 + O(g^4),
+    # K(2gt,2gt') = 1/2 + O(g^2).
+    integral_t_over_bose = Fraction(1, 1)  # coefficient of pi^2: int t/(e^t-1)=pi^2/6
+    integral_t3_over_bose = Fraction(1, 1)  # coefficient of pi^4: int t^3/(e^t-1)=pi^4/15
+
+    sigma0_integral_coeff_pi2 = Fraction(1, 2) * Fraction(1, 6) * integral_t_over_bose
+    if sigma0_integral_coeff_pi2 != Fraction(1, 12):
+        raise AssertionError("BES sigma0 integral normalization failed")
+
+    # sigma_0=t/[2(e^t-1)]
+    # sigma_1= - t/(e^t-1) (t^2/4 + pi^2/6)
+    convolution_source_coeff_pi2 = 4 * Fraction(1, 2) * sigma0_integral_coeff_pi2
+    if convolution_source_coeff_pi2 != Fraction(1, 6):
+        raise AssertionError("BES leading convolution source failed")
+
+    a0_coeff_pi2 = Fraction(1, 2) * sigma0_integral_coeff_pi2
+    if a0_coeff_pi2 != Fraction(1, 24):
+        raise AssertionError("BES A0 coefficient failed")
+
+    # A1 = int [sigma1/2 - sigma0 t^2/4].
+    sigma1_half_t3_coeff_pi4 = -Fraction(1, 8) * Fraction(1, 15) * integral_t3_over_bose
+    sigma1_half_pi2_t_coeff_pi4 = -Fraction(1, 12) * Fraction(1, 6) * integral_t_over_bose
+    bessel_correction_coeff_pi4 = -Fraction(1, 8) * Fraction(1, 15) * integral_t3_over_bose
+    a1_coeff_pi4 = (
+        sigma1_half_t3_coeff_pi4
+        + sigma1_half_pi2_t_coeff_pi4
+        + bessel_correction_coeff_pi4
+    )
+    if a1_coeff_pi4 != -Fraction(11, 360):
+        raise AssertionError(f"BES A1 coefficient failed: {a1_coeff_pi4}")
+
+    f_g2 = Fraction(8)
+    f_g4_coeff_pi2 = -64 * a0_coeff_pi2
+    f_g6_coeff_pi4 = -64 * a1_coeff_pi4
+    if (f_g2, f_g4_coeff_pi2, f_g6_coeff_pi4) != (
+        Fraction(8),
+        -Fraction(8, 3),
+        Fraction(88, 45),
+    ):
+        raise AssertionError("BES weak scaling-function coefficients failed")
+
+    # Leading dressing contribution to K(2gt,0) from c_{2,3} J_2(2gt)/(gt)
+    # carries powers g^3 * g^2 / g = g^4 in sigma, hence g^8 in f(g).
+    driving_dressing_power = 3 + 2 - 1
+    kernel_dressing_power = 3 + 2 + 1 - 2
+    if driving_dressing_power != 4 or kernel_dressing_power != 4:
+        raise AssertionError("BES dressing-kernel power counting failed")
+    if 4 + driving_dressing_power != 8:
+        raise AssertionError("BES dressing contribution should first enter f(g) at g^8")
+
+
 def check_bound_state_dispersion() -> None:
     for coupling in (0.1, 0.4):
         for charge in (1, 2, 5):
@@ -878,7 +1736,7 @@ def check_mirror_double_wick_dispersion() -> None:
                     charge * charge + mirror_momentum * mirror_momentum,
                 )
 
-                physical_momentum = -1j * mirror_energy
+                physical_momentum = 1j * mirror_energy
                 squared_physical_energy = (
                     charge * charge
                     + 16 * coupling * coupling * cmath.sin(physical_momentum / 2) ** 2
@@ -888,6 +1746,51 @@ def check_mirror_double_wick_dispersion() -> None:
                     squared_physical_energy,
                     -mirror_momentum * mirror_momentum,
                 )
+
+
+def check_mirror_zhukovsky_sheet_parametrization() -> None:
+    """Check the stringbook mirror sheet and momentum sign convention."""
+
+    for coupling in (0.08, 0.3, 0.9):
+        for charge in (1, 2, 5):
+            for mirror_momentum in (-1.4, 0.0, 2.3):
+                radius = math.sqrt(charge * charge + mirror_momentum * mirror_momentum)
+                mirror_energy = 2 * math.asinh(radius / (4 * coupling))
+                sheet_radius = math.exp(-mirror_energy / 2)
+                sheet_phase = (mirror_momentum - 1j * charge) / radius
+                x_plus = sheet_radius * sheet_phase
+                x_minus = sheet_phase / sheet_radius
+
+                if not abs(x_plus) < 1 < abs(x_minus):
+                    raise AssertionError("mirror x^+ must be inside and x^- outside")
+                assert_close(
+                    "mirror x-/x+ energy",
+                    cmath.log(x_minus / x_plus),
+                    mirror_energy,
+                )
+                assert_close(
+                    "mirror bound-state shortening",
+                    x_plus + 1 / x_plus - x_minus - 1 / x_minus,
+                    1j * charge / coupling,
+                )
+                assert_close(
+                    "stringbook mirror momentum sign",
+                    -charge - 2j * coupling * (x_plus - x_minus),
+                    1j * mirror_momentum,
+                )
+
+    weak_coupling = 1.0e-4
+    for charge in (1, 3):
+        for mirror_momentum in (0.5, 1.7):
+            radius_squared = charge * charge + mirror_momentum * mirror_momentum
+            mirror_energy = 2 * math.asinh(math.sqrt(radius_squared) / (4 * weak_coupling))
+            leading_boltzmann = 4 * weak_coupling * weak_coupling / radius_squared
+            assert_close(
+                "weak mirror Boltzmann leading order",
+                math.exp(-mirror_energy) / leading_boltzmann,
+                1.0,
+                tol=1.0e-7,
+            )
 
 
 def check_mirror_auxiliary_string_arrays() -> None:
@@ -1124,6 +2027,88 @@ def check_one_species_tba_variation() -> None:
         )
 
 
+def check_excited_tba_contour_deformation_residues() -> None:
+    """Check the source and energy signs from excited-state contour residues."""
+
+    spectator = 1.1 + 0.3j
+    width = 0.7
+    crossed_roots = [0.2 + 0.18j, -0.35 + 0.22j]
+
+    def scattering_factor(u_value: complex, v_value: complex) -> complex:
+        return (u_value - v_value + 1j * width) / (u_value - v_value - 1j * width)
+
+    def logarithmic_zero_derivative(v_value: complex) -> complex:
+        return sum(1 / (v_value - root) for root in crossed_roots)
+
+    def mirror_momentum(v_value: complex) -> complex:
+        return 0.5 * v_value * v_value + (0.2 - 0.1j) * v_value
+
+    def contour_integral(
+        integrand, center: complex, radius: float, samples: int = 4096
+    ) -> complex:
+        total = 0j
+        step = 2 * math.pi / samples
+        for index in range(samples):
+            angle = (index + 0.5) * step
+            tangent = cmath.exp(1j * angle)
+            point = center + radius * tangent
+            total += integrand(point) * 1j * radius * tangent * step
+        return total
+
+    source_loop = 0j
+    energy_loop = 0j
+    for root in crossed_roots:
+        source_loop += contour_integral(
+            lambda value: -cmath.log(scattering_factor(spectator, value))
+            * logarithmic_zero_derivative(value)
+            / (2j * math.pi),
+            root,
+            1.0e-3,
+        )
+        energy_loop += contour_integral(
+            lambda value: mirror_momentum(value)
+            * logarithmic_zero_derivative(value)
+            / (2 * math.pi),
+            root,
+            1.0e-3,
+        )
+
+    source_residue = -sum(
+        cmath.log(scattering_factor(spectator, root)) for root in crossed_roots
+    )
+    assert_close(
+        "excited TBA source residue sign",
+        source_loop,
+        source_residue,
+        tol=1.0e-10,
+    )
+    product_source = 1
+    for root in crossed_roots:
+        product_source /= scattering_factor(spectator, root)
+    assert_close(
+        "excited TBA product source orientation",
+        cmath.exp(source_residue),
+        product_source,
+        tol=1.0e-12,
+    )
+
+    energy_residue = sum(1j * mirror_momentum(root) for root in crossed_roots)
+    assert_close(
+        "excited TBA energy residue sign",
+        energy_loop,
+        energy_residue,
+        tol=1.0e-10,
+    )
+
+    for physical_energy in (0.6, 1.4, 2.2):
+        continued_mirror_momentum = -1j * physical_energy
+        assert_close(
+            "inverse mirror energy residue",
+            1j * continued_mirror_momentum,
+            physical_energy,
+        )
+
+
 def check_mirror_wing_kernel_inverse() -> None:
     """Check the A-infinity auxiliary-string kernel inverse used for the Y-system."""
 
@@ -1216,6 +2201,51 @@ def check_mirror_wing_kernel_inverse() -> None:
         )
 
 
+def check_y_system_shift_source_factor() -> None:
+    """Check local shifted zero-pole source factors for analytic Y-systems."""
+
+    def source_factor(u_value: complex, root: complex) -> complex:
+        return (u_value - root + 0.5j) / (u_value - root - 0.5j)
+
+    for u_value, root in (
+        (0.3 + 0.2j, -0.7 + 0.1j),
+        (1.4 - 0.15j, 0.2 - 0.35j),
+        (-0.9 + 0.4j, 0.6 + 0.05j),
+    ):
+        shifted_product = source_factor(u_value + 0.5j, root) * source_factor(
+            u_value - 0.5j,
+            root,
+        )
+        rational_source = (u_value - root + 1j) / (u_value - root - 1j)
+        assert_close("Y-system shifted source factor", shifted_product, rational_source)
+
+        inverse_shifted_product = (
+            1 / source_factor(u_value + 0.5j, root)
+            / source_factor(u_value - 0.5j, root)
+        )
+        assert_close(
+            "Y-system inverse shifted source factor",
+            inverse_shifted_product,
+            1 / rational_source,
+        )
+
+    u_value = 0.8 - 0.25j
+    roots_with_powers = (
+        (-0.4 + 0.1j, 2),
+        (0.5 - 0.3j, -1),
+        (1.2 + 0.2j, 1),
+    )
+    shifted_product = 1 + 0j
+    rational_product = 1 + 0j
+    for root, power in roots_with_powers:
+        shifted_product *= (
+            source_factor(u_value + 0.5j, root)
+            * source_factor(u_value - 0.5j, root)
+        ) ** power
+        rational_product *= ((u_value - root + 1j) / (u_value - root - 1j)) ** power
+    assert_close("Y-system finite source product", shifted_product, rational_product)
+
+
 def check_konishi_four_loop_wrapping_arithmetic() -> None:
     # ABA coefficient: -(2820 + 288 zeta_3).
     # Wrapping coefficient: 324 + 864 zeta_3 - 1440 zeta_5.
@@ -1262,6 +2292,58 @@ def konishi_wrapping_q_integrand(q_rapidity: float, charge: int) -> float:
     numerator = 147456 * charge2 * (3 * q2 + 3 * charge2 - 4) ** 2
     denominator = (q2 + charge2) ** 4 * b_minus * b_plus
     return -numerator / (2 * math.pi * denominator)
+
+
+def konishi_wrapping_q_rational_density(q_rapidity: Fraction, charge: int) -> Fraction:
+    """Rationalized Y_Q^(0)(q/2) before the -dq/(2 pi) measure."""
+
+    q = q_rapidity
+    q2 = q * q
+    charge_fraction = Fraction(charge)
+    charge2 = charge_fraction * charge_fraction
+    b_minus = (
+        9 * q2 * q2
+        + 6 * (3 * (charge_fraction - 2) * charge_fraction + 2) * q2
+        + (3 * (charge_fraction - 2) * charge_fraction + 4) ** 2
+    )
+    b_plus = (
+        9 * q2 * q2
+        + 6 * (3 * charge_fraction * (charge_fraction + 2) + 2) * q2
+        + (3 * charge_fraction * (charge_fraction + 2) + 4) ** 2
+    )
+    numerator = 147456 * charge2 * (3 * q2 + 3 * charge2 - 4) ** 2
+    denominator = (q2 + charge2) ** 4 * b_minus * b_plus
+    return numerator / denominator
+
+
+def konishi_wrapping_b_coefficients(charge: int, sign: int) -> tuple[Fraction, Fraction, Fraction]:
+    """Coefficients of B_Q^sign as c4 q^4 + c2 q^2 + c0."""
+
+    q = Fraction(charge)
+    if sign == -1:
+        base = 3 * (q - 2) * q
+    elif sign == 1:
+        base = 3 * q * (q + 2)
+    else:
+        raise ValueError("sign must be -1 or 1")
+    return (Fraction(9), 6 * (base + 2), (base + 4) ** 2)
+
+
+def konishi_wrapping_paired_b_coefficients(offset: Fraction) -> tuple[Fraction, Fraction, Fraction]:
+    """Coefficients from 9 prod_{sigma=+-1} ((q-sigma/sqrt(3))^2+offset^2)."""
+
+    return (
+        Fraction(9),
+        18 * (offset**2 - Fraction(1, 3)),
+        9 * (offset**2 + Fraction(1, 3)) ** 2,
+    )
+
+
+def evaluate_even_quartic(
+    coefficients: tuple[Fraction, Fraction, Fraction], q_value: Fraction
+) -> Fraction:
+    q2 = q_value * q_value
+    return coefficients[0] * q2 * q2 + coefficients[1] * q2 + coefficients[2]
 
 
 def konishi_wrapping_rational_tail(charge: int) -> Fraction:
@@ -1314,6 +2396,72 @@ def konishi_wrapping_charge_summand(charge: int) -> Fraction:
     )
 
 
+def check_konishi_wrapping_exact_residue_reduction() -> None:
+    """Check the Konishi residue reduction by exact Laurent extraction."""
+
+    try:
+        import sympy as sp
+    except ImportError as exc:
+        raise AssertionError("SymPy is required for the exact Konishi residue check") from exc
+
+    q = sp.symbols("q")
+    imaginary = sp.I
+    root_three = sp.sqrt(3)
+
+    def to_sympy_rational(value: Fraction):
+        return sp.Rational(value.numerator, value.denominator)
+
+    def density_parts(charge: int):
+        b_minus = (
+            9 * q**4
+            + 6 * (3 * (charge - 2) * charge + 2) * q**2
+            + (3 * (charge - 2) * charge + 4) ** 2
+        )
+        b_plus = (
+            9 * q**4
+            + 6 * (3 * charge * (charge + 2) + 2) * q**2
+            + (3 * charge * (charge + 2) + 4) ** 2
+        )
+        numerator = 147456 * charge**2 * (3 * q**2 + 3 * charge**2 - 4) ** 2
+        denominator = (q**2 + charge**2) ** 4 * b_minus * b_plus
+        return sp.expand(numerator), sp.expand(denominator), numerator / denominator
+
+    for charge in range(1, 5):
+        numerator, denominator, density = density_parts(charge)
+        fourth_order_pole = imaginary * charge
+        fourth_order_regular_part = sp.cancel((q - fourth_order_pole) ** 4 * density)
+        fourth_order_residue = (
+            sp.diff(fourth_order_regular_part, q, 3).subs(q, fourth_order_pole)
+            / 6
+        )
+        if sp.simplify(fourth_order_residue - sp.residue(density, q, fourth_order_pole)) != 0:
+            raise AssertionError(f"Konishi fourth-order Laurent residue failed at Q={charge}")
+
+        residues = [fourth_order_residue]
+        for sign in (1, -1):
+            offset = charge + sign
+            if offset == 0:
+                continue
+            for sigma in (1, -1):
+                pole = sp.Rational(sigma, 1) / root_three + imaginary * offset
+                derivative_residue = numerator.subs(q, pole) / sp.diff(denominator, q).subs(
+                    q, pole
+                )
+                direct_residue = sp.residue(density, q, pole)
+                if sp.simplify(derivative_residue - direct_residue) != 0:
+                    raise AssertionError(
+                        f"Konishi simple-pole residue formula failed at Q={charge}"
+                    )
+                residues.append(derivative_residue)
+
+        contour_value = sp.simplify(-imaginary * sum(residues))
+        expected = to_sympy_rational(konishi_wrapping_charge_summand(charge))
+        if sp.simplify(contour_value - expected) != 0:
+            raise AssertionError(f"Konishi exact residue reduction failed at Q={charge}")
+        if not contour_value.is_Rational:
+            raise AssertionError(f"Konishi residue radicals did not cancel at Q={charge}")
+
+
 def adaptive_simpson(
     function,
     left: float,
@@ -1358,6 +2506,63 @@ def check_konishi_wrapping_residue_sum() -> None:
     # The stringbook rapidity u and the real variable q used for the rational
     # residue calculation are related by q=2u.  The leading mirror momentum
     # derivative is d p_tilde_Q/du = 2 + O(g^2).
+    for charge in range(1, 8):
+        charge_fraction = Fraction(charge)
+        for sign, offset in ((-1, charge_fraction - 1), (1, charge_fraction + 1)):
+            direct_coefficients = konishi_wrapping_b_coefficients(charge, sign)
+            paired_coefficients = konishi_wrapping_paired_b_coefficients(offset)
+            if direct_coefficients != paired_coefficients:
+                raise AssertionError(
+                    f"Konishi B_Q^{sign:+d} paired-root factorization failed at Q={charge}"
+                )
+
+        numerator_leading = 147456 * charge_fraction**2 * 9
+        denominator_leading = (
+            konishi_wrapping_b_coefficients(charge, -1)[0]
+            * konishi_wrapping_b_coefficients(charge, 1)[0]
+        )
+        if numerator_leading / denominator_leading != 16384 * charge_fraction**2:
+            raise AssertionError(f"Konishi large-q leading coefficient failed at Q={charge}")
+
+    if konishi_wrapping_b_coefficients(1, -1) != (Fraction(9), Fraction(-6), Fraction(1)):
+        raise AssertionError("Konishi Q=1 removable B^- factor has wrong coefficients")
+
+    for q in (Fraction(0), Fraction(1, 3), Fraction(-4, 5), Fraction(7, 4)):
+        zero_factor = (3 * q * q - 1) ** 2
+        b_minus = evaluate_even_quartic(konishi_wrapping_b_coefficients(1, -1), q)
+        if b_minus != zero_factor:
+            raise AssertionError("Konishi Q=1 removable factor identity failed")
+        b_plus = evaluate_even_quartic(konishi_wrapping_b_coefficients(1, 1), q)
+        reduced_density = Fraction(147456) / ((q * q + 1) ** 4 * b_plus)
+        if konishi_wrapping_q_rational_density(q, 1) != reduced_density:
+            raise AssertionError("Konishi Q=1 removable-pole cancellation failed")
+
+    for charge in (1, 2, 5):
+        charge_fraction = Fraction(charge)
+        for q in (Fraction(0), Fraction(1, 3), Fraction(-4, 5), Fraction(7, 4)):
+            q2 = q * q
+            numerator_piece = (
+                4
+                * charge_fraction**2
+                * (q2 / 4 - Fraction(1, 12) + (charge_fraction**2 - 1) / 4) ** 2
+            )
+            first_denominator = (q2 / 4 + charge_fraction**2 / 4) ** 4
+
+            def paired_denominator(a_value: Fraction) -> Fraction:
+                return (
+                    q**4
+                    + 2 * (a_value**2 - Fraction(1, 3)) * q2
+                    + (a_value**2 + Fraction(1, 3)) ** 2
+                ) / 16
+
+            density_from_u_formula = numerator_piece / (
+                first_denominator
+                * paired_denominator(charge_fraction - 1)
+                * paired_denominator(charge_fraction + 1)
+            )
+            if density_from_u_formula != konishi_wrapping_q_rational_density(q, charge):
+                raise AssertionError("Konishi weak density rationalization failed")
+
     for charge in (1, 2, 4):
         for u in (-0.7, 0.0, 1.3):
             stringbook_integrand = -konishi_wrapping_y0(u, charge) / math.pi
@@ -1405,6 +2610,127 @@ def check_konishi_wrapping_residue_sum() -> None:
         raise AssertionError("Konishi wrapping finite partial sum identity failed")
 
 
+def check_hexagon_bridge_lengths_and_phase() -> None:
+    """Check planar pair-of-pants bridge lengths and partition phases."""
+
+    samples = (
+        (4, 4, 4),
+        (6, 4, 2),
+        (7, 5, 4),
+        (8, 6, 6),
+    )
+    for l1, l2, l3 in samples:
+        ell12 = Fraction(l1 + l2 - l3, 2)
+        ell23 = Fraction(l2 + l3 - l1, 2)
+        ell31 = Fraction(l3 + l1 - l2, 2)
+        if any(ell.denominator != 1 or ell < 0 for ell in (ell12, ell23, ell31)):
+            raise AssertionError("sample should define nonnegative integer bridges")
+        if ell12 + ell31 != l1 or ell12 + ell23 != l2 or ell23 + ell31 != l3:
+            raise AssertionError("hexagon bridge length-balance equation failed")
+
+    impossible_samples = (
+        (3, 3, 3),  # odd total length
+        (8, 2, 2),  # triangle inequality failure
+        (5, 4, 2),  # odd total length and half-integer bridge
+    )
+    for l1, l2, l3 in impossible_samples:
+        total_even = (l1 + l2 + l3) % 2 == 0
+        triangle = l1 + l2 >= l3 and l2 + l3 >= l1 and l3 + l1 >= l2
+        ell_values = (
+            Fraction(l1 + l2 - l3, 2),
+            Fraction(l2 + l3 - l1, 2),
+            Fraction(l3 + l1 - l2, 2),
+        )
+        integer_nonnegative = all(ell.denominator == 1 and ell >= 0 for ell in ell_values)
+        if integer_nonnegative != (total_even and triangle):
+            raise AssertionError("hexagon bridge existence criterion mismatch")
+
+    bridge_length = 5
+    subset_momenta = (0.4, -1.1, 2.3)
+    product_phase = math.prod(cmath.exp(1j * momentum * bridge_length) for momentum in subset_momenta)
+    summed_phase = cmath.exp(1j * sum(subset_momenta) * bridge_length)
+    assert_close("hexagon partition bridge phase", product_phase, summed_phase)
+
+    cyclic_momenta = (2 * math.pi / 7, -4 * math.pi / 7, 2 * math.pi / 7)
+    assert_close(
+        "hexagon full-state cyclic translation phase",
+        cmath.exp(1j * sum(cyclic_momenta) * bridge_length),
+        1,
+    )
+
+
+def check_hexagon_scalar_watson_factor() -> None:
+    """Check the scalar hexagon Watson ratio and weak one-loop orientation."""
+
+    def h_factor(
+        x_u_plus: complex,
+        x_u_minus: complex,
+        x_v_plus: complex,
+        x_v_minus: complex,
+        sigma_uv: complex,
+    ) -> complex:
+        return (
+            ((x_u_minus - x_v_minus) / (x_u_minus - x_v_plus))
+            * ((1 - 1 / (x_u_plus * x_v_minus)) / (1 - 1 / (x_u_plus * x_v_plus)))
+            / sigma_uv
+        )
+
+    exact_samples = (
+        (Fraction(2), Fraction(3), Fraction(5), Fraction(7), Fraction(11, 13)),
+        (Fraction(5, 2), Fraction(9, 4), Fraction(7, 3), Fraction(11, 5), Fraction(4, 9)),
+    )
+    for x1_plus, x1_minus, x2_plus, x2_minus, sigma_12 in exact_samples:
+        h_12 = h_factor(x1_plus, x1_minus, x2_plus, x2_minus, sigma_12)
+        h_21 = h_factor(x2_plus, x2_minus, x1_plus, x1_minus, 1 / sigma_12)
+        watson_scalar = (
+            ((x1_plus - x2_minus) / (x1_minus - x2_plus))
+            * ((1 - 1 / (x1_plus * x2_minus)) / (1 - 1 / (x1_minus * x2_plus)))
+            / (sigma_12 * sigma_12)
+        )
+        if h_12 / h_21 != watson_scalar:
+            raise AssertionError("hexagon scalar Watson exact rational identity failed")
+
+    coupling = 1.0e-6
+    for u1, u2 in ((0.7, -1.1), (2.3, 0.4), (-1.7, 1.2)):
+        x1_plus = (u1 + 0.5j) / coupling
+        x1_minus = (u1 - 0.5j) / coupling
+        x2_plus = (u2 + 0.5j) / coupling
+        x2_minus = (u2 - 0.5j) / coupling
+        weak_ratio = h_factor(x1_plus, x1_minus, x2_plus, x2_minus, 1) / h_factor(
+            x2_plus,
+            x2_minus,
+            x1_plus,
+            x1_minus,
+            1,
+        )
+        compact_phase = (u1 - u2 + 1j) / (u1 - u2 - 1j)
+        sl2_phase = (u1 - u2 - 1j) / (u1 - u2 + 1j)
+        assert_close("hexagon scalar weak compact phase", weak_ratio, compact_phase)
+        if abs(weak_ratio - sl2_phase) < 1.0e-4:
+            raise AssertionError("hexagon scalar weak phase should not match SL(2) phase")
+
+
+def check_bremsstrahlung_displacement_cusp_normalization() -> None:
+    """Check the finite coefficient in C_D=12 B from the displacement kernel."""
+
+    taylor_factor = Fraction(1, 2)
+    kernel_transform_coefficient = Fraction(1, 6)  # pi |omega|^3 / 6
+    fourier_measure_coefficient = Fraction(1, 2)  # pi from kernel over 2 pi measure
+    positive_and_negative_frequencies = Fraction(2, 1)
+
+    logarithmic_coefficient = (
+        taylor_factor
+        * kernel_transform_coefficient
+        * fourier_measure_coefficient
+        * positive_and_negative_frequencies
+    )
+    if logarithmic_coefficient != Fraction(1, 12):
+        raise AssertionError("displacement-cusp logarithmic coefficient failed")
+
+    if 12 * logarithmic_coefficient != 1:
+        raise AssertionError("C_D=12 B normalization failed")
+
+
 def check_bremsstrahlung_weak_series() -> None:
     # B(lambda) = sqrt(lambda)/(4 pi^2) I_2(sqrt(lambda))/I_1(sqrt(lambda)).
     # Verify the first four coefficients using exact rational series division.
@@ -1448,16 +2774,99 @@ def check_bremsstrahlung_weak_series() -> None:
         raise AssertionError("B(lambda) weak-series coefficients failed")
 
 
+def check_qsc_small_spin_bessel_slope() -> None:
+    """Check the exact Bessel recurrences behind the QSC small-spin slope."""
+
+    def bessel_i_series(order: int, max_degree: int) -> dict[int, Fraction]:
+        series: dict[int, Fraction] = {}
+        if order > max_degree:
+            return series
+        for index in range((max_degree - order) // 2 + 1):
+            degree = order + 2 * index
+            coefficient = Fraction(
+                1,
+                (2**degree)
+                * math.factorial(index)
+                * math.factorial(index + order),
+            )
+            series[degree] = coefficient
+        return series
+
+    def series_sub(
+        left: dict[int, Fraction], right: dict[int, Fraction]
+    ) -> dict[int, Fraction]:
+        degrees = set(left) | set(right)
+        return {degree: left.get(degree, 0) - right.get(degree, 0) for degree in degrees}
+
+    def divide_bessel_series(
+        numerator: dict[int, Fraction],
+        denominator: dict[int, Fraction],
+        denominator_order: int,
+        max_ratio_degree: int,
+    ) -> dict[int, Fraction]:
+        ratio: dict[int, Fraction] = {}
+        leading = denominator[denominator_order]
+        for ratio_degree in range(max_ratio_degree + 1):
+            target_degree = denominator_order + ratio_degree
+            known = Fraction(0)
+            for den_degree, den_coeff in denominator.items():
+                if den_degree == denominator_order:
+                    continue
+                previous_degree = target_degree - den_degree
+                if previous_degree in ratio:
+                    known += den_coeff * ratio[previous_degree]
+            ratio[ratio_degree] = (numerator.get(target_degree, 0) - known) / leading
+        return ratio
+
+    max_degree = 14
+    for twist in range(1, 7):
+        i_j_minus = bessel_i_series(twist - 1, max_degree)
+        i_j = bessel_i_series(twist, max_degree)
+        i_j_plus = bessel_i_series(twist + 1, max_degree)
+
+        recurrence_lhs = series_sub(i_j_minus, i_j_plus)
+        recurrence_rhs = {
+            degree - 1: 2 * twist * coefficient
+            for degree, coefficient in i_j.items()
+        }
+        for degree in range(max_degree):
+            if recurrence_lhs.get(degree, 0) != recurrence_rhs.get(degree, 0):
+                raise AssertionError(f"small-spin Bessel recurrence failed for J={twist}")
+
+        ratio = divide_bessel_series(i_j_plus, i_j, twist, 7)
+        slope = {
+            degree + 1: coefficient / twist
+            for degree, coefficient in ratio.items()
+        }
+        expected_z2 = Fraction(1, 2 * twist * (twist + 1))
+        expected_z4 = Fraction(-1, 8 * twist * (twist + 1) ** 2 * (twist + 2))
+        if slope.get(2, 0) != expected_z2:
+            raise AssertionError(f"small-spin slope z^2 coefficient failed for J={twist}")
+        if slope.get(4, 0) != expected_z4:
+            raise AssertionError(f"small-spin slope z^4 coefficient failed for J={twist}")
+
+        # The linearized QSC charge equations use
+        # S = i eps^2 g (I_{J-1}-I_{J+1}) and
+        # gamma = 2 i eps^2 g I_{J+1}.  Eliminating eps reproduces
+        # z I_{J+1}/(J I_J), z=4 pi g.
+        eliminated_slope = {
+            degree + 1: coefficient / twist
+            for degree, coefficient in ratio.items()
+        }
+        if eliminated_slope != slope:
+            raise AssertionError("small-spin slope elimination changed the series")
+
+
 def check_t_system_to_y_system_identity() -> None:
-    """Check the algebraic Y-system relation from a local Hirota square."""
+    """Check the algebraic Y-system relation from local Hirota squares."""
 
     # Positive sample T-values around one interior T-hook node.
-    t_center_plus = 7.0
-    t_center_minus = 11.0
-    t_up = 5.0
-    t_down = 3.0
-    t_left = 2.0
-    t_right = 13.0
+    t_center_plus = Fraction(7)
+    t_center_minus = Fraction(11)
+    t_up = Fraction(5)
+    t_down = Fraction(3)
+    t_left = Fraction(2)
+    t_right = Fraction(13)
 
     # Hirota: T^+ T^- = T_up T_down + T_left T_right.
     t_center_minus = (t_up * t_down + t_left * t_right) / t_center_plus
@@ -1466,8 +2875,76 @@ def check_t_system_to_y_system_identity() -> None:
     one_plus_y = (t_center_plus * t_center_minus) / (t_left * t_right)
     one_plus_inverse_y = (t_center_plus * t_center_minus) / (t_up * t_down)
 
-    assert_close("1+Y from Hirota", one_plus_y, 1 + y)
-    assert_close("1+1/Y from Hirota", one_plus_inverse_y, 1 + 1 / y)
+    if one_plus_y != 1 + y:
+        raise AssertionError("1+Y from Hirota")
+    if one_plus_inverse_y != 1 + 1 / y:
+        raise AssertionError("1+1/Y from Hirota")
+
+    # Check the full interior Y-system relation using the four neighbouring
+    # Hirota squares around (a,s), without assuming a global T-system solution.
+    t_as = Fraction(11, 5)
+    t_a_sp2 = Fraction(17, 3)
+    t_a_sm2 = Fraction(19, 7)
+    t_ap_sp = Fraction(23, 5)
+    t_am_sp = Fraction(29, 11)
+    t_ap_sm = Fraction(31, 13)
+    t_am_sm = Fraction(37, 17)
+    t_ap2_s = Fraction(41, 19)
+    t_am2_s = Fraction(43, 23)
+
+    upper_base = t_ap_sp * t_am_sp
+    upper_y_part = t_a_sp2 * t_as
+    lower_base = t_ap_sm * t_am_sm
+    lower_y_part = t_as * t_a_sm2
+    right_y_part = t_ap_sp * t_ap_sm
+    right_base = t_ap2_s * t_as
+    left_y_part = t_am_sp * t_am_sm
+    left_base = t_as * t_am2_s
+
+    y_system_left = (
+        (upper_base + upper_y_part)
+        * (lower_base + lower_y_part)
+        / ((right_y_part + right_base) * (left_y_part + left_base))
+    )
+    y_system_right = (
+        (1 + upper_y_part / upper_base)
+        * (1 + lower_y_part / lower_base)
+        / ((1 + right_base / right_y_part) * (1 + left_base / left_y_part))
+    )
+    if y_system_left != y_system_right:
+        raise AssertionError("interior T-hook Hirota-to-Y-system identity")
+
+    def gauge_labels(a_value: int, s_value: int, shift: int = 0) -> Counter[tuple[str, int]]:
+        return Counter(
+            {
+                ("g1", a_value + s_value + shift): 1,
+                ("g2", a_value - s_value + shift): 1,
+                ("g3", -a_value - s_value + shift): 1,
+                ("g4", -a_value + s_value + shift): 1,
+            }
+        )
+
+    a_value, s_value = 4, 1
+    center_shifted_labels = gauge_labels(a_value, s_value, 1) + gauge_labels(
+        a_value, s_value, -1
+    )
+    if center_shifted_labels != (
+        gauge_labels(a_value + 1, s_value) + gauge_labels(a_value - 1, s_value)
+    ):
+        raise AssertionError("Hirota gauge covariance failed for horizontal product")
+    if center_shifted_labels != (
+        gauge_labels(a_value, s_value + 1) + gauge_labels(a_value, s_value - 1)
+    ):
+        raise AssertionError("Hirota gauge covariance failed for vertical product")
+
+    y_numerator_labels = gauge_labels(a_value, s_value + 1) + gauge_labels(
+        a_value, s_value - 1
+    )
+    y_denominator_labels = gauge_labels(a_value + 1, s_value) + gauge_labels(
+        a_value - 1, s_value
+    )
+    if y_numerator_labels != y_denominator_labels:
+        raise AssertionError("T-gauge factors should cancel in Y-functions")
 
 
 def check_t_gauge_resolvent_hirota_factorization() -> None:
@@ -1520,6 +2997,57 @@ def check_t_gauge_resolvent_hirota_factorization() -> None:
             raise AssertionError("Cauchy sample should detect the sheet-continuation sign")
         if abs(hat_upper + lower_gbar) < 1.0e-14:
             raise AssertionError("Cauchy sample should not accidentally erase the sheet sign")
+
+    support = ((-0.9, 1.0), (0.2, -0.75), (1.1, 0.5))
+
+    def upper_cauchy(z: complex) -> complex:
+        return sum(-weight / (2j * math.pi * (z - pole)) for pole, weight in support)
+
+    def lower_cauchy_bar(z: complex) -> complex:
+        return sum(weight / (2j * math.pi * (z - pole)) for pole, weight in support)
+
+    def magic_cauchy(z: complex) -> complex:
+        if z.imag >= 0:
+            return upper_cauchy(z)
+        return -lower_cauchy_bar(z)
+
+    for point in (0.4 - 0.6j, -0.3 - 0.35j, 0.8 - 0.9j):
+        assert_close(
+            "magic-sheet lower branch continues the upper Cauchy formula",
+            magic_cauchy(point),
+            upper_cauchy(point),
+        )
+        if abs(lower_cauchy_bar(point) - upper_cauchy(point)) < 1.0e-14:
+            raise AssertionError("lower Cauchy sign should differ before magic continuation")
+
+    for base, m_value in ((0.13 + 0.04j, 2), (-0.31 - 0.03j, 3)):
+        upper_slot = base + 0.5j * m_value
+        lower_slot = base - 0.5j * m_value
+        magic_t1 = m_value + magic_cauchy(upper_slot) - magic_cauchy(lower_slot)
+        branch_t1 = m_value + upper_cauchy(upper_slot) + lower_cauchy_bar(lower_slot)
+        assert_close("magic-sheet T1 branch sign", magic_t1, branch_t1)
+
+        wrong_lower_sign = m_value + upper_cauchy(upper_slot) - lower_cauchy_bar(lower_slot)
+        if abs(wrong_lower_sign - magic_t1) < 1.0e-14:
+            raise AssertionError("magic-sheet T1 check failed to detect lower-sign error")
+
+        t2_from_factorization = (
+            1
+            + magic_cauchy(base + 0.5j * (m_value + 1))
+            - magic_cauchy(base + 0.5j * (m_value - 1))
+        ) * (
+            1
+            + magic_cauchy(base + 0.5j * (-m_value + 1))
+            - magic_cauchy(base + 0.5j * (-m_value - 1))
+        )
+
+        def magic_t11(z: complex) -> complex:
+            return 1 + magic_cauchy(z + 0.5j) - magic_cauchy(z - 0.5j)
+
+        t2_from_row_product = magic_t11(base + 0.5j * m_value) * magic_t11(
+            base - 0.5j * m_value
+        )
+        assert_close("magic-sheet T2 row product", t2_from_factorization, t2_from_row_product)
 
 
 def check_t_hook_wronskian_pmu_bridge() -> None:
@@ -1602,8 +3130,529 @@ def check_t_hook_wronskian_pmu_bridge() -> None:
         )
 
 
+def check_qsc_fermionic_node_ratio_large_u() -> None:
+    """Check the large-u sheet expansion of the fermionic-node ratio."""
+
+    for coupling, charge, mirror_momentum in (
+        (0.17, 1, 0.8),
+        (0.23, 2, -1.1),
+        (0.31, 4, 0.35),
+    ):
+        radius = math.sqrt(charge * charge + mirror_momentum * mirror_momentum)
+        mirror_energy = 2 * math.asinh(radius / (4 * coupling))
+        r_value = math.exp(-mirror_energy / 2)
+        xi = (mirror_momentum - 1j * charge) / radius
+        x_plus = r_value * xi
+        x_minus = xi / r_value
+
+        if not abs(x_plus) < 1:
+            raise AssertionError("mirror plus sheet should be inside")
+        if not abs(x_minus) > 1:
+            raise AssertionError("mirror minus sheet should be outside")
+        assert_close(
+            "mirror energy logarithm",
+            cmath.log(x_minus / x_plus),
+            mirror_energy,
+        )
+        assert_close(
+            "mirror momentum convention",
+            1j * mirror_momentum,
+            -charge - 2j * coupling * (x_plus - x_minus),
+        )
+
+        constant = x_plus / x_minus
+        coefficient = coupling * (
+            x_plus - x_minus + 1 / x_minus - 1 / x_plus
+        )
+        assert_close("fermionic ratio constant", constant, cmath.exp(-mirror_energy))
+        assert_close("fermionic ratio 1/u coefficient", coefficient, -mirror_momentum)
+
+        shortening = x_plus + 1 / x_plus - x_minus - 1 / x_minus
+        assert_close("mirror shortening used by ratio expansion", shortening, 1j * charge / coupling)
+
+        large_u = 10_000.0
+        x_small = coupling / large_u + coupling**3 / large_u**3
+        ratio = (
+            (x_small - x_plus)
+            / (x_small - x_minus)
+            * ((1 / x_small) - x_minus)
+            / ((1 / x_small) - x_plus)
+        )
+        asymptotic_ratio = cmath.exp(-mirror_energy) * (
+            1 - mirror_momentum / large_u
+        )
+        assert_close(
+            "fermionic ratio large-u expansion",
+            ratio / asymptotic_ratio,
+            1,
+            tol=5.0e-7,
+        )
+
+        physical_momentum = 1j * mirror_energy
+        physical_energy = 1j * mirror_momentum
+        assert_close(
+            "inverse mirror continuation of ratio exponent",
+            -mirror_energy - mirror_momentum / large_u,
+            1j * physical_momentum + 1j * physical_energy / large_u,
+        )
+
+
+def check_qsc_pq_bridge_unimodular_rank_one_update() -> None:
+    """Check the local P-Q bridge rank-one update and determinant gauge."""
+
+    def transpose(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+        return [list(column) for column in zip(*matrix)]
+
+    def mat_vec(matrix: list[list[Fraction]], vector: list[Fraction]) -> list[Fraction]:
+        return [sum(row[index] * vector[index] for index in range(len(vector))) for row in matrix]
+
+    def row_mat(row: list[Fraction], matrix: list[list[Fraction]]) -> list[Fraction]:
+        return [
+            sum(row[index] * matrix[index][column] for index in range(len(row)))
+            for column in range(len(matrix[0]))
+        ]
+
+    def dot(left: list[Fraction], right: list[Fraction]) -> Fraction:
+        return sum(left[index] * right[index] for index in range(len(left)))
+
+    def outer(column: list[Fraction], row: list[Fraction]) -> list[list[Fraction]]:
+        return [[column_entry * row_entry for row_entry in row] for column_entry in column]
+
+    def mat_add(
+        left: list[list[Fraction]], right: list[list[Fraction]]
+    ) -> list[list[Fraction]]:
+        return [
+            [left[row][column] + right[row][column] for column in range(len(left[row]))]
+            for row in range(len(left))
+        ]
+
+    def determinant(matrix: list[list[Fraction]]) -> Fraction:
+        work = [row[:] for row in matrix]
+        size = len(work)
+        det = Fraction(1)
+        for column in range(size):
+            pivot = None
+            for row in range(column, size):
+                if work[row][column] != 0:
+                    pivot = row
+                    break
+            if pivot is None:
+                return Fraction(0)
+            if pivot != column:
+                work[column], work[pivot] = work[pivot], work[column]
+                det = -det
+            pivot_value = work[column][column]
+            det *= pivot_value
+            for row in range(column + 1, size):
+                factor = work[row][column] / pivot_value
+                for entry in range(column, size):
+                    work[row][entry] -= factor * work[column][entry]
+        return det
+
+    def solve(matrix: list[list[Fraction]], rhs: list[Fraction]) -> list[Fraction]:
+        work = [row[:] + [rhs[index]] for index, row in enumerate(matrix)]
+        size = len(work)
+        for column in range(size):
+            pivot = None
+            for row in range(column, size):
+                if work[row][column] != 0:
+                    pivot = row
+                    break
+            if pivot is None:
+                raise AssertionError("P-Q bridge sample matrix is singular")
+            if pivot != column:
+                work[column], work[pivot] = work[pivot], work[column]
+            pivot_value = work[column][column]
+            for entry in range(column, size + 1):
+                work[column][entry] /= pivot_value
+            for row in range(size):
+                if row == column:
+                    continue
+                factor = work[row][column]
+                for entry in range(column, size + 1):
+                    work[row][entry] -= factor * work[column][entry]
+        return [work[row][-1] for row in range(size)]
+
+    eta = [
+        [Fraction(0), Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(-1), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(0), Fraction(-1), Fraction(0)],
+    ]
+    samples = (
+        (
+            [
+                [Fraction(1), Fraction(2), Fraction(0), Fraction(1)],
+                [Fraction(0), Fraction(1), Fraction(3), Fraction(-1)],
+                [Fraction(2), Fraction(0), Fraction(1), Fraction(1)],
+                [Fraction(1), Fraction(-1), Fraction(0), Fraction(2)],
+            ],
+            [Fraction(2), Fraction(-1), Fraction(3), Fraction(1)],
+        ),
+        (
+            [
+                [Fraction(3), Fraction(1), Fraction(-2), Fraction(0)],
+                [Fraction(1), Fraction(0), Fraction(1), Fraction(2)],
+                [Fraction(0), Fraction(2), Fraction(1), Fraction(-1)],
+                [Fraction(2), Fraction(-1), Fraction(1), Fraction(1)],
+            ],
+            [Fraction(-1), Fraction(4), Fraction(2), Fraction(-3)],
+        ),
+    )
+
+    for matrix, q_upper in samples:
+        if determinant(matrix) == 0:
+            raise AssertionError("P-Q bridge sample matrix is singular")
+        q_lower = mat_vec(eta, q_upper)
+        p_lower = [-entry for entry in mat_vec(matrix, q_upper)]
+        p_upper = solve(transpose(matrix), [-entry for entry in q_lower])
+        shifted = mat_add(matrix, outer(p_lower, q_lower))
+
+        if dot(q_lower, q_upper) != 0:
+            raise AssertionError("Q-null contraction failed")
+        if dot(p_upper, p_lower) != 0:
+            raise AssertionError("P-null contraction failed")
+        if [-entry for entry in mat_vec(matrix, q_upper)] != p_lower:
+            raise AssertionError("minus-shift P contraction failed")
+        if [-entry for entry in mat_vec(shifted, q_upper)] != p_lower:
+            raise AssertionError("plus-shift P contraction failed")
+        if [-entry for entry in row_mat(p_upper, matrix)] != q_lower:
+            raise AssertionError("minus-shift Q contraction failed")
+        if [-entry for entry in row_mat(p_upper, shifted)] != q_lower:
+            raise AssertionError("plus-shift Q contraction failed")
+        if determinant(shifted) != determinant(matrix):
+            raise AssertionError("P-Q bridge determinant gauge changed")
+
+
+def check_qomega_dual_monodromy_transport() -> None:
+    """Check the dual Qomega Pfaffian transport and monodromy signs."""
+
+    def pfaffian_4(matrix: list[list[complex]]) -> complex:
+        return (
+            matrix[0][1] * matrix[2][3]
+            - matrix[0][2] * matrix[1][3]
+            + matrix[0][3] * matrix[1][2]
+        )
+
+    eta = [
+        [0, 1, 0, 0],
+        [-1, 0, 0, 0],
+        [0, 0, 0, 1],
+        [0, 0, -1, 0],
+    ]
+    samples = (
+        (
+            [
+                [0, 2, -1, 3],
+                [-2, 0, 5, 7],
+                [1, -5, 0, 11],
+                [-3, -7, -11, 0],
+            ],
+            [1, -2, 3, 5],
+        ),
+        (
+            [
+                [0, 1 - 2j, 3 + 0.5j, -2],
+                [-1 + 2j, 0, -4j, 1.5],
+                [-3 - 0.5j, 4j, 0, -2 + 0.7j],
+                [2, -1.5, 2 - 0.7j, 0],
+            ],
+            [2 - 1j, -0.5 + 0.2j, 1.3, -2.1j],
+        ),
+    )
+
+    for omega, q_lower in samples:
+        q_upper = [
+            sum(eta[row][col] * q_lower[col] for col in range(4))
+            for row in range(4)
+        ]
+        assert_close(
+            "Q_i Q^i antisymmetry",
+            sum(q_lower[row] * q_upper[row] for row in range(4)),
+            0,
+        )
+
+        tilde_q = [
+            sum(omega[row][col] * q_upper[col] for col in range(4))
+            for row in range(4)
+        ]
+        updated = [
+            [
+                omega[row][col]
+                + q_lower[row] * tilde_q[col]
+                - q_lower[col] * tilde_q[row]
+                for col in range(4)
+            ]
+            for row in range(4)
+        ]
+        assert_close(
+            "Qomega Pfaffian rank-two update",
+            pfaffian_4(updated),
+            pfaffian_4(omega),
+        )
+
+        shifted_by_recursion = [
+            [
+                omega[row][col]
+                + q_lower[row] * sum(omega[col][k] * q_upper[k] for k in range(4))
+                - q_lower[col] * sum(omega[row][k] * q_upper[k] for k in range(4))
+                for col in range(4)
+            ]
+            for row in range(4)
+        ]
+        for row in range(4):
+            for col in range(4):
+                assert_close(
+                    "Qomega monodromy recursion equals discontinuity update",
+                    shifted_by_recursion[row][col],
+                    updated[row][col],
+                )
+                assert_close(
+                    "Qomega shifted matrix preserves antisymmetry",
+                    shifted_by_recursion[row][col],
+                    -shifted_by_recursion[col][row],
+                )
+
+        opposite_update = [
+            [
+                omega[row][col]
+                - q_lower[row] * tilde_q[col]
+                + q_lower[col] * tilde_q[row]
+                for col in range(4)
+            ]
+            for row in range(4)
+        ]
+        if max(
+            abs(opposite_update[row][col] - updated[row][col])
+            for row in range(4)
+            for col in range(4)
+        ) < 1.0e-12:
+            raise AssertionError("Qomega sample does not detect the transport sign")
+
+
+def check_qsc_weak_mu12_mu24_elimination() -> None:
+    """Check the weak-QSC elimination of mu_24 into the Baxter difference equation."""
+
+    samples = (
+        (
+            0.9 + 0.4j,
+            -0.7 + 0.2j,
+            1.3 - 0.5j,
+            0.6 + 0.8j,
+            -0.2 + 0.3j,
+            1.1 - 0.4j,
+        ),
+        (
+            -1.2 + 0.6j,
+            0.5 - 0.9j,
+            0.8 + 0.7j,
+            -0.4 + 1.1j,
+            0.7 - 0.2j,
+            -1.0 + 0.5j,
+        ),
+    )
+
+    for p1_minus, p1_plus, p4_minus, p4_plus, mu_minus, mu_center in samples:
+        pre_baxter_coefficient = (
+            p4_plus / p1_plus
+            - p4_minus / p1_minus
+            + 1 / (p1_plus * p1_plus)
+            + 1 / (p1_minus * p1_minus)
+        )
+        mu_plus = (p1_plus * p1_plus) * (
+            pre_baxter_coefficient * mu_center
+            - mu_minus / (p1_minus * p1_minus)
+        )
+
+        mu24_minus = (
+            (mu_center - mu_minus) / (p1_minus * p1_minus)
+            - mu_minus * p4_minus / p1_minus
+        )
+        mu24_plus = (
+            (mu_plus - mu_center) / (p1_plus * p1_plus)
+            - mu_center * p4_plus / p1_plus
+        )
+        assert_close(
+            "weak QSC mu24 recursion after elimination",
+            mu24_plus - mu24_minus,
+            -p4_minus / p1_minus * (mu_center - mu_minus),
+        )
+
+        reconstructed_left = pre_baxter_coefficient * mu_center
+        reconstructed_right = (
+            mu_plus / (p1_plus * p1_plus)
+            + mu_minus / (p1_minus * p1_minus)
+        )
+        assert_close(
+            "weak QSC pre-Baxter equation",
+            reconstructed_left,
+            reconstructed_right,
+        )
+
+    for twist in (2, 3, 4):
+        for point in (0.2, -0.6 + 0.1j):
+            inv_minus = (point - 0.5j) ** twist
+            inv_plus = (point + 0.5j) ** twist
+            ratio_minus = 0.3 * (point - 0.5j) ** (twist - 1)
+            ratio_plus = 0.3 * (point + 0.5j) ** (twist - 1)
+            transfer = ratio_plus - ratio_minus + inv_plus + inv_minus
+            if not math.isfinite(abs(transfer)):
+                raise AssertionError("weak QSC transfer coefficient is not finite")
+
+
+def check_qsc_large_u_mu_power_balance() -> None:
+    """Check the large-u Pmu exponent bookkeeping before the characteristic matrix."""
+
+    pairs = ((1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4))
+
+    for twist, alpha in (
+        (Fraction(2), Fraction(9, 2)),
+        (Fraction(3), Fraction(13, 3)),
+        (Fraction(5), Fraction(17, 4)),
+    ):
+        p_lower = {
+            1: -twist / 2,
+            2: -twist / 2 - 1,
+            3: twist / 2,
+            4: twist / 2 - 1,
+        }
+        p_upper = {
+            1: p_lower[4],
+            2: p_lower[3],
+            3: p_lower[2],
+            4: p_lower[1],
+        }
+        mu_power = {
+            (1, 2): alpha - twist,
+            (1, 3): alpha + 1,
+            (1, 4): alpha,
+            (2, 3): alpha,
+            (2, 4): alpha - 1,
+            (3, 4): alpha + twist,
+        }
+
+        def exponent(index_a: int, index_b: int) -> Fraction:
+            if index_a == index_b:
+                raise AssertionError("diagonal mu entry has no exponent")
+            return mu_power[tuple(sorted((index_a, index_b)))]
+
+        for row in range(1, 5):
+            row_terms = [
+                exponent(row, col) + p_upper[col]
+                for col in range(1, 5)
+                if col != row
+            ]
+            expected_row_power = alpha + p_lower[row]
+            if any(term != expected_row_power for term in row_terms):
+                raise AssertionError("QSC Pmu row exponent balance failed")
+
+        for index_a, index_b in pairs:
+            left_power = exponent(index_a, index_b) - 1
+            universal_rhs_power = alpha + p_lower[index_a] + p_lower[index_b]
+            if left_power != universal_rhs_power:
+                raise AssertionError("QSC monodromy universal exponent mismatch")
+
+            for index_c in range(1, 5):
+                if index_c != index_b:
+                    term_power = (
+                        p_lower[index_a]
+                        + exponent(index_b, index_c)
+                        + p_upper[index_c]
+                    )
+                    if term_power != left_power:
+                        raise AssertionError("QSC monodromy first row power mismatch")
+                if index_c != index_a:
+                    term_power = (
+                        p_lower[index_b]
+                        + exponent(index_a, index_c)
+                        + p_upper[index_c]
+                    )
+                    if term_power != left_power:
+                        raise AssertionError("QSC monodromy second row power mismatch")
+
+
 def check_qsc_large_u_coefficient_constraints() -> None:
     """Check the large-u characteristic equation for the QSC coefficient products."""
+
+    def determinant_complex(matrix: list[list[complex]]) -> complex:
+        work = [row[:] for row in matrix]
+        size = len(work)
+        determinant = 1 + 0j
+        for column in range(size):
+            pivot = max(range(column, size), key=lambda row: abs(work[row][column]))
+            if abs(work[pivot][column]) < 1.0e-14:
+                return 0j
+            if pivot != column:
+                work[column], work[pivot] = work[pivot], work[column]
+                determinant = -determinant
+            pivot_value = work[column][column]
+            determinant *= pivot_value
+            for row in range(column + 1, size):
+                factor = work[row][column] / pivot_value
+                for entry in range(column, size):
+                    work[row][entry] -= factor * work[column][entry]
+        return determinant
+
+    def characteristic_matrix(
+        alpha: complex,
+        twist: float,
+        a14: complex,
+        a23: complex,
+    ) -> list[list[complex]]:
+        a1 = 1 + 0j
+        a2 = 1 + 0j
+        a3 = a23
+        a4 = a14
+        return [
+            [
+                1j * (alpha - twist) - (a14 - a23),
+                -(a2 * a2),
+                a1 * a2,
+                a1 * a2,
+                -(a1 * a1),
+                0j,
+            ],
+            [
+                a3 * a3,
+                1j * (alpha + 1) - (a14 + a23),
+                a1 * a3,
+                a1 * a3,
+                0j,
+                -(a1 * a1),
+            ],
+            [
+                a3 * a4,
+                -(a2 * a4),
+                1j * alpha,
+                0j,
+                a1 * a3,
+                -(a1 * a2),
+            ],
+            [
+                a3 * a4,
+                -(a2 * a4),
+                0j,
+                1j * alpha,
+                a1 * a3,
+                -(a1 * a2),
+            ],
+            [
+                a4 * a4,
+                0j,
+                -(a2 * a4),
+                -(a2 * a4),
+                1j * (alpha - 1) + a14 + a23,
+                -(a2 * a2),
+            ],
+            [
+                0j,
+                a4 * a4,
+                -(a3 * a4),
+                -(a3 * a4),
+                a3 * a3,
+                1j * (alpha + twist) + a14 - a23,
+            ],
+        ]
 
     def coefficient_products(
         twist: float,
@@ -1681,6 +3730,22 @@ def check_qsc_large_u_coefficient_constraints() -> None:
             raise AssertionError(
                 "QSC coefficient products are insensitive to an overall sign flip"
             )
+
+    for twist, alpha, a14, a23 in (
+        (2.0, 1.3 + 0.2j, 0.7 - 0.4j, -0.2 + 0.5j),
+        (3.0, -0.6 + 0.9j, 1.1 + 0.3j, 0.4 - 0.7j),
+        (5.0, 2.2 - 0.3j, -0.8 + 0.6j, 0.9 + 0.2j),
+    ):
+        determinant = determinant_complex(
+            characteristic_matrix(alpha, twist, a14, a23)
+        )
+        expected = alpha * alpha * characteristic(alpha, twist, a14, a23)
+        assert_close(
+            "QSC large-u characteristic determinant",
+            determinant,
+            expected,
+            tol=2.0e-8,
+        )
 
 
 def check_qsc_collapsed_cut_digamma_package() -> None:
@@ -1868,25 +3933,48 @@ def main() -> None:
     check_twist_two_qsc_baxter_family()
     check_central_extension_dispersion()
     check_zhukovsky_map_and_energy()
+    check_zhukovsky_crossing_path_monodromy()
     check_crossing_rhs_is_sheet_sensitive()
+    check_matrix_crossing_channel_scalar_multiplier()
+    check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()
+    check_dhm_local_residue_continuation()
+    check_dhm_gamma_pole_lattice_and_admissibility()
+    check_su2c_matrix_amplitudes_and_unitarity()
     check_su2c_single_level_ii_nesting_step()
     check_su2c_level_ii_and_iii_nested_scattering()
     check_su2c_nested_bethe_yang_frame_factors()
+    check_finite_density_aba_counting_normalization()
+    check_rank_one_aba_weak_orientation()
     check_weak_dispersion_expansion()
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()
+    check_bes_zhukovsky_fourier_transform_signs()
+    check_bes_weak_scaling_function()
     check_bound_state_dispersion()
     check_mirror_double_wick_dispersion()
+    check_mirror_zhukovsky_sheet_parametrization()
     check_mirror_auxiliary_string_arrays()
     check_one_species_tba_variation()
+    check_excited_tba_contour_deformation_residues()
     check_mirror_wing_kernel_inverse()
+    check_y_system_shift_source_factor()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
+    check_konishi_wrapping_exact_residue_reduction()
+    check_hexagon_bridge_lengths_and_phase()
+    check_hexagon_scalar_watson_factor()
+    check_bremsstrahlung_displacement_cusp_normalization()
     check_bremsstrahlung_weak_series()
+    check_qsc_small_spin_bessel_slope()
     check_t_system_to_y_system_identity()
     check_t_gauge_resolvent_hirota_factorization()
     check_t_hook_wronskian_pmu_bridge()
+    check_qsc_fermionic_node_ratio_large_u()
+    check_qsc_pq_bridge_unimodular_rank_one_update()
+    check_qomega_dual_monodromy_transport()
+    check_qsc_weak_mu12_mu24_elimination()
+    check_qsc_large_u_mu_power_balance()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()
     check_qsc_collapsed_cut_shift_primitive()

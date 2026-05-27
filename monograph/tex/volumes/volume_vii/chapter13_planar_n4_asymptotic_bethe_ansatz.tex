@@ -278,50 +278,323 @@ sheet.  Applying the path twice generally lands on a different sheet of the
 scalar factor even though the projected \(x^\pm\)-values have returned.
 \end{warning}
 
+\begin{definition}[Crossing path for the Zhukovsky variables]
+\label{def:planar-n4-crossing-path}
+Let \(x(u)\) be the physical Zhukovsky branch, \(x(u)\sim u/g\) at infinity,
+and set \(x^\pm(u)=x(u\pm\ii/2)\).  A crossing path for the first magnon is
+a path \(\gamma_{\rm cr}\) on the \(u\)-surface, starting at a physical point
+and ending above the same projected \(u\)-value on a crossed sheet, with the
+following topological data:
+\[
+  w_{\gamma_{\rm cr}}\!\left(2g-\frac{\ii}{2}\right)=1,
+  \qquad
+  w_{\gamma_{\rm cr}}\!\left(2g+\frac{\ii}{2}\right)=1
+  \pmod 2,
+\]
+and with even winding around the other two shifted endpoints in this
+right-endpoint convention.  Equivalently, the lower shifted cut of \(x^+\)
+and the upper shifted cut of \(x^-\) are each crossed once.  When this path
+is used in the DHM contour formula below, it is also required to avoid the
+Cauchy and Gamma-function singularities except for the controlled residue
+crossings described in
+Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation}.
+\end{definition}
+
+\begin{proposition}[Zhukovsky monodromy along the crossing path]
+\label{prop:planar-n4-zhukovsky-crossing-monodromy}
+Analytic continuation of \(x^\pm(u)\) along a path with the winding data of
+Definition~\ref{def:planar-n4-crossing-path} gives
+\[
+  \bar x^\pm(u)=\frac{1}{x^\pm(u)} .
+\]
+Consequently,
+\[
+  \frac{\bar x^+}{\bar x^-}
+  =
+  \left(\frac{x^+}{x^-}\right)^{-1},
+  \qquad
+  H(\bar x^\pm)=-H(x^\pm),
+\]
+where \(H(x^\pm)=1+2\ii g(1/x^+-1/x^-)\) is the physical-sheet energy
+continued as a meromorphic function of \(x^\pm\).
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  x(u)=\frac12\left(\frac{u}{g}
+  +\sqrt{\left(\frac{u}{g}\right)^2-4}\right)
+\]
+on the physical branch.  Encircling either endpoint of the short cut
+\([-2g,2g]\) changes the sign of the square root and therefore sends
+\[
+  x(u)\longmapsto
+  \frac12\left(\frac{u}{g}
+  -\sqrt{\left(\frac{u}{g}\right)^2-4}\right)
+  =
+  \frac1{x(u)} .
+\]
+For \(x^+(u)=x(u+\ii/2)\), the relevant shifted cut has endpoint
+\(2g-\ii/2\); for \(x^-(u)=x(u-\ii/2)\), it has endpoint \(2g+\ii/2\).
+The mod-two winding data in Definition~\ref{def:planar-n4-crossing-path}
+therefore inverts both \(x^+\) and \(x^-\).  The momentum ratio is then
+inverted immediately.  Finally, using the stringbook energy identity
+\[
+  H(x^\pm)=-1-2\ii g(x^+-x^-)
+  =
+  1+2\ii g(1/x^+-1/x^-)
+\]
+on the physical sheet, the crossed value is
+\[
+  H(\bar x^\pm)
+  =
+  1+2\ii g(x^+-x^-)
+  =
+  -H(x^\pm).
+\]
+\end{proof}
+
 \section{Two-Body S-Matrix}
 
-The magnon two-body \(S\)-matrix is fixed by symmetry up to a scalar factor.
-Let \(S^{\rm mat}_{12}\) denote the matrix part determined by the two
-centrally extended \(\mathfrak{su}(2|2)\) copies.  The full two-magnon
-operator is
+The magnon two-body \(S\)-matrix is fixed by symmetry up to a scalar factor,
+after one has fixed the dynamic spin-chain frame.  Let
+\(S^{\rm mat}_{12}\) denote the matrix part determined by the two centrally
+extended \(\mathfrak{su}(2|2)\) copies.  The full two-magnon operator is
 \[
   S_{12}=S_0(x_1^\pm,x_2^\pm)\,S^{\rm mat}_{12}.
 \]
-For one \(\mathfrak{su}(2|2)\) copy, the matrix part is the graded
-intertwiner
+For one \(\mathfrak{su}(2|2)\) copy, write \(S^{(1)}_{12}\) for the
+intertwiner before tensoring the left and right copies.  It is defined by
 \[
-  S^{\rm mat}_{12}\Delta_{12}(J)
+  S^{(1)}_{12}\Delta_{12}(J)
   =
-  \Delta_{21}(J)S^{\rm mat}_{12},
+  \Delta_{21}(J)S^{(1)}_{12},
   \qquad J\in\mathfrak{su}(2|2)_{\rm c},
 \]
-where the coproduct includes the braiding phase carried by the magnon
-momentum.  Its independent amplitudes are fixed by
+where the coproduct includes the braiding phase carried by the magnon momentum.
+The labels \(1,2\) on one-particle states record the momenta \(p_1,p_2\), not
+extra internal indices.  We use unnormalized symmetrization and
+antisymmetrization:
+\[
+  v^{\{a}w^{b\}}=v^a w^b+v^b w^a,
+  \qquad
+  v^{[a}w^{b]}=v^a w^b-v^b w^a .
+\]
+With this convention the most general
+\(\mathfrak{su}(2)\oplus\mathfrak{su}(2)\)-covariant two-particle operator has
+ten amplitudes:
 \[
 \begin{aligned}
-  S\ket{\phi_1^a\phi_2^b}
+  S^{(1)}_{12}\ket{\phi_1^a\phi_2^b}
   &=
   A_{12}\ket{\phi_2^{\{a}\phi_1^{b\}}}
   +B_{12}\ket{\phi_2^{[a}\phi_1^{b]}}
-  +C_{12}\varepsilon^{ab}\varepsilon_{\alpha\beta}
+  +\frac12 C_{12}\varepsilon^{ab}\varepsilon_{\alpha\beta}
     \ket{\psi_2^\alpha\psi_1^\beta},\\
-  S\ket{\psi_1^\alpha\psi_2^\beta}
+  S^{(1)}_{12}\ket{\psi_1^\alpha\psi_2^\beta}
   &=
   D_{12}\ket{\psi_2^{\{\alpha}\psi_1^{\beta\}}}
   +E_{12}\ket{\psi_2^{[\alpha}\psi_1^{\beta]}}
-  +F_{12}\varepsilon^{\alpha\beta}\varepsilon_{ab}
+  +\frac12 F_{12}\varepsilon^{\alpha\beta}\varepsilon_{ab}
     \ket{\phi_2^a\phi_1^b},\\
-  S\ket{\phi_1^a\psi_2^\beta}
+  S^{(1)}_{12}\ket{\phi_1^a\psi_2^\beta}
   &=
   G_{12}\ket{\psi_2^\beta\phi_1^a}
   +H_{12}\ket{\phi_2^a\psi_1^\beta},
+  \\
+  S^{(1)}_{12}\ket{\psi_1^\alpha\phi_2^b}
+  &=
+  K_{12}\ket{\psi_2^\alpha\phi_1^b}
+  +L_{12}\ket{\phi_2^b\psi_1^\alpha}.
 \end{aligned}
 \]
-with analogous \(K_{12},L_{12}\) amplitudes on
-\(\ket{\psi_1^\alpha\phi_2^b}\).  Solving the intertwining equations fixes
-these ten amplitudes as rational functions of \(x_1^\pm,x_2^\pm\) and of the
-representation coefficients \(a,b,c,d\), up to one common scalar factor.
-The scalar factor is written as
+The length-changing markers are suppressed in this display but not forgotten:
+the \(C_{12}\) channel carries the \(Z^-\) marker and the \(F_{12}\) channel
+carries the \(Z^+\) marker in the stringbook dynamic spin-chain frame.  The
+markers are precisely the source of the braided coproduct.
+
+For a magnon \(i\) write its representation coefficients as
+\(a_i,b_i,c_i,d_i\).  The stringbook frame relates them to \(x_i^\pm\) by
+\[
+  x_i^+=\ii\frac{d_i}{b_i},
+  \qquad
+  x_i^-=-\ii\frac{a_i}{c_i},
+  \qquad
+  a_i d_i-b_i c_i=1 .
+\]
+The same \(x_i^\pm\) obey the Zhukovsky relations already fixed in
+\eqref{eq:planar-n4-xpm-definition}.  At generic non-pole kinematics the
+tensor product of two fundamental short representations is long and the
+intertwiner is unique up to one scalar.  Let this one-copy scalar be denoted
+\(\mathcal S_{12}\).  Solving the finite intertwining equations gives
+\begin{equation}
+\begin{aligned}
+  A_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_2^+-x_1^-}{x_2^- -x_1^+},
+  \\
+  B_{12}
+  &=
+  A_{12}\left[
+  1
+  -2\frac{x_2^+-x_1^+}{x_2^+-x_1^-}
+     \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}
+  \right],
+  \\
+  C_{12}
+  &=
+  \mathcal S_{12}
+  \frac{2g^{-1}a_1a_2}{x_1^-x_2^- -1}
+  \frac{x_2^+-x_1^+}{x_2^- -x_1^+},
+  \\
+  D_{12}
+  &=-\mathcal S_{12},
+  \\
+  E_{12}
+  &=
+  -\mathcal S_{12}\left[
+  1
+  -2\frac{x_2^- -x_1^-}{x_2^- -x_1^+}
+     \frac{x_2^+ -1/x_1^-}{x_2^+ -1/x_1^+}
+  \right],
+  \\
+  F_{12}
+  &=
+  -\mathcal S_{12}
+  \frac{2g(x_1^+-x_1^-)(x_2^+-x_2^-)}
+       {a_1a_2(x_1^+x_2^+ -1)}
+  \frac{x_2^- -x_1^-}{x_2^- -x_1^+},
+  \\
+  G_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_2^+-x_1^+}{x_2^- -x_1^+},
+  \qquad
+  H_{12}
+  =
+  \mathcal S_{12}\frac{a_1}{a_2}
+  \frac{x_2^+-x_2^-}{x_2^- -x_1^+},
+  \\
+  K_{12}
+  &=
+  \mathcal S_{12}\frac{a_2}{a_1}
+  \frac{x_1^+-x_1^-}{x_2^- -x_1^+},
+  \qquad
+  L_{12}
+  =
+  \mathcal S_{12}
+  \frac{x_2^- -x_1^-}{x_2^- -x_1^+}.
+\end{aligned}
+\label{eq:planar-n4-su2c-ten-amplitudes}
+\end{equation}
+
+\begin{proposition}[Local amplitude checks]
+\label{prop:planar-n4-su2c-local-amplitude-checks}
+Assume the denominators in
+\eqref{eq:planar-n4-su2c-ten-amplitudes} are non-zero.  The amplitudes above
+satisfy the highest-weight \(Q\)-intertwining relation
+\begin{equation}
+  A_{12}
+  =
+  \frac{a_1}{a_2}K_{12}+G_{12}
+  =
+  L_{12}+\frac{a_2}{a_1}H_{12}.
+  \label{eq:planar-n4-su2c-q-check}
+\end{equation}
+After factoring out \(\mathcal S_{12}\), the same amplitudes also obey the
+local analytic unitarity identities
+\[
+  R_{12}^{\rm BB}R_{21}^{\rm BB}=1,
+  \qquad
+  R_{12}^{\rm BF}R_{21}^{\rm BF}=1,
+\]
+on the boson-boson/fermion-fermion block \(R^{\rm BB}\) and the mixed
+boson-fermion block \(R^{\rm BF}\) written, for fixed distinct doublet
+indices, in the ordered bases
+\[
+  (\psi_1^1\psi_2^2,\psi_1^2\psi_2^1,\phi_1^1\phi_2^2,\phi_1^2\phi_2^1),
+  \qquad
+  (\phi_1^1\psi_2^1,\psi_1^1\phi_2^1).
+\]
+The blocks are explicitly
+\[
+  R_{12}^{\rm BB}
+  =
+  \frac1{\mathcal S_{12}}
+  \begin{pmatrix}
+    (D-E)/2 & (D+E)/2 & -F/2 & F/2\\
+    (D+E)/2 & (D-E)/2 & F/2 & -F/2\\
+    -C/2 & C/2 & (A-B)/2 & (A+B)/2\\
+    C/2 & -C/2 & (A+B)/2 & (A-B)/2
+  \end{pmatrix}_{12},
+  \qquad
+  R_{12}^{\rm BF}
+  =
+  \frac1{\mathcal S_{12}}
+  \begin{pmatrix}
+    H & G\\
+    L & K
+  \end{pmatrix}_{12}.
+\]
+Equivalently, the matrix part has the correct inverse when the two magnons are
+exchanged; the scalar unitarity condition is the separate condition
+\(\mathcal S_{12}\mathcal S_{21}=1\), or, for the full two-copy scalar split,
+\(S_{0,12}S_{0,21}=1\).
+\end{proposition}
+
+\begin{proof}
+The first identity is the direct result of applying \(Q^\alpha{}_a\) to the
+symmetric boson state and comparing the independent
+\(\ket{\psi_2\phi_1}\) and \(\ket{\phi_2\psi_1}\) components.  Substituting
+\eqref{eq:planar-n4-su2c-ten-amplitudes} gives
+\[
+\begin{aligned}
+  \frac{a_1}{a_2}K_{12}+G_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_1^+-x_1^-+x_2^+-x_1^+}{x_2^- -x_1^+}
+  =
+  \mathcal S_{12}
+  \frac{x_2^+-x_1^-}{x_2^- -x_1^+}
+  =
+  A_{12},\\
+  L_{12}+\frac{a_2}{a_1}H_{12}
+  &=
+  \mathcal S_{12}
+  \frac{x_2^- -x_1^-+x_2^+-x_2^-}{x_2^- -x_1^+}
+  =
+  A_{12}.
+\end{aligned}
+\]
+The remaining \(Q\)- and \(S\)-intertwining equations are obtained in the same
+finite way from the other highest-weight components.  Clearing denominators
+reduces them to polynomial identities in \(x_i^\pm\) and the representation
+ratios \(a_1/a_2\), together with the defining relations for \(b_i,c_i,d_i\)
+above.  The companion calculation check constructs the two nontrivial finite
+blocks explicitly from \eqref{eq:planar-n4-su2c-ten-amplitudes} and verifies
+\(R_{12}R_{21}=1\) on nonsingular physical-branch samples.  This check is not
+a substitute for crossing or Yang--Baxter factorization; it certifies the
+local frame and amplitude algebra used by the nested Bethe derivation below.
+\end{proof}
+
+The convenient scalar split used in the stringbook is
+\[
+  \mathcal S_{12}
+  =
+  \left[
+  \frac{x_2^- -x_1^+}{x_2^+ -x_1^-}
+  \frac{1-1/(x_2^+x_1^-)}{1-1/(x_2^-x_1^+)}
+  \right]^{1/2}\sigma_{12}.
+\]
+Consequently the compact \(SU(2)\)-sector two-copy amplitude
+\((A_{12})^2\) contains the rational factor
+\[
+  \frac{x_2^+-x_1^-}{x_2^- -x_1^+}
+  \frac{1-1/(x_2^+x_1^-)}{1-1/(x_2^-x_1^+)}
+\]
+times \(\sigma_{12}^2\), in the orientation fixed by the convention ledger.
+Equivalently, the full scalar factor may be written as
 \[
   S_0(x_1^\pm,x_2^\pm)
   =
@@ -340,6 +613,61 @@ the matrix part.  The dressing phase has the antisymmetric charge expansion
   c_{r,s}(g)\,
   \bigl(q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm)\bigr).
 \]
+
+\begin{proposition}[Dressing unitarity from charge antisymmetry]
+\label{prop:planar-n4-dressing-unitarity-from-antisymmetry}
+Work in a domain of the physical sheet where the charge expansion for
+\(\theta_{12}=\theta(x_1^\pm,x_2^\pm)\) is either finite after truncation or
+absolutely convergent, and use the same branch of the phase for the exchanged
+pair \(\theta_{21}=\theta(x_2^\pm,x_1^\pm)\).  Then
+\[
+  \theta_{21}=-\theta_{12},
+  \qquad
+  \sigma_{12}\sigma_{21}=1.
+\]
+Consequently the squared dressing factor appearing in the \(SU(2)\)
+asymptotic Bethe equation also satisfies
+\[
+  \sigma_{12}^2\sigma_{21}^2=1 .
+\]
+\end{proposition}
+
+\begin{proof}
+For each pair \(r<s\) with \(r+s\) odd, define
+\[
+  A_{r,s}(1,2)
+  =
+  q_r(x_1^\pm)q_s(x_2^\pm)-q_s(x_1^\pm)q_r(x_2^\pm).
+\]
+Exchanging the two magnons gives
+\[
+  A_{r,s}(2,1)
+  =
+  q_r(x_2^\pm)q_s(x_1^\pm)-q_s(x_2^\pm)q_r(x_1^\pm)
+  =
+  -A_{r,s}(1,2).
+\]
+The coefficients \(c_{r,s}(g)\) are scalar functions of the coupling and the
+integer pair \((r,s)\), not of the ordering of the two magnons.  Therefore the
+whole series changes sign under \(1\leftrightarrow2\), proving
+\(\theta_{21}=-\theta_{12}\).  Since \(\sigma=\ee^{\ii\theta}\),
+\[
+  \sigma_{12}\sigma_{21}
+  =
+  \ee^{\ii(\theta_{12}+\theta_{21})}
+  =
+  1.
+\]
+Squaring gives the last statement.
+\end{proof}
+
+This is only the scalar dressing part of physical two-body unitarity.  The
+rational scalar factor and the matrix part must obey their own unitarity
+relations in the same frame.  The proposition also does not replace crossing:
+after analytic continuation around Zhukovsky cuts the charge expansion must be
+continued with its prescribed monodromy, and that monodromy is precisely the
+additional crossing datum discussed below.
+
 Equivalently, the BES phase may be packaged as
 \begin{equation}
 \begin{aligned}
@@ -364,6 +692,206 @@ domain where \(|x|>1\), \(|y|>1\).  Formula
 \eqref{eq:planar-n4-bes-chi-integral} is therefore not a global formula on
 all sheets by itself; outside that domain it is continued with the crossing
 prescription.
+
+\begin{proposition}[Local DHM residue continuation]
+\label{prop:planar-n4-dhm-local-residue-continuation}
+Let
+\[
+  \mathcal L_g(z,w)
+  =
+  \log
+  \frac{\Gamma\!\left(1+\ii g(z+z^{-1}-w-w^{-1})\right)}
+       {\Gamma\!\left(1-\ii g(z+z^{-1}-w-w^{-1})\right)} .
+\]
+Fix \(x,y\) away from the unit circle and away from the Gamma-function
+poles.  Denote by \(\chi_{\rm raw}^{\epsilon_x,\epsilon_y}(x,y)\) the same
+unit-circle double contour integral as in
+\eqref{eq:planar-n4-bes-chi-integral}, with the \(x\)-Cauchy kernel expanded
+radially outside the contour when \(\epsilon_x=+\) and inside the contour
+when \(\epsilon_x=-\), and similarly for \(y\).  Thus
+\(\chi_{\rm raw}^{+,+}\) is the original DHM branch.  With the stringbook
+orientation for crossing inward through \(|x|=1\) and \(|y|=1\), define the
+one-residue corrections by
+\begin{equation}
+  \Psi_x^{\epsilon_y}(x,y)
+  =
+  \chi_{\rm raw}^{-,\epsilon_y}(x,y)
+  -
+  \chi_{\rm raw}^{+,\epsilon_y}(x,y),
+  \qquad
+  \Psi_y^{\epsilon_x}(x,y)
+  =
+  \chi_{\rm raw}^{\epsilon_x,+}(x,y)
+  -
+  \chi_{\rm raw}^{\epsilon_x,-}(x,y).
+  \label{eq:planar-n4-dhm-single-residue-definitions}
+\end{equation}
+Equivalently, \(\Psi_x\) is the residue picked up by the pole \(z=x\), with
+the sign fixed by the kernel \(1/(x-z)\), while \(\Psi_y\) is written with
+the opposite sign because the stringbook formula adds the \(y\)-crossing
+correction.  The analytic continuation of the original outside branch into
+the three neighboring radial chambers is
+\begin{align}
+  \chi^{-,+}_{\rm cont}(x,y)
+  &=
+  \chi_{\rm raw}^{-,+}(x,y)-\Psi_x^{+}(x,y), \\
+  \chi^{+,-}_{\rm cont}(x,y)
+  &=
+  \chi_{\rm raw}^{+,-}(x,y)+\Psi_y^{+}(x,y), \\
+  \chi^{-,-}_{\rm cont}(x,y)
+  &=
+  \chi_{\rm raw}^{-,-}(x,y)
+  -\Psi_x^{-}(x,y)
+  +\Psi_y^{-}(x,y)
+  -\mathcal C_g(x,y),
+  \label{eq:planar-n4-dhm-double-residue-continuation}
+\end{align}
+where the contact term is the double residue
+\begin{equation}
+  \mathcal C_g(x,y)=\ii\,\mathcal L_g(x,y).
+  \label{eq:planar-n4-dhm-contact-term}
+\end{equation}
+These formulas are local sheet-transition rules for the DHM contour.  The
+global Janik crossing equation additionally specifies a path on the
+\(u\)-surface, hence which of \(x^\pm(u)\) winds around which shifted
+Zhukovsky branch point.
+\end{proposition}
+
+\begin{proof}
+The only singularities that move when \(x\) crosses the unit circle are the
+Cauchy poles \(z=x\); the Gamma-function poles are excluded by hypothesis.
+For fixed \(y\)-chamber, deforming the \(z\)-contour back to the unit circle
+therefore changes the raw integral exactly by the residue at \(z=x\).  This
+gives the first definition in
+\eqref{eq:planar-n4-dhm-single-residue-definitions} and hence the first
+continuation formula.  The \(y\)-crossing computation is the same, except
+that the sign is recorded in \(\Psi_y\) so that the stringbook notebook
+convention reads as addition in the second formula.
+
+If both variables cross, the two single residues count the intersection
+where \(z=x\) and \(w=y\) once too many.  The product of the residue signs
+from \(1/(x-z)\) and \(1/(y-w)\), together with the overall factor
+\(-\ii\) in \(\chi\), gives the contact term
+\(\ii\mathcal L_g(x,y)\).  Subtracting this double residue gives the final
+\(-\ii\mathcal L_g(x,y)\) contribution in
+\eqref{eq:planar-n4-dhm-double-residue-continuation}.  The planar \(N=4\)
+companion calculation check verifies these signs on finite Laurent models of
+the DHM kernel, including the failure that occurs if the contact term is
+omitted.
+\end{proof}
+
+\begin{proposition}[DHM pole lattice and admissible local continuations]
+\label{prop:planar-n4-dhm-pole-lattice}
+Let
+\[
+  \Delta(z,w)=z+z^{-1}-w-w^{-1}.
+\]
+For fixed \(g>0\), the Gamma-kernel logarithm \(\mathcal L_g(z,w)\) can
+develop singularities only on the divisors
+\begin{equation}
+  \Delta(z,w)=\frac{\ii n}{g}
+  \quad\hbox{or}\quad
+  \Delta(z,w)=-\frac{\ii n}{g},
+  \qquad n\in\mathbb Z_{\ge1}.
+  \label{eq:planar-n4-dhm-pole-lattice}
+\end{equation}
+Consequently the one-residue correction \(\Psi_x^{\epsilon_y}(x,y)\) is a
+single-valued holomorphic function on any connected region in which
+\[
+  x+x^{-1}-w-w^{-1}\notin \frac{\ii}{g}
+  \bigl(\mathbb Z\setminus\{0\}\bigr)
+\]
+for every \(w\) on the chosen \(y\)-contour, and similarly for
+\(\Psi_y^{\epsilon_x}\).  The contact term
+\(\mathcal C_g(x,y)=\ii\mathcal L_g(x,y)\) is holomorphic precisely away
+from the endpoint divisors
+\[
+  x+x^{-1}-y-y^{-1}\in
+  \frac{\ii}{g}\bigl(\mathbb Z\setminus\{0\}\bigr).
+\]
+If a crossing path for \(x_1^\pm\) satisfies these avoidance conditions for
+each of the four pairs \((x_1^\alpha,x_2^\beta)\),
+\(\alpha,\beta\in\{+,-\}\), except for the Cauchy-pole crossings already
+accounted for in
+Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation}, then
+Proposition~\ref{prop:planar-n4-bes-phase-local-crossing} applies with no
+additional Gamma-pole residue terms.
+\end{proposition}
+
+\begin{proof}
+The Gamma function has poles at \(0,-1,-2,\ldots\).  The numerator in
+\(\mathcal L_g\) is singular only when
+\[
+  1+\ii g\Delta(z,w)=1-n,\qquad n\in\mathbb Z_{\ge1},
+\]
+which is equivalent to \(\Delta(z,w)=\ii n/g\).  The denominator is singular
+only when
+\[
+  1-\ii g\Delta(z,w)=1-n,\qquad n\in\mathbb Z_{\ge1},
+\]
+which is equivalent to \(\Delta(z,w)=-\ii n/g\).  This proves
+\eqref{eq:planar-n4-dhm-pole-lattice}.  The displayed conditions for
+\(\Psi_x\), \(\Psi_y\), and \(\mathcal C_g\) are the same divisors evaluated
+after setting \(z=x\), \(w=y\), or one variable on the remaining contour.
+Away from those divisors the integrands are holomorphic in the external
+variables and the contour deformations are ordinary Cauchy deformations.
+Thus a path that crosses only the specified Cauchy poles has exactly the
+residue contributions listed above, with no further Gamma-kernel terms.
+\end{proof}
+
+\begin{proposition}[Local crossing of the BES phase]
+\label{prop:planar-n4-bes-phase-local-crossing}
+Assume \(x_1^\pm\) and \(x_2^\pm\) lie in the physical DHM chamber
+\(|x_1^\pm|>1\), \(|x_2^\pm|>1\), and continue the first magnon along the
+crossing path of Definition~\ref{def:planar-n4-crossing-path}, so that
+\(\bar x_1^\pm=1/x_1^\pm\) lie in the inside radial chamber.  Suppose the
+path avoids the Gamma-function poles of the DHM kernel.  Define
+\[
+\begin{aligned}
+  \theta_{\rm raw}^{-,+}(\bar x_1^\pm,x_2^\pm)
+  &=
+  \chi_{\rm raw}^{-,+}(\bar x_1^+,x_2^+)
+  -\chi_{\rm raw}^{-,+}(\bar x_1^+,x_2^-)
+  -\chi_{\rm raw}^{-,+}(\bar x_1^-,x_2^+)
+  +\chi_{\rm raw}^{-,+}(\bar x_1^-,x_2^-),\\
+  \Delta_{\bar1}\theta
+  &=
+  -\Psi_x^{+}(\bar x_1^+,x_2^+)
+  +\Psi_x^{+}(\bar x_1^+,x_2^-)
+  +\Psi_x^{+}(\bar x_1^-,x_2^+)
+  -\Psi_x^{+}(\bar x_1^-,x_2^-).
+\end{aligned}
+  \label{eq:planar-n4-crossed-bes-theta-local-residue}
+\]
+Then the local DHM continuation of the BES phase for the crossed first
+particle is
+\begin{equation}
+  \theta_{\bar1 2}^{\rm loc}
+  =
+  \theta_{\rm raw}^{-,+}(\bar x_1^\pm,x_2^\pm)
+  +
+  \Delta_{\bar1}\theta .
+  \label{eq:planar-n4-crossed-bes-theta-local}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Apply Proposition~\ref{prop:planar-n4-dhm-local-residue-continuation} to each
+of the four \(\chi\)-terms in the definition of
+\(\theta(x_1^\pm,x_2^\pm)\), with the first argument crossing inward and the
+second remaining in the outside chamber.  The four signs in
+\(\Delta_{\bar1}\theta\) are exactly the alternating signs in the BES
+combination \(+,-,-,+\), multiplied by the single-kernel correction
+\(-\Psi_x^+\).  Summing the four continued kernels gives
+\eqref{eq:planar-n4-crossed-bes-theta-local}.
+\end{proof}
+
+This proposition is local contour algebra.  It fixes how the DHM
+residue terms enter the four-kernel BES phase in the stringbook convention,
+but it does not by itself prove the scalar crossing equation
+\eqref{eq:planar-n4-crossing-scalar-factor}.  That equation also requires the
+global branch of the scalar factor, the homotopy class of the crossing path,
+and the absence or prescribed treatment of additional crossed singularities.
 
 Inside this domain the weak-coupling coefficients can be extracted without
 any sheet continuation.  Expand
@@ -403,6 +931,28 @@ Then the contribution of order \(g^N\) to the coefficient \(c_{r,s}(g)\) in
   \zeta(N)g^N .
   \label{eq:planar-n4-dhm-residue-coefficient}
 \end{equation}
+Equivalently, writing
+\[
+  c_{r,s}(g)\big|_{g^N}=C^{(N)}_{r,s}\zeta(N)g^N,
+\]
+one has the closed coefficient
+\begin{equation}
+  C^{(N)}_{r,s}
+  =
+  \frac{
+    2(-1)^{(N-1)/2+s}(r-1)(s-1)N!(N-1)!
+  }{
+    \Gamma\!\left(\frac{N-r-s+4}{2}\right)
+    \Gamma\!\left(\frac{N+r-s+2}{2}\right)
+    \Gamma\!\left(\frac{N-r+s+2}{2}\right)
+    \Gamma\!\left(\frac{N+r+s}{2}\right)
+  },
+  \label{eq:planar-n4-dhm-closed-weak-coefficient}
+\end{equation}
+when the four Gamma-function arguments are positive integers; otherwise this
+order gives zero.  In particular, the coefficient vanishes unless the
+Laurent powers can be supplied by the \(N\) factors in
+\((z+z^{-1}-w-w^{-1})^N\).
 In particular,
 \[
   c_{2,3}(g)=4\zeta(3)g^3-40\zeta(5)g^5+O(g^7).
@@ -443,7 +993,72 @@ The two contour integrals pick the coefficient of \(z^{-1}w^{-1}\).  Thus the
 coefficient of \(x^{1-r}y^{1-s}\) is the displayed constant times
 \(R^{(N)}_{r,s}\).  Comparing with
 \eqref{eq:planar-n4-chi-coefficient-expansion} proves
-\eqref{eq:planar-n4-dhm-residue-coefficient}.  For \(r=2,s=3\),
+\eqref{eq:planar-n4-dhm-residue-coefficient}.
+
+It remains to evaluate the Laurent coefficient.  Put
+\(a=r-1\) and \(b=s-1\).  Expanding first in the number \(\ell\) of
+\((-w-w^{-1})\) factors gives the finite convolution
+\[
+  R^{(N)}_{r,s}
+  =
+  \sum_{\ell=0}^{N}
+  (-1)^\ell
+  \binom{N}{\ell}
+  \binom{N-\ell}{(N-\ell+a)/2}
+  \binom{\ell}{(\ell+b)/2},
+  \label{eq:planar-n4-dhm-residue-binomial-sum}
+\]
+where a binomial coefficient is declared zero unless its lower entry is an
+integer between \(0\) and the upper entry.  This convention records the parity
+and support restrictions.
+
+For the closed evaluation, compare Fourier coefficients by writing
+\(z=\ee^{\ii\theta}\), \(w=\ee^{\ii\varphi}\),
+\(A=(\theta+\varphi)/2\), and \(B=(\theta-\varphi)/2\).  Then
+\[
+  z+z^{-1}-w-w^{-1}
+  =
+  -4\sin A\,\sin B,
+  \qquad
+  z^{-a}w^{-b}=\ee^{-\ii(a+b)A}\ee^{-\ii(a-b)B}.
+\]
+The elementary expansion
+\[
+  \sin^N t
+  =
+  (2\ii)^{-N}
+  \sum_{j=0}^{N}
+  (-1)^j\binom{N}{j}\ee^{\ii(N-2j)t}
+\]
+therefore gives
+\[
+  R^{(N)}_{r,s}
+  =
+  (-1)^{N+a}
+  \binom{N}{(N+a+b)/2}
+  \binom{N}{(N+a-b)/2},
+\]
+with the same convention that the binomial coefficient is zero unless its
+lower entry is an integer between \(0\) and \(N\).  Since \(N\) is odd and the
+nonzero cases have \(a+b\) odd, the sign is
+\((-1)^{N+a}=(-1)^b=(-1)^{s-1}\).  Rewriting the two binomial coefficients as
+Gamma functions gives
+\[
+  R^{(N)}_{r,s}
+  =
+  (-1)^{s-1}
+  \frac{(N!)^2}{
+    \Gamma\!\left(\frac{N-r-s+4}{2}\right)
+    \Gamma\!\left(\frac{N+r-s+2}{2}\right)
+    \Gamma\!\left(\frac{N-r+s+2}{2}\right)
+    \Gamma\!\left(\frac{N+r+s}{2}\right)
+  } .
+\]
+The lower-entry bounds in the binomial formula are exactly the positivity
+conditions on the four Gamma-function arguments; outside those bounds the
+coefficient is zero.  Substitution into
+\eqref{eq:planar-n4-dhm-residue-coefficient} gives
+\eqref{eq:planar-n4-dhm-closed-weak-coefficient}.  For \(r=2,s=3\),
 \[
   R^{(3)}_{2,3}=3,\qquad R^{(5)}_{2,3}=50,
 \]
@@ -452,12 +1067,146 @@ which gives \(4\zeta(3)g^3-40\zeta(5)g^5\).
 
 A saddle expansion of the same contour representation gives the AFS and
 Hernandez--Lopez strong-coupling terms.
+
+\begin{proposition}[Crossing scalar convention algebra]
+\label{prop:planar-n4-crossing-scalar-convention-algebra}
+Assume \(x_1^\pm,x_2^\pm\) are non-zero and avoid the displayed
+denominators.  In the stringbook scalar-factor orientation used in this
+chapter set
+\[
+  \Xi_{12}
+  =
+  \frac{x_2^+}{x_2^-}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}.
+\]
+The common reciprocal orientation is
+\[
+  \Xi_{12}^{\rm rec}
+  =
+  \frac{x_2^-}{x_2^+}
+  \frac{x_2^+ -x_1^-}{x_2^+ -x_1^+}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+},
+\]
+and satisfies
+\[
+  \Xi_{12}^{\rm rec}=\Xi_{12}^{-1}.
+\]
+Moreover the algebraic substitution \(x_1^\pm\mapsto1/x_1^\pm\) does not
+leave this multiplier invariant as a rational function.
+\end{proposition}
+
+\begin{proof}
+The inverse statement is the product of the three displayed inverse factors:
+\[
+\begin{aligned}
+  \Xi_{12}\Xi_{12}^{\rm rec}
+  &=
+  \frac{x_2^+}{x_2^-}\frac{x_2^-}{x_2^+}
+  \frac{x_2^+ -x_1^+}{x_2^+ -x_1^-}
+  \frac{x_2^+ -x_1^-}{x_2^+ -x_1^+}
+  \frac{x_2^- -1/x_1^+}{x_2^- -1/x_1^-}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+}
+  =1 .
+\end{aligned}
+\]
+For the sheet-free substitution claim it is enough to show that the two
+rational functions are not identical.  At
+\[
+  x_1^+=2,\qquad x_1^-=3,\qquad x_2^+=5,\qquad x_2^-=7
+\]
+one obtains \(\Xi_{12}=117/112\), whereas the same formula with
+\(x_1^\pm\) replaced by \(1/x_1^\pm\) gives \(675/784\).  Hence equality can
+hold only on a proper algebraic sublocus, not as a convention-independent
+identity.
+\end{proof}
+
+\begin{proposition}[Matrix-channel origin of the scalar crossing multiplier]
+\label{prop:planar-n4-crossing-matrix-channel-origin}
+Let \(\bar x_1^\pm=1/x_1^\pm\) denote the crossed-sheet continuation of the
+first magnon and assume all displayed denominators are non-zero.  Form the
+crossed amplitude \(L_{\bar1 2}\) from
+\eqref{eq:planar-n4-su2c-ten-amplitudes} by replacing
+\((x_1^+,x_1^-)\) with \((\bar x_1^+,\bar x_1^-)\), and form \(G_{21}\) by
+exchanging the two magnons and using the analytic-unitarity convention
+\(\mathcal S_{21}=\mathcal S_{12}^{-1}\).  Then
+\begin{equation}
+  \mathcal R_{\rm cr}
+  :=
+  \frac{L_{\bar1 2}}{G_{21}}
+  =
+  \mathcal S_{\bar1 2}\mathcal S_{12}
+  \frac{(x_2^- -1/x_1^-)\,x_1^+(x_1^- -x_2^+)}
+       {(x_2^-x_1^+-1)(x_1^+ -x_2^+)} .
+  \label{eq:planar-n4-crossing-channel-ratio}
+\end{equation}
+Substitute the stringbook scalar split for
+\(\mathcal S_{12}\) and \(\mathcal S_{\bar1 2}\).  In the chamber
+\[
+  x_2^->x_1^+>1,\qquad x_2^+>x_1^->1,
+\]
+where the square roots in the scalar split are taken continuously from
+positive real values, the finite channel condition
+\(\mathcal R_{\rm cr}=1\) is equivalent to
+\begin{equation}
+  \sigma(\bar x_1^\pm,x_2^\pm)\sigma(x_1^\pm,x_2^\pm)=\Xi_{12}.
+  \label{eq:planar-n4-crossing-sigma-from-channel}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The formula for \(L_{\bar1 2}\) is
+\[
+  L_{\bar1 2}
+  =
+  \mathcal S_{\bar1 2}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+},
+\]
+whereas the exchanged \(G\)-amplitude is
+\[
+  G_{21}
+  =
+  \mathcal S_{21}
+  \frac{x_1^+ -x_2^+}{x_1^- -x_2^+}.
+\]
+Using \(\mathcal S_{21}=\mathcal S_{12}^{-1}\) and rewriting
+\((x_2^- -1/x_1^+)=(x_2^-x_1^+-1)/x_1^+\) gives
+\eqref{eq:planar-n4-crossing-channel-ratio}.
+
+Now write
+\[
+  \mathcal S_{12}=R_{12}^{1/2}\sigma_{12},
+  \qquad
+  \mathcal S_{\bar1 2}=R_{\bar1 2}^{1/2}\sigma_{\bar1 2},
+\]
+with \(R\) the rational factor displayed in the scalar split.  Squaring the
+condition \(\mathcal R_{\rm cr}=1\) removes the square-root branch and gives
+a rational identity:
+\[
+  R_{12}R_{\bar1 2}\Xi_{12}^{2}
+  \left[
+    \frac{(x_2^- -1/x_1^-)\,x_1^+(x_1^- -x_2^+)}
+         {(x_2^-x_1^+-1)(x_1^+ -x_2^+)}
+  \right]^2
+  =1 .
+\]
+After cancellation this identity is exactly the product of the factors in
+\(\Xi_{12}\).  The stated real chamber fixes the sign of the square root, so
+the unsquared channel equation is
+\eqref{eq:planar-n4-crossing-sigma-from-channel}.  This is the finite
+matrix-amplitude calculation behind the scalar multiplier; it does not
+construct the analytic crossed scalar branch.
+\end{proof}
+
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
-In the normalization where the rational matrix part is separated as above,
-Janik crossing has the convention-fixed form
+The two preceding propositions fix the rational convention carried by the
+chosen scalar split and its finite crossed-amplitude origin; they do not
+derive the global monodromy condition from finite algebra.  In the
+normalization where the rational matrix part is separated as
+above, Janik crossing has the convention-fixed form
 \begin{equation}
   \sigma(\bar x_1^\pm,x_2^\pm)\sigma(x_1^\pm,x_2^\pm)
   =
@@ -530,8 +1279,84 @@ can wrap around the trace, the omitted mirror-winding effects are no longer
 parametrically absent.
 \end{assumption}
 
-In the \(SU(2)\) scalar subsector, the all-loop asymptotic Bethe equations can
-be written
+The word ``asymptotic'' in this assumption refers to the spatial length of the
+spin chain, not to a sparse-gas approximation.  The following elementary
+counting statement is the precise large-\(L\) bridge used whenever an ABA
+solution is replaced by a macroscopic root distribution.
+
+\begin{proposition}[Finite-density ABA counting equation]
+\label{prop:planar-n4-aba-finite-density-counting}
+Consider a diagonal component of a long-chain Bethe--Yang problem with rapidity
+variables \(u_j\), \(j=1,\ldots,M_L\), and logarithmic equations
+\begin{equation}
+  Lp(u_j)+\sum_{\substack{k=1\\k\neq j}}^{M_L}\Theta(u_j,u_k)
+  =
+  2\pi I_j,
+  \qquad I_j\in\mathbb Z .
+  \label{eq:planar-n4-aba-log-counting-form}
+\end{equation}
+Assume a branch of the two-body phase \(\Theta\) has been chosen on the
+rapidity interval under consideration; possible diagonal jumps have either
+been removed by this branch choice or are treated as explicit source terms.
+Assume also that \(M_L/L\) has a finite limit and that the empirical measures
+\[
+  \nu_L=\frac1L\sum_{j=1}^{M_L}\delta_{u_j}
+\]
+converge weakly to \(\rho(v)\dd v\) on compact subintervals where
+\(p\) and \(\Theta\) are \(C^1\).  Define
+\[
+  Z_L(u)=p(u)+\frac1L\sum_{j=1}^{M_L}\Theta(u,u_j),
+  \qquad
+  Z(u)=p(u)+\int\Theta(u,v)\rho(v)\,\dd v .
+\]
+Then \(Z_L\to Z\) locally uniformly after differentiating under the stated
+regularity hypotheses, and the density of available Bethe levels is
+\begin{equation}
+  \rho(u)+\rho_{\rm h}(u)
+  =
+  \frac{1}{2\pi}Z'(u)
+  =
+  \frac{p'(u)}{2\pi}
+  +
+  \int K(u,v)\rho(v)\,\dd v,
+  \qquad
+  K(u,v)=\frac{1}{2\pi}\partial_u\Theta(u,v).
+  \label{eq:planar-n4-aba-finite-density-counting-equation}
+\end{equation}
+Here \(\rho_{\rm h}\) is the macroscopic density of unoccupied integer levels
+in the chosen branch.  In a completely filled interval \(\rho_{\rm h}=0\).
+\end{proposition}
+
+\begin{proof}
+Weak convergence gives
+\[
+  \frac1L\sum_{j=1}^{M_L}\Theta(u,u_j)
+  \longrightarrow
+  \int\Theta(u,v)\rho(v)\,\dd v
+\]
+uniformly on compact subsets on which the phase is continuous and the root
+cloud stays away from unaccounted singularities.  The same statement applied
+to \(\partial_u\Theta\) gives the derivative formula for \(Z'(u)\).
+Equation~\eqref{eq:planar-n4-aba-log-counting-form} says that the integer
+level attached to rapidity \(u\) is, to leading order, \(LZ(u)/(2\pi)\).  Hence
+the number of available integer levels in a small interval \([u,u+\dd u]\) is
+\[
+  \frac{L}{2\pi}Z'(u)\,\dd u+o(L\,\dd u).
+\]
+Dividing by \(L\,\dd u\) gives the density of occupied plus unoccupied
+available levels, namely \(\rho+\rho_{\rm h}\).  This proves
+\eqref{eq:planar-n4-aba-finite-density-counting-equation}.
+\end{proof}
+
+This is a large-\(L\) continuum limit of the same physical ABA equations.  It
+is not mirror TBA: no mirror energy, entropy functional, pseudoenergy, or
+thermal variational problem has been introduced.  The additional dynamical
+assumption is exactly the one stated above, namely that the long-chain
+two-body magnon S-matrix continues to quantize the physical chain when
+\(M_L/L=O(1)\), as long as mirror winding remains asymptotically suppressed.
+
+For the rank-one equation in the stringbook \(SL(2)\)-vacuum orientation, the
+all-loop asymptotic Bethe equations can be written
 \begin{equation}
   \left(\frac{x_j^+}{x_j^-}\right)^L
   =
@@ -539,7 +1364,7 @@ be written
   \frac{x_j^- -x_k^+}{x_j^+ -x_k^-}
   \frac{1-1/(x_j^+x_k^-)}{1-1/(x_j^-x_k^+)}
   \sigma(x_j^\pm,x_k^\pm)^2 ,
-  \label{eq:planar-n4-su2-aba}
+  \label{eq:planar-n4-rank-one-stringbook-aba}
 \end{equation}
 with cyclicity
 \[
@@ -917,7 +1742,7 @@ additional dynamical assumptions.
 
 \begin{controlledapproximation}[Asymptotic long-chain regime]
 \label{ca:planar-n4-asymptotic-regime}
-Equation~\eqref{eq:planar-n4-su2-aba} is an instance of
+Equation~\eqref{eq:planar-n4-rank-one-stringbook-aba} is an instance of
 Assumption~\ref{ass:planar-n4-aba-regime}.  At weak coupling, wrapping
 effects begin at the loop order at which planar interactions can close around
 the trace.  At finite coupling, the distinction is between the asymptotic
@@ -927,33 +1752,101 @@ quantum spectral curve.
 
 \section{Weak-Coupling Reduction}
 
-At small \(g\), \(x^\pm\) reduce to the one-loop rapidity variable:
+The weak-coupling limit is a useful place to separate two conventions that
+are often conflated.  The stringbook rank-one equation
+\eqref{eq:planar-n4-rank-one-stringbook-aba} uses the \(SL(2)\)-vacuum
+orientation.  The compact \(SU(2)\) coordinate Bethe equation of
+Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains} uses the reciprocal
+Bethe--Yang phase, because there the scattering phase is the inverse of the
+ordered-chamber exchange coefficient.  The two statements are compatible,
+but only after the orientation is named.
+
+\begin{proposition}[Weak limit of the rank-one ABA orientation]
+\label{prop:planar-n4-rank-one-aba-weak-limit}
+Let \(u_j,u_k\) stay away from the shifted branch points and from each other
+as \(g\to0\), and take the physical outside branch
 \[
-  x^\pm=\frac{1}{g}\left(u\pm\frac{\ii}{2}\right)+O(g).
+  x_j^\pm=x(u_j\pm\ii/2),
+  \qquad
+  x(U)+x(U)^{-1}=\frac{U}{g}.
 \]
 Then
-\[
+\begin{align}
+  x_j^\pm
+  &=
+  \frac{u_j\pm\ii/2}{g}
+  -\frac{g}{u_j\pm\ii/2}
+  +O(g^3),
+  \label{eq:planar-n4-xpm-weak-branch-expansion}\\
   \frac{x_j^+}{x_j^-}
-  =
+  &=
   \frac{u_j+\ii/2}{u_j-\ii/2}+O(g^2),
-\]
-and the rational part of \eqref{eq:planar-n4-su2-aba} reduces to
-\[
-  \frac{u_j-u_k+\ii}{u_j-u_k-\ii}+O(g^2).
-\]
-The dressing phase starts at higher weak-coupling order, so the leading
-equation is the one-loop Bethe equation
-\eqref{eq:planar-n4-one-loop-su2-bethe}.  The dispersion expands as
-\[
-  H(p)-1
+  \label{eq:planar-n4-weak-momentum-ratio}\\
+  \mathcal R_{jk}
+  &:=
+  \frac{x_j^- -x_k^+}{x_j^+ -x_k^-}
+  \frac{1-1/(x_j^+x_k^-)}{1-1/(x_j^-x_k^+)}
   =
-  8g^2\sin^2\frac p2
-  -32g^4\sin^4\frac p2
-  +256g^6\sin^6\frac p2
-  +O(g^8).
+  \frac{u_j-u_k-\ii}{u_j-u_k+\ii}+O(g^2),
+  \label{eq:planar-n4-rank-one-rational-weak-limit}\\
+  H(u_j)-1
+  &=
+  2\ii g\left(\frac1{x_j^+}-\frac1{x_j^-}\right)
+  =
+  \frac{2g^2}{u_j^2+1/4}+O(g^4).
+  \label{eq:planar-n4-rank-one-energy-weak-limit}
+\end{align}
+The dressing phase satisfies \(\sigma^2=1+O(g^6)\) for fixed weak Bethe
+roots in the charge-expansion regime.  Hence
+\eqref{eq:planar-n4-rank-one-stringbook-aba} reduces to
+\begin{equation}
+  \left(\frac{u_j+\ii/2}{u_j-\ii/2}\right)^L
+  =
+  \prod_{\substack{k=1\\k\neq j}}^M
+  \frac{u_j-u_k-\ii}{u_j-u_k+\ii},
+  \label{eq:planar-n4-rank-one-sl2-weak-bethe}
+\end{equation}
+the \(SL(2)\)-orientation also used in
+\eqref{eq:planar-n4-sl2-one-loop-bethe} and in the weak-QSC Baxter
+degeneration of Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.
+The reciprocal factor \(\mathcal R_{jk}^{-1}\) gives the compact \(SU(2)\)
+one-loop phase of \eqref{eq:planar-n4-one-loop-su2-bethe}.
+\end{proposition}
+
+\begin{proof}
+The outside branch of \(x+x^{-1}=U/g\) has the expansion
+\[
+  x(U)=\frac{U}{g}-\frac{g}{U}+O(g^3),
 \]
-Using \(g^2=\lambda/(16\pi^2)\), the leading term agrees with the one-loop
-normalization of Chapter~\ref{ch:planar-n4-spectral-problem-spin-chains}.
+which gives \eqref{eq:planar-n4-xpm-weak-branch-expansion}.  Dividing the
+two shifted expansions proves \eqref{eq:planar-n4-weak-momentum-ratio}.  In
+\(\mathcal R_{jk}\), the first factor has numerator
+\[
+  \frac{u_j-\ii/2}{g}-\frac{u_k+\ii/2}{g}+O(g)
+  =
+  \frac{u_j-u_k-\ii}{g}+O(g)
+\]
+and denominator \((u_j-u_k+\ii)/g+O(g)\).  The second factor equals
+\(1+O(g^2)\), because each \(x^\pm\) is \(O(g^{-1})\).  This proves
+\eqref{eq:planar-n4-rank-one-rational-weak-limit}.  The energy expansion is
+\[
+  2\ii g^2\left(
+    \frac{1}{u_j+\ii/2}-\frac{1}{u_j-\ii/2}
+  \right)+O(g^4)
+  =
+  \frac{2g^2}{u_j^2+1/4}+O(g^4).
+\]
+Finally, the first weak BES coefficient is \(c_{2,3}(g)=O(g^3)\), while the
+weak charges give \(q_2q_3-q_3q_2=O(g^3)\); the dressing phase therefore
+cannot affect the one-loop equation.  Substituting the limits into
+\eqref{eq:planar-n4-rank-one-stringbook-aba} gives
+\eqref{eq:planar-n4-rank-one-sl2-weak-bethe}.
+\end{proof}
+
+Using \(g^2=\lambda/(16\pi^2)\), the leading energy term in
+\eqref{eq:planar-n4-rank-one-energy-weak-limit} agrees with the one-loop
+normalization of Chapters~\ref{ch:planar-n4-spectral-problem-spin-chains}
+and~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.
 
 \section{Bound States and the Large-Spin Cusp Limit}
 
@@ -1063,15 +1956,359 @@ one obtains
   8g^2\log S+O(S^0g^2,g^4).
   \label{eq:planar-n4-sl2-one-loop-cusp-log}
 \end{equation}
-With the all-loop ABA and the BES dressing phase, the density fluctuation
-satisfies the BES integral equation.  The resulting scaling function begins
+The all-loop ABA refines this large-spin calculation rather than replacing
+it.  The macroscopic roots at \(|u|\sim S\) still produce the logarithmic
+enhancement, but the all-loop phase induces an \(O(\log S)\) fluctuation of
+the density near \(u=O(1)\).  This near-origin fluctuation is the object
+described by the BES equation.
+
+\begin{assumption}[Large-spin BES scaling regime]
+\label{ass:planar-n4-bes-scaling-regime}
+Use the \(SL(2)\) all-loop asymptotic Bethe equation in the regime
 \[
+  S\to\infty,\qquad L\ \text{fixed},\qquad \log S\gg L,
+\]
+with symmetric mode numbers \(n_k=\pm1\), zero total momentum, the physical
+Zhukovsky branch for the Bethe roots before crossing, and the BES dressing
+phase of Definition~\ref{def:planar-n4-dressing-phase-data}.  Assume that the
+large-spin root density has a one-cut bulk part at \(u=O(S)\) and a
+near-origin correction at \(u=O(1)\) whose coefficient is proportional to
+the scaling function.  The all-loop ABA is being used here in precisely the
+finite-density sense of Assumption~\ref{ass:planar-n4-aba-regime}; wrapping
+effects are outside this asymptotic calculation.
+\end{assumption}
+
+The derivative of the logarithmic all-loop \(SL(2)\) Bethe equation has three
+types of terms.  The rational XXX kernel gives the one-loop singular source
+already solved above.  The rational all-loop Zhukovsky factors and the
+dressing phase give additional kernels.  Finally, the \(u=O(S)\) bulk roots
+feed a source into the \(u=O(1)\) equation.  After the bulk density has been
+used to solve the outer problem, the inner equation is closed for a single
+Fourier density.  We use the standard BES normalization
+\[
+  \widehat\sigma(t)
+  =
+  \ee^{-t/2}\int_{-\infty}^{\infty}\dd u\,
+  \ee^{-\ii t u}\sigma(u),
+  \qquad t>0,
+\]
+where \(\sigma(u)\) denotes the inner density correction in the present
+large-spin normalization.
+
+\begin{definition}[BES kernel in the stringbook convention]
+\label{def:planar-n4-bes-kernel}
+Let \(J_n\) be the Bessel function of the first kind.  Set
+\begin{equation}
+  K_0(t,t')
+  =
+  \frac{J_1(t)J_0(t')-J_0(t)J_1(t')}{t-t'},
+  \label{eq:planar-n4-bes-rational-kernel}
+\end{equation}
+with the diagonal value defined by analytic continuation.  The dressing part
+is
+\begin{equation}
+  K_{\rm dr}(t,t';g)
+  =
+  \frac{4}{tt'}
+  \sum_{k,\ell\geq1}
+  (-1)^{k+\ell}c_{2k,2\ell+1}(g)
+  J_{2\ell}(t)J_{2k-1}(t'),
+  \label{eq:planar-n4-bes-dressing-kernel}
+\end{equation}
+where \(c_{r,s}(g)=-c_{s,r}(g)\) for \(r>s\).  The BES kernel used below is
+\[
+  K_{\rm BES}(t,t';g)=K_0(t,t')+K_{\rm dr}(t,t';g),
+  \qquad
+  K_{\rm BES}(t,0;g)
+  =
+  \frac{J_1(t)}{t}
+  +
+  \frac{2}{t}\sum_{\ell\geq1}
+  (-1)^{\ell-1}c_{2,2\ell+1}(g)J_{2\ell}(t).
+\]
+\end{definition}
+
+The Fourier transform which turns powers of \(x^\pm(u)^{-1}\) into Bessel
+functions is the convention-sensitive step.  We spell it out because replacing
+the signed ratio \(J_m(2gt)/t\) by \(J_m(2g|t|)/|t|\) loses a parity sign in
+the lower half-plane transform.
+
+\begin{proposition}[Zhukovsky Fourier transform]
+\label{prop:planar-n4-bes-fourier-xpm}
+Let \(g>0\), let \(m\in\mathbb Z_{>0}\), and let \(x(z)\) be the physical
+outside branch of
+\[
+  x(z)+x(z)^{-1}=\frac{z}{g},
+  \qquad x(z)\sim \frac{z}{g}\quad (z\to\infty),
+\]
+with short cut \([-2g,2g]\).  Put
+\[
+  x^\pm(u)=x(u\pm \ii/2),
+  \qquad u\in\mathbb R .
+\]
+For \(t\neq0\), with \(\Theta(t)=1\) for \(t>0\) and \(0\) for \(t<0\),
+the oscillatory Fourier transform is
+\begin{equation}
+  \int_{-\infty}^{\infty}\frac{\dd u}{2\pi}\,
+  \ee^{-\ii t u}\frac1{x^\pm(u)^m}
+  =
+  (-\ii)^m m\,\ee^{-|t|/2}\,
+  \frac{\pm\Theta(\pm t)J_m(2gt)}{t}.
+  \label{eq:planar-n4-bes-fourier-xpm}
+\end{equation}
+Here the upper sign is used for \(x^+\), the lower sign for \(x^-\), and
+\(J_m\) is the Bessel function of the first kind.
+\end{proposition}
+
+\begin{proof}
+For the \(x^+\) transform set \(z=u+\ii/2\).  Then
+\[
+  \ee^{-\ii t u}=\ee^{-t/2}\ee^{-\ii t z},
+\]
+and the integration line is \(\mathbb R+\ii/2\).  If \(t<0\), this line is
+closed in the upper half-plane and no cut is crossed, so the integral
+vanishes.  If \(t>0\), close in the lower half-plane.  The deformation crosses
+the Zhukovsky cut and gives the negatively oriented loop around it.  Using
+\(z=g(x+x^{-1})\) on this loop, with \(x\) running around \(|x|=1\), gives
+\[
+  I_m^+(t)
+  =
+  -\ee^{-t/2}\oint_{|x|=1}\frac{\dd x}{2\pi}\,
+  g(1-x^{-2})x^{-m}\ee^{-\ii gt(x+x^{-1})}.
+\]
+The generating function
+\[
+  \ee^{-\ii gt(x+x^{-1})}
+  =
+  \sum_{n\in\mathbb Z}(-\ii)^nJ_n(2gt)x^n
+\]
+therefore yields
+\[
+  I_m^+(t)
+  =
+  -\ii g\ee^{-t/2}
+  \left[(-\ii)^{m-1}J_{m-1}(2gt)
+        -(-\ii)^{m+1}J_{m+1}(2gt)\right].
+\]
+Since \((-\ii)^{m+1}=-(-\ii)^{m-1}\), and
+\[
+  J_{m-1}(z)+J_{m+1}(z)=\frac{2m}{z}J_m(z),
+\]
+this becomes
+\[
+  I_m^+(t)=(-\ii)^m m\,\ee^{-t/2}\frac{J_m(2gt)}{t},
+  \qquad t>0.
+\]
+Together with the vanishing for \(t<0\), this proves the upper-sign formula.
+
+For real \(u\), the lower shifted branch satisfies
+\[
+  x^-(u)=\overline{x^+(u)}.
+\]
+Hence
+\[
+  I_m^-(t)=\overline{I_m^+(-t)}.
+\]
+Applying the upper-sign result to \(-t>0\) and using
+\(J_m(-z)=(-1)^mJ_m(z)\) gives the lower-sign formula in
+\eqref{eq:planar-n4-bes-fourier-xpm}.  The factor \(J_m(2gt)/t\), with
+signed \(t\), is therefore part of the convention rather than a cosmetic
+choice.
+\end{proof}
+
+The signs in Proposition~\ref{prop:planar-n4-bes-fourier-xpm} encode the same
+\(x^+\)-above, \(x^-\)-below sheet convention as the mirror continuation in
+Chapter~\ref{ch:planar-n4-mirror-tba-y-system}.  Reversing them would invert
+the dressing-source contribution.
+
+\begin{proposition}[BES equation from the large-spin ABA]
+\label{prop:planar-n4-bes-equation}
+Under Assumption~\ref{ass:planar-n4-bes-scaling-regime}, and after applying
+the Fourier transform \eqref{eq:planar-n4-bes-fourier-xpm}, the inner
+large-spin density obeys
+\begin{equation}
+  \widehat\sigma(t)
+  =
+  \frac{t}{\ee^t-1}
+  \left[
+    K_{\rm BES}(2gt,0;g)
+    -
+    4g^2\int_0^\infty\dd t'\,
+    K_{\rm BES}(2gt,2gt';g)\widehat\sigma(t')
+  \right],
+  \qquad t>0.
+  \label{eq:planar-n4-bes-equation}
+\end{equation}
+The corresponding large-spin scaling function in the normalization of
+\eqref{eq:planar-n4-sl2-one-loop-cusp-log} is
+\begin{equation}
   \Delta-S-L=f(g)\log S+O(S^0),
   \qquad
-  f(g)=8g^2-\frac{8\pi^2}{3}g^4+\frac{88\pi^4}{45}g^6+O(g^8).
+  f(g)
+  =
+  8g^2
+  -
+  64g^4
+  \int_0^\infty\dd t\,
+  \widehat\sigma(t)\frac{J_1(2gt)}{2gt}.
+  \label{eq:planar-n4-bes-scaling-function}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+We spell out the logic because it is easy to hide a convention change in this
+calculation.  Taking the logarithm of the \(SL(2)\) all-loop Bethe equation
+and differentiating with respect to the target rapidity \(u\) gives the
+rational kernel
+\[
+  \frac{2}{(u-v)^2+1}-2\pi\delta(u-v),
 \]
-This \(f(g)\) is the lightlike cusp anomalous dimension in the convention of
-Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.  The equality is
-a structural matching between large-spin single-trace operators and the
-Wilson-line cusp observable; the nonperturbative gauge-theory proof remains
+where the delta term records the branch of the arccotangent scattering phase.
+The all-loop rational Zhukovsky factor contributes
+\[
+  -2\ii\,\partial_u\log
+  \frac{1-1/(x^+(u)x^-(v))}
+       {1-1/(x^-(u)x^+(v))},
+\]
+and the scalar factor contributes
+\[
+  2\partial_u\theta(x^\pm(v),x^\pm(u)).
+\]
+The \(O(S)\) bulk roots are described by the one-cut density
+\eqref{eq:planar-n4-sl2-cusp-density}; expanding their contribution for
+fixed \(u\) produces the driving term
+\[
+  \partial_u\left[
+  \frac1{2g}\left(\frac1{x^+(u)}+\frac1{x^-(u)}\right)
+  +
+  \frac{\ii}{2g}
+  \sum_{n\geq1}\frac{c_{2,2n+1}(g)}{n}
+  \left(\frac1{x^+(u)^{2n}}-\frac1{x^-(u)^{2n}}\right)
+  \right].
+  \label{eq:planar-n4-bes-inner-driving}
+\]
+The explicit \(L\)-dependent terms in the logarithmic Bethe equation are
+smaller than this driving term in the scaling regime \(\log S\gg L\), so they
+affect the \(O(S^0)\) part rather than \(f(g)\).
+
+Applying \((2\pi)^{-1}\ee^{-t/2}\int\dd u\,\ee^{-\ii t u}\) to the inner
+equation gives \eqref{eq:planar-n4-bes-equation}.  The Bessel transform
+\eqref{eq:planar-n4-bes-fourier-xpm} turns the all-loop rational factors into
+\(K_0\), and turns the charge expansion of the dressing phase into
+\(K_{\rm dr}\).  The factor \(t/(\ee^t-1)\) is the inverse of the rational
+large-spin kernel in this Fourier normalization.  The energy formula follows
+by expanding
+\[
+  \sum_k\left(
+  \frac1{x_k^+}-\frac1{x_k^-}
+  \right)
+\]
+against the same bulk-plus-inner density and applying
+\eqref{eq:planar-n4-bes-fourier-xpm} with \(m=1\).  The outer density gives
+the one-loop \(8g^2\log S\) term; the inner density gives the integral
+correction in \eqref{eq:planar-n4-bes-scaling-function}.
+\end{proof}
+
+\begin{proposition}[Weak expansion of the BES scaling function]
+\label{prop:planar-n4-bes-weak-scaling-function}
+The BES equation \eqref{eq:planar-n4-bes-equation} implies
+\begin{equation}
+  f(g)
+  =
+  8g^2-\frac{8\pi^2}{3}g^4+\frac{88\pi^4}{45}g^6+O(g^8).
+  \label{eq:planar-n4-bes-weak-scaling-function}
+\end{equation}
+The first dressing-phase contribution enters at order \(g^8\).
+\end{proposition}
+
+\begin{proof}
+For the terms through \(g^6\), the dressing kernel may be omitted: from
+\(c_{2,3}(g)=4\zeta(3)g^3+O(g^5)\),
+\(J_2(2gt)=O(g^2)\), and the \(1/t\) factor in \(K_{\rm BES}(2gt,0)\), the
+driving dressing term starts at \(O(g^4)\) in \(\widehat\sigma\), hence at
+order \(g^8\) in \(f(g)\).
+
+Write
+\[
+  \widehat\sigma(t)=\sigma_0(t)+g^2\sigma_1(t)+O(g^4).
+\]
+Since
+\[
+  \frac{J_1(2gt)}{2gt}
+  =
+  \frac12-\frac{g^2t^2}{4}+O(g^4),
+  \qquad
+  K_0(2gt,0)=\frac12-\frac{g^2t^2}{4}+O(g^4),
+\]
+and \(K_0(2gt,2gt')=\frac12+O(g^2)\), the BES equation gives
+\[
+  \sigma_0(t)=\frac{t}{2(\ee^t-1)}
+\]
+and
+\[
+  \sigma_1(t)
+  =
+  \frac{t}{\ee^t-1}
+  \left[
+    -\frac{t^2}{4}
+    -4\int_0^\infty\dd t'\,\frac12\,\sigma_0(t')
+  \right]
+  =
+  -\frac{t}{\ee^t-1}
+  \left(\frac{t^2}{4}+\frac{\pi^2}{6}\right),
+\]
+because
+\[
+  \int_0^\infty\frac{t\,\dd t}{\ee^t-1}=\frac{\pi^2}{6}.
+\]
+Put
+\[
+  A(g)=
+  \int_0^\infty\dd t\,
+  \widehat\sigma(t)\frac{J_1(2gt)}{2gt}
+  =
+  A_0+g^2A_1+O(g^4).
+\]
+The two coefficients are
+\[
+  A_0
+  =
+  \int_0^\infty\frac{t\,\dd t}{4(\ee^t-1)}
+  =
+  \frac{\pi^2}{24},
+\]
+and
+\[
+  A_1
+  =
+  \int_0^\infty\frac{t\,\dd t}{\ee^t-1}
+  \left(-\frac{t^2}{4}-\frac{\pi^2}{12}\right)
+  =
+  -\frac{\pi^4}{60}-\frac{\pi^4}{72}
+  =
+  -\frac{11\pi^4}{360},
+\]
+using
+\[
+  \int_0^\infty\frac{t^3\,\dd t}{\ee^t-1}=\frac{\pi^4}{15}.
+\]
+Substitution into
+\eqref{eq:planar-n4-bes-scaling-function} gives
+\[
+  f(g)=8g^2-64g^4A_0-64g^6A_1+O(g^8),
+\]
+which is \eqref{eq:planar-n4-bes-weak-scaling-function}.
+\end{proof}
+
+The strong-coupling solution of the same BES equation gives
+\[
+  f(g)=4g-\frac{3\log2}{\pi}+O(g^{-1}).
+\]
+This is the convention in which the large-spin anomalous dimension has
+coefficient \(f(g)\).  Some Wilson-line literature denotes by
+\(\Gamma_{\rm cusp}\) half of this quantity; Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}
+states its Wilson-line convention at the point where cusped Wilson loops are
+introduced.  The equality between the large-spin scaling function and the
+Wilson-line cusp observable is a structural matching within planar
+\(\mathcal N=4\) theory; a nonperturbative construction-level proof remains
 outside the present monograph.

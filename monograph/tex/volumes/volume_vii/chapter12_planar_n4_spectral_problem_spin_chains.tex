@@ -422,7 +422,11 @@ There is also a useful planar chiral-ring convention.  For \(G=SU(N)\), let
   \frac{(2\pi)^J}{g_{\rm YM}^J\sqrt{J\,N^J}}\,
   :\operatorname{tr}(Z^J):
 \]
-in the leading large-\(N\) single-trace normalization.  Then
+in the leading large-\(N\) single-trace normalization.
+
+\begin{proposition}[Planar chiral-primary normalization]
+\label{prop:planar-n4-chiral-primary-normalization}
+At leading planar order and for fixed \(J,J_1,J_2\) as \(N\to\infty\),
 \[
   \langle \mathcal Z_J(x)\,\overline{\mathcal Z}_J(0)\rangle_{\rm pl}
   =
@@ -446,9 +450,66 @@ Equivalently, in the protected chiral OPE,
   \mathcal Z_{J_1+J_2}(0)
   +\text{descendants and multi-traces}
 \]
-at leading planar order.  Finite-\(N\) trace relations and multi-trace
-mixing are not suppressed in this formula; they are part of the exact
-protected-operator problem rather than the single-trace spin-chain problem.
+at leading planar order.
+\end{proposition}
+
+\begin{proof}
+The elementary propagator in the trace convention used above is
+\[
+  \langle Z^a(x)\overline Z^b(0)\rangle_{\rm free}
+  =
+  \frac{g_{\rm YM}^2}{4\pi^2x^2}\delta^{ab}.
+\]
+For a single trace of length \(J\), planar Wick contractions pair each \(Z\)
+with the corresponding \(\overline Z\) in a cyclic order.  There are \(J\)
+choices of the relative cyclic origin, and the double-line color graph has
+\(J\) leading color loops.  Hence
+\[
+  \bigl\langle :\operatorname{tr}(Z^J):(x)
+  :\operatorname{tr}(\overline Z^J):(0)\bigr\rangle_{\rm pl}
+  =
+  JN^J
+  \left(\frac{g_{\rm YM}^2}{4\pi^2x^2}\right)^J .
+\]
+Multiplying by the two normalization factors in \(\mathcal Z_J\) gives the
+unit two-point function.
+
+For the extremal three-point function put \(J=J_1+J_2\).  At leading planar
+order all fields in the first two holomorphic traces contract with the single
+anti-holomorphic trace.  A planar embedding is fixed by choosing the cyclic
+origin of the anti-holomorphic trace, the cyclic origin of the
+\(J_1\)-trace, and the cyclic origin of the \(J_2\)-trace.  This gives
+\(JJ_1J_2\) planar embeddings.  The connected double-line graph has
+\(J-1\) leading color loops, because three trace boundaries have been joined
+into one planar pair-of-pants graph.  Therefore
+\[
+\begin{aligned}
+  &\bigl\langle
+  :\operatorname{tr}(Z^{J_1}):(x_1)
+  :\operatorname{tr}(Z^{J_2}):(x_2)
+  :\operatorname{tr}(\overline Z^J):(x_3)
+  \bigr\rangle_{\rm pl}
+\\
+  &\hspace{4em}
+  =
+  JJ_1J_2\,N^{J-1}
+  \left(\frac{g_{\rm YM}^2}{4\pi^2}\right)^J
+  \frac{1}{x_{13}^{2J_1}x_{23}^{2J_2}} .
+\end{aligned}
+\]
+The product of the three normalization constants contributes
+\[
+  \frac{(2\pi)^{2J}}
+       {g_{\rm YM}^{2J}\sqrt{J_1N^{J_1}}\sqrt{J_2N^{J_2}}\sqrt{JN^J}},
+\]
+which reduces the coefficient to \(\sqrt{J_1J_2J}/N\).  The displayed OPE
+coefficient follows by taking \(x_1\to x_2\) in this protected extremal
+three-point function with the two-point normalization already fixed.
+\end{proof}
+
+Finite-\(N\) trace relations and multi-trace mixing are not suppressed in
+this formula; they are part of the exact protected-operator problem rather
+than the single-trace spin-chain problem.
 
 \section{Planar Limit and Operator Hilbert Space}
 

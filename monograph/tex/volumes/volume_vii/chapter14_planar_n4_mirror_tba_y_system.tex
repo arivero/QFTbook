@@ -14,10 +14,13 @@ constructive QFT.
 \section{Mirror Transformation}
 
 For a physical magnon with energy \(E(p)\) and momentum \(p\), the mirror
-variables are defined by analytic continuation
+variables are defined by the stringbook analytic continuation
 \[
-  \widetilde E=\ii p,\qquad
-  \widetilde p=\ii E .
+  E=\ii\widetilde p,\qquad
+  p=\ii\widetilde E ,
+  \qquad\text{equivalently}\qquad
+  \widetilde E=-\ii p,\quad
+  \widetilde p=-\ii E .
 \]
 Since
 \[
@@ -34,7 +37,7 @@ For a \(Q\)-magnon bound state with physical dispersion
   E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2},
 \]
 the mirror dispersion obtained from
-\(\widetilde E=\ii p\), \(\widetilde p=\ii E_Q\) is
+\(p=\ii\widetilde E\), \(E_Q=\ii\widetilde p\) is
 \begin{equation}
   \widetilde E_Q(\widetilde p)
   =
@@ -48,9 +51,9 @@ The positive branch is chosen for real mirror momentum.
 \end{proposition}
 
 \begin{proof}
-Set \(p=-\ii\widetilde E\) and \(E_Q=-\ii\widetilde p\) in the physical
+Set \(p=\ii\widetilde E\) and \(E_Q=\ii\widetilde p\) in the physical
 dispersion relation.  Since
-\(\sin(-\ii\widetilde E/2)=-\ii\sinh(\widetilde E/2)\), one obtains
+\(\sin(\ii\widetilde E/2)=\ii\sinh(\widetilde E/2)\), one obtains
 \[
   -\widetilde p^{\,2}
   =
@@ -97,6 +100,92 @@ obeying the bound-state shortening relation
 \]
 In the mirror region the branch is chosen so that the mirror energy
 \(\widetilde E_Q(u)\) is positive for real mirror rapidity \(u\).
+
+The preceding paragraph is often the place where sign mistakes enter.  The
+following elementary parametrization fixes the sheet convention used in the
+rest of the chapter and in the stringbook mirror Bethe--Yang equations.
+
+\begin{proposition}[Mirror Zhukovsky sheet parametrization]
+\label{prop:planar-n4-mirror-zhukovsky-sheet-parametrization}
+Fix \(g>0\), \(Q\in\mathbb Z_{>0}\), and real mirror momentum
+\(\widetilde p\).  Put
+\[
+  R_Q=\sqrt{Q^2+\widetilde p^{\,2}},
+  \qquad
+  \widetilde E_Q
+  =
+  2\,\operatorname{arsinh}\frac{R_Q}{4g},
+  \qquad
+  r_Q=\ee^{-\widetilde E_Q/2},
+  \qquad
+  \xi_Q=\frac{\widetilde p-\ii Q}{R_Q}.
+\]
+Then
+\begin{equation}
+  x_Q^+=r_Q\xi_Q,\qquad
+  x_Q^-=r_Q^{-1}\xi_Q
+  \label{eq:planar-n4-mirror-zhukovsky-parametrization}
+\end{equation}
+satisfy
+\begin{align}
+  x_Q^++\frac1{x_Q^+}-x_Q^- -\frac1{x_Q^-}
+  &=
+  \frac{\ii Q}{g},
+  \label{eq:planar-n4-mirror-shortening-check}\\
+  \log\frac{x_Q^-}{x_Q^+}
+  &=
+  \widetilde E_Q,
+  \label{eq:planar-n4-mirror-energy-log-check}\\
+  \ii\widetilde p
+  &=
+  -Q-2\ii g(x_Q^+-x_Q^-).
+  \label{eq:planar-n4-mirror-momentum-check}
+\end{align}
+Moreover \(|x_Q^+|<1<|x_Q^-|\).  At weak coupling with \(Q,\widetilde p\)
+fixed,
+\begin{equation}
+  \ee^{-L\widetilde E_Q}
+  =
+  \left(\frac{4g^2}{Q^2+\widetilde p^{\,2}}\right)^L
+  \bigl(1+O(g^2)\bigr),
+  \label{eq:planar-n4-mirror-weak-boltzmann}
+\end{equation}
+so one mirror wrapping around a length-\(L\) trace first appears at order
+\(g^{2L}\) before transfer-matrix and dressing factors are included.
+\end{proposition}
+
+\begin{proof}
+The number \(\xi_Q\) has unit modulus and \(0<r_Q<1\).  Hence
+\(|x_Q^+|<1<|x_Q^-|\), and
+\(\log(x_Q^-/x_Q^+)=-2\log r_Q=\widetilde E_Q\) on the real mirror branch.
+Since
+\[
+  \sinh\frac{\widetilde E_Q}{2}=\frac{R_Q}{4g},
+  \qquad
+  \xi_Q^{-1}-\xi_Q=\frac{2\ii Q}{R_Q},
+\]
+we get
+\[
+  x_Q^++\frac1{x_Q^+}-x_Q^- -\frac1{x_Q^-}
+  =
+  2\sinh\frac{\widetilde E_Q}{2}\,(\xi_Q^{-1}-\xi_Q)
+  =
+  \frac{\ii Q}{g}.
+  \]
+Similarly,
+\[
+  -Q-2\ii g(x_Q^+-x_Q^-)
+  =
+  -Q+4\ii g\sinh\frac{\widetilde E_Q}{2}\,\xi_Q
+  =
+  -Q+\ii R_Q\xi_Q
+  =
+  \ii\widetilde p.
+\]
+Finally,
+\(\ee^{-\widetilde E_Q}=(\sqrt{1+R_Q^2/(16g^2)}-R_Q/(4g))^2\), whose
+small-\(g\) expansion gives \eqref{eq:planar-n4-mirror-weak-boltzmann}.
+\end{proof}
 
 \begin{definition}[Mirror-kernel datum]
 \label{def:planar-n4-mirror-kernel-datum}
@@ -502,6 +591,96 @@ Equivalently \(1+\ee^{-\zeta}\) has a zero at each defect.  In the planar
 \(\mathcal N=4\) problem this condition becomes the exact Bethe-root
 regularity condition after analytic continuation to the physical sheet.
 
+\begin{proposition}[Excited-state contour deformation in one species]
+\label{prop:one-species-excited-contour-deformation}
+Let \(S(u,v)\) be a meromorphic two-particle mirror scattering factor with
+no zero or pole on the undeformed real \(v\)-contour, and let
+\[
+  K^{\rm dens}(u,v)=\frac{1}{2\pi\ii}\partial_v\log S(u,v).
+\]
+Let \(Y(v)=\ee^{-\zeta(v)}\), and suppose that
+\[
+  F(v)=1+Y(v)
+\]
+has simple zeros \(u_1,\ldots,u_K\) crossed by the excited-state contour
+deformation and no other singularities are crossed.  Assume also that the
+boundary terms at infinity vanish in the integrations by parts below.  With
+the contour orientation for which the crossed zeros are enclosed
+counterclockwise, the deformed TBA source is
+\begin{equation}
+  \int_{\mathcal C_{\rm exc}}\dd v\,
+  K^{\rm dens}(u,v)\log F(v)
+  =
+  \int_{\mathbb R}\dd v\,
+  K^{\rm dens}(u,v)\log F(v)
+  -
+  \sum_{j=1}^K \log S(u,u_j).
+  \label{eq:one-species-excited-source-residue}
+\end{equation}
+Moreover, the mirror energy integral obeys
+\begin{equation}
+  -\int_{\mathcal C_{\rm exc}}\frac{\dd v}{2\pi}\,
+  \frac{\dd\widetilde p(v)}{\dd v}\log F(v)
+  =
+  \sum_{j=1}^K \ii\,\widetilde p(u_j)
+  -
+  \int_{\mathbb R}\frac{\dd v}{2\pi}\,
+  \frac{\dd\widetilde p(v)}{\dd v}\log F(v).
+  \label{eq:one-species-excited-energy-residue}
+\end{equation}
+The root condition is
+\begin{equation}
+  F(u_j)=0
+  \quad\Longleftrightarrow\quad
+  \zeta(u_j)=-2\pi\ii\left(n_j+\frac12\right),
+  \qquad n_j\in\mathbb Z.
+  \label{eq:one-species-excited-root-quantization}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For the source term, write the contour difference as the sum of small
+positively oriented loops around the crossed zeros and integrate by parts:
+\[
+  \oint
+  \frac{\dd v}{2\pi\ii}\,
+  \partial_v\log S(u,v)\log F(v)
+  =
+  -
+  \oint
+  \frac{\dd v}{2\pi\ii}\,
+  \log S(u,v)\partial_v\log F(v).
+\]
+Since each \(u_j\) is a simple zero of \(F\),
+\(\partial_v\log F(v)\) has residue \(1\) at \(v=u_j\).  The residue theorem
+therefore gives the contribution
+\(-\sum_j\log S(u,u_j)\), proving
+\eqref{eq:one-species-excited-source-residue}.  The energy term is the same
+calculation with \(\log S(u,v)\) replaced by \(\ii\widetilde p(v)\):
+\[
+  -\oint\frac{\dd v}{2\pi}\,
+  \widetilde p'(v)\log F(v)
+  =
+  \oint\frac{\dd v}{2\pi}\,
+  \widetilde p(v)\partial_v\log F(v)
+  =
+  \sum_j \ii\,\widetilde p(u_j).
+\]
+Finally, \(F(u_j)=0\) means \(\ee^{-\zeta(u_j)}=-1\).  Choosing a logarithm
+branch gives \(-\zeta(u_j)=\ii\pi(2n_j+1)\), which is
+\eqref{eq:one-species-excited-root-quantization}.
+\end{proof}
+
+This proposition fixes the signs in the one-species formula above.  The
+minus sign in the driving term is not an optional convention: it is the
+integration-by-parts sign in the residue calculation.  The plus sign in the
+discrete energy contribution is equally fixed.  After the inverse mirror
+continuation of a crossed level-I root, the planar convention is
+\(\ii\widetilde p(u_j)=E(u_j)\).  Thus the deformed mirror free-energy
+formula produces the physical-magnon energy term in
+\eqref{eq:planar-n4-excited-tba-energy}, while the zero condition becomes
+the exact Bethe equation on the physical sheet.
+
 Let \(A,B\) range over the mirror Bethe-string species: physical
 \(Q\)-particle bound states, auxiliary \(y\)-roots, and auxiliary \(w\)-string
 families for the two \(\mathfrak{su}(2|2)\) wings.  Denote the mirror
@@ -706,8 +885,21 @@ why the analytic data below are part of the finite-volume spectral problem.
 \end{proof}
 
 The TBA equations imply functional relations among Y-functions after applying
-kernel identities and shifting the spectral parameter.  On the interior of
-the planar \(\mathcal N=4\) T-hook, the relation has the form
+kernel identities and shifting the spectral parameter.  The bulk of the
+planar \(\mathcal N=4\) T-hook is the subset
+\[
+  \mathfrak T_{\rm bulk}
+  =
+  \{(a,s): a\in\mathbb Z_{\ge1},\ s\in\mathbb Z,\ |s|\le2\}
+  \cup
+  \{(a,s): a=1,2,\ s\in\mathbb Z\}.
+\]
+The row \(a=0\) is adjoined as a gauge boundary \(T_{0,s}\); outside
+\(\mathfrak T_{\rm bulk}\) and this boundary row one sets \(T_{a,s}=0\).  A
+Y-node is called interior when \(a\geq1\) and all four neighbouring
+T-functions appearing below belong to \(\mathfrak T_{\rm bulk}\) or to the
+boundary row, and are non-zero on the patch under consideration.  On such
+nodes the local relation has the form
 \begin{equation}
   Y_{a,s}^+(u)Y_{a,s}^-(u)
   =
@@ -719,29 +911,91 @@ where
 \[
   f^\pm(u)=f(u\pm\ii/2).
 \]
-The indices \((a,s)\) lie in the T-hook domain determined by the two
-\(\mathfrak{su}(2|2)\) wings.  Boundary nodes require modified relations.
+Boundary nodes require modified relations because one of the four neighboring
+T-functions has left the hook.
 
-The same relation may be obtained from Hirota \(T\)-functions.  If
-\[
-  Y_{a,s}
-  =
-  \frac{T_{a,s+1}T_{a,s-1}}{T_{a+1,s}T_{a-1,s}}
-\]
-and the \(T\)-functions obey
+\begin{proposition}[Hirota origin of the interior T-hook Y-system]
+\label{prop:planar-n4-hirota-origin-y-system}
+Let \(T_{a,s}\) be non-zero on an interior patch of the T-hook and obey
+Hirota,
 \[
   T_{a,s}^+T_{a,s}^-
   =
-  T_{a+1,s}T_{a-1,s}+T_{a,s+1}T_{a,s-1},
+  T_{a+1,s}T_{a-1,s}+T_{a,s+1}T_{a,s-1}.
 \]
-then the interior Y-system equation follows by direct substitution.  The
-representation has gauge redundancy
+Define
 \[
+  Y_{a,s}
+  =
+  \frac{T_{a,s+1}T_{a,s-1}}{T_{a+1,s}T_{a-1,s}} .
+\]
+Then \(Y_{a,s}\) obeys
+\eqref{eq:planar-n4-y-system} at every interior node.  Moreover \(Y_{a,s}\)
+is invariant under the local Hirota gauge transformation
+\begin{equation}
   T_{a,s}\mapsto
   g_1^{[a+s]}g_2^{[a-s]}g_3^{[-a-s]}g_4^{[-a+s]}T_{a,s},
+  \label{eq:planar-n4-t-gauge-redundancy}
+\end{equation}
+where \(f^{[n]}(u)=f(u+\ii n/2)\).
+\end{proposition}
+
+\begin{proof}
+Hirota at \((a,s)\) gives the two useful identities
+\[
+  1+Y_{a,s}
+  =
+  \frac{T_{a,s}^+T_{a,s}^-}{T_{a+1,s}T_{a-1,s}},
+  \qquad
+  1+\frac1{Y_{a,s}}
+  =
+  \frac{T_{a,s}^+T_{a,s}^-}{T_{a,s+1}T_{a,s-1}} .
 \]
-so a QSC derivation must also state the analytic gauge in which the cuts and
-asymptotics are imposed.
+Now compute
+\[
+  Y_{a,s}^+Y_{a,s}^-
+  =
+  \frac{
+    T_{a,s+1}^+T_{a,s+1}^-
+    T_{a,s-1}^+T_{a,s-1}^-
+  }{
+    T_{a+1,s}^+T_{a+1,s}^-
+    T_{a-1,s}^+T_{a-1,s}^-
+  } .
+\]
+Applying the two displayed identities to the four neighboring nodes turns the
+numerator into
+\[
+  (1+Y_{a,s+1})(1+Y_{a,s-1})
+  T_{a+1,s+1}T_{a-1,s+1}T_{a+1,s-1}T_{a-1,s-1},
+\]
+and the denominator into
+\[
+  (1+Y_{a+1,s}^{-1})(1+Y_{a-1,s}^{-1})
+  T_{a+1,s+1}T_{a+1,s-1}T_{a-1,s+1}T_{a-1,s-1}.
+\]
+The common T-product cancels, proving
+\eqref{eq:planar-n4-y-system}.
+
+For the gauge statement, let
+\[
+  \mathcal G(a,s)
+  =
+  \{(1,a+s),(2,a-s),(3,-a-s),(4,-a+s)\}
+\]
+record which \(g_i\) appears with which shift.  The numerator of \(Y_{a,s}\)
+has gauge multiset
+\[
+  \mathcal G(a,s+1)\sqcup\mathcal G(a,s-1),
+\]
+and the denominator has
+\[
+  \mathcal G(a+1,s)\sqcup\mathcal G(a-1,s).
+\]
+These two multisets are identical.  Hence all gauge factors cancel.  The
+calculation is local; analytic gauge choices in the QSC additionally fix
+cuts, asymptotics, and gluing data.
+\end{proof}
 
 \begin{warning}[Y-system data are not only equations]
 \label{warn:y-system-not-complete}
@@ -752,6 +1006,66 @@ conditions, and state labels.  Treating the Y-system equations alone as a
 definition of the theory discards the information that distinguishes physical
 states.
 \end{warning}
+
+\begin{proposition}[Local source factor from a shifted zero-pole pair]
+\label{prop:planar-n4-local-y-source-factor}
+Let \(\alpha\in\C\), and define the elementary shifted source factor
+\[
+  B_\alpha(u)=\frac{u-\alpha+\ii/2}{u-\alpha-\ii/2}.
+\]
+Thus \(B_\alpha\) has a simple zero at \(u=\alpha-\ii/2\) and a simple pole at
+\(u=\alpha+\ii/2\).  If a meromorphic Y-function is written locally as
+\[
+  Y_{a,s}(u)=B_\alpha(u)^\nu\,\widehat Y_{a,s}(u),
+  \qquad \nu\in\mathbb Z,
+\]
+where \(\widehat Y_{a,s}\) has no zero or pole crossed by the two shifts
+\(u\mapsto u\pm\ii/2\), then
+\begin{equation}
+  Y_{a,s}^+(u)Y_{a,s}^-(u)
+  =
+  \left(\frac{u-\alpha+\ii}{u-\alpha-\ii}\right)^\nu
+  \widehat Y_{a,s}^+(u)\widehat Y_{a,s}^-(u).
+  \label{eq:planar-n4-local-y-source-factor}
+\end{equation}
+For a finite set of shifted zero-pole pairs, the source factor is the product
+of the corresponding powers of
+\((u-\alpha+\ii)/(u-\alpha-\ii)\).
+\end{proposition}
+
+\begin{proof}
+The claim is the algebra of the shift operation.  Directly,
+\[
+  B_\alpha^+(u)
+  =
+  \frac{u-\alpha+\ii}{u-\alpha},
+  \qquad
+  B_\alpha^-(u)
+  =
+  \frac{u-\alpha}{u-\alpha-\ii}.
+\]
+Multiplying the two expressions gives
+\[
+  B_\alpha^+(u)B_\alpha^-(u)
+  =
+  \frac{u-\alpha+\ii}{u-\alpha-\ii}.
+\]
+Raising to the integer power \(\nu\) and multiplying by
+\(\widehat Y_{a,s}^+\widehat Y_{a,s}^-\) proves
+\eqref{eq:planar-n4-local-y-source-factor}.  A finite product follows by
+commutativity.
+\end{proof}
+
+This proposition is the local algebraic shadow of contour deformation.  The
+homogeneous Y-system records what happens after \(\mathsf s^{-1}\) is applied
+in a strip free of singularities.  If a zero, pole, or logarithmic branch point
+crosses one of the two strip boundaries, the remaining regular part
+\(\widehat Y_{a,s}\) still obeys the same shift algebra, but the singular part
+contributes the rational source factor in
+\eqref{eq:planar-n4-local-y-source-factor}.  The Y-system equations alone do
+not determine the positions \(\alpha\), the powers \(\nu\), or the sheet on
+which the factor lives; these data come from the excited-state contours and
+from the exact Bethe-root regularity conditions.
 
 \section{Analytic Y-System Data}
 
@@ -909,6 +1223,221 @@ and therefore
 \end{equation}
 This is the sign check that fixes the convention in the energy correction.
 
+\begin{proposition}[Konishi weak-density rationalization]
+\label{prop:konishi-weak-density-rationalization}
+Let \(u_\ast=1/(2\sqrt3)\) and put \(q=2u\).  For \(Q\geq1\), define
+\[
+\begin{aligned}
+  B_Q^-(q)
+  &=
+  9q^4+6(3(Q-2)Q+2)q^2+(3(Q-2)Q+4)^2,
+\\
+  B_Q^+(q)
+  &=
+  9q^4+6(3Q(Q+2)+2)q^2+(3Q(Q+2)+4)^2 .
+\end{aligned}
+\]
+Then the weak mirror density \eqref{eq:konishi-yq0} is equivalently
+\[
+  Y_Q^{(0)}(q/2)
+  =
+  \frac{147456Q^2(3q^2+3Q^2-4)^2}
+       {(q^2+Q^2)^4B_Q^-(q)B_Q^+(q)} .
+  \label{eq:konishi-yq0-rationalized}
+\]
+\end{proposition}
+
+\begin{proof}
+The first denominator factor and the numerator become
+\[
+  u^2+\frac{Q^2}{4}=\frac{q^2+Q^2}{4},
+  \qquad
+  u^2-u_\ast^2+\frac{Q^2-1}{4}
+  =
+  \frac{3q^2+3Q^2-4}{12}.
+\]
+It remains only to rationalize the two factors involving
+\(u_\ast\).  For any real \(a\),
+\[
+\begin{aligned}
+  &\prod_{\varepsilon=\pm1}
+  \left(\left(\frac q2-\frac{\varepsilon}{2\sqrt3}\right)^2+\frac{a^2}{4}\right)
+\\
+  &\qquad
+  =
+  \frac{1}{16}
+  \left[
+    q^4+2\left(a^2-\frac13\right)q^2
+    +\left(a^2+\frac13\right)^2
+  \right].
+\end{aligned}
+\]
+Multiplying the bracket by \(9\), and setting \(a=Q-1\) and \(a=Q+1\),
+gives respectively \(B_Q^-(q)\) and \(B_Q^+(q)\).  Hence each such product
+is \(B_Q^\pm(q)/144\).  Substituting these three elementary identities in
+\eqref{eq:konishi-yq0} gives
+\[
+  \frac{
+    4Q^2\left((3q^2+3Q^2-4)/12\right)^2
+  }{
+    ((q^2+Q^2)/4)^4\,B_Q^-(q)B_Q^+(q)/144^2
+  },
+\]
+which simplifies to \eqref{eq:konishi-yq0-rationalized}.
+\end{proof}
+
+\begin{lemma}[Pole structure of the Konishi weak density]
+\label{lem:konishi-weak-density-poles}
+Let \(Q\geq1\), and let \(Y_Q^{(0)}(q/2)\) be the rational function in
+\eqref{eq:konishi-yq0-rationalized}.  Then
+\[
+\begin{aligned}
+  B_Q^-(q)
+  &=
+  9\prod_{\sigma=\pm1}
+  \left(\left(q-\frac{\sigma}{\sqrt3}\right)^2+(Q-1)^2\right),
+\\
+  B_Q^+(q)
+  &=
+  9\prod_{\sigma=\pm1}
+  \left(\left(q-\frac{\sigma}{\sqrt3}\right)^2+(Q+1)^2\right).
+\end{aligned}
+\]
+After the removable \(Q=1\) cancellation described below, the function has no
+pole on the real \(q\)-axis and obeys \(Y_Q^{(0)}(q/2)=O(q^{-12})\) as
+\(|q|\to\infty\).  Its upper-half-plane poles are the fourth-order pole
+\(q=\ii Q\), the simple poles
+\[
+  q=\pm\frac1{\sqrt3}+\ii(Q+1),
+\]
+and, for \(Q>1\), the simple poles
+\[
+  q=\pm\frac1{\sqrt3}+\ii(Q-1).
+\]
+For \(Q=1\) the latter two points are real removable points, not contour
+poles.
+\end{lemma}
+
+\begin{proof}
+For any real \(a\),
+\[
+  \prod_{\sigma=\pm1}
+  \left(\left(q-\frac{\sigma}{\sqrt3}\right)^2+a^2\right)
+  =
+  q^4+2\left(a^2-\frac13\right)q^2
+  +\left(a^2+\frac13\right)^2 .
+\]
+Multiplication by \(9\), followed by \(a=Q-1\) and \(a=Q+1\), gives the two
+displayed factorizations and therefore the zero locations.  The factor
+\((q^2+Q^2)^4\) gives a fourth-order zero of the denominator at
+\(q=\ii Q\) and at \(q=-\ii Q\).  For real \(q\), the factors with
+\(a>0\) are strictly positive.  The only exceptional case is \(Q=1\) in
+\(B_1^-\), where
+\[
+  B_1^-(q)=(3q^2-1)^2 .
+\]
+The numerator of \eqref{eq:konishi-yq0-rationalized} contains the identical
+factor \((3q^2-1)^2\), so the singularities at \(q=\pm1/\sqrt3\) are
+removable.  Finally, before this cancellation the numerator has degree
+\(4\) and the denominator has degree \(16\).  For \(Q=1\), after cancellation
+the numerator has degree \(0\) and the denominator has degree \(12\).  In both
+cases the decay is \(q^{-12}\).
+\end{proof}
+
+\begin{lemma}[Residue reduction for the Konishi summand]
+\label{lem:konishi-residue-reduction}
+For \(Q\geq1\), put
+\[
+  \mathcal Y_Q(q)
+  =
+  \frac{147456Q^2(3q^2+3Q^2-4)^2}
+       {(q^2+Q^2)^4B_Q^-(q)B_Q^+(q)}
+\]
+and
+\[
+  I_Q=-\int_{\mathbb R}\frac{\dd q}{2\pi}\,\mathcal Y_Q(q),
+\]
+with the \(Q=1\) removable real points understood as in
+Lemma~\ref{lem:konishi-weak-density-poles}.  Then
+\begin{equation}
+  I_Q=R_Q+\frac{864}{Q^3}-\frac{1440}{Q^5},
+  \label{eq:konishi-iq-summand}
+\end{equation}
+where
+\[
+  R_Q
+  =
+  -\frac{7776Q\,N(Q)}
+  {(9Q^4-3Q^2+1)^4(27Q^6-27Q^4+36Q^2+16)}
+\]
+and
+\[
+\begin{aligned}
+  N(Q)
+  &=
+  19683Q^{18}-78732Q^{16}+150903Q^{14}-134865Q^{12}
+  +1458Q^{10}
+\\
+  &\quad
+  +48357Q^8-13311Q^6-1053Q^4+369Q^2-10 .
+\end{aligned}
+\]
+\end{lemma}
+
+\begin{proof}
+Write
+\[
+  \mathcal N_Q(q)=147456Q^2(3q^2+3Q^2-4)^2 .
+\]
+By Lemma~\ref{lem:konishi-weak-density-poles}, the upper contour encloses
+the fourth-order pole at \(q=\ii Q\), the two simple poles with
+\(a=Q+1\), and, when \(Q>1\), the two simple poles with \(a=Q-1\).  Hence
+\[
+  I_Q
+  =
+  -\ii\left(
+    \rho_Q^{(4)}+\rho_Q^{(+)}+\mathbf 1_{Q>1}\rho_Q^{(-)}
+  \right),
+\]
+where
+\[
+  \rho_Q^{(4)}
+  =
+  \frac1{3!}
+  \left.
+  \frac{\dd^3}{\dd q^3}
+  \frac{\mathcal N_Q(q)}
+       {(q+\ii Q)^4B_Q^-(q)B_Q^+(q)}
+  \right|_{q=\ii Q}.
+\]
+For the simple poles, set \(a_\eta=Q+\eta\) for
+\(\eta=\pm1\), \(q_{\sigma,\eta}=\sigma/\sqrt3+\ii a_\eta\), and use the
+convention \(B_Q^{+1}=B_Q^+\), \(B_Q^{-1}=B_Q^-\).  When \(a_\eta>0\),
+\[
+  \rho_Q^{(\eta)}
+  =
+  \sum_{\sigma=\pm1}
+  \frac{\mathcal N_Q(q_{\sigma,\eta})}
+       {(q_{\sigma,\eta}^2+Q^2)^4
+        B_Q^{-\eta}(q_{\sigma,\eta})
+        \partial_q B_Q^\eta(q_{\sigma,\eta})}.
+\]
+The derivative in the denominator is not an implicit convention.  The
+factorization in Lemma~\ref{lem:konishi-weak-density-poles} gives
+\[
+  \partial_qB_Q^\eta(q_{\sigma,\eta})
+  =
+  24\ii a_\eta(1+\sigma\ii\sqrt3\,a_\eta).
+\]
+These displayed formulas reduce the contour calculation to arithmetic in the
+field \(\mathbb Q(\sqrt3,\ii)\).  Adding the \(\sigma=+1\) and \(\sigma=-1\)
+residues cancels the \(\sqrt3\)-odd part.  Combining the two simple-pole
+pairs with the fourth-order Laurent coefficient over a common denominator
+then gives exactly \eqref{eq:konishi-iq-summand}.  The companion calculation
+check performs this Laurent extraction literally, including the \(Q=1\)
+omission of the removable \(a_{-}=0\) pair.
+\end{proof}
+
 \begin{proposition}[Leading Konishi wrapping integral]
 \label{prop:konishi-leading-wrapping-integral}
 Assume the mirror input of
@@ -937,7 +1466,9 @@ next uncomputed term.  Combining \eqref{eq:planar-n4-excited-tba-energy},
   -g^8\sum_{Q=1}^\infty
   \int_{\mathbb R}\frac{\dd u}{\pi}\,Y_Q^{(0)}(u)+O(g^{10}).
 \]
-Set \(q=2u\).  The coefficient of \(g^8\) becomes
+Set \(q=2u\) and use
+Proposition~\ref{prop:konishi-weak-density-rationalization}.  The coefficient
+of \(g^8\) becomes
 \[
   \sum_{Q=1}^\infty I_Q,
 \]
@@ -950,55 +1481,10 @@ with
        {(q^2+Q^2)^4 B_Q^-(q)B_Q^+(q)},
   \label{eq:konishi-iq-integral}
 \end{equation}
-where
-\[
-\begin{aligned}
-  B_Q^-(q)
-  &=
-  9q^4+6(3(Q-2)Q+2)q^2+(3(Q-2)Q+4)^2,
-\\
-  B_Q^+(q)
-  &=
-  9q^4+6(3Q(Q+2)+2)q^2+(3Q(Q+2)+4)^2 .
-\end{aligned}
-\]
-For \(Q=1\) the apparent real zeros in \(B_1^-\) are removable because the
-same factor appears in the numerator.  After this cancellation the integrand
-has no pole on the real contour and decays as \(q^{-12}\).  Closing the
-contour in the upper half-plane therefore gives a finite residue
-calculation.  The poles are the fourth-order pole at \(q=\ii Q\), together
-with the simple poles at
-\[
-  q=\pm\frac1{\sqrt3}+\ii(Q-1),
-  \qquad
-  q=\pm\frac1{\sqrt3}+\ii(Q+1),
-\]
-omitting the removable \(Q=1\) real points.
-
-The residue sum gives
-\begin{equation}
-  I_Q=R_Q+\frac{864}{Q^3}-\frac{1440}{Q^5},
-  \label{eq:konishi-iq-summand}
-\end{equation}
-where
-\[
-  R_Q
-  =
-  -\frac{7776Q\,N(Q)}
-  {(9Q^4-3Q^2+1)^4(27Q^6-27Q^4+36Q^2+16)}
-\]
-and
-\[
-\begin{aligned}
-  N(Q)
-  &=
-  19683Q^{18}-78732Q^{16}+150903Q^{14}-134865Q^{12}
-  +1458Q^{10}
-\\
-  &\quad
-  +48357Q^8-13311Q^6-1053Q^4+369Q^2-10 .
-\end{aligned}
-\]
+where \(B_Q^\pm\) are the polynomials in
+Proposition~\ref{prop:konishi-weak-density-rationalization}.
+By Lemma~\ref{lem:konishi-residue-reduction}, this integral satisfies
+\eqref{eq:konishi-iq-summand}.
 The non-zeta part is not left as a numerical experiment: it telescopes.  Define
 \[
   F_Q

@@ -172,20 +172,36 @@ def check_stress_tensor_multiplet_normalization() -> None:
 
 
 def check_planar_chiral_primary_ope_coefficients() -> None:
-    # The raw planar extremal three-point combinatorics is
-    # J1 * J2 * J * N^(J-1), with J=J1+J2.  Dividing by normalized two-point
-    # factors J1 N^J1, J2 N^J2, and J N^J leaves J1 J2 J / N^2.
+    # The propagator and 2*pi/g_YM factors cancel separately.  What remains is
+    # the exact leading color/cyclic combinatorics of the displayed
+    # normalizations.
     for n in (5, 11):
+        for charge in (1, 2, 5, 8):
+            raw_two_point = charge * n**charge
+            normalization_denominator = charge * n**charge
+            assert_equal(
+                f"planar chiral two-point normalization J={charge} N={n}",
+                Fraction(raw_two_point, normalization_denominator),
+                1,
+            )
+
         for j1, j2 in ((1, 2), (2, 3), (4, 5)):
             total = j1 + j2
-            raw_squared = (j1 * j2 * total) ** 2 * n ** (2 * total - 2)
+            raw_three_point = j1 * j2 * total * n ** (total - 1)
             norm_product = (j1 * n**j1) * (j2 * n**j2) * (total * n**total)
-            coefficient_squared = Fraction(raw_squared, norm_product)
+            coefficient_squared = Fraction(raw_three_point * raw_three_point, norm_product)
             expected = Fraction(j1 * j2 * total, n * n)
             assert_equal(
                 f"planar chiral OPE coefficient J1={j1} J2={j2} N={n}",
                 coefficient_squared,
                 expected,
+            )
+
+            normalized_times_n_squared = coefficient_squared * n * n
+            assert_equal(
+                f"planar chiral pair-of-pants cyclic factor J1={j1} J2={j2}",
+                normalized_times_n_squared,
+                j1 * j2 * total,
             )
 
 
