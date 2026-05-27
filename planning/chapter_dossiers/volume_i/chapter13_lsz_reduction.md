@@ -6,7 +6,8 @@
 - Precedes perturbative scattering amplitudes, cross sections, and unitarity
   formulas.
 - Source material used:
-  - `transcription/tex/253a/foundations.tex`, roughly lines 5079--5608;
+  - `transcription/tex/253a/foundations.tex`, lines 5079--5608 as an
+    approximate source range;
   - `references/sound_references/buchholz_dybalski_scattering_2023.pdf` and
     text sidecar, Section 3.
 
@@ -59,6 +60,7 @@
 | \(p_j\) | incoming positive-energy physical momentum |
 | \(q_i\) | outgoing positive-energy physical momentum |
 | \(k_a\) | all-incoming Green-function momentum, \(q_i\) or \(-p_j\) |
+| \(\operatorname{LSZ}_{\phi,k}\) | single-leg external boundary-value extraction |
 | \(\mathcal M\) | invariant scattering amplitude |
 | \(M_\delta\) | connected amplitude in a nonrelativistic \(\delta^{(d)}\)-normalized basis |
 
@@ -71,17 +73,33 @@
   matrix element with the external one-particle residue of
   \(\widetilde G^{\mathrm{conn}}_{m+n}\), after distributional smearing and
   boundary-value restriction to \(\Sigma_m^+\).
+- Definition `def:lsz-external-boundary-value-extraction` states the
+  single-leg LSZ operation as a distributional boundary-value coefficient
+  rather than a formal pointwise operation.
+- Theorem `thm:lsz-wave-packet` now includes a proof block tracing the
+  argument from Haag--Ruelle approximants, through locality/time-ordering, to
+  the large-time external pole selector and the on-shell wave-packet pairing.
 - The two-point pole coefficient \(Z_\phi\) supplies the external wavefunction
   factor.  In the Feynman two-point function, \(-iZ_\phi\) is the coefficient of
   \(k^2+m^2-i0\), whereas the complex \(k^0\)-plane residues at fixed
   \(\vec k\) are \(iZ_\phi/(2\omega_{\vec k})\) and
   \(-iZ_\phi/(2\omega_{\vec k})\).
+- Proposition `prop:lsz-invariant-denominator-linear-residues` proves the
+  mostly-plus factorization and the relation between invariant-denominator
+  coefficient and the two linear \(k^0\)-pole residues.
+- Proposition `prop:lsz-pole-spectral-projection` proves that the external
+  pole is the one-particle spectral projection \(P_1\) multiplied by the
+  field-state overlap factors.
 - LSZ is a distributional theorem for wave-packet matrix elements.
 - Incoming physical momenta enter the Green function as \(-p_j\) in the
   all-momenta-incoming Fourier convention.
 - Connected scattering kernels are obtained by applying
   \(Z_\phi^{-1/2}i(k^2+m^2)\) to every external leg and taking the on-shell
   boundary value.
+- Proposition `prop:lsz-contact-interpolating-field-stability` proves that
+  contact terms and zero-overlap field components do not contribute to
+  external LSZ poles, and that nonzero interpolating-field coordinate changes
+  cancel against the corresponding \(Z_{\phi'}^{-1/2}\) factors.
 - With \(x^0=-i\tau\), the Lorentzian source term
   \(i\int dx^0\,J_L\phi\) becomes \(+\int d\tau\,J_E\phi_E\) for
   \(J_E(\tau,\vec x)=J_L(-i\tau,\vec x)\); the factor \(i^{-N}\) in the
@@ -92,6 +110,9 @@
   \((-i)^{-N}=i^N\) rather than \(i^{-N}\).
 - The large-time Haag--Ruelle matrix element becomes an oscillatory integral
   whose nonzero limit is precisely the external one-particle pole residue.
+- Proposition `prop:lsz-large-time-pole-selector` records the contour
+  calculation that selects the incoming negative-energy and outgoing
+  positive-energy Feynman poles in the large-time limit.
 - Disconnected two-point factors reproduce the identity part of the
   S-operator.
 - The identity kernel for identical scalar particles is the symmetric
@@ -127,6 +148,8 @@
 - No cross-section formulas; those belong in the next chapter.
 - No unitarity/optical theorem development beyond the amplitude convention.
 - No LSZ formula for massless gauge particles or infraparticles.
+- Companion checks are finite convention checks only; they do not replace the
+  distributional boundary-value theorem.
 
 ## Audit Notes
 
@@ -144,3 +167,8 @@
 - 2026-05-24 issue #384 pass: flagged the source-coupling-sign dependence of
   the connected-cumulant prefactor, adding the alternate
   \(Z_-[J]\) convention with \((-i)^{-N}=i^N\).
+- 2026-05-27 #615 pass: added the LSZ boundary-value definition, proof block
+  for the wave-packet theorem, propositions for invariant-denominator
+  residues, spectral projection, contact/interpolating-field stability, and
+  the large-time pole selector; added
+  `calculation-checks/lsz_residue_checks.py`.

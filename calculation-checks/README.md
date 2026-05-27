@@ -522,6 +522,10 @@ Current checks:
   \((f_g)_h=f_{hg}\), Koszul signs for adjacent spacelike exchange, and the
   tensor-product ordering of component covariance factors in Wightman
   distributions.
+- `lsz_residue_checks.py`: finite checks for the Volume I LSZ chapter,
+  including mostly-plus invariant-denominator factorization, partial-fraction
+  signs, per-leg amputation normalization, all-incoming momentum bookkeeping,
+  and Lorentzian source-derivative phase compensation.
 - `massless_helicity_checks.py`: exact symbolic checks for the Volume I
   massless-particle chapter, including null-translation Lorentz matrices,
   polarization shifts under the little-group translation subgroup,

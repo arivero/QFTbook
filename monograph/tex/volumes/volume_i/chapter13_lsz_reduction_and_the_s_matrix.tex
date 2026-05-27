@@ -144,6 +144,37 @@ each external variable after the boundary value has been taken.  It is not a
 complex residue in a one-dimensional variable \(k_a^2\); for fixed spatial
 momentum the meromorphic variable is \(k_a^0\).
 
+\begin{definition}[LSZ external boundary-value extraction]
+\label{def:lsz-external-boundary-value-extraction}
+Let \(H(k)\) be a distribution of one external momentum variable, with all
+other variables already smeared, and suppose that in a neighborhood of the
+positive or negative mass shell selected by the external wave packet it has
+the decomposition
+\[
+  H(k)=\frac{-\ii Z_\phi\,H_{\rm red}(k)}{k^2+m^2-\ii0}
+       +H_{\rm less}(k),
+\]
+where \(H_{\rm red}\) has a boundary value on that shell and
+\((k^2+m^2)H_{\rm less}(k)\) has zero boundary value there.  The LSZ
+extraction of that external leg is
+\[
+  \operatorname{LSZ}_{\phi,k}H
+  :=
+  \operatorname*{bv}_{\Sigma_m}
+  \left[
+    Z_\phi^{-1/2}\,\ii(k^2+m^2)H(k)
+  \right].
+\]
+Under the displayed decomposition,
+\[
+  \operatorname{LSZ}_{\phi,k}H
+  =
+  Z_\phi^{1/2}\,\operatorname*{bv}_{\Sigma_m}H_{\rm red}.
+\]
+For several external legs the operation is the iterated distributional
+boundary value after all spatial momenta have been paired with wave packets.
+\end{definition}
+
 \begin{theorem}[LSZ reduction for a massive scalar]
 \label{thm:lsz-wave-packet}
 Under the assumptions above,
@@ -174,10 +205,65 @@ incoming and outgoing wave packets.
 The theorem compares two already constructed objects.  The left side is the
 Haag--Ruelle scattering matrix element.  The right side is obtained from
 time-ordered boundary-value distributions by connected truncation and
-external pole extraction.  The residue factor \(Z_\phi^{-1/2}\) is attached to the
-chosen interpolating field \(\widehat\phi\); the resulting scattering matrix
-element is a Hilbert-space matrix element of \(S\) on the asymptotic Fock
-space.
+external pole extraction.  The residue factor \(Z_\phi^{-1/2}\) is attached to
+the chosen interpolating field \(\widehat\phi\); the resulting scattering
+matrix element is a Hilbert-space matrix element of \(S\) on the asymptotic
+Fock space.
+
+\begin{proof}
+We give the proof at the level at which the theorem is stated: all external
+variables are paired with compactly supported wave packets in the isolated
+mass-shell neighborhood, and the time-ordered products are assumed to be
+defined distributions with the stated one-particle pole.
+
+First replace the incoming and outgoing Fock wave packets by the
+Haag--Ruelle approximants from Chapter~\ref{ch:haag-ruelle}.  For large
+\(T>0\), the connected part of
+\[
+  \bra{\vac}
+  \hat\phi_{f_m^{(T)}}^*\cdots\hat\phi_{f_1^{(T)}}^*
+  \hat\phi_{g_1^{(-T)}}\cdots\hat\phi_{g_n^{(-T)}}\ket{\vac}
+\]
+has the same limit as the connected scattering matrix element on the left of
+\eqref{eq:lsz-wave-packet-theorem}.  This is the definition of the
+Haag--Ruelle in/out vectors together with the connected partition subtraction
+described in Section~\ref{sec:lsz-cluster-decomposition}.
+
+Second use locality and the velocity separation of the Haag--Ruelle packets.
+The outgoing packets lie in future velocity tubes and the incoming packets lie
+in past velocity tubes.  Reordering the corresponding fields into the
+time-ordered product changes the large-\(T\) expression by a term whose norm
+goes to zero by the same commutator estimates used in the Haag--Ruelle
+construction.  Thus the connected scattering matrix element is the large-time
+limit of the connected time-ordered distribution smeared with the translated
+external packets.
+
+Third take the Fourier transform in the external variables.  Each outgoing
+external packet contributes an oscillatory factor selecting the positive-energy
+pole \(k^0=\omega_{\vec k}-\ii0\), and each incoming packet, written with all
+Green-function momenta incoming, contributes the oscillatory factor selecting
+the negative-energy pole \(k^0=-\omega_{\vec k}+\ii0\).  The
+Riemann--Lebesgue estimate, equivalently repeated integration by parts away
+from the selected pole, kills the part regular at the selected shell.  The
+only surviving contribution is the coefficient of
+\[
+  \frac{-\ii Z_\phi}{k^2+m^2-\ii0}
+\]
+in every external variable.
+Definition~\ref{def:lsz-external-boundary-value-extraction} is exactly this
+coefficient extraction, with one factor \(Z_\phi^{-1/2}\) for each external
+interpolating field.
+
+Finally, after all external residues are extracted, the remaining variables
+are the physical on-shell momenta \(q_i\in\Sigma_m^+\) and
+\(p_j\in\Sigma_m^+\), with all-incoming Green-function momenta
+\(k_i=q_i\) and \(k_{m+j}=-p_j\).  Pairing this on-shell distribution with the
+same wave packets gives the right side of
+\eqref{eq:lsz-wave-packet-theorem}.  The disconnected two-point pole factors
+have been removed by connected truncation on both sides; the full kernel is
+recovered from connected kernels by the partition formula in
+Section~\ref{sec:lsz-cluster-decomposition}.
+\end{proof}
 
 \section{The One-Particle Pole}
 
@@ -244,6 +330,57 @@ Lorentzian Green-function chapter:
 as a mass-shell boundary-value coefficient. Applying one such operation to
 every external field is the analytic core of LSZ reduction.
 
+\begin{proposition}[Invariant denominator coefficient and linear pole residues]
+\label{prop:lsz-invariant-denominator-linear-residues}
+With the mostly-plus convention \(k^2=-(k^0)^2+\vec k^{\,2}\) and
+\(\omega_{\vec k}=(\vec k^{\,2}+m^2)^{1/2}\),
+\[
+  k^2+m^2-\ii0
+  =
+  -\bigl(k^0-\omega_{\vec k}+\ii0\bigr)
+   \bigl(k^0+\omega_{\vec k}-\ii0\bigr).
+\]
+Consequently the one-particle part of the Feynman two-point function obeys
+\[
+  \frac{-\ii Z_\phi}{k^2+m^2-\ii0}
+  =
+  \frac{\ii Z_\phi}{2\omega_{\vec k}}
+  \left[
+    \frac{1}{k^0-\omega_{\vec k}+\ii0}
+    -
+    \frac{1}{k^0+\omega_{\vec k}-\ii0}
+  \right],
+\]
+so the coefficient extracted by invariant-denominator LSZ is
+\(-\ii Z_\phi\), while the linear \(k^0\)-residues are
+\(\ii Z_\phi/(2\omega_{\vec k})\) and
+\(-\ii Z_\phi/(2\omega_{\vec k})\).
+\end{proposition}
+
+\begin{proof}
+Since
+\[
+  k^2+m^2=-(k^0)^2+\omega_{\vec k}^2
+  =-(k^0-\omega_{\vec k})(k^0+\omega_{\vec k}),
+\]
+the displayed Feynman prescription assigns the positive-energy pole below the
+real \(k^0\)-axis and the negative-energy pole above it.  The partial-fraction
+identity
+\[
+  \frac{1}{(k^0-\omega_{\vec k}+\ii0)(k^0+\omega_{\vec k}-\ii0)}
+  =
+  \frac{1}{2\omega_{\vec k}}
+  \left[
+    \frac{1}{k^0-\omega_{\vec k}+\ii0}
+    -
+    \frac{1}{k^0+\omega_{\vec k}-\ii0}
+  \right]
+\]
+then gives the second display after multiplying by the overall minus sign in
+the invariant denominator and by \(-\ii Z_\phi\).  The listed residues are the
+coefficients of the two linear factors.
+\end{proof}
+
 \section{The Pole as a Spectral Projection}
 
 The preceding discussion can be stated without treating the pole as a formal
@@ -283,6 +420,62 @@ away from \(\Sigma_m^+\) in a neighborhood of the isolated shell, so its
 Fourier transform has no one-particle pole there. Thus the residue of the
 two-point function is the mass-shell kernel induced by \(P_1\) and by the
 chosen field-state matrix element.
+
+\begin{proposition}[External pole as one-particle spectral projection]
+\label{prop:lsz-pole-spectral-projection}
+Let \(f,g\in C_c^\infty(\mathbb R^{1,d})\), and let
+\[
+  f_\pm(\vec p)=\int\dd^Dx\,f(x)\ee^{\mp\ii p\cdot x},
+  \qquad
+  g_\pm(\vec p)=\int\dd^Dx\,g(x)\ee^{\mp\ii p\cdot x},
+  \qquad p^0=\omega_{\vec p}.
+\]
+Then the isolated one-particle projection of the smeared field is
+\[
+  P_1\widehat\phi(f)\vac
+  =
+  Z_\phi^{1/2}
+  \int\dd\mu_m(\vec p)\,f_-(\vec p)|\vec p\rangle,
+\]
+and
+\[
+  \bra{\vac}\widehat\phi(f)P_1\widehat\phi(g)\ket{\vac}
+  =
+  Z_\phi
+  \int\dd\mu_m(\vec p)\,f_+(\vec p)g_-(\vec p).
+\]
+The coefficient of the external LSZ pole is therefore exactly the kernel of
+the projection \(P_1\), multiplied by the field-state matrix-element factors.
+\end{proposition}
+
+\begin{proof}
+Translation covariance gives
+\[
+  \widehat\phi(x)=U(x)\widehat\phi(0)U(x)^{-1},
+  \qquad U(x)\vac=\vac .
+\]
+On the one-particle subspace, the generalized momentum ket satisfies
+\[
+  U(x)|\vec p\rangle=\ee^{\ii x_\mu p^\mu}|\vec p\rangle .
+\]
+The normalization
+\(\bra{\vac}\widehat\phi(0)|\vec p\rangle=Z_\phi^{1/2}\) and hermiticity of
+the scalar interpolating field give the one-particle component of
+\(\widehat\phi(x)\vac\) as
+\[
+  P_1\widehat\phi(x)\vac
+  =
+  Z_\phi^{1/2}
+  \int\dd\mu_m(\vec p)\,\ee^{\ii x_\mu p^\mu}|\vec p\rangle .
+\]
+Smearing with \(f(x)\) gives the first displayed identity, because the
+definition of \(f_-\) uses \(\ee^{+\ii p\cdot x}\).  Taking the inner product
+of the corresponding \(f\)- and \(g\)-smeared vectors, and using the
+relativistic delta-function normalization of \(|\vec p\rangle\), gives the
+second display.  Since the complement \(1-P_1\) has spectral support separated
+from the isolated shell in the chosen neighborhood, it contributes no
+one-particle pole there.
+\end{proof}
 
 For an \(N\)-point time-ordered function, LSZ extraction applies this
 one-particle projection in each external variable. After the external
@@ -451,6 +644,56 @@ out of the reduction formula.  The scattering operator belongs to the
 asymptotic Hilbert space; the interpolating local fields are coordinates used
 to access its matrix elements.
 
+\begin{proposition}[External-pole stability]
+\label{prop:lsz-contact-interpolating-field-stability}
+Let \(C(k_1,\ldots,k_N)\) be a distribution that is polynomial in one
+external momentum \(k_a\) in a neighborhood of the isolated mass shell, after
+all other variables have been smeared.  Then
+\[
+  \operatorname*{bv}_{\Sigma_m}
+  \left[
+    (k_a^2+m^2)C(k_1,\ldots,k_N)
+  \right]=0 .
+\]
+Consequently local contact terms in time-ordered products do not contribute
+to the simultaneous LSZ external residue.  If another interpolating field
+\(\widehat\phi'\) has
+\[
+  \bra{\vac}\widehat\phi'(0)|\vec p\rangle
+  =
+  a\,\bra{\vac}\widehat\phi(0)|\vec p\rangle,
+  \qquad a\ne0,
+\]
+then its pole residue is \(Z_{\phi'}=|a|^2Z_\phi\), and the LSZ-normalized
+scattering matrix element is unchanged after the corresponding external
+field-coordinate factors are included.
+\end{proposition}
+
+\begin{proof}
+The first assertion follows directly from the definition of the boundary-value
+coefficient.  A polynomial in \(k_a\) has no factor
+\((k_a^2+m^2-\ii0)^{-1}\).  Multiplication by \(k_a^2+m^2\) gives a
+distribution whose restriction to \(k_a^2=-m^2\) is zero in the external
+coefficient sense used by Definition~\ref{def:lsz-external-boundary-value-extraction}.
+Such terms can affect local Ward identities or composite-operator contact
+relations, but they are not external one-particle poles.
+
+For the field-coordinate statement, the two-point one-particle term for
+\(\widehat\phi'\) is multiplied by \(a^*a\), hence
+\[
+  Z_{\phi'}=|a|^2Z_\phi .
+\]
+An \(N\)-leg Green function with external fields \(\phi'_a\) has its
+simultaneous one-particle pole coefficient multiplied by the product of the
+corresponding one-particle overlap factors.  The LSZ normalization contributes
+the inverse square roots of the same positive residues.  These factors cancel
+in the pairing with normalized Haag--Ruelle one-particle wave packets, leaving
+the same Hilbert-space matrix element of \(S\).  If a component of
+\(\widehat\phi'\) has zero vacuum-to-one-particle matrix element, then
+Proposition~\ref{prop:lsz-pole-spectral-projection} gives zero projection to
+\(\Hilb_1\), so that component contributes no external LSZ pole.
+\end{proof}
+
 \section{Large-Time Oscillations and External Residues}
 
 The wave-packet statement above can be made more explicit.  Let
@@ -510,6 +753,47 @@ For an outgoing external variable the conjugate calculation selects
 \[
   k^0=\omega_{\vec k}-\ii0 .
 \]
+
+\begin{proposition}[Large-time pole selector]
+\label{prop:lsz-large-time-pole-selector}
+Let \(a\in\mathcal S(\mathbb R^{1,d})\).  With the Feynman prescription above,
+\[
+\begin{aligned}
+&\lim_{T\to+\infty}
+\int\frac{\dd^Dk}{(2\pi)^D}\,
+\frac{a(k)\,\ee^{\ii(k^0+\omega_{\vec k})T}}
+     {k^2+m^2-\ii0}
+\\
+&\qquad =
+\int\frac{\dd^d\vec k}{(2\pi)^d}\,
+a(-\omega_{\vec k},\vec k)\,
+\frac{\ii}{2\omega_{\vec k}},
+\end{aligned}
+\]
+provided the spatial support is kept in the isolated mass-shell neighborhood.
+The conjugate large-time factor selects the positive-energy pole with the
+opposite boundary prescription.
+\end{proposition}
+
+\begin{proof}
+For fixed \(\vec k\), factor the denominator as in
+Proposition~\ref{prop:lsz-invariant-denominator-linear-residues}.  The phase
+\(\ee^{\ii(k^0+\omega_{\vec k})T}\) has a nonzero large-\(T\) limit only
+against the singular distribution at
+\[
+  k^0=-\omega_{\vec k}+\ii0 .
+\]
+Equivalently, close the \(k^0\)-contour in the upper half-plane for \(T>0\).
+The enclosed pole is the negative-energy Feynman pole, and the residue of
+\[
+  \frac{1}{k^2+m^2-\ii0}
+\]
+there is \(\ii/(2\omega_{\vec k})\) with the Fourier normalization used in the
+display.  The part of \(a(k)\) multiplied by a function regular at the selected
+shell gives zero by repeated integration by parts in \(k^0\).  The
+positive-energy statement is the complex-conjugate contour calculation.
+\end{proof}
+
 If the full Feynman two-point singularity
 \(-\ii Z_\phi/(k^2+m^2-\ii0)\) is used instead of the bare denominator in the
 displayed integral, the extra factor \(-\ii Z_\phi\) combines with the residue above
@@ -751,8 +1035,8 @@ one connected scattering component.  Then
 \]
 with the one-particle identity blocks included.  This formula is the
 scattering analogue of the cumulant decomposition of time-ordered correlation
-functions.  Its content is not perturbative: it follows from the Hilbert-space
-cluster property of asymptotic states.  Perturbation theory later represents
+functions.  Its content is not perturbative: it is a consequence of the
+Hilbert-space cluster property of asymptotic states.  Perturbation theory later represents
 the connected blocks by connected Feynman graphs, but the connected/disconnected
 separation is already present in the nonperturbative scattering kernel.
 
