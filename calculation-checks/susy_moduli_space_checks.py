@@ -192,6 +192,19 @@ def su2_nf2_pfaffian(v):
     )
 
 
+def su2_nf2_pfaffian_gradient(v):
+    """Gradient of Pf(V) with respect to the six antisymmetric coordinates."""
+
+    return {
+        (0, 1): v[(2, 3)],
+        (0, 2): -v[(1, 3)],
+        (0, 3): v[(1, 2)],
+        (1, 3): -v[(0, 2)],
+        (1, 2): v[(0, 3)],
+        (2, 3): v[(0, 1)],
+    }
+
+
 def check_su2_nf2_plucker_identity():
     """Check decomposable SU(2) invariants obey the Pfaffian relation."""
 
@@ -281,6 +294,124 @@ def check_su2_nf2_dimension_ledger():
     )
 
 
+def check_su2_nf2_quantum_deformation_smoothness():
+    """Check the Pfaffian gradient vanishes only at the removed origin."""
+
+    coordinate_keys = {
+        (0, 1),
+        (0, 2),
+        (0, 3),
+        (1, 2),
+        (1, 3),
+        (2, 3),
+    }
+    expected_gradient_entries = {
+        (0, 1): ((2, 3), Fraction(1)),
+        (0, 2): ((1, 3), Fraction(-1)),
+        (0, 3): ((1, 2), Fraction(1)),
+        (1, 3): ((0, 2), Fraction(-1)),
+        (1, 2): ((0, 3), Fraction(1)),
+        (2, 3): ((0, 1), Fraction(1)),
+    }
+    assert_equal(
+        {source for source, _ in expected_gradient_entries.values()},
+        coordinate_keys,
+        "SU(2) N_f=2 Pfaffian gradient sees every coordinate once",
+    )
+    for source_key in coordinate_keys:
+        basis_vector = {key: Fraction(0) for key in coordinate_keys}
+        basis_vector[source_key] = Fraction(1)
+        gradient = su2_nf2_pfaffian_gradient(basis_vector)
+        expected_gradient = {}
+        for derivative_key, (expected_source, coefficient) in (
+            expected_gradient_entries.items()
+        ):
+            expected_gradient[derivative_key] = (
+                coefficient if source_key == expected_source else Fraction(0)
+            )
+        assert_equal(
+            gradient,
+            expected_gradient,
+            "SU(2) N_f=2 Pfaffian gradient signs and coordinate order",
+        )
+
+    zero = {key: Fraction(0) for key in coordinate_keys}
+    assert_equal(
+        su2_nf2_pfaffian_gradient(zero),
+        {key: Fraction(0) for key in coordinate_keys},
+        "SU(2) N_f=2 Pfaffian gradient vanishes at origin",
+    )
+    assert_equal(
+        su2_nf2_pfaffian(zero),
+        0,
+        "SU(2) N_f=2 origin is not on a nonzero quantum deformation",
+    )
+
+
+def check_su2_nf2_mass_deformation_vacua():
+    """Check the two massive vacua on Pf(V)=Lambda^4 for diagonal masses."""
+
+    m_1 = Fraction(9)
+    m_2 = Fraction(16)
+    lambda_squared = Fraction(5)
+    lambda_fourth = lambda_squared * lambda_squared
+    sqrt_m1_m2 = Fraction(12)
+    pure_scale_cubed = lambda_squared * sqrt_m1_m2
+
+    coordinate_keys = {
+        (0, 1),
+        (0, 2),
+        (0, 3),
+        (1, 2),
+        (1, 3),
+        (2, 3),
+    }
+    mass_source = {
+        (0, 1): m_1,
+        (2, 3): m_2,
+    }
+
+    for sign in [Fraction(1), Fraction(-1)]:
+        x = sign * sqrt_m1_m2 / lambda_squared
+        v = {key: Fraction(0) for key in coordinate_keys}
+        v[(0, 1)] = -m_2 / x
+        v[(2, 3)] = -m_1 / x
+
+        assert_equal(
+            su2_nf2_pfaffian(v),
+            lambda_fourth,
+            "SU(2) N_f=2 massive vacuum lies on quantum deformation",
+        )
+
+        gradient = su2_nf2_pfaffian_gradient(v)
+        for key in coordinate_keys:
+            f_term = mass_source.get(key, Fraction(0)) + x * gradient[key]
+            assert_equal(
+                f_term,
+                0,
+                "SU(2) N_f=2 diagonal mass F-term vanishes",
+            )
+
+        superpotential = m_1 * v[(0, 1)] + m_2 * v[(2, 3)]
+        expected_superpotential = -sign * 2 * lambda_squared * sqrt_m1_m2
+        assert_equal(
+            superpotential,
+            expected_superpotential,
+            "SU(2) N_f=2 massive vacuum superpotential value",
+        )
+        assert_equal(
+            superpotential,
+            -sign * 2 * pure_scale_cubed,
+            "SU(2) N_f=2 pure-SYM branch superpotential normalization",
+        )
+
+    assert_equal(
+        pure_scale_cubed * pure_scale_cubed,
+        m_1 * m_2 * lambda_fourth,
+        "SU(2) N_f=2 holomorphic threshold scale matching",
+    )
+
+
 def main():
     check_rank_one_abelian_invariant_ring()
     check_rank_one_abelian_dimension_count()
@@ -291,6 +422,8 @@ def main():
     check_su2_nf2_plucker_identity()
     check_su2_nf2_plucker_converse_chart()
     check_su2_nf2_dimension_ledger()
+    check_su2_nf2_quantum_deformation_smoothness()
+    check_su2_nf2_mass_deformation_vacua()
     print("All supersymmetric moduli-space quotient checks passed.")
 
 

@@ -162,10 +162,23 @@ operator products or low-energy dynamics.
 
 \section{N One SQCD Branches}
 
-For \(SU(N_c)\) SQCD with \(N_f\) flavors, the gauge-invariant chiral
-coordinates are mesons and baryons as defined in
-Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.  The branch data
-depend on \(N_f\):
+For \(SU(N_c)\) SQCD with \(N_f\) flavors, the microscopic chiral fields are
+quarks \(Q^a{}_i\) in the fundamental and antiquarks
+\(\widetilde Q_a{}^i\) in the antifundamental, with color
+\(a=1,\ldots,N_c\) and flavor \(i=1,\ldots,N_f\).  The elementary
+gauge-invariant chiral coordinates are the mesons
+\[
+  M^i{}_j=\widetilde Q_a{}^i Q^a{}_j
+\]
+and, when \(N_f\geq N_c\), the baryons and antibaryons obtained by
+contracting \(N_c\) quarks or antiquarks with \(\epsilon_{a_1\cdots a_{N_c}}\).
+The relations among these coordinates are algebraic relations in the reduced
+affine quotient; they are not optional decoration, because they decide which
+operator expectation values can occur in a supersymmetric vacuum.
+
+The following ledger is only an orientation map.  It is not used as a proof,
+and each row requires a separate derivation or an explicitly labeled
+Wilsonian input:
 \[
 \begin{array}{c|c}
 N_f<N_c & \text{ADS superpotential produces a runaway direction}\\
@@ -176,10 +189,14 @@ N_f=N_c+1 & \text{confining chiral coordinates with superpotential constraint}\\
 Each entry is a Wilsonian chiral-coordinate statement.  The metric on the
 branch and the massive spectrum require additional low-energy data.
 
-The table is meaningful only after the classical quotient coordinates have
-been fixed.  The smallest nontrivial \(N_f=N_c\) example is already a useful
-test case because its quotient is elementary linear algebra rather than a
-duality claim.
+The table becomes meaningful only after the classical quotient coordinates
+have been fixed and after the status of the quantum input has been separated
+from the algebra done with that input.  The smallest nontrivial
+\(N_f=N_c\) example is therefore not a slogan about a quantum-modified
+constraint.  It is a test case for the monograph's method: construct the
+classical quotient from invariant theory, state the protected quantum
+deformation as the only dynamical input, and then derive all consequences
+that follow from the deformed equation by ordinary algebra.
 
 \begin{proposition}[Classical \(SU(2)\) \(N_f=2\) SQCD quotient]
 \label{prop:su2-nf2-classical-plucker-quotient}
@@ -276,6 +293,142 @@ affine quotient is the displayed hypersurface.  Its dimension is
   8-3=5
 \]
 on the stable maximal-rank locus.
+\end{proof}
+
+\begin{proposition}[Algebra of the \(SU(2)\), \(N_f=2\) quantum deformation]
+\label{prop:su2-nf2-quantum-deformation-algebra}
+Assume the Wilsonian chiral-coordinate input that the quantum branch of the
+theory in Proposition~\ref{prop:su2-nf2-classical-plucker-quotient} is
+\begin{equation}
+  \operatorname{Pf}(V)=\Lambda_h^4,
+  \qquad \Lambda_h\neq0,
+  \label{eq:su2-nf2-quantum-deformed-pfaffian}
+\end{equation}
+where \(\operatorname{Pf}\) is the polynomial in
+\eqref{eq:su2-nf2-pfaffian-convention}.  Then the deformed branch is
+smooth and five-complex-dimensional.  Moreover, after adding a nondegenerate
+antisymmetric mass source and putting it, by a complex linear change of
+flavor basis, in Darboux form
+\begin{equation}
+  W_m=m_1V^{12}+m_2V^{34},
+  \qquad m_1m_2\neq0,
+  \label{eq:su2-nf2-diagonal-mass-source}
+\end{equation}
+and imposing the constraint by a chiral Lagrange multiplier \(X\),
+\begin{equation}
+  W_{\mathrm{constr}}
+  =
+  m_1V^{12}+m_2V^{34}
+  +X\bigl(\operatorname{Pf}(V)-\Lambda_h^4\bigr),
+  \label{eq:su2-nf2-constrained-mass-superpotential}
+\end{equation}
+the \(F\)-term equations over \(\mathbb C\) have exactly two solutions.
+After choosing a square root \(\Lambda_h^2\) of the deformation parameter
+\(\Lambda_h^4\) and a square root of \(m_1m_2\), they are
+\begin{equation}
+  X_\pm=\pm\frac{\sqrt{m_1m_2}}{\Lambda_h^2},
+  \qquad
+  V^{12}_\pm=-\frac{m_2}{X_\pm},
+  \qquad
+  V^{34}_\pm=-\frac{m_1}{X_\pm},
+  \label{eq:su2-nf2-massive-vacua}
+\end{equation}
+with all other \(V^{IJ}\) equal to zero.  Their superpotential values are
+\begin{equation}
+  W_\pm
+  =
+  \mp\,2\Lambda_h^2\sqrt{m_1m_2}.
+  \label{eq:su2-nf2-massive-superpotential-values}
+\end{equation}
+Thus the deformed branch removes the classical origin, and the simplest
+mass deformation has the two isolated chiral vacua expected after decoupling
+to pure \(SU(2)\) supersymmetric Yang--Mills, with scale matching
+\(\Lambda_0^6=m_1m_2\Lambda_h^4\) in this Darboux convention.  The last
+comparison uses matching to the massive low-energy theory; the algebraic
+statement above uses only
+\eqref{eq:su2-nf2-quantum-deformed-pfaffian}.  Different choices of square
+root or of the sign convention relating \(V^{IJ}\) to the usual meson-baryon
+coordinates only relabel the two vacua.
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+  F(V)=V^{12}V^{34}-V^{13}V^{24}+V^{14}V^{23}.
+\]
+The gradient of \(F\) in the six affine coordinates is
+\[
+  \nabla F
+  =
+  (V^{34},-V^{24},V^{23},-V^{13},V^{14},V^{12}),
+\]
+ordered as
+\[
+  (V^{12},V^{13},V^{14},V^{24},V^{23},V^{34}).
+\]
+If \(\nabla F=0\), then all six entries of \(V\) vanish, so \(F(V)=0\).
+No point on \(F(V)=\Lambda_h^4\) with \(\Lambda_h\neq0\) can therefore be
+singular.  A smooth hypersurface in six complex affine coordinates has
+complex dimension \(5\).
+
+For the mass deformation, a general holomorphic quadratic mass source in the
+four doublets is an antisymmetric tensor \(m_{IJ}V^{IJ}/2\).  If \(m\) is
+nondegenerate, elementary alternating-form linear algebra gives a basis
+\((e_1,e_2,e_3,e_4)\) with
+\[
+  m=m_1\,e^1\wedge e^2+m_2\,e^3\wedge e^4,
+  \qquad m_1m_2\neq0;
+\]
+one chooses \(e_1\), then \(e_2\) with \(m(e_1,e_2)\neq0\), takes the
+orthogonal complement of their span, and repeats in the remaining
+two-dimensional nondegenerate alternating space.  In that Darboux basis, the
+\(F\)-terms from
+\eqref{eq:su2-nf2-constrained-mass-superpotential} are
+\[
+\begin{array}{lll}
+  m_1+XV^{34}=0, & -XV^{24}=0, & XV^{23}=0,\\
+  -XV^{13}=0, & XV^{14}=0, & m_2+XV^{12}=0,
+\end{array}
+\]
+together with \(F(V)=\Lambda_h^4\).  If \(X=0\), the first and last equations
+would force \(m_1=m_2=0\), contrary to the hypothesis.  Hence \(X\neq0\),
+and the middle four equations set
+\[
+  V^{13}=V^{14}=V^{23}=V^{24}=0.
+\]
+The remaining two linear equations give
+\[
+  V^{12}=-\frac{m_2}{X},\qquad
+  V^{34}=-\frac{m_1}{X}.
+\]
+The constraint then becomes
+\[
+  \frac{m_1m_2}{X^2}=\Lambda_h^4,
+\]
+so \(X=X_\pm\) and the two displayed solutions follow.  Substitution into
+\eqref{eq:su2-nf2-diagonal-mass-source} gives
+\[
+  W_\pm
+  =
+  -\frac{2m_1m_2}{X_\pm}
+  =
+  \mp\,2\Lambda_h^2\sqrt{m_1m_2},
+\]
+as claimed.
+
+Finally, the comparison with pure \(SU(2)\) is the standard holomorphic
+threshold matching applied to two massive doublet pairs.  The one-loop
+holomorphic exponents are \(b_0=4\) for \(SU(2)\) with two flavors and
+\(b_0=6\) for pure \(SU(2)\).  In the Darboux mass convention the Pfaffian
+of the antisymmetric mass matrix is \(m_1m_2\), so decoupling gives
+\[
+  \Lambda_0^6=m_1m_2\Lambda_h^4.
+\]
+Thus the two values above may be written as \(W_\pm=\mp2\Lambda_0^3\) after
+choosing a cube-root branch for \(\Lambda_0^3\), exactly the two-branch
+pure \(SU(2)\) chiral-source pattern.  This matching paragraph uses the
+Wilsonian decoupling input; the smoothness and \(F\)-term solution were
+already proved directly from the deformed Pfaffian equation.
 \end{proof}
 
 \section{N Two Coulomb, Higgs, And Mixed Branches}

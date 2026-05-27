@@ -598,7 +598,8 @@ Current checks:
   superpotential's \(F\)-term ideal, and the rank-one hyperk\"ahler quotient
   dimension and cotangent-transition algebra for \(T^\ast\mathbb P^{N-1}\),
   plus the \(SU(2)\), \(N_f=2\) Plucker/Pfaffian quotient identity and
-  dimension ledger.
+  dimension ledger, nonzero quantum-deformation smoothness test,
+  diagonal-mass two-vacuum algebra, and holomorphic threshold scale matching.
 - `susy_2d_lg_glsm_checks.py`: exact finite checks for the
   two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
   including \(A\)-series quasihomogeneous charges and central charges,
