@@ -5,6 +5,8 @@
 
 \section{Representative Fields and Field Strength}
 
+\begin{definition}[Local Maxwell representative datum]
+\label{def:local-maxwell-representative-datum}
 Work on four-dimensional Minkowski space with mostly-plus metric. A Maxwell
 configuration in this local discussion is represented by a real one-form
 \[
@@ -28,6 +30,10 @@ The local gauge-invariant field strength is
   =
   \partial_\mu A_\nu-\partial_\nu A_\mu .
 \]
+\end{definition}
+
+\begin{proposition}[Maxwell action and Euler--Lagrange equation]
+\label{prop:maxwell-action-euler-lagrange}
 The free Maxwell action is
 \[
   S[A]
@@ -38,6 +44,31 @@ Its Euler--Lagrange equation is
 \[
   \partial_\mu F^{\mu\nu}=0 .
 \]
+\end{proposition}
+
+\begin{proof}
+The variation of the field strength is
+\(\delta F_{\mu\nu}=\partial_\mu\delta A_\nu-\partial_\nu\delta A_\mu\).
+Using antisymmetry of \(F^{\mu\nu}\),
+\[
+  \delta S
+  =
+  -\frac12\int\dd^4x\,F^{\mu\nu}\delta F_{\mu\nu}
+  =
+  -\int\dd^4x\,F^{\mu\nu}\partial_\mu\delta A_\nu .
+\]
+The boundary condition convention of
+Definition~\ref{def:local-maxwell-representative-datum} gives
+\[
+  \delta S
+  =
+  \int\dd^4x\,(\partial_\mu F^{\mu\nu})\delta A_\nu .
+\]
+Since \(\delta A_\nu\) is arbitrary within the chosen test-function class, the
+Euler--Lagrange equation is \(\partial_\mu F^{\mu\nu}=0\).  The same
+calculation shows gauge invariance of \(S[A]\), because
+\(\delta_\xi F_{\mu\nu}=0\) for \(\delta_\xi A_\mu=\partial_\mu\xi\).
+\end{proof}
 
 With \(x^0=t\) and spatial indices \(i,j=1,2,3\), the Lagrangian density is
 \[
@@ -53,6 +84,8 @@ propagating fields.
 
 \section{Canonical Constraint Analysis}
 
+\begin{definition}[Maxwell canonical Poisson structure]
+\label{def:maxwell-canonical-poisson-structure}
 At fixed time let \(A_\mu(t,\vec x)\) be canonical coordinates. For
 functionals \(F,G\) of \(A_\mu,\Pi^\mu\), use the equal-time Poisson bracket
 \[
@@ -74,7 +107,10 @@ Equivalently,
   \delta_\mu{}^\nu\delta^{(3)}(\vec x-\vec y),
 \]
 with all \(A\)-\(A\) and \(\Pi\)-\(\Pi\) brackets zero.
+\end{definition}
 
+\begin{proposition}[Primary constraint, Gauss constraint, and canonical Hamiltonian]
+\label{prop:maxwell-primary-gauss-canonical-hamiltonian}
 The canonical momenta are
 \[
   \Pi^\mu(\vec x)
@@ -119,7 +155,31 @@ hence the secondary constraint
   \chi_2(\vec x)=\partial_i\Pi^i(\vec x)=0 .
 \]
 This is Gauss' law in the absence of charges.
+\end{proposition}
 
+\begin{proof}
+The Lagrangian density contains \(\partial_0A_i\) only through
+\(\partial_0A_i-\partial_iA_0\), and contains no \(\partial_0A_0\).  This
+gives the displayed momenta and the primary constraint \(\Pi^0=0\).  Solving
+\(\partial_0A_i=\Pi^i+\partial_iA_0\), the Legendre transform is
+\[
+  \Pi^i\partial_0A_i-\mathcal L
+  =
+  \frac12\Pi^i\Pi^i+\frac14F_{ij}F_{ij}+\Pi^i\partial_iA_0 .
+\]
+Integrating the last term by parts gives \(H_{\rm c}\).  Finally,
+\[
+  \{\Pi^0(\vec x),H_{\rm c}\}_{\rm P}
+  =
+  -\frac{\delta H_{\rm c}}{\delta A_0(\vec x)}
+  =
+  \partial_i\Pi^i(\vec x),
+\]
+so preservation of \(\Pi^0=0\) imposes Gauss' law.
+\end{proof}
+
+\begin{proposition}[First-class constraints generate Maxwell gauge transformations]
+\label{prop:maxwell-first-class-gauge-generator}
 The constraints obey
 \[
   \{\chi_a(\vec x),\chi_b(\vec y)\}_{\mathrm P}=0,
@@ -155,9 +215,38 @@ Thus the first-class constraints generate
 on the vector-potential representative. The gauge-invariant phase space is
 obtained by restricting to the constraint surface and quotienting by these
 gauge orbits, or equivalently by choosing a regular slice through the orbits.
+\end{proposition}
+
+\begin{proof}
+The constraints depend only on momenta, hence their mutual Poisson brackets
+vanish.  For the generator \(G[\zeta]\),
+\[
+  \{A_0(\vec x),G[\zeta]\}_{\rm P}
+  =
+  \int\dd^3\vec y\,\partial_0\zeta(t,\vec y)
+  \delta^{(3)}(\vec x-\vec y)
+  =
+  \partial_0\zeta(t,\vec x).
+\]
+For \(A_i\), integrate the derivative in the Gauss term against the delta
+function:
+\[
+  \{A_i(\vec x),G[\zeta]\}_{\rm P}
+  =
+  -\int\dd^3\vec y\,\zeta(t,\vec y)
+  \partial_i^{\vec y}\delta^{(3)}(\vec x-\vec y)
+  =
+  \partial_i\zeta(t,\vec x).
+\]
+The transformed field strength is unchanged because mixed partial
+derivatives commute.  Thus the Hamiltonian first-class flow is precisely the
+Maxwell representative redundancy.
+\end{proof}
 
 \section{Axial Gauge and Reduced Phase Space}
 
+\begin{definition}[Axial gauge local chart]
+\label{def:axial-gauge-local-chart}
 Axial gauge chooses the representative satisfying
 \[
   A_3=0 .
@@ -170,7 +259,10 @@ so this is a regular gauge condition for modes on which \(\partial_3\) is
 invertible. Modes with \(\partial_3\xi=0\) are residual gauge parameters for
 this slice and must be treated separately by boundary conditions or an
 additional gauge condition.
+\end{definition}
 
+\begin{proposition}[Axial gauge leaves two canonical degrees of freedom]
+\label{prop:axial-gauge-two-canonical-degrees}
 There are two equivalent local descriptions. In canonical language the
 condition \(A_3=0\) pairs with Gauss' law and allows one to solve
 \[
@@ -235,9 +327,29 @@ remaining canonical variables are
   \qquad a=1,2.
 \]
 They are the two canonical degrees of freedom of the free photon.
+\end{proposition}
+
+\begin{proof}
+On modes where \(\partial_3\) is invertible, Gauss' law gives
+\(\Pi^3=-\partial_3^{-1}\partial_a\Pi^a\), so \((A_3,\Pi^3)\) is removed
+after imposing the axial condition and the constraint.  In the Lagrangian
+description, \(A_0\) has no time derivative.  Its equation of motion is the
+displayed elliptic equation along the \(x^3\)-direction once \(A_3=0\) is
+imposed.  The Poisson bracket
+\[
+  \{\Pi^0(\vec x),\partial_3^2A_0(\vec y)\}_{\rm P}
+  =
+  \partial_3^2\delta^{(3)}(\vec x-\vec y)
+\]
+is invertible on the same nonzero-\(k_3\) modes, so
+\((A_0,\Pi^0)\) is a second-class pair there and may be eliminated.  The only
+regular canonical variables left are \(A_a,\Pi^a\), \(a=1,2\).
+\end{proof}
 
 \section{Gauge Slices and the Faddeev--Popov Factor}
 
+\begin{definition}[Local Faddeev--Popov chart]
+\label{def:local-faddeev-popov-chart-maxwell}
 Before gauge fixing, the path-integral shorthand
 \[
   Z_{\mathrm{unfixed}}
@@ -266,6 +378,10 @@ where
   \mathcal G(A+s\,\partial\xi)
   \right|_{s=0}.
 \]
+\end{definition}
+
+\begin{proposition}[Abelian linear FP determinant]
+\label{prop:abelian-linear-gauge-fp-determinant}
 For abelian Maxwell theory with a linear gauge condition, \(M_{\mathcal G}\)
 is independent of \(A_\mu\). Its determinant is then an overall
 normalization in the free theory. This special simplification is not a
@@ -275,6 +391,18 @@ later as a local coordinate system on gauge orbits. There the analogue of
 \(M_{\mathcal G}\) depends on the gauge potential, can acquire zero modes, and
 therefore cannot be promoted to a single global Faddeev--Popov chart without
 additional geometric data.
+\end{proposition}
+
+\begin{proof}
+If \(\mathcal G\) is linear, then
+\[
+  \mathcal G(A+\partial\xi)=\mathcal G(A)+\mathcal G(\partial\xi).
+\]
+Therefore the derivative with respect to \(s\) at \(s=0\) is simply
+\(M_{\mathcal G}\xi=\mathcal G(\partial\xi)\), independent of \(A\).  The
+determinant is consequently independent of the integration variable in the
+free abelian representative integral and factors from normalized correlators.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=1.05]
@@ -304,6 +432,8 @@ additional geometric data.
 \end{tikzpicture}
 \end{center}
 
+\begin{proposition}[Finite-dimensional gauge-slice independence model]
+\label{prop:finite-dimensional-fp-slice-independence-model}
 A finite-dimensional model isolates the logic. Let
 \[
   S(x,y)=(x-y)^2
@@ -333,17 +463,27 @@ For a gauge-invariant observable \(O(x,y)=O(x+\alpha,y+\alpha)\),
     \ee^{-(x+ax+b)^2}
   }
 \]
-is independent of \(a,b\). Indeed, setting
+is independent of \(a,b\). This is the finite-dimensional form of
+gauge-slice independence for gauge-invariant quantities in a region where the
+slice is regular.
+\end{proposition}
+
+\begin{proof}
+On the slice \(y=-ax-b\), the gauge-invariant coordinate is
 \[
-  u=(1+a)x+b
+  u=x-y=(1+a)x+b .
 \]
-turns the numerator and denominator into the same Gaussian average over
-\(u=x-y\); the Jacobian and \(\Delta_\ell\) cancel in the ratio. This is the
-finite-dimensional form of gauge-slice independence for gauge-invariant
-quantities in a region where the slice is regular.
+The measure changes by \(\dd u=|1+a|\dd x\).  The factor
+\(\Delta_\ell=|1+a|\) therefore cancels the Jacobian in both numerator and
+denominator.  Because \(O\) is constant on gauge orbits, \(O(x,-ax-b)\)
+depends only on \(u\).  Both normalized integrals are thus the same Gaussian
+average in \(u\), independent of \(a,b\).
+\end{proof}
 
 \section{Axial-Gauge Gaussian and Propagator}
 
+\begin{proposition}[Axial-gauge quadratic inverse]
+\label{prop:axial-gauge-quadratic-inverse}
 For axial gauge,
 \[
   \mathcal G_{\mathrm{ax}}(A)=A_3,
@@ -406,7 +546,15 @@ For \(k^2\ne0\) and \(k_3\ne0\), its inverse on this \(3\times3\) block is
   \qquad
   \mu,\nu=0,1,2.
 \]
-Indeed,
+\end{proposition}
+
+\begin{proof}
+The abelian Faddeev--Popov operator is
+\(M_{\rm ax}\xi=\partial_3\xi\), so its determinant is field independent
+after the \(\partial_3\) zero modes are removed.  Integration by parts gives
+the displayed quadratic operator.  On the axial slice \(A_3=0\), only the
+\(\mu,\nu=0,1,2\) block remains.  Multiplying the proposed inverse by the
+quadratic block gives
 \[
 \begin{aligned}
   &\sum_{\rho=0}^2
@@ -433,6 +581,10 @@ because
 \[
   \sum_{\rho=0}^2 k^\rho k_\rho=k^2-k_3^2 .
 \]
+\end{proof}
+
+\begin{corollary}[Axial-gauge representative propagator and field strength]
+\label{cor:axial-gauge-field-strength-propagator}
 The Lorentzian Feynman boundary value therefore gives, for
 \(\mu,\nu=0,1,2\),
 \[
@@ -478,9 +630,12 @@ part of the axial propagator cancels:
 \]
 Thus the local gauge-invariant correlator has a Lorentz-covariant kernel
 although the axial representative propagator does not.
+\end{corollary}
 
 \section{Covariant Gauges}
 
+\begin{definition}[Lorenz gauge and covariant gauge parameter]
+\label{def:lorenz-gauge-covariant-parameter}
 For perturbative calculations it is often useful to preserve manifest
 Lorentz covariance in the representative propagator. The Lorenz gauge
 condition is
@@ -495,7 +650,10 @@ Along a gauge orbit,
 \]
 so the abelian Faddeev--Popov operator is \(M_{\mathrm L}=\Box\). In the
 free abelian theory its determinant is field independent.
+\end{definition}
 
+\begin{proposition}[Gaussian averaging of the Lorenz gauge condition]
+\label{prop:lorenz-gauge-gaussian-averaging}
 Instead of imposing \(\partial_\mu A^\mu=0\) sharply, introduce an auxiliary
 function \(\varphi\) and average the condition
 \[
@@ -537,6 +695,20 @@ The Euclidean gauge-fixing term is therefore
   \frac{1}{2\xi_{\mathrm g}}
   \int\dd^4x_E\,(\partial_\mu A^\mu)^2 .
 \]
+\end{proposition}
+
+\begin{proof}
+The delta-functional sets \(\varphi=\partial_\mu A^\mu\).  Integrating first
+over \(\lambda\) implements this constraint, and the remaining Gaussian
+weight in \(\varphi\) becomes exactly the displayed quadratic term in
+\(\partial_\mu A^\mu\).  Conversely, integrating first over \(\varphi\)
+completes the square and produces the same local quadratic functional of the
+Lagrange multiplier; the two orders express the same finite-mode Gaussian
+identity before the regulator is removed.
+\end{proof}
+
+\begin{proposition}[Covariant-gauge quadratic inverse]
+\label{prop:covariant-gauge-quadratic-inverse}
 The corresponding Lorentzian gauge-fixed action is
 \[
   S_{\xi_{\mathrm g}}[A]
@@ -579,7 +751,13 @@ For \(\xi_{\mathrm g}\ne0\), its inverse is
   +
   (1-\xi_{\mathrm g})\frac{k_\mu k_\nu}{(k^2)^2}.
 \]
-The verification is
+\end{proposition}
+
+\begin{proof}
+The gauge-fixed action is obtained from the Maxwell action and the
+Lorentzian continuation of the Euclidean term in
+Proposition~\ref{prop:lorenz-gauge-gaussian-averaging}.  Integrating by
+parts gives the displayed quadratic operator.  The inverse is verified by
 \[
 \begin{aligned}
   &\left[
@@ -597,6 +775,10 @@ The verification is
   \delta^\mu{}_\nu .
 \end{aligned}
 \]
+\end{proof}
+
+\begin{corollary}[Covariant representative propagator]
+\label{cor:covariant-representative-propagator}
 The Feynman two-point function of the representative field is
 \[
 \begin{aligned}
@@ -630,9 +812,12 @@ The value \(\xi_{\mathrm g}=1\) is Feynman gauge:
   \frac{-\ii\eta_{\mu\nu}}{k^2-\ii\epsilon}.
 \]
 The value \(\xi_{\mathrm g}\to0\) is Landau gauge.
+\end{corollary}
 
 \section{Gupta--Bleuler Fock Space in Lorenz Gauge}
 
+\begin{definition}[Covariant Maxwell Krein-Fock representative]
+\label{def:covariant-maxwell-krein-fock-representative}
 The covariant representative propagator has a direct operator realization in
 a Krein-Fock space.  The construction keeps Lorentz covariance manifest at
 the level of representative fields and recovers the positive physical photon
@@ -698,7 +883,10 @@ function
 \]
 which is the \(\xi_{\mathrm g}=1\) propagator above.  The price of this
 covariant representative is the indefinite form on \(\mathcal K\).
+\end{definition}
 
+\begin{definition}[Gupta--Bleuler physical subspace]
+\label{def:gupta-bleuler-physical-subspace}
 Write
 \[
   B(x)=\partial^\mu A_\mu(x),
@@ -720,15 +908,27 @@ condition
 \[
   k^\mu f_\mu(k)=0 .
 \]
+\end{definition}
+
+\begin{proposition}[Weak Lorenz condition]
+\label{prop:gupta-bleuler-weak-lorenz-condition}
 If \(\Phi,\Psi\in\mathcal K_{\rm GB}\), then
 \[
   \langle\Phi|B(x)|\Psi\rangle=0 .
 \]
-Indeed \(B^{(+)}(x)\Psi=0\), while
-\(B^{(-)}(x)\) is the Krein adjoint of \(B^{(+)}(x)\), so
-\(\langle\Phi|B^{(-)}(x)=0\).  Thus the Lorenz condition is imposed weakly,
-as a condition on matrix elements between physical vectors.
+\end{proposition}
 
+\begin{proof}
+The positive-frequency part obeys \(B^{(+)}(x)\Psi=0\) by definition of
+\(\mathcal K_{\rm GB}\).  The negative-frequency part \(B^{(-)}(x)\) is the
+Krein adjoint of \(B^{(+)}(x)\), hence \(\langle\Phi|B^{(-)}(x)=0\) for
+\(\Phi\in\mathcal K_{\rm GB}\).  Since \(B=B^{(+)}+B^{(-)}\), the displayed
+matrix element vanishes.  Thus the Lorenz condition is imposed weakly, as a
+condition on matrix elements between physical vectors.
+\end{proof}
+
+\begin{theorem}[Gupta--Bleuler quotient is the two-helicity photon Fock space]
+\label{thm:gupta-bleuler-quotient-two-helicity-fock}
 The quotient that removes null gauge vectors can be described already at
 one-particle level.  Let
 \[
@@ -802,7 +1002,25 @@ identification follows from the symmetric tensor functor:
 \]
 Thus Gupta--Bleuler quantization and reduced two-helicity quantization give
 the same positive free-photon Hilbert space after quotienting null vectors.
+\end{theorem}
 
+\begin{proof}
+The one-particle condition \(k^\mu f_\mu(k)=0\) says \(f(k)\in k^\perp\) for
+almost every \(k\) on the future light cone.  The subspace
+\(\mathcal N_1=\{k_\mu h(k)\}\) is contained in \(k^\perp\) because \(k^2=0\).
+It is null and orthogonal to all of \(k^\perp\) by the two displayed
+calculations.  The quotient \(k^\perp/\mathbb Ck\) has dimension two and is
+positive: in a frame \(k=(\kappa,0,0,\kappa)\), the condition
+\(-f_0+f_3=0\) leaves the class represented by \((0,f_1,f_2,0)\), whose norm
+is \(|f_1|^2+|f_2|^2\).  A measurable choice of helicity representatives
+\(\epsilon_\mu^h(k)\) identifies the quotient with the direct sum of the two
+helicity \(L^2\) spaces.  Symmetric Fock functoriality then gives the
+displayed quotient on every \(n\)-particle sector and hence on the finite
+particle domain; completion gives \(\mathcal F_s(\mathcal H_1^\gamma)\).
+\end{proof}
+
+\begin{proposition}[Field strengths descend to the Gupta--Bleuler quotient]
+\label{prop:field-strength-descends-gupta-bleuler}
 Now let \(u_{\mu\nu}(x)\) be a compactly supported test two-form and smear
 the field strength:
 \[
@@ -839,9 +1057,12 @@ reduced positive two-helicity Fock representation.  The same cancellation
 explains why the \(\xi_{\mathrm g}\)-dependent term in the covariant
 path-integral propagator drops out of gauge-invariant field-strength
 correlators.
+\end{proposition}
 
 \section{Field Strength and One-Photon States}
 
+\begin{proposition}[Field-strength two-point function and photon helicity data]
+\label{prop:maxwell-field-strength-one-photon-spectral-data}
 The gauge-fixed path integral defines Green functions of the representative
 variable \(A_\mu\). In a positive-metric physical Hilbert space the local
 observable obtained from the free Maxwell field is the field strength
@@ -920,3 +1141,4 @@ field. The perturbative Green functions will be written using gauge-fixed
 representatives, while local gauge-invariant operators and external photon
 states are read through the field strength and helicity data constructed
 here.
+\end{proposition}
