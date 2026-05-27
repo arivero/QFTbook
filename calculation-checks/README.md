@@ -705,6 +705,13 @@ Current checks:
   the \((\theta\psi)(\theta\chi)\) identity, the
   \(-\frac12 W_{ij}\psi^i\psi^j\) chiral \(F\)-term coefficient, and
   auxiliary \(F\)-field elimination.
+- `susy_superfield_operator_algebra_checks.py`: exact formal-superfield
+  checks for the Volume VII superspace differential-operator conventions,
+  including the Koszul sign in left odd differentiation, the chiral and
+  antichiral coordinate identities \(\bar D_{\dot\alpha}y^\mu=0\) and
+  \(D_\alpha\bar y^\mu=0\), the full \(Q,\bar Q,D,\bar D\) anticommutation
+  algebra on a generic finite superfield, and the anticommutation of
+  supercharges with covariant derivatives.
 - `susy_vector_superfield_checks.py`: exact finite exterior-algebra and
   sigma-matrix checks for the Volume VII vector-superfield conventions,
   including inverse epsilon raising, the bosonic \(\theta^2\) coefficient of

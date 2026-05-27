@@ -140,6 +140,13 @@
   \(\theta^2\) normalization, left-derivative rule, two-spinor Grassmann
   product identity, chiral \(F\)-term Yukawa coefficient, and auxiliary
   \(F\)-field square completion used in this chapter.
+- `calculation-checks/susy_superfield_operator_algebra_checks.py` verifies
+  the formal superfield differential-operator algebra directly: the Koszul
+  sign in left odd differentiation, the chiral coordinate identities
+  \(\bar D_{\dot\alpha}y^\mu=0\) and \(D_\alpha\bar y^\mu=0\), the full
+  \(Q,\bar Q,D,\bar D\) anticommutation algebra on a generic finite
+  superfield, and the anticommutation of supercharges with covariant
+  derivatives.
 - `calculation-checks/susy_vector_superfield_checks.py` verifies the
   inverse epsilon-raising convention, the finite
   \(\sigma^{\mu\nu}\)-contraction identity, the bosonic \(\theta^2\)
