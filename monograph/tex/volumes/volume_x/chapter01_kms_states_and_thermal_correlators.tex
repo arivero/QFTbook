@@ -3,79 +3,317 @@
 
 \ConventionsRealTime
 
-Thermal equilibrium is a property of a state together with a time evolution.
-The KMS condition expresses equilibrium without assuming a finite-volume
-Hamiltonian trace formula, and therefore applies directly to
-infinite-volume thermal QFT.
+Thermal equilibrium is a property of a state together with a chosen time
+evolution.  The KMS condition expresses this property as an analytic boundary
+condition on correlation functions.  It agrees with the Gibbs trace in a
+finite system, but it does not require the trace formula to exist.  This is
+why it is the correct starting point for infinite-volume thermal QFT, where
+the partition function per se is not an observable.
 
-\section{The KMS Condition}
+\section{Dynamical Algebras and Analytic Elements}
 
 \begin{definition}[\(C^\ast\)-dynamical system]
 \label{def:cstar-dynamical-system}
-A \(C^\ast\)-dynamical system is a pair \((\Obs,\alpha_t)\), where
-\(\Obs\) is a \(C^\ast\)-algebra and \(\alpha_t\) is a strongly continuous
-one-parameter group of \(\ast\)-automorphisms of \(\Obs\).
+A \(C^\ast\)-dynamical system is a pair \((\Obs,\alpha)\), where \(\Obs\) is
+a \(C^\ast\)-algebra and
+\[
+  \alpha:\mathbb R\longrightarrow \operatorname{Aut}(\Obs),
+  \qquad t\longmapsto \alpha_t,
+\]
+is a strongly continuous one-parameter group of \(\ast\)-automorphisms.  Thus
+\(\alpha_{t+s}=\alpha_t\alpha_s\), \(\alpha_0=\id\), and for each
+\(A\in\Obs\) the function \(t\mapsto\alpha_t(A)\) is norm-continuous.
 \end{definition}
+
+The algebra \(\Obs\) is the algebra of bounded observables.  Unbounded local
+fields, stress tensors, and currents are used later through smeared
+operators, affiliated operators, or distributional limits.  The KMS condition
+is first stated on bounded observables because products and analytic
+continuation are then unambiguous.
+
+\begin{definition}[Analytic element]
+\label{def:kms-analytic-element}
+An element \(A\in\Obs\) is entire analytic for \(\alpha\) if the map
+\(t\mapsto\alpha_t(A)\) extends to an entire \(\Obs\)-valued function
+\[
+  z\longmapsto\alpha_z(A)
+\]
+whose restriction to the real axis is the original orbit.  If \(w\in\mathbb R\),
+then \(\alpha_w(A)\) is again entire analytic and its continuation is
+\[
+  z\longmapsto \alpha_{z+w}(A).
+\]
+A subalgebra \(\Obs_{\rm an}\subset\Obs\) is an analytic core if it is norm
+dense, \(\alpha_t\)-invariant, and consists of entire analytic elements.
+\end{definition}
+
+\begin{lemma}[Existence of analytic elements by Gaussian smearing]
+\label{lem:kms-gaussian-analytic-elements}
+Let \((\Obs,\alpha)\) be a \(C^\ast\)-dynamical system.  For
+\(A\in\Obs\) and \(n>0\), define
+\[
+  A_n
+  =
+  \sqrt{\frac{n}{\pi}}
+  \int_{\mathbb R}\dd t\,\ee^{-nt^2}\alpha_t(A),
+  \label{eq:kms-gaussian-analytic-smearing}
+\]
+where the integral is the Bochner integral in the norm of \(\Obs\).  Then
+\(A_n\) is entire analytic and \(A_n\to A\) in norm as \(n\to\infty\).  Hence
+entire analytic elements form a norm-dense \(\ast\)-subalgebra.
+\end{lemma}
+
+\begin{proof}
+Strong continuity implies that the integral in
+\eqref{eq:kms-gaussian-analytic-smearing} exists and that
+\[
+  \|A_n-A\|
+  \leq
+  \sqrt{\frac{n}{\pi}}\int_{\mathbb R}\dd t\,\ee^{-nt^2}
+  \|\alpha_t(A)-A\| .
+\]
+After the change of variables \(u=\sqrt n\,t\), the integrand is bounded by
+\(\pi^{-1/2}\ee^{-u^2}2\|A\|\) and converges to zero for each fixed \(u\);
+dominated convergence gives \(A_n\to A\).  For complex \(z\), define
+\[
+  \alpha_z(A_n)
+  =
+  \sqrt{\frac{n}{\pi}}
+  \int_{\mathbb R}\dd t\,\ee^{-n(t-z)^2}\alpha_t(A).
+\]
+On every compact subset of the \(z\)-plane, the norm of the integrand is
+bounded by \(\|A\|\exp[-n t^2+C(1+|t|)]\), which is integrable in \(t\).
+Differentiation under the integral is therefore justified by dominated
+convergence, so \(z\mapsto\alpha_z(A_n)\) is entire.  If \(A\) and \(B\) are
+entire analytic, the functions
+\[
+  z\longmapsto \alpha_z(A)\alpha_z(B),
+  \qquad
+  z\longmapsto \alpha_{\bar z}(A)^\ast
+\]
+are respectively holomorphic and holomorphic as Banach-space-valued maps; on
+the real axis they equal \(\alpha_t(AB)\) and \(\alpha_t(A^\ast)\).  The
+identity theorem gives the analytic continuations of \(AB\) and \(A^\ast\).
+For the adjoint statement, if \(\ell\) is any continuous linear functional on
+\(\Obs\) and \(\ell^\#(X)=\overline{\ell(X^\ast)}\), then
+\(\ell(\alpha_{\bar z}(A)^\ast)=\overline{\ell^\#(\alpha_{\bar z}(A))}\);
+this is holomorphic in \(z\) because \(w\mapsto\ell^\#(\alpha_w(A))\) is
+entire.  Finite linear combinations then give a dense \(\ast\)-subalgebra.
+\end{proof}
+
+\section{The KMS Boundary Condition}
 
 \begin{definition}[KMS state]
 \label{def:thermal-volume-kms-state}
-Let \(\beta>0\).  A state \(\omega:\Obs\to\C\) is a \(\beta\)-KMS state for
-\(\alpha_t\) if, for every pair \(A,B\) in a norm-dense \(\alpha_t\)-analytic
-subalgebra, there is a function \(F_{A,B}(z)\), holomorphic on
+Let \(\beta>0\).  A state \(\omega:\Obs\to\mathbb C\) is a
+\(\beta\)-KMS state for \(\alpha\) if, for every \(A,B\in\Obs_{\rm an}\), the
+function
 \[
-  0<\operatorname{Im}z<\beta,
+  t\longmapsto \omega\!\left(A\alpha_t(B)\right)
 \]
-continuous on the closed strip, such that
+is the lower boundary value of a function \(F_{A,B}(z)\) that is holomorphic
+on the open strip
 \[
-  F_{A,B}(t)=\omega(A\alpha_t(B)),
+  S_\beta=\{z\in\mathbb C:0<\operatorname{Im}z<\beta\},
+\]
+continuous and bounded on the closed strip, and satisfies
+\[
+  F_{A,B}(t)=\omega\!\left(A\alpha_t(B)\right),
   \qquad
-  F_{A,B}(t+\ii\beta)=\omega(\alpha_t(B)A)
+  F_{A,B}(t+\ii\beta)=\omega\!\left(\alpha_t(B)A\right)
+  \label{eq:volume-x-kms-boundary-condition}
 \]
-for all real \(t\).
+for all \(t\in\mathbb R\).  The analytic core may be replaced by any
+norm-dense analytic core; the resulting condition extends by continuity to
+the usual KMS condition on \(\Obs\).
 \end{definition}
 
-If \(\Obs\) is represented on a finite-dimensional Hilbert space and
-\(\alpha_t(A)=\ee^{\ii Ht}A\ee^{-\ii Ht}\), then
+The inverse temperature \(\beta\) has dimensions of time when \(\hbar=1\).
+The time evolution \(\alpha_t\) is part of the datum.  Changing the time
+evolution, for example by adding a chemical-potential generator, changes the
+KMS condition.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=1.0]
+  \draw[->] (-3.4,0) -- (3.8,0) node[right] {\(\operatorname{Re}z=t\)};
+  \draw[->] (-3.2,-0.25) -- (-3.2,2.2) node[above]
+    {\(\operatorname{Im}z\)};
+  \draw[blue!60!black,thick] (-3,0) -- (3,0);
+  \draw[blue!60!black,thick] (-3,1.55) -- (3,1.55);
+  \fill[blue!8] (-3,0) rectangle (3,1.55);
+  \draw[dashed] (-3,1.55) -- (3,1.55);
+  \node[below] at (0,0) {\(\omega(A\alpha_t(B))\)};
+  \node[above] at (0,1.55) {\(\omega(\alpha_t(B)A)\)};
+  \node[left] at (-3.2,1.55) {\(\beta\)};
+  \draw[->,thick] (2.25,0.2) -- (2.25,1.35);
+  \node[right] at (2.25,0.78) {analytic continuation};
+\end{tikzpicture}
+\caption{The KMS condition is a strip-analytic boundary condition.  The lower
+edge is the ordered correlator \(A\alpha_t(B)\); the upper edge is obtained by
+moving \(B\) past the thermal state.}
+\label{fig:kms-strip}
+\end{figure}
+
+\begin{proposition}[Finite Gibbs traces are KMS]
+\label{prop:gibbs-trace-kms-volume-x}
+Let \(\Hilb\) be finite dimensional, let \(H=H^\ast\), and let
+\(\alpha_t(A)=\ee^{\ii Ht}A\ee^{-\ii Ht}\) on
+\(\Obs=\operatorname{End}(\Hilb)\).  For
 \[
   \omega_\beta(A)
   =
   \frac{\operatorname{Tr}(\ee^{-\beta H}A)}
-       {\operatorname{Tr}(\ee^{-\beta H})}
+       {\operatorname{Tr}(\ee^{-\beta H})},
+  \label{eq:finite-gibbs-state}
 \]
-satisfies the KMS condition by cyclicity of the trace.  Conversely, the KMS
-condition remains meaningful in infinite-volume regimes where the Gibbs trace
-formula has no finite partition function.
+\(\omega_\beta\) is a \(\beta\)-KMS state.
+\end{proposition}
 
-\section{Spectral Form}
-
-Assume the GNS representation of a KMS state has a self-adjoint generator
-implementing \(\alpha_t\) on a common domain for two operators \(A,B\).  Define
-the thermal Wightman functions
+\begin{proof}
+Choose an orthonormal eigenbasis \(H\ket m=E_m\ket m\), and write
+\(A_{mn}=\bra mA\ket n\), \(B_{mn}=\bra mB\ket n\).  The function
 \[
-  G_{AB}^{>}(t)=\omega(A(t)B(0)),
+  F_{A,B}(z)
+  =
+  \frac{1}{Z_\beta}
+  \sum_{m,n}
+  \ee^{-\beta E_m}
+  A_{mn}B_{nm}\,
+  \ee^{\ii(E_n-E_m)z},
   \qquad
-  G_{AB}^{<}(t)=\omega(B(0)A(t)),
+  Z_\beta=\sum_m\ee^{-\beta E_m},
+  \label{eq:finite-kms-strip-function}
 \]
-where \(A(t)=\alpha_t(A)\).  The KMS boundary condition gives
+is entire because the sum is finite.  At \(z=t\) it equals
+\(\omega_\beta(A\alpha_t(B))\).  At \(z=t+\ii\beta\),
 \[
-  G_{AB}^{>}(t+\ii\beta)=G_{AB}^{<}(t).
+  F_{A,B}(t+\ii\beta)
+  =
+  \frac{1}{Z_\beta}
+  \sum_{m,n}
+  \ee^{-\beta E_n}
+  A_{mn}B_{nm}\,
+  \ee^{\ii(E_n-E_m)t}.
 \]
-For tempered boundary values, Fourier transformation yields the detailed
-balance relation
+Relabeling \(m\leftrightarrow n\) gives
+\[
+  F_{A,B}(t+\ii\beta)
+  =
+  \frac{1}{Z_\beta}
+  \sum_{m,n}
+  \ee^{-\beta E_m}
+  B_{mn}A_{nm}\,
+  \ee^{\ii(E_m-E_n)t}
+  =
+  \omega_\beta(\alpha_t(B)A).
+\]
+This proves the boundary condition \eqref{eq:volume-x-kms-boundary-condition}.
+\end{proof}
+
+\begin{remark}[Chemical potentials]
+\label{rem:kms-chemical-potential-evolution}
+If \(Q_A\) are commuting conserved charges and \(\mu_A\) are chemical
+potentials, the finite trace
+\[
+  Z^{-1}\operatorname{Tr}\exp[-\beta(H-\mu_AQ_A)]\,(\cdot)
+\]
+is KMS for the automorphism generated by \(H-\mu_AQ_A\).  Equivalently, it is
+KMS for the original Hamiltonian time evolution together with a simultaneous
+imaginary-time internal-symmetry twist.  The two descriptions must not be
+mixed without declaring which automorphism defines equilibrium.
+\end{remark}
+
+\section{Spectral Form of Detailed Balance}
+
+In this section the Fourier transform of a tempered distribution \(G(t)\) is
+\[
+  \widetilde G(\omega)
+  =
+  \int_{\mathbb R}\dd t\,\ee^{\ii\omega t}G(t).
+  \label{eq:thermal-fourier-convention}
+\]
+With this convention, positive \(\omega\) is the energy absorbed by the
+operator insertion in the finite-volume spectral formulas below.
+
+Let \(A,B\) be observables whose time-dependent correlation functions have
+tempered boundary values.  Define
+\[
+  G_{AB}^{>}(t)=\omega(A(t)B),
+  \qquad
+  G_{AB}^{<}(t)=\omega(BA(t)),
+  \qquad
+  A(t)=\alpha_t(A).
+  \label{eq:thermal-greater-lesser-definitions}
+\]
+The KMS condition implies, in the distributional boundary-value sense,
+\[
+  G_{AB}^{>}(t-\ii\beta)=G_{AB}^{<}(t),
+  \label{eq:kms-greater-lesser-boundary}
+\]
+or equivalently the frequency-space detailed-balance relation
 \[
   \widetilde G_{AB}^{<}(\omega)
   =
   \ee^{-\beta\omega}\widetilde G_{AB}^{>}(\omega).
+  \label{eq:kms-detailed-balance}
 \]
-The spectral density
+
+\begin{proposition}[Finite-volume spectral detailed balance]
+\label{prop:finite-volume-spectral-detailed-balance}
+In the finite-dimensional setting of
+Proposition~\ref{prop:gibbs-trace-kms-volume-x}, the distributions
+\(\widetilde G^{>}_{AB}\) and \(\widetilde G^{<}_{AB}\) are finite sums of
+delta functions and obey \eqref{eq:kms-detailed-balance}.
+\end{proposition}
+
+\begin{proof}
+Using the same eigenbasis as above,
+\[
+  G_{AB}^{>}(t)
+  =
+  \frac1{Z_\beta}
+  \sum_{m,n}
+  \ee^{-\beta E_m}A_{mn}B_{nm}
+  \ee^{\ii(E_m-E_n)t}.
+\]
+Therefore
+\[
+  \widetilde G_{AB}^{>}(\omega)
+  =
+  \frac{2\pi}{Z_\beta}
+  \sum_{m,n}
+  \ee^{-\beta E_m}A_{mn}B_{nm}
+  \delta(\omega-E_n+E_m).
+  \label{eq:finite-volume-greater-spectral}
+\]
+Similarly,
+\[
+  \widetilde G_{AB}^{<}(\omega)
+  =
+  \frac{2\pi}{Z_\beta}
+  \sum_{m,n}
+  \ee^{-\beta E_n}A_{mn}B_{nm}
+  \delta(\omega-E_n+E_m),
+  \label{eq:finite-volume-lesser-spectral}
+\]
+where the second formula follows by relabeling the indices in
+\(\omega(BA(t))\).  On the support of the displayed delta function,
+\(\ee^{-\beta E_n}=\ee^{-\beta\omega}\ee^{-\beta E_m}\), proving
+\eqref{eq:kms-detailed-balance}.
+\end{proof}
+
+Define the thermal spectral distribution
 \[
   \rho_{AB}(\omega)
   =
   \widetilde G_{AB}^{>}(\omega)
   -
-  \widetilde G_{AB}^{<}(\omega)
+  \widetilde G_{AB}^{<}(\omega).
+  \label{eq:thermal-spectral-density-definition}
 \]
-therefore determines both thermal two-point functions:
+When \(1-\ee^{-\beta\omega}\) is invertible as a multiplier on the relevant
+test-function class, detailed balance gives
 \[
   \widetilde G_{AB}^{>}(\omega)
   =
@@ -85,76 +323,158 @@ therefore determines both thermal two-point functions:
   =
   \frac{\ee^{-\beta\omega}\rho_{AB}(\omega)}
        {1-\ee^{-\beta\omega}} .
+  \label{eq:kms-greater-lesser-from-rho}
 \]
-For fermionic operators the graded KMS condition inserts the fermion-parity
-sign in the boundary equation and gives the corresponding Fermi factors.
+For conserved densities, the \(\omega=0\) sector may contain delta functions
+or derivatives of delta functions.  Those pieces have to be separated before
+dividing by \(1-\ee^{-\beta\omega}\).  This is the same mathematical issue
+that later appears as susceptibilities, hydrodynamic poles, and contact
+terms.
 
-\section{Linear Response And Retarded Correlators}
+\begin{proposition}[Bosonic fluctuation--dissipation identity]
+\label{prop:bosonic-fdt-kms}
+Assume \(A=A^\ast\), \(B=B^\ast\), and no singular zero-frequency term in the
+frequency window under consideration.  Define the symmetrized spectrum
+\[
+  \widetilde G^{\rm sym}_{AB}(\omega)
+  =
+  \frac12\left(
+  \widetilde G_{AB}^{>}(\omega)+
+  \widetilde G_{AB}^{<}(\omega)
+  \right).
+\]
+Then
+\[
+  \widetilde G^{\rm sym}_{AB}(\omega)
+  =
+  \frac12\coth\!\left(\frac{\beta\omega}{2}\right)\rho_{AB}(\omega).
+  \label{eq:bosonic-fluctuation-dissipation}
+\]
+\end{proposition}
 
-Let \(B(t)\) be an observable coupled to a compactly supported real source
-\(f(t)\) by the time-dependent generator
+\begin{proof}
+Insert \eqref{eq:kms-greater-lesser-from-rho} into the definition of
+\(\widetilde G^{\rm sym}_{AB}\):
+\[
+  \widetilde G^{\rm sym}_{AB}
+  =
+  \frac12\,\frac{1+\ee^{-\beta\omega}}
+  {1-\ee^{-\beta\omega}}\rho_{AB}
+  =
+  \frac12\coth\!\left(\frac{\beta\omega}{2}\right)\rho_{AB}.
+\]
+The stated zero-frequency hypothesis is precisely the condition that this
+division is an ordinary distributional operation in the chosen window.
+\end{proof}
+
+For odd operators in a \(\mathbb Z_2\)-graded theory, the KMS boundary
+condition includes the parity sign obtained by moving an odd operator around
+the thermal circle.  The same proof gives
+\[
+  \widetilde G^{<}_{AB}(\omega)
+  =
+  -\ee^{-\beta\omega}\widetilde G^{>}_{AB}(\omega)
+\]
+for two odd operators in the convention where \(G^<\) is not itself graded by
+an additional sign.  Equivalently, one may absorb the sign into the definition
+of the fermionic lesser function.  The convention must be declared before
+writing Fermi factors.
+
+\section{Linear Response and Retarded Correlators}
+
+Let \(B(t)\) be coupled to a compactly supported real source \(f(t)\) by
 \[
   H_f(t)=H-f(t)B(t)
+  \label{eq:thermal-source-coupling}
 \]
-in a finite system, or by the corresponding derivation on an analytic
-subalgebra in the algebraic setting.  To first order in \(f\), Duhamel's
-formula gives the change of the expectation of another observable \(A(t)\):
+in a finite system, or by the corresponding time-dependent derivation on an
+analytic algebra.  In the interaction picture,
+\[
+  U_f(t,-\infty)
+  =
+  1+\ii\int_{-\infty}^{t}\dd s\,f(s)B(s)+O(f^2).
+  \label{eq:linear-response-interaction-evolution}
+\]
+Thus
+\[
+  U_f(t,-\infty)^{-1}A(t)U_f(t,-\infty)
+  =
+  A(t)
+  +\ii\int_{-\infty}^{t}\dd s\,f(s)[A(t),B(s)]
+  +O(f^2).
+\]
+Stationarity of \(\omega\) gives
 \[
   \delta\omega(A(t))
   =
-  \int_{-\infty}^{t} ds\, f(s)\,
+  \int_{-\infty}^{t}\dd s\,f(s)\,
   G^R_{AB}(t-s),
   \qquad
   G^R_{AB}(t)
   =
   -\ii\,\theta(t)\,\omega([A(t),B(0)]) .
+  \label{eq:thermal-linear-response-retarded}
 \]
-Indeed, expanding the interaction-picture evolution operator gives
-\[
-  U_f(t,-\infty)
-  =
-  1+\ii\int_{-\infty}^{t}ds\,f(s)B(s)+O(f^2),
-\]
-and inserting \(U_f^{-1}A(t)U_f\) in the unperturbed KMS state produces the
-commutator displayed above.  The retarded distribution is causal by
-construction: its support in the time variable lies in \(t\ge0\).  Its
-Fourier transform is the boundary value of a function holomorphic in the
-upper half \(\omega\)-plane whenever the time-growth hypotheses needed for
-the transform hold.
+The retarded distribution is causal: its support in the time variable lies in
+\(t\geq0\).  Consequently, under the usual polynomial-growth hypotheses for
+tempered distributions, its Fourier transform is the boundary value from the
+upper half \(\omega\)-plane.
 
-For a translation-invariant thermal QFT, the retarded two-point function of
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,scale=0.95]
+  \draw[->] (-3.5,0) -- (3.7,0) node[right] {\(t\)};
+  \draw[very thick,blue!65!black] (0,0) -- (3.2,0);
+  \draw[very thick,gray!45] (-3.2,0) -- (0,0);
+  \draw[fill=blue!65!black] (0,0) circle (0.045);
+  \node[below] at (-1.8,0) {no response};
+  \node[below] at (1.65,0) {retarded support};
+  \draw[->,thick] (0,0.3) -- (0,1.0);
+  \node[above] at (0,1.0) {source insertion};
+\end{tikzpicture}
+\caption{The retarded kernel is supported only after the source insertion.
+This causal support, not Euclidean periodicity alone, is what gives the
+upper-half-plane analyticity of \(G^R(\omega)\).}
+\label{fig:retarded-support}
+\end{figure}
+
+For translation-invariant thermal QFT, the retarded two-point function of
 local densities is
 \[
   G^R_{AB}(\omega,\mathbf k)
   =
-  -\ii\int_0^\infty dt\int d^{D-1}x\,
+  -\ii\int_0^\infty \dd t\int \dd^{D-1}x\,
   \ee^{\ii\omega t-\ii\mathbf k\cdot\mathbf x}
   \omega([A(t,\mathbf x),B(0,\mathbf0)]) .
+  \label{eq:thermal-retarded-qft-definition}
 \]
-The spectral function associated to \(G^R\) is
+With the Fourier convention \eqref{eq:thermal-fourier-convention}, the
+spectral function associated to \(G^R\) is
 \[
   \rho_{AB}(\omega,\mathbf k)
   =
-  -2\,\operatorname{Im}G^R_{AB}(\omega+\ii0,\mathbf k)
+  -2\,\operatorname{Im}G^R_{AB}(\omega+\ii0,\mathbf k).
+  \label{eq:thermal-rho-retarded-sign}
 \]
-with this sign convention.  The KMS detailed-balance relation above then
-expresses the symmetrized fluctuation spectrum in terms of the dissipative
-part of the retarded response.  This is the precise QFT input behind
-transport formulae.
+For Hermitian \(A=B\), positivity of the finite-volume spectral weights gives
+\(\rho_{AA}(\omega,\mathbf k)\geq0\) for \(\omega>0\) before the thermodynamic
+limit.  The infinite-volume statement is obtained by distributional limits,
+provided the local algebra and state have been constructed.
 
-\section{Conserved Densities And Hydrodynamic Variables}
+\section{Conserved Densities and Hydrodynamic Variables}
 
-Hydrodynamics begins with conserved local currents in the microscopic state
-space.  Let \(T^{\mu\nu}\) be the stress tensor and let
-\(J_A^\mu\) be conserved currents for ordinary internal symmetries:
+Hydrodynamics begins with conserved local currents in the microscopic theory.
+Let \(T^{\mu\nu}\) be the stress tensor and let \(J_A^\mu\) be conserved
+currents for ordinary internal symmetries:
 \[
   \partial_\mu T^{\mu\nu}=0,
   \qquad
   \partial_\mu J_A^\mu=0 .
+  \label{eq:thermal-conservation-laws}
 \]
-In a homogeneous isotropic thermal state with unit future timelike vector
-\(u^\mu\), temperature \(T\), and chemical potentials \(\mu_A\), the one-point
-functions define thermodynamic densities by
+In a homogeneous isotropic thermal state with unit future-timelike vector
+\(u^\mu\), temperature \(T=\beta^{-1}\), and chemical potentials \(\mu_A\),
+the one-point functions define thermodynamic densities by
 \[
   \omega(T^{\mu\nu})
   =
@@ -163,11 +483,18 @@ functions define thermodynamic densities by
   \omega(J_A^\mu)=n_A u^\mu,
   \qquad
   \Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu .
+  \label{eq:thermal-homogeneous-one-point-functions}
 \]
-The variables \(\varepsilon,n_A,u^\mu\) become hydrodynamic fields only after
-one assumes a family of states whose long-wavelength correlators are
-controlled by slowly varying local values of these densities.  The derivative
-expansion is then a statement about constitutive relations:
+Here \(\varepsilon\) is the energy density, \(p\) the pressure, and \(n_A\) the
+charge densities.  These are numbers attached to a homogeneous equilibrium
+state.  They become hydrodynamic fields only after one assumes a family of
+near-equilibrium states whose long-wavelength connected correlators are
+controlled by slowly varying local values of
+\[
+  T(x),\qquad \mu_A(x),\qquad u^\mu(x).
+\]
+
+The derivative expansion is a statement about constitutive relations:
 \[
   T^{\mu\nu}
   =
@@ -176,15 +503,45 @@ expansion is then a statement about constitutive relations:
   J_A^\mu
   =
   J_{A,(0)}^\mu+J_{A,(1)}^\mu+J_{A,(2)}^\mu+\cdots,
+  \label{eq:thermal-hydrodynamic-derivative-expansion}
 \]
 where the subscript records the number of derivatives acting on
-\(T,\mu_A,u^\mu\) and background sources.
+\(T,\mu_A,u^\mu\) and on background sources.  Existence of such an expansion
+requires hypotheses beyond the KMS boundary condition: it is a long-time,
+long-distance property of the QFT state.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[>=Stealth,node distance=1.35cm,scale=0.95]
+  \node[draw,rounded corners=2pt,align=center,minimum width=3.3cm]
+    (qft) {KMS QFT state\\\(\omega,T^{\mu\nu},J_A^\mu\)};
+  \node[draw,rounded corners=2pt,align=center,right=of qft,minimum width=3.2cm]
+    (dens) {equilibrium densities\\\(\varepsilon,p,n_A\)};
+  \node[draw,rounded corners=2pt,align=center,right=of dens,minimum width=3.25cm]
+    (hydro) {slow fields\\\(T(x),\mu_A(x),u^\mu(x)\)};
+  \node[draw,rounded corners=2pt,align=center,below=of hydro,minimum width=3.35cm]
+    (const) {constitutive relations\\and transport};
+  \draw[->,thick] (qft) -- node[above] {one-point data} (dens);
+  \draw[->,thick] (dens) -- node[above] {state-family input} (hydro);
+  \draw[->,thick] (hydro) -- node[right] {derivative expansion} (const);
+\end{tikzpicture}
+\caption{Hydrodynamic variables are not introduced as new microscopic
+operators.  They are coordinates on a long-wavelength family of states whose
+conserved densities are inherited from the QFT.}
+\label{fig:thermal-hydrodynamic-variables}
+\end{figure}
 
 At first order, parity-even relativistic hydrodynamics in flat spacetime
 contains shear viscosity \(\eta_{\rm sh}\), bulk viscosity \(\zeta\), and
-charge-conductivity data.  In the shear channel, the Kubo formula follows
-from the linear-response identity by coupling a metric perturbation
-\(h_{xy}(t)\) to \(T^{xy}\).  With the retarded-sign convention above,
+charge-conductivity data.  In the shear channel, couple a metric perturbation
+\(h_{xy}(t)\) to \(T^{xy}\).  The linear-response formula gives
+\[
+  \delta\omega(T^{xy}(\omega))
+  =
+  -\frac12G^R_{T^{xy}T^{xy}}(\omega,\mathbf0)h_{xy}(\omega)
+  \]
+with the factor \(1/2\) inherited from the metric coupling
+\(\frac12\int T^{ij}h_{ij}\).  Comparing with the constitutive relation fixes
 \[
   \eta_{\rm sh}
   =
@@ -193,18 +550,19 @@ from the linear-response identity by coupling a metric perturbation
   =
   -\lim_{\omega\downarrow0}
   \frac{\operatorname{Im}G^R_{T^{xy}T^{xy}}(\omega,\mathbf0)}{\omega}.
+  \label{eq:thermal-shear-kubo}
 \]
-This formula is a definition of the transport coefficient in terms of QFT
-correlators once the zero-frequency limit exists.  Later chapters in this
-volume must derive the constitutive relations, entropy-current constraints,
-Schwinger--Keldysh effective action, anomaly-induced transport, and kinetic
-limits from these correlator-level objects.
+This is a definition of the transport coefficient in terms of QFT correlators
+once the zero-frequency limit exists.  Later chapters derive the
+constitutive relations, entropy-current constraints, Schwinger--Keldysh
+effective action, anomaly-induced transport, and kinetic limits from these
+correlator-level objects.
 
 \begin{openproblem}[Thermal real-time reconstruction]
 \label{op:thermal-real-time-reconstruction}
 Give constructive hypotheses under which Euclidean finite-temperature
-Schwinger functions on \(S^1_\beta\times\R^{D-1}\) reconstruct a real-time
-KMS QFT with local observables, spectral functions, and transport
+Schwinger functions on \(S^1_\beta\times\mathbb R^{D-1}\) reconstruct a
+real-time KMS QFT with local observables, spectral functions, and transport
 coefficients.  The required analytic continuation is more delicate than the
 vacuum OS reconstruction because thermal correlators have periodic Euclidean
 time and no vacuum spectrum condition.

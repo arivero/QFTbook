@@ -45,6 +45,12 @@ Current checks:
   counterterm/frame changes of cocycle representatives, and the finite
   cochain Stokes identity behind the five-dimensional one-form \(BF\) inflow
   variation.
+- `kms_foundation_checks.py`: finite checks for the Volume X KMS-foundations
+  chapter, including the finite Gibbs-trace KMS strip boundary condition,
+  detailed balance, spectral reconstruction from \(\rho=G^>-G^<\), the
+  bosonic fluctuation--dissipation identity, and the
+  \(\rho=-2\operatorname{Im}G^R\) retarded-sign convention entering the shear
+  Kubo formula.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
