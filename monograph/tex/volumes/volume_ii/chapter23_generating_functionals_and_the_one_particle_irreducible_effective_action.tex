@@ -55,6 +55,8 @@ Callan--Symanzik derivation means the chart field factor
 
 \section{Sources and Connected Functionals}
 
+\begin{definition}[Regulated scalar source functional]
+\label{def:regulated-scalar-source-functional}
 Fix a quantum field theory with a specified ultraviolet regulator and a
 specified prescription for Lorentzian correlation functions.  Let \(\phi\)
 denote a real scalar field in this section; the definitions extend to several
@@ -145,6 +147,7 @@ notation suppresses \(\Lambda\) after this paragraph.  All functional
 derivatives in this chapter are first derivatives of the regulated source
 functional; continuum statements are obtained only after the chosen
 renormalization prescription gives a distributional limit.
+\end{definition}
 
 \begin{definition}[Status of \(\log Z\)]
 \label{def:source-functional-log-status}
@@ -197,7 +200,11 @@ Legendre transform or connected-kernel formula is to be read in the
 corresponding one of these three senses.
 \end{definition}
 
-Define the Lorentzian connected functional \(W\) by
+\begin{definition}[Connected functional and source-dependent field]
+\label{def:connected-functional-source-dependent-field}
+For the source functional of
+Definition~\ref{def:regulated-scalar-source-functional}, define the
+Lorentzian connected functional \(W\) by
 \[
   Z[J]=\ee^{\ii W[J]},
   \qquad
@@ -253,6 +260,7 @@ state and prescription:
 \[
   \varphi_0(x)=\vev{\phi(x)} .
 \]
+\end{definition}
 
 \begin{figure}[!ht]
   \centering
@@ -315,6 +323,8 @@ state and prescription:
 
 \section{Legendre Transform}
 
+\begin{definition}[Local one-particle-irreducible Legendre transform]
+\label{def:local-1pi-legendre-transform}
 Assume that, in a neighborhood of the source configurations under discussion,
 the map
 \[
@@ -347,8 +357,29 @@ for formal amplitudes.  Whenever later perturbative MS or BPHZ discussions use
 the 1PI effective action, this local formal 1PI functional is the operative
 object unless a positive Euclidean regulator and the convex
 Legendre--Fenchel construction are explicitly invoked.
+\end{definition}
 
-Varying this definition gives
+\begin{proposition}[1PI source equation and inverse two-point kernel]
+\label{prop:1pi-source-equation-inverse-kernel}
+For the local Legendre transform of
+Definition~\ref{def:local-1pi-legendre-transform},
+\[
+  \frac{\delta\Gamma[\varphi]}{\delta\varphi(x)}
+  =
+  -J_{\varphi}(x),
+\]
+and the connected two-point kernel is the inverse of the 1PI two-point kernel
+with the Lorentzian sign
+\[
+  \int \dd^Dz\,
+  W^{(2)}(x,z)\Gamma^{(2)}(z,y)
+  =
+  -\delta^{(D)}(x-y).
+\]
+\end{proposition}
+
+\begin{proof}
+Varying the definition of \(\Gamma\) gives
 \[
 \begin{aligned}
   \delta\Gamma[\varphi]
@@ -422,15 +453,17 @@ vacuum,
 With the same Feynman \(+\ii0\) boundary prescription, \(W^{(2)}\) is related
 to the connected propagator by the same factors of \(\ii\) that appear in the
 source-derivative definition above.
+\end{proof}
 
 \section{Background Split and One-Particle-Irreducible Kernels}
 
-The Legendre transform has a direct diagrammatic representation.  Fix a field
-configuration \(\varphi\), set \(J=J_{\varphi}\), and write
+\begin{proposition}[Shifted representation and tadpole condition]
+\label{prop:shifted-1pi-representation-tadpole}
+Fix a field configuration \(\varphi\), set \(J=J_{\varphi}\), and write
 \[
   \phi=\varphi+\xi .
 \]
-Then
+The local 1PI functional has the shifted representation
 \[
 \begin{aligned}
   \ee^{\ii\Gamma[\varphi]}
@@ -445,13 +478,35 @@ Then
   \right\}_{J=J_{\varphi}} .
 \end{aligned}
 \]
-The defining condition \(\varphi=\delta W/\delta J\) is equivalent to
+In this shifted functional integral,
 \[
   \vev{\xi(x)}_{\varphi}=0 ,
 \]
-where the expectation value is computed with the shifted functional integral
-displayed above.  Thus the linear source term is chosen exactly so that the
-quantum fluctuation has zero one-point function in the background \(\varphi\).
+so the linear source term is chosen exactly to cancel the quantum tadpole in
+the background \(\varphi\).
+\end{proposition}
+
+\begin{proof}
+The first equality is the Legendre definition
+\(\Gamma[\varphi]=W[J_\varphi]-\langle J_\varphi,\varphi\rangle\).  In the
+regulated integral for \(Z[J_\varphi]\), make the affine change of variables
+\(\phi=\varphi+\xi\).  The symbol \([D\xi]\) denotes the pushforward of the
+specified regulated integration object under this change of variables; if the
+chosen regulator produces a nontrivial Jacobian or density term, its logarithm
+is part of the shifted action.  The source term
+\(\langle J_\varphi,\phi\rangle\) becomes
+\(\langle J_\varphi,\varphi\rangle+\langle J_\varphi,\xi\rangle\), and the
+first part is precisely removed by the Legendre factor.  Finally,
+\[
+  \vev{\xi(x)}_{\varphi}
+  =
+  \vev{\phi(x)}_{J_\varphi}-\varphi(x)
+  =
+  \frac{\delta W[J]}{\delta J(x)}\bigg|_{J=J_\varphi}-\varphi(x)
+  =
+  0 .
+\]
+\end{proof}
 
 Expand the action around the background:
 \[
@@ -522,6 +577,8 @@ the source supplies one more one-point quantum vertex.  Diagrammatically:
 Since \(J_{\varphi}\) is fixed by \(\vev{\xi}=0\), all tadpole
 subdiagrams in the shifted theory cancel in the sum.
 
+\begin{proposition}[One-particle-reducible graphs are Legendre trees]
+\label{prop:opr-graphs-legendre-trees}
 A connected diagram is one-particle reducible if cutting one internal
 \(\xi\) propagator separates it into two connected diagrams, each
 with at least one external background leg.  In the Legendre transform, such
@@ -530,7 +587,9 @@ stationary equation for \(\varphi_J\) and joining lower kernels by exact
 propagators.  They are therefore part of the tree reconstruction of connected
 functions from \(\Gamma\), rather than new kernels in \(\Gamma\) itself.  The
 new kernels in \(\Gamma\) are the one-particle-irreducible ones.
+\end{proposition}
 
+\begin{proof}
 Equivalently, in a shifted connected vacuum diagram, cut an internal quantum
 propagator.  Each side becomes a connected subdiagram with one open quantum
 leg and any number of background legs.  When all graphs with the same
@@ -538,6 +597,7 @@ external background data are summed, either side is precisely the
 source-dependent tadpole functional; it vanishes by
 \(\vev{\xi}_\varphi=0\).  This is the diagrammatic content of the
 Legendre transform, not an additional dynamical assumption.
+\end{proof}
 
 \begin{figure}[!ht]
   \centering
@@ -627,6 +687,8 @@ on-shell limits.
 
 \section{Vertex Expansion}
 
+\begin{definition}[Momentum-space 1PI vertices]
+\label{def:momentum-space-1pi-vertices}
 In a translation-invariant vacuum, the effective action has a momentum-space
 expansion
 \[
@@ -653,6 +715,7 @@ momenta are independent.  With this normalization,
   \right|_{\varphi=0}
 \]
 after removing the overall momentum-conserving delta function.
+\end{definition}
 
 For \(n=2\), the exact two-point 1PI kernel is the inverse propagator in the
 Legendre sense.  For a scalar field with tree-level action
@@ -676,6 +739,8 @@ normalization.  The exact connected propagator is obtained by inverting this
 kernel with the \(i\epsilon\) prescription fixed by the underlying Lorentzian
 functional integral.
 
+\begin{definition}[Local derivative expansion of a 1PI branch]
+\label{def:local-derivative-expansion-1pi-branch}
 When the kernels are analytic near zero momentum, their Taylor expansion gives
 a local derivative expansion.  For a single scalar field,
 \[
@@ -696,6 +761,7 @@ derivatives.  The coefficients are determined by derivatives of the kernels
 used with its analytic domain stated: loops of massless fields commonly
 produce terms such as logarithms and threshold branch points at small
 momentum, and these terms are part of the exact 1PI action.
+\end{definition}
 
 \section{One-Loop Effective Potential and Dimensional Transmutation}
 \label{sec:coleman-weinberg-effective-potential}
