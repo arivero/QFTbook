@@ -20,6 +20,9 @@
 - Monograph Yang--Mills coupling convention
   \(-\frac{1}{4g^2}\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\).
 - Off-shell vector multiplet \((A_\mu,\lambda,\bar\lambda,D)\).
+- Wess--Zumino-gauge supersymmetry closure as a projected superfield
+  algebra: bare supertranslation plus compensating chiral gauge
+  transformation, closing on translation plus residual ordinary gauge.
 - Superfield gauge transformation and chiral field strength \(W_\alpha\).
 - Matter chiral multiplets in a representation \(R\).
 - Moment-map definition of the \(D\)-term coupling, FI centrality condition,
@@ -37,6 +40,9 @@
 | \(\operatorname{tr}\) | invariant bilinear form fixing coupling normalization |
 | \(A_\mu\) | gauge connection representative |
 | \(F_{\mu\nu}\) | curvature of \(A_\mu\) |
+| \(\widehat\delta_\epsilon\) | Wess--Zumino-slice supersymmetry vector field |
+| \(\Lambda_\epsilon\) | compensating chiral gauge parameter |
+| \(\Omega_{12}\) | residual ordinary gauge parameter in closure |
 | \(V\) | real vector superfield |
 | \(W_\alpha\) | chiral gauge field-strength superfield |
 | \(R\) | matter representation |
@@ -52,14 +58,17 @@
    used later in anomalies and beta functions.
 3. The Hermitian curvature convention transforms covariantly and produces
    gauge-invariant kinetic and theta densities.
-4. The superfield strength transforms covariantly and produces a
+4. Wess--Zumino gauge is a local representative, not a gauge-invariant
+   supersymmetry realization; the projected off-shell algebra closes on a
+   translation plus a residual ordinary gauge transformation.
+5. The superfield strength transforms covariantly and produces a
    gauge-invariant chiral kinetic term.
-5. Matter \(D\)-terms are encoded by a moment map; eliminating the auxiliary
+6. Matter \(D\)-terms are encoded by a moment map; eliminating the auxiliary
    field gives \(V_D=g^2 \|\mu_R-\zeta\|^2/2\) with FI terms only on abelian
    factors.
-6. Vanishing of the perturbative gauge anomaly is a quantum consistency
+7. Vanishing of the perturbative gauge anomaly is a quantum consistency
    condition, separate from the classical superspace construction.
-7. Vectorlike conjugate pairs and real representations have zero
+8. Vectorlike conjugate pairs and real representations have zero
    perturbative cubic gauge anomaly; the vector-multiplet adjoint gaugino is
    therefore locally gauge-anomaly free.
 
@@ -68,7 +77,9 @@
 - `calculation-checks/susy_gauge_foundation_checks.py` verifies the
   auxiliary \(D\)-field square completion, FI centrality for an `su(2)`
   semisimple factor, vectorlike `U(1)` anomaly cancellation, and the
-  conjugate-representation anomaly sign.
+  conjugate-representation anomaly sign.  It also checks the Hermitian-sign
+  algebra that rewrites Wess--Zumino-gauge closure from ordinary translation
+  plus gauge to covariant translation plus shifted gauge.
 
 ## Figures
 
