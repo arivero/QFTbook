@@ -59,6 +59,8 @@
 | \(H_\pm(u,\mu)\) | upper/lower sheets of the mass hyperboloid \((q-u)^2=-\mu^2\) |
 | \(S_R\) | set of \(R\)-admissible hyperboloids supporting the Dyson weight |
 | \(D_6\) | odd fundamental solution of the six-dimensional wave equation, normalized by \(\mathcal F_{\mathbf y}D_6(t,\cdot)(\mathbf k)=\sin(|\mathbf k|t)/|\mathbf k|\) |
+| \(\pi_{y*}U\) | auxiliary pushforward of a six-dimensional lift, defined by normalized approximate identities in the \(y\)-dual variables |
+| \(\iota^*F\) | trace of a six-dimensional momentum distribution at \(p_1=p_2=0\), \(\iota(q)=(q,0,0)\) |
 | Dyson-regular commutator | causal commutator whose Fourier transform is the \(p_1=p_2=0\) restriction of a rotationally invariant six-dimensional wave-equation solution with well-defined Cauchy data |
 | \(\Psi(u,\mu)\) | distributional Dyson weight in the causal-commutator representation |
 | first sheet | branch reached from the physical Feynman prescription without crossing a cut |
@@ -116,11 +118,14 @@
   boundaries.  Dyson regularity is the explicit six-dimensional lift and
   Cauchy-data condition; the six-dimensional Cauchy formula itself is now
   proved in `prop:six-dimensional-distributional-cauchy-formula` from the
-  spatial Fourier transform of the wave equation.  Dyson regularity is not
-  automatic for an arbitrary Wightman distribution.  Under this hypothesis
-  the theorem proves the hyperboloid representation with support in the
-  admissible set \(S_R\).  Local contact polynomials from source-current
-  reduction are separated as subtraction/contact data.
+  spatial Fourier transform of the wave equation.  The auxiliary pushforward
+  normalization is also theorem-level: `prop:auxiliary-pushforward-momentum-trace`
+  proves that \(\pi_{y*}U=\kappa C\) is equivalent, with the chapter's
+  Fourier convention, to \(\iota^*F=\kappa\widehat C\).  Dyson regularity is
+  not automatic for an arbitrary Wightman distribution.  Under this
+  hypothesis the theorem proves the hyperboloid representation with support
+  in the admissible set \(S_R\).  Local contact polynomials from
+  source-current reduction are separated as subtraction/contact data.
 
 ## Claims to Derive
 
@@ -183,6 +188,14 @@
   \]
   This is part of the proof infrastructure for the Dyson/JLD theorem, not an
   unproved appeal to a standard wave-equation fact.
+- Auxiliary pushforward/momentum trace theorem: if
+  \(U\in\mathcal S'(\mathbb R_x^4\times\mathbb R_y^2)\) has a
+  \(y\)-pushforward defined by approximate identities
+  \(m_\epsilon(y)=\int\rho_\epsilon(p)e^{ip\cdot y}\dd^2p\), then the
+  \(p=0\) trace of \(\widehat U(q,p)\) exists and equals
+  \(\widehat{\pi_{y*}U}\); conversely a continuous \(p=0\) trace defines the
+  pushforward.  This fixes the normalization of the Dyson lift's projection
+  to the original four-dimensional commutator.
 - LSZ retarded-commutator input: once the source-current commutator is
   verified to be Dyson-regular, it has the Dyson representation in every
   spectral coincidence slab; retarded and advanced transforms are boundary

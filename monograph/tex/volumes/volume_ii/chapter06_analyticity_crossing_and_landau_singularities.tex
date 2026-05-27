@@ -631,6 +631,117 @@ operator, \(D_6\), the normal derivative, and the distributional pairing are
 invariant under that transformation.
 \end{proof}
 
+\begin{proposition}[Auxiliary pushforward and the \(p=0\) momentum trace]
+\label{prop:auxiliary-pushforward-momentum-trace}
+Let
+\[
+  U\in\mathcal S'(\mathbb R_x^4\times\mathbb R_y^2)
+\]
+and define its Fourier transform by duality from the convention
+\[
+  \Psi^\vee(x,y)
+  =
+  \int_{\mathbb R^4\times\mathbb R^2}
+  \Psi(q,p)\ee^{\ii q\cdot x+\ii p\cdot y}
+  \,\dd^4q\,\dd^2p,
+  \qquad
+  \langle\widehat U,\Psi\rangle=\langle U,\Psi^\vee\rangle .
+  \label{eq:auxiliary-trace-fourier-convention}
+\]
+Choose \(\rho\in\mathcal S(\mathbb R^2_p)\) with
+\(\int\rho(p)\,\dd^2p=1\), set
+\[
+  \rho_\epsilon(p)=\epsilon^{-2}\rho(p/\epsilon),
+  \qquad
+  m_\epsilon(y)=\int_{\mathbb R^2}\rho_\epsilon(p)
+  \ee^{\ii p\cdot y}\,\dd^2p .
+  \label{eq:auxiliary-trace-mollifier}
+\]
+Suppose that for every \(\varphi\in\mathcal S(\mathbb R_x^4)\) the limit
+\[
+  \langle\pi_{y*}U,\varphi\rangle
+  :=
+  \lim_{\epsilon\downarrow0}
+  \langle U,\varphi(x)m_\epsilon(y)\rangle
+  \label{eq:auxiliary-pushforward-definition}
+\]
+exists and is independent of the normalized approximate identity \(\rho\).
+Then \(\pi_{y*}U\in\mathcal S'(\mathbb R_x^4)\), and the trace of
+\(\widehat U\) at \(p=0\), defined by
+\[
+  \left\langle \iota^*\widehat U,\psi\right\rangle
+  :=
+  \lim_{\epsilon\downarrow0}
+  \left\langle
+    \widehat U(q,p),
+    \psi(q)\rho_\epsilon(p)
+  \right\rangle ,
+  \qquad
+  \iota(q)=(q,0),
+  \label{eq:auxiliary-momentum-trace-definition}
+\]
+exists for every \(\psi\in\mathcal S(\mathbb R_q^4)\) and obeys
+\[
+  \iota^*\widehat U=\widehat{\pi_{y*}U}.
+  \label{eq:auxiliary-pushforward-trace-identity}
+\]
+Conversely, if the limits in
+\eqref{eq:auxiliary-momentum-trace-definition} exist for every
+\(\psi\) and are continuous in the Schwartz topology, then
+\eqref{eq:auxiliary-pushforward-definition} defines a tempered
+\(y\)-pushforward and
+\eqref{eq:auxiliary-pushforward-trace-identity} holds.
+\end{proposition}
+
+\begin{proof}
+For \(\psi\in\mathcal S(\mathbb R_q^4)\), define
+\[
+  \psi^\vee(x)=\int_{\mathbb R^4}\psi(q)\ee^{\ii q\cdot x}\,\dd^4q .
+  \label{eq:auxiliary-trace-test-inverse}
+\]
+With the convention
+\eqref{eq:auxiliary-trace-fourier-convention}, the definition of the
+Fourier transform of a tempered distribution gives
+\[
+\begin{aligned}
+  \left\langle
+    \widehat U(q,p),
+    \psi(q)\rho_\epsilon(p)
+  \right\rangle
+  &=
+  \left\langle
+    U(x,y),
+    \psi^\vee(x)m_\epsilon(y)
+  \right\rangle .
+\end{aligned}
+  \label{eq:auxiliary-trace-pairing-identity}
+\]
+If the pushforward limit exists, the right side tends to
+\[
+  \langle\pi_{y*}U,\psi^\vee\rangle
+  =
+  \langle\widehat{\pi_{y*}U},\psi\rangle,
+\]
+which proves existence of the trace and
+\eqref{eq:auxiliary-pushforward-trace-identity}.  Continuity follows because
+the pointwise limit of the continuous functionals
+\(\varphi\mapsto\langle U,\varphi(x)m_\epsilon(y)\rangle\) on the
+Schwartz space is continuous by the uniform boundedness principle for
+Frechet spaces; the Fourier transform is a topological automorphism of the
+Schwartz space.
+
+Conversely, the map
+\(\psi\mapsto\psi^\vee\) is a topological automorphism of
+\(\mathcal S(\mathbb R^4)\).  Given
+\(\varphi\in\mathcal S(\mathbb R^4)\), choose
+\(\psi\) with \(\psi^\vee=\varphi\).  If the limits in
+\eqref{eq:auxiliary-momentum-trace-definition} exist continuously, then
+\eqref{eq:auxiliary-trace-pairing-identity} defines the limit in
+\eqref{eq:auxiliary-pushforward-definition}; the resulting functional on
+\(\varphi\) is tempered, and its Fourier transform is precisely
+\(\iota^*\widehat U\).  This proves the converse and the identity.
+\end{proof}
+
 \begin{definition}[Dyson-regular causal commutator]
 \label{def:dyson-regular-causal-commutator}
 A causal commutator distribution \(C\in\mathcal S'(\mathbb M^4)\) is
@@ -650,10 +761,20 @@ with the following properties:
   traces \(F|_\Sigma\) and \(\partial_nF|_\Sigma\) exist as tempered
   distributions, and the distributional Cauchy formula
   \eqref{eq:six-dimensional-geometric-cauchy-formula} holds.
-  \item The inverse Fourier transform of \(F\) is supported on the
-  six-dimensional light cone and projects to \(C(x)\) after integration over
-  the two auxiliary spacelike coordinates, up to a fixed nonzero
-  normalization.
+  \item If \(U\) is the inverse Fourier transform of \(F\), then
+  \(U\) is supported on the six-dimensional light cone, the auxiliary
+  \(y\)-pushforward \(\pi_{y*}U\) exists in the sense of
+  Proposition~\ref{prop:auxiliary-pushforward-momentum-trace}, and
+  \[
+    \pi_{y*}U=\kappa C
+  \]
+  for a fixed nonzero normalization \(\kappa\).  Equivalently, after
+  absorbing \(\kappa\) into the definition of the lift,
+  \[
+    \iota^*F=\widehat C,
+    \qquad
+    \iota(q)=(q,0,0).
+  \]
 \end{enumerate}
 For a sufficiently regular function \(C(x)\) with causal support this lift is
 represented by Dyson's formula
@@ -955,12 +1076,14 @@ It remains to identify the four-dimensional restriction.  On
 \(X^\circ\), the \(y\)-pushforward of the punctured expression is the intended
 four-dimensional commutator with the normalization \(\kappa\).  The theorem
 therefore requires the extension to preserve this pushforward modulo a
-distribution supported at \(x=0\).  Fourier transformation of the
-\(y\)-pushforward is exactly restriction to \(p=0\).  Hence the distribution
-obtained by restricting \(\widehat U(q,p)\) to \(p=0\), whenever that
-restriction exists for the chosen extension, differs from \(\widehat C(q)\)
-by the Fourier transform of a distribution supported at \(x=0\), namely by a
-polynomial in \(q\).  The same conclusion follows directly from
+distribution supported at \(x=0\).  By
+Proposition~\ref{prop:auxiliary-pushforward-momentum-trace}, Fourier
+transformation of this \(y\)-pushforward is precisely the \(p=0\) trace of
+\(\widehat U(q,p)\), when either side exists in the stated distributional
+sense.  Hence the distribution obtained by restricting \(\widehat U(q,p)\)
+to \(p=0\) differs from \(\widehat C(q)\) by the Fourier transform of a
+distribution supported at \(x=0\), namely by a polynomial in \(q\).  The same
+conclusion follows directly from
 \eqref{eq:dyson-extension-local-ambiguity}: setting \(p=0\) turns the
 Fourier transform of every
 \(\partial_x^\alpha\partial_y^\beta\delta(x)\delta(y)\) into a polynomial in

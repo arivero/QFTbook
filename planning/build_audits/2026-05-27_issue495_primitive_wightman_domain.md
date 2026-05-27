@@ -65,6 +65,13 @@ inside the monograph, not left as literature imports.
     Dyson regularity now requires \(F\in\mathcal S'(\mathbb R^{1,5})\),
     tempered Cauchy traces on affine spacelike hyperplanes, and this precise
     formula, rather than an undefined ``standard Cauchy formula''.
+  - `prop:auxiliary-pushforward-momentum-trace`, proving the exact
+    distributional duality between the \(y\)-pushforward of a six-dimensional
+    lift and the \(p=0\) trace of its Fourier transform, using normalized
+    approximate identities in the auxiliary momentum.  The Dyson-regularity
+    definition now uses this proposition to state the pushforward
+    normalization and the restriction \(\iota^*F=\widehat C\) without hidden
+    Fourier-normalization conventions.
   - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
     to LSZ source-current commutators and separating finite contact
     polynomials.
@@ -121,7 +128,10 @@ large-contour and threshold-endpoint limits are no longer hidden in the
 word ``admissible.''  The six-dimensional wave-equation Cauchy step in the
 Dyson representation is now internal: the needed distributional formula is
 proved by Fourier solving the Cauchy problem and is built into the
-Dyson-regularity definition.  Remaining closure work:
+Dyson-regularity definition.  The auxiliary \(y\)-pushforward and
+\(p=0\) trace are now also linked by a precise proposition, so the
+pushforward normalization in the Dyson lift is no longer a formal
+``integration over \(y\)'' shorthand.  Remaining closure work:
 
 1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
    in the massive scattering application.  The new microlocal proposition
