@@ -4,28 +4,56 @@
 
 \section{Gauge and Matter Data}
 
-The Standard Model datum used in this chapter consists of a compact gauge
-group locally isomorphic to
+\begin{definition}[Local Standard Model gauge datum]
+\label{def:local-standard-model-gauge-datum}
+The local Standard Model gauge algebra is
 \[
-  SU(3)_c\times SU(2)_L\times U(1)_Y ,
+  \mathfrak g_{\rm SM}
+  =
+  \mathfrak{su}(3)_c\oplus\mathfrak{su}(2)_L\oplus\mathfrak u(1)_Y .
 \]
-three copies of a chiral fermion representation, one scalar Higgs doublet,
-Yukawa tensors, and the gauge-invariant local action built from these data.
-The possible quotient by a subgroup of the common center is a global-form
-choice.  It affects line operators and background bundles; the local
-perturbative field content listed below is the same.  The global-form problem
-is part of the higher-form and generalized-symmetry analysis in
-Chapter~\ref{ch:global-forms-higher-form-symmetry}.
+The covering compact group is
+\[
+  \widetilde G_{\rm SM}=SU(3)_c\times SU(2)_L\times U(1)_Y .
+\]
+A global form is a quotient
+\[
+  G_{\rm SM}=\widetilde G_{\rm SM}/\Gamma ,
+  \qquad
+  \Gamma\subset Z(\widetilde G_{\rm SM}),
+\]
+for which the local fields in
+Definitions~\ref{def:sm-one-generation-left-weyl} and
+\ref{def:sm-higgs-yukawa-datum} descend to representations of
+\(G_{\rm SM}\).  On a spin four-manifold \(M\), a finite-cutoff local Standard
+Model datum consists of a principal \(G_{\rm SM}\)-bundle \(P\to M\), a
+connection on \(P\), three copies of the chiral matter representation in
+Definition~\ref{def:sm-one-generation-left-weyl}, one Higgs scalar in
+Definition~\ref{def:sm-higgs-yukawa-datum}, and the local action functional
+obtained from the Yang--Mills, scalar, Yukawa, and gauge-fixing/BV data after
+a regulator has been specified.
+\end{definition}
 
-We use the hypercharge convention
+The quotient \(\Gamma\) is invisible in the Lie algebra and in local
+perturbative vertices, but it changes the allowed bundles, line operators,
+and higher-form backgrounds.  Those global questions belong to the
+generalized-symmetry analysis in
+Chapter~\ref{ch:global-forms-higher-form-symmetry}.  This chapter uses only
+the local representation-theoretic data unless a bundle or line operator is
+explicitly mentioned.
+
+\begin{convention}[Electroweak charge and trace normalizations]
+\label{conv:sm-electroweak-trace-normalization}
+The hypercharge coordinate is normalized by
 \[
   Q_{\rm em}=T^3_L+Y ,
 \]
 where \(T^3_L\) is the third generator of the weak \(SU(2)_L\) doublet in the
-usual electroweak normalization.  This electroweak subsection temporarily
-uses the conventional explicit-coupling fields
-\(\mathcal G_\mu,\mathcal W_\mu,\mathcal B_\mu\) for transparent charge and
-mass formulae.  The conversion to the monograph's Yang--Mills convention is
+usual electroweak normalization.  For transparent mass and charge formulae,
+this chapter temporarily uses the conventional explicit-coupling fields
+\(\mathcal G_\mu,\mathcal W_\mu,\mathcal B_\mu\).  The conversion to the
+monograph's Yang--Mills convention of
+Chapter~\ref{ch:vol2-classical-yang-mills-matter} is
 \[
   A^{(3)}_\mu=g_3\mathcal G^A_\mu T^A,\qquad
   A^{(2)}_\mu=g_2\mathcal W^a_\mu \tau^a,\qquad
@@ -39,7 +67,10 @@ terms are equivalently written as explicit-coupling kinetic terms for
 \(\mathcal G,\mathcal W,\mathcal B\) or as
 \(-\frac1{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\) for the
 coupling-absorbed connections.
+\end{convention}
 
+\begin{definition}[One-generation left-Weyl representation]
+\label{def:sm-one-generation-left-weyl}
 For one generation, written as left-handed Weyl fields, the representation is
 \[
 \begin{array}{c|c|c}
@@ -52,39 +83,96 @@ For one generation, written as left-handed Weyl fields, the representation is
 \end{array}
 \]
 Here \(u^c,d^c,e^c\) are left-handed charge-conjugate fields, not
-right-handed fields in the same representation.  A gauge-singlet right-handed
-neutrino, if included, has representation \((\mathbf1,\mathbf1)_0\) and does
-not affect the local gauge anomaly sums.  The Higgs scalar is
+right-handed fields in the same representation.  A gauge-singlet neutrino
+field, if included in the same left-handed convention as \(\nu^c\), has
+representation \((\mathbf1,\mathbf1)_0\) and does not affect the local gauge
+anomaly sums.
+\end{definition}
+
+\begin{definition}[Minimal Higgs and Yukawa datum]
+\label{def:sm-higgs-yukawa-datum}
+The minimal Higgs scalar is
 \[
   H\in(\mathbf1,\mathbf2)_{1/2}.
 \]
-
-The renormalizable Yukawa sector is the most general gauge-invariant local
-functional linear in \(H\) or \(\widetilde H:=\ii\sigma^2H^*\) and bilinear
-in fermions:
+Set
+\[
+  \widetilde H:=\ii\sigma^2H^*,
+  \qquad
+  \widetilde H\in(\mathbf1,\mathbf2)_{-1/2},
+\]
+where the second statement uses the pseudoreality of the \(SU(2)\) doublet.
+In the left-handed Weyl convention of
+Definition~\ref{def:sm-one-generation-left-weyl}, the renormalizable Yukawa
+sector is
 \[
   \mathcal L_Y
   =
-  - (Y_u)_{IJ}\,Q_L^I\widetilde H\,u^{cJ}
-  - (Y_d)_{IJ}\,Q_L^I H\,d^{cJ}
-  - (Y_e)_{IJ}\,L_L^I H\,e^{cJ}
+  - (Y_u)_{IJ}\,(Q_L^I H)\,u^{cJ}
+  - (Y_d)_{IJ}\,(Q_L^I\widetilde H)\,d^{cJ}
+  - (Y_e)_{IJ}\,(L_L^I\widetilde H)\,e^{cJ}
   + \text{Hermitian conjugate},
 \]
 where \(I,J=1,2,3\) are generation labels and all gauge indices are contracted
-by the invariant tensors of \(SU(3)_c\) and \(SU(2)_L\).  Flavor rotations of
-the fermion fields remove unphysical parameters; the remaining charged-current
-quark mixing is encoded in the CKM matrix.  If neutrino masses are included
-through dimension-five or singlet-neutrino operators, a separate PMNS mixing
-matrix appears in the lepton sector.
+by the invariant tensors of \(SU(3)_c\) and \(SU(2)_L\).  In components,
+\((QH)u^c\) abbreviates the contraction of the two Weyl spinor indices by
+\(\epsilon_{\alpha\beta}\), the two weak doublet indices by
+\(\epsilon_{ij}\), and the color indices by the natural
+\(\mathbf3\otimes\overline{\mathbf3}\to\mathbf1\) pairing.  The displayed
+\(Y_u,Y_d,Y_e\) are complex \(3\times3\) matrices of local coupling
+coordinates.
+\end{definition}
+
+\begin{proposition}[Gauge invariance of the minimal Yukawa datum]
+\label{prop:sm-yukawa-gauge-invariance}
+The three terms in Definition~\ref{def:sm-higgs-yukawa-datum} are precisely
+the gauge-invariant local monomials that are bilinear in the listed
+left-handed Weyl fields, linear in \(H\) or \(\widetilde H\), and of
+engineering dimension at most four, up to flavor tensors and Hermitian
+conjugation.
+\end{proposition}
+
+\begin{proof}
+Lorentz invariance forces the two left-handed Weyl spinor indices in each
+fermion bilinear to be contracted by the antisymmetric invariant tensor of
+\(SL(2,\mathbb C)\).  Color invariance requires \(Q_L\) to pair with either
+\(u^c\) or \(d^c\), because the quark singlet contraction is
+\(\mathbf3\otimes\overline{\mathbf3}\to\mathbf1\); the lepton bilinear is
+already color neutral.  Weak \(SU(2)\)-invariance then forces the remaining
+weak doublet index to be contracted with either \(H\) or \(\widetilde H\) by
+the invariant tensor of the doublet representation.
+
+The hypercharge sums determine which Higgs doublet occurs:
+\[
+  \frac16+\frac12-\frac23=0,\qquad
+  \frac16-\frac12+\frac13=0,\qquad
+  -\frac12-\frac12+1=0 .
+\]
+Thus \(Q_LHu^c\), \(Q_L\widetilde H d^c\), and
+\(L_L\widetilde H e^c\) are gauge invariant.  The opposite choices of
+\(H\) and \(\widetilde H\) have nonzero hypercharge, hence do not define
+local gauge-invariant monomials in the left-handed convention.  Power
+counting excludes additional renormalizable matter monomials with more fields
+or derivatives in this minimal field content.  Flavor indices are spectators
+for the gauge group, so the allowed coefficients are the three arbitrary
+complex flavor matrices shown above.
+\end{proof}
+
+Flavor rotations of the fermion fields remove unphysical parameters; the
+remaining charged-current quark mixing is encoded in the CKM matrix.  If
+neutrino masses are included through dimension-five or singlet-neutrino
+operators, a separate PMNS mixing matrix appears in the lepton sector.
 
 \section{Electroweak Breaking and Mass Coordinates}
 
-The scalar potential in the minimal renormalizable electroweak model is
+\begin{definition}[Electroweak scalar chart]
+\label{def:sm-electroweak-scalar-chart}
+The minimal renormalizable electroweak scalar potential is
 \[
   V(H)=\lambda\left(H^\dagger H-\frac{v^2}{2}\right)^2 ,
   \qquad \lambda>0 .
 \]
-Choose the local field-space chart
+In the local field-space chart used below,
 \[
   H(x)=\frac1{\sqrt2}
   \begin{pmatrix}
@@ -92,16 +180,56 @@ Choose the local field-space chart
     v+h(x)+\ii\chi_3(x)
   \end{pmatrix}.
 \]
-The stabilizer of the vacuum vector
+The reference vacuum vector is
 \[
   H_0=\frac1{\sqrt2}\begin{pmatrix}0\\ v\end{pmatrix}
 \]
-inside \(SU(2)_L\times U(1)_Y\) is the subgroup generated by
+in the same chart.  The fields \(\chi_1,\chi_2,\chi_3\) are local
+coordinates tangent to the broken gauge orbit at \(H_0\), while \(h\) is the
+radial scalar coordinate.
+\end{definition}
+
+\begin{proposition}[Electromagnetic stabilizer and weak-boson masses]
+\label{prop:sm-electroweak-stabilizer-masses}
+In the convention of
+Convention~\ref{conv:sm-electroweak-trace-normalization}, the stabilizer of
+\(H_0\) inside the local group \(SU(2)_L\times U(1)_Y\) is generated by
 \[
   Q_{\rm em}=T^3_L+Y .
 \]
-Indeed \(T^3_L H_0=-\frac12H_0\) and \(YH_0=\frac12H_0\), so
-\((T^3_L+Y)H_0=0\).
+The quadratic gauge-boson mass coordinates are
+\[
+  W^\pm_\mu=\frac1{\sqrt2}(\mathcal W^1_\mu\mp\ii\mathcal W^2_\mu),
+  \qquad
+  Z_\mu=\frac{g_2\mathcal W^3_\mu-g_1\mathcal B_\mu}
+              {\sqrt{g_1^2+g_2^2}},
+  \qquad
+  A_\mu=\frac{g_1\mathcal W^3_\mu+g_2\mathcal B_\mu}
+              {\sqrt{g_1^2+g_2^2}},
+\]
+with
+\[
+  m_W=\frac{g_2v}{2},
+  \qquad
+  m_Z=\frac{v}{2}\sqrt{g_1^2+g_2^2},
+  \qquad
+  m_A=0 .
+\]
+The coupling of the massless field is
+\[
+  e=g_2\sin\theta_W=g_1\cos\theta_W,
+  \qquad
+  \tan\theta_W=\frac{g_1}{g_2}.
+\]
+\end{proposition}
+
+\begin{proof}
+The weak generator \(T^3_L=\operatorname{diag}(1/2,-1/2)\) acts on
+\(H_0\) by \(-H_0/2\), while the hypercharge generator acts by
+\(H_0/2\).  Hence \((T^3_L+Y)H_0=0\).  The generators \(T^1_L\) and
+\(T^2_L\) move \(H_0\) into the upper component, and a general combination
+\(aT^3_L+bY\) annihilates \(H_0\) only when \(a=b\).  Therefore the
+one-dimensional stabilizer Lie algebra is spanned by \(Q_{\rm em}\).
 
 The covariant derivative in the explicit-coupling convention is
 \[
@@ -111,7 +239,17 @@ The covariant derivative in the explicit-coupling convention is
     \partial_\mu-\ii g_2\mathcal W^a_\mu\tau^a-\ii g_1\mathcal B_\mu Y
   \right)H .
 \]
-At quadratic order in the gauge fields and at \(H=H_0\),
+Using
+\[
+  \tau^1H_0=\frac{v}{2\sqrt2}\begin{pmatrix}1\\0\end{pmatrix},
+  \qquad
+  \tau^2H_0=\frac{v}{2\sqrt2}\begin{pmatrix}-\ii\\0\end{pmatrix},
+  \qquad
+  \tau^3H_0=-\frac12H_0,
+  \qquad
+  YH_0=\frac12H_0 ,
+\]
+the quadratic term from \((D_\mu H)^\dagger(D^\mu H)\) at \(H=H_0\) is
 \[
   (D_\mu H_0)^\dagger(D^\mu H_0)
   =
@@ -122,30 +260,32 @@ At quadratic order in the gauge fields and at \(H=H_0\),
     +(-g_2\mathcal W^3_\mu+g_1\mathcal B_\mu)^2
   \right].
 \]
-Define
+The charged part is
+\((g_2^2v^2/4)W^+_\mu W^{-\mu}\), so
+\(m_W^2=g_2^2v^2/4\).  The neutral quadratic form has rank one: the massive
+unit vector is \(Z_\mu\), the null vector is \(A_\mu\), and comparison with
+the real-vector mass term \(\frac12m_Z^2Z_\mu Z^\mu\) gives
+\(m_Z^2=(g_1^2+g_2^2)v^2/4\).
+
+Finally invert the neutral rotation:
 \[
-  W^\pm_\mu=\frac1{\sqrt2}(\mathcal W^1_\mu\mp\ii\mathcal W^2_\mu),
+  \mathcal W^3_\mu
+  =
+  \frac{g_2Z_\mu+g_1A_\mu}{\sqrt{g_1^2+g_2^2}},
   \qquad
-  Z_\mu=\frac{g_2\mathcal W^3_\mu-g_1\mathcal B_\mu}
-              {\sqrt{g_1^2+g_2^2}},
-  \qquad
-  A_\mu=\frac{g_1\mathcal W^3_\mu+g_2\mathcal B_\mu}
-              {\sqrt{g_1^2+g_2^2}} .
+  \mathcal B_\mu
+  =
+  \frac{-g_1Z_\mu+g_2A_\mu}{\sqrt{g_1^2+g_2^2}} .
 \]
-Then
+The coefficient of \(A_\mu\) in
+\(g_2\mathcal W^3_\mu T^3_L+g_1\mathcal B_\mu Y\) is
 \[
-  m_W=\frac{g_2v}{2},
-  \qquad
-  m_Z=\frac{v}{2}\sqrt{g_1^2+g_2^2},
-  \qquad
-  m_A=0 ,
+  \frac{g_1g_2}{\sqrt{g_1^2+g_2^2}}\,(T^3_L+Y).
 \]
-and the electromagnetic coupling is
-\[
-  e=g_2\sin\theta_W=g_1\cos\theta_W,
-  \qquad
-  \tan\theta_W=\frac{g_1}{g_2}.
-\]
+This proves the displayed electromagnetic coupling and identifies the
+massless gauge field with the connection for the unbroken stabilizer.
+\end{proof}
+
 This is the nonabelian mass-matrix construction of
 Chapter~\ref{ch:vol2-classical-yang-mills-matter} applied to the
 \((\mathbf2)_{1/2}\) scalar representation.  The three coordinates
@@ -155,13 +295,48 @@ unitary-gauge chart they are removed locally.
 
 \section{Gauge-Anomaly Cancellation}
 
-The perturbative chiral gauge theory exists order by order only if the local
-gauge anomaly vanishes.  The calculation is most economical when every
-fermion is a left-handed Weyl field, as in the table above.  Let
-\(\mathcal A[G^2U(1)_Y]\) denote the coefficient obtained by summing
-hypercharge times the quadratic index of the \(G\)-representation over
-left-handed fields, including multiplicities from the spectator group.  The
-normalization of the quadratic index cancels in the zero statement.
+\begin{definition}[Gauge-anomaly coefficients for the local datum]
+\label{def:sm-local-anomaly-coefficients}
+For a collection of left-handed Weyl fermions in representations \(R_i\) of
+\(\mathfrak g_{\rm SM}\), the perturbative gauge-anomaly tensor is the
+symmetric cubic functional
+\[
+  \mathcal A(X,Y,Z)
+  =
+  \sum_i \operatorname{tr}_{R_i}\bigl(X\{Y,Z\}\bigr),
+  \qquad
+  X,Y,Z\in\mathfrak g_{\rm SM},
+\]
+with spectator multiplicities included in the trace.  For a mixed
+\(G^2U(1)_Y\) component, this reduces to the sum of hypercharge times the
+quadratic index of the \(G\)-representation.  For the mixed
+gravitational-\(U(1)_Y\) anomaly, the coefficient is the sum of hypercharges
+over all left-handed Weyl components, again including spectator
+multiplicities.
+\end{definition}
+
+\begin{proposition}[SM anomaly cancellation]
+\label{prop:sm-generation-anomaly-cancellation}
+For the one-generation representation of
+Definition~\ref{def:sm-one-generation-left-weyl}, all perturbative local
+gauge anomalies and the mixed gravitational-hypercharge anomaly vanish.  The
+finite \(SU(2)_L\) anomaly also vanishes generation by generation.
+\end{proposition}
+
+\begin{proof}
+The calculation uses only the representation table and the fact that all
+fermions have been written as left-handed Weyl fields.  For the pure
+\(SU(3)_c^3\) anomaly, the two weak components of \(Q_L\) contribute two
+fundamental color representations, while \(u^c\) and \(d^c\) contribute two
+antifundamentals.  Since the cubic index changes sign under complex
+conjugation,
+\[
+  2A(\mathbf3)-A(\mathbf3)-A(\mathbf3)=0 .
+\]
+The pure \(SU(2)_L^3\) perturbative anomaly vanishes because the symmetric
+cubic invariant \(d^{abc}\) of \(\mathfrak{su}(2)\) is zero.  Mixed
+\(SU(3)_cU(1)_Y^2\) and \(SU(2)_LU(1)_Y^2\) components vanish because they
+contain \(\operatorname{tr}_{R}(T^a)\) for a semisimple generator.
 
 For \(SU(3)_c^2U(1)_Y\), one generation gives
 \[
@@ -172,7 +347,8 @@ For \(SU(3)_c^2U(1)_Y\), one generation gives
   +\left(\frac13\right)T(\overline{\mathbf3})
   =0 .
 \]
-For \(SU(2)_L^2U(1)_Y\),
+Here \(T(\overline{\mathbf3})=T(\mathbf3)\), and the factor \(2\) is the weak
+doublet multiplicity.  For \(SU(2)_L^2U(1)_Y\),
 \[
   \mathcal A[SU(2)^2U(1)_Y]
   =
@@ -180,8 +356,9 @@ For \(SU(2)_L^2U(1)_Y\),
   +\left(-\frac12\right)T(\mathbf2)
   =0 .
 \]
-For the cubic hypercharge anomaly, one must include the full dimensions of
-the nonabelian representations:
+Here the factor \(3\) is the color multiplicity of \(Q_L\).  For the cubic
+hypercharge anomaly, include the full dimensions of the nonabelian
+representations:
 \[
 \begin{aligned}
   \mathcal A[U(1)_Y^3]
@@ -210,12 +387,15 @@ quark doublets and one lepton doublet.  The number of doublets is therefore
 even.  These equalities are finite representation-theoretic constraints on
 the regulated fermion determinant line; they are not consequences of
 perturbative renormalizability alone.
+\end{proof}
 
 \section{The Hybrid Definition}
 
-The Standard Model is not used in this monograph as a single completed
-constructive theorem for a four-dimensional continuum QFT.  Its operational
-definition is a hybrid datum:
+\begin{definition}[Hybrid Standard Model datum]
+\label{def:hybrid-standard-model-datum}
+The Standard Model is used in this monograph as the following hybrid datum,
+not as a single completed constructive theorem for a four-dimensional
+continuum QFT:
 \[
   \mathfrak D_{\rm SM}
   =
@@ -236,9 +416,17 @@ with Higgs field treated as a finite-cutoff effective theory below a scale
 effective theories obtained by integrating out massive weak fields and heavy
 flavors; and \(\mathcal M\) is the matching data fixing parameters and local
 operators between overlapping regimes.
+\end{definition}
 
-This definition has three logically distinct layers.
+\begin{proposition}[Logical layers of the hybrid datum]
+\label{prop:sm-hybrid-logical-layers}
+The datum of Definition~\ref{def:hybrid-standard-model-datum} separates
+finite-regulator definition, perturbative effective definition, and
+observable-specific matching.  These layers cannot be replaced by one another
+without adding an extra theorem or hypothesis.
+\end{proposition}
 
+\begin{proof}
 First, the QCD sector has a precise finite nonperturbative regulator by
 compact lattice link variables, Haar measure, and finite Grassmann algebra
 for quarks.  The existence of the four-dimensional continuum limit with the
@@ -267,6 +455,7 @@ defined by the QCD regulator together with weak effective operators matched at
 the electroweak scale.  Precision electroweak observables use the
 finite-order perturbative EFT, with the cutoff dependence absorbed into
 renormalized parameters and higher-dimensional operators.
+\end{proof}
 
 \begin{definition}[Standard Model prediction in the hybrid framework]
 \label{def:sm-hybrid-prediction}
@@ -286,9 +475,10 @@ chapter only after the following data are specified:
 
 \section{Fermi Theory as a Matched Low-Energy Layer}
 
-At external momenta \(p^2\ll m_W^2\), the charged weak boson is not retained
-as a propagating field in the low-energy EFT.  The charged-current interaction
-has the form
+\begin{proposition}[Tree-level matching to Fermi theory]
+\label{prop:sm-fermi-tree-matching}
+Let \(J^\pm_\mu\) be the charged left-handed weak currents normalized so that
+the massive charged-vector part of the electroweak EFT is
 \[
   \mathcal L_{\rm cc}
   =
@@ -296,30 +486,62 @@ has the form
   +m_W^2 W^+_\mu W^{-\mu}
   +\cdots ,
 \]
-where \(J^\pm_\mu\) are the left-handed charged weak currents and the dots
-include the kinetic term and interactions whose effect is suppressed by
-powers of \(p^2/m_W^2\).  Solving the algebraic leading equation of motion for
-\(W^\pm\) gives
+where the dots include the \(W^\pm\) kinetic term and interactions.  In the
+low-energy EFT for external momenta \(p^2\ll m_W^2\), eliminating \(W^\pm\) at
+leading order gives
 \[
   \mathcal L_{\rm Fermi}
   =
   -\frac{g_2^2}{2m_W^2}J^+_\mu J^{-\mu}
   +O(p^2/m_W^4).
 \]
-With \(m_W=g_2v/2\), this coefficient is
-\[
-  \frac{g_2^2}{2m_W^2}=\frac{2}{v^2}.
-\]
-In the common normalization
+Therefore, with the current convention used here,
 \[
   \mathcal L_{\rm Fermi}
   =
-  -\frac{4G_F}{\sqrt2}J^+_\mu J^{-\mu},
-\]
-one obtains
-\[
+  -\frac{4G_F}{\sqrt2}J^+_\mu J^{-\mu}
+  \qquad\Longleftrightarrow\qquad
   \frac{G_F}{\sqrt2}=\frac{1}{2v^2}.
 \]
+\end{proposition}
+
+\begin{proof}
+At tree level and to leading order in derivatives, the charged vector is an
+auxiliary variable with algebraic Lagrangian
+\[
+  m_W^2 W^+_\mu W^{-\mu}
+  -a(J^+_\mu W^{+\mu}+J^-_\mu W^{-\mu}),
+  \qquad a:=\frac{g_2}{\sqrt2}.
+\]
+The equations obtained by varying \(W^+\) and \(W^-\) independently are
+\[
+  m_W^2W^-_\mu=aJ^-_\mu,\qquad
+  m_W^2W^+_\mu=aJ^+_\mu .
+\]
+Substitution gives
+\[
+  \left(\frac{a^2}{m_W^2}
+  -2\frac{a^2}{m_W^2}\right)J^+_\mu J^{-\mu}
+  =
+  -\frac{g_2^2}{2m_W^2}J^+_\mu J^{-\mu}.
+\]
+Including the kinetic operator replaces \(m_W^{-2}\) by the low-momentum
+expansion of the massive propagator,
+\[
+  \frac1{m_W^2-p^2}
+  =
+  \frac1{m_W^2}+O(p^2/m_W^4),
+\]
+in the local derivative expansion.  The mass formula from
+Proposition~\ref{prop:sm-electroweak-stabilizer-masses} gives
+\[
+  \frac{g_2^2}{2m_W^2}=\frac{2}{v^2}.
+\]
+Comparing with
+\(-4G_FJ^+_\mu J^{-\mu}/\sqrt2\) proves
+\(G_F/\sqrt2=1/(2v^2)\).
+\end{proof}
+
 The equality is a tree-level matching statement in the electroweak EFT.  QCD
 renormalization of hadronic weak operators, electromagnetic corrections, CKM
 factors, and matrix elements of the resulting four-fermion operators are
