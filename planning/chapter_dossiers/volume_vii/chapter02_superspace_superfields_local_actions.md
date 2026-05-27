@@ -36,6 +36,11 @@
 - Real vector superfields, chiral gauge transformations, Wess--Zumino gauge as
   a local gauge representative, and the component expansion of the Abelian
   chiral field strength \(W_\alpha\).
+- Gauge-kinetic component coefficient of \(W^\alpha W_\alpha\), including
+  the inverse epsilon-raising convention, the finite
+  \(\sigma^{\mu\nu}\)-contraction identity, and the recovery of
+  \(-F_{\mu\nu}F^{\mu\nu}/(4g^2)+D^2/(2g^2)\) from the real superspace
+  action.
 - Distinction between operator-valued fermion fields and Grassmann-valued
   path-integral variables by correlation functional.
 - Supersymmetric Wilsonian scheme as regulated field-variable data,
@@ -74,6 +79,8 @@
 | \(\Lambda\) | chiral gauge parameter for vector-superfield gauge transformations |
 | \(A_\mu,\lambda_\alpha,D\) | Wess--Zumino gauge vector-multiplet representative fields |
 | \(W_\alpha\) | chiral gauge field-strength superfield |
+| \(\sigma^{\mu\nu}\) | antisymmetric two-spinor Lorentz generator \(\frac14(\sigma^\mu\bar\sigma^\nu-\sigma^\nu\bar\sigma^\mu)\) |
+| \(F_{\mu\nu}\) | Abelian field strength in the vector-superfield calculation |
 | \(\mathfrak F_\Lambda\) | regulated field-variable space at Wilsonian scale \(\Lambda\) |
 | \(S_\Lambda\) | Lagrangian functional in a Wilsonian scheme |
 | \(Q\) | odd localization symmetry in a regulated localization datum |
@@ -103,21 +110,27 @@
 9. Wess--Zumino gauge is a local representative of a vector superfield modulo
    chiral gauge transformations; supersymmetry in this gauge requires a
    compensating gauge transformation and is not a gauge-invariant realization.
-10. Holomorphic and nonrenormalization statements require an explicitly
+10. The Abelian vector-superfield expansion gives
+   \([W^\alpha W_\alpha]_{\theta^2,{\rm bos}}=
+   D^2-\frac12F_{\mu\nu}F^{\mu\nu}
+   -\frac{\ii}{4}\epsilon^{\mu\nu\rho\sigma}
+   F_{\mu\nu}F_{\rho\sigma}\); hence the real superspace action has the
+   Chapter 3 Yang--Mills normalization and auxiliary term.
+11. Holomorphic and nonrenormalization statements require an explicitly
    defined supersymmetric Wilsonian scheme before they can be used in exact
    gauge dynamics.
-11. BV/off-shell-superfield methods can organize the symmetry-preserving
+12. BV/off-shell-superfield methods can organize the symmetry-preserving
    Wilsonian integration problem after a regulator is supplied, but do not
    themselves prove the existence of a manifest supersymmetric regulator.
-12. Dimensional reduction and proposed higher-derivative or Pauli--Villars-type
+13. Dimensional reduction and proposed higher-derivative or Pauli--Villars-type
    supersymmetric regulators require explicit loop-order or scheme-level
    consistency checks before they certify nonrenormalization or anomaly
    statements.
-13. Supersymmetric examples in dimensions other than four must not be treated
+14. Supersymmetric examples in dimensions other than four must not be treated
    as analogies: \(2D\) LG/CY/GLSM, \(3D\) Chern--Simons--matter, and \(6D\)
    SCFT examples have distinct definitions, anomaly data, extended operators,
    and nonperturbative-status ledgers.
-14. Localization formulae require a regulated localization datum; residue
+15. Localization formulae require a regulated localization datum; residue
    prescriptions and singular instanton sectors are not automatic consequences
    of formal \(Q\)-exact deformation.
 
@@ -127,6 +140,11 @@
   \(\theta^2\) normalization, left-derivative rule, two-spinor Grassmann
   product identity, chiral \(F\)-term Yukawa coefficient, and auxiliary
   \(F\)-field square completion used in this chapter.
+- `calculation-checks/susy_vector_superfield_checks.py` verifies the
+  inverse epsilon-raising convention, the finite
+  \(\sigma^{\mu\nu}\)-contraction identity, the bosonic \(\theta^2\)
+  coefficient of \(W^\alpha W_\alpha\), and the real
+  gauge-kinetic/auxiliary normalization.
 
 ## Figures
 

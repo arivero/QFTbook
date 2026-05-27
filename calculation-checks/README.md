@@ -693,6 +693,12 @@ Current checks:
   the \((\theta\psi)(\theta\chi)\) identity, the
   \(-\frac12 W_{ij}\psi^i\psi^j\) chiral \(F\)-term coefficient, and
   auxiliary \(F\)-field elimination.
+- `susy_vector_superfield_checks.py`: exact finite exterior-algebra and
+  sigma-matrix checks for the Volume VII vector-superfield conventions,
+  including inverse epsilon raising, the bosonic \(\theta^2\) coefficient of
+  \(W^\alpha W_\alpha\), and recovery of
+  \(-F_{\mu\nu}F^{\mu\nu}/(4g^2)+D^2/(2g^2)\) after adding the Hermitian
+  conjugate.
 - `susy_wilsonian_bv_checks.py`: finite Fourier/odd-variable checks for the
   Volume VII supersymmetric Wilsonian-schemes chapter, including BV Stokes
   for a fiber Darboux pair, the pushforward chain-map identity, QME

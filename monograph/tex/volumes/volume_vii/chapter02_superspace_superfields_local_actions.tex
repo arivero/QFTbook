@@ -517,8 +517,125 @@ has component expansion
 \]
 The non-Abelian formula replaces \(D_\alpha V\) by
 \(e^{-V}D_\alpha e^V\) and ordinary derivatives by covariant derivatives, as
-in Chapter~\ref{ch:susy-gauge-theory}.  With the trace and gauge-coupling
-normalization fixed there, the superspace term
+in Chapter~\ref{ch:susy-gauge-theory}.
+
+\begin{proposition}[Gauge kinetic coefficient in Wess--Zumino gauge]
+\label{prop:susy-vector-superfield-gauge-kinetic-coefficient}
+Let \(\eta=\operatorname{diag}(-,+,+,+)\),
+\(\epsilon^{0123}=+1\), and
+\[
+  \sigma^{\mu\nu}
+  =
+  \frac14\left(\sigma^\mu\bar\sigma^\nu
+  -\sigma^\nu\bar\sigma^\mu\right)
+\]
+with the two-component blocks fixed by
+Section~\ref{sec:spinor-conventions}.  Interpret repeated antisymmetric
+pairs in the displayed \(W_\alpha\) formula as summation over all
+\(\mu,\nu\); equivalently, in a sum over \(\mu<\nu\), replace
+\((\sigma^{\mu\nu}\theta)_\alpha F_{\mu\nu}\) by
+\(2(\sigma^{\mu\nu}\theta)_\alpha F_{\mu\nu}\).  Then the bosonic chiral
+top coefficient is
+\[
+  [W^\alpha W_\alpha]_{\theta^2,{\rm bos}}
+  =
+  D^2
+  -\frac12 F_{\mu\nu}F^{\mu\nu}
+  -\frac{\ii}{4}
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}.
+  \label{eq:susy-vector-superfield-w-square-bosonic-coefficient}
+\]
+Consequently, for real \(g\),
+\[
+  \frac{1}{4g^2}\int d^2\theta\,W^\alpha W_\alpha
+  +{\rm h.c.}
+  =
+  -\frac{1}{4g^2}F_{\mu\nu}F^{\mu\nu}
+  +\frac{1}{2g^2}D^2
+  +\hbox{fermions}.
+  \label{eq:susy-vector-superfield-gauge-kinetic-component}
+\]
+For a complex holomorphic gauge coupling the imaginary part of
+\eqref{eq:susy-vector-superfield-w-square-bosonic-coefficient} instead
+contributes to the topological \(\theta\)-angle term, with the normalization
+matched in Chapter~\ref{ch:susy-gauge-theory}.
+\end{proposition}
+
+\begin{proof}
+Only the terms of \(W_\alpha\) that are linear in \(\theta\) can contribute
+to the bosonic \(\theta^2\) coefficient of \(W^\alpha W_\alpha\).  Thus set
+\[
+  L_\alpha
+  =
+  \theta_\alpha D
+  -2\ii\sum_{\mu<\nu}
+  (\sigma^{\mu\nu}\theta)_\alpha F_{\mu\nu}.
+\]
+The factor \(2\) converts the unrestricted antisymmetric summation in the
+component formula to a sum over ordered pairs \(\mu<\nu\).  Since
+\(\epsilon^{12}=\epsilon_{12}=1\), lowering is
+\(\theta_1=\theta^2\), \(\theta_2=-\theta^1\), and the inverse operation on a
+lowered spinor is \(\chi^\alpha=-\epsilon^{\alpha\beta}\chi_\beta\).  Hence
+\[
+  \theta^\alpha\theta_\alpha=\theta^2,\qquad
+  \theta^\alpha\theta_\beta=\frac12\delta^\alpha{}_\beta\,\theta^2 .
+  \label{eq:susy-vector-theta-contractions}
+\]
+The pure \(D\)-term in \(L^\alpha L_\alpha\) gives \(D^2\).  The mixed
+\(D\)-\(F\) term is proportional to
+\(\operatorname{tr}\sigma^{\mu\nu}=0\), and therefore vanishes.  The remaining
+finite matrix identity, obtained by multiplying the displayed
+\(\sigma^{\mu\nu}\) blocks and using
+\eqref{eq:susy-vector-theta-contractions}, is
+\[
+  \left[
+    (\sigma^{\mu\nu}\theta)^\alpha
+    (\sigma^{\rho\sigma}\theta)_\alpha
+  \right]_{\theta^2}
+  =
+  \frac14\left(
+  \eta^{\mu\rho}\eta^{\nu\sigma}
+  -\eta^{\mu\sigma}\eta^{\nu\rho}\right)
+  +\frac{\ii}{4}\epsilon^{\mu\nu\rho\sigma},
+  \qquad \mu<\nu,\ \rho<\sigma .
+  \label{eq:susy-vector-sigma-pair-contraction}
+\]
+Substitution gives
+\[
+  [L^\alpha L_\alpha]_{\theta^2}
+  =
+  D^2
+  -4\sum_{\mu<\nu,\rho<\sigma}
+  F_{\mu\nu}F_{\rho\sigma}
+  \left[
+    (\sigma^{\mu\nu}\theta)^\alpha
+    (\sigma^{\rho\sigma}\theta)_\alpha
+  \right]_{\theta^2}.
+\]
+The real part of this sum is
+\(-\sum_{\mu<\nu}\eta^{\mu\mu}\eta^{\nu\nu}F_{\mu\nu}^2
+=-\frac12F_{\mu\nu}F^{\mu\nu}\).  The oriented part uses
+\[
+  \sum_{\mu<\nu,\rho<\sigma}
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+  =
+  \frac14
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma},
+\]
+where the expression on the right has unrestricted repeated indices.  This
+proves \eqref{eq:susy-vector-superfield-w-square-bosonic-coefficient}.
+Adding the Hermitian conjugate with real coefficient \(1/(4g^2)\) doubles
+the real part and cancels the imaginary topological term, giving
+\eqref{eq:susy-vector-superfield-gauge-kinetic-component}.
+\end{proof}
+
+The companion Python calculation check in \texttt{calculation-checks/}
+verifies
+\eqref{eq:susy-vector-theta-contractions},
+\eqref{eq:susy-vector-sigma-pair-contraction}, and the final
+gauge-kinetic coefficient by exact finite exterior algebra.  With the trace
+and gauge-coupling normalization fixed in
+Chapter~\ref{ch:susy-gauge-theory}, the non-Abelian superspace term
 \[
   \frac{1}{4g^2}\int d^2\theta\,\operatorname{tr}(W^\alpha W_\alpha)
   +{\rm h.c.}
