@@ -19,6 +19,7 @@ python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 python3 qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py --smoke
 python3 qft_scripts/su3_gauge_4d_metropolis_hdf5.py --smoke
+python3 qft_scripts/su3_wilson_flow_hdf5.py --smoke
 python3 qft_scripts/autocorrelation_resampling.py --smoke
 python3 qft_scripts/static_potential_from_wilson_loops.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
@@ -55,6 +56,12 @@ notebooks or CI checks can consume the results without scraping prose.
   and checkpoint files when `h5py` is available, and can also export
   `sample,R,T,W` CSV data for the static-potential analysis script.  It is a
   small finite-regulator data generator, not a production lattice-QCD code.
+- `su3_wilson_flow_hdf5.py`: finite \(SU(3)\) Wilson-score gradient-flow
+  evolution for saved link checkpoints.  It reads the HDF5 checkpoint format
+  written by the subgroup-Metropolis script, records plaquette/action-density
+  flow trajectories and final flowed links, and exposes a smoke test that
+  checks monotonicity and group preservation at finite cutoff.  It is not an
+  integer topological-charge definition or a continuum extrapolation.
 - `autocorrelation_resampling.py`: one-column Markov-chain time-series
   diagnostics.  It computes biased autocorrelations, a windowed integrated
   autocorrelation time, block means, blocked standard errors,

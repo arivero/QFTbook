@@ -51,6 +51,10 @@
   smoothing, flowed energy-density scale coordinates \(t_0,w_0\), and the
   distinction between geometric/index topological charge definitions and
   numerical flow plateaux.
+- Explicit finite \(SU(3)\) Wilson-score gradient force, including the
+  staple formula, anti-Hermitian traceless projection, monotonicity identity
+  for the normalized plaquette score, and an HDF5 companion flow script for
+  saved finite configurations.
 - Reflection positivity and transfer-matrix statement.
 - Fermion and chiral-gauge-theory regulator boundary.
 
@@ -69,6 +73,9 @@
 | \(\overline E(t)\) | volume-averaged flowed energy density |
 | \(t_0,w_0\) | finite-cutoff flowed scale coordinates, when uniquely defined |
 | \(Q_{\rm geom}(U)\) | geometric lattice topological charge under an admissibility datum |
+| \(Q(U)\) | normalized finite \(SU(3)\) Wilson plaquette score |
+| \(C_\mu(x;U)\) | \(SU(3)\) Wilson-flow staple matrix for a selected link |
+| \(Z_\mu(x;U)\) | left-gradient generator for the normalized \(SU(3)\) plaquette score |
 | \(U_e,U_p\) | \(\mathbb Z_2\) link variable and plaquette product |
 | \(t=\tanh\beta\) | strong-coupling expansion coordinate |
 | \(A\subset P\) | plaquette subset / \(\mathbb Z_2\)-two-chain |
@@ -154,7 +161,12 @@
 20. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
    bundle because \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact
    differential.
-21. Chiral gauge theories require additional determinant-phase and anomaly
+21. For finite \(SU(3)\) Wilson links, the force
+    \(Z_\mu(x;U)=-\frac13[U_\mu(x)C_\mu(x;U)]_{\mathfrak{su}(3)}\) is the
+    left-gradient of the normalized plaquette score \(Q\), and the normalized
+    score-flow equation satisfies
+    \(\frac{d}{dt}Q(V_t)=\sum_{x,\mu}\|Z_\mu(x;V_t)\|^2\ge0\).
+22. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
 ## Companion Scripts
@@ -166,6 +178,9 @@
   Wilson-loop analysis tool for transfer-matrix effective masses and Creutz
   ratios from positive rectangular-loop data, including a sample-level
   correlated jackknife/bootstrap mode.
+- `qft_scripts/su3_wilson_flow_hdf5.py --smoke`: finite \(SU(3)\)
+  Wilson-score gradient-flow evolution for hot/cold links or HDF5
+  checkpoints, with trajectory output when `h5py` is available.
 
 ## Calculation Checks
 
@@ -181,6 +196,10 @@
   negative-gradient monotonicity identity, adjoint norm covariance,
   linearized heat-kernel damping, the \(w_0\) derivative convention, and the
   Chern--Weil variation factor used in the Wilson-flow section.
+- `calculation-checks/su3_wilson_flow_checks.py` verifies the explicit
+  finite \(SU(3)\) Wilson-score gradient by directional derivatives, one-step
+  gauge covariance, small-step monotonicity, group preservation, HDF5
+  trajectory layout, and sampler-checkpoint input.
 - `calculation-checks/gauge_action_improvement_checks.py` verifies the
   plaquette-plus-rectangle tree-level improvement arithmetic: rectangle flux
   moments, \(c_0+8c_1=1\), \(c_0+20c_1=0\), and the normalization convention
@@ -211,6 +230,9 @@
   section treats flow first as a finite-regulator ODE, not as a continuum
   slogan, and separates flowed smoothing, scale setting, and topological
   charge definitions.
+- 2026-05-27 issue #631 pass: added the explicit finite \(SU(3)\)
+  Wilson-score gradient force and a theorem-anchored HDF5 Wilson-flow
+  companion script with directional-derivative and gauge-covariance checks.
 - 2026-05-27 issue #631 pass: added tree-level plaquette-plus-rectangle gauge
   improvement with an explicit rectangle-flux derivation, while flagging that
   loop-level improvement and transfer-matrix positivity are distinct

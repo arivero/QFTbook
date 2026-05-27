@@ -1182,6 +1182,128 @@ Finally, by the chain rule and
 \]
 \end{proof}
 
+For the pure \(SU(3)\) Wilson action it is useful to display the finite
+force rather than hide it behind the abstract gradient notation.  Use the
+score coordinate
+\begin{equation}
+  Q(U)=
+  \sum_{x}\sum_{0\le\mu<\nu\le3}
+  \frac13\operatorname{Re}\operatorname{Tr}_{3}U_{\mu\nu}(x),
+  \qquad
+  S_{\rm flow}(U)=6|\Lambda^0|-Q(U),
+  \label{eq:su3-wilson-flow-score}
+\end{equation}
+so that flowing downward for \(S_{\rm flow}\) is the same as flowing upward
+for the normalized plaquette score \(Q\).  For a link \(U_\mu(x)\), define
+the staple matrix
+\begin{align}
+  C_\mu(x;U)
+  &=
+  \sum_{\nu\ne\mu}
+  \Bigl[
+  U_\nu(x+\widehat\mu)
+  U_\mu(x+\widehat\nu)^{-1}
+  U_\nu(x)^{-1}
+  \notag\\
+  &\hspace{2.6cm}
+  +
+  U_\nu(x-\widehat\nu+\widehat\mu)^{-1}
+  U_\mu(x-\widehat\nu)^{-1}
+  U_\nu(x-\widehat\nu)
+  \Bigr].
+  \label{eq:su3-wilson-flow-staple}
+\end{align}
+Then the part of \(Q\) depending on \(U_\mu(x)\), with the other links held
+fixed, is
+\[
+  Q_{x,\mu}(U)=
+  \frac13\operatorname{Re}\operatorname{Tr}_{3}
+  \bigl(U_\mu(x)C_\mu(x;U)\bigr).
+\]
+For \(A\in M_3(\mathbb C)\), write
+\begin{equation}
+  [A]_{\mathfrak{su}(3)}
+  =
+  \frac12(A-A^\dagger)
+  -
+  \frac16\operatorname{Tr}(A-A^\dagger){\bf1}_3 .
+  \label{eq:su3-antihermitian-traceless-projection}
+\end{equation}
+This is the anti-Hermitian traceless projection of \(A\).  With the
+inner product
+\[
+  (X,Y)_{\mathfrak{su}(3)}=-\operatorname{Re}\operatorname{Tr}_3(XY),
+\]
+the left-gradient vector for the score \(Q\) is
+\begin{equation}
+  Z_\mu(x;U)
+  =
+  -\frac13\bigl[U_\mu(x)C_\mu(x;U)\bigr]_{\mathfrak{su}(3)}.
+  \label{eq:su3-wilson-flow-force}
+\end{equation}
+Thus the normalized finite \(SU(3)\) Wilson-flow equation used below is
+\begin{equation}
+  \frac{\dd V_\mu(t,x)}{\dd t}
+  =
+  Z_\mu(x;V_t)V_\mu(t,x),
+  \qquad
+  V_\mu(0,x)=U_\mu(x).
+  \label{eq:su3-normalized-wilson-flow-force-ode}
+\end{equation}
+Including the gauge coupling in the action only rescales \(t\) in this
+finite pure-gauge flow.
+
+\begin{proposition}[Explicit \(SU(3)\) Wilson-score gradient]
+\label{prop:explicit-su3-wilson-score-gradient}
+For \(X\in\mathfrak{su}(3)\) and
+\(U_\mu^{(s)}(x)=e^{sX}U_\mu(x)\),
+\[
+  \left.
+  \frac{\dd}{\dd s}Q(U^{(s)})\right|_{s=0}
+  =
+  (X,Z_\mu(x;U))_{\mathfrak{su}(3)} .
+\]
+Consequently the flow \eqref{eq:su3-normalized-wilson-flow-force-ode}
+satisfies
+\[
+  \frac{\dd}{\dd t}Q(V_t)
+  =
+  \sum_{x,\mu}\|Z_\mu(x;V_t)\|_{\mathfrak{su}(3)}^2
+  \ge0 .
+\]
+\end{proposition}
+
+\begin{proof}
+The two summands in \eqref{eq:su3-wilson-flow-staple} are precisely the
+forward and backward plaquettes containing the oriented link \(U_\mu(x)\),
+rewritten so that their total contribution has the form
+\[
+  \frac13\operatorname{Re}\operatorname{Tr}
+  \bigl(U_\mu(x)C_\mu(x;U)\bigr).
+\]
+Therefore the left variation gives
+\[
+  \left.
+  \frac{\dd}{\dd s}Q(U^{(s)})\right|_{s=0}
+  =
+  \frac13\operatorname{Re}\operatorname{Tr}
+  \bigl(X\,U_\mu(x)C_\mu(x;U)\bigr).
+\]
+If \(X\) is anti-Hermitian and traceless, the Hermitian part and the scalar
+trace part of \(U_\mu C_\mu\) have zero real trace against \(X\).  Hence the
+last expression equals
+\[
+  \frac13\operatorname{Re}\operatorname{Tr}
+  \bigl(X[U_\mu C_\mu]_{\mathfrak{su}(3)}\bigr)
+  =
+  -\operatorname{Re}\operatorname{Tr}\bigl(XZ_\mu\bigr)
+  =
+  (X,Z_\mu)_{\mathfrak{su}(3)} .
+\]
+Substituting \(X=Z_\mu(x;V_t)\) for every link gives the displayed
+monotonicity identity for \(Q\).
+\end{proof}
+
 The continuum reason that positive flow time is useful is already visible in
 the linearized equation.  Let \(B_\mu(t,x)\) be a smooth continuum connection
 and write its curvature as \(G_{\mu\nu}(t)\).  The Yang--Mills gradient flow is
@@ -1314,6 +1436,35 @@ flow are numerical evidence for stability within an admissible sector; without
 an admissibility or index-theoretic definition they are not, by themselves, a
 definition of a continuum theta sector.
 \end{controlledapproximation}
+
+The companion script
+\[
+  \begin{gathered}
+  \texttt{qft\_scripts/}\\
+  \texttt{su3\_wilson\_flow\_hdf5.py}
+  \end{gathered}
+\]
+implements \eqref{eq:su3-normalized-wilson-flow-force-ode} by a
+finite-dimensional Lie--Euler step
+\begin{equation}
+  V_\mu((n+1)\delta t,x)
+  =
+  \exp\!\bigl(\delta t\,Z_\mu(x;V_{n\delta t})\bigr)
+  V_\mu(n\delta t,x),
+  \label{eq:su3-wilson-flow-lie-euler-step}
+\end{equation}
+with all link forces evaluated before the update.  It can read the
+\(\texttt{checkpoint/links}\) dataset written by the \(SU(3)\)
+subgroup-Metropolis generator, write an HDF5 trajectory containing
+\(\tau\), plaquette score, action density, and final flowed links, and expose
+a smoke test that checks score monotonicity and group preservation at finite
+cutoff.  The corresponding calculation check verifies
+\eqref{eq:su3-wilson-flow-force} by directional derivatives, tests one-step
+gauge covariance, and runs the sampler-to-flow HDF5 pipeline.  The
+Lie--Euler step is a numerical integrator for the finite ODE; its step-size
+error is separate from the continuum-limit questions in
+Definition~\ref{def:lattice-flowed-energy-scale} and
+Definition~\ref{def:admissible-geometric-topological-charge}.
 
 \section{Reflection Positivity and Transfer Matrix}
 

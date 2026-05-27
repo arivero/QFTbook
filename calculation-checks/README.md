@@ -532,6 +532,13 @@ Current checks:
   Wilson-loop/plaquette identity, and HDF5 measurement/checkpoint output.
   If the default Python lacks `h5py`, the check uses `QFT_HDF5_PYTHON` or the
   bundled Codex runtime Python when available.
+- `su3_wilson_flow_checks.py`: finite checks for
+  `qft_scripts/su3_wilson_flow_hdf5.py`, verifying the explicit \(SU(3)\)
+  Wilson-score gradient by directional derivatives, one-step gauge
+  covariance, small-step monotonicity, group preservation, HDF5 trajectory
+  layout, and flow from a sampler checkpoint.  If the default Python lacks
+  `h5py`, the check uses `QFT_HDF5_PYTHON` or the bundled Codex runtime
+  Python when available.
 - `lattice_gradient_flow_checks.py`: exact finite checks for the Volume XI
   Wilson-flow section, including negative-gradient monotonicity, adjoint
   norm invariance, linearized heat-kernel damping, the \(w_0\) scale
