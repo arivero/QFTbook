@@ -5,6 +5,8 @@
 
 \section{Hilbert-Space Quantum Data}
 
+\begin{definition}[Hilbert-space quantum datum]
+\label{def:hilbert-space-quantum-datum}
 Let \(\Hilb\) be a complex Hilbert space. A pure state is a ray in \(\Hilb\).
 A mixed state is a positive trace-class operator \(\rho\) on \(\Hilb\)
 satisfying
@@ -20,7 +22,10 @@ the state \(\rho\) is
 \]
 For an unbounded operator, the operator domain and the domain of every product
 appearing in a matrix element are part of the data.
+\end{definition}
 
+\begin{definition}[Hamiltonian time evolution]
+\label{def:hamiltonian-time-evolution}
 A Hamiltonian time evolution is specified by a self-adjoint operator \(H\) and
 the unitary one-parameter group
 \[
@@ -35,6 +40,7 @@ realization is part of the definition of the quantum system.
 In a stable sector \(H\) is bounded below. Spacetime localization is additional
 structure: a local relativistic theory assigns operators or algebras to
 spacetime regions.
+\end{definition}
 
 \section{Rigged Hilbert Spaces and Continuous Spectra}
 \label{sec:rigged-hilbert-continuous-spectrum}
@@ -44,6 +50,8 @@ kets, position kets, and plane-wave scattering states used throughout the
 monograph are generalized vectors. Their precise home is a rigged Hilbert
 space, also called a Gelfand triple.
 
+\begin{definition}[Rigged Hilbert space]
+\label{def:rigged-hilbert-space}
 A rigged Hilbert space consists of a dense subspace \(\Phi\subset\Hilb\),
 equipped with a locally convex topology finer than the Hilbert norm topology,
 together with the continuous inclusions
@@ -59,7 +67,10 @@ inclusion sends \(h\in\Hilb\) to the functional
 Thus every Hilbert vector defines a generalized vector, but
 \(\Phi^\times\) is larger than \(\Hilb\). Distributional eigenvectors live in
 \(\Phi^\times\).
+\end{definition}
 
+\begin{proposition}[Schwartz triple and weak delta kernels]
+\label{prop:schwartz-triple-weak-delta-kernels}
 The basic model is
 \[
   \mathcal S(\mathbb R^d)
@@ -92,7 +103,21 @@ and
 \]
 are weak identities: after pairing with test vectors in \(\Phi\) on the left
 and right, they become ordinary identities for functions or distributions.
+\end{proposition}
 
+\begin{proof}
+Point evaluation and Fourier evaluation are continuous linear functionals on
+\(\mathcal S(\mathbb R^d)\), hence define elements of
+\(\mathcal S'(\mathbb R^d)\).  Pairing the displayed resolution of the
+identity with \(\varphi,\psi\in\mathcal S(\mathbb R^d)\) gives respectively
+\(\int \overline{\varphi(x)}\psi(x)\dd^dx\) and the same inner product written
+after Fourier inversion.  The delta distributions are precisely the kernels
+which reproduce these pairings, so the displayed bra-ket identities are kernel
+statements, not equalities between Hilbert vectors.
+\end{proof}
+
+\begin{definition}[Generalized eigenvector in a rigged Hilbert space]
+\label{def:generalized-eigenvector-rigged-hilbert}
 For a self-adjoint operator \(A\) with spectral measure \(E_A\), a number
 \(\lambda\) is an eigenvalue in the Hilbert-space sense precisely when
 \[
@@ -114,7 +139,10 @@ This is the mathematical meaning of a plane wave of sharp momentum or an
 energy eigenstate in a continuous spectrum. It is a distributional object
 used to write kernels. Physical Hilbert vectors are obtained by smearing such
 kernels with square-integrable wave packets.
+\end{definition}
 
+\begin{definition}[Direct-integral coordinate ket]
+\label{def:direct-integral-coordinate-ket}
 Equivalently, the spectral theorem may be written as a direct integral
 \[
   \Hilb
@@ -132,7 +160,10 @@ fiber \(\Hilb_\lambda\) of the direct integral.  Delta-normalization records
 the kernel of the identity relative to the measure \(\dd\nu\). Changing
 \(\dd\nu\) rescales these generalized kets and therefore changes the displayed
 delta factors; the Hilbert-space vector obtained after smearing is unchanged.
+\end{definition}
 
+\begin{definition}[Relativistic one-particle rigging]
+\label{def:relativistic-one-particle-rigging}
 For a relativistic one-particle mass shell this gives, for example,
 \[
   \Phi_1
@@ -167,9 +198,12 @@ measure. All scattering kernels written later with sharp external momenta
 are to be read in this sense. The wave-packet formulation is the primary
 Hilbert-space statement; the plane-wave formula is the corresponding
 distributional kernel.
+\end{definition}
 
 \section{Poincare Symmetry}
 
+\begin{definition}[Poincare-covariant vacuum Hilbert datum]
+\label{def:poincare-covariant-vacuum-hilbert-datum}
 Let
 \[
   \Poinc=\mathbb R^D\rtimes SO^+(1,D-1)
@@ -233,9 +267,12 @@ In a vacuum sector there is a unit vector \(\vac\in\Hilb\) satisfying
 \[
   U(a,\Lambda)\vac=\vac .
 \]
+\end{definition}
 
 \section{Translation Spectrum and Mass Sectors}
 
+\begin{proposition}[Joint translation spectrum]
+\label{prop:joint-translation-spectrum}
 The translation generators are strongly commuting self-adjoint operators.  This
 statement is stronger than the formal infinitesimal relation
 \([P^\mu,P^\nu]=0\) on a common invariant domain: for unbounded operators,
@@ -276,7 +313,22 @@ spectrum condition in the preceding section is the statement that
 \[
   E(\mathbb R^D\setminus\overline V_+)=0 .
 \]
+\end{proposition}
 
+\begin{proof}
+Restrict \(U\) in
+Definition~\ref{def:poincare-covariant-vacuum-hilbert-datum} to the
+translation subgroup.  The subgroup is abelian and locally compact, and the
+restriction is strongly continuous and unitary.  The Stone--Naimark spectral
+theorem therefore gives the single projection-valued measure \(E\) displayed
+above.  Its coordinate multiplication operators are the Stone generators
+\(P^\mu\), so their spectral projections commute.  The spectrum condition is
+exactly the assertion that this joint spectral measure is supported in
+\(\overline V_+\).
+\end{proof}
+
+\begin{definition}[Invariant mass spectral measure]
+\label{def:invariant-mass-spectral-measure}
 The invariant mass operator is defined by functional calculus:
 \[
   M^2=-P_\mu P^\mu
@@ -296,8 +348,10 @@ The vacuum subspace is the zero-momentum subspace
 \]
 In a pure vacuum sector this subspace is one-dimensional and is spanned by
 \(\vac\).
+\end{definition}
 
 \begin{definition}[Mass sector and particle shell]
+\label{def:mass-sector-and-particle-shell}
   A mass sector of mass \(m\ge0\) is the spectral subspace of \(M^2\) at the
   value \(m^2\), namely \(E_M(\{m^2\})\Hilb\).  For \(m>0\), the corresponding
   positive-energy mass shell is the smooth hyperboloid
@@ -325,6 +379,8 @@ In a pure vacuum sector this subspace is one-dimensional and is spanned by
   hypothesis beyond the invariant-mass equation \(M^2=0\).
 \end{definition}
 
+\begin{proposition}[Isolated shell as a one-particle subrepresentation]
+\label{prop:isolated-shell-one-particle-subrepresentation}
 An isolated massive particle in a local quantum theory is the closed spectral
 subspace
 \[
@@ -335,8 +391,21 @@ restriction of the Poincare representation to this subspace.  Later, the
 K\"all\'en--Lehmann representation detects the same object as an atom in a
 two-point spectral measure, and Haag--Ruelle theory uses the isolation
 hypothesis to construct asymptotic multi-particle states.
+\end{proposition}
+
+\begin{proof}
+The set \(\Sigma_m^+\) is Borel, so \(E(\Sigma_m^+)\) is an orthogonal
+projection.  The spectral covariance relation
+\(U(a,\Lambda)E(\Delta)U(a,\Lambda)^{-1}=E(\Lambda\Delta)\) follows from
+conjugating the translation representation by \(U(a,\Lambda)\).  Since
+\(\Sigma_m^+\) is a positive-energy Lorentz orbit, the range of
+\(E(\Sigma_m^+)\) is invariant under the Poincare representation.  Restricting
+the representation to this closed range gives the one-particle Wigner
+subrepresentation.
+\end{proof}
 
 \begin{remark}[Infraparticle sectors]
+\label{rem:infraparticle-sectors-chapter-two}
 The word ``isolated'' is a spectral hypothesis in addition to the mass equation
 \(M^2=m^2\).  A theory with a massless long-range gauge field can have charged
 sectors whose charged threshold is the lower edge of continuous
@@ -388,6 +457,8 @@ Chapters~\ref{ch:qed-external-states} and
 
 \section{One-Particle Representations}
 
+\begin{definition}[Massive scalar Wigner one-particle space]
+\label{def:massive-scalar-wigner-one-particle-space}
 The spectral subspace \(E(\Sigma_m^+)\Hilb\) carries a unitary
 representation of the Poincare group.  The corresponding abstract
 one-particle representation is described by Wigner's little-group
@@ -409,7 +480,10 @@ finite-dimensional unitary representation of the double cover of the massive
 little group \(SO(D-1)\). Massless finite-helicity particles in four spacetime
 dimensions are classified by helicity representations of the massless little
 group.
+\end{definition}
 
+\begin{definition}[Four-dimensional Wigner orbit datum]
+\label{def:four-dimensional-wigner-orbit-datum}
 For later reference we record the corresponding four-dimensional Wigner
 classification in one place.  Let
 \[
@@ -425,6 +499,7 @@ a single Lorentz orbit is obtained by choosing a representative momentum
 and inducing to \(\widetilde{\Poinc}\).  The spectrum condition keeps only
 orbits contained in the closed future cone, but the representation-theoretic
 list is useful because it makes explicit which cases are being assumed away.
+\end{definition}
 
 \begin{table}[H]
   \centering
@@ -500,6 +575,8 @@ assignment for observables.
 
 \section{Free Fock Space From One-Particle Data}
 
+\begin{definition}[Free bosonic and fermionic Fock spaces]
+\label{def:free-bosonic-fermionic-fock-spaces}
 From a one-particle Hilbert space \(\Hilb_1\), define the bosonic Fock space
 \[
   \mathcal F_s(\Hilb_1)
@@ -512,6 +589,10 @@ and the fermionic Fock space
   =
   \bigoplus_{n=0}^{\infty}\wedge^n\Hilb_1.
 \]
+\end{definition}
+
+\begin{definition}[Bosonic creation-operator tensor normalization]
+\label{def:bosonic-creation-operator-tensor-normalization}
 The symmetric tensor powers use the creation-operator normalization.  Let
 \[
   \Pi_{s,n}
@@ -535,6 +616,10 @@ For \(\psi_1,\ldots,\psi_n\in\Hilb_1\) define
   \in \operatorname{Sym}^n\Hilb_1 .
   \label{eq:bosonic-fock-odot-normalization}
 \end{equation}
+\end{definition}
+
+\begin{proposition}[Bosonic Fock inner product]
+\label{prop:bosonic-fock-inner-product}
 With this convention
 \begin{equation}
   \bigl\langle
@@ -548,6 +633,18 @@ With this convention
   \langle\psi_j,\chi_{\sigma(j)}\rangle_{\Hilb_1}.
   \label{eq:bosonic-fock-odot-inner-product}
 \end{equation}
+\end{proposition}
+
+\begin{proof}
+Expand both \(\Pi_{s,n}\) in
+Definition~\ref{def:bosonic-creation-operator-tensor-normalization}.  The
+factor \(n!\) from the two \(\sqrt{n!}\) normalizations cancels one of the two
+averages over \(S_n\), leaving exactly one permutation sum. Orthogonality of
+different tensor powers gives the factor \(\delta_{mn}\).
+\end{proof}
+
+\begin{definition}[Mass-shell Fock test domain and kernels]
+\label{def:mass-shell-fock-test-domain-kernels}
 For the massive scalar one-particle space
 \(\Hilb_1=L^2(\Sigma_m^+,\dd\mu_m)\), identify the mass shell with
 \(\mathbb R^{D-1}\) by
@@ -628,7 +725,10 @@ calculation use the dense test class \(\mathcal S_m\).  For
   =
   \langle\psi,\chi\rangle_{\Hilb_1}.
 \]
+\end{definition}
 
+\begin{definition}[Noncovariant creation and momentum-ket normalization]
+\label{def:noncovariant-creation-momentum-ket-normalization}
 There is a second common normalization, useful for displaying the elementary
 Fock construction.  Define operator-valued distributions
 \(\mathfrak a_{\vec p}\) by
@@ -667,7 +767,10 @@ In this normalization
   \vec P_0=\int\dd^{D-1}\vec p\,
   \vec p\,\mathfrak a_{\vec p}^{\dagger}\mathfrak a_{\vec p}.
 \]
+\end{definition}
 
+\begin{definition}[Free multi-species Fock representation]
+\label{def:free-multi-species-fock-representation}
 For a finite collection of free stable species, let \(B\) be the set of
 bosonic species and \(F\) the set of fermionic species, with one-particle
 spaces \(\Hilb_{1,b}\) and \(\Hilb_{1,f}\).  The free multi-species Hilbert
@@ -687,6 +790,7 @@ one-particle representations.  Equivalently,
 \(\mathcal F_a\).  The operator algebra on the fermionic factors uses the
 graded tensor-product convention, so homogeneous odd creation or annihilation
 operators associated with distinct fermion species anticommute.
+\end{definition}
 
 The Fock construction gives a free multi-particle representation. A local QFT
 also specifies which operators are localized in each bounded spacetime region.
@@ -754,6 +858,8 @@ this statement is locality for spacelike separated regions.
 
 \section{Locality Data}
 
+\begin{definition}[Local observable assignment]
+\label{def:local-observable-assignment-chapter-two}
 For bounded open regions \(\mathcal O\subset\mathbb M^D\), the opening
 framework assigns algebras \(\Obs(\mathcal O)\subset\mathcal B(\Hilb)\). If
 \(\mathcal O_1\) and \(\mathcal O_2\) are spacelike separated, locality is
@@ -767,9 +873,12 @@ with the graded commutator after a fermion parity grading has been specified.
 This condition states compatibility of spacelike separated local observables:
 their order gives the same matrix elements in every vector for which the
 matrix elements are defined.
+\end{definition}
 
 \section{Free Scalar Field As A Derived Example}
 
+\begin{definition}[Free scalar field from mass-shell creation kernels]
+\label{def:free-scalar-field-mass-shell-kernels}
 Use the dense domain \(\mathcal D_0\subset\mathcal F_s(\Hilb_1)\) generated
 from the mass-shell Schwartz test space \(\mathcal S_m\).  On \(\mathcal D_0\),
 define the free scalar field as the
@@ -806,7 +915,10 @@ In the noncovariant normalization this is equivalently
     \mathfrak a_{\vec p}^{\dagger}\ee^{-\ii p\cdot x}
   \right).
 \]
+\end{definition}
 
+\begin{proposition}[Covariance of the free scalar field]
+\label{prop:free-scalar-field-covariance-chapter-two}
 The free scalar field is covariant.  Let \(g=(b,\Lambda)\in \Poinc\), and let
 \(U_1(g)\) be the one-particle scalar representation on \(\Hilb_1\).  The
 free Fock representation is its second quantization \(U_0(g)=\Gamma(U_1(g))\),
@@ -827,7 +939,20 @@ measure, gives
   =
   \widehat\phi(\Lambda x+b).
 \]
+\end{proposition}
 
+\begin{proof}
+The one-particle scalar representation preserves the mass-shell measure and
+maps the dense test space \(\mathcal S_m\) to itself.  Second quantization
+therefore maps \(a^\dagger(\psi)\) to \(a^\dagger(U_1(g)\psi)\) on
+\(\mathcal D_0\).  Applying this identity to the distributional creation and
+annihilation kernels in
+Definition~\ref{def:free-scalar-field-mass-shell-kernels} gives the displayed
+covariance law after the invariant change of variables on \(\Sigma_m^+\).
+\end{proof}
+
+\begin{proposition}[Free scalar microcausality]
+\label{prop:free-scalar-microcausality-chapter-two}
 The commutator is
 \[
   [\widehat\phi(x),\widehat\phi(y)]
@@ -853,8 +978,23 @@ The distribution \(\Delta(x)\) is Lorentz invariant and vanishes for spacelike
   [\widehat\phi(f),\widehat\phi(g)]=0
 \]
 when the supports of \(f\) and \(g\) are spacelike separated.
+\end{proposition}
+
+\begin{proof}
+The canonical commutation relation in
+Definition~\ref{def:mass-shell-fock-test-domain-kernels} gives the displayed
+Pauli--Jordan commutator on the common domain \(\mathcal D_0\).  Lorentz
+invariance of the mass-shell measure makes \(\Delta\) Lorentz invariant.  A
+spacelike displacement can therefore be transformed to \((0,\vec r)\); in that
+frame the two exponentials in \(\Delta\) are exchanged by
+\(\vec p\mapsto-\vec p\), and the integral vanishes.  Smearing with
+compactly-supported test functions whose supports are spacelike separated
+keeps all differences \(x-y\) spacelike, so the smeared commutator vanishes as
+a distribution.
+\end{proof}
 
 \begin{remark}
+\label{rem:scalar-odd-locality-fails}
 The cancellation above uses the antisymmetric combination
 \(\Delta_+(x-y)-\Delta_+(y-x)\), equivalently the ordinary commutator for an
 even scalar field.  If the same scalar two-point function were assigned odd

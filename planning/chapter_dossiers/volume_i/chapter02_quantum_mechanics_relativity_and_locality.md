@@ -4,7 +4,8 @@
 
 Current status: certified against handwritten 253a pp. 3--9 in the
 2026-05-22 source pass, with rendered checks of the new causal figure and
-free-field normalization/covariance material.
+free-field normalization/covariance material.  Formalization upgraded on
+2026-05-27 for issue #615.
 
 ## Logical Role
 
@@ -56,60 +57,100 @@ state the relation among them.
 | \(\rho\) | positive trace-class operator with trace one | quantum state |
 | \(A\) | bounded observable or specified unbounded operator | quantum mechanics |
 | \(H\) | self-adjoint Hamiltonian | time evolution |
-| \(\Phi\subset\Hilb\subset\Phi^\times\) | rigged Hilbert space/Gelfand triple | generalized eigenvectors |
-| \(E_A\) | projection-valued spectral measure of a self-adjoint operator \(A\) | continuous spectrum |
-| \(\ket{p,\sigma}\) | distributional one-particle momentum ket in \(\Phi_1^\times\) | mass-shell kernel |
+| \(\Phi\subset\Hilb\subset\Phi^\times\) | Gelfand triple | generalized eigenvectors |
+| \(E_A\) | spectral measure of self-adjoint \(A\) | continuous spectrum |
+| \(\ket{p,\sigma}\) | distributional one-particle momentum ket | mass-shell kernel |
 | \(SO^+(1,D-1)\) | connected Lorentz group | spacetime symmetry |
 | \(U(a,\Lambda)\) | strongly continuous unitary representation | Poincare symmetry |
-| \(P^\mu,J^{\mu\nu}\) | self-adjoint generators on common invariant domains, with \(P_\mu=\eta_{\mu\nu}P^\nu\) in the translation exponent | Lie algebra |
+| \(P^\mu,J^{\mu\nu}\) | energy-momentum and Lorentz generators | Lie algebra |
 | \(\Hilb_1\) | one-particle Hilbert space | Wigner representation |
 | \(E_{\vec p}\) | positive energy \((\vec p^{\,2}+m^2)^{1/2}\) | mass shell |
 | \(a(\vec p),a^\dagger(\vec p)\) | operator-valued distributions in momentum | free Fock space |
-| \(\mathfrak a_{\vec p},\mathfrak a_{\vec p}^\dagger\) | noncovariantly normalized creation/annihilation kernels | source normalization |
-| \(K_{r,s}\) | interaction kernels in formal normally ordered Hamiltonian terms | interaction bookkeeping |
+| \(\mathfrak a_{\vec p}^{(\dagger)}\) | noncovariant kernels | source normalization |
+| \(K_{r,s}\) | normally ordered interaction kernels | interaction bookkeeping |
 | \(\widehat\phi(f)\) | smeared free scalar field | local field |
 | \(\Delta\) | Pauli--Jordan distribution | commutator support |
 
 ## Definition Ledger
 
-- Pure and mixed states.
-- Rigged Hilbert space/Gelfand triple.
-- Hilbert-space eigenvalue versus generalized eigenvector in continuous
-  spectrum.
-- Direct-integral spectral representation and delta-normalized kernels.
-- Strongly continuous unitary Poincare representation.
+- `def:hilbert-space-quantum-datum`: pure and mixed states, bounded
+  expectations, and domain data for unbounded operators.
+- `def:hamiltonian-time-evolution`: self-adjoint Hamiltonian and strongly
+  continuous unitary time evolution.
+- `def:rigged-hilbert-space`: Gelfand triple
+  \(\Phi\subset\Hilb\subset\Phi^\times\).
+- `def:generalized-eigenvector-rigged-hilbert`: Hilbert-space eigenvalue
+  versus generalized eigenvector in continuous spectrum.
+- `def:direct-integral-coordinate-ket`: direct-integral spectral
+  representation and delta-normalized kernels.
+- `def:relativistic-one-particle-rigging`: covariant mass-shell rigging for
+  sharp one-particle momentum labels.
+- `def:poincare-covariant-vacuum-hilbert-datum`: strongly continuous unitary
+  Poincare representation, infinitesimal generators, spectrum condition, and
+  invariant vacuum.
 - Poincare group law and its unitary implementation.
-- Spectrum condition.
-- Massive spinless one-particle Hilbert space.
+- `def:invariant-mass-spectral-measure`: invariant mass operator and mass
+  spectral projections.
+- `def:mass-sector-and-particle-shell`: mass sector and isolated particle
+  shell.
+- `def:massive-scalar-wigner-one-particle-space`: massive spinless
+  one-particle Hilbert space.
+- `def:four-dimensional-wigner-orbit-datum`: induced-representation orbit
+  datum for the four-dimensional Wigner classification.
 - Four-dimensional Wigner orbit classification table for the universal cover
   of the connected Poincare group.
-- Bosonic and fermionic Fock spaces.
-- Bosonic decomposable tensor convention
+- `def:free-bosonic-fermionic-fock-spaces`: bosonic and fermionic Fock spaces.
+- `def:bosonic-creation-operator-tensor-normalization`: bosonic decomposable
+  tensor convention
   \(\psi_1\odot\cdots\odot\psi_n=\sqrt{n!}\Pi_{s,n}
-  (\psi_1\otimes\cdots\otimes\psi_n)\), with the corresponding permutation-sum
-  inner product.
-- Covariant and noncovariant momentum-space creation/annihilation
-  normalizations.
+  (\psi_1\otimes\cdots\otimes\psi_n)\).
+- `def:mass-shell-fock-test-domain-kernels`: covariant momentum-space
+  creation/annihilation normalizations and common Fock test domain.
+- `def:noncovariant-creation-momentum-ket-normalization`: noncovariant
+  creation/annihilation and sharp-momentum ket normalization.
+- `def:free-multi-species-fock-representation`: multi-species bosonic and
+  fermionic free Fock representation with graded tensor convention.
 - Formal interacting Hamiltonian as kernels added to the free Fock
   Hamiltonian, with locality and the Poincare algebra as additional required
   data.
-- Local observable assignment.
-- Free scalar smeared field.
+- `def:local-observable-assignment-chapter-two`: local observable assignment.
+- `def:free-scalar-field-mass-shell-kernels`: free scalar smeared field.
 
 ## Claim Ledger
 
-| Claim | Status | Certification |
-| --- | --- | --- |
-| Plane-wave kets and sharp energy/momentum eigenstates in continuous spectra are distributional vectors in \(\Phi^\times\), not normalizable Hilbert vectors. | Definition/construction | Established from rigged Hilbert space and spectral-measure definitions |
-| Delta-normalization is the weak kernel of the identity relative to a chosen spectral or mass-shell measure. | Definition/construction | Established by the Gelfand triple/direct-integral discussion |
-| Massive spinless one-particle states are realized as \(L^2\) functions on the positive mass shell with invariant measure. | Construction | Derived from representation choice; external Wigner reference needed |
-| The four-dimensional Wigner classification separates the vacuum orbit, massive positive-energy spin tower, massless finite-helicity and continuous-spin representations, and spacelike/tachyonic orbits. | Classification | Added as Table `tab:wigner-classification-four-dimensional`; spacelike orbits are excluded by the spectrum condition, while continuous-spin sectors are representation-theoretically admissible but outside the point-local helicity constructions used later |
-| Fock space is constructed from one-particle Hilbert space by symmetric or antisymmetric tensor powers. | Definition/construction | Defined in chapter |
-| The bosonic symbol \(\odot\) denotes the creation-operator normalization \(\sqrt{n!}\Pi_{s,n}(\otimes_j\psi_j)\), so decomposable symmetric tensors have the permutation-sum inner product. | Convention | Added to make the Haag--Ruelle Fock inner product normalization explicit |
-| The noncovariant creation/annihilation normalization with \(\delta^{D-1}(\vec p-\vec q)\) is equivalent to the covariant mass-shell normalization. | Calculation/convention | Added from handwritten pp. 3--4 and checked in the chapter |
-| A formal \(H_0+H_{\mathrm{int}}\) written in Fock kernels is part of the interaction data only together with Poincare generators and locality. | Framework statement | Added from handwritten pp. 4--5 with positive formulation |
-| Local observable assignments are additional local data. | Framework statement | Definition of local QFT data |
-| The free scalar field is Poincare covariant and its commutator vanishes at spacelike separation. | Proposition | Computed in chapter from the second-quantized one-particle representation, invariant mass-shell measure, and odd-integrand spacelike frame argument |
+- Plane-wave kets and sharp energy/momentum eigenstates in continuous spectra
+  are distributional vectors in \(\Phi^\times\), not normalizable Hilbert
+  vectors.
+- Delta-normalization is the weak kernel of the identity relative to a chosen
+  spectral or mass-shell measure.
+- `prop:schwartz-triple-weak-delta-kernels` proves the Schwartz-triple
+  identities for \(\ket{x}\), \(\ket{p}\), and weak resolutions of identity by
+  pairing against test functions.
+- `prop:joint-translation-spectrum` constructs the single joint spectral
+  measure of the translation generators from Stone--Naimark.
+- `prop:isolated-shell-one-particle-subrepresentation` proves that an isolated
+  mass shell gives a closed invariant one-particle subrepresentation.
+- Massive spinless one-particle states are realized as \(L^2\) functions on the
+  positive mass shell with invariant measure.
+- Table `tab:wigner-classification-four-dimensional` separates the vacuum,
+  massive, massless finite-helicity, continuous-spin, and tachyonic orbit
+  classes.
+- Fock space is constructed from one-particle Hilbert space by symmetric or
+  antisymmetric tensor powers.
+- The bosonic symbol \(\odot\) denotes the creation-operator normalization
+  \(\sqrt{n!}\Pi_{s,n}(\otimes_j\psi_j)\).
+- `prop:bosonic-fock-inner-product` proves the corresponding permutation-sum
+  inner product; it is also checked by
+  `calculation-checks/haag_ruelle_fock_inner_product_checks.py`.
+- The noncovariant creation/annihilation normalization with
+  \(\delta^{D-1}(\vec p-\vec q)\) is equivalent to the covariant mass-shell
+  normalization.
+- A formal \(H_0+H_{\mathrm{int}}\) in Fock kernels is interaction data only
+  together with Poincare generators and locality.
+- Local observable assignments are additional local data.
+- `prop:free-scalar-field-covariance-chapter-two` and
+  `prop:free-scalar-microcausality-chapter-two` label the free scalar
+  covariance and locality calculations for later citation.
 
 ## Required Revisions
 
@@ -132,6 +173,12 @@ state the relation among them.
 - 2026-05-25 issue #448 pass: added the complete four-dimensional Wigner
   classification table, including the higher-spin massive tower,
   massless continuous-spin representations, and spacelike/tachyonic orbits.
+- 2026-05-27 issue #615 pass: upgraded the chapter from prose-dominant
+  exposition to a labeled foundation: Hilbert data, rigged Hilbert triples,
+  joint translation spectrum, invariant mass projections, isolated shells,
+  Wigner one-particle spaces, Fock construction, local observable assignment,
+  and free scalar covariance/microcausality now have formal environments with
+  proofs where the chapter uses a nontrivial construction.
 
 ## Figure Ledger
 
