@@ -347,6 +347,90 @@ tensor RG it means proving that the disentangled coarse-graining map is a
 contraction on a neighborhood that is stable under the infinite-dimensional
 map.
 
+\section{Projection Truncations And Residual Control}
+
+Finite-dimensional RG calculations enter the monograph only through a
+declared projection.  Let \(P_N:\mathcal B\to\mathcal B_N\) be a bounded
+projection onto a finite-dimensional subspace and put \(Q_N=1-P_N\).  For
+\[
+  F(V)=\mathcal R(V)-V ,
+\]
+the projected fixed-point equation is
+\[
+  P_NF(V_N)=0,\qquad V_N\in\mathcal B_N .
+  \label{eq:projected-rg-fixed-point-equation}
+\]
+The complement residual is
+\[
+  \epsilon_N(V_N;A)
+  =
+  \|A Q_NF(V_N)\|,
+  \label{eq:rg-complement-residual}
+\]
+where \(A\) is the approximate inverse used in the
+Newton--Kantorovich estimate.
+
+\begin{proposition}[Projected zeros can be spurious]
+\label{prop:projected-rg-zero-spurious}
+There is no implication from
+\eqref{eq:projected-rg-fixed-point-equation} to \(F(V_N)=0\), even in finite
+dimension.  More precisely, take
+\(\mathcal B=\mathbb R^2\), \(P(x,y)=(x,0)\), and
+\[
+  F(x,y)=(0,1).
+\]
+Then \(P F(x,0)=0\) for every \(x\in\mathbb R\), but \(F\) has no zero in
+\(\mathbb R^2\).
+\end{proposition}
+
+\begin{proof}
+For every \(x\), \(F(x,0)=(0,1)\) and hence \(P F(x,0)=(0,0)\).  Thus every
+point of the projected line solves the projected equation.  The second
+component of \(F(x,y)\) is identically one, so no point of the full space
+satisfies \(F(x,y)=0\).
+\end{proof}
+
+\begin{corollary}[Lifting a projected RG zero]
+\label{cor:projected-rg-zero-lift}
+Let \(V_N\in\mathcal B_N\) solve
+\eqref{eq:projected-rg-fixed-point-equation}.  Suppose the hypotheses of
+Theorem~\ref{thm:newton-kantorovich-rg-fixed-point} hold with \(V_0=V_N\).
+Then a true fixed point \(V_\ast\) of \(\mathcal R\) exists in
+\(\overline B_r(V_N)\) whenever
+\[
+  \epsilon_N(V_N;A)+\rho r+\frac{L}{2}r^2\le r,
+  \qquad
+  \rho+Lr<1 .
+  \label{eq:projected-rg-lift-condition}
+\]
+\end{corollary}
+
+\begin{proof}
+Since \(P_NF(V_N)=0\), the full residual is
+\[
+  F(V_N)=Q_NF(V_N).
+\]
+Therefore
+\[
+  \|AF(V_N)\|=\|AQ_NF(V_N)\|=\epsilon_N(V_N;A).
+\]
+The conditions in
+\eqref{eq:projected-rg-lift-condition} are exactly the
+Newton--Kantorovich conditions \eqref{eq:nk-ball-condition} with
+\(\eta=\epsilon_N(V_N;A)\).  Theorem~\ref{thm:newton-kantorovich-rg-fixed-point}
+then gives a unique zero of \(F\) in \(\overline B_r(V_N)\), equivalently a
+fixed point of \(\mathcal R\).
+\end{proof}
+
+The companion calculation
+\[
+  \texttt{calculation-checks/rg\_projection\_checks.py}
+\]
+checks these finite-dimensional algebraic examples with exact rational
+arithmetic.  In an actual Wilsonian RG proof, the hard work is to bound
+\(\epsilon_N(V_N;A)\), \(\rho\), and \(L\) in the infinite-dimensional norm,
+not to solve the projected equation.
+
 \section{Current Rigorous Fixed-Point Benchmarks}
 
 The preceding definition deliberately separates what has been proved from

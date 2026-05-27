@@ -199,6 +199,11 @@ Current checks:
   exact free-scalar pole mass and correlation length, the Gaussian
   mass-squared RG eigenvalue, the \(\nu=1/y_t\) scaling relation, and finite
   Wick-subtraction contact-coordinate shifts.
+- `rg_projection_checks.py`: exact rational checks for the Volume XI
+  rigorous-RG projection-truncation section, including a spurious projected
+  zero with no full fixed point and the finite-dimensional
+  complement-residual lift condition used in the Newton--Kantorovich
+  argument.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the

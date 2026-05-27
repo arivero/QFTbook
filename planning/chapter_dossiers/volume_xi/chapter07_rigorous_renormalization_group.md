@@ -30,6 +30,10 @@ constructive RG developments.
   validation.
 - `eta`, `rho`, `L`: residual, linear inverse-error, and derivative-Lipschitz
   constants in the validated fixed-point theorem.
+- `P_N`, `Q_N`, `B_N`: finite-dimensional projection, complementary
+  projection, and projected RG subspace.
+- `epsilon_N(V_N;A)`: complement residual after solving the projected RG
+  fixed-point equation.
 - `I`: index set of microscopic regulators in a Wilsonian universality datum.
 - `Rec_{i,n}`: \(n\)-step reconstruction map from a tuned microscopic
   regulator to normalized long-distance observable data.
@@ -53,6 +57,12 @@ constructive RG developments.
 - Proves a Newton--Kantorovich validation theorem for an RG fixed point in a
   Banach space, isolating the final fixed-point step from the model-specific
   cluster/tree/tensor estimates.
+- Defines finite-dimensional projection truncations of an RG equation and the
+  complement residual.
+- Proves that projected RG zeros can be spurious, even in finite dimension.
+- Proves the corollary that a projected RG zero lifts to a true fixed point
+  only when the complement residual and Newton--Kantorovich constants satisfy
+  the full Banach-space contraction inequalities.
 - Records current rigorous benchmarks: constructive long-range fermionic
   \(\psi^4_d\) fixed points with irrelevant kernels included, and
   infinite-dimensional tensor-RG fixed points with explicit contraction
@@ -70,3 +80,9 @@ constructive RG developments.
 No figure is included in this pass.  A later diagram should show covariance
 decomposition, block integration, projection to local coordinates, and polymer
 remainder contraction.
+
+## Companion Scripts
+
+- `calculation-checks/rg_projection_checks.py`: exact rational check for the
+  finite-dimensional projected-zero counterexample and complement-residual
+  lift calculation.
