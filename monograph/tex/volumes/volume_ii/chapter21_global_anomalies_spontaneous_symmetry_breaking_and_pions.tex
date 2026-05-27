@@ -36,7 +36,10 @@ Let \(\mathcal B\) be the space of allowed background fields and
 \(\mathcal G_{\mathrm f}\) the group of background gauge transformations.  If
 \(g\in\mathcal G_{\mathrm f}\), write \(B^g\) for the transformed connection.
 
-The background anomaly is the local-counterterm equivalence class of phases
+\begin{definition}[Background anomaly cocycle]
+\label{def:background-anomaly-cocycle}
+The background anomaly is the equivalence class, under local counterterms, of
+phases
 \(\mathcal A_g[B]\) in the transformation law
 \begin{equation}
   Z[B^g]
@@ -55,7 +58,10 @@ invariant under all background gauge transformations.  Multiplying \(Z[B]\) by
 \]
 Thus the anomaly is represented by the equivalence class of
 \(\mathcal A_g[B]\) under local-counterterm shifts.
+\end{definition}
 
+\begin{proposition}[Finite cocycle and Wess--Zumino consistency]
+\label{prop:wess-zumino-consistency-from-cocycle}
 The phases in \eqref{eq:finite-background-anomaly} obey a cocycle identity.
 Applying \(h\) and then \(g\) gives the same transformed background as applying
 \(gh\), hence
@@ -73,6 +79,30 @@ purely finite part: its differential on the identity component of
 \(\mathcal G_{\mathrm f}\) vanishes, but the cocycle
 \eqref{eq:background-anomaly-cocycle} is nontrivial on another component or on
 a noncontractible loop in background-field space.
+\end{proposition}
+
+\begin{proof}
+Equation \eqref{eq:finite-background-anomaly} gives
+\[
+  Z[B^{gh}]
+  =
+  \exp\{\ii\mathcal A_{gh}[B]\}Z[B].
+\]
+The same background is obtained by first applying \(h\) and then applying
+\(g\):
+\[
+  Z[(B^h)^g]
+  =
+  \exp\{\ii\mathcal A_g[B^h]\}Z[B^h]
+  =
+  \exp\{\ii\mathcal A_g[B^h]+\ii\mathcal A_h[B]\}Z[B].
+\]
+The two answers differ by an integer multiple of \(2\pi\) in the exponent,
+which is \eqref{eq:background-anomaly-cocycle}.  Differentiating the finite
+identity at the identity element of \(\mathcal G_{\mathrm f}\) gives the
+infinitesimal consistency condition for the corresponding local anomaly
+representative.
+\end{proof}
 
 Geometrically, the background-field construction assigns a complex line to each
 gauge-equivalence class of \(B\), and \(Z[B]\) is a section of this anomaly
@@ -115,6 +145,8 @@ we use mapping tori to state the finite version needed for global anomalies.
 
 \section{Anomaly Matching}
 
+\begin{proposition}[Anomaly matching as equality of background-response classes]
+\label{prop:anomaly-matching-background-cocycle-class}
 Let a microscopic theory with exact global symmetry \(G_{\mathrm f}\) flow to
 an infrared description.  Couple both descriptions to the same background
 \(B\).  If the ultraviolet generating functional transforms as in
@@ -138,6 +170,41 @@ remains exact along the flow, the background-field coupling is kept fixed, and
 any modes removed between two scales contribute only local background
 counterterms to the long-distance functional.  Under these assumptions the
 cocycle class is unchanged by RG flow.
+\end{proposition}
+
+\begin{proof}
+Let \(\Lambda_{\rm UV}\) and \(\Lambda_{\rm IR}\) be two scales in the same
+theory, with the same background field \(B\) coupled to the same conserved
+current multiplet.  Integrating out modes between the two scales gives
+\[
+  Z_{\rm UV}[B]
+  =
+  \exp\{\ii C_{\rm mid}[B]\}\,Z_{\rm IR}[B],
+\]
+where \(C_{\rm mid}[B]\) is local in the background at the scale where the
+infrared description is defined.  Applying \(g\) and using
+Definition~\ref{def:background-anomaly-cocycle} gives
+\[
+  Z_{\rm UV}[B^g]
+  =
+  \exp\{\ii C_{\rm mid}[B^g]\}
+  \exp\{\ii\mathcal A^{\rm IR}_g[B]\}Z_{\rm IR}[B].
+\]
+The ultraviolet transformation law gives the same quantity as
+\[
+  \exp\{\ii\mathcal A^{\rm UV}_g[B]\}
+  \exp\{\ii C_{\rm mid}[B]\}Z_{\rm IR}[B].
+\]
+Therefore
+\[
+  \mathcal A^{\rm UV}_g[B]
+  =
+  \mathcal A^{\rm IR}_g[B]
+  +C_{\rm mid}[B^g]-C_{\rm mid}[B]
+  \quad \operatorname{mod}2\pi ,
+\]
+which is equality of the local-counterterm equivalence classes.
+\end{proof}
 
 \section{A Perturbative Example of a Global Anomaly}
 
@@ -538,6 +605,8 @@ do not connect distinct pure phases:
 
 \section{Spontaneous Symmetry Breaking}
 
+\begin{definition}[Internal spontaneous symmetry breaking datum]
+\label{def:internal-ssb-datum}
 Consider a Lorentz-invariant quantum theory in infinite spatial volume with an
 exact continuous internal symmetry group \(G\).  Choose one pure phase and let
 \(\ket{\vac}\) be its vacuum vector.  The unbroken subgroup is
@@ -557,7 +626,10 @@ subgroup.  Let \(\mathfrak g=\operatorname{Lie}(G)\) and
 \]
 Elements \(T_i\in\mathfrak h\) generate unbroken transformations and elements
 \(X_a\in\mathfrak m\) generate broken directions.
+\end{definition}
 
+\begin{definition}[Goldstone effective action in CCWZ coordinates]
+\label{def:goldstone-effective-action}
 Goldstone fields are local coordinates on the coset \(G/H\).  A coset
 representative may be written
 \begin{equation}
@@ -602,9 +674,12 @@ leading Goldstone action is
 The ellipsis denotes higher-derivative terms and explicit symmetry-breaking
 terms.  No potential appears for exact Goldstone coordinates because constant
 maps into \(G/H\) label symmetry-related vacua.
+\end{definition}
 
 \section{Goldstone Theorem as a Spectral Statement}
 
+\begin{proposition}[Goldstone spectral pole from a broken current]
+\label{prop:goldstone-spectral-pole}
 The spectral input behind \eqref{eq:goldstone-leading-action} is as follows.
 Assume a conserved current \(j_A^\mu\), a local operator \(\mathcal O\), and a
 nonzero order parameter
@@ -636,6 +711,27 @@ Lorentz covariance implies that the singular part of
 right-hand side is nonzero at \(p=0\), \(F_A(p^2)\) must contain a
 \(1/p^2\) singularity.  In the K\"all\'en--Lehmann language this singularity is a
 massless contribution to the current-operator spectral measure.
+\end{proposition}
+
+\begin{proof}
+Integrating the Ward identity
+\eqref{eq:goldstone-ward-distribution} against a test function equal to one
+near the origin gives the nonzero broken-charge matrix element
+\eqref{eq:goldstone-order-parameter}.  Fourier transformation converts the
+divergence into multiplication by \(p_\mu\).  A Lorentz-covariant vector
+distribution whose support singularity is controlled by the scalar variable
+\(p^2\) has singular part \(p^\mu F_A(p^2)\).  The identity
+\[
+  p_\mu\widehat G_A^\mu(p)
+  =
+  \langle\vac,\delta_A\mathcal O(0)\vac\rangle
+\]
+has a nonzero right hand side at \(p=0\).  A regular \(F_A(p^2)\) would make
+\(p^2F_A(p^2)\) vanish at \(p=0\); hence the distribution must contain the
+massless pole \(F_A(p^2)\sim c/p^2\).  The spectral representation of a
+current-operator two-point distribution identifies this pole with massless
+spectral weight.
+\end{proof}
 
 Equivalently, for each broken direction there are zero-mass one-particle
 states \(\ket{\pi_a(p)}\) created by the current:
@@ -1880,6 +1976,8 @@ five-manifold \(B_5\) with \(\partial B_5=M_4\).  Extend
   the filling changes the integral by a quantized period.}
   \label{fig:wzw-five-dimensional-filling}
 \end{figure}
+\begin{definition}[Ungauged Wess--Zumino functional]
+\label{def:wess-zumino-witten-functional}
 The ungauged Wess--Zumino functional is
 \begin{equation}
   \Gamma_{\mathrm{WZ}}[U]
@@ -1899,8 +1997,21 @@ integer for maps representing \(\pi_5(SU(N_f))\simeq\mathbb Z\).  Hence
 \[
   \exp\{\ii n\Gamma_{\mathrm{WZ}}[U]\}
 \]
-is independent of the extension precisely when \(n\in\mathbb Z\).  The value of
-this integer in QCD is fixed by matching the infinitesimal background anomaly.
+is independent of the extension precisely when \(n\in\mathbb Z\).  This
+integer is the Wess--Zumino level.
+\end{definition}
+
+\begin{proposition}[WZW level fixed by the quark flavor anomaly]
+\label{prop:wzw-anomaly-matching}
+For massless QCD with \(N_c\) colors and \(N_f\ge3\) light flavors, matching
+the infinitesimal \(SU(N_f)_L\) background anomaly forces the Goldstone
+Wess--Zumino--Witten level to be
+\[
+  n=N_c .
+\]
+\end{proposition}
+
+\begin{proof}
 It is enough to gauge a left flavor background \(A=A_\mu\dd x^\mu\), set the
 right background to zero, and retain the part quadratic in \(A\).  Matrix
 multiplication and wedge product are implicit in the following formulas.  A
@@ -1938,6 +2049,7 @@ Equality of the anomaly phases for arbitrary infinitesimal
 \[
   n=N_c .
 \]
+\end{proof}
 
 When the flavor symmetry is coupled to background gauge fields, the
 Wess--Zumino functional is completed by local four-dimensional terms involving
@@ -1978,6 +2090,38 @@ candidate infrared phase with a unique gapped vacuum and no topological
 response has the zero class.  Such a phase is ruled out when the ultraviolet
 class is nonzero.  A candidate phase with Goldstone fields is allowed only if
 its Wess--Zumino--Witten term supplies the missing cocycle.
+
+\begin{proposition}[Anomaly matching across spontaneous symmetry breaking]
+\label{prop:anomaly-matching-across-ssb}
+Suppose an exact global symmetry \(G_{\mathrm f}\) is spontaneously broken to
+\(H\), and the infrared fields consist of Goldstone coordinates on \(G/H\)
+together with possible additional massless or topological sectors.  Let
+\([\mathcal A_{\rm UV}]\) be the ultraviolet background-anomaly class of
+Definition~\ref{def:background-anomaly-cocycle}.  The infrared description is
+compatible with the ultraviolet theory only if
+\[
+  [\mathcal A_{\rm UV}]
+  =
+  [\mathcal A_{\rm Goldstone}]
+  +
+  [\mathcal A_{\rm extra}]
+\]
+as background-response classes modulo local counterterms.  Here
+\([\mathcal A_{\rm Goldstone}]\) is produced by the gauged WZW functional
+whenever such a functional exists, and \([\mathcal A_{\rm extra}]\) is the
+class carried by the remaining infrared sector.
+\end{proposition}
+
+\begin{proof}
+Apply Proposition~\ref{prop:anomaly-matching-background-cocycle-class} to an
+RG trajectory ending in the chosen broken phase.  The infrared generating
+functional factorizes into the Goldstone functional and the functional of the
+remaining infrared sector, up to local couplings between them and local
+background counterterms.  Under a background gauge transformation the phase
+of a product is the sum of the cocycle representatives.  Local counterterms
+shift each representative by a coboundary, so only the displayed equality of
+classes is invariant.
+\end{proof}
 
 For massless QCD, restrict first to the connected nonabelian chiral symmetry
 \[
@@ -2107,6 +2251,8 @@ the relevant microscopic diagram is the quark triangle
   electromagnetic-current insertions.}
   \label{fig:em-axial-flavor-triangle}
 \end{figure}
+\begin{proposition}[Electromagnetic specialization]
+\label{prop:electromagnetic-anomaly-specialization}
 The corresponding axial-flavor Ward identity is
 \[
   \partial_\mu j_a^{A\mu}
@@ -2164,6 +2310,7 @@ For \(N_c=3\), the coefficient multiplying
 \(\pi^0F_{\mu\nu}\widetilde F^{\mu\nu}\) is \(e^2/(16\pi^2f_\pi)\).
 The coefficient is the low-energy coefficient required by matching the
 microscopic electromagnetic flavor anomaly.
+\end{proposition}
 
 \begin{figure}[H]
   \centering
