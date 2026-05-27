@@ -1021,15 +1021,25 @@ particle domain; completion gives \(\mathcal F_s(\mathcal H_1^\gamma)\).
 
 \begin{proposition}[Field strengths descend to the Gupta--Bleuler quotient]
 \label{prop:field-strength-descends-gupta-bleuler}
-Now let \(u_{\mu\nu}(x)\) be a compactly supported test two-form and smear
-the field strength:
+Let \(u_{\mu\nu}(x)\) be a compactly supported test two-form and smear the
+field strength:
 \[
   F(u)
   =
   \int\dd^4x\,u^{\mu\nu}(x)
   \bigl(\partial_\mu A_\nu-\partial_\nu A_\mu\bigr)(x).
 \]
-Its one-particle wavefunction is proportional on the light cone to
+Then \(F(u)\Omega\) lies in \(\mathcal K_{1,{\rm GB}}\), and \(F(u)\)
+descends to a well-defined operator on
+\(\Hilb_{\rm GB}\simeq\mathcal F_s(\mathcal H_1^\gamma)\).  Every free
+time-ordered correlator of field strengths computed in the covariant
+Gupta--Bleuler Fock representation agrees with the corresponding correlator
+computed in the reduced positive two-helicity Fock representation.
+\end{proposition}
+
+\begin{proof}
+The one-particle wavefunction of \(F(u)\Omega\) is proportional on the light
+cone to
 \[
   f_\nu(k)
   =
@@ -1057,7 +1067,7 @@ reduced positive two-helicity Fock representation.  The same cancellation
 explains why the \(\xi_{\mathrm g}\)-dependent term in the covariant
 path-integral propagator drops out of gauge-invariant field-strength
 correlators.
-\end{proposition}
+\end{proof}
 
 \section{Field Strength and One-Photon States}
 
@@ -1135,10 +1145,52 @@ the free field-strength correlator fixes the free normalization
 \[
   Z_A=1.
 \]
+\end{proposition}
+
+\begin{proof}
+The \(\xi_{\mathrm g}\)-dependent term of the representative propagator is
+proportional to \(k_\alpha k_\beta\).  Applying the two field-strength
+antisymmetrizers gives the factor
+\[
+  (k_\mu\delta_\nu{}^\alpha-k_\nu\delta_\mu{}^\alpha)
+  k_\alpha k_\beta
+  (k_\rho\delta_\sigma{}^\beta-k_\sigma\delta_\rho{}^\beta),
+\]
+which vanishes because \(k_\mu k_\nu-k_\nu k_\mu=0\).  Thus the
+gauge-parameter part of the representative two-point function is invisible
+to \(F_{\mu\nu}\).
+
+The spectral representation is the one-particle part of the Wightman
+two-point function for the positive photon Hilbert space constructed in
+Theorem~\ref{thm:gupta-bleuler-quotient-two-helicity-fock}; sharp
+\(|k,h\rangle\) are used as generalized vectors in the rigged-Hilbert-space
+sense.  The matrix element of the field strength is obtained by applying
+\(\partial_\mu A_\nu-\partial_\nu A_\mu\) to a one-photon vector-potential
+matrix element.  The replacement
+\(\epsilon_\mu^h\mapsto\epsilon_\mu^h+c\,k_\mu\) changes the parent vector
+potential representative, but it contributes
+\[
+  -\ii c\,k_\mu k_\nu+\ii c\,k_\nu k_\mu=0
+\]
+to the field-strength matrix element.
+
+For the completeness relation, the tensor
+\(\eta_{\mu\nu}+k_\mu C_\nu+k_\nu C_\mu\) annihilates \(k^\nu\), has zero
+components along the null complement modulo the line \(\mathbb Ck\), and
+restricts to the positive Euclidean metric on the two-dimensional transverse
+quotient \(k^\perp/\mathbb Ck\).  Hence it is the sum of the two normalized
+helicity projectors.  Substituting this completeness relation into the
+field-strength spectral sum, every term containing \(C\) has two symmetric
+factors of \(k\) entering one of the antisymmetrizers, so those terms vanish.
+The remaining \(\eta_{\mu\nu}\) term is exactly the explicit free
+field-strength Wightman kernel obtained from the Feynman-gauge representative
+propagator.  With the normalization of the photon creation and annihilation
+operators in Definition~\ref{def:covariant-maxwell-krein-fock-representative},
+this comparison gives \(Z_A=1\).
+\end{proof}
 
 The next chapter couples this representative gauge field to a charged spinor
 field. The perturbative Green functions will be written using gauge-fixed
 representatives, while local gauge-invariant operators and external photon
 states are read through the field strength and helicity data constructed
 here.
-\end{proposition}

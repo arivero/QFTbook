@@ -526,6 +526,12 @@ Current checks:
   including mostly-plus invariant-denominator factorization, partial-fraction
   signs, per-leg amputation normalization, all-incoming momentum bookkeeping,
   and Lorentzian source-derivative phase compensation.
+- `maxwell_gauge_checks.py`: exact checks for the Volume I Maxwell chapter,
+  including axial-gauge and covariant-gauge quadratic inverses, the
+  finite-dimensional Faddeev--Popov slice Jacobian, Gupta--Bleuler null
+  vectors, helicity-completeness \(C_\mu\)-term cancellation, and the
+  cancellation of longitudinal representative terms from field-strength
+  correlators.
 - `massless_helicity_checks.py`: exact symbolic checks for the Volume I
   massless-particle chapter, including null-translation Lorentz matrices,
   polarization shifts under the little-group translation subgroup,

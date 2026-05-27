@@ -12,7 +12,8 @@ Status: rewritten and source-audited on 2026-05-22.
   - handwritten 253a trace pages
     `monograph/tex/build/source_visual_trace/253a_trace-197.png` through
     `253a_trace-215.png`;
-  - `transcription/tex/253a/foundations.tex`, roughly lines 8366--9110;
+  - `transcription/tex/253a/foundations.tex`, lines 8366--9110 as an
+    approximate source range;
   - `references/sound_references/harlow_wu_covariant_phase_space_1906.08616.pdf`
     and text sidecar for constraint and phase-space orientation.
 
@@ -56,7 +57,7 @@ Status: rewritten and source-audited on 2026-05-22.
 | \(\xi_{\mathrm g}\) | covariant gauge parameter |
 | \(\widetilde D_{\mathrm{ax}}^{\mu\nu}\) | axial-gauge quadratic operator |
 | \(\widetilde D_{\xi_{\mathrm g}}^{\mu\nu}\) | covariant gauge-fixed quadratic operator |
-| \(\mathcal K_1,\mathcal K\) | one-particle covariant Krein space and symmetric Krein-Fock space in Gupta--Bleuler quantization |
+| \(\mathcal K_1,\mathcal K\) | one-particle Krein space and symmetric Krein-Fock space |
 | \(a_\mu,a_\mu^\dagger\) | covariant photon annihilation and creation operator-valued distributions |
 | \(B(x)\) | Lorenz condition field \(\partial^\mu A_\mu(x)\) |
 | \(B^{(+)}(x)\) | positive-frequency part of \(B(x)\) used in the Gupta--Bleuler condition |
@@ -106,15 +107,22 @@ Status: rewritten and source-audited on 2026-05-22.
 - The Fock quotient
   \(\Hilb_{\rm GB}=\mathcal K_{\rm GB}/\mathcal N\) is naturally isomorphic to
   \(\mathcal F_s(\mathcal H_1^\gamma)\).
-- Field-strength smearings create Gupta--Bleuler physical one-particle
-  vectors and descend to the quotient.  Wick's theorem plus antisymmetrization
-  of derivatives proves equality of free field-strength correlators computed
-  in covariant Gupta--Bleuler Fock space and in the reduced positive
-  two-helicity Fock representation.
+- Proposition `prop:field-strength-descends-gupta-bleuler` proves that
+  field-strength smearings create Gupta--Bleuler physical one-particle
+  vectors and descend to the quotient.  Wick's theorem plus
+  antisymmetrization of derivatives proves equality of free field-strength
+  correlators computed in covariant Gupta--Bleuler Fock space and in the
+  reduced positive two-helicity Fock representation.
 - Field-strength two-point functions are independent of the representative
   gauge parameter because longitudinal terms vanish under antisymmetrization.
-- The free one-photon field-strength spectral representation is compatible
-  with helicity completeness and fixes \(Z_A=1\).
+- Proposition `prop:maxwell-field-strength-one-photon-spectral-data` proves
+  that the free one-photon field-strength spectral representation is
+  compatible with helicity completeness, that the auxiliary \(C_\mu\)-terms
+  cancel after antisymmetrization, and that the normalization is \(Z_A=1\).
+- Companion check `calculation-checks/maxwell_gauge_checks.py` verifies the
+  finite algebra behind the axial and covariant inverses, Faddeev--Popov
+  slice Jacobian, Gupta--Bleuler null quotient, and longitudinal
+  field-strength cancellations.
 
 ## Figure Requirements
 
@@ -144,3 +152,7 @@ Status: rewritten and source-audited on 2026-05-22.
   after zero modes are handled, and the later nonabelian local-chart problem,
   where the Faddeev--Popov operator depends on \(A\) and may develop zero
   modes.
+- 2026-05-27 #615 pass: separated the field-strength descent and one-photon
+  spectral-data arguments into explicit proof blocks, added the exact
+  `maxwell_gauge_checks.py` companion, and recorded the finite algebra checks
+  needed to keep the mostly-plus gauge-fixing conventions stable.
