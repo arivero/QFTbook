@@ -202,6 +202,12 @@ Current checks:
   \(\omega+u\mu\) for the Hamiltonian rotation model, the
   Mathai--Quillen auxiliary Gaussian square-completion sign, and rank-one
   zero-locus orientation.
+- `topological_sigma_model_checks.py`: exact finite checks for the Volume
+  VIII topological sigma-model chapter, including the A-model pointwise
+  energy identity, \(QH^\bullet(\mathbb P^m)\) with \(H^{m+1}=Q\),
+  associativity and degree selection in projective-space quantum cohomology,
+  the stable-map virtual-dimension formula, and the B-model top-form degree
+  condition.
 - `tqft_frobenius_gluing_checks.py`: exact rational checks for the Volume VIII
   bordism-functoriality chapter, including the inverse-pairing cylinder
   identity, Frobenius neck-exchange relation, pair-of-pants associativity, and
