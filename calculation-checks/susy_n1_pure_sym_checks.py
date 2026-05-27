@@ -193,6 +193,62 @@ def check_pure_sym_instanton_zero_mode_saturation():
             )
 
 
+def check_pure_sym_topological_sector_selection():
+    for nc in range(2, 30):
+        s_insertion_fermion_degree = 2
+        for instanton_number in range(1, 7):
+            zero_modes = 2 * nc * instanton_number
+            first_saturated_insertions = instanton_number * nc
+            assert_equal(
+                s_insertion_fermion_degree * first_saturated_insertions,
+                zero_modes,
+                "pure SYM topological sector first saturation",
+            )
+
+            for insertions in range(first_saturated_insertions):
+                assert_equal(
+                    s_insertion_fermion_degree * insertions < zero_modes,
+                    True,
+                    "pure SYM topological sector unsaturated insertions vanish",
+                )
+
+            n_c_point_gap = zero_modes - s_insertion_fermion_degree * nc
+            expected_gap = 2 * nc * (instanton_number - 1)
+            assert_equal(
+                n_c_point_gap,
+                expected_gap,
+                "pure SYM Nc-point correlator selects charge one",
+            )
+            assert_equal(
+                n_c_point_gap == 0,
+                instanton_number == 1,
+                "pure SYM Nc-point saturation iff instanton number one",
+            )
+
+            saturated_dimension = 3 * first_saturated_insertions
+            saturated_gaugino_phase_charge = 2 * first_saturated_insertions
+            assert_equal(
+                saturated_dimension,
+                3 * nc * instanton_number,
+                "pure SYM topological sector scale dimension",
+            )
+            assert_equal(
+                saturated_gaugino_phase_charge,
+                zero_modes,
+                "pure SYM topological sector anomalous charge",
+            )
+
+        # Anti-instantons carry the conjugate chirality zero modes, so the
+        # holomorphic S channel and anti-holomorphic Sbar channel are distinct.
+        holomorphic_s_chirality = 1
+        anti_instanton_zero_mode_chirality = -1
+        assert_equal(
+            holomorphic_s_chirality == anti_instanton_zero_mode_chirality,
+            False,
+            "pure SYM anti-instanton zero modes are anti-chiral for S channel",
+        )
+
+
 def check_pure_sym_saturated_berezin_coefficient():
     for nc in range(2, 10):
         total_variables = 2 * nc
@@ -394,6 +450,7 @@ def main():
     check_vy_superpotential_arithmetic()
     check_condensate_source_and_branch_monodromy()
     check_pure_sym_instanton_zero_mode_saturation()
+    check_pure_sym_topological_sector_selection()
     check_pure_sym_saturated_berezin_coefficient()
     check_finite_volume_symmetry_cluster_basis_ledger()
     check_affine_toda_index_match()

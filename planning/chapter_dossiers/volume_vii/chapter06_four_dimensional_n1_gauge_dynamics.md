@@ -47,6 +47,10 @@ status-boundary style.
   coefficient formula for the saturated \(N_c\)-insertion pure-SYM
   instanton Berezin integral, including the canonical coefficient, the
   identical-two-form \(N_c!\) convention, and the sign ledger.
+- `prop:pure-sym-topological-sector-s-selection`: instanton-number selection
+  rule showing that a charge-\(\nu\) self-dual sector requires
+  \(\nu N_c\) separated \(S\)-insertions for zero-mode saturation, so the
+  \(N_c\)-point chiral correlator is a charge-one test.
 - `hyp:pure-sym-zero-mode-saturated-instanton-correlator`: analytic
   assumptions required before promoting the zero-mode-saturated
   \(N_c\)-point instanton ledger to a chiral correlator with nonzero
@@ -209,6 +213,13 @@ status-boundary style.
   zero-mode integral is exactly the coefficient of
   \(\eta_1\cdots\eta_{2N_c}\) in the product, with canonical coefficient
   `1` and identical-two-form coefficient `N_c!`.
+- Proves the pure-SYM instanton-number selection rule for separated chiral
+  \(S\)-correlators: a self-dual charge-\(\nu\) sector has \(2\nu N_c\)
+  adjoint gaugino zero modes, hence the first possible saturated
+  \(S\)-correlator has \(\nu N_c\) insertions; the \(N_c\)-point root-equation
+  test is therefore restricted to the charge-one sector at the Berezin level,
+  while anti-self-dual sectors belong to the conjugate \(\overline S\)
+  channel.
 - States the additional analytic assumptions needed before using the
   zero-mode-saturated \(N_c\)-point instanton calculation in pure SYM:
   regulator, saturated Berezin coefficient after bosonic moduli integration,
@@ -407,7 +418,8 @@ status-boundary style.
   arithmetic for pure `N=1` SYM: adjoint anomaly coefficient, residual
   discrete chiral group, condensate orbit count, VY dimension/source/F-term
   checks, condensate branch monodromy, one-instanton adjoint zero-mode
-  saturation for \(S^{N_c}\), saturated Berezin coefficient factorial/sign
+  saturation for \(S^{N_c}\), instanton-number selection for separated
+  \(S\)-correlators, saturated Berezin coefficient factorial/sign
   conventions, branch independence of the clustered \(N_c\)-point power,
   finite-volume symmetry-basis versus cluster-branch linear algebra,
   affine-Toda product-constraint telescoping, constrained Hessian
