@@ -518,6 +518,11 @@ Current checks:
   \((f_g)_h=f_{hg}\), Koszul signs for adjacent spacelike exchange, and the
   tensor-product ordering of component covariance factors in Wightman
   distributions.
+- `massless_helicity_checks.py`: exact symbolic checks for the Volume I
+  massless-particle chapter, including null-translation Lorentz matrices,
+  polarization shifts under the little-group translation subgroup,
+  auxiliary-vector polarization-projector transversality, spinor-helicity
+  determinant conventions, and BCFW on-shell momentum conservation.
 - `locally_covariant_kg_checks.py`: exact finite linear-algebra checks for
   the Volume XII locally covariant Klein--Gordon construction, including
   descent of the causal-propagator pairing to the equation-of-motion
