@@ -42,29 +42,77 @@ Inserting the energy basis gives
   \exp\left[-\frac{\ii}{\hbar}(E_n-E_0)t\right].
 \end{aligned}
 \]
-The displayed sum is the pure-point case of a spectral-measure statement.
+\begin{definition}[Spectral measure of a vacuum coordinate]
+\label{def:vacuum-coordinate-spectral-measure}
 Let \(P_{\widehat H}\) be the projection-valued spectral measure of
-\(\widehat H\), set
+\(\widehat H\).  For a vector
 \[
 \eta_q:=\widehat q\ket0,
 \]
-and define the positive Borel measure
+assumed to lie in \(\Hilb\), define the positive finite Borel measure
 \[
   \mu_q(B)=\langle \eta_q,P_{\widehat H}(B)\eta_q\rangle
 \]
-for Borel sets \(B\subset\mathbb R\).  Then, whenever
-\(\eta_q\in\Hilb\), \(\mu_q\) is finite, has support in \([E_0,\infty)\),
-and the two-point function is
+for Borel sets \(B\subset\mathbb R\).  Its shifted version is the
+pushforward of \(\mu_q\) under \(E\mapsto E-E_0\).  This is the
+one-dimensional prototype of the spectral measures that appear later in the
+K\"all\'en--Lehmann representation.
+\end{definition}
+
+\begin{proposition}[Lower-half-plane continuation from the spectral theorem]
+\label{prop:qm-spectral-euclidean-boundary-value}
+With the hypotheses above, the ordered two-point function admits the
+spectral representation
 \[
   W(t)=
   \int_{[E_0,\infty)}
   \exp\left[-\frac{\ii}{\hbar}(E-E_0)t\right]\,\dd\mu_q(E).
 \]
-For \(t=x+\ii y\) with \(y<0\), the integrand has modulus
-\(\exp[(E-E_0)y/\hbar]\le1\).  Dominated convergence therefore gives a
-holomorphic continuation of \(W(t)\) to the lower half \(t\)-plane.  The
-discrete expansion above is recovered when \(\mu_q\) is a sum of atoms at
-the eigenvalues \(E_n\).
+The same formula defines a holomorphic function for \(\operatorname{Im}t<0\).
+For \(\tau>0\), its Euclidean boundary value at \(t=-\ii\tau\) is the
+Laplace transform
+\[
+  G_E(\tau)
+  =
+  \int_{[E_0,\infty)}
+  \exp\left[-\frac{1}{\hbar}(E-E_0)\tau\right]\,\dd\mu_q(E).
+\]
+If the spectral measure is pure point, the integral reduces to the displayed
+sum over energy eigenvectors.
+\end{proposition}
+
+\begin{proof}
+The spectral theorem gives
+\[
+  \ee^{-\frac{\ii}{\hbar}t(\widehat H-E_0)}
+  =
+  \int_{[E_0,\infty)}
+  \ee^{-\frac{\ii}{\hbar}t(E-E_0)}\,\dd P_{\widehat H}(E)
+\]
+in the functional calculus.  Sandwiching this identity between
+\(\eta_q=\widehat q\ket0\) and itself gives the stated formula for real
+\(t\).  The support is contained in \([E_0,\infty)\) because \(E_0\) is the
+bottom of the spectrum, and the total mass is
+\(\|\widehat q\ket0\|^2\).
+
+If \(t=x+\ii y\) with \(y<0\), then
+\[
+  \left|
+  \ee^{-\frac{\ii}{\hbar}t(E-E_0)}
+  \right|
+  =
+  \ee^{\frac{1}{\hbar}y(E-E_0)}
+  \le 1 .
+\]
+The finite measure \(\mu_q\) therefore gives a locally dominated integral.
+The integrand is entire as a function of \(t\), so differentiation under the
+integral is justified on compact subsets of the lower half-plane by the same
+estimate with one additional power of \(E-E_0\) after inserting a compact
+vertical margin \(y\le -\epsilon<0\).  Hence the integral is holomorphic
+there.  Setting \(t=-\ii\tau\) gives the Laplace transform.  In the
+pure-point case \(\mu_q=\sum_n |\bra n\widehat q\ket0|^2\delta_{E_n}\), so
+the integral is the sum already obtained by inserting the eigenbasis.
+\end{proof}
 For \(\tau>0\), define
 \[
   G_E(\tau)
@@ -108,8 +156,10 @@ where
 \]
 is the analytic continuation of \(\widehat q(t)\) to \(t=-\ii\tau\).
 
-It is useful to package the ordered functions by a source. For a smooth
-compactly supported function \(J(\tau)\), define
+\begin{definition}[Euclidean ordered source functional in quantum mechanics]
+\label{def:euclidean-ordered-source-functional-qm}
+For a smooth compactly supported function \(J(\tau)\), define the
+Euclidean ordered source functional
 \[
   Z_E[J]
   =
@@ -121,7 +171,9 @@ compactly supported function \(J(\tau)\), define
   \right]
   \ket 0 .
 \]
-The correlation functions are obtained by
+The exponential is understood by its power series in the source, with
+Euclidean ordering applied term by term.  Its functional derivatives recover
+the Euclidean ordered correlation functions:
 \[
   G_E^{(r)}(\tau_1,\ldots,\tau_r)
   =
@@ -133,6 +185,7 @@ The correlation functions are obtained by
   Z_E[J]
   \right|_{J=0}.
 \]
+\end{definition}
 
 \section{Wick Rotation of the Path Integral}
 
@@ -149,20 +202,29 @@ where \(G_{ab}(q)\) is positive definite. Under the analytic continuation
   =
   \ii\,\frac{\dd q^a}{\dd\tau},
 \]
-define the Euclidean Lagrangian
+\begin{definition}[Euclidean Lagrangian associated with a mechanical action]
+\label{def:euclidean-lagrangian-mechanics}
+For a Lorentzian mechanical Lagrangian \(L(q,\dot q)\) whose expression is
+analytic in \(\dot q\) near the real axis, the Euclidean Lagrangian in the
+coordinate chart \(q^a\) is
 \[
   L_E(q,q')
   =
   -L(q,\ii q'),
   \qquad q'^a=\frac{\dd q^a}{\dd\tau}.
 \]
-For the displayed \(L\), this gives
+For the displayed metric kinetic energy, this gives
 \[
   L_E(q,q')
   =
   \frac12G_{ab}(q)q'^aq'^b+V(q).
 \]
-The Lorentzian phase transforms as
+\end{definition}
+
+\begin{proposition}[Sign of the Wick-rotated weight]
+\label{prop:wick-rotated-mechanical-weight}
+Under \(t=-\ii\tau\), with the orientation of the integration contour rotated
+accordingly, the Lorentzian phase transforms formally as
 \[
   \exp\left[
     \frac{\ii}{\hbar}\int L(q,\dot q)\,\dd t
@@ -172,10 +234,46 @@ The Lorentzian phase transforms as
     -\frac{1}{\hbar}\int L_E(q,q')\,\dd\tau
   \right].
 \]
+\end{proposition}
 
-Let \(\ket\psi\in\Hilb\) satisfy \(\braket{0}{\psi}\ne0\), and assume for this
-paragraph that the ground state is separated from the rest of the spectrum by
-a gap.  Write
+\begin{proof}
+Along the rotated contour \(\dd t=-\ii\,\dd\tau\) and
+\(\dot q=\dd q/\dd t=\ii\,\dd q/\dd\tau=\ii q'\).  Therefore
+\[
+  \frac{\ii}{\hbar}L(q,\dot q)\,\dd t
+  =
+  \frac{\ii}{\hbar}L(q,\ii q')(-\ii\,\dd\tau)
+  =
+  \frac{1}{\hbar}L(q,\ii q')\,\dd\tau
+  =
+  -\frac{1}{\hbar}L_E(q,q')\,\dd\tau .
+\]
+Exponentiating the integrated identity gives the stated weight.  This is an
+identity of the formal action density after choosing the contour; analytic
+existence of the path-integral limit is a separate assertion supplied only in
+the regulated cases below.
+\end{proof}
+
+\begin{proposition}[Euclidean long-time projection onto the vacuum]
+\label{prop:euclidean-long-time-vacuum-projection}
+Let \(\ket\psi\in\Hilb\) satisfy \(\braket{0}{\psi}\ne0\), and assume that the
+ground state is separated from the rest of the spectrum by a gap.  More
+precisely, suppose that the spectrum of \(\widehat H-E_0\) on
+\(\{\ket0\}^{\perp}\) lies in \([\Delta,\infty)\) with \(\Delta>0\).  Then
+\[
+  \frac{\exp[-T(\widehat H-E_0)/\hbar]\ket\psi}
+       {\left\|\exp[-T(\widehat H-E_0)/\hbar]\ket\psi\right\|}
+  \longrightarrow
+  \frac{\braket{0}{\psi}}{|\braket{0}{\psi}|}\ket0
+\]
+in Hilbert norm as \(T\to\infty\).  Consequently Euclidean matrix elements
+with endpoints \(\ket\psi\) and fixed insertions separated from the endpoints
+converge to vacuum Euclidean ordered correlation functions, after division by
+the corresponding endpoint partition function.
+\end{proposition}
+
+\begin{proof}
+Write
 \[
   \ket\psi=c_0\ket0+\ket{\psi_\perp},
   \qquad c_0=\braket{0}{\psi},
@@ -200,11 +298,18 @@ in Hilbert norm.  Therefore
   \longrightarrow
   \frac{c_0}{|c_0|}\ket0
 \]
-as \(T\to\infty\).  The phase \(c_0/|c_0|\) cancels between bra and ket in
-vacuum expectation values.  For \(0<\tau_1<\cdots<\tau_r<T\), the
-Euclidean correlation function is the long-time limit of matrix elements of
-\(\exp(-\tau\widehat H/\hbar)\) with insertions at the specified Euclidean
-times.
+as \(T\to\infty\).  The same estimate applies independently to the bra
+endpoint.  The phase \(c_0/|c_0|\) cancels between bra and ket in normalized
+matrix elements.  For \(0<\tau_1<\cdots<\tau_r<T\), inserting the semigroup
+factors between consecutive operators writes the endpoint matrix element as
+a bounded product of fixed-time operators and exterior factors
+\(\exp[-T(\widehat H-E_0)/\hbar]\ket\psi\) and its adjoint.  The norm
+convergence of the exterior factors gives the vacuum Euclidean ordered
+correlator.  If the inserted operators are unbounded, this last sentence is
+read on a common invariant domain or after smearing/truncating the insertions;
+the regulated path-integral constructions below implement precisely that
+domain control.
+\end{proof}
 
 The same limit may be represented before Wick rotation by a regulated path
 integral on a complex-time contour.  Let \(\Gamma_{T,t}\) run from
@@ -255,8 +360,10 @@ data are part of \([Dq]_{\Gamma,\psi}\).
 \end{tikzpicture}
 \end{center}
 
+\begin{convention}[Euclidean path-integral brackets in this chapter]
+\label{conv:euclidean-path-integral-brackets-ch5}
 After the Wick rotation of the contour to Euclidean time, the Lagrangian
-path-integral notation becomes
+path-integral notation
 \[
   \bra 0T_E\{\widehat q_E(\tau_1)\cdots\widehat q_E(\tau_r)\}\ket 0
   =
@@ -268,8 +375,9 @@ path-integral notation becomes
     \int [Dq]\,\exp[-S_E[q]/\hbar]
   },
 \]
-where the symbol \([Dq]\) denotes a specified regulator and limiting
-procedure, and
+means the value produced by a specified regulator and limiting procedure, not
+an independently given translation-invariant measure on an infinite-dimensional
+space.  The Euclidean action is
 \[
   S_E[q]=\int_{-T}^{T}L_E(q,q')\,\dd\tau.
 \]
@@ -281,6 +389,7 @@ obtained by the spectral projection limit described above.  In the rest of
 this chapter the same bracket notation is also used for finite-dimensional
 Gaussian regulators and perturbative asymptotic expansions.  These are
 different mathematical objects, and the text will specify which one is meant.
+\end{convention}
 
 \begin{center}
 \begin{tikzpicture}[>=Stealth,scale=0.95]
@@ -314,17 +423,25 @@ different mathematical objects, and the text will specify which one is meant.
 \end{tikzpicture}
 \end{center}
 
-A concrete evaluation begins by specifying the regulator.  One common
-choice is a mode cutoff: choose functions \(f_n(\tau)\), write
+\begin{definition}[Mode cutoff regulator]
+\label{def:mode-cutoff-regulator-qm}
+A mode cutoff regulator consists of a finite set of functions
+\(f_1,\ldots,f_{N_{\rm max}}\), a finite-dimensional coordinate map
 \[
   q(\tau)=\sum_{n=1}^{N_{\rm max}}q_nf_n(\tau),
 \]
-and define the regulated measure by a finite product of Lebesgue measures in
-the coefficients \(q_n\), together with whatever normalization and boundary
-conditions are dictated by the time-sliced construction.  The limit
-\(N_{\rm max}\to\infty\) is then a further analytic step.  The harmonic
-oscillator provides the basic Gaussian example.
+and a regulated measure defined by a finite product of Lebesgue measures in
+the coefficients \(q_n\), together with the normalization and boundary
+conditions dictated by the chosen time-sliced construction.  The limit
+\(N_{\rm max}\to\infty\) is a further analytic operation and is not part of
+the symbol \([Dq]\) until its existence has been established for the
+observables under discussion.
+\end{definition}
 
+The harmonic oscillator provides the basic Gaussian example.
+
+\begin{controlledapproximation}[Removing a mode cutoff]
+\label{ctrl:remove-mode-cutoff-ch5}
 In this chapter the phrase ``remove the mode cutoff'' has two distinct
 meanings.  In the free Gaussian oscillator it denotes an actual limit of
 finite-dimensional Gaussian moments; the covariance kernels below converge
@@ -332,6 +449,7 @@ after the finite mode projection is removed.  In the interacting examples it
 denotes a coefficientwise operation on a perturbative expansion first defined
 at finite cutoff.  No nonperturbative continuum measure, and no convergence
 of the formal power series in the coupling, is inferred from the notation.
+\end{controlledapproximation}
 
 \section{The Harmonic Oscillator}
 
@@ -390,6 +508,8 @@ Consequently
 \end{tikzpicture}
 \end{center}
 
+\begin{definition}[Dirichlet harmonic-oscillator Gaussian cutoff]
+\label{def:dirichlet-harmonic-oscillator-cutoff}
 For \(N\in\mathbb N\), let
 \[
   q^{(N)}(\tau)=\sum_{n=1}^{N}q_nf_n(\tau),
@@ -413,6 +533,22 @@ The normalized finite-\(T\), finite-mode expectation value is
     \exp[-S_{E,T,N}/\hbar]
   } .
 \]
+\end{definition}
+
+\begin{proposition}[Harmonic-oscillator Euclidean covariance from the cutoff]
+\label{prop:harmonic-oscillator-euclidean-covariance-cutoff}
+For the cutoff of Definition~\ref{def:dirichlet-harmonic-oscillator-cutoff},
+the finite-mode covariance converges at fixed \(T\).  For fixed insertion
+times \(\tau_1,\tau_2\) and then \(T\to\infty\), the limiting Euclidean
+two-point function on the line is
+\[
+  \langle q(\tau_1)q(\tau_2)\rangle
+  =
+  \frac{\hbar}{2\omega}\ee^{-\omega|\tau_1-\tau_2|}.
+\]
+\end{proposition}
+
+\begin{proof}
 This is an ordinary finite-dimensional Gaussian integral.  In this free
 subsection, \(\langle F\rangle_T\) denotes the limit
 \(\lim_{N\to\infty}\langle F\rangle_{T,N}\) only for those observables for
@@ -563,12 +699,17 @@ oscillator on the line is
 This agrees with the spectral expression, since the first operator
 \(\widehat q\) connects the ground state of the harmonic oscillator to the
 first excited state.
+\end{proof}
 
 \section{Gaussian Integrals and Wick Pairings}
 
 For the remainder of the chapter set \(\hbar=1\), unless \(\hbar\) is
-displayed explicitly. Let \(A\) be a real symmetric positive-definite \(N\times N\)
-matrix, and let \(J\in\mathbb R^N\). Define
+displayed explicitly.
+
+\begin{definition}[Finite-dimensional real Gaussian datum]
+\label{def:finite-dimensional-real-gaussian-datum}
+Let \(A\) be a real symmetric positive-definite \(N\times N\) matrix, let
+\(J\in\mathbb R^N\), and write repeated finite indices as summed.  Define
 \[
   Z_A[J]
   =
@@ -577,7 +718,20 @@ matrix, and let \(J\in\mathbb R^N\). Define
     -\frac12q_iA_{ij}q_j+J_iq_i
   \right),
 \]
-where repeated finite indices are summed. Completing the square gives
+and the normalized Gaussian expectation
+\[
+  \langle F(q)\rangle_A
+  =
+  \frac{1}{Z_A[0]}
+  \int_{\mathbb R^N}\dd^Nq\,
+  \exp\left(-\frac12q_iA_{ij}q_j\right)F(q).
+\]
+The covariance matrix is \(C=A^{-1}\).
+\end{definition}
+
+\begin{proposition}[Gaussian generating functional and Wick theorem]
+\label{prop:finite-dimensional-gaussian-wick-theorem}
+For the datum of Definition~\ref{def:finite-dimensional-real-gaussian-datum},
 \[
   Z_A[J]
   =
@@ -586,15 +740,21 @@ where repeated finite indices are summed. Completing the square gives
     \frac12J_i(A^{-1})_{ij}J_j
   \right).
 \]
-The normalized Gaussian expectation of a function \(F(q)\) is
+Consequently all odd moments vanish, and
 \[
-  \langle F(q)\rangle_A
+  \langle q_{i_1}\cdots q_{i_{2r}}\rangle_A
   =
-  \frac{1}{Z_A[0]}
-  \int_{\mathbb R^N}\dd^Nq\,
-  \exp\left(-\frac12q_iA_{ij}q_j\right)F(q).
+  \sum_{\text{complete pairings }P}
+  \prod_{(a,b)\in P}(A^{-1})_{i_ai_b}.
 \]
-Differentiating with respect to \(J\) gives
+\end{proposition}
+
+\begin{proof}
+Completing the square gives the displayed formula for \(Z_A[J]\).  Indeed
+positive-definiteness of \(A\) permits the shift
+\(q\mapsto q-A^{-1}J\), and the remaining Gaussian integral is
+\((2\pi)^{N/2}(\det A)^{-1/2}\).  Differentiating with respect to \(J\)
+gives
 \[
   \langle F(q)\rangle_A
   =
@@ -686,7 +846,11 @@ A Wick contraction is an assigned pairing of two labels with value
 \[
   (q_iq_j)_{\mathrm{contr}}=C_{ij}=(A^{-1})_{ij}.
 \]
-Wick's theorem says that the Gaussian expectation of \(2r\) variables is the
+The same differentiation argument proves Wick's theorem for \(2r\) variables:
+only the degree \(r\) term in
+\(\exp(\frac12J_aC_{ab}J_b)\) contributes after setting \(J=0\), and each
+surviving derivative assignment partitions the \(2r\) labels into \(r\)
+unordered pairs.  Thus the Gaussian expectation of \(2r\) variables is the
 sum over all complete pairings, with one covariance factor for each pair:
 \[
   \langle q_{i_1}\cdots q_{i_{2r}}\rangle_A
@@ -694,10 +858,14 @@ sum over all complete pairings, with one covariance factor for each pair:
   \sum_{\text{complete pairings }P}
   \prod_{(a,b)\in P}(A^{-1})_{i_ai_b}.
 \]
-Gaussian expectations of an odd number of variables vanish.
+For an odd number of derivatives no monomial of odd total degree appears in
+the source exponential, so the moment vanishes.
+\end{proof}
 
 \section{Gaussian Functional Integrals}
 
+\begin{definition}[Gaussian functional integral as a regulated limit]
+\label{def:gaussian-functional-integral-regulated-limit}
 Let \(A\) be the positive operator
 \[
   A=-\frac{\dd^2}{\dd\tau^2}+\omega^2
@@ -736,6 +904,37 @@ cutoff variables. Its continuum notation is
     -\frac12(q,Aq)+(J,q)
   \right].
 \]
+This notation denotes the finite-dimensional Gaussian construction followed
+by a limit of covariance kernels in the specified topology; it does not
+assert the existence of a translation-invariant Lebesgue measure on the space
+of paths.
+\end{definition}
+
+\begin{proposition}[Gaussian functional source identity]
+\label{prop:gaussian-functional-source-identity}
+For the regulated Gaussian construction of
+Definition~\ref{def:gaussian-functional-integral-regulated-limit},
+the normalization-independent source ratio is
+\[
+  \frac{Z_0[J]}{Z_0[0]}
+  =
+  \exp\left[
+    \frac12\int J(\tau)G(\tau,\tau')J(\tau')\,
+    \dd\tau\,\dd\tau'
+  \right],
+\]
+and the two-point function is \(G(\tau_1,\tau_2)\).
+\end{proposition}
+
+\begin{proof}
+At finite cutoff this is exactly
+Proposition~\ref{prop:finite-dimensional-gaussian-wick-theorem} with the
+matrix \(A_{ij}\) equal to the quadratic form of the cutoff action and with
+the source vector \(J_i=(J,f_i)\).  The inverse matrix has kernel equal to
+the cutoff Green function.  Passing to the limit gives the displayed kernel
+identity whenever the cutoff Green functions converge against the chosen
+test sources.
+
 The ratio independent of normalization is
 \[
   \frac{Z_0[J]}{Z_0[0]}
@@ -751,6 +950,27 @@ Consequently
   =
   G(\tau_1,\tau_2).
 \]
+\end{proof}
+
+\begin{proposition}[Gaussian integration by parts]
+\label{prop:gaussian-functional-integration-by-parts}
+In the same regulated Gaussian construction,
+\[
+  \langle q(\tau_1)q(\tau_2)\rangle_0=G(\tau_1,\tau_2)
+\]
+also follows from finite-dimensional integration by parts.  Equivalently,
+the formal identity
+\[
+  q(\tau_1)\ee^{-\frac12(q,Aq)}
+  =
+  -
+  \left(A^{-1}\frac{\delta}{\delta q}\right)(\tau_1)
+  \ee^{-\frac12(q,Aq)}
+\]
+is the continuum notation for that cutoff identity.
+\end{proposition}
+
+\begin{proof}
 The same result can be obtained without tracking the normalization of the
 functional measure under discretization.  At finite cutoff this is ordinary
 integration by parts in finitely many variables; the continuum notation is the
@@ -795,6 +1015,7 @@ integration by parts. Therefore
 \]
 After division by \(Z_0[0]\), this gives again
 \(\langle q(\tau_1)q(\tau_2)\rangle_0=G(\tau_1,\tau_2)\).
+\end{proof}
 
 On the infinite Euclidean line, write
 \[
@@ -859,6 +1080,8 @@ Let
   \qquad
   S_{\mathrm{int}}[q]=\frac{g}{4!}\int q(\tau)^4\,\dd\tau .
 \]
+\begin{definition}[Cutoff perturbative expansion of the anharmonic oscillator]
+\label{def:anharmonic-cutoff-perturbative-expansion}
 At finite cutoff, perturbation theory is the coefficientwise expansion of
 \(\exp[-S_{\mathrm{int}}]\) inside a finite-dimensional Gaussian integral:
 \[
@@ -877,6 +1100,7 @@ dependence has been displayed.  If the coefficient has a finite limit, that
 limit is part of the perturbative definition used here; if it does not, one
 must specify the local counterterm or subtraction coordinate before a finite
 coefficient is defined.
+\end{definition}
 For the partition function,
 \[
   Z_g=\int[Dq]\,\exp[-S_0[q]-S_{\mathrm{int}}[q]],
@@ -976,6 +1200,13 @@ propagators.
 \end{tikzpicture}
 \end{center}
 
+\begin{proposition}[Linked-cluster formula for the cutoff expansion]
+\label{prop:linked-cluster-formula-cutoff-anharmonic}
+At every fixed cutoff and at the level of formal power series in \(g\),
+\(\log(Z_g/Z_0)\) is the sum of connected vacuum diagrams.
+\end{proposition}
+
+\begin{proof}
 Let \(G^{(\ell)}\) be the sum of connected vacuum Wick contractions involving
 \(\ell\) interaction vertices, including the coupling factors and integration
 over the \(\ell\) vertex positions. If \(m_\ell\) is the number of connected
@@ -1018,6 +1249,7 @@ formula
 Equivalently, \(\log Z_g\) is the sum of connected vacuum diagrams.
 The factor \(1/\ell!\) is often absorbed into the symmetry factor assigned to
 the connected graph.
+\end{proof}
 
 For example, the connected three-vertex topology with two propagators on each
 edge has
@@ -1075,6 +1307,32 @@ values \(q_i\) and \(q_f\), the path integral is the transition kernel
   =
   \bra{q_f}\ee^{-T_{\mathrm{tot}}\widehat H}\ket{q_i}.
 \]
+\begin{proposition}[Ground-state energy from the Euclidean kernel]
+\label{prop:ground-state-energy-from-euclidean-kernel}
+Assume that the anharmonic oscillator Hamiltonian has discrete spectrum
+\(E_0(g)<E_1(g)\le\cdots\), with nondegenerate ground state \(\psi_0\).  If
+the endpoint data used in the transition kernel have nonzero overlap with
+\(\psi_0\), then
+\[
+  E_0(g)
+  =
+  -\lim_{T_{\mathrm{tot}}\to\infty}
+  \frac{1}{T_{\mathrm{tot}}}\log Z_g,
+  \qquad
+  E_0(g)-E_0(0)
+  =
+  -\lim_{T_{\mathrm{tot}}\to\infty}
+  \frac{1}{T_{\mathrm{tot}}}
+  \log\frac{Z_g}{Z_0}.
+\]
+The first perturbative correction is
+\[
+  \Delta E_0=\frac{g}{32}+O(g^2)
+\]
+for \(\omega=1\).
+\end{proposition}
+
+\begin{proof}
 For the anharmonic oscillator the spectrum is discrete and the ground state is
 nondegenerate.  If the endpoint wavefunctions have nonzero overlap with the
 ground state, the spectral theorem gives
@@ -1131,6 +1389,7 @@ This agrees with first-order Hamiltonian perturbation theory:
   =
   \frac{g}{32}.
 \]
+\end{proof}
 
 \section{Connected Two-Point Functions and Self-Energy}
 
@@ -1154,11 +1413,20 @@ Equivalently, at the regulated level,
     \left(-\frac{g}{4!}\int q(\tau')^4\,\dd\tau'\right)^n
   \right\rangle_0 .
 \]
+\begin{proposition}[Vacuum components cancel in normalized two-point functions]
+\label{prop:vacuum-components-cancel-normalized-two-point}
+At fixed cutoff and as a formal power series in \(g\), the normalized
+two-point function is the sum of Wick diagrams whose connected component
+contains both external insertions.
+\end{proposition}
+
+\begin{proof}
 In the perturbative expansion, every Wick contraction splits uniquely into
 the connected component containing the two external insertions and a product
 of vacuum components. The sum of the vacuum components is \(Z_g\), and is
 cancelled by the normalization. Thus \(G(\tau)\) is the sum of connected
 two-point diagrams.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.95]
@@ -1305,11 +1573,20 @@ At second order the connected two-point graphs include
 The first diagram is a chain of two one-loop insertions; the other two are the
 second-order amputated insertions that enter the self-energy below.
 
+\begin{definition}[Euclidean \(1\mathrm{PI}\) two-point insertion]
+\label{def:euclidean-1pi-two-point-insertion-ch5}
 A connected two-point diagram is one-particle-irreducible, abbreviated
 \(1\mathrm{PI}\), when it remains connected after cutting any one internal
 propagator. In this chapter the term is graph-theoretic and refers to
-Euclidean Green-function diagrams. Let \(\Sigma(k)\) be the sum of amputated
-\(1\mathrm{PI}\) two-point insertions in momentum space. Then the full
+Euclidean Green-function diagrams.  Let \(\Sigma(k)\) be the sum of amputated
+\(1\mathrm{PI}\) two-point insertions in momentum space, with the external
+free propagators removed.
+\end{definition}
+
+\begin{proposition}[Dyson resummation of exact two-point insertions]
+\label{prop:dyson-resummation-exact-two-point-insertions-qm}
+With the sign convention of
+Definition~\ref{def:euclidean-1pi-two-point-insertion-ch5}, the full
 two-point function is the geometric series
 \[
   \widetilde G(k)
@@ -1322,6 +1599,19 @@ two-point function is the geometric series
   \qquad
   \widetilde G_0(k)=\frac{1}{k^2+1}.
 \]
+\end{proposition}
+
+\begin{proof}
+Every connected two-point graph is obtained uniquely by arranging a finite
+chain of amputated \(1\mathrm{PI}\) two-point insertions along the external
+line and inserting one free propagator between consecutive amputated
+insertions.  Cutting the propagators between adjacent insertions gives the
+unique chain decomposition; conversely gluing such a chain gives a connected
+two-point graph.  Translation invariance diagonalizes the convolution in
+momentum space, so the chain with \(r\) insertions contributes
+\(\widetilde G_0(k)(\widetilde G_0(k)\Sigma(k))^r\).  Summing the formal
+geometric series gives the displayed denominator.
+\end{proof}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.9]
@@ -1444,6 +1734,18 @@ insertions is instead produced by the geometric series in
     +O(g^3)
   }.
 \]
+\begin{proposition}[Pole extraction of the first energy gap]
+\label{prop:anharmonic-first-gap-from-two-point-pole}
+For the anharmonic oscillator in the convention above, the pole of
+\(\widetilde G(k)\) near \(k=\ii\) gives
+\[
+  E_1-E_0
+  =
+  1+\frac{g}{8}-\frac{g^2}{32}+O(g^3).
+\]
+\end{proposition}
+
+\begin{proof}
 The spectral expansion says that for \(\tau>0\),
 \[
   G(\tau)
@@ -1488,12 +1790,29 @@ If
   \ee^{-\omega_n\tau}.
 \]
 Thus the pole positions encode the energy gaps \(\omega_n=E_n-E_0\) in the
-\(\hbar=1\) convention. The pole near \(k=\ii\) gives
+\(\hbar=1\) convention.
+
+It remains to solve the pole equation near \(k=\ii\).  Write
+\(\omega=1+a g+b g^2+O(g^3)\) and set \(k=\ii\omega\).  The denominator of
+\(\widetilde G(k)\) is
 \[
-  E_1-E_0
-  =
-  1+\frac{g}{8}-\frac{g^2}{32}+O(g^3).
+  -\omega^2+1+\frac{g}{4}
+  -\frac{g^2}{8}
+  \left(
+    \frac14+\frac{1}{9-\omega^2}
+  \right)
+  +O(g^3).
 \]
+Since \(9-\omega^2=8+O(g)\), the \(O(g^2)\) part of the last factor is
+\(\frac14+\frac18=\frac38\).  Also
+\(\omega^2=1+2ag+(a^2+2b)g^2+O(g^3)\).  Vanishing of the denominator gives
+\[
+  -2a+\frac14=0,
+  \qquad
+  -(a^2+2b)-\frac{3}{64}=0.
+\]
+Thus \(a=\frac18\) and \(b=-\frac1{32}\), proving the formula.
+\end{proof}
 
 \section{Derivative Interactions, Regulators, and Counterterms}
 
@@ -1521,8 +1840,9 @@ matter quantum mechanically: the product of the \(q\)-dependent coefficient
 and \(p^2\) has no unique operator meaning until an ordering prescription, or
 equivalently a regulated path-integral prescription, has been specified.
 
-There is a useful classical check. Define a new coordinate \(y\), to first
-order in \(g\), by
+\begin{proposition}[Classical field redefinition check]
+\label{prop:derivative-oscillator-classical-field-redefinition}
+Define a new coordinate \(y\), to first order in \(g\), by
 \[
   \frac{\dd y}{\dd q}
   =
@@ -1542,8 +1862,29 @@ Then \(q=y+\frac{g}{24}y^3+O(g^2)\), and the Lorentzian Lagrangian becomes
   +O(g^2).
 \]
 Thus the derivative-coupled oscillator is classically equivalent, through
-order \(g\), to an ordinary anharmonic oscillator. The computation below keeps
-the \(q\)-coordinate and shows where the quantum prescription enters.
+order \(g\), to an ordinary anharmonic oscillator.
+\end{proposition}
+
+\begin{proof}
+The defining equation gives \(\dot y=(1-\frac{g}{4}q^2)^{1/2}\dot q\), hence
+\[
+  \frac12\dot q^2-\frac{g}{8}q^2\dot q^2
+  =
+  \frac12\left(1-\frac{g}{4}q^2\right)\dot q^2
+  =
+  \frac12\dot y^2+O(g^2).
+\]
+Inverting \(y=q-\frac{g}{24}q^3+O(g^2)\) gives
+\(q=y+\frac{g}{24}y^3+O(g^2)\).  Therefore
+\[
+  -\frac12q^2
+  =
+  -\frac12y^2-\frac{g}{24}y^4+O(g^2),
+\]
+which proves the displayed Lagrangian.  The quantum computation below keeps
+the \(q\)-coordinate and shows where the ordering or path-integral
+prescription enters.
+\end{proof}
 
 The Euclidean Lagrangian is
 \[
@@ -1675,6 +2016,8 @@ defined continuum measure.  It is a signal that the formal product
 finite-dimensional measure, and that the limiting prescription must be
 specified together with local counterterms.
 
+\begin{definition}[Frequency cutoff for the derivative interaction]
+\label{def:frequency-cutoff-derivative-oscillator}
 Define a frequency cutoff by
 \[
   q(\tau)
@@ -1685,7 +2028,14 @@ Define a frequency cutoff by
   [Dq]_\Lambda=\prod_{|k|<\Lambda}\dd \widetilde q(k),
 \]
 with the real-field condition \(\widetilde q(k)^*=\widetilde q(-k)\). After
-restoring \(\hbar\), the first-order self-energy has the form
+the finite-dimensional real slice has been chosen, \([Dq]_\Lambda\) denotes
+the corresponding finite product Lebesgue measure.  The interaction is
+expanded before \(\Lambda\to\infty\).
+\end{definition}
+
+\begin{proposition}[Local counterterm required by the derivative interaction]
+\label{prop:derivative-interaction-local-counterterm-gap}
+After restoring \(\hbar\), the first-order self-energy has the form
 \[
   \Sigma_\Lambda(k)
   =
@@ -1723,6 +2073,36 @@ Choosing
 defines a finite limiting two-point function as \(\Lambda\to\infty\). The
 finite constant \(C_{\mathrm{fin}}\) is part of the quantum definition of the
 Hamiltonian represented by this regulated Lagrangian path integral.
+\end{proposition}
+
+\begin{proof}
+The contraction with two derivatives acting on the loop gives
+\[
+  \frac{g}{4}
+  \int\frac{\dd k}{2\pi}
+    \frac{\ee^{\ii k\tau}}{(k^2+1)^2}
+  \int_{|k'|<\Lambda}\frac{\dd k'}{2\pi}
+    \frac{k'^2}{k'^2+1}.
+\]
+The cutoff integral is
+\[
+  \int_{-\Lambda}^{\Lambda}\frac{\dd k'}{2\pi}
+  \frac{k'^2}{k'^2+1}
+  =
+  \frac{1}{\pi}\int_0^\Lambda
+  \left(1-\frac{1}{k'^2+1}\right)\dd k'
+  =
+  \frac{\Lambda-\arctan\Lambda}{\pi}.
+\]
+The remaining first-order contractions are the finite even momentum term and
+the odd momentum term displayed above.  Combining them and expanding
+\(\arctan\Lambda=\pi/2+O(\Lambda^{-1})\) gives the stated self-energy.
+The counterterm contributes a local two-point insertion \(-Cg\hbar\) in the
+denominator convention used for \(\Sigma\).  Hence it shifts
+\(\Sigma_\Lambda(k)\) by \(-Cg\hbar\).  Choosing
+\(C=\Lambda/(4\pi)+C_{\rm fin}\) removes the linearly divergent local part.
+The remaining finite family is the one displayed above.
+\end{proof}
 
 The pole of the regulated two-point function,
 \[
@@ -1730,7 +2110,25 @@ The pole of the regulated two-point function,
   =
   \frac{\hbar}{k^2+1-\Sigma_\Lambda(k)},
 \]
-gives the first energy gap. Setting \(k=\ii\omega_1\) and expanding to first
+\begin{corollary}[Finite gap after choosing the finite local term]
+\label{cor:derivative-oscillator-finite-gap-counterterm}
+After the counterterm choice of
+Proposition~\ref{prop:derivative-interaction-local-counterterm-gap}, the
+first energy gap is
+\[
+  \omega_1
+  =
+  1+\hbar g
+  \left(
+    \frac{C_{\mathrm{fin}}}{2}+\frac18
+  \right)
+  +O(g^2).
+\]
+\end{corollary}
+
+\begin{proof}
+Setting \(k=\ii\omega_1\) in the denominator of
+\(\widetilde G_\Lambda(k)\) and expanding to first
 order in \(g\) gives
 \[
   \omega_1
@@ -1747,6 +2145,7 @@ order in \(g\) gives
   \right)
   +O(g^2).
 \]
+\end{proof}
 Thus the finite part of the local counterterm is not a removable notation
 choice; it fixes which quantum Hamiltonian, within the ordering ambiguity of
 the derivative-coupled classical expression, the path integral represents.
