@@ -2604,6 +2604,212 @@ problem consisting of the global neutrality equations
 for the order parameters retained in the controlled effective theory.
 \end{remark}
 
+\section{Fermi-Surface Stress from Masses and Neutrality}
+\label{sec:qcd-fermi-surface-stress}
+
+The ideal CFL limit has equal massless quarks and a common quark chemical
+potential.  Real dense matter introduces flavor-dependent stresses through
+quark masses, electric neutrality, and weak-equilibrium constraints.  The
+first controlled step is kinematic: determine how these deformations shift
+the location of the Fermi surface before asking which paired state minimizes
+the effective potential.
+
+\begin{definition}[Effective Fermi-surface mismatch]
+\label{def:qcd-effective-fermi-surface-mismatch}
+Consider two quark species \(i,j\) with masses \(m_i,m_j\) and chemical
+potentials \(\mu_i,\mu_j\).  Assume
+\[
+  m_i^2,\ m_j^2,\ |\mu_i-\mu_j|\,\bar\mu
+  \ll
+  \bar\mu^2,
+  \qquad
+  \bar\mu=\frac{\mu_i+\mu_j}{2}.
+\]
+For momenta in a common patch near \(p=\bar\mu\), define the residual
+single-particle energies
+\[
+  \xi_a(p)=\sqrt{p^2+m_a^2}-\mu_a,
+  \qquad a=i,j.
+  \label{eq:qcd-mass-stressed-xi}
+\]
+The average residual energy and half-mismatch are
+\[
+  \bar\xi_{ij}(p)
+  =
+  \frac{\xi_i(p)+\xi_j(p)}{2},
+  \qquad
+  \delta_{ij}^{\rm eff}
+  =
+  \frac{\xi_i(p)-\xi_j(p)}{2}
+  \quad\text{evaluated to leading order at }p=\bar\mu .
+  \label{eq:qcd-effective-mismatch-definition}
+\]
+\end{definition}
+
+\begin{proposition}[Mass and chemical-potential contribution to mismatch]
+\label{prop:qcd-mass-chemical-potential-mismatch}
+In the regime of
+Definition~\ref{def:qcd-effective-fermi-surface-mismatch},
+\[
+  p_{F,a}
+  =
+  \sqrt{\mu_a^2-m_a^2}
+  =
+  \mu_a-\frac{m_a^2}{2\mu_a}
+  +O\!\left(\frac{m_a^4}{\mu_a^3}\right),
+  \label{eq:qcd-mass-shifted-fermi-momentum}
+\]
+and
+\[
+  \delta_{ij}^{\rm eff}
+  =
+  -\frac{\mu_i-\mu_j}{2}
+  +
+  \frac{m_i^2-m_j^2}{4\bar\mu}
+  +O\!\left(
+    \frac{m^4}{\bar\mu^3},
+    \frac{|\mu_i-\mu_j|\,m^2}{\bar\mu^2}
+  \right).
+  \label{eq:qcd-effective-mismatch-formula}
+\]
+Equivalently, the leading Fermi-momentum splitting is
+\[
+  p_{F,i}-p_{F,j}
+  =
+  (\mu_i-\mu_j)
+  -
+  \frac{m_i^2-m_j^2}{2\bar\mu}
+  +O\!\left(
+    \frac{m^4}{\bar\mu^3},
+    \frac{|\mu_i-\mu_j|\,m^2}{\bar\mu^2}
+  \right).
+  \label{eq:qcd-fermi-momentum-splitting}
+\]
+For a strange quark paired with a massless light quark at common chemical
+potential \(\mu_q\), the Fermi-momentum splitting scale is
+\[
+  |p_{F,s}-p_{F,\ell}|
+  =
+  \frac{m_s^2}{2\mu_q}
+  +O(m_s^4/\mu_q^3),
+  \label{eq:qcd-strange-fermi-surface-stress}
+\]
+while the pairwise half-mismatch is
+\[
+  |\delta_{s\ell}^{\rm eff}|
+  =
+  \frac{m_s^2}{4\mu_q}
+  +O(m_s^4/\mu_q^3).
+  \label{eq:qcd-strange-half-mismatch}
+\]
+\end{proposition}
+
+\begin{proof}
+The Fermi momentum solves \(\sqrt{p_{F,a}^2+m_a^2}=\mu_a\), giving the first
+identity in \eqref{eq:qcd-mass-shifted-fermi-momentum}.  Expanding the square
+root gives
+\[
+  \sqrt{\mu_a^2-m_a^2}
+  =
+  \mu_a
+  \sqrt{1-\frac{m_a^2}{\mu_a^2}}
+  =
+  \mu_a-\frac{m_a^2}{2\mu_a}
+  +O(m_a^4/\mu_a^3).
+\]
+For the mismatch, expand \eqref{eq:qcd-mass-stressed-xi} at
+\(p=\bar\mu\):
+\[
+  \xi_a(\bar\mu)
+  =
+  \bar\mu-\mu_a+\frac{m_a^2}{2\bar\mu}
+  +O(m_a^4/\bar\mu^3).
+\]
+Taking half the difference between \(a=i\) and \(a=j\) gives
+\eqref{eq:qcd-effective-mismatch-formula}; keeping the dependence of the
+denominator on \(\mu_a\) rather than \(\bar\mu\) produces the displayed
+mixed remainder.  Subtracting
+\eqref{eq:qcd-mass-shifted-fermi-momentum} for \(i\) and \(j\) gives
+\eqref{eq:qcd-fermi-momentum-splitting}.  The strange-light specializations
+set \(m_\ell=0\) and \(\mu_s=\mu_\ell=\mu_q\).
+\end{proof}
+
+\begin{controlledapproximation}[Two-species stressed BCS comparison]
+\label{ca:qcd-two-species-stressed-bcs}
+To isolate the local pairing stress, consider two species with a common
+density of states \(N(0)\), a momentum-independent attractive interaction in
+a shell, zero temperature, and half-mismatch \(\delta\).  Let \(\Delta_0\) be
+the BCS gap at \(\delta=0\), computed in the same cutoff scheme.  Compare only
+the homogeneous paired state with equal paired Fermi momenta to the unpaired
+normal state with split Fermi surfaces.  This is a local diagnostic for the
+onset of stress; it is not a complete variational analysis of CFL, gapless
+CFL, meson-condensed phases, or crystalline phases.
+\end{controlledapproximation}
+
+\begin{proposition}[Clogston scale in the controlled two-species model]
+\label{prop:qcd-clogston-scale-two-species}
+In Controlled Approximation~\ref{ca:qcd-two-species-stressed-bcs}, the
+zero-temperature grand-potential difference between the homogeneous paired
+state and the split normal state has the leading form
+\[
+  \Omega_{\rm pair}-\Omega_{\rm normal}
+  =
+  -\frac12N(0)\Delta_0^2
+  +
+  N(0)\delta^2
+  +O(\Delta_0^4/\Lambda_{\rm H}^2).
+  \label{eq:qcd-clogston-potential-difference}
+\]
+Thus the homogeneous paired state ceases to win against the split normal
+state in this model when
+\[
+  |\delta|>\delta_{\rm C},
+  \qquad
+  \delta_{\rm C}=\frac{\Delta_0}{\sqrt2}.
+  \label{eq:qcd-clogston-scale}
+\]
+\end{proposition}
+
+\begin{proof}
+At \(\delta=0\), the BCS condensation energy in the constant-density shell is
+\[
+  \Omega_{\rm pair}(\delta=0)-\Omega_{\rm normal}(\delta=0)
+  =
+  -\frac12N(0)\Delta_0^2
+  +O(\Delta_0^4/\Lambda_{\rm H}^2),
+\]
+which follows by substituting the gap equation into the mean-field energy
+functional: the logarithmic part of the interaction energy cancels the
+logarithmic part of the quasiparticle energy, leaving the displayed finite
+term.  A normal state with half-mismatch \(\delta\) fills one species up to
+energy \(+\delta\) relative to the average Fermi surface and empties the
+other down to \(-\delta\).  With constant density of states, the energy
+lowering of the split normal state relative to the unsplit normal state is
+\[
+  -2N(0)\int_0^{|\delta|}\xi\,d\xi
+  =
+  -N(0)\delta^2,
+\]
+where the factor \(2\) counts the filled particle interval for one species
+and the emptied hole interval for the other.  Therefore, when the paired
+state remains unsplit, its grand potential relative to the split normal state
+is shifted upward by \(N(0)\delta^2\), giving
+\eqref{eq:qcd-clogston-potential-difference}.  Setting the leading
+difference to zero gives \eqref{eq:qcd-clogston-scale}.
+\end{proof}
+
+\begin{remark}[Use of the stress scale in dense QCD]
+\label{rem:qcd-stress-scale-status}
+Equations \eqref{eq:qcd-strange-fermi-surface-stress} and
+\eqref{eq:qcd-clogston-scale} should be used with their hypotheses attached.
+The scale \(m_s^2/(2\mu_q)\) is the leading strange-light Fermi-momentum
+splitting, while \(m_s^2/(4\mu_q)\) is the pairwise half-mismatch in the
+two-species reduction.  Full dense QCD also requires the neutrality equations
+of Section~\ref{sec:qcd-neutrality-gauge-sources}, the coupled gap equations
+in all pairing channels, and the possibility that the minimizing state is
+not spatially homogeneous.
+\end{remark}
+
 \section{Color Superconductivity and CFL Order}
 \label{sec:qcd-color-superconductivity-cfl}
 

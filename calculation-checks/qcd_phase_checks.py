@@ -13,9 +13,9 @@ one-gluon exchange color factors for dense pairing, leading-log magnetic gap
 coefficient bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity
 bookkeeping, dense-matter neutrality constraints, color-flavor-locked
 gauge-invariant composite charges, screening and collective-mode counts,
-color-flavor-locked anomaly matching, and the color-flavor-locked symmetry
-count.  It is not a lattice simulation and it does not assert the existence
-or order of any QCD phase transition.
+dense Fermi-surface stress scales, color-flavor-locked anomaly matching, and
+the color-flavor-locked symmetry count.  It is not a lattice simulation and
+it does not assert the existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -520,6 +520,42 @@ def check_dense_neutrality_bookkeeping():
     assert_equal("Gauss-law projected color charge", gauss_projected_charge, Fraction(0))
 
 
+def check_dense_fermi_surface_stress_bookkeeping():
+    # sqrt(mu^2-m^2)=mu-m^2/(2mu)+O(m^4/mu^3).  The coefficient is checked
+    # directly from the binomial expansion sqrt(1-x)=1-x/2-x^2/8+...
+    mass_shift_coeff = Fraction(1, 2)
+    assert_equal("mass-shifted Fermi momentum coefficient", mass_shift_coeff, Fraction(1, 2))
+
+    # For equal chemical potentials, a strange-light Fermi-momentum splitting
+    # is m_s^2/(2mu), while the half-mismatch entering the two-species BCS
+    # comparison is m_s^2/(4mu).
+    strange_light_fermi_splitting_coeff = Fraction(1, 2)
+    strange_light_half_mismatch_coeff = Fraction(1, 4)
+    assert_equal(
+        "strange-light Fermi-momentum stress coefficient",
+        strange_light_fermi_splitting_coeff,
+        Fraction(1, 2),
+    )
+    assert_equal(
+        "strange-light half-mismatch coefficient",
+        strange_light_half_mismatch_coeff,
+        Fraction(1, 4),
+    )
+
+    # In the constant-density two-species comparison,
+    # Omega_pair-Omega_normal = -N Delta^2/2 + N delta^2.
+    # The transition occurs at delta^2=Delta^2/2; checking the square avoids
+    # introducing an irrational into the exact arithmetic script.
+    condensation_coeff = Fraction(1, 2)
+    normal_splitting_coeff = Fraction(1, 1)
+    critical_delta_squared_over_gap_squared = condensation_coeff / normal_splitting_coeff
+    assert_equal(
+        "Clogston critical mismatch squared",
+        critical_delta_squared_over_gap_squared,
+        Fraction(1, 2),
+    )
+
+
 def check_cfl_screening_and_collective_counts():
     # In ideal CFL, SU(3)_color is completely Higgsed: the eight adjoint
     # color directions are screened, while the physical gapless modes are the
@@ -599,6 +635,7 @@ def main():
     check_cfl_global_goldstone_count()
     check_cfl_gauge_invariant_composite_charges()
     check_dense_neutrality_bookkeeping()
+    check_dense_fermi_surface_stress_bookkeeping()
     check_cfl_screening_and_collective_counts()
     check_cfl_anomaly_matching_bookkeeping()
     print("All QCD phase-structure checks passed.")

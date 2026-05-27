@@ -61,6 +61,9 @@ GitHub issue #628.
 - `Q_em`, `mu_Q`, `A_0^a`: electromagnetic flavor generator, its global
   neutrality source, and temporal color-gauge background coordinates used in
   gauge-fixed neutrality equations.
+- `xi_a(p)`, `delta_eff`, `p_F,a`, `delta_C`: mass-stressed residual energy,
+  pairwise effective half-mismatch, shifted Fermi momentum, and the
+  two-species Clogston scale.
 - `T_1 dot T_2`, `C_2(R)`: one-gluon exchange color operator and quadratic
   Casimir used to identify the attractive dense-quark pairing channel.
 - `D_T(omega,k_perp)`, `lambda_mag`, `Lambda_M`: HDL transverse magnetic
@@ -172,6 +175,12 @@ GitHub issue #628.
   stationarity in gauge-fixed saddle calculations, and proves ideal CFL
   electric neutrality at zero electric source from traceless
   \(Q_{\rm em}\) and diagonal \(SU(3)_V\) invariance.
+- Derives mass and chemical-potential shifts of dense-quark Fermi surfaces,
+  including \(p_F=\mu-m^2/(2\mu)+O(m^4/\mu^3)\), the pairwise effective
+  half-mismatch, the strange-light stress scales \(m_s^2/(2\mu_q)\) and
+  \(m_s^2/(4\mu_q)\), and the Clogston scale
+  \(\delta_C=\Delta_0/\sqrt2\) in a controlled two-species constant-density
+  comparison.
 - Derives the one-gluon exchange color factors for
   `square tensor square = Sym^2 square plus wedge^2 square` in the
   trace-delta convention, identifies the antisymmetric channel as attractive,
@@ -222,8 +231,9 @@ GitHub issue #628.
   magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, dense neutrality
   bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
-  screening-sector and collective-mode count bookkeeping, CFL anomaly-matching
-  coefficient bookkeeping, and CFL Goldstone count.
+  screening-sector and collective-mode count bookkeeping, dense
+  Fermi-surface stress bookkeeping, CFL anomaly-matching coefficient
+  bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -278,6 +288,9 @@ GitHub issue #628.
   of zero color charge, the gauge-fixed temporal-background stationarity
   interpretation of color neutrality, and the ideal CFL electric-neutrality
   derivation.
+- 2026-05-27 dense-stress pass: added the mass/chemical-potential Fermi
+  surface mismatch expansion, the strange-light stress scale, and the
+  controlled two-species Clogston comparison.
 - 2026-05-27 CFL color-factor pass: added the trace-delta one-gluon exchange
   color-factor derivation, the spin-zero exchange-symmetry derivation, and a
   proposition-level physical Goldstone count.
