@@ -5,13 +5,19 @@
 
 \section{Field-Configuration Kernels}
 
-Set \(\hbar=1\) in this chapter. Let \(\widehat\phi(t,\vec x)\) be the
-canonical real scalar field at time \(t=x^0\).  The notation involving a
-spatial field configuration is defined through finite regulators.  Let
-\(\Lambda\) be a spatial regulator and let \(E_\Lambda\) be the resulting
-finite-dimensional real vector space of spatial field variables.  Its elements
-are denoted by \(\varphi_\Lambda\), and a linear functional
-\(\ell\in E_\Lambda^\vee\) evaluates the regulated field by
+\begin{convention}[Units]
+\label{conv:scalar-path-integral-hbar-one}
+Set \(\hbar=1\) throughout this chapter.
+\end{convention}
+
+\begin{definition}[Regulated equal-time configuration representation]
+\label{def:regulated-equal-time-configuration-representation}
+Let \(\widehat\phi(t,\vec x)\) be the canonical real scalar field at time
+\(t=x^0\).  The notation involving a spatial field configuration is defined
+through finite regulators.  Let \(\Lambda\) be a spatial regulator and let
+\(E_\Lambda\) be the resulting finite-dimensional real vector space of spatial
+field variables.  Its elements are denoted by \(\varphi_\Lambda\), and a
+linear functional \(\ell\in E_\Lambda^\vee\) evaluates the regulated field by
 \(\ell(\varphi_\Lambda)\).  The regulated configuration Hilbert space is
 \[
   \Hilb_\Lambda=L^2(E_\Lambda,\dd_\Lambda\varphi),
@@ -56,6 +62,7 @@ where \(\delta_\Lambda\) is the Dirac delta distribution relative to
 \(\ket{\varphi;t}\), \(\Psi_t[\varphi]\), and \(\delta[\varphi-\varphi_i]\)
 mean a compatible family of these regulated objects together with a stated
 limiting topology.
+\end{definition}
 
 \begin{definition}[Regulated scalar integration conventions]
 \label{def:regulated-scalar-integration-conventions}
@@ -176,6 +183,8 @@ a possible subtraction mechanism, not a path-integral measure.  A subtraction
 prescription is a further coordinate choice on regulated or meromorphic data,
 not a replacement for stating what was regulated.
 
+\begin{definition}[Finite-regulator time-sliced scalar kernel]
+\label{def:finite-regulator-time-sliced-scalar-kernel}
 At fixed finite-dimensional \(\Lambda\), the field theory is represented by a
 quantum-mechanical system with finitely many coordinates.  Choose a time
 partition
@@ -196,8 +205,10 @@ The normalization factor \(\mathcal N_{\Lambda,N}\), the discrete action
 \(S_{\Lambda,N}\), and possible local measure factors are part of the chosen
 operator-symbol and time-slicing convention, exactly as in the
 finite-dimensional construction of
-Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.  The
-following proposition records the precise sense in which the
+Chapter~\ref{ch:hamiltonian-evolution-time-sliced-path-integrals}.
+\end{definition}
+
+The following proposition records the precise sense in which the
 finite-dimensional Trotter theorem may be imported.
 
 \begin{proposition}[Trotter status depends on the spatial regulator]
@@ -259,10 +270,14 @@ Schr\"odinger operator; a separate constructive or perturbative definition is
 then required.
 \end{proof}
 
+\begin{proposition}[Regulated meaning of the configuration path integral]
+\label{prop:regulated-meaning-configuration-path-integral}
 Under the hypotheses of
 Proposition~\ref{prop:scalar-regulator-trotter-status}, the Lorentzian
-time-sliced kernels have the corresponding strong operator or distributional
-limits after smearing boundary configurations.  In that case
+time-sliced kernels of
+Definition~\ref{def:finite-regulator-time-sliced-scalar-kernel} have the
+corresponding strong operator or distributional limits after smearing boundary
+configurations.  In that case
 \[
   \lim_{N\to\infty}
   K_{\Lambda,N}(\varphi_f,t_f;\varphi_i,t_i)
@@ -287,7 +302,21 @@ spacetime lattice action introduced directly, or a purely perturbative cutoff,
 the construction requires its own definition: a Gaussian measure with an
 interaction, a finite lattice integral, a transfer-matrix or Hamiltonian
 construction, a constructive limit, or a formal asymptotic expansion.
+\end{proposition}
 
+\begin{proof}
+At fixed finite-dimensional \(\Lambda\), the hypotheses of
+Proposition~\ref{prop:scalar-regulator-trotter-status} identify the
+time-sliced kernels with the Trotter products for the self-adjoint Hamiltonian
+\(H_\Lambda\).  The strong operator convergence acts on square-integrable
+wavefunctions.  Pairing the resulting operator kernel with Schwartz test
+functions in the boundary variables gives the distributional kernel displayed
+above.  Passing from the regulated family to a continuum symbol is therefore
+notation for the specified continuum or perturbative limiting prescription.
+\end{proof}
+
+\begin{definition}[Compact scalar path-integral notation]
+\label{def:compact-scalar-path-integral-notation}
 The compact path-integral notation
 \[
   Z=\int [D\phi]\,\ee^{\ii S[\phi]}
@@ -298,6 +327,7 @@ and limiting prescription.  A positive Borel measure is one possible
 mathematical object for some bosonic Euclidean scalar theories; it is not the
 definition of a general QFT path integral and is not implied by the symbol
 \([D\phi]\).
+\end{definition}
 
 \begin{definition}[Lorentzian oscillatory path-integral notation]
 \label{def:lorentzian-oscillatory-path-integral}
@@ -483,6 +513,8 @@ continuations require spectral and growth assumptions.
 
 \section{Complex Time Contours}
 
+\begin{definition}[Complex-time contour with ordered insertions]
+\label{def:complex-time-contour-ordered-insertions}
 Let \(z^0\) be a complex time coordinate. If a contour \(C\) in the
 \(z^0\)-plane is used for the time variable, the corresponding action is
 \[
@@ -506,6 +538,7 @@ useful contour has insertion times whose imaginary parts are ordered:
 The real parts are free variables. The ordering in imaginary time provides the
 analytic separation that will become time ordering after a uniform rotation to
 real time.
+\end{definition}
 
 \begin{figure}[H]
 \centering
@@ -540,8 +573,37 @@ The figure records only the ordering data. The analytic statement is the
 existence of a holomorphic continuation of the relevant correlation function
 in the domain where the imaginary parts are ordered.
 
+\begin{hypothesis}[Ordered tube analyticity for scalar vacuum correlators]
+\label{hyp:ordered-tube-analyticity-scalar}
+For the scalar vacuum \(n\)-point distribution under consideration, assume
+there exists a holomorphic function
+\[
+  \mathcal W_n(z_1,\ldots,z_n),
+  \qquad z_a=(z_a^0,\vec x_a),
+\]
+on the ordered domain
+\[
+  \operatorname{Im}z_1^0
+  <
+  \operatorname{Im}z_2^0
+  <
+  \cdots
+  <
+  \operatorname{Im}z_n^0
+\]
+for fixed real spatial points, with distributional boundary value equal to
+the Lorentzian Wightman distribution in the corresponding operator order.
+The hypothesis includes the growth condition needed for the boundary value to
+exist as a tempered or otherwise specified distribution.  In a Wightman theory
+this is a consequence of the spectral condition and locality in the usual
+tube-domain construction; in a path-integral construction it is an assumption
+or theorem of the chosen reconstruction framework.
+\end{hypothesis}
+
 \section{Euclidean Functional Expression}
 
+\begin{definition}[Euclidean continuation of a scalar Lagrangian]
+\label{def:euclidean-continuation-scalar-lagrangian}
 Put the complex time on the Euclidean axis by writing
 \[
   z^0=-\ii\tau,
@@ -575,11 +637,14 @@ define the Euclidean Lagrangian density by
 when this analytic substitution is meaningful for the regulated theory. The
 Euclidean action is
 \[
-  S_E[\phi]
+S_E[\phi]
   =
   \int\dd^Dx_E\,\mathcal L_E(\phi,\partial_E\phi).
 \]
+\end{definition}
 
+\begin{proposition}[Euclidean scalar action]
+\label{prop:euclidean-scalar-action}
 For the real scalar field with
 \[
   \mathcal L
@@ -598,6 +663,33 @@ this gives
   +
   V(\phi).
 \]
+\end{proposition}
+
+\begin{proof}
+With mostly-plus Lorentzian metric,
+\[
+  -\frac12\eta^{\mu\nu}\partial_\mu\phi\,\partial_\nu\phi
+  =
+  \frac12(\partial_0\phi)^2
+  -
+  \frac12\sum_{i=1}^{D-1}(\partial_i\phi)^2 .
+\]
+Substitution of \(\partial_0=\ii\partial_\tau\) gives
+\[
+  \mathcal L(\phi,\ii\partial_\tau\phi,\partial_i\phi)
+  =
+  -\frac12(\partial_\tau\phi)^2
+  -
+  \frac12\sum_{i=1}^{D-1}(\partial_i\phi)^2
+  -
+  V(\phi).
+\]
+The definition \(\mathcal L_E=-\mathcal L|_{\partial_0=\ii\partial_\tau}\)
+then gives the displayed positive kinetic terms.
+\end{proof}
+
+\begin{definition}[Regulated Euclidean scalar Green function]
+\label{def:regulated-euclidean-scalar-green-function}
 With a regulator in place, the normalized Euclidean \(n\)-point function is
 \[
   \langle\phi(x_{E,1})\cdots\phi(x_{E,n})\rangle_{E,\Lambda}
@@ -627,9 +719,12 @@ factor carries the quadratic kinetic form.
 The continuum Euclidean Green function is the limit of these distributions
 when the limit exists in the chosen topology and with the chosen
 renormalization conditions.
+\end{definition}
 
 \section{Uniform Wick Rotation}
 
+\begin{definition}[Uniform Wick-rotation path for ordered times]
+\label{def:uniform-wick-rotation-path}
 Fix real numbers
 \[
   t_1>t_2>\cdots>t_n.
@@ -656,6 +751,7 @@ the ordering
   \operatorname{Im}z_n^0(\alpha)
 \]
 is maintained throughout the rotation.
+\end{definition}
 
 \begin{figure}[H]
 \centering
@@ -686,9 +782,11 @@ until the Lorentzian boundary is reached.}
 \label{fig:uniform-wick-rotation-insertion-times}
 \end{figure}
 
-Under the stated analyticity assumptions, the Euclidean correlation function
-continued along this common rotation becomes the Lorentzian time-ordered
-correlator with \(t_1>\cdots>t_n\):
+\begin{proposition}[Euclidean boundary value gives the time-ordered function]
+\label{prop:euclidean-boundary-value-time-ordered}
+Under Hypothesis~\ref{hyp:ordered-tube-analyticity-scalar}, the Euclidean
+correlation function continued along this common rotation becomes the
+Lorentzian time-ordered correlator with \(t_1>\cdots>t_n\):
 \[
   \langle\phi(x_{E,1})\cdots\phi(x_{E,n})\rangle_E
   \longrightarrow
@@ -698,9 +796,23 @@ correlator with \(t_1>\cdots>t_n\):
 \]
 Here \(\operatorname{T}\) denotes time ordering of the operator-valued
 distributions.
+\end{proposition}
+
+\begin{proof}
+By Definition~\ref{def:uniform-wick-rotation-path}, the points
+\(z_a^0(\alpha)=\ee^{-\ii\alpha}t_a\) stay inside the ordered domain of
+Hypothesis~\ref{hyp:ordered-tube-analyticity-scalar} for every
+\(0<\alpha\le\pi/2\).  At \(\alpha=\pi/2\), the points lie on the Euclidean
+axis and give the Euclidean boundary value.  As \(\alpha\to0^+\), the ordered
+tube boundary value is the Lorentzian Wightman distribution in the operator
+order \(1,\ldots,n\).  Since the real times already obey
+\(t_1>\cdots>t_n\), that Wightman order is exactly the time-ordered product.
+\end{proof}
 
 \section{The Free Euclidean Gaussian Measure}
 
+\begin{definition}[Finite-regulator Euclidean Gaussian datum]
+\label{def:finite-regulator-euclidean-gaussian-datum}
 At finite Euclidean regulator, the free scalar path integral is an ordinary
 Gaussian integral.  Let \(F_\Lambda\) be the finite-dimensional real vector
 space of regulated Euclidean fields, let \(\dd_\Lambda\phi\) be the regulator
@@ -736,6 +848,10 @@ The covariance is the inverse map
 \[
   C_\Lambda=A_\Lambda^{-1}:F_\Lambda^\vee\to F_\Lambda .
 \]
+\end{definition}
+
+\begin{proposition}[Finite-dimensional Gaussian source functional]
+\label{prop:finite-dimensional-gaussian-source-functional}
 For sources \(J\in F_\Lambda^\vee\), completing the square gives
 \[
   -\frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda
@@ -768,7 +884,30 @@ Differentiating at \(J=0\) gives, for \(f,g\in F_\Lambda^\vee\),
 \]
 and all higher moments are sums over pairings with this covariance.  This is
 Wick's theorem as a finite-dimensional Gaussian identity.
+\end{proposition}
 
+\begin{proof}
+The completion-of-the-square identity displayed above follows from
+\(A_\Lambda C_\Lambda=\id_{F_\Lambda^\vee}\).  Translation invariance of the
+Lebesgue density gives
+\[
+  \int_{F_\Lambda}\dd_\Lambda\phi\,
+  \ee^{-\frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda+\langle J,\phi\rangle_\Lambda}
+  =
+  \ee^{\frac12\langle J,C_\Lambda J\rangle_\Lambda}
+  \int_{F_\Lambda}\dd_\Lambda\phi\,
+  \ee^{-\frac12\langle A_\Lambda\phi,\phi\rangle_\Lambda},
+\]
+after the shift \(\phi\mapsto\phi+C_\Lambda J\).  Dividing by
+\(Z_{0,\Lambda}[0]\) gives the source functional.  Applying
+\(\partial_s\partial_t\) to the identity with \(J=sf+tg\) and setting
+\(s=t=0\) gives the two-point formula.  Repeated differentiation gives the
+sum over pairings because the exponent is quadratic in \(J\); odd derivatives
+vanish at \(J=0\), and even derivatives contract derivatives in pairs.
+\end{proof}
+
+\begin{definition}[Continuum free scalar Euclidean covariance]
+\label{def:continuum-free-scalar-euclidean-covariance}
 For the continuum free scalar field of mass \(m\ge0\),
 \[
   V(\phi)=\frac12m^2\phi^2,
@@ -822,6 +961,7 @@ the free two-point function is written
 \]
 for the free theory.  This equation is precisely the continuum form of the
 finite-dimensional covariance identity above.
+\end{definition}
 
 \section{Spectral Zeta Determinants}
 \label{sec:spectral-zeta-determinants}
@@ -880,14 +1020,57 @@ For a reference scale \(\mu\) of mass dimension \(1\), define
 \end{equation}
 \end{definition}
 
-The scale dependence in \eqref{eq:zeta-determinant-definition} is local in
-the following sense.  The value \(\zeta_A(0)\) is determined by the coefficient
-of \(t^0\) in the heat-trace expansion, up to the explicit removal of zero
-modes.  Therefore changing \(\mu\) changes a one-loop effective action by the
-same local heat-kernel coefficient that is later represented by local
-renormalized coordinates.  This is the determinant counterpart of the
-regulator/subtraction distinction recorded in
-Table~\ref{tab:regulator-integration-status-catalog}.
+\begin{proposition}[Scale dependence of a zeta determinant]
+\label{prop:zeta-determinant-scale-dependence}
+In the setting of Definition~\ref{def:spectral-zeta-determinant}, suppose
+\[
+  \operatorname{Tr}\ee^{-tA}
+  \sim
+  \sum_{j\ge0} a_j(A)\,t^{(j-d)/r}
+  \qquad (t\downarrow0)
+\]
+with no logarithmic term at order \(t^0\), and suppose zero modes have been
+removed.  Then
+\[
+  \zeta_A(0)=a_d(A).
+\]
+Consequently a change \(\mu\mapsto \ee^\sigma\mu\) changes the determinant by
+\[
+  \log\det\nolimits_\zeta\!\left(\frac{A}{(\ee^\sigma\mu)^r}\right)
+  -
+  \log\det\nolimits_\zeta\!\left(\frac{A}{\mu^r}\right)
+  =
+  -r\sigma\,a_d(A).
+\]
+Thus the \(\mu\)-dependence of the one-loop determinant is controlled by the
+local heat-kernel coefficient \(a_d(A)\).
+\end{proposition}
+
+\begin{proof}
+The Mellin representation
+\[
+  \zeta_A(s)=\frac1{\Gamma(s)}
+  \int_0^\infty \dd t\,t^{s-1}\operatorname{Tr}\ee^{-tA}
+\]
+continues meromorphically by subtracting the small-\(t\) heat-kernel
+asymptotic series.  The coefficient \(a_d(A)\) multiplies \(t^0\), hence
+contributes \(a_d(A)/(s\Gamma(s))\) to \(\zeta_A(s)\) near \(s=0\).  Since
+\(\Gamma(s)^{-1}=s+O(s^2)\), this contribution has value \(a_d(A)\) at
+\(s=0\).  The remaining subtracted terms are either regular and vanish at
+\(s=0\) after multiplication by \(\Gamma(s)^{-1}\), or have poles away from
+\(s=0\) under the stated no-log hypothesis.  This gives
+\(\zeta_A(0)=a_d(A)\).  The scale-dependence formula follows immediately from
+\[
+  \log\det\nolimits_{\zeta}\left(\frac{A}{\mu^r}\right)
+  =
+  -\zeta_A'(0)-\zeta_A(0)\log\mu^r .
+\]
+\end{proof}
+
+This is the determinant counterpart of the regulator/subtraction distinction
+recorded in Table~\ref{tab:regulator-integration-status-catalog}: changing
+the determinant scale changes a one-loop effective action by a local
+heat-kernel coefficient, not by a new nonlocal observable.
 
 \begin{proposition}[One-loop determinant from a quadratic fluctuation]
 \label{prop:zeta-one-loop-quadratic-fluctuation}
@@ -1038,6 +1221,8 @@ is the \(c=1\) case of \(E_0=-\pi c/(6L)\) on the cylinder.
 
 \section{The Feynman Prescription}
 
+\begin{definition}[Wick-rotated free propagator poles]
+\label{def:wick-rotated-free-propagator-poles}
 Let
 \[
   \omega_{\vec k}=\sqrt{\vec k^2+m^2}.
@@ -1079,6 +1264,7 @@ As \(\alpha\to0^+\), these poles approach the real axis as
   \qquad
   +\omega_{\vec k}-\ii0.
 \]
+\end{definition}
 
 \begin{figure}[H]
 \centering
@@ -1115,6 +1301,8 @@ Lorentzian Feynman positions
 \label{fig:feynman-prescription-from-wick-rotation}
 \end{figure}
 
+\begin{proposition}[Feynman boundary value]
+\label{prop:feynman-propagator-wick-rotation-boundary-value}
 The limiting Lorentzian distribution is therefore
 \[
   \Delta_F(x;m^2)
@@ -1133,9 +1321,35 @@ where
 \]
 The limit \(\epsilon\to0^+\) is taken after the distribution has been paired
 with test functions or after the contour integral has been evaluated.
+\end{proposition}
+
+\begin{proof}
+Definition~\ref{def:wick-rotated-free-propagator-poles} shows that the
+positive-frequency pole approaches the real \(k^0\)-axis from below and the
+negative-frequency pole approaches it from above.  The denominator
+\(k^2+m^2-\ii\epsilon\), with
+\(k^2=-(k^0)^2+\vec k^2\), has precisely these pole placements:
+\[
+  k^2+m^2-\ii\epsilon
+  =
+  -(k^0)^2+\omega_{\vec k}^2-\ii\epsilon .
+\]
+Solving to first order in \(\epsilon\) gives
+\[
+  k^0=+\omega_{\vec k}-\ii0,
+  \qquad
+  k^0=-\omega_{\vec k}+\ii0 .
+\]
+The prefactor \(-\ii\) is the Jacobian and orientation factor obtained from
+the rotation \(k_\tau=\ii\ee^{\ii\alpha}k^0\).  The limit is a boundary value
+of meromorphic functions in \(k^0\), hence is interpreted only after pairing
+with test functions or after an equivalent contour evaluation.
+\end{proof}
 
 \section{Three Green Functions}
 
+\begin{definition}[Wightman, time-ordered, and Euclidean Green functions]
+\label{def:wightman-time-ordered-euclidean-green-functions}
 Let \(\widehat\phi\) be a scalar operator-valued distribution with vacuum
 \(\vac\). The Wightman \(n\)-point distribution is
 \[
@@ -1185,6 +1399,7 @@ it is given by
   W_n(x_{i_1},\ldots,x_{i_n})
   \big|_{x_a^0=-\ii\tau_a}.
 \]
+\end{definition}
 
 These three distributions encode different boundary values of the same
 analytic structure when the required analyticity and spectral assumptions are
