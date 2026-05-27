@@ -208,6 +208,12 @@ Current checks:
   associativity and degree selection in projective-space quantum cohomology,
   the stable-map virtual-dimension formula, and the B-model top-form degree
   condition.
+- `twisting_representation_checks.py`: exact finite checks for the Volume
+  VIII supersymmetric-twists chapter, including the \(SU(2)\) tensor-product
+  decomposition of the Donaldson twist, the dimensions of the twisted
+  gaugino form fields, the two-dimensional A/B twist scalar-supercharge
+  charge bookkeeping, and the Donaldson-Witten \(Q^2=\delta_{-\phi}\)
+  closure ledger.
 - `tqft_frobenius_gluing_checks.py`: exact rational checks for the Volume VIII
   bordism-functoriality chapter, including the inverse-pairing cylinder
   identity, Frobenius neck-exchange relation, pair-of-pants associativity, and

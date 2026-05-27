@@ -1,151 +1,581 @@
-\chapter{Twists Of Supersymmetric Theories}
+\chapter{Twists of Supersymmetric Theories}
 \label{ch:tqft-twists-of-supersymmetric-theories}
 
 \ConventionsEuclidean
 
-A topological twist is a change of the rotation action on fields and
-operators using an \(R\)-symmetry of a supersymmetric QFT.  The goal is to
-produce a scalar odd symmetry whose cohomology defines metric-independent
-observables under stated Ward-identity hypotheses.
+A topological twist is a change of the rotation background of a
+supersymmetric QFT by an \(R\)-symmetry background.  Its first output is
+representation-theoretic: fields and supercharges are reinterpreted as
+sections of different geometric bundles.  Its second output, when the
+twisted theory has a scalar odd symmetry \(Q\) satisfying the hypotheses of
+Chapter~\ref{ch:tqft-cohomological-field-theories}, is a cohomological QFT.
+The two steps are logically distinct.  The twist supplies a candidate
+cohomological differential; the Ward identity, stress-tensor relation,
+contact prescription, and regulator decide whether it defines a
+metric-independent continuum theory.
 
-\section{Twisting Datum}
+\section{Twisting as a Background Construction}
 
-Let a Euclidean supersymmetric QFT in dimension \(d\) have rotation group
-\(\operatorname{Spin}(d)\) and compact \(R\)-symmetry group \(G_R\).  A
-twisting datum is a continuous homomorphism
+Let the flat-space Euclidean theory have rotation group
+\(\operatorname{Spin}(d)\) and compact internal \(R\)-symmetry group \(G_R\).
+The odd supersymmetry generators form a finite-dimensional
+\(\mathbb Z_2\)-odd representation
+\[
+  \mathsf Q
+  \quad\text{of}\quad
+  \operatorname{Spin}(d)\times G_R .
+\]
+The fields form representations of the same group together with gauge and
+flavor representations.
+
+\begin{definition}[Twisting homomorphism]
+A twisting homomorphism is a continuous homomorphism
 \[
   \rho:\operatorname{Spin}(d)\longrightarrow G_R .
 \]
-The twisted rotation group is the diagonal subgroup
+The corresponding twisted rotation group is the diagonal subgroup
 \[
-  \operatorname{Spin}(d)_{\rho}
-  \subset
-  \operatorname{Spin}(d)\times G_R,
-  \qquad
-  g\longmapsto (g,\rho(g)).
-\]
-Every field representation is restricted to this diagonal subgroup.  A
-supercharge \(Q\) is a candidate cohomological differential when it is a
-scalar under \(\operatorname{Spin}(d)_\rho\) and obeys
-\[
-  Q^2=\delta_{\mathrm{gauge}}(\Lambda)+\delta_{\mathrm{flavor}}(\alpha)
-\]
-on gauge-invariant, flavor-invariant observables.  If translations appear on
-the right side, the resulting theory is cohomological only after the
-translation is trivial in the chosen observable sector.
-
-\section{Cohomological Observables}
-
-Let \(\mathcal A\) be the graded algebra of gauge-invariant local or extended
-observables in the twisted theory.  The odd derivation
-\[
-  d_Q\mathcal O=[Q,\mathcal O\}_{\mathrm{gr}}
-\]
-defines the cohomology
-\[
-  H_Q(\mathcal A)=\ker d_Q/\operatorname{im}d_Q .
-\]
-Correlation functions of \(Q\)-closed observables descend to \(H_Q(\mathcal A)\)
-provided the finite-regulator functional integral or Hilbert-space trace has
-no boundary contribution under the \(Q\)-variation.
-
-\begin{proposition}[Metric independence]
-\label{prop:twist-metric-independence}
-Let \(Z_g(\mathcal O_1,\ldots,\mathcal O_n)\) be a regulated correlation
-functional on a compact manifold \(M\) for \(Q\)-closed insertions.  Assume
-that the regulator preserves \(Q\), that no boundary term arises in the
-space of fields, and that the metric variation of the action is
-\[
-  \frac{\delta S}{\delta g^{\mu\nu}(x)}
+  \operatorname{Spin}(d)_\rho
   =
-  \{Q,G_{\mu\nu}(x)\}_{\mathrm{gr}}
+  \{(s,\rho(s))\mid s\in\operatorname{Spin}(d)\}
+  \subset \operatorname{Spin}(d)\times G_R .
 \]
-up to contact terms whose integrals vanish against the declared insertions.
-Then \(Z_g(\mathcal O_1,\ldots,\mathcal O_n)\) is locally constant as a
-function of the metric.
+Every flat-space representation \(V\) of
+\(\operatorname{Spin}(d)\times G_R\) becomes a representation
+\[
+  V_\rho
+  :=
+  {\rm Res}^{\operatorname{Spin}(d)\times G_R}_{\operatorname{Spin}(d)_\rho}V
+\]
+of the twisted rotation group.
+\end{definition}
+
+On a curved oriented Riemannian \(d\)-manifold \(M\), this restriction has the
+following geometric meaning.  Let \(P_{\operatorname{Spin}}(M)\) be a spin
+frame bundle when \(M\) is spin.  Turning on the \(R\)-symmetry background
+determined by the twist means choosing the principal \(G_R\)-bundle
+\[
+  P_R(M)=P_{\operatorname{Spin}}(M)\times_{\rho}G_R .
+\]
+If \(V\) is a representation of \(\operatorname{Spin}(d)\times G_R\), the
+twisted associated bundle is
+\[
+  E_V^\rho(M)
+  =
+  P_{\operatorname{Spin}}(M)\times_{\operatorname{Spin}(d)} V_\rho .
+\]
+Thus a field which was a spinor in the untwisted flat theory can become a
+differential form, a tensor, or a section of another natural bundle after
+restriction to \(\operatorname{Spin}(d)_\rho\).
+
+\begin{definition}[Scalar twisting supercharge]
+A supercharge \(Q\in\mathsf Q\) is a scalar for the twist \(\rho\) if
+\[
+  Q\in \mathsf Q^{\operatorname{Spin}(d)_\rho}.
+\]
+It is a cohomological candidate if, in the twisted algebra of fields or
+observables,
+\begin{equation}
+  Q^2
+  =
+  \delta_{\rm gauge}(\lambda_Q)+
+  \delta_{\rm flavor}(\alpha_Q)+
+  \mathcal L_{v_Q}
+  \label{eq:twist-q-square-general}
+\end{equation}
+with specified field-dependent or background-dependent parameters.  On a
+chosen observable sector, \(Q\) is a differential exactly when the right side
+acts trivially there.
+\end{definition}
+
+For a topological twist on a closed manifold, the intended sector in the
+examples below is gauge-invariant, flavor-invariant, and invariant under the
+bosonic symmetry generated by \(v_Q\).  In the Donaldson-Witten twist below,
+\(v_Q=0\) and
+\(Q^2\) is a gauge transformation by the adjoint scalar.  In many
+localization problems on curved manifolds, \(v_Q\) is an isometry; the theory
+is then equivariant with respect to that isometry rather than purely
+topological.
+
+\section{Anomaly and Global-Form Conditions}
+
+The homomorphism \(\rho\) is a representation-theoretic input.  A QFT twist
+requires additional conditions.
+
+\begin{definition}[Regulator-level twist datum]
+A regulator-level twist datum on \(M\) consists of:
+\[
+\begin{array}{ll}
+  \text{rotation geometry} & P_{\operatorname{Spin}}(M)
+      \text{ or the corresponding spin}^{c}\text{/oriented replacement},\\
+  \text{\(R\)-background} & P_R(M)
+      \text{ induced by }\rho\text{ or by a specified refinement},\\
+  \text{field/BV space} & \mathcal F_\Lambda^\rho,\\
+  \text{odd symmetry} & Q_\Lambda,\\
+  \text{closure relation} & Q_\Lambda^2
+      \text{ as in \eqref{eq:twist-q-square-general}},\\
+  \text{regulated action or state} & S_\Lambda^\rho\text{ or }\omega_\Lambda^\rho,\\
+  \text{integration cycle} & \Gamma_\Lambda^\rho,\\
+  \text{observable algebra} & \mathcal A_\Lambda^\rho
+      \text{ including contact representatives}.
+\end{array}
+\]
+The datum is admissible when the \(R\)-symmetry used in the twist is
+nonanomalous for the chosen backgrounds and when \(Q_\Lambda\) preserves
+\(S_\Lambda^\rho\), \(\Gamma_\Lambda^\rho\), and the source/contact
+prescription.
+\end{definition}
+
+The global condition may be weaker than the original spin condition.  For
+example, after twisting, every field in a particular multiplet may transform
+as a tensor field on an oriented four-manifold.  This tensorial appearance is
+a conclusion about the associated bundles after the twist; possible
+anomaly-line and global-form constraints still come from fermion
+determinants, gauge bundles, discrete theta angles, and background
+\(R\)-symmetry bundles.  Each theory requires its own determinant-line and
+anomaly check.
+
+\section{Metric Independence from a Twisted Supercharge}
+
+Let \(M\) be compact and let
+\[
+  Z_g^\rho(\mathcal O_1,\ldots,\mathcal O_n)
+\]
+be a regulated correlator of \(Q_\Lambda\)-closed insertions in the twisted
+theory.  The general cohomological criterion was proved in
+Chapter~\ref{ch:tqft-cohomological-field-theories}.  In a supersymmetric
+twist, the required metric-response statement is supplied by the
+supercurrent multiplet together with the chosen curved-background coupling.
+
+\begin{proposition}[Twisted metric-independence criterion]
+\label{prop:twist-metric-independence}
+Assume the regulator-level twist datum above satisfies:
+\begin{enumerate}[label=(\roman*)]
+\item the \(Q_\Lambda\)-Ward identity has no boundary anomaly on
+  \(\Gamma_\Lambda^\rho\);
+\item \(Q_\Lambda\mathcal O_i=0\) for all insertions;
+\item the integrated metric response has the form
+\begin{equation}
+  \delta_g S_\Lambda^\rho
+  =
+  Q_\Lambda \mathcal V_{\Lambda,\delta g}
+  +
+  \mathcal C_{\Lambda,\delta g},
+  \label{eq:twist-metric-response}
+\end{equation}
+where \(\mathcal C_{\Lambda,\delta g}\) is the declared contact and anomaly
+representative;
+\item the insertion prescription makes
+\[
+  \left\langle
+  \mathcal C_{\Lambda,\delta g}\prod_i\mathcal O_i
+  \right\rangle_\Lambda=0 .
+\]
+\end{enumerate}
+Then \(Z_g^\rho(\mathcal O_1,\ldots,\mathcal O_n)\) is locally constant in
+the metric \(g\) at the regulator scale.  If the continuum limit exists and
+the hypotheses are stable under that limit, the limiting correlator is
+locally metric independent.
 \end{proposition}
 
 \begin{proof}
-For a variation \(\delta g^{\mu\nu}\),
+Differentiating the regulated path integral gives
 \[
-  \delta_g Z_g
+  \delta_g Z_g^\rho
   =
-  -\int_M d^dx\,\delta g^{\mu\nu}(x)
+  -
   \left\langle
-  \{Q,G_{\mu\nu}(x)\}_{\mathrm{gr}}
-  \prod_i\mathcal O_i
-  \right\rangle .
+  \delta_g S_\Lambda^\rho\prod_i\mathcal O_i
+  \right\rangle_\Lambda
+  +
+  \delta_g^{\rm contact}
+  \left\langle\prod_i\mathcal O_i\right\rangle_\Lambda .
 \]
-Since \(d_Q\mathcal O_i=0\), the integrand is the \(Q\)-variation of the
-product \(G_{\mu\nu}(x)\prod_i\mathcal O_i\), up to the contact terms included
-in the hypothesis.  The \(Q\)-Ward identity for the regulator sets the
-expectation value of this variation to zero.  Hence every first metric
-variation vanishes.
+Insert \eqref{eq:twist-metric-response}.  The term with
+\(Q_\Lambda\mathcal V_{\Lambda,\delta g}\) is, up to the vanishing
+\(Q_\Lambda\mathcal O_i\) terms, the \(Q_\Lambda\)-variation of
+\(\mathcal V_{\Lambda,\delta g}\prod_i\mathcal O_i\).  The Ward identity
+sets its expectation value to zero.  The remaining contact representative is
+zero by hypothesis.  Hence the first variation vanishes.
 \end{proof}
 
-\section{Donaldson Twist}
+The proposition is deliberately stated at regulator level.  A formal identity
+\(\delta_gS=Q(\cdots)\) in a continuum Lagrangian is one ingredient; it
+becomes a theorem about a QFT only after the regulated Ward identity,
+contact terms, and boundary behavior are controlled.
+
+\section{\texorpdfstring{Four-Dimensional \(\mathcal N=2\) Supercharges}{Four-Dimensional N=2 Supercharges}}
 
 In four Euclidean dimensions,
 \[
   \operatorname{Spin}(4)=SU(2)_+\times SU(2)_- .
 \]
-The \(\mathcal N=2\) vector multiplet has \(R\)-symmetry
+The pure \(\mathcal N=2\) vector multiplet has \(R\)-symmetry
 \[
-  G_R=SU(2)_R\times U(1)_r .
+  G_R=SU(2)_R\times U(1)_r
 \]
-The Donaldson twist uses the diagonal subgroup
-\[
-  SU(2)'_+=\operatorname{diag}(SU(2)_+\times SU(2)_R),
+at the classical level; the subgroup used in the Donaldson twist is
+\(SU(2)_R\).  The supercharges transform as
+\begin{equation}
+  Q_\alpha^{\ A}\in (2,1;2)_{+1},
   \qquad
-  \operatorname{Spin}(4)'=SU(2)'_+\times SU(2)_- .
-\]
-Under this twisted rotation group the supercharges decompose into a scalar,
-a one-form, and a self-dual two-form.  The scalar supercharge is the
-cohomological differential.  The twisted vector multiplet fields may be
-organized as
+  \bar Q_{\dot\alpha A}\in (1,2;2)_{-1},
+  \label{eq:n2-supercharge-representations}
+\end{equation}
+where \(\alpha\) is an \(SU(2)_+\) spinor index,
+\(\dot\alpha\) is an \(SU(2)_-\) spinor index, \(A\) is an \(SU(2)_R\)
+index, and the subscript denotes \(U(1)_r\) charge in the normalization used
+in this chapter.  The Donaldson twisting homomorphism uses the \(SU(2)_R\)
+factor.
+
+The Donaldson twisting homomorphism identifies \(SU(2)_+\) with \(SU(2)_R\):
 \[
-  A_\mu,\qquad
-  \phi,\bar\phi,\qquad
-  \psi_\mu,\qquad
-  \chi_{\mu\nu}^+,\qquad
-  \eta ,
+  \rho_{\rm DW}:SU(2)_+\times SU(2)_-\longrightarrow SU(2)_R,
+  \qquad
+  \rho_{\rm DW}(s_+,s_-)=s_+ .
 \]
-with auxiliary fields added so that the \(Q\)-transformations close off shell
-up to gauge transformations.
-
-\section{Two-Dimensional A And B Twists}
-
-For a two-dimensional theory with \(\mathcal N=(2,2)\) supersymmetry, the
-rotation group is \(U(1)_{\mathrm{rot}}\) and the \(R\)-symmetry contains
-vector and axial \(U(1)\) factors when they are nonanomalous.  The A twist
-uses \(U(1)_V\); the B twist uses \(U(1)_A\).  The A-model cohomological
-observables depend on symplectic data and have instanton sectors given by
-holomorphic maps.  The B-model observables depend on complex-structure data
-and are represented perturbatively by polyvector-field cohomology.  These
-statements require the anomaly and compactness assumptions developed in
-Chapter~\ref{ch:tqft-topological-sigma-models}.
-
-\section{Regulator And Contact-Term Ledger}
-
-Twisting changes the representation of fields under rotations; it does not
-by itself construct a continuum QFT.  A complete cohomological QFT datum must
-include:
+The twisted rotation group is
 \[
-\begin{array}{ll}
-  \text{field space or algebra} & \mathcal F,\\
-  \text{odd differential} & Q,\\
-  \text{closure relation} & Q^2,\\
-  \text{action or state} & S \text{ or } \omega,\\
-  \text{measure or trace} & D\Phi \text{ at finite regulator},\\
-  \text{contact terms} & \text{operator-collision prescriptions}.
+  \operatorname{Spin}(4)'=SU(2)'_+\times SU(2)_-,
+  \qquad
+  SU(2)'_+=\operatorname{diag}(SU(2)_+\times SU(2)_R).
+\]
+
+\begin{lemma}[Supercharge decomposition in the Donaldson twist]
+\label{lem:donaldson-supercharge-decomposition}
+Under \(SU(2)'_+\times SU(2)_-\),
+\[
+  (2,1;2)
+  \longmapsto
+  (1,1)\oplus(3,1),
+  \qquad
+  (1,2;2)
+  \longmapsto
+  (2,2).
+\]
+Thus the twisted supercharges consist of a scalar \(Q\), a self-dual
+two-form supercharge \(Q^+_{\mu\nu}\), and a one-form supercharge
+\(Q_\mu\).
+\end{lemma}
+
+\begin{proof}
+The first representation has an \(SU(2)_+\) doublet index and an \(SU(2)_R\)
+doublet index.  Restriction to the diagonal \(SU(2)'_+\) gives
+\[
+  2\otimes 2=1\oplus3 .
+\]
+The singlet is represented by contraction with the invariant tensor
+\(\epsilon^{\alpha A}\), hence
+\[
+  Q=\epsilon^{\alpha A}Q_{\alpha A}
+\]
+is a scalar.  The triplet is the symmetric traceless part and is identified
+with self-dual two-forms because the adjoint representation of \(SU(2)_+\)
+is \(\Lambda^{2,+}\).  The second representation has no \(SU(2)_+\) spinor
+index; its \(SU(2)_R\) doublet becomes an \(SU(2)'_+\) doublet, while the
+\(SU(2)_-\) doublet remains.  Therefore it becomes \((2,2)\), the vector
+representation \(T^\ast M\).
+\end{proof}
+
+\section{Donaldson-Witten Field Decomposition}
+
+The untwisted vector multiplet contains a connection \(A_\mu\), complex
+adjoint scalars \(\phi,\bar\phi\), gauginos
+\(\lambda_\alpha^{\ A}\), \(\bar\lambda_{\dot\alpha A}\), and auxiliary
+fields.  After the twist, the gauginos decompose by the same representation
+calculation:
+\[
+  \lambda_\alpha^{\ A}
+  \longmapsto
+  \eta\oplus\chi^+_{\mu\nu},
+  \qquad
+  \bar\lambda_{\dot\alpha A}
+  \longmapsto
+  \psi_\mu .
+\]
+On a four-manifold \(M\) and a principal gauge bundle \(P\to M\), the
+twisted fields are therefore
+\[
+  A\in\mathcal A(P),
+  \qquad
+  \phi,\bar\phi,\eta\in\Omega^0(M,\operatorname{ad}P),
+\]
+\[
+  \psi\in\Omega^1(M,\operatorname{ad}P),
+  \qquad
+  \chi^+,H^+\in\Omega^{2,+}(M,\operatorname{ad}P).
+\]
+The fields \(\eta,\psi,\chi^+\) are odd; \(A,\phi,\bar\phi,H^+\) are even.
+The auxiliary field \(H^+\) is included so that the scalar symmetry closes
+off shell.
+
+Use the infinitesimal gauge convention
+\begin{equation}
+  \delta_\epsilon A=d_A\epsilon,
+  \qquad
+  \delta_\epsilon X=-[\epsilon,X]
+  \quad\text{for }X\in\Omega^\bullet(M,\operatorname{ad}P).
+  \label{eq:twist-gauge-convention}
+\end{equation}
+The Donaldson-Witten scalar supercharge acts by
+\begin{equation}
+\begin{aligned}
+  &QA=\psi,\qquad &&Q\psi=-d_A\phi,\qquad &&Q\phi=0,\\
+  &Q\bar\phi=\eta,\qquad &&Q\eta=[\phi,\bar\phi],\\
+  &Q\chi^+=H^+,\qquad &&QH^+=[\phi,\chi^+] .
+\end{aligned}
+\label{eq:donaldson-witten-q-transformations}
+\end{equation}
+
+\begin{proposition}[Off-shell closure]
+\label{prop:donaldson-witten-q-closure}
+With the convention \eqref{eq:twist-gauge-convention}, the transformations
+\eqref{eq:donaldson-witten-q-transformations} satisfy
+\[
+  Q^2=\delta_{-\phi}
+\]
+on all twisted vector-multiplet fields.  Hence \(Q^2=0\) on gauge-invariant
+observables.
+\end{proposition}
+
+\begin{proof}
+For the connection,
+\[
+  Q^2A=Q\psi=-d_A\phi=\delta_{-\phi}A.
+\]
+For an adjoint field \(X\), \(\delta_{-\phi}X=[\phi,X]\).  The transformations
+give
+\[
+  Q^2\bar\phi=Q\eta=[\phi,\bar\phi],
+  \qquad
+  Q^2\chi^+=QH^+=[\phi,\chi^+],
+  \qquad
+  Q^2\phi=0=[\phi,\phi].
+\]
+It remains to check \(\psi\) and \(H^+\).  Since \(QA=\psi\) and
+\(Q\phi=0\),
+\[
+  Q(d_A\phi)=[\psi,\phi],
+\]
+where the bracket includes the wedge product of forms and the Lie bracket in
+\(\operatorname{ad}P\).  Hence
+\[
+  Q^2\psi=-[\psi,\phi]=[\phi,\psi]=\delta_{-\phi}\psi.
+\]
+Finally,
+\[
+  Q^2H^+=Q[\phi,\chi^+]=[\phi,H^+]=\delta_{-\phi}H^+ .
+\]
+Thus the closure relation holds on each generator and therefore on the
+graded algebra they generate.
+\end{proof}
+
+\section{The Donaldson-Witten Gauge Fermion}
+
+Let the monograph gauge trace convention be
+\(\operatorname{tr}(t^at^b)=\delta^{ab}\).  The Yang-Mills action is written
+with
+\[
+  \frac{1}{4g_{\rm YM}^2}
+  \int_M d{\rm vol}_g\,\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})
+  =
+  \frac{1}{2g_{\rm YM}^2}
+  \int_M\operatorname{tr}(F\wedge *F).
+\]
+The topological term uses
+\[
+  k(P)=-\frac{1}{8\pi^2}\int_M\operatorname{tr}(F_A\wedge F_A).
+\]
+
+A convenient cohomological representative of the Donaldson-Witten action has
+the form
+\begin{equation}
+  S_{\rm DW}
+  =
+  \frac{1}{g_{\rm YM}^2}Q\Psi
+  -\frac{i\theta}{8\pi^2}\int_M\operatorname{tr}(F_A\wedge F_A),
+  \label{eq:donaldson-witten-action-q-exact}
+\end{equation}
+where the gauge fermion contains the Mathai-Quillen term
+\begin{equation}
+  \Psi_{\rm MQ}
+  =
+  \int_M
+  \operatorname{tr}\left[
+  \chi^+\wedge *
+  \left(F_A^+ +\frac12 H^+\right)
+  \right]
+  +\text{terms fixing the scalar/gauge directions}.
+  \label{eq:dw-mq-gauge-fermion}
+\end{equation}
+Applying \(Q\) to the displayed term gives
+\[
+  Q\Psi_{\rm MQ}
+  =
+  \int_M\operatorname{tr}\left[
+  H^+\wedge *\left(F_A^++\frac12H^+\right)
+  -
+  \chi^+\wedge *d_A^+\psi
+  \right],
+\]
+up to the sign convention for moving the odd field \(\chi^+\) through \(Q\).
+The algebraic equation of motion for \(H^+\) is
+\[
+  H^+=-F_A^+ .
+\]
+Substitution gives the bosonic square
+\[
+  \frac12\int_M\operatorname{tr}(F_A^+\wedge *F_A^+)
+\]
+with the convention of \eqref{eq:dw-mq-gauge-fermion}.  Rescaling
+\(\Psi_{\rm MQ}\) rescales this square; the localization locus is the
+zero-set of the section
+\[
+  F_A^+=0.
+\]
+
+The cohomological fields \((\psi,\chi^+,H^+)\) are precisely the
+gauge-equivariant Mathai-Quillen variables for the section
+\[
+  F^+:\mathcal A(P)\longrightarrow
+  \Omega^{2,+}(M,\operatorname{ad}P).
+\]
+After quotienting by the gauge group, the virtual tangent-obstruction
+complex at an anti-self-dual connection is
+\[
+  \Omega^0(M,\operatorname{ad}P)
+  \xrightarrow{d_A}
+  \Omega^1(M,\operatorname{ad}P)
+  \xrightarrow{d_A^+}
+  \Omega^{2,+}(M,\operatorname{ad}P),
+\]
+which is the complex used in the Witten-Donaldson chapter to compute the
+expected dimension.
+
+\section{Donaldson Observables from Descent}
+
+Let \(p\) be an invariant polynomial on \(\mathfrak g\).  For
+\(\mathfrak g=\mathfrak{su}(2)\) the basic example in the monograph trace
+convention is
+\[
+  p(\phi)=\frac12\operatorname{tr}(\phi^2).
+\]
+Using the universal curvature combination
+\[
+  \mathcal F_Q
+  =
+  F_A+\psi+\phi
+\]
+graded by form degree plus \(Q\)-degree, the Bianchi identity and
+\eqref{eq:donaldson-witten-q-transformations} imply the equivariant closure
+\[
+  (Q+d_A)\mathcal F_Q=0
+  \quad\text{modulo the gauge action}.
+\]
+Consequently
+\[
+  (Q+d)\operatorname{tr}(\mathcal F_Q^2)=0
+\]
+on gauge-invariant expressions.  Writing
+\[
+  \frac12\operatorname{tr}(\mathcal F_Q^2)
+  =
+  \mathcal O^{(0)}+\mathcal O^{(1)}+\mathcal O^{(2)}
+  +\mathcal O^{(3)}+\mathcal O^{(4)}
+\]
+by form degree gives the descent equations
+\[
+  Q\mathcal O^{(0)}=0,
+  \qquad
+  Q\mathcal O^{(r)}+d\mathcal O^{(r-1)}=0
+  \quad(1\le r\le4).
+\]
+For a closed \(r\)-cycle \(\gamma\subset M\),
+\[
+  \mathcal O_\gamma=\int_\gamma\mathcal O^{(r)}
+\]
+is \(Q\)-closed.  If \(\gamma-\gamma'=\partial C\), then
+\[
+  \mathcal O_\gamma-\mathcal O_{\gamma'}
+  =
+  -Q\int_C\mathcal O^{(r+1)}.
+\]
+Thus Donaldson observables depend on homology classes in \(Q\)-cohomology,
+subject to the contact-term prescription for products of integrated
+descendants.
+
+\section{\texorpdfstring{Two-Dimensional \(\mathcal N=(2,2)\) A and B Twists}{Two-Dimensional N=(2,2) A and B Twists}}
+
+Let the Euclidean rotation group in two dimensions be \(U(1)_{\rm rot}\).
+Use supercharges
+\[
+  Q_+,\quad Q_-,\quad \bar Q_+,\quad \bar Q_- ,
+\]
+with spins
+\[
+  s(Q_+)=s(\bar Q_+)=+\frac12,
+  \qquad
+  s(Q_-)=s(\bar Q_-)=-\frac12 .
+\]
+Assume both vector and axial \(R\)-symmetries exist as nonanomalous
+symmetries.  Fix charges
+\[
+\begin{array}{c|rrrr}
+ & Q_+ & Q_- & \bar Q_+ & \bar Q_-\\ \hline
+q_V & +1 & +1 & -1 & -1\\
+q_A & +1 & -1 & -1 & +1 .
 \end{array}
 \]
-Only after these entries are fixed can metric independence, localization, and
-descent equations be treated as mathematical consequences.
+With the convention
+\[
+  s_\rho=s+\frac12 q_R ,
+\]
+the A-twist uses \(q_R=q_V\) and has scalar supercharges
+\[
+  \bar Q_+,\qquad Q_- .
+\]
+The B-twist uses \(q_R=q_A\) and has scalar supercharges
+\[
+  \bar Q_+,\qquad \bar Q_- .
+\]
+The standard BRST choices are
+\[
+  Q_A=\bar Q_+ + Q_-,
+  \qquad
+  Q_B=\bar Q_+ + \bar Q_- .
+\]
+The A-model and B-model complexes developed in
+Chapter~\ref{ch:tqft-topological-sigma-models} arise from these two scalar
+supercharges after twisting the \(\mathcal N=(2,2)\) sigma-model fields.
+The vector or axial \(R\)-symmetry used in the twist must be nonanomalous for
+the chosen target and background.  In sigma models this condition becomes
+the familiar restriction: the A-twist is controlled by symplectic data, while
+the closed B-twist requires the Calabi-Yau condition for the axial
+\(R\)-symmetry and trace pairing.
+
+\section{What the Twist Does and What Remains to Construct}
+
+The twist provides a representation-theoretic and geometric conversion:
+\[
+  \text{spinors with \(R\)-indices}
+  \longrightarrow
+  \text{forms or tensors on \(M\)}.
+\]
+It also identifies candidate scalar supercharges and candidate descent
+complexes.  A theorem-level cohomological QFT requires the additional
+regulator-level closure statement \eqref{eq:twist-q-square-general} and
+Proposition~\ref{prop:twist-metric-independence}: \(Q\)-invariant
+regularization, anomaly cancellation, off-shell closure or BV closure,
+contact representatives, compactification of fixed loci, and gluing.
 
 \begin{openproblem}[Twisted continuum construction]
 \label{op:twisted-continuum-construction}
 Construct four-dimensional twisted supersymmetric gauge theories as
-continuum QFTs with a \(Q\)-preserving regulator, off-shell closure, contact
-term control, and a derivation of the cohomological stress-tensor relation.
+continuum QFTs with \(Q\)-preserving regulator or BV regularization,
+off-shell or BV closure, determinant-line and global-form control, contact
+term prescriptions for descendant observables, compactified fixed loci, and
+a derivation of the \(Q\)-exact metric-response relation.  For
+Donaldson-Witten theory this construction should recover the
+anti-self-dual-moduli-space description and the Donaldson observables from
+the regulated cohomological gauge theory.
 \end{openproblem}
