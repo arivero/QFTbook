@@ -60,6 +60,41 @@ write the reciprocal of this expression.  The companion check script enforces
 the \(x^\pm\)-energy and sheet conventions used here; crossing itself remains
 a monodromy input rather than a finite algebraic identity.
 
+\begin{warning}[Status of magnon crossing]
+\label{warn:planar-n4-magnon-crossing-status}
+The crossing equation used in this chapter is not the Wightman--LSZ crossing
+theorem for four-dimensional local scattering amplitudes.  A spin-chain
+magnon is an excitation above the chosen BMN vacuum in a single-trace sector;
+it is not created by a gauge-invariant local field, its two-body scattering
+operator is asymptotic in the trace length, and its dispersion is encoded on
+the Zhukovsky rapidity surface rather than on a relativistic mass shell.
+Consequently ordinary four-dimensional QFT does not by itself give the
+replacement \(x^\pm\mapsto1/x^\pm\) or the scalar equation displayed above.
+
+The conceptual origin of the condition is the relativistic
+\(\mathrm{AdS}_5\times S^5\) string worldsheet at strong 't Hooft coupling.
+Before uniform light-cone gauge fixing, the worldsheet theory is a
+two-dimensional relativistic QFT: its Euclidean continuation supplies the
+mirror-channel interchange of space and time, and relativistic crossing is
+realized as an analytic continuation in rapidity.  Gauge fixing and
+decompactification turn the excitations into nonrelativistic magnons with the
+Zhukovsky dispersion, so the inherited crossing operation has no intrinsic
+explanation from the nonrelativistic spin chain alone.  In the resulting
+integrable worldsheet/spin-chain framework the crossed magnon is the
+contragredient short representation of the centrally extended residual
+symmetry;
+equivalently, the antipode operation sends the Zhukovsky variables to the
+crossed sheet \(x^\pm\mapsto1/x^\pm\) along a specified path.  Matrix
+consistency with this crossed representation fixes the rational multiplier
+below, while the dressing phase is required to have the corresponding scalar
+monodromy.  Extending this worldsheet crossing condition to all 't Hooft
+coupling, and using it as a statement about planar gauge-theory anomalous
+dimensions, is an integrability assumption constrained by symmetry,
+unitarity, Yang--Baxter factorization, perturbative gauge-theory checks, and
+finite-size TBA/QSC tests.  It is not presently a theorem derived from a
+constructive four-dimensional definition of \(\mathcal N=4\) SYM.
+\end{warning}
+
 \section{BMN Vacuum and Central Extension}
 
 The vacuum spin-chain state is

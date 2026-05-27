@@ -64,6 +64,10 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - Defines the mirror transformation and emphasizes the non-relativistic
   difference from two-dimensional relativistic integrable QFT, using the
   stringbook sign convention `E=i tilde p`, `p=i tilde E`.
+- Adds an explicit status boundary for mirror magnons: they are analytically
+  continued worldsheet/spin-chain excitations inherited from the relativistic
+  string worldsheet mirror channel, not ordinary four-dimensional local QFT
+  asymptotic particles.
 - Derives the mirror bound-state dispersion from double Wick rotation.
 - Adds the sheet/branch status of physical versus mirror Zhukovsky variables.
 - Adds and proves an explicit mirror Zhukovsky parametrization for real mirror

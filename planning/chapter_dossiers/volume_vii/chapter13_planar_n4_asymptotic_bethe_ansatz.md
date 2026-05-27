@@ -154,6 +154,12 @@ motivational checks, not foundations.
 - Adds the explicit crossing scalar-factor equation and warns that the
   crossing path winds around shifted Zhukovsky branch points rather than
   acting as a sheet-free substitution.
+- Adds an explicit status boundary for magnon crossing: it is not ordinary
+  Wightman-LSZ crossing for four-dimensional local amplitudes.  Its physical
+  explanation comes from the relativistic string worldsheet at strong
+  coupling before light-cone gauge fixing; its all-coupling spin-chain use is
+  an integrability assumption constrained by symmetry, worldsheet crossing,
+  finite-size tests, and gauge-theory data.
 - Derives the crossing scalar convention algebra in the stringbook
   orientation: the common reciprocal literature convention is exactly the
   inverse rational multiplier, while the naive substitution

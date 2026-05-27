@@ -1912,3 +1912,32 @@ Calculation checks added:
   verifies rank nine in the ten amplitudes, confirms that the row chart
   recovers the direct ten-amplitude formulas after fixing the scalar, and
   checks that the two highest-weight `Q` relations survive the row chart.
+
+## Continuation LX: Crossing and Mirror-Magnon Status Boundary
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added an explicit warning in Chapter 13 that magnon crossing is not the
+  Wightman-LSZ crossing theorem for four-dimensional local gauge-theory
+  scattering amplitudes.
+- The text now identifies the physical explanation as the relativistic
+  `AdS_5 x S^5` string worldsheet at strong 't Hooft coupling before
+  uniform light-cone gauge fixing.  After gauge fixing and decompactification,
+  that worldsheet crossing/mirror operation is inherited by nonrelativistic
+  magnons as a Zhukovsky-sheet monodromy.
+- Added an explicit warning in Chapter 14 that mirror magnons are analytically
+  continued worldsheet/spin-chain excitations used in the mirror-channel
+  finite-size construction, not ordinary four-dimensional local QFT
+  asymptotic particles.
+- No calculation-check code was added in this pass because the change is a
+  logical-status and motivation clarification; the convention-sensitive
+  sheet and scalar algebra remains covered by the existing planar
+  integrability checks.
