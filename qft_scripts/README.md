@@ -54,8 +54,10 @@ notebooks or CI checks can consume the results without scraping prose.
   delete-one-block jackknife errors, and block-bootstrap errors.
 - `static_potential_from_wilson_loops.py`: finite-regulator analysis tool for
   positive rectangular Wilson-loop data.  It computes transfer-matrix
-  effective-mass ratios and Creutz ratios from CSV input, with a smoke test
-  on synthetic area-plus-perimeter data.
+  effective-mass ratios and Creutz ratios from aggregate CSV input, and it
+  has a sample-level CSV mode that recomputes those nonlinear ratios on
+  deleted or resampled Monte Carlo blocks for correlated jackknife/bootstrap
+  errors.  The smoke test uses synthetic area-plus-perimeter data.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.

@@ -552,7 +552,8 @@ Current checks:
   `qft_scripts/static_potential_from_wilson_loops.py`, verifying that
   synthetic area-plus-perimeter Wilson-loop data reproduce the expected
   transfer-matrix effective masses and Creutz ratios, including elementary
-  ratio-error propagation.
+  ratio-error propagation and sample-level correlated delete-one jackknife
+  errors for nonlinear Wilson-loop ratios.
 - `nonabelian_lattice_observable_checks.py`: finite convention checks for
   the Volume XI nonabelian lattice-observable section, including the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state

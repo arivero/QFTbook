@@ -128,6 +128,9 @@ chapters.
 - Defines block means and proves the delete-one-block jackknife identity for
   the sample mean, \(\operatorname{Var}_{\rm jack}=s_Y^2/B\), while stating
   the Markov-chain hypotheses needed for blocked bootstrap use.
+- Proves a finite Taylor bound for correlated delete-one-block jackknife
+  errors of smooth nonlinear observables, with Wilson-loop effective masses
+  and Creutz ratios as the principal example.
 - Defines the average phase as \(Z/Z_R\), defines the finite-volume
   free-energy difference \(\Delta f\), and proves the relative-variance lower
   bound behind exponential phase-reweighting degradation.
@@ -149,6 +152,8 @@ chapters.
 - Adds the companion script `qft_scripts/autocorrelation_resampling.py` for
   autocorrelation, blocking, delete-one-block jackknife, and block-bootstrap
   diagnostics on one-column time series.
+- Connects the static-potential analysis script's sample-level mode to the
+  correlated jackknife construction for nonlinear Wilson-loop ratios.
 
 ## Figure Ledger
 
@@ -181,6 +186,9 @@ the exponential decay of average phase with volume.
   diagnostic script.  It reports a windowed integrated autocorrelation
   coordinate, block means, blocked standard errors, delete-one-block
   jackknife errors, and block-bootstrap errors.
+- `qft_scripts/static_potential_from_wilson_loops.py --smoke`: also certifies
+  the sample-level mode that recomputes static-potential logarithmic ratios
+  on deleted or resampled Monte Carlo blocks.
 
 ## Calculation Checks
 
@@ -217,6 +225,9 @@ the exponential decay of average phase with volume.
   finite block means, blocked standard error, delete-one-block jackknife
   identity, biased autocovariances, and windowed \(\tau_{\rm int}\) used by
   the companion script.
+- `calculation-checks/static_potential_analysis_checks.py` includes the
+  correlated delete-one jackknife check for static-potential nonlinear
+  Wilson-loop ratios.
 
 ## Audit Notes
 
@@ -229,3 +240,6 @@ the exponential decay of average phase with volume.
   coordinates and a theorem-anchored time-series diagnostic script, providing
   the upstream error layer needed for Wilson-loop and flowed-observable
   analysis.
+- 2026-05-27 issue #631 pass: added the correlated nonlinear jackknife Taylor
+  estimate and tied it to the static-potential script's sample-level
+  resampling mode.

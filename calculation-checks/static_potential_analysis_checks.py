@@ -50,6 +50,40 @@ def main() -> None:
     one_eff = module.effective_masses(noisy_error_data, lattice_spacing=2.0)[0]
     expected_error = 0.5 * math.sqrt((0.02 / math.exp(-0.6)) ** 2 + (0.01 / math.exp(-0.3)) ** 2)
     require(abs(one_eff.error - expected_error) < 1e-14, "effective-mass error propagation failed")
+
+    sigmas = [0.25, 0.34, 0.39, 0.52]
+    sample_data = module.synthetic_area_perimeter_sample_data(sigmas, mu=0.17, constant=0.03, max_r=3, max_t=4)
+    resampled = module.resampled_static_observables(
+        sample_data,
+        lattice_spacing=1.0,
+        block_size=1,
+        bootstrap_samples=12,
+        seed=19,
+    )
+    resampled_map = {
+        (datum.observable, datum.r, datum.t): datum
+        for datum in resampled
+    }
+    key = ("effective_mass", 2, 1)
+    datum = resampled_map[key]
+
+    indexed = module.index_sample_data(sample_data)
+    all_samples = sorted(indexed)
+    central = module.observables_from_sample_ids(indexed, all_samples, 1.0, True, True)
+    require(abs(datum.value - central[key]) < 1e-14, "central resampled observable failed")
+
+    delete_values = []
+    for removed in all_samples:
+        kept = [sample for sample in all_samples if sample != removed]
+        delete_values.append(module.observables_from_sample_ids(indexed, kept, 1.0, True, True)[key])
+    theta_bar = sum(delete_values) / len(delete_values)
+    expected_jackknife = math.sqrt(
+        (len(delete_values) - 1) / len(delete_values)
+        * sum((theta - theta_bar) ** 2 for theta in delete_values)
+    )
+    require(abs(datum.jackknife_error - expected_jackknife) < 1e-14, "correlated jackknife error failed")
+    require(datum.bootstrap_error > 0.0, "block bootstrap error should be positive on varying samples")
+
     print("All static-potential analysis checks passed.")
 
 

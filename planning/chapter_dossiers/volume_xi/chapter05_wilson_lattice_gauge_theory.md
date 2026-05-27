@@ -164,7 +164,8 @@
   rectangular Wilson-loop measurements.
 - `qft_scripts/static_potential_from_wilson_loops.py --smoke`: finite
   Wilson-loop analysis tool for transfer-matrix effective masses and Creutz
-  ratios from positive rectangular-loop data.
+  ratios from positive rectangular-loop data, including a sample-level
+  correlated jackknife/bootstrap mode.
 
 ## Calculation Checks
 
@@ -192,7 +193,8 @@
   coefficient, and tadpole-normalization bookkeeping.
 - `calculation-checks/static_potential_analysis_checks.py` verifies the
   static-potential companion script on synthetic area-plus-perimeter
-  Wilson-loop data, including elementary ratio-error propagation.
+  Wilson-loop data, including elementary ratio-error propagation and
+  correlated delete-one jackknife errors for nonlinear Wilson-loop ratios.
 - `calculation-checks/nonabelian_lattice_observable_checks.py` verifies the
   \(SU(N)\) fundamental plaquette strong-coupling slope, the single-state
   transfer-matrix ratio for static-energy extraction, and Creutz-ratio
@@ -223,3 +225,7 @@
 - 2026-05-27 issue #631 pass: added a theorem-anchored static-potential
   companion script for effective-mass and Creutz-ratio extraction from
   rectangular Wilson-loop data.
+- 2026-05-27 issue #631 pass: extended the static-potential companion script
+  with sample-level correlated jackknife/bootstrap analysis for the nonlinear
+  logarithmic ratios, avoiding independent-error propagation when Monte Carlo
+  rectangles are correlated.

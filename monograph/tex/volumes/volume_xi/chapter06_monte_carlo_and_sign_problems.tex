@@ -1284,17 +1284,158 @@ Substitution in
   \]
 \end{proof}
 
-For a nonlinear observable \(F(\overline O^{(1)},\ldots,\overline O^{(m)})\),
-the delete-one-block jackknife is applied to the whole analysis function:
-one recomputes \(F\) after deleting each block, and then uses
-\eqref{eq:delete-one-block-jackknife-variance} with \(F_{(j)}\) in place of
-\(\overline Y_{(j)}\).  This keeps correlations among the components of
-\(F\) inside each delete-one sample.  Block bootstrap resampling similarly
-resamples the block means or the original contiguous blocks.  Its consistency
-requires an asymptotic regime in which \(b\to\infty\), \(B\to\infty\), and
-the block length grows slowly enough compared with the total chain length;
-the finite script described below reports the coordinate values and leaves
-the asymptotic claim to the stated Markov-chain hypotheses.
+The preceding proposition is the scalar case of the error-coordinate needed
+for Wilson-loop ratios, flowed-energy couplings, and hadron effective masses.
+Let \(Y_j\in\mathbb R^m\) be block means for \(m\) elementary observables,
+let
+\[
+  \overline Y=\frac1B\sum_{j=0}^{B-1}Y_j,
+  \qquad
+  d_j=Y_j-\overline Y,
+  \qquad
+  S_Y=\frac{1}{B-1}\sum_{j=0}^{B-1}d_jd_j^{\mathsf T},
+  \label{eq:block-vector-covariance}
+\]
+and let
+\[
+  \overline Y_{(j)}
+  =
+  \frac{B\overline Y-Y_j}{B-1}.
+  \label{eq:vector-delete-one-block-mean}
+\]
+For a smooth scalar analysis function \(F:U\to\mathbb R\), where
+\(U\subset\mathbb R^m\) is open and contains the convex hull of the
+\(\overline Y_{(j)}\), define
+\[
+  F_{(j)}=F(\overline Y_{(j)}),
+  \qquad
+  \widehat F_\bullet=\frac1B\sum_{j=0}^{B-1}F_{(j)},
+\]
+and
+\[
+  \widehat V_{\rm jack}(F)
+  =
+  \frac{B-1}{B}\sum_{j=0}^{B-1}(F_{(j)}-\widehat F_\bullet)^2 .
+  \label{eq:nonlinear-block-jackknife-variance}
+\]
+
+\begin{proposition}[Correlated delete-one-block jackknife for smooth ratios]
+\label{prop:correlated-delete-one-block-jackknife}
+Assume \(B\ge2\).  Let \(g=DF_{\overline Y}\) be the differential of \(F\) at
+\(\overline Y\), regarded as a row vector.  Suppose that the operator norm of
+the Hessian satisfies
+\[
+  \|D^2F_x\|_{\rm op}\le M
+\]
+on the convex hull of the delete-one means.  Put
+\[
+  D_2=\left(\sum_{j=0}^{B-1}\|d_j\|^2\right)^{1/2},
+  \qquad
+  D_4=\left(\sum_{j=0}^{B-1}\|d_j\|^4\right)^{1/2},
+\]
+and
+\[
+  A=\frac{\|g\|D_2}{B-1},
+  \qquad
+  E=\frac{M D_4}{(B-1)^2}.
+\]
+Then
+\[
+  \left|
+    \widehat V_{\rm jack}(F)
+    -
+    \frac1B\,gS_Yg^{\mathsf T}
+  \right|
+  \le
+  \frac{B-1}{B}(2AE+E^2).
+  \label{eq:nonlinear-jackknife-taylor-bound}
+\]
+\end{proposition}
+
+\begin{proof}
+Taylor's theorem gives
+\[
+  F(\overline Y_{(j)})
+  =
+  F(\overline Y)+g(\overline Y_{(j)}-\overline Y)+R_j,
+  \qquad
+  |R_j|\le\frac{M}{2}\|\overline Y_{(j)}-\overline Y\|^2 .
+\]
+Since
+\[
+  \overline Y_{(j)}-\overline Y=-\frac{d_j}{B-1}
+\]
+and \(\sum_j d_j=0\), the average of the linear terms is zero.  Therefore the
+linear part of \(\widehat V_{\rm jack}(F)\) is
+\[
+  \frac{B-1}{B}
+  \sum_{j=0}^{B-1}
+  \left(\frac{gd_j}{B-1}\right)^2
+  =
+  \frac1B\,gS_Yg^{\mathsf T}.
+\]
+Let
+\[
+  a_j=-\frac{gd_j}{B-1},
+  \qquad
+  e_j=R_j-\frac1B\sum_{k=0}^{B-1}R_k .
+\]
+Then the difference between the full jackknife variance and its linear part is
+\[
+  \frac{B-1}{B}
+  \left(
+    2\sum_{j=0}^{B-1}a_je_j+\sum_{j=0}^{B-1}e_j^2
+  \right).
+\]
+Cauchy's inequality bounds
+\[
+  \left(\sum_j a_j^2\right)^{1/2}\le A.
+\]
+Also
+\[
+  \left(\sum_j e_j^2\right)^{1/2}
+  \le
+  2\left(\sum_j R_j^2\right)^{1/2}
+  \le E .
+\]
+Substituting these two bounds proves
+\eqref{eq:nonlinear-jackknife-taylor-bound}.
+\end{proof}
+
+For the static potential, the elementary block vector contains the positive
+Wilson-loop coordinates \(W(n,m)\) needed for a chosen finite list of
+rectangles.  The analysis functions are
+\[
+  F^{\rm eff}_{n,m}(W)
+  =
+  -a^{-1}\log\frac{W(n,m+1)}{W(n,m)}
+  \label{eq:effective-mass-analysis-function}
+\]
+and
+\[
+  F^\chi_{n,m}(W)
+  =
+  -\log
+  \frac{W(n,m)W(n-1,m-1)}
+       {W(n,m-1)W(n-1,m)} .
+  \label{eq:creutz-analysis-function}
+\]
+They are smooth on the positive orthant.  Applying the jackknife to
+\(F^{\rm eff}_{n,m}\) or \(F^\chi_{n,m}\) after deleting an entire Monte Carlo
+block is therefore a correlated calculation: the covariance among the
+rectangles is the matrix \(S_Y\) in
+\eqref{eq:block-vector-covariance}.  Propagating the four Wilson-loop errors
+in a Creutz ratio independently is a different approximation, justified only
+after a separate argument that the relevant off-diagonal covariance entries
+are negligible in the chosen data-analysis scheme.
+
+Block bootstrap resampling similarly resamples the block means or the original
+contiguous blocks and recomputes the full nonlinear analysis function on every
+resampled data set.  Its consistency requires an asymptotic regime in which
+\(b\to\infty\), \(B\to\infty\), and the block length grows slowly enough
+compared with the total chain length; the finite script described below
+reports the coordinate values and leaves the asymptotic claim to the stated
+Markov-chain hypotheses.
 
 The companion script
 \[

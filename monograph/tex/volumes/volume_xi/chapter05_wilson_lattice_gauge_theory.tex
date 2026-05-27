@@ -1098,10 +1098,14 @@ implements exactly the finite formulas in
 \eqref{eq:lattice-creutz-ratio} for positive rectangular Wilson-loop data.
 It reads a table of \(W(R,T)\) values, returns effective-mass ratios and
 Creutz ratios, and includes a synthetic area-plus-perimeter smoke test for
-\eqref{eq:creutz-area-perimeter-ansatz}.  Statistical correlations among
-Monte Carlo Wilson loops belong to the upstream jackknife or bootstrap
-analysis; the script's optional elementary error propagation is only the
-independent-error algebra of the displayed logarithms.
+\eqref{eq:creutz-area-perimeter-ansatz}.  It also has a sample-level mode for
+tables with columns \(\texttt{sample},R,T,W\): this mode forms block means,
+deletes or resamples entire Monte Carlo blocks, and recomputes the logarithmic
+ratios themselves.  This is the finite-regulator implementation of the
+correlated jackknife construction in
+Proposition~\ref{prop:correlated-delete-one-block-jackknife}.  The optional
+elementary error propagation in aggregate mode is only the independent-error
+algebra of the displayed logarithms.
 
 \section{Wilson Flow, Smoothing, and Topological Charge}
 \label{sec:lattice-wilson-flow-smoothing-topology}
