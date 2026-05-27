@@ -1851,21 +1851,153 @@ and~\ref{ch:planar-n4-quantum-spectral-curve-hexagon}.
 \section{Bound States and the Large-Spin Cusp Limit}
 
 A pole of the \(SL(2)\) scalar factor at \(x_1^-=x_2^+\) gives a Bethe
-string.  A \(Q\)-magnon bound state is described by
+string.  More precisely, the displayed \(SL(2)\)-vacuum rational factor has
+a simple kinematic pole when the outgoing endpoint of the first constituent
+equals the incoming endpoint of the second constituent.  A \(Q\)-magnon
+string with real center \(u\) is described by
 \[
   u_j=u+\frac{\ii}{2}(Q-2j+1),
   \qquad j=1,\ldots,Q,
 \]
-and has
+with constituent variables \(x_j^\pm=x(u_j\pm\ii/2)\).  Put
+\begin{equation}
+  x_Q^+(u)=x\!\left(u+\frac{\ii Q}{2}\right)=x_1^+,
+  \qquad
+  x_Q^-(u)=x\!\left(u-\frac{\ii Q}{2}\right)=x_Q^- .
+  \label{eq:planar-n4-bound-state-endpoints}
+\end{equation}
+These are the only Zhukovsky endpoints that survive after fusion.
+
+\begin{proposition}[Fusion of a Bethe string]
+\label{prop:planar-n4-bound-state-fusion}
+Assume a \(Q\)-string is formed by the adjacent-pole conditions
+\[
+  x_j^-=x_{j+1}^+,\qquad j=1,\ldots,Q-1,
+\]
+and that the path to this pole does not cross a dressing-phase branch
+singularity.  Then the total momentum and physical energy of the string are
 \[
   \ee^{\ii p}=\frac{x_1^+}{x_Q^-},
   \qquad
-  E_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2}.
+  H_Q(u)=Q+2\ii g\left(\frac1{x_Q^+(u)}-\frac1{x_Q^-(u)}\right),
+  \label{eq:planar-n4-bound-state-momentum-energy}
 \]
-Its scattering with another bound state is obtained by fusing the elementary
-S-matrices over all constituent rapidities and projecting to the short
-\(Q\)-particle representation.  This fusion step is one of the inputs that
-later reappears in mirror TBA kernels.
+and the shortening identity gives
+\begin{equation}
+  H_Q(p)=\sqrt{Q^2+16g^2\sin^2\frac p2}.
+  \label{eq:planar-n4-bound-state-dispersion}
+\end{equation}
+If \(y\) is a level-II auxiliary root in the \(SL(2)\)-vacuum string basis,
+then its product of constituent scattering factors telescopes:
+\begin{equation}
+  \prod_{j=1}^{Q}
+  \frac{y-x_j^+}{y-x_j^-}
+  \sqrt{\frac{x_j^-}{x_j^+}}
+  =
+  \frac{y-x_Q^+(u)}{y-x_Q^-(u)}
+  \sqrt{\frac{x_Q^-(u)}{x_Q^+(u)}} .
+  \label{eq:planar-n4-bound-state-auxiliary-telescope}
+\end{equation}
+For two bound states of charges \(Q_1,Q_2\) and centers \(u,v\), the fused
+\(SL(2)\)-vacuum scalar factor is
+\begin{equation}
+  S^{Q_1,Q_2}_{SL(2)}(u,v)
+  =
+  \prod_{m=1}^{Q_1}\prod_{n=1}^{Q_2}
+  S_{SL(2)}
+  \!\left(
+    u+\frac{\ii}{2}(Q_1-2m+1),
+    v+\frac{\ii}{2}(Q_2-2n+1)
+  \right),
+  \label{eq:planar-n4-fused-sl2-bound-state-scalar}
+\end{equation}
+followed by projection to the short \(Q_1\)- and \(Q_2\)-particle
+representations.  The product formula is the scalar part of fusion; the
+matrix projection and the analytic continuation of the dressing factor are
+separate representation-theoretic and scalar-branch inputs.
+\end{proposition}
+
+\begin{proof}
+The condition \(u_{j+1}=u_j-\ii\) gives
+\[
+  x_j^-=x(u_j-\ii/2)=x(u_{j+1}+\ii/2)=x_{j+1}^+,
+\]
+so all internal endpoints cancel in products.  Hence
+\[
+  \prod_{j=1}^{Q}\frac{x_j^+}{x_j^-}
+  =
+  \frac{x_1^+}{x_Q^-}
+  =
+  \frac{x_Q^+(u)}{x_Q^-(u)}.
+\]
+The same cancellation in the sum of the physical-sheet one-particle energies
+\[
+  H_j=1+2\ii g\left(\frac1{x_j^+}-\frac1{x_j^-}\right)
+\]
+gives the energy formula in
+\eqref{eq:planar-n4-bound-state-momentum-energy}.  The bound-state
+shortening relation is the centrally extended one with \(H^2-Q^2=4PK\), and
+the total central charges telescope to
+\[
+  P=g(1-\ee^{\ii p}),
+  \qquad
+  K=g(1-\ee^{-\ii p}).
+\]
+Therefore
+\[
+  H_Q^2=Q^2+4g^2(1-\ee^{\ii p})(1-\ee^{-\ii p})
+  =
+  Q^2+16g^2\sin^2\frac p2 .
+\]
+Taking the positive physical branch gives
+\eqref{eq:planar-n4-bound-state-dispersion}.
+
+The auxiliary factor
+\eqref{eq:planar-n4-bound-state-auxiliary-telescope} is the same endpoint
+cancellation:
+\[
+  \prod_{j=1}^{Q}\frac{y-x_j^+}{y-x_j^-}
+  =
+  \frac{y-x_1^+}{y-x_Q^-},
+  \qquad
+  \prod_{j=1}^{Q}\frac{x_j^-}{x_j^+}
+  =
+  \frac{x_Q^-}{x_1^+}.
+\]
+Finally, scalar fusion means that a distant probe scatters consecutively
+through every constituent of each string before the internal tensor product is
+projected to the short representation.  This gives
+\eqref{eq:planar-n4-fused-sl2-bound-state-scalar}.  Internal pole residues
+and the matrix projection determine the normalization of the bound-state
+intertwiner; they are not additional endpoint identities and are kept as
+fusion inputs here.
+\end{proof}
+
+The resulting asymptotic Bethe--Yang equations for \(K^{\rm I}\) bound-state
+particles of charges \(Q_k\) are obtained from
+\eqref{eq:planar-n4-single-copy-nested-bethe-yang} by replacing the
+fundamental scalar factor with
+\eqref{eq:planar-n4-fused-sl2-bound-state-scalar} and the fundamental
+auxiliary factors with
+\eqref{eq:planar-n4-bound-state-auxiliary-telescope}.  Thus the first
+equation in the \(SL(2)\)-vacuum frame reads
+\begin{equation}
+  \ee^{\ii p_kL}
+  =
+  \prod_{\substack{j=1\\j\neq k}}^{K^{\rm I}}
+  S^{Q_j,Q_k}_{SL(2)}(u_j,u_k)
+  \prod_{\varsigma=L,R}
+  \prod_{\ell=1}^{K^{\rm II}_{(\varsigma)}}
+  \frac{y_\ell^{(\varsigma)}-x_{Q_k}^+(u_k)}
+       {y_\ell^{(\varsigma)}-x_{Q_k}^-(u_k)}
+  \sqrt{\frac{x_{Q_k}^-(u_k)}{x_{Q_k}^+(u_k)}} .
+  \label{eq:planar-n4-bound-state-bethe-yang}
+\end{equation}
+The level-II and level-III equations keep the same rational form as before,
+with each fundamental \(x^\pm\) replaced by the appropriate bound-state
+endpoints \(x_Q^\pm(u)\).  This is the bound-state input used by the mirror
+TBA node \(Q\mid\bullet\) in
+Chapter~\ref{ch:planar-n4-mirror-tba-y-system}.
 
 In the \(SL(2)\) sector, twist-\(L\) spin-\(S\) operators are
 \[

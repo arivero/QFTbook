@@ -1721,6 +1721,83 @@ def check_bound_state_dispersion() -> None:
                 assert_close("bound-state dispersion", constituent_energy, fused)
 
 
+def check_bound_state_fusion_telescoping() -> None:
+    """Check the Q-string endpoint and auxiliary-factor fusion algebra."""
+
+    def constituents(center: complex, charge: int, coupling: float) -> list[tuple[complex, complex]]:
+        pairs = []
+        for j in range(1, charge + 1):
+            rapidity = center + 0.5j * (charge - 2 * j + 1)
+            pairs.append(
+                (
+                    zhukovsky_outside(rapidity + 0.5j, coupling),
+                    zhukovsky_outside(rapidity - 0.5j, coupling),
+                )
+            )
+        return pairs
+
+    def sl2_rational(pair_1: tuple[complex, complex], pair_2: tuple[complex, complex]) -> complex:
+        x1p, x1m = pair_1
+        x2p, x2m = pair_2
+        return (
+            (x2m - x1p)
+            / (x2p - x1m)
+            * (1 - 1 / (x2p * x1m))
+            / (1 - 1 / (x2m * x1p))
+        )
+
+    for coupling in (0.12, 0.37):
+        for charge in (2, 3, 5):
+            center = 4.0 + 0.3 * charge
+            string = constituents(center, charge, coupling)
+            x_plus = string[0][0]
+            x_minus = string[-1][1]
+
+            for j in range(charge - 1):
+                assert_close("bound-state internal endpoint", string[j][1], string[j + 1][0])
+
+            momentum_ratio = 1 + 0j
+            for pair in string:
+                momentum_ratio *= pair[0] / pair[1]
+            assert_close("bound-state momentum telescoping", momentum_ratio, x_plus / x_minus)
+
+            energy_sum = sum(1 + 2j * coupling * (1 / pair[0] - 1 / pair[1]) for pair in string)
+            energy_endpoint = charge + 2j * coupling * (1 / x_plus - 1 / x_minus)
+            assert_close("bound-state energy telescoping", energy_sum, energy_endpoint)
+
+            central_p = coupling * (1 - momentum_ratio)
+            central_k = coupling * (1 - 1 / momentum_ratio)
+            assert_close(
+                "bound-state shortening",
+                energy_endpoint * energy_endpoint,
+                charge * charge + 4 * central_p * central_k,
+            )
+
+            y_root = 1.7 + 0.2j
+            aux_product = 1 + 0j
+            for pair in string:
+                aux_product *= (y_root - pair[0]) / (y_root - pair[1])
+                aux_product *= cmath.sqrt(pair[1] / pair[0])
+            aux_endpoint = (y_root - x_plus) / (y_root - x_minus) * cmath.sqrt(x_minus / x_plus)
+            assert_close("bound-state auxiliary telescoping", aux_product, aux_endpoint)
+
+    q1 = constituents(4.6, 2, 0.2)
+    q2 = constituents(5.3, 3, 0.2)
+    fused_forward = 1 + 0j
+    for pair_1 in q1:
+        for pair_2 in q2:
+            fused_forward *= sl2_rational(pair_1, pair_2)
+    fused_indexed = 1 + 0j
+    for m in range(1, 3):
+        u_m = 4.6 + 0.5j * (2 - 2 * m + 1)
+        pair_m = (zhukovsky_outside(u_m + 0.5j, 0.2), zhukovsky_outside(u_m - 0.5j, 0.2))
+        for n in range(1, 4):
+            v_n = 5.3 + 0.5j * (3 - 2 * n + 1)
+            pair_n = (zhukovsky_outside(v_n + 0.5j, 0.2), zhukovsky_outside(v_n - 0.5j, 0.2))
+            fused_indexed *= sl2_rational(pair_m, pair_n)
+    assert_close("bound-state fused scalar indexing", fused_forward, fused_indexed)
+
+
 def check_mirror_double_wick_dispersion() -> None:
     for coupling in (0.15, 0.5):
         for charge in (1, 2, 4):
@@ -3952,6 +4029,7 @@ def main() -> None:
     check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()
     check_bound_state_dispersion()
+    check_bound_state_fusion_telescoping()
     check_mirror_double_wick_dispersion()
     check_mirror_zhukovsky_sheet_parametrization()
     check_mirror_auxiliary_string_arrays()

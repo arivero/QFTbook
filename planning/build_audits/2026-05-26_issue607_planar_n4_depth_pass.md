@@ -1667,3 +1667,37 @@ Calculation checks added:
   verifies the numerator and denominator pole signs, realizes endpoint pole
   divisors by solving `x+1/x`, checks representative admissible samples, and
   confirms that clearance vanishes on the constructed pole lattice.
+
+## Continuation LIII: Bound-State Fusion Telescoping
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Expanded the Chapter 13 bound-state paragraph into a proposition-level
+  derivation of `Q`-string fusion.
+- Defined the bound-state endpoints `x_Q^pm(u)=x(u+-iQ/2)` and proved that
+  adjacent pole conditions `x_j^-=x_{j+1}^+` telescope the momentum and
+  physical-sheet energy to the endpoints.
+- Derived the bound-state shortening dispersion
+  `H_Q(p)=sqrt(Q^2+16 g^2 sin^2(p/2))` from the total central charges
+  `P=g(1-e^{ip})`, `K=g(1-e^{-ip})`.
+- Proved the telescoping of the `SL(2)`-vacuum level-II auxiliary factor and
+  used it to state the bound-state Bethe-Yang equation with fused
+  `S_{SL(2)}^{Q_1,Q_2}`.
+- Explicitly separated endpoint/scalar fusion from the remaining boundary
+  input: projection to the short bound-state matrix representation and the
+  scalar-branch pole-residue normalization.
+
+Calculation checks added:
+
+- Added `check_bound_state_fusion_telescoping()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  internal endpoint cancellation, momentum telescoping, energy telescoping,
+  bound-state shortening, level-II auxiliary-factor telescoping, and the
+  indexed product defining the fused scalar factor.

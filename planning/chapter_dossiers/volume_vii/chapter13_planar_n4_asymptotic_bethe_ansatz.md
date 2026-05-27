@@ -189,8 +189,12 @@ motivational checks, not foundations.
   to the `SL(2)` phase `(u_j-u_k-i)/(u_j-u_k+i)`, its reciprocal gives the
   compact `SU(2)` phase of Chapter 12, and
   `H-1=2g^2/(u^2+1/4)+O(g^4)`.
-- Adds bound-state dispersion and the large-spin cusp-scaling function with
-  status boundaries.
+- Expands the bound-state fusion block: constructs the `Q`-string endpoints,
+  proves momentum and energy telescoping, derives the shortening dispersion,
+  proves the level-II auxiliary-factor telescoping, and defines the fused
+  `SL(2)` scalar product used in bound-state Bethe-Yang equations.  The
+  remaining matrix-intertwiner projection and scalar-branch pole normalization
+  are marked as boundary inputs rather than hidden in the endpoint algebra.
 - Expands the one-loop `SL(2)` large-spin cusp derivation: states the
   noncompact one-loop Bethe equation, defines the scaled root density and
   resolvent, solves the one-cut Riemann-Hilbert problem with
@@ -279,8 +283,9 @@ crossed Zhukovsky sheets.
 - It checks the weak rank-one ABA orientation: physical-branch `x^pm`
   expansion, momentum ratio, anomalous-energy normalization, the stringbook
   `SL(2)` rational factor, and the reciprocal compact `SU(2)` phase.
-- The same script now checks BMN scaling, bound-state dispersion, and weak
-  coefficient arithmetic relevant to cusp/Bremsstrahlung comparisons.
+- The same script now checks BMN scaling, bound-state dispersion, bound-state
+  fusion telescoping, fused scalar-product indexing, and weak coefficient
+  arithmetic relevant to cusp/Bremsstrahlung comparisons.
 - It checks the one-loop `SL(2)` large-spin cusp resolvent: physical
   square-root branch normalization, derivative formula, discontinuity and
   positivity of the density, and extraction of the `8g^2 log S` term with
