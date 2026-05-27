@@ -1223,6 +1223,69 @@ and therefore
 \end{equation}
 This is the sign check that fixes the convention in the energy correction.
 
+\begin{proposition}[Konishi weak-density rationalization]
+\label{prop:konishi-weak-density-rationalization}
+Let \(u_\ast=1/(2\sqrt3)\) and put \(q=2u\).  For \(Q\geq1\), define
+\[
+\begin{aligned}
+  B_Q^-(q)
+  &=
+  9q^4+6(3(Q-2)Q+2)q^2+(3(Q-2)Q+4)^2,
+\\
+  B_Q^+(q)
+  &=
+  9q^4+6(3Q(Q+2)+2)q^2+(3Q(Q+2)+4)^2 .
+\end{aligned}
+\]
+Then the weak mirror density \eqref{eq:konishi-yq0} is equivalently
+\[
+  Y_Q^{(0)}(q/2)
+  =
+  \frac{147456Q^2(3q^2+3Q^2-4)^2}
+       {(q^2+Q^2)^4B_Q^-(q)B_Q^+(q)} .
+  \label{eq:konishi-yq0-rationalized}
+\]
+\end{proposition}
+
+\begin{proof}
+The first denominator factor and the numerator become
+\[
+  u^2+\frac{Q^2}{4}=\frac{q^2+Q^2}{4},
+  \qquad
+  u^2-u_\ast^2+\frac{Q^2-1}{4}
+  =
+  \frac{3q^2+3Q^2-4}{12}.
+\]
+It remains only to rationalize the two factors involving
+\(u_\ast\).  For any real \(a\),
+\[
+\begin{aligned}
+  &\prod_{\varepsilon=\pm1}
+  \left(\left(\frac q2-\frac{\varepsilon}{2\sqrt3}\right)^2+\frac{a^2}{4}\right)
+\\
+  &\qquad
+  =
+  \frac{1}{16}
+  \left[
+    q^4+2\left(a^2-\frac13\right)q^2
+    +\left(a^2+\frac13\right)^2
+  \right].
+\end{aligned}
+\]
+Multiplying the bracket by \(9\), and setting \(a=Q-1\) and \(a=Q+1\),
+gives respectively \(B_Q^-(q)\) and \(B_Q^+(q)\).  Hence each such product
+is \(B_Q^\pm(q)/144\).  Substituting these three elementary identities in
+\eqref{eq:konishi-yq0} gives
+\[
+  \frac{
+    4Q^2\left((3q^2+3Q^2-4)/12\right)^2
+  }{
+    ((q^2+Q^2)/4)^4\,B_Q^-(q)B_Q^+(q)/144^2
+  },
+\]
+which simplifies to \eqref{eq:konishi-yq0-rationalized}.
+\end{proof}
+
 \begin{proposition}[Leading Konishi wrapping integral]
 \label{prop:konishi-leading-wrapping-integral}
 Assume the mirror input of
@@ -1251,7 +1314,9 @@ next uncomputed term.  Combining \eqref{eq:planar-n4-excited-tba-energy},
   -g^8\sum_{Q=1}^\infty
   \int_{\mathbb R}\frac{\dd u}{\pi}\,Y_Q^{(0)}(u)+O(g^{10}).
 \]
-Set \(q=2u\).  The coefficient of \(g^8\) becomes
+Set \(q=2u\) and use
+Proposition~\ref{prop:konishi-weak-density-rationalization}.  The coefficient
+of \(g^8\) becomes
 \[
   \sum_{Q=1}^\infty I_Q,
 \]
@@ -1264,18 +1329,8 @@ with
        {(q^2+Q^2)^4 B_Q^-(q)B_Q^+(q)},
   \label{eq:konishi-iq-integral}
 \end{equation}
-where
-\[
-\begin{aligned}
-  B_Q^-(q)
-  &=
-  9q^4+6(3(Q-2)Q+2)q^2+(3(Q-2)Q+4)^2,
-\\
-  B_Q^+(q)
-  &=
-  9q^4+6(3Q(Q+2)+2)q^2+(3Q(Q+2)+4)^2 .
-\end{aligned}
-\]
+where \(B_Q^\pm\) are the polynomials in
+Proposition~\ref{prop:konishi-weak-density-rationalization}.
 For \(Q=1\) the apparent real zeros in \(B_1^-\) are removable because the
 same factor appears in the numerator.  After this cancellation the integrand
 has no pole on the real contour and decays as \(q^{-12}\).  Closing the

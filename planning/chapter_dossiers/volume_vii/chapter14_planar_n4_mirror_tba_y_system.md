@@ -106,6 +106,11 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   `mu`-term.
 - Derives the leading mirror momentum measure
   `d tilde p_Q/du = 2 + O(g^2)` from the stringbook branch convention.
+- Proves the algebraic rationalization of the weak Konishi mirror density:
+  after `q=2u` and `u_*=1/(2 sqrt 3)`, the four physical-root factors combine
+  into the two quartics `B_Q^-` and `B_Q^+`, giving the displayed rational
+  `Y_Q^(0)(q/2)` integrand without relying on the Mathematica notebook as a
+  black box.
 - Displays the weak asymptotic `Y_Q^{(0)}(u)` used for Konishi, the change of
   variables `q=2u`, the real-line rational integral `I_Q`, the residue
   summand, the exact telescoper for the non-zeta rational part, and the final
@@ -144,9 +149,10 @@ node domain.
   `B_a^+B_a^-=(u-a+i)/(u-a-i)`, its inverse orientation, and finite products
   of shifted zero-pole sources.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic,
-  the stringbook `u`-integrand to `q=2u` rational-integrand conversion,
-  numerical real-line integrals for the first four mirror charges, and the
-  exact telescoping identity for the rational non-zeta tail.
+  the exact weak-density rationalization behind the `q=2u` integrand, the
+  stringbook `u`-integrand to rational-integrand conversion, numerical
+  real-line integrals for the first four mirror charges, and the exact
+  telescoping identity for the rational non-zeta tail.
 
 ## External References Used In Current Pass
 

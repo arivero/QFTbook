@@ -1324,3 +1324,36 @@ Calculation checks added:
   row homogeneity in `tilde P_a=mu_ab P^b`, the universal monodromy exponent
   identity `p_a+p_b+alpha=e_ab-1`, and term-by-term homogeneity of the
   retained monodromy-recursion terms.
+
+## Continuation XLIII: Konishi Weak-Density Rationalization
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Source/standard motivation:
+
+- The stringbook notes and notebook explicitly checked the weak Konishi
+  wrapping density, but Chapter 14 still jumped quickly from the
+  stringbook-style `Y_Q^(0)(u)` expression to the rational `q=2u` integrand
+  used for residues.  This is one of the places where a compact Mathematica
+  check should become a transparent monograph derivation.
+
+Content added:
+
+- Added a proposition proving the exact rationalization of
+  `Y_Q^(0)(q/2)`: the numerator factor, the `(q^2+Q^2)^4` mirror denominator,
+  and the two quartics `B_Q^-`, `B_Q^+` obtained by pairing the
+  `u_*=1/(2 sqrt 3)` physical-root factors.
+- Updated the leading wrapping-integral proof to cite this rationalization
+  before the contour-residue step, so the residue integrand is no longer
+  introduced as an unexplained algebraic jump.
+
+Calculation checks added:
+
+- Strengthened `check_konishi_wrapping_residue_sum()` with exact rational
+  checks of the `q=2u` weak-density rationalization for several mirror charges
+  and rational rapidities, in addition to the existing numerical integrand and
+  residue/telescoping checks.

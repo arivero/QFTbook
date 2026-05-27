@@ -1781,6 +1781,28 @@ def konishi_wrapping_q_integrand(q_rapidity: float, charge: int) -> float:
     return -numerator / (2 * math.pi * denominator)
 
 
+def konishi_wrapping_q_rational_density(q_rapidity: Fraction, charge: int) -> Fraction:
+    """Rationalized Y_Q^(0)(q/2) before the -dq/(2 pi) measure."""
+
+    q = q_rapidity
+    q2 = q * q
+    charge_fraction = Fraction(charge)
+    charge2 = charge_fraction * charge_fraction
+    b_minus = (
+        9 * q2 * q2
+        + 6 * (3 * (charge_fraction - 2) * charge_fraction + 2) * q2
+        + (3 * (charge_fraction - 2) * charge_fraction + 4) ** 2
+    )
+    b_plus = (
+        9 * q2 * q2
+        + 6 * (3 * charge_fraction * (charge_fraction + 2) + 2) * q2
+        + (3 * charge_fraction * (charge_fraction + 2) + 4) ** 2
+    )
+    numerator = 147456 * charge2 * (3 * q2 + 3 * charge2 - 4) ** 2
+    denominator = (q2 + charge2) ** 4 * b_minus * b_plus
+    return numerator / denominator
+
+
 def konishi_wrapping_rational_tail(charge: int) -> Fraction:
     q = Fraction(charge)
     numerator = 7776 * q * (
@@ -1875,6 +1897,32 @@ def check_konishi_wrapping_residue_sum() -> None:
     # The stringbook rapidity u and the real variable q used for the rational
     # residue calculation are related by q=2u.  The leading mirror momentum
     # derivative is d p_tilde_Q/du = 2 + O(g^2).
+    for charge in (1, 2, 5):
+        charge_fraction = Fraction(charge)
+        for q in (Fraction(0), Fraction(1, 3), Fraction(-4, 5), Fraction(7, 4)):
+            q2 = q * q
+            numerator_piece = (
+                4
+                * charge_fraction**2
+                * (q2 / 4 - Fraction(1, 12) + (charge_fraction**2 - 1) / 4) ** 2
+            )
+            first_denominator = (q2 / 4 + charge_fraction**2 / 4) ** 4
+
+            def paired_denominator(a_value: Fraction) -> Fraction:
+                return (
+                    q**4
+                    + 2 * (a_value**2 - Fraction(1, 3)) * q2
+                    + (a_value**2 + Fraction(1, 3)) ** 2
+                ) / 16
+
+            density_from_u_formula = numerator_piece / (
+                first_denominator
+                * paired_denominator(charge_fraction - 1)
+                * paired_denominator(charge_fraction + 1)
+            )
+            if density_from_u_formula != konishi_wrapping_q_rational_density(q, charge):
+                raise AssertionError("Konishi weak density rationalization failed")
+
     for charge in (1, 2, 4):
         for u in (-0.7, 0.0, 1.3):
             stringbook_integrand = -konishi_wrapping_y0(u, charge) / math.pi
