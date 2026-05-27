@@ -1205,6 +1205,79 @@ the shift, the right-hand side acquires extra source terms; this is precisely
 why the analytic data below are part of the finite-volume spectral problem.
 \end{proof}
 
+\begin{proposition}[Data lost by the \(\mathsf s\)-kernel inverse]
+\label{prop:planar-n4-s-inverse-data-loss}
+Write
+\[
+  (\nabla_{\mathsf s}F)(u)=F(u+\ii/2)+F(u-\ii/2).
+\]
+Suppose \(F=\mathsf s*f\), where \(f\) is integrable, \(F\) is holomorphic in
+a neighbourhood of the closed strip \(|\operatorname{Im}u|\leq1/2\), and the
+two contour shifts meet no singularity of \(F\).  In logarithmic TBA
+applications this means that no zero or pole of the underlying Y-function, and
+no logarithmic cut, is crossed.  Then
+\begin{equation}
+  \nabla_{\mathsf s}F=f .
+  \label{eq:planar-n4-s-inverse-regular-domain}
+\end{equation}
+The converse datum is not contained in the local equation.  For
+\(\alpha\in\C\),
+\begin{equation}
+  Z_\alpha(u)=\frac{1}{2\cosh\pi(u-\alpha)}
+  \label{eq:planar-n4-s-inverse-zero-mode}
+\end{equation}
+satisfies
+\[
+  Z_\alpha(u+\ii/2)+Z_\alpha(u-\ii/2)=0
+\]
+as a meromorphic identity away from \(u=\alpha\), while its closest poles are
+at \(u=\alpha\pm\ii/2\).  Thus applying \(\mathsf s^{-1}\) determines only the
+regular part of a logarithmic TBA equation modulo such boundary data.  If the
+logarithm instead contains the shifted zero-pole factor
+\[
+  B_\alpha(u)=\frac{u-\alpha+\ii/2}{u-\alpha-\ii/2},
+\]
+then
+\begin{equation}
+  B_\alpha^+(u)B_\alpha^-(u)
+  =
+  \frac{u-\alpha+\ii}{u-\alpha-\ii}.
+  \label{eq:planar-n4-s-inverse-source-memory}
+\end{equation}
+Consequently the local Y-system knows neither the positions \(\alpha\), nor
+the integer powers of such factors, nor the side of the cut from which they
+come.  These are extra analytic data supplied by the mirror-TBA contour and
+by exact-root regularity.
+\end{proposition}
+
+\begin{proof}
+With the Fourier convention of
+Proposition~\ref{prop:planar-n4-auxiliary-kernel-inverse},
+\(\widehat{\mathsf s}(\omega)=1/(2\cosh(\omega/2))\).  Shifting the contour
+for \(F(u+\ii/2)\) and \(F(u-\ii/2)\) back to the real line multiplies the
+Fourier transform by \(\ee^{\omega/2}\) and \(\ee^{-\omega/2}\), respectively.
+Under the stated no-crossing hypothesis the sum therefore has transform
+\[
+  2\cosh(\omega/2)\,\widehat{\mathsf s}(\omega)\widehat f(\omega)
+  =
+  \widehat f(\omega),
+\]
+which proves \eqref{eq:planar-n4-s-inverse-regular-domain}.  If a singularity
+lies on a shifted contour, the same contour move has a residue or jump
+contribution; that contribution is not present in the pointwise local
+equation unless it is recorded as a source.
+
+For the zero mode, use
+\[
+  \cosh\pi(u-\alpha+\ii/2)=\ii\sinh\pi(u-\alpha),
+  \qquad
+  \cosh\pi(u-\alpha-\ii/2)=-\ii\sinh\pi(u-\alpha).
+\]
+The two shifted terms cancel away from their boundary pole.  The last identity
+is the direct multiplication of \(B_\alpha(u+\ii/2)\) and
+\(B_\alpha(u-\ii/2)\).
+\end{proof}
+
 The TBA equations imply functional relations among Y-functions after applying
 kernel identities and shifting the spectral parameter.  The bulk of the
 planar \(\mathcal N=4\) T-hook is the subset

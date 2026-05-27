@@ -1987,3 +1987,36 @@ Calculation checks added:
 - Confirmed that `check_qsc_fermionic_node_ratio_large_u()` remains part of
   the executed planar suite in the QSC block, rather than being duplicated in
   Chapter 14.
+
+## Continuation LXII: `s`-Inverse Data Loss and Source Memory
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition proving the regular-domain identity
+  `nabla_s(s*f)=f` under explicit closed-strip analyticity and no-crossing
+  hypotheses.
+- Exhibited the concrete boundary zero mode
+  `Z_alpha(u)=1/(2 cosh pi(u-alpha))`, whose shifted sum vanishes away from
+  the boundary pole.  This makes precise why applying `s^{-1}` to the mirror
+  TBA loses analytic data.
+- Connected the zero-mode discussion to the shifted zero-pole factor
+  `B_alpha=(u-alpha+i/2)/(u-alpha-i/2)`, whose shifted product leaves the
+  rational source memory `(u-alpha+i)/(u-alpha-i)`.
+- The AF mirror-TBA source was used only as a warning check for this failure
+  mode; the monograph now gives its own local derivation and keeps global
+  sheet, cut, and dressing-branch selection as independent analytic data.
+
+Calculation checks added:
+
+- Added `check_s_kernel_inverse_data_loss()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the explicit zero-mode cancellation, closest strip-boundary pole locations,
+  absence of an interior pole in the sample strip, and the shifted source
+  memory factor.

@@ -2983,6 +2983,47 @@ def check_mirror_wing_kernel_inverse() -> None:
         )
 
 
+def check_s_kernel_inverse_data_loss() -> None:
+    """Check the zero-mode and source memories hidden by the s-kernel inverse."""
+
+    def zero_mode(u_value: complex, root: complex) -> complex:
+        return 1 / (2 * cmath.cosh(math.pi * (u_value - root)))
+
+    for u_value, root in (
+        (0.31 + 0.17j, -0.43 + 0.08j),
+        (-0.72 + 0.21j, 0.19 - 0.11j),
+        (1.13 - 0.09j, -0.27 + 0.14j),
+    ):
+        shifted_sum = zero_mode(u_value + 0.5j, root) + zero_mode(
+            u_value - 0.5j,
+            root,
+        )
+        assert_close("s-kernel inverse zero mode", shifted_sum, 0j, tol=2.0e-14)
+
+    for root in (-0.4 + 0.1j, 0.8 - 0.2j):
+        for sign in (-1, 1):
+            boundary_pole = root + sign * 0.5j
+            denominator = 2 * cmath.cosh(math.pi * (boundary_pole - root))
+            assert_close("s-kernel zero-mode boundary pole", denominator, 0j, tol=2.0e-15)
+        interior_denominator = 2 * cmath.cosh(math.pi * (root + 0.23j - root))
+        if abs(interior_denominator) < 1.0e-8:
+            raise AssertionError("s-kernel zero mode should not have an interior strip pole")
+
+    def source_factor(u_value: complex, root: complex) -> complex:
+        return (u_value - root + 0.5j) / (u_value - root - 0.5j)
+
+    for u_value, root in (
+        (0.23 + 0.19j, -0.51 + 0.03j),
+        (1.2 - 0.31j, 0.44 + 0.07j),
+    ):
+        shifted_source = source_factor(u_value + 0.5j, root) * source_factor(
+            u_value - 0.5j,
+            root,
+        )
+        expected_source = (u_value - root + 1j) / (u_value - root - 1j)
+        assert_close("s-kernel inverse source memory", shifted_source, expected_source)
+
+
 def check_y_system_shift_source_factor() -> None:
     """Check local shifted zero-pole source factors for analytic Y-systems."""
 
@@ -4955,6 +4996,7 @@ def main() -> None:
     check_mirror_fused_kernel_formula_crosswalk()
     check_excited_tba_contour_deformation_residues()
     check_mirror_wing_kernel_inverse()
+    check_s_kernel_inverse_data_loss()
     check_y_system_shift_source_factor()
     check_analytic_y_system_strip_and_cut_data()
     check_konishi_four_loop_wrapping_arithmetic()

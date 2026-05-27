@@ -128,6 +128,10 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   one-index kernel identity.
 - Derives the one-wing `n|w` Y-system relation from the mirror TBA by applying
   the kernel inverse and then the strip-analytic inverse of `s`.
+- Proves the precise domain and failure mode of the `s`-kernel inverse: on a
+  regular closed strip it is the shift operator, while boundary zero modes and
+  shifted zero-pole factors carry exactly the source data that the local
+  Y-system would otherwise forget.
 - Defines the planar `N=4` bulk T-hook domain, with `T_{0,s}` adjoined as a
   gauge boundary, proves the local Hirota origin of the interior Y-system
   relation, and proves cancellation of the four-function T-gauge redundancy
@@ -214,6 +218,9 @@ node domain.
 - The same script checks the auxiliary-wing TBA-to-Y-system kernel algebra:
   the fused `A_mn` Fourier symbol, tridiagonal inverse, `A^{-1}K` identities,
   `s^{-1}` shift symbol, and boundary-source algebra for the `n|w` Y-system.
+- The same script checks the `s`-inverse data-loss mechanism: an explicit
+  boundary zero mode, its closest strip-boundary poles, and the shifted
+  zero-pole factor that leaves rational source memory.
 - The same script checks the local analytic Y-system source factor
   `B_a^+B_a^-=(u-a+i)/(u-a-i)`, its inverse orientation, and finite products
   of shifted zero-pole sources.
