@@ -76,7 +76,7 @@ still needs development.
 | Y-system from TBA/Hirota and analytic Y-system data | `The Y-system` | `Expanded/Partial`: Chapter 14 proves local Hirota-to-Y-system algebra, T-gauge cancellation, shifted zero-pole source factors, and records analytic data | Needs the complete discontinuity/source-condition crosswalk from the stringbook analytic continuation discussion. |
 | Excited finite-volume states and asymptotic conditions | `Excited states in finite volume and asymptotic conditions` | `Partial`: Chapter 14 and Chapter 15 derive several local bridges and mark remaining QSC/TBA framework inputs | Needs a tighter bridge from excited-state TBA source terms to QSC asymptotics, including all assumptions on roots, contours, and physical gluing. |
 | Konishi wrapping | `The Konishi operator and wrapping corrections`; `mirror TBA and wrapping corrections.nb` | `Expanded/Boundary`: Chapter 14 now derives weak-density rationalization, pole structure, exact residue reduction, telescoping, and final coefficient; the leading mirror input remains an explicit assumption | Need audit the whole notebook, not just the rational density/residue path, and decide whether the leading mirror input can be derived further from the preceding ABA/mirror data. |
-| T-gauge, `T`-gauge, `mathbb T`-gauge, and `Pmu` system | QSC subsections through `The Pmu-system` | `Partial/Boundary`: Chapter 15 derives one-row and two-row local algebra, central-cut bridge, `Pmu` discontinuity, Pfaffian, and recursion; global analytic reconstruction remains assumption/theorem input | Needs fuller self-contained development of the gauge transformations and global Riemann-Hilbert assumptions, or sharper theorem statements for exactly what is imported. |
+| T-gauge, `T`-gauge, `mathbb T`-gauge, and `Pmu` system | QSC subsections through `The Pmu-system` | `Expanded/Boundary`: Chapter 15 now derives the one-row analytic gauge, magic-sheet Cauchy continuation, fermionic `mathbf T`/`mathbb T` gauge bridge, central-row discontinuity telescope, two-row local Wronskian algebra, central-cut `Pmu` bridge, Pfaffian, and recursion; global analytic reconstruction remains assumption/theorem input | Remaining boundary is the global Riemann-Hilbert existence/gluing problem and the mirror-TBA discontinuity relation itself, rather than the finite T-gauge algebra. |
 | QSC asymptotic conditions and coefficient products | `Asymptotic conditions for the Pmu-system` | `Expanded/Boundary`: Chapter 15 derives `mu_12` power, `mu_ab` powers, characteristic determinant, and coefficient products; physical root assignment is an explicit input | Need ensure every use of large-`u`, sheet exponent, and no-cancellation hypothesis is stated uniformly. |
 | QSC weak-coupling limit and Baxter equation | `Weak coupling limit` | `Expanded/Boundary`: Chapter 15 derives the pre-Baxter equation, Baxter limit, digamma package, and twist-two family under explicit weak-regularity assumptions | Need continue replacing weak-QSC regularity assumptions with derivations when feasible; otherwise keep them as honest QSC framework boundaries. |
 | Small-spin QSC slope | `Small spin expansion` | `Expanded/Boundary`: Chapter 15 proves the Bessel slope formula under small-spin analytic assumptions | Need derive or clearly boundary-label the analytic continuation from small spin to integer spin and any higher-order `K` terms. |
@@ -105,9 +105,11 @@ still needs development.
    source/target derivative conventions, fused rational kernels, and endpoint
    dressing package are now internalized; the remaining work is the global
    `chi` continuation and excited-state sources.
-5. Tighten the QSC derivation from T-system/TBA to `Pmu`: every global
-   analytic assumption should either be proved locally, quoted as a theorem
-   with hypotheses, or listed as a framework input.
+5. Tighten the remaining global QSC framework inputs: the local T-gauge,
+   `mathbb T`, central-row telescope, and `Pmu` algebra are now internalized;
+   the remaining work is the global Riemann-Hilbert existence/gluing problem,
+   the mirror-TBA discontinuity relation as analytic input, and sharper
+   theorem statements for physical solution selection.
 6. Expand the strong-coupling/small-spin QSC block before claiming any
    self-contained strong-Konishi derivation.
 

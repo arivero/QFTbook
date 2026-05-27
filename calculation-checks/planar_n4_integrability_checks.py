@@ -3541,6 +3541,134 @@ def check_t_gauge_resolvent_hirota_factorization() -> None:
         assert_close("magic-sheet T2 row product", t2_from_factorization, t2_from_row_product)
 
 
+def check_qsc_t_gauge_discontinuity_telescope() -> None:
+    """Check the bold-T and mathbb-T gauge algebra before the Pmu bridge."""
+
+    def t_key(a_value: int, s_value: int, shift: int) -> tuple[str, int, int, int]:
+        return ("T", a_value, s_value, shift)
+
+    def h_key(shift: int) -> tuple[str, int]:
+        return ("h", shift)
+
+    def cal_key(a_value: int, s_value: int, shift: int) -> tuple[str, int, int, int]:
+        return ("calT", a_value, s_value, shift)
+
+    def clean(counter: Counter) -> Counter:
+        return Counter({key: value for key, value in counter.items() if value})
+
+    def combine(*counters: Counter) -> Counter:
+        result: Counter = Counter()
+        for counter in counters:
+            for key, value in counter.items():
+                result[key] += value
+        return clean(result)
+
+    def canonical_t(counter: Counter) -> Counter:
+        result: Counter = Counter()
+        for key, value in counter.items():
+            if not value:
+                continue
+            _tag, a_value, s_value, shift = key
+            if a_value == 0:
+                result[t_key(0, 0, shift + s_value)] += value
+            elif (a_value, s_value) == (3, 2):
+                result[t_key(2, 3, shift)] += value
+            elif (a_value, s_value) == (3, -2):
+                result[t_key(2, -3, shift)] += value
+            else:
+                result[key] += value
+        return clean(result)
+
+    def y_counter(a_value: int, s_value: int, shift: int = 0) -> Counter:
+        return Counter(
+            {
+                t_key(a_value, s_value + 1, shift): 1,
+                t_key(a_value, s_value - 1, shift): 1,
+                t_key(a_value + 1, s_value, shift): -1,
+                t_key(a_value - 1, s_value, shift): -1,
+            }
+        )
+
+    fermionic_product = canonical_t(combine(y_counter(1, 1), y_counter(2, 2)))
+    expected_fermionic_product = canonical_t(
+        Counter({t_key(1, 0, 0): 1, t_key(0, 0, 1): -1})
+    )
+    if fermionic_product != expected_fermionic_product:
+        raise AssertionError("QSC bold-T fermionic product reduction failed")
+
+    for length in range(1, 9):
+        product_counter: Counter = Counter()
+        for node in range(1, length + 1):
+            shift = 2 * length - node
+            product_counter = combine(
+                product_counter,
+                Counter(
+                    {
+                        t_key(node, 0, shift + 1): 1,
+                        t_key(node, 0, shift - 1): 1,
+                        t_key(node + 1, 0, shift): -1,
+                        t_key(node - 1, 0, shift): -1,
+                    }
+                ),
+            )
+
+        expected_counter = Counter(
+            {
+                t_key(1, 0, 2 * length): 1,
+                t_key(length, 0, length - 1): 1,
+                t_key(0, 0, 2 * length - 1): -1,
+                t_key(length + 1, 0, length): -1,
+            }
+        )
+        if canonical_t(product_counter) != canonical_t(expected_counter):
+            raise AssertionError("QSC central-row discontinuity telescope failed")
+
+    for s_value in range(-4, 5):
+        # mathbb T_{0,s}=T_{0,s}(T_{0,0}^{[s]})^{-1}=1 in the bold-T boundary
+        # gauge.  The sign factor is trivial for a=0.
+        mathbb_boundary = canonical_t(
+            combine(
+                Counter({t_key(0, s_value, 0): 1}),
+                Counter({t_key(0, 0, s_value): -1}),
+            )
+        )
+        if mathbb_boundary:
+            raise AssertionError("QSC mathbb-T boundary normalization failed")
+
+    for m_value in range(2, 8):
+        mathbb_t2_counter = Counter(
+            {
+                h_key(m_value + 1): 1,
+                h_key(m_value - 1): 1,
+                h_key(-m_value + 1): 1,
+                h_key(-m_value - 1): 1,
+                cal_key(2, m_value, 0): 1,
+            }
+        )
+        magic_row_factorization = combine(
+            mathbb_t2_counter,
+            Counter({cal_key(2, m_value, 0): -1}),
+            Counter(
+                {
+                    cal_key(1, 1, m_value): 1,
+                    cal_key(1, 1, -m_value): 1,
+                }
+            ),
+        )
+        row_product_counter = Counter(
+            {
+                h_key(m_value + 1): 1,
+                h_key(m_value - 1): 1,
+                cal_key(1, 1, m_value): 1,
+                h_key(-m_value + 1): 1,
+                h_key(-m_value - 1): 1,
+                cal_key(1, 1, -m_value): 1,
+            }
+        )
+        if clean(magic_row_factorization) != clean(row_product_counter):
+            raise AssertionError("QSC mathbb-T magic-row h-factor compatibility failed")
+
+
 def check_t_hook_wronskian_pmu_bridge() -> None:
     """Check the local T-hook Wronskian algebra leading to the Pmu bridge."""
 
@@ -4463,6 +4591,7 @@ def main() -> None:
     check_qsc_small_spin_bessel_slope()
     check_t_system_to_y_system_identity()
     check_t_gauge_resolvent_hirota_factorization()
+    check_qsc_t_gauge_discontinuity_telescope()
     check_t_hook_wronskian_pmu_bridge()
     check_qsc_fermionic_node_ratio_large_u()
     check_qsc_pq_bridge_unimodular_rank_one_update()

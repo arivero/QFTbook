@@ -1775,3 +1775,40 @@ Calculation checks added:
   auxiliary orientations, exact auxiliary pole-multiplicity reduction, and
   equality of the auxiliary double-sum derivative with the closed fused
   `K_mn` kernel.
+
+## Continuation LVI: QSC T-Gauge Discontinuity Telescope
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added the intermediate fermionic `mathbf T` and `mathbb T` gauge chain from
+  the stringbook before the `Pmu` system.
+- The text now states the central strip data, boundary identifications
+  `T_{0,s}=T_{0,0}^{[s]}`, the `mathbb T_{0,s}=1` normalization, and the
+  single-short-cut `hat h` relation between the magic `mathcal T` and
+  `mathbb T` gauges.
+- Proved the local T-gauge reduction
+  `Y_{1,1}Y_{2,2}=mathbf T_{1,0}/mathbf T_{0,0}^{[+1]}`.
+- Proved the central-row telescope
+  `prod_{a=1}^n(1+Y_{a,0}^{[2n-a]})
+  =T_{1,0}^{[2n]}T_{n,0}^{[n-1]}/
+  (T_{0,0}^{[2n-1]}T_{n+1,0}^{[n]})`.
+- Kept the mirror-TBA discontinuity relation as analytic-Y-system input while
+  deriving the T-gauge form used by the QSC bridge.
+- Proved that the `mathbb T` gauge is compatible with the magic-row
+  factorization
+  `hat mathbb T_{2,m}=hat mathbb T_{1,1}^{[m]}hat mathbb T_{1,1}^{[-m]}`.
+
+Calculation checks added:
+
+- Added `check_qsc_t_gauge_discontinuity_telescope()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the symbolic `Y_{1,1}Y_{2,2}` reduction, exact central-row telescoping for
+  `n=1,...,8`, the `mathbb T_{0,s}=1` boundary normalization, and the
+  `hat h`-factor compatibility behind the magic-row product.
