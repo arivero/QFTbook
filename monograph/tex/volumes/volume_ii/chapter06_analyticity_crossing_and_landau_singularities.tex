@@ -569,6 +569,19 @@ specified class of unsmeared QFT matrix coefficients is a separate theorem,
 not a notational convention.
 \end{definition}
 
+\begin{definition}[Dyson regularity modulo contact terms]
+\label{def:dyson-regular-modulo-contact}
+A causal commutator \(C\in\mathcal S'(\mathbb M^4)\) is Dyson-regular
+modulo contact terms if there is a finite-order distribution \(L\) supported
+at \(x=0\) such that \(C-L\) is Dyson-regular in the sense of
+Definition~\ref{def:dyson-regular-causal-commutator}.  Equivalently,
+\(\widehat C\) has the Dyson hyperboloid representation of
+Theorem~\ref{thm:dyson-causal-commutator-representation} plus a polynomial in
+\(q\).  This is the form actually used after source-current reduction,
+because applying differential wave operators to time-ordered products can
+produce local terms at coincident points.
+\end{definition}
+
 \begin{proposition}[Microlocal status of the Dyson light-cone lift]
 \label{prop:dyson-light-cone-lift-microlocal-criterion}
 Let
@@ -685,6 +698,155 @@ Fourier transformation sends this finite sum to a polynomial in
 \((q,p_1,p_2)\), and restriction to \(p_1=p_2=0\) gives a polynomial in
 \(q\).  This is exactly the local-contact ambiguity recorded in the Dyson
 representation.
+\end{proof}
+
+\begin{theorem}[Punctured Dyson lift and finite scaling degree]
+\label{thm:punctured-dyson-lift-finite-scaling-degree}
+Let \(C\in\mathcal S'(\mathbb M^4)\) be supported in
+\(\overline V_{\rm caus}\) and suppose that the wavefront transversality
+condition
+\[
+  \operatorname{WF}(C)\cap\mathcal N_{\rm lc}=\varnothing
+\]
+holds on the punctured four-dimensional light cone.  Let
+\[
+  U^\circ=\kappa\,\pi^*C\cdot\delta(x_D^2-|y|^2)
+  \qquad
+  \text{on }
+  X^\circ=(\mathbb M^4\times\mathbb R^2)\setminus\{0\},
+  \label{eq:punctured-dyson-lift-Ucirc}
+\]
+where \(\kappa\ne0\) is a fixed normalization.  Assume that
+\(U^\circ\) has finite scaling degree at the origin in
+\(\mathbb R^6\), and that it admits a tempered \(O(2)\)-invariant extension
+\[
+  U\in\mathcal S'(\mathbb R^6)
+\]
+with the following three further properties:
+\[
+  \operatorname{supp}U
+  \subset
+  \{(x,y)\mid x\in\overline V_{\rm caus},\ x_D^2=|y|^2\}.
+  \label{eq:dyson-extension-support}
+\]
+\[
+  (x_D^2-|y|^2)\,U=0,
+  \label{eq:dyson-extension-cone-equation}
+\]
+and the \(y\)-pushforward of \(U\), with the chosen normalization \(\kappa\),
+equals \(C\) modulo a distribution supported at \(x=0\).
+Then the Fourier transform
+\[
+  F(q,p_1,p_2)=\widehat U(q,p_1,p_2)
+\]
+is rotationally invariant in \((p_1,p_2)\) and solves
+\[
+  \Box_{1,5}F=0
+  \label{eq:dyson-extension-wave-equation}
+\]
+in the distributional sense.  The restriction of \(F\) to \(p_1=p_2=0\), if
+defined by the chosen extension, equals \(\widehat C(q)\) up to a polynomial
+in \(q\).  Hence \(C\) is Dyson-regular modulo contact terms once the
+restriction and Cauchy-data requirements in
+Definition~\ref{def:dyson-regular-causal-commutator} are satisfied by \(F\).
+
+Moreover, if \(U_1\) and \(U_2\) are two such finite-scaling-degree
+extensions, then
+\[
+  U_1-U_2
+  =
+  \sum_{|\alpha|+|\beta|\le N}
+  c_{\alpha\beta}\,
+  \partial_x^\alpha\partial_y^\beta\delta(x)\delta(y)
+  \label{eq:dyson-extension-local-ambiguity}
+\]
+for some \(N\).  Thus the induced ambiguity in \(F(q,0,0)\) is a finite
+polynomial in \(q\), and no cut, threshold, or hyperboloid support is changed
+by choosing a different extension.
+\end{theorem}
+
+\begin{proof}
+The product \(U^\circ\) on \(X^\circ\) is well-defined by
+Proposition~\ref{prop:dyson-light-cone-lift-microlocal-criterion}.  We first
+recall the extension mechanism because it is the local analytic part of the
+argument.  Let \(n=6\) and let \(T^\circ\in\mathcal D'(\mathbb R^n\setminus
+\{0\})\) have finite scaling degree \(s\) at the origin.  Put
+\[
+  m=\lfloor s\rfloor-n
+\]
+when \(s\ge n\), and \(m=-1\) otherwise.  Choose
+\(\chi\in C_c^\infty(\mathbb R^n)\) equal to \(1\) near the origin.  For a
+test function \(\varphi\), define
+\[
+  R_m\varphi(z)
+  =
+  \varphi(z)
+  -
+  \chi(z)
+  \sum_{|\alpha|\le m}
+  \frac{z^\alpha}{\alpha!}\partial^\alpha\varphi(0)
+  \label{eq:dyson-scaling-degree-taylor-remainder}
+\]
+with the sum omitted when \(m=-1\).  The function \(R_m\varphi\) vanishes at
+the origin to order \(m+1\).  Let \(\chi_\epsilon(z)=\chi(z/\epsilon)\).
+The finite-scaling-degree bound makes the limit
+\[
+  T_0(\varphi)
+  =
+  \lim_{\epsilon\downarrow0}
+  T^\circ\bigl((1-\chi_\epsilon)R_m\varphi\bigr)
+\]
+finite and continuous in the test-function topology: the Taylor remainder
+removes precisely the jets whose scaling would make the punctured
+distribution divergent at the origin.  The possible values of an extension on
+the finite jet removed in
+\eqref{eq:dyson-scaling-degree-taylor-remainder} are exactly the constants
+multiplying \(\partial^\alpha\delta_0\) for \(|\alpha|\le m\).  This gives an
+extension of \(T^\circ\), preserves the scaling degree, and shows that two
+extensions with the same punctured distribution differ by a finite sum of
+derivatives of \(\delta_0\).  If \(T^\circ\) is supported in a closed cone
+with vertex at the origin, the same construction applied after restricting
+test functions supported away from that cone gives an extension with support
+in the closed cone; the only new support allowed by extension is the vertex
+itself.
+
+Applying this statement to \(T^\circ=U^\circ\) gives the asserted local
+ambiguity \eqref{eq:dyson-extension-local-ambiguity}.  The additional
+condition \eqref{eq:dyson-extension-cone-equation} is essential: support on
+the cone alone would still allow derivatives of the delta distribution in
+the normal direction at the vertex, and multiplication by the quadratic
+equation need not annihilate such terms.  Fourier transformation converts
+multiplication by \(x_D^2-|y|^2\) into the six-dimensional wave operator in
+momentum space, up to the sign fixed by the Fourier convention.  Therefore
+\(\Box_{1,5}F=0\).  Rotational invariance in the two auxiliary momenta is one
+of the stated extension requirements.  Equivalently, if a non-invariant
+extension satisfying the other conditions has been constructed, averaging it
+over \(O(2)\) preserves the punctured value, support,
+\eqref{eq:dyson-extension-cone-equation}, and the pushforward normalization.
+
+It remains to identify the four-dimensional restriction.  On
+\(X^\circ\), the \(y\)-pushforward of the punctured expression is the intended
+four-dimensional commutator with the normalization \(\kappa\).  The theorem
+therefore requires the extension to preserve this pushforward modulo a
+distribution supported at \(x=0\).  Fourier transformation of the
+\(y\)-pushforward is exactly restriction to \(p=0\).  Hence the distribution
+obtained by restricting \(\widehat U(q,p)\) to \(p=0\), whenever that
+restriction exists for the chosen extension, differs from \(\widehat C(q)\)
+by the Fourier transform of a distribution supported at \(x=0\), namely by a
+polynomial in \(q\).  The same conclusion follows directly from
+\eqref{eq:dyson-extension-local-ambiguity}: setting \(p=0\) turns the
+Fourier transform of every
+\(\partial_x^\alpha\partial_y^\beta\delta(x)\delta(y)\) into a polynomial in
+\(q\), with the \(p\)-powers evaluated at zero.
+
+The theorem has not proved the physical source-current kernels to be
+Dyson-regular.  It proves the exact local construction that remains once the
+punctured wavefront condition, finite scaling degree, cone equation,
+pushforward normalization, temperedness, and Cauchy-data trace hypotheses
+have been verified for those kernels.  Under those hypotheses the difference
+between the constructed lift and a strict Dyson lift is only a contact term,
+so
+Definition~\ref{def:dyson-regular-modulo-contact} applies.
 \end{proof}
 
 \begin{theorem}[Dyson representation of a causal commutator]
@@ -997,12 +1159,13 @@ assume that the distribution
   =
   \langle Q_f,[J_b(x/2),J_c(-x/2)]Q_i\rangle
 \]
-is Dyson-regular in the sense of
-Definition~\ref{def:dyson-regular-causal-commutator}.  Then \(C_{bc}\) has a
+is Dyson-regular modulo contact terms in the sense of
+Definition~\ref{def:dyson-regular-modulo-contact}.  Then \(C_{bc}\) has a
 Dyson representation of the form
 \eqref{eq:dyson-causal-commutator-representation} in every coincidence slab
-where the intermediate-state spectral condition makes
-\(\widehat C_{bc}\) vanish.  The associated retarded and advanced Fourier
+where the intermediate-state spectral condition makes the nonlocal part of
+\(\widehat C_{bc}\) vanish, plus a finite polynomial in \(q\).  The
+associated retarded and advanced Fourier
 transforms
 \[
   C^R_{bc}(q)=\int\ee^{\ii q\cdot x}\theta(x^0)C_{bc}(x)\,\dd^4x,
@@ -1022,8 +1185,11 @@ the functions \(h_\pm\) are boundary descriptions of the lower spectral
 thresholds for the two possible intermediate-state orderings.
 The assumed Dyson regularity is precisely the additional analytic regularity
 needed to run Theorem~\ref{thm:dyson-causal-commutator-representation}; it is
-not supplied by the words ``tempered distribution'' alone.  The theorem then
-gives the hyperboloid representation.  Multiplication by \(\theta(\pm x^0)\)
+not supplied by the words ``tempered distribution'' alone.  If
+\(C_{bc}=C^{\rm nl}_{bc}+L_{bc}\) with \(L_{bc}\) supported at \(x=0\), the
+theorem gives the hyperboloid representation for \(C^{\rm nl}_{bc}\), while
+\(\widehat L_{bc}\) is a polynomial in \(q\).  Multiplication by
+\(\theta(\pm x^0)\)
 separates the causal commutator into retarded and advanced boundary values.
 On a real open region where the causal transform vanishes, these two boundary
 values coincide.  The distributional edge-of-the-wedge theorem therefore gives
@@ -1041,14 +1207,20 @@ Proposition~\ref{prop:source-current-commutator-coincidence-region} supplies
 the spectral coincidence regions for the LSZ source-current commutator.
 Theorem~\ref{thm:dyson-causal-commutator-representation} then supplies the
 causal-commutator representation used to enlarge domains from those
-coincidence regions, provided the commutator is Dyson-regular.  The stronger
-fixed-\(t\) cut-plane theorem used in dispersion relations still requires the
-Dyson-regularity verification for the relevant LSZ source-current matrix
-coefficients.  Proposition~\ref{prop:dyson-light-cone-lift-microlocal-criterion}
-shows the precise microlocal obstruction to treating Dyson's light-cone lift
-as an ordinary product of distributions, and identifies the finite local
-ambiguity of any renormalized lift.  After that regularity problem one still
-needs the Bros--Epstein--Glaser analytic-completion step and the LSZ
+coincidence regions, provided the commutator is Dyson-regular modulo contact
+terms.  The stronger fixed-\(t\) cut-plane theorem used in dispersion
+relations still requires the Dyson-regularity verification for the relevant
+LSZ source-current matrix coefficients.
+Proposition~\ref{prop:dyson-light-cone-lift-microlocal-criterion} shows the
+precise microlocal obstruction to treating Dyson's light-cone lift as an
+ordinary product of distributions, and identifies the finite local ambiguity
+of any renormalized lift.
+Theorem~\ref{thm:punctured-dyson-lift-finite-scaling-degree} then proves the
+local finite-scaling-degree extension mechanism, including the cone equation,
+pushforward normalization, and the fact that all remaining extension
+ambiguity is polynomial after Fourier transformation.  After that regularity
+problem one still needs the Bros--Epstein--Glaser analytic-completion step and
+the LSZ
 pole-separation transfer hypotheses.  The analytic LSZ transfer itself is
 proved in
 Theorem~\ref{thm:lsz-transfer-fixed-t-domain}: once an off-shell fixed-\(t\)

@@ -448,3 +448,10 @@ hypotheses:
   diagnostic from the still-open theorem that the actual LSZ source-current
   kernels have the required wavefront/scaling behavior or an equivalent
   renormalized six-dimensional lift.
+- 2026-05-27 issue #495 finite-scaling-degree lift pass: Chapter 6 now proves
+  the local extension theorem for the punctured Dyson lift under finite
+  scaling degree, with explicit cone-equation, \(O(2)\)-invariance,
+  pushforward-normalization, temperedness, and contact-polynomial ambiguity.
+  The Chapter 7 stack should state the remaining source-current input as a
+  concrete theorem about those hypotheses, rather than as the undefined phrase
+  ``Dyson regularity.''

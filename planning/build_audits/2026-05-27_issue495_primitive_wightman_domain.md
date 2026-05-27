@@ -43,6 +43,14 @@ inside the monograph, not left as literature imports.
     \(\operatorname{WF}(C)\cap\mathcal N_{\rm lc}=\varnothing\), and proves
     that different extensions differ by finite contact polynomials after
     Fourier transform.
+  - `def:dyson-regular-modulo-contact` and
+    `thm:punctured-dyson-lift-finite-scaling-degree`, proving the local
+    finite-scaling-degree extension mechanism for the punctured Dyson lift.
+    The theorem explicitly requires the cone equation
+    \((x_D^2-|y|^2)U=0\), \(O(2)\)-invariance, temperedness, and
+    \(y\)-pushforward normalization modulo \(x=0\) contact terms; it proves
+    that the Fourier transform solves the six-dimensional wave equation and
+    that all extension ambiguity restricts to a polynomial in \(q\).
   - `cor:jld-input-for-lsz-retarded-commutator`, applying the representation
     to LSZ source-current commutators and separating finite contact
     polynomials.
@@ -81,14 +89,19 @@ spectral theorem.  The causal-commutator Dyson/JLD theorem is now proved for
 the mathematically defined class of Dyson-regular causal commutators, with the
 light-cone lift regularity no longer hidden in notation.  The microlocal
 criterion now explains exactly where the naive light-cone product is valid
-and where renormalized lift data must be supplied.  Remaining closure work:
+and where renormalized lift data must be supplied.  The finite-scaling-degree
+extension theorem now makes the local extension/contact-polynomial mechanism
+explicit, including the cone equation and pushforward normalization that a
+physical source-current kernel must satisfy.  Remaining closure work:
 
 1. Prove Dyson regularity for the LSZ source-current matrix coefficients used
    in the massive scattering application.  The new microlocal proposition
    supplies a sufficient wavefront transversality criterion and the contact
-   ambiguity analysis, but the actual source-current kernels still require a
-   theorem proving the needed wavefront/scaling behavior or a different
-   construction of the six-dimensional lift.
+   ambiguity analysis, and the extension theorem supplies the local
+   finite-scaling-degree mechanism.  The actual source-current kernels still
+   require a theorem proving the needed wavefront/scaling behavior, cone
+   equation, pushforward normalization, temperedness, and Cauchy-data trace
+   hypotheses, or a different construction of the six-dimensional lift.
 2. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
    needed for the cut
    \(s\)-plane at fixed \(t\), including the off-shell normal-coordinate

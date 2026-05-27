@@ -279,3 +279,13 @@
   Fourier transform.  This does not prove Dyson regularity for the physical
   source-current kernels; it turns that phrase into a precise remaining
   wavefront/scaling or renormalized-lift theorem.
+- 2026-05-27 issue #495 finite-scaling-degree lift pass: added Dyson
+  regularity modulo contact terms and the punctured-lift extension theorem.
+  The theorem now proves the local finite-scaling-degree extension mechanism
+  with the required cone equation \((x_D^2-|y|^2)U=0\), \(O(2)\)-invariance,
+  temperedness, and \(y\)-pushforward normalization modulo contact terms.  It
+  also corrects a common false shortcut: support on the quadratic cone alone
+  does not annihilate normal derivatives of delta at the vertex.  Remaining
+  source-current work is therefore the actual QFT theorem verifying these
+  wavefront/scaling, cone-equation, pushforward, and Cauchy-trace hypotheses
+  for LSZ source-current kernels.
