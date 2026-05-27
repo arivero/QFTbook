@@ -45,6 +45,12 @@ chapters.
   \(\sqrt{1-x_0^2}e^{\beta c_e x_0}\).
 - `O_{W_e}(U_e)=W_e^{-1}U_e^{-1}W_e^{-1}`: single-link
   overrelaxation involution.
+- `H_{12},H_{13},H_{23}`: embedded \(SU(2)\) subgroups of \(SU(3)\) acting
+  on color-pair planes.
+- `V_e`: \(SU(3)\) local staple matrix in
+  \(Q_e(U_e)=\frac13\operatorname{Re}\operatorname{Tr}_3(U_eV_e)+Q_{\widehat e}\).
+- `nu_{alpha,e}(h|U)`: conditional subgroup density for an \(SU(3)\)
+  Cabibbo-Marinari type link update.
 - `Q_Lambda`: finite-dimensional HMC configuration manifold.
 - `Gamma_Lambda`, `lambda`: finite-dimensional HMC phase space and
   reference measure.
@@ -90,6 +96,14 @@ chapters.
   \(U_e\mapsto W_e^{-1}U_e^{-1}W_e^{-1}\), proves it is an involution,
   proves local-score preservation, and proves finite Wilson-measure
   invariance.
+- Defines the three embedded \(SU(2)\) color-pair subgroups of \(SU(3)\),
+  proves that their Lie algebras span \(\mathfrak{su}(3)\), and explains why
+  the \(SU(3)\) staple matrix does not reduce to the special
+  \(SU(2)\) polar form.
+- Defines exact finite subgroup heat-bath and Metropolis kernels for an
+  \(SU(3)\) link, proves detailed balance on the subgroup orbit, and records
+  the precise boundary between invariant-measure preservation and claims about
+  mixing, topological freezing, or continuum extrapolation.
 - Proves the finite-regulator HMC Metropolis-correction theorem from
   volume preservation, reversibility, and the momentum-flip involution.
 - Proves leapfrog volume preservation and reversibility in finite Euclidean
@@ -171,6 +185,11 @@ the exponential decay of average phase with volume.
   involution, local score preservation, and orthogonality of the
   overrelaxation map on \(S^3\), plus the local-staple and unit-link
   identities in `qft_scripts/su2_gauge_4d_heatbath_overrelaxation.py`.
+- `calculation-checks/su3_lattice_update_checks.py` verifies embedded
+  \(SU(2)\) unitarity and determinant one, the
+  \(\mathfrak{su}(3)\) span from the three color-pair subgroups, subgroup
+  commutators, local staple-score gauge covariance, and Metropolis pairwise
+  balance.
 - `calculation-checks/hmc_pseudofermion_checks.py` verifies the finite HMC
   and pseudofermion algebra: one-dimensional leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized
@@ -180,3 +199,11 @@ the exponential decay of average phase with volume.
   finite-\(N\) autocorrelation variance identity, phase-reweighting identity,
   average-phase relative-variance bound, and the determinant
   reality/positivity distinction in finite examples.
+
+## Audit Notes
+
+- 2026-05-27 issue #631 pass: added explicit \(SU(3)\) lattice subgroup
+  update material.  This fills the previous gap where the chapter had only
+  \(SU(2)\) compact-gauge algorithms, and it states the finite-regulator
+  invariant-measure theorem without promoting subgroup reachability to a
+  continuum or rapid-mixing theorem.
