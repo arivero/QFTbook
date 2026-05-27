@@ -335,6 +335,154 @@ verifies the local score change, pairwise detailed balance, gauge invariance
 of the plaquette action and Wilson loops, and the equality between the
 \(1\times1\) Wilson-loop average and the plaquette average.
 
+\section{\texorpdfstring{Compact \(SU(2)\) Link Variables}{Compact SU(2) Link Variables}}
+
+The finite \(\mathbb Z_2\) model is useful because it is exactly enumerable
+on small lattices, but nonabelian gauge Monte Carlo must also confront the
+continuous compact group structure.  On a finite periodic \(4\)-dimensional
+hypercubic lattice, assign to each oriented link \(e=(x,\mu)\) a group
+element
+\[
+  U_{x,\mu}\in SU(2),
+  \qquad
+  U_{x+\hat\mu,-\mu}=U_{x,\mu}^{-1}.
+\]
+The product Haar measure is finite and normalized.  For an oriented plaquette
+\[
+  U_{x;\mu\nu}
+  =
+  U_{x,\mu}U_{x+\hat\mu,\nu}
+  U^{-1}_{x+\hat\nu,\mu}U^{-1}_{x,\nu},
+\]
+define the finite Wilson score
+\[
+  Q(U)
+  =
+  \sum_{x}\sum_{\mu<\nu}
+  \frac12\operatorname{Re}\operatorname{tr}U_{x;\mu\nu}.
+  \label{eq:su2-finite-wilson-score}
+\]
+The probability measure used by the companion script is
+\[
+  d\nu_{\beta,\Lambda}(U)
+  =
+  Z_{\beta,\Lambda}^{-1}\exp[\beta Q(U)]
+  \prod_{(x,\mu)}dU_{x,\mu},
+  \label{eq:su2-finite-wilson-probability}
+\]
+where \(dU\) is normalized Haar measure on \(SU(2)\).  This is the finite
+probability problem corresponding to the Wilson action convention; continuum
+Yang--Mills normalization and the \(a\to0\) scaling trajectory are separate
+questions.
+
+A local compact-group Metropolis proposal chooses a link \(e=(x,\mu)\) and an
+element \(R\in SU(2)\), and replaces
+\[
+  U_{x,\mu}\longmapsto R\,U_{x,\mu}.
+\]
+Let \(\kappa(dR)\) be the proposal law.  The crucial algebraic hypothesis is
+inversion symmetry,
+\[
+  \kappa(dR)=\kappa(dR^{-1}).
+  \label{eq:su2-proposal-inversion-symmetry}
+\]
+For example, representing \(SU(2)\) by unit quaternions
+\[
+  R=\cos\alpha\,1+\ii\sin\alpha\,\hat n\cdot\sigma,
+  \qquad
+  \hat n\in S^2,
+\]
+with an even distribution of \(\alpha\) and a rotation-invariant distribution
+of \(\hat n\), satisfies \eqref{eq:su2-proposal-inversion-symmetry}.
+
+\begin{proposition}[Pairwise detailed balance for compact \(SU(2)\) link Metropolis]
+\label{prop:su2-link-metropolis-detailed-balance}
+For the finite measure \eqref{eq:su2-finite-wilson-probability}, suppose the
+link proposal chooses \(e\) uniformly and \(R\) with a law
+\(\kappa(dR)=\kappa(dR^{-1})\).  Accept the proposed configuration \(U'\) with
+probability
+\[
+  a(U\to U')
+  =
+  \min\{1,\exp[\beta(Q(U')-Q(U))]\}.
+  \label{eq:su2-link-metropolis-acceptance}
+\]
+Then the resulting transition kernel satisfies detailed balance with respect
+to \(d\nu_{\beta,\Lambda}\).  If the support of \(\kappa\) generates
+\(SU(2)\) as a closed subgroup, the chain is irreducible with respect to the
+product Haar measure on the compact link space; rejection probabilities give
+the usual holding component.
+\end{proposition}
+
+\begin{proof}
+The left multiplication \(U_e\mapsto R U_e\) preserves Haar measure on the
+updated link.  Its inverse move is \(U'_e\mapsto R^{-1}U'_e=U_e\).  Because
+the link is chosen with the same probability in both directions and
+\(\kappa(dR)=\kappa(dR^{-1})\), the proposal density for the forward move and
+the proposal density for the reverse move agree.  It remains only to check
+the Metropolis factor.  Set \(\Delta Q=Q(U')-Q(U)\).  If \(\Delta Q\geq0\),
+then
+\[
+  e^{\beta Q(U)} a(U\to U')
+  =
+  e^{\beta Q(U)}
+  =
+  e^{\beta Q(U')}e^{-\beta\Delta Q}
+  =
+  e^{\beta Q(U')} a(U'\to U).
+\]
+The case \(\Delta Q<0\) is the same identity with \(U\) and \(U'\) exchanged.
+Multiplying by the common proposal density and normalizing by
+\(Z_{\beta,\Lambda}\) gives detailed balance.  If the support of \(\kappa\)
+generates \(SU(2)\), finite products of allowed local left multiplications
+can approximate any assignment of link variables by compactness and the group
+generation hypothesis.  This gives irreducibility relative to product Haar
+measure.  The holding component is present whenever a proposal is rejected;
+one may also insert an explicit lazy step without changing the invariant
+measure.
+\end{proof}
+
+Gauge transformations are maps \(g_x\in SU(2)\) at sites, acting by
+\[
+  U_{x,\mu}\longmapsto g_xU_{x,\mu}g^{-1}_{x+\hat\mu}.
+\]
+They leave \eqref{eq:su2-finite-wilson-score} invariant because plaquettes
+transform by conjugation:
+\[
+  U_{x;\mu\nu}\longmapsto g_xU_{x;\mu\nu}g_x^{-1}.
+\]
+The rectangular Wilson-loop observable in the \((\mu,\nu)\)-plane is
+\[
+  W_{R,T}(x;\mu,\nu)
+  =
+  \frac12\operatorname{Re}\operatorname{tr}
+  \left[
+    \prod_{\ell\in \partial \mathcal R_{R,T}(x;\mu,\nu)} U_\ell
+  \right],
+  \label{eq:su2-rectangular-wilson-loop}
+\]
+with inverse links used when the path orientation is opposite to the positive
+lattice orientation.  The companion script averages
+\eqref{eq:su2-rectangular-wilson-loop} over translations and coordinate
+planes.
+
+The script
+\[
+  \texttt{qft\_scripts/su2\_gauge\_4d\_metropolis.py}
+\]
+implements the preceding finite Markov chain using the unit-quaternion model
+of \(SU(2)\).  The deterministic check
+\[
+  \texttt{calculation-checks/su2\_gauge\_metropolis\_checks.py}
+\]
+verifies quaternion group operations, the local plaquette-score change,
+pairwise detailed balance, gauge invariance of \(Q(U)\), gauge invariance of
+Wilson loops, and the equality between the \(1\times1\) Wilson-loop average
+and the average plaquette.  This script is a compact nonabelian
+finite-regulator demonstration.  Heat-bath, overrelaxation, pseudofermion
+HMC, RHMC, and continuum extrapolation require additional regulator data and
+are not certified by this example.
+
 \section{Autocorrelation and Effective Sample Size}
 
 For a stationary chain and a real observable \(O\), define the connected

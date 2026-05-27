@@ -16,6 +16,7 @@ Individual examples:
 ```bash
 python3 qft_scripts/ising2d_metropolis.py --smoke
 python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
+python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 python3 qft_scripts/thooft_dlcq.py --smoke
 ```
@@ -32,6 +33,11 @@ notebooks or CI checks can consume the results without scraping prose.
   lattice gauge sampler with plaquette and rectangular Wilson-loop
   measurements.  It demonstrates compact gauge variables, gauge-invariant
   observables, and a small phase-scan benchmark at finite cutoff.
+- `su2_gauge_4d_metropolis.py`: finite four-dimensional \(SU(2)\) lattice
+  gauge sampler with unit-quaternion links, Haar-symmetric local proposals,
+  plaquette measurements, and rectangular Wilson loops.  It demonstrates the
+  compact nonabelian link structure at finite cutoff; it is not a production
+  heat-bath, HMC, or continuum-extrapolation code.
 - `tcsa_ising_energy_benchmark.py`: exactly solvable Hamiltonian truncation
   benchmark for the Ising thermal deformation, written as finite Majorana
   Bogoliubov blocks.

@@ -30,6 +30,14 @@ chapters.
 - `Q(U)`: total plaquette score in the finite \(\mathbb Z_2\) gauge model.
 - `B_e(U)`: sum of plaquettes containing a link \(e\).
 - `U^e`: gauge configuration obtained by flipping the link \(e\).
+- `U_{x,mu}`: compact \(SU(2)\) link variable on a four-dimensional
+  periodic hypercubic lattice.
+- `U_{x;mu nu}`: oriented \(SU(2)\) plaquette variable.
+- `Q(U)=sum_p 1/2 Re tr U_p`: finite Wilson plaquette score for the
+  \(SU(2)\) companion chain.
+- `kappa(dR)`: inversion-symmetric local \(SU(2)\) proposal law.
+- `W_{R,T}`: rectangular Wilson-loop observable, averaged over translations
+  and coordinate planes.
 
 ## Claim Ledger
 
@@ -45,6 +53,14 @@ chapters.
 - Proves detailed balance and irreducibility for the finite single-link
   Metropolis chain in the periodic \(\mathbb Z_2\) lattice gauge model, and
   separates full link-space sampling from gauge-orbit interpretation.
+- Defines finite compact \(SU(2)\) lattice gauge sampling with product Haar
+  measure and Wilson plaquette score \(Q(U)=\sum_p\frac12\operatorname{Re}
+  \operatorname{tr}U_p\).
+- Proves pairwise detailed balance for a compact \(SU(2)\) local-link
+  Metropolis chain with inversion-symmetric proposal law, and states the
+  Haar-irreducibility condition without claiming continuum convergence.
+- Defines gauge transformations and rectangular Wilson-loop measurements for
+  the finite \(SU(2)\) script.
 - Proves the exact finite-\(N\) autocorrelation variance identity and derives
   the integrated-autocorrelation asymptotic under absolute summability.
 - Defines the average phase as \(Z/Z_R\), defines the finite-volume
@@ -58,6 +74,9 @@ chapters.
 - Adds the companion script `qft_scripts/z2_gauge_3d_metropolis.py` as a
   compact-gauge finite-regulator demonstration measuring plaquettes and
   Wilson loops.
+- Adds the companion script `qft_scripts/su2_gauge_4d_metropolis.py` as a
+  compact nonabelian finite-regulator demonstration with unit-quaternion
+  \(SU(2)\) links and Wilson loops.
 
 ## Figure Ledger
 
@@ -75,6 +94,11 @@ the exponential decay of average phase with volume.
   single-link update and reports plaquette and Wilson-loop measurements for a
   small beta scan.  It does not certify an infinite-volume transition or a
   continuum limit.
+- `qft_scripts/su2_gauge_4d_metropolis.py --smoke`: finite periodic
+  four-dimensional \(SU(2)\) gauge Metropolis sampler with unit-quaternion
+  links.  Certifies a Haar-symmetric local compact-link proposal and reports
+  plaquette and Wilson-loop measurements.  It does not certify a heat-bath
+  algorithm, HMC/RHMC, or a continuum limit.
 
 ## Calculation Checks
 
@@ -84,6 +108,10 @@ the exponential decay of average phase with volume.
 - `calculation-checks/z2_gauge_metropolis_checks.py` verifies the companion
   script's local score change, detailed-balance identity, gauge invariance,
   and the \(1\times1\) Wilson-loop/plaquette identity.
+- `calculation-checks/su2_gauge_metropolis_checks.py` verifies the companion
+  script's quaternion group operations, local score change,
+  detailed-balance identity, gauge invariance, and the \(1\times1\)
+  Wilson-loop/plaquette identity.
 - `calculation-checks/monte_carlo_sign_problem_checks.py` verifies the
   finite-\(N\) autocorrelation variance identity, phase-reweighting identity,
   average-phase relative-variance bound, and the determinant

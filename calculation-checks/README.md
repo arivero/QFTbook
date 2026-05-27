@@ -386,6 +386,11 @@ Current checks:
   local link-flip plaquette-score change, pairwise detailed balance, gauge
   invariance of the action and Wilson loops, and the identity between the
   \(1\times1\) Wilson-loop average and the plaquette average.
+- `su2_gauge_metropolis_checks.py`: finite checks for the
+  `qft_scripts/su2_gauge_4d_metropolis.py` companion script, verifying
+  quaternion \(SU(2)\) group operations, the local compact-link plaquette
+  score change, pairwise detailed balance, gauge invariance of the action and
+  Wilson loops, and the \(1\times1\) Wilson-loop/plaquette identity.
 - `z2_strong_coupling_surface_checks.py`: exact enumeration of small
   cubical plaquette chain complexes over \(\mathbb F_2\), verifying the
   one-cube Wilson-loop polynomial \((t+t^5)/(1+t^6)\), the first

@@ -10,6 +10,9 @@ python3 qft_scripts/ising2d_metropolis.py --smoke
 echo "[qft-scripts] z2_gauge_3d_metropolis --smoke"
 python3 qft_scripts/z2_gauge_3d_metropolis.py --smoke
 
+echo "[qft-scripts] su2_gauge_4d_metropolis --smoke"
+python3 qft_scripts/su2_gauge_4d_metropolis.py --smoke
+
 echo "[qft-scripts] tcsa_ising_energy_benchmark --smoke"
 python3 qft_scripts/tcsa_ising_energy_benchmark.py --smoke
 
