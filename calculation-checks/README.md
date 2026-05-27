@@ -508,6 +508,12 @@ Current checks:
   \(\phi_{1,3}\) Kac weight, relevance exponent, unitary minimal-model
   central-charge drops, Kac-table identification, source-scaling sign, and
   right/left massless dispersion identities.
+- `mirror_tba_wrapping_checks.py`: exact algebra checks for the Volume VI
+  mirror-channel finite-size chapter, including the two-winding TBA expansion
+  of \(L_a=\log(1+e^{-\epsilon_a})\), the displayed vacuum-energy
+  coefficients, the \(K_1\) large-\(r\) asymptotic coefficients, F-term
+  product subtraction, and the orientation sign in the \(\mu\)-term residue
+  ledger.
 - `mellin_four_point_checks.py`: finite algebra checks for the CFT
   four-point Mellin-representation section, including the constrained
   \(\delta_{ij}\) equations, compatibility with the chapter's scalar

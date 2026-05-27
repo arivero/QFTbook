@@ -5,9 +5,10 @@
 
 This chapter refines the finite-volume interpretation of the thermodynamic
 Bethe ansatz.  The primitive object is a Euclidean two-torus partition
-function with two possible Hamiltonian decompositions.  The mirror-channel
-description then turns finite circumference in the original theory into
-finite temperature in the rotated theory.
+function with two Hamiltonian decompositions.  The mirror-channel
+decomposition turns the circumference of the direct theory into the inverse
+temperature of a gas in the rotated theory.  Finite-size corrections are then
+organized by the number of mirror particles winding around the compact cycle.
 
 \section{Two Hamiltonian Decompositions}
 
@@ -17,82 +18,105 @@ Let the Euclidean spacetime be a flat torus with cycles of lengths \(R\) and
   Z(R,L)=\operatorname{Tr}_{\Hilb_R}\exp[-L H_R],
 \]
 where \(H_R\) is the Hamiltonian on a spatial circle of circumference \(R\).
-If the theory has a unique ground state on that circle and a spectral gap
-above it, then
+Assume that \(H_R\) is self-adjoint, bounded below, and has a unique ground
+state separated by a gap from the rest of the spectrum.  Then
 \[
-  -\lim_{L\to\infty}\frac{1}{L}\log Z(R,L)=E_0(R).
+  -\lim_{L\to\infty}\frac{1}{L}\log Z(R,L)=E_0(R),
 \]
+where \(E_0(R)\) is the direct-channel vacuum energy.
+
 Quantization after exchanging the two cycles gives
 \[
   Z(R,L)=\operatorname{Tr}_{\widetilde{\Hilb}_L}\exp[-R\widetilde H_L].
 \]
 The Hilbert space \(\widetilde{\Hilb}_L\) is the mirror-channel Hilbert space.
 For a relativistic theory obtained by Euclidean rotation, the one-particle
-dispersion in the infinite-volume mirror channel has the same form
+dispersion in the infinite-volume mirror channel is
 \[
   \widetilde E_a(\theta)=m_a\cosh\theta,\qquad
-  \widetilde p_a(\theta)=m_a\sinh\theta,
+  \widetilde p_a(\theta)=m_a\sinh\theta .
 \]
-but the physical interpretation of \(R\) changes: it is the inverse
-temperature of the mirror gas.
+The same function \(m_a\cosh\theta\) now appears in the Boltzmann weight
+\(\exp[-R\widetilde E_a(\theta)]\).
 
 \begin{proposition}[Vacuum energy from mirror pressure]
 \label{prop:mirror-pressure-vacuum-energy}
-Assume that the two torus decompositions above exist, the large-\(L\) limit
-of \(L^{-1}\log Z(R,L)\) exists, and the mirror channel has a thermodynamic
-limit at inverse temperature \(R\).  Let \(f_{\mathrm{mir}}(R)\) be the
-mirror free-energy density, defined by
+Assume that both torus decompositions exist at a common regulator, that the
+large-\(L\) limit of \(L^{-1}\log Z(R,L)\) exists in the direct channel, and
+that the mirror channel has a thermodynamic limit at inverse temperature
+\(R\).  Let
 \[
   f_{\mathrm{mir}}(R)
   =
   -\lim_{L\to\infty}\frac{1}{RL}\log
-  \operatorname{Tr}_{\widetilde{\Hilb}_L}\exp[-R\widetilde H_L].
+  \operatorname{Tr}_{\widetilde{\Hilb}_L}\exp[-R\widetilde H_L]
 \]
-Then the direct-channel vacuum energy is
+be the mirror free-energy density.  Then
 \[
   E_0(R)=R\,f_{\mathrm{mir}}(R).
 \]
 \end{proposition}
 
 \begin{proof}
-Both traces compute the same finite-regulator torus functional.  Taking
-the logarithm and dividing by \(L\) gives
+The two traces are the same torus functional written in two Hamiltonian
+channels.  Dividing the equality of traces by \(L\) after taking the logarithm
+gives
 \[
   \frac{1}{L}\log Z(R,L)
   =
   \frac{1}{L}\log
   \operatorname{Tr}_{\widetilde{\Hilb}_L}\exp[-R\widetilde H_L].
 \]
-The direct-channel large-\(L\) limit equals \(-E_0(R)\).  The mirror
-thermodynamic definition gives the limit on the right as
-\(-R f_{\mathrm{mir}}(R)\).  Equating the two limits proves the formula.
+The direct-channel assumption gives the left-hand limit \(-E_0(R)\).  The
+mirror thermodynamic definition gives the right-hand limit
+\(-R f_{\mathrm{mir}}(R)\).  Equality of the two limits proves the formula.
 \end{proof}
 
 \section{Mirror TBA Functional}
 
-For diagonal factorized scattering with species \(a\), masses \(m_a\), and
-two-particle phase shifts
+Use the kernel convention of
+Chapter~\ref{ch:integrable-thermodynamic-bethe-ansatz}:
 \[
-  \varphi_{ab}(\theta)=-\frac{1}{2\pi\ii}\frac{d}{d\theta}
-  \log S_{ab}(\theta),
+  \varphi_{ab}(\theta)
+  =
+  \frac{1}{2\pi\ii}\frac{d}{d\theta}\log S_{ab}(\theta).
 \]
-the mirror thermodynamic variational problem uses particle and hole rapidity
-densities \(\rho_a(\theta)\) and \(\rho_a^h(\theta)\) obeying
+Here \(S_{ab}(\theta)\) is the diagonal two-particle scattering phase in the
+mirror channel, and the branch of the logarithm is fixed continuously on the
+real rapidity line after the particle labels and statistics convention have
+been declared.
+
+Let \(\rho_a(\theta)\) and \(\rho_a^h(\theta)\) be particle and hole densities
+per unit mirror length, so that
+\[
+  L\rho_a(\theta)d\theta
+\]
+is the number of occupied rapidities of species \(a\) in the interval
+\((\theta,\theta+d\theta)\).  Differentiating the Bethe--Yang equations gives
 \[
   \rho_a(\theta)+\rho_a^h(\theta)
   =
-  \frac{m_aL}{2\pi}\cosh\theta
+  \frac{m_a}{2\pi}\cosh\theta
   +
   \sum_b\int_{\R}d\theta'\,
   \varphi_{ab}(\theta-\theta')\rho_b(\theta').
 \]
-The entropy density of a fermionic Bethe cell is
+The entropy density of a Bethe cell with exclusion occupancy is
 \[
   s_a=
   (\rho_a+\rho_a^h)\log(\rho_a+\rho_a^h)
   -\rho_a\log\rho_a-\rho_a^h\log\rho_a^h .
 \]
-Extremizing mirror free energy at inverse temperature \(R\) gives
+Define the pseudoenergy by
+\[
+  \epsilon_a(\theta)=\log\frac{\rho_a^h(\theta)}{\rho_a(\theta)} .
+\]
+
+\begin{proposition}[Mirror TBA variational equation]
+\label{prop:mirror-tba-variational-equation}
+For diagonal factorized scattering with the density equation above, the
+stationary point of the mirror free-energy functional at inverse temperature
+\(R\) satisfies
 \[
   \epsilon_a(\theta)
   =
@@ -100,10 +124,9 @@ Extremizing mirror free energy at inverse temperature \(R\) gives
   -
   \sum_b\int_{\R}d\theta'\,
   \varphi_{ab}(\theta-\theta')
-  \log\!\left(1+e^{-\epsilon_b(\theta')}\right),
+  \log\!\left(1+e^{-\epsilon_b(\theta')}\right).
 \]
-where \(e^{\epsilon_a}=\rho_a^h/\rho_a\).  Substitution into
-Proposition~\ref{prop:mirror-pressure-vacuum-energy} gives
+At this stationary point,
 \[
   E_0(R)=\mathcal E_{\mathrm{bulk}}R
   -
@@ -111,88 +134,295 @@ Proposition~\ref{prop:mirror-pressure-vacuum-energy} gives
   m_a\cosh\theta\,
   \log\!\left(1+e^{-\epsilon_a(\theta)}\right).
 \]
-The constant \(\mathcal E_{\mathrm{bulk}}\) is the local extensive coordinate
-already encountered in Chapter~\ref{ch:integrable-rg-flows-perturbed-cft}.
+\end{proposition}
+
+\begin{proof}
+The variation is the same variational calculation as in
+Proposition~\ref{prop:tba-variational-derivation}, with \(R\) now interpreted
+as inverse temperature of the mirror gas.  A variation \(\delta\rho_a\)
+induces
+\[
+  \delta\rho_c^t(\theta)
+  =
+  \sum_a\int d\theta'\,
+  \varphi_{ca}(\theta-\theta')\delta\rho_a(\theta'),
+  \qquad
+  \rho_c^t=\rho_c+\rho_c^h .
+\]
+The entropy variation is
+\[
+  \delta s
+  =
+  \sum_a\int d\theta\,
+  \left[
+  \log\frac{\rho_a^h}{\rho_a}\,\delta\rho_a
+  +
+  \log\frac{\rho_a^t}{\rho_a^h}\,\delta\rho_a^t
+  \right].
+\]
+Substituting the density-constraint variation and using
+\(\log(\rho_a^t/\rho_a^h)=\log(1+e^{-\epsilon_a})\) gives the displayed
+pseudoenergy equation.  Inserting the stationary relation back into the
+mirror free-energy density gives
+\[
+  f_{\mathrm{mir}}(R)
+  =
+  -\frac{1}{2\pi R}
+  \sum_a m_a\int_{\R}d\theta\,\cosh\theta
+  \log(1+e^{-\epsilon_a(\theta)}).
+\]
+Proposition~\ref{prop:mirror-pressure-vacuum-energy} then gives the
+subtracted direct-channel vacuum energy.  The additive
+\(\mathcal E_{\mathrm{bulk}}R\) is the local extensive coordinate fixed in
+Chapter~\ref{ch:integrable-rg-flows-perturbed-cft}.
+\end{proof}
 
 \section{Large-Circumference Expansion}
 
-Let \(m_{\min}\) be the smallest particle mass.  If \(Rm_{\min}\gg1\), then
-the TBA equation may be solved by iteration in the functions
+Let
 \[
-  q_a(\theta)=\exp[-Rm_a\cosh\theta].
+  d_a(\theta)=Rm_a\cosh\theta,\qquad
+  q_a(\theta)=e^{-d_a(\theta)},\qquad
+  L_a(\theta)=\log(1+e^{-\epsilon_a(\theta)}).
 \]
-The first term is
+The large-\(R\) expansion is an expansion in mirror occupation factors
+\(q_a\), equivalently in windings around the direct spatial circle.  The
+first winding is universal; later windings also contain the scattering
+kernels.
+
+\begin{proposition}[Two-winding expansion of the vacuum energy]
+\label{prop:two-winding-vacuum-expansion}
+Assume that the kernel convolution operator is bounded in a weighted
+\(L^\infty\) norm for which all \(q_a\) are small, so that the TBA equation is
+solved by iteration.  Then
 \[
-  \epsilon_a^{(0)}(\theta)=Rm_a\cosh\theta .
+  L_a(\theta)
+  =
+  q_a(\theta)
+  +
+  q_a(\theta)\sum_b\int_{\R}d\theta'\,
+  \varphi_{ab}(\theta-\theta')q_b(\theta')
+  -\frac12 q_a(\theta)^2
+  +O(q^3).
 \]
-Inserting this into the energy functional gives the single-winding vacuum
-correction
+Consequently
+\[
+\begin{split}
+  E_0(R)-\mathcal E_{\mathrm{bulk}}R
+  &=
+  -\sum_a\int_{\R}\frac{d\theta}{2\pi}\,
+  m_a\cosh\theta\,q_a(\theta)
+\\
+  &\quad
+  -\sum_{a,b}\int_{\R}\frac{d\theta}{2\pi}\int_{\R}d\theta'\,
+  m_a\cosh\theta\,
+  q_a(\theta)\varphi_{ab}(\theta-\theta')q_b(\theta')
+\\
+  &\quad
+  +\frac12\sum_a\int_{\R}\frac{d\theta}{2\pi}\,
+  m_a\cosh\theta\,q_a(\theta)^2
+  +O(q^3).
+\end{split}
+\]
+\end{proposition}
+
+\begin{proof}
+The TBA equation is
+\[
+  \epsilon_a=d_a-\sum_b\varphi_{ab}*L_b .
+\]
+If \(L_b=q_b+O(q^2)\), then
+\[
+  e^{-\epsilon_a}
+  =
+  e^{-d_a}\exp\!\left(\sum_b\varphi_{ab}*L_b\right)
+  =
+  q_a\left(1+\sum_b\varphi_{ab}*q_b\right)+O(q^3).
+\]
+Using \(\log(1+x)=x-x^2/2+O(x^3)\) gives the displayed expression for
+\(L_a\).  Substitution into the energy formula of
+Proposition~\ref{prop:mirror-tba-variational-equation} gives the stated
+energy expansion term by term.
+\end{proof}
+
+\begin{example}[Free Majorana leading winding]
+\label{ex:free-majorana-leading-winding}
+For the massive Ising/Majorana theory the derivative kernel vanishes.  The
+leading winding contribution is
 \[
   E_0(R)-\mathcal E_{\mathrm{bulk}}R
   =
-  -\sum_a\int_{\R}\frac{d\theta}{2\pi}\,
-  m_a\cosh\theta\,q_a(\theta)
-  +O(q^2),
+  -\frac{m}{2\pi}\int_{-\infty}^{\infty}d\theta\,
+  \cosh\theta\,e^{-mR\cosh\theta}
+  +O(e^{-2mR}).
 \]
-where \(O(q^2)\) denotes terms containing at least two mirror occupation
-factors.  This statement is an asymptotic expansion at fixed scattering
-kernel and fixed mass spectrum.  A quantitative estimate requires a norm on
-the kernels and a lower bound on \(Rm_{\min}\).
+The modified Bessel function has the integral representation
+\[
+  K_\nu(r)=\int_0^\infty d\theta\,e^{-r\cosh\theta}\cosh(\nu\theta),
+  \qquad r>0.
+\]
+Therefore
+\[
+  \int_{-\infty}^{\infty}d\theta\,
+  \cosh\theta\,e^{-r\cosh\theta}=2K_1(r),
+\]
+and the first winding gives
+\[
+  E_0(R)-\mathcal E_{\mathrm{bulk}}R
+  =
+  -\frac{m}{\pi}K_1(mR)+O(e^{-2mR}).
+\]
+Using the standard steepest-descent expansion at the saddle \(\theta=0\),
+\[
+  K_1(r)
+  \sim
+  \sqrt{\frac{\pi}{2r}}\,e^{-r}
+  \left(1+\frac{3}{8r}-\frac{15}{128r^2}+\cdots\right),
+\]
+so the leading finite-size vacuum correction is exponentially small with
+prefactor \(R^{-1/2}e^{-mR}\).
+\end{example}
 
-\section{Excited States}
+\section{Excited-State F-Term}
 
-A finite-volume excited state in the direct channel is described by rapidities
-\(\theta_j\) and species \(a_j\) satisfying Bethe-Yang equations corrected by
-virtual mirror particles.  In a diagonal theory without bound-state
-singularities crossing the integration contour, the first mirror correction
-has the form
+A direct-channel finite-volume excited state is described, at leading large
+\(R\), by physical rapidities \(\theta_j\) and species \(a_j\) satisfying
+Bethe--Yang equations.  A single mirror particle of species \(b\) and rapidity
+\(\theta\) winding once around the direct spatial circle scatters through the
+physical particles.  Euclidean rotation converts this scattering into the
+crossed amplitudes
+\[
+  S_{b a_j}\!\left(\theta-\theta_j+\frac{\ii\pi}{2}\right).
+\]
+
+\begin{definition}[Analytic strip for the F-term]
+\label{def:f-term-analytic-strip}
+For a state \(\Psi=(a_1,\theta_1;\ldots;a_n,\theta_n)\), an F-term strip is a
+connected domain containing the real \(\theta\)-axis on which every function
+\[
+  S_{b a_j}\!\left(\theta-\theta_j+\frac{\ii\pi}{2}\right)
+\]
+is meromorphic, the chosen integration contour can be kept away from poles,
+and the product of amplitudes has sufficient decay for the contour integral
+below.
+\end{definition}
+
+\begin{proposition}[One-winding excited-state F-term]
+\label{prop:one-winding-excited-state-f-term}
+Assume diagonal scattering, a declared F-term strip with no pole crossed by
+the real mirror contour, and a large-\(R\) cluster expansion of the torus trace
+in mirror occupation factors.  The one-mirror-particle correction to the
+energy of the direct-channel state \(\Psi\), after subtracting the vacuum
+mirror loop, is
 \[
   \Delta E_{\Psi}^{F}(R)
   =
   -\sum_b\int_{\R}\frac{d\theta}{2\pi}\,
   m_b\cosh\theta\,e^{-Rm_b\cosh\theta}
   \left(
-  \prod_j S_{b a_j}\!\left(\theta-\theta_j+\frac{\ii\pi}{2}\right)
+  \prod_{j=1}^{n}
+  S_{b a_j}\!\left(\theta-\theta_j+\frac{\ii\pi}{2}\right)
   -1
-  \right),
+  \right).
 \]
-with all rapidities and scattering phases understood in the analytic strip
-where the displayed contour is valid.  The term \(-1\) subtracts the vacuum
-mirror loop.  Bound-state poles generate additional residue terms when the
-contour crosses them; their coefficients are fixed by the same three-point
-couplings that enter the factorized scattering bootstrap.
+\end{proposition}
 
-\section{Wrapping Effects}
+\begin{proof}
+In the mirror channel, the direct excited state is represented by operator
+insertions that a mirror particle crosses while winding around the cycle.  At
+one winding, the trace contribution of one mirror particle of species \(b\)
+and rapidity \(\theta\) has Boltzmann weight
+\(\exp[-Rm_b\cosh\theta]\) and density of states \(d\theta/(2\pi)\).  Crossing
+the direct-channel physical particles multiplies this contribution by
+\[
+  \prod_{j=1}^{n}
+  S_{b a_j}\!\left(\theta-\theta_j+\frac{\ii\pi}{2}\right).
+\]
+The logarithm of the trace converts this one-particle contribution into an
+energy shift with the overall factor \(-m_b\cosh\theta\); the identical loop
+with no physical particles is the vacuum contribution and gives the
+subtraction by \(1\).  Summing over mirror species gives the displayed
+formula.
+\end{proof}
 
-A wrapping contribution is a term in a finite-volume observable represented
-in the mirror channel by virtual propagation around a compact cycle.  The
-order is measured by the number and species of mirror occupation factors
-\(q_a(\theta)\), not by the loop number of a Lagrangian perturbation series.
-For a local operator \(\widehat{\mathcal O}\), a finite-volume diagonal matrix
-element has an expansion
+If a pole is crossed while moving the contour to the declared F-term strip,
+the residue is a separate contribution.  A convenient residue ledger is
+\[
+  \Delta E_{\Psi}^{\mu}(R)
+  =
+  -\sum_{\theta_*\in\mathcal P}
+  \sigma_*\,
+  \ii\,\operatorname*{Res}_{\theta=\theta_*}
+  \left[
+  \frac{m_b\cosh\theta}{2\pi}
+  e^{-Rm_b\cosh\theta}
+  \left(
+  \prod_j
+  S_{b a_j}\!\left(\theta-\theta_j+\frac{\ii\pi}{2}\right)
+  -1
+  \right)
+  \right],
+\]
+where \(\mathcal P\) is the finite set of crossed poles and
+\(\sigma_*=\pm1\) records the orientation of the contour deformation.  In a
+bound-state theory those residues are controlled by the same pole data that
+enter the factorized scattering bootstrap.  The formula becomes a theorem
+only after the analytic strip, contour orientation, and bound-state pole
+normalization have been specified.
+
+\section{Wrapping Effects for Local Operators}
+
+A wrapping contribution is a finite-volume term represented in the mirror
+channel by virtual propagation around a compact cycle.  Its order is measured
+by the number and species of mirror occupation factors \(q_a(\theta)\).  This
+ordering is independent of the loop order of any Lagrangian perturbation
+series.
+
+Let \(\widehat{\mathcal O}\) be a local operator with a declared infinite-volume
+normalization.  A diagonal finite-volume matrix element has an expansion of
+the form
 \[
   \langle \Psi,R|\widehat{\mathcal O}|\Psi,R\rangle
   =
   \langle \Psi|\widehat{\mathcal O}|\Psi\rangle_{\infty}
   +
-  \sum_{k\geq1}\Delta_{\mathcal O}^{(k)}(R),
+  \sum_{k\ge1}\Delta_{\mathcal O}^{(k)}(R),
 \]
-where \(\Delta_{\mathcal O}^{(k)}\) is expressed through \(k\)-mirror-particle
-form factors and finite-volume density factors when the form-factor series
-converges in the required strip.  This formula is useful only after the
-operator normalization and contour prescription have been declared.
+where \(\Delta_{\mathcal O}^{(k)}(R)\) is assembled from \(k\)-mirror-particle
+form factors, crossed scattering factors, and finite-volume density
+determinants.  The first term in this series is determined by the connected
+one-mirror-particle form factor in the crossed channel, after subtracting
+the vacuum wrapping term and the disconnected pieces already accounted for by
+the finite-volume normalization of \(|\Psi,R\rangle\).
+
+\begin{definition}[Operator wrapping datum]
+\label{def:operator-wrapping-datum}
+An operator wrapping datum consists of:
+\begin{enumerate}
+\item the infinite-volume form factors of \(\widehat{\mathcal O}\) in the
+state normalization of Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators};
+\item the analytic strip and crossing prescription for moving mirror
+rapidities through the operator insertion and through the physical particles;
+\item the finite-volume density determinant for the physical Bethe--Yang
+state;
+\item a subtraction prescription for vacuum terms and disconnected diagonal
+pieces.
+\end{enumerate}
+\end{definition}
+
+With this datum fixed, each wrapping correction is a contour integral whose
+integrand is a declared meromorphic function.  Residues from crossed poles
+are then part of the same contour calculation rather than extra rules.
 
 \section{Relation To Planar Wrapping}
 
-In large-\(N\) gauge-theory spectral problems the word wrapping often refers
-to corrections whose range reaches the length of a single-trace operator.
-The relativistic finite-size mechanism developed here is a different
-construction: the compact cycle is an actual spacetime circle of a
-two-dimensional QFT, and the mirror particles are states in the rotated
-finite-temperature channel.  Later planar-integrability chapters must build
-an explicit bridge between these two settings by identifying the spectral
-problem, its worldsheet or spin-chain mirror channel, and the analytic
-continuation that maps finite-size corrections between them.
+In large-\(N\) gauge-theory spectral problems the word wrapping often denotes
+corrections whose spin-chain interaction range reaches the length of a
+single-trace operator.  The relativistic finite-size mechanism developed here
+has a literal spacetime compact cycle and a mirror thermal trace.  Later
+planar-integrability chapters build the bridge by identifying the spectral
+problem, the worldsheet or spin-chain mirror channel, and the analytic
+continuation that maps finite-size corrections between the two settings.
 
 \begin{openproblem}[Excited-state mirror construction]
 \label{op:excited-state-mirror-construction}
