@@ -479,9 +479,322 @@ verifies quaternion group operations, the local plaquette-score change,
 pairwise detailed balance, gauge invariance of \(Q(U)\), gauge invariance of
 Wilson loops, and the equality between the \(1\times1\) Wilson-loop average
 and the average plaquette.  This script is a compact nonabelian
-finite-regulator demonstration.  Heat-bath, overrelaxation, pseudofermion
-HMC, RHMC, and continuum extrapolation require additional regulator data and
-are not certified by this example.
+finite-regulator demonstration.  Heat-bath, overrelaxation, and continuum
+extrapolation require additional regulator data and are not certified by this
+example.
+
+\section{Hybrid Monte Carlo and Pseudofermions}
+\label{sec:hmc-pseudofermions-finite-regulator}
+
+Hybrid Monte Carlo is a finite-regulator construction before it is a
+continuum algorithm.  The construction begins with a finite-dimensional
+configuration manifold \(Q_\Lambda\), a positive reference measure \(dq\),
+and a target probability density
+\[
+  d\nu(q)
+  =
+  Z^{-1}e^{-S(q)}\,dq ,
+  \qquad
+  Z=\int_{Q_\Lambda}e^{-S(q)}\,dq<\infty .
+  \label{eq:hmc-target-measure}
+\]
+For a scalar finite lattice, \(Q_\Lambda\) is typically \(\mathbb R^n\) or a
+torus.  For a compact gauge lattice, \(Q_\Lambda\) is a finite product of
+compact Lie groups and \(dq\) is product Haar measure.  The following theorem
+is stated on an abstract finite-dimensional phase space because this is the
+part of HMC that is independent of the chosen regulator.
+
+Let \((\Gamma_\Lambda,d\lambda)\) be a finite-dimensional phase space with a
+positive reference measure, let \(H:\Gamma_\Lambda\to\mathbb R\) be a
+measurable Hamiltonian for which
+\[
+  d\mu_H(z)
+  =
+  Z_H^{-1}e^{-H(z)}\,d\lambda(z)
+  \label{eq:hmc-extended-measure}
+\]
+is a probability measure, and let \(R:\Gamma_\Lambda\to\Gamma_\Lambda\) be
+an involution preserving \(d\lambda\).  In the usual cotangent-bundle example
+\[
+  \Gamma_\Lambda=T^*Q_\Lambda,\qquad z=(q,p),
+  \qquad R(q,p)=(q,-p).
+\]
+For \(Q_\Lambda=\mathbb R^n\) with a positive mass matrix \(M\),
+\[
+  H(q,p)=S(q)+\frac12 p^T M^{-1}p,
+  \qquad
+  d\lambda=dq\,dp .
+  \label{eq:hmc-euclidean-hamiltonian}
+\]
+The \(q\)-marginal of \(d\mu_H\) is then \eqref{eq:hmc-target-measure} after
+normalizing the Gaussian momentum integral.
+
+\begin{definition}[Reversible volume-preserving trajectory]
+A numerical trajectory map \(\Phi:\Gamma_\Lambda\to\Gamma_\Lambda\) is
+called reversible and volume preserving, with respect to \(R\), if
+\[
+  \Phi_*(d\lambda)=d\lambda,
+  \qquad
+  R\Phi R=\Phi^{-1}.
+  \label{eq:hmc-reversible-volume-preserving}
+\]
+The corresponding Metropolis proposal is
+\[
+  G=R\Phi .
+  \label{eq:hmc-involutive-proposal}
+\]
+\end{definition}
+
+The explicit momentum flip in \(G\) is not a convention with physical
+content; it is the algebraic device that makes the proposal an involution.
+Indeed \eqref{eq:hmc-reversible-volume-preserving} gives
+\[
+  G^2=R\Phi R\Phi=\Phi^{-1}\Phi=1 .
+\]
+
+\begin{proposition}[HMC Metropolis correction at finite regulator]
+\label{prop:hmc-metropolis-correction}
+Assume \(\Phi\) satisfies \eqref{eq:hmc-reversible-volume-preserving}.  Let
+\[
+  a(z)
+  =
+  \min\{1,\exp[-H(Gz)+H(z)]\}
+  \label{eq:hmc-acceptance}
+\]
+and define the Markov kernel
+\[
+  K(z,B)
+  =
+  a(z)\mathbf 1_B(Gz)+(1-a(z))\mathbf 1_B(z)
+  \label{eq:hmc-metropolis-kernel}
+\]
+for measurable \(B\subset\Gamma_\Lambda\).  Then \(K\) satisfies detailed
+balance with respect to \(d\mu_H\).  Consequently \(d\mu_H\) is invariant.
+\end{proposition}
+
+\begin{proof}
+Since \(G\) is an involution and preserves \(d\lambda\), every nontrivial
+proposed move is paired with its reverse.  It is enough to prove the
+pairwise identity
+\[
+  e^{-H(z)}a(z)=e^{-H(Gz)}a(Gz).
+  \label{eq:hmc-pairwise-balance}
+\]
+Write \(\Delta H=H(Gz)-H(z)\).  If \(\Delta H\geq0\), then
+\[
+  e^{-H(z)}a(z)
+  =
+  e^{-H(z)}e^{-\Delta H}
+  =
+  e^{-H(Gz)}
+  =
+  e^{-H(Gz)}a(Gz),
+\]
+because the reverse move has energy change \(-\Delta H\leq0\) and is
+accepted with probability \(1\).  The case \(\Delta H<0\) is the same
+calculation with \(z\) and \(Gz\) interchanged.  Multiplying
+\eqref{eq:hmc-pairwise-balance} by the common volume element on the paired
+points gives detailed balance for the moving part of the kernel.  The
+holding part is diagonal and is therefore symmetric with respect to
+\(d\mu_H\).  This proves detailed balance for \(K\).
+\end{proof}
+
+The usual HMC transition first refreshes \(p\) from its Gaussian conditional
+distribution and then applies \eqref{eq:hmc-metropolis-kernel}.  Momentum
+refreshment preserves \(d\mu_H\) because it leaves \(q\) fixed and replaces
+the momentum by an independent sample from the \(p\)-conditional density.
+The composition therefore preserves \(d\mu_H\), and its \(q\)-marginal
+preserves \(d\nu\).  Ergodicity, mixing time, acceptance rate, and scaling
+toward a continuum limit are separate claims; they do not follow from
+detailed balance alone.
+
+\begin{proposition}[Leapfrog reversibility and volume preservation]
+\label{prop:leapfrog-reversible-volume-preserving}
+Let \(Q_\Lambda=\mathbb R^n\), let \(S\in C^2(\mathbb R^n)\), and let
+\(M\) be a positive definite symmetric matrix.  Define the kick and drift
+maps
+\[
+  K_a(q,p)=(q,p-a\nabla S(q)),
+  \qquad
+  D_\epsilon(q,p)=(q+\epsilon M^{-1}p,p),
+  \label{eq:hmc-kick-drift}
+\]
+and the one-step leapfrog map
+\[
+  L_\epsilon=K_{\epsilon/2}D_\epsilon K_{\epsilon/2}.
+  \label{eq:hmc-leapfrog-map}
+\]
+Then \(L_\epsilon\) preserves \(dq\,dp\) and satisfies
+\[
+  R L_\epsilon R=L_\epsilon^{-1},
+  \qquad R(q,p)=(q,-p).
+  \label{eq:hmc-leapfrog-reversibility}
+\]
+Every finite power \(L_\epsilon^N\), \(N\in\mathbb Z_{\geq0}\), has the same
+two properties.
+\end{proposition}
+
+\begin{proof}
+The Jacobian matrix of \(K_a\) is block triangular,
+\[
+  \begin{pmatrix}
+    1 & 0\\
+    -a\,\operatorname{Hess}S(q) & 1
+  \end{pmatrix},
+\]
+and therefore has determinant \(1\).  The Jacobian matrix of \(D_\epsilon\)
+is
+\[
+  \begin{pmatrix}
+    1 & \epsilon M^{-1}\\
+    0 & 1
+  \end{pmatrix},
+\]
+also of determinant \(1\).  Hence \(L_\epsilon\) preserves \(dq\,dp\).
+Moreover
+\[
+  RK_aR=K_{-a}=K_a^{-1},
+  \qquad
+  RD_\epsilon R=D_{-\epsilon}=D_\epsilon^{-1}.
+\]
+Using the symmetric ordering in \eqref{eq:hmc-leapfrog-map},
+\[
+  R L_\epsilon R
+  =
+  K_{-\epsilon/2}D_{-\epsilon}K_{-\epsilon/2}
+  =
+  L_\epsilon^{-1}.
+\]
+A finite product of equal leapfrog steps is again reversible in the sense
+needed for HMC, because
+\[
+  R L_\epsilon^N R=(R L_\epsilon R)^N=L_\epsilon^{-N}.
+\]
+\end{proof}
+
+For a compact gauge field, the same proof is expressed on the cotangent
+bundle of a compact Lie group product.  The drift is group multiplication by
+the exponential of a Lie-algebra momentum, the kick changes the momentum by
+the derivative of the gauge action, and the reference measure is the
+Liouville measure built from Haar measure and Lebesgue measure on the Lie
+algebra.  The finite-regulator statement remains exactly the same:
+volume preservation, reversibility, and the Metropolis correction imply
+invariance of the finite target measure.  The construction of globally
+smooth forces, the treatment of constraints, and the proof of ergodicity
+depend on the chosen lattice action and are additional data.
+
+Pseudofermions enter when the fermion determinant is real and positive after
+flavor pairing.  Let \(A\) be a positive Hermitian \(N\times N\) matrix and
+write
+\[
+  d^{2N}\phi=\prod_{j=1}^N d(\operatorname{Re}\phi_j)\,
+  d(\operatorname{Im}\phi_j)
+\]
+for Lebesgue measure on \(\mathbb C^N\).  The elementary identity is the
+following finite-dimensional Gaussian integral.
+
+\begin{proposition}[Pseudofermion determinant identity]
+\label{prop:pseudofermion-determinant-identity}
+If \(A>0\) is Hermitian, then
+\[
+  \int_{\mathbb C^N}
+  \exp[-\phi^\dagger A^{-1}\phi]\,d^{2N}\phi
+  =
+  \pi^N\det A .
+  \label{eq:pseudofermion-determinant-identity}
+\]
+Consequently a positive determinant factor \(\det A\) in a finite Euclidean
+integral may be represented, up to the \(A\)-independent constant \(\pi^N\),
+by the pseudofermion action \(\phi^\dagger A^{-1}\phi\).
+\end{proposition}
+
+\begin{proof}
+Choose a unitary matrix \(U\) such that
+\[
+  A=U\,\operatorname{diag}(\lambda_1,\ldots,\lambda_N)\,U^\dagger,
+  \qquad \lambda_j>0.
+\]
+The real Jacobian of the unitary change of variables \(\psi=U^\dagger\phi\)
+has absolute value \(1\).  Hence the integral factorizes:
+\[
+  \prod_{j=1}^N
+  \int_{\mathbb C}\exp[-|\psi_j|^2/\lambda_j]\,
+  d(\operatorname{Re}\psi_j)d(\operatorname{Im}\psi_j)
+  =
+  \prod_{j=1}^N \pi\lambda_j
+  =
+  \pi^N\det A.
+\]
+\end{proof}
+
+For a lattice Dirac operator \(D(U)\), two degenerate flavors commonly give
+the positive factor
+\[
+  \det(D^\dagger D)=|\det D|^2,
+  \qquad A(U)=D(U)^\dagger D(U)>0
+\]
+after zero modes have been excluded or regulated.  Equation
+\eqref{eq:pseudofermion-determinant-identity} then turns the determinant
+into a bosonic Gaussian integral with a nonlocal action involving
+\(A(U)^{-1}\).  The nonlocality is not a conceptual defect; it is a finite
+linear-algebra statement.  It becomes an algorithmic problem because each
+force evaluation requires solving a linear system.
+
+For \(N_f\) degenerate flavors one formally needs
+\[
+  \det A^{\alpha},
+  \qquad \alpha=N_f/2,
+\]
+and the exact pseudofermion action would contain the matrix function
+\(A^{-\alpha}\).  Rational hybrid Monte Carlo replaces \(x^{-\alpha}\) on a
+spectral interval \([\lambda_-,\lambda_+]\) containing the spectrum of
+\(A(U)\) by a positive rational function \(r_m(x)\).  At finite regulator
+this replacement defines the exactly sampled determinant
+\[
+  \pi^{-N}
+  \int_{\mathbb C^N}
+  \exp[-\phi^\dagger r_m(A)\phi]\,d^{2N}\phi
+  =
+  \frac{1}{\det r_m(A)}.
+  \label{eq:rhmc-rationalized-determinant}
+\]
+It equals \(\det A^\alpha\) only if \(r_m(A)=A^{-\alpha}\) on the spectrum,
+or if an additional exact correction or reweighting factor is included.
+Thus RHMC is not a slogan for ``fractional fermions''; it is an exact
+Markov-chain algorithm for a rationalized finite measure, together with a
+separate approximation or correction statement comparing that measure to the
+desired determinant.
+
+The elementary spectral error estimate used in such a comparison is
+pointwise.  If
+\[
+  \|r_m(A)-A^{-\alpha}\|_{\mathrm{op}}\leq\delta ,
+  \label{eq:rhmc-spectral-error}
+\]
+then for every pseudofermion vector \(\phi\),
+\[
+  \left|
+    \phi^\dagger\bigl(r_m(A)-A^{-\alpha}\bigr)\phi
+  \right|
+  \leq
+  \delta\,\|\phi\|^2 .
+  \label{eq:rhmc-action-error-bound}
+\]
+This bound controls the error in the pseudofermion action for a fixed
+configuration and a fixed pseudofermion vector.  Turning it into a uniform
+observable bound requires further hypotheses, for example a uniform spectral
+gap, a chosen rational approximation, and control of the pseudofermion tail
+or an exact reweighting step.  These hypotheses are finite-regulator
+algorithmic data, not consequences of QFT axioms.
+
+The deterministic companion check
+\[
+  \texttt{calculation-checks/hmc\_pseudofermion\_checks.py}
+\]
+verifies the leapfrog determinant and reversibility identities for a
+one-dimensional quadratic action, the pairwise Metropolis balance identity,
+the pseudofermion determinant identity after diagonalization, and the
+spectral action-error bound \eqref{eq:rhmc-action-error-bound}.
 
 \section{Autocorrelation and Effective Sample Size}
 

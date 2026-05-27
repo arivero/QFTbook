@@ -38,6 +38,19 @@ chapters.
 - `kappa(dR)`: inversion-symmetric local \(SU(2)\) proposal law.
 - `W_{R,T}`: rectangular Wilson-loop observable, averaged over translations
   and coordinate planes.
+- `Q_Lambda`: finite-dimensional HMC configuration manifold.
+- `Gamma_Lambda`, `lambda`: finite-dimensional HMC phase space and
+  reference measure.
+- `H(q,p)`: extended HMC Hamiltonian
+  \(S(q)+\frac12 p^T M^{-1}p\) in Euclidean coordinates.
+- `R(q,p)=(q,-p)`: momentum-flip involution.
+- `Phi`, `G=R Phi`: reversible trajectory map and involutive Metropolis
+  proposal.
+- `K_a`, `D_epsilon`, `L_epsilon`: leapfrog kick, drift, and one-step
+  leapfrog map.
+- `A=D^\dagger D`: positive Hermitian fermion matrix after flavor pairing.
+- `phi`: complex pseudofermion vector.
+- `r_m(A)`: positive rational approximation to \(A^{-\alpha}\) in RHMC.
 
 ## Claim Ledger
 
@@ -61,6 +74,21 @@ chapters.
   Haar-irreducibility condition without claiming continuum convergence.
 - Defines gauge transformations and rectangular Wilson-loop measurements for
   the finite \(SU(2)\) script.
+- Proves the finite-regulator HMC Metropolis-correction theorem from
+  volume preservation, reversibility, and the momentum-flip involution.
+- Proves leapfrog volume preservation and reversibility in finite Euclidean
+  phase space by block-triangular Jacobian and kick/drift conjugation.
+- Explains the compact-gauge HMC analogue on a finite cotangent bundle with
+  Haar/Liouville measure, while leaving force construction and ergodicity as
+  separate regulator-dependent data.
+- Proves the pseudofermion determinant identity
+  \(\int e^{-\phi^\dagger A^{-1}\phi}=\pi^N\det A\) for positive Hermitian
+  finite matrices by unitary diagonalization.
+- States RHMC as exact sampling of a rationalized finite determinant
+  \(1/\det r_m(A)\), and separates that theorem from any approximation or
+  reweighting claim for \(\det A^\alpha\).
+- Proves the pointwise spectral action-error bound
+  \(|\phi^\dagger(r_m(A)-A^{-\alpha})\phi|\le\delta\|\phi\|^2\).
 - Proves the exact finite-\(N\) autocorrelation variance identity and derives
   the integrated-autocorrelation asymptotic under absolute summability.
 - Defines the average phase as \(Z/Z_R\), defines the finite-volume
@@ -98,7 +126,7 @@ the exponential decay of average phase with volume.
   four-dimensional \(SU(2)\) gauge Metropolis sampler with unit-quaternion
   links.  Certifies a Haar-symmetric local compact-link proposal and reports
   plaquette and Wilson-loop measurements.  It does not certify a heat-bath
-  algorithm, HMC/RHMC, or a continuum limit.
+  algorithm, HMC/RHMC implementation, or a continuum limit.
 
 ## Calculation Checks
 
@@ -112,6 +140,11 @@ the exponential decay of average phase with volume.
   script's quaternion group operations, local score change,
   detailed-balance identity, gauge invariance, and the \(1\times1\)
   Wilson-loop/plaquette identity.
+- `calculation-checks/hmc_pseudofermion_checks.py` verifies the finite HMC
+  and pseudofermion algebra: one-dimensional leapfrog determinant one,
+  leapfrog reversibility, pairwise Metropolis balance, the diagonalized
+  pseudofermion determinant identity, and the RHMC spectral action-error
+  bound.
 - `calculation-checks/monte_carlo_sign_problem_checks.py` verifies the
   finite-\(N\) autocorrelation variance identity, phase-reweighting identity,
   average-phase relative-variance bound, and the determinant

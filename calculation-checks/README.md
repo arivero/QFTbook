@@ -433,6 +433,11 @@ Current checks:
   quaternion \(SU(2)\) group operations, the local compact-link plaquette
   score change, pairwise detailed balance, gauge invariance of the action and
   Wilson loops, and the \(1\times1\) Wilson-loop/plaquette identity.
+- `hmc_pseudofermion_checks.py`: exact finite algebra checks for the Volume
+  XI HMC and pseudofermion section, verifying leapfrog determinant one,
+  leapfrog reversibility, pairwise Metropolis balance, the diagonalized
+  pseudofermion determinant identity, and the rational-action spectral error
+  bound used in the RHMC discussion.
 - `z2_strong_coupling_surface_checks.py`: exact enumeration of small
   cubical plaquette chain complexes over \(\mathbb F_2\), verifying the
   one-cube Wilson-loop polynomial \((t+t^5)/(1+t^6)\), the first
