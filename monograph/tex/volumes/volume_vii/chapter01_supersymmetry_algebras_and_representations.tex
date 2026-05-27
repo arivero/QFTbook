@@ -88,10 +88,50 @@ after choosing the rest-frame spinor basis.  Thus
   a_\alpha=\frac{1}{\sqrt{2m}}Q_\alpha,\qquad
   a_\alpha^\dagger=\frac{1}{\sqrt{2m}}Q_\alpha^\dagger
 \]
-generate a two-mode fermionic oscillator algebra.  An irreducible massive
-\(\mathcal N=1\) multiplet is therefore obtained by tensoring an irreducible
-representation of the massive little group \(SU(2)\) with this finite
-fermionic Fock space and then decomposing into spins.
+generate a two-mode fermionic oscillator algebra.
+
+\begin{proposition}[Massive \(\mathcal N=1\) oscillator module]
+\label{prop:massive-n1-oscillator-module}
+Fix a massive one-particle orbit of mass \(m>0\), and fix an irreducible
+spin-\(j\) representation \(V_j\) of the massive little group \(SU(2)\).  The
+corresponding irreducible rest-frame supertranslation module is, as a
+\(\mathbb Z_2\)-graded vector space,
+\[
+  V_j\otimes \Lambda^\bullet \mathbb C^2 .
+\]
+It has total dimension \(4(2j+1)\), bosonic dimension \(2(2j+1)\), and
+fermionic dimension \(2(2j+1)\).  Under the diagonal little-group action the
+fermionic one-oscillator sector carries
+\[
+  V_j\otimes \mathbb C^2
+  \cong
+  V_{j+1/2}\oplus V_{j-1/2},
+  \label{eq:massive-n1-spin-decomposition}
+\]
+with the \(V_{j-1/2}\) summand omitted when \(j=0\), while the zero- and
+two-oscillator sectors are two copies of \(V_j\) with opposite fermion
+number parity from the one-oscillator sector.
+\end{proposition}
+
+\begin{proof}
+The normalized operators \(a_\alpha,a_\alpha^\dagger\) satisfy
+\[
+  \{a_\alpha,a_\beta^\dagger\}=\delta_{\alpha\beta},
+  \qquad
+  \{a_\alpha,a_\beta\}=\{a_\alpha^\dagger,a_\beta^\dagger\}=0 .
+\]
+The irreducible representation of this Clifford algebra with a cyclic vector
+annihilated by the \(a_\alpha\) is the exterior algebra
+\(\Lambda^\bullet\mathbb C^2\).  Tensoring with the chosen little-group
+representation gives the stated vector space and dimension.  The two
+creation operators transform as a spin-\(1/2\) doublet, so the
+one-oscillator sector is \(V_j\otimes V_{1/2}\), which decomposes by the
+Clebsch--Gordan rule into \eqref{eq:massive-n1-spin-decomposition}.  The
+zero-oscillator sector \(\Lambda^0\mathbb C^2\) and the two-oscillator sector
+\(\Lambda^2\mathbb C^2\) are both little-group scalars, giving two copies of
+\(V_j\).  Fermion parity is exterior degree modulo \(2\), hence the even and
+odd dimensions are both \(2(2j+1)\).
+\end{proof}
 
 \begin{proposition}[Equal bosonic and fermionic dimensions]
 \label{prop:susy-equal-boson-fermion}
@@ -122,6 +162,54 @@ helicity by \(1/2\).  Hence a massless irreducible representation is built
 from a Clifford algebra with one fermionic oscillator, and its helicities
 come in adjacent pairs \((h,h+1/2)\) before CPT completion.
 
+\begin{proposition}[Massless \(\mathcal N=1\) helicity pair]
+\label{prop:massless-n1-helicity-pair}
+Let \(E>0\) and \(p^\mu=(E,0,0,E)\).  In a spinor basis where
+\(\sigma^\mu p_\mu\) is diagonal, positivity sets one complex supercharge
+combination to zero on the Hilbert space and leaves one normalized
+fermionic oscillator.  An irreducible massless \(\mathcal N=1\)
+representation generated from a helicity-\(h\) state therefore has two
+helicity states,
+\[
+  h,\qquad h+\frac12,
+\]
+before imposing CPT.
+\end{proposition}
+
+\begin{proof}
+For the chosen momentum, \(\sigma^\mu p_\mu\) is a positive semidefinite
+\(2\times2\) Hermitian matrix of rank one.  A unitary change of spinor basis
+therefore puts the supercharge norm matrix into the form
+\[
+  \{Q_a,Q_b^\dagger\}
+  =
+  \begin{pmatrix}
+    cE&0\\
+    0&0
+  \end{pmatrix}_{ab},
+  \qquad c>0 .
+\]
+If \(\psi\) is any vector in the common invariant domain, then
+\[
+  0
+  =
+  \langle \psi,\{Q_2,Q_2^\dagger\}\psi\rangle
+  =
+  \|Q_2\psi\|^2+\|Q_2^\dagger\psi\|^2
+\]
+because the second diagonal entry is zero.  Positivity of the inner product
+therefore forces \(Q_2\psi=Q_2^\dagger\psi=0\) for all vectors in the
+domain, equivalently the null supercharge combination acts trivially after
+quotienting zero-norm vectors.  The remaining normalized operator
+\[
+  b=(cE)^{-1/2}Q_1,\qquad b^\dagger=(cE)^{-1/2}Q_1^\dagger
+\]
+satisfies \(\{b,b^\dagger\}=1\).  Because a Weyl supercharge has helicity
+\(\pm1/2\), the nontrivial creation operator shifts helicity by one half in
+the chosen convention.  Thus the irreducible Clifford module has precisely
+the two displayed helicities.
+\end{proof}
+
 \section{Central Charges and BPS Bounds}
 
 For extended supersymmetry, odd generators carry an index \(I=1,\ldots,N\).
@@ -137,6 +225,51 @@ bounds on the mass in terms of the singular values of \(Z\).  A state
 saturating such a bound is annihilated by a nonzero linear combination of
 supercharges; its multiplet is shorter because the corresponding fermionic
 oscillator is absent in the quotient representation.
+
+\begin{proposition}[Rest-frame BPS bound from singular values]
+\label{prop:bps-bound-singular-values}
+In a massive rest frame for extended supersymmetry, suppose the central-charge
+matrix has singular values \(z_s\ge0\) after skew-diagonalization of the
+antisymmetric matrix \(Z^{IJ}\).  Positivity of the Hilbert-space
+representation implies
+\[
+  m\ge z_s
+  \qquad\text{for every singular value }z_s .
+\]
+If \(m=z_s\) for some \(s\), then a nonzero linear combination of
+supercharges has zero norm and annihilates the shortened representation.
+\end{proposition}
+
+\begin{proof}
+The only linear-algebra input is the skew singular-value decomposition for a
+complex antisymmetric matrix: a unitary change of the extended-supersymmetry
+index brings \(Z^{IJ}\) to a direct sum of \(2\times2\) blocks
+\(z_s\varepsilon\), \(z_s\ge0\), plus possible zero blocks.  In the associated
+real charge combinations the positive anticommutator matrix decomposes into
+independent Hermitian blocks of the form
+\[
+  2
+  \begin{pmatrix}
+    m I_r & Z_s\\
+    Z_s^\dagger & m I_r
+  \end{pmatrix},
+  \qquad
+  Z_s=z_s I_r
+\]
+on the subspace associated with the singular value \(z_s\), where \(I_r\) is
+the identity on its multiplicity space.  The eigenvectors of the displayed
+Hermitian block are the symmetric and antisymmetric combinations of the two
+entries, and the corresponding eigenvalues are
+\[
+  2(m+z_s),\qquad 2(m-z_s).
+\]
+A positive-energy unitary representation requires every anticommutator norm
+matrix to be positive semidefinite, hence \(m-z_s\ge0\).  If \(m=z_s\), the
+second eigenvalue is zero.  The associated supercharge combination has zero
+norm on every vector in the representation; after quotienting zero-norm
+vectors it acts by zero.  Removing that fermionic oscillator is precisely the
+shortening mechanism.
+\end{proof}
 
 \begin{openproblem}[Nonperturbative realization of supersymmetric QFT data]
 \label{op:susy-nonperturbative-realization}

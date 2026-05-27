@@ -601,6 +601,12 @@ Current checks:
   SUSY-QM and worldline index-density section, including the oscillator
   supertrace identity, zero-mode index count, two-variable Berezin Pfaffian
   extraction, and the \(\widehat A\)-series coefficients through degree six.
+- `susy_representation_checks.py`: exact finite checks for the Volume VII
+  supersymmetry representation chapter, including massive \(\mathcal N=1\)
+  Fock-space dimensions, boson/fermion balance, the Clebsch--Gordan
+  dimension identity for the one-oscillator spin sector, the rank-one massless
+  supercharge norm matrix, and BPS-bound block eigenvalues
+  \(2(m\pm z)\).
 - `symmetric_product_orbifold_checks.py`: exact finite group-theory and
   rational-weight checks for the Volume V symmetric-product orbifold section,
   including \(S_N\) centralizer orders, conjugacy-class counting, central
