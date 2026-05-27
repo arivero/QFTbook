@@ -86,6 +86,50 @@ local rest frame by
 The source-free formulas in most of this chapter are recovered by setting
 \(\mathcal E^A_\mu=0\).
 
+\section{Hydrodynamic Scaling Families}
+
+Hydrodynamics is not a replacement for the microscopic QFT.  It is an
+asymptotic statement about a family of states and sources whose variation
+scale is taken large compared with all microscopic relaxation scales that
+are not protected by exact conservation laws.  The following definition
+records the data that are being approximated.
+
+\begin{definition}[Hydrodynamic scaling family]
+\label{def:hydro-scaling-family}
+A hydrodynamic scaling family near a homogeneous KMS state consists of
+regulated real-time states \(\rho_\lambda\), background sources
+\((g_{\lambda\mu\nu},A^A_{\lambda\mu})\), and local fields
+\((T_\lambda,\mu_{\lambda A},u^\mu_\lambda)\), indexed by
+\(\lambda>0\), such that in local inertial coordinates
+\[
+  \partial_{\alpha_1}\cdots\partial_{\alpha_m}
+  T_\lambda,\quad
+  \partial_{\alpha_1}\cdots\partial_{\alpha_m}
+  \mu_{\lambda A},\quad
+  \partial_{\alpha_1}\cdots\partial_{\alpha_m}
+  u^\mu_\lambda,\quad
+  \partial_{\alpha_1}\cdots\partial_{\alpha_{m-1}}
+  F^A_{\lambda\alpha_m\alpha_{m+1}}
+  =
+  O(\lambda^m)
+  \qquad(m\ge1),
+\]
+while the zeroth-order fields remain in a fixed compact subset of the
+equilibrium state manifold with \(T>0\).  A constitutive relation through
+order \(N\) is an asymptotic expansion of the one-point functions
+\(\langle T^{\mu\nu}\rangle_{\rho_\lambda}\) and
+\(\langle J_A^\mu\rangle_{\rho_\lambda}\) whose error is
+\(O(\lambda^{N+1})\) after the thermodynamic limit and after subtraction of
+declared local contact terms.
+\end{definition}
+
+This definition separates the kinematic part of hydrodynamics from the
+microscopic QFT assertion.  The kinematic part is the classification of all
+local tensor structures compatible with the Ward identities and the chosen
+state variables.  The microscopic assertion is that nonconserved excitations
+produce analytic terms in the scaling region, so that the nonanalytic
+long-distance response is exhausted by the conservation laws.
+
 \section{Conserved Densities and Local State Variables}
 
 Let \(T^{\mu\nu}\) be the stress tensor and let \(J^\mu_A\) be conserved
@@ -159,6 +203,8 @@ transverse tensors \(q^\mu,\nu_A^\mu,\pi^{\mu\nu}\) depend on the chosen
 frame.  Under a first-derivative redefinition
 \[
   u^\mu\mapsto u^\mu+\delta u^\mu,\qquad
+  T\mapsto T+\delta T,\qquad
+  \mu_A\mapsto\mu_A+\delta\mu_A,\qquad
   u_\mu\delta u^\mu=0,
 \]
 while the physical one-point functions are held fixed, the transverse
@@ -169,8 +215,17 @@ vectors change at first derivative order as
   \nu_A^\mu\mapsto\nu_A^\mu-n_A\delta u^\mu .
   \label{eq:hydro-frame-transformation}
 \end{equation}
-To derive \eqref{eq:hydro-frame-transformation}, keep
-\(T^{\mu\nu}\) and \(J_A^\mu\) fixed and vary only the ideal pieces.  Since
+The scalar redefinitions change the separation between ideal scalar data and
+first-order scalar corrections.  Landau matching is the choice
+\[
+  \varepsilon=u_\mu u_\nu T^{\mu\nu},
+  \qquad
+  n_A=-u_\mu J_A^\mu ,
+\]
+so that no first-order correction is hidden inside the definitions of
+\(\varepsilon\) and \(n_A\).  To derive
+\eqref{eq:hydro-frame-transformation}, keep \(T^{\mu\nu}\) and \(J_A^\mu\)
+fixed and vary only the ideal pieces.  Since
 \(\delta\Delta^{\mu\nu}=u^\mu\delta u^\nu+\delta u^\mu u^\nu\), the ideal
 stress changes by
 \[
@@ -352,7 +407,9 @@ where \(\varepsilon+p=Ts+\mu_A n_A\) was used.  Therefore
 
 \section{First-Order Constitutive Relations}
 
-Define the expansion, acceleration, and shear tensor by
+The first-order derivative data must be defined before the transport
+coefficients are introduced.  Define the expansion, acceleration, and shear
+tensor by
 \[
   \vartheta=\partial_\mu u^\mu,
   \qquad
@@ -371,6 +428,51 @@ and
 \end{equation}
 Then \(\sigma^{\mu\nu}u_\nu=0\), \(\sigma^\mu{}_\mu=0\), and
 \(\sigma^{\mu\nu}=\sigma^{\nu\mu}\).
+The antisymmetric transverse derivative is the vorticity
+\[
+  \omega^{\mu\nu}
+  =
+  \Delta^{\mu\alpha}\Delta^{\nu\beta}
+  \partial_{[\alpha}u_{\beta]},
+  \qquad
+  \omega^{\mu\nu}=-\omega^{\nu\mu}.
+\]
+It does not contribute to the parity-even dissipative stress tensor at
+first order because the stress tensor is symmetric and the entropy
+production is quadratic in the symmetric thermodynamic forces.
+
+With sources, the ideal Euler equation is obtained by projecting
+\eqref{eq:hydro-source-stress-ward} orthogonally to \(u^\mu\):
+\begin{equation}
+  (\varepsilon+p)a^\mu+\Delta^{\mu\nu}\partial_\nu p
+  =
+  n_A\mathcal E^{A\mu}.
+  \label{eq:hydro-sourceful-ideal-euler}
+\end{equation}
+Using \(dp=s\,dT+n_A\,d\mu_A\) and
+\(\varepsilon+p=Ts+\mu_A n_A\), this equation is equivalently
+\begin{equation}
+  a^\mu+\Delta^{\mu\nu}\partial_\nu\log T
+  =
+  \frac{T n_A}{\varepsilon+p}\,
+  V_A^\mu,
+  \qquad
+  V_A^\mu
+  =
+  \Delta^{\mu\nu}
+  \left[
+    \frac{\mathcal E^A_\nu}{T}
+    -\partial_\nu\!\left(\frac{\mu_A}{T}\right)
+  \right].
+  \label{eq:hydro-acceleration-force-reduction}
+\end{equation}
+Thus acceleration and the transverse temperature gradient are not independent
+first-order data once the ideal equations are used.  The independent
+parity-even dissipative structures in Landau frame are therefore the
+symmetric traceless tensor \(\sigma^{\mu\nu}\), the scalar
+\(\vartheta\), and the transverse charge forces \(V_A^\mu\).  This is the
+classification statement behind the constitutive relations below; it is not
+an additional dynamical assumption.
 
 In Landau frame, the parity-even first-order constitutive relations are
 \begin{align}

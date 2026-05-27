@@ -168,6 +168,49 @@ def check_entropy_production_coefficients() -> None:
     assert determinant >= 0.0
 
 
+def check_sourceful_euler_force_basis() -> None:
+    temperature = 1.3
+    entropy = 0.9
+    chemical_potentials = [0.4, -0.2]
+    densities = [0.7, 0.3]
+    enthalpy = temperature * entropy + sum(
+        chemical_potentials[i] * densities[i] for i in range(2)
+    )
+    grad_temperature = [0.05, -0.03, 0.02]
+    grad_mu = [
+        [0.11, -0.07, 0.04],
+        [-0.02, 0.06, 0.03],
+    ]
+    electric = [
+        [0.09, 0.01, -0.04],
+        [0.05, -0.08, 0.02],
+    ]
+
+    for spatial_index in range(3):
+        grad_pressure = entropy * grad_temperature[spatial_index] + sum(
+            densities[charge] * grad_mu[charge][spatial_index] for charge in range(2)
+        )
+        charge_force = sum(
+            densities[charge] * electric[charge][spatial_index] for charge in range(2)
+        )
+        # Sourceful ideal Euler equation:
+        # w a_i + partial_i p = n_A E^A_i.
+        acceleration = (charge_force - grad_pressure) / enthalpy
+
+        thermodynamic_force_sum = 0.0
+        for charge in range(2):
+            grad_mu_over_t = (
+                grad_mu[charge][spatial_index] / temperature
+                - chemical_potentials[charge] * grad_temperature[spatial_index] / (temperature * temperature)
+            )
+            force = electric[charge][spatial_index] / temperature - grad_mu_over_t
+            thermodynamic_force_sum += densities[charge] * force
+
+        lhs = acceleration + grad_temperature[spatial_index] / temperature
+        rhs = temperature * thermodynamic_force_sum / enthalpy
+        assert_close("sourceful Euler force-basis reduction", lhs, rhs)
+
+
 def check_diffusion_einstein_relation_and_pole() -> None:
     sigma = 0.76
     chi = 1.9
@@ -208,6 +251,7 @@ def main() -> None:
     check_shear_mode()
     check_sound_mode_expansion()
     check_entropy_production_coefficients()
+    check_sourceful_euler_force_basis()
     check_diffusion_einstein_relation_and_pole()
     check_multicharge_diffusion_geometry()
     print("All hydrodynamic Ward-identity mode checks passed.")

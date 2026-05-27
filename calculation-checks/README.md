@@ -352,8 +352,9 @@ Current checks:
 - `hydrodynamic_modes_checks.py`: finite algebra checks for the Volume X
   hydrodynamic Ward-identity chapter, including shear diffusion, sound
   attenuation, entropy-production positivity for sample transport matrices,
-  the diffusion Einstein relation, the multi-charge susceptibility geometry,
-  and the static limit of the density source-response pole.
+  the sourceful ideal-Euler reduction of acceleration to thermodynamic force
+  variables, the diffusion Einstein relation, the multi-charge susceptibility
+  geometry, and the static limit of the density source-response pole.
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,
   the classical FDT relation, the Gaussian time-domain tail, nonanalytic
