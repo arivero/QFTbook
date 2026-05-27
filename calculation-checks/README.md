@@ -852,6 +852,10 @@ Current checks:
   IRC-classification section, including the \(\beta_{\rm SD}=0\) collinear
   counterexample for the groomed four-vector and the \(\beta_{\rm SD}>0\)
   threshold behavior.
+- `scet_factorization_checks.py`: finite checks for the SCET factorization
+  datum in the jets chapter, including exact endpoint-convolution
+  normalization and first-moment identities and a finite Wilson-line algebra
+  check of leading soft covariant-derivative decoupling.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization and
   the first-moment evolution formula for discrete track measures.

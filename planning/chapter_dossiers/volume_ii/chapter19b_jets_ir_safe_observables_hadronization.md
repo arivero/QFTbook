@@ -35,6 +35,14 @@ The chapter establishes:
   transverse-momentum thresholds;
 - a factorized event-shape formula separating hard, jet, and soft functions,
   with SCET identified as the operator framework for such factorizations;
+- Definition `def:scet-two-jet-operator-datum`, specifying the two-jet SCET
+  operator datum: mode scalings as coordinates, collinear Wilson-line building
+  blocks, soft Wilson lines, matched currents, renormalized jet/soft matrix
+  elements, zero-bin/overlap subtraction, rapidity data, and Glauber-sector
+  status;
+- Proposition `prop:scet-soft-wilson-line-decoupling`, proving the finite
+  algebraic identity that a soft Wilson-line change of variables removes the
+  leading \(n\cdot D_s\) soft connection from the collinear kinetic term;
 - controlled-approximation statements for perturbative jet predictions and
   parton-shower logarithmic accuracy;
 - the soft-drop grooming definition and an IRC classification that separates
@@ -84,6 +92,15 @@ The chapter establishes:
    fail soft safety because a soft seed can alter the stable-cone set.
 8. A fixed-order finite observable may still require resummation in regions
    with hierarchical measured scales.
+8a. SCET mode labels are controlled coordinates on momentum regions, not
+    physical colored Hilbert-space sectors.  A factorized formula must specify
+    operator definitions, Wilson lines, overlap subtractions, rapidity data
+    when present, Glauber status, and a topology for its remainder estimate.
+8b. The leading soft Wilson-line decoupling is an algebraic identity at finite
+    regulator, transferring leading soft interactions from the collinear
+    Lagrangian to Wilson lines in external operators and soft matrix elements.
+    It does not by itself prove subleading-power factorization or Glauber
+    cancellation.
 9. Parton showers are controlled approximations whose logarithmic accuracy is
    observable- and scheme-dependent.
 9a. Soft drop with \(\beta_{\rm SD}>0\) has a collinear-safe groomed
@@ -140,3 +157,7 @@ The chapter establishes:
 - 2026-05-26 issue #526 track-function pass: added the paired finite-kernel
   RG datum, proved normalization preservation and first-moment evolution, and
   added `calculation-checks/track_function_moment_checks.py`.
+- 2026-05-27 issue #630 SCET pass: upgraded the factorization/resummation
+  section with a two-jet SCET operator datum, finite soft Wilson-line decoupling
+  proof, explicit overlap/zero-bin and rapidity-regulator requirements, and
+  `calculation-checks/scet_factorization_checks.py`.

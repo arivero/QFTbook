@@ -308,8 +308,15 @@ IRC safety makes fixed-order perturbation theory finite, but it does not make
 every region of the observable distribution well approximated by a few fixed
 orders.  When an event shape \(e(X)\) is small, the final state is constrained
 to contain narrow energetic jets plus soft radiation.  A factorized
-description separates the scales.  For a two-jet event shape in
-\(e^+e^-\), a typical factorized form is
+description separates the scales, but the separation is not a statement that
+the exact QCD Hilbert space has literally split into independent colored
+subspaces.  It is a statement about a controlled expansion of a
+gauge-invariant weighted cross section in which the short-distance coefficient
+and the long-distance matrix elements are separately defined after a regulator,
+an overlap-subtraction prescription, and a renormalization scheme are chosen.
+
+For a two-jet event shape in \(e^+e^-\), a leading singular factorized form has
+the convolution form
 \begin{equation}
   \frac{\dd\sigma}{\dd e}
   =
@@ -321,10 +328,14 @@ description separates the scales.  For a two-jet event shape in
   O(e^0).
   \label{eq:jet-event-shape-factorization}
 \end{equation}
-The hard function \(H\) contains fluctuations at virtuality \(Q^2\), the jet
-functions \(J\) contain collinear fluctuations at smaller invariant mass, and
-the soft function \(S\) is a vacuum matrix element of Wilson lines measuring
-soft energy flow.  Their renormalization-group equations resum logarithms of
+The displayed \(O(e^0)\) denotes terms that are nonsingular as distributions at
+the two-jet endpoint; it is not an error estimate until the observable, test
+function, and endpoint scaling region have been specified.  The hard function
+\(H\) is the squared Wilson coefficient of the QCD current matched onto an
+effective current.  The jet functions \(J\) are regulated collinear matrix
+elements of gauge-invariant collinear fields.  The soft function \(S\) is a
+regulated vacuum matrix element of soft Wilson lines with the soft measurement
+operator inserted.  Their renormalization-group equations resum logarithms of
 the separated scales.
 
 Soft-collinear effective theory gives a systematic operator language for
@@ -344,9 +355,11 @@ lightlike vectors \(n,\bar n\) with \(n\cdot\bar n=2\) and write momenta as
   p^\mu=\frac{n\cdot p}{2}\bar n^\mu
        +\frac{\bar n\cdot p}{2}n^\mu+p_\perp^\mu .
 \]
-The SCET expansion parameter \(\lambda\) is fixed by the measured region.  For
-thrust-like two-jet kinematics, \(e\sim\lambda^2\), and the momentum scalings
-are
+The SCET expansion parameter \(\lambda\) is fixed by the measured region.  A
+mode is not an exact particle species; it is a coordinate chart on momentum
+regions, implemented in a regulator by smooth cutoffs or by an equivalent
+subtraction prescription.  For thrust-like two-jet kinematics,
+\(e\sim\lambda^2\), and the momentum scalings are
 \[
   p_n^\mu\sim Q(\lambda^2,1,\lambda),\qquad
   p_{\bar n}^\mu\sim Q(1,\lambda^2,\lambda),\qquad
@@ -373,15 +386,120 @@ functions are matrix elements of collinear fields with collinear Wilson
 lines; the soft function is a vacuum matrix element of soft Wilson lines with
 the measurement operator inserted.
 
+\begin{definition}[SCET operator datum for a two-jet endpoint]
+\label{def:scet-two-jet-operator-datum}
+A two-jet SCET operator datum for a color-singlet source consists of:
+\begin{enumerate}
+  \item two lightlike directions \(n,\bar n\) with \(n\cdot\bar n=2\), a small
+  parameter \(\lambda\), and momentum regions with the scaling displayed
+  above;
+  \item gauge-covariant collinear fields in the \(n\) and \(\bar n\) sectors,
+  with collinear Wilson lines \(W_n,W_{\bar n}\) along the conjugate lightlike
+  directions, and gauge-invariant building blocks such as
+  \[
+    \chi_n:=W_n^\dagger\xi_n,\qquad
+    \mathcal B_{n\perp}^{\mu}:=W_n^\dagger\,\ii D_{n\perp}^{\mu}W_n
+  \]
+  where \(D_{n\perp}=\partial_{n\perp}-\ii A_{n\perp}\) uses the
+  coupling-absorbed Yang--Mills connection of
+  Chapter~\ref{ch:vol2-classical-yang-mills-matter}.  Thus the normalization
+  of \(\mathcal B_{n\perp}\) is fixed by the same gauge-field coordinate that
+  appears in
+  \(-\frac1{4g_{\rm YM}^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu})\);
+  \item soft Wilson lines \(Y_n,Y_{\bar n}\) in the representations carried by
+  the energetic charges, with their future- or past-pointing orientation fixed
+  by whether the corresponding charge is outgoing or incoming;
+  \item a matched current, for example
+  \[
+    J_{\rm QCD}(0)
+    =
+    C(Q,\mu)\,
+    \bar\chi_{\bar n}(0)\Gamma\chi_n(0)
+    +O(\lambda),
+  \]
+  before the soft Wilson-line decoupling is applied;
+  \item renormalized jet and soft matrix elements, with the two-jet soft
+  matrix element having the Wilson-line form
+  \[
+    S(k,\mu)
+    =
+    \frac1{N_c}
+    \operatorname{tr}
+    \bra{\vac}
+    \overline{\operatorname T}\!\left(Y_{\bar n}^\dagger Y_n\right)
+    \delta\!\left(k-\widehat k_s\right)
+    \operatorname T\!\left(Y_n^\dagger Y_{\bar n}\right)
+    \ket{\vac}_{\mu},
+  \]
+  where \(\widehat k_s\) is the soft measurement operator appropriate to the
+  event shape;
+  \item an overlap-subtraction prescription, often called a zero-bin
+  subtraction, preventing the same momentum region from being counted both as
+  soft and as the soft limit of a collinear mode;
+  \item rapidity-regulator and rapidity-renormalization data whenever the
+  Wilson-line geometry produces rapidity divergences not removed by ordinary
+  ultraviolet renormalization;
+  \item a statement about Glauber exchange: cancellation, absorption into an
+  additional operator, or failure of the proposed factorization.
+\end{enumerate}
+All entries are part of the definition of the factorized approximation.  The
+symbols \(H,J,S\) in \eqref{eq:jet-event-shape-factorization} have no invariant
+meaning until these choices, including their renormalization scheme, have been
+specified.
+\end{definition}
+
+\begin{proposition}[Leading soft Wilson-line decoupling identity]
+\label{prop:scet-soft-wilson-line-decoupling}
+At finite regulator and at leading power in the \(n\)-collinear sector, the
+soft connection appearing through \(n\cdot D_s=n\cdot\partial-\ii n\cdot A_s\)
+can be removed from the collinear kinetic operator by multiplication by a soft
+Wilson line.  More precisely, if \(Y_n\) satisfies
+\[
+  n\cdot D_s\,Y_n=0,
+\]
+and the original collinear field is written \(\xi_n=Y_n\xi_n^{(0)}\), then
+\[
+  \ii n\cdot D_s\,\xi_n
+  =
+  Y_n\,\ii n\cdot\partial\,\xi_n^{(0)} .
+\]
+Thus the leading soft interactions are transferred from the collinear
+Lagrangian to Wilson lines in the external operators and measurement matrix
+elements.
+\end{proposition}
+
+\begin{proof}
+Using the Leibniz rule,
+\[
+  n\cdot D_s(Y_n\xi_n^{(0)})
+  =
+  (n\cdot D_sY_n)\xi_n^{(0)}
+  +Y_n\,n\cdot\partial\,\xi_n^{(0)} .
+\]
+The first term vanishes by the defining differential equation for \(Y_n\).
+Multiplying by \(\ii\) gives the displayed identity.  In a finite-dimensional
+regulated path integral, the change of variables is multiplication by an
+invertible color matrix at each regulated spacetime point.  With a
+gauge-covariant regulator its Berezin or bosonic Jacobian is a local
+gauge-invariant factor; in the factorized construction that factor is included
+in the same renormalized soft and collinear operator datum rather than treated
+as an extra physical assumption.  The identity itself is algebraic and does
+not assert that subleading soft interactions or Glauber exchanges decouple.
+\end{proof}
+
 \begin{hypothesis}[Leading-power SCET factorization datum]
 \label{hyp:leading-power-scet-factorization}
 A leading-power SCET factorization statement for an observable \(F\) consists
 of a small parameter \(\lambda\), a list of modes with momentum scaling, a
 mode-separated operator basis through the declared order in \(\lambda\), a
-measurement decomposition on those modes, a statement that Glauber or other
-factorization-breaking exchanges either cancel or are represented by
-additional operators, and a remainder estimate in powers of \(\lambda\) on the
-kinematic region where the formula is used.
+renormalized matrix-element definition of each hard, jet, beam, and soft
+function, an overlap-subtraction prescription, a measurement decomposition on
+those modes, a statement that Glauber or other factorization-breaking exchanges
+either cancel or are represented by additional operators, and a remainder
+estimate in powers of \(\lambda\) on the kinematic region where the formula is
+used.  If the formula is asserted as a theorem, the estimate must be stated in
+a topology on smeared cross sections or cumulants; otherwise it is a
+controlled approximation hypothesis.
 \end{hypothesis}
 
 Renormalization of the hard, jet, and soft functions gives evolution
