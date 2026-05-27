@@ -841,8 +841,9 @@ With the Weyl transformation
   \qquad
   \phi\mapsto \ee^{-\frac{D-2}{2}\omega}\phi,
 \]
-this action is Weyl invariant at the classical level.  In the corresponding
-free massless scalar QFT, the improved trace is
+this action is Weyl invariant at the classical level by
+Proposition~\ref{prop:conformal-laplacian-weyl-covariance}.  In the
+corresponding free massless scalar QFT, the improved trace is
 \[
   \widehat T^\mu{}_\mu(x)
   =
@@ -861,6 +862,108 @@ free equation-of-motion ideal.  Equivalently, for local insertions
 \]
 At coincident points the factor \(\partial^2\widehat\phi\) generates the
 Schwinger--Dyson contact terms of the free Gaussian measure.
+\end{proof}
+
+\begin{proposition}[Weyl covariance of the conformal Laplacian]
+\label{prop:conformal-laplacian-weyl-covariance}
+Let \(D>2\), set
+\[
+  \alpha=\frac{D-2}{2},
+  \qquad
+  \xi_\ast=\frac{D-2}{4(D-1)},
+\]
+and define the conformal Laplacian
+\[
+  P_g=-\nabla_g^2+\xi_\ast R(g).
+\]
+Under a Weyl transformation
+\[
+  g'_{\mu\nu}=\ee^{2\omega}g_{\mu\nu},
+  \qquad
+  \phi'=\ee^{-\alpha\omega}\phi,
+\]
+one has
+\begin{equation}
+  P_{g'}\phi'
+  =
+  \ee^{-\frac{D+2}{2}\omega}P_g\phi .
+  \label{eq:conformal-laplacian-weyl-covariance}
+\end{equation}
+Consequently, on a closed manifold or with boundary conditions eliminating
+boundary terms,
+\[
+  \frac12\int_M\dd^D x\,\sqrt g\,
+  \phi\,P_g\phi
+  =
+  \frac12\int_M\dd^D x\,\sqrt{g'}\,
+  \phi'\,P_{g'}\phi' .
+\]
+This is precisely the Weyl invariance of
+\eqref{eq:conformal-scalar-curved-action}.
+\end{proposition}
+
+\begin{proof}
+For a scalar \(f\), the Laplacian transforms as
+\[
+  \nabla_{g'}^2f
+  =
+  \ee^{-2\omega}
+  \left(
+    \nabla_g^2f
+    +(D-2)\nabla^\mu\omega\,\nabla_\mu f
+  \right),
+\]
+where covariant derivatives and contractions on the right use \(g\).  Apply
+this to \(f=\ee^{-\alpha\omega}\phi\).  Since \(2\alpha=D-2\), the first
+derivative terms in \(\phi\) cancel:
+\[
+  \nabla_{g'}^2(\ee^{-\alpha\omega}\phi)
+  =
+  \ee^{-(\alpha+2)\omega}
+  \left(
+    \nabla_g^2\phi
+    -\alpha(\nabla_g^2\omega)\phi
+    -\alpha^2(\nabla\omega)^2\phi
+  \right).
+\]
+The scalar curvature transforms by
+\[
+  R(g')
+  =
+  \ee^{-2\omega}
+  \left(
+    R(g)-2(D-1)\nabla_g^2\omega
+    -(D-1)(D-2)(\nabla\omega)^2
+  \right).
+\]
+Therefore
+\[
+\begin{aligned}
+  P_{g'}(\ee^{-\alpha\omega}\phi)
+  &=
+  \ee^{-(\alpha+2)\omega}
+  \bigl[
+    -\nabla_g^2\phi
+    +\xi_\ast R(g)\phi
+\\
+  &\qquad
+    +(\alpha-2(D-1)\xi_\ast)(\nabla_g^2\omega)\phi
+\\
+  &\qquad
+    +(\alpha^2-(D-1)(D-2)\xi_\ast)(\nabla\omega)^2\phi
+  \bigr].
+\end{aligned}
+\]
+The two coefficients involving \(\omega\) vanish exactly for
+\(\xi_\ast=(D-2)/(4(D-1))\).  Since \(\alpha+2=(D+2)/2\), this proves
+\eqref{eq:conformal-laplacian-weyl-covariance}.  Finally,
+\(\sqrt{g'}=\ee^{D\omega}\sqrt g\), and
+\[
+  D-\alpha-\frac{D+2}{2}=0.
+\]
+The integrated quadratic form is therefore invariant.  Integrating
+\(\phi(-\nabla_g^2)\phi\) by parts rewrites the quadratic form as
+\eqref{eq:conformal-scalar-curved-action}.
 \end{proof}
 
 \begin{figure}[H]
