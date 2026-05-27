@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Exact arithmetic checks for WZW Sugawara and coset formulas."""
+"""Arithmetic and finite modular-data checks for WZW/coset formulas."""
 
+import cmath
+import math
 from fractions import Fraction
 
 
@@ -78,6 +80,69 @@ def parafermion_fusion_targets(level, left, right):
             )
         )
     return targets
+
+
+def parafermion_primary_orbits(level):
+    selected_labels = [
+        (ell, charge_m)
+        for ell in range(level + 1)
+        for charge_m in range(2 * level)
+        if is_parafermion_label(level, ell, charge_m)
+    ]
+    return sorted(
+        {parafermion_canonical_label(level, ell, charge_m) for ell, charge_m in selected_labels}
+    )
+
+
+def parafermion_modular_s(level, left, right):
+    ell_left, charge_left = left
+    ell_right, charge_right = right
+    sine = math.sin(math.pi * (ell_left + 1) * (ell_right + 1) / (level + 2))
+    phase = cmath.exp(-1j * math.pi * charge_left * charge_right / level)
+    return 2 * sine * phase / math.sqrt(level * (level + 2))
+
+
+def require_close_complex(value, target, message, tolerance=1.0e-9):
+    if abs(value - target) > tolerance:
+        raise AssertionError(f"{message}: got {value!r}, expected {target!r}")
+
+
+def check_parafermion_modular_verlinde(max_level=7):
+    for level in range(1, max_level + 1):
+        labels = parafermion_primary_orbits(level)
+        vacuum = parafermion_canonical_label(level, 0, 0)
+
+        for left in labels:
+            for right in labels:
+                inner = sum(
+                    parafermion_modular_s(level, left, x)
+                    * parafermion_modular_s(level, right, x).conjugate()
+                    for x in labels
+                )
+                expected_inner = 1 if left == right else 0
+                require_close_complex(
+                    inner,
+                    expected_inner,
+                    f"parafermion S unitarity k={level}, left={left}, right={right}",
+                )
+
+        for left in labels:
+            for right in labels:
+                fusion_targets = parafermion_fusion_targets(level, left, right)
+                for target in labels:
+                    verlinde = sum(
+                        parafermion_modular_s(level, left, x)
+                        * parafermion_modular_s(level, right, x)
+                        * parafermion_modular_s(level, target, x).conjugate()
+                        / parafermion_modular_s(level, vacuum, x)
+                        for x in labels
+                    )
+                    expected = 1 if target in fusion_targets else 0
+                    require_close_complex(
+                        verlinde,
+                        expected,
+                        f"parafermion Verlinde k={level}, left={left}, right={right}, target={target}",
+                    )
 
 
 def same_mod_integer(left, right):
@@ -180,7 +245,7 @@ for level in range(1, 25):
         for m in range(2 * level)
         if is_parafermion_label(level, l, m)
     ]
-    primary_orbits = {parafermion_canonical_label(level, l, m) for l, m in selected_labels}
+    primary_orbits = set(parafermion_primary_orbits(level))
     require(
         len(selected_labels) == level * (level + 1),
         f"parafermion selected-label count mismatch at k={level}",
@@ -218,6 +283,8 @@ for level in range(1, 25):
             == {parafermion_canonical_label(level, label[0], label[1] + 2)},
             f"parafermion simple-current charge shift mismatch at k={level}, label={label}",
         )
+
+check_parafermion_modular_verlinde()
 
 require(su2_central_charge(1) == Fraction(1, 1), "SU(2)_1 should have c=1")
 require(su2_central_charge(2) == Fraction(3, 2), "SU(2)_2 should have c=3/2")

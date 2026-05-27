@@ -123,8 +123,9 @@
 - Defines the rank-one solvable cosets \(SU(2)_k/U(1)\) and
   \(SL(2,\mathbb R)_k/U(1)\) from current algebra first: parafermion
   branching labels, selection rules, field identification, central charge,
-  conformal weights, fusion rules, modular \(S\)-matrix, diagonal invariant,
-  and the noncompact cigar's representation, continuous spectrum,
+  conformal weights, fusion rules, modular \(S\)-matrix, unitary
+  orbit normalization, Verlinde recovery of fusion, diagonal invariant, and
+  the noncompact cigar's representation, continuous spectrum,
   momentum/winding, reflection, normalizability, and modular-data
   requirements.
 - Derives the bell and cigar gauged-WZW metrics and dilatons from local
@@ -248,7 +249,10 @@
     rule together with \(U(1)\) charge conservation modulo \(2k\).
 27. The displayed parafermion modular \(S\)-matrix is well-defined on
     field-identification orbits because the sine and charge phases cancel by
-    the selection rule.
+    the selection rule; the factor of two from the free simple-current
+    quotient gives a unitary orbit matrix, and the finite Verlinde sum
+    recovers the truncated \(SU(2)_k\) fusion rule together with \(U(1)\)
+    charge conservation.
 28. The \(SL(2,\mathbb R)_k/U(1)\) cigar central charge and weights use the
     noncompact dual-Coxeter shift \(k-2\), and the stated
     momentum/winding labels give integer spin \(h-\bar h=nw\).
@@ -390,7 +394,8 @@
   arithmetic of the Sugawara central charges, \(SU(2)\) affine-primary
   weights, diagonal coset minimal-model central charges, parafermion
   selection-rule and field-identification weights, parafermion orbit counts
-  and fusion rules, cigar central charges, reflection weight invariance and
+  and fusion rules, parafermion modular \(S\)-matrix unitarity and Verlinde
+  recovery of fusion, cigar central charges, reflection weight invariance and
   integer-spin momentum/winding labels, bell/cigar one-loop geometry
   residuals, leading-versus-exact central-charge shifts, and
   Ising/tricritical examples.

@@ -653,7 +653,8 @@ Current checks:
   simple groups, \(SU(2)_k\) affine-primary weights, the diagonal
   \(SU(2)_k\times SU(2)_1/SU(2)_{k+1}\) minimal-model central-charge
   identity, \(SU(2)_k/U(1)\) parafermion selection and field-identification
-  weights, compact parafermion orbit counts and fusion rules,
+  weights, compact parafermion orbit counts, fusion rules, modular
+  \(S\)-matrix unitarity, and Verlinde recovery of fusion,
   \(SL(2,\mathbb R)_k/U(1)\) cigar central charges, reflection weight
   invariance, momentum/winding spin checks, bell/cigar one-loop geometry
   residuals and leading-versus-exact central-charge shifts, and the

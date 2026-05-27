@@ -2430,6 +2430,25 @@ The diagonal compact parafermion torus partition function is
   \overline{b^{(k)}_{\ell,m}(\tau)} .
   \label{eq:parafermion-diagonal-partition-function}
 \end{equation}
+Moreover \(S^{\operatorname{PF}}\) is unitary and the Verlinde formula
+recovers exactly the fusion rule \eqref{eq:parafermion-fusion-rule}:
+\begin{equation}
+  N_{ab}{}^{c}
+  =
+  \sum_{x\in\mathcal I_k}
+  \frac{
+    S^{\operatorname{PF}}_{a x}
+    S^{\operatorname{PF}}_{b x}
+    \overline{S^{\operatorname{PF}}_{c x}}
+  }{
+    S^{\operatorname{PF}}_{[0,0] x}
+  },
+  \qquad
+  a,b,c\in\mathcal I_k,
+  \label{eq:parafermion-verlinde}
+\end{equation}
+where \(N_{ab}{}^c\) is \(1\) when \(c\) appears in
+\eqref{eq:parafermion-fusion-rule} and \(0\) otherwise.
 \end{proposition}
 
 \begin{proof}
@@ -2458,6 +2477,57 @@ exponential by \((-1)^{m'}\), whose product is \(1\) on selected labels
 \(\ell'+m'\in2\mathbb Z\).  The diagonal invariant is the branchwise
 diagonal invariant after quotienting by this free identification; it is
 equivalently one half of the selected-label diagonal sum before quotient.
+
+It remains to check that no normalization has been lost in passing to
+orbits.  Put
+\[
+  S^{su}_{\ell\ell'}
+  =
+  \sqrt{\frac2{k+2}}\,
+  \sin\!\left(\frac{\pi(\ell+1)(\ell'+1)}{k+2}\right),
+  \qquad
+  S^{u(1)}_{m m'}
+  =
+  \frac1{\sqrt{2k}}\,
+  \exp\!\left(\frac{\pi\ii mm'}{k}\right).
+\]
+The finite sine and Fourier orthogonality relations give
+\[
+  \sum_{\ell'=0}^{k}S^{su}_{\ell\ell'}S^{su}_{\ell''\ell'}
+  =\delta_{\ell,\ell''},
+  \qquad
+  \sum_{m'\in\mathbb Z/2k\mathbb Z}
+  S^{u(1)}_{m m'}\overline{S^{u(1)}_{m'' m'}}
+  =\delta_{m,m''}.
+\]
+Before quotienting, the branching functions transform with the product
+kernel
+\(\widehat S_{(\ell,m),(\ell',m')}
+=S^{su}_{\ell\ell'}\overline{S^{u(1)}_{m m'}}\).  The selection rule is the
+zero-monodromy condition for the simple current
+\(\mathsf J(\ell,m)=(k-\ell,m+k)\), and the previous paragraph shows that
+\(\widehat S\) is constant on selected \(\mathsf J\)-orbits.  Since every
+orbit has two elements, the induced orbit matrix is \(2\widehat S\), namely
+\eqref{eq:parafermion-modular-s}.  Summing first over selected labels and
+then dividing by the orbit size gives
+\[
+  \sum_{x\in\mathcal I_k}
+  S^{\operatorname{PF}}_{a x}
+  \overline{S^{\operatorname{PF}}_{b x}}
+  =
+  \delta_{a,b},
+\]
+with \(\delta_{a,b}\) understood on orbit labels.
+
+For \eqref{eq:parafermion-verlinde}, insert
+\eqref{eq:parafermion-modular-s}.  The finite Fourier sum over \(m_x\)
+imposes \(m_c\equiv m_a+m_b\pmod{2k}\), up to the same free
+field-identification orbit.  The remaining sine-kernel quotient is the
+\(SU(2)_k\) Verlinde coefficient, equivalently the truncated Clebsch--Gordan
+condition on \(\ell_c\).  These two constraints are precisely
+\eqref{eq:parafermion-fusion-rule}.  Because the simple-current action is
+free, no fixed-point resolution or multiplicity factor is hidden in this
+last step.
 \end{proof}
 
 For \(k=2\), the three orbits may be represented by
