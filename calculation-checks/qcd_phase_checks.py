@@ -6,9 +6,9 @@ Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
 magnetic-scale estimate, finite-regulator source-curvature identities,
 one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
 low-temperature chiral effective theory coefficients, static HTL Debye-mass
-normalizations, baryon-number cumulants, and the color-flavor-locked symmetry
-count.  It is not a lattice simulation and it does not assert the existence
-or order of any QCD phase transition.
+normalizations, thermodynamic derivative identities, baryon-number cumulants,
+and the color-flavor-locked symmetry count.  It is not a lattice simulation
+and it does not assert the existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -52,6 +52,42 @@ def check_finite_mu_quark_pressure():
     mu4_coeff = Fraction(nc * nf, 12 * nc**4)
     assert_equal("two-flavor baryon-mu T^2 coefficient", mu2_coeff, Fraction(1, 9))
     assert_equal("two-flavor baryon-mu fourth coefficient", mu4_coeff, Fraction(1, 162))
+
+
+def check_thermodynamic_derivative_identities():
+    # For a homogeneous conformal pressure p=a T^4 + b mu^2 T^2 + c mu^4,
+    # the interaction measure T p_T + mu p_mu - 4p vanishes identically.
+    a = Fraction(5, 7)
+    b = Fraction(11, 13)
+    c = Fraction(17, 19)
+    temperature = Fraction(2)
+    chemical_potential = Fraction(3)
+
+    pressure = (
+        a * temperature**4
+        + b * chemical_potential**2 * temperature**2
+        + c * chemical_potential**4
+    )
+    p_t = 4 * a * temperature**3 + 2 * b * chemical_potential**2 * temperature
+    p_mu = 2 * b * chemical_potential * temperature**2 + 4 * c * chemical_potential**3
+    interaction_measure = temperature * p_t + chemical_potential * p_mu - 4 * pressure
+    assert_equal("homogeneous pressure has zero interaction measure", interaction_measure, Fraction(0))
+
+    # At fixed x=mu/T, p(T,xT)/T^4 is independent of T for a homogeneous
+    # degree-four pressure.
+    x = Fraction(3, 2)
+    reduced_pressure = a + b * x**2 + c * x**4
+    reduced_pressure_rescaled = (
+        a * temperature**4
+        + b * (x * temperature)**2 * temperature**2
+        + c * (x * temperature)**4
+    ) / temperature**4
+    assert_equal("fixed mu/T reduced pressure", reduced_pressure_rescaled, reduced_pressure)
+
+    # At mu=0, c_s^2=(dp/dT)/(d epsilon/dT)=1/3 for p=a T^4.
+    dp_dt = 4 * a * temperature**3
+    d_epsilon_dt = 12 * a * temperature**3
+    assert_equal("conformal sound speed squared", dp_dt / d_epsilon_dt, Fraction(1, 3))
 
 
 def check_banks_casher_kernel_normalization():
@@ -283,6 +319,7 @@ def check_cfl_global_goldstone_count():
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
+    check_thermodynamic_derivative_identities()
     check_banks_casher_kernel_normalization()
     check_fugacity_laurent_polynomial_shift()
     check_source_curvature_susceptibility()

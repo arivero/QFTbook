@@ -1093,6 +1093,100 @@ For a conformal thermal state in four dimensions, \(\Delta=0\).  In QCD,
 \(\Delta\) measures the breaking of scale invariance by quark masses, by the
 running coupling, and by the thermal state itself.
 
+\begin{proposition}[Thermodynamic derivative identities for QCD observables]
+\label{prop:qcd-thermodynamic-derivative-identities}
+Let \(p(T,\mu_B)\) be the thermodynamic pressure of a QCD phase on an open
+domain in which it is twice continuously differentiable.  Define
+\[
+  s=\partial_Tp,\qquad n_B=\partial_{\mu_B}p,\qquad
+  \epsilon=-p+Ts+\mu_Bn_B .
+\]
+Then
+\[
+  dp=s\,dT+n_B\,d\mu_B,\qquad
+  d\epsilon=T\,ds+\mu_B\,dn_B,
+\]
+and the interaction measure is
+\[
+  \Delta(T,\mu_B)=\epsilon-3p
+  =
+  T\partial_Tp+\mu_B\partial_{\mu_B}p-4p .
+\]
+Equivalently, at fixed \(x=\mu_B/T\),
+\[
+  \frac{\Delta(T,\mu_B)}{T^4}
+  =
+  T\,\partial_T\left(\frac{p(T,xT)}{T^4}\right)_{x}.
+\]
+At \(\mu_B=0\), if charge conjugation gives \(n_B(T,0)=0\) and
+\(\partial_T\epsilon(T,0)>0\), the adiabatic sound speed determined by the
+pressure is
+\[
+  c_s^2(T)
+  =
+  \frac{dp(T,0)/dT}{d\epsilon(T,0)/dT}
+  =
+  \frac{\partial_Tp(T,0)}{T\,\partial_T^2p(T,0)} .
+\]
+These formulae are definitions and thermodynamic consequences of the
+pressure; they are not model assumptions about quasiparticles.
+\end{proposition}
+
+\begin{proof}
+The first identity is the definition of \(s\) and \(n_B\) as derivatives of
+the limiting pressure.  Differentiating
+\(\epsilon=-p+Ts+\mu_Bn_B\) gives
+\[
+  d\epsilon
+  =
+  -dp+T\,ds+s\,dT+\mu_B\,dn_B+n_B\,d\mu_B.
+\]
+Substituting \(dp=s\,dT+n_B\,d\mu_B\) leaves
+\(d\epsilon=T\,ds+\mu_B\,dn_B\).  The displayed formula for \(\Delta\)
+follows by substituting \(s=\partial_Tp\) and
+\(n_B=\partial_{\mu_B}p\) into \(\epsilon-3p\).
+
+For the fixed-\(x\) identity, write \(\mu_B=xT\).  The chain rule gives
+\[
+  T\,\partial_T\left(\frac{p(T,xT)}{T^4}\right)_{x}
+  =
+  \frac{T\partial_Tp+\mu_B\partial_{\mu_B}p-4p}{T^4}.
+\]
+At \(\mu_B=0\), charge conjugation removes the baryon-density term.  Along
+that one-parameter equilibrium curve,
+\[
+  \frac{d\epsilon}{dT}
+  =
+  T\,\frac{ds}{dT}
+  =
+  T\,\partial_T^2p(T,0),
+  \qquad
+  \frac{dp}{dT}=\partial_Tp(T,0),
+\]
+which gives the sound-speed formula whenever the denominator is nonzero.
+\end{proof}
+
+\begin{example}[Conformal Stefan--Boltzmann benchmark]
+\label{ex:qcd-conformal-sb-thermodynamics}
+If
+\[
+  p(T,\mu_B)=aT^4+b\mu_B^2T^2+c\mu_B^4
+\]
+with \(a,b,c\) independent of \(T\) and \(\mu_B\), then \(p\) is homogeneous
+of degree four, so Euler's identity gives
+\[
+  T\partial_Tp+\mu_B\partial_{\mu_B}p=4p,\qquad \Delta=0.
+\]
+At \(\mu_B=0\), one obtains \(\epsilon=3aT^4\) and
+\[
+  c_s^2=\frac{4aT^3}{12aT^3}=\frac13 .
+\]
+The free plasma is therefore a normalization benchmark for lattice and
+resummed calculations of \(\Delta/T^4\) and \(c_s^2\); departures from it
+measure interactions, masses, running couplings, and nonperturbative thermal
+physics.
+\end{example}
+
 \section{Hard Thermal Loops and the Linde Obstruction}
 \label{sec:qcd-phase-hard-thermal-loops-linde}
 

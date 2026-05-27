@@ -35,6 +35,8 @@ GitHub issue #628.
   decay constant, leading mass-source constant, and pion mass in the
   low-temperature chiral EFT.
 - `p_SB`, `Delta=epsilon-3p`: Stefan--Boltzmann pressure and trace anomaly.
+- `s`, `n_B`, `epsilon`, `c_s^2`: entropy density, baryon density, energy
+  density, and adiabatic sound speed extracted from pressure derivatives.
 - `g_3^2=g^2T`, `m_D`: static magnetic coupling and Debye mass.
 - `C_A`, `T_R`, `I_B`, `I_F`: adjoint quadratic index, representation
   trace index, and the Bose/Fermi thermal susceptibility integrals entering
@@ -89,6 +91,10 @@ GitHub issue #628.
   domain of validity stated.
 - Derives the massless free QCD pressure at zero and nonzero baryon chemical
   potential.
+- Derives the thermodynamic derivative identities used to turn the QCD
+  pressure into entropy density, baryon density, energy density, interaction
+  measure, fixed-`mu_B/T` trace-anomaly diagnostic, and the `mu_B=0`
+  sound-speed formula.
 - Records the HTL domain as a controlled approximation and proves the
   magnetic \(g^6T^4\) Linde scale by dimensional analysis of the static
   magnetic theory.
@@ -123,7 +129,8 @@ GitHub issue #628.
   identity, one-loop Polyakov-holonomy potential coefficients,
   chiral Ward-identity and GMOR normalization factors, low-temperature
   chiral effective theory coefficients, static HTL Debye-mass normalization,
-  baryon-number cumulants and radius estimators, and CFL Goldstone count.
+  thermodynamic derivative identities, baryon-number cumulants and radius
+  estimators, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -154,3 +161,7 @@ GitHub issue #628.
   derivation of the Debye mass in trace-delta convention and paired it with
   exact arithmetic checks for the Bose/Fermi susceptibility integrals and
   \(SU(3)\), \(N_f=3\) coefficient.
+- 2026-05-27 QGP thermodynamic-observable pass: added pressure-derivative
+  identities for energy density, trace anomaly, fixed-`mu_B/T` reduced
+  pressure, and `mu_B=0` sound speed, with the conformal Stefan--Boltzmann
+  benchmark checked exactly.

@@ -58,8 +58,8 @@ Current checks:
   one-loop Polyakov-holonomy potential coefficients, chiral Ward-identity and
   GMOR normalization factors, low-temperature chiral effective theory
   coefficients, static HTL Debye-mass normalization, the Linde magnetic-scale
-  power count, baryon-number cumulants and radius estimators, and the CFL
-  Goldstone count.
+  power count, thermodynamic derivative identities for QGP observables,
+  baryon-number cumulants and radius estimators, and the CFL Goldstone count.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
   number conservation, quark/gluon momentum-column sum rules, the exact
