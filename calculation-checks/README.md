@@ -413,7 +413,9 @@ Current checks:
   the Ising/Kramers--Wannier noninvertible defect example, including fusion
   associativity, Frobenius--Perron dimensions, modular \(S\)-matrix
   orthogonality, the Verlinde formula, and the diagonal action of defects on
-  local primary sectors.
+  local primary sectors, plus finite regular-algebra separability/Frobenius
+  identities and self-dual gauging fusion-ring associativity for cyclic
+  groups and \(S_3\).
 - `ising_form_factor_checks.py`: finite checks for the Volume VI
   free-Majorana and Ising form-factor examples, including Watson exchange,
   cyclicity, the kinematic-pole residue sign, the two-particle invariant-mass

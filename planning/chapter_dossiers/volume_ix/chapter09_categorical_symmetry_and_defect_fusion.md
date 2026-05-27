@@ -15,6 +15,10 @@ anomaly obstruction.
 - `Hom(D_a tensor D_b, D_c)`: junction spaces.
 - `A`, `m`, `eta`: algebra object and its multiplication/unit maps for
   condensation.
+- `A_H`, `Delta`: regular algebra of a finite symmetry and its normalized
+  comultiplication in the untwisted pointed defect subcategory.
+- `N_H`: self-dual finite-gauging defect satisfying
+  \(N_H^2=\oplus_{h\in H}D_h\) after a self-adjoint duality choice.
 - `eta`, `N`: in the Ising example, the invertible spin-flip defect and the
   Kramers--Wannier noninvertible defect; the TeX uses `\eta` and
   `\mathcal N`.
@@ -32,6 +36,13 @@ anomaly obstruction.
 - Relates associativity of defect fusion to junction spaces and pentagon
   identities.
 - Formulates gauging as condensation of an algebra object.
+- Develops the finite regular algebra \(A_H=\oplus_h D_h\) as an explicit
+  separable Frobenius algebra object in the untwisted pointed defect
+  subcategory, including the normalized comultiplication.
+- Proves the object-level self-dual finite-gauging fusion ring
+  \(D_gD_h=D_{gh}\), \(D_hN_H=N_HD_h=N_H\),
+  \(N_H^2=\oplus_hD_h\), its associativity, and
+  \(d(N_H)=\sqrt{|H|}\).
 - Develops the Ising/Kramers--Wannier example as a concrete noninvertible
   categorical symmetry: \(N^2=1+\eta\), \(d_N=\sqrt2\), and the defect action
   on the three primary sectors is diagonalized by the Ising modular matrix.
@@ -59,7 +70,9 @@ anomaly obstruction.
   \(\mathbb Q(\sqrt2)\) arithmetic, the Ising defect fusion associativity,
   Frobenius--Perron dimension homomorphism, modular \(S\)-matrix
   orthogonality, Verlinde formula, and line-eigenvalue representation of the
-  fusion algebra.
+  fusion algebra.  It also verifies finite regular-algebra separability and
+  Frobenius identities plus self-dual gauging fusion-ring associativity for
+  cyclic examples and \(S_3\).
 
 ## Figure Ledger
 
