@@ -509,6 +509,12 @@ Current checks:
   six-dimensional Yang-Mills coupling dimension, \(A_{N-1}\) \((2,0)\)
   anomaly/tensor-branch arithmetic, and the trace-delta
   \(g_5^2=4\pi^2R\) compactification normalization.
+- `susy_gauge_foundation_checks.py`: exact finite checks for the Volume VII
+  supersymmetric gauge-theory foundation chapter, including the auxiliary
+  \(D\)-field square completion and potential sign, the absence of
+  Fayet--Iliopoulos parameters for an `su(2)` semisimple factor, vectorlike
+  \(U(1)\) anomaly cancellation, and the conjugate-representation anomaly
+  sign.
 - `susy_moduli_space_checks.py`: finite algebra checks for the Volume VII
   supersymmetric moduli-space quotient conventions, including the
   rank-one \(U(1)\) invariant ring
