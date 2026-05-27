@@ -1097,39 +1097,129 @@ diagrammatic interpretation: connected Green functions are obtained as tree
 diagrams whose vertices are exact 1PI kernels and whose internal lines are the
 exact connected propagator.
 
-For example, differentiate the stationarity equation once:
+\begin{proposition}[Exact 1PI tree reconstruction of connected kernels]
+\label{prop:exact-1pi-tree-reconstruction}
+Work in DeWitt notation, with repeated indices summed and integrated, and set
 \[
-  \int \dd^Dz\,
-  \Gamma^{(2)}(x,z)
-  \frac{\delta\varphi_J(z)}{\delta J(y)}
+  W^{i_1\cdots i_n}
   =
-  -\delta^{(D)}(x-y).
+  \frac{\delta^nW}{\delta J_{i_1}\cdots\delta J_{i_n}},
+  \qquad
+  \Gamma_{i_1\cdots i_n}
+  =
+  \frac{\delta^n\Gamma}
+       {\delta\varphi^{i_1}\cdots\delta\varphi^{i_n}}
 \]
-Thus
+at the paired configurations \(J\) and \(\varphi_J\).  Let
 \[
-  G(x,y)
-  \equiv
-  \frac{\delta\varphi_J(x)}{\delta J(y)}
+  G^{ij}=W^{ij}
   =
-  W^{(2)}(x,y)
+  \frac{\delta\varphi_J^i}{\delta J_j}
 \]
-is the exact connected two-point kernel in the \(W\)-derivative convention,
-equivalently the inverse of \(-\Gamma^{(2)}\).  Differentiating again gives
-the third derivative of \(W\) as a tree with one exact \(\Gamma^{(3)}\) vertex
-and three exact propagator legs:
+be the exact connected two-point kernel.  Then
+\begin{equation}
+  \Gamma_{ia}G^{aj}=-\delta_i{}^j,
+  \label{eq:exact-1pi-tree-two-point}
+\end{equation}
+\begin{equation}
+  W^{ijk}
+  =
+  G^{ia}G^{jb}G^{kc}\Gamma_{abc},
+  \label{eq:exact-1pi-tree-three-point}
+\end{equation}
+and
+\begin{equation}
+\begin{aligned}
+  W^{ijkl}
+  &=
+  G^{ia}G^{jb}G^{kc}G^{ld}\Gamma_{abcd}
+\\
+  &\quad
+  +G^{ia}G^{jb}\Gamma_{abe}G^{ef}\Gamma_{fcd}G^{kc}G^{ld}
+\\
+  &\quad
+  +G^{ia}G^{kc}\Gamma_{ace}G^{ef}\Gamma_{fbd}G^{jb}G^{ld}
+\\
+  &\quad
+  +G^{ia}G^{ld}\Gamma_{ade}G^{ef}\Gamma_{fbc}G^{jb}G^{kc}.
+\end{aligned}
+  \label{eq:exact-1pi-tree-four-point}
+\end{equation}
+In general, every connected kernel \(W^{i_1\cdots i_n}\) is obtained by a
+finite sum over trees whose vertices are exact 1PI kernels
+\(\Gamma_r\) with \(r\ge3\), whose internal edges are \(G\), and whose
+external half-edges are attached to the external labels by \(G\).  No loop is
+created in this reconstruction; all loop information is already contained in
+the exact kernels \(\Gamma_r\) and the exact propagator \(G\).
+\end{proposition}
+
+\begin{proof}
+The stationarity equation is
 \[
-  W^{(3)}(x_1,x_2,x_3)
-  =
-  \int \dd^Dy_1\,\dd^Dy_2\,\dd^Dy_3\,
-  G(x_1,y_1)G(x_2,y_2)G(x_3,y_3)
-  \Gamma^{(3)}(y_1,y_2,y_3),
+  \Gamma_i[\varphi_J]+J_i=0.
 \]
-with the sign fixed by
-\(\int \Gamma^{(2)}G=-1\).  Translating from derivatives of \(W\) to
-Lorentzian Green functions uses the same powers of \(\ii\) as in the
-source-derivative definitions at the beginning of the chapter.  Higher
-connected functions are generated recursively by trees of the exact vertices
-\(\Gamma^{(n)}\).
+Differentiating once with respect to \(J_j\) gives
+\[
+  \Gamma_{ia}G^{aj}+\delta_i{}^j=0,
+\]
+which proves \eqref{eq:exact-1pi-tree-two-point}.  Differentiating this
+identity with respect to \(J_k\) gives
+\[
+  \Gamma_{iab}G^{bk}G^{aj}
+  +
+  \Gamma_{ia}W^{ajk}
+  =
+  0 .
+\]
+Multiplying by \(G^{\ell i}\) and using
+\(G^{\ell i}\Gamma_{ia}=-\delta^\ell{}_a\), which is the same inverse
+relation with the two factors interchanged, gives
+\[
+  W^{\ell jk}
+  =
+  G^{\ell i}\Gamma_{iab}G^{aj}G^{bk}.
+\]
+Renaming dummy indices proves
+\eqref{eq:exact-1pi-tree-three-point}.
+
+Differentiate the preceding second-derivative identity once more:
+\[
+\begin{aligned}
+  0
+  &=
+  \Gamma_{iabc}G^{c\ell}G^{bk}G^{aj}
+  +
+  \Gamma_{iab}W^{bk\ell}G^{aj}
+  +
+  \Gamma_{iab}G^{bk}W^{aj\ell}
+\\
+  &\quad
+  +
+  \Gamma_{iab}G^{b\ell}W^{ajk}
+  +
+  \Gamma_{ia}W^{ajk\ell}.
+\end{aligned}
+\]
+Multiplication by \(G^{mi}\) solves for \(W^{mjk\ell}\).  The first term gives
+the single four-point vertex in
+\eqref{eq:exact-1pi-tree-four-point}; substituting
+\eqref{eq:exact-1pi-tree-three-point} into the other three terms gives the
+three pairings of two exact three-point vertices joined by one exact
+propagator.  This proves \eqref{eq:exact-1pi-tree-four-point}.
+
+The recursive tree statement follows by induction.  Suppose every source
+derivative of \(\varphi_J\) of order less than \(n\) is a sum of trees.  The
+\((n-1)\)st derivative of
+\(\Gamma_i[\varphi_J]+J_i=0\) is a finite Fa\`a di Bruno sum: one differentiates
+some \(\Gamma_r\) and distributes the source derivatives among the factors
+\(\delta^{m}\varphi_J/\delta J^m\).  By the induction hypothesis those
+factors are trees.  Multiplying once by \(G\) solves the remaining
+\(\Gamma_{ia}\)-factor and attaches one additional external propagator.  This
+operation glues trees at a new exact 1PI vertex and cannot form a cycle.
+Therefore the result is a sum over trees only.  Translating from derivatives
+of \(W\) to Lorentzian Green functions uses the same powers of \(\ii\) as in
+the source-derivative definitions at the beginning of the chapter.
+\end{proof}
 
 \begin{figure}[!ht]
   \centering
