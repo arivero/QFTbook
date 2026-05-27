@@ -928,3 +928,41 @@ Calculation checks added:
   normalization, stringbook `SL(2)` rational factor, reciprocal compact
   `SU(2)` phase, and the fact that the dressingless second rational factor
   starts at one.
+
+## Continuation XXXII: Dual Qomega Transport
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- Chapter 15 had developed the `Pmu` transport algebra, Pfaffian
+  preservation, and local `P-Q` bridge in detail, but the dual `Qomega`
+  paragraph still only named the mirror system.  Since the QSC cut gauge
+  changes from short-cut `P_a` functions to long-cut `Q_i` functions, this is
+  a convention-sensitive place where signs can silently drift unless the
+  transport rule is derived in the same notation.
+
+Content added:
+
+- Defined the dual raising tensor `eta^{ij}` and the dual Pfaffian
+  normalization for `omega_ij`.
+- Added a lemma proving that the rank-two update
+  `omega -> omega + Q wedge tilde Q` preserves `Pf omega` when
+  `Q_i Q^i=0`.
+- Derived the dual one-step monodromy recursion
+  `omega_ij(u+i)=omega_ij+Q_i omega_jk Q^k-Q_j omega_ik Q^k` from
+  pseudo-periodicity, the long-cut discontinuity equation, and
+  `tilde Q_i=omega_ij Q^j`.
+- Stated explicitly that the lemma is local cut-gauge algebra, not a proof of
+  the global `Qomega` Riemann-Hilbert existence/gluing problem.
+
+Calculation checks added:
+
+- `check_qomega_dual_monodromy_transport()` verifies `Q_i Q^i=0`, Pfaffian
+  preservation, equality of the dual monodromy recursion with the rank-two
+  discontinuity update, antisymmetry of the shifted matrix, and sensitivity
+  to the overall transport sign on exact and complex samples.

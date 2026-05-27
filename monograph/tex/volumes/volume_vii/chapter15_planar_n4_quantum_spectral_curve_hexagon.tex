@@ -772,7 +772,12 @@ The \(P\mu\)-system is one gauge for the QSC.  A dual description uses four
 functions \(Q_i(u)\), \(i=1,\ldots,4\), and an antisymmetric matrix
 \(\omega_{ij}(u)\).  In the standard convention the \(Q_i\) have long cuts,
 while the \(P_a\) have one short cut on the principal sheet.  The equations
-mirror the \(P\mu\) system:
+mirror the \(P\mu\) system.  Introduce
+\[
+  Q^i=\eta^{ij}Q_j,
+\]
+where \(\eta^{ij}\) is a fixed antisymmetric tensor, normalized in the same
+unimodular convention as the \(P\)-index tensor \(\chi^{ab}\).  Then
 \[
   \widetilde Q_i=\omega_{ij}Q^j,\qquad
   \widetilde\omega_{ij}-\omega_{ij}
@@ -781,6 +786,16 @@ mirror the \(P\mu\) system:
   \qquad
   \omega_{ij}(u+\ii)=\widetilde\omega_{ij}(u).
 \]
+The dual Pfaffian normalization is
+\[
+  \operatorname{Pf}\omega
+  =
+  \omega_{12}\omega_{34}-\omega_{13}\omega_{24}
+  +\omega_{14}\omega_{23}
+  =
+  1
+\]
+after the same class of \(Q\)-basis gauge transformations used below.
 The two descriptions are related by the full \(Q_{A|I}\) system of
 finite-difference relations.  The useful point for this monograph is not the
 formal symmetry itself but the bookkeeping: choosing short cuts for \(P_a\)
@@ -794,6 +809,71 @@ conjugates of \(P_a(u)\) on the real axis outside the cut.  These conditions
 select the physical solution among many formal solutions of the same
 finite-difference equations.  They play the same role as contour data in the
 mirror TBA.
+
+\begin{lemma}[Dual \(Q\omega\) transport]
+\label{lem:qsc-qomega-transport}
+Assume the local \(Q\omega\) equations displayed above and the null
+contraction \(Q_iQ^i=0\).  Then the \(\omega\)-Pfaffian is transported
+consistently through a long cut, and the one-step shifted sheet obeys
+\[
+  \omega_{ij}(u+\ii)
+  =
+  \omega_{ij}(u)
+  +Q_i(u)\omega_{jk}(u)Q^k(u)
+  -Q_j(u)\omega_{ik}(u)Q^k(u).
+  \label{eq:qsc-qomega-monodromy-recursion}
+\]
+\end{lemma}
+
+\begin{proof}
+The proof is the dual copy of the \(P\mu\) calculation, but it is worth
+displaying because the sign is fixed by the long-cut convention.  Write
+\[
+  \widetilde Q_i=\omega_{ij}Q^j .
+\]
+The discontinuity equation says that crossing the cut changes \(\omega\) by
+the rank-two antisymmetric update
+\[
+  \omega\longmapsto \omega+Q\wedge\widetilde Q .
+\]
+For an invertible antisymmetric \(4\times4\) matrix \(M\),
+\[
+  \operatorname{Pf}(M+v\wedge w)
+  =
+  \operatorname{Pf}(M)\bigl(1+w^TM^{-1}v\bigr).
+\]
+With \(M=\omega\), \(v=Q\), and \(w=\widetilde Q=\omega Q^\sharp\),
+where \((Q^\sharp)^i=Q^i=\eta^{ij}Q_j\), the correction factor is
+\[
+  w^T\omega^{-1}Q
+  =
+  (\omega Q^\sharp)^T\omega^{-1}Q
+  =
+  -(Q^\sharp)^TQ
+  =
+  -Q^iQ_i
+  =
+  0.
+\]
+Hence the Pfaffian normalization, once imposed on one sheet, is preserved by
+the cut transport.  The pseudo-periodicity equation
+\(\omega_{ij}(u+\ii)=\widetilde\omega_{ij}(u)\) and the discontinuity
+equation give
+\[
+  \omega_{ij}(u+\ii)-\omega_{ij}(u)
+  =
+  Q_i(u)\widetilde Q_j(u)-Q_j(u)\widetilde Q_i(u).
+\]
+Substituting \(\widetilde Q_j=\omega_{jk}Q^k\) gives
+\eqref{eq:qsc-qomega-monodromy-recursion}.
+\end{proof}
+
+The lemma is not a proof of the global \(Q\omega\) Riemann--Hilbert problem.
+It is the local transport rule after the long-cut gauge has been chosen.  In
+particular, changing the antisymmetric tensor \(\eta\), reversing the tilde
+continuation, or using the opposite \(u\mapsto u-\ii\) shift convention changes
+the displayed signs unless the same convention change is made everywhere in
+the \(Q_{A|I}\) bridge.
 
 \subsection{Local P-Q Bridge}
 

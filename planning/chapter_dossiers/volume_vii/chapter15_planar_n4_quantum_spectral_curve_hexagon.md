@@ -98,8 +98,15 @@ three-point functions.
   in the chapter from QSC framework inputs: existence of single-short-cut
   functions, the normalized discontinuity coefficient, physical gluing, and
   equivalence to the exact planar gauge-theory spectrum.
-- Adds the dual `Qomega` system and explains the analytic-gauge status of
+- Adds the dual `Qomega` system, defines the `eta^{ij}` raising tensor and
+  dual Pfaffian normalization, and explains the analytic-gauge status of
   short and long cuts.
+- Proves the local dual `Qomega` transport rule: the rank-two update
+  `omega -> omega + Q wedge tilde Q` preserves `Pf omega` when
+  `Q_i Q^i=0`, and pseudo-periodicity gives
+  `omega_ij(u+i)=omega_ij+Q_i omega_jk Q^k-Q_j omega_ik Q^k`.  The text
+  marks this as local cut-gauge algebra, not as a proof of the global
+  `Qomega` Riemann-Hilbert problem.
 - Adds the local `P-Q` bridge before the weak-coupling limit: the rank-one
   finite-difference relation `Q_{a|i}^+-Q_{a|i}^-=P_a Q_i`, the contraction
   formulae `Q_i=-P^a Q_{a|i}^-`, `P_a=-Q^i Q_{a|i}^-`, and the null
@@ -190,6 +197,11 @@ structure and the pair-of-pants-to-hexagons cut.
   plus/minus shift independence of the `P` and `Q` contractions, null
   contractions from antisymmetric raising, and determinant preservation under
   the rank-one update.
+- The same script checks the dual `Qomega` transport algebra on exact and
+  complex antisymmetric samples: `Q_i Q^i=0`, Pfaffian preservation,
+  equality of the one-step monodromy recursion with the rank-two
+  discontinuity update, antisymmetry of the shifted matrix, and sensitivity
+  to the overall transport sign.
 - The same script checks the weak-QSC `mu_12`/`mu_24` elimination algebra:
   the reconstructed `mu_24` recursion, the pre-Baxter difference equation,
   and finiteness of the weak transfer coefficient in sample twists.

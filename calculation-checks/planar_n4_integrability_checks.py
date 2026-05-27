@@ -2229,6 +2229,112 @@ def check_qsc_pq_bridge_unimodular_rank_one_update() -> None:
             raise AssertionError("P-Q bridge determinant gauge changed")
 
 
+def check_qomega_dual_monodromy_transport() -> None:
+    """Check the dual Qomega Pfaffian transport and monodromy signs."""
+
+    def pfaffian_4(matrix: list[list[complex]]) -> complex:
+        return (
+            matrix[0][1] * matrix[2][3]
+            - matrix[0][2] * matrix[1][3]
+            + matrix[0][3] * matrix[1][2]
+        )
+
+    eta = [
+        [0, 1, 0, 0],
+        [-1, 0, 0, 0],
+        [0, 0, 0, 1],
+        [0, 0, -1, 0],
+    ]
+    samples = (
+        (
+            [
+                [0, 2, -1, 3],
+                [-2, 0, 5, 7],
+                [1, -5, 0, 11],
+                [-3, -7, -11, 0],
+            ],
+            [1, -2, 3, 5],
+        ),
+        (
+            [
+                [0, 1 - 2j, 3 + 0.5j, -2],
+                [-1 + 2j, 0, -4j, 1.5],
+                [-3 - 0.5j, 4j, 0, -2 + 0.7j],
+                [2, -1.5, 2 - 0.7j, 0],
+            ],
+            [2 - 1j, -0.5 + 0.2j, 1.3, -2.1j],
+        ),
+    )
+
+    for omega, q_lower in samples:
+        q_upper = [
+            sum(eta[row][col] * q_lower[col] for col in range(4))
+            for row in range(4)
+        ]
+        assert_close(
+            "Q_i Q^i antisymmetry",
+            sum(q_lower[row] * q_upper[row] for row in range(4)),
+            0,
+        )
+
+        tilde_q = [
+            sum(omega[row][col] * q_upper[col] for col in range(4))
+            for row in range(4)
+        ]
+        updated = [
+            [
+                omega[row][col]
+                + q_lower[row] * tilde_q[col]
+                - q_lower[col] * tilde_q[row]
+                for col in range(4)
+            ]
+            for row in range(4)
+        ]
+        assert_close(
+            "Qomega Pfaffian rank-two update",
+            pfaffian_4(updated),
+            pfaffian_4(omega),
+        )
+
+        shifted_by_recursion = [
+            [
+                omega[row][col]
+                + q_lower[row] * sum(omega[col][k] * q_upper[k] for k in range(4))
+                - q_lower[col] * sum(omega[row][k] * q_upper[k] for k in range(4))
+                for col in range(4)
+            ]
+            for row in range(4)
+        ]
+        for row in range(4):
+            for col in range(4):
+                assert_close(
+                    "Qomega monodromy recursion equals discontinuity update",
+                    shifted_by_recursion[row][col],
+                    updated[row][col],
+                )
+                assert_close(
+                    "Qomega shifted matrix preserves antisymmetry",
+                    shifted_by_recursion[row][col],
+                    -shifted_by_recursion[col][row],
+                )
+
+        opposite_update = [
+            [
+                omega[row][col]
+                - q_lower[row] * tilde_q[col]
+                + q_lower[col] * tilde_q[row]
+                for col in range(4)
+            ]
+            for row in range(4)
+        ]
+        if max(
+            abs(opposite_update[row][col] - updated[row][col])
+            for row in range(4)
+            for col in range(4)
+        ) < 1.0e-12:
+            raise AssertionError("Qomega sample does not detect the transport sign")
+
+
 def check_qsc_weak_mu12_mu24_elimination() -> None:
     """Check the weak-QSC elimination of mu_24 into the Baxter difference equation."""
 
@@ -2689,6 +2795,7 @@ def main() -> None:
     check_t_hook_wronskian_pmu_bridge()
     check_qsc_fermionic_node_ratio_large_u()
     check_qsc_pq_bridge_unimodular_rank_one_update()
+    check_qomega_dual_monodromy_transport()
     check_qsc_weak_mu12_mu24_elimination()
     check_qsc_large_u_coefficient_constraints()
     check_qsc_collapsed_cut_digamma_package()
