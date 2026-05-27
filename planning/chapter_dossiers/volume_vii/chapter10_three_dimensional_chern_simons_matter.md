@@ -28,6 +28,11 @@ Reviewed source spine:
   field.
 - `Phi_i`, `phi_i`, `R`, `W`: chiral multiplets, scalar fields,
   representation, and superpotential.
+- `t_R^a`, `mu^a`: representation matrices and non-abelian moment-map
+  coordinates in trace-delta normalization.
+- `Q`, `tilde Q`, `varphi`, `J^a`: `3D` `N=3` hypermultiplet chirals,
+  adjoint chiral, and quadratic current entering the adjoint-chiral
+  elimination.
 - `mu`, `zeta`, `m_i`: moment map, FI coordinate, and real masses.
 - `T(R)`, `m`: representation index and monopole magnetic charge.
 - `G_{N,k}`, `A`, `Ahat`: ABJM gauge group and the two gauge connections.
@@ -51,6 +56,15 @@ Reviewed source spine:
   term obligations, and boundary obligation.
 - Derives the Chern-Simons shifted D-term equation by eliminating the
   auxiliary field.
+- Proves the non-abelian pure-Chern-Simons auxiliary equation
+  `sigma^a=-(2 pi/k) mu^a` in trace-delta normalization and derives the
+  ordered sextic scalar coefficient
+  `-4 pi^2/k^2 (bar phi t^a phi)(bar phi t^b phi)(bar phi t^a t^b phi)`.
+- Records the convention boundary for the induced `3D` Yukawa signs while
+  fixing the coefficient magnitudes and the `1:2` relative factor.
+- Proves the `3D` `N=3` adjoint-chiral elimination
+  `W=-(k/8 pi) varphi^2+J varphi -> W_eff=(2 pi/k)J^2` as a polynomial
+  chiral-ring calculation, independent of any string-theoretic realization.
 - Records the parity-anomaly level shift and the Gauss-law electric charge of
   monopole operators.
 - Defines ABJM as `U(N)_k x U(N)_{-k}` Chern-Simons-matter theory with four
@@ -80,6 +94,10 @@ Reviewed source spine:
   BF K-matrix normalization, standard conformal-locus tangent count, `Z_k`
   orbifold order, commuting-branch dimension, and the `S^3` matrix-model
   denominator powers.
+- The same script verifies the non-abelian `3D` `N=2`
+  Chern-Simons-matter `D`/`sigma` elimination coefficients, the
+  convention-independent Yukawa magnitude ratio, and the `3D` `N=3`
+  adjoint-chiral elimination coefficient.
 
 ## Proof Obligations And Boundaries
 
@@ -91,6 +109,9 @@ Reviewed source spine:
 - Future depth passes should add line-operator lattices, one-form symmetries,
   explicit monopole charge formulae, and background Chern-Simons contact-term
   matching for ABJM dualities.
+- A future spinor-convention pass should choose one global `3D` Hermiticity
+  convention for all component Yukawa signs and then upgrade the current
+  coefficient-magnitude ledger to a signed formula.
 - The zero-dimensional conformal-locus result is intentionally restricted to
   the standard `N=6`, `SU(4)` ABJM datum.  Less-symmetric `N=2`
   Chern-Simons-matter marginal candidates require their own beta-function,

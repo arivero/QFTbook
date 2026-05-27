@@ -580,6 +580,9 @@ Current checks:
   superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
   BF normalization, standard ABJM conformal-locus tangent count,
   \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model denominator powers,
+  non-abelian `3D` \(\mathcal N=2\) Chern--Simons-matter auxiliary
+  elimination coefficients, `3D` \(\mathcal N=3\) adjoint-chiral
+  elimination coefficients,
   six-dimensional Yang-Mills coupling dimension, \(A_{N-1}\) \((2,0)\)
   anomaly/tensor-branch arithmetic, and the trace-delta
   \(g_5^2=4\pi^2R\) compactification normalization.
