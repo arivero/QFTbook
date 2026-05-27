@@ -1190,3 +1190,35 @@ Calculation checks added:
 - Strengthened `check_t_system_to_y_system_identity()` with exact rational
   checks of the full interior T-hook product relation, Hirota gauge
   covariance, and cancellation of the T-gauge labels in `Y_{a,s}`.
+
+## Continuation XXXIX: Planar Chiral-Primary Wick Normalization
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter12_planar_n4_spectral_problem_spin_chains.tex`
+- `calculation-checks/susy_n4_scft_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter12_planar_n4_spectral_problem_spin_chains.md`
+
+Source/standard motivation:
+
+- Chapter 12 displayed the normalized planar chiral-primary two-point function
+  and extremal three-point/OPE coefficient before entering the spin-chain
+  spectral problem.  Since this is the field-theoretic normalization that
+  anchors the single-trace Hilbert space, the color/cyclic Wick-counting
+  factor should be derived explicitly rather than recorded as a convention.
+
+Content added:
+
+- Added a proposition proving the planar normalization of
+  `mathcal Z_J=(2 pi)^J/(g_YM^J sqrt(J N^J)) tr(Z^J)`.
+- The proof counts the `J` cyclic planar contractions and `N^J` color loops in
+  the two-point function, then counts the `J J1 J2` planar embeddings and
+  `N^(J-1)` color loops in the extremal three-point pair-of-pants graph.
+- The finite-`N` warning remains explicit: trace relations and multi-trace
+  mixing are not part of the single-trace planar spin-chain approximation.
+
+Calculation checks added:
+
+- Strengthened `check_planar_chiral_primary_ope_coefficients()` so it checks
+  the unit two-point normalization, the raw extremal color/cyclic factor, and
+  the normalized coefficient squared exactly for several `J_1,J_2,N` samples.
