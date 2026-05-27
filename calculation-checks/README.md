@@ -111,6 +111,12 @@ Current checks:
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions
   to the Hofman--Maldacena inequalities, and the vanishing of the integrated
   \(t_2,t_4\) deformations.
+- `cosmological_particle_creation_checks.py`: exact convention checks for the
+  Volume XII cosmological-particle-creation chapter, including the
+  conformal-coupling cancellation in arbitrary dimension, de Sitter
+  \(\nu\)-parameter arithmetic, sudden-quench Bogoliubov normalization, the
+  Riccati equation for a power-law adiabatic frequency, and finite positive
+  type of detector-response Gram forms.
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter.

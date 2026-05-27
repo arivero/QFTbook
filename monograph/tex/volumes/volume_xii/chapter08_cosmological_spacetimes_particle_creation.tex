@@ -1,155 +1,636 @@
-\chapter{Cosmological Spacetimes And Particle Creation}
+\chapter{Cosmological Spacetimes and Particle Creation}
 \label{ch:curved-cosmological-spacetimes-particle-creation}
 
 \ConventionsLorentzian
 
-This chapter studies QFT on time-dependent globally hyperbolic backgrounds.
-Particle creation is formulated through the relation between two choices of
-positive-frequency decomposition or through detector response, with the state
-and asymptotic conditions stated explicitly.
+This chapter studies free scalar QFT on time-dependent globally hyperbolic
+backgrounds.  The central point is not that ``particles are ambiguous'' as a
+slogan, but the precise mathematical statement: a particle interpretation is
+a choice of positive-frequency subspace, equivalently a compatible complex
+structure on the real symplectic space of solutions.  When the geometry has
+static asymptotic regions, the in and out complex structures are selected by
+the asymptotic time translations and their mismatch is measured by
+Bogoliubov coefficients.  When no such asymptotic regions exist, one uses
+state properties such as the Hadamard condition, adiabatic ultraviolet
+behavior, and detector response.
 
-\section{Robertson-Walker Backgrounds}
+\section{Spatially Flat Robertson--Walker Metrics}
 
+Let \(M=I\times\mathbb R^{d-1}\), with \(d\geq2\), and let
+\[
+  g=-dt^2+a(t)^2d\mathbf x^2
+  =
+  a(\eta)^2(-d\eta^2+d\mathbf x^2),
+  \qquad
+  d\eta=\frac{dt}{a(t)}.
+  \label{eq:flrw-conformal-metric}
+\]
+Assume \(a(\eta)>0\) is smooth on the conformal-time interval under
+consideration.  We write
+\[
+  \mathcal H(\eta)=\frac{a'(\eta)}{a(\eta)}
+  \label{eq:conformal-hubble-definition}
+\]
+for the conformal Hubble function.  The scalar curvature of
+\eqref{eq:flrw-conformal-metric} is
+\[
+  R
+  =
+  (d-1)a^{-2}\bigl(2\mathcal H'+(d-2)\mathcal H^2\bigr).
+  \label{eq:flrw-scalar-curvature}
+\]
+
+Consider a real scalar field satisfying
+\[
+  (\Box_g-m^2-\xi R)\phi=0.
+  \label{eq:curved-scalar-klein-gordon}
+\]
+The Fourier convention is
+\[
+  \phi(\eta,\mathbf x)
+  =
+  \int\frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \phi_{\mathbf k}(\eta)e^{\ii\mathbf k\cdot\mathbf x},
+  \qquad
+  k=|\mathbf k|.
+  \label{eq:flrw-fourier-convention}
+\]
+
+\begin{proposition}[Robertson--Walker mode equation]
+\label{prop:flrw-mode-equation}
 Let
 \[
-  ds^2=-dt^2+a(t)^2 d\mathbf x^2
+  p=\frac{d-2}{2},
+  \qquad
+  \chi_{\mathbf k}(\eta)=a(\eta)^p\phi_{\mathbf k}(\eta).
+  \label{eq:flrw-rescaled-mode}
 \]
-be a spatially flat Robertson-Walker metric in \(d\) spacetime dimensions.
-In conformal time \(d\eta=dt/a(t)\),
-\[
-  ds^2=a(\eta)^2(-d\eta^2+d\mathbf x^2).
-\]
-For a real scalar field,
-\[
-  (\Box_g-m^2-\xi R)\phi=0 .
-\]
-After Fourier transformation and the rescaling
-\[
-  \chi_{\mathbf k}(\eta)=a(\eta)^{(d-2)/2}\phi_{\mathbf k}(\eta),
-\]
-the mode equation has the form
+Then \(\chi_{\mathbf k}\) obeys
 \[
   \chi_{\mathbf k}''+\Omega_k(\eta)^2\chi_{\mathbf k}=0,
+  \label{eq:flrw-chi-mode-equation}
 \]
-where \(\Omega_k(\eta)^2\) is determined by \(k^2\), \(m^2a^2\), curvature
-coupling, and derivatives of \(a\).
+where
+\[
+  \Omega_k^2
+  =
+  k^2+a^2(m^2+\xi R)-p\mathcal H'-p^2\mathcal H^2 .
+  \label{eq:flrw-effective-frequency}
+\]
+For a massless conformally coupled scalar, with
+\[
+  m=0,
+  \qquad
+  \xi=\xi_c=\frac{d-2}{4(d-1)},
+  \label{eq:conformal-coupling-d-dimensions}
+\]
+one has \(\Omega_k^2=k^2\).
+\end{proposition}
 
-\section{Symplectic Space And Complex Structures}
+\begin{proof}
+For the metric \eqref{eq:flrw-conformal-metric},
+\[
+  \Box_g\phi
+  =
+  a^{-2}\left[
+  -\partial_\eta^2\phi
+  -(d-2)\mathcal H\,\partial_\eta\phi
+  +\Delta_{\mathbf x}\phi
+  \right].
+\]
+Substituting \eqref{eq:flrw-fourier-convention} into
+\eqref{eq:curved-scalar-klein-gordon} gives
+\[
+  \phi_{\mathbf k}''
+  +(d-2)\mathcal H\phi_{\mathbf k}'
+  +
+  \bigl(k^2+a^2(m^2+\xi R)\bigr)\phi_{\mathbf k}=0.
+  \label{eq:flrw-unrescaled-mode-equation}
+\]
+Writing \(\phi_{\mathbf k}=a^{-p}\chi_{\mathbf k}\), with
+\(2p=d-2\), gives
+\[
+  \phi_{\mathbf k}'
+  =
+  a^{-p}(\chi_{\mathbf k}'-p\mathcal H\chi_{\mathbf k}),
+\]
+and
+\[
+  \phi_{\mathbf k}''
+  =
+  a^{-p}\left[
+  \chi_{\mathbf k}''
+  -2p\mathcal H\chi_{\mathbf k}'
+  +(p^2\mathcal H^2-p\mathcal H')\chi_{\mathbf k}
+  \right].
+\]
+The first-derivative terms cancel in
+\eqref{eq:flrw-unrescaled-mode-equation}, leaving
+\eqref{eq:flrw-chi-mode-equation} and
+\eqref{eq:flrw-effective-frequency}.  Finally,
+\[
+  a^2\xi_c R
+  =
+  \frac{d-2}{4}
+  \bigl(2\mathcal H'+(d-2)\mathcal H^2\bigr)
+  =
+  p\mathcal H'+p^2\mathcal H^2,
+\]
+so the curvature and rescaling terms cancel when \(m=0\) and
+\(\xi=\xi_c\).
+\end{proof}
 
-Let \(\mathcal S\) be the real vector space of smooth solutions with compact
-Cauchy data.  The conserved symplectic form is
+The cancellation in the conformally coupled massless case is an exact
+calculation, not an adiabatic statement.  It is the local manifestation of
+conformal covariance of the classical wave equation.
+
+\section{Symplectic Space and Complex Structures}
+
+Let \(\mathcal S\) be the real vector space of smooth solutions of
+\eqref{eq:curved-scalar-klein-gordon} with compact Cauchy data.  On any
+Cauchy surface \(\Sigma\), define
 \[
   \sigma(\phi_1,\phi_2)
   =
-  \int_{\Sigma} d\Sigma^\mu\,
-  (\phi_1\nabla_\mu\phi_2-\phi_2\nabla_\mu\phi_1).
+  \int_\Sigma d\Sigma^\mu\,
+  \bigl(
+  \phi_1\nabla_\mu\phi_2
+  -
+  \phi_2\nabla_\mu\phi_1
+  \bigr).
+  \label{eq:covariant-symplectic-form}
 \]
-A quasifree Fock representation is specified by a complex structure
+The current inside the integral is conserved whenever both fields satisfy
+the equation of motion, so \(\sigma\) is independent of \(\Sigma\).
+
+\begin{definition}[Compatible complex structure]
+\label{def:compatible-complex-structure-cosmology}
+A compatible complex structure on \((\mathcal S,\sigma)\) is a real linear
+map \(J:\mathcal S\to\mathcal S\) such that
 \[
-  J:\mathcal S\to\mathcal S,\qquad J^2=-1,\qquad
+  J^2=-1,
+  \qquad
   \sigma(Ju,Jv)=\sigma(u,v),
+  \qquad
+  \sigma(u,Ju)>0
+  \quad (u\neq0).
+  \label{eq:compatible-complex-structure}
 \]
-such that \(\sigma(u,Ju)\) is positive for nonzero \(u\).  The corresponding
-one-particle inner product is
+It defines a one-particle inner product
 \[
-  \langle u,v\rangle_J=\sigma(u,Jv)+\ii\sigma(u,v).
-\]
-
-\section{Bogoliubov Coefficients}
-
-Suppose the scale factor approaches static limits in the far past and far
-future so that positive-frequency modes \(u_k^{\mathrm{in}}\) and
-\(u_k^{\mathrm{out}}\) are defined.  They are related by
-\[
-  u_k^{\mathrm{in}}
+  \langle u,v\rangle_J
   =
-  \alpha_k u_k^{\mathrm{out}}
+  \sigma(u,Jv)+\ii\sigma(u,v).
+  \label{eq:one-particle-inner-product-J}
+\]
+Completing \((\mathcal S,\langle\cdot,\cdot\rangle_J)\) gives the
+one-particle Hilbert space \(\mathcal H_J\), and the symmetric Fock space
+\(\mathcal F_J=\operatorname{Sym}\mathcal H_J\) gives the associated
+quasifree representation.
+\end{definition}
+
+Equivalently, after complexification, \(J\) selects the \(+\ii\)-eigenspace as
+the positive-frequency subspace.  This is the precise datum behind a
+particle interpretation.  Different choices of \(J\) can be unitarily
+inequivalent in infinite volume.
+
+\begin{quotedtheorem}[Shale--Stinespring criterion, diagonal form]
+\label{qthm:shale-stinespring-diagonal}
+For two homogeneous quasifree representations whose positive-frequency modes
+are related mode-by-mode by Bogoliubov coefficients
+\[
+  u_{\mathbf k}^{(1)}
+  =
+  \alpha_k u_{\mathbf k}^{(2)}
   +
-  \beta_k \overline{u_k^{\mathrm{out}}},
+  \beta_k\overline{u_{-\mathbf k}^{(2)}},
+  \label{eq:diagonal-bogoliubov-relation}
 \]
-with
+the two Fock representations are unitarily equivalent precisely when
 \[
-  |\alpha_k|^2-|\beta_k|^2=1
+  \int d^{d-1}\mathbf k\,|\beta_k|^2<\infty
+  \label{eq:shale-stinespring-diagonal-condition}
 \]
-for each real scalar mode.  If the state is the in-vacuum, the expected
-number of out-particles in mode \(k\) is
-\[
-  N_k^{\mathrm{out}}=|\beta_k|^2 .
-\]
-This number is tied to the two asymptotic complex structures; it is not an
-additional local observable independent of that choice.
+with the corresponding finite-volume sum in a box.  In that case the
+Bogoliubov transformation is implemented by a unitary operator on Fock
+space.
+\end{quotedtheorem}
 
-\section{Adiabatic States}
+This theorem is an operator-algebraic fact about bosonic CCR
+representations.  It is also a useful diagnostic: a finite density
+\(|\beta_k|^2\) is not the same statement as unitary equivalence of the two
+global Fock representations.
 
-When no static asymptotic regions are available, adiabatic states provide a
-local high-momentum condition.  Choose functions \(W_k(\eta)\) and write
+\section{In and Out Modes}
+
+Assume now that the scale factor and curvature approach static limits as
+\(\eta\to\pm\infty\), so that
 \[
-  \chi_k(\eta)=\frac{1}{\sqrt{2W_k(\eta)}}
-  \exp\!\left(-\ii\int^\eta W_k(\eta')\,d\eta'\right).
+  \Omega_k(\eta)\longrightarrow
+  \omega_k^{\mathrm{in/out}}>0
+  \qquad
+  (\eta\to\mp\infty).
+  \label{eq:in-out-frequency-limits}
 \]
-Substitution into the mode equation gives
+The in and out positive-frequency modes are normalized by the Wronskian
+condition
+\[
+  \chi_k\overline{\chi_k'}-\chi_k'\overline{\chi_k}=\ii
+  \label{eq:mode-wronskian-normalization}
+\]
+and by
+\[
+  \chi_k^{\mathrm{in/out}}(\eta)
+  \sim
+  \frac{e^{-\ii\omega_k^{\mathrm{in/out}}\eta}}
+       {\sqrt{2\omega_k^{\mathrm{in/out}}}}
+  \qquad
+  \hbox{in the corresponding asymptotic region.}
+  \label{eq:in-out-positive-frequency-asymptotics}
+\]
+
+\begin{proposition}[Bogoliubov normalization and particle number]
+\label{prop:bogoliubov-particle-number}
+Let
+\[
+  \chi_k^{\mathrm{in}}
+  =
+  \alpha_k\chi_k^{\mathrm{out}}
+  +
+  \beta_k\overline{\chi_k^{\mathrm{out}}}.
+  \label{eq:cosmological-bogoliubov-expansion}
+\]
+Then
+\[
+  |\alpha_k|^2-|\beta_k|^2=1.
+  \label{eq:cosmological-bogoliubov-normalization}
+\]
+If \(\ket{0,\mathrm{in}}\) is the in-vacuum, the expected out-particle number
+in the \(\mathbf k\)-mode is
+\[
+  \langle0,\mathrm{in}|
+  a_{\mathbf k}^{\mathrm{out}\,*}a_{\mathbf k}^{\mathrm{out}}
+  |0,\mathrm{in}\rangle
+  =
+  |\beta_k|^2
+  \label{eq:cosmological-particle-number}
+\]
+in finite volume, with the usual delta-function density normalization in
+infinite volume.
+\end{proposition}
+
+\begin{proof}
+The Wronskian
+\[
+  W(f,g)=f g'-f'g
+\]
+is conserved for any two solutions of
+\(\chi''+\Omega_k^2\chi=0\).  The normalization
+\eqref{eq:mode-wronskian-normalization} gives
+\[
+  W(\chi_k^{\mathrm{out}},\overline{\chi_k^{\mathrm{out}}})=\ii,
+  \qquad
+  W(\overline{\chi_k^{\mathrm{out}}},\chi_k^{\mathrm{out}})=-\ii.
+  \]
+Substitution of \eqref{eq:cosmological-bogoliubov-expansion} therefore gives
+\[
+  \ii
+  =
+  W(\chi_k^{\mathrm{in}},\overline{\chi_k^{\mathrm{in}}})
+  =
+  \ii(|\alpha_k|^2-|\beta_k|^2),
+  \]
+which proves \eqref{eq:cosmological-bogoliubov-normalization}.
+
+The field mode admits both decompositions
+\[
+  \widehat\chi_{\mathbf k}
+  =
+  a_{\mathbf k}^{\mathrm{out}}\chi_k^{\mathrm{out}}
+  +
+  a_{-\mathbf k}^{\mathrm{out}\,*}\overline{\chi_k^{\mathrm{out}}}
+  =
+  a_{\mathbf k}^{\mathrm{in}}\chi_k^{\mathrm{in}}
+  +
+  a_{-\mathbf k}^{\mathrm{in}\,*}\overline{\chi_k^{\mathrm{in}}}.
+  \]
+Comparing coefficients gives
+\[
+  a_{\mathbf k}^{\mathrm{out}}
+  =
+  \overline{\alpha_k}\,a_{\mathbf k}^{\mathrm{in}}
+  +
+  \overline{\beta_k}\,a_{-\mathbf k}^{\mathrm{in}\,*},
+  \label{eq:out-annihilator-in-terms-of-in}
+\]
+with the phase convention induced by
+\eqref{eq:cosmological-bogoliubov-expansion}.  Since
+\(a_{\mathbf k}^{\mathrm{in}}\ket{0,\mathrm{in}}=0\) and
+\([a_{-\mathbf k}^{\mathrm{in}},a_{-\mathbf k}^{\mathrm{in}\,*}]=1\) in
+finite volume, \eqref{eq:cosmological-particle-number} follows.
+\end{proof}
+
+\begin{example}[Instantaneous frequency jump]
+\label{ex:instantaneous-frequency-jump}
+For a single oscillator mode whose frequency changes suddenly from
+\(\omega_i\) to \(\omega_f\), continuity of \(\chi\) and \(\chi'\) at the
+jump gives
+\[
+  \alpha
+  =
+  \frac12\left(
+  \sqrt{\frac{\omega_f}{\omega_i}}
+  +
+  \sqrt{\frac{\omega_i}{\omega_f}}
+  \right),
+  \qquad
+  \beta
+  =
+  \frac12\left(
+  \sqrt{\frac{\omega_f}{\omega_i}}
+  -
+  \sqrt{\frac{\omega_i}{\omega_f}}
+  \right),
+  \label{eq:sudden-quench-bogoliubov}
+\]
+and therefore
+\[
+  |\beta|^2
+  =
+  \frac{(\omega_f-\omega_i)^2}{4\omega_i\omega_f}.
+  \label{eq:sudden-quench-particle-number}
+\]
+The example is not a smooth cosmological spacetime; it is a normalization
+check and a limiting model for a transition fast compared with the mode
+period.
+\end{example}
+
+\section{Adiabatic States and Ultraviolet Control}
+
+When no static asymptotic regions exist, one can still impose a
+high-momentum condition on the positive-frequency modes.  The adiabatic
+ansatz is
+\[
+  \chi_k(\eta)
+  =
+  \frac{1}{\sqrt{2W_k(\eta)}}
+  \exp\left(-\ii\int^\eta W_k(\eta')\,d\eta'\right),
+  \qquad
+  W_k(\eta)>0.
+  \label{eq:adiabatic-mode-ansatz}
+\]
+
+\begin{proposition}[Riccati equation for the adiabatic frequency]
+\label{prop:adiabatic-frequency-riccati}
+The ansatz \eqref{eq:adiabatic-mode-ansatz} solves
+\eqref{eq:flrw-chi-mode-equation} exactly if and only if
 \[
   W_k^2
   =
   \Omega_k^2
   -\frac12\frac{W_k''}{W_k}
   +\frac34\left(\frac{W_k'}{W_k}\right)^2 .
+  \label{eq:adiabatic-riccati-equation}
 \]
-Iterating this equation defines adiabatic order.  The ultraviolet subtraction
-of the stress tensor in Robertson-Walker backgrounds is fixed by the same
-large-\(k\) expansion as the Hadamard point-splitting prescription.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  \chi=(2W)^{-1/2}e^{-\ii\Theta},
+  \qquad
+  \Theta'=W.
+  \]
+Then
+\[
+  \frac{\chi'}{\chi}
+  =
+  -\frac12\frac{W'}{W}-\ii W
+  \]
+and
+\[
+  \frac{\chi''}{\chi}
+  =
+  -\ii W'
+  -\frac12\left(\frac{W'}{W}\right)'
+  +
+  \left(
+  -\frac12\frac{W'}{W}-\ii W
+  \right)^2 .
+  \]
+The imaginary terms cancel, leaving
+\[
+  \frac{\chi''}{\chi}
+  =
+  -W^2
+  -\frac12\frac{W''}{W}
+  +\frac34\left(\frac{W'}{W}\right)^2 .
+  \]
+Thus \(\chi''+\Omega_k^2\chi=0\) is equivalent to
+\eqref{eq:adiabatic-riccati-equation}.
+\end{proof}
+
+The adiabatic expansion is obtained by assigning one derivative of
+\(a(\eta)\) one adiabatic order and solving
+\eqref{eq:adiabatic-riccati-equation} recursively.  To second adiabatic
+order, if \(\omega_k=\Omega_k\) denotes the zeroth-order positive frequency,
+\[
+  W_k
+  =
+  \omega_k
+  -
+  \frac{\omega_k''}{4\omega_k^2}
+  +
+  \frac{3(\omega_k')^2}{8\omega_k^3}
+  +O(\partial_\eta^4).
+  \label{eq:adiabatic-second-order-frequency}
+\]
+An adiabatic state of sufficiently high order is Hadamard for the scalar
+field on Robertson--Walker spacetime.  Conversely, the point-splitting
+subtraction for \(\langle T_{\mu\nu}\rangle\) has the same ultraviolet
+content as the fourth adiabatic order subtraction in four spacetime
+dimensions.  Equality here means equality of the local large-\(k\)
+singular terms; finite local curvature counterterms remain the
+renormalization freedom described in
+Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}.
 
 \section{Detector Response}
 
-An Unruh-DeWitt detector on a timelike worldline \(x(\tau)\) with energy gap
-\(E\) has transition probability, to leading order in the detector coupling,
+Let \(x(\tau)\) be a timelike worldline parametrized by proper time, and let
+\(\lambda\chi(\tau)\mu(\tau)\widehat\phi(x(\tau))\) be an Unruh--DeWitt
+coupling with compactly supported switching function \(\chi\).  For a
+detector energy gap \(E\), first-order perturbation theory gives
 \[
   P(E)
   =
+  \lambda^2
   \int d\tau\,d\tau'\,
   e^{-\ii E(\tau-\tau')}
   \chi(\tau)\chi(\tau')
   W(x(\tau),x(\tau')),
+  \label{eq:cosmological-detector-response}
 \]
-where \(\chi\) is a switching function and \(W\) is the two-point function of
-the state.  Detector response is a local operational probe of the state along
-the worldline and remains meaningful when a global particle decomposition is
-not selected.
+where \(W\) is the Wightman two-point function of the state.
 
-\section{de Sitter Example}
+\begin{proposition}[Positivity of the switched detector response]
+\label{prop:detector-response-positive-type}
+If \(W\) is a positive-type two-point function, then
+\[
+  P(E)\geq0
+  \]
+for every real \(E\) and every smooth compactly supported switching function
+\(\chi\).
+\end{proposition}
 
-In \(d\)-dimensional de Sitter space with conformal time \(\eta<0\),
+\begin{proof}
+Define the test function on spacetime
 \[
-  ds^2=\frac{1}{H^2\eta^2}(-d\eta^2+d\mathbf x^2).
-\]
-The Bunch-Davies quasifree state is selected by requiring that high-frequency
-modes behave as positive-frequency Minkowski modes as \(\eta\to-\infty\):
+  f_E(x)
+  =
+  \int d\tau\,
+  e^{-\ii E\tau}\chi(\tau)\delta(x,x(\tau))
+  \]
+in the distributional sense.  Smearing the two-point function gives
 \[
-  \chi_k(\eta)\sim \frac{e^{-\ii k\eta}}{\sqrt{2k}} .
+  P(E)/\lambda^2
+  =
+  W(\overline{f_E},f_E).
+  \]
+Positive type of the quasifree state is precisely the condition
+\(W(\overline f,f)\geq0\) for every test function \(f\).  The worldline
+smearing can be obtained as the limit of ordinary compactly supported
+spacetime test functions in a tubular neighborhood of the curve, so the same
+positivity applies.
+\end{proof}
+
+Detector response is therefore a local operational probe of a chosen state.
+It does not require a global out-Fock space.
+
+\section{The Bunch--Davies State in de Sitter Space}
+
+In the spatially flat patch of \(d\)-dimensional de Sitter space,
+\[
+  a(\eta)=\frac{-1}{H\eta},
+  \qquad
+  \eta<0,
+  \qquad
+  H>0,
+  \label{eq:de-sitter-flat-patch-scale-factor}
 \]
-For massive scalar fields this state is Hadamard and invariant under the
-connected de Sitter group.  Other de Sitter-invariant two-point functions
-must be checked against the Hadamard condition before they are accepted as
-states of the local QFT.
+and \(R=d(d-1)H^2\).  Equation
+\eqref{eq:flrw-effective-frequency} becomes
+\[
+  \Omega_k^2
+  =
+  k^2
+  -
+  \frac{\nu^2-\frac14}{\eta^2},
+  \qquad
+  \nu^2
+  =
+  \frac{(d-1)^2}{4}
+  -
+  \frac{m^2}{H^2}
+  -
+  \xi d(d-1).
+  \label{eq:de-sitter-nu-definition}
+\]
+
+\begin{proposition}[Bunch--Davies mode functions]
+\label{prop:bunch-davies-hankel-modes}
+The mode
+\[
+  \chi_k^{\mathrm{BD}}(\eta)
+  =
+  \sqrt{\frac{-\pi\eta}{4}}\,
+  \exp\!\left[\ii\pi\left(\frac{\nu}{2}+\frac14\right)\right]
+  H_\nu^{(1)}(-k\eta)
+  \label{eq:bunch-davies-hankel-mode}
+\]
+solves the de Sitter mode equation and obeys
+\[
+  \chi_k^{\mathrm{BD}}(\eta)
+  \sim
+  \frac{e^{-\ii k\eta}}{\sqrt{2k}}
+  \qquad
+  \eta\to-\infty .
+  \label{eq:bunch-davies-past-asymptotic}
+\]
+It is normalized by
+\[
+  \chi_k^{\mathrm{BD}}\overline{(\chi_k^{\mathrm{BD}})'}
+  -
+  (\chi_k^{\mathrm{BD}})'\overline{\chi_k^{\mathrm{BD}}}
+  =
+  \ii.
+  \label{eq:bunch-davies-wronskian}
+\]
+\end{proposition}
+
+\begin{proof}
+With \(z=-k\eta>0\), equation
+\[
+  \chi_k''+
+  \left(k^2-\frac{\nu^2-\frac14}{\eta^2}\right)\chi_k=0
+  \]
+is transformed by \(\chi_k(\eta)=(-\eta)^{1/2}f(z)\) into Bessel's equation
+for \(f\) of order \(\nu\).  Thus \(H_\nu^{(1)}(z)\) gives a solution.
+The large-\(z\) asymptotic formula
+\[
+  H_\nu^{(1)}(z)
+  \sim
+  \sqrt{\frac{2}{\pi z}}\,
+  \exp\left[\ii\left(z-\frac{\pi\nu}{2}-\frac{\pi}{4}\right)\right]
+  \]
+turns \eqref{eq:bunch-davies-hankel-mode} into
+\eqref{eq:bunch-davies-past-asymptotic}.  The Wronskian identity
+\[
+  H_\nu^{(1)}(z)\partial_zH_\nu^{(2)}(z)
+  -
+  \partial_zH_\nu^{(1)}(z)H_\nu^{(2)}(z)
+  =
+  -\frac{4\ii}{\pi z}
+  \]
+then gives \eqref{eq:bunch-davies-wronskian}, with the additional minus sign
+from \(z=-k\eta\).
+\end{proof}
+
+For \(m=0\) and \(\xi=\xi_c\), \(\nu=1/2\) and the Bunch--Davies mode reduces
+to the conformal Minkowski mode.  For a massless minimally coupled scalar in
+\(d=4\), \(\nu=3/2\); the zero-mode and infrared behavior require separate
+care and cannot be suppressed by the local high-frequency definition alone.
+
+The Bunch--Davies quasifree state is Hadamard and invariant under the
+connected de Sitter group for the standard massive range.  Other
+de Sitter-invariant two-point functions must be tested against the Hadamard
+short-distance condition; de Sitter invariance alone is not a state-selection
+principle.
 
 \section{Backreaction Boundary}
 
 The expectation value \(\langle T_{\mu\nu}\rangle\) in a time-dependent state
 is defined by the renormalized stress-tensor prescription of
-Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}.  Semiclassical
-Einstein equations,
+Chapter~\ref{ch:point-splitting-stress-tensor-renormalization}.  The
+semiclassical Einstein equation
 \[
   G_{\mu\nu}+\Lambda g_{\mu\nu}
   =
-  8\pi G\,\langle T_{\mu\nu}\rangle_{\mathrm{ren}},
+  8\pi G\,\langle T_{\mu\nu}\rangle_{\mathrm{ren}}
+  \label{eq:semiclassical-einstein-cosmology}
 \]
-are equations for a classical metric coupled to a quantum state.  Solving
-them requires state selection, renormalization constants, and control of the
-validity of the fixed-background QFT approximation.
+is an equation for a classical metric and a quantum state.  The right-hand
+side depends on the state, on the finite curvature counterterms, and on the
+renormalization convention for the cosmological constant and Newton
+constant.  Particle production by itself is not a closed backreaction
+equation; it is one diagnostic extracted from the state when a particle
+decomposition has been selected.
 
 \begin{openproblem}[Interacting cosmological QFT]
 \label{op:interacting-cosmological-qft}
 Construct interacting QFT on cosmological spacetimes with Hadamard states,
-renormalized stress tensor, detector response, particle-production diagnostics
-where asymptotic regions exist, and controlled semiclassical backreaction.
+renormalized stress tensor, detector response, particle-production
+diagnostics where asymptotic regions exist, and controlled semiclassical
+backreaction.  The construction should distinguish the local definition of
+fields and states from the additional asymptotic structure needed to define
+particles.
 \end{openproblem}
