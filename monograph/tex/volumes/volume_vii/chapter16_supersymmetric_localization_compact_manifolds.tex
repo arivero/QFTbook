@@ -84,37 +84,106 @@ with orientation and square-root branches inherited from the integration
 cycle.
 \end{definition}
 
-Assume, in addition to Proposition~\ref{prop:susy-localization-deformation-identity},
-that \(\operatorname{Re}(QV)\ge0\) on the bosonic body of \(C\), that \(F\) is
-compact and clean, and that the large-\(t\) integral is dominated by a tubular
-neighborhood of \(F\).  In local coordinates \(y\) along \(F\), bosonic normal
-coordinates \(x^i\), and fermionic normal coordinates \((\psi^a,\chi^r)\), the
-quadratic part may be written after choosing splittings as
+Assume, in addition to
+Proposition~\ref{prop:susy-localization-deformation-identity}, that
+\(\operatorname{Re}(QV)\ge0\) on the bosonic body of \(C\), that \(F\) is
+compact and clean, and that the large-\(t\) integral is dominated by a
+tubular neighborhood of \(F\).  In local coordinates \(y\) along \(F\),
+bosonic normal coordinates \(x^i\), and fermionic normal coordinates
+\(\vartheta^A\), the even quadratic normal model has the form
 \[
   (QV)_{\rm quad}
   =
   \frac12 x^i A_{ij}(y)x^j
-  +\frac12\psi^a B_{ab}(y)\psi^b
-  +\chi^r C_{ri}(y)x^i .
+  -
+  \frac12\vartheta^A\mathsf F_{AB}(y)\vartheta^B .
+  \label{eq:finite-normal-quadratic-model}
 \]
-Here \(A\) is symmetric on the declared real normal cycle, \(B\) is
-antisymmetric, and \(C\) records the mixed fermion-boson differential in the
-normal \(Q\)-complex.  With the conventional finite-dimensional Gaussian
-normalization absorbed into the definition of \(\mu\), the local normal factor
-is
+Here \(A\) is symmetric and positive on the declared real normal cycle, and
+\(\mathsf F\) is antisymmetric.  The differential in the normal
+\(Q\)-complex is encoded in the fermion-fermion matrix \(\mathsf F\), not in
+an odd-even term: an ordinary even quadratic action cannot contain a term
+linear in one fermionic normal coordinate and one bosonic normal coordinate
+with an even numerical coefficient.  If, after choosing splittings,
+\[
+  \mathsf F=
+  \begin{pmatrix}
+    0&D\\
+    -D^T&0
+  \end{pmatrix},
+  \label{eq:normal-complex-fermion-block}
+\]
+then the corresponding Pfaffian is \(\pm\det D\), with the sign fixed by the
+orientation of the odd variables.  With the conventional
+finite-dimensional Gaussian normalization absorbed into \(\mu\), the local
+normal factor is therefore
 \[
   Z_{\rm normal}(y)
   =
-  \frac{\operatorname{Pf}B(y)\,\det C(y)}
+  \frac{\operatorname{Pf}\mathsf F(y)}
        {\sqrt{\det A(y)}} .
   \label{eq:finite-normal-localization-factor}
 \]
-Unpaired zero modes are not included in this determinant: they are coordinates
-on \(F\), insertions to be saturated, or obstructions showing that the proposed
-localized observable vanishes.  Thus a determinant formula without a zero-mode
-statement is not a localization theorem.  Equation
-\eqref{eq:finite-normal-localization-factor} is the finite model for the
-one-loop determinants in the compact-space QFT examples below.
+
+\begin{proposition}[Finite normal Gaussian factor]
+\label{prop:finite-normal-gaussian-localization-factor}
+Let \(A\) be an invertible real symmetric matrix whose real part is positive
+on the chosen bosonic normal cycle, and let \(\mathsf F\) be an invertible
+antisymmetric \(2m\times2m\) matrix.  With the Berezin orientation
+\(d\vartheta_{2m}\cdots d\vartheta_1\),
+\[
+  \int d^{2m}\vartheta\,
+  \exp\!\left(\frac12\vartheta^A\mathsf F_{AB}\vartheta^B\right)
+  =
+  \operatorname{Pf}\mathsf F .
+  \label{eq:finite-normal-pfaffian-integral}
+\]
+After absorbing the ordinary factor \((2\pi)^{n/2}\) into the local
+normalization of the bosonic measure,
+\[
+  \int dx\,d\vartheta\,
+  \exp\!\left(
+    -\frac12x^iA_{ij}x^j
+    +\frac12\vartheta^A\mathsf F_{AB}\vartheta^B
+  \right)
+  =
+  \frac{\operatorname{Pf}\mathsf F}{\sqrt{\det A}} .
+  \label{eq:finite-normal-gaussian-integral}
+\]
+If \(A\) or \(\mathsf F\) has a zero mode, that direction must be split off
+and integrated on the fixed locus or saturated by insertions; it is not part
+of the one-loop determinant.
+\end{proposition}
+
+\begin{proof}
+The Berezin integral extracts the coefficient of the ordered monomial
+\(\vartheta^1\cdots\vartheta^{2m}\).  By definition of the Pfaffian,
+this coefficient in
+\(\exp(\frac12\vartheta^A\mathsf F_{AB}\vartheta^B)\) is
+\(\operatorname{Pf}\mathsf F\), proving
+\eqref{eq:finite-normal-pfaffian-integral}.  The bosonic Gaussian on the
+declared cycle is
+\[
+  \int_{\mathbb R^n}d^nx\,
+  \exp\!\left(-\frac12x^iA_{ij}x^j\right)
+  =
+  \frac{(2\pi)^{n/2}}{\sqrt{\det A}}
+\]
+after choosing the square-root branch determined by the cycle.  Multiplying
+the bosonic and fermionic factors and absorbing \((2\pi)^{n/2}\) into the
+local measure gives \eqref{eq:finite-normal-gaussian-integral}.
+
+If a bosonic zero mode is present, the Gaussian integral diverges or becomes
+a distribution along that direction; if a fermionic zero mode is present,
+the top Berezin coefficient is absent unless an insertion supplies the
+missing odd variable.  Thus zero modes are coordinates on \(F\), insertions
+to be saturated, or obstructions showing that the proposed localized
+observable vanishes.  A determinant formula without this zero-mode statement
+is not a localization theorem.
+\end{proof}
+
+Equation~\eqref{eq:finite-normal-localization-factor} is the finite model for
+the one-loop determinants in the compact-space QFT examples below.
 
 \section{QFT Localization Datum}
 

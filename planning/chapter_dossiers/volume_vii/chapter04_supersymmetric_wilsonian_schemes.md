@@ -22,6 +22,9 @@
 - BV pushforward of half-densities and preservation of the quantum master
   equation by BV Stokes.
 - Composable BV Wilsonian tower and semigroup property of BV pushforward.
+- Finite circle-Darboux model verifying BV Stokes, QME preservation by
+  pushforward, and product-cycle semigroup behavior in an explicit
+  Fourier/odd-variable algebra.
 - \(F\)-term and \(D\)-term local coordinates.
 - Holomorphic Wilsonian scheme hypothesis.
 - Selection rule for Wilsonian \(F\)-terms.
@@ -39,6 +42,7 @@
 | \(\mathcal L_{\Lambda\Lambda'}\) | Lagrangian integration cycle for eliminated variables |
 | \(\mathcal R_{\Lambda\Lambda'}\) | Wilsonian coarse-graining map |
 | \(\tau\) | holomorphic gauge coupling coordinate |
+| \(P\) | finite model pushforward, normalized circle integral with \(\xi=0\) |
 
 ## Claim Ledger
 
@@ -52,15 +56,25 @@
 4. The Wilsonian semigroup law follows from a composable BV tower: compatible
    odd symplectic splittings, product Lagrangian cycle, product Berezinian
    convention, and a valid ordinary or oscillatory Fubini theorem.
-5. Holomorphic exact-dynamics claims require a declared holomorphic Wilsonian
+5. The finite circle-Darboux model checks the algebraic content of the BV
+   pushforward statement: \(P\Delta_K=0\), \(P\Delta=\Delta_BP\), and
+   iterated product-cycle pushforwards commute.
+6. Holomorphic exact-dynamics claims require a declared holomorphic Wilsonian
    scheme and anomaly ledger.
-6. Gauge-theory Wilsonian schemes must be formulated through BV finite-cutoff
+7. Gauge-theory Wilsonian schemes must be formulated through BV finite-cutoff
    data or finite lattice gauge data before holomorphic coordinates,
    moduli-space statements, or exact-dynamics arguments are used.
-7. In a gauge-fixed supersymmetric Wilsonian path integral, gauge consistency
+8. In a gauge-fixed supersymmetric Wilsonian path integral, gauge consistency
    is the quantum BV master equation before restriction to the gauge-fixing
    Lagrangian submanifold; the gauge-fixed Ward identities are obtained from
    this equation by BV Stokes.
+
+## Calculation Checks
+
+- `calculation-checks/susy_wilsonian_bv_checks.py` verifies the finite
+  circle-Darboux model: fiber BV Stokes, the BV pushforward chain-map
+  identity, preservation of a finite QME-closed half-density, and semigroup
+  behavior for two product-cycle fiber integrations.
 
 ## Figures
 

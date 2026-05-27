@@ -9,9 +9,9 @@ chapter treats them as field-theoretic data, not as slogans imported from a
 dual description.  The first part fixes the \(3D\) \(\mathcal N=2\)
 Chern--Simons--matter conventions used by the localization chapter.  The
 second part gives the Aharony--Bergman--Jafferis--Maldacena theory as a
-worked example with gauge group, levels, matter, superpotential, moduli
-space, monopole enhancement boundary, and \(S^3\) localization matrix model
-all stated in the same normalization.
+worked example with gauge group, levels, matter, superpotential, conformal
+locus, moduli space, monopole enhancement boundary, and \(S^3\)
+localization matrix model all stated in the same normalization.
 
 \section{Three-Dimensional Supersymmetry}
 
@@ -272,6 +272,119 @@ so the gauge-covariant kinetic terms and the quartic superpotential are
 carried into their complex conjugate form with the same real action.
 \end{proof}
 
+\section{ABJM Conformal Locus And Marginal-Coupling Ledger}
+\label{sec:abjm-conformal-locus-ledger}
+
+The ABJM family is often described as if a Chern--Simons level were an
+ordinary coupling.  For conformal-manifold questions this is the wrong
+category: the level is part of the topological gauge datum and is quantized
+by large gauge transformations.  We first state the local notion being used.
+
+\begin{definition}[Local conformal manifold in a fixed QFT datum]
+\label{def:fixed-datum-conformal-manifold}
+Fix a \(d\)-dimensional continuum QFT datum \(\mathfrak D\), including the
+global form of the gauge group, line-operator lattice, spin and framing
+choices, background contact-term scheme, and the global or supersymmetry
+algebra required to be preserved.  A local conformal manifold through a
+conformal theory \(\mathcal T_0\) with datum \(\mathfrak D\) is a germ of a
+smooth parameter space \(U\) and a family \(\{\mathcal T_u\}_{u\in U}\) of
+conformal QFTs with the same datum such that tangent vectors at \(0\) are
+represented by integrated scalar primary deformations
+\[
+  \delta S
+  =
+  \sum_a \delta u^a\int d^d x\,\mathcal O_a(x),
+  \qquad
+  \Delta(\mathcal O_a)=d,
+\]
+modulo redundant deformations coming from total derivatives, symmetry
+variations, and field-coordinate changes.  A marginal Lagrangian parameter
+is exactly marginal only after it defines such a tangent vector with all beta
+functions and background contact terms remaining inside \(\mathfrak D\).
+\end{definition}
+
+\begin{hypothesis}[Standard ABJM conformal class]
+\label{hyp:standard-abjm-conformal-class}
+In this section ``standard ABJM'' means the local theory with gauge datum
+\[
+  U(N)_k\times U(N)_{-k},\qquad k\in\mathbb Z\setminus\{0\},
+\]
+the four bifundamental chiral multiplets of
+Section~\ref{sec:abjm-gauge-theory-datum}, zero real masses, zero FI
+coordinates, the standard line-operator lattice used in the \(S^3\)
+localization formula, and the interacting \(\mathcal N=6\) superconformal
+symmetry with \(SU(4)\) flavor symmetry.  Within this class the quartic
+superpotential tensor is the one in \eqref{eq:abjm-superpotential}; closure
+of the enhanced supersymmetry fixes its coefficient to
+\[
+  h_{\rm ABJM}=\frac{2\pi}{k}
+\]
+in the component convention of this chapter.  Deformations that keep only
+\(\mathcal N=2\), change the flavor symmetry, change the line lattice, or
+alter background contact terms are different QFT data and are not counted as
+tangent vectors to this standard ABJM conformal class.
+\end{hypothesis}
+
+\begin{proposition}[Standard ABJM has no continuous conformal coupling]
+\label{prop:standard-abjm-zero-dimensional-conformal-locus}
+Assume Hypothesis~\ref{hyp:standard-abjm-conformal-class}.  At fixed
+\((N,k)\) the local conformal-manifold germ of the standard ABJM datum is
+zero-dimensional.  The standard ABJM theories form a discrete family indexed
+by the integer level \(k\), with \(k\) and \(-k\) related when one includes
+orientation reversal and exchange of the two gauge factors as in
+Proposition~\ref{prop:abjm-parity-opposite-levels}.
+\end{proposition}
+
+\begin{proof}
+The Chern--Simons levels are not coordinates on a real or complex manifold.
+Gauge invariance of \(\exp(\ii S_{\rm CS})\) under large gauge
+transformations restricts the levels to an integral lattice.  Hence an
+infinitesimal deformation preserving the same gauge datum has
+\[
+  \delta k=0 .
+\]
+The opposite-level condition in the standard ABJM datum also fixes the
+second level to be \(-k\), so there is no independent continuous level
+direction.
+
+The quartic superpotential is power-counting marginal in an
+\(\mathcal N=2\) description: the chiral fields have protected
+\(\Delta=R=\frac12\) at the ABJM point, so the quartic monomial has
+dimension \(2\), and the \(d^2\theta\) measure has dimension \(1\) in three
+dimensions.  Power-counting marginality, however, is only a necessary test.
+Inside the standard \(\mathcal N=6\) ABJM class the same coefficient is
+fixed by the supersymmetry-completion condition
+\[
+  h=h_{\rm ABJM}=\frac{2\pi}{k}.
+\]
+Therefore
+\[
+  \delta h=-\frac{2\pi}{k^2}\,\delta k=0
+\]
+for a tangent vector that preserves the standard ABJM datum.
+
+The remaining familiar Lagrangian coordinates do not give exactly marginal
+directions in this class.  Real masses and FI coordinates have engineering
+dimension \(1\) in three dimensions and break part of the conformal or flavor
+datum.  A Yang--Mills kinetic term, if introduced as a regulator or UV
+completion coordinate, carries a dimensionful coupling
+\[
+  [g_{\rm YM}^2]=1
+\]
+and is not a scalar-primary deformation of dimension \(3\) of the conformal
+theory.  Background Chern--Simons contact terms are quantized scheme data,
+not continuous local-operator deformations.  Thus every allowed tangent
+vector in the fixed standard ABJM datum is redundant or zero.
+\end{proof}
+
+This proposition is deliberately narrower than a classification theorem for
+all three-dimensional \(\mathcal N=2\) Chern--Simons--matter theories with
+the same gauge group.  If the \(SU(4)\) symmetry, the \(\mathcal N=6\)
+completion, or the standard line and contact-term data are relaxed, quartic
+marginal candidates must be analyzed by their own beta functions, current
+moment maps, and monopole-sector constraints.  They are not continuous
+coordinates on the standard ABJM conformal locus just defined.
+
 \section{ABJM Classical Moduli Space}
 \label{sec:abjm-classical-moduli-space}
 
@@ -287,8 +400,8 @@ For generic diagonal eigenvalues the residual gauge group is the permutation
 group \(S_N\), together with abelian gauge transformations acting on each
 eigenvalue.
 
-\begin{proposition}[One-brane quotient]
-\label{prop:abjm-one-brane-quotient}
+\begin{proposition}[Rank-one abelian quotient]
+\label{prop:abjm-rank-one-abelian-quotient}
 For \(N=1\), set \(C=(C_1,\ldots,C_4)\).  The classical ABJM branch is
 \[
   \mathcal M_{1,k}^{\rm cl}=\C^4/\mathbb Z_k,
@@ -343,9 +456,10 @@ operators and requires data beyond the polynomial superpotential.
 
 The theorem is quoted here because the full statement identifies quantum
 operator sectors, monopole operators, and the global form of the gauge group.
-The finite quotient in Proposition~\ref{prop:abjm-one-brane-quotient} is the
-calculation that fixes the \(k\)-dependent orbifold convention used later in
-localization and protected-sector comparisons.
+The finite quotient in
+Proposition~\ref{prop:abjm-rank-one-abelian-quotient} is the intrinsic
+rank-one gauge-theory calculation that fixes the \(k\)-dependent orbifold
+convention used later in localization and protected-sector comparisons.
 
 \section{ABJM Localization Specialization}
 \label{sec:abjm-localization-specialization}
@@ -414,6 +528,8 @@ For ABJM this list becomes
 \begin{gathered}
   U(N)_k\times U(N)_{-k},\quad
   A_a,B_{\dot a},\quad W_{\rm ABJM},\\
+  \text{the discrete level } k \text{ and the zero-dimensional standard
+  conformal locus},\\
   \text{the chosen global form and line-operator lattice},\\
   \text{the monopole sectors implementing the }SU(4)\text{ symmetry and
   possible } \mathcal N=8 \text{ enhancement},\\

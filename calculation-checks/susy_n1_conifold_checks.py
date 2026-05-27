@@ -72,6 +72,36 @@ def check_kw_beta_rank_count():
     assert_equal(1 + 2 * gamma_symmetric, 0, "KW exchange-symmetric fixed defect")
 
 
+def check_kw_exact_marginal_dimension_count():
+    for n in range(2, 13):
+        # The beta map factors through one common defect E:
+        # (B_1, B_2, B_h) = (N E, N E, E).  The coefficient vector has
+        # rank one for N != 0, so the zero set is one equation in the
+        # three-source chart (tau_1, tau_2, h), provided dE is nonzero.
+        coefficient_vector = (n, n, 1)
+        nonzero_entries = sum(1 for entry in coefficient_vector if entry != 0)
+        coefficient_rank = 1 if nonzero_entries else 0
+        source_dimension = 3
+        local_conformal_dimension = source_dimension - coefficient_rank
+
+        assert_equal(coefficient_rank, 1, "KW common beta-map rank")
+        assert_equal(local_conformal_dimension, 2, "KW exact marginal dimension")
+
+        # Two useful local coordinates may be taken as tangent directions
+        # annihilating dE.  If dE=(1,1,1) in a normalized linear chart, these
+        # two independent vectors span its kernel.
+        tangent_one = (1, -1, 0)
+        tangent_two = (1, 0, -1)
+        normal = (1, 1, 1)
+        dot_one = sum(a * b for a, b in zip(tangent_one, normal))
+        dot_two = sum(a * b for a, b in zip(tangent_two, normal))
+        determinant_minor = tangent_one[0] * tangent_two[1] - tangent_one[1] * tangent_two[0]
+
+        assert_equal(dot_one, 0, "KW first tangent lies in beta kernel")
+        assert_equal(dot_two, 0, "KW second tangent lies in beta kernel")
+        assert_equal(determinant_minor, 1, "KW tangent directions independent")
+
+
 def check_kw_a_maximization_and_central_charges():
     # The trial baryonic mixing parameter is s.  The exact trace is
     # Tr R_s^3 = 3 N^2/2 - 2 - 6 N^2 s^2, so the quadratic coefficient in
@@ -217,6 +247,7 @@ def check_endpoint_discrete_r_symmetry():
 def main():
     check_kw_r_anomaly_and_nsvz()
     check_kw_beta_rank_count()
+    check_kw_exact_marginal_dimension_count()
     check_kw_a_maximization_and_central_charges()
     check_conifold_rank_one_relation()
     check_ks_nsvz_and_rank_steps()

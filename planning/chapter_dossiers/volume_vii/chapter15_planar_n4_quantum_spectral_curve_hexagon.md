@@ -164,6 +164,10 @@ structure and the pair-of-pants-to-hexagons cut.
 - Stringbook source:
   `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, around
   the `Pmu` asymptotic conditions and weak-coupling QSC block.
+- Scope boundary: the strong-coupling cusp and Konishi comparisons are
+  recorded as QSC/integrability asymptotics on the QFT side.  String-theoretic
+  calculations may motivate or check them historically, but they are not
+  inputs to the chapter's arguments.
 - Downloaded local study copy:
   `references/planar_n4_integrability/qsc/1305.1939_src/PRL_paper.tex`.
   It was used to check the original compact `Pmu` weak-coupling argument and

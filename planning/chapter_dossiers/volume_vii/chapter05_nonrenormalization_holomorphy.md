@@ -12,6 +12,9 @@
 
 - Chiral \(F\)-term coordinate and full-superspace \(D\)-term coordinate.
 - Perturbative Wilsonian superpotential argument.
+- Tree-level elimination of a massive chiral block, stated as a holomorphic
+  implicit-function theorem application and worked out for a quadratic
+  heavy-field block.
 - Spurion symmetry selection rule.
 - Holomorphic gauge coupling and one-loop Wilsonian statement.
 - Konishi-type rescaling anomaly as a regulated super-Berezinian coordinate
@@ -20,6 +23,9 @@
 - NSVZ coordinate formula from the holomorphic coupling, rescaling anomaly,
   canonical normalization, matter Konishi Jacobians, and the gauge-multiplet
   BV-complex rescaling Jacobian.
+- NSVZ beta function as a coordinate identity obtained by differentiating the
+  holomorphic-canonical gauge-coordinate relation in the stated
+  anomalous-dimension convention.
 - Boundary between perturbative Wilsonian arguments and nonperturbative
   chiral dynamics.
 
@@ -30,6 +36,9 @@
 | \(\Phi^i\) | chiral superfields |
 | \(t^A\) | chiral coupling coordinates |
 | \(I_F,I_D\) | chiral and full-superspace local coordinates |
+| \(X^a,\Phi^i\) | heavy and light chiral coordinates in a tree-level elimination patch |
+| \(X_*^a(\Phi;t)\) | holomorphic solution of the heavy chiral equation \(\partial_{X^a}W=0\) |
+| \(H_{ab}\) | heavy-block Hessian \(\partial_{X^a}\partial_{X^b}W\) |
 | \(\tau\) | holomorphic gauge coupling |
 | \(b_0\) | one-loop holomorphic gauge coefficient |
 | \(T(R)\) | representation index in the monograph trace convention |
@@ -41,7 +50,8 @@
 1. Perturbative Wilsonian loops generate full-superspace terms unless an
    infrared singularity is present; Wilsonian cutoff excludes that singularity.
 2. Tree-level elimination of massive chiral fields stays in the chiral
-   coordinate class.
+   coordinate class because the heavy chiral equation with invertible Hessian
+   has a holomorphic solution by the implicit-function theorem.
 3. Holomorphic gauge coupling is one-loop exact as a Wilsonian coordinate.
 4. The Konishi rescaling anomaly is a local Jacobian statement inside a
    declared regulator; its chiral representative is fixed by gauge invariance,
@@ -53,7 +63,17 @@
    \(-T(R_i)\log Z_i\), the adjoint gauge-complex shift
    \(C_2(G)\log g^2\), and a finite \(\mu\)-independent scheme constant.
 7. The NSVZ beta-function formula is a coordinate identity in the declared
-   canonical coupling and anomalous-dimension convention.
+   canonical coupling and anomalous-dimension convention; finite canonical
+   reparametrizations change the displayed denominator by reparametrizing the
+   beta-vector field.
+
+## Calculation Checks
+
+- `calculation-checks/susy_holomorphy_nsvz_checks.py` verifies the quadratic
+  chiral-elimination formula, the derivative identity after eliminating a
+  heavy chiral coordinate, Konishi and vector-multiplet coordinate shifts,
+  and the rational algebra that differentiates the holomorphic-canonical
+  coordinate relation into the NSVZ beta function.
 
 ## Figures
 

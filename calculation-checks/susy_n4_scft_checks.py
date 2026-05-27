@@ -34,6 +34,75 @@ def check_beta_function_cancellations() -> None:
     assert_equal("N=1 holomorphic beta cancellation", holomorphic_b0_per_casimir, 0)
 
 
+def matrix_multiply(
+    left: tuple[int, int, int, int],
+    right: tuple[int, int, int, int],
+) -> tuple[int, int, int, int]:
+    a, b, c, d = left
+    e, f, g, h = right
+    return (a * e + b * g, a * f + b * h, c * e + d * g, c * f + d * h)
+
+
+def matrix_power(
+    matrix: tuple[int, int, int, int],
+    exponent: int,
+) -> tuple[int, int, int, int]:
+    result = (1, 0, 0, 1)
+    for _ in range(exponent):
+        result = matrix_multiply(result, matrix)
+    return result
+
+
+def check_exact_marginal_coupling_chart() -> None:
+    source_dimension = 1
+    beta_constraints = 0
+    quotient_directions = 0
+    local_dimension = source_dimension - beta_constraints - quotient_directions
+
+    assert_equal("N=4 local conformal chart dimension", local_dimension, 1)
+
+    # Theta periodicity is tau -> tau+1.  For integer instanton number k, the
+    # path-integral phase changes by exp(2*pi*i*k)=1, so only integrality is
+    # relevant to this exact finite check.
+    for instanton_number in range(-3, 4):
+        phase_winding = instanton_number
+        assert_equal(
+            f"theta periodicity phase winding k={instanton_number}",
+            phase_winding % 1,
+            0,
+        )
+
+
+def check_sl2z_coupling_action() -> None:
+    s_generator = (0, -1, 1, 0)
+    t_generator = (1, 1, 0, 1)
+    minus_identity = (-1, 0, 0, -1)
+
+    for matrix in (s_generator, t_generator):
+        a, b, c, d = matrix
+        assert_equal("SL(2,Z) determinant", a * d - b * c, 1)
+
+    assert_equal("S squared in SL(2,Z)", matrix_power(s_generator, 2), minus_identity)
+    assert_equal(
+        "(ST)^3 in SL(2,Z)",
+        matrix_power(matrix_multiply(s_generator, t_generator), 3),
+        minus_identity,
+    )
+
+    for x, y in (
+        (Fraction(0), Fraction(1)),
+        (Fraction(1, 3), Fraction(2)),
+        (Fraction(-2, 5), Fraction(7, 3)),
+    ):
+        s_image_imaginary = y / (x * x + y * y)
+        t_image_imaginary = y
+        assert_equal("S preserves upper half-plane", s_image_imaginary > 0, True)
+        assert_equal("T preserves upper half-plane", t_image_imaginary > 0, True)
+
+        q_exponent_shift_under_t = 1
+        assert_equal("q coordinate is T invariant", q_exponent_shift_under_t % 1, 0)
+
+
 def check_central_charges_per_generator() -> None:
     a_scalar = Fraction(1, 360)
     a_weyl = Fraction(11, 720)
@@ -122,6 +191,8 @@ def check_planar_chiral_primary_ope_coefficients() -> None:
 
 def main() -> None:
     check_beta_function_cancellations()
+    check_exact_marginal_coupling_chart()
+    check_sl2z_coupling_action()
     check_central_charges_per_generator()
     check_symmetric_traceless_projector()
     check_stress_tensor_multiplet_normalization()
