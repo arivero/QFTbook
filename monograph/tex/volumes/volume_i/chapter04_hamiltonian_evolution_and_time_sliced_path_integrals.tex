@@ -5,6 +5,8 @@
 
 \section{Classical Lagrangian and Hamiltonian Data}
 
+\begin{definition}[Regular classical Lagrangian datum]
+\label{def:regular-classical-lagrangian-datum}
 Let \(Q\) be a smooth \(d\)-dimensional configuration manifold.  Local
 coordinates on \(Q\) are denoted by \(q^a\), \(a=1,\ldots,d\).  A tangent
 vector is written \((q,\dot q)\in TQ\), and a cotangent vector is written
@@ -60,6 +62,7 @@ and, in particular,
 The Lagrangian and Hamiltonian descriptions are equivalent only after the
 regularity hypothesis above has been imposed; without it, constraints must be
 included as part of the classical data.
+\end{definition}
 
 \begin{figure}[htbp]
 \centering
@@ -89,6 +92,8 @@ regular Legendre transform.}
 
 \section{Canonical Quantum-Mechanical Data}
 
+\begin{definition}[Schrodinger representation datum]
+\label{def:schrodinger-representation-datum}
 Let \(d\) be the number of degrees of freedom and let
 \(\mathcal Q=\mathbb R^d\) be the configuration space. The Hilbert space is
 \[
@@ -134,7 +139,10 @@ In the Heisenberg picture, an operator \(\widehat O\) evolves as
 on vectors for which the commutator expression is defined.  The path integral
 constructed below gives a regulated representation of matrix elements of this
 Hamiltonian time evolution.
+\end{definition}
 
+\begin{definition}[Position-momentum rigging and kernel notation]
+\label{def:position-momentum-rigging-kernel-notation}
 The position and momentum generalized eigenstates are denoted by
 \(\ket{q}\) and \(\ket{p}\). They are elements of
 \(\mathcal S'(\mathbb R^d)\) in the rigged Hilbert space
@@ -184,9 +192,20 @@ boundary conditions; at fixed regulator the object is a finite-dimensional
 oscillatory integral.  Unbracketed products such as \(\dd^dq_n\) and
 \(\dd^dp_n\) are reserved for the finite-dimensional measures that define the
 regulated expression.
+\end{definition}
 
 \section{Finite Time Slicing}
 
+\begin{proposition}[Finite phase-space time-sliced kernel]
+\label{prop:finite-phase-space-time-sliced-kernel}
+Fix the data of Definition~\ref{def:position-momentum-rigging-kernel-notation}
+and an operator symbol \(h(q,p)\) for \(\widehat H\) in a specified ordering
+convention.  At each finite \(N\), the phase-space expression \(K_N\) below is
+the regulated oscillatory integral obtained by inserting position and momentum
+resolutions in the product formula for \(U(T)\).
+\end{proposition}
+
+\begin{proof}
 Choose an integer \(N\ge1\), set \(\epsilon=T/N\), and define
 \[
   t_n=n\epsilon,\qquad n=0,\ldots,N,
@@ -296,9 +315,12 @@ The continuum notation
 denotes this regulated construction together with the specified limiting
 procedure. In the present chapter, the finite-\(N\) expression is the defined
 object.
+\end{proof}
 
 \section{Trotter Limits, Wiener Measure, and Kernel Convergence}
 
+\begin{quotedtheorem}[Trotter product formula in the form used here]
+\label{qthm:trotter-product-formula-qm}
 The passage from the finite product to a continuum path integral is a
 convergence statement about operators before it is a statement about kernels.
 Let
@@ -333,7 +355,10 @@ The Euclidean version is the semigroup limit
   \delta=\frac{\tau}{N},
 \]
 when the corresponding semibounded form construction applies.
+\end{quotedtheorem}
 
+\begin{definition}[Kato Schrodinger Euclidean datum]
+\label{def:kato-schrodinger-euclidean-datum}
 For Schr\"odinger operators the words ``suppose the hypotheses hold'' can be
 replaced by concrete analytic criteria.  Work on
 \(L^2(\mathbb R^d,\dd^dq)\), let
@@ -389,6 +414,7 @@ on \(H^1(\mathbb R^d)\cap L^2(V_+(q)\dd^dq)\) is closed and semibounded, and it
 defines the Friedrichs Hamiltonian \(H=T+V\).  The Euclidean semigroup has the
 Trotter--Kato product formula, and its kernel is represented by the
 Feynman--Kac construction whenever the stated Kato hypotheses hold.
+\end{definition}
 
 \begin{theorem}[Wiener measure and the Feynman--Kac formula]
 \label{thm:wiener-feynman-kac-qm}
@@ -537,6 +563,8 @@ used: a measure, an oscillatory integral, a Berezin functional, a
 gauge-fixed/BV construction, a lattice regularization, a holonomy
 construction, or a formal perturbative expansion.
 
+\begin{quotedtheorem}[Faris--Lavine criterion]
+\label{qthm:faris-lavine-essential-self-adjointness}
 Essential self-adjointness on the algebraic core \(C_c^\infty(\mathbb R^d)\)
 is a separate issue.  One convenient sufficient theorem is the Faris--Lavine
 criterion, often cited as Reed--Simon Theorem X.41: if \(V\) is real,
@@ -550,7 +578,10 @@ Every smooth potential bounded below satisfies this growth-from-below
 hypothesis, and polynomial oscillator potentials with positive leading part do
 as well.  These cases have a unique self-adjoint closure from the natural
 differential operator core, and the Trotter formula applies to that closure.
+\end{quotedtheorem}
 
+\begin{proposition}[A limit-circle failure of formal Hamiltonian data]
+\label{prop:cubic-potential-limit-circle-failure}
 The lower-growth hypothesis in the Faris--Lavine criterion is substantive.  In
 one dimension, the symmetric differential operator
 \[
@@ -574,6 +605,16 @@ condition at this singular endpoint at infinity, and different self-adjoint
 extensions give different unitary groups.  Thus the formal expression
 \(\widehat p^2/2m+V(\widehat q)\) does not by itself define the operator
 appearing in \(\exp(-\ii T\widehat H/\hbar)\).
+\end{proposition}
+
+\begin{proof}
+The WKB asymptotics displayed above solve the deficiency equations to leading
+order at the singular endpoint \(q=-\infty\).  Their common amplitude is
+\(|q|^{-3/4}\), so the squared amplitude is \(|q|^{-3/2}\), integrable at
+infinity.  Hence both local deficiency solutions are square-integrable at that
+endpoint.  Weyl's alternative classifies the endpoint as limit-circle, so a
+self-adjoint realization requires one additional boundary condition there.
+\end{proof}
 
 For the standard Hamiltonian
 \[
@@ -600,6 +641,8 @@ perturbative asymptotic expansion.
 
 \section{Operator Ordering and Local Counterterms}
 
+\begin{definition}[Regulated phase-space path-integral datum]
+\label{def:regulated-phase-space-path-integral-datum}
 The function \(h(q,p)\) depends on the ordering convention used to represent
 \(\widehat H\). For example, using left endpoints \(q_n\) in the short-time
 matrix element and using right endpoints \(q_{n+1}\) define different symbols
@@ -648,9 +691,12 @@ Thus the data of the regulated path integral are
 \]
 A formula involving \([Dq]\,[Dp]\) is meaningful as notation for a regulated
 construction once these data have been declared.
+\end{definition}
 
 \section{Lagrangian Form for Quadratic Momentum Dependence}
 
+\begin{proposition}[Gaussian elimination of quadratic momenta]
+\label{prop:gaussian-elimination-quadratic-momenta}
 Assume the Hamiltonian symbol has the form
 \[
   h(q,p)
@@ -722,9 +768,32 @@ time-sliced kernel is
 \[
   L(q,\dot q)=\frac{m}{2}\delta_{ab}\dot q^a\dot q^b-V(q).
 \]
+\end{proposition}
+
+\begin{proof}
+At fixed \(q_n\), complete the square in the finite-dimensional momentum
+integral:
+\[
+  p_a\Delta q^a
+  -\frac{\epsilon}{2}G^{ab}p_ap_b
+  =
+  -\frac{\epsilon}{2}G^{ab}
+  \left(p_a-\frac1\epsilon G_{ac}\Delta q^c\right)
+  \left(p_b-\frac1\epsilon G_{bd}\Delta q^d\right)
+  +
+  \frac{1}{2\epsilon}G_{ab}\Delta q^a\Delta q^b .
+\]
+The oscillatory Gaussian determinant gives
+\(\sqrt{\det G_{ab}}(2\pi\ii\hbar\epsilon)^{-d/2}\), and the remaining
+exponent is
+\(\epsilon G_{ab}v^av^b/2\).  Multiplying over slices and including
+\(-\epsilon V(q_n)\) gives the displayed configuration-space kernel.
+\end{proof}
 
 \section{Time-Ordered Insertions and Sources}
 
+\begin{definition}[Finite-slice time-ordered insertions and source kernel]
+\label{def:finite-slice-time-ordered-insertions-source}
 Let \(F(q(t_1),\ldots,q(t_r))\) be a product of coordinate insertions with
 \[
   0<t_1<\cdots<t_r<T.
@@ -757,9 +826,12 @@ The source-dependent kernel \(K_N[J]\) generates regulated time-ordered
 coordinate insertions by differentiation with respect to \(J\). This is the
 finite-dimensional ancestor of QFT generating functionals for Green
 functions.
+\end{definition}
 
 \section{Euclidean Traces and Periodic Boundary Conditions}
 
+\begin{proposition}[Trace imposes periodic Euclidean boundary conditions]
+\label{prop:trace-periodic-euclidean-boundary-conditions}
 Assume that \(\widehat H\) is semibounded and that
 \(\ee^{-\beta_{\mathrm T}\widehat H/\hbar}\) is trace class for
 \(\beta_{\mathrm T}>0\). The Euclidean thermal trace is
@@ -824,9 +896,22 @@ constraint
 \]
 Outside such hypotheses, the trace path integral remains a regulated or formal
 expression whose convergence must be specified separately.
+\end{proposition}
+
+\begin{proof}
+The trace of a trace-class operator is obtained by integrating its diagonal
+position kernel against \(\dd^dq_0\).  In the time-sliced kernel the left and
+right endpoint labels are therefore identified, \(q_N=q_0\).  Passing to
+Euclidean time gives precisely a loop condition
+\(q(\tau+\beta_{\mathrm T})=q(\tau)\).  When the Feynman--Kac theorem applies,
+conditioning Wiener measure on this endpoint equality gives the Brownian-loop
+form of the same trace.
+\end{proof}
 
 \section{Vacuum Projection}
 
+\begin{proposition}[Euclidean long-time projection to a gapped ground state]
+\label{prop:euclidean-long-time-ground-state-projection}
 Assume \(\widehat H\) has a normalized ground state \(\ket{0}\), with energy
 \(E_0\), and that a vector \(\ket\psi\in\Hilb_{\mathcal Q}\) satisfies
 \(\braket{0}{\psi}\ne0\). If the spectrum above \(E_0\) is separated by a
@@ -846,6 +931,23 @@ therefore be obtained from long Euclidean-time evolution:
 \]
 is the normalized long-time limit of the corresponding transition amplitude
 with insertions, after the Euclidean projection has been applied.
+\end{proposition}
+
+\begin{proof}
+By the spectral theorem for \(\widehat H\), write
+\(\ket\psi=c_0\ket0+\eta\) with \(c_0=\braket0\psi\ne0\) and \(\eta\)
+orthogonal to the ground-state subspace.  The gap assumption gives
+\[
+  \|\ee^{-\tau(\widehat H-E_0)/\hbar}\eta\|
+  \le
+  \ee^{-\tau\Delta/\hbar}\|\eta\|
+\]
+for some \(\Delta>0\).  Therefore the normalized Euclidean evolution tends to
+\(\ee^{\ii\arg c_0}\ket0\).  Applying the same spectral projection to initial
+and final wave packets in a transition amplitude with time-ordered insertions
+selects the vacuum matrix element after the common exponential normalization is
+removed.
+\end{proof}
 
 The next chapter will analyze the analytic continuation and Gaussian
 integrals that make this construction computationally useful. The present
