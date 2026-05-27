@@ -7,8 +7,9 @@ magnetic-scale estimate, finite-regulator source-curvature identities,
 one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
 low-temperature chiral effective theory coefficients, static HTL Debye-mass
 normalizations, thermodynamic derivative identities, baryon-number cumulants,
-and the color-flavor-locked symmetry count.  It is not a lattice simulation
-and it does not assert the existence or order of any QCD phase transition.
+Roberge--Weiss periodicity bookkeeping, and the color-flavor-locked symmetry
+count.  It is not a lattice simulation and it does not assert the existence
+or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -120,6 +121,33 @@ def check_fugacity_laurent_polynomial_shift():
     assert_equal("fugacity shift removes negative powers", min(shifted_exponents), 0)
     assert_equal("fugacity polynomial degree after shift", max(shifted_exponents), 7)
     assert_equal("shift preserves exponent differences", shifted_exponents[-1] - shifted_exponents[1], 5)
+
+
+def check_roberge_weiss_periodicity_bookkeeping():
+    # A center-twisted temporal gauge transformation with z=exp(2*pi*i*k/Nc)
+    # shifts the quark imaginary chemical-potential angle by 2*pi*k/Nc.
+    # Since theta_B=Nc theta_q, the baryon angle shifts by 2*pi*k.
+    nc = 3
+    for k in range(-3, 4):
+        quark_shift_units = Fraction(k, nc)
+        baryon_shift_units = nc * quark_shift_units
+        assert_equal(f"RW baryon period unit k={k}", baryon_shift_units, Fraction(k))
+
+    # In a canonical fugacity expansion, imaginary baryon angle periodicity
+    # follows from integer baryon charge: exp(i B (theta_B+2*pi))=exp(i B theta_B).
+    baryon_charges = [-2, -1, 0, 1, 2]
+    shifted_phases_units = [charge * 1 for charge in baryon_charges]
+    assert_true(
+        "integer baryon charges give 2pi periodicity",
+        all(phase_units == int(phase_units) for phase_units in shifted_phases_units),
+    )
+
+    # The high-temperature RW exchange loci in the quark angle are
+    # theta_q=(2r+1) pi/Nc, i.e. baryon angle theta_B=(2r+1) pi.
+    rw_quark_half_turn_units = [Fraction(2 * r + 1, nc) for r in range(3)]
+    rw_baryon_half_turn_units = [nc * value for value in rw_quark_half_turn_units]
+    assert_equal("first SU(3) RW quark half-turn", rw_quark_half_turn_units[0], Fraction(1, 3))
+    assert_equal("RW baryon half-turns are odd", rw_baryon_half_turn_units, [Fraction(1), Fraction(3), Fraction(5)])
 
 
 def check_source_curvature_susceptibility():
@@ -322,6 +350,7 @@ def main():
     check_thermodynamic_derivative_identities()
     check_banks_casher_kernel_normalization()
     check_fugacity_laurent_polynomial_shift()
+    check_roberge_weiss_periodicity_bookkeeping()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
     check_chiral_ward_identity_normalization()

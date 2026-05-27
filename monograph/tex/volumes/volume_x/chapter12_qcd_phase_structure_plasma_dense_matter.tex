@@ -1430,6 +1430,111 @@ determinant is generally complex, so it cannot be used directly as a
 positive probability weight.
 \end{proof}
 
+\subsection{Imaginary Chemical Potential and Roberge--Weiss Periodicity}
+\label{subsec:qcd-imaginary-mu-roberge-weiss}
+
+Imaginary chemical potential is not a substitute for real finite density; it
+is a different, exactly defined thermal boundary condition.  It is useful
+because it restores positivity in vectorlike pairs and has an exact center
+periodicity at finite regulator.
+
+\begin{definition}[Imaginary quark and baryon chemical-potential angles]
+\label{def:qcd-imaginary-mu-angles}
+Let
+\[
+  \mu_q=iT\theta_q,\qquad
+  \mu_B=iT\theta_B,\qquad
+  \theta_B=N_c\theta_q .
+\]
+Equivalently, the fundamental quark field obeys the Euclidean thermal
+boundary condition
+\[
+  q(\beta,\mathbf x)=-e^{i\theta_q}q(0,\mathbf x).
+\]
+For a finite lattice regulator, write the corresponding partition function
+as \(Z_{a,V}(\theta_q)\).  The regulator is assumed to use compact
+\(SU(N_c)\) links, a gauge action invariant under center-twisted temporal
+gauge transformations, and a gauge-covariant Dirac operator whose imaginary
+chemical potential is this boundary twist.
+\end{definition}
+
+\begin{proposition}[Finite-regulator Roberge--Weiss periodicity]
+\label{prop:qcd-roberge-weiss-periodicity}
+At finite regulator and finite spatial volume,
+\[
+  Z_{a,V}\!\left(\theta_q+\frac{2\pi k}{N_c}\right)
+  =
+  Z_{a,V}(\theta_q),
+  \qquad k\in\mathbb Z .
+\]
+Equivalently, as a function of the baryon angle,
+\[
+  Z_{a,V}(\theta_B+2\pi k)=Z_{a,V}(\theta_B).
+\]
+For a vectorlike pair of equal-mass flavors, the Euclidean determinant at
+real \(\theta_q\) is nonnegative.  Therefore imaginary-\(\mu_B\) simulations
+probe a positive finite-regulator measure, while analytic continuation to
+real \(\mu_B\) remains a separate limiting and analytic-control problem.
+\end{proposition}
+
+\begin{proof}
+Let \(z_k=e^{2\pi i k/N_c}\in Z(SU(N_c))\).  A center-twisted temporal gauge
+transformation is a gauge transformation \(g(\tau,\mathbf x)\) satisfying
+\[
+  g(\beta,\mathbf x)=z_k\,g(0,\mathbf x).
+\]
+Gauge fields in the adjoint representation are periodic under this
+transformation, because the center acts trivially on adjoint variables.  The
+compact-link Haar measure and gauge action are invariant.
+
+For a fundamental quark field with
+\(q(\beta,\mathbf x)=-e^{i\theta_q}q(0,\mathbf x)\), the transformed field
+has boundary condition
+\[
+  q'(\beta,\mathbf x)
+  =
+  g(\beta,\mathbf x)q(\beta,\mathbf x)
+  =
+  -e^{i\theta_q}z_k\,g(0,\mathbf x)q(0,\mathbf x)
+  =
+  -e^{i(\theta_q+2\pi k/N_c)}q'(0,\mathbf x).
+\]
+Thus the change of integration variables by the center-twisted gauge
+transformation maps the finite-regulator path integral at \(\theta_q\) to
+the one at \(\theta_q+2\pi k/N_c\).  Since the transformation is invertible
+and leaves the measure and gauge action invariant, the two partition
+functions are equal.  Multiplying the quark-angle period by \(N_c\) gives
+the baryon-angle period \(2\pi\).
+
+For \(\mu_q=iT\theta_q\), the Euclidean chemical-potential term is
+anti-Hermitian in the same sense as the ordinary Euclidean Dirac operator.
+The massive Dirac operator obeys the \(\gamma_5\)-Hermiticity relation at
+fixed gauge field,
+\[
+  \gamma_5D_{\theta_q,m}\gamma_5=D_{\theta_q,m}^{\dagger}.
+\]
+Hence its determinant is real, and a pair of equal-mass Dirac flavors gives
+\(|\det D_{\theta_q,m}|^2\ge0\).  This proves the positivity statement for
+vectorlike pairs.  None of these equalities implies analyticity at real
+\(\mu_B\); analytic continuation is controlled only inside zero-free
+domains of the complex fugacity or chemical-potential plane.
+\end{proof}
+
+\begin{remark}[Roberge--Weiss lines]
+\label{rem:qcd-roberge-weiss-lines}
+The finite-volume function \(Z_{a,V}(\theta_q)\) is analytic in the imaginary
+fugacity.  A Roberge--Weiss transition is therefore a thermodynamic-limit
+phenomenon: in high-temperature \(SU(N_c)\) QCD, different center-related
+holonomy sectors may exchange dominance at
+\[
+  \theta_q=\frac{(2r+1)\pi}{N_c},\qquad r\in\mathbb Z .
+\]
+At finite volume this appears as Lee--Yang zero organization, not as a
+literal singularity of \(Z_{a,V}\).  The statement is about the imaginary
+chemical-potential problem and does not by itself locate a real-\(\mu_B\)
+critical endpoint.
+\end{remark}
+
 Consequently, the conjectural critical endpoint and the first-order line in
 the \((T,\mu_B)\) plane are not presently consequences of direct
 first-principles continuum control at large real \(\mu_B\).  Taylor

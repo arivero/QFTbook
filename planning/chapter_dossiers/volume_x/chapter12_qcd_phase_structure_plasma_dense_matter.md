@@ -41,6 +41,8 @@ GitHub issue #628.
 - `C_A`, `T_R`, `I_B`, `I_F`: adjoint quadratic index, representation
   trace index, and the Bose/Fermi thermal susceptibility integrals entering
   the static HTL Debye mass.
+- `theta_q`, `theta_B`: imaginary quark and baryon chemical-potential
+  angles, related by `theta_B=N_c theta_q`.
 - `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
   baryon-number cumulants, susceptibilities, and Cauchy--Hadamard radius.
 - `Delta_L`, `Delta_R`: CFL pairing amplitudes.
@@ -106,6 +108,11 @@ GitHub issue #628.
   phenomenological language.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
+- Defines imaginary chemical potential as a thermal boundary-condition
+  twist, proves finite-regulator Roberge--Weiss periodicity
+  `Z(theta_q+2*pi*k/N_c)=Z(theta_q)`, proves positivity for vectorlike
+  pairs, and separates imaginary-chemical-potential nonanalyticities from
+  real-density critical endpoints.
 - Defines baryon-number susceptibilities as finite-regulator source
   derivatives at \(x=\mu_B/T=0\), proves the cumulant identities, and
   separates radius-of-convergence diagnostics from claims about a real QCD
@@ -129,8 +136,9 @@ GitHub issue #628.
   identity, one-loop Polyakov-holonomy potential coefficients,
   chiral Ward-identity and GMOR normalization factors, low-temperature
   chiral effective theory coefficients, static HTL Debye-mass normalization,
-  thermodynamic derivative identities, baryon-number cumulants and radius
-  estimators, and CFL Goldstone count.
+  thermodynamic derivative identities, Roberge--Weiss angle-periodicity
+  bookkeeping, baryon-number cumulants and radius estimators, and CFL
+  Goldstone count.
 
 ## Open Issues
 
@@ -165,3 +173,7 @@ GitHub issue #628.
   identities for energy density, trace anomaly, fixed-`mu_B/T` reduced
   pressure, and `mu_B=0` sound speed, with the conformal Stefan--Boltzmann
   benchmark checked exactly.
+- 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
+  chemical-potential theorem, positivity statement for vectorlike pairs,
+  Roberge--Weiss transition status remark, and exact angle-periodicity
+  bookkeeping checks.
