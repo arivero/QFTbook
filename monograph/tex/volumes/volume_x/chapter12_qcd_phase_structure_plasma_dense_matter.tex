@@ -1128,6 +1128,109 @@ polarization tensors in this kinematic regime.  A calculation outside this
 scale separation is not an HTL calculation.
 \end{controlledapproximation}
 
+\begin{proposition}[Static HTL polarization and Debye mass]
+\label{prop:qcd-static-htl-debye-mass}
+Let \(a_0=a_0^aT^a\) be a slowly varying canonically normalized temporal
+gauge potential, and normalize the generators by
+\[
+  \operatorname{tr}_R(T_R^aT_R^b)=T_R\,\delta^{ab},\qquad
+  f^{acd}f^{bcd}=C_A\,\delta^{ab}.
+\]
+For a weakly coupled thermal plasma at \(\mu_B=0\), the static HTL color
+susceptibility is
+\[
+  \Pi_{00}^{ab}(0,\mathbf k\to0)
+  =
+  \delta^{ab}m_D^2,
+  \qquad
+  m_D^2
+  =
+  g^2T^2\left(\frac{C_A}{3}
+  +\frac{1}{3}\sum_{\text{Dirac }f}T_{R_f}\right).
+\]
+In the present \(SU(N_c)\) convention
+\(\operatorname{tr}_{\square}(T^aT^b)=\delta^{ab}\), one has
+\[
+  C_A=2N_c,\qquad T_{\square}=1,
+\]
+and hence
+\[
+  m_D^2=g^2T^2\left(\frac{2N_c}{3}+\frac{N_f}{3}\right).
+\]
+To leading static order the longitudinal electric propagator is screened as
+\[
+  D_{00}^{ab}(0,\mathbf k)
+  =
+  \frac{\delta^{ab}}{\mathbf k^2+m_D^2},
+\]
+with the understanding that this formula is the static electric HTL limit,
+not a gauge-invariant definition of a particle pole.
+\end{proposition}
+
+\begin{proof}
+The statement is a color-susceptibility calculation for hard particles.
+Let a hard excitation of momentum \(p=|\mathbf p|\) and color weight \(w\)
+couple to the soft potential by the energy shift
+\(-g a_0^aw^a\).  Linearizing its distribution gives
+\[
+  \delta n(p)=g a_0^bw^b\,[-n'(p)] .
+\]
+Multiplying by the color charge \(gw^a\), summing over weights, and
+integrating over hard momenta gives the induced color density.  Therefore a
+species in representation \(R\) contributes the positive susceptibility
+\[
+  g^2\,d_{\mathrm{spin/particle}}\,
+  \operatorname{tr}_R(T_R^aT_R^b)
+  \int \frac{d^3p}{(2\pi)^3}\,[-n'(p)] .
+\]
+For gluons the representation is the adjoint and there are two transverse
+hard polarizations.  For a massless Dirac fermion there are two spin states
+and independent particle and antiparticle excitations; the antiparticle
+charge is opposite, but the susceptibility is quadratic in the charge, so
+the total degeneracy factor is \(4\).
+
+The required thermal integrals are elementary but convention-sensitive:
+\[
+  I_B
+  =
+  \int \frac{d^3p}{(2\pi)^3}\,[-n_B'(p)]
+  =
+  \frac{1}{\pi^2}\int_0^\infty dp\,p\,n_B(p)
+  =\frac{T^2}{6},
+\]
+\[
+  I_F
+  =
+  \int \frac{d^3p}{(2\pi)^3}\,[-n_F'(p)]
+  =
+  \frac{1}{\pi^2}\int_0^\infty dp\,p\,n_F(p)
+  =\frac{T^2}{12}.
+\]
+The integration by parts has no boundary term: at \(p=\infty\) the
+distributions decay exponentially, while at \(p=0\) one has
+\(p^2n_B(p)\to0\) and \(p^2n_F(p)\to0\); moreover
+\(p^2[-n'_B(p)]\) and \(p^2[-n'_F(p)]\) are locally integrable.  The last
+equalities use
+\[
+  \int_0^\infty \frac{x\,dx}{e^x-1}=\frac{\pi^2}{6},
+  \qquad
+  \int_0^\infty \frac{x\,dx}{e^x+1}=\frac{\pi^2}{12}.
+\]
+Thus
+\[
+  m_D^2
+  =
+  g^2\bigl(2C_A I_B+4\sum_fT_{R_f}I_F\bigr)
+  =
+  g^2T^2\left(\frac{C_A}{3}
+  +\frac{1}{3}\sum_fT_{R_f}\right).
+\]
+The resummed static longitudinal propagator is the geometric series obtained
+by inserting this static self-energy into the soft electric propagator.  The
+derivation has used only the HTL separation between hard loop momentum and
+soft external field; it does not determine the magnetic sector.
+\end{proof}
+
 \begin{proposition}[Magnetic contribution first becomes nonperturbative at \(g^6T^4\)]
 \label{prop:qcd-linde-scale}
 In four-dimensional high-temperature Yang--Mills theory, the static magnetic

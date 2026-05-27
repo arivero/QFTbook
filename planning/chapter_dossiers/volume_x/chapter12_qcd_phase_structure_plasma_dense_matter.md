@@ -36,6 +36,9 @@ GitHub issue #628.
   low-temperature chiral EFT.
 - `p_SB`, `Delta=epsilon-3p`: Stefan--Boltzmann pressure and trace anomaly.
 - `g_3^2=g^2T`, `m_D`: static magnetic coupling and Debye mass.
+- `C_A`, `T_R`, `I_B`, `I_F`: adjoint quadratic index, representation
+  trace index, and the Bose/Fermi thermal susceptibility integrals entering
+  the static HTL Debye mass.
 - `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
   baryon-number cumulants, susceptibilities, and Cauchy--Hadamard radius.
 - `Delta_L`, `Delta_R`: CFL pairing amplitudes.
@@ -89,6 +92,10 @@ GitHub issue #628.
 - Records the HTL domain as a controlled approximation and proves the
   magnetic \(g^6T^4\) Linde scale by dimensional analysis of the static
   magnetic theory.
+- Derives the static HTL color susceptibility and Debye mass in the
+  monograph trace convention from hard-particle Bose/Fermi thermal integrals,
+  including the \(SU(N_c)\) specialization
+  `m_D^2=g^2T^2(2N_c/3+N_f/3)`.
 - Defines transport coefficients through Kubo spectral limits rather than
   phenomenological language.
 - Proves the origin of the finite-density sign problem from loss of
@@ -115,8 +122,8 @@ GitHub issue #628.
   fugacity Laurent-polynomial shift, source-curvature susceptibility
   identity, one-loop Polyakov-holonomy potential coefficients,
   chiral Ward-identity and GMOR normalization factors, low-temperature
-  chiral effective theory coefficients, baryon-number cumulants and radius
-  estimators, and CFL Goldstone count.
+  chiral effective theory coefficients, static HTL Debye-mass normalization,
+  baryon-number cumulants and radius estimators, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -143,3 +150,7 @@ GitHub issue #628.
   effective datum, tree-level source normalization, and one-loop pion-gas
   correction to the condensate as a controlled asymptotic statement rather
   than a proof of chiral restoration.
+- 2026-05-27 static HTL pass: added the hard-particle color-susceptibility
+  derivation of the Debye mass in trace-delta convention and paired it with
+  exact arithmetic checks for the Bose/Fermi susceptibility integrals and
+  \(SU(3)\), \(N_f=3\) coefficient.

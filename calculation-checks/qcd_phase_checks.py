@@ -5,10 +5,10 @@ The script checks convention-sensitive numerical factors used in the
 Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
 magnetic-scale estimate, finite-regulator source-curvature identities,
 one-loop Polyakov-holonomy coefficients, chiral Ward-identity normalizations,
-low-temperature chiral effective theory coefficients, baryon-number
-cumulants, and the color-flavor-locked symmetry count.  It is not a lattice
-simulation and it does not assert the existence or order of any QCD phase
-transition.
+low-temperature chiral effective theory coefficients, static HTL Debye-mass
+normalizations, baryon-number cumulants, and the color-flavor-locked symmetry
+count.  It is not a lattice simulation and it does not assert the existence
+or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -248,6 +248,28 @@ def check_linde_magnetic_scale():
     assert_equal("Linde magnetic T power", t_power, 4)
 
 
+def check_static_htl_debye_mass_normalization():
+    # The static HTL susceptibility has
+    # I_B = int d^3p/(2*pi)^3 [-n_B'(p)] = T^2/6
+    # I_F = int d^3p/(2*pi)^3 [-n_F'(p)] = T^2/12.
+    # Gluons give 2 C_A I_B and each Dirac flavor gives 4 T_R I_F.
+    ib_over_t2 = Fraction(1, 6)
+    if_over_t2 = Fraction(1, 12)
+    gluon_factor = 2
+    dirac_factor = 4
+
+    assert_equal("static HTL boson integral", gluon_factor * ib_over_t2, Fraction(1, 3))
+    assert_equal("static HTL Dirac integral", dirac_factor * if_over_t2, Fraction(1, 3))
+
+    # With tr_fund(T^a T^b)=delta^{ab}, SU(N_c) has C_A=2N_c and T_fund=1.
+    nc = 3
+    nf = 3
+    ca = 2 * nc
+    t_fund = 1
+    coefficient = Fraction(ca, 3) + Fraction(nf * t_fund, 3)
+    assert_equal("SU(3), Nf=3 static HTL Debye coefficient", coefficient, Fraction(3, 1))
+
+
 def check_cfl_global_goldstone_count():
     # For N_f=N_c=3 and ignoring the anomalous axial U(1), the CFL condensate
     # locks SU(3)_L x SU(3)_R x U(1)_B to diagonal SU(3).  The gauged color
@@ -268,6 +290,7 @@ def main():
     check_chiral_ward_identity_normalization()
     check_low_temperature_chiral_condensate_coefficient()
     check_baryon_cumulants_and_radius_estimator()
+    check_static_htl_debye_mass_normalization()
     check_linde_magnetic_scale()
     check_cfl_global_goldstone_count()
     print("All QCD phase-structure checks passed.")
