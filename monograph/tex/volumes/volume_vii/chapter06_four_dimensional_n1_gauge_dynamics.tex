@@ -1339,6 +1339,78 @@ maximal-rank criterion.  The two Goldstino coordinates do not appear in
 \(S_{\mathrm{lift}}\), so they remain as the \(d^2\theta\) measure.
 \end{proof}
 
+\begin{proposition}[Radial Higgs cutoff in the ADS instanton patch]
+\label{prop:ads-radial-higgs-cutoff}
+Keep the \(N_f=N_c-1\) Higgs-patch setup above, and write
+\[
+  H(v,\widetilde v)
+  =
+  \sum_{i=1}^{N_f}
+  \bigl(|v_i|^2+|\widetilde v_i|^2\bigr).
+\]
+On the maximal-rank patch \(\det M\neq0\), one has
+\(H(v,\widetilde v)>0\).  Suppose that a fixed angular and zero-mode term in
+the regulated charge-one collective-coordinate integral has radial factor
+\[
+  \rho^{2p-1}\exp(-c\,\rho^2H(v,\widetilde v))\,d\rho,
+  \qquad p\in\mathbb Z_{>0},\quad c>0,
+  \label{eq:ads-radial-higgs-model-integral}
+\]
+where \(\rho>0\) is the instanton size.  Then the radial integral is
+\[
+  I_p(H)
+  =
+  \int_0^\infty
+  \rho^{2p-1}\exp(-cH\rho^2)\,d\rho
+  =
+  \frac{(p-1)!}{2(cH)^p}.
+  \label{eq:ads-radial-higgs-integral-value}
+\]
+In particular, the Higgs expectation values give exponential convergence at
+large \(\rho\) and a real homogeneous factor of degree \(-2p\) under
+\((v_i,\widetilde v_i)\mapsto t(v_i,\widetilde v_i)\).  This real cutoff
+estimate is not the holomorphic ADS denominator.  It neither supplies the
+Yukawa lifting rank on the boundary \(\det M=0\) nor determines the
+holomorphic factor \(1/\det M\); those are separate inputs supplied by
+Propositions~\ref{prop:ads-yukawa-lifting-berezin-determinant} and
+\ref{prop:ads-maximal-rank-meson-invariant}.
+\end{proposition}
+
+\begin{proof}
+If \(\det M\neq0\) in the diagonal patch, then
+\(\widetilde v_i v_i\neq0\) for every \(i\), hence each summand in \(H\) is
+strictly positive and \(H>0\).  The large-size convergence in
+\eqref{eq:ads-radial-higgs-model-integral} follows immediately from
+\(cH>0\).
+
+Set \(u=cH\rho^2\).  Then
+\[
+  \rho^{2p-1}\,d\rho
+  =
+  \frac{u^{p-1}}{2(cH)^p}\,du .
+\]
+Therefore
+\[
+  I_p(H)
+  =
+  \frac{1}{2(cH)^p}
+  \int_0^\infty u^{p-1}e^{-u}\,du
+  =
+  \frac{\Gamma(p)}{2(cH)^p}
+  =
+  \frac{(p-1)!}{2(cH)^p},
+\]
+because \(p\) is a positive integer.
+
+If all Higgs coordinates are multiplied by \(t\), then \(H\) is multiplied by
+\(|t|^2\), so \(I_p\) is multiplied by \(|t|^{-2p}\).  The absolute values
+show why this radial estimate is a real analytic convergence statement, not
+a holomorphic transformation law.  Approaching \(\det M=0\) also changes the
+rank of the finite-dimensional Yukawa lifting matrix, so the maximal-rank
+instanton calculation cannot be extended across that boundary by the radial
+estimate alone.
+\end{proof}
+
 \begin{proposition}[Maximal-rank meson invariant for the ADS patch]
 \label{prop:ads-maximal-rank-meson-invariant}
 Let \(n=N_c-1\), and let

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from fractions import Fraction
+from math import factorial
 
 
 def assert_equal(left, right, label):
@@ -94,6 +95,38 @@ def check_ads_higgs_patch_collective_coordinates() -> None:
         det_m_dimension = 2 * nf
         reduced_factor_dimension = 3 - (2 * nc + 1)
         assert_equal(reduced_factor_dimension, -det_m_dimension, "ADS reduced determinant dimension")
+
+
+def check_ads_radial_higgs_cutoff_integral() -> None:
+    for p in range(1, 9):
+        current_factorial = factorial(p - 1)
+
+        for c in (Fraction(1, 2), Fraction(3, 5), Fraction(7, 4)):
+            for higgs_norm in (Fraction(2), Fraction(5, 3), Fraction(11, 7)):
+                integral = Fraction(current_factorial, 2) / (c * higgs_norm) ** p
+                recurrence = integral * c * higgs_norm
+
+                previous_factorial = factorial(p - 2) if p > 1 else 1
+                previous_integral = (
+                    Fraction(previous_factorial, 2) / (c * higgs_norm) ** (p - 1)
+                    if p > 1
+                    else Fraction(1, 2)
+                )
+                expected_recurrence = (p - 1) * previous_integral if p > 1 else Fraction(1, 2)
+                assert_equal(recurrence, expected_recurrence, "ADS radial integral recurrence")
+
+                for scale_squared in (Fraction(4), Fraction(9, 4), Fraction(25, 9)):
+                    scaled_integral = Fraction(current_factorial, 2) / (
+                        c * scale_squared * higgs_norm
+                    ) ** p
+                    assert_equal(
+                        scaled_integral,
+                        integral / scale_squared**p,
+                        "ADS radial Higgs cutoff real scaling",
+                    )
+
+        radial_power = 2 * p - 1
+        assert_equal((radial_power + 1) // 2, p, "ADS radial power-to-cutoff exponent")
 
 
 def check_ads_yukawa_lifting_berezin_determinant() -> None:
@@ -280,6 +313,7 @@ def main() -> None:
     check_ads_dimensions_and_r_charges()
     check_one_instanton_ads_zero_modes()
     check_ads_higgs_patch_collective_coordinates()
+    check_ads_radial_higgs_cutoff_integral()
     check_ads_yukawa_lifting_berezin_determinant()
     check_ads_meson_invariant_uniqueness()
     check_holomorphic_decoupling_dimensions()

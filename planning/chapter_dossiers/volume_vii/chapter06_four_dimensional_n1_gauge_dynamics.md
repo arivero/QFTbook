@@ -95,6 +95,10 @@ status-boundary style.
   diagonal-patch Berezin determinant for the Yukawa lifting matrix,
   separating the zero-mode saturation algebra from the later holomorphic
   `1/det M` argument.
+- `prop:ads-radial-higgs-cutoff`: finite radial-integral calculation
+  showing exactly how the Higgs expectation values cut off the instanton size
+  integral on the maximal-rank ADS patch, while separating that real
+  convergence estimate from the holomorphic `1/det M` denominator.
 - `prop:ads-maximal-rank-meson-invariant`: invariant-theory lemma on the
   maximal-rank meson patch proving that special-flavor invariance and the
   ADS scaling degree force the reduced instanton factor to be `C/det M`.
@@ -283,6 +287,13 @@ status-boundary style.
   lifted Grassmann variables, is nonzero exactly on `det M != 0`, leaves the
   two Goldstino modes, and gives an anti-holomorphic determinant factor that
   is explicitly distinguished from the final holomorphic ADS denominator.
+- Proves the finite radial Higgs-cutoff estimate used in the ADS
+  one-instanton patch:
+  `int_0^infty rho^(2p-1) exp(-c H rho^2) d rho
+  = (p-1)!/(2(cH)^p)`.  The text records the resulting large-size
+  convergence and real homogeneity, and explicitly states that this estimate
+  neither extends the calculation across `det M=0` nor determines the
+  holomorphic `1/det M` factor.
 - Proves the maximal-rank meson invariant used in the ADS denominator:
   an `SL(N_f,C)_L x SL(N_f,C)_R` invariant holomorphic function on
   `det M != 0` is a function of `det M`; the ADS homogeneity degree then
@@ -443,11 +454,12 @@ status-boundary style.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch
-  collective-coordinate counts, Yukawa-lifting Berezin determinant
-  saturation and coefficient factorization, determinant-fiber transitivity
-  and inverse-determinant homogeneity for the maximal-rank meson invariant,
-  holomorphic decoupling exponent shifts, and ADS decoupling-recursion
-  coefficient and one-variable `F_X=0` algebra.
+  collective-coordinate counts, radial Higgs-cutoff integral scaling,
+  Yukawa-lifting Berezin determinant saturation and coefficient
+  factorization, determinant-fiber transitivity and inverse-determinant
+  homogeneity for the maximal-rank meson invariant, holomorphic decoupling
+  exponent shifts, and ADS decoupling-recursion coefficient and one-variable
+  `F_X=0` algebra.
 
 ## Figure Ledger
 
