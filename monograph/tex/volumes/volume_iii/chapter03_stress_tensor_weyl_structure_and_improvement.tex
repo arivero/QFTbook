@@ -5,6 +5,8 @@
 
 \section{The Stress Tensor from Background Metrics}
 
+\begin{definition}[Metric-source stress tensor]
+\label{def:metric-source-stress-tensor}
 Let a Euclidean local theory be coupled to a smooth background metric
 \(g_{\mu\nu}\) on a \(D\)-dimensional manifold \(M\).  The stress tensor is
 defined by the first variation of the action or of the renormalized generating
@@ -82,7 +84,10 @@ and the Euclidean effective action.
 With this sign convention, evaluating \(T_{\mu\nu}\) on the flat metric gives
 the translation Noether tensor after adding the divergence term that makes the
 Noether tensor symmetric.
+\end{definition}
 
+\begin{remark}[Curved extensions and flat stress tensors]
+\label{rem:curved-extensions-flat-stress}
 A flat classical action can have several curved extensions.  For example,
 \[
   S[\phi]
@@ -110,7 +115,10 @@ may be extended as
 Curvature couplings that vanish on flat space still affect \(T_{\mu\nu}\),
 because \(T_{\mu\nu}\) is defined by varying \(g_{\mu\nu}\) before setting
 \(g_{\mu\nu}=\delta_{\mu\nu}\).
+\end{remark}
 
+\begin{proposition}[Diffeomorphism Ward identity for metric stress tensors]
+\label{prop:metric-stress-diffeomorphism-ward}
 If the theory is invariant under diffeomorphisms of the background, then an
 infinitesimal vector field \(\xi^\mu\) gives
 \[
@@ -127,9 +135,34 @@ Substituting this variation into
 as an operator equation away from insertions.  In flat space this becomes
 \(\partial_\mu T^{\mu\nu}=0\).  Symmetry of \(T_{\mu\nu}\) follows from
 variation with respect to the symmetric tensor \(g_{\mu\nu}\).
+\end{proposition}
+
+\begin{proof}
+Insert
+\(\delta_\xi g^{\mu\nu}=-\nabla^\mu\xi^\nu-\nabla^\nu\xi^\mu\) into
+Definition~\ref{def:metric-source-stress-tensor}.  The symmetry of
+\(T_{\mu\nu}\) gives
+\[
+  \delta_\xi S
+  =
+  -\int_M\dd^Dx\,\sqrt g\,T_{\mu\nu}\nabla^\mu\xi^\nu .
+\]
+Integrating by parts gives
+\[
+  \delta_\xi S
+  =
+  \int_M\dd^Dx\,\sqrt g\,(\nabla_\mu T^{\mu\nu})\xi_\nu
+\]
+up to the boundary term excluded by the support or boundary conditions.  Since
+the background-diffeomorphism variation is zero and \(\xi\) is arbitrary, the
+local identity \(\nabla_\mu T^{\mu\nu}=0\) follows away from operator
+insertions.
+\end{proof}
 
 \section{Metric Perturbations and Stress Insertions}
 
+\begin{proposition}[Stress-tensor insertion from a small metric perturbation]
+\label{prop:stress-insertion-small-metric-perturbation}
 Set \(g_{\mu\nu}=\delta_{\mu\nu}+\delta g_{\mu\nu}\), with \(\delta g\) smooth
 and compactly supported.  To first order, the Euclidean path integral changes
 by the insertion
@@ -164,9 +197,24 @@ of stress-tensor products is used only after the infrared state or regulator
 has made the separated-point correlators meaningful on the test functions
 under consideration.  In even dimensions these contact terms include the Weyl
 anomaly data.
+\end{proposition}
+
+\begin{proof}
+Expand the metric-source action to first order in \(\delta g\) using
+Definition~\ref{def:metric-source-stress-tensor}.  Since
+\(\delta g^{\mu\nu}=-\delta g_{\mu\nu}+O(\delta g^2)\) around the flat metric,
+the first-order change of the Boltzmann weight is the exponential insertion in
+\eqref{eq:stress-insertion-small-metric}.  Expanding that exponential to first
+order gives the displayed variation of \(\langle X\rangle\).  Higher
+functional derivatives differentiate products of metric variations at
+coincident points, so their definition requires the local extension of
+stress-tensor products as distributions.
+\end{proof}
 
 \section{Weyl Transformations}
 
+\begin{definition}[Weyl transformation and trace insertion]
+\label{def:weyl-transformation-trace-insertion}
 A Weyl transformation is a local rescaling of the background metric:
 \[
   g_{\mu\nu}(x)\mapsto \ee^{2\omega(x)}g_{\mu\nu}(x),
@@ -185,6 +233,7 @@ The corresponding metric variation gives
   \int_M\dd^D x\,\sqrt g\,
   \omega(x)\,T^\mu{}_\mu(x).
 \]
+\end{definition}
 \begin{theorem}[Flat-space trace condition from Weyl invariance]
 \label{thm:flat-space-weyl-trace-condition}
 Assume that the renormalized theory is coupled to a background metric, that
@@ -232,6 +281,8 @@ deferred to a separate treatment.
 
 \section{Weyl Anomaly Density and Contact Ward Identities}
 
+\begin{definition}[Weyl anomaly density]
+\label{def:weyl-anomaly-density}
 Define the trace anomaly density by
 \begin{equation}
   \delta_\omega\mathcal W[g]
@@ -271,9 +322,12 @@ Here the denominator denotes the iterated functional derivative with respect
 to the displayed metric components.  Thus anomaly coefficients are part of
 the metric-source definition of the stress-tensor correlators, even though
 \(T^\mu{}_\mu=0\) at separated flat-space points.
+\end{definition}
 
 \section{Classification of Conformal Anomalies}
 
+\begin{proposition}[Wess--Zumino consistency for Weyl anomalies]
+\label{prop:weyl-wess-zumino-consistency}
 The local anomaly density is constrained because Weyl transformations form an
 abelian group.  Let
 \[
@@ -299,7 +353,23 @@ trace anomaly is the cohomology of the Weyl differential on local metric
 functionals: solutions of
 \eqref{eq:weyl-wess-zumino-consistency} modulo Weyl variations of local
 counterterms.
+\end{proposition}
 
+\begin{proof}
+Apply two Weyl variations to the same renormalized functional \(\mathcal W[g]\).
+Since local Weyl rescalings commute,
+\([\delta_{\omega_1},\delta_{\omega_2}]\mathcal W[g]=0\).  Using
+Definition~\ref{def:weyl-anomaly-density}, this commutator is precisely
+\(\delta_{\omega_1}\mathbf A_{\omega_2}
+-\delta_{\omega_2}\mathbf A_{\omega_1}\), giving
+\eqref{eq:weyl-wess-zumino-consistency}.  If
+\(\mathcal W\) is shifted by a local counterterm \(B[g]\), its anomaly shifts
+by the Weyl variation of that counterterm.  Therefore only the cohomology class
+of \(\mathbf A_\omega\) is intrinsic.
+\end{proof}
+
+\begin{quotedtheorem}[Parity-even local Weyl anomaly classes]
+\label{qthm:parity-even-local-weyl-anomaly-classes}
 In the parity-even metric sector on a closed manifold without boundary, the
 bulk solutions in even dimension \(D=2n\) have the form
 \begin{equation}
@@ -342,6 +412,7 @@ list in \eqref{eq:weyl-anomaly-type-abd-general}.  In odd dimension there is
 no parity-even local bulk trace anomaly of this type on a closed smooth
 manifold, although finite nonlocal data such as the sphere free energy can be
 important conformal data.
+\end{quotedtheorem}
 
 In two dimensions, with the convention above, write
 \begin{equation}
@@ -351,6 +422,8 @@ In two dimensions, with the convention above, write
 This is purely type A: \(E_2=R\), and there is no independent parity-even
 type-B scalar in two dimensions.
 
+\begin{proposition}[Four-dimensional parity-even Weyl anomaly]
+\label{prop:four-dimensional-parity-even-weyl-anomaly}
 In four dimensions, define
 \[
   E_4
@@ -393,7 +466,22 @@ dimension-four curvature basis
 the two nontrivial Wess--Zumino classes are the Euler combination \(E_4\) and
 the Weyl-invariant combination \(W^2\), while the remaining scalar can be
 changed by the \(R^2\) counterterm just displayed.
+\end{proposition}
 
+\begin{proof}
+The independent parity-even dimension-four local scalar densities are spanned,
+up to total derivatives and algebraic curvature identities, by
+\(R_{\mu\nu\rho\sigma}^2\), \(R_{\mu\nu}^2\), \(R^2\), and \(\nabla^2R\).
+The two cohomologically nontrivial combinations solving
+Proposition~\ref{prop:weyl-wess-zumino-consistency} are the Euler density
+\(E_4\) and the Weyl-invariant density \(W^2\).  The displayed Weyl variation
+of \(\int\sqrt g\,R^2\) shows that \(\nabla^2R\) is a counterterm variation and
+therefore type D.  This proves the stated local classification in the
+parity-even metric sector.
+\end{proof}
+
+\begin{quotedtheorem}[Six-dimensional parity-even Weyl anomaly]
+\label{qthm:six-dimensional-parity-even-weyl-anomaly}
 In six dimensions, modulo type-D total-derivative terms, the parity-even bulk
 classification has one type-A coefficient and three type-B coefficients:
 \begin{equation}
@@ -444,9 +532,12 @@ two independent cubic Weyl contractions and one independent
 two-Weyl-tensor invariant with two derivatives; Ricci-dependent representatives
 either combine with these into the conformally covariant operator in \(I_3\),
 enter the Euler density \(E_6\), or are type-D counterterm variations.
+\end{quotedtheorem}
 
 \section{Anomaly Coefficients and Stress-Tensor Correlators}
 
+\begin{proposition}[Two-dimensional central charge and Weyl anomaly]
+\label{prop:two-dimensional-central-charge-weyl-anomaly}
 The same number \(c_{2d}\) in \eqref{eq:two-dimensional-weyl-anomaly} is the
 Virasoro central charge in the holomorphic stress-tensor OPE normalization
 \[
@@ -455,7 +546,10 @@ Virasoro central charge in the holomorphic stress-tensor OPE normalization
 The equality of these two definitions is obtained by taking two metric
 variations of \eqref{eq:two-dimensional-weyl-anomaly} around a flat metric and
 then rewriting the resulting contact Ward identity in complex coordinates.
+\end{proposition}
 
+\begin{proposition}[Four-dimensional \(C_T\) and \(c_{\rm W}\)]
+\label{prop:four-dimensional-ct-cw-normalization}
 With the two-point
 normalization of \eqref{eq:stress-tensor-two-point}, the Weyl-squared
 coefficient is fixed by the separated stress-tensor two-point coefficient:
@@ -470,7 +564,10 @@ quadratic curvature contact term, and matching the logarithmic scale
 dependence of the flat-space \(TT\) correlator to
 \eqref{eq:stress-tensor-two-point}.  The Euler term begins to contribute
 independent information at the next metric variation.
+\end{proposition}
 
+\begin{proposition}[Four-dimensional anomaly map from \(TTT\) data]
+\label{prop:four-dimensional-anomaly-map-from-ttt}
 The parity-even separated \(TTT\) correlator in \(D=4\) is described in
 Chapter~\ref{ch:volume-iii-correlation-functions-conformal-frames} by three
 coefficients, denoted there by \(a,b,c\) in
@@ -530,9 +627,12 @@ data not fixed by \(a_{\rm W}\) and \(c_{\rm W}\).  After \(C_T\) has fixed
 the overall stress-tensor normalization, Chapter~\ref{ch:cft-light-ray-energy-correlators}
 uses the conformal-collider coordinates \(t_2,t_4\) as detector coordinates on
 the remaining separated \(TTT\) data.
+\end{proposition}
 
 \section{Improvement of the Stress Tensor}
 
+\begin{proposition}[Scalar improvement of the flat stress tensor]
+\label{prop:scalar-stress-tensor-improvement}
 The stress tensor has improvement freedom.  If \(L(x)\) is a local scalar
 operator, then
 \begin{equation}
@@ -555,9 +655,23 @@ scalar and many scalar fixed points.  Its trace is
   =
   T^\mu{}_\mu
   +(D-1)\partial^2L .
- \]
+\]
 If \(T^\mu{}_\mu\) is a total Laplacian of a local scalar, an improvement can
 make the trace vanish in flat space.
+\end{proposition}
+
+\begin{proof}
+The added tensor is identically conserved in flat space because
+\[
+  \partial^\mu(\delta_{\mu\nu}\partial^2-\partial_\mu\partial_\nu)L
+  =
+  \partial_\nu\partial^2L-\partial^2\partial_\nu L
+  =
+  0 .
+\]
+Taking its trace gives
+\((D-1)\partial^2L\), which is the displayed trace shift.
+\end{proof}
 
 The improvement can be represented by adding a curvature coupling to the
 background-metric action.  For a scalar field \(\phi\), the term
@@ -573,6 +687,20 @@ flat-space action can change the flat-space stress tensor.
 
 \section{The Conformally Coupled Free Scalar}
 
+\begin{proposition}[Conformally coupled free scalar]
+\label{prop:conformally-coupled-free-scalar}
+For a real massless scalar field in \(D>2\) Euclidean dimensions, the curvature
+coupling
+\[
+  \xi_\ast=\frac{D-2}{4(D-1)}
+\]
+is the unique scalar-curvature improvement of the form
+\(\frac{\xi}{2}\int\sqrt g\,R\phi^2\) for which the flat-space stress tensor
+has vanishing trace modulo the scalar equation of motion.  The corresponding
+curved action is \eqref{eq:conformal-scalar-curved-action}.
+\end{proposition}
+
+\begin{proof}
 Consider a real massless scalar field in Euclidean signature.  The minimally
 coupled curved-space action is
 \[
@@ -733,6 +861,7 @@ free equation-of-motion ideal.  Equivalently, for local insertions
 \]
 At coincident points the factor \(\partial^2\widehat\phi\) generates the
 Schwinger--Dyson contact terms of the free Gaussian measure.
+\end{proof}
 
 \begin{figure}[H]
   \centering
@@ -767,6 +896,8 @@ Schwinger--Dyson contact terms of the free Gaussian measure.
 
 \section{Ward Identities with Stress-Tensor Insertions}
 
+\begin{proposition}[Stress-tensor Ward identity with spinning insertions]
+\label{prop:stress-ward-identity-spinning-insertions}
 Let
 \[
   X=
@@ -900,3 +1031,4 @@ The charge form of the Ward identity follows by integrating
 \(T^\mu{}_\nu\epsilon^\nu\) over a small sphere around each insertion.  This
 is the bridge between the local stress-tensor equation and the conformal
 algebra acting on local operators.
+\end{proposition}
