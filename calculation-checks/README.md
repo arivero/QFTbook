@@ -194,6 +194,11 @@ Current checks:
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)
   stress-tensor source sign, and the Lorentzian-to-radial \([P,K]\) sign.
+- `conformal_perturbation_rg_checks.py`: exact rational checks for the
+  two-dimensional conformal-perturbation section, including the cutoff-power
+  cancellation in the annular OPE integral, the second-order \(\pi\) factor,
+  the length-scale versus energy-scale beta-function sign, and the quadratic
+  contact-term scheme-shift law.
 - `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
   coefficients, quantum dimensions, shifted character exponents, and the

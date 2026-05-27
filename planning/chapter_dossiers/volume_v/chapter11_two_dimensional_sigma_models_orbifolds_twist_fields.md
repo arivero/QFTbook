@@ -150,7 +150,8 @@
   factor, the normalized transposition join/split class factors, and
   normalized two-cycle deformation operators.
 - Defines twist-field deformations as regulated integrated local-operator
-  perturbations with OPE/contact-term beta functions.
+  perturbations with a cutoff-shell derivation of the OPE beta function and
+  contact-term scheme law.
 
 ## Claims To Verify
 
@@ -291,8 +292,10 @@
     `a+b=K` gives `2Kab/((1+delta_ab)M(M-1))`, and the endpoint split into a
     fixed point plus a `b`-cycle gives `2(b+1)b(M-b)/(M(M-1))`.
 42. Twist-field deformations are conformal perturbations by projected local
-   fields; exact marginality requires the full beta-function/contact-term
-   analysis.
+   fields; the annular cutoff OPE gives
+   `beta_ell^A = y_A g^A - pi C_BC^A g^B g^C + O(g^3)`, the energy-scale beta
+   has the opposite sign, and quadratic contact-term changes shift
+   `b^A_BC` by `(y_B+y_C-y_A)M^A_BC`.
 43. In the source-coupled background-field definition, the Gaussian mean is
    `A^{-1}(J-L)`, so the condition \(\langle\xi\rangle_J=0\) fixes
    \(J=L\) and justifies computing the one-loop pole from
@@ -365,6 +368,10 @@
   integer-spin momentum/winding labels, bell/cigar one-loop geometry
   residuals, leading-versus-exact central-charge shifts, and
   Ising/tricritical examples.
+- `calculation-checks/conformal_perturbation_rg_checks.py` verifies the
+  annular OPE cutoff-power cancellation, the second-order \(\pi\) factor, the
+  length-scale versus energy-scale beta sign, and the quadratic contact-term
+  scheme-shift law used for twist-field deformations.
 - `calculation-checks/symmetric_product_orbifold_checks.py` verifies
   \(S_N\) centralizer orders, conjugacy-class counting, central-charge
   additivity, cycle-type twist weights, joining weight shifts, the two-cycle

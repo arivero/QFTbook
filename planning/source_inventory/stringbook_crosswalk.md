@@ -260,8 +260,10 @@ Current absorption:
   checks and the beta-normalized local coordinate map for the primitive
   joining cover, plus the Schwarzian/OPE-power ledger and class-normalized
   group factor for the primitive joining channel, together with the normalized
-  transposition join/split class-algebra factors.  The public arithmetic check
-  covers the central-charge,
+  transposition join/split class-algebra factors.  The twist-deformation layer
+  now derives the annular conformal-perturbation beta function and the
+  contact-term scheme law instead of leaving exact marginality as a slogan.
+  The public arithmetic check covers the central-charge,
   conformal-weight, field-identification, compact fusion, reflection-weight,
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex

@@ -3734,18 +3734,140 @@ by the OPEs of the \(\sigma_A\).  The coupling dimension is
 \[
   [\lambda^A]=2-\Delta_A .
 \]
-For \(\Delta_A<2\) the deformation is relevant.  For \(\Delta_A=2\), exact
-marginality is a condition on all beta functions, beginning with the
-quadratic OPE obstruction
+Separate this engineering dimension from the operator-theoretic obstruction as
+follows.  Choose a local flat coordinate patch and a short-distance cutoff
+\(a\).  Write dimensionless couplings \(g^A(a)\) by
 \[
-  \beta^C
+  S_{\mathrm{int}}(a)
   =
-  \pi C_{AB}{}^C\lambda^A\lambda^B+O(\lambda^3)
+  \sum_A g^A(a)\,a^{\Delta_A-2}
+  \int \dd^2z\,\sigma_A(z,\bar z),
+  \qquad
+  y_A=2-\Delta_A .
 \]
-in a scheme where the integrated two-point logarithm has coefficient \(\pi\).
-The coefficient \(C_{AB}{}^C\) is the coefficient of \(\sigma_C\) in the
-short-distance OPE \(\sigma_A(z)\sigma_B(0)\), after projecting to spinless
-dimension-two fields and after specifying contact-term conventions.
+
+\begin{proposition}[Cutoff OPE beta function]
+\label{prop:twist-field-cutoff-ope-beta}
+Assume that the spinless primary fields \(\sigma_A\) have diagonal two-point
+normalization and short-distance OPE
+\begin{equation}
+  \sigma_B(z,\bar z)\sigma_C(0)
+  \sim
+  \sum_A C_{BC}{}^A
+  |z|^{\Delta_A-\Delta_B-\Delta_C}\sigma_A(0)
+  +\hbox{descendants and other spins}.
+  \label{eq:twist-field-ope-coefficients}
+\end{equation}
+In the minimal annular cutoff scheme that discards derivative descendants and
+projects to the listed spinless primaries, the length-scale Wilsonian beta
+function
+\[
+  \beta_\ell^A=\frac{\dd g^A}{\dd \ell},
+  \qquad \ell=\log a ,
+\]
+is
+\begin{equation}
+  \beta_\ell^A
+  =
+  y_A g^A
+  -
+  \pi C_{BC}{}^A g^B g^C
+  +O(g^3),
+  \label{eq:twist-field-length-beta}
+\end{equation}
+with ordered repeated indices.  Equivalently, for the energy scale
+\(\mu=a^{-1}\),
+\begin{equation}
+  \mu\frac{\dd g^A}{\dd\mu}
+  =
+  -y_A g^A
+  +
+  \pi C_{BC}{}^A g^B g^C
+  +O(g^3).
+  \label{eq:twist-field-energy-beta}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Expand \(\exp(-S_{\mathrm{int}})\) to second order and isolate pairs with
+relative coordinate \(r=z-w\) in the annulus \(a<|r|<ae^{\dd\ell}\).  The
+term in the exponential is
+\[
+  \frac12 g^Bg^C a^{\Delta_B+\Delta_C-4}
+  \int\dd^2w\int_{a<|r|<ae^{\dd\ell}}\dd^2r\,
+  \sigma_B(w+r)\sigma_C(w).
+\]
+Using \eqref{eq:twist-field-ope-coefficients}, the contribution to the
+\(\sigma_A(w)\) channel is
+\[
+  \frac12 g^Bg^C C_{BC}{}^A
+  a^{\Delta_B+\Delta_C-4}
+  \int\dd^2w\,\sigma_A(w)
+  \int_a^{ae^{\dd\ell}}2\pi\rho\,\dd\rho\,
+  \rho^{\Delta_A-\Delta_B-\Delta_C}.
+\]
+To first order in \(\dd\ell\), the radial integral is
+\[
+  2\pi\,\dd\ell\,
+  a^{2+\Delta_A-\Delta_B-\Delta_C},
+\]
+so the local term is
+\[
+  \pi\,g^Bg^C C_{BC}{}^A\,\dd\ell\,
+  a^{\Delta_A-2}\int\dd^2w\,\sigma_A(w).
+\]
+Because this term appears with a plus sign in the expansion of
+\(\exp(-S_{\mathrm{int}})\), it decreases the local coefficient in
+\(S_{\mathrm{int}}\) by the same amount.  The classical rescaling of the
+dimensionless coupling contributes \(y_Ag^A\dd\ell\).  Combining the two
+effects gives \eqref{eq:twist-field-length-beta}, and
+\eqref{eq:twist-field-energy-beta} follows from \(\log\mu=-\ell\).
+\end{proof}
+
+\begin{remark}[Contact terms and coupling coordinates]
+\label{rem:twist-field-contact-scheme}
+A local contact convention is a choice of finite counterterms supported at
+operator collisions.  To quadratic order it is equivalently a coupling
+coordinate change
+\[
+  g^{\prime A}=g^A+M^A{}_{BC}g^Bg^C+O(g^3).
+\]
+If
+\[
+  \beta_\ell^A=y_Ag^A+b^A{}_{BC}g^Bg^C+O(g^3),
+\]
+then
+\begin{equation}
+  b^{\prime A}{}_{BC}
+  =
+  b^A{}_{BC}
+  +(y_B+y_C-y_A)M^A{}_{BC}.
+  \label{eq:twist-field-quadratic-scheme-shift}
+\end{equation}
+Indeed,
+\[
+  \frac{\partial g^{\prime A}}{\partial g^D}\beta_\ell^D
+  =
+  y_Ag^A+
+  \bigl(b^A{}_{BC}+(y_B+y_C)M^A{}_{BC}\bigr)g^Bg^C
+  +O(g^3),
+\]
+and substituting \(g^A=g^{\prime A}-M^A{}_{BC}g^{\prime B}g^{\prime C}
++O(g^{\prime3})\) gives \eqref{eq:twist-field-quadratic-scheme-shift}.
+Thus a quadratic term is scheme-invariant only in resonant channels
+\(y_A=y_B+y_C\), including the marginal-to-marginal channel
+\(y_A=y_B=y_C=0\).  Exact marginality of a spinless dimension-two twist
+deformation therefore starts with the condition that the projection of
+\(C_{BC}{}^A\) to dimension-two nonredundant primaries vanish in the chosen
+operator algebra; higher orders require the full contact-term calculus, not
+only the bare group-theoretic monodromy.
+\end{remark}
+
+The relevance classification is the linear part of
+\eqref{eq:twist-field-length-beta}: if \(\Delta_A<2\), then \(y_A>0\) and the
+coupling grows toward longer distances; if \(\Delta_A=2\), the first
+nontrivial obstruction is the dimension-two projection of the quadratic OPE
+coefficient in \eqref{eq:twist-field-energy-beta}.
 
 In the symmetric-product case of
 Section~\ref{sec:symmetric-product-orbifolds}, a deformation by a single seed
