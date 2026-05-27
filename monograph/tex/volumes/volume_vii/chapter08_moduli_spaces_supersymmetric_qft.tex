@@ -192,6 +192,146 @@ examples the Higgs-branch hyperk\"ahler metric is protected, but this protection
 is a statement about the supersymmetric Wilsonian scheme and the branch
 coordinates, not a statement about arbitrary coordinate choices.
 
+The quotient statement has concrete content already in the simplest
+hypermultiplet model.  We spell it out because this is the local model behind
+many later Higgs-branch calculations.
+
+\begin{proposition}[Rank-one hypermultiplet quotient]
+\label{prop:n2-rank-one-hyperkahler-quotient}
+Let \(N\geq2\).  Let \(U(1)\) act on
+\[
+  V=\mathbb C^N_q\oplus\mathbb C^N_{\widetilde q}
+\]
+by
+\[
+  q_i\longmapsto \ee^{\ii\alpha}q_i,\qquad
+  \widetilde q_i\longmapsto
+  \ee^{-\ii\alpha}\widetilde q_i,\qquad i=1,\ldots,N .
+\]
+Use the complex structure in which \(q_i,\widetilde q_i\) are holomorphic
+coordinates.  The complex moment map and real moment map are
+\[
+  \mu_{\mathbb C}(q,\widetilde q)
+  =
+  \sum_{i=1}^N q_i\widetilde q_i,
+  \qquad
+  \mu_{\mathbb R}(q,\widetilde q)
+  =
+  \sum_{i=1}^N |q_i|^2-\sum_{i=1}^N|\widetilde q_i|^2 .
+\]
+For real FI parameter \(\zeta>0\) and complex FI parameter \(0\), the
+Higgs-branch quotient
+\begin{equation}
+  \mathcal M_H(\zeta)
+  =
+  \{\,\mu_{\mathbb C}=0,\ \mu_{\mathbb R}=\zeta\,\}/U(1)
+  \label{eq:rank-one-hyperkahler-quotient}
+\end{equation}
+is biholomorphic, in this complex structure, to \(T^\ast\mathbb P^{N-1}\).
+Its complex dimension is \(2(N-1)\), equivalently its real dimension is
+\(4(N-1)\).  On the patch \(U_a=\{q_a\neq0\}\), local holomorphic
+coordinates are
+\begin{equation}
+  z_i^{(a)}=\frac{q_i}{q_a},\qquad
+  p_i^{(a)}=q_a\widetilde q_i,\qquad i\neq a,
+  \label{eq:rank-one-hyperkahler-local-coordinates}
+\end{equation}
+and the complex moment-map equation determines
+\begin{equation}
+  q_a\widetilde q_a
+  =
+  -\sum_{i\neq a}z_i^{(a)}p_i^{(a)} .
+  \label{eq:rank-one-hyperkahler-moment-solve}
+\end{equation}
+The holomorphic one-form
+\[
+  \Theta=\sum_{i=1}^N\widetilde q_i\,dq_i
+\]
+descends to the canonical cotangent one-form
+\begin{equation}
+  \Theta=\sum_{i\neq a}p_i^{(a)}\,dz_i^{(a)}
+  \label{eq:rank-one-hyperkahler-cotangent-one-form}
+\end{equation}
+on \(U_a\).
+\end{proposition}
+
+\begin{proof}
+First remove the real quotient from the holomorphic bookkeeping.  If
+\(\mu_{\mathbb R}=\zeta>0\), then \(q\neq0\).  Conversely, fix a point
+\((q,\widetilde q)\) with \(q\neq0\) and \(\mu_{\mathbb C}=0\).  Along the
+positive real part of the complexified orbit,
+\[
+  q\mapsto rq,\qquad
+  \widetilde q\mapsto r^{-1}\widetilde q,\qquad r>0,
+\]
+the real moment map becomes
+\[
+  f(r)=r^2\|q\|^2-r^{-2}\|\widetilde q\|^2 .
+\]
+This function is continuous and strictly increasing on \(r>0\), with limit
+\(-\infty\) as \(r\to0\) if \(\widetilde q\neq0\) and limit \(0\) if
+\(\widetilde q=0\), and with limit \(+\infty\) as \(r\to\infty\).  Hence
+there is a unique positive \(r\) solving \(f(r)=\zeta\).  The remaining phase
+is precisely the compact \(U(1)\) action.  Thus the quotient
+\eqref{eq:rank-one-hyperkahler-quotient} is identified with the complex
+quotient
+\begin{equation}
+  \{\,\mu_{\mathbb C}=0,\ q\neq0\,\}/\mathbb C^\ast .
+  \label{eq:rank-one-hyperkahler-complex-quotient}
+\end{equation}
+
+On \(U_a\), the coordinates in
+\eqref{eq:rank-one-hyperkahler-local-coordinates} are invariant under
+\(\mathbb C^\ast\).  They determine the orbit because \(q_a\) supplies the
+complexified gauge scale, the ratios determine all \(q_i\), the \(p_i^{(a)}\)
+determine all \(\widetilde q_i\) with \(i\neq a\), and
+\eqref{eq:rank-one-hyperkahler-moment-solve} determines
+\(\widetilde q_a\).  There are \(2(N-1)\) complex coordinates, so the complex
+dimension is \(2(N-1)\).
+
+It remains to check that the local charts glue as the cotangent bundle, not
+just as an abstract \(2(N-1)\)-dimensional quotient.  It suffices to compare
+two patches; relabel the indices as \(a=1\) and \(b=2\).  Write
+\[
+  z_i=\frac{q_i}{q_1},\quad p_i=q_1\widetilde q_i
+  \quad (i\neq1),
+\]
+and on the patch \(q_2\neq0\),
+\[
+  w_1=\frac{q_1}{q_2}=\frac1{z_2},\qquad
+  w_i=\frac{q_i}{q_2}=\frac{z_i}{z_2}\quad (i\neq1,2),
+\]
+\[
+  r_1=q_2\widetilde q_1=-z_2\sum_{i\neq1}z_ip_i,
+  \qquad
+  r_i=q_2\widetilde q_i=z_2p_i\quad (i\neq1,2),
+\]
+where the formula for \(r_1\) uses \(\mu_{\mathbb C}=0\).  A direct
+differentiation gives
+\begin{equation}
+  r_1\,dw_1+\sum_{i\neq1,2}r_i\,dw_i
+  =
+  \sum_{i\neq1}p_i\,dz_i .
+  \label{eq:rank-one-hyperkahler-one-form-transition}
+\end{equation}
+Thus the transition functions preserve the canonical holomorphic cotangent
+one-form.
+
+Finally, on a single patch,
+\[
+  dq_i=z_i^{(a)}\,dq_a+q_a\,dz_i^{(a)}\qquad (i\neq a).
+\]
+Using \eqref{eq:rank-one-hyperkahler-moment-solve}, the coefficient of
+\(dq_a\) in \(\sum_i\widetilde q_i\,dq_i\) is
+\[
+  \widetilde q_a+\sum_{i\neq a}z_i^{(a)}\widetilde q_i=0,
+\]
+while the coefficient of \(dz_i^{(a)}\) is
+\(q_a\widetilde q_i=p_i^{(a)}\).  This proves
+\eqref{eq:rank-one-hyperkahler-cotangent-one-form} and identifies the quotient
+with \(T^\ast\mathbb P^{N-1}\).
+\end{proof}
+
 \section{Singularities}
 
 A point \(p\in\mathcal M\) is singular when the low-energy description changes

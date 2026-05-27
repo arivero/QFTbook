@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Finite algebra checks for supersymmetric moduli-space quotient conventions."""
 
+from fractions import Fraction
+
 
 def assert_equal(actual, expected, label):
     if actual != expected:
@@ -73,10 +75,110 @@ def check_f_term_ideal_equivariance():
     assert_equal(charge_fy + q_y, 0, "F_y d y invariant pairing")
 
 
+def check_rank_one_hyperkahler_quotient_dimensions():
+    """Check the dimension ledger for T^* P^{N-1} as a hyperkahler quotient."""
+
+    for n in range(2, 20):
+        ambient_complex_dimension = 2 * n
+        complex_moment_equations = 1
+        complex_gauge_dimension = 1
+        quotient_complex_dimension = (
+            ambient_complex_dimension
+            - complex_moment_equations
+            - complex_gauge_dimension
+        )
+
+        ambient_real_dimension = 4 * n
+        real_moment_equations = 3
+        compact_gauge_dimension = 1
+        quotient_real_dimension = (
+            ambient_real_dimension
+            - real_moment_equations
+            - compact_gauge_dimension
+        )
+
+        assert_equal(
+            quotient_complex_dimension,
+            2 * (n - 1),
+            "rank-one hyperkahler quotient complex dimension",
+        )
+        assert_equal(
+            quotient_real_dimension,
+            4 * (n - 1),
+            "rank-one hyperkahler quotient real dimension",
+        )
+        assert_equal(
+            2 * quotient_complex_dimension,
+            quotient_real_dimension,
+            "rank-one hyperkahler quotient real/complex dimension match",
+        )
+
+
+def check_rank_one_hyperkahler_one_form_descent():
+    """Check that sum tilde(q)_i dq_i descends to sum p_i dz_i on a patch."""
+
+    for n in range(2, 10):
+        q_a = Fraction(5, 3)
+        z = {index: Fraction(index + 2, index + 5) for index in range(1, n)}
+        p = {index: Fraction(2 * index + 3, index + 7) for index in range(1, n)}
+
+        tilde = {index: p[index] / q_a for index in range(1, n)}
+        tilde_a = -sum(z[index] * p[index] for index in range(1, n)) / q_a
+
+        dq_a_coefficient = tilde_a + sum(
+            z[index] * tilde[index]
+            for index in range(1, n)
+        )
+        assert_equal(
+            dq_a_coefficient,
+            0,
+            "rank-one hyperkahler quotient vertical one-form coefficient",
+        )
+
+        for index in range(1, n):
+            dz_coefficient = q_a * tilde[index]
+            assert_equal(
+                dz_coefficient,
+                p[index],
+                "rank-one hyperkahler quotient cotangent coordinate",
+            )
+
+
+def check_rank_one_hyperkahler_cotangent_transition():
+    """Check a patch transition preserves the canonical cotangent one-form."""
+
+    for n in range(2, 10):
+        z = {index: Fraction(index + 2, index + 4) for index in range(1, n)}
+        p = {index: Fraction(3 * index + 1, 2 * index + 5) for index in range(1, n)}
+        z_1 = z[1]
+
+        # Move from the q_0 != 0 patch to the q_1 != 0 patch.  New coordinates
+        # are w_0=1/z_1 and w_j=z_j/z_1 for j>=2.  The new momenta are
+        # r_0=-z_1 sum_j z_j p_j and r_j=z_1 p_j.
+        r_0 = -z_1 * sum(z[index] * p[index] for index in range(1, n))
+        r = {index: z_1 * p[index] for index in range(2, n)}
+
+        rhs_coefficients = {index: Fraction(0) for index in range(1, n)}
+        rhs_coefficients[1] += r_0 * (-1 / (z_1 * z_1))
+        for index in range(2, n):
+            rhs_coefficients[index] += r[index] * (1 / z_1)
+            rhs_coefficients[1] += r[index] * (-z[index] / (z_1 * z_1))
+
+        for index in range(1, n):
+            assert_equal(
+                rhs_coefficients[index],
+                p[index],
+                "rank-one hyperkahler cotangent transition preserves one-form",
+            )
+
+
 def main():
     check_rank_one_abelian_invariant_ring()
     check_rank_one_abelian_dimension_count()
     check_f_term_ideal_equivariance()
+    check_rank_one_hyperkahler_quotient_dimensions()
+    check_rank_one_hyperkahler_one_form_descent()
+    check_rank_one_hyperkahler_cotangent_transition()
     print("All supersymmetric moduli-space quotient checks passed.")
 
 
