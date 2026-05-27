@@ -52,6 +52,11 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - `Y_n^circ,Y^oplus,Y^ominus`: one-wing `n|w` and two-sheet `y` Y-functions
   used to derive the auxiliary-wing Y-system.
 - `Y_{a,s}`: T-hook Y-system variables.
+- `mathcal A_l`: strip of meromorphy
+  `-l/2 < Im u < l/2` after explicitly removing state source factors.
+- `Y^bullet_n,Y^oplus,Y^ominus,Y^triangle_n,Y^circ_n`: stringbook
+  Y-system nodes mapped to `Y_{n,0}`, `Y_{1,pm1}^{-1}`,
+  `Y_{2,pm2}`, `Y_{n+1,pm1}^{-1}`, and `Y_{1,pm(n+1)}^{-1}`.
 - `B_alpha(u)=(u-alpha+i/2)/(u-alpha-i/2)`: elementary shifted zero-pole source
   factor whose shifted product supplies a local analytic Y-system source.
 - `u_j`: exact physical Bethe roots in excited-state TBA.
@@ -75,6 +80,9 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   `xi_Q=(tilde p-i Q)/sqrt(Q^2+tilde p^2)`, including shortening,
   `log(x_Q^-/x_Q^+)=tilde E_Q`, the stringbook mirror momentum equation, and
   weak Boltzmann scaling `exp(-L tilde E_Q)=O(g^{2L})`.
+- Cross-references the same sheet convention to the Chapter 15
+  fermionic-node large-`u` QSC bridge, without duplicating that later
+  derivation inside the mirror-kernel setup.
 - Defines a mirror-kernel datum as the scattering factor together with source
   and target contours, and adds the mirror Bethe-string node inventory.
 - Adds the one-wing mirror auxiliary Bethe-Yang subsystem in the stringbook
@@ -129,8 +137,13 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
 - Proves the local shifted zero-pole source-factor identity
   `B_a^+ B_a^-=(u-a+i)/(u-a-i)`, explaining how contour and sheet data enter
   analytic Y-system equations as rational source factors.
-- Adds analytic Y-system data: shifted strips, meromorphy domains,
-  discontinuities, and exact-root regularity conditions.
+- Adds explicit analytic Y-system data in the stringbook convention: the
+  stringbook-to-T-hook node map, strip assumptions, first Zhukovsky
+  branch-point lattice, central fermionic cut inversion
+  `Y_{2,pm2,+}=1/Y_{1,pm1,-}`, source-factor recording rule, and exact-root
+  regularity conditions.  The text states that global analytic continuation is
+  an independent datum to be checked against the mirror sheet and dressing
+  branch, not a consequence of local Hirota algebra or of literature authority.
 - Uses Konishi as the first wrapping test and separates finite-length
   correction from magnon-dispersion correction.
 - Adds the weak-coupling Konishi root expansion and ABA coefficient.
@@ -204,6 +217,10 @@ node domain.
 - The same script checks the local analytic Y-system source factor
   `B_a^+B_a^-=(u-a+i)/(u-a-i)`, its inverse orientation, and finite products
   of shifted zero-pole sources.
+- The same script checks the analytic Y-system strip/cut bookkeeping:
+  stringbook-to-T-hook node map, nearest branch-point lattice outside the open
+  strip, integer central fermion cut shifts, central cut inversion, and finite
+  source-power accounting.
 - The same script verifies Konishi four-loop wrapping coefficient arithmetic,
   the exact weak-density rationalization behind the `q=2u` integrand, the
   exact paired-root factorization of the Konishi quartics, the `Q=1`

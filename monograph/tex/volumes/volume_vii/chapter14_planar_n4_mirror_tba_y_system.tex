@@ -209,6 +209,14 @@ Finally,
 small-\(g\) expansion gives \eqref{eq:planar-n4-mirror-weak-boltzmann}.
 \end{proof}
 
+The same mirror sheet parametrization fixes the large-rapidity fermionic-node
+ratio used later to identify the \(Y_{1,1}Y_{2,2}\) energy exponent in the QSC
+bridge; see Proposition~\ref{prop:qsc-fermionic-node-large-u-ratio}.  This is a
+good example of the convention burden in this subject: the sign comes from the
+inside/outside assignment just proved here, but the ratio itself belongs to the
+later TBA-to-QSC asymptotic bridge rather than to the definition of the mirror
+kernel.
+
 \begin{definition}[Mirror-kernel datum]
 \label{def:planar-n4-mirror-kernel-datum}
 A mirror kernel in this chapter means the triple
@@ -1384,35 +1392,90 @@ from the exact Bethe-root regularity conditions.
 
 The analytic Y-system supplements \eqref{eq:planar-n4-y-system} by specifying
 where each shifted function is meromorphic and which discontinuities occur
-when a shift crosses a cut.  A compact way to state the data is to introduce
-the shifted notation
+when a shift crosses a cut.  This is not cosmetic.  The symbolic Y-system is a
+local relation; the analytic data determine which local solution is the
+finite-volume spectrum.
+
+We use the shifted notation
 \[
   f^{[n]}(u)=f(u+\ii n/2)
 \]
-and to assign to every T-hook node \((a,s)\) a strip
+and write
 \[
-  \mathcal A_{a,s}
-  =
-  \{u\in\C:\ |\operatorname{Im}u|<\alpha_{a,s}/2\}
-  \setminus\{\text{short Zhukovsky cuts and state poles}\}.
+  Z_0^\vee=[-2g,2g]
 \]
-The integers \(\alpha_{a,s}\) are fixed by the T-hook position and by the
-chosen analytic gauge for \(T_{a,s}\).  Inside \(\mathcal A_{a,s}\), the
-functions \(Y_{a,s}\) are meromorphic; on the boundary of the strip the
-discontinuity is inherited from the mirror dressing phase and from Bethe-root
-zeros.  The exact Bethe equations are then regularity conditions:
+for the central mirror-sheet Zhukovsky cut.  Let \(\mathcal A_\ell\) denote the
+class of functions meromorphic in the open strip
+\begin{equation}
+  -\frac{\ell}{2}<\operatorname{Im}u<\frac{\ell}{2},
+  \label{eq:planar-n4-analytic-strip}
+\end{equation}
+after removing state-dependent poles and zeros that are explicitly recorded by
+source factors.  The basic stringbook-to-T-hook identification is
+\begin{align}
+  Y^\bullet_n=Y_{n,0},\qquad
+  Y^{\oplus,L/R}=Y_{1,\pm1}^{-1},\qquad
+  Y^{\ominus,L/R}=Y_{2,\pm2},
+  \nonumber\\
+  Y^{\vartriangle,L/R}_n=Y_{n+1,\pm1}^{-1},\qquad
+  Y^{\circ,L/R}_n=Y_{1,\pm(n+1)}^{-1}.
+  \label{eq:planar-n4-y-node-stringbook-map}
+\end{align}
+
+\begin{assumption}[Analytic Y-system strip and cut data]
+\label{ass:planar-n4-analytic-y-system-data}
+Fix the mirror-TBA sheet and the stringbook node convention
+\eqref{eq:planar-n4-y-node-stringbook-map}.  For every \(n\geq1\),
+\begin{equation}
+  Y_{n,0},\qquad Y_{n+1,\pm1},\qquad Y_{1,\pm(n+1)}
+  \in \mathcal A_n .
+  \label{eq:planar-n4-y-strip-assumption}
+\end{equation}
+Their first Zhukovsky branch points occur at
+\begin{equation}
+  u=\pm 2g+\frac{\ii\ell}{2},
+  \qquad
+  \ell=\pm n,\ \pm(n+2),\ \pm(n+4),\ldots .
+  \label{eq:planar-n4-y-branch-lattice}
+\end{equation}
+The central fermionic nodes \(Y_{1,\pm1}\) and \(Y_{2,\pm2}\) have cuts
+\(Z_0^\vee+\ii m\), \(m\in\mathbb Z\), and their two sides on the central cut
+are related by
+\begin{equation}
+  Y_{2,\pm2}(u+\ii0)=\frac{1}{Y_{1,\pm1}(u-\ii0)},
+  \qquad u\in Z_0^\vee .
+  \label{eq:planar-n4-central-fermion-cut-inversion}
+\end{equation}
+Finally, every zero or pole introduced by an excited-state contour deformation
+is part of the data and must be recorded by a finite product of local factors
+of the form in Proposition~\ref{prop:planar-n4-local-y-source-factor}.
+\end{assumption}
+
+The strip statement is an analytic input extracted from the mirror TBA and its
+asymptotic Bethe-ansatz limit; it is not a theorem of the local Hirota algebra.
+The same limitation is visible in the Arutyunov--Frolov derivation of the
+mirror TBA: applying the inverse \(s\)-kernel loses data, and the local
+Y-equations are controlled on the central mirror interval unless additional
+analytic-continuation assumptions are supplied.  We do not use that literature
+statement as a proof.  The assumption above is the independent monograph datum
+that must be checked against the chosen mirror sheet, source factors, and
+dressing branch.
+The branch-point lattice explains why the homogeneous Y-system can be shifted
+inside the strip \(\mathcal A_n\) but acquires sources when an endpoint, pole,
+zero, or dressing cut is crossed.  The central inversion
+\eqref{eq:planar-n4-central-fermion-cut-inversion} is the piece that later
+turns into the magic-sheet gluing condition for the one-row T-gauge and,
+eventually, into the \(P\mu\)-system.
+
+With these conventions the exact Bethe equations are regularity conditions:
 \[
   1+Y_{\bullet_1}^{\rm phys}(u_j)=0
 \]
-removes would-be singularities at the physical roots after the contour
-deformation.
-
-This formulation is deliberately more verbose than the symbolic Y-system.
-The shifts \(u\mapsto u\pm\ii/2\) can move a point from the physical sheet to
-the mirror sheet, and the operations ``shift'' and ``continue through a cut''
-do not commute without recording the path.  In practical TBA calculations
-this information is encoded in the integration contours, source terms, and
-driving terms for the excited state.
+removes would-be singularities at the physical roots after contour
+deformation.  This formulation is deliberately more verbose than the symbolic
+Y-system.  The shifts \(u\mapsto u\pm\ii/2\) can move a point from the physical
+sheet to the mirror sheet, and the operations ``shift'' and ``continue through
+a cut'' do not commute without recording the path.
 
 \section{Konishi as the First Wrapping Test}
 

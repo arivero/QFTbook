@@ -3028,6 +3028,87 @@ def check_y_system_shift_source_factor() -> None:
     assert_close("Y-system finite source product", shifted_product, rational_product)
 
 
+def check_analytic_y_system_strip_and_cut_data() -> None:
+    """Check analytic Y-system strip, branch-lattice, and node bookkeeping."""
+
+    def t_hook_node(stringbook_node: tuple[str, int, str]) -> tuple[int, int, int]:
+        family, rank, wing = stringbook_node
+        wing_sign = 1 if wing == "L" else -1
+        if family == "bullet":
+            return (rank, 0, 1)
+        if family == "oplus":
+            return (1, wing_sign, -1)
+        if family == "ominus":
+            return (2, 2 * wing_sign, 1)
+        if family == "triangle":
+            return (rank + 1, wing_sign, -1)
+        if family == "circle":
+            return (1, wing_sign * (rank + 1), -1)
+        raise ValueError(f"unknown stringbook node family: {family}")
+
+    expected_nodes = {
+        ("bullet", 3, "L"): (3, 0, 1),
+        ("oplus", 0, "L"): (1, 1, -1),
+        ("oplus", 0, "R"): (1, -1, -1),
+        ("ominus", 0, "L"): (2, 2, 1),
+        ("ominus", 0, "R"): (2, -2, 1),
+        ("triangle", 4, "L"): (5, 1, -1),
+        ("triangle", 4, "R"): (5, -1, -1),
+        ("circle", 2, "L"): (1, 3, -1),
+        ("circle", 2, "R"): (1, -3, -1),
+    }
+    for node, expected in expected_nodes.items():
+        if t_hook_node(node) != expected:
+            raise AssertionError("analytic Y-system stringbook/T-hook node map failed")
+
+    def branch_offsets(rank: int, depth: int = 4) -> list[int]:
+        offsets: list[int] = []
+        for step in range(depth):
+            value = rank + 2 * step
+            offsets.extend((-value, value))
+        return sorted(offsets)
+
+    for rank in range(1, 8):
+        offsets = branch_offsets(rank)
+        nearest_upper = min(offset for offset in offsets if offset > 0)
+        nearest_lower = max(offset for offset in offsets if offset < 0)
+        if (nearest_lower, nearest_upper) != (-rank, rank):
+            raise AssertionError("analytic Y-system nearest branch lattice failed")
+        if not (-rank / 2 < 0 < rank / 2):
+            raise AssertionError("analytic Y-system central strip should contain real axis")
+        for offset in offsets:
+            imag_position = Fraction(offset, 2)
+            if Fraction(-rank, 2) < imag_position < Fraction(rank, 2):
+                raise AssertionError("analytic Y-system branch point entered open strip")
+
+    central_cut_shifts = [2 * index for index in range(-3, 4)]
+    shifted_rank_two_branches = branch_offsets(2, depth=4)
+    for shift in central_cut_shifts:
+        if shift % 2:
+            raise AssertionError("central fermion cuts should lie at integer shifts")
+    if any(abs(offset) % 2 for offset in shifted_rank_two_branches):
+        raise AssertionError("rank-two branch lattice should have integer cut shifts")
+
+    boundary_samples = (
+        (0.7 + 0.2j, 1 / (0.7 + 0.2j)),
+        (-1.1 + 0.4j, 1 / (-1.1 + 0.4j)),
+        (0.3 - 0.8j, 1 / (0.3 - 0.8j)),
+    )
+    for lower_y11, upper_y22 in boundary_samples:
+        assert_close(
+            "central fermion cut inversion",
+            upper_y22 * lower_y11,
+            1,
+        )
+        if abs(upper_y22 - lower_y11) < 1.0e-14:
+            raise AssertionError("central inversion check failed to detect sheet inversion")
+
+    source_powers = Counter({("root_a", 1): 2, ("root_b", -1): 1})
+    total_power = sum(power * multiplicity for (_root, power), multiplicity in source_powers.items())
+    if total_power != 1:
+        raise AssertionError("analytic source-power bookkeeping failed")
+
+
 def check_konishi_four_loop_wrapping_arithmetic() -> None:
     # ABA coefficient: -(2820 + 288 zeta_3).
     # Wrapping coefficient: 324 + 864 zeta_3 - 1440 zeta_5.
@@ -4875,6 +4956,7 @@ def main() -> None:
     check_excited_tba_contour_deformation_residues()
     check_mirror_wing_kernel_inverse()
     check_y_system_shift_source_factor()
+    check_analytic_y_system_strip_and_cut_data()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
     check_konishi_wrapping_exact_residue_reduction()

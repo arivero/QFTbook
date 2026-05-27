@@ -1941,3 +1941,49 @@ Content added:
   logical-status and motivation clarification; the convention-sensitive
   sheet and scalar algebra remains covered by the existing planar
   integrability checks.
+
+## Continuation LXI: Analytic Y-System Strip and Cut Data
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Replaced the overly terse analytic Y-system paragraph by an explicit
+  stringbook-convention datum.
+- The text now defines the strip `mathcal A_l`, the central mirror cut
+  `Z_0^vee`, and the stringbook-to-T-hook node map
+  `Y^bullet_n=Y_{n,0}`, `Y^oplus=Y_{1,pm1}^{-1}`,
+  `Y^ominus=Y_{2,pm2}`, `Y^triangle_n=Y_{n+1,pm1}^{-1}`,
+  `Y^circ_n=Y_{1,pm(n+1)}^{-1}`.
+- It states the branch-point lattice
+  `u=pm 2g + i ell/2`, `ell=pm n,pm(n+2),...`, for the
+  `Y_{n,0}`, `Y_{n+1,pm1}`, and `Y_{1,pm(n+1)}` families.
+- It records the central fermionic cut inversion
+  `Y_{2,pm2}(u+i0)=1/Y_{1,pm1}(u-i0)` on `Z_0^vee`, and ties the
+  exact-root conditions to source-factor recording rather than to the
+  homogeneous Y-system alone.
+- The text explicitly says that the global analytic continuation is not
+  proved by local Hirota algebra or by appeal to the literature.  The
+  Arutyunov--Frolov papers are used here only as convention and warning
+  checks; the monograph datum must be independently checked against the
+  selected mirror sheet, source factors, and dressing branch.
+- Added a Chapter 14 bridge sentence to the Chapter 15
+  fermionic-node large-`u` ratio, avoiding a duplicate derivation while
+  keeping the mirror sheet convention visible at the point where the sign is
+  fixed.
+
+Calculation checks added:
+
+- Added `check_analytic_y_system_strip_and_cut_data()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the stringbook/T-hook node map, the nearest branch-point lattice relative
+  to the open strip, integer central fermion cut shifts, central cut
+  inversion, and finite source-power bookkeeping.
+- Confirmed that `check_qsc_fermionic_node_ratio_large_u()` remains part of
+  the executed planar suite in the QSC block, rather than being duplicated in
+  Chapter 14.
