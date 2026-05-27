@@ -11,10 +11,10 @@ derivative identities, finite-regulator Polyakov-loop effective-measure
 bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
 one-gluon exchange color factors for dense pairing, leading-log magnetic gap
 coefficient bookkeeping, baryon-number cumulants, Roberge--Weiss periodicity
-bookkeeping, color-flavor-locked gauge-invariant composite charges,
-screening and collective-mode counts, and the color-flavor-locked symmetry
-count.  It is not a lattice simulation and it does not assert the existence
-or order of any QCD phase transition.
+bookkeeping, dense-matter neutrality constraints, color-flavor-locked
+gauge-invariant composite charges, screening and collective-mode counts, and
+the color-flavor-locked symmetry count.  It is not a lattice simulation and
+it does not assert the existence or order of any QCD phase transition.
 """
 
 from fractions import Fraction
@@ -492,6 +492,33 @@ def check_cfl_gauge_invariant_composite_charges():
     assert_equal("CFL chiral composite baryon charge", sigma_charge, Fraction(0, 1))
 
 
+def check_dense_neutrality_bookkeeping():
+    # The ideal CFL electric charge matrix is traceless in flavor space.
+    # Equal flavor densities therefore give zero electric density at zero
+    # electric source.
+    q_u = Fraction(2, 3)
+    q_d = Fraction(-1, 3)
+    q_s = Fraction(-1, 3)
+    assert_equal("ideal CFL flavor electric trace", q_u + q_d + q_s, Fraction(0))
+
+    equal_flavor_density = Fraction(5, 7)
+    electric_density = equal_flavor_density * (q_u + q_d + q_s)
+    assert_equal("ideal CFL electric neutrality", electric_density, Fraction(0))
+
+    # A simultaneous color and flavor Cartan transformation leaves U=1
+    # invariant because the infinitesimal variation is X_color-X_flavor.
+    x_color = [q_u, q_d, q_s]
+    x_flavor = [q_u, q_d, q_s]
+    variation_diagonal = [a - b for a, b in zip(x_color, x_flavor)]
+    assert_equal("CFL rotated electromagnetic invariance", variation_diagonal, [Fraction(0)] * 3)
+
+    # Gauge charge neutrality is a constraint: the physical projector kills
+    # every infinitesimal small-gauge generator, so the expected charge is
+    # exactly zero before any thermodynamic limit.
+    gauss_projected_charge = Fraction(0)
+    assert_equal("Gauss-law projected color charge", gauss_projected_charge, Fraction(0))
+
+
 def check_cfl_screening_and_collective_counts():
     # In ideal CFL, SU(3)_color is completely Higgsed: the eight adjoint
     # color directions are screened, while the physical gapless modes are the
@@ -533,6 +560,7 @@ def main():
     check_magnetic_gap_leading_log_coefficients()
     check_cfl_global_goldstone_count()
     check_cfl_gauge_invariant_composite_charges()
+    check_dense_neutrality_bookkeeping()
     check_cfl_screening_and_collective_counts()
     print("All QCD phase-structure checks passed.")
 

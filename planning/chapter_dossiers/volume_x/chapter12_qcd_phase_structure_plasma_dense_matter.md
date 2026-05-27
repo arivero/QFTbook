@@ -55,6 +55,12 @@ GitHub issue #628.
   theory shell scale, patch quark field, and residual momentum components.
 - `N_ch(0)`, `Delta`: channel density of states at the Fermi surface and the
   superconducting gap entering the BCS logarithm.
+- `Pi_phys`, `G_Lambda(f)`, `Q_A`, `mu_A`: finite-regulator physical-state
+  projector, Gauss-law generator, gauge-invariant global charges, and their
+  thermodynamic sources.
+- `Q_em`, `mu_Q`, `A_0^a`: electromagnetic flavor generator, its global
+  neutrality source, and temporal color-gauge background coordinates used in
+  gauge-fixed neutrality equations.
 - `T_1 dot T_2`, `C_2(R)`: one-gluon exchange color operator and quadratic
   Casimir used to identify the attractive dense-quark pairing channel.
 - `D_T(omega,k_perp)`, `lambda_mag`, `Lambda_M`: HDL transverse magnetic
@@ -156,6 +162,13 @@ GitHub issue #628.
 - Derives the BCS logarithm from the Fermi-surface shell as a controlled
   instability of a specified attractive channel, separating the universal
   logarithmic mechanism from the QCD-specific gap prefactor.
+- Defines finite-regulator global-charge ensembles with the physical
+  gauge-invariant projector, proves that Gauss-law generators annihilate the
+  physical projector and therefore cannot be assigned independent physical
+  chemical potentials, formulates color neutrality as temporal-gauge
+  stationarity in gauge-fixed saddle calculations, and proves ideal CFL
+  electric neutrality at zero electric source from traceless
+  \(Q_{\rm em}\) and diagonal \(SU(3)_V\) invariance.
 - Derives the one-gluon exchange color factors for
   `square tensor square = Sym^2 square plus wedge^2 square` in the
   trace-delta convention, identifies the antisymmetric channel as attractive,
@@ -169,8 +182,10 @@ GitHub issue #628.
   one-point function as a physical local order parameter, defines
   gauge-invariant static electric and magnetic screening exponents, derives
   the CFL Higgs screening mass matrix from the trace-delta effective action,
-  proves the physical Goldstone count, and derives the ideal CFL chiral-octet
-  and baryon-phonon dispersions from the leading low-energy action.
+  proves the physical Goldstone count, derives the ideal CFL chiral-octet
+  and baryon-phonon dispersions from the leading low-energy action, and
+  identifies the rotated unbroken electromagnetic \(U(1)\) in the same
+  transformation convention as the CFL orientation field.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
 
@@ -195,9 +210,10 @@ GitHub issue #628.
   high-density Fermi-surface and dense-HDL coefficient bookkeeping,
   dense one-gluon-exchange color-factor bookkeeping,
   magnetic leading-log gap coefficient bookkeeping,
-  baryon-number cumulants and radius estimators, CFL gauge-invariant
-  composite charge bookkeeping, CFL screening-sector and collective-mode
-  count bookkeeping, and CFL Goldstone count.
+  baryon-number cumulants and radius estimators, dense neutrality
+  bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
+  screening-sector and collective-mode count bookkeeping, and CFL Goldstone
+  count.
 
 ## Open Issues
 
@@ -247,6 +263,11 @@ GitHub issue #628.
 - 2026-05-27 high-density EFT pass: added the patch decomposition, density
   of states, tree-level HDET action, zero-temperature HDL Debye coefficient,
   and BCS logarithm derivation before the CFL order-parameter discussion.
+- 2026-05-27 neutrality pass: added the finite-regulator distinction between
+  global charge sources and gauge constraints, the Gauss-law projector proof
+  of zero color charge, the gauge-fixed temporal-background stationarity
+  interpretation of color neutrality, and the ideal CFL electric-neutrality
+  derivation.
 - 2026-05-27 CFL color-factor pass: added the trace-delta one-gluon exchange
   color-factor derivation, the spin-zero exchange-symmetry derivation, and a
   proposition-level physical Goldstone count.

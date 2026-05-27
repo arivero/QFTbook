@@ -2400,6 +2400,210 @@ Those ingredients refine the value of \(\Delta\); they do not remove the
 basic logarithmic instability once an attractive channel is present.
 \end{remark}
 
+\section{Neutrality Constraints and Gauge Sources}
+\label{sec:qcd-neutrality-gauge-sources}
+
+Dense QCD calculations often introduce several quantities called chemical
+potentials.  The logically primary distinction is between sources for
+gauge-invariant global charges and variables that enforce gauge constraints.
+The two have different status already at finite regulator.
+
+\begin{definition}[Finite-regulator global-charge ensemble]
+\label{def:qcd-finite-regulator-global-charge-ensemble}
+Let \(\mathcal H_{\Lambda}\) be the regulated Hilbert space of a finite
+spatial lattice or another finite gauge regulator, let \(H_{\Lambda}\) be
+the regulated Hamiltonian, and let \(\mathcal G_{\Lambda}\) be the compact
+group of time-independent gauge transformations.  Write
+\[
+  \Pi_{\rm phys}
+  =
+  \int_{\mathcal G_{\Lambda}}d\eta\,U(\eta)
+\]
+for the normalized Haar projector onto gauge-invariant states.  If
+\(Q_A\) are mutually commuting conserved global charges which commute with
+\(\mathcal G_{\Lambda}\), the finite-regulator grand partition function is
+\[
+  Z_{\Lambda}(\boldsymbol\mu)
+  =
+  \operatorname{Tr}_{\mathcal H_{\Lambda}}
+  \left[
+    \Pi_{\rm phys}
+    \exp\!\left(
+      -\beta H_{\Lambda}
+      +\beta\sum_A\mu_A Q_A
+    \right)
+  \right].
+  \label{eq:qcd-global-charge-grand-canonical}
+\]
+The intensive charge density conjugate to \(\mu_A\) is
+\[
+  n_A
+  =
+  \frac{1}{\beta V}
+  \frac{\partial}{\partial\mu_A}
+  \log Z_{\Lambda}(\boldsymbol\mu),
+  \label{eq:qcd-global-charge-density}
+\]
+with the thermodynamic and continuum limits taken only after the finite
+quantity has been defined.
+\end{definition}
+
+\begin{proposition}[Gauge charge is a constraint, not a thermodynamic source]
+\label{prop:qcd-gauge-charge-constraint-not-source}
+Let \(G_{\Lambda}(f)\) be the infinitesimal generator of a one-parameter
+family of gauge transformations \(U(e^{tf})\subset\mathcal G_{\Lambda}\).
+Then
+\[
+  G_{\Lambda}(f)\Pi_{\rm phys}=0,
+  \qquad
+  \Pi_{\rm phys}G_{\Lambda}(f)=0.
+  \label{eq:qcd-gauss-projector-annihilation}
+\]
+Consequently every finite-regulator state defined by
+\eqref{eq:qcd-global-charge-grand-canonical} has zero gauge charge:
+\[
+  \left\langle G_{\Lambda}(f)\right\rangle_{\boldsymbol\mu}=0.
+  \label{eq:qcd-gauge-charge-expectation-zero}
+\]
+Thus a color charge cannot be assigned an independent physical chemical
+potential in the same sense as baryon number or another gauge-invariant
+global charge.
+\end{proposition}
+
+\begin{proof}
+The Haar projector satisfies \(U(\eta)\Pi_{\rm phys}=\Pi_{\rm phys}\) and
+\(\Pi_{\rm phys}U(\eta)=\Pi_{\rm phys}\) for every
+\(\eta\in\mathcal G_{\Lambda}\), by left and right invariance of Haar
+measure.  Apply this identity to the one-parameter subgroup \(e^{tf}\) and
+differentiate at \(t=0\).  This gives
+\eqref{eq:qcd-gauss-projector-annihilation}.  Inserting \(G_{\Lambda}(f)\)
+inside the trace defining the expectation value, and using either equality
+in \eqref{eq:qcd-gauss-projector-annihilation} together with cyclicity of
+the finite trace, gives \eqref{eq:qcd-gauge-charge-expectation-zero}.
+\end{proof}
+
+\begin{remark}[Meaning of color-neutrality variables]
+\label{rem:qcd-color-chemical-potential-language}
+In a gauge-fixed high-density calculation one may parametrize a homogeneous
+temporal gauge background by Cartan components \(A_0^a\), or equivalently by
+symbols often denoted \(\mu_3,\mu_8\).  These symbols are not external
+thermodynamic chemical potentials for physical color charge.  They are
+coordinates on the gauge-field zero mode left after gauge fixing.  If
+\(\Omega_{\rm gf}(A_0)\) is the gauge-fixed finite-volume effective
+potential obtained after the nonzero modes have been integrated out, a
+homogeneous saddle representing a physical bulk state must obey
+\[
+  \frac{\partial\Omega_{\rm gf}}{\partial A_0^a}=0
+  \label{eq:qcd-color-neutrality-stationarity}
+\]
+for every retained Cartan component.  Equation
+\eqref{eq:qcd-color-neutrality-stationarity} is the saddle form of the
+Gauss-law constraint.  Its content is color neutrality; it is not the
+definition of a new grand-canonical ensemble.
+\end{remark}
+
+\begin{definition}[Neutrality problem for long-range global or gauged charges]
+\label{def:qcd-neutrality-problem}
+Let \(Q_{\rm ext}\) be a conserved charge which is gauge invariant with
+respect to color, for example the electromagnetic charge after coupling QCD
+matter to a nondynamical or dynamical \(U(1)\) gauge field.  If the bulk
+state is required to be neutral with respect to this charge, introduce a
+source \(\mu_{\rm ext}\) in the finite-regulator ensemble and solve
+\[
+  n_{\rm ext}(T,\mu_B,\mu_{\rm ext},\ldots)
+  =
+  \frac{\partial p}{\partial\mu_{\rm ext}}
+  =
+  0
+  \label{eq:qcd-global-neutrality-equation}
+\]
+after all charged species included in the physical problem, such as
+electrons in electrically neutral matter, have been included in the
+pressure.  If \(Q_{\rm ext}\) is itself gauged and long-ranged in the phase
+under consideration, the same condition is the thermodynamic form of the
+zero-mode Gauss law: a nonzero uniform charge density would require an
+electric field whose energy density is not compatible with an infinite
+homogeneous neutral bulk limit.
+\end{definition}
+
+\begin{proposition}[Ideal CFL is electrically neutral at zero electric source]
+\label{prop:qcd-ideal-cfl-neutrality}
+Assume \(N_c=N_f=3\), massless \(u,d,s\) quarks, a common quark chemical
+potential \(\mu_q\), and the ideal CFL symmetry realization described below:
+the gauge-invariant long-distance order preserves the diagonal vector
+\(SU(3)\) flavor symmetry.  Let
+\[
+  Q_{\rm em}
+  =
+  \operatorname{diag}
+  \left(
+    \frac23,-\frac13,-\frac13
+  \right)
+  \in\mathfrak{su}(3)_V
+  \label{eq:qcd-em-charge-matrix}
+\]
+act on the three flavor labels.  Then the electric charge density conjugate
+to a source \(\mu_Q Q_{\rm em}\) satisfies
+\[
+  n_Q(T,\mu_B,\mu_Q=0)=0
+  \label{eq:qcd-ideal-cfl-electric-neutrality}
+\]
+inside the ideal CFL effective theory.  Moreover the CFL orientation
+\(U=1\) in
+Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action}
+is invariant under the simultaneous color and flavor transformation generated
+by \(Q_{\rm em}\), with the same matrix embedded in a Cartan subalgebra of
+color.  The corresponding photon-gluon mixture is the unbroken rotated
+\(U(1)\) gauge field of ideal CFL, with the relative sign fixed by the
+displayed transformation law \(U\mapsto hUg^{-1}\).
+\end{proposition}
+
+\begin{proof}
+The source \(\mu_Q\) couples to the gauge-invariant vector flavor charge
+whose one-particle matrix is \(Q_{\rm em}\).  At \(\mu_Q=0\), the assumed
+ideal CFL state is invariant under the diagonal vector \(SU(3)\) flavor
+symmetry.  Therefore the expectation value of every traceless generator of
+\(\mathfrak{su}(3)_V\) vanishes.  Since
+\(\operatorname{tr}Q_{\rm em}=2/3-1/3-1/3=0\), the density conjugate to
+\(\mu_Q Q_{\rm em}\) is zero.  This proves
+\eqref{eq:qcd-ideal-cfl-electric-neutrality}.
+
+For the second assertion, recall the transformation law of the CFL
+orientation coordinate,
+\[
+  U\longmapsto h\,U\,g^{-1},
+\]
+where \(h\) is a color gauge transformation and \(g\) is a locked vector
+flavor transformation.  With \(U=1\), choosing
+\[
+  h=e^{i\alpha Q_{\rm em}},
+  \qquad
+  g=e^{i\alpha Q_{\rm em}}
+\]
+gives \(hUg^{-1}=1\).  Hence this simultaneous transformation is unbroken.
+Equivalently, the infinitesimal action on \(U\) is
+\(\delta U=iQ_{\rm color}U-iUQ_{\rm flavor}\), so \(U=1\) is fixed by the
+diagonal pair \(Q_{\rm color}=Q_{\rm flavor}=Q_{\rm em}\).
+Because the color factor is gauged and the electromagnetic flavor factor is
+gauged when QED is included, the massless gauge boson is the corresponding
+linear combination of the photon and the two Cartan gluons.  The statement is
+independent of the gauge choice used to display \(U=1\); the gauge-invariant
+content is the existence of the unbroken charge acting trivially on the CFL
+order.
+\end{proof}
+
+\begin{remark}[When neutrality becomes dynamical]
+\label{rem:qcd-neutrality-beyond-ideal-cfl}
+Quark masses, weak equilibrium constraints, finite temperature, boundary
+conditions, and possible crystalline or meson-condensed order can break the
+ideal assumptions of Proposition~\ref{prop:qcd-ideal-cfl-neutrality}.  Then
+neutrality is not a slogan attached to a named phase.  It is the coupled
+problem consisting of the global neutrality equations
+\eqref{eq:qcd-global-neutrality-equation}, the gauge stationarity equations
+\eqref{eq:qcd-color-neutrality-stationarity}, and the variational equations
+for the order parameters retained in the controlled effective theory.
+\end{remark}
+
 \section{Color Superconductivity and CFL Order}
 \label{sec:qcd-color-superconductivity-cfl}
 
