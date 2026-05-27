@@ -201,8 +201,10 @@ Current checks:
   contact-term scheme-shift law.
 - `cft_voa_modular_checks.py`: exact \(\mathbb Q(\sqrt2)\) checks for the
   Ising VOA/modular-data example, including \(S^2=1\), Verlinde fusion
-  coefficients, quantum dimensions, shifted character exponents, and the
-  Zhu-algebra top-weight polynomial with its primitive idempotents.
+  coefficients, quantum dimensions, shifted character exponents, the
+  \(T\)-phase spin-selection rule, uniqueness of the diagonal genus-one
+  Ising modular invariant with one vacuum, and the Zhu-algebra top-weight
+  polynomial with its primitive idempotents.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,

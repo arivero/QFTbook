@@ -59,7 +59,9 @@ current QFT scope.
 - Proves the Verlinde formula from simultaneous diagonalization by the
   modular \(S\)-matrix.
 - Works the Ising chiral theory explicitly: \(c=1/2\), three simple modules,
-  \(S_{\rm Ising}\), quantum dimensions, and fusion rules.
+  \(S_{\rm Ising}\), \(T_{\rm Ising}\), quantum dimensions, fusion rules, and
+  the finite genus-one proof that the diagonal full-CFT modular invariant is
+  the unique nonnegative invariant with one vacuum on the Ising label set.
 - Defines chiral conformal nets on `S^1`: interval algebras, isotony,
   locality, Moebius/diffeomorphism covariance, positive energy, vacuum
   cyclicity, irreducibility, split property, strong additivity, `mu`-index,
@@ -90,8 +92,10 @@ current QFT scope.
 - `calculation-checks/cft_voa_modular_checks.py` verifies the Ising modular
   \(S\)-matrix, Verlinde fusion coefficients, quantum dimensions, the
   conformal-net `mu`-index/global-dimension relation, character exponent
-  shifts in \(\mathbb Q(\sqrt2)\), and the Ising Zhu polynomial/idempotent
-  decomposition over \(\mathbb Q\).
+  shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
+  uniqueness of the diagonal Ising genus-one modular invariant with one
+  vacuum, and the Ising Zhu polynomial/idempotent decomposition over
+  \(\mathbb Q\).
 
 ## Reference Intake
 
@@ -115,3 +119,7 @@ current QFT scope.
 - 2026-05-26 Zhu-algebra pass: inserted the Zhu algebra/top-level module
   section, made the theorem hypotheses explicit, and added exact Ising
   Zhu-polynomial/idempotent checks.
+- 2026-05-27 Ising full-CFT modular-invariant pass: added the Ising
+  \(T\)-matrix, proved that the genus-one modular-invariance equations force
+  the diagonal invariant under the one-vacuum/nonnegative-integral
+  hypothesis, and extended the exact modular-data check.

@@ -139,6 +139,62 @@ def check_character_exponents() -> None:
     assert_equal("epsilon shifted exponent", shifted["epsilon"], Fraction(23, 48))
 
 
+def diagonal_qsqrt2_matrix(entries: list[int]) -> list[list[Qsqrt2]]:
+    return [
+        [
+            Qsqrt2(Fraction(entries[row])) if row == column else ZERO
+            for column in range(len(entries))
+        ]
+        for row in range(len(entries))
+    ]
+
+
+def check_ising_t_spin_selection_and_diagonal_invariant() -> None:
+    central_charge = Fraction(1, 2)
+    shifted = [
+        TOP_WEIGHTS[label] - central_charge / 24
+        for label in LABELS
+    ]
+
+    allowed_by_t = {
+        (left, right)
+        for left, left_exponent in enumerate(shifted)
+        for right, right_exponent in enumerate(shifted)
+        if (left_exponent - right_exponent).denominator == 1
+    }
+    assert_equal(
+        "Ising T spin-selection pairs",
+        allowed_by_t,
+        {(0, 0), (1, 1), (2, 2)},
+    )
+
+    # After the T-constraint, M = diag(1,a,b).  The (1,sigma) and
+    # (1,epsilon) entries of MS=SM are respectively
+    # (1-a) S_{1,sigma}=0 and (1-b) S_{1,epsilon}=0.  The nonzero
+    # coefficients below are the exact arithmetic content forcing a=b=1.
+    sigma_forcing_coefficient = S[0][1]
+    epsilon_forcing_coefficient = S[0][2]
+    assert_equal(
+        "Ising S coefficient forcing sigma multiplicity",
+        sigma_forcing_coefficient,
+        Qsqrt2(Fraction(0), Fraction(1, 2)),
+    )
+    assert_equal(
+        "Ising S coefficient forcing epsilon multiplicity",
+        epsilon_forcing_coefficient,
+        HALF,
+    )
+    if sigma_forcing_coefficient == ZERO or epsilon_forcing_coefficient == ZERO:
+        raise AssertionError("Ising S-constraint does not force diagonal multiplicities")
+
+    identity = diagonal_qsqrt2_matrix([1, 1, 1])
+    assert_equal(
+        "Ising diagonal invariant commutes with S",
+        matrix_multiply(identity, S),
+        matrix_multiply(S, identity),
+    )
+
+
 def polynomial_multiply(lhs: list[Fraction], rhs: list[Fraction]) -> list[Fraction]:
     product = [Fraction(0) for _ in range(len(lhs) + len(rhs) - 1)]
     for i, left in enumerate(lhs):
@@ -229,6 +285,7 @@ def main() -> None:
     check_verlinde_fusion()
     check_quantum_dimensions()
     check_character_exponents()
+    check_ising_t_spin_selection_and_diagonal_invariant()
     check_ising_zhu_polynomial()
     print("All CFT VOA/modular-data, Zhu-algebra, and conformal-net index checks passed.")
 

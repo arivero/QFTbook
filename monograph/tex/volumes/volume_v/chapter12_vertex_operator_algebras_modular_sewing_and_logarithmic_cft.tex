@@ -459,6 +459,7 @@ characters diagonalizes the fusion ring.  Once this is granted, the formula is
 linear algebra.
 
 \section{The Ising Chiral Theory}
+\label{sec:ising-chiral-theory}
 
 The Ising minimal model has central charge
 \[
@@ -486,6 +487,18 @@ In the ordered basis \((\mathbf 1,\sigma,\varepsilon)\), the modular
   \end{pmatrix}.
   \label{eq:ising-modular-s}
 \end{equation}
+The corresponding \(T\)-matrix is diagonal:
+\begin{equation}
+  T_{\rm Ising}
+  =
+  \operatorname{diag}\left(
+    \ee^{-\pi\ii/24},
+    \ee^{\pi\ii/12},
+    \ee^{23\pi\ii/24}
+  \right),
+  \label{eq:ising-modular-t}
+\end{equation}
+because \(T_{ii}=\ee^{2\pi\ii(h_i-c/24)}\) and \(c=1/2\).
 It is real, unitary, and obeys \(S^2=1\), because every simple object is
 self-dual.  The quantum dimensions are
 \[
@@ -720,6 +733,68 @@ commute with the modular representation:
 These are genus-one sewing constraints.  Higher-genus sewing imposes further
 compatibility between \(M\), chiral blocks, duality moves, and the pairing of
 left and right chiral sectors.
+
+\begin{proposition}[Ising genus-one invariant]
+\label{prop:ising-diagonal-modular-invariant}
+For the Ising chiral data of Section~\ref{sec:ising-chiral-theory},
+restrict to full CFT
+torus partition functions whose left and right chiral labels both lie in
+\((\mathbf 1,\sigma,\varepsilon)\).  Let
+\[
+  M=(M_{ij})_{i,j\in\{\mathbf 1,\sigma,\varepsilon\}}
+  \in \operatorname{Mat}_3(\mathbb Z_{\ge0})
+\]
+with \(M_{\mathbf 1\mathbf 1}=1\).  If \(M\) satisfies
+\eqref{eq:modular-invariant-matrix} with
+\eqref{eq:ising-modular-s} and \eqref{eq:ising-modular-t}, then \(M=I_3\).
+Thus the only genus-one modular invariant with one vacuum in this chiral
+Ising label set is the diagonal invariant
+\[
+  Z_{\rm Ising}(\tau,\bar\tau)
+  =
+  |\chi_{\mathbf 1}|^2+|\chi_\sigma|^2+|\chi_\varepsilon|^2 .
+  \label{eq:ising-diagonal-torus-partition-function}
+\]
+\end{proposition}
+
+\begin{proof}
+The \(T\)-constraint is already a spin-selection rule.  Since \(T\) is
+diagonal,
+\[
+  (MT)_{ij}-(TM)_{ij}
+  =
+  M_{ij}\left(
+    \ee^{2\pi\ii(h_j-c/24)}
+    -
+    \ee^{2\pi\ii(h_i-c/24)}
+  \right).
+\]
+Therefore \(M_{ij}\ne0\) implies \(h_i-h_j\in\mathbb Z\).  For the Ising
+weights
+\[
+  0,\qquad \frac1{16},\qquad \frac12,
+\]
+no two distinct weights differ by an integer.  Hence \(M\) is diagonal:
+\[
+  M=\operatorname{diag}(1,a,b),
+  \qquad a,b\in\mathbb Z_{\ge0}.
+\]
+The \(S\)-constraint now gives, entry by entry,
+\[
+  (MS)_{\mathbf 1\sigma}=S_{\mathbf 1\sigma},
+  \qquad
+  (SM)_{\mathbf 1\sigma}=aS_{\mathbf 1\sigma}.
+\]
+Since \(S_{\mathbf 1\sigma}=1/\sqrt2\ne0\), one gets \(a=1\).  Similarly
+\[
+  (MS)_{\mathbf 1\varepsilon}=S_{\mathbf 1\varepsilon},
+  \qquad
+  (SM)_{\mathbf 1\varepsilon}=bS_{\mathbf 1\varepsilon},
+\]
+and \(S_{\mathbf 1\varepsilon}=1/2\ne0\), so \(b=1\).  Thus
+\(M=I_3\), and \eqref{eq:ising-diagonal-torus-partition-function} follows
+from \eqref{eq:rational-torus-partition-function}.
+\end{proof}
 
 For a unitary compact two-dimensional CFT with discrete spectrum on the
 circle, the rectangular torus partition function
