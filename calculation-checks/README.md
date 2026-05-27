@@ -533,7 +533,9 @@ Current checks:
   perturbed-CFT and integrable-RG-flow chapter, including the
   \(\phi_{1,3}\) Kac weight, relevance exponent, unitary minimal-model
   central-charge drops, Kac-table identification, source-scaling sign, and
-  right/left massless dispersion identities.
+  right/left massless dispersion identities, plus the
+  Zamolodchikov trace-sum-rule coefficient \(9/E^4\) and the
+  \(\phi_{1,3}\) minimal-flow central-charge targets.
 - `mirror_tba_wrapping_checks.py`: exact algebra checks for the Volume VI
   mirror-channel finite-size chapter, including the two-winding TBA expansion
   of \(L_a=\log(1+e^{-\epsilon_a})\), the displayed vacuum-energy

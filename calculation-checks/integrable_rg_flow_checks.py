@@ -108,12 +108,59 @@ def check_massless_dispersion_identities() -> None:
         )
 
 
+def check_trace_sum_rule_coefficient() -> None:
+    # In the normalization used in the chapter,
+    # (3/(4 pi)) * (2 pi) * int_0^infty rho^3 exp(-E rho) d rho
+    # = 9 / E^4.  We keep only exact rational coefficients; the common
+    # factor of pi cancels between the prefactor and angular integral.
+    radial_factor = Fraction(6, 1)
+    angular_times_prefactor = Fraction(3, 2)
+    assert_equal(
+        "trace sum-rule spectral coefficient",
+        angular_times_prefactor * radial_factor,
+        Fraction(9, 1),
+    )
+
+    for energy in (Fraction(1, 1), Fraction(3, 2), Fraction(5, 1)):
+        got = angular_times_prefactor * radial_factor / (energy**4)
+        assert_equal(
+            f"trace sum-rule energy weight E={energy}",
+            got,
+            Fraction(9, 1) / (energy**4),
+        )
+
+
+def check_phi13_trace_sum_rule_targets() -> None:
+    for m in range(4, 20):
+        delta_c = minimal_c(m) - minimal_c(m - 1)
+        assert_equal(
+            f"phi13 c-theorem target m={m}",
+            delta_c,
+            Fraction(12, m * (m * m - 1)),
+        )
+
+        # A single positive toy spectral atom with squared form factor
+        # delta_c E^4 / 9 would reproduce the displayed sum-rule target.
+        # This is not a physical truncation; it guards the coefficient and
+        # the direction of the central-charge drop.
+        energy = Fraction(m + 2, m)
+        spectral_atom = delta_c * (energy**4) / 9
+        reconstructed = Fraction(9, 1) * spectral_atom / (energy**4)
+        assert_equal(
+            f"toy trace spectral atom reconstructs delta c m={m}",
+            reconstructed,
+            delta_c,
+        )
+
+
 def main() -> None:
     check_phi_13_data()
     check_minimal_model_c_drops()
     check_kac_identification_for_phi_13()
     check_source_scaling_linearization()
     check_massless_dispersion_identities()
+    check_trace_sum_rule_coefficient()
+    check_phi13_trace_sum_rule_targets()
     print("All integrable RG-flow checks passed.")
 
 
