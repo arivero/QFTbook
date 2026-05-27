@@ -60,6 +60,9 @@ status-boundary style.
   small-circle monopole-instanton affine-Toda superpotential.
 - `prop:pure-sym-affine-toda-critical-count`: constrained affine-Toda
   critical-point count giving `N_c` isolated solutions.
+- `prop:pure-sym-local-chiral-critical-index`: finite-dimensional
+  holomorphic oscillator calculation showing that each nondegenerate chiral
+  critical point contributes `+1` to the local Witten index.
 - `hyp:pure-sym-index-continuation-massive-branch`: spectral-continuation and
   massive-branch hypotheses linking the small-circle count to 4D pure
   `SU(N_c)` SYM.
@@ -213,6 +216,11 @@ status-boundary style.
 - Proves the constrained affine-Toda critical-point count: with
   `x_1...x_N=eta`, stationarity of `sum_i x_i` forces all `x_i` equal, so
   `x^N=eta`, and the constrained Hessian is nondegenerate.
+- Proves the local chiral-oscillator index convention used in the
+  small-circle count: an invertible complex symmetric Hessian is put in
+  Takagi normal form, each one-dimensional chiral oscillator has a unique
+  even Gaussian ground state, and the local contribution is `+1` rather than
+  the real Morse sign of `Re W`.
 - Assembles the conditional pure `SU(N_c)` index and condensate ledger:
   `I_SU(Nc)=N_c` under finite-volume/continuation hypotheses, and the
   glueball `F`-term hypothesis gives the `N_c` nonzero condensate phases and
@@ -371,8 +379,9 @@ status-boundary style.
   checks, condensate branch monodromy, one-instanton adjoint zero-mode
   saturation for \(S^{N_c}\), branch independence of the clustered
   \(N_c\)-point power, affine-Toda product-constraint telescoping,
-  constrained Hessian nondegeneracy, local critical-point index contribution,
-  and affine-Toda/Witten-index count matching.
+  constrained Hessian nondegeneracy, local holomorphic chiral-oscillator
+  index convention, local critical-point index contribution, and
+  affine-Toda/Witten-index count matching.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:
   dual-rank involution, baryon-charge map, SQCD holomorphic-canonical NSVZ

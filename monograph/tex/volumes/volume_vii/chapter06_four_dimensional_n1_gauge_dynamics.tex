@@ -681,9 +681,9 @@ one four-dimensional instanton, denoted by the compactified scale coordinate
 \(\eta\).  Effects with additional fermion zero modes, nonchiral
 determinants, and boundary terms are assumed not to change the protected
 critical-point count.  After the chiral variables are gapped, the remaining
-three-dimensional theory may be placed in finite spatial volume; each
-nondegenerate massive chiral critical point contributes one even
-supersymmetric ground state to the local index.
+three-dimensional theory may be placed in finite spatial volume, and the
+finite-dimensional local oscillator calculation below applies to each
+nondegenerate massive chiral critical point.
 \end{hypothesis}
 
 Under Hypothesis~\ref{hyp:pure-sym-small-circle-affine-toda-input}, the
@@ -752,6 +752,69 @@ nondegenerate on the hyperplane.  Thus each critical point is Morse in the
 complex holomorphic sense.
 \end{proof}
 
+\begin{proposition}[Local index of a nondegenerate chiral critical point]
+\label{prop:pure-sym-local-chiral-critical-index}
+Consider a finite-dimensional supersymmetric quantum mechanics obtained by
+keeping \(n\) complex chiral zero modes \(z^a\), a positive Hermitian metric
+at a critical point \(p\), and a holomorphic superpotential \(W\).  Assume
+that
+\[
+  \partial_a W(p)=0,
+  \qquad
+  H_{ab}=\partial_a\partial_bW(p)
+\]
+is an invertible complex symmetric matrix, and that the regulator localizes
+the low-energy contribution to a small ball around \(p\) without introducing
+extra boundary zero modes.  Then \(p\) contributes
+\[
+  \mathcal I_{\mathrm{loc}}(p)=+1
+\]
+to the graded trace.  In particular, the local contribution in the
+affine-Toda chamber is not the real Morse sign of \(\operatorname{Re}W\);
+the holomorphic chiral complex has a canonical complex orientation.
+\end{proposition}
+
+\begin{proof}
+Choose normal holomorphic coordinates for the Hermitian metric at \(p\), and
+discard higher terms in \(W\).  The discarded terms give a compact
+perturbation of the local oscillator as long as no boundary zero mode is
+created, so the local index is unchanged by the finite-dimensional
+graded-trace identity.  Since \(H\) is complex symmetric and invertible,
+Takagi factorization gives a unitary matrix \(U\) and nonzero singular values
+\(\mu_a>0\) such that
+\[
+  H=U^T\operatorname{diag}(\mu_1,\ldots,\mu_n)U .
+\]
+After this holomorphic change of variables, the quadratic model is a tensor
+product of one-dimensional chiral oscillators with
+\[
+  W_{\mathrm{quad}}
+  =
+  \frac12\sum_{a=1}^n \mu_a (z^a)^2 .
+\]
+For one factor, the supersymmetric ground-state equation is the Gaussian
+equation
+\[
+  \left(\frac{\partial}{\partial \bar z}
+        +\mu z\right)\Psi_0=0,
+  \qquad
+  \Psi_0(z,\bar z)=\exp(-\mu |z|^2)
+\]
+up to normalization and the harmless convention-dependent factor in the
+oscillator frequency.  This state is normalizable, unique, and lies in the
+even fermion sector.  Every excited oscillator state is paired with a state
+of opposite fermion parity by the local supercharge.  Hence one complex
+factor has local supertrace \(+1\), and the tensor product of \(n\) factors
+also has local supertrace \(+1\).
+
+The statement about signs follows from the same normal form.  As a real
+Morse function, \(\operatorname{Re}(\mu z^2/2)\) has one positive and one
+negative Hessian direction for each complex coordinate.  That real Morse
+sign belongs to the de Rham Morse complex of \(\operatorname{Re}W\), not to
+the holomorphic chiral oscillator used in the supersymmetric gauge-theory
+index.
+\end{proof}
+
 \begin{hypothesis}[Index continuation and massive-branch interpretation]
 \label{hyp:pure-sym-index-continuation-massive-branch}
 The \(SU(N_c)\) index obtained in the small-circle semiclassical chamber is
@@ -789,8 +852,11 @@ The affine-Toda computation gives \(N_c\) isolated supersymmetric critical
 points in the small-circle chamber.  The finite-volume graded-trace identity
 turns this critical-point count into the index in that chamber, because the
 critical points are isolated and massive in the chiral variables of the
-semiclassical approximation.  The continuation hypothesis then identifies
-the same integer with the four-dimensional \(SU(N_c)\) finite-volume index.
+semiclassical approximation, and
+Proposition~\ref{prop:pure-sym-local-chiral-critical-index} gives local
+contribution \(+1\) at each of them.  The continuation hypothesis then
+identifies the same integer with the four-dimensional \(SU(N_c)\)
+finite-volume index.
 
 The condensate statement uses an input beyond the index: the additional
 glueball \(F\)-term hypothesis.  Under that hypothesis,

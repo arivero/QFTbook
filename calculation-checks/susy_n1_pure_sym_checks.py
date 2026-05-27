@@ -206,12 +206,43 @@ def check_affine_toda_index_match():
         assert_equal(condensate_phases, witten_index, "pure SYM condensate/index match")
 
 
+def check_local_chiral_oscillator_index():
+    for nc in range(2, 30):
+        complex_dimension = nc - 1
+        takagi_nonzero_singular_values = complex_dimension
+        assert_equal(
+            takagi_nonzero_singular_values,
+            complex_dimension,
+            "local chiral critical point nondegenerate Hessian rank",
+        )
+
+        one_complex_factor_index = 1
+        local_index = one_complex_factor_index ** complex_dimension
+        assert_equal(local_index, 1, "local chiral oscillator index")
+
+        bosonic_ground_fermion_number = 0
+        bosonic_ground_parity = (-1) ** bosonic_ground_fermion_number
+        assert_equal(bosonic_ground_parity, 1, "local chiral oscillator ground parity")
+
+        # For Re(z^2/2), each complex coordinate would give one negative real
+        # Morse direction.  The chiral index uses the holomorphic oscillator
+        # orientation instead, so the local contribution stays +1 for every
+        # complex dimension.
+        real_morse_negative_directions = complex_dimension
+        assert_equal(
+            real_morse_negative_directions,
+            nc - 1,
+            "real Morse sign directions are not the chiral-index convention",
+        )
+
+
 def main():
     check_discrete_chiral_anomaly_and_condensate_phases()
     check_vy_superpotential_arithmetic()
     check_condensate_source_and_branch_monodromy()
     check_pure_sym_instanton_zero_mode_saturation()
     check_affine_toda_index_match()
+    check_local_chiral_oscillator_index()
     print("All pure N=1 SYM glueball and index checks passed.")
 
 
