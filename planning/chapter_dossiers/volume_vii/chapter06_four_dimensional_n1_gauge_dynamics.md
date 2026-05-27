@@ -43,6 +43,10 @@ status-boundary style.
   instanton zero-mode saturation ledger, showing that separated
   \(S\)-correlators vanish for fewer than \(N_c\) insertions and that the
   first possible instanton test is the \(S^{N_c}\) correlator.
+- `prop:pure-sym-saturated-berezin-coefficient`: exterior-algebra
+  coefficient formula for the saturated \(N_c\)-insertion pure-SYM
+  instanton Berezin integral, including the canonical coefficient, the
+  identical-two-form \(N_c!\) convention, and the sign ledger.
 - `hyp:pure-sym-zero-mode-saturated-instanton-correlator`: analytic
   assumptions required before promoting the zero-mode-saturated
   \(N_c\)-point instanton ledger to a chiral correlator with nonzero
@@ -199,11 +203,18 @@ status-boundary style.
   Berezin-integral level, while the first possible saturated chiral test is
   the \(N_c\)-point correlator with the same dimension and anomalous-charge
   ledger as \(S^{N_c}\sim\Lambda_h^{3N_c}\).
+- Proves the exterior-algebra formula for the saturated pure-SYM instanton
+  Berezin coefficient: writing each \(S(x_a)\) zero-mode restriction as an
+  antisymmetric quadratic form \(K_a^{pq}\eta_p\eta_q\), the fixed-moduli
+  zero-mode integral is exactly the coefficient of
+  \(\eta_1\cdots\eta_{2N_c}\) in the product, with canonical coefficient
+  `1` and identical-two-form coefficient `N_c!`.
 - States the additional analytic assumptions needed before using the
   zero-mode-saturated \(N_c\)-point instanton calculation in pure SYM:
-  regulator, instanton-size integral, nonzero-mode determinant, collision
-  singularities, and boundary strata must be controlled; the elementary
-  zero-mode count is not a direct proof of the one-point condensate.
+  regulator, saturated Berezin coefficient after bosonic moduli integration,
+  instanton-size integral, nonzero-mode determinant, collision singularities,
+  and boundary strata must be controlled; the elementary zero-mode count is
+  not a direct proof of the one-point condensate.
 - Proves the conditional cluster-extraction step: if a massive pure phase
   exists and the separated \(N_c\)-point chiral correlator clusters, then
   the instanton input gives only \(s_\ell^{N_c}=\kappa\Lambda_h^{3N_c}\);
@@ -396,11 +407,12 @@ status-boundary style.
   arithmetic for pure `N=1` SYM: adjoint anomaly coefficient, residual
   discrete chiral group, condensate orbit count, VY dimension/source/F-term
   checks, condensate branch monodromy, one-instanton adjoint zero-mode
-  saturation for \(S^{N_c}\), branch independence of the clustered
-  \(N_c\)-point power, finite-volume symmetry-basis versus cluster-branch
-  linear algebra, affine-Toda product-constraint telescoping, constrained
-  Hessian nondegeneracy, local holomorphic chiral-oscillator index
-  convention, local critical-point index contribution, and
+  saturation for \(S^{N_c}\), saturated Berezin coefficient factorial/sign
+  conventions, branch independence of the clustered \(N_c\)-point power,
+  finite-volume symmetry-basis versus cluster-branch linear algebra,
+  affine-Toda product-constraint telescoping, constrained Hessian
+  nondegeneracy, local holomorphic chiral-oscillator index convention, local
+  critical-point index contribution, and
   affine-Toda/Witten-index count matching.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:

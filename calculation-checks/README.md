@@ -535,7 +535,8 @@ Current checks:
   \(\mathbb Z_{2N_c}\to\mathbb Z_2\) condensate orbit, VY glueball
   dimension/source/\(F\)-term arithmetic, condensate branch monodromy under a
   theta-angle loop, pure-SYM one-instanton zero-mode saturation for
-  \(S^{N_c}\) rather than a one-point condensate, finite-volume
+  \(S^{N_c}\) rather than a one-point condensate, the saturated Berezin
+  coefficient and its factorial/sign conventions, finite-volume
   symmetry-basis versus cluster-branch linear algebra, the affine-Toda
   product constraint, constrained Hessian nondegeneracy, local holomorphic
   chiral oscillator index convention, local critical-point index

@@ -502,6 +502,104 @@ chiral correlator has precisely the dimension and anomalous-charge ledger
 of the VY critical equation.
 \end{proof}
 
+\begin{proposition}[Saturated pure-SYM Berezin coefficient]
+\label{prop:pure-sym-saturated-berezin-coefficient}
+Keep the assumptions and notation of
+Proposition~\ref{prop:pure-sym-one-instanton-zero-mode-test}.  At fixed
+bosonic instanton collective coordinate \(\mathfrak m\), let
+\[
+  \eta_1,\ldots,\eta_{2N_c}
+\]
+be an oriented basis of the adjoint gaugino zero-mode Grassmann variables,
+with Berezin measure
+\[
+  \dd\eta_{2N_c}\cdots\dd\eta_1 .
+\]
+For a separated insertion point \(x_a\), write the zero-mode part of the
+lowest component of \(S(x_a)\) as the quadratic form
+\[
+  S(x_a)\big|_{\mathrm{zm}}
+  =
+  \sum_{1\leq p<q\leq 2N_c}
+  K_a^{pq}(x_a;\mathfrak m)\,\eta_p\eta_q ,
+  \label{eq:pure-sym-s-insertion-zero-mode-quadratic-form}
+\]
+where the coefficients \(K_a^{pq}\) are ordinary complex numbers after the
+bosonic collective coordinate and the zero-mode basis have been fixed.  Define
+the saturated Berezin coefficient
+\[
+  \mathfrak B_{N_c}(K_1,\ldots,K_{N_c})
+  =
+  [\eta_1\cdots\eta_{2N_c}]
+  \prod_{a=1}^{N_c}
+  \left(
+    \sum_{p<q}K_a^{pq}\eta_p\eta_q
+  \right),
+  \label{eq:pure-sym-saturated-berezin-coefficient}
+\]
+where \([\eta_1\cdots\eta_{2N_c}]\) denotes coefficient extraction in the
+ordered monomial \(\eta_1\cdots\eta_{2N_c}\).  Equivalently,
+\[
+  \mathfrak B_{N_c}
+  =
+  \sum_{\substack{p_a<q_a\\
+        \bigsqcup_{a=1}^{N_c}\{p_a,q_a\}
+        =\{1,\ldots,2N_c\}}}
+  \operatorname{sgn}(p_1,q_1,\ldots,p_{N_c},q_{N_c})
+  \prod_{a=1}^{N_c}K_a^{p_aq_a}.
+  \label{eq:pure-sym-saturated-berezin-expansion}
+\]
+The fixed-\(\mathfrak m\) zero-mode integral of the \(N_c\)-point insertion is
+\[
+  \int \dd\eta_{2N_c}\cdots\dd\eta_1
+  \prod_{a=1}^{N_c}S(x_a)\big|_{\mathrm{zm}}
+  =
+  \mathfrak B_{N_c}(K_1,\ldots,K_{N_c}) .
+  \label{eq:pure-sym-fixed-moduli-berezin-integral}
+\]
+Thus the saturated instanton calculation requires a nonzero top exterior
+component of the \(N_c\) two-forms \(K_a\).  In the canonical test case
+\[
+  K_a=\eta_{2a-1}\eta_{2a},
+  \qquad a=1,\ldots,N_c,
+\]
+the coefficient is \(1\).  If instead every insertion has the same canonical
+two-form
+\[
+  \Omega_0=\sum_{a=1}^{N_c}\eta_{2a-1}\eta_{2a},
+\]
+then the coefficient of \(\Omega_0^{N_c}\) is \(N_c!\).  These factorial and
+sign conventions are part of the instanton calculation; they are not fixed
+by dimension, holomorphy, or the index.
+\end{proposition}
+
+\begin{proof}
+Berezin integration over the zero-mode variables extracts the coefficient of
+the oriented top monomial:
+\[
+  \int \dd\eta_{2N_c}\cdots\dd\eta_1\,
+  \eta_1\cdots\eta_{2N_c}=1 .
+\]
+Substituting
+\eqref{eq:pure-sym-s-insertion-zero-mode-quadratic-form} into the product of
+insertions therefore gives
+\eqref{eq:pure-sym-fixed-moduli-berezin-integral} directly.  Expanding the
+product, a monomial contributes only if every variable
+\(\eta_1,\ldots,\eta_{2N_c}\) occurs exactly once.  Ordering that monomial to
+\(\eta_1\cdots\eta_{2N_c}\) produces the sign in
+\eqref{eq:pure-sym-saturated-berezin-expansion}.  If a variable is missing or
+repeated, the coefficient of the top monomial is zero.
+
+For \(K_a=\eta_{2a-1}\eta_{2a}\), the product is already the ordered top
+monomial, hence the coefficient is \(1\).  For
+\(\Omega_0=\sum_a\eta_{2a-1}\eta_{2a}\), the only nonzero terms in
+\(\Omega_0^{N_c}\) choose each pair exactly once; the \(N_c!\) permutations
+of these commuting degree-two pair factors all contribute with positive sign.
+This proves the displayed coefficient and records the convention-sensitive
+normalization that later gets absorbed into the nonzero constant
+\(\kappa_{\mathrm{inst}}\).
+\end{proof}
+
 \begin{hypothesis}[Zero-mode-saturated pure-SYM instanton correlator]
 \label{hyp:pure-sym-zero-mode-saturated-instanton-correlator}
 The following is the additional analytic input required if one wants to use
@@ -519,9 +617,12 @@ well-defined charge-one instanton contribution
 \end{equation}
 for separated points in the chiral sector, in the same finite normalization
 of \(S\) and \(\Lambda_h\) used above.  This hypothesis includes control of
-the instanton-size integral, the nonzero-mode determinant, collision
-singularities, and boundary strata.  In un-Higgsed pure SYM these analytic
-controls are not supplied by the elementary zero-mode count alone.
+the saturated Berezin coefficient
+\eqref{eq:pure-sym-saturated-berezin-coefficient} after integration over
+bosonic collective coordinates, the instanton-size integral, the nonzero-mode
+determinant, collision singularities, and boundary strata.  In un-Higgsed
+pure SYM these analytic controls are not supplied by the elementary zero-mode
+count alone.
 \end{hypothesis}
 
 \begin{proposition}[Cluster extraction is a separate assumption]

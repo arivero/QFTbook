@@ -2,7 +2,7 @@
 """Exact checks for pure 4D N=1 SYM glueball and index arithmetic."""
 
 from fractions import Fraction
-from math import gcd
+from math import factorial, gcd
 
 
 def assert_equal(left, right, label):
@@ -34,6 +34,43 @@ def determinant_integer(matrix):
             for entry in range(col, size):
                 work[row][entry] -= factor * work[col][entry]
     return det
+
+
+def wedge_sign(left_mask, right_mask, total_variables):
+    """Sign from concatenating two increasing Grassmann monomials."""
+    inversions = 0
+    for left_index in range(total_variables):
+        if not (left_mask & (1 << left_index)):
+            continue
+        for right_index in range(left_index):
+            if right_mask & (1 << right_index):
+                inversions += 1
+    return -1 if inversions % 2 else 1
+
+
+def wedge_product(left_form, right_form, total_variables):
+    result = {}
+    for left_mask, left_coeff in left_form.items():
+        for right_mask, right_coeff in right_form.items():
+            if left_mask & right_mask:
+                continue
+            new_mask = left_mask | right_mask
+            sign = wedge_sign(left_mask, right_mask, total_variables)
+            result[new_mask] = result.get(new_mask, 0) + sign * left_coeff * right_coeff
+    return {mask: coeff for mask, coeff in result.items() if coeff}
+
+
+def pair_two_form(first_index, second_index):
+    if first_index >= second_index:
+        raise ValueError("pair_two_form expects increasing indices")
+    return {(1 << first_index) | (1 << second_index): 1}
+
+
+def multiply_forms(forms, total_variables):
+    product = {0: 1}
+    for form in forms:
+        product = wedge_product(product, form, total_variables)
+    return product
 
 
 def check_discrete_chiral_anomaly_and_condensate_phases():
@@ -154,6 +191,79 @@ def check_pure_sym_instanton_zero_mode_saturation():
                 0,
                 "pure SYM clustered Nc-point branch independence",
             )
+
+
+def check_pure_sym_saturated_berezin_coefficient():
+    for nc in range(2, 10):
+        total_variables = 2 * nc
+        top_mask = (1 << total_variables) - 1
+
+        canonical_pair_insertions = [
+            pair_two_form(2 * index, 2 * index + 1)
+            for index in range(nc)
+        ]
+        product = multiply_forms(canonical_pair_insertions, total_variables)
+        assert_equal(
+            product.get(top_mask, 0),
+            1,
+            "pure SYM canonical saturated Berezin coefficient",
+        )
+
+        unsaturated_product = multiply_forms(
+            canonical_pair_insertions[:-1],
+            total_variables,
+        )
+        assert_equal(
+            unsaturated_product.get(top_mask, 0),
+            0,
+            "pure SYM unsaturated Berezin coefficient vanishes",
+        )
+
+        repeated_pair_product = multiply_forms(
+            [canonical_pair_insertions[0]] * nc,
+            total_variables,
+        )
+        assert_equal(
+            repeated_pair_product.get(top_mask, 0),
+            0,
+            "pure SYM repeated zero-mode pair cannot saturate all modes",
+        )
+
+        canonical_symplectic_form = {}
+        for index in range(nc):
+            canonical_symplectic_form.update(canonical_pair_insertions[index])
+        omega_power = multiply_forms(
+            [canonical_symplectic_form] * nc,
+            total_variables,
+        )
+        assert_equal(
+            omega_power.get(top_mask, 0),
+            factorial(nc),
+            "pure SYM identical two-form saturation gives Nc factorial",
+        )
+
+    # A two-pair sign check: eta_1 eta_3 eta_2 eta_4 = - eta_1 eta_2 eta_3 eta_4.
+    product = multiply_forms(
+        [pair_two_form(0, 2), pair_two_form(1, 3)],
+        4,
+    )
+    assert_equal(
+        product.get((1 << 4) - 1, 0),
+        -1,
+        "pure SYM Berezin crossing sign",
+    )
+
+    # Degree-two factors commute with each other: eta_3 eta_4 eta_1 eta_2
+    # has four transpositions and hence positive sign.
+    product = multiply_forms(
+        [pair_two_form(2, 3), pair_two_form(0, 1)],
+        4,
+    )
+    assert_equal(
+        product.get((1 << 4) - 1, 0),
+        1,
+        "pure SYM degree-two insertion commutation sign",
+    )
 
 
 def check_finite_volume_symmetry_cluster_basis_ledger():
@@ -284,6 +394,7 @@ def main():
     check_vy_superpotential_arithmetic()
     check_condensate_source_and_branch_monodromy()
     check_pure_sym_instanton_zero_mode_saturation()
+    check_pure_sym_saturated_berezin_coefficient()
     check_finite_volume_symmetry_cluster_basis_ledger()
     check_affine_toda_index_match()
     check_local_chiral_oscillator_index()
