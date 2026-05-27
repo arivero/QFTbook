@@ -1,4 +1,4 @@
-# Chapter 09: Anomalous And Topological Transport
+# Chapter 09: Anomalous and Topological Transport
 
 ## Source Position
 
@@ -22,6 +22,10 @@ limits.
 - `B^mu`, `omega^mu`: rest-frame magnetic field and vorticity.
 - `xi_B`, `xi_omega`: chiral magnetic and vortical transport coefficients.
 - `G^R_AB`: retarded correlator.
+- `J_cons`, `J_cov`, `J_BZ`: consistent variational current, covariant
+  current, and Bardeen--Zumino local current polynomial.
+- `B_A^i`, `B_a^i`: spatial curls of the hydrostatic gauge source and
+  Kaluza--Klein one-form in the three-dimensional equilibrium functional.
 
 ## Claim Ledger
 
@@ -29,9 +33,19 @@ limits.
   correlators.
 - States the four-dimensional `U(1)^3` anomaly equation in a declared
   convention.
+- Defines the hydrostatic anomalous-source datum, separating chemical
+  potentials for exactly conserved charges from background source parameters
+  for anomalous currents.
+- Defines consistent and covariant currents in the sign convention used for
+  anomalous source variations, including the Bardeen--Zumino shift and its
+  contact-term meaning.
 - Gives a Kubo definition of the chiral magnetic coefficient with order of
   limits fixed.
 - Derives parity-odd equilibrium response from Chern-Simons-type source terms.
+- Proves the spatial variation formula for a general hydrostatic
+  Chern--Simons functional
+  `c_AA A dA + c_Aa A da + c_aa a da`, including the source and
+  Kaluza--Klein curls.
 - Derives the source-normalized chiral magnetic coefficient
   `J_V^i = mu_A B_V^i/(2 pi^2)` from the thermal reduction of the
   vector-vector-axial inflow term, and translates it to the physical
@@ -48,7 +62,8 @@ limits.
 
 - `calculation-checks/anomalous_transport_checks.py` verifies the right/left
   Weyl sums for the CME and CVE coefficients, the equilibrium Chern-Simons
-  variation coefficient, and the physical electromagnetic charge factor.
+  variation coefficient, the general hydrostatic Chern-Simons variation
+  algebra, and the physical electromagnetic charge factor.
 
 ## Figure Ledger
 

@@ -1,4 +1,4 @@
-\chapter{Anomalous And Topological Transport}
+\chapter{Anomalous and Topological Transport}
 \label{ch:thermal-anomalous-topological-transport}
 
 \ConventionsMixed
@@ -86,6 +86,82 @@ If a physical electromagnetic source \(A_{\rm em}\) couples with charge
 \(A_{\rm em}\) is \(QJ_V\), and the magnetic response acquires the factor
 \(Q^2=e^2q^2\).
 
+\section{Anomalous Source Protocols and Current Representatives}
+
+Anomaly-induced transport is meaningful only after the source protocol and
+the current representative have been specified.  This point is not a matter
+of taste: anomalous Ward identities, Chern--Simons contact terms, and
+zero-frequency limits mix under local counterterms.
+
+\begin{definition}[Hydrostatic anomalous-source datum]
+\label{def:hydrostatic-anomalous-source-datum}
+A hydrostatic anomalous-source datum consists of the following objects:
+\begin{enumerate}
+  \item a stationary Lorentzian background \((g,A_I)\) with a timelike
+  Killing field \(K\);
+  \item chemical potentials \(\mu_I\) defined as the gauge-invariant thermal
+  holonomies of \(A_I\) around the Euclidean thermal circle, after choosing
+  the time-independent gauge used in the hydrostatic functional;
+  \item a choice of local counterterms, equivalently a choice of consistent
+  current representatives;
+  \item a declaration of which gauge symmetries are exact constraints on the
+  background functional and which sources are allowed to have anomalous Ward
+  identities.
+\end{enumerate}
+For an anomalous charge, \(\mu_I\) is a background source parameter in this
+datum.  It is a genuine grand-canonical chemical potential for a conserved
+operator only in source sectors for which the corresponding anomaly density
+vanishes, or after passing to a conserved combination of charges.
+\end{definition}
+
+\begin{definition}[Consistent and covariant currents]
+\label{def:consistent-covariant-currents-transport}
+Let \(W[A]\) be a renormalized connected generating functional.  The
+consistent current is the variational current
+\[
+  J_{\rm cons}^\mu(x)
+  =
+  \frac{1}{\sqrt{-g(x)}}\frac{\delta W}{\delta A_\mu(x)}.
+\]
+With the sign convention
+\[
+  \delta_\alpha W
+  =
+  -\int\dd^4x\,\sqrt{-g}\,\alpha\,\mathcal A_{\rm cons},
+  \qquad
+  \delta_\alpha A_\mu=\nabla_\mu\alpha ,
+  \label{eq:transport-consistent-anomaly-sign}
+\]
+integration by parts gives
+\[
+  \nabla_\mu J_{\rm cons}^\mu=\mathcal A_{\rm cons}.
+\]
+A covariant current is a shifted local current
+\[
+  J_{\rm cov}^\mu
+  =
+  J_{\rm cons}^\mu+J_{\rm BZ}^\mu,
+  \label{eq:transport-bz-current-shift}
+\]
+where \(J_{\rm BZ}^\mu\) is a local Bardeen--Zumino polynomial in the
+background fields chosen so that \(J_{\rm cov}\) transforms covariantly under
+the background gauge symmetry being represented.  The shift
+\eqref{eq:transport-bz-current-shift} changes local contact terms in current
+correlators; it is not a change of the Hilbert-space operator algebra.
+\end{definition}
+
+\begin{remark}[Vector-preserving convention in the Dirac example]
+\label{rem:transport-vector-preserving-bardeen}
+The Dirac formulas in this chapter use the Bardeen convention in which the
+vector source \(A_V\) is an exact background gauge field and the axial source
+may have an anomalous Ward identity.  Thus the physical electromagnetic
+response is obtained by varying the vector-preserving functional with respect
+to \(A_{\rm em}\).  The axial chemical potential in
+\eqref{eq:cme-source-normalized} is a hydrostatic source parameter; it should
+not be confused with a conserved axial charge in a sector where
+\(\epsilon F_VF_V\) is nonzero.
+\end{remark}
+
 \section{Kubo Definitions}
 
 In flat space at temperature \(T\), define retarded correlators
@@ -138,6 +214,73 @@ transformations.  Differentiating this functional with respect to
 \(\mathcal A_i\) and \(a_i\) gives the parity-odd equilibrium pieces of
 \(J^i\) and \(T^{0i}\).  The derivation is algebraic once the equilibrium
 functional and its gauge-variation convention are fixed.
+
+\begin{proposition}[Hydrostatic Chern--Simons variation]
+\label{prop:hydrostatic-cs-variation}
+Let \(\Sigma_3\) be closed, and let \(A\) and \(a\) be ordinary spatial
+one-forms on \(\Sigma_3\).  For constant coefficients \(c_{AA}\), \(c_{Aa}\),
+and \(c_{aa}\), set
+\[
+  W_{\rm CS}[A,a]
+  =
+  \int_{\Sigma_3}
+  \left[
+    c_{AA} A\wedge\dd A
+    +c_{Aa} A\wedge\dd a
+    +c_{aa} a\wedge\dd a
+  \right].
+  \label{eq:hydrostatic-cs-functional-general}
+\]
+In local coordinates with orientation
+\(\dd^3x\) and \(\epsilon^{123}=1\), define
+\[
+  B_A^i=\epsilon^{ijk}\partial_j A_k,\qquad
+  B_a^i=\epsilon^{ijk}\partial_j a_k .
+  \label{eq:hydrostatic-magnetic-vectors}
+\]
+Then
+\[
+  \frac{\delta W_{\rm CS}}{\delta A_i}
+  =
+  2c_{AA}B_A^i+c_{Aa}B_a^i,
+  \qquad
+  \frac{\delta W_{\rm CS}}{\delta a_i}
+  =
+  c_{Aa}B_A^i+2c_{aa}B_a^i .
+  \label{eq:hydrostatic-cs-variation-formula}
+\]
+If the coefficients are functions of \(A_0\) or of thermodynamic scalars,
+\eqref{eq:hydrostatic-cs-variation-formula} is the part of the variation
+with respect to the spatial one-forms at fixed scalar sources; variations of
+the scalar sources produce the corresponding charge and energy densities.
+\end{proposition}
+
+\begin{proof}
+On a closed \(\Sigma_3\),
+\[
+  \delta\int A\wedge\dd A
+  =
+  \int\delta A\wedge\dd A+\int A\wedge\dd(\delta A)
+  =
+  2\int\delta A\wedge\dd A,
+\]
+because \(0=\int\dd(A\wedge\delta A)
+=\int\dd A\wedge\delta A-\int A\wedge\dd(\delta A)\) and
+\(\dd A\wedge\delta A=\delta A\wedge\dd A\).  Similarly,
+\[
+  \delta\int A\wedge\dd a
+  =
+  \int\delta A\wedge\dd a+\int \dd A\wedge\delta a,
+  \qquad
+  \delta\int a\wedge\dd a
+  =
+  2\int\delta a\wedge\dd a .
+\]
+Writing
+\(\delta A\wedge\dd A=\delta A_i\epsilon^{ijk}\partial_jA_k\,\dd^3x\)
+and the analogous formulas for \(a\) gives
+\eqref{eq:hydrostatic-cs-variation-formula}.
+\end{proof}
 
 \section{Chiral Magnetic Coefficient}
 
@@ -296,7 +439,7 @@ terms, leaving nonnegative entropy production from dissipative tensors.  This
 calculation fixes relations among \(\xi_B,\xi_\omega\) and anomaly
 coefficients, up to terms not seen by the entropy analysis.
 
-\section{Topological Terms And Contact Terms}
+\section{Topological Terms and Contact Terms}
 
 Equilibrium Chern--Simons terms may change local current correlators by
 contact terms.  A transport coefficient must therefore state whether the

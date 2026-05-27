@@ -15,8 +15,9 @@ Current checks:
 
 - `anomalous_transport_checks.py`: finite arithmetic checks for the chiral
   magnetic and chiral vortical coefficients, including the equilibrium
-  Chern--Simons variation, the \(e^2q^2\) electromagnetic charge factor, and
-  the cancellation of the Dirac vector-current \(T^2\) vortical term.
+  Chern--Simons variation, the general hydrostatic Chern--Simons
+  source-variation algebra, the \(e^2q^2\) electromagnetic charge factor,
+  and the cancellation of the Dirac vector-current \(T^2\) vortical term.
 - `anomaly_matching_wzw_checks.py`: exact rational checks for the anomaly
   matching and Wess--Zumino--Witten coefficient section, including
   \(n=N_c\) from matching the left-flavor anomaly, vector-flavor anomaly

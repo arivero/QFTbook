@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import math
+from fractions import Fraction
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-12) -> None:
@@ -39,6 +40,29 @@ def check_equilibrium_cs_variation() -> None:
     assert_close("CS variation gives CME", current_coefficient, mu_a / (2.0 * pi2))
 
 
+def check_general_hydrostatic_cs_variation() -> None:
+    # For W = c_AA A dA + c_Aa A da + c_aa a da on a closed three-manifold,
+    # the spatial source variations are
+    # delta W / delta A_i = 2 c_AA B_A^i + c_Aa B_a^i,
+    # delta W / delta a_i = c_Aa B_A^i + 2 c_aa B_a^i.
+    c_aa_source = Fraction(5, 7)
+    c_a_kaluza = Fraction(-3, 11)
+    c_kk = Fraction(2, 13)
+    b_source = Fraction(17, 19)
+    b_kaluza = Fraction(-23, 29)
+
+    current_source = 2 * c_aa_source * b_source + c_a_kaluza * b_kaluza
+    current_kaluza = c_a_kaluza * b_source + 2 * c_kk * b_kaluza
+
+    expected_source = Fraction(10, 7) * Fraction(17, 19) + Fraction(69, 319)
+    expected_kaluza = Fraction(-51, 209) - Fraction(92, 377)
+
+    if current_source != expected_source:
+        raise AssertionError(f"hydrostatic source-current variation failed: {current_source} != {expected_source}")
+    if current_kaluza != expected_kaluza:
+        raise AssertionError(f"hydrostatic KK-current variation failed: {current_kaluza} != {expected_kaluza}")
+
+
 def check_chiral_vortical_coefficients() -> None:
     mu_v = 0.61
     mu_a = 0.19
@@ -62,6 +86,7 @@ def check_chiral_vortical_coefficients() -> None:
 def main() -> None:
     check_chiral_magnetic_coefficients()
     check_equilibrium_cs_variation()
+    check_general_hydrostatic_cs_variation()
     check_chiral_vortical_coefficients()
     print("All anomalous-transport coefficient checks passed.")
 
