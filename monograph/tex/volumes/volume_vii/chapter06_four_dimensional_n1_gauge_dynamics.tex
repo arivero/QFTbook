@@ -657,6 +657,97 @@ continuum quantum field theory is a statement about the spectral behavior of
 the regulated family.
 \end{proof}
 
+\begin{proposition}[Finite-volume symmetry basis versus cluster branches]
+\label{prop:pure-sym-index-cluster-basis-lemma}
+The following finite-dimensional lemma is only an algebraic model for the
+zero-energy sector after the massive-branch hypotheses have been imposed.
+Let \(V_0\) be an \(N_c\)-dimensional zero-energy space on which all states
+have the same fermion parity \(\varepsilon=\pm1\).  Suppose a unitary
+operator \(U\), representing the generator of the quotient
+\(\mathbb Z_{2N_c}/\mathbb Z_2\), acts on a branch basis
+\(\{|k\rangle\}_{k\in\mathbb Z/N_c\mathbb Z}\) by
+\[
+  U|k\rangle=|k+1\rangle .
+\]
+Suppose also that the chiral coordinate \(S\) is diagonal in this branch
+basis,
+\[
+  S|k\rangle=s\,\omega^k|k\rangle,
+  \qquad
+  \omega=\exp(2\pi\ii/N_c),
+  \qquad s\neq0 .
+\]
+Then
+\[
+  \operatorname{Tr}_{V_0}(-1)^F=\varepsilon N_c,
+  \qquad
+  \operatorname{Tr}_{V_0}\!\left(U^p(-1)^F\right)=0
+  \quad (p\not\equiv0\!\!\pmod {N_c}),
+  \label{eq:pure-sym-twined-index-regular-representation}
+\]
+and the \(U\)-eigenvectors
+\[
+  |r\rangle
+  =
+  \frac{1}{\sqrt{N_c}}
+  \sum_{k=0}^{N_c-1}\omega^{-rk}|k\rangle,
+  \qquad r\in\mathbb Z/N_c\mathbb Z ,
+\]
+satisfy
+\[
+  U|r\rangle=\omega^r|r\rangle,
+  \qquad
+  \langle r|S|r\rangle=0,
+  \qquad
+  S|r\rangle=s\,|r-1\rangle .
+  \label{eq:pure-sym-finite-volume-symmetry-basis}
+\]
+Thus a finite-volume basis that diagonalizes the exact discrete symmetry
+need not display a nonzero one-point condensate.  The nonzero values
+\(\langle k|S|k\rangle=s\omega^k\) belong to the cluster branch basis, which
+is an infinite-volume pure-phase idealization requiring the additional
+massive-branch and cluster hypotheses, beyond the ordinary Witten index.
+\end{proposition}
+
+\begin{proof}
+In the branch basis, \(U^p\) is the permutation \(k\mapsto k+p\).  If
+\(p\not\equiv0\pmod{N_c}\), this permutation has no fixed basis vector and
+therefore has trace zero.  If \(p\equiv0\), the trace is \(N_c\).  Since
+\((-1)^F=\varepsilon\) on \(V_0\), this proves
+\eqref{eq:pure-sym-twined-index-regular-representation}.
+
+The displayed Fourier vectors obey
+\[
+  U|r\rangle
+  =
+  \frac{1}{\sqrt{N_c}}
+  \sum_k \omega^{-rk}|k+1\rangle
+  =
+  \omega^r|r\rangle .
+\]
+Their diagonal \(S\)-matrix element is
+\[
+  \langle r|S|r\rangle
+  =
+  \frac{s}{N_c}\sum_{k=0}^{N_c-1}\omega^k
+  =
+  0 ,
+\]
+because \(\omega\neq1\) and \(\omega^{N_c}=1\).  Finally,
+\[
+  S|r\rangle
+  =
+  \frac{s}{\sqrt{N_c}}
+  \sum_k \omega^{(1-r)k}|k\rangle
+  =
+  s\,|r-1\rangle .
+\]
+The operator \(S\) therefore changes the discrete chiral charge sector
+rather than producing a diagonal order parameter in the symmetry-eigenstate
+basis.  The branch basis diagonalizes \(S\) but not \(U\), exactly as a
+symmetry-breaking basis should.
+\end{proof}
+
 \begin{hypothesis}[Small-circle affine-Toda input]
 \label{hyp:pure-sym-small-circle-affine-toda-input}
 The following semiclassical computation is used as a controlled chiral-sector

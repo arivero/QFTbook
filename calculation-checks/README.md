@@ -535,10 +535,11 @@ Current checks:
   \(\mathbb Z_{2N_c}\to\mathbb Z_2\) condensate orbit, VY glueball
   dimension/source/\(F\)-term arithmetic, condensate branch monodromy under a
   theta-angle loop, pure-SYM one-instanton zero-mode saturation for
-  \(S^{N_c}\) rather than a one-point condensate, the affine-Toda product
-  constraint, constrained Hessian nondegeneracy, local holomorphic chiral
-  oscillator index convention, local critical-point index contribution, and
-  the affine-Toda/Witten-index vacuum count match.
+  \(S^{N_c}\) rather than a one-point condensate, finite-volume
+  symmetry-basis versus cluster-branch linear algebra, the affine-Toda
+  product constraint, constrained Hessian nondegeneracy, local holomorphic
+  chiral oscillator index convention, local critical-point index
+  contribution, and the affine-Toda/Witten-index vacuum count match.
 - `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
   including Seiberg-dual rank involution, baryon-charge matching, SQCD

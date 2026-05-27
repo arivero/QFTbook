@@ -56,6 +56,10 @@ status-boundary style.
   `SU(N_c)` Witten index.
 - `prop:pure-sym-finite-volume-graded-trace`: positive-energy pairing and
   finite-volume index identity.
+- `prop:pure-sym-index-cluster-basis-lemma`: finite-dimensional
+  linear-algebra lemma distinguishing finite-volume discrete-symmetry
+  eigenstates from infinite-volume cluster branch states with nonzero
+  condensate.
 - `hyp:pure-sym-small-circle-affine-toda-input`: assumptions behind the
   small-circle monopole-instanton affine-Toda superpotential.
 - `prop:pure-sym-affine-toda-critical-count`: constrained affine-Toda
@@ -211,6 +215,11 @@ status-boundary style.
 - Proves the positive-energy boson-fermion pairing identity for the
   finite-volume Witten index and states the exact spectral caveat for
   invariance under volume/coupling/regulator deformations.
+- Proves the finite-dimensional symmetry-basis/cluster-branch lemma: a
+  cyclic branch representation has ordinary index `N_c`, vanishing nontrivial
+  chiral-twined traces, zero diagonal `S` expectation in finite-volume
+  symmetry eigenstates, and nonzero `S=s omega^k` only in the cluster branch
+  basis.
 - States the small-circle affine-Toda input with root data
   `alpha_i=e_i-e_{i+1}` and affine root `alpha_0=e_N-e_1`, two gaugino zero
   modes for each fundamental monopole event, and the instanton-weight
@@ -388,9 +397,10 @@ status-boundary style.
   discrete chiral group, condensate orbit count, VY dimension/source/F-term
   checks, condensate branch monodromy, one-instanton adjoint zero-mode
   saturation for \(S^{N_c}\), branch independence of the clustered
-  \(N_c\)-point power, affine-Toda product-constraint telescoping,
-  constrained Hessian nondegeneracy, local holomorphic chiral-oscillator
-  index convention, local critical-point index contribution, and
+  \(N_c\)-point power, finite-volume symmetry-basis versus cluster-branch
+  linear algebra, affine-Toda product-constraint telescoping, constrained
+  Hessian nondegeneracy, local holomorphic chiral-oscillator index
+  convention, local critical-point index contribution, and
   affine-Toda/Witten-index count matching.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:

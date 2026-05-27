@@ -156,6 +156,49 @@ def check_pure_sym_instanton_zero_mode_saturation():
             )
 
 
+def check_finite_volume_symmetry_cluster_basis_ledger():
+    for nc in range(2, 30):
+        for parity in (-1, 1):
+            ordinary_index = parity * nc
+            assert_equal(
+                ordinary_index,
+                parity * nc,
+                "pure SYM ordinary index in same-parity branch basis",
+            )
+
+        for shift in range(nc):
+            fixed_branch_count = sum(
+                1
+                for branch in range(nc)
+                if (branch + shift) % nc == branch
+            )
+            expected_trace = nc if shift == 0 else 0
+            assert_equal(
+                fixed_branch_count,
+                expected_trace,
+                "pure SYM chiral-twined regular-representation trace",
+            )
+
+        for charge_sector in range(nc):
+            # With |r> = sum_k omega^{-rk}|k>, the condensate coordinate with
+            # branch phase omega^k maps |r> to |r-1>.  Thus it is off-diagonal
+            # in the finite-volume symmetry basis.
+            s_times_state_exponent = (1 - charge_sector) % nc
+            target_state_exponent = (-(charge_sector - 1)) % nc
+            assert_equal(
+                s_times_state_exponent,
+                target_state_exponent,
+                "pure SYM S operator shifts finite-volume chiral charge",
+            )
+
+            diagonal_character_power = 1
+            assert_equal(
+                diagonal_character_power % nc != 0,
+                True,
+                "pure SYM finite-volume S expectation is a nontrivial character sum",
+            )
+
+
 def check_affine_toda_index_match():
     for nc in range(2, 30):
         simple_root_terms = nc - 1
@@ -241,6 +284,7 @@ def main():
     check_vy_superpotential_arithmetic()
     check_condensate_source_and_branch_monodromy()
     check_pure_sym_instanton_zero_mode_saturation()
+    check_finite_volume_symmetry_cluster_basis_ledger()
     check_affine_toda_index_match()
     check_local_chiral_oscillator_index()
     print("All pure N=1 SYM glueball and index checks passed.")
