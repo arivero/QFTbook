@@ -2330,3 +2330,377 @@ The robust conclusion is qualitative: crossing plus reflection positivity
 forces nontrivial operator content in the \(\phi\times\phi\) OPE at dimensions
 controlled by \(\Delta_\phi\).  A rigorous numerical or analytic bound
 requires the full conformal blocks and lies beyond this first approximation.
+
+\section{Mixed Correlators and the Three-Dimensional Ising Bootstrap Datum}
+\label{sec:ising-mixed-correlator-bootstrap-datum}
+
+The preceding argument used one four-point function.  The first sharp
+bootstrap examples in \(D>2\) require several four-point functions at once,
+because positivity is then matrix-valued rather than a list of nonnegative
+numbers.  This section records the exact crossing system for the scalar pair
+used in the three-dimensional Ising bootstrap.  It is not a numerical
+solution of that system.  It is the CFT datum to which finite-dimensional
+semidefinite programs are applied.
+
+\begin{definition}[\(\mathbb Z_2\)-graded scalar bootstrap datum]
+\label{def:z2-scalar-bootstrap-datum}
+A \(\mathbb Z_2\)-graded scalar bootstrap datum in a unitary CFT in
+dimension \(D>2\) consists of:
+\begin{enumerate}
+  \item two Hermitian scalar primaries \(\sigma\) and \(\varepsilon\), with
+  \(\mathbb Z_2\)-charges odd and even and dimensions
+  \(\Delta_\sigma,\Delta_\varepsilon\);
+  \item two-point normalization
+  \[
+    \langle \sigma(x)\sigma(0)\rangle=|x|^{-2\Delta_\sigma},
+    \qquad
+    \langle \varepsilon(x)\varepsilon(0)\rangle=|x|^{-2\Delta_\varepsilon};
+  \]
+  \item real OPE coefficients in the three scalar OPEs
+  \[
+    \sigma\times\sigma\subset \mathcal S_+,\qquad
+    \varepsilon\times\varepsilon\subset \mathcal S_+,\qquad
+    \sigma\times\varepsilon\subset \mathcal S_-,
+  \]
+  where \(\mathcal S_+\) and \(\mathcal S_-\) are respectively the
+  \(\mathbb Z_2\)-even and odd primary spectra;
+  \item the spin selection rule that \(\sigma\times\sigma\) and
+  \(\varepsilon\times\varepsilon\) contain only even spins, while
+  \(\sigma\times\varepsilon\) may contain any integer spin.
+\end{enumerate}
+The identity operator belongs to \(\mathcal S_+\), with
+\(\lambda_{\sigma\sigma\mathbf 1}=
+\lambda_{\varepsilon\varepsilon\mathbf 1}=1\).
+\end{definition}
+
+The sign in the last OPE coefficient is convention-sensitive.  For a
+symmetric-traceless spin-\(\ell\) primary \(\mathcal O_{\mu_1\cdots\mu_\ell}\),
+the scalar-scalar-spin three-point tensor contains the homogeneous factor
+\((Z\cdot x_{12})^\ell\) in an index-free polarization \(Z\).  Therefore
+exchanging the two scalar insertions gives
+\begin{equation}
+  \lambda_{\varepsilon\sigma\mathcal O}
+  =
+  (-1)^\ell\lambda_{\sigma\varepsilon\mathcal O}.
+  \label{eq:mixed-scalar-spin-exchange-sign}
+\end{equation}
+
+For scalar external labels \(i,j,k,l\), define the crossing combinations
+\begin{equation}
+  \mathsf F_{\pm,\Delta,\ell}^{ij,kl}(u,v)
+  :=
+  v^{(\Delta_j+\Delta_k)/2}
+  G_{\Delta,\ell}^{ij|kl}(u,v)
+  \pm
+  u^{(\Delta_j+\Delta_k)/2}
+  G_{\Delta,\ell}^{ij|kl}(v,u),
+  \label{eq:mixed-bootstrap-fpm-definition}
+\end{equation}
+where \(G_{\Delta,\ell}^{ij|kl}\) is the \(12\to34\) OPE-normalized scalar
+block in the convention of
+\eqref{eq:general-scalar-conformal-block-expansion}.  The superscript
+\(ij|kl\) records the external dimension differences used in the Casimir
+equation.  When \(i=j=k=l=\phi\), \(\mathsf F_-\) is exactly the identical
+scalar crossing kernel
+\[
+  v^{\Delta_\phi}G_{\Delta,\ell}(u,v)
+  -
+  u^{\Delta_\phi}G_{\Delta,\ell}(v,u).
+\]
+
+\begin{proposition}[Five crossing equations for the \(\sigma,\varepsilon\) system]
+\label{prop:ising-mixed-five-crossing-equations}
+Let Definition~\ref{def:z2-scalar-bootstrap-datum} hold.  The three
+four-point functions
+\[
+  \langle\sigma\sigma\sigma\sigma\rangle,\qquad
+  \langle\sigma\sigma\varepsilon\varepsilon\rangle,\qquad
+  \langle\varepsilon\varepsilon\varepsilon\varepsilon\rangle
+\]
+imply the following five crossing equations:
+\begin{align}
+  0
+  &=
+  \sum_{\mathcal O\in\mathcal S_+}
+  \lambda_{\sigma\sigma\mathcal O}^{\,2}\,
+  \mathsf F_{-,\Delta,\ell}^{\sigma\sigma,\sigma\sigma}(u,v),
+  \label{eq:ising-mixed-ss-ss-crossing}
+  \\
+  0
+  &=
+  \sum_{\mathcal O\in\mathcal S_+}
+  \lambda_{\varepsilon\varepsilon\mathcal O}^{\,2}\,
+  \mathsf F_{-,\Delta,\ell}^{\varepsilon\varepsilon,\varepsilon\varepsilon}(u,v),
+  \label{eq:ising-mixed-ee-ee-crossing}
+  \\
+  0
+  &=
+  \sum_{\mathcal O\in\mathcal S_-}
+  \lambda_{\sigma\varepsilon\mathcal O}^{\,2}\,
+  \mathsf F_{-,\Delta,\ell}^{\sigma\varepsilon,\sigma\varepsilon}(u,v),
+  \label{eq:ising-mixed-se-se-crossing}
+  \\
+  0
+  &=
+  \sum_{\mathcal O\in\mathcal S_+}
+  \lambda_{\sigma\sigma\mathcal O}
+  \lambda_{\varepsilon\varepsilon\mathcal O}\,
+  \mathsf F_{-,\Delta,\ell}^{\sigma\sigma,\varepsilon\varepsilon}(u,v)
+  +
+  \sum_{\mathcal O\in\mathcal S_-}
+  (-1)^\ell\lambda_{\sigma\varepsilon\mathcal O}^{\,2}\,
+  \mathsf F_{-,\Delta,\ell}^{\varepsilon\sigma,\sigma\varepsilon}(u,v),
+  \label{eq:ising-mixed-crossing-minus}
+  \\
+  0
+  &=
+  \sum_{\mathcal O\in\mathcal S_+}
+  \lambda_{\sigma\sigma\mathcal O}
+  \lambda_{\varepsilon\varepsilon\mathcal O}\,
+  \mathsf F_{+,\Delta,\ell}^{\sigma\sigma,\varepsilon\varepsilon}(u,v)
+  -
+  \sum_{\mathcal O\in\mathcal S_-}
+  (-1)^\ell\lambda_{\sigma\varepsilon\mathcal O}^{\,2}\,
+  \mathsf F_{+,\Delta,\ell}^{\varepsilon\sigma,\sigma\varepsilon}(u,v).
+  \label{eq:ising-mixed-crossing-plus}
+\end{align}
+The sums include the identity in \(\mathcal S_+\); the last three equations
+contain no identity contribution from \(\mathcal S_-\).
+\end{proposition}
+
+\begin{proof}
+Equations \eqref{eq:ising-mixed-ss-ss-crossing} and
+\eqref{eq:ising-mixed-ee-ee-crossing} are the identical-scalar crossing
+equation \eqref{eq:identical-scalar-crossing} applied to \(\sigma\) and
+\(\varepsilon\).  Equation \eqref{eq:ising-mixed-se-se-crossing} is the same
+statement applied to the ordered correlator
+\(\langle\sigma\varepsilon\varepsilon\sigma\rangle\); the exchanged primaries
+in the \(12\) channel are \(\mathbb Z_2\)-odd.
+
+For the mixed correlator, expand
+\(\langle\sigma_1\sigma_2\varepsilon_3\varepsilon_4\rangle\) in the
+\(12\to34\) channel:
+\[
+  \mathcal G_{\sigma\sigma\varepsilon\varepsilon}(u,v)
+  =
+  \sum_{\mathcal O\in\mathcal S_+}
+  \lambda_{\sigma\sigma\mathcal O}
+  \lambda_{\varepsilon\varepsilon\mathcal O}\,
+  G_{\Delta,\ell}^{\sigma\sigma|\varepsilon\varepsilon}(u,v).
+\]
+Only \(\mathbb Z_2\)-even primaries occur, because both pair OPEs are even.
+Now exchange the first and third insertions and use the same scalar
+four-point prefactor as in \eqref{eq:scalar-four-point-general}.  A direct
+comparison of the prefactors gives
+\begin{equation}
+  \mathcal G_{\sigma\sigma\varepsilon\varepsilon}(u,v)
+  =
+  \frac{u^{\Delta_\sigma}}
+       {v^{(\Delta_\sigma+\Delta_\varepsilon)/2}}\,
+  \mathcal G_{\varepsilon\sigma\sigma\varepsilon}(v,u).
+  \label{eq:mixed-sigma-sigma-epsilon-epsilon-prefactor-crossing}
+\end{equation}
+The right-hand side has a \(\sigma\times\varepsilon\) OPE and therefore
+contains only \(\mathbb Z_2\)-odd primaries.  With
+\(\lambda_{\varepsilon\sigma\mathcal O}
+=(-1)^\ell\lambda_{\sigma\varepsilon\mathcal O}\), this crossing relation is
+equivalent to
+\begin{equation}
+  \sum_{\mathcal O\in\mathcal S_+}
+  \lambda_{\sigma\sigma\mathcal O}
+  \lambda_{\varepsilon\varepsilon\mathcal O}\,
+  v^{(\Delta_\sigma+\Delta_\varepsilon)/2}
+  G_{\Delta,\ell}^{\sigma\sigma|\varepsilon\varepsilon}(u,v)
+  -
+  \sum_{\mathcal O\in\mathcal S_-}
+  (-1)^\ell\lambda_{\sigma\varepsilon\mathcal O}^{\,2}\,
+  u^{\Delta_\sigma}
+  G_{\Delta,\ell}^{\varepsilon\sigma|\sigma\varepsilon}(v,u)
+  =
+  0.
+  \label{eq:mixed-sigma-crossing-unsymmetrized}
+\end{equation}
+Repeating the same prefactor comparison for the exchanged ordering
+\(\langle\varepsilon_1\sigma_2\sigma_3\varepsilon_4\rangle\), and then
+writing the result in the same block notation after the simultaneous exchange
+of the two scalar pairs, gives the companion equation
+\begin{equation}
+  \sum_{\mathcal O\in\mathcal S_+}
+  \lambda_{\sigma\sigma\mathcal O}
+  \lambda_{\varepsilon\varepsilon\mathcal O}\,
+  u^{(\Delta_\sigma+\Delta_\varepsilon)/2}
+  G_{\Delta,\ell}^{\sigma\sigma|\varepsilon\varepsilon}(v,u)
+  -
+  \sum_{\mathcal O\in\mathcal S_-}
+  (-1)^\ell\lambda_{\sigma\varepsilon\mathcal O}^{\,2}\,
+  v^{\Delta_\sigma}
+  G_{\Delta,\ell}^{\varepsilon\sigma|\sigma\varepsilon}(u,v)
+  =
+  0.
+  \label{eq:mixed-epsilon-crossing-unsymmetrized}
+\end{equation}
+Subtracting
+\eqref{eq:mixed-epsilon-crossing-unsymmetrized} from
+\eqref{eq:mixed-sigma-crossing-unsymmetrized}, and then adding the same two
+equations, gives respectively
+\eqref{eq:ising-mixed-crossing-minus} and
+\eqref{eq:ising-mixed-crossing-plus}.  This proves all five equations.
+\end{proof}
+
+It is useful to combine these equations into the form used by
+semidefinite programming.  Define a five-vector
+\(\vec{\mathsf V}_{-,\Delta,\ell}\) and a five-vector
+\(\vec{\mathsf V}_{+,\Delta,\ell}\) whose entries are \(2\times2\) matrices by
+\begin{align}
+  \vec{\mathsf V}_{-,\Delta,\ell}
+  &:=
+  \begin{pmatrix}
+    0\\
+    0\\
+    \mathsf F_{-,\Delta,\ell}^{\sigma\varepsilon,\sigma\varepsilon}\\
+    (-1)^\ell
+    \mathsf F_{-,\Delta,\ell}^{\varepsilon\sigma,\sigma\varepsilon}\\
+    -(-1)^\ell
+    \mathsf F_{+,\Delta,\ell}^{\varepsilon\sigma,\sigma\varepsilon}
+  \end{pmatrix},
+  \label{eq:ising-mixed-vminus}
+  \\
+  \vec{\mathsf V}_{+,\Delta,\ell}
+  &:=
+  \begin{pmatrix}
+    \begin{pmatrix}
+      \mathsf F_{-,\Delta,\ell}^{\sigma\sigma,\sigma\sigma} & 0\\
+      0 & 0
+    \end{pmatrix}\\[1.0em]
+    \begin{pmatrix}
+      0 & 0\\
+      0 & \mathsf F_{-,\Delta,\ell}^{\varepsilon\varepsilon,\varepsilon\varepsilon}
+    \end{pmatrix}\\[1.0em]
+    \begin{pmatrix}
+      0 & 0\\
+      0 & 0
+    \end{pmatrix}\\[1.0em]
+    \begin{pmatrix}
+      0 & \frac12\mathsf F_{-,\Delta,\ell}^{\sigma\sigma,\varepsilon\varepsilon}\\
+      \frac12\mathsf F_{-,\Delta,\ell}^{\sigma\sigma,\varepsilon\varepsilon} & 0
+    \end{pmatrix}\\[1.0em]
+    \begin{pmatrix}
+      0 & \frac12\mathsf F_{+,\Delta,\ell}^{\sigma\sigma,\varepsilon\varepsilon}\\
+      \frac12\mathsf F_{+,\Delta,\ell}^{\sigma\sigma,\varepsilon\varepsilon} & 0
+    \end{pmatrix}
+  \end{pmatrix}.
+  \label{eq:ising-mixed-vplus}
+\end{align}
+Then Proposition~\ref{prop:ising-mixed-five-crossing-equations} is equivalent
+to
+\begin{equation}
+  \sum_{\mathcal O\in\mathcal S_+}
+  \begin{pmatrix}
+    \lambda_{\sigma\sigma\mathcal O} &
+    \lambda_{\varepsilon\varepsilon\mathcal O}
+  \end{pmatrix}
+  \vec{\mathsf V}_{+,\Delta,\ell}
+  \begin{pmatrix}
+    \lambda_{\sigma\sigma\mathcal O}\\
+    \lambda_{\varepsilon\varepsilon\mathcal O}
+  \end{pmatrix}
+  +
+  \sum_{\mathcal O\in\mathcal S_-}
+  \lambda_{\sigma\varepsilon\mathcal O}^{\,2}
+  \vec{\mathsf V}_{-,\Delta,\ell}
+  =
+  0.
+  \label{eq:ising-mixed-vector-crossing}
+\end{equation}
+This equation is a vector equation in the space of functions of \(u,v\).
+The \(\mathbb Z_2\)-even coefficients are not individually positive in the
+mixed entries, but they form positive semidefinite matrices.  More precisely,
+for a fixed even primary family, or for a finite degenerate even subspace,
+\begin{equation}
+  \Lambda^+_{\Delta,\ell}
+  =
+  \sum_a
+  \begin{pmatrix}
+    \lambda_{\sigma\sigma\mathcal O_a}\\
+    \lambda_{\varepsilon\varepsilon\mathcal O_a}
+  \end{pmatrix}
+  \begin{pmatrix}
+    \lambda_{\sigma\sigma\mathcal O_a} &
+    \lambda_{\varepsilon\varepsilon\mathcal O_a}
+  \end{pmatrix}
+  \succeq0.
+  \label{eq:ising-even-ope-psd-matrix}
+\end{equation}
+The odd-sector coefficients are ordinary nonnegative numbers
+\(\lambda_{\sigma\varepsilon\mathcal O}^{\,2}\).
+
+\begin{proposition}[Finite functional exclusion certificate]
+\label{prop:mixed-correlator-functional-exclusion}
+Fix a candidate \(\mathbb Z_2\)-graded scalar spectrum satisfying the
+unitarity bounds and any additional gap assumptions.  Let
+\(\vec\alpha=(\alpha_1,\ldots,\alpha_5)\) be linear functionals on the
+five components of \eqref{eq:ising-mixed-vector-crossing}.  Suppose that:
+\begin{enumerate}
+  \item the identity contribution is strictly positive,
+  \[
+    \begin{pmatrix}1&1\end{pmatrix}
+    \vec\alpha\cdot\vec{\mathsf V}_{+,0,0}
+    \begin{pmatrix}1\\1\end{pmatrix}>0;
+  \]
+  \item for every allowed even nonidentity primary,
+  \(\vec\alpha\cdot\vec{\mathsf V}_{+,\Delta,\ell}\) is a positive
+  semidefinite \(2\times2\) matrix;
+  \item for every allowed odd primary,
+  \(\vec\alpha\cdot\vec{\mathsf V}_{-,\Delta,\ell}\ge0\).
+\end{enumerate}
+Then no unitary CFT with that spectrum and those gaps realizes the candidate
+datum.
+\end{proposition}
+
+\begin{proof}
+Apply \(\vec\alpha\) to \eqref{eq:ising-mixed-vector-crossing} and separate
+the identity contribution.  Every even nonidentity term is a quadratic form
+of a positive semidefinite matrix on the vector
+\((\lambda_{\sigma\sigma\mathcal O},
+\lambda_{\varepsilon\varepsilon\mathcal O})\).  Every odd term is a
+nonnegative number multiplying \(\lambda_{\sigma\varepsilon\mathcal O}^{\,2}\).
+Thus the whole left-hand side is strictly positive, contradicting the
+crossing equation.
+\end{proof}
+
+The three-dimensional Ising numerical bootstrap studies the case \(D=3\)
+with \(\sigma\) the lowest \(\mathbb Z_2\)-odd scalar and \(\varepsilon\) the
+lowest nonidentity \(\mathbb Z_2\)-even scalar.  The hypotheses that create
+the small Ising island are spectral hypotheses, not consequences of the five
+crossing equations alone: one assumes, for example, that no other
+\(\mathbb Z_2\)-odd or nonidentity even scalar is relevant,
+\[
+  \Delta_{\sigma'}\ge3,\qquad \Delta_{\varepsilon'}\ge3,
+  \label{eq:ising-relevance-gap-assumptions}
+\]
+together with the \(D=3\) unitarity bounds
+\[
+  \Delta_{\rm scalar}\ge\frac12,\qquad
+  \Delta_\ell\ge \ell+1\quad(\ell\ge1).
+\]
+Derivative functionals at \(z=\bar z=1/2\) then turn
+Proposition~\ref{prop:mixed-correlator-functional-exclusion} into a finite
+semidefinite search after one chooses a block approximation and proves or
+certifies its positivity on the relevant ranges of \(\Delta\).  Floating-point
+SDP output is numerical evidence until it is accompanied by a rigorous
+certificate, for example by interval bounds for the block derivatives and
+positive-polynomial or sum-of-squares certificates.  This is the precise
+status boundary between the mathematical CFT data
+\eqref{eq:ising-mixed-vector-crossing} and the high-precision numerical
+islands quoted in the Wilson--Fisher comparison table.
+
+\begin{openproblem}[Certified mixed-correlator Ising island]
+\label{op:certified-mixed-correlator-ising-island}
+Give a fully certified exclusion proof, with interval-controlled conformal
+block derivatives and exact semidefinite certificates, that isolates the
+three-dimensional Ising point inside a specified rectangle in
+\((\Delta_\sigma,\Delta_\varepsilon)\) under stated gap assumptions such as
+\eqref{eq:ising-relevance-gap-assumptions}.  The monograph uses the
+numerical island as external high-precision data until such a certificate is
+supplied.
+\end{openproblem}

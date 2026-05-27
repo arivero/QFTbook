@@ -224,6 +224,14 @@ Current checks:
   the exact \(SU(2)\)-quotient fusion rule, the level-two Gram determinant
   and null vector, the Ising spin-field BPZ differential equation, and the
   crossing matrix fixing \(C_{\sigma\sigma\varepsilon}=1/2\).
+- `conformal_block_companion.py`: reusable numerical companion routines for
+  OPE-normalized global scalar conformal blocks in the chapter conventions,
+  using the Dolan--Osborn hypergeometric closed forms in \(D=2\) and \(D=4\),
+  the Dolan--Osborn/Hogervorst--Rychkov Casimir \(z\)-series recursion for
+  \(D=3\) and other \(D>2\) checks, the universal leading radial
+  Gegenbauer/harmonic term, and the mixed-correlator \(F_\pm\) crossing kernel
+  normalization.  Two-dimensional Virasoro blocks require a separate
+  Zamolodchikov-recursion companion rather than this global-block evaluator.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,
@@ -308,6 +316,12 @@ Current checks:
   u^{\Delta_\phi}\mathcal G(v,u)\), Wick-pairing counts, the normalized
   \(:\phi^2:/\sqrt2\) OPE coefficient \(a_{0,0}=2\), and the even-spin
   bilinear dimensions.
+- `ising_mixed_bootstrap_checks.py`: exact rational checks for the
+  higher-dimensional mixed-correlator Ising bootstrap conventions, including
+  scalar four-point prefactor crossing ratios, the \(F_\pm\) symmetry signs,
+  the spin-\(\ell\) exchange sign, even-sector OPE positive-semidefinite
+  matrices, and the five-vector packing of the \(\sigma,\varepsilon\)
+  crossing equations.
 - `gamma_trace_checks.py`: mostly-plus gamma-matrix conventions, \(\gamma_5\),
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used

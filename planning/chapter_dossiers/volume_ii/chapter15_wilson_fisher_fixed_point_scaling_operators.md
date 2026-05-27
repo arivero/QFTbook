@@ -27,7 +27,10 @@
   Simmons-Duffin--Vichi, Kos--Poland--Simmons-Duffin--Vichi,
   Simmons-Duffin's spectrum paper, and the later mixed-correlator
   stress-tensor bootstrap; 2D entries from the Ising minimal model
-  \(\mathcal M(3,4)\) / Onsager-BPZ solution.
+  \(\mathcal M(3,4)\) / Onsager-BPZ solution.  Volume III, Chapter 9 now
+  derives the mixed-correlator crossing and positivity system behind the
+  \((\Delta_\sigma,\Delta_\varepsilon)\) island, but not the numerical island
+  itself.
 - `SRC-EXTERNAL-ON-LARGEN`: the \(O(N)\) large-\(N\) saddle and nonlinear
   sigma-model relation are checked against Moshe--Zinn-Justin,
   `Quantum Field Theory in the Large N Limit: a Review`, arXiv:hep-th/0306133,
@@ -218,6 +221,11 @@ The chapter must define and derive:
   the leading \(\mathbb Z_2\)-even scalar irrelevant primary
   \(\varepsilon'\), and of the \(d=2\) irrelevant scalar entry with
   \(T\bar T\);
+- the cross-reference to Volume III, Chapter 9 for the derived
+  higher-dimensional mixed-correlator crossing and positivity system that
+  underlies the three-dimensional Ising
+  \((\Delta_\sigma,\Delta_\varepsilon)\) bootstrap island, with the numerical
+  values still treated as external high-precision input;
 - the asymptotic status of the Wilson--Fisher epsilon expansion and the
   separate role of resummation when extracting finite-\(\epsilon\) numerical
   estimates.
@@ -336,6 +344,11 @@ The chapter must define and derive:
     conformal-bootstrap data for the Ising CFT and must carry provenance.  The
     exact \(d=2\) entries are minimal-model data; the dimension-four scalar
     irrelevant entry is \(T\bar T\), not an independent Virasoro primary.
+15a. The monograph now derives the \(\sigma,\varepsilon\) mixed-correlator
+     crossing and positivity equations in Volume III, Chapter 9.  This does
+     not convert the quoted \(d=3\) table entries into results of the
+     Wilson--Fisher epsilon expansion or into certified numerical-bootstrap
+     theorems inside this chapter.
 
 ## Figure Requirements
 
@@ -403,6 +416,9 @@ The chapter must define and derive:
   prescription and assumptions.
 - Do not quote fixed-point numerical or exact table data without naming its
   external origin when it is not derived in the chapter.
+- When quoting the \(d=3\) Ising bootstrap row, distinguish the derived
+  crossing/positivity machinery in Volume III from the external numerical
+  solution of that machinery.
 - Do not present composite operators as unregulated products of fields.
 - Do not describe the Wilson-Fisher fixed point as an attractor for arbitrary
   massive scalar theories; the mass direction must be tuned away.
@@ -480,3 +496,8 @@ The chapter must define and derive:
   showing the singular quartic dependence of the ordered saddle, and the
   \(D=4\) leading-log derivation for \(\xi\) and ordered magnetization from the
   marginally irrelevant quartic flow.
+- 2026-05-27 higher-dimensional CFT pass: updated the \(d=3\) comparison-table
+  provenance note to point to Volume III, Chapter 9 for the self-contained
+  derivation of the mixed-correlator crossing and positivity system behind the
+  three-dimensional Ising \((\Delta_\sigma,\Delta_\varepsilon)\) island, while
+  preserving the status of the quoted numerical dimensions as external data.
