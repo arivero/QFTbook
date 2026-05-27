@@ -65,6 +65,11 @@ Current checks:
   scheme-change covariance, fixed-product rapidity-scale cancellation in
   two-hadron factorization, and GPD polynomiality from local twist-two
   contractions.
+- `qcd_hqet_checks.py`: finite algebra checks for the Volume II HQET
+  Wilson-line section, including the mostly-plus heavy-velocity spin
+  projectors, the transverse covariant-derivative projector, residual-momentum
+  reparametrization, the free residual-dispersion expansion, and the
+  first-order Wilson-line differential equation.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,

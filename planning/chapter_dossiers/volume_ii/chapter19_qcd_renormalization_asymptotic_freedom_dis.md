@@ -133,6 +133,13 @@ The chapter must define and derive:
   channels, the large-\(N_c\) relation \(g_s\sim 1/N_c\) as color-topology
   counting rather than a derivation of confinement, and the special simplicity
   of \(D=3\) effective-string tests;
+- heavy-quark effective theory as the Wilson-line limit of a dynamical
+  massive colored field, including the mostly-plus velocity convention
+  \(v^2=-1\), the transverse projector \(D_\perp^\mu\), the projected
+  spinor field \(h_v\), the finite-regulator HQET datum, the static
+  propagator as a Wilson transporter, static spin/flavor symmetry, the
+  free residual-dispersion derivation, and the controlled status of the
+  \(1/m_Q\) expansion;
 - the distinction between colored gauge-fixed fields and physical external
   states in QCD, with confinement stated as a nonperturbative spectral
   hypothesis rather than a theorem derived from the continuum QCD Lagrangian;
@@ -256,6 +263,15 @@ The chapter must define and derive:
     clean finite-volume sectors, while identifying local glueballs with
     closed strings is an additional large-\(N_c\)/effective-string
     organization, not a theorem following from the Luscher determinant.
+15a. HQET is formulated as a finite-regulator Wilsonian expansion around a
+     timelike velocity \(v^2=-1\).  The leading heavy propagator is the
+     fundamental Wilson transporter along \(x(s)=x_0+sv\), the static action
+     has heavy spin/flavor symmetry because it contains no projected spin
+     operator, and the first kinetic correction is fixed by the free residual
+     dispersion \(E_{\rm res}=|\mathbf k|^2/(2m_Q)-|\mathbf k|^4/(8m_Q^3)+\cdots\)
+     together with reparametrization compatibility.  The uniform
+     \(1/m_Q\) expansion is recorded as a controlled matrix-element estimate,
+     not as a consequence of the static Wilson-line identity alone.
 16. Colored quark and gluon fields are not physical asymptotic states in the
    QCD confinement scenario; deriving this spectral property from the
    four-dimensional continuum QCD Lagrangian is open, so the manuscript uses it
@@ -460,3 +476,9 @@ The chapter must define and derive:
   small-\(q_\perp\) color-singlet factorization data, off-forward GPD
   definitions, a proof of GPD polynomiality from local twist-two covariance,
   and `calculation-checks/qcd_tmd_gpd_checks.py`.
+- 2026-05-27 QCD HQET pass: added heavy-quark effective theory as a
+  Wilson-line limit after the QCD-string/static-source discussion, with
+  explicit mostly-plus velocity and projector conventions, the HQET regulator
+  datum, a proof of the static propagator/Wilson-transporter identity, static
+  spin/flavor symmetry, residual-dispersion derivation, controlled
+  \(1/m_Q\)-expansion status, and `calculation-checks/qcd_hqet_checks.py`.

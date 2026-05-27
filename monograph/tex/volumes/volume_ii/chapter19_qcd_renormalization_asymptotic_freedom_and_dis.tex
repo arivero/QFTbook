@@ -2506,6 +2506,256 @@ using string language in QCD: line operators, static-source sectors, and
 calorimetric observables are physical, and asymptotic final states are
 color-singlet hadrons.
 
+\section{Heavy-Quark Effective Theory and the Wilson-Line Limit}
+\label{sec:qcd-hqet-wilson-line-limit}
+
+The static-source sector just described is also the first term in a
+controlled expansion for a dynamical quark whose mass is much larger than the
+hadronic scale.  This expansion is called heavy-quark effective theory
+(HQET).  Its mathematical content is the regulator-dependent comparison of
+gauge-invariant QCD matrix elements with gauge-invariant matrix elements of a
+local expansion in inverse powers of the heavy mass.  The heavy quark is still
+a colored field variable, so physical matrix elements are made gauge invariant
+by the same Wilson-line and color-singlet constructions used elsewhere in this
+chapter.
+
+Throughout this section the spacetime metric is mostly plus,
+\(\eta_{\mu\nu}=\operatorname{diag}(-,+,+,+)\).  A heavy-quark velocity is a
+future-directed timelike unit vector \(v^\mu\) satisfying \(v^2=-1\).  The
+orthogonal projector onto the three-plane transverse to \(v\) is
+\begin{equation}
+  \Pi_v{}^\mu{}_\nu=\delta^\mu{}_\nu+v^\mu v_\nu,
+  \qquad
+  D_\perp^\mu=\Pi_v{}^\mu{}_\nu D^\nu .
+  \label{eq:hqet-transverse-projector}
+\end{equation}
+The identity \(v_\mu D_\perp^\mu=0\) follows immediately from \(v^2=-1\).  A
+near-mass-shell heavy momentum is written
+\begin{equation}
+  p^\mu=m_Qv^\mu+k^\mu ,
+  \label{eq:hqet-momentum-split}
+\end{equation}
+where \(m_Q\) is the heavy-quark mass coordinate in the chosen regulated QCD
+Lagrangian and the residual momentum \(k^\mu\) is required to be small
+compared with \(m_Q\) on the states or test functions under consideration.
+The split is not unique: replacing \(v\) by \(v+\delta v\), with
+\(v\cdot\delta v=0\) to first order, and replacing \(k\) by \(k-m_Q\delta v\)
+leaves \(p\) fixed.  This elementary redundancy is the kinematic origin of
+reparametrization constraints on the effective action.
+
+Let \(\gamma_v=\gamma_\mu v^\mu\).  Since \(\gamma_v^2=-1\), the operator
+\(\ii\gamma_v\) has eigenvalues \(\pm1\), and
+\begin{equation}
+  P_v^\pm=\frac12(1\pm\ii\gamma_v)
+  \label{eq:hqet-spin-projectors}
+\end{equation}
+are complementary spinor projections.  The sign in
+\eqref{eq:hqet-spin-projectors} is tied to the phase convention below.  Define
+\(\tau_v(x)=-v\cdot x\); in the rest frame \(v=(1,0,0,0)\), this is the
+ordinary time coordinate.  A heavy Dirac field \(Q\) is decomposed at fixed
+velocity by
+\begin{equation}
+  Q(x)=\ee^{-\ii m_Q\tau_v(x)}\bigl(h_v(x)+H_v(x)\bigr),
+  \qquad
+  P_v^+h_v=h_v,\qquad P_v^-H_v=H_v .
+  \label{eq:hqet-field-split}
+\end{equation}
+The phase removes the rest-energy oscillation associated with \(m_Qv^\mu\).
+The field \(H_v\) carries the complementary Dirac components and is separated
+from \(h_v\) by a gap of order \(m_Q\) in the free theory.
+
+\begin{definition}[HQET regulator datum]
+\label{def:hqet-regulator-datum}
+A finite-cutoff HQET datum at velocity \(v\) consists of the following data.
+\begin{enumerate}
+  \item A gauge-covariant ultraviolet regulator for QCD with the heavy field
+  \(Q\) and mass coordinate \(m_Q\), together with an infrared domain of states
+  or test functions whose residual momenta obey \(|k|/m_Q\le\varepsilon\ll1\).
+  \item The projected field \(h_v=P_v^+h_v\), transforming in the fundamental
+  representation of the gauge group, and a Wilsonian procedure which
+  integrates out \(H_v\) and modes whose virtuality is of order \(m_Q\).
+  \item A local gauge-covariant action
+  \begin{equation}
+    S_{\rm HQET}^{(N)}[h_v,A]
+    =
+    \int \bar h_v\,\ii v\cdot D\,h_v\,\dd^4x
+    +\sum_{r=1}^N\frac1{(2m_Q)^r}
+      \sum_a C_{r,a}(\mu,m_Q)\int \mathcal O_{r,a}(x)\,\dd^4x ,
+    \label{eq:hqet-local-action}
+  \end{equation}
+  where each \(\mathcal O_{r,a}\) is a local gauge-invariant density built
+  from \(h_v,\bar h_v,F_{\mu\nu}\), and transverse covariant derivatives
+  \(D_\perp\), modulo equations of motion and integration by parts in the
+  chosen coordinate system on local functionals.
+  \item Renormalized composite operators, for example
+  \[
+    \bar q\,\Gamma Q
+    \longmapsto
+    \sum_{r,a}\frac1{(2m_Q)^r}C_{\Gamma,r,a}(\mu,m_Q)\,
+    \mathcal J_{\Gamma,r,a}^{\rm HQET}[q,h_v,A],
+  \]
+  with the same regulator and subtraction data.  A current matching statement
+  is a statement about matrix elements of these renormalized operators, not an
+  identity between classical monomials.
+\end{enumerate}
+The leading action is normalized so that the coefficient of
+\(\bar h_v\ii v\cdot D h_v\) is one.  The first dimension-five operators may
+be represented by
+\begin{equation}
+  \mathcal O_{\rm kin}=\bar h_vD_{\perp\mu}D_\perp^\mu h_v,
+  \qquad
+  \mathcal O_{\rm mag}=\bar h_v\sigma_{\mu\nu}F^{\mu\nu}h_v ,
+  \label{eq:hqet-dimension-five-operators}
+\end{equation}
+with coefficients fixed by the chosen matching convention.  In a
+reparametrization-compatible scheme the coefficient of the kinetic operator is
+fixed relative to the leading term; the chromomagnetic coefficient is a
+genuine short-distance matching coefficient.
+\end{definition}
+
+The leading HQET equation is the equation for parallel transport along the
+heavy-quark worldline.  This is the precise sense in which an infinitely heavy
+quark becomes a Wilson line.
+
+\begin{proposition}[Static propagator as a Wilson line]
+\label{prop:hqet-static-propagator-wilson-line}
+Let \(x(s)=x_0+sv\), and let
+\begin{equation}
+  W_v(s_2,s_1)=\mathcal P\exp\left\{
+    \ii\int_{s_1}^{s_2}v^\mu A_\mu^a(x(s))t_\square^a\,\dd s
+  \right\}
+  \label{eq:hqet-worldline-wilson-line}
+\end{equation}
+be the fundamental Wilson transporter along the heavy trajectory.  At finite
+regulator and with background \(A_\mu\) smooth on the scale of the regulator,
+the retarded Green kernel of the leading HQET operator on this trajectory is
+\begin{equation}
+  G_v(s_2,s_1)=\theta(s_2-s_1)\,W_v(s_2,s_1)\,P_v^+ ,
+  \label{eq:hqet-static-green-kernel}
+\end{equation}
+up to the conventional overall factor fixed by the normalization of the
+first-order inverse.  In particular, every gauge-invariant heavy-light or
+heavy-heavy correlator at leading power contains the Wilson line carried by
+the heavy source.
+\end{proposition}
+
+\begin{proof}
+The transporter satisfies the initial-value problem
+\[
+  \frac{\dd}{\dd s_2}W_v(s_2,s_1)
+  =
+  \ii v^\mu A_\mu^a(x(s_2))t_\square^a W_v(s_2,s_1),
+  \qquad W_v(s_1,s_1)=\mathbf 1 .
+\]
+Equivalently \(v\cdot D_{x(s_2)}W_v(s_2,s_1)=0\), using the chapter
+convention \(D_\mu=\partial_\mu-\ii A_\mu\).  Applying the first-order operator
+to \(\theta(s_2-s_1)W_v(s_2,s_1)P_v^+\) gives only the derivative of the step
+function, because the covariant derivative annihilates the transporter for
+\(s_2\ne s_1\).  This is the delta distribution on the oriented line.  The
+projector \(P_v^+\) records the spinor components retained in the heavy field.
+Gauge covariance follows from the endpoint transformation law of the same
+Wilson transporter proven for light-ray operators in
+Proposition~\ref{prop:qcd-light-ray-gauge-covariance}.
+\end{proof}
+
+\begin{proposition}[Static spin and flavor symmetry]
+\label{prop:hqet-static-spin-flavor}
+Consider \(N_h\) heavy flavors whose masses have been removed by separate
+phases and whose residual dynamics are described by the leading HQET action at
+the same velocity \(v\).  The leading action
+\[
+  S_0=\sum_{A=1}^{N_h}\int \bar h_{v,A}\,\ii v\cdot D\,h_{v,A}\,\dd^4x
+\]
+is invariant under unitary rotations of the heavy-flavor labels and under
+unitary rotations of the projected spin components commuting with \(P_v^+\).
+These symmetries act on the heavy variables alone and leave the gauge and
+light-quark fields fixed.
+\end{proposition}
+
+\begin{proof}
+The operator \(\ii v\cdot D\) is scalar in the heavy-flavor labels and
+contains no gamma matrix acting inside the projected spin space.  If
+\(h_{v,A}\mapsto U_A{}^B Sh_{v,B}\), where \(U\) is a unitary matrix on flavor
+labels and \(S\) is unitary on the image of \(P_v^+\), then
+\(\bar h_{v,A}\ii v\cdot D h_{v,A}\) is unchanged after summing over \(A\).
+The Wilson-line form of the propagator makes the same statement in correlator
+language: at leading power the heavy source transports color, while its spin
+and heavy-flavor labels are parallel spectators.
+\end{proof}
+
+\begin{proposition}[Free residual dispersion and the kinetic operator]
+\label{prop:hqet-residual-dispersion}
+For a free heavy particle with \(p^\mu=m_Qv^\mu+k^\mu\) and \(p^2+m_Q^2=0\),
+the residual momentum obeys
+\begin{equation}
+  2m_Q\,v\cdot k+k^2=0 .
+  \label{eq:hqet-onshell-residual}
+\end{equation}
+In the rest frame, writing \(k^\mu=(E_{\rm res},\mathbf k)\), this gives
+\begin{equation}
+  E_{\rm res}
+  =
+  \sqrt{m_Q^2+|\mathbf k|^2}-m_Q
+  =
+  \frac{|\mathbf k|^2}{2m_Q}
+  -\frac{|\mathbf k|^4}{8m_Q^3}
+  +O\!\left(\frac{|\mathbf k|^6}{m_Q^5}\right).
+  \label{eq:hqet-free-dispersion}
+\end{equation}
+Thus the first correction to the static theory is the transverse kinetic
+energy.  Gauge covariance promotes the transverse momentum to \(D_\perp\),
+giving the operator \(\mathcal O_{\rm kin}\) in
+\eqref{eq:hqet-dimension-five-operators}.
+\end{proposition}
+
+\begin{proof}
+Substituting \(p=m_Qv+k\) and \(v^2=-1\) into \(p^2+m_Q^2=0\) gives
+\eqref{eq:hqet-onshell-residual}.  In the rest frame,
+\(p=(m_Q+E_{\rm res},\mathbf k)\), so the positive-energy solution is
+\(m_Q+E_{\rm res}=\sqrt{m_Q^2+|\mathbf k|^2}\).  Expanding the square root in
+\(|\mathbf k|^2/m_Q^2\) gives \eqref{eq:hqet-free-dispersion}.  The covariant
+operator statement follows from replacing the residual transverse momentum by
+the transverse covariant derivative in the local Wilsonian expansion; the
+coefficient is fixed by matching the free dispersion and, in an interacting
+reparametrization-compatible scheme, by the invariance of the momentum split
+\eqref{eq:hqet-momentum-split}.
+\end{proof}
+
+\begin{controlledapproximation}[Meaning of the heavy-mass expansion]
+\label{ca:hqet-heavy-mass-expansion}
+Fix a regulator, a velocity \(v\), a renormalization scale \(\mu\ll m_Q\), and
+a class of gauge-invariant external states and operator insertions whose
+residual momenta and invariant hadronic scales are bounded by
+\(\Lambda_{\rm had}\).  A truncation of HQET at order \(N\) asserts an
+estimate of the form
+\[
+  \left|
+  \langle \mathcal O\rangle_{\rm QCD}
+  -
+  \langle \mathcal O^{(N)}_{\rm HQET}\rangle_{\rm HQET}
+  \right|
+  \le
+  C_{\mathcal O,N}
+  \left(\frac{\Lambda_{\rm had}}{m_Q}\right)^{N+1}
+\]
+for the chosen smeared matrix elements, after the QCD operator and the HQET
+operator have been matched in the same renormalization scheme.  The constant
+\(C_{\mathcal O,N}\), the topology in which the estimate is meant, and the
+range of \(\mu\) are part of the assertion.  The Wilson-line limit
+Proposition~\ref{prop:hqet-static-propagator-wilson-line} supplies the
+leading operator structure; the existence of a uniform heavy-mass expansion
+for a specified family of hadronic matrix elements is additional dynamical and
+renormalization information.
+\end{controlledapproximation}
+
+Quarkonium requires a different heavy-mass expansion.  A heavy quark and
+antiquark with small relative velocity involve the scales \(m_Q\),
+\(m_Qv_{\rm rel}\), and \(m_Qv_{\rm rel}^2\); the corresponding effective
+theories are NRQCD and its lower-energy potential descendants.  The same
+standard of definition applies there: one specifies the regulator, the
+gauge-covariant operator basis, the matching coefficients, and the power
+counting before using the language of potentials or bound-state wavefunctions.
+
 \section{Color and Physical External States}
 
 The gauge-fixed quark and gluon fields are useful local variables in
