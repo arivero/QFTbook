@@ -1922,6 +1922,57 @@ def check_konishi_wrapping_residue_sum() -> None:
         raise AssertionError("Konishi wrapping finite partial sum identity failed")
 
 
+def check_hexagon_scalar_watson_factor() -> None:
+    """Check the scalar hexagon Watson ratio and weak one-loop orientation."""
+
+    def h_factor(
+        x_u_plus: complex,
+        x_u_minus: complex,
+        x_v_plus: complex,
+        x_v_minus: complex,
+        sigma_uv: complex,
+    ) -> complex:
+        return (
+            ((x_u_minus - x_v_minus) / (x_u_minus - x_v_plus))
+            * ((1 - 1 / (x_u_plus * x_v_minus)) / (1 - 1 / (x_u_plus * x_v_plus)))
+            / sigma_uv
+        )
+
+    exact_samples = (
+        (Fraction(2), Fraction(3), Fraction(5), Fraction(7), Fraction(11, 13)),
+        (Fraction(5, 2), Fraction(9, 4), Fraction(7, 3), Fraction(11, 5), Fraction(4, 9)),
+    )
+    for x1_plus, x1_minus, x2_plus, x2_minus, sigma_12 in exact_samples:
+        h_12 = h_factor(x1_plus, x1_minus, x2_plus, x2_minus, sigma_12)
+        h_21 = h_factor(x2_plus, x2_minus, x1_plus, x1_minus, 1 / sigma_12)
+        watson_scalar = (
+            ((x1_plus - x2_minus) / (x1_minus - x2_plus))
+            * ((1 - 1 / (x1_plus * x2_minus)) / (1 - 1 / (x1_minus * x2_plus)))
+            / (sigma_12 * sigma_12)
+        )
+        if h_12 / h_21 != watson_scalar:
+            raise AssertionError("hexagon scalar Watson exact rational identity failed")
+
+    coupling = 1.0e-6
+    for u1, u2 in ((0.7, -1.1), (2.3, 0.4), (-1.7, 1.2)):
+        x1_plus = (u1 + 0.5j) / coupling
+        x1_minus = (u1 - 0.5j) / coupling
+        x2_plus = (u2 + 0.5j) / coupling
+        x2_minus = (u2 - 0.5j) / coupling
+        weak_ratio = h_factor(x1_plus, x1_minus, x2_plus, x2_minus, 1) / h_factor(
+            x2_plus,
+            x2_minus,
+            x1_plus,
+            x1_minus,
+            1,
+        )
+        compact_phase = (u1 - u2 + 1j) / (u1 - u2 - 1j)
+        sl2_phase = (u1 - u2 - 1j) / (u1 - u2 + 1j)
+        assert_close("hexagon scalar weak compact phase", weak_ratio, compact_phase)
+        if abs(weak_ratio - sl2_phase) < 1.0e-4:
+            raise AssertionError("hexagon scalar weak phase should not match SL(2) phase")
+
+
 def check_bremsstrahlung_displacement_cusp_normalization() -> None:
     """Check the finite coefficient in C_D=12 B from the displacement kernel."""
 
@@ -3097,6 +3148,7 @@ def main() -> None:
     check_y_system_shift_source_factor()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
+    check_hexagon_scalar_watson_factor()
     check_bremsstrahlung_displacement_cusp_normalization()
     check_bremsstrahlung_weak_series()
     check_qsc_small_spin_bessel_slope()

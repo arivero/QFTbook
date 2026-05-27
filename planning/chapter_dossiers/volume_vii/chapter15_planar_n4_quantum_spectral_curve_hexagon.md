@@ -27,6 +27,8 @@ three-point functions.
 - `T(u)`: transfer polynomial in the Baxter limit.
 - `f(lambda)`: cusp anomalous dimension scaling function.
 - `H`: hexagon form factor.
+- `h(u,v)`: elementary scalar hexagon factor for two scalar magnons.
+- `S_hex^scal`: scalar Watson factor obtained from `h(u,v)/h(v,u)`.
 - `ell_ij`: bridge lengths between three single-trace operators.
 - `A_i`: leading QSC asymptotic coefficients.
 - `S`: Lorentz spin in the `SL(2)` QSC asymptotic conditions.
@@ -161,6 +163,12 @@ three-point functions.
   proof boundary for deriving it from the gauge-theory path integral.
 - Adds the elementary scalar hexagon factor `h(u,v)` and its crossing-path
   caveat.
+- Proves the local scalar Watson identity
+  `h(u_1,u_2)/h(u_2,u_1)=S_hex^scal(1,2)`, including the
+  `1/sigma_12^2` dressing orientation and the weak compact one-loop limit
+  `(u_1-u_2+i)/(u_1-u_2-i)`.  The text warns that this should not be
+  identified with the rank-one `SL(2)` ABA phase without transporting the
+  vacuum, edge-crossing path, and scalar-factor split.
 - Adds Maldacena-Wilson line, cusp, displacement-operator, radiated-power, and
   planar Bremsstrahlung function material with localization/QSC status labels.
 - Derives the coefficient relation `C_D=12 B(lambda)` from the stated
@@ -233,6 +241,9 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the small-spin QSC Bessel slope by exact rational
   series: the recurrence `I_{J-1}-I_{J+1}=2J I_J/z` and the first two
   coefficients of `z I_{J+1}(z)/(J I_J(z))` for twists `J=1,...,6`.
+- The same script checks the hexagon scalar Watson factor exactly on rational
+  samples and verifies its weak compact one-loop orientation against the
+  reciprocal `SL(2)` phase.
 - The same script checks the displacement-kernel coefficient behind
   `C_D=12 B`: Taylor factor, finite-part Fourier coefficient, Fourier
   measure, and the two frequency half-lines give the exact logarithmic

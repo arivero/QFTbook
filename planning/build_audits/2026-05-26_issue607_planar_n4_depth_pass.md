@@ -1222,3 +1222,37 @@ Calculation checks added:
 - Strengthened `check_planar_chiral_primary_ope_coefficients()` so it checks
   the unit two-point normalization, the raw extremal color/cyclic factor, and
   the normalized coefficient squared exactly for several `J_1,J_2,N` samples.
+
+## Continuation XL: Hexagon Scalar Watson Orientation
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- Chapter 15 displayed the scalar hexagon factor `h(u,v)` with the correct
+  crossing-path caveat, but it did not yet prove the local Watson ratio that
+  fixes the scalar-factor orientation.  This is convention-sensitive because
+  the weak hexagon exchange phase is compact-`SU(2)` oriented, while the
+  stringbook rank-one ABA equation earlier in Chapter 13 is written in the
+  `SL(2)` vacuum orientation.
+
+Content added:
+
+- Added a proposition proving
+  `h(u_1,u_2)/h(u_2,u_1)=S_hex^scal(1,2)` by explicit rational cancellation
+  and dressing unitarity `sigma_12 sigma_21=1`.
+- Derived the weak physical-branch limit
+  `S_hex^scal=(u_1-u_2+i)/(u_1-u_2-i)+O(g^2)`.
+- Kept the global hexagon derivation behind the existing open-problem
+  boundary: the new result is local scalar-factor algebra, not a derivation
+  of the full pair-of-pants expansion from four-dimensional QFT.
+
+Calculation checks added:
+
+- Added `check_hexagon_scalar_watson_factor()`, which verifies the Watson
+  identity exactly on rational samples and checks that the weak limit matches
+  the compact one-loop phase rather than the reciprocal `SL(2)` ABA phase.

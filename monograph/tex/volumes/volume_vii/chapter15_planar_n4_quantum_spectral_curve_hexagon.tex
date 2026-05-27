@@ -1865,6 +1865,87 @@ excitations on a chosen hexagon edge.  Thus the hexagon construction imports
 the same analytic-continuation obligations: specifying \(h(u,v)\) without the
 crossing path of the moved excitation is incomplete.
 
+\begin{proposition}[Hexagon scalar Watson factor]
+\label{prop:planar-n4-hexagon-scalar-watson}
+Let \(x_i^\pm\), \(i=1,2\), be non-zero Zhukovsky variables in a sheet domain
+where the denominators below do not vanish, and write
+\(\sigma_{ij}=\sigma(x_i^\pm,x_j^\pm)\).  Assume scalar dressing unitarity
+\(\sigma_{12}\sigma_{21}=1\) on this domain.  If \(h_{12}=h(u_1,u_2)\) is
+defined by \eqref{eq:planar-n4-hexagon-scalar-factor}, then
+\[
+  \frac{h_{12}}{h_{21}}
+  =
+  S^{\rm hex}_{\rm scal}(1,2),
+  \qquad
+  S^{\rm hex}_{\rm scal}(1,2)
+  =
+  \frac{x_1^+ -x_2^-}{x_1^- -x_2^+}
+  \frac{1-1/(x_1^+x_2^-)}{1-1/(x_1^-x_2^+)}
+  \frac{1}{\sigma_{12}^2}.
+  \label{eq:planar-n4-hexagon-watson-scalar}
+\]
+On the weak physical branch
+\[
+  x_i^\pm=\frac{u_i\pm\ii/2}{g}+O(g),
+  \qquad
+  \sigma_{12}=1+O(g^6),
+\]
+with \(u_1-u_2\neq\ii\), this becomes
+\[
+  S^{\rm hex}_{\rm scal}(1,2)
+  =
+  \frac{u_1-u_2+\ii}{u_1-u_2-\ii}
+  +O(g^2).
+  \label{eq:planar-n4-hexagon-watson-weak-limit}
+\]
+\end{proposition}
+
+\begin{proof}
+From \eqref{eq:planar-n4-hexagon-scalar-factor},
+\[
+\begin{aligned}
+  \frac{h_{12}}{h_{21}}
+  &=
+  \frac{x_1^- -x_2^-}{x_1^- -x_2^+}
+  \frac{x_2^- -x_1^+}{x_2^- -x_1^-}
+  \frac{1-1/(x_1^+x_2^-)}{1-1/(x_1^+x_2^+)}
+  \frac{1-1/(x_2^+x_1^+)}{1-1/(x_2^+x_1^-)}
+  \frac{\sigma_{21}}{\sigma_{12}} .
+\end{aligned}
+\]
+The first two rational factors reduce to
+\[
+  \frac{x_1^- -x_2^-}{x_2^- -x_1^-}
+  \frac{x_2^- -x_1^+}{x_1^- -x_2^+}
+  =
+  \frac{x_1^+ -x_2^-}{x_1^- -x_2^+}.
+\]
+The middle denominator \(1-1/(x_1^+x_2^+)\) cancels the identical factor
+\(1-1/(x_2^+x_1^+)\), and the remaining denominator is
+\(1-1/(x_1^-x_2^+)\).  Finally scalar dressing unitarity gives
+\(\sigma_{21}/\sigma_{12}=1/\sigma_{12}^2\).  This proves
+\eqref{eq:planar-n4-hexagon-watson-scalar}.
+
+For the weak limit, the first rational factor is
+\[
+  \frac{(u_1+\ii/2)/g-(u_2-\ii/2)/g+O(g)}
+       {(u_1-\ii/2)/g-(u_2+\ii/2)/g+O(g)}
+  =
+  \frac{u_1-u_2+\ii}{u_1-u_2-\ii}+O(g^2).
+\]
+The second rational factor is \(1+O(g^2)\), because
+\((x_i^\pm x_j^\pm)^{-1}=O(g^2)\), and the dressing factor contributes
+\(1+O(g^6)\).  This proves
+\eqref{eq:planar-n4-hexagon-watson-weak-limit}.
+\end{proof}
+
+The weak factor in
+\eqref{eq:planar-n4-hexagon-watson-weak-limit} is the compact one-loop
+exchange phase.  It should not be identified with the rank-one \(SL(2)\)
+phase in \eqref{eq:planar-n4-rank-one-stringbook-aba} unless the vacuum,
+edge-crossing path, and scalar-factor split have all been transported to the
+same convention.
+
 \begin{openproblem}[Derivation of the hexagon expansion]
 \label{op:planar-n4-hexagon-derivation}
 Give a derivation of the hexagon expansion from a nonperturbatively defined
