@@ -433,6 +433,10 @@ Current checks:
   one-loop Konishi Bethe roots, one-magnon XXX spectra, central-extension
   magnon dispersion, its weak-coupling expansion, and a local
   Hirota-to-Y-system algebra identity.
+- `planar_n4_reader_companion_checks.py`: compact reader-facing checks for
+  the planar \(\mathcal N=4\) integrability spine: the length-four Konishi
+  spin-chain eigenvector, one-loop Bethe-Yang equations, local Y-system source
+  algebra, and finite-grid mirror-TBA pseudoenergy identities.
 - `susy_n4_scft_checks.py`: exact arithmetic checks for the Volume VII
   \(\mathcal N=4\) SYM SCFT foundation material, including one-loop and
   holomorphic beta-function cancellation, the one-complex-dimensional
@@ -745,6 +749,10 @@ Current checks:
 - `gamma_trace_checks.wl`: a Wolfram Language version of the same finite
   algebraic checks, adapted from the stringbook spinor appendix and
   `gamma matrices.nb` conventions without relying on `.nb` structure.
+- `planar_n4_reader_companion_checks.wl`: a plain Wolfram Language companion
+  to `planar_n4_reader_companion_checks.py`, keeping the same spin-chain,
+  Bethe-Yang, Y-system, and mirror-TBA checks close to Mathematica-style
+  symbolic manipulation.
 
 Run all available checks from the repository root with:
 

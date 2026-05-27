@@ -2020,3 +2020,37 @@ Calculation checks added:
   the explicit zero-mode cancellation, closest strip-boundary pole locations,
   absence of an interior pole in the sample strip, and the shifted source
   memory factor.
+
+## Continuation LXIII: Reader Companion Integrability Checks
+
+Substantive files edited:
+
+- `calculation-checks/planar_n4_reader_companion_checks.py`
+- `calculation-checks/planar_n4_reader_companion_checks.wl`
+- `calculation-checks/README.md`
+- `planning/chapter_dossiers/volume_vii/chapter12_planar_n4_spectral_problem_spin_chains.md`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a compact reader-facing Python companion script for the planar
+  integrability spine.  It verifies the length-four Konishi spin-chain
+  eigenvector and cyclicity, the one-loop Bethe-Yang orientation and energy,
+  local Hirota/Y-system source algebra, and a finite-grid mirror-TBA
+  pseudoenergy/Y-form identity with the `A_infinity` inverse symbol.
+- Added a plain Wolfram Language companion carrying the same checks in a form
+  close to Mathematica-style symbolic manipulation, while avoiding `.nb`
+  notebook structure.
+- Registered the pair in the calculation-check README and in the Chapter
+  12--14 dossiers as a pedagogical companion layer distinct from the larger
+  `planar_n4_integrability_checks.py` convention audit.
+- Updated the stringbook crosswalk to record that this is only the first
+  reader-facing port of notebook-style checks; the remaining notebook audit is
+  broader and still open.
+
+Calculation checks added:
+
+- `python3 calculation-checks/planar_n4_reader_companion_checks.py`
+- `/Applications/Wolfram.app/Contents/MacOS/WolframKernel -script calculation-checks/planar_n4_reader_companion_checks.wl`

@@ -88,7 +88,12 @@ still needs development.
 1. Audit the three relevant stringbook notebooks against
    `calculation-checks/planar_n4_integrability_checks.py`; every Mathematica
    experiment that supports a monograph formula should either be ported to
-   clear Python/SymPy code or explicitly declared obsolete.
+   clear Python/SymPy code or explicitly declared obsolete.  A first
+   reader-facing companion pair,
+   `calculation-checks/planar_n4_reader_companion_checks.py` and
+   `calculation-checks/planar_n4_reader_companion_checks.wl`, now gives
+   compact spin-chain, Bethe-Yang, local Y-system, and mirror-TBA checks; the
+   remaining notebook audit is still broader than this pedagogical layer.
 2. Finish the remaining global `su(2|2)_c` S-matrix boundaries: the
    representation, length-changing frame, ten amplitude formulas, scalar
    split, local matrix-unitarity checks, finite crossed-channel

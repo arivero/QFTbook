@@ -224,6 +224,11 @@ node domain.
 - The same script checks the local analytic Y-system source factor
   `B_a^+B_a^-=(u-a+i)/(u-a-i)`, its inverse orientation, and finite products
   of shifted zero-pole sources.
+- `calculation-checks/planar_n4_reader_companion_checks.py` and
+  `calculation-checks/planar_n4_reader_companion_checks.wl` provide compact
+  reader-facing checks of the Hirota-to-Y identities, shifted source factor,
+  finite-grid mirror-TBA pseudoenergy/Y-form equivalence, and the
+  `A_infinity` inverse symbol.
 - The same script checks the analytic Y-system strip/cut bookkeeping:
   stringbook-to-T-hook node map, nearest branch-point lattice outside the open
   strip, integer central fermion cut shifts, central cut inversion, and finite

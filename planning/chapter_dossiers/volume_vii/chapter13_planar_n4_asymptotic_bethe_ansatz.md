@@ -337,6 +337,11 @@ crossed Zhukovsky sheets.
 - It checks the weak rank-one ABA orientation: physical-branch `x^pm`
   expansion, momentum ratio, anomalous-energy normalization, the stringbook
   `SL(2)` rational factor, and the reciprocal compact `SU(2)` phase.
+- `calculation-checks/planar_n4_reader_companion_checks.py` and
+  `calculation-checks/planar_n4_reader_companion_checks.wl` provide compact
+  reader-facing checks of the one-loop Bethe-Yang orientation, cyclicity, and
+  Konishi roots; the full integrability script remains the exhaustive
+  convention audit.
 - The same script now checks BMN scaling, bound-state dispersion, bound-state
   fusion telescoping, fused scalar-product indexing, and weak coefficient
   arithmetic relevant to cusp/Bremsstrahlung comparisons.
