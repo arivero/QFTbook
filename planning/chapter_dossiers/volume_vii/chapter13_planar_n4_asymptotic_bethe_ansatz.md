@@ -23,6 +23,9 @@ motivational checks, not foundations.
 - `Xi_12`: stringbook-orientation rational scalar-crossing multiplier.
 - `mathcal R_cr`: finite crossed-amplitude ratio `L_bar1 2/G_21` used to
   recover the scalar-crossing multiplier from the matrix channel.
+- `mathsf C_1`: chosen first-magnon crossing continuation along `gamma_cr`.
+- `mathcal M_{12}^{(2)}`: two-crossing scalar-branch displacement
+  `Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`.
 - `chi(x,y)`: BES contour-integral kernel for the dressing phase.
 - `mathcal L_g(z,w)`: logarithmic Gamma-function kernel inside the DHM
   double contour.
@@ -147,6 +150,13 @@ motivational checks, not foundations.
   `sigma_bar1 2 sigma_12=Xi_12` in the positive square-root chamber; this
   explains the rational multiplier's matrix-channel origin while keeping the
   global scalar branch as separate analytic data.
+- Derives the scalar crossing monodromy cocycle: if a scalar branch satisfies
+  Janik crossing on two successive first-magnon crossing segments, then
+  `sigma^{[gamma C_1 C_1]}_12/sigma^{[gamma]}_12 =
+  Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`, with the expanded rational
+  double-crossing multiplier and the reciprocal-convention inverse stated
+  explicitly.  Homotopy and minimal BES-branch uniqueness remain analytic
+  inputs rather than finite algebra.
 - States the BES/crossing scalar-factor input as a quoted theorem with its
   framework assumptions.
 - Adds an explicit asymptotic Bethe-Yang regime assumption: the ABA is a
@@ -243,6 +253,11 @@ crossed Zhukovsky sheets.
   notebook: the squared `L_bar1 2/G_21` ratio becomes one exactly when the
   scalar product uses `Xi_12`, the reciprocal multiplier fails, and the
   positive real chamber fixes the unsquared square-root branch.
+- It checks the scalar crossing monodromy cocycle exactly: the sheet-shifted
+  multiplier is different from the physical one, the double-crossing ratio is
+  `Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`, the expanded product agrees
+  with that quotient, the two-step branch recursion reproduces it, and the
+  reciprocal scalar convention inverts it.
 - It checks dressing scalar unitarity by evaluating the antisymmetric charge
   expansion on physical-branch `x^pm` samples and verifying
   `theta_12+theta_21=0`, `sigma_12 sigma_21=1`, and the squared-factor

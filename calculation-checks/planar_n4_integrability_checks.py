@@ -633,6 +633,70 @@ def check_matrix_crossing_channel_scalar_multiplier() -> None:
     assert_close("crossed matrix channel positive branch", branch_ratio, 1.0)
 
 
+def check_crossing_scalar_monodromy_cocycle() -> None:
+    """Check the scalar one- and two-crossing branch cocycle."""
+
+    x1_plus = Fraction(2, 1)
+    x1_minus = Fraction(3, 1)
+    x2_plus = Fraction(5, 1)
+    x2_minus = Fraction(7, 1)
+
+    def xi(
+        first_plus: Fraction,
+        first_minus: Fraction,
+        second_plus: Fraction,
+        second_minus: Fraction,
+    ) -> Fraction:
+        return (
+            second_plus
+            / second_minus
+            * (second_plus - first_plus)
+            / (second_plus - first_minus)
+            * (second_minus - 1 / first_plus)
+            / (second_minus - 1 / first_minus)
+        )
+
+    physical_multiplier = xi(x1_plus, x1_minus, x2_plus, x2_minus)
+    crossed_multiplier = xi(1 / x1_plus, 1 / x1_minus, x2_plus, x2_minus)
+    if physical_multiplier != Fraction(117, 112):
+        raise AssertionError(f"one-crossing scalar multiplier: {physical_multiplier}")
+    if crossed_multiplier != Fraction(675, 784):
+        raise AssertionError(f"crossed one-crossing scalar multiplier: {crossed_multiplier}")
+    if physical_multiplier == crossed_multiplier:
+        raise AssertionError("crossing scalar multiplier should be sheet-sensitive")
+
+    double_crossing_multiplier = crossed_multiplier / physical_multiplier
+    expanded_multiplier = (
+        (x2_plus - 1 / x1_plus)
+        / (x2_plus - 1 / x1_minus)
+        * (x2_plus - x1_minus)
+        / (x2_plus - x1_plus)
+        * (x2_minus - x1_plus)
+        / (x2_minus - x1_minus)
+        * (x2_minus - 1 / x1_minus)
+        / (x2_minus - 1 / x1_plus)
+    )
+    if double_crossing_multiplier != Fraction(75, 91):
+        raise AssertionError(f"double-crossing multiplier: {double_crossing_multiplier}")
+    if expanded_multiplier != double_crossing_multiplier:
+        raise AssertionError(
+            "expanded double-crossing multiplier disagrees: "
+            f"{expanded_multiplier} != {double_crossing_multiplier}"
+        )
+
+    sigma_branch = Fraction(11, 13)
+    sigma_crossed = physical_multiplier / sigma_branch
+    sigma_double_crossed = crossed_multiplier / sigma_crossed
+    if sigma_double_crossed / sigma_branch != double_crossing_multiplier:
+        raise AssertionError("two-step crossing recursion failed")
+
+    reciprocal_branch = 1 / sigma_branch
+    reciprocal_crossed = (1 / physical_multiplier) / reciprocal_branch
+    reciprocal_double_crossed = (1 / crossed_multiplier) / reciprocal_crossed
+    if reciprocal_double_crossed / reciprocal_branch != 1 / double_crossing_multiplier:
+        raise AssertionError("reciprocal scalar convention should invert the cocycle")
+
+
 def check_dressing_charge_antisymmetry_unitarity() -> None:
     """Check that the charge expansion gives scalar dressing unitarity."""
 
@@ -4554,6 +4618,7 @@ def main() -> None:
     check_zhukovsky_map_and_energy()
     check_zhukovsky_crossing_path_monodromy()
     check_crossing_rhs_is_sheet_sensitive()
+    check_crossing_scalar_monodromy_cocycle()
     check_matrix_crossing_channel_scalar_multiplier()
     check_dressing_charge_antisymmetry_unitarity()
     check_dhm_weak_dressing_coefficients()

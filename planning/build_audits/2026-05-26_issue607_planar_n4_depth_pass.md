@@ -1812,3 +1812,35 @@ Calculation checks added:
   the symbolic `Y_{1,1}Y_{2,2}` reduction, exact central-row telescoping for
   `n=1,...,8`, the `mathbb T_{0,s}=1` boundary normalization, and the
   `hat h`-factor compatibility behind the magic-row product.
+
+## Continuation LVII: Crossing Scalar Monodromy Cocycle
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.md`
+- `planning/planar_n4_integrability_stringbook_crosswalk.md`
+
+Content added:
+
+- Added a proposition deriving the scalar crossing branch cocycle from
+  Janik crossing in the stringbook orientation.
+- The text defines the chosen first-magnon crossing continuation
+  `mathsf C_1`, distinguishes scalar branches by path labels, and proves
+  `sigma^{[gamma C_1 C_1]}_12/sigma^{[gamma]}_12 =
+  Xi_12(1/x_1^pm,x_2^pm)/Xi_12(x_1^pm,x_2^pm)`.
+- It expands the double-crossing multiplier into the four rational factors
+  appearing in the stringbook discussion and records that the reciprocal
+  scalar convention inverts both one-crossing and two-crossing multipliers.
+- It keeps the remaining minimal BES-branch construction and homotopy-class
+  classification as analytic input rather than finite rational algebra.
+
+Calculation checks added:
+
+- Added `check_crossing_scalar_monodromy_cocycle()` to
+  `calculation-checks/planar_n4_integrability_checks.py`.  The check verifies
+  the one-crossing multipliers on an exact rational sample, the
+  sheet-sensitivity of `Xi_12`, the expanded double-crossing product, the
+  two-step branch recursion, and inversion in the reciprocal scalar
+  convention.

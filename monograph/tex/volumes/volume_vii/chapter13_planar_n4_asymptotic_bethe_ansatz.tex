@@ -1198,13 +1198,96 @@ matrix-amplitude calculation behind the scalar multiplier; it does not
 construct the analytic crossed scalar branch.
 \end{proof}
 
+\begin{proposition}[Scalar crossing monodromy cocycle]
+\label{prop:planar-n4-crossing-scalar-monodromy-cocycle}
+Let \(\mathsf C_1\) denote a chosen crossing continuation of the first
+magnon along \(\gamma_{\rm cr}\) from
+Definition~\ref{def:planar-n4-crossing-path}.  Fix a scalar branch
+\(\sigma^{[\gamma]}_{12}\) on a sheet reached by a path \(\gamma\) from the
+physical chamber, and write
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}
+  :=
+  \sigma^{[\gamma\mathsf C_1]}(x_1^\pm,x_2^\pm)
+\]
+for the same external coordinates evaluated after analytic continuation
+along the concatenated path.  Assume that the crossed path avoids all poles
+and zeros in the denominators below and that Janik crossing holds on each
+crossed segment in the stringbook orientation,
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}\,
+  \sigma^{[\gamma]}_{12}
+  =\Xi_{12}(x_1^\pm,x_2^\pm).
+\]
+Then the second crossing is not an involution on the scalar branch.  It acts
+by
+\begin{equation}
+  \frac{\sigma^{[\gamma\mathsf C_1\mathsf C_1]}_{12}}
+       {\sigma^{[\gamma]}_{12}}
+  =
+  \frac{\Xi_{12}(1/x_1^\pm,x_2^\pm)}
+       {\Xi_{12}(x_1^\pm,x_2^\pm)}
+  =:\mathcal M_{12}^{(2)},
+  \label{eq:planar-n4-crossing-double-monodromy}
+\end{equation}
+where explicitly
+\begin{equation}
+  \mathcal M_{12}^{(2)}
+  =
+  \frac{x_2^+ -1/x_1^+}{x_2^+ -1/x_1^-}
+  \frac{x_2^+ -x_1^-}{x_2^+ -x_1^+}
+  \frac{x_2^- -x_1^+}{x_2^- -x_1^-}
+  \frac{x_2^- -1/x_1^-}{x_2^- -1/x_1^+}.
+  \label{eq:planar-n4-crossing-double-monodromy-expanded}
+\end{equation}
+In the reciprocal scalar convention
+\(\sigma^{\rm rec}_{12}:=\sigma_{12}^{-1}\), the one-crossing multiplier
+and the double-crossing multiplier are inverted.
+\end{proposition}
+
+\begin{proof}
+The first crossing gives
+\[
+  \sigma^{[\gamma\mathsf C_1]}_{12}
+  =
+  \frac{\Xi_{12}(x_1^\pm,x_2^\pm)}
+       {\sigma^{[\gamma]}_{12}} .
+\]
+After that continuation the projected Zhukovsky variables of the first
+magnon are \(1/x_1^\pm\).  Applying the same crossing equation once more
+therefore gives
+\[
+  \sigma^{[\gamma\mathsf C_1\mathsf C_1]}_{12}
+  =
+  \frac{\Xi_{12}(1/x_1^\pm,x_2^\pm)}
+       {\sigma^{[\gamma\mathsf C_1]}_{12}}
+  =
+  \frac{\Xi_{12}(1/x_1^\pm,x_2^\pm)}
+       {\Xi_{12}(x_1^\pm,x_2^\pm)}
+  \sigma^{[\gamma]}_{12}.
+\]
+Substituting the definition of \(\Xi_{12}\) cancels the common
+\(x_2^+/x_2^-\) factor and yields
+\eqref{eq:planar-n4-crossing-double-monodromy-expanded}.  If the reciprocal
+scalar factor is used, every displayed crossing equation is inverted because
+\(\sigma^{\rm rec}_{12}=1/\sigma_{12}\); the same two-line calculation then
+gives \((\mathcal M_{12}^{(2)})^{-1}\).  The argument proves the rational
+branch displacement forced by the chosen crossing law.  It does not classify
+all possible homotopy classes of scalar branches or prove that the BES
+branch is the unique minimal solution.
+\end{proof}
+
 Crossing relates \(\sigma(x_1^\pm,x_2^\pm)\) to the phase obtained by
 analytically continuing the first magnon through the crossed sheet
 \(x_1^\pm\mapsto1/x_1^\pm\).  It supplies an additional analyticity condition
 on the scalar factor beyond factorized Yang--Baxter compatibility.
-The two preceding propositions fix the rational convention carried by the
-chosen scalar split and its finite crossed-amplitude origin; they do not
-derive the global monodromy condition from finite algebra.  In the
+The preceding propositions fix the rational convention carried by the
+chosen scalar split, its finite crossed-amplitude origin, and the
+double-crossing sheet displacement forced by that convention; they do not
+derive the global monodromy condition from finite algebra.  Homotopic
+crossing paths inside a singularity-free chamber give the same rational
+cocycle, but paths separated by poles, zeros, or extra CDD singularities can
+land on different scalar branches.  In the
 normalization where the rational matrix part is separated as
 above, Janik crossing has the convention-fixed form
 \begin{equation}
