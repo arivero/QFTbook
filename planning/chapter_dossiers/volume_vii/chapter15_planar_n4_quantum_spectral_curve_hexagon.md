@@ -45,7 +45,8 @@ three-point functions.
   `T_{1,m}=m+G^[m]+bar G^[-m]`.
 - Proves the Hirota factorization
   `T_{2,m}=(1+G^[m+1]-G^[m-1])(1+bar G^[-m-1]-bar G^[-m+1])`
-  and records the magic-sheet continuation
+  and proves the magic-sheet continuation from the Cauchy-transform boundary
+  relation `G_+=-bar G_-`:
   `hat T_{1,m}=m+hat G^[m]-hat G^[-m]`,
   `hat T_{2,m}=hat T_{1,1}^[m] hat T_{1,1}^[-m]`.
 - Adds a QSC Riemann-Hilbert datum definition: spectral plane, single-cut
@@ -185,7 +186,10 @@ structure and the pair-of-pants-to-hexagons cut.
 - The same script checks the algebraic `Y_{1,1}Y_{2,2}` bridge ratio and the
   large-`u` exponent extraction for `mu_12(u+i)/mu_12(u)`.
 - The same script checks the one-row T-gauge Hirota factorization and the
-  magic-sheet Cauchy-continuation sign behind the two-row Wronskian gauge.
+  magic-sheet Cauchy-continuation sign behind the two-row Wronskian gauge,
+  including a finite Cauchy-transform model that detects the wrong lower-sheet
+  sign and verifies the `hat T_{2,m}=hat T_{1,1}^[m]hat T_{1,1}^[-m]`
+  product.
 - The same script checks the two-row T-hook Wronskian Pluecker identity,
   central-cut regularity of `T_{2,1}`, the `mu_12` discontinuity sign, and
   `T_{1,0}=mu_12 tilde mu_12`.

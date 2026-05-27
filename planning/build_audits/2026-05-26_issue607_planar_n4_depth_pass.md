@@ -1084,3 +1084,38 @@ Calculation checks added:
   rational coefficient: the Taylor factor, finite-part Fourier coefficient,
   Fourier measure, and positive/negative frequency half-lines multiply to
   `1/12`, hence `C_D=12 B`.
+
+## Continuation XXXVI: Magic-Sheet One-Row T-Gauge
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter15_planar_n4_quantum_spectral_curve_hexagon.md`
+
+Source/standard motivation:
+
+- Chapter 15 previously stated the magic-sheet continuation
+  `hat T_{1,m}=m+hat G^[m]-hat G^[-m]` and
+  `hat T_{2,m}=hat T_{1,1}^[m]hat T_{1,1}^[-m]` after the one-row Hirota
+  factorization.  This is a sheet/sign convention, not a harmless notation
+  change: the lower Cauchy branch must be continued as `-bar G`.
+
+Content added:
+
+- Added a proposition deriving the magic-sheet formulas from the analytic
+  Y-system boundary relation `G_+=-bar G_-` across the mirror cut.
+- The proof defines `hat G` as `G` on the upper branch and `-bar G` on the
+  lower branch, derives the sign flip in the lower shifted slot of
+  `T_{1,m}`, and then factors the two-row expression into the shifted
+  `hat T_{1,1}` product.
+- The proof states the locality boundary: if a pole or endpoint is crossed,
+  an extra source term is part of the analytic data rather than a failure of
+  the algebra.
+
+Calculation checks added:
+
+- Strengthened `check_t_gauge_resolvent_hirota_factorization()` with a finite
+  Cauchy-transform model that verifies the lower magic branch equals the
+  analytic continuation of the upper Cauchy formula, detects the wrong
+  lower-sheet sign, and checks the `hat T_{2,m}` row-product formula.

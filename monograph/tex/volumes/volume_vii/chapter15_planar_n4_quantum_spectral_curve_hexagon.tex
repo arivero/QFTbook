@@ -98,16 +98,27 @@ Expanding and collecting terms gives
 which is \eqref{eq:qsc-t-gauge-two-row-factorization}.
 \end{proof}
 
-The analytic Y-system condition
-\(Y_{2,\pm2}(u+\ii0)=1/Y_{1,\pm1}(u-\ii0)\) across the mirror cut forces the
-upper and lower Cauchy transforms to be opposite boundary values on that cut:
+\begin{proposition}[Magic-sheet continuation of the one-row gauge]
+\label{prop:qsc-magic-sheet-one-row-gauge}
+Assume the one-row gauge of Assumption~\ref{ass:qsc-one-row-t-gauge}.  Suppose
+that, across the mirror cut in the strip under consideration, the analytic
+Y-system gluing condition
+\[
+  Y_{2,\pm2}(u+\ii0)=\frac{1}{Y_{1,\pm1}(u-\ii0)}
+\]
+imposes the Cauchy-transform boundary relation
 \[
   G(u+\ii0)=-\overline G(u-\ii0).
 \]
-Consequently the density is supported on the short cut in the magic-sheet
-presentation.  Let \(\widehat G\) denote the single-cut continuation which
-equals \(G\) in the upper half-plane and \(-\overline G\) in the lower
-half-plane.  Then
+Define the magic-sheet continuation by
+\[
+  \widehat G=
+  \begin{cases}
+    G, & \text{on the branch reached from the upper half-plane},\\
+    -\overline G, & \text{on the branch reached from the lower half-plane}.
+  \end{cases}
+\]
+Then, on the continued sheet,
 \begin{equation}
   \widehat{\mathcal T}_{1,m}
   =
@@ -120,6 +131,43 @@ half-plane.  Then
   \qquad m\geq2.
   \label{eq:qsc-magic-sheet-t-gauge}
 \end{equation}
+\end{proposition}
+
+\begin{proof}
+The boundary relation says precisely that the upper branch \(G\) and the
+negative of the lower branch \(-\overline G\) glue with the same boundary
+value across the mirror cut.  Thus \(\widehat G\) is a single continued Cauchy
+transform on the magic sheet; the remaining discontinuity data are carried by
+the Zhukovsky short cut rather than by two independent upper/lower transforms.
+
+In the original strip,
+\[
+  \mathcal T_{1,m}=m+G^{[m]}+\overline G^{[-m]} .
+\]
+After continuation through the mirror cut, the upper shifted term remains
+\(\widehat G^{[m]}\), while the lower shifted term satisfies
+\(\overline G^{[-m]}=-\widehat G^{[-m]}\).  This gives the first formula in
+\eqref{eq:qsc-magic-sheet-t-gauge}.
+
+For the two-row function use
+Proposition~\ref{prop:qsc-t-gauge-hirota-factorization}.  Its first factor
+becomes
+\[
+  1+\widehat G^{[m+1]}-\widehat G^{[m-1]}
+  =
+  \widehat{\mathcal T}_{1,1}^{[m]},
+\]
+and its second factor becomes
+\[
+  1+\widehat G^{[-m+1]}-\widehat G^{[-m-1]}
+  =
+  \widehat{\mathcal T}_{1,1}^{[-m]}.
+\]
+Multiplying the two factors proves the second formula.  The proof is local in
+the strip: if a pole or endpoint is crossed, the missing information is an
+extra source term rather than a failure of the algebra.
+\end{proof}
+
 The hats emphasize that these are not new functions on the same sheet but
 analytic continuations through the Zhukovsky cut.  In the strip
 \(|\operatorname{Im}u|<m/2\), \(\widehat{\mathcal T}_{1,m}\) agrees with the

@@ -2106,6 +2106,57 @@ def check_t_gauge_resolvent_hirota_factorization() -> None:
         if abs(hat_upper + lower_gbar) < 1.0e-14:
             raise AssertionError("Cauchy sample should not accidentally erase the sheet sign")
 
+    support = ((-0.9, 1.0), (0.2, -0.75), (1.1, 0.5))
+
+    def upper_cauchy(z: complex) -> complex:
+        return sum(-weight / (2j * math.pi * (z - pole)) for pole, weight in support)
+
+    def lower_cauchy_bar(z: complex) -> complex:
+        return sum(weight / (2j * math.pi * (z - pole)) for pole, weight in support)
+
+    def magic_cauchy(z: complex) -> complex:
+        if z.imag >= 0:
+            return upper_cauchy(z)
+        return -lower_cauchy_bar(z)
+
+    for point in (0.4 - 0.6j, -0.3 - 0.35j, 0.8 - 0.9j):
+        assert_close(
+            "magic-sheet lower branch continues the upper Cauchy formula",
+            magic_cauchy(point),
+            upper_cauchy(point),
+        )
+        if abs(lower_cauchy_bar(point) - upper_cauchy(point)) < 1.0e-14:
+            raise AssertionError("lower Cauchy sign should differ before magic continuation")
+
+    for base, m_value in ((0.13 + 0.04j, 2), (-0.31 - 0.03j, 3)):
+        upper_slot = base + 0.5j * m_value
+        lower_slot = base - 0.5j * m_value
+        magic_t1 = m_value + magic_cauchy(upper_slot) - magic_cauchy(lower_slot)
+        branch_t1 = m_value + upper_cauchy(upper_slot) + lower_cauchy_bar(lower_slot)
+        assert_close("magic-sheet T1 branch sign", magic_t1, branch_t1)
+
+        wrong_lower_sign = m_value + upper_cauchy(upper_slot) - lower_cauchy_bar(lower_slot)
+        if abs(wrong_lower_sign - magic_t1) < 1.0e-14:
+            raise AssertionError("magic-sheet T1 check failed to detect lower-sign error")
+
+        t2_from_factorization = (
+            1
+            + magic_cauchy(base + 0.5j * (m_value + 1))
+            - magic_cauchy(base + 0.5j * (m_value - 1))
+        ) * (
+            1
+            + magic_cauchy(base + 0.5j * (-m_value + 1))
+            - magic_cauchy(base + 0.5j * (-m_value - 1))
+        )
+
+        def magic_t11(z: complex) -> complex:
+            return 1 + magic_cauchy(z + 0.5j) - magic_cauchy(z - 0.5j)
+
+        t2_from_row_product = magic_t11(base + 0.5j * m_value) * magic_t11(
+            base - 0.5j * m_value
+        )
+        assert_close("magic-sheet T2 row product", t2_from_factorization, t2_from_row_product)
+
 
 def check_t_hook_wronskian_pmu_bridge() -> None:
     """Check the local T-hook Wronskian algebra leading to the Pmu bridge."""
