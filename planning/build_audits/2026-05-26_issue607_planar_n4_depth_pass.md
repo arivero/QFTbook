@@ -1391,3 +1391,40 @@ Calculation checks added:
   checks of the paired-root factorizations of `B_Q^-` and `B_Q^+`, the `Q=1`
   removable-factor identity and reduced density, and the large-`q` leading
   coefficient consistent with `q^{-12}` decay.
+
+## Continuation XLV: Konishi Exact Residue Reduction
+
+Substantive files edited:
+
+- `monograph/tex/volumes/volume_vii/chapter14_planar_n4_mirror_tba_y_system.tex`
+- `calculation-checks/planar_n4_integrability_checks.py`
+- `planning/chapter_dossiers/volume_vii/chapter14_planar_n4_mirror_tba_y_system.md`
+
+Source/standard motivation:
+
+- After the pole inventory was made explicit, the proof still compressed the
+  next algebraic step into "the residue sum gives."  This is precisely the
+  sort of convention-sensitive Mathematica-style reduction that should be
+  reproducible from stated residue formulas in the monograph.
+
+Content added:
+
+- Added a residue-reduction lemma for the per-charge Konishi summand.  It
+  writes the `q=iQ` contribution as a third derivative of the regular part of
+  the fourth-order pole, writes the simple-pole contributions using
+  `N(q_0)/(D'(q_0))`, and evaluates the derivative of the vanishing quartic
+  factor as `24 i a_eta (1 + sigma i sqrt(3) a_eta)`.
+- The lemma records that the calculation takes place in
+  `Q(sqrt(3), i)`, that the `sigma=+-1` pair cancels the radical-odd pieces,
+  and that the reduced result is the displayed
+  `R_Q + 864/Q^3 - 1440/Q^5` summand.
+- Updated the leading wrapping proof to cite the residue-reduction lemma
+  before the telescoping step.
+
+Calculation checks added:
+
+- Added `check_konishi_wrapping_exact_residue_reduction()`, an exact SymPy
+  check that extracts the fourth-order Laurent coefficient, checks the
+  simple-pole derivative formula, verifies cancellation of radicals in the
+  contour sum, and compares the result with the displayed per-charge summand
+  for the first four mirror charges.

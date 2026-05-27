@@ -116,6 +116,12 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   `B_Q^+`, the full cancellation of the apparent `Q=1` real poles at
   `q=+-1/sqrt(3)`, the absence of real contour poles after this cancellation,
   and the `q^{-12}` large-rapidity decay.
+- Derives the residue reduction for the per-charge Konishi wrapping summand:
+  the fourth-order residue at `q=iQ` is written as a third derivative of the
+  regular part, the simple residues at `q=+-1/sqrt(3)+i(Q+-1)` are expressed
+  with the explicit derivative of the vanishing quartic factor, and the
+  resulting arithmetic in `Q(sqrt(3), i)` is reduced to the displayed rational
+  summand `R_Q+864/Q^3-1440/Q^5`.
 - Displays the weak asymptotic `Y_Q^{(0)}(u)` used for Konishi, the change of
   variables `q=2u`, the real-line rational integral `I_Q`, the residue
   summand, the exact telescoper for the non-zeta rational part, and the final
@@ -157,9 +163,11 @@ node domain.
   the exact weak-density rationalization behind the `q=2u` integrand, the
   exact paired-root factorization of the Konishi quartics, the `Q=1`
   removable-pole cancellation, the `q^{-12}` large-rapidity leading-power
-  check, the stringbook `u`-integrand to rational-integrand conversion,
-  numerical real-line integrals for the first four mirror charges, and the
-  exact telescoping identity for the rational non-zeta tail.
+  check, exact symbolic Laurent extraction of the fourth-order and simple
+  upper-half-plane residues, the stringbook `u`-integrand to
+  rational-integrand conversion, numerical real-line integrals for the first
+  four mirror charges, and the exact telescoping identity for the rational
+  non-zeta tail.
 
 ## External References Used In Current Pass
 

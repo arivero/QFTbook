@@ -1883,6 +1883,72 @@ def konishi_wrapping_charge_summand(charge: int) -> Fraction:
     )
 
 
+def check_konishi_wrapping_exact_residue_reduction() -> None:
+    """Check the Konishi residue reduction by exact Laurent extraction."""
+
+    try:
+        import sympy as sp
+    except ImportError as exc:
+        raise AssertionError("SymPy is required for the exact Konishi residue check") from exc
+
+    q = sp.symbols("q")
+    imaginary = sp.I
+    root_three = sp.sqrt(3)
+
+    def to_sympy_rational(value: Fraction):
+        return sp.Rational(value.numerator, value.denominator)
+
+    def density_parts(charge: int):
+        b_minus = (
+            9 * q**4
+            + 6 * (3 * (charge - 2) * charge + 2) * q**2
+            + (3 * (charge - 2) * charge + 4) ** 2
+        )
+        b_plus = (
+            9 * q**4
+            + 6 * (3 * charge * (charge + 2) + 2) * q**2
+            + (3 * charge * (charge + 2) + 4) ** 2
+        )
+        numerator = 147456 * charge**2 * (3 * q**2 + 3 * charge**2 - 4) ** 2
+        denominator = (q**2 + charge**2) ** 4 * b_minus * b_plus
+        return sp.expand(numerator), sp.expand(denominator), numerator / denominator
+
+    for charge in range(1, 5):
+        numerator, denominator, density = density_parts(charge)
+        fourth_order_pole = imaginary * charge
+        fourth_order_regular_part = sp.cancel((q - fourth_order_pole) ** 4 * density)
+        fourth_order_residue = (
+            sp.diff(fourth_order_regular_part, q, 3).subs(q, fourth_order_pole)
+            / 6
+        )
+        if sp.simplify(fourth_order_residue - sp.residue(density, q, fourth_order_pole)) != 0:
+            raise AssertionError(f"Konishi fourth-order Laurent residue failed at Q={charge}")
+
+        residues = [fourth_order_residue]
+        for sign in (1, -1):
+            offset = charge + sign
+            if offset == 0:
+                continue
+            for sigma in (1, -1):
+                pole = sp.Rational(sigma, 1) / root_three + imaginary * offset
+                derivative_residue = numerator.subs(q, pole) / sp.diff(denominator, q).subs(
+                    q, pole
+                )
+                direct_residue = sp.residue(density, q, pole)
+                if sp.simplify(derivative_residue - direct_residue) != 0:
+                    raise AssertionError(
+                        f"Konishi simple-pole residue formula failed at Q={charge}"
+                    )
+                residues.append(derivative_residue)
+
+        contour_value = sp.simplify(-imaginary * sum(residues))
+        expected = to_sympy_rational(konishi_wrapping_charge_summand(charge))
+        if sp.simplify(contour_value - expected) != 0:
+            raise AssertionError(f"Konishi exact residue reduction failed at Q={charge}")
+        if not contour_value.is_Rational:
+            raise AssertionError(f"Konishi residue radicals did not cancel at Q={charge}")
+
+
 def adaptive_simpson(
     function,
     left: float,
@@ -3377,6 +3443,7 @@ def main() -> None:
     check_y_system_shift_source_factor()
     check_konishi_four_loop_wrapping_arithmetic()
     check_konishi_wrapping_residue_sum()
+    check_konishi_wrapping_exact_residue_reduction()
     check_hexagon_bridge_lengths_and_phase()
     check_hexagon_scalar_watson_factor()
     check_bremsstrahlung_displacement_cusp_normalization()
