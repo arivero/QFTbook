@@ -18,6 +18,13 @@ later lower-dimensional examples, protected sectors, and localization.
 - `M`, `H_p`, `A_p`, `G_p`: quantum moduli space, Hilbert space, local
   operator algebra, and background response in vacuum `p`.
 - `R_ch`, `ev_p`: chiral ring and evaluation homomorphism at a vacuum.
+- `P_a^I`, `V^{IJ}`: \(SU(2)\), \(N_f=2\) doublet fields and antisymmetric
+  meson/baryon Plucker coordinates.
+- `Pf(V)`: Pfaffian
+  \(V^{12}V^{34}-V^{13}V^{24}+V^{14}V^{23}\) for the \(SU(2)\),
+  \(N_f=2\) quotient.
+- `prop:su2-nf2-classical-plucker-quotient`: classical \(SU(2)\),
+  \(N_f=2\) SQCD quotient as the Pfaffian/Plucker hypersurface.
 - `M_H`, `mu_R`, `mu_C`: hyperkahler quotient and real/complex moment maps.
 - `g_{i bar j}`: branch metric in the low-energy effective action.
 - `q_i`, `tilde q_i`: rank-one \(U(1)\) hypermultiplet coordinates with
@@ -46,6 +53,11 @@ later lower-dimensional examples, protected sectors, and localization.
   reducedness hypotheses.
 - Records `N=1` SQCD branch behavior and `N=2` Coulomb/Higgs/mixed branch
   structures.
+- Proves the classical \(SU(2)\), \(N_f=2\) SQCD quotient
+  \(\mathcal M_{\mathrm{ch},\mathrm{cl}}\simeq
+  \{\operatorname{Pf}(V)=0\}\subset\bigwedge^2\mathbb C^4\), with explicit
+  doublet coordinates, Pfaffian convention, converse reconstruction on a
+  nonzero Plucker chart, and dimension check.
 - Proves the rank-one \(\mathcal N=2\) hypermultiplet quotient
   \(\{\mu_C=0,\mu_R=\zeta\}/U(1)\simeq T^\ast\mathbb P^{N-1}\) for
   \(\zeta>0\), including the elementary real-moment representative,
@@ -60,7 +72,9 @@ later lower-dimensional examples, protected sectors, and localization.
   abelian invariant-ring calculation, the matching real/complex quotient
   dimension count, F-term ideal equivariance for an invariant
   superpotential, and the rank-one hyperkahler quotient dimension, one-form
-  descent, and cotangent transition algebra for \(T^\ast\mathbb P^{N-1}\).
+  descent, and cotangent transition algebra for \(T^\ast\mathbb P^{N-1}\),
+  together with the \(SU(2)\), \(N_f=2\) Pfaffian/Plucker identity,
+  converse reconstruction chart, and quotient dimension ledger.
 
 ## Figure Ledger
 
