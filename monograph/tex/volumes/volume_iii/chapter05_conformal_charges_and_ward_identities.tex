@@ -5,6 +5,8 @@
 
 \section{Charges as Surface Operators}
 
+\begin{definition}[Conformal surface charge]
+\label{def:conformal-surface-charge}
 Let \(\epsilon^\mu(x)\partial_\mu\) be a conformal Killing vector on flat
 Euclidean space, and let
 \[
@@ -19,16 +21,47 @@ normal \(n_\mu\), define the charge supported on \(\Sigma\) by
   \int_\Sigma \dd\sigma\,n_\mu T^\mu{}_\nu(x)\epsilon^\nu(x).
   \label{eq:cft-charge-surface}
 \end{equation}
-Here \(\dd\sigma\) is the induced volume element.  The conservation equation
-\(\partial_\mu J^\mu_\epsilon=0\) implies that \(Q_\epsilon(\Sigma)\) is
-unchanged under smooth deformations of \(\Sigma\) through regions containing
-no operator insertion and no boundary.
+Here \(\dd\sigma\) is the induced volume element.
+\end{definition}
+
+\begin{proposition}[Surface deformation of a conserved conformal charge]
+\label{prop:conformal-charge-surface-deformation}
+Let \(\Sigma_0\) and \(\Sigma_1\) be homologous oriented smooth
+codimension-one surfaces in a region \(U\subset\R^D\) that contains no operator
+insertions and no boundary.  If
+\(\partial_\mu J^\mu_\epsilon=0\) as a separated-point distribution on
+\(U\), then \(Q_\epsilon(\Sigma_0)=Q_\epsilon(\Sigma_1)\) inside every
+correlation function whose other insertions lie outside the deformation
+region.
+\end{proposition}
+
+\begin{proof}
+Let \(V\subset U\) be the oriented region swept out by the deformation, with
+\(\partial V=\Sigma_1-\Sigma_0\).  Smearing the distributional conservation
+law with a test function that is one on \(V\) and whose support avoids all
+insertions gives
+\[
+  0
+  =
+  \int_V\dd^D x\,\partial_\mu J^\mu_\epsilon(x)
+  =
+  \int_{\Sigma_1}\dd\sigma\,n_\mu J^\mu_\epsilon
+  -
+  \int_{\Sigma_0}\dd\sigma\,n_\mu J^\mu_\epsilon .
+\]
+The last equality is Stokes' theorem for the smoothed distributional pairing;
+shrinking the transition region of the test function to zero gives the
+surface statement.  No contact term appears because the support of the
+deformation avoids the insertion diagonals.
+\end{proof}
 
 This deformation property is the local content of a conserved charge.  A
 charge may be evaluated on a large sphere surrounding several insertions, or
 on a union of small spheres surrounding them separately.  The equality of
 these two evaluations is the Ward identity.
 
+\begin{definition}[Lorentzian charge commutator across an insertion]
+\label{def:lorentzian-charge-commutator-across-insertion}
 The Lorentzian operator meaning of the same construction is the following.
 Let \(\widehat Q_\epsilon(\Sigma)\) be the flux of the conserved current
 through a spacelike Cauchy surface \(\Sigma\), with future-directed unit normal.
@@ -49,6 +82,7 @@ of the commutator after the charge has been represented on the Hilbert spaces
 immediately to the future and past of the insertion.  After Euclidean
 continuation, the two surfaces close into a small hypersurface surrounding the
 insertion, and the commutator becomes the small-surface action used below.
+\end{definition}
 
 \begin{figure}[H]
   \centering
@@ -146,6 +180,8 @@ insertion, and the commutator becomes the small-surface action used below.
 
 \section{Operator Variations from Small Spheres}
 
+\begin{definition}[Small-surface action on a local operator]
+\label{def:small-surface-action-local-operator}
 Let \(S_x\) be a small sphere enclosing a single insertion at \(x\), with
 orientation inherited from the boundary of a small ball removed from the
 correlation-function domain.  The infinitesimal action of the symmetry on the
@@ -166,6 +202,7 @@ this convention corresponds to
 Changing the orientation convention changes both sides of
 \eqref{eq:variation-by-small-charge} by the same sign; the Ward identity
 below is then unchanged.
+\end{definition}
 
 \begin{hypothesis}[Vacuum and large-boundary behavior]
 \label{hyp:conformal-charge-vacuum-boundary}
@@ -212,6 +249,8 @@ correlators under consideration, assume the following two properties.
 \end{enumerate}
 \end{hypothesis}
 
+\begin{proposition}[Global conformal Ward identity from surface deformation]
+\label{prop:global-conformal-ward-from-surface-deformation}
 Under Hypothesis~\ref{hyp:conformal-charge-vacuum-boundary}, for separated
 insertions,
 \begin{equation}
@@ -248,6 +287,28 @@ This is the global Ward identity associated with the conformal Killing vector
 \(\epsilon^\mu\).  It is a statement about distributions on the configuration
 space of distinct points, completed by contact terms on diagonals when
 operator products collide.
+\end{proposition}
+
+\begin{proof}
+By vacuum invariance, the charge on a sufficiently large surface enclosing all
+insertions has zero expectation value after the large-boundary limit in
+Hypothesis~\ref{hyp:conformal-charge-vacuum-boundary}.  By
+Proposition~\ref{prop:conformal-charge-surface-deformation}, that large
+surface can be deformed through the punctured configuration space to the union
+of small surfaces \(S_i\) surrounding the insertions.  The induced orientation
+on the small boundaries is the one used in
+Definition~\ref{def:small-surface-action-local-operator}, and hence each
+small surface gives
+\[
+  Q_\epsilon(S_i)\mathcal O_i(x_i)
+  =
+  -\ii\,\delta_\epsilon\mathcal O_i(x_i).
+\]
+Multiplying the equality of surface insertions by \(\ii\) gives
+\eqref{eq:global-conformal-ward-identity}.  The proof is carried out on the
+configuration space of distinct points; the extension to coincident
+configurations is a further source-convention statement about contact terms.
+\end{proof}
 
 \section{Source-Derived Local Ward Identities}
 
@@ -258,8 +319,20 @@ introduced in Section~\ref{sec:cft-source-functionals-ward-contacts}.  Let
   \qquad x_i\ne x_j ,
 \]
 where the \(\mathcal O_i\) are scalar local operators.  In the source chart
-used for the stress tensor and the operators, translation invariance gives the
-distributional identity
+used for the stress tensor and the operators, the following distributional
+identities are the local form of the conformal Ward identity.
+
+\begin{proposition}[Local conformal-current Ward identity]
+\label{prop:local-conformal-current-ward}
+Assume that the stress tensor is symmetric and that scalar primary sources are
+defined in the same source chart as the metric-source stress tensor.  Let
+\(\mathcal O_i\) have scaling dimensions \(\Delta_i\), and set
+\[
+  \sigma_\epsilon=\frac1D\partial_\rho\epsilon^\rho,
+  \qquad
+  J^\mu_\epsilon=T^\mu{}_\nu\epsilon^\nu .
+\]
+The translation Ward identity is
 \begin{equation}
   \partial_\mu
   \left\langle
@@ -283,8 +356,7 @@ diffeomorphism action on its source.  Equation
 the extension of the separated-point distribution across the diagonals
 \(x=x_i\).
 
-For scalar primary insertions of dimensions \(\Delta_i\), the flat-space trace
-Ward identity in the same source chart is
+The flat-space trace Ward identity in the same source chart is
 \begin{equation}
   \left\langle
     T^\mu{}_\mu(x)X
@@ -304,14 +376,7 @@ the Weyl parameter \(\sigma(x)\).  It vanishes on the configuration space of
 distinct flat-space points; on collision diagonals or curved backgrounds it is
 part of the specified source convention.
 
-Let \(\epsilon^\mu\) be a conformal Killing vector, let
-\[
-  \sigma_\epsilon=\frac1D\partial_\rho\epsilon^\rho,
-  \qquad
-  J^\mu_\epsilon=T^\mu{}_\nu\epsilon^\nu ,
-\]
-and assume the stress tensor is symmetric.  Combining
-\eqref{eq:local-translation-ward} and \eqref{eq:local-trace-ward} gives
+If \(\epsilon^\mu\) is a conformal Killing vector, then
 \begin{equation}
   \partial_\mu
   \left\langle J^\mu_\epsilon(x)X\right\rangle
@@ -336,7 +401,43 @@ where for a scalar primary
 \]
 For spin \(\rho_i\), \(\delta_\epsilon\mathcal O_i\) includes the local
 rotation term displayed later in
-\eqref{eq:primary-infinitesimal-transform}.  Integrating
+\eqref{eq:primary-infinitesimal-transform}.
+\end{proposition}
+
+\begin{proof}
+The translation identity is the functional derivative of the metric-source
+diffeomorphism Ward identity with respect to the scalar sources, followed by
+setting all sources to their flat background values.  The sign is fixed by the
+active variation
+\(\delta_\epsilon\mathcal O_i=-\epsilon^\nu\partial_{i,\nu}\mathcal O_i\)
+for translations.  The trace identity is the corresponding functional
+derivative of the Weyl Ward identity in the same source chart; the displayed
+\(\Delta_i\)-term comes from the Weyl weight of the scalar source, while
+\(\mathcal A(x;X)\) is the differentiated local Weyl anomaly functional.
+
+For a conformal Killing vector,
+\[
+  \partial_\mu\epsilon_\nu+\partial_\nu\epsilon_\mu
+  =
+  2\sigma_\epsilon\delta_{\mu\nu}.
+\]
+Using symmetry of \(T^{\mu\nu}\),
+\[
+  \partial_\mu\langle J^\mu_\epsilon(x)X\rangle
+  =
+  \epsilon_\nu(x)\partial_\mu
+  \langle T^{\mu\nu}(x)X\rangle
+  +
+  \sigma_\epsilon(x)
+  \langle T^\mu{}_\mu(x)X\rangle .
+\]
+Substituting \eqref{eq:local-translation-ward} and
+\eqref{eq:local-trace-ward} gives
+\eqref{eq:local-conformal-current-ward}, with the delta functions evaluating
+\(\epsilon^\mu\) and \(\sigma_\epsilon\) at the insertion points.
+\end{proof}
+
+Integrating
 \eqref{eq:local-conformal-current-ward} over a region whose boundary is
 \(\Sigma\cup_i(-S_i)\) gives the surface decomposition
 \eqref{eq:surface-ward-decomposition}; if the large boundary contribution
@@ -345,6 +446,8 @@ global Ward identity \eqref{eq:global-conformal-ward-identity} follows.
 
 \section{Conformal Charges on the Cylinder}
 
+\begin{proposition}[Cylinder conformal charges and radial adjointness]
+\label{prop:cylinder-conformal-charges-radial-adjointness}
 Under the Weyl map
 \[
   \R^D\setminus\{0\}\longrightarrow \R_\tau\times S^{D-1},
@@ -364,6 +467,24 @@ become mutually adjoint raising and lowering operators:
 This adjointness is a consequence of reflection positivity under
 \(\tau\mapsto-\tau\), which is inversion in flat space.  It is the positivity
 input used below to derive unitarity bounds.
+\end{proposition}
+
+\begin{proof}
+The map \(x^\mu=\ee^\tau n^\mu\) sends the flat metric on
+\(\R^D\setminus\{0\}\) to
+\(\dd s^2=\ee^{2\tau}(\dd\tau^2+\dd\Omega_{D-1}^2)\); after the Weyl
+rescaling by \(\ee^{-2\tau}\), spheres \(|x|=\ee^\tau\) are the constant
+cylinder-time slices.  The conformal Killing vector \(x^\mu\partial_\mu\)
+therefore becomes \(\partial_\tau\), so its charge is the generator of
+Euclidean cylinder translations.  Reflection positivity pairs an insertion at
+\(\tau\) with its reflected insertion at \(-\tau\), and reflection in flat
+coordinates is inversion \(x^\mu\mapsto x^\mu/x^2\).  Inversion conjugates
+translations to special conformal transformations; hence the positive radial
+inner product identifies the adjoint of the translation charge with the
+special conformal charge, giving \eqref{eq:p-k-adjoint-cylinder}.  Rotations
+commute with the Weyl factor and act as the ordinary isometries of
+\(S^{D-1}\).
+\end{proof}
 
 More explicitly, let
 \[
@@ -460,7 +581,11 @@ supports avoid \(z\),
   \partial_z\langle \bar T(\bar z)X\rangle=0 .
 \]
 Contact terms at the insertions are part of the source convention discussed
-in Section~\ref{sec:cft-source-functionals-ward-contacts}.  The chiral
+in Section~\ref{sec:cft-source-functionals-ward-contacts}.
+
+\begin{definition}[Chiral stress-tensor contour charge]
+\label{def:chiral-stress-tensor-contour-charge}
+The chiral
 contour charge associated with a holomorphic vector field \(v(z)\partial_z\)
 on an annulus \(A\) is the oriented contour operator
 \begin{equation}
@@ -478,6 +603,7 @@ the active-operator sign: the infinitesimal change generated by
   =
   \varepsilon Q_v(C)\mathcal O .
 \]
+\end{definition}
 
 Suppose \(\mathcal O(0)\) has holomorphic weight \(h\), so that its response
 to translations and linear rescalings is finite and diagonal.  Then the
@@ -495,8 +621,12 @@ singular part of the stress-tensor OPE begins as
 \end{equation}
 where the omitted terms to the left of the displayed terms are possible poles
 of order \(z^{-3}\) and higher.  These higher poles are the additional
-transformation data under nonlinear chiral vector fields.  A Virasoro primary
-is a local operator \(\phi\) whose stress-tensor singular part is exactly
+transformation data under nonlinear chiral vector fields.
+
+\begin{definition}[Virasoro primary and contour modes]
+\label{def:virasoro-primary-and-contour-modes}
+A Virasoro primary is a local operator \(\phi\) whose stress-tensor singular
+part is exactly
 \begin{equation}
   T(z)\phi(0)
   =
@@ -517,7 +647,7 @@ This is stronger than global conformal primarity: it is a statement about the
 whole local chiral stress-tensor representation, not merely the
 \(\mathrm{PSL}(2,\mathbb C)\) subalgebra.
 
-On a punctured disc, define the holomorphic modes by
+On a punctured disc, the holomorphic modes are
 \begin{equation}
   L_n
   =
@@ -535,6 +665,7 @@ Hilbert space.  With this convention,
 \]
 for a Virasoro primary \(\phi\).  The antiholomorphic modes \(\bar L_n\) are
 defined analogously from \(\bar T(\bar z)\).
+\end{definition}
 
 \begin{proposition}[Stress-tensor OPE and the Virasoro algebra]
 \label{prop:tt-ope-virasoro-algebra}
@@ -631,6 +762,7 @@ The coefficient of the remaining stress-tensor mode is therefore
 \eqref{eq:virasoro-algebra-from-tt-ope}.
 \end{proof}
 
+\begin{remark}[Antiholomorphic sector and gravitational anomaly]
 The antiholomorphic modes satisfy the same algebra with \(c\) replaced by
 \(\bar c\), and separated holomorphic and antiholomorphic contours commute up
 to possible contact terms that would be a gravitational anomaly.  A
@@ -638,7 +770,10 @@ reflection-positive parity-invariant two-dimensional CFT has \(c=\bar c\).
 In a theory with a gravitational anomaly, the two chiral central charges are
 different and the spatial momentum on the cylinder acquires the corresponding
 vacuum shift.
+\end{remark}
 
+\begin{proposition}[Schwarzian transformation and plane-cylinder shift]
+\label{prop:schwarzian-transformation-plane-cylinder-shift}
 The stress tensor itself carries an affine chiral transformation law fixed by
 \eqref{eq:stress-tensor-tt-ope}.  If \(z'=f(z)\) is a holomorphic coordinate
 change, then
@@ -720,6 +855,35 @@ momentum on the unit circle are therefore
 Thus the radial Hamiltonian differs from the naive dilatation eigenvalue by
 the Casimir term forced by the stress-tensor anomaly under the plane-cylinder
 coordinate change.
+\end{proposition}
+
+\begin{proof}
+The infinitesimal form of
+\eqref{eq:stress-tensor-schwarzian-transformation} is obtained by inserting
+the contour charge \(Q_v(C)\) around \(T(w)\) and using
+\eqref{eq:stress-tensor-tt-ope}.  The fourth-order pole gives the central
+third-derivative term, while the second- and first-order poles give the
+ordinary weight-two tensor transformation.  Exponentiating these infinitesimal
+changes gives the displayed finite transformation.  The possible
+inhomogeneous term must satisfy the composition law for successive coordinate
+changes, and the Schwarzian identity displayed above is exactly that cocycle
+condition.
+
+For \(w=\ii\log z\), direct differentiation gives
+\[
+  w'=\frac{\ii}{z},\qquad
+  w''=-\frac{\ii}{z^2},\qquad
+  w'''=\frac{2\ii}{z^3},
+  \qquad
+  \{w,z\}=\frac{1}{2z^2}.
+\]
+Using \(z=\ee^{-\ii w}\) and \(\dd z/\dd w=-\ii z\) in
+\eqref{eq:stress-tensor-schwarzian-transformation} yields
+\eqref{eq:plane-cylinder-stress-tensor-shift}.  Substituting the Laurent
+expansions of \(T^{(z)}\) and \(\bar T^{(\bar z)}\) and taking the zero modes
+of cylinder translations and rotations gives
+\eqref{eq:cylinder-hamiltonian-momentum-virasoro}.
+\end{proof}
 
 \begin{remark}[Local operators and the radial Hilbert completion in \(D=2\)]
 The Virasoro mode construction refines the domain statement of
