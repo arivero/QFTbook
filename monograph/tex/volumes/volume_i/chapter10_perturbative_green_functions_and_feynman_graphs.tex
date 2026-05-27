@@ -124,6 +124,8 @@ of removing \(\Lambda\) is a separate renormalization or constructive
 existence problem.
 \end{remark}
 
+\begin{definition}[Finite Fourier cutoff Gaussian scalar datum]
+\label{def:finite-fourier-cutoff-gaussian-scalar-datum}
 With a sharp Fourier cutoff this finite-dimensional statement is represented
 by
 \[
@@ -135,26 +137,59 @@ by
 \]
 after choosing independent real coordinates for one representative of each
 pair \(k,-k\) and fixing the resulting finite-dimensional Gaussian
-normalization. The symbol \([\dd\phi]\) is never used here as an unregulated
+normalization.  More explicitly, put the theory first on a Euclidean torus of
+side \(L\), let \(\mathcal K_{\Lambda,L}\) be a finite symmetric set of
+allowed momenta, and set
+\[
+  E_{\Lambda,L}
+  =
+  \left\{
+    \widetilde\phi:\mathcal K_{\Lambda,L}\to\mathbb C:
+    \widetilde\phi(-k)=\overline{\widetilde\phi(k)}
+  \right\}.
+\]
+After choosing real coordinates on \(E_{\Lambda,L}\), the free expectation is
+the centered Gaussian probability measure with covariance
+\[
+  \vev{\widetilde\phi(k)\widetilde\phi(k')}_{0,\Lambda,L}
+  =
+  L^D\,\frac{\delta_{k+k',0}}{k^2+m^2}.
+\]
+Equivalently, for a real source \(J\) whose Fourier transform is supported in
+\(\mathcal K_{\Lambda,L}\),
+\[
+  Z_{0,\Lambda,L}[J]
+  =
+  \exp\left[
+    \frac12
+    \int_{T_L^D}\dd^Dx\,\dd^Dy\,
+    J(x)C_{\Lambda,L}(x-y)J(y)
+  \right].
+\]
+The infinite-volume smooth-cutoff formulas in this chapter are shorthand for
+the corresponding limit or for the directly regulated covariance
+\(C_\Lambda\).  The symbol \([\dd\phi]\) is not used here as an unregulated
 Lebesgue measure on an infinite-dimensional vector space.
+\end{definition}
 
 \begin{definition}[Normalized regulated Euclidean Green functions]
 \label{def:normalized-regulated-euclidean-green-functions}
 The normalized Euclidean \(n\)-point function is
 \[
 \begin{aligned}
-  G_{E,n,\Lambda}(x_1,\ldots,x_n)
+  G_{E,n,\Lambda,L}(x_1,\ldots,x_n)
   &=
   \frac{\vev{
     \phi(x_1)\cdots\phi(x_n)
     \exp[-S_{\mathrm{int},E}[\phi]]
-  }_{0,\Lambda}
+  }_{0,\Lambda,L}
   }{
-  \vev{\exp[-S_{\mathrm{int},E}[\phi]]}_{0,\Lambda}} .
+  \vev{\exp[-S_{\mathrm{int},E}[\phi]]}_{0,\Lambda,L}} .
 \end{aligned}
 \]
-It is a distribution in the insertion points after the regulator is removed,
-when that limit exists or has been renormalized. Perturbation theory is the
+In infinite-volume shorthand the subscript \(L\) is suppressed.  It is a
+distribution in the insertion points after the regulator is removed, when that
+limit exists or has been renormalized. Perturbation theory is the
 coefficientwise expansion of this expression in powers of the coupling \(g\),
 with the regulator kept fixed before renormalized limits are considered.
 \end{definition}
@@ -347,6 +382,17 @@ edge \(e\), and \(\operatorname{Aut}\Gamma\) is the group of graph
 automorphisms preserving all external labels. This convention includes the
 factor \(1/4!\) in the action and the Wick-contraction multiplicities in the
 single symmetry factor.
+
+For a connected graph with \(I(\Gamma)\) internal edges and \(V(\Gamma)\)
+vertices, the number of independent loop momenta is
+\[
+  L(\Gamma)=I(\Gamma)-V(\Gamma)+1 .
+\]
+This is the first Betti number of the graph.  Momentum conservation at all
+vertices gives \(V(\Gamma)\) linear constraints, but the sum of those
+constraints is the external momentum-conservation delta function already
+displayed, so only \(V(\Gamma)-1\) vertex constraints eliminate independent
+internal edge momenta.
 \end{definition}
 
 \begin{figure}[H]
@@ -505,6 +551,22 @@ Its perturbative expansion begins as
 \quad+\cdots .
 \]
 
+\begin{definition}[Two-point one-particle irreducibility]
+\label{def:two-point-one-particle-irreducibility}
+A connected two-point graph is one-particle reducible if it contains an
+internal edge whose removal disconnects the two external endpoints.  It is
+one-particle irreducible, abbreviated \(1\mathrm{PI}\), if no such edge
+exists.  The amputated reduced value of a \(1\mathrm{PI}\) two-point graph is
+obtained by omitting the two external propagator factors attached to the
+external endpoints while keeping the loop integrals, vertex factors, and graph
+automorphism factor.
+
+This is a statement about connected Green-function graphs.  Its role here is
+only to organize the two-point function.  The systematic functional definition
+of the one-particle-irreducible effective action is developed later in
+Chapter~\ref{ch:volume-ii-generating-functionals-1pi}.
+\end{definition}
+
 \begin{definition}[Euclidean self-energy]
 \label{def:euclidean-self-energy}
 Define the Euclidean self-energy \(\Sigma_E(k)\) by the Dyson form
@@ -530,6 +592,59 @@ Equivalently,
 With this sign convention \(\Sigma_E\) is the sum of amputated connected
 one-particle-irreducible two-point insertions.
 \end{definition}
+
+\begin{proposition}[Dyson decomposition of the connected two-point function]
+\label{prop:dyson-decomposition-two-point-function}
+As a formal power series at fixed regulator, every connected two-point graph
+decomposes uniquely into a chain of \(1\mathrm{PI}\) two-point blocks joined
+by free propagator edges.  If \(\Sigma_E(k)\) denotes the sum of amputated
+\(1\mathrm{PI}\) two-point insertions with the sign convention of
+Definition~\ref{def:euclidean-self-energy}, then
+\[
+  \widetilde G_E(k)
+  =
+  G_{0,E}(k)
+  +
+  G_{0,E}(k)\Sigma_E(k)G_{0,E}(k)
+  +
+  G_{0,E}(k)\Sigma_E(k)G_{0,E}(k)\Sigma_E(k)G_{0,E}(k)
+  +\cdots .
+\]
+Equivalently,
+\[
+  \widetilde G_E(k)=\frac{1}{G_{0,E}(k)^{-1}-\Sigma_E(k)}
+  =
+  \frac{1}{k^2+m^2-\Sigma_E(k)} .
+\]
+\end{proposition}
+
+\begin{proof}
+Work at finite regulator and at a fixed order in \(g\), so only finitely many
+Wick graphs occur.  In a connected two-point graph, call an internal edge a
+separating edge if deleting it disconnects the two external endpoints.  The
+set of separating edges on any path from one external endpoint to the other is
+linearly ordered by separation: an edge \(e_1\) precedes \(e_2\) if the
+component containing the left external endpoint after deleting \(e_1\) is
+contained in the corresponding component after deleting \(e_2\).  Cutting all
+separating edges decomposes the graph into maximal subgraphs with two
+distinguished attachment half-edges and no further separating internal edge
+between them.  These maximal subgraphs are exactly the \(1\mathrm{PI}\)
+two-point blocks; the cut separating edges are free propagator factors.
+
+The decomposition is unique because the separating edges are intrinsic to the
+incidence graph.  Conversely, any ordered chain of \(1\mathrm{PI}\) two-point
+blocks joined by free propagators gives a connected two-point graph, and the
+automorphism factors multiply correctly once the two attachment half-edges of
+each block are distinguished by their position in the chain.  Summing over
+chains therefore gives the displayed geometric series.  Since
+\(G_{0,E}(k)=(k^2+m^2)^{-1}\), the formal geometric series is
+\[
+  G_{0,E}(k)\sum_{r\ge0}\bigl(\Sigma_E(k)G_{0,E}(k)\bigr)^r
+  =
+  \frac{1}{G_{0,E}(k)^{-1}-\Sigma_E(k)} ,
+\]
+as an identity of formal power series.
+\end{proof}
 
 \[
 \Sigma_E(k)
@@ -931,4 +1046,43 @@ field remains connected to the vertex by a Euclidean free propagator, giving
 \(\prod_i(k_i^2+m^2)^{-1}\).  Since this is a Green function rather than an
 amputated scattering amplitude, those external propagators are part of the
 coefficient.
+\end{proof}
+
+\begin{definition}[Euclidean amputation of connected four-point Green functions]
+\label{def:euclidean-amputation-connected-four-point}
+Away from the free Euclidean pole hypersurfaces \(k_i^2+m^2=0\), define the
+amputated connected Euclidean four-point kernel by the algebraic operation
+\[
+\begin{aligned}
+  \widetilde\Gamma_{E,4}(k_1,k_2,k_3,k_4)
+  &:=
+  \left(\prod_{i=1}^4(k_i^2+m^2)\right)
+  \widetilde G_{E,4}^{\mathrm{conn}}(k_1,k_2,k_3,k_4).
+\end{aligned}
+\]
+This definition removes the external free propagator factors from the
+connected Green function.  It is not a definition of a scattering amplitude:
+scattering requires the nonperturbative one-particle subspace, asymptotic
+states, and the LSZ limiting operation developed later.
+\end{definition}
+
+\begin{proposition}[Tree-level amputated Euclidean four-point kernel]
+\label{prop:tree-level-amputated-euclidean-four-point-kernel}
+With the convention of
+Definition~\ref{def:euclidean-amputation-connected-four-point}, the leading
+amputated connected four-point kernel is
+\[
+  \widetilde\Gamma_{E,4}(k_1,k_2,k_3,k_4)
+  =
+  -(2\pi)^D g\,\delta^{(D)}(k_1+k_2+k_3+k_4)
+  +O(g^2).
+\]
+\end{proposition}
+
+\begin{proof}
+Multiply the leading connected Green function in
+Proposition~\ref{prop:leading-connected-four-point-green-function} by
+\(\prod_i(k_i^2+m^2)\).  The four free external propagators cancel
+coefficientwise, leaving the momentum-conserving delta distribution and the
+quartic vertex coefficient \(-g\).
 \end{proof}
