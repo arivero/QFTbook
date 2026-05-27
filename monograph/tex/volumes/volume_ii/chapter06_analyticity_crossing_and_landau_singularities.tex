@@ -791,6 +791,42 @@ specified class of unsmeared QFT matrix coefficients is a separate theorem,
 not a notational convention.
 \end{definition}
 
+\begin{definition}[Support-pruned Dyson data in a coincidence slab]
+\label{def:support-pruned-dyson-data}
+Let \(R\) be the coincidence slab in
+\eqref{eq:dyson-coincidence-slab}, and let \(S_R\) be the corresponding
+closed set of admissible hyperboloids.  For a distribution
+\[
+  \Psi\in\mathcal D'(\mathbb R^4_u\times[0,\infty)_\mu)
+\]
+for which the pairing is defined, write
+\begin{equation}
+  (\mathcal H\Psi)(q)
+  =
+  \left\langle
+    \Psi(u,\mu),
+    \varepsilon(q^0-u^0)
+    \delta\!\bigl((q-u)^2+\mu^2\bigr)
+  \right\rangle_{u,\mu}
+  \label{eq:dyson-hyperboloid-transform}
+\end{equation}
+for the Dyson hyperboloid transform.  A Dyson-regular commutator has
+support-pruned Dyson data relative to \(R\) if the Cauchy-data distribution
+\(\Psi_\Sigma\) produced from its six-dimensional wave lift can be replaced,
+modulo the kernel of \(\mathcal H\), by a distribution \(\Psi_R\) satisfying
+\begin{equation}
+  \operatorname{supp}\Psi_R\subset S_R,
+  \qquad
+  \mathcal H\Psi_R=\mathcal H\Psi_\Sigma .
+  \label{eq:support-pruned-dyson-data}
+\end{equation}
+The condition is independent of the chosen affine Cauchy hyperplane in the
+following sense: changing the hyperplane changes \(\Psi_\Sigma\) by a
+distribution in the kernel of \(\mathcal H\), because both Cauchy surfaces
+reconstruct the same six-dimensional wave solution by
+Proposition~\ref{prop:six-dimensional-distributional-cauchy-formula}.
+\end{definition}
+
 \begin{definition}[Dyson regularity modulo contact terms]
 \label{def:dyson-regular-modulo-contact}
 A causal commutator \(C\in\mathcal S'(\mathbb M^4)\) is Dyson-regular
@@ -1244,13 +1280,12 @@ This proves the final assertion.
 \label{thm:dyson-causal-commutator-representation}
 Let \(C\in\mathcal S'(\mathbb M^4)\) be Dyson-regular in the sense of
 Definition~\ref{def:dyson-regular-causal-commutator}.  Assume
-\(\operatorname{supp}C\subset\overline V_{\rm caus}\), and suppose that
-\(\widehat C\) vanishes in the slab \(R\) of
-\eqref{eq:dyson-coincidence-slab}.  Then there is a distribution
+\(\operatorname{supp}C\subset\overline V_{\rm caus}\).  Then there is a
+distribution
 \[
   \Psi\in\mathcal D'(\mathbb R^4_u\times[0,\infty)_\mu)
 \]
-supported in \(S_R\) such that, in \(\mathcal D'(\mathbb R^4_q)\),
+such that, in \(\mathcal D'(\mathbb R^4_q)\),
 \begin{equation}
   \widehat C(q)
   =
@@ -1262,8 +1297,16 @@ supported in \(S_R\) such that, in \(\mathcal D'(\mathbb R^4_q)\),
   \label{eq:dyson-causal-commutator-representation}
 \end{equation}
 Here \(\varepsilon(t)=1\) for \(t>0\) and \(\varepsilon(t)=-1\) for
-\(t<0\).  If a later source-current or retarded-product reduction adds local
-terms supported at \(x=0\), their Fourier transforms are finite polynomials in
+\(t<0\).  If, in addition, \(\widehat C\) vanishes in the slab \(R\) of
+\eqref{eq:dyson-coincidence-slab} and the Dyson data are support-pruned
+relative to \(R\) in the sense of
+Definition~\ref{def:support-pruned-dyson-data}, then \(\Psi\) can be chosen
+with
+\[
+  \operatorname{supp}\Psi\subset S_R .
+\]
+If a later source-current or retarded-product reduction adds local terms
+supported at \(x=0\), their Fourier transforms are finite polynomials in
 \(q\).  Such local-contact polynomials are recorded separately; they do not
 change the hyperboloid support or the holomorphic domain away from infinity.
 \end{theorem}
@@ -1347,28 +1390,25 @@ from \(\partial_nD_6\).  Returning to the mostly-plus convention changes
 \((q-u)^2+\mu^2=0\), giving the kernel in
 \eqref{eq:dyson-causal-commutator-representation}.
 
-It remains to prove the support restriction.  The vanishing of
-\(\widehat C\) in \(R\) implies that \(F(q,0,0)=0\) for \(q\in R\).  Let
-\((u,\mu)\notin S_R\).  By definition, at least one sheet of
-\((q-u)^2=-\mu^2\) enters the coincidence slab.  Since the slab boundaries are
-spacelike graphs, a small double cone in momentum space with vertex axis
-normal to that sheet lies inside \(R\).  After a real Lorentz transformation
-and translation, this is the symmetric situation in which
-\(\widehat C(q)\) vanishes for
-\[
-  |q^0|+|\vec q-\vec v|<\lambda .
-  \label{eq:dyson-symmetric-double-cone}
-\]
-For such a symmetric double cone, the Cauchy representation on the plane
-\(u^0=0\) is exactly the original Jost--Lehmann representation.  The same
-wave-equation uniqueness used above shows that both the value and normal
-derivative of \(F\) vanish at the corresponding six-dimensional points whose
-hyperboloids lie in the double cone's forbidden family.  Hence the pushed
-forward Cauchy data may be chosen to vanish outside \(S_R\).  Equivalently,
-if a preliminary \(\Psi_\Sigma\) has support outside \(S_R\), its outside
-part contributes zero to \(\widehat C\) by uniqueness of the
-six-dimensional Cauchy problem and can be subtracted.  This produces
-\(\Psi\) with \(\operatorname{supp}\Psi\subset S_R\).
+The support-restricted conclusion is now exactly the content of
+Definition~\ref{def:support-pruned-dyson-data}.  If the commutator vanishes
+in the slab \(R\) and its Dyson data are support-pruned relative to \(R\),
+choose \(\Psi_R\) satisfying
+\eqref{eq:support-pruned-dyson-data}.  Since
+\(\mathcal H\Psi_R=\mathcal H\Psi_\Sigma=\widehat C\), the same
+hyperboloid representation holds with
+\(\operatorname{supp}\Psi_R\subset S_R\).
+
+The geometric reason for the support-pruning condition is the following.
+If \((u,\mu)\notin S_R\), at least one sheet of the hyperboloid
+\((q-u)^2=-\mu^2\) enters the coincidence slab.  Since the slab boundaries
+are spacelike or null graphs, a small double cone in momentum space adapted
+to that sheet lies inside \(R\).  The classical Jost--Lehmann--Dyson proof
+uses the six-dimensional wave equation and domain-of-dependence uniqueness
+to remove the corresponding Cauchy-data component.  In this monograph that
+removal is recorded as the support-pruning theorem still to be proved for
+the LSZ source-current kernels; it is not identified with the simpler
+statement that the trace \(F(q,0,0)\) vanishes in \(R\).
 
 The statement about finite contact polynomials follows from differentiating
 the commutator or from derivatives of step functions in retarded products:
@@ -1551,12 +1591,16 @@ assume that the distribution
   \langle Q_f,[J_b(x/2),J_c(-x/2)]Q_i\rangle
 \]
 is Dyson-regular modulo contact terms in the sense of
-Definition~\ref{def:dyson-regular-modulo-contact}.  Then \(C_{bc}\) has a
-Dyson representation of the form
-\eqref{eq:dyson-causal-commutator-representation} in every coincidence slab
-where the intermediate-state spectral condition makes the nonlocal part of
-\(\widehat C_{bc}\) vanish, plus a finite polynomial in \(q\).  The
-associated retarded and advanced Fourier
+Definition~\ref{def:dyson-regular-modulo-contact}.  Then the nonlocal part of
+\(C_{bc}\) has a Dyson representation of the form
+\eqref{eq:dyson-causal-commutator-representation}, plus a finite polynomial in
+\(q\) from contact terms.  In a coincidence slab \(R\) where the
+intermediate-state spectral condition makes the nonlocal part of
+\(\widehat C_{bc}\) vanish, this representation is support-restricted to
+\(S_R\) if and only if the corresponding Dyson data are support-pruned
+relative to \(R\) in the sense of
+Definition~\ref{def:support-pruned-dyson-data}.  The associated retarded and
+advanced Fourier
 transforms
 \[
   C^R_{bc}(q)=\int\ee^{\ii q\cdot x}\theta(x^0)C_{bc}(x)\,\dd^4x,
@@ -1576,7 +1620,12 @@ the functions \(h_\pm\) are boundary descriptions of the lower spectral
 thresholds for the two possible intermediate-state orderings.
 The assumed Dyson regularity is precisely the additional analytic regularity
 needed to run Theorem~\ref{thm:dyson-causal-commutator-representation}; it is
-not supplied by the words ``tempered distribution'' alone.  If
+not supplied by the words ``tempered distribution'' alone.  The support
+restriction in a slab \(R\) is a further statement about the equivalence class
+of Cauchy data under the hyperboloid transform
+\eqref{eq:dyson-hyperboloid-transform}; it is recorded as support-pruned
+Dyson data rather than inferred merely from the vanishing of
+\(\widehat C_{bc}\) on \(R\).  If
 \(C_{bc}=C^{\rm nl}_{bc}+L_{bc}\) with \(L_{bc}\) supported at \(x=0\), the
 theorem gives the hyperboloid representation for \(C^{\rm nl}_{bc}\), while
 \(\widehat L_{bc}\) is a polynomial in \(q\).  Multiplication by
@@ -1599,9 +1648,11 @@ the spectral coincidence regions for the LSZ source-current commutator.
 Theorem~\ref{thm:dyson-causal-commutator-representation} then supplies the
 causal-commutator representation used to enlarge domains from those
 coincidence regions, provided the commutator is Dyson-regular modulo contact
-terms.  The stronger fixed-\(t\) cut-plane theorem used in dispersion
-relations still requires the Dyson-regularity verification for the relevant
-LSZ source-current matrix coefficients.
+terms; the \(S_R\)-support-restricted version additionally requires
+support-pruned Dyson data relative to the coincidence slab.  The stronger
+fixed-\(t\) cut-plane theorem used in dispersion relations still requires the
+Dyson-regularity and support-pruning verification for the relevant LSZ
+source-current matrix coefficients.
 Proposition~\ref{prop:dyson-light-cone-lift-microlocal-criterion} shows the
 precise microlocal obstruction to treating Dyson's light-cone lift as an
 ordinary product of distributions, and identifies the finite local ambiguity
@@ -1615,8 +1666,8 @@ checks that passing from interpolating fields to LSZ source currents preserves
 the punctured wavefront and finite-scaling-degree inputs by finite-order
 differentiation, with the correct \(x/2\) and \(-x/2\) factors.  What remains
 is not the differential source-current step, but the actual QFT theorem
-constructing the required extension and Cauchy data for the source-current
-kernel.  After that regularity problem one still needs the
+constructing the required extension, Cauchy data, and support-pruning for the
+source-current kernel.  After that regularity problem one still needs the
 Bros--Epstein--Glaser analytic-completion step and the LSZ
 pole-separation transfer hypotheses.  The analytic LSZ transfer itself is
 proved in

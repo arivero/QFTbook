@@ -26,9 +26,16 @@ inside the monograph, not left as literature imports.
   - `def:dyson-regular-causal-commutator`, separating the six-dimensional
     Dyson lift from the invalid shorthand of multiplying an arbitrary
     Wightman distribution by a light-cone delta.
+  - `def:support-pruned-dyson-data`, separating the hyperboloid
+    representation supplied by six-dimensional Cauchy data from the additional
+    \(S_R\)-support restriction needed in a coincidence slab.  The support
+    pruning is now an explicit theorem obligation, not an inference from
+    \(\widehat C=0\) on \(R\) alone.
   - `thm:dyson-causal-commutator-representation`, proving the
-    Dyson/Jost--Lehmann representation for a Dyson-regular causal commutator
-    distribution whose Fourier transform vanishes in a coincidence slab.
+    Dyson/Jost--Lehmann hyperboloid representation for a Dyson-regular
+    causal commutator distribution, with the \(S_R\)-support-restricted
+    version conditional on support-pruned Dyson data in the chosen
+    coincidence slab.
   - `prop:source-current-commutator-coincidence-region`, deriving the
     coincidence regions for LSZ source-current commutator matrix elements
     directly from translation covariance and the joint spectral theorem.  The
@@ -78,11 +85,13 @@ inside the monograph, not left as literature imports.
 - Updated `monograph/tex/volumes/volume_ii/chapter07_partial_waves_dispersion_relations_and_high_energy_bounds.tex`
   so the Jin--Martin proof stack now records the primitive Wightman and
   Jost-edge steps as proved, and records the causal-commutator/JLD theorem as
-  proved under the explicit Dyson-regularity hypothesis.  The
-  Dyson-regularity verification for the relevant LSZ source-current matrix
-  coefficients, the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
-  completion, and the verification of the off-shell normal-coordinate
-  hypotheses needed for LSZ transfer remain theorem work.
+  proved under the explicit Dyson-regularity hypothesis, while the
+  coincidence-slab support restriction is conditional on support-pruned
+  Dyson data.  The Dyson-regularity and support-pruning verification for the
+  relevant LSZ source-current matrix coefficients, the
+  Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\) completion, and the
+  verification of the off-shell normal-coordinate hypotheses needed for LSZ
+  transfer remain theorem work.
   - `thm:lsz-transfer-fixed-t-domain`, proving the analytic LSZ transfer
     itself: if the BEG/JLD construction supplies an off-shell fixed-\(t\)
     holomorphic domain with normal-crossing external one-particle poles and
@@ -112,9 +121,13 @@ inside the monograph, not left as literature imports.
 Issue #495 is not closed by this checkpoint.  The primitive tube-domain and
 Jost-edge gluing theorems are now in the monograph.  The
 source-current coincidence-region support statement is now proved from the
-spectral theorem.  The causal-commutator Dyson/JLD theorem is now proved for
-the mathematically defined class of Dyson-regular causal commutators, with the
-light-cone lift regularity no longer hidden in notation.  The microlocal
+spectral theorem.  The causal-commutator Dyson/JLD hyperboloid representation
+is now proved for the mathematically defined class of Dyson-regular causal
+commutators, with the light-cone lift regularity no longer hidden in notation.
+The \(S_R\)-support-restricted form used for the coincidence-slab enlargement
+has been made conditional on support-pruned Dyson data; this is a genuine
+remaining source-current theorem obligation, not a consequence of slab
+vanishing alone.  The microlocal
 criterion now explains exactly where the naive light-cone product is valid
 and where renormalized lift data must be supplied.  The finite-scaling-degree
 extension theorem now makes the local extension/contact-polynomial mechanism
@@ -142,8 +155,10 @@ pushforward normalization in the Dyson lift is no longer a formal
    actual source-current kernels still require a theorem proving the needed
    wavefront/scaling behavior for the underlying field commutators together
    with the cone equation, pushforward normalization, temperedness, and
-   Cauchy-data trace hypotheses for the six-dimensional lift, or a different
-   construction of that lift.
+   Cauchy-data trace hypotheses for the six-dimensional lift, plus the
+   support-pruning statement that the hyperboloid weight can be chosen in
+   \(S_R\) for the relevant coincidence slabs, or a different construction of
+   that lift.
 2. Prove the Bros--Epstein--Glaser/Lehmann--Martin fixed-\(t\) enlargement
    needed for the cut
    \(s\)-plane at fixed \(t\), including the off-shell normal-coordinate

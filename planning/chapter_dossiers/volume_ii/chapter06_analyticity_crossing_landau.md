@@ -12,12 +12,13 @@
 - Proves the primitive Wightman tube-domain theorem from spectral support and
   proves Jost-edge gluing of ordered tubes from local commutativity plus the
   edge-of-the-wedge theorem.
-- Proves the Dyson/Jost--Lehmann representation for Dyson-regular causal
-  commutator matrix elements in coincidence slabs, including the
+- Proves the Dyson/Jost--Lehmann hyperboloid representation for
+  Dyson-regular causal commutator matrix elements.  The
   admissible-hyperboloid support restriction needed for the later
-  fixed-\(t\) domain theorem, and explicitly separates the still-needed
-  verification that the relevant LSZ source-current commutators satisfy this
-  regularity hypothesis.
+  fixed-\(t\) domain theorem is stated conditionally on support-pruned Dyson
+  data in the coincidence slab, and the chapter explicitly separates the
+  still-needed verification that the relevant LSZ source-current commutators
+  satisfy Dyson regularity and support-pruning.
 - Records the partial-wave unitarity boundary condition on the physical
   \(s\)-channel cut before using analytic continuation away from it.
 - Derives the Landau equations from Feynman-parameter pinches.
@@ -62,6 +63,8 @@
 | \(\pi_{y*}U\) | auxiliary pushforward of a six-dimensional lift, defined by normalized approximate identities in the \(y\)-dual variables |
 | \(\iota^*F\) | trace of a six-dimensional momentum distribution at \(p_1=p_2=0\), \(\iota(q)=(q,0,0)\) |
 | Dyson-regular commutator | causal commutator whose Fourier transform is the \(p_1=p_2=0\) restriction of a rotationally invariant six-dimensional wave-equation solution with well-defined Cauchy data |
+| \(\mathcal H\Psi\) | Dyson hyperboloid transform pairing \(\Psi(u,\mu)\) with \(\varepsilon(q^0-u^0)\delta((q-u)^2+\mu^2)\) |
+| support-pruned Dyson data | representative of the Dyson Cauchy-data class, modulo \(\ker\mathcal H\), supported in \(S_R\) for a specified coincidence slab |
 | \(\Psi(u,\mu)\) | distributional Dyson weight in the causal-commutator representation |
 | first sheet | branch reached from the physical Feynman prescription without crossing a cut |
 | \(\alpha_i\) | Feynman parameters for internal lines |
@@ -123,9 +126,11 @@
   proves that \(\pi_{y*}U=\kappa C\) is equivalent, with the chapter's
   Fourier convention, to \(\iota^*F=\kappa\widehat C\).  Dyson regularity is
   not automatic for an arbitrary Wightman distribution.  Under this
-  hypothesis the theorem proves the hyperboloid representation with support
-  in the admissible set \(S_R\).  Local contact polynomials from
-  source-current reduction are separated as subtraction/contact data.
+  hypothesis the theorem proves the hyperboloid representation; the support
+  restriction to the admissible set \(S_R\) is a separate support-pruning
+  statement about the Cauchy-data class modulo the kernel of the hyperboloid
+  transform.  Local contact polynomials from source-current reduction are
+  separated as subtraction/contact data.
 
 ## Claims to Derive
 
@@ -167,15 +172,27 @@
   Lehmann--Martin theorem, not a corollary of primitive tube analyticity
   alone.
 - Dyson/Jost--Lehmann representation: if \(C(x)\) is a Dyson-regular causal
-  commutator matrix coefficient and \(\widehat C\) vanishes in a slab \(R\),
-  then
+  commutator matrix coefficient, then
   \[
     \widehat C(q)=
     \langle\Psi(u,\mu),
       \varepsilon(q^0-u^0)\delta((q-u)^2+\mu^2)\rangle_{u,\mu},
   \]
-  with \(\operatorname{supp}\Psi\subset S_R\), the set of hyperboloids whose
-  upper sheet stays above \(h_+\) and lower sheet stays below \(h_-\).
+  If in addition \(\widehat C\) vanishes in a slab \(R\) and the Dyson
+  Cauchy data are support-pruned relative to \(R\), then \(\Psi\) can be
+  chosen with \(\operatorname{supp}\Psi\subset S_R\), the set of hyperboloids
+  whose upper sheet stays above \(h_+\) and lower sheet stays below \(h_-\).
+  The implication from slab vanishing to such support-pruned data is not
+  asserted without proof.
+- Hyperboloid-transform support-pruning: for Dyson Cauchy data
+  \(\Psi_\Sigma\), the support-restricted representative is a distribution
+  \(\Psi_R\) satisfying
+  \[
+    \operatorname{supp}\Psi_R\subset S_R,\qquad
+    \mathcal H\Psi_R=\mathcal H\Psi_\Sigma .
+  \]
+  This isolates the classical Jost--Lehmann support-removal step as a
+  theorem-level input for the physical LSZ source-current kernels.
 - Six-dimensional wave-equation Cauchy formula: if
   \(F\in\mathcal S'(\mathbb R^{1,5})\) solves
   \(\Box_{1,5}F=0\) and has tempered Cauchy traces
@@ -197,10 +214,11 @@
   pushforward.  This fixes the normalization of the Dyson lift's projection
   to the original four-dimensional commutator.
 - LSZ retarded-commutator input: once the source-current commutator is
-  verified to be Dyson-regular, it has the Dyson representation in every
-  spectral coincidence slab; retarded and advanced transforms are boundary
-  values of the same analytic continuation through the slab, up to finite
-  local-contact polynomials.
+  verified to be Dyson-regular, it has the Dyson hyperboloid representation;
+  in each spectral coincidence slab the support-restricted representation
+  additionally requires support-pruned Dyson data.  Retarded and advanced
+  transforms are boundary values of the same analytic continuation through
+  the slab, up to finite local-contact polynomials.
 - On the physical \(s\)-channel cut,
   \[
     \mathcal M(s,t)
@@ -278,10 +296,12 @@
   wave-equation lift of a causal distribution with well-defined Cauchy data,
   recovers the four-dimensional commutator as a boundary value on the
   auxiliary-momentum plane, rewrites the Cauchy formula as a superposition of
-  mostly-plus mass hyperboloids, and records the admissible-hyperboloid
-  support restriction from the coincidence slab.  Remaining fixed-\(t\)
-  closure work includes proving Dyson regularity for the LSZ source-current
-  matrix coefficients, the Bros--Epstein--Glaser analytic completion, and the
+  mostly-plus mass hyperboloids.  A later tightening pass separated the
+  admissible-hyperboloid support restriction from slab vanishing: the
+  support-restricted representation now requires support-pruned Dyson data
+  relative to the slab.  Remaining fixed-\(t\) closure work includes proving
+  Dyson regularity and support-pruning for the LSZ source-current matrix
+  coefficients, the Bros--Epstein--Glaser analytic completion, and the
   off-shell normal-coordinate and large-contour growth hypotheses needed to
   apply the LSZ-transfer and finite-subtraction Cauchy theorems of Volume II,
   Chapter 7.
@@ -294,7 +314,8 @@
   sharp-momentum shorthand recovers the supports \(\Sigma_{bc}^{fi}-K\) and
   \(K-\Sigma_{cb}^{fi}\).  The coincidence slab used by the Dyson/JLD theorem
   is therefore a proved spectral-support output; the remaining source-current
-  issue is Dyson regularity, not the spectral vanishing region.
+  issues are Dyson regularity and support-pruned Dyson data, not the spectral
+  vanishing region.
 - 2026-05-27 issue #495 Dyson-lift microlocal pass: added the proposition
   isolating the ordinary distribution-product content of Dyson's light-cone
   lift.  Away from the vertex \((x,y)=(0,0)\), the product
@@ -325,5 +346,5 @@
   wavefront avoidance, finite scaling degree, and finite scaling degree of
   the punctured six-dimensional Dyson product.  This removes the source-current
   differential step from the list of hidden assumptions; the remaining theorem
-  is the genuine extension/Cauchy-data construction for the source-current
-  kernels.
+  is the genuine extension/Cauchy-data and support-pruning construction for
+  the source-current kernels.

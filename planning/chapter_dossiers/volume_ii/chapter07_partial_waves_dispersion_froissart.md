@@ -213,8 +213,10 @@ hypotheses:
     commutativity at Jost configurations plus edge-of-the-wedge enlargement; the
     source-current coincidence-region support theorem from the joint spectral
     condition; the
-    Jost--Lehmann--Dyson representation for Dyson-regular retarded commutator
-    matrix elements; the Bros--Epstein--Glaser enlargement to the
+    Jost--Lehmann--Dyson hyperboloid representation for Dyson-regular
+    retarded commutator matrix elements, with the coincidence-slab
+    support-restricted form conditional on support-pruned Dyson data; the
+    Bros--Epstein--Glaser enlargement to the
     Lehmann--Martin domain; and the verification that this off-shell domain
     has the normal-crossing external-pole control required by the LSZ-transfer
     theorem.  The primitive Wightman tube-domain theorem, Jost-edge gluing
@@ -223,8 +225,9 @@ hypotheses:
     theorem are now proved in the manuscript, and the one-variable
     finite-subtraction Cauchy theorem is also proved with its admissible
     two-cut contour class specified.  The
-    remaining Dyson-regularity verification for the LSZ source-current matrix
-    coefficients and the Bros--Epstein--Glaser Lehmann--Martin fixed-\(t\)
+    remaining Dyson-regularity and support-pruning verification for the LSZ
+    source-current matrix coefficients and the Bros--Epstein--Glaser
+    Lehmann--Martin fixed-\(t\)
     completion with uniform off-shell control and a pointwise large-contour
     estimate are still to be proved in the monograph, not left as permanent
     citations.
@@ -412,18 +415,21 @@ hypotheses:
 - 2026-05-27 issue #495 domain pass: Chapter 6 now proves the primitive
   Wightman tube-domain theorem and Jost-edge gluing, so this chapter's domain
   ledger has been refined.  What remains for full Jin--Martin closure is the
-  Dyson-regularity verification and retarded-commutator/Jost--Lehmann--Dyson
-  application, the Lehmann--Martin fixed-\(t\) enlargement, and the LSZ
+  Dyson-regularity and support-pruning verification for the
+  retarded-commutator/Jost--Lehmann--Dyson application, the Lehmann--Martin
+  fixed-\(t\) enlargement, and the LSZ
   transfer of the domain and tempered cut-discontinuity bounds to the on-shell
   amplitude.
 - 2026-05-27 issue #495 JLD pass: Chapter 6 now also proves the
-  causal-commutator Dyson/Jost--Lehmann representation in coincidence slabs
-  for the explicitly defined class of Dyson-regular commutators.  The full
-  issue #495 closure target is therefore narrowed but not closed: prove
-  Dyson regularity for the LSZ source-current matrix coefficients, prove the
-  Bros--Epstein--Glaser analytic completion to the Lehmann--Martin
-  fixed-\(t\) domain, and verify the off-shell normal-coordinate hypotheses
-  needed for the LSZ-transfer theorem.
+  causal-commutator Dyson/Jost--Lehmann hyperboloid representation for the
+  explicitly defined class of Dyson-regular commutators.  The
+  coincidence-slab support restriction is now conditional on support-pruned
+  Dyson data.  The full issue #495 closure target is therefore narrowed but
+  not closed: prove Dyson regularity and support-pruning for the LSZ
+  source-current matrix coefficients, prove the Bros--Epstein--Glaser
+  analytic completion to the Lehmann--Martin fixed-\(t\) domain, and verify
+  the off-shell normal-coordinate hypotheses needed for the LSZ-transfer
+  theorem.
 - 2026-05-27 issue #495 LSZ-transfer pass: added the fixed-\(t\) LSZ transfer
   theorem.  The analytic residue-transfer step is now proved under explicit
   normal-crossing external-pole and uniform-boundary-growth hypotheses.  The
@@ -436,15 +442,15 @@ hypotheses:
   domain, explicit first-sheet simple poles, tempered discontinuities, and a
   polynomial large-contour bound, with all subtraction-point residues and pole
   signs fixed.  The remaining issue #495 proof work is therefore concentrated
-  on the QFT domain/growth theorem: Dyson regularity for LSZ source-current
-  kernels and the BEG/Lehmann--Martin fixed-\(t\) enlargement with off-shell
-  normal-coordinate and large-contour control.
+  on the QFT domain/growth theorem: Dyson regularity and support-pruning for
+  LSZ source-current kernels and the BEG/Lehmann--Martin fixed-\(t\)
+  enlargement with off-shell normal-coordinate and large-contour control.
 - 2026-05-27 issue #495 spectral-support pass: Chapter 6 now proves the
   source-current coincidence-region input from translation covariance and the
   joint spectral theorem.  The fixed-\(t\) proof stack should no longer list
   spectral vanishing in the coincidence slab as an asserted JLD premise; it is
-  now a derived support statement.  The remaining source-current premise is
-  Dyson regularity.
+  now a derived support statement.  The remaining source-current premises are
+  Dyson regularity and support-pruned Dyson data.
 - 2026-05-27 issue #495 Dyson-lift microlocal pass: Chapter 6 now proves the
   precise microlocal criterion under which the Dyson light-cone lift is an
   ordinary product away from the vertex, and proves that different extensions
@@ -465,5 +471,11 @@ hypotheses:
   relative-coordinate differential operation preserving causal support,
   punctured conormal wavefront avoidance, and finite scaling degree.  Chapter
   7 should therefore phrase the remaining source-current task as the
-  construction of the six-dimensional extension and Cauchy data, not as a
-  concern about the formal application of \(\mathcal K\) to the local fields.
+  construction of the six-dimensional extension, Cauchy data, and
+  support-pruning, not as a concern about the formal application of
+  \(\mathcal K\) to the local fields.
+- 2026-05-27 issue #495 support-pruning pass: Chapter 6 now explicitly
+  separates the support-pruned Dyson datum from the proved spectral vanishing
+  in a coincidence slab.  This prevents the fixed-\(t\) proof stack from
+  treating the hard Jost--Lehmann support-removal step as a consequence of
+  \(\widehat C=0\) on \(R\) alone.
