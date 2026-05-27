@@ -5,6 +5,8 @@
 
 \section{Fields and Variational Equations}
 
+\begin{definition}[Classical scalar Lagrangian field datum]
+\label{def:classical-scalar-lagrangian-field-datum}
 Let \(\mathbb M^D\) be \(D\)-dimensional Minkowski spacetime with metric
 \[
   \eta_{\mu\nu}=\operatorname{diag}(-1,+1,\ldots,+1).
@@ -28,7 +30,10 @@ family of coordinates \(\phi(t,\vec x)\), labelled continuously by
 \]
 where \(\mathcal L\) is a Lorentz scalar Lagrangian density in the examples
 below.
+\end{definition}
 
+\begin{proposition}[Euler--Lagrange equation for a scalar field]
+\label{prop:scalar-euler-lagrange-equation}
 For a compactly supported variation \(\delta\phi\),
 \[
 \begin{aligned}
@@ -62,9 +67,23 @@ The Euler--Lagrange equation is therefore
   =
   0.
 \]
+\end{proposition}
+
+\begin{proof}
+The first equality is the chain rule applied pointwise to
+\(\mathcal L(\phi,\partial\phi)\).  The second equality follows by integrating
+\(\frac{\partial\mathcal L}{\partial(\partial_\mu\phi)}\partial_\mu\delta\phi\)
+by parts.  Compact support of \(\delta\phi\), or the boundary condition class
+chosen for the variational problem, removes the boundary term.  Since
+\(\delta\phi\) is otherwise arbitrary, the fundamental lemma of the calculus
+of variations gives the displayed Euler--Lagrange equation as a distributional
+identity.
+\end{proof}
 
 \section{The Free Massive Scalar}
 
+\begin{definition}[Free real Klein--Gordon field]
+\label{def:free-real-klein-gordon-field}
 The free massive real scalar field of mass \(m\ge0\) has Lagrangian density
 \[
   \mathcal L
@@ -86,7 +105,10 @@ The Euler--Lagrange equation is the Klein--Gordon equation
 \[
   (\partial^\mu\partial_\mu-m^2)\phi=0.
 \]
+\end{definition}
 
+\begin{proposition}[Mass-shell support of free solutions]
+\label{prop:kg-mass-shell-support}
 Use the Fourier convention
 \[
   \phi(x)
@@ -112,6 +134,22 @@ Thus \(\widetilde\phi(k)\) is supported on the mass shell
   \qquad
   \omega_{\vec k}=\sqrt{\vec k^{\,2}+m^2}.
 \]
+\end{proposition}
+
+\begin{proof}
+With \(k\cdot x=-k^0x^0+\vec k\cdot\vec x\), one has
+\[
+  \partial^\mu\partial_\mu \ee^{\ii k\cdot x}
+  =
+  -\bigl(k^2\bigr)\ee^{\ii k\cdot x}.
+\]
+The Klein--Gordon equation therefore becomes
+\(-(k^2+m^2)\widetilde\phi(k)=0\) in Fourier space.  In distribution
+language this says that \(\widetilde\phi\) is supported where
+\(k^2+m^2=0\).  Since \(k^2=-(k^0)^2+\vec k^{\,2}\), this hypersurface is
+\((k^0)^2=\vec k^{\,2}+m^2\), hence the two branches
+\(k^0=\pm\omega_{\vec k}\).
+\end{proof}
 
 \begin{figure}[H]
 \centering
@@ -132,6 +170,8 @@ Thus \(\widetilde\phi(k)\) is supported on the mass shell
 \label{fig:scalar-mass-shell-branches}
 \end{figure}
 
+\begin{proposition}[Cauchy data determine the free solution]
+\label{prop:kg-cauchy-data-determine-free-solution}
 A real solution can be written as
 \[
   \phi(t,\vec x)
@@ -144,7 +184,11 @@ A real solution can be written as
   \right],
 \]
 with a complex coefficient function \(A(\vec k)\) subject to whatever
-regularity conditions are imposed on the classical solution. The Cauchy data
+regularity conditions are imposed on the classical solution. If \(m=0\), the
+spatial zero mode \(\vec k=0\) is an infrared mode and is treated separately
+by the chosen boundary condition, volume regulator, or test-function class;
+the displayed division by \(\omega_{\vec k}\) applies on the modes with
+\(\omega_{\vec k}>0\).  The Cauchy data
 \[
   \phi(0,\vec x),\qquad \partial_t\phi(0,\vec x)
 \]
@@ -181,6 +225,21 @@ so that
     \frac{\ii}{\omega_{\vec k}}\widetilde\pi_0(\vec k)
   \right).
 \]
+\end{proposition}
+
+\begin{proof}
+Evaluate the positive- and negative-frequency expansion at \(t=0\) and also
+differentiate it once in time before setting \(t=0\).  Reality of \(\phi\)
+identifies the coefficient of \(\ee^{-\ii\vec k\cdot\vec x}\) with the
+complex conjugate coefficient at momentum \(\vec k\), equivalently
+\(A(-\vec k)^*\) in the \(\ee^{\ii\vec k\cdot\vec x}\) coefficient.  This
+gives the two displayed linear equations for
+\(A(\vec k)\) and \(A(-\vec k)^*\).  Adding
+\(\widetilde\phi_0(\vec k)\) to \(\ii\widetilde\pi_0(\vec k)/\omega_{\vec k}\)
+solves the system and gives the stated formula.  The Klein--Gordon equation is
+second order in time, so these two Cauchy data determine the solution on every
+time slice.
+\end{proof}
 
 There are two constructions to keep distinct. Canonical quantization starts
 from the equal-time phase space \((\phi,\Pi)\) and a Hamiltonian. The
@@ -204,6 +263,8 @@ canonical construction; the scalar field path integral is introduced later.
 
 \section{Canonical Hamiltonian Formalism}
 
+\begin{proposition}[Canonical phase-space variables and Hamiltonian density]
+\label{prop:scalar-canonical-phase-space-hamiltonian}
 Let
 \[
   L(t)=\int\dd^{D-1}\vec x\,\mathcal L.
@@ -258,6 +319,24 @@ for the free scalar field. The Hamiltonian is
 \[
   H=\int\dd^{D-1}\vec x\,\mathcal H.
 \]
+\end{proposition}
+
+\begin{proof}
+For the free scalar Lagrangian,
+\(\partial\mathcal L/\partial(\partial_t\phi)=\partial_t\phi\), so
+\(\Pi=\partial_t\phi\).  The Legendre transform gives
+\[
+  \Pi\partial_t\phi-\mathcal L
+  =
+  \frac12\Pi^2
+  +
+  \frac12\sum_i(\partial_i\phi)^2
+  +
+  \frac12m^2\phi^2,
+\]
+which is the displayed Hamiltonian density.
+\end{proof}
+
 This is a classical Hamiltonian density.  After quantization
 \(\widehat\phi(t,\vec x)\) and \(\widehat\Pi(t,\vec x)\) are
 operator-valued distributions, so the pointwise products in
@@ -268,6 +347,8 @@ equivalently the operator obtained by subtracting the vacuum scalar term from
 the regulated quadratic expression.  We write this operator as
 \(\widehat H_0^{\mathrm{ren}}=:\widehat H_0:\) in the flat-space free theory.
 
+\begin{definition}[Equal-time scalar Poisson bracket]
+\label{def:equal-time-scalar-poisson-bracket}
 For functionals \(F[\phi,\Pi]\) and \(G[\phi,\Pi]\), use the equal-time
 Poisson bracket
 \[
@@ -293,10 +374,39 @@ equation is
 \[
   \partial_tF=\{F,H\}.
 \]
+\end{definition}
+
+\begin{proposition}[Hamilton equations reproduce Klein--Gordon]
+\label{prop:scalar-hamilton-equations-kg}
 Applied to \(\phi\) and \(\Pi\), it reproduces the Klein--Gordon equation.
+\end{proposition}
+
+\begin{proof}
+Using the functional derivatives of \(H\),
+\[
+  \frac{\delta H}{\delta\Pi(\vec x)}=\Pi(\vec x),
+  \qquad
+  \frac{\delta H}{\delta\phi(\vec x)}
+  =
+  -\sum_i\partial_i^2\phi(\vec x)+m^2\phi(\vec x),
+\]
+where the spatial derivative term has been integrated by parts.  Hence
+\[
+  \partial_t\phi=\{\phi,H\}=\Pi,
+  \qquad
+  \partial_t\Pi=\{\Pi,H\}
+  =
+  \sum_i\partial_i^2\phi-m^2\phi.
+\]
+Eliminating \(\Pi\) gives
+\(\partial_t^2\phi-\nabla^2\phi+m^2\phi=0\), equivalently
+\((\partial^\mu\partial_\mu-m^2)\phi=0\) with the mostly-plus convention.
+\end{proof}
 
 \section{Equal-Time Quantization}
 
+\begin{definition}[Equal-time canonical commutation relations]
+\label{def:equal-time-scalar-ccr}
 Canonical quantization promotes the classical fields to operator-valued
 distributions
 \[
@@ -330,6 +440,7 @@ The smeared commutator is
   \ii\hbar
   \int\dd^{D-1}\vec x\,f(\vec x)g(\vec x).
 \]
+\end{definition}
 
 For the rest of this chapter set \(\hbar=1\). With \(\hbar\) retained, the
 oscillator algebra below reads
@@ -343,6 +454,8 @@ variables by \(b_{\vec k}^{(\hbar=1)}=\hbar^{-1/2}b_{\vec k}^{(\hbar)}\).
 
 \section{Oscillator Variables and the Hamiltonian}
 
+\begin{proposition}[Equal-time oscillator variables and the CCR]
+\label{prop:equal-time-scalar-oscillator-variables-ccr}
 Let \(\nu_{\vec k}>0\) be a positive even function of \(\vec k\). Define
 operator-valued distributions \(b_{\vec k}\) and \(b^\dagger_{\vec k}\) by the
 equal-time expansion
@@ -378,6 +491,29 @@ The equal-time commutation relations are equivalent to
   =
   (2\pi)^{D-1}\delta^{(D-1)}(\vec k-\vec q).
 \]
+\end{proposition}
+
+\begin{proof}
+Substitute the mode expansions into the smeared equal-time commutator and use
+\[
+  \int\frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}}\,
+  \ee^{\ii\vec k\cdot(\vec x-\vec y)}
+  =
+  \delta^{(D-1)}(\vec x-\vec y).
+\]
+The coefficient
+\((2\nu_{\vec k})^{-1/2}(-\ii)(\nu_{\vec k}/2)^{1/2}\), together with the
+term obtained by commuting \(b^\dagger\) past \(b\), gives exactly
+\(\ii\delta^{(D-1)}(\vec x-\vec y)\) when the oscillator commutator has the
+displayed normalization.  Conversely, Fourier transforming the canonical
+commutator against plane waves recovers the oscillator commutator.  The
+\(\phi\)-\(\phi\) and \(\Pi\)-\(\Pi\) commutators vanish because the
+\(b\)-\(b\) and \(b^\dagger\)-\(b^\dagger\) commutators vanish and the
+remaining terms cancel by \(\vec k\mapsto-\vec k\).
+\end{proof}
+
+\begin{proposition}[Bogoliubov reparametrizations preserve the CCR]
+\label{prop:scalar-bogoliubov-reparametrizations-preserve-ccr}
 This algebra holds for every positive choice of \(\nu_{\vec k}\). The
 notation \(b_{\vec k}\), \(b^\dagger_{\vec k}\) should therefore not yet be
 read as a particle interpretation. If \(\lambda_{\vec k}>0\) is another even
@@ -404,7 +540,34 @@ The \(c\)'s obey the same canonical oscillator algebra. If a vector is
 annihilated by every \(b_{\vec k}\), it is not annihilated by every
 \(c_{\vec k}\) unless \(\lambda_{\vec k}=1\). The Hamiltonian is the datum
 that selects the oscillator normalization.
+\end{proposition}
 
+\begin{proof}
+Write \(u_{\vec k}=(\lambda_{\vec k}+\lambda_{\vec k}^{-1})/2\) and
+\(v_{\vec k}=(\lambda_{\vec k}-\lambda_{\vec k}^{-1})/2\).  Evenness of
+\(\lambda\) gives \(u_{-\vec k}=u_{\vec k}\) and \(v_{-\vec k}=v_{\vec k}\).
+The only nonzero commutators in
+\([c_{\vec k},c^\dagger_{\vec q}]\) are
+\[
+  u_{\vec k}u_{\vec q}[b_{\vec k},b^\dagger_{\vec q}]
+  -
+  v_{\vec k}v_{\vec q}[b_{-\vec q},b^\dagger_{-\vec k}],
+\]
+and the delta functions set \(\vec k=\vec q\).  Since
+\(u_{\vec k}^2-v_{\vec k}^2=1\), the original oscillator normalization is
+preserved.  The \(c\)-\(c\) and \(c^\dagger\)-\(c^\dagger\) commutators vanish
+by the same cancellation.  Finally, if \(b_{\vec k}\vac_b=0\), then
+\[
+  c_{\vec k}\vac_b
+  =
+  v_{\vec k}b^\dagger_{-\vec k}\vac_b,
+\]
+which vanishes for all \(\vec k\) only when \(v_{\vec k}=0\), equivalently
+\(\lambda_{\vec k}=1\).
+\end{proof}
+
+\begin{proposition}[Free Hamiltonian selects \(\nu_{\vec k}=\omega_{\vec k}\)]
+\label{prop:free-hamiltonian-selects-omega-normalization}
 Let
 \[
   \omega_{\vec k}=\sqrt{\vec k^{\,2}+m^2}.
@@ -435,6 +598,30 @@ The off-diagonal terms vanish precisely for
 \[
   \nu_{\vec k}=\omega_{\vec k}.
 \]
+\end{proposition}
+
+\begin{proof}
+Insert the equal-time oscillator expansion into
+\[
+  H_0=\frac12\int\dd^{D-1}\vec x\,
+  \bigl(\Pi^2+(\nabla\phi)^2+m^2\phi^2\bigr).
+\]
+The spatial integral pairs momenta \(\vec k\) and \(-\vec k\).  The
+\(\Pi^2\) term contributes \(\nu_{\vec k}/2\) to
+\(b^\dagger_{\vec k}b_{\vec k}\) and \(-\nu_{\vec k}/4\) to the
+\(b_{\vec k}b_{-\vec k}+b^\dagger_{\vec k}b^\dagger_{-\vec k}\) coefficient,
+while the gradient and mass terms together contribute
+\(\omega_{\vec k}^2/(2\nu_{\vec k})\) to
+\(b^\dagger_{\vec k}b_{\vec k}\) and
+\(\omega_{\vec k}^2/(4\nu_{\vec k})\) to the off-diagonal coefficient.  Adding
+the terms gives the displayed Hamiltonian.  Since \(\nu_{\vec k}>0\), the
+off-diagonal coefficient vanishes if and only if
+\(\nu_{\vec k}^2=\omega_{\vec k}^2\), hence
+\(\nu_{\vec k}=\omega_{\vec k}\).
+\end{proof}
+
+\begin{definition}[Free scalar Fock representation]
+\label{def:free-scalar-fock-representation}
 With this choice,
 \[
   \widehat H_0
@@ -468,7 +655,10 @@ The free vacuum \(\vac\) is defined by
   \qquad\text{for all }\vec k,
 \]
 and satisfies \(\widehat H_0^{\mathrm{ren}}\vac=0\).
+\end{definition}
 
+\begin{proposition}[Heisenberg field and invariant mass-shell normalization]
+\label{prop:heisenberg-field-invariant-mass-shell-normalization}
 Time evolution generated by \(\widehat H_0^{\mathrm{ren}}\) gives
 \[
   \widehat\phi(x)
@@ -511,9 +701,30 @@ and
 \]
 This is the convention used for the free scalar field in the earlier
 Fock-space construction.
+\end{proposition}
+
+\begin{proof}
+The commutator with the normal-ordered Hamiltonian gives
+\[
+  [\widehat H_0^{\rm ren},b_{\vec k}]=-\omega_{\vec k}b_{\vec k},
+  \qquad
+  [\widehat H_0^{\rm ren},b^\dagger_{\vec k}]
+  =
+  \omega_{\vec k}b^\dagger_{\vec k},
+\]
+so Heisenberg evolution multiplies \(b_{\vec k}\) by
+\(\ee^{-\ii\omega_{\vec k}t}\) and \(b^\dagger_{\vec k}\) by
+\(\ee^{+\ii\omega_{\vec k}t}\).  This gives the displayed field.  The
+rescaling \(a(\vec k)=\sqrt{2\omega_{\vec k}}\,b_{\vec k}\) transforms the
+Lebesgue momentum measure into the invariant one-particle mass-shell measure
+\(\dd^{D-1}\vec k/((2\pi)^{D-1}2\omega_{\vec k})\) and gives the stated
+commutator for \(a,a^\dagger\).
+\end{proof}
 
 \section{Covariance and Microcausality}
 
+\begin{definition}[Free scalar field on the finite-particle domain]
+\label{def:free-scalar-field-finite-particle-domain}
 Let \(\mathcal D_0\) be the finite-particle domain generated by applying
 finitely many smeared creation operators to \(\vac\). On \(\mathcal D_0\),
 \(\widehat\phi(x)\) is an operator-valued distribution. For
@@ -522,7 +733,10 @@ finitely many smeared creation operators to \(\vac\). On \(\mathcal D_0\),
   \widehat\phi(f)=\int\dd^D x\,f(x)\widehat\phi(x)
 \]
 is the corresponding smeared operator on \(\mathcal D_0\).
+\end{definition}
 
+\begin{proposition}[Covariance and microcausality of the free scalar field]
+\label{prop:free-scalar-covariance-microcausality}
 The free Fock representation carries the unitary Poincare representation
 induced from the one-particle mass shell. With the above normalization, the
 field transforms as a scalar:
@@ -581,6 +795,35 @@ Equivalently,
 when \(\operatorname{supp}f\) and \(\operatorname{supp}g\) are spacelike
 separated. This verifies microcausality for the canonically quantized free
 scalar field.
+\end{proposition}
+
+\begin{proof}
+The one-particle Hilbert space is
+\[
+  L^2\!\left(\{k^2+m^2=0,\ k^0>0\},
+  \frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}2\omega_{\vec k}}\right),
+\]
+and the positive-energy mass-shell measure is Lorentz invariant.  The induced
+unitary representation acts by translating phases and by pulling back the
+mass-shell momentum under Lorentz transformations; second quantization gives
+the Fock-space representation.  Substituting this action into the mass-shell
+expansion of \(\widehat\phi(x)\) gives the displayed scalar covariance law.
+
+The commutator computation uses only
+\([a(\vec k),a^\dagger(\vec q)]=(2\pi)^{D-1}2\omega_{\vec k}
+\delta^{(D-1)}(\vec k-\vec q)\), and yields
+\([\widehat\phi(x),\widehat\phi(y)]=\ii\Delta(x-y)\).  The distribution
+\(\Delta\) is Lorentz invariant because the mass-shell measure and the
+condition \(k^0>0\) are invariant under proper orthochronous Lorentz
+transformations, and the difference between the two exponentials gives the
+antisymmetric solution of the Klein--Gordon equation.  If \(x-y\) is
+spacelike, a Lorentz transformation sends it to an equal-time vector
+\((0,\vec r)\).  The equal-time integral vanishes by the change of variables
+\(\vec k\mapsto-\vec k\).  Thus \(\Delta(x-y)=0\) for spacelike separation.
+After smearing, the commutator is the pairing of \(\Delta(x-y)\) with
+\(f(x)g(y)\), so it vanishes whenever the two supports are spacelike
+separated.
+\end{proof}
 
 \begin{remark}
 For the scalar field, locality is carried by the commutator.  The Pauli--Jordan
@@ -596,9 +839,10 @@ whose equal-time spacelike kernel is proportional to
   \frac{\dd^{D-1}\vec k}{(2\pi)^{D-1}2\omega_{\vec k}}\,
   \cos(\vec k\cdot\vec r).
 \]
-This distribution has spacelike support.  The graded sign in the locality
-bracket is therefore part of the structure fixed by spin and positivity, rather
-than an optional convention.  The corresponding spin-statistics theorem-level
+This distribution is not supported in the causal cone and generally has
+nonzero spacelike matrix elements.  The graded sign in the locality bracket is
+therefore part of the structure fixed by spin and positivity, rather than an
+optional convention.  The corresponding spin-statistics theorem-level
 hypotheses are stated in Chapter~\ref{ch:spinor-fields-fermionic-path-integrals}.
 \end{remark}
 
