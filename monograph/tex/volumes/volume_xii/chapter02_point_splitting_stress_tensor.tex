@@ -8,6 +8,119 @@ short-distance class for free fields on curved backgrounds.  Point splitting
 uses the state-independent singular part of a Hadamard two-point function to
 define composite local fields.
 
+\section{Local Hadamard Subtraction Datum}
+\label{sec:point-splitting-local-hadamard-subtraction-datum}
+
+Throughout this chapter the scalar operator is the one fixed in
+Chapter~\ref{ch:locally-covariant-qft-hadamard},
+\[
+  P_M=-\nabla^\mu\nabla_\mu+m^2+\xi R[g],
+  \qquad m^2\ge0,\qquad \xi\in\mathbb R .
+  \label{eq:point-splitting-kg-operator}
+\]
+Let \(\mathcal U\subset M\) be a geodesically convex normal neighborhood.
+For \(x,y\in\mathcal U\), let \(\sigma(x,y)\) be Synge's world function:
+one half of the signed squared geodesic distance from \(x\) to \(y\).  Choose
+a smooth time function \(T\) on \(\mathcal U\) and put
+\[
+  \sigma_\epsilon(x,y)
+  =
+  \sigma(x,y)+\ii\epsilon\bigl(T(x)-T(y)\bigr)+\epsilon^2,
+  \qquad \epsilon>0 .
+  \label{eq:point-splitting-sigma-epsilon}
+\]
+The limit \(\epsilon\downarrow0\) is always distributional.
+
+\begin{definition}[Hadamard subtraction]
+\label{def:local-hadamard-subtraction}
+In four dimensions, a Hadamard subtraction for \(P_M\) on
+\(\mathcal U\) is the distributional boundary value
+\[
+  H_{\epsilon,\mu}(x,y)
+  =
+  \frac{1}{8\pi^2}
+  \left[
+    \frac{U_H(x,y)}{\sigma_\epsilon(x,y)}
+    +V_H(x,y)\log\!\bigl(\mu^2\sigma_\epsilon(x,y)\bigr)
+  \right],
+  \qquad \mu>0,
+  \label{eq:point-splitting-hadamard-subtraction}
+\]
+where \(U_H=\Delta^{1/2}\), \(\Delta\) is the van Vleck determinant, and
+\(V_H\) is the smooth Hadamard coefficient determined recursively by
+\(P_M\) up to a smooth bisolution.  The smooth bisolution ambiguity is part
+of the finite local subtraction freedom, not part of the state.
+\end{definition}
+
+\begin{proposition}[Leading Hadamard transport equation]
+\label{prop:leading-hadamard-transport-equation}
+The coefficient \(U_H\) in
+\eqref{eq:point-splitting-hadamard-subtraction} is fixed by
+\[
+  2\sigma^{;\mu}\nabla_\mu U_H
+  +
+  (\Box_g\sigma-4)U_H=0,
+  \qquad U_H(x,x)=1 .
+  \label{eq:point-splitting-u-transport}
+\]
+After this equation is imposed, the remaining singular coefficients of
+\(P_{M,x}H_{\epsilon,\mu}(x,y)\) away from the diagonal are removed
+recursively by \(V_H\).
+\end{proposition}
+
+\begin{proof}
+The calculation is local and may be performed for \(x\ne y\), before taking
+the distributional boundary value.  The defining identities of Synge's
+function in a normal neighborhood are
+\[
+  \sigma^{;\mu}\sigma_{;\mu}=2\sigma,\qquad
+  \Box_g\sigma=4+O(\sigma).
+  \label{eq:point-splitting-synge-identities}
+\]
+For a smooth biscalar \(U\),
+\[
+  \nabla_\mu(\sigma^{-1})=-\sigma_{;\mu}\sigma^{-2},
+  \qquad
+  \Box_g(\sigma^{-1})
+  =
+  -(\Box_g\sigma)\sigma^{-2}
+  +2\sigma^{;\mu}\sigma_{;\mu}\sigma^{-3}.
+\]
+Using \(\sigma^{;\mu}\sigma_{;\mu}=2\sigma\), this becomes
+\[
+  \Box_g(\sigma^{-1})=(4-\Box_g\sigma)\sigma^{-2}.
+  \]
+Hence the most singular term in
+\(-\Box_{g,x}(U/\sigma)\) is
+\[
+  \frac{
+    2\sigma^{;\mu}\nabla_\mu U
+    +(\Box_g\sigma-4)U
+  }{\sigma^2}.
+\]
+The zeroth-order part \(m^2+\xi R\) of \(P_M\) contributes only
+\(\sigma^{-1}\) singularities, so the \(\sigma^{-2}\) coefficient must
+vanish.  This is exactly \eqref{eq:point-splitting-u-transport}.  The
+initial value \(U_H(x,x)=1\) gives the flat-space normalization and uniquely
+solves the transport equation along the geodesic from \(y\) to \(x\); the
+solution is \(\Delta^{1/2}\).  Once this leading singularity is removed, the
+coefficient multiplying \(\sigma^{-1}\) fixes the first Hadamard coefficient
+in \(V_H\), and the coefficients of successive powers of \(\sigma\) fix the
+higher ones.  At each step the transport equation is along the same unique
+geodesic in \(\mathcal U\).
+\end{proof}
+
+Changing the time function in \eqref{eq:point-splitting-sigma-epsilon}
+changes only the boundary-value prescription for the same local positive
+frequency singularity.  Changing \(\mu\) changes the subtraction by the
+smooth local biscalar
+\[
+  \frac{1}{8\pi^2}V_H(x,y)\log(\mu'^2/\mu^2).
+  \label{eq:point-splitting-scale-change}
+\]
+Thus the singular part is state-independent, while the scale and smooth
+local terms are renormalization coordinates.
+
 \section{Wick Square}
 
 \begin{definition}[Wick square by point splitting]
@@ -91,6 +204,151 @@ dimensions,
 with constants \(c_1,c_2\), subject to the chosen covariance and scaling
 conditions.
 
+\section{Stress-Tensor Prescription and Local Freedom}
+\label{sec:stress-tensor-prescription-local-freedom}
+
+The stress tensor has a sharper renormalization problem than the Wick square
+because a choice of finite local terms must also respect conservation and
+background covariance.
+
+\begin{definition}[Point-split stress-tensor prescription]
+\label{def:point-split-stress-tensor-prescription}
+A point-split stress-tensor prescription for the scalar operator
+\eqref{eq:point-splitting-kg-operator} assigns to every globally hyperbolic
+background \((M,g)\), every Hadamard state \(\omega\), and every test tensor
+\(f^{\mu\nu}\in C_c^\infty(M,S^2TM)\) a number
+\(\omega(T(f))\).  The prescription is required to satisfy the following
+conditions.
+
+\begin{enumerate}
+\item It is obtained locally from
+\[
+  \lim_{y\to x}\mathcal D_{\mu\nu}(x,y)
+  \bigl(\omega_2(x,y)-H_{\epsilon,\mu}(x,y)\bigr)
+  +C_{\mu\nu}[g](x),
+  \label{eq:point-splitting-prescription-template}
+\]
+where \(\mathcal D_{\mu\nu}\) is the bidifferential operator obtained by
+polarizing the classical Hilbert stress tensor and \(C_{\mu\nu}[g]\) is a
+state-independent local curvature tensor.
+\item It is locally covariant: if \(\chi:(M,g)\to(N,h)\) is an admissible
+isometric embedding in the locally covariant category and
+\(\omega_N\) is a Hadamard state on \(N\), then the pullback state on \(M\)
+has stress-tensor expectation equal to the pullback of the \(N\)-expectation.
+\item Its dependence on the state is exactly through the smooth biscalar
+\(\omega_2-H_{\epsilon,\mu}\).  Equivalently, for two Hadamard states
+\(\omega,\omega'\), the difference
+\(\omega(T_{\mu\nu})-\omega'(T_{\mu\nu})\) is obtained by applying
+\(\mathcal D_{\mu\nu}\) to \(\omega_2-\omega'_2\) and then taking the
+diagonal limit.
+\item It is conserved after the finite local tensor has been fixed:
+\[
+  \nabla^\mu\omega(T_{\mu\nu})=0
+  \label{eq:point-splitting-stress-conservation-condition}
+\]
+for all Hadamard states in the declared state space.
+\item It has engineering dimension four under constant rescaling of the
+metric and fields, and it is normalized so that the Minkowski vacuum stress
+tensor vanishes when \(m=0\) and the finite cosmological term is set to zero.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Finite local freedom of the scalar stress tensor]
+\label{prop:finite-local-freedom-scalar-stress-tensor}
+Let \(T_{\mu\nu}\) and \(T'_{\mu\nu}\) be two prescriptions satisfying
+Definition~\ref{def:point-split-stress-tensor-prescription}.  In four
+dimensions their difference is state-independent and has the form
+\[
+  T'_{\mu\nu}-T_{\mu\nu}
+  =
+  a_0m^4g_{\mu\nu}
+  +a_1m^2G_{\mu\nu}
+  +a_2I_{\mu\nu}
+  +a_3J_{\mu\nu},
+  \label{eq:stress-tensor-finite-local-freedom}
+\]
+with real constants \(a_i\).  Here
+\[
+  G_{\mu\nu}=R_{\mu\nu}-\frac12Rg_{\mu\nu},
+  \label{eq:einstein-tensor-definition-local-freedom}
+\]
+and
+\[
+  I_{\mu\nu}
+  =
+  \frac{1}{\sqrt{|g|}}
+  \frac{\delta}{\delta g^{\mu\nu}}
+  \int \sqrt{|g|}\,R^2\,\dd^4x,
+  \qquad
+  J_{\mu\nu}
+  =
+  \frac{1}{\sqrt{|g|}}
+  \frac{\delta}{\delta g^{\mu\nu}}
+  \int \sqrt{|g|}\,R_{\alpha\beta}R^{\alpha\beta}\,\dd^4x,
+  \label{eq:ij-curvature-tensors-definition}
+\]
+with compactly supported metric variations and boundary terms discarded.
+\end{proposition}
+
+\begin{proof}
+By the state-dependence condition in
+Definition~\ref{def:point-split-stress-tensor-prescription}, the difference
+between two prescriptions cannot depend on the smooth part of the Hadamard
+two-point function: the state-dependent diagonal bidifferential term is the
+same for \(T\) and \(T'\).  Hence the difference is a c-number tensor
+\(C'_{\mu\nu}[g]-C_{\mu\nu}[g]\).
+
+Local covariance implies that this tensor is a natural local expression
+formed from \(g_{\mu\nu}\), \(m^2\), \(\xi\), the curvature, and covariant
+derivatives.  The engineering dimension-four condition restricts the
+possible scalar densities whose metric variation can contribute to
+\[
+  \sqrt{|g|}\,m^4,\qquad
+  \sqrt{|g|}\,m^2R,\qquad
+  \sqrt{|g|}\,R^2,\qquad
+  \sqrt{|g|}\,R_{\mu\nu}R^{\mu\nu},\qquad
+  \sqrt{|g|}\,R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
+  \label{eq:dimension-four-local-gravity-densities}
+\]
+up to total derivatives such as \(\sqrt{|g|}\Box R\).  The dimensionless
+parameter \(\xi\) can enter only through the constants \(a_i\).
+
+The divergence-free condition is automatic for metric variations of
+diffeomorphism-invariant local actions: if
+\(\mathcal F[g]\) is invariant under compactly supported infinitesimal
+diffeomorphisms, then
+\[
+  0
+  =
+  \delta_\zeta\mathcal F
+  =
+  \int\sqrt{|g|}\,
+  \mathcal E_{\mu\nu}[g](\nabla^\mu\zeta^\nu+\nabla^\nu\zeta^\mu)\,\dd^4x
+  =
+  -2\int\sqrt{|g|}\,
+  (\nabla^\mu\mathcal E_{\mu\nu})\zeta^\nu\,\dd^4x,
+\]
+so \(\nabla^\mu\mathcal E_{\mu\nu}=0\).  Conversely, within the above
+dimension-four local basis, imposing conservation gives exactly the metric
+variations of these invariant densities.
+
+In four dimensions the variation of the Euler density
+\[
+  E_4
+  =
+  R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}
+  -4R_{\mu\nu}R^{\mu\nu}
+  +R^2
+\]
+is a boundary term.  Therefore the \(R_{\mu\nu\rho\sigma}^2\) variation is
+linearly dependent on the \(R^2\) and \(R_{\mu\nu}^2\) variations in local
+stress-tensor freedom.  The variations of the first two densities in
+\eqref{eq:dimension-four-local-gravity-densities} give \(m^4g_{\mu\nu}\)
+and \(m^2G_{\mu\nu}\), up to constants absorbed into \(a_0,a_1\).  The
+remaining two independent curvature-squared variations are precisely
+\(I_{\mu\nu}\) and \(J_{\mu\nu}\).
+\end{proof}
+
 \section{Stress Tensor by Bidifferential Operator}
 
 For the classical scalar action
@@ -115,9 +373,9 @@ in two field arguments.  Then
   \bigl(\omega_2(x,y)-H(x,y)\bigr)
   +C_{\mu\nu}(x).
 \]
-The local tensor \(C_{\mu\nu}\) is the finite renormalization freedom.  It is
-chosen from locally covariant conserved curvature tensors, together with
-terms proportional to \(m^2\) and \(m^4\) as allowed by dimension.
+The local tensor \(C_{\mu\nu}\) is the finite renormalization freedom
+classified in
+Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}.
 
 \section{Worked Flat-Space Computation}
 

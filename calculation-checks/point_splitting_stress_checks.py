@@ -4,6 +4,7 @@
 from fractions import Fraction
 
 import mpmath as mp
+import sympy as sp
 
 
 mp.mp.dps = 60
@@ -22,7 +23,39 @@ def assert_equal(name, lhs, rhs):
         raise AssertionError(f"{name}: {lhs} != {rhs}")
 
 
+def check_flat_hadamard_transport_identity():
+    z0, z1, z2, z3 = sp.symbols("z0 z1 z2 z3")
+    coordinates = [z0, z1, z2, z3]
+    inverse_metric = [-1, 1, 1, 1]
+    sigma = sp.Rational(1, 2) * (-z0**2 + z1**2 + z2**2 + z3**2)
+
+    grad_sigma_squared = sum(
+        inverse_metric[index] * sp.diff(sigma, coordinate) ** 2
+        for index, coordinate in enumerate(coordinates)
+    )
+    box_sigma = sum(
+        inverse_metric[index] * sp.diff(sigma, coordinate, 2)
+        for index, coordinate in enumerate(coordinates)
+    )
+
+    assert_equal("flat Synge identity", sp.simplify(grad_sigma_squared - 2 * sigma), 0)
+    assert_equal("flat box sigma", sp.simplify(box_sigma), 4)
+
+    u_h = sp.Integer(1)
+    leading_transport = (
+        2
+        * sum(
+            inverse_metric[index] * sp.diff(sigma, coordinate) * sp.diff(u_h, coordinate)
+            for index, coordinate in enumerate(coordinates)
+        )
+        + (box_sigma - 4) * u_h
+    )
+    assert_equal("flat Hadamard U transport", sp.simplify(leading_transport), 0)
+
+
 def main():
+    check_flat_hadamard_transport_identity()
+
     w_state = Fraction(7, 5)
     w_prime_state = Fraction(11, 13)
     h_singular = Fraction(2, 3)

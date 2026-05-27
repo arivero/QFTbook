@@ -728,7 +728,8 @@ Current checks:
   chapter, including Hadamard star-product associativity, the smooth
   Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
-  stress-tensor examples, including state-difference cancellation of the
+  stress-tensor examples, including the flat Synge identities and leading
+  Hadamard \(U\)-transport equation, state-difference cancellation of the
   common Hadamard singularity, the sign of a smooth subtraction change, the
   Bose integral \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat
   thermal scalar energy density and traceless equation of state, the massless
