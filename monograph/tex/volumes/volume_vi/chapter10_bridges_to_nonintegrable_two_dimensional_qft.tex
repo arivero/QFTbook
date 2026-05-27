@@ -3,141 +3,379 @@
 
 \ConventionsMixedCFT
 
-Exact integrability is a special structure, but the machinery developed in
-this volume also gives controlled coordinates near nonintegrable theories.
-This chapter formulates such bridges through deformation data, broken
-conservation laws, finite-volume regulators, and spectral comparison with
-two-dimensional CFT.
+Exact integrability supplies unusually explicit coordinates on a local QFT:
+asymptotic particles, factorized scattering, form factors, finite-volume
+Bethe--Yang spectra, and TBA vacuum energies.  A nearby nonintegrable theory
+is studied by deforming these data through a declared regulator and local
+operator chart.  The bridge developed in this chapter is local and
+finite-volume first; infinite-volume resonance poles and decay widths are
+defined as limits of finite-volume matrix elements.
 
 \section{Integrability-Breaking Datum}
 
-Let \(\mathcal Q_0\) be an integrable massive two-dimensional QFT with local
-operator algebra \(\mathcal A_0\), Hilbert space \(\Hilb_0\), Hamiltonian
-\[
-  H_0,
-\]
-and commuting conserved charges
+Let \(\mathcal Q_0\) be a massive integrable two-dimensional QFT with Hilbert
+space \(\Hilb_0\), Hamiltonian \(H_0\), local operator algebra
+\(\mathcal A_0\), and commuting conserved charges
 \[
   Q_s,\qquad s\in\mathcal S\subset\mathbb Z .
 \]
-An integrability-breaking deformation is specified by a local operator
-\(\mathcal O_b\), a real coupling \(\epsilon\), and a regulator prescription
-for the perturbed Hamiltonian
+The charge \(Q_s\) acts diagonally on an asymptotic multiparticle state
+\[
+  \alpha=(a_1,\theta_1;\ldots;a_n,\theta_n)
+\]
+with eigenvalue
+\[
+  q_s(\alpha)=\sum_{j=1}^n q_s^{(a_j)}(\theta_j),
+\]
+where \(q_s^{(a)}(\theta)\) is the one-particle charge eigenvalue.  For
+ordinary energy and momentum,
+\[
+  q_1^{(a)}(\theta)=m_a\cosh\theta,\qquad
+  \widetilde q_1^{(a)}(\theta)=m_a\sinh\theta .
+\]
+
+\begin{definition}[Regulated integrability-breaking deformation]
+\label{def:regulated-integrability-breaking-deformation}
+A regulated deformation of \(\mathcal Q_0\) is a family of finite-volume
+Hamiltonians
 \[
   H(\epsilon,L,\Lambda)
   =
   H_0(L,\Lambda)
   +
-  \epsilon\int_0^L dx\,\mathcal O_b(x)_{\Lambda}
+  \epsilon V_b(L,\Lambda)
   +
-  \sum_a c_a(\epsilon,\Lambda)\int_0^L dx\,\mathcal O_a(x)_{\Lambda}.
+  \sum_A c_A(\epsilon,\Lambda)\,V_A(L,\Lambda),
 \]
-Here \(L\) is the spatial circumference, \(\Lambda\) is a UV cutoff, and the
-last sum is the finite list of local coordinates required by the chosen
-regularization.  The deformation is a QFT datum only together with these
-local coordinates.
+where
+\[
+  V_b(L,\Lambda)=\int_0^L dx\,\mathcal O_b(x)_\Lambda,
+  \qquad
+  V_A(L,\Lambda)=\int_0^L dx\,\mathcal O_A(x)_\Lambda .
+\]
+Here \(L\) is the spatial circumference, \(\Lambda\) is a UV cutoff,
+\(\mathcal O_b\) is the declared perturbing local operator, and the finite
+set of local coordinates \(c_A\) is fixed by the chosen regularization and
+renormalization condition.  The continuum deformation is the limit of this
+family in matrix elements or Schwinger functions after these local
+coordinates have been specified.
+\end{definition}
+
+The deformation parameter \(\epsilon\) has engineering dimension
+\[
+  [\epsilon]=2-\Delta_b
+\]
+when \(\mathcal O_b\) has scaling dimension \(\Delta_b\) at a conformal
+short-distance fixed point.  Away from a CFT, the same symbol denotes the
+coordinate multiplying the integrated local operator in the regulated
+Hamiltonian.
 
 \section{Broken Conservation Laws}
 
-Suppose \(Q_s\) is conserved in the integrable theory:
+Let \(V_b=\int dx\,\mathcal O_b(x)\) in infinite volume, with a finite-volume
+regulator understood.  At \(\epsilon=0\),
 \[
-  [H_0,Q_s]=0.
+  [H_0,Q_s]=0 .
 \]
-At first order in \(\epsilon\),
+The deformed time derivative of \(Q_s\) is
 \[
-  \frac{\dd Q_s}{\dd t}
+  \frac{dQ_s}{dt}
   =
   \ii[H(\epsilon),Q_s]
   =
-  \ii\epsilon\int dx\,[\mathcal O_b(x),Q_s]+O(\epsilon^2).
+  \ii\epsilon[V_b,Q_s]+O(\epsilon^2).
 \]
-Equivalently, if \(Q_s=\int dx\,j^0_s(x)\), then the continuity equation
-becomes
+If \(Q_s=\int dx\,j_s^0(x)\), this is the integrated form of
 \[
-  \partial_\mu j^\mu_s(x)
-  =
-  \epsilon\,\mathcal B_s(x)+O(\epsilon^2),
+  \partial_\mu j_s^\mu(x)=\epsilon\,\mathcal B_s(x)+O(\epsilon^2),
 \]
-where \(\mathcal B_s\) is the local operator determined by the commutator
-with the perturbing density.  Matrix elements of \(\mathcal B_s\) between
-asymptotic integrable states diagnose which multiparticle processes are
-created by the deformation.
+where \(\mathcal B_s\) is the local operator representing the charge-breaking
+density in the chosen operator chart.
 
-\section{Form-Factor Perturbation}
+\begin{proposition}[Broken-charge matrix element ledger]
+\label{prop:broken-charge-matrix-ledger}
+Let \(\alpha\) and \(\beta\) be finite-particle scattering states of the
+integrable theory on which \(Q_s\) has eigenvalues \(q_s(\alpha)\) and
+\(q_s(\beta)\).  Then the first-order broken-charge matrix element obeys
+\[
+  \langle\beta|\ii[V_b,Q_s]|\alpha\rangle
+  =
+  \ii\bigl(q_s(\alpha)-q_s(\beta)\bigr)
+  \langle\beta|V_b|\alpha\rangle .
+\]
+\end{proposition}
+
+\begin{proof}
+Since \(Q_s|\alpha\rangle=q_s(\alpha)|\alpha\rangle\) and
+\(\langle\beta|Q_s=q_s(\beta)\langle\beta|\),
+\[
+  \langle\beta|V_bQ_s|\alpha\rangle
+  =
+  q_s(\alpha)\langle\beta|V_b|\alpha\rangle,
+  \qquad
+  \langle\beta|Q_sV_b|\alpha\rangle
+  =
+  q_s(\beta)\langle\beta|V_b|\alpha\rangle .
+\]
+Subtracting the two identities and multiplying by \(\ii\) gives the formula.
+\end{proof}
+
+The equation is useful because the integrable charges give many independent
+kinematic tests.  A matrix element that changes any higher-spin charge
+eigenvalue is a direct channel through which the deformation breaks
+factorized scattering.  Energy and momentum remain conserved when the
+deformed Hamiltonian is translation invariant; higher charges typically do
+not.
+
+\section{Form-Factor Perturbation Theory}
+
+Let \(\ket{A_a(\theta)}\) denote a one-particle state of species \(a\) and
+rapidity \(\theta\) in the integrable theory.  The Lorentzian normalization
+used in this volume is
+\[
+  \langle A_a(\theta')|A_b(\theta)\rangle
+  =
+  2\pi\,\delta_{ab}\delta(\theta'-\theta).
+\]
+For a scalar perturbing operator \(\mathcal O_b\), define the connected
+diagonal crossed form factor by
+\[
+  F_{a\bar a}^{b,\mathrm{conn}}(\theta+\ii\pi,\theta)
+  =
+  {}_{\mathrm{out}}\!\langle A_a(\theta)|
+  \mathcal O_b(0)
+  |A_a(\theta)\rangle_{\mathrm{in,conn}} .
+\]
+Lorentz invariance makes this connected diagonal matrix element independent
+of \(\theta\) for a scalar operator; denote it by \(F_a^b\).
+
+\begin{proposition}[First-order mass shift from a diagonal form factor]
+\label{prop:ffpt-first-order-mass-shift}
+Assume that the one-particle state remains an isolated stable particle under
+the deformation, and that the diagonal connected form factor \(F_a^b\) is
+finite in the declared crossing prescription.  For
+\[
+  H=H_0+\epsilon\int dx\,\mathcal O_b(x)+O(\epsilon^2),
+\]
+the first-order shift of the squared mass is
+\[
+  \delta m_a^2=2\epsilon F_a^b .
+\]
+\end{proposition}
+
+\begin{proof}
+Place the theory on a circle of circumference \(L\).  The one-particle
+Bethe--Yang density is
+\[
+  \rho_1(\theta)=m_aL\cosh\theta .
+\]
+The finite-volume diagonal form-factor formula of
+Chapter~\ref{ch:integrable-finite-volume-form-factors} gives, after the
+vacuum term is separated into the bulk energy coordinate,
+\[
+  {}_L\langle A_a(\theta)|\mathcal O_b(0)|A_a(\theta)\rangle_L^{\mathrm{conn}}
+  =
+  \frac{F_a^b}{m_aL\cosh\theta}
+  +O(e^{-\mu L}).
+\]
+Thus the connected first-order energy shift is
+\[
+  \delta E_a(\theta)
+  =
+  \epsilon L
+  {}_L\langle A_a(\theta)|\mathcal O_b(0)|A_a(\theta)\rangle_L^{\mathrm{conn}}
+  =
+  \epsilon\frac{F_a^b}{m_a\cosh\theta}
+  +O(e^{-\mu L}).
+\]
+If the shifted dispersion remains relativistic,
+\[
+  E_a(\theta)^2-p_a(\theta)^2=m_a^2+\delta m_a^2+O(\epsilon^2),
+\]
+then at fixed momentum
+\[
+  \delta E_a(\theta)
+  =
+  \frac{\delta m_a^2}{2E_a(\theta)}
+  =
+  \frac{\delta m_a^2}{2m_a\cosh\theta}.
+\]
+Comparing the two expressions gives \(\delta m_a^2=2\epsilon F_a^b\).
+\end{proof}
+
+\begin{definition}[Form-factor perturbation datum]
+\label{def:form-factor-perturbation-datum}
+A first-order form-factor perturbation datum consists of:
+\begin{enumerate}
+\item the perturbing operator normalization in the local operator chart;
+\item the crossing prescription for diagonal form factors and kinematic-pole
+subtractions;
+\item the vacuum-energy subtraction convention;
+\item the finite-volume normalization used to take the infinite-volume limit;
+\item the stability hypothesis specifying which isolated particles remain
+asymptotic states.
+\end{enumerate}
+\end{definition}
+
+The stability hypothesis is part of the datum because an integrable particle
+may become a resonance or may be confined after the deformation.  The finite
+diagonal form factor then supplies a mass counterterm or a pole displacement
+only after the relevant analytic continuation has been declared.
+
+\section{Semi-Locality and Confinement Diagnostics}
+
+Let \(\mathcal O_b\) be semi-local with respect to particle species \(a\).
+The semi-locality phase \(\omega_{b,a}\in U(1)\) is the monodromy acquired
+when the particle-creating field for \(a\) is moved once around
+\(\mathcal O_b\).  The kinematic pole equation of the form-factor chapter
+then gives the two-particle diagonal pole
+\[
+  -\ii\,\operatorname*{Res}_{\theta'=\theta+\ii\pi}
+  F_{\bar a a}^{b}(\theta',\theta)
+  =
+  \left(1-\omega_{b,a}\right)\langle\mathcal O_b\rangle .
+\]
+
+\begin{proposition}[Semi-local pole obstruction to a particle mass shift]
+\label{prop:semilocal-pole-confinement-diagnostic}
+If \(\omega_{b,a}\ne1\) and
+\(\langle\mathcal O_b\rangle\ne0\), the first-order diagonal form factor
+entering Proposition~\ref{prop:ffpt-first-order-mass-shift} has a kinematic
+pole at the required crossing point.  The perturbative one-particle mass
+shift is therefore replaced by a confinement or resonance problem in the
+deformed theory.
+\end{proposition}
+
+\begin{proof}
+The displayed residue is nonzero under the stated hypotheses.  Hence the
+crossed two-particle form factor has a pole at
+\(\theta'=\theta+\ii\pi\), which is exactly the diagonal point used to define
+the connected one-particle matrix element.  The finite value \(F_a^b\) in
+Proposition~\ref{prop:ffpt-first-order-mass-shift} is absent.  Thus the
+assumption that the original one-particle state admits an ordinary first-order
+mass shift fails.  The deformed spectral problem must be formulated with the
+appropriate long-distance force, resonance pole, or finite-volume mixing
+included.
+\end{proof}
+
+\begin{example}[Ising magnetic perturbation and kink confinement]
+\label{ex:ising-magnetic-kink-confinement}
+In the ordered phase of the thermally perturbed Ising model there are two
+vacua \(|+\rangle\) and \(|-\rangle\) with
+\[
+  \langle+\!|\sigma|+\rangle=v,\qquad
+  \langle-\!|\sigma|-\rangle=-v .
+\]
+Perturb the Hamiltonian by
+\[
+  \delta H=-h\int dx\,\sigma(x).
+\]
+The two vacuum energy densities shift by \(-hv\) and \(+hv\).  A kink--antikink
+pair separated by distance \(R\) encloses a segment of the higher-energy
+vacuum.  The leading long-distance potential is therefore
+\[
+  V_{\mathrm{conf}}(R)=2|hv|\,R .
+\]
+For two heavy kinks of mass \(m\), the leading nonrelativistic meson equation
+for the relative coordinate is
+\[
+  \left[
+  -\frac1m\frac{d^2}{dR^2}
+  +2|hv|\,|R|
+  \right]\psi(R)
+  =
+  (M-2m)\psi(R).
+\]
+This equation is an infrared consequence of the vacuum energy splitting.  The
+operator-level warning sign is the semi-local kinematic pole of the spin-field
+form factor with respect to the kink.
+\end{example}
+
+\section{Finite-Volume Transition Rates}
 
 Let
 \[
-  \ket{\theta_1,a_1;\ldots;\theta_n,a_n}_{\mathrm{in}}
+  V_b(L)=\int_0^L dx\,\mathcal O_b(x)
 \]
-be an \(n\)-particle incoming state of the integrable theory.  The first
-order transition matrix element generated by \(\mathcal O_b\) is
-\[
-  \mathcal M_{\beta\alpha}^{(1)}
-  =
-  \epsilon\int d^2x\,
-  {}_{\mathrm{out}}\!\bra{\beta}\mathcal O_b(x)\ket{\alpha}_{\mathrm{in}}.
-\]
-Translation covariance gives
-\[
-  {}_{\mathrm{out}}\!\bra{\beta}\mathcal O_b(x)\ket{\alpha}_{\mathrm{in}}
-  =
-  \ee^{\ii(P_\beta-P_\alpha)\cdot x}
-  {}_{\mathrm{out}}\!\bra{\beta}\mathcal O_b(0)\ket{\alpha}_{\mathrm{in}}.
-\]
-Therefore the infinite-volume expression contains the energy-momentum
-distribution
-\[
-  (2\pi)^2\delta^{(2)}(P_\beta-P_\alpha)
-  \epsilon\,{}_{\mathrm{out}}\!\bra{\beta}\mathcal O_b(0)\ket{\alpha}_{\mathrm{in}}.
-\]
-The local matrix element is an analytic continuation of the integrable
-form-factor data, with disconnected pieces and kinematic poles treated by the
-crossing prescription of the form-factor chapter.
-
-\section{Widths From Finite-Volume Perturbation}
-
-Let \(\ket{A,L}\) be a one-particle finite-volume eigenstate of \(H_0(L)\),
-and let \(\ket{n,L}\) be finite-volume multiparticle states with energies
-\(E_n(L)\).  Second-order time-dependent perturbation theory gives the
-transition probability
+and let \(\ket{A,L}\) be an eigenstate of \(H_0(L)\).  Let
+\(\ket{n,L}\) be finite-volume eigenstates with energies \(E_n(L)\).  First
+order time-dependent perturbation theory gives
 \[
   P_{A\to n}(T,L)
   =
   \epsilon^2
   \left|
-    \int_0^T dt\,\ee^{\ii(E_n-E_A)t}
-    \bra{n,L}V_b\ket{A,L}
+    \int_0^T dt\,e^{\ii(E_n-E_A)t}
+    \langle n,L|V_b(L)|A,L\rangle
   \right|^2
   +
-  O(\epsilon^3),
+  O(\epsilon^3).
 \]
-where \(V_b=\int_0^L dx\,\mathcal O_b(x)\).  Since
-\[
-  \left|\int_0^Tdt\,\ee^{\ii\Delta E t}\right|^2
-  =
-  \frac{4\sin^2(\Delta E T/2)}{(\Delta E)^2},
-\]
-the large-\(T\) distributional limit is
+The elementary distributional limit is
 \[
   \frac1T
-  \left|\int_0^Tdt\,\ee^{\ii\Delta E t}\right|^2
+  \left|\int_0^Tdt\,e^{\ii\Delta E t}\right|^2
+  =
+  \frac{4\sin^2(\Delta E T/2)}{T(\Delta E)^2}
   \longrightarrow
   2\pi\delta(\Delta E).
 \]
-After the \(L\to\infty\) density of states is inserted, the decay width is
+
+\begin{proposition}[Finite-volume golden-rule limit]
+\label{prop:finite-volume-golden-rule-limit}
+Assume that the \(L\to\infty\) limit of the finite-volume spectral sum exists
+after the Bethe--Yang density of states is inserted and that the relevant
+crossed form factors are regular on the energy-conserving contour.  For a
+channel
+\[
+  \beta=(b_1,\theta_1;\ldots;b_n,\theta_n)
+\]
+use the momentum-conserving rapidity measure
+\[
+  d\Phi_\beta
+  =
+  2\pi\delta
+  \!\left(P_A-\sum_{j=1}^n m_{b_j}\sinh\theta_j\right)
+  \prod_{j=1}^n\frac{d\theta_j}{2\pi}.
+\]
+Then the leading inclusive decay rate out of \(A\) is
 \[
   \Gamma_A
   =
   2\pi\epsilon^2
   \sum_\beta
-  \rho_\beta(E_A)
+  \int d\Phi_\beta\,
+  \delta\!\left(E_A-\sum_{j=1}^n m_{b_j}\cosh\theta_j\right)
   \left|
-    {}_{\mathrm{out}}\!\bra{\beta}\mathcal O_b(0)\ket{A}_{\mathrm{in}}
-  \right|^2,
+    \langle\beta|\mathcal O_b(0)|A\rangle_{\mathrm{conn}}
+  \right|^2 ,
 \]
-within the stated perturbative and infrared hypotheses.
+\end{proposition}
 
-\section{Truncated Conformal Space As Regulator}
+\begin{proof}
+At finite \(L\), the transition probability per time is the finite sum over
+normalizable states
+\[
+  \frac{P_A(T,L)}{T}
+  =
+  \epsilon^2
+  \sum_n
+  \frac{4\sin^2((E_n-E_A)T/2)}{T(E_n-E_A)^2}
+  |\langle n,L|V_b(L)|A,L\rangle|^2
+  +O(\epsilon^3).
+\]
+First take \(T\to\infty\) in the distributional sense against smooth spectral
+test functions, obtaining \(2\pi\delta(E_n-E_A)\).  Then use the
+Bethe--Yang state-counting measure of
+Chapter~\ref{ch:integrable-finite-volume-form-factors} to replace the sum by
+rapidity integrals.  The spatial integral in \(V_b(L)\) gives finite-volume
+momentum conservation; in the infinite-volume limit this gives the delta
+function contained in \(d\Phi_\beta\).  The finite-volume matrix-element
+normalization converges to the connected crossed form factor by the same
+Gaudin-density cancellation.  This proves the displayed inclusive rate.
+\end{proof}
+
+\section{Truncated Conformal Space as Regulator}
 
 Let \(\mathcal C\) be a two-dimensional CFT on a circle of circumference
 \(L\).  The CFT Hamiltonian is
@@ -147,34 +385,117 @@ Let \(\mathcal C\) be a two-dimensional CFT on a circle of circumference
   \frac{2\pi}{L}
   \left(L_0+\bar L_0-\frac{c}{12}\right).
 \]
-Perturbing by relevant operators gives
+Perturbing by relevant scalar operators \(\mathcal O_i\) gives
 \[
-  H=H_{\mathrm{CFT}}
-  +\sum_i \lambda_i
-  \left(\frac{L}{2\pi}\right)^{1-\Delta_i}
+  H
+  =
+  H_{\mathrm{CFT}}
+  +
+  \sum_i \lambda_i
+  \left(\frac{2\pi}{L}\right)^{\Delta_i-1}
   \int_0^{2\pi}d\theta\,\mathcal O_i(\theta).
 \]
-A truncation cutoff \(E_{\mathrm{cut}}\) keeps only CFT states below that
-energy.  Matrix elements are computed from CFT three-point coefficients and
-descendant Ward identities.  Counterterms depend on the discarded high-energy
-states and must be included as local coordinates in the truncated Hamiltonian.
+Equivalently,
+\[
+  \frac{L}{2\pi}H
+  =
+  L_0+\bar L_0-\frac{c}{12}
+  +
+  \sum_i g_i(L)\int_0^{2\pi}d\theta\,\mathcal O_i(\theta),
+  \qquad
+  g_i(L)=\lambda_i\left(\frac{L}{2\pi}\right)^{2-\Delta_i}.
+\]
+
+\begin{definition}[TCSA regulator datum]
+\label{def:tcsa-regulator-datum}
+A truncated conformal space regulator consists of:
+\begin{enumerate}
+\item a CFT Hilbert-space sector on the circle;
+\item a cutoff subspace \(P_N\Hilb_{\mathcal C}\) defined by
+\(L_0+\bar L_0\le N\) or by a stated energy cutoff;
+\item the matrix elements of all perturbing operators in this CFT basis;
+\item local counterterm coordinates determined by the discarded high-energy
+states;
+\item an order of limits for \(N\), \(L\), and the renormalized couplings.
+\end{enumerate}
+\end{definition}
+
+The counterterm scaling follows from the OPE.  Suppose
+\[
+  \mathcal O_i(x)\mathcal O_j(0)
+  \sim
+  \sum_k
+  C_{ij}{}^k\,|x|^{\Delta_k-\Delta_i-\Delta_j}\mathcal O_k(0).
+\]
+The short-distance part of the second-order perturbation contains
+\[
+  \int_{|x|<a}d^2x\,|x|^{\Delta_k-\Delta_i-\Delta_j}
+  =
+  2\pi
+  \frac{a^{2+\Delta_k-\Delta_i-\Delta_j}}
+       {2+\Delta_k-\Delta_i-\Delta_j}
+\]
+when the denominator is nonzero, and a logarithm when it vanishes.  With
+\(a\sim N^{-1}\), the cutoff dependence of the local coordinate multiplying
+\(\mathcal O_k\) scales as
+\[
+  \delta g_k(N)
+  \propto
+  \lambda_i\lambda_j\,
+  N^{\Delta_i+\Delta_j-\Delta_k-2}
+\]
+up to scheme-dependent constants and logarithmic replacement at exponent
+zero.
+
+\begin{proposition}[OPE origin of TCSA counterterm powers]
+\label{prop:tcsa-counterterm-power}
+In a TCSA regulator whose high-energy cutoff corresponds to a short-distance
+resolution \(a\sim N^{-1}\), the contribution of the OPE channel
+\(\mathcal O_i\mathcal O_j\to\mathcal O_k\) to a local second-order
+counterterm has cutoff power
+\[
+  N^{\Delta_i+\Delta_j-\Delta_k-2}.
+\]
+If \(\Delta_i+\Delta_j-\Delta_k-2=0\), the power is replaced by \(\log N\).
+\end{proposition}
+
+\begin{proof}
+Second-order perturbation theory integrates the product
+\(\mathcal O_i(x)\mathcal O_j(0)\) over small Euclidean separations.  Replacing
+the product by its OPE channel gives the radial integral displayed above.  If
+the exponent
+\[
+  2+\Delta_k-\Delta_i-\Delta_j
+\]
+is nonzero, substituting \(a=N^{-1}\) gives
+\[
+  a^{2+\Delta_k-\Delta_i-\Delta_j}
+  =
+  N^{\Delta_i+\Delta_j-\Delta_k-2}.
+\]
+If the exponent vanishes, the radial integral is
+\(\int_a dr\,r^{-1}\), giving \(\log N\).  The coefficient is scheme
+dependent because the precise relation between \(a\) and \(N\), and the
+definition of the projection \(P_N\), are part of the regulator.
+\end{proof}
 
 \section{Comparison Objects}
 
 A bridge between integrable and nonintegrable two-dimensional QFT compares
-objects, not names:
+declared observables:
 \[
 \begin{gathered}
-  \text{finite-volume spectrum},\qquad
+  \text{finite-volume spectra},\qquad
   \text{local-operator matrix elements},\\
-  \text{resonance poles},\qquad
-  \text{hydrodynamic or thermal late-time behavior}.
+  \text{resonance pole positions and residues},\qquad
+  \text{thermal or hydrodynamic late-time data}.
 \end{gathered}
 \]
-An integrable point may control nearby data through perturbation theory in
-\(\epsilon\), while a CFT point may control nearby data through a relevant
-deformation.  The two expansions meet only after the finite-volume regulator,
-operator normalization, and continuation to infinite volume are matched.
+An integrable point controls nearby data through form-factor perturbation
+theory in \(\epsilon\).  A CFT point controls nearby data through relevant
+deformations and Hamiltonian truncation.  The two coordinate systems meet
+when the finite-volume regulator, local counterterms, operator normalization,
+and infinite-volume continuation are matched.
 
 \begin{openproblem}[Nonintegrable deformation]
 \label{op:controlled-nonintegrable-deformation}

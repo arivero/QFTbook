@@ -514,6 +514,12 @@ Current checks:
   coefficients, the \(K_1\) large-\(r\) asymptotic coefficients, F-term
   product subtraction, and the orientation sign in the \(\mu\)-term residue
   ledger.
+- `nonintegrable_bridge_checks.py`: exact arithmetic checks for the Volume VI
+  bridge from integrable to nonintegrable two-dimensional QFT, including the
+  broken-charge commutator ledger, first-order form-factor mass shift,
+  semi-local kinematic residue, Ising false-vacuum string tension,
+  TCSA coupling and counterterm powers, and the Airy scaling of confined
+  kink--antikink bound states.
 - `mellin_four_point_checks.py`: finite algebra checks for the CFT
   four-point Mellin-representation section, including the constrained
   \(\delta_{ij}\) equations, compatibility with the chapter's scalar
