@@ -51,6 +51,10 @@ Current checks:
   bosonic fluctuation--dissipation identity, and the
   \(\rho=-2\operatorname{Im}G^R\) retarded-sign convention entering the shear
   Kubo formula.
+- `qcd_phase_checks.py`: finite arithmetic checks for the Volume X QCD
+  phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,
+  baryon-chemical-potential coefficients, Banks--Casher kernel normalization,
+  the Linde magnetic-scale power count, and the CFL Goldstone count.
 - `banks_zaks_two_loop_checks.py`: exact rational checks for the Banks-Zaks
   two-loop beta-function conventions in the monograph's
   \(\operatorname{tr}_{\square}(t^a t^b)=\delta^{ab}\) normalization,
