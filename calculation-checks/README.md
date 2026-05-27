@@ -433,6 +433,11 @@ Current checks:
   quaternion \(SU(2)\) group operations, the local compact-link plaquette
   score change, pairwise detailed balance, gauge invariance of the action and
   Wilson loops, and the \(1\times1\) Wilson-loop/plaquette identity.
+- `heatbath_overrelaxation_checks.py`: exact finite algebra checks for the
+  Volume XI heat-bath and overrelaxation section, verifying conditional
+  heat-bath detailed balance, \(SU(2)\) staple reduction, overrelaxation
+  involution, local score preservation, and orthogonality of the
+  overrelaxation map on \(S^3\).
 - `hmc_pseudofermion_checks.py`: exact finite algebra checks for the Volume
   XI HMC and pseudofermion section, verifying leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized

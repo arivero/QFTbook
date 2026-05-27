@@ -38,6 +38,13 @@ chapters.
 - `kappa(dR)`: inversion-symmetric local \(SU(2)\) proposal law.
 - `W_{R,T}`: rectangular Wilson-loop observable, averaged over translations
   and coordinate planes.
+- `nu(x|y)`: regular conditional probability used in the heat-bath theorem.
+- `K_HB`: coordinate heat-bath kernel.
+- `V_e=c_e W_e`: \(SU(2)\) staple polar form for a selected link.
+- `x_0`: scalar quaternion coordinate in the \(SU(2)\) heat-bath density
+  \(\sqrt{1-x_0^2}e^{\beta c_e x_0}\).
+- `O_{W_e}(U_e)=W_e^{-1}U_e^{-1}W_e^{-1}`: single-link
+  overrelaxation involution.
 - `Q_Lambda`: finite-dimensional HMC configuration manifold.
 - `Gamma_Lambda`, `lambda`: finite-dimensional HMC phase space and
   reference measure.
@@ -74,6 +81,15 @@ chapters.
   Haar-irreducibility condition without claiming continuum convergence.
 - Defines gauge transformations and rectangular Wilson-loop measurements for
   the finite \(SU(2)\) script.
+- Proves exact coordinate heat-bath detailed balance from regular
+  conditional probabilities.
+- Derives the local \(SU(2)\) Wilson-link conditional density in terms of the
+  staple polar form \(V_e=c_eW_e\) and the scalar quaternion density
+  \(\sqrt{1-x_0^2}e^{\beta c_ex_0}\).
+- Defines the \(SU(2)\) overrelaxation map
+  \(U_e\mapsto W_e^{-1}U_e^{-1}W_e^{-1}\), proves it is an involution,
+  proves local-score preservation, and proves finite Wilson-measure
+  invariance.
 - Proves the finite-regulator HMC Metropolis-correction theorem from
   volume preservation, reversibility, and the momentum-flip involution.
 - Proves leapfrog volume preservation and reversibility in finite Euclidean
@@ -140,6 +156,10 @@ the exponential decay of average phase with volume.
   script's quaternion group operations, local score change,
   detailed-balance identity, gauge invariance, and the \(1\times1\)
   Wilson-loop/plaquette identity.
+- `calculation-checks/heatbath_overrelaxation_checks.py` verifies finite
+  conditional heat-bath balance, \(SU(2)\) staple reduction, overrelaxation
+  involution, local score preservation, and orthogonality of the
+  overrelaxation map on \(S^3\).
 - `calculation-checks/hmc_pseudofermion_checks.py` verifies the finite HMC
   and pseudofermion algebra: one-dimensional leapfrog determinant one,
   leapfrog reversibility, pairwise Metropolis balance, the diagonalized
