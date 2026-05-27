@@ -405,6 +405,11 @@ Current checks:
   \(\mathbb Z_N\) fusion, higher-form Ward phase multiplicativity, orientation
   and charge reversal, linking/intersection dimension bookkeeping, and
   junction charge conservation.
+- `categorical_defect_structure_checks.py`: exact finite checks for the
+  categorical-symmetry defect-fusion chapter, including defect fusion as
+  composition of local-operator actions, noninvertible projection kernels,
+  dagger reversal of junction composition, positivity of the finite
+  reflection pairing, and unitarity of isotopy changes of junction basis.
 - `free_cylinder_partition_checks.py`: finite character checks for the
   radial-cylinder free-field section, including the four-dimensional scalar
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion
