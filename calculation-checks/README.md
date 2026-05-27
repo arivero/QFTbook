@@ -214,6 +214,11 @@ Current checks:
   coefficient, the rank-two logarithmic Jordan-cell Ward identities and trace
   invisibility of the nilpotent extension, and the Zhu-algebra top-weight
   polynomial with its primitive idempotents.
+- `cft_virasoro_minimal_checks.py`: exact checks for the unitary Virasoro
+  minimal-model and Ising BPZ-block material, including Kac-table
+  identifications, Ising and tricritical-Ising weights, the level-two Gram
+  determinant and null vector, the Ising spin-field BPZ differential equation,
+  and the crossing matrix fixing \(C_{\sigma\sigma\varepsilon}=1/2\).
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
   fusion associativity and fusion-ring characters, boundary entropy squares,

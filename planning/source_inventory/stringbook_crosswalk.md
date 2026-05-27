@@ -270,12 +270,18 @@ Current absorption:
   integer-spin, and bell/cigar geometry formulas.
 - Volume V, Chapter 12 now adds the algebraic chiral-CFT layer: vertex
   operator algebras, ordinary modules, characters, Zhu algebras and top-level
-  module classification, conformal blocks as Ward identity functionals,
-  higher-genus sewing, modular tensor category data, the Verlinde formula,
-  rational full-CFT modular invariants, a leading Cardy high-temperature
-  derivation, and logarithmic CFT boundaries.  The Ising modular and Zhu data
-  are checked by
-  `calculation-checks/cft_voa_modular_checks.py`.
+  module classification, unitary Virasoro minimal-model representation data,
+  conformal blocks as Ward identity functionals, higher-genus sewing, modular
+  tensor category data, the Verlinde formula, rational full-CFT modular
+  invariants, a leading Cardy high-temperature derivation, and logarithmic CFT
+  boundaries.  The Ising minimal-model discussion now includes the level-two
+  Virasoro Gram/null-vector calculation, the BPZ equation for the spin
+  four-point function, and the crossing calculation fixing
+  \(C_{\sigma\sigma\varepsilon}=1/2\), expanding the stringbook appendix
+  discussion into a self-contained monograph derivation.  The Ising modular,
+  Zhu, logarithmic-cell, and unitary-minimal-model data are checked by
+  `calculation-checks/cft_voa_modular_checks.py` and
+  `calculation-checks/cft_virasoro_minimal_checks.py`.
 - Volume V, Chapter 13 develops Liouville CFT from the QFT side: classical
   action and stress tensor, background charge and central charge, Seiberg
   domain, probabilistic construction boundary, reflection relation,

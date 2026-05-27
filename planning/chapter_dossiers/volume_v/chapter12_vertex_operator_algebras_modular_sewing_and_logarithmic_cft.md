@@ -22,6 +22,13 @@ current QFT scope.
 - `Omega(M)`: subspace killed by modes above their zero-mode threshold.
 - `C_2(V)`: span of \(a_{-2}b\), used in the explicit cofiniteness
   hypothesis for character modularity.
+- `M(c,h)`: Virasoro Verma module with central charge `c` and highest weight
+  `h`.
+- `c_m`: unitary minimal-model central charge `1 - 6/(m(m+1))`.
+- `h_{r,s}^{(m)}`: Kac-table highest weight for the unitary minimal model
+  `M(m,m+1)`.
+- `F_0,F_epsilon`: Ising spin four-point Virasoro block basis in the identity
+  and energy channels.
 - `CB_{g,n}`: space of chiral conformal blocks.
 - `q`: sewing parameter in \(zw=q\).
 - `S,T`: genus-one modular matrices.
@@ -55,6 +62,12 @@ current QFT scope.
 - Works the Ising Zhu algebra as
   \(\mathbb C[x]/(x(x-1/16)(x-1/2))\), matching the vacuum, spin, and energy
   top weights.
+- Adds the unitary Virasoro minimal-model layer: derives the level-one and
+  level-two Gram matrices, states the unitary highest-weight classification as
+  a quoted theorem boundary, records the Kac-table identification and
+  triangular representative set, derives the Ising spin level-two null vector,
+  and proves the Ising spin four-point BPZ/crossing calculation fixing
+  \(C_{\sigma\sigma\varepsilon}=1/2\).
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
 - States explicit rationality/sewing hypotheses before invoking modular
@@ -111,6 +124,11 @@ current QFT scope.
   polynomial/idempotent decomposition over \(\mathbb Q\), as well as the
   rank-two logarithmic Jordan-cell Ward identities, basis shift, and ordinary
   trace invisibility of the nilpotent part.
+- `calculation-checks/cft_virasoro_minimal_checks.py` verifies the unitary
+  minimal-model Kac-table arithmetic, Ising and tricritical-Ising weights,
+  level-two Ising Gram determinant/null vector, Ising BPZ block differential
+  equation, and the crossing matrix fixing
+  \(C_{\sigma\sigma\varepsilon}=1/2\).
 
 ## Reference Intake
 
@@ -121,6 +139,12 @@ current QFT scope.
   and the definitions of split property, strong additivity, and `mu`-index.
   The monograph text defines the net objects locally and quotes only the
   external theorem boundary.
+- Internal source consulted for the unitary Virasoro pass:
+  `transcription/tex/253c/conformal_field_theory.tex`, pp. 116--135 source
+  block, and `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`
+  around the Ising minimal-model four-point and torus discussion.  The
+  monograph gives local Gram/BPZ/crossing derivations and treats the full
+  unitary classification as a quoted theorem boundary.
 
 ## Audit Notes
 
@@ -147,3 +171,9 @@ current QFT scope.
   finite logarithmic scaling, \(L_0/L_1\) Ward-identity two-point functions,
   basis-dependence bookkeeping, the ordinary-character failure mode, and exact
   formal calculation checks.
+- 2026-05-27 unitary Virasoro minimal-model pass: incorporated the 253c and
+  stringbook Ising/minimal-model material into Chapter 12 by deriving the
+  low-level Virasoro Gram/null-vector algebra, stating the unitary
+  minimal-model classification boundary, proving the Ising BPZ block/crossing
+  calculation fixing \(C_{\sigma\sigma\varepsilon}=1/2\), and adding a
+  dedicated conformal-block calculation check script.
