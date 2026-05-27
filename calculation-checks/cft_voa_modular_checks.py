@@ -195,6 +195,32 @@ def check_ising_t_spin_selection_and_diagonal_invariant() -> None:
     )
 
 
+def check_cardy_tauberian_saddle_constants() -> None:
+    """Check the Legendre-dual coefficient in the Cardy density formula.
+
+    Suppress the common factor pi^2.  The modular high-temperature coefficient
+    is A = c_tot/6.  If S(E)=2 sqrt(A E), the saddle sits at
+    E_* = A/beta^2 and gives S(E_*) - beta E_* = A/beta.
+    """
+
+    for central_charge in (Fraction(1, 2), Fraction(1), Fraction(24)):
+        modular_coefficient = central_charge / 6
+        entropy_coefficient_squared = 4 * modular_coefficient
+        saddle_energy_coefficient = modular_coefficient
+        entropy_at_saddle_coefficient = 2 * modular_coefficient
+        boltzmann_at_saddle_coefficient = saddle_energy_coefficient
+        assert_equal(
+            f"Cardy entropy coefficient squared c={central_charge}",
+            entropy_coefficient_squared,
+            2 * central_charge / 3,
+        )
+        assert_equal(
+            f"Cardy saddle recovers modular coefficient c={central_charge}",
+            entropy_at_saddle_coefficient - boltzmann_at_saddle_coefficient,
+            modular_coefficient,
+        )
+
+
 def polynomial_multiply(lhs: list[Fraction], rhs: list[Fraction]) -> list[Fraction]:
     product = [Fraction(0) for _ in range(len(lhs) + len(rhs) - 1)]
     for i, left in enumerate(lhs):
@@ -286,6 +312,7 @@ def main() -> None:
     check_quantum_dimensions()
     check_character_exponents()
     check_ising_t_spin_selection_and_diagonal_invariant()
+    check_cardy_tauberian_saddle_constants()
     check_ising_zhu_polynomial()
     print("All CFT VOA/modular-data, Zhu-algebra, and conformal-net index checks passed.")
 

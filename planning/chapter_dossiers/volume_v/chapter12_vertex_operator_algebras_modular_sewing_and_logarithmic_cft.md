@@ -77,7 +77,10 @@ current QFT scope.
 - Defines rational full-CFT torus partition functions and the modular
   invariance constraints \(MS=SM\), \(MT=TM\).
 - Derives the leading Cardy high-temperature partition-function asymptotic
-  from modular invariance and a unique vacuum hypothesis.
+  from modular invariance and a unique vacuum hypothesis, states the
+  exponential Tauberian theorem needed to pass from the partition function to
+  cumulative state growth, and proves the CFT-internal Cardy density formula
+  under compact/discrete-spectrum/positivity hypotheses.
 - Defines logarithmic CFT by nonsemisimple \(L_0\) action, explains the
   appearance of logarithms, and identifies pseudo-traces and finite tensor
   category data as the replacement for semisimple modular data.
@@ -94,8 +97,8 @@ current QFT scope.
   conformal-net `mu`-index/global-dimension relation, character exponent
   shifts in \(\mathbb Q(\sqrt2)\), the \(T\)-phase spin-selection rule,
   uniqueness of the diagonal Ising genus-one modular invariant with one
-  vacuum, and the Ising Zhu polynomial/idempotent decomposition over
-  \(\mathbb Q\).
+  vacuum, the Cardy Tauberian saddle coefficient, and the Ising Zhu
+  polynomial/idempotent decomposition over \(\mathbb Q\).
 
 ## Reference Intake
 
@@ -123,3 +126,7 @@ current QFT scope.
   \(T\)-matrix, proved that the genus-one modular-invariance equations force
   the diagonal invariant under the one-vacuum/nonnegative-integral
   hypothesis, and extended the exact modular-data check.
+- 2026-05-27 Cardy Tauberian pass: made the analytic Tauberian hypothesis
+  explicit, proved the CFT-internal cumulative Cardy growth statement from
+  modular invariance plus positivity/discreteness assumptions, and added the
+  saddle coefficient check.

@@ -828,6 +828,96 @@ this high-temperature partition-function statement into an asymptotic density
 of states.  Those hypotheses are analytic input; modular invariance alone is
 not a pointwise formula for individual degeneracies.
 
+\begin{quotedtheorem}[Exponential Tauberian theorem]
+\label{qthm:exponential-tauberian-cardy}
+Let \(N(E)\) be a nondecreasing right-continuous function on
+\([0,\infty)\), and suppose its Laplace transform
+\[
+  Z(\beta)=\int_{[0,\infty)}\ee^{-\beta E}\,\dd N(E)
+\]
+is finite for every \(\beta>0\).  If, for some \(A>0\),
+\[
+  \log Z(\beta)=\frac A\beta+o(\beta^{-1})
+  \qquad(\beta\downarrow0),
+\]
+then
+\[
+  \log N(E)=2\sqrt{AE}+o(\sqrt E)
+  \qquad(E\to\infty).
+\]
+\end{quotedtheorem}
+
+This theorem is the precise analytic bridge between the modular
+high-temperature statement and the density of states.  Its positivity
+hypothesis is essential: \(N(E)\) is a cumulative spectral counting function,
+not a signed distribution obtained by subtracting sectors.
+
+\begin{proposition}[CFT-internal Cardy growth]
+\label{prop:cft-internal-cardy-growth}
+Let \(\mathcal C\) be a unitary compact two-dimensional CFT on a circle of
+circumference \(2\pi\).  Assume the Hilbert-space spectrum of
+\[
+  E=L_0+\bar L_0
+\]
+is discrete with finite multiplicities, \(E\ge0\), and has a unique vacuum at
+\(E=0\).  Assume also that the torus partition function is modular invariant
+and has no continuous spectral contribution.  Let
+\[
+  N(E)=\dim\{\psi\in\mathcal H(S^1)\mid
+  (L_0+\bar L_0)\psi\le E\}
+\]
+be the cumulative degeneracy.  Then
+\begin{equation}
+  \log N(E)
+  =
+  2\pi\sqrt{\frac{c_{\rm tot}E}{6}}+o(\sqrt E),
+  \qquad
+  E\to\infty .
+  \label{eq:cardy-cumulative-density}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The shifted cylinder partition function used above is
+\[
+  Z(\beta)
+  =
+  \operatorname{Tr}\exp\{-\beta(L_0+\bar L_0-c_{\rm tot}/24)\}.
+\]
+Multiplying by \(\exp\{-\beta c_{\rm tot}/24\}\) gives the ordinary Laplace
+transform of the positive counting measure \(\dd N(E)\):
+\[
+  \widetilde Z(\beta)
+  =
+  \operatorname{Tr}\exp\{-\beta(L_0+\bar L_0)\}
+  =
+  \int_{[0,\infty)}\ee^{-\beta E}\,\dd N(E).
+\]
+Since \(\beta c_{\rm tot}/24=o(\beta^{-1})\), the high-temperature asymptotic
+\eqref{eq:cardy-partition-leading} gives
+\[
+  \log \widetilde Z(\beta)
+  =
+  \frac{\pi^2c_{\rm tot}}{6\beta}+o(\beta^{-1}).
+\]
+Apply Theorem~\ref{qthm:exponential-tauberian-cardy} with
+\(A=\pi^2c_{\rm tot}/6\).
+\end{proof}
+
+A saddle calculation checks the coefficient but does not replace the
+Tauberian theorem.  If a smooth density had entropy
+\[
+  S(E)=2\sqrt{AE},
+\]
+then the Laplace exponent \(S(E)-\beta E\) is stationary at
+\[
+  E_\ast=\frac A{\beta^2},
+\]
+and the stationary value is \(A/\beta\).  Thus the density-growth coefficient
+in \eqref{eq:cardy-cumulative-density} is exactly the Legendre dual of the
+modular coefficient in \eqref{eq:cardy-partition-leading}; the theorem above
+is what justifies this conclusion for a discrete positive spectrum.
+
 The modular bootstrap is the study of the constraints
 \eqref{eq:modular-invariant-matrix}, reflection positivity, spin integrality,
 and higher-genus sewing on the spectrum and OPE data.  In rational theories it
