@@ -57,6 +57,30 @@ background or dynamical gauge field through
 \[
   D_\mu\psi=\partial_\mu\psi-\ii A_\mu\psi .
 \]
+
+\begin{definition}[Anomaly representative conventions]
+\label{def:anomaly-representative-conventions}
+An anomaly formula in this chapter means a renormalized local Ward identity
+for specified composite currents after four pieces of data have been fixed.
+First, the gauge and vector Ward identities that define the background
+coupling are preserved by the regulator and by the counterterm convention.
+Second, the remaining local term is represented in the Hermitian trace
+normalization stated above, namely
+\(\operatorname{tr}(t^at^b)=\delta^{ab}\) unless another trace is declared.
+Third, the orientation and chirality matrix are the displayed ones.  Fourth,
+local counterterms have been chosen; changing them changes the representative
+of the anomaly but not its BRST cohomology class.
+
+The perturbative triangle calculations below use dimensional reduction in
+the following restricted sense: the loop momentum is analytically continued
+while \(\gamma_5\) and the antisymmetric tensor are kept in the physical
+two- or four-dimensional subspace.  The heat-kernel calculation in the
+measure section is instead a spectral regulator for a Berezinian trace.  No
+Pauli--Villars auxiliary field is used, and no claim is made that
+dimensional continuation by itself defines a nonperturbative fermionic path
+integral.
+\end{definition}
+
 For a mass \(m\), the Dirac Lagrangian is
 \[
   \mathcal L
@@ -239,6 +263,61 @@ identity
 Thus the anomaly is already present before any interaction among the fermions:
 it is the finite remnant of a regulated contact term in a composite-current
 Ward identity.
+
+\begin{proposition}[Two-dimensional axial contact term]
+\label{prop:two-dimensional-axial-contact-term}
+For the massless two-dimensional Dirac fermion with current conventions of
+this section, choose the renormalized current representative whose vector
+Ward identity is preserved.  Then the axial-vector current product obeys
+\[
+  \partial_\mu
+  \bra{\vac}
+  \operatorname T\,j_A^\mu(x)j^\nu(y)
+  \ket{\vac}
+  =
+  \frac{\ii}{\pi}\epsilon^{\mu\nu}
+  \partial_\mu\delta^{(2)}(x-y),
+  \qquad
+  \partial_\mu
+  \bra{\vac}
+  \operatorname T\,j^\mu(x)j^\nu(y)
+  \ket{\vac}
+  =
+  0 .
+\]
+Coupling \(j^\mu\) to a background Abelian gauge field with
+\(D_\mu=\partial_\mu-\ii A_\mu\) gives the local operator identity
+\[
+  \partial_\mu j_A^\mu
+  =
+  \frac1{2\pi}\epsilon^{\mu\nu}F_{\mu\nu}.
+\]
+\end{proposition}
+
+\begin{proof}
+The one-loop contraction of
+\(p_\mu\langle j_A^\mu j^\nu\rangle\) reduces, after Feynman
+parametrization, to
+\eqref{eq:two-dimensional-anomaly-shifted-integral}.  In dimensional
+reduction the term with two loop momenta contains the factor
+\((2-D)/D\), because only the physical two-dimensional gamma matrices
+anticommute with \(\gamma\).  This evanescent factor multiplies the logarithmic
+ultraviolet divergence of the integral and leaves the finite polynomial
+\(-\pi^{-1}\epsilon^{\mu\nu}p_\mu\).  Fourier inversion gives the displayed
+contact term.  The vector-current representative is fixed by subtracting the
+local contact term that would otherwise violate the vector Ward identity.
+
+Expanding the background-field insertion
+\(\exp(\ii\int j^\mu A_\mu)\) to first order and using the contact term gives
+\[
+  \partial_\mu j_A^\mu(x)
+  =
+  \frac1{\pi}\epsilon^{\mu\nu}\partial_\mu A_\nu(x)
+  =
+  \frac1{2\pi}\epsilon^{\mu\nu}F_{\mu\nu}(x),
+\]
+where the last equality uses antisymmetry of \(\epsilon^{\mu\nu}\).
+\end{proof}
 
 \section{Contour Charges and Anomalous Charge Transport}
 
@@ -656,6 +735,67 @@ for a unit-charge Dirac fermion in the convention of
 with electromagnetic coupling \(e\) replaces \(F\) by \(eqF\), giving the
 factor \(e^2q^2\) in the next section.
 
+\begin{proposition}[Four-dimensional axial contact term]
+\label{prop:four-dimensional-axial-contact-term}
+For a massless four-dimensional Dirac fermion, in the anomaly representative
+of Definition~\ref{def:anomaly-representative-conventions}, the regulated
+one-axial two-vector current product has local divergence
+\[
+  \partial_\mu
+  \bra{\vac}
+  \operatorname T\,j_5^\mu(x)j^\nu(y)j^\rho(0)
+  \ket{\vac}
+  =
+  \frac1{2\pi^2}
+  \epsilon^{\nu\rho\alpha\beta}
+  \partial_\alpha\delta^{(4)}(x)
+  \partial_\beta\delta^{(4)}(y).
+\]
+Consequently, after coupling the vector current to a background Abelian field
+and preserving the vector Ward identity, a unit-charge Dirac fermion obeys
+\[
+  \partial_\mu j_5^\mu
+  =
+  \frac1{16\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}
+\]
+in the massless theory.
+\end{proposition}
+
+\begin{proof}
+Contracting the axial vertex in the two oriented triangles writes the
+numerator as vector-current contact terms plus the evanescent
+\(\ell_\perp\) term.  Translation invariance of the dimensionally reduced
+two-propagator integrals is precisely the regulator statement that the vector
+Ward identities are preserved; with this prescription the vector-contact
+terms cancel pairwise between the two orientations.  The remaining local
+piece is
+\[
+  -8\,\epsilon^{\nu\rho\alpha\beta}k_\alpha p_\beta I(k,p)
+\]
+from one orientation, with the opposite orientation contributing the
+corresponding exchanged tensor.  The Feynman-parameter integral has the
+regulator-independent local limit
+\[
+  I(k,p)
+  =
+  \int\frac{\dd^{4-\epsilon}\ell}{(2\pi)^{4-\epsilon}}
+  \frac{\ell_\perp^2}{\ell^2(\ell-k)^2(\ell+p)^2}
+  =
+  -\frac1{32\pi^2},
+\]
+because the factor \(D-4\) from \(\ell_\perp^2\) cancels the logarithmic
+ultraviolet pole.  Substituting this value and Fourier transforming gives
+\eqref{eq:four-dimensional-triangle-contact-term}.
+
+The background-field identity follows by expanding the time-ordered
+exponential to second order.  The factor \(1/2\) in the exponential is
+cancelled by the two identical vector insertions in the contact term, and
+antisymmetrizing the two derivatives of \(A\) rewrites the result as
+\(\epsilon^{\mu\nu\rho\sigma}F_{\mu\nu}F_{\rho\sigma}/(16\pi^2)\) in the
+normalization of \eqref{eq:abelian-axial-anomaly}.
+\end{proof}
+
 \section{The Abelian Axial Anomaly}
 
 For a Dirac fermion of electric charge \(q\) coupled to an electromagnetic
@@ -947,14 +1087,14 @@ before this spectral correction is imposed.
 
 \section{Nonabelian Flavor and Gauge Anomalies}
 
-For several Weyl fermions, anomalies are encoded by traces over their
-representations.  Let \(T^A\) be a generator of a global symmetry current and
-let \(t^a,t^b\) be generators of gauge or background gauge fields.  The
-Hermitian generator and curvature conventions are those stated in
+\begin{definition}[Trace anomaly coefficient]
+\label{def:trace-anomaly-coefficient}
+For several Weyl fermions, let \(T^A\) be a generator of a global symmetry
+current and let \(t^a,t^b\) be generators of gauge or background gauge fields.
+The Hermitian generator and curvature conventions are those stated in
 \eqref{eq:ym-lie-algebra-conventions}, \eqref{eq:ym-trace-kappa}, and
 \eqref{eq:ym-lagrangian-density}; in particular the default basis has
-\(\operatorname{tr}(t^a t^b)=\delta^{ab}\).  The coefficient of the mixed
-anomaly is
+\(\operatorname{tr}(t^a t^b)=\delta^{ab}\).  The mixed anomaly coefficient is
 \begin{equation}
   \mathcal A^{Aab}
   =
@@ -988,11 +1128,13 @@ generator acting by \(+1\) on the left-handed component and \(-1\) on the
 right-handed component, and with a unit Abelian vector charge, this definition
 gives \(\mathcal A=2\), so \eqref{eq:nonabelian-flavor-anomaly} reduces to the
 coefficient \(1/(16\pi^2)\) in \eqref{eq:abelian-axial-anomaly}.
+\end{definition}
 
-If the anomalous current is the current of a gauge symmetry, the theory is
-inconsistent unless the anomaly cancels.  For left-handed Weyl fermions in
-representations \(R_i\) of a gauge group, the local cubic gauge-anomaly
-condition is
+\begin{proposition}[Cubic gauge obstruction]
+\label{prop:cubic-gauge-anomaly-obstruction}
+For left-handed Weyl fermions in representations \(R_i\) of a gauge group,
+the cubic part of the one-loop local consistent gauge anomaly vanishes if and
+only if
 \begin{equation}
   \sum_i
   \operatorname{tr}_{R_i}
@@ -1003,11 +1145,37 @@ condition is
   \text{for all }a,b,c.
   \label{eq:gauge-anomaly-cancellation}
 \end{equation}
-This condition is the ghost-number-one obstruction described by BRST
-cohomology in Chapter~\ref{ch:volume-ii-18}.  When it holds, the
-Slavnov--Taylor identities can be maintained by local counterterms.  When it
-fails, no choice of local counterterms gives a unitary gauge theory with the
-declared gauge symmetry.
+If this tensor is nonzero for a dynamical gauge symmetry, no local
+counterterm can make the corresponding one-loop effective action satisfy the
+Slavnov--Taylor identity in that background-field chart.  If the tensor
+vanishes, this cubic local obstruction is absent; maintaining the full
+Slavnov--Taylor identities then reduces to the absence of the remaining
+BRST-anomaly classes in the chosen theory and regulator scheme.
+\end{proposition}
+
+\begin{proof}
+The cubic gauge part of the anomaly polynomial for a left-handed Weyl fermion
+in \(R_i\) is proportional to
+\(\operatorname{tr}_{R_i}(\mathsf F^3)\).  Expanding
+\(\mathsf F=\mathsf F^a t^a\), the coefficient of
+\(\mathsf F^a\mathsf F^b\mathsf F^c\) is the completely symmetric tensor
+\(\operatorname{tr}_{R_i}(t^{(a}t^b t^{c)})\), equivalently
+\(\frac16\operatorname{tr}_{R_i}\) summed over all permutations.  In component
+Ward identities the same tensor is written as
+\(\operatorname{tr}_{R_i}(t^a\{t^b,t^c\})\), with the conventional factor
+absorbed into the anomaly coefficient.  Summing over fermions gives
+\eqref{eq:gauge-anomaly-cancellation}.
+
+A local counterterm changes the anomaly representative by a BRST coboundary.
+The descent class associated with a nonzero cubic invariant tensor is a
+nontrivial element of the local ghost-number-one BRST cohomology described in
+Proposition~\ref{prop:local-anomalies-relative-brst-classes} below.
+Therefore a nonzero tensor cannot be removed by changing local counterterms.
+If the tensor vanishes, this particular descent class has zero coefficient,
+which is exactly the asserted absence statement.  The last sentence is not an
+all-purpose nonperturbative existence theorem; it is the perturbative BRST
+consistency reduction in a specified gauge-fixed regularized framework.
+\end{proof}
 
 \section{Consistency Condition and Descent}
 
@@ -1151,6 +1319,7 @@ The quotient of cocycles by this equivalence relation is
 \]
 
 \begin{proposition}[Local anomalies as relative BRST classes]
+\label{prop:local-anomalies-relative-brst-classes}
 At the level of local functionals, a four-dimensional consistent gauge anomaly
 with local density \(a_4^{(1)}\) determines a class
 \([a_4^{(1)}]\in H^{1,4}(s\mid d)\).  Changing the renormalized effective
@@ -2078,6 +2247,70 @@ same saddle contributes the exponential
   \exp\!\left(-\frac{8\pi^2}{g_{\rm ht}^2}+\ii\theta\right).
   \label{eq:bpst-instanton-exponential-conventions}
 \end{equation}
+
+\begin{proposition}[BPST one-instanton data]
+\label{prop:bpst-one-instanton-data}
+With the self-dual symbols and \(SU(2)\) half-trace generators
+\(T_a=\sigma_a/2\) used in this section, the connection
+\[
+  A_\mu(x)
+  =
+  \frac{2\,\eta^a_{\mu\nu}(x-a)^\nu}{(x-a)^2+\rho^2}\,T_a,
+  \qquad
+  \rho>0,
+\]
+has curvature
+\[
+  F_{\mu\nu}(x)
+  =
+  -\frac{4\rho^2}{((x-a)^2+\rho^2)^2}\,
+  \eta^a_{\mu\nu}T_a .
+\]
+It is self-dual, has topological charge \(Q=1\), and has Euclidean action
+\[
+  S_E^{\rm ht}=\frac{8\pi^2}{g_{\rm ht}^2}
+  =
+  \frac{4\pi^2}{g_{\rm YM}^2}
+\]
+when rewritten in the trace-delta coupling coordinate of the Yang--Mills
+chapters.
+\end{proposition}
+
+\begin{proof}
+Differentiating the displayed connection gives the derivative term written
+above, and the commutator term is
+\(\epsilon^a{}_{bc}A_\mu^bA_\nu^c\).  The contraction identity
+\eqref{eq:eta-symbol-quadratic-identity} cancels the inhomogeneous
+\(y_\mu\eta_{\nu\lambda}^a y^\lambda
+-y_\nu\eta_{\mu\lambda}^a y^\lambda\) terms and leaves
+\eqref{eq:bpst-regular-gauge-curvature}.  Since
+\(\eta^a_{\mu\nu}
+=\frac12\epsilon_{\mu\nu\rho\sigma}\eta^a_{\rho\sigma}\), this curvature is
+self-dual.
+
+The square-completion identity
+\eqref{eq:instanton-action-bound-half-trace} gives the lower bound
+\(8\pi^2|Q|/g_{\rm ht}^2\), saturated by a self-dual field with \(Q>0\).
+For the displayed curvature,
+\[
+  F^a_{\mu\nu}F^a_{\mu\nu}
+  =
+  \frac{192\rho^4}{(r^2+\rho^2)^4},
+  \qquad
+  \int_{\mathbb R^4}
+  \frac{\rho^4\,\dd^4x}{(r^2+\rho^2)^4}
+  =
+  \frac{\pi^2}{6},
+\]
+so \(\int F^a_{\mu\nu}F^a_{\mu\nu}=32\pi^2\).  Self-duality then gives
+\[
+  Q=\frac1{32\pi^2}\int F^a_{\mu\nu}\widetilde F^a_{\mu\nu}\,\dd^4x=1
+\]
+and \(S_E^{\rm ht}=8\pi^2/g_{\rm ht}^2\).  Finally,
+\(\operatorname{tr}_\delta(t_at_b)=\delta_{ab}\) with
+\(t_a=\sqrt2\,T_a\) implies \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\), hence the
+trace-delta action is \(4\pi^2/g_{\rm YM}^2\).
+\end{proof}
 
 \begin{figure}[H]
   \centering
