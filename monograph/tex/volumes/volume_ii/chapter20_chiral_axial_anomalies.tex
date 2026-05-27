@@ -2147,6 +2147,169 @@ about the theory.  The use of \(\chi_{\rm YM}\) inside a chiral effective
 description with dynamical quarks is a further large-\(N_c\) matching
 assumption, developed in the next chapter.
 
+\section{Theta Branches and Cluster Decomposition}
+\label{sec:theta-branches-cluster-decomposition}
+
+The sector sum
+\(\sum_Q\ee^{\ii\theta Q}Z_Q\) explains \(2\pi\)-periodicity, but it does not
+by itself identify a pure infinite-volume vacuum.  In a theory with several
+large-volume branches the thermodynamic limit selects the branch of smallest
+energy density, except at degeneracy loci where a phase-selection prescription
+is needed.  Cluster decomposition is the local diagnostic that one has chosen
+a pure phase rather than a convex mixture.
+
+\begin{definition}[Theta-branch datum]
+\label{def:theta-branch-datum}
+A theta-branch datum for a regulated Euclidean gauge theory in a volume \(V_4\)
+consists of a finite or countable branch set \(\mathcal B\), branch partition
+functions \(Z_{\Lambda,V_4,\beta}(\theta)\), and local normalized states
+\(\omega_{\Lambda,V_4,\beta,\theta}\) on gauge-invariant observables, such
+that
+\[
+  Z_{\Lambda,V_4}(\theta)
+  =
+  \sum_{\beta\in\mathcal B}Z_{\Lambda,V_4,\beta}(\theta),
+  \qquad
+  p_{\Lambda,V_4,\beta}(\theta)
+  =
+  \frac{Z_{\Lambda,V_4,\beta}(\theta)}
+       {Z_{\Lambda,V_4}(\theta)} .
+  \label{eq:theta-branch-partition-decomposition}
+\]
+When the limits exist, write
+\[
+  E_\beta(\theta)
+  =
+  -\lim_{\Lambda\to\infty}\lim_{V_4\to\infty}
+  \frac1{V_4}\log Z_{\Lambda,V_4,\beta}(\theta)
+  \label{eq:theta-branch-energy-density}
+\]
+for the branch energy density.  The datum is \(2\pi\)-periodic by branch
+relabeling when there is a bijection \(T:\mathcal B\to\mathcal B\) with
+\[
+  E_{T\beta}(\theta+2\pi)=E_\beta(\theta).
+  \label{eq:theta-branch-periodic-relabeling}
+\]
+\end{definition}
+
+\begin{proposition}[Thermodynamic branch selection]
+\label{prop:theta-thermodynamic-branch-selection}
+Assume a finite branch set and a fixed \(\theta\) at which the limiting branch
+energies \(E_\beta(\theta)\) exist.  If a unique branch \(\beta_*\) satisfies
+\[
+  E_{\beta_*}(\theta)
+  <
+  E_\beta(\theta)
+  \qquad
+  \hbox{for every }\beta\neq\beta_*,
+  \label{eq:unique-theta-branch-minimum}
+\]
+and if each branch partition function has the form
+\[
+  Z_{\Lambda,V_4,\beta}(\theta)
+  =
+  \exp\{-V_4E_\beta(\theta)+o(V_4)\}
+  \label{eq:branch-free-energy-asymptotics}
+\]
+uniformly over the finite branch set, then
+\[
+  \lim_{\Lambda\to\infty}\lim_{V_4\to\infty}
+  p_{\Lambda,V_4,\beta_*}(\theta)=1,
+  \qquad
+  \lim_{\Lambda\to\infty}\lim_{V_4\to\infty}
+  p_{\Lambda,V_4,\beta}(\theta)=0
+  \quad(\beta\neq\beta_*).
+  \label{eq:theta-branch-selection}
+\]
+\end{proposition}
+
+\begin{proof}
+For \(\beta\neq\beta_*\),
+\[
+  \frac{Z_{\Lambda,V_4,\beta}(\theta)}
+       {Z_{\Lambda,V_4,\beta_*}(\theta)}
+  =
+  \exp\{-V_4(E_\beta(\theta)-E_{\beta_*}(\theta))+o(V_4)\}.
+\]
+The exponent tends to \(-\infty\) because the energy-density gap is positive.
+Since the branch set is finite, the sum of all nonminimal ratios tends to
+zero.  Dividing the branch weights by
+\(Z_{\Lambda,V_4,\beta_*}\) gives
+\eqref{eq:theta-branch-selection}.
+\end{proof}
+
+\begin{proposition}[Cluster test for mixtures of theta branches]
+\label{prop:theta-branch-mixture-cluster-test}
+Let \(\{\omega_\beta\}_{\beta\in\mathcal B}\) be translation-invariant pure
+states for gauge-invariant local observables, and assume each branch clusters:
+for local observables \(\mathcal O,\mathcal P\),
+\[
+  \lim_{|a|\to\infty}
+  \omega_\beta(\mathcal O(a)\mathcal P(0))
+  =
+  \omega_\beta(\mathcal O)\omega_\beta(\mathcal P).
+  \label{eq:branch-clustering-assumption}
+\]
+For a convex combination
+\[
+  \omega=\sum_{\beta\in\mathcal B}p_\beta\omega_\beta,
+  \qquad
+  p_\beta\ge0,
+  \qquad
+  \sum_\beta p_\beta=1,
+  \label{eq:theta-branch-mixture-state}
+\]
+one has
+\[
+  \lim_{|a|\to\infty}
+  \left[
+    \omega(\mathcal O(a)\mathcal P(0))
+    -
+    \omega(\mathcal O)\omega(\mathcal P)
+  \right]
+  =
+  \operatorname{Cov}_{p}
+  \bigl(\omega_\beta(\mathcal O),\omega_\beta(\mathcal P)\bigr).
+  \label{eq:theta-branch-cluster-covariance}
+\]
+Thus the mixture clusters for all local observables only if the branch labels
+cannot be distinguished by local one-point functions on the support of
+\(p_\beta\), or if the mixture is supported on a single branch.
+\end{proposition}
+
+\begin{proof}
+Using the branch clustering assumption,
+\[
+  \lim_{|a|\to\infty}
+  \omega(\mathcal O(a)\mathcal P(0))
+  =
+  \sum_\beta p_\beta
+  \omega_\beta(\mathcal O)\omega_\beta(\mathcal P).
+  \]
+The product of the one-point functions in the mixed state is
+\[
+  \omega(\mathcal O)\omega(\mathcal P)
+  =
+  \left(\sum_\beta p_\beta\omega_\beta(\mathcal O)\right)
+  \left(\sum_\gamma p_\gamma\omega_\gamma(\mathcal P)\right).
+  \]
+Their difference is precisely the covariance of the two branch-dependent
+one-point functions with respect to the probability distribution \(p\).
+\end{proof}
+
+\begin{remark}[Theta vacua as theorem, hypothesis, and convention]
+\label{rem:theta-vacua-status}
+At finite regulator the sector decomposition, cumulant identity, and branch
+mixture algebra above are exact.  A continuum statement that theta labels
+superselection sectors requires additional input: the existence of the
+continuum gauge theory, the infinite-volume limits of the local states, the
+cluster property inside a selected branch, and the action of large gauge
+transformations or theta-shift automorphisms on the physical representation.
+The monograph therefore uses ``theta vacuum'' only after these data have been
+specified.  Otherwise it speaks of a theta parameter in the regulated action
+or of a theta-branch hypothesis.
+\end{remark}
+
 \section{The BPST Instanton and the Semiclassical Vertex}
 \label{sec:bpst-instanton-thooft-vertex}
 

@@ -125,6 +125,9 @@
 | \(Z_{\Lambda,V_4,Q}\) | finite-regulator sector partition weight at topological charge \(Q\) |
 | \(E_{\Lambda,V_4}(\theta)\) | finite-regulator vacuum-energy density near \(\theta=0\) |
 | \(\chi_{\rm top}\), \(\chi_{\rm YM}\) | continuum topological susceptibility, and its pure-Yang--Mills specialization |
+| \(\mathcal B,\beta\) | theta-branch label set and branch label in a finite-regulator or thermodynamic branch datum |
+| \(E_\beta(\theta)\) | theta-branch energy density |
+| \(\omega_\beta\) | local state associated with a selected theta branch |
 | \(\eta^a_{\mu\nu}\) | self-dual 't Hooft symbol in the BPST construction |
 | \(a^\mu,\rho,U\) | instanton center, size, and global gauge-orientation collective coordinates |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
@@ -268,6 +271,12 @@
   and the CP-invariant case has \(\langle Q\rangle=0\).  The finite identity,
   the existence of the continuum limit, and its use in large-\(N_c\) chiral
   matching are kept logically separate.
+- Theta branches are formulated as a datum, not presumed as folklore.  A
+  unique branch of smallest energy density dominates the thermodynamic limit
+  under the stated uniform free-energy asymptotics.  Convex mixtures of pure
+  theta branches fail cluster decomposition by the branch-space covariance
+  of local one-point functions unless no local observable distinguishes the
+  branches or the mixture is supported on one branch.
 - The BPST connection
   \(A_\mu=2\eta^a_{\mu\nu}(x-a)^\nu[(x-a)^2+\rho^2]^{-1}T_a\) has curvature
   \(F_{\mu\nu}=-4\rho^2\eta^a_{\mu\nu}[(x-a)^2+\rho^2]^{-2}T_a\), is
@@ -349,3 +358,6 @@
 - 2026-05-27 issue #630 theta pass: added the finite-regulator topological
   susceptibility datum and finite-volume cumulant proof, paired with
   `calculation-checks/qcd_theta_witten_veneziano_checks.py`.
+- 2026-05-27 follow-up: added the theta-branch and cluster-decomposition
+  datum, including thermodynamic branch selection and the exact covariance
+  obstruction for mixed branch states.

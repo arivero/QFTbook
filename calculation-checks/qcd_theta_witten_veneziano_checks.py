@@ -88,12 +88,55 @@ def check_periodic_branch_relabeling() -> None:
     assert_zero("theta periodicity by branch relabeling", shifted - branch_energy)
 
 
+def check_branch_mixture_cluster_covariance() -> None:
+    weights = [sp.Rational(1, 5), sp.Rational(3, 10), sp.Rational(1, 2)]
+    o_values = [sp.Rational(2, 3), sp.Rational(-1, 7), sp.Rational(5, 11)]
+    p_values = [sp.Rational(13, 17), sp.Rational(3, 19), sp.Rational(-2, 23)]
+
+    separated_limit = sum(weight * o * p for weight, o, p in zip(weights, o_values, p_values))
+    one_point_product = (
+        sum(weight * o for weight, o in zip(weights, o_values))
+        * sum(weight * p for weight, p in zip(weights, p_values))
+    )
+    covariance = separated_limit - one_point_product
+
+    mean_o = sum(weight * o for weight, o in zip(weights, o_values))
+    mean_p = sum(weight * p for weight, p in zip(weights, p_values))
+    covariance_direct = sum(
+        weight * (o - mean_o) * (p - mean_p)
+        for weight, o, p in zip(weights, o_values, p_values)
+    )
+    assert_zero("branch mixture cluster covariance", covariance - covariance_direct)
+
+    pure_weights = [sp.Integer(0), sp.Integer(1), sp.Integer(0)]
+    pure_covariance = (
+        sum(weight * o * p for weight, o, p in zip(pure_weights, o_values, p_values))
+        - sum(weight * o for weight, o in zip(pure_weights, o_values))
+        * sum(weight * p for weight, p in zip(pure_weights, p_values))
+    )
+    assert_zero("pure branch clusters", pure_covariance)
+
+
+def check_unique_branch_thermodynamic_selection() -> None:
+    volume, gap1, gap2, correction = sp.symbols("volume gap1 gap2 correction", positive=True)
+    z_min = sp.exp(-volume * correction / volume)
+    z_1 = sp.exp(-volume * gap1)
+    z_2 = sp.exp(-volume * gap2)
+    nonminimal_ratio = sp.simplify((z_1 + z_2) / z_min)
+    require(
+        nonminimal_ratio.subs({volume: 10, gap1: 2, gap2: 3, correction: sp.Rational(1, 7)}) < sp.Rational(1, 1000000),
+        "nonminimal branch ratios should be exponentially suppressed",
+    )
+
+
 def main() -> None:
     check_finite_volume_cumulant_identity()
     check_cp_symmetric_first_moment()
     check_witten_veneziano_mass_coefficient()
     check_massless_quark_theta_screening()
     check_periodic_branch_relabeling()
+    check_branch_mixture_cluster_covariance()
+    check_unique_branch_thermodynamic_selection()
     print("All QCD theta and Witten-Veneziano normalization checks passed.")
 
 
